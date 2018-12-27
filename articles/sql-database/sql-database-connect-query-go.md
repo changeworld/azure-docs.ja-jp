@@ -2,38 +2,40 @@
 title: Go を使用して Azure SQL Database に照会する | Microsoft Docs
 description: Go を使用して Azure SQL Database に接続し Transact-SQL ステートメントによりデータを照会、変更するプログラムを作成します。
 services: sql-database
-author: David-Engel
-manager: craigg
-ms.reviewer: MightyPen
 ms.service: sql-database
-ms.custom: mvc,develop apps
+ms.subservice: development
+ms.custom: ''
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 04/01/2018
+author: David-Engel
 ms.author: v-daveng
-ms.openlocfilehash: b10d3e469ffac22a2b0994708f50125d21496fef
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: MightyPen
+manager: craigg
+ms.date: 12/07/2018
+ms.openlocfilehash: 34b3ee54c48040eaa6f7b7569921678869baa84b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092368"
 ---
-# <a name="use-go-to-query-an-azure-sql-database"></a>Go を使用して Azure SQL Database に照会する
+# <a name="quickstart-use-go-to-query-an-azure-sql-database"></a>クイック スタート: Go を使用して Azure SQL Database に照会する
 
-このクイック スタート チュートリアルでは、[Go](https://godoc.org/github.com/denisenkom/go-mssqldb) を使用して Azure SQL データベースに接続する方法を紹介します。 Transact-SQL ステートメントを使用してデータを照会および変更する方法についても説明します。
+このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントを実行しデータの照会と変更を行うプログラムを [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) を使って作成する方法について説明します。 [Go](https://golang.org/) は、シンプルで信頼性と効率性の高いソフトウェアを簡単に構築できるオープン ソース プログラミング言語です。  
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタート チュートリアルを完了するには、次の前提条件を満たしている必要があります。
+このチュートリアルを完了するには、次のものが必要です。
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- このクイック スタート チュートリアルに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+- お使いのコンピューターのパブリック IP アドレスに対して構成された[サーバーレベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
 
-- ご使用のオペレーティング システムに対応した Go とそれに関連するソフトウェアをインストール済みであること。
+- ご使用のオペレーティング システムがインストールされた Go とそれに関連するソフトウェア:
 
     - **MacOS**: Homebrew と GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/) を参照してください。
-    - **Ubuntu**: - GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/) を参照してください。
-    - **Windows**: - GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/) を参照してください。    
+    - **Ubuntu**:GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/) を参照してください。
+    - **Windows**:GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/) を参照してください。    
 
 ## <a name="sql-server-connection-information"></a>SQL Server の接続情報
 
@@ -47,7 +49,7 @@ ms.lasthandoff: 04/06/2018
    mkdir SqlServerSample
    ```
 
-2. ディレクトリを **SqlServerSample** に変更し、Go の SQL Server ドライバーを取得してインストールします。
+2. ディレクトリを **SqlServerSample** に変更し、Go の SQL Server ドライバーをインストールします。
 
    ```bash
    cd SqlServerSample
@@ -57,7 +59,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="create-sample-data"></a>サンプル データの作成
 
-1. 任意のテキスト エディターを使用して、**SqlServerSample**フォルダーに **CreateTestData.sql** という名前のファイルを作成します。 その中に次の T-SQL コードをコピーして貼り付けます。 このコードは、スキーマとテーブルを作成し、数行を挿入します。
+1. 任意のテキスト エディターで、**SqlServerSample** フォルダーに **CreateTestData.sql** という名前のファイルを作成します。 ファイルに、スキーマ、テーブルを作成して数行を挿入する次の T-SQL コードをコピーして貼り付けます。
 
    ```sql
    CREATE SCHEMA TestSchema;
@@ -80,7 +82,7 @@ ms.lasthandoff: 04/06/2018
    GO
    ```
 
-2. Sqlcmd を使用してデータベースに接続し、SQL スクリプトを実行してスキーマを作成し、数行を挿入します。 サーバー、データベース、ユーザー名、パスワードを適切な値に置き換えてください。
+2. `sqlcmd` を使用してデータベースに接続し、新しく作成した SQL スクリプトを実行します。 サーバー、データベース、ユーザー名、パスワードを適切な値に置き換えてください。
 
    ```bash
    sqlcmd -S your_server.database.windows.net -U your_username -P your_password -d your_database -i ./CreateTestData.sql
@@ -90,7 +92,7 @@ ms.lasthandoff: 04/06/2018
 
 1. **sample.go**という名前のファイルを **SqlServerSample** フォルダーに作成します。
 
-2. そのファイルを開いて、その内容を次のコードに置き換えます。 適切なサーバー、データベース、ユーザー名、パスワードを追加します。 この例では、GoLang Context メソッドを使用して、データベース サーバーにアクティブな接続があることを確認します。
+2. ファイルを開き、次のコードを貼り付けます。 適切なサーバー、データベース、ユーザー名、パスワードを追加します。 この例では、GoLang Context メソッドを使用して、データベース サーバーにアクティブな接続があることを確認します。
 
    ```go
    package main
@@ -101,6 +103,7 @@ ms.lasthandoff: 04/06/2018
        "context"
        "log"
        "fmt"
+       "errors"
    )
 
    var db *sql.DB
@@ -121,65 +124,89 @@ ms.lasthandoff: 04/06/2018
        // Create connection pool
        db, err = sql.Open("sqlserver", connString)
        if err != nil {
-           log.Fatal("Error creating connection pool:", err.Error())
+           log.Fatal("Error creating connection pool: ", err.Error())
+       }
+       ctx := context.Background()
+       err = db.PingContext(ctx)
+       if err != nil {
+           log.Fatal(err.Error())
        }
        fmt.Printf("Connected!\n")
 
        // Create employee
-       createId, err := CreateEmployee("Jake", "United States")
-       fmt.Printf("Inserted ID: %d successfully.\n", createId)
+       createID, err := CreateEmployee("Jake", "United States")
+       if err != nil {
+           log.Fatal("Error creating Employee: ", err.Error())
+       }
+       fmt.Printf("Inserted ID: %d successfully.\n", createID)
 
        // Read employees
        count, err := ReadEmployees()
-       fmt.Printf("Read %d rows successfully.\n", count)
+       if err != nil {
+           log.Fatal("Error reading Employees: ", err.Error())
+       }
+       fmt.Printf("Read %d row(s) successfully.\n", count)
 
        // Update from database
-       updateId, err := UpdateEmployee("Jake", "Poland")
-       fmt.Printf("Updated row with ID: %d successfully.\n", updateId)
+       updatedRows, err := UpdateEmployee("Jake", "Poland")
+       if err != nil {
+           log.Fatal("Error updating Employee: ", err.Error())
+       }
+       fmt.Printf("Updated %d row(s) successfully.\n", updatedRows)
 
        // Delete from database
-       rows, err := DeleteEmployee("Jake")
-       fmt.Printf("Deleted %d rows successfully.\n", rows)
+       deletedRows, err := DeleteEmployee("Jake")
+       if err != nil {
+           log.Fatal("Error deleting Employee: ", err.Error())
+       }
+       fmt.Printf("Deleted %d row(s) successfully.\n", deletedRows)
    }
 
+   // CreateEmployee inserts an employee record
    func CreateEmployee(name string, location string) (int64, error) {
        ctx := context.Background()
        var err error
 
        if db == nil {
-           log.Fatal("What?")
+           err = errors.New("CreateEmployee: db is null")
+           return -1, err
        }
 
        // Check if database is alive.
        err = db.PingContext(ctx)
        if err != nil {
-           log.Fatal("Error pinging database: " + err.Error())
-       }
-
-       tsql := fmt.Sprintf("INSERT INTO TestSchema.Employees (Name, Location) VALUES (@Name,@Location);")
-
-       // Execute non-query with named parameters
-       result, err := db.ExecContext(
-           ctx,
-           tsql,
-           sql.Named("Location", location),
-           sql.Named("Name", name))
-
-       if err != nil {
-           log.Fatal("Error inserting new row: " + err.Error())
            return -1, err
        }
 
-       return result.LastInsertId()
+       tsql := "INSERT INTO TestSchema.Employees (Name, Location) VALUES (@Name, @Location); select convert(bigint, SCOPE_IDENTITY());"
+
+       stmt, err := db.Prepare(tsql)
+       if err != nil {
+          return -1, err
+       }
+       defer stmt.Close()
+
+       row := stmt.QueryRowContext(
+           ctx,
+           sql.Named("Name", name),
+           sql.Named("Location", location))
+       var newID int64
+       err = row.Scan(&newID)
+       if err != nil {
+           return -1, err
+       }
+
+       return newID, nil
    }
 
+   // ReadEmployees reads all employee records
    func ReadEmployees() (int, error) {
        ctx := context.Background()
 
        // Check if database is alive.
        err := db.PingContext(ctx)
        if err != nil {
-           log.Fatal("Error pinging database: " + err.Error())
+           return -1, err
        }
 
        tsql := fmt.Sprintf("SELECT Id, Name, Location FROM TestSchema.Employees;")
@@ -187,13 +214,12 @@ ms.lasthandoff: 04/06/2018
        // Execute query
        rows, err := db.QueryContext(ctx, tsql)
        if err != nil {
-           log.Fatal("Error reading rows: " + err.Error())
            return -1, err
        }
 
        defer rows.Close()
 
-       var count int = 0
+       var count int
 
        // Iterate through the result set.
        for rows.Next() {
@@ -203,7 +229,6 @@ ms.lasthandoff: 04/06/2018
            // Get values from row.
            err := rows.Scan(&id, &name, &location)
            if err != nil {
-               log.Fatal("Error reading rows: " + err.Error())
                return -1, err
            }
 
@@ -214,17 +239,17 @@ ms.lasthandoff: 04/06/2018
        return count, nil
    }
 
-   // Update an employee's information
+   // UpdateEmployee updates an employee's information
    func UpdateEmployee(name string, location string) (int64, error) {
        ctx := context.Background()
 
        // Check if database is alive.
        err := db.PingContext(ctx)
        if err != nil {
-           log.Fatal("Error pinging database: " + err.Error())
+           return -1, err
        }
 
-       tsql := fmt.Sprintf("UPDATE TestSchema.Employees SET Location = @Location WHERE Name= @Name")
+       tsql := fmt.Sprintf("UPDATE TestSchema.Employees SET Location = @Location WHERE Name = @Name")
 
        // Execute non-query with named parameters
        result, err := db.ExecContext(
@@ -233,29 +258,27 @@ ms.lasthandoff: 04/06/2018
            sql.Named("Location", location),
            sql.Named("Name", name))
        if err != nil {
-           log.Fatal("Error updating row: " + err.Error())
            return -1, err
        }
 
-       return result.LastInsertId()
+       return result.RowsAffected()
    }
 
-   // Delete an employee from database
+   // DeleteEmployee deletes an employee from the database
    func DeleteEmployee(name string) (int64, error) {
        ctx := context.Background()
 
        // Check if database is alive.
        err := db.PingContext(ctx)
        if err != nil {
-           log.Fatal("Error pinging database: " + err.Error())
+           return -1, err
        }
 
-       tsql := fmt.Sprintf("DELETE FROM TestSchema.Employees WHERE Name=@Name;")
+       tsql := fmt.Sprintf("DELETE FROM TestSchema.Employees WHERE Name = @Name;")
 
        // Execute non-query with named parameters
        result, err := db.ExecContext(ctx, tsql, sql.Named("Name", name))
        if err != nil {
-           fmt.Println("Error deleting row: " + err.Error())
            return -1, err
        }
 
@@ -280,9 +303,9 @@ ms.lasthandoff: 04/06/2018
    ID: 2, Name: Nikita, Location: India
    ID: 3, Name: Tom, Location: Germany
    ID: 4, Name: Jake, Location: United States
-   Read 4 rows successfully.
-   Updated row with ID: 4 successfully.
-   Deleted 1 rows successfully.
+   Read 4 row(s) successfully.
+   Updated 1 row(s) successfully.
+   Deleted 1 row(s) successfully.
    ```
 
 ## <a name="next-steps"></a>次の手順

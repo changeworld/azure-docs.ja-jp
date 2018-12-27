@@ -9,36 +9,34 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
+ms.topic: conceptual
+ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 06e07d566afe64b55470f73e232cf45feccd47fb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: db0bc0cb64c0b6d7df9319c8d2c5850a27e767a1
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249215"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory サービス ID
 
 この記事は、データ ファクトリ　サービス ID についてとそのしくみを理解するために役立ちます。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
-
 ## <a name="overview"></a>概要
 
-データ ファクトリの作成時に、ファクトリの作成に加えてサービス ID を作成することができます。 サービス ID は、Azure Activity Directory に登録されているマネージ アプリケーションであり、この特定のデータ ファクトリを表します。
+データ ファクトリの作成時に、ファクトリの作成に加えてサービス ID を作成することができます。 サービス ID は、Azure Activity Directory に登録されているマネージド アプリケーションであり、この特定のデータ ファクトリを表します。
 
-データ ファクトリ サービス ID は、次の 2 つの機能に役立ちます。
+Data Factory サービス ID は、次の機能に役立ちます。
 
 - [Azure Key Vault に資格情報を格納する](store-credentials-in-key-vault.md)。この場合、データ ファクトリ サービス ID は Azure Key Vault の認証に使われます。
-- [Azure Data Lake Store 間でデータをコピーする](connector-azure-data-lake-store.md)。この場合、データ ファクトリ サービス ID は、サポートされる Data Lake Store 認証タイプのいずれかとして使用できます。
+- [Azure Blob Storage](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure SQL Database](connector-azure-sql-database.md)、[Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) を含むコネクタ。
 
 ## <a name="generate-service-identity"></a>サービス ID の生成
 
 データ ファクトリ サービス ID は、次のように生成されます。
 
-- ADF V2 パブリック プレビュー以降は、**Azure Portal または PowerShell** を介してデータ ファクトリを作成すると、サービス ID が常に自動的に作成されます。
+- **Azure Portal または PowerShell** を介してデータ ファクトリを作成すると、サービス ID が常に自動的に作成されます。
 - **SDK** を介してデータ ファクトリを作成する場合、作成用のファクトリ オブジェクトで "Identity = new FactoryIdentity()" を指定したときのみサービス ID が作成されます。 [.NET のクイックスタート - データ ファクトリの作成](quickstart-create-data-factory-dot-net.md#create-a-data-factory)の例をご覧ください。
 - **REST API** を介してデータ ファクトリを作成する場合、要求本文で "Identity" セクションを指定したときのみサービス ID が作成されます。 [REST のクイックスタート - データ ファクトリの作成](quickstart-create-data-factory-rest-api.md#create-a-data-factory)の例をご覧ください。
 
@@ -171,6 +169,6 @@ Type                  : ServicePrincipal
 データ ファクトリ サービス ID を使用するタイミングと方法を紹介する次のトピックを参照してください。
 
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)
-- [管理対象のサービス ID 認証を使用した Azure Data Lake Store 間でのデータのコピーに関するページ](connector-azure-data-lake-store.md)
+- [Azure リソース認証用のマネージド ID を使用して Azure Data Lake Store との間でデータを双方向にコピーする](connector-azure-data-lake-store.md)
 
-データ ファクトリ サービス ID の基になっている管理対象サービス ID の背景について詳しくは、[MSI の概要](~/articles/active-directory/msi-overview.md)に関するページをご覧ください。 
+データ ファクトリ サービス ID の基になっている Azure リソースのマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](~/articles/active-directory/msi-overview.md)」をご覧ください。 

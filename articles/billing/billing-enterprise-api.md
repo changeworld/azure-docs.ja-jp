@@ -1,36 +1,40 @@
 ---
 title: Azure Billing Enterprise API |Microsoft Docs
-description: "Enterprise Azure の顧客がプログラムで消費データを取り出せるようにする Reporting API について説明します。"
-services: 
-documentationcenter: 
+description: Enterprise Azure の顧客がプログラムで消費データを取り出せるようにする Reporting API について説明します。
+services: ''
+documentationcenter: ''
 author: anandedwin
 manager: aedwin
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
-ms.author: aedwin
-ms.openlocfilehash: f7a480c77c93035e655606433aea2547a1c105cc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: erikre
+ms.openlocfilehash: 7cc5b0cb12e806b0946ce421e7ee6daa4de76afa
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47390598"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>企業ユーザー向けの Reporting API の概要
-Reporting API を使用すると、Enterprise Azure の顧客はプログラムで消費量および課金データを希望のデータ分析ツールに取り出すことができます。 
+Reporting API を使用すると、Enterprise Azure の顧客はプログラムで消費量および課金データを希望のデータ分析ツールに取り出すことができます。 Enterprise 顧客は、Azure の [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を締結し、交渉によって年額コミットメントを決定しています。Azure リソースのカスタム価格が提示されます。
+
+> [!div class="nextstepaction"]
+> [Azure の課金に関するドキュメントの改善にご協力ください](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="enabling-data-access-to-the-api"></a>API へのデータ アクセス
-* **API キーの生成または取得** - エンタープライズ ポータルにログインして、「ヘルプ - Reporting API」のチュートリアルに従います。 このヘルプ記事の最初のセクションで、指定した加入契約に対応する API キーの生成方法や取得方法を説明しています。
+* **API キーを取得または生成** - エンタープライズ ポータルにログインし、[レポート] > [使用状況のダウンロード] > [API アクセス キー] に移動して API キーを生成または取得します。
 * **API でのキーのパス**-呼び出しごとに API キーを渡して認証と承認を受ける必要があります。 次のプロパティは、HTTP ヘッダーに置かれている必要があります。
 
 |Request Header Key | 値|
 |-|-|
-|承認| 次の形式で値を指定します:**bearer {API_KEY}** <br/> 例: bearer eyr....09|
+|Authorization| 次の形式で値を指定します:**bearer {API_KEY}** <br/> 例: bearer eyr....09| 
 
 ## <a name="consumption-apis"></a>Consumption API
 下記の API では、[こちら](https://consumption.azure.com/swagger/ui/index)の Swagger エンドポイントを使用できます。これによって、API のイントロスペクションが容易になり、[AutoRest](https://github.com/Azure/AutoRest) または [Swagger CodeGen](http://swagger.io/swagger-codegen/) を使用したクライアント SDK の生成機能が有効になります。 2014 年 5 月 1 日以降のデータは、この API で使用できます。 
@@ -50,8 +54,8 @@ Reporting API を使用すると、Enterprise Azure の顧客はプログラム�
  **請求期間の一覧表示** - [Billing Periods API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) を使用すると、指定された加入契約の消費量データが含まれる請求期間の一覧が逆時系列順に返されます。 各期間には、BalanceSummary、UsageDetails、Marketplace Charges および Price Sheet の 4 セットのデータの API ルートを示すプロパティが含まれています。
 
 
-## <a name="api-response-codes"></a>API 応答コード  
-|応答の状態コード|メッセージ|[説明]|
+## <a name="api-response-codes"></a>API 応答コード   
+|応答の状態コード|Message|説明|
 |-|-|-|
 |200| OK|エラーなし|
 |401| 権限がありません| API キーが検出されない、正しくない、有効期限が切れている、など|

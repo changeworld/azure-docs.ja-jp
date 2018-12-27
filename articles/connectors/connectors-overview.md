@@ -1,11 +1,11 @@
 ---
-title: "Logic Apps コネクタの概要 | Microsoft Docs"
-description: "ロジック アプリで使用されるコネクタの概要"
-services: 
-documentationcenter: 
+title: Logic Apps コネクタの概要 | Microsoft Docs
+description: ロジック アプリで使用されるコネクタの概要
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: ca8dab2e-9b69-4b1e-865d-1facd9f0cdac
 ms.service: logic-apps
@@ -20,12 +20,13 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27961654"
 ---
 # <a name="using-connectors-in-a-logic-app"></a>ロジック アプリでのコネクタの使用
 コネクタは、サービス、プロトコル、およびプラットフォームでの、イベント、データ、およびアクションへのすばやいアクセスを提供します。  Logic Apps がサポートするコネクタの完全な一覧については、 [こちらを参照](apis-list.md)してください。  コネクタは、ロジック アプリでトリガーまたはアクションとして使用できますが、使用には構成された *"接続"* が必要な場合があります (例: Twitter アカウントがユーザーの代わりにアクセスしたり投稿することを承認する場合)。
 
 ## <a name="basics"></a>基本
-コネクタは、ロジック アプリの一部としてアクセスできるホストされたサービスで、Dynamics、Azure、Salesforce [など](apis-list.md)他のサービスとの統合に使用されます。  コネクタのデプロイと管理は Microsoft が行いますので、スケール、スループット、およびセキュリティの管理が万全な、統合ワークフローを構築することができます。  **[Show Microsoft managed API (Microsoft Managed API を表示)]**でコネクタ アクションやトリガーを検索/選択することで、コネクタをロジック アプリに追加できます。
+コネクタは、ロジック アプリの一部としてアクセスできるホストされたサービスで、Dynamics、Azure、Salesforce [など](apis-list.md)他のサービスとの統合に使用されます。  コネクタのデプロイと管理は Microsoft が行いますので、スケール、スループット、およびセキュリティの管理が万全な、統合ワークフローを構築することができます。  **[Show Microsoft managed API (Microsoft Managed API を表示)]** でコネクタ アクションやトリガーを検索/選択することで、コネクタをロジック アプリに追加できます。
 
 ![トリガーを選択する [アクション] メニュー][1]
 

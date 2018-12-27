@@ -1,26 +1,20 @@
 ---
-title: 'Azure Cosmos DB: MongoDB API を使用してクエリを実行する方法 | Microsoft Docs'
+title: 'Azure Cosmos DB: MongoDB API を使用してクエリを実行する方法'
 description: Azure Cosmos DB の MongoDB API を使用してクエリを実行する方法を学習します
 services: cosmos-db
-documentationcenter: ''
-author: mimig1
-manager: jhubbard
-editor: ''
-tags: ''
-ms.assetid: ''
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
-ms.devlang: na
+ms.component: cosmosdb-mongo
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: ''
-ms.date: 03/29/2018
-ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: f47d250bbe6689e19dda5042b335ff1812a790d4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.date: 03/29/2018
+ms.openlocfilehash: 8c865ab7fa997b169e481612ce791d960688da56
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841508"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>チュートリアル: MongoDB API を使用して Azure Cosmos DB に対してクエリを実行する
 
@@ -31,9 +25,7 @@ Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シ
 > [!div class="checklist"]
 > * MongoDB を使用してデータのクエリを実行する
 
-Azure Cosmos DB プログラム マネージャーの Andy Hoh による、MongoDB に対するクエリの実行についてのビデオを見ることから始めることができます。
-
->[!VIDEO https://www.youtube.com/tVk8S7lFWMA]
+まずは、このドキュメントの例を使用したり、[MongoDB シェルでの Azure Cosmos DB に対するクエリの実行](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/)に関するビデオを見ることから始めます。
 
 ## <a name="sample-document"></a>サンプル ドキュメント
 
@@ -73,7 +65,7 @@ Azure Cosmos DB プログラム マネージャーの Andy Hoh による、Mongo
 
 **クエリ**
     
-    db.families.find({ id: “WakefieldFamily”})
+    db.families.find({ id: "WakefieldFamily"})
 
 **結果**
 
@@ -123,7 +115,7 @@ Azure Cosmos DB プログラム マネージャーの Andy Hoh による、Mongo
 
 **クエリ**
     
-    db.families.find( { id: “WakefieldFamily” }, { children: true } )
+    db.families.find( { id: "WakefieldFamily" }, { children: true } )
 
 **結果**
 

@@ -1,26 +1,23 @@
 ---
-title: "Azure Functions の関数アプリのリソース デプロイを自動化 | Microsoft Docs"
-description: "関数アプリをデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。"
+title: Azure Functions の関数アプリのリソース デプロイを自動化 | Microsoft Docs
+description: 関数アプリをデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。
 services: Functions
 documtationcenter: na
 author: ggailey777
-manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, 関数, サーバーレス アーキテクチャ, コードとしてのインフラストラクチャ, Azure Resource Manager"
+manager: jeconnoc
+keywords: Azure Functions, 関数, サーバーレス アーキテクチャ, コードとしてのインフラストラクチャ, Azure Resource Manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.server: functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 6f31ba7b43c70f52bdd67d27512a322ec6258608
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 484cf0976ce10e80ca7eaf9b215329b81ed4bb13
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994656"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -56,7 +53,9 @@ Azure Resource Manager テンプレートを使用して、関数アプリをデ
 }
 ```
 
-さらに、`AzureWebJobsStorage` プロパティと `AzureWebJobsDashboard` プロパティを、サイト構成でアプリ設定として指定する必要があります。 `AzureWebJobsStorage` 接続文字列は、Azure Functions ランタイムが内部キューを作成するときに使用します。 接続文字列 `AzureWebJobsDashboard` を使用すると、Azure Table Storage にログを記録し、ポータルの **[モニター]** タブを操作できます。
+さらに、`AzureWebJobsStorage` プロパティを、サイト構成でアプリ設定として指定する必要があります。 関数アプリで監視に Application Insights を使用していない場合は、`AzureWebJobsDashboard` もアプリ設定として指定する必要があります。
+
+`AzureWebJobsStorage` 接続文字列は、Azure Functions ランタイムが内部キューを作成するときに使用します。  Application Insights が有効でない場合、ランタイムでは `AzureWebJobsDashboard` 接続文字列を使用して、Azure テーブル ストレージにログを記録し、ポータルの **[監視]** タブをオンにします。
 
 こうしたプロパティは、`siteConfig` オブジェクトの `appSettings` コレクションで指定します。
 
@@ -270,13 +269,13 @@ Azure Resource Manager テンプレートのサンプルについては、[Azure
 マークダウンを使用する例を次に示します。
 
 ```markdown
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>)
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>)
 ```
 
 HTML を使用する例を次に示します。
 
 ```html
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"></a>
 ```
 
 ## <a name="next-steps"></a>次の手順

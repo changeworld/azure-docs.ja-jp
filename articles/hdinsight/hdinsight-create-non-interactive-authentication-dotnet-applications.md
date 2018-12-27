@@ -1,41 +1,35 @@
 ---
-title: "Azure HDInsight で非対話型認証 .NET アプリケーションを作成する | Microsoft Docs"
-description: "Azure HDInsight で非対話型認証 Microsoft .NET アプリケーションを作成する方法について説明します。"
-editor: cgronlun
-manager: jhubbard
+title: Azure HDInsight で非対話型認証 .NET アプリケーションを作成する
+description: Azure HDInsight で非対話型認証 Microsoft .NET アプリケーションを作成する方法について説明します。
+ms.reviewer: jasonh
 services: hdinsight
-documentationcenter: 
-tags: azure-portal
-author: mumian
-ms.assetid: 8e32430f-6404-498a-9fcd-f20338d964af
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/03/2018
-ms.author: jgao
-ms.openlocfilehash: b2b24747ce4ea8499c999c693f00fb09178d52b0
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.topic: conceptual
+ms.date: 05/14/2018
+ms.author: hrasheed
+ms.openlocfilehash: 495806d47839d471976cd8dff112a1db0b072db9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006109"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>非対話型認証 .NET HDInsight アプリケーションを作成する
 アプリケーション独自の ID (非対話型) またはアプリケーションのサインイン ユーザーの ID (対話型) のいずれかで、Microsoft .NET Azure HDInsight アプリケーションを実行できます。 この記事では、Azure に接続して HDInsight を管理する非対話型認証 .NET アプリケーションを作成する方法について説明します。 対話型アプリケーションのサンプルについては、「[Azure HDInsight への接続](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)」をご覧ください。 
 
 非対話型 .NET アプリケーションでは、以下が必要です。
 
-* Azure サブスクリプションのテナント ID (別名: *ディレクトリ ID*)。 「[Get tenant ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)」 (テナント ID を取得する) を参照してください。
-* Azure Active Directory (Azure AD) アプリケーションのクライアント ID。 「[Azure Active Directory アプリケーションを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)」および「[アプリケーション ID と認証キーを取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」をご覧ください。
-* Azure AD アプリケーションの秘密鍵。 「[アプリケーション ID と認証キーを取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」をご覧ください。
+* Azure サブスクリプションのテナント ID (別名: *ディレクトリ ID*)。 「[Get tenant ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」 (テナント ID を取得する) を参照してください。
+* Azure Active Directory (Azure AD) アプリケーションのクライアント ID。 「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」および「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)」をご覧ください。
+* Azure AD アプリケーションの秘密鍵。 「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 * HDInsight クラスター。 [使用に関するチュートリアル](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)をご覧ください。
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Azure AD アプリケーションにロールを割り当てる
-Azure AD アプリケーションに[ロール](../active-directory/role-based-access-built-in-roles.md)を割り当てて、アクションを実行するためのアクセス許可を付与します。 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます  (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションはリソース グループとその中のリソースを読み取ることができます)。このチュートリアルでは、リソース グループ レベルでスコープを設定します。 詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
+Azure AD アプリケーションに[ロール](../role-based-access-control/built-in-roles.md)を割り当てて、アクションを実行するためのアクセス許可を付与します。 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます  (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションはリソース グループとその中のリソースを読み取ることができます)。このチュートリアルでは、リソース グループ レベルでスコープを設定します。 詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 **Azure AD アプリケーションに所有者ロールを追加するには**
 
@@ -125,6 +119,6 @@ Azure AD アプリケーションに[ロール](../active-directory/role-based-a
 
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Portal で Azure Active Directory アプリケーションとサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
-* [Azure Resource Manager でサービス プリンシパルを認証する](../azure-resource-manager/resource-group-authenticate-service-principal.md)方法を学習する。
-* [Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) について学習する。
+* [Azure Portal で Azure Active Directory アプリケーションとサービス プリンシパルを作成する](../active-directory/develop/howto-create-service-principal-portal.md)。
+* [Azure Resource Manager でサービス プリンシパルを認証する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)方法を学習する。
+* [Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) について学習する。

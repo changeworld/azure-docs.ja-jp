@@ -1,10 +1,10 @@
 ---
-title: "サービス構成ファイルでの DNS 設定の指定 | Microsoft Docs"
-description: "仮想ネットワークのサービス構成ファイルを使用してカスタム DNS 設定を指定する"
+title: サービス構成ファイルでの DNS 設定の指定 | Microsoft Docs
+description: 仮想ネットワークのサービス構成ファイルを使用してカスタム DNS 設定を指定する
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
+author: genlin
+manager: cshepard
 editor: tysonn
 ms.assetid: 467a4b99-8691-40b3-b640-e25e49675c71
 ms.service: virtual-network
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2016
-ms.author: jdial
-ms.openlocfilehash: 0fba2ea06827aff29a7a092933edb8120d668b29
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: 0ac488a67d8b9debf6539d199395997cf44cf1e4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247179"
 ---
 # <a name="specifying-dns-settings-in-a-service-configuration-file"></a>サービス構成ファイルでの DNS 設定の指定
 ## <a name="dns-elements"></a>DNS 要素
@@ -40,9 +41,9 @@ ms.lasthandoff: 10/11/2017
 ## <a name="see-also"></a>関連項目
 [Azure サービス構成スキーマ (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
-[Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure Virtual Network の構成スキーマ](https://go.microsoft.com/fwlink/?LinkId=248093)
 
-[ネットワーク構成ファイルを使用した Virtual Network の構成](http://go.microsoft.com/fwlink/?LinkId=248094)
+[ネットワーク構成ファイルを使用した Virtual Network の構成](https://go.microsoft.com/fwlink/?LinkId=248094)
 
-[管理ポータルでの Virtual Network の設定について](http://go.microsoft.com/fwlink/?LinkId=248092)
+[管理ポータルでの Virtual Network の設定について](https://go.microsoft.com/fwlink/?LinkId=248092)
 

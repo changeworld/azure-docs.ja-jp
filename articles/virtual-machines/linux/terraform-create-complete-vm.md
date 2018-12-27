@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: echuvyrov
-ms.openlocfilehash: 82499df1261cf3288f37ab68c5fc582cf027f3b3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cf0fad78613d063a0f1270597cf67eadd996124a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406913"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terraform によって Azure に完全な Linux 仮想マシンのインフラストラクチャを作成する
 
@@ -74,6 +75,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
     }
 }
 ```
+
 次のセクションでは、*myVnet* 仮想ネットワークに *mySubnet* という名前のサブネットを作成します。
 
 ```tf
@@ -107,11 +109,11 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 ネットワーク セキュリティ グループは、VM から送受信されるネットワーク トラフィック フローを制御します。 次のセクションでは、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成して、TCP ポート 22 で SSH トラフィックを許可するルールを定義しています。
 
 ```tf
-resource "azurerm_network_security_group" "temyterraformpublicipnsg" {
+resource "azurerm_network_security_group" "myterraformnsg" {
     name                = "myNetworkSecurityGroup"
     location            = "eastus"
     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
-    ;
+    
     security_rule {
         name                       = "SSH"
         priority                   = 1001
@@ -139,6 +141,7 @@ resource "azurerm_network_interface" "myterraformnic" {
     name                = "myNIC"
     location            = "eastus"
     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+    network_security_group_id = "${azurerm_network_security_group.myterraformnsg.id}"
 
     ip_configuration {
         name                          = "myNicConfiguration"
@@ -242,10 +245,6 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 以上のセクションをまとめ、Terraform の動作を確認するには、*terraform_azure.tf* という名前のファイルを作成し、次のコンテンツを貼り付けます。
 
 ```tf
-variable "resourcename" {
-  default = "myResourceGroup"
-}
-
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

@@ -1,25 +1,26 @@
 ---
-title: "チュートリアル: データをコピーする Azure Data Factory パイプラインを作成する (Azure Portal) | Microsoft Docs"
-description: "このチュートリアルでは、Azure Portal を使用してコピー アクティビティが含まれた Azure Data Factory パイプラインを作成し、Azure Blob Storage から Azure SQL データベースにデータをコピーします。"
+title: 'チュートリアル: データをコピーする Azure Data Factory パイプラインを作成する (Azure Portal) | Microsoft Docs'
+description: このチュートリアルでは、Azure Portal を使用してコピー アクティビティが含まれた Azure Data Factory パイプラインを作成し、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: d9317652-0170-4fd3-b9b2-37711272162b
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7f42cfda1684b7ff5bd2a1655154b6a11d4ffd31
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2e40e518f9f04809b1fd59b0ed12dcee9b1da9ce
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240916"
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル: Azure Portal を使用して、データをコピーする Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -34,7 +35,7 @@ ms.lasthandoff: 03/02/2018
 > 
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 でのコピー アクティビティに関するチュートリアル](../quickstart-create-data-factory-dot-net.md)を参照してください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。 
 
 この記事では、[Azure Portal](https://portal.azure.com) を使用して、Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを備えたデータ ファクトリを作成します。 Azure Data Factory の使用経験がない場合は、このチュートリアルを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。   
 
@@ -90,8 +91,8 @@ ms.lasthandoff: 03/02/2018
    2. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
    3. **[リソース グループ]** について、次の手順のいずれかを行います。
       
-      - **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
-      - **[新規作成]**を選択し、リソース グループの名前を入力します。   
+      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
+      - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
           このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
    4. データ ファクトリの **場所** を選択します。 Data Factory サービスによってサポートされているリージョンのみ、ドロップダウン リストに表示されます。
@@ -99,7 +100,7 @@ ms.lasthandoff: 03/02/2018
    6. **Create** をクリックしてください。
       
       > [!IMPORTANT]
-      > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
+      > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
       > 
       > データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。                
       > 
@@ -201,10 +202,10 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     |:--- |:--- |
-    | 型 | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
-    | 既定のコンテナー | 前に作成した **AzureStorageLinkedService** を参照します。 |
+    | type | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
+    | linkedServiceName | 前に作成した **AzureStorageLinkedService** を参照します。 |
     | folderPath | BLOB **コンテナー**と、入力 BLOB を格納する**フォルダー**を指定します。 このチュートリアルでは、adftutorial は BLOB コンテナーで、フォルダーはルート フォルダーです。 | 
     | fileName | このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは fileName に **emp.txt** が指定されているため、このファイルのみが処理のために取得されます。 |
     | format -> type |入力ファイルはテキスト形式のため、**TextFormat** を使用します。 |
@@ -250,10 +251,10 @@ Azure SQL Database のリンクされたサービスは、Data Factory サービ
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     |:--- |:--- |
-    | 型 | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
-    | 既定のコンテナー | 前に作成した **AzureSqlLinkedService** を参照します。 |
+    | type | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
+    | linkedServiceName | 前に作成した **AzureSqlLinkedService** を参照します。 |
     | tableName | データのコピー先となる**テーブル**を指定します。 | 
     | frequency/interval | frequency は **Hour**、interval は **1** に、それぞれ設定されています。これは、出力スライスがパイプラインの開始時刻から終了時刻までの間 **1 時間ごと**に生成されることを表します (出力スライスは、開始時刻の前および終了時刻の後には生成されません)。  |
 

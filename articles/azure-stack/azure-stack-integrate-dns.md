@@ -1,29 +1,30 @@
 ---
-title: "Azure Stack とデータセンターの統合 - DNS"
-description: "Azure Stack の DNS をデータセンターの DNS と統合する方法について説明します。"
+title: Azure Stack とデータセンターの統合 - DNS
+description: Azure Stack の DNS をデータセンターの DNS と統合する方法について説明します。
 services: azure-stack
 author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
-ms.openlocfilehash: 5bdac2f3e6082f9449800fe2d4b303e2d59ade46
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+keywords: ''
+ms.openlocfilehash: bf412809f9d10296ad600e64abb6d870dbb88d3e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339680"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure Stack とデータセンターの統合 - DNS
-Azure Stack の外部から Azure Stack エンドポイント (`portal`、`adminportal`、`management`、`adminmanagement` など) にアクセスできるようにするには、Azure Stack DNS サービスを、Azure Stack で使用したい DNS ゾーンをホストする DNS サーバーと統合する必要があります。
+Azure Stack の外部から Azure Stack エンドポイント (**portal**、**adminportal**、**management**、**adminmanagement** など) にアクセスできるようにするには、Azure Stack DNS サービスを、Azure Stack で使用したい DNS ゾーンをホストする DNS サーバーと統合する必要があります。
 
 ## <a name="azure-stack-dns-namespace"></a>Azure Stack の DNS 名前空間
 Azure Stack をデプロイするときに、DNS に関するいくつかの重要な情報を入力する必要があります。
 
 
-|フィールド  |[説明]  |例|
+|フィールド  |説明  |例|
 |---------|---------|---------|
 |リージョン|Azure Stack のデプロイの地理的な場所。|`east`|
 |外部ドメイン名|Azure Stack のデプロイに使用したいゾーンの名前。|`cloud.fabrikam.com`|
@@ -114,7 +115,7 @@ Azure Stack DNS サーバーの FQDN は次のような形式をとります。
 
 この情報は、すべての Azure Stack のデプロイの `AzureStackStampDeploymentInfo.json` という名前のファイルの末尾にも作成されます。 このファイルは、デプロイ仮想マシンの `C:\CloudDeployment\logs` フォルダー内にあります。 Azure Stack のデプロイに使用された値がわからない場合は、ここから取得できます。
 
-デプロイ仮想マシンが使用不可またはアクセス不可になっている場合は、特権エンドポイントに接続して `Get-AzureStackInfo` PowerShell コマンドレットを実行することで値を取得できます。 特権エンドポイントの詳細については、(ここに記事のリンクを追加) をご覧ください。
+デプロイ仮想マシンが使用不可またはアクセス不可になっている場合は、特権エンドポイントに接続して `Get-AzureStackInfo` PowerShell コマンドレットを実行することで値を取得できます。 詳細については、[特権エンドポイント](azure-stack-privileged-endpoint.md)に関するページを参照してください。
 
 ## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Azure Stack への条件付き転送の設定
 

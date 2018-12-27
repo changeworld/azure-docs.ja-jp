@@ -1,26 +1,27 @@
 ---
-title: "Visual Studio を利用して仮想マシン スケール セットをデプロイする | Microsoft Docs"
-description: "Visual Studio とリソース マネージャーのテンプレートを利用して仮想マシン スケール セットをデプロイする"
+title: Visual Studio を利用して仮想マシン スケール セットをデプロイする | Microsoft Docs
+description: Visual Studio とリソース マネージャーのテンプレートを利用して仮想マシン スケール セットをデプロイする
 services: virtual-machine-scale-sets
-documentationcenter: 
-author: gatneil
+ms.custom: H1Hack27Feb2017
+ms.workload: na
+documentationcenter: ''
+author: mayanknayar
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
 ms.service: virtual-machine-scale-sets
-ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.author: negat
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 73454abc11a832a1b7f4131bf13699bd0a94edea
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.author: manayar
+ms.openlocfilehash: 3d472aeaae7e7f02eba58aadea1df042d6c0f27b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741430"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio による仮想マシン スケール セットの作成方法
 この記事では、Visual Studio の "リソース グループの配置" を使用して Azure 仮想マシン スケール セットをデプロイする方法について説明します。
@@ -81,7 +82,7 @@ Visual Studio で仮想マシン スケール セットをデプロイするに�
    
     ![Edit Parameters][edit_parameters]
 
-5. **[配置]**をクリックします。 **[出力]** ウィンドウにデプロイの進行状況が表示されます。 このアクションでは、**Deploy-AzureResourceGroup.ps1** スクリプトを実行しています。
+5. **[配置]** をクリックします。 **[出力]** ウィンドウにデプロイの進行状況が表示されます。 このアクションでは、**Deploy-AzureResourceGroup.ps1** スクリプトを実行しています。
    
    ![Output Window][output_window]
 

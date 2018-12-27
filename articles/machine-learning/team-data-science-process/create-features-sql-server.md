@@ -2,30 +2,26 @@
 title: SQL と Python を使用して SQL Server のデータの特徴を作成する | Microsoft Docs
 description: SQL Azure からのデータを処理する
 services: machine-learning
-documentationcenter: ''
-author: bradsev
+author: marktab
 manager: cgronlun
-editor: ''
-ms.assetid: bf1f4a6c-7711-4456-beb7-35fdccd46a44
+editor: cgronlun
 ms.service: machine-learning
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: bradsev
-ms.openlocfilehash: 5eaa7b5b30617cabedc7ed15a8fc7b174ecc68f2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 7178f368f7ede8918f316caa46234f63db6414ee
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445448"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>SQL と Python を使用して SQL Server のデータの特徴を作成する
 このドキュメントでは、Azure の SQL Server VM に保存されたデータから、アルゴリズムの学習効率を高めることのできる特徴を生成する方法について説明します。 このタスクを実行するには、SQL または Python のようなプログラミング言語を使用できます。 ここでは、両方の方法を説明しています。
 
-[!INCLUDE [cap-create-features-data-selector](../../../includes/cap-create-features-selector.md)]
-
-この **メニュー** は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。 このタスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
+このタスクは、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)の 1 ステップです。
 
 > [!NOTE]
 > 実用的な例として、[NYC タクシー データセット](http://www.andresmh.com/nyctaxitrips/)を使用し、エンドツーエンドのチュートリアルの「[IPython Notebook と SQL Server を使用した NYC データの処理](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)」というタイトルの IPNB を参照することができます。
@@ -35,7 +31,7 @@ ms.lasthandoff: 03/28/2018
 ## <a name="prerequisites"></a>前提条件
 この記事では、以下のことを前提としています。
 
-* Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
+* Azure のストレージ アカウントが作成されている。 手順については、「 [Azure ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)
 * データが SQL Server に格納されている。 格納されていない場合、データの移動手順については、「 [Azure Machine Learning 用にデータを Azure SQL Database に移動する](move-sql-azure.md) 」をご覧ください。
 
 ## <a name="sql-featuregen"></a>SQL を使用した特徴の生成
@@ -97,7 +93,7 @@ ms.lasthandoff: 03/28/2018
 
 > [!TIP]
 > お好みのプログラム言語でレコードを挿入できます。 書き込みの効率を向上させるために、データをチャンクで挿入する必要がある場合があります。 pyodbc を使用してそのようにする方法の例については、[こちら](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)を参照してください。
-> [BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)
+>  [BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)
 > 
 > 
 

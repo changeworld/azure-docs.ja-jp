@@ -1,28 +1,35 @@
-### <a name="prerequisites"></a>前提条件
-* Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
-* [Azure BLOB ストレージ アカウント](../articles/storage/common/storage-create-storage-account.md)。ストレージ アカウント名とアクセス キーが含まれます。 この情報は、Azure ポータルでストレージ アカウントのプロパティに表示されます。 Azure Storage の詳細については、[こちら](../articles/storage/common/storage-introduction.md)をご覧ください。
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: logic-apps
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 05/21/2018
+ms.author: estfan
+ms.custom: include file
+ms.openlocfilehash: 6e95d456c5eb981a29400057cfd58faa419060fc
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "34677918"
+---
+1. 接続情報の入力を求められたら、次の詳細を入力します。
 
-ロジック アプリで Azure Blob Storage アカウントを使用する前に、Azure Blob Storage アカウントに接続します。 これは、Azure Portal のロジック アプリ内で簡単に実行できます。  
+   *必須*
 
-次の手順に従って、Azure Blob Storage アカウントに接続します。  
+   | プロパティ | 値 | 説明 | 
+   |----------|-------|-------------| 
+   | 接続名 | <*connection-name*> | 作成する接続の名前 | 
+   | ストレージ アカウント | <*storage-account*> | リストからストレージ アカウントを選択します。 | 
+   ||| 
 
-1. ロジック アプリを作成します。 Logic Apps デザイナーで、トリガーを追加して、アクションを追加します。 ドロップダウン リストから **[Microsoft が管理している API を表示]** を選択し、検索ボックスに「blob」と入力します。 いずれかの操作を選択します。  
-   
-    ![Azure BLOB ストレージの接続の作成手順](./media/connectors-create-api-azureblobstorage/azureblobstorage-1.png)  
-2. これまで Azure Storage への接続を行っていない場合は、接続の詳細情報を求められます。   
-   
-    ![Azure BLOB ストレージの接続の作成手順](./media/connectors-create-api-azureblobstorage/connection-details.png)  
-3. ストレージ アカウントの詳細を入力します。 アスタリスクが付いているプロパティは必須です。
-   
-   | プロパティ | 詳細 |
-   | --- | --- |
-   | 接続名 * |接続の任意の名前を入力します。 |
-   | Azure ストレージ アカウント名 * |ストレージ アカウント名を入力します。 ストレージ アカウント名は、Azure ポータルのストレージのプロパティに表示されます。 |
-   | Azure Storage Account Access Key (Azure ストレージ アカウント アクセス キー) * |ストレージ アカウント キーを入力します。 アクセス キーは、Azure ポータルのストレージのプロパティに表示されます。 |
-   
-    これらの資格情報を使用して、接続するロジック アプリの承認と、データへのアクセスが行われます。 
-4. **[作成]**を選択します。
-5. 接続が作成されたことを確認します。 これで、ロジック アプリで他の手順に進むことができます。 
-   
-    ![Azure BLOB ストレージの接続の作成手順](./media/connectors-create-api-azureblobstorage/azureblobstorage-3.png)  
+   例: 
+
+   ![接続を作成する](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+
+2. 操作が完了したら、**[作成]** を選択します。
+
+3. 接続を作成した後で、[[Add a trigger]\( トリガーの追加\)](#add-trigger) または [[Add an action]\(アクションの追加\)](#add-action) を続けて実行します。
 

@@ -1,22 +1,23 @@
 ---
-title: "Azure Mobile Apps のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Azure App Service の Mobile Apps を使用して、Xamarin または Cordova でネイティブの iOS、Android、Windows アプリやクロスプラットフォーム アプリをビルドしてホストする方法について説明します。"
+title: Azure Mobile Apps のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Azure App Service の Mobile Apps を使用して、Xamarin または Cordova でネイティブの iOS、Android、Windows アプリやクロスプラットフォーム アプリをビルドしてホストする方法について説明します。
 services: app-service-mobile
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: app-service-mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
+ms.date: 05/25/2018
 ms.author: carolz
-ms.openlocfilehash: d602d833286d1906a2e9bd38d3e99d737146310b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5adf1f12bd2c7757bfde1408c52b0753bff64797
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389651"
 ---
 # <a name="mobile-apps-documentation"></a>Mobile Apps ドキュメント
 
@@ -30,7 +31,7 @@ Azure App Service の Mobile Apps を使用して、Xamarin または Cordova �
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/app-service-mobile.svg" alt="" />
+                            <img src="https://docs.microsoft.com/media/common/i_learn-about.svg" alt="Mobile Apps" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -48,7 +49,7 @@ Azure App Service の Mobile Apps を使用して、Xamarin または Cordova �
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
+                            <img src="https://docs.microsoft.com/media/common/i_video.svg" alt="Videos" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -66,7 +67,7 @@ Azure App Service の Mobile Apps を使用して、Xamarin または Cordova �
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="https://docs.microsoft.com/media/logos/logo_android.svg" alt="Android" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -84,7 +85,7 @@ Azure App Service の Mobile Apps を使用して、Xamarin または Cordova �
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="https://docs.microsoft.com/media/logos/logo_cordova.svg" alt="Cordova" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -102,7 +103,7 @@ Azure App Service の Mobile Apps を使用して、Xamarin または Cordova �
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="https://docs.microsoft.com/media/logos/logo_ios.svg" alt="iOS" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -120,7 +121,7 @@ Azure App Service の Mobile Apps を使用して、Xamarin または Cordova �
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="https://docs.microsoft.com/media/logos/logo_Windows.svg" alt="Windows" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -138,7 +139,7 @@ Azure App Service の Mobile Apps を使用して、Xamarin または Cordova �
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="https://docs.microsoft.com/media/common/i_mobileapp.svg" alt="Xamarin.Android" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -156,7 +157,7 @@ Azure App Service の Mobile Apps を使用して、Xamarin または Cordova �
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="https://docs.microsoft.com/media/logos/logo_xamarin.svg" alt="Xamarin.Forms" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -174,7 +175,7 @@ Azure App Service の Mobile Apps を使用して、Xamarin または Cordova �
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="https://docs.microsoft.com/media/common/i_mobile-app-developement.svg" alt="Xamarin.iOS" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -196,7 +197,7 @@ Azure App Service の Mobile Apps を使用して、Xamarin または Cordova �
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>言語</h3>
+                        <h3>Languages</h3>
                         <p><a href="https://msdn.microsoft.com/library/azure/dn961176.aspx">.NET バックエンド SDK</a></p>
                         <p><a href="https://azure.github.io/azure-mobile-apps-node/">Node.js バックエンド SDK</a></p>
                         <p><a href="https://azure.github.io/azure-mobile-apps-android-client/">Android クライアント SDK</a></p>

@@ -1,41 +1,37 @@
 ---
-title: "Azure Database Migration Service プレビューの概要 | Microsoft Docs"
-description: "多数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を提供する、Azure Database Migration Service の概要です。"
+title: Azure Database Migration Service の概要 | Microsoft Docs
+description: 多数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を提供する、Azure Database Migration Service の概要です。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
-manager: 
-ms.reviewer: 
+author: pochiraju
+ms.author: rajpo
+manager: ''
+ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 12/13/2017
-ms.openlocfilehash: 2aae105b7454209131db79c60d74740ce97c21ce
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.date: 10/19/2018
+ms.openlocfilehash: 053e571b6285cd405ea17f43fec1d3ea99732070
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235583"
 ---
-# <a name="what-is-the-azure-database-migration-service-preview"></a>Azure Database Migration Service プレビューとは何ですか
-Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、完全管理型のサービスです。 このサービスは現在、パブリック プレビューとして提供されており、次の点に重点を置いて開発が進められています。
+# <a name="what-is-the-azure-database-migration-service"></a>Azure Database Migration Service とは
+Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、フル マネージドのサービスです (オンライン移行)。
 
-- 信頼性とパフォーマンス。
-- ソースとターゲットのペアの反復的追加。
-- スムーズな移行を実現するための継続的な投資。
+## <a name="migrate-databases-to-azure-with-familiar-tools"></a>使い慣れたツールによる Azure へのデータベースの移行
+Azure Database Migration Service では、Microsoft の既存のツールやサービスの一部の機能が統合されています。 これにより、お客様には包括的な高可用性ソリューションが提供されます。 このサービスでは、[Data Migration Assistant](https://aka.ms/dma) を使用して評価レポートを生成します。評価レポートには、移行を実行する前に必要な変更について推奨される手順が記載されています。 必要な修正を実行するかどうかは、お客様の判断に委ねられます。 移行プロセスを開始する準備ができたら、Azure Database Migration Service によって、必要な手順がすべて実行されます。 プロセスは Microsoft によって決定されたベスト プラクティスを利用して実行されるので、お客様は安心して移行プロジェクトの完了を待つことができます。
 
-## <a name="use-familiar-tools"></a>使い慣れたツールの使用
-Azure Database Migration Service では、Microsoft の既存のツールやサービスの一部の機能が統合されています。  これにより、お客様には包括的な高可用性ソリューションが提供されます。 このサービスでは、[Data Migration Assistant](http://aka.ms/dma) を使用して評価レポートを生成します。評価レポートには、移行を実行する前に必要な変更について推奨される手順が記載されています。 必要な修正を実行するかどうかは、お客様の判断に委ねられます。 移行プロセスを開始する準備ができたら、Azure Database Migration Service によって、関連するすべての手順が実行されます。 プロセスは Microsoft によって決定されたベスト プラクティスを利用して実行されるので、お客様は安心して移行プロジェクトの完了を待つことができます。
+> [!NOTE]
+> Azure Database Migration Service を使用してオンライン移行を実行するには、Business Critical (プレビュー) 価格レベルに基づいてインスタンスを作成する必要があります。
 
-## <a name="regional-availability-during-public-preview"></a>パブリック プレビュー段階で使用できる地域
-現在、Azure Database Migration Service のパブリック プレビュー リリースは次のリージョンで使用できます。
-- 米国東部
-- 米国中南部
-- 米国西部
-- ブラジル南部
-- 西ヨーロッパ
-- 北ヨーロッパ
-- 東南アジア
-- インド西部
+## <a name="regional-availability"></a>リージョン別の提供状況
+現在、Azure Database Migration Service は次のリージョンで使用できます。
+
+![Azure Database Migration Service のリージョン別の提供状況](media\overview\dms-regional-availability1.png)
+
+Azure Database Migration Service のリージョン別の提供状況に関する最新情報については、Azure グローバル インフラストラクチャ サイトの「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 - [Azure Portal を使用して Azure Database Migration Service のインスタンスを作成します](quickstart-create-data-migration-service-portal.md)。

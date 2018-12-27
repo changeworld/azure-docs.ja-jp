@@ -1,24 +1,23 @@
 ---
-title: "Azure Functions のエラー処理に関するガイダンス | Microsoft Docs"
-description: "関数の実行時に発生するエラーの処理に関する一般的なガイダンスと、バインド固有のエラーのトピックへのリンクを提供します。"
+title: Azure Functions のエラー処理に関するガイダンス | Microsoft Docs
+description: 関数の実行時に発生するエラーの処理に関する一般的なガイダンスと、バインド固有のエラーのトピックへのリンクを提供します。
 services: functions
-cloud: 
-documentationcenter: 
-author: ggailey777
-manager: cfowler
-ms.assetid: 
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: multiple
+cloud: ''
+documentationcenter: ''
+author: craigshoemaker
+manager: jeconnoc
+ms.assetid: ''
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/01/2018
-ms.author: glenga; cfowler
-ms.openlocfilehash: 82cdc62b3070811186583fdf1ce5e6ce421ebc34
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: cshoe
+ms.openlocfilehash: bf54d312de5625a7fa44cea4d5107e83cf15583c
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248253"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions のエラー処理
 

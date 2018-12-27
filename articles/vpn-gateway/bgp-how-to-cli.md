@@ -1,29 +1,23 @@
 ---
-title: "Azure VPN ゲートウェイ: Resource Manager と CLI で BGP を構成する | Microsoft Docs"
-description: "この記事では、Azure Resource Manager と CLI を使用して Azure VPN ゲートウェイで BGP を構成する方法を説明します。"
+title: 'Azure VPN ゲートウェイ: Resource Manager と CLI で BGP を構成する | Microsoft Docs'
+description: この記事では、Azure Resource Manager と CLI を使用して Azure VPN ゲートウェイで BGP を構成する方法を説明します。
 services: vpn-gateway
 documentationcenter: na
-author: cherylmc
-manager: timlt
-editor: 
-tags: azure-resource-manager
-ms.assetid: 
+author: yushwang
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/25/2017
-ms.author: cherylmc
-ms.openlocfilehash: 98cd606ce930624ec5c591ffd8f13e0feae1a6c4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 09/25/2018
+ms.author: yushwang
+ms.openlocfilehash: f0367a360de97d3935c7fa8de9f3dafa6555811e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471358"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>CLI を使用して Azure VPN ゲートウェイで BGP を構成する方法
 
-この記事では、Azure Resource Manager デプロイメント モデルと Azure CLI を使用して、クロスプレミスのサイト間 (S2S) VPN 接続および VNet 間接続 (仮想ネットワーク間の接続) 上で BGP を有効にする方法について説明します。
+この記事では、Azure Resource Manager デプロイ モデルと Azure CLI を使用して、クロスプレミスのサイト間 (S2S) VPN 接続および VNet 間接続 (仮想ネットワーク間の接続) 上で BGP を有効にする方法について説明します。
 
 ## <a name="about-bgp"></a>BGP について
 
@@ -54,7 +48,7 @@ BGP の利点の詳しい説明と、BGP を使用する場合の技術面の要
 
 ### <a name="before-you-begin"></a>開始する前に
 
-最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](/cli/azure/install-azure-cli)」および「[Azure CLI 2.0 を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
+最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」および「[Azure CLI を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
 
 ### <a name="step-1-create-and-configure-testvnet1"></a>手順 1: TestVNet1 を作成し、構成する
 
@@ -70,7 +64,7 @@ BGP の利点の詳しい説明と、BGP を使用する場合の技術面の要
 az group create --name TestBGPRG1 --location eastus
 ```
 
-#### <a name="3-create-testvnet1"></a>3.TestVNet1 を作成する
+#### <a name="3-create-testvnet1"></a>手順 3.TestVNet1 を作成する
 
 以下の例では、TestVNet1 という名前の仮想ネットワークと 3 つのサブネット(GatewaySubnet、FrontEnd、BackEnd) を作成します。 値を代入するときは、ゲートウェイ サブネットの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。
 
@@ -106,7 +100,7 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
 az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP -g TestBGPRG1 --vnet TestVNet1 --gateway-type Vpn --sku HighPerformance --vpn-type RouteBased --asn 65010 --no-wait
 ```
 
-#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3.Azure BGP ピア IP アドレスを取得する
+#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>手順 3.Azure BGP ピア IP アドレスを取得する
 
 ゲートウェイが作成されたら、Azure VPN ゲートウェイの BGP ピア IP アドレスを取得する必要があります。 オンプレミスの VPN デバイスの BGP ピアとして VPN ゲートウェイを構成するには、このアドレスが必要です。
 
@@ -195,7 +189,7 @@ az network vnet-gateway show -n VNet1GW -g TestBGPRG1
 az network local-gateway show -n Site5 -g TestBGPRG5
 ```
 
-#### <a name="3-create-the-testvnet1-to-site5-connection"></a>3.TestVNet1-to-Site5 接続を作成する
+#### <a name="3-create-the-testvnet1-to-site5-connection"></a>手順 3.TestVNet1-to-Site5 接続を作成する
 
 この手順では、TestVNet1 から Site5 への接続を作成します。 既に説明したように、同じ Azure VPN ゲートウェイで BGP 接続と BGP 以外の接続の両方を混在させることはできません。 接続プロパティで BGP を有効にしない限り、両方のゲートウェイで BGP パラメーターが既に構成されていても、Azure はこの接続の BGP を有効にしません。 サブスクリプション ID を自分の ID に置換します。
 
@@ -251,7 +245,7 @@ az network vnet subnet create --vnet-name TestVNet2 -n BackEnd -g TestBGPRG2 --a
 az network vnet subnet create --vnet-name TestVNet2 -n GatewaySubnet -g TestBGPRG2 --address-prefix 10.22.255.0/27
 ```
 
-#### <a name="3-create-the-public-ip-address"></a>3.パブリック IP アドレスの作成
+#### <a name="3-create-the-public-ip-address"></a>手順 3.パブリック IP アドレスの作成
 
 パブリック IP アドレスを要求します。 仮想ネットワーク用に作成した VPN ゲートウェイにパブリック IP アドレスが割り当てられます。
 
@@ -289,7 +283,7 @@ az network vnet-gateway show -n VNet1GW -g TestBGPRG1
 az network vnet-gateway show -n VNet2GW -g TestBGPRG2
 ```
 
-#### <a name="3-create-the-connections"></a>3.接続を作成する
+#### <a name="3-create-the-connections"></a>手順 3.接続を作成する
 
 TestVNet1 から TestVNet2 への接続と、TestVNet2 から TestVNet1 への接続を作成します。 サブスクリプション ID を自分の ID に置換します。
 
@@ -308,6 +302,6 @@ az network vpn-connection create -n VNet2ToVNet1 -g TestBGPRG2 --vnet-gateway1 /
 
 これらの手順を完了すると、数分後に接続が確立します。 BGP ピアリング セッションは、VNet 間の接続が完了すると有効になります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。

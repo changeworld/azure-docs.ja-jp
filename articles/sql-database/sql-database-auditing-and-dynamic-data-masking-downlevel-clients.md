@@ -2,18 +2,22 @@
 title: Azure SQL Database でのテーブル監査、TDS リダイレクト、IP エンドポイント | Microsoft Docs
 description: Azure SQL Database でテーブル監査を実装する場合の、監査、TDS リダイレクト、IP エンドポイント変更について説明します。
 services: sql-database
-author: giladm
-manager: craigg
 ms.service: sql-database
-ms.custom: security
-ms.topic: article
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: ronitr
+ms.author: ronitr
+ms.reviewer: vanto
+manager: craigg
 ms.date: 04/01/2018
-ms.author: giladm
-ms.openlocfilehash: d1114d6c5073aa6e60d6fb700989fb3d205ee914
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 41509c1f35d42a1e8558299b4244ad515c36ec17
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816057"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database - テーブル監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更
 

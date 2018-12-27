@@ -1,6 +1,6 @@
 ---
-title: "Windows 仮想マシンのヘルプ ドキュメント | Microsoft Docs"
-description: "Azure Portal 内にある Windows 仮想マシンの概要に関するヘルプ コンテンツ"
+title: Windows 仮想マシンのヘルプ ドキュメント | Microsoft Docs
+description: Azure Portal 内にある Windows 仮想マシンの概要に関するヘルプ コンテンツ
 services: virtual-machines-windows
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24057690"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows 仮想マシンのドキュメント
 

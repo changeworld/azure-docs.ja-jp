@@ -1,49 +1,50 @@
 ---
-title: "Azure Cloud Shell の Bash でファイルを永続化する | Microsoft Docs"
-description: "Azure Cloud Shell の Bash でファイルを永続化する方法についてのチュートリアルです。"
+title: Azure Cloud Shell の Bash でファイルを永続化する | Microsoft Docs
+description: Azure Cloud Shell の Bash でファイルを永続化する方法についてのチュートリアルです。
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: d8188634846a7ce75b5294cb3012069d9eafafc1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 606b36be4a2bbeff8dd226f41341d60e23f0d988
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163279"
 ---
-[!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
+[!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
-## <a name="how-bash-in-cloud-shell-storage-works"></a>Cloud Shell ストレージの Bash の仕組み 
-Cloud Shell の Bash は、次の両方の方法を使用してファイルを永続化します。 
+## <a name="how-cloud-shell-storage-works"></a>Cloud Shell のストレージのしくみ 
+Cloud Shell は、次の両方の方法を使用してファイルを永続化します。 
 * `$Home` ディレクトリのディスク イメージを作成してディレクトリ内のすべてのコンテンツを永続化します。 このディスク イメージは、指定されたファイル共有の `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img` に `acc_<User>.img` として保存され、変更が自動的に反映されます。 
 * ファイル共有を直接操作できるように、指定されたファイル共有を `$Home` ディレクトリに `clouddrive` としてマウントします。 `/Home/<User>/clouddrive` は `fileshare.storage.windows.net/fileshare` にマッピングされます。
  
 > [!NOTE]
 > SSH キーなど、`$Home` ディレクトリ内のすべてのファイルが、マウントされたファイル共有に格納されたユーザー ディスク イメージに永続化されます。 `$Home` ディレクトリおよびマウントされたファイル共有への情報の保存時に、ベスト プラクティスを適用してください。
 
-## <a name="use-the-clouddrive-command"></a>`clouddrive` コマンドを使用する
+## <a name="bash-specific-commands"></a>Bash 固有のコマンド
+
+### <a name="use-the-clouddrive-command"></a>`clouddrive` コマンドを使用する
 Cloud Shell の Bash では、`clouddrive` というコマンドを実行できます。このコマンドを使うと、Cloud Shell にマウントされているファイル共有を手動で更新できます。
 !["clouddrive" コマンドを実行する](media/persisting-shell-storage/clouddrive-h.png)
 
-## <a name="mount-a-new-clouddrive"></a>新しい clouddrive のマウント
+### <a name="mount-a-new-clouddrive"></a>新しい clouddrive のマウント
 
-### <a name="prerequisites-for-manual-mounting"></a>手動マウントの前提条件
+#### <a name="prerequisites-for-manual-mounting"></a>手動マウントの前提条件
 `clouddrive mount` コマンドを使用して、Cloud Shell と関連付けられているファイル共有を更新することができます。
 
-既存のファイル共有をマウントする場合、ストレージ アカウントは次の条件を満たす必要があります。
-* ファイル共有をサポートするローカル冗長ストレージまたは geo 冗長ストレージ。
-* 自分の割り当てリージョンに存在すること。 オンボーディング時に、自分に割り当てられているリージョンが、リソース グループ名 `cloud-shell-storage-<region>` として表示されます。
+既存のファイル共有をマウントする場合、ストレージ アカウントは選択した Cloud Shell リージョンにある必要があります。 場所を取得するには、Bash から `env` を実行し、`ACC_LOCATION` をチェックします。
 
-### <a name="the-clouddrive-mount-command"></a>clouddrive mount コマンド
+#### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` コマンド
 
 > [!NOTE]
 > 新しいファイル共有をマウントすると、新しいユーザー イメージが `$Home` ディレクトリ用に作成されます。 前回の `$Home` イメージは、前のファイル共有に保持されます。
@@ -58,7 +59,7 @@ clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareNam
 
 !["clouddrive mount" コマンドを実行する](media/persisting-shell-storage/mount-h.png)
 
-## <a name="unmount-clouddrive"></a>clouddrive のマウント解除
+### <a name="unmount-clouddrive"></a>clouddrive のマウント解除
 Cloud Shell にマウントされたファイル共有は、いつでもマウントを解除することができます。 Cloud Shell はマウントされたファイル共有を使う必要があるため、次回のセッション時に別のファイル共有を作成してマウントするように求められます。
 
 1. `clouddrive unmount` を実行します。
@@ -71,7 +72,7 @@ Cloud Shell にマウントされたファイル共有は、いつでもマウ�
 > [!WARNING]
 > このコマンドを実行してもリソースは削除されませんが、Cloud Shell にマップされているリソース グループ、ストレージ アカウント、またはファイル共有を手動で削除すると、ファイル共有内にある `$Home` ディレクトリ ディスク イメージとすべてのファイルは削除されます。 この削除操作は元に戻すことができません。
 
-## <a name="list-clouddrive"></a>`clouddrive` の一覧取得
+### <a name="list-clouddrive"></a>`clouddrive` の一覧取得
 `clouddrive` としてマウントされているファイル共有を検出するには、`df` コマンドを実行します。 
 
 clouddrive へのファイル パスの URL に、お使いのストレージ アカウント名とファイル共有が表示されます。 たとえば、`//storageaccountname.file.core.windows.net/filesharename` のように指定します。
@@ -87,10 +88,22 @@ shm                                                    65536       0      65536 
 //mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
 justin@Azure:~$
 ```
+## <a name="powershell-specific-commands"></a>PowerShell 固有のコマンド
 
-[!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
+### <a name="list-clouddrive-azure-file-shares"></a>`clouddrive` Azure ファイル共有の一覧表示
+`Get-CloudDrive` コマンドレットは、Cloud Shell の `clouddrive` によって現在マウントされている Azure ファイル共有の情報を取得します。 <br>
+![Get-CloudDrive の実行](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
+
+### <a name="unmount-clouddrive"></a>`clouddrive` のマウントを解除する
+Cloud Shell にマウントされた Azure ファイル共有は、いつでもマウントを解除することができます。 Azure ファイル共有が削除された場合は、次回のセッション時に新しい Azure ファイル共有を作成してマウントするように求められます。
+
+`Dismount-CloudDrive` コマンドレットは、現在のストレージ アカウントから Azure ファイル共有をマウント解除します。 `clouddrive` をマウント解除すると、現在のセッションが終了します。 次のセッションでは、新しい Azure ファイル共有を作成してマウントするように求められます。
+![Dismount-CloudDrive の実行](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
+
+[!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
 ## <a name="next-steps"></a>次の手順
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
+[Cloud Shell の PowerShell のクイック スタート](quickstart-powershell.md) <br>
 [Microsoft Azure Files ストレージについて](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
 [ストレージのタグについて](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

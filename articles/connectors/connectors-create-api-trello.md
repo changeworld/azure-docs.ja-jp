@@ -1,46 +1,77 @@
 ---
-title: Azure Logic Apps での Trello コネクタ | Microsoft Docs
-description: Azure App Service を使用してロジック アプリを作成します。 Trello を使用すると、職場でも家庭でも、すべてのプロジェクトを把握できます。  プロジェクトを管理したり何かを整理するための、簡単で、自由度が高く、柔軟性があり、視覚化された方法です。  Trello に接続してボード、一覧、およびカードを管理する
+title: Azure Logic Apps から Trello に接続する | Microsoft Docs
+description: Azure Logic Apps を使用して、Trello プロジェクトのリスト、ボード、およびカードの監視と管理を行うタスクとワークフローを自動化します
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: anneta
-editor: ''
-tags: connectors
-ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 6773ddd1da5c013b7a0ca7d2855806d606720469
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 31357fa313cfa31c0f8a90c0f7722f627e4394d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229334"
 ---
-# <a name="get-started-with-the-trello-connector"></a>Trello コネクタの使用
-Trello を使用すると、職場でも家庭でも、すべてのプロジェクトを把握できます。  プロジェクトを管理したり何かを整理するための、簡単で、自由度が高く、柔軟性があり、視覚化された方法です。  Trello に接続すると、ボード、一覧、およびカードを管理できます。
+# <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Azure Logic Apps を使用して Trello の監視と管理を行う
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
+Azure Logic Apps と Trello コネクタを使用して、Trello のリスト、カード、ボード、チーム メンバーなどを監視および管理する、次のような自動化されたタスクとワークフローを作成することができます。
 
-## <a name="create-a-connection-to-trello"></a>Trello への接続を作成する
-Trello を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
+* 新しいカードがボードおよびリストに追加されるのを監視します。 
+* ボード、カード、およびリストを作成、取得、および管理します。
+* カードにコメントおよびメンバーを追加します。
+* ボード、ボードのラベル、ボード上のカード、カードのコメント、カードのメンバー、チームのメンバー、および自分がメンバーであるチームを一覧表示します。 
+* チームを取得します。
 
-| プロパティ | 必須 | [説明] |
-| --- | --- | --- |
-| トークン |[はい] |Trello 資格情報を提供します |
+Trello アカウントから応答を取得し、その出力を他のアクションが使用できるようにするトリガーを使用できます。 Trello アカウントでタスクを実行するアクションを使用できます。 他のアクションに Trello アクションからの出力を使用させることもできます。 たとえば、新しいカードがボードまたはリストに追加されたときに、Slack コネクタでメッセージを送信することができます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
-接続を作成したら、その接続を使用してアクションを実行し、トリガーをリッスンできます。
+## <a name="prerequisites"></a>前提条件
 
-> [!INCLUDE [Steps to create a connection to Trello](../../includes/connectors-create-api-trello.md)]
-> 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+* Trello アカウントとユーザー資格情報
 
-[コネクタの詳細](/connectors/trello/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+  接続を作成して Trello アカウントにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。
 
-## <a name="more-connectors"></a>その他のコネクタ
-[API リスト](apis-list.md)に戻ります。
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
+
+* Trello アカウントにアクセスするロジック アプリ。 Trello トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 Trello アクションを使用するには、**Recurrence** トリガーなどのトリガーでロジック アプリを開始します。
+
+## <a name="connect-to-trello"></a>Trello に接続する
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+
+1. 空のロジック アプリの場合、検索ボックスに、フィルターとして「trello」と入力します。 トリガーの一覧で、目的のトリガーを選択します。 
+
+   または
+
+   既存のロジック アプリの場合、アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+   検索ボックスに、フィルターとして「trello」と入力します。 
+   アクションの一覧で、目的のアクションを選択します。
+
+   ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
+   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
+
+1. Trello へのサインインを求められたら、ロジック アプリのアクセスを承認し、サインインします。
+
+1. 選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/trello/)を参照してください。
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
+
+## <a name="next-steps"></a>次の手順
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

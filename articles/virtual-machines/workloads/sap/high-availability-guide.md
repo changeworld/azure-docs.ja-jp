@@ -4,7 +4,7 @@ description: Azure Virtual Machines (VM) 上の SAP NetWeaver の高可用性ガ
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2216a2d5c30e95fcd02b4df56305153335511e0
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c6dddbdbc781869ef6a3c1a0a707eeb83941b92a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239323"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
 
@@ -366,7 +367,7 @@ ms.lasthandoff: 03/09/2018
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
-[resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
+[resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam (SAP 製品の可用性マトリックス)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -420,12 +421,12 @@ ms.lasthandoff: 03/09/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
 [virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
-[virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
+[virtual-networks-nsg]:../../../virtual-network/security-overview.md
 [virtual-networks-reserved-private-ip]:../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md
 [virtual-networks-static-private-ip-arm-pportal]:../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
 [virtual-networks-udr-overview]:../../../virtual-network/virtual-networks-udr-overview.md
@@ -440,10 +441,10 @@ ms.lasthandoff: 03/09/2018
 
 Azure Virtual Machines は、最短時間で、時間のかかる調達サイクルなしに、コンピューティング リソース、ストレージ リソース、およびネットワーク リソースを入手する必要のある組織向けのソリューションです。 Azure Virtual Machines を使用すると、SAP NetWeaver ベースの ABAP、Java、ABAP+Java スタックなどの従来のアプリケーションをデプロイできます。 オンプレミスのリソースを追加することなく、信頼性と可用性を高めます。 Azure Virtual Machines はクロスプレミス接続をサポートしているので、Azure Virtual Machines を組織のオンプレミスのドメイン、プライベート クラウド、SAP システム ランドスケープに統合できます。
 
-この記事では、Azure Resource Manager デプロイメント モデルを使用して Azure に高可用性 SAP システムをデプロイする手順について説明します。 主要なタスクは次のとおりです。
+この記事では、Azure Resource Manager デプロイ モデルを使用して Azure に高可用性 SAP システムをデプロイする手順について説明します。 主要なタスクは次のとおりです。
 
 * 「[リソース][sap-ha-guide-2]」セクションの一覧で、適切な SAP Note とインストール ガイドを探します。 この記事は SAP インストール ドキュメントと SAP Note を補完するものであり、これらは特定のプラットフォームに SAP ソフトウェアをインストールしてデプロイするときの主要なリソースです。
-* Azure Resource Manager デプロイメント モデルと Azure クラシック デプロイメント モデルの違いについて理解します。
+* Azure Resource Manager デプロイ モデルと Azure クラシック デプロイ モデルの違いについて理解します。
 * Azure のデプロイに適したモデルを選択できるように、Windows Server フェールオーバー クラスタリングのクォーラム モードについて理解します。
 * Azure サービスでの Windows Server フェールオーバー クラスタリングの共有記憶域について理解します。
 * Advanced Business Application Programming (ABAP) SAP Central Services (ASCS)/SAP Central Services (SCS) やデータベース管理システム (DBMS) のような単一障害点コンポーネントおよび SAP アプリケーション サーバーのような冗長コンポーネントを Azure で保護するために役立つ方法を理解します。
@@ -484,7 +485,7 @@ Azure での SAP のデプロイについては、以下の記事で説明され
 一般的な既定の制限事項や上限など、[Azure サブスクリプションの制限事項][azure-subscription-service-limits-subscription]について理解しておいてください。
 
 ## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>Azure Resource Manager デプロイメント モデルと Azure クラシック デプロイメント モデルでの高可用性 SAP
-Azure Resource Manager デプロイメント モデルと Azure クラシック デプロイメント モデルでは、次の点が異なります。
+Azure Resource Manager デプロイ モデルと Azure クラシック デプロイ モデルでは、次の点が異なります。
 
 - リソース グループ
 - Azure リソース グループに対する Azure 内部ロード バランサーの依存関係
@@ -495,7 +496,7 @@ Azure Resource Manager では、リソース グループを使用して Azure �
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a> Azure リソース グループに対する Azure 内部ロード バランサーの依存関係
 
-Azure クラシック デプロイメント モデルでは、Azure 内部ロード バランサー (Azure Load Balancer サービス) とクラウド サービス グループとの間に依存関係があります。 各内部ロード バランサーには、1 つのクラウド サービス グループが必要です。
+Azure クラシック デプロイ モデルでは、Azure 内部ロード バランサー (Azure Load Balancer サービス) とクラウド サービス グループとの間に依存関係があります。 各内部ロード バランサーには、1 つのクラウド サービス グループが必要です。
 
 Azure Resource Manager では、Azure Load Balancer を使うために Azure リソース グループは必要ありません。 環境は、よりシンプルで柔軟性が高くなります。
 
@@ -503,10 +504,10 @@ Azure Resource Manager では、Azure Load Balancer を使うために Azure リ
 
 Azure Resource Manager では、1 つのクラスターに複数の SAP システム識別子 (SID) ASCS/SCS インスタンスをインストールすることができます。 各 Azure 内部ロード バランサーで複数の IP アドレスがサポートされているため、マルチ SID インスタンスが可能になります。
 
-Azure クラシック デプロイメント モデルを使用するには、Azure での SAP NetWeaver に関する [Azure 上の Windows Server フェールオーバー クラスターと SIOS DataKeeper を使用した SAP ASCS/SCS インスタンスのクラスタリング](http://go.microsoft.com/fwlink/?LinkId=613056)のドキュメントに記載されている手順に従う必要があります。
+Azure クラシック デプロイ モデルを使用するには、Azure での SAP NetWeaver に関する [Azure 上の Windows Server フェールオーバー クラスターと SIOS DataKeeper を使用した SAP ASCS/SCS インスタンスのクラスタリング](https://go.microsoft.com/fwlink/?LinkId=613056)のドキュメントに記載されている手順に従う必要があります。
 
 > [!IMPORTANT]
-> SAP のインストールには、Azure Resource Manager デプロイメント モデルを使用することを強くお勧めします。 クラシック デプロイメント モデルにはない多くの利点があります。 Azure の[デプロイメント モデル][virtual-machines-azure-resource-manager-architecture-benefits-arm]の詳細を参照してください。   
+> SAP のインストールには、Azure Resource Manager デプロイ モデルを使用することを強くお勧めします。 クラシック デプロイ モデルにはない多くの利点があります。 Azure の[デプロイメント モデル][virtual-machines-azure-resource-manager-architecture-benefits-arm]の詳細を参照してください。   
 >
 >
 
@@ -628,7 +629,7 @@ DBMS は、SAP システムでの単一接続点でもあります。 高可用�
 
 _**図 7:** 高可用性の SAP DBMS と SQL Server Always On の例_
 
-Azure Resource Manager デプロイメント モデルを使用した Azure での SQL Server のクラスタリングの詳細については、次の記事を参照してください。
+Azure Resource Manager デプロイ モデルを使用した Azure での SQL Server のクラスタリングの詳細については、次の記事を参照してください。
 
 * [Azure VM での AlwaysOn 可用性グループの手動構成 - Resource Manager][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
 * [Azure の Always On 可用性グループに使用する Azure 内部ロード バランサーの構成][virtual-machines-windows-portal-sql-alwayson-int-listener]
@@ -801,9 +802,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
   -  **System Availability (システムの可用性)**。 **[HA]** を選択します。
   -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
   -  **New Or Existing Subnet (新規または既存のサブネット)**。 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを設定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、**[existing (既存)]** を選択します。
-  -  **Subnet Id (サブネット ID)**。仮想マシンを接続するサブネットの ID を設定します。 仮想マシンをオンプレミス ネットワークに接続するには、仮想プライベート ネットワーク (VPN) または ExpressRoute 仮想ネットワークのサブネットを選択します。 ID は、通常、次のようになります。
-
-   /subscriptions/<*サブスクリプション ID*>/resourceGroups/<*リソース グループ名*>/providers/Microsoft.Network/virtualNetworks/<*仮想ネットワーク名*>/subnets/<*サブネット名*>
+  -  **Subnet Id (サブネット ID)**。VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/<*サブスクリプション ID*>/resourceGroups/<*リソース グループ名*>/providers/Microsoft.Network/virtualNetworks/<*仮想ネットワーク名*>/subnets/<*サブネット名*> のようになります
 
 テンプレートは 1 つの Azure Load Balancer インスタンスをデプロイし、これにより、複数の SAP システムがサポートされます。
 
@@ -1047,23 +1046,23 @@ Azure Load Balancer は、設定されている時間 (アイドル タイムア
 
 SAP ASCS/SCS インスタンスの両方のクラスター ノードでレジストリ エントリを追加するには、まず、SAP ASCS/SCS の両方の Windows クラスター ノードに次の Windows レジストリ エントリを追加します。
 
-| パス | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 変数名 |`KeepAliveTime` |
 | 変数の型 |REG_DWORD (Decimal) |
 | 値 |120000 |
-| ドキュメントへのリンク |[https://technet.microsoft.com/en-us/library/cc957549.aspx](https://technet.microsoft.com/en-us/library/cc957549.aspx) |
+| ドキュメントへのリンク |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 _**表 3:** 第 1 の TCP/IP パラメーターの変更_
 
 次に、SAP ASCS/SCS の両方の Windows クラスター ノードで次の Windows レジストリ エントリを追加します。
 
-| パス | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 変数名 |`KeepAliveInterval` |
 | 変数の型 |REG_DWORD (Decimal) |
 | 値 |120000 |
-| ドキュメントへのリンク |[https://technet.microsoft.com/en-us/library/cc957548.aspx](https://technet.microsoft.com/en-us/library/cc957548.aspx) |
+| ドキュメントへのリンク |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 _**表 4:** 第 2 の TCP/IP パラメーターの変更_
 
@@ -1233,7 +1232,7 @@ SAP ASCS/SCS インスタンスの Windows Server フェールオーバー ク�
 
   _**図 38:** クラスターを再構成したことを確認する_
 
-Windows フェールオーバー クラスターが正常にインストールされた後、フェールオーバーの検出を Azure での条件に合わせるように、いくつかのしきい値を変更する必要があります。 変更するパラメーターは、ブログ (https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/) に記載されています。 ASCS/SCS 用に Windows クラスター構成を構築する 2 つの VM が同じサブネットにあることを前提とした場合、次のパラメーターを次の値に変更する必要があります。
+Windows フェールオーバー クラスターが正常にインストールされた後、フェールオーバーの検出を Azure での条件に合わせるように、いくつかのしきい値を変更する必要があります。 変更されるパラメーターは、 https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/のブログに記載されています。 ASCS/SCS 用に Windows クラスター構成を構築する 2 つの VM が同じサブネットにあることを前提とした場合、次のパラメーターを次の値に変更する必要があります。
 - SameSubNetDelay = 2
 - SameSubNetThreshold = 15
 

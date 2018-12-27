@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights を使用してライブ ASP.NET Web アプリを監視する | Microsoft Docs"
-description: "Web サイトを再デプロイせずにそのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。"
+title: Azure Application Insights を使用してライブ ASP.NET Web アプリを監視する | Microsoft Docs
+description: Web サイトを再デプロイせずにそのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,21 +10,21 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 05/05/2017
+ms.topic: conceptual
+ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 869ea96072b1492db929c16cfb1e22b0c96bca7d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 275eb5f32def94fa974f0cb180b9de9dcedf1a00
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230922"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Application Insights を使用した実行時の Web アプリのインストルメント化
 
-
 Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 オンプレミスの IIS サーバーでアプリがホストされている場合は、Status Monitor をインストールします。 アプリが Azure Web アプリの場合や Azure VM で実行されている場合は、Azure コントロール パネルから Application Insights の監視を有効にすることができます  ([ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化については、個別の記事もあります)。[Microsoft Azure](http://azure.com) サブスクリプションが必要です。
 
-![サンプルのグラフ](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
+![App Insights の概要グラフ (失敗した要求、サーバー応答時間、サーバー要求に関する情報) のスクリーンショット](./media/app-insights-monitor-performance-live-website-now/overview-graphs.png)
 
 Application Insights を .NET Web アプリケーションに適用する方法には、次の 3 つがあります。
 
@@ -36,14 +36,14 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 
 |  | ビルド時 | 実行時 |
 | --- | --- | --- |
-| 要求と例外 |はい |はい |
-| [より詳細な例外](app-insights-asp-net-exceptions.md) | |はい |
+| 要求と例外 |[はい] |[はい] |
+| [より詳細な例外](app-insights-asp-net-exceptions.md) | |[はい] |
 | [依存関係の診断](app-insights-asp-net-dependencies.md) |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細: 結果コード、SQL コマンド テキスト、HTTP 動詞|
-| [システム パフォーマンス カウンター](app-insights-performance-counters.md) |はい |はい |
-| [カスタム テレメトリの API][api] |あり |いいえ |
-| [トレース ログ統合](app-insights-asp-net-trace-logs.md) |あり |いいえ |
-| [ページ ビューとユーザー データ](app-insights-javascript.md) |あり |いいえ |
-| コードのリビルドが必要 |あり | いいえ |
+| [システム パフォーマンス カウンター](app-insights-performance-counters.md) |[はい] |[はい] |
+| [カスタム テレメトリの API][api] |[はい] |いいえ  |
+| [トレース ログ統合](app-insights-asp-net-trace-logs.md) |[はい] |いいえ  |
+| [ページ ビューとユーザー データ](app-insights-javascript.md) |[はい] |いいえ  |
+| コードのリビルドが必要 |[はい] | いいえ  |
 
 
 ## <a name="monitor-a-live-azure-web-app"></a>ライブ Azure Web アプリの監視
@@ -57,7 +57,7 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 
     ![Application Insights のクリック](./media/app-insights-monitor-performance-live-website-now/azure-web-view-more.png)
 
-[クラウドと VM アプリの監視](app-insights-azure.md)
+[クラウドと VM アプリの監視](app-insights-overview.md)
 
 ### <a name="enable-client-side-monitoring-in-azure"></a>Azure でクライアント側の監視を有効にする
 
@@ -78,7 +78,7 @@ Application Insights JavaScript SDK が各 Web ページに挿入されるよう
 アプリが IIS サーバーでホストされている場合は、Status Monitor を使用して Application Insights を有効にします。
 
 1. IIS Web サーバーで、管理者の資格情報を使用してサインインします。
-2. Application Insights Status Monitor がまだインストールされていない場合は、[Status Monitor インストーラー](http://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードして実行します (または [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) を実行し、Application Insights Status Monitor を検索します)。
+2. Application Insights Status Monitor がまだインストールされていない場合は、[Status Monitor インストーラー](https://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードして実行します (または [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) を実行し、Application Insights Status Monitor を検索します)。
 3. Status Monitor で、監視するインストール済みの Web アプリケーションまたは Web サイトを選択します。 Azure の資格情報でサインインします。
 
     Application Insights ポータルで結果を表示するときに使用するリソースを構成します。 (通常は、新しいリソースを作成するのが最良です。 このアプリに対して [Web テスト][availability]や [クライアントの監視][client]を既に設定している場合は、既存のリソースを選択します。) 

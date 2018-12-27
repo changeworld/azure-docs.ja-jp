@@ -1,5 +1,5 @@
 ---
-title: .NET Core Web アプリの作成と App Service on Linux へのデプロイ | Microsoft Docs
+title: Linux での .NET Core Web アプリの作成 - Azure App Service | Microsoft Docs
 description: App Service on Linux で、初めての .NET Core の Hello World アプリを数分でデプロイします。
 keywords: Azure App Service, Web アプリ, .NET, コア, Linux, OSS
 services: app-service
@@ -13,14 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: linux
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/30/2017
+ms.date: 04/11/2018
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 0f40d2d953f028f2014c88a22f9ad31fed705b76
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: seodec18
+ms.openlocfilehash: f074c6184652ced133a7253bee3cc7a8a556c574
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251795"
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>App Service on Linux での .NET Core Web アプリの作成
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 03/16/2018
 このクイック スタートを完了するには、以下が必要です。
 
 * <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
-* <a href="https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.1.6-sdk-download.md" target="_blank">.NET Core SDK 1.1 をインストールする</a>
+* <a href="https://www.microsoft.com/net/core/" target="_blank">.NET Core をインストールする</a>
 
 ## <a name="create-the-app-locally"></a>アプリをローカルで作成する
 
@@ -60,10 +61,11 @@ dotnet new web
 
 ## <a name="run-the-app-locally"></a>アプリをローカルで実行する
 
+アプリケーションをローカルで実行すると、アプリケーションを Azure にデプロイするとどう表示されるかを把握できます。 
+
 NuGet パッケージを復元し、アプリを実行します。
 
 ```bash
-dotnet restore
 dotnet run
 ```
 

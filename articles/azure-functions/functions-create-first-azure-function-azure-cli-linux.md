@@ -1,41 +1,71 @@
 ---
-title: "Azure CLI を使用して Linux で初めての関数を作成する (プレビュー) | Microsoft Docs"
-description: "Azure CLI を使って既定の Linux イメージで実行する Azure 関数を初めて作成する方法について説明します。"
+title: Azure の Linux で初めての関数を作成する
+description: Azure Functions Core Tools と Azure CLI を使用して、Azure の Linux でホストされる初めての関数を作成する方法について説明します。
 services: functions
-keywords: 
+keywords: ''
 author: ggailey777
 ms.author: glenga
-ms.date: 11/15/2017
+ms.date: 11/28/2018
 ms.topic: quickstart
-ms.service: functions
+ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: azure-cli
-manager: cfowler
-ms.openlocfilehash: 49931155339660fc7a0a39f5b60dc9443374b8b0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.devlang: javascript
+manager: jeconnoc
+ms.openlocfilehash: b6df653f89f05a9b253ecea102ed8310ff2a53b7
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438284"
 ---
-# <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Azure CLI を使用して Linux で実行する関数を初めて作成する (プレビュー)
+# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Core Tools と Azure CLI を使用して Linux でホストされる初めての関数を作成する (プレビュー)
 
-Azure Functions を使うと、既定の Azure App Service コンテナー内の Linux で関数をホストできます。 [独自のカスタム コンテナーを利用する](functions-create-function-linux-custom-image.md)こともできます。 この機能は現在プレビュー段階であり、同じくプレビュー段階の [Functions 2.0 ランタイム](functions-versions.md)が必要です。
+Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.com/serverless)の Linux 環境でコードを実行できます。 Linux でのホストは現在プレビュー段階であり、[Functions 2.0 ランタイム](functions-versions.md)が必要です。 関数アプリを Linux 上で実行するためのプレビューに関する考慮事項の詳細については、[Linux 上の関数に関するこちらの記事](https://aka.ms/funclinux)を参照してください。
 
-このクイックスタート トピックでは、Azure CLI で Azure Functions を使って、既定の App Service コンテナーでホストされている Linux で初めての関数アプリを作成する方法について説明します。 関数コード自体は、GitHub サンプル リポジトリからイメージにデプロイされます。    
+このクイック スタート記事では、Linux 上で動作する初めての関数アプリを Azure CLI を使用して作成する方法について説明します。 [Azure Functions Core Tools](functions-run-local.md) を使用して、関数のコードをローカルで作成し、その後 Azure にデプロイします。
 
-次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。 
+次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。 この記事では、JavaScript または C# で関数を作成する方法について説明します。 Python 関数を作成する方法については、[Core Tools と Azure CLI を使用した最初の Python 関数の作成 (プレビュー)](functions-create-first-function-python.md) に関するページを参照してください。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、次のものが必要です。
+このサンプルを実行する前に、以下が必要です。
+
++ [Azure Core Tools バージョン 2.x](functions-run-local.md#v2) をインストールします。
+
++ [Azure CLI]( /cli/azure/install-azure-cli) をインストールします。 この記事では、Azure CLI バージョン 2.0.46 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 [Azure Cloud Shell](https://shell.azure.com/bash) を使用することもできます。
 
 + 有効な Azure サブスクリプション
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="create-the-local-function-app-project"></a>ローカルの関数アプリ プロジェクトを作成する
 
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0.21 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+コマンド ラインから次のコマンドを実行し、現在のローカル ディレクトリの `MyFunctionProj` フォルダー内に関数アプリ プロジェクトを作成します。 GitHub リポジトリも `MyFunctionProj` 内に作成されます。
+
+```bash
+func init MyFunctionProj
+```
+
+指示されたら、方向キーを使用して、次の言語の選択肢から worker ランタイムを選択します。
+
++ `dotnet`: .NET クラス ライブラリ プロジェクト (.csproj) を作成します。
++ `node`: JavaScript プロジェクトを作成します。
++ `python`: Python プロジェクトを作成します。 Python 関数については、[Python クイック スタート](functions-create-first-function-python.md)を参照してください。
+
+コマンドを実行すると、次のような出力が表示されます。
+
+```output
+Writing .gitignore
+Writing host.json
+Writing local.settings.json
+Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
+```
+
+[!INCLUDE [functions-create-function-core-tools](../../includes/functions-create-function-core-tools.md)]
+
+[!INCLUDE [functions-update-function-code](../../includes/functions-update-function-code.md)]
+
+[!INCLUDE [functions-run-function-test-local](../../includes/functions-run-function-test-local.md)]
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 
@@ -43,48 +73,40 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="create-a-linux-app-service-plan"></a>Linux App Service プランの作成
 
-現在、Linux での Functions のホスティングは App Service プランでのみサポートされています。 従量課金プランでのホスティングはまだサポートされていません。 ホスティングについて詳しくは、「[Azure Functions のホスティング プランの比較](functions-scale.md)」をご覧ください。 
-
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-## <a name="create-a-function-app-on-linux"></a>Linux で関数アプリを作成する
+## <a name="create-a-linux-function-app-in-azure"></a>Azure に Linux の関数アプリを作成する
 
-Linux での関数の実行をホストするための関数アプリが必要です。 関数アプリは、関数コードの実行環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、共有を容易にするためのロジック ユニットとして関数をグループ化できます。 関数アプリの作成には、Linux App Service プランで [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドを使います。 
+Linux での関数の実行をホストするための関数アプリが必要です。 関数アプリは、関数コードを実行するためのサーバーレス環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、共有を容易にするためのロジック ユニットとして関数をグループ化できます。 Linux 上で動作する関数アプリの作成には、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用します。
 
-次のコマンドでは、`<app_name>` プレースホルダーを一意の Function App 名で、`<storage_name>` をストレージ アカウント名で置き換えます。 `<app_name>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 _deployment-source-url_ パラメーターは、HTTP によってトリガーされる "Hello World" 関数を含む GitHub のサンプル リポジトリです。
+次のコマンドの `<app_name>` プレースホルダーには一意の Function App 名を、`<storage_name>` にはストレージ アカウント名を使用します。 `<app_name>` は、関数アプリの既定の DNS ドメインでもあります。 この名前は、Azure のすべてのアプリで一意である必要があります。 また、関数アプリの `<language>` ランタイムを `dotnet` (C#)、`node` (JavaScript)、または `python` から設定する必要があります。
 
 ```azurecli-interactive
-az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
---plan myAppServicePlan --deployment-source-url https://github.com/Azure-Samples/functions-quickstart-linux
-```
-関数アプリを作成してデプロイすると、Azure CLI によって次の例のような情報が表示されます。
-
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 1536,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "quickstart.azurewebsites.net",
-  "enabled": true,
-  "enabledHostNames": [
-    "quickstart.azurewebsites.net",
-    "quickstart.scm.azurewebsites.net"
-  ],
-   ....
-    // Remaining output has been truncated for readability.
-}
+az functionapp create --resource-group myResourceGroup --consumption-plan-location westus --os-type Linux \
+--name <app_name> --storage-account  <storage_name> --runtime <language>
 ```
 
-`myAppServicePlan` は Linux プランなので、Linux 上で関数アプリを実行するコンテナーを作成するには、組み込みの docker イメージを使います。 
+> [!NOTE]
+> Linux 以外の App Service アプリを含んだ `myResourceGroup` という名前のリソース グループが既にある場合は、別のリソース グループを使用する必要があります。 Windows アプリと Linux アプリの両方を同じリソース グループでホストすることはできません。  
 
->[!NOTE]  
->現在、サンプル リポジトリには、2 つのスクリプト ファイル [deploy.sh](https://github.com/Azure-Samples/functions-quickstart-linux/blob/master/deploy.sh) と [.deployment](https://github.com/Azure-Samples/functions-quickstart-linux/blob/master/.deployment) が含まれます。 .deployment ファイルは、デプロイ プロセスに対し、[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)として deploy.sh を使うように指示します。 現在のプレビュー リリースでは、Linux イメージに関数アプリをデプロイするにはスクリプトが必要です。  
+関数アプリの作成後、次のメッセージが表示されます。
+
+```output
+Your serverless Linux function app 'myfunctionapp' has been successfully created.
+To active this function app, publish your app content using Azure Functions Core Tools or the Azure portal.
+```
+
+Azure の新しい関数アプリにプロジェクトを発行する準備が整いました。
+
+[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
-[!INCLUDE [functions-quickstart-next-steps-cli](../../includes/functions-quickstart-next-steps-cli.md)]
+## <a name="next-steps"></a>次の手順
+
+この記事では、既定の Azure App Service コンテナーで関数アプリをホストする方法について説明しました。 独自のカスタム コンテナー内の Linux 上で関数をホストすることもできます。
+
+> [!div class="nextstepaction"]
+> [カスタム イメージを使用して Linux で関数を作成する](functions-create-function-linux-custom-image.md)

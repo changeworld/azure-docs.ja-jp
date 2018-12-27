@@ -1,23 +1,27 @@
 ---
-title: "Azure Container Service チュートリアル - ACR の準備"
-description: "Azure Container Service チュートリアル - ACR の準備"
+title: (非推奨) Azure Container Service チュートリアル - ACR の準備
+description: Azure Container Service チュートリアル - ACR の準備
 services: container-service
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: f2520c79d5d5b1dcf13147b64bd98df78e6e2f37
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: c3e5e7c4fb46b3f68013ac857dcad2e5434a978d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998305"
 ---
-# <a name="deploy-and-use-azure-container-registry"></a>Azure Container Registry をデプロイして使用する
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(非推奨) Azure Container Registry をデプロイして使用する
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Azure Kubernetes Service を使用するこのチュートリアルの更新版については、「[チュートリアル: Azure Container Registry をデプロイして使用する](../../aks/tutorial-kubernetes-prepare-acr.md)」をご覧ください。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Azure Container Registry (ACR) は、Docker コンテナー イメージ用の Azure ベースのプライベート レジストリです。 7 つのパートのうちの 2 番目のこのチュートリアルでは、Azure Container Registry インスタンスのデプロイ、およびこのインスタンスへのコンテナー イメージのプッシュについて説明します。 手順は次のとおりです。
 
@@ -32,19 +36,19 @@ Azure Container Registry (ACR) は、Docker コンテナー イメージ用の A
 
 [前のチュートリアル](./container-service-tutorial-kubernetes-prepare-app.md)では、単純な Azure Voting アプリケーション用のコンテナー イメージを作成しました。 Azure Voting アプリのイメージを作成していない場合、[チュートリアル 1 - コンテナー イメージの作成](./container-service-tutorial-kubernetes-prepare-app.md)に関するページに戻ってください。
 
-このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
 
 Azure Container Registry をデプロイする場合、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `westeurope` リージョンに作成されます。
+[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `westeurope` リージョンに作成されます。
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-[az acr create](/cli/azure/acr#az_acr_create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。
+[az acr create](/cli/azure/acr#az-acr-create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -54,7 +58,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 ## <a name="container-registry-login"></a>Container Registry のログイン
 
-[az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) コマンドで ACR インスタンスにログインします。 コンテナー レジストリの作成時に割り当てられた一意の名前が必要です。
+[az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) コマンドで ACR インスタンスにログインします。 コンテナー レジストリの作成時に割り当てられた一意の名前が必要です。
 
 ```azurecli
 az acr login --name <acrName>
@@ -93,7 +97,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-タグ付けしたら、[docker images] (https://docs.docker.com/engine/reference/commandline/images/) を実行して操作を確認します。
+タグを付けた後、[docker イメージ](https://docs.docker.com/engine/reference/commandline/images/)を実行して動作を確認します。
 
 ```bash
 docker images
@@ -123,7 +127,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 ## <a name="list-images-in-registry"></a>レジストリ内のイメージの一覧表示
 
-Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
+Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#az-acr-repository-list) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
 
 ```azurecli
 az acr repository list --name <acrName> --output table

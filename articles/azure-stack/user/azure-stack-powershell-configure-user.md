@@ -1,129 +1,114 @@
 ---
-title: "Azure Stack ユーザーの PowerShell 環境の構成 | Microsoft Docs"
-description: "Azure Stack ユーザーの PowerShell 環境の構成"
+title: ユーザーとして PowerShell を使用して Azure Stack に接続する | Microsoft Docs
+description: ユーザーの Azure Stack インスタンスに接続する手順。
 services: azure-stack
-documentationcenter: 
-author: mattbriggs
+documentationcenter: ''
+author: sethmanheim
 manager: femila
-editor: 
+editor: ''
 ms.assetid: F4ED2238-AAF2-4930-AA7F-7C140311E10F
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
-ms.author: mabrigg
-ms.openlocfilehash: 0bd5b4a98fee7a5d914e53e49a9517f5d3682a88
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 09/07/2018
+ms.author: sethm
+ms.reviewer: Balsu.G
+ms.openlocfilehash: acdad9788737f4f552cedc1b5f42e03e2288dba8
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159081"
 ---
-# <a name="configure-the-azure-stack-users-powershell-environment"></a>Azure Stack ユーザーの PowerShell 環境の構成
+# <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>ユーザーとして PowerShell を使用して Azure Stack に接続する
 
-Azure Stack ユーザーの場合は、Azure Stack Development Kit の PowerShell 環境を構成できます。 構成後は、PowerShell を使って、オファーのサブスクライブ、仮想マシンの作成、Azure Resource Manager テンプレートのデプロイなどの Azure Stack のリソースを管理できます。このトピックではユーザー環境での使用についてのみ扱っています。クラウド オペレーター環境用に PowerShell を設定する場合は、「[Azure Stack オペレーターの PowerShell 環境の構成](../azure-stack-powershell-configure-admin.md)」の記事をご覧ください。 
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-## <a name="prerequisites"></a>前提条件 
+この記事では、Azure Stack インスタンスに接続する手順について説明します。 Azure Stack リソースを管理するには、PowerShell を使用して接続する必要があります。 たとえば、PowerShell を使用し、オファーをサブスクライブしたり、仮想マシンを作成したり、Azure Resource Manager テンプレートをデプロイしたりできます。 PowerShell コマンドレットを実行するためにこれらのことを実行できます。
 
-[開発キット](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)から、または [VPN 経由で接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)している場合は Windows ベースの外部クライアントから、次の前提条件を実行します。
+設定の方法：
+  - 要件を満たしていることをご確認ください。
+  - Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) と接続します。 
+  - リソース プロバイダーを登録します。
+  - 接続をテストします。
 
-* [Azure Stack と互換性のある Azure PowerShell モジュール](azure-stack-powershell-install.md)をインストールします。  
-* [Azure Stack を操作するために必要なツール](azure-stack-powershell-download.md)をダウンロードします。 
+## <a name="prerequisites"></a>前提条件
 
-## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>ユーザー環境の構成と Azure Stack へのサインイン
+次の前提条件は[開発キット](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)から構成するか、[VPN 経由で接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)している場合、Windows ベースの外部クライアントから構成できます。
 
-デプロイのタイプ (Azure AD または AD FS) に基づいて、次のいずれかのスクリプトを実行して Azure Stack 用に PowerShell を構成します (環境の構成に従って、必ず AAD tenantName、GraphAudience エンドポイント、および ArmEndpoint の値を置き換えてください)。
+* [Azure Stack と互換性のある Azure PowerShell モジュール](azure-stack-powershell-install.md)をインストールします。
+* [Azure Stack を操作するために必要なツール](azure-stack-powershell-download.md)をダウンロードします。
 
-### <a name="azure-active-directory-aad-based-deployments"></a>Azure Active Directory (AAD) ベースのデプロイ
-       
-  ```powershell
-  # Navigate to the downloaded folder and import the **Connect** PowerShell module
-  Set-ExecutionPolicy RemoteSigned
-  Import-Module .\Connect\AzureStack.Connect.psm1
+次のスクリプト変数を自分の Azure Stack 構成の値に必ず変更してください。
 
-  # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
-  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+- **Azure AD テナントの名前**  
+  Azure Stack の管理に使用する Azure AD テナントの名前 (yourdirectory.onmicrosoft.com など)。
+- **Azure Resource Manager エンドポイント**  
+  Azure Stack 開発キットの場合、この値は https://management.local.azurestack.external に設定されます。 Azure Stack 統合システムのこの値を取得するには、サービス プロバイダーにお問い合わせください。
 
-  # For Azure Stack development kit, this value is set to https://graph.windows.net/. To get this value for Azure Stack integrated systems, contact your service provider.
-  $GraphAudience = "<GraphAudience endpoint for your environment>"
+## <a name="connect-with-azure-ad"></a>Azure AD との接続
 
-  # Register an AzureRM environment that targets your Azure Stack instance
+  ```PowerShell
+  $AADTenantName = "yourdirectory.onmicrosoft.com"
+  $ArmEndpoint = "https://management.local.azurestack.external"
+
+  # Register an Azure Resource Manager environment that targets your Azure Stack instance
   Add-AzureRMEnvironment `
     -Name "AzureStackUser" `
     -ArmEndpoint $ArmEndpoint
 
-  # Set the GraphEndpointResourceId value
-  Set-AzureRmEnvironment `
-    -Name "AzureStackUser" `
-    -GraphAudience $GraphAudience
-
-  # Get the Active Directory tenantId that is used to deploy Azure Stack
-  $TenantID = Get-AzsDirectoryTenantId `
-    -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
-    -EnvironmentName "AzureStackUser"
+  $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
+  $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
 
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $TenantId
    ```
 
-### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Active Directory フェデレーション サービス (AD FS) ベースのデプロイ 
-          
-  ```powershell
-  # Navigate to the downloaded folder and import the **Connect** PowerShell module
-  Set-ExecutionPolicy RemoteSigned
-  Import-Module .\Connect\AzureStack.Connect.psm1
+## <a name="connect-with-ad-fs"></a>AD FS を使用した接続
 
-  # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
-  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+  ```PowerShell  
+  $ArmEndpoint = "https://management.local.azurestack.external"
 
-  # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
-  $GraphAudience = "<GraphAudience endpoint for your environment>"
-
-  # Register an AzureRM environment that targets your Azure Stack instance
+  # Register an Azure Resource Manager environment that targets your Azure Stack instance
   Add-AzureRMEnvironment `
     -Name "AzureStackUser" `
     -ArmEndpoint $ArmEndpoint
 
-  # Set the GraphEndpointResourceId value
-  Set-AzureRmEnvironment `
-    -Name "AzureStackUser" `
-    -GraphAudience $GraphAudience `
-    -EnableAdfsAuthentication:$true
-
-  # Get the Active Directory tenantId that is used to deploy Azure Stack     
-  $TenantID = Get-AzsDirectoryTenantId `
-    -ADFS `
-    -EnvironmentName "AzureStackUser"
+  $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
+  $tenantId = (invoke-restmethod "$($AuthEndpoint)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
 
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $tenantId
   ```
 
 ## <a name="register-resource-providers"></a>リソース プロバイダーを登録する
 
-ポータルからリソースをデプロイしていない、新しく作成したユーザーのサブスクリプションで使用する場合、リソース プロバイダーは自動的には登録されません。 次のスクリプトを使用して明示的に登録する必要があります。
+ポータル経由でリソースがデプロイされていない新しいユーザー サブスクリプションの場合、リソース プロバイダーが自動登録されません。 次のスクリプトを実行し、リソース プロバイダーを明示的に登録できます。
 
-```powershell
+```PowerShell  
 foreach($s in (Get-AzureRmSubscription)) {
         Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
 Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -Force
-    } 
+    }
 ```
 
 ## <a name="test-the-connectivity"></a>接続のテスト
 
-必要な設定がすべて整ったら、PowerShell を使って Azure Stack にリソースを作成してみましょう。 たとえば、アプリケーションのリソース グループを作成して仮想マシンを追加できます。 次のコマンドを使用して、"MyResourceGroup" という名前のリソース グループを作成します。
+すべてが整ったら、PowerShell を使って接続をテストし、Azure Stack でリソースを作成します。 テストとして、アプリケーションのリソース グループを作成し、仮想マシンを追加します。 次のコマンドを実行し、"MyResourceGroup" という名前のリソース グループを作成します。
 
-```powershell
+```PowerShell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
-## <a name="next-steps"></a>次のステップ
-* [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)
-* [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
+## <a name="next-steps"></a>次の手順
+
+- [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)
+- [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
+- クラウド オペレーター環境用に PowerShell を設定する場合、[Azure Stack オペレーターの PowerShell 環境の構成](../azure-stack-powershell-configure-admin.md)に関する記事をご覧ください。

@@ -3,22 +3,25 @@ title: ETL の代わりに Azure SQL Data Warehouse 用の ELT を設計する |
 description: ETL の代わりに、データの読み込みまたは Azure SQL Data Warehouse 用に抽出、読み込み、変換 (ELT) プロセスを設計します。
 services: sql-data-warehouse
 author: ckarst
-manager: jhubbard
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 03/28/2018
+ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: c27ad843c9ee9beed871dcc03254cb1266f6ebe2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d004ad1f24448da0c7404761ca0865826b3000b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261283"
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 用の抽出、読み込み、変換 (ELT) の設計
 
 抽出、変換、読み込み (ETL) の代わりに、データを Azure SQL Data Warehouse に読み込むための抽出、読み込み、変換 (ELT) プロセスを設計します。 この記事では、Azure データ ウェアハウスにデータを移動する ELT プロセスを設計する方法について説明します。
+
+> [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
 ## <a name="what-is-elt"></a>ELT とは?
 
@@ -38,7 +41,7 @@ SQL Data Warehouse 用 ELT の実装にはさまざまな方法があります�
 
 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」を参照してください。
 
-詳細については、[読み込みパターンに関するブログ](http://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/)をご覧ください。 
+詳細については、[読み込みパターンに関するブログ](https://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/)をご覧ください。 
 
 ## <a name="options-for-loading-with-polybase"></a>PolyBase を使用してデータを読み込むためのオプション
 
@@ -47,15 +50,16 @@ PolyBase は、T-SQL 言語を使用してデータベースの外部にある�
 PolyBase を使用してデータを読み込むには、次のいずれかの読み込みオプションを使用します。
 
 - [T-SQL を使用した PolyBase](load-data-from-azure-blob-storage-using-polybase.md) - データが Azure Blob Storage または Azure Data Lake Store 内にある場合に最適です。 読み込みプロセスを細かく制御できますが、外部データ オブジェクトの定義も必要となります。 その他の方法では、外部データ オブジェクトは、ソース テーブルを移行先テーブルにマップするときにバック グラウンドで定義されます。  T-SQL の読み込みを調整するには、Azure Data Factory、SSIS、または Azure Functions を使用します。 
-- [SSIS を使用した PolyBase](sql-data-warehouse-load-from-sql-server-with-integration-services.md) - ソース データが SQL Server にある場合に有効です。SQL Server の場所は、オンプレミス、クラウドを問いません。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。 
+- [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse) - ソース データが SQL Server にある場合に有効です。SQL Server の場所は、オンプレミス、クラウドを問いません。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。 
 - [Azure Data Factory (ADF) を使用した PolyBase](sql-data-warehouse-load-with-data-factory.md) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。 
+- [Azure DataBricks を使用した PolyBase](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) は、SQL Data Warehouse のテーブルから Databricks のデータフレームにデータを転送したり、Databricks のデータフレームから SQL Data Warehouse のテーブルにデータを書き込んだりします。
 
 ### <a name="polybase-external-file-formats"></a>PolyBase の外部ファイル形式
 
 PolyBase は、UTF-8 と UTF-16 でエンコードされた区切りテキスト ファイルからデータを読み込みます。 この区切りテキスト ファイルに加え、Hadoop ファイル形式の RC ファイル、ORC、Parquet からも読み込みます。 PolyBase は、Gzip や Snappy の圧縮ファイルからデータを読み込むことができます。 PolyBase では現在、拡張 ASCII、固定幅形式、および WinZip、JSON、XML などの入れ子形式はサポートされていません。
 
 ### <a name="non-polybase-loading-options"></a>PolyBase 以外の読み込みオプション
-使用するデータが PolyBase と互換性がない場合は、[bcp](sql-data-warehouse-load-with-bcp.md) または [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx) を使用できます。 bcp では、Azure Blob Storage を通さずに直接 SQL Data Warehouse に読み込みます。また、小規模の読み込みのみを対象とします。 これらのオプションの読み込みパフォーマンスは、PolyBase と比べてはるかに低速であることに注意してください。 
+使用するデータが PolyBase と互換性がない場合は、[bcp](/sql/tools/bcp-utility) または [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx) を使用できます。 bcp では、Azure Blob Storage を通さずに直接 SQL Data Warehouse に読み込みます。また、小規模の読み込みのみを対象とします。 これらのオプションの読み込みパフォーマンスは、PolyBase と比べてはるかに低速であることに注意してください。 
 
 
 ## <a name="extract-source-data"></a>ソース データの抽出
@@ -69,11 +73,8 @@ Azure Storage にデータを配置するには、[Azure Blob Storage](../storag
 Azure Storage へのデータの移動で使用できるツールやサービスは、次のとおりです。
 
 - [Azure ExpressRoute](../expressroute/expressroute-introduction.md) サービス - ネットワークのスループット、パフォーマンス、予測可能性を向上させます。 ExpressRoute は、専用プライベート接続を通してデータを Azure にルーティングするサービスです。 ExpressRoute 接続では、パブリック インターネットを通してデータをルーティングすることはありません。 ExpressRoute 接続は、パブリック インターネットを通る一般的な接続に比べて安全性と信頼性が高く、待機時間も短く、高速です。
-- [AZCopy ユーティリティ](../storage/common/storage-use-azcopy.md) - パブリック インターネットを通してデータを Azure Storage に移動します。 このユーティリティは、データ サイズが 10 TB より小さい場合に機能します。 AZCopy を使用して読み込みを定期的に実行するには、ネットワーク速度をテストして、許容可能かどうかを確認してください。 
-- [Azure Data Factory (ADF)](../data-factory/introduction.md) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。
-
-詳細については、「[Azure Storage との間でのデータの移動](../storage/common/storage-moving-data.md)」をご覧ください。
-
+- [AZCopy ユーティリティ](../storage/common/storage-moving-data.md) - パブリック インターネットを通してデータを Azure Storage に移動します。 このユーティリティは、データ サイズが 10 TB より小さい場合に機能します。 AZCopy を使用して読み込みを定期的に実行するには、ネットワーク速度をテストして、許容可能かどうかを確認してください。 
+- [Azure Data Factory (ADF)](../data-factory/introduction.md) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。 SQL Data Warehouse での Data Factory の使用については、[SQL Data Warehouse へのデータの読み込み](/azure/data-factory/load-azure-sql-data-warehouse)に関する記事をご覧ください。
 
 ## <a name="prepare-data"></a>データを準備する
 
@@ -102,7 +103,7 @@ SQL Data Warehouse に読み込む前に、ストレージ アカウント内で
 ## <a name="load-to-a-staging-table"></a>ステージング テーブルへの読み込み
 データ ウェアハウスにデータを取得するには、最初にデータをステージング テーブルに読み込むと効果的です。 ステージング テーブルを使用することにより、運用環境テーブルに干渉せずにエラーを処理し、運用環境テーブルへのロールバック操作を回避できます。 ステージング テーブルを利用すると、運用環境テーブルに挿入する前に、SQL Data Warehouse を使用してデータを変換することもできます。
 
-T-SQL で読み込みを行うには、T-SQL ステートメント [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) を実行します。 このコマンドを実行すると、select ステートメントの結果が新しいテーブルに挿入されます。 このステートメントが外部テーブルから選択すると、外部データがインポートされます。 
+T-SQL で読み込みを行うには、T-SQL ステートメント [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) を実行します。 このコマンドを実行すると、select ステートメントの結果が新しいテーブルに挿入されます。 このステートメントが外部テーブルから選択すると、外部データがインポートされます。 
 
 次の例では、ext.Date が外部テーブルとなっています。 dbo.Date という新しいテーブルにすべての行がインポートされます。
 

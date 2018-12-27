@@ -1,28 +1,21 @@
 ---
-title: "イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成 - Azure HDInsight | Microsoft Docs"
-description: "ただ 1 回だけイベントを処理するように Spark Streaming を設定する方法。"
+title: イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成 - Azure HDInsight
+description: ただ 1 回だけイベントを処理するように Spark Streaming を設定する方法。
 services: hdinsight
-documentationcenter: 
-tags: azure-portal
-author: ramoha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
 ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/26/2018
-ms.author: ramoha
-ms.openlocfilehash: ebab9ebc92ae1dff8902d618d0a474ce2b2a0af3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.topic: conceptual
+ms.date: 11/06/2018
+ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581002"
 ---
-# <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成
+# <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>イベント処理を 1 回だけ伴う Apache Spark Streaming ジョブを作成します
 
 システムでの障害発生後にストリーム処理アプリケーションがメッセージの再処理を行う方法はさまざまです。
 
@@ -32,7 +25,7 @@ ms.lasthandoff: 02/01/2018
 
 この記事では、Spark Streaming が厳密に 1 回だけ処理するように構成する方法について説明します。
 
-## <a name="exactly-once-semantics-with-spark-streaming"></a>Spark Streaming での厳密に 1 回のセマンティクス
+## <a name="exactly-once-semantics-with-apache-spark-streaming"></a>Apache Spark Streaming での厳密に 1 回のセマンティクス
 
 まず、問題が発生した後にすべてのシステム障害ポイントが再起動する方法、およびデータの損失を回避する方法を検討します。 Spark Streaming アプリケーションには次のものがあります。
 
@@ -48,11 +41,11 @@ ms.lasthandoff: 02/01/2018
 
 Spark Streaming アプリケーションがイベントを読み取るソースは、"*再生可能*" である必要があります。 つまり、メッセージを取得した後、メッセージを永続化または処理する前に、システムで障害が発生した場合、ソースは同じメッセージを再び提供する必要があります。
 
-Azure では、Azure Event Hubs と Kafka on HDInsight の両方が再生可能なソースを提供します。 再生可能なソースのもう 1 つの例は、HDFS、Microsoft Azure Storage、Azure Data Lake Store のようなフォールト トレラントなファイル システムであり、すべてのデータが永久に保持され、いつでもデータ全体を読み込み直すことができます。
+Azure では、Azure Event Hubs と [Apache Kafka](https://kafka.apache.org/) on HDInsight の両方が再生可能なソースを提供します。 再生可能なソースのもう 1 つの例は、[Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)、Microsoft Azure Storage、Azure Data Lake Store のようなフォールト トレラントなファイル システムであり、すべてのデータが永久に保持され、いつでもデータ全体を読み込み直すことができます。
 
 ### <a name="reliable-receivers"></a>信頼性の高いレシーバー
 
-Spark Streaming では、Event Hubs や Kafka のようなソースは "*信頼性の高いレシーバー*" を備え、各レシーバーはソースの読み取りの進行状況を追跡します。 信頼性の高いレシーバーは、状態をフォールト トレラントなストレージに保持します (ZooKeeper、または HDFS に書き込まれる Spark Streaming チェックポイント)。 このようなレシーバーで障害が発生して再起動した場合、中断した場所を取得できます。
+Spark Streaming では、Event Hubs や Kafka のようなソースは "*信頼性の高いレシーバー*" を備え、各レシーバーはソースの読み取りの進行状況を追跡します。 信頼性の高いレシーバーは、状態をフォールト トレラントなストレージに保持します ([Apache ZooKeeper](https://zookeeper.apache.org/)、または HDFS に書き込まれる Spark Streaming チェックポイント)。 このようなレシーバーで障害が発生して再起動した場合、中断した場所を取得できます。
 
 ### <a name="use-the-write-ahead-log"></a>先書きログの使用
 
@@ -68,13 +61,21 @@ Spark Streaming がその使用をサポートしている先書きログでは�
 
 1. StreamingContext オブジェクトでは、チェックポイントのストレージ パスを構成します。
 
-    val ssc = new StreamingContext(spark, Seconds(1))  ssc.checkpoint("/path/to/checkpoints")
+    ```Scala
+    val ssc = new StreamingContext(spark, Seconds(1))
+    ssc.checkpoint("/path/to/checkpoints")
+    ```
 
     HDInsight では、これらのチェックポイントをクラスターに接続されている既定のストレージ (Azure Storage または Azure Data Lake Store) に保存する必要があります。
 
 2. 次に、DStream でチェックポイントの間隔 (秒単位) を指定します。 各間隔で、入力イベントから派生した状態データがストレージに保存されます。 永続化された状態データは、ソース イベントから状態を再構築するときに必要な計算を減らすことができます。
 
-    val lines = ssc.socketTextStream("hostname", 9999)  lines.checkpoint(30)  ssc.start()  ssc.awaitTermination()
+    ```Scala
+    val lines = ssc.socketTextStream("hostname", 9999)
+    lines.checkpoint(30)
+    ssc.start()
+    ssc.awaitTermination()
+    ```
 
 ### <a name="use-idempotent-sinks"></a>べき等シンクの使用
 
@@ -88,5 +89,5 @@ Spark Streaming がその使用をサポートしている先書きログでは�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Spark Streaming の概要](apache-spark-streaming-overview.md)
-* [YARN で可用性の高い Spark Streaming ジョブを作成する](apache-spark-streaming-high-availability.md)
+* [Apache Spark Streaming の概要](apache-spark-streaming-overview.md)
+* [Apache Hadoop YARN で高可用性 Apache Spark Streaming ジョブを作成する](apache-spark-streaming-high-availability.md)

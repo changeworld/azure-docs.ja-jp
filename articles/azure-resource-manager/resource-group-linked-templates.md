@@ -9,24 +9,27 @@ editor: tysonn
 ms.assetid: 27d8c4b2-1e24-45fe-88fd-8cf98a6bb2d2
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2018
+ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 326d6873ae78c5f712832c4cfce9c793f1dfbf37
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: fbfe7255f2b848187c74fd832f349186eef5eaef
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287576"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
-ソリューションをデプロイするには、1 つのテンプレートを使用するか、複数の関連するテンプレートがあるメイン テンプレートのいずれかを使用できます。 関連するテンプレートは、メイン テンプレートからリンクされる個別のファイルの場合も、メイン テンプレート内で入れ子になっているテンプレートの場合もあります。
+ソリューションをデプロイするには、1 つのテンプレートを使用するか、多数の関連するテンプレートがあるメイン テンプレートのいずれかを使用できます。 関連するテンプレートは、メイン テンプレートからリンクされる個別のファイルの場合も、メイン テンプレート内で入れ子になっているテンプレートの場合もあります。
 
 中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割し、テンプレートを再利用できます。
 
-リンクされたテンプレートを使用する場合は、配置時にパラメーター値を受け取るメインのテンプレートを作成します。 メインのテンプレートには、すべてのリンクされたテンプレートが含まれていて、必要に応じて、これらのテンプレートに値を渡します。
+リンクされたテンプレートを使用する場合は、デプロイ時にパラメーター値を受け取るメインのテンプレートを作成します。 メインのテンプレートには、すべてのリンクされたテンプレートが含まれていて、必要に応じて、これらのテンプレートに値を渡します。
+
+チュートリアルについては、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](./resource-manager-tutorial-create-linked-templates.md)」を参照してください。
 
 ## <a name="link-or-nest-a-template"></a>テンプレートをリンクするか入れ子にする
 
@@ -47,6 +50,8 @@ ms.lasthandoff: 04/03/2018
 ```
 
 展開リソースに指定するプロパティは、外部テンプレートにリンクするか、インライン テンプレートをメイン テンプレートに入れ子にするかによって異なります。
+
+リンクされたテンプレートと入れ子になったテンプレートのいずれにも、[増分](deployment-modes.md)デプロイ モードのみを使用できます。
 
 ### <a name="nested-template"></a>入れ子になったテンプレート
 
@@ -85,6 +90,8 @@ ms.lasthandoff: 04/03/2018
 >
 > 入れ子になったテンプレートの出力セクションでは `reference` 関数を使用できません。 入れ子になったテンプレート内のデプロイされたリソースの値を返すには、入れ子になったテンプレートをリンク済みテンプレートに変換します。
 
+入れ子になったテンプレートでは、標準のテンプレートと[同じプロパティ](resource-group-authoring-templates.md)が必要です。
+
 ### <a name="external-template-and-external-parameters"></a>外部テンプレートと外部パラメーター
 
 外部のテンプレートおよびパラメーター ファイルにリンクするには、**templateLink** と **parametersLink** を使用します。 テンプレートにリンクするには、Resource Manager サービスからそのテンプレートにアクセスできる必要があります。 ローカル ファイルや、ローカル ネットワークだけで使用可能なファイルは指定できません。 **http** または **https** のいずれかを含む URI 値のみを指定できます。 1 つと選択肢として、ストレージ アカウントにリンク済みテンプレートを配置し、その項目の URI を使用できます。
@@ -96,7 +103,7 @@ ms.lasthandoff: 04/03/2018
      "name": "linkedTemplate",
      "type": "Microsoft.Resources/deployments",
      "properties": {
-       "mode": "incremental",
+       "mode": "Incremental",
        "templateLink": {
           "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
           "contentVersion":"1.0.0.0"
@@ -110,9 +117,13 @@ ms.lasthandoff: 04/03/2018
 ]
 ```
 
+テンプレートまたはパラメーターには、`contentVersion` プロパティを指定する必要はありません。 コンテンツのバージョン値を指定しない場合、テンプレートの現在のバージョンがデプロイされます。 コンテンツのバージョン値を指定する場合、リンクされているテンプレートのバージョンと一致している必要があります。それ以外の場合、デプロイはエラーで失敗します。
+
 ### <a name="external-template-and-inline-parameters"></a>外部テンプレートとインライン パラメーター
 
-または、パラメーターをインラインで指定できます。 メイン テンプレートから、リンクされたテンプレートに値を渡すには、**パラメーター**を使用します。
+または、パラメーターをインラインで指定できます。 インライン パラメーターとパラメーター ファイルへのリンクの両方を使用することはできません。 `parametersLink` と `parameters` の両方が指定された場合、デプロイは失敗します。
+
+メイン テンプレートから、リンクされたテンプレートに値を渡すには、**パラメーター**を使用します。
 
 ```json
 "resources": [
@@ -121,7 +132,7 @@ ms.lasthandoff: 04/03/2018
      "name": "linkedTemplate",
      "type": "Microsoft.Resources/deployments",
      "properties": {
-       "mode": "incremental",
+       "mode": "Incremental",
        "templateLink": {
           "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
           "contentVersion":"1.0.0.0"
@@ -148,7 +159,7 @@ ms.lasthandoff: 04/03/2018
 }
 ```
 
-[deployment()](resource-group-template-functions-deployment.md#deployment) を使用して、現在のテンプレートのベース URL を取得したり、同じ場所にある他のテンプレートの URL を取得したりすることもできます。 この方法は、テンプレートの場所が変更された場合 (バージョン管理などのため) や、テンプレート ファイルのハード コーディング URL を回避する必要がある場合に便利です。
+[deployment()](resource-group-template-functions-deployment.md#deployment) を使用して、現在のテンプレートのベース URL を取得したり、同じ場所にある他のテンプレートの URL を取得したりすることもできます。 この方法は、テンプレートの場所が変更された場合や、テンプレート ファイルのハード コーディング URL を回避する必要がある場合に便利です。 templateLink プロパティは、URL を含むリモート テンプレートにリンクした場合にのみ返されます。 ローカル テンプレートを使用している場合、そのプロパティは使用できません。
 
 ```json
 "variables": {
@@ -192,7 +203,7 @@ ms.lasthandoff: 04/03/2018
             "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
             "properties": {
-                "mode": "incremental",
+                "mode": "Incremental",
                 "templateLink": {
                     "uri": "[uri(deployment().properties.templateLink.uri, 'helloworld.json')]",
                     "contentVersion": "1.0.0.0"
@@ -209,7 +220,7 @@ ms.lasthandoff: 04/03/2018
 }
 ```
 
-他の種類のリソース同様、リンクされたテンプレートとその他のリソース間の依存関係を設定できます。 したがって、その他のリソースにリンクされたテンプレートからの出力値が必要な場合、リンクされたテンプレートが他のリソースの前にデプロイされるようにすることができます。 または、リンクされたテンプレートが他のリソースに依存する場合は、リンクされたテンプレートの前に他のリソースがデプロイされるようにすることができます。
+他の種類のリソース同様、リンクされたテンプレートとその他のリソース間の依存関係を設定できます。 そのため、他のリソースにリンク済みテンプレートからの出力値が必要な場合は、そのリソースの前にリンク済みテンプレートが確実にデプロイされるようにしてください。 または、リンク済みテンプレートが他のリソースに依存する場合は、そのリンク済みテンプレートの前に他のリソースが確実にデプロイされるようにしてください。
 
 次の例では、パブリック IP アドレスをデプロイし、リソース ID を返すテンプレートを示します。
 
@@ -390,7 +401,7 @@ Resource Manager では、各テンプレートはデプロイ履歴内で個別
 
 展開後、次の PowerShell スクリプトを使用して、出力値を取得できます。
 
-```powershell
+```azurepowershell-interactive
 $loopCount = 3
 for ($i = 0; $i -lt $loopCount; $i++)
 {
@@ -400,9 +411,11 @@ for ($i = 0; $i -lt $loopCount; $i++)
 }
 ```
 
-または、次の Azure CLI スクリプトを使用します。
+Bash シェルの Azure CLI スクリプトでは次のようになります。
 
-```azurecli
+```azurecli-interactive
+#!/bin/bash
+
 for i in 0 1 2;
 do
     name="linkedTemplate$i";
@@ -433,7 +446,7 @@ done
       "name": "linkedTemplate",
       "type": "Microsoft.Resources/deployments",
       "properties": {
-        "mode": "incremental",
+        "mode": "Incremental",
         "templateLink": {
           "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -448,16 +461,18 @@ done
 
 PowerShell では、コンテナーのトークンを取得し、次のコマンドを使ってテンプレートを展開します。 **containerSasToken** パラメーターはテンプレートで定義されていることに注意してください。 **New-AzureRmResourceGroupDeployment** コマンド内のパラメーターではありません。
 
-```powershell
+```azurepowershell-interactive
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
 $url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
 New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-Azure CLI では、コンテナーのトークンを取得し、次のコードを使用してテンプレートをデプロイします。
+Bash シェルの Azure CLI では、コンテナーのトークンを取得し、次のコードを使用してテンプレートをデプロイします。
 
-```azurecli
+```azurecli-interactive
+#!/bin/bash
+
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
 connection=$(az storage account show-connection-string \
     --resource-group ManageGroup \
@@ -482,14 +497,15 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 次の例は、リンク済みテンプレートの一般的な使い方を示します。
 
-|Main template  |リンク済みテンプレート |[説明]  |
+|Main template  |リンク済みテンプレート |説明  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | リンク済みテンプレートから文字列を返します。 |
 |[パブリック IP アドレスを使用する Azure Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |リンク済みテンプレートからパブリック IP アドレスを返し、ロード バランサーでその値を設定します。 |
-|[複数の IP アドレス](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |リンク済みテンプレートに複数のパブリック IP アドレスを作成します。  |
+|[複数の IP アドレス](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |リンク済みテンプレートにいくつかのパブリック IP アドレスを作成します。  |
 
 ## <a name="next-steps"></a>次の手順
 
+* チュートリアルの実行については、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](./resource-manager-tutorial-create-linked-templates.md)」を参照してください。
 * リソースのデプロイの順序の定義については、「[Azure Resource Manager テンプレートでの依存関係の定義](resource-group-define-dependencies.md)」を参照してください。
 * リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * ストレージ アカウントにテンプレートを設定し SAS トークンを生成する手順については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](resource-group-template-deploy.md)」または「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](resource-group-template-deploy-cli.md)」を参照してください。

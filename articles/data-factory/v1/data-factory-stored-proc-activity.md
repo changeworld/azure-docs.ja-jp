@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 60df540d847a1e7422e87bc375220819dac4b25c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b10fbd953eb9ca904043973ebc1f7c6adb9f9abc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047390"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -34,7 +35,7 @@ ms.lasthandoff: 03/23/2018
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 でのストアド プロシージャ アクティビティを使用したデータ変換](../transform-data-using-stored-procedure.md)についてのページをご覧ください。
+> この記事は、Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory でのストアド プロシージャ アクティビティを使用したデータ変換](../transform-data-using-stored-procedure.md)に関するページを参照してください。
 
 ## <a name="overview"></a>概要
 Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ変換アクティビティを使用して、生データを予測や洞察に変換および処理します。 ストアド プロシージャ アクティビティは、Data Factory でサポートされる変換アクティビティの 1 つです。 この記事は、データ変換と Data Factory でサポートされる変換アクティビティの概要を説明する、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事に基づいています。
@@ -161,7 +162,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 
 - **type** プロパティを **SqlServerStoredProcedure** に設定します。 
 - type プロパティの **storedProcedureName** を **sp_sample** (ストアド プロシージャの名前) に設定します。
-- **storedProcedureParameters** セクションには、**DataTime** という名前のパラメーターが 1 つ含まれています。 JSON でのパラメーターの名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義でのパラメーターの名前と一致する必要があります。 パラメーターで null を渡す必要がある場合は、構文として `"param1": null` (すべて小文字) を使用します。
+- **storedProcedureParameters** セクションには、**DateTime** という名前のパラメーターが 1 つ含まれています。 JSON でのパラメーターの名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義でのパラメーターの名前と一致する必要があります。 パラメーターで null を渡す必要がある場合は、構文として `"param1": null` (すべて小文字) を使用します。
  
 1. **[...More (その他)]** (コマンド バー上) をクリックし、**[新しいパイプライン]** をクリックします。
 2. 次の JSON スニペットをコピーして貼り付けます。   
@@ -308,11 +309,11 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 
 次の表に、JSON のプロパティを示します。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | name | アクティビティの名前 |[はい] |
-| 説明 |アクティビティの用途を説明するテキストです。 |いいえ  |
-| 型 | **SqlServerStoredProcedure** に設定する必要があります | [はい] |
+| description  |アクティビティの用途を説明するテキストです。 |いいえ  |
+| type | **SqlServerStoredProcedure** に設定する必要があります | [はい] |
 | inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |いいえ  |
 | outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |[はい] |
 | storedProcedureName |出力テーブルで使用するリンクされたサービスで表される Azure SQL Database、Azure SQL Data Warehouse、または SQL Server データベースのストアド プロシージャの名前を指定します。 |[はい] |

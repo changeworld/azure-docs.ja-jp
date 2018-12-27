@@ -1,34 +1,31 @@
 ---
-title: "Team Data Science Process でのデータの探索 | Microsoft Docs"
-description: "さまざまなストレージ環境のデータを探索する方法について説明します。"
-services: machine-learning,storage
-documentationcenter: 
-author: bradsev
+title: Team Data Science Process でのデータの探索 | Microsoft Docs
+description: さまざまなストレージ環境のデータを探索する方法について説明します。
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 6eae8772-f479-4627-bb12-64f6d1440b22
 ms.service: machine-learning
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
-ms.author: bradsev
-ms.openlocfilehash: 7983ec6f9ffcfcfa8e57181b8ec5db24a004f3f5
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.date: 11/08/2018
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 261cb608aa5404b836ec3f5b1eecfa7ba4036978
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441259"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Team Data Science Process でのデータの探索
-このドキュメントでは、Data Science Process で一般的に使用されている 4 つの異なるストレージ環境のデータを探索する方法について説明します。
 
-* **Azure BLOB コンテナー** データは、 [Pandas](http://pandas.pydata.org/) Python パッケージを使用して探索します。
-* **SQL Server** データは、SQL と、Python などのプログラミング言語を使用して探索します。
-* **Hive テーブル** データは、Hive クエリを使用して探索します。
-* **Azure Machine Learning (AML) Studio** データは、AML モジュールを使用して探索します。
+データの探索は、[Team Data Science Process](overview.md) の 1 ステップです。
 
-次の **メニュー** は、これらのツールを使用してさまざまなストレージ環境のデータを探索する方法を説明するトピックにリンクしています。 
+以下の記事では、Data Science Process で一般的に使用される 3 つの異なるストレージ環境のデータを探索する方法が説明されています。
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+* [Pandas](http://pandas.pydata.org/) Python パッケージを使用して、[Azure BLOB コンテナー](explore-data-blob.md)のデータを探索します。
+* SQL と、Python などのプログラミング言語を使用して、[SQL Server](explore-data-sql-server.md) のデータを探索します。
+* Hive クエリを使用して、[Hive テーブル](explore-data-hive-tables.md)のデータを探索します。
 
+さらに、ビデオ「[Preprocessing Data in Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)」(Azure Machine Learning Studio でのデータの前処理) では、Azure Machine Learning Studio でデータのクリーンアップと変換によく使用されるモジュールについて説明されています。

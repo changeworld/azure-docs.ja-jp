@@ -1,31 +1,25 @@
 ---
-title: "HDInsight での Hadoop Sqoop と Curl の使用 - Azure | Microsoft Docs"
-description: "Curl を使用して Sqoop ジョブを HDInsight にリモートで送信する方法について説明します。"
+title: HDInsight 上で Apache Sqoop と Curl を使用する - Azure
+description: Curl を使用して Apache Sqoop ジョブを HDInsight にリモートで送信する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 39798321-78ca-428c-bcfe-322e49af4059
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/03/2018
-ms.author: jgao
-ms.openlocfilehash: 08e7288d4d9d06f3a74464817892c2b03ae8a86c
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: hrasheed
+ms.openlocfilehash: 4b565252c78bfe2194530d840651a57df2686728
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633175"
 ---
-# <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>HDInsight の Hadoop で Curl を使用して Sqoop ジョブを実行する
+# <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>HDInsight 上の Hadoop で Curl を使用して Apache Sqoop ジョブを実行する
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Curl を使用して HDInsight の Hadoop クラスターで Sqoop ジョブを実行する方法を説明します。
+Curl を使用して HDInsight 上の Apache Hadoop クラスターで Apache Sqoop ジョブを実行する方法について説明します。
 
 Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし、Sqoop ジョブを実行、監視して、その結果を取得する方法を示すために使用します。 これは、HDInsight クラスターで提供される WebHCat REST API (旧称: Templeton) を使用することで機能します。
 
@@ -63,7 +57,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
    * **-u** : 要求の認証に使用するユーザー名とパスワード
    * **-G** : GET 要求であることを示します。
      
-     URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、すべての要求において共通です。 パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。 
+     URL の最初の部分 **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** は、すべての要求で同じです。 パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。 
 2. 次のコマンドを使用して sqoop ジョブを送信します。
 
     ```bash

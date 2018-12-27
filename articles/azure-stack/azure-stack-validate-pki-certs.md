@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 統合システム デプロイのための Azure Stack 公開キー インフラストラクチャ証明書を検証する | Microsoft Docs
-description: Azure Stack 統合システムの Azure Stack PKI 証明書を検証する方法について説明します。
+description: Azure Stack 統合システムの Azure Stack PKI 証明書を検証する方法について説明します。 Azure Stack 証明書チェッカー ツールの使用方法について説明します。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,171 +11,264 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 11/09/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 0bdadadb1f4ee5f76cde9d05b11e8d57b99ac191
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f3a83352e5aa7591d3f7b325adb542ba89e57fe5
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515830"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Azure Stack PKI 証明書の検証
 
-この記事で説明する Azure Stack 証明書チェッカー ツールは、deploymentdata.json ファイルに含まれる OEM によって提供されており、[生成された PKI 証明書](azure-stack-get-pki-certs.md)が展開前に適していることを検証します。 証明書は、十分な時間をかけてテストして検証し、必要な場合は再発行します。
+この記事で説明されている Azure Stack 適合性チェッカー ツールは、[PowerShell ギャラリーから](https://aka.ms/AzsReadinessChecker)入手可能です。 デプロイ前にこのツールを使用して、[生成された PKI 証明書](azure-stack-get-pki-certs.md)が適切であるかどうかを検証できます。 テストまで十分な時間を確保して証明書を検証する必要があります。必要に応じて証明書を再発行します。
 
-証明書チェッカー ツール (Certchecker) は、次のチェックを実行します。
+適合性チェッカー ツールでは、次の証明書の検証を実行します。
 
-- **PFX の読み取り**。 有効な PFX ファイルと正しいパスワードを確認し、パブリック情報がパスワードによって保護されていない場合は警告します。 
-- **署名アルゴリズム**。 署名アルゴリズムが SHA1 ではないことを確認します。
-- **秘密キー**。 秘密キーが存在し、ローカル コンピューター属性でエクスポートされることを確認します。 
-- **証明書チェーン**。 自己署名証明書の場合も含めて証明書チェーンが損なわれていないことを確認します。 
-- **DNS 名**。 SAN に各エンドポイントの関連する DNS 名が含まれていること、またはサポートするワイルドカードが存在するかどうかを確認します。 
-- **キー使用法**。 キー使用法にデジタル署名とキーの暗号化が含まれること、および拡張キー使用法にサーバー認証とクライアント認証が含まれることを確認します。
-- **キー サイズ**。 キー サイズが 2048 以上であることを確認します。
-- **チェーンの順序**。 チェーンを構成している他の証明書の順序が正しいことを確認します。
-- **他の証明書**。 関連するリーフ証明書とそのチェーン以外の他の証明書が PFX にパッケージ化されていないことを確認します。
-- **プロファイルなし**。 証明書サービスの間に gMSA アカウントの動作を模倣して、ユーザー プロファイルが読み込まれていなくても新しいユーザーが PFX データを読み込めることを確認します。
+- **PFX の読み取り**  
+    有効な PFX ファイルと正しいパスワードを確認し、パブリック情報がパスワードによって保護されていない場合は警告します。 
+- **署名アルゴリズム**  
+    署名アルゴリズムが SHA1 ではないことを確認します。
+- **秘密キー**  
+    秘密キーが存在し、ローカル コンピューター属性でエクスポートされることを確認します。 
+- **証明書チェーン**  
+    自己署名証明書の場合も含めて証明書チェーンが損なわれていないことを確認します。
+- **DNS 名**  
+    SAN に各エンドポイントの関連する DNS 名が含まれていること、またはサポートするワイルドカードが存在するかどうかを確認します。
+- **キー使用法**  
+    キー使用法にデジタル署名とキーの暗号化が含まれていること、また拡張キー使用法にサーバー認証とクライアント認証が含まれていることを確認します。
+- **キーサイズ**  
+    キー サイズが 2048 以上であることを確認します。
+- **チェーンの順序**  
+    他の証明書の順序を確認して、順序が正しいことを検証します。
+- **他の証明書**  
+    関連するリーフ証明書とそのチェーン以外の他の証明書が PFX にパッケージ化されていないことを確認します。
+- **プロファイルなし**  
+    証明書サービスの間に gMSA アカウントの動作を模倣して、ユーザー プロファイルが読み込まれていなくても新しいユーザーが PFX データを読み込めることを確認します。
 
 > [!IMPORTANT]  
-> PKI 証明書の PFX ファイルとパスワードは、機密情報として扱われる必要があります。
+> PKI 証明書が PFX ファイルです。パスワードは機密情報として扱われる必要があります。
 
 ## <a name="prerequisites"></a>前提条件
-Azure Stack 展開に対して PKI 証明書を検証する前に、システムは次の前提条件を満たしている必要があります。
-- CertChecker (**\utils\certchecker**  下の **PartnerToolKit**)
+
+Azure Stack のデプロイに対して PKI 証明書を検証する前に、システムは次の前提条件を満たしている必要があります。
+
+- Microsoft Azure Stack 適合性チェッカー
 - [準備手順](azure-stack-prepare-pki-certs.md)に従ってエクスポートされた SSL 証明書
 - DeploymentData.json
 - Windows 10 または Windows Server 2016
 
-## <a name="perform-certificate-validation"></a>証明書の検証を実行する
+## <a name="perform-core-services-certificate-validation"></a>コア サービス証明書の検証を実行する
 
-次の手順を使って、Azure Stack PKI 証明書を準備し、検証します。 
+次の手順を使って、デプロイとシークレット ローテーションに使用する Azure Stack PKI 証明書を準備し、検証します。
 
-1. <partnerToolkit>\utils\certchecker の内容を新しいディレクトリ (**c:\certchecker** など) に抽出します。
+1. 次のコマンドレットを実行して、PowerShell プロンプト (5.1 以上) から **AzsReadinessChecker** をインストールします。
 
-2. 管理者として PowerShell を開き、certchecker フォルダーにディレクトリを変更します。
+    ```PowerShell  
+        Install-Module Microsoft.AzureStack.ReadinessChecker -force 
+    ```
 
-  ```powershell
-  cd c:\certchecker
-  ```
- 
-3. 次の PowerShell コマンドを実行して、証明書のディレクトリ構造を作成します。
+2. 証明書ディレクトリ構造を作成します。 次の例では、`<c:\certificates>` を、選択した新規ディレクトリ パスに変更できます。
+    ```PowerShell  
+    New-Item C:\Certificates -ItemType Directory
+    
+    $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
+    
+    $destination = 'c:\certificates'
+    
+    $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}
+    ```
+    
+    > [!Note]  
+    > AD FS を ID システムとして使用している場合は、AD FS と Graph が必要です。
+    
+     - 前の手順で作成された適切なディレクトリに証明書を配置します。 例:   
+        - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
+        - `c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx`
+        - `c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx`
 
-  ```powershell 
-  $directories = "ACS","ADFS","Admin Portal","ARM Admin","ARM Public","Graph","KeyVault","KeyVaultInternal","Public Portal" 
-  $destination = '.\certs' 
-  $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}  
-  ```
+3. PowerShell ウィンドウで、Azure Stack 環境に合わせて **RegionName** および **FQDN** の値を変更し、次を実行します。
 
-  >  [!NOTE]
-  >  Azure Stack 展開の ID プロバイダーが Azure AD の場合は、**ADFS** および **Graph** ディレクトリを削除します。 
+    ```PowerShell  
+    $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
-4. 次の例のような、前の手順で作成された適切なディレクトリに証明書を配置します。 
-  - c:\certchecker\Certs\ACS\CustomerCertificate.pfx,  
-  - c:\certchecker\Certs\Admin Portal\CustomerCertificate.pfx  
-  - c:\certchecker\Certs\ARM Admin\CustomerCertificate.pfx  
-  - など 
+    Invoke-AzsCertificateValidation -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
+    ```
 
-5. **deploymentdata.json** を **c:\certchecker** ディレクトリにコピーします。
+4. 出力を確認し、すべての証明書がすべてのテストに合格していることを確認します。 例: 
 
-6. PowerShell ウィンドウで、次のコマンドを実行します。 
-
-  ```powershell
-  $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
-  .\CertChecker.ps1 -CertificatePath .\Certs\ -pfxPassword $password -deploymentDataJSONPath .\DeploymentData.json  
-  ```
-
-7. 出力では、チェックしたすべての証明書とすべての属性が OK になっている必要があります。 
-
-  ```powershell
-  Starting Azure Stack Certificate Validation 1.1802.221.1
-  Testing: ADFS\ContosoSSL.pfx
-    Read PFX: OK
+````PowerShell
+Invoke-AzsCertificateValidation v1.1809.1005.1 started.
+Testing: ARM Public\ssl.pfx
+Thumbprint: 7F6B27****************************E9C35A
+    PFX Encryption: OK
     Signature Algorithm: OK
-    Private Key: OK
-    Cert Chain: OK
     DNS Names: OK
     Key Usage: OK
     Key Size: OK
-    Chain Order: OK
-    Other Certificates: OK
-    No Profile: OK
-  Testing: KeyVaultInternal\ContosoSSL.pfx
-    Read PFX: OK
-    Signature Algorithm: OK
+    Parse PFX: OK
     Private Key: OK
     Cert Chain: OK
+    Chain Order: OK
+    Other Certificates: OK
+Testing: Admin Extension Host\ssl.pfx
+Thumbprint: A631A5****************************35390A
+    PFX Encryption: OK
+    Signature Algorithm: OK
     DNS Names: OK
     Key Usage: OK
     Key Size: OK
-    Chain Order: OK
-    Other Certificates: OK
-    No Profile: OK
-  Testing: ACS\ContosoSSL.pfx
-  WARNING: Pre-1803 certificate structure. The folder structure for Azure Stack 1803 and above is: ACSBlob, ACSQueue, ACSTable instead of ACS folder. Refer to deployment documentation for further informat
-  ion.
-    Read PFX: OK
-    Signature Algorithm: OK
+    Parse PFX: OK
     Private Key: OK
     Cert Chain: OK
+    Chain Order: OK
+    Other Certificates: OK
+Testing: Public Extension Host\ssl.pfx
+Thumbprint: 4DBEB2****************************C5E7E6
+    PFX Encryption: OK
+    Signature Algorithm: OK
     DNS Names: OK
     Key Usage: OK
     Key Size: OK
+    Parse PFX: OK
+    Private Key: OK
+    Cert Chain: OK
     Chain Order: OK
     Other Certificates: OK
-    No Profile: OK
-  Detailed log can be found C:\CertChecker\CertChecker.log 
-  ```
 
-### <a name="known-issues"></a>既知の問題 
-**現象**: Certchecker が途中で終了し、次のエラーを受け取る 
-> 失敗
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsCertificateValidation Completed
+````
 
-> Detail: This command cannot be run due to the error: The directory name is invalid. (詳細: このコマンドはエラーのため実行できません: ディレクトリ名が無効です。) 
-
-**原因**: 制限の厳しいフォルダー (例: c:\temp、%temp%) から certchecker.ps1 を実行しています 
-
-**解決策**: certchecker ツールを新しいディレクトリ (例: C:\CertChecker) に移動します 
-
-
-**現象**: Certchecker で Pre-1803 の使用に関する警告が発生する (上のステップ 7 の例を参照)
-
-> [!WARNING]
-> Pre-1803 certificate structure. The folder structure for Azure Stack 1803 and above is: ACSBlob, ACSQueue, ACSTable instead of ACS folder. For more information see the deployment documentation. (Pre-1803 証明書の構造。Azure Stack 1803 以降のフォルダー構造は ACSBlob、ACSQueue、ACSTable であり、ACS フォルダーではありません。詳細については、展開のドキュメントを参照してください。)
-
-**原因**: Certchecker は単一の ACS フォルダーの使用を検出しましたが、これは 1803 より前の展開で正しいものです。 Azure Stack バージョン 1803 以降の展開では、フォルダー構造は ACSTable、ACSQueue、ACSBlob に変わっています。 Certchecker は、この機能をサポートするように既に更新されています。
-
-**解決策**: 1802 を展開する場合は、対処は必要ありません。 1803 以降を展開する場合は、ACS を ACSTable、ACSQueue、ACSBlob に置き換え、ACS 証明書をこれらのフォルダーにコピーします。
+### <a name="known-issues"></a>既知の問題
 
 **現象**: テストがスキップされる
 
-**原因**: Certchecker は、依存関係が満たされていない場合、特定のテストをスキップします。
-- 証明書チェーンに問題がある場合、他の証明書はスキップされます。
-- 次の場合、プロファイルはスキップされません。
-  - 一時的なユーザーを作成し、そのユーザーとして PowerShell を実行する機能を制限するセキュリティ ポリシーがある。
-  - 秘密キーのチェックが失敗する。
+**原因**: AzsReadinessChecker は、依存関係が満たされていない場合、特定のテストをスキップします。
 
-**解決策**: ツール ガイダンスの詳細セクションの各証明書テスト設定に従います。
+ - 証明書チェーンに問題がある場合、他の証明書はスキップされます。
 
+    ```PowerShell  
+    Testing: ACSBlob\singlewildcard.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: Fail
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: Skipped
+    Details:
+    The certificate records '*.east.azurestack.contoso.com' do not contain a record that is valid for '*.blob.east.azurestack.contoso.com'. Please refer to the documentation for how to create the required certificate file.
+    The Other Certificates check was skipped because Cert Chain and/or DNS Names failed. Follow the guidance to remediate those issues and recheck. 
+    Detailed log can be found C:\AzsReadinessChecker\CertificateValidation\CertChecker.log
 
-## <a name="prepare-deployment-script-certificates"></a>展開スクリプト証明書を準備する 
-最後のステップとして、準備したすべての証明書を、展開ホストの適切なディレクトリに配置する必要があります。 展開ホストで、 Certificates** という名前のフォルダーを作成し、エクスポートした証明書ファイルを、「[必須の証明書](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates)」セクションで指定されている対応するサブフォルダーに配置します。
+    Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+    Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+    Invoke-AzsCertificateValidation Completed
+    ```
 
-```
-\Certificates
-\ACS\ssl.pfx
-\Admin Portal\ssl.pfx
-\ARM Admin\ssl.pfx
-\ARM Public\ssl.pfx
-\KeyVault\ssl.pfx
-\KeyVaultInternal\ssl.pfx
-\Public Portal\ssl.pfx
-\ADFS\ssl.pfx*
-\Graph\ssl.pfx*
-```
+**解決策**: ツール ガイダンスの詳細セクションにある各証明書テスト設定に従います。
 
-<sup>*</sup> アスタリスク * の付いた証明書は、ID ストアとして AD FS が使われている場合にのみ必要です。
+## <a name="perform-platform-as-a-service-certificate-validation"></a>サービスとしてのプラットフォーム (PaaS) 証明書の検証を実行する
 
+SQL/MySQL または App Services のデプロイを計画している場合は、次の手順を使って、サービスとしてのプラットフォーム (PaaS) 証明書用に Azure Stack PKI 証明書を準備し、検証します。
+
+1.  次のコマンドレットを実行して、PowerShell プロンプト (5.1 以上) から **AzsReadinessChecker** をインストールします。
+
+    ```PowerShell  
+      Install-Module Microsoft.AzureStack.ReadinessChecker -force
+    ```
+
+2.  検証が必要な PaaS 証明書ごとに、パスとパスワードを含む入れ子になったハッシュ テーブルを作成します。 PowerShell ウィンドウで、次を実行します。
+
+    ```PowerShell  
+        $PaaSCertificates = @{
+        'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSAPICert' = @{'pfxPath' = '<Path to API PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSFTPCert' = @{'pfxPath' = '<Path to FTP PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSSSOCert' = @{'pfxPath' = '<Path to SSO PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        }
+    ```
+
+3.  Azure Stack 環境に合わせて **RegionName** と **FQDN** の値を変更し、検証を開始します。 次に、以下を実行します。
+
+    ```PowerShell  
+    Invoke-AzsCertificateValidation -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
+    ```
+4.  出力を確認し、すべての証明書がすべてのテストに合格していることを確認します。
+
+    ```PowerShell
+    Invoke-AzsCertificateValidation v1.0 started.
+    Thumbprint: 95A50B****************************FA6DDA
+        Signature Algorithm: OK
+        Parse PFX: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Thumbprint: EBB011****************************59BE9A
+        Signature Algorithm: OK
+        Parse PFX: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Thumbprint: 76AEBA****************************C1265E
+        Signature Algorithm: OK
+        Parse PFX: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Thumbprint: 8D6CCD****************************DB6AE9
+        Signature Algorithm: OK
+        Parse PFX: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+    ```
+
+## <a name="certificates"></a>証明書
+
+| Directory | 証明書 |
+| ---    | ----        |
+| acsBlob | wildcard_blob_\< region>\< externalFQDN> |
+| ACSQueue  |  wildcard_queue\< region>\< externalFQDN> |
+| ACSTable  |  wildcard_table\< region>\< externalFQDN> |
+| 管理者拡張機能ホスト  |  wildcard_adminhosting\< region>\< externalFQDN> |
+| 管理ポータル  |  adminportal\< region>\< externalFQDN> |
+| ARM 管理  |  adminmanagement\< region>\< externalFQDN> |
+| ARM パブリック  |  management\< region>\< externalFQDN> |
+| KeyVault  |  wildcard_vault\< region>\< externalFQDN> |
+| KeyVaultInternal  |  wildcard_adminvault\< region>\< externalFQDN> |
+| パブリック拡張機能ホスト  |  wildcard_hosting\< region>\< externalFQDN> |
+| パブリック ポータル  |  portal\< region>_\< externalFQDN> |
+
+## <a name="using-validated-certificates"></a>検証済み証明書の使用
+
+証明書が AzsReadinessChecker によって検証されたら、Azure Stack デプロイまたは Azure Stack シークレット ローテーションで使用できます。 
+
+ - デプロイの場合、[Azure Stack PKI の要件ドキュメント](azure-stack-pki-certs.md)で指定されているように、デプロイメント エンジニアが証明書を配置ホストにコピーできるように、セキュリティを保護して証明書をデプロイメント エンジニアに送付します。
+ - シークレット ローテーションの場合、[Azure Stack シークレット ローテーションのドキュメント](azure-stack-rotate-secrets.md)の説明に従い、この証明書を使用して、お使いの Azure Stack 環境のパブリック インフラストラクチャ エンドポイントの古い証明書を更新できます。
+ - PaaS サービスの場合、「[Azure Stack でのサービスの提供の概要](azure-stack-offer-services-overview.md)」の説明に従い、この証明書を使用して、Azure Stack に SQL、MySQL、App Services リソース プロバイダーをインストールできます。
 
 ## <a name="next-steps"></a>次の手順
+
 [データセンターの ID の統合](azure-stack-integrate-identity.md)

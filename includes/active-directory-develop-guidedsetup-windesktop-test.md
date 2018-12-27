@@ -1,3 +1,26 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: jmprieur
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: jmprieur
+ms.custom: include file
+ms.openlocfilehash: ac4f826ed1d27ee39d8e35605a3baa7f94b33e64
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50035212"
+---
 ## <a name="test-your-code"></a>コードのテスト
 
 Visual Studio で、お使いのプロジェクトを実行するには、**F5** キーを押します。 以下に示すように、アプリケーション **MainWindow** が表示されます。
@@ -9,14 +32,16 @@ Visual Studio で、お使いのプロジェクトを実行するには、**F5**
 ![アプリケーションにサインインする](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
 ### <a name="provide-consent-for-application-access"></a>アプリケーションによるアクセスに同意する
-アプリケーションに初めてサインインするときに、次に示すように、アプリケーションがプロファイルにアクセスし、サインインすることを許可することへの同意を求められます。 
+
+アプリケーションに初めてサインインするときに、次に示すように、アプリケーションがプロファイルにアクセスし、サインインすることを許可することへの同意を求められます。
 
 ![アプリケーションによるアクセスに同意する](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
 
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
+
 サインインしたら、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。 結果は、**[API Call Results]\(API コールの結果\)** ボックスに表示されます。 `AcquireTokenAsync` または `AcquireTokenSilentAsync` の呼び出しを介して取得されたトークンに関する基本情報は、**[Token Info]\(トークン情報\)** ボックスに表示されます。 結果には、以下のプロパティが含まれます。
 
-|プロパティ  |形式  |[説明] |
+|プロパティ  |形式  |説明 |
 |---------|---------|---------|
 |**名前** |ユーザーのフルネーム |ユーザーの姓と名。|
 |**ユーザー名** |<span>user@domain.com</span> |ユーザーの識別に使用されているユーザー名。|
@@ -28,7 +53,7 @@ Visual Studio で、お使いのプロジェクトを実行するには、**F5**
 
 Microsoft Graph API には、ユーザーのプロファイルを読み取るための *user.read* スコープが必要です。 このスコープは、アプリケーション登録ポータルで登録されたすべてのアプリケーションで、既定で自動的に追加されます。 Microsoft Graph の他の API や、バックエンド サーバーのカスタム API には、追加のスコープが必要な場合があります。 Microsoft Graph API には、ユーザーの予定表を表示するための *Calendars.Read* スコープが必要です。
 
-アプリケーションのコンテキストでユーザーの予定表にアクセスするには、*Calendars.Read* の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、*Calendars.Read* スコープを `acquireTokenSilent` 呼び出しに追加します。 
+アプリケーションのコンテキストでユーザーの予定表にアクセスするには、*Calendars.Read* の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、*Calendars.Read* スコープを `acquireTokenSilent` 呼び出しに追加します。
 
 >[!NOTE]
 >スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。

@@ -1,23 +1,20 @@
 ---
-title: "Azure Data Lake のための U-SQL プログラミング ガイド | Microsoft Docs"
-description: "クラウドベースのビッグ データ プラットフォームを作成するための Azure Data Lake のサービスのセットについて説明します。"
+title: Azure Data Lake の U-SQL プログラミング ガイド
+description: クラウドベースのビッグ データ プラットフォームを作成するための Azure Data Lake Analytics のサービスのセットについて説明します。
 services: data-lake-analytics
-documentationcenter: 
-author: saveenr
-manager: saveenr
-ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/30/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: a241199ff8441d76d48d297b69af05a604d2a423
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.reviewer: jasonwhowell
+ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
+ms.topic: conceptual
+ms.date: 06/30/2017
+ms.openlocfilehash: 0fa695218bb1112324ef2ddac80e52f927a5971b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045298"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
 
@@ -37,7 +34,7 @@ U-SQL は、ビッグ データに該当するワークロードの処理を目�
     (VALUES
        ("Contoso",   1500.0, "2017-03-39"),
        ("Woodgrove", 2700.0, "2017-04-10")
-    ) AS D( customer, amount );
+    ) AS D( customer, amount, date );
 
 @results =
   SELECT

@@ -2,23 +2,30 @@
 title: Azure SQL Database のグループを管理する | Microsoft Docs
 description: エラスティック ジョブの作成と管理について説明します。
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: scale-out
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: cd681a19fcc460427d36c1b827eb0dacd41c18d5
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 07/16/2018
+ms.openlocfilehash: 59235a20db5610ff3ace09d94b8726a9dd8cbfb8
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876792"
 ---
 # <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>エラスティック ジョブを使用したスケールアウト済み Azure SQL Database の作成と管理 (プレビュー)
 
 
-**Elastic Database ジョブ** では、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) 製品利用統計情報の収集などの管理操作を実行して、データベース グループの管理を簡略化できます。 現在、Elastic Database ジョブは、Azure ポータルまたは PowerShell コマンドレットから使用できます。 ただし、Azure Portal では、[エラスティック プール (プレビュー)](sql-database-elastic-pool.md) のすべてのデータベースに対して実行される機能に限定されています。 その他の機能や、カスタム定義のコレクションや ([Elastic Database クライアント ライブラリ](sql-database-elastic-scale-introduction.md)を使用して作成された) シャード セットなどのデータベース グループ全体に対する実行にアクセスするには、「[PowerShell を使用したジョブの作成と管理](sql-database-elastic-jobs-powershell.md)」をご覧ください。 ジョブの詳細については、「 [エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。 
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+**Elastic Database ジョブ** では、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) 製品利用統計情報の収集などの管理操作を実行して、データベース グループの管理を簡略化できます。 現在、Elastic Database ジョブは、Azure ポータルまたは PowerShell コマンドレットから使用できます。 ただし、Azure portal では、[エラスティック プール](sql-database-elastic-pool.md)のすべてのデータベースに対して実行される機能に限定されています。 その他の機能や、カスタム定義のコレクションや ([Elastic Database クライアント ライブラリ](sql-database-elastic-scale-introduction.md)を使用して作成された) シャード セットなどのデータベース グループ全体に対する実行にアクセスするには、「[PowerShell を使用したジョブの作成と管理](sql-database-elastic-jobs-powershell.md)」をご覧ください。 ジョブの詳細については、「 [エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 無料評価版については、「 [無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。

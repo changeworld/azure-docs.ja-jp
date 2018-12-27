@@ -1,36 +1,32 @@
 ---
-title: "Azure Event Hubs .NET Framework API の概要 | Microsoft Docs"
-description: "主要な Event Hubs .NET Framework クライアント API のまとめ。"
+title: Azure Event Hubs .NET Framework API の概要 | Microsoft Docs
+description: 主要な Event Hubs .NET Framework クライアント API のまとめ。
 services: event-hubs
-documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-editor: 
-ms.assetid: 7f3b6cc0-9600-417f-9e80-2345411bd036
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: a51d4552df2643a25ce492b8525b9aa7fa36e21c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.date: 08/16/2018
+ms.author: shvija
+ms.openlocfilehash: 46b0599e6c4d5b4cc2dd9370a28616019b79b50d
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745653"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET Framework API の概要
 
-この記事は主要な Event Hubs .NET Framework クライアント API についてまとめてあります。 2 つのカテゴリがあります。管理 API とランタイム API です。 ランタイム API はメッセージの送受信に必要なすべての操作で構成されています。 管理操作では、エンティティを作成、更新、削除することで Event Hubs エンティティの状態を管理できます。
+この記事は主要な Azure Event Hubs [.NET Framework クライアント API](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) についてまとめてあります。 2 つのカテゴリがあります。管理 API とランタイム API です。 ランタイム API はメッセージの送受信に必要なすべての操作で構成されています。 管理操作では、エンティティを作成、更新、削除することで Event Hubs エンティティの状態を管理できます。
 
-[監視シナリオ](event-hubs-metrics-azure-monitor.md)は管理とランタイムの両方にまたがります。 .NET API に関する詳細なリファレンス ドキュメントについては、[Service Bus .NET](/dotnet/api/microsoft.servicebus.messaging) と [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) に関するリファレンスを参照してください。
+[監視シナリオ](event-hubs-metrics-azure-monitor.md)は管理とランタイムの両方にまたがります。 .NET API に関する詳細なリファレンス ドキュメントについては、[.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient)、[.NET Standard](/dotnet/api/microsoft.azure.eventhubs)、および [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) に関するリファレンスを参照してください。
 
 ## <a name="management-apis"></a>管理 API
 
 次の管理操作を実行するには、Event Hubs 名前空間の **管理** 権限が必要になります。
 
-### <a name="create"></a>[作成]
+### <a name="create"></a>Create
 
 ```csharp
 // Create the event hub
@@ -39,7 +35,7 @@ ehd.PartitionCount = SampleManager.numPartitions;
 await namespaceManager.CreateEventHubAsync(ehd);
 ```
 
-### <a name="update"></a>プライマリの
+### <a name="update"></a>更新プログラム
 
 ```csharp
 var ehd = await namespaceManager.GetEventHubAsync(eventHubName);
@@ -179,6 +175,7 @@ public class SimpleEventProcessor : IEventProcessor
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 Event Hubs シナリオに関する詳細については、次のリンク先を参照してください。
 
 * [Azure Event Hubs とは](event-hubs-what-is-event-hubs.md)

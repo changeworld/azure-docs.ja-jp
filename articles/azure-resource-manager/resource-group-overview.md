@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager の概要 | Microsoft Docs"
-description: "Azure Resource Manager を使用して、Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。"
+title: Azure Resource Manager の概要 | Microsoft Docs
+description: Azure Resource Manager を使用して、Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -9,19 +9,29 @@ editor: tysonn
 ms.assetid: 76df7de1-1d3b-436e-9b44-e1b3766b3961
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: cc3402b56b12e82653f673d7a5ab527231599c5b
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 470d08c13d5874283794fa9a2ce06fcaad4f60c2
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300542"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
 アプリケーションのインフラストラクチャは通常、仮想マシン、ストレージ アカウント、仮想ネットワーク、Web アプリ、データベース、データベース サーバー、サード パーティのサービスなど、複数のコンポーネントで構成されます。 これらのコンポーネントは別々のエンティティではなく、1 つのエンティティの中で互いに関連付けられ相互依存しています。 これらのコンポーネントを、1 つのグループとしてデプロイ、管理、および監視するのが好ましいです。 Azure Resource Manager を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。 
+
+## <a name="consistent-management-layer"></a>一貫性のある管理レイヤー
+Resource Manager では、Azure PowerShell、Azure CLI、Azure portal、REST API、およびクライアント SDK を通じてタスクを実行する一貫性のある管理レイヤーを提供します。 Azure portal で利用できるすべての機能は、Azure PowerShell、Azure CLI、Azure REST API、およびクライアント SDK からも利用できます。 API を介して最初にリリースされた機能は、最初のリリースから 180 日以内にポータルに表示されます。
+
+自分にとって最適なツールと API を選択してください。これらは同じ機能を備えており、一貫性のある結果を提供します。
+
+次の画像では、すべてのツールが同じ Azure Resource Manager API とやり取りする方法を示します。 この API は、要求の認証と承認を行う Resource Manager サービスに要求を渡します。 次に Resource Manager は、適切なリソース プロバイダーに要求をルーティングします。
+
+![Resource Manager の要求モデル](./media/resource-group-overview/consistent-management-layer.png)
 
 ## <a name="terminology"></a>用語集
 Azure Resource Manager には、初めて使う方にとって、あまり馴染みのない用語がいくつか存在します。
@@ -43,15 +53,6 @@ Azure Resource Manager には、初めて使う方にとって、あまり馴染
 * タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理できます。
 * 同じタグを共有するリソース グループのコストを表示することで、組織の課金をわかりやすくすることができます。  
 
-リソース マネージャーには、ソリューションをデプロイして管理するための新しい方法が用意されています。 以前のデプロイメント モデルを使用していて、変更の詳細を確認する場合は、「 [Resource Manager デプロイと従来のデプロイの理解](resource-manager-deployment-model.md) 」を参照してください。
-
-## <a name="consistent-management-layer"></a>一貫性のある管理レイヤー
-Resource Manager では、Azure PowerShell、Azure CLI、Azure Portal、REST API、および開発ツールを使用して実行するタスクについて、一貫性のある管理レイヤーを提供します。 すべてのツールで、一連の操作が共通しています。 ユーザーは最適なツールを使用できるうえ、スムーズにツールを切り替えて使用することができます。 
-
-次の画像では、すべてのツールが同じ Azure Resource Manager API とやり取りする方法を示します。 この API は、要求の認証と承認を行う Resource Manager サービスに要求を渡します。 次に Resource Manager は、適切なリソース プロバイダーに要求をルーティングします。
-
-![Resource Manager の要求モデル](./media/resource-group-overview/consistent-management-layer.png)
-
 ## <a name="guidance"></a>ガイダンス
 次の推奨事項は、ソリューションを操作する際に Resource Manager を最大限に活用するのに役立ちます。
 
@@ -60,7 +61,11 @@ Resource Manager では、Azure PowerShell、Azure CLI、Azure Portal、REST API
 3. アプリやコンピューターの開始または停止など、リソースの管理には命令型コマンドを実行します。
 4. リソース グループ内の同じライフサイクルでリソースを調整します。 リソースのその他すべての整理には、タグを使用します。
 
-企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
+企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)」を参照してください。
+
+グローバル Azure、Azure ソブリン クラウド、Azure Stack で使用できる Resource Manager テンプレートの作成に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」をご覧ください。
+
+[!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 
 ## <a name="resource-groups"></a>リソース グループ
 リソース グループを定義する際、次のような考慮すべき要素があります。
@@ -83,9 +88,9 @@ Azure サービスを扱うための一連のリソースと操作は、それ�
 リソースのデプロイを始める前に、利用可能なリソース プロバイダーを把握する必要があります。 リソース プロバイダーとリソースの名前がわかれば、Azure にデプロイするリソースの定義に役立ちます。 また、各リソースの種類の有効な場所と API のバージョンを把握しておく必要があります。 詳細については、「[リソース プロバイダーと種類](resource-manager-supported-services.md)」を参照してください。
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
-Resource Manager では、Azure ソリューションのインフラストラクチャと構成を定義する JSON 形式のテンプレートを作成できます。 テンプレートを使えば、ソリューションをそのライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。 ポータルからソリューションを作成すると、ソリューションには自動的にデプロイ テンプレートが含まれます。 最初からテンプレートを作成する必要はありません。はじめにソリューション向けのテンプレートを使用して、それを特定のニーズに合わせてカスタマイズできます。 リソース グループの現在の状態をエクスポートするか、特定のデプロイに使用されたテンプレートを表示することで、既存のリソース グループのテンプレートを取得できます。 [エクスポートしたテンプレート](resource-manager-export-template.md)を表示すると、テンプレートの構文について理解するのに役立ちます。
+Resource Manager では、Azure ソリューションのインフラストラクチャと構成を定義する JSON 形式のテンプレートを作成できます。 テンプレートを使えば、ソリューションをそのライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。 ポータルからソリューションを作成すると、ソリューションには自動的にデプロイ テンプレートが含まれます。 最初からテンプレートを作成する必要はありません。はじめにソリューション向けのテンプレートを使用して、それを特定のニーズに合わせてカスタマイズできます。 サンプルについては、「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](./resource-manager-quickstart-create-templates-use-the-portal.md)」を参照してください。 リソース グループの現在の状態をエクスポートするか、特定のデプロイに使用されたテンプレートを表示することでも、既存のリソース グループのテンプレートを取得できます。 [エクスポートしたテンプレート](resource-manager-export-template.md)を表示すると、テンプレートの構文について理解するのに役立ちます。
 
-テンプレートの形式とその構築方法については、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」を参照してください。 リソースの種類に関して JSON 構文を確認するには、「[Define resources in Azure Resource Manager templates (Azure Resource Manager テンプレートのリソースの定義)](/azure/templates/)」を参照してください。
+テンプレートの形式とその構築方法については、「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](./resource-manager-quickstart-create-templates-use-the-portal.md)」を参照してください。 リソースの種類に関して JSON 構文を確認するには、「[Define resources in Azure Resource Manager templates (Azure Resource Manager テンプレートのリソースの定義)](/azure/templates/)」を参照してください。
 
 Resource Manager は他の要求と同様に、テンプレートを処理します (「[一貫性のある管理レイヤー](#consistent-management-layer)」の画像を参照してください)。 Resource Manager はテンプレートを解析し、その構文を適切なリソース プロバイダーの REST API 操作に変換します。 たとえば、Resource Manager が次のリソース定義を含むテンプレートを受け取ったとします。
 
@@ -141,7 +146,7 @@ REQUEST BODY
 
 インフラストラクチャの更新にも、テンプレートを使用することができます。 たとえば、ソリューションにリソースを追加したり、既にデプロイされたリソースに構成ルールを追加したりできます。 テンプレートでリソースの作成を指定した際、そのリソースが既に存在する場合は、Azure Resource Manager では、新しい資産を作成する代わりに更新が実行されます。 Azure Resource Manager では、既存の資産が、新しい資産と同じ状態になるよう更新されます。  
 
-Resource Manager では、セットアップ時に含まれていなかった特定ソフトウェアのインストールなど、追加の操作が必要なシナリオのための拡張機能を使用できます。 DSC、Chef、または Puppet などの構成管理サービスをすでにご利用の場合は、拡張機能を使用すれば、引き続きそのサービスで作業ができます。 仮想マシンの拡張機能については、「[仮想マシンの拡張機能とその機能について](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 
+Resource Manager では、セットアップ時に含まれていなかった特定ソフトウェアのインストールなど、追加の操作が必要なシナリオのための拡張機能を使用できます。 DSC、Chef、または Puppet などの構成管理サービスを既にご利用の場合は、拡張機能を使用すれば、引き続きそのサービスで作業ができます。 仮想マシンの拡張機能については、「[仮想マシンの拡張機能とその機能について](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 
 
 最後に、テンプレートは、アプリのソース コードの一部になります。 テンプレートはソース コード リポジトリにチェックインして、アプリの変更に合わせて更新できます。 テンプレートは Visual Studio から編集できます。
 
@@ -151,6 +156,12 @@ Resource Manager では、セットアップ時に含まれていなかった特
 * [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](resource-group-template-deploy-cli.md)
 * [Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](resource-group-template-deploy-portal.md)
 * [Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ](resource-group-template-deploy-rest.md)
+
+## <a name="safe-deployment-practices"></a>安全なデプロイ プラクティス
+
+Azure に複雑なサービスをデプロイするときには、サービスを複数のリージョンにデプロイし、次のステップに進む前に正常性チェックする必要がある場合があります。 サービスの段階的なロールアウトをうまく調整するには、[Azure Deployment Manager](deployment-manager-overview.md) を使用します。 サービスのロールアウトを段階的に行えば、すべてのリージョンにサービスがデプロイされる前に潜在的な問題を見つけることができます。 これらの用心が必要でない場合は、前のセクションのデプロイ操作が、より適した選択肢となります。
+
+Deployment Manager は現在、プライベート プレビュー段階にあります。
 
 ## <a name="tags"></a>タグ
 Resource Manager では、管理や課金の要件に合わせてリソースを分類できる、タグ付け機能を使用できます。 リソース グループとリソースが複雑に絡み合っており、これらの資産をわかりやすく視覚化する必要がある場合は、タグを使用してください。 たとえば、組織内で同じロールを果たしている複数リソース、または同じ部門に属している複数リソースにタグを付けることができます。 タグがないと、組織内のユーザーは複数のリソースを作成できるものの、作成したリソースを後で特定して管理することが困難になる場合があります。 たとえば、特定のプロジェクトに関するすべてのリソースを削除したい場合があります。 これらのリソースに対してプロジェクトに関するタグが設定されていない場合、手動で探す必要があります。 タグ付けは、サブスクリプションの不要なコストを削減するための重要な方法です。 
@@ -174,20 +185,6 @@ Resource Manager では、管理や課金の要件に合わせてリソースを
 ]
 ```
 
-タグ値が設定されているすべてのリソースを取得するには、次の PowerShell コマンドレットを使用します。
-
-```powershell
-Find-AzureRmResource -TagName costCenter -TagValue Finance
-```
-
-または、次の Azure CLI 2.0 コマンドを使用します。
-
-```azurecli
-az resource list --tag costCenter=Finance
-```
-
-Azure Portal からタグ付きのリソースを表示することもできます。
-
 サブスクリプションの[使用状況レポート](../billing/billing-understand-your-bill.md)にはタグ名と値が含まれます。これにより、タグを使ってコストの計算を分けることができます。 タグの詳細については、 [タグを使用した Azure リソースの整理](resource-group-using-tags.md)を参照してください。
 
 ## <a name="access-control"></a>アクセス制御
@@ -209,52 +206,31 @@ Azure には、次の 4 つのプラットフォーム ロールがあります�
 
 Azure には、リソースに固有のロールもいくつかあります。 一般的なものは次のとおりです。
 
-1. 仮想マシンの共同作業者: 仮想マシンを管理できますが、仮想マシンへのアクセスを許可することはできません。接続先の仮想ネットワークまたはストレージ アカウントを管理することもできません。
+1. 仮想マシン共同作業者: 仮想マシンを管理できますが、仮想マシンへのアクセスを許可することはできません。接続先の仮想ネットワークまたはストレージ アカウントを管理することもできません
 2. ネットワークの共同作業者: すべてのネットワーク リソースを管理できますが、それらへのアクセスを許可することはできません。
 3. ストレージ アカウントの共同作業者: ストレージ アカウントを管理することはできますが、それらへのアクセスを許可することはできません。
 4. SQL Server の共同作業者: SQL サーバーおよびデータベースを管理できますが、そのセキュリティ関連ポリシーは管理できません。
-5. Web サイトの共同作業者: Web サイトを管理できますが、接続されている Web プランは管理できません。
+5. Web サイト共同作業者: Web サイトを管理できますが、接続されている Web プランは管理できません
 
-すべてのロールと許可されるアクションについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。 ロールベースのアクセス制御の詳細については、「 [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。 
+すべてのロールと許可されるアクションについては、「[RBAC: 組み込みのロール](../role-based-access-control/built-in-roles.md)」を参照してください。 ロールベースのアクセス制御の詳細については、「 [Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)」を参照してください。 
 
 リソースにアクセスするコードまたはスクリプトを実行したいものの、それにユーザーの資格情報は使いたくない場合もあります。 その場合は、アプリケーションのサービス プリンシパルと呼ばれる ID を作成して、そのサービス プリンシパルに適切なロールを割り当てることができます。 Resource Manager を利用すれば、アプリケーションの資格情報を作成し、プログラムでアプリケーションの認証を行うことができます。 サービス プリンシパルの作成の詳細については、次のいずれかのトピックを参照してください。
 
-* [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](resource-group-authenticate-service-principal.md)
+* [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)
-* [リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](resource-group-create-service-principal-portal.md)
+* [リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)
 
 重要なリソースを、ユーザーによって削除または変更されないように、明示的にロックすることもできます。 詳細については、[「Azure Resource Manager によるリソースのロック」](resource-group-lock-resources.md)を参照してください。
 
-## <a name="activity-logs"></a>アクティビティ ログ
-Resource Manager では、リソースを作成、変更、削除するすべての操作が記録されます。 アクティビティ ログを使用して、トラブルシューティングを行うときにエラーを探したり、組織のユーザーがどのようにリソースを変更したかを監視したりできます。 ログを表示するには、リソース グループの **[設定]** ブレードで **[アクティビティ ログ]** を選択します。 操作を開始したユーザーなど、さまざまな値でログをフィルター処理できます。 アクティビティ ログの使用については、[Azure リソースを管理するためのアクティビティ ログの表示](resource-group-audit.md)に関するページを参照してください。
-
 ## <a name="customized-policies"></a>カスタマイズされたポリシー
 リソース マネージャーでは、リソースを管理するためにカスタマイズされたポリシーを作成できます。 多様なシナリオに対応した各種ポリシーを作成できます。 リソースに対して名前付け規則を適用できるほか、デプロイできるリソースの種類とインスタンスや、特定の種類のリソースをホストできるリージョンを制限できます。 また、部門別に課金を整理するために、リソースへのタグ値の設定を義務付けることができます。 コストを削減し、サブスクリプション内での一貫性を維持できるようにポリシーを作成します。 
-
-JSON でポリシーを定義し、サブスクリプション全体またはリソース グループ内で適用します。 ポリシーは、リソースの種類に適用されるものであるため、ロールベースのアクセス制御とは異なります。
-
-次の例は、すべてのリソースに costCenter タグが含まれるように指定することでタグの整合性を確保するポリシーを示しています。
-
-```json
-{
-  "if": {
-    "not" : {
-      "field" : "tags",
-      "containsKey" : "costCenter"
-    }
-  },
-  "then" : {
-    "effect" : "deny"
-  }
-}
-```
 
 作成できるポリシーの種類はほかにも多数あります。 詳細については、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」を参照してください。
 
 ## <a name="sdks"></a>SDK
 Azure の SDK は、複数の言語とプラットフォームで利用できます。 これらの言語実装はそれぞれ、エコシステムのパッケージ マネージャーと GitHub を介して入手できます。
 
-Microsoft のオープン ソース SDK リポジトリを次に示します。 フィードバック、問題、プル要求をお待ちしております。
+オープン ソース SDK リポジトリを次に示します。
 
 * [Azure SDK for .NET](https://github.com/Azure/azure-sdk-for-net)
 * [Azure Management Libraries for Java](https://github.com/Azure/azure-sdk-for-java)
@@ -272,18 +248,11 @@ Microsoft のオープン ソース SDK リポジトリを次に示します。 
 
 > [!NOTE]
 > 必要な機能が SDK に備わっていない場合は、 [Azure REST API](https://docs.microsoft.com/rest/api/resources/) を直接呼び出すこともできます。
-> 
-> 
+
 
 ## <a name="next-steps"></a>次の手順
-* テンプレートの簡単な操作手順については、「 [既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
-* さらに詳しくテンプレートの作成方法を解説したチュートリアルについては、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」を参照してください。
-* テンプレートで使用できる関数については、 [テンプレートの関数](resource-group-template-functions.md)
-* Visual Studio と Resource Manager の使用については、「 [Visual Studio での Azure リソース グループの作成とデプロイ](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
 
-この概要のデモンストレーション ビデオを次に示します。
+この記事では、Azure Resource Manager を使用して、Azure のリソースをデプロイ、管理、およびアクセス制御する方法について説明しました。 次の記事に進み、初めての Azure Resource Manager テンプレートを作成する方法について学習してください。
 
->[!VIDEO https://channel9.msdn.com/Blogs/Azure-Documentation-Shorts/Azure-Resource-Manager-Overview/player]
-
-
-[powershellref]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources
+> [!div class="nextstepaction"]
+> [クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](./resource-manager-quickstart-create-templates-use-the-portal.md)

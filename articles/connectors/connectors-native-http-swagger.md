@@ -1,27 +1,24 @@
 ---
-title: "Azure ロジック アプリ用 HTTP + Swagger コネクタで REST エンドポイントを呼び出す |Microsoft Docs"
-description: "ロジック アプリから Swagger と HTTP + Swagger コネクタを通じて REST エンドポイントに接続します。"
+title: Azure Logic Apps からの REST エンドポイントの呼び出し | Microsoft Docs
+description: Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントと通信するタスクとワークフローを自動化します
 services: logic-apps
-author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
-tags: connectors
-ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
+ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
+tags: connectors
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/18/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 0487dbedddee684c75420bd66effe2c963a18624
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123174"
 ---
-# <a name="get-started-with-the-http--swagger-action"></a>HTTP + Swagger アクションの概要
+# <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントを呼び出す
 
 ロジック アプリのワークフローで HTTP + Swagger アクションを使用すると、[Swagger ドキュメント](https://swagger.io)から REST エンドポイントへのファースト クラス コネクタを作成できます。 ロジック アプリ デザイナーの優れたエクスペリエンスを使用し、ロジック アプリを拡張して任意の REST エンドポイントを呼び出すこともできます。
 
@@ -36,7 +33,7 @@ HTTP + Swagger トリガーおよびアクションは、[HTTP アクション](
 ロジック アプリでワークフローのアクションとして HTTP + Swagger 操作を使用する方法の例を次に示します。
 
 1. **[新しいステップ]** をクリックします。
-2. **[アクションの追加]**を選択します。
+2. **[アクションの追加]** を選択します。
 3. アクションの検索ボックスに「 **swagger** 」と入力して、HTTP + Swagger アクションを表示します。
    
     ![HTTP + Swagger アクションの選択](./media/connectors-native-http-swagger/using-action-1.png)
@@ -77,14 +74,14 @@ Azure Storage で Swagger ドキュメントを作成、構成し、格納する
 ## <a name="http--swagger-triggers"></a>HTTP + Swagger トリガー
 トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタにはトリガーが 1 つあります。
 
-| トリガー | [説明] |
+| トリガー | 説明 |
 | --- | --- |
 | HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger アクション
 アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタには、使用可能なアクションが 1 つあります。
 
-| アクションを表示します。 | [説明] |
+| アクションを表示します。 | 説明 |
 | --- | --- |
 | HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
 
@@ -95,19 +92,19 @@ HTTP + Swagger コネクタには、使用可能なアクションが 1 つ用�
 Swagger メタデータを使用して HTTP 送信要求を行います。
 アスタリスク (*) は、必須フィールドであることを意味します。
 
-| 表示名 | プロパティ名 | [説明] |
+| 表示名 | プロパティ名 | 説明 |
 | --- | --- | --- |
 | メソッド* |method |使用する HTTP 動詞 |
 | URI* |uri |HTTP 要求の URI |
 | headers |headers |含める HTTP ヘッダーの JSON オブジェクト |
 | 本文 |body |HTTP 要求の本文 |
-| 認証 |[認証] |要求に使用する認証 詳細については、「[HTTP コネクタ](connectors-native-http.md#authentication)」を参照してください。 |
+| Authentication |[認証] |要求に使用する認証 詳細については、「[HTTP コネクタ](connectors-native-http.md#authentication)」を参照してください。 |
 
 **出力の詳細**
 
 HTTP 応答
 
-| プロパティ名 | データ型 | [説明] |
+| プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
 | headers |オブジェクト |応答ヘッダー |
 | 本文 |オブジェクト |応答オブジェクト |
@@ -116,7 +113,7 @@ HTTP 応答
 ### <a name="http-responses"></a>HTTP 応答
 さまざまなアクションを呼び出すと、特定の応答を受け取る場合があります。 次の表に、対応する応答と説明を示します。
 
-| Name | [説明] |
+| Name | 説明 |
 | --- | --- |
 | 200 |OK |
 | 202 |承認済み |

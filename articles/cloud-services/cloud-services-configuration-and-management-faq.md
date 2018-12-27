@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure Cloud Services の構成と管理の問題についてよくあるご質問 | Microsoft Docs"
-description: "この記事では、Microsoft Azure Cloud Services の構成と管理についてよくあるご質問を紹介します。"
+title: Microsoft Azure Cloud Services の構成と管理の問題についてよくあるご質問 | Microsoft Docs
+description: この記事では、Microsoft Azure Cloud Services の構成と管理についてよくあるご質問を紹介します。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 916fbb436806c64ded9ebf9fdd9c57c42d0809f0
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 81e41ce6818a6f56ba5e6e888480f8b25979fb81
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979201"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題についてよくあるご質問 (FAQ)
 
@@ -34,11 +35,13 @@ ms.lasthandoff: 03/12/2018
 - [インスタンスに "RDP 接続" せずに証明書署名要求 (CSR) を生成する方法を教えてください。](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [クラウド サービス管理証明書の期限が切れました。更新する方法を教えてください。](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
 - [メイン SSL 証明書 (.pfx) と中間証明書 (.p7b) のインストールを自動化する方法を教えてください。](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- ["Microsoft Azure Service Management for MachineKey" 証明書の目的は何ですか。](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **監視およびログ記録**
 
 - [アプリケーションの管理と監視に利用できる Azure Portal の今後の Cloud Service 機能について教えてください。](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
 - [IIS によるログ ディレクトリへの書き込みが停止するのはなぜですか。](#why-does-iis-stop-writing-to-the-log-directory)
+- [Cloud Services の WAD ログ記録を有効にする方法を教えてください。](#how-do-i-enable-wad-logging-for-cloud-services)
 
 **ネットワーク構成**
 
@@ -104,6 +107,10 @@ CSR は単なるテキスト ファイルです。 必ずしも、最終的に�
 
 このタスクはスタートアップ スクリプト (batch/cmd/PowerShell) を使って自動化することができ、サービス定義ファイルでそのスタートアップ スクリプトを登録します。 スタートアップ スクリプトと証明書 (.p7b ファイル) の両方を、スタートアップ スクリプトの同じディレクトリのプロジェクト フォルダーに追加します。
 
+### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>"Microsoft Azure Service Management for MachineKey" 証明書の目的は何ですか。
+
+この証明書は、Azure Web ロールでマシン キーを暗号化するために使用されます。 詳しくは、こちらのアドバイザリ (https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731) をご覧ください。
+
 詳細については、次の記事を参照してください。
 - [クラウド サービスのスタートアップ タスクを構成して実行する方法](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
 - [クラウド サービス共通のスタートアップ タスク](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
@@ -119,7 +126,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-csdef および cscfg のアップロード先に blob またはローカルを選択する機能が、リリースされる予定です。 [New-AzureDeployment](/powershell/module/azure/new-azuredeployment?view=azuresmps-4.0.0) を使用して、各場所の値を設定できます。
+csdef および cscfg のアップロード先に blob またはローカルを選択する機能が、リリースされる予定です。 [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-4.0.0) を使用して、各場所の値を設定できます。
 
 インスタンス レベルでメトリックを監視する機能。 追加の監視機能は、「[クラウド サービスの監視方法](cloud-services-how-to-monitor.md)」に従って利用できます。
 
@@ -132,6 +139,15 @@ csdef および cscfg のアップロード先に blob またはローカルを�
 詳細については、以下のドキュメントをご覧ください。
 * [Azure Storage への診断データの保存と表示](cloud-services-dotnet-diagnostics-storage.md)
 * [IIS Logs stop writing in Cloud Service](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/) (IIS ログがクラウド サービスで書き込みを停止する)
+
+### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Cloud Services の WAD ログ記録を有効にする方法を教えてください。
+Windows Azure 診断 (WAD) ログ記録は、次のオプションを使用して有効にできます。
+1. [Visual Studio から有効にする](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [.Net コードを使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+3. [PowerShell を使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+
+クラウド サービスの現在の WAD 設定を取得するには、[Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps コマンドを使用できます。または、ポータルの [クラウド サービス] --> [拡張機能] ブレードにそれを表示できます。
+
 
 ## <a name="network-configuration"></a>ネットワーク構成
 
@@ -198,10 +214,10 @@ Windows 10 と Windows Server 2016 は、クライアントとサーバー側の
 
 ## <a name="permissions"></a>アクセス許可
 
-### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Cloud Services にロールベースのアクセスを実装する方法を教えてください。
+### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Cloud Services のロールベースのアクセスを実装するにはどうすればよいですか。
 Cloud Services は、Azure Resource Manager ベースのサービスではないため、ロールベースのアクセス制御 (RBAC) モデルをサポートしていません。
 
-「[Azure RBAC と従来のサブスクリプションの管理者の比較](../active-directory/role-based-access-control-what-is.md#azure-rbac-vs-classic-subscription-administrators)」をご覧ください。
+「[Azure での各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。
 
 ## <a name="remote-desktop"></a>リモート デスクトップ
 
@@ -232,7 +248,7 @@ Application Insights でカスタム メトリックを利用してクラウド 
 
 Cloud Services 用に Application Insights を有効にする方法について詳しくは、「[Azure Cloud Services 向けの Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)」をご覧ください
 
-Cloud Services 用に Azure 診断ログを有効にする方法について詳しくは、「[Azure クラウド サービスと仮想マシンに対する診断を設定する](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)」をご覧ください
+Cloud Services 用に Azure 診断ログを有効にする方法について詳しくは、「[Azure クラウド サービスと仮想マシンに対する診断を設定する](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)」をご覧ください
 
 ## <a name="generic"></a>ジェネリック
 
@@ -279,7 +295,7 @@ Azure は、%approot% ドライブに対して何も書き込みません。 .cs
 スタートアップ タスクで PowerShell スクリプトを使用してマルウェア対策拡張機能を有効にすることができます。 次の記事の手順に従って実装してください。 
  
 - [PowerShell のスタートアップ タスクを作成する](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/Azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
 マルウェア対策デプロイ シナリオの詳細とポータルから有効にする方法については、「[マルウェア対策のデプロイ シナリオ](../security/azure-security-antimalware.md#antimalware-deployment-scenarios)」を参照してください。
 

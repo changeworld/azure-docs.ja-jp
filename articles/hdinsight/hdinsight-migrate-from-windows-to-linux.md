@@ -1,25 +1,20 @@
 ---
-title: "Windows ベースの HDInsight から Linux ベースの HDInsight への移行 - Azure | Microsoft Docs"
-description: "Windows ベースの HDInsight クラスターから Linux ベースの HDInsight クラスターへの移行方法について説明します。"
+title: Windows ベースの HDInsight から Linux ベースの HDInsight への移行 - Azure
+description: Windows ベースの HDInsight クラスターから Linux ベースの HDInsight クラスターへの移行方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ff35be59-bae3-42fd-9edc-77f0041bab93
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: dff9eaad252a71942b07212b7cfa9d9ddf346a3f
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.topic: conceptual
+ms.date: 05/30/2018
+ms.author: hrasheed
+ms.openlocfilehash: 3f0c912d1489884e0fef87e495d91486f3b1fc67
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010067"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
 
@@ -73,7 +68,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
     write-host "Default container: $clusterInfo.DefaultStorageContainer"
     ```
 
-2. HDInsight ドキュメントに記載された Linux ベース クラスターの作成手順に従ってテスト環境を作成します。 クラスターを作成する前に、 **[オプションの構成]**を選択します。
+2. HDInsight ドキュメントに記載された Linux ベース クラスターの作成手順に従ってテスト環境を作成します。 クラスターを作成する前に、 **[オプションの構成]** を選択します。
 
 3. [オプションの構成] セクションで、**[リンクされたストレージ アカウント]** を選択します。
 
@@ -102,7 +97,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 
 ## <a name="client-side-technologies"></a>クライアント側のテクノロジ
 
-[Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)、[AZURE-CLI](../cli-install-nodejs.md)、[.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) などのクライアント側のテクノロジでは、Linux ベースのクラスターを引き続き使用できます。 これらのテクノロジは、両方のクラスター OS の種類で同じ REST API を使用します。
+[Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)、[Azure クラシック CLI](../cli-install-nodejs.md)、[.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) などのクライアント側のテクノロジでは、Linux ベースのクラスターを引き続き使用できます。 これらのテクノロジは、両方のクラスター OS の種類で同じ REST API を使用します。
 
 ## <a name="server-side-technologies"></a>サーバー側のテクノロジ
 
@@ -111,7 +106,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 | 使用するテクノロジ | 実行するアクション |
 | --- | --- |
 | **PowerShell** (クラスターの作成時に使用されるスクリプトを含む、サーバー側スクリプト) |Bash スクリプトを書き直します。 スクリプト アクションについては、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」および「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。 |
-| **Azure CLI** (サーバー側スクリプト) |Azure CLI は Linux で使用可能ですが、HDInsight クラスター ヘッド ノードにはプレインストールされません。 Azure CLI のインストールの詳細については、「[Azure CLI 2.0 の概要](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)」を参照してください。 |
+| **Azure クラシック CLI** (サーバー側スクリプト) |Azure クラシック CLI は Linux で使用可能ですが、HDInsight クラスター ヘッド ノードにはプレインストールされません。 Azure クラシック CLI のインストールの詳細については、[Azure クラシック CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)に関するページをご覧ください。 |
 | **.NET コンポーネント** |.Net は、[Mono](https://mono-project.com) を使用した Linux ベースの HDInsight でサポートされています。 詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。 |
 | **Win32 コンポーネントまたはその他の Windows 専用のテクノロジ** |ガイダンスはコンポーネントやテクノロジによって異なります。 Linux と互換性があるバージョンを確認できます。 ない場合は、代わりの解決策を見つけるか、このコンポーネントを再生成する必要があります。 |
 
@@ -148,7 +143,7 @@ Windows ベースの HDInsight クラスターは従来の仮想ネットワー�
 
 ## <a name="management-and-monitoring"></a>管理と監視
 
-ジョブ履歴 UI や Yarn UI など、Windows ベースの HDInsight で使用した可能性のある Web UI の多くは、Ambari で使用できます。 また、Ambari Hive View で、Web ブラウザーを使用して Hive クエリを実行することができます。 Ambari Web UI は、https://CLUSTERNAME.azurehdinsight.net の Linux ベースの HDInsight クラスターで利用できます。
+ジョブ履歴 UI や Yarn UI など、Windows ベースの HDInsight で使用した可能性のある Web UI の多くは、Ambari で使用できます。 また、Ambari Hive View で、Web ブラウザーを使用して Hive クエリを実行することができます。 Ambari Web UI は、 https://CLUSTERNAME.azurehdinsight.net の Linux ベースのクラスターで利用できます。
 
 Ambari の操作の詳細については、次のドキュメントを参照してください。
 
@@ -234,7 +229,7 @@ C# アプリケーションを使用するワークフローを使用してい�
 | Windows ベースの場合 | Linux ベースの場合 |
 | --- | --- |
 | Storm ダッシュボード |Storm ダッシュ ボードは使用できません。 トポロジの送信方法については、「 [Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md) 」を参照してください。 |
-| Storm UI |Storm UI は https://CLUSTERNAME.azurehdinsight.net/stormui で利用できます。 |
+| Storm UI |Storm UI は、 https://CLUSTERNAME.azurehdinsight.net/stormui は利用できます。 |
 | Visual Studio を使用して、C# またはハイブリッド トポロジを作成、デプロイ、および管理します。 |HDInsight 上の Linux ベースの Storm で、C# (SCP.NET) またはハイブリッド トポロジの作成、デプロイおよび管理に Visual Studio を使用できます。 2016年 10 月 28 日より後に作成されたクラスターでのみ使用できます。 |
 
 ## <a name="hbase"></a>hbase

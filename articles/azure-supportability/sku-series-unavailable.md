@@ -1,11 +1,11 @@
 ---
-title: "利用できない SKU シリーズ | Microsoft Docs"
-description: "一部の SKU シリーズは、このリージョンでは、選択されたサブスクリプションでご利用いただけません。"
+title: 利用できない SKU シリーズ | Microsoft Docs
+description: 一部の SKU シリーズは、このリージョンでは、選択されたサブスクリプションでご利用いただけません。
 services: Azure Supportability
-documentationcenter: 
+documentationcenter: ''
 author: stevendotwang
 manager: rajatk
-editor: 
+editor: ''
 ms.service: azure-supportability
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24870580"
 ---
 # <a name="region-or-sku-unavailable"></a>リージョンまたは SKU が利用できない
 この記事では、Azure サブスクリプションからリージョンまたは VM SKU を利用できない問題の解決方法について説明します。

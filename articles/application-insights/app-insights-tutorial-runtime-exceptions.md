@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights を使ってランタイムの例外を診断する | Microsoft Docs"
-description: "Azure Application Insights を使用して、お使いのアプリケーションのランタイムの例外を見つけて診断するチュートリアルです。"
+title: Azure Application Insights を使ってランタイムの例外を診断する | Microsoft Docs
+description: Azure Application Insights を使用して、お使いのアプリケーションのランタイムの例外を見つけて診断するチュートリアルです。
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
@@ -10,11 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 115611c5d4eeffb0f0600dd0a792ee9f80247e36
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 9c36920d2d1d201a874abaeeaac9eb965e0e641b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084014"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
@@ -36,7 +37,7 @@ Azure Application Insights は、お使いのアプリケーションからテ�
 - 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
     - ASP.NET および Web の開発
     - Azure の開発
-- [Visual Studio Snapshot Debugger](http://aka.ms/snapshotdebugger) をダウンロードしてインストールします。
+- [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) をダウンロードしてインストールします。
 - [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) を有効にします
 - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](app-insights-asp-net.md)を実行します。 
 - このチュートリアルでは、お使いのアプリケーションで例外の ID を追跡し、例外を生成する開発環境またはテスト環境でお使いのコードを変更します。 
@@ -49,11 +50,11 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 Application Insights は、お使いのアプリケーションのエラーを収集し、さまざまな操作全体のエラー頻度を表示して、影響が最も高いエラーに専念できるようにします。  その後、これらのエラーの詳細を掘り下げて、根本原因を特定できます。   
 
 1. **Application Insights** を選んでから、ご利用のサブスクリプションを選びます。  
-2. **[失敗]** パネルを開くには、**[調査]** メニューの下にある**[失敗]** を選ぶか、**[失敗した要求]** グラフをクリックします。
+2. **[失敗]** パネルを開くには、**[調査]** メニューの下にある **[失敗]** を選ぶか、**[失敗した要求]** グラフをクリックします。
 
     ![失敗した要求](media/app-insights-tutorial-runtime-exceptions/failed-requests.png)
 
-3. **[失敗した要求]** パネルは、失敗した要求の数と、アプリケーションの各操作の影響を受けたユーザーの数を表示します。  ユーザーがこの情報を並べ替えることによって、ユーザーに大きく影響するそのようなエラーを特定できます。  この例では、**GET Employees/Create (従業員を取得/作成)**  と **GET Customers/Details (顧客を取得/詳細)**　が、エラーと影響を受けたユーザーの数が多いため、有力な調査候補です。  操作を選ぶと、右のパネルにこの操作のより詳しい情報が表示されます。
+3. **[失敗した要求]** パネルは、失敗した要求の数と、アプリケーションの各操作の影響を受けたユーザーの数を表示します。  ユーザーがこの情報を並べ替えることによって、ユーザーに大きく影響するそのようなエラーを特定できます。  この例では、**GET Employees/Create (従業員を取得/作成)**  と **GET Customers/Details (顧客を取得/詳細)** 　が、エラーと影響を受けたユーザーの数が多いため、有力な調査候補です。  操作を選ぶと、右のパネルにこの操作のより詳しい情報が表示されます。
 
     ![失敗した要求パネル](media/app-insights-tutorial-runtime-exceptions/failed-requests-blade.png)
 
@@ -61,20 +62,17 @@ Application Insights は、お使いのアプリケーションのエラーを�
 
     ![[失敗した要求] ウィンドウ](media/app-insights-tutorial-runtime-exceptions/failed-requests-window.png)
 
-5. **[詳細の表示]** をクリックして、操作の詳細を表示します。  これには、2 つの失敗した依存関係を示すガント チャートが含まれ、それを表示するのに合計 0.5 秒ほどしかかかりません。  「[Find and diagnose performance issues with Azure Application Insights (Azure Application Insights でのパフォーマンスの問題の検出と診断)](app-insights-tutorial-performance.md)」のチュートリアルを完了することで、パフォーマンスの問題の分析をさらに詳しくご覧いただけます。
+5. フィルター処理された結果の数のボタンをクリックすると、関連するサンプルが表示されます。 "提案される" サンプルには、たとえサンプリングがいずれかのコンポーネントで有効であったとしても、すべてのコンポーネントの関連するテレメトリーが含まれます。 検索結果をクリックすると、エラーの詳細が表示されます。
 
-    ![失敗した要求の詳細](media/app-insights-tutorial-runtime-exceptions/failed-requests-details.png)
+    ![失敗した要求サンプル](media/app-insights-tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. 操作の詳細には、エラーを引き起こしたと思われる FormatException も表示されます。  例外または**上位 3 件の 例外の種類**のカウントをクリックして詳細を表示します。  無効な郵便番号が原因であることを確認できます。
+6. 失敗した要求の詳細にはガント チャートが表示されます。このチャートから、このトランザクションに 2 つの依存関係のエラーがあり、トランザクションの合計持続時間のうち 50% を超える時間を占めていることがわかります。 このエクスペリエンスは、この操作 ID に関連する分散アプリケーションのコンポーネント全体のすべてのテレメトリを示します。 [この新しいエクスペリエンスの詳細を参照してください](app-insights-transaction-diagnostics.md)。 いずれかの項目を選択すると、右側に詳細が表示されます。 
+
+    ![失敗した要求の詳細](media/app-insights-tutorial-runtime-exceptions/failed-request-details.png)
+
+7. 操作の詳細には、エラーを引き起こしたと思われる FormatException も表示されます。  無効な郵便番号が原因であることを確認できます。 デバッグのスナップショットを開くと、Visual Studio でコード レベルのデバッグ情報を確認できます。
 
     ![例外の詳細](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
-
-> [!NOTE]
-要求、依存関係、例外、トレース、イベントなど、関連するサーバー側のテレメトリを一括して全画面表示で確認するには、[Unified details: E2E Transaction Diagnostics]\(詳細の一覧: E2C トランザクションの診断\) [プレビュー エクスペリエンス](app-insights-previews.md)を有効にします。 
-
-このプレビューを有効にすると、依存関係呼び出しにかかった時間を、エラーや例外と一緒に 1 つの画面で確認できます。 コンポーネント間のトランザクションについては、ガント チャートと詳細ウィンドウを見ると、根本原因となっているコンポーネント、依存関係、または例外をすばやく診断できます。 選択したコンポーネント操作に関して収集されたトレースやイベントの時系列を確認する場合には、最下部のセクションを展開します。 [この新しいエクスペリエンスの詳細を確認する](app-insights-transaction-diagnostics.md)  
-
-![トランザクションの診断](media/app-insights-tutorial-runtime-exceptions/e2e-transaction-preview.png)
 
 ## <a name="identify-failing-code"></a>欠陥コードを特定する
 Snapshot Debugger は、お使いのアプリケーションで最も一般的な例外のスナップショットを収集し、運用環境におけるその根本原因の診断をサポートします。  ポータルで [Debug Snapshots (デバッグ スナップショット)] を表示して、コール スタックを表示し、各呼び出しスタック フレームで変数を確認できます。 その後、スナップショットをダウンロードして Visual Studio 2017 で開くことで、ソース コードをデバッグできます。
@@ -84,13 +82,13 @@ Snapshot Debugger は、お使いのアプリケーションで最も一般的�
 
     ![スナップショットをデバッグする](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-01.png)
 
-4. 有効な値を持つ最初の呼び出しが **ValidZipCode** であるため、郵便番号が整数に変換できない文字で提供されていたことが確認できます。  これは、修正する必要があるコードのエラーのようです。
+3. 有効な値を持つ最初の呼び出しが **ValidZipCode** であるため、郵便番号が整数に変換できない文字で提供されていたことが確認できます。  これは、修正する必要があるコードのエラーのようです。
 
     ![スナップショットをデバッグする](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-5. 修正する必要がある実際のコードがあるスナップショットを Visual Studio にダウンロードするには、**[Download Snapshot]\(スナップショットのダウンロード\)** をクリックします。
-6. スナップショットは、Visual Studio に読み込まれます。
-7. これで、例外の原因となったコード行を素早く特定する デバッグ セッションを Visual Studio で実行できます。
+4. このオプションを Visual Studio にダウンロードして、修正する必要がある実際のコードをそこで見つけることができます。 これを行うには、**[スナップショットのダウンロード]** をクリックします。
+5. スナップショットは、Visual Studio に読み込まれます。
+6. これで、例外の原因となったコード行を素早く特定するデバッグ セッションを Visual Studio Enterprise で実行できます。
 
     ![コードの例外](media/app-insights-tutorial-runtime-exceptions/exception-code.png)
 
@@ -105,11 +103,11 @@ Application Insights によって収集されたすべてのデータはAzure Lo
 9. **[影響の分析]** をクリックして、Application Insights Analytics を開きます。  影響を受けたユーザー、ブラウザー、リージョンなどの失敗した要求に関する詳細情報を提供するいくつかのクエリが表示されます。<br><br>![Analytics](media/app-insights-tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>作業項目を追加する
-Application Insights を Visual Studio Team Services や GitHub などの追跡システムに接続する場合は、Application Insights から直接、作業項目を作成できます。
+Application Insights を Azure DevOps や GitHub などの追跡システムに接続する場合は、Application Insights から直接、作業項目を作成できます。
 
-1. Application Insights の**[Exception Properties]\(例外プロパティ\)** パネルに戻ります。
+1. Application Insights の **[Exception Properties]\(例外プロパティ\)** パネルに戻ります。
 2. **[新しい作業項目]** をクリックします。
-3. **[新しい作業項目]**パネルが開き、既に取り込まれている例外の詳細が表示されます。  保存する前にその他の情報を追加できます。
+3. **[新しい作業項目]** パネルが開き、既に取り込まれている例外の詳細が表示されます。  保存する前にその他の情報を追加できます。
 
     ![新しい作業項目](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 

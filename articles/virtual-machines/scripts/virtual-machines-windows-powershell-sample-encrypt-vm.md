@@ -1,25 +1,26 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - Windows VM の暗号化 | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - Windows VM の暗号化"
+title: Azure PowerShell のサンプル スクリプト - Windows VM の暗号化 | Microsoft Docs
+description: Azure PowerShell のサンプル スクリプト - Windows VM の暗号化
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
-manager: timlt
+author: cynthn
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: iainfou
-ms.openlocfilehash: f405cdaf61d6aaafa8568a9d7f21614071285c17
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.author: cynthn
+ms.openlocfilehash: af12630839d31bd5e3baa4c67cdd881f936e9d19
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927531"
 ---
 # <a name="encrypt-a-windows-virtual-machine-with-azure-powershell"></a>Azure PowerShell を使用した Windows 仮想マシンの暗号化
 
@@ -58,7 +59,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 | [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) | VM の暗号化処理の状態を表示します。 |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

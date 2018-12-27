@@ -1,28 +1,31 @@
 ---
-title: "Azure CLI のサンプル スクリプト - ACS DC/OS クラスターの作成 | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - ACS DC/OS クラスターの作成"
+title: Azure CLI のサンプル スクリプト - ACS DC/OS クラスターの作成 | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - ACS DC/OS クラスターの作成
 services: container-service
-documentationcenter: 
-author: neilpeterson
-manager: timlt
-editor: 
+documentationcenter: ''
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: acs, azure-container-service
-keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, DC/OS, Azure"
-ms.assetid: 
+keywords: Docker, コンテナー, マイクロサービス, Kubernetes, DC/OS, Azure
+ms.assetid: ''
 ms.service: container-service
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
-ms.author: nepeters
-ms.openlocfilehash: 1d08dc6b1b39a6908ce5851b5f57756701fc39eb
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: iainfou
+ms.openlocfilehash: 2d9f58527908a17dd445b6afecbcd7e93f70de2c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001626"
 ---
-# <a name="create-an-azure-container-service-dcos-cluster"></a>Azure Container Service DC/OS クラスターの作成
+# <a name="deprecated-create-an-azure-container-service-dcos-cluster"></a>(非推奨) Azure Container Service DC/OS クラスターの作成
+
+[!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 
 このサンプルでは、DCOS を実行する Azure Container Service クラスターが作成されます。
 
@@ -56,8 +59,8 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az acs create](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | ACS クラスターが作成されます。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az acs create](https://docs.microsoft.com/cli/azure/acs#az-acs-create) | ACS クラスターが作成されます。 |
 
 ## <a name="next-steps"></a>次の手順
 

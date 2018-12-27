@@ -1,11 +1,11 @@
 ---
-title: "ロジック アプリに遅延を追加する | Microsoft Docs"
-description: "遅延アクションおよび延期期限アクションの概要と、Azure ロジック アプリでの使用方法"
-services: 
-documentationcenter: 
+title: ロジック アプリに遅延を追加する | Microsoft Docs
+description: 遅延アクションおよび延期期限アクションの概要と、Azure ロジック アプリでの使用方法
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 915f48bf-3bd8-4656-be73-91a941d0afcd
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27963674"
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>遅延アクションと延期期限アクションの概要
 遅延アクションと "延期期限" アクションを使用すると、さまざまなワークフロー シナリオに対応できます。
@@ -37,7 +38,7 @@ ms.lasthandoff: 01/19/2018
 ロジック アプリで遅延ステップを使用する方法の例を次に示します。
 
 1. トリガーを追加したら、 **[新しいステップ]** をクリックしてアクションを追加します。
-2. 「 **遅延** 」を検索して、遅延アクションを表示します。 この例では、 **[遅延]**を選択します。
+2. 「 **遅延** 」を検索して、遅延アクションを表示します。 この例では、 **[遅延]** を選択します。
    
     ![Delay actions](./media/connectors-native-delay/using-action-1.png)
 3. 遅延を構成するアクション プロパティをすべて設定します。

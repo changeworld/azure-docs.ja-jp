@@ -1,10 +1,10 @@
 ---
-title: "VM 拡張機能による Linux VM の監視 | Microsoft Doc"
-description: "Linux の診断拡張機能を使用して Azure 内の Linux VM のパフォーマンスと診断データを監視する方法を説明します。"
+title: VM 拡張機能による Linux VM の監視 | Microsoft Doc
+description: Linux の診断拡張機能を使用して Azure 内の Linux VM のパフォーマンスと診断データを監視する方法を説明します。
 services: virtual-machines-linux
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: f54a11c5-5a0e-40ff-af6c-e60bd464058b
 ms.service: virtual-machines-linux
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: b8c6e2e22d8478b6e92e7b7942f15d37a840fed3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13d7594c15959661f3f9c3ab2165739719beac07
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308223"
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Linux の診断拡張機能を使用した Linux VM のパフォーマンスと診断データの監視
 
@@ -43,17 +44,17 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 * [System Center Cross Platform Solutions のサイト](https://scx.codeplex.com/wikipage?title=xplatproviders)で指定されているすべてのシステム データ。
 * ユーザーが指定したログ ファイル。
 
-この拡張機能は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方で機能します。
+この拡張機能は、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方で機能します。
 
 ### <a name="current-version-of-the-extension-and-deprecation-of-old-versions"></a>現行バージョンの拡張機能と以前のバージョンの廃止予定
 
-この拡張機能の最新バージョンは **2.3** です。**以前のバージョン (2.0、2.1、2.2) は今年 (2017 年) の終わりまでに廃止され、公開が停止されます**。 マイナー バージョンの自動アップグレードを無効にして Linux の診断拡張機能をインストールした場合は、一度拡張機能をアンインストールし、マイナー バージョンの自動アップグレードを有効にして再インストールすることを強くお勧めします。 クラシック (ASM) VM に、Azure XPLAT CLI または PowerShell で拡張機能をインストールする場合、バージョンとして「2.*」を指定します。 ARM VM の場合は、VM デプロイ テンプレートに「"autoUpgradeMinorVersion": true」を追加します。 また、拡張機能を新規インストールする場合は、マイナー バージョンの自動アップグレード オプションをオンにする必要があります。
+この拡張機能の最新バージョンは **2.3** です。**以前のバージョン (2.0、2.1、2.2) は今年 (2017 年) の終わりまでに非推奨となり、公開が停止されます**。 マイナー バージョンの自動アップグレードを無効にして Linux の診断拡張機能をインストールした場合は、一度拡張機能をアンインストールし、マイナー バージョンの自動アップグレードを有効にして再インストールすることを強くお勧めします。 クラシック (ASM) VM に、Azure XPLAT CLI または PowerShell で拡張機能をインストールする場合、バージョンとして「2.*」を指定します。 ARM VM の場合は、VM デプロイ テンプレートに「"autoUpgradeMinorVersion": true」を追加します。 また、拡張機能を新規インストールする場合は、マイナー バージョンの自動アップグレード オプションをオンにする必要があります。
 
 ## <a name="enable-the-extension"></a>拡張機能を有効にする
 
 この拡張機能は、 [Azure ポータル](https://portal.azure.com/#)、Azure PowerShell、または Azure CLI スクリプトから有効にできます。
 
-システムおよびパフォーマンス データを Azure Portal で直接表示および構成するには、[Azure ブログのこちらの手順](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)に従ってください。
+システムおよびパフォーマンス データを Azure Portal で直接表示および構成するには、[Azure ブログのこちらの手順](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)に従ってください。
 
 この記事では、Azure CLI コマンドを使用して、拡張機能を有効にして構成する方法を説明します。 これにより、ストレージ テーブルからデータを直接読み込んで表示することができます。
 
@@ -64,7 +65,7 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 * **Azure Linux エージェント バージョン 2.0.6 またはそれ以降**。
 
   大部分の Azure VM Linux ギャラリー イメージにはバージョン 2.0.6 以降が含まれています。 **WAAgent -version** を実行して、VM にインストールされているバージョンを確認できます。 VM が 2.0.6 より前のバージョンを実行している場合は、 [GitHub のこちらの説明](https://github.com/Azure/WALinuxAgent "説明") に従って更新できます。
-* **Azure CLI**。 [このガイダンスの CLI のインストール手順](../../../cli-install-nodejs.md) に従って、コンピューターに Azure CLI 環境をセットアップします。 Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、ターミナル、またはコマンド プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。 次に例を示します。
+* **Azure CLI**。 [このガイダンスの CLI のインストール手順](../../../cli-install-nodejs.md) に従って、コンピューターに Azure CLI 環境をセットアップします。 Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、ターミナル、またはコマンド プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。 例: 
 
   * ヘルプ情報の詳細については、 **azure vm extension set --help** を実行します。
   * Azure にサインインするには、 **azure login** を実行します。
@@ -88,7 +89,7 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
         "storageAccountKey" : "the key of the account"
     }
 
-手順 2. **azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** を実行します。
+手順 2. **azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2.\* --private-config-path PrivateConfig.json** を実行します。
 
 ### <a name="scenario-2-customize-the-performance-monitor-metrics"></a>シナリオ 2. パフォーマンス モニターのメトリックをカスタマイズする
 

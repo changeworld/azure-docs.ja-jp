@@ -1,24 +1,26 @@
 ---
-title: "PowerShell を使用した Azure Active Directory Domain Services の有効化 | Microsoft Docs"
-description: "PowerShell を使用した Azure Active Directory Domain Services の有効化"
+title: PowerShell を使用した Azure Active Directory Domain Services の有効化 | Microsoft Docs
+description: PowerShell を使用した Azure Active Directory Domain Services の有効化
 services: active-directory-ds
-documentationcenter: 
-author: mahesh-unnikrishnan
+documentationcenter: ''
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2017
-ms.author: maheshu
-ms.openlocfilehash: a456a6265400abe1d3a3620df74e41d8b4399b97
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: ergreenl
+ms.openlocfilehash: b58df5ebf5332688424ac6ed2eeb9679487bcdc4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240258"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell を使用した Azure Active Directory Domain Services の有効化
 この記事では、PowerShell を使用して Azure Active Directory (AD) Domain Services を有効にする方法について説明します。
@@ -36,11 +38,11 @@ ms.lasthandoff: 12/11/2017
 次の PowerShell コマンドを入力して Azure AD Domain Services に必要なサービス プリンシパルを Azure AD ディレクトリに作成します。
 ```powershell
 # Create the service principal for Azure AD Domain Services.
-New-AzureADServicePrincipal -AppId “2565bd9d-da50-47d4-8b85-4c97f669dc36”
+New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
 ## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>タスク 3 : "AAD DC 管理者" グループを作成して構成する
-次のタスクでは、管理対象ドメインでの管理タスクを委任するために使用する管理者グループを作成します。
+次のタスクでは、マネージド ドメインでの管理タスクを委任するために使用する管理者グループを作成します。
 ```powershell
 # Create the delegated administration group for AAD Domain Services.
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -84,7 +86,7 @@ New-AzureRmResourceGroup `
   -Location $AzureLocation
 ```
 
-仮想ネットワークおよび Azure AD Domain Services 管理対象ドメインをこのリソース グループに作成できます。
+仮想ネットワークおよび Azure AD Domain Services のマネージド ドメインをこのリソース グループに作成できます。
 
 
 ## <a name="task-6-create-and-configure-the-virtual-network"></a>タスク 6 : 仮想ネットワークを作成して構成する
@@ -115,7 +117,7 @@ $Vnet=New-AzureRmVirtualNetwork `
 ```
 
 
-## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>タスク 7 : Azure AD Domain Services の管理対象ドメインをプロビジョニングする
+## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>タスク 7 : Azure AD Domain Services のマネージド ドメインをプロビジョニングする
 次の PowerShell コマンドを入力して、ディレクトリに対して Azure AD Domain Services を有効にします。
 
 ```powershell
@@ -134,10 +136,10 @@ New-AzureRmResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGro
 ```
 
 > [!WARNING]
-> **管理対象ドメインをプロビジョニングした後、必ず追加の構成手順を実行してください。**
-> 管理対象ドメインがプロビジョニングされた後、次のタスクを実行する必要があります。
-> * 仮想マシンが管理対象ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの **[DNS 設定を更新](active-directory-ds-getting-started-dns.md)**します。
-* **[Azure AD Domain Services とのパスワード同期を有効](active-directory-ds-getting-started-password-sync.md)**にして、エンド ユーザーが会社の資格情報を使用して管理対象ドメインにサインインできるようにします。
+> **マネージド ドメインをプロビジョニングした後、必ず追加の構成手順を実行してください。**
+> マネージド ドメインがプロビジョニングされた後、次のタスクを実行する必要があります。
+> * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの **[DNS 設定を更新](active-directory-ds-getting-started-dns.md)** します。
+* **[Azure AD Domain Services とのパスワード同期を有効](active-directory-ds-getting-started-password-sync.md)** にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 >
 
 
@@ -161,10 +163,10 @@ $AzureLocation = "westus"
 Connect-AzureAD
 
 # Login to your Azure subscription.
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # Create the service principal for Azure AD Domain Services.
-New-AzureADServicePrincipal -AppId “2565bd9d-da50-47d4-8b85-4c97f669dc36”
+New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 # Create the delegated administration group for AAD Domain Services.
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -219,14 +221,14 @@ New-AzureRmResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGro
 ```
 
 > [!WARNING]
-> **管理対象ドメインをプロビジョニングした後、必ず追加の構成手順を実行してください。**
-> 管理対象ドメインがプロビジョニングされた後、次のタスクを実行する必要があります。
-> * 仮想マシンが管理対象ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
-* Azure AD Domain Services とのパスワード同期を有効にして、エンド ユーザーが会社の資格情報を使用して管理対象ドメインにサインインできるようにします。
+> **マネージド ドメインをプロビジョニングした後、必ず追加の構成手順を実行してください。**
+> マネージド ドメインがプロビジョニングされた後、次のタスクを実行する必要があります。
+> * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
+* Azure AD Domain Services とのパスワード同期を有効にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 >
 
-## <a name="next-steps"></a>次のステップ
-管理対象ドメインを作成した後は、管理対象のドメインを使用できるように、次の構成タスクを実行します。
+## <a name="next-steps"></a>次の手順
+マネージド ドメインを作成した後は、マネージド ドメインを使用できるように、次の構成タスクを実行します。
 
-* [仮想ネットワークの DNS サーバー設定を管理対象ドメインを指定するように更新する](active-directory-ds-getting-started-dns.md)
-* [管理対象ドメインとのパスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)
+* [仮想ネットワークの DNS サーバー設定をマネージド ドメインを指定するように更新する](active-directory-ds-getting-started-dns.md)
+* [マネージド ドメインとのパスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)

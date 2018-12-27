@@ -9,18 +9,20 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: bee289da3f18edd0cb425f3d9acde084567a3b13
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b40e2ba448236bcef72ffe501b4b14fa0dd64e1c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755802"
 ---
-| リソース | 制限 |
+| Resource | 制限 |
 | --- | --- |
 | スケールの単位 | リージョンあたり 10<sup>1</sup> |
 | キャッシュ | ユニットあたり 5 GB<sup>1</sup> |
 | HTTP 機関あたりのバックエンドの同時接続<sup>2</sup> | ユニットあたり 2048<sup>3</sup> |
 | キャッシュする応答の最大サイズ | 10 MB |
+| ポリシー ドキュメントの最大サイズ | 256 KB |
 | カスタム ゲートウェイ ドメインの最大数 | サービス インスタンスあたり 20<sup>4</sup> |
 
 

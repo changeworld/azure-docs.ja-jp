@@ -16,7 +16,7 @@
    ![](./media/connectors-create-api-twilio/twilio-0.png)
 2. これまでに Twilio への接続を作成していない場合は、Twilio の資格情報を指定するよう求められます。 この資格情報を使用して、接続するロジック アプリの承認と、Twilio アカウントのデータへのアクセスが行われます。  
    ![](./media/connectors-create-api-twilio/twilio-1.png)  
-3. Twilio のダッシュボードから **Twilio アカウント ID** と **Twilio アクセス トークン**が必要になるため、ここで Twilio アカウントにログインし、これらの 2 つの情報を取得します。  
+3. Twilio のダッシュボードから **Twilio アカウント ID** と **Twilio アクセス トークン**が必要になるため、ここで Twilio アカウントにサインインし、これらの 2 つの情報を取得します。  
    ![](./media/connectors-create-api-twilio/twilio-2.png)  
 4. Twilio とロジック アプリでは別の名前を使用して、これらの 2 つの情報を識別します。 次のようにして、これらの名前をロジック アプリのダイアログに対応付ける必要があります。![](./media/connectors-create-api-twilio/twilio-3.png)  
 5. **[接続の作成]** ボタンを選択します。  

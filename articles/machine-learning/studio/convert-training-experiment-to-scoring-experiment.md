@@ -3,22 +3,25 @@ title: Azure Machine Learning Studio でのデプロイのためにモデルを�
 description: Machine Learning Studio のトレーニング実験を予測実験に変換することで、トレーニング済みのモデルを Web サービスとしてデプロイするための準備方法。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: eb943c45-541a-401d-844a-c3337de82da6
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 45b8e8812c2c63d60ccdb143656cca9f0dade183
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7849a21e2d005584030375e2193f74a99b3977bd
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265238"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法
 
@@ -50,7 +53,7 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 
 1. トレーニング済みのモデルを、(実験キャンバスの左側にある) モジュール パレットの **[トレーニング済みのモデル]** セクションに保存します。 次に、機械学習アルゴリズムと[モデルのトレーニング][train-model] モジュールを、保存したトレーニング済みのモデルに置き換えます。
 2. 実験が分析され、明らかにトレーニングのためにのみ使用されて不要になったモジュールが削除されます。
-3. _Web サービスの入力_および_出力_モジュールを、実験の既定の場所に挿入します (これらのモジュールはユーザー データを受け入れて返します)。
+3. _Web サービスの入力_ および _出力_ モジュールを、実験の既定の場所に挿入します (これらのモジュールはユーザー データを受け入れて返します)。
 
 たとえば、次の実験では、サンプルの国勢調査のデータを使用した 2 クラスのブースト デシジョン ツリー モデルをトレーニングします。
 
@@ -72,7 +75,7 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 
 * **スコア** - この例では、データ ストリームをテスト データとトレーニング データに分割するために、[データの分割][split] モジュールが使用されます。 予測実験ではもうトレーニングを行わないため、[データの分割][split] を削除できます。 同様に、2 番目の[モデルのスコア付け][score-model]モジュールと[モデルの評価][evaluate-model]モジュールは、テスト データの結果を比較するために使用されるため、これらのモジュールも予測実験では不要です。 ただし、残りの[モデルのスコア付け][score-model]モジュールは、Web サービスを通じてスコア結果を返すために必要です。
 
-**[Web サービスの設定]**をクリックした後で、この例がどのようになるのかを次に示します。
+**[Web サービスの設定]** をクリックした後で、この例がどのようになるのかを次に示します。
 
 ![変換された予測実験][figure3]
 

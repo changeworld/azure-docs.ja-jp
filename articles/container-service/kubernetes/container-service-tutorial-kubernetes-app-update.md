@@ -1,23 +1,27 @@
 ---
-title: Azure Container Service チュートリアル - アプリケーションの更新
+title: (非推奨) Azure Container Service チュートリアル - アプリケーションの更新
 description: Azure Container Service チュートリアル - アプリケーションの更新
 services: container-service
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 87de0f23a00b035b12bac6cf655781961b1fb9e5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 99e282b720bb29ed5fb94ad2c9779ae56a019836
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993516"
 ---
-# <a name="update-an-application-in-kubernetes"></a>Kubernetes でアプリケーションを更新する
+# <a name="deprecated-update-an-application-in-kubernetes"></a>(非推奨) Kubernetes でアプリケーションを更新する
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの更新](../../aks/tutorial-kubernetes-app-update.md)」を参照してください。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Kubernetes でアプリケーションをデプロイした後で、新しいコンテナー イメージまたはイメージ バージョンを指定することによってアプリケーションを更新できます。 アプリケーションを更新するときは、デプロイの一部だけが同時に更新されるように、更新がステージングされます。 この段階的な更新プログラムを使用すると、アプリケーションの更新中も引き続きアプリケーションを実行することができます。 デプロイ エラーが発生した場合のロールバック メカニズムも提供されています。 
 
@@ -79,7 +83,7 @@ http://localhost:8080 に移動し、更新したアプリケーションを確�
 
 コンテナー レジストリの loginServer で `azure-vote-front` イメージにタグを付けます。 
 
-[az acr list](/cli/azure/acr#az_acr_list) コマンドを使用して、ログイン サーバー名を取得します。
+[az acr list](/cli/azure/acr#az-acr-list) コマンドを使用して、ログイン サーバー名を取得します。
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -99,7 +103,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v2
 
 ## <a name="deploy-update-application"></a>更新したアプリケーションをデプロイする
 
-最大限のアップタイムを保証するには、アプリケーション ポッドの複数のインスタンスを実行する必要があります。 [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドでこの構成を確認します。
+最大限のアップタイムを保証するには、アプリケーション ポッドの複数のインスタンスを実行する必要があります。 [kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドでこの構成を確認します。
 
 ```bash
 kubectl get pod
@@ -122,13 +126,13 @@ azure-vote-front イメージを複数のポッドで実行していない場合
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-アプリケーションを更新するには、[kubectl set](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#set) コマンドを使用します。 コンテナー レジストリのログイン サーバー名またはホスト名で、`<acrLoginServer>` を更新します。
+アプリケーションを更新するには、[kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set) コマンドを使用します。 コンテナー レジストリのログイン サーバー名またはホスト名で、`<acrLoginServer>` を更新します。
 
 ```azurecli-interactive
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-デプロイを監視するには、[kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドを使います。 更新されたアプリケーションがデプロイされると、ポッドが終了されて、新しいコンテナー イメージで再作成されます。
+デプロイを監視するには、[kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを使います。 更新されたアプリケーションがデプロイされると、ポッドが終了されて、新しいコンテナー イメージで再作成されます。
 
 ```azurecli-interactive
 kubectl get pod

@@ -1,20 +1,21 @@
 ---
-title: "Site Recovery を使用して Hyper-V VM (VMM 使用) を Azure にレプリケートするためのネットワーク マッピングについて | Microsoft Docs"
-description: "Azure Site Recovery を使用して、VMM クラウドで管理されている Hyper-V VM のレプリケーションのためにネットワーク マッピングを設定する方法について説明します。"
+title: Site Recovery を使用して Hyper-V VM (VMM 使用) を Azure にディザスター リカバリーするためのネットワーク マッピングについて | Microsoft Docs
+description: Azure Site Recovery を使用して、(VMM クラウドで管理されている) Hyper-V VM を Azure にディザスター リカバリーするためにネットワーク マッピングを設定する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 524de918bd24d51680110dc2af213bf328e349fd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 576194f0b85e95f07ab0370c4be7029d3b8aecb9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833892"
 ---
-# <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Azure への Hyper-V VM レプリケーションのネットワーク マッピングを準備する
+# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hyper-V VM の Azure へのディザスター リカバリーのためにネットワーク マッピングを準備する
 
 
 この記事は、[Azure Site Recovery サービス](site-recovery-overview.md)を使用して System Center Virtual Machine Manager (VMM) クラウド内の Hyper-V VM を Azure (またはセカンダリ サイト) にレプリケートする際に、ネットワーク マッピングを理解し、その準備をするうえで役立ちます。
@@ -58,7 +59,7 @@ Azure にレプリケートすると、ネットワーク マッピングによ�
 ニューヨーク | VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicago にマップされています
  |  | VMNetwork2-NewYork | マッピングなし
 シカゴ | VMM-Chicago| VMNetwork1-Chicago | VMNetwork1-NewYork にマップされています
- | | VMNetwork1-Chicago | マッピングなし
+ | | VMNetwork2-Chicago | マッピングなし
 
 次の点に注意してください。
 
@@ -73,8 +74,8 @@ Azure にレプリケートすると、ネットワーク マッピングによ�
 ---|---|---
 GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
-GoldCloud2 | <p>該当なし</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
-SilverCloud2 | <p>該当なし</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+GoldCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
 
 ### <a name="logical-and-vm-network-settings"></a>論理設定と VM ネットワークの設定
 

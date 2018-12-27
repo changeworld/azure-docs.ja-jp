@@ -1,28 +1,34 @@
 ---
-title: Stream Analytics の一般的使用状況パターンのクエリ例 | Microsoft Docs
-description: 一般的な Azure Stream Analytics クエリのパターン
-keywords: クエリ例
+title: Azure Stream Analytics での一般的なクエリ パターン
+description: この記事では、Azure Stream Analytics ジョブで役に立つさまざまな一般的クエリ パターンとデザインについて説明します。
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 6b9a7d00-fbcc-42f6-9cbb-8bbf0bbd3d0e
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 08/08/2017
+manager: kfile
 ms.author: jeanb
-ms.openlocfilehash: 9632a77afff6ba47d6ce80457e02f1f6194362a1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 08/08/2017
+ms.openlocfilehash: 7f171fa1eb8c91b55119d0308b57fe3d3e70261b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578893"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>一般的 Stream Analytics 使用状況パターンのクエリ例
+
 ## <a name="introduction"></a>はじめに
-Azure Stream Analytics のクエリは SQL に類似したクエリ言語で表現されます。 これらのクエリについては、「[Stream Analytics query language reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)」(Stream Analytics クエリ言語リファレンス) ガイドで確認できます。 この記事では、実際のシナリオに基づいて、いくつかの一般的なクエリ パターンの対処方法について説明します。 このドキュメントは作成中であり、継続的に新しいパターンで更新されます。
+Azure Stream Analytics のクエリは SQL に類似したクエリ言語で表現されます。 言語の構造については、「[Stream Analytics query language reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)」(Stream Analytics クエリ言語リファレンス) ガイドで確認できます。 
+
+クエリのデザインでは、イベント データを 1 つの入力ストリームから別の出力データ ストアに移動する単純なパススルー ロジックを表すことができます。 または、TollApp サンプルのように、豊富なパターン マッチングとテンポラル解析を行って、さまざまな時間枠にわたる集計を計算することができます。 複数の入力からのデータを結合してストリーミング イベントを結合し、静的な参照データに対する参照を行ってイベントの値を多様化することができます。 複数の出力にデータを書き込むこともできます。
+
+この記事では、実際のシナリオに基づいて、いくつかの一般的なクエリ パターンの対処方法について説明します。 このドキュメントは作成中であり、継続的に新しいパターンで更新されます。
+
+## <a name="work-with-complex-data-types-in-json-and-avro"></a>JSON および AVRO での複合データ型の操作 
+Azure Stream Analytics では、CSV、JSON、および Avro データ形式のイベントの処理をサポートします。
+JSON と Avro のどちらも、入れ子になったオブジェクト (レコード) や配列などの複合型を含むことができます。 これらの複雑なデータ型の操作については、[JSON および AVRO データの解析](stream-analytics-parsing-json.md)に関する記事をご覧ください。
+
 
 ## <a name="query-example-convert-data-types"></a>クエリの例: データ型の変換
 **説明**: 入力ストリームのプロパティの型を定義します。
@@ -117,7 +123,7 @@ Azure Stream Analytics のクエリは SQL に類似したクエリ言語で表�
         Make,
         TumblingWindow(second, 10)
 
-**説明**: **CASE** 句を使用すると、条件に基づいて異なる計算を適用できます (この例では、集計ウィンドウでの自動車の台数)。
+**説明**:**CASE** 式は、式を一連の単純な式と比較して結果を決定します。 この例では、カウント 1 の自動車は、カウントが 1 以外の自動車とは異なる文字列の説明を返します。 
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>クエリ例: 複数の出力にデータを送信する
 **説明**: 1 つのジョブから複数の出力ターゲットにデータを送信します。
@@ -418,7 +424,7 @@ GROUP BY
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>クエリ例: 条件の期間を検出する
 **説明**: 条件が発生していた時間の長さを調べます。
-たとえば、すべての自動車の重量が正しくない結果 (20,000 ポンド超) になるバグがあったと想定します。 この場合のバグの期間を計算します。
+たとえば、バグのためにすべての自動車の重量が正しくない (20,000 ポンドを超過) 結果になった場合、バグが継続した期間を計算する必要があります。
 
 **入力**:
 
@@ -576,11 +582,51 @@ WHERE
     AND t2.maxPower > 10
 ````
 
-**説明**: 1 つ目の `max_power_during_last_3_mins` クエリでは、[スライディング ウィンドウ](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)を使用して、すべてのデバイスの電力センサーの最大値 (直近 3 分間) を特定しています。 2 つ目のクエリでは、1 つ目のクエリと結合して、現在のイベントに関連する直近のウィンドウの電力値を特定しています。 その後、条件が満たされた場合には、デバイスについてのアラートが生成されます。
+**説明**: 1 つ目の `max_power_during_last_3_mins` クエリでは、[スライディング ウィンドウ](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)を使用して、すべてのデバイスの電力センサーの最大値 (直近 3 分間) を特定しています。 2 つ目のクエリでは、1 つ目のクエリと結合して、現在のイベントに関連する直近のウィンドウの電力値を特定しています。 その後、条件が満たされた場合には、デバイスについてのアラートが生成されます。
+
+## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>クエリの例: デバイスのクロックのずれ (サブストリーム) と関係なくイベントを処理します。
+**説明**: イベント プロデューサー間またはパーティション間のクロックのずれや、ネットワーク待機時間が原因でイベントが遅れて、あるいは順序がずれて到着することがあります。 次の例では、TollID 2 のデバイス クロックは TollID 1 より 10 秒遅れており、TollID 3 のデバイス クロックは TollID 1 より 5 秒遅れています。 
+
+
+**入力**:
+| LicensePlate | Make | Time | TollID |
+| --- | --- | --- | --- |
+| DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
+| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
+| QYF 9358 |Honda |2015-07-27T00:00:01.0000000Z | 2 |
+| GXF 9462 |BMW |2015-07-27T00:00:04.0000000Z | 2 |
+| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000Z | 1 |
+| RMV 8282 |Honda |2015-07-27T00:00:03.0000000Z | 3 |
+| MDR 6128 |BMW |2015-07-27T00:00:11.0000000Z | 2 |
+| YZK 5704 |Ford |2015-07-27T00:00:07.0000000Z | 3 |
+
+**出力**:
+| TollID | Count |
+| --- | --- |
+| 1 | 2 |
+| 2 | 2 |
+| 1 | 1 |
+| 3 | 1 |
+| 2 | 1 |
+| 3 | 1 |
+
+**解決策**:
+
+````
+SELECT
+      TollId,
+      COUNT(*) AS Count
+FROM input
+      TIMESTAMP BY Time OVER TollId
+GROUP BY TUMBLINGWINDOW(second, 5), TollId
+
+````
+
+**説明**: [TIMESTAMP BY OVER](https://msdn.microsoft.com/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) 句は、サブストリームを使用して各デバイスのタイムラインで個別に検索します。 各 TollID の出力イベントは計算されると同時に生成され、同じクロックをすべてのデバイスが参照しているかのように順序が変更されるのではなく、各 TollID ごとにイベントが順序付けられます。
 
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

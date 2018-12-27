@@ -1,31 +1,25 @@
 ---
-title: "Hadoop サンドボックス (エミュレーター) の使用方法 - Azure HDInsight | Microsoft Docs"
-description: "Hadoop エコシステムの使用について学ぶには、まず Hortonworks の Hadoop サンドボックスを Azure 仮想マシンに設定します。 "
+title: Apache Hadoop サンドボックス (エミュレーター) の使用方法 - Azure HDInsight
+description: 'Apache Hadoop エコシステムの使用について学ぶには、まず Hortonworks の Hadoop サンドボックスを Azure 仮想マシンに設定します。 '
 keywords: hadoop emulator,hadoop sandbox
-editor: cgronlun
-manager: jhubbard
+ms.reviewer: jasonh
 services: hdinsight
-author: nitinme
-documentationcenter: 
-tags: azure-portal
-ms.assetid: 6ad5bb58-8215-4e3d-a07f-07fcd8839cc6
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2017
-ms.author: nitinme
-ms.openlocfilehash: d7df18a80470beb8dc25cf6add6b7a61f45dcfe7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.author: hrasheed
+ms.openlocfilehash: 074e2dd932cada5ae46ee0423dbc29fc8bc7495d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016778"
 ---
-# <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Hadoop サンドボックス (仮想マシンのエミュレーター) の概要
+# <a name="get-started-with-a-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Apache Hadoop サンドボックス (仮想マシンのエミュレーター) の概要
 
-Hortonworks の Hadoop サンドボックスを仮想マシンにインストールする方法と、Hadoop エコシステムについて学ぶことができます。 Hadoop、Hadoop 分散ファイル システム (HDFS)、ジョブの送信などについて理解できるように、サンドボックスにはローカル開発環境が用意されています。 Hadoop について理解できたら、HDInsight クラスターを作成して、Azure で Hadoop を使い始めることができます。 使用方法の詳細については、 [HDInsight での Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
+Hortonworks の Hadoop サンドボックスを仮想マシンにインストールする方法と、Apache Hadoop エコシステムについて学ぶことができます。 Hadoop、Hadoop 分散ファイル システム (HDFS)、ジョブの送信などについて理解できるように、サンドボックスにはローカル開発環境が用意されています。 Hadoop について理解できたら、HDInsight クラスターを作成して、Azure で Hadoop を使い始めることができます。 使用方法の詳細については、 [HDInsight での Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 * [Oracle VirtualBox](https://www.virtualbox.org/). [こちら](https://www.virtualbox.org/wiki/Downloads)からダウンロードしてインストールします。
@@ -33,7 +27,7 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 
 
 ## <a name="download-and-install-the-virtual-machine"></a>仮想マシンのダウンロードとインストール
-1. [Hortonworks のダウンロード ページ](http://hortonworks.com/downloads/#sandbox)に移動します。
+1. [Hortonworks のダウンロード ページ](https://hortonworks.com/downloads/#sandbox)に移動します。
 
 2. **[VIRTUALBOX 用ダウンロード]** をクリックして、最新の Hortonworks Sandbox を VM にダウンロードします。 ダウンロードが始まる前に、Hortonworks に登録するように求められます。 ダウンロードは、ネットワーク速度に応じて 1 ～ 2 時間かかります。
    
@@ -48,11 +42,11 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 ## <a name="start-the-virtual-machine"></a>仮想マシンの開始
 
 1. Oracle VM VirtualBox を開きます。
-2. **[ファイル]** メニューの**[Import Appliance (アプライアンスのインストール)]** をクリックしHortonworks Sandbox イメージを指定します。
+2. **[ファイル]** メニューの **[Import Appliance (アプライアンスのインストール)]** をクリックしHortonworks Sandbox イメージを指定します。
 1. Hortonworks Sandbox を選択し、**[Start (開始)]**、**[Normal Start (通常の方法で開始)]** の順にクリックします。 仮想マシンのブート プロセスが終了すると、ログインに関する手順が表示されます。
    
     ![[Normal Start (通常の方法で開始)]](./media/apache-hadoop-emulator-get-started/normal-start.png)
-2. Web ブラウザーを開き、表示された URL に移動します (通常は http://127.0.0.1:8888 )。
+2. Web ブラウザーを開き、表示された URL に移動します (通常は http://127.0.0.1:8888) )。
 
 ## <a name="set-sandbox-passwords"></a>サンドボックスのパスワードの設定
 
@@ -82,8 +76,8 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
    
         select * from sample_07 limit 10;
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Hortonworks Sandbox で Visual Studio を使用する方法](../hdinsight-hadoop-emulator-visual-studio.md)
-* [Hortonworks Sandbox の使い方のヒント](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Hadoop チュートリアル: HDP の概要](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Hortonworks Sandbox の使い方のヒント](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Hadoop チュートリアル: HDP の概要](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
 

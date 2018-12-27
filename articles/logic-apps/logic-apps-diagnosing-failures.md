@@ -1,26 +1,23 @@
 ---
-title: "障害のトラブルシューティングと診断 - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリが失敗する状況と理由について"
+title: 障害のトラブルシューティングと診断 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断
 services: logic-apps
-documentationcenter: 
-author: jeffhollan
-manager: anneta
-editor: 
-ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.service: logic-apps
-ms.devlang: 
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: logic-apps
+ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.date: 10/15/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: de706f711e9c57b2e575d130a2a0cfd0bdc907a1
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 994e7945a7107815029bd415f4cc0d45bb68e335
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123689"
 ---
-# <a name="troubleshoot-and-diagnose-logic-app-failures"></a>ロジック アプリの障害のトラブルシューティングと診断
+# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断
 
 ロジック アプリでは、アプリの問題の診断とデバッグに役立つ情報が生成されます。 ロジック アプリを診断するには、Azure Portal でワークフローの各手順を確認します。 また、ランタイム デバッグのための手順をいくつかワークフローに追加することもできます。
 
@@ -31,7 +28,7 @@ ms.lasthandoff: 10/21/2017
 1. トリガーが起動したかどうかを確認するには、ロジック アプリのメニューの **[概要]** を選択します。 **[トリガーの履歴]** で、トリガーの状態を確認します。
 
    > [!TIP]
-   > ロジック アプリのメニューが表示されない場合は、Azure ダッシュボードに戻り、ロジック アプリをもう一度開き直してください。
+   > ロジック アプリのメニューが表示されない場合は、Azure ダッシュボードに戻り、ロジック アプリを開き直してください。
 
    ![トリガー履歴を確認する](./media/logic-apps-diagnosing-failures/logic-app-trigger-history-overview.png)
 
@@ -41,7 +38,7 @@ ms.lasthandoff: 10/21/2017
 
    トリガー試行には次のような状態があります。
 
-   | 状態 | Description | 
+   | Status | 説明 | 
    | ------ | ----------- | 
    | **成功** | トリガーによりエンドポイントがチェックされ、使用可能なデータが見つかりました。 通常、この状態は、"起動済み" と共に表示されます。 表示されない場合、トリガー定義に、十分でない条件または `SplitOn` コマンドが含まれる可能性があります。 <p>この状態は、手動トリガー、繰り返しトリガー、またはポーリング トリガーに適用できます。 トリガーは正常に実行できますが、アクションによって未処理のエラーが生成されると、実行自体が引き続き失敗する可能性があります。 | 
    | **スキップ済み** | トリガーによりエンドポイントがチェックされましたが、データが見つかりませんでした。 | 
@@ -72,7 +69,7 @@ ms.lasthandoff: 10/21/2017
 1. ロジック アプリのメニューで、**[概要]** を選択します。 **[実行の履歴]** で、起動されたトリガーの実行を確認します。
 
    > [!TIP]
-   > ロジック アプリのメニューが表示されない場合は、Azure ダッシュボードに戻り、ロジック アプリをもう一度開き直してください。
+   > ロジック アプリのメニューが表示されない場合は、Azure ダッシュボードに戻り、ロジック アプリを開き直してください。
 
    ![実行履歴を確認する](./media/logic-apps-diagnosing-failures/logic-app-runs-history-overview.png)
 
@@ -82,7 +79,7 @@ ms.lasthandoff: 10/21/2017
 
    実行には次のような状態があります。
 
-   | 状態 | Description | 
+   | Status | 説明 | 
    | ------ | ----------- | 
    | **成功** | アクションはすべて成功しています。 <p>特定のアクションでエラーが発生した場合、そのエラーは、ワークフローの後続のアクションによって処理済みです。 | 
    | **失敗** | 少なくとも 1 つのアクションに失敗し、その失敗は、ワークフローの後続のアクションによって処理されていません。 | 
@@ -98,22 +95,22 @@ ms.lasthandoff: 10/21/2017
 
    ![ロジック アプリの実行の詳細を表示する](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. 特定の手順の入出力と、エラー メッセージを確認するには、手順を選択します。これにより、シェイプを拡張され、詳細が表示されます。 For example:
+3. 特定の手順の入出力と、エラー メッセージを確認するには、手順を選択します。これにより、シェイプを拡張され、詳細が表示されます。 例: 
 
    ![ステップの詳細を表示する](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
 ## <a name="perform-runtime-debugging"></a>ランタイム デバッグを実行する
 
-デバッグを行いやすいように、トリガーや実行の履歴を確認するほか、診断手順をワークフローに追加することができます。 たとえば、[RequestBin](http://requestb.in) サービスを使用する手順を追加できます。これにより、HTTP 要求を調べて、正確なサイズ、シェイプ、および形式を特定できます。
+デバッグを行いやすいように、トリガーや実行の履歴を確認するほか、診断手順をワークフローに追加することができます。 たとえば、[Webhook Tester](https://webhook.site/) サービスを使用する手順を追加できます。これにより、HTTP 要求を調べて、正確なサイズ、シェイプ、および形式を特定できます。
 
-1. RequestBin を作成します。これをプライベートにして、ブラウザーでのみ表示可能にできます。
+1. [Webhook Tester](https://webhook.site/) にアクセスし、作成された一意の URL をコピーします
 
 2. ロジック アプリで、テスト対象の HTTP POST アクションと本文コンテンツを追加します (式、別の手順の出力など)。
 
-3. RequestBin の URL を HTTP POST アクションに貼り付けます。
+3. Webhook Tester の URL を HTTP POST アクションに貼り付けます。
 
-4. 要求が Logic Apps エンジンからの生成時にどのように形成されたかを確認するには、ロジック アプリの実行し、RequestBin を更新します。
+4. 要求が Logic Apps エンジンからの生成時にどのように形成されたかを確認するには、ロジック アプリを実行し、詳細を Webhook Tester で確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ロジック アプリを監視する](../logic-apps/logic-apps-monitor-your-logic-apps.md)

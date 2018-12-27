@@ -2,23 +2,18 @@
 title: Azure Files の共有スナップショットの概要 | Microsoft Docs
 description: 共有スナップショットは、Azure Files 共有の読み取り専用バージョンであり、共有をバックアップする手段として特定の時点で取得されます。
 services: storage
-documentationcenter: .net
 author: RenaShahMSFT
-manager: aungoo
-editor: tysonn
-ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: 6499bdf1af676898f7b2911612cbd206bccfa4fa
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: files
+ms.openlocfilehash: 7f03af0fc338299da9b989d46e7bbfb83f3babeb
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945707"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files の共有スナップショットの概要 
 Azure Files には、ファイル共有の共有スナップショットを作成する機能があります。 共有スナップショットは、その時点の共有状態をキャプチャします。 この記事では、共有スナップショットで提供される機能と、それらをカスタムのユース ケースに活用する方法を説明します。
@@ -37,7 +32,7 @@ Azure Files には、ファイル共有の共有スナップショットを作�
 ## <a name="capabilities"></a>機能
 共有スナップショットは、特定の時点のデータの読み取り専用コピーです。 REST API を使用してスナップショットを作成、削除、管理することができます。 同じ機能をクライアント ライブラリ、Azure CLI、Azure Portal でも使用できます。 
 
-REST API と SMB の両方を使用して、共有のスナップショットを表示することができます。 ディレクトリまたはファイルのバージョンの一覧を取得することができ、特定のバージョンをドライブとして直接マウントすることができます。 
+REST API と SMB の両方を使用して、共有のスナップショットを表示することができます。 ディレクトリまたはファイルのバージョンの一覧を取得することができ、特定のバージョンをドライブとして直接マウントすることができます (Windows 上でのみ使用できます - 「[制限](#limits)」を参照してください)。 
 
 作成された共有スナップショットは、読み取り、コピー、削除はできますが、変更はできません。 別のストレージ アカウントに共有スナップショット全体をコピーすることはできません。 AzCopy またはその他のコピー メカニズムを使用して、ファイルごとにコピーする必要があります。
 
@@ -45,7 +40,7 @@ REST API と SMB の両方を使用して、共有のスナップショットを
 
 ファイル共有の共有スナップショットは、そのベース ファイル共有と同じです。 唯一の違いは、共有スナップショットの作成時刻を示すために **DateTime** 値が共有 URI に追加されることです。 たとえば、ファイル共有の URI が http://storagesample.core.file.windows.net/myshare の場合、共有スナップショットの URI は次のようになります。
 ```
-http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
+http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
 
 共有スナップショットは、明示的に削除されるまで保持されます。 共有スナップショットは、ベース ファイル共有よりも長く保持することはできません。 ベース ファイル共有に関連付けられたスナップショットを列挙して、現在のスナップショットを追跡できます。 
@@ -68,6 +63,8 @@ Azure Files で現在許可されている共有スナップショットの最�
 
 共有スナップショットを作成するための同時呼び出しに制限はありません。 特定のファイル共有の共有スナップショットが利用できる領域の量に制限はありません。 
 
+現在、Linux では共有スナップショットをマウントすることはできません。 これは、Linux SMB クライアントが Windows のようにスナップショットのマウントをサポートしていないためです。
+
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>共有スナップショットから共有へのデータのコピー
 ファイルや共有スナップショットに関連するコピー操作は次のルールに従います。
 
@@ -88,7 +85,7 @@ Azure でインフラストラクチャを実行するときには、可能な�
 
 ## <a name="next-steps"></a>次の手順
 - 次のツールで共有スナップショットを操作する方法:
-    - [ポータル](storage-how-to-use-files-portal.md#create-and-modify-share-snapshots)
-    - [PowerShell](storage-how-to-use-files-powershell.md#create-and-modify-share-snapshots)
-    - [CLI](storage-how-to-use-files-cli.md#create-and-modify-share-snapshots)
+    - [PowerShell](storage-how-to-use-files-powershell.md)
+    - [CLI](storage-how-to-use-files-cli.md)
+    - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)
 - [共有スナップショットに関してよく寄せられる質問](storage-files-faq.md#share-snapshots)

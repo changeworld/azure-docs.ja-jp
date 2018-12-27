@@ -1,26 +1,23 @@
 ---
-title: "AS2 メッセージをエンコードする - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps で Enterprise Integration Pack の AS2 エンコーダーを使用する方法"
+title: AS2 メッセージをエンコードする - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps および Enterprise Integration Pack で AS メッセージをエンコードする
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: anneta
-editor: 
-ms.assetid: 332fb9e3-576c-4683-bd10-d177a0ebe9a3
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: bccc8f81a3a664e090796ae8a3cbb38c890c0479
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.assetid: 332fb9e3-576c-4683-bd10-d177a0ebe9a3
+ms.date: 08/08/2018
+ms.openlocfilehash: 6bb19199929a004ee5668a3a6e057a69c24dd752
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122715"
 ---
-# <a name="encode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の AS2 メッセージをエンコードする
+# <a name="encode-as2-messages-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps および Enterprise Integration Pack で AS2 メッセージをエンコードする
 
 メッセージを転送するときに、セキュリティと信頼性を確保するには、Encode AS2 Message コネクタを使用します。 このコネクタでは、デジタル署名、暗号化、およびメッセージ処理通知 (MDN) による受信確認が可能になります。これにより、否認防止もサポートできるようになります。
 
@@ -70,6 +67,14 @@ Encode AS2 コネクタは次のタスクを実行します。
 * 送信メッセージに署名する (構成されている場合)
 * 送信メッセージを暗号化する (構成されている場合)
 * メッセージを圧縮する (構成されている場合)
+* MIME ヘッダーのファイル名を転送する (構成されている場合)
+
+
+  > [!NOTE]
+  > 証明書の管理に Azure Key Vault を使用する場合は、**暗号化**操作を許可するようにキーを構成してください。
+  > しない場合、AS2 のエンコードが失敗します。
+  >
+  > ![キー コンテナーを復号化する](media/logic-apps-enterprise-integration-as2-encode/keyvault1.png)
 
 ## <a name="try-this-sample"></a>このサンプルの試用
 

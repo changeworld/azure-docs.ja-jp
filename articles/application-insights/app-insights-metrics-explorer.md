@@ -1,23 +1,23 @@
 ---
-title: "Azure Application Insights を使用したメトリックの探索 | Microsoft Docs"
-description: "メトリック エクスプローラーでグラフを解釈する方法と、メトリック エクスプローラー ブレードをカスタマイズする方法です。"
+title: Azure Application Insights を使用したメトリックの探索 | Microsoft Docs
+description: メトリック エクスプローラーでグラフを解釈する方法と、メトリック エクスプローラー ブレードをカスタマイズする方法です。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 01b45323b74b54da157f4e9f1af783759c121be1
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8a8b1e29a6504c725e244efa1ae8c37a9a0d8420
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726272"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Application Insights を使用したメトリックの探索
 [Application Insights][start] のメトリックとは、アプリケーションからのテレメトリとして送信される測定値とイベントの数を表します。 メトリックは、パフォーマンスの問題を検出し、アプリケーションの利用に関する傾向を把握するのに役立ちます。 さまざまな標準メトリックが用意されているほか、独自にカスタムのメトリックとイベントを作成することもできます。
@@ -135,7 +135,7 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 ### <a name="remove-bot-and-web-test-traffic"></a>Bot と Web テストのトラフィックの除外
 **[実際のトラフィックまたは合成トラフィック]** フィルターを使用し、**[実際]** チェック ボックスをオンにします。
 
-**[人工トラフィックのソース]**フィルターを適用することもできます。
+**[人工トラフィックのソース]** フィルターを適用することもできます。
 
 ### <a name="to-add-properties-to-the-filter-list"></a>プロパティをフィルター一覧に追加するには
 自分が選んだカテゴリでテレメトリをフィルターしたい場合があります。 たとえば、ユーザーをさまざまなカテゴリに分類している場合、それらのカテゴリでデータをセグメント化するとします。
@@ -179,9 +179,9 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 データを外部で処理できるように連続してエクスポートする場合は、 [連続エクスポート](app-insights-export-telemetry.md)の使用を検討してください。
 
 ### <a name="power-bi"></a>Power BI
-機能がより豊富なビューでデータを表示する場合は、 [Power BI にエクスポート](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)することができます。
+機能がより豊富なビューでデータを表示する場合は、 [Power BI にエクスポート](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)することができます。
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 [Analytics](app-insights-analytics.md) は、強力なクエリ言語を使用してテレメトリを分析する汎用性に優れた方法です。 メトリックの結果を組み合わせたり計算したりする場合や、アプリの最近のパフォーマンスを詳しく調べる場合は、Analytics を使用します。 
 
 メトリックのグラフで Analytics アイコンをクリックすると、同等の Analytics クエリを直接取得することができます。
@@ -193,14 +193,14 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 
     グラフごとに異なるフィルターを設定する場合は、それぞれ異なるブレードでグラフを作成し、個別のお気に入りとして保存します。 その場合、グラフを並べて表示できるように、グラフをダッシュボードに固定できます。
 * メトリックで定義されていないプロパティでグラフをグループ化すると、グラフに何も表示されなくなります。 "group by" をクリアするか、別のグループ化プロパティを選択してみます。
-* パフォーマンス データ (CPU、IO レートなど) は、Java Web サービス、Windows デスクトップ アプリ、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](app-insights-monitor-performance-live-website-now.md)、[Azure Cloud Services](app-insights-azure.md) で使用できます。 Azure Web サイトでは利用できません。
+* パフォーマンス データ (CPU、IO レートなど) は、Java Web サービス、Windows デスクトップ アプリ、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](app-insights-monitor-performance-live-website-now.md)、[Azure Cloud Services](app-insights-overview.md) で使用できます。 Azure Web サイトでは利用できません。
 
 ## <a name="video"></a>ビデオ
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>次のステップ
-* [Application Insights による使用状況の監視](app-insights-web-track-usage.md)
+## <a name="next-steps"></a>次の手順
+* [Application Insights による使用状況の監視](app-insights-usage-overview.md)
 * [診断検索の使用](app-insights-diagnostic-search.md)
 
 <!--Link references-->

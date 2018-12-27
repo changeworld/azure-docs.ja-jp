@@ -1,20 +1,19 @@
 ---
-title: Windows PC を使用して HDInsight の Hadoop で作業する - Azure | Microsoft Docs
+title: HDInsight の Hadoop で Windows PC を使用する - Azure
 description: Windows PC から HDInsight の Hadoop で作業します。 PowerShell、Visual Studio、および Linux ツールを使用してクラスターを管理し、クエリを実行します。 .NET でビッグ データ ソリューションを開発します。
 services: hdinsight
-keywords: Windows の Hadoop, Windows 用の Hadoop
-author: cjgronlund
-manager: jhubbard
-ms.author: cgronlun
-ms.date: 05/17/2017
-ms.topic: article
+author: hrasheed-msft
+ms.author: hrasheed
+ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: c9e4476334db95c66650f663dc3d8d13df2c5b52
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 05/17/2017
+ms.openlocfilehash: c80c7a075b8a7735a4e9d2438c94eaac89f2b50e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006969"
 ---
 # <a name="work-in-the-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Windows PC から HDInsight の Hadoop エコシステムで作業する
 

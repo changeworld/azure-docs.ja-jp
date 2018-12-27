@@ -1,24 +1,25 @@
 ---
-title: "Azure の SQLRuleAction 構文リファレンス | Microsoft Docs"
-description: "SQLRuleAction の文法について詳しく説明します。"
+title: Azure の SQLRuleAction 構文リファレンス | Microsoft Docs
+description: SQLRuleAction の文法について詳しく説明します。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/05/2018
-ms.author: sethm
-ms.openlocfilehash: 9ac9a2968adfdd8e1fb229ad744bc99914cdcd08
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 09/05/2018
+ms.author: spelluru
+ms.openlocfilehash: cd5bc1fb959872cfb98236feb5c32517ac7472ac
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394184"
 ---
 # <a name="sqlruleaction-syntax"></a>SQLRuleAction 構文
 

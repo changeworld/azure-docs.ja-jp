@@ -1,10 +1,10 @@
 ---
-title: "Azure のインスタンス レベル パブリック IP (クラシック) アドレス | Microsoft Docs"
-description: "インスタンス レベル パブリック IP (ILPIP) アドレスの概要と、PowerShell を使用してこれらを管理する方法について説明します。"
+title: Azure のインスタンス レベル パブリック IP (クラシック) アドレス | Microsoft Docs
+description: インスタンス レベル パブリック IP (ILPIP) アドレスの概要と、PowerShell を使用してこれらを管理する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genlin
+manager: cshepard
 editor: tysonn
 ms.assetid: 07eef6ec-7dfe-4c4d-a2c2-be0abfb48ec5
 ms.service: virtual-network
@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/10/2016
-ms.author: jdial
-ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 08/03/2018
+ms.author: genli
+ms.openlocfilehash: 2f6db23e02c836dea6d640757d12275b654ad468
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024629"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>インスタンス レベル パブリック IP (クラシック) の概要
 インスタンス レベル パブリック IP (ILPIP) は、VM または Cloud Services ロール インスタンスが存在するクラウド サービスではなく、VM またはロール インスタンスに直接割り当てることができるパブリック IP アドレスです。 ILPIP は、クラウド サービスに割り当てられる仮想 IP (VIP) に代わるものではありません。 むしろ、VM またはロール インスタンスに直接接続するときに使用できる追加の IP アドレスです。
@@ -30,10 +31,13 @@ ms.lasthandoff: 10/11/2017
 
 図 1 に示すように、クラウド サービスには VIP を使用してアクセスするのに対して、個々 の VM には通常 "VIP:&lt;ポート番号&gt;" を使用してアクセスします。 ILPIP を特定の VM に割り当てることで、その IP アドレスを使用して VM に直接アクセスできます。
 
-Azure でクラウド サービスを作成すると、対応する DNS A レコードが自動的に作成され、実際の VIP を使用するのではなく、完全修飾ドメイン名 (FQDN) を使用してサービスにアクセスできるようになります。 同じ処理が ILPIP に対しても行われ、ILPIP ではなく FQDN による VM またはロール インスタンスへのアクセスが可能になります。 たとえば、*contosoadservice* という名前のクラウド サービスを作成し、2 つのインスタンスで *contosoweb* という名前の Web ロールを構成した場合、Azure によってこれらのインスタンスに対して次の A レコードが登録されます。
+Azure でクラウド サービスを作成すると、対応する DNS A レコードが自動的に作成され、実際の VIP を使用するのではなく、完全修飾ドメイン名 (FQDN) を使用してサービスにアクセスできるようになります。 同じ処理が ILPIP に対しても行われ、ILPIP ではなく FQDN による VM またはロール インスタンスへのアクセスが可能になります。 たとえば、*contosoadservice* という名前のクラウド サービスを作成し、2 つのインスタンスで *contosoweb* という名前の Web ロールを構成し、.cscfg で `domainNameLabel` を *WebPublicIP* に設定した場合、Azure によってこれらのインスタンスに対して次の A レコードが登録されます。
 
-* contosoweb\_IN_0.contosoadservice.cloudapp.net
-* contosoweb\_IN_1.contosoadservice.cloudapp.net 
+
+* WebPublicIP.0.contosoadservice.cloudapp.net
+* WebPublicIP.1.contosoadservice.cloudapp.net
+* ...
+
 
 > [!NOTE]
 > 各 VM またはロール インスタンスに割り当てることができる ILPIP は 1 つだけです。 サブスクリプションにつき最大 5 つの ILPIP を使用できます。 マルチ NIC VM では ILPIP はサポートされていません。
@@ -43,7 +47,7 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 ## <a name="why-would-i-request-an-ilpip"></a>ILPIP を要求する理由
 VM またはロール インスタンスに直接割り当てた IP アドレスで接続できるようにする場合は、クラウド サービスの VIP:&lt;ポート番号&gt; を使用する代わりに、VM またはロール インスタンスの ILPIP を要求します。
 
-* **アクティブ FTP** - VM に ILPIP を割り当てることで、すべてのポートでトラフィックを受信できます。 VM でトラフィックを受信するために、エンドポイントは不要になります。  FTP プロトコルの詳細については、(https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[FTP プロトコルの概要] を参照してください。
+* **アクティブ FTP** - VM に ILPIP を割り当てることで、すべてのポートでトラフィックを受信できます。 VM でトラフィックを受信するために、エンドポイントは不要になります。  FTP プロトコルの詳細については、[FTP プロトコルの概要](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)に関するページを参照してください。
 * **送信 IP** - VM からの送信トラフィックは、送信元である ILPIP にマップされ、ILPIP は外部エンティティに対して VM を一意に識別します。
 
 > [!NOTE]
@@ -59,10 +63,26 @@ VM またはロール インスタンスに直接割り当てた IP アドレス
 ```powershell
 New-AzureService -ServiceName FTPService -Location "Central US"
 
-$image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"} `
+$image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
+
+#Set "current" storage account for the subscription. It will be used as the location of new VM disk
+
+Set-AzureSubscription -SubscriptionName <SubName> -CurrentStorageAccountName <StorageAccountName>
+
+#Create a new VM configuration object
+
 New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageName `
 | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
 | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
+
+```
+新しい VM ディスクの場所として別のストレージ アカウントを指定する場合は、**MediaLocation** パラメーターを使用できます。
+
+```powershell
+    New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageName `
+     -MediaLocation https://management.core.windows.net/<SubscriptionID>/services/storageservices/<StorageAccountName> `
+    | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
+    | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
 ```
 
 ### <a name="how-to-retrieve-ilpip-information-for-a-vm"></a>VM の ILPIP 情報を取得する方法
@@ -135,7 +155,7 @@ Cloud Services ロール インスタンスに ILPIP を追加するには、次
         <AddressAssignments>
           <InstanceAddress roleName="WebRole1">
         <PublicIPs>
-          <PublicIP name="MyPublicIP" domainNameLabel="MyPublicIP" />
+          <PublicIP name="MyPublicIP" domainNameLabel="WebPublicIP" />
             </PublicIPs>
           </InstanceAddress>
         </AddressAssignments>
@@ -144,6 +164,24 @@ Cloud Services ロール インスタンスに ILPIP を追加するには、次
     ```
 3. 「[Cloud Services の構成方法](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg)」に記載された手順を実行して、クラウド サービスの.cscfg ファイルをアップロードします。
 
-## <a name="next-steps"></a>次のステップ
+### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>クラウド サービスの ILPIP 情報を取得する方法
+ロール インスタンスごとに ILPIP 情報を表示するには、次の PowerShell コマンドを実行し、*PublicIPAddress*、*PublicIPName*、*PublicIPDomainNameLabel*、および *PublicIPFqdns* の値を確認します。
+
+```powershell
+Add-AzureAccount
+
+$roles = Get-AzureRole -ServiceName <Cloud Service Name> -Slot Production -RoleName WebRole1 -InstanceDetails
+
+$roles[0].PublicIPAddress
+$roles[1].PublicIPAddress
+```
+
+`nslookup` を使用して、サブドメインの A レコードのクエリを実行することもできます。
+
+```batch
+nslookup WebPublicIP.0.<Cloud Service Name>.cloudapp.net
+``` 
+
+## <a name="next-steps"></a>次の手順
 * クラシック デプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md) の仕組みを理解します。
 * [予約済み IP](virtual-networks-reserved-public-ip.md)について学習します。

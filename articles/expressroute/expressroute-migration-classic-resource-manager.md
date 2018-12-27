@@ -1,13 +1,13 @@
 ---
-title: "クラシックから Resource Manager への ExpressRoute 回線および関連する仮想ネットワークの移行: PowerShell | Microsoft Docs"
-description: "このページでは、回線の移行後に、関連する仮想ネットワークを Resource Manager に移行する方法について説明します。"
+title: 'クラシックから Resource Manager への ExpressRoute 回線および関連する仮想ネットワークの移行: PowerShell | Microsoft Docs'
+description: このページでは、回線の移行後に、関連する仮想ネットワークを Resource Manager に移行する方法について説明します。
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23013207"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>クラシックから Resource Manager への ExpressRoute 回線および関連する仮想ネットワークの移行
 

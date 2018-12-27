@@ -1,11 +1,11 @@
 ---
-title: "Azure サービス管理証明書のアップロード | Microsoft Docs"
-description: "Azure Portal のサービス管理証明書をアップロードする方法について説明します。"
+title: Azure サービス管理証明書のアップロード | Microsoft Docs
+description: Azure Portal のサービス管理証明書をアップロードする方法について説明します。
 services: cloud-services
 documentationcenter: .net
-author: Thraka
+author: jpconnock
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: na
 ms.workload: tbd
@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
-ms.author: adegeo
-ms.openlocfilehash: a865290602f64335e8b7cbfadf00d83234ae812d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: jeconnoc
+ms.openlocfilehash: 788ce1f2543b9ed76d718cf01d28292f49594414
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037356"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure サービス管理証明書のアップロード
-管理証明書を使用することにより、Azure のクラシック デプロイメント モデルを使用して認証できます。 多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書が使用され、さまざまな Azure サービスの構成とデプロイメントが自動化されます。 
+管理証明書を使用することにより、Azure のクラシック デプロイ モデルを使用して認証できます。 多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書が使用され、さまざまな Azure サービスの構成とデプロイメントが自動化されます。 
 
 > [!WARNING]
 > ご注意ください。 これらの種類の証明書を使用して認証する場合、関連付けられているサブスクリプションを管理できます。
@@ -30,7 +31,7 @@ ms.lasthandoff: 02/21/2018
 
 Azure の証明書の詳細 (自己署名証明書の作成など) については、[「Azure Cloud Services の証明書の概要」](cloud-services/cloud-services-certs-create.md#what-are-management-certificates)を参照してください。
 
-クライアント コードの認証に [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/) を使用することで自動化を図ることもできます。
+クライアント コードの認証に [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) を使用することで自動化を図ることもできます。
 
 **注:** 管理証明書で操作を実行するには、サブスクリプションの共同管理者である必要があります。 新しい Azure Portal で共同管理者を追加または削除する方法の詳細については、[こちら](https://go.microsoft.com/fwlink/?linkid=849300)を参照してください 
 
@@ -55,4 +56,4 @@ Azure の証明書の詳細 (自己署名証明書の作成など) について�
     ![設定](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>次の手順
-サブスクリプションへの管理証明書の関連付けはこれで完了です。これで、(対になる証明書をローカルにインストールした後) プログラムから[クラシック デプロイメント モデル REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) に接続して、同じサブスクリプションに関連付けられているさまざまな Azure リソースを自動化できます。
+サブスクリプションへの管理証明書の関連付けはこれで完了です。これで、(対になる証明書をローカルにインストールした後) プログラムから[クラシック デプロイ モデル REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) に接続して、同じサブスクリプションに関連付けられているさまざまな Azure リソースを自動化できます。

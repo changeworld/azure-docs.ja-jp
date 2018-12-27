@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913627"
 ---
 # <a name="resize-a-windows-vm-created-in-the-classic-deployment-model"></a>クラシック デプロイメント モデルで作成された Windows VM のサイズ変更
 この記事では、クラシック デプロイメント モデルで作成された Windows VM のサイズを Azure Powershell を使用して変更する方法について説明します。
@@ -33,9 +34,9 @@ VM のサイズ変更機能について検討する際、仮想マシンのサ�
 Azure クラシック リソースを操作できるように Azure PowerShell を構成する必要があります。 クラシック リソースを管理するよう Azure PowerShell を構成するには、次の手順に従います。
 
 1. PowerShell プロンプトで「`Add-AzureAccount`」と入力し、**Enter** キーを押します。 
-2. お使いの Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、 **[続行]**をクリックします。 
+2. お使いの Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、 **[続行]** をクリックします。 
 3. アカウントのパスワードを入力します。 
-4. **[サインイン]**をクリックします。 
+4. **[サインイン]** をクリックします。 
 
 ## <a name="resize-in-the-same-hardware-cluster"></a>同じハードウェア クラスター内でのサイズ変更
 VM をホストしているハードウェア クラスター内で使用可能なサイズに VM のサイズを変更するには、次の手順を実行します。

@@ -2,22 +2,26 @@
 title: 'Azure Portal: SQL Database の動的データ マスク | Microsoft Docs'
 description: Azure Portal での SQL Database 動的データ マスクの使用方法
 services: sql-database
-author: ronitr
-manager: craigg
 ms.service: sql-database
-ms.custom: security
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: ronitr
 ms.author: ronitr
-ms.openlocfilehash: c77ccbd85f6dd31ae2ecfb3d2965e384a1915e28
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: vanto
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 1ec0634c89148cee59f399e437b92a7d2c6b283b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165723"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure Portal で SQL Database 動的データ マスクを使用する
 
-この記事では、Azure Portal で[動的データ マスク](sql-database-dynamic-data-masking-get-started.md)を実装する方法を示します。 [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)または [REST API](https://msdn.microsoft.com/library/dn505719.aspx) を使って動的データ マスクを実装することもできます。
+この記事では、Azure Portal で[動的データ マスク](sql-database-dynamic-data-masking-get-started.md)を実装する方法を示します。 [Azure SQL Database コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.sql/)または [REST API](https://msdn.microsoft.com/library/dn505719.aspx) を使って動的データ マスクを実装することもできます。
 
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Azure Portal を使用してデータベースの動的データ マスクを設定する
@@ -53,4 +57,4 @@ ms.lasthandoff: 04/06/2018
 ## <a name="next-steps"></a>次の手順
 
 * 動的データ マスクの概要については、「[動的データ マスク](sql-database-dynamic-data-masking-get-started.md)」をご覧ください。
-* [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)または [REST API](https://msdn.microsoft.com/library/dn505719.aspx) を使って動的データ マスクを実装することもできます。
+* [Azure SQL Database コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.sql/)または [REST API](https://msdn.microsoft.com/library/dn505719.aspx) を使って動的データ マスクを実装することもできます。

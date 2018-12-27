@@ -1,8 +1,8 @@
 ---
-title: "Git を使用した API Management サービスの構成 - Azure | Microsoft Docs"
-description: "Git を使用して API Management サービス構成を保存、構成する方法について説明します。"
+title: Git を使用した API Management サービスの構成 - Azure | Microsoft Docs
+description: Git を使用して API Management サービス構成を保存、構成する方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
 editor: mattfarm
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 57d14b6aa6caca0cc9b075723d4c350b0a50c9f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e2f0fb6333f3786b29c2a7516e46a4599d6e89ed
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961011"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -42,6 +43,8 @@ Git を使用して API Management サービス インスタンスを管理す�
 5. リポジトリからサービス構成データベースに変更をデプロイする
 
 この記事では、Git を有効にして使用し、サービス構成を管理する方法について説明します。また、Git リポジトリ内のファイルとフォルダーに関するリファレンス情報も提供します。
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="access-git-configuration-in-your-service"></a>サービスの Git 構成にアクセスする
 
@@ -78,12 +81,12 @@ REST API を使用してこの操作を実行する方法については、「 [
 > このパスワードを書き留めておいてください。 このページから移動すると、パスワードが再度表示されることはありません。
 > 
 
-次の例では [Git for Windows](http://www.git-scm.com/downloads) の Git Bash ツールを使用していますが、使い慣れた Git ツールも使用できます。
+次の例では [Git for Windows](https://www.git-scm.com/downloads) の Git Bash ツールを使用していますが、使い慣れた Git ツールも使用できます。
 
 Git ツールを目的のフォルダーで開き、次のコマンドを実行して、Git リポジトリをローカル マシンに複製します (コマンドは Azure Portal で提供されます)。
 
 ```
-git clone https://bugbashdev4.scm.azure-api.net/
+git clone https://{name}.scm.azure-api.net/
 ```
 
 入力を求められたら、ユーザー名とパスワードを入力します。
@@ -91,10 +94,10 @@ git clone https://bugbashdev4.scm.azure-api.net/
 エラーが発生する場合は、次の例のように、 `git clone` コマンドを変更してユーザー名とパスワードを含めてみてください。
 
 ```
-git clone https://username:password@bugbashdev4.scm.azure-api.net/
+git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
-それでもエラーが発生する場合は、コマンドのパスワード部分をエンコードする URL を試してください。 これを簡単に行う 1 つの方法では、Visual Studio を開き、 **[イミディエイト ウィンドウ]**で次のコマンドを発行します。 **[イミディエイト ウィンドウ]** を開くには、Visual Studio で任意のソリューションまたはプロジェクトを開き (または新しく空のコンソール アプリケーションを作成し)、**[デバッグ]** メニューから **[ウィンドウ]**、**[イミディエイト]** の順に選択します。
+それでもエラーが発生する場合は、コマンドのパスワード部分をエンコードする URL を試してください。 これを簡単に行う 1 つの方法では、Visual Studio を開き、 **[イミディエイト ウィンドウ]** で次のコマンドを発行します。 **[イミディエイト ウィンドウ]** を開くには、Visual Studio で任意のソリューションまたはプロジェクトを開き (または新しく空のコンソール アプリケーションを作成し)、**[デバッグ]** メニューから **[ウィンドウ]**、**[イミディエイト]** の順に選択します。
 
 ```
 ?System.NetWebUtility.UrlEncode("password from the Azure portal")
@@ -103,7 +106,7 @@ git clone https://username:password@bugbashdev4.scm.azure-api.net/
 エンコードされたパスワードをユーザー名とリポジトリの場所と共に使用して Git コマンドを作成します。
 
 ```
-git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
+git clone https://username:url encoded password@{name}.scm.azure-api.net/
 ```
 
 リポジトリの複製が完了したら、ローカル ファイル システムのリポジトリを表示して操作できます。 詳細については、「 [ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス](#file-and-folder-structure-reference-of-local-git-repository)」を参照してください。
@@ -119,7 +122,7 @@ git pull
 `git pull` を実行する前に、ローカル リポジトリのフォルダーに移動してください。 `git clone` コマンドを完了した直後に、次のようなコマンドを使用して、ディレクトリをリポジトリに変更する必要があります。
 
 ```
-cd bugbashdev4.scm.azure-api.net/
+cd {name}.scm.azure-api.net/
 ```
 
 ## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>ローカル リポジトリからサーバー リポジトリに変更をプッシュするには
@@ -146,7 +149,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 ローカル Git リポジトリのファイルとフォルダーには、サービス インスタンスに関する構成情報が含まれています。
 
-| 項目 | [説明] |
+| Item | 説明 |
 | --- | --- |
 | api-management ルート フォルダー |サービス インスタンスの最上位の構成が含まれています |
 | apis フォルダー |サービス インスタンス内の API の構成が含まれています |
@@ -172,7 +175,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 > 
 > * ユーザー
 > * サブスクリプション
-> * [プロパティ]
+> * Properties
 > * スタイル以外の開発者ポータルのエンティティ
 > 
 
@@ -189,7 +192,8 @@ REST API を使用してこの操作を実行する方法については、「 [
     "DelegationEnabled": "False",
     "DelegationUrl": "",
     "DelegatedSubscriptionEnabled": "False",
-    "DelegationValidationKey": ""
+    "DelegationValidationKey": "",
+    "RequireUserSigninEnabled": "false"
   },
   "$ref-policy": "api-management/policies/global.xml"
 }
@@ -199,10 +203,11 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 | ID の設定 | 対応する設定 |
 | --- | --- |
-| RegistrationEnabled |**[匿名ユーザーをサインイン ページにリダイレクトする]** チェック ボックス |
+| RegistrationEnabled |**ユーザー名とパスワード** ID プロバイダーの存在 |
 | UserRegistrationTerms |**[ユーザー サインアップの使用条件]** ボックス |
 | UserRegistrationTermsEnabled |**[サインアップ ページに使用条件を表示する]** チェック ボックス |
 | UserRegistrationTermsConsentRequired |**[同意を要求する]** チェック ボックス |
+| RequireUserSigninEnabled |**[匿名ユーザーをサインイン ページにリダイレクトする]** チェック ボックス |
 
 その次の 4 つの設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled`、`DelegationValidationKey`) は、**[セキュリティ]** セクションの **[委任]** タブにある次の設定に対応します。
 
@@ -218,15 +223,15 @@ REST API を使用してこの操作を実行する方法については、「 [
 ### <a name="apis-folder"></a>apis フォルダー
 `apis` フォルダーには、サービス インスタンス内の各 API のフォルダーがあります。API のフォルダーには次の項目が含まれます。
 
-* `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI)を `application/json` 形式で `export=true` を指定して呼び出した場合に返される情報と同じです。
-* `apis\<api name>\api.description.html` - これは API の説明で、[API エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties)の `description` プロパティに対応します。
-* `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の[操作エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties)の `description` プロパティに対応します。
+* `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://docs.microsoft.com/rest/api/apimanagement/api/get)を `application/json` 形式で `export=true` を指定して呼び出した場合に返される情報と同じです。
+* `apis\<api name>\api.description.html` - これは API の説明で、[API エンティティ](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property)の `description` プロパティに対応します。
+* `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の[操作エンティティ](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties)の `description` プロパティに対応します。
 
 ### <a name="groups-folder"></a>groups フォルダー
 `groups` フォルダーには、サービス インスタンスで定義された各グループのフォルダーが含まれています。
 
-* `groups\<group name>\configuration.json` - これはグループの構成です。 [特定のグループの取得](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) 操作を呼び出した場合に返される情報と同じです。
-* `groups\<group name>\description.html` - これはグループの説明で、[グループ エンティティ](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties)の `description` プロパティに対応します。
+* `groups\<group name>\configuration.json` - これはグループの構成です。 [特定のグループの取得](https://docs.microsoft.com/rest/api/apimanagement/group/get) 操作を呼び出した場合に返される情報と同じです。
+* `groups\<group name>\description.html` - これはグループの説明で、[グループ エンティティ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)の `description` プロパティに対応します。
 
 ### <a name="policies-folder"></a>policies フォルダー
 `policies` フォルダーには、サービス インスタンスのポリシー ステートメントが含まれています。
@@ -245,8 +250,8 @@ REST API を使用してこの操作を実行する方法については、「 [
 ### <a name="products-folder"></a>products フォルダー
 `products` フォルダーには、サービス インスタンスで定義された各製品のフォルダーが含まれています。
 
-* `products\<product name>\configuration.json` - これは製品の構成です。 [特定の製品の取得](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) 操作を呼び出した場合に返される情報と同じです。
-* `products\<product name>\product.description.html` - これは製品の説明で、REST API の[製品エンティティ](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product)の `description` プロパティに対応します。
+* `products\<product name>\configuration.json` - これは製品の構成です。 [特定の製品の取得](https://docs.microsoft.com/rest/api/apimanagement/product/get) 操作を呼び出した場合に返される情報と同じです。
+* `products\<product name>\product.description.html` - これは製品の説明で、REST API の[製品エンティティ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity)の `description` プロパティに対応します。
 
 ### <a name="templates"></a>テンプレート
 `templates` フォルダーには、サービス インスタンスの [電子メール テンプレート](api-management-howto-configure-notifications.md) の構成が含まれています。
@@ -258,8 +263,8 @@ REST API を使用してこの操作を実行する方法については、「 [
 サービス インスタンスの他の管理方法については、以下を参照してください。
 
 * 次の PowerShell コマンドレットを使用したサービス インスタンスの管理
-  * [Azure API Management Deployment Cmdlets (Azure API Management のデプロイ コマンドレット)](https://msdn.microsoft.com/library/azure/mt619282.aspx)
-  * [Azure API Management Service Management Cmdlets (Azure API Management のサービス管理コマンドレット)](https://msdn.microsoft.com/library/azure/mt613507.aspx)
+  * [Azure API Management Deployment Cmdlets (Azure API Management のデプロイ コマンドレット)](https://docs.microsoft.com/powershell/module/wds)
+  * [Azure API Management Service Management Cmdlets (Azure API Management のサービス管理コマンドレット)](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * REST API を使用したサービス インスタンスの管理
   * [API Management REST (API Management REST)](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 

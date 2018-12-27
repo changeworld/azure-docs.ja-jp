@@ -2,29 +2,33 @@
 title: 最初の Azure SQL Database の設計 - C# | Microsoft Docs
 description: ADO.NET を利用し、C# プログラムで最初の Azure SQL データベースを設計し、それに接続する方法について説明します。
 services: sql-database
-author: MightyPen
-manager: craigg-msft
-ms.reviewer: CarlRabeler
 ms.service: sql-database
-ms.custom: develop databases, mvc, devcenter
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: tutorial
-ms.date: 03/15/2018
-ms.openlocfilehash: 3b6f260983e3c826bf558f0fe6d1a0fa6ae6b3af
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+author: MightyPen
+ms.author: genemi
+ms.reviewer: carlrab
+manager: craigg-msft
+ms.date: 11/01/2018
+ms.openlocfilehash: 82cf0303019d2cbb620c442fd6f750f733930f84
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912341"
 ---
-# <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>C&#x23; と ADO.NET で Azure SQL データベースを設計し、接続する
+# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>チュートリアル: C&#x23; と ADO.NET を使用して Azure SQL データベースを設計し、接続する
 
-Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサービスとしてのデータベース (DBaaS) です。 このチュートリアルでは、Azure Portal、ADO.NET、および Visual Studio を使用して以下の手順を実行する方法を説明します。 
+Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサービスとしてのデータベース (DBaaS) です。 このチュートリアルでは、Azure Portal、ADO.NET、および Visual Studio を使用して以下の手順を実行する方法を説明します。
 
 > [!div class="checklist"]
 > * Azure Portal でデータベースを作成する
 > * Azure Portal でサーバーレベルのファイアウォール規則を設定する
 > * ADO.NET と Visual Studio を使用してデータベースに接続する
 > * ADO.NET を使用してテーブルを作成する
-> * ADO.NET を使用してデータを挿入、更新、削除する 
+> * ADO.NET を使用してデータを挿入、更新、削除する
 > * ADO.NET を使用してデータのクエリを実行する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
@@ -39,13 +43,11 @@ And it starts with a ## H2.
 
 [!INCLUDE [sql-database-tutorial-portal-create-firewall-connection-1](../../includes/sql-database-tutorial-portal-create-firewall-connection-1.md)]
 
-
 <!-- The following included .md, sql-database-csharp-adonet-create-query-2.md, is long.
 And it starts with a ## H2.
 -->
 
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../includes/sql-database-csharp-adonet-create-query-2.md)]
-
 
 ## <a name="next-steps"></a>次の手順
 
@@ -61,5 +63,4 @@ And it starts with a ## H2.
 次のチュートリアルに進み、データの移行について確認してください。
 
 > [!div class="nextstepaction"]
->[SQL Server データベースを Azure SQL Database に移行する](sql-database-migrate-your-sql-server-database.md)
-
+> [SQL Server データベースを Azure SQL Database に移行する](sql-database-migrate-your-sql-server-database.md)

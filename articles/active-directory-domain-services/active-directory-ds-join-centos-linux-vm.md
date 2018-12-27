@@ -1,35 +1,39 @@
 ---
-title: 'Azure Active Directory Domain Services: CentOS VM の管理対象ドメインへの参加 | Microsoft Docs'
+title: 'Azure Active Directory Domain Services: CentOS VM のマネージド ドメインへの参加 | Microsoft Docs'
 description: CentOS Linux 仮想マシンを Azure AD Domain Services に参加させる
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/16/2017
-ms.author: maheshu
-ms.openlocfilehash: f7095e82605d12221ba7beb0c48fd3eda75a2e7b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 06/22/2018
+ms.author: ergreenl
+ms.openlocfilehash: cfa0ab1fdf72e3d363b5845c8602b0bea7ff6a12
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155186"
 ---
-# <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>CentOS Linux 仮想マシンを管理対象ドメインに参加させる
-この記事では、Azure 内の CentOS Linux 仮想マシンを Azure AD Domain Services の管理対象ドメインに参加させる方法について説明します。
+# <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>CentOS Linux 仮想マシンをマネージド ドメインに参加させる
+この記事では、Azure 内の CentOS Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 この記事に記載されているタスクを実行するには、次が必要です。
 1. 有効な **Azure サブスクリプション**。
 2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
 3. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](active-directory-ds-getting-started.md)に記載されているすべてのタスクを実行してください。
-4. 管理対象ドメインの IP アドレスを、必ず仮想ネットワークの DNS サーバーとして構成します。 詳しくは、[Azure 仮想ネットワークの DNS 設定を更新する方法](active-directory-ds-getting-started-dns.md)に関するページをご覧ください。
-5. [Azure AD Domain Services の管理対象ドメインとのパスワードの同期](active-directory-ds-getting-started-password-sync.md)に必要な手順をすべて実行します。
+4. マネージド ドメインの IP アドレスを、必ず仮想ネットワークの DNS サーバーとして構成します。 詳しくは、[Azure 仮想ネットワークの DNS 設定を更新する方法](active-directory-ds-getting-started-dns.md)に関するページをご覧ください。
+5. [Azure AD Domain Services のマネージド ドメインとのパスワードの同期](active-directory-ds-getting-started-password-sync.md)に必要な手順をすべて実行します。
 
 
 ## <a name="provision-a-centos-linux-virtual-machine"></a>CentOS Linux 仮想マシンをプロビジョニングする
@@ -62,7 +66,7 @@ hosts ファイルに、次の値を入力します。
 ```
 127.0.0.1 contoso-centos.contoso100.com contoso-centos
 ```
-ここで、"contoso100.com" は、管理対象ドメインの DNS ドメイン名です。 "contoso-centos" は、管理対象ドメインに参加させる CentOS 仮想マシンのホスト名です。
+ここで、"contoso100.com" は、マネージド ドメインの DNS ドメイン名です。 "contoso-centos" は、マネージド ドメインに参加させる CentOS 仮想マシンのホスト名です。
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Linux 仮想マシンに必要なパッケージのインストール
@@ -73,20 +77,20 @@ hosts ファイルに、次の値を入力します。
     ```
 
 
-## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Linux 仮想マシンの管理対象ドメインへの参加
-Linux 仮想マシンに必要なパッケージがインストールされたら、続いて仮想マシンを管理対象ドメインに参加させます。
+## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Linux 仮想マシンのマネージド ドメインへの参加
+Linux 仮想マシンに必要なパッケージがインストールされたら、続いて仮想マシンをマネージド ドメインに参加させます。
 
-1. AAD ドメイン サービスの管理対象ドメインを探します。 SSH ターミナルで、次のコマンドを入力します。
+1. AAD ドメイン サービスのマネージド ドメインを探します。 SSH ターミナルで、次のコマンドを入力します。
 
     ```
     sudo realm discover CONTOSO100.COM
     ```
 
     > [!NOTE]
-    > **トラブルシューティング:** *realm discover* で管理対象ドメインが見つからない場合:  
+    > **トラブルシューティング**:*realm discover* でマネージド ドメインが見つからない場合:  
       * ドメインに仮想マシンからアクセスできることを確認します (ping の試行)。  
-      * 仮想マシンが、管理対象ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。 
-      * 管理対象ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。  
+      * 仮想マシンが、マネージド ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。
+      * マネージド ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。  
       >
 
 2. Kerberos を初期化します。 SSH ターミナルで、次のコマンドを入力します。
@@ -110,13 +114,13 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'
     ```
 
-コンピューターの管理対象ドメインへの参加が完了すると、「Successfully enrolled machine in realm (コンピューターは領域に正常に登録されました)」という旨のメッセージが表示されます。
+コンピューターのマネージド ドメインへの参加が完了すると、「Successfully enrolled machine in realm (コンピューターは領域に正常に登録されました)」という旨のメッセージが表示されます。
 
 
 ## <a name="verify-domain-join"></a>ドメイン参加の確認
-マシンが管理対象ドメインに正常に参加したかどうかを確認してみましょう。 別の SSH 接続を使用して、ドメインに参加した CentOS VM に接続します。 ドメイン ユーザー アカウントを使用して、そのユーザー アカウントが正しく解決されているかどうかを確認します。
+マシンがマネージド ドメインに正常に参加したかどうかを確認してみましょう。 別の SSH 接続を使用して、ドメインに参加した CentOS VM に接続します。 ドメイン ユーザー アカウントを使用して、そのユーザー アカウントが正しく解決されているかどうかを確認します。
 
-1. SSH ターミナルで次のコマンドを入力し、SSH を使用して、ドメインに参加した CentOS 仮想マシンに接続します。 管理対象ドメインに属するドメイン アカウントを使用します (例: ここでは 'bob@CONTOSO100.COM')。
+1. SSH ターミナルで次のコマンドを入力し、SSH を使用して、ドメインに参加した CentOS 仮想マシンに接続します。 マネージド ドメインに属するドメイン アカウントを使用します (例: ここでは 'bob@CONTOSO100.COM')。
     ```
     ssh -l bob@CONTOSO100.COM contoso-centos.contoso100.com
     ```
@@ -137,7 +141,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
-* [Azure AD ドメイン サービスで管理されているドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Installing Kerberos (Kerberos のインストール)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
 * [Red Hat Enterprise Linux 7 - Windows Integration Guide (Red Hat Enterprise Linux 7 - Windows 統合ガイド)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)

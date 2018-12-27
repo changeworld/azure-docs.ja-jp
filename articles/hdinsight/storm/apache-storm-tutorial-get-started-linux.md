@@ -1,26 +1,21 @@
 ---
-title: HDInsight 上の Apache Storm での storm-starter の例 - Azure | Microsoft Docs
+title: HDInsight 上の Apache Storm での storm-starter の例 - Azure
 description: HDInsight 上で Apache Storm と storm-starter の例を使って、ビッグ データ分析を行い、データをリアルタイムで処理する方法を説明します。
 keywords: storm-starter, apache storm の例
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: d710dcac-35d1-4c27-a8d6-acaf8146b485
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.devlang: java
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 0490ba63e651b0ef16175dca46b85a3e48bfd26f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d2181fb22079112c84e3e7c65575b12aa0c867ac
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006551"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>storm-starter の例を使って HDInsight で Apache Storm の使用を開始する
 
@@ -72,7 +67,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
 
 4. クラスターの種類を選択したら、__[選択]__ ボタンを使用してクラスターの種類を設定します。 次に、__[次へ]__ ボタンを使用して、基本的な構成を完了します。
 
-5. **[ストレージ]** セクションで、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、このセクションの他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。
+5. **[ストレージ]** セクションで、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、このセクションの他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。 Data Lake Storage Gen2 の使用について詳しくは、「[クイック スタート: HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
     ![HDInsight のストレージ アカウント設定](./media/apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 
@@ -93,7 +88,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
     > SSH クライアントで、ホストの信頼性が確立できないというメッセージが表示されることがあります。 その場合は、「`yes`」と入力して続行します。
 
     > [!NOTE]
-    > SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 たとえば、「`ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
+    > SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 たとえば、「 `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net` 」のように入力します。
 
     詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 

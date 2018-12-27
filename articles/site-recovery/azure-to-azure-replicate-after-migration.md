@@ -1,22 +1,21 @@
 ---
-title: "Azure への移行後に Azure Site Recovery を使用して Azure VM のディザスター リカバリーをセットアップする |Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用して Azure に移行した後、Azure リージョン間でのディザスター リカバリーをセットアップできるようにマシンを準備する方法について説明します。"
+title: Azure への移行後に Azure Site Recovery を使用して Azure VM のディザスター リカバリーをセットアップする |Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して Azure に移行した後、Azure リージョン間でのディザスター リカバリーをセットアップできるようにマシンを準備する方法について説明します。
 services: site-recovery
 author: ponatara
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/07/2018
+ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: c06af21cd6e273b98c004e8bd0e6eac61ba7d644
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 274a69c6a2c23caf391a636ce53a9bb3897c0aa2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836068"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure への移行後に Azure VM のディザスター リカバリーをセットアップする 
 
->[!NOTE]
-> Azure Site Recovery を使用した Azure VM のディザスター リカバリーは現在プレビュー中です。
 
 この記事は、[Site Recovery](site-recovery-overview.md) サービスを使用して[オンプレミス マシンを Azure VM に移行](tutorial-migrate-on-premises-to-azure.md)した後で読んでください。 この記事は、Site Recovery を使用して、セカンダリ Azure リージョンへのディザスター リカバリーのセットアップに備えて Azure VM を準備する際に役立ちます。
 
@@ -30,11 +29,11 @@ ms.lasthandoff: 02/13/2018
 
 ## <a name="install-the-azure-vm-agent"></a>Azure VM エージェントのインストール
 
-Site Recovery がレプリケートできるように Azure [VM エージェント](../virtual-machines/windows/agent-user-guide.md)を VM にインストールする必要があります。
+Site Recovery がレプリケートできるように Azure [VM エージェント](../virtual-machines/extensions/agent-windows.md)を VM にインストールする必要があります。
 
 
-1. Windows を実行する VM に VM エージェントをインストールするには、[エージェント インストーラー](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードして実行します。 インストールを完了するには、VM の管理者特権が必要です。
-2. Linux を実行する VM に VM エージェントをインストールするには、最新の [Linux エージェント](../virtual-machines/linux/agent-user-guide.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからインストールすることをお勧めします。 GitHub から直接 Linux VM エージェントをインストールすることはお勧めしません。 
+1. Windows を実行する VM に VM エージェントをインストールするには、[エージェント インストーラー](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードして実行します。 インストールを完了するには、VM の管理者特権が必要です。
+2. Linux を実行する VM に VM エージェントをインストールするには、最新の [Linux エージェント](../virtual-machines/extensions/agent-linux.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからインストールすることをお勧めします。 GitHub から直接 Linux VM エージェントをインストールすることはお勧めしません。 
 
 
 ## <a name="validate-the-installation-on-windows-vms"></a>Windows VM でのインストールの検証
@@ -56,7 +55,7 @@ Site Recovery がレプリケートできるように Azure [VM エージェン�
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Linux の場合は、ルート ユーザーとしてサインインします。 端末で、**/user/local/ASR** に移動して、次のコマンドを実行します。
+    - Linux の場合は、root ユーザーとしてサインインします。 端末で、**/user/local/ASR** に移動して、次のコマンドを実行します。
         ```
         uninstall.sh -Y
         ```

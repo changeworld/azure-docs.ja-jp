@@ -1,35 +1,35 @@
 ---
-title: 'Azure Active Directory B2C: リファレンス: カスタム ポリシーでユーザー体験の UI をカスタマイズする | Microsoft Docs'
-description: Azure Active Directory B2C のカスタム ポリシーに関するトピック
+title: カスタム ポリシーでユーザー体験の UI をカスタマイズする | Microsoft Docs
+description: Azure Active Directory B2C のカスタム ポリシーについて説明します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: b0f68f76bfb746b91cb82b2b7e9e750f15f14253
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139511"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 > [!NOTE]
-> この記事では、Identity Experience Framework を使用して UI をカスタマイズする方法と B2C のカスタム ポリシーを有効にする方法について、詳細に説明します。
+> この記事では、Identity Experience Framework を使用して UI をカスタマイズする方法と Azure AD B2C のカスタム ポリシーを有効にする方法について、詳細に説明します。
 
 
 シームレスなユーザー エクスペリエンスは、企業-消費者間のソリューションにおいて鍵となります。 シームレスなユーザー エクスペリエンスとは、デバイスでもブラウザーでも、Microsoft のサービスでのユーザー体験が、ユーザーが使用している顧客サービスのユーザー体験と変わらないことです。
 
 ## <a name="understand-the-cors-way-for-ui-customization"></a>UI のカスタマイズに CORS を使用する方法について
 
-Azure AD B2C では、さまざまなページでのユーザー エクスペリエンス (UX) の外観をカスタマイズすることができます。こうしたページは、カスタム ポリシーを通じて Azure AD B2C で配信および表示されます。
+Azure AD B2C では、さまざまなページでのユーザー エクスペリエンス (UX) の外観をカスタマイズすることができます。こうしたページは、カスタム ポリシーを使用して Azure AD B2C で配信および表示されます。
 
 この目的のために、Azure AD B2C はコンシューマーのブラウザーでコードを実行すると共に、[クロス オリジン リソース共有 (CORS)](http://www.w3.org/TR/cors/) と呼ばれる最新の標準手法を使用して、HTML5/CSS テンプレートを指すようにカスタム ポリシーで指定した特定の URL からカスタム コンテンツを読み込みます。 CORS とは、フォントなどの Web ページ上の制限されたリソースを、リソースの提供元のドメインとは別のドメインに対して要求できるようにするメカニズムです。
 
@@ -41,7 +41,7 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 必要に応じて HTML5/CSS ファイルを作成することで、コンテンツ ページを必要な数だけ作成できます。
 
 > [!NOTE]
-> セキュリティ上の理由から、現時点ではカスタマイズのための JavaScript の使用はブロックされています。 JavaScript のブロックを解除するには、Azure AD B2C テナントのカスタム ドメイン名を使用する必要があります。
+> セキュリティ上の理由から、現時点ではカスタマイズのための JavaScript の使用はブロックされています。 
 
 各 HTML5/CSS テンプレートでは、"*アンカー*" 要素を指定します。この要素は、以降で示すとおり、HTML またはコンテンツ ページ内の必須の `<div id=”api”>` 要素と対応します。 Azure AD B2C では、すべてのコンテンツ ページにこの特定の div が存在している必要があります。
 
@@ -66,7 +66,7 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 - コンテンツが HTML5 に準拠しており、アクセス可能であることを確認する。
 - コンテンツ サーバーで CORS が有効になっていることを確認する。
 - HTTPS を使用してコンテンツを配信する。
-- すべてのリンクと CSS コンテンツで、https://yourdomain/content などの絶対 URL を使用する。
+- すべてのリンクと CSS コンテンツで、 https://yourdomain/content などの絶対 URL を使用する。
 
 > [!TIP]
 > コンテンツをホストしているサイトで CORS が有効になっていることを確認し、CORS 要求をテストするには、サイト http://test-cors.org/ を使用します。 このサイトでは、(CORS がサポートされているかどうかをテストするために) CORS 要求をリモート サーバー、または (CORS の特定の機能を使ってみるために) テスト サーバーに送信できます。
@@ -115,11 +115,11 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>ストレージ アカウントで CORS が有効になっていることを確認する
 
-Azure AD B2C Premium でコンテンツの読み込みに使用するエンドポイントでは、CORS (クロス オリジン リソース共有) が有効になっている必要があります。これは、ページの配信元の Azure AD B2C Premium ドメインとは異なるドメインでコンテンツがホストされるためです。
+Azure AD B2C でコンテンツの読み込みに使用するエンドポイントでは、CORS (クロス オリジン リソース共有) が有効になっている必要があります。 これは、ページの配信元の Azure AD B2C ドメインとは異なる、別のドメインでコンテンツがホストされるためです。
 
 コンテンツをホストしているストレージで CORS が有効になっていることを確認するために、次の手順に進みます。
 
-1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、「https://contoso369b2c.blob.core.windows.net/b2c/unified.html」のように入力します。
+1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、「 https://contoso369b2c.blob.core.windows.net/b2c/unified.html 」のように入力します。
 2. http://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
@@ -138,7 +138,7 @@ Azure AD B2C Premium でコンテンツの読み込みに使用するエンド�
 
 次の表に、上記の HTML5 ページの目的を示します。
 
-| HTML5 テンプレート | [説明] |
+| HTML5 テンプレート | 説明 |
 |----------------|-------------|
 | *phonefactor.html* | このページは、多要素認証ページのテンプレートとして使用できます。 |
 | *resetpassword.html* | このページは、パスワードを忘れた場合のページのテンプレートとして使用できます。 |
@@ -154,7 +154,7 @@ Azure AD B2C Premium でコンテンツの読み込みに使用するエンド�
 
 次の表に、Azure AD B2C Identity Experience Engine で検出されたコンテンツ定義 ID のセットと、それに関連するページの種類を示します。
 
-| コンテンツ定義 ID | [説明] |
+| コンテンツ定義 ID | 説明 |
 |-----------------------|-------------|
 | *api.error* | **エラー ページ**。 このページは、例外またはエラーが発生した場合に表示されます。 |
 | *api.idpselections* | **ID プロバイダーの選択ページ**。 このページには、サインイン時にユーザーが選択できる ID プロバイダーの一覧が含まれます。 これらのプロバイダーは、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウント (メール アドレスやユーザー名を使用するもの) のいずれかです。 |

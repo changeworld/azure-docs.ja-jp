@@ -1,20 +1,22 @@
 ---
-title: Azure Site Recovery での VMware/物理サーバー レプリケーションのアーキテクチャ | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して、オンプレミスの VMware VM または Windows/Linux 物理サーバーをセカンダリ VMware サイトにレプリケートするときに使用されるコンポーネントとアーキテクチャの概要を説明します
+title: Azure Site Recovery を使用した VMware または物理サーバーのセカンダリ サイトへのディザスター リカバリーのためのアーキテクチャ | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して、オンプレミスの VMware VM または Windows/Linux 物理サーバーをセカンダリ VMware サイトでのディザスター リカバリーの際に使用されるコンポーネントとアーキテクチャの概要を説明します。
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/06/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 97a990aa3ed9043280888900d8fc7b604b6c22b5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 77387b52003923dffce7519df9cca47fad8f6e6c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007435"
 ---
-# <a name="vmware-vmphysical-server-to-vmware-replication-architecture"></a>VMware への VMware VM/物理サーバー レプリケーションのアーキテクチャ
+# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>セカンダリ オンプレミス サイトへの VMware または物理サーバーのレプリケーションのためのアーキテクチャ
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、オンプレミスの VMware 仮想マシン (VM) または Windows/Linux 物理サーバーをセカンダリ VMware サイトにレプリケート、フェールオーバー、および復旧するときに使われるアーキテクチャとプロセスについて説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、オンプレミスの VMware 仮想マシン (VM) または Windows/Linux 物理サーバーのセカンダリ VMware サイトに対する、ディザスター リカバリー レプリケーション、フェールオーバーおよび復旧を設定するときに使われるアーキテクチャとプロセスについて説明します。
 
 
 ## <a name="architectural-components"></a>アーキテクチャ コンポーネント

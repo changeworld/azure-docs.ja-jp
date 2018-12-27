@@ -1,23 +1,24 @@
 ---
-title: "クラウド サービスの複数の VIP"
-description: "MultiVIP の概要とクラウド サービスで複数の Vip を設定する方法"
+title: クラウド サービスの複数の VIP
+titlesuffix: Azure Load Balancer
+description: MultiVIP の概要とクラウド サービスで複数の Vip を設定する方法
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-ms.assetid: 85f6d26a-3df5-4b8e-96a1-92b2793b5284
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: b6b7b0b2d7a7f33facaf72bbd2d7937364770673
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f358a024ef7a7215077bc8bbbdaa30167d77917
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166066"
 ---
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>クラウド サービスの複数の VIP を構成する
 
@@ -169,7 +170,7 @@ Get-AzureVM -ServiceName myService -Name myVM2 |
 Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -VirtualIPName Vip1
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Load Balancer のログ分析](load-balancer-monitor-log.md)
 

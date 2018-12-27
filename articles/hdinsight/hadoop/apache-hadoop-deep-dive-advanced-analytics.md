@@ -1,38 +1,32 @@
 ---
-title: "詳細情報 - 高度な分析 - Azure HDInsight | Microsoft Docs"
-description: "高度な分析において、どのようにアルゴリズムを使用してビッグ データを処理するのかについて説明します。"
+title: 詳細情報 - 高度な分析 - Azure HDInsight
+description: 高度な分析において、どのようにアルゴリズムを使用してビッグ データを処理するのかについて説明します。
 services: hdinsight
-documentationcenter: 
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 61a00c902be5cd3e37dabba09c15f9226e5e88b4
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 40536aae15f2ae9fa5e186cdbea1f75f7d264437
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047142"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 
 ## <a name="what-is-advanced-analytics-for-hdinsight"></a>HDInsight の高度な分析とは
 
-HDInsight を使用すると、大量の構造化されたデータ、構造化されていないデータ、動きの速いデータから、価値のある分析情報を得ることができます。 高度な分析では、拡張性の高いアーキテクチャ、統計モデルと機械学習モデル、インテリジェント ダッシュボードを使用することで、示唆に富んだ分析情報を提供します。 機械学習、あるいは *"予測分析"* は、データ内のリレーションシップを特定して学習するアルゴリズムを使用し、予測を行ってユーザーの決定をガイドします。
+HDInsight を使用すると、大量の構造化されたデータ、構造化されていないデータ、動きの速いデータから、価値のある分析情報を得ることができます。 高度な分析では、スケーラビリティの高いアーキテクチャ、統計モデルと機械学習モデル、インテリジェント ダッシュボードを使用することで、示唆に富んだ分析情報を提供します。 機械学習、あるいは *"予測分析"* は、データ内のリレーションシップを特定して学習するアルゴリズムを使用し、予測を行ってユーザーを決断へと導きます。
 
 ## <a name="advanced-analytics-process"></a>高度な分析のプロセス
 
 ![Process](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
-ビジネス上の問題を特定し、データの収集と処理を開始したら、予測する課題を表すモデルを作成する必要があります。 モデルは 1 つ以上の機械学習アルゴリズムを使用して、お客様のビジネス上のニーズに最適な予測タイプを作成します。  ご利用のデータはテストや評価に使用する分を残して、その大部分をモデルのトレーニングに使用する必要があります。 
+ビジネス上の問題を特定し、データの収集と処理を開始したら、予測する課題を象徴するモデルを作成する必要があります。 モデルは 1 つ以上の機械学習アルゴリズムを使用して、お客様のビジネス上のニーズに最適な予測タイプを作成します。  ご利用のデータはテストや評価に使用する分を残して、その大部分をモデルのトレーニングに使用する必要があります。 
 
 使用するモデルを作成、読み込み、テスト、評価したら、次はそのモデルをデプロイして、お客様の質問に対する回答を開始するようにします。 最後にモデルのパフォーマンスを監視して、必要に応じて調整します。 
 
@@ -63,7 +57,7 @@ HDInsight を使用すると、大量の構造化されたデータ、構造化�
 HDInsight には、次の高度な分析ワークフロー向けの、いくつかの機械学習オプションがあります。
 
 * [Machine Learning と Spark](#machine-learning-and-spark)
-* [R と R Server](#r-and-r-server)
+* [R および ML Services](#r-and-r-server)
 * [Azure Machine Learning と Hive](#azure-machine-learning-and-hive)
 * [Spark とディープ ラーニング](#spark-and-deep-learning)
 
@@ -77,17 +71,17 @@ HDInsight には、次の高度な分析ワークフロー向けの、いくつ�
 * [**SparkML** ](https://spark.apache.org/docs/1.2.2/ml-guide.html) - SparkML は、ML パイプラインを構築するために Spark DataFrame 上に構築された高度な API を提供する、比較的新しいパッケージです。
 * [**MMLSpark** ](https://github.com/Azure/mmlspark) - Microsoft Machine Learning library for Apache Spark (MMLSpark) は、データ サイエンティストの Spark 上での生産性を高めること、実験速度を向上させること、およびディープ ラーニングなどの非常に大規模なデータセットに対して、機械学習の最先端の手法を利用できることを目標に設計されています。 MMLSpark ライブラリは、PySpark でモデルを構築するための一般的なモデリング タスクを簡略化します。 
 
-### <a name="r-and-r-server"></a>R と R Server
+### <a name="r-and-ml-services"></a>R および ML Services
 
-大量のデータセットとモデルを扱えるよう準備された [R Server](../r-server/r-server-overview.md) を使用して、HDInsight の一部として HDInsight クラスターを作成できます。 この新しい機能により、データ サイエンティストや統計学の専門家は、使い慣れた R インターフェイスを使用して、HDInsight を介してオンデマンドでスケールすることができ、クラスターのセットアップとメンテナンスのオーバーヘッドがなくなります。
+大量のデータセットとモデルを扱えるよう準備された [ML Services](../r-server/r-server-overview.md) を使用して、HDInsight の一部として HDInsight クラスターを作成できます。 この新しい機能により、データ サイエンティストや統計学の専門家は、使い慣れた R インターフェイスを使用して、HDInsight を介してオンデマンドでスケーリングすることができ、クラスターのセットアップとメンテナンスのオーバーヘッドがなくなります。
 
 ### <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning と Hive
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) は、モデルの予測分析ツールを提供するだけでなく、すぐに使用できる Web サービスとして予測モデルをデプロイするための、フル マネージ サービスを提供します。 また、Azure Machine Learning は、クラウドで予測分析の完全なソリューションを作成するためのツールを提供し、予測モデルを迅速に作成、テスト、運用化して管理します。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
+[Azure Machine Learning Studio](https://studio.azureml.net/) は、モデルの予測分析ツールを提供するだけでなく、すぐに使用できる Web サービスとして予測モデルをデプロイするための、フル マネージド サービスを提供します。 また、Azure Machine Learning は、クラウドで予測分析の完全なソリューションを作成するためのツールを提供し、予測モデルを迅速に作成、テスト、運用化して管理します。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
 
 ### <a name="spark-and-deep-learning"></a>Spark とディープ ラーニング
 
-[ディープ ラーニング](https://www.microsoft.com/research/group/dltc/)とは、*ディープ ニューラル ネットワーク* (DNN) を使用する機械学習の分野であり、人間の脳の生物学的プロセスから着想を得たものです。 多くの研究者がディープ ラーニングを人工知能のための有効なアプローチであると考えています。 ディープ ラーニングの例をいくつか挙げると、音声言語翻訳ツール、画像認識システム、機械推定などがあります。 ディープ ラーニングでの独自の作業を効率化できるよう、Microsoft は無料で使いやすいオープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/cognitive-toolkit/) を開発しました。 このツールキットは、さまざまな Microsoft 製品や、ディープ ラーニングを大規模に展開する必要がある世界規模の会社、あるいは最新のアルゴリズムと手法に興味がある学生によって、広範囲に使用されています。 
+[ディープ ラーニング](https://www.microsoft.com/research/group/dltc/)とは、*ディープ ニューラル ネットワーク* (DNN) を使用する機械学習の分野であり、人間の脳の生物学的プロセスから着想を得たものです。 多くの研究者がディープ ラーニングを人工知能のための有効なアプローチであると考えています。 ディープ ラーニングの例をいくつか挙げると、音声言語翻訳ツール、画像認識システム、機械推定などがあります。 ディープ ラーニングでの独自の作業を効率化できるよう、Microsoft は無料で使いやすいオープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) を開発しました。 このツールキットは、さまざまな Microsoft 製品や、ディープ ラーニングを大規模に展開する必要がある世界規模の会社、あるいは最新のアルゴリズムと手法に興味がある学生によって、広範囲に使用されています。 
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>シナリオ - 画像をスコア付けして都市開発におけるパターンを特定する
 

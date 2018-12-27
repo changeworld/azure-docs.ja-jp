@@ -1,28 +1,25 @@
 ---
-title: "Azure Functions の継続的なデプロイ | Microsoft Docs"
-description: "Azure App Service の継続的なデプロイ機能を使用して、Azure Functions を発行します。"
+title: Azure Functions の継続的なデプロイ | Microsoft Docs
+description: Azure App Service の継続的なデプロイ機能を使用して、Azure Functions を発行します。
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: 
-tags: 
+manager: jeconnoc
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 35a0b0faa61cf4b42ba1d8696c85f5724ff73f23
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7529d20535eedab92d164df5a0435efeda83fca2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301550"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions の継続的なデプロイ
-Azure Functions を利用すると、App Service の継続的インテグレーションを使用して、関数アプリを簡単にデプロイできます。 Functions は、BitBucket、Dropbox、GitHub、および Visual Studio Team Services (VSTS) と統合されています。 これにより、関数コードの更新がこれらの統合されたサービスのいずれかを使用して行われるワークフローで、Azure へのデプロイをトリガーできるようになります。 Azure Functions に慣れていない場合は、「 [Azure Functions の概要](functions-overview.md)」から始めてください。
+Azure Functions を利用すると、App Service の継続的インテグレーションを使用して、関数アプリを簡単にデプロイできます。 Functions は、BitBucket、Dropbox、GitHub、および Azure DevOps と統合されています。 これにより、関数コードの更新がこれらの統合されたサービスのいずれかを使用して行われるワークフローで、Azure へのデプロイをトリガーできるようになります。 Azure Functions に慣れていない場合は、「 [Azure Functions の概要](functions-overview.md)」から始めてください。
 
 複数の頻繁に発生する投稿を統合する場合、継続的なデプロイはプロジェクトに最適なオプションとなります。 また、関数コードのソース管理を維持することもできます。 現在、次のデプロイ ソースがサポートされています。
 
@@ -30,9 +27,9 @@ Azure Functions を利用すると、App Service の継続的インテグレー�
 * [Dropbox](https://www.dropbox.com/)
 * 外部リポジトリ (Git または Mercurial)
 * [Git ローカル リポジトリ](../app-service/app-service-deploy-local-git.md)
-* [Github](https://github.com)
+* [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
-* [Visual Studio Team Services](https://www.visualstudio.com/team-services/)
+* [Azure DevOps Services](https://www.visualstudio.com/team-services/)
 
 デプロイは関数アプリごとに構成されます。 継続的なデプロイが有効になると、 ポータル内の関数コードへのアクセスは、 *読み取り専用*に設定されます。
 
@@ -42,8 +39,10 @@ Azure Functions を利用すると、App Service の継続的インテグレー�
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
+Azure DevOps からデプロイできるようにするには、まず、Azure サブスクリプションに Azure DevOps 組織をリンクする必要があります。 詳しくは、「[Set up billing for your Azure DevOps organization](https://docs.microsoft.com/azure/devops/organizations/billing/set-up-billing-for-your-organization-vs?view=vsts#set-up-billing-via-the-azure-portal)」\(Azure DevOps 組織の課金の設定\) をご覧ください。
+
 ## <a name="set-up-continuous-deployment"></a>Azure App Service での GIT による継続的なデプロイ
-既存の関数アプリの継続的なデプロイを構成するには、次の手順に従います。 この手順は、GitHub リポジトリとの統合を示しますが、Visual Studio Team Services またはその他のデプロイ サービスに対しても同様の手順が適用されます。
+既存の関数アプリの継続的なデプロイを構成するには、次の手順に従います。 この手順は、GitHub リポジトリとの統合を示しますが、Azure DevOps またはその他のデプロイ サービスに対しても同様の手順が適用されます。
 
 1. [Azure Portal](https://portal.azure.com) の関数アプリで、**[プラットフォーム機能]** と **[展開オプション]** をクリックします。 
    
@@ -106,7 +105,7 @@ FTP またはローカル Git リポジトリで関数アプリからファイ�
    
     ![ローカル デプロイ資格情報の設定](./media/functions-continuous-deployment/setup-deployment-credentials.png)
 
-2. ユーザー名とパスワードを入力し、 **[保存]**をクリックします。 これでこれらの資格情報を使用して、FTP または組み込みの Git リポジトリから関数アプリにアクセスできます。
+2. ユーザー名とパスワードを入力し、 **[保存]** をクリックします。 これでこれらの資格情報を使用して、FTP または組み込みの Git リポジトリから関数アプリにアクセスできます。
 
 <a name="downftp"></a>
 #### <a name="how-to-download-files-using-ftp"></a>方法: FTP を使用したファイルのダウンロード
@@ -148,7 +147,7 @@ FTP またはローカル Git リポジトリで関数アプリからファイ�
 
 [GitHub]: https://github.com/
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure Functions のベスト プラクティス](functions-best-practices.md)

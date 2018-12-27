@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: eb13bc8012e2d58e1a9b68bb1cf2da11d65e8159
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 015d5bcdb7ab4e4e666471163bb027c74c9bb377
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418026"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure の新しいサポート要求用ファイル アップロード ユーティリティのガイドライン
 [サポート要求を作成](https://portal.azure.com/#create/Microsoft.Support)するときに、ファイル アップロード ユーティリティを使用すると、診断ファイル、またはインシデントに関連すると思われるその他のファイルを簡単にアップロードできます。  

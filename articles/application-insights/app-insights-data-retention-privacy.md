@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights でのデータ保持と保存 | Microsoft Docs"
-description: "データ保持およびプライバシー ポリシー ステートメント"
+title: Azure Application Insights でのデータ保持と保存 | Microsoft Docs
+description: データ保持およびプライバシー ポリシー ステートメント
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: a6268811-c8df-42b5-8b1b-1d5a7e94cbca
@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 04/07/2017
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1818e564acb0e9b5fa620d6f38db141811ca9777
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 1994c714f691177b526b44e277fea705d18b4335
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245700"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
-
 
 アプリに [Azure Application Insights][start] SDK をインストールすると、アプリに関するテレメトリがクラウドに送信されます。 当然ながら、担当開発者は、送信されるデータ、データに対して発生すること、それを制御する方法について知りたいと考えます。 特に、機密データの送信、その保存先、安全性が重要です。 
 
@@ -90,6 +90,8 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 
 集計されたデータ (つまり、メトリックス エクスプローラーに表示されるカウント、平均、その他の統計データ) は、1 分の詳細度であれば 90 日の期間にわたって保持されます。
 
+[デバッグ スナップショット](app-insights-snapshot-debugger.md)は 7 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
+
 ## <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 お客様と、組織アカウントを持っている場合はチーム メンバーが、データを見ることができます。 
 
@@ -103,13 +105,12 @@ Microsoft は、お客様にサービスを提供する目的でのみデータ�
 
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>それは、アプリを米国、ヨーロッパ、または東南アジアでホストする必要があるという意味ですか。
-* 
-いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
+* いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
 
 ## <a name="how-secure-is-my-data"></a>データのセキュリティは保たれますか。
-Application Insights は Azure サービスのひとつです。 セキュリティ ポリシーについては、[Azure のセキュリティ、プライバシー、およびコンプライアンスに関するホワイト ペーパー](http://go.microsoft.com/fwlink/?linkid=392408)をご覧ください。
+Application Insights は Azure サービスのひとつです。 セキュリティ ポリシーについては、[Azure のセキュリティ、プライバシー、およびコンプライアンスに関するホワイト ペーパー](https://go.microsoft.com/fwlink/?linkid=392408)をご覧ください。
 
-データは、Microsoft Azure サーバーに保管されます。 Azure Portal のアカウントの場合、アカウントの制限は [Azure のセキュリティ、プライバシー、コンプライアンスの文書](http://go.microsoft.com/fwlink/?linkid=392408)に記載されています。
+データは、Microsoft Azure サーバーに保管されます。 Azure Portal のアカウントの場合、アカウントの制限は [Azure のセキュリティ、プライバシー、コンプライアンスの文書](https://go.microsoft.com/fwlink/?linkid=392408)に記載されています。
 
 Microsoft のスタッフによるデータへのアクセスは制限されます。 Microsoft は、Application Insights の使用をサポートするために必要であれば、ユーザーからアクセス許可を得た上でデータにアクセスします。 
 
@@ -126,47 +127,132 @@ Web ページのコード内にインストルメンテーション キーがあ
 データをデータ センター間で移動するときは、すべてのデータが暗号化されます。
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>アプリケーションから Application Insights サーバーに送信されるときにデータは暗号化されますか。
-はい。ポータルからほぼすべての SDK (Web サーバー、デバイス、HTTPS Web ページを含みます) への送信に https が使用されます。 唯一の例外は、プレーンな HTTP Web ページから送信されるデータです。 
+はい。ポータルからほぼすべての SDK (Web サーバー、デバイス、HTTPS Web ページを含みます) への送信に https が使用されます。 唯一の例外は、プレーンな HTTP Web ページから送信されるデータです。
 
-## <a name="personally-identifiable-information"></a>個人を特定できる情報
-#### <a name="could-personally-identifiable-information-pii-be-sent-to-application-insights"></a>個人を特定できる情報 (PII) は Application Insights に送信されますか。
-はい、できます。 
+## <a name="does-the-sdk-create-temporary-local-storage"></a>SDK では一時的なローカル ストレージが作成されますか?
 
-一般的なガイダンス:
+はい。特定のテレメトリ チャネルは、エンドポイントに到達できない場合、データをローカルで保持します。 どのフレームワークおよびテレメトリ チャネルが影響を受けるかを以下で確認してください。
 
-* ほとんどの標準テレメトリ (つまり、コードを書かなくても送信されるテレメトリ) には、明示的な PII は含まれません。 ただし、イベントのコレクションから推論することによって、個人を特定できる場合があります。
-* 例外とトレースのメッセージには PII が含まれている可能性があります。
-* カスタム テレメトリ (つまり、API またはログ トレースを使用してコードに記述する TrackEvent などの呼び出し) には、自分で選んだすべてのデータを含めることができます。
 
-収集されるデータに関する詳細な説明については、このドキュメントの末尾の表をご覧ください。
+ローカル ストレージを利用するテレメトリ チャネルは、アプリケーションを実行している特定のアカウントに制限される TEMP または APPDATA ディレクトリ内に一時ファイルを作成します。 これは、エンドポイントが一時的に使用できなくなったか、または調整制限に達した場合に発生する可能性があります。 この問題が解決されると、テレメトリ チャネルは、すべての新しいデータおよび保持されているデータの送信を再開します。
 
-#### <a name="am-i-responsible-for-complying-with-laws-and-regulations-in-regard-to-pii"></a>私は PII に関する法令を遵守する責任を負いますか。
-はい。 データの収集と使用に関して法令および Microsoft Online Services の条項に従っていることを確認するのはお客様の責任です。
 
-お客様は、アプリケーションが収集するデータと、データの使用方法について、顧客に適切に通知する必要があります。
+この保持されているデータは**暗号化されない**ため、プライベート データの収集を無効にするようにデータ収集ポリシーを再構築することを強くお勧めします。 (詳細については、「[プライベート データをエクスポートして削除する方法](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)」を参照してください。)
+
+
+顧客がこのディレクトリを特定のセキュリティ要件で構成する必要がある場合は、フレームワークごとに構成できます。 アプリケーションを実行しているプロセスにこのディレクトリへの書き込みアクセス権があることを確認してください。ただし、意図しないユーザーによってテレメトリが読み取られることを防ぐために、このディレクトリが保護されていることも確認してください。
+
+### <a name="java"></a>Java
+
+`C:\Users\username\AppData\Local\Temp` はデータを保持するために使用されます。 この場所は config ディレクトリからは構成できす、このフォルダーにアクセスするためのアクセス許可は、必要な資格情報を持つ特定のユーザーに制限されています。 (ここにある[実装](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)を参照してください。)
+
+###  <a name="net"></a>.NET
+
+既定では、`ServerTelemetryChannel` は、現在のユーザーのローカル アプリ データ フォルダー `%localAppData%\Microsoft\ApplicationInsights` または一時フォルダー `%TMP%` を使用します。 (ここにある[実装](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)を参照してください。)
+
+
+構成ファイルを使用する場合:
+```
+<TelemetryChannel Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel,   Microsoft.AI.ServerTelemetryChannel">
+    <StorageFolder>D:\NewTestFolder</StorageFolder>
+</TelemetryChannel>
+```
+
+コードを使用する場合:
+
+- 構成ファイルから ServerTelemetryChannel を削除します。
+- 構成に次のスニペットを追加します。
+```
+ServerTelemetryChannel channel = new ServerTelemetryChannel();
+channel.StorageFolder = @"D:\NewTestFolder";
+channel.Initialize(TelemetryConfiguration.Active);
+TelemetryConfiguration.Active.TelemetryChannel = channel;
+```
+
+### <a name="netcore"></a>NetCore
+
+既定では、`ServerTelemetryChannel` は、現在のユーザーのローカル アプリ データ フォルダー `%localAppData%\Microsoft\ApplicationInsights` または一時フォルダー `%TMP%` を使用します。 (ここにある[実装](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)を参照してください。)Linux 環境では、ストレージ フォルダーが指定されていない限り、ローカル ストレージは無効になります。
+
+次のコード スニペットは、 `Startup.cs`  クラスの `ConfigureServices()`  メソッドで `ServerTelemetryChannel.StorageFolder` を設定する方法を示しています。
+
+```
+services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
+```
+
+(詳細については、[AspNetCore のカスタム構成](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration)に関するページを参照してください。 )
+
+### <a name="nodejs"></a>Node.js
+
+既定では、`%TEMP%/appInsights-node{INSTRUMENTATION KEY}` はデータを保持するために使用されます。 このフォルダーにアクセスするためのアクセス許可は、現在のユーザーと管理者に制限されています。 (ここにある[実装](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts)を参照してください。)
+
+フォルダー プレフィックス `appInsights-node` は、[Sender.ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384) にある静的変数 `Sender.TEMPDIR_PREFIX` のランタイム値を変更することによって上書きできます。
+
+
+
+## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>TLS 1.2 を使用して Application Insight にデータを送信するにはどうすればよいですか。
+
+Application Insight エンドポイントへのデータの転送時のセキュリティを保証するため、少なくとも Transport Layer Security (TLS) 1.2 を使用するようにアプリケーションを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。さらに、業界はこれらの以前のプロトコルのサポートを中止する方向へ急速に動いています。 
+
+[PCI Security Standards Council](https://www.pcisecuritystandards.org/) は、[2018 年 6 月 30 日を期限として](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf)、TLS/SSL の以前のバージョンを無効にし、より安全なプロトコルにアップグレードすることを求めています。 Azure がレガシー サポートを廃止した場合、アプリケーション/クライアントが TLS 1.2 以上で通信できないと Application Insight にデータを送信できなくなります。 アプリケーションの TLS のサポートをテストおよび検証する方法は、オペレーティング システム/プラットフォームのほか、アプリケーションで使用する言語/フレームワークによって異なります。
+
+アプリケーションで TLS 1.2 のみを使用するように明示的に設定することは、絶対に必要な場合を除いてお勧めしません。なぜなら、そうすることで、TLS 1.3 などのより新しいよくより安全なプロトコルを自動的に検出して利用できるようにするプラットフォーム レベルのセキュリティ機能が無効になる可能性があるためです。 アプリケーションのコードを徹底的に監査して、特定の TLS/SSL バージョンのハードコーディングを確認することをお勧めします。
+
+### <a name="platformlanguage-specific-guidance"></a>プラットフォーム/言語に固有のガイダンス
+
+|プラットフォーム/言語 | サポート | 詳細情報 |
+| --- | --- | --- |
+| Azure App Service  | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)のお知らせを参照してください。  |
+| Azure Function App | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)のお知らせを参照してください。 |
+|.NET | サポートされています。構成はバージョンによって異なります。 | .NET 4.7 およびそれ以前のバージョンの詳細な構成情報については、[これらの手順](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)を参照してください。  |
+|Status Monitor | サポートされています。構成が必要です | Status Monitor は、TLS 1.2 をサポートするために [OS 構成](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET 構成](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)に依存します。
+|Node.js |  サポートされています。v10.5.0 では構成が必要な場合があります。 | アプリケーションに固有の構成については、[公式の Node.js TLS/SSL ドキュメント](https://nodejs.org/api/tls.html)を使用してください。 |
+|Java | サポートされています。JDK の TLS 1.2 のサポートは、[JDK 6 更新プログラム 121](http://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) および [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html) で追加されました。 | JDK 8 では、[既定で TLS 1.2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default) が使用されます。  |
+|Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。  | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
+| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
+| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
+| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
+| Windows Server 2008 SP2 | TLS 1.2 のサポートには、更新プログラムが必要です。 | Windows Server 2008 SP2 に [TLS 1.2 のサポートを追加する更新プログラム](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)に関するページを参照してください。 |
+|Windows Vista | サポートされていません。 | 該当なし
+
+### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Linux ディストリビューションで実行されている OpenSSL のバージョンを確認する
+
+インストールされている OpenSSL のバージョンを確認するには、ターミナルを開き、次のコマンドを実行します。
+
+```terminal
+openssl version -a
+```
+
+### <a name="run-a-test-tls-12-transaction-on-linux"></a>Linux 上でテスト TLS 1.2 トランザクションを実行する
+
+Linux システムが TLS 1.2 で通信できるかどうかを確認する基本的な予備テストを実行するには、 ターミナルを開き、次のコマンドを実行します。
+
+```terminal
+openssl s_client -connect bing.com:443 -tls1_2
+```
+
+## <a name="personal-data-stored-in-application-insights"></a>Application Insights に格納される個人データ
+
+この件については、[Application Insights の個人データに関する記事](../log-analytics/log-analytics-personal-data-mgmt.md)に詳しく説明されています。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>ユーザーは Application Insights を無効にできますか。
 直接無効にすることはできません。 ユーザーが Application Insights を無効にするために操作できるスイッチはありません。
 
 ただし、アプリケーションでそのような機能を実装することはできます。 すべての SDK には、テレメトリの収集を無効にする API 設定が含まれています。 
 
-#### <a name="my-application-is-unintentionally-collecting-sensitive-information-can-application-insights-scrub-this-data-so-it-isnt-retained"></a>アプリケーションが意図せずに機密情報を収集しています。 このデータの収集を取り消して Application Insights にデータが保持されないようにすることはできますか。
-Application Insights がデータをフィルター処理したり、削除したりすることはありません。 データを適切に管理して、そのようなデータが Application Insights に送信されないように注意してください。
-
 ## <a name="data-sent-by-application-insights"></a>Application Insights によって送信されるデータ
-SDK はプラットフォームごとに異なり、インストールできるコンポーネントも複数あります  ([Application Insights の概要][start]に関するページをご覧ください)。各コンポーネントは、それぞれ異なるデータを送信します。
+SDK はプラットフォームごとに異なり、インストールできるコンポーネントは複数あります  ([Application Insights の概要][start]に関するページをご覧ください)。各コンポーネントは、それぞれ異なるデータを送信します。
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>さまざまなシナリオで送信されるデータのクラス
 | 操作 | 収集されるデータのクラス (次の表を参照) |
 | --- | --- |
 | [Application Insights SDK を .NET Web プロジェクトに追加する][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Session<br/>users |
 | [Status Monitor を IIS にインストールする][redfield] |依存関係<br/>ServerContext<br/>Inferred<br/>Perf counters |
-| [Application Insights SDK を Java Web アプリに追加する][java] |ServerContext<br/>Inferred<br/>要求<br/>Session<br/>users |
+| [Application Insights SDK を Java Web アプリに追加する][java] |ServerContext<br/>Inferred<br/>Request<br/>Session<br/>users |
 | [JavaScript SDK を Web ページに追加する][client] |ClientContext  <br/>Inferred<br/>ページ<br/>ClientPerf<br/>Ajax |
 | [既定のプロパティを定義する][apiproperties] |**Properties** (すべての標準イベントおよびカスタム イベント) |
-| [TrackMetric を呼び出す][api] |数値<br/>**Properties** |
-| [Track* を呼び出す][api] |イベント名<br/>**Properties** |
-| [TrackException を呼び出す][api] |**Exceptions**<br/>Stack dump<br/>**Properties** |
+| [TrackMetric を呼び出す][api] |数値<br/>**プロパティ** |
+| [Track* を呼び出す][api] |イベント名<br/>**プロパティ** |
+| [TrackException を呼び出す][api] |**Exceptions**<br/>Stack dump<br/>**プロパティ** |
 | SDK はデータを収集できません。 例:  <br/> - パフォーマンス カウンターにアクセスできない<br/> - テレメトリ初期化子で例外が発生した |SDK diagnostics |
 
 [他のプラットフォームの SDK][platforms] については、該当するドキュメントを参照してください。
@@ -181,7 +267,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 | ServerContext |コンピューター名、ロケール、OS、デバイス、ユーザー セッション、ユーザー コンテキスト、操作 |
 | Inferred |IP アドレス、タイムスタンプ、OS、ブラウザーからの geo ロケーション |
 | メトリック |メトリックの名前と値 |
-| イベント |イベントの名前と値 |
+| events |イベントの名前と値 |
 | PageViews |URL とページ名または画面名 |
 | Client perf |URL/ページ名、ブラウザーの読み込み時間 |
 | Ajax |Web ページからサーバーへの HTTP 呼び出し |

@@ -1,18 +1,18 @@
 ---
 title: サーバーの削除と保護の無効化 | Microsoft Docs
 description: この記事では、Site Recovery コンテナーからサーバーの登録を解除して、仮想マシンと物理サーバーの保護を無効にする方法を説明します。
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+author: rajani-janaki-ram
+manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
-ms.author: raynew
-ms.openlocfilehash: 16a5eaac1138d328f81cfa7d50f8705da867e352
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.date: 11/27/2018
+ms.author: rajani-janaki-ram
+ms.openlocfilehash: 8e8cabe48f7f1036986a896d0449798f4aea2522
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844568"
 ---
 # <a name="remove-servers-and-disable-protection"></a>サーバーの削除と保護の無効化
 
@@ -34,7 +34,7 @@ VMware VM または Windows/Linux 物理サーバーを Azure にレプリケー
 3. VMM サーバーの ID を書き留めます。
 4. 削除する VMM サーバー上のクラウドからレプリケーション ポリシーの関連付けを解除します。  **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For System Center VMM (System Center VMM)]**  >   **[レプリケーション ポリシー]** で、関連付けられているポリシーをダブルクリックします。 クラウドを右クリックして、**[関連付け解除]** をクリックします。
 5. VMM サーバーまたはアクティブなノードを削除します。 **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For System Center VMM (System Center VMM)]**  >  **[VMM サーバー]** で、サーバーを右クリックして **[削除]** をクリックします。
-6. VMM サーバーが切断状態になっていた場合は、VMM サーバーで[クリーンアップ スクリプト](http://aka.ms/asr-cleanup-script-vmm)をダウンロードして実行します。 **[管理者として実行]** オプションを使用して PowerShell を開き、既定 (LocalMachine) のスコープの実行ポリシーを変更します。 スクリプトで、削除する VMM サーバーの ID を指定します。 このスクリプトにより、登録とクラウドのペアリングの情報がサーバーから削除されます。
+6. VMM サーバーが切断状態になっていた場合は、VMM サーバーで[クリーンアップ スクリプト](https://aka.ms/asr-cleanup-script-vmm)をダウンロードして実行します。 **[管理者として実行]** オプションを使用して PowerShell を開き、既定 (LocalMachine) のスコープの実行ポリシーを変更します。 スクリプトで、削除する VMM サーバーの ID を指定します。 このスクリプトにより、登録とクラウドのペアリングの情報がサーバーから削除されます。
 5. 任意のセカンダリ VMM サーバーでクリーンアップ スクリプトを実行します。
 6. プロバイダーがインストールされたパッシブ VMM クラスター ノードがあれば、そのノードでクリーンアップ スクリプトを実行します。
 7. VMM サーバー上のプロバイダーを手動でアンインストールします。 クラスターがある場合は、すべてのノードから削除します。
@@ -51,7 +51,7 @@ Hyper-V サイトには、VMM で管理されていない Hyper-V ホストが�
 5. Hyper-V ホストが **[切断]** 状態だった場合は、削除した各 Hyper-V ホストで次のスクリプトを実行します。 このスクリプトは、サーバー上の設定をクリーンアップし、コンテナーからサーバーの登録を解除します。
 
 
-
+```powershell
         pushd .
         try
         {
@@ -112,7 +112,7 @@ Hyper-V サイトには、VMM で管理されていない Hyper-V ホストが�
                 "Registry keys removed."
             }
 
-            # First retrive all the certificates to be deleted
+            # First retrieve all the certificates to be deleted
             $ASRcerts = Get-ChildItem -Path cert:\localmachine\my | where-object {$_.friendlyname.startswith('ASR_SRSAUTH_CERT_KEY_CONTAINER') -or $_.friendlyname.startswith('ASR_HYPER_V_HOST_CERT_KEY_CONTAINER')}
             # Open a cert store object
             $store = New-Object System.Security.Cryptography.X509Certificates.X509Store("My","LocalMachine")
@@ -131,7 +131,7 @@ Hyper-V サイトには、VMM で管理されていない Hyper-V ホストが�
             Write-Host "FAILED" -ForegroundColor "Red"
         }
         popd
-
+```
 
 
 ## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>VMware VM または物理サーバーの保護の無効化 (VMware から Azure)
@@ -158,10 +158,12 @@ Hyper-V サイトには、VMM で管理されていない Hyper-V ホストが�
     > **[削除]** オプションを選択した場合、オンプレミスの Hyper-V Server 上のレプリケーション設定をクリーンアップするには、次のスクリプトのセットを実行します。
 1. ソース Hyper-V ホスト サーバーで、仮想マシンのレプリケーションを削除します。 管理 PowerShell から次のスクリプトを実行します。SQLVM1 は仮想マシンの名前に置き換えます。
 
-
-    
-    $vmName = "SQLVM1"  $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'"  $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  $replicationService.RemoveReplicationRelationship($vm.__PATH)
-    
+```powershell
+    $vmName = "SQLVM1"
+    $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'"
+    $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"
+    $replicationService.RemoveReplicationRelationship($vm.__PATH)
+```
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>System Center VMM から Azure へのシナリオを使用して Azure にレプリケートしている Hyper-V 仮想マシンの保護の無効化
 
@@ -179,11 +181,14 @@ Hyper-V サイトには、VMM で管理されていない Hyper-V ホストが�
         Set-SCVirtualMachine -VM $vm -ClearDRProtection
 4. 上記の手順によって、VMM サーバーのレプリケーション設定がクリアされます。 Hyper-V ホスト サーバーで実行されている仮想マシンのレプリケーションを停止するには、このスクリプトを実行します。 SQLVM1 を仮想マシンの名前に、host01.contoso.com を Hyper-V ホスト サーバーの名前に置き換えます。
 
-    
-    $vmName = "SQLVM1"  $hostName  = "host01.contoso.com"  $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'" -computername $hostName  $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName  $replicationService.RemoveReplicationRelationship($vm.__PATH)
-    
-       
- 
+```powershell
+    $vmName = "SQLVM1"
+    $hostName  = "host01.contoso.com"
+    $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'" -computername $hostName
+    $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName
+    $replicationService.RemoveReplicationRelationship($vm.__PATH)
+```
+
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>System Center VMM から VMM へのシナリオを使用してセカンダリ VMM サーバーにレプリケートしている Hyper-V 仮想マシンの保護の無効化
 
 1. **[保護されているアイテム]**  >  **[レプリケートされたアイテム]** で、マシンを右クリックして **[レプリケーションの無効化]** をクリックします。

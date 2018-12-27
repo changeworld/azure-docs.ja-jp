@@ -1,62 +1,64 @@
 ---
-title: Azure で Analysis Services サーバーを作成する | Microsoft Docs
+title: クイック スタート - Azure portal を使用して Analysis Services サーバーを作成する | Microsoft Docs
 description: Azure で Analysis Services サーバーのインスタンスを作成する方法について説明します。
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: 7f560216-8a9a-4d06-852e-48cf24deab19
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.service: azure-analysis-services
+ms.topic: quickstart
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 9a80d7e6e9f24ccc730fe747fa0a71b91f22b7e9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: minewiskan
+ms.openlocfilehash: ef4099130878813378fb277c45b5d352cbe822a7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000163"
 ---
-# <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>Azure Portal で Azure Analysis Services サーバーを作成する
-この記事では、Azure サブスクリプションで Analysis Services サーバー リソースを作成する手順について説明します。
+# <a name="quickstart-create-a-server---portal"></a>クイック スタート: サーバーの作成 - ポータル
 
-## <a name="before-you-begin"></a>開始する前に
-このクイック スタートを完了するための要件を次に示します。
+このクイック スタートでは、ポータルを使って、Azure サブスクリプションに Analysis Services サーバー リソースを作成する方法について説明します。
 
-* **Azure サブスクリプション**: [Azure 無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p/)でアカウントを作成します。
-* **Azure Active Directory**: サブスクリプションは、Azure Active Directory テナントに関連付けられている必要があります。 また、その Azure Active Directory でアカウントを使用して Azure にサインインしている必要があります。 Microsoft アカウントはサポートされていません。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
-* **リソース グループ**: 既存のリソース グループを使うか、[新しいリソース グループを作成](../azure-resource-manager/resource-group-overview.md)します。
+## <a name="prerequisites"></a>前提条件 
 
-> [!NOTE]
-> サーバーを作成すると、新しい課金対象サービスを使用することになる場合があります。 詳しくは、「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」をご覧ください。
-> 
-> 
+* **Azure サブスクリプション**: [Azure 無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p/)にアクセスしてアカウントを作成します。
+* **Azure Active Directory**: お使いのサブスクリプションは、Azure Active Directory テナントに関連付けられている必要があります。 また、その Azure Active Directory でアカウントを使用して Azure にサインインしている必要があります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
 
-## <a name="to-create-a-server-in-the-azure-portal"></a>Azure Portal でサーバーを作成するには
-1. [Azure Portal](https://portal.azure.com) にサインインします。  
-2. **[+ 新規]** > **[データ + 分析]** > **[Analysis Services]** の順にクリックします。
-3. **[Analysis Services]** ブレードで、必要なフィールドを入力して **[作成]** をクリックします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルへのサインイン 
+
+[ポータルにサインイン](https://portal.azure.com)します。
+
+
+## <a name="create-a-server"></a>サーバーの作成
+
+1. **[リソースの作成]** > **[データ + 分析]** > **[Analysis Services]** の順にクリックします。
+
+    ![ポータル](./media/analysis-services-create-server/aas-create-server-portal.png)
+
+2. **[Analysis Services]** で、必要なフィールドを入力して **[作成]** をクリックします。
    
-    ![Create server](./media/analysis-services-create-server/aas-create-server-blade.png)
-   
-   * **[サーバー名]**: サーバーの参照に使われる一意の名前を入力します。
-   * **[サブスクリプション]**: このサーバーの課金先のサブスクリプションを選びます。
-   * **[リソース グループ]**: Azure リソースのコレクション管理のサポートを目的としたコンテナーです。 詳しくは、「[Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
-   * **[場所]**: この Azure データセンターの場所でサーバーをホストします。 最大のユーザー ベースに最も近い場所を選びます。
-   * **[価格レベル]**: 価格レベルを選びます。 最大 400 GB の表形式モデルがサポートされます。 詳しくは、「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」をご覧ください。
-4. **Create** をクリックしてください。
+   * **サーバー名**: サーバーの参照に使われる一意の名前を入力します。
+   * **サブスクリプション**:このサーバーを関連付けるサブスクリプションを選びます。
+   * **リソース グループ**: 新しいリソース グループを作成するか、既存のリソース グループを選択します。 リソース グループは、Azure リソースのコレクション管理をサポートするように設計されています。 詳しくは、「[Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
+   * **場所**: この Azure データセンターの場所でサーバーをホストします。 最大のユーザー ベースに最も近い場所を選びます。
+   * **価格レベル**: 価格レベルを選択します。 サンプル モデルのデータベースをテストしてインストールする場合、無料の **D1** レベルを選択します。 詳しくは、「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」をご覧ください。 
+    * **管理者**: 既定では、これはログインで使用するアカウントです。 Azure Active Directory から別のアカウントを選択できます。
+    * **バックアップ ストレージの設定**: 省略可能。 [ストレージ アカウント](../storage/common/storage-introduction.md)が既に存在する場合、モデル データベースのバックアップの既定値として指定することができます。 後で[バックアップと復元](analysis-services-backup.md)の設定を指定することもできます。
+    * **ストレージ キーの有効期限**: 省略可能。 ストレージ キーの有効期限を指定します。
 
-通常、作成にかかる時間は 1 分未満であり、たいていはわずか数秒で終わります。 **[Add to Portal]** (ポータルに追加) を選んだ場合は、ポータルに移動して新しいサーバーを確認します。 または、**[すべてのサービス]** > **[Analysis Services]** に移動して、サーバーの準備ができていることを確認します。
+通常、サーバーの作成にかかる時間は 1 分以下です。 **[Add to Portal]** (ポータルに追加) を選んだ場合は、ポータルに移動して新しいサーバーを確認します。 または、**[すべてのサービス]** > **[Analysis Services]** に移動して、サーバーの準備ができていることを確認します。
 
- ![ダッシュボード](./media/analysis-services-create-server/aas-create-server-dashboard.png)
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+不要になったら、サーバーを削除します。 サーバーの **[概要]** で、**[削除]** をクリックします。 
+
+ ![クリーンアップ](./media/analysis-services-create-server/aas-create-server-cleanup.png)
 
 
 ## <a name="next-steps"></a>次の手順
-サーバーを作成した後は、SSDT または SSMS を使ってサーバーに[モデルをデプロイ](analysis-services-deploy.md)できます。
+このクイック スタートでは、Azure サブスクリプションにサーバーを作成する方法について学習しました。 サーバーを作成したら、(必要に応じて) サーバー ファイアウォールを構成することによってサーバーをセキュリティで保護できます。 また、ポータルからサーバーにデータ モデルの基本的なサンプルを追加することもできます。 サンプル モデルがあると、モデル データベース ロールの構成とクライアント接続のテストについて理解するのに役立ちます。 詳しくは、サンプル モデルの追加のチュートリアルに進んでください。
 
-サーバーにデプロイするモデルがオンプレミスのデータ ソースに接続する場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をネットワーク内のコンピューターにインストールする必要があります。
-
+> [!div class="nextstepaction"]
+> [クイック スタート: サーバーのファイアウォールの構成 - ポータル](analysis-services-qs-firewall.md)   
+> [!div class="nextstepaction"]
+> [チュートリアル: サーバーにサンプル モデルを追加する](analysis-services-create-sample-model.md)

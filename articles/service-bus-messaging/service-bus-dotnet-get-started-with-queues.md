@@ -1,24 +1,25 @@
 ---
-title: "Azure Service Bus キューの使用 | Microsoft Docs"
-description: "Service Bus メッセージング キューを使った C# コンソール アプリケーションを作成します。"
+title: Azure Service Bus キューの使用 | Microsoft Docs
+description: Service Bus メッセージング キューを使った C# コンソール アプリケーションを作成します。
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/7/2017
-ms.author: sethm
-ms.openlocfilehash: 6af7e4d238c10c0fed3443db58644e3557525993
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 09/07/2018
+ms.author: spelluru
+ms.openlocfilehash: 1dd47dea86478c76ed5bf6f8b393964f97231908
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226959"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
 
@@ -33,13 +34,13 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](http://www.visualstudio.com/vs) 以降。
+1. [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
 2. Azure サブスクリプション。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.Azure Portal を使用した名前空間の作成
+## <a name="create-a-namespace-using-the-azure-portal"></a>Azure Portal を使用した名前空間の作成
 
 > [!NOTE] 
 > [PowerShell](/powershell/azure/get-started-azureps) を使用して Service Bus 名前空間とメッセージング エンティティを作成することもできます。 詳細については、「[PowerShell モジュールで Service Bus リソースを管理する](service-bus-manage-with-ps.md)」を参照してください。
@@ -48,13 +49,13 @@ Service Bus メッセージング名前空間を既に作成している場合�
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-queue-using-the-azure-portal"></a>2.Azure Portal を使用したキューの作成
+## <a name="create-a-queue-using-the-azure-portal"></a>Azure Portal を使用したキューの作成
 
 Service Bus キューを既に作成している場合は、「[キューへのメッセージの送信](#3-send-messages-to-the-queue)」セクションに進んでください。
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## <a name="3-send-messages-to-the-queue"></a>3.キューへのメッセージの送信
+## <a name="send-messages-to-the-queue"></a>キューへのメッセージの送信
 
 キューにメッセージを送信するために、Visual Studio を使用して C# コンソール アプリケーションを作成します。
 
@@ -172,7 +173,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
                 queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
                 Console.WriteLine("======================================================");
-                Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
+                Console.WriteLine("Press ENTER key to exit after sending all the messages.");
                 Console.WriteLine("======================================================");
 
                 // Send Messages
@@ -213,7 +214,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
    
       ![メッセージ サイズ][queue-message]
 
-## <a name="4-receive-messages-from-the-queue"></a>4.キューからメッセージを受け取る
+## <a name="receive-messages-from-the-queue"></a>キューからメッセージを受け取る
 
 送信したメッセージを受信するには、前の手順で説明した送信側アプリケーションと同じように、.NET Core コンソール アプリケーションをもう 1 つ作成し、**Microsoft.Azure.ServiceBus** NuGet パッケージをインストールします。
 
@@ -407,9 +408,9 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
    
     ![Queue length][queue-message-receive]
 
-ご利用ありがとうございます。 ここではキューを作成して、そこに一連のメッセージを送信したり、同じキューからそれらのメッセージを受信したりしました。
+お疲れさまでした。 ここではキューを作成して、そこに一連のメッセージを送信したり、同じキューからそれらのメッセージを受信したりしました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus メッセージングのさらに高度な機能を紹介する[サンプルが含まれる GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples)を参照してください。
 

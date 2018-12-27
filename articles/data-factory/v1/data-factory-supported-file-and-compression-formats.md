@@ -9,21 +9,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 02a3ca373d88f0a553b48214b0d06ce1fad73cb8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: be0377e7234e507bdc05aee2502e742dbdaa8e1c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258376"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮形式
 *このトピックが適用されるコネクタは、[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[ファイル システム](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md)、[SFTP](data-factory-sftp-connector.md) です。*
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 プレビューである Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 でサポートされているファイル形式と圧縮コーデック](../supported-file-formats-and-compression-codecs.md)に関するページを参照してください。
+> この記事は、Azure Data Factory のバージョン 1 に適用されます。 Data Factory サービスの現在のバージョンを使用している場合は、[Data Factory でサポートされているファイル形式と圧縮コーデック](../supported-file-formats-and-compression-codecs.md)に関するページを参照してください。
 
 Azure Data Factory は次のファイル形式をサポートしています。
 
@@ -36,7 +37,7 @@ Azure Data Factory は次のファイル形式をサポートしています。
 ## <a name="text-format"></a>テキスト形式
 テキスト ファイルからの読み取りまたはテキスト ファイルへの書き込みを行うには、データセットの `format` セクション で `type` プロパティを **TextFormat** に設定します。 `format` セクションに**オプションの**プロパティを指定することもできます。 構成方法については、「[TextFormat の例](#textformat-example)」セクションを参照してください。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | columnDelimiter |ファイル内の列を区切るために使用する文字。 データ内に存在する可能性が低い、出力できないような珍しい文字を使用することを検討します。 たとえば、"\u0001" を指定します。これは、見出しの先頭 (SOH) を表します。 |使用できるのは 1 文字だけです。 **既定**値は**コンマ (,)** です。 <br/><br/>Unicode 文字を使用するには、[Unicode 文字](https://en.wikipedia.org/wiki/List_of_Unicode_characters)に関するページを参照して、対応するコードを取得してください。 |いいえ  |
 | rowDelimiter |ファイル内の行を区切るために使用する文字。 |使用できるのは 1 文字だけです。 読み取り時の**既定**値は **["\r\n"、"\r"、"\n"]** のいずれかになり、書き込み時の既定値は **"\r\n"** になります。 |いいえ  |
@@ -86,7 +87,7 @@ Azure Data Factory は次のファイル形式をサポートしています。
 
 JSON ファイルを解析するか、JSON 形式でデータを書き込む場合は、`format` セクションの `type` プロパティを **JsonFormat** に設定します。 `format` セクションに**オプションの**プロパティを指定することもできます。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、**setOfObjects** と **arrayOfObjects** です。 **既定**値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ  |
 | jsonNodeReference | 同じパターンを持つ配列フィールド内のオブジェクトからのデータの反復処理と抽出を行う場合は、その配列の JSON のパスを指定します。 このプロパティは、JSON ファイルからデータをコピーするときにのみサポートされます。 | いいえ  |
@@ -426,7 +427,7 @@ ORC ファイルを解析するか、ORC 形式でデータを書き込む場合
 ```
 
 > [!IMPORTANT]
-> ORC ファイルを、オンプレミス データ ストアとクラウド データ ストア間で **そのまま** コピーしない場合は、JRE 8 (Java Runtime Environment) をゲートウェイ マシンにインストールする必要があります。 64 ビットのゲートウェイでは 64 ビットの JRE が必要になり、32 ビットのゲートウェイでは 32 ビットの JRE が必要になります。 どちらのバージョンも [こちらのページ](http://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。 適切なバージョンを選択してください。
+> ORC ファイルを、オンプレミス データ ストアとクラウド データ ストア間で **そのまま** コピーしない場合は、JRE 8 (Java Runtime Environment) をゲートウェイ マシンにインストールする必要があります。 64 ビットのゲートウェイでは 64 ビットの JRE が必要になり、32 ビットのゲートウェイでは 32 ビットの JRE が必要になります。 どちらのバージョンも [こちらのページ](https://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。 適切なバージョンを選択してください。
 >
 >
 
@@ -445,7 +446,7 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 }
 ```
 > [!IMPORTANT]
-> Parquet ファイルを、オンプレミス データ ストアとクラウド データ ストア間で **そのまま** コピーしない場合は、JRE 8 (Java Runtime Environment) をゲートウェイ マシンにインストールする必要があります。 64 ビットのゲートウェイでは 64 ビットの JRE が必要になり、32 ビットのゲートウェイでは 32 ビットの JRE が必要になります。 どちらのバージョンも [こちらのページ](http://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。 適切なバージョンを選択してください。
+> Parquet ファイルを、オンプレミス データ ストアとクラウド データ ストア間で **そのまま** コピーしない場合は、JRE 8 (Java Runtime Environment) をゲートウェイ マシンにインストールする必要があります。 64 ビットのゲートウェイでは 64 ビットの JRE が必要になり、32 ビットのゲートウェイでは 32 ビットの JRE が必要になります。 どちらのバージョンも [こちらのページ](https://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。 適切なバージョンを選択してください。
 >
 >
 

@@ -1,24 +1,25 @@
 ---
-title: "Azure Service Fabric コンテナー サービスのネットワーク モードを構成する | Microsoft Docs"
-description: "Azure Service Fabric によってサポートされるさまざまなネットワーク モードを設定する方法について説明します。"
+title: Azure Service Fabric コンテナー サービスのネットワーク モードを構成する | Microsoft Docs
+description: Azure Service Fabric によってサポートされるさまざまなネットワーク モードを設定する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: fafa7dc9ae84e49cdadcb047984792b353429df7
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: twhitney, subramar
+ms.openlocfilehash: 1a0b7932d8dced086370027e1f8eecaf81841ab3
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300781"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
 
@@ -182,8 +183,8 @@ ms.lasthandoff: 02/24/2018
    |Name |Custom_Dns  | |
    |ソース |VirtualNetwork | |
    |変換先 | VirtualNetwork | |
-   |サービス | DNS (UDP/53) | |
-   |アクションを表示します。 | ALLOW  | |
+   |Service | DNS (UDP/53) | |
+   |Action | ALLOW  | |
    | | |
 
 4. 各サービスのアプリケーション マニフェストでネットワーク モードを指定します。`<NetworkConfig NetworkType="Open">` **Open** ネットワーク モードにすると、サービスに専用 IP アドレスが割り当てられます。 モードを指定しないと、サービスは既定で **nat** モードになります。 次のマニフェストの例では、`NodeContainerServicePackage1` サービスと `NodeContainerServicePackage2` サービスはそれぞれ同じポートでリッスンできます (どちらのサービスも `Endpoint1` でリッスンしています)。 Open ネットワーク モードを指定するときは、`PortBinding` 構成を指定できません。
@@ -230,7 +231,23 @@ ms.lasthandoff: 02/24/2018
      </Endpoints>
    </Resources>
    ```
+   
+6. Windows の場合、VM を再起動すると、開いているネットワークが再作成されます。 これは、ネットワーキング スタックの根本的な問題を軽減するためです。 既定の動作は、ネットワークの再作成です。 この動作を無効にする必要がある場合は、次の構成を使用してから、構成をアップグレードします。
 
+```json
+"fabricSettings": [
+                {
+                    "name": "Setup",
+                    "parameters": [
+                    {
+                            "name": "SkipContainerNetworkResetOnReboot",
+                            "value": "true"
+                    }
+                    ]
+                }
+            ],          
+ ``` 
+ 
 ## <a name="next-steps"></a>次の手順
 * [Service Fabric アプリケーション モデルを理解する](service-fabric-application-model.md)
 * [Service Fabric サービス マニフェスト リソースについて詳しく学習する](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)

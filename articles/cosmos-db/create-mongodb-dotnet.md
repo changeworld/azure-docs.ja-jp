@@ -1,26 +1,32 @@
 ---
-title: 'Azure Cosmos DB: .NET と MongoDB API による Web アプリの構築 | Microsoft Docs'
+title: Azure Cosmos DB は:.NET と MongoDB API による Web アプリの構築
 description: Azure Cosmos DB MongoDB API への接続とクエリに使用できる .NET コード サンプルについて説明します。
 services: cosmos-db
-documentationcenter: ''
-author: SnehaGunda
-manager: kfile
-ms.assetid: ''
+author: slyons
 ms.service: cosmos-db
+ms.component: cosmosdb-mongo
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/19/2018
-ms.author: sngun
-ms.openlocfilehash: ab14261e939063c5e50050774d1aae3edf1bef19
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 05/22/2018
+ms.author: sclyon
+ms.openlocfilehash: 170f3132084da07ccf98a0dfed651bbfd7220615
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081032"
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: .NET と Azure Portal による MongoDB API Web アプリの構築
+# <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB は:.NET と Azure portal による MongoDB API Web アプリの構築
+
+> [!div class="op_single_selector"]
+> * [.NET](create-mongodb-dotnet.md)
+> * [Java](create-mongodb-java.md)
+> * [Node.js](create-mongodb-nodejs.md)
+> * [Python](create-mongodb-flask.md)
+> * [Xamarin](create-mongodb-xamarin.md)
+> * [Golang](create-mongodb-golang.md)
+>  
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
@@ -39,12 +45,25 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
+この記事で説明されているサンプルは、MongoDB.Driver バージョン 2.6.1 と互換性があります。
+
 ## <a name="clone-the-sample-app"></a>サンプル アプリの複製
 
 まず、サンプル MongoDB API アプリを GitHub からダウンロードします。 このアプリには、MongoDB のドキュメント ストレージ モデルを使ったタスク リストが実装されています。
 
-1. git ターミナル ウィンドウ (git bash など) を開き、`cd` を実行して作業ディレクトリに移動します。
-2. 次のコマンドを実行して、サンプル レポジトリを複製します。 
+1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
@@ -54,7 +73,9 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 ## <a name="review-the-code"></a>コードの確認
 
-アプリで何が行われているかを簡単に確認してみましょう。 **DAL** ディレクトリの下にある **Dal.cs** ファイルを開くと、これらのコード行によって、Azure Cosmos DB リソースが作成されることがわかります。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
+
+次のスニペットはすべて DAL ディレクトリ内の Dal.cs ファイルからのものです。
 
 * Mongo クライアントを初期化します。
 
@@ -68,10 +89,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
         MongoIdentity identity = new MongoInternalIdentity(dbName, userName);
         MongoIdentityEvidence evidence = new PasswordEvidence(password);
 
-        settings.Credentials = new List<MongoCredential>()
-        {
-            new MongoCredential("SCRAM-SHA-1", identity, evidence)
-        };
+        settings.Credential = new MongoCredential("SCRAM-SHA-1", identity, evidence);
 
         MongoClient client = new MongoClient(settings);
     ```
@@ -92,11 +110,29 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
     collection.Find(new BsonDocument()).ToList();
     ```
 
+* タスクを作成して、MongoDB コレクションに挿入します。
+
+   ```csharp
+    public void CreateTask(MyTask task)
+    {
+        var collection = GetTasksCollectionForEdit();
+        try
+        {
+            collection.InsertOne(task);
+        }
+        catch (MongoCommandException ex)
+        {
+            string msg = ex.Message;
+        }
+    }
+   ```
+   同様に、[collection.UpdateOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.updateOne/index.html) メソッドと [collection.DeleteOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.deleteOne/index.html) メソッドを使用して、ドキュメントの更新と削除を実行できます。 
+
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
+1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
 
 2. **DAL** ディレクトリ内の **Dal.cs** ファイルを開きます。 
 
@@ -126,10 +162,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このアプリの使用を続けない場合は、以下の手順に従い、Azure Portal でこのクイック スタートで作成したすべてのリソースを削除してください。
-
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
-2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次の手順
 

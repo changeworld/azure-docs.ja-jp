@@ -1,31 +1,25 @@
 ---
-title: 'チュートリアル: Polybase でのデータの読み込み - Azure Storage Blob から Azure SQL Data Warehouse | Microsoft Docs'
-description: Azure Portal と SQL Server Management Studio を使ってニューヨークのタクシー データを Azure Blob Storage から Azure SQL Data Warehouse に読み込むチュートリアルです。
+title: 'チュートリアル: Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み | Microsoft Docs'
+description: このチュートリアルでは、Azure Portal と SQL Server Management Studio を使って、ニューヨークのタクシー データをパブリックな Azure BLOB から Azure SQL Data Warehouse に読み込みます。
 services: sql-data-warehouse
-documentationcenter: ''
 author: ckarst
-manager: jhubbard
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: craigg
 ms.service: sql-data-warehouse
-ms.custom: mvc,develop data warehouses
-ms.devlang: na
-ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 03/16/2018
+ms.topic: conceptual
+ms.component: implement
+ms.date: 09/12/2018
 ms.author: cakarst
-ms.reviewer: barbkess
-ms.openlocfilehash: 77e1666a5c8cc51495f2058ff76b2b99a3212db0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: igorstan
+ms.openlocfilehash: b9c42f5b0fc6fb9468d8fd0a1c34270d1734391a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579921"
 ---
-# <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>チュートリアル: PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>チュートリアル: Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み
 
-PolyBase は、SQL Data Warehouse にデータを取得するための標準読み込みテクノロジです。 このチュートリアルでは、PolyBase を使って、ニューヨークのタクシー データを Azure Blob Storage から Azure SQL Data Warehouse に読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、次のことを行います。 
+このチュートリアルでは、PolyBase を使って、ニューヨークのタクシー データをパブリックな Azure BLOB から Azure SQL Data Warehouse に読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、次のことを行います。 
 
 > [!div class="checklist"]
 > * Azure Portal でデータ ウェアハウスを作成する
@@ -50,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>空の SQL Data Warehouse を作成する
 
-Azure SQL Data Warehouse は、定義済みの一連の[コンピューティング リソースリソース](performance-tiers.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
+Azure SQL Data Warehouse は、定義済みの一連の[コンピューティング リソースリソース](memory-and-concurrency-limits.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
 
 空の SQL Data Warehouse を作成するには、次のようにします。 
 
@@ -62,9 +56,9 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 3. SQL Data Warehouse のフォームで、次の情報を入力します。   
 
-   | Setting | 推奨値 | [説明] | 
+   | Setting | 推奨値 | 説明 | 
    | ------- | --------------- | ----------- | 
-   | **[データベース名]** | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
+   | **データベース名** | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
    | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
    | **[ソースの選択]** | 空のデータベース | 空のデータベースの作成を指定します。 データ ウェアハウスはデータベースの 1 つの種類であることに注意してください。|
@@ -73,24 +67,24 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-    | Setting | 推奨値 | [説明] | 
+    | Setting | 推奨値 | 説明 | 
     | ------- | --------------- | ----------- |
-    | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
-    | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
+    | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
+    | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
     | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
     | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
 
     ![データベース サーバーを作成する](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. **[選択]**をクリックします。
+5. **[選択]** をクリックします。
 
-6. **[パフォーマンス レベル]** をクリックし、データ ウェアハウスを弾力性または計算能力に最適化するかどうか、および Data Warehouse ユニットの数を指定します。 
+6. **[パフォーマンス レベル]** をクリックし、データ ウェアハウスが Gen1 または Gen2 のいずれであるかということと、Data Warehouse ユニットの数を指定します。 
 
-7. このチュートリアルでは、**[エラスティック用に最適化]** サービス レベルを選びます。 スライダーは、既定で **[DW400]** に設定されています。  上下に動かしてどうなるか試してみてください。 
+7. このチュートリアルでは、SQL Data Warehouse の **[Gen1]** を選択します。 スライダーは、既定で **[DW1000c]** に設定されています。  上下に動かしてどうなるか試してみてください。 
 
     ![パフォーマンスを構成する](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. **[Apply]**をクリックします。
+8. **[Apply]** をクリックします。
 9. [SQL Data Warehouse] ページで、空のデータベースの **[照合順序]** を選びます。 このチュートリアルでは、既定の値を使います。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations)」を参照してください。
 
 11. これで SQL Database フォームの入力が完了したので、**[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
@@ -109,7 +103,7 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 > SQL Data Warehouse の通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
 >
 
-1. デプロイが完了したら、左側のメニューから **[SQL データベース]** をクリックし、**SQL データベース** ページで、**mySampleDatabase** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20171113.database.windows.net** など) や追加の構成オプションが表示されます。 
+1. デプロイが完了したら、左側のメニューから **[SQL データベース]** をクリックし、**SQL データベース** ページで、**mySampleDatabase** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20180430.database.windows.net** など) や追加の構成オプションが表示されます。 
 
 2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。 その後、サーバー名をクリックしてサーバーの設定を開きます。
 
@@ -139,8 +133,8 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 Azure Portal で、SQL サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20171113.database.windows.net です。 
+2. 左側のメニューの **[SQL データ ウェアハウス]** を選択し、**[SQL データ ウェアハウス]** ページで目的のデータベースをクリックします。 
+3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。  この例の完全修飾名は mynewserver-20180430.database.windows.net です。 
 
     ![接続情報](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -152,17 +146,17 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-    | Setting      | 推奨値 | [説明] | 
+    | Setting      | 推奨値 | 説明 | 
     | ------------ | --------------- | ----------- | 
     | サーバーの種類 | データベース エンジン | この値は必須です |
-    | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver-20171113.database.windows.net** のような形式で指定する必要があります。 |
-    | 認証 | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
+    | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver-20180430.database.windows.net** のような形式で指定する必要があります。 |
+    | Authentication | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
     | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
     | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
 
     ![[サーバーへの接続]](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-4. **[接続]**をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
+4. **[接続]** をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
 
 5. オブジェクト エクスプローラーで、**[データベース]** を展開します。 **[システム データベース]**、**[master]** の順に展開し、マスター データベースのオブジェクトを表示します。  **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
 
@@ -170,7 +164,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 ## <a name="create-a-user-for-loading-data"></a>データを読み込むためのユーザーを作成する
 
-サーバー管理者アカウントは管理操作を実行するためのものであり、ユーザー データに対するクエリの実行には適していません。 データの読み込みは、メモリを大量に消費する操作です。 [メモリの最大値](performance-tiers.md#memory-maximums)は、[パフォーマンス レベル](performance-tiers.md)と[リソース クラス](resource-classes-for-workload-management.md)に従って定義されます。 
+サーバー管理者アカウントは管理操作を実行するためのものであり、ユーザー データに対するクエリの実行には適していません。 データの読み込みは、メモリを大量に消費する操作です。 メモリの最大値は、プロビジョニングした SQL Data Warehouse の世代、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)、[リソース クラス](resource-classes-for-workload-management.md)に従って定義されます。 
 
 データの読み込みに専用のログインとユーザーを作成することをお勧めします。 その後、適切な最大メモリ割り当てを有効にする[リソース クラス](resource-classes-for-workload-management.md)に読み込みユーザーを追加します。
 
@@ -187,7 +181,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
     ```
 
-3. **[実行]**をクリックします。
+3. **[実行]** をクリックします。
 
 4. **mySampleDataWarehouse** を右クリックして、**[新しいクエリ]** を選びます。 新しいクエリ ウィンドウが開きます。  
 
@@ -201,7 +195,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
     ```
 
-6. **[実行]**をクリックします。
+6. **[実行]** をクリックします。
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>読み込みユーザーとしてサーバーに接続する
 
@@ -213,7 +207,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 2. 完全修飾サーバー名を入力し、ログインとして「**LoaderRC20**」と入力します。  LoaderRC20 のパスワードを入力します。
 
-3. **[接続]**をクリックします。
+3. **[接続]** をクリックします。
 
 4. 接続する準備ができると、オブジェクト エクスプローラーに 2 つのサーバー接続が表示されます。 1 つは ServerAdmin としての接続、もう 1 つは MedRCLogin としての接続です。
 
@@ -221,7 +215,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 ## <a name="create-external-tables-for-the-sample-data"></a>サンプル データ用の外部テーブルを作成する
 
-新しいデータ ウェアハウスにデータを読み込むプロセスを始める準備ができました。 このチュートリアルでは、[Polybase](/sql/relational-databases/polybase/polybase-guide) を使って Azure Storage Blob からニューヨーク市のタクシーのデータを読み込む方法を示します。 今後の参考として、データを Azure Blob Storage に取得する方法やソースから直接 SQL Data Warehouse に読み込む方法については、[読み込みの概要](sql-data-warehouse-overview-load.md)に関するページを参照してください。
+新しいデータ ウェアハウスにデータを読み込むプロセスを始める準備ができました。 このチュートリアルでは、外部テーブルを使って Azure Storage Blob からニューヨーク市のタクシーのデータを読み込む方法を示します。 今後の参考として、データを Azure Blob Storage に取得する方法やソースから直接 SQL Data Warehouse に読み込む方法については、[読み込みの概要](sql-data-warehouse-overview-load.md)に関するページを参照してください。
 
 次の SQL スクリプトを実行して、読み込むデータに関する情報を指定します。 この情報には、データが置かれている場所、データの内容の形式、およびデータのテーブル定義が含まれます。 
 
@@ -535,7 +529,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
         s.request_id,
         r.status,
         count(distinct input_name) as nbr_files,
-        sum(s.bytes_processed)/1024/1024/1024 as gb_processed
+        sum(s.bytes_processed)/1024/1024/1024.0 as gb_processed
     FROM 
         sys.dm_pdw_exec_requests r
         INNER JOIN sys.dm_pdw_dms_external_work s
@@ -567,16 +561,6 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
     ![読み込まれたテーブルを表示する](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
-## <a name="create-statistics-on-newly-loaded-data"></a>新しく読み込まれたデータの統計を作成する
-
-SQL Data Warehouse は、統計の自動作成または自動更新を行いません。 そのため、高いクエリ パフォーマンスを実現するには、最初の読み込み後に各テーブルの各列についての統計を作成することが重要です。 また、データが大幅に変更された後で統計を更新することも重要です。
-
-次のコマンドを実行して、結合に使われたと思われる列についての統計を作成します。
-
-    ```sql
-    CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
-    CREATE STATISTICS [dbo.Trip DateID stats] ON dbo.Trip (DateID);
-    ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -595,7 +579,7 @@ SQL Data Warehouse は、統計の自動作成または自動更新を行いま�
 
 3. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、**[削除]** をクリックします。
 
-4. 作成した SQL Server を削除するには、前の画像の **mynewserver-20171113.database.windows.net** をクリックして、**[削除]** をクリックします。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、注意してください。
+4. 作成した SQL Server を削除するには、前の画像の **mynewserver-20180430.database.windows.net** をクリックして、**[削除]** をクリックします。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、注意してください。
 
 5. リソース グループを削除するには、**myResourceGroup** をクリックして、**[リソース グループの削除]** をクリックします。
 

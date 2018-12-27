@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 287fc502a0a538660da86e028a81fba04bcac903
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 37e7281af87a8cfc57aae95411eb2d4cce9eef65
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228064"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-onprem-teradata-connector.md)
-> * [バージョン 2 - プレビュー](connector-teradata.md)
+> * [Version 1](v1/data-factory-onprem-teradata-connector.md)
+> * [現在のバージョン](connector-teradata.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Teradata データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Teradata connector in V1 (V1 の Teradata コネクタ)](v1/data-factory-onprem-teradata-connector.md)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -43,7 +41,7 @@ Teradata データベースから、サポートされている任意のシン�
 この Teradata コネクタを使用するには、次の手順が必要です。
 
 - セルフホステッド統合ランタイムをセットアップする。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
-- 統合ランタイムのコンピューターに、[.NET Data Provider for Teradata](http://go.microsoft.com/fwlink/?LinkId=278886) バージョン 14 以上をインストールします。
+- 統合ランタイムのコンピューターに、[.NET Data Provider for Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) バージョン 14 以上をインストールします。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -55,9 +53,9 @@ Teradata データベースから、サポートされている任意のシン�
 
 Teradata のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **Teradata** に設定する必要があります。 | [はい] |
+| type | type プロパティを **Teradata** に設定する必要があります。 | [はい] |
 | [サーバー] | Teradata のサーバーの名前です。 | [はい] |
 | authenticationType | Teradata データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Windows** です。 | [はい] |
 | username | Teradata データベースに接続するユーザー名を指定します。 | [はい] |
@@ -94,9 +92,9 @@ Teradata のリンクされたサービスでは、次のプロパティがサ�
 
 Teradata からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | Teradata データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例:**
@@ -123,10 +121,10 @@ Teradata からデータをコピーするには、データセットの type �
 
 Teradata からデータをコピーするには、コピー アクティビティのソース タイプを **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
+| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

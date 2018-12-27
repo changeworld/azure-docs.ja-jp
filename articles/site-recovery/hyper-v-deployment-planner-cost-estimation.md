@@ -1,18 +1,19 @@
 ---
-title: "Azure Site Recovery Deployment Planner のコスト見積もりの詳細 (Hyper-V から Azure) | Microsoft Docs"
-description: "この記事では、Azure Site Recovery Deployment Planner を使用して生成されるレポートのコスト見積もりについて、Hyper-V から Azure へのシナリオを想定して詳しく説明します。"
+title: Hyper-V VM の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する |Microsoft Docs
+description: この記事では、Hyper-V の Azure へのディザスター リカバリーのために、Azure Site Recovery Deployment Planner によって生成されるコスト見積もりレポートを確認する方法を説明します。
 services: site-recovery
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 31461e70e81f0f48a8d67e31b98cfae2dd627a54
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 0233446f817436632efc4110872e84b6b3105453
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213187"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート 
 
@@ -38,9 +39,9 @@ Azure Site Recovery を使用して適合 VM を保護する場合に、スト�
 **[Azure storage cost per Month/Year]\(月/年単位の Azure Storage コスト\)**: Premium ストレージと Standard ストレージに関して、レプリケーションと DR ドリルで生じる合計ストレージ コストが表示されます。
 
 ## <a name="detailed-cost-analysis"></a>Detailed cost analysis (詳細コスト分析)
-Azure のコンピューティング、ストレージ、ネットワークの料金は Azure リージョンによって異なります。 サブスクリプションやそれに関連付けられているプランに基づき、ターゲット Azure リージョンと通貨を指定して、最新の Azure 料金に関するコスト見積もりレポートを生成することができます。 既定では、Azure リージョンに "米国西部 2" が、通貨には米ドル (USD) が使用されます。 その他のリージョンや通貨を使用した場合、次回サブスクリプション ID、プラン ID、ターゲット リージョン、通貨を指定せずにレポートを生成すると、前回使用したターゲット リージョンと通貨に基づく料金がコスト見積もりに使用されます。
+Azure のコンピューティング、ストレージ、ネットワークの料金は Azure リージョンによって異なります。 サブスクリプションやそれに関連付けられているオファーに基づき、ターゲット Azure リージョンと通貨を指定して、最新の Azure 料金に関するコスト見積もりレポートを生成することができます。 既定では、Azure リージョンに "米国西部 2" が、通貨には米ドル (USD) が使用されます。 その他のリージョンや通貨を使用した場合、次回サブスクリプション ID、オファー ID、ターゲット リージョン、通貨を指定せずにレポートを生成すると、前回使用したターゲット リージョンと通貨に基づく料金がコスト見積もりに使用されます。
 
-このセクションには、レポート生成に使用されたサブスクリプション ID とプラン ID が表示されます。 使用しなかった場合は、何も表示されません。
+このセクションには、レポート生成に使用されたサブスクリプション ID とオファー ID が表示されます。 使用しなかった場合は、何も表示されません。
 
 レポート全体のうち、灰色でマークされたセルは読み取り専用です。 白色のセルは、必要に応じて変更できます。
 
@@ -89,7 +90,7 @@ Azure の料金総額に対して何らかの割引を受ける資格のある A
 このテーブルには、Windows VM の数と非 Windows VM の数、さらに、それぞれの DR ドリルのコンピューティング コストが表示されます。
 
 ### <a name="settings"></a>設定 
-**[Using Managed disk]\(管理ディスクの使用\)**: DR ドリル時に管理ディスクが使用されているかどうかを指定する設定です。 既定値は **[はい]**です。 **-UseManagedDisks** を **[No]\(いいえ\)** に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
+**[Using Managed disk]\(管理ディスクの使用\)**: DR ドリル時にマネージド ディスクが使用されているかどうかを指定する設定です。 既定値は **[はい]** です。 **-UseManagedDisks** を **[No]\(いいえ\)** に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
 
 **[Currency]\(通貨\)**: レポートの生成に使用される通貨。
 
@@ -104,9 +105,9 @@ VM を手動で追加するには、次の手順に従います。
 
 1. **[Insert row]\(行の挿入\)** を選択して**開始**行と**終了**行の間に新しい行を挿入します。
 
-2. 適切な VM サイズとその構成に合った VM 数に基づいて、次の各列の情報を入力します。 
+1. 適切な VM サイズとその構成に合った VM 数に基づいて、次の各列の情報を入力します。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Number of VMs]\(VM の数\)**
+    a. **[Number of VMs]\(VM の数\)**
 
     b. **[IaaS size (Your selection)]\(IaaS サイズ (ユーザーが選択)\)**
 
@@ -124,9 +125,9 @@ VM を手動で追加するには、次の手順に従います。
 
     i. **Azure Hybrid 利用特典**
 
-3. **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**、**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**、**[Data redundancy]\(データの冗長性\)**、**[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\)** に関しては、**[Apply to all]\(すべてに適用\)** を選択すると、テーブル内のすべての VM に同じ値を適用することができます。
+1. **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**、**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**、**[Data redundancy]\(データの冗長性\)**、**[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\)** に関しては、**[Apply to all]\(すべてに適用\)** を選択すると、テーブル内のすべての VM に同じ値を適用することができます。
 
-4. **[Re-calculate cost]\(コストを再計算\)** を選択してコストを更新します。
+1. **[Re-calculate cost]\(コストを再計算\)** を選択してコストを更新します。
 
 **[VM Name]\(VM 名\)**: VM の名前。
 
@@ -142,13 +143,13 @@ VM を手動で追加するには、次の手順に従います。
 
 **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**: 1 年間に実行する DR ドリルの回数。 既定では、年間 4 回です。 特定の VM の期間を変更できるほか、すべての VM に新しい値を適用することができます。 一番上の行に新しい値を入力し、**[Apply to all]\(すべてに適用\)** を選択してください。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。 
 
-**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**: 各 DR ドリルの期間。 [ディザスター リカバリーのソフトウェア アシュアランス特典](https://azure.microsoft.com/en-in/pricing/details/site-recovery)により、90 日ごとに 7 日が既定値となります。 特定の VM の期間を変更できるほか、すべての VM に新しい値を適用することができます。 一番上の行に新しい値を入力し、**[Apply to all]\(すべてに適用\)** を選択してください。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。
+**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**: 各 DR ドリルの期間。 [ディザスター リカバリーのソフトウェア アシュアランス特典](https://azure.microsoft.com/pricing/details/site-recovery)により、90 日ごとに 7 日が既定値となります。 特定の VM の期間を変更できるほか、すべての VM に新しい値を適用することができます。 一番上の行に新しい値を入力し、**[Apply to all]\(すべてに適用\)** を選択してください。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。
  
 **[OS の種類]**: VM のオペレーティングシステム (OS) の種類。 Windows または Linux を指定できます。 OS の種類が Windows の場合は、その VM に Azure ハイブリッド使用特典を適用できます。 
 
 **[Data redundancy]\(データの冗長性\)**: ローカル冗長ストレージ、geo 冗長ストレージ、読み取りアクセス geo 冗長ストレージのいずれかを指定できます。 既定値はローカル冗長ストレージです。 特定の VM のストレージ アカウントに基づいて種類を変更できるほか、変更後の種類をすべての VM に適用することができます。 一番上の行で種類を変更し、**[Apply to all]\(すべてに適用\)** を選択してください。 レプリケーションに使用されるストレージのコストは、選択したデータ冗長性の料金に基づいて計算されます。 
 
-**[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\)**: Windows VM には Azure ハイブリッド使用特典を適用できます (該当する場合)。 既定値は **[はい]**です。 特定の VM の設定を変更できるほか、すべての VM の設定を更新することができます。 **[Apply to all]\(すべてに適用\)** を選択してください。
+**[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\)**: Windows VM には Azure ハイブリッド使用特典を適用できます (該当する場合)。 既定値は **[はい]** です。 特定の VM の設定を変更できるほか、すべての VM の設定を更新することができます。 **[Apply to all]\(すべてに適用\)** を選択してください。
 
 **[Total Azure consumption]\(Azure 消費合計\)**: 対象 DR のコンピューティング、ストレージ、Site Recovery のライセンス コスト。 選択内容に応じて、月単位または年単位でコストが表示されます。
 

@@ -1,30 +1,27 @@
 ---
-title: "エネルギー需要予測のための Cortana Intelligence ソリューション テンプレートのアーキテクチャ | Microsoft Docs"
-description: "エネルギー公益事業者の需要予測に役立つ Microsoft Cortana Intelligence ソリューション テンプレートのアーキテクチャ。"
-keywords: "ソリューション アクセラレータ;Cortana Analytics;エネルギー予測"
-services: cortana-analytics
-documentationcenter: 
+title: エネルギー需要予測のための Cortana Intelligence ソリューション テンプレートのアーキテクチャ
+description: エネルギー公益事業者の需要予測に役立つ Microsoft Cortana Intelligence ソリューション テンプレートのアーキテクチャ。
+keywords: ソリューション アクセラレータ;Cortana Analytics;エネルギー予測
+services: machine-learning
 author: garyericson
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 745db9da-9ca1-421a-aa76-13c992f6513d
-ms.service: cortana-analytics
+manager: cgronlun
+ms.service: machine-learning
+ms.subservice: team-data-science-process
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/19/2015
 ms.author: garye
-ms.openlocfilehash: 87a27dbe9042973dcfa7e9a5a438773d1bbab4d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 758ef7c0476c9b0f252d585d25a27bea949731ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250154"
 ---
 # <a name="cortana-intelligence-solution-template-architecture-for-demand-forecasting-of-energy"></a>エネルギー需要予測のための Cortana Intelligence ソリューション テンプレートのアーキテクチャ
 次の図に、 [エネルギー需要予測のための Cortana Intelligence ソリューション テンプレート](cortana-analytics-playbook-demand-forecasting-energy.md)のアーキテクチャの概要を示します。
 
-この図のフルサイズ版はこちら ( [アーキテクチャの図: エネルギー需要予測のための Solution Template](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-energy-forecasting.png)) からダウンロードできます。
+この図のフルサイズ版はこちら ( [アーキテクチャの図: エネルギー需要予測のための Solution Template](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-energy-forecasting.png)) からダウンロードできます。
 
 ![エネルギー需要予測のための Microsoft Cortana Intelligence ソリューション テンプレートのアーキテクチャの図][image]
 

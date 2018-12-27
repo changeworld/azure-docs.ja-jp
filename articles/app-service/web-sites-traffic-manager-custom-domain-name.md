@@ -1,11 +1,11 @@
 ---
-title: "負荷分散に Traffic Manager を使用する Azure App Service Web アプリのカスタム ドメイン名を構成します。"
-description: "負荷分散のための Traffic Manager を含む Azure App Service Web アプリのカスタム ドメイン名の使用"
+title: 負荷分散に Traffic Manager を使用する Azure App Service Web アプリのカスタム ドメイン名を構成します。
+description: 負荷分散のための Traffic Manager を含む Azure App Service Web アプリのカスタム ドメイン名の使用
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.service: app-service-web
 ms.workload: web
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.openlocfilehash: c78fb7883559e46ebaa1d8dab59a15c55fb76fdf
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: b140ccba2b45dbfb1e4413c9fbeb12e9fec6bc8a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227180"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -68,7 +69,7 @@ ms.lasthandoff: 01/09/2018
 [!INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
 ## <a name="next-steps"></a>次の手順
-詳細については、 [Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+詳細については、 [Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)を参照してください。
 
 [!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 

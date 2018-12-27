@@ -1,37 +1,30 @@
 ---
-title: "Azure HDInsight での対話型クエリの使用 | Microsoft Docs"
-description: "HDInsight での対話型クエリ (Hive LLAP) の使用方法について説明します。"
-keywords: 
+title: Azure HDInsight での対話型クエリの使用
+description: HDInsight での対話型クエリ (Hive LLAP) の使用方法について説明します。
 services: hdinsight
-documentationcenter: 
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 0957643c-4936-48a3-84a3-5dc83db4ab1a
 ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: 1e094c801ffc9bc51609d119b0e6ad80ff17a091
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: c1af99d64f9d9a7544d98ad34da5953fdda58222
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012879"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight での対話型クエリの使用
-対話型クエリ (別名 Hive LLAP または [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの種類](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Hive クエリの速度と対話性が向上します。
+対話型クエリ (別名 Hive LLAP または [Low Latency Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの一種](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Hive クエリの速度と対話性が向上します。
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)] 
 
 対話型クエリ クラスターは、Hadoop クラスターとは異なり、 Hive サービスのみが含まれます。 
 
 > [!NOTE]
-> 対話型クエリ クラスターの Hive サービスには、Ambari Hive View、Beeline、および Microsoft Hive Open Database Connectivity ドライバー (Hive ODBC) からのみアクセスできます。 Hive コンソール、Templeton、Azure コマンドライン ツール (Azure CLI)、Azure PowerShell からはアクセスできません。 
+> 対話型クエリ クラスターの Hive サービスには、Ambari Hive View、Beeline、および Microsoft Hive Open Database Connectivity ドライバー (Hive ODBC) からのみアクセスできます。 Hive コンソール、Templeton、Azure クラシック CLI、Azure PowerShell からはアクセスできません。 
 > 
 > 
 

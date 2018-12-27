@@ -1,46 +1,40 @@
 ---
-title: "Azure CLI を使用して Hadoop クラスターを管理する - Azure HDInsight | Microsoft Docs"
-description: "Azure コマンド ライン インターフェイスを使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。 Azure CLI は、Windows、Mac、Linux で機能します。"
+title: Azure クラシック CLI を使用して Apache Hadoop クラスターを管理する - Azure HDInsight
+description: Azure クラシック CLI を使用して Azure HDInsight の Apache Hadoop クラスターを管理する方法について説明します。
 services: hdinsight
-editor: cgronlun
-manager: jhubbard
-author: mumian
-tags: azure-portal
-documentationcenter: 
-ms.assetid: 4f26c79f-8540-44bd-a470-84722a9e4eca
+ms.reviewer: jasonh
+author: tylerfox
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/15/2017
-ms.author: jgao
-ms.openlocfilehash: a6103c85747b2e76db7253de59b20f8b5d5a9433
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.topic: conceptual
+ms.date: 11/06/2018
+ms.author: tyfox
+ms.openlocfilehash: 3e53a8cc1816ae4128fdfb34b7425ac95de29a57
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016046"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Azure CLI を使用した HDInsight での Hadoop クラスターの管理
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して HDInsight の Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-[Azure コマンド ライン インターフェイス](../cli-install-nodejs.md) を使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。 Azure CLI は Node.js で実装されます。 Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。 現在、HDInsight は [Azure CLI 2.0](https://docs.microsoft.com/cli/azure) をサポートしていません。
+[Azure クラシック CLI](../cli-install-nodejs.md) を使用して Azure HDInsight の [Apache Hadoop](https://hadoop.apache.org/) クラスターを管理する方法について説明します。 Classic CLI は Node.js で実装されます。 Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。
 
-この記事では、HDInsight での Azure CLI の使用についてのみ説明します。 Azure CLI の使用方法に関する一般的なガイドについては、「[Azure CLI のインストール][azure-command-line-tools]」を参照してください。
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **Azure CLI** - インストールと構成に関する情報は、 [Azure CLI のインストールと構成](../cli-install-nodejs.md) に関するページを参照してください。
+* **Azure Classic CLI** - インストールと構成に関する情報は、[Azure Classic CLI のインストールと構成](../cli-install-nodejs.md) に関するページを参照してください。
 * 次のコマンドを使用して、**Azure に接続**します。
 
     ```cli
     azure login
     ```
   
-    職場か学校のアカウントを使用した認証の詳細については、「 [Azure CLI から Azure サブスクリプションへの接続する](/cli/azure/authenticate-azure-cli)」をご覧ください。
+    職場か学校のアカウントを使用した認証の詳細については、[Azure Classic CLI から Azure サブスクリプションへの接続する](/cli/azure/authenticate-azure-cli)に関するページを参照してください。
 * 次のコマンドを使用して、**Azure リソース マネージャー モードに切り替えます**。
   
     ```cli
@@ -80,7 +74,7 @@ azure group delete <Resource Group Name>
 ```
 
 ## <a name="scale-clusters"></a>クラスターのスケール
-Hadoop クラスターのサイズを変更するには:
+Apache Hadoop クラスターのサイズを変更するには:
 
 ```cli
 azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
@@ -94,26 +88,19 @@ azure hdinsight cluster enable-http-access [options] <Cluster Name> <userName> <
 azure hdinsight cluster disable-http-access [options] <Cluster Name>
 ```
 
-## <a name="enabledisable-rdp-access-for-a-cluster"></a>クラスターの RDP アクセスの有効化/無効化
-
-```cli
-azure hdinsight cluster enable-rdp-access [options] <Cluster Name> <rdpUserName> <rdpPassword> <rdpExpiryDate>
-azure hdinsight cluster disable-rdp-access [options] <Cluster Name>
-```
-
 ## <a name="next-steps"></a>次の手順
 この記事では、さまざまな HDInsight クラスター管理タスクを実行する方法について説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure Portal を使用した HDInsight の管理][hdinsight-admin-portal]
 * [Azure PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 * [Azure HDInsight の概要][hdinsight-get-started]
-* [Azure CLI の使い方][azure-command-line-tools]
+* [Azure Classic CLI の使い方][azure-command-line-tools]
 
 [azure-command-line-tools]: ../cli-install-nodejs.md
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md

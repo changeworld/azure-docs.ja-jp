@@ -1,10 +1,19 @@
+items:
 - name: Kubernetes
   href: kubernetes/container-service-kubernetes-walkthrough.md
 - name: DC/OS と Docker Swarm
   href: dcos-swarm/container-service-dcos-quickstart.md
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=containers'
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?products=azure-container-instances&azure-container-registry
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=containers
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 44264a8288d1cd0b4bdc6d331e84e78ceff066a0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995773"

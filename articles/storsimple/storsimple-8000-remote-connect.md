@@ -1,12 +1,12 @@
 ---
-title: "StorSimple デバイスにリモート接続する | Microsoft Docs"
-description: "リモート管理用にデバイスを構成する方法と、HTTP または HTTPS を介して StorSimple 用 Windows PowerShell に接続する方法について説明します。"
+title: StorSimple デバイスにリモート接続する | Microsoft Docs
+description: リモート管理用にデバイスを構成する方法と、HTTP または HTTPS を介して StorSimple 用 Windows PowerShell に接続する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103957"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスにリモート接続する
 
@@ -189,14 +190,14 @@ HTTPS セッションを使用するリモート接続のホスト コンピュ�
 この後、上記の各手順について説明します。
 
 #### <a name="to-import-the-certificate-on-the-remote-host"></a>証明書をリモート ホストにインポートするには
-1. .cer ファイルを右クリックし、 **[証明書のインストール]**を選択します。 これにより、証明書のインポート ウィザードが開始されます。
+1. .cer ファイルを右クリックし、 **[証明書のインストール]** を選択します。 これにより、証明書のインポート ウィザードが開始されます。
    
     ![証明書インポート ウィザード (その 1)](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
 2. **[ストアの場所]** で **[ローカル マシン]** を選択し、**[次へ]** をクリックします。
-3. **[証明書をすべて次のストアに配置する]** を選択し、**[参照]** をクリックします。 リモート ホストのルート ストアに移動し、 **[次へ]**をクリックします。
+3. **[証明書をすべて次のストアに配置する]** を選択し、**[参照]** をクリックします。 リモート ホストのルート ストアに移動し、 **[次へ]** をクリックします。
    
     ![証明書インポート ウィザード (その 2)](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. **[完了]**をクリックします。 インポートが成功したことを通知するメッセージが表示されます。
+4. **[完了]** をクリックします。 インポートが成功したことを通知するメッセージが表示されます。
    
     ![証明書インポート ウィザード (その 3)](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 

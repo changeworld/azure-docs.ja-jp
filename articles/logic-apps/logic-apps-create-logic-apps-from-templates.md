@@ -1,25 +1,21 @@
 ---
-title: "テンプレートからワークフローを作成する - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリ テンプレートを使用してすばやくワークフローを作成します"
-author: kevinlam1
-manager: anneta
-editor: 
+title: テンプレートからワークフローを作成する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps でロジック アプリ テンプレートを使用してすばやくワークフローを作成します
 services: logic-apps
-documentationcenter: 
-ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: kevinlam1
+ms.author: klam
+ms.reviewer: estfan, LADocs
 ms.topic: article
+ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.author: LADocs; klam
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e9145b9cb85cda9179f7ce46de017a0ab3a38924
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 554171e02a369905bcf9cd4aa7bfa2e59ab46336
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229759"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>事前作成済みテンプレートを使用したロジック アプリ ワークフローの作成
 
@@ -27,7 +23,7 @@ ms.lasthandoff: 02/21/2018
 
 テンプレートのカテゴリを次に示します。
 
-| テンプレートの種類 | [説明] | 
+| テンプレートの種類 | 説明 | 
 | ------------- | ----------- | 
 | エンタープライズ クラウド テンプレート | Azure Blob、Dynamics CRM、Salesforce、Box の統合用であり、エンタープライズ クラウドのニーズに応じた他のコネクタを含みます。 たとえば、ビジネスの潜在顧客の整理や、企業のファイル データのバックアップに、これらのテンプレートを使用することができます。 | 
 | 個人的生産性テンプレート | 毎日のアラームを設定し、重要な作業項目を To Do リストに変換し、長期間のタスクを 1 人のユーザーの承認手順に自動化することで、個人の生産性を向上させます。 | 
@@ -56,10 +52,10 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションを選択します。 | 
    | **[リソース グループ]** | <*Azure リソース グループ名*> | このロジック アプリ用の [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成するか選択し、このアプリに関連するすべてのリソースを整理します。 | 
    | **場所** | <*Azure データセンターのリージョン*> | ロジック アプリをデプロイするデータセンターのリージョンを選びます (たとえば米国西部)。 | 
-   | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Log Analytics](../log-analytics/log-analytics-overview.md) によるロジック アプリの[診断ログ](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)を有効にします。 [Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md) ワークスペースを既に持っている必要があります。 | 
+   | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Log Analytics](../log-analytics/log-analytics-overview.md) によるロジック アプリの[診断ログ](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)を有効にします。 Log Analytics ワークスペースが既にあることが要件です。 | 
    |||| 
 
-4. 準備ができたら、**[ダッシュボードにピン留めする]** を選択します。 そうすることで、ロジック アプリがデプロイ後に Azure ダッシュボードに自動的に表示され、開かれます。 **[作成]**を選択します。
+4. 準備ができたら、**[ダッシュボードにピン留めする]** を選択します。 そうすることで、ロジック アプリがデプロイ後に Azure ダッシュボードに自動的に表示され、開かれます。 **[作成]** を選択します。
 
    > [!NOTE]
    > ロジック アプリをピン留めしない場合、作業を続けるには、デプロイ後にロジック アプリを手動で探して開く必要があります。
@@ -153,7 +149,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

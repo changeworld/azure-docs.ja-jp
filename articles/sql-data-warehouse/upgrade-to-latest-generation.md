@@ -1,53 +1,128 @@
 ---
 title: Azure SQL Data Warehouse の最新世代へのアップグレード | Microsoft Docs
-description: Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレージ アーキテクチャにアップグレードする手順について説明します。
+description: Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレージ アーキテクチャにアップグレードします。
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
-ms.services: sql-data-warehouse
+manager: craigg
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/02/2018
+ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 42b716274e655bf91f72c1b3ab207b8a5f1ccee0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: fe1f2e026aaa4260d34b9b1cb96064053af1c3c7
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568014"
 ---
-# <a name="upgrade-to-latest-generation-of-azure-sql-data-warehouse-in-the-azure-portal"></a>Azure SQL Data Warehouse の最新世代へのアップグレード
+# <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>SQL Data Warehouse をアップグレードしてパフォーマンスを最適化する
+Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレージ アーキテクチャにアップグレードします。
 
-Azure Portal を使用して、最新世代の Azure ハードウェアとストレージ アーキテクチャを使用するように Azure SQL Data Warehouse をアップグレードします。 アップグレードすることで、パフォーマンスの向上、スケーラビリティの向上、列ストア インデックスの無制限ストレージを利用できます。  
+## <a name="why-upgrade"></a>アップグレードする理由
+Azure Portal で SQL Data Warehouse のコンピューティング最適化 Gen2 階層にシームレスにアップグレードできるようになりました。 コンピューティング最適化 Gen1 階層のデータ ウェアハウスをお持ちの場合は、アップグレードすることをお勧めします。 アップグレードすると、Azure ハードウェアの最新世代と拡張ストレージ アーキテクチャを使用することができます。 より高速なパフォーマンス、高いスケーラビリティ、および無制限のカラム型ストレージを利用できます。 
+
+> [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 ## <a name="applies-to"></a>適用対象
-このアップグレードは、[エラスティック用に最適化] パフォーマンス レベルのデータ ウェアハウスに適用されています。  この手順では、データ ウェアハウスのパフォーマンス レベルを [エラスティック用に最適化] から [計算用に最適化] にアップグレードします。 
+このアップグレードは、コンピューティング最適化 Gen1 階層のデータ ウェアハウスに適用されます。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="before-you-begin"></a>開始する前に
+> [!NOTE]
+> コンピューティング最適化 Gen2 階層が使用可能なリージョン内に、既存のコンピューティング最適化 Gen1 階層のデータ ウェアハウスがない場合は、PowerShell を使用して、サポートされるリージョンに [geo リストア](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region)します。
+> 
+>
 
-1. アップグレード対象の [エラスティック用に最適化] データ ウェアハウスが一時停止されている場合は、[データ ウェアハウスを再開します](pause-and-resume-compute-portal.md)。
+1. アップグレードするコンピューティング最適化 Gen1 階層のデータ ウェアハウスが一時停止している場合は、[データ ウェアハウスを再開](pause-and-resume-compute-portal.md)します。
 2. 数分間のダウンタイムに備えます。 
-3. アップグレード プロセスでは、すべてのセッションが強制終了され、すべての接続が切断されます。 アップグレードする前に、クエリが完了していることを確認してください。 進行中のトランザクションがある状態でアップグレードを開始すると、ロールバック時間が大幅に長くなる可能性があります。 
+
+
 
 ## <a name="start-the-upgrade"></a>アップグレードを開始する
 
-1. Azure Portal でデータ ウェアハウスを開き、**[計算用に最適化へのアップグレード]** をクリックします。
-2. [計算用に最適化] パフォーマンス レベルの選択肢を確認します。 既定の選択は、アップグレード前の現在のレベルに相当します。
-3. パフォーマンス レベルを選択します。 [計算用に最適化] パフォーマンス レベルの料金は、プレビュー期間中の現在は半額になっています。
-4. **[アップグレード]** をクリックします。
-5. Azure Portal で状態を確認します。
-6. データ ウェアハウスがオンラインになるまで待ちます。
+1. Azure Portal でコンピューティング最適化 Gen1 階層のデータ ウェアハウスに移動して、[タスク] タブの **[Gen2 にアップグレードします]** カードをクリックします。![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+    
+> [!NOTE]
+> [タスク] タブに **[Gen2 にアップグレードします]** カードが表示されない場合は、お使いのサブスクリプションの種類が現在のリージョンで制限されています。 [サポート チケットを提出](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)し、サブスクリプションをホワイトリストに登録してもらってください。
 
-## <a name="rebuild-columnstore-indexes"></a>列ストア インデックスを再構築する
+2. 既定では、次のマッピングを使用して、コンピューティング最適化 Gen1 階層の現在のパフォーマンス レベルに基づいて、データ ウェアハウスの**推奨パフォーマンス レベルを選択**します。
+    
+   | コンピューティング最適化 Gen1 階層 | コンピューティング最適化 Gen2 階層 |
+   | :----------------------: | :-------------------: |
+   |      DW100 – DW600       |        DW500c         |
+   |          DW1000          |        DW1000c        |
+   |          DW1200          |        DW1500c        |
+   |          DW1500          |        DW1500c        |
+   |          DW2000          |        DW2000c        |
+   |          DW3000          |        DW3000c        |
+   |          DW6000          |        DW6000c        |
 
-データ ウェアハウスがオンラインになると、データを読み込み、クエリを実行することができます。 ただし、バックグラウンド プロセスでデータが新しいハードウェアに移行しているため、最初のうちはパフォーマンスが低い可能性があります。 
+3. アップグレードの前に、ワークロードの実行が完了し、休止していることを確認します。 データ ウェアハウスがコンピューティング最適化 Gen2 階層のデータ ウェアハウスとしてオンラインに戻る前に、数分間のダウンタイムが発生します。 **[アップグレード] をクリックします**。 コンピューティング最適化 Gen2 階層のパフォーマンス レベルの料金は、プレビュー期間中の現在は半額になっています。
+    
+   ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_2.png)
 
-データをできるだけ高速に移行するために、列ストア インデックスを再構築することをお勧めします。 インデックスの再構築については、[列ストア インデックスを再構築してセグメントの品質を向上する方法](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)に関するページを参照してください。 
+4. Azure Portal で状態を確認して**アップグレードを監視**します。
+
+   ![Upgrade3](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_3.png)
+   
+   アップグレード プロセスの最初の手順では、すべてのセッションが強制終了されるスケール操作 ("アップグレード中 - オフライン") が実行され、接続が切断されます。 
+   
+   アップグレード プロセスの 2 番目の手順は、データの移行 ("アップグレード中 - オンライン") です。 データの移行は、少量のオンライン バックグラウンド プロセスです。このプロセスは、列指向のデータを以前のストレージ アーキテクチャから、ローカル SSD キャッシュを活用して、新しいストレージ アーキテクチャにゆっくりと移行します。 この期間中、データ ウェアハウスはクエリと読み込みを行うためにオンラインになります。 移行されたかどうかに関係なく、すべてのデータをクエリに使用できます。 データの移行速度は、データ サイズ、パフォーマンス レベル、列ストア セグメントの数に応じて変化します。 
+
+5. **オプションの推奨事項:** データ移行のバック グラウンド プロセスの時間を短縮するために、大規模な SLO とリソース クラスにあるクエリ対象のすべてのプライマリ列ストア テーブルに対して [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) を実行して、データ移動を即時に強制実行できます。 この操作は、少量のバックグラウンド プロセスとは対照的に**オフライン**で、テーブルの数やサイズによっては、完了までに数時間かかることがあります。しかし、データ移行時間は大幅に短縮されるので、高品質の行グループで完了した後に新しい拡張ストレージ アーキテクチャを最大限に活用できます。 
+
+次のクエリでは、データの移行プロセスを短縮するために必要な Alter Index Rebuild コマンドが生成されます。
+
+```sql
+SELECT 'ALTER INDEX [' + idx.NAME + '] ON [' 
+       + Schema_name(tbl.schema_id) + '].[' 
+       + Object_name(idx.object_id) + '] REBUILD ' + ( CASE 
+                                                         WHEN ( 
+                                                     (SELECT Count(*) 
+                                                      FROM   sys.partitions 
+                                                             part2 
+                                                      WHERE  part2.index_id 
+                                                             = idx.index_id 
+                                                             AND 
+                                                     idx.object_id = 
+                                                     part2.object_id) 
+                                                     > 1 ) THEN 
+              ' PARTITION = ' 
+              + Cast(part.partition_number AS NVARCHAR(256)) 
+              ELSE '' 
+                                                       END ) + '; SELECT ''[' + 
+              idx.NAME + '] ON [' + Schema_name(tbl.schema_id) + '].[' + 
+              Object_name(idx.object_id) + '] ' + ( 
+              CASE 
+                WHEN ( (SELECT Count(*) 
+                        FROM   sys.partitions 
+                               part2 
+                        WHERE 
+                     part2.index_id = 
+                     idx.index_id 
+                     AND idx.object_id 
+                         = part2.object_id) > 1 ) THEN 
+              ' PARTITION = ' 
+              + Cast(part.partition_number AS NVARCHAR(256)) 
+              + ' completed'';' 
+              ELSE ' completed'';' 
+                                                    END ) 
+FROM   sys.indexes idx 
+       INNER JOIN sys.tables tbl 
+               ON idx.object_id = tbl.object_id 
+       LEFT OUTER JOIN sys.partitions part 
+                    ON idx.index_id = part.index_id 
+                       AND idx.object_id = part.object_id 
+WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE'; 
+```
+
+
 
 ## <a name="next-steps"></a>次の手順
-データ ウェアハウスはオンラインです。 新しいパフォーマンス機能を使用するには、「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。
+アップグレードしたデータ ウェアハウスはオンラインです。 拡張アーキテクチャを利用するには、[ワークロード管理のためのリソース クラス](resource-classes-for-workload-management.md)に関する記事をご覧ください。
  

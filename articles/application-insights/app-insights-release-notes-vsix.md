@@ -1,23 +1,24 @@
 ---
-title: "開発者分析用 Visual Studio 拡張機能のリリース ノート"
-description: "開発者分析用 Visual Studio ツールの更新内容。"
+title: 開発者分析用 Visual Studio 拡張機能のリリース ノート
+description: 開発者分析用 Visual Studio ツールの更新内容。
 services: application-insights
-documentationcenter: 
-author: acearun
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2001db30-efc5-417a-a413-93c1b218975f
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/20/2017
+ms.reviewer: aruna
 ms.author: mbullwin
-ms.openlocfilehash: b1181698deee265e4b6b2df8bb18e2297cdc8599
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: e9a8c6345ca45234ffcec1588a98bf1b8d634e06
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000700"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Developer Analytics Tools のリリース ノート
 
@@ -167,7 +168,7 @@ Visual Studio からベータ版配布用にビルドをアップロードする
 
 ![Upload dialog for Universal Windows apps](./media/app-insights-release-notes-vsix/UniversalUploadDialog.png)
 
-アップロードするコンテンツ (.appxbundle ファイルまたは .appx ファイル) を選択し、ウィザードでリリース オプションを選択します。 必要に応じて、次のページでリリース ノートを追加できます。 **[Finish (終了)]** を選択してアップロードを開始します。
+アップロードするコンテンツ (.appxbundle または .appx ファイル) を選択してから、ウィザードでリリース オプションを選択します。 必要に応じて、次のページでリリース ノートを追加できます。 **[Finish (終了)]** を選択してアップロードを開始します。
 
 アップロードが完了すると、HockeyApp の通知画面に確認メッセージと HockeyApp ポータルのアプリへのリンクが表示されます。
 
@@ -179,7 +180,7 @@ HockeyApp ポータルから、さまざまな方法でアプリケーション�
 
 ![HockeyApp ポータル](./media/app-insights-release-notes-vsix/HockeyAppPortal.png)
 
-アプリの管理について詳しくは、 [HockeyApp のサポート技術情報](http://support.hockeyapp.net/kb/app-management-2) をご覧ください。
+アプリの管理について詳しくは、 [HockeyApp のサポート技術情報](https://support.hockeyapp.net/kb/app-management-2) をご覧ください。
 
 ### <a name="windows-forms-apps"></a>Windows フォーム アプリ
 Windows フォーム プロジェクト ノードのコンテキスト メニューには、ビルドを HockeyApp にアップロードするオプションが追加されました。
@@ -192,7 +193,7 @@ Windows フォーム プロジェクト ノードのコンテキスト メニュ
 
 このウィザードに、アプリのバージョンを指定するための新しいフィールドが追加されていることに注目してください。 ユニバーサル Windows アプリの場合、この情報はマニフェストから取得されます。 あいにく Windows フォーム アプリに関しては、これと同等の機能がありません。 手動で指定する必要があります。
 
-その他のフローはユニバーサル Windows アプリと同様です。ビルドを選択し、リリース オプションを選択して、リリース ノートを追加し、アップロードして、HockeyApp ポータルで管理します。
+その他のフローはユニバーサル Windows アプリと同様です。Azure Pipelines オプションを選択し、リリース ノートを追加し、アップロードして、HockeyApp ポータルで管理します。
 
 このように操作は簡単です。 ぜひ試してご意見をお聞かせください。
 
@@ -221,7 +222,7 @@ ASP.NET アプリケーションと Application Insights SDK がある場合は�
 **Application Insights が既に追加されている場合:**
 
 1. プロジェクト ノードを右クリックし、**[Application Insights]** をクリックして、**[Application Insights の構成]** をクリックします。 構成ウィンドウで、正しいアダプターを追加するオプションが設定されていることを確認します。
-2. または、ソリューションをビルドするときに、画面右上に表示されるポップアップ ウィンドウの **[構成]**をクリックします。
+2. または、ソリューションをビルドするときに、画面右上に表示されるポップアップ ウィンドウの **[構成]** をクリックします。
 
 ![Logging notification](./media/app-insights-release-notes-vsix/LoggingToast.png)
 
@@ -289,8 +290,3 @@ Visual Studio の [診断ツール] ページで、ローカルにあるテレ�
 
 ![[新しいプロジェクト] ダイアログ](./media/app-insights-release-notes-vsix/newproject.png)
 
-### <a name="device-support"></a>デバイスのサポート
-*Connect();* 2015 において、Microsoft は、モバイル デバイス向けのアプリ開発を支援する機能として HockeyApp を [発表](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/) しました。 HockeyApp は、テスト担当者へのベータ版ビルドの配布、アプリのすべてのクラッシュの収集と分析、およびお客様からのフィードバックの直接収集を支援します。
-HockeyApp は、iOS、Android、Windows や、Xamarin、Cordova、Unity のようなクロスプラットフォーム ソリューションなど、あらゆるプラットフォームのアプリに対応しています。
-
-Application Insights 拡張機能の今後のリリースでは、HockeyApp と Visual Studio の連携をさらに進化させる予定です。 現時点では、NuGet 参照を追加するだけで HockeyApp を開始できます。 詳細については、 [ドキュメント](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone) をご覧ください。

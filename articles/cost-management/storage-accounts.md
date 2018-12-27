@@ -1,45 +1,46 @@
 ---
-title: Azure Cost Management 用にストレージ アカウントを構成する | Microsoft Docs
-description: この記事では、Azure Cost Management 用に Azure ストレージ アカウントと AWS ストレージ バケットを構成する方法について説明します。
+title: Azure で Cloudy 用にストレージ アカウントを構成する | Microsoft Docs
+description: この記事では、Cloudyn 用に Azure ストレージ アカウントと AWS ストレージ バケットを構成する方法について説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/27/2018
-ms.topic: article
+ms.date: 09/18/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 4ddd70501821941120d0d22e273b69842b567532
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 398472df7caf0f702f43bc9d025d1e6ad7dcdd7e
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275081"
 ---
-# <a name="configure-storage-accounts-for-cost-management"></a>Cost Management 用にストレージ アカウントを構成する
+# <a name="configure-storage-accounts-for-cloudyn"></a>Cloudyn 用にストレージ アカウントを構成する
 
-<!--- intent: As a Cost Management user, I want to configure Cost Management to use my cloud service provider storage account to store my reports. -->
+<!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
-Cost Management のレポートは、Cloudyn ポータル、Azure ストレージ、または AWS ストレージ バケットに保存できます。 Cloudyn ポータルへのレポートの保存は無料です。 一方、レポートをクラウド サービス プロバイダーのストレージに保存することもできますが、追加コストが発生します。 この記事では、Azure ストレージ アカウントとアマゾン ウェブ サービス (AWS) ストレージ バケットを構成してレポートを保存する方法について説明します。
+Cloudyn のレポートは、Cloudyn ポータル、Azure ストレージ、または AWS ストレージ バケットに保存できます。 Cloudyn ポータルへのレポートの保存は無料です。 一方、レポートをクラウド サービス プロバイダーのストレージに保存することもできますが、追加コストが発生します。 この記事では、Azure ストレージ アカウントとアマゾン ウェブ サービス (AWS) ストレージ バケットを構成してレポートを保存する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure ストレージ アカウントまたは Amazon ストレージ バケットが必要です。
 
-Azure ストレージ アカウントを持っていない場合は、作成する必要があります。 Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+Azure ストレージ アカウントを持っていない場合は、作成する必要があります。 Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。
 
 AWS Simple Storage Service (S3) バケットを持っていない場合は、作成する必要があります。 S3 バケットの作成の詳細については、「[Create a Bucket (バケットの作成)](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)」を参照してください。
 
 ## <a name="configure-your-azure-storage-account"></a>Azure ストレージ アカウントの構成
 
-Cost Management で使用するための Azure ストレージ アカウントの構成は簡単です。 ストレージ アカウントに関する詳細情報を収集し、Cloudyn ポータルにコピーします。
+Cloudyn で使用するための Azure ストレージの構成は簡単です。 ストレージ アカウントに関する詳細情報を収集し、Cloudyn ポータルにコピーします。
 
-1. Azure Portal (http://portal.azure.com) にログインします。
+1. Azure Portal ( http://portal.azure.com ) にサインインします。
 2. **[すべてのサービス]** をクリックし、**[ストレージ アカウント]** を選択して、使用するストレージ アカウントまでスクロールしたら、そのアカウントを選択します。
 3. [ストレージ アカウント] ページの **[設定]** で **[アクセス キー]** をクリックします。
 4. [key1] の**ストレージ アカウント名**と**接続文字列**をコピーします。  
 ![Azure ストレージ アクセス キー](./media/storage-accounts/azure-storage-access-keys.png)  
-5. Azure Portal から Cloudyn ポータルを開くか、https://azure.cloudyn.com に移動してログインします。
+5. Azure portal から Cloudyn ポータルを開くか、 https://azure.cloudyn.com に移動してサインインします。
 6. 歯車記号をクリックし、**[Reports Storage Management]\(レポートのストレージ管理\)** を選択します。
 7. **[新規追加 +]** をクリックし、Microsoft Azure が選択されていることを確認します。 使用する Azure ストレージ アカウント名を **[名前]** ボックスに貼り付けます。 使用する**接続文字列**を対応するボックスに貼り付けます。 コンテナー名を入力し、**[保存]** をクリックします。  
 ![Azure 用に構成された Cloudyn ストレージ](./media/storage-accounts/azure-cloudyn-storage.png)
@@ -52,7 +53,7 @@ Cost Management で使用するための Azure ストレージ アカウント�
 
 ## <a name="configure-an-aws-storage-bucket"></a>AWS ストレージ バケットの構成
 
-Cloudyn では、既存の AWS 資格情報 (ユーザーまたはロール) を使用してレポートをバケットに保存します。 アクセスをテストするために、Cloudyn は、小さいテキスト ファイルを _check-bucket-permission.txt_というファイル名でバケットに保存することを試みます。
+Cloudyn では、既存の AWS 資格情報 (ユーザーまたはロール) を使用してレポートをバケットに保存します。 アクセスをテストするために、Cloudyn は、小さいテキスト ファイルを _check-bucket-permission.txt_ というファイル名でバケットに保存することを試みます。
 
 Cloudyn のロールまたはユーザーには、バケットに対する PutObject アクセス許可を付与します。 その後、既存のバケットを使用するか新しいバケットを作成して、レポートを保存します。 最後に、ストレージ クラスの管理、ライフサイクル規則の設定、不要なファイルの削除を実行する方法を決定します。
 
@@ -147,7 +148,7 @@ Cloudyn のロールまたはユーザーには、バケットに対する PutOb
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>AWS レポート ストレージを Cloudyn に追加する
 
-1. Azure Portal から Cloudyn ポータルを開くか、https://azure.cloudyn.com に移動してログインします。
+1. Azure portal から Cloudyn ポータルを開くか、 https://azure.cloudyn.com に移動してサインインします。
 2. 歯車記号をクリックし、**[Reports Storage Management]\(レポートのストレージ管理\)** を選択します。
 3. **[新規追加 +]** をクリックし、AWS が選択されていることを確認します。
 4. アカウントとストレージ バケットを選択します。 AWS ストレージ バケットの名前は自動的に設定されます。  
@@ -162,4 +163,4 @@ Cloudyn のロールまたはユーザーには、バケットに対する PutOb
 
 ## <a name="next-steps"></a>次の手順
 
-- コスト管理レポートの基本的な構造と機能については、「[コスト管理レポートについて](understanding-cost-reports.md)」を参照してください。
+- Cloudyn のレポートの基本的な構造と機能については、[Cloudyn のレポート](understanding-cost-reports.md)に関するページをご確認ください。

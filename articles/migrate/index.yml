@@ -13,14 +13,20 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/22/2017
   ms.author: raynew
+  ms.openlocfilehash: 64e5293473dd9b5d4b55088e447a5ec3a289372d
+  ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/27/2017
+  ms.locfileid: "25927120"
 abstract:
   description: Azure Migrate は、オンプレミスのマシンを検出して Azure への移行についての適合性を評価する際に役立ちます。また、Azure VM を実行した場合のサイズとコストの見積りを示します。
 sections:
-  - title: ステップバイステップのチュートリアル
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Azure への移行について VMware VM を評価する方法について説明します
+  - type: list
+    style: unordered
     items:
-      - type: paragraph
-        text: Azure への移行について VMware VM を評価する方法について説明します
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-assessment-vmware">オンプレミスの VMware VM の検出と評価</a>
+    - html: <a href="tutorial-assessment-vmware">オンプレミスの VMware VM の検出と評価</a>

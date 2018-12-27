@@ -1,26 +1,23 @@
 ---
-title: "B2B 統合アカウントのディザスター リカバリー - Azure Logic Apps | Microsoft Docs"
-description: "Logic Apps B2B のディザスター リカバリー"
+title: B2B 統合アカウントのディザスター リカバリー - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps での複数のリージョンにわたるディザスター リカバリーの準備
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: anneta
-editor: 
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 0ef3965adac03f21c386765a43290c93d58d1c18
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3d465123f814887282bf2b29a5b6e0836601c243
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123906"
 ---
-# <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Logic Apps B2B のリージョン間ディザスター リカバリー
+# <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Azure Logic Apps での B2B 統合アカウントの複数のリージョンにわたるディザスター リカバリー
 
 B2B のワークロードには、発注や請求などの金銭が関係するトランザクションが含まれます。 ビジネスでは、障害イベント時に迅速に復旧して、パートナーと合意したビジネス レベルの SLA を満たすことが重要です。 この記事では、B2B ワークロード向けのビジネス継続性計画の構築方法について説明します。 
 
@@ -84,7 +81,7 @@ Logic Apps 統合アカウントのビジネス継続性は、X12、AS2、EDIFAC
 EDI X12 ドキュメントのビジネス継続性は、制御番号に基づいています。
 
 > [!TIP]
-> [X12 クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/201-logic-app-x12-disaster-recovery-replication/)を使用してロジック アプリを作成することもできます。 プライマリ統合アカウントとセカンダリ統合アカウントの作成は、テンプレートを使用するための前提条件です。 テンプレートは 2 つのロジック アプリを作成するのに役立ちます。1 つは受信した制御番号用、もう 1 つは生成された制御番号用です。 ロジック アプリでそれぞれのトリガーとアクションが作成されます。トリガーはプライマリ統合アカウントに、アクションはセカンダリ統合アカウントに接続します。
+> [X12 クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/)を使用してロジック アプリを作成することもできます。 プライマリ統合アカウントとセカンダリ統合アカウントの作成は、テンプレートを使用するための前提条件です。 テンプレートは 2 つのロジック アプリを作成するのに役立ちます。1 つは受信した制御番号用、もう 1 つは生成された制御番号用です。 ロジック アプリでそれぞれのトリガーとアクションが作成されます。トリガーはプライマリ統合アカウントに、アクションはセカンダリ統合アカウントに接続します。
 
 **前提条件**
 

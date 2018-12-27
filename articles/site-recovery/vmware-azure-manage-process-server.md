@@ -1,19 +1,17 @@
 ---
-title: Azure Site Recovery でプロセス サーバーを管理する | Microsoft Docs
-description: この記事では、Azure Site Recovery で VMware VM および物理サーバーのレプリケーションのために設定されたプロセス サーバーを管理する方法について説明します。
-services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
-editor: ''
+title: Azure Site Recovery を使用した VMware VM および物理サーバーの Azure へのディザスター リカバリーのためにプロセス サーバーを管理する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して、VMware VM および物理サーバーを Azure にディザスター リカバリーするために設定されたプロセス サーバーを管理する方法について説明します。
+author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 096b2890d41402448809ae87759fcd6b67bee2fe
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.date: 10/29/2018
+ms.author: ramamill
+ms.openlocfilehash: d99b5d1fdca39466d5e09ca077329b7ffa8622bc
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568854"
 ---
 # <a name="manage-process-servers"></a>プロセス サーバーの管理
 
@@ -58,7 +56,7 @@ ms.lasthandoff: 03/08/2018
 
 1. プロセス サーバー マシンにログオンします。 
 2. 管理者の PowerShell コマンド ウィンドウを開き、次のコマンドを実行します。
-  ```
+  ```powershell
   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
   net stop obengine
@@ -81,4 +79,16 @@ ms.lasthandoff: 03/08/2018
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 
+## <a name="manage-anti-virus-software-on-process-servers"></a>プロセス サーバーでウイルス対策ソフトウェアを管理する
+
+スタンドアロン プロセス サーバーまたはマスター ターゲット サーバー上でウイルス対策ソフトウェアがアクティブになっている場合は、次のフォルダーをウイルス対策操作から除外します。
+
+
+- C:\Program Files\Microsoft Azure Recovery Services Agent
+- C:\ProgramData\ASR
+- C:\ProgramData\ASRLogs
+- C:\ProgramData\ASRSetupLogs
+- C:\ProgramData\LogUploadServiceLogs
+- C:\ProgramData\Microsoft Azure Site Recovery
+- プロセス サーバー インストール ディレクトリ。例: C:\Program Files (x86)\Microsoft Azure Site Recovery
 

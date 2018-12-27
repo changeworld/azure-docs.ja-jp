@@ -1,31 +1,26 @@
 ---
-title: "Azure Data Lake Store アカウントで複数の HDInsight クラスターを使用する - Azure | Microsoft Docs"
-description: "1 つの Data Lake Store アカウントで複数の HDInsight クラスターを使用する方法を学習する"
-keywords: "hdinsight ストレージ,hdfs,構造化データ,非構造化データ, Data Lake Store"
+title: Azure Data Lake Store アカウントで複数の HDInsight クラスターを使用する - Azure
+description: 1 つの Data Lake Store アカウントで複数の HDInsight クラスターを使用する方法を学習する
+keywords: hdinsight ストレージ,hdfs,構造化データ,非構造化データ, Data Lake Store
 services: hdinsight,storage
-documentationcenter: 
-tags: azure-portal
-author: nitinme
-manager: jhubbard
-editor: cgronlun
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: c306c66354f34fc945a5fe0ffa11d63bce4d7005
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: hrasheed
+ms.openlocfilehash: f92100e6e4dd7569a109aa01f3c998777568cce3
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004594"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントで複数の HDInsight クラスターを使用する
 
 HDInsight バージョン 3.5 からは、Azure Data Lake Store アカウントを既定のファイル システムとして使用して HDInsight クラスターを作成できます。
-Data Lake Store は、無制限のストレージをサポートしているため、大量のデータのホスティングだけでなく、1 つの Data Lake Store アカウントを共有する複数の HDInsight クラスターのホスティングにも最適です。 Data Lake Store をストレージとして使用して HDInsight クラスターを作成する方法については、「[Data Lake Store を使用して HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
+Data Lake Store は、無制限のストレージをサポートしているため、大量のデータのホスティングだけでなく、1 つの Data Lake Store アカウントを共有する複数の HDInsight クラスターのホスティングにも最適です。 Data Lake Store で HDInsight クラスターを作成する方法の手順については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
 この記事では、複数の**アクティブな** HDInsight クラスターにわたって使用できる 1 つの、および共有された Data Lake Store アカウントを設定するための Data Lake Store 管理者への推奨事項を示します。 これらの推奨事項は、共有された Data Lake Store アカウント上の複数のセキュリティ保護された、およびセキュリティ保護されていない Hadoop クラスターのホスティングに適用されます。
 
@@ -52,7 +47,7 @@ Data Lake Store アカウントで複数の HDInsight クラスターを使用�
 - **サービス プリンシパル**は、そのアカウントに関連付けられている Azure Active Directory (AAD) サービス プリンシパルです。
 - **FINGRP**は、財務組織のユーザーを含む AAD で作成されたユーザー グループです。
 
-AAD アプリケーション (これはサービス プリンシパルも作成します) を作成する方法については、「[AAD アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)」を参照してください。 AAD でユーザー グループを作成する方法については、「[Azure Active Directory でのグループの管理](../active-directory/active-directory-groups-create-azure-portal.md)」を参照してください。
+AAD アプリケーション (これはサービス プリンシパルも作成します) を作成する方法については、「[AAD アプリケーションの作成](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」を参照してください。 AAD でユーザー グループを作成する方法については、「[Azure Active Directory でのグループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 いくつかの考慮すべき重要な点。
 
@@ -98,6 +93,6 @@ AAD アプリケーション (これはサービス プリンシパルも作成�
 
 ## <a name="see-also"></a>関連項目
 
-* [Data Lake Store をストレージとして使用して HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 
 

@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 5e4921be3116754f146ed0845513010f2642c97b
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165087"
+---
 <!--author=SharS last changed: 9/17/15-->
 
 #### <a name="to-install-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用してメンテナンス モードの修正プログラムをインストールするには
@@ -12,6 +25,6 @@
      `Start-HcsHotfix` 
 3. メッセージが表示されたら、修正プログラムのファイルが含まれているネットワーク共有フォルダーへのパスを入力します。
 4. 確認を求められます。 「 **Y** 」と入力して修正プログラムのインストールを続行します。
-5. 1 つのコントローラーで修正プログラムを適用した後、別のコントローラーにログオンします。 前のコントローラーと同様に修正プログラムを適用します。
+5. 1 つのコントローラーで修正プログラムを適用した後、別のコントローラーにサインインします。 前のコントローラーと同様に修正プログラムを適用します。
 6. 修正プログラムが適用されたら、メンテナンス モードを終了します。 手順については、「[手順 4: メンテナンス モードを終了する](../articles/storsimple/storsimple-update-device.md#step4)」を参照してください。
 

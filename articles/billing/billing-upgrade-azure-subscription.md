@@ -1,27 +1,28 @@
 ---
-title: "無料 Azure サブスクリプションを従量課金制にアップグレード | Microsoft Docs"
-description: "無料サブスクリプションから従量課金制にアップグレードする方法と要件について説明します"
-keywords: "従量課金制へのアップグレード"
-services: 
-documentationcenter: 
+title: 無料 Azure サブスクリプションを従量課金制にアップグレード | Microsoft Docs
+description: 無料サブスクリプションから従量課金制にアップグレードする方法と要件について説明します
+keywords: 従量課金制へのアップグレード
+services: ''
+documentationcenter: ''
 author: jlian
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 0b4ac8f3-3df0-478a-8a07-b18b40f0cf5f
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2017
-ms.author: jlian
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b9642eec0fd0f1e547f34de1077e551fbb61593
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 7cb9d8e0f03dc5cb81d68d51be018e79074a32c2
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391301"
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする
 
@@ -36,3 +37,8 @@ Azure アカウント センターで、[無料試用版](https://azure.microsof
     ![サブスクリプションのアップグレードを確認するために選ぶものを示すスクリーンショット](./media/billing-upgrade-azure-subscription/Upgrade.png)
 
  無料試用版サブスクリプションからアップグレードした場合、残りのクレジットは、サブスクリプションの作成後、丸 30 日間保持されます。 また、12 か月間の無料サービスにアクセスすることもできます。
+ 
+ アップグレード後に[サブスクリプションを譲渡](billing-subscription-transfer.md)する場合は、サブスクリプション オファー ID が **MS-AZR-003P** に変わるまで待つ必要があります。 オファー ID は次の場合に変わります。
+
+* 残りのすべてのクレジットを消費する
+* 無料試用版の開始から 30 日経過する

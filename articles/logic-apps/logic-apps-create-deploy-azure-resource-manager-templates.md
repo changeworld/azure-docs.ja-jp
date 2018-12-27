@@ -1,24 +1,21 @@
 ---
-title: Azure Resource Manager テンプレートを使用してロジック アプリを作成する | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用してロジック アプリのワークフローを作成してデプロイする
+title: Azure Resource Manager テンプレートでロジック アプリを作成する - Azure Logic Apps | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用してロジック アプリ ワークフローを作成し、Azure Logic Apps にデプロイします
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: anneta
-editor: ''
-ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: article
+ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 9e696f6e4614052456cf2b55123d98d61b8b3b9c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 274fa3153f6a354b121b7fd8338d8e0d2d94f4f4
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230814"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してロジック アプリを作成してデプロイする
 
@@ -31,46 +28,46 @@ Azure Logic Apps には、ワークフローを自動化するためのロジッ
 
 ``` json
 {
-    "type": "Microsoft.Logic/workflows",
-    "apiVersion": "2016-06-01",
-    "name": "[parameters('logicAppName')]",
-    "location": "[resourceGroup().location]",
-    "tags": {
-        "displayName": "LogicApp"
-    },
-    "properties": {
-        "definition": {
-            "$schema": "http://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-            "contentVersion": "1.0.0.0",
-            "parameters": {
-                "testURI": {
-                "type": "string",
-                "defaultValue": "[parameters('testUri')]"
-                }
-            },
-            "triggers": {
-                "Recurrence": {
-                    "type": "Recurrence",
-                    "recurrence": {
-                        "frequency": "Hour",
-                        "interval": 1
-                    }
-                }
-            },
-            "actions": {
-                "Http": {
-                    "type": "Http",
-                    "inputs": {
-                        "method": "GET",
-                        "uri": "@parameters('testUri')"
-                    },
-                    "runAfter": {}
-                }
-            },
-            "outputs": {}
-        },
-        "parameters": {}
-    }
+   "type": "Microsoft.Logic/workflows",
+   "apiVersion": "2016-06-01",
+   "name": "[parameters('logicAppName')]",
+   "location": "[resourceGroup().location]",
+   "tags": {
+      "displayName": "LogicApp"
+   },
+   "properties": {
+      "definition": {
+         "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
+         "contentVersion": "1.0.0.0",
+         "parameters": {
+            "testURI": {
+               "type": "string",
+               "defaultValue": "[parameters('testUri')]"
+            }
+         },
+         "triggers": {
+            "Recurrence": {
+               "type": "Recurrence",
+               "recurrence": {
+                  "frequency": "Hour",
+                  "interval": 1
+               }
+            }
+         },
+         "actions": {
+            "Http": {
+              "type": "Http",
+              "inputs": {
+                  "method": "GET",
+                  "uri": "@parameters('testUri')"
+              },
+              "runAfter": {}
+           }
+         },
+         "outputs": {}
+      },
+      "parameters": {}
+   }
 }
 ``` 
 
@@ -82,7 +79,7 @@ Azure Logic Apps には、ワークフローを自動化するためのロジッ
 
 テンプレート内のパラメーターの説明を次に示します。
 
-| パラメーター | [説明] | JSON 定義の例 | 
+| パラメーター | 説明 | JSON 定義の例 | 
 | --------- | ----------- | ----------------------- | 
 | `logicAppName` | テンプレートで作成するロジック アプリの名前を定義します。 | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
 | `testUri` | ping テスト用の場所を定義します。 | "testUri": { "type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
@@ -124,7 +121,7 @@ azure group deployment create --template-uri https://raw.githubusercontent.com/A
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

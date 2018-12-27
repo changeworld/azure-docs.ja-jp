@@ -6,26 +6,25 @@ documentationcenter: na
 author: rloutlaw
 manager: justhe
 keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 04/02/2018
+ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9cf1d485f32c861ac5b5720cd77a988eee624f4d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: fdd29bbfaf36619fd823220e5d32a48a1619679b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842069"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Java と Maven を使用して初めての関数を作成する (プレビュー)
 
 > [!NOTE] 
 > Azure Functions 用の Java は現在プレビュー段階です。
 
-このクイックスタートでは、Maven で[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数プロジェクトを作成し、ローカルでテストして、Azure Functions にデプロイする手順について説明します。 完了すると、HTTP によってトリガーされる関数アプリが Azure で実行されるようになります。
+このクイックスタートでは、Maven で[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数プロジェクトを作成し、ローカルでテストして、Azure にデプロイする手順について説明します。 完了すると、Java 関数コードはクラウドで実行され、HTTP 要求からトリガーできるようになります。
 
 ![コマンド ラインから cURL で Hello World 関数にアクセスする](media/functions-create-java-maven/hello-azure.png)
 
@@ -192,11 +191,37 @@ curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/h
 Hello AzureFunctions!
 ```
 
+## <a name="make-changes-and-redeploy"></a>変更を加えて再デプロイする
+
+関数アプリから返されるテキストに変更を加えるために、生成されたプロジェクトの `src/main.../Function.java` ソース ファイルを編集します。 変更するのは次の行です。
+
+```java
+return request.createResponse(200, "Hello, " + name);
+```
+
+これを次のように変更してください。
+
+```java
+return request.createResponse(200, "Hi, " + name);
+```
+
+変更内容を保存し、ターミナルから `azure-functions:deploy` を実行して再デプロイします。 関数アプリが更新されます。次の要求を実行してみましょう。
+
+```bash
+curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
+```
+
+出力結果が更新されていることがわかります。
+
+```Output
+Hi, AzureFunctionsTest
+```
+
 ## <a name="next-steps"></a>次の手順
 
 簡単な HTTP トリガーを使って Java 関数アプリを作成し、Azure Functions にデプロイしました。
 
 - 「[Azure Functions Java developer guide](functions-reference-java.md)」(Azure Functions Java 開発者ガイド) で、Java 関数の開発の詳細について確認します。
 - `azure-functions:add` Maven ターゲットを使って、異なるトリガーの新しい関数をプロジェクトに追加します。
-- Visual Studio Code でローカルに関数をデバッグします。 [Java 拡張パック](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)をインストールし、Visual Studio Code で Functions プロジェクトを開いて、ポート 5005 に[デバッガーをアタッチ](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations)します。 その後、エディターでブレークポイントを設定し、ローカルに実行しながら関数をトリガーします。![Visual Studio Code で関数をデバッグする](media/functions-create-java-maven/vscode-debug.png)
-- Visual Studio Code でリモートから関数をデバッグします。 その手順については、[サーバーレス Java アプリケーション](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)に関するドキュメントを参照してください。
+- [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md)、[Eclipse](functions-create-maven-eclipse.md) を使って関数を作成し、ローカルでデバッグします。 
+- Azure にデプロイされた関数を Visual Studio Code でデバッグします。 その手順については、Visual Studio Code の[サーバーレス Java アプリケーション](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)に関するドキュメントを参照してください。

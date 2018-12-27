@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: c54431009105c1d213e6cefeba06c39c781e2c1a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164366"
+---
 <!--author=SharS last changed: 06/22/2016-->
 
 ### <a name="to-configure-and-register-the-device"></a>デバイスを構成して登録するには
@@ -6,7 +19,7 @@
 3. デバイスに設定する言語を選択するように求められます。 言語を指定し、**Enter** キーを押します。
    
     ![StorSimple によるデバイスの構成および登録 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
-4. 表示されるシリアル コンソール メニューで、オプション 1 を選択してフル アクセスでログインします。
+4. 表示されるシリアル コンソール メニューで、オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択します。
    
     ![StorSimple によるデバイスの登録 2](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice2-gov-include.png)
 5. 次の手順を実行して、デバイスで必要な最小のネットワーク設定を構成します。
@@ -68,9 +81,9 @@
 15. Azure Government ポータルに戻り、次の手順を実行します。
     
     1. StorSimple デバイス マネージャー サービスに移動します。
-    2. **[デバイス]** をクリックします。 デバイスの一覧からデプロイするデバイスを特定します。 デバイスが正常にサービスに接続されていることを、その状態を参照して確認します。 デバイスの状態は **"オンライン"**と表示されます。
+    2. **[デバイス]** をクリックします。 デバイスの一覧からデプロイするデバイスを特定します。 デバイスが正常にサービスに接続されていることを、その状態を参照して確認します。 デバイスの状態は **"オンライン"** と表示されます。
             
-        デバイスの状態が **"オフライン"**の場合は、デバイスがオンラインになるまで数分待ちます。
+        デバイスの状態が **"オフライン"** の場合は、デバイスがオンラインになるまで数分待ちます。
        
         数分待ってもデバイスがまだオフラインである場合は、「[StorSimple デバイスのネットワーク要件](../articles/storsimple/storsimple-8000-system-requirements.md)」で説明されているとおりにファイアウォール ネットワークが構成されていることを確認する必要があります。
        

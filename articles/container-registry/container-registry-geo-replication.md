@@ -1,28 +1,23 @@
 ---
-title: "Azure Container Registry の geo レプリケーション"
-description: "geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。"
+title: Azure Container Registry の geo レプリケーション
+description: geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。
 services: container-registry
 author: stevelas
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview-article
-ms.date: 10/24/2017
+ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: 92df5a37d62dc9731842a4312339aa571072a487
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 784174c1fb2427441e0ed1a13b147d2440539fa9
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870340"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
-ローカル プレゼンスやホット バックアップを必要とする企業は、複数の Azure リージョンからサービスを実行しています。 ベスト プラクティスとして、イメージが実行されている各リージョンにコンテナー レジストリを配置してネットワーク上の近い場所での操作を可能にすることで、高速で信頼性の高いイメージ レイヤー転送を実現します。
-
-geo レプリケーションにより、Azure コンテナー レジストリが単一のレジストリとして機能することが可能になり、マルチマスター リージョン レジストリで複数のリージョンに対応できます。
-
-> [!IMPORTANT]
-> Azure Container Registry の geo レプリケーション機能は現在**プレビュー**段階です。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
->
+ローカル プレゼンスやホット バックアップを必要とする企業は、複数の Azure リージョンからサービスを実行しています。 ベスト プラクティスとして、イメージが実行されている各リージョンにコンテナー レジストリを配置してネットワーク上の近い場所での操作を可能にすることで、高速で信頼性の高いイメージ レイヤー転送を実現します。 geo レプリケーションにより、Azure コンテナー レジストリが単一のレジストリとして機能することが可能になり、マルチマスター リージョン レジストリで複数のリージョンに対応できます。
 
 geo レプリケートされたレジストリには次の利点があります。
 
@@ -41,8 +36,8 @@ Contoso では、米国、カナダ、ヨーロッパにまたがる パブリ�
 Contoso では、geo レプリケーション機能を使用する前は、米国西部では米国ベースのレジストリを使用し、西ヨーロッパでは追加のレジストリを使用していました。 これらの異なるリージョンに対応するために、開発チームは 2 つの異なるレジストリにイメージをプッシュする必要がありました。
 
 ```bash
-docker push contoso.azurecr.io/pubic/products/web:1.2
-docker push contosowesteu.azurecr.io/pubic/products/web:1.2
+docker push contoso.azurecr.io/public/products/web:1.2
+docker push contosowesteu.azurecr.io/public/products/web:1.2
 ```
 ![複数のレジストリからのプル](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*複数のレジストリからのプル*
 

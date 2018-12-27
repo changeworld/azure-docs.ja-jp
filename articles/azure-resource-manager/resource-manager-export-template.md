@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager テンプレートをエクスポートする | Microsoft Docs"
-description: "Azure Resource Manager を使用して、既存のリソース グループからテンプレートをエクスポートします。"
+title: Azure Resource Manager テンプレートをエクスポートする | Microsoft Docs
+description: Azure Resource Manager を使用して、既存のリソース グループからテンプレートをエクスポートします。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 5f5ca940-eef8-4125-b6a0-f44ba04ab5ab
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/23/2018
+ms.topic: conceptual
+ms.date: 06/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7ac553a3608df41548f845e27c545ff63886e37c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 3e1dd8ad49ceb126a14070ed641146d91419640a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025338"
 ---
 # <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>既存のリソースから Azure Resource Manager テンプレートをエクスポートする
 この記事では、サブスクリプション内の既存のリソースから Resource Manager テンプレートをエクスポートする方法について説明します。 生成されたそのテンプレートを使用して、テンプレートの構文について理解を深めることができます。
@@ -40,11 +40,11 @@ ms.lasthandoff: 02/27/2018
    
       ![Web アプリを SQL の検索](./media/resource-manager-export-template/webapp-sql.png)
 
-3. **[作成]**を選択します。
+3. **[作成]** を選択します。
 
       ![作成の選択](./media/resource-manager-export-template/create.png)
 
-4. Web アプリと SQL データベースに必要な値を入力します。 **[作成]**を選択します。
+4. Web アプリと SQL データベースに必要な値を入力します。 **[作成]** を選択します。
 
       ![Web と SQL の値の指定](./media/resource-manager-export-template/provide-web-values.png)
 
@@ -57,15 +57,14 @@ ms.lasthandoff: 02/27/2018
 2. グループのデプロイの履歴が表示されます。 このケースでは、ポータルに表示されるデプロイはおそらく 1 つだけです。 このデプロイを選択します。
    
      ![最終デプロイ](./media/resource-manager-export-template/select-history.png)
-3. ポータルにデプロイの概要が表示されます。 概要には、デプロイの状態とその操作、およびパラメーターに指定した値が含まれています。 デプロイに使用されたテンプレートを表示するには、 **[テンプレートの表示]**を選択します。
+3. ポータルにデプロイの概要が表示されます。 概要には、デプロイの状態とその操作、およびパラメーターに指定した値が含まれています。 デプロイに使用されたテンプレートを表示するには、 **[テンプレートの表示]** を選択します。
    
      ![デプロイの概要の表示](./media/resource-manager-export-template/view-template.png)
 4. Resource Manager によって、次の 7 つのファイルが取得されます。
    
    1. **Template** - ソリューションのインフラストラクチャを定義するテンプレート。 ポータルでストレージ アカウントを作成したときに、Resource Manager はテンプレートを使用してそれをデプロイし、今後参照できるようにテンプレートを保存しました。
    2. **Parameters** - デプロイ中に値を渡すために使用できるパラメーター ファイル。 初回デプロイ時に指定した値が含まれています。 これらの値はどれも、テンプレートを再デプロイするときに変更できます。
-   3. **CLI** - テンプレートをデプロイするために使用できる Azure CLI (コマンド ライン インターフェイス) スクリプト ファイル。
-   3. **CLI 2.0** - テンプレートをデプロイするために使用することができる Azure CLI (コマンド ライン インターフェイス) スクリプト ファイル。
+   3. **CLI** - テンプレートをデプロイするために使用できる Azure CLI スクリプト ファイル。
    4. **PowerShell** - テンプレートをデプロイするために使用できる Azure PowerShell スクリプト ファイル。
    5. **.NET** - テンプレートをデプロイするために使用できる .NET クラス。
    6. **Ruby** - テンプレートをデプロイするために使用できる Ruby クラス。
@@ -84,7 +83,7 @@ ms.lasthandoff: 02/27/2018
 > 
 > 
 
-1. リソース グループのテンプレートを表示するには、 **[Automation スクリプト]**を選択します。
+1. リソース グループのテンプレートを表示するには、 **[Automation スクリプト]** を選択します。
    
       ![リソース グループのエクスポート](./media/resource-manager-export-template/select-automation.png)
    
@@ -120,7 +119,7 @@ ms.lasthandoff: 02/27/2018
 2. テンプレートを選択します。
    
      ![テンプレートの編集](./media/resource-manager-export-template/select-added-template.png)
-3. 指定する値をデプロイ時に渡すことができるようにするには、テンプレートの **parameters** セクションに次の 2 つのパラメーターを追加します。
+3. 指定する値をデプロイ時に渡すには、テンプレートの **parameters** セクションに次の 2 つのパラメーターを追加します。
 
    ```json
    "administratorLogin": {
@@ -162,12 +161,11 @@ ms.lasthandoff: 02/27/2018
 
 
 ## <a name="fix-export-issues"></a>エクスポートの問題の修正
-テンプレート関数のエクスポートは、すべてのリソースの種類でサポートされているわけではありません。 この問題を回避するには、欠けているリソースを対象のテンプレートに手動で追加します。 エラー メッセージには、エクスポートできないリソースの種類が含まれています。 そのリソースの種類は、[テンプレート リファレンス](/azure/templates/)で探してください。 たとえば、仮想ネットワーク ゲートウェイを手動で追加するには、[Microsoft.Network/virtualNetworkGateways テンプレート リファレンス](/azure/templates/microsoft.network/virtualnetworkgateways)を参照してください。
+テンプレート関数のエクスポートは、すべてのリソースの種類でサポートされているわけではありません。 エクスポートの問題は、リソース グループからエクスポートする場合にのみ発生します。デプロイ履歴からのエクスポートでは発生しません。 最後のデプロイがリソース グループの現在の状態を正確に表しているようであれば、リソース グループからではなく、デプロイ履歴からテンプレートをエクスポートすることをお勧めします。 単一のテンプレートで定義されていない変更をリソース グループに加えた場合にのみ、リソース グループからエクスポートしてください。
 
-> [!NOTE]
-> エクスポートの問題は、リソース グループからエクスポートする場合にのみ発生します。デプロイ履歴からのエクスポートでは発生しません。 最後のデプロイがリソース グループの現在の状態を正確に表しているようであれば、リソース グループからではなく、デプロイ履歴からテンプレートをエクスポートすることをお勧めします。 単一のテンプレートで定義されていない変更をリソース グループに加えた場合にのみ、リソース グループからエクスポートしてください。
-> 
-> 
+エクスポートの問題を回避するには、欠けているリソースを対象のテンプレートに手動で追加します。 エラー メッセージには、エクスポートできないリソースの種類が含まれています。 そのリソースの種類は、[テンプレート リファレンス](/azure/templates/)で探してください。 たとえば、仮想ネットワーク ゲートウェイを手動で追加するには、[Microsoft.Network/virtualNetworkGateways テンプレート リファレンス](/azure/templates/microsoft.network/virtualnetworkgateways)を参照してください。 テンプレート リファレンスには、テンプレートにリソースを追加するための JSON が記載されています。
+
+リソースに対応する JSON 形式を取得したら、次にリソースの値を取得する必要があります。 リソースの値は、リソースの種類に対応する REST API の GET 操作を使用して確認できます。 たとえば、仮想ネットワーク ゲートウェイの値を取得するには、「[Virtual Network Gateways - Get](/rest/api/network-gateway/virtualnetworkgateways/get)」(仮想ネットワーク ゲートウェイ - Get) を参照します。
 
 ## <a name="next-steps"></a>次の手順
 

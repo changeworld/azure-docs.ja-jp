@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 認証と Resource Manager | Microsoft Docs"
-description: "アプリケーションを他の Azure サブスクリプションと統合するための Azure Resource Manager API と Azure Active Directory を使用した認証の開発者ガイド。"
+title: Azure Active Directory 認証と Resource Manager | Microsoft Docs
+description: アプリケーションを他の Azure サブスクリプションと統合するための Azure Resource Manager API と Azure Active Directory を使用した認証の開発者ガイド。
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
@@ -9,16 +9,17 @@ editor: tysonn
 ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/15/2017
-ms.author: dugill;tomfitz
-ms.openlocfilehash: 0b7ddaa7e8a98cdff0e92c87f8a1f7e24efbd67e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.date: 07/12/2018
+ms.author: dugill
+ms.openlocfilehash: 69127702a7d8e7027e78a8e04a4e8e1bc3e36b65
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956342"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
 ## <a name="introduction"></a>はじめに
@@ -29,7 +30,7 @@ ms.lasthandoff: 11/16/2017
 1. **ユーザー + アプリケーション アクセス**: サインインしたユーザーに代わってリソースにアクセスするアプリケーションの場合。 この方法は、Web アプリケーションやコマンド ライン ツールなど、Azure リソースの "対話形式の管理" だけに対応するアプリケーションに適しています。
 2. **アプリケーション専用アクセス**: デーモン サービスやスケジュールされたジョブを実行するアプリケーションの場合。 アプリケーションの ID にリソースへの直接アクセスを許可します。 この方法は、Azure への長期間のヘッドレス (無人) アクセスを必要とするアプリケーションに適しています。
 
-この記事では、この両方の承認方法を使用するアプリを作成する手順を説明します。 REST API または C# で各手順を実行する方法を紹介します。 完全な ASP.NET MVC アプリケーションは、 [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense)で入手できます。
+この記事では、この両方の承認方法を使用するアプリを作成する手順を説明します。 REST API または C# で各手順を実行する方法を紹介します。 完全な ASP.NET MVC アプリケーションは、[https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense) で入手できます。
 
 ## <a name="what-the-web-app-does"></a>Web アプリケーションで実行する内容
 Web アプリケーションで実行する内容は次のとおりです。
@@ -68,26 +69,32 @@ Web アプリケーションのフローを次に示します。
 ## <a name="register-application"></a>アプリケーションを登録する
 コーディングを開始する前に、Web アプリケーションを Azure Active Directory (AD) に登録します。 アプリケーションの登録により、Azure AD にアプリケーションの主要 ID が作成されます。 この ID には、OAuth クライアント ID、応答 URL、アプリケーションが Azure Resource Manager API に対する認証とアクセスに使用する資格情報など、アプリケーションに関する基本情報が保持されます。 また、アプリケーションの登録により、アプリケーションがユーザーに代わって Microsoft API にアクセスするときに必要となる委任された各種アクセス許可が記録されます。
 
-アプリケーションは他のサブスクリプションにアクセスするため、アプリケーションをマルチテナント アプリケーションとして構成する必要があります。 検証に合格するには、Azure Active Directory に関連付けられているドメインを指定します。 Azure Active Directory に関連付けられているドメインを表示するには、ポータルにログインします。
+アプリケーションは他のサブスクリプションにアクセスするため、アプリケーションをマルチテナント アプリケーションとして構成する必要があります。 検証に合格するには、Azure Active Directory に関連付けられているドメインを指定します。 Azure Active Directory に関連付けられているドメインを表示するには、ポータルにサインインします。
 
 次の例は、Azure PowerShell を使用してアプリケーションを登録する方法を示しています。 このコマンドを機能させるには、Azure PowerShell の最新バージョン (2016 年 8 月) が必要です。
 
-    $app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
+```azurepowershell-interactive
+$app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
+```
 
-AD アプリケーションとしてログインするには、アプリケーション ID とパスワードが必要です。 前のコマンドから返されたアプリケーション ID を表示するには、次のコマンドを使用します。
+AD アプリケーションとしてサインインするには、アプリケーション ID とパスワードが必要です。 前のコマンドから返されたアプリケーション ID を表示するには、次のコマンドを使用します。
 
-    $app.ApplicationId
+```azurepowershell-interactive
+$app.ApplicationId
+```
 
 次の例は、Azure CLI を使用してアプリケーションを登録する方法を示しています。
 
-    azure ad app create --name {app name} --home-page https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available true
+```azurecli-interactive
+az ad app create --display-name {app name} --homepage https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available-to-other-tenants true
+```
 
 結果には、アプリケーションとして認証するときに必要な AppId が含まれています。
 
 ### <a name="optional-configuration---certificate-credential"></a>オプションの構成 - 証明書資格情報
 Azure AD では、アプリケーションの証明書資格情報もサポートしています。自己署名証明書を作成し、秘密キーを保持して、Azure AD アプリケーションの登録に公開キーを追加します。 認証では、アプリケーションが秘密キーを使用して署名された小さなペイロードを Azure AD に送信すると、Azure AD は登録済みの公開キーを使用して署名を検証します。
 
-証明書を使用した AD アプリケーションの作成方法については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)」または「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)」をご覧ください。
+証明書を使用した AD アプリケーションの作成方法については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)」または「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)」をご覧ください。
 
 ## <a name="get-tenant-id-from-subscription-id"></a>サブスクリプション ID を使用してテナント ID を取得する
 Resource Manager の呼び出しに使用できるトークンを要求するには、Azure サブスクリプションをホストする Azure AD テナントのテナント ID をアプリケーションが認識している必要があります。 ほとんどの場合、ユーザーは各自のサブスクリプション ID を知っていますが、Azure Active Directory のテナント ID は知らない可能性があります。 ユーザーのテナント ID を取得するには、ユーザーにサブスクリプション ID を要求します。 サブスクリプションに関する要求を送信するときに、そのサブスクリプション ID を指定します。
@@ -99,14 +106,14 @@ Resource Manager の呼び出しに使用できるトークンを要求するに
 ## <a name="get-user--app-access-token"></a>ユーザー + アプリケーション アクセス トークンを取得する
 アプリケーションは、ユーザーの資格情報を認証し、認証コードを返すために、OAuth 2.0 承認要求と共にユーザーを Azure AD にリダイレクトします。 アプリケーションは、認証コードを使用して Resource Manager のアクセス トークンを取得します。 [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) メソッドが承認要求を作成します。
 
-この記事では、ユーザーを認証するための REST API 要求を示します。 ヘルパー ライブラリを使用して、コードで認証を実行することもできます。 これらのライブラリの詳細については、「[Azure Active Directory 認証ライブラリ](../active-directory/active-directory-authentication-libraries.md)」をご覧ください。 アプリケーションでの ID 管理の統合に関するガイダンスについては、「[Azure Active Directory 開発者ガイド](../active-directory/active-directory-developers-guide.md)」をご覧ください。
+この記事では、ユーザーを認証するための REST API 要求を示します。 ヘルパー ライブラリを使用して、コードで認証を実行することもできます。 これらのライブラリの詳細については、「[Azure Active Directory 認証ライブラリ](../active-directory/active-directory-authentication-libraries.md)」をご覧ください。 アプリケーションでの ID 管理の統合に関するガイダンスについては、「[Azure Active Directory 開発者ガイド](../active-directory/develop/v1-overview.md)」をご覧ください。
 
 ### <a name="auth-request-oauth-20"></a>承認要求 (OAuth 2.0)
 Azure AD 承認エンドポイントに Open ID Connect/OAuth 2.0 承認要求を発行します。
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Authorize
 
-この要求で使用できるクエリ文字列パラメーターについては、「[承認コードを要求する](../active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code)」を参照してください。
+この要求で使用できるクエリ文字列パラメーターについては、「[承認コードを要求する](../active-directory/develop/v1-protocols-oauth-code.md#request-an-authorization-code)」を参照してください。
 
 次の例は、OAuth 2.0 承認を要求する方法を示しています。
 
@@ -119,7 +126,7 @@ Azure AD がユーザーを認証し、必要に応じて、アプリケーシ�
 ### <a name="auth-request-open-id-connect"></a>承認要求 (Open ID Connect)
 ユーザーに代わって Azure Resource Manager にアクセスするだけでなく、ユーザーが Azure AD アカウントを使用してアプリケーションにサインインできるようにする場合は、Open ID Connect 承認要求を発行します。 Open ID Connect により、アプリケーションはユーザーのサインインに使用できる id_token も Azure AD から受け取ります。
 
-この要求で使用できるクエリ文字列パラメーターについては、「[サインイン要求を送信する](../active-directory/develop/active-directory-protocols-openid-connect-code.md#send-the-sign-in-request)」を参照してください。
+この要求で使用できるクエリ文字列パラメーターについては、「[サインイン要求を送信する](../active-directory/develop/v1-protocols-openid-connect-code.md#send-the-sign-in-request)」を参照してください。
 
 Open ID Connect 要求の例を次に示します。
 
@@ -136,7 +143,7 @@ Open ID Connect 応答の例を次に示します。
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-この要求で使用できるクエリ文字列パラメーターについては、「[承認コードを使用してアクセス トークンを要求する](../active-directory/develop/active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)」を参照してください。
+この要求で使用できるクエリ文字列パラメーターについては、「[承認コードを使用してアクセス トークンを要求する](../active-directory/develop/v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)」を参照してください。
 
 パスワード資格情報を使用したコード付与トークンの要求の例を次に示します。
 
@@ -147,7 +154,7 @@ Open ID Connect 応答の例を次に示します。
 
     grant_type=authorization_code&code=AAABAAAAiL9Kn2Z*****L1nVMH3Z5ESiAA&redirect_uri=http%3A%2F%2Flocalhost%3A62080%2FAccount%2FSignIn&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-証明書資格情報を使用する場合は、JSON Web トークン (JWT) を作成し、アプリケーションの証明書資格情報の秘密キーを使用して署名 (RSA SHA256) します。 トークンの要求の種類については、「[JWT トークン要求](../active-directory/develop/active-directory-protocols-oauth-code.md#jwt-token-claims)」をご覧ください。 クライアント アサーション JWT トークンの署名については、 [Active Directory 認証ライブラリ (.NET) のコード](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) を参照してください。
+証明書資格情報を使用する場合は、JSON Web トークン (JWT) を作成し、アプリケーションの証明書資格情報の秘密キーを使用して署名 (RSA SHA256) します。 このトークンのビルドは、[クライアントの視覚情報フロー](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#second-case-access-token-request-with a-certificate)に示されます。  クライアント アサーション JWT トークンの署名については、 [Active Directory 認証ライブラリ (.NET) のコード](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) を参照してください。
 
 クライアント認証の詳細については、 [Open ID Connect 仕様](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) をご覧ください。
 
@@ -171,7 +178,7 @@ Open ID Connect 応答の例を次に示します。
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-更新要求で使用するパラメーターについては、「[アクセス トークンの更新](../active-directory/develop/active-directory-protocols-oauth-code.md#refreshing-the-access-tokens)」をご覧ください。
+更新要求で使用するパラメーターについては、「[アクセス トークンの更新](../active-directory/develop/v1-protocols-oauth-code.md#refreshing-the-access-tokens)」をご覧ください。
 
 次の例は、更新トークンの使用方法を示しています。
 
@@ -228,7 +235,7 @@ Azure Resource Manager のアクセス トークンしかないため、Azure AD
 
 ASP.NET MVC サンプル アプリケーションの [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) メソッドは、Active Directory Authentication Library for .NET を使用して、Graph API のアプリケーション専用アクセス トークンを取得します。
 
-この要求で使用できるクエリ文字列パラメーターについては、「[アクセス トークンを要求する](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#request-an-access-token)」を参照してください。
+この要求で使用できるクエリ文字列パラメーターについては、「[アクセス トークンを要求する](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#request-an-access-token)」を参照してください。
 
 クライアント資格情報付与トークンの要求の例を次に示します。
 
@@ -294,10 +301,10 @@ ASP.NET MVC サンプル アプリケーションの [GetRoleId](https://github.
 
 よく使用される組み込みロールの ID を次に示します。
 
-| 役割 | GUID |
+| Role | GUID |
 | --- | --- |
 | Reader |acdd72a7-3385-48ef-bd42-f606fba81ae7 |
-| 共同作成者 |b24988ac-6180-42a0-ab88-20f7382dd24c |
+| Contributor |b24988ac-6180-42a0-ab88-20f7382dd24c |
 | 仮想マシンの共同作業者 |d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 | 仮想ネットワークの共同作業者 |b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 | ストレージ アカウントの共同作業者 |86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
@@ -323,7 +330,7 @@ ASP.NET MVC サンプル アプリケーションの [GrantRoleToServicePrincipa
 
 この要求では、次の値が使用されています。
 
-| Guid | Description |
+| Guid | 説明 |
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |サブスクリプションの ID |
 | c3097b31-7309-4c59-b4e3-770f8406bad2 |アプリケーションのサービス プリンシパルのオブジェクト ID |

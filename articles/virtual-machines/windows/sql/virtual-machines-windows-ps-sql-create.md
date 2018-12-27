@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell を使用して SQL Server VM をプロビジョニングするためのガイド | Microsoft Docs"
-description: "SQL Server 仮想マシン ギャラリー のイメージを使用して Azure VM を作成するための手順と PowerShell コマンドを提供します。"
+title: Azure PowerShell を使用して SQL Server VM をプロビジョニングするためのガイド | Microsoft Docs
+description: SQL Server 仮想マシン ギャラリー のイメージを使用して Azure VM を作成するための手順と PowerShell コマンドを提供します。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
 ms.service: virtual-machines-sql
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 2f94cf2ab84179161c8d0a4f2ae6f73ded1d65c3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bb7a0b8c2d0511088282e180a108f8d925f0e4e8
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038628"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -31,10 +32,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-your-subscription"></a>サブスクリプションの構成
 
-1. PowerShell を開いて **Add-AzureRmAccount** コマンドを実行し、Azure アカウントにアクセスできる状態にします。
+1. PowerShell を開いて **Connect-AzureRmAccount** コマンドを実行し、Azure アカウントへのアクセスを確立します。
 
    ```PowerShell
-   Add-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 1. 資格情報を入力するためのサインイン画面が表示されます。 Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
@@ -120,7 +121,7 @@ $OSDiskName = $VMName + "OSDisk"
    ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-Resource Manager デプロイメント モデルで最初に作成するオブジェクトはリソース グループです。 ここでは [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドレットを使用して、Azure リソース グループとそのリソースを作成します。引数には、先ほど初期化した変数で定義したリソース グループの名前と場所を指定します。
+Resource Manager デプロイ モデルで最初に作成するオブジェクトはリソース グループです。 ここでは [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドレットを使用して、Azure リソース グループとそのリソースを作成します。引数には、先ほど初期化した変数で定義したリソース グループの名前と場所を指定します。
 
 次のコマンドレットを実行すると、新しいリソース グループが作成されます。
 
@@ -129,7 +130,7 @@ New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、ここではその両方の用途を兼ねた単一のディスクを作成します。 SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納する場合は、後から [Add-Azure Disk](/powershell/module/azure/add-azuredisk) コマンドレットを使用して別途ディスクを接続することができます。 ここでは [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、新しいリソース グループに Standard ストレージ アカウントを作成します。引数には、先ほど初期化した変数で定義したストレージ アカウント名、ストレージ SKU 名、場所を指定します。
+仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、ここではその両方の用途を兼ねた単一のディスクを作成します。 SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納する場合は、後から [Add-Azure Disk](/powershell/module/servicemanagement/azure/add-azuredisk) コマンドレットを使用して別途ディスクを接続することができます。 ここでは [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、新しいリソース グループに Standard ストレージ アカウントを作成します。引数には、先ほど初期化した変数で定義したストレージ アカウント名、ストレージ SKU 名、場所を指定します。
 
 次のコマンドレットを実行すると、新しいストレージ アカウントが作成されます。
 
@@ -246,7 +247,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>仮想マシンに使用するオペレーティング システムのプロパティ設定
-[Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) コマンドレットを使用して、仮想マシンで使用するオペレーティング システムのプロパティを指定します。オペレーティング システムの種類に Windows を指定し、[仮想マシン エージェント](../agent-user-guide.md)のインストールを要求すると共に、自動更新を有効にします。仮想マシン名、コンピューター名、資格情報は、先ほど初期化した変数で設定しています。
+[Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) コマンドレットを使用して、仮想マシンで使用するオペレーティング システムのプロパティを指定します。オペレーティング システムの種類に Windows を指定し、[仮想マシン エージェント](../../extensions/agent-windows.md)のインストールを要求すると共に、自動更新を有効にします。仮想マシン名、コンピューター名、資格情報は、先ほど初期化した変数で設定しています。
 
 次のコマンドレットを実行することで、仮想マシンに使用するオペレーティング システムのプロパティが設定されます。
 
@@ -327,7 +328,7 @@ Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 仮想マシンに関連付けらているすべてのリソースは、**Remove-AzureRmResourceGroup** コマンドを使用して完全に削除することもできます。 これを行うと仮想マシンも完全に削除されるため、このコマンドは注意して使用してください。
 
 ## <a name="example-script"></a>サンプル スクリプト
-このチュートリアルで使用した PowerShell スクリプト全体は、次のようになっています。 Azure サブスクリプションについては、既に **Add-AzureRmAccount** コマンドと **Select-AzureRmSubscription** コマンドでセットアップ済みであることを想定しています。
+このチュートリアルで使用した PowerShell スクリプト全体は、次のようになっています。 Azure サブスクリプションについては、既に **Connect-AzureRmAccount** コマンドと **Select-AzureRmSubscription** コマンドでセットアップ済みであることを想定しています。
 
 ```PowerShell
 # Variables

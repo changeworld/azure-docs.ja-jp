@@ -1,6 +1,6 @@
 
 # Azure の回復性
-## [Azure の回復性の機能に関するページ](http://azure.microsoft.com/features/resiliency)
+## [Azure の回復性の機能に関するページ](https://azure.microsoft.com/features/resiliency)
 ## [回復性に優れた Azure 用アプリケーションの設計](https://docs.microsoft.com/azure/architecture/resiliency/)
 
 # 高可用性
@@ -15,9 +15,9 @@
 #### [PowerShell を使用して可用性ゾーン内に Windows VM を作成する](../virtual-machines/windows/create-powershell-availability-zone.md)
 #### [Azure Portal を使用して可用性ゾーン内に Windows VM を作成する](../virtual-machines/windows/create-portal-availability-zone.md)
 
-### 管理ディスク
-#### [CLI を使用して可用性ゾーン内に管理ディスクを追加する](../virtual-machines/linux/add-disk.md#use-managed-disks)
-#### [PowerShell を使用して可用性ゾーン内に管理ディスクを追加する](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+### マネージド ディスク
+#### [CLI を使用して可用性ゾーン内にマネージド ディスクを追加する](../virtual-machines/linux/add-disk.md#use-managed-disks)
+#### [PowerShell を使用して可用性ゾーン内にマネージド ディスクを追加する](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 
 ### 仮想マシン スケール セット
 #### [可用性ゾーン内にスケール セットを作成する](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
@@ -38,10 +38,22 @@
 ### [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 ### SQL Database
-#### [SQL Database での可用性ゾーン](../sql-database/sql-database-high-availability.md#availability-zones)
+#### [SQL Database での可用性ゾーン](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 
 ### Storage
 #### [ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md)
+
+### Event Hubs
+#### [Event Hubs の geo ディザスター リカバリー](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
+
+### Service Bus
+#### [Service Bus の geo ディザスター リカバリー](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
+
+### VPN Gateway
+#### [ゾーン冗長仮想ネットワーク ゲートウェイの作成](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+
+### ExpressRoute
+#### [ゾーン冗長仮想ネットワーク ゲートウェイの作成](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 
 # ディザスター リカバリー
 ## [Azure Site Recovery の使用](https://docs.microsoft.com/azure/site-recovery/)

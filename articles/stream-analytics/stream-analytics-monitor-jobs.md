@@ -1,24 +1,20 @@
 ---
-title: Stream Analytics のジョブをプログラムで監視する | Microsoft Docs
-description: REST API、Azure SDK、または PowerShell を介して作成された Stream Analytics ジョブをプログラムで監視する方法の詳細について説明します。
-keywords: .net モニター、ジョブ モニター、監視アプリ
+title: Azure Stream Analytics ジョブをプログラムで監視および管理する
+description: この記事では、REST API、Azure SDK、または PowerShell を介して作成された Stream Analytics ジョブをプログラムで監視する方法について詳しく説明します。
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 2ec02cc9-4ca5-4a25-ae60-c44be9ad4835
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: a619120b2d30284633ba5248edd0b82bb1bf656b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: fac56117c4c70e2735580abb52d05e008d660003
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089418"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics ジョブ モニターをプログラムで作成する
 
@@ -37,14 +33,14 @@ ms.lasthandoff: 03/30/2018
 1. Visual Studio C# .NET コンソール アプリケーションを作成します。
 2. パッケージ マネージャー コンソールで、次のコマンドを実行して NuGet パッケージをインストールします。 1 つ目は、Azure Stream Analytics 管理用 .NET SDK です。 2 つ目は、監視を有効にするために使用される Azure Monitor SDK です。 最後の 1 つは、認証で使用する Azure Active Directory クライアントです。
    
-   ```
+   ```powershell
    Install-Package Microsoft.Azure.Management.StreamAnalytics
    Install-Package Microsoft.Azure.Insights -Pre
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
 3. 次の appSettings セクションを App.config ファイルに追加します。
    
-   ```
+   ```csharp
    <appSettings>
      <!--CSM Prod related values-->
      <add key="ResourceGroupName" value="RESOURCE GROUP NAME" />
@@ -61,12 +57,12 @@ ms.lasthandoff: 03/30/2018
    ```
    *SubscriptionId* および *ActiveDirectoryTenantId* の値を Azure サブスクリプションとテナント ID に置き換えます。 次の PowerShell コマンドレットを実行すると、これらの値を取得できます。
    
-   ```
+   ```powershell
    Get-AzureAccount
    ```
 4. 次の using ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
    
-   ```
+   ```csharp
      using System;
      using System.Configuration;
      using System.Threading;
@@ -78,7 +74,8 @@ ms.lasthandoff: 03/30/2018
      using Microsoft.IdentityModel.Clients.ActiveDirectory;
    ```
 5. 認証ヘルパー メソッドを追加します。
-   
+
+```csharp   
      public static string GetAuthorizationHeader()
    
          {
@@ -115,11 +112,13 @@ ms.lasthandoff: 03/30/2018
    
              throw new InvalidOperationException("Failed to acquire token");
      }
+```
 
 ## <a name="create-management-clients"></a>管理クライアントの作成
 
 次のコードは、必要な変数と管理クライアントをセットアップします。
 
+```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
     string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
 
@@ -137,6 +136,7 @@ ms.lasthandoff: 03/30/2018
     StreamAnalyticsManagementClient(aadTokenCredentials, resourceManagerUri);
     InsightsManagementClient insightsClient = new
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
+```
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>既存の Stream Analytics ジョブに対する監視の有効化
 
@@ -152,7 +152,7 @@ ms.lasthandoff: 03/30/2018
 > 次のコードにある `<YOUR STORAGE ACCOUNT NAME>` の置き換えに使用するストレージ アカウント名は、監視を有効にする Stream Analytics ジョブと同じサブスクリプション内にあるストレージ アカウントにする必要があります。
 > 
 > 
-
+```csharp
     // Get an existing Stream Analytics job
     JobGetParameters jobGetParameters = new JobGetParameters()
     {
@@ -169,12 +169,12 @@ ms.lasthandoff: 03/30/2018
             }
     };
     insightsClient.ServiceDiagnosticSettingsOperations.Put(jobGetResponse.Job.Id, insightPutParameters);
-
+```
 
 
 ## <a name="get-support"></a>サポートを受ける
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

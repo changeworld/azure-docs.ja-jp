@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center クイックスタート - Azure サブスクリプションでの Security Center Standard の利用開始 | Microsoft Docs"
-description: "このクイックスタートでは、セキュリティを強化するために Security Center の Standard 価格レベルにアップグレードする方法を示します。"
+title: Azure Security Center クイックスタート - Azure サブスクリプションでの Security Center Standard の利用開始 | Microsoft Docs
+description: このクイックスタートでは、セキュリティを強化するために Security Center の Standard 価格レベルにアップグレードする方法を示します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -13,16 +13,17 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: 0004db332ec13e23ed49f2c19e3454a516ca6a40
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.date: 12/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: 8a0467a383e2c8e3efab685187c5a37d1549f664
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838167"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始
-Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は最初の 60 日間、無料でお試しいただけます。
+Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 この記事では、セキュリティを強化するために Standard レベルにアップグレードし、仮想マシンに Microsoft Monitoring Agent をインストールしてセキュリティの脆弱性と脅威を監視します。
 
@@ -45,27 +46,25 @@ Azure Security Center は、ハイブリッド クラウド ワークロード�
 Security Center を初めて起動してから数分以内に、以下の項目が表示されます。
 
 - Azure サブスクリプションのセキュリティを向上させる方法についての**推奨事項**。 **[推奨事項]** タイルをクリックすると優先順位が付けられた一覧が起動します。
-- Security Center によって現在評価されている**[計算]**、**[ネットワーク]**、**[ストレージおよびデータ]**、**[アプリケーション]** の各リソースとそれぞれのセキュリティ対策のインベントリ。
+- Security Center によって現在評価されている **[計算とアプリ]**、**[ネットワーク]**、**[データのセキュリティ]**、**[ID およびアクセス]** の各リソースとそれぞれのセキュリティ対策のインベントリ。
 
 Security Center をフルに活用するには、次の手順に従って Standard レベルにアップグレードし、Microsoft Monitoring Agent をインストールする必要があります。
 
 ## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
-Security Center のクイックスタートおよびチュートリアルの目的上、Standard レベルにアップグレードする必要があります。 最初の 60 日間は無料で、いつでも Free レベルに戻すことができます。
+Security Center のクイックスタートおよびチュートリアルの目的上、Standard レベルにアップグレードする必要があります。 Security Center Standard には無料試用版があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 
 
-1. Security Center のメイン メニューで、**[高度なセキュリティへのオンボード]** を選択します。
+1. Security Center メイン メニューの **[使用の開始]** を選択します。
+ 
+  ![作業開始][4]
 
-2. Security Center の **[高度なセキュリティへのオンボード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 一覧からサブスクリプションを選択します。
+2. Security Center の **[アップグレード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 
+   - 展開可能な **[Apply your trial] (試用版を適用)** をクリックすると、すべてのサブスクリプションとワークスペースの一覧を各試用版の資格の状態と共に表示できます。
+   -    試用版の対象にならないサブスクリプションとワークスペースをアップグレードできます。
+   -    対象となるワークスペースとサブスクリプションを選択すると、ご自身の試用版を開始できます。
+3.  **[無料体験する]** をクリックして、選択したサブスクリプションでご自身の試用版を開始します。
 
-  ![サブスクリプションの選択][4]
 
-3. **[セキュリティ ポリシー]** に、そのサブスクリプションに含まれるリソース グループの情報が表示されます。 **[価格]** も開きます。
-4. **[価格]** で **[Standard]** を選択して、Free から Standard にアップグレードし、**[保存]** をクリックします。
-
-  ![[Standard] の選択][5]
-
-これで Standard レベルにアップグレードされました。**適応型アプリケーション制御**、**Just In Time VM アクセス**、**セキュリティの警告**、**脅威インテリジェンス**、**自動プレイブック**などの追加の Security Center 機能にアクセスできます。 セキュリティの警告は、Security Center が悪意のあるアクティビティを検出した場合にのみ表示されます。
-
-  ![セキュリティのアラート][7]
+  ![セキュリティのアラート][9]
 
 ## <a name="automate-data-collection"></a>自動データ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure VM と非 Azure コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 既定では、Security Center によって新しいワークスペースが作成されます。
@@ -75,11 +74,10 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 Microsoft Monitoring Agent の自動プロビジョニングを有効にするには、次の手順に従います。
 
 1. Security Center のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
-2. サブスクリプションを選択します。
-3. **[セキュリティ ポリシー]** で **[データ収集]** を選択します。
-4. **[データ収集]** の **[オン]** を選択して、自動プロビジョニングを有効にします。
-5. **[保存]** を選択します。
-
+2. サブスクリプションの行で、**[設定の編集>]** を選択します。
+3. **[データ収集]** タブで、**[自動プロビジョニング]** を **[オン]** に設定します。
+4. **[保存]** を選択します。
+****
   ![自動プロビジョニングを有効にする][6]
 
 Azure VM のこの新たな洞察により、Security Center は、システムの更新状態、OS セキュリティ構成、エンドポイント保護に関連する追加の推奨事項を提供し、追加のセキュリティ警告を生成できます。
@@ -90,16 +88,15 @@ Azure VM のこの新たな洞察により、Security Center は、システム�
 このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き次のクイックスタートとチュートリアルを行う予定の場合、Standard レベルの実行を継続して、自動プロビジョニングを有効のままにしてください。 続行しないまたは Free レベルに戻したい場合:
 
 1. Security Center のメイン メニューに戻り、**[セキュリティ ポリシー]** を選択します。
-2. Free に戻したいサブスクリプションまたはポリシーを選択します。 **[セキュリティ ポリシー]** が開きます。
-3. **[ポリシー コンポーネント]** で、**[価格レベル]** を選択します。
-4. **[Free]** を選択して、Standard レベルから Free レベルにサブスクリプションを変更します。
+2. Free に戻すサブスクリプションの行で、**[設定の編集>]** を選択します。
+3. **[価格レベル]**、**[Free]** の順に選択して、Standard レベルから Free レベルにサブスクリプションを変更します。
 5. **[保存]** を選択します。
 
 自動プロビジョニングを無効にする場合:
 
 1. Security Center のメイン メニューに戻り、**[セキュリティ ポリシー]** を選択します。
-2. 自動プロビジョニングを無効にするサブスクリプションを選択します。
-3. **[セキュリティ ポリシー - データ収集]** で、**[オンボード]** の **[オフ]** を選択して、自動プロビジョニングを無効にします。
+2. 自動プロビジョニングを無効にするサブスクリプションの行で、**[設定の編集>]** を選択します。
+3. **[データ収集]** タブで、**[自動プロビジョニング]** を **[オフ]** に設定します。
 4. **[保存]** を選択します。
 
 >[!NOTE]
@@ -114,8 +111,9 @@ Azure VM のこの新たな洞察により、Security Center は、システム�
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png
-[4]: ./media/security-center-get-started/onboarding.png
+[4]: ./media/security-center-get-started/get-started.png
 [5]: ./media/security-center-get-started/pricing.png
 [6]: ./media/security-center-get-started/enable-automatic-provisioning.png
 [7]: ./media/security-center-get-started/security-alerts.png
 [8]: ./media/security-center-get-started/recommendations.png
+[9]: ./media/security-center-get-started/select-subscription.png

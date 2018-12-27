@@ -1,5 +1,17 @@
-
-1. [Azure CLI 1.0 からの Azureへの接続](/cli/azure/authenticate-azure-cli)に関する記事で示されている手順を使用して、Azure サブスクリプションにサインインします。
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: ae29451e3f7ec263f296e69656a5c66045334687
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226973"
+---
+1. [Azure クラシック CLI からの Azureへの接続](/cli/azure/authenticate-azure-cli)に関する記事で示されている手順を使用して、Azure サブスクリプションにサインインします。
 
 2. 以下を使用して、クラシック デプロイ モードであることを確認します。
 
@@ -51,6 +63,6 @@
     azure vm start myVM
     ```
 
-## <a name="next-steps"></a>次のステップ
-これらすべての Azure CLI 1.0 仮想マシン コマンドについて詳しくは、[クラシック デプロイメント API での Azure CLI 1.0 コマンドの使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)に関する記事をご覧ください。
+## <a name="next-steps"></a>次の手順
+これらすべての Azure クラシック CLI 仮想マシン コマンドの詳細については、[クラシック デプロイ API での Azure クラシック CLI コマンドの使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)に関するページをご覧ください。
 

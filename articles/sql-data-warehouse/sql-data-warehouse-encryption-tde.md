@@ -1,25 +1,21 @@
 ---
-title: "SQL Data Warehouse での Transparent Data Encryption (ポータル) | Microsoft Docs"
-description: "SQL Data Warehouse での Transparent Data Encryption (TDE)"
+title: SQL Data Warehouse での Transparent Data Encryption (ポータル) | Microsoft Docs
+description: SQL Data Warehouse での Transparent Data Encryption (TDE)
 services: sql-data-warehouse
-documentationcenter: 
-author: ronortloff
-manager: jhubbard
-editor: 
-ms.assetid: fabf75d3-9bbf-4e0d-9b31-8b5a8713f08d
+author: kavithaj
+manager: craigg
 ms.service: sql-data-warehouse
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.custom: security
-ms.date: 10/31/2016
-ms.author: rortloff;barbkess
-ms.openlocfilehash: b1db3bdfdfb54bda325c9b971cfcb4dd5efa333a
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: e641ddb5360c18b5977fb79de41334d4216c2b90
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306189"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>SQL Data Warehouse での Transparent Data Encryption (TDE) の概要
 > [!div class="op_single_selector"]

@@ -1,33 +1,20 @@
 ---
-title: "Azure DNS での DNS レコード セットとレコードの管理 | Microsoft Docs"
-description: "Azure DNS には、ドメインをホストしている場合に、DNS レコード セットとレコードを管理する機能が用意されています。"
+title: Azure DNS で DNS レコード セットとレコードを管理する
+description: Azure DNS には、ドメインをホストしている場合に、DNS レコード セットとレコードを管理する機能が用意されています。
 services: dns
-documentationcenter: na
-author: georgewallace
-manager: timlt
-editor: 
-tags: azure-resource-manager
-ms.assetid: 18ed44a1-7bfe-454f-964e-922ad978264a
+author: vhorne
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/16/2016
-ms.author: gwallace
-ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 10/6/2018
+ms.author: victorh
+ms.openlocfilehash: 891adfacde6e46b1d8fe8e2f6b5fb39c90ce27a0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853710"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure ポータルを使用した DNS レコードとレコード セットの管理
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
-> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
-> * [PowerShell](dns-operations-recordsets.md)
 
 この記事では、Azure ポータルを使用して DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
 
@@ -94,10 +81,10 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 1. レコード セットの **[Record set properties (レコード セットのプロパティ)]** ブレードで、**[削除]** をクリックします。
 
-    ![レコード セットの削除](./media/dns-operations-recordsets-portal/deleterecordset500.png)
+    ![レコード セットの削除](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
 
 2. レコード セットを削除してもよいかを確認するメッセージが表示されます。
-3. 削除するレコード セットの名前が正しいことを確認し、 **[はい]**をクリックします。
+3. 削除するレコード セットの名前が正しいことを確認し、 **[はい]** をクリックします。
 4. **DNS ゾーン** のブレードで、レコード セットが表示されなくなっていることを確認します。
 
 ## <a name="work-with-ns-and-soa-records"></a>NS レコードと SOA レコードを使用する
@@ -106,7 +93,7 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 ### <a name="modify-soa-records"></a>SOA レコードを変更する
 
-ゾーンの頂点 (名前は "\@\") に自動的に作成された SOA レコード セットのレコードを追加または削除することはできません。 ただし、("ホスト" を除く) SOA レコードおよびレコード セットの TTL 内のパラメーターを変更することはできます。
+ゾーンの頂点 (名前は "\@") に自動的に作成された SOA レコード セットのレコードを追加または削除することはできません。 ただし、("ホスト" を除く) SOA レコードおよびレコード セットの TTL 内のパラメーターを変更することはできます。
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>ゾーンの頂点にある NS レコードを変更する
 
@@ -118,10 +105,11 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 ### <a name="delete-soa-or-ns-record-sets"></a>SOA レコード セットまたは NS レコード セットを削除する
 
-ゾーンの作成時に自動的に作成される、ゾーンの頂点 (名前は "\@\"\) の SOA および NS レコード セットは削除できません。 ゾーンを削除すると、自動的に削除されます。
+ゾーンの作成時に自動的に作成される、ゾーンの頂点 (名前は "\@") の SOA および NS レコード セットは削除できません。 ゾーンを削除すると、自動的に削除されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure DNS の詳細については、「 [Azure DNS の概要](dns-overview.md)」を参照してください。
 * DNS 作成の自動化については、「 [.NET SDK を使用した DNS ゾーンとレコード セットの作成](dns-sdk.md)」を参照してください。
 * 逆引き DNS レコードについて詳しくは、「[逆引き DNS と Azure でのサポートの概要](dns-reverse-dns-overview.md)」をご覧ください。
+* Azure DNS エイリアス レコードの詳細については、「[Azure DNS エイリアス レコードの概要](dns-alias.md)」を参照してください。

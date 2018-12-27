@@ -1,23 +1,18 @@
 ---
-title: Azure Cosmos DB のデータへのアクセスをセキュリティで保護する方法 | Microsoft Docs
+title: Azure Cosmos DB のデータへのアクセスをセキュリティで保護する方法
 description: マスター キー、読み取り専用キー、ユーザー、アクセス許可など、Azure Cosmos DB のアクセス制御の概念について説明します。
 services: cosmos-db
-author: SnehaGunda
-manager: kfile
-documentationcenter: ''
-ms.assetid: 8641225d-e839-4ba6-a6fd-d6314ae3a51c
+author: rafats
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/24/2017
-ms.author: sngun
-ms.openlocfilehash: 7a53dda7d6b49187d77ca44bcb55db5f9c305f64
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.topic: conceptual
+ms.date: 08/19/2018
+ms.author: rafats
+ms.openlocfilehash: 1d1bc011de579588567fac3debe9d0b4af5d29f7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878349"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB データへのアクセスのセキュリティ保護
 この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
@@ -27,7 +22,7 @@ Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証�
 |キーの種類|リソース|
 |---|---|
 |[マスター キー](#master-keys) |次の管理リソースで使用されます。データベース アカウント、データベース、ユーザー、およびアクセス許可|
-|[リソース トークン](#resource-tokens)|次のアプリケーション リソースで使用されます。コレクション、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、および UDF|
+|[リソース トークン](#resource-tokens)|次のアプリケーション リソースで使用されます。コンテナー、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、UDF|
 
 <a id="master-keys"></a>
 
@@ -35,7 +30,7 @@ Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証�
 
 マスター キーは、データベース アカウントのすべての管理リソースへのアクセスを提供します。 マスター キー:  
 - アカウント、データベース、ユーザー、およびアクセス許可へのアクセスを提供します。 
-- コレクションとドキュメントへのきめ細かいアクセスを提供するために使用することはできません。
+- コンテナーとドキュメントへのきめ細かいアクセスを提供するために使用することはできません。
 - アカウントの作成時に作成されます。
 - いつでも再生成することができます。
 
@@ -43,7 +38,7 @@ Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証�
 
 Cosmos DB アカウント用の 2 つのマスター キーに加えて、2 つの読み取り専用キーがあります。 これらの読み取り専用キーは、アカウントの読み取り操作のみを許可します。 読み取り専用キーは、アクセス許可リソースを読み取るためのアクセスを提供しません。
 
-プライマリ、セカンダリ、読み取り専用、および読み取り/書き込みのマスター キーは、Azure Portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-account.md#keys)」を参照してください。
+プライマリ、セカンダリ、読み取り専用、および読み取り/書き込みのマスター キーは、Azure Portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#regenerate-account-key)」を参照してください。
 
 ![Azure Portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティ](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
@@ -78,7 +73,7 @@ Database database = await client.CreateDatabaseAsync(
 ## <a name="resource-tokens"></a>リソース トークン
 
 リソース トークンは、データベース内のアプリケーション リソースへのアクセスを提供します。 リソース トークン:
-- コレクション、パーティション キー、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、UDF へのアクセスを提供します。
+- コンテナー、パーティション キー、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、UDF へのアクセスを提供します。
 - [ユーザー](#users)が特定のリソースへの[アクセス許可](#permissions)を付与されたときに作成されます。
 - アクセス許可リソースが POST、GET、または PUT 呼び出しで動作するときに作成されます。
 - ユーザー、リソース、およびアクセス許可用に特別に構築されたハッシュ リソース トークンを使用します。
@@ -133,11 +128,11 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 Cosmos DB アクセス許可リソースは Cosmos DB ユーザーに関連付けられています。  各ユーザーは、0 個以上の Cosmos DB アクセス許可を持つ可能性があります。  アクセス許可リソースは、特定のアプリケーション リソースにアクセスするときに必要なセキュリティ トークンへのアクセスを提供します。
 アクセス許可リソースによって提供できるアクセス レベルは 2 つあります。
 
-* All: ユーザーはリソースに対して完全なアクセス許可を持ちます。
-* Read: ユーザーは、リソースの内容を読み取りのみができますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
+* All:ユーザーはリソースに対して完全なアクセス許可を持ちます。
+* Read:ユーザーは、リソースの内容の読み取りのみを行えますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
 
 > [!NOTE]
-> Cosmos DB ストアド プロシージャを実行するには、ストアド プロシージャを実行するコレクションの All 権限を持つ必要があります。
+> Cosmos DB ストアド プロシージャを実行するには、ストアド プロシージャを実行するコンテナーの All 権限を持つ必要があります。
 > 
 > 
 
@@ -178,7 +173,25 @@ foreach (Permission perm in permFeed)
 DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
 
+## <a name="add-users-and-assign-roles"></a>ユーザーの追加とロールの割り当てを行う
+
+ユーザー アカウントに Azure Cosmos DB アカウントの閲覧者アクセス権を追加するには、サブスクリプションの所有者が Azure Portal で以下の手順を実行します。
+
+1. Azure Portal を開き、Azure Cosmos DB アカウントを選択します。
+2. **[アクセス制御 (IAM)]** タブをクリックし、**[+ ロール割り当ての追加]** をクリックします。
+3. **[ロール割り当ての追加]** ウィンドウの **[ロール]** ボックスで、**[Cosmos DB アカウントの閲覧者ロール]** を選択します。
+4. **[アクセスの割り当て先]** ボックスで、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。
+5. ディレクトリで、アクセス権を付与するユーザー、グループ、またはアプリケーションを選択します。  ディレクトリは、表示名、電子メール アドレス、およびオブジェクト識別子を使用して検索できます。
+    選択したメンバー、グループ、またはアプリケーションが、選択したメンバー一覧に表示されます。
+6. **[Save]** をクリックします。
+
+そのエンティティが Azure Cosmos DB リソースを閲覧できるようになります。
+
+## <a name="delete-or-export-user-data"></a>ユーザー データの削除またはエクスポート
+Azure Cosmos DB では、データベースまたはコレクションにあるすべての個人データを、検索、選択、変更、削除することができます。 Azure Cosmos DB には、個人データを検索および削除する API があります。しかし、個人データを消去する API を使用してロジックを定義するのはユーザーの責任です。 各マルチモデル API (SQL API、MongoDB API、Gremlin API、Cassandra API、Table API) では、個人データを検索および削除するメソッドを含む SDK をさまざまな言語で提供しています。 [Time to Live (TTL)](time-to-live.md) 機能を有効にすると、追加のコストの発生なしに、指定した期間後に自動的にデータを削除するようにすることもできます。
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
+
 ## <a name="next-steps"></a>次の手順
-* Cosmos DB データベースのセキュリティの詳細については、[Cosmos DB: データベースのセキュリティ](database-security.md)に関するページをご覧ください。
-* マスター キーと読み取り専用キーの詳細については、[Azure Cosmos DB アカウントの管理方法](manage-account.md#keys)に関するページをご覧ください。
+* Cosmos DB データベースのセキュリティの詳細については、[Cosmos DB:データベースのセキュリティ](database-security.md)に関するページを参照してください。
 * Azure Cosmos DB 認証トークンを作成する方法については、[Azure Cosmos DB リソースのアクセス制御](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページをご覧ください。

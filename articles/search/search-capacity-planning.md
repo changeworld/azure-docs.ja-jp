@@ -1,30 +1,24 @@
 ---
-title: "Azure Search の容量計画 | Microsoft Docs"
-description: "Azure Search のパーティションとレプリカのコンピューティング リソースを調整します。各リソースは課金対象の検索単位で価格設定されます。"
-services: search
-documentationcenter: 
+title: Azure Search でクエリおよびインデックス作成のためのパーティションとレプリカを割り当てる | Microsoft Docs
+description: Azure Search のパーティションとレプリカのコンピューティング リソースを調整します。各リソースは課金対象の検索単位で価格設定されます。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 1dc16afe-56f9-439d-8874-1733ae1a2b74
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 47dcd5366ef8ba3d4598e6d418b11997c61bddea
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fa1a13c5c786867f6e92a678c40a491e0a226076
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238738"
 ---
-# <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Azure Search でクエリとインデックス作成のワークロードに応じてリソース レベルをスケールする
+# <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Azure Search でクエリとインデックス作成のワークロードに応じてパーティションとレプリカを割り当てる
 [価格レベルを選択](search-sku-tier.md)して [Search サービスをプロビジョニング](search-create-service-portal.md)したら、サービスで使用するレプリカまたはパーティションの数を必要に応じて増やします。 各レベルには固定された請求単位数が用意されています。 この記事では、こうした請求単位を、クエリの実行、インデックス作成、およびストレージの要件のバランスを考慮しながら割り当てて、最適な構成を実現する方法について説明します。
 
-[Basic レベル](http://aka.ms/azuresearchbasic)または [Standard レベル](search-limits-quotas-capacity.md)のいずれかでサービスを設定すると、リソース構成を使用できます。 このレベルのサービスでは、容量は "*検索単位*" (SU) ごとに購入します。各パーティションとレプリカは 1 SU としてカウントします。 
+[Basic レベル](https://aka.ms/azuresearchbasic)または [Standard レベル](search-limits-quotas-capacity.md)のいずれかでサービスを設定すると、リソース構成を使用できます。 このレベルのサービスでは、容量は "*検索単位*" (SU) ごとに購入します。各パーティションとレプリカは 1 SU としてカウントします。 
 
 使用する SU が少なければ、課金される金額もそれに応じて少なくなります。 課金は、サービスが設定されている間、有効になっています。 サービスを一時的に使用しない場合、課金を回避する唯一の方法は、サービスを削除し、必要なときに再作成することです。
 
@@ -63,7 +57,7 @@ Azure Search では最初に、1 つのパーティションと 1 つのレプ�
 <a id="HA"></a>
 
 ## <a name="high-availability"></a>高可用性
-通常、簡単かつ比較的速くスケールアップできるため、1 つのパーティションと 1 ～ 2 つのレプリカで開始し、クエリ数の増加に合わせてスケールアップルすことをお勧めします。 クエリのワークロードは主にレプリカ上で実行されます。 より高いスループットまたは高可用性のためには、レプリカの追加が必要となります。
+通常、簡単かつ比較的速くスケールアップできるため、1 つのパーティションと 1 ～ 2 つのレプリカで開始し、クエリ数の増加に合わせてスケールアップすることをお勧めします。 クエリのワークロードは主にレプリカ上で実行されます。 より高いスループットまたは高可用性のためには、レプリカの追加が必要となります。
 
 高可用性のための一般的な推奨事項は次のとおりです。
 
@@ -83,7 +77,7 @@ Azure Search の高可用性は、クエリのほか、インデックスの再�
 
 再構築中にインデックスの可用性を維持するには、同じサービスに対してインデックスのコピーを別の名前で用意するか、別のサービスに対してインデックスのコピーを同じ名前で用意したうえで、コードにリダイレクトまたはフェールオーバーのロジックを記述する必要があります。
 
-## <a name="disaster-recovery"></a>ディザスター リカバリー
+## <a name="disaster-recovery"></a>障害復旧
 現時点では、障害復旧のための組み込みのメカニズムはありません。 追加のパーティションまたはレプリカは、ディザスター リカバリーの目標を達成する手段として適切ではありません。 最も一般的なアプローチでは、別のリージョンにもう 1 つの検索サービスを設定することで、そのサービス レベルに冗長性を追加します。 インデックスの再構築中の可用性の場合と同様に、リダイレクトまたはフェールオーバーのロジックをコードに用意する必要があります。
 
 ## <a name="increase-query-performance-with-replicas"></a>レプリカでクエリ パフォーマンスを向上させる

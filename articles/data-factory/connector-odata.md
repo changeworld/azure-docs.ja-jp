@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory を使用して OData ソースからデータをコピーする | Microsoft Docs
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、OData ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ODBC ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,52 +10,51 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d1de8baf725233bee30a14eca770e4f04e7a70b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c8bee6902fb74cb77c34395fd05c1c861b4f630e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166136"
 ---
-# <a name="copy-data-from-odata-source-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
+# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-odata-connector.md)
-> * [バージョン 2 - プレビュー](connector-odata.md)
+> * [Version 1](v1/data-factory-odata-connector.md)
+> * [現在のバージョン](connector-odata.md)
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、OData ソースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の OData コネクタ](v1/data-factory-odata-connector.md)に関する記事を参照してください。
+この記事では、Azure Data Factory のコピー アクティビティを使用して OData ソースからデータをコピーする方法の概要について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-OData ソースから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+OData ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
 
 具体的には、この OData コネクタは以下をサポートします。
 
-- OData **バージョン 3.0 および 4.0**。
-- 次の認証を使用したデータのコピー: **匿名**、**基本**、および **Windows**。
+- OData バージョン 3.0 および 4.0。
+- **匿名**、**基本**、**Windows** のいずれかの認証を使用したデータのコピー。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="get-started"></a>作業開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-次のセクションでは、OData コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
+以降のセクションでは、OData コネクタに固有の Data Factory エンティティを定義するために使用できるプロパティについて詳細に説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
 OData のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **OData** |[はい] |
-| url | OData サービスの ルート URL。 |[はい] |
-| authenticationType | OData ソースへの接続に使用される認証の種類です。<br/>使用可能な値: **Anonymous**、**Basic**、**Windows**。 OAuth はサポートされません。 | [はい] |
-| userName | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ  |
-| password | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+| type | **type** プロパティは **OData** に設定する必要があります。 |[はい] |
+| url | OData サービスのルート URL。 |[はい] |
+| authenticationType | OData ソースに接続するために使用される認証の種類。 使用できる値は **Anonymous**、**Basic**、および **Windows** です。 OAuth はサポートされていません。 | [はい] |
+| userName | 基本認証または Windows 認証を使用する場合は、**userName** を指定します。 | いいえ  |
+| password | **userName** に指定したユーザー アカウントの **password** を指定します。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ  |
+| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを選択できます (データ ストアがプライベート ネットワークに配置されている場合)。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ  |
 
 **例 1: 匿名認証の使用**
 
@@ -86,7 +85,7 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
         "typeProperties": {
             "url": "<endpoint of OData source>",
             "authenticationType": "Basic",
-            "userName": "<username>",
+            "userName": "<user name>",
             "password": {
                 "type": "SecureString",
                 "value": "<password>"
@@ -126,14 +125,16 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、OData データセット でサポートされるプロパティの一覧を示します。
+このセクションでは、OData データセットでサポートされているプロパティの一覧を示します。
 
-OData からデータをコピーするには、データセットの type プロパティを **ODataResource** に設定します。 次のプロパティがサポートされています。
+データセットの定義に使用できるセクションとプロパティの完全な一覧については、「[データセットとリンクされたサービス](concepts-datasets-linked-services.md)」を参照してください。 
 
-| プロパティ | [説明] | 必須 |
+OData からデータをコピーするには、データセットの **type** プロパティを **ODataResource** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **ODataResource** に設定する必要があります。 | [はい] |
-| パス | OData リソースへのパス。 | いいえ  |
+| type | データセットの **type** プロパティは **ODataResource** に設定する必要があります。 | [はい] |
+| path | OData リソースへのパス。 | [はい] |
 
 **例**
 
@@ -157,18 +158,20 @@ OData からデータをコピーするには、データセットの type プ�
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、OData ソースでサポートされるプロパティの一覧を示します。
+このセクションでは、OData ソースでサポートされているプロパティの一覧を示します。
+
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 
 
 ### <a name="odata-as-source"></a>ソースとしての OData
 
-OData からデータをコピーするには、コピー アクティビティのソース タイプを **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+OData からデータをコピーするには、コピー アクティビティの **source** の種類を **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
-| クエリ | データをフィルター処理するための OData クエリ オプション。 例: "?$select=Name,Description&$top=5"。<br/><br/>最終的に、OData コネクタは、結合された URL からデータをコピーします: `[url specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 [OData の URL コンポーネント](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関する記事を参照してください。 | いいえ  |
+| type | コピー アクティビティのソースの **type** プロパティは **RelationalSource** に設定する必要があります。 | [はい] |
+| query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**注**: OData コネクタは、次の結合された URL からデータをコピーします`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 詳細については、[OData の URL コンポーネント](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ  |
 
-**例:**
+**例**
 
 ```json
 "activities":[
@@ -202,7 +205,7 @@ OData からデータをコピーするには、コピー アクティビティ�
 
 ## <a name="data-type-mapping-for-odata"></a>OData のデータ型マッピング
 
-OData からデータをコピーするとき、次の OData のデータ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+OData からデータをコピーする場合は、OData のデータ型と Azure Data Factory の中間データ型の間で次のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされる方法の詳細については、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関するページを参照してください。
 
 | OData のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
@@ -222,9 +225,10 @@ OData からデータをコピーするとき、次の OData のデータ型か�
 | Edm.Time | timespan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
-> [!Note]
-> OData の複雑なデータ型 (オブジェクト型など) はサポートされません。
+> [!NOTE]
+> OData の複雑なデータ型 (**Object** など) はサポートされていません。
 
 
 ## <a name="next-steps"></a>次の手順
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md##supported-data-stores-and-formats)」を参照してください。

@@ -1,26 +1,23 @@
 ---
 title: XSLT マップを使用した XML 変換 - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps と Enterprise Integration Pack を使用して XML データを変換する XSLT マップを追加する
+description: Enterprise Integration Pack を備えた Azure Logic Apps で XML を変換する XSLT マップを追加します
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: anneta
-editor: cgronlun
-ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 4b4d626028eed09e9ce6a45fa8fa69859c082da7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c5e5e0a0a3f8bd5feedc00d5bbfb76a1453ccc84
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123558"
 ---
-# <a name="add-maps-for-xml-data-transform"></a>XML データ変換のためのマップを追加する
+# <a name="add-maps-for-xml-transformation-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps で XML 変換のためのマップを追加する
 
 エンタープライズ統合では、マップを使用して XML データを別の形式に変換します。 マップとは、ドキュメント内のどのデータを別の形式に変換するかを定義する XML ドキュメントです。 
 

@@ -1,28 +1,24 @@
 ---
-title: "Linux での Azure Files に関する問題のトラブルシューティング | Microsoft Docs"
-description: "Linux での Azure Files に関する問題のトラブルシューティング"
+title: Linux での Azure Files に関する問題のトラブルシューティング | Microsoft Docs
+description: Linux での Azure Files に関する問題のトラブルシューティング
 services: storage
-documentationcenter: 
-author: genlin
-manager: willchen
-editor: na
+author: jeffpatt24
 tags: storage
 ms.service: storage
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
-ms.author: genli
-ms.openlocfilehash: 8fd09c748786f0bfe070c3f41201eddc3d272116
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.date: 10/16/2018
+ms.author: jeffpatt
+ms.component: files
+ms.openlocfilehash: 2ae116649de02c5602aa50d706f6a88ac5872960
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025856"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
-この記事では、Linux クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。
+この記事では、Linux クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) を使って Linux クライアントが前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有の トラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>ファイルを開こうとしたときの "[アクセス許可が拒否されました] ディスク クォータを超えました"
@@ -42,11 +38,11 @@ Linux では、次のようなエラー メッセージが表示されます。
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Linux で Azure Files との間でのファイルのコピーが遅い
 
--   特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MB を使用することをお勧めします。
--   書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題が発生しない場合は、書き込みごとにサイズを増やすのではなく、事前にファイル サイズを設定します。
--   次のように適切なコピー方法を使用します。
-    -   2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
-    -   オンプレミス コンピューター上のファイル共有間では、[Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) を使用します。
+- 特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MiB を使用することをお勧めします。
+- 書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題が発生しない場合は、書き込みごとにサイズを増やすのではなく、事前にファイル サイズを設定します。
+- 次のように適切なコピー方法を使用します。
+    - 2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
+    - オンプレミス コンピューター上のファイル共有間では、[Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) を使用します。
 
 <a id="error112"></a>
 ## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>再接続タイムアウトによる "マウント エラー (112): ホストがダウンしています"
@@ -65,9 +61,9 @@ Linux では、次のようなエラー メッセージが表示されます。
 Linux カーネルの再接続に関するこの問題は、以下の変更の一環として修正されました。
 
 - [ソケットの再接続後、smb3 セッションの再接続を長時間保留しないようにする修正](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
--   [ソケットの再接続後すぐにエコー サービスを呼び出す](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
--   [CIFS: 再接続中にメモリが破損する可能性がある問題の修正](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
--   [CIFS: 再接続中にミューテックスのダブル ロックが発生する可能性がある問題の修正 (カーネル v4.9 以降)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
+- [ソケットの再接続後すぐにエコー サービスを呼び出す](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
+- [CIFS: 再接続中にメモリが破損する可能性がある問題の修正](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS: 再接続中にミューテックスのダブル ロックが発生する可能性がある問題の修正 (カーネル v4.9 以降)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
 ただし、これらの変更が既にすべての Linux ディストリビューションに移植されているとは限りません。 この修正とその他の再接続の修正は、一般的な Linux カーネル (4.4.40、4.8.16、および 4.9.1) で行われています。 この修正プログラムを取得するには、これらの推奨されるカーネルのバージョンのいずれかにアップグレードします。
 
@@ -86,7 +82,7 @@ Linux カーネルの再接続に関するこの問題は、以下の変更の�
 
 ### <a name="solution"></a>解決策
 
-Linux 用 SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 この機能は、公開時に Ubuntu 17.04 と Ubuntu 16.10 に移植されました。 Linux SMB クライアントが暗号化をサポートしていない場合は、File Storage アカウントと同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure Files をマウントします。
+Linux 用の SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 この機能は、公開時に Ubuntu 17.04 と Ubuntu 16.10 に移植されました。 Linux SMB クライアントが暗号化をサポートしていない場合は、ファイル共有と同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure Files をマウントし、そのストレージ アカウントで [[安全な転送が必須]]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が無効であることを確認します。 
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している
@@ -138,18 +134,23 @@ COPYFILE の強制フラグ **f** を使用すると、Unix 上で **cp -p -f** 
 
 - 互換性のない Linux ディストリビューション クライアントを使用しています。 次の Linux ディストリビューションを使用して、Azure ファイル共有に接続することをお勧めします。
 
-    - Ubuntu Server 14.04+ 
-    - RHEL 7+ 
-    - CentOS 7+ 
-    - Debian 8 
-    - openSUSE 13.2+ 
-    - SUSE Linux Enterprise Server 12
+* **該当のマウント機能で推奨される最低限のバージョン (SMB バージョン 2.1 と SMB バージョン 3.0)**    
+    
+    |   | SMB 2.1 <br>(同じ Azure リージョン内の VM 上のマウント) | SMB 3.0 <br>(オンプレミスおよびクロスリージョンからのマウント) |
+    | --- | :---: | :---: |
+    | Ubuntu Server | 14.04+ | 16.04+ |
+    | RHEL | 7+ | 7.5+ |
+    | CentOS | 7+ |  7.5+ |
+    | Debian | 8+ |   |
+    | openSUSE | 13.2+ | 42.3 以降 |
+    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
 - CIFS-utils がクライアントにインストールされていません。
 - SMB/CIFS の最小バージョン 2.1 がクライアントにインストールされていません。
 - SMB 3.0 暗号化がクライアントでサポートされていません。 SMB 3.0 暗号化は、Ubuntu 16.4 以降のバージョンと SUSE 12.3 以降のバージョンで使用可能です。 他のディストリビューションの場合は、カーネル 4.11 以降のバージョンが必要です。
 - サポートされていない TCP ポート 445 経由でストレージ アカウントに接続しようとしています。
 - Azure VM から Azure ファイル共有に接続しようとしていますが、VM はストレージ アカウントと同じリージョンにありません。
+- [[安全な転送が必須]]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定がストレージ アカウントで有効になっている場合、Azure Files は暗号化付き SMB 3.0 を使った接続のみを許可します。
 
 ### <a name="solution"></a>解決策
 
@@ -169,6 +170,31 @@ ls コマンドを使用して Azure ファイル共有のファイル一覧を�
 - 4.9.48 以降
 - 4.12.11 以降
 - 4.13 以降のすべてのバージョン
+
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>シンボリック リンクを作成できない - ln: failed to create symbolic link 't': Operation not supported
+
+### <a name="cause"></a>原因
+既定では、CIFS を使用して Azure ファイル共有を Linux にマウントしても、シンボリック リンクのサポートは有効になりません。 次のようなエラー リンクが表示されます。
+```
+ln -s linked -n t
+ln: failed to create symbolic link 't': Operation not supported
+```
+### <a name="solution"></a>解決策
+Linux CIFS クライアントは、SMB2/3 プロトコルでの Windows スタイル シンボリック リンクの作成をサポートしていません。 現在のところ、Linux クライアントは、[Mishall+French symlinks](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) という別形式のシンボリック リンクをサポートしています。 シンボリック リンクが必要な場合は、"mfsymlinks" マウント オプションを使用できます。 Mac でも使用されている形式なので、通常は "mfsymlinks" をお勧めします。
+
+シンボリック リンクを使用できるようにするには、CIFS mount コマンドの末尾に以下を追加します。
+
+```
+,mfsymlinks
+```
+
+コマンドは以下のようになります。
+
+```
+sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsymlinks
+```
+
+追加すると、[Wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers) で提案されているようにシンボリック リンクを作成することができます。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

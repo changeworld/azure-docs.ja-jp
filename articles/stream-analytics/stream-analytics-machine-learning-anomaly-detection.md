@@ -1,27 +1,25 @@
 ---
-title: Azure での異常検出使用ガイド (プレビュー) | Microsoft Docs
-description: Stream Analytics と Machine Learning を使って異常を検出します。
+title: Azure Stream Analytics での異常検出 (プレビュー)
+description: この記事では、Azure Stream Analytics と Azure Machine Learning を併用して異常を検出する方法を説明します。
 services: stream-analytics
-documentationcenter: ''
 author: dubansal
-manager: katicad
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 02/12/2018
 ms.author: dubansal
-ms.openlocfilehash: 9d301f8586038f635ee97a3acdc9c4dc8a2bbcc6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/09/2018
+ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567045"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics での異常検出
 
 > [!IMPORTANT]
-> この機能はプレビューの段階であり、運用環境のワークロードでの使用はお勧めしません。
+> この機能は非推奨になる過程にありますが、新しい機能に置き換えられます。 詳細については、「[Azure Stream Analytics での 8 つの新機能](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/)」のブログの投稿を参照してください。
 
 **AnomalyDetection** 演算子を使うと、イベント ストリーム内のさまざまな種類の異常を検出できます。 たとえば、空きメモリの量が長い時間をかけてゆっくり減るのはメモリ リークを示していることがあり、ある範囲で安定していた Web サービス要求の数が急激に増えたり減ったりすることがあります。  
 
@@ -33,7 +31,7 @@ AnomalyDetection 演算子は、3 種類の異常を検出します。
 
 * **ゆっくりした減少傾向**: 時間の経過に伴うゆっくりした減少の傾向。  
 
-AnomalyDetection 演算子を使う場合は、**Limit Duration** 句を指定する必要があります。 この句では、異常を検出する際に考慮する時間間隔 (現在のイベントからどこまで履歴をさかのぼるか) を指定します。  **When**  句を使うと、特定のプロパティまたは条件に一致するイベントのみにこの演算子を制限することもできます。 また、この演算子では、 **Partition by**  句で指定するキーに基づいて、イベントのグループを個別に処理することもできます。 トレーニングと予測は、パーティションごとに独立して行われます。 
+AnomalyDetection 演算子を使う場合は、**Limit Duration** 句を指定する必要があります。 この句では、異常を検出する際に考慮する時間間隔 (現在のイベントからどこまで履歴をさかのぼるか) を指定します。 **When** 句を使うと、特定のプロパティまたは条件に一致するイベントのみにこの演算子を制限することもできます。 また、この演算子は必要に応じて、**Partition by** 句で指定するキーに基づいて、イベントのグループを個別に処理できます。 トレーニングと予測は、パーティションごとに独立して行われます。 
 
 ## <a name="syntax-for-anomalydetection-operator"></a>AnomalyDetection 演算子の構文
 
@@ -47,11 +45,11 @@ AnomalyDetection 演算子を使う場合は、**Limit Duration** 句を指定�
 
 * **scalar_expression** - 異常検出を実行する対象のスカラー式です。 このパラメーターに使える値は、単一の (スカラー) 値を返す Float または Bigint データ型です。 ワイルドカード式 **\*** は使用できません。 スカラー式に他の分析関数または外部関数を含めることはできません。 
 
-* **partition_by_clause** - `PARTITION BY <partition key>` 句は、学習とトレーニングを個別のパーティションに分割します。 つまり、`<partition key>` の値ごとに異なるモデルが使われ、その値を持つイベントのみがそのモデルの学習とトレーニングに使われます。 たとえば以下のクエリは、同じセンサーの他の読み取りに対してのみ、トレーニングとスコア付けを行います。
+* **partition_by_clause** - `PARTITION BY <partition key>` 句は、学習とトレーニングを個別のパーティションに分割します。 つまり、`<partition key>` の値ごとに異なるモデルが使われ、その値を持つイベントのみがそのモデルの学習とトレーニングに使われます。 たとえば以下のクエリは、同じセンサーの他の読み取りに対してのみ、トレーニングとスコア付けを行います。
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
-* **limit_duration clause** `DURATION(<unit>, <length>)` - 異常を検出する際に考慮する時間間隔 (現在のイベントからどこまで履歴をさかのぼるか) を指定します。 サポートされるユニットとその省略形について詳しくは、[DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) をご覧ください。 
+* **limit_duration clause** `DURATION(<unit>, <length>)` - 異常を検出する際に考慮する時間間隔 (現在のイベントからどこまで履歴をさかのぼるか) を指定します。 サポートされるユニットとその省略形について詳しくは、[DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) をご覧ください。 
 
 * **when_clause** - 異常検出の計算で考慮に入れるイベントのブール条件を指定します。
 
@@ -68,6 +66,8 @@ AnomalyDetection 演算子は、3 つのスコアをすべて含むレコード�
 `SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
 ある種類の異常は、異常スコアのいずれかがしきい値を超えると検出されます。 しきい値は、0 以上の任意の浮動小数点数です。 しきい値は、感度と信頼性のトレードオフになります。 たとえば、しきい値を低くすると、変化の検出感度が高くなり、生成されるアラートの数が増えます。しきい値を高くすると、検出の感度は低くなり、信頼性は高くなりますが、一部の異常が見落とされる可能性があります。 使うしきい値の正確な値は、シナリオによって異なります。 上限はありませんが、推奨される範囲は 3.25 から 5 です。 
+
+値の例に示す 3.25 は、推奨される開始点にすぎません。 独自のデータ セットについて操作を実行して値を微調整し、許容可能なしきい値に到達するまで出力値を観察します。
 
 ## <a name="anomaly-detection-algorithm"></a>異常検出アルゴリズム
 
@@ -97,7 +97,7 @@ AnomalyDetection 演算子は、3 つのスコアをすべて含むレコード�
 
 ![モデルのトレーニング](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
 
-|**モデル** | **トレーニングの開始時刻** | **スコアの使用を開始する時刻** |
+|**Model** | **トレーニングの開始時刻** | **スコアの使用を開始する時刻** |
 |---------|---------|---------|
 |M1     | 11:20   | 11:33   |
 |M2     | 11:30   | 11:40   |
@@ -121,12 +121,12 @@ Machine Learning レベルでは、異常検出アルゴリズムは各受信イ
    - event_value/90th_percentile (event_value > 90th_percentile の場合)  
    - 10th_percentile/event_value (event_value < 10th_percentile の場合)  
 
-2. **ゆっくりした増加傾向:** 履歴ウィンドウのイベント値の傾向線を計算し、線の中の増加傾向を探します。 異常度の値は次のように計算されます。  
+2. **ゆっくりした増加傾向:** 履歴ウィンドウのイベント値の傾向線を計算し、操作によって線の中の増加傾向を探します。 異常度の値は次のように計算されます。  
 
    - 傾き (傾きが正の場合)  
    - 0 (それ以外の場合) 
 
-1. **ゆっくりした減少傾向:** 履歴ウィンドウのイベント値の傾向線を計算し、線の中の減少傾向を探します。 異常度の値は次のように計算されます。 
+3. **ゆっくりした減少傾向:** 履歴ウィンドウのイベント値の傾向線を計算し、操作によって線の中の減少傾向を探します。 異常度の値は次のように計算されます。 
 
    - 傾き (傾きが負の場合)  
    - 0 (それ以外の場合)  
@@ -243,7 +243,7 @@ M<sub>t</sub> > λ を満たすような t が存在する確率 < 1/λ (M<sub>t
 ## <a name="references"></a>参照
 
 * [異常検出 – Machine Learning を使って時系列データの異常を検出する](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)
-* [Machine Learning 異常検出 API](https://docs.microsoft.com/en-gb/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
+* [Machine Learning 異常検出 API](https://docs.microsoft.com/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
 * [時系列の異常検出](https://msdn.microsoft.com/library/azure/mt775197.aspx)
 
 ## <a name="next-steps"></a>次の手順

@@ -1,19 +1,20 @@
 ---
-title: "Web UI を使用した Azure Kubernetes クラスターの管理"
-description: "Azure Container Service の Kubernetes Web UI を使用する"
+title: Web UI を使用した Azure Kubernetes クラスターの管理
+description: Azure Container Service の Kubernetes Web UI を使用する
 services: container-service
 author: bburns
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: d5a3906e5e26c9ed0a6cf356000c3d81f00de72c
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: b5079ddb63f468f924577f61adda6a3056ec8c6c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998527"
 ---
 # <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Azure Container Service で Kubernetes Web UI を使用する
 
@@ -23,7 +24,7 @@ ms.lasthandoff: 12/06/2017
 このチュートリアルでは、[Azure Container Service を使用して Kubernetes クラスターを作成](container-service-kubernetes-walkthrough.md)したことを想定します。
 
 
-また、Azure CLI 2.0 と `kubectl` ツールをインストールしていることも想定します。
+また、Azure CLI と `kubectl` ツールをインストールしていることも想定します。
 
 `az` ツールがインストールされていることを確認するには、次を実行します。
 

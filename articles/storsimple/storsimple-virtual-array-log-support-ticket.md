@@ -1,11 +1,11 @@
 ---
-title: "StorSimple デバイス マネージャーを使用してサポート チケットを記録する | Microsoft Docs"
-description: "StorSimple デバイス マネージャーの診断機能と、その診断機能を使用して StorSimple Virtual Array のトラブルシューティングを行う方法について説明します。"
+title: StorSimple デバイス マネージャーを使用してサポート チケットを記録する | Microsoft Docs
+description: StorSimple デバイス マネージャーの診断機能と、その診断機能を使用して StorSimple Virtual Array のトラブルシューティングを行う方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: a0c394df-957b-49b3-a283-38824f8847fd
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110000"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して、StorSimple Virtual Array のサポート要求を記録します
 

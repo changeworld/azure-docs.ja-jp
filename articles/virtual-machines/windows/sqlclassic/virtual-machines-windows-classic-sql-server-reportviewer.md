@@ -1,9 +1,9 @@
 ---
-title: "Web サイトで ReportViewer を使用する | Microsoft Docs"
-description: "このトピックでは、Microsoft Azure 仮想マシンに保存されたレポートを表示する Visual Studio ReportViewer コントロールを使用して、Microsoft Azure Web サイトを作成する方法を説明します。"
+title: Web サイトで ReportViewer を使用する | Microsoft Docs
+description: このトピックでは、Microsoft Azure 仮想マシンに保存されたレポートを表示する Visual Studio ReportViewer コントロールを使用して、Microsoft Azure Web サイトを作成する方法を説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: guyinacube
+author: markingmyname
 manager: erikre
 editor: monicar
 tags: azure-service-management
@@ -14,16 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
-ms.author: asaxton
-ms.openlocfilehash: c4f7c829e6fe3890342bd973185e679dd3ea2df5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 514e85fc61240834d8db152ece65a4f9cce9023e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250409"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Azure でホストされる Web サイトで ReportViewer を使用する
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 Microsoft Azure 仮想マシンに保存されたレポートを表示する Visual Studio ReportViewer コントロールを使用して、Microsoft Azure Web サイトを作成できます。 ReportViewer コントロールは、ASP.NET Web アプリケーション テンプレートを使用して作成する Web アプリケーション内にあります。
 
@@ -61,17 +62,17 @@ ASP.NET アプリケーションをオンプレミスでホストする場合、
 3. Microsoft.ReportViewer.WebForms についても、手順 1. と 2. を繰り返します。
 
 ### <a name="to-get-reportviewer-language-pack"></a>ReportViewer Language Pack を入手する
-1. [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=317386)から、適切な Microsoft Report Viewer 2012 Runtime 再頒布可能パッケージをインストールします。
+1. [Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?LinkId=317386)から、適切な Microsoft Report Viewer 2012 Runtime 再頒布可能パッケージをインストールします。
 2. ドロップダウン リストから言語を選択すると、ダウンロード センターの対応するページにリダイレクトされます。
 3. **[ダウンロード]** をクリックして、ReportViewerLP.exe のダウンロードを開始します。
-4. ReportViewerLP.exe をダウンロードしたら、**[実行]** をクリックしてすぐにインストールするか、**[保存]** をクリックしてコンピューターに保存します。 **[保存]**をクリックした場合は、ファイルを保存したフォルダーの名前を覚えておいてください。
+4. ReportViewerLP.exe をダウンロードしたら、**[実行]** をクリックしてすぐにインストールするか、**[保存]** をクリックしてコンピューターに保存します。 **[保存]** をクリックした場合は、ファイルを保存したフォルダーの名前を覚えておいてください。
 5. ファイルを保存したフォルダーを見つけます。 ReportViewerLP.exe を右クリックし、**[管理者として実行]**、**[はい]** の順にクリックします。
 6. ReportViewerLP.exe を実行した後、C:\windows\assembly にリソース ファイル **Microsoft.ReportViewer.Webforms.Resources** および **Microsoft.ReportViewer.Common.Resources** が含まれていることが確認できます。
 
 ### <a name="to-configure-for-localized-reportviewer-control"></a>ローカライズされた ReportViewer コントロール用に構成する
 1. 前の手順に従って、Microsoft Report Viewer 2012 Runtime 再頒布可能パッケージをダウンロードしてインストールします。
 2. プロジェクトに <language> フォルダーを作成し、関連付けられたリソース アセンブリ ファイルをそこにコピーします。 コピーするリソース アセンブリ ファイルは、**Microsoft.ReportViewer.Webforms.Resources.dll** と **Microsoft.ReportViewer.Common.Resources.dll** です。リソース アセンブリ ファイルを選択し、プロパティ ウィンドウで **[出力ディレクトリにコピー]** を **[常にコピーする]** に設定します。
-3. Web プロジェクトのカルチャと UI カルチャを設定します。 ASP.NET Web ページのカルチャと UI カルチャを設定する方法の詳細については、「 [方法 : ASP.NET Web ページのグローバリゼーション用のカルチャおよび UI カルチャを設定する](http://go.microsoft.com/fwlink/?LinkId=237461)」を参照してください。
+3. Web プロジェクトのカルチャと UI カルチャを設定します。 ASP.NET Web ページのカルチャと UI カルチャを設定する方法の詳細については、「 [方法 : ASP.NET Web ページのグローバリゼーション用のカルチャおよび UI カルチャを設定する](https://go.microsoft.com/fwlink/?LinkId=237461)」を参照してください。
 
 ## <a name="configuring-authentication-and-authorization"></a>認証と承認を構成する
 ReportViewer は、適切な資格情報を使用してレポート サーバーに対する認証を行う必要があります。必要なレポートにアクセスするには、その資格情報がレポート サーバーによって承認される必要があります。 認証についての詳細は、ホワイト ペーパー「[Reporting Services report viewer control and Microsoft Azure Virtual Machine based report servers](https://msdn.microsoft.com/library/azure/dn753698.aspx)」 (Reporting Services レポート ビューアー コントロールと Microsoft Azure Virtual Machines ベースのレポート サーバー) を参照してください。
@@ -87,7 +88,7 @@ ASP.NET Web アプリケーションを Azure に発行する手順について�
 > 
 
 ## <a name="resources"></a>リソース
-[Microsoft レポート](http://go.microsoft.com/fwlink/?LinkId=205399)
+[Microsoft レポート](https://go.microsoft.com/fwlink/?LinkId=205399)
 
 [Azure Virtual Machines での SQL Server Business Intelligence](../classic/ps-sql-bi.md)
 

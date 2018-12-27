@@ -1,6 +1,6 @@
 ---
-title: "Azure セキュリティの概要 | Microsoft Docs"
-description: "Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。"
+title: Azure セキュリティの概要 | Microsoft Docs
+description: Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,22 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 6a2ece3fc908963a6c8ea68f9746788278407fdc
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d6117b5b071e780841f4450a205287d005e11801
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752182"
 ---
 # <a name="azure-security-overview"></a>Azure セキュリティの概要
-Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。 Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、 [Microsoft Trust Center (セキュリティ センター)](https://www.microsoft.com/TrustCenter/default.aspx)にアクセスしてください。
+
+Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。 Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、 [Microsoft Trust Center (セキュリティ センター)](https://microsoft.com/en-us/trustcenter/default.aspx)にアクセスしてください。
 
 セキュリティはクラウドの最優先の課題であり、Azure セキュリティについての正確でタイムリーな情報を得ることがどれだけ重要かを、私たちは認識しています。 アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。 これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。
 
 新しい Azure サービスがオンラインで利用できるようにになり、既存のサービスが更新されるのに伴って、このページとサイトは進化します。 セキュリティ関連のツールや機能は常に強化されており、それらの技術的な詳細がここで共有されます。 定期的にこのサイトにアクセスして、最新情報を確認することをお勧めします。
 
 ## <a name="using-the-azure-security-information-site"></a>Azure セキュリティ情報サイトの使用
+
 ページの左側には、セキュリティのトピックがカテゴリごとに表示されます。 カテゴリの記事を参照するには、トピックをクリックまたはタップします。
 
 各カテゴリには、概要記事があります。 概要記事は、そのカテゴリのセキュリティに関して Azure から提供されるものの概略を示すためのものです。 概要記事を読むと、デプロイのセキュリティを強化するために Azure で使用できる製品、サービス、機能を理解できます。 これらの概要記事には、技術的なコンテンツへのさまざまなリンクが含まれているため、トピックに関する詳細とその実装方法を学習できます。

@@ -8,21 +8,23 @@ author: gopitk
 manager: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 2994ef858e960640d98ab2f7d02a401b11aa9e8f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: bdcf2662f2a81b145868cff92ecb7a2cb4d53046
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239799"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Azure での Geo 人工知能仮想マシンのプロビジョニング 
 
-Geo AI データ サイエンス仮想マシン (Geo DSVM) は、広く使用されている [Azure データ サイエンス仮想マシン](http://aka.ms/dsvm)の拡張機能であり、AI と地理空間分析を組み合わせる目的で構成されています。 VM での地理空間分析には、[ArcGIS Pro](https://www.arcgis.com/features/index.html) が使用されます。 データ サイエンス VM では、地理情報で強化されたデータを対象にして、機械学習モデルやディープ ラーニング モデルを高速にトレーニングすることができます。 この VM は、Windows 2016 DSVM でのみサポートされます。 
+Geo AI データ サイエンス仮想マシン (Geo DSVM) は、広く使用されている [Azure データ サイエンス仮想マシン](https://aka.ms/dsvm)の拡張機能であり、AI と地理空間分析を組み合わせる目的で構成されています。 VM での地理空間分析には、[ArcGIS Pro](https://www.arcgis.com/features/index.html) が使用されます。 データ サイエンス VM では、地理情報で強化されたデータを対象にして、機械学習モデルやディープ ラーニング モデルを高速にトレーニングすることができます。 この VM は、Windows 2016 DSVM でのみサポートされます。 
 
 Geo-DSVM には、AI 用のツールが複数含まれています。これには次のものが含まれます。
 

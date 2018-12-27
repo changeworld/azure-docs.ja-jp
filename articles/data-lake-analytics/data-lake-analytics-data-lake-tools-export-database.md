@@ -1,28 +1,24 @@
 ---
-title: "Azure Data Lake Tools for Visual Studio を使用して U-SQL データベースをエクスポートする | Microsoft Docs"
-description: "Azure Data Lake Tools for Visual Studio を使用して、U-SQL データベースをエクスポートし、ローカル アカウントに自動的にインポートする方法を説明します。"
+title: Azure Data Lake Tools for Visual Studio を使用して U-SQL データベースをエクスポートする
+description: Azure Data Lake Tools for Visual Studio を使用して、U-SQL データベースをエクスポートし、ローカル アカウントに自動的にインポートする方法を説明します。
 services: data-lake-analytics
-documentationcenter: 
 author: yanancai
-manager: 
-editor: 
+ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/27/2017
-ms.author: yanacai
-ms.openlocfilehash: 441606258f9541c9552925e7c0cbc9b3a9effb4d
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251004"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL データベースのエクスポート
 
-この記事では、[Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) を使用して U-SQL データベースを 1 つの U-SQL スクリプトとダウンロードされたリソースとしてエクスポートする方法について説明します。 同じプロセスで、エクスポートされたデータベースをローカル アカウントにインポートできます。
+この記事では、[Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) を使用して U-SQL データベースを 1 つの U-SQL スクリプトとダウンロードされたリソースとしてエクスポートする方法について説明します。 同じプロセスで、エクスポートされたデータベースをローカル アカウントにインポートできます。
 
 お客様は、通常、開発、テストおよび運用のために複数の環境を管理しています。 これらの環境は、開発者のローカル コンピューター上のローカル アカウントと、Azure 上の Azure Data Lake Analytics アカウントの両方でホストされています。 
 
@@ -39,7 +35,7 @@ ms.lasthandoff: 12/05/2017
    
     ![サーバー エクスプローラー - データベースのエクスポート](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     **[エクスポート]** メニュー オプションが使用可能でない場合は、[ツールを最新リリースに更新](http://aka.ms/adltoolsvs)する必要があります。
+     **[エクスポート]** メニュー オプションが使用可能でない場合は、[ツールを最新リリースに更新](https://aka.ms/adltoolsvs)する必要があります。
 
 ### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>手順 2: エクスポートするオブジェクトを構成する
 
@@ -86,7 +82,7 @@ U-SQL ジョブを実行して、エクスポート アクションを完了し�
 
 現時点では、ステップ 3. で **[スキーマとデータ]** を選択した場合は、テーブルに格納されているデータをエクスポートするために U-SQL ジョブが実行されます。 このため、データのエクスポート プロセスが低速になり、コストが増加する可能性があります。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [U-SQL データベースの詳細](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
 * [ローカル実行と Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのテストおよびデバッグ](data-lake-analytics-data-lake-tools-local-run.md)

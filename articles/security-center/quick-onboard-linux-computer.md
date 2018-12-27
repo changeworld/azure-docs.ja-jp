@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center クイックスタート - Linux コンピューターでの Security Center の利用開始 | Microsoft Docs"
-description: "このクイック スタートでは、Linux コンピューターで Security Center の利用を開始する方法を説明します。"
+title: Azure Security Center クイックスタート - Linux コンピューターでの Security Center の利用開始 | Microsoft Docs
+description: このクイック スタートでは、Linux コンピューターで Security Center の利用を開始する方法を説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: 05e4bed0f9b4dfb6d1879408085447ef53db8655
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.date: 12/02/2018
+ms.author: rkarlin
+ms.openlocfilehash: 48a04bbe77a6fe836c282556709e13bb9cd9a337
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848193"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイックスタート: Linux コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Linux エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。
@@ -29,7 +30,7 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
-このクイックスタートを開始するには、Security Center の Standard 価格レベルを使用する必要があります。 アップグレード手順については、「[クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」をご覧ください。 Security Center の Standard は最初の 60 日間、無料でお試しいただけます。
+このクイックスタートを開始するには、Security Center の Standard 価格レベルを使用する必要があります。 アップグレード手順については、「[クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」をご覧ください。 Security Center の Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 ## <a name="add-new-linux-computer"></a>新しい Linux コンピューターの追加
 
@@ -38,13 +39,12 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 
  ![Security Center の概要][2]
 
-3. Security Center のメイン メニューで、**[高度なセキュリティへのオンボード]** を選択します。
-4. **[Azure 以外のコンピューターを追加しますか?]** を選択します。
-   ![高度なセキュリティへのオンボード][3]
+3. Security Center メイン メニューの **[使用の開始]** を選択します。
+4. **[作業の開始]** タブを選択します。![[作業の開始]][3]
 
-5. **[Azure 以外のコンピューターの新規追加]** に、Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
+5. **[Azure 以外のコンピューターの新規追加]** の **[構成]** をクリックします。Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
 
-    ![Azure 以外のコンピューターの追加][4]
+    ![Azure 以外のコンピューターの追加](./media/quick-onboard-linux-computer/non-azure.png)
 
 6.  **[直接エージェント]** ページの **[Linux 用エージェントのインストールとオンボード]** で、**[コピー]** を選択して *wget*コマンドをコピーします。
 
@@ -90,7 +90,7 @@ Linux 用の Security Center エージェントのログは */var/opt/microsoft/
 <!--Image references-->
 [1]: ./media/quick-onboard-linux-computer/portal.png
 [2]: ./media/quick-onboard-linux-computer/overview.png
-[3]: ./media/quick-onboard-linux-computer/onboard-windows-computer.png
+[3]: ./media/quick-onboard-linux-computer/get-started.png
 [4]: ./media/quick-onboard-linux-computer/add-computer.png
 [5]: ./media/quick-onboard-linux-computer/pgrep-command.png
 [6]: ./media/quick-onboard-linux-computer/logs-for-agent.png

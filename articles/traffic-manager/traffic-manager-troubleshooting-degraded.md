@@ -1,23 +1,22 @@
 ---
-title: "Azure Traffic Manager での機能低下状態のトラブルシューティング"
-description: "Traffic Manager プロファイルが機能低下状態と示されるときのトラブルシューティング方法について説明します。"
+title: Azure Traffic Manager での機能低下状態のトラブルシューティング
+description: Traffic Manager プロファイルが機能低下状態と示されるときのトラブルシューティング方法について説明します。
 services: traffic-manager
-documentationcenter: 
-author: kumudd
-manager: timlt
-ms.assetid: 8af0433d-e61b-4761-adcc-7bc9b8142fc6
+documentationcenter: ''
+author: chadmath
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: kumud
-ms.openlocfilehash: b1d00fb84695d2289f37647f55a7c56cf28c8c96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: 8690ffdca606bf45f306f9273441aaac52b385c8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241363"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager での機能低下状態のトラブルシューティング
 
@@ -79,18 +78,18 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
 
 [Traffic Manager について](traffic-manager-overview.md)
 
-[Cloud Services](http://go.microsoft.com/fwlink/?LinkId=314074)
+[Cloud Services](https://go.microsoft.com/fwlink/?LinkId=314074)
 
 [Azure Web Apps](https://azure.microsoft.com/documentation/services/app-service/web/)
 
-[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
+[Traffic Manager の操作 (REST API リファレンス)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
 [Azure Traffic Manager コマンドレット][1]
 
-[1]: https://msdn.microsoft.com/library/mt125941(v=azure.200).aspx
+[1]: https://docs.microsoft.com/powershell/module/azurerm.trafficmanager

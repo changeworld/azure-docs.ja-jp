@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 09b35483b5ace1523c88576cfe37dfc313b93036
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6b13c70d86af195e50190083aa562811236cdd4b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299862"
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-data-movement-activities.md)
-> * [バージョン 2 - プレビュー](../copy-activity-overview.md)
+> * [Version 1](data-factory-data-movement-activities.md)
+> * [バージョン 2 (最新バージョン)](../copy-activity-overview.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 でのコピー アクティビティ](../copy-activity-overview.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 のコピー アクティビティ](../copy-activity-overview.md)に関するページを参照してください。
 
 ## <a name="overview"></a>概要
 Azure Data Factory では、コピー アクティビティを使用して、オンプレミスとクラウド データ ストア間でデータをコピーできます。 コピーされたデータをさらに変換して分析することができます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
@@ -108,7 +109,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 | ブラジル | ブラジル南部 | ブラジル南部 |
 | ヨーロッパ | 北ヨーロッパ | 北ヨーロッパ |
 | &nbsp; | 西ヨーロッパ | 西ヨーロッパ |
-| 英国 | 英国西部 | 英国南部 |
+| イギリス | 英国西部 | 英国南部 |
 | &nbsp; | 英国南部 | 英国南部 |
 | アジア太平洋 | 東南アジア | 東南アジア |
 | &nbsp; | 東アジア | 東南アジア |

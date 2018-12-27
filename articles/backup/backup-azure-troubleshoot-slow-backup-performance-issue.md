@@ -1,24 +1,19 @@
 ---
-title: "Azure Backup でファイルやフォルダーのバックアップが遅い場合のトラブルシューティング | Microsoft Docs"
-description: "Azure Backup のパフォーマンスに関する問題の原因を診断するのに役立つトラブルシューティングの指針を示します。"
+title: Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
+description: Azure Backup のパフォーマンスに関する問題の原因を診断するのに役立つトラブルシューティングの指針を示します。
 services: backup
-documentationcenter: 
 author: genlin
 manager: cshepard
-editor: 
-ms.assetid: e379180a-db13-4e0c-90e4-28e5dd6f5b14
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 373a98855886cc7be7518c664f82bb6f92ca86f3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: f24a60ab9bdcf1231085de4edeeb89ce1edf4e80
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248471"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 この記事では、ファイルとフォルダーのバックアップに関して、Azure Backup の使用中にパフォーマンスが低下している原因を診断するためのトラブルシューティングの指針を紹介します。 Azure Backup エージェントを使用してファイルをバックアップするとき、予想以上にバックアップ処理に時間がかかる場合があります。 次のいずれかまたは複数の事柄が、この遅延の原因として考えられます。
@@ -28,7 +23,7 @@ ms.lasthandoff: 11/04/2017
 * [Azure 仮想マシン (VM) で Backup エージェントが実行されている。](#cause3)  
 * [大量 (数百万) のファイルをバックアップしようとしている。](#cause4)
 
-問題のトラブルシューティングを開始する前に、 [最新の Azure Backup エージェント](http://aka.ms/azurebackup_agent)をダウンロードしてインストールすることをお勧めします。 Backup エージェントは、さまざまな問題の解決、機能の追加、パフォーマンスの改善を目的として絶えず更新されています。
+問題のトラブルシューティングを開始する前に、 [最新の Azure Backup エージェント](https://aka.ms/azurebackup_agent)をダウンロードしてインストールすることをお勧めします。 Backup エージェントは、さまざまな問題の解決、機能の追加、パフォーマンスの改善を目的として絶えず更新されています。
 
 また、一般的な構成の問題ではないことを確認するために、「 [Azure Backup サービス - FAQ](backup-azure-backup-faq.md) 」に目を通すよう強くお勧めします。
 
@@ -43,7 +38,7 @@ Windows には、これらのボトルネックを検出するための、 [パ�
 
 バックアップを最適化するために、パフォーマンス カウンターとボトルネック診断の目安となる範囲を以下に示します。
 
-| カウンター | 状態 |
+| カウンター | Status |
 | --- | --- |
 | Logical Disk(Physical Disk)--%idle |• 100 ～ 50% アイドル = 正常</br>• 49 ～ 20% アイドル = 警告または監視</br>• 19 ～ 0% アイドル = 重大または基準不適合 |
 | Logical Disk(Physical Disk)--%Avg.Disk Sec Read or Write |• 0.001 ～ 0.015 ミリ秒 = 正常</br>• 0.015 ～ 0.025 ミリ秒 = 警告または監視</br>• 0.026 ミリ秒以上 = 重大または基準不適合 |
@@ -86,4 +81,4 @@ Backup エージェントを VM で実行している場合、パフォーマン
 ボトルネックを把握し、それに応じた対策を講じるのに役立つ指標を次に示します。
 
 * **データ転送の進行状況が UI に表示されている**。 データは依然として転送中です。 ネットワーク帯域幅またはデータ サイズが原因で、遅延が生じている可能性があります。
-* **データ転送の進行状況が UI に表示されていない**。 C:\Microsoft Azure Recovery Services Agent\Temp にあるログを開き、FileProvider::EndData というログ エントリが記録されているかどうかを確認します。 このエントリは、データ転送が完了し、カタログ化の処理が進行中であることを表します。 バックアップ ジョブを取り消さないようにしてください。 そのまま、カタログ化の処理が完了するまでしばらく待ちます。 問題が解決しない場合は、 [Azure サポート](https://portal.azure.com/#create/Microsoft.Support)にお問い合わせください。
+* **データ転送の進行状況が UI に表示されていない**。 C:\Program Files\Microsoft Azure Recovery Services Agent\Temp にあるログを開き、ログ内に FileProvider::EndData エントリがあるかどうかを確認します。 このエントリは、データ転送が完了し、カタログ化の処理が進行中であることを表します。 バックアップ ジョブを取り消さないようにしてください。 そのまま、カタログ化の処理が完了するまでしばらく待ちます。 問題が解決しない場合は、 [Azure サポート](https://portal.azure.com/#create/Microsoft.Support)にお問い合わせください。

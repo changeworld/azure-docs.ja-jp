@@ -1,28 +1,22 @@
 ---
-title: "HDInsight で Hadoop サービスのヒープ ダンプを有効にする - Azure | Microsoft Docs"
-description: "デバッグと分析のために Linux ベースの HDInsight クラスターから Hadoop サービスのヒープ ダンプを有効にする"
+title: HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする - Azure
+description: デバッグと分析のために Linux ベースの HDInsight クラスターから Apache Hadoop サービスのヒープ ダンプを有効にします。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 8f151adb-f687-41e4-aca0-82b551953725
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 2bc7b35a87f3973c59fb36372d4edad86412ea0e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: hrasheed
+ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037711"
 ---
-# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする
+# <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
@@ -35,11 +29,11 @@ ms.lasthandoff: 02/28/2018
 
 次のサービスのヒープ ダンプを有効にできます。
 
-* **hcatalog** - tempelton
-* **hive** - hiveserver2、metastore、derbyserver
+* **Apache hcatalog** - tempelton
+* **Apache hive** - hiveserver2、metastore、derbyserver
 * **mapreduce** - jobhistoryserver
-* **yarn** - resourcemanager、nodemanager、timelineserver
-* **hdfs** - datanode、secondarynamenode、namenode
+* **Apache yarn** - resourcemanager、nodemanager、timelineserver
+* **Apache hdfs** - datanode、secondarynamenode、namenode
 
 HDInsight によって実行されるマップと削減のプロセスに対して、ヒープ ダンプを有効にすることもできます。
 
@@ -55,7 +49,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Ambari がクラスター内のノード間の変更のレプリケーションを処理するように、Ambari を使用してスクリプトと mapred-site.xml 設定の両方を変更することをお勧めします。 具体的な手順については、 [Ambari の使用](#using-ambari) のセクションを参照してください。
+> Apache Ambari がクラスター内のノード間の変更のレプリケーションを処理するように、Ambari を使用してスクリプトと mapred-site.xml 設定の両方を変更することをお勧めします。 具体的な手順については、 [Ambari の使用](#using-ambari) のセクションを参照してください。
 
 ### <a name="enable-heap-dumps"></a>ヒープ ダンプを有効にする
 
@@ -98,7 +92,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
    > [!NOTE]
    > Ambari によって、ユーザー名とパスワードの入力が 2 回求められる場合があります。 その場合は、同じアカウント名とパスワードを入力してください。
 
-2. 左側の一覧を使用して、変更するサービス領域を選択します。 たとえば、 **[HDFS]**です。 中央の領域で、 **[Configs]** タブを選択します。
+2. 左側の一覧を使用して、変更するサービス領域を選択します。 たとえば、 **[HDFS]** です。 中央の領域で、 **[Configs]** タブを選択します。
 
     ![HDFS Configs タブが選択されている Ambari Web の画像](./media/hdinsight-hadoop-heap-dump-linux/serviceconfig.png)
 

@@ -12,14 +12,15 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 02/28/2018
+ms.date: 08/22/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0a18f975530d2a291e529308ee53d6d48a68e42
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8b6e543a4835410368e752e70e7e8cb6d8805c0e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735581"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -65,24 +66,28 @@ ms.lasthandoff: 03/09/2018
   * [Task dependencies](#task-dependencies)
 * [アプリケーション パッケージ](#application-packages)
 
-## <a name="account"></a>アカウント
+## <a name="account"></a>Account
 Batch アカウントは、Batch サービス内で一意に識別されるエンティティです。 すべての処理は、Batch アカウントに関連付けられています。
 
 Azure Batch アカウントは、[Azure Portal](batch-account-create-portal.md) またはプログラム ([Batch Management .NET ライブラリ](batch-management-dotnet.md)など) を使用して作成できます。 アカウントを作成する際に、ジョブに関する入出力データまたはアプリケーションの格納に使用する、Azure ストレージ アカウントを関連付けることができます。
 
 1 つの Batch アカウントで複数の Batch ワークロードを実行することも、同じサブスクリプションで異なる Azure リージョンの複数の Batch アカウントにワークロードを分散することもできます。
 
-> [!NOTE]
-> Batch アカウントを作成する際には、通常、既定の **Batch サービス** モードを選択することをお勧めします。このモードでは、Azure で管理されたサブスクリプションにバックグラウンドでプールが割り当てられます。 別の**ユーザー サブスクリプション** モード (現在は、ほとんどのシナリオで非推奨) では、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 また、ユーザー サブスクリプション モードで Batch アカウントを作成するには、ご利用のサブスクリプションを Azure Batch に登録し、アカウントを Azure Key Vault に関連付ける必要があります。
->
-
+[!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
 ## <a name="azure-storage-account"></a>Azure ストレージ アカウント
 
-ほとんどの Batch ソリューションでは、リソース ファイルまたは出力ファイルを格納するために Azure Storage を使用します。  
+ほとんどの Batch ソリューションでは、リソース ファイルまたは出力ファイルを格納するために Azure Storage を使用します。 たとえば、Batch タスク (標準タスク、開始タスク、ジョブ準備タスク、ジョブ解放タスクなど) では通常、ストレージ アカウントに存在するリソース ファイルを指定します。
 
-「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で汎用のストレージ アカウントの種類のみがサポートされています。 Batch タスク (標準タスク、開始タスク、ジョブ準備タスク、ジョブ解放タスクなど) では、汎用のストレージ アカウントに存在するリソース ファイルを指定する必要があります。
+Batch では、次の Azure ストレージ アカウントの種類がサポートされます。
 
+* 汎用 v2 (GPv2) アカウント 
+* 汎用 v1 (GPv1) アカウント
+* BLOB ストレージ アカウント (現在、仮想マシン構成のプールに対してのみサポートされます)
+
+ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
+
+ストレージ アカウントは、Batch アカウントの作成時に (または後で) Batch アカウントに関連付けることができます。 ストレージ アカウントを選択するときに、コストとパフォーマンスの要件を検討してください。 たとえば、GPv2 アカウントおよび BLOB ストレージ アカウントのオプションでは、サポートされる[容量とスケーラビリティの上限](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)が GPv1 よりも高くなっています  (容量の上限の引き上げを希望する場合、Azure サポートにお問い合わせください)。これらのアカウント オプションでは、ストレージ アカウントからの読み取りまたはストレージ アカウントへの書き込みを行う多数の並列タスクが含まれた、Batch ソリューションのパフォーマンスを向上させることができます。
 
 ## <a name="compute-node"></a>コンピューティング ノード
 コンピューティング ノードは、アプリケーションの一部のワークロードの処理に特化した Azure 仮想マシン (VM) またはクラウド サービス VM です。 ノードのサイズによって、CPU コアの数、メモリ容量、およびノードに割り当てられるローカル ファイル システムのサイズが決まります。 Azure Cloud Services か、[Azure Virtual Machines Marketplace][vm_marketplace] のイメージを使用して Windows ノードまたは Linux ノードのプールを作成することができます。 これらの各オプションの詳細については、以下の「 [プール](#pool) 」セクションを参照してください。
@@ -252,7 +257,7 @@ Batch で作成するジョブには、優先順位を割り当てることが�
     `/bin/sh -c MyTaskApplication $MY_ENV_VAR`
 
     ノードの `PATH` や参照用の環境変数に存在しないアプリケーションまたはスクリプトをタスクで実行する必要がある場合は、タスクのコマンド ラインからシェルを明示的に呼び出してください。
-* **リソース ファイル** 。 これらのファイルは、タスクのコマンド ラインが実行される前に、汎用の Azure Storage アカウントの Blob Storage からノードに自動的にコピーされます。 詳細については、「[開始タスク](#start-task)」と「[ファイルとディレクトリ](#files-and-directories)」の各セクションを参照してください。
+* **リソース ファイル** 。 これらのファイルは、タスクのコマンド ラインが実行される前に、Azure ストレージ アカウントの BLOB ストレージからノードに自動的にコピーされます。 詳細については、「[開始タスク](#start-task)」と「[ファイルとディレクトリ](#files-and-directories)」の各セクションを参照してください。
 * アプリケーションで必要な **環境変数** 。 詳細については、「 [タスクの環境設定](#environment-settings-for-tasks) 」セクションを参照してください。
 * タスクを実行する際の **制約** 。 この制約には、タスクの実行が許可される最大時間、タスクが失敗した場合に再試行する最大回数、タスクの作業ディレクトリにファイルを保持する最大時間などがあります。
 * タスクの実行がスケジュールされているコンピューティング ノードにデプロイする**アプリケーション パッケージ**。 [アプリケーション パッケージ](#application-packages)により、タスクによって実行されるアプリケーションのデプロイとバージョン管理がシンプルになります。 タスクレベルのアプリケーション パッケージは共有プール環境では特に便利です。この環境では、さまざまなジョブが 1 つのプールで実行され、ジョブが完了してもプールは削除されません。 ジョブ内のタスクがプール内のノードよりも少ない場合は、タスクのアプリケーション パッケージによりデータ転送を最小限に抑えることができます。アプリケーションはタスクが実行されるノードにのみデプロイされるためです。
@@ -285,7 +290,7 @@ Batch サービスには、ノードで計算を実行するために定義す�
 既存のプールの開始タスクを追加または更新するには、そのコンピューティング ノードを再起動して、開始タスクがノードに適用されるようにする必要があります。
 
 >[!NOTE]
-> 開始タスクの合計サイズは、リソース ファイルと環境変数を含め、32,768 文字以下であることが必要です。 開始タスクに関して、この要件を確実に満たすためには、次の 2 とおりの方法があります。
+> バッチでは、リソース ファイルと環境変数を含む開始タスクの合計サイズが制限されます。 開始タスクのサイズを縮小する必要がある場合は、次の 2 つの方法のいずれかを利用できます。
 >
 > 1. アプリケーション パッケージを使って、Batch プール内の各ノードにアプリケーションまたはデータを分散させることができます。 アプリケーション パッケージについて詳しくは、「[Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ](batch-application-packages.md)」をご覧ください。
 > 2. アプリケーション ファイルが含まれた zip アーカイブを手動で作成することができます。 zip アーカイブを Azure Storage に BLOB としてアップロードします。 zip アーカイブを開始タスクのリソース ファイルとして指定します。 開始タスクのコマンド ラインを実行する前に、コマンド ラインから zip アーカイブを解凍します。 
@@ -321,7 +326,7 @@ Batch には、ジョブ実行前の設定用にジョブ準備タスク、 ジ�
 
 Batch .NET ライブラリを使用して MPI ジョブを Batch で実行する方法の詳細な説明については、「 [Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](batch-mpi.md)」を参照してください。
 
-### <a name="task-dependencies"></a>Task dependencies
+### <a name="task-dependencies"></a>タスクの依存関係
 [タスクの依存関係](batch-task-dependencies.md)は、名前が示すとおり、あるタスクを実行するには、事前にその他のタスクが完了している必要があることを指定できる機能です。 この機能は、"下流" のタスクが "上流" のタスクの出力を使用するような状況や、下流のタスクで必要になる初期化を上流のタスクで実行するような状況に対応できます。 この機能を使用するには、まず Batch ジョブでタスクの依存関係を有効にする必要があります。 その後、別のタスク (または他の複数のタスク) に依存するタスクごとに、どのタスクに依存するかを指定します。
 
 タスクの依存関係がある場合、シナリオを次のように構成できます。
@@ -501,10 +506,9 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 
 ## <a name="next-steps"></a>次の手順
 * Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
-* 「 [.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)」で紹介されているサンプル Batch アプリケーションの作成手順を参照します。 Linux コンピューティング ノードでワークロードを実行する [Python バージョン](batch-python-tutorial.md) のチュートリアルも用意されています。
-* Batch ソリューションを開発するときに使用する [BatchLabs][batch_labs] をダウンロードしてインストールします。 BatchLabs は、Azure Batch アプリケーションの作成、デバッグ、および監視に役立ちます。 
-* [Linux コンピューティング ノードのプールを作成する方法](batch-linux-nodes.md)を確認します。
-* MSDN の [Azure Batch フォーラム][batch_forum]にアクセスします。 初心者の方でも上級者の方でも、Batch についてわからないことがあれば、ぜひフォーラムをご利用ください。
+* [Batch .NET クライアント ライブラリ](quick-run-dotnet.md)または [Python](quick-run-python.md) を使用した Batch 対応アプリケーションの開発に関する基本事項を確認してください。 これらのクイック スタートでは、Batch サービスを使用して複数のコンピューティング ノードでワークロードを実行するサンプル アプリケーションの開発手順を説明しています。また、Azure Storage を使用してワークロード ファイルのステージングと取得を行う方法についても取り上げています。
+* Batch ソリューションを開発するときに使用する [Batch Explorer][batch_labs] をダウンロードしてインストールします。 Batch Explorer は、Azure Batch アプリケーションの作成、デバッグ、および監視に役立ちます。 
+* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)、[Batch Community リポジトリ](https://github.com/Azure/Batch)、MSDN の [Azure Batch フォーラム][batch_forum]などのコミュニティ リソースを参照してください。 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 
@@ -514,7 +518,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_sample_taskdeps]:  https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
-[batch_labs]: https://azure.github.io/BatchLabs/
+[batch_labs]: https://azure.github.io/BatchExplorer/
 [batch_net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [msdn_env_vars]: https://msdn.microsoft.com/library/azure/mt743623.aspx
 [net_cloudjob_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobmanagertask.aspx
@@ -538,7 +542,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 [net_rdpfile]: https://msdn.microsoft.com/library/azure/Mt272127.aspx
 [vnet]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_netconf
 
-[py_add_user]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.operations.html#azure.batch.operations.ComputeNodeOperations.add_user
+[py_add_user]: https://docs.microsoft.com/python/azure/?view=azure-python
 
 [batch_rest_api]: https://msdn.microsoft.com/library/azure/Dn820158.aspx
 [rest_add_job]: https://msdn.microsoft.com/library/azure/mt282178.aspx

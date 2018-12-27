@@ -1,18 +1,17 @@
 ---
-title: System Center Configuration Manager を使用して Azure Site Recovery の Mobility Service インストールを自動化する |Microsoft Docs
-description: この記事は、System Center Configuration Manager を使用して Mobility Service のインストールを自動化する場合に役立ちます。
-services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+title: System Center Configuration Manager を使用した VMware VM と物理サーバーの Azure へのディザスター リカバリーのために Azure Site Recovery モビリティ サービスのインストールを自動化する | Microsoft Docs
+description: この記事は、Site Recovery を使用した VMware VM と物理サーバーの Azure へのディザスター リカバリーのために、System Center Configuration Manager を使用してモビリティ サービスのインストールを自動化するのに役立ちます。
+author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 8382fadc02a7e80b6f28bd777f423013aed9add3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.topic: conceptual
+ms.date: 11/27/2018
+ms.author: ramamill
+ms.openlocfilehash: cd50a957894c2c6c4944b0ba3768a00754abaa15
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835090"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>System Center Configuration Manager を使用して Mobility Service のインストールを自動化する
 
@@ -49,7 +48,7 @@ Mobility Service は、[Azure Site Recovery](site-recovery-overview.md) を使�
 4. **MobSvc.passphrase** ファイルをネットワーク共有上の **MobSvcWindows** フォルダーにコピーします。
 5. 次のコマンドを実行して、構成サーバーでインストーラーのリポジトリを参照します。
 
-   `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
+   `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. **Microsoft-ASR\_UA\_*バージョン*\_Windows\_GA\_*日付*\_Release.exe** をネットワーク共有上の **MobSvcWindows** フォルダーにコピーします。
 7. 次のコードをコピーして、**install.bat** という名前で **MobSvcWindows** フォルダーに保存します。
@@ -192,7 +191,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 ### <a name="deploy-the-package"></a>パッケージをデプロイする
 1. Configuration Manager コンソールで、パッケージを右クリックして **[コンテンツの配布]** を選択します。
   ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
-2. パッケージのコピー先とする**[配布ポイント](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)**を選択します。
+2. パッケージのコピー先とする**[配布ポイント](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** を選択します。
 3. ウィザードを終了します。 指定した配布ポイントへのパッケージのレプリケートが開始されます。
 4. パッケージの配布が完了したら、パッケージを右クリックして **[展開]** を選択します。
   ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
@@ -230,7 +229,7 @@ Configuration Manager コンソールを使用して、展開の進行状況を�
 4. **MobSvc.passphrase** ファイルをネットワーク共有上の **MobSvcLinux** フォルダーにコピーします。
 5. 次のコマンドを実行して構成サーバーでインストーラーのリポジトリに移動します。
 
-   `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
+   `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. 次のファイルをネットワーク共有上の **MobSvcLinux** フォルダーにコピーします。
    * Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz
@@ -415,7 +414,7 @@ cd /tmp
 ### <a name="deploy-the-package"></a>パッケージをデプロイする
 1. Configuration Manager コンソールで、パッケージを右クリックして **[コンテンツの配布]** を選択します。
   ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
-2. パッケージのコピー先とする**[配布ポイント](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)**を選択します。
+2. パッケージのコピー先とする**[配布ポイント](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** を選択します。
 3. ウィザードを終了します。 指定した配布ポイントへのパッケージのレプリケートが開始されます。
 4. パッケージの配布が完了したら、パッケージを右クリックして **[展開]** を選択します。
   ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)

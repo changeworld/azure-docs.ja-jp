@@ -1,3 +1,20 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: storage
+author: roygara
+ms.service: storage
+ms.topic: include
+ms.date: 09/15/2018
+ms.author: rogarana
+ms.custom: include file
+ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49960266"
+---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>増分スナップショットを使用した Azure 非管理 VM ディスクのバックアップ
 ## <a name="overview"></a>概要
 Azure Storage には、BLOB のスナップショットを作成する機能があります。 スナップショットは、特定の時点における BLOB の状態をキャプチャします。 この記事では、スナップショットを使って仮想マシン ディスクのバックアップを保存するシナリオについて説明します。 この手法は、Azure Backup と Recovery Service を使用せず、仮想マシン ディスク用に独自のバックアップ方法を構築する必要がある場合にご利用ください。
@@ -49,7 +66,7 @@ Incremental Snapshot Copy を使用すると、以下の差分をストレージ
 増分スナップショットのコピーは、次の手順で実行できます。
 
 * [Snapshot Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob)を使用してベース BLOB のスナップショットを作成します。
-* [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob)を使って目的のバックアップ ストレージ アカウントにスナップショットをコピーします。 これが、バックアップ ページ BLOB になります。 バックアップ ページ BLOB のスナップショットを作成し、バックアップ アカウントに格納します。
+* [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) を使って、同じ Azure リージョンまたは他の Azure リージョンにある、目的のバックアップ ストレージ アカウントにスナップショットをコピーします。 これが、バックアップ ページ BLOB になります。 バックアップ ページ BLOB のスナップショットを作成し、バックアップ アカウントに格納します。
 * Snapshot Blob を使用してベース BLOB の別のスナップショットを作成します。
 * [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) を使用して、ベース BLOB の最初のスナップショットと 2 つ目のスナップショットの差分を取得します。 新しいパラメーター **prevsnapshot** を使用して、差分の取得対象となるスナップショットの DateTime 値を指定します。 このパラメーターが存在する場合、REST 応答には、対象のスナップショットと以前のスナップショットとの間で変更 (ページの消去を含む) されたページだけが含まれます。
 * [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) を使用してこれらの変更をバックアップ ページ BLOB に適用します。
@@ -62,7 +79,7 @@ Incremental Snapshot Copy を使用してディスクのバックアップを保
 
 Premium Storage P30 ディスクが接続された DS シリーズの Azure VM について考えてみましょう。 この P30 ディスク (*mypremiumdisk*) の格納先は Premium Storage アカウント (*mypremiumaccount*) です。 *mypremiumdisk* のバックアップには、Standard Storage アカウント (*mybackupstdaccount*) が使用されます。 12 時間ごとの *mypremiumdisk* のスナップショットを維持したいと考えています。
 
-ストレージ アカウントとディスクの作成について詳しくは、「 [Azure ストレージ アカウントについて](../articles/storage/storage-create-storage-account.md)」を参照してください。
+ストレージ アカウントの作成方法については、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)」を参照してください。
 
 Azure VM のバックアップについて詳しくは、 [Azure での VM バックアップの計画](../articles/backup/backup-azure-vms-introduction.md)に関する記事を参照してください。
 
@@ -92,7 +109,7 @@ Azure VM のバックアップについて詳しくは、 [Azure での VM バ�
 
 ![Restore disk from snapshots](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-2.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 以下のリンクでは、BLOB のスナップショットの作成と、VM のバックアップ インフラストラクチャの計画について説明します。
 
 * [BLOB のスナップショットの作成](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)

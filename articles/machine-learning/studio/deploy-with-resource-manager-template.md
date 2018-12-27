@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 4955ac4d-ff99-4908-aa27-69b6bfcc8e85
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/05/2018
-ms.openlocfilehash: 4ba75b1d1740486649cc8d4e012c3f780488cbe0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc19c77e90ffd2d300497fc496da02b2d2234d3a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244391"
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Azure Resource Manager を使用した Machine Learning ワークスペースのデプロイ
 ## <a name="introduction"></a>はじめに
@@ -96,7 +98,7 @@ Install-Module Azure -Scope CurrentUser
 
 ```
 # Authenticate (enter your credentials in the pop-up window)
-Add-AzureRmAccount
+Connect-AzureRmAccount
 ```
 この手順は、セッションごとに繰り返し実行する必要があります。 認証されると、サブスクリプション情報が表示されます。
 
@@ -136,7 +138,7 @@ $rgd.Outputs.mlWorkspaceToken.Value
 # List the primary and secondary tokens of all workspaces
 Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}  
 ```
-ワークスペースをプロビジョニングしたら、 [Azure Machine Learning の PowerShell モジュール](http://aka.ms/amlps)を使用して、Azure Machine Learning Studio タスクを自動化することもできます。
+ワークスペースをプロビジョニングしたら、 [Azure Machine Learning の PowerShell モジュール](https://aka.ms/amlps)を使用して、Azure Machine Learning Studio タスクを自動化することもできます。
 
 ## <a name="next-steps"></a>次の手順
 * [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)について確認します。 

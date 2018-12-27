@@ -3,8 +3,8 @@ title: Azure Marketplace へのプランのデプロイ | Microsoft Docs
 description: プラン (仮想マシン イメージ、開発者向けサービス、データ サービスなど) を Azure Marketplace にデプロイする方法を手順に従って学習します。
 services: marketplace-publishing
 documentationcenter: ''
-author: msmbaldwin
-manager: mbaldwin
+author: HannibalSII
+manager: hascipio
 editor: ''
 ms.assetid: 8f79b891-84e2-4f41-ba0d-66420e2c6b2e
 ms.service: marketplace
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2016
-ms.author: mbaldwin
-ms.openlocfilehash: 8df7b0e49e17612743b02596e99f7d1fbe8c6803
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: hascipio
+ms.openlocfilehash: 12dc81642905cd9449a1032c7ab57298e6b69ba8
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714283"
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>Azure Marketplace へのプランのデプロイ
 プラン (テスト済みの顧客シナリオやマーケティング コンテンツなど) の内容に問題がなく、発行の準備が整ったら、**[発行]** タブで**本番へのプッシュ**を要求します。  
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/16/2018
 2. 左側のリストから **[発行]** タブを選択します。
    
     ![図][img-pubportal-menu-publish]
-3. **[Request approval to push to production (本番にプッシュするための承認を要求)]**をクリックします。 要求が行われると、承認チームが最終レビューを実行し、その後、プランが Azure Marketplace で使用できるようになります。
+3. **[Request approval to push to production (本番にプッシュするための承認を要求)]** をクリックします。 要求が行われると、承認チームが最終レビューを実行し、その後、プランが Azure Marketplace で使用できるようになります。
    
     ![図][img-pubportal-publish-pushproduction]
 
@@ -42,7 +43,8 @@ ms.lasthandoff: 03/16/2018
 > * 前の手順によって本番環境でプランが承認されると、すべての Azure データセンターへのプランのレプリケーションが開始されます。 一般的に、レプリケーションの所要時間は 24 ～ 48 時間ですが、VHD のサイズによっては最大で 1 週間かかる場合があります。 ただし、既に表示されているプランを更新している場合で、マーケティングの変更のみのときは、レプリケーションはもっと早く完了します。
 > * レプリケーションが完了したら、Azure Marketplace でプランが使用できるようになります。
 > 
-> **[ドラフト]** 状態の間は、プランをいつでも削除できます (つまり、**ステージングにプッシュ**や**本番にプッシュ**されていない状態)。 ドラフトを削除するページの下部にある **[履歴]** タブの **[ドラフトの破棄]** ボタンをクリックします。
+> 
+  **[ドラフト]** 状態の間は、プランをいつでも削除できます (つまり、**ステージングにプッシュ**や**本番にプッシュ**されていない状態)。 ドラフトを削除するページの下部にある **[履歴]** タブの **[ドラフトの破棄]** ボタンをクリックします。
 > 
 > 
 
@@ -80,7 +82,8 @@ ms.lasthandoff: 03/16/2018
 プランが公開されたら、顧客シナリオをテストし、ステージング環境でテストおよび検証したとおりに、運用環境でもすべてのコントラクトと機能が適切に機能することを検証します。
 
 ## <a name="see-also"></a>関連項目
-* [Microsoft Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+* 
+  [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
 [img-pubportal-walkthru-checked]:media/marketplace-publishing-push-to-production/pubportal-walkthru-checked.png
 [img-pubportal-menu-publish]:media/marketplace-publishing-push-to-production/pubportal-menu-publish.png

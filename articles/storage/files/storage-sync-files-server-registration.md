@@ -1,29 +1,24 @@
 ---
-title: "Azure File Sync (プレビュー) に登録されたサーバーの管理 | Microsoft Docs"
-description: "Azure ファイル同期のストレージ同期サービスへの Windows Server の登録と登録解除の方法について説明します。"
+title: Azure File Sync に登録されたサーバーの管理 | Microsoft Docs
+description: Azure ファイル同期のストレージ同期サービスへの Windows Server の登録と登録解除の方法について説明します。
 services: storage
-documentationcenter: 
 author: wmgries
-manager: klaasl
-editor: jgerend
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: fcd79f25dee4ccaf674594222a6465fda137fd7a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.component: files
+ms.openlocfilehash: 1aa1bd085a312e379dc996a860c7f97b2e0dfe73
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918878"
 ---
-# <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Azure File Sync (プレビュー) に登録されたサーバーの管理
-Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
+# <a name="manage-registered-servers-with-azure-file-sync"></a>Azure File Sync に登録されたサーバーの管理
+Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
 
-この記事では、サーバーをトレージ同期サービスに登録して管理する方法について説明します。 Azure ファイル同期をエンドツーエンドでデプロイする方法の詳細については、「[How to deploy Azure File Sync (preview)](storage-sync-files-deployment-guide.md)」(Azure ファイル同期 (プレビュー) をデプロイする方法) を参照してください。
+この記事では、サーバーをトレージ同期サービスに登録して管理する方法について説明します。 Azure File Sync をエンドツーエンドでデプロイする方法の詳細については、[Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>サーバーをストレージ同期サービスに登録/登録解除する
 サーバーを Azure File Sync に登録すると、Windows Server と Azure の間に信頼関係が確立されます。 この関係を使用して、サーバーに "*サーバー エンドポイント*" を作成できます。サーバー エンドポイントは、Azure ファイル共有 ("*クラウド エンドポイント*" とも呼ばれます) と同期する必要がある特定のフォルダーを表します。 
@@ -31,8 +26,8 @@ Azure ファイル同期 (プレビュー) を使用すると、オンプレミ�
 ### <a name="prerequisites"></a>前提条件
 サーバーをストレージ同期サービスに登録するには、まず必要な前提条件を満たすようにサーバーを準備する必要があります。
 
-* サーバーでは、サポートされているバージョンの Windows Server を実行している必要があります。 詳細については、「[サポートされている Windows Server のバージョン](storage-sync-files-planning.md#supported-versions-of-windows-server)」をご覧ください。
-* ストレージ同期サービスがデプロイされていること。 ストレージ同期サービスのデプロイ方法の詳細については、「[How to deploy Azure File Sync (preview)](storage-sync-files-deployment-guide.md)」(Azure ファイル同期 (プレビュー) をデプロイする方法) を参照してください。
+* サーバーでは、サポートされているバージョンの Windows Server を実行している必要があります。 詳細については、[Azure File Sync のシステム要件との相互運用性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)に関する記事を参照してください。
+* ストレージ同期サービスがデプロイされていること。 ストレージ同期サービスのデプロイ方法の詳細については、「[How to deploy Azure File Sync](storage-sync-files-deployment-guide.md)」(Azure ファイル同期をデプロイする方法) を参照してください。
 * サーバーがインターネットに接続され、Azure にアクセスできること。
 * サーバー マネージャーの UI を使用して、管理者の [IE セキュリティ強化の構成] を無効にします。
     
@@ -66,7 +61,7 @@ Azure ファイル同期 (プレビュー) を使用すると、オンプレミ�
 ### <a name="register-a-server-with-storage-sync-service"></a>サーバーをストレージ同期サービスに登録する
 Azure File Sync の "*同期グループ*" で、サーバーを "*サーバー エンドポイント*" として使用するには、"*ストレージ同期サービス*" にサーバーを登録しておく必要があります。 サーバーを登録できるストレージ同期サービスは、一度に 1 つに限られます。
 
-#### <a name="install-the-azure-file-sync-agent"></a>Azure ファイル同期エージェントをインストールする
+#### <a name="install-the-azure-file-sync-agent"></a>Azure File Sync エージェントをインストールする
 1. [Azure ファイル同期エージェントをダウンロード](https://go.microsoft.com/fwlink/?linkid=858257)します。
 2. Azure ファイル同期エージェントのインストーラーを起動します。
     
@@ -113,14 +108,15 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - Res
 ### <a name="unregister-the-server-with-storage-sync-service"></a>ストレージ同期サービスからサーバーの登録を解除する
 ストレージ同期サービスからサービスの登録を解除するために必要な手順がいくつかあります。 サーバーの登録を適切に解除する方法を見てみましょう。
 
-#### <a name="optional-recall-all-tiered-data"></a>(省略可能) すべての階層型データを回収する
-サーバー エンドポイントでクラウドの階層化を有効にすると、ファイルが Azure ファイル共有に "*階層化*" されます。 その結果、オンプレミスのファイル共有は、データセットの完全なコピーでなくキャッシュとして動作するので、ファイル サーバー上の領域を効率的に使用できるようになります。 ただし、階層化されたファイルがサーバーのローカルにまだある状態でサーバー エンドポイントを削除すると、それらのファイルにアクセスできなくなります。 そのため、ファイルのアクセスを継続するには、Azure Files から階層化されたファイルをすべて回収してから、登録解除を進める必要があります。 
+> [!Warning]  
+> Microsoft のエンジニアによってはっきりと指示された場合を除き、サーバーを登録解除してから再登録することにより、またはサーバー エンドポイントを削除してから再作成することにより、同期、クラウドの階層化、または Azure File Sync のその他の側面に関する問題のトラブルシューティングを試みないでください。 サーバーの登録解除およびサーバー エンドポイントの削除は破壊的な操作であり、登録されたサーバーやサーバー エンドポイントが再作成された後で、サーバー エンドポイントがあるボリューム上の階層化されたファイルは Azure ファイル共有上の場所に "再接続" されず、同期エラーが発生します。 また、サーバー エンドポイントの名前空間の外部に存在する階層化されたファイルは完全に失われる可能性があることにも注意してください。 クラウドの階層化が有効にされていなくても、階層化されたファイルがサーバー エンドポイント内に存在することがあります。
 
-この処理は、次のように PowerShell コマンドレットを使用して実行できます。
+#### <a name="optional-recall-all-tiered-data"></a>(省略可能) すべての階層型データを回収する
+現在階層化されているファイルを、Azure File Sync を削除した後でも使用できるようにしたい場合は (つまり、これがテスト環境ではなく運用環境の場合)、サーバー エンドポイントを含む各ボリュームのすべてのファイルを呼び戻します。 すべてのサーバー エンドポイントのクラウド階層化を無効にした後、次の PowerShell コマンドレットを実行します。
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
+Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
 > [!Warning]  
@@ -139,7 +135,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 
-$accountInfo = Login-AzureRmAccount
+$accountInfo = Connect-AzureRmAccount
 Login-AzureRmStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
 
 $StorageSyncService = "<your-storage-sync-service>"
@@ -192,6 +188,6 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 Windows Server 仮想化ホストで実行されている仮想マシンで Azure File Sync がホストされている場合、記憶域 QoS (記憶域のサービス品質) を使用して記憶域 IO の使用を調整できます。 記憶域 QoS ポリシーは、最大値 (制限、上記の StorageSyncNetwork の制限を強制する方法と同様) または最小値 (予約) として設定できます。 最大値ではなく最小値を設定すると、使用可能なストレージ帯域幅を他のワークロードが使用していない場合に、Azure File Sync がバーストして使用できるようになります。 詳細については、[記憶域のサービス品質](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)に関する記事をご覧ください。
 
 ## <a name="see-also"></a>関連項目
-- [Azure File Sync (プレビュー) のデプロイの計画](storage-sync-files-planning.md)
-- [Azure File Sync (プレビュー) をデプロイする](storage-sync-files-deployment-guide.md) 
-- [Azure ファイル同期のトラブルシューティング (プレビュー)](storage-sync-files-troubleshoot.md)
+- [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
+- [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md) 
+- [Azure File Sync のトラブルシューティング](storage-sync-files-troubleshoot.md)

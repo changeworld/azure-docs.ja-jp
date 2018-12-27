@@ -10,22 +10,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/05/2018
+ms.topic: conceptual
+ms.date: 07/27/2018
 ms.author: shlo
-ms.openlocfilehash: 312072a5de21ff1c6b602fed93b77c564b15a9f1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1a24079292ce8fdd6a514a85484fc10b77491ba6
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868337"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 この記事では、タンブリング ウィンドウ トリガーを作成、起動、および監視する手順について説明します。 トリガーとサポートされる種類の全般的な情報については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事をご覧ください。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Azure Data Factory バージョン 2 に適用されます。 一般公開 (GA) されている Azure Data Factory バージョン 1 を使用している場合は、[Azure Data Factory バージョン 1 の使用](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
-
 タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。 タンブリング ウィンドウ トリガーはパイプラインと 1 対 1 の関係を持ち、単一のパイプラインのみを参照できます。
+
+## <a name="data-factory-ui"></a>Data Factory UI
+
+タンブリング ウィンドウ トリガーを Azure Portal で作成するには、**[トリガー] > [タンブリング ウィンドウ] > [次へ]** を選択し、タンブリング ウィンドウを定義するプロパティを構成します。
+
+![タンブリング ウィンドウ トリガーを Azure Portal で作成する](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
 
 ## <a name="tumbling-window-trigger-type-properties"></a>タンブリング ウィンドウのトリガーの種類のプロパティ
 タンブリング ウィンドウには、次のトリガーの種類のプロパティがあります。
@@ -72,11 +76,11 @@ ms.lasthandoff: 03/23/2018
 
 次の表に、タンブリング ウィンドウ トリガーの繰り返しとスケジュール設定に関連する主な JSON 要素の概要を示します。
 
-| JSON 要素 | [説明] | type | 使用できる値 | 必須 |
+| JSON 要素 | 説明 | type | 使用できる値 | 必須 |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | トリガーの種類。 種類は固定値の "TumblingWindowTrigger" です。 | String | "TumblingWindowTrigger" | [はい] |
 | **runtimeState** | トリガー実行時の現在の状態。<br/>**注**: この要素は \<readOnly> です。 | String | "Started"、"Stopped"、"Disabled" | [はい] |
-| **frequency** | トリガーが繰り返される頻度の単位 (分または時間) を表す文字列。 **startTime** の日付値が **frequency** 値よりも細かい場合、ウィンドウの境界を計算するときに **startTime** の日付が考慮されます。 たとえば、**frequency** 値が時間単位で、**startTime** 値が 2016-04-01T10:10:10Z の場合、最初のウィンドウは (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z) になります。 | String | "minute"、"hour"  | [はい] |
+| **frequency** | トリガーが繰り返される頻度の単位 (分または時間) を表す文字列。 **startTime** の日付値が **frequency** 値よりも細かい場合、ウィンドウの境界を計算するときに **startTime** の日付が考慮されます。 たとえば、**frequency** 値が時間単位で、**startTime** 値が 2017-09-01T10:10:10Z の場合、最初のウィンドウは (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z) になります。 | String | "minute"、"hour"  | [はい] |
 | **interval** | トリガーの実行頻度を決定する、**frequency** 値の間隔を示す正の整数。 たとえば、**interval** が 3 で **frequency** が "hour" の場合、トリガーは 3 時間ごとに繰り返されます。 | 整数 | 正の整数。 | [はい] |
 | **startTime**| 最初の発生。これは過去の場合があります。 最初のトリガー間隔は、(**startTime**、**startTime** + **interval**) になります。 | Datetime | DateTime 値。 | [はい] |
 | **endTime**| 最後の発生。これは過去の場合があります。 | Datetime | DateTime 値。 | [はい] |

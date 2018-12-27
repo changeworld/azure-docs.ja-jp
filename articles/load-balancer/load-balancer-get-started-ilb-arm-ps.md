@@ -4,21 +4,19 @@ description: Azure Resource Manager と Azure PowerShell モジュールを使�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jennoc
-tags: azure-resource-manager
-ms.assetid: c6c98981-df9d-4dd7-a94b-cc7d1dc99369
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 54846ddc142a5bf7cd37c03fd9c069dd0c94897f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 4e99411ec56f25e249429e4e65bae4a8e7071cc1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412688"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用した内部ロード バランサーの作成
 
@@ -37,7 +35,7 @@ ms.lasthandoff: 03/29/2018
 
 ## <a name="get-started-with-the-configuration"></a>構成の概要
 
-この記事では、Azure Resource Manager と Azure PowerShell モジュールを使用して、内部ロード バランサーを作成する方法について説明します ResourceManager デプロイ モデルでは、内部ロード バランサーの作成に必要なオブジェクトは個々に構成されます。 オブジェクトを作成して構成した後は、結合して 1 つのロード バランサーを作成します。
+この記事では、Azure Resource Manager と Azure PowerShell モジュールを使用して、内部ロード バランサーを作成する方法について説明します Resource Manager デプロイ モデルでは、内部ロード バランサーの作成に必要なオブジェクトは個々に構成されます。 オブジェクトを作成して構成した後は、結合して 1 つのロード バランサーを作成します。
 
 ロード バランサーをデプロイするには、次のオブジェクトを作成する必要があります。
 
@@ -60,7 +58,7 @@ ms.lasthandoff: 03/29/2018
 Azure Resource Manager 用の PowerShell モジュールを起動します。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ### <a name="step-2-view-your-subscriptions"></a>手順 2: サブスクリプションを表示する

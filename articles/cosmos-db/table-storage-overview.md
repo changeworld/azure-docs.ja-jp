@@ -1,24 +1,20 @@
 ---
-title: "Azure Table Storage の概要 | Microsoft Docs"
-description: "NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
+title: Azure Table Storage の概要
+description: NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。
 services: cosmos-db
-documentationcenter: .net
-author: mimig1
-manager: jhubbard
-editor: tysonn
-ms.assetid: fe46d883-7bed-49dd-980e-5c71df36adb3
+author: SnehaGunda
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: overview
 ms.date: 11/03/2017
-ms.author: mimig
-ms.openlocfilehash: 5ad83a5a33440200c4e25f5752e5c3242941d022
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.author: sngun
+ms.openlocfilehash: 5f07d041e7674cb1579247ca2b444017762c5be0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867411"
 ---
 # <a name="azure-table-storage-overview"></a>Azure Table Storage の概要
 
@@ -38,6 +34,6 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
 
 * 利用可能な API の詳細については、Table service のリファレンス ドキュメントを参照してください。
 
-    * [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [.NET 用ストレージ クライアント ライブラリ リファレンス](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
+    * [REST API リファレンス](https://msdn.microsoft.com/library/azure/dd179355)

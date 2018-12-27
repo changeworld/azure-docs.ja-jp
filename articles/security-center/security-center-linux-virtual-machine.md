@@ -1,24 +1,25 @@
 ---
-title: "Linux での Azure Security Center と Azure 仮想マシン | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center で Azure 仮想マシンを保護する方法についてわかりやすく説明します。"
+title: Linux での Azure Security Center と Azure 仮想マシン | Microsoft Docs
+description: このドキュメントでは、Azure Security Center で Azure 仮想マシンを保護する方法についてわかりやすく説明します。
 services: security-center
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
-editor: 
+author: rkarlin
+manager: mbaldwin
+editor: ''
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 0df4fca59575bd8e18e91fea2066a9e694ed320d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5ec77d7bcc3715946c4574bca17f280a9f483b45
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340950"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Linux での Azure Security Center と Azure 仮想マシン
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
@@ -32,7 +33,7 @@ Security Center は、仮想マシンのセキュリティ設定を可視化し�
 * 不足しているシステムのセキュリティ更新プログラムと重要な更新プログラム
 * エンドポイント保護の推奨事項
 * ディスク暗号化の検証
-* ネットワーク ベースの攻撃 ([Standard バージョン](https://azure.microsoft.com/en-us/pricing/details/security-center/)でのみ使用可能)
+* ネットワーク ベースの攻撃 ([Standard バージョン](https://azure.microsoft.com/pricing/details/security-center/)でのみ使用可能)
 
 Security Center の機能は、Azure VM を保護することだけではありません。Cloud Services、App Services、Virtual Network などのセキュリティを監視して管理することもできます。 
 
@@ -56,7 +57,7 @@ Azure Security Center で必要な情報を収集し、構成したセキュリ�
 ![セキュリティ ポリシー](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig1.png)
 
 > [!NOTE]
-> **[防止ポリシー]** で使用できる各ポリシーについては、[セキュリティ ポリシーの設定](security-center-policies.md)に関する記事を参照してください。
+> **[防止ポリシー]** で使用できる各ポリシーについては、[セキュリティ ポリシーの設定](tutorial-security-policy.md)に関する記事を参照してください。
 > 
 
 ## <a name="manage-security-recommendations"></a>セキュリティに関する推奨事項の管理
@@ -64,13 +65,13 @@ Azure Security Center で必要な情報を収集し、構成したセキュリ�
 
 セキュリティ ポリシーを設定すると、セキュリティ センターではリソースのセキュリティの状態が分析され、潜在的な脆弱性が特定されます。 推奨事項は表形式で表示されます。表の行はそれぞれ特定の推奨事項を表します。 次の表には、Linux オペレーティング システムを実行している Azure VM の推奨事項の例の一部と、それぞれを適用した場合に実行される内容について記載されています。 推奨事項を選択すると、Security Center で推奨事項を実装する方法についての情報を確認できます。
 
-| 推奨 | Description |
+| 推奨 | 説明 |
 | --- | --- |
 | [サブスクリプションのデータ収集の有効化](security-center-enable-data-collection.md) |各サブスクリプションおよびサブスクリプションのすべての仮想マシン (VM) に対して、セキュリティ ポリシーでデータ収集を有効にすることをお勧めします。 |
 | [OS の脆弱性の修復](security-center-remediate-os-vulnerabilities.md) |OS の構成を推奨される構成規則 (パスワードの保存を許可しないなど) に合わせることをお勧めします。 |
 | [システムの更新の適用](security-center-apply-system-updates.md) |システムの不足しているセキュリティ更新プログラムおよび重要な更新プログラムを VM にデプロイすることをお勧めします。 |
 | [システムの更新後に再起動する](security-center-apply-system-updates.md#reboot-after-system-updates) |VM を再起動してシステムの更新プログラムの適用プロセスを完了するよう推奨します。 |
-| [VM エージェントの有効化](security-center-enable-vm-agent.md) |VM エージェントを必要とする VM を確認できます。 パッチのスキャン、基準のスキャン、およびマルウェア対策プログラムをプロビジョニングするには、VM 上に VM エージェントをインストールする必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 「 [VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) 」の記事には、VM エージェントのインストール方法が記載されています。 |
+| [VM エージェントの有効化](security-center-enable-vm-agent.md) |VM エージェントを必要とする VM を確認できます。 パッチのスキャン、基準のスキャン、およびマルウェア対策プログラムをプロビジョニングするには、VM 上に VM エージェントをインストールする必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 「 [VM エージェントと拡張機能 – パート 2](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) 」の記事には、VM エージェントのインストール方法が記載されています。 |
 | [ディスク暗号化の適用](security-center-apply-disk-encryption.md) |Azure Disk Encryption を使用して VM ディスクを暗号化することをお勧めします (Windows VM および Linux VM)。 VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。 |
 
 
@@ -79,7 +80,7 @@ Azure Security Center で必要な情報を収集し、構成したセキュリ�
 > 
 
 ## <a name="monitor-security-health"></a>セキュリティ正常性を監視する
-サブスクリプションのリソースに対して [セキュリティ ポリシー](security-center-policies.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  **[リソース セキュリティの正常性]** ブレードで、リソースのセキュリティの状態と、問題がある場合はその問題を確認することができます。 **[リソース セキュリティの正常性]** タイルの **[仮想マシン]** をクリックすると、**[仮想マシン]** ブレードが開いて VM の推奨事項が表示されます。 
+サブスクリプションのリソースに対して [セキュリティ ポリシー](tutorial-security-policy.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  **[リソース セキュリティの正常性]** ブレードで、リソースのセキュリティの状態と、問題がある場合はその問題を確認することができます。 **[リソース セキュリティの正常性]** タイルの **[仮想マシン]** をクリックすると、**[仮想マシン]** ブレードが開いて VM の推奨事項が表示されます。 
 
 ![セキュリティの正常性](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -91,7 +92,7 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 セキュリティの警告を選択して、警告を発生させたイベントの詳細を確認します。必要に応じて、攻撃を受けたものを修復するために必要な手順を確認します。 セキュリティの警告は、[種類](security-center-alerts-type.md)と日付によってグループ化されます。
 
 ## <a name="monitor-security-health"></a>セキュリティ正常性の監視
-サブスクリプションのリソースに対して [セキュリティ ポリシー](security-center-policies.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  **[リソース セキュリティの正常性]** ブレードで、リソースのセキュリティの状態と、問題がある場合はその問題を確認することができます。 **[リソース セキュリティの正常性]** タイルの **[仮想マシン]** をクリックすると、**[仮想マシン]** ブレードが開いて VM の推奨事項が表示されます。 
+サブスクリプションのリソースに対して [セキュリティ ポリシー](tutorial-security-policy.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  **[リソース セキュリティの正常性]** ブレードで、リソースのセキュリティの状態と、問題がある場合はその問題を確認することができます。 **[リソース セキュリティの正常性]** タイルの **[仮想マシン]** をクリックすると、**[仮想マシン]** ブレードが開いて VM の推奨事項が表示されます。 
 
 ![セキュリティの正常性](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig4.png)
 
@@ -103,7 +104,7 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 ## <a name="see-also"></a>関連項目
 セキュリティ センターの詳細については、次を参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 

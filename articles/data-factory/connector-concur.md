@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory (Beta) を使用して Concur からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Concur からデータをコピーする (プレビュー) | Microsoft Docs
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Concur のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: ad93d40f7d1a08b248ed4b8ceb744929aeb13c79
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 00dd74ccd317799ca3afcbe0ed1ca85e19bb3cbe
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123879"
 ---
-# <a name="copy-data-from-concur-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Concur からデータをコピーする
+# <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Concur からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Copy Activity in V1 (V1 でのコピー アクティビティ)](v1/data-factory-data-movement-activities.md)」を参照してください。
-
 > [!IMPORTANT]
-> このコネクタは、現在ベータ版です。 実際にお試しいただき、フィードバックをお寄せください。 運用環境では使用しないでください。
+> このコネクタは、現在プレビューの段階です。 実際にお試しいただき、フィードバックをお寄せください。 ソリューションでプレビュー版コネクタの依存関係を取得したい場合、[Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -40,7 +38,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 ## <a name="getting-started"></a>使用の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Concur コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -48,9 +46,9 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Concur のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **Concur** に設定する必要があります。 | [はい] |
+| type | type プロパティは **Concur** に設定する必要があります。 | [はい] |
 | clientId | Concur App Management によって提供されるアプリケーションの client_id。  | [はい] |
 | username | Concur サービスへのアクセスに使用するユーザー名。  | [はい] |
 | password | username フィールドに指定したユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
@@ -106,10 +104,10 @@ Concur からデータをコピーするには、データセットの type プ�
 
 Concur からデータをコピーするには、コピー アクティビティのソースの種類を **ConcurSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは **ConcurSource** に設定する必要があります。 | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Opportunities where Id = xxx "`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは **ConcurSource** に設定する必要があります。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Opportunities where Id = xxx "`」のように入力します。 | [はい] |
 
 **例:**
 

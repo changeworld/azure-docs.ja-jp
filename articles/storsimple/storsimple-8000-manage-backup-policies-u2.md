@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ バックアップ ポリシーの管理 | Microsoft Docs"
-description: "StorSimple デバイス マネージャー サービスを使用して、StorSimple 8000 シリーズ デバイスで手動バックアップ、バックアップのスケジュールを作成して、バックアップのリテンション期間を管理する方法について説明します。"
+title: StorSimple 8000 シリーズ バックアップ ポリシーの管理 | Microsoft Docs
+description: StorSimple デバイス マネージャー サービスを使用して、StorSimple 8000 シリーズ デバイスで手動バックアップ、バックアップのスケジュールを作成して、バックアップのリテンション期間を管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,11 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 569dbfdeb7dcd526cb5a54b487ea1bfb59b13cc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681590"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Azure ポータルで StorSimple デバイス マネージャー サービスを使用してバックアップ ポリシーを管理する
 
@@ -55,13 +56,13 @@ StorSimple デバイスの **[バックアップ ポリシー]** ブレードで
 
 バックアップ ポリシーに実行できる、頻繁に使用される操作は次のとおりです。
 
-* バックアップ ポリシーの追加
+* バックアップ ポリシーを追加する
 * スケジュールの追加または変更
 * ボリュームの追加または削除
 * バックアップ ポリシーの削除
 * 手動バックアップの取得
 
-## <a name="add-a-backup-policy"></a>バックアップ ポリシーの追加
+## <a name="add-a-backup-policy"></a>バックアップ ポリシーを追加する
 
 自動的にバックアップをスケジュールするためのバックアップ ポリシーを追加します。 最初にボリュームを作成するとき、ボリュームに関連付けられた既定のバックアップ ポリシーはありません。 ボリューム データを保護するには、バックアップ ポリシーを追加して割り当てる必要があります。
 
@@ -95,7 +96,7 @@ StorSimple デバイスからバックアップ ポリシーを削除するに�
 
 [!INCLUDE [storsimple-8000-create-manual-backup](../../includes/storsimple-8000-create-manual-backup.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細
 

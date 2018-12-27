@@ -1,25 +1,26 @@
 ---
-title: "Blob Storage から SQL Database へのデータのコピー - Azure | Microsoft Docs"
-description: "このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Blob Storage から SQL Database にデータをコピーする方法を示します。"
+title: Blob Storage から SQL Database へのデータのコピー - Azure | Microsoft Docs
+description: このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Blob Storage から SQL Database にデータをコピーする方法を示します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: e4035060-93bf-4e8d-bf35-35e2d15c51e0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3135c8bf6316125a164c06630bc7607a92621b26
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 596a9e4e3e1d24bdcab561a7238548d418ac0581
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243575"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル: Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
@@ -33,7 +34,7 @@ ms.lasthandoff: 03/02/2018
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 でのコピー アクティビティに関するチュートリアル](../quickstart-create-data-factory-dot-net.md)を参照してください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。 
 
 このチュートリアルでは、BLOB ストレージから SQL Database にデータをコピーするパイプラインを備えたデータ ファクトリを作成します。
 
@@ -47,8 +48,8 @@ ms.lasthandoff: 03/02/2018
 ## <a name="prerequisites-for-the-tutorial"></a>このチュートリアルの前提条件
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
-* **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](http://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
-* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを **ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
+* **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
+* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを **ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md) 」をご覧ください。
 * **Azure SQL データベース**。 このチュートリアルでは、Azure SQL Database を **コピー先** データ ストアとして使用します。 このチュートリアルで使用できる Azure SQL Database がない場合の作成方法については、「 [Azure SQL Database を作成して構成する方法](../../sql-database/sql-database-get-started.md) 」を参照してください。
 * **SQL Server 2012/2014 または Visual Studio 2013**。 サンプル データベースを作成し、結果データをデータベースに表示するには、SQL Server Management Studio または Visual Studio を使用します。  
 
@@ -65,7 +66,7 @@ ms.lasthandoff: 03/02/2018
 6. **key1**についても、前のコピー手順を繰り返すか、メモしておきます。
 
     ![スストレージ アクセス キー](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
-7. **[X]**をクリックしてすべてのブレードを閉じます。
+7. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL サーバー、データベース、ユーザーの名前を収集する
 このチュートリアルを実行するには、Azure SQL サーバー名、データベース名、ユーザー名が必要です。 Azure SQL Database の**サーバー**、**データベース**、**ユーザー**の名前をメモしておきます。
@@ -74,7 +75,7 @@ ms.lasthandoff: 03/02/2018
 2. **[SQL データベース]** ブレードで、このチュートリアルで使用する**データベース**を選択します。 **データベース名**をメモしておきます。  
 3. **[SQL データベース]** ブレードで、**[設定]** の **[プロパティ]** をクリックします。
 4. **[サーバー名]** と **[サーバー管理ログイン]** の値をメモしておきます。
-5. **[X]**をクリックしてすべてのブレードを閉じます。
+5. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>Azure サービスに SQL サーバーへのアクセスを許可する
 Data Factory サービスから Azure SQL サーバーにアクセスできるように、Azure SQL サーバーで **[Azure サービスへのアクセスを許可する]** の設定が**オン**になっていることを確認します。 この設定を確認して有効にするには、次の手順を実行します。
@@ -82,7 +83,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 1. 左側にある **[すべてのサービス]** ハブをクリックし、**[SQL サーバー]** をクリックします。
 2. サーバーを選択し、**[設定]** の **[ファイアウォール]** をクリックします。
 3. **[ファイアウォールの設定]** ブレードの **[Azure サービスへのアクセスを許可する]** で **[オン]** をクリックします。
-4. **[X]**をクリックしてすべてのブレードを閉じます。
+4. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## <a name="prepare-blob-storage-and-sql-database"></a>Blob Storage と SQL Database を準備する
 ここからは、次の手順を実行して、チュートリアルで使用する Azure Blob Storage と Azure SQL Database を準備します。  

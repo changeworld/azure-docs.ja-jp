@@ -1,26 +1,27 @@
 ---
-title: "クイックスタート ガイド: Azure Virtual Machines への単一インスタンスの SAP HANA の手動インストール | Microsoft Docs"
-description: "Azure Virtual Machines に単一インスタンスの SAP HANA を手動でインストールするためのクイック スタート ガイド"
+title: 'クイックスタート ガイド: Azure Virtual Machines への単一インスタンスの SAP HANA の手動インストール | Microsoft Docs'
+description: Azure Virtual Machines に単一インスタンスの SAP HANA を手動でインストールするためのクイック スタート ガイド
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/15/2016
+ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 321a86d6ce355273820617e6de9df2b0816c73fa
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 6355a7ce203f2bf75b5c93d225502f961deeee43
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032085"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>クイックスタート ガイド: Azure VM への単一インスタンスの SAP HANA の手動インストール
 ## <a name="introduction"></a>はじめに
@@ -40,11 +41,13 @@ ms.lasthandoff: 11/02/2017
 * 次の概念および手順:
    * Azure Virtual Network の計画と Azure Storage の使用を含む、Azure 上での SAP 展開の計画。 「[Azure Virtual Machines (VM) への SAP NetWeaver の導入 – 計画/導入ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)」を参照してください。
    * デプロイの基本原則と Azure で VM をデプロイする方法。 「[SAP のための Azure Virtual Machines のデプロイ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)」を参照してください。
-   * Azure での SAP NetWeaver ASCS (ABAP SAP Central Services)、SCS (SAP Central Services)、および ERS (Evaluated Receipt Settlement) の高可用性。 「[Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide)」を参照してください。
+   * Azure での SAP NetWeaver ASCS (ABAP SAP Central Services)、SCS (SAP Central Services)、および ERS (Enqueue Replication Server) の高可用性。 「[Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide)」を参照してください。
    * Azure で ASCS/SCS のマルチ SID インストールを活用して効率を向上させる方法の詳細。 「[SAP NetWeaver マルチ SID 構成の作成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid)」を参照してください。 
    * Azure での Linux 駆動型 VM ベースの SAP NetWeaver の実行の原則。 「[Microsoft Azure SUSE Linux VM での SAP NetWeaver の実行](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)」を参照してください。 このガイドには、Azure VM で Linux を使用する際のいくつかの特定の設定や、Azure Storage ディスクを Linux VM に正しく接続する方法が詳しく解説されています。
 
-現時点で、Azure VM は、SAP HANA スケールアップ構成でのみ SAP の認定を受けています。 SAP HANA ワークロードを含むスケールアウト構成はまだサポートされていません。 スケールアップ構成の場合の SAP HANA の高可用性については、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)」を参照してください。
+運用環境シナリオで使用できる Azure VM の種類は、[IAAS の SAP マニュアル](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)に記載されています。 運用環境以外のシナリオでは、さまざまなネイティブの Azure VM の種類が使用できます。
+VM の構成と運用の詳細については、「[Azure における SAP HANA インフラストラクチャの構成と運用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)」を参照してください。
+SAP HANA の高可用性については、「[Azure 仮想マシンの SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)」を参照してください。
 
 SAP HANA インスタンス、S/4HANA、または BW/4HANA システムを非常に迅速にデプロイする方法を探している場合は、[SAP Cloud Appliance Library](http://cal.sap.com) の使用を検討してください たとえば、Azure で SAP CAL を使用して S/4HANA システムを展開する場合、[このガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)で関連するドキュメントを見つけることができます。 必要なのは、Azure サブスクリプションと SAP Cloud Appliance Library に登録できる SAP ユーザーだけです。
 
@@ -87,9 +90,14 @@ Azure VM の種類と SAP HANA に関連して SAP でサポートされるワ�
 SAP NetWeaver または S/4HANA アプリケーション レイヤーに関して SAP によって認定されている Azure VM の種類は、「[SAP Note 1928533 - SAP Applications on Azure: Supported Products and Azure VM types (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類)](https://launchpad.support.sap.com/#/notes/1928533/E)」に記載されています。
 
 >[!Note]
->SAP-Linux-Azure 統合は、Azure Resource Manager でのみサポートされ、クラシック デプロイメント モデルではサポートされません。 
+>SAP-Linux-Azure 統合は、Azure Resource Manager でのみサポートされ、クラシック デプロイ モデルではサポートされません。 
 
 ## <a name="manual-installation-of-sap-hana"></a>SAP HANA の手動インストール
+
+> [!IMPORTANT]
+> 選択した OS が、使用している特定の VM の種類の SAP HANA に対して認定されていることを確認してください。 SAP HANA 認定 VM の種類と、その種類に対応する OS リリースの一覧は、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページに記載されています。 表示されている VM の種類をクリックすると、特定の VM の種類に対して SAP HANA でサポートされている OS のリリースの一覧が表示され、詳細を確認できます。 このドキュメントの例では、M シリーズの VM で SAP HANA がサポートしていない SLES OS リリースが使用されていることに注意してください。
+>
+
 このガイドでは、Azure VM に SAP HANA を手動でインストールする方法を 2 とおり説明します。
 
 * NetWeaver 分散インストールの一環として、"データベース インスタンスのインストール" の手順で SAP Software Provisioning Manager (SWPM) を使う。
@@ -187,7 +195,7 @@ Azure 上の Linux VM のルート ファイル システムには、サイズ�
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-推奨されるディスク構成では、HANA データ ボリュームとログ ボリュームは、LVM または MDADM を使用してストライピングされている Azure Premium Storage ディスクの同じセットに配置されます。 Azure Premium Storage では冗長性を確保するためにディスクのイメージが 3 つ保持されるため、RAID 冗長レベルを定義する必要はありません。 構成したストレージが十分であるかどうかを確認するために、「[SAP HANA TDI storage Requirements (SAP HANA TDI ストレージ要件)](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」および「[SAP HANA Server Installation and Update Guide (SAP HANA サーバー インストールおよびアップデート ガイド)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)」を参照してください。 「[VM 向けの高パフォーマンスの Premium Storage と管理ディスク](https://docs.microsoft.com/azure/storage/storage-premium-storage)」に関するページの説明に従って、異なる Azure Premium ストレージ ディスクの異なる仮想ハード ディスク (VHD) スループット ボリュームも考慮してください。 
+推奨されるディスク構成では、HANA データ ボリュームとログ ボリュームは、LVM または MDADM を使用してストライピングされている Azure Premium Storage ディスクの同じセットに配置されます。 Azure Premium Storage では冗長性を確保するためにディスクのイメージが 3 つ保持されるため、RAID 冗長レベルを定義する必要はありません。 構成したストレージが十分であるかどうかを確認するために、「[SAP HANA TDI storage Requirements (SAP HANA TDI ストレージ要件)](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」および「[SAP HANA Server Installation and Update Guide (SAP HANA サーバー インストールおよびアップデート ガイド)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)」を参照してください。 「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](https://docs.microsoft.com/azure/storage/storage-premium-storage)」に関するページの説明に従って、異なる Azure Premium ストレージ ディスクの異なる仮想ハード ディスク (VHD) スループット ボリュームも考慮してください。 
 
 データベースまたはトランザクション ログのバックアップを格納するために、HANA DBMS VM に Premium Storage ディスクを追加することができます。
 
@@ -251,7 +259,7 @@ SAP HANA の標準のファイルシステム レイアウトの説明は、「[
 
 標準的な SLES/SLES for SAP Applications 12 Azure ギャラリー イメージに SAP NetWeaver をインストールすると、次のスクリーンショットに示すようにスワップ領域がないことを示すメッセージが表示されます。 このメッセージを消すために、**dd**、**mkswap**、**swapon** を使ってスワップ ファイルを手動で追加できます。 その方法については、[SUSE ドキュメントの「Using the YaST Partitioner」(YaST パーティショナーの使用) セクション](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip)で手動でのスワップ ファイルの追加に関する説明を検索してください。
 
-別の方法としては、Linux VM エージェントを使ったスワップ領域の構成があります。 詳しくは、「[Azure Linux エージェント ユーザー ガイド](../../linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+別の方法としては、Linux VM エージェントを使ったスワップ領域の構成があります。 詳しくは、「[Azure Linux エージェント ユーザー ガイド](../../extensions/agent-linux.md)」をご覧ください。
 
 ![十分なスワップ領域がないことを示すポップアップ メッセージ](./media/hana-get-started/image010.jpg)
 

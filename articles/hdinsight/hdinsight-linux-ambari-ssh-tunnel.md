@@ -1,33 +1,28 @@
 ---
-title: "SSH トンネリングを使用して Azure HDInsight にアクセスする | Microsoft Docs"
-description: "SSH トンネルを使用して、Linux ベースの HDInsight ノードでホストされている Web リソースを安全に閲覧する方法について説明します。"
+title: SSH トンネリングを使用して Azure HDInsight にアクセスする
+description: SSH トンネルを使用して、Linux ベースの HDInsight ノードでホストされている Web リソースを安全に閲覧する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 879834a4-52d0-499c-a3ae-8d28863abf65
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/07/2018
-ms.author: larryfr
-ms.openlocfilehash: a6604cca4056acf3ce759eaf56bb9130ef672bc7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.topic: conceptual
+ms.date: 04/30/2018
+ms.author: hrasheed
+ms.openlocfilehash: 0be2895bf08cc7d6aa0b2e55b62b2d6705b27725
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007298"
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>SSH トンネリングを使用して Ambari Web UI、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする
 
-Linux ベースの HDInsight クラスターは、インターネット経由で Ambari Web UI にアクセスできますが、UI の一部の機能にはアクセスできません。 たとえば、Ambari 経由で表示されるその他のサービスの Web UI などです。 Ambari Web UI の全機能を使用するには、クラスター ヘッドに対して SSH トンネルを使用する必要があります。
+HDInsight クラスターは、インターネット経由で Ambari Web UI にアクセスできますが、一部の機能にはSSH トンネルが必要です。 たとえば、Oozie サービスの web UI は、SSh トンネルせず、インターネット経由でアクセスできません。
 
 ## <a name="why-use-an-ssh-tunnel"></a>SSH トンネルを使用する理由
 
-Ambari のメニューのいくつかは、SSH トンネル経由でのみ機能します。 これらのメニューは、ワーカー ノードなどの他のノード上で実行している Web サイトとサービスに依存します。 多くの場合、これらの Web サイトはセキュリティで保護されていないので、インターネットで直接公開するのは安全ではありません。
+Ambari のメニューのいくつかは、SSH トンネル経由でのみ機能します。 これらのメニューは、ワーカー ノードなどの他のノード上で実行している Web サイトとサービスに依存します。
 
 次の Web UI には SSH トンネルが必要です。
 
@@ -44,7 +39,7 @@ Ambari のメニューのいくつかは、SSH トンネル経由でのみ機能
 
 ## <a name="what-is-an-ssh-tunnel"></a>SSH トンネルとは
 
-[Secure Shell (SSH) トンネル](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling)は、ローカル ワークステーション上のポートに送信されたトラフィックをルーティングします。 トラフィックは、SSH 接続経由で HDInsight クラスターのヘッド ノードにルーティングされます。 要求は、ヘッド ノードから送信された場合と同じように解決されます。 応答は、トンネル経由でワークステーションにルーティングされます。
+[Secure Shell (SSH) のトンネリング](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling)HDInsight 上のヘッド ノードにローカル コンピューター上のポートを接続します。 ローカル ポートに送信されるトラフィックは、ヘッド ノードへの SSH 接続を介してルーティングされます。 要求は、ヘッド ノードから送信された場合と同じように解決されます。 応答は、トンネル経由でワークステーションにルーティングされます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +48,7 @@ Ambari のメニューのいくつかは、SSH トンネル経由でのみ機能
 * SOCKS5 プロキシを使用するように構成できる Web ブラウザー。
 
     > [!WARNING]
-    > Windows に組み込まれている SOCKS プロキシのサポートは SOCKS5 をサポートしていないため、このドキュメントの手順では機能しません。 以下のブラウザーは Windows のプロキシ設定に依存するため、現時点ではこのドキュメントの手順には使用できません。
+    > Windows インターネット設定に組み込まれている SOCKS プロキシサポートは SOCKS5 をサポートしていないため、このドキュメントの手順では機能しません。 以下のブラウザーは Windows のプロキシ設定に依存するため、現時点ではこのドキュメントの手順には使用できません。
     >
     > * Microsoft Edge
     > * Microsoft Internet Explorer
@@ -62,10 +57,10 @@ Ambari のメニューのいくつかは、SSH トンネル経由でのみ機能
 
 ## <a name="usessh"></a>SSH コマンドを使用してトンネルを作成する
 
-次のように `ssh` コマンドを使用して、SSH トンネルを作成します。 **USERNAME** は、実際の HDInsight クラスターの SSH ユーザーに置き換えます。また、**CLUSTERNAME** は、HDInsight クラスターの名前に置き換えます。
+次のように `ssh` コマンドを使用して、SSH トンネルを作成します。 **sshuser** を実際の HDInsight クラスターの SSH ユーザーに置き換えます。また、**sshuser** は、HDInsight クラスターの名前に置き換えます:
 
 ```bash
-ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 ```
 
 このコマンドは、ローカル ポート 9876 へのトラフィックを SSH 経由でクラスターにルーティングする接続を作成します。 オプションは次のとおりです。
@@ -121,16 +116,16 @@ ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
 クラスターが確立したら、次の手順で、Ambari Web からサービス Web UI にアクセスできることを確認します。
 
-1. ブラウザーで http://headnodehost:8080 を開きます。 この `headnodehost` アドレスはトンネル経由でクラスターに送信され、Ambari が実行されているヘッド ノードに解決されます。 プロンプトが表示されたら、クラスターの管理者ユーザー名 (admin) とパスワードを入力します。 Ambari Web UI からもう一度入力を求められることがあります。 その場合は、情報を再入力します。
+1. ブラウザーで http://headnodehost:8080 に移動します。 この `headnodehost` アドレスはトンネル経由でクラスターに送信され、Ambari が実行されているヘッド ノードに解決されます。 プロンプトが表示されたら、クラスターの管理者ユーザー名 (admin) とパスワードを入力します。 Ambari Web UI からもう一度入力を求められることがあります。 その場合は、情報を再入力します。
 
    > [!NOTE]
-   > アドレス http://headnodehost:8080 を使ってクラスターに接続するときは、トンネル経由で接続しています。 通信は、HTTPS ではなく SSH トンネルを使って保護されます。 HTTPS を使用してインターネット経由で接続するには、https://CLUSTERNAME.azurehdinsight.net を使用します。**CLUSTERNAME** はクラスターの名前です。
+   > アドレス http://headnodehost:8080 を使ってクラスターに接続するときは、トンネル経由で接続しています。 通信は、HTTPS ではなく SSH トンネルを使って保護されます。 HTTPS を使用してインターネット経由で接続するには、 https://clustername.azurehdinsight.net を使用します。**clustername** はクラスターの名前です。
 
 2. Ambari Web UI でページの左側にある一覧から [HDFS] を選択します。
 
     ![HDFS が選択された画像](./media/hdinsight-linux-ambari-ssh-tunnel/hdfsservice.png)
 
-3. HDFS サービスの情報が表示されたら、 **[Quick Links]**を選択します。 クラスターのヘッド ノードの一覧が表示されます。 ヘッド ノードのいずれかを選択し、 **[NameNode UI]**を選択します。
+3. HDFS サービスの情報が表示されたら、 **[Quick Links]** を選択します。 クラスターのヘッド ノードの一覧が表示されます。 ヘッド ノードのいずれかを選択し、 **[NameNode UI]** を選択します。
 
     ![QuickLinks メニューが展開された画像](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
@@ -144,7 +139,7 @@ ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ![NameNode UI の画像](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
    > [!NOTE]
-   > このページの URL に注意してください。**http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster** この URI は、ノードの内部の完全修飾ドメイン名 (FQDN) を使っているので、SSH トンネルを使うことによってのみアクセスできます。
+   > このページの URL に注意してください。 **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster** に類似しています。 この URI は、ノードの内部の完全修飾ドメイン名 (FQDN) を使っているので、SSH トンネルを使うことによってのみアクセスできます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,30 +1,24 @@
 ---
-title: 発行済みアプリケーションのインストール - Datameer - Azure HDInsight | Microsoft Docs
-description: Datameer サードパーティ Hadoop アプリケーションをインストールして使用します。
+title: 発行済みアプリケーションのインストール - Datameer - Azure HDInsight
+description: Datameer サードパーティ Apache Hadoop アプリケーションをインストールして使用します。
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 8a898b4f82cf2d7e05e8c3895e5eddd8cf02b173
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 97d99aa59c490cf2dcdd4a69f32411a051942d36
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037806"
 ---
 # <a name="install-published-application---datameer"></a>発行済みアプリケーションのインストール - Datameer
 
-この記事では、[Datameer](https://www.datameer.com/) の発行済み Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
+この記事では、[Datameer](https://www.datameer.com/) の発行済み Apache Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
 
 ## <a name="about-datameer"></a>Datameer について
 
@@ -66,7 +60,7 @@ Datameer は Hadoop プラットフォーム向けのネイティブ アプリ�
 
     ![ファイルのアップロード](./media/hdinsight-apps-install-datameer/upload.png)
 
-3. アップロード ダイアログで、ダウンロードした **Hello World.csv** ファイルを参照して選択します。 **[ファイルの種類]** が [CSV / TSV] に設定されていることを確認します。 **[次へ]**を選択します。 ウィザードの最後に至るまで **[次へ]** をクリックし続けます。
+3. アップロード ダイアログで、ダウンロードした **Hello World.csv** ファイルを参照して選択します。 **[ファイルの種類]** が [CSV / TSV] に設定されていることを確認します。 **[次へ]** を選択します。 ウィザードの最後に至るまで **[次へ]** をクリックし続けます。
 
     ![ファイルのアップロード](./media/hdinsight-apps-install-datameer/upload-browse.png)
 

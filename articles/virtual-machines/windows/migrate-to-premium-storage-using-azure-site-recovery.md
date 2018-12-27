@@ -1,24 +1,21 @@
 ---
-title: "Azure Site Recovery で Windows VM を Azure Premium Storage に移行する | Microsoft Docs"
-description: "Site Recovery を使用して既存の仮想マシンを Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。"
-services: virtual-machines-windows
+title: Azure Site Recovery で Windows VM を Azure Premium Storage に移行する | Microsoft Docs
+description: Site Recovery を使用して既存の仮想マシンを Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
+services: virtual-machines-windows,storage
 cloud: Azure
-documentationcenter: na
 author: luywang
-manager: jeconnoc
-ms.assetid: 
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 15c9a6608421b3eeebe6fbe91a10a849bf36ed85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: disks
+ms.openlocfilehash: 7378331e5f7540d807c76511226fcd2ed99883fa
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404139"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
@@ -80,8 +77,10 @@ Site Recovery を使用して、リージョン間または同じリージョン
 ### <a name="step-1-create-a-recovery-services-vault"></a>手順 1: Recovery Services コンテナーを作成する
 
 1. [Azure Portal](https://portal.azure.com)を開きます。
-2. **[リソースの作成]** > **[管理]** > **[Backup** and **Site Recovery (OMS)]** を選択します。 または、**[参照]** > **[Recovery Services コンテナー]** > **[追加]** を選択します。 
-3. VM をレプリケートする先のリージョンを指定します。 今回は同じリージョン内で移行を行うため、ソース VM とソース ストレージ アカウントがあるリージョンを選択します。 
+2. **[リソースの作成]** > **[管理]** > **[Backup and Site Recovery (OMS)]** を選択します。 または、**[参照]** > **[Recovery Services コンテナー]** > **[追加]** を選択します。
+   >[!NOTE]
+   >Backup および Site Recovery は以前は ![OMS スイート](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)に含まれていました。
+1. VM をレプリケートする先のリージョンを指定します。 今回は同じリージョン内で移行を行うため、ソース VM とソース ストレージ アカウントがあるリージョンを選択します。 
 
 ### <a name="step-2-choose-your-protection-goals"></a>手順 2: 保護の目標を選択する 
 
@@ -164,7 +163,7 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
    4. 手順 3 では、保護されている VM を IP アドレスを指定して追加します (検出するには、内部 IP アドレスが必要な場合があります)。
    5. 手順 4 で、以前にプロセス サーバー上で設定したアカウントを選択して、プロパティを構成します。
    6. 手順 5 で、「手順 5: レプリケーション設定をセットアップする」で以前に作成したレプリケーション ポリシーを選択します。
-   7. **[OK]**を選択します。
+   7. **[OK]** を選択します。
 
    > [!NOTE]
    > Azure VM の割り当てを解除して再起動した場合、同じ IP アドレスが割り当てられる保証はありません。 構成サーバー、プロセス サーバー、または保護対象の Azure VM の IP アドレスが変更された場合、このシナリオのレプリケーションが正常に機能するとは限りません。
@@ -202,7 +201,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
    * クラシック デプロイ モデルを使用して作成された VM の場合: Azure Portal で可用性セットに VM を追加します。 詳細な手順については、「[既存の仮想マシンを可用性セットに追加する](../linux/classic/configure-availability-classic.md)」を参照してください。
    * Resource Manager デプロイ モデルで作成した VM の場合: VM の構成を保存し、可用性セット内の VM をいったん削除してから再作成します。 これを行うには、[Azure Resource Manager VM 可用性セットの設定](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)スクリプトを使用します。 このスクリプトを実行する前に、制限を確認し、ダウンタイムを計画します。
 
-2. **以前の VM とディスクを削除します**。 Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認します。 Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 VM を削除してもディスクが削除されない問題が発生した場合は、[VHD を削除するときに生じるエラーのトラブルシューティング](../../storage/common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)に関するページを参照してください。
+2. **以前の VM とディスクを削除します**。 Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認します。 Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 VM を削除してもディスクが削除されない問題が発生した場合は、「[Troubleshoot storage resource deletion errors](storage-resource-deletion-errors.md)」(ストレージのリソースを削除するときに生じるエラーのトラブルシューティング) を参照してください。
 
 3. **Azure Site Recovery インフラストラクチャをクリーンアップします**。 Site Recovery が不要になったら、インフラストラクチャをクリーンアップすることができます。 レプリケートされた項目、構成サーバー、回復ポリシーを削除してから、Azure Site Recovery コンテナーを削除します。
 

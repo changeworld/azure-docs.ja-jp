@@ -1,24 +1,20 @@
 ---
-title: 診断ログによる Azure Stream Analytics のトラブルシューティング | Microsoft Docs
-description: Microsoft Azure で Stream Analytics ジョブから診断ログを分析する方法について説明します。
-keywords: ''
-documentationcenter: ''
+title: 診断ログを使用した Azure Stream Analytics のトラブルシューティング
+description: この記事では、Azure Stream Analytics で診断ログを分析する方法について説明します。
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 164d522d7beaea222dbc408765877fa67a34c203
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: 9001a2962806ee3e691fa448dde162d12c6ecdd2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
+ms.locfileid: "30905864"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>診断ログを使用した Azure Stream Analytics のトラブルシューティング
 
@@ -79,12 +75,12 @@ Stream Analytics には 2 種類のログがあります。
 Name | [説明]
 ------- | -------
 time | ログのタイムスタンプ (UTC)。
-ResourceId | 操作が行われたリソースの ID (大文字)。 サブスクリプション ID、リソース グループ、ジョブ名が含まれています。 例: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**
-カテゴリ | ログのカテゴリ (**実行**または**作成**のいずれか)。
+resourceId | 操作が行われたリソースの ID (大文字)。 サブスクリプション ID、リソース グループ、ジョブ名が含まれています。 例: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**
+category | ログのカテゴリ (**実行**または**作成**のいずれか)。
 operationName | ログに記録される操作の名前。 たとえば、**Send Events: SQL Output write failure to mysqloutput**。
 status | 操作の状態。 たとえば、**失敗**または**成功**。
 level | ログ レベル。 たとえば、**エラー**、**警告**、または**情報**。
-プロパティ | ログ エントリ固有の詳細。JSON 文字列としてシリアル化されています。 詳細については、次のセクションを参照してください。
+properties | ログ エントリ固有の詳細。JSON 文字列としてシリアル化されています。 詳細については、次のセクションを参照してください。
 
 ### <a name="execution-log-properties-schema"></a>実行ログ プロパティのスキーマ
 

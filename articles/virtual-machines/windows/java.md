@@ -3,7 +3,7 @@ title: Java を使用した Azure 仮想マシンの作成および管理 | Micr
 description: Java と Azure Resource Manager を使用して、仮想マシンとそれをサポートするすべてのリソースをデプロイします。
 services: virtual-machines-windows
 documentationcenter: ''
-author: davidmu1
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
-ms.author: davidmu
-ms.openlocfilehash: da8f8b0e84a51683bd4f631832e1f319f3a9bbb0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: zarhoads
+ms.openlocfilehash: 2e8cc14c2879c9ef98357f19580e59dacc11b930
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420066"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
 
@@ -38,7 +39,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="create-a-maven-project"></a>Maven プロジェクトを作成する
 
-1. [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) をまだインストールしていない場合はインストールします。
+1. [Java](https://aka.ms/azure-jdks) をまだインストールしていない場合はインストールします。
 2. [Maven](http://maven.apache.org/download.cgi) をインストールします。
 3. 新しいフォルダーとプロジェクトを作成します。
     
@@ -116,7 +117,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="create-credentials"></a>資格情報を作成する
 
-この手順を開始する前に、[Active Directory サービス プリンシパル](../../azure-resource-manager/resource-group-create-service-principal-portal.md)にアクセスできることを確認します。 また、後の手順で必要になるので、アプリケーション ID、認証キー、テナント ID を控えておく必要があります。
+この手順を開始する前に、[Active Directory サービス プリンシパル](../../active-directory/develop/howto-create-service-principal-portal.md)にアクセスできることを確認します。 また、後の手順で必要になるので、アプリケーション ID、認証キー、テナント ID を控えておく必要があります。
 
 ### <a name="create-the-authorization-file"></a>承認ファイルを作成する
 

@@ -1,35 +1,29 @@
 ---
-title: "HDInsight での Hadoop の MapReduce と SSH 接続の使用 - Azure | Microsoft Docs"
-description: "SSH を使用して HDInsight で Hadoop を使用して MapReduce ジョブを実行する方法を説明します。"
+title: HDInsight 上の Apache Hadoop で使用する MapReduce と SSH 接続 - Azure
+description: SSH を使用して、HDInsight 上の Apache Hadoop を使用する MapReduce ジョブを実行する方法を説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 844678ba-1e1f-4fda-b9ef-34df4035d547
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/17/2018
-ms.author: larryfr
-ms.openlocfilehash: 08c67168cde60c1b7551806da8542c98dcb82f55
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.topic: conceptual
+ms.date: 04/10/2018
+ms.author: hrasheed
+ms.openlocfilehash: df6a96d8bbf1c77d279806e69e7aa7f65387dd4b
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632528"
 ---
-# <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>SSH による HDInsight での MapReduce と Hadoop の使用
+# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>HDInsight 上の Apache Hadoop で MapReduce と SSH を使用する
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
 Secure Shell (SSH) 接続から HDInsight に MapReduce ジョブを送信する方法について説明します。
 
 > [!NOTE]
-> Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「 [Linux での HDInsight の使用方法](../hdinsight-hadoop-linux-information.md)」をご覧ください。
+> Linux ベースの Apache Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「[Linux での HDInsight の使用方法](../hdinsight-hadoop-linux-information.md)」をご覧ください。
 
 ## <a id="prereq"></a>前提条件
 
@@ -42,16 +36,16 @@ Secure Shell (SSH) 接続から HDInsight に MapReduce ジョブを送信する
 
 ## <a id="ssh"></a>SSH を使用した接続
 
-SSH を使用してクラスターに接続します。 たとえば、次のコマンドは **myhdinsight** という名前のクラスターに接続します。
+SSH を使用してクラスターに接続します。 たとえば、次のコマンドは **myhdinsight** という名前のクラスターに **sshuser** アカウントとして接続します。
 
 ```bash
-ssh admin@myhdinsight-ssh.azurehdinsight.net
+ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
 **SSH 認証に証明書キーを使用する場合**、クライアント システムの秘密キーの場所を指定する必要があることがあります。たとえば、以下のようにします。
 
 ```bash
-ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
+ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
 **SSH 認証にパスワードを使用する場合**、メッセージが表示されたら、パスワードを入力する必要があります。

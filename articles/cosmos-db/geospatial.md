@@ -1,27 +1,24 @@
 ---
-title: Azure Cosmos DB で地理空間データを扱う | Microsoft Docs
+title: Azure Cosmos DB SQL API アカウントで地理空間データを扱う | Microsoft Docs
 description: Azure Cosmos DB と SQL API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。
 services: cosmos-db
-documentationcenter: ''
-author: arramac
+author: SnehaGunda
 manager: kfile
-ms.assetid: 82ce2898-a9f9-4acf-af4d-8ca4ba9c7b8f
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 10/20/2017
-ms.author: arramac
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a78426ed6b54f0227dbd89c150f23af712f1b35
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.topic: conceptual
+ms.date: 11/01/2017
+ms.author: sngun
+ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961910"
 ---
-# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB で地理空間データと GeoJSON 位置データを扱う
-この記事では、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) の地理空間機能を紹介します。 この記事では次の方法を取り上げています。
+# <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API アカウントで地理空間データと GeoJSON 位置データを使用する
+
+この記事では、Azure Cosmos DB の地理空間機能を紹介します。 現在、地理空間データの保存とアクセスは、Cosmos DB SQL API アカウントのみでサポートされます。 この記事を読むと、次の質問に回答できるようになります。
 
 * 空間データを Azure Cosmos DB に保存する方法
 * Azure Cosmos DB 内の地理空間データを SQL や LINQ で照会する方法
@@ -98,12 +95,12 @@ GeoJSON は、Point に加え、LineString と Polygon をサポートしてい�
 GeoJSON では、Point、LineString、Polygon に加え、複数の地理空間位置をグループ化したり、位置情報を持った任意のプロパティを **Feature**として関連付けたりする場合の表現方法も規定されています。 これらのオブジェクトは有効な JSON であるため、いずれも Azure Cosmos DB で保存および処理できます。 ただし、Azure Cosmos DB では、ポイントのインデックス自動作成のみがサポートされています。
 
 ### <a name="coordinate-reference-systems"></a>座標参照系
-地球の形状は不規則であるため、地理空間データの座標は多く座標参照系 (CRS) で表され、それぞれ独自の基準系と測定単位が存在します。 たとえば、"National Grid of Britain" は、英国ではきわめて精度の高い座標系ですが、英国外では精度が下がります。 
+地球の形状は不規則であるため、地理空間データの座標は多く座標参照系 (CRS) で表され、それぞれ独自の基準系と測定単位が存在します。 たとえば、"National Grid of Britain" は、イギリスでは精度の高い座標系ですが、イギリス外では精度が下がります。 
 
 今日使われている最も一般的な CRS は、世界測地系の [WGS-84](http://earth-info.nga.mil/GandG/wgs84/) です。 WGS-84 は、GPS 装置や、多くの地図サービス (Google マップ、Bing マップの API など) で使用されています。 Azure Cosmos DB でサポートされるのは、WGS-84 CRS を使用した地理空間データのインデックスとクエリだけです。 
 
 ## <a name="creating-documents-with-spatial-data"></a>空間データを使用したドキュメントの作成
-GeoJSON の値を含んだドキュメントを作成すると、対応するコレクションのインデックス作成ポリシーに従い、空間インデックスを使用して自動的にインデックスが作成されます。 Python や Node.js など動的に型付けされる言語で Azure Cosmos DB SDK を使用している場合は、有効な GeoJSON を作成する必要があります。
+GeoJSON の値を含んだドキュメントを作成すると、対応するコンテナーのインデックス作成ポリシーに従い、空間インデックスを使用して自動的にインデックスが作成されます。 Python や Node.js など動的に型付けされる言語で Azure Cosmos DB SDK を使用している場合は、有効な GeoJSON を作成する必要があります。
 
 **地理空間データを含んだドキュメントの作成 (Node.js)**
 
@@ -197,7 +194,7 @@ Azure Cosmos DB は、以下の Open Geospatial Consortium (OGC) 組み込み関
       "id": "WakefieldFamily"
     }]
 
-インデックス作成ポリシーに空間インデックスを含めた場合、"距離クエリ" はインデックスを使って効率的に実行されます。 空間インデックスの詳細については、以降のセクションを参照してください。 指定されたパスに空間インデックスがない場合でも、 `x-ms-documentdb-query-enable-scan` 要求ヘッダーの値を "true" に設定して指定することによって空間クエリを実行することはできます。 その場合、.NET では、省略可能な引数 **FeedOptions** を、 [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) を true に設定してクエリに渡してください。 
+インデックス作成ポリシーに空間インデックスを含めた場合、"距離クエリ" はインデックスを使って効率的に実行されます。 空間インデックスの詳細については、以下のセクションを参照してください。 指定されたパスに空間インデックスがない場合でも、 `x-ms-documentdb-query-enable-scan` 要求ヘッダーの値を "true" に設定して指定することによって空間クエリを実行することはできます。 その場合、.NET では、省略可能な引数 **FeedOptions** を、 [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) を true に設定してクエリに渡してください。 
 
 ポイントが Polygon 内に存在するかどうかは、ST_WITHIN を使用してチェックできます。 通常 Polygon は、郵便番号、都道府県の境界など、自然な形状の範囲を表す目的で使用されます。 インデックス作成ポリシーに空間インデックスを含めた場合、"範囲内" 検索はインデックスを使って効率的に実行されます。 
 
@@ -391,7 +388,7 @@ SQL .NET SDK には、LINQ 式の中で使用するための、`Distance()` と 
 > 
 
 ## <a name="next-steps"></a>次の手順
-Azure Cosmos DB の地理空間機能の基本的な使い方を身に付けたら、次の段階に進みましょう。
+Azure Cosmos DB の地理空間機能の基本的な使い方を学んだら、次の段階に進みましょう。
 
 * [GitHub の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
 * [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial) で地理空間のクエリを実際に体験する

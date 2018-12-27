@@ -2,23 +2,21 @@
 title: Azure Cosmos DB MongoDB API で MongoDB 読み取り設定を使用する | Microsoft Docs
 description: Azure Cosmos DB MongoDB API で MongoDB 読み取り設定を使用する方法について説明します
 services: cosmos-db
-documentationcenter: ''
 author: vidhoonv
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
+ms.component: cosmosdb-mongo
 ms.custom: ''
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: ''
-ms.topic: article
+ms.devlang: nodejs
+ms.topic: conceptual
 ms.date: 02/26/2018
-ms.author: viviswan
-ms.openlocfilehash: cc9f22bc5e7b54ed03fbf83b58dda0aff0114737
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: sclyon
+ms.openlocfilehash: b0af47f9ed72507fe9bc47023b456fcb157e25de
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091682"
 ---
 # <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API で読み取り設定を使用してグローバルに読み取りを分配する方法 
 
@@ -113,6 +111,28 @@ MongoDB には、クライアントが使用できる以下の読み取り設定
     assert.equal(null, err);
     console.log("readFromSecondaryPreferredfunc query completed!");
   });
+```
+
+この読み取り設定はまた、接続文字列の URI オプションのパラメーターとして `readPreference` を渡すことによっても設定できます。
+
+```javascript
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+
+// Connection URL
+const url = 'mongodb://localhost:27017?ssl=true&replicaSet=globaldb&readPreference=nearest';
+
+// Database Name
+const dbName = 'myproject';
+
+// Use connect method to connect to the Server
+MongoClient.connect(url, function(err, client) {
+  console.log("Connected correctly to server");
+
+  const db = client.db(dbName);
+
+  client.close();
+});
 ```
 
 他のプラットフォームについては、[.NET](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference)、[Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference) など、対応するサンプル アプリケーションのリポジトリを参照してください。

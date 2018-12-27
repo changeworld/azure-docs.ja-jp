@@ -1,32 +1,29 @@
 ---
-title: "Azure Backup Server v2 のサイレント インストール |Microsoft Docs"
-description: "Azure Backup Server v2 をサイレント インストールするのに、PowerShell スクリプトを使用します。 この種類のインストールは無人インストールとも呼ばれます。"
+title: Azure Backup Server V2 のサイレント インストール
+description: PowerShell スクリプトを使用して、Azure Backup Server V2 をサイレント モードでインストールします。 この種類のインストールは無人インストールとも呼ばれます。
 services: backup
-documentationcenter: " "
 author: markgalioto
 manager: carmonm
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 05/30/2017
-ms.author: markgal;masaran
-ms.openlocfilehash: 91778a67f9ef523aa87b7918197e0d0ded0f5702
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.date: 11/13/2018
+ms.author: markgal
+ms.openlocfilehash: 8f7bda070e613e5495d3733dd1610cb291e12c36
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612697"
 ---
-# <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Azure Backup Server v2 の無人インストールの実行
+# <a name="run-an-unattended-installation-of-azure-backup-server"></a>Azure Backup Server の無人インストールの実行
 
-Azure Backup Server v2 の無人インストールの実行について説明します。 
+Azure Backup Server の無人インストールの実行について説明します。
 
-次の手順は、Azure Backup Server v1 をインストールする場合は適用されません。
+次の手順は、Azure Backup Server V1 をインストールする場合は適用されません。
 
-## <a name="install-backup-server-v2"></a>Backup Server v2 のインストール
+## <a name="install-backup-server"></a>Backup Server のインストール
 
-1. Azure Backup Server v2 をホストしているサーバーで、テキスト ファイルを作成します。 (メモ帳などのテキスト エディターでファイルを作成できます。)MABSSetup.ini としてファイルを保存します。 
+1. Azure Backup Server V2 以降をホストしているサーバーで、テキスト ファイルを作成します。 (メモ帳などのテキスト エディターでファイルを作成できます。)MABSSetup.ini としてファイルを保存します。
 
 2. MABSSetup.ini ファイルに次のコードを貼り付けます。 ブラケット (\< \>) 内のテキストを環境の値に置き換えます。 テキスト例を次に示します。
 
@@ -63,7 +60,7 @@ Azure Backup Server v2 の無人インストールの実行について説明し
 **/i**: インストール パス</br>
 **/x**: アンインストール パス</br>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Backup Server をインストールしたら、サーバーを準備する方法、またはワークロードの保護を開始する方法について見ていきましょう。
 
 - [Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)

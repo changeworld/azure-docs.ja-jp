@@ -1,23 +1,19 @@
 ---
-title: "Azure IoT Hub デバイス管理の開始 (Java) | Microsoft Docs"
-description: "Azure IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT device SDK for Java を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリを実装し、Azure IoT service SDK for Java を使用して、ダイレクト メソッドを呼び出すサービス アプリを実装します。"
-services: iot-hub
-documentationcenter: .java
+title: Azure IoT Hub デバイス管理の開始 (Java) | Microsoft Docs
+description: Azure IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT device SDK for Java を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリを実装し、Azure IoT service SDK for Java を使用して、ダイレクト メソッドを呼び出すサービス アプリを実装します。
 author: dominicbetts
-manager: timlt
-editor: 
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: java
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 7e3837582e2020dc560a2b624352f7326ea87c3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46b094e8436d74915a1cd5a0ccec402bee03e33b
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515286"
 ---
 # <a name="get-started-with-device-management-java"></a>デバイス管理の開始 (Java)
 
@@ -26,7 +22,9 @@ ms.lasthandoff: 10/11/2017
 このチュートリアルでは、次の操作方法について説明します。
 
 * Azure Portal を使用して IoT Hub を作成し、IoT Hub 内にデバイス ID を作成します。
+
 * ダイレクト メソッドを実装して、デバイスを再起動するシミュレートされたデバイス アプリを作成します。 ダイレクト メソッドは、クラウドから呼び出されます。
+
 * シミュレートされたデバイス アプリで　再起動ダイレクト メソッドを IoT Hub 経由で呼び出すアプリを作成します。 このアプリは、デバイスから報告されたプロパティを監視し、再起動操作が完了したときに確認します。
 
 このチュートリアルの最後には、次の 2 つの Java コンソール アプリが完成します。
@@ -34,26 +32,39 @@ ms.lasthandoff: 10/11/2017
 **simulated-device**. このアプリでは
 
 * 以前に作成したデバイス ID を持つ IoT hub に接続します。
+
 * 再起動ダイレクト メソッドの呼び出しを受け取ります。
+
 * 物理的な再起動をシミュレートします。
+
 * 報告されたプロパティを介して、最後の再起動の時間を報告します。
 
 **trigger-reboot**. このアプリでは
 
 * シミュレートされたデバイス アプリでダイレクト メソッドを呼び出します。
+
 * シミュレートされたデバイスから送信されたダイレクト メソッド呼び出しへの応答を表示します。
+
 * 更新済みの報告されたプロパティを表示します。
 
 > [!NOTE]
-> デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 SDK については、「[Azure IoT SDK][lnk-hub-sdks]」をご覧ください。
+> デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 SDK については、「[Azure IoT SDK](iot-hub-devguide-sdks.md)」をご覧ください。
 
 このチュートリアルを完了するには、次のものが必要です。
 
-* Java SE 8。 <br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Java を Windows または Linux にインストールする方法が説明されています。
-* Maven 3。  <br/> [開発環境の準備][lnk-dev-setup]に関するページでは、このチュートリアル用に [Maven][lnk-maven] を Windows または Linux にインストールする方法が説明されています。
+* Java SE 8。 <br/> 「[Prepare your development environment (開発環境を準備する)](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md)」では、このチュートリアルのために Java を Windows または Linux にインストールする方法が説明されています。
+
+* Maven 3。  <br/> [開発環境の準備](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md)に関するページでは、このチュートリアル用に [Maven](https://maven.apache.org/what-is-maven.html) を Windows または Linux にインストールする方法が説明されています。
+
 * [Node.js のバージョン 0.10.0 以降](http://nodejs.org)。
 
-[!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
+## <a name="create-an-iot-hub"></a>IoT Hub の作成
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+### <a name="retrieve-connection-string-for-iot-hub"></a>IoT ハブに対する接続文字列を取得する
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
@@ -62,20 +73,22 @@ ms.lasthandoff: 10/11/2017
 このセクションでは、次の操作を行う Java コンソール アプリを作成します。
 
 1. シミュレートされたデバイス アプリで再起動ダイレクト メソッドを呼び出します。
-1. 応答を表示します。
-1. デバイスから送信された報告されたプロパティをポーリングして、再起動が完了したタイミングを判断します。
+
+2. 応答を表示します。
+
+3. デバイスから送信された報告されたプロパティをポーリングして、再起動が完了したタイミングを判断します。
 
 このコンソール アプリは IoT Hub に接続して、ダイレクト メソッドを呼び出し、報告されたプロパティを読み取ります。
 
 1. dm-get-started という名前の空のフォルダーを作成します。
 
-1. コマンド プロンプトで次のコマンドを実行し、dm-get-started フォルダーに **trigger-reboot** という名前の Maven プロジェクトを作成します。 1 つの長いコマンドを次に示します。
+2. コマンド プロンプトで次のコマンドを実行し、dm-get-started フォルダーに **trigger-reboot** という名前の Maven プロジェクトを作成します。 1 つの長いコマンドを次に示します。
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. コマンド プロンプトで、trigger-reboot フォルダーに移動します。
+3. コマンド プロンプトで、trigger-reboot フォルダーに移動します。
 
-1. テキスト エディターを使用して、trigger-reboot フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリの iot-service-client パッケージを使用して IoT Hub と通信できるようになります。
+4. テキスト エディターを使用して、trigger-reboot フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリの iot-service-client パッケージを使用して IoT Hub と通信できるようになります。
 
     ```xml
     <dependency>
@@ -87,9 +100,9 @@ ms.lasthandoff: 10/11/2017
     ```
 
     > [!NOTE]
-    > [Maven 検索][lnk-maven-service-search]を使用して、**iot-service-client** の最新バージョンを確認できます。
+    > [Maven 検索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-service-client** の最新バージョンを確認できます。
 
-1. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
+5. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
 
     ```xml
     <build>
@@ -107,11 +120,11 @@ ms.lasthandoff: 10/11/2017
     </build>
     ```
 
-1. pom.xml ファイルを保存して閉じます。
+6. pom.xml ファイルを保存して閉じます。
 
-1. テキスト エディターを使用して、trigger-reboot\src\main\java\com\mycompany\app\App.java ソース ファイルを開きます。
+7. テキスト エディターを使用して、trigger-reboot\src\main\java\com\mycompany\app\App.java ソース ファイルを開きます。
 
-1. ファイルに次の **import** ステートメントを追加します。
+8. ファイルに次の **import** ステートメントを追加します。
 
     ```java
     import com.microsoft.azure.sdk.iot.service.devicetwin.DeviceMethod;
@@ -126,7 +139,7 @@ ms.lasthandoff: 10/11/2017
     import java.util.concurrent.ExecutorService;
     ```
 
-1. 次のクラスレベル変数を **App** クラスに追加します。 `{youriothubconnectionstring}` を、「*IoT Hub の作成*」セクションで書き留めた IoT Hub 接続文字列で置換します。
+9. 次のクラスレベル変数を **App** クラスに追加します。 `{youriothubconnectionstring}` を、「*IoT Hub の作成*」セクションで書き留めた IoT Hub 接続文字列で置換します。
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -137,7 +150,7 @@ ms.lasthandoff: 10/11/2017
     private static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
     ```
 
-1. 10 秒ごとにデバイス ツインから報告されたプロパティを読み取るスレッドを実装するには、次の入れ子になったクラスを **App** クラスに追加します。
+10. 10 秒ごとにデバイス ツインから報告されたプロパティを読み取るスレッドを実装するには、次の入れ子になったクラスを **App** クラスに追加します。
 
     ```java
     private static class ShowReportedProperties implements Runnable {
@@ -158,13 +171,13 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-1. **main** メソッドのシグネチャを変更し、次の例外をスローします。
+11. **main** メソッドのシグネチャを変更し、次の例外をスローします。
 
     ```java
     public static void main(String[] args) throws IOException
     ```
 
-1. シミュレートされたデバイスで再起動ダイレクト メソッドを呼び出すには、**main** メソッドに次のコードを追加します。
+12. シミュレートされたデバイスで再起動ダイレクト メソッドを呼び出すには、**main** メソッドに次のコードを追加します。
 
     ```java
     System.out.println("Starting sample...");
@@ -189,7 +202,7 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-1. シミュレートされたデバイスから報告されたプロパティをポーリングするスレッドを開始するには、**main** メソッドに次のコードを追加します。
+13. シミュレートされたデバイスから報告されたプロパティをポーリングするスレッドを開始するには、**main** メソッドに次のコードを追加します。
 
     ```java
     ShowReportedProperties showReportedProperties = new ShowReportedProperties();
@@ -197,7 +210,7 @@ ms.lasthandoff: 10/11/2017
     executor.execute(showReportedProperties);
     ```
 
-1. アプリを停止できるようにするには、**main** メソッドに次のコードを追加します。
+14. アプリを停止できるようにするには、**main** メソッドに次のコードを追加します。
 
     ```java
     System.out.println("Press ENTER to exit.");
@@ -206,9 +219,9 @@ ms.lasthandoff: 10/11/2017
     System.out.println("Shutting down sample...");
     ```
 
-1. trigger-reboot\src\main\java\com\mycompany\app\App.java ファイルを保存して閉じます。
+15. trigger-reboot\src\main\java\com\mycompany\app\App.java ファイルを保存して閉じます。
 
-1. **trigger-reboot** バックエンド アプリをビルドし、エラーを修正します。 コマンド プロンプトで trigger-reboot フォルダーに移動し、次のコマンドを実行します。
+16. **trigger-reboot** バックエンド アプリをビルドし、エラーを修正します。 コマンド プロンプトで trigger-reboot フォルダーに移動し、次のコマンドを実行します。
 
     `mvn clean package -DskipTests`
 
@@ -220,9 +233,9 @@ ms.lasthandoff: 10/11/2017
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. コマンド プロンプトで、simulated-device フォルダーに移動します。
+2. コマンド プロンプトで、simulated-device フォルダーに移動します。
 
-1. テキスト エディターを使用して、simulated-device フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリの iot-service-client パッケージを使用して IoT Hub と通信できるようになります。
+3. テキスト エディターを使用して、simulated-device フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリの iot-service-client パッケージを使用して IoT Hub と通信できるようになります。
 
     ```xml
     <dependency>
@@ -233,9 +246,9 @@ ms.lasthandoff: 10/11/2017
     ```
 
     > [!NOTE]
-    > [Maven 検索][lnk-maven-device-search]を使用して、**iot-device-client** の最新バージョンを確認できます。
+    > [Maven 検索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-device-client** の最新バージョンを確認できます。
 
-1. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
+4. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
 
     ```xml
     <build>
@@ -253,11 +266,11 @@ ms.lasthandoff: 10/11/2017
     </build>
     ```
 
-1. pom.xml ファイルを保存して閉じます。
+5. pom.xml ファイルを保存して閉じます。
 
-1. テキスト エディターを使用し、simulated-device\src\main\java\com\mycompany\app\App.java ソース ファイルを開きます。
+6. テキスト エディターを使用し、simulated-device\src\main\java\com\mycompany\app\App.java ソース ファイルを開きます。
 
-1. ファイルに次の **import** ステートメントを追加します。
+7. ファイルに次の **import** ステートメントを追加します。
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -271,7 +284,7 @@ ms.lasthandoff: 10/11/2017
     import java.util.HashSet;
     ```
 
-1. 次のクラスレベル変数を **App** クラスに追加します。 `{yourdeviceconnectionstring}` を「*デバイス ID の作成*」セクションで書き留めたデバイス接続文字列に置き換えます。
+7. 次のクラスレベル変数を **App** クラスに追加します。 `{yourdeviceconnectionstring}` を「*デバイス ID の作成*」セクションで書き留めたデバイス接続文字列に置き換えます。
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -282,7 +295,7 @@ ms.lasthandoff: 10/11/2017
     private static DeviceClient client;
     ```
 
-1. ダイレクト メソッド ステータス イベントのコールバック ハンドラーを実装するには、次の入れ子になったクラスを **App** クラスに追加します。
+8. ダイレクト メソッド ステータス イベントのコールバック ハンドラーを実装するには、次の入れ子になったクラスを **App** クラスに追加します。
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
@@ -294,7 +307,7 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-1. デバイス ツイン ステータス イベントのコールバック ハンドラーを実装するには、次の入れ子になったクラスを **App** クラスに追加します。
+9. デバイス ツイン ステータス イベントのコールバック ハンドラーを実装するには、次の入れ子になったクラスを **App** クラスに追加します。
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
@@ -306,7 +319,7 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-1. プロパティ イベントのコールバック ハンドラーを実装するには、次の入れ子になったクラスを **App** クラスに追加します。
+10. プロパティ イベントのコールバック ハンドラーを実装するには、次の入れ子になったクラスを **App** クラスに追加します。
 
     ```java
     protected static class PropertyCallback implements PropertyCallBack<String, String>
@@ -319,7 +332,7 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-1. デバイスの再起動をシミュレートするスレッドを実装するには、次の入れ子になったクラスを **App** クラスに追加します。 スレッドは 5 秒間スリープしてから、報告された **lastReboot** プロパティを設定します。
+11. デバイスの再起動をシミュレートするスレッドを実装するには、次の入れ子になったクラスを **App** クラスに追加します。 スレッドは 5 秒間スリープしてから、報告された **lastReboot** プロパティを設定します。
 
     ```java
     protected static class RebootDeviceThread implements Runnable {
@@ -340,7 +353,7 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-1. デバイスにダイレクト メソッドを実装するには、次の入れ子になったクラスを **App** クラスに追加します。 シミュレートされたアプリが、**reboot** ダイレクト メソッドへの呼び出しを受け取ると、呼び出し元に受信確認を返し、再起動を処理するスレッドを起動します。
+12. デバイスにダイレクト メソッドを実装するには、次の入れ子になったクラスを **App** クラスに追加します。 シミュレートされたアプリが、**reboot** ダイレクト メソッドへの呼び出しを受け取ると、呼び出し元に受信確認を返し、再起動を処理するスレッドを起動します。
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -372,20 +385,20 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-1. **main** メソッドのシグネチャを変更し、次の例外をスローします。
+13. **main** メソッドのシグネチャを変更し、次の例外をスローします。
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-1. **DeviceClient** をインスタンス化するには、**main** メソッドに次のコードを追加します。
+14. **DeviceClient** をインスタンス化するには、**main** メソッドに次のコードを追加します。
 
     ```java
     System.out.println("Starting device client sample...");
     client = new DeviceClient(connString, protocol);
     ```
 
-1. ダイレクト メソッド呼び出しのリッスンを開始するには、**main** メソッドに次のコードを追加します。
+15. ダイレクト メソッド呼び出しのリッスンを開始するには、**main** メソッドに次のコードを追加します。
 
     ```java
     try
@@ -403,7 +416,7 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-1. デバイス シミュレーターをシャットダウンするには、**main** メソッドに次のコードを追加します。
+16. デバイス シミュレーターをシャットダウンするには、**main** メソッドに次のコードを追加します。
 
     ```java
     System.out.println("Press any key to exit...");
@@ -414,9 +427,9 @@ ms.lasthandoff: 10/11/2017
     System.out.println("Shutting down...");
     ```
 
-1. simulated-device\src\main\java\com\mycompany\app\App.java を保存して閉じます。
+17. simulated-device\src\main\java\com\mycompany\app\App.java を保存して閉じます。
 
-1. **simulated-device** バックエンド アプリをビルドし、エラーを修正します。 コマンド プロンプトで simulated-device フォルダーに移動し、次のコマンドを実行します。
+18. **simulated-device** バックエンド アプリをビルドし、エラーを修正します。 コマンド プロンプトで simulated-device フォルダーに移動し、次のコマンドを実行します。
 
     `mvn clean package -DskipTests`
 
@@ -428,31 +441,16 @@ ms.lasthandoff: 10/11/2017
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![再起動ダイレクト メソッドの呼び出しをリッスンする Java IoT Hub シミュレートされたデバイス アプリ][1]
+    ![再起動ダイレクト メソッドの呼び出しをリッスンする Java IoT Hub シミュレートされたデバイス アプリ](./media/iot-hub-java-java-device-management-getstarted/launchsimulator.png)
 
-1. trigger-reboot フォルダーで、コマンド プロンプトから次のコマンドを実行し、シミュレートされたデバイス上の再起動メソッドを IoT Hub から呼び出します。
+2. trigger-reboot フォルダーで、コマンド プロンプトから次のコマンドを実行し、シミュレートされたデバイス上の再起動メソッドを IoT Hub から呼び出します。
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![再起動ダイレクト メソッドを呼び出す Java IoT Hub サービス アプリ][2]
+    ![再起動ダイレクト メソッドを呼び出す Java IoT Hub サービス アプリ](./media/iot-hub-java-java-device-management-getstarted/triggerreboot.png)
 
-1. シミュレートされたデバイスは、再起動 ダイレクト メソッドの次の呼び出しに応答します。
+3. シミュレートされたデバイスは、再起動 ダイレクト メソッドの次の呼び出しに応答します。
 
-    ![ダイレクト メソッドの呼び出しに応答する Java IoT Hub シミュレートされたデバイス アプリ][3]
+    ![ダイレクト メソッドの呼び出しに応答する Java IoT Hub シミュレートされたデバイス アプリ](./media/iot-hub-java-java-device-management-getstarted/respondtoreboot.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
-
-<!-- images and links -->
-[1]: ./media/iot-hub-java-java-device-management-getstarted/launchsimulator.png
-[2]: ./media/iot-hub-java-java-device-management-getstarted/triggerreboot.png
-[3]: ./media/iot-hub-java-java-device-management-getstarted/respondtoreboot.png
-<!-- Links -->
-
-[lnk-maven]: https://maven.apache.org/what-is-maven.html
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md
-
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-
-[lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22
-[lnk-maven-device-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22

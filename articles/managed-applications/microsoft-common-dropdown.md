@@ -1,23 +1,24 @@
 ---
 title: Azure の DropDown UI 要素 | Microsoft Docs
 description: Azure Portal の Microsoft.Common.DropDown UI 要素について説明します。
-services: azure-resource-manager
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6c92304ae623807ffba05dcdbb576e1cef63b10c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f953e1dc15e12c37c30a86ebd7536b1126bf18f7
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062002"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI 要素
 ドロップダウン リストを備えた選択コントロールです。
@@ -30,8 +31,8 @@ ms.lasthandoff: 04/03/2018
 {
   "name": "element1",
   "type": "Microsoft.Common.DropDown",
-  "label": "Some drop down",
-  "defaultValue": "my value",
+  "label": "Example drop down",
+  "defaultValue": "Value two",
   "toolTip": "",
   "constraints": {
     "allowedValues": [
@@ -43,21 +44,23 @@ ms.lasthandoff: 04/03/2018
         "label": "Value two",
         "value": "two"
       }
-    ]
+    ],
+    "required": true
   },
   "visible": true
 }
 ```
 
 ## <a name="remarks"></a>解説
+
 - `constraints.allowedValues` のラベルは項目の表示テキストであり、その値は要素が選択された際の出力値です。
 - 指定する場合、既定値は `constraints.allowedValues` 内に存在するラベルである必要があります。 指定しない場合、`constraints.allowedValues` 内の最初の項目が選択されます。 既定値は **null** です。
-- `constraints.allowedValues` には少なくとも 1 つの項目を含める必要があります。
-- この要素は `constraints.required` プロパティをサポートしていません。 この動作をエミュレートするには、ラベルと `""` という値 (空の文字列) を持つ項目を `constraints.allowedValues` に追加します。
+- `constraints.allowedValues` には少なくとも 1 つの項目が必要です。
+- 必須ではない値をエミュレートするには、ラベルと `""` という値 (空の文字列) を持つ項目を `constraints.allowedValues` に追加します。
 
 ## <a name="sample-output"></a>サンプル出力
 ```json
-"Bar"
+"two"
 ```
 
 ## <a name="next-steps"></a>次の手順

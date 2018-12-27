@@ -1,6 +1,6 @@
 ---
-title: "Azure DC/OS クラスターでの ACR の使用"
-description: "Azure Container Service の DC/OS クラスターで Azure Container Registry を使用する"
+title: (非推奨) Azure DC/OS クラスターでの ACR の使用
+description: Azure Container Service の DC/OS クラスターで Azure Container Registry を使用する
 services: container-service
 author: julienstroheker
 manager: dcaro
@@ -9,13 +9,16 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 90d449de19022b3b427e3d89d5beb18bbd36c6b4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a27f6c017d9d648414637f900e0cf7c4be147bfe
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996345"
 ---
-# <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>DC/OS クラスターで ACR を使用してアプリケーションをデプロイする
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(非推奨) DC/OS クラスターで ACR を使用してアプリケーションをデプロイする
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 この記事では、DC/OS クラスターで Azure Container Registry を使う方法について説明します。 ACR を使うと、コンテナー イメージをプライベートに保存して管理することができます。 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -27,13 +30,13 @@ ms.lasthandoff: 02/01/2018
 
 このチュートリアルの手順を実行するには、ACS DC/OS クラスターが必要です。 必要に応じて、[このサンプル スクリプト](./../kubernetes/scripts/container-service-cli-deploy-dcos.md)で作成できます。
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-azure-container-registry"></a>Azure Container Registry をデプロイする
+## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
 
-必要な場合は、[az acr create](/cli/azure/acr#az_acr_create) コマンドで Azure Container Registry を作成します。 
+必要な場合は、[az acr create](/cli/azure/acr#az-acr-create) コマンドで Azure Container Registry を作成します。 
 
 次の例では、ランダムに生成される名前でレジストリを作成します。 `--admin-enabled` 引数を使って管理者アカウントでレジストリを構成することもできます。
 

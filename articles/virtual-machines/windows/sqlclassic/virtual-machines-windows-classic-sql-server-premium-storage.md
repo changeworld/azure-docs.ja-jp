@@ -1,9 +1,9 @@
 ---
-title: "SQL Server で Azure Premium Storage を使用する | Microsoft Docs"
-description: "この記事では、クラシック デプロイ モデルで作成されたリソースを使用し、Azure Virtual Machines で実行している SQL Server で Azure Premium Storage を使用するガイダンスを提供します。"
+title: SQL Server で Azure Premium Storage を使用する | Microsoft Docs
+description: この記事では、クラシック デプロイ モデルで作成されたリソースを使用し、Azure Virtual Machines で実行している SQL Server で Azure Premium Storage を使用するガイダンスを提供します。
 services: virtual-machines-windows
-documentationcenter: 
-author: danielsollondon
+documentationcenter: ''
+author: rothja
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: 3d3fdd8865a293c5e2f0df6a97910ac8e2a07d4c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 88b901f4e2d96fb3b3b04634e2137a916a61e354
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452651"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 ## <a name="overview"></a>概要
@@ -644,7 +645,7 @@ Always On を Azure にデプロイするときは、リスナーおよび IP �
 
 後の移行手順では、ロード バランサーを参照する更新された IP アドレスで Always On リスナーを更新する必要があります。これには、IP アドレス リソースの削除および追加が含まれます。 IP の更新の後、DNS ゾーンで新しい IP アドレスが更新されたこと、およびクライアントがローカル DNS キャッシュを更新していることを、確認する必要があります。
 
-クライアントが異なるネットワーク セグメントに存在し、別の DNS サーバーを参照している場合、アプリケーションの再接続時間が少なくともリスナーの新しい IP アドレスのゾーン転送時間によって制限されるため、移行の間に DNS ゾーン転送に何が起きるかを考慮する必要があります。 ここでの時間制約下にある場合は、Windows チームと増分ゾーン転送について検討して強制的にテストを行い、クライアントが更新するように DNS ホスト レコードを低い Time To Live (TTL) にする必要もあります。 詳しくは、[増分ゾーン転送](https://technet.microsoft.com/library/cc958973.aspx)に関する記事と「[Start-DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx)」をご覧ください。
+クライアントが異なるネットワーク セグメントに存在し、別の DNS サーバーを参照している場合、アプリケーションの再接続時間が少なくともリスナーの新しい IP アドレスのゾーン転送時間によって制限されるため、移行の間に DNS ゾーン転送に何が起きるかを考慮する必要があります。 ここでの時間制約下にある場合は、Windows チームと増分ゾーン転送について検討して強制的にテストを行い、クライアントが更新するように DNS ホスト レコードを低い Time To Live (TTL) にする必要もあります。 詳しくは、[増分ゾーン転送](https://technet.microsoft.com/library/cc958973.aspx)に関する記事と「[Start-DnsServerZoneTransfer](https://docs.microsoft.com/powershell/module/dnsserver/start-dnsserverzonetransfer)」をご覧ください。
 
 既定では、Azure の Always On でリスナーと関連付けられている DNS レコードの TTL は、1200 秒です。 移行の間に、リスナーの更新された IP アドレスでクライアントが DNS を更新するのに時間的な制約がある場合は、この値を減らすことができます。 VNN の構成をダンプして、構成を確認および変更できます。
 

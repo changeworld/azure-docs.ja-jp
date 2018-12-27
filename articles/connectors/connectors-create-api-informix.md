@@ -1,25 +1,22 @@
 ---
-title: "ロジック アプリに Informix コネクタを追加する | Microsoft Docs"
-description: "Informix コネクタと REST API パラメーターの概要"
-services: 
-documentationcenter: 
+title: IBM Informix データベースに接続する - Azure Logic Apps | Microsoft Docs
+description: IBM Informix REST API と Azure Logic Apps を使用して、リソースを管理します
 author: gplarsen
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: ca2393f0-3073-4dc2-8438-747f5bc59689
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: jeconnoc
+ms.author: plarsen
 ms.date: 09/26/2016
-ms.author: plarsen; ladocs
-ms.openlocfilehash: b3b352b185b7dfeee12ac9bee1b72cb740add5b8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: d0008c19ed96f731f7b57c5d8aa41cd9f128bc20
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296038"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Informix コネクタの概要
 Microsoft Connector for Informix は、IBM Informix データベースに格納されているリソースに Logic Apps を接続します。 Informix コネクタには、TCP/IP ネットワーク経由でリモート Informix サーバー コンピューターと通信する Microsoft クライアントが含まれています。 これには、Azure 仮想化で実行されている IBM Informix for Windows などのクラウド データベースと、オンプレミス データ ゲートウェイを使用するオンプレミス データベースが含まれます。 (このトピックの) IBM Informix のプラットフォームとバージョンの [サポート対象一覧](connectors-create-api-informix.md#supported-informix-platforms-and-versions) をご覧ください。
@@ -66,12 +63,12 @@ Logic Apps の詳細については、 [ロジック アプリの作成](../logi
    ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
 6. **[Informix - Get tables (Informix - テーブルの取得)]** 構成ウィンドウで、**[Connect via on-premises data gateway (オンプレミス データ ゲートウェイ経由で接続する)]** **チェックボックス**をオンにして有効にします。 設定がクラウドからオンプレミスに変更されていることを確認します。
    
-   * "アドレスまたはエイリアス、コロン (:)、ポート番号" の形式で、 **[サーバー]**の値を入力します。 たとえば、「 `ibmserver01:9089`」と入力します。
-   * **[データベース]**の値を入力します。 たとえば、「 `nwind`」と入力します。
-   * **[認証]**の値を選択します。 たとえば、 **[Basic]**を選択します。
-   * **[ユーザー名]**の値を入力します。 たとえば、「 `informix`」と入力します。
-   * **[パスワード]**の値を入力します。 たとえば、「 `Password1`」と入力します。
-   * **[ゲートウェイ]**の値を選択します。 たとえば、 **[datagateway01]**を選択します。
+   * "アドレスまたはエイリアス、コロン (:)、ポート番号" の形式で、 **[サーバー]** の値を入力します。 たとえば、「 `ibmserver01:9089`」と入力します。
+   * **[データベース]** の値を入力します。 たとえば、「 `nwind`」と入力します。
+   * **[認証]** の値を選択します。 たとえば、 **[Basic]** を選択します。
+   * **[ユーザー名]** の値を入力します。 たとえば、「 `informix`」と入力します。
+   * **[パスワード]** の値を入力します。 たとえば、「 `Password1`」と入力します。
+   * **[ゲートウェイ]** の値を選択します。 たとえば、 **[datagateway01]** を選択します。
 7. **[作成]** をクリックし、**[保存]** を選択します。 
    
     ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
@@ -83,7 +80,7 @@ Logic Apps の詳細については、 [ロジック アプリの作成](../logi
 ## <a name="create-the-connections"></a>接続を作成する
 このコネクタでは、次の接続プロパティを使用した、オンプレミスおよびクラウドのデータベースへの接続をサポートします。 
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | [サーバー] |必須。 (コロンで区切られた後に) TCP/IP ポート番号が続く、IPv4 または IPv6 形式の TCP/IP アドレスまたはエイリアスを表す文字列値を受け入れます。 |
 | [データベース] |必須。 DRDA リレーショナル データベース名 (RDBNAM) を表す文字列値を受け入れます。 Informix は、128 バイトの文字列を受け入れます (database は IBM Informix データベース名 (dbname) です)。 |
@@ -96,12 +93,12 @@ Logic Apps の詳細については、 [ロジック アプリの作成](../logi
 このコネクタは、オンプレミス データ ゲートウェイを使用してオンプレミスの Informix データベースにアクセスできます。 詳細については、ゲートウェイのトピックをご覧ください。 
 
 1. **[ゲートウェイ]** 構成ウィンドウで、**チェック ボックス**をオンにして**ゲートウェイ経由の接続**を有効にします。 クラウドからオンプレミスへの設定の変更を確認します。
-2. "アドレスまたはエイリアス、コロン (:)、ポート番号" の形式で、 **[サーバー]**の値を入力します。 たとえば、「 `ibmserver01:9089`」と入力します。
-3. **[データベース]**の値を入力します。 たとえば、「 `nwind`」と入力します。
-4. **[認証]**の値を選択します。 たとえば、 **[Basic]**を選択します。
-5. **[ユーザー名]**の値を入力します。 たとえば、「 `informix`」と入力します。
-6. **[パスワード]**の値を入力します。 たとえば、「 `Password1`」と入力します。
-7. **[ゲートウェイ]**の値を選択します。 たとえば、 **[datagateway01]**を選択します。
+2. "アドレスまたはエイリアス、コロン (:)、ポート番号" の形式で、 **[サーバー]** の値を入力します。 たとえば、「 `ibmserver01:9089`」と入力します。
+3. **[データベース]** の値を入力します。 たとえば、「 `nwind`」と入力します。
+4. **[認証]** の値を選択します。 たとえば、 **[Basic]** を選択します。
+5. **[ユーザー名]** の値を入力します。 たとえば、「 `informix`」と入力します。
+6. **[パスワード]** の値を入力します。 たとえば、「 `Password1`」と入力します。
+7. **[ゲートウェイ]** の値を選択します。 たとえば、 **[datagateway01]** を選択します。
 8. **[作成]** をクリックして続行します。 
    
     ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
@@ -110,11 +107,11 @@ Logic Apps の詳細については、 [ロジック アプリの作成](../logi
 このコネクタは、クラウド Informix データベースにアクセスできます。 
 
 1. **[ゲートウェイ]** 構成ウィンドウで、**チェックボックス**をオンにせず、**ゲートウェイ経由の接続**を無効のままにしておきます。 
-2. **[接続名]**の値を入力します。 たとえば、「 `hisdemo2`」と入力します。
+2. **[接続名]** の値を入力します。 たとえば、「 `hisdemo2`」と入力します。
 3. "アドレスまたはエイリアス、コロン (:)、ポート番号" の形式で、 **Informix サーバー名**の値を入力します。 たとえば、「 `hisdemo2.cloudapp.net:9089`」と入力します。
 4. **Informix データベース名**の値を入力します。 たとえば、「 `nwind`」と入力します。
-5. **[ユーザー名]**の値を入力します。 たとえば、「 `informix`」と入力します。
-6. **[パスワード]**の値を入力します。 たとえば、「 `Password1`」と入力します。
+5. **[ユーザー名]** の値を入力します。 たとえば、「 `informix`」と入力します。
+6. **[パスワード]** の値を入力します。 たとえば、「 `Password1`」と入力します。
 7. **[作成]** をクリックして続行します。 
    
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
@@ -138,11 +135,11 @@ Informix テーブル内のすべての行を取得するロジック アプリ�
     ![](./media/connectors-create-api-informix/InformixconnectorNewConnection.png)
 8. **[ゲートウェイ]** 構成ウィンドウで、**チェックボックス**をオンにせず、**ゲートウェイ経由の接続**を無効のままにしておきます。
    
-   * **[接続名]**の値を入力します。 たとえば、「 `HISDEMO2`」と入力します。
+   * **[接続名]** の値を入力します。 たとえば、「 `HISDEMO2`」と入力します。
    * "アドレスまたはエイリアス、コロン (:)、ポート番号" の形式で、 **Informix サーバー名**の値を入力します。 たとえば、「 `HISDEMO2.cloudapp.net:9089`」と入力します。
    * **Informix データベース名**の値を入力します。 たとえば、「 `NWIND`」と入力します。
-   * **[ユーザー名]**の値を入力します。 たとえば、「 `informix`」と入力します。
-   * **[パスワード]**の値を入力します。 たとえば、「 `Password1`」と入力します。
+   * **[ユーザー名]** の値を入力します。 たとえば、「 `informix`」と入力します。
+   * **[パスワード]** の値を入力します。 たとえば、「 `Password1`」と入力します。
 9. **[作成]** をクリックして続行します。
    
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
@@ -170,7 +167,7 @@ Informix テーブル内の 1 つの行を追加するロジック アプリの�
 4. **[+ 新しいステップ]** ボックスをクリックし、**[アクションの追加]** を選択します。
 5. **アクション**の一覧で、**[他のアクションを検索してください]** 編集ボックスに「**informix**」と入力し、**[Informix - 行の挿入 (プレビュー)]** を選択します。
 6. **[Get rows (Preview) (行の取得 (プレビュー))]** アクションで、**[接続の変更]** を選択します。 
-7. **[接続]** 構成ウィンドウで、接続をクリックして選択します。 たとえば、 **[hisdemo2]**を選択します。
+7. **[接続]** 構成ウィンドウで、接続をクリックして選択します。 たとえば、 **[hisdemo2]** を選択します。
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. **[テーブル名]** 一覧の**下向き矢印**をクリックし、**[AREA]** を選択します。
@@ -197,7 +194,7 @@ Informix テーブル内の 1 つの行を取得するロジック アプリの�
 4. **[+ 新しいステップ]** ボックスをクリックし、**[アクションの追加]** を選択します。
 5. **アクション**の一覧で、**[他のアクションを検索してください]** 編集ボックスに「**informix**」と入力し、**[Informix - Get rows (Preview) (Informix - 行の取得 (プレビュー))]** を選択します。
 6. **[Get rows (Preview) (行の取得 (プレビュー))]** アクションで、**[接続の変更]** を選択します。 
-7. **[接続]** 構成ウィンドウで、既存の接続をクリックして選択します。 たとえば、 **[hisdemo2]**を選択します。
+7. **[接続]** 構成ウィンドウで、既存の接続をクリックして選択します。 たとえば、 **[hisdemo2]** を選択します。
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. **[テーブル名]** 一覧の**下向き矢印**をクリックし、**[AREA]** を選択します。
@@ -225,7 +222,7 @@ Informix テーブル内の 1 つの行を変更するロジック アプリの�
 4. **[+ 新しいステップ]** ボックスをクリックし、**[アクションの追加]** を選択します。
 5. **アクション**の一覧で、**[他のアクションを検索してください]** 編集ボックスに「**informix**」と入力し、**[Informix - Update row (Preview) (Informix - 行の更新 (プレビュー))]** を選択します。
 6. **[Get rows (Preview) (行の取得 (プレビュー))]** アクションで、**[接続の変更]** を選択します。 
-7. **[接続]** 構成ウィンドウで、既存の接続をクリックして選択します。 たとえば、 **[hisdemo2]**を選択します。
+7. **[接続]** 構成ウィンドウで、既存の接続をクリックして選択します。 たとえば、 **[hisdemo2]** を選択します。
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. **[テーブル名]** 一覧の**下向き矢印**をクリックし、**[AREA]** を選択します。
@@ -252,7 +249,7 @@ Informix テーブル内の 1 つの行を削除するロジック アプリの�
 4. **[+ 新しいステップ]** ボックスをクリックし、**[アクションの追加]** を選択します。
 5. **アクション**の一覧で、**[他のアクションを検索してください]** ボックスに「**informix**」と入力し、**[Informix - Delete row (Preview) (Informix - 行の削除 (プレビュー))]** を選択します。
 6. **[Get rows (Preview) (行の取得 (プレビュー))]** アクションで、**[接続の変更]** を選択します。 
-7. **[接続]** 構成ウィンドウで、既存の接続を選択します。 たとえば、 **[hisdemo2]**を選択します。
+7. **[接続]** 構成ウィンドウで、既存の接続を選択します。 たとえば、 **[hisdemo2]** を選択します。
    
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. **[テーブル名]** 一覧の**下向き矢印**をクリックし、**[AREA]** を選択します。

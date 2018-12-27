@@ -2,22 +2,18 @@
 title: Azure Storage の移行に関する FAQ | Microsoft Docs
 description: Azure Storage の移行についてよくある質問の回答を示します。
 services: storage
-documentationcenter: na
 author: genlin
-manager: timlt
-editor: tysonn
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
-ms.date: 11/16/2017
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 89d1a4767c240c7e4fedb9d7ac47d6d4fb0aa737
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: 85f93e15cfce1d44567c48c6c6f4b38c42dfb296
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416394"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -76,7 +72,7 @@ Automation スクリプトは、ストレージ コンテンツの操作では�
 
 1.  移動先 BLOB にコンテナー (フォルダー) を作成します。
 
-2.  [AzCopy](https://azure.microsoft.com/en-us/blog/azcopy-5-1-release/) を使用して、元の BLOB コンテナーの内容を別の BLOB コンテナーにコピーします。
+2.  [AzCopy](https://azure.microsoft.com/blog/azcopy-5-1-release/) を使用して、元の BLOB コンテナーの内容を別の BLOB コンテナーにコピーします。
 
 **Azure ファイル共有から別の Azure Storage にデータを移動する PowerShell スクリプトを作成するにはどうすればよいですか?**
 
@@ -120,16 +116,16 @@ Azure ファイル共有を使用します。
 
 詳細については、「[AzCopy on Windows を使ったデータの転送](storage-use-azcopy.md)」をご覧ください。
 
-**管理ディスクを別のストレージ アカウントに移動するにはどうすればよいですか?**
+**マネージド ディスクを別のストレージ アカウントに移動するにはどうすればよいですか?**
 
 次の手順に従います。
 
-1.  管理ディスクの接続先の仮想マシンを停止します。
+1.  マネージド ディスクの接続先の仮想マシンを停止します。
 
-2.  次の Azure PowerShell スクリプトを実行して、管理ディスク VHD をエリア間でコピーします。
+2.  次の Azure PowerShell スクリプトを実行して、マネージド ディスク VHD をエリア間でコピーします。
 
     ```
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     Select-AzureRmSubscription -SubscriptionId <ID>
 
@@ -140,7 +136,7 @@ Azure ファイル共有を使用します。
     Start-AzureStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
     ```
 
-3.  VHD のコピー先である別のリージョンの VHD ファイルを使用して、管理ディスクを作成します。 これを行うには、次の Azure PowerShell スクリプトを実行します。  
+3.  VHD のコピー先である別のリージョンの VHD ファイルを使用して、マネージド ディスクを作成します。 これを行うには、次の Azure PowerShell スクリプトを実行します。  
 
     ```
     $resourceGroupName = 'MDDemo'
@@ -160,7 +156,7 @@ Azure ファイル共有を使用します。
     $osDisk = New-AzureRmDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ``` 
 
-管理ディスクから仮想マシンをデプロイする方法の詳細については、[CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1) を参照してください。
+マネージド ディスクから仮想マシンをデプロイする方法の詳細については、[CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1) を参照してください。
 
 **Azure ポータルから 1 ～ 2 TB のデータをダウンロードする方法は?**
 
@@ -224,7 +220,7 @@ AzCopy を使用して別のストレージ アカウントにデータをコピ
    
 この操作は、完了するまで数時間かかる場合があります。
 
-転送が正常に完了したことを確認するには、Azure ポータルでコピー先のストレージ アカウントのコンテナーを調べます。 ディスクが Standard Storage アカウントにコピーされたら、既存のディスクとして仮想マシンに接続できます。 詳細については、「[Azure Portal で Windows VM に管理対象のデータ ディスクを接続する方法](../../virtual-machines/windows/attach-managed-disk-portal.md)」をご覧ください。  
+転送が正常に完了したことを確認するには、Azure ポータルでコピー先のストレージ アカウントのコンテナーを調べます。 ディスクが Standard Storage アカウントにコピーされたら、既存のディスクとして仮想マシンに接続できます。 詳細については、「[Azure Portal で Windows VM にマネージド データ ディスクを接続する方法](../../virtual-machines/windows/attach-managed-disk-portal.md)」をご覧ください。  
   
 **Azure Premium Storage をファイル共有に変換するにはどうすればよいですか?**
 
@@ -260,7 +256,7 @@ Azure CLI をご利用いただけます。
 
 -   Shared Access Signature (SAS) トークンを使用して、リソースにアクセスできるようにします。 
 
--   ストレージ アカウントのプライマリ キーまたはセカンダリ キーをユーザーに提供します。 詳細については、「[ストレージ アカウントの管理](storage-create-storage-account.md#manage-your-storage-account)」をご覧ください。
+-   ストレージ アカウントのプライマリ キーまたはセカンダリ キーをユーザーに提供します。 詳細については、「[ストレージ アカウントの管理](storage-account-manage.md#access-keys)」をご覧ください。
 
 -   アクセス ポリシーを変更して、匿名アクセスを許可します。 詳細については、「[コンテナーと BLOB への匿名ユーザーのアクセス許可を付与します。](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)」をご覧ください。
 

@@ -1,19 +1,20 @@
 ---
-title: "Azure コンテナー レジストリでの認証"
-description: "Azure Active Directory サービス プリンシパルによるレジストリへの直接ログインなど、Azure コンテナー レジストリの認証オプションについて説明します。"
+title: Azure コンテナー レジストリでの認証
+description: Azure Active Directory サービス プリンシパルによるレジストリへの直接ログインなど、Azure コンテナー レジストリの認証オプションについて説明します。
 services: container-registry
 author: stevelas
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70758f938718aef160670bc023aff5fc0c9fb92a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c0c2323d1864be24edbf6005d634ae1d08bba8ea
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116608"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>プライベート Docker コンテナー レジストリによる認証
 
@@ -25,17 +26,17 @@ Azure Container Registry では、認証されていない Docker 操作と匿�
 
 ## <a name="individual-login-with-azure-ad"></a>Azure AD での個々のログイン
 
-開発ワークステーションとの間でのイメージのプッシュやプルなど、レジストリを直接操作するときは、[Azure CLI](/cli/azure/install-azure-cli) で [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login) コマンドを使用して認証します。
+開発ワークステーションとの間でのイメージのプッシュやプルなど、レジストリを直接操作するときは、[Azure CLI](/cli/azure/install-azure-cli) で [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) コマンドを使用して認証します。
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-`az acr login` を使用してログインすると、CLI は `az login` の実行時に作成されたトークンを使用して、レジストリとのセッションをシームレスに認証します。 この方法でログインすると、資格情報がキャッシュされるので、以降の `docker` コマンドではユーザー名やパスワードが不要になります。 トークンの有効期限が切れた場合は、`az acr login` コマンドを再度使用して再認証することで、トークンを更新できます。 Azure ID で `az acr login` を使用すると、[ロールベースのアクセス](../active-directory/role-based-access-control-configure.md)が可能になります。
+`az acr login` を使用してログインすると、CLI は `az login` の実行時に作成されたトークンを使用して、レジストリとのセッションをシームレスに認証します。 この方法でログインすると、資格情報がキャッシュされるので、以降の `docker` コマンドではユーザー名やパスワードが不要になります。 トークンの有効期限が切れた場合は、`az acr login` コマンドを再度使用して再認証することで、トークンを更新できます。 Azure ID で `az acr login` を使用すると、[ロールベースのアクセス](../role-based-access-control/role-assignments-portal.md)が可能になります。
 
 ## <a name="service-principal"></a>サービス プリンシパル
 
-アプリケーションやサービスがヘッドレス認証に使用できる[サービス プリンシパル](../active-directory/develop/active-directory-application-objects.md)をレジストリに割り当てることができます。 サービス プリンシパルを使用すると、レジストリへの[ロールベースのアクセス](../active-directory/role-based-access-control-configure.md)が可能になります。1 つのレジストリに複数のサービス プリンシパルを割り当てることができます。 複数のサービス プリンシパルを割り当てることで、アプリケーションごとに異なるアクセスを定義できます。
+アプリケーションやサービスがヘッドレス認証に使用できる[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)をレジストリに割り当てることができます。 サービス プリンシパルを使用すると、レジストリへの[ロールベースのアクセス](../role-based-access-control/role-assignments-portal.md)が可能になります。1 つのレジストリに複数のサービス プリンシパルを割り当てることができます。 複数のサービス プリンシパルを割り当てることで、アプリケーションごとに異なるアクセスを定義できます。
 
 使用可能なロールは次のとおりです。
 
@@ -47,10 +48,10 @@ az acr login --name <acrName>
 
   * "*閲覧者*": レジストリからオーケストレーション システム (Kubernetes、DC/OS、Docker Swarm など) へのコンテナーのデプロイ。 また、コンテナー レジストリから、[AKS](../aks/index.yml)、[App Service](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](/azure/service-fabric/) などの関連する Azure サービスにプルすることもできます。
 
-  * "*共同作成者*": コンテナー イメージを作成してレジストリにプッシュする、継続的インテグレーションおよびデプロイ ソリューション (Visual Studio Team Services (VSTS) や Jenkins など)。
+  * *共同作成者*: コンテナー イメージを作成してレジストリにプッシュする Azure Pipelines や Jenkins などの継続的インテグレーションおよびデプロイ ソリューション。
 
 > [!TIP]
-> [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_reset_credentials) コマンドを実行することで、サービス プリンシパルのパスワードを再生成できます。
+> [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) コマンドを実行することで、サービス プリンシパルのパスワードを再生成できます。
 >
 
 サービス プリンシパルを使用して直接ログインすることもできます。 サービス プリンシパルのアプリ ID とパスワードを `docker login` コマンドに指定します。
@@ -81,7 +82,7 @@ docker login myregistry.azurecr.io -u myAdminName -p myPassword1
 
 この場合も、セキュリティを強化するために、コマンドラインでパスワードを指定するのではなく、`--password-stdin` パラメーターを使用するよう Docker から勧められます。 `-p` を指定せずにユーザー名だけを指定し、入力を要求された時点でパスワードを入力することもできます。
 
-既存のレジストリの管理者ユーザーを有効にするには、Azure CLI で [az acr update](/cli/azure/acr?view=azure-cli-latest#az_acr_update) コマンドの `--admin-enabled` パラメーターを使用します。
+既存のレジストリの管理者ユーザーを有効にするには、Azure CLI で [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) コマンドの `--admin-enabled` パラメーターを使用します。
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

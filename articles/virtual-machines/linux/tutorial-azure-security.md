@@ -1,28 +1,29 @@
 ---
-title: Azure の Linux 仮想マシンと Azure Security Center | Microsoft Docs
-description: Azure Security Center による Azure Linux 仮想マシンのセキュリティについて説明します。
+title: チュートリアル - Azure 内の Linux VM に Azure Security Center を使用する | Microsoft Docs
+description: このチュートリアルでは、Azure 内の Linux 仮想マシンをセキュリティで保護するために役立つ Azure Security Center の機能について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/07/2017
-ms.author: iainfou
+ms.date: 06/11/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 41fb802dd8f5dd7bec2c481f3719f304b0c8d0ac
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ba23e9b8ac79a0a2a3899332bfc373665cf561af
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841168"
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Azure Security Center を使った仮想マシン セキュリティの監視
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>チュートリアル: Azure Security Center を使用して Linux 仮想マシンを監視する
 
 Azure リソースのセキュリティの状態は、Azure Security Center で可視化することができます。 Security Center には、包括的なセキュリティ監視機能が備わっています。 他の方法では見過ごされてしまう可能性のある脅威も検出することが可能です。 このチュートリアルでは、Azure Security Center と次の方法について説明します。
  
@@ -30,7 +31,7 @@ Azure リソースのセキュリティの状態は、Azure Security Center で�
 > * データ収集を設定する
 > * セキュリティ ポリシーを設定する
 > * 構成の正常性に関する問題を確認して解決する
-> * 検出された脅威を確認する  
+> * 検出された脅威を確認する
 
 ## <a name="security-center-overview"></a>Security Center の概要
 
@@ -46,12 +47,13 @@ Security Center の機能はデータを検出するだけではありません�
 
 ## <a name="set-up-data-collection"></a>データ収集を設定する
 
-VM のセキュリティ構成を可視化するためには、まず Security Center のデータ収集を設定する必要があります。 この作業には、データ収集を有効にすることや、収集したデータを保持するための Azure ストレージ アカウントを作成することが含まれます。 
+VM のセキュリティ構成を可視化するためには、まず Security Center のデータ収集を設定する必要があります。 これには、データ収集をオンにすることが含まれます。これにより、ご利用のサブスクリプションのすべての VM に Microsoft Monitoring Agent が自動的にインストールされます。
 
 1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。 
-2. **[データ収集]** で **[オン]** を選択します。
-3. ストレージ アカウントを作成するには、**[ストレージ アカウントの選択]** を選択し、 **[OK]** をクリックします。
-4. **[セキュリティ ポリシー]** ブレードで **[保存]** を選択します。 
+2. **[データ収集]** の **[自動プロビジョニング]** で **[オン]** を選択します。
+3. **[既定のワークスペース構成]** を **[Security Center によって作成されたワークスペースを使用 (既定)]** のままにします。
+4. **[セキュリティ イベント]** で、既定のオプションの **[共通]** を保持します。
+4. ページの上部にある **[保存]** をクリックします。 
 
 これですべての VM に Security Center のデータ収集エージェントがインストールされ、データの収集が開始されます。 
 
@@ -59,26 +61,12 @@ VM のセキュリティ構成を可視化するためには、まず Security C
 
 Security Center によるデータの収集と推奨事項の提示の対象となる項目は、セキュリティ ポリシーを使って定義します。 Azure リソースのまとまりごとに異なるセキュリティ ポリシーを適用することができます。 既定ではすべてのポリシー項目と照らして Azure リソースが評価されますが、すべての Azure リソースを対象として、または特定のリソース グループを対象として、個々のポリシー項目を無効にすることができます。 Security Center のセキュリティ ポリシーの詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](../../security-center/security-center-policies.md)」を参照してください。 
 
-すべての Azure リソースを対象とするセキュリティ ポリシーを設定するには、次の手順に従います。
+サブスクリプション全体を対象とするセキュリティ ポリシーを設定するには、次の手順に従います。
 
-1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** を選択してサブスクリプションを選択します。
-2. **[Prevention policy]\(防止ポリシー\)** を選択します。
-3. すべての Azure リソースに適用するポリシー項目をオンまたはオフにします。
-4. 必要な設定を選択したら、**[OK]** を選択します。
-5. **[セキュリティ ポリシー]** ブレードで **[保存]** を選択します。 
-
-特定のリソース グループを対象とするポリシーを設定するには、次の手順に従います。
-
-1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** を選択し、リソース グループを選択します。
-2. **[Prevention policy]\(防止ポリシー\)** を選択します。
-3. 対象のリソース グループに適用するポリシー項目をオンまたはオフにします。
-4. **[継承]** の **[固有]** を選択します。
-5. 必要な設定を選択したら、**[OK]** を選択します。
-6. **[セキュリティ ポリシー]** ブレードで **[保存]** を選択します。  
-
-特定のリソース グループを対象とするデータ収集のオンとオフは、このページで切り替えることもできます。
-
-次の例では、*myResoureGroup* という名前のリソース グループを対象に固有のポリシーを作成しています。 このポリシーでは、ディスクの暗号化と Web アプリケーション ファイアウォールに関する推奨事項の提示がオフになっています。
+1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** を選択し、ご利用のサブスクリプションを選択します。
+2. **[セキュリティ ポリシー]** ブレードで **[セキュリティ ポリシー]** を選択します。 
+3. [セキュリティ ポリシー - セキュリティ ポリシー] ブレードで、サブスクリプションに適用するポリシー項目をオンまたはオフにします。
+4. 設定の選択が完了したら、ブレードの上部にある **[保存]** を選択します。 
 
 ![固有のポリシー](./media/tutorial-azure-security/unique-policy.png)
 
@@ -90,12 +78,12 @@ Security Center によるデータの収集と推奨事項の提示の対象と�
 
 リソースの正常性を表示するには、次の手順に従います。
 
-1.  Security Center ダッシュボードの **[Resource security health]\(リソースのセキュリティの正常性\)** で、**[コンピューティング]** を選択します。 
-2.  **[コンピューティング]** ブレードで **[仮想マシン]** を選択します。 このビューでは、自分の VM すべてについて構成の状態の概要を確認できます。
+1.  Security Center ダッシュボードの **[防止]** で、**[コンピューティング]** を選択します。 
+2.  **[コンピューティング]** ブレードで **[VM とコンピューター]** を選択します。 このビューでは、自分の VM すべてについて構成の状態の概要を確認できます。
 
 ![コンピューティングの正常性](./media/tutorial-azure-security/compute-health.png)
 
-特定の VM に対するすべての推奨事項を表示するには、対象の VM を選択します。 推奨事項と修復については、このチュートリアルの次のセクションで詳しく説明します。
+特定の VM に対するすべての推奨事項を表示するには、対象の VM を選択します。 
 
 ## <a name="remediate-configuration-issues"></a>構成の問題を修復する
 
@@ -105,7 +93,7 @@ Security Center による構成データの収集が開始されると、設定�
 
 1. Security Center ダッシュボードで **[推奨事項]** を選択します。
 2. 特定の推奨事項を選択します。 その推奨事項が該当する全リソースの一覧が表示されます。
-3. 推奨事項を適用するには、特定のリソースを選択します。 
+3. 推奨事項を適用するには、リソースを選択します。 
 4. 修復手順に従います。 
 
 多くの場合、Security Center を離れることなくその場で問題を修復するための手順が表示されます。 以下の例では、ネットワーク セキュリティ グループに割り当てられている受信の規則が無制限になっていることが、Security Center によって検出されています。 推奨事項ページで **[受信の規則を編集する]** ボタンを選択できます。 規則を編集するために必要な UI が表示されます。 
@@ -118,14 +106,14 @@ Security Center による構成データの収集が開始されると、設定�
 
 Security Center には、リソースの構成に関する推奨事項を提示するだけでなく、脅威の検出に関するアラートを表示する機能が備わっています。 このセキュリティ アラート機能は、各 VM、Azure のネットワーク ログ、および接続されているパートナー ソリューションから収集されるデータを集計し、Azure リソースに対するセキュリティ面の脅威を検出するものです。 Security Center の脅威検出機能の詳細については、「[Azure Security Center の検出機能](../../security-center/security-center-detection-capabilities.md)」を参照してください。
 
-セキュリティ アラート機能を使用するには、Security Center の価格レベルを *Free* から *Standard* に変更する必要があります。 この価格レベルに引き上げる際は、30 日間の**無料試用版**をご利用いただけます。 
+セキュリティ アラート機能を使用するには、Security Center の価格レベルを *Free* から *Standard* に変更する必要があります。 この価格レベルに引き上げるときは、**無料試用版**をご利用いただけます。 
 
 価格レベルを変更する方法は、次のとおりです。  
 
 1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。
 2. **[価格レベル]** を選択します。
-3. 新しいレベルを選んで **[選択]** を選択します。
-4. **[セキュリティ ポリシー]** ブレードで **[保存]** を選択します。 
+3. **[Standard]** を選択し、ブレードの上部にある **[保存]** をクリックします。
+
 
 価格レベルを変更すると、セキュリティ面の脅威が検出されるたびにセキュリティ アラートのグラフにデータが反映されるようになります。
 

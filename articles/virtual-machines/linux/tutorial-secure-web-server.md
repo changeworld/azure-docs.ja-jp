@@ -1,28 +1,29 @@
 ---
-title: "Azure での SSL 証明書を使用した Web サーバーのセキュリティ保護 | Microsoft Docs"
-description: "Azure 上の Linux VM で SSL 証明書を使用して NGINX Web サーバーをセキュリティ保護する方法について説明します。"
+title: チュートリアル - Azure での SSL 証明書を使用した Linux Web サーバーのセキュリティ保護 | Microsoft Docs
+description: このチュートリアルでは、Azure CLI を使用して、Azure Key Vault に格納されている SSL 証明書を使って NGINX Web サーバーを実行する Linux 仮想マシンを保護する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/14/2017
-ms.author: iainfou
+ms.date: 04/30/2018
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 02118533c4ab552f81157f644bb794e68fbc4ce3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1e072e81d2c7450ca087e9570994c6e0ce350108
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466768"
 ---
-# <a name="secure-a-web-server-with-ssl-certificates-on-a-linux-virtual-machine-in-azure"></a>Azure 上の Linux 仮想マシンで SSL 証明書を使用して Web サーバーをセキュリティ保護する
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>チュートリアル: Key Vault に格納されている SSL 証明書を使って Azure で Linux 仮想マシン上の Web サーバーをセキュリティ保護する
 Web サーバーをセキュリティ保護するには、Secure Sockets Layer (SSL) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの SSL 証明書は Azure Key Vault に格納できるため、Azure 上の仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -33,11 +34,11 @@ Web サーバーをセキュリティ保護するには、Secure Sockets Layer (
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.22 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。  
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 
 ## <a name="overview"></a>概要
-Azure Key Vault では、証明書やパスワードなどの暗号化キーとシークレットが保護されます。 Key Vault は、証明書の管理プロセスを合理化し、証明書にアクセスするキーの管理を維持するのに役立ちます。 Key Vault 内に自己署名証明書を作成したり、既に所有している、既存の信頼された証明書をアップロードしたりできます。
+Azure Key Vault では、証明書やパスワードなどの暗号化キーと秘密が保護されます。 Key Vault は、証明書の管理プロセスを合理化し、証明書にアクセスするキーの管理を維持するのに役立ちます。 Key Vault 内に自己署名証明書を作成したり、既に所有している、既存の信頼された証明書をアップロードしたりできます。
 
 組み込みの証明書を含むカスタム VM イメージを使用するのではなく、実行中の VM に証明書を取り込みます。 このプロセスでは、デプロイ時に最新の証明書が Web サーバーにインストールされていることを確認します。 証明書を更新するか置き換える場合には、新しいカスタム VM イメージを作成する必要もありません。 追加の VM を作成すると、最新の証明書が自動的に取り込まれます。 すべてのプロセスにおいて、証明書が Azure プラットフォームから流出したり、スクリプト、コマンドラインの履歴、またはテンプレートで公開されたりすることはありません。
 
@@ -70,14 +71,14 @@ az keyvault certificate create \
 ```
 
 ### <a name="prepare-a-certificate-for-use-with-a-vm"></a>VM で使用する証明書を準備する
-VM の作成処理の際に証明書を使用するには、[az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions) を使用して証明書の ID を取得します。 [az vm format-secret](/cli/azure/vm#az_vm_format_secret) を使用して証明書を変換します。 次の例では、以降の手順で使用しやすくするために、コマンドの出力を変数に割り当てています。
+VM の作成処理の際に証明書を使用するには、[az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions) を使用して証明書の ID を取得します。 [az vm secret format](/cli/azure/vm/secret#az-vm-secret-format) を使用して証明書を変換します。 次の例では、以降の手順で使用しやすくするために、コマンドの出力を変数に割り当てています。
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm format-secret --secret "$secret")
+vm_secret=$(az vm secret format --secrets "$secret")
 ```
 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>NGINX をセキュリティで保護する cloud-init 構成を作成する
@@ -159,4 +160,3 @@ Web ブラウザーを開き、アドレス バーに「*https://<publicIpAddres
 
 > [!div class="nextstepaction"]
 > [Windows 仮想マシンのスクリプト サンプル](./cli-samples.md)
-

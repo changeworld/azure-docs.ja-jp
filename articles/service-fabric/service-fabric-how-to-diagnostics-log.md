@@ -3,22 +3,23 @@ title: Azure またはスタンドアロン クラスターで .NET Service Fabr
 description: Azure クラスターまたはスタンドアロン クラスターでホストされているご自身の .NET Service Fabric アプリケーションにログ記録を追加する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: thraka
+author: rwike77
 manager: timlt
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/27/2018
-ms.author: adegeo
-ms.openlocfilehash: 7c1a2330b9eb595d05df31aa8511720911dfee97
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.author: ryanwi
+ms.openlocfilehash: 42a6430162f3bafd3ec3ce2a3c523f6f5755914a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001380"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric アプリケーションにログ記録を追加する
 

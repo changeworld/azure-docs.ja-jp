@@ -1,22 +1,19 @@
 ---
-title: "Azure Portal でデバイス登録を管理する | Microsoft Docs"
-description: "Azure Portal で DPS サービス 用にデバイス登録を管理する方法"
-services: iot-dps
-keywords: 
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/05/2017
-ms.topic: article
+title: Azure Portal でデバイス登録を管理する | Microsoft Docs
+description: Azure Portal でデバイス プロビジョニング サービス用にデバイス登録を管理する方法
+author: wesmc7777
+ms.author: wesmc
+ms.date: 04/05/2018
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 06cc215e5c4087c7a38937de10eaa066037ac444
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 0970131c4b674fd864ad574b0f749cd6d7f6f2a2
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42142210"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Azure Portal でデバイス登録を管理する方法
 
@@ -31,49 +28,49 @@ ms.lasthandoff: 01/12/2018
 
     次の手順を使用して、任意のデバイス グループ用に、ポータルで登録グループを作成できます。
 
-    1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** をクリックします。
-    2. リソースの一覧から、デバイスを登録する Device Provisioning Service をクリックします。
-    3. 目的のプロビジョニング サービスで、**[Manage enrollments]\(登録の管理\)** をクリックし、**[Enrollment Groups]\(登録グループ\)** タブを選択します。
-    4. 上部にある **[追加]** をクリックし、登録リストのエントリに必要な情報を入力します。 デバイス グループのルート証明書をアップロードします。 
-    5. **[Save]** をクリックします。 登録グループの作成に成功すると、**[Enrollment Groups]\(登録グループ\)** タブにグループ名が表示されます。 
+    1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** をクリックします。  
+    1. リソースの一覧から、デバイスを登録する Device Provisioning Service をクリックします。  
+    1. 目的のプロビジョニング サービスで、次の手順を実行します。  
+       a. **[登録を管理します]** をクリックし、**[登録グループ]** タブを選択します。  
+       b. 上部にある **[追加]** をクリックします。  
+       c. [Add Enrollment Group]\(登録グループの追加\) パネルが表示されたら、登録リストのエントリ情報を入力します。  **グループ名**は必須です。 **[証明書の種類]** に "[CA] または [中間]" を選択し、デバイス グループのルートの **[Primary certificate]/(プライマリ証明書/)** をアップロードします。  
+       d. **[Save]** をクリックします。 登録グループの作成に成功すると、**[Enrollment Groups]\(登録グループ\)** タブにグループ名が表示されます。  
 
-        ![ポータルでの登録グループ](./media/how-to-manage-enrollments/group-enrollment.png)
-
+       [![ポータルでの登録グループ](./media/how-to-manage-enrollments/group-enrollment.png)]  (./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
-* **個別登録**は、登録する単一のデバイスのエントリです。 個別登録では、構成証明メカニズムとして X.509 証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 固有の初期構成を必要とするデバイスや、TPM または仮想 TPM を介した SAS トークンのみを構成証明メカニズムとして使用できるデバイスには、個別登録を使用することをお勧めします。 個別登録では、必要な IoT ハブ デバイス ID が指定されている場合があります。
+
+* **個別登録**は、登録する単一のデバイスのエントリです。 個別登録では、構成証明メカニズムとして x509 証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 固有の初期構成を必要とするデバイスや、TPM または仮想 TPM を介した SAS トークンのみを構成証明メカニズムとして使用できるデバイスには、個別登録を使用することをお勧めします。 個別登録では、必要な IoT ハブ デバイス ID が指定されている場合があります。
 
     個別登録は、次の手順を使用してポータルで作成できます。
 
     1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** をクリックします。
-    2. リソースの一覧から、デバイスを登録する Device Provisioning Service をクリックします。
-    3. 目的のプロビジョニング サービスで、**[Manage enrollments]\(登録の管理\)** をクリックし、**[Individual Enrollments]\(個別登録)** タブを選択します。
-    4. 上部にある **[追加]** をクリックします。 
-    5. デバイスのセキュリティ メカニズムを選択し、登録リストのエントリに必要な情報を入力します。 デバイスに X.509 が実装されている場合は、署名証明書をアップロードします。 
-    6. **[Save]** をクリックします。 登録グループの作成に成功すると、**[Individual Enrollments]\(個別登録)** タブにデバイスが表示されます。 
+    1. リソースの一覧から、デバイスを登録する Device Provisioning Service をクリックします。
+    1. 目的のプロビジョニング サービスで、次の手順を実行します。  
+       a. **[登録を管理します]** をクリックし、**[個々の登録]** タブを選択します。  
+       b. 上部にある **[追加]** をクリックします。   
+       c. [Add Enrollment]\(登録の追加\) パネルが表示されたら、登録リストのエントリ情報を入力します。 まず、デバイスの構成証明の **[メカニズム]** を選択します (X.509 または TPM)。 X.509 証明書では、デバイスのリーフ **プライマリ証明書**をアップロードする必要があります。 TPM では、デバイスの**構成証明キー**と**登録 ID** を入力する必要があります。  
+       d. **[Save]** をクリックします。 登録グループの作成に成功すると、**[Individual Enrollments]\(個別登録)** タブにデバイスが表示されます。  
 
-        ![ポータルでの個別登録](./media/how-to-manage-enrollments/individual-enrollment.png)
-
+       [![ポータルでの個別登録](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 
 ## <a name="update-an-enrollment-entry"></a>登録エントリを更新する
 既存の登録エントリは、次の手順を使用して、ポータルで更新できます。
 
 1. Azure Portal で目的の Device Provisioning Service を開き、**[Manage enrollments]\(登録の管理\)** をクリックします。 
-2. 変更する登録エントリに移動します。 エントリをクリックすると、デバイス登録に関する概要情報が表示されます。 
-3. このページで、デバイスのリンク先となる IoT ハブやデバイス ID など、セキュリティの種類および資格情報以外の項目を変更することができます。 初期のデバイス ツインの状態を変更することもできます。 
-4. 完了したら、**[保存]** をクリックしてデバイス登録を更新します。 
+1. 変更する登録エントリに移動します。 エントリをクリックすると、デバイス登録に関する概要情報が表示されます。 
+1. このページで、デバイスのリンク先となる IoT ハブやデバイス ID など、セキュリティの種類および資格情報以外の項目を変更することができます。 初期のデバイス ツインの状態を変更することもできます。 
+1. 完了したら、**[保存]** をクリックしてデバイス登録を更新します。 
 
     ![ポータルで登録を更新する](./media/how-to-manage-enrollments/update-enrollment.png)
-
 
 ## <a name="remove-a-device-enrollment"></a>デバイス登録を削除する
 デバイスをどの IoT ハブにもプロビジョニングする必要がない場合は、ポータルで次の手順を使用して、関連する登録エントリを削除できます。
 
 1. Azure Portal で目的の Device Provisioning Service を開き、**[Manage enrollments]\(登録の管理\)** をクリックします。 
-2. 削除する登録エントリを見つけて選択します。 
-3. 上部にある **[削除]** をクリックして、確認を求められたら **[はい]** を選択します。 
-5. アクションが完了すると、デバイス登録の一覧からエントリが削除されたことがわかります。 
+1. 削除する登録エントリを見つけて選択します。 
+1. 上部にある **[削除]** をクリックして、確認を求められたら **[はい]** を選択します。 
+1. アクションが完了すると、デバイス登録の一覧からエントリが削除されたことがわかります。 
  
     ![ポータルで登録を削除する](./media/how-to-manage-enrollments/remove-enrollment.png)
-
 
 

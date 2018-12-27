@@ -1,24 +1,25 @@
 ---
-title: "Azure Service Fabric Docker Compose デプロイメント プレビュー"
-description: "Azure Service Fabric では、Service Fabric を使用して既存のコンテナーの調整を容易にするため、Docker Compose 形式を受け入れます。 このサポートは現在プレビューの段階です。"
+title: Azure Service Fabric Docker Compose デプロイメント プレビュー
+description: Azure Service Fabric では、Service Fabric を使用して既存のコンテナーの調整を容易にするため、Docker Compose 形式を受け入れます。 このサポートは現在プレビューの段階です。
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 6c4e29a9d7976f5f18d3cf825b22cdef04c0c16d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: twhitney, subramar
+ms.openlocfilehash: 743fedd35bc45618f728ba71056f5dabc2fc1ed9
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300644"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric での Docker Compose のデプロイメントのサポート (プレビュー)
 
@@ -66,7 +67,7 @@ Start-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp -Co
 アップグレードを承諾すると、次のコマンドを使用して、アップグレードの進行状況を追跡できます。
 
 ```powershell
-Get-ServiceFabricComposeDeploymentUpgrade -Deployment TestContainerApp
+Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 ```
 
 ### <a name="use-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLI (sfctl) の使用
@@ -121,6 +122,15 @@ sfctl compose upgrade-status --deployment-name TestContainerApp
 * ボリューム & デプロイ > ボリューム
 
 [Service Fabric のリソース ガバナンス](service-fabric-resource-governance.md)の説明に従って、リソースの制限を適用するようにクラスターをセットアップします。 他のすべての Docker Compose ディレクティブは、このプレビューではサポートされていません。
+
+### <a name="ports-section"></a>ポート セクション
+
+Service Fabric サービス リスナーによって使用されるポート セクションでは、http または https プロトコルを指定します。 これにより、エンドポイント プロトコルがネーム サービスによって正常に公開され、リバース プロキシが要求の転送を許可されるようになります。
+* セキュリティで保護されていない Service Fabric Compose サービスをルーティングするには、**/http** を指定します。 例 - **"80:80/http"**。
+* セキュリティで保護された Service Fabric Compose サービスをルーティングするには、**/https** を指定します。 例 - **"443:443/https"**。
+
+> [!NOTE]
+> /http および /https ポート セクションの構文は、適切な Service Fabric リスナーの URL を登録する Service Fabric に固有です。  Docker Compose ファイルの構文がプログラムによって検証される場合、検証エラーが発生する可能性があります。
 
 ## <a name="servicednsname-computation"></a>ServiceDnsName 計算
 

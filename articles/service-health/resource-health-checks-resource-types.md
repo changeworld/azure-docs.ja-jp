@@ -3,7 +3,7 @@ title: Azure Resource Health でサポートされるリソースの種類 |Micr
 description: Azure Resource Health でサポートされるリソースの種類
 services: Resource health
 documentationcenter: ''
-author: BernardoAMunoz
+author: stephbaron
 manager: ''
 editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
@@ -12,16 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 10/09/2017
-ms.author: BernardoAMunoz
-ms.openlocfilehash: 0694c45363eb2534416f1dad59196ecfa1dacd17
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 11/15/2018
+ms.author: stbaron
+ms.openlocfilehash: 3abf0268a7a6f84e5c26efc5643d048216fc2215
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163040"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
+
+## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
+|実行されるチェック|
+|---|
+|<ul><li>サーバーが稼働しているか</li><li>サーバーのメモリが不足しているか</li><li>サーバーが起動しているか</li><li>サーバーが復旧しているか</li></ul>|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 |実行されるチェック|
@@ -36,7 +42,7 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftcdnprofile"></a>Microsoft.CDN/profile
 |実行されるチェック|
 |---|
-|<ul> <li>停止、削除、または正しく構成されていないエンドポイントがあるか</li><li>CDN 構成操作で補助ポータルにアクセスできるか</li><li>CDN エンドポイントに進行中の配信に関する問題があるか</li><li>ユーザーが CDN リソースの構成を変更できるか</li><li>構成の変更が期待されるレートで反映されるか</li><li>ユーザーが Azure Portal、PowerShell、または API を使用して CDN 構成を管理できるか</li> </ul>|
+|<ul> <li>CDN 構成操作で補助ポータルにアクセスできるか</li><li>CDN エンドポイントに進行中の配信に関する問題があるか</li><li>ユーザーが CDN リソースの構成を変更できるか</li><li>構成の変更が期待されるレートで反映されるか</li><li>ユーザーが Azure Portal、PowerShell、または API を使用して CDN 構成を管理できるか</li> </ul>|
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |実行されるチェック|
@@ -56,13 +62,13 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |実行されるチェック|
 |---|
-|<ul><li>ユーザーがリージョンの Data Lake Analytics にジョブを送信できるか</li><li>基本的なジョブがリージョンで実行され正常に完了するか</li><li>ユーザーがリージョンのカタログ項目を一覧表示できるか</li>|
+|<ul><li>ユーザーに Data Lake Analytics ジョブの送信またはリストに関する問題が発生しているか</li><li>Data Lake Analytics ジョブを完了できず、システム エラーが発生しているか</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
 |実行されるチェック|
 |---|
-|<ul><li>ユーザーがリージョンの Data Lake Store にデータをアップロードできるか</li><li>ユーザーがリージョンの Data Lake Store にデータをダウンロードできるか</li></ul>|
+|<ul><li>ユーザーに Data Lake Store へのデータのアップロードに関する問題が発生しているか</li><li>ユーザーに Data Lake Store からのデータのダウンロードに関する問題が発生しているか</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 
@@ -74,6 +80,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li>Azure Cosmos DB サービスが利用できないために処理されていないデータベースまたはコレクションの要求があるか</li><li>Azure Cosmos DB サービスが利用できないために処理されていないドキュメントの要求があるか</li></ul>|
+
+## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
+|実行されるチェック|
+|---|
+|<ul><li>Azure KeyVault プラットフォームの問題が原因でキー コンテナーへの要求が失敗するか</li><li>顧客によって行われた要求が多すぎるためにキー コンテナーへの要求がスロットルされているか</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |実行されるチェック|
@@ -90,6 +101,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li> 名前空間で、登録、インストール、送信などのランタイム操作を実行できるか</li></ul>|
 
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
+|実行されるチェック|
+|---|
+|<ul><li>キャパシティ リソースが稼働しているか</li><li>すべてのワークロードが稼働しているか</li></ul>|
+
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |実行されるチェック|
 |---|
@@ -105,6 +121,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li> データベースにログインしたことがあるか</li></ul>|
 
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
+|実行されるチェック|
+|---|
+|<ul><li>Azure Storage プラットフォームの問題が原因で、Storage アカウントからのデータの読み取り要求が失敗しているか</li><li>Azure Storage プラットフォームの問題が原因で、Storage アカウントへのデータの書き込み要求が失敗しているか</li><li>Storage アカウントが存在する Storage クラスターが利用不可になっているか</li></ul>|
+
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 |実行されるチェック|
 |---|
@@ -113,7 +134,7 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftwebserverfarms"></a>Microsoft.web/serverFarms
 |実行されるチェック|
 |---|
-|<ul><li>ホスト サーバーが稼働しているか</li><li>インターネット インフォメーション サービスが実行されているか</li><li>ロード バランサーが実行されているか</li><li>データセンターから Web サービス プランにアクセスできるか</li><li>serverFarm のサイト コンテンツをホストしているストレージ アカウントを利用できるか</li></ul>|
+|<ul><li>ホスト サーバーが稼働しているか</li><li>インターネット インフォメーション サービスが実行されているか</li><li>ロード バランサーが実行されているか</li><li>データセンターから App Service プランにアクセスできるか</li><li>serverFarm のサイト コンテンツをホストしているストレージ アカウントを利用できるか</li></ul>|
 
 ## <a name="microsoftwebsites"></a>Microsoft.web/sites
 |実行されるチェック|
@@ -123,4 +144,4 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 # <a name="next-steps"></a>次の手順
 -  [Azure Service Health ダッシュボードの概要](service-health-overview.md)に関するページと [Azure Resource Health の概要](resource-health-overview.md)に関するページを読んで、それらについての理解を深めます。 
 -  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.md)
-- アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性イベントのアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)に関するページを参照してください。 
+- アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性イベントのアラートの構成](../azure-monitor/platform/alerts-activity-log-service-notifications.md)に関するページを参照してください。 

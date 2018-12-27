@@ -6,18 +6,19 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: article
-ms.date: 03/28/2018
+ms.topic: conceptual
+ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: b038052776cad63030ca8a48a43b4b579ce6c83a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6cab6559cb38b7d6d1dc2105b694acbcac85108c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262048"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
-*このトピックが適用されるコネクタは、[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Store](connector-azure-data-lake-store.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md) です。*
+*このトピックが適用されるコネクタは、[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md) です。*
 
 ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 **特定の形式でファイルを解析または生成する**場合、Azure Data Factory では次の種類のファイル形式がサポートされています。
 
@@ -27,9 +28,6 @@ ms.lasthandoff: 03/29/2018
 * [ORC 形式](#orc-format)
 * [Parquet 形式](#parquet-format)
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 でサポートされているファイルと圧縮の形式](v1//data-factory-supported-file-and-compression-formats.md)に関する記事をご覧ください。
-
 > [!TIP]
 > コピー アクティビティがソース データをシンクにマッピングする方法を「[コピー アクティビティでのスキーマ マッピング](copy-activity-schema-and-type-mapping.md)」で説明します。ここには、メタデータがファイル形式の設定に基づいて決定される仕組みと、[データセット `structure`](concepts-datasets-linked-services.md#dataset-structure) セクションを指定するときのヒントも含まれています。
 
@@ -37,7 +35,7 @@ ms.lasthandoff: 03/29/2018
 
 テキスト ファイルからの読み取りまたはテキスト ファイルへの書き込みを行うには、データセットの `format` セクション で `type` プロパティを **TextFormat** に設定します。 `format` セクションに**オプションの**プロパティを指定することもできます。 構成方法については、「[TextFormat の例](#textformat-example)」セクションを参照してください。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | columnDelimiter |ファイル内の列を区切るために使用する文字。 データ内に存在する可能性が低い、出力できない珍しい文字を使用することを検討します。 たとえば、"\u0001" を指定します。これは、見出しの先頭 (SOH) を表します。 |使用できるのは 1 文字だけです。 **既定**値は**コンマ (,)** です。 <br/><br/>Unicode 文字を使用するには、[Unicode 文字](https://en.wikipedia.org/wiki/List_of_Unicode_characters)に関するページを参照して、対応するコードを取得してください。 |いいえ  |
 | rowDelimiter |ファイル内の行を区切るために使用する文字。 |使用できるのは 1 文字だけです。 読み取り時の**既定**値は **["\r\n"、"\r"、"\n"]** のいずれかになり、書き込み時の既定値は **"\r\n"** になります。 |いいえ  |
@@ -90,7 +88,7 @@ ms.lasthandoff: 03/29/2018
 
 JSON ファイルを解析するか、JSON 形式でデータを書き込む場合は、`format` セクションの `type` プロパティを **JsonFormat** に設定します。 `format` セクションに**オプションの**プロパティを指定することもできます。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、**setOfObjects** と **arrayOfObjects** です。 **既定**値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ  |
 | jsonNodeReference | 同じパターンを持つ配列フィールド内のオブジェクトからのデータの反復処理と抽出を行う場合は、その配列の JSON のパスを指定します。 このプロパティは、JSON ファイルからデータをコピーするときにのみサポートされます。 | いいえ  |
@@ -436,7 +434,7 @@ ORC ファイルを解析するか、ORC 形式でデータを書き込む場合
 ```
 
 > [!IMPORTANT]
-> オンプレミスとクラウド データ ストア間のセルフホステッド Integration Runtime などによって強化されたコピーの場合に、ORC ファイルを**そのまま**コピーしていないなら、自分の IR マシンに JRE 8 (Java Runtime Environment) をインストールする必要があります。 64 ビット IR には、64 ビット JRE が必要です。 どちらのバージョンも [こちらのページ](http://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。
+> オンプレミスとクラウド データ ストア間のセルフホステッド Integration Runtime などによって強化されたコピーの場合に、ORC ファイルを**そのまま**コピーしていないなら、自分の IR マシンに JRE 8 (Java Runtime Environment) をインストールする必要があります。 64 ビット IR には、64 ビット JRE が必要です。 どちらのバージョンも [こちらのページ](https://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。
 >
 
 以下の点に注意してください。
@@ -448,7 +446,7 @@ ORC ファイルを解析するか、ORC 形式でデータを書き込む場合
 
 | Data Factory の中間データ型 | ORC 型 |
 |:--- |:--- |
-| ブール | ブール |
+| Boolean | Boolean |
 | SByte | Byte |
 | Byte | ショート |
 | Int16 | ショート |
@@ -480,19 +478,19 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 ```
 
 > [!IMPORTANT]
-> オンプレミスとクラウド データ ストア間のセルフホステッド Integration Runtime などによって強化されたコピーの場合に、Parquet ファイルを**そのまま**コピーしていないなら、自分の IR マシンに JRE 8 (Java Runtime Environment) をインストールする必要があります。 64 ビット IR には、64 ビット JRE が必要です。 どちらのバージョンも [こちらのページ](http://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。
+> オンプレミスとクラウド データ ストア間のセルフホステッド Integration Runtime などによって強化されたコピーの場合に、Parquet ファイルを**そのまま**コピーしていないなら、自分の IR マシンに JRE 8 (Java Runtime Environment) をインストールする必要があります。 64 ビット IR には、64 ビット JRE が必要です。 どちらのバージョンも [こちらのページ](https://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。
 >
 
 以下の点に注意してください。
 
 * 複雑なデータ型はサポートされていません (MAP、LIST)。
-* Parquet ファイルには圧縮関連のオプション (NONE、SNAPPY、GZIP、LZO) があります。 Data Factory では、これらすべての圧縮形式の ORC ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で Parquet ファイルに書き込むときは、Parquet 形式の既定の動作である SNAPPY が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
+* Parquet ファイルには圧縮関連のオプション (NONE、SNAPPY、GZIP、LZO) があります。 Data Factory では、これらすべての圧縮形式の Parquet ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で Parquet ファイルに書き込むときは、Parquet 形式の既定の動作である SNAPPY が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Parquet ファイルのデータ型マッピング
 
 | Data Factory の中間データ型 | Parquet のプリミティブ型 | Parquet の元の型 (逆シリアル化) | Parquet の元の型 (シリアル化) |
 |:--- |:--- |:--- |:--- |
-| ブール | ブール | 該当なし | 該当なし |
+| Boolean | Boolean | 該当なし | 該当なし |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |

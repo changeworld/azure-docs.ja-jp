@@ -1,30 +1,26 @@
 ---
-title: "Excel で Azure Analysis Services に接続する | Microsoft Docs"
-description: "Azure Analysis Services サーバーに Excel を使って接続する方法を説明します。"
-services: analysis-services
-documentationcenter: 
+title: Excel で Azure Analysis Services に接続する | Microsoft Docs
+description: Azure Analysis Services サーバーに Excel を使って接続する方法を説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: f5f77b70874f10a29b4ea4dba307a67361c8e2bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 2a9646ad2daed5ebc224d6d0b97f1f42c7da101e
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49425854"
 ---
 # <a name="connect-with-excel"></a>Excel を使用した接続
 
-Azure でサーバーを作成して、表形式モデルをデプロイすると、すぐに接続してデータの分析を開始できるようになります。
+サーバーを作成し、それに表形式モデルをデプロイしたら、クライアントは接続してデータの調査を開始できます。 
 
+## <a name="before-you-begin"></a>開始する前に
+ログインに使用するアカウントは、少なくとも、読み取り許可を持つモデルのデータベースのロールに属していなければなりません。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。 
 
 ## <a name="connect-in-excel"></a>Excel での接続
 
@@ -34,7 +30,10 @@ Excel でのサーバーへの接続は、Excel 2016 のデータの取得を使
 
 1. Excel 2016 では、**[データ]** リボンで **[外部データの取り込み]** > **[その他のデータ ソース]** > **[From Analysis Services] Analysis Services** をクリックします。
 
-2. データ接続ウィザードで、**[サーバー名]** にプロトコルや URI などのサーバー名を入力します。 そして **[ログオン資格情報]** で **[以下のユーザー名とパスワードを使用する]** を選択し、組織でのユーザー名 (たとえば nancy@adventureworks.com) とパスワードを入力します。
+2. データ接続ウィザードで、**[サーバー名]** にプロトコルや URI などのサーバー名を入力します。 たとえば、「asazure://westcentralus.asazure.windows.net/advworks」のように入力します。 そして **[ログオン資格情報]** で **[以下のユーザー名とパスワードを使用する]** を選択し、組織でのユーザー名 (たとえば nancy@adventureworks.com) とパスワードを入力します。
+
+    > [!IMPORTANT]
+    > Microsoft アカウント、Live ID、Yahoo、Gmail などでログインする場合や、多要素認証を使用してサインインする必要がある場合は、パスワード フィールドを空白のままにします。 [次へ] をクリックすると、パスワードの入力を求められます。 
 
     ![Excel ログオンから接続する](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 

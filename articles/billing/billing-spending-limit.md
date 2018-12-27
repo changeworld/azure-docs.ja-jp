@@ -1,30 +1,29 @@
 ---
-title: "Azure 使用制限を理解する | Microsoft Docs"
-description: "Azure の使用制限のしくみと削除方法を説明します。"
-services: 
-documentationcenter: 
+title: Azure 使用制限を理解する | Microsoft Docs
+description: Azure の使用制限のしくみと削除方法を説明します。
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: troubleshooting
-ms.date: 12/22/2017
-ms.author: genli
-ms.openlocfilehash: d222300a591bcba556be5813ada2de555d25a1f0
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.topic: conceptual
+ms.date: 06/15/2018
+ms.author: cwatson
+ms.openlocfilehash: 614102d65407485d31963afa9185400938a7d95b
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423087"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Azure の使用制限のしくみと削除方法を理解する
 
 Azure の使用制限は、信用取引金額を超過する支出を防ぐために存在します。 試用版プラン、または複数月にわたるクレジットが含まれるプランにサインアップする新規のすべてのお客様に対して、既定で使用制限が有効化されます。 使用制限は $0 です。 変更することはできません。 使用制限は、従量課金制サブスクリプションやコミットメント プランなどのサブスクリプションの種類では利用できません。 [Azure プランの完全な一覧および使用制限の可用性](https://azure.microsoft.com/support/legal/offer-details/)についてご覧ください。
-
-**課金アラートお探しの場合:**  「[Azure サブスクリプションの課金アラートまたはクレジット アラートの設定](billing-set-up-alerts.md)」をご覧ください。
 
 ## <a name="what-happens-when-i-reach-the-spending-limit"></a>使用制限に達するとどうなるか?
 
@@ -32,7 +31,7 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 
 たとえば、サブスクリプションに含まれているすべてのクレジットを使用した場合は、デプロイした Cloud Services は運用環境から削除され、Azure 仮想マシンは停止し、割り当てが解除されます。 ストレージ アカウントおよびデータベース内のデータは、読み取り専用で使用できます。
 
-翌請求期間の開始時点で、サブスクリプションに複数月のクレジットが含まれる場合、サブスクリプションは自動的に再び有効化されます。 この後、Cloud Services を再デプロイし、ストレージ アカウントおよびデータベースに完全にアクセスできるようになります。
+翌請求期間の開始時点で、サブスクリプション オファーに複数月のクレジットが含まれる場合、サブスクリプションは自動的に再び有効化されます。 この後、Cloud Services を再デプロイし、ストレージ アカウントおよびデータベースに完全にアクセスできるようになります。
 
 サブスクリプションの使用制限に達した場合は、電子メール通知が送信されます。 [アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインして、使用制限に到達したサブスクリプションに関する通知を確認します。
 
@@ -47,8 +46,7 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 使用制限を削除するには、次の手順に従ってください。
 
 1. [アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
-1. サブスクリプションを選択します。
-が必要です。 使用制限に達したためにサブスクリプションが無効にされている場合は、"サブスクリプションの使用制限に達したので、課金されないように無効にされました。" という通知をクリックします。 それ以外の場合は、**[サブスクリプションの状態]** 領域の **[使用制限の削除]** をクリックします。
+1. サブスクリプションを選択します。 使用制限に達したためにサブスクリプションが無効にされている場合は、"サブスクリプションの使用制限に達したので、課金されないように無効にされました。" という通知をクリックします。 それ以外の場合は、**[サブスクリプションの状態]** 領域の **[使用制限の削除]** をクリックします。
 1. 適切なオプションを選択します。
 
 ![使用制限を削除するためのオプションを選択](./media/billing-spending-limit/remove-spending-limit.PNG)
@@ -64,7 +62,7 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 
 使用制限により、特定のサードパーティおよび Microsoft サービスのデプロイまたは使用ができなくなる場合があります。 サブスクリプションの使用制限を削除する必要があるシナリオを次に示します。
 
-* Oracle のようなファースト パーティ イメージや Visual Studio Team Services などのサービスのデプロイを計画しています。 このシナリオは、ほぼ即座に使用制限に到達し、サブスクリプションが無効化される原因となります。
+* Oracle のようなファースト パーティ イメージや Azure DevOps Services などのサービスのデプロイを計画しています。 このシナリオは、ほぼ即座に使用制限に到達し、サブスクリプションが無効化される原因となります。
 * 中断することができないサービスがあります。
 * 仮想 IP アドレスなど、中断することのできない設定があるサービスおよびリソースを利用しています。 これらの設定は、サービスおよびリソースの割り当てが解除されると、失われます。
 
@@ -78,7 +76,7 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 
 ### <a name="how-do-i-set-a-custom-spending-limit"></a>カスタムの使用制限を設定するにはどうしたらいいですか。
 
-現在、カスタムの使用制限はありません。 ただし、[課金アラートを使用して支出を制御する](billing-set-up-alerts.md)ことができます。
+カスタムの使用制限は使用できません。
 
 ### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>使用制限は、Azure からのすべての料金を防止しますか。
 

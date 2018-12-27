@@ -1,26 +1,27 @@
 ---
-title: "Sysdig による Azure コンテナー サービス クラスターの監視"
-description: "Sysdig を使って Azure コンテナー サービス クラスターを監視します。"
+title: Sysdig による Azure コンテナー サービス クラスターの監視
+description: Sysdig を使って Azure コンテナー サービス クラスターを監視します。
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: d694744665ef6399560fc12c6976c2d88d232148
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0c0f4fd1f3a8242061e198d7b5447656f9008e96
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32162138"
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Sysdig による Azure コンテナー サービス クラスターの監視
 
 この記事では、Azure コンテナー サービス クラスター内のすべてのエージェント ノードに Sysdig エージェントをデプロイします。 この構成を行うためには、Sysdig のアカウントが必要です。 
 
 ## <a name="prerequisites"></a>前提条件
-Azure Container Service によって構成されたクラスターを[デプロイ](container-service-deployment.md)して[接続](../container-service-connect.md)してください。 [Marathon UI](container-service-mesos-marathon-ui.md)の詳細を確認してください。 [http://app.sysdigcloud.com](http://app.sysdigcloud.com) にアクセスして Sysdig クラウド アカウントをセットアップしてください。 
+Azure Container Service によって構成されたクラスターを[デプロイ](container-service-deployment.md)して[接続](../container-service-connect.md)してください。 [Marathon UI](container-service-mesos-marathon-ui.md)の詳細を確認してください。 [http://app.sysdigcloud.com](http://app.sysdigcloud.com) に移動して、Sysdig クラウド アカウントを設定します。 
 
 ## <a name="sysdig"></a>Sysdig
 Sysdig は監視サービスです。クラスター内のコンテナーを監視することができます。 Sysdig は、トラブルシューティングに役立つことで知られていますが、その一方で CPU やネットワーク、メモリ、I/O の基本的な監視メトリックも備えています。 Sysdig を利用することで、負荷の最も高い (基本的にメモリと CPU の使用率が最も高い) コンテナーを簡単に見分けることができます。 次の画面は [Overview (概要)] セクションにあります (現在はベータ版)。 

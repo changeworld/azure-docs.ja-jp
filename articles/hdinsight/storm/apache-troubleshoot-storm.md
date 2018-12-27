@@ -1,29 +1,25 @@
 ---
-title: Azure HDInsight を使用した Storm のトラブルシューティング | Microsoft Docs
+title: Azure HDInsight を使用した Storm のトラブルシューティング
 description: Azure HDInsight での Apache Storm の使用についてよく寄せられる質問とその回答を示します。
 keywords: Azure HDInsight, Storm, FAQ, トラブルシューティング ガイド, よくある質問
-services: Azure HDInsight
-documentationcenter: na
-author: raviperi
-manager: ''
-editor: ''
-ms.assetid: 74E51183-3EF4-4C67-AA60-6E12FAC999B5
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/2/2017
-ms.author: raviperi
-ms.openlocfilehash: 6ee408b32650fe0f0e0b66294896756732a2ca5b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+services: hdinsight
+ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
+ms.topic: conceptual
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 8b0f1cfe56923cbd8a5b1c517cfdc3b174088715
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086141"
 ---
-# <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Storm のトラブルシューティング
+# <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Storm のトラブルシューティング
 
-Apache Ambari で Apache Storm ペイロードを操作するときに発生する主な問題とその解決策について説明します。
+[Apache Ambari](https://ambari.apache.org/) で [Apache Storm](https://storm.apache.org/) ペイロードを操作するときに発生する主な問題とその解決策について説明します。
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>クラスターの Storm UI にアクセスする方法
 ブラウザーから Storm UI にアクセスする場合、2 つの方法があります。
@@ -44,7 +40,7 @@ https://\<クラスター DNS 名\>/stormui
 
 ## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Storm イベント ハブ スパウトのチェックポイント情報をトポロジ間で転送する方法
 
-HDInsight Storm イベント ハブ スパウト .jar ファイルを使用して Azure Event Hubs から読み取るトポロジを開発するときは、同じ名前のトポロジを新しいクラスターにデプロイする必要があります。 ただし、古いクラスターで Apache Zookeeper にコミットされていたチェックポイント データを保持する必要があります。
+HDInsight Storm イベント ハブ スパウト .jar ファイルを使用して Azure Event Hubs から読み取るトポロジを開発するときは、同じ名前のトポロジを新しいクラスターにデプロイする必要があります。 ただし、以前のクラスターで [Apache ZooKeeper](https://zookeeper.apache.org/) にコミットされていたチェックポイント データを保持する必要があります。
 
 ### <a name="where-checkpoint-data-is-stored"></a>チェックポイント データの保存場所
 オフセットのチェックポイント データは、イベント ハブによって Zookeeper の次の 2 つのルート パスに保存されます。
@@ -127,20 +123,20 @@ Storm ワーカー ノードは、次のサービスを実行します。
 トポロジで Storm イベント ハブ スパウト .jar ファイルを使用する方法の詳細については、以下のリソースを参照してください。
  
 ### <a name="java-based-topology"></a>Java ベースのトポロジ
-[Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
+[HDInsight で Apache Storm を使用して Azure Event Hubs のイベントを処理する (Java)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
  
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C# ベースのトポロジ (HDInsight 3.4 以降の Linux Storm クラスター上の Mono)
-[HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
  
-### <a name="latest-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5 以降の Linux Storm クラスター用の最新の Storm イベント ハブ スパウト バイナリ
+### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5 以降の Linux Storm クラスター用の最新の Apache Storm イベント ハブ スパウト バイナリ
 HDInsight 3.5 以降の Linux Storm クラスターで動作する最新の Storm イベント ハブ スパウトの使用方法については、mvn-repo の [readme ファイル](https://github.com/hdinsight/mvn-repo/blob/master/README.md)をご覧ください。
  
 ### <a name="source-code-examples"></a>ソース コードの例
 Azure HDInsight クラスターで (Java で記述された) Apache Storm トポロジを使用して、Azure Event Hubs との間で読み取り/書き込みを実行する方法の[例](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)を参照してください。
  
-## <a name="how-do-i-locate-storm-log4j-configuration-files-on-clusters"></a>クラスターで Storm Log4J 構成ファイルを見つける方法
+## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>クラスターで Storm Log4J 2 構成ファイルを見つける方法
  
-Storm サービスの Apache Log4J 構成ファイルを特定します。
+Storm サービスの [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 構成ファイルを特定します。
  
 ### <a name="on-head-nodes"></a>ヘッド ノードの場合
 Nimbus の Log4J 構成は、/usr/hdp/\<HDP バージョン\>/storm/log4j2/cluster.xml から読み取られます。

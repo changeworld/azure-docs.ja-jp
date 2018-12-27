@@ -1,14 +1,14 @@
 ---
-title: "Azure Service Fabric のコンテナー イメージを作成する | Microsoft Docs"
-description: "このチュートリアルでは、複数コンテナーの Service Fabric アプリケーションのコンテナー イメージを作成する方法を説明します。"
+title: Azure で Service Fabric にコンテナー イメージを作成する | Microsoft Docs
+description: このチュートリアルでは、複数コンテナーの Service Fabric アプリケーションのコンテナー イメージを作成する方法を説明します。
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, コンテナー, マイクロサービス, Service Fabric, Azure"
-ms.assetid: 
+keywords: Docker, コンテナー, マイクロサービス, Service Fabric, Azure
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -16,24 +16,25 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 13cf13ce4a1456731d08f356ca405119ce1a6480
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f2e8ce7dc6102471f95f6332d9cb01a6cb4f4f54
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313787"
 ---
-# <a name="tutorial-create-container-images-for-service-fabric"></a>チュートリアル: Service Fabric のコンテナー イメージを作成する
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル:Linux Service Fabric クラスターにコンテナー イメージを作成する
 
-このチュートリアルは、Linux Service Fabric クラスター内のコンテナーの使い方を実演するるチュートリアル シリーズの第 1 部です。 このチュートリアルでは、複数コンテナーのアプリケーションを Service Fabric で使うことができるように準備します。 以降のチュートリアルでは、これらのイメージを Service Fabric アプリケーションの一部として使います。 このチュートリアルで学習する内容は次のとおりです。 
+このチュートリアルは、Linux Service Fabric クラスター内のコンテナーの使い方を実演するるチュートリアル シリーズの第 1 部です。 このチュートリアルでは、複数コンテナーのアプリケーションを Service Fabric で使うことができるように準備します。 以降のチュートリアルでは、これらのイメージを Service Fabric アプリケーションの一部として使います。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * GitHub からアプリケーション ソースを複製する  
+> * GitHub からアプリケーション ソースを複製する
 > * アプリケーション ソースからコンテナー イメージを作成する
 > * Azure Container Registry (ACR) インスタンスをデプロイする
 > * ACR のコンテナー イメージにタグを付ける
 > * イメージを ACR にアップロードする
 
-このチュートリアル シリーズで学習する内容は次のとおりです。 
+このチュートリアル シリーズで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Service Fabric のコンテナー イメージを作成する
@@ -42,13 +43,13 @@ ms.lasthandoff: 02/24/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-- Service Fabric 用に設定された Linux 開発環境。 [こちら](service-fabric-get-started-linux.md)の説明に従って、Linux 環境を設定します。 
-- このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
-- さらに、使用可能な Azure サブスクリプションを持っている必要があります。 無料試用版について詳しくは、[こちら](https://azure.microsoft.com/free/)をご覧ください。
+* Service Fabric 用に設定された Linux 開発環境。 [こちら](service-fabric-get-started-linux.md)の説明に従って、Linux 環境を設定します。
+* このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+* さらに、使用可能な Azure サブスクリプションを持っている必要があります。 無料試用版について詳しくは、[こちら](https://azure.microsoft.com/free/)をご覧ください。
 
 ## <a name="get-application-code"></a>アプリケーションのコードを入手する
 
-このチュートリアルで使うサンプル アプリケーションは投票アプリです。 アプリケーションは、フロントエンド Web コンポーネントとバックエンド Redis インスタンスで構成されています。 コンポーネントは、コンテナー イメージにパッケージ化されています。 
+このチュートリアルで使うサンプル アプリケーションは投票アプリです。 アプリケーションは、フロントエンド Web コンポーネントとバックエンド Redis インスタンスで構成されています。 コンポーネントは、コンテナー イメージにパッケージ化されています。
 
 アプリケーションのコピーを開発環境にダウンロードするには、git を使います。
 
@@ -58,15 +59,17 @@ git clone https://github.com/Azure-Samples/service-fabric-containers.git
 cd service-fabric-containers/Linux/container-tutorial/
 ```
 
-ソリューションには 2 つのフォルダーと 'docker-compose.yml' ファイルが含まれています。 'azure-vote'フォルダーには、イメージのビルドに使用される Dockerfile と共に Python フロントエンド サービスが格納されています。 'Voting' ディレクトリには、クラスターにデプロイされる Service Fabric アプリケーション パッケージが含まれています。 これらのディレクトリには、このチュートリアルに必要な資産が含まれています。  
+ソリューションには 2 つのフォルダーと 'docker-compose.yml' ファイルが含まれています。 'azure-vote'フォルダーには、イメージのビルドに使用される Dockerfile と共に Python フロントエンド サービスが格納されています。 'Voting' ディレクトリには、クラスターにデプロイされる Service Fabric アプリケーション パッケージが含まれています。 これらのディレクトリには、このチュートリアルに必要な資産が含まれています。
 
 ## <a name="create-container-images"></a>コンテナー イメージを作成する
 
-**azure-vote** ディレクトリ内で次のコマンドを実行して、フロントエンド Web コンポーネントのイメージをビルドします。 このコマンドは、このディレクトリ内の Dockerfile を使ってイメージをビルドします。 
+**azure-vote** ディレクトリ内で次のコマンドを実行して、フロントエンド Web コンポーネントのイメージをビルドします。 このコマンドは、このディレクトリ内の Dockerfile を使ってイメージをビルドします。
 
 ```bash
 docker build -t azure-vote-front .
 ```
+> [!Note]
+> アクセス許可が拒否される場合、sudo なしで Docker を操作する方法に関する[この](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user)ドキュメントに従います。
 
 このコマンドは、必要なすべての依存関係を Docker Hub からプルする必要があるため、時間がかかる場合があります。 完了したら、[docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使って、作成されたイメージを確認します。
 
@@ -85,13 +88,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
 
-最初に、**az login** コマンドを実行して Azure アカウントにログインします。 
+最初に、**az login** コマンドを実行して Azure アカウントにログインします。
 
 ```bash
 az login
 ```
 
-次に、**az account** コマンドを使って、Azure Container Registry を作成するためのサブスクリプションを選びます。 <subscription_id> には、お使いの Azure サブスクリプションのサブスクリプション ID を入力する必要があります。 
+次に、**az account** コマンドを使って、Azure Container Registry を作成するためのサブスクリプションを選びます。 <subscription_id> には、お使いの Azure サブスクリプションのサブスクリプション ID を入力する必要があります。
 
 ```bash
 az account set --subscription <subscription_id>
@@ -105,13 +108,13 @@ Azure Container Registry をデプロイする場合、まず、リソース グ
 az group create --name <myResourceGroup> --location westus
 ```
 
-**az acr create** コマンドで Azure Container Registry を作成します。 \<acrName> は、お使いのサブスクリプション下に作成するコンテナー レジストリの名前に置き換える必要があります。 この名前は、英数字を使用して一意にする必要があります。 
+**az acr create** コマンドで Azure Container Registry を作成します。 \<acrName> は、お使いのサブスクリプション下に作成するコンテナー レジストリの名前に置き換える必要があります。 この名前は、英数字を使用して一意にする必要があります。
 
 ```bash
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
-このチュートリアルの残りの部分では、選択したコンテナー レジストリ名のプレースホルダーとして「acrName」を使用します。 この値をメモしておいてください。 
+このチュートリアルの残りの部分では、選択したコンテナー レジストリ名のプレースホルダーとして「acrName」を使用します。 この値をメモしておいてください。
 
 ## <a name="log-in-to-your-container-registry"></a>コンテナー レジストリにログインする
 
@@ -163,7 +166,6 @@ docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 
 タグを付けた後、"docker images" を実行して動作を確認します。
 
-
 出力:
 
 ```bash
@@ -206,16 +208,16 @@ azure-vote-front
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、アプリケーションを Github から取得し、コンテナー イメージを作成して、レジストリにプッシュしました。 次の手順を完了しました。
+このチュートリアルでは、アプリケーションを GitHub から取得し、コンテナー イメージを作成して、レジストリにプッシュしました。 次の手順を完了しました。
 
 > [!div class="checklist"]
-> * GitHub からアプリケーション ソースを複製する  
+> * GitHub からアプリケーション ソースを複製する
 > * アプリケーション ソースからコンテナー イメージを作成する
 > * Azure Container Registry (ACR) インスタンスをデプロイする
 > * ACR のコンテナー イメージにタグを付ける
 > * イメージを ACR にアップロードする
 
-次のチュートリアルに進み、Yeoman を使ってコンテナーを Service Fabric アプリケーションにパッケージ化する方法を学習してください。 
+次のチュートリアルに進み、Yeoman を使ってコンテナーを Service Fabric アプリケーションにパッケージ化する方法を学習してください。
 
 > [!div class="nextstepaction"]
 > [Service Fabric アプリケーションとしてのコンテナーのパッケージ化とデプロイ](service-fabric-tutorial-package-containers.md)

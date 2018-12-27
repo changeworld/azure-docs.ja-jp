@@ -1,24 +1,19 @@
 ---
-title: Azure Stream Analytics ジョブの互換性レベルを理解する。 | Microsoft Docs
+title: Azure Stream Analytics ジョブの互換性レベルを理解する
 description: Azure Stream Analytics ジョブの互換性レベルを設定する方法と、最新の互換性レベルでの大きな変更について説明します
-keywords: 互換性レベル, ストリーミング データ
-documentationcenter: ''
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
+ms.author: mamccrea
 manager: kfile
-ms.assetid: ''
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 01/03/2018
-ms.author: sngun
-ms.openlocfilehash: 6f7f2314d225aa02be28fa817151f8f245478cf0
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.topic: conceptual
+ms.date: 10/15/2018
+ms.openlocfilehash: 83bbb777f5af6d29736db3b53ca39c449402c78e
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977715"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
  
@@ -45,11 +40,11 @@ ms.lasthandoff: 03/30/2018
 
   * **以前のバージョン:** Azure Stream Analytics が DataContractSerializer を使用していたため、メッセージのコンテンツに XML タグが含まれていました。 例: 
     
-   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ “SensorId”:”1”, “Temperature”:64\}\u0001 
+   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001 
 
   * **現在のバージョン:** メッセージのコンテンツにはストリームが直接含まれていて、追加のタグは含まれていません。 例: 
   
-   { “SensorId”:”1”, “Temperature”:64} 
+   { "SensorId":"1", "Temperature":64} 
  
 * **フィールド名の大文字と小文字の区別の保持**  
 
@@ -73,5 +68,5 @@ ms.lasthandoff: 03/30/2018
   * **現在のバージョン:** 日付/時刻/ゾーン情報を持つ文字列値を DateTime 型に自動的にアップキャストすることはなくなりました。 そのため、タイムゾーン情報は保持されます。 
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Stream Analytics のトラブルシューティング ガイド](stream-analytics-troubleshooting-guide.md)
+* [Azure Stream Analytics の入力をトラブルシューティングする](stream-analytics-troubleshoot-input.md)
 * [Stream Analytics の [リソース正常性] ブレード](stream-analytics-resource-health.md)

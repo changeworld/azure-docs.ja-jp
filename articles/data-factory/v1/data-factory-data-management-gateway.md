@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9ed679c555d9bb363ffb4d896e791dcbd1b90f8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 988c264ef6052b4b41de493944ac8d39a197a083
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698759"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 の自己ホスト型統合ランタイム](../create-self-hosted-integration-runtime.md)に関するページを参照してください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 Data Factory サービスの現在のバージョンを使用している場合は、[セルフホステッド IR](../create-self-hosted-integration-runtime.md) に関するページを参照してください。 
 
 > [!NOTE]
 > Data Management Gateway は、セルフホステッド Integration Runtime に名前が変わりました。  
@@ -52,7 +53,7 @@ ms.lasthandoff: 03/23/2018
 
 データ ゲートウェイでのコピーのおおまかなデータ フローと手順の概要を次に示します。![ゲートウェイを使用したデータ フロー](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
 
-1. データ開発者は、[Azure portal](https://portal.azure.com) または [PowerShell コマンドレット](https://msdn.microsoft.com/library/dn820234.aspx)を使用して Azure Data Factory 用のゲートウェイを作成します。
+1. データ開発者は、[Azure portal](https://portal.azure.com) または [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.datafactories/)を使用して Azure Data Factory 用のゲートウェイを作成します。
 2. データ開発者は、ゲートウェイを指定することで、オンプレミスのデータ ストアに使用するリンクされたサービスを作成します。 リンクされたサービスの設定の一部として、データ開発者は、資格情報の設定アプリケーションを使用して認証の種類と資格情報を指定します。  資格情報の設定アプリケーションのダイアログは、データ ストアと通信して接続をテストし、ゲートウェイと通信して資格情報を保存します。
 3. ゲートウェイは、資格情報をクラウドに保存する前に、(開発者によって提供された) ゲートウェイと関連付けられた証明書で資格情報を暗号化します。
 4. Data Factory サービスは、共有 Azure Service Bus キューを使用する制御チャネルを介して、ジョブのスケジューリングと管理のためにゲートウェイと通信します。 コピー アクティビティ ジョブを開始する必要がある場合、Data Factory はリクエストと資格情報をキューに入れます。 ゲートウェイは、キューをポーリングした後でジョブを開始します。
@@ -102,7 +103,7 @@ ms.lasthandoff: 03/23/2018
 10. コンピューターで実行されている **Data Management Gateway 構成マネージャー**の **[ゲートウェイの登録]** ページで、以下の手順を実行します。
     1. テキストにキーを貼り付けます。
     2. オプションとして、キー文字列を表示する場合は **[Show gateway key (ゲートウェイのキーを表示する)]** をクリックします。
-    3. **[登録]**をクリックします。
+    3. **[登録]** をクリックします。
 
 ### <a name="register-gateway-using-key"></a>キーを使用してゲートウェイを登録する
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>ポータルに論理ゲートウェイをまだ作成していない場合
@@ -139,9 +140,9 @@ ms.lasthandoff: 03/23/2018
 
 企業ファイアウォール レベルで、次のドメインと送信ポートを構成する必要があります。
 
-| ドメイン名 | ポート | [説明] |
+| ドメイン名 | ポート | 説明 |
 | --- | --- | --- |
-| *.servicebus.windows.net |443、80 |Data Movement Service のバックエンドとの通信に使用 |
+| *.servicebus.windows.net |443 |Data Movement Service のバックエンドとの通信に使用 |
 | *.core.windows.net |443 |Azure BLOB を使用した段階的なコピーに使用 (構成されている場合)|
 | *. frontend.clouddatahub.net |443 |Data Movement Service のバックエンドとの通信に使用 |
 | *.servicebus.windows.net |9350-9354, 5671 |コピー ウィザードで使用される TCP 経由でのオプションの Service Bus Relay |
@@ -207,7 +208,7 @@ HTTP プロキシを表示して更新するには、構成マネージャー �
 HTTP プロキシに対して **[システム プロキシを使用する]** 設定を選択すると、ゲートウェイは、diahost.exe.config と diawp.exe.config のプロキシ設定を使用します。diahost.exe.config と diawp.exe.config でプロキシが指定されていない場合、ゲートウェイはプロキシを経由せず直接クラウド サービスに接続します。 diahost.exe.config ファイルを更新する手順を次に示します。  
 
 1. ファイル エクスプ ローラーで、C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config の安全なコピーを作成して、元のファイルをバックアップします。
-2. 管理者として Notepad.exe を起動し、テキスト ファイル C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config を開きます。次のコードに示されている system.net の既定のタグを確認します。
+2. 管理者として Notepad.exe を起動し、テキスト ファイル "C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config" を開きます。次のコードに示されている system.net の既定のタグを確認します。
 
          <system.net>
              <defaultProxy useDefaultCredentials="true" />
@@ -236,7 +237,7 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
 次のようなエラーが発生した場合は、ファイアウォールまたはプロキシ サーバーの不適切な構成が原因になっている可能性があります。構成が不適切だと、ゲートウェイが自身を認証するための Data Factory に接続できません。 ファイアウォールとプロキシ サーバーが正しく構成されていることを確認するには、前のセクションをご覧ください。
 
 1. ゲートウェイを登録しようとすると次のエラーが発生します。「ゲートウェイのキーを登録できませんでした。 ゲートウェイのキーの登録を再試行する前に、Data Management Gateway が接続済み状態であり、Data Management Gateway Host Service が開始済みであることを確認してください。」
-2. 構成マネージャーを開くと、ステータスとして "切断" または "接続中" と表示されます。 [イベント ビューアー]、[アプリケーションとサービス ログ]、[Data Management Gateway] の順に選択して Windows イベント ログを表示すると、次のようなエラーが表示されます。`Unable to connect to the remote server`
+2. 構成マネージャーを開くと、ステータスとして "切断" または "接続中" と表示されます。 [イベント ビューアー] > [アプリケーションとサービス ログ] > [Data Management Gateway] の順に選択して Windows イベント ログを表示すると、次のようなエラーが表示されます。`Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>資格情報の暗号化のためにポート 8050 を開く
@@ -246,9 +247,9 @@ Azure ポータルでオンプレミスのリンクされたサービスを設�
 
     msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-ゲートウェイ コンピューター上でポート 8050 を開かない場合は、 **資格情報の設定** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。 たとえば、 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用できます。 データ ストア資格情報を設定する方法については、 [資格情報とセキュリティの設定](#set-credentials-and-securityy) に関するセクションを参照してください。
+ゲートウェイ コンピューター上でポート 8050 を開かない場合は、 **資格情報の設定** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。 たとえば、 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell コマンドレットを使用できます。 データ ストア資格情報を設定する方法については、 [資格情報とセキュリティの設定](#set-credentials-and-securityy) に関するセクションを参照してください。
 
-## <a name="update"></a>プライマリの
+## <a name="update"></a>アップデート
 既定では、データ管理ゲートウェイの新しいバージョンが利用可能になると、自動的に更新されます。 ゲートウェイは、すべてのスケジュールされたタスクが完了するまで、更新されません。 更新操作が完了するまで、ゲートウェイは追加のタスクを処理しません。 更新が失敗した場合、ゲートウェイは古いバージョンにロールバックします。
 
 更新時刻のスケジュールは次の場所に表示されます。
@@ -276,30 +277,30 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 
 [シングル ノード ゲートウェイ]
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
-2. C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript フォルダーに切り替えます。
+2. C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。   
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -off
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -off
     ```
 4. オンに戻すには、次のコマンドを実行します。
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -on  
+    .\IntegrationRuntimeAutoUpdateToggle.ps1 -on  
     ```
-[高可用性とスケーラビリティを備えたマルチノード ゲートウェイ (プレビュー)](data-factory-data-management-gateway-high-availability-scalability.md)
+[高可用性とスケーラビリティを備えたマルチノード ゲートウェイ](data-factory-data-management-gateway-high-availability-scalability.md)
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
-2. C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript フォルダーに切り替えます。
+2. C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。   
 
-    高可用性機能を備えたゲートウェイ (プレビュー) については、別途 AuthKey パラメーターが必要となります。
+    高可用性機能を備えたゲートウェイについては、別途 AuthKey パラメーターが必要となります。
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```
 4. オンに戻すには、次のコマンドを実行します。
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
     ```
 
 ## <a name="configuration-manager"></a>構成マネージャー
@@ -359,23 +360,23 @@ Azure Portal では、ゲートウェイ コンピューターでのリソース
 
 次の表に、**ゲートウェイ ノード**一覧の列の説明を示します。  
 
-監視のプロパティ | [説明]
+監視のプロパティ | 説明
 :------------------ | :---------- 
 Name | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。 ノードとは、ゲートウェイがインストールされているオンプレミスの Windows コンピューターです。 1 つの論理ゲートウェイ内に複数のノード (最大 4 つのノード) を含める方法の詳細については、「[Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。    
 [Status] | 論理ゲートウェイとゲートウェイ ノードの状態です  (たとえば、オンライン/オフライン/制限/ など)。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。 
-バージョン | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。 
+Version | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。 
 使用可能なメモリ | ゲートウェイ ノードで使用可能なメモリです。 この値は、ほぼリアルタイムのスナップショットです。 
 CPU 使用率 | ゲートウェイ ノードの CPU 使用率。 この値は、ほぼリアルタイムのスナップショットです。 
 ネットワーク (入力/出力) | ゲートウェイ ノードのネットワーク使用率。 この値は、ほぼリアルタイムのスナップショットです。 
 同時実行ジョブ (実行中/制限) | 各ノードで実行されるタスクまたはジョブの数。 この値は、ほぼリアルタイムのスナップショットです。 上限は、各ノードの最大の同時実行ジョブ数を表します。 この値は、マシンのサイズに基づいて定義されます。 CPU/ メモリ/ ネットワークは使用率を超えておらず、アクティビティがタイムアウトになっている高度なシナリオでは、上限を引き上げて、同時実行ジョブの実行回数をスケールアップできます。この機能は、単一ノードのゲートウェイでも利用できます (スケーラビリティおよび可用性の機能が無効になっている場合でも、利用できます)。  
-役割 | マルチノード ゲートウェイには、ディスパッチャーとワーカーという 2 つのタイプの役割があります。 ノードはすべてワーカーであり、全部がジョブの実行に使用できることを意味します。 ディスパッチャー ノードは 1 つだけです。このノードは、クラウド サービスからタスク/ジョブをプルし、異なるワーカー ノード (自身を含む) にディスパッチするために使用されます。
+Role | マルチノード ゲートウェイには、ディスパッチャーとワーカーという 2 つのタイプの役割があります。 ノードはすべてワーカーであり、全部がジョブの実行に使用できることを意味します。 ディスパッチャー ノードは 1 つだけです。このノードは、クラウド サービスからタスク/ジョブをプルし、異なるワーカー ノード (自身を含む) にディスパッチするために使用されます。
 
 このページでは、ゲートウェイに 2 つ以上のノード (スケールアウト シナリオ) がある場合により有意義ないくつかの設定を確認します。 マルチノード ゲートウェイの設定に関する詳細については、「 [Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。
 
 ### <a name="gateway-status"></a>ゲートウェイの状態
 次の表は、**ゲートウェイ ノード**の状態を示しています。 
 
-状態  | コメント/シナリオ
+Status  | コメント/シナリオ
 :------- | :------------------
 オンライン | ノードはデータ ファクトリ サービスに接続されています。
 オフライン | ノードはオフラインです。
@@ -386,7 +387,7 @@ CPU 使用率 | ゲートウェイ ノードの CPU 使用率。 この値は、
 
 次の表は、**論理ゲートウェイ**の状態を示しています。 ゲートウェイの状態は、ゲートウェイ ノードの状態に依存します。 
 
-状態 | 説明
+Status | 説明
 :----- | :-------
 Needs Registration\(登録が必要\) | この論理ゲートウェイには、まだ登録されたノードがありません。
 オンライン | ゲートウェイ ノードはオンラインです。
@@ -469,7 +470,7 @@ Data Factory エディターで資格情報を暗号化するには、以下の�
 
 **資格情報の設定**アプリケーションを使用すると、ポータルでは、ゲートウェイ コンピューターの **Gateway 構成マネージャー**の **[証明書]** タブで指定された証明書を使用して、資格情報が暗号化されます。
 
-API を使用して資格情報を暗号化した方がよい場合は、 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用して資格情報を暗号化できます。 コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。 暗号化された資格情報を、JSON の **connectionString** の **EncryptedCredential** 要素に追加します。 JSON は、 [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) コマンドレットや Data Factory エディターで使用します。
+API を使用して資格情報を暗号化した方がよい場合は、 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell コマンドレットを使用して資格情報を暗号化できます。 コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。 暗号化された資格情報を、JSON の **connectionString** の **EncryptedCredential** 要素に追加します。 JSON は、 [New-AzureRmDataFactoryLinkedService](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) コマンドレットや Data Factory エディターで使用します。
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -484,7 +485,7 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 2. 次のコマンドを実行して Azure 資格情報を入力することにより、Azure アカウントにログインします。
 
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 3. **New-AzureRmDataFactoryGateway** コマンドレットを使用して、次のように論理ゲートウェイを作成します。
 

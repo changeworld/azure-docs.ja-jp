@@ -1,55 +1,52 @@
 ---
-title: Azure Stream Analytics クエリのテスト | Microsoft Docs
+title: サンプル データを利用した Azure Stream Analytics ジョブのテスト
 description: Stream Analytics ジョブでクエリをテストする方法
-keywords: クエリ テスト, クエリのトラブルシューティング
-documentation center: ''
+keywords: この記事では､Azure ポータルからサンプル入力を利用して Azure Stream Analytics ジョブをテストし､サンプル データをアップロードする方法を説明しています｡
 services: stream-analytics
-author: jseb225
-manager: ryanw
-ms.assetid: ''
+author: jasonwhowell
+ms.author: mamccrea
+ms.reviewer: jasonh
+manager: kfile
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
-ms.author: jeanb
-ms.openlocfilehash: 50bfce426bf48ba986887f8a2e2873fe04ea2507
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.topic: conceptual
+ms.date: 04/27/2018
+ms.openlocfilehash: 139ad76826f3e67577beba0369f6d4425e242af9
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978351"
 ---
-# <a name="test-azure-stream-analytics-queries-in-the-azure-portal"></a>Azure Portal で Azure Stream Analytics クエリをテストする
+# <a name="test-a-stream-analytics-query-with-sample-data"></a>サンプル データを利用した Stream Analytics クエリのテスト
 
-Azure Stream Analytics では、ジョブを開始したり停止したりすることなく、Azure Portal でクエリをテストできます。
+Azure Stream Analytics を使用すると、ジョブの起動や停止をすることなく、Azureポータルでサンプル データのアップロードと クエリのテストができます。
 
-## <a name="test-the-input"></a>入力をテストする
+## <a name="upload-sample-data-and-test-the-query"></a>サンプル データのアップロードとクエリのテスト
 
-1. サンプル入力データでテストするには、入力のいずれかを右クリックし、**[ファイルからサンプル データをアップロードする]** を選択します。 現在は、JSON 形式のデータのみをアップロードできます。 データが CSV などの別の形式になっている場合は、アップロードする前に JSON に変換する必要があります。 [CSV から JSON へのコンバーター](http://www.convertcsv.com/csv-to-json.htm)のような任意のオープン ソース変換ツールを使って、データを JSON に変換できます。
+1. Azure ポータルにサインインします。 
+
+2. Stream Analytics ジョブがある場所を探し､ジョブを選択します｡
+
+3. [Stream Analytics ジョブ] ページの **ジョブ トポロジ** の見出しの部分から **クエリ** を選択し､クエリ エディター ウィンドウを開きます。 
+
+4. サンプルの入力データを使ってクエリをテストするには､入力のいずれかを右クリックします｡  **ファイルからサンプルデータをアップロード** を選択します｡ データは、JSON、CSV または AVRO でシリアル化する必要があります。 サンプル入力は、UTF-8 でエンコードされていて、圧縮されていない必要があります。 ポータルでの CSV 入力のテストでは、コンマ (,) 区切り記号のみがサポートされています。
 
     ![Stream Analytics クエリ エディターでクエリをテストする](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 
-2. アップロードが完了したら、**[テスト]** をクリックして、用意したサンプル データでこのクエリをテストします。
+5. アップロードが完了したら、**[テスト]** を選択して、用意したサンプル データでこのクエリをテストします。
 
     ![Stream Analytics クエリ エディターでサンプル データをテストする](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
 
-クエリの出力はブラウザーに表示されます。後で使用するためにテストの出力を保存する場合は、結果のダウンロードのためのリンクを利用できます。 これで、クエリを簡単に何度も編集してテストを繰り返し行い、出力がどのように変わるかを確認することができます。
+6. テストの出力を保存して後で利用できるよう、ブラウザーに表示されるクエリの出力には、ダウンロード結果へのリンクが含まれています｡ 
 
-![Stream Analytics クエリ エディターのサンプル出力](media/stream-analytics-test-query/stream-analytics-test-query-editor-samples-output.png)
+7. クエリの変更とテストを繰り返して､出力がどのように変化するかを確認します｡
 
-クエリで複数の出力を使用している場合には、両方の出力結果を個別に確認できるほか、それらを簡単に切り替えることができます。
+   ![Stream Analytics クエリ エディターのサンプル出力](media/stream-analytics-test-query/stream-analytics-test-query-editor-samples-output.png)
 
-ブラウザーに表示された結果に問題がなければ、クエリを保存し、ジョブを開始して、エラーを発生させずにイベントを処理できます。
+   1 つのクエリで複数の出力を使用すると､結果は出力ごとに別のタブに表示されますが､タブは簡単に切り替えることができます｡
 
-## <a name="get-help"></a>問い合わせ
+8. ブラウザで結果を確認したら､クエリを **保存** します｡ ジョブを **Start** します｡外部からのイベントがジョブによって処理されます｡
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
-
-## <a name="next-steps"></a>次のステップ
-
-* [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
-* [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+## <a name="next-steps"></a>次の手順
+> [!div class="nextstepaction"]
+> [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)

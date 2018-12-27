@@ -1,25 +1,19 @@
 ---
-title: "Azure Analysis Services でのサーバー メトリックの監視 | Microsoft Docs"
-description: "Azure Portal で、Analysis Services のサーバー メトリックを監視する方法を説明します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services でのサーバー メトリックの監視 | Microsoft Docs
+description: Azure Portal で、Analysis Services のサーバー メトリックを監視する方法を説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: e82fb85e78058d03b8615ef3fbe80bbfa1ad71ed
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: d10e9d3d2b6fe339b04d3c0754290313312bc2b7
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427282"
 ---
 # <a name="monitor-server-metrics"></a>サーバー メトリックの監視
 
@@ -42,7 +36,7 @@ Analysis Services は、サーバーのパフォーマンスと正常性を監�
 ## <a name="server-metrics"></a>サーバー メトリック
 この表を使用すると、お使いの監視シナリオに最適なメトリックを確認できます。 同じグラフには、同じ単位のメトリックのみを表示することができます。
 
-|メトリック|メトリックの表示名|単位|集計の種類|[説明]|
+|メトリック|メトリックの表示名|単位|集計の種類|説明|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|コマンド プールのジョブ キューの長さ|Count|平均|コマンド スレッド プールのキュー内のジョブの数。|
 |CurrentConnections|接続: 現在の接続|Count|平均|現在確立されているクライアント接続の数。|

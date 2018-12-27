@@ -1,24 +1,20 @@
 ---
-title: IoT リアルタイム データ ストリームと Azure Stream Analytics | Microsoft Docs
+title: Azure Stream Analytics を使用した IoT リアルタイム データ ストリーム
 description: IoT センサー タグと、Stream Analytics によるデータ ストリームとリアルタイムのデータ処理
-keywords: IoT ソリューション, IoT の概要
 services: stream-analytics
-documentationcenter: ''
-author: SnehaGunda
-manager: ryanw
-ms.assetid: 3e829055-75ed-469f-91f5-f0dc95046bdb
+author: jasonwhowell
+ms.author: mamccrea
+manager: kfile
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/28/2017
-ms.author: sngun
-ms.openlocfilehash: 52b05d4daf75d81402d7c72cd05f3819a3456171
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 8a4e5b180438203e345ef6c5323ab010f4757c0e
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978078"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Azure Stream Analytics の使用を開始して IoT デバイスからのデータを処理する
 このチュートリアルでは、モノのインターネット (IoT) デバイスからデータを収集するストリーム処理ロジックの作成方法について学習します。 実際のモノのインターネット (IoT) ユース ケースを使用して、迅速で経済的なソリューションを構築する方法を紹介します。
@@ -32,19 +28,21 @@ Contoso は工業オートメーションの領域で活動する会社で、自
 
 ここに示すデータは、Texas Instruments 社のセンサー タグ デバイスから生成されています。 データのペイロードは JSON 形式で、次のようになります。
 
-    {
-        "time": "2016-01-26T20:47:53.0000000",  
-        "dspl": "sensorE",  
-        "temp": 123,  
-        "hmdt": 34  
-    }  
+```json
+{
+    "time": "2016-01-26T20:47:53.0000000",  
+    "dspl": "sensorE",  
+    "temp": 123,  
+    "hmdt": 34  
+}  
+```
 
 実際のシナリオでは、何百ものこのようなセンサーがストリームとしてイベントを生成することになります。 ゲートウェイ デバイスがコードを実行し、これらのイベントを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) または [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) にプッシュできれば理想的です。 Stream Analytics ジョブでそれらのイベントを Event Hubs から取り込み、そのストリームに対してリアルタイム分析クエリを実行することになると思われます。 結果はその後、いずれかの[サポートされている出力](stream-analytics-define-outputs.md)に送信することになります。
 
 このガイドでは使いやすさを考えて、現実のセンサー タグ デバイスからキャプチャしたサンプル データ ファイルを用意しています。 このサンプル データに対してクエリを実行し、結果を確認できます。 以降のチュートリアルでは、各自のジョブを入力と出力に関連付け、それらを Azure サービスにデプロイする方法を学習します。
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
-1. [Azure Portal](http://portal.azure.com) で、プラス記号をクリックし、右側のテキスト ウィンドウに「**STREAM ANALYTICS**」と入力します。 結果の一覧で **[Stream Analytics ジョブ]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、プラス記号をクリックし、右側のテキスト ウィンドウに「**STREAM ANALYTICS**」と入力します。 結果の一覧で **[Stream Analytics ジョブ]** を選択します。
    
     ![Create a new Stream Analytics job](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 2. 一意のジョブ名を入力し、サブスクリプションがジョブに適したものであることを確認します。 次に、新しいリソース グループを作成するか、サブスクリプションで既存のリソース グループを選択します。

@@ -1,33 +1,27 @@
 ---
-title: "HDInsight での Hadoop MapReduce サンプルの実行 - Azure | Microsoft Docs"
-description: "HDInsight に含まれる jar ファイルの MapReduce のサンプルを使用します。 SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。"
-keywords: "hadoop サンプル jar、hadoop サンプル jar、hadoop mapreduce サンプル、mapreduce サンプル"
+title: HDInsight 上で Apache Hadoop の MapReduce サンプルを実行する - Azure
+description: HDInsight に含まれる jar ファイルの MapReduce のサンプルを使用します。 SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。
+keywords: hadoop サンプル jar、hadoop サンプル jar、hadoop mapreduce サンプル、mapreduce サンプル
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: e1d2a0b9-1659-4fab-921e-4a8990cbb30a
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/20/2018
-ms.author: larryfr
-ms.openlocfilehash: 1882412236e630322d52cb1875060798fef6c017
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: hrasheed
+ms.openlocfilehash: 283171fa00837a8a7b4e0a13d7bca5645cf63a83
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633067"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight に含まれる MapReduce サンプルを実行する
 
 [!INCLUDE [samples-selector](../../../includes/hdinsight-run-samples-selector.md)]
 
-HDInsight の Hadoop に含まれている MapReduce サンプルを実行する方法を説明します。
+HDInsight 上の Apache Hadoop に含まれている MapReduce サンプルを実行する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -93,7 +87,7 @@ HDInsight の Hadoop に含まれている MapReduce サンプルを実行する
 
     このメッセージは、ソース ドキュメントの複数の入力パスを指定できることを示しています。 最後のパスは、出力 (ソース ドキュメント内の単語の数) の保存場所です。
 
-4. 次のコマンドを使用して、クラスターでサンプルデータとして提供されているレオナルド·ダ·ヴィンチの手記の単語をすべてカウントします。
+4. 次のコマンドを使用して、レオナルド ダ ヴィンチの手記 (クラスターで提供されているサンプル データ) に含まれるすべての単語をカウントします。
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
@@ -218,8 +212,6 @@ GraySort はベンチマーク ソートです。 その評価尺度は、大量
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
-
-[hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:apache-hadoop-introduction.md

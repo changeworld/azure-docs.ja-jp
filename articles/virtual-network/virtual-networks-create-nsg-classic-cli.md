@@ -1,10 +1,10 @@
 ---
-title: Azure CLI 1.0 を使用してネットワーク セキュリティ グループ (クラシック) を作成する | Microsoft Docs
-description: Azure CLI 1.0 を使ってネットワーク セキュリティ グループ (クラシック) を作成し、展開する方法を説明します。
+title: Azure クラシック CLI を使用してネットワーク セキュリティ グループ (クラシック) を作成する | Microsoft Docs
+description: Azure クラシック CLI を使用してネットワーク セキュリティ グループ (クラシック) を作成し、展開する方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: genlin
+manager: cshepard
 editor: ''
 tags: azure-service-management
 ms.assetid: 17d98950-5fbb-4653-bef6-d822ab37541e
@@ -14,21 +14,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
-ms.author: jdial
-ms.openlocfilehash: 67b959378521e5a456a2e464d6dd04bbdcab4f30
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: genli
+ms.openlocfilehash: 5e81fa709589e5fa4a109cdf7709b87bc446ac3c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947236"
 ---
-# <a name="create-a-network-security-group-classic-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用してネットワーク セキュリティ グループ (クラシック) を作成する
+# <a name="create-a-network-security-group-classic-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用してネットワーク セキュリティ グループ (クラシック) を作成する
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-この記事では、クラシック デプロイメント モデルについて説明します。 [リソース マネージャーのデプロイメント モデルで NSG を作成](tutorial-filter-network-traffic-cli.md)することもできます。
+この記事では、クラシック デプロイ モデルについて説明します。 [Resource Manager デプロイ モデルで NSG を作成](tutorial-filter-network-traffic-cli.md)することもできます。
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
@@ -36,7 +37,7 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="create-an-nsg-for-the-front-end-subnet"></a>フロントエンドのサブネットの NSG を作成する
 
-1. Azure CLI の使用経験がない場合は、「[Azure CLI のインストールと構成](../cli-install-nodejs.md)」をご覧ください。
+1. Azure CLI の使用経験がない場合は、「[Azure CLI のインストールと構成](/cli/azure/install-cli-version-1.0)」をご覧ください。
 2. クラシック モードに切り替えます。
 
     ```azurecli

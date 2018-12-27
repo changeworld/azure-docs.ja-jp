@@ -5,20 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 05/16/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fa9c27457b1da4d233aaea2a6621af9f5d01149d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 55ac7e055c972a9b18ef374ac8498b418c5d56af
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34307585"
 ---
 |  | **ポイント対サイト** | **サイト間** | **ExpressRoute** |
 | --- | --- | --- | --- |
 | **Azure でサポートされるサービス** |Cloud Services および Virtual Machines |Cloud Services および Virtual Machines |[サービス一覧](../articles/expressroute/expressroute-faqs.md#supported-services) |
-| **一般的な帯域幅** |一般的には 100 Mbps 未満のアグリゲート |一般的には 1 Gbps 未満のアグリゲート |50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、2 Gbps、5 Gbps、10 Gbps |
-| **サポート対象プロトコル** |Secure Sockets Tunneling Protocol (SSTP) |IPsec |VLAN、NSP の VPN テクノロジー (MPLS、VPLS など) 経由の直接接続 |
+| **一般的な帯域幅** |ゲートウェイの SKU に基づく |一般的には 1 Gbps 未満のアグリゲート |50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、2 Gbps、5 Gbps、10 Gbps |
+| **サポート対象プロトコル** |Secure Sockets Tunneling Protocol (SSTP) と IPsec |IPsec |VLAN、NSP の VPN テクノロジー (MPLS、VPLS など) 経由の直接接続 |
 | **ルーティング** |RouteBased (動的) |ポリシー ベース (静的ルーティング) およびルート ベース (動的ルーティング VPN) がサポートされます。 |BGP |
 | **接続の弾力性** |アクティブ/パッシブ |アクティブ/パッシブまたはアクティブ/アクティブ |アクティブ/アクティブ |
 | **一般的な使用例** |プロトタイプの作成、クラウド サービスおよび仮想マシンの開発/テスト/ラボ シナリオ |クラウド サービスおよび仮想マシンの開発/テスト/ラボ シナリオおよび小規模実稼動ワークロード |すべての Azure サービス (検証済み一覧)、エンタープライズクラスおよびミッション クリティカルなワークロード、バックアップ、ビッグ データ、DR サイトとしての Azure へのアクセス |

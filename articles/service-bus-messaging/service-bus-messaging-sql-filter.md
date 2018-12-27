@@ -1,24 +1,25 @@
 ---
-title: "Azure Service Bus の SQLFilter 構文リファレンス | Microsoft Docs"
-description: "SQLFilter の文法について詳しく説明します。"
+title: Azure Service Bus の SQLFilter 構文リファレンス | Microsoft Docs
+description: SQLFilter の文法について詳しく説明します。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/05/2018
-ms.author: sethm
-ms.openlocfilehash: ec9d728eb31eb979e82bfb53cf619f823750e65c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 09/05/2018
+ms.author: spelluru
+ms.openlocfilehash: 7bac115ab3215a7dde625f194bdf325f9e0af318
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392858"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 構文
 
@@ -281,5 +282,5 @@ ms.lasthandoff: 02/09/2018
 ## <a name="next-steps"></a>次の手順
 
 - [SQLFilter クラス (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
-- [SQLFilter クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.filters.sqlfilter)
+- [SQLFilter クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
 - [SQLRuleAction クラス](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)

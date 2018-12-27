@@ -1,0 +1,175 @@
+---
+title: Azure IoT Central アプリケーションでデバイス を管理する | Microsoft Docs
+description: オペレーターとして、Azure IoT Central アプリケーションでデバイスを管理する方法について説明します。
+author: ellenfosborne
+ms.author: elfarber
+ms.date: 11/02/2018
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: dc241612149de5c4ea5c1d2e698741e77d429fc7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004886"
+---
+# <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
+
+この記事では、オペレーターとして、Azure IoT Central アプリケーションでデバイスを管理する方法について説明します。 オペレーターは、次の操作を実行できます。
+
+- **Device Explorer** ページを使用して、Azure IoT Central アプリケーションに接続されているデバイスを表示、追加、および削除します。
+- デバイス インベントリを最新の状態に維持します。
+- デバイス プロパティに格納された値を変更することで、デバイスのメタデータを最新の状態に維持します。
+- **[設定]** ページで特定のデバイスの設定を更新することで、デバイスの動作を制御します。
+
+## <a name="view-your-devices"></a>デバイスを表示する
+
+個々のデバイスを表示するには、次の操作を実行します。
+
+1. 左側のナビゲーション メニューで **[Device Explorer]** を選択します。 ここには、[デバイス テンプレート](howto-set-up-template.md)が一覧表示されます。
+
+1. 左側のウィンドウの [テンプレート] でデバイス テンプレートを選択します。
+
+1. 次に示すように、Device Explorer ページの右側のウィンドウに、そのデバイス テンプレートから作成されたデバイスが一覧表示されます。 各デバイスを選択すると、そのデバイスのデバイス詳細ページが表示されます。
+
+    [![[デバイスの詳細] ページ](./media/howto-manage-devices/image1.png)](./media/howto-manage-devices/image1.png#lightbox)
+
+## <a name="add-a-device"></a>デバイスを追加する
+
+Azure IoT Central アプリケーションへ新しいデバイスを追加するには、次の操作を実行します。
+
+1. 左側のナビゲーション メニューで **[Device Explorer]** を選択します。
+
+1. デバイスを作成するデバイスのテンプレートを選択します。
+
+1. **[新規]** を選択します。
+
+1. **[Real]\(実物\)** または **[シミュレート]** を選択します。 実物のデバイスとは、Azure IoT Central アプリケーションに接続する物理デバイスのことです。 シミュレートされたデバイスには、Azure IoT Central によって生成されたサンプル データが含まれています。 この例では、実物のデバイスを使用します。 **[Real]\(実物\)** を選択すると、新しいデバイスの **[デバイスの詳細]** ページに移動します。
+
+
+## <a name="import-devices"></a>デバイスのインポート
+
+アプリケーションに多数のデバイスを接続するために、Azure IoT Central では、CSV ファイルを使用してデバイスを一括インポートする機能が提供されています。 CSV ファイルには次の列 (とヘッダー) が必要です
+1.  IOTC_DeviceID **<span style="color:Red">(小文字にする必要があります)</span>**
+1.  IOTC_DeviceName (省略可能)
+
+
+アプリケーションにデバイスを一括登録する方法:
+
+1. 左側のナビゲーション メニューで **[Device Explorer]** を選択します。
+
+1. 左側のパネルで一括作成するデバイスのデバイス テンプレートを選択します。
+
+ >   [!NOTE] 
+    まだデバイス テンプレートがない場合は、**[Unassociated devices]\(関連付けられていないデバイス\)** の下にデバイスをインポートし、テンプレートなしでデバイスを登録できます。 デバイスをインポートしたら、後続の手順でテンプレートに関連付けることができます。
+
+1. **[インポート]** をクリックします。
+
+    [![インポート アクション](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
+
+1. インポートするデバイス ID の一覧を含む CSV ファイルを選択します。
+
+1. ファイルがアップロードされると、デバイスのインポートが開始されます。 デバイス グリッドの上部でインポートの状態を追跡できます。
+
+1. インポートが完了すると、デバイス グリッドに完了メッセージが表示されます。
+
+    [![インポート成功](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
+
+デバイスのインポート操作が失敗した場合は、デバイス グリッドにエラー メッセージが表示されます。 すべてのエラーをキャプチャしたログ ファイルが生成され、エラー メッセージをクリックするとダウンロードできます。
+
+
+**デバイスをテンプレートに関連付ける**
+
+**[Unassociated devices]\(関連付けられていないデバイス\)** でインポートを開始してデバイスを登録すると、デバイス テンプレートが関連付けられていないデバイスが作成されます。 デバイスに関するデータやその他の詳細を調べるには、デバイスをテンプレートに関連付ける必要があります。 デバイスをテンプレートに関連付けるには、次の手順に従います。
+1. 左側のナビゲーション メニューで **[Device Explorer]** を選択します。
+1. 左側のパネルで、**[Unassociated devices]\(関連付けられていないデバイス\)** を選択します。
+    [![[Unassociated devices]\(関連付けられていないデバイス\)](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
+1. テンプレートに関連付けるデバイスを選択します。
+1. **[関連付け]** オプションをクリックします。
+    [![デバイスの関連付け](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
+1. 使用可能なテンプレートの一覧からテンプレートを選択し、**[関連付け]** ボタンをクリックします。
+1. 選択したデバイスが、それぞれのデバイス テンプレートの下に移動されます。
+
+ >   [!NOTE] 
+    いったんデバイスをテンプレートに関連付けると、関連付けを解除したり、そのデバイスを別のテンプレートに関連付けたりすることはできません。
+
+## <a name="export-devices"></a>デバイスのエクスポート
+
+IoT Central に接続するデバイスをプロビジョニングするには、IoT Central によって生成されるデバイスの接続文字列が必要です。 エクスポート機能を使用すると、アプリケーションからの接続文字列と、デバイスの他のプロパティを一括で取得します。 エクスポートでは、選択したすべてのデバイスのデバイス ID、デバイス名、およびプライマリ接続文字列を CSV ファイルを作成します。
+
+アプリからデバイスを一括でエクスポートするには:
+1. 左側のナビゲーション メニューで **[Device Explorer]** を選択します。
+
+1. 左側のパネルで、デバイスをエクスポートするデバイス テンプレートを選択します。
+
+1. エクスポートするデバイスを選択して、**エクスポート** アクションをクリックします。
+
+    [![エクスポート](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
+
+1. エクスポート プロセスが起動し、グリッドの上部で状態を追跡できます。 
+
+1. エクスポートが完了すると、生成されたファイルをダウンロードするリンクと共に成功メッセージが表示されます。
+
+1. **成功メッセージ** をクリックし、ディスク上のローカル フォルダーにファイルをダウンロードします。
+
+    [![エクスポート - 成功](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
+
+1. エクスポートされた CSV ファイルには、**デバイス ID、デバイス名、デバイスの主キー/セカンダリ キー、プライマリ/セカンダリ証明書サムプリント**の列情報が含まれます
+    *   IOTC_DEVICEID
+    *   IOTC_DEVICENAME
+    *   IOTC_SASKEY_PRIMARY
+    *   IOTC_SASKEY_SECONDARY
+    *   IOTC_X509THUMBPRINT_PRIMARY 
+    *   IOTC_X509THUMBPRINT_SECONDARY
+
+## <a name="delete-a-device"></a>デバイスを削除する
+
+実物、またはシミュレートされたデバイスを Azure IoT Central アプリケーションから削除する方法:
+
+1. ナビゲーション メニューで **[Device Explorer]** を選択します。
+
+1. 削除するデバイスのデバイス テンプレートを選択します。
+
+1. 削除するデバイスの横にあるチェック ボックスをオンにします。
+
+1. **[削除]** を選択します。
+
+## <a name="change-a-device-setting"></a>デバイスの設定を変更する
+
+設定により、デバイスの動作が制御されます。 つまり、デバイスへの入力を指定できます。 **[デバイスの詳細]** ページでデバイス設定を表示および更新できます。
+
+1. ナビゲーション メニューで **[Device Explorer]** を選択します。
+
+1. 設定を変更するデバイスのデバイス テンプレートを選択します。
+
+1. **[設定]** タブを選択します。ここには、デバイスのすべての設定と、現在の値が表示されます。 デバイスの各設定がまだ同期されているかどうかを確認できます。
+
+1. 目的の値に設定を変更します。 一度に複数の設定を変更し、それらすべてを同時に更新できます。
+
+1. **[更新]** を選択します。 値がデバイスに送信されます。 デバイスが設定の変更を認識すると、設定の状態が **[同期済み]** に変わります。
+
+## <a name="change-a-property"></a>プロパティ値を変更する
+
+プロパティは、都市名やシリアル番号など、デバイスに関連付けられているデバイスのメタデータです。 **[デバイスの詳細]** ページでプロパティを表示および更新できます。
+
+1. ナビゲーション メニューで **[Device Explorer]** を選択します。
+
+1. プロパティを変更するデバイスのデバイス テンプレートを選択します。
+
+1. **[プロパティ]** タブを選択し、すべてのプロパティを表示します。
+
+1. アプリケーションのプロパティを目的の値に変更します。 一度に複数のプロパティを変更し、それらすべてを同時に更新できます。 **[更新]** を選択します。
+
+> [!NOTE]
+> _デバイス プロパティ_ の値を変更することはできません。 デバイス プロパティはデバイスによって設定され、Azure IoT Central アプリケーション内では読み取り専用です。
+
+## <a name="next-steps"></a>次の手順
+
+ここでは、Azure IoT Central アプリケーションでデバイスを管理する方法について説明しました。推奨される次の手順は以下のとおりです。
+
+> [!div class="nextstepaction"]
+> [デバイス セットを使用する方法](howto-use-device-sets.md)
+
+<!-- Next how-tos in the sequence -->

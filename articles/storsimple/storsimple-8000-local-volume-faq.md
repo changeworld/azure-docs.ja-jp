@@ -1,12 +1,12 @@
 ---
-title: "StorSimple のローカル固定ボリュームに関してよく寄せられる質問 | Microsoft Docs"
-description: "StorSimple のローカル固定ボリュームに関してよく寄せられる質問とその回答を示します。"
+title: StorSimple のローカル固定ボリュームに関してよく寄せられる質問 | Microsoft Docs
+description: StorSimple のローカル固定ボリュームに関してよく寄せられる質問とその回答を示します。
 services: storsimple
 documentationcenter: NA
 author: manuaery
 manager: syadav
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109470"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple のローカル固定ボリューム: よく寄せられる質問 (FAQ)
 ## <a name="overview"></a>Overview

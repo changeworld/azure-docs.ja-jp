@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center チュートリアル - Azure Security Center でリソースを保護する | Microsoft Docs"
-description: "このチュートリアルでは、Just In Time VM アクセス ポリシーとアプリケーション制御ポリシーを構成する方法を示します。"
+title: Azure Security Center チュートリアル - Azure Security Center でリソースを保護する | Microsoft Docs
+description: このチュートリアルでは、Just In Time VM アクセス ポリシーとアプリケーション制御ポリシーを構成する方法を示します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: cda204f5b54aef239cc0795b62c6fa484a27ebb5
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.date: 12/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: 19b5f6d6cb8e0e17dba9944e8b72c6938f168c70
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839349"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>チュートリアル: Azure Security Center でリソースを保護する
 Security Center は、アクセスおよびアプリケーション制御を使用して悪意のあるアクティビティをブロックすることで、脅威にさらされる状態を軽減します。 Just In Time 仮想マシン (VM) アクセスは、VM への永続的なアクセスを拒否できるようにして攻撃に対する露出を減らします。 代わりに、必要な場合にのみ VM への制御および監査されたアクセスを提供します。 適応型アプリケーション制御を使用すると、VM 上で実行できるアプリケーションを制御することでマルウェアに対する VM の保護を強化できます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様がホワイトリスト登録に関する規則を適用するのを支援します。
@@ -33,16 +34,14 @@ Security Center は、アクセスおよびアプリケーション制御を使�
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルで説明されている機能を実行するには、Security Center の Standard 価格レベルを使用する必要があります。 Security Center Standard は最初の 60 日間、無料でお試しいただけます。 Standard にアップグレードする方法については、[Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)に関するクイックスタートを参照してください。
+このチュートリアルで説明されている機能を実行するには、Security Center の Standard 価格レベルを使用する必要があります。 Security Center Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 Standard にアップグレードする方法については、[Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)に関するクイックスタートを参照してください。
 
 ## <a name="manage-vm-access"></a>VM アクセスの管理
 Just In Time VM アクセスを使用すると、Azure VM への受信トラフィックをロックダウンすることができるので、攻撃に対する露出が減り、VM への接続が必要な場合は簡単にアクセスできます。
 
-Just In Time VM アクセスはプレビュー段階です。
-
 管理ポートを常に開放しておく必要はありません。 管理ポートを開放しておく必要があるのは、管理タスクやメンテナンス タスクを実行する場合など、VM に接続している間だけです。 ジャスト イン タイムが有効になっている場合、Security Center ではネットワーク セキュリティ グループ (NSG) ルールが使用されます。このルールにより管理ポートへのアクセスが制限されるため、攻撃者は管理ポートをターゲットにすることができなくなります。
 
-1. Security Center のメイン メニューで、**[高度なクラウド防御]** の下の **[Just In Time VM アクセス]** を選択します。
+1. Security Center のメイン メニューで、**[高度なクラウド防御]** の **[Just In Time VM アクセス]** を選択します。
 
   ![Just In Time VM アクセス][1]
 
@@ -74,7 +73,7 @@ Just In Time VM アクセスはプレビュー段階です。
 ## <a name="harden-vms-against-malware"></a>マルウェアに対する VM の保護の強化
 適応型アプリケーション制御では、構成済みリソース グループに対する実行が許可される一連のアプリケーションを定義できます。これにはさまざまな利点がありますが、たとえばマルウェアに対する VM の保護の強化に役立ちます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様がホワイトリスト登録に関する規則を適用するのを支援します。
 
-適応型アプリケーション制御はプレビュー段階です。 この機能は Windows マシンでのみ使用できます。
+この機能は Windows マシンでのみ使用できます。
 
 1. Security Center のメイン メニューに戻ります。 **[高度なクラウド防御]** で **[適応型アプリケーション制御]** を選択します。
 

@@ -1,29 +1,23 @@
 ---
-title: "データ ソースへの接続方法 | Microsoft Docs"
-description: "Azure Data Catalog で検出されたデータ ソースへの接続方法を説明する操作方法に関する記事"
+title: Azure Data Catalog でデータ ソースに接続する方法
+description: Azure Data Catalog で検出されたデータ ソースへの接続方法を説明する操作方法に関する記事
 services: data-catalog
-documentationcenter: 
-author: steelanddata
-manager: NA
-editor: 
-tags: 
+author: markingmyname
+ms.author: maghan
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: b5bed534d9fa1a64b0e90c268407281724185ce8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 973077b56f1a777d917a94f9c1470e6f8c15a489
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405056"
 ---
 # <a name="how-to-connect-to-data-sources"></a>データ ソースへの接続方法
 ## <a name="introduction"></a>はじめに
-**Microsoft Azure Data Catalog** は、完全に管理されたクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、 **Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。 このシナリオの主な特徴はデータを使用することです。ユーザーがデータ ソースを検出しその目的を理解したら、次の手順としてデータ ソースに接続し、データを使用します。
+**Microsoft Azure Data Catalog** は、フル マネージドのクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、 **Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。 このシナリオの主な特徴はデータを使用することです。ユーザーがデータ ソースを検出しその目的を理解したら、次の手順としてデータ ソースに接続し、データを使用します。
 
 ## <a name="data-source-locations"></a>データ ソースの場所
 データ ソースの登録時に、**Azure Data Catalog** は、データ ソースに関するメタデータを受信します。 このメタデータには、データ ソースの場所に関する詳細が含まれています。 場所の詳細はデータ ソースによって異なりますが、それには必ず接続に必要な情報が含まれています。 たとえば、SQL Server テーブルの場所には、サーバー名、データベース名、スキーマ名、およびテーブル名が含まれます。一方、SQL Server Reporting Services レポートには、サーバー名とレポートへのパスが含まれます。 その他のデータ ソースの種類には、ソース システムの構造と機能を反映する場所が含まれます。
@@ -48,7 +42,7 @@ Azure Data Catalog ポータルでデータ ソースの "開く" メニュー�
 | Power Query |.xlsx |Excel 2016、Power Query for Excel アドインがインストールされている Excel 2010 または Excel 2013 |
 | Power BI Desktop |.pbix |Power BI Desktop (2016 年 7 月以降) |
 | SQL Server Data Tools |vsweb:// |SQL Server ツールがインストールされている Visual Studio 2013 Update 4 以降 |
-| レポート マネージャー |http:// |[SQL Server Reporting Services のブラウザーの要件](https://technet.microsoft.com/en-us/library/ms156511.aspx)に関するページをご覧ください |
+| レポート マネージャー |http:// |[SQL Server Reporting Services のブラウザーの要件](https://technet.microsoft.com/library/ms156511.aspx)に関するページをご覧ください |
 
 ## <a name="your-data-your-tools"></a>データ、ツール
 メニューで使用できるオプションは、現在選択されているデータ資産の種類によって異なります。 もちろん、使用可能なツールがすべて "開く" メニューに表示されるわけではありませんが、 それでも任意のクライアント ツールを使用してデータ ソースに簡単に接続できます。 **Azure Data Catalog** ポータルでデータ資産を選択すると、プロパティ ペインに完全な場所が表示されます。

@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell のサンプル | Microsoft Docs"
-description: "Azure API Management で利用可能な Azure PowerShell スクリプトについて説明します。"
+title: Azure PowerShell のサンプル | Microsoft Docs
+description: Azure API Management で利用可能な Azure PowerShell スクリプトについて説明します。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,15 +14,16 @@ ms.topic: sample
 ms.date: 10/09/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: a24428db2e7b7058d8a662896e16fd6ada1d2155
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c1096567a42845a0be327edfb1be67838936a057
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434591"
 ---
 # <a name="azure-powershell-samples-for-api-management"></a>API Management 用の Azure PowerShell サンプル
 
-次の表には、Azure PowerShell を使用して構築された Bash スクリプトへのリンクが含まれています。
+次の表には、PowerShell から API Management サービスを操作するためのサンプル スクリプトが含まれます。
 
 | | |
 |-|-|

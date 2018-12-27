@@ -1,25 +1,27 @@
 ---
-title: Azure Machine Learning の ALM | Microsoft Docs
+title: アプリケーション ライフサイクルの管理 - Azure Machine Learning Studio | Microsoft Docs
 description: Azure Machine Learning Studio でのアプリケーション ライフサイクル管理のベスト プラクティスの適用
 keywords: ALM、AML、Azure ML、アプリケーション ライフ サイクル管理、バージョン管理
 services: machine-learning
 documentationcenter: ''
-author: hning86
-ms.author: haining
-manager: mwinkle
+author: ericlicoding
+ms.custom: previous-ms.author=haining, previous-author=hning86
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 1be6577d-f2c7-425b-b6b9-d5038e52b395
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
-ms.openlocfilehash: 50a93d439f6d6815113d93e0dece7b512b9defe7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f331ebb85e1cf47dc1235138376704b08d217e82
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249755"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのアプリケーション ライフサイクル管理
 Azure Machine Learning Studio は、Azure クラウド プラットフォームで運用できる機械学習の実験を開発するツールです。 Visual Studio IDE に似ており、1 つのプラットフォームにマージされているスケーラブルなクラウド サービスです。 さまざまな資産のバージョン管理から、自動化された実行とデプロイまで、標準的なアプリケーション ライフサイクル管理 (ALM) プラクティスを Azure Machine Learning Studio に組み込むことができます。 この記事では、一部のオプションとアプローチについて説明します。
@@ -41,7 +43,7 @@ Azure Machine Learning Studio の学習実験の実行モデルでは、実験�
 実験を削除すると、その実験でのすべてのスナップショットが削除されます。
 
 ### <a name="exportimport-experiment-in-json-format"></a>JSON 形式で実験のエクスポートとインポート
-実行履歴のスナップショットは、実行のために送信されるたびに実験の変更不可バージョンを Azure Machine Learning Studio に保持します。 実験のローカル コピーを保存し、Team Foundation Server などのお気に入りのソース管理システムにチェックインして、後でそのローカル ファイルから実験を再作成することもできます。 [Azure Machine Learning PowerShell](http://aka.ms/amlps) コマンドレット [*Export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) と [*Import-AmlExperimentGraph*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) を使用して、それを実行できます。
+実行履歴のスナップショットは、実行のために送信されるたびに実験の変更不可バージョンを Azure Machine Learning Studio に保持します。 実験のローカル コピーを保存し、Team Foundation Server などのお気に入りのソース管理システムにチェックインして、後でそのローカル ファイルから実験を再作成することもできます。 [Azure Machine Learning PowerShell](https://aka.ms/amlps) コマンドレット [*Export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) と [*Import-AmlExperimentGraph*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) を使用して、それを実行できます。
 
 JSON ファイルは実験グラフのテキスト表現ですが、データセットやトレーニング済みのモデルなど、ワークスペース内の資産への参照を含む場合があります。 その資産のシリアル化されたバージョンは含みません。 このため、JSON ドキュメントをワークスペースにもう一度インポートしようとする場合、これらの参照先資産は実験で参照されているのと同じ資産 ID で既に存在する必要があります。 そうでない場合は、インポートされた実験にアクセスできません。
 
@@ -78,12 +80,12 @@ Azure Machine Learning の実験から、2 種類の Web サービスをデプ�
 また、多数の同一の Web サービス エンドポイントを作成した後、異なるバージョンの iLearner ファイルのパッチをエンドポイントに適用して同様の効果を得ることもできます。 この[記事](create-models-and-endpoints-with-powershell.md)では、これを実現する方法について詳しく説明します。
 
 ### <a name="new-web-service"></a>新しい Web サービス
-新しい Azure Resource Manager ベースの Web サービスを作成する場合は、エンドポイント コンストラクトを使用できなくなります。 代わりに、[Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell コマンドレットを使用するか、デプロイされた Resource Manager ベースの Web サービスから [*Export-AzureRmMlWebservice*](https://msdn.microsoft.com/library/azure/mt767935.aspx) PowerShell コマンドレットを使用して、予測実験から Web サービス定義 (WSD) ファイルを JSON 形式で生成できます。
+新しい Azure Resource Manager ベースの Web サービスを作成する場合は、エンドポイント コンストラクトを使用できなくなります。 代わりに、[Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell コマンドレットを使用するか、デプロイされた Resource Manager ベースの Web サービスから [*Export-AzureRmMlWebservice*](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice?view=azurermps-6.6.0) PowerShell コマンドレットを使用して、予測実験から Web サービス定義 (WSD) ファイルを JSON 形式で生成できます。
 
 WSD ファイルをエクスポートしてそれをバージョン管理した後で、別の Azure リージョンで別の Web サービス プランの新しい Web サービスとして WSD をデプロイすることもできます。 適切なストレージ アカウント構成だけではなく、新しい Web サービス プラン ID を指定してください。 異なる iLearner ファイルにパッチを適用するには、WSD ファイルを変更し、トレーニング済みのモデルの場所の参照を更新して、それを新しい Web サービスとしてデプロイできます。
 
 ## <a name="automate-experiment-execution-and-deployment"></a>実験の実行とデプロイの自動化
-ALM の重要な側面は、アプリケーションの実行とデプロイのプロセスを自動化できるようにすることです。 Azure Machine Learning では、[PowerShell モジュール](http://aka.ms/amlps)を使用してこれを実現できます。 ここでは、[Azure Machine Learning Studio PowerShell モジュール](http://aka.ms/amlps)を使用することによる、標準的な ALM 自動化実行/デプロイ プロセスに関連するエンド ツー エンドの手順の例を示します。 各手順は、その手順の実行に使用できる 1 つまたは複数の PowerShell コマンドレットにリンクされています。
+ALM の重要な側面は、アプリケーションの実行とデプロイのプロセスを自動化できるようにすることです。 Azure Machine Learning では、[PowerShell モジュール](https://aka.ms/amlps)を使用してこれを実現できます。 ここでは、[Azure Machine Learning Studio PowerShell モジュール](https://aka.ms/amlps)を使用することによる、標準的な ALM 自動化実行/デプロイ プロセスに関連するエンド ツー エンドの手順の例を示します。 各手順は、その手順の実行に使用できる 1 つまたは複数の PowerShell コマンドレットにリンクされています。
 
 1. [データセットをアップロード](https://github.com/hning86/azuremlps#upload-amldataset)します。
 2. [ワークスペース](https://github.com/hning86/azuremlps#copy-amlexperiment)または[ギャラリー](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery)からワークスペースにトレーニング実験をコピーするか、[エクスポート](https://github.com/hning86/azuremlps#export-amlexperimentgraph)された実験をローカル ディスクから[インポート](https://github.com/hning86/azuremlps#import-amlexperimentgraph)します。
@@ -97,6 +99,6 @@ ALM の重要な側面は、アプリケーションの実行とデプロイの�
 10. Web サービス [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) または [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) エンドポイントをテストします。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Machine Learning Studio PowerShell](http://aka.ms/amlps) モジュールをダウンロードし、ALM タスクの自動化を開始します。
+* [Azure Machine Learning Studio PowerShell](https://aka.ms/amlps) モジュールをダウンロードし、ALM タスクの自動化を開始します。
 * PowerShell と再トレーニング API を通じて、[1 つの実験を使用して多数の ML モデルを作成、管理](create-models-and-endpoints-with-powershell.md)する方法を説明します。
 * [Azure Machine Learning Web サービスのデプロイ](publish-a-machine-learning-web-service.md)の詳細について説明します。

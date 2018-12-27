@@ -1,40 +1,38 @@
 ---
-title: 'Azure Databricks: 一般的な質問とヘルプ | Microsoft Docs'
+title: 'Azure Databricks: 一般的な質問とヘルプ'
 description: Azure Databricks に関する一般的な質問の回答とトラブルシューティング情報を確認します。
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: mamccrea
+ms.author: mamccrea
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/22/2018
-ms.author: nitinme
-ms.openlocfilehash: 5da6ffc346cc0e7f0f83bf4a4c33600b668a17ca
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.topic: conceptual
+ms.date: 10/25/2018
+ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138363"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks についてよく寄せられる質問
 
 この記事には、Azure Databricks に関してよく寄せられる質問が記載されています。 また、Databricks の使用中に発生する可能性がある一般的な問題の一覧も示します。 詳しくは、「[Azure Databricks とは](what-is-azure-databricks.md)」をご覧ください。 
 
-## <a name="can-i-use-my-own-keys-for-local-encryption"></a>ローカル暗号化に独自のキーを使用できますか。 
-現在のリリースでは、Azure Key Vault の独自キーの使用はサポートされていません。 
+## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Azure Databricks で使うキー/シークレットを Azure Key Vault を使用して格納することはできますか。
+はい。 Azure Databricks で使うキー/シークレットは、Azure Key Vault を使用して格納できます。 詳細については、「[Azure Key Vault-backed scopes (Azure Key Vault を実体とするスコープ)](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss)」を参照してください。
 
-## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Databricks で Azure 仮想ネットワークを使えますか。
-Databricks のプロビジョニングの一部として、新しい仮想ネットワークが作成されます。 このリリースでは、独自の Azure 仮想ネットワークを使うことはできません。
+
+## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Databricks で Azure Virtual Network を使えますか。
+はい。 Azure Databricks で Azure Virtual Network (VNET) を使用することができます。 詳細については、「[Deploying Azure Databricks in your Azure Virtual Network (Azure Virtual Network に Azure Databricks をデプロイする)](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)」を参照してください。
 
 ## <a name="how-do-i-access-azure-data-lake-store-from-a-notebook"></a>ノートブックから Azure Data Lake Store にアクセスするにはどうすればよいですか。 
 
 次の手順に従います。
 1. Azure Active Directory (Azure AD) でサービス プリンシパルをプロビジョニングし、そのキーを記録します。
-2. Data Lake Store のサービス プリンシパルに必要なアクセス許可を割り当てます。
-3. Data Lake Store 内のファイルにアクセスするには、Notebook でこのサービス プリンシパルの資格情報を使います。
+1. Data Lake Store のサービス プリンシパルに必要なアクセス許可を割り当てます。
+1. Data Lake Store 内のファイルにアクセスするには、Notebook でこのサービス プリンシパルの資格情報を使います。
 
 詳細については、[Azure Databricks での Data Lake Store の使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)に関するページを参照してください。
 
@@ -46,13 +44,13 @@ Databricks のプロビジョニングの一部として、新しい仮想ネッ
 
 #### <a name="error-message"></a>エラー メッセージ
 
-"このサブスクリプションは名前空間 ‘Microsoft.Databricks’ を使用するように登録されていません。 サブスクリプションの登録方法については、https://aka.ms/rps-not-found を参照してください。 (コード: MissingSubscriptionRegistration)"
+"このサブスクリプションは名前空間 ‘Microsoft.Databricks’ を使用するように登録されていません。 サブスクリプションの登録方法については、 https://aka.ms/rps-not-found を参照してください。 (コード: MissingSubscriptionRegistration)"
 
 #### <a name="solution"></a>解決策
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-2. **[サブスクリプション]**、使っているサブスクリプション、**[リソース プロバイダー]** の順に選びます。 
-3. リソース プロバイダーの一覧で、**[Microsoft.Databricks]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
+1. **[サブスクリプション]**、使っているサブスクリプション、**[リソース プロバイダー]** の順に選びます。 
+1. リソース プロバイダーの一覧で、**[Microsoft.Databricks]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
 
 
 ### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>問題: アカウント (電子メール アドレス) に、Azure Portal の Databricks ワークスペース リソースの所有者または共同作成者ロールがない
@@ -69,7 +67,7 @@ Databricks のプロビジョニングの一部として、新しい仮想ネッ
 
 * このエラーは、電子メール ドメイン名が Azure AD の複数のディレクトリに割り当てられている場合にも発生する可能性があります。 この問題を回避するには、Databricks ワークスペースを持つサブスクリプションを含むディレクトリで新しいユーザーを作成します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal で、Azure AD に移動します。 **[ユーザーとグループ]** > **[ユーザーの追加]** の順に選びます。
+    a. Azure Portal で、Azure AD に移動します。 **[ユーザーとグループ]** > **[ユーザーの追加]** の順に選びます。
 
     b. `@<your_domain>` というメール アドレスの代わりに、`@<tenant_name>.onmicrosoft.com` のメール アドレスでユーザーを追加します。 このオプションは、Azure Portal の Azure AD の **[カスタム ドメイン]** で確認できます。
     
@@ -101,13 +99,13 @@ Databricks クラスターは、ノードごとに 1 つのパブリック IP �
 #### <a name="error-message"></a>エラー メッセージ
 
 "クラウド プロバイダーの起動エラー: クラスターの設定中にクラウド プロバイダーのエラーが発生しました。 詳細については、Databricks ガイドを参照してください。
-Azure のエラー コード: MissingSubscriptionRegistration Azure エラー メッセージ: サブスクリプションが名前空間 'Microsoft.Compute' を使用するように登録されていません。 サブスクリプションの登録方法については、https://aka.ms/rps-not-found を参照してください。
+Azure のエラー コード: MissingSubscriptionRegistration Azure エラー メッセージ: サブスクリプションが名前空間 'Microsoft.Compute' を使用するように登録されていません。 サブスクリプションの登録方法については、 https://aka.ms/rps-not-found を参照してください。
 
 #### <a name="solution"></a>解決策
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-2. **[サブスクリプション]**、使っているサブスクリプション、**[リソース プロバイダー]** の順に選びます。 
-3. リソースプロバイダーの一覧で、**[Microsoft.Compute]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
+1. **[サブスクリプション]**、使っているサブスクリプション、**[リソース プロバイダー]** の順に選びます。 
+1. リソースプロバイダーの一覧で、**[Microsoft.Compute]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
 
 詳細な手順については、「[リソースプロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」をご覧ください。
 
@@ -115,7 +113,7 @@ Azure のエラー コード: MissingSubscriptionRegistration Azure エラー �
 
 #### <a name="background"></a>バックグラウンド
 
-Azure Databricks は、Azure AD に完全に統合されています。 これにより、Azure AD からユーザーを指定することで、Azure Databricks 内 (たとえば、ノートブックまたはクラスター上) でアクセス許可を設定できます。 Azure Databricks が Azure AD からユーザーの名前の一覧を表示できるようにするには、その情報への読み取りアクセス許可が必要です。 これには、同意が必要です。 同意をまだ得られていない場合は、エラーが表示されます。
+Azure Databricks は、Azure Active Directory に統合されています。 Azure AD からユーザーを指定することで、Azure Databricks 内 (たとえば、ノートブックまたはクラスター上) でアクセス許可を設定できます。 Azure Databricks が Azure AD に存在するユーザーの名前の一覧を表示するためには、その情報に対する読み取りアクセス許可と同意を得る必要があります。 同意をまだ得られていない場合は、エラーが表示されます。
 
 #### <a name="solution"></a>解決策
 

@@ -1,28 +1,62 @@
 ---
-title: "Azure Site Recovery を使用して VMware VM または物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする | Microsoft Docs"
-description: "Azure Site Recovery を使用して、セカンダリ サイトへの VMware VM または Windows/Linux 物理サーバーのディザスター リカバリーをセットアップする方法を説明します。"
-services: site-recovery
-author: nsoneji
-manager: gauarvd
+title: Azure Site Recovery を使用して VMware VM または物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする | Microsoft Docs
+description: Azure Site Recovery を使用して、セカンダリ サイトへの VMware VM または Windows/Linux 物理サーバーのディザスター リカバリーをセットアップする方法を説明します。
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.workload: backup-recovery
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 03/08/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 7d172b89a0846c8ccf19896400e127a3bec0b55e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: fe6199aea91bbb7518ccdbfe640848a59edcee49
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215465"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 
-[Azure Site Recovery](site-recovery-overview.md) の InMage Scout は、オンプレミスの VMware サイト間のリアルタイムのレプリケーションを実現します。 InMage Scout は、Azure Site Recovery サービスのサブスクリプションに含まれています。 
+[Azure Site Recovery](site-recovery-overview.md) の InMage Scout は、オンプレミスの VMware サイト間のリアルタイムのレプリケーションを実現します。 InMage Scout は、Azure Site Recovery サービスのサブスクリプションに含まれています。
+
+## <a name="end-of-support-announcement"></a>サポート終了のお知らせ
+
+Azure Site Recovery によるオンプレミスの VMware データセンターまたは物理データセンター間のレプリケーションのシナリオのサポート終了が近づいています。
+
+-   2018 年 8 月以降、このシナリオを Recovery Services コンテナーで構成することはできません。また、InMage Scout ソフトウェアをコンテナーからダウンロードすることもできません。 既存の展開はサポートされます。 
+-   2020 年 12 月 31 日以降、このシナリオはサポートされなくなります。
+- 既存のパートナーは、サポート終了まで新しいお客様にこのシナリオを提供できます。
+
+2018 年と 2019 年中に、2 つの更新プログラムがリリースされます。 
+
+-   更新プログラム 7: ネットワーク構成とコンプライアンスの問題を修正し、TLS 1.2 のサポートを提供します。
+-   更新プログラム 8: Linux オペレーティング システム RHEL/CentOS 7.3/7.4/7.5 および SUSE 12 のサポートを追加します。
+
+更新プログラム 8 以降、更新プログラムはリリースされません。 更新プログラム 8 で追加されたオペレーティング システムに対する限定的な修正プログラムのサポートおよびベスト エフォートに基づくバグの修正が提供されます。
+
+Azure Site Recovery では、Azure を使用したシームレスかつクラス最高の DRaaS ソリューションをディザスター リカバリー サイトとして VMware と Hyper-V のお客様に引き続き提供します。 InMage/ASR Scout を既に使用しているお客様は、ビジネス継続性のニーズを満たすために、Azure Site Recovery の VMware から Azure のシナリオの使用を検討していただくことをお勧めします。 Azure Site Recovery の VMware から Azure のシナリオは、VMware アプリケーションに対応したエンタープライズ クラスの DR ソリューションであり、分単位での RPO と RTO、マルチ VM アプリケーションのレプリケーションと復旧のサポート、シームレスなオンボード、包括的な監視、TCO の重要なメリットを提供します。
+
+### <a name="scenario-migration"></a>シナリオの移行
+別の方法として、オンプレミスの VMware VM と物理マシンを Azure にレプリケートし、それらのディザスター リカバリーを設定することをお勧めします。 これを行うには、次の手順を実行します。
+
+1.  以下に示す比較早見表を確認します。 オンプレミスのマシンをレプリケートする前に、それらが Azure へのレプリケーションの[要件](./vmware-physical-azure-support-matrix.md#replicated-machines)を満たしていることを確認する必要があります。 VMware VM をレプリケートする場合は、[容量計画ガイドライン](./site-recovery-plan-capacity-vmware.md)を参照し、[Deployment Planner ツール](./site-recovery-deployment-planner.md)を実行して容量の要件を特定し、コンプライアンスを確認することをお勧めします。
+2.  Deployment Planner を実行すると、レプリケーションを設定できます。o   VMware VM の場合は、これらのチュートリアルに従って [Azure の準備](./tutorial-prepare-azure.md)、[オンプレミスの VMware 環境の準備](./vmware-azure-tutorial-prepare-on-premises.md)、および[ディザスター リカバリーの設定](./vmware-azure-tutorial-prepare-on-premises.md)を行います。
+o   物理マシンの場合は、この[チュートリアル](./physical-azure-disaster-recovery.md)に従います。
+3.  マシンが Azure にレプリケートされたら、[ディザスター リカバリー ドリル](./site-recovery-test-failover-to-azure.md)を実行して、すべてが想定どおりに機能していることを確認できます。
+
+### <a name="quick-comparison"></a>比較早見表
+
+**機能** | **Azure へのレプリケーション** |**VMware データセンター間のレプリケーション**
+--|--|--
+**必須コンポーネント** |レプリケートされるマシン上のモビリティ サービス。 オンプレミスの構成サーバー、プロセス サーバー、マスター ターゲット サーバー。フェールバック用の一時プロセス サーバー (Azure 内)。|モビリティ サービス、プロセス サーバー、構成サーバー、マスター ターゲット
+**構成とオーケストレーション** |Recovery Services コンテナー (Azure Portal 内) | vContinuum を使用 
+**レプリケート**|ディスク (Windows および Linux) |ボリューム - Windows<br> ディスク - Linux
+**共有ディスク クラスター**|サポートされていません|サポートされています
+**データ チャーンの制限 (平均)** |ディスクあたり 10 MB/秒のデータ<br> VM あたり 25 MB/秒のデータ<br> [詳細情報](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | ディスクあたり 10 MB/秒を超えるデータ  <br> VM あたり 25 MB/秒を超えるデータ
+**監視** |Azure Portal から|CX (構成サーバー) から
+**サポート マトリックス**| [詳しくは、ここをクリック](./vmware-physical-azure-support-matrix.md)|[ASR Scout 互換のマトリックスのダウンロード](https://aka.ms/asr-scout-cm)
 
 
 ## <a name="prerequisites"></a>前提条件
-
 このチュートリアルを完了するには、以下が必要です。
 
 - すべてのコンポーネントのサポート要件を[レビュー](vmware-physical-secondary-support-matrix.md)する。
@@ -38,7 +72,7 @@ ms.lasthandoff: 03/09/2018
 レプリケート対象とレプリケート場所を選択します。
 
 1. **[Site Recovery]** > **[インフラストラクチャの準備]** > **[保護の目標]** の順にクリックします。
-2. **[復旧サイトへ]** > **[Yes, with VMware vSphere Hypervisor]\(はい、VMware vSphere Hypervisor を使う\)** の順に選択します。 次に、 **[OK]**をクリックします
+2. **[復旧サイトへ]** > **[Yes, with VMware vSphere Hypervisor]\(はい、VMware vSphere Hypervisor を使う\)** の順に選択します。 次に、 **[OK]** をクリックします
 3. **[Scout のセットアップ]** で、InMage Scout 8.0.1 GA ソフトウェアと登録キーをダウンロードします。 すべてのコンポーネントのセットアップ ファイルは、ダウンロードした .zip ファイルに含まれています。
 
 ## <a name="download-and-install-component-updates"></a>コンポーネント更新プログラムのダウンロードとインストール
@@ -139,7 +173,7 @@ Scout 更新プログラム 5 は累積的な更新プログラムです。 更�
 > [!NOTE]
 > * P2V クラスター修正は、Site Recovery Scout 更新プログラム 5 で新しく保護された物理 MSCS クラスターのみに適用されます。 以前の更新プログラムを持つ保護された P2V MSCS クラスターに、クラスターの修正をインストールするには、[Site Recovery Scout リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12 に記載されているアップグレードの手順に従います。
 > * 再保護の際に、各クラスター ノードで、同じ一連のディスクが最初に保護されたときのようにアクティブである場合は、物理 MSCS クラスターの再保護では既存のターゲット ディスクのみ再利用できます。 そうでない場合、[Site Recovery Scout リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12 にある手動の手順に従って、ターゲット側のディスクを適切なデータストア パスに移動し、再保護中に再利用するようにします。 アップグレードの手順に従わずに P2V モードで MSCS クラスターを再保護すると、ターゲット ESXi サーバーに新しいディスクが作成されます。 データストアから古いディスクを手動で削除する必要が生じます。
-> * ソース SLES11 またはいずれかの Service Pack の付いた SLES11 サーバーが正常に再起動されたら、再同期する**ルート** ディスクのレプリケーション ペアを手動でマークします。 CX のインターフェイスでは、通知されません。 再同期するルート ディスクをマークしないと、データ整合性の問題が起きる可能性があります。
+> * ソース SLES11 またはいずれかの Service Pack の付いた SLES11 サーバーが正常に再起動されたら、再同期する**ルート** ディスクのレプリケーション ペアを手動でマークします。 CX のインターフェイスでは、通知されません。 再同期するルート ディスクをマークしないと、データ整合性の問題が起きる可能性があります。
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 更新プログラム 4
@@ -221,7 +255,7 @@ Site Recovery の更新プログラムはすべて累積的です。 更新プ�
 
 更新プログラム 2 の修正内容は次のとおりです。
 
-* **構成サーバー**: 構成サーバーが Site Recovery に登録される際に、31 日間の無料計測機能が予期どおりに動作しない問題。
+* **構成サーバー**: 構成サーバーが Azure Site Recovery 資格情報コンテナーに登録される際に、31 日間の無料計測機能が予期どおりに動作しない問題。
 * **統合エージェント**: マスター ターゲット サーバーをバージョン 8.0 から 8.0.1 にアップグレードする際に更新プログラムがインストールされないという更新プログラム 1 の問題の修正。
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 更新プログラム 1

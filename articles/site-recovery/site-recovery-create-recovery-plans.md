@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery でフェールオーバーと復旧用の復旧計画を作成してカスタマイズする | Microsoft Docs
-description: Azure Site Recovery で復旧計画を作成してカスタマイズする方法を説明します。 この記事では、VM と物理サーバーをフェールオーバーして復旧する方法について説明します。
-services: site-recovery
-documentationcenter: ''
+title: Azure Site Recovery を使用してディザスター リカバリーのための復旧計画を作成してカスタマイズする | Microsoft Docs
+description: Azure Site Recovery サービスを使用してディザスター リカバリーのための復旧計画を作成してカスタマイズする方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: e02672ea76eada2d660b20f91c4417019d4efc97
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 85e649f3065d7f8d601541bbac6e93f4b2a0dc85
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878664"
 ---
 # <a name="create-and-customize-recovery-plans"></a>復旧計画を作成してカスタマイズする
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 03/23/2018
    > [!NOTE]
    > 復旧計画には、ソースとターゲットが同一のマシンを含めることができます。 VMware と VMM によって管理される Hyper-V の仮想マシンは同じ計画に含めることはできません。 ソースが構成サーバーの VMware の仮想マシンと物理サーバーは、同じ計画に含めることができます。
 
-2. **[Select items virtual machines]\(仮想マシンの項目の選択\)** で、計画に追加する必要のあるマシン (またはレプリケーション グループ) を選択します。 次に、 **[OK]**をクリックします
+2. **[Select items virtual machines]\(仮想マシンの項目の選択\)** で、計画に追加する必要のあるマシン (またはレプリケーション グループ) を選択します。 次に、 **[OK]** をクリックします
     - マシンがその計画の既定のグループ (グループ 1) に追加されます。 フェールオーバー後、このグループのすべてのマシンが同時に開始されます。
     - 指定したソースおよびターゲットの場所にあるマシンのみを選択できます。 
 1. **[OK]** をクリックすると、計画が作成されます。
@@ -65,17 +64,17 @@ ms.lasthandoff: 03/23/2018
     **シナリオ** | **フェールオーバー** | **フェールバック**
     --- | --- | --- 
     Azure から Azure  | Runbook | Runbook
-    VMware から Azure | Runbook | 該当なし 
+    VMware から Azure | Runbook | NA 
     Hyper-V (VMM を使用) から Azure | Runbook | スクリプト
-    Hyper-V サイトから Azure | Runbook | 該当なし
+    Hyper-V サイトから Azure | Runbook | NA
     VMM からセカンダリ VMM | スクリプト | スクリプト
 
 1. 復旧計画で、アクションを追加する必要があるステップをクリックし、アクションが発生する必要があるタイミングを指定します。a. フェールオーバー後、グループ内のマシンが開始される前にアクションを発生させる場合は、**[事前アクションの追加]** を選択します。
     b. フェールオーバー後、グループ内のマシンが開始された後にアクションを発生させる場合は、**[事後アクションの追加]** を選択します。 アクションの位置を移動するには、**[上へ移動]** ボタンまたは **[下へ移動]** ボタンを使用します。
 2. **[アクションの挿入]** で、**[スクリプト]** または **[手動アクション]** を選択します。
 3. 手動アクションを追加する場合は、次のようにします。a. アクションの名前を入力し、アクションの手順を入力します。 これらの手順は、フェールオーバーを実行しているユーザーに表示されます。
-    b. すべての種類のフェールオーバー (テスト、フェールオーバー、計画されたフェールオーバー (該当する場合)) にその手動アクションを追加するかどうかを指定します。 次に、 **[OK]**をクリックします
-4. スクリプトを追加する場合は、次のようにします。a. VMM スクリプトを追加する場合、**[VMM へのフェールオーバー スクリプト (Failover to VMM script)]** を選択して、**[スクリプト パス]** に共有の相対パスを入力します。 たとえば、共有が \\<VMMServerName>\MSSCVMMLibrary\RPScripts に配置されている場合は、パスとして「\RPScripts\RPScript.PS1」と入力します。
+    b. すべての種類のフェールオーバー (テスト、フェールオーバー、計画されたフェールオーバー (該当する場合)) にその手動アクションを追加するかどうかを指定します。 次に、 **[OK]** をクリックします
+4. スクリプトを追加する場合は、次のようにします。a. VMM スクリプトを追加する場合、**[Failover to VMM script]\(VMM へのフェールオーバー スクリプト\)** を選択して、**[スクリプト パス]** に共有の相対パスを入力します。 たとえば、共有が \\<VMMServerName>\MSSCVMMLibrary\RPScripts に配置されている場合は、パスとして「\RPScripts\RPScript.PS1」と入力します。
     b. Azure Automation Runbook を追加する場合、Runbook が配置されている **Azure Automation アカウント**を指定し、適切な **Azure Runbook スクリプト**を選択します。
 5. 復旧計画のテスト フェールオーバーを実行して、スクリプトが期待どおりに動作することを確認します。
 

@@ -10,21 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 537032ade9e6569def84499ca6d2d937f77312e3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5077982bdef4d0e8fbf1ab485566909b4dc97a8a
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857380"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory の If Condition アクティビティ
 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。 
-
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory V1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -68,13 +65,13 @@ If Condition アクティビティは、プログラミング言語における 
 
 ## <a name="type-properties"></a>型のプロパティ
 
-プロパティ | [説明] | 使用できる値 | 必須
+プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | if-condition アクティビティの名前。 | String | [はい]
-型 | **IfCondition** に設定する必要があります。 | String | [はい]
-expression | true または false に評価される式であることが必要です | [はい]
-ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | [はい]
-ifFalseActivities | 式が `false` に評価されたときに実行される一連のアクティビティです。 | [はい]
+type | **IfCondition** に設定する必要があります。 | String | [はい]
+expression | true または false に評価される式であることが必要です | 結果の型がブール値の式 | [はい]
+ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | Array | [はい]
+ifFalseActivities | 式が `false` に評価されたときに実行される一連のアクティビティです。 | Array | [はい]
 
 ## <a name="example"></a>例
 この例のパイプラインでは、入力フォルダーから出力フォルダーにデータをコピーします。 出力フォルダーは、パイプライン パラメーター routeSelection の値によって決まります。 routeSelection の値が true である場合、データは outputPath1 にコピーされます。 一方、routeSelection の値が falseである場合、データは outputPath2 にコピーされます。 
@@ -252,7 +249,7 @@ ifFalseActivities | 式が `false` に評価されたときに実行される一
 これらのコマンドは、JSON ファイルが C:\ADF フォルダーに保存されていることを前提としています。 
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription "<Your subscription name>"
 
 $resourceGroupName = "<Resource Group Name>"

@@ -1,23 +1,24 @@
 ---
-title: "Azure Service Fabric スタンドアロン クラスターのデプロイの準備 | Microsoft Docs"
-description: "運用ワークロードを処理するためのクラスターのデプロイ前に検討する必要がある、環境の準備およびクラスター構成の作成に関連するドキュメント。"
+title: Azure Service Fabric スタンドアロン クラスターのデプロイの準備 | Microsoft Docs
+description: 運用ワークロードを処理するためのクラスターのデプロイ前に検討する必要がある、環境の準備およびクラスター構成の作成に関連するドキュメント。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/12/2017
-ms.author: dekapur;maburlik;chackdan
-ms.openlocfilehash: b1190ec5a3ff70a368b29465699f9082d2b989bf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 9/11/2018
+ms.author: dekapur
+ms.openlocfilehash: c505feb20321d785a86cad0422470aa5c9a4311b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259090"
 ---
 <a id="preparemachines"></a>
 
@@ -65,7 +66,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 * 40 GB 以上の使用可能なディスク領域
 * 4 コア以上の CPU
 * すべてのマシンのセキュリティで保護された 1 つ以上のネットワークへの接続
-* Windows Server 2012 R2 または Windows Server 2016
+* Windows Server OS がインストールされている (有効なバージョン: 2012 R2、2016、1709、または 1803)
 * [.NET Framework 4.5.1 以降](https://www.microsoft.com/download/details.aspx?id=40773) (フル インストール)
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
 * [RemoteRegistry サービス](https://technet.microsoft.com/library/cc754820)がすべてのマシンで実行されている必要があります。
@@ -73,7 +74,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 クラスターのデプロイと構成を行うクラスター管理者には、個々のマシンに対する [管理者特権](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
 
 ## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージをダウンロードする
-[Windows Server 用の Service Fabric スタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)し、クラスターに属していないデプロイ用のマシンか、これからクラスターに追加するマシンのいずれかにパッケージ ファイルを解凍します。
+[Windows Server 用の Service Fabric スタンドアロン パッケージをダウンロード](https://go.microsoft.com/fwlink/?LinkId=730690)し、クラスターに属していないデプロイ用のマシンか、これからクラスターに追加するマシンのいずれかにパッケージ ファイルを解凍します。
 
 ## <a name="modify-cluster-configuration"></a>クラスターの構成を変更する
 スタンドアロン クラスターを作成するには、クラスターの仕様を示すスタンドアロン クラスター構成ファイル ClusterConfig.json を作成する必要があります。 構成ファイルについては、次のリンクにあるテンプレートを参考にしてください。 <br>
@@ -99,7 +100,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 * Service Fabric SDK をアンインストールします。
 * Service Fabric ランタイムをアンインストールにします。 
 * Windows Firewall サービス (mpssvc) を有効にします。
-* リモート レジストリ サービス (remoteregistry) を有効にします。
+* リモート レジストリ サービス (リモート レジストリ) を有効にします。
 * ファイル共有 (SMB) を有効化にします。
 * クラスター構成のポートに基づいて必要なポートを開放します。
 * Windows SMB とリモート レジストリ サービスに必要なポート 135、137、138、139、445 を開放します。
@@ -165,5 +166,5 @@ Passed                     : True
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Windows Server で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)

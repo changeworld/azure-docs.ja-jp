@@ -1,24 +1,25 @@
 ---
-title: "Azure Service Bus 管理ライブラリ | Microsoft Docs"
-description: ".NET から Service Bus の名前空間とメッセージング エンティティを管理します。"
+title: Azure Service Bus 管理ライブラリ | Microsoft Docs
+description: .NET から Service Bus の名前空間とメッセージング エンティティを管理します。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/05/2018
-ms.author: sethm
-ms.openlocfilehash: 7946958bec8b2f444155b5a9701f1f7401fe4f3c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 09/05/2018
+ms.author: spelluru
+ms.openlocfilehash: b7f63ac8a52da4898abb3d30b71f3ee3a3e1a4b3
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394694"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus 管理ライブラリ
 

@@ -1,5 +1,5 @@
 ---
-title: Azure で初めての Java Web アプリを作成する
+title: Java Web アプリの作成 - Azure App Service
 description: 基本の Java アプリをデプロイして、App Service で Web アプリを実行する方法を確認します。
 services: app-service\web
 documentationcenter: ''
@@ -14,16 +14,17 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.custom: seodec18
+ms.openlocfilehash: b9321241f174a97976b2f150a9bd6c3547f0dc20
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253162"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Azure で初めての Java Web アプリを作成する
 
-[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイックスタートでは、[Eclipse IDE for Java EE Developers](http://www.eclipse.org/) を使って、Java Web アプリを App Service にデプロイする方法を示します。
+[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイックスタートでは、[Eclipse IDE for Java EE Developers](https://www.eclipse.org/) を使って、Java Web アプリを App Service にデプロイする方法を示します。
 
 > [!NOTE]
 >
@@ -40,7 +41,7 @@ ms.lasthandoff: 03/30/2018
 
 このクイック スタートを完了するには、以下をインストールします。
 
-* 無料の <a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse IDE for Java EE Developers</a>。 このクイック スタートでは Eclipse Neon を使用します。
+* 無料の <a href="https://www.eclipse.org/downloads/" target="_blank">Eclipse IDE for Java EE Developers</a>。 このクイック スタートでは Eclipse Neon を使用します。
 * <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Azure Toolkit for Eclipse</a>。
 
 > [!NOTE]
@@ -52,7 +53,7 @@ ms.lasthandoff: 03/30/2018
 
 Eclipse で、**[ファイル]** > **[新規]** > **[Dynamic Web Project\(動的 Web プロジェクト\)]** の順にクリックします。
 
-**[New Dynamic Web Project\(新しい動的 Web プロジェクト\)]** ダイアログ ボックスで、プロジェクトに **MyFirstJavaOnAzureWebApp** という名前を付けて、**[完了]**をクリックします。
+**[New Dynamic Web Project\(新しい動的 Web プロジェクト\)]** ダイアログ ボックスで、プロジェクトに **MyFirstJavaOnAzureWebApp** という名前を付けて、**[完了]** をクリックします。
    
 ![[New Dynamic Web Project\(新しい動的 Web プロジェクト\)] ダイアログ ボックス](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
@@ -63,7 +64,7 @@ Eclipse で、**[ファイル]** > **[新規]** > **[Dynamic Web Project\(動的
 ![Eclipse 用の Java EE ワークスペース](./media/app-service-web-get-started-java/pe.png)
 
 プロジェクト エクスプローラーで、**[MyFirstJavaOnAzureWebApp]** プロジェクトを展開します。
-**[WebContent]** を右クリックして、**[新規]** > **[JSP ファイル]**の順にクリックします。
+**[WebContent]** を右クリックして、**[新規]** > **[JSP ファイル]** の順にクリックします。
 
 ![プロジェクト エクスプローラーの新しい JSP ファイルのメニュー](./media/app-service-web-get-started-java/new-jsp-file-menu.png)
 
@@ -103,13 +104,13 @@ Index.jsp ファイルで、`<body></body>` を次のマークアップに置き
 
 Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。
 
-**[作成]**を選択します。
+**作成**を選択します。
 
 ![[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス](./media/app-service-web-get-started-java/deploy-web-app-dialog-box.png)
 
 ### <a name="create-app-service-dialog-box"></a>[App Service の作成] ダイアログ ボックス
 
-既定値が設定された状態で**[App Service の作成]** ダイアログ ボックスが表示されます。 次の画像に示された **170602185241** という数値は、実際のダイアログ ボックスでは異なります。
+既定値が設定された状態で **[App Service の作成]** ダイアログ ボックスが表示されます。 次の画像に示された **170602185241** という数値は、実際のダイアログ ボックスでは異なります。
 
 ![[App Service の作成] ダイアログ ボックス](./media/app-service-web-get-started-java/cas1.png)
 
@@ -120,9 +121,9 @@ Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプ
 * Azure サブスクリプションを選択します。
 * **[App Service プラン]** タブで、次の操作を行います。
 
-  * **[新規作成]**。既定値の App Service プラン名をそのまま使用します。
-  * **[場所]**。**[西ヨーロッパ]** または現在地付近を選択します。
-  * **[価格レベル]**。無料オプションを選択します。 機能については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)」をご覧ください。
+  * **新規作成**: 既定値の App Service プラン名をそのまま使用します。
+  * **[場所]**: **[西ヨーロッパ]** または現在地付近を選択します。
+  * **価格レベル**: 無料オプションを選択します。 機能については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)」をご覧ください。
 
    ![[App Service の作成] ダイアログ ボックス](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 
@@ -136,7 +137,7 @@ Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプ
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-**[作成]**を選択します。
+**作成**を選択します。
 
 <!--
 ### The JDK tab
@@ -196,7 +197,7 @@ Web アプリを選択し、**[デプロイ]** をクリックして変更を発
 
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動して、作成した Web アプリを確認します。
 
-左のメニューから、**[リソース グループ]**を選びます。
+左のメニューから、**[リソース グループ]** を選びます。
 
 ![リソース グループへのポータル ナビゲーション](media/app-service-web-get-started-java/rg.png)
 

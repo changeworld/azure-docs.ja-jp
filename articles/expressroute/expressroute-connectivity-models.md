@@ -1,12 +1,12 @@
 ---
-title: "ExpressRoute 接続モデル: ネットワーク サービス プロバイダー、Exchange、イーサネット プロバイダー経由で Microsoft Azure に接続する | Microsoft Docs"
-description: "この記事では、お客様のネットワークと Microsoft Azure、Office 365、Dynamics 365 サービス間のさまざまな接続モードについて説明します。 お客様は、MPLS プロバイダー、クラウドの Exchange、イーサネット プロバイダーを使用できます。"
+title: 'ExpressRoute 接続モデル: ネットワーク サービス プロバイダー、Exchange、イーサネット プロバイダー経由で Microsoft Azure に接続する | Microsoft Docs'
+description: この記事では、お客様のネットワークと Microsoft Azure、Office 365、Dynamics 365 サービス間のさまざまな接続モードについて説明します。 お客様は、MPLS プロバイダー、クラウドの Exchange、イーサネット プロバイダーを使用できます。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22709897"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute 接続モデル
 オンプレミスのネットワークと Microsoft クラウドの間の接続は、[CloudExchange での同一場所配置](#CloudExchange)、[ポイント ツー ポイントのイーサネット接続](#Ethernet)、[任意の環境間 (IPVPN) 接続](#IPVPN)という 3 つの異なる方法で作成できます。 接続プロバイダーでは、1 つ以上の接続モデルを提供できます。 最適なモデルは接続プロバイダーに相談の上でお選びください。

@@ -1,34 +1,40 @@
 ---
-title: 'Azure Cosmos DB: Python と Azure Cosmos DB MongoDB API による Flask Web アプリの構築 | Microsoft Docs'
+title: Azure Cosmos DB は:Python と Azure Cosmos DB MongoDB API による Flask Web アプリの構築
 description: Azure Cosmos DB MongoDB API への接続とクエリに使用できる Python Flask コード サンプルについて説明します
 services: cosmos-db
-documentationcenter: ''
-author: heatherbshapiro
-manager: kfile
-ms.assetid: ''
+author: slyons
+ms.author: sclyon
 ms.service: cosmos-db
-ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.component: cosmosdb-mongo
+ms.custom: quick start connect, mvc, seodec18
+ms.devlang: python
 ms.topic: quickstart
-ms.date: 10/2/2017
-ms.author: hshapiro
-ms.openlocfilehash: 7fd25a1181e1a4d69bf8233b34a4c416378e0181
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 10/02/2017
+ms.openlocfilehash: 09c19f57a2993c0faad3dca708f67526f99d13df
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165114"
 ---
-# <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: MongoDB API による Flask アプリの構築
+# <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB は:MongoDB API による Flask アプリの構築
+
+> [!div class="op_single_selector"]
+> * [.NET](create-mongodb-dotnet.md)
+> * [Java](create-mongodb-java.md)
+> * [Node.js](create-mongodb-nodejs.md)
+> * [Python](create-mongodb-flask.md)
+> * [Xamarin](create-mongodb-xamarin.md)
+> * [Golang](create-mongodb-golang.md)
+>  
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
-このクイック スタート ガイドでは、次の [Flask 例](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample)を使用し、MongoDB の代わりに [Azure Cosmos DB Emulator](/local-emulator.md) と Azure Cosmos DB [MongoDB API](mongodb-introduction.md) を使用してシンプルな To-Do Flask アプリを構築する方法を示します。
+このクイック スタート ガイドでは、次の [Flask 例](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample)を使用し、MongoDB の代わりに [Azure Cosmos DB Emulator](local-emulator.md) と Azure Cosmos DB [MongoDB API](mongodb-introduction.md) を使用してシンプルな To-Do Flask アプリを構築する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure Cosmos DB Emulator](/local-emulator.md) をダウンロードします。 エミュレーターは現在、Windows でのみサポートされています。 このサンプルでは、Azure のプロダクション キーと共にサンプルを使用する方法を示します。この操作は任意のプラットフォームで実行できます。
+- [Azure Cosmos DB Emulator](local-emulator.md) をダウンロードします。 エミュレーターは現在、Windows でのみサポートされています。 このサンプルでは、Azure のプロダクション キーと共にサンプルを使用する方法を示します。この操作は任意のプラットフォームで実行できます。
 
 - Visual Studio Code をまだインストールしていない場合は、お使いのプラットフォーム (Windows、Mac、Linux) 用の [VS Code](https://code.visualstudio.com/Download) をすばやくインストールできます。
 
@@ -40,10 +46,21 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-github から Flask-MongoDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。
+GitHub から Flask-MongoDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。
 
-1. git ターミナル ウィンドウ (git bash など) を開き、`cd` を実行して作業ディレクトリに移動します。
-2. 次のコマンドを実行して、サンプル レポジトリを複製します。
+1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample.git
@@ -57,7 +74,9 @@ github から Flask-MongoDB API アプリを複製し、接続文字列を設定
 
 ## <a name="review-the-code"></a>コードの確認
 
-アプリで何が行われているかを簡単に確認してみましょう。 ルート ディレクトリの下にある **app.py** ファイルを開くと、これらのコード行によって Azure Cosmos DB 接続が作成されることがわかります。 次のコードは、ローカルの Azure Cosmos DB Emulator 用の接続文字列を使用します。 パスワードを次のように分割して、スラッシュに対応する必要があります。そうしないと、スラッシュを解析できません。
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 それ以外の場合は、「[Web アプリの実行](#run-the-web-app)」に進んでください。 
+
+次のスニペットはすべて app.py ファイルのものであり、ローカル Azure Cosmos DB Emulator の接続文字列を使用しています。 パスワードを次のように分割して、スラッシュに対応する必要があります。そうしないと、スラッシュを解析できません。
 
 * MongoDB クライアントを初期化し、データベースを取得して認証します。
 
@@ -101,7 +120,7 @@ github から Flask-MongoDB API アプリを複製し、接続文字列を設定
 
 ライブ Azure Cosmos DB アカウントに対してコードをテストする場合は、Azure Portal に移動してアカウントを作成し、接続文字列情報を取得します。 これをアプリにコピーします。
 
-1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
+1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
 
 2. ルート ディレクトリ内の **app.py** ファイルを開きます。
 
@@ -115,7 +134,7 @@ github から Flask-MongoDB API アプリを複製し、接続文字列を設定
 
 ## <a name="deploy-to-azure"></a>[Deploy to Azure (Azure へのデプロイ)]
 
-このアプリをデプロイするには、Azure で新しい Web アプリを作成し、この github リポジトリのフォークで継続的配置を有効にします。 この[チュートリアル](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)に従って、Azure で Github による継続的配置を設定します。
+このアプリをデプロイするには、Azure で新しい Web アプリを作成し、この GitHub リポジトリのフォークで継続的配置を有効にします。 この[チュートリアル](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)に従って、Azure で GitHub による継続的配置を設定します。
 
 Azure にデプロイする場合は、アプリケーション キーを削除し、以下のセクションがコメント アウトされていないことを確認する必要があります。
 
@@ -130,11 +149,11 @@ Azure にデプロイする場合は、アプリケーション キーを削除�
 このリポジトリのフォークを作成しない場合は、下の [Azure へのデプロイ] をクリックすることもできます。 Azure に移動し、Cosmos DB アカウント情報でアプリケーション設定を設定する必要があります。
 
 <a href="https://deploy.azure.com/?repository=https://github.com/heatherbshapiro/To-Do-List---Flask-MongoDB-Example" target="_blank">
-<img src="http://azuredeploy.net/deploybutton.png"/>
+<img src="https://azuredeploy.net/deploybutton.png" alt="Click to Deploy to Azure">
 </a>
 
 > [!NOTE]
-> Github またはその他のソース管理オプションでコードを格納することを計画している場合は、必ずコードから接続文字列を削除してください。 代わりに、Web アプリのアプリケーション設定で設定することができます。
+> GitHub またはその他のソース管理オプションでコードを格納することを計画している場合は、必ずコードから接続文字列を削除してください。 代わりに、Web アプリのアプリケーション設定で設定することができます。
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
@@ -142,10 +161,7 @@ Azure にデプロイする場合は、アプリケーション キーを削除�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このアプリの使用を続けない場合は、以下の手順に従い、Azure Portal でこのクイック スタートで作成したすべてのリソースを削除してください。
-
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。
-2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次の手順
 

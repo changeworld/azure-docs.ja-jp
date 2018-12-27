@@ -10,21 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 571c77a0de4bb30f5476f1bc79a7d4bd8d1cd322
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: df45613105c8fb005fc8ba0c796ef768e293c57e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052434"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Cloud for Customer (C4C) からデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP Cloud for Customer (C4C) との間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Copy Activity in V1 (V1 でのコピー アクティビティ)](v1/data-factory-data-movement-activities.md)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -42,9 +40,9 @@ SAP Cloud for Customer のデータを、サポートされる任意のシンク
 
 SAP Cloud for Customer のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **SapCloudForCustomer** に設定する必要があります。 | [はい] |
+| type | type プロパティは **SapCloudForCustomer** に設定する必要があります。 | [はい] |
 | url | SAP C4C OData サービスの URL。 | [はい] |
 | username | SAP C4C に接続するためのユーザー名を指定します。 | [はい] |
 | password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
@@ -82,9 +80,9 @@ SAP Cloud for Customer のリンクされたサービスでは、次のプロパ
 
 SAP Cloud for Customer からデータをコピーするには、データセットの type プロパティを **SapCloudForCustomerResource** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **SapCloudForCustomerResource** に設定する必要があります。 |[はい] |
+| type | データセットの type プロパティは **SapCloudForCustomerResource** に設定する必要があります。 |[はい] |
 | パス | SAP C4C OData エンティティのパスを指定します。 |[はい] |
 
 **例:**
@@ -113,9 +111,9 @@ SAP Cloud for Customer からデータをコピーするには、データセッ
 
 SAP Cloud for Customer からデータをコピーするには、コピー アクティビティのソースの種類を **SapCloudForCustomerSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **SapCloudForCustomerSource** に設定する必要があります。  | [はい] |
+| type | type プロパティは **SapCloudForCustomerSource** に設定する必要があります。  | [はい] |
 | クエリ | データを読み取るカスタム OData クエリを指定します。 | いいえ  |
 
 特定の日のデータを取得するサンプル クエリ: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
@@ -141,7 +139,7 @@ SAP Cloud for Customer からデータをコピーするには、コピー ア�
         ],
         "typeProperties": {
             "source": {
-                "type": "SAPC4CSource",
+                "type": "SapCloudForCustomerSource",
                 "query": "<custom query e.g. $top=10>"
             },
             "sink": {
@@ -156,9 +154,9 @@ SAP Cloud for Customer からデータをコピーするには、コピー ア�
 
 SAP Cloud for Customer にデータをコピーするには、コピー アクティビティのシンクの種類を **SapCloudForCustomerSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **SapCloudForCustomerSink** に設定する必要があります。  | [はい] |
+| type | type プロパティは **SapCloudForCustomerSink** に設定する必要があります。  | [はい] |
 | writeBehavior | 操作の書き込み動作。 “Insert” または “Update” を指定できます。 | いいえ。 既定値: "Insert"。 |
 | writeBatchSize | 書き込み操作のバッチ サイズ。 最適なパフォーマンスを得るバッチ サイズは、テーブルまたはサーバーによって異なることがあります。 | いいえ。 既定値: 10。 |
 
@@ -187,7 +185,7 @@ SAP Cloud for Customer にデータをコピーするには、コピー アク�
                 "writeBatchSize": 30
             },
             "parallelCopies": 10,
-            "cloudDataMovementUnits": 4,
+            "dataIntegrationUnits": 4,
             "enableSkipIncompatibleRow": true,
             "redirectIncompatibleRowSettings": {
                 "linkedServiceName": {

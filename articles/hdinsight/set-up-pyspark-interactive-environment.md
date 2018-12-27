@@ -1,26 +1,20 @@
 ---
-title: "Azure HDInsight Tools - Visual Studio Code 用の PySpark 対話型環境を設定する | Microsoft Docs"
-description: "Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。"
-Keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
-services: HDInsight
-documentationcenter: 
+title: Azure HDInsight Tools - Visual Studio Code 用の PySpark 対話型環境を設定する
+description: Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。
+keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,インタラクティブ Hive,インタラクティブ クエリ
+services: hdinsight
+ms.service: hdinsight
 author: jejiang
-manager: 
-editor: 
-tags: azure-portal
-ms.assetid: 
-ms.service: HDInsight
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 5a64023df813262c461b9d772b722ebd613369ed
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.reviewer: jasonh
+ms.topic: conceptual
+ms.date: 10/27/2017
+ms.openlocfilehash: e57fd3747ef9cbd55d073e02bc14816ca949bcd6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046237"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
@@ -94,10 +88,10 @@ ms.lasthandoff: 12/01/2017
 
 8. VSCode を再起動して、**HDInsight: PySpark Interactive** を実行しているスクリプト エディターに戻ります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ### <a name="demo"></a>デモ
-* HDInsight for VSCode: [ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight for VS Code: [ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [Azure HDInsight Tool for Visual Studio Code を使用する](hdinsight-for-vscode.md)
@@ -110,5 +104,5 @@ ms.lasthandoff: 12/01/2017
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](hadoop/apache-hadoop-connect-hive-power-bi.md)
+* [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](hadoop/apache-hadoop-connect-hive-power-bi.md)。
 * [Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](hdinsight-connect-hive-zeppelin.md)

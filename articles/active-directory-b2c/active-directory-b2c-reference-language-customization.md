@@ -1,27 +1,23 @@
 ---
-title: Azure AD B2C での言語のカスタマイズ | Microsoft Docs
+title: Azure Active Directory B2C での言語のカスタマイズ | Microsoft Docs
 description: 言語のエクスペリエンスのカスタマイズについて説明します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d0f1f2ffd02873df2e2e7eab9894d9c3421b0f7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: B2C
+ms.openlocfilehash: affd52352dcc745557dd66c61ccfa1e7a99dcdb7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442323"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での言語のカスタマイズ
-
->[!NOTE]
->この機能はパブリック プレビュー段階にあります。
->
 
 Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使うと、顧客のニーズに応じて、ポリシーをさまざまな言語に対応させることができます。  Microsoft では [36 の言語](#supported-languages)の翻訳が提供されていますが、どの言語についてもユーザーが自分で翻訳を提供できます。 1 つの言語でのみページが提供されている場合でも、ページ上の任意のテキストをカスタマイズできます。  
 
@@ -49,7 +45,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 5. ダイアログ ボックスの情報を読み、**[はい]** を選びます。
 
 ## <a name="select-which-languages-in-your-user-journey-are-enabled"></a>ユーザー体験で有効にする言語の選択 
-`ui_locales` パラメーターが指定されていない場合に、ユーザー体験用の言語セットを翻訳できるようにします。
+`ui_locales` パラメーターが指定されていない場合に、ユーザー体験で言語セットが翻訳されるように、言語セットを有効にします。
 1. 前の手順で、ポリシーの言語のカスタマイズを有効にしていることを確認します。
 2. **[ポリシーの編集]** ページで、**[言語のカスタマイズ]** を選びます。
 3. サポートする言語を選びます。
@@ -78,7 +74,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 5. ファイルを保存し、変更内容をアップロードします。 (アップロード コントロールは、JSON ファイルをダウンロードした場所にあります) 
 
 >[!IMPORTANT]
->文字列を上書きする必要がある場合は、必ず `Override` の値を `true` に設定してください。  値が変更されていない場合、そのエントリは無視されます。 
+>文字列をオーバーライドする必要がある場合は、必ず `Override` の値を `true` に設定してください。  値が変更されていない場合、そのエントリは無視されます。 
 >
 
 ### <a name="change-extension-attributes"></a>拡張属性を変更する
@@ -102,7 +98,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 `<ExtensionAttributeValue>` を表示する新しい文字列に置き換えます。
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>LocalizedCollections を使って値の一覧を提供する
-応答の値セットの一覧を指定する場合は、`LocalizedCollections` 属性を作成する必要があります。  `LocalizedCollections` は、`Name` と `Value` のペアの配列です。 `LocalizedCollections` を追加するには、次の形式を使います。
+応答の値セットの一覧を指定する場合は、`LocalizedCollections` 属性を作成する必要があります。  `LocalizedCollections` は、`Name` と `Value` のペアの配列です。 項目の順序は、表示される順序になります。  `LocalizedCollections` を追加するには、次の形式を使います。
 
 ```JSON
 {
@@ -153,9 +149,9 @@ https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.h
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ```
 
-## <a name="add-custom-locales"></a>カスタム ロケールを追加する
+## <a name="add-custom-languages"></a>カスタム言語の追加
 
-現在 Microsoft が翻訳を提供していない言語を追加することもできます。 ポリシー内のすべての文字列に対して翻訳を提供する必要があります。
+現在 Microsoft が翻訳を提供していない言語を追加することもできます。 ポリシー内のすべての文字列に対して翻訳を提供する必要があります。  言語およびロケールのコードは、ISO 639-1 標準にものに限られます。 
 
 1. **[ポリシーの編集]** ページで、**[言語のカスタマイズ]** を選びます。
 2. ページの上部から **[カスタム言語の追加]** を選択します。
@@ -165,6 +161,10 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 6. **[有効]** を選択すると、ポリシーによりユーザーに対してこの言語が表示されます。
 7. 言語を保存します。
 
+>[!IMPORTANT]
+>カスタム言語を有効にするか、保存する前のオーバーライドをアップロードする必要があります。
+>
+
 ## <a name="additional-information"></a>追加情報
 
 ### <a name="page-ui-customization-labels-as-overrides"></a>オーバーライドとしてのページ UI カスタマイズ ラベル
@@ -172,7 +172,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ### <a name="up-to-date-translations"></a>翻訳を更新する
 Microsoft は、最新の翻訳を提供するよう努めています。 継続的に翻訳を改善し、コンプライアンスを維持します。 バグやグローバルな用語の変更を特定し、ユーザー体験にシームレスに適用される更新を行います。
 ### <a name="support-for-right-to-left-languages"></a>右から左へ記述する言語のサポート
-現在、右から左に書く言語はサポートしていません。 この機能が必要な場合は、[Azure フィードバック](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag)で投票してください。
+現在、右から左に書く言語はサポートしていません。 これには、カスタム ロケールと CSS を使用して、文字列の表示方法を変更することで対応できます。  この機能が必要な場合は、[Azure フィードバック](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag)で投票してください。
 ### <a name="social-identity-provider-translations"></a>ソーシャル ID プロバイダーの翻訳
 Microsoft は、`ui_locales` OIDC パラメーターをソーシャル ログインに提供しています。 ただし、Facebook や Google などの一部のソーシャル ID プロバイダーは、それを利用していません。 
 ### <a name="browser-behavior"></a>ブラウザーの動作

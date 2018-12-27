@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell で Azure 仮想マシンを管理する | Microsoft Docs
-description: チュートリアル - Azure PowerShell で RBAC、ポリシー、ロック、タグを適用することによって Azure 仮想マシンを管理します
+title: チュートリアル - Azure PowerShell で Azure 仮想マシンを管理する | Microsoft Docs
+description: このチュートリアルでは、Azure PowerShell を使用して、RBAC、ポリシー、ロック、およびタグを適用することによって Azure 仮想マシンを管理する方法について説明します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -10,22 +10,24 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
-ms.date: 02/21/2018
+ms.topic: tutorial
+ms.date: 10/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 30f5fe83c46f2dbe1933e8347242be7fbb30a3e3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.custom: mvc
+ms.openlocfilehash: 6377a54cc862bb5f62726c3ce91a41cc6eb0763d
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311390"
 ---
-# <a name="virtual-machine-governance-with-azure-powershell"></a>Azure PowerShell での仮想マシンの管理
+# <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した Windows 仮想マシンの管理方法の説明
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をローカルにインストールして使用することを選択する場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 ローカル インストールの場合は、[Azure AD PowerShell モジュールをダウンロード](https://www.powershellgallery.com/packages/AzureAD/)して、新しい Azure Active Directory グループを作成する必要もあります。
+この記事の例では、バージョン 6.0 以降の Azure PowerShell が必要です。 PowerShell をローカルで実行していて、バージョン 6.0 以降を持っていない場合は、[バージョンを更新](/powershell/azure/install-azurerm-ps)します。 `Connect-AzureRmAccount` を実行して、Azure との接続を作成する必要もあります。 ローカル インストールの場合は、[Azure AD PowerShell モジュールをダウンロード](https://www.powershellgallery.com/packages/AzureAD/)して、新しい Azure Active Directory グループを作成する必要もあります。
 
 ## <a name="understand-scope"></a>スコープを理解する
 
@@ -43,44 +45,35 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-組織のユーザーがこれらのリソースへの適切なアクセス レベルを持つようにします。 ユーザーに無制限のアクセス権を許可したくはありませんが、ユーザーが自分の作業を実行できるようにすることも必要です。 [ロールベースのアクセス制御](../../active-directory/role-based-access-control-what-is.md)を使うと、あるスコープで特定のアクションを実行するアクセス許可を持つユーザーを管理することができます。
+組織のユーザーがこれらのリソースへの適切なアクセス レベルを持つようにします。 ユーザーに無制限のアクセス権を許可したくはありませんが、ユーザーが自分の作業を実行できるようにすることも必要です。 [ロールベースのアクセス制御](../../role-based-access-control/overview.md)を使うと、あるスコープで特定のアクションを実行するアクセス許可を持つユーザーを管理することができます。
 
 ロールの割り当てを作成および削除するには、`Microsoft.Authorization/roleAssignments/*` アクセス権が必要です。 このアクセス権は、所有者ロールまたはユーザー アクセス管理者ロールを通じて許可されます。
 
 仮想マシン ソリューションを管理するために、一般的に必要なアクセスを提供する、リソースに固有の次の 3 つのロールがあります。
 
-* [Virtual Machine Contributor](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
-* [Network Contributor](../../active-directory/role-based-access-built-in-roles.md#network-contributor)
-* [Storage Account Contributor](../../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+* [Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Network Contributor](../../role-based-access-control/built-in-roles.md#network-contributor)
+* [Storage Account Contributor](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーのための [Azure Active Directory グループを作成する](../../active-directory/active-directory-groups-create-azure-portal.md)方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事を簡略化するために、メンバーを含まない Azure Active Directory グループを作成します。 その場合でも、このグループをスコープのロールに割り当てることができます。 
+多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーを Azure Active Directory グループにまとめて使用する方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事では、仮想マシンを管理するための既存のグループを使用するか、またはポータルを使用して [Azure Active Directory グループを作成](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)します。
 
-次の例では、名前が *VMDemoContributors* でメール ニックネームが *vmDemoGroup* の Azure Active Directory グループを作成します。 メール ニックネームは、グループのエイリアスとして機能します。
-
-```azurepowershell-interactive
-$adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
-  -MailNickName vmDemoGroup `
-  -MailEnabled $false `
-  -SecurityEnabled $true
-```
-
-コマンド プロンプトに戻ってからグループが Azure Active Directory 全体に伝達されるまで、しばらくかかります。 20 ～ 30 秒待った後、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) コマンドを使って、リソース グループの仮想マシン共同作成者ロールに、新しい Azure Active Directory グループを割り当てます。  伝達される前に次のコマンドを実行した場合、"**プリンシパル <guid> がディレクトリにありません**" というエラーが発生します。 そのときは、コマンドをもう一度実行してみます。
+新しいグループを作成するか、または既存のロールを見つけた後、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) コマンドを使って、リソース グループの仮想マシン共同作成者ロールに、Azure Active Directory グループを割り当てます。  
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
+$adgroup = Get-AzureRmADGroup -DisplayName <your-group-name>
+
+New-AzureRmRoleAssignment -ObjectId $adgroup.id `
   -ResourceGroupName myResourceGroup `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
+"**プリンシパル <guid> がディレクトリ**  にありません" というエラーが発生した場合、まだ新しいグループが Azure Active Directory 全体に伝達されていません。 そのときは、コマンドをもう一度実行してみます。
+
 通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを*ネットワークの共同作業者*と*ストレージ アカウントの共同作業者*に対して繰り返します。 この記事では、これらの手順を省略できます。
 
-## <a name="azure-policies"></a>Azure のポリシー
+## <a name="azure-policy"></a>Azure Policy
 
-[!INCLUDE [Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
-
-### <a name="apply-policies"></a>ポリシーを適用する
-
-サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を表示するには、[Get-AzureRmPolicyDefinition](/powershell/module/AzureRM.Resources/Get-AzureRmPolicyDefinition) コマンドを使います。
+[Azure Policy](../../azure-policy/azure-policy-introduction.md) は、サブスクリプション内のすべてのリソースが会社の基準を順守するために役立ちます。 サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を表示するには、[Get-AzureRmPolicyDefinition](/powershell/module/AzureRM.Resources/Get-AzureRmPolicyDefinition) コマンドを使います。
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -90,7 +83,7 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 
 * すべてのリソースの場所を制限する。
 * 仮想マシンの SKU を制限する。
-* 管理ディスクを使用しない仮想マシンを監査する。
+* マネージド ディスクを使用しない仮想マシンを監査する。
 
 次の例では、表示名に基づいて 3 つのポリシー定義を取得します。 [New-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) コマンドを使って、それらの定義をリソース グループに割り当てます。 一部のポリシーについては、許可される値を指定するパラメーター値を提供します。
 
@@ -170,7 +163,7 @@ New-AzureRmResourceLock -LockLevel CanNotDelete `
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-ロックのために削除操作を実行できないことを示すエラーが表示されます。 リソース グループは、ロックを明確に削除した場合にのみ削除できます。 その手順は、「[リソースのクリーンアップ](#clean-up-resources)」に示されています。
+ロックのために削除操作を完了できないことを示すエラーが表示されます。 リソース グループは、ロックを明確に削除した場合にのみ削除できます。 その手順は、「[リソースのクリーンアップ](#clean-up-resources)」に示されています。
 
 ## <a name="tag-resources"></a>リソースへのタグ付け
 
@@ -192,16 +185,16 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 
 ### <a name="find-resources-by-tag"></a>タグでリソースを見つける
 
-タグの名前と値でリソースを検索するには、[Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) コマンドを使います。
+タグの名前と値でリソースを検索するには、[Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) コマンドを使います。
 
 ```azurepowershell-interactive
-(Find-AzureRmResource -TagName Environment -TagValue Test).Name
+(Get-AzureRmResource -Tag @{ Environment="Test"}).Name
 ```
 
 返される値は、タグ値ですべての仮想マシンを停止するような管理タスクで使用できます。
 
 ```azurepowershell-interactive
-Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
+Get-AzureRmResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
 ```
 
 ### <a name="view-costs-by-tag-values"></a>タグ値でコストを表示する

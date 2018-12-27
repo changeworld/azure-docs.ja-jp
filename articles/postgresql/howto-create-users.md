@@ -1,19 +1,18 @@
 ---
-title: "Azure Database for PostgreSQL サーバーでユーザーを作成する"
-description: "この記事では、Azure Database for PostgreSQL サーバーと対話する新しいユーザー アカウントを作成する方法について説明します。"
-services: postgresql
+title: Azure Database for PostgreSQL サーバーでユーザーを作成する
+description: この記事では、Azure Database for PostgreSQL サーバーと対話する新しいユーザー アカウントを作成する方法について説明します。
 author: jasonwhowell
 ms.author: jasonh
 editor: jasonwhowell
-manager: jhubbard
-ms.service: postgresql-database
-ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 87a73929185112190d5dd6698e014db225ebc08e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.service: postgresql
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.openlocfilehash: 45d1f55e60763724aeb1b1685c5c69696475a424
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958102"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーでユーザーを作成する 
 この記事では、Azure Database for PostgreSQL サーバーでユーザーを作成する方法について説明します。
@@ -37,7 +36,7 @@ Azure Database for PostgreSQL サーバーを作成すると、3 つの既定の
    データベース サーバーに接続するには、サーバーの完全な名前と管理者サインイン資格情報が必要となります。 Azure Portal で、サーバーの **[概要]** ページまたは **[プロパティ]** ページからサーバー名とサインイン情報を簡単に確認できます。 
 
 2. 管理者のアカウントとパスワードを使用して、データベース サーバーに接続します。 pgAdmin や psql など、好みのクライアント ツールを使ってください。
-   接続方法がわからない場合は、「[Cloud Shell で psql を使用して PostgreSQL データベースに接続する](./quickstart-create-server-database-portal.md#connect-to-the-postgresql-database-by-using-psql-in-cloud-shell)」をご覧ください。
+   接続方法がわからない場合は、[クイック スタート](./quickstart-create-server-database-portal.md)を参照してください
 
 3. 次の SQL コードを編集して実行します。 プレースホルダー値 <new_user> は新しいユーザー名に置き換え、パスワードのプレースホルダーは自分の強力なパスワードに置き換えます。 
 
@@ -63,7 +62,7 @@ Azure Database for PostgreSQL サーバーを作成すると、3 つの既定の
    
    CREATE ROLE <db_user> WITH LOGIN NOSUPERUSER INHERIT CREATEDB NOCREATEROLE NOREPLICATION PASSWORD '<StrongPassword!>';
    
-   GRANT CONNECT ON DATABASE testdb TO <db_user>;
+   GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
 4. 管理者アカウントを使うと、データベース内のオブジェクトをセキュリティで保護するために追加の特権を付与することが必要な場合があります。 データベースのロールと特権について詳しくは、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/current/static/ddl-priv.html)をご覧ください。 例:  

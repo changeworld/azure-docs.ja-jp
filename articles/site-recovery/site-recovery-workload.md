@@ -1,28 +1,21 @@
 ---
 title: Azure Site Recovery で保護できるワークロード | Microsoft Docs
 description: Azure Site Recovery サービスによるディザスター リカバリーを使用して保護できるワークロードについて説明します。
-services: site-recovery
-documentationcenter: ''
 author: rayne-wiselman
-manager: cfreeman
-editor: ''
-ms.assetid: 4953948f-26c0-4699-8fe7-59d3bfc1d3da
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 3/16/2018
+ms.topic: conceptual
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 3b138546ffb1cb6d5bec0aaf2bb11510ab399933
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 8592b4dc5b5ae791c6e231876839f8647d171145
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850119"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用してレプリケートできるワークロードとアプリケーションについて説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスによるディザスター リカバリーを使用して保護できるワークロードとアプリケーションについて説明します。
 
 
 
@@ -60,7 +53,6 @@ Site Recovery は、サポート対象のマシンで実行されているすべ
 | リモート デスクトップ/VDI |Y |Y |Y |Y |Y|
 | Linux (オペレーティング システムおよびアプリケーション) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み)|
 | Dynamics AX |Y |Y |Y |Y |Y|
-| Oracle |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み)|
 | Windows ファイル サーバー |Y |Y |Y |Y |Y|
 | Citrix XenApp と XenDesktop |Y|該当なし |Y |該当なし |Y |
 
@@ -110,9 +102,9 @@ Azure Site Recovery は、次のような点で Dynamics AX ERP ソリューシ�
 
 | **RDS** |**Azure VM を Azure にレプリケートする** | **Hyper-V VM をセカンダリ サイトにレプリケート** | **Hyper-V VM を Azure にレプリケート** | **VMware VM をセカンダリ サイトにレプリケート** | **VMware VM を Azure にレプリケート** | **物理サーバーをセカンダリ サイトにレプリケート** | **物理サーバーを Azure にレプリケート** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **プールされた仮想デスクトップ (管理対象外)** |いいえ |[はい] |いいえ  |[はい] |いいえ  |[はい] |いいえ  |
-| **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ |[はい] |いいえ  |[はい] |いいえ  |[はい] |いいえ  |
-| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |[はい]|[はい] |[はい] |[はい] |[はい] |[はい] |[はい] |
+| **プールされた仮想デスクトップ (管理対象外)** |いいえ |はい |いいえ  |はい |いいえ  |はい |いいえ  |
+| **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ |はい |いいえ  |はい |いいえ  |はい |いいえ  |
+| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |[はい]|はい |はい |はい |はい |はい |[はい] |
 
 [Azure Site Recovery を使用して RDS のディザスター リカバリーを設定します](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure)。
 

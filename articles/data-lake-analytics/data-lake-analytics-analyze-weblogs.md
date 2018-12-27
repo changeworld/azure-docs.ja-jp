@@ -1,33 +1,29 @@
 ---
-title: "Azure Data Lake Analytics を使用して Web サイトのログを分析する | Microsoft Docs"
-description: "Data Lake Analytics を使用して Web サイトのログを分析する方法について説明します。 "
+title: Azure Data Lake Analytics を使用する Web サイト ログの分析
+description: Data Lake Analytics を使用して Web サイトのログを分析する方法について説明します。
 services: data-lake-analytics
-documentationcenter: 
 author: saveenr
-manager: saveenr
-editor: cgronlun
+ms.author: saveenr
+ms.reviewer: jasonwhowell
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/05/2016
-ms.author: saveenr
-ms.openlocfilehash: 52d19297ae5c34f9daf5e42250a53a78e0168192
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f9a30bf25cea1e80f53596be9eea6ae57a79889
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246465"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用する Web サイト ログの分析
 Data Lake Analytics を使用して Web サイトのログを分析する方法について、特に、Web サイトへのアクセスを試みたときにエラーが発生した参照元の特定に重点を置いて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 * **Visual Studio 2013 または Visual Studio 2015**
-* **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**。
+* **[Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs)**。
 
-    Data Lake Tools for Visual Studio がインストールされると、Visual Studio の [**ツール**] メニューに **[Data Lake]** が表示されます。
+    Data Lake Tools for Visual Studio がインストールされると、Visual Studio の **[ツール]** メニューに **[Data Lake]** が表示されます。
 
     ![U-SQL Visual Studio のメニュー](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-menu.png)
 * **Data Lake Analytics と Data Lake Tools for Visual Studio の基本的な知識**。 作業を開始するには、次のトピックをご覧ください。
@@ -62,7 +58,7 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。 U
 2. プロジェクトの種類として、[U-SQL プロジェクト] を選択します。
 
     ![新しい U-SQL Visual Studio プロジェクト](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-3. **[OK]**をクリックします。 Visual Studio で、Script.usql ファイルを使用してソリューションが作成されます。
+3. Click **OK**. Visual Studio で、Script.usql ファイルを使用してソリューションが作成されます。
 4. 次のスクリプトを Script.usql ファイルに入力します。
 
         // Create a database for easy reuse, so you don't need to read from a file every time.

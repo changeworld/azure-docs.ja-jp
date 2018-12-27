@@ -1,29 +1,28 @@
 ---
-title: "Java を使用して TPM デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs"
-description: "Azure クイックスタート - Java Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録する"
-services: iot-dps
-keywords: 
-author: dsk-2015
-ms.author: dkshir
+title: Java を使用して TPM デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs
+description: Azure クイック スタート - Java Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録します。 このクイック スタートでは、個別登録を使用します。
+author: wesmc7777
+ms.author: wesmc
 ms.date: 12/20/2017
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
-ms.devlang: na
+ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 79b12c276dae3cf1e480ec8d3f12d2d4b3d8fea7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4c494eda7126a21223f65a7e52c220fca93b2e39
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184663"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
 
-[Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) とサンプル Java アプリケーションを利用して、シミュレートされた TPM デバイスを Azure IoT Hub Device Provisioning Service にプログラムで登録する方法について説明します。 Java Service SDK は Windows および Linux マシンの両方で動作しますが、この記事では、Windows 開発マシンを使用して登録プロセスの手順を説明します。
+以下の手順では、[Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) とサンプル Java アプリケーションを使用して、Azure IoT Hub Device Provisioning Service へのシミュレートされた TPM デバイスの個別登録をプログラムで作成する方法について説明します。 Java Service SDK は Windows および Linux マシンの両方で動作しますが、この記事では、Windows 開発マシンを使用して登録プロセスの手順を説明します。
 
 事前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)と [TPM デバイスのシミュレート](quick-create-simulated-device.md#simulatetpm)を済ませておいてください。
 
@@ -31,11 +30,11 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備 
 
-1. [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) がマシンにインストールされていることを確認します。 
+1. [Java SE Development Kit 8](https://aka.ms/azure-jdks) がマシンにインストールされていることを確認します。 
 
-2. Java インストールの環境変数を設定します。 `PATH` 変数には、*jdk1.8.x\bin* ディレクトリの完全なパスを含めます。 初めて Java をインストールするマシンの場合は、`JAVA_HOME` という新しい環境変数を作成し、*jdk1.8.x* ディレクトリの完全なパスに指定します。 通常、Windows マシンのこのディレクトリは、*C:\\Program Files\\Java\\* フォルダーにあるので、Windows マシンの **[コントロール パネル]** で **[システム環境変数の編集]** を探し、環境変数を作成または編集することができます。 
+2. Java インストールの環境変数を設定します。 `PATH` 変数には、*jdk1.8.x\bin* ディレクトリの完全なパスを含めます。 初めて Java をインストールするマシンの場合は、`JAVA_HOME` という新しい環境変数を作成し、*jdk1.8.x* ディレクトリの完全なパスに指定します。 Windows マシンでは、このディレクトリは *C:\\Program Files\\Java\\* フォルダーにあります。Windows マシンの **[コントロール パネル]** で **[システム環境変数の編集]** を探し、環境変数を作成または編集することができます。 
 
-  コマンド ウィンドウで次のコマンドを実行して、マシンに Java が正常に設定されたことを確認できます。
+   コマンド ウィンドウで次のコマンドを実行して、マシンに Java が正常に設定されたことを確認できます。
 
     ```cmd\sh
     java -version
@@ -81,7 +80,7 @@ ms.lasthandoff: 02/09/2018
 
     2. TPM デバイスの詳細を追加します。
         1. 「[Simulate TPM device](quick-create-simulated-device.md#simulatetpm)」(TPM デバイスのシミュレート) に続く手順に従って、TPM デバイス シミュレーションの*登録 ID* と *TPM 保証キー*を取得します。
-        2. 前の手順の出力の**_登録 ID_** と**_保証キー_**を使用し、サンプル コード ファイル **_ServiceEnrollmentSample.java_** の `[RegistrationId]` と `[TPM Endorsement Key]` を置き換えます。
+        2. 前の手順の出力の**_登録 ID_** と**_保証キー_** を使用し、サンプル コード ファイル **_ServiceEnrollmentSample.java_** の `[RegistrationId]` と `[TPM Endorsement Key]` を置き換えます。
         
             ```Java
             private static final String REGISTRATION_ID = "[RegistrationId]";
@@ -146,7 +145,7 @@ Java Service のサンプルを調べる予定の場合は、このクイック�
 
 1. マシンに表示されている Java サンプルの出力ウィンドウを閉じます。
 1. TPM デバイスをシミュレートするために作成した TPM シミュレーター ウィンドウが表示されている場合は閉じます。
-1. Azure Portal で [デバイス プロビジョニング サービス] に移動し、**[登録を管理します]** をクリックし、**[個々の登録]** タブを選択します。このクイックスタートで登録したデバイスの*登録 ID* を選択し、ブレードの上部の **[削除]** ボタンをクリックします。 
+1. Azure Portal で Device Provisioning サービスに移動し、**[登録を管理します]** をクリックし、**[個々の登録]** タブを選択します。このクイックスタートで登録したデバイスの*登録 ID* を選択し、ブレードの上部の **[削除]** ボタンをクリックします。 
 
 ## <a name="next-steps"></a>次の手順
 このクイックスタートでは、シミュレートされた TPM デバイスを Device Provisioning Service に登録しました。 Device Provisioning に関する理解をさらに深めるには、Azure Portal における Device Provisioning Service の設定に関するチュートリアルに進んでください。 

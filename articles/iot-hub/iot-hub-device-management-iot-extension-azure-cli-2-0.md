@@ -1,38 +1,34 @@
 ---
-title: Azure CLI 2.0 向けの IoT 拡張機能を使用した Azure IoT デバイス管理 | Microsoft Docs
-description: Azure IoT Hub デバイス管理用の Azure CLI 2.0 向けの IoT 拡張機能を使用します。このツールでは、ダイレクト メソッドとデバイス ツインの必要なプロパティを管理するためのオプションを使用できます。
-services: iot-hub
-documentationcenter: ''
+title: Azure CLI 向けの IoT 拡張機能を使用した Azure IoT デバイス管理 | Microsoft Docs
+description: Azure IoT Hub デバイス管理用の Azure CLI ツール向けの IoT 拡張機能を使用します。ダイレクト メソッドのほか、ツインの必要なプロパティを管理するためのオプションが備わっています。
 author: chrissie926
-manager: timlt
-tags: ''
+manager: ''
 keywords: Azure IoT デバイス管理, Azure IoT Hubデバイス管理, デバイス管理 IoT, IoT Hub デバイス管理
-ms.assetid: b34f799a-fc14-41b9-bf45-54751163fffe
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: ceace7331c7548c5b4e27f8529152fd69d5469cd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c5d4299d2d391a25bfab579f5f78da3718afc24c
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043008"
 ---
-# <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Azure CLI 2.0 向けの IoT 拡張機能を使用した Azure IoT Hub デバイス管理
+# <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure CLI 向けの IoT 拡張機能を使用した Azure IoT Hub デバイス管理
 
 ![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/2.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure CLI 2.0 向けの IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は新しいオープン ソースの IoT 拡張機能であり、[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) の機能に追加されます。 Azure CLI 2.0 には、Azure Resource Manager と管理エンドポイントと対話するためのコマンドが含まれています。 たとえば、Azure CLI 2.0 を使って Azure VM または IoT ハブを作成できます。 Azure サービスは、CLI 拡張機能を使用して Azure CLI を拡張することで、追加されるサービス固有の機能にアクセスできるようにします。 IoT 開発者は、IoT 拡張機能を使用して、すべての IoT Hub、IoT Edge、および IoT Hub Device Provisioning Service の機能にコマンド ラインからアクセスできます。
+[Azure CLI 向けの IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は新しいオープン ソースの IoT 拡張機能であり、[Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) の機能に追加されます。 Azure CLI には、Azure Resource Manager と管理エンドポイントと対話するためのコマンドが含まれています。 たとえば、Azure CLI を使って Azure VM または IoT ハブを作成できます。 Azure サービスは、CLI 拡張機能を使用して Azure CLI を拡張することで、追加されるサービス固有の機能にアクセスできるようにします。 IoT 開発者は、IoT 拡張機能を使用して、すべての IoT Hub、IoT Edge、および IoT Hub Device Provisioning Service の機能にコマンド ラインからアクセスできます。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| 管理オプション          | タスク                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| 管理オプション          | タスク  |
+|----------------------------|-----------|
 | ダイレクト メソッド             | メッセージの送信開始や停止、デバイスの再起動などの機能をデバイスに実行させます。                                        |
 | デバイス ツインの必要なプロパティ    | デバイスを特定の状態にします (LED を緑に設定したり、テレメトリの送信間隔を 30 分に設定したりします)。         |
 | デバイス ツインの報告されるプロパティ   | デバイスの報告される状態を取得します。 たとえば、デバイスは、現在 LED が点滅していることを報告します。                                    |
@@ -45,27 +41,27 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="what-you-learn"></a>学習内容
 
-開発マシン上で Azure CLI 2.0 向けの IoT 拡張機能をさまざまな管理オプションで使用します。
+開発マシン上で Azure CLI 向けの IoT 拡張機能をさまざまな管理オプションで使用します。
 
 ## <a name="what-you-do"></a>作業内容
 
-Azure CLI 2.0 と Azure CLI 2.0 向けの IoT 拡張機能をさまざまな管理オプションを使用して実行します。
+Azure CLI と Azure CLI 向けの IoT 拡張機能をさまざまな管理オプションを使用して実行します。
 
 ## <a name="what-you-need"></a>必要なもの
 
-- 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
+* 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
+
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
 
-- このチュートリアルの実行時にクライアント アプリケーションでデバイスが実行されていることを確認します。
+* このチュートリアルの実行時にクライアント アプリケーションでデバイスが実行されていることを確認します。
 
-- [Python 2.7x または Python 3.x](https://www.python.org/downloads/)
+* [Python 2.7x または Python 3.x](https://www.python.org/downloads/)
 
-- Azure CLI 2.0 をインストールします。 Windows にインストールする簡単な方法の 1 つは、[MSI](https://aka.ms/InstallAzureCliWindows) をダウンロードしてインストールすることです。 [Microsoft Docs](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) のインストール手順に従って、環境に Azure CLI 2.0 をセットアップすることもできます。 Azure CLI 2.0 のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –version` を使用します。 
+* Azure CLI インストールが必要な場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –version` を使用します。 
 
-- IoT 拡張機能をインストールします。 最も簡単な方法は、`az extension add --name azure-cli-iot-ext` を実行することです。 [IoT 拡張機能の readme](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) に、拡張機能をインストールするためのいくつかの方法が説明されています。
-
+* IoT 拡張機能をインストールします。 最も簡単な方法は、`az extension add --name azure-cli-iot-ext` を実行することです。 [IoT 拡張機能の readme](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) に、拡張機能をインストールするためのいくつかの方法が説明されています。
 
 ## <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
 
@@ -78,7 +74,10 @@ az login
 ## <a name="direct-methods"></a>ダイレクト メソッド
 
 ```bash
-az iot hub invoke-device-method --device-id <your device id> --hub-name <your hub name> --method-name <the method name> --method-payload <the method payload>
+az iot hub invoke-device-method --device-id <your device id> \
+  --hub-name <your hub name> \
+  --method-name <the method name> \
+  --method-payload <the method payload>
 ```
 
 ## <a name="device-twin-desired-properties"></a>デバイス ツインの目的のプロパティ
@@ -86,7 +85,8 @@ az iot hub invoke-device-method --device-id <your device id> --hub-name <your hu
 次のコマンドを実行して、目的のプロパティ interval = 3000 を設定します。
 
 ```bash
-az iot hub device-twin update -n <your hub name> -d <your device id> --set properties.desired.interval = 3000
+az iot hub device-twin update -n <your hub name> \
+  -d <your device id> --set properties.desired.interval = 3000
 ```
 
 このプロパティをデバイスから読み取ることができます。
@@ -96,10 +96,10 @@ az iot hub device-twin update -n <your hub name> -d <your device id> --set prope
 次のコマンドを実行して、デバイスの報告されるプロパティを取得します。
 
 ```bash
-az iot hub device-twin update -n <your hub name> -d <your device id> --set properties.reported.interval = 3000
+az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-プロパティの 1 つに、このデバイスが最後にメッセージを送信または受信した時間を示す $metadata.$lastUpdated があります。
+ツインの reported プロパティの 1 つは $metadata.$lastUpdated です。これは、デバイス アプリがその reported プロパティのセットを最後に更新した時刻を示します。
 
 ## <a name="device-twin-tags"></a>デバイス ツインのタグ
 
@@ -112,7 +112,10 @@ az iot hub device-twin show --hub-name <your hub name> --device-id <your device 
 次のコマンドを実行して、フィールド role = temperature&humidity をデバイスに追加します。
 
 ```bash
-az iot hub device-twin update --hub-name <your hub name> --device-id <your device id> --set tags = '{"role":"temperature&humidity"}}'
+az iot hub device-twin update \
+  --hub-name <your hub name> \
+  --device-id <your device id> \
+  --set tags = '{"role":"temperature&humidity"}}'
 ```
 
 ## <a name="device-twin-queries"></a>デバイス ツイン クエリ
@@ -120,13 +123,15 @@ az iot hub device-twin update --hub-name <your hub name> --device-id <your devic
 次のコマンドを実行して、タグ role = 'temperature&humidity' のクエリを実行します。
 
 ```bash
-az iot hub query --hub-name <your hub name> --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
+az iot hub query --hub-name <your hub name> \
+  --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
 ```
 
 次のコマンドを実行して、タグ role = 'temperature&humidity' 以外のすべてのデバイスのクエリを実行します。
 
 ```bash
-az iot hub query --hub-name <your hub name> --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
+az iot hub query --hub-name <your hub name> \
+  --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
 ```
 
 ## <a name="next-steps"></a>次の手順

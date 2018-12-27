@@ -3,18 +3,22 @@ title: Wingtips アプリへようこそ - Azure SQL Database | Microsoft Docs
 description: クラウド環境での Azure SQL Database 向けのデータベース テナント モデル、およびサンプル Wingtips SaaS アプリケーションについて説明します。
 keywords: SQL データベース チュートリアル
 services: sql-database
-author: billgib
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: billgib
+manager: craigg
 ms.date: 04/01/2018
-ms.author: billgib
-ms.openlocfilehash: b4f91ab1e6debb39980eeedc58249b50b5ac85e0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a05a8ad495e33734a531405902ce34e3591bfe15
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056320"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS アプリケーション
 

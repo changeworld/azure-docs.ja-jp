@@ -1,27 +1,23 @@
 ---
-title: "統合アカウント アーティファクト メタデータの管理 - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps の統合アカウントからアーティファクト メタデータを追加または取得する"
-author: padmavc
-manager: anneta
-editor: 
+title: 統合アカウント アーティファクト メタデータの管理 - Azure Logic Apps | Microsoft Docs
+description: Enterprise Integration Pack を使用して Azure Logic Apps の統合アカウントからアーティファクト メタデータを追加または取得します
 services: logic-apps
-documentationcenter: 
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 02/23/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 59cebb6c0b86f4e3c4e16a5b6d2ada7b3e7a44a2
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 537014c2780fe94cfb35806759f8bcbd974c4c95
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128805"
 ---
-# <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>ロジック アプリの統合アカウントでアーティファクト メタデータを管理する
+# <a name="manage-artifact-metadata-from-integration-accounts-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の統合アカウントからアーティファクト メタデータを管理する
 
 統合アカウント内でアーティファクトのカスタム メタデータを定義し、ロジック アプリの実行時にそのメタデータを取得することができます。 たとえば、パートナー、契約、スキーマ、マップなどのアーティファクトに対してメタデータを指定することができます。これらすべてのアーティファクトには、キーと値のペアを使用してメタデータが保存されます。 
 
@@ -39,7 +35,7 @@ ms.lasthandoff: 02/27/2018
 
 1. Azure Portal で、[ロジック アプリ](quickstart-create-first-logic-app-workflow.md)を作成します。
 
-2. [ロジック アプリから統合アカウントへのリンク](logic-apps-enterprise-integration-create-integration-account.md#link-an-integration-account-to-a-logic-app)を作成します。 
+2. [ロジック アプリから統合アカウントへのリンク](logic-apps-enterprise-integration-create-integration-account.md#link-account)を作成します。 
 
 3. ロジック アプリ デザイナーで、ロジック アプリに**要求**や **HTTP** などのトリガーを追加します。
 

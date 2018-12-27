@@ -1,8 +1,21 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 77fc95c53ba89c3905ebd1aec785e22f42339369
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164800"
+---
 <!--author=SharS last changed: 9/17/15-->
 
 #### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用して通常の修正プログラムをインストールするには
 1. デバイスのシリアル コンソールに接続します。 詳細については、「[手順 1: シリアル コンソールに接続する](../articles/storsimple/storsimple-update-device.md#step1)」を参照してください。
-2. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]**を選択します。 パスワードを入力します。 既定のパスワードは **Password1**です。
+2. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]** を選択します。 パスワードを入力します。 既定のパスワードは **Password1**です。
 3. コマンド プロンプトに、次のコマンドを入力します。
    
     ```

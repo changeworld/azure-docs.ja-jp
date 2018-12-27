@@ -1,22 +1,19 @@
 ---
 title: Azure Site Recovery を使用したファイル サーバーの保護
 description: この記事では、Azure Site Recovery を使用してファイル サーバーを保護する方法について説明します。
-services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/06/2018
+ms.topic: tutorial
+ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 830f9c76d9d1bf11692fa9f2f5c49cbecdb69f25
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: dde38f1c27ed808d730699e3c1d68a1c78cf3af5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850484"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery を使用したファイル サーバーの保護 
 
@@ -48,7 +45,7 @@ DFSR では、Remote Differential Compression (RDC) という圧縮アルゴリ�
 
     * VM の構成が Site Recovery でサポートされていない場合は、この方法を使用できます。 例として、ファイル サーバー環境でよく使用される共有クラスター ディスクが挙げられます。 DFSR は、チャーン レートが中程度の低帯域幅の環境でも適切に機能します。 Azure VM を常時稼働させておくための追加コストを考慮する必要があります。 
 
-* **Azure File Sync を使用してファイルをレプリケートする**: クラウドの使用を計画している場合や、Azure VM を既に使用している場合は、Azure File Sync を使用できます。Azure File Sync は、業界標準の[サーバー メッセージ ブロック](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB) プロトコルを介してアクセスできる、クラウドで完全に管理されたファイル共有の同期を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにある Windows、Linux、および macOS に同時にマウントできます。 
+* **Azure File Sync を使用してファイルをレプリケートする**: クラウドの使用を計画している場合や、Azure VM を既に使用している場合は、Azure File Sync を使用できます。Azure File Sync は、業界標準の[サーバー メッセージ ブロック](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB) プロトコルを介してアクセスできる、クラウドでのフル マネージドのファイル共有の同期を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにある Windows、Linux、および macOS に同時にマウントできます。 
 
 次のダイアグラムは、ファイル サーバー環境で使用する戦略を決定する際に役立ちます。
 

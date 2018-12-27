@@ -1,25 +1,21 @@
 ---
-title: Azure サブスクリプションの制限とクォータ | Microsoft Docs
+title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 制限を引き上げる方法と、最大値に関する情報も記載されています。
-services: ''
-documentationcenter: ''
+services: multiple
 author: rothja
 manager: jeffreyg
-editor: ''
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 11/05/2018
 ms.author: byvinyal
-ms.openlocfilehash: f8b97aeb4c37578b884c924bd1919a59fa0f1cf8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bd20ea58c7693b3be8f583810384aa26dde572d8
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219564"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、プラットフォームを広くカバーするように一覧を拡大し、更新していく予定です。
@@ -27,9 +23,9 @@ ms.lasthandoff: 04/05/2018
 Azure の価格については、 [Azure の価格の概要](https://azure.microsoft.com/pricing/) に関するページを参照してください。 価格の概要に関するページでは、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用したり、サービス (たとえば、[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) の価格の詳細ページに移動したりして、費用を見積もることができます。 コスト管理に役立つヒントについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](billing/billing-getting-started.md)」をご覧ください。
 
 > [!NOTE]
-> **既定の制限**を超える制限またはクォータの引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](azure-supportability/resource-manager-core-quotas-request.md) してください。 次のテーブルにある**上限**の値を超える制限の引き上げはできません。 **上限**列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
+> **既定の制限**を超える制限またはクォータの引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](azure-resource-manager/resource-manager-quota-errors.md) してください。 次のテーブルにある**上限**の値を超える制限の引き上げはできません。 **上限**列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
 >
-> [無料試用版サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0044p)は、制限およびクォータ引き上げの適用対象外です。 [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)をお持ちの場合は、[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプションにアップグレードしてください。 詳細については、「[Azure 無料試用版を従量課金制にアップグレード](billing/billing-upgrade-azure-subscription.md)」と「[Azure 無料アカウント FAQ](https://azure.microsoft.com/free/free-account-faq)」を参照してください。
+> [無料試用版サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0044p)は、制限およびクォータ引き上げの適用対象外です。 [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)をお持ちの場合は、[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプションにアップグレードしてください。 詳細については、「[Azure 無料試用版を従量課金制にアップグレード](billing/billing-upgrade-azure-subscription.md)」と「[Azure 無料アカウント FAQ](https://azure.microsoft.com/free/free-account-faq)」を参照してください。
 >
 
 ## <a name="limits-and-the-azure-resource-manager"></a>制限と Azure Resource Manager
@@ -52,38 +48,47 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Application Insights](#application-insights-limits)
 * [Automation](#automation-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
+* [Azure Database for MySQL](#azure-database-for-mysql)
+* [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure Event Grid](#azure-event-grid-limits)
+* [Azure Maps](#azure-maps-limits)
+* [Azure Monitor](#monitor-limits)
+* [Azure Policy](#azure-policy-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Backup](#backup-limits)
 * [Batch](#batch-limits)
+* [Batch AI](#batch-ai-limits)
 * [BizTalk Services](#biztalk-services-limits)
 * [CDN](#cdn-limits)
 * [Cloud Services](#cloud-services-limits)
 * [Container Instances](#container-instances-limits)
 * [コンテナー レジストリ](#container-registry-limits)
-* [Container Service (AKS)](#container-service-aks-limits)
+* [Kubernetes サービス](#kubernetes-service-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
 * [Database Migration Service](#database-migration-service-limits)
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
+* [Azure Firewall](#azure-firewall-limits)
+* [Front Door](#azure-front-door-service-limits)
 * [IoT Hub](#iot-hub-limits)
 * [IoT Hub Device Provisioning Service](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
 * [Log Analytics](#log-analytics-limits)
+* [Managed Identity](#managed-identity-limits)
 * [Media Services](#media-services-limits)
-* [Mobile Engagement](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
-* [監視](#monitor-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication)
 * [ネットワーク](#networking-limits)
 * [Network Watcher](#network-watcher-limits)
 * [Notification Hub Service](#notification-hub-service-limits)
 * [リソース グループ](#resource-group-limits)
+* [ロールベースのアクセス制御](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
 * [Search](#search-limits)
 * [Service Bus](#service-bus-limits)
+* [SignalR Service](#signalr-service-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -96,13 +101,13 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Virtual Machine Scale Sets](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>サブスクリプションの制限
-#### <a name="subscription-limits"></a>サブスクリプションの制限
+#### <a name="subscription-limits---azure-service-management-classic-resources"></a>サブスクリプションの制限 - Azure サービス管理 (クラシック リソース)
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>サブスクリプションの制限 - Azure Resource Manager
 次の制限は、Azure Resource Manager と Azure リソース グループの使用時に適用されます。 Azure Resource Manager で変更されていない制限はこの一覧に含まれません。 これらの制限については、前の表を参照してください。
 
-Resource Manager 要求の処理制限については、[Throttling Resource Manager requests (Resource Manager 要求を調整する)](resource-manager-request-limits.md)をご覧ください。
+Resource Manager API の読み取りと書き込みの制限については、「[Resource Manager の要求のスロットル](resource-manager-request-limits.md)」を参照してください。
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
@@ -129,7 +134,7 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 
 [!INCLUDE [container-registry-limits](../includes/container-registry-limits.md)]
 
-### <a name="container-service-aks-limits"></a>Container Service (AKS) の制限
+### <a name="kubernetes-service-limits"></a>Kubernetes サービスの制限
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
 ### <a name="networking-limits"></a>ネットワークの制限
@@ -139,6 +144,8 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Application Gateway の制限
+
+特に記載のない限り、次の表は v1、v2、Standard、および WAF SKU に適用されます。
 [!INCLUDE [application-gateway-limits](../includes/application-gateway-limits.md)]
 
 #### <a name="network-watcher-limits"></a>Network Watcher の制限
@@ -150,11 +157,19 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 #### <a name="dns-limits"></a>DNS の制限
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
 
-### <a name="storage-limits"></a>ストレージの制限
-ストレージ アカウントの上限の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage/common/storage-scalability-targets.md)」を参照してください。
+#### <a name="azure-firewall-limits"></a>Azure Firewall の制限
+[!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
 
+#### <a name="azure-front-door-service-limits"></a>Azure Front Door Service の制限
+[!INCLUDE [azure-front-door-service-limits](../includes/front-door-limits.md)]
+
+### <a name="storage-limits"></a>ストレージの制限
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+
+ストレージ アカウントの上限の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage/common/storage-scalability-targets.md)」を参照してください。
+
+#### <a name="storage-resource-provider-limits"></a>ストレージ リソース プロバイダーの制限 
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -195,7 +210,7 @@ Azure Files の制限の詳細については、「[Azure Files のスケーラ�
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 ### <a name="app-service-limits"></a>App Service の制限
-次の App Service の制限には、Web Apps、Mobile Apps、API Apps、および Logic Apps の制限が含まれます。
+次の App Service の制限には、Web Apps、Mobile Apps、および API Apps の制限が含まれます。
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
@@ -205,6 +220,9 @@ Azure Files の制限の詳細については、「[Azure Files のスケーラ�
 ### <a name="batch-limits"></a>Batch の制限
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
+### <a name="batch-ai-limits"></a>Batch AI の制限
+[!INCLUDE [azure-batch-ai-limits](../includes/azure-batch-ai-limits.md)]
+
 ### <a name="biztalk-services-limits"></a>BizTalk Services の制限
 次の表に Azure Biztalk Services の制限内容を示します。
 
@@ -213,8 +231,11 @@ Azure Files の制限の詳細については、「[Azure Files のスケーラ�
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB の制限
 Azure Cosmos DB は世界規模のデータベースであり、アプリケーションで要求されることをすべて処理するようにスループットとストレージをスケールできます。 Azure Cosmos DB が提供するスケールについて質問がある場合は、askcosmosdb@microsoft.com にメールをお送りください。
 
-### <a name="mobile-engagement-limits"></a>Mobile Engagement の制限
-[!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
+### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
+Azure Database for MySQL の制限については、「[Azure Database for MySQL の制限事項](mysql/concepts-limits.md)」を参照してください。
+
+### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
+Azure Database for PostgreSQL の制限については、「[Azure Database for PostgreSQL の制限事項](postgresql/concepts-limits.md)」を参照してください。
 
 ### <a name="search-limits"></a>Search の制限
 価格レベルによって、容量と検索サービスの制限が決定されます。 レベルは次のとおりです。
@@ -281,6 +302,12 @@ Azure Cosmos DB は世界規模のデータベースであり、アプリケー�
 ### <a name="azure-event-grid-limits"></a>Azure Event Grid の制限
 [!INCLUDE [event-grid-limits](../includes/event-grid-limits.md)]
 
+### <a name="azure-maps-limits"></a>Azure Maps の制限
+[!INCLUDE [maps-limits](../includes/maps-limits.md)]
+
+### <a name="azure-policy-limits"></a>Azure Policy の制限
+[!INCLUDE [policy-limits](../includes/azure-policy-limits.md)]
+
 ### <a name="storsimple-system-limits"></a>StorSimple システムの制限
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
 
@@ -289,6 +316,9 @@ Azure Cosmos DB は世界規模のデータベースであり、アプリケー�
 
 ### <a name="backup-limits"></a>Backup の制限
 [!INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
+
+### <a name="signalr-service-limits"></a>SignalR Service の制限
+[!INCLUDE [signalr-service-limits](../includes/signalr-service-limits.md)]
 
 ### <a name="site-recovery-limits"></a>Site Recovery の制限
 [!INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]
@@ -311,8 +341,14 @@ Azure Cosmos DB は世界規模のデータベースであり、アプリケー�
 ### <a name="automation-limits"></a>Automation の制限
 [!INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
 
+### <a name="managed-identity-limits"></a>Managed Identity の制限
+[!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
+
+### <a name="role-based-access-control-limits"></a>ロール ベースのアクセス制御の制限
+[!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
+
 ### <a name="sql-database-limits"></a>SQL Database の制限
-SQL Database の制限については、「 [SQL Database のリソース制限](sql-database/sql-database-resource-limits.md)」を参照してください。
+SQL データベースの制限については、「[SQL Database Resource Limits for single databases](sql-database/sql-database-vcore-resource-limits-single-databases.md)」 (単一データベースの SQL Database のリソース制限) および「[SQL Database Resource Limits for elastic pools and pooled databases](sql-database/sql-database-vcore-resource-limits-elastic-pools.md)」(エラスティック プールとプールされているデータベースの SQL Database のリソース制限) を参照してください。
 
 ### <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse の制限
 SQL Data Warehouse の制限については、[SQL Data Warehouse のリソース制限](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)に関する記事を参照してください。

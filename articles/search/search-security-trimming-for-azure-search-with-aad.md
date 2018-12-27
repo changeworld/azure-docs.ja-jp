@@ -1,18 +1,19 @@
 ---
-title: "Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター | Microsoft Docs"
-description: "セキュリティ フィルターと Active Directory ID を使用した Azure Search コンテンツに対するアクセス制御。"
-services: search
+title: Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター | Microsoft Docs
+description: セキュリティ フィルターと Active Directory ID を使用した Azure Search コンテンツに対するアクセス制御。
 author: revitalbarletz
 manager: jlembicz
+services: search
 ms.service: search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 2113b59d6fec15067acbef8b4d4c1fc34c141e62
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: b134bc2529bf11557ddb1778b87f127db8da650c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684639"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 12/15/2017
 - グループ識別子フィルターでの検索要求を発行します
 
 >[!NOTE]
-> この記事のサンプル コード スニペットは、C# で書かれています。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 
+> この記事のサンプル コード スニペットは、C# で書かれています。 [GitHub](https://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +63,7 @@ Microsoft Graph に用意されている API では、REST API を使ってプ�
 
 特に大規模な組織では、ユーザーとグループ メンバーシップが頻繁に変更される場合があります。 ユーザーとグループの ID を作成するコードは、組織のメンバーシップの変更を反映するのに十分な頻度で実行する必要があります。 また、Azure Search インデックスについても、許可されたユーザーとリソースの現在の状態を反映するために同様の更新スケジュールが必要です。
 
-### <a name="step-1-create-aad-grouphttpsdevelopermicrosoftcomgraphdocsapi-referencev10apigrouppostgroups"></a>ステップ 1: [AAD グループ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/group_post_groups)を作成する 
+### <a name="step-1-create-aad-grouphttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apigrouppostgroups"></a>ステップ 1: [AAD グループ](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/group_post_groups)を作成する 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -76,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomgraphdocsapi-referencev10apiuserpostusers"></a>ステップ 2: [AAD ユーザー](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_post_users)を作成する 
+### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apiuserpostusers"></a>ステップ 2: [AAD ユーザー](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users)を作成する 
 ```csharp
 User user = new User()
 {
@@ -97,7 +98,7 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>ステップ 4: グループ識別子をキャッシュする
-ネットワークの待機時間を減らす必要がある場合は、ユーザーとグループの関連付けをキャッシュして、発行された検索要求に対し、AAD にラウンドトリップするのではなく、キャッシュからグループを返すことができます。 (AAD Batch API)[https://developer.microsoft.com/graph/docs/concepts/json_batching] を使って、複数のユーザーを含む単一の HTTP 要求を送信し、キャッシュを作成することができます。
+ネットワークの待機時間を減らす必要がある場合は、ユーザーとグループの関連付けをキャッシュして、発行された検索要求に対し、AAD にラウンドトリップするのではなく、キャッシュからグループを返すことができます。 [AAD Batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) を使用して、複数のユーザーを含む単一の HTTP 要求を送信し、キャッシュを作成することができます。
 
 Microsoft Graph は、大量の要求を処理できるように設計されています。 ただし、処理できないほど多数の要求が発生すると、Microsoft Graph は HTTP 状態コード 429 で要求を失敗させます。 詳しくは、「[Microsoft Graph 調整ガイド](https://developer.microsoft.com/graph/docs/concepts/throttling)」をご覧ください。
 
@@ -137,7 +138,7 @@ _indexClient.Documents.Index(batch);
 
 ### <a name="step-1-retrieve-users-group-identifiers"></a>ステップ 1: ユーザーのグループ識別子を取得する
 
-ユーザーのグループがまだキャッシュされていない場合、またはキャッシュの有効期限を過ぎている場合は、[groups](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/directoryobject_getmembergroups) 要求を発行します。
+ユーザーのグループがまだキャッシュされていない場合、またはキャッシュの有効期限を過ぎている場合は、[groups](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/directoryobject_getmembergroups) 要求を発行します。
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {

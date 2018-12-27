@@ -2,20 +2,25 @@
 title: Split-Merge サービスのデプロイ | Microsoft Docs
 description: split-merge ツールを使用して、シャード化されたデータベース間でデータを移動します。
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: scale-out
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 90f758bf5bc979dc4bc173b08dadaceeaa077317
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 12/04/2018
+ms.openlocfilehash: e8a849fdc6674a0c6ab801bd8f26a01f89fb8857
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969585"
 ---
-# <a name="deploy-a-split-merge-service"></a>split-merge サービスのデプロイ
+# <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
+
 split-merge ツールを使用すると、シャード化されたデータベース間でデータを移動できます。 「 [スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)
 
 ## <a name="download-the-split-merge-packages"></a>分割-結合パッケージのダウンロード
@@ -31,10 +36,8 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 ## <a name="prerequisites"></a>前提条件
 1. Split-Merge ステータス データベースとして使用する Azure SQL DB を作成します。 [Azure ポータル](https://portal.azure.com)にアクセスします。 新しい **SQL Database**を作成します。 データベースに名前を付けて、新しい管理者とパスワードを作成します。 今後の使用のために、パスワードと名前を必ず記録しておいてください。
 2. Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。 ポータルの **[ファイアウォール設定]** で、**[Azure サービスへのアクセスを許可する]** 設定が **[オン]** に設定されていることを確認してください。 [保存] アイコンをクリックします。
-   
-   ![使用できるサービス][1]
-3. 診断の出力に使用する Azure Storage アカウントを作成します。 Azure Portal にアクセスします。 左側のバーで、**[リソースの作成]** をクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。
-4. Split-Merge サービスが含まれる Azure クラウド サービスを作成します。  Azure Portal にアクセスします。 左側のバーで、**[リソースの作成]** をクリックした後に、**[Compute]**、**[クラウド サービス]**、**[作成]** の順にクリックします。 
+3. 診断の出力用の Azure Storage アカウントを作成します。
+4. Split-Merge サービス用の Azure クラウド サービスを作成します。
 
 ## <a name="configure-your-split-merge-service"></a>Split-Merge サービスの構成
 ### <a name="split-merge-service-configuration"></a>Split-Merge サービスの構成
@@ -60,13 +63,13 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 このチュートリアルの簡単なテスト デプロイのため、最小限の構成の手順セットを行ってサービスを起動および実行します。 以下の手順では、サービスを実行する 1 つのコンピューター/アカウントのみがサービスと通信できます。
 
 ### <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
-新しいディレクトリを作成し、そのディレクトリから [[Visual Studio 開発者コマンド プロンプト]](http://msdn.microsoft.com/library/ms229859.aspx) ウィンドウを使用して次のコマンドを実行します。
+新しいディレクトリを作成し、そのディレクトリから [[Visual Studio 開発者コマンド プロンプト]](https://msdn.microsoft.com/library/ms229859.aspx) ウィンドウを使用して次のコマンドを実行します。
 
    ```
     makecert ^
     -n "CN=*.cloudapp.net" ^
     -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1,1.3.6.1.5.5.7.3.2" ^
-    -a sha1 -len 2048 ^
+    -a sha256 -len 2048 ^
     -sr currentuser -ss root ^
     -sv MyCert.pvk MyCert.cer
    ```
@@ -81,14 +84,14 @@ makecert を実行した同じウィンドウから次のコマンドを実行�
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>個人用ストアへのクライアント証明書のインポート
 1. Windows エクスプローラーで、 **MyCert.pfx**をダブルクリックします。
 2. **証明書のインポート ウィザード**で **[現在のユーザー]** を選択し、**[次へ]** をクリックします。
-3. ファイルのパスを確認し、 **[次へ]**をクリックします。
+3. ファイルのパスを確認し、 **[次へ]** をクリックします。
 4. パスワードを入力します。**[すべての拡張プロパティを含める]** はオンのままにして **[次へ]** をクリックします。
 5. **[自動的に証明書ストアを選択する]** をオンのままにして、**[次へ]** をクリックします。
 6. **[完了]**、**[OK]** の順にクリックします。
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>クラウド サービスへの PFX ファイルのアップロード
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-2. **[クラウド サービス]**を選択します。
+2. **[クラウド サービス]** を選択します。
 3. 分割/結合サービス用に上で作成したクラウド サービスを選択します。
 4. 上部メニューで **[証明書]** をクリックします。
 5. 下部のバーで **[アップロード]** をクリックします。
@@ -117,17 +120,14 @@ Web ロール:
 運用デプロイメントでは、CA、暗号化、サーバー証明書、クライアント証明書のそれぞれに異なる証明書を使用する必要があることに注意してください。 この詳細な手順については、 [セキュリティの構成](sql-database-elastic-scale-split-merge-security-configuration.md)に関するページを参照してください。
 
 ## <a name="deploy-your-service"></a>サービスのデプロイ
-1. [Azure ポータル](https://manage.windowsazure.com)にアクセスします。
-2. 左側の **[クラウド サービス]** タブをクリックし、先ほど作成したクラウド サービスを選択します。
-3. **[ダッシュボード]**をクリックします。
-4. ステージング環境を選択し、 **[新しいステージング環境のデプロイをアップロードします]**をクリックします。
-   
-   ![ステージング][3]
+1. [Azure portal](https://portal.azure.com) に移動します
+2. 前に作成したクラウド サービスを選択します。
+3. **[Overview]** をクリックします。
+4. ステージング環境を選択し、**[アップロード]** をクリックします。
 5. ダイアログ ボックスにデプロイ ラベルを入力します。 [パッケージ] と [構成] の両方で [ローカルから] をクリックし、**SplitMergeService.cspkg** ファイルと、先ほど構成した cscfg ファイルを選択します。
 6. **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします。]** チェック ボックスがオンになっていることを確認します。
 7. 右下のチェック マークをクリックしてデプロイを開始します。 完了には数分かかります。
 
-   ![アップロード][4]
 
 ## <a name="troubleshoot-the-deployment"></a>デプロイのトラブルシューティング
 Web ロールのオンライン化に失敗した場合は、セキュリティの構成に問題があると考えられます。 SSL が前の説明どおりに構成されていることをご確認ください。
@@ -143,11 +143,11 @@ worker ロールのオンライン化に失敗した場合に最も考えられ�
    ```
 
 * サーバー名が **https://** で始まっていないことを確認します。
-* Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。 これを行うには、https://manage.windowsazure.com を開いて左側の [SQL Database] をクリックし、上部の [サーバー] をクリックしてから使用するサーバーを選択します。 上部の **[構成]** をクリックし、**[Azure サービス]** の値が [はい] に設定されていることを確認します (この記事の冒頭にある前提条件をご覧ください)。
+* Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。 これを行うには、ポータルでご自身のデータベースを開き、**[Azure サービスへのアクセスを許可する]** 設定が [**オン** **] に設定されていることを確認してください。
 
 ## <a name="test-the-service-deployment"></a>サービス デプロイのテスト
 ### <a name="connect-with-a-web-browser"></a>Web ブラウザーへの接続
-Split-Merge サービスの Web エンドポイントを決定します。 エンドポイントを見つけるには、Azure クラシック ポータルでクラウド サービスの **[ダッシュボード]** に移動し、右側の **[サイトの URL]** を検索します。 既定のセキュリティ設定では HTTP エンドポイントは無効であるため、**http://** を **https://** に置き換えます。 この URL のページをブラウザーに読み込みます。
+Split-Merge サービスの Web エンドポイントを決定します。 これをポータルで見つけるには、クラウド サービスの **[概要]** に移動し、右側の **[サイトの URL]** を検索します。 既定のセキュリティ設定では HTTP エンドポイントは無効であるため、**http://** を **https://** に置き換えます。 この URL のページをブラウザーに読み込みます。
 
 ### <a name="test-with-powershell-scripts"></a>PowerShell スクリプトでのテスト
 付属の PowerShell スクリプト サンプルを実行して、デプロイメントと環境をテストできます。

@@ -1,25 +1,21 @@
 ---
-title: "Azure Logic Apps による IoT リモート監視と通知 | Microsoft Docs"
-description: "IoT Hub の IoT 温度の監視と、検出された異常に関するメール通知の自動送信には、Azure Logic Apps を使用します。"
-services: iot-hub
-documentationcenter: 
-author: shizn
-manager: timlt
-tags: 
-keywords: "IoT の監視、IoT の通知、IoT の温度の監視"
-ms.assetid: 43043067-2e1f-42c9-953d-e2dce8fd86df
+title: Azure Logic Apps による IoT リモート監視と通知 | Microsoft Docs
+description: IoT Hub の IoT 温度の監視と、検出された異常に関するメール通知の自動送信には、Azure Logic Apps を使用します。
+author: rangv
+manager: ''
+keywords: IoT の監視、IoT の通知、IoT の温度の監視
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/25/2017
-ms.author: xshi
-ms.openlocfilehash: 0caa3397723f9cd0476e85d52a8d30ae283b6e47
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
+ms.author: rangv
+ms.openlocfilehash: adda4e948c11f84517b1e8dd01e6cfe42155e1ca
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409443"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
 
@@ -135,7 +131,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 1. **[Service Bus - 1 つ以上のメッセージがキューに届いたとき (オートコンプリート)]** をクリックします。
 1. Service Bus の接続を作成します。
    1. 接続名を入力します。
-   1. Service Bus 名前空間 > Service Bus ポリシー > **作成** をクリックします。
+   1. Service Bus 名前空間] > Service Bus ポリシー] > **[作成]** をクリックします。
 
       ![Azure Portal でロジック アプリ用の Service Bus 接続を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7_create-service-bus-connection-in-logic-app-azure-portal.png)
 
@@ -155,7 +151,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 
       ![Azure Portal でロジック アプリの SMTP 接続情報を入力する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/10_enter-smtp-connection-info-logic-app-azure-portal.png)
 
-      [Hotmail/Outlook.com](https://support.office.com/en-us/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970)、[Gmail](https://support.google.com/a/answer/176600?hl=en)、[Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html) の SMTP 情報を入手します。
+      [Hotmail/Outlook.com](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970)、[Gmail](https://support.google.com/a/answer/176600?hl=en)、[Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html) の SMTP 情報を入手します。
    1. **[差出人]** と **[宛先]** にメール アドレス、**[件名]** と **[本文]** に `High temperature detected` を入力します。
    1. **[Save]** をクリックします。
 

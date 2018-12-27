@@ -9,16 +9,17 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 03/20/2018
-ms.openlocfilehash: c1acb568598184974b65d666075032e74aa49eb3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 11/01/2018
+ms.openlocfilehash: 5cb51a412738c2361bbe30ecd1415f81c3f85c9c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959037"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>クイック スタート: Azure Portal での Azure Database for PostgreSQL サーバーの作成
 
-Azure Database for PostgreSQL は、高可用性の PostgreSQL データベースをクラウドで実行、管理、スケールできるマネージ サービスです。 このクイック スタートでは、Azure Portal を使用して Azure Database for PostgreSQL サーバーを作成する方法について説明します。所要時間は約 5 分です。
+Azure Database for PostgreSQL は、高可用性の PostgreSQL データベースをクラウドで実行、管理、スケールできるマネージド サービスです。 このクイック スタートでは、Azure Portal を使用して Azure Database for PostgreSQL サーバーを作成する方法について説明します。所要時間は約 5 分です。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
@@ -40,16 +41,16 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
     ![サーバーの作成](./media/quickstart-create-database-portal/3-create.png)
 
-    Setting|推奨値|[説明]
+    Setting|推奨値|説明
     ---|---|---
     サーバー名 |*mydemoserver*|Azure Database for PostgreSQL サーバーを識別する一意の名前。 指定したサーバー名にドメイン名 *postgres.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 3 文字以上 63 文字以内にする必要があります。
-    [サブスクリプション]|お使いのサブスクリプション名|サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
+    サブスクリプション|お使いのサブスクリプション名|サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     リソース グループ|*myresourcegroup*| 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。
     ソースの選択 | "*空白*" | *[空白]* を選択し、最初から新しいサーバーを作成します  (既存の Azure Database for PostgreSQL サーバーの geo バックアップからサーバーを作成している場合は、*[Backup]* を選択します)。
     サーバー管理者のログイン |*myadmin*| サーバーに接続するときに使用する独自のログイン アカウント。 管理者のログイン名に **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest**、または **public** は使用できません。 **pg_** で始めることはできません。
     パスワード |お使いのパスワード| サーバー管理者アカウントの新しいパスワード。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 種類の文字が含まれている必要があります。
-    場所|ユーザーに最も近いリージョン| ユーザーに最も近い場所。
-    バージョン|最新バージョン| 特別な要件がない限り、最新 PostgreSQL バージョン。
+    Location|ユーザーに最も近いリージョン| ユーザーに最も近い場所。
+    Version|最新のメジャー バージョン| 他の特定の要件がない場合は、最新の PostgreSQL メジャー バージョン。
     [価格レベル]  | **汎用**、**Gen 4**、**2 仮想コア**、**5 GB**、**7 日**、**地理冗長** | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[価格レベル]** を選択します。 次に、**[汎用]** タブを選択します。*Gen 4*、"*2 仮想コア*"、*5 GB*、および "*7 日*" は、それぞれ **[コンピューティング世代]**、**[仮想コア]**、**[ストレージ]**、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、**[バックアップ冗長オプション]** から **[地理冗長]** を選択します。 この価格レベルの選択を保存するには、**[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
 
     > [!IMPORTANT]
@@ -63,7 +64,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
     ![[通知] ウィンドウ](./media/quickstart-create-database-portal/3-notifications.png)
    
-  既定では、**postgres** データベースがサーバーに作成されます。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) は既定のデータベースで、ユーザー、ユーティリティ、サード パーティ製のアプリケーションが使用するためのものです。 
+   既定では、**postgres** データベースがサーバーに作成されます。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) は既定のデータベースで、ユーザー、ユーティリティ、サード パーティ製のアプリケーションが使用するためのものです。 (その他の既定のデータベースは **azure_maintenance** です。 その機能は、管理されたサービス プロセスをユーザーのアクションから分離することです。 このデータベースにはアクセスできません。)
 
 ## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成
 
@@ -77,13 +78,10 @@ Azure Database for PostgreSQL は、サーバー レベルでファイアウォ�
 
 3. **[ファイアウォール規則]** で、**[規則名]** 列の空白のテキスト ボックス内を選択し、ファイアウォール規則の作成を開始します。 
 
-    このクイック スタートでは、サーバーに対してすべての IP アドレスを許可してみましょう。 各列のテキスト ボックスに次の値を入力します。
+   テキスト ボックスに、サーバーにアクセスする予定のクライアントの、名前と開始および終了の IP 範囲を入力します。 1 つの IP の場合は、開始 IP と終了 IP に同じ値を使用します。
 
-    規則の名前 | 開始 IP | 終了 IP 
-    ---|---|---
-    AllowAllIps | 0.0.0.0 | 255.255.255.255
-
-     ![ファイアウォール規則の設定](./media/quickstart-create-database-portal/5-firewall-2.png)
+   ![ファイアウォール規則の設定](./media/quickstart-create-database-portal/5-firewall-2.png)
+     
 
 4. **[接続のセキュリティ]** ページの上部のツール バーで、**[保存]** を選択します。 接続のセキュリティの更新が正常に完了したことを示す通知が表示されるまで待ってから、次に進んでください。
 
@@ -99,21 +97,13 @@ Azure Database for PostgreSQL サーバーを作成したときに、**postgres*
 
  ![サーバーの [概要] ページ](./media/quickstart-create-database-portal/6-server-name.png)
 
-## <a name="connect-to-the-postgresql-database-by-using-psql-in-cloud-shell"></a>Cloud Shell で psql を使用して PostgreSQL データベースに接続する
+## <a name="connect-to-the-postgresql-database-using-psql"></a>psql を使用した PostgreSQL データベースへの接続
 
-Azure Database for PostgreSQL サーバーに接続するために使用できる、多くのアプリケーションがあります。 まず、サーバーに接続する方法を示すために、psql コマンド ライン ユーティリティを使用してみましょう。 追加のソフトウェアをインストールしなくても、ここで説明するように、Web ブラウザーと Azure Cloud Shell を使用できます。 自分のマシンに psql ユーティリティがローカルにインストールしてある場合は、そこからも接続できます。
+Azure Database for PostgreSQL サーバーに接続するために使用できる、多くのアプリケーションがあります。 クライアント コンピューターに PostgreSQL がインストールされている場合は、[psql](https://www.postgresql.org/docs/current/static/app-psql.html) のローカル インスタンスを使用して Azure PostgreSQL サーバーに接続できます。 ここでは psql コマンド ライン ユーティリティを使用して、Azure PostgreSQL サーバーに接続しましょう。
 
-1. 上部のナビゲーション ウィンドウで、Cloud Shell を開くターミナル シンボルを選択します。
+1. シェルで psql コマンド ラインを入力して、Azure Database for PostgreSQL サーバーのデータベースに接続します。
 
-   ![Azure Cloud Shell のターミナル シンボル](./media/quickstart-create-database-portal/7-cloud-console.png)
-
-2. ブラウザーで Cloud Shell を開き、Bash シェル コマンドを入力できます。
-
-   ![Cloud Shell の Bash プロンプト](./media/quickstart-create-database-portal/8-bash.png)
-
-3. Cloud Shell プロンプトで psql コマンド ラインを入力して、Azure Database for PostgreSQL サーバーのデータベースに接続します。
-
-    [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) ユーティリティで Azure Database for PostgreSQL サーバーに接続するには、次の形式を使用します。
+    [psql](https://www.postgresql.org/docs/current/static/app-psql.html) ユーティリティで Azure Database for PostgreSQL サーバーに接続するには、次の形式を使用します。
     ```bash
     psql --host=<yourserver> --port=<port> --username=<server admin login> --dbname=<database name>
     ```
@@ -124,20 +114,20 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
     psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
     ```
 
-    psql パラメーター |値|[説明]
+    psql パラメーター |値|説明
     ---|---|---
-    --host | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
+    --host | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     --port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
     --username | サーバー管理者ログイン名 |前の手順で Azure Database for PostgreSQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username@servername* です。
     --dbname | *postgres* | 初回接続時にシステムによって生成される既定のデータベース名。 後で独自のデータベースを作成します。
 
     独自のパラメーター値で psql コマンドを実行した後、サーバー管理者パスワードの入力を求めるメッセージが表示されます。 これは、サーバーの作成時に指定したのと同じパスワードです。 
 
-    psql パラメーター |推奨値|[説明]
+    psql パラメーター |推奨値|説明
     ---|---|---
     password | 管理者パスワード | 入力したパスワードの文字は bash プロンプトには表示されません。 認証して接続するには、すべての文字を入力してから Enter キーを押します。
 
-    接続されると、sql コマンドの入力を求める postgres プロンプトが psql ユーティリティによって表示されます。 初回接続時の出力には、Cloud Shell の psql のバージョンが Azure Database for PostgreSQL サーバー側のバージョンと異なることが原因で、警告が表示されることがあります。 
+    接続されると、sql コマンドの入力を求める postgres プロンプトが psql ユーティリティによって表示されます。 初回接続時の出力には、使用している psql のバージョンが Azure Database for PostgreSQL サーバー側のバージョンと異なることが原因で、警告が表示されることがあります。 
     
     psql の出力例: 
     ```bash
@@ -151,30 +141,30 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
     ```
 
     > [!TIP]
-    > Cloud Shell の IP アドレスを許可するようにファイアウォールが構成されていない場合、次のエラーが発生します。
+    > クライアントの IP アドレスを許可するようにファイアウォールが構成されていない場合、次のエラーが発生します。
     > 
-    > "psql: FATAL:  no pg_hba.conf entry for host "0.0.0.0", user "mylogin", database "postgres", SSL on FATAL: SSL connection is required. ("psql: 致命的:  ホスト "0.0.0.0"、ユーザー "mylogin"、データベース "postgres" のエントリが pg_hba.conf にありません。SSL オン 致命的: SSL 接続が必要です。) Specify SSL options and retry. (SSL のオプションを指定して再試行してください。)
+    > "psql: FATAL:  no pg_hba.conf entry for host "<IP address>", user "myadmin", database "postgres", SSL on FATAL: SSL connection is required. ("psql: 致命的:  ホスト "<IP アドレス>"、ユーザー "myadmin"、データベース "postgres" のエントリが pg_hba.conf にありません。SSL オン 致命的: SSL 接続が必要です。) Specify SSL options and retry. (SSL のオプションを指定して再試行してください。)
     > 
     > エラーを解決するには、サーバーの構成がこの記事の「サーバーレベルのファイアウォール規則の構成」セクションの手順と一致していることを確認してください。
 
-4. プロンプトで次のコマンドを入力して、"mypgsqldb" という空のデータベースを作成します。
+2. プロンプトで次のコマンドを入力して、"mypgsqldb" という空のデータベースを作成します。
     ```bash
     CREATE DATABASE mypgsqldb;
     ```
     このコマンドが完了するまで数分かかることがあります。 
 
-5. プロンプトで次のコマンドを実行し、新しく作成したデータベース **mypgsqldb** に接続を切り替えます。
+3. プロンプトで次のコマンドを実行し、新しく作成したデータベース **mypgsqldb** に接続を切り替えます。
     ```bash
     \c mypgsqldb
     ```
 
-6. 「`\q`」を入力し、Enter キーを押して、psql を終了します。 完了したら Cloud Shell を閉じることができます。
+4. 「`\q`」を入力し、Enter キーを押して、psql を終了します。 
 
-Cloud Shell で psql を介して Azure Database for PostgreSQL サーバーに接続し、空のユーザー データベースを作成しました。 他の一般的なツールである pgAdmin を使用して接続するには、次のセクションに進みます。
+psql を介して Azure Database for PostgreSQL サーバーに接続し、空のユーザー データベースを作成しました。 他の一般的なツールである pgAdmin を使用して接続するには、次のセクションに進みます。
 
 ## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>pgAdmin を使用して PostgreSQL サーバーに接続する
 
-pgAdmin は PostgreSQL で使用されるオープンソース ツールです。 [pgAdmin の Web サイト](http://www.pgadmin.org/)からインストールできます。 使用する pgAdmin のバージョンは、このクイック スタートで使用されているものと異なる可能性があります。 追加のガイダンスが必要な場合は、pgAdmin のドキュメントをご覧ください。
+pgAdmin は PostgreSQL で使用されるオープンソース ツールです。 [pgAdmin の Web サイト](https://www.pgadmin.org/)からインストールできます。 使用する pgAdmin のバージョンは、このクイック スタートで使用されているものと異なる可能性があります。 追加のガイダンスが必要な場合は、pgAdmin のドキュメントをご覧ください。
 
 1. クライアント コンピューターで pgAdmin アプリケーションを開きます。
 
@@ -188,14 +178,14 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 
    ![[接続] タブ](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
 
-    pgAdmin パラメーター |値|[説明]
+    pgAdmin パラメーター |値|説明
     ---|---|---
-    ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
+    ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     ポート | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
     メンテナンス データベース | *postgres* | システムによって生成される既定のデータベース名。
     ユーザー名 | サーバー管理者ログイン名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username@servername* です。
     パスワード | 管理者パスワード | このクイック スタートでサーバーを作成したときに選択したパスワードです。
-    役割 | 空白 | この時点でロール名を指定する必要はありません。 このフィールドは空白にしてください。
+    Role | 空白 | この時点でロール名を指定する必要はありません。 このフィールドは空白にしてください。
     SSL モード | "*必須*" | pgAdmin の [SSL] タブで、SSL モードを設定できます。既定では、すべての Azure Database for PostgreSQL サーバーは SSL の強制がオンの状態で作成されます。 SSL の強制をオフにする方法については、[SSL の強制](./concepts-ssl-connection-security.md)に関する記事をご覧ください。
     
 5. **[保存]** を選択します。
@@ -226,7 +216,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 新しく作成したサーバーを含むリソース グループ全体を削除する手順は次のとおりです。
 1. ポータルで目的のリソース グループを探します。 左側のメニューで **[リソース グループ]** を選択します。 次に、リソース グループ名 (例に示した **myresourcegroup** など) を選択します。
 
-2. リソース グループ ページで **[削除]** を選択します。 リソース グループ名 (例に示した **myresourcegroup** など) をテキスト ボックスに入力して、削除の確認を行います。 **[削除]**を選択します。
+2. リソース グループ ページで **[削除]** を選択します。 リソース グループ名 (例に示した **myresourcegroup** など) をテキスト ボックスに入力して、削除の確認を行います。 **[削除]** を選択します。
 
 新しく作成したサーバーを削除するには、次の手順に従います。
 1. ポータルで目的のサーバーを探します (サーバーをまだ開いていない場合)。 左側のメニューで **[すべてのリソース]** を選択します。 次に、作成したサーバーを検索します。
@@ -235,7 +225,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 
     ![[削除] ボタン](./media/quickstart-create-database-portal/12-delete.png)
 
-3. 削除するサーバーの名前を確認し、影響を受けるデータベースをその下に表示します。 テキスト ボックスにサーバー名 (例に示した **mydemoserver** など) を入力します。 **[削除]**を選択します。
+3. 削除するサーバーの名前を確認し、影響を受けるデータベースをその下に表示します。 テキスト ボックスにサーバー名 (例に示した **mydemoserver** など) を入力します。 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]

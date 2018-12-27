@@ -3,53 +3,63 @@ title: Azure Automation の Hybrid Runbook Worker での Runbook の実行
 description: この記事では、Hybrid Runbook Worker ロールを持つローカル データセンターまたはクラウド プロバイダーのコンピューターでの Runbook の実行について説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
-ms.topic: article
+ms.date: 07/17/2018
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d635938558a5c2bf68e7c20c287b16c672bdf962
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 48dcc558d4855874df02ad5c631211f16fd8c29e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024989"
 ---
-# <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行 
+# <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
+
 Azure Automation で実行される Runbook と、Hybrid Runbook Worker で実行される Runbook の構造に違いはありません。 Hybrid Runbook Worker をターゲットとする Runbook は通常ローカル コンピューター自体のリソースまたはデプロイされているローカル環境内のリソースを管理しますが、Azure Automation の Runbook は通常 Azure クラウド内のリソースを管理するため、ほとんどの場合、それぞれで使用する Runbook は大きく異なります。
 
-Azure Automation で Hybrid Runbook Worker 用に Runbook を編集することはできますが、エディターで Runbook のテストを試行する場合は困難な場合があります。  ローカル リソースにアクセスする PowerShell モジュールを Azure Automation 環境にインストールできない場合があります。その場合、テストは失敗します。  必要なモジュールをインストールすれば、Runbook は実行されますが、ローカル リソースにアクセスして完全なテストを行うことはできません。
+Hybrid Runbook Worker で実行する Runbook を作成するときは、ハイブリッド worker をホストしているマシンで Runbook を編集し、テストする必要があります。 ホスト マシンには、ローカル リソースの管理とアクセスのために必要となる、すべての PowerShell モジュールとネットワーク アクセスがあります。 ハイブリッド worker マシンで Runbook を編集し、テストすると、ハイブリッド worker で実行するために使用できる Azure Automation 環境に Runbook をアップロードできるようになります。 Windows のローカル システム アカウント、または Linux の特殊なユーザー アカウント **nxautomation** でジョブを実行すると、細かな差異が生じる可能性があります。Hybrid Runbook Worker 用の Runbook を作成するときは、このことを考慮する必要があります。
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の開始
-[Azure Automation での Runbook の開始](automation-starting-a-runbook.md) 」では、Runbook を開始するためのさまざまな方法を説明しています。  Hybrid Runbook Worker は、Hybrid Runbook Worker グループの名前を指定できる **RunOn** オプションを追加します。  グループが指定されている場合は、Runbook が取得され、そのグループ内のいずれかの worker によって実行されます。  このオプションが指定されていない場合は、Azure Automation で通常どおり実行されます。
 
-Azure Portal で Runbook を開始する際に、**Azure** または**ハイブリッド worker** を選択できる **[実行場所を選択して実行]** オプションが表示されます。  **Hybrid Worker**を選択した場合は、ドロップダウン リストからグループを選択できます。
+[Azure Automation での Runbook の開始](automation-starting-a-runbook.md) 」では、Runbook を開始するためのさまざまな方法を説明しています。 Hybrid Runbook Worker は、Hybrid Runbook Worker グループの名前を指定できる **RunOn** オプションを追加します。 グループが指定されている場合は、Runbook が取得され、そのグループ内のいずれかの worker によって実行されます。 このオプションが指定されていない場合は、Azure Automation で通常どおり実行されます。
 
-**RunOn** パラメーターを使用します。  次のコマンドを使用し、Windows PowerShell を使用して MyHybridGroup という名前の Hybrid Runbook Worker グループで Test-Runbook という名前の Runbook を開始できます。
+Azure Portal で Runbook を開始する際に、**Azure** または**ハイブリッド worker** を選択できる **[実行場所を選択して実行]** オプションが表示されます。 **Hybrid Worker**を選択した場合は、ドロップダウン リストからグループを選択できます。
 
-    Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
+**RunOn** パラメーターを使用します。 次のコマンドを使用し、Windows PowerShell を使用して MyHybridGroup という名前の Hybrid Runbook Worker グループで Test-Runbook という名前の Runbook を開始できます。
+
+```azurepowershell-interactive
+Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
+```
 
 > [!NOTE]
-> The **RunOn** parameter was added to the **Start-AzureAutomationRunbook** cmdlet in version 0.9.1 of Microsoft Azure PowerShell.  以前のバージョンがインストールされている場合は、 [最新バージョンをダウンロード](https://azure.microsoft.com/downloads/) する必要があります。  Windows PowerShell から Runbook を開始するワークステーションでは、このバージョンをインストールするだけです。  ワーカー コンピューターから Runbook を開始する場合を除き、そのコンピューターにインストールする必要はありません。  Automation アカウントに最新バージョンの Azure Powershell をインストールする必要があるため、現時点ではある Runbook を別の Runbook の Hybrid Runbook Worker で開始することはできません。  最新バージョンは Azure Automation で自動的に更新され、自動的にワーカーにすぐにプッシュダウンされます。
->
->
+> The **RunOn** parameter was added to the **Start-AzureAutomationRunbook** cmdlet in version 0.9.1 of Microsoft Azure PowerShell. 以前のバージョンがインストールされている場合は、 [最新バージョンをダウンロード](https://azure.microsoft.com/downloads/) する必要があります。 PowerShell から Runbook を開始するワークステーションでは、このバージョンをインストールするだけです。 ワーカー コンピューターから Runbook を開始する場合を除き、そのコンピューターにインストールする必要はありません。
 
 ## <a name="runbook-permissions"></a>Runbook のアクセス許可
-Hybrid Runbook Worker で実行されている Runbook は Azure 外部のリソースにアクセスするため、Azure のリソースへの認証に Runbook で通常使用される方法と同じものを使用することはできません。  Runbook にローカル リソースに対して独自の認証機能を用意するか、すべての Runbook にユーザー コンテキストを提供する RunAs アカウントを指定することができます。
+
+Hybrid Runbook Worker で実行されている Runbook は Azure 外部のリソースにアクセスするため、Azure のリソースへの認証に Runbook で通常使用される方法と同じものを使用することはできません。 Runbook では、ローカル リソースに対する独自の認証を提供すること、[Azure リソースのマネージド ID ](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
+)を使用して認証を構成すること、またはすべての Runbook にユーザー コンテキストを提供する RunAs アカウントを指定することができます。
 
 ### <a name="runbook-authentication"></a>Runbook の認証
-既定で、Runbook はオンプレミス コンピューターのローカル システム アカウントのコンテキストで実行されるため、アクセスするリソースを独自に認証する必要があります。  
 
-資格情報を指定できるコマンドレットで Runbook の[資格情報](http://msdn.microsoft.com/library/dn940015.aspx)資産と[証明書](http://msdn.microsoft.com/library/dn940013.aspx)資産を使用することで、さまざまなリソースへの認証が可能になります。  次の例は、コンピューターを再起動する Runbook の一部を示しています。  資格情報資産から資格情報を取得し、変数資産からはコンピューター名を取得して、Restart-Computer コマンドレットでこれらの値を使用します。
+既定で、Runbook はオンプレミス コンピューターの Windows のローカル システム アカウントおよび Linux の特殊なユーザー アカウント **nxautomation** のコンテキストで実行されるため、アクセスするリソースを独自に認証する必要があります。
 
-    $Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -Name "MyCredential"
-    $Computer = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" -Name  "ComputerName"
+資格情報を指定できるコマンドレットで Runbook の[資格情報](automation-credentials.md)資産と[証明書](automation-certificates.md)資産を使用することで、さまざまなリソースへの認証が可能になります。 次の例は、コンピューターを再起動する Runbook の一部を示しています。 資格情報資産から資格情報を取得し、変数資産からはコンピューター名を取得して、Restart-Computer コマンドレットでこれらの値を使用します。
 
-    Restart-Computer -ComputerName $Computer -Credential $Cred
+```powershell
+$Cred = Get-AutomationPSCredential -Name "MyCredential"
+$Computer = Get-AutomationVariable -Name "ComputerName"
 
-また、[PSCredential 共通パラメーター](http://technet.microsoft.com/library/jj129719.aspx)で指定された資格情報で別のコンピューター上でコード ブロックを実行できるようにする [InlineScript](automation-powershell-workflow.md#inlinescript) を利用することもできます。
+Restart-Computer -ComputerName $Computer -Credential $Cred
+```
+
+また、[PSCredential 共通パラメーター](/powershell/module/psworkflow/about/about_workflowcommonparameters)で指定された資格情報で別のコンピューター上でコード ブロックを実行できるようにする [InlineScript](automation-powershell-workflow.md#inlinescript) を利用することもできます。
 
 ### <a name="runas-account"></a>RunAs アカウント
-Runbook でローカル リソースへの独自の認証機能を用意するのではなく、ハイブリッド worker グループの **RunAs** アカウントを指定することができます。  ローカル リソースに対するアクセス権を持つ [資格情報資産](automation-credentials.md) を指定すると、グループ内の Hybrid Runbook Worker で Runbook を実行するときに、その資格情報ですべての Runbook が実行されます。  
+
+既定で、Hybrid Runbook Worker は Windows のローカル システムおよび Linux の特殊なユーザー アカウント **nxautomation** を使用して Runbook を実行します。 Runbook でローカル リソースへの独自の認証機能を用意するのではなく、ハイブリッド worker グループの **RunAs** アカウントを指定することができます。 ローカル リソースに対するアクセス権を持つ [資格情報資産](automation-credentials.md) を指定すると、グループ内の Hybrid Runbook Worker で Runbook を実行するときに、その資格情報ですべての Runbook が実行されます。
 
 資格情報のユーザー名は、次の形式にする必要があります。
 
@@ -64,92 +74,184 @@ Runbook でローカル リソースへの独自の認証機能を用意する�
 3. **[ハイブリッド Worker グループ]** タイルを選択し、グループを選択します。
 4. **[すべての設定]**、**[ハイブリッド Worker グループの設定]** の順に選択します。
 5. **[実行者]** を **[既定]** から **[カスタム]** に変更します。
-6. 資格情報を選択し、 **[保存]**をクリックします。
+6. 資格情報を選択し、 **[保存]** をクリックします。
+
+### <a name="managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID
+
+Azure 仮想マシンで実行されている Hybrid Runbook Worker は、Azure リソースに対する認証に Azure リソースのマネージド ID を使用できます。 Azure リソースのマネージド ID を使用することは、実行アカウントと比べて多数の利点があります。
+
+* 実行証明書をエクスポートし、それを Hybrid Runbook Worker にインポートする必要がありません
+* 実行アカウントで使用される証明書を更新する必要がありません
+* Runbook のコードで、Run As Connection オブジェクトを処理する必要がありません
+
+Hybrid Runbook Worker で Azure リソースのマネージド ID を使用するには、次の手順を完了する必要があります。
+
+1. Azure VM の作成
+2. [VM で Azure リソースのマネージド ID を構成します](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
+3. [Resource Manager で VM にリソース グループへのアクセスを許可します](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)
+4. [VM のシステム割り当てマネージド ID を使用してアクセス トークンを取得します](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
+5. 仮想マシンに [Windows Hybrid Runbook Worker をインストールします](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)。
+
+前記の手順が完了したら、Azure リソースに対する認証のために Runbook で `Connect-AzureRmAccount -Identity` を使用できます。 これで、実行アカウントを利用して実行アカウントの証明書を管理する必要が減ります。
+
+```powershell
+# Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
+Connect-AzureRmAccount -Identity
+
+# Get all VM names from the subscription
+Get-AzureRmVm | Select Name
+```
 
 ### <a name="automation-run-as-account"></a>Automation 実行アカウント
-Azure にリソースをデプロイするために自動化されたビルド プロセスの一部として、オンプレミス システムにアクセスして、デプロイ シーケンス内のタスクまたは一連のステップをサポートする必要が生じる場合があります。  実行アカウントを使用した Azure の認証をサポートするには、実行アカウントの証明書をインストールする必要があります。  
 
-次の PowerShell Runbook、*Export-RunAsCertificateToHybridWorker* は、Azure Automation アカウントから実行証明書をエクスポートし、同じアカウントに接続されているハイブリッド worker のローカル マシン証明書ストアにそれをダウンロードおよびインポートします。  このステップが完了すると、worker が実行アカウントを使用して Azure の認証に成功できることが確認されます。
+Azure にリソースをデプロイするために自動化されたビルド プロセスの一部として、オンプレミス システムにアクセスして、デプロイ シーケンス内のタスクまたは一連のステップをサポートする必要が生じる場合があります。 実行アカウントを使用した Azure の認証をサポートするには、実行アカウントの証明書をインストールする必要があります。
 
-    <#PSScriptInfo
-    .VERSION 1.0
-    .GUID 3a796b9a-623d-499d-86c8-c249f10a6986
-    .AUTHOR Azure Automation Team
-    .COMPANYNAME Microsoft
-    .COPYRIGHT 
-    .TAGS Azure Automation 
-    .LICENSEURI 
-    .PROJECTURI 
-    .ICONURI 
-    .EXTERNALMODULEDEPENDENCIES 
-    .REQUIREDSCRIPTS 
-    .EXTERNALSCRIPTDEPENDENCIES 
-    .RELEASENOTES
-    #>
+次の PowerShell Runbook、*Export-RunAsCertificateToHybridWorker* は、Azure Automation アカウントから実行証明書をエクスポートし、同じアカウントに接続されているハイブリッド worker のローカル マシン証明書ストアにそれをダウンロードおよびインポートします。 このステップが完了すると、worker が実行アカウントを使用して Azure の認証に成功できることが確認されます。
 
-    <#  
-    .SYNOPSIS  
-    Exports the Run As certificate from an Azure Automation account to a hybrid worker in that account. 
-  
-    .DESCRIPTION  
-    This runbook exports the Run As certificate from an Azure Automation account to a hybrid worker in that account.
-    Run this runbook in the hybrid worker where you want the certificate installed.
-    This allows the use of the AzureRunAsConnection to authenticate to Azure and manage Azure resources from runbooks running in the hybrid worker.
+```azurepowershell-interactive
+<#PSScriptInfo
+.VERSION 1.0
+.GUID 3a796b9a-623d-499d-86c8-c249f10a6986
+.AUTHOR Azure Automation Team
+.COMPANYNAME Microsoft
+.COPYRIGHT
+.TAGS Azure Automation
+.LICENSEURI
+.PROJECTURI
+.ICONURI
+.EXTERNALMODULEDEPENDENCIES
+.REQUIREDSCRIPTS
+.EXTERNALSCRIPTDEPENDENCIES
+.RELEASENOTES
+#>
 
-    .EXAMPLE
-    .\Export-RunAsCertificateToHybridWorker
+<#
+.SYNOPSIS
+Exports the Run As certificate from an Azure Automation account to a hybrid worker in that account.
 
-    .NOTES
-    AUTHOR: Azure Automation Team 
-    LASTEDIT: 2016.10.13
-    #>
+.DESCRIPTION
+This runbook exports the Run As certificate from an Azure Automation account to a hybrid worker in that account.
+Run this runbook in the hybrid worker where you want the certificate installed.
+This allows the use of the AzureRunAsConnection to authenticate to Azure and manage Azure resources from runbooks running in the hybrid worker.
 
-    [OutputType([string])] 
+.EXAMPLE
+.\Export-RunAsCertificateToHybridWorker
 
-    # Generate the password used for this certificate
-    Add-Type -AssemblyName System.Web -ErrorAction SilentlyContinue | Out-Null
-    $Password = [System.Web.Security.Membership]::GeneratePassword(25, 10)
-    
-    # Stop on errors
-    $ErrorActionPreference = 'stop'
+.NOTES
+AUTHOR: Azure Automation Team
+LASTEDIT: 2016.10.13
+#>
 
-    # Get the management certificate that will be used to make calls into Azure Service Management resources
-    $RunAsCert = Get-AutomationCertificate -Name "AzureRunAsCertificate"
-       
-    # location to store temporary certificate in the Automation service host
-    $CertPath = Join-Path $env:temp  "AzureRunAsCertificate.pfx"
-   
-    # Save the certificate
-    $Cert = $RunAsCert.Export("pfx",$Password)
-    Set-Content -Value $Cert -Path $CertPath -Force -Encoding Byte | Write-Verbose 
+# Generate the password used for this certificate
+Add-Type -AssemblyName System.Web -ErrorAction SilentlyContinue | Out-Null
+$Password = [System.Web.Security.Membership]::GeneratePassword(25, 10)
 
-    Write-Output ("Importing certificate into $env:computername local machine root store from " + $CertPath)
-    $SecurePassword = ConvertTo-SecureString $Password -AsPlainText -Force
-    Import-PfxCertificate -FilePath $CertPath -CertStoreLocation Cert:\LocalMachine\My -Password $SecurePassword -Exportable | Write-Verbose
+# Stop on errors
+$ErrorActionPreference = 'stop'
 
-    # Test that authentication to Azure Resource Manager is working
-    $RunAsConnection = Get-AutomationConnection -Name "AzureRunAsConnection" 
-    
-    Add-AzureRmAccount `
-      -ServicePrincipal `
-      -TenantId $RunAsConnection.TenantId `
-      -ApplicationId $RunAsConnection.ApplicationId `
-      -CertificateThumbprint $RunAsConnection.CertificateThumbprint | Write-Verbose
+# Get the management certificate that will be used to make calls into Azure Service Management resources
+$RunAsCert = Get-AutomationCertificate -Name "AzureRunAsCertificate"
 
-    Set-AzureRmContext -SubscriptionId $RunAsConnection.SubscriptionID | Write-Verbose
+# location to store temporary certificate in the Automation service host
+$CertPath = Join-Path $env:temp  "AzureRunAsCertificate.pfx"
 
-    # List automation accounts to confirm Azure Resource Manager calls are working
-    Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
+# Save the certificate
+$Cert = $RunAsCert.Export("pfx",$Password)
+Set-Content -Value $Cert -Path $CertPath -Force -Encoding Byte | Write-Verbose
 
-*Export-RunAsCertificateToHybridWorker* Runbook を、`.ps1` 拡張子を付けてコンピューターに保存します。  これを Automation アカウントにインポートし、変数 `$Password` の値を自分のパスワードで変更して、Runbook を編集します。  実行アカウントを使用して Runbook の実行および認証を行うハイブリッド worker グループを対象に、Runbook を発行し、実行します。  ジョブ ストリームによって、ローカル マシン ストアに証明書をインポートしようとする試行が報告されます。これに続いて、サブスクリプションに定義されている Automation アカウントの数に応じて複数の行で、認証が正常に完了したかどうかが報告されます。  
+Write-Output ("Importing certificate into $env:computername local machine root store from " + $CertPath)
+$SecurePassword = ConvertTo-SecureString $Password -AsPlainText -Force
+Import-PfxCertificate -FilePath $CertPath -CertStoreLocation Cert:\LocalMachine\My -Password $SecurePassword -Exportable | Write-Verbose
 
-## <a name="troubleshooting-runbooks-on-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook のトラブルシューティング
-ログは、各ハイブリッド worker の C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes にローカルに格納されます。  また、ハイブリッド worker は、**Application and Services Logs\Microsoft-SMA\Operational** にある Windows イベント ログにエラーとイベントを記録します。  Worker で実行される Runbook に関連するイベントは、**Application and Services Logs\Microsoft-Automation\Operational** に書き込まれます。  **Microsoft SMA** ログには、Worker にプッシュされる Runbook ジョブと Runbook の処理に関連するイベントが他にも多く含まれています。  **Microsoft Automation** イベント ログには、Runbook の実行のトラブルシューティングに役立つ詳細情報があるイベントは多くありませんが、少なくとも Runbook ジョブの結果は見つかります。  
+# Test that authentication to Azure Resource Manager is working
+$RunAsConnection = Get-AutomationConnection -Name "AzureRunAsConnection"
 
-[Runbook の出力とメッセージ](automation-runbook-output-and-messages.md) は Hybrid Worker から Azure Automation に送られます。  他の Runbook と同じ方法で、Verbose および Progress ストリームも有効にできます。  
+Connect-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $RunAsConnection.TenantId `
+    -ApplicationId $RunAsConnection.ApplicationId `
+    -CertificateThumbprint $RunAsConnection.CertificateThumbprint | Write-Verbose
 
-Runbook が正常に完了せず、ジョブの概要で状態が **中断**になっている場合は、トラブルシューティングの記事「[Hybrid Runbook Worker: Runbook ジョブが中断状態で終了する](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended)」を参照してください。   
+Set-AzureRmContext -SubscriptionId $RunAsConnection.SubscriptionID | Write-Verbose
+
+# List automation accounts to confirm Azure Resource Manager calls are working
+Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
+```
+
+> [!IMPORTANT]
+> これで、**Connect-AzureRmAccount** のエイリアスは **Add-AzureRMAccount** に設定されました。 ライブラリ項目を検索して **Connect-AzureRMAccount** が表示されない場合は、**Add-AzureRmAccount** を使用するか、Automation アカウントでモジュールを更新できます。
+
+*Export-RunAsCertificateToHybridWorker* Runbook を、`.ps1` 拡張子を付けてコンピューターに保存します。 これを Automation アカウントにインポートし、変数 `$Password` の値を自分のパスワードで変更して、Runbook を編集します。 実行アカウントを使用して Runbook の実行および認証を行うハイブリッド worker グループを対象に、Runbook を発行し、実行します。 ジョブ ストリームによって、ローカル マシン ストアに証明書をインポートしようとする試行が報告されます。これに続いて、サブスクリプションに定義されている Automation アカウントの数に応じて複数の行で、認証が正常に完了したかどうかが報告されます。
+
+## <a name="job-behavior"></a>ジョブの動作
+
+Hybrid Runbook Worker で実行されるジョブの処理は、Azure サンドボックスで実行される場合の処理と少し異なります。 主な違いの 1 つは、Hybrid Runbook Worker ではジョブ期間に制限がないことです。 Azure サンドボックスで実行される Runbook は、[fair share](automation-runbook-execution.md#fair-share) により 3 時間に制限されています。 実行時間の長い Runbook がある場合は、ハイブリッド worker をホストしているマシンが再起動された場合などに、再起動に対する回復性があることを確認します。 ハイブリッド worker のホスト マシンが再起動された場合、実行中の Runbook ジョブは最初から再起動されるか、PowerShell ワークフロー Runbook の最後のチェックポイントから再起動されます。 Runbook ジョブが 3 回以上再起動された場合、そのジョブは中断されます。
+
+## <a name="run-only-signed-runbooks"></a>署名済み Runbook のみを実行する
+
+Hybrid Runbook Worker は、一部の構成を持つ署名済み Runbook のみを実行するように構成できます。 次のセクションでは、Hybrid Runbook Worker を署名済み Runbook を実行するように設定する方法と、Runbook に署名する方法を説明します。
+
+> [!NOTE]
+> Hybrid Runbook Worker を署名済み Runbook のみを実行するように構成すると、**署名されていない** Runbook は worker で実行できなくなります。
+
+### <a name="create-signing-certificate"></a>署名証明書の作成
+
+次の例では、Runbook の署名に使用できる自己署名証明書を作成します。 このサンプルでは、証明書を作成してエクスポートします。 証明書は、後で Hybrid Runbook Worker にインポートされます。 拇印も返されます。これは後で証明書を参照するために使用されます。
+
+```powershell
+# Create a self-signed certificate that can be used for code signing
+$SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
+                                        -Subject "CN=contoso.com" `
+                                        -KeyAlgorithm RSA `
+                                        -KeyLength 2048 `
+                                        -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+                                        -KeyExportPolicy Exportable `
+                                        -KeyUsage DigitalSignature `
+                                        -Type CodeSigningCert
+
+
+# Export the certificate so that it can be imported to the hybrid workers
+Export-Certificate -Cert $SigningCert -FilePath .\hybridworkersigningcertificate.cer
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Retrieve the thumbprint for later use
+$SigningCert.Thumbprint
+```
+
+### <a name="configure-the-hybrid-runbook-workers"></a>Hybrid Runbook Worker の構成
+
+作成された証明書をグループ内の各 Hybrid Runbook Worker にコピーします。 次のスクリプトを実行して証明書をインポートし、Runbook で署名の検証を使用するようにハイブリッド worker を構成します。
+
+```powershell
+# Install the certificate into a location that will be used for validation.
+New-Item -Path Cert:\LocalMachine\AutomationHybridStore
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\AutomationHybridStore
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Configure the hybrid worker to use signature validation on runbooks.
+Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocation "Cert:\LocalMachine\AutomationHybridStore"
+```
+
+### <a name="sign-your-runbooks-using-the-certificate"></a>証明書を使用して Runbook に署名する
+
+署名済み Runbook のみを使用するように Hybrid Runbook Worker を構成したので、Hybrid Runbook Worker で使用される Runbook に署名する必要があります。 次のサンプルの PowerShell を使用して Runbook に署名します。
+
+```powershell
+$SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprint>)
+Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
+```
+
+Runbook が署名されたら、Automation アカウントにインポートし、署名ブロックによって発行する必要があります。 Runbook のインポート方法については、「[ファイルから Azure Automation への Runbook のインポート](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation)」をご覧ください。
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+Runbook が正常に完了しない場合は、[Runbook の実行エラー](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)に関するトラブルシューティング ガイドを参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* Runbook を開始するために使用できるさまざまな方法の詳細については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照して下さい。  
+
+* Runbook を開始するために使用できるさまざまな方法の詳細については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照して下さい。
 * テキスト エディターを使用して、Azure Automation で PowerShell Runbook と PowerShell ワークフロー Runbook を操作するためのさまざまな手順については、[Azure Automation での Runbook の編集](automation-edit-textual-runbook.md)を参照してください。

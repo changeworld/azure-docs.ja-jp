@@ -3,22 +3,24 @@ title: Team Data Science Process ライフサイクルのビジネスの把握�
 description: データ サイエンス プロジェクトのビジネスの把握ステージの目標、タスク、成果物
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: daaaccaeac196b5f4651183173c8e83085d5184d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 00dc359fc171afe470b1dfe8f38d0951085ec580
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228302"
 ---
 # <a name="business-understanding"></a>ビジネスの把握
 
@@ -27,7 +29,7 @@ ms.lasthandoff: 03/28/2018
    1. **ビジネスの把握**
    2. **データの取得と理解**
    3. **モデリング**
-   4. **デプロイ**
+   4. **Deployment**
    5. **顧客による受け入れ**
 
 TDSP ライフサイクルを視覚化すると、次のようになります。 
@@ -80,7 +82,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 このステージでの成果物を以下に示します。
 
    * [チャーター ドキュメント](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): TDSP プロジェクト構造定義に標準テンプレートが用意されています。 チャーター ドキュメントは、常に変化するドキュメントです。 プロジェクトの進行中に新しい発見やビジネス要件の変化があったときに、このテンプレートを更新します。 検出プロセスの進行に合わせてこのドキュメントに詳細を追加し、更新を繰り返すことが重要です。 変更を加える際は、顧客およびその他の利害関係者が常に関与するようにし、変更の理由を明確に伝えます。  
-   * [データ ソース](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#raw-data-sources): これは、TDSP プロジェクトのデータ ソースが含まれている **[データ レポート]** フォルダーにある**データ定義**レポートの **[生データ ソース]** セクションです。 このセクションは、生データの元の場所と移動先の場所を指定します。 後のステージで、分析環境にデータを移動するスクリプトなどの詳細を追加します。  
+   * [データ ソース](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): これは、TDSP プロジェクトのデータ ソースが含まれている **[データ レポート]** フォルダーにある**データ定義**レポートの **[生データ ソース]** セクションです。 このセクションは、生データの元の場所と移動先の場所を指定します。 後のステージで、分析環境にデータを移動するスクリプトなどの詳細を追加します。  
    * [データ辞書](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): このドキュメントはクライアントによって提供されているデータの説明を提供します。 これらの説明にはスキーマ (データ型、検証ルールに関する情報 (ある場合)) とエンティティ関連の図 (ある場合) に関する情報が含まれています。
 
 ## <a name="next-steps"></a>次の手順
@@ -90,9 +92,9 @@ TDSP のライフサイクルの各ステップへのリンクを次に示しま
    1. [ビジネスの把握](lifecycle-business-understanding.md)
    2. [データの取得と理解](lifecycle-data.md)
    3. [モデリング](lifecycle-modeling.md)
-   4. [デプロイ](lifecycle-deployment.md)
+   4. [Deployment](lifecycle-deployment.md)
    5. [顧客による受け入れ](lifecycle-acceptance.md)
 
 特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 
-Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](http://aka.ms/datascienceprocess)」を参照してください。
+Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://aka.ms/datascienceprocess)」を参照してください。

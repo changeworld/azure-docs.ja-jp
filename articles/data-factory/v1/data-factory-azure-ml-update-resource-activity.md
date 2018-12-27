@@ -9,15 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3702f4b7a58e9ca65a8ee309699a7e31b207159b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7a5c0866bc08c5a73888d9baca41980106a62ae2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954941"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 03/23/2018
 
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 での機械学習モデルの更新](../update-machine-learning-models.md)に関する記事を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory での機械学習モデルの更新](../update-machine-learning-models.md)に関するページをご覧ください。
 
 この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](data-factory-azure-ml-batch-execution-activity.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。 
 
@@ -89,7 +90,7 @@ Web サービスが、Azure Resource Manager エンドポイントを公開す�
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-[Azure Machine Learning Web サービスのポータル](https://services.azureml.net/)で Web サービスにクエリを実行するときに、URL 内のプレースホルダーの値を取得できます。 新しい種類の更新リソース エンドポイントには、AAD (Azure Active Directory) トークンが必要です。 AzureML のリンクされたサービスで **servicePrincipalId** と **servicePrincipalKey** を指定してください。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページをご覧ください。 AzureML のリンクされたサービス定義のサンプルを次に示します。 
+[Azure Machine Learning Web サービスのポータル](https://services.azureml.net/)で Web サービスにクエリを実行するときに、URL 内のプレースホルダーの値を取得できます。 新しい種類の更新リソース エンドポイントには、AAD (Azure Active Directory) トークンが必要です。 AzureML のリンクされたサービスで **servicePrincipalId** と **servicePrincipalKey** を指定してください。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページをご覧ください。 AzureML のリンクされたサービス定義のサンプルを次に示します。 
 
 ```json
 {

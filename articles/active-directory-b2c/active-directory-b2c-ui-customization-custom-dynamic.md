@@ -1,23 +1,26 @@
 ---
-title: 'Azure Active Directory B2C: カスタム ポリシーを使用して Azure AD B2C ユーザー インターフェイス (UI) を動的にカスタマイズする'
+title: カスタム ポリシーを使用して Azure Active Directory B2C ユーザー インターフェイス (UI) を動的にカスタマイズする | Microsoft Docs
 description: 実行時に動的に変化する HTML5/CSS コンテンツで複数のブランド エクスペリエンスをサポートします。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
-ms.openlocfilehash: d8aaf0ef8cefdc0cb1c4ff3dec656d31c32f664f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 4e7cc47bddf3663cbc1c8bb5c4470020a84073e4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441653"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して動的コンテンツを含む UI を構成する
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用して、クエリ文字列のパラメーターを送信することができます。 パラメーターを HTML エンドポイントに渡すことで、ページのコンテンツを動的に変更することができます。 たとえば、Web またはモバイル アプリケーションから渡すパラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -36,7 +39,7 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
 
 `ContentDefinitions` セクションには一連の `ContentDefinition` XML 要素が含まれます。 `ContentDefinition` 要素の ID 属性は、コンテンツ定義に関連するページの種類を指定します。 つまり、要素では、カスタム HTML5/CSS テンプレートが適用されるコンテキストを定義します。 次の表で、IEF エンジンで認識されたコンテンツ定義 ID のセットと、それに関連するページの種類について説明します。
 
-| コンテンツ定義 ID | 既定の HTML5 テンプレート| [説明] | 
+| コンテンツ定義 ID | 既定の HTML5 テンプレート| 説明 | 
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **エラー ページ**。 このページは、例外またはエラーが発生した場合に表示されます。 |
 | *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **ID プロバイダーの選択ページ**。 このページには、サインイン時にユーザーが選択できる ID プロバイダーが一覧表示されます。 ID プロバイダーは、通常、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |
@@ -94,7 +97,7 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
 
 4. **[名前]** ボックスで、名前を **unified.cshtml** に変更します。
 
-5. **[追加]**を選択します。
+5. **[追加]** を選択します。
 
     ![MVC ビューを追加する](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view2.png)
 
@@ -316,7 +319,7 @@ campaignId パラメーターを受け入れるように HomeController `unified
 サインイン ページの **[今すぐサインアップ]** リンクを選択すると、ブラウザーには、定義したイメージではなく、既定の背景イメージが表示されます。 このような動作になるのは、サインアップまたはサインイン ページのみを変更したためです。 残りの自己アサート コンテンツ定義を変更するには、次のようにします。
 1. "手順 2" に戻り、次の操作を行います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 *selfasserted* ファイルをダウンロードします。
+    a. *selfasserted* ファイルをダウンロードします。
 
     b. ファイル コンテンツをコピーします。
 
@@ -326,7 +329,7 @@ campaignId パラメーターを受け入れるように HomeController `unified
 
 2. "手順 4" に戻り、次の操作を行います。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 拡張機能ポリシーで、`Id="api.selfasserted"`、`Id="api.localaccountsignup"`、および `Id="api.localaccountpasswordreset"` を含む `<ContentDefinition>` ノードを見つけます。
+    a. 拡張機能ポリシーで、`Id="api.selfasserted"`、`Id="api.localaccountsignup"`、および `Id="api.localaccountpasswordreset"` を含む `<ContentDefinition>` ノードを見つけます。
 
     b. `LoadUri` 属性を *selfasserted* URI に設定します。
 

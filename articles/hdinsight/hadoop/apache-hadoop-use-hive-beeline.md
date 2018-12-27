@@ -1,31 +1,25 @@
 ---
-title: Apache Hive で Beeline を使用する - Azure HDInsight | Microsoft Docs
+title: Apache Hive で Apache Beeline を使用する - Azure HDInsight
 description: Beeline クライアントを使用して、HDInsight での Hadoop で Hive クエリを実行する方法について説明します。 Beeline は、JDBC を介して HiveServer2 を使用するためのユーティリティです。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+author: hrasheed-msft
+ms.reviewer: jasonh
 keywords: beeline hive,hive beeline
-ms.assetid: 3adfb1ba-8924-4a13-98db-10a67ab24fca
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/26/2018
-ms.author: larryfr
-ms.openlocfilehash: f2beb42f51bbbf65abe7bb6d95579106cdf1857a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 04/20/2018
+ms.author: hrasheed
+ms.openlocfilehash: 1516c1a2802046b526688de703b565513789851b
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633271"
 ---
-# <a name="use-the-beeline-client-with-apache-hive"></a>Apache Hive で Beeline クライアントを使用する
+# <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive で Apache Beeline クライアントを使用する
 
-[Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) を使用して HDInsight で Hive クエリを実行する方法について説明します。
+[Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) を使用して HDInsight 上で Hive クエリを実行する方法について説明します。
 
 Beeline は、HDInsight クラスターのヘッド ノードに含まれている Hive クライアントです。 Beeline は、JDBC を使用して、HDInsight クラスターでホストされる HiveServer2 サービスに接続します。 Beeline を使用して、インターネット経由でで、HDInsight での Hive にリモートでアクセスすることもできます。 次の例は、Beeline から HDInsight への接続に使用される最も一般的な接続文字列を示します。
 
@@ -254,10 +248,17 @@ Beeline をローカルにインストールしている場合に Azure 仮想�
 
 Spark は独自の HiveServer2 実装を提供します。これは Spark Thrift サーバーとも呼ばれます。 このサービスでは、Spark SQL を使用して Hive の代わりにクエリを解決します。クエリによってはパフォーマンスが向上します。
 
-HDInsight クラスター上の Spark の Spark Thrift サーバーに接続するには、`10001` の代わりに `10002` ポートを使用します。 たとえば、「`beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'`」のように入力します。
+インターネット経由で接続する際に使用される __接続文字列__ は、わずかに異なります。 `httpPath=/hive2` の代わりに `httpPath/sparkhive2`が含まれます。 次に示すのは、インターネット経由の接続の例です。
 
-> [!IMPORTANT]
-> Spark Thrift サーバーには、インターネット経由で直接アクセスすることはできません。 SSH セッションから、または HDInsight クラスターと同じ Azure Virtual Network 内でのみ接続できます。
+```bash 
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+```
+
+クラスターのヘッド ノード、または HDInsight クラスターと同じ Azure Virtual Network 内のリソースから直接接続する場合は、`10001` の代わりに、Spark Thrift サーバー用のポート `10002` を使用する必要があります。 次に示すのは、ヘッド ノードに直接接続する例です。
+
+```bash
+beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
+```
 
 ## <a id="summary"></a><a id="nextsteps"></a>次の手順
 
@@ -274,8 +275,6 @@ Hive で Tez を使用する場合は、次のドキュメントを参照して�
 
 * [Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする](../hdinsight-debug-tez-ui.md)
 * [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](../hdinsight-debug-ambari-tez-view.md)
-
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

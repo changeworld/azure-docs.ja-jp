@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 7861a3380ee330241f0c735ee6c5ed84f121e512
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 534fbeaa8ba3c27c8d3f3bbcc59717d8bdb5c654
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050320"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-usql-activity.md)
-> * [バージョン 2 - プレビュー](../transform-data-using-data-lake-analytics.md)
+> * [Version 1](data-factory-usql-activity.md)
+> * [Version 2 (現在のバージョン)](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での U-SQL アクティビティ](../transform-data-using-data-lake-analytics.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の U-SQL アクティビティ](../transform-data-using-data-lake-analytics.md)に関するページを参照してください。
 
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ**について説明します。 
 
@@ -46,7 +47,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 
 次の表では、JSON 定義で使用される一般的なプロパティを説明しています。 サービス プリンシパル認証とユーザー資格情報認証のいずれかをさらに選ぶことができます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | **type** |type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 |[はい] |
 | **accountName** |Azure Data Lake Analytics アカウント名。 |[はい] |
@@ -62,7 +63,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 
 次のプロパティを指定して、サービス プリンシパル認証を使います。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | アプリケーションのクライアント ID を取得します。 | [はい] |
 | **servicePrincipalKey** | アプリケーションのキーを取得します。 | [はい] |
@@ -90,7 +91,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 ### <a name="user-credential-authentication"></a>ユーザー資格情報認証
 また、次のプロパティを指定することで、Data Lake Analytics のユーザー資格情報認証を使用することもできます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | **authorization** | Data Factory エディターで **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | [はい] |
 | **sessionId** | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使うと、この設定が自動的に生成されます。 | [はい] |
@@ -206,10 +207,10 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 次の表は、このアクティビティに固有のプロパティの名前と説明です。 
 
-| プロパティ            | [説明]                              | 必須                                 |
+| プロパティ            | 説明                              | 必須                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| 型                | type プロパティは、 **DataLakeAnalyticsU-SQL**に設定する必要があります。 | [はい]                                      |
-| 既定のコンテナー   | Data Factory のリンクされたサービスとして登録されている Azure Data Lake Analytics への参照 | [はい]                                      |
+| type                | type プロパティは、 **DataLakeAnalyticsU-SQL**に設定する必要があります。 | [はい]                                      |
+| linkedServiceName   | Data Factory のリンクされたサービスとして登録されている Azure Data Lake Analytics への参照 | [はい]                                      |
 | scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | いいえ (スクリプトを使用する場合)                   |
 | scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | いいえ (スクリプトを使用する場合)                   |
 | script (スクリプト)              | scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。 たとえば、「 `"script": "CREATE DATABASE test"`」のように入力します。 | いいえ (scriptPath と scriptLinkedService を使用する場合) |

@@ -1,13 +1,13 @@
 ---
-title: "特定の場所から Azure リージョンへの相対待機時間を確認する | Microsoft Docs"
-description: "特定の場所から Azure リージョンへのインターネット プロバイダー全体の相対的な待機時間を確認する方法について説明します。"
+title: 特定の場所から Azure リージョンへの相対待機時間を確認する | Microsoft Docs
+description: 特定の場所から Azure リージョンへのインターネット プロバイダー全体の相対的な待機時間を確認する方法について説明します。
 services: network-watcher
-documentationcenter: 
+documentationcenter: ''
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: a6c2ffa619eeff8b455df8a8b2157525af12c640
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.custom: ''
+ms.openlocfilehash: 6ac37c3a53b0cc71bdab85fb86e0e85d998867aa
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300610"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>特定の場所から Azure リージョンへの相対待機時間を確認する
 
@@ -59,7 +60,7 @@ Get-AzureRmNetworkWatcherReachabilityReport `
 > 前のコマンドで指定したリージョンは、ネットワーク ウォッチャーを取得したときに指定したリージョンと同じである必要はありません。 前のコマンドで必要な指定は、既存のネットワーク ウォッチャーのみです。 ネットワーク ウォッチャーはどのリージョンにも設置できます。 `-Country` と `-State` には、有効な値を指定する必要があります。 値は大文字と小文字が区別されます。 限られた数の国、州、および市区町村のデータを使用できます。 「[使用できる国、州、市区町村、プロバイダーを表示する](#view-available)」のコマンドを実行して、前のコマンドで使用できる国、州、市区町村の一覧を表示します。 
 
 > [!WARNING]
-> `-StartTime` と `-EndTime` には、2017 年 11 月 14 日以降の日付を指定する必要があります。 2017 年 11 月 14 日より前の日付を指定すると、データは返されません。 
+> `-StartTime` と `-EndTime` には、過去 30 日以内の日付を指定する必要があります。 それより前の日付を指定すると、データが返されません。
 
 前のコマンドを実行すると、次のように出力されます。
 

@@ -1,10 +1,10 @@
 ---
-title: "Azure 仮想マシン スケール セットの設計上の考慮事項 | Microsoft Docs"
-description: "Azure 仮想マシン スケール セットの設計上の考慮事項について説明します"
-keywords: "Linux 仮想マシン,仮想マシン スケール セット"
+title: Azure 仮想マシン スケール セットの設計上の考慮事項 | Microsoft Docs
+description: Azure 仮想マシン スケール セットの設計上の考慮事項について説明します
+keywords: Linux 仮想マシン,仮想マシン スケール セット
 services: virtual-machine-scale-sets
-documentationcenter: 
-author: gatneil
+documentationcenter: ''
+author: mayanknayar
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -15,12 +15,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
-ms.author: negat
-ms.openlocfilehash: efb9f7f7daa5dbb8cd3120b21ef812106fdc7fb9
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.author: manayar
+ms.openlocfilehash: 1c99b7a3eecdd7938b4813647afb9e48fb0173a0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739279"
 ---
 # <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
 この記事では、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。
@@ -30,22 +31,19 @@ ms.lasthandoff: 12/20/2017
 
 ### <a name="scale-set-specific-features"></a>スケール セットだけで使用できる機能
 
-- スケール セットの構成を指定したら、"capacity" プロパティを更新すれば、並列する複数の VM をデプロイすることができます。 これは、スクリプトを記述したり、並列する多数の VM を調整しながら個別にデプロイしたりするよりもはるかに簡単です。
+- スケール セットの構成を指定したら、*capacity* プロパティを更新すれば、並列する複数の VM をデプロイすることができます。 このプロセスは、スクリプトを記述したり、並列する多数の VM を調整しながら個別にデプロイしたりするよりも有効です。
 - [Azure の自動スケール機能を使用してスケール セットの規模を自動で設定](./virtual-machine-scale-sets-autoscale-overview.md)することができますが、個々の VM に対してはできません。
-- [スケール セットの VM を再イメージ化](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-a-vm)することはできますが、[個々の VM](https://docs.microsoft.com/rest/api/compute/virtualmachines) を再イメージ化することはできません。
-- スケール セットの VM を[オーバープロビジョニング](./virtual-machine-scale-sets-design-overview.md)して、信頼性高めながらデプロイ時間を短縮することができます。 個々の VM で同じことをするには、カスタム コードを記述する必要があります。
+- [スケール セットの VM を再イメージ化](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)することはできますが、[個々の VM](https://docs.microsoft.com/rest/api/compute/virtualmachines) を再イメージ化することはできません。
+- スケール セットの VM を[オーバープロビジョニング](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)して、信頼性高めながらデプロイ時間を短縮することができます。 個々の VM をオーバープロビジョニングするには、このアクションを実行するカスタム コードを記述する必要があります。
 - [アップグレード ポリシー](./virtual-machine-scale-sets-upgrade-scale-set.md)を指定して、スケール セット内の VM 全体にアップグレードを簡単にロールアウトすることができます。 個々の VM でこれを行うには、アップデートを自分で調整する必要があります。
 
 ### <a name="vm-specific-features"></a>VM だけで使用できる機能
 
 一部の機能は、現在 VM でのみ使用できます。
 
-- 特定の VM に個別にデータ ディスクをアタッチすることができますが、アタッチされたデータ ディスクはスケール セット内のすべての VM に対して構成されます。
-- 空でないデータ ディスクは個々の VM にアタッチできますが、スケール セット内の VM にはアタッチできません。
-- 個々の VM のスナップショットを作成できますが、スケール セット内の VM のスナップショットは作成できません。
 - 個々の VM からイメージをキャプチャすることはできますが、スケール セット内の VM からはできません。
-- 個々の VM はネイティブ ディスクからマネージ ディスクに移行できますが、スケール セット内の VM で同じことはできません。
-- 個々の VM の NIC に IPv6 パブリック IP アドレスを割り当てることはできますが、スケール セット内の VM に割り当てることはできません。 個々の VM でもスケール セット内の VM でも、前面のロード バランサーには IPv6 パブリック IP アドレスを割り当てることができます。
+- 個々の VM はネイティブ ディスクからマネージド ディスクに移行できますが、スケール セット内の VM を移行することはできません。
+- 個々の VM の仮想ネットワーク インターフェイスカード (NIC) に IPv6 パブリック IP アドレスを割り当てることはできますが、スケール セット内の VM インスタンスに割り当てることはできません。 個々の VM でもスケール セット内の VM でも、前面のロード バランサーには IPv6 パブリック IP アドレスを割り当てることができます。
 
 ## <a name="storage"></a>Storage
 
@@ -73,7 +71,7 @@ Marketplace イメージ (プラットフォーム イメージとも呼ばれ�
 
 ユーザー管理のストレージ アカウントに構成されているスケール セットは、現在 100 個の VM に制限されています (また、このスケールには 5 つのストレージ アカウントが推奨されます)。
 
-(自分でビルドした) カスタム イメージ上に構築されたスケール セットは、Azure Managed Disks で構成した場合に最大 300 個の VM の容量を持つことができます。 スケール セットがユーザー管理のストレージ アカウントで構成されている場合は、1 つのストレージ アカウント内にすべての OS ディスク VHD を作成する必要があります。 その結果、カスタム イメージとユーザー管理のストレージで構築されたスケール セットの VM の推奨される最大数は 20 になります。 オーバープロビジョニングをオフにすると、最大 40 になります。
+(自分でビルドした) カスタム イメージ上に構築されたスケール セットは、Azure マネージド ディスクで構成した場合に最大 300 個の VM の容量を持つことができます。 スケール セットがユーザー管理のストレージ アカウントで構成されている場合は、1 つのストレージ アカウント内にすべての OS ディスク VHD を作成する必要があります。 その結果、カスタム イメージとユーザー管理のストレージで構築されたスケール セットの VM の推奨される最大数は 20 になります。 オーバープロビジョニングをオフにすると、最大 40 になります。
 
 VM の数が、これらの制限で許可されている数を超える場合は、 [こちらのテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)に示すように、複数のスケール セットをデプロイする必要があります。
 

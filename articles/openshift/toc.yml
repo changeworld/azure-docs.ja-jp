@@ -1,21 +1,28 @@
+items:
 - name: OpenShift のドキュメント
   href: index.md
 - name: クイック スタート
-  expanded: true
   items:
-    - name: 'OpenShift: コミュニティ テンプレート'
-      href: 'https://azure.microsoft.com/en-us/resources/templates/openshift-origin-rhel/'
+  - name: 'OpenShift: コミュニティ テンプレート'
+    href: https://azure.microsoft.com/resources/templates/openshift-origin-rhel/
+  expanded: true
 - name: チュートリアル
   items:
-    - name: Azure VM へのデプロイ
-      href: /azure/virtual-machines/linux/openshift-get-started
+  - name: Azure VM へのデプロイ
+    href: /azure/virtual-machines/linux/openshift-get-started
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: OpenShift コンテナー テンプレート
-      href: 'https://github.com/Microsoft/openshift-container-platform'
-    - name: OpenShift Origin
-      href: 'https://docs.openshift.org/latest/getting_started/index.html'
-    - name: OpenShift サイト
-      href: 'https://docs.openshift.org/latest/welcome/index.html'
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: OpenShift コンテナー テンプレート
+    href: https://github.com/Microsoft/openshift-container-platform
+  - name: OpenShift Origin
+    href: https://docs.openshift.org/latest/getting_started/index.html
+  - name: OpenShift サイト
+    href: https://docs.openshift.org/latest/welcome/index.html
+ms.openlocfilehash: d0339ac640f7f4f554d99bbff26ca258ed3620c6
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362017"

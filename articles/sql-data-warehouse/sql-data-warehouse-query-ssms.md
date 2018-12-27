@@ -1,25 +1,21 @@
 ---
-title: "Azure SQL Data Warehouse への接続 (SSMS) | Microsoft Docs"
-description: "SQL Server Management Studio (SSMS) を使用して Azure SQL Data Warehouse に接続し、クエリを実行します。"
+title: Azure SQL Data Warehouse への接続 (SSMS) | Microsoft Docs
+description: SQL Server Management Studio (SSMS) を使用して Azure SQL Data Warehouse に接続し、クエリを実行します。
 services: sql-data-warehouse
-documentationcenter: 
-author: antvgski
-manager: jhubbard
-editor: 
-ms.assetid: 299e50b3-e68a-471c-8aee-b0b9874781bd
+author: kavithaj
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.custom: connect
-ms.date: 10/31/2016
-ms.author: anvang;barbkess
-ms.openlocfilehash: 207fb9fd861c66039fbde89681aed3df3a2f4021
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: 6079c3064699da38fad20468517eb97d6ab107f8
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307202"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) で SQL Data Warehouse に接続する
 > [!div class="op_single_selector"]
@@ -52,7 +48,7 @@ SQL Server Management Studio (SSMS) を使用して Azure SQL Data Warehouse に
    * **[サーバー名]**:  前の手順で特定した**サーバー名**を入力します。
    * **[認証]**:  **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
    * **[ユーザー名]** と **[パスワード]**:  先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
-   * **[接続]**をクリックします。
+   * **[接続]** をクリックします。
 4. 確認のために、Azure SQL Server を展開します。 サーバーに関連付けられているデータベースが表示されます。 AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
    
     ![Explore AdventureWorksDW][3]
@@ -61,7 +57,7 @@ SQL Server Management Studio (SSMS) を使用して Azure SQL Data Warehouse に
 これで、データベースへの接続が確立されました。次はクエリを記述してみましょう。
 
 1. SQL Server オブジェクト エクスプローラーでデータベースを右クリックします。
-2. **[新しいクエリ]**を選択します。 新しいクエリ ウィンドウが開きます。
+2. **[新しいクエリ]** を選択します。 新しいクエリ ウィンドウが開きます。
    
     ![[新しいクエリ]][4]
 3. 次の TSQL クエリをクエリ ウィンドウにコピーします。
@@ -76,7 +72,7 @@ SQL Server Management Studio (SSMS) を使用して Azure SQL Data Warehouse に
    
     ![Query results][6]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで接続してクエリを実行することができます。[Power BI でデータを視覚化][visualizing the data with PowerBI]してみてください。
 
 Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL Data Warehouse の認証][Authenticate to SQL Data Warehouse]に関するページを参照してください。
@@ -89,7 +85,7 @@ Azure Active Directory 認証を使用するために環境を構成する方法
 
 <!--Other-->
 [Azure portal]: https://portal.azure.com
-[Install SSMS]: https://msdn.microsoft.com/en-US/library/hh213248.aspx
+[Install SSMS]: https://msdn.microsoft.com/library/hh213248.aspx
 
 
 <!--Image references-->

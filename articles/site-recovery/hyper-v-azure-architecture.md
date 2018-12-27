@@ -1,18 +1,20 @@
 ---
-title: Azure Site Recovery での Hyper-V から Azure へのレプリケーション アーキテクチャ | Microsoft Docs
-description: この記事では、(VMM を使用せずに) Azure Site Recovery サービスを使用してオンプレミスの Hyper-V VM を Azure にレプリケートするときに使用されるコンポーネントとアーキテクチャの概要を説明します。
+title: Azure Site Recovery における Hyper-V から Azure へのディザスター リカバリー アーキテクチャ | Microsoft Docs
+description: この記事では、(VMM を使用せずに) Azure Site Recovery サービスを使用してオンプレミスの Hyper-V VM から Azure へのディザスター リカバリーをデプロイするときに使用されるコンポーネントとアーキテクチャの概要を説明します。
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/194/2018
+ms.topic: conceptual
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 978d290287a4ff8875eea7e93f003c78e7177dae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 23b12f5b0423f717e96ec1f59480f0175648c75f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210654"
 ---
-# <a name="hyper-v-to-azure-replication-architecture"></a>Hyper-V から Azure へのレプリケーション アーキテクチャ
+# <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V から Azure へのディザスター リカバリー アーキテクチャ
 
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスの Hyper-V ホストと Azure 間で Hyper-V 仮想マシン (VM) をレプリケート、フェールオーバー、および復旧する場合に使用されるアーキテクチャとプロセスについて説明します。

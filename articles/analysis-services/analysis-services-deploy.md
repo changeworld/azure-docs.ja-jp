@@ -1,25 +1,19 @@
 ---
-title: "SSDT を使用して Azure Analysis Services にデプロイする | Microsoft Docs"
-description: "SSDT を使用して Azure Analysis Services サーバーに表形式モデルをデプロイする方法について説明します。"
-services: analysis-services
-documentationcenter: 
+title: SSDT を使用して Azure Analysis Services にデプロイする | Microsoft Docs
+description: SSDT を使用して Azure Analysis Services サーバーに表形式モデルをデプロイする方法について説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 5f1f0ae7-11de-4923-a3da-888b13a3638c
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: f356b5d8e2b047add41873ab2676bd46db8d1fd2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 5f56ee65cd2ec5dfb39929f6985c26ebc339953e
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429050"
 ---
 # <a name="deploy-a-model-from-ssdt"></a>SSDT からのモデルのデプロイ
 Azure サブスクリプションにサーバーを作成した後は、表形式モデル データベースをサーバーにデプロイできます。 表形式モデル プロジェクトの作成とデプロイは、SQL Server Data Tools (SSDT) を使って行うことができます。 
@@ -36,15 +30,18 @@ Azure サブスクリプションにサーバーを作成した後は、表形�
 > 
 > 
 
-## <a name="to-deploy-a-tabular-model-from-ssdt"></a>SSDT から表形式モデルをデプロイするには
+## <a name="get-the-server-name"></a>サーバー名の取得
 
-1. デプロイする前に、サーバー名を取得する必要があります。 **Azure Portal** でサーバーを選び、**[概要]** > **[サーバー名]** のサーバー名をコピーします。
+**Azure Portal** でサーバーを選び、**[概要]** > **[サーバー名]** のサーバー名をコピーします。
    
-    ![Azure でサーバー名を取得する](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. SSDT の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[プロパティ]** を選びます。 **[配置]**  >  **[サーバー]** にサーバー名を貼り付けます。   
+![Azure でサーバー名を取得する](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
+
+## <a name="to-deploy-from-ssdt"></a>SSDT からデプロイするには
+
+1. SSDT の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[プロパティ]** を選びます。 **[配置]**  >  **[サーバー]** にサーバー名を貼り付けます。   
    
     ![配置サーバー プロパティにサーバー名を貼り付ける](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
-3. **ソリューション エクスプローラー**で、**[プロパティ]** を右クリックし、**[配置]** をクリックします。 Azure へのサインインを要求される場合があります。
+2. **ソリューション エクスプローラー**で、**[プロパティ]** を右クリックし、**[配置]** をクリックします。 Azure へのサインインを要求される場合があります。
    
     ![サーバーにデプロイする](./media/analysis-services-deploy/aas-deploy-deploy.png)
    

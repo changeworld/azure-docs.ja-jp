@@ -1,24 +1,19 @@
 ---
-title: "Azure IoT Edge 用語集 | Microsoft Docs"
-description: "概念 - Azure IoT Edge に関連する一般用語の用語集。"
-services: iot-hub
-documentationcenter: .net
+title: Azure IoT Edge 用語集 | Microsoft Docs
+description: 概念 - Azure IoT Edge に関連する一般用語の用語集。
 author: menchi
 manager: bzurcher
-editor: 
-ms.assetid: 16ef29ea-a185-48c3-ba13-329325dc6716
-ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 2/15/2018
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
+ms.date: 02/15/2018
 ms.author: menchi
-ms.openlocfilehash: 46d45860f70cfa6d0e1dc4ea07f6ec1f0feec6ab
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 79864b765282f2efbf7016cba7138efa4e1d3dc4
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597794"
 ---
 # <a name="glossary-of-iot-edge-terms"></a>IoT Edge 用語集
 この記事では、IoT Edge の記事で使用される一般的な用語の一部を示します。
@@ -28,5 +23,5 @@ ms.lasthandoff: 02/21/2018
 ## <a name="next-steps"></a>次の手順
 
 * 「[Azure IoT Hub 用語集](../iot-hub/iot-hub-devguide-glossary.md)」をご覧ください
-* IoT Edge の[モジュール開発](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)に関するページをご覧ください
-* IoT Edge の[デプロイ](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)に関するページをご覧ください
+* IoT Edge の[モジュール開発](iot-edge-modules.md)に関するページをご覧ください
+* IoT Edge の[デプロイ](module-deployment-monitoring.md)に関するページをご覧ください

@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ　サポート パッケージの作成 | Microsoft Docs"
-description: "StorSimple 8000 シリーズ デバイスのサポート パッケージを作成、暗号化解除、編集する方法について説明します。"
+title: StorSimple 8000 シリーズ　サポート パッケージの作成 | Microsoft Docs
+description: StorSimple 8000 シリーズ デバイスのサポート パッケージを作成、暗号化解除、編集する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c83caae58e73d6f2d0fe086938e0bbc5cfdf80c4
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254368"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 シリーズのサポート パッケージの作成と管理
 
@@ -47,10 +48,10 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
    1. コマンド プロンプトに、次のコマンドを入力します。
      
        `$MS = New-PSSession -ComputerName <IP address for DATA 0> -Credential SSAdmin -ConfigurationName "SSAdminConsole"`
-   2. 表示されたダイアログ ボックスで、デバイス管理者のパスワードを入力します。 既定のパスワードは _Password1_です。
+   2. 表示されたダイアログ ボックスで、デバイス管理者のパスワードを入力します。 既定のパスワードは _Password1_ です。
      
       ![PowerShell の [資格情報] ダイアログ ボックス](./media/storsimple-8000-create-manage-support-package/IC740962.png)
-   3. **[OK]**を選択します。
+   3. **[OK]** を選択します。
    4. コマンド プロンプトに、次のコマンドを入力します。
      
       `Enter-PSSession $MS`
@@ -71,7 +72,7 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
 
 Export-HcsSupportPackage コマンドレットには、次のパラメーターを使用できます。
 
-| パラメーター | 必須/省略可能 | [説明] |
+| パラメーター | 必須/省略可能 | 説明 |
 | --- | --- | --- |
 | `-Path` |必須 |サポート パッケージが配置されるネットワーク共有フォルダーの場所を指定するためにします。 |
 | `-EncryptionPassphrase` |必須 |サポート パッケージの暗号化に使用するパスフレーズを指定するためにします。 |
@@ -92,7 +93,7 @@ Export-HcsSupportPackage コマンドレットには、次のパラメーター�
 #### <a name="to-edit-a-support-package-in-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell でサポート パッケージを編集するには
 
 1. 「 [StorSimple 用 Windows PowerShell でサポート パッケージを作成する](#to-create-a-support-package-in-windows-powershell-for-storsimple)」の説明に従って、サポート パッケージを生成します。
-2. [スクリプトをダウンロード](http://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) します。
+2. [スクリプトをダウンロード](https://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) します。
 3. Windows PowerShell モジュールをインポートします。 スクリプトをダウンロードしたローカル フォルダーへのパスを指定します。 モジュールをインポートするには、次のコマンドを入力します。
    
     `Import-module <Path to the folder that contains the Windows PowerShell script>`

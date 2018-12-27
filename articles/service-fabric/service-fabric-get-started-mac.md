@@ -2,23 +2,24 @@
 title: Azure Service Fabric を使用するための開発環境を Mac OS X にセットアップする | Microsoft Docs
 description: ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを完了すると、Mac OS X でアプリケーションを構築する準備が整います。
 services: service-fabric
-documentationcenter: java
-author: sayantancs
+documentationcenter: linux
+author: suhuruli
 manager: timlt
 editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
-ms.devlang: java
-ms.topic: get-started-article
+ms.devlang: linux
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
-ms.author: saysa
-ms.openlocfilehash: 81265dd61faee38d578a380ca392e7851662329c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: suhuruli
+ms.openlocfilehash: 8473b2e202dd408cce6658f3ca349d884a28dc3a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160475"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -62,7 +63,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >
     >大規模なアプリケーションをテストする際は、Docker に割り当てられたリソースを増やすことをお勧めします。 **Docker アイコン**を選択し、**[詳細]** を選択して、コア数やメモリを調整してください。
 
-2. 新しいディレクトリに、Service Fabric イメージを構築する `.Dockerfile` というファイルを作成します。
+2. 新しいディレクトリに、Service Fabric イメージを構築する `Dockerfile` というファイルを作成します。
 
     ```dockerfile
     FROM microsoft/service-fabric-onebox
@@ -86,7 +87,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >[!TIP]
     > 既定では、最新バージョンの Service Fabric を含んだイメージがプルされます。 特定のリビジョンについては、[Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) のページをご覧ください。
 
-3. 再利用可能なイメージを `.Dockerfile` から構築するには、ターミナルを開き、`cd` で `.Dockerfile` の格納場所に移動して次のコマンドを実行します。
+3. 再利用可能なイメージを `Dockerfile` から構築するには、ターミナルを開き、`cd` で `Dockerfile` の格納場所に移動して次のコマンドを実行します。
 
     ```bash 
     docker build -t mysfcluster .
@@ -98,7 +99,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
 4. これで、Service Fabric のローカル コピーを、必要なときにいつでも、次のコマンドを実行することですぐに起動することができます。
 
     ```bash 
-    docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
     ```
 
     >[!TIP]
@@ -117,12 +118,17 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
 
 
 
-6. 完了したら、コンテナーを停止してクリーンアップすることができます。次のコマンドを使います。
+6. 完了したら、コンテナーを停止し、次のコマンドを使用してコンテナーをクリーンアップします。
 
     ```bash 
     docker rm -f sftestcluster
     ```
 
+### <a name="known-limitations"></a>既知の制限事項 
+ 
+ Mac 用のコンテナーで実行されているローカル クラスターの既知の制限は、次のとおりです。 
+ 
+ * DNS サービスが実行されず、サポートされていない [問題 #132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Mac に Service Fabric CLI (sfctl) をセットアップする
 
@@ -151,14 +157,16 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
     ```bash
     npm install -g yo
     ```
-3. 概要[ドキュメント](service-fabric-get-started-linux.md)の手順に従って、使用する Yeoman ジェネレーターをインストールします。 Yeoman を使って Service Fabric アプリケーションを作成するには、次の手順に従います。
+3. 概要[ドキュメント](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)の手順に従って、使用する Yeoman ジェネレーターをインストールします。 Yeoman を使って Service Fabric アプリケーションを作成するには、次の手順に従います。
 
     ```bash
     npm install -g generator-azuresfjava       # for Service Fabric Java Applications
     npm install -g generator-azuresfguest      # for Service Fabric Guest executables
     npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
     ```
-4. Service Fabric Java アプリケーションを Mac で構築するには、JDK バージョン 1.8 と Gradle がホスト マシンにインストールされている必要があります。 このソフトウェアは、次のように [HomeBrew](https://brew.sh/) を使用してインストールできます。 
+4. ジェネレーターのインストール後、`yo azuresfguest` または `yo azuresfcontainer` を実行して、ゲスト実行可能ファイルまたはコンテナー サービスを作成します。
+
+5. Service Fabric Java アプリケーションを Mac で構築するには、JDK バージョン 1.8 と Gradle がホスト マシンにインストールされている必要があります。 このソフトウェアは、次のように [HomeBrew](https://brew.sh/) を使用してインストールできます。 
 
     ```bash
     brew update
@@ -187,9 +195,9 @@ Service Fabric アプリケーションを作成して構築したら、[Service
 
 [.NET Core 2.0 SDK for Mac](https://www.microsoft.com/net/core#macos) をインストールして、[C# Service Fabric アプリケーションの作成](service-fabric-create-your-first-linux-application-with-csharp.md)を開始します。 .NET Core 2.0 Service Fabric アプリケーション用のパッケージは、現在プレビューの段階で NuGet.org でホストされています。
 
-## <a name="install-the-service-fabric-plug-in-for-eclipse-neon-on-your-mac"></a>Eclipse Neon 用の Service Fabric プラグインを Mac にインストールする
+## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Eclipse 用の Service Fabric プラグインを Mac にインストールする
 
-Azure Service Fabric には、Eclipse Neon Java IDE 用のプラグインが用意されています。 このプラグインを使用すると、Java サービスの作成、ビルド、およびデプロイの手順を簡素化できます。 Eclipse 用の Service Fabric プラグインをインストールしたり、最新バージョンに更新したりするには、[これらの手順](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon)に従います。 [Eclipse 用の Service Fabric のドキュメント](service-fabric-get-started-eclipse.md)に記載されている、アプリケーションの構築、アプリケーションへのサービスの追加、アプリケーションのアンインストールなどの他のすべての手順も適用できます。
+Azure Service Fabric には、Java IDE 用として Eclipse Neon (以降) 用のプラグインが用意されています。 このプラグインを使用すると、Java サービスの作成、ビルド、およびデプロイの手順を簡素化できます。 Eclipse 用の Service Fabric プラグインをインストールしたり、最新バージョンに更新したりするには、[これらの手順](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse)に従います。 [Eclipse 用の Service Fabric のドキュメント](service-fabric-get-started-eclipse.md)に記載されている、アプリケーションの構築、アプリケーションへのサービスの追加、アプリケーションのアンインストールなどの他のすべての手順も適用できます。
 
 最後の手順では、ホストと共有されているパスでコンテナーをインスタンス化します。 このプラグインでは、Mac 上の Docker コンテナーを操作するために、この種のインスタンス化が必要です。 例: 
 

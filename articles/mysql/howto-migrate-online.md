@@ -1,38 +1,31 @@
 ---
-title: "最小限のダウンタイムでの Azure Database for MySQL への移行"
-description: "この記事では、最小限のダウンタイムで MySQL データベースから Azure Database for MySQL への移行を実行する方法と、Attunity Replicate for Microsoft Migrations を使用してソース データベースからターゲット データベースへの初期読み込みと継続的なデータ同期を設定する方法について説明します。"
+title: 最小限のダウンタイムでの Azure Database for MySQL への移行
+description: この記事では、Azure Database Migration Service を使用して、MySQL データベースを Azure Database for MySQL に最小限のダウンタイムで移行する方法について説明します。
 services: mysql
 author: HJToland3
 ms.author: jtoland
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: e1be72d97570643cc8a7c6eb05d3d363e96357b6
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 10/11/2018
+ms.openlocfilehash: cb2e1a34748875de9c7f8dd59be27c408ec82818
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090333"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>最小限のダウンタイムでの Azure Database for MySQL への移行
-Attunity Replicate for Microsoft Migrations を使用して、既存の MySQL データベースを Azure Database for MySQL に移行できます。 Attunity Replicate は、Attunity と Microsoft の共同製品です。 これは、Azure Database Migration Service と共に、Microsoft のお客様には追加コストなしで含まれています。 
+[Azure Database Migration Service](https://aka.ms/get-dms) (DMS) に新たに導入された**継続的同期機能**を使用すると、最小限のダウンタイムで MySQL を Azure Database for MySQL に移行できます。 この機能で、アプリケーションによって発生するダウンタイムの長さが短くなります。
 
-Attunity Replicate は、データベース移行中のダウンタイムを最小限に抑えるのに役立ち、プロセス全体を通してソース データベースを動作状態に維持します。
+## <a name="overview"></a>概要
+DMS は、オンプレミスから Azure Database for MySQL への初期読み込みを実行してから、アプリケーションは実行中のままで、新しいトランザクションを Azure に継続的に同期します。 データがターゲットの Azure 側に追いついた後、アプリケーションを短時間停止し (最小限のダウンタイム)、データの最後のバッチがターゲットに追いつくまで (アプリケーションを停止してから、アプリケーションが事実上新しいトラフィックを受け取ることができなくなるまで) 待ってから、Azure を指すように接続文字列を更新します。 完了すると、アプリケーションは Azure 上で動作します。
 
-Attunity Replicate は、さまざまなソースとターゲット間のデータ同期を可能にするデータ レプリケーション ツールです。 スキーマ作成スクリプトと各データベース テーブルに関連するデータを伝達します。 Attunity Replicate は、他のアーティファクト (SP、トリガー、関数など) を伝達したり、このようなアーティファクトでホストされている PL/SQL コードなどを T-SQL に変換したりすることはありません。
+![Azure Database Migration Service での継続的同期](./media/howto-migrate-online/ContinuousSync.png)
 
-> [!NOTE]
-> Attunity Replicate は幅広い一連の移行シナリオをサポートしていますが、ソースとターゲットのペアの特定のサブセットのサポートに重点を置いています。
+- MySQL ソースの DMS 移行は現在パブリック プレビュー段階です。 MySQL のワークロードを移行するサービスを試す場合は、ポータルに進みましょう。 お客様のフィードバックは、サービスをさらに改善するために大切です。
 
-最小限のダウンタイムでの移行の実行プロセスの概要を次に示します。
-
-* [MySQL Workbench](https://www.mysql.com/products/workbench/) を使用して、**MySQL ソース スキーマを、管理されたデータベース サービスである Azure Database for MySQL に移行**します。
-
-* Attunity Replicate for Microsoft Migrations を使用して、**ソース データベースからターゲット データベースへの初期読み込みと継続的なデータ同期を設定**します。 これにより、アプリケーションを Azure 上のターゲット MySQL データベースに切り替える準備をするときに、ソース データベースを読み取り専用として設定する必要のある時間が最小限に抑えられます。
-
-Attunity Replicate for Microsoft Migrations 製品の詳細については、次のリソースを参照してください。
- - [Attunity Replicate for Microsoft Migrations](https://aka.ms/attunity-replicate) の Web ページに移動します。
- - [Attunity Replicate for Microsoft Migrations](http://discover.attunity.com/download-replicate-microsoft-lp6657.html) をダウンロードします。
- - クイック スタート ガイド、チュートリアル、サポートについては、[Attunity Replicate コミュニティ](https://aka.ms/attunity-community)をご覧ください。
- - Attunity Replicate を使用して MySQL データベースを Azure Database for MySQL に移行する詳細な手順については、「[Database Migration Guide (データベース移行ガイド)](https://datamigration.microsoft.com/scenario/mysql-to-azuremysql)」をご覧ください。
+## <a name="next-steps"></a>次の手順
+- [MySQL/PostgreSQL アプリを Azure マネージド サービスに簡単に移行する方法](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201)のビデオをご覧ください。MySQL アプリを Azure Database for MySQL に移行する方法を示すデモが含まれています。
+- 「[DMS を使用して MySQL をオンラインの Azure Database for MySQL に移行する](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)」のチュートリアルを参照してください。

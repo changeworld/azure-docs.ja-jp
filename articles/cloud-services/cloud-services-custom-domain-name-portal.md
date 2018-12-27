@@ -1,11 +1,11 @@
 ---
-title: "Cloud Services のカスタム ドメイン名を構成する | Microsoft Docs"
-description: "DNS 設定を構成して、カスタム ドメインで Azure のアプリケーションやデータをインターネットに公開する方法について説明します。  これらの例では、Azure ポータルを使用します。"
+title: Cloud Services のカスタム ドメイン名を構成する | Microsoft Docs
+description: DNS 設定を構成して、カスタム ドメインで Azure のアプリケーションやデータをインターネットに公開する方法について説明します。  これらの例では、Azure ポータルを使用します。
 services: cloud-services
 documentationcenter: .net
-author: Thraka
+author: jpconnock
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5783a246-a151-4fb1-b488-441bfb29ee44
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: adegeo
-ms.openlocfilehash: 139ec6578dc9e76039c5fb13e7a7741aa8ba4e0d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.author: jeconnoc
+ms.openlocfilehash: e339d50a379015d7aebe19b25127e9804d8efc52
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237249"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
 クラウド サービスを作成するときに、Azure は **cloudapp.net**のサブドメインにそのアプリを割り当てます。 たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは http://contoso.cloudapp.net のような URL でアプリケーションにアクセスできます。 また Azure によって仮想 IP アドレスも割り当てられます。
 
-ただし、 **contoso.com**のような独自のドメイン名を使用してアプリケーションを公開することもできます。この記事では、クラウド サービス Web ロールのカスタム ドメイン名を予約または構成する方法について説明します
+ただし、 **contoso.com**のような独自のドメイン名を使用してアプリケーションを公開することもできます。 この記事では、クラウド サービス Web ロールのカスタム ドメイン名を予約または構成する方法について説明します
 
 CNAME レコードと A レコードについてすでに理解している場合は、 [説明を読まずに次に進みます](#add-a-cname-record-for-your-custom-domain)。
 
@@ -35,7 +36,7 @@ CNAME レコードと A レコードについてすでに理解している場�
 <p/>
 
 > [!TIP]
-> より速く進める --新しい Azure の使用 [チュートリアル ガイド](http://support.microsoft.com/kb/2990804)!  Azure Cloud Services  または Azure Websites を使用したカスタム ドメイン名の関連付けおよび通信 (SSL) のセキュリティ保護がすばやく行えます。
+> より速く進める --新しい Azure の使用 [チュートリアル ガイド](https://support.microsoft.com/kb/2990804)!  Azure Cloud Services  または Azure Websites を使用したカスタム ドメイン名の関連付けおよび通信 (SSL) のセキュリティ保護がすばやく行えます。
 > 
 > 
 
@@ -46,7 +47,7 @@ CNAME レコード (またはエイリアス レコード) および A レコー
 CNAME レコードは、 *contoso.com* や **contoso.com** or **特定の**ドメインを正規のドメイン名にマップします。 この場合、正規のドメイン名は Azure ホステッド アプリケーションの **[myapp].cloudapp.net** ドメイン名です。 作成すると、CNAME は **[myapp].cloudapp.net**のエイリアスを作成します。 CNAME エントリは **[myapp].cloudapp.net** サービスの IP アドレスを自動的に解決するため、クラウド サービスの IP アドレスが変更されても、特別な対応をする必要はありません。
 
 > [!NOTE]
-> いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、[CNAME レコードに関するウィキペディアの項目](http://en.wikipedia.org/wiki/CNAME_record)、または [IETF ドメイン名 - 実装と仕様書](http://tools.ietf.org/html/rfc1035)を参照してください。
+> いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com など) のみです。 CNAME レコードの詳細については、レジストラーが提供するドキュメント、[CNAME レコードに関するウィキペディアの項目](http://en.wikipedia.org/wiki/CNAME_record)、または [IETF ドメイン名 - 実装と仕様書](http://tools.ietf.org/html/rfc1035)を参照してください。
 > 
 > 
 
@@ -79,7 +80,7 @@ CNAME レコードを作成するには、レジストラーから提供され�
      CNAME レコードを作成する場合に必要になるため、いずれかの方法で返された URL で使用されているドメイン名を保存します。
 2. DNS レジストラーの Web サイトにログオンし、DNS の管理ページに移動します。 **[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。
 3. ここで CNAME レコードを選択または入力する場所を探します。 一覧からレコードの種類を選択するか、詳細設定ページに進まなければならない場合があります。 "**CNAME**"、"**エイリアス**"、または "**サブドメイン**" という単語を探します。
-4. また、**www.customdomain.com** のエイリアスを作成する場合は、CNAME のドメインまたはサブドメイン エイリアス (**www** など) を指定する必要があります。ルート ドメインのエイリアスを作成する場合は、レジストラーの DNS ツールに '**@**' シンボルとして示される場合があります。
+4. また、**www.customdomain.com** のエイリアスを作成する場合は、CNAME のドメインまたはサブドメイン エイリアス (**www** など) を指定する必要があります。 ルート ドメインのエイリアスを作成する場合は、レジストラーの DNS ツールに '**@**' シンボルとして示される場合があります。
 5. 次に、正規のホスト名 (ここではアプリケーションの **cloudapp.net** ドメイン) を指定します。
 
 たとえば、次の CNAME レコードでは、すべてのトラフィックが **www.contoso.com** から、デプロイされたアプリケーションのカスタム DNS 名である **contoso.cloudapp.net** に転送されます。
@@ -114,7 +115,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
      A レコードを作成する場合に必要になるため、IP アドレスを保存します。
 2. DNS レジストラーの Web サイトにログオンし、DNS の管理ページに移動します。 **[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。
 3. ここで A レコードを選択または入力する場所を探します。 一覧からレコードの種類を選択するか、詳細設定ページに進まなければならない場合があります。
-4. この A レコードを使用するドメインまたはサブドメインを選択または入力します。 たとえば、**www.customdomain.com** のエイリアスを作成する場合は **www** を選択します。すべてのサブドメインのワイルドカード エントリを作成する場合は、「*****」と入力します。 これは、**mail.customdomain.com**、**login.customdomain.com**、**www.customdomain.com** などすべてのサブドメインを対象とします。
+4. この A レコードを使用するドメインまたはサブドメインを選択または入力します。 たとえば、**www.customdomain.com** のエイリアスを作成する場合は **www** を選択します。 すべてのサブドメインのワイルドカード エントリを作成する場合は、「*****」と入力します。 これは、**mail.customdomain.com**、**login.customdomain.com**、**www.customdomain.com** などすべてのサブドメインを対象とします。
    
     ルート ドメインに A レコードを作成する場合は、レジストラーの DNS ツールに '**@**' シンボルとして示される場合があります。
 5. 表示されたフィールドのクラウド サービスの IP アドレスを入力します。 これによって、A レコードで使用されるドメイン エントリがクラウド サービスのデプロイの IP アドレスに関連付けられます。
@@ -123,7 +124,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 
 | ホスト名/サブドメイン | IP アドレス |
 | --- | --- |
-| @ |137.135.70.239 |
+| \@ |137.135.70.239 |
 
 この例では、ルート ドメインの A レコードを作成する方法を示します。 すべてのサブドメインを対象とするワイルドカードを作成する場合は、サブドメインとして「*****」と入力します。
 

@@ -1,24 +1,20 @@
 ---
-title: 'Stream Analytics: 入力と出力のログイン資格情報の交換 | Microsoft Docs'
-description: Stream Analytics の入力と出力の資格情報を更新する方法について説明します。
-keywords: ログイン資格情報
+title: Azure Stream Analytics ジョブでログイン資格情報を交換する
+description: この記事では、Azure Stream Analytics ジョブの入力および出力シンクの資格情報を更新する方法について説明します。
 services: stream-analytics
-documentationcenter: ''
-author: SnehaGunda
+author: jasonwhowell
+ms.author: mamccrea
 manager: kfile
-ms.assetid: 42ae83e1-cd33-49bb-a455-a39a7c151ea4
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 01/11/2018
-ms.author: sngun
-ms.openlocfilehash: d01e5d9f0bbfe6ca3ef8511aeb813cead3809f04
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 362fdca3b9a54ea0a8785ae37b32b88cbe0f67ba
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978776"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Stream Analytics ジョブの入力と出力のログイン資格情報の交換
 

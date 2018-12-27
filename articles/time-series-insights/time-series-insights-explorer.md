@@ -1,27 +1,37 @@
 ---
-title: "Azure Time Series Insights エクスプローラーを使用してデータを調査する | Microsoft Docs"
-description: "この記事では、Web ブラウザーで Azure Time Series Insights エクスプローラーを使用して、ビッグ データの全体像をすばやく表示したり、IoT 環境を検証したりする方法について説明します。"
-services: time-series-insights
+title: Azure Time Series Insights エクスプローラーを使用してデータを調査する | Microsoft Docs
+description: この記事では、Web ブラウザーで Azure Time Series Insights エクスプローラーを使用して、ビッグ データの全体像をすばやく表示したり、IoT 環境を検証したりする方法について説明します。
 ms.service: time-series-insights
-author: MarkMcGeeAtAquent
-ms.author: kfile
-manager: jhubbard
-editor: MicrosoftDocs/tsidocs
+services: time-series-insights
+author: ashannon7
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: d09292cce1414a1b89e4b75df27d0a689738b4d6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f4a9d09aa701d490e8391d68435e672ff49c771c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364234"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights エクスプローラー
 この記事では、Time Series Insights エクスプローラー Web アプリ内で使用できるさまざまな機能とオプションについて説明します。 Web ブラウザーで Time Series Insights エクスプローラーを使用して、データを視覚化します。
  
-Azure Time Series Insights は、数十億件の IoT イベントを同時に簡単に調査および分析できるようにする、完全管理型の分析、ストレージ、および視覚化サービスです。 データの全体像が示され、これを使用してすばやく IoT ソリューションを検証したり、ミッション クリティカルなデバイスに発生するコストのかかるダウンタイムを回避したりできます。 ほぼリアルタイムで隠れた傾向を発見したり、異常を特定したり、根本原因分析を実施したりできます。 現在、Time Series Insights エクスプローラーはパブリック プレビュー段階にあります。
+Azure Time Series Insights は、数十億件の IoT イベントを同時に簡単に調査および分析できるようにする、フル マネージドの分析、ストレージ、および視覚化サービスです。 データの全体像が示され、これを使用してすばやく IoT ソリューションを検証したり、ミッション クリティカルなデバイスに発生するコストのかかるダウンタイムを回避したりできます。 ほぼリアルタイムで隠れた傾向を発見したり、異常を特定したり、根本原因分析を実施したりできます。 現在、Time Series Insights エクスプローラーはパブリック プレビュー段階にあります。
+
+## <a name="video"></a>ビデオ:
+
+このビデオでは、Time Series Insights エクスプ ローラーを使用してデータのクエリを実行する方法について説明します。 
+
+このビデオは、Video Time Series Insights に基づきます。  
+<span style="color:blue">Azure IoT Solution Accelerator を利用して、Time Series Insights の使用を開始します。</span>
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,7 +65,7 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
       - **[述語]**:  述語を使用すると、次に示す一連のオペランドを使用して、イベントをすばやくフィルター処理できます。 選択/クリックによって検索を実施した場合、述語はその検索に基づいて自動的に更新されます。      サポートされるオペランドの型には以下が含まれます。
 
-         |操作  |サポートされている型  |メモ  |
+         |Operation  |サポートされている型  |メモ  |
          |---------|---------|---------|
          |<、>、<=、>=     |  Double、DateTime、TimeSpan       |         |
          |=、!=、<>     | String、Bool、Double、DateTime、TimeSpan、NULL        |         |
@@ -94,7 +104,7 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
 12. **[イベント]**:  選択または右クリックして [Explore Events]\(イベントの探索\) を選択すると、イベント パネルが利用可能になります。  ここでは、すべての未加工のイベントを表示したり、イベントを JSON または CSV ファイルとしてエクスポートしたりできます。 Time Series Insights により、すべての生データが格納されます。
 
-   ![イベント](media/time-series-insights-explorer/explorer7.png)
+   ![events](media/time-series-insights-explorer/explorer7.png)
 
 13. イベントを調査した後、**[統計]** タブをクリックしてパターンと列の統計を公開します。  
 

@@ -1,7 +1,16 @@
-
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 2df08968ad66bd330611b975c045c9e9c9b240aa
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226708"
+---
 環境や選択肢によっては、このスクリプトにより、Azure 仮想ネットワーク、ストレージ アカウント、クラウド サービス、ドメイン コントローラー、リモートまたはローカルの SQL データベース、ヘッド ノード、その他のクラスター ノードを含む、すべてのクラスター インフラストラクチャを作成できます。 また、既存の Azure インフラストラクチャを使用し、HPC クラスター ノードだけを作成することもできます。
 
 HPC Pack クラスターの計画に関する背景情報については、HPC Pack 2012 R2 TechNet ライブラリの[製品の評価と計画](https://technet.microsoft.com/library/jj899596.aspx)および[概要](https://technet.microsoft.com/library/jj899590.aspx)に関する各ページを参照してください。

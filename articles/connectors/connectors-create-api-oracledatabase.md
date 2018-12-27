@@ -1,25 +1,22 @@
 ---
-title: Azure Logic Apps に Oracle Database コネクタを追加する | Microsoft Docs
-description: ロジック アプリで Oracle Database コネクタを使用します
-services: ''
-documentationcenter: ''
+title: Oracle Database に接続する - Azure Logic Apps | Microsoft Docs
+description: Oracle Database REST API と Azure Logic Apps を使用して、レコードを挿入および管理します
 author: ecfan
-manager: anneta
-editor: ''
-tags: connectors
-ms.assetid: ''
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+manager: jeconnoc
+ms.author: estfan
 ms.date: 03/29/2017
-ms.author: estfan; ladocs
-ms.openlocfilehash: 57931b6c2f96debeb9ab7f1a3b6700f23e7d2a7e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 78ac8f83bceef88e89edefa0eececb058e8efe2b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230235"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
 
@@ -39,9 +36,9 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 * オンプレミスのデータ ゲートウェイをインストールする。 手順については、「[ロジック アプリからオンプレミスのデータに接続する](../logic-apps/logic-apps-gateway-connection.md)」を参照してください。 ゲートウェイは、オンプレミスの Oracle Database、または Oracle DB がインストールされている Azure VM に接続するために必要です。 
 
     > [!NOTE]
-    > オンプレミスのデータ ゲートウェイはブリッジとして機能し、オンプレミスのデータ (クラウドにないデータ) とロジック アプリの間に、セキュリティで保護されたデータ転送を提供します。 そのゲートウェイは、複数のサービス、および複数のデータ ソースで使用できます。 したがって、ゲートウェイをインストールするのは 1 回だけで済みます。
+    > オンプレミスのデータ ゲートウェイはブリッジとして機能し、オンプレミスのデータ (クラウドにないデータ) とロジック アプリの間に、セキュリティで保護されたデータ転送を提供します。 そのゲートウェイは、複数のサービス、および複数のデータ ソースで使用できます。 したがって、ゲートウェイをインストールするのは 1 回だけで済みます。
 
-* オンプレミスのデータ ゲートウェイをインストールしたコンピューターで Oracle クライアントをインストールする。 必ず Oracle から 64 ビット Oracle Data Provider for .NET をインストールします。  
+* オンプレミスのデータ ゲートウェイをインストールしたコンピューターで Oracle クライアントをインストールする。 必ず Oracle から 64 ビット Oracle Data Provider for .NET をインストールします。  
 
   [64 ビット ODAC 12c Release 4 (12.1.0.2.4) for Windows x64](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
@@ -100,25 +97,25 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 #### <a name="error-cannot-reach-the-gateway"></a>**エラー**: ゲートウェイに接続できません
 
-**原因**: オンプレミスのデータ ゲートウェイがクラウドに接続できません。 
+**原因**: オンプレミスのデータ ゲートウェイがクラウドに接続できません。 
 
-**対応策**: ゲートウェイをインストールしたオンプレミスのコンピューターで、そのゲートウェイが実行されていること、およびインターネットに接続できることを確認します。  オフまたはスリープ状態のコンピューターにはゲートウェイをインストールしないことをお勧めします。 オンプレミスのデータ ゲートウェイ サービス (PBIEgwService) を再起動することもできます。
+**対応策**: ゲートウェイをインストールしたオンプレミスのコンピューターで、そのゲートウェイが実行されていること、およびインターネットに接続できることを確認します。  オフまたはスリープ状態のコンピューターにはゲートウェイをインストールしないことをお勧めします。 オンプレミスのデータ ゲートウェイ サービス (PBIEgwService) を再起動することもできます。
 
 #### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**エラー**: 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) を参照して、公式のプロバイダーをインストールしてください。
 
-**原因**: オンプレミスのデータ ゲートウェイが実行されているコンピューターに Oracle クライアント SDK がインストールされていません。  
+**原因**: オンプレミスのデータ ゲートウェイが実行されているコンピューターに Oracle クライアント SDK がインストールされていません。  
 
 **解決策**: Oracle クライアント SDK をダウンロードして、オンプレミスのデータ ゲートウェイと同じコンピューターにインストールします。
 
 #### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**エラー**: テーブル '[Tablename]' には、キー列が定義されていません
 
-**原因**: テーブルに主キーがありません。  
+**原因**: テーブルに主キーがありません。  
 
 **解決策**: Oracle Database コネクタでは、主キー列が含まれるテーブルを使用する必要があります。
 
 #### <a name="currently-not-supported"></a>以下は現在サポートされていません
 
-* ビューとストアド プロシージャ 
+* ビューとストアド プロシージャ 
 * 複合キーが含まれるテーブル
 * テーブル内の入れ子になったオブジェクトの種類
  
@@ -130,7 +127,7 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 [Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)では、質問の投稿や質問への回答を行うことができるほか、他の Logic Apps ユーザーがどのようなことを行っているかがわかります。 
 
-[http://aka.ms/logicapps-wish](http://aka.ms/logicapps-wish) では、Logic Apps やコネクタの機能向上に役立つ皆様の投票や提案をお待ちしています。 
+[https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) では、Logic Apps やコネクタの機能向上に役立つ皆様の投票や提案をお待ちしています。 
 
 
 ## <a name="next-steps"></a>次の手順

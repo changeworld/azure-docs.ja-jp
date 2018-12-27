@@ -1,24 +1,25 @@
 ---
-title: "認証 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威への対応"
+title: 認証 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 1ac614156755b9b29db7c968c708a5cff706f7a8
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: b4b6e91f9b20166f63a4710f42726bf1d4090022
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251561"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム: 認証 | 対応策 
 | 製品/サービス | 記事 |
@@ -118,7 +119,7 @@ ms.lasthandoff: 01/24/2018
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | OnPrem |
 | **属性**              | SQL バージョン - すべて |
@@ -129,7 +130,7 @@ ms.lasthandoff: 01/24/2018
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure |
 | **属性**              | SQL バージョン - V12 |
@@ -140,7 +141,7 @@ ms.lasthandoff: 01/24/2018
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -151,11 +152,11 @@ ms.lasthandoff: 01/24/2018
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | OnPrem、SQL Azure |
 | **属性**              | SQL バージョン - MSSQL2012、SQL バージョン - V12 |
-| **参照**              | [包含データベースでのセキュリティのベスト プラクティス](http://msdn.microsoft.com/library/ff929055.aspx) |
+| **参照**              | [包含データベースでのセキュリティのベスト プラクティス](https://msdn.microsoft.com/library/ff929055.aspx) |
 | **手順** | パスワード ポリシーが適用されていないと、包含データベースで脆弱な資格情報が作成される可能性が高くなる場合があります。 Windows 認証を使用してください。 |
 
 ## <a id="authn-sas-tokens"></a>SaS トークンを使用したデバイスごとの認証資格情報を使用する
@@ -174,7 +175,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Multi-Factor Authentication とは](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
@@ -185,7 +186,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure  |
 | **参照**              | [Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
@@ -196,7 +197,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure、環境、 - スタンドアロン |
 | **参照**              | [Service Fabric クライアントとノードの間の証明書セキュリティ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security)、[クライアント証明書を使用したセキュリティ保護されたクラスターへの接続](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
@@ -207,7 +208,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure |
 | **参照**              | [クラスターのセキュリティ シナリオ - セキュリティに関する推奨事項](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
@@ -218,7 +219,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure |
 | **参照**              | [X.509 証明書と Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
@@ -240,7 +241,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Identity Server | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Identity Server のデプロイ - キャッシュ](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -251,7 +252,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -305,7 +306,7 @@ ms.lasthandoff: 01/24/2018
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | クライアント資格情報の種類 - なし |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
 | **手順** | 認証が存在しないということは、すべてのユーザーがこのサービスにアクセスできるということです。 クライアントを認証しないサービスでは、すべてのユーザーへのアクセスが許可されます。 アプリケーションは、クライアントの資格情報に対して認証を行うように構成してください。 これを行うには、メッセージ clientCredentialType を Windows または証明書に設定します。 |
 
 ### <a name="example"></a>例
@@ -321,7 +322,7 @@ ms.lasthandoff: 01/24/2018
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | クライアント資格情報の種類 - なし |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
 | **手順** | 認証が存在しないということは、すべてのユーザーがこのサービスにアクセスできるということです。 クライアントを認証しないサービスでは、すべてのユーザーがその機能にアクセスできます。 アプリケーションは、クライアントの資格情報に対して認証を行うように構成してください。 これを行うには、トランスポート clientCredentialType を Windows または証明書に設定します。 |
 
 ### <a name="example"></a>例

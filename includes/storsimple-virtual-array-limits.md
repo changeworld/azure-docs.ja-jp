@@ -1,5 +1,16 @@
-
-
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 658fd9178495f14274c85eab2129c9dcd3be7693
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164946"
+---
 | **制限の種類** | **制限** | **説明** |
 | --- | --- | --- |
 | 総容量 (クラウドを含む) |仮想デバイスあたり最大 64 TB |StorSimple Virtual Array 全体を別の空のアレイにフェールオーバーできます。 同じデバイスに復元する場合は、デバイスにこの操作を実行できるだけの十分な領域があることを確認してください。 32 TB を超えると、同じデバイスには復元できません。 |

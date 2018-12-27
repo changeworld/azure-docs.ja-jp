@@ -1,22 +1,21 @@
 ---
-title: "C# を使用して TPM デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs"
-description: "Azure クイックスタート - C# サービス SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録する"
-services: iot-dps
-keywords: 
-author: JimacoMS2
-ms.author: v-jamebr
+title: C# を使用して TPM デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs
+description: Azure クイック スタート - C# サービス SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録します。このクイック スタートでは、個別登録を使用します。
+author: wesmc7777
+ms.author: wesmc
 ms.date: 01/16/2018
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
-ms.devlang: na
+ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 5a1da25a37cdfb451b88c058b5b2a04856f1155c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 48409fec8a9edd8a56f6e0664e1451e9677c4281
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155036"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>C# サービス SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
@@ -35,14 +34,14 @@ ms.lasthandoff: 02/21/2018
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>プロビジョニング サービスの接続文字列を取得する
 
 このクイックスタートのサンプルには、プロビジョニング サービスの接続文字列が必要です。
-1. Azure Portal にログインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning サービスを開きます。 
+1. Azure portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。 
 2. **共有アクセス ポリシー**をクリックし、プロパティを開くために使用するアクセス ポリシーをクリックします。 **[アクセス ポリシー]** ウィンドウで、主キーの接続文字列をコピーしてメモします。 
 
     ![ポータルからプロビジョニング サービスの接続文字列を取得する](media/quick-enroll-device-tpm-csharp/get-service-connection-string.png)
 
 ## <a name="create-the-individual-enrollment-sample"></a>個々の登録サンプルを作成する 
 
-このセクションの手順では、TPM デバイスの個々の登録をプロビジョニング サービスに追加する .NET Core コンソール アプリを作成する方法について説明します。 これらの手順を一部変更して実行し、個々の登録を追加する [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) コンソール アプリを作成することもできます。 IoT Core での開発について詳しくは、[Windows IoT Core の開発者ドキュメント](https://docs.microsoft.com/en-us/windows/iot-core/)に関するページを参照してください。
+このセクションの手順では、TPM デバイスの個々の登録をプロビジョニング サービスに追加する .NET Core コンソール アプリを作成する方法について説明します。 これらの手順を一部変更して実行し、個々の登録を追加する [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) コンソール アプリを作成することもできます。 IoT Core での開発について詳しくは、[Windows IoT Core の開発者ドキュメント](https://docs.microsoft.com/windows/iot-core/)に関するページを参照してください。
 1. Visual Studio で、**コンソール アプリ (.NET Core)** プロジェクト テンプレートを使用して、Visual C# .NET Core コンソール アプリ プロジェクトを新しいソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **CreateTpmEnrollment** という名前を付けます。
 
     ![New Visual C# Windows Classic Desktop project](media//quick-enroll-device-tpm-csharp/create-app.png)

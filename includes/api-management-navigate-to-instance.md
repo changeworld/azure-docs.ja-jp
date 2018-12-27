@@ -1,18 +1,32 @@
-## <a name="navigate-to-your-apim-instance"></a>APIM インスタンスに移動する
+---
+author: vladvino
+ms.service: api-management
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: vlvinogr
+ms.openlocfilehash: 3a46462f761e7608ae7554604577a1e9d7f88b15
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572354"
+---
+## <a name="go-to-your-api-management-instance"></a>API Management インスタンスに移動します。
 
-APIM インスタンスに移動するには、次の手順に従います。
+![API Management インスタンスに移動](./media/api-management-navigate-to-instance/00-FindResource-01.png)
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
-2. 画面左上の **[すべてのサービス]** を選択します。  
-3. 検索ボックスに、「api」と入力します。
-4. **[API Management サービス]** をクリックします。
 
-    ![移動する。](./media/api-management-navigate-to-instance/navigate-to-api-management-services.png)
+2. **[すべてのサービス]** を選択します。  
 
-5. APIM サービス インスタンスを選びます。
+3. 検索ボックスに「 `api management`」と入力します。
 
->[!TIP]
->Azure Portal で、星をクリックして API Management (APIM) をお気に入りに追加します。 <br/>これにより、ポータルの左側のメニューに APIM アイコンが追加されます。 すべての APIM サービスを表示するには、アイコン (![APIM アイコン](./media/api-management-navigate-to-instance/apim-icon.png)) をクリックします。
- 
+4. 検索結果で、**[API Management サービス]** を選択します。
 
+5. お使いの API Management サービス インスタンスを選択します。
+
+> [!TIP]
+> Azure portal で API Management をお気に入りに追加するには、星を選択します。
+>
+> API Management アイコン (![API Management アイコン](./media/api-management-navigate-to-instance/apim-icon.png)) が、ポータルの左側のメニューに表示されます。
 

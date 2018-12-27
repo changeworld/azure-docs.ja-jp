@@ -1,70 +1,61 @@
 ---
-title: "Azure IoT Hub のカスタム エンドポイントについて | Microsoft Docs"
-description: "開発者ガイド - カスタム エンドポイントへの device-to-cloud メッセージのルーティングにルーティング ルールを使用します。"
-services: iot-hub
-documentationcenter: .net
+title: Azure IoT Hub のカスタム エンドポイントについて | Microsoft Docs
+description: 開発者ガイド - ルーティング クエリを使用して、カスタム エンドポイントに device-to-cloud メッセージのルーティングします。
 author: dominicbetts
 manager: timlt
-editor: 
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/29/2018
+services: iot-hub
+ms.topic: conceptual
+ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: a40fa94260b488e9c01ac09b22da8c0677d73968
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: bbd5058be502839f83db484136d1c97bac4a3d79
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585953"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>device-to-cloud メッセージにメッセージ ルートとカスタム エンドポイントを使用する
 
-IoT Hub では、メッセージ プロパティに基づいて、IoT Hub サービス向けのエンドポイントに [device-to-cloud メッセージ][lnk-device-to-cloud]をルーティングできます。 ルーティング ルールによってメッセージ送信を柔軟に実行できるため、メッセージにサービスやカスタム コードを追加する必要はありません。 各ルーティング ルールには、次のプロパティがあります。
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
+
+IoT Hub の[メッセージ ルーティング](iot-hub-devguide-routing-query-syntax.md)を使用すると、サービスに接続するエンドポイントに device-to-cloud メッセージをルーティングすることができます。 また、ルーティングでは、エンドポイントにルーティングする前にデータをフィルター処理するクエリ機能も提供されています。 各ルーティング クエリには、次のプロパティがあります。
 
 | プロパティ      | [説明] |
 | ------------- | ----------- |
-| **名前**      | ルールを識別する一意の名前。 |
+| **名前**      | クエリを識別する一意の名前。 |
 | **ソース**    | 処理するデータ ストリームの元データ。 たとえば、デバイス テレメトリです。 |
-| **Condition** | メッセージのヘッダーと本文に対して実行され、エンドポイントと一致するかどうかを確認するルーティング ルールのクエリ式。 ルート条件の構築の詳細については、[リファレンス - デバイス ツインとジョブのクエリ言語][lnk-devguide-query-language]に関する記事を参照してください。 |
-| **エンドポイント**  | IoT Hub が条件に一致するメッセージを送信するエンドポイントの名前。 エンドポイントは、IoT Hub と同じリージョン内に存在する必要があり、そうでない場合は、リージョン間の書き込みに対して課金されるおそれがあります。 |
+| **Condition** | エンドポイントと一致するかどうかを確認するために、メッセージ アプリケーションのプロパティ、システムのプロパティ、メッセージ本文、デバイス ツインのタグ、デバイス ツインのプロパティに対して実行されるルーティング クエリのクエリ式。 クエリの作成方法について詳しくは、[メッセージ ルーティング クエリの構文](iot-hub-devguide-routing-query-syntax.md)に関するページをご覧ください。 |
+| **エンドポイント**  | クエリに一致するメッセージを IoT Hub が送信するエンドポイントの名前。 お使いの IoT ハブと同じリージョンのエンドポイントを選択することをお勧めします。 |
 
-1 つのメッセージが複数のルーティング ルールの条件と一致することがあり、その場合、IoT Hub は一致する各ルールに関連するエンドポイントにメッセージを送信します。 IoT Hub はメッセージ配信の重複を自動的に排除するため、あるメッセージが複数のルールに一致し、それらのルールの配信先が同じであった場合は、配信先には 1 度のみメッセージが書き込まれます。
+1 つのメッセージが複数のルーティング クエリの条件と一致することがあり、その場合、IoT Hub は一致する各クエリに関連するエンドポイントにメッセージを送信します。 IoT Hub はメッセージ配信の重複を自動的に排除するため、あるメッセージが複数のクエリに一致し、それらのルールの配信先が同じであった場合は、配信先には 1 度のみメッセージが書き込まれます。
 
-IoT hub は、既定の[組み込みのエンドポイント][lnk-built-in]を持ちます。 サブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
+## <a name="endpoints-and-routing"></a>エンドポイントとルーティング
 
-ルーティングとカスタム エンドポイントを使用すると、メッセージは、規則に一致しない場合、組み込みのエンドポイントにのみ配信されます。 メッセージを組み込みのエンドポイントとカスタム エンドポイントに配信するには、**イベント** エンドポイントにメッセージを送信するルートを追加します。
+IoT ハブは、既定の[組み込みのエンドポイント](iot-hub-devguide-messages-read-builtin.md)を持ちます。 サブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
+
+ルーティングとカスタム エンドポイントを使用すると、メッセージは、クエリに一致しない場合、組み込みのエンドポイントにのみ配信されます。 メッセージを組み込みのエンドポイントとカスタム エンドポイントに配信するには、**イベント** エンドポイントにメッセージを送信するルートを追加します。
 
 > [!NOTE]
-> IoT Hub は、Azure Storage コンテナーに BLOB としてデータを書き込む処理のみをサポートしています。
+> * IoT Hub は、Azure Storage コンテナーに BLOB としてデータを書き込む処理のみをサポートしています。
+> * **セッション**または**重複データ検出**が有効になっている Service Bus のキューおよびトピックは、カスタム エンドポイントとしてはサポートされていません。
 
-> [!WARNING]
-> **セッション**または**重複データ検出**が有効になっている Service Bus のキューおよびトピックは、カスタム エンドポイントとしてはサポートされていません。
-
-IoT Hub でのカスタム エンドポイントの作成の詳細については、[IoT Hub エンドポイント][lnk-devguide-endpoints]に関するページを参照してください。
+IoT Hub でのカスタム エンドポイントの作成の詳細については、[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関するページを参照してください。
 
 カスタム エンドポイントからの読み取りの詳細については、以下をご覧ください。
 
-* [Azure Storage コンテナー][lnk-getstarted-storage]から読み取ります。
-* [Event Hubs][lnk-getstarted-eh] から読み取ります。
-* [Service Bus キュー][lnk-getstarted-queue]から読み取ります。
-* [Service Bus トピック][lnk-getstarted-topic]から読み取ります。
+* [Azure Storage コンテナー](../storage/blobs/storage-blobs-introduction.md)からの読み取り。
 
-### <a name="next-steps"></a>次の手順
+* [Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) からの読み取り。
 
-IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント][lnk-devguide-endpoints]に関するページをご覧ください。
+* [Service Bus キュー](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)からの読み取り。
 
-ルーティング ルールの定義に使用するクエリ言語の詳細については、[デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語][lnk-devguide-query-language]に関するページをご覧ください。
+* [Service Bus トピック](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md)からの読み取り。
 
-[ルートを使用した IoT Hub の device-to-cloud メッセージの処理][lnk-d2c-tutorial]に関するチュートリアルでは、ルーティング ルールおよびカスタム エンドポイントを使用する方法を説明します。
+## <a name="next-steps"></a>次の手順
 
-[lnk-built-in]: iot-hub-devguide-messages-read-builtin.md
-[lnk-device-to-cloud]: iot-hub-devguide-messages-d2c.md
-[lnk-devguide-query-language]: iot-hub-devguide-query-language.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
-[lnk-getstarted-eh]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[lnk-getstarted-queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
-[lnk-getstarted-topic]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
-[lnk-getstarted-storage]: ../storage/blobs/storage-blobs-introduction.md
+* IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関するページをご覧ください。
+
+* ルーティング クエリの定義に使用するクエリ言語について詳しくは、[メッセージ ルーティング クエリの構文](iot-hub-devguide-routing-query-syntax.md)に関するページをご覧ください。
+
+* [ルートを使用した IoT Hub の device-to-cloud メッセージの処理](tutorial-routing.md)に関するチュートリアルでは、ルーティング クエリおよびカスタム エンドポイントを使用する方法が説明されています。

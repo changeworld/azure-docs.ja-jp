@@ -1,4 +1,16 @@
-
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: b397d77b525bdb63f2531634e397ec210d4a6202
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165618"
+---
 #### <a name="to-configure-remote-management-on-cloud-appliance"></a>クラウド アプライアンスのリモート管理を構成するには
 
 1. StorSimple デバイス マネージャー サービスで **[デバイス]** をクリックします。 サービスに接続されているデバイスの一覧から、クラウド アプライアンスを選択してクリックします。

@@ -1,21 +1,23 @@
 ---
 title: 複数の Azure SQL データベースにわたるレポート クエリの実行 | Microsoft Docs
 description: 分散クエリを使用したテナント間レポート。
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: articles
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewers: billgib,ayolubek
+manager: craigg
 ms.date: 04/01/2018
-ms.author: billgib
-ms.reviewer: sstein; AyoOlubeko
-ms.openlocfilehash: 9ea308cb933948d22c7b9b14b031b9fa15af9c88
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: e23b679d6c81d1a4103f010a9d13c35e80d4d2af
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240990"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>分散クエリを使用したテナント間レポート
 
@@ -104,7 +106,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
 1. *PowerShell ISE* で \\...Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1* を開きます。 
 
-1. **$DemoScenario = 2**(_アドホック レポート データベースをデプロイする)_ を設定します。
+1. **$DemoScenario = 2**(_アドホック レポート データベースをデプロイする_) を設定します。
 
 1. **F5** キーを押してスクリプトを実行し、*adhocreporting* データベースを作成します。
 
@@ -171,7 +173,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
    このクエリは、少しばかり複雑な結合と集計を行います。 ほとんどの処理は、リモートで発生します。  各会場の 1 日のチケット販売数を含む行のみがヘッド データベースに返されます。
 
-   ![クエリ](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
+   ![query](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
 
 
 ## <a name="next-steps"></a>次の手順

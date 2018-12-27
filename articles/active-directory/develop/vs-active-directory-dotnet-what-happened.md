@@ -1,25 +1,23 @@
 ---
-title: Azure AD への接続時に MVC プロジェクトに行われる変更 | Microsoft Docs
+title: Azure AD への接続時に MVC プロジェクトに行われる変更
 description: Visual Studio 接続済みサービスを使用して Azure AD に接続するときに MVC プロジェクトで何が起こるかについて説明します。
 services: active-directory
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
-ms.service: active-directory
-ms.workload: web
-ms.tgt_pltfrm: vs-what-happened
-ms.devlang: na
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure-vs
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev
-ms.openlocfilehash: 1925a32ce5745673c08af3f9cfe63090d4adfa23
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.custom: aaddev, vs-azure
+ms.openlocfilehash: f5ce147e61566ba75532103b4f17460e8029da12
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143742"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
 
@@ -166,5 +164,5 @@ ms.lasthandoff: 03/30/2018
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
-- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](guidedsetups/active-directory-aspnetwebapp-v1.md)
+- [Azure AD の認証シナリオ](authentication-scenarios.md)
+- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v1-aspnet-webapp.md)

@@ -1,25 +1,19 @@
 ---
-title: "Power BI で Azure Analysis Services に接続する | Microsoft Docs"
-description: "Azure Analysis Services サーバーに Power BI を使って接続する方法を説明します。"
-services: analysis-services
-documentationcenter: 
+title: Power BI で Azure Analysis Services に接続する | Microsoft Docs
+description: Azure Analysis Services サーバーに Power BI を使って接続する方法を説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/10/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 568c18fb0591284995f5986f98b3762a9d19b056
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.reviewer: minewiskan
+ms.openlocfilehash: 707bc41a2a66782d9540d95606c41685908e9848
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429707"
 ---
 # <a name="connect-with-power-bi"></a>Power BI を使用した接続
 

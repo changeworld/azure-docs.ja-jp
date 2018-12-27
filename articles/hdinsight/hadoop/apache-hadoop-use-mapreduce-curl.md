@@ -1,30 +1,24 @@
 ---
-title: "HDInsight での MapReduce と Hadoop の Curl の使用 - Azure | Microsoft Docs"
-description: "Curl を使用して HDInsight の Hadoop で MapReduce ジョブをリモートで実行する方法を説明します。"
+title: HDInsight 上の Apache Hadoop で MapReduce と Curl を使用する - Azure
+description: HDInsight 上の Apache Hadoop で Curl を使用して MapReduce ジョブをリモートで実行する方法を説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: bc6daf37-fcdc-467a-a8a8-6fb2f0f773d1
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: e48e9f833db86f01d944133c8a32d2c6b27b7b48
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: hrasheed
+ms.openlocfilehash: afa9b57d9c0e2acf81b5307273ac038e92073655
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632296"
 ---
-# <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>REST を使用して HDInsight の Hadoop で MapReduce ジョブを実行
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して MapReduce ジョブを実行する
 
-WebHCat REST API を使用して HDInsight クラスターの Hadoop で MapReduce ジョブを実行する方法を説明します。 Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし、MapReduce ジョブを実行する方法を示すために使用します。
+HDInsight クラスター上の Apache Hadoop で WebHCat REST API を使用して MapReduce ジョブを実行する方法を説明します。 Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし、MapReduce ジョブを実行する方法を示すために使用します。
 
 > [!NOTE]
 > Linux ベースの Hadoop サーバーは使い慣れているが、HDInsight は初めてという場合は、「[Linux ベースの HDInsight の Hadoop について知っておくべきこと](../hdinsight-hadoop-linux-information.md)」というドキュメントをご覧ください。
@@ -84,7 +78,7 @@ WebHCat REST API を使用して HDInsight クラスターの Hadoop で MapRedu
    * **-u**: 要求の認証に使用するユーザー名とパスワード
    * **-G**: この操作が GET 要求であることを示します
 
-   URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。
+   URL の最初の部分 **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** は、すべての要求で同じです。
 
 4. MapReduce ジョブを送信するには、次のコマンドを使用します。
 
@@ -147,7 +141,7 @@ WebHCat REST API を使用して HDInsight クラスターの Hadoop で MapRedu
 
 6. ジョブの状態が `SUCCEEDED` に変化したら、Azure Blob ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには出力ファイルの場所を含めます。 この例では、場所は `/example/curl` です。 このアドレスは、`/example/curl` にあるクラスターの既定ストレージにジョブの出力を格納します。
 
-これらのファイルを一覧表示およびダウンロードするには [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用します。 Azure CLI から Blob を操作することの詳細については、「[Azure Storage での Azure CLI 2.0 の使用](../../storage/common/storage-azure-cli.md#create-and-manage-blobs)」というドキュメントを参照してください。
+これらのファイルを一覧表示およびダウンロードするには [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)を使用します。 Azure CLI から Blob を操作する方法の詳細については、「[Azure Storage での Azure CLI の使用](../../storage/common/storage-azure-cli.md#create-and-manage-blobs)」というドキュメントを参照してください。
 
 ## <a id="nextsteps"></a>次のステップ
 

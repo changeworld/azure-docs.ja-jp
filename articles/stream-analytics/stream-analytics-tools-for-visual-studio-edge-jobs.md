@@ -1,26 +1,22 @@
 ---
-title: Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定 | Microsoft Docs
-description: Visual Studio の Stream Analytics ツールを使用して Stream Analytics Edge ジョブをオーサリング、デバッグ、および作成するためのチュートリアル。
-keywords: Visual Studio, NuGet, DevOps, Edge jobs, Stream analytics
-documentationcenter: ''
+title: Visual Studio の Azure Stream Analytics ツールでの Edge ジョブ
+description: この記事では、Visual Studio の Stream Analytics ツールを使って、Stream Analytics Edge ジョブのオーサリング、デバッグ、および作成を行う方法について説明します。
 services: stream-analytics
 author: su-jie
-manager: ''
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/13/2018
 ms.author: sujie
-ms.openlocfilehash: c6e1d0693035ef343e20cee4b09f0669e089afee
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/13/2018
+ms.openlocfilehash: 5dc90a1334b525c02be3eae2985900ab07cf2e05
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696250"
 ---
-# <a name="develop-stream-analytics-edge-jobs-by-using-visual-studio-tools"></a>Visual Studio ツールを使用して Stream Analytics Edge ジョブを作成する
+# <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する
 
 このチュートリアルでは、Visual Studio の Stream Analytics ツールを使用して、Stream Analytics ジョブのオーサリング、デバッグ、および作成を行う方法について説明します。 ジョブを作成してテストした後、 Azure Portal に移動して、それをデバイスに配置できます。 
 
@@ -53,7 +49,7 @@ Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]**
 
 1. **ソリューション エクスプローラー**で、**[入力]** ノードを展開します。**EdgeInput.json** という名前の入力が表示されます。 ダブルクリックしてその設定を表示します。  
 
-2. [ソースの種類] が **[Data Stream]** に、[ソース] が **[Edge Hub]** に、[イベントシリアル化形式] が **[Json]** に、[エンコード] が **[UTF8]** に設定されていることを確認します。 必要に応じて **[入力のエイリアス]**の名前を変更できますが、この例ではそのままにします。 入力の別名の名前を変更する場合は、クエリを定義するときに指定した名前を使用します。 **[保存]** を選択して設定を保存します。  
+2. [ソースの種類] が **[Data Stream]** に、[ソース] が **[Edge Hub]** に、[イベントシリアル化形式] が **[Json]** に、[エンコード] が **[UTF8]** に設定されていることを確認します。 必要に応じて **[入力のエイリアス]** の名前を変更できますが、この例ではそのままにします。 入力の別名の名前を変更する場合は、クエリを定義するときに指定した名前を使用します。 **[保存]** を選択して設定を保存します。  
    ![入力の構成](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
  
 
@@ -97,7 +93,7 @@ FROM EdgeInput
 4. ローカルで実行するか、Azure に送信できます。 クエリをテストするには、**[ローカルで実行]** を選択します。  
    ![実行オプション](./media/stream-analytics-tools-for-visual-studio-edge-jobs/run-options.png)
  
-5. コマンド プロンプト ウィンドウに、ジョブの状態が表示されます。 ジョブが正常に実行されると、プロジェクト フォルダーのパス "Visual Studio 2015\Projects\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42" に “2018-02-23-11-31-42” のようなフォルダーが作成されます。 フォルダー パスに移動して、ローカル フォルダー内の結果を表示します。
+5. コマンド プロンプト ウィンドウに、ジョブの状態が表示されます。 ジョブが正常に実行されると、プロジェクト フォルダーのパス "Visual Studio 2015\Projects\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42" に "2018-02-23-11-31-42" のようなフォルダーが作成されます。 フォルダー パスに移動して、ローカル フォルダー内の結果を表示します。
 
    Azure Portal にサインインし、ジョブが作成されたことを確認することもできます。 
 
@@ -105,7 +101,7 @@ FROM EdgeInput
 
 ## <a name="submit-the-job-to-azure"></a>ジョブを Azure に送信する
 
-1. Azure にジョブを送信する前に、Azure サブスクリプションに接続する必要があります。 **サーバー エクスプローラー**を開きます。**[Azure]** >  を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択し、Azure サブスクリプションにサインインします。  
+1. Azure にジョブを送信する前に、Azure サブスクリプションに接続する必要があります。 **サーバー エクスプローラー** を開きます。**[Azure]** >  を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択し、Azure サブスクリプションにサインインします。  
 
 2. Azure にジョブを送信するには、クエリ エディターに移動し、**[Azure に送信]** を選択します。  
 
@@ -117,7 +113,7 @@ FROM EdgeInput
 
 ## <a name="manage-the-job"></a>ジョブを管理する 
 
-サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー** > で、**[Stream Analytics]** を展開し、Edge ジョブを配置したサブスクリプションとリソース グループを展開します。MyASAEdgejob の状態が **[作成済み]** であることを確認できます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
+サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー**で、 > **[Stream Analytics]** を展開し、Edge ジョブを配置したサブスクリプションとリソース グループを展開します。MyASAEdgejob の状態が **[作成済み]** であることを確認できます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
 
 ![サーバー エクスプローラーのオプション](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  
@@ -127,6 +123,6 @@ FROM EdgeInput
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure IoT Edge の詳細](../iot-edge/how-iot-edge-works.md)
+* [Azure IoT Edge の詳細](../iot-edge/about-iot-edge.md)
 * [ASA on IoT Edge チュートリアル](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [このアンケートを使用してフィードバックをチームに送信する](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 

@@ -3,20 +3,24 @@ title: 'Always Encrypted: Azure SQL Database - Windows 証明書ストア | Micr
 description: この記事では、SQL Server Management Studio (SSMS) の Always Encrypted ウィザードを使って、SQL Database 内の機密データを保護する方法について説明します。 さらに、Windows 証明書ストアにキーを格納する方法も説明します。
 keywords: データの暗号化, sql 暗号化, データベースの暗号化, 機密データ, Always Encrypted
 services: sql-database
-author: stevestein
-manager: jhubbard
 ms.service: sql-database
-ms.custom: security
-ms.topic: article
-ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: 38c4a724cc963370e60ae796729476c3bbc0342a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: VanMSFT
+ms.author: vanto
+ms.reviwer: ''
+manager: craigg
+ms.date: 10/05/2018
+ms.openlocfilehash: 13e87ef0150924380c18c66c0362974ef599d4bf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231721"
 ---
-# <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: データベース暗号化を使用して SQL Database で機密データを保護し、Windows 証明書ストアで暗号化キーを格納する
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: 機密データを保護し、Windows 証明書ストアに暗号化キーを格納する
 
 この記事では、[SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) の [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)を使用して、SQL Database 内の機密データを保護する方法について説明します。 さらに、Windows 証明書ストアにキーを格納する方法も説明します。
 
@@ -67,7 +71,7 @@ SSMS を開き、Clinic データベースを作成したサーバーに接続�
 ## <a name="create-a-table"></a>テーブルを作成する
 このセクションでは、患者データを保持するテーブルを作成します。 これは最初は通常のテーブルで、次のセクションで暗号化を構成します。
 
-1. **[データベース]**を展開します。
+1. **[データベース]** を展開します。
 2. **Clinic** データベースを右クリックして、**[新しいクエリ]** をクリックします。
 3. [新しいクエリ] ウィンドウに次の Transact-SQL (T-SQL) を貼り付けて、 **実行** します。
 
@@ -89,7 +93,7 @@ SSMS を開き、Clinic データベースを作成したサーバーに接続�
 ## <a name="encrypt-columns-configure-always-encrypted"></a>列を暗号化する (Always Encrypted を構成する)
 SSMS に用意されているウィザードを使用すると、CMK、CEK、および暗号化する列を設定するだけで簡単に Always Encrypted を構成できます。
 
-1. **[データベース]** > **空の** > **[テーブル]**を使用して、SQL データベース内の機密データを保護する方法について説明します。
+1. **[データベース]** > **空の** > **[テーブル]** を使用して、SQL データベース内の機密データを保護する方法について説明します。
 2. **Patients** テーブルを右クリックして **[列の暗号化]** を選択すると、Always Encrypted ウィザードが起動します。
    
     ![[列の暗号化]](./media/sql-database-always-encrypted/encrypt-columns.png)
@@ -510,5 +514,5 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 * [透過的なデータ暗号化](https://msdn.microsoft.com/library/bb934049.aspx)
 * [SQL Server の暗号化](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Always Encrypted に関するブログ](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+* [Always Encrypted に関するブログ](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 

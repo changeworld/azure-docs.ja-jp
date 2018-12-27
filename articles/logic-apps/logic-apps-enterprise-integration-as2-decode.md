@@ -1,26 +1,23 @@
 ---
-title: "AS2 メッセージをデコードする - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps で Enterprise Integration Pack の AS2 デコーダーを使用する方法"
+title: AS2 メッセージをデコードする - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack で AS メッセージをデコードします
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: anneta
-editor: 
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.date: 01/27/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 4acae9f1837069c494985ff1456979490485f609
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
+ms.date: 08/08/2018
+ms.openlocfilehash: 06ffa6bddc1340ad548f9baf30eba65ba503bf73
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128283"
 ---
-# <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の AS2 メッセージをデコードする 
+# <a name="decode-as2-messages-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で AS2 メッセージをデコードする 
 
 メッセージを転送するときに、セキュリティと信頼性を確保するには、Decode AS2 Message コネクタを使用します。 このコネクタでは、デジタル署名、暗号化解除、およびメッセージ処理通知 (MDN) による受信確認が可能になります。
 
@@ -66,6 +63,7 @@ ms.lasthandoff: 01/19/2018
 
     ![要求の出力から本文とヘッダーを選択します。](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage5.png) 
 
+
 ## <a name="as2-decoder-details"></a>AS2 デコーダーの詳細
 
 Decode AS2 コネクタは次のタスクを実行します。 
@@ -74,6 +72,7 @@ Decode AS2 コネクタは次のタスクを実行します。
 * 署名を検証する (構成されている場合)
 * メッセージを解読する (構成されている場合)
 * メッセージを展開する (構成されている場合)
+* メッセージ ID の重複の確認と不許可 (構成されている場合)
 * 受信した MDN と元の送信メッセージを調整する
 * 否認不可データベースのレコードを更新し、関連付ける
 * AS2 状態レポート用のレコードを書き込む
@@ -81,6 +80,13 @@ Decode AS2 コネクタは次のタスクを実行します。
 * AS2 契約の構成に基づいて、MDN が必要かどうかや、MDN を同期にするか非同期にするかを判断する
 * 同期または非同期の MDN を生成する (契約の構成に基づいて)
 * MDN の関連付けトークンとプロパティを設定する
+
+
+  > [!NOTE]
+  > 証明書の管理に Azure Key Vault を使用する場合は、**復号化**操作を許可するようにキーを構成してください。
+  > それ以外の場合、AS2 のデコードが失敗します。
+  >
+  > ![キー コンテナーを復号化する](media/logic-apps-enterprise-integration-as2-decode/keyvault1.png)
 
 ## <a name="try-this-sample"></a>このサンプルの試用
 

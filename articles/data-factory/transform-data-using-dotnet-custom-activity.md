@@ -3,26 +3,26 @@ title: Azure Data Factory パイプラインでカスタム アクティビテ�
 description: カスタム アクティビティを作成して Azure Data Factory パイプラインで使用する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 770187c16ed9d0eacfaf99e571ad048c6723a9cf
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: conceptual
+ms.date: 10/18/2018
+ms.author: douglasl
+ms.openlocfilehash: 77e5d6c278436a1fc192421c9867106409389a66
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888223"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-use-custom-activities.md)
-> * [バージョン 2 - プレビュー](transform-data-using-dotnet-custom-activity.md)
+> * [Version 1](v1/data-factory-use-custom-activities.md)
+> * [現在のバージョン](transform-data-using-dotnet-custom-activity.md)
 
 Azure Data Factory パイプラインでは、2 種類のアクティビティを使用できます。
 
@@ -30,10 +30,6 @@ Azure Data Factory パイプラインでは、2 種類のアクティビティ�
 - Azure HDInsight、Azure Batch、Azure Machine Learning などのコンピューティング サービスを使用してデータを変換する[データ変換アクティビティ](transform-data.md)。 
 
 Data Factory でサポートされていないデータ ストアとの間でデータを移動する場合や、Data Factory でサポートされていない方法でデータを変換/処理する場合は、独自のデータ移動ロジックまたはデータ変換ロジックで**カスタム アクティビティ**を作成し、パイプラインでそのアクティビティを使用します。 カスタム アクティビティでは、仮想マシンの **Azure Batch** プールでカスタマイズされたコード ロジックを実行します。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 の (カスタム) DotNet アクティビティ](v1/data-factory-use-custom-activities.md)に関するページを参照してください。
- 
 
 Azure Batch サービスを初めて利用する場合は、次の記事をご覧ください。
 
@@ -61,10 +57,6 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
                 "referenceName": "StorageLinkedService",
                 "type": "LinkedServiceReference"
             }
-        }
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
         }
     }
 }
@@ -105,17 +97,21 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 
 次の表は、このアクティビティに固有のプロパティの名前と説明です。 
 
-| プロパティ              | [説明]                              | 必須 |
+| プロパティ              | 説明                              | 必須 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | パイプラインのアクティビティの名前。     | [はい]      |
-| 説明           | アクティビティの動作を説明するテキスト。  | いいえ        |
-| 型                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | [はい]      |
-| 既定のコンテナー     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | [はい]      |
+| description           | アクティビティの動作を説明するテキスト。  | いいえ        |
+| type                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | [はい]      |
+| linkedServiceName     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | [はい]      |
 | コマンド               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | [はい]      |
 | resourceLinkedService | カスタム アプリケーションが格納されているストレージ アカウントへの Azure Storage のリンクされたサービス。 | いいえ        |
-| folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。 | いいえ        |
+| folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。<br/><br/>依存関係ファイルをサブフォルダーに置いている場合 (つまり、*folderPath* の下のフォルダー階層構造内に置いている場合)、現在の動作では、ファイルが Azure Batch にコピーされるときに、フォルダー構造がフラット化されます。 つまり、すべてのファイルは、サブフォルダーを使用せず、1 つのフォルダーにコピーされます。 この問題を回避するには、ファイルを圧縮し、圧縮されたファイルをコピーした後、目的の場所でカスタム コードと共に解凍することを検討してください。 | いいえ        |
 | referenceObjects      | 既存のリンクされたサービスとデータセットの配列。 カスタム コードが Data Factory のリソースを参照できるように、参照されているリンクされたサービスとデータセットが JSON 形式でカスタム アプリケーションに渡されます。 | いいえ        |
 | extendedProperties    | カスタム コードが追加のプロパティを参照できるように、JSON 形式でカスタム アプリケーションに渡すことができるユーザー定義プロパティ。 | いいえ        |
+
+## <a name="custom-activity-permissions"></a>カスタム アクティビティのアクセス許可
+
+カスタム アクティビティでは、Azure Batch の自動ユーザー アカウントが "*タスク スコープのある管理者以外のアクセス*" (既定の自動ユーザーの仕様) に設定されます。 自動ユーザー アカウントのアクセス許可レベルを変更することはできません。 詳細については、[「Batch のユーザー アカウントでタスクを実行する」の「自動ユーザー アカウント」](../batch/batch-user-accounts.md#auto-user-accounts)を参照してください。
 
 ## <a name="executing-commands"></a>コマンドの実行
 
@@ -219,7 +215,7 @@ namespace SampleApp
 
             // From LinkedServices
             dynamic linkedServices = JsonConvert.DeserializeObject(File.ReadAllText("linkedServices.json"));
-            Console.WriteLine(linkedServices[0].properties.typeProperties.connectionString.value);
+            Console.WriteLine(linkedServices[0].properties.typeProperties.accountName);
         }
     }
 }
@@ -292,11 +288,28 @@ namespace SampleApp
   "failureType": ""
   "target": "MyCustomActivity"
   ```
-ダウンストリームのアクティビティで stdout.txt の内容を使用する場合は、式 "@activity('MyCustomActivity').output.outputs[0]" で stdout.txt ファイルへのパスを取得できます。 
+ダウンストリームのアクティビティで stdout.txt の内容を使用する場合は、式 "\@activity('MyCustomActivity').output.outputs[0]" で stdout.txt ファイルへのパスを取得できます。 
 
   > [!IMPORTANT]
   > - activity.json、linkedServices.json、datasets.json は、Batch タスクのランタイム フォルダーに格納されます。 この例では、activity.json、linkedServices.json、datasets.json は、"https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" パスに格納されています。 必要に応じて、パスを個別にクリーンアップする必要があります。 
   > - リンクされたサービスでセルフホステッド統合ランタイムを使用している場合、顧客が定義したプライベート ネットワーク環境内に資格情報を保持できるように、セルフホステッド統合ランタイムによってキーやパスワードなどの機密情報が暗号化されます。 この場合、カスタム アプリケーション コードから一部の機密フィールドを参照したときにフィールドが見つからない可能性があります。 必要に応じて、リンクされたサービスの参照を使用するのではなく、extendedProperties で SecureString を使用してください。 
+
+## <a name="retrieve-securestring-outputs"></a>SecureString 出力の取得
+
+*SecureString* 型として指定された機密プロパティ値 (この記事の一部のサンプルに含まれています) は、Data Factory ユーザー インターフェイスの [監視] タブでマスクされます。  ただし、実際のパイプライン実行では、*SecureString* プロパティは `activity.json` ファイル内でプレーン テキストの JSON としてシリアル化されます。 例: 
+
+```json
+"extendedProperties": {
+    "connectionString": {
+        "type": "SecureString",
+        "value": "aSampleSecureString"
+    }
+}
+```
+
+このシリアル化は、真にセキュアなものではなく、セキュリティの確保を意図したものではありません。 [監視] タブで値をマスクすることを、Data Factory に示すことが目的です。
+
+カスタム アクティビティから *SecureString* 型のプロパティにアクセスするには、.EXE と同じフォルダーに配置されている `activity.json` ファイルを読み取り、JSON を逆シリアル化した後、JSON プロパティにアクセスします (extendedProperties => [propertyName] => value)。
 
 ## <a name="compare-v2-v1"></a> v2 カスタム アクティビティとバージョン 1 (カスタム) DotNet アクティビティを比較する
 
@@ -311,7 +324,7 @@ namespace SampleApp
   次の表では、Data Factory V2 カスタム アクティビティと Data Factory V1 (カスタム) DotNet アクティビティの違いを示します。 
 
 
-|相違点      |バージョン 2 カスタム アクティビティ      | バージョン 1 (カスタム) DotNet アクティビティ      |
+|相違点      | カスタム アクティビティ      | バージョン 1 (カスタム) DotNet アクティビティ      |
 | ---- | ---- | ---- |
 |カスタム ロジックの定義方法      |実行可能ファイルを提供する      |.Net DLL を実装する      |
 |カスタム ロジックの実行環境      |Windows または Linux      |Windows (.Net Framework 4.5.2)      |
@@ -322,7 +335,7 @@ namespace SampleApp
 |ログの記録      |STDOUT に直接書き込む      |.Net DLL でロガーを実装する      |
 
 
-  バージョン 1 (カスタム) DotNet アクティビティ用に書かれた .Net コードが既にあり、これをバージョン 2 カスタム アクティビティで使用するには、コードを変更する必要があります。 以下のガイドラインの概要に従って、コードを更新します。  
+  バージョン 1 (カスタム) DotNet アクティビティ用に書かれた .Net コードが既にあり、これをカスタム アクティビティの現在のバージョンで使用するには、コードを変更する必要があります。 以下のガイドラインの概要に従って、コードを更新します。  
 
    - プロジェクトを .Net クラス ライブラリからコンソール アプリに変更します。 
    - `Main` メソッドでアプリケーションを起動します。 `IDotNetActivity` インターフェイスの `Execute` メソッドは、必要なくなりました。 
@@ -331,7 +344,7 @@ namespace SampleApp
    - Microsoft.Azure.Management.DataFactories NuGet パッケージは、もはや必要ありません。 
    - コードをコンパイルし、実行可能ファイルとその依存関係を Azure Storage にアップロードし、`folderPath` プロパティにパスを定義します。 
 
-Data Factory バージョン 1 の記事「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)」で説明されているエンド ツー エンドの DLL とパイプラインを Data Factory バージョン 2 カスタム アクティビティとして書き直す詳細な例については、[Data Factory バージョン 2 カスタム アクティビティのサンプルに関するページ](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)を参照してください。 
+Data Factory バージョン 1 の記事「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)」で説明されているエンド ツー エンドの DLL とパイプラインを Data Factory カスタム アクティビティとして書き直す詳細な例については、[Data Factory カスタム アクティビティのサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)に関するページを参照してください。 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch の自動スケール
 **自動スケール** 機能で、Azure Batch プールを作成することもできます。 たとえば、専用 VM 数が 0 の Azure Batch プールと、保留中のタスクの数に基づく自動スケールの数式を作成できます。 

@@ -1,24 +1,20 @@
 ---
-title: "共有アクセス署名 (SAS) を作成して Azure Blob Storage で使用する | Microsoft Docs"
-description: "このチュートリアルでは、Blob Storage で使用する共有アクセス署名を作成する方法と、クライアント アプリケーションから共有アクセス署名を使用する方法について説明します。"
+title: 共有アクセス署名 (SAS) を作成して Azure Blob Storage で使用する | Microsoft Docs
+description: このチュートリアルでは、Blob Storage で使用する共有アクセス署名を作成する方法と、クライアント アプリケーションから共有アクセス署名を使用する方法について説明します。
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 491e0b3c-76d4-4149-9a80-bbbd683b1f3e
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
+ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
-ms.openlocfilehash: 9dde12acde748c48b56f9f96ee772fca49954358
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: blobs
+ms.openlocfilehash: 6e33f700e9f453f419bf431d772d3db27e806ac0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240700"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用
 
@@ -71,7 +67,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 ### <a name="generate-a-shared-access-signature-uri-for-a-container"></a>コンテナーの共有アクセス署名 URI を生成する
 最初に、新しいコンテナーで共有アクセス署名を生成するメソッドを追加します。 この場合、署名は保存されたアクセス ポリシーには関連付けられないため、その有効期限および付与するアクセス許可を示す情報が URI に含まれます。
 
-まず、ストレージ アカウントへのアクセスを認証し、新しいコンテナーを作成するために、次のコードを **Main()** メソッドに追加します。
+まず、ストレージ アカウントへのアクセスを承認し、新しいコンテナーを作成するために、次のコードを **Main()** メソッドに追加します。
 
 ```csharp
 static void Main(string[] args)
@@ -591,9 +587,9 @@ Additional error information: The remote server returned an error: (403) Forbidd
 ...
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [共有アクセス署名、パート 1: SAS モデルについて](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)
-* [共有アクセス署名を使用したアクセスの委任 (REST API)](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-* [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+* [共有アクセス署名を使用したアクセスの委任 (REST API)](https://msdn.microsoft.com/library/azure/ee395415.aspx)
+* [テーブルおよびキュー SAS についての MSDN ブログ](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

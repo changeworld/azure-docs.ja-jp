@@ -1,30 +1,25 @@
 ---
-title: "Azure Search の複数言語 | Microsoft Docs"
-description: "Azure Search では 56 の言語がサポートされており、Lucene の言語アナライザーや Microsoft の自然言語処理テクノロジが利用されています。"
-services: search
-documentationcenter: 
+title: Azure Search の複数言語インデックス | Microsoft Docs
+description: Azure Search では 56 の言語がサポートされており、Lucene の言語アナライザーや Microsoft の自然言語処理テクノロジが利用されています。
 author: yahnoosh
-manager: pablocas
-editor: 
-ms.assetid: 55a00b44-804d-41bb-9c96-e6ea498616f5
+manager: jlembicz
+services: search
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 01/23/2017
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: dbbab31bac66ce73dbf9883992713a2c16581e19
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 38f93f5415282d2f976d9f3acc2b0a7aeead6c3d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093356"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Azure Search でドキュメントのインデックスを複数の言語で作成する
 > [!div class="op_single_selector"]
 >
 > * [ポータル](search-language-support.md)
-> * [REST ()](https://msdn.microsoft.com/library/azure/dn879793.aspx)
+> * [REST](https://msdn.microsoft.com/library/azure/dn879793.aspx)
 > * [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
 >
 >
@@ -68,7 +63,7 @@ ms.lasthandoff: 12/21/2017
 
 クエリを発行するエージェントの言語がわかっている場合は、 **searchFields** クエリ パラメーターを使用して、検索要求を特定のフィールドに制限できます。 次のクエリは、ポーランド語の説明に対してのみ発行されます。
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2016-09-01`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2017-11-11`
 
 ポータルでは、インデックスをクエリし、 **検索エクスプローラー** を使用して上記のようなクエリに貼り付けることができます。 検索エクスプローラーは、サービス ブレードのコマンド バーから使用できます。 詳細については、「 [Query your Azure Search index in the portal (ポータルでの Azure Search インデックスのクエリ)](search-explorer.md) 」を参照してください。
 
@@ -83,7 +78,7 @@ ms.lasthandoff: 12/21/2017
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2016-09-01`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
 
 .NET 開発者の場合は、 [Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search)を使用して言語アナライザーを構成できます。 最新リリースには、Microsoft 言語アナライザーのサポートも含まれています。
 

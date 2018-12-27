@@ -1,8 +1,8 @@
 ---
-title: "Azure でのアプリのスケールアップ | Microsoft Docs"
-description: "Azure App Service のアプリをスケールアップして容量と機能を追加する方法について説明します。"
+title: Azure でのアプリのスケールアップ | Microsoft Docs
+description: Azure App Service のアプリをスケールアップして容量と機能を追加する方法について説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: mollybos
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: f6244e3f739424be169f1ea117500159bd5e4254
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 79450cdd0928304c3b98cf13f8aaca7a1bf11d33
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381937"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Azure でのアプリのスケールアップ
 
@@ -50,7 +51,7 @@ App Service の個々のプランの価格と機能の詳細については、 [
 2. App Service のアプリ ページで、**[すべての設定]**、**[スケールアップ]** の順にクリックします。
    
     ![Navigate to scale up your Azure app.][ChooseWHP]
-3. レベルを選び、 **[選択]**をクリックします。
+3. レベルを選び、**[適用]** をクリックします。
    
     操作が完了すると、**[通知]** タブに緑色で "**成功**" が点滅します。
 
@@ -97,7 +98,7 @@ Azure SQL Database や Azure Storage などの他のサービスにアプリが�
   
     [Microsoft Azure の仮想マシンおよびクラウド サービスのサイズ][vmsizes]
   
-* スケーラブルで回復力に優れたアーキテクチャの構築など、Azure App Service のベスト プラクティスについては、 [Azure App Service Web Apps のベスト プラクティス](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx)に関するページを参照してください。
+* スケーラブルで回復力に優れたアーキテクチャの構築など、Azure App Service のベスト プラクティスについては、 [Azure App Service Web Apps のベスト プラクティス](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/)に関するページを参照してください。
 * App Service アプリのスケーリングに関するビデオについては、以下のリソースを参照してください。
   
   * [Azure Websites のスケールを設定するタイミング - Stefan Schackow 共演](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)
@@ -105,9 +106,9 @@ Azure SQL Database や Azure Storage などの他のサービスにアプリが�
   * [Azure Websites のスケールを設定する方法 - Stefan Schackow 共演](https://azure.microsoft.com/resources/videos/how-azure-web-sites-scale/)
 
 <!-- LINKS -->
-[vmsizes]:/pricing/details/app-service/
+[vmsizes]:https://azure.microsoft.com/pricing/details/app-service/
 [SQLaccountsbilling]:http://go.microsoft.com/fwlink/?LinkId=234930
-[azuresubscriptions]:http://go.microsoft.com/fwlink/?LinkID=235288
+[azuresubscriptions]:https://account.windowsazure.com/subscriptions
 [portal]: https://portal.azure.com/
 
 <!-- IMAGES -->

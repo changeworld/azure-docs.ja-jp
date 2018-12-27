@@ -1,44 +1,43 @@
 ---
-title: ".NET Standard を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs"
-description: ".NET Standard で Event Hubs へのイベント送信を開始する"
+title: .NET Core を使用してイベントを送信する - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs にイベントを送信する .NET Core アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2018
-ms.author: sethm
-ms.openlocfilehash: f59f88d47bfcb3e761f509a3d87c6d068f44e0db
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.custom: seodec18
+ms.date: 12/06/2018
+ms.author: shvija
+ms.openlocfilehash: b645b444d62ae0f1834006a41190c417cee35963
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081695"
 ---
-# <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>.NET Standard で Azure Event Hubs へのメッセージ送信を開始する
+# <a name="get-started-sending-messages-to-azure-event-hubs-in-net-core"></a>.NET Core で Azure Event Hubs へのメッセージ送信を開始する
+Event Hubs は、接続されているデバイスとアプリケーションからの大量のイベント データ (テレメトリ) を処理するサービスです。 Event Hubs にデータを収集した後、ストレージ クラスターを使用してデータを格納したり、リアルタイムの分析プロバイダーを使用して転送できます。 この大規模なイベントの収集と処理の機能は、モノのインターネット (IoT) など最新アプリケーション アーキテクチャの重要なコンポーネントです。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
+
+このチュートリアルでは、.NET Core を使用し、C# で記述されたコンソール アプリケーションを使ってイベント ハブにイベントを送信する方法を示します。 
 
 > [!NOTE]
-> このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) で入手できます。
-
-このチュートリアルでは、イベント ハブに一連のメッセージを送信する .NET Core コンソール アプリケーションの記述方法を示します。 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) ソリューションをそのまま実行するには、`EhConnectionString` および `EhEntityPath` 文字列をイベント ハブの値に置き換えるか、 このチュートリアルの手順に従って独自のものを作成します。
+> このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
 
 ## <a name="prerequisites"></a>前提条件
-
-* [Microsoft Visual Studio 2015 または 2017](http://www.visualstudio.com)。 このチュートリアルの例では Visual Studio 2015 を使用しますが、Visual Studio 2017 もサポートされています。
-* [.NET Core Visual Studio 2015 または 2017 ツール](http://www.microsoft.com/net/core)。
-* Azure サブスクリプション。
-* イベント ハブ名前空間。
-
-このチュートリアルでは、イベント ハブにメッセージを送信するために、Visual Studio を使って C# コンソール アプリケーションを記述します。
+* [Microsoft Visual Studio 2015 または 2017](https://www.visualstudio.com)。 このチュートリアルの例では Visual Studio 2015 を使用しますが、Visual Studio 2017 もサポートされています。
+* [.NET Core Visual Studio 2015 または 2017 ツール](https://www.microsoft.com/net/core)。 
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
+最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。
 
-最初のステップでは、[Azure Portal](https://portal.azure.com) を使用して イベント ハブ型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[この記事](event-hubs-create.md)の手順を踏み、次のステップに進みます。
+次の記事の手順に従って、イベント ハブ名前空間用の接続文字列を取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このチュートリアルの中で、その接続文字列が後で必要になります。 
 
 ## <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
@@ -48,12 +47,12 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet パッケージの追加
 
-[`Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .NET 標準ライブラリの NuGet パッケージを、次の手順でプロジェクトに追加します。 
+[`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .NET Core ライブラリの NuGet パッケージを、次の手順でプロジェクトに追加します。 
 
 1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
 2. **[参照]** タブをクリックして、"Microsoft.Azure.EventHubs" を検索し、**Microsoft.Azure.EventHubs** パッケージを選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
 
-## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>イベント ハブにメッセージを送信するコードの記述
+## <a name="write-code-to-send-messages-to-the-event-hub"></a>イベント ハブにメッセージを送信するコードの記述
 
 1. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
 
@@ -67,8 +66,8 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
     ```csharp
     private static EventHubClient eventHubClient;
-    private const string EhConnectionString = "{Event Hubs connection string}";
-    private const string EhEntityPath = "{Event Hub path/name}";
+    private const string EventHubConnectionString = "{Event Hubs connection string}";
+    private const string EventHubName = "{Event Hub path/name}";
     ```
 
 3. 次のように、`Program` クラスに `MainAsync` という名前の新しいメソッドを追加します。
@@ -79,9 +78,9 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
         // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
         // Typically, the connection string should have the entity path in it, but this simple scenario
         // uses the connection string from the namespace.
-        var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
+        var connectionStringBuilder = new EventHubsConnectionStringBuilder(EventHubConnectionString)
         {
-            EntityPath = EhEntityPath
+            EntityPath = EventHubName
         };
 
         eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
@@ -140,8 +139,8 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
         public class Program
         {
             private static EventHubClient eventHubClient;
-            private const string EhConnectionString = "{Event Hubs connection string}";
-            private const string EhEntityPath = "{Event Hub path/name}";
+            private const string EventHubConnectionString = "{Event Hubs connection string}";
+            private const string EventHubName = "{Event Hub path/name}";
 
             public static void Main(string[] args)
             {
@@ -151,11 +150,11 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
             private static async Task MainAsync(string[] args)
             {
                 // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-                // Typically, the connection string should have the entity path in it, but this simple scenario
-                // uses the connection string from the namespace.
-                var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
+                // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
+                // we are using the connection string from the namespace.
+                var connectionStringBuilder = new EventHubsConnectionStringBuilder(EventHubConnectionString)
                 {
-                    EntityPath = EhEntityPath
+                    EntityPath = EventHubName
                 };
 
                 eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
@@ -198,11 +197,6 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 お疲れさまでした。 メッセージをイベント ハブに送信しました。
 
 ## <a name="next-steps"></a>次の手順
-Event Hubs の詳細については、次のリンク先を参照してください。
+このクイック スタートでは、.NET Core を使用してメッセージをイベント ハブに送信しました。 .NET Core を使用してイベント ハブからイベントを受信する方法については、[.NET Core でのイベント ハブからのイベントの受信](event-hubs-dotnet-standard-getstarted-receive-eph.md)に関する記事を参照してください。
 
-* [Event Hubs からイベントを受信する](event-hubs-dotnet-standard-getstarted-receive-eph.md)
-* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-* [イベント ハブの作成](event-hubs-create.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
-
-[1]: ./media/event-hubs-dotnet-standard-getstarted-send/netcore.png
+[1]: ./media/event-hubs-dotnet-standard-getstarted-send/netcoresnd.png

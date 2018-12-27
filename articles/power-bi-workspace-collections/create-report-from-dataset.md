@@ -1,26 +1,21 @@
 ---
-title: "Power BI ワークスペース コレクションにおけるデータセットからの新しいレポートの作成 | Microsoft Docs"
-description: "Power BI ワークスペース コレクション レポートをお使いのアプリケーションのデータセットから作成できるようになりました。"
+title: Power BI ワークスペース コレクションにおけるデータセットからの新しいレポートの作成 | Microsoft Docs
+description: Power BI ワークスペース コレクション レポートをお使いのアプリケーションのデータセットから作成できるようになりました。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+author: markingmyname
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: aa902cbc4992292420948b36d85e52fafc7224de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: dbfe8c98dce1879a2e0956fafba32ab6e608bfdb
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046656"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションにおけるデータセットからの新しいレポートの作成
 
@@ -63,7 +58,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="create-a-new-blank-report"></a>新しい空のレポートを作成する
 
-新しいレポートを作成するには、作成構成を指定する必要があります。 これには、アクセス トークンと embedURL のほか、レポートを作成する datasetID が含まれている必要があります。 そのためには、NuGet [Power BI JavaScript パッケージ](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)をインストールする必要があります。 embedUrl は https://embedded.powerbi.com/appTokenReportEmbed になります。
+新しいレポートを作成するには、作成構成を指定する必要があります。 これには、アクセス トークンと embedURL のほか、レポートを作成する datasetID が含まれている必要があります。 そのためには、NuGet [Power BI JavaScript パッケージ](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)をインストールする必要があります。 embedUrl は https://embedded.powerbi.com/appTokenReportEmbed です。
 
 > [!NOTE]
 > [JavaScript によるレポートの埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)を使用して、機能をテストできます。 ここでは、使用可能なさまざまな操作のコード例も紹介されています。

@@ -1,18 +1,18 @@
 ---
-title: "Azure Container Registry のベスト プラクティス"
-description: "ベスト プラクティスに従って Azure Container Registry を効果的に使う方法を説明します。"
+title: Azure Container Registry のベスト プラクティス
+description: ベスト プラクティスに従って Azure Container Registry を効果的に使う方法を説明します。
 services: container-registry
-author: mmacy
-manager: timlt
+author: dlepow
 ms.service: container-registry
-ms.topic: quickstart
-ms.date: 12/20/2017
-ms.author: marsma
-ms.openlocfilehash: 684b778f57da4adb331958c5daef6b9906b6d253
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.topic: article
+ms.date: 09/27/2018
+ms.author: danlep
+ms.openlocfilehash: e22acc6e698d9b14a55145d8f23f5f773e6c39fd
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857705"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry のベスト プラクティス
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/09/2018
 
 ## <a name="geo-replicate-multi-region-deployments"></a>Geo レプリケーション転送を使用した複数リージョンへのデプロイ
 
-複数のリージョンにコンテナーをデプロイする場合は、Azure Container Registry の [Geo レプリケーション](container-registry-geo-replication.md)機能をご使用ください。 ローカル データ センターから世界各国の顧客にサービスを提供する場合であれ、開発チームの拠点が分散している場合であれ、レジストリを Geo レプリケーション転送することにより、レジストリの管理を省力化し、待ち時間を最小限に抑えることができます。 この機能は現在プレビュー段階です。[Premium](container-registry-skus.md) レジストリでご利用いただけます。
+複数のリージョンにコンテナーをデプロイする場合は、Azure Container Registry の [Geo レプリケーション](container-registry-geo-replication.md)機能をご使用ください。 ローカル データ センターから世界各国の顧客にサービスを提供する場合であれ、開発チームの拠点が分散している場合であれ、レジストリを Geo レプリケーション転送することにより、レジストリの管理を省力化し、待ち時間を最小限に抑えることができます。 geo レプリケーションは、[Premium](container-registry-skus.md) レジストリでのみ使用できます。
 
 Geo レプリケーションの使用方法については、[Azure Container Registry の Geo レプリケーション](container-registry-tutorial-prepare-registry.md)に関する 3 部構成のチュートリアルを参照してください。
 
@@ -50,13 +50,13 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 特定のホスト タイプ (Azure Container Instances など) を試験的に使用することもあるかと思いますが、作業後はコンテナー インスタンスを削除するのが普通です。 しかし、Azure Container Registry にプッシュした一連のイメージを保存しておきたいこともあるでしょう。 レジストリを専用のリソース グループに置いておけば、コンテナー インスタンス リソース グループを削除するときに、レジストリ内の一連のイメージを不注意で削除するリスクを極力抑えることができます。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 Azure Container Registry に対して認証を行うときのシナリオは、個人の認証とサービス ("ヘッドレス") 認証の 2 つに大別されます。 次の表は、それらのシナリオの概要とそれぞれに推奨される認証方法をまとめたものです。
 
 | type | サンプル シナリオ | 推奨される方法 |
 |---|---|---|
-| 個人 ID | 開発者が、その開発マシンにイメージをプルしたり、開発マシンからイメージをプッシュしたりする。 | [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login) |
+| 個人 ID | 開発者が、その開発マシンにイメージをプルしたり、開発マシンからイメージをプッシュしたりする。 | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | ヘッドレス/サービス ID | ユーザーの直接介入を伴わないビルドとデプロイのパイプライン。 | [サービス プリンシパル](container-registry-authentication.md#service-principal) |
 
 Azure Container Registry の認証について詳しくは、「[Azure コンテナー レジストリによる認証](container-registry-authentication.md)」をご覧ください。
@@ -65,31 +65,25 @@ Azure Container Registry の認証について詳しくは、「[Azure コンテ
 
 各[コンテナー レジストリ SKU][container-registry-skus] のストレージ制約は、一般的なシナリオに一致するように意図されています。開始用の **Basic**、大半の運用アプリケーションに対応する **Standard**、ハイパースケール パフォーマンスと [geo レプリケーション][container-registry-geo-replication]に対応する **Premium** があります。 レジストリの有効期間を通して、使用されていないコンテンツを定期的に削除することによって、そのサイズを管理する必要があります。
 
-Azure Portal のコンテナー レジストリの **[Overview] (概要)** で、レジストリの現在の使用状況を見つけることができます。
+Azure CLI コマンド [az acr show-usage][az-acr-show-usage] を使用して、レジストリの現在のサイズを表示します。
+
+```console
+$ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+NAME      LIMIT         CURRENT VALUE    UNIT
+--------  ------------  ---------------  ------
+Size      536870912000  185444288        Bytes
+Webhooks  100                            Count
+```
+
+Azure portal のレジストリの**概要**で、使用されている現在のストレージを見つけることもできます。
 
 ![Azure Portal でのレジストリ使用状況情報][registry-overview-quotas]
 
-レジストリのサイズを管理するには、[Azure CLI][azure-cli] または [Azure Portal][azure-portal] を使用します。 管理される SKU (Basic、Standard、Premium) のみでリポジトリとイメージの削除がサポートされます。Classic レジストリではリポジトリ、イメージ、またはタグを削除することはできません。
+### <a name="delete-image-data"></a>イメージ データを削除する
 
-### <a name="delete-in-azure-cli"></a>Azure CLI での削除
+Azure Container Registry は、コンテナー レジストリからイメージ データを削除するためのいくつかの方法をサポートしています。 タグまたはマニフェスト ダイジェストによってイメージを削除するか、またはリポジトリ全体を削除することができます。
 
-[az acr repository delete][az-acr-repository-delete] コマンドを使用して、リポジトリまたはリポジトリ内のコンテンツを削除します。
-
-すべてのタグおよびメージ レイヤー データを含めてリポジトリを削除するには、[az acr repository delete][az-acr-repository-delete] を実行するときにリポジトリ名のみを指定します。 次の例では、*myapplication* リポジトリと、そのリポジトリ内のすべてのタグとイメージ レイヤー データが削除されます。
-
-```azurecli
-az acr repository delete --name myregistry --repository myapplication
-```
-
-`--tag` 引数と `--manifest` 引数を使用してリポジトリからイメージ データを削除することもできます。 これらの引数について詳しくは、[az acr repository delete コマンドのリファレンス][az-acr-repository-delete]をご覧ください。
-
-### <a name="delete-in-azure-portal"></a>Azure Portal での削除
-
-Azure Portal でレジストリからリポジトリを削除するには、まずコンテナー レジストリに移動します。 次に、**[サービス]** の下で、**[リポジトリ]** を選択し、削除するリポジトリを右クリックします。 **[削除]** を選択して、リポジトリとそれに含まれている Docker イメージを削除します。
-
-![Azure Portal でのリポジトリの削除][delete-repository-portal]
-
-同様の方法でリポジトリからタグを削除することもできます。 リポジトリに移動し、**[タグ]** の下で削除するタグを右クリックし、**[削除]** を選択します。
+タグなし ("未解決" や "孤立" とも呼ばれる) イメージを含むイメージ データのレジストリからの削除の詳細については、「[Azure Container Registry のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -100,7 +94,8 @@ Azure Container Registry には、いくつかのレベル (SKU) があり、そ
 [registry-overview-quotas]: ./media/container-registry-best-practices/registry-overview-quotas.png
 
 <!-- LINKS - Internal -->
-[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
+[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
+[az-acr-show-usage]: /cli/azure/acr#az-acr-show-usage
 [azure-cli]: /cli/azure
 [azure-portal]: https://portal.azure.com
 [container-registry-geo-replication]: container-registry-geo-replication.md

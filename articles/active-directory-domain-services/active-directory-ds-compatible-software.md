@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services: 互換性のあるサードパーティ製ソフトウェア | Microsoft Docs"
-description: "Azure Active Directory Domain Services で機能するサードパーティ製ソフトウェア"
+title: 'Azure Active Directory Domain Services: 互換性のあるサードパーティ製ソフトウェア | Microsoft Docs'
+description: Azure Active Directory Domain Services で機能するサードパーティ製ソフトウェア
 services: active-directory-ds
-documentationcenter: 
-author: mahesh-unnikrishnan
+documentationcenter: ''
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/06/2017
-ms.author: maheshu
-ms.openlocfilehash: 3d4ee6ab61a222b66a6a4dabc209f09af45f7909
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: ergreenl
+ms.openlocfilehash: dbac33c24ca29a7fa6883e95b73e948cc7fe1e9b
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154897"
 ---
 # <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>Azure AD Domain Services と互換性があるサードパーティ製ソフトウェア
 
@@ -33,9 +35,9 @@ One Identity Authentication Services は、Unix、Linux、および Mac OS X シ
 [サポート技術情報の記事 - One Identity Authentication Services with Azure AD Domain Services (One Identity Authentication Services と Azure AD Domain Services)](https://support.quest.com/authentication-services/kb/208427)
 
 
-## <a name="redhat-enterprise-linux"></a>RedHat Enterprise Linux
+## <a name="red-hat-enterprise-linux"></a>Red Hat Enterprise Linux
 
-![RedHat](./media/compatible-software-icons/RedHat.png)
+![Red Hat](./media/compatible-software-icons/RedHat.png)
 
 Red Hat Enterprise Linuxは、世界をリードするエンタープライズ向け Linux プラットフォームであり、今日の現代企業のニーズを満たすように構築されています。 Red Hat Enterprise Linux は、Microsoft Azure でのエンタープライズ向け Linux 仮想マシン (VM) のワークロードに適しています。 Red Hat Enterprise Linux は、ビジネスに不可欠なワークロード (データセンターから Azure クラウドまで) を柔軟にデプロイすることを望んでいる顧客向けに設計された、オープンで信頼できるセキュリティで保護されたプラットフォームであり、Red Hat と Microsoft による緊密に統合されたエンタープライズ クラスのサポートが提供されます。
 

@@ -1,12 +1,12 @@
 ---
-title: "StorSimple Virtual Array への更新プログラムのインストール | Microsoft Docs"
-description: "Azure Portal と修正プログラムを使用して更新プログラムを適用するために、StorSimple Virtual Array の Web UI をどのように使用するかについて説明します"
+title: StorSimple Virtual Array への更新プログラムのインストール | Microsoft Docs
+description: Azure Portal と修正プログラムを使用して更新プログラムを適用するために、StorSimple Virtual Array の Web UI をどのように使用するかについて説明します
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: 3fb246b1515e7a637e6cff6499bf324c3f80dd45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd3fdec0e50d64af28306034e6e1086e67526b7d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251055"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array への Update 0.4 のインストール
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>更新プログラムまたは修正プログラムをダウンロードするには
 
-1. Internet Explorer を起動し、 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)に移動します。
+1. Internet Explorer を起動し、[http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) に移動します。
 
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、 **[インストール]** をクリックします。
 
@@ -57,11 +58,11 @@ ms.lasthandoff: 10/11/2017
    
     ![カタログの検索](./media/storsimple-virtual-array-install-update-04/download1.png)
 
-4. **[追加]**をクリックします。 更新プログラムがバスケットに追加されます。
+4. **[追加]** をクリックします。 更新プログラムがバスケットに追加されます。
 
-5. **[バスケットの表示]**をクリックします。
+5. **[バスケットの表示]** をクリックします。
 
-6. **[Download]**をクリックします。 ダウンロード先となるローカルの場所を指定または **参照** します。 更新プログラムが指定した場所にダウンロードされて、更新プログラムと同じ名前のサブフォルダーに配置されます。 デバイスからアクセスできるネットワーク共有に、このフォルダーをコピーすることもできます。
+6. **[Download]** をクリックします。 ダウンロード先となるローカルの場所を指定または **参照** します。 更新プログラムが指定した場所にダウンロードされて、更新プログラムと同じ名前のサブフォルダーに配置されます。 デバイスからアクセスできるネットワーク共有に、このフォルダーをコピーすることもできます。
 
 7. コピーしたフォルダーを開くと、Microsoft 更新プログラムのスタンドアロン パッケージ ファイル `WindowsTH-KB3011067-x64`があります。 このファイルを使用して、更新プログラムまたは修正プログラムをインストールします。
 
@@ -77,7 +78,7 @@ ms.lasthandoff: 10/11/2017
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. **[Update file path (更新プログラムのファイル パス)]**に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[適用]**をクリックします。
+2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[適用]** をクリックします。
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update/update2m.png)
 
@@ -89,7 +90,7 @@ ms.lasthandoff: 10/11/2017
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、**[メンテナンス]** > **[ソフトウェア更新プログラム]**に移動します。 表示されるソフトウェアのバージョンは、Update 0.4 では **10.0.0.0.0.10289.0** です。
+5. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、**[メンテナンス]** > **[ソフトウェア更新プログラム]** に移動します。 表示されるソフトウェアのバージョンは、Update 0.4 では **10.0.0.0.0.10289.0** です。
    
    > [!NOTE]
    > ローカル Web UI と Azure Portal では、ソフトウェアのバージョンの表示方法が少し異なります。 たとえば、同じバージョンの場合、ローカル Web UI では **10.0.0.0.0.10289** と表示され、Azure Portal では **10.0.10289.0** と表示されます。
@@ -105,7 +106,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 インストールが完了したら (ジョブの状態が 100% と示されます)、StorSimple デバイス マネージャー サービスに移動します。 **[デバイス]** を選択し、このサービスに接続されているデバイスの一覧から、更新するデバイスを選択してクリックします。 **[設定]** ブレードで、**[管理]** セクションに移動し、**[デバイスの更新プログラム]** を選択します。 表示されるソフトウェアのバージョンは **10.0.10289.0** です。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 

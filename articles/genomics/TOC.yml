@@ -23,8 +23,14 @@
   items:
     - name: 一般的な質問
       href: frequently-asked-questions-genomics.md
+    - name: トラブルシューティング ガイド
+      href: troubleshooting-guide-genomics.md
+    - name: サポート要求を提出する
+      href: file-support-ticket-genomics.md
     - name: バージョンのリリース履歴
       href: version-release-history-genomics.md
+    - name: ビジネス継続性
+      href: business-continuity-genomics.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
     - name: 価格

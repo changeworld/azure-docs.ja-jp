@@ -1,27 +1,23 @@
 ---
-title: "Azure Cosmos DB: .NET での Table API を使用した開発 | Microsoft Docs"
-description: ".NET を使用した Azure Cosmos DB の Table API による開発方法について"
-services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 4b22cb49-8ea2-483d-bc95-1172cd009498
+title: .NET SDK を使用した Table API による開発
+titleSuffix: Azure Cosmos DB
+description: .NET SDK を使用した Azure Cosmos DB の Table API による開発方法について
+author: SnehaGunda
 ms.service: cosmos-db
-ms.workload: 
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 12/18/2017
-ms.author: arramac
-ms.custom: mvc
-ms.openlocfilehash: bb08a60a9ec2db0fa145f75e00be96bc05664e32
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 12/07/2018
+ms.author: sngun
+ms.custom: seodec18
+ms.openlocfilehash: f10cb17f0300b6bd21d17b1e2ff204d57e4a7988
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251183"
 ---
-# <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: .NET での Table API を使用した開発
+# <a name="develop-with-azure-cosmos-dbs-table-api-using-net-sdk"></a>.NET を使用した Azure Cosmos DB の Table API による開発
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
@@ -47,7 +43,7 @@ Azure Cosmos DB では、スキーマレス設計のキー/値ストアを必要
 
 現在 Azure Table Storage を使っている場合、Azure Cosmos DB Table API では次のメリットが得られます。
 
-- マルチホーム機能と[自動または手動のフェールオーバー](regional-failover.md)を備えた、ターンキー [グローバル分散](distribute-data-globally.md)
+- マルチホーム機能と[自動または手動のフェールオーバー](high-availability.md)を備えた、ターンキー [グローバル分散](distribute-data-globally.md)
 - すべてのプロパティ ("セカンダリ インデックス") に対するスキーマ非依存自動インデックス作成と高速クエリのサポート 
 - 任意の数のリージョンにわたる[ストレージとスループットの独立した拡張](partition-data.md)のサポート
 - [テーブルごとの専用スループット](request-units.md)のサポート (1 秒あたりの要求数を数百件から数百万件まで拡張できる)
@@ -81,7 +77,7 @@ Azure Table Storage の複雑なタスクについては、次を参照してく
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-github で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+GitHub で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
 1. git bash などの git ターミナル ウィンドウを開き、`cd` コマンドを使用して、サンプル アプリをインストールするフォルダーに変更します。 
 
@@ -101,7 +97,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。 
 
-1. [Azure Portal](http://portal.azure.com/) で **[接続文字列]** をクリックします。 
+1. [Azure Portal](https://portal.azure.com/) で **[接続文字列]** をクリックします。 
 
     画面の右側にある [コピー] ボタンを使ってプライマリ接続文字列をコピーします。
 
@@ -137,7 +133,7 @@ Azure Cosmos DB では、Azure Table Storage API に含まれないいくつも�
 
 特定の機能には、接続ポリシーと一貫性レベルを指定できる CreateCloudTableClient の新しいオーバーロードを使ってアクセスします。
 
-| テーブル接続の設定 | [説明] |
+| テーブル接続の設定 | 説明 |
 | --- | --- |
 | 接続モード  | Azure Cosmos DB では 2 つの接続モードがサポートされます。 `Gateway` モードでは、要求は常に Azure Cosmos DB ゲートウェイに対して行われ、そこから対応するデータ パーティションに転送されます。 `Direct` 接続モードでは、クライアントがテーブルとパーティションのマッピングをフェッチし、要求がデータ パーティションに直接行われます。 既定値の `Direct` をお勧めします。  |
 | 接続プロトコル | Azure Cosmos DB では 2 つの接続プロトコル、`Https` と `Tcp` がサポートされます。 軽量であるため、既定の `Tcp` をお勧めします。 |
@@ -146,7 +142,7 @@ Azure Cosmos DB では、Azure Table Storage API に含まれないいくつも�
 
 他の機能は、次の `appSettings` 構成値で有効にすることができます。
 
-| キー | [説明] |
+| キー | 説明 |
 | --- | --- |
 | TableQueryMaxItemCount | 1 回のラウンド トリップでテーブル クエリごとに返される最大項目数を構成します。 既定値の `-1` では、Azure Cosmos DB が実行時に値を動的に決定できます。 |
 | TableQueryEnableScan | クエリがすべてのフィルターでインデックスを使用できない場合、スキャンを使用して実行します。 既定値は `false`です。|
@@ -184,7 +180,8 @@ CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 このクライアントは、`TableConnectionMode``TableConnectionProtocol``TableConsistencyLevel`、`TablePreferredLocations` の各構成値を使用して初期化されます (アプリの設定に指定されている場合)。
 
 ## <a name="create-a-table"></a>テーブルを作成する
-次に、`CloudTable` を使用してテーブルを作成します。 Azure Cosmos DB のテーブルは、ストレージとスループットそれぞれを個別に拡張できます。パーティション化はサービスによって自動的に処理されます。 Azure Cosmos DB では、固定サイズのテーブルと無制限のテーブルの両方がサポートされます。 詳しくは、[Azure Cosmos DB でのパーティション分割](partition-data.md)に関する記事をご覧ください。 
+
+次に、`CloudTable` を使用してテーブルを作成します。 Azure Cosmos DB のテーブルは、ストレージとスループットそれぞれを個別に拡張できます。パーティション化はサービスによって自動的に処理されます。 
 
 ```csharp
 CloudTable table = tableClient.GetTableReference("people");
@@ -295,7 +292,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 }
 ```
 
-Azure Cosmos DB は、Table API について Azure Table Storage と同じクエリの機能をサポートします。 また、並べ替え、集計、地理空間クエリ、階層、さまざまな組み込み関数もサポートしています。 将来のサービス更新プログラムで Table API に追加機能が提供される予定です。 このような機能の概要については、[Azure Cosmos DB のクエリ](sql-api-sql-query.md)に関する記事をご覧ください。 
+Azure Cosmos DB は、Table API について Azure Table Storage と同じクエリの機能をサポートします。 また、並べ替え、集計、地理空間クエリ、階層、さまざまな組み込み関数もサポートしています。 このような機能の概要については、[Azure Cosmos DB のクエリ](how-to-sql-query.md)に関する記事をご覧ください。 
 
 ## <a name="replace-an-entity"></a>エンティティを置換する
 エンティティを更新するには、そのエンティティを Table service から取得し、エンティティ オブジェクトを変更して、変更を Table service に戻して保存します。 次のコードは、既存のユーザーの電話番号を変更します。 

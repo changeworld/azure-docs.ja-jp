@@ -1,73 +1,69 @@
 ---
-title: "Azure Event Hubs アーカイブ | Microsoft Docs"
-description: "Azure Event Hubs サンプル"
+title: Azure Event Hubs アーカイブ | Microsoft Docs
+description: Azure Event Hubs サンプル
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2018
-ms.author: sethm
-ms.openlocfilehash: a581b7039a3631b7f1dc35816175242f892bd7dd
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 07/17/2018
+ms.author: shvija
+ms.openlocfilehash: 3db77a31dfe92e16d2ec145cc0be595082d0d927
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279383"
 ---
 # <a name="event-hubs-samples"></a>Event Hubs サンプル 
+Event Hubs サンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) で見つけることができます。 これらのサンプルは [Azure Event Hubs](/azure/event-hubs/) の主な機能を示しています。 この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
 
-一連の Azure Event Hubs サンプルは、[Azure Event Hubs](/azure/event-hubs/) の主な機能を示しています。 この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
+## <a name="net-samples"></a>.NET のサンプル
 
-この記事の執筆時には、Event Hubs サンプルは複数の異なる場所に配置されています。
+| サンプル名 | 説明 | 
+| ----------- | ----------- | 
+| [SampleSender](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) | このサンプルでは、イベント ハブに一連のインベントリを送信する .NET Core コンソール アプリケーションの記述方法を示します。 |
+| [SampleEHReceiver](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) | このサンプルでは、イベント プロセッサ ホスト ライブラリを使ってイベント ハブから一連のイベントを受信する .NET Core コンソール アプリケーションを作成する方法を説明します。  | 
 
-- [MSDN デベロッパー コード サンプル](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5)
-- [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+## <a name="java-samples"></a>Java のサンプル
 
-.NET Framework のバージョンの詳細については、「[フレームワークとターゲット](/dotnet/articles/standard/frameworks)」をご覧ください。
+| サンプル名 | 説明 | 
+| ----------- | ----------- | 
+| [SendBatch](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SendBatch)  | このサンプルは、イベント ハブにイベントのバッチを取り込む方法を示しています。 | 
+| [SimpleSend](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) | このサンプルは、イベント ハブにイベントを取り込む方法を示しています。 |
+| [AdvanceSendOptions](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/AdvancedSendOptions) | このサンプルは、Event Hubs がイベントを取り込むために利用できるさまざまなオプションを示しています。 |
+| [ReceiveByDateTime](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveByDateTime) | このサンプルは、日時のオフセットを指定してイベント ハブ パーティションからイベントを受信する方法を示しています。 |
+| [ReceiveUsingOffset](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingOffset) | このサンプルは、データのオフセットを指定してイベント ハブ パーティションからイベントを受信する方法を示しています。 |  
+| [ReceiveUsingSequenceNumber](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingSequenceNumber) | このサンプルは、シーケンス番号を使用してイベント ハブ パーティションから受信する方法を示しています。 |   
+| [EventProcessorSample](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/EventProcessorSample) |このサンプルは、イベント プロセッサ ホストを使用して、イベント ハブからイベントを受信する方法を示しています。パーティションの自動選択機能と、複数の並列する受信側全体にフェールオーバー機能を提供します。 | 
+| [AutoScaleOnIngress](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/AutoScaleOnIngress) | このサンプルは、高負荷の場合にイベント ハブを自動的にスケールアップする方法を示しています。 このサンプルを実行すると、構成したイベント ハブのレートをやや超えるレートでイベントが送信され、イベント ハブのスケールアップが実行されます。 | 
+| [IngressBenchmark](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/IngressBenchmark) | このサンプルでは、受信レートを測定できます。 | 
 
-サンプルは今後さらに追加される予定です。頻繁にここに戻り更新情報を確認してください。
+## <a name="python-samples"></a>Python のサンプル
+Azure Event Hubs の Python サンプルは、[azure-event-hubs-python](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) GitHub リポジトリにあります。
 
-## <a name="net-standard"></a>.NET Standard
+## <a name="nodejs-samples"></a>Node.js のサンプル
+Azure Event Hubs の Node.js サンプルは、[azure-event-hubs-node](https://github.com/Azure/azure-event-hubs-node) GitHub リポジトリにあります。
 
-次のサンプルは、[.NET Standard ライブラリ](/dotnet/articles/standard/library)の [Event Hub クライアント](https://github.com/Azure/azure-event-hubs-dotnet/blob/master/readme.md)を使用して、イベントを送受信する方法を示しています。
+## <a name="go-samples"></a>Go のサンプル
+Azure Event Hubs の Go サンプルは、[azure-event-hubs-go](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) GitHub リポジトリにあります。
 
-### <a name="send-events"></a>送信イベント 
+## <a name="azure-cli-samples"></a>Azure CLI のサンプル
+Azure Event Hubs の Azure CLI サンプルは、[azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI) GitHub リポジトリにあります。
 
-[送信開始](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender)のサンプルは、イベントをイベント ハブに送信する .NET Core コンソール アプリケーションを記述する方法を示しています。
-
-### <a name="receive-events"></a>受信イベント 
-
-[イベント プロセッサ ホストでの受信開始](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)のサンプルは、イベント プロセッサ ホストを使用して、イベント ハブからメッセージを受け取る .NET Core コンソール アプリケーションです。
-
-## <a name="net-framework"></a>.NET Framework   
-
-このサンプルは、[.NET Framework ライブラリ](/dotnet/framework/index)を対象とする、Azure Event Hubs のその他のさまざまな機能を示しています。
+## <a name="azure-powershell-samples"></a>Azure PowerShell のサンプル
+Azure Event Hubs の Azure PowerShell サンプルは、[azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) GitHub リポジトリにあります。
  
-### <a name="notify-users-of-events-received"></a>ユーザーへの受信イベントの通知
-
-[AppToNotifyUsers](https://github.com/Azure-Samples/event-hubs-dotnet-user-notifications) サンプルは、センサーまたはその他のシステムから受信したデータをユーザーに通知します。
-
-### <a name="get-started-with-event-hubs"></a>Event Hubs の使用 
-
-[Event Hubs 使用開始](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097)のサンプルは、イベント ハブの作成方法、イベント ハブにイベントを送信する方法、[イベント プロセッサ ホスト](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)を使用したイベントの利用方法など、Event Hubs の基本機能を示しています。
-
-### <a name="scale-out-event-processing"></a>イベント処理のスケールアウト 
-
-[イベント処理のスケール アウト](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)のサンプルは、[イベント プロセッサ ホスト](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)を使用して、Event Hubs ストリーム消費のワークロードを分散する方法を示しています。 **EventProcessor** と **EventProcessorFactory** オブジェクトを実装して、イベント ストリームを管理する方法を示します。 
+## <a name="apache-kafka-samples"></a>Apache Kafka のサンプル
+Apache Kafka 用の Event Hubs 機能のサンプルは、[azure-event-hubs-for-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) GitHub リポジトリにあります。
 
 ## <a name="next-steps"></a>次の手順
-
-.NET Framework バージョンの詳細については、次のリンク先を参照してください。
-
-- [フレームワークとターゲット](/dotnet/articles/standard/frameworks)
-- [.NET Framework 4.6 と 4.5](/dotnet/framework/index)
-
 Event Hubs の詳細については、次の記事を参照してください。
 
 - [Event Hubs の概要](event-hubs-what-is-event-hubs.md)

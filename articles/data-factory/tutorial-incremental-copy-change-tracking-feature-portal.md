@@ -3,21 +3,22 @@ title: Change Tracking と Azure Data Factory を使用してデータを増分�
 description: 'このチュートリアルでは、オンプレミスの SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを増分コピーする Azure Data Factory パイプラインを作成します。 '
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/12/2018
-ms.author: jingwang
-ms.openlocfilehash: 891dad1a481c966e6ea1771f3e7c7850fa429352
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: yexu
+ms.openlocfilehash: eaafc8acb73dd48e213d05d953d9ada457c53132
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957267"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする 
 このチュートリアルでは、ソース Azure SQL Database から**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
@@ -33,11 +34,8 @@ ms.lasthandoff: 03/23/2018
 > * ソース テーブルのデータを追加または更新します。
 > * 増分コピー パイプラインを作成、実行、監視します。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
-
 ## <a name="overview"></a>概要
-データ統合ソリューションでは、初回データ読み込みの後、増分データを読み込む手法が広く利用されています。 ソース データ ストアから特定の期間に変更されたデータを簡単に切り出すことができる場合もあります (LastModifyTime、CreationTime など)。 一方、前回データを処理した時点からの差分データを明示的に特定する方法がない場合もあります。 こうした差分データは、Azure SQL Database や SQL Server などのデータ ストアでサポートされる Change Tracking テクノロジを使用して特定することができます。  このチュートリアルでは、Azure Data Factory バージョン 2 と SQL Change Tracking テクノロジを組み合わせて、Azure SQL Database から Azure Blob Storage に差分データを増分読み込みする方法について説明します。  SQL Change Tracking テクノロジに関するより具体的な情報については、[SQL Server における変更の追跡](/sql/relational-databases/track-changes/about-change-tracking-sql-server)に関するページを参照してください。 
+データ統合ソリューションでは、初回データ読み込みの後、増分データを読み込む手法が広く利用されています。 ソース データ ストアから特定の期間に変更されたデータを簡単に切り出すことができる場合もあります (LastModifyTime、CreationTime など)。 一方、前回データを処理した時点からの差分データを明示的に特定する方法がない場合もあります。 こうした差分データは、Azure SQL Database や SQL Server などのデータ ストアでサポートされる Change Tracking テクノロジを使用して特定することができます。  このチュートリアルでは、Azure Data Factory と SQL Change Tracking テクノロジを使用して、Azure SQL Database から Azure Blob Storage に差分データを増分読み込みする方法について説明します。  SQL Change Tracking テクノロジに関するより具体的な情報については、[SQL Server における変更の追跡](/sql/relational-databases/track-changes/about-change-tracking-sql-server)に関するページを参照してください。 
 
 ## <a name="end-to-end-workflow"></a>エンド ツー エンド ワークフロー
 ここでは、Change Tracking テクノロジを使用してデータを増分読み込みする一般的なエンド ツー エンドのワークフロー ステップを取り上げます。
@@ -72,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure SQL データベース**。 **ソース** データ ストアとして使うデータベースです。 Azure SQL データベースがない場合は、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事に書かれている手順を参照して作成してください。
-* **Azure Storage アカウント**。 **シンク** データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。 **adftutorial** という名前のコンテナーを作成します。 
+* **Azure Storage アカウント**。 **シンク** データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。 **adftutorial** という名前のコンテナーを作成します。 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Azure SQL データベースにデータ ソース テーブルを作成する
 1. **SQL Server Management Studio** を起動し、Azure SQL Server に接続します。 
@@ -165,8 +163,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
      
-      - **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
-      - **[新規作成]**を選択し、リソース グループの名前を入力します。   
+      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
+      - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
         リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 4. **バージョン**として **[V2 (プレビュー)]** を選択します。
@@ -324,7 +322,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="review-the-results"></a>結果の確認
 `adftutorial` コンテナーの `incchgtracking` フォルダーに、`incremental-<GUID>.txt` という名前のファイルが確認できます。 
 
-![フル コピーからの出力ファイル](media\tutorial-incremental-copy-change-tracking-feature-portal\full-copy-output-file.png)
+![フル コピーからの出力ファイル](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
 このファイルには、Azure SQL Database からのデータが存在します。
 
@@ -404,7 +402,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 11. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**StoredProceduretoUpdateChangeTrackingActivity**」に設定します。 このアクティビティは、**table_store_ChangeTracking_version** テーブル内の変更追跡バージョンを更新します。
 
     ![ストアド プロシージャ アクティビティ - 名前](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. *[SQL Account]\(SQL アカウント\)* タブに切り替えて、**[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。 
+12. *[SQL Account\*]\(SQL アカウント\)* タブに切り替えて、**[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。 
 
     ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 
@@ -447,7 +445,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ### <a name="review-the-results"></a>結果の確認
 `adftutorial` コンテナーの `incchgtracking` フォルダーにもう 1 つファイルが確認できます。 
 
-![増分コピーからの出力ファイル](media\tutorial-incremental-copy-change-tracking-feature-portal\incremental-copy-output-file.png)
+![増分コピーからの出力ファイル](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
 このファイルに含まれているのは、Azure SQL Database からの差分データのみです。 `U` と記録されているレコードはデータベース内の更新された行で、`I` は追加された行です。 
 

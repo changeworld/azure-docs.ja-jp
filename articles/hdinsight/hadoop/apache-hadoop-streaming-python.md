@@ -1,35 +1,29 @@
 ---
-title: "HDInsight での Python ストリーミング MapReduce ジョブの開発 - Azure | Microsoft Docs"
-description: "ストリーミング MapReduce ジョブに Python を使用する方法について説明します。 Hadoop には、MapReduce を Java 以外の言語で記述するためのストリーミング API が用意されています。"
+title: HDInsight での Python ストリーミング MapReduce ジョブの開発 - Azure
+description: ストリーミング MapReduce ジョブに Python を使用する方法について説明します。 Apache Hadoop には、MapReduce を Java 以外の言語で記述するためのストリーミング API が用意されています。
 services: hdinsight
 keyword: mapreduce python,python map reduce,python mapreduce
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 7631d8d9-98ae-42ec-b9ec-ee3cf7e57fb3
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/17/2018
-ms.author: larryfr
-ms.openlocfilehash: 2563927684720a0be1144fa51aea7b9dae4abe7e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.topic: conceptual
+ms.date: 04/10/2018
+ms.author: hrasheed
+ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634024"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>HDInsight 用 Python ストリーミング MapReduce プログラムの開発
 
-ストリーミング MapReduce 操作に Python を使用する方法について説明します。 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。 このドキュメントの手順では、Python に Map および Reduce コンポーネントを実装します。
+ストリーミング MapReduce 操作に Python を使用する方法について説明します。 Apache Hadoop には、Java 以外の言語で map 関数と reduce 関数を記述できる MapReduce 用のストリーミング API が用意されています。 このドキュメントの手順では、Python に Map および Reduce コンポーネントを実装します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight クラスターでの Linux ベースの Hadoop
+* HDInsight クラスター上の Linux ベースの Apache Hadoop
 
   > [!IMPORTANT]
   > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -151,7 +145,7 @@ Python では、STDIN からの読み取りに `sys` モジュールを、STDOUT
     このコマンドにより、ファイルがローカル システムからヘッド ノードにコピーされます。
 
     > [!NOTE]
-    > SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。 SSH キーを使用している場合は、 `-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。 たとえば、「`scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`」のように入力します。
+    > SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。 SSH キーを使用している場合は、 `-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。 たとえば、「 `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:` 」のように入力します。
 
 2. SSH を使用したクラスターへの接続:
 

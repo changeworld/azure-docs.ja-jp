@@ -1,24 +1,25 @@
 ---
-title: "Azure の詳細な使用状況を理解する"
-description: "Azure サブスクリプションの詳細な使用状況 CSV の各セクションを読み、理解する方法について説明します"
-services: 
-documentationcenter: 
+title: Azure の詳細な使用状況を理解する | Microsoft Docs
+description: Azure サブスクリプションの詳細な使用状況 CSV の各セクションを読み、理解する方法について説明します
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: tonguyen
-ms.openlocfilehash: 999f24b5a5c1bd5d259b785f9107697d2928b4eb
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.author: cwatson
+ms.openlocfilehash: 83891e1abdb58b4fdae65cee3689195b8f35df12
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230463"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Microsoft Azure の詳細な利用料金の用語を理解する 
 
@@ -39,7 +40,7 @@ ms.lasthandoff: 01/09/2018
 
 詳細な使用状況 CSV ファイルの最上部のセクションには、月の請求期間で使用したサービスが表示されます。 次の表では、このセクションに表示される用語と説明の一覧を示します。
 
-| 用語 | [説明] |
+| 用語 | 説明 |
 | --- | --- |
 |請求期間 |メーターが使用された請求期間 |
 |測定カテゴリ |使用状況の最上位レベルのサービスを示します |
@@ -62,7 +63,7 @@ ms.lasthandoff: 01/09/2018
 
 CSV ファイルの毎日の使用状況セクションには、請求金額に影響する使用状況の詳細が表示されます。 次の表では、このセクションに表示される用語と説明の一覧を示します。
 
-| 用語 | [説明] |
+| 用語 | 説明 |
 | --- | --- |
 |使用日 |メーターが使用された日付 |
 |測定カテゴリ |この使用量の対象となる最上位レベルのサービスを示します |
@@ -76,7 +77,7 @@ CSV ファイルの毎日の使用状況セクションには、請求金額に�
 |使用サービス |使用した Azure プラットフォーム サービス |
 |リソース グループ |デプロイされたメーターが実行されるリソース グループ。 <br/><br/>詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」を参照してください。 |
 |インスタンス ID | メーターの識別子。 <br/><br/> 識別子には、メーターの作成時に指定した名前が含まれています。 リソース名または完全修飾リソース ID のいずれかです。 詳細については、[Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) に関するページを参照してください。 |
-|タグ | ユーザーがメーターに割り当てるタグです。 タグは、課金記録のグループ化に使用できます。<br/><br/>たとえば、タグを使用して、メーターを使用する部門ごとにコストを配分することができます。 タグの生成をサポートするサービスは、仮想マシン、記憶域、および [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) を使用してプロビジョニングされたネットワーク サービスです。 詳細については、[タグを使用した Azure リソースの整理](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)に関するページを参照してください。 |
+|タグ | ユーザーがメーターに割り当てるタグです。 タグは、課金記録のグループ化に使用できます。<br/><br/>たとえば、タグを使用して、メーターを使用する部門ごとにコストを配分することができます。 タグの生成をサポートするサービスは、仮想マシン、記憶域、および [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) を使用してプロビジョニングされたネットワーク サービスです。 詳細については、[タグを使用した Azure リソースの整理](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)に関するページを参照してください。 |
 |追加情報 |サービス固有のメタデータ。 たとえば、仮想マシンのイメージの種類です。 |
 |サービス情報 1 |サブスクリプションでサービスが属しているプロジェクトの名前 |
 |サービス情報 2 |これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです |

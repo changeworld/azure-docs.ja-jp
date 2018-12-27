@@ -1,26 +1,28 @@
 ---
-title: "Azure Data Lake Store のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "あらゆるサイズ、種類、および取り込み速度のデータの分析を目的として、Hadoop と互換性のある超大規模な Data Lake リポジトリを設定、管理、アクセスする方法について説明します。"
+title: Azure Data Lake Storage Gen1 のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: あらゆるサイズ、種類、および取り込み速度のデータの分析を目的として、Hadoop と互換性のある超大規模な Data Lake リポジトリを設定、管理、アクセスする方法について説明します。
 services: data-lake-store
-author: czeumault
-manager: carolz
+author: twooley
+manager: twooley
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: data-lake-store
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 3c0327ebb4cb8d6ee66d019326ade4f4bcb258ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.date: 06/27/2018
+ms.author: twooley
+ms.openlocfilehash: 14fde29a898eb42d57e67dc843c0c565c4c661c3
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494855"
 ---
-# <a name="data-lake-store-documentation"></a>Data Lake Store のドキュメント
+# <a name="azure-data-lake-storage-gen1-documentation"></a>Azure Data Lake Storage Gen1 のドキュメント
 
-あらゆるサイズ、種類、取り込み速度のデータの分析を目的として、Data Lake Store を使用して、Hadoop と互換性のある超大規模リポジトリを作成する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、運用分析や調査分析を目的として Data Lake リポジトリを設定、管理、アクセスする方法を紹介します。
+あらゆるサイズ、種類、取り込み速度のデータの分析を目的として、Azure Data Lake Storage Gen1 (以前の Azure Data Lake Store) を使用して、Hadoop と互換性のある超大規模リポジトリを作成する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、運用分析や調査分析を目的として Data Lake リポジトリを設定、管理、アクセスする方法を紹介します。
+
+Data Lake Storage Gen2 のプレビューの習得に関心がある場合は、[製品ページ](https://aka.ms/adlsgen2-product)をご覧ください。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -34,7 +36,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Data Lake Store について</h3>
+                        <h3>Data Lake Storage Gen1 の概要</h3>
                     </div>
                 </div>
             </div>
@@ -52,7 +54,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Data Lake Store のビデオ ライブラリ</h3>
+                        <h3>Data Lake Storage Gen1 のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +72,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Portal で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>Azure portal で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +90,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>PowerShell で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>PowerShell で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +108,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure CLI で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>Azure CLI で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +126,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>.NET で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>.NET で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -142,7 +144,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Java で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>Java で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -160,7 +162,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Node.js で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>Node.js で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -170,49 +172,49 @@ ms.lasthandoff: 10/11/2017
 </ul>
 
 ---
- 
+ 
 <h2>リファレンス</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.datalakestore/v3.1.0/azurerm.datalakestore">PowerShell</a></p>
-                        <p><a href="/cli/azure/dls">Azure CLI 2.0</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/module/azurerm.datalakestore/">PowerShell</a></p>
+                        <p><a href="/cli/azure/dls">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>言語</h3>
-                        <p><a href="/dotnet/api/overview/azure/data-lake-store">.NET</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.datalake.store">Java</a></p>
-                        <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.JS</a></p>
-                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html">Python (アカウント管理)</a></p>
-                        <p><a href="http://azure-datalake-store.readthedocs.io/en/latest">Python (ファイルシステム管理)</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Languages</h3>
+                        <p><a href="/dotnet/api/overview/azure/data-lake-store">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.datalake.store">Java</a></p>
+                        <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.js</a></p>
+                        <p><a href="https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python">Python (アカウント管理)</a></p>
+                        <p><a href="http://azure-datalake-store.readthedocs.io/en/latest">Python (ファイルシステム管理)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST ()</h3>
-                        <p><a href="/rest/api/datalakestore">REST API</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/datalakestore">REST API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
 </ul>
 

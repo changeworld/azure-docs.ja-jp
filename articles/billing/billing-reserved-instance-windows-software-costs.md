@@ -1,30 +1,31 @@
 ---
-title: "Azure 予約 VM インスタンスにおける Windows ソフトウェアのコスト | Microsoft Docs"
-description: "予約仮想マシン インスタンスのコストに含まれない Windows ソフトウェア メーターについて説明します。"
+title: Azure の予約における Windows ソフトウェアのコスト | Microsoft Docs
+description: Azure 予約 VM インスタンスのコストに含まれない Windows ソフトウェア メーターについて説明します。
 services: billing
-documentationcenter: 
+documentationcenter: ''
 author: manish-shukla01
 manager: manshuk
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/03/2017
-ms.author: manshuk
-ms.openlocfilehash: a0bb559369877e1cc5333394102bfb85d3f0bb11
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 05/09/2018
+ms.author: cwatson
+ms.openlocfilehash: 6ec1d0e1b8a768dd61a42c8e9284a93aee3c9337
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392536"
 ---
-# <a name="windows-software-costs-not-included-with-reserved-instances"></a>予約インスタンスに含まれない Windows ソフトウェアのコスト
+# <a name="windows-software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances に含まれない Windows ソフトウェアのコスト
 
-予約インスタンス仮想マシンに Azure ハイブリッド使用特典がない場合、以下のセクションに記載されている Windows ソフトウェア メーターに関して料金が発生します。
+予約仮想マシン インスタンスに Azure ハイブリッド使用特典がない場合、以下のセクションに記載されている Windows ソフトウェアの測定に関して料金が発生します。
 
-## <a name="windows-software-meters-not-included-in-reserved-instance-cost"></a>予約インスタンスのコストに含まれない Windows ソフトウェア メーター
+## <a name="windows-software-meters-not-included-in-reservation-cost"></a>予約のコストに含まれない Windows ソフトウェアの測定
 
 | MeterId | 使用状況ファイルにおける MeterName | VM による使用 |
 | ------- | ------------------------| --- |
@@ -52,11 +53,18 @@ ms.lasthandoff: 02/09/2018
 これらのメーターごとのコストは、Azure RateCard API を使用して取得できます。 Azure メーターの料金を取得する方法については、「[Get price and metadata information for resources used in an Azure subscription (Azure サブスクリプションで使用されるリソースの料金とメタデータ情報を取得する)](https://msdn.microsoft.com/library/azure/mt219004)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-予約仮想マシン インスタンスの詳細については、次の記事を参照してください。
+Azure の予約の詳細については、次の記事を参照してください。
 
-- [予約 VM インスタンスによる仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [予約仮想マシン インスタンスの管理](billing-manage-reserved-vm-instance.md)
-- [予約仮想マシン インスタンスで仮想マシンのコストを削減する](billing-save-compute-costs-reservations.md)
-- [予約仮想マシン インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
-- [従量課金サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
-- [エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)
+- [Azure の予約とは](billing-save-compute-costs-reservations.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure の予約の管理](billing-manage-reserved-vm-instance.md)
+- [予約割引の適用方法について](billing-understand-vm-reservation-charges.md)
+- [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
+- [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
+
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+
+まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+
+
+

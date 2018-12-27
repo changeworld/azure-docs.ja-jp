@@ -1,24 +1,26 @@
 ---
-title: "Azure Stack のためのインフラストラクチャ バックアップ サービスのベスト プラクティス | Microsoft Docs"
-description: "自社のデータセンターに Azure Stack を展開して管理する際の一連のベスト プラクティスに従って、致命的な障害が発生した場合のデータ損失を軽減できます。"
+title: Azure Stack のためのインフラストラクチャ バックアップ サービスのベスト プラクティス | Microsoft Docs
+description: 自社のデータセンターに Azure Stack を展開して管理する際の一連のベスト プラクティスに従って、致命的な障害が発生した場合のデータ損失を軽減できます。
 services: azure-stack
-documentationcenter: 
-author: mattbriggs
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 221FDE40-3EF8-4F54-A075-0C4D66EECE1A
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2017
-ms.author: mabrigg
-ms.openlocfilehash: b9438f3bab92f40a5c79ce7b7a572195c182be45
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.date: 11/05/2018
+ms.author: jeffgilb
+ms.reviewer: hectorl
+ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035103"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>インフラストラクチャ バックアップ サービスのベスト プラクティス
 
@@ -30,9 +32,9 @@ ms.lasthandoff: 01/02/2018
 
 ## <a name="configuration-best-practices"></a>構成のベスト プラクティス
 
-### <a name="deployment"></a>デプロイ
+### <a name="deployment"></a>Deployment
 
-各 Azure Stack Cloud の展開後に、インフラストラクチャ バックアップを有効にします。 AzureStack-Tools を使用することで、作業者の管理 API エンドポイントにアクセスできるクライアントやサーバーから、バックアップをスケジュールできます。
+各 Azure Stack Cloud の展開後に、インフラストラクチャ バックアップを有効にします。 Azure Stack PowerShell を使用することで、作業者の管理 API エンドポイントにアクセスできるクライアントやサーバーから、バックアップをスケジュールできます。
 
 ### <a name="networking"></a>ネットワーク
 
@@ -40,9 +42,7 @@ ms.lasthandoff: 01/02/2018
 
 ### <a name="encryption"></a>暗号化
 
-暗号化キーを使用して、外部ストレージにエクスポートされるバックアップ データを暗号化します。 キーは、AzureStack-Tools を使用して生成できます。 
-
-![AzureStack-Tools](media\azure-stack-backup\azure-stack-backup-encryption1.png)
+暗号化キーを使用して、外部ストレージにエクスポートされるバックアップ データを暗号化します。 キーは、[PowerShell で Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-powershell.md)一環として生成されます。
 
 キーは、安全な場所 (パブリックの Azure Key Vault シークレット) に格納する必要があります。 このキーは、Azure Stack の再展開時に使用します。 
 
@@ -52,16 +52,15 @@ ms.lasthandoff: 01/02/2018
 
 ### <a name="backups"></a>バックアップ
 
- - インフラストラクチャ バックアップ コントローラーは、オンデマンドでトリガーする必要があります。 少なくとも 1 日 2 回はバックアップすることをお勧めします。
  - バックアップ ジョブはシステムの稼働中に実行されるため、管理エクスペリエンスやユーザーのアプリケーションにダウンタイムが発生しません。 それなりに負荷がかかっているソリューションでは、バックアップ ジョブに 20 - 40 分かかると見積もってください。
- - OEM 提供の手順に従って、ネットワーク スイッチを手動でバックアップします。また、インフラストラクチャ バックアップ コントローラーがコントロール プレーン バックアップ データを格納している場所と同じバックアップ共有上に、ハードウェア ライフサイクル ホスト (HLH) を格納する必要があります。 スイッチと HLH 構成は、リージョンのフォルダーに格納することを検討してください。 同一リージョンに Azure Stack インスタンスが複数ある場合は、スケール ユニットに属している構成ごとに識別子を使用することを検討してください。
+ - OEM 提供の手順に従って、ネットワーク スイッチを手動でバックアップします。また、Infrastructure Backup コントローラーがコントロール プレーン バックアップ データを格納している場所と同じバックアップ共有上に、ハードウェア ライフサイクル ホスト (HLH) を格納する必要があります。 スイッチと HLH 構成は、リージョンのフォルダーに格納することを検討してください。 同一リージョンに Azure Stack インスタンスが複数ある場合は、スケール ユニットに属している構成ごとに識別子を使用することを検討してください。
 
 ### <a name="folder-names"></a>フォルダー名
 
  - インフラストラクチャでは、MASBACKUP フォルダーが自動的に作成されます。 これは、Microsoft によって管理される共有です。 MASBACKUP と同じレベルの共有を作成することもできます。 Azure Stack 以外で作成された MASBACKUP 内に、フォルダーやストレージ データを作成することは推奨されません。 
  -  フォルダー名に FQDN とリージョンを使用して、バックアップ データを、他のクラウドと区別します。 Azure Stack のデプロイの完全修飾ドメイン名 (FQDN) とエンドポイントは、リージョン パラメーターと外部ドメイン名 パラメーターの組み合わせです。 詳細については、「[Azure Stack とデータセンターの統合 - DNS](azure-stack-integrate-dns.md)」をご覧ください。
 
-たとえば、バックアップ共有を、fileserver01.contoso.com 上でホストされている AzSBackups とします。このファイル共有では、外部ドメイン名を使用する、Azure Stack 展開ごとのフォルダーと、リージョン名を使用するサブフォルダーが存在する可能性があります。 
+たとえば、バックアップ共有を、fileserver01.contoso.com 上でホストされている AzSBackups とします。 このファイル共有では、外部ドメイン名を使用する、Azure Stack 展開ごとのフォルダーと、リージョン名を使用するサブフォルダーが存在する可能性があります。 
 
 FQDN: contoso.com  
 リージョン: nyc
@@ -85,7 +84,7 @@ OEM は、各社のコンポーネントのバックアップ データは、リ
 
 システムでサポートされるアラートは、以下のとおりです。
 
-| アラート:                                                   | [説明]                                                                                     | 修復                                                                                                                                |
+| アラート:                                                   | 説明                                                                                     | 修復                                                                                                                                |
 |---------------------------------------------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ファイル共有の容量が不足しているため、バックアップに失敗しました | ファイル共有が容量不足のため、バックアップ コントローラーがバックアップ ファイルをその場所にエクスポートできません。 | ストレージ容量を追加して、バックアップをやり直します。 既存のバックアップを (最も古いものから) 削除して、空き容量を増やします。                    |
 | 接続の問題のため、バックアップに失敗しました。             | Azure Stack とファイル共有間のネットワークに問題があります。                          | ネットワークの問題に対処して、バックアップをやり直します。                                                                                            |
@@ -95,5 +94,6 @@ OEM は、各社のコンポーネントのバックアップ データは、リ
 
 ## <a name="next-steps"></a>次の手順
 
- - [インフラストラクチャ バックアップ サービス](azure-stack-backup-reference.md)の参照資料を確認します。  
- - [インフラストラクチャ バックアップ サービス](azure-stack-backup-enable-backup-console.md)を有効にします。
+[インフラストラクチャ バックアップ サービス](azure-stack-backup-reference.md)の参照資料を確認します。
+
+[インフラストラクチャ バックアップ サービス](azure-stack-backup-enable-backup-console.md)を有効にします。

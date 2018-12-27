@@ -1,27 +1,28 @@
 ---
-title: "Azure API Management のキャッシュ ポリシー | Microsoft Docs"
-description: "Azure API Management で使用できるキャッシュ ポリシーについて説明します。"
+title: Azure API Management のキャッシュ ポリシー | Microsoft Docs
+description: Azure API Management で使用できるキャッシュ ポリシーについて説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8147199c-24d8-439f-b2a9-da28a70a890c
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 488a4c4b7daf5c07ca5f6b6bb72464279658d372
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: c1fd0f462a3eb960e27b002f4f7c940a6bf978c8
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620576"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
-このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
+このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
   
 ##  <a name="CachingPolicies"></a> キャッシュ ポリシー  
   
@@ -45,7 +46,7 @@ ms.lasthandoff: 12/06/2017
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
-<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression to evaluate)">  
+<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" cache-preference="prefer-external | external | internal" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression to evaluate)">  
   <vary-by-header>Accept</vary-by-header>  
   <!-- should be present in most cases -->  
   <vary-by-header>Accept-Charset</vary-by-header>  
@@ -67,7 +68,7 @@ ms.lasthandoff: 12/06/2017
 <policies>  
     <inbound>  
         <base />  
-        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" must-revalidate="true">  
+        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" must-revalidate="true" cache-preference="internal" >  
             <vary-by-query-parameter>version</vary-by-query-parameter>  
         </cache-lookup>           
     </inbound>  
@@ -82,7 +83,7 @@ ms.lasthandoff: 12/06/2017
  この例は、API Management 応答のキャッシュ時間を、バックエンド サービスの `Cache-Control` ディレクティブによって指定されたバックエンド サービスの応答キャッシュ時間と一致するように構成する方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介) を 25:25 まで早送りしてご覧ください。  
   
 ```xml  
-<!-- The following cache policy snippets demonstrate how to control API Management reponse cache duration with Cache-Control headers sent by the backend service. -->  
+<!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
   
 <!-- Copy this snippet into the inbound section -->  
 <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="public" must-revalidate="true" >  
@@ -90,7 +91,7 @@ ms.lasthandoff: 12/06/2017
   <vary-by-header>Accept-Charset</vary-by-header>  
 </cache-lookup>  
   
-<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the deafult value of 5 min if none is found  -->  
+<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the default value of 5 min if none is found  -->  
 <cache-store duration="@{  
     var header = context.Response.Headers.GetValueOrDefault("Cache-Control","");  
     var maxAge = Regex.Match(header, @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value;  
@@ -103,24 +104,25 @@ ms.lasthandoff: 12/06/2017
   
 ### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
-|cache-lookup|ルート要素。|はい|  
-|vary-by-header|指定されたヘッダーの値 (Accept、Accept-Charset、Accept-Encoding、Accept-Language、Authorization、Expect、From、Host、If-Match など) ごとに応答をキャッシュに格納します。|いいえ|  
-|vary-by-query-parameter|指定されたクエリ パラメーターの値ごとに応答をキャッシュに格納します。 1 つまたは複数のパラメーターを入力します。 セミコロンを区切り文字として使用します。 パラメーターを指定しない場合、すべてのクエリ パラメーターが使用されます。|なし|  
+|cache-lookup|ルート要素。|[はい]|  
+|vary-by-header|指定されたヘッダーの値 (Accept、Accept-Charset、Accept-Encoding、Accept-Language、Authorization、Expect、From、Host、If-Match など) ごとに応答をキャッシュに格納します。|いいえ |  
+|vary-by-query-parameter|指定されたクエリ パラメーターの値ごとに応答をキャッシュに格納します。 1 つまたは複数のパラメーターを入力します。 セミコロンを区切り文字として使用します。 パラメーターを指定しない場合、すべてのクエリ パラメーターが使用されます。|いいえ |  
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
-|----------|-----------------|--------------|-------------|  
-|allow-private-response-caching|`true` に設定すると、証人ヘッダーを含む要求をキャッシュできます。|いいえ|false|  
-|downstream-caching-type|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。|なし|なし|  
-|must-revalidate|ダウンストリーム キャッシュが有効になっているとき、この属性によって、ゲートウェイ応答での `must-revalidate` キャッシュ制御ディレクティブのオンとオフを切り替えます。|いいえ|true|  
-|vary-by-developer|`true` に設定すると、開発者キーごとに応答をキャッシュします。|あり||  
-|vary-by-developer-groups|`true` に設定すると、ユーザー ロールごとに応答をキャッシュします。|あり||  
-  
+| Name                           | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
+| allow-private-response-caching | `true` に設定すると、承認ヘッダーを含む要求をキャッシュできます。                                                                                                                                                                                                                                                                        | いいえ        | false             |
+| cache-preference               | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` ([Azure API Management での外部 Redis Cache の使用](api-management-howto-cache-external.md)に関するページの説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ        | `prefer-external` |
+| downstream-caching-type        | この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。                                                                                                          | いいえ        | なし              |
+| must-revalidate                | ダウンストリーム キャッシュが有効になっているとき、この属性によって、ゲートウェイ応答での `must-revalidate` キャッシュ制御ディレクティブのオンとオフを切り替えます。                                                                                                                                                                                                                      | いいえ        | true              |
+| vary-by-developer              | `true` に設定すると、開発者キーごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                         | [はい]      |                   |
+| vary-by-developer-groups       | `true` に設定すると、ユーザー ロールごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                             | [はい]      |                   |  
+
 ### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound  
 -   **ポリシー スコープ:** API、操作、製品  
@@ -160,7 +162,7 @@ ms.lasthandoff: 12/06/2017
  この例は、API Management 応答のキャッシュ時間を、バックエンド サービスの `Cache-Control` ディレクティブによって指定されたバックエンド サービスの応答キャッシュ時間と一致するように構成する方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介) を 25:25 まで早送りしてご覧ください。  
   
 ```xml  
-<!-- The following cache policy snippets demonstrate how to control API Management reponse cache duration with Cache-Control headers sent by the backend service. -->  
+<!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
   
 <!-- Copy this snippet into the inbound section -->  
 <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="public" must-revalidate="true" >  
@@ -168,7 +170,7 @@ ms.lasthandoff: 12/06/2017
   <vary-by-header>Accept-Charset</vary-by-header>  
 </cache-lookup>  
   
-<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the deafult value of 5 min if none is found  -->  
+<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the default value of 5 min if none is found  -->  
 <cache-store duration="@{  
     var header = context.Response.Headers.GetValueOrDefault("Cache-Control","");  
     var maxAge = Regex.Match(header, @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value;  
@@ -181,18 +183,18 @@ ms.lasthandoff: 12/06/2017
   
 ### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
-|cache-store|ルート要素。|はい|  
+|cache-store|ルート要素。|[はい]|  
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
-|----------|-----------------|--------------|-------------|  
-|duration|キャッシュに格納されたエントリの有効期間 (秒単位)。|はい|該当なし|  
-  
+| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
+| duration         | キャッシュに格納されたエントリの有効期間 (秒単位)。                                                                                                                                                                                                                                                                                                   | [はい]      | 該当なし               |  
+
 ### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** outbound    
 -   **ポリシー スコープ:** API、操作、製品  
@@ -208,7 +210,8 @@ ms.lasthandoff: 12/06/2017
 ```xml  
 <cache-lookup-value key="cache key value"   
     default-value="value to use if cache lookup resulted in a miss"   
-    variable-name="name of a variable looked up value is assigned to" />  
+    variable-name="name of a variable looked up value is assigned to"  
+    cache-preference="prefer-external | external | internal" />  
 ```  
   
 ### <a name="example"></a>例  
@@ -223,20 +226,21 @@ ms.lasthandoff: 12/06/2017
   
 ### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
-|cache-lookup-value|ルート要素。|はい|  
+|cache-lookup-value|ルート要素。|[はい]|  
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
-|----------|-----------------|--------------|-------------|  
-|default-value|キーによるキャッシュ検索で何も見つからなかった場合に、変数に割り当てられる値。 この属性が指定されない場合は `null` が割り当てられます。|なし|`null`|  
-|key|検索で使用するキャッシュのキー値。|はい|該当なし|  
-|variable-name|検索が成功した場合に、検索された値が割り当てられる[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)の名前。 検索結果で何も見つからなかった場合、変数には、`default-value` 属性の値または `null` (`default-value` 属性が省略されたとき) が割り当てられます。|はい|該当なし|  
-  
+| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
+| cache-preference | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` ([Azure API Management での外部 Redis Cache の使用](api-management-howto-cache-external.md)に関するページの説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ        | `prefer-external` |
+| default-value    | キーによるキャッシュ検索で何も見つからなかった場合に、変数に割り当てられる値。 この属性が指定されない場合は `null` が割り当てられます。                                                                                                                                                                                                           | いいえ        | `null`            |
+| key              | 検索で使用するキャッシュのキー値。                                                                                                                                                                                                                                                                                                                       | [はい]      | 該当なし               |
+| variable-name    | 検索が成功した場合に、検索された値が割り当てられる[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)の名前。 検索結果で何も見つからなかった場合、変数には、`default-value` 属性の値または `null` (`default-value` 属性が省略されたとき) が割り当てられます。                                       | [はい]      | 該当なし               |  
+
 ### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
 -   **ポリシー スコープ:** グローバル、API、操作、製品  
@@ -250,7 +254,7 @@ ms.lasthandoff: 12/06/2017
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
-<cache-store-value key="cache key value" value="value to cache" duration="seconds" />  
+<cache-store-value key="cache key value" value="value to cache" duration="seconds" cache-preference="prefer-external | external | internal" />  
 ```  
   
 ### <a name="example"></a>例  
@@ -265,20 +269,21 @@ ms.lasthandoff: 12/06/2017
   
 ### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
-|cache-store-value|ルート要素。|はい|  
+|cache-store-value|ルート要素。|[はい]|  
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
-|----------|-----------------|--------------|-------------|  
-|duration|指定された期間 (秒単位)、値がキャッシュされます。|はい|該当なし|  
-|key|値が格納されるキャッシュのキー。|はい|該当なし|  
-|値|キャッシュされる値。|はい|該当なし|  
+| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
+| cache-preference | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` ([Azure API Management での外部 Redis Cache の使用](api-management-howto-cache-external.md)に関するページの説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ        | `prefer-external` |
+| duration         | 指定された期間 (秒単位)、値がキャッシュされます。                                                                                                                                                                                                                                                                                 | [はい]      | 該当なし               |
+| key              | 値が格納されるキャッシュのキー。                                                                                                                                                                                                                                                                                                                   | [はい]      | 該当なし               |
+| value            | キャッシュされる値。                                                                                                                                                                                                                                                                                                                                     | [はい]      | 該当なし               |
   
 ### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
 -   **ポリシー スコープ:** グローバル、API、操作、製品  
@@ -290,7 +295,7 @@ ms.lasthandoff: 12/06/2017
   
 ```xml  
   
-<cache-remove-value key="cache key value"/>  
+<cache-remove-value key="cache key value" cache-preference="prefer-external | external | internal"  />  
   
 ```  
   
@@ -304,23 +309,24 @@ ms.lasthandoff: 12/06/2017
   
 #### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
-|cache-remove-value|ルート要素。|はい|  
+|cache-remove-value|ルート要素。|[はい]|  
   
 #### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
-|----------|-----------------|--------------|-------------|  
-|key|キャッシュから削除される、前にキャッシュされた値のキー。|はい|該当なし|  
+| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
+| cache-preference | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` ([Azure API Management での外部 Redis Cache の使用](api-management-howto-cache-external.md)に関するページの説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ        | `prefer-external` |
+| key              | キャッシュから削除される、前にキャッシュされた値のキー。                                                                                                                                                                                                                                                                                        | [はい]      | 該当なし               |
   
 #### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
 -   **ポリシー スコープ:** グローバル、API、操作、製品  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
 

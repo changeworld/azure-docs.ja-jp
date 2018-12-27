@@ -10,22 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 6466d6cb535bbe0042d7c4c3e828e576e23d5d07
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eee68481f4396f8a09241b664d4c3d7d4a4f6567
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054354"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
 この記事では、スケジュール トリガーの概要と、スケジュール トリガーを作成、起動、監視する手順について説明します。 他の種類のトリガーについては、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。
 
 スケジュール トリガーを作成するときは、トリガーのスケジュール (開始日、繰り返し、終了日など) を指定し、パイプラインと関連付けます。 パイプラインとトリガーには多対多の関係があります。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Azure Data Factory バージョン 2 に適用されます。 一般公開 (GA) されている Azure Data Factory バージョン 1 を使用している場合は、[Azure Data Factory バージョン 1 の使用](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
 
 以下のセクションでは、さまざまな方法でスケジュール トリガーを作成する手順を説明します。 
 
@@ -248,7 +246,7 @@ Azure Portal でトリガー実行とパイプライン実行を監視するに�
 Azure Resource Manager テンプレートを使用してトリガーを作成できます。 詳しい手順については、[Resource Manager テンプレートを使用した Azure データ ファクトリの作成](quickstart-create-data-factory-resource-manager-template.md)に関する記事をご覧ください。  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>トリガーの開始時刻をパイプラインに渡す
-Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**WindowStart**、**WindowEnd** の各システム変数を使用することによって、パーティション分割されたデータの読み取りと書き込みをサポートします。 Azure Data Factory バージョン 2 では、パイプライン パラメーターを使用してこの動作を実現できます。 トリガーの開始時刻とスケジュールされた時刻を、パイプライン パラメーターの値として設定します。 次の例では、トリガーのスケジュールされた時刻が、**scheduledRunTime** パイプライン パラメーターに値として渡されます。
+Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**WindowStart**、**WindowEnd** の各システム変数を使用することによって、パーティション分割されたデータの読み取りと書き込みをサポートします。 現在のバージョンの Azure Data Factory では、パイプライン パラメーターを使用してこの動作を実現できます。 トリガーの開始時刻とスケジュールされた時刻を、パイプライン パラメーターの値として設定します。 次の例では、トリガーのスケジュールされた時刻が、**scheduledRunTime** パイプライン パラメーターに値として渡されます。
 
 ```json
 "parameters": {
@@ -312,7 +310,7 @@ Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**
 ### <a name="schema-overview"></a>スキーマの概要
 次の表に、トリガーの繰り返しとスケジュール設定に関連する主要なスキーマ要素の概要を示します。
 
-| JSON プロパティ | [説明] |
+| JSON プロパティ | 説明 |
 |:--- |:--- |
 | **startTime** | 日付/時刻の値。 単純なスケジュールの場合、**startTime** プロパティの値が最初の発生日時に適用されます。 複雑なスケジュールの場合、指定した **startTime** 値になるとすぐにトリガーが起動します。 |
 | **endTime** | トリガーの終了日時。 指定した終了日時を過ぎると、トリガーは実行されません。 このプロパティの値に過去の日時を指定することはできません。 このプロパティは省略可能です。 |
@@ -359,7 +357,7 @@ Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**
 次の表に、**schedule** の要素の詳細を示します。
 
 
-| JSON 要素 | [説明] | 有効な値 |
+| JSON 要素 | 説明 | 有効な値 |
 |:--- |:--- |:--- |
 | **分** | トリガーを実行する時刻 (分)。 | <ul><li>整数</li><li>整数の配列</li></ul>
 | **hours** | トリガーを実行する時刻 (時)。 | <ul><li>整数</li><li>整数の配列</li></ul> |
@@ -373,7 +371,7 @@ Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**
 
 各例は、**interval** 値が 1 であり、schedule の定義に従って **frequency** に適切な値が指定されていることを前提としています。 たとえば、**frequency** 値に "day" を指定し、**schedule** オブジェクトで "monthDays" の変更を指定することはできません。 このような制限事項は、前のセクションの表に記載されています。
 
-| 例 | [説明] |
+| 例 | 説明 |
 |:--- |:--- |
 | `{"hours":[5]}` | 毎日午前 5 時に実行されます。 |
 | `{"minutes":[15], "hours":[5]}` | 毎日午前 5 時 15 分に実行されます。 |

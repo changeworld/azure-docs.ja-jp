@@ -9,16 +9,17 @@ editor: ''
 ms.assetid: da36cbdb-6531-4dae-88e8-a311ab71520d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: a028471871754c2b9c3981ec13f5788643675a77
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b5c07c7d142e231c945906d6e75ce16a5bb1d252
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985983"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する
 ## <a name="overview"></a>概要
@@ -105,7 +106,10 @@ HTTPS プロトコルはサーバー認証を提供し、また、クライア�
 > [!NOTE]
 > アプリケーションのアップグレード中はサービスのプロトコルを変更することはできません。 アップグレード中に変更する場合、これは重大な変更です。
 > 
-> 
+
+> [!WARNING] 
+> HTTPS を使用する場合は、同じノードにデプロイされる (アプリケーションから独立した) 異なるサービス インスタンスに同じポートと証明書を使用しないでください。 異なるアプリケーション インスタンスで同じポートを使用して 2 つの異なるサービスをアップグレードすると、アップグレード エラーが発生します。 詳細については、「[HTTPS エンドポイントを持つ複数のアプリケーションのアップグレード](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)」を参照してください。
+>
 
 HTTPS で設定する必要がある ApplicationManifest の例を次に示します  証明書のサムプリントを指定する必要があります。 EndpointRef は、HTTPS プロトコルを設定する ServiceManifest 内の EndpointResource への参照です。 複数の EndpointCertificate を追加することができます。  
 
@@ -188,7 +192,7 @@ Parameters に次のように追加します。
   </Parameters>
 ```
 
-これで、アプリケーションをデプロイするときに、ApplicationParameters としてこれらの値を渡すことができます。次に例を示します。
+アプリケーションをデプロイするときに、ApplicationParameters としてこれらの値を渡すことができます。  例: 
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}

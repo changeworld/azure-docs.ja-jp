@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 455c1247ee68c4841647d942a1ac210b1b91694a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d895dcdf9eefac01790aab6dc3f36a3feb0a8b12
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051152"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-amazon-simple-storage-service-connector.md)
-> * [バージョン 2 - プレビュー](../connector-amazon-simple-storage-service.md)
+> * [Version 1](data-factory-amazon-simple-storage-service-connector.md)
+> * [Version 2 (現在のバージョン)](../connector-amazon-simple-storage-service.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、「[Amazon S3 connector in V2 (V2 での Amazon S3 のコネクター)](../connector-amazon-simple-storage-service.md)」を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[V2 の Amazon S3 コネクタ](../connector-amazon-simple-storage-service.md)に関するページを参照してください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、Amazon Simple Storage Service (S3) からデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
@@ -63,7 +64,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 リンクされたサービスは、データ ストアをデータ ファクトリにリンクします。 Amazon S3 データ ストアをデータ ファクトリにリンクするには、**AwsAccessKey** 型のリンクされたサービスを作成します。 次の表は、Amazon S3 (AwsAccessKey) のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | accessKeyID |シークレット アクセス キーの ID。 |文字列 |[はい] |
 | secretAccessKey |シークレット アクセス キー自体。 |暗号化された秘密文字列 |[はい] |
@@ -92,7 +93,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (SQL Database、Azure BLOB、Azure テーブルなど) でほぼ同じです。 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **AmazonS3** 型のデータセットの **typeProperties** セクション (Amazon S3 データセットを含む) には次のプロパティがあります。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | bucketName |S3 バケットの名前。 |String |[はい] |
 | key |S3 オブジェクト キー。 |String |いいえ  |
@@ -173,7 +174,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。 アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、プロパティはソースとシンクの種類によって異なります。 コピー アクティビティのソースの種類が **FileSystemSource** (Amazon S3を含む) である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | recursive |ディレクトリで S3 オブジェクトを再帰的に一覧表示するかどうかを指定します。 |true または false |いいえ  |
 

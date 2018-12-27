@@ -2,24 +2,28 @@
 title: SQL Database の XEvent リング バッファー コード | Microsoft Docs
 description: Azure SQL Database で、リング バッファー ターゲットの使用によって簡素化された TRANSACT-SQL のコード サンプルを提供します。
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: monitor
+ms.custom: ''
+ms.devlang: PowerShell
+ms.topic: conceptual
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: ee6181baf7a16bc827d35aaf5d18b281bcf9c3f7
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 522561d8afcf6fe1bdd2887f7fd5180b79565a61
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874619"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL Database での拡張イベント向けリング バッファー ターゲット コード
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-テスト中の拡張イベントに関する情報を、最も簡単な方法で取得およびレポートするための完全なコード サンプルが必要です。 拡張イベントのデータの最も簡単なターゲットは、 [リング バッファー ターゲット](http://msdn.microsoft.com/library/ff878182.aspx)です。
+テスト中の拡張イベントに関する情報を、最も簡単な方法で取得およびレポートするための完全なコード サンプルが必要です。 拡張イベントのデータの最も簡単なターゲットは、 [リング バッファー ターゲット](https://msdn.microsoft.com/library/ff878182.aspx)です。
 
 このトピックでは、以下を実行する TRANSACT-SQL コードのサンプルについて説明します。
 
@@ -46,14 +50,14 @@ ms.lasthandoff: 04/06/2018
 * SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。 
   最新の ssms.exe をダウンロードすることができる。
   
-  * 「 [SQL Server Management Studio のダウンロード](http://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
-  * [ダウンロードへの直接リンク。](http://go.microsoft.com/fwlink/?linkid=616025)
+  * 「 [SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
+  * [ダウンロードへの直接リンク。](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>サンプル コード
 
 わずかな変更を加えると、以下のリング バッファーのコード サンプルを、Azure SQL Database または Microsoft SQL Server のいずれかで実行できます。 異なる点は、手順 5. の FROM 句で使用されるいくつかの動的管理ビュー (DMV) の名前の中に「_database」というノード名があることです。 例: 
 
-* sys.dm_xe**_database**_session_targets
+* sys.dm_xe **_database**_session_targets
 * sys.dm_xe_session_targets
 
 &nbsp;
@@ -344,11 +348,11 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 
 拡張イベントの他のコード サンプル トピックは次のリンクから入手可能です。 ただし、対象が Azure SQL Database または Microsoft SQL Server のどちらかを確認するために、サンプルを定期的にチェックする必要があります。 これにより、変更がサンプル実行に十分であるかを判断できます。
 
-* Azure SQL Database のコード サンプル: [Event File target code for extended events in SQL Database (SQL Database での拡張イベントのイベント ファイル ターゲット コード)](sql-database-xevent-code-event-file.md)
+* Azure SQL Database のコード サンプル:[SQL Database の拡張イベントのためのイベント ファイル ターゲット コード](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
 -->

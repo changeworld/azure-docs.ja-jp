@@ -26,18 +26,18 @@
 
 # サンプル
 ## Azure CLI
-### [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-cli-samples)
+### [Web Apps](https://docs.microsoft.com/azure/app-service/samples-cli)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
 ## Azure PowerShell
-### [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-powershell-samples)
+### [Web Apps](https://docs.microsoft.com/azure/app-service/samples-powershell)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples)
 
 # 概念
 ## [請求とサブスクリプション](https://docs.microsoft.com/azure/billing/billing-getting-started)
-## [ホスティングの比較](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)
-## [App Service とは](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+## [ホスティングの比較](https://docs.microsoft.com/azure/app-service/overview-compare)
+## [App Service とは](https://docs.microsoft.com/azure/app-service/overview)
 ## 仮想マシン
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/overview)
@@ -55,7 +55,7 @@
 ### [サーバーレス アプリ](https://docs.microsoft.com/azure/azure-functions/functions-reference)
 ### [マイクロサービス クラスター](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
 ## デプロイ
-### [ソース管理からの Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/app-service-continuous-deployment)
+### [ソース管理からの Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)
 ### [ローカルなマイクロサービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
@@ -75,12 +75,12 @@
 ## セキュリティ保護
 ### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
-## Backup
-### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/web-sites-backup)
+## バックアップ
+### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/manage-backup)
 ### [仮想マシン](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
 ## 監視
-### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)
+### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitoring)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-monitoring)
 ### [マイクロサービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview)
@@ -95,7 +95,7 @@
 ## SDK
 ### [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
 ### [Java](https://docs.microsoft.com/java/api/)
-### [Node.js](http://azure.github.io/azure-sdk-for-node/)
+### [Node.JS](http://azure.github.io/azure-sdk-for-node/)
 ### [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 ### [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/)
 ### [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)

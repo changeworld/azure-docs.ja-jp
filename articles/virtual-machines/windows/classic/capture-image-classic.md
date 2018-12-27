@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30914057"
 ---
 # <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする
 > [!IMPORTANT]
@@ -59,7 +60,7 @@ Azure 仮想マシンのイメージをキャプチャする前に、ターゲ�
 5. Sysprep コマンドにより仮想マシンがシャットダウンされます。これにより、Azure ポータルの仮想マシンの状態が **[停止済み]** に変わります。
 6. Azure Portal で **[仮想マシン (クラシック)]** をクリックし、キャプチャする仮想マシンを選択します。 **[VM イメージ (クラシック)]** グループは、**[すべてのサービス]** を表示したときに **[Compute]** の下に表示されます。
 
-7. コマンド バーで、 **[取り込み]**をクリックします。
+7. コマンド バーで、 **[取り込み]** をクリックします。
 
    ![仮想マシンをキャプチャする](./media/capture-image/CaptureVM.png)
 
@@ -67,7 +68,7 @@ Azure 仮想マシンのイメージをキャプチャする前に、ターゲ�
 
 8. **[イメージの名前]** に新しいイメージの名前を入力します。 **[イメージ ラベル]** に新しいイメージのラベルを入力します。
 
-9. **[仮想マシンで Sysprep を実行しました]** をクリックします。 このチェック ボックスは、手順 3. ～ 5. の Sysprep での操作を指しています。 Windows Server イメージをカスタム イメージ セットに追加する前に、Sysprep を実行してイメージを一般化する_必要があります_。
+9. **[仮想マシンで Sysprep を実行しました]** をクリックします。 このチェック ボックスは、手順 3. ～ 5. の Sysprep での操作を指しています。 Windows Server イメージをカスタム イメージ セットに追加する前に、Sysprep を実行してイメージを一般化する _必要があります_。
 
 10. キャプチャが完了すると、**[Marketplace]** の **[Compute]** の **[VM イメージ (クラシック)]** コンテナーで新しいイメージが利用可能になります。
 

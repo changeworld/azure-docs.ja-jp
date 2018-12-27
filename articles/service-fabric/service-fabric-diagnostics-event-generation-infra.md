@@ -9,24 +9,29 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 46ba7b6e638fafa512d4a3f291c49acc1ddf02e4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 96bbb221f5fa133ee88a09d489627e3d2f9b0713
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409188"
 ---
 # <a name="monitoring-the-cluster-and-platform"></a>クラスターとプラットフォームの監視
 
 ハードウェアとクラスターが予想どおりに動作しているかどうかを確認するために、プラットフォーム レベルで監視することが重要です。 Service Fabric では、ハードウェアの障害時にもアプリケーションを実行し続けることができますが、エラーがアプリケーションと基になるインフラストラクチャのどちらで発生しているのかを診断する必要があります。 また、ハードウェアの追加や削除を決定する際に役立つ適切な容量計画を作成するために、クラスターを監視する必要があります。
 
-Service Fabric では、次のログ チャネルが標準で提供されています。
+Service Fabric は、EventStore や標準で提供されるさまざまなログ チャネルを通じて、構造化されたプラットフォーム イベントを "[Service Fabric イベント](service-fabric-diagnostics-events.md)" としていくつか公開しています。 
 
-* **運用時**  
+EventStore は、エンティティごとの単位 (クラスター、ノード、アプリケーション、サービス、パーティション、レプリカ、コンテナーを含むエンティティ) でクラスターのイベントへのアクセスをユーザーに提供し、REST API と Service Fabric クライアント ライブラリを介してそれらを公開します。 開発/テスト クラスターを監視して、運用クラスターの状態について特定時点の情報を取得するためには、EventStore を使用します。 これについて詳しくは、「[EventStore の概要](service-fabric-diagnostics-eventstore.md)」を参照してください。
+
+Service Fabric は、運用クラスターを監視するパイプラインの設定用に、以下のログ チャネルも標準で提供しています。
+
+* [**運用時**](service-fabric-diagnostics-event-generation-operational.md)  
 Service Fabric およびクラスターによって実行される高レベルの操作。起動中のノード、デプロイ中の新しいアプリケーション、アップグレードのロールバックなどのイベントが含まれます。
 
 * **運用時 - 詳細**  
@@ -86,7 +91,7 @@ Service Fabric の使用時に収集されるパフォーマンス カウンタ�
 クラスターのパフォーマンス データの収集は、次の 2 とおりの方法で設定できます。
 
 * **エージェントの使用**  
-エージェントは通常、収集可能なパフォーマンス メトリックの一覧を保持しており、ユーザーが収集するメトリックを選択したり、それを変更したりすることは比較的簡単なプロセスであるため、これはマシンからパフォーマンスを収集するための推奨される方法です。 OMS エージェントの詳細については、[Service Fabric の OMS を構成する方法](service-fabric-diagnostics-event-analysis-oms.md)に関する記事および [OMS Windows エージェントの設定](../log-analytics/log-analytics-windows-agent.md)に関する記事をご覧ください。OMS エージェントは、クラスター VM やデプロイ済みのコンテナーのパフォーマンス データを取得できる監視エージェントです。
+エージェントは通常、収集可能なパフォーマンス メトリックの一覧を保持しており、ユーザーが収集または変更するメトリックを選択することは比較的簡単なプロセスであるため、これはマシンからパフォーマンスを収集するための推奨される方法です。 Log Analytics エージェントの詳細については、[Service Fabric の Log Analytics を構成する方法](service-fabric-diagnostics-event-analysis-oms.md)に関する記事および [Log Analytics エージェントの設定](../log-analytics/log-analytics-windows-agent.md)に関する記事をご覧ください。Log Analytics エージェントは、クラスター VM やデプロイ済みのコンテナーのパフォーマンス データを取得できる監視エージェントです。
 
 * **パフォーマンス カウンターをテーブルに書き込むための診断の構成**  
 Azure 上のクラスターの場合、クラスター内の VM から適切なパフォーマンス カウンターを取得するように Azure 診断の構成を変更し、コンテナーをデプロイする場合は Azure 診断が Docker の統計を取得できるようにします。 パフォーマンス カウンターの収集を設定する方法については、Service Fabric での [WAD のパフォーマンス カウンター](service-fabric-diagnostics-event-aggregation-wad.md)の構成に関する記事をご覧ください。

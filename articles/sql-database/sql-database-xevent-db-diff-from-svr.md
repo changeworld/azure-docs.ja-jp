@@ -2,19 +2,22 @@
 title: SQL Database の拡張イベント | Microsoft Docs
 description: Azure SQL Database での拡張イベント (XEvents) について、またイベント セッションが Microsoft SQL Server におけるイベント セッションと若干異なる点について説明します。
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
-ms.workload: On Demand
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: 4a1a8a332628e79972e7c03dbc2ac839f244a002
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 482faaea7089e095da13a2bae5f5937e20d50616
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246754"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database の拡張イベント
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -29,15 +32,15 @@ ms.lasthandoff: 04/06/2018
 
 Azure SQL Database と Microsoft SQL Server の拡張イベントについては、次のトピックをご覧ください。
 
-- [クイック スタート: SQL Server の拡張イベント](http://msdn.microsoft.com/library/mt733217.aspx)
-- [拡張イベント](http://msdn.microsoft.com/library/bb630282.aspx)
+- [クイック スタート: SQL Server の拡張イベント](https://msdn.microsoft.com/library/mt733217.aspx)
+- [拡張イベント](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>前提条件
 
 このトピックは、以下の知識をお持ちのユーザーを想定しています。
 
 - [Azure SQL Database サービス](https://azure.microsoft.com/services/sql-database/)。
-- [Extended events](http://msdn.microsoft.com/library/bb630282.aspx) 。
+- [Extended events](https://msdn.microsoft.com/library/bb630282.aspx) 。
 
 - 拡張イベントに関するドキュメントの大部分は、SQL Server と SQL Database の両方に適用されます。
 
@@ -66,10 +69,10 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 ## <a name="transact-sql-differences"></a>Transact-SQL の相違点
 
 
-- [CREATE EVENT SESSION](http://msdn.microsoft.com/library/bb677289.aspx) コマンドを SQL Server で実行する際は、 **ON SERVER** 句を使用します。 ところが、SQL Database では **ON DATABASE** 句を使用します。
+- [CREATE EVENT SESSION](https://msdn.microsoft.com/library/bb677289.aspx) コマンドを SQL Server で実行する際は、 **ON SERVER** 句を使用します。 ところが、SQL Database では **ON DATABASE** 句を使用します。
 
 
-- **ON DATABASE** 句も [ALTER EVENT SESSION](http://msdn.microsoft.com/library/bb630368.aspx) および [DROP EVENT SESSION Transact-SQL](http://msdn.microsoft.com/library/bb630257.aspx) コマンドに適用されます。
+- **ON DATABASE** 句も [ALTER EVENT SESSION](https://msdn.microsoft.com/library/bb630368.aspx) および [DROP EVENT SESSION Transact-SQL](https://msdn.microsoft.com/library/bb630257.aspx) コマンドに適用されます。
 
 
 - **CREATE EVENT SESSION** または **ALTER EVENT SESSION** ステートメントで **STARTUP_STATE = ON** のイベント セッション オプションを含ませるベスト プラクティス。
@@ -77,9 +80,9 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 
 ## <a name="new-catalog-views"></a>新しいカタログ ビュー
 
-拡張イベント機能をサポートする [カタログ ビュー](http://msdn.microsoft.com/library/ms174365.aspx)がいくつかあります。 カタログ ビューでは、現在のデータベースにおけるユーザー作成のイベント セッションの *メタデータまたは定義* がわかります。 ビューでは、アクティブなイベント セッションのインスタンスについてはわかりません。
+拡張イベント機能をサポートする [カタログ ビュー](https://msdn.microsoft.com/library/ms174365.aspx)がいくつかあります。 カタログ ビューでは、現在のデータベースにおけるユーザー作成のイベント セッションの *メタデータまたは定義* がわかります。 ビューでは、アクティブなイベント セッションのインスタンスについてはわかりません。
 
-| カタログ ビューの名前<br/>カタログ ビュー | [説明] |
+| カタログ ビューの名前<br/>カタログ ビュー | 説明 |
 |:--- |:--- |
 | **sys.database_event_session_actions** |イベント セッションの各イベントに対する操作ごとに行を返します。 |
 | **sys.database_event_session_events** |イベント セッションのイベントごとに行を返します。 |
@@ -89,11 +92,11 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 
 Microsoft SQL Server では、同様のカタログ ビュー名には *.database\_* ではなく、*.server\_* が含まれています。 名前のパターンは、**sys.server_event_%** のようになっています。
 
-## <a name="new-dynamic-management-views-dmvshttpmsdnmicrosoftcomlibraryms188754aspx"></a>新しい動的管理ビュー [(DMV)](http://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>新しい動的管理ビュー [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
-Azure SQL Database には、拡張イベントをサポートする [動的管理ビュー (DMV)](http://msdn.microsoft.com/library/bb677293.aspx) があります。 DMV では *アクティブな* イベント セッションについて参照できます。
+Azure SQL Database には、拡張イベントをサポートする [動的管理ビュー (DMV)](https://msdn.microsoft.com/library/bb677293.aspx) があります。 DMV では *アクティブな* イベント セッションについて参照できます。
 
-| DMV の名前 | [説明] |
+| DMV の名前 | 説明 |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |イベント セッション アクションに関する情報を返します。 |
 | **sys.dm_xe_database_session_events** |セッション イベントに関する情報を返します。 |
@@ -146,11 +149,11 @@ SELECT
 
 SQL Database のイベント セッションから結果を取得できるターゲットを次に挙げます。
 
-- [リング バッファー ターゲット](http://msdn.microsoft.com/library/ff878182.aspx) - イベント データを一時的にメモリに保持します。
-- [イベント カウンター ターゲット](http://msdn.microsoft.com/library/ff878025.aspx) - 拡張イベント セッションの間に発生したすべてのイベントをカウントします。
-- [イベント ファイル ターゲット](http://msdn.microsoft.com/library/ff878115.aspx) - Azure Storage コンテナーに完了したバッファーを書き込みます。
+- [リング バッファー ターゲット](https://msdn.microsoft.com/library/ff878182.aspx) - イベント データを一時的にメモリに保持します。
+- [イベント カウンター ターゲット](https://msdn.microsoft.com/library/ff878025.aspx) - 拡張イベント セッションの間に発生したすべてのイベントをカウントします。
+- [イベント ファイル ターゲット](https://msdn.microsoft.com/library/ff878115.aspx) - Azure Storage コンテナーに完了したバッファーを書き込みます。
 
-[Event Tracing for Windows (ETW)](http://msdn.microsoft.com/library/ms751538.aspx) API は SQL Database の拡張イベントでは使用できません。
+[Event Tracing for Windows (ETW)](https://msdn.microsoft.com/library/ms751538.aspx) API は SQL Database の拡張イベントでは使用できません。
 
 ## <a name="restrictions"></a>制限
 
@@ -169,7 +172,7 @@ Azure Storage コンテナーのために生成した SAS トークンには、�
 
 - 読み取り
 - 書き込み
-- 一覧表示
+- List
 
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
@@ -189,11 +192,11 @@ Azure Storage BLOB にデータを保持する際に、 **イベント ファイ
 ## <a name="related-links"></a>関連リンク
 
 - [Azure Storage における Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md)。
-- [Azure Storage コマンドレット](http://msdn.microsoft.com/library/dn806401.aspx)
+- [Azure Storage コマンドレット](https://docs.microsoft.com/powershell/module/Azure.Storage)
 - [Azure Storage での Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
 - [.NET から BLOB ストレージを使用する方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-- [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
-- [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
+- [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
 - [Jonathan Kehayias の Microsoft SQL Server の拡張イベントに関するブログ投稿](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
@@ -206,6 +209,6 @@ Azure Storage BLOB にデータを保持する際に、 **イベント ファイ
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
 -->

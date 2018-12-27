@@ -3,17 +3,19 @@ title: Azure Automation の概要
 description: Azure Automation を使用して、インフラストラクチャとアプリケーションのライフサイクルを自動化する方法を説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: eamonoreilly
 ms.author: eamono
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル
-ms.date: 03/15/2018
+ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: c44968dbceee2fdd29818a65e14f5b64ffcccade
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f91464ebdd29c082fd721e9e4b2e029de991cc1e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958705"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
 
@@ -38,18 +40,26 @@ Azure Automation [Desired State Configuration](automation-dsc-overview.md) は P
 
 Azure Automation を使用して、ハイブリッド環境で Windows システムと Linux システムを更新します。 Azure、オンプレミス、および他のクラウド間での更新プログラムの準拠を可視化できます。 展開スケジュールを作成して、定義済みのメンテナンス期間中に更新プログラムがインストールされるように調整できます。 更新プログラムをコンピューターにインストールする必要がない場合は、それらの更新プログラムを展開から除外できます。
 
-### <a name="shared-capabilities"></a>共有機能
+### <a name="shared-resources"></a>共有リソース
 
 Azure Automation は、環境を大きな規模で容易に自動化して構成できるようにする一連の共有リソースで構成されます。
 
-* **[ロールベースのアクセス制御](automation-role-based-access-control.md)** - タスクは実行できるが、作成機能は与えられない Automation オペレーター ロールを使用して、アカウントへのアクセスを制御します。
-* **[変数](automation-variables.md)** - Runbook と構成間で使用できるコンテンツを保持する方法を提供します。 Runbook とそれらを参照する構成を変更することなく、値を変更できます。
-* **[資格情報](automation-credentials.md)** - Runbook と構成で実行時に使用される可能性がある秘匿性の高い情報を安全に格納します。
-* **[証明書](automation-certificates.md)** - 証明書を格納し、実行時に認証と展開されるリソースのセキュリティ保護で使用できるようにします。
-* **[接続](automation-connections.md)** - 接続リソース内のシステムに接続するときに、一般的な情報を含む情報の名前/値ペアを格納します。 接続は、Runbook と構成の実行時に使用するためにモジュールの作成者によって定義されます。
 * **[スケジュール](automation-schedules.md)** - オートメーションを事前に定義した時間にトリガーするためにサービス内で使用されます。
-* **[ソース管理との統合](automation-source-control-integration.md)** - Runbook または構成をソース管理システムにチェックインできる場所では、構成をコードとして昇格させます。
-* **[PowerShell モジュール](automation-integration-modules.md)** - モジュールは、Azure と他のシステムを管理するために使用されます。 Microsoft、サード パーティ、コミュニティ、カスタム定義コマンドレット、および DSC リソース用の Automation アカウントにインポートします。
+* **[モジュール](automation-integration-modules.md)** - モジュールは、Azure と他のシステムを管理するために使用されます。 Microsoft、サード パーティ、コミュニティ、カスタム定義コマンドレット、および DSC リソース用の Automation アカウントにインポートします。
+* **[モジュール ギャラリー](automation-runbook-gallery.md)** - Runbook を表示し、それらを Automation アカウントにインポートするための PowerShell ギャラリーへのネイティブな統合。
+* **[Python 2 パッケージ](python-packages.md)** - Python Runbook で使用する Automation アカウントに Python 2 パッケージを追加します。
+* **[資格情報](automation-credentials.md)** - Runbook と構成で実行時に使用される可能性がある秘匿性の高い情報を安全に格納します。
+* **[接続](automation-connections.md)** - 接続リソース内のシステムに接続するときに、一般的な情報を含む情報の名前/値ペアを格納します。 接続は、Runbook と構成の実行時に使用するためにモジュールの作成者によって定義されます。
+* **[証明書](automation-certificates.md)** - 証明書を格納し、実行時に認証と展開されるリソースのセキュリティ保護で使用できるようにします。
+* **[変数](automation-variables.md)** - Runbook と構成間で使用できるコンテンツを保持する方法を提供します。 Runbook とそれらを参照する構成を変更することなく、値を変更できます。
+
+### <a name="source-control-integration"></a>ソース管理の統合
+
+Azure Automation には、Runbook または構成をソース管理システムにチェックインできるところでは構成をコードとして昇格させる[ソース コントロールとの統合](source-control-integration.md)機能があります。
+
+### <a name="role-based-access-control"></a>ロールベースのアクセス制御
+
+Azure Automation では、Automation アカウントとそのリソースへのアクセスを制御するロール ベースのアクセス制御がサポートされています。Automation アカウント、Runbook、およびジョブに関する RBAC の構成について詳しくは、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」をご覧ください。
 
 ### <a name="windows-and-linux"></a>Windows および Linux
 
@@ -63,7 +73,7 @@ Runbook とモジュールの [Automation ギャラリー](automation-runbook-ga
 
 Azure Automation は、インフラストラクチャとアプリケーションのライフサイクル全体を管理します。 組織がワークロードを提供して管理する方法に関する知識をシステムに移行してください。 PowerShell、Desired State Configuration、Python、グラフィカル Runbook などの一般的な言語で作成してください。 ターゲット、レポ―ト、およびコンプライアンス用に展開されるリソースの完全なインベントリを取得してください。 構成エラーを引き起こす可能性がある変更を識別し、運用上のコンプライアンスを向上させてください。
 
-* **リソースをビルド/展開する** - Runbook と Azure Resource Manager テンプレートを使用して、ハイブリッド環境全体に ＶＭ を展開します。 Jenkins や Visual Studio Team Services などの開発ツールに統合します。
+* **リソースをビルド/展開する** - Runbook と Azure Resource Manager テンプレートを使用して、ハイブリッド環境全体に ＶＭ を展開します。 Jenkins や Azure DevOps などの開発ツールに統合します。
 * **VM を構成する** - インフラストラクチャとアプリケーションにとって望ましい構成で Windows コンピューターと Linux コンピューターを構成します。
 * **監視** - 問題の原因となっているコンピューターの変更を特定し、修復するか管理システムにエスカレートします。
 * **保護** - セキュリティ警告が発生した場合に VM を検疫します。 ゲスト要件を設定します。

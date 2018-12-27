@@ -1,24 +1,19 @@
 ---
-title: "Azure Import/Export のインポート ジョブ用のハード ドライブを準備する | Microsoft Docs"
-description: "WAImportExport ツールを使用して Azure Import/Export サービスのインポート ジョブを作成するためのハード ドライブを準備する方法について説明します。"
+title: Azure Import/Export のインポート ジョブ用のハード ドライブを準備する | Microsoft Docs
+description: WAImportExport ツールを使用して Azure Import/Export サービスのインポート ジョブを作成するためのハード ドライブを準備する方法について説明します。
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
-ms.openlocfilehash: 2854822907e818297c8d2f74cab48b0afa0d646c
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.component: common
+ms.openlocfilehash: b16a476f1960c79c378cd3aa18eae789c289eb54
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244034"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 
@@ -81,10 +76,10 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 ### <a name="dataset-csv-file-fields"></a>データセット CSV ファイルのフィールド
 
-| フィールド | Description |
+| フィールド | 説明 |
 | --- | --- |
 | BasePath | **[必須]**<br/>このパラメーターの値は、インポートするデータが配置されるソースを表します。 ツールでは、このパスに配置されたすべてのデータを再帰的にコピーします。<br><br/>**使用可能な値**: ローカル コンピューター上の有効なパスまたは有効な共有パスを指定する必要があります。ユーザーがアクセスできるパスを指定してください。 ディレクトリ パスは絶対パス (相対パスではなく) にする必要があります。 パスが "\\" で終わる場合は、ディレクトリを表し、それ以外の "\\" なしで終わるパスは、ファイルを表します。<br/>このフィールドでは正規表現を使用できません。 パスにスペースが含まれる場合は、"" で囲んでください。<br><br/>**例**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
-| DstBlobPathOrPrefix | **[必須]**<br/> Microsoft Azure ストレージ アカウントのインポート先の仮想ディレクトリへのパス。 既存の仮想ディレクトリがある場合とない場合があります。 仮想ディレクトリがない場合は、インポート/エクスポート サービスによって作成されます。<br/><br/>コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。 ルートのみが指定されている場合、ソースのディレクトリ構造は、インポート先の BLOB コンテナーにレプリケートされます。 ソースのディレクトリ構造ではなく、別のディレクトリ構造が必要な場合は、CSV のマッピングを複数行にします。<br/><br/>コンテナーまたは BLOB プレフィックス (例: music/70s/) を指定できます。 インポート先のディレクトリの先頭はコンテナー名にして、その後にスラッシュ (/) を続けます。末尾が "/" の仮想 BLOB ディレクトリ (省略可能) を追加することもできます。<br/><br/>インポート先のコンテナーがルート コンテナーの場合は、スラッシュを含むルート コンテナーを明示的に指定する必要があります (例: $root/)。 ルート コンテナーにある BLOB の名前に "/" を含めることはできないため、インポート先のディレクトリがルート コンテナーの場合、ソース ディレクトリのサブディレクトリはコピーされません。<br/><br/>**例**<br/>インポート先の BLOB パスが https://mystorageaccount.blob.core.windows.net/video の場合、このフィールドの値は video/ になります。  |
+| DstBlobPathOrPrefix | **[必須]**<br/> Microsoft Azure ストレージ アカウントのインポート先の仮想ディレクトリへのパス。 仮想ディレクトリが既に存在しているかどうかは、場合によって異なります。 仮想ディレクトリがない場合は、インポート/エクスポート サービスによって作成されます。<br/><br/>コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。 ルートのみが指定されている場合、ソースのディレクトリ構造は、インポート先の BLOB コンテナーにレプリケートされます。 ソースのディレクトリ構造ではなく、別のディレクトリ構造が必要な場合は、CSV のマッピングを複数行にします。<br/><br/>コンテナーまたは BLOB プレフィックス (例: music/70s/) を指定できます。 インポート先のディレクトリの先頭はコンテナー名にして、その後にスラッシュ (/) を続けます。末尾が "/" の仮想 BLOB ディレクトリ (省略可能) を追加することもできます。<br/><br/>インポート先のコンテナーがルート コンテナーの場合は、スラッシュを含むルート コンテナーを明示的に指定する必要があります (例: $root/)。 ルート コンテナーにある BLOB の名前に "/" を含めることはできないため、インポート先のディレクトリがルート コンテナーの場合、ソース ディレクトリのサブディレクトリはコピーされません。<br/><br/>**例**<br/>コピー先 BLOB パスが https://mystorageaccount.blob.core.windows.net/video の場合、このフィールドの値は video/ となります。  |
 | BlobType | **[省略可能]** block &#124; page<br/>現在、インポート/エクスポート サービスは 2 種類の BLOB をサポートしています  (ページ BLOB とブロック BLOB)。既定では、すべてのファイルがブロック BLOB としてインポートされます。 また、\*.vhd と \*.vhdx はページ BLOB としてインポートされます。ブロック BLOB と ページ BLOB に使用できるサイズには制限があります。 詳細については、[Azure Storage のスケーラビリティ ターゲット](storage-scalability-targets.md)に関するページを参照してください。  |
 | Disposition | **[省略可能]** rename &#124; no-overwrite &#124; overwrite <br/> このフィールドは、インポート中 ( 例: データのディスクからストレージ アカウントへのアップロード中) のコピー動作を指定します。 利用可能なオプション: rename&#124;overwite&#124;no-overwrite。何も指定しない場合は、既定値の "rename" になります。 <br/><br/>**rename**: 同名のオブジェクトが存在する場合に、インポート先にコピーを作成します。<br/>overwrite: ファイルを新しいファイルで上書きします。 更新日の最も新しいファイルで上書きされます。<br/>**no-overwrite**: 既存のファイルがある場合は、ファイルの書き込みをスキップします。|
 | MetadataFile | **[省略可能]** <br/>このフィールドの値は、オブジェクトのメタデータを保持するか、またはカスタム メタデータを指定する必要がある場合に指定可能なメタデータ ファイルです。 インポート先の BLOB のメタデータ ファイルへのパスです。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](../storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
@@ -129,7 +124,7 @@ H,Format,SilentMode,Encrypt,
 1 つまたは複数のディスクに 1 つまたは複数のディレクトリをコピーする (CSV ファイルに指定した内容によって異なります) 最初のコピー セッションでは、WAImportExport ツールの PrepImport コマンドを使用して新しいコピー セッションでディレクトリまたはファイルをコピーします。
 
 ```
-WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
+WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] /DataSet:<dataset.csv>
 ```
 
 **例:**
@@ -314,7 +309,7 @@ WAImportExport ツールは、ドライブの準備および修復用のツー�
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>以前のバージョンの WAImportExport ツールはどこで入手できますか?
 
-WAImportExport ツールには、WAImportExport V1 ツールのすべての機能が含まれています。 WAImportExport ツールを使用すると、ユーザーは複数のソースを指定し、複数のドライブに書き込むことができます。 また、データのコピー元となる複数の場所を 1 つの CSV ファイルで簡単に管理できます。 ただし、SAS のサポートが必要な場合や、1 つのソースを 1 つのディスクにコピーする場合は、[WAImportExport V1 ツールをダウンロード] [http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409] し、[WAImportExport V1 リファレンス](storage-import-export-tool-how-to-v1.md)で WAImportExport V1 の使用方法を参照できます。
+WAImportExport ツールには、WAImportExport V1 ツールのすべての機能が含まれています。 WAImportExport ツールを使用すると、ユーザーは複数のソースを指定し、複数のドライブに書き込むことができます。 また、データのコピー元となる複数の場所を 1 つの CSV ファイルで簡単に管理できます。 しかし、SAS のサポートが必要な場合や、単一のソースを単一のディスクにコピーする場合は、[WAImportExport V1 ツールをダウンロード](https://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409)し、[WAImportExport V1 リファレンス](storage-import-export-tool-how-to-v1.md)で WAImportExport V1 の使用方法を参照できます。
 
 #### <a name="what-is-a-session-id"></a>セッション ID とは何ですか?
 
@@ -407,12 +402,12 @@ WAImportExport ツールはバッチ単位でファイルの読み取りと書�
 
 **.jrn** - サフィックスが `.jrn` のジャーナル ファイルには、ハード ドライブのすべてのコピー セッションの状態が含まれています。 また、インポート ジョブの作成に必要な情報も含まれています。 WAImportExport ツールを実行する場合は、ジャーナル ファイルとコピー セッション ID を必ず指定してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Import/Export ツールの設定](storage-import-export-tool-setup.md)
 * [インポート処理中にプロパティとメタデータを設定する](storage-import-export-tool-setting-properties-metadata-import.md)
 * [インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
-* [頻繁に使用するコマンドのクイック リファレンス](storage-import-export-tool-quick-reference.md) 
+* [頻繁に使用するコマンドのクイック リファレンス](storage-import-export-tool-quick-reference.md) 
 * [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)
 * [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)

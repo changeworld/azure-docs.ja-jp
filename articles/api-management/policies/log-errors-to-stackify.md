@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management ポリシーのサンプル - ログ記録のために Stackify にエラーを送信する | Microsoft Docs"
-description: "Azure API Management ポリシーのサンプル - エラー ログ ポリシーを追加して、ログ記録のために Stackify にエラーを送信する　方法を示します。"
+title: Azure API Management ポリシーのサンプル - ログ記録のために Stackify にエラーを送信する | Microsoft Docs
+description: Azure API Management ポリシーのサンプル - エラー ログ ポリシーを追加して、ログ記録のために Stackify にエラーを送信する　方法を示します。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,23 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 34319e43789d0f2c7d3e48a0277926eb598e88fc
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 5daf21cb55289c874d56910b1240e1433f3d55d0
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945957"
 ---
 # <a name="send-errors-to-stackify-for-logging"></a>ログ記録のために Stackify にエラーを送信する
 
 この記事では、Azure API Management ポリシーのサンプルを示し、エラー ログ ポリシーを追加して、ログ記録のために Stackify にエラーを送信する　方法を説明します。 ポリシー コードを設定または編集するには、[ポリシーの設定または編集](../set-edit-policies.md)に関するページで説明されている手順に従います。 他の例については、[ポリシーのサンプル](../policy-samples.md)に関するページをご覧ください。
 
-## <a name="policy"></a>[ポリシー]
+## <a name="policy"></a>ポリシー
 
 コードを **on-error** ブロックに貼り付けます。
 
-[!code-xml[Main](../../../api-management-policy-samples/Snippets/Log errors to Stackify.policy.xml)]
+[!code-xml[Main](../../../api-management-policy-samples/examples/Log errors to Stackify.policy.xml)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 APIM ポリシーの詳細については、以下をご覧ください。
 

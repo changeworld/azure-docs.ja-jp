@@ -1,27 +1,23 @@
 ---
-title: "Azure Cosmos DB Table API で使用するデータのインポート | Microsoft Docs"
-description: "Azure Cosmos DB Table API で使用するデータのインポート方法を説明します。"
-services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
-ms.assetid: b60743e2-0227-43ab-965a-0ae3ebacd917
+title: Azure Cosmos DB の Table API アカウントに既存のデータを移行する
+description: Azure Cosmos DB の Azure Table API アカウントに、オンプレミスまたはクラウドのデータを移行またはインポートする方法について説明します。
+author: SnehaGunda
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/28/2017
-ms.author: mimig
-ms.openlocfilehash: 1c53be736ad65a53767626033be27f0891de06ba
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.component: cosmosdb-table
+ms.topic: tutorial
+ms.date: 12/07/2017
+ms.author: sngun
+ms.custom: seodec18
+ms.openlocfilehash: b2256f16d284cb079231e271a7fc06c25c381c8a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137686"
 ---
-# <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Azure Cosmos DB Table API で使用するデータのインポート
+# <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントにデータを移行する
 
-このチュートリアルでは、Azure Cosmos DB [Table API](table-introduction.md) で使用するデータをインポートする手順を示します。 Azure Table Storage に格納されたデータがある場合は、データ移行ツールまたは AzCopy を使用してデータをインポートできます。 Azure Cosmos DB Table API (プレビュー) アカウントに格納されたデータがある場合、データの移行にはデータ移行ツールを使用する必要があります。 データがインポートされたら、Azure Cosmos DB によって提供される高度な機能 (ターンキー グローバル配信、専用スループット、99 パーセンタイルで 10 ミリ秒未満の待ち時間、高可用性の保証、および自動セカンダリ インデックス作成など) を活用できるようになります。
+このチュートリアルでは、Azure Cosmos DB [Table API](table-introduction.md) で使用するデータをインポートする手順を示します。 Azure Table Storage に格納されたデータがある場合は、データ移行ツールまたは AzCopy を使用してデータを Azure Cosmos DB Table API にインポートできます。 Azure Cosmos DB Table API (プレビュー) アカウントに格納されたデータがある場合、データの移行にはデータ移行ツールを使用する必要があります。 
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -30,6 +26,12 @@ ms.lasthandoff: 12/05/2017
 > * AzCopy を使用したデータのインポート
 > * Table API (プレビュー) から Table API への移行 
 
+## <a name="prerequisites"></a>前提条件
+
+* **スループットを上げる:** データの移行にかかる時間は、個別のコンテナーまたは一連のコンテナーに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure Portal でスループットを上げることの詳細については、Azure Cosmos DB のパフォーマンス レベルと価格レベルに関するページを参照してください。
+
+* **Azure Cosmos DB リソースを作成する:** データの移行を開始する前に、Azure portal からすべてのテーブルを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行しようとしている場合は、Azure Cosmos DB テーブルの作成時に必ずパーティション キーを提供するようにしてください。
+
 ## <a name="data-migration-tool"></a>データ移行ツール
 
 コマンド ラインの Azure Cosmos DB データ移行ツール (dt.exe) を使用すると、既存の Azure Table ストレージ データを Table API GA アカウントにインポートしたり、Table API (プレビュー) アカウントのデータを Table API GA アカウントに移行したりすることができます。 その他のソースは現在はサポートされていません。 現在、UI ベースのデータ移行ツール (dtui.exe) は、テーブル API アカウントに対してはサポートされていません。 
@@ -37,11 +39,11 @@ ms.lasthandoff: 12/05/2017
 テーブル データの移行を実行するには、次のタスクを実行します。
 
 1. 移行ツールを [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool) からダウンロードします。
-2. 実際のシナリオに合ったコマンド ライン引数を使用して `dt.exe` を実行します。
+2. 実際のシナリオに合ったコマンド ライン引数を使用して `dt.exe` を実行します。 `dt.exe` は次の形式のコマンドを受け取ります。
 
-dt.exe は次の形式のコマンドを受け取ります。
-
+   ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
+```
 
 コマンドのオプションは次のとおりです。
 
@@ -87,7 +89,7 @@ Azure Cosmos DB Table API (プレビュー) からインポートする場合に
     /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
 
 <a id="azure-table-storage"></a>
-### <a name="sample-command-source-is-azure-table-storage"></a>サンプル コマンド: ソースが Azure Table Storage
+### <a name="sample-command-source-is-azure-table-storage"></a>サンプル コマンド:ソースが Azure Table Storage
 
 Azure Table Storage から Table API にインポートするコマンドライン サンプルを以下に示します。
 
@@ -95,7 +97,7 @@ Azure Table Storage から Table API にインポートするコマンドライ�
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 <a id="table-api-preview"></a>
-### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>サンプル コマンド: ソースが Azure Cosmos DB Table API (プレビュー)
+### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>サンプル コマンド:ソースが Azure Cosmos DB Table API (プレビュー)
 
 Table API プレビュー から Table API GA にインポートするコマンドライン サンプルを以下に示します。
 
@@ -103,7 +105,7 @@ Table API プレビュー から Table API GA にインポートするコマン�
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
-## <a name="azcopy-command"></a>AzCopy コマンド
+## <a name="migrate-data-by-using-azcopy"></a>AzCopy を使用してデータを移行する
 
 Azure Table Sorage から Azure Cosmos DB Table API にデータを移行するには、AzCopy コマンドライン ユーティリティを使用する方法もあります。 AzCopy を使用するには、まず「[Table Storage からデータをエクスポートする](../storage/common/storage-use-azcopy.md#export-data-from-table-storage)」の説明に従ってデータをエクスポートし、[Azure Cosmos DB Table API](../storage/common/storage-use-azcopy.md#import-data-into-table-storage) に関するページの説明に従ってデータを Azure Cosmos DB にインポートします。
 
@@ -131,7 +133,7 @@ Table API (プレビュー) から一般公開の Table API に移行するに�
 
 3. データ移行ツールを使用して、プレビュー テーブルのクライアント データを GA テーブルに移行します。 この目的でデータ移行ツールを使用する手順については、「[データ移行ツール](#data-migration-tool)」を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

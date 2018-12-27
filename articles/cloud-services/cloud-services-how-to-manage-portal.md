@@ -1,11 +1,11 @@
 ---
-title: "一般的なクラウド サービス管理タスク | Microsoft Docs"
-description: "Azure Portal で Cloud Services を管理する方法について説明します。 これらの例では、Azure ポータルを使用します。"
+title: 一般的なクラウド サービス管理タスク | Microsoft Docs
+description: Azure Portal で Cloud Services を管理する方法について説明します。 これらの例では、Azure ポータルを使用します。
 services: cloud-services
-documentationcenter: 
-author: Thraka
+documentationcenter: ''
+author: jpconnock
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb218ad9-77d4-4149-83db-71159c00767e
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: adegeo
-ms.openlocfilehash: e60bf5c82e68d49abaa44d80ac9fafba2d8265da
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: jeconnoc
+ms.openlocfilehash: e9f4153c68f0a2a4ce83f900ff63152311163ff6
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038580"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Azure Portal で Cloud Services を管理する
 Azure Portal の **[Cloud Services]** 領域では、次の操作を行うことができます。
@@ -82,7 +83,7 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 
 - 運用スロットに静的 IP アドレスを使用する場合は、ステージング スロットにも静的 IP アドレスを予約する必要があります。 これを行わなかった場合、スワップは失敗します。
 
-- スワップを実行する前に、ロールのすべてのインスタンスを実行する必要があります。 インスタンスの状態は、Azure Portal の **[概要]** ブレードで確認できます。 または Windows PowerShell の [Get-AzureRole](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) を使用して確認できます。
+- スワップを実行する前に、ロールのすべてのインスタンスを実行する必要があります。 インスタンスの状態は、Azure Portal の **[概要]** ブレードで確認できます。 または Windows PowerShell の [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) を使用して確認できます。
 
 ゲスト OS の更新とサービス復旧操作もデプロイのスワップが失敗する原因となる可能性があることに注意してください。 詳細については、「[クラウド サービスのデプロイメントに関する問題のトラブルシューティング](cloud-services-troubleshoot-deployment-problems.md)」を参照してください。
 

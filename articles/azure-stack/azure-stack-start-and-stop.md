@@ -1,42 +1,45 @@
 ---
-title: "Azure Stack の開始および停止 | Microsoft Docs"
-description: "Azure Stack を開始およびシャットダウンする方法を説明します。"
+title: Azure Stack の開始および停止 | Microsoft Docs
+description: Azure Stack を開始およびシャットダウンする方法を説明します。
 services: azure-stack
-documentationcenter: 
-author: mattbriggs
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 43BF9DCF-F1B7-49B5-ADC5-1DA3AF9668CA
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2018
-ms.author: mabrigg
-ms.openlocfilehash: 98bf75f5883b734c785ed1a3ed924afca1737c56
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.date: 10/15/2018
+ms.author: jeffgilb
+ms.reviewer: misainat
+ms.openlocfilehash: 6da81ab90a87285f9e1874e3f10eff4570124192
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344015"
 ---
 # <a name="start-and-stop-azure-stack"></a>Azure Stack の開始および停止
-
-*適用対象: Azure Stack 統合システム (バージョン 1712 以降)*
+この記事の手順に従い、正しくシャットダウンして Azure Stack サービスを再起動してください。 シャットダウンは、Azure Stack 環境全体の電源を物理的に切ります。 スタートアップは、すべてのインフラストラクチャ ロールの電源を入れ、テナントのリソースをシャットダウン前の電源状態に戻します。
 
 ## <a name="stop-azure-stack"></a>Azure Stack の停止 
 
 Azure Stack は次の手順でシャットダウンします。
 
-1. Azure Stack ERCS VM へのネットワーク アクセスを持つマシンから特権エンドポイント セッション (PEP) を開きます。 手順については、「[Azure Stack での特権エンドポイントの使用](azure-stack-privileged-endpoint.md)」を参照してください。
+1. 将来のシャットダウンに備えて、Azure Stack 環境のテナント リソースで実行しているすべてのワークロードを準備します。 
 
-2. PEP から次を実行します。
+2. Azure Stack ERCS VM へのネットワーク アクセスを持つマシンから特権エンドポイント セッション (PEP) を開きます。 手順については、「[Azure Stack での特権エンドポイントの使用](azure-stack-privileged-endpoint.md)」を参照してください。
+
+3. PEP から次を実行します。
 
     ```powershell
       Stop-AzureStack
     ```
 
-3. Azure Stack のすべての物理ノードの電源がオフになるまで待ちます。
+4. Azure Stack のすべての物理ノードの電源がオフになるまで待ちます。
 
 > [!Note]  
 > 物理ノードの電源の状態は、お使いの Azure Stack ハードウェアを提供した OEM の手順に従って確認できます。 
@@ -49,6 +52,7 @@ Azure Stack は次の手順で開始します。 Azure Stack を停止した方�
 
 2. Azure Stack インフラストラクチャ サービスが開始されるまで待ちます。 Azure Stack インフラストラクチャ サービスは、開始プロセスの終了に 2 時間かかることがあります。 Azure Stack の開始状態は、[**Get-ActionStatus** コマンドレット](#get-the-startup-status-for-azure-stack)を使って確認できます。
 
+3. すべてのテナント リソースがシャットダウン前の状態に戻ったことを確認します。 ワークロード マネージャーによる起動後に、テナント リソースで実行しているワークロードの再構成が必要な場合があります。
 
 ## <a name="get-the-startup-status-for-azure-stack"></a>Azure Stack のスタートアップ状態の取得
 
@@ -86,4 +90,4 @@ Azure Stack 環境の電源投入後 2 時間経ってもインフラストラ�
 
 ## <a name="next-steps"></a>次の手順 
 
-Azure Stack 診断ツールと問題のログ記録について説明します。「Azure Stack diagnostics tools (Azure Stack の診断ツール)」をご覧ください。 Azure Stack の診断ツール。 Azure Stack の診断ツール。 Azure Stack の診断ツール。
+[Azure Stack 診断ツール](azure-stack-diagnostics.md)の詳細を確認する

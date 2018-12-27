@@ -1,27 +1,21 @@
 ---
-title: "Apache Storm とは - Azure HDInsight | Microsoft Docs"
-description: "Apache Storm を利用すると、データ ストリームをリアルタイムで処理できます。 Azure HDInsight を利用すると、Azure クラウド上に Storm クラスターを簡単に作成できます。 Visual Studio では、C# を使用して Storm ソリューションを作成し、それを HDInsight Storm クラスターにデプロイできます。"
+title: Apache Storm とは - Azure HDInsight
+description: Apache Storm を利用すると、データ ストリームをリアルタイムで処理できます。 Azure HDInsight を利用すると、Azure クラウド上に Storm クラスターを簡単に作成できます。 Visual Studio では、C# を使用して Storm ソリューションを作成し、それを HDInsight Storm クラスターにデプロイできます。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-keywords: "Apache Storm のユース ケース,Storm クラスター,Apache Storm とは"
-ms.assetid: 72d54080-1e48-4a5e-aa50-cce4ffc85077
+author: hrasheed-msft
+ms.reviewer: jasonh
+keywords: Apache Storm のユース ケース,Storm クラスター,Apache Storm とは
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 7defb860ab526824492ddeb1fddf8ce037ec39ae
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: hrasheed
+ms.openlocfilehash: 034e3cfddee8cd6b51193e16ba0972d7f7595832
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005912"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm とは
 
@@ -90,7 +84,7 @@ HDInsight 上に新しい Storm クラスターを数分で作成できます。
 
   詳細については、[Ambari Web UI を使用した HDInsight の管理](../hdinsight-hadoop-manage-ambari.md)に関する記事と、[Storm UI を使用した監視と管理](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui)に関する記事を参照してください。
 
-* __Azure PowerShell と Azure CLI__: PowerShell と CLI はいずれも、HDInsight やその他の Azure サービスを操作するためにクライアント システムから使用できるコマンドライン ユーティリティです。
+* __Azure PowerShell と Azure クラシック CLI__: PowerShell とクラシック CLI はいずれも、HDInsight やその他の Azure サービスを操作するためにクライアント システムから使用できるコマンドライン ユーティリティです。
 
 * __Visual Studio 統合__: Azure Data Lake Tools for Visual Studio には、SCP.NET フレームワークを使用して C# Storm トポロジを作成するためのプロジェクト テンプレートが含まれています。 また、Data Lake Tools には、HDInsight の Storm によるソリューションのデプロイ、監視、管理のためのツールも用意されています。
 
@@ -148,7 +142,7 @@ Apache Storm では、さまざまなレベルでメッセージの処理が保�
 
 ### <a name="ibasicbolt"></a>IBasicBolt
 
-入力タプルを読み込み、0 個以上のタプルを発行し、実行メソッドの終了直後に入力タプルを確認するというパターンが一般的です。 Storm には、このパターンを自動化する [IBasicBolt](https://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/topology/IBasicBolt.html) インターフェイスが用意されています。
+入力タプルを読み込み、0 個以上のタプルを発行し、実行メソッドの終了直後に入力タプルを確認するというパターンが一般的です。 Storm には、このパターンを自動化する [IBasicBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) インターフェイスが用意されています。
 
 ### <a name="joins"></a>結合
 

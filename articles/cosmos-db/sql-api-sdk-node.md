@@ -2,65 +2,89 @@
 title: 'Azure Cosmos DB: SQL Node.js API、SDK、およびリソース | Microsoft Docs'
 description: リリース日、提供終了日、Azure Cosmos DB Node.js SDK の各バージョン間の変更など、SQL Node.js API と SDK に関するあらゆる詳細を提供します。
 services: cosmos-db
-documentationcenter: nodejs
-author: rnagpal
-manager: jhubbard
+author: deborahc
 editor: cgronlun
-ms.assetid: 9d5621fa-0e11-4619-a28b-a19d872bcf37
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 1/4/2018
+ms.topic: reference
+ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 728db669954e317905d762c68c8990f064529699
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: b5ba00376e40b92a217bddd5b27c53dbe30c3cf3
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687505"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Node.js SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.JS](sql-api-sdk-node.md)
+> * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[NPM](https://www.npmjs.com/package/documentdb)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[Node.js の API リファレンス ドキュメント](http://azure.github.io/azure-documentdb-node/DocumentClient.html)</td></tr>
-
-<tr><td>**SDK のインストール手順**</td><td>[インストール手順](http://azure.github.io/azure-documentdb-node/)</td></tr>
-
-<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr>
-
-<tr><td>**サンプル**</td><td>[Node.js コード サンプル](sql-api-nodejs-samples.md)</td></tr>
-
-<tr><td>**Notification Hubs の使用**</td><td>[Node.js SDK の開始](sql-api-nodejs-get-started.md)</td></tr>
-
-<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Node.js Web アプリケーションの作成](sql-api-nodejs-application.md)</td></tr>
-
-<tr><td>**現在サポートされているプラットフォーム**</td><td> 
-[Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/)<br/> 
-[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> 
-[Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> 
-[Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
-</td></tr>
-</table></br>
+|リソース  |Link  |
+|---------|---------|
+|SDK のダウンロード  |   [NPM](https://www.npmjs.com/package/@azure/cosmos)
+|API ドキュメント  |  [JavaScript SDK リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
+|SDK のインストール手順  |  [インストール手順](https://github.com/Azure/azure-cosmos-js#installation)
+|SDK への参加 | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
+| サンプル | [Node.js コード サンプル](sql-api-nodejs-samples.md)
+| 概要チュートリアル | [JavaScript SDK の開始](sql-api-nodejs-get-started.md)
+| Web アプリ チュートリアル | [Azure Cosmos DB を使用した Node.js Web アプリケーションの作成](sql-api-nodejs-application.md)
+| 現在サポートされているプラットフォーム | [Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/) - SDK バージョン 2.0.0 以上が必要です。<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/)
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2.0.5"/>2.0.5</a>
+* エージェントの種類ノードのインターフェイスを追加しました。 Typescript ユーザーは @types/node を依存関係としてインストールする必要がなくなりました
+* 優先する場所が適切に処理されるようになりました
+* 開発者向けドキュメントの投稿に関する機能強化
+* さまざまな入力ミスの修正
+
+### <a name="2.0.4"/>2.0.4</a>
+* 2.0.3 で発生した型定義の問題を修正しました
+
+### <a name="2.0.3"/>2.0.3</a>
+* `big-integer` の依存関係を削除しました
+* AsyncIterable 型の参照ディレクティブに切り替えました。 Typescript ユーザーは "lib" 設定をカスタマイズする必要がなくなりました。
+* 入力ミスを修正しました
+
+### <a name="2.0.2"/>2.0.2</a>
+* readme のリンクの修正
+
+### <a name="2.0.1"/>2.0.1</a>
+* 再試行インターフェイスの実装を修正しました
+
+### <a name="2.0.0"/>2.0.0</a>
+* JavaScript SDK の Version 2.0.0 の GA
+* マルチリー ジョンの書き込みのサポートが追加されました。
+
+### <a name="2.0.0-3"/>2.0.0-3</a>
+* パブリック プレビュー用の JavaScript SDK のバージョン 2.0.0 の RC1。
+* 最上位レベルの CosmosClient とメソッドが関連するデータベース、コンテナー、および項目クラスとの間で分割される、新しいオブジェクト モデル。
+* [promises](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises) をサポートします。
+* TypeScript に変換された SDK。
+
+### <a name="1.14.4"/>1.14.4</a>
+* npm のドキュメントを修正しました。
+
+### <a name="1.14.3"/>1.14.3</a>
+* 接続に問題が発生したとき、デフォルトで再試行されるようになりました。
+* コレクション変更フィードの読み取り対応になりました。
+* "読み取りセッションを利用不可" を中断させるセッション整合性バグを修正しました。
+* クエリ メトリック対応になりました。
+* http エージェントの最大接続数を変更しました。
 
 ### <a name="1.14.2"/>1.14.2</a>
 * Azure DocumentDB ではなく Azure Cosmos DB を参照するように更新されたドキュメントです。
@@ -71,7 +95,7 @@ ms.lasthandoff: 03/30/2018
 
 ### <a name="1.14.0"/>1.14.0</a>
 * セッションの整合性のサポートが追加されます。
-* この SDK バージョンでは、https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
+* この SDK バージョンでは、 https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
 
 ### <a name="1.13.0"/>1.13.0</a>
 * クロス パーティション クエリを分割検証しました。
@@ -83,8 +107,8 @@ ms.lasthandoff: 03/30/2018
 ### <a name="1.12.1"/>1.12.1</a>
 * ドキュメントに Unicode の特殊文字 (LS、PS) が含まれている場合の executeStoredProcedure のバグを修正しました。
 * パーティション キーで Unicode 文字が使用されているドキュメントを処理する際のバグを修正しました。
-* 名前メディアでコレクションを作成するためのサポートを修正しました。 Github 問題 #114。
-* アクセス許可承認トークンのサポートを修正しました。 Github 問題 #178。
+* 名前メディアでコレクションを作成するためのサポートを修正しました。 GitHub 問題 #114。
+* アクセス許可承認トークンのサポートを修正しました。 GitHub 問題 #178。
 
 ### <a name="1.12.0"/>1.12.0</a>
 * ConsistentPrefix と呼ばれる新しい[一貫性レベル](consistency-levels.md)に対応するようになりました。
@@ -96,8 +120,8 @@ ms.lasthandoff: 03/30/2018
 * クロス パーティション クエリの並列処理の次数を制御するオプションを追加しました。
 * Azure Cosmos DB エミュレーターに対しての実行時に、SSL 検証を無効にするためのオプションを追加しました。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
-* 単一パーティション コレクションに関する継続トークンのバグを修正しました。 Github 問題 #107。
-* 0 を単一パラメーターとして処理する際の executeStoredProcedure のバグを修正しました。 Github 問題 #155。
+* 単一パーティション コレクションに関する継続トークンのバグを修正しました。 GitHub 問題 #107。
+* 0 を単一パラメーターとして処理する際の executeStoredProcedure のバグを修正しました。 GitHub 問題 #155。
 
 ### <a name="1.10.2"/>1.10.2</a>
 * SDK バージョンを含めるようにユーザー エージェント ヘッダーを修正しました。
@@ -129,7 +153,7 @@ ms.lasthandoff: 03/30/2018
 * 結果の不適切な連結のためにリンクを返していなかった RangePartitionResolver.resolveForRead のバグを修正しました。
 
 ### <a name="1.5.5"/>1.5.5</a>
-* hashParitionResolver resolveForRead() を修正しました - 登録済みのすべてのリンクの一覧を返す代わりに、指定したパーティション キーが例外をスローしない問題を修正しました。
+* hashPartitionResolver resolveForRead() を修正しました - 登録済みのすべてのリンクの一覧を返す代わりに、指定したパーティション キーが例外をスローしない問題を修正しました。
 
 ### <a name="1.5.4"/>1.5.4</a>
 * 問題 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) を修正します - 専用 HTTPS エージェント: Azure Cosmos DB 目的用のグローバル エージェントが変更されないようにします。 lib のすべての要求に対して、専用エージェントを使用します。
@@ -191,8 +215,11 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.0.0-3 (RC)](#2.0.0-3) |2018 年 8 月 2 日 |--- |
+| [1.14.4](#1.14.4) |2018 年 5 月 3 日 |--- |
+| [1.14.3](#1.14.3) |2018 年 5 月 3 日 |--- |
 | [1.14.2](#1.14.2) |2017 年 12 月 21 日 |--- |
 | [1.14.1](#1.14.1) |2017 年 11 月 10 日 |--- |
 | [1.14.0](#1.14.0) |2017 年 11 月 9 日 |--- |

@@ -1,25 +1,21 @@
 ---
-title: "状態の確認、ログの設定、アラートの取得 - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリの状態とパフォーマンスを監視し、診断データをログに記録して、アラートを設定します"
-author: jeffhollan
-manager: anneta
-editor: 
+title: 状態の確認、ログの設定、アラートの取得 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps の状態の監視、診断データのログ記録、およびアラートの設定を行います
 services: logic-apps
-documentationcenter: 
-ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 0dc8bc81ca6125d40d1784ce39fd0facaf9e736a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: c2e487f421d2dfc875efde82c078f557f7bd03d2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405737"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Azure Logic Apps の状態の監視、診断ログの設定、アラートの有効化
 
@@ -66,7 +62,7 @@ ms.lasthandoff: 02/28/2018
    ![ステップの詳細](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
    > [!NOTE]
-   > Logic Apps サービス内では、実行時の詳細情報とイベントはすべて暗号化されます。 これらの暗号化が解除されるのは、ユーザーがそのデータの表示を要求したときのみです。 また、これらのイベントへのアクセスは、[Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) で制御することができます。
+   > Logic Apps サービス内では、実行時の詳細情報とイベントはすべて暗号化されます。 これらの暗号化が解除されるのは、ユーザーがそのデータの表示を要求したときのみです。 また、これらのイベントへのアクセスは、[Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) で制御することができます。
 
 6. 特定のトリガー イベントの詳細を取得するために、**[概要]** ウィンドウに戻ります。 **[トリガーの履歴]** で、トリガー イベントを選択します。 これで、次のように、入出力などの詳細を確認できます。
 
@@ -76,9 +72,9 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>ロジック アプリの診断ログを有効にする
 
-実行時の詳細情報やイベントを使用した高度なデバッグの場合は、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して診断ログを設定できます。 Log Analytics は、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) のサービスであり、クラウド環境とオンプレミス環境を監視して、それらの可用性とパフォーマンスを維持できるようにします。 
+実行時の詳細情報やイベントを使用した高度なデバッグの場合は、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して診断ログを設定できます。 Log Analytics は Azure のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持するうえで役立ちます。 
 
-開始する前に、OMS ワークスペースを用意しておく必要があります。 [OMS ワークスペースの作成方法](../log-analytics/log-analytics-get-started.md)を確認してください。
+開始する前に、Log Analytics ワークスペースを用意しておく必要があります。 [Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。
 
 1. [Azure Portal](https://portal.azure.com) で、ご利用のロジック アプリを探して選択します。 
 
@@ -90,16 +86,18 @@ ms.lasthandoff: 02/28/2018
 
    ![診断ログを有効にする](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
-4. ここで、次のように、ログ用に OMS ワークスペースとイベント カテゴリを選択します。
+4. ここで、次のように、ログ用に Log Analytics ワークスペースとイベント カテゴリを選択します。
 
    1. **[Log Analytics への送信]** を選択します。 
    2. **[Log Analytics]** で、**[構成]** を選択します。 
-   3. **[OMS ワークスペース]** で、ログに使用する OMS ワークスペースを選択します。
+   3. **[OMS ワークスペース]** で、ログに使用するワークスペースを選択します。
+   > [!NOTE]
+   > OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
    4. **[ログ]** で、**[WorkflowRuntime]** カテゴリを選択します。
    5. メトリックの間隔を選択します。
    6. 完了したら、**[保存]** を選択します。
 
-   ![ログ用に OMS ワークスペースとデータを選択する](media/logic-apps-monitor-your-logic-apps/send-diagnostics-data-log-analytics-workspace.png)
+   ![Log Analytics ワークスペースとログ対象のデータを選択する](media/logic-apps-monitor-your-logic-apps/send-diagnostics-data-log-analytics-workspace.png)
 
 これで、トリガー イベント、実行イベント、アクション イベントに関して、イベントとその他のデータを検索できるようになりました。
 
@@ -113,23 +111,15 @@ ms.lasthandoff: 02/28/2018
 
    ![[Log Analytics] を選択する](media/logic-apps-monitor-your-logic-apps/browseloganalytics.png)
 
-2. **[Log Analytics]** で、ご利用の OMS ワークスペースを検索して選択します。 
+2. **[Log Analytics]** で、ご利用の Log Analytics ワークスペースを見つけて選択します。 
 
-   ![OMS ワークスペースを選択する](media/logic-apps-monitor-your-logic-apps/selectla.png)
+   ![Log Analytics ワークスペースを選択する](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
-3. **[管理]** で、**[OMS ポータル]** を選択します。
+3. **[管理]** で、**[ログ検索]** を選択します。
 
-   ![[OMS ポータル] を選択する](media/logic-apps-monitor-your-logic-apps/omsportalpage.png)
+   ![[ログ検索] を選択する](media/logic-apps-monitor-your-logic-apps/log-search.png)
 
-4. OMS ホーム ページで、**[ログ検索]** を選択します。
-
-   ![OMS ホーム ページで [ログ検索] を選択する](media/logic-apps-monitor-your-logic-apps/logsearch.png)
-
-   または
-
-   ![[OMS] メニューの [ログ検索] を選択する](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
-
-5. 検索ボックスに、検索するフィールドを指定し、**Enter** キーを押します。 入力を開始すると、一致候補と使用できる操作が表示されます。 
+4. 検索ボックスに、検索するフィールドを指定し、**Enter** キーを押します。 入力を開始すると、一致候補と使用できる操作が表示されます。 
 
    たとえば、発生した上位 10 件のイベントを検索するには、**search Category == "WorkflowRuntime" | limit 10** という検索クエリを入力して選択します。
 
@@ -137,27 +127,27 @@ ms.lasthandoff: 02/28/2018
 
    詳細については、[Log Analytics でのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
 
-6. 結果ページの左側のバーで、表示する期間を選択します。
+5. 結果ページの左側のバーで、表示する期間を選択します。
 フィルターを追加してクエリを絞り込むには、**[+ 追加]** を選択します。
 
    ![クエリ結果の期間を選択する](media/logic-apps-monitor-your-logic-apps/query-results.png)
 
-7. **[フィルターの追加]** で、フィルター名を入力すると、目的のフィルターを見つけることができます。 そのフィルターを選択し、**[+追加]** を選択します。
+6. **[フィルターの追加]** で、フィルター名を入力すると、目的のフィルターを見つけることができます。 そのフィルターを選択し、**[+追加]** を選択します。
 
    この例では、"status" という単語を使用して、**AzureDiagnostics** で失敗したイベントを検索します。
    ここでは、**status_s** のフィルターが既に選択されています。
 
    ![フィルターを選択する](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
-8. 左側のバーで、使用するフィルター値を選択し、**[適用]** を選択します。
+7. 左側のバーで、使用するフィルター値を選択し、**[適用]** を選択します。
 
    ![フィルター値を選択して [適用] を選択する](media/logic-apps-monitor-your-logic-apps/log-search-apply-filter.png)
 
-9. ここで、作成しているクエリに戻ります。 このクエリは、選択したフィルターと値によって更新されます。 以前の結果もフィルター処理されています。
+8. ここで、作成しているクエリに戻ります。 このクエリは、選択したフィルターと値によって更新されます。 以前の結果もフィルター処理されています。
 
    ![フィルター処理された結果が表示されているクエリに戻る](media/logic-apps-monitor-your-logic-apps/log-search-query-filtered-results.png)
 
-10. クエリを将来使用するために保存するには、**[保存]** を選択します。 [クエリの保存方法](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query)を確認してください。
+9. クエリを将来使用するために保存するには、**[保存]** を選択します。 [クエリの保存方法](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query)を確認してください。
 
 <a name="extend-diagnostic-data"></a>
 

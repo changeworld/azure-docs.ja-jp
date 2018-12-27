@@ -1,25 +1,20 @@
 ---
-title: "Java HBase クライアント - Azure HDInsight | Microsoft Docs"
-description: "Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure HDInsight での HBase にデプロイする方法について説明します。"
+title: Java HBase クライアント - Azure HDInsight
+description: Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure HDInsight での HBase にデプロイする方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: cgronlun
-editor: 
-ms.assetid: 1d1ed180-e0f4-4d1c-b5ea-72e0eda643bc
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/25/2018
-ms.author: larryfr
-ms.openlocfilehash: 7f5e4cd36b32ae86bc6f498c81d5a558ca6974d2
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.topic: conceptual
+ms.date: 04/30/2018
+ms.author: hrasheed
+ms.openlocfilehash: 677714487aac6e25a0505cce978792c76bb1cee4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016082"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
@@ -35,7 +30,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 
 ## <a name="requirements"></a>必要条件
 
-* [Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 8 以降
+* [Java プラットフォーム JDK](https://aka.ms/azure-jdks) 8 以降
 
     > [!NOTE]
     > HDInsight 3.5 以降では Java 8 が必要です。 以前のバージョンの HDInsight では、Java 7 が必要です。
@@ -43,9 +38,6 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 * [Maven](http://maven.apache.org/)
 
 * [Linux ベースの Azure HDInsight クラスターと HBase](apache-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
-
-  > [!NOTE]
-  > このドキュメントの手順は、HDInsight クラスター バージョン 3.4 および 3.5 でテスト済みです。 例で指定される既定値は、HDInsight 3.5 クラスターに対応しています。
 
 ## <a name="create-the-project"></a>プロジェクトを作成する
 
@@ -576,7 +568,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
         $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
         if(-not($sub))
         {
-            throw "No active Azure subscription found! If you have a subscription, use the Login-AzureRmAccount cmdlet to login to your subscription."
+            throw "No active Azure subscription found! If you have a subscription, use the Connect-AzureRmAccount cmdlet to login to your subscription."
         }
     }
 

@@ -1,55 +1,22 @@
 ---
-title: Azure Portal を使用する Azure Data Lake Analytics ジョブのトラブルシューティング | Microsoft Docs
-description: 'Azure Portal を使用して、Data Lake Analytics ジョブのトラブルシューティングを行う方法について説明します。 '
+title: Azure Portal を使用して Azure Data Lake Analytics でジョブを監視する
+description: この記事では、Azure Portal を使用して、Data Lake Analytics ジョブのトラブルシューティングを行う方法について説明します。
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: saveenr
-editor: cgronlun
-ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: f6168997c449be5354bd223c516d4f929a1bf894
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: jasonwhowell
+ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
+ms.topic: conceptual
+ms.date: 12/05/2016
+ms.openlocfilehash: 1e18addc43e53cb45e92966607ad5d1db2b42c3c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046721"
 ---
-# <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>Azure Portal を使用する Azure Data Lake Analytics ジョブのトラブルシューティング
-Azure Portal を使用して、Data Lake Analytics ジョブのトラブルシューティングを行う方法について説明します。
-
-このチュートリアルでは、ソース ファイルが見つからない問題をセットアップし、Azure Portal を使用してその問題のトラブルシューティングを行います。
-
-## <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics ジョブの送信
-
-次の U-SQL ジョブを送信します。
-
-```
-@searchlog =
-   EXTRACT UserId          int,
-           Start           DateTime,
-           Region          string,
-           Query           string,
-           Duration        int?,
-           Urls            string,
-           ClickedUrls     string
-   FROM "/Samples/Data/SearchLog.tsv1"
-   USING Extractors.Tsv();
-
-OUTPUT @searchlog   
-   TO "/output/SearchLog-from-adls.csv"
-   USING Outputters.Csv();
-```
-    
-スクリプトで定義されているソース ファイルは **/Samples/Data/SearchLog.tsv1** ですが、これは **/Samples/Data/SearchLog.tsv** でなければなりません。
-
-
-## <a name="troubleshoot-the-job"></a>ジョブのトラブルシューティング
+# <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Portal を使用して Azure Data Lake Analytics でジョブを監視する
 
 **すべてのジョブを表示するには**
 
@@ -72,14 +39,13 @@ OUTPUT @searchlog
     ![Azure Data Lake Analytics の失敗したジョブの詳細](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
 
     ソース フォルダーが見つからないことが示されています。
-6. **[スクリプトの複製]**をクリックします。
+6. **[スクリプトの複製]** をクリックします。
 7. **FROM** パスを以下のように更新します。
 
     "/Samples/Data/SearchLog.tsv"
-8. **[ジョブの送信]**をクリックします。
+8. **[ジョブの送信]** をクリックします。
 
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
-* [Visual Studio で Azure Data Lake Analytics と U-SQL の使用を開始する](data-lake-analytics-u-sql-get-started.md)
 * [Azure  Portal を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-portal.md)

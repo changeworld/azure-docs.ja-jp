@@ -3,77 +3,119 @@ title: Azure Automation の Linux Hybrid Runbook Worker
 description: この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのコンピューターで Runbook を実行できるようにする方法について説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
-ms.topic: article
+ms.date: 06/28/2018
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b4559afa9294111eaa1f20fdf295d1fb26dcc994
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f32574dc0a3fd61c21e8c9a7c1ec93c7d366d384
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408848"
 ---
-# <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker のデプロイ方法
+# <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
-Azure Automation の Runbook は Azure クラウドで実行されるため、他のクラウドやオンプレミス環境のリソースにはアクセスできません。 Azure Automation の Hybrid Runbook Worker 機能を使用すると、ロールをホスティングしているコンピューター上で環境内のリソースに対して Runbook を直接実行して、これらのローカル リソースを管理できます。 Runbook は Azure Automation で格納および管理された後、1 つ以上の指定されたコンピューターに配信されます。
+Azure Automation の Hybrid Runbook Worker 機能を使う、ロールをホスティングしているコンピューター上で環境内のリソースに対して Runbook を直接実行して、これらのローカル リソースを管理できます。 Linux Hybrid Runbook Worker は、昇格が必要なコマンドを実行するために昇格させることができる特殊なユーザーとして Runbook を実行します。 Runbook は Azure Automation で格納および管理された後、1 つ以上の指定されたコンピューターに配信されます。
 
-次の図にこの機能を示します。<br>  
+この記事では、Linux コンピューターに Hybrid Runbook Worker をインストールする方法について説明します。
 
-![Hybrid Runbook Worker の概要](media/automation-offering-get-started/automation-infradiagram-networkcomms.png)
+## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
 
-Hybrid Runbook Worker ロールの技術的な概要については、「[Automation アーキテクチャの概要](automation-offering-get-started.md#automation-architecture-overview)」を参照してください。 Hybrid Runbook Worker のデプロイを開始する前に、[ハードウェアとソフトウェアの要件](automation-offering-get-started.md#hybrid-runbook-worker)および[ネットワークを準備するための情報](automation-offering-get-started.md#network-planning)に関する情報を見直します。 Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。     
+Hybrid Runbook Worker 機能は、次のディストリビューションをサポートします。
 
-## <a name="hybrid-runbook-worker-groups"></a>Hybrid Runbook Worker のグループ
-各 Hybrid Runbook Worker は、エージェントのインストール時に指定する Hybrid Runbook Worker グループのメンバーです。 グループには単一のエージェントを含めることができますが、高可用性グループに複数のエージェントをインストールすることができます。
+* Amazon Linux 2012.09 ～ 2015.09 (x86/x64)
+* CentOS Linux 5、6、および 7 (x86/x64)
+* Oracle Linux 5、6、および 7 (x86/x64)
+* Red Hat Enterprise Linux Server 5、6、および 7 (x86/x64)
+* Debian GNU/Linux 6、7、および 8 (x86/x64)
+* Ubuntu 12.04 LTS、14.04 LTS、および 16.04 LTS (x86/x64)
+* SUSE Linux Enterprise Server 11 および 12 (x86/x64)
 
-Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグループを指定します。 要求を処理するワーカーは、グループのメンバーが決定します。 特定のワーカーを指定することはできません。
+## <a name="installing-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker のインストール
 
-## <a name="installing-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker のインストール
-Linux コンピューターに Hybrid Runbook Worker をインストールして構成するには、ロールを手動でインストールおよび構成するための非常に簡単なプロセスに従います。 **Automation Hybrid Worker** ソリューションを Log Analytics ワークスペースで有効にする必要があります。その後、一連のコマンドを実行してコンピューターを worker として登録し、新規または既存のグループに追加します。 
+Linux コンピューターに Hybrid Runbook Worker をインストールして構成するには、ロールを手動でインストールおよび構成するための非常に簡単なプロセスに従います。 **Automation Hybrid Worker** ソリューションを Azure Log Analytics ワークスペースで有効にする必要があります。その後、一連のコマンドを実行してコンピューターを worker として登録し、グループに追加します。
 
-続行する前に、Automation アカウントがリンクされている Log Analytics ワークスペースだけでなく、Automation アカウントの主キーにも注意する必要があります。 ポータルから、Automation アカウント、ワークスペース ID の**ワークスペース**、および主キーの**キー**を選択することで両方を検索できます。  
+Linux Hybrid Runbook Worker の最小要件は次のようになります。
 
-1.  Azure で "Automation Hybrid Worker" ソリューションを有効にします。 これは以下のいずれかの方法で実行できます。
+* 2 コア
+* 4 GB の RAM
+* ポート 443 (送信)
 
-   1. 「[Azure Log Analytics 管理ソリューションをワークスペースに追加する](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-add-solutions)」の手順を使用して、**Automation Hybrid Worker** ソリューションをサブスクリプションに追加します。
-   2. 次のコマンドレットを実行します。
+### <a name="package-requirements"></a>パッケージの要件
 
-        ```powershell
-         $null = Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
+| **必須パッケージ** | **説明** | **最小バージョン**|
+|--------------------- | --------------------- | -------------------|
+|Glibc |GNU C ライブラリ| 2.5-12 |
+|Openssl| OpenSSL ライブラリ | 1.0 (TLS 1.1 と TLS 1.2 がサポートされます)|
+|Curl | cURL Web クライアント | 7.15.5|
+|Python-ctypes | |
+|PAM | Pluggable Authentication Module (プラグ可能な認証モジュール)|
+| **オプション パッケージ** | **説明** | **最小バージョン**|
+| PowerShell Core | PowerShell の Runbook を実行するには、PowerShell をインストールする必要があります。インストール方法については、「[Linux への PowerShell Core のインストール](/powershell/scripting/setup/installing-powershell-core-on-linux)」をご覧ください。  | 6.0.0 |
+
+### <a name="installation"></a>インストール
+
+先に進む前に、Automation アカウントがリンクされている Log Analytics ワークスペースを書き留めておきます。 また、Automation アカウントのプライマリ キーも書き留めます。 Azure portal から、Automation アカウントを選び、ワークスペース ID の**ワークスペース**、およびプライマリ キーの**キー**を選ぶことで、両方を検索できます。 Hybrid Runbook Worker に必要なポートとアドレスについては、「[ネットワークを構成する](automation-hybrid-runbook-worker.md#network-planning)」をご覧ください。
+
+1. 次のいずれかの方法を使って、Azure において **Automation Hybrid Worker** ソリューションを有効にします。
+
+   * 「[Azure Log Analytics 管理ソリューションをワークスペースに追加する](../log-analytics/log-analytics-add-solutions.md)」の手順を使用して、**Automation Hybrid Worker** ソリューションをサブスクリプションに追加します。
+   * 次のコマンドレットを実行します。
+
+        ```azurepowershell-interactive
+         Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-2.  次のコマンドを、*-w*、*-k*、*-g*、および *-e* パラメーターの値を変更して実行します。 *-g* パラメーターを、新しい Linux Hybrid Runbook Worker を参加させる Hybrid Runbook Worker グループの名前の値に置き換えます。 この名前がまだ Automation アカウントに存在しない場合は、その名前を持つ新しい Hybrid Runbook Worker グループが作成されます。
-    
-    ```python
-    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
-    ```
-3. コマンドが完了すると、Azure Portal の [ハイブリッド worker グループ] ブレードに新しいグループとメンバー数が表示されますが、既存のグループの場合はメンバー数が追加されます。 **[ハイブリッド worker グループ]** ブレード上にあるリストからグループを選択し、**[ハイブリッド worker]** タイルを選択できます。 **[ハイブリッド worker]** ブレードで、グループの各メンバーが一覧表示されます。  
+1. 次のコマンドを実行して、Log Analytics エージェント for Linux をインストールします。 \<WorkspaceID\> と \<WorkspaceKey\> は、お使いのワークスペースの適切な値に置き換えてください。
 
+  [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
 
-## <a name="turning-off-signature-validation"></a>署名の検証をオフにする 
-既定では、Linux Hybrid Runbook Worker は、署名の検証を必要とします。 ワーカーに対して未署名の Runbook を実行した場合は、"署名の検証が失敗しました" を含むエラーが表示されます。 署名の検証をオフにするには、2 番目のパラメーターを Log Analytics ワークスペース ID に置き換えて、次のコマンドを実行します。
+   ```bash
+   wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
+   ```
 
- ```python
+1. 次のコマンドを、*-w*、*-k*、*-g*、および *-e* パラメーターの値を変更して実行します。 *-g* パラメーターを、新しい Linux Hybrid Runbook Worker を参加させる Hybrid Runbook Worker グループの名前の値に置き換えます。 この名前が Automation アカウントに存在しない場合は、その名前を持つ新しい Hybrid Runbook Worker グループが作成されます。
+
+   ```bash
+   sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
+   ```
+
+1. コマンドが完了すると、Azure portal の **[ハイブリッド Worker グループ]** ページに、新しいグループとメンバーの数が表示されます。 既存のグループの場合は、メンバーの数がインクリメントされます。 **[ハイブリッド worker グループ]** ページ上にあるリストからグループを選択し、**[ハイブリッド worker]** タイルを選択できます。 **[ハイブリッド worker]** ページで、グループの各メンバーが一覧表示されます。
+
+## <a name="turning-off-signature-validation"></a>署名の検証をオフにする
+
+既定では、Linux Hybrid Runbook Worker は、署名の検証を必要とします。 ワーカーに対して未署名の Runbook を実行した場合は、"署名の検証が失敗しました" というエラーが表示されます。 署名の検証をオフにするには、次のコマンドを実行します。 2 番目のパラメーターは Log Analytics のワークスペース ID に置き換えます。
+
+ ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
  ```
 
 ## <a name="supported-runbook-types"></a>サポートされている Runbook の種類
 
-Linux Hybrid Runbook Worker は、Azure オートメーション内にある一連の完全な Runbook の種類をサポートしていません。
+Linux Hybrid Runbook Worker は、Azure Automation での一連の完全な Runbook の種類をサポートしていません。
 
 Linux Hybrid Worker では、次の Runbook の種類が機能します。
 
 * Python 2
 * PowerShell
- 
+
+  > [!NOTE]
+  > PowerShell Runbook を使うには、Linux マシンに PowerShell Core がインストールされている必要があります。 インストール方法については、「[Linux への PowerShell Core のインストール](/powershell/scripting/setup/installing-powershell-core-on-linux)」をご覧ください。
+
 Linux Hybrid Worker では、次の Runbook の種類は機能しません。
 
 * PowerShell ワークフロー
 * グラフィカル
 * グラフィカル PowerShell ワークフロー
 
+## <a name="troubleshoot"></a>トラブルシューティング
+
+Linux Hybrid Runbook Worker をトラブルシューティングする方法については、[Linux Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#linux)に関する記事を参照してください。
+
 ## <a name="next-steps"></a>次の手順
 
-* 「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。
-* Hybrid Runbook Worker を削除する方法については、「[Remove Azure Automation Hybrid Runbook Workers (Azure Automation の Hybrid Runbook Worker の削除)](automation-remove-hrw.md)」をご覧ください。
+* オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を学習するには、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」をご覧ください。
+* Hybrid Runbook Worker を削除する方法については、「[Hybrid Runbook Worker の削除](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)」をご覧ください。

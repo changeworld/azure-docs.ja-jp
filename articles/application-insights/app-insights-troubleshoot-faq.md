@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 245bd348b9eb5b434360d734e219efd7c663a406
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 60195f135b8b0e102a36c3573a341432f2e0c784
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959309"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: よく寄せられる質問
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/03/2018
 
 * [.NET アプリ](app-insights-asp-net-troubleshoot-no-data.md)
 * [既に実行中のアプリの監視](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
-* [Azure 診断](app-insights-azure-diagnostics.md)
+* [Azure 診断](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Java Web アプリ](app-insights-java-troubleshoot.md)
 
 *サーバーからデータを取得できません。*
@@ -110,7 +111,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 
 [クライアントの Web ページ](app-insights-javascript.md)から:
 
-* [ページ ビュー数](app-insights-web-track-usage.md)
+* [ページ ビュー数](app-insights-usage-overview.md)
 * [AJAX 呼び出し](app-insights-asp-net-dependencies.md)。実行中のスクリプトから行われる要求。
 * ページ ビューの読み込みデータ
 * ユーザー数とセッション数
@@ -118,7 +119,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 
 その他のソースから (構成する場合):
 
-* [Azure 診断](app-insights-azure-diagnostics.md)
+* [Azure 診断](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Docker コンテナー](app-insights-docker.md)
 * [Analytics へのインポート テーブル](app-insights-analytics-import.md)
 * [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
@@ -254,15 +255,37 @@ Microsoft の SDK と [SDK API](app-insights-api-custom-events-metrics.md) を�
 
 ### <a name="proxy"></a>プロキシ
 
-ApplicationInsights.config 内に次のコードを設定し、トラフィックをサーバーからイントラネット上のゲートウェイにルーティングします。
+例の ApplicationInsights.config に含まれるこれらの設定を上書きして、サーバーからイントラネット上のゲートウェイにトラフィックをルーティングします。これらの "Endpoint" プロパティが config に存在しない場合、以下の例のように、これらのクラスは既定値を使用します。
 
-```XML
-<TelemetryChannel>
-    <EndpointAddress>your gateway endpoint</EndpointAddress>
-</TelemetryChannel>
+#### <a name="example-applicationinsightsconfig"></a>ApplicationInsights.config の例:
+```xml
+<ApplicationInsights>
+    ...
+    <TelemetryChannel>
+         <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
+    </TelemetryChannel>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
 ```
 
-ご利用のゲートウェイはトラフィックを https://dc.services.visualstudio.com:443/v2/track にルーティングする必要があります。
+_ApplicationIdProvider は v2.6.0 以降で使用できます_
+
+ご利用のゲートウェイはトラフィックを https://dc.services.visualstudio.com:443 にルーティングする必要があります。
+
+上記の値を `http://<your.gateway.address>/<relative path>` に置き換えます。
+ 
+例: 
+```
+http://<your.gateway.endpoint>/v2/track 
+http://<your.gateway.endpoint>/api/profiles/{0}/apiId
+```
+
+
+
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>イントラネット サーバーで可用性 Web テストを実行できますか?
 

@@ -1,29 +1,24 @@
 ---
-title: Storage/Data Lake Store への Apache Storm 書き込み - Azure HDInsight | Microsoft Docs
-description: Apache Storm を使用して、HDInsight 用の HDFS と互換性のあるストレージに書き込む方法について説明します。 Azure Storage または Azure Data Lake Store は、HDInsight 用の HDFS と互換性のあるストレージを提供します。 このドキュメントおよび関連する例では、HdfsBolt コンポーネントを使用して HDInsight クラスター上の Storm の既定のストレージに書き込む方法を示します。
+title: Storage/Data Lake Store への Apache Storm 書き込み - Azure HDInsight
+description: Apache Storm を使用して、HDInsight 用の HDFS と互換性のあるストレージに書き込む方法について説明します。
 services: hdinsight
-documentationcenter: na
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 1df98653-a6c8-4662-a8c6-5d288fc4f3a6
 ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 2310894e7257d0ddb919406a8f297089189a9484
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d38b4e511defbb50dd5f74ae72e71d3316a57b3c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567130"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm から HDFS への書き込み
 
-Storm を使用して、HDInsight 上の Apache Storm によって使用される HDFS と互換性のあるストレージにデータを書き込む方法について説明します。 HDInsight では、HDFS と互換性のあるストレージとして Azure Storage と Azure Data Lake Store の両方を使用できます。 Storm は、HDFS にデータを書き込む [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) コンポーネントを提供します。 このドキュメントでは、HdfsBolt から両方の種類のストレージへの書き込みに関する情報を提供します。 
+Storm を使用して、HDInsight 上の Apache Storm によって使用される HDFS と互換性のあるストレージにデータを書き込む方法について説明します。 HDInsight では、HDFS と互換性のあるストレージとして Azure Storage と Azure Data Lake Store の両方を使用できます。 Storm は、HDFS にデータを書き込む [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) コンポーネントを提供します。 このドキュメントでは、HdfsBolt から両方の種類のストレージへの書き込みに関する情報を提供します。 
 
 > [!IMPORTANT]
 > このドキュメントで使用されているトポロジの例は、HDInsight 上の Storm に含まれているコンポーネントによって異なります。 他の Apache Storm クラスターと共に使用された場合、Azure Data Lake Store で動作するには、この例に変更が必要になる可能性があります。
@@ -34,7 +29,7 @@ Storm を使用して、HDInsight 上の Apache Storm によって使用され�
 
 このプロジェクトをコンパイルするには、開発環境に次の構成が必要です。
 
-* [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 以上 HDInsight 3.5 以降には Java 8 が必要です。
+* [Java JDK 1.8](https://aka.ms/azure-jdks) 以上 HDInsight 3.5 以降には Java 8 が必要です。
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -66,11 +61,11 @@ HdfsBolt は、ユーザーが指定したファイル スキームを使用し�
 | `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | クラスターに関連付けられている既定以外の (追加の) Azure Storage アカウント。 |
 | `adl://STORENAME/` | クラスターによって使用される Data Lake Store のルート。 このスキームを使用すると、クラスター ファイル システムを含むディレクトリの外部にあるデータにアクセスできます。 |
 
-詳細については、Apache.org にある [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) のリファレンスを参照してください。
+詳細については、Apache.org にある [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) のリファレンスを参照してください。
 
 ### <a name="example-configuration"></a>構成の例
 
-次の YAML は、この例に含まれている `resources/writetohdfs.yaml` ファイルからの抜粋です。 このファイルは、Apache Storm の [Flux](https://storm.apache.org/releases/1.1.0/flux.html) フレームワークを使用して Storm トポロジを定義します。
+次の YAML は、この例に含まれている `resources/writetohdfs.yaml` ファイルからの抜粋です。 このファイルは、Apache Storm の [Flux](https://storm.apache.org/releases/1.1.2/flux.html) フレームワークを使用して Storm トポロジを定義します。
 
 ```yaml
 components:
@@ -134,7 +129,7 @@ bolts:
 * `rotationPolicy`: ファイルをいつローテーションするかを定義します。 この例では、ローテーションは実行されません。
 * `hdfs-bolt`: 前のコンポーネントを `HdfsBolt` クラスの構成パラメーターとして使用します。
 
-Flux フレームワークの詳細については、「[https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html)」を参照してください。
+Flux フレームワークの詳細については、「[https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html)」を参照してください。
 
 ## <a name="configure-the-cluster"></a>クラスターを構成する
 
@@ -158,7 +153,7 @@ Flux フレームワークの詳細については、「[https://storm.apache.or
 
 ## <a name="deploy-and-run-the-topology"></a>トポロジをデプロイおよび実行する
 
-1. 次のコマンドを使用して、トポロジを HDInsight クラスターにコピーします。 **USER** を、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **CLUSTERNAME** は、クラスターの名前に置き換えます。
+1. 次のコマンドを使用して、トポロジを HDInsight クラスターにコピーします。 **USER** を、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    
         scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
    
@@ -167,7 +162,7 @@ Flux フレームワークの詳細については、「[https://storm.apache.or
    > [!NOTE]
    > HDInsight での `scp` の使用の詳細については、「[HDInsight で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
-2. アップロードが完了したら、次のようにして、SSH を使用して HDInsight クラスターに接続します。 **USER** を、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **CLUSTERNAME** は、クラスターの名前に置き換えます。
+2. アップロードが完了したら、次のようにして、SSH を使用して HDInsight クラスターに接続します。 **USER** を、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    
         ssh USER@CLUSTERNAME-ssh.azurehdinsight.net
    

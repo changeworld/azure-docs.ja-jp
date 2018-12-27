@@ -3,29 +3,32 @@ title: Azure Virtual Machines で入れ子になった仮想化を有効にす�
 description: Azure Virtual Machines で入れ子になった仮想化を有効にする方法
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: philmea
+author: zr-msft
 manager: jeconnoc
-ms.author: philmea
+ms.author: zarhoads
 ms.date: 10/09/2017
 ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: bf2de6738f83be96cd574c43dd6584fa3885ba6d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e9b05751166ac200f4a9cdab4c7fe3ed797f2a10
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465250"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
-入れ子になった仮想化は、Dv3 および Ev3 シリーズの Azure 仮想マシンでサポートされています。 この機能により、開発、テスト、トレーニング、デモなど、各環境のシナリオに柔軟に対応できます。 
+入れ子になった仮想化は、複数の Azure 仮想マシン ファミリでサポートされています。 この機能により、開発、テスト、トレーニング、デモなど、各環境のシナリオに柔軟に対応できます。   
 
-この記事では、Azure VM で入れ子になった仮想化を有効にして、ゲスト仮想マシンへのインターネット接続を構成する手順について説明します。
+この記事では、Azure VM で Hyper-V を有効にして、ゲスト仮想マシンへのインターネット接続を構成する手順について説明します。
 
-## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>Dv3 または Ev3 シリーズ の Azure VM を作成する
+## <a name="create-a-nesting-capable-azure-vm"></a>入れ子対応の Azure VM を作成する
 
-新しい Windows Server 2016 Azure VM を作成し、Dv3 または Ev3 シリーズからサイズを選択します。 必ずゲスト仮想マシンの要求をサポートできるだけのサイズを選択してください。 この例では、D3_v3 サイズの Azure VM を使用しています。 
+新しい Windows Server 2016 Azure VM を作成します。  たとえば、すべての v3 仮想マシンは入れ子になった仮想化をサポートしています。 入れ子をサポートしている仮想マシンのサイズの完全な一覧については、「[Azure コンピューティング ユニット (ACU)](acu.md)」をご覧ください。
+
+必ずゲスト仮想マシンの要求をサポートするのに十分な大きさの VM サイズを選択してください。 この例では、D3_v3 サイズの Azure VM を使用しています。 
 
 Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状況については、[こちら](https://azure.microsoft.com/regions/services/)をご覧ください。
 
@@ -142,7 +145,7 @@ IP アドレスをゲスト仮想マシンに割り当てるには、ゲスト�
   
 3. クリックして **[DHCP サーバー]** チェック ボックスをオンにし、**[機能の追加]** をクリックして、ウィザードが完了するまで **[次へ]** をクリックします。
   
-4. **[インストール]**をクリックします。
+4. **[インストール]** をクリックします。
 
 #### <a name="configure-a-new-dhcp-scope"></a>新しい DHCP スコープを構成する
 

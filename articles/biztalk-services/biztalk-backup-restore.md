@@ -1,11 +1,11 @@
 ---
-title: "BizTalk Services でのバックアップの作成と復元 | Microsoft Docs"
-description: "BizTalk Services には、バックアップと復元の機能が備わっています。 バックアップを作成して復元する方法を説明すると共に、何がバックアップされるのかを確認します。 MABS、WABS"
+title: BizTalk Services でのバックアップの作成と復元 | Microsoft Docs
+description: BizTalk Services には、バックアップと復元の機能が備わっています。 バックアップを作成して復元する方法を説明すると共に、何がバックアップされるのかを確認します。 MABS、WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 59f91173-4683-48df-abd5-41262bfce6df
 ms.service: biztalk-services
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 45365092f5bcd1a8d309c10404a7437c494a8967
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 6dc3fb97c912aa9ac66e3d40a8a0318a6938905c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230293"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk サービス: バックアップと復元に関するページ
 
@@ -51,7 +52,7 @@ Azure BizTalk サービスには、バックアップ機能と復元機能が備
 バックアップを復元するには、[Azure で BizTalk Services を管理するための REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx) を使用します。
 
 ### <a name="postrestore"></a>バックアップの復元後
-BizTalk サービスは常に、**[ 中断 ]** 状態で復元されます。 この状態のときは、新しい環境を機能させる前に次のような構成変更を行うことができます。
+BizTalk サービスは常に、**[中断]** 状態で復元されます。 この状態のときは、新しい環境を機能させる前に次のような構成変更を行うことができます。
 
 * Azure BizTalk Services SDK を使用して BizTalk サービス アプリケーションを作成した場合は、そのアプリケーション内の Access Control (ACS) 資格情報が復元後の環境で動作するように更新することが必要になる可能性があります。
 * 既存の BizTalk サービス環境の複製を目的として BizTalk サービスを復元します。 これに該当するときに、元の BizTalk Services ポータルでソース FTP フォルダーを使用するように契約が構成されている場合は、新たに復元された環境で別のソース FTP フォルダーを使用するように契約を更新することが必要になる可能性があります。 更新しなかった場合は、2 つの異なる契約が同じメッセージを取り出そうとする可能性があります。
@@ -131,18 +132,18 @@ BizTalk サービスは常に、**[ 中断 ]** 状態で復元されます。 �
 </table>
 
 ## <a name="next"></a>次へ
-Azure BizTalk Services を作成するには、[BizTalk Services: プロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)に関するページに進みます。 アプリケーションの作成を開始するには、 [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
+Azure BizTalk Services を作成するには、[BizTalk Services: プロビジョニング](https://go.microsoft.com/fwlink/p/?LinkID=302280)に関するページに進みます。 アプリケーションの作成を開始するには、 [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
-* [BizTalk サービスのバックアップ](http://go.microsoft.com/fwlink/p/?LinkID=325584)
-* [バックアップからの BizTalk サービスの復元](http://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [BizTalk Services: プロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [BizTalk Services: サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [BizTalk サービス: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-* [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [BizTalk サービスのバックアップ](https://go.microsoft.com/fwlink/p/?LinkID=325584)
+* [バックアップからの BizTalk サービスの復元](https://go.microsoft.com/fwlink/p/?LinkID=325582)
+* [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](https://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [BizTalk Services: プロビジョニング](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: サービスの状態のチャート](https://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk サービス: 調整](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk サービス: 発行者名および発行者キー](https://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [Visual Studio でのプロジェクトの作成](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png

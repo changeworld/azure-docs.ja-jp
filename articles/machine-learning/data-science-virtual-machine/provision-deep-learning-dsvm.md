@@ -5,23 +5,24 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 4c911937226591124404c95b73b82b78e76649ea
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9d64ad70ea49f7fbffd8bd6a5a77177fe490b832
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229664"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Azure でディープ ラーニング 仮想マシンをプロビジョニングする 
 
-ディープ ラーニング仮想マシン (DLVM) は、ディープ ラーニング モデルの迅速なトレーニングに GPU ベースの VM インスタンスを容易に使用できるように、一般的な[データ サイエンス仮想マシン](http://aka.ms/dsvm) (DSVM) を特別に構成したバリアントです。 ベースとして Windows 2016 または Ubuntu DSVM によってサポートされています。 DLVM は、同じコア VM イメージ、したがって DSVM で使用可能なすべての機能豊富なツールセットを共有しています。 
+ディープ ラーニング仮想マシン (DLVM) は、ディープ ラーニング モデルの迅速なトレーニングに GPU ベースの VM インスタンスを容易に使用できるように、一般的な[データ サイエンス仮想マシン](https://aka.ms/dsvm) (DSVM) を特別に構成したバリアントです。 ベースとして Windows 2016 または Ubuntu DSVM によってサポートされています。 DLVM は、同じコア VM イメージ、したがって DSVM で使用可能なすべての機能豊富なツールセットを共有しています。 
 
 DLVM には、Microsoft Cognitive Toolkit、TensorFlow、Keras、Caffe2、Chainer など、人気のディープ ラーニング フレームワークの GPU エディションを含む AI 用のツール、イメージ、テキスト データを取得し前処理するためのツール、Microsoft R Server Developer Edition、Anaconda Python、Python 用および R 用 Jupyter Notebook、Python 用および R 用 IDE などのデータ サイエンス モデリングおよび開発アクティビティ用のツール、SQL データベース、およびその他のデータ サイエンスと ML のツールがいくつか含まれます。 
 
@@ -44,9 +45,9 @@ DLVM には、Microsoft Cognitive Toolkit、TensorFlow、Keras、Caffe2、Chaine
       6. **場所**: 最適なデータ センターを選択します。 通常は、ネットワーク アクセスを最速にするために、データの大部分があるか、物理的に最も近いデータ センターを選びます。 
       
 > [!NOTE]
-> DLVM は Azure NC シリーズの GPU VM インスタンスでプロビジョニングされるため、GPU のある Azure 内のいずれかの場所を選択する必要があります。 現在 GPU VM がある場所は、**米国東部、米国中北部、米国中南部、米国西部 2、北ヨーロッパ、西ヨーロッパ**です。 最新の一覧については、[リージョン別の Azure 製品](https://azure.microsoft.com/en-us/regions/services/)に関するページを確認して、**コンピューティング**の **NC シリーズ**を探してください。 
+> DLVM は、すべての NC および ND シリーズ GPU VM インスタンスをサポートしています。 DLVM をプロビジョニングするときには、GPU がある Azure 内の場所の 1 つを選択する必要があります。 選択できる場所については、[リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/)に関するページを確認して、**[コンピューティング]** で **NC シリーズ**、**NCv2 シリーズ**、**NCv3 シリーズ**、または **ND シリーズ**を探してください。 
 
-   2. **設定**: 機能要件とコスト制約を満たしている、いずれかのNC シリーズ GPU 仮想マシン サイズを選択します。 VM のストレージ アカウントを作成します。  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   2. **設定**: 機能要件とコスト制約を満たしている、いずれかの NC シリーズ (NC、NCv2、NCv3) または ND シリーズの GPU 仮想マシン サイズを選択します。 VM のストレージ アカウントを作成します。  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
    3. **まとめ**: 入力したすべての情報が正しいことを確認します。
    5. **購入**: プロビジョニングを開始するには、**[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
@@ -74,7 +75,7 @@ VM を作成したら、SSH を使用してサインインできます。 テキ
 Linux DLVM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を実行します。
 
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
-2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]**を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
+2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
      * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
      * **[Login (ログイン)]**: Linux VM のユーザー名。

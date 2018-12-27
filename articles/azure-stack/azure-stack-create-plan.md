@@ -1,70 +1,75 @@
 ---
-title: "Azure Stack でのプランの作成 | Microsoft Docs"
-description: "クラウド管理者として、サブスクライバーが仮想マシンをプロビジョニングできるプランを作成する方法を説明します。"
+title: Azure Stack でのプランの作成 | Microsoft Docs
+description: クラウド管理者として、サブスクライバーが仮想マシンをプロビジョニングできるプランを作成する方法を説明します。
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: sethmanheim
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 7/10/2017
-ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 5eefca3541ae9f73514f80b0f8df9e5027600f87
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 09/12/2018
+ms.author: sethm
+ms.reviewer: ''
+ms.openlocfilehash: ec8fabfce8c26aef98217947da33a56222288b3c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077564"
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Azure Stack でのプランの作成
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 [プラン](azure-stack-key-features.md)は、1 つ以上のサービスをグループ化したものです。 プロバイダーは、ユーザーに提供するプランを作成できます。 そして、ユーザーがオファーをサブスクライブして、それに含まれるプランとサービスを使用します。 この例では、コンピューティング、ネットワーク、およびストレージの各リソース プロバイダーを含むプランを作成する方法を示します。 このプランのサブスクライバーは仮想マシンをプロビジョニングすることができます。
 
-1. Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサインインします。 [PowerShell スクリプトの実行](azure-stack-run-powershell-script.md)に関するセクションの手順 5 で作成したアカウントの資格情報を入力します。
+1. Azure Stack 管理者ポータル (https://adminportal.local.azurestack.external) にサインインします。
 
-2. ユーザーがサブスクライブできるプランやオファーを作成するには、**[新規]** > **[テナントのプラン]** > **[プラン]** をクリックします。
+2. ユーザーがサブスクライブできるプランやオファーを作成するには、**[+ リソースの作成]** > **[オファー + プラン]** > **[プラン]** の順に選択します。
+  
+   ![プランを選択する](media/azure-stack-create-plan/select-plan.png)
 
-   ![](media/azure-stack-create-plan/image01.png)
-3. **[新しいプラン]** ブレードに **[表示名]** と **[リソース名]** を入力します。 表示名は、ユーザーに表示されるプランのフレンドリ名です。 リソース名は、管理者のみが表示できます。 この名前を使用して、管理者はプランを Azure リソース マネージャーのリソースとして操作します。
+3. **[新しいプラン]** で、**[表示名]** と **[リソース名]** を入力します。 表示名は、ユーザーに表示されるプランのフレンドリ名です。 リソース名は管理者にのみ表示されます。リソース名は、Azure Resource Manager リソースとしてプランを操作するために管理者が使用します。
 
-   ![](media/azure-stack-create-plan/image02.png)
+   ![詳細を指定する](media/azure-stack-create-plan/plan-name.png)
+
 4. プランのコンテナーとして、新しい**リソース グループ**を作成するか、既存のリソース グループを選択します。
 
-   ![](media/azure-stack-create-plan/image02a.png)
-5. **[サービス]** をクリックし、**[Microsoft.Compute]**、**[Microsoft.Network]**、および **[Microsoft.Storage]** を選択し、**[選択]** をクリックします。
+   ![リソース グループを指定する](media/azure-stack-create-plan/resource-group.png)
 
-   ![](media/azure-stack-create-plan/image03.png)
-6. **[クォータ]** をクリックし、**[Microsoft.Storage (ローカル)]** をクリックし、既定のクォータを選択するか **[新しいクォータの作成]** をクリックしてクォータをカスタマイズします。
+5. **[サービス]** を選択し、**[Microsoft.Compute]**、**[Microsoft.Network]**、および **[Microsoft.Storage]** のチェックボックスをオンにします。 次に、**[選択]** を選択して構成を保存します。 マウスで各オプションをポイントすると、チェックボックスが表示されます。
+  
+   ![サービスを選択する](media/azure-stack-create-plan/services.png)
 
-   ![](media/azure-stack-create-plan/image04.png)
-7. 新しいクォータを作成する場合は、クォータの名前を入力し、クォータ値を設定し、**[OK]** をクリックし、新しいクォータ名をクリックします。
+6. **[クォータ]**、**[Microsoft.Storage (ローカル)]** の順に選択し、既定のクォータを選択するか **[新しいクォータの作成]** を選択してカスタマイズされたクォータを作成します。
+  
+   ![Quotas (クォータ)](media/azure-stack-create-plan/quotas.png)
 
-   ![](media/azure-stack-create-plan/image06.png)
-8. **[Microsoft.Network (ローカル)]** をクリックし、既定のクォータを選択するか **[新しいクォータの作成]** をクリックしてクォータをカスタマイズします。
+7. 新しいクォータを作成する場合は、クォータの **[名前]** を入力し、クォータ値を指定して **[OK]** を選択します。 **[クォータの作成]** ダイアログが閉じられます。
 
-    ![](media/azure-stack-create-plan/image07.png)
-9. 新しいクォータを作成する場合は、クォータの名前を入力し、クォータ値を設定し、**[OK]** をクリックし、新しいクォータ名をクリックします。
+   ![新しいクォータ](media/azure-stack-create-plan/new-quota.png)
 
-    ![](media/azure-stack-create-plan/image08.png)
-10. **[Microsoft.Compute (ローカル)]** をクリックし、既定のクォータを選択するか **[新しいクォータの作成]** をクリックしてクォータをカスタマイズします。
+   次に、作成した新しいクォータを選択します。 クォータを選択するとそれが割り当てられ、選択ダイアログが閉じられます。
+  
+   ![クォータを割り当てる](media/azure-stack-create-plan/assign-quota.png)
 
-    ![](media/azure-stack-create-plan/image09.png)
-11. 新しいクォータを作成する場合は、クォータの名前を入力し、クォータ値を設定し、**[OK]** をクリックし、新しいクォータ名をクリックします。
+8. 手順 6 と 7 を繰り返して、**Microsoft.Network (ローカル)** と **Microsoft.Compute (ローカル)** のクォータを作成して割り当てます。 3 つのサービスすべてにクォータが割り当てられると、次の例のようになります。
 
-    ![](media/azure-stack-create-plan/image10.png)
-12. **[クォータ]** ブレードの **[OK]** をクリックし、**[新しいプラン]** ブレードの **[作成]** をクリックしてプランを作成します。
+   ![クォータの割り当てを完了する](media/azure-stack-create-plan/all-quotas-assigned.png)
 
-    ![](media/azure-stack-create-plan/image11.png)
-13. 新しいプランを表示するには、**[すべてのリソース]** をクリックしてプランを検索し、プラン名をクリックします。
+9. **[クォータ]** で **[OK]** を選択し、**[新しいプラン]** で **[作成]** を選択してプランを作成します。
 
-    ![](media/azure-stack-create-plan/image12.png)
+    ![プランを作成する](media/azure-stack-create-plan/create.png)
 
-### <a name="next-steps"></a>次の手順
+10. 新しいプランを表示するには、**[すべてのリソース]** を選択してプランを検索し、プラン名を選択します。 リソースの一覧が長い場合は、**[検索]** を使用して名前でプランを探すことができます。
+
+   ![プランを確認する](media/azure-stack-create-plan/plan-overview.png)
+
+## <a name="next-steps"></a>次の手順
+
 [オファーの作成](azure-stack-create-offer.md)

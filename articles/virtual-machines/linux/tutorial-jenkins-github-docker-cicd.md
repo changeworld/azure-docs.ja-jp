@@ -1,9 +1,9 @@
 ---
-title: Jenkins を使用して Azure に開発パイプラインを作成する | Microsoft Docs
-description: コード コミットのたびに GitHub から新しい Docker コンテナーを取り込み､構築してアプリケーションを実行する Jenkins 仮想マシンの作成方法について説明します。
+title: チュートリアル - Jenkins を使用して Azure に開発パイプラインを作成する | Microsoft Docs
+description: チュートリアル - このチュートリアルでは、毎回のコードのコミット時に GitHub からプルを実行し、アプリを実行する新しい Docker コンテナーをビルドする Jenkins 仮想マシンを Azure 内に作成する方法を説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,15 +14,17 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
-ms.author: iainfou
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 9250e40c491257b554333f4606cbf0b476d8db21
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1a29d58ca96793c44878a6755cc74edeab6a7c4b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470848"
 ---
-# <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Jenkins、GitHub、Docker を使って Azure 内の Linux VM に開発インフラストラクチャを作成する方法
+# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>チュートリアル: Jenkins、GitHub、および Docker を使用して Azure 内の Linux VM 上に開発インフラストラクチャを作成する
+
 アプリケーション開発のビルドおよびテスト フェーズを自動化する場合は、継続的インテグレーション/デプロイ (CI/CD) パイプラインを使用できます。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
 
 > [!div class="checklist"]
@@ -33,10 +35,9 @@ ms.lasthandoff: 03/28/2018
 > * アプリ用の Docker イメージを作成する
 > * GitHub によって build new Docker image がコミットされ､動作中のアプリが更新されることを確認する
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.22 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-jenkins-instance"></a>Jenkins インスタンスを作成する
 [Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)に関する先行のチュートリアルで、cloud-init を使用して VM のカスタマイズを自動化する方法を学習しました。 このチュートリアルでは、cloud-init ファイルを使用して、Jenkins と Docker を VM にインストールします。 Jenkins は、広く普及しているオープンソースのオートメーション サーバーで、Azure とシームレスに統合することで、継続的インテグレーション (CI) と継続的デリバリー (CD) が可能になります。 Jenkins の使用方法に関する詳しいチュートリアルについては、[Azure ハブでの Jenkins](https://docs.microsoft.com/azure/jenkins/) に関する記事をご覧ください。
@@ -58,8 +59,9 @@ write_files:
         "hosts": ["fd://","tcp://127.0.0.1:2375"]
       }
 runcmd:
-  - wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -
-  - sh -c 'echo deb http://pkg.jenkins-ci.org/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+  - apt install default-jre -y
+  - wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+  - sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
   - apt-get update && apt-get install jenkins -y
   - curl -sSL https://get.docker.com/ | sh
   - usermod -aG docker azureuser
@@ -146,10 +148,10 @@ GitHub との統合を構成するには､Azures サンプル リポジトリ�
 Jenkins Web サイトのホームページから **[Create new jobs]** を選択します。
 
 - ジョブ名として *HelloWorld* を入力します｡ **Freestyle プロジェクト**を選択し､**[OK]** をクリックします｡
-- **[General]\(一般\)** セクションから **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: *https://github.com/iainfoulds/nodejs-docs-hello-world*) を入力します
-- **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの *.git* の URL を入力します (例: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*)
+- **[General]\(一般\)** セクションから **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: *https://github.com/cynthn/nodejs-docs-hello-world*) を入力します
+- **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの *.git* の URL を入力します (例: *https://github.com/cynthn/nodejs-docs-hello-world.git*)
 - **[Build Triggers]** セクションから **GitHub hook trigger for GITscm polling** を選択します｡
-- **[ビルド]** セクションで **[ビルド ステップの追加]** をクリックします｡ **[Execute shell]** を選択し、コマンド ウィンドウに `echo "Testing"` を入力します。
+- **[ビルド]** セクションで **[ビルド ステップの追加]** をクリックします｡ **[Execute shell]** を選択し、コマンド ウィンドウに `echo "Test"` を入力します。
 - ジョブ ウィンドウの下部にある **[保存]** を選択します。
 
 
@@ -239,7 +241,7 @@ GitHub 内の *index.js* ファイルをもう一度編集し､変更をコミ�
 > * アプリ用の Docker イメージを作成する
 > * GitHub によって build new Docker image がコミットされ､動作中のアプリが更新されることを確認する
 
-次のチュートリアルに進み、Jenkins と Visual Studio Team Services を統合する方法を学習してください。
+次のチュートリアルに進み、Jenkins と Azure DevOps Services を統合する方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [Jenkins と Team Services を使用したアプリをデプロイする](tutorial-build-deploy-jenkins.md)
+> [Jenkins と Azure DevOps Services を使用してアプリをデプロイする](tutorial-build-deploy-jenkins.md)

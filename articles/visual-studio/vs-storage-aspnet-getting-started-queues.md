@@ -2,25 +2,25 @@
 title: Azure Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET) | Microsoft Docs
 description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET プロジェクトで Azure Queue Storage の使用を開始する方法について説明します。
 services: storage
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 94ca3413-5497-433f-abbe-836f83a9de72
-ms.service: storage
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.custom: vs-azure
+ms.workload: azure-vs
+ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: 89baa741dcd916b70514f9703255b9e6d01c689b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 5234f5c82e98fcb402cadf9a8a469a15bbb7ac6d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250817"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Azure Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
+
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概要
@@ -29,10 +29,10 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 
 このチュートリアルでは、Azure Queue Storage エンティティを使用していくつかの一般的なシナリオの ASP.NET コードを記述する方法を示します。 これらのシナリオでは、Azure キューの作成や、キュー メッセージの追加、変更、読み取り、削除などの一般的なタスクについて説明します。
 
-##<a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Storage アカウント](../storage/common/storage-create-storage-account.md#create-a-storage-account)
+* [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
@@ -141,7 +141,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
   
     ![キューの作成](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
-    前述したように、**CloudQueue.CreateIfNotExists** メソッドは、キューが存在しないため作成された場合にのみ **true** を返します。 そのため、キューが存在するときにアプリを実行した場合、メソッドは **false** を返します。 アプリを複数回実行するには、アプリを再実行する前にキューを削除する必要があります。 キューの削除は、**CloudQueue.Delete** メソッドを使用して行うことができます。 また、[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) または [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用してキューを削除することもできます。  
+    前述したように、**CloudQueue.CreateIfNotExists** メソッドは、キューが存在しないため作成された場合にのみ **true** を返します。 そのため、キューが存在するときにアプリを実行した場合、メソッドは **false** を返します。 アプリを複数回実行するには、アプリを再実行する前にキューを削除する必要があります。 キューの削除は、**CloudQueue.Delete** メソッドを使用して行うことができます。 また、[Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) または [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用してキューを削除することもできます。  
 
 ## <a name="add-a-message-to-a-queue"></a>メッセージをキューに追加する
 
@@ -453,7 +453,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     queue.FetchAttributes();
     ```
 
-6. **CloudQueue.ApproximateMessageCount** プロパティにアクセスして、キューの長さを取得します。
+1. **CloudQueue.ApproximateMessageCount** プロパティにアクセスして、キューの長さを取得します。
  
     ```csharp
     int? nMessages = queue.ApproximateMessageCount;

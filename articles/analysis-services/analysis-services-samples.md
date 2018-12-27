@@ -1,25 +1,19 @@
 ---
-title: "Azure Analysis Services のコード、プロジェクト、データベースのサンプル | Microsoft Docs"
-description: "Azure Analysis Services のコード、プロジェクト、データベースのサンプルについて説明します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services のコード、プロジェクト、データベースのサンプル | Microsoft Docs
+description: Azure Analysis Services のコード、プロジェクト、データベースのサンプルについて説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 17c3624804475f1f711130372a7442ddd8dbeb3f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 3e760f7b9fa1bb332ff6467545dd01a1bf611f52
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426211"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services のサンプル
 次のサンプル リソースを使用して、自分の環境での Analysis Services について学習し、テストします。
@@ -45,5 +39,5 @@ Azure Portal に Analysis Services サーバーがある場合、サンプル �
 
 ## <a name="next-steps"></a>次の手順
 
-[Adventure Works チュートリアル](/tutorials/aas-adventure-works-tutorial.md)   
+[Adventure Works チュートリアル](tutorials/aas-adventure-works-tutorial.md)   
 [Azure のオンプレミスのデータゲートウェイ](analysis-services-gateway.md)  

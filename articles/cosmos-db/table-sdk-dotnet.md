@@ -1,28 +1,25 @@
 ---
-title: Azure CosmosDB Table API .NET SDK とリソース | Microsoft Docs
+title: Azure Cosmos DB Table API .NET SDK およびリソース
 description: リリース日、提供終了日、各バージョン間で行われた変更など、Azure Cosmos DB Table API に関するすべてについて説明します。
 services: cosmos-db
-documentationcenter: .net
 author: rnagpal
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 03/26/2018
-ms.author: mimig
-ms.openlocfilehash: 2afd7df65e7b223845752fc6bea5bc0ab4d3efd8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: reference
+ms.date: 08/17/2018
+ms.author: rnagpal
+ms.openlocfilehash: 7092daa7cf3a1cfcbeac06db308fa53e18d27131
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878586"
 ---
-# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: ダウンロードおよびリリース ノート
+# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API:ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
+> * [.NET Standard](table-sdk-dotnet-standard.md)
 > * [Java](table-sdk-java.md)
 > * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
@@ -31,8 +28,8 @@ ms.lasthandoff: 03/28/2018
 |---|---|
 |**SDK のダウンロード**|[NuGet](https://aka.ms/acdbtablenuget)|
 |**API ドキュメント**|[.NET API リファレンス ドキュメント](https://aka.ms/acdbtableapiref)|
-|**クイックスタート**|[Azure Cosmos DB: .NET と Table API を使用したアプリのビルド](create-table-dotnet.md)|
-|**チュートリアル**|[Azure Cosmos DB: .NET での Table API を使用した開発](tutorial-develop-table-dotnet.md)|
+|**クイックスタート**|[Azure Cosmos DB:.NET と Table API を使用したアプリのビルド](create-table-dotnet.md)|
+|**チュートリアル**|[Azure Cosmos DB:.NET での Table API を使用した開発](tutorial-develop-table-dotnet.md)|
 |**現在サポートされているフレームワーク**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
@@ -40,6 +37,14 @@ ms.lasthandoff: 03/28/2018
 >
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* マルチリージョンの書き込みがサポートされるようになりました。
+* Microsoft.Azure.DocumentDB、Microsoft.OData.Core、Microsoft.OData.Edm、Microsoft.Spatial に関する NuGet パッケージの依存関係が修正されました。
+
+### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
+* Microsoft.Azure.Storage.Common と Microsoft.Azure.DocumentDB の NuGet パッケージの依存関係が修正されました。
+* JsonConvert.DefaultSettings が構成されたときに、テーブルのシリアル化のバグ修正があります。
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 * 直接モードで無効な ETAG の検証が追加されました。
@@ -59,15 +64,16 @@ ms.lasthandoff: 03/28/2018
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。
 
-[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) プレビュー パッケージは推奨されなくなり、[Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) パッケージに置き換えられます。 WindowsAzure.Storage PremiumTable SDK は、2018 年 11 月 15 日に提供終了されます。その時点で提供終了された SDK への要求は許可されなくなります。
+[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) プレビュー パッケージは非推奨となっており、[Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) パッケージに置き換えられます。 WindowsAzure.Storage PremiumTable SDK は、2018 年 11 月 15 日に提供終了されます。その時点で提供終了された SDK への要求は許可されなくなります。 `Microsoft.Azure.CosmosDB.Table` ライブラリは、現在、.NET Standard だけで利用できます。まだ .NET Core では利用できません。
 
 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。 
 
 提供終了になった SDK を使用した Azure Cosmos DB への要求は、サービスによって拒否されます。
 <br/>
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.1.3](#1.1.3) |2018 年 7 月 17 日|--- |
 | [1.1.1](#1.1.1) |2018 年 3 月 26 日|--- |
 | [1.1.0](#1.1.0) |2018 年 2 月 21 日|--- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日|--- |
@@ -89,7 +95,7 @@ Microsoft.Azure.CosmosDB.Table NuGet パッケージの使用を試している�
     Install-Package Microsoft.Azure.CosmosDB.Table -IncludePrerelease
     ```
     
-* Nuget パッケージ管理ツールを使用して、Microsoft.Azure.CosmosDB.Table をインストールする前に、Microsoft.Azure.Storage.Common Nuget パッケージをインストールします。
+* NuGet パッケージ管理ツールを使用して、Microsoft.Azure.CosmosDB.Table をインストールする前に、Microsoft.Azure.Storage.Common NuGet パッケージをインストールします。
 
 ## <a name="faq"></a>FAQ
 

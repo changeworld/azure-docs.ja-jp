@@ -1,25 +1,18 @@
 ---
-title: "Azure HDInsight を使用した HDFS のトラブルシューティング | Microsoft Docs"
-description: "HDFS と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。"
-keywords: "Azure HDInsight, HDFS, FAQ, トラブルシューティング ガイド, よくあるご質問"
-services: Azure HDInsight
-documentationcenter: na
-author: arijitt
-manager: 
-editor: 
-ms.assetid: 4C33828F-2982-47F0-B858-C32FFF634D9E
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: Azure HDInsight での HDFS のトラブルシューティング
+description: HDFS と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。
+services: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.service: hdinsight
+ms.topic: conceptual
 ms.date: 11/2/2017
-ms.author: arijitt
-ms.openlocfilehash: 7c9d555130d806728f9d3a82f49e81b18c1e5125
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 2eddf1da9f797f4646d6e3fc3380580d9923d963
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013787"
 ---
 # <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Azure HDInsight を使用した HDFS のトラブルシューティング
 
@@ -45,7 +38,7 @@ HDInsight クラスター内から Azure Blob Storage または Azure Data Lake 
 
 2. ソース コードでは、次のサンプル アプリケーションのように URI `hdfs://mycluster/` をそのまま使います。
 
-    ```csharp
+    ```Java
     import java.io.IOException;
     import java.net.URI;
     import org.apache.commons.io.IOUtils;

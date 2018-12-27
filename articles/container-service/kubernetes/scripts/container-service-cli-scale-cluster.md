@@ -1,28 +1,31 @@
 ---
-title: "Azure CLI のサンプル スクリプト - ACS クラスターのスケーリング | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - ACS クラスターのスケーリング"
+title: Azure CLI のサンプル スクリプト - ACS クラスターのスケーリング | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - ACS クラスターのスケーリング
 services: container-service
-documentationcenter: 
-author: neilpeterson
-manager: timlt
-editor: 
+documentationcenter: ''
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: acs, azure-container-service
-keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, DC/OS, Azure"
-ms.assetid: 
+keywords: Docker, コンテナー, マイクロサービス, Kubernetes, DC/OS, Azure
+ms.assetid: ''
 ms.service: container-service
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
-ms.author: nepeters
-ms.openlocfilehash: 7d3997f28dd07d5eb31fc811fbb7ffa1f8d2c7c4
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: iainfou
+ms.openlocfilehash: 199a2f09df57878d6523cfed6873001f190e14f5
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992236"
 ---
-# <a name="scale-an-azure-container-service-cluster"></a>Azure Container Service クラスターのスケーリング
+# <a name="deprecated-scale-an-azure-container-service-cluster"></a>(非推奨) Azure Container Service クラスターのスケーリング
+
+[!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 
 このサンプルでは、Azure Container Service クラスターがスケーリングされます。 
 
@@ -50,7 +53,7 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az acs scale](/cli/azure/acs#az_acs_scale) | ACS クラスターをスケーリングします。 |
+| [az acs scale](/cli/azure/acs#az-acs-scale) | ACS クラスターをスケーリングします。 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,26 +1,20 @@
 ---
-title: Ambari Web UI を使用して Azure HDInsight を監視および管理する | Microsoft Docs
+title: Ambari Web UI を使用して Azure HDInsight を監視および管理する
 description: Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 4787f3cc-a650-4dc3-9d96-a19a67aad046
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 922dfd475f27f182d8958887087fc2f4945cc43a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 1e17412636a904508352370bc7292a7d64bac6bc
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280438"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -108,7 +102,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ### <a name="cluster"></a>クラスター
 
-ダッシュボードの **[Metrics]** タブには、クラスターのステータスを一目で簡単に確認できる一連のウィジェットが用意されています。 **[CPU Usage]**などのいくつかのウィジェットをクリックすると、追加の情報が表示されます。
+ダッシュボードの **[Metrics]** タブには、クラスターのステータスを一目で簡単に確認できる一連のウィジェットが用意されています。 **[CPU Usage]** などのいくつかのウィジェットをクリックすると、追加の情報が表示されます。
 
 ![metrics のダッシュボード](./media/hdinsight-hadoop-manage-ambari/metrics.png)
 
@@ -228,13 +222,12 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
     ![構成](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
 
-3. 表示されたフィールドを使用して構成を変更し、 **[Save]**を選択します。 または、以前の構成を選択し、 **[Make current]** を選択して以前の設定にロールバックします。
+3. 表示されたフィールドを使用して構成を変更し、 **[Save]** を選択します。 または、以前の構成を選択し、 **[Make current]** を選択して以前の設定にロールバックします。
 
 ## <a name="ambari-views"></a>Ambari ビュー
 
 Ambari ビューを使うと、開発者は [Ambari ビュー フレームワーク](https://cwiki.apache.org/confluence/display/AMBARI/Views)を使用して Ambari Web UI に UI 要素をプラグインできます。 HDInsight には、Hadoop クラスター タイプの異なる次のビューが用意されています。
 
-* Yarn Queue Manager: このキュー マネージャーでは、シンプルな UI により YARN キューを表示、変更できます。
 
 * Hive ビュー: Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。 クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。 Hive ビューの使用法の詳細については、 [HDInsight での Hive ビューの使用](hadoop/apache-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 

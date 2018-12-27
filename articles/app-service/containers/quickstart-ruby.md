@@ -1,7 +1,7 @@
 ---
-title: Ruby アプリの作成と App Service on Linux へのデプロイ | Microsoft Docs
-description: App Service on Linux で Ruby アプリを作成する方法について説明します。
-keywords: Azure App Service, Linux, OSS, Ruby
+title: Linux での Ruby Web アプリの作成 - Azure App Service | Microsoft Docs
+description: App Service on Linux で Ruby on Rails アプリを作成する方法について説明します。
+keywords: Azure App Service、Linux、OSS、Ruby、Rails
 services: app-service
 documentationcenter: ''
 author: SyntaxC4
@@ -13,18 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/10/2017
+ms.date: 08/24/2018
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 6668f02bb7ac9588e1bb11b3848d0a3e25cbed67
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: seodec18
+ms.openlocfilehash: 13686951324a10c1de621f0fe507be062c9d2095
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252475"
 ---
-# <a name="create-a-ruby-app-in-app-service-on-linux"></a>App Service on Linux での Ruby アプリの作成
+# <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>App Service on Linux で Ruby on Rails アプリを作成する
 
-[App Service on Linux](app-service-linux-intro.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイック スタートでは、基本的な Ruby on Rails アプリケーションを作成した後、Web App on Linux として Azure にデプロイする方法を示します。
+[Azure App Service on Linux](app-service-linux-intro.md) は、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、Web App on Linux として Azure にデプロイできる基本的な [Ruby on Rails](https://rubyonrails.org/) アプリケーションの作成方法を示します。
+
+> [!NOTE]
+> この時点で、Ruby 開発スタックは Ruby on Rails のみをサポートしています。 別のプラットフォーム (Sinatra など) を使用する場合は、[Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/) のクイック スタートを参照してください。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -32,7 +36,7 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Ruby 2.4.1 以降のインストール</a>
+* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Ruby 2.3 以降のインストール</a>
 * <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
@@ -45,42 +49,21 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 ## <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
 
-アプリケーションを動作させるために、Rails サーバーを実行します。 *hello-world* ディレクトリに変更し、`rails server` コマンドでサーバーを起動します。
+アプリケーションをローカルで実行すると、アプリケーションを Azure にデプロイするとどう表示されるかを把握できます。 ターミナル ウィンドウを開き、`hello-world` ディレクトリに変更し、`rails server` コマンドを使用してサーバーを起動します。
+
+最初の手順では、必要な gem をインストールします。 `Gemfile` がサンプルに含まれているため、インストールする gem を指定する必要はありません。 これには bundler を使用します。
+
+```
+bundle install
+```
+
+gem がインストールされたら、bundler を使用してアプリを起動します。
 
 ```bash
-cd hello-world\bin
-rails server
+bundle exec rails server
 ```
 
 Web ブラウザーで `http://localhost:3000` に移動して、ローカルでアプリケーションをテストします。
-
-![Hello-world](./media/quickstart-ruby/hello-world.png)
-
-## <a name="modify-app-to-display-welcome-message"></a>ウェルカム メッセージを表示するようにアプリを変更する
-
-ウェルカム メッセージを表示するようにアプリケーションを変更します。 最初にルートを設定する必要があります。そのためには、*~/workspace/ruby-docs-hello-world/config/routes.rb* ファイルを編集して `hello` という名前のルートを含めます。
-
-  ```ruby
-  Rails.application.routes.draw do
-      #For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-      root 'application#hello'
-  end
-  ```
-
-ブラウザーに HTML としてメッセージを返すように、アプリケーションのコントローラーを変更します。 
-
-編集するために *~/workspace/hello-world/app/controllers/application_controller.rb* を開きます。 次のコード サンプルになるように `ApplicationController` クラスを変更します。
-
-  ```ruby
-  class ApplicationController > ActionController :: base
-    protect_from_forgery with: :exception
-    def hello
-      render html: "Hello, world from Azure Web App on Linux!"
-    end
-  end
-  ```
-
-これでアプリの構成は完了です。 Web ブラウザーで `http://localhost:3000` に移動して、ルート ランディング ページを確認します。
 
 ![構成された Hello World](./media/quickstart-ruby/hello-world-configured.png)
 
@@ -133,7 +116,7 @@ To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
 myuser@ubuntu1234:~workspace/<app name>$
 ```
 
-デプロイが完了したら、次に示すように [`az webapp restart`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_restart) コマンドを使用して Web アプリを再起動してデプロイが有効になるようにします。
+デプロイが完了したら、次に示すように [`az webapp restart`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-restart) コマンドを使用して Web アプリを再起動してデプロイが有効になるようにします。
 
 ```azurecli-interactive
 az webapp restart --name <app name> --resource-group myResourceGroup
@@ -156,4 +139,4 @@ http://<app name>.azurewebsites.net
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Ruby on Rails と MySQL](tutorial-ruby-mysql-app.md)
+> [Ruby on Rails と MySQL](tutorial-ruby-postgres-app.md)

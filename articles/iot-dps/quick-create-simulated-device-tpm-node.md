@@ -1,22 +1,20 @@
 ---
 title: シミュレートされた TPM デバイスを Node.js を使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs
-description: Azure クイック スタート - Azure IoT Hub Device Provisioning Service 対応の Node.js デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
-services: iot-dps
-keywords: ''
-author: msebolt
-ms.author: v-masebo
-ms.date: 03/01/2018
-ms.topic: hero-article
+description: Azure クイック スタート - Azure IoT Hub Device Provisioning Service 対応の Node.js デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングします。 このクイック スタートでは、個別登録を使用します。
+author: wesmc7777
+ms.author: wesmc
+ms.date: 04/09/2018
+ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: b73379baa2b0b73fb1501a4356db10279ac41185
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f6ae69c04d83e1ce1540267fb7932b80cca1013c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087211"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の Node.js デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
@@ -24,9 +22,15 @@ ms.lasthandoff: 04/03/2018
 
 以下の手順では、Windows OS を実行する開発マシンにシミュレートされたデバイスを作成し、そのデバイスの[ハードウェア セキュリティ モジュール (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) として Windows TPM シミュレーターを実行します。その後、コード サンプルを使って、そのシミュレートされたデバイスを Device Provisioning Service および IoT ハブに接続します。 
 
-事前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順を済ませておいてください。
+自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」も確認してください。 また、先に進む前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
-[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
+Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
+- [登録グループ](concepts-service.md#enrollment-group)： 複数の関連するデバイスを登録するために使用します。
+- [個々の登録](concepts-service.md#individual-enrollment): 単一デバイスを登録するために使用します。
+
+この記事では、個別登録の使用方法を示します。
+
+[!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>環境の準備 
 
@@ -40,7 +44,7 @@ ms.lasthandoff: 04/03/2018
 1. コマンド プロンプトまたは Git Bash を開きます。 `azure-utpm-c` GitHub レポジトリを複製します。
     
     ```cmd/sh
-    git clone https://github.com/Azure/azure-utpm-c.git
+    git clone https://github.com/Azure/azure-utpm-c.git --recursive
     ```
 
 1. GitHub のルート フォルダーに移動し、[TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) シミュレーターを実行します。 これは、ソケットでポート 2321 とポート 2322 をリッスンします。 このコマンド ウィンドウを閉じないでください。このクイック スタート ガイドの終了まで、このシミュレーターを実行状態にしておく必要があります。 
@@ -127,16 +131,16 @@ ms.lasthandoff: 04/03/2018
     node ExtractDevice.js
     ```
 
-1. デバイス登録に必要な "**_保証キー_**" と "**_登録 ID_**" が出力ウィンドウに表示されます。 これらの値を書き留めておいてください。 
+1. デバイス登録に必要な **_Endorsement Key_** と **_Registration ID_** が出力ウィンドウに表示されます。 これらの値を書き留めておいてください。 
 
 
 ## <a name="create-a-device-entry"></a>デバイス エントリの作成
 
-1. Azure Portal にログインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
+1. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
 
-1. Device Provisioning Service の概要ブレードで、**[Manage enrollments]\(登録の管理\)** を選択します。 **[Individual Enrollments]\(個々の登録\)** タブの上部にある **[追加]** ボタンをクリックします。 
+1. Device Provisioning Service の概要ブレードで、**[Manage enrollments]\(登録の管理\)** を選択します。 **[個別登録]** タブを選択し、上部にある **[個別登録の追加]** ボタンをクリックします。 
 
-1. **[Add enrollment list entry]\(登録リスト エントリの追加\)** で、次の情報を入力します。
+1. **[Add Enrollment] (登録の追加)** で、次の情報を入力します。
     - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
     - TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。
     - 必要に応じて、次の情報を入力することができます。
@@ -154,7 +158,7 @@ ms.lasthandoff: 04/03/2018
 
 1. Azure Portal で、Device Provisioning サービスの **[概要]** ブレードを選択し、**_[グローバル デバイス エンドポイント]_** と **_[ID スコープ]_** の値を書き留めます。
 
-    ![ポータルのブレードから DPS エンドポイント情報を取得](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
+    ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
 
 1. テキスト エディターを使用して、**registerdevice** フォルダーに新しい **RegisterDevice.js** ファイルを作成します。
 

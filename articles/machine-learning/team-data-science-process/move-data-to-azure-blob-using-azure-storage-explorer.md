@@ -1,24 +1,26 @@
 ---
-title: "Azure ストレージ エクスプローラーを使用して Blob Storage 間でデータを移動する | Microsoft Docs"
-description: "Azure Storage Explorer を使用して Azure BLOB ストレージ間でデータを移動する"
+title: Azure ストレージ エクスプローラーを使用して Blob Storage 間でデータを移動する | Microsoft Docs
+description: Azure Storage Explorer を使用して Azure BLOB ストレージ間でデータを移動する
 services: machine-learning,storage
-documentationcenter: 
-author: bradsev
-manager: jhubbard
+documentationcenter: ''
+author: deguhath
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 10bd283f-0875-4c67-af63-6492270b7656
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 3db06eed16191ef906f2c565d78fd0063cdb2f7b
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: deguhath
+ms.openlocfilehash: 295fadd69a86769f74ec45ed3e77e8a5b807e14f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392524"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Azure Storage Explorer を使用して Azure BLOB Storage 間でデータを移動する
 Azure ストレージ エクスプローラーは、Windows、MacOS、Linux で Azure Storage のデータを操作できる Microsoft の無料ツールです。 このトピックでは、Azure ストレージ エクスプローラーを使用して Azure BLOB ストレージからデータをアップロードおよびダウンロードする方法について説明します。 このツールは、 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のページからダウンロードできます。
@@ -53,5 +55,5 @@ Azure ストレージ エクスプローラーは、Windows、MacOS、Linux で 
 6. 追加されたストレージ アカウントが表示されます。 ストレージ アカウントに BLOB コンテナーを作成するには、そのアカウントの **[BLOB コンテナー]** ノードを右クリックして **[BLOB コンテナーの作成]** を選択し、名前を入力します。
 7. コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** をクリックします。![Storage アカウント](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
 8. **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つ以上のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![ファイルのアップロード](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
-9. データをダウンロードするには、対応するコンテナー内の BLOB を選択し、 **[ダウンロード]**をクリックします。 ![ファイルのダウンロード](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
+9. データをダウンロードするには、対応するコンテナー内の BLOB を選択し、 **[ダウンロード]** をクリックします。 ![ファイルのダウンロード](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 

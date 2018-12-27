@@ -10,26 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 01/03/2018
+ms.topic: conceptual
+ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 08fcc2eec1914d9f7535ea66d33045240452e2a6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 890ef4baf27e193fecc17d8435998604ce25e282
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162689"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-scheduling-and-execution.md)
-> * [バージョン 2 - プレビュー](concepts-pipeline-execution-triggers.md)
+> * [Version 1](v1/data-factory-scheduling-and-execution.md)
+> * [現在のバージョン](concepts-pipeline-execution-triggers.md)
 
-Azure Data Factory バージョン 2 の "_パイプライン実行_" は、パイプラインの実行のインスタンスを定義します。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 この場合、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。 実行 ID は、特定のパイプライン実行を一意に定義する GUID です。 
+Azure Data Factory の "_パイプライン実行_" により、パイプラインの実行のインスタンスが定義されます。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 この場合、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。 実行 ID は、特定のパイプライン実行を一意に定義する GUID です。 
 
 パイプライン実行は、通常、パイプラインで定義したパラメーターに引数を渡してインスタンス化されます。 パイプラインを実行するには、手動で行う方法と "_トリガー_" を使用する方法があります。 この記事では、パイプラインを実行する両方の方法の詳細について説明します。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Azure Data Factory バージョン 2 に適用されます。 一般公開 (GA) されている Azure Data Factory サービス バージョン 1 を使用している場合は、[ バージョン 1 でのスケジュールと実行](v1/data-factory-scheduling-and-execution.md)に関する記事を参照してください。
 
 ## <a name="manual-execution-on-demand"></a>手動での実行 (オンデマンド)
 パイプラインの手動での実行は、"_オンデマンド_" 実行とも呼ばれます。
@@ -38,43 +36,43 @@ Azure Data Factory バージョン 2 の "_パイプライン実行_" は、パ�
 
 ```json
 {
-  "name": "copyPipeline",
-  "properties": {
-    "activities": [
-      {
-        "type": "Copy",
-        "typeProperties": {
-          "source": {
-            "type": "BlobSource"
-          },
-          "sink": {
-            "type": "BlobSink"
-          }
-        },
-        "name": "CopyBlobtoBlob",
-        "inputs": [
-          {
-            "referenceName": "sourceBlobDataset",
-            "type": "DatasetReference"
-          }
+    "name": "copyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
+                    },
+                    "sink": {
+                        "type": "BlobSink"
+                    }
+                },
+                "name": "CopyBlobtoBlob",
+                "inputs": [
+                    {
+                        "referenceName": "sourceBlobDataset",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "sinkBlobDataset",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
         ],
-        "outputs": [
-          {
-            "referenceName": "sinkBlobDataset",
-            "type": "DatasetReference"
-          }
-        ]
-      }
-    ],
-    "parameters": {
-      "sourceBlobContainer": {
-        "type": "String"
-      },
-      "sinkBlobContainer": {
-        "type": "String"
-      }
+        "parameters": {
+            "sourceBlobContainer": {
+                "type": "String"
+            },
+            "sinkBlobContainer": {
+                "type": "String"
+            }
+        }
     }
-  }
 }
 ```
 
@@ -107,8 +105,8 @@ Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickSt
 
 ```json
 {
-  “sourceBlobContainer”: “MySourceFolder”,
-  “sinkBlobCountainer”: “MySinkFolder”
+  "sourceBlobContainer": "MySourceFolder",
+  "sinkBlobContainer": "MySinkFolder"
 }
 ```
 
@@ -135,22 +133,24 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 > .NET SDK を使用すると、Azure Functions や独自の Web サービスなどから Data Factory パイプラインを呼び出すことができます。
 
 <h2 id="triggers">トリガー実行</h2>
-トリガーは、パイプラインの実行を開始するためのもう 1 つの方法です。 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 現時点で、Data Factory では次の 2 種類のトリガーをサポートしています。
+トリガーは、パイプラインの実行を開始するためのもう 1 つの方法です。 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 現時点で、Data Factory では次の 3 種類のトリガーがサポートされています。
 
 - スケジュール トリガー: 実時間のスケジュールによってパイプラインを起動するトリガー。
-- タンブリング ウィンドウ トリガー: 状態を保持しながら定期的に実行されるトリガー。 Azure Data Factory では、現在、イベントベースのトリガーがサポートされていません。 たとえば、ファイル到着イベントに対応するパイプライン実行のトリガーはサポートされていません。
+
+- タンブリング ウィンドウ トリガー: 状態を保持しながら定期的に実行されるトリガー。
+
+- イベントベースのトリガー: イベントに応答するトリガー。
 
 パイプラインとトリガーには多対多の関係があります。 複数のトリガーで 1 つのパイプラインを開始したり、1 つのトリガーで複数のパイプラインを開始したりできます。 次のトリガー定義では、**pipelines** プロパティは、特定のトリガーによってトリガーされるパイプラインのリストを参照します。 プロパティ定義には、パイプライン パラメーターの値が含まれています。
 
 ### <a name="basic-trigger-definition"></a>基本的なトリガー定義
 
 ```json
+{
     "properties": {
         "name": "MyTrigger",
         "type": "<type of trigger>",
-        "typeProperties": {
-            …
-        },
+        "typeProperties": {...},
         "pipelines": [
             {
                 "pipelineReference": {
@@ -160,22 +160,20 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
                 "parameters": {
                     "<parameter 1 Name>": {
                         "type": "Expression",
-                          "value": "<parameter 1 Value>"
+                        "value": "<parameter 1 Value>"
                     },
-                    "<parameter 2 Name>" : "<parameter 2 Value>"
+                    "<parameter 2 Name>": "<parameter 2 Value>"
                 }
             }
         ]
     }
+}
 ```
 
 ## <a name="schedule-trigger"></a>スケジュール トリガー
 スケジュール トリガーは、実時間のスケジュールでパイプラインを実行します。 このトリガーは、定期的および高度な予定表のオプションをサポートしています。 たとえば、トリガーでは、"毎週" または "月曜日午後 5 時と木曜日午後 9 時" のような間隔がサポートされています。 スケジュール トリガーは、時系列データと非時系列データを区別せず、データセット パターンに依存しないため、柔軟性があります。
 
 スケジュール トリガーの詳細と例については、[スケジュール トリガーの作成](how-to-create-schedule-trigger.md)に関するページを参照してください。
-
-## <a name="tumbling-window-trigger"></a>タンブリング ウィンドウ トリガー
-タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。 タンブリング ウィンドウ トリガーの詳細と例については、[タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
 
 ## <a name="schedule-trigger-definition"></a>スケジュール トリガーの定義
 スケジュール トリガーを作成する場合、JSON 定義を使用してスケジュール設定と繰り返しを指定します。 
@@ -189,40 +187,39 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
     "typeProperties": {
       "recurrence": {
         "frequency": <<Minute, Hour, Day, Week, Year>>,
-        "interval": <<int>>,             // How often to fire
+        "interval": <<int>>, // How often to fire
         "startTime": <<datetime>>,
         "endTime": <<datetime>>,
-        "timeZone": "UTC"
-        "schedule": {                    // Optional (advanced scheduling specifics)
+        "timeZone": "UTC",
+        "schedule": { // Optional (advanced scheduling specifics)
           "hours": [<<0-24>>],
-          "weekDays": ": [<<Monday-Sunday>>],
+          "weekDays": [<<Monday-Sunday>>],
           "minutes": [<<0-60>>],
           "monthDays": [<<1-31>>],
           "monthlyOccurences": [
-               {
-                    "day": <<Monday-Sunday>>,
-                    "occurrence": <<1-5>>
-               }
-           ] 
+            {
+              "day": <<Monday-Sunday>>,
+              "occurrence": <<1-5>>
+            }
+          ]
         }
       }
     },
-   "pipelines": [
-            {
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "<Name of your pipeline>"
-                },
-                "parameters": {
-                    "<parameter 1 Name>": {
-                        "type": "Expression",
-                        "value": "<parameter 1 Value>"
-                    },
-                    "<parameter 2 Name>" : "<parameter 2 Value>"
-                }
-           }
-      ]
-  }
+  "pipelines": [
+    {
+      "pipelineReference": {
+        "type": "PipelineReference",
+        "referenceName": "<Name of your pipeline>"
+      },
+      "parameters": {
+        "<parameter 1 Name>": {
+          "type": "Expression",
+          "value": "<parameter 1 Value>"
+        },
+        "<parameter 2 Name>": "<parameter 2 Value>"
+      }
+    }
+  ]}
 }
 ```
 
@@ -232,7 +229,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ### <a name="schema-overview"></a>スキーマの概要
 次の表は、トリガーの繰り返しとスケジュール設定に関連する主要なスキーマ要素の概要を示しています。
 
-| JSON プロパティ | [説明] |
+| JSON プロパティ | 説明 |
 |:--- |:--- |
 | **startTime** | 日付/時刻の値。 基本的なスケジュールの場合、**startTime** プロパティの値が最初の発生日時に適用されます。 複雑なスケジュールの場合、指定した **startTime** 値になるとすぐにトリガーが起動します。 |
 | **endTime** | トリガーの終了日時。 指定した終了日時を過ぎると、トリガーは実行されません。 このプロパティの値に過去の日時を指定することはできません。 <!-- This property is optional. --> |
@@ -280,10 +277,10 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 | JSON プロパティ | type | 必須 | 既定値 | 有効な値 | 例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | 文字列 | [はい] | なし | ISO 8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | string | [はい] | なし | ISO 8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | オブジェクト | [はい] | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | number | いいえ  | 1 | 1 から 1,000 | `"interval":10` |
-| **endTime** | 文字列 | [はい] | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | string | [はい] | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | オブジェクト | いいえ  | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime プロパティ
@@ -311,7 +308,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 次の表に、**schedule** の要素の詳細を示します。
 
-| JSON 要素 | [説明] | 有効な値 |
+| JSON 要素 | 説明 | 有効な値 |
 |:--- |:--- |:--- |
 | **分** | トリガーを実行する時刻 (分)。 |- Integer<br />- 整数の配列|
 | **hours** | トリガーを実行する時刻 (時)。 |- Integer<br />- 整数の配列|
@@ -319,12 +316,23 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **monthlyOccurrences** | トリガーが実行される月の特定曜日。 この値を指定できるのは、頻度が月単位の場合のみです。 |- **monthlyOccurence** オブジェクトの配列: `{ "day": day,  "occurrence": occurence }`<br />- **day** 属性は、トリガーが実行される曜日を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値が `{Sunday}` の場合は、月の毎週日曜日を意味します。 **day** 属性は必須です。<br />- **occurrence** 属性は、月内の指定した **day** の出現を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値と **occurrence** 値が `{Sunday, -1}` の場合、月の最後の日曜日を意味します。 **occurrence** 属性は省略可能です。|
 | **monthDays** | トリガーが実行される日にち。 この値を指定できるのは、頻度が月単位の場合のみです。 |- -1 以下かつ -31 以上の任意の値<br />- 1 以上かつ 31 以下の任意の値<br />- 値の配列|
 
+## <a name="tumbling-window-trigger"></a>タンブリング ウィンドウ トリガー
+タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。
+
+タンブリング ウィンドウ トリガーの詳細と例については、[タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
+
+## <a name="event-based-trigger"></a>イベントベースのトリガー
+
+イベントベースのトリガーは、ファイルの到着、ファイルの削除などのイベントに応答して、Azure Blob Storage 内でパイプラインを実行します。
+
+イベントベースのトリガーの詳細については、「[Create a trigger that runs a pipeline in response to an event (イベントに応答してパイプラインを実行するトリガーの作成)](how-to-create-event-trigger.md)」を参照してください。
+
 ## <a name="examples-of-trigger-recurrence-schedules"></a>トリガーの繰り返しのスケジュールの例
 このセクションでは、繰り返しのスケジュールの例を示します。 **schedule** オブジェクトとその要素に焦点を当てています。
 
 各例は、**interval** 値が 1 であり、schedule の定義に従って **frequency** に適切な値が指定されていることを前提としています。 たとえば、**frequency** 値に "day" を指定し、**schedule** オブジェクトで **monthDays** の変更を指定することはできません。 これらの種類の制限については、前のセクションの表で説明されています。
 
-| 例 | [説明] |
+| 例 | 説明 |
 |:--- |:--- |
 | `{"hours":[5]}` | 毎日午前 5 時に実行されます。 |
 | `{"minutes":[15], "hours":[5]}` | 毎日午前 5 時 15 分に実行されます。 |
@@ -360,10 +368,10 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 |  | タンブリング ウィンドウ トリガー | スケジュール トリガー |
 |:--- |:--- |:--- |
-| **バックフィル シナリオ** | サポートされています。 パイプライン実行は、過去のウィンドウ用にスケジュールを設定できます。 | サポートされていません。 パイプライン実行は、現時点および将来の期間のみに対して実行できます。 |
+| **バックフィル シナリオ** |  サポートされています。 パイプライン実行は、過去のウィンドウ用にスケジュールを設定できます。 | サポートされていません。 パイプライン実行は、現時点および将来の期間のみに対して実行できます。 |
 | **信頼性** | 100% の信頼性です。 パイプライン実行は、指定した開始日から隙間なくすべてのウィンドウでスケジュールできます。 | 信頼性は低くなります。 |
-| **再試行機能** | サポートされています。 失敗したパイプライン実行には、既定の再試行ポリシー 0 か、トリガー定義でユーザーが指定したポリシーがあります。 同時実行/サーバー/調整の制限が原因でパイプライン実行に失敗した場合は、自動的に再試行されます (たとえば、状態コードは 400 ユーザー エラー、429 要求が多すぎます、500 内部サーバー エラー)。 | サポートされていません。 |
-| **同時実行** | サポートされています。 ユーザーは、トリガーの同時実行の制限を明示的に設定できます。 1 から 50 個の同時実行のトリガーされたパイプライン実行が許可されます。 | サポートされていません。 |
+| **再試行機能** |  サポートされています。 失敗したパイプライン実行には、既定の再試行ポリシー 0 か、トリガー定義でユーザーが指定したポリシーがあります。 コンカレンシー/サーバー/調整の制限が原因でパイプライン実行に失敗した場合は、自動的に再試行されます (たとえば、状態コードは 400 ユーザー エラー、429 要求が多すぎます、500 内部サーバー エラー)。 | サポートされていません。 |
+| **コンカレンシー** |  サポートされています。 ユーザーは、トリガーのコンカレンシーの制限を明示的に設定できます。 1 から 50 個の同時実行のトリガーされたパイプライン実行が許可されます。 | サポートされていません。 |
 | **システム変数** | **WindowStart** および **WindowEnd** システム変数の使用がサポートされます。 ユーザーは、トリガー定義のトリガー システム変数として `triggerOutputs().windowStartTime` および `triggerOutputs().windowEndTime` にアクセスできます。 値はそれぞれ、ウィンドウの開始時刻と終了時刻として使用されます。 たとえば、1 時間ごとに実行されるタンブリング ウィンドウ トリガーの場合、午前 1 時から午前 2 時までのウィンドウの定義は `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` と `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z` です。 | サポートされていません。 |
 | **パイプラインとトリガーのリレーションシップ** | 一対一のリレーションシップをサポートします。 トリガーできるパイプラインは 1 つだけです。 | 多対多のリレーションシップをサポートします。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。 | 
 

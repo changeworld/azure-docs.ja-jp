@@ -1,13 +1,26 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: 5ba55e339db4c33d1b0d759e4682481e20318938
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165335"
+---
 ### <a name="prepare-for-a-push-installation-on-a-linux-server"></a>Linux サーバーへのプッシュ インストールの準備
 
 1. Linux コンピューターとプロセス サーバーの間にネットワーク接続が存在することを確認します。
-2. プロセス サーバーがコンピューターへのアクセスに使用できるアカウントを作成します。 アカウントは、ソース Linux サーバーの **root** ユーザーである必要があります  このアカウントは、プッシュ インストールと更新にのみ使用します。
-3. ソース Linux サーバーの /etc/hosts ファイルに、ローカル ホスト名を、すべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが存在することを確認します。
-4. レプリケート対象のコンピューターに最新の openssh、openssh-server、openssl の各パッケージをインストールします。
-5. SSH (Secure Shell) が有効になっており、ポート 22 で実行中であることを確認します。
-6. sshd_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 次の手順に従います。
+1. プロセス サーバーがコンピューターへのアクセスに使用できるアカウントを作成します。 アカウントは、ソース Linux サーバーの **root** ユーザーである必要があります  このアカウントは、プッシュ インストールと更新にのみ使用します。
+1. ソース Linux サーバーの /etc/hosts ファイルに、ローカル ホスト名を、すべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが存在することを確認します。
+1. レプリケート対象のコンピューターに最新の openssh、openssh-server、openssl の各パッケージをインストールします。
+1. SSH (Secure Shell) が有効になっており、ポート 22 で実行中であることを確認します。
+1. sshd_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 次の手順に従います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **root** としてサインインします。
+    a. **root** としてサインインします。
 
     b. **/etc/ssh/sshd_config** ファイルで、**PasswordAuthentication** で始まる行を見つけます。
 
@@ -19,9 +32,9 @@
 
     e. **sshd** サービスを再起動します。
 
-7. CSPSConfigtool で作成したアカウントを追加します。 次の手順に従います。
+1. CSPSConfigtool で作成したアカウントを追加します。 次の手順に従います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 構成サーバーにサインインします。
+    a. 構成サーバーにサインインします。
 
     b. **cspsconfigtool.exe** を開きます。 これはデスクトップにショートカットがあり、%ProgramData%\home\svsystems\bin フォルダーに保存されています。
 

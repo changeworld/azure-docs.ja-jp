@@ -1,24 +1,26 @@
 ---
-title: マルチテナント アプリで Azure SQL Database スキーマを管理する | Microsoft Docs
-description: Azure SQL Database を使用するマルチテナント アプリケーションで複数のテナントのスキーマを管理します
-keywords: SQL データベース チュートリアル
+title: シングルテナント アプリで Azure SQL Database スキーマを管理する | Microsoft Docs
+description: Azure SQL Database を使用するシングルテナント アプリで複数のテナントのスキーマを管理します
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 12d8f3cc9fa4ec75f247b6ed602e120b0302be0e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 2f747eb09fd13647c4b6764ce3cc4fe72c00bcf0
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054848"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>テナントごとのデータベース パターンを使用した Azure SQL Database での SaaS アプリケーション内のスキーマの管理
-
+ 
 データベース アプリケーションの進化に伴って、データベース スキーマまたは参照データに対する変更が必然的に必要になります。  データベースのメンテナンス タスクも、定期的に必要です。 テナントごとのデータベース パターンを使用するアプリケーションの管理では、複数のテナント データベースにこれらの変更やメンテナンス タスクを適用する必要があります。
 
 このチュートリアルでは、2 つのシナリオを扱います。すべてのテナントに対する参照データの更新のデプロイと、参照データを含むテーブルのインデックスの再構築です。 [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)機能を使用して、すべてのテナント データベースと、新しいテナント データベースを作成するために使用されるテンプレート データベースに対してこれらのアクションを実行します。

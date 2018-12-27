@@ -1,25 +1,19 @@
 ---
 title: Azure IoT Hub の MQTT サポートについて | Microsoft Docs
 description: 開発者ガイド - MQTT プロトコルを使用して IoT Hub デバイスに接続されているエンドポイントに接続するデバイスのサポート。 Azure IoT デバイス SDK での組み込み MQTT サポートについての情報も含まれます。
-services: iot-hub
-documentationcenter: .net
-author: fsautomata
-manager: timlt
-editor: ''
-ms.assetid: 1d71c27c-b466-4a40-b95b-d6550cf85144
+author: rezasherafat
+manager: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/05/2018
-ms.author: elioda
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 23f98d4e9f711496480d5e02b4d5b23cd8abab0c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+services: iot-hub
+ms.topic: conceptual
+ms.date: 10/12/2018
+ms.author: rezas
+ms.openlocfilehash: 6e2ab773f865a8e52c7b04b94a188dd244540e0d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344967"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -27,6 +21,8 @@ IoT Hub により、デバイスは、以下を使用して IoT Hub デバイス
 
 * ポート 8883 で [MQTT v3.1.1][lnk-mqtt-org]
 * ポート 443 で WebSocket を介して MQTT v3.1.1
+
+IoT Hub はフル機能の MQTT ブローカーではないため、MQTT v3.1.1 標準で指定されているすべての動作をサポートしているわけではありません。 この記事では、サポートされている MQTT 動作を使用して、デバイスと IoT Hub の通信を行う方法について説明します。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -47,7 +43,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
 次の表では、サポートされている各言語のコード サンプルへのリンクを提供すると共に、MQTT プロトコルを使用して IoT Hub への接続を確立するために使用するパラメーターを示します。
 
-| 言語 | プロトコル パラメーター |
+| Language | プロトコル パラメーター |
 | --- | --- |
 | [Node.js][lnk-sample-node] |azure-iot-device-mqtt |
 | [Java][lnk-sample-java] |IotHubClientProtocol.MQTT |
@@ -85,11 +81,20 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
   SAS トークンの生成方法の詳細については、[IoT Hub のセキュリティ トークンの使用][lnk-sas-tokens]に関するページのデバイス セクションを参照してください。
 
-  テストするときは、[デバイス エクスプローラー][lnk-device-explorer] ツールを使用して SAS トークンをすばやく生成し、それをコピーして独自のコードに貼り付けることもできます。
+  テストするときは、複数のプラットフォームに対応する [Visual Studio Code 用 Azure IoT Toolkit 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)か、[デバイス エクスプローラー][lnk-device-explorer] ツールを使用して、SAS トークンをすばやく生成し、それをコピーして独自のコードに貼り付けることもできます。
+
+Azure IoT Toolkit の場合:
+
+  1. Visual Studio Code の左下隅にある **[Azure IoT ハブ デバイス]** タブを展開します。
+  2. デバイスを右クリックし、**[Generate SAS Token for Device]\(デバイスの SAS トークンの生成\)** を選択します。
+  3. **[期限]** を設定し、Enter キーを押します。
+  4. SAS トークンが作成され、クリップボードにコピーされます。
+
+デバイス エクスプローラーの場合:
 
   1. **デバイス エクスプローラー**で **[管理]** タブに移動します。
   2. **[SAS トークン]** (右上) をクリックします。
-  3. **[SASTokenForm]** の **[DeviceID]** ドロップダウンでデバイスを選択します。 **[TTL]**を設定します。
+  3. **[SASTokenForm]** の **[DeviceID]** ドロップダウンでデバイスを選択します。 **[TTL]** を設定します。
   4. **[生成]** をクリックしてトークンを作成します。
 
      生成される SAS トークンは、次のような構成になります。
@@ -102,7 +107,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
 MQTT の接続パケットおよび切断パケットの場合、IoT Hub は **操作の監視** チャネルでイベントを発行します。 このイベントには、接続の問題をトラブルシューティングするために役立つ追加情報があります。
 
-デバイス アプリは、**CONNECT** パケットに **Will** メッセージを指定できます。 また、デバイス アプリは、`devices/{device_id}/messages/events/{property_bag}` または `devices/{device_id}/messages/events/{property_bag}` を **Will** トピック名として使用することで、テレメトリ メッセージとして転送される **Will** メッセージ を定義する必要があります。 この場合、ネットワーク接続が閉じているが、**DISCONNECT** パケットがデバイスからまだ受信されていなければ、IoT Hub は、**CONNECT** パケットで提供される **Will** メッセージをテレメトリ チャネルに送信します。 テレメトリ チャネルは、既定の**イベント** エンドポイントにすることも、IoT Hub ルーティングで定義されるカスタム エンドポイントにすることもできます。 メッセージには **iothub-MessageType** プロパティが含まれており、その値には **Will** が割り当てられています。
+デバイス アプリは、**CONNECT** パケットに **Will** メッセージを指定できます。 また、デバイス アプリは、`devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を **Will** トピック名として使用することで、テレメトリ メッセージとして転送される **Will** メッセージ を定義する必要があります。 この場合、ネットワーク接続が閉じているが、**DISCONNECT** パケットがデバイスからまだ受信されていなければ、IoT Hub は、**CONNECT** パケットで提供される **Will** メッセージをテレメトリ チャネルに送信します。 テレメトリ チャネルは、既定の**イベント** エンドポイントにすることも、IoT Hub ルーティングで定義されるカスタム エンドポイントにすることもできます。 メッセージには **iothub-MessageType** プロパティが含まれており、その値には **Will** が割り当てられています。
 
 ### <a name="tlsssl-configuration"></a>TLS または SSL の構成
 
@@ -213,15 +218,17 @@ IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` �
 
 使用できる状態コードは次のとおりです。
 
-|状態 | [説明] |
+|Status | 説明 |
 | ----- | ----------- |
-| 200 | 成功 |
+| 200 | Success |
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル][lnk-quotas]に関するページを参照してください。 |
 | 5** | サーバー エラー |
 
 詳細については、[デバイス ツイン開発者ガイド][lnk-devguide-twin]をご覧ください。
 
 ### <a name="update-device-twins-reported-properties"></a>デバイス ツインの報告されるプロパティの更新
+
+報告されたプロパティを更新するために、デバイスでは、指定した MQTT トピック経由の公開を介して IoT Hub に要求が発行されます。 要求を処理した後、IoT Hub は、別のトピックへの公開を介して、更新操作の成功または失敗の状態を応答します。 デバイスでは、そのツイン更新要求の結果を通知するために、このトピックをサブスクライブできます。 この種類の要求/応答のやり取りを MQTT 上で実装するために、その更新要求内でデバイスによって最初に提供される要求 ID (`$rid`) の概念を利用します。 この要求 ID は、デバイスが以前の特定の要求に応答を関連付けられるようにするために IoT Hub からの応答にも含まれます。
 
 IoT Hub のデバイス ツインで報告されるプロパティをデバイスが更新する手順を次に示します。
 
@@ -242,12 +249,26 @@ IoT Hub のデバイス ツインで報告されるプロパティをデバイ�
 
 使用できる状態コードは次のとおりです。
 
-|状態 | [説明] |
+|Status | 説明 |
 | ----- | ----------- |
-| 200 | 成功 |
+| 200 | Success |
 | 400 | 正しくない要求。 無効な形式の JSON |
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル][lnk-quotas]に関するページを参照してください。 |
 | 5** | サーバー エラー |
+
+以下の python のコード スニペットは、(Paho MQTT クライアントを使用した) MQTT 経由でのツインの報告されたプロパティの更新プロセスを示しています。
+```python
+from paho.mqtt import client as mqtt
+
+# authenticate the client with IoT Hub (not shown here)
+
+client.subscribe("$iothub/twin/res/#")
+rid = "1"
+twin_reported_property_patch = "{\"firmware_version\": \"v1.1\"}"
+client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" + rid, twin_reported_property_patch, qos=0)
+```
+
+上記のツインの報告されたプロパティの更新操作が成功すると、IoT Hub からの発行メッセージには次のトピックが含まれます: `$iothub/twin/res/204/?$rid=1&$version=6`。ここで、`204` は成功を示す状態コードで、`$rid=1` はコード内のデバイスによって提供された要求 ID に対応します。`$version` は、更新後のデバイス ツインの報告されたプロパティ セクションのバージョンに対応します。
 
 詳細については、[デバイス ツイン開発者ガイド][lnk-devguide-twin]をご覧ください。
 
@@ -303,7 +324,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-sample-node]: https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js
 [lnk-sample-java]: https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java
 [lnk-sample-c]: https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm
-[lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device/samples
+[lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples
 [lnk-sample-python]: https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer
 [lnk-sas-tokens]: iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app

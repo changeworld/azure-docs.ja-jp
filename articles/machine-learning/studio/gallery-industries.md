@@ -1,35 +1,35 @@
 ---
-title: "Azure AI ギャラリーの業界に特化したソリューション | Microsoft Docs"
-description: "Azure AI ギャラリーで業界に特化したソリューションを発見します。"
+title: Azure AI Gallery 業界ソリューション - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI Gallery の業界セクションは、小売、製造、銀行、医療機関などの業界に固有のさまざまなリソースがまとめられています。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: ericlicoding
 editor: cgronlun
 ms.assetid: fd2ecf9a-ff76-4a0f-8d68-7f762249648c
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: 0113742cd0b51470559f4e7b03edbfddf2d7e0de
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.custom: previous-ms.author=garye, previous-author=garyericson
+ms.author: amlstudiodocs
+ms.openlocfilehash: 4f9495027c7027f659f877930b6aabc72b361ae8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269330"
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Azure AI ギャラリーで業界に特化したソリューションを発見する
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="industry-specific-cortana-intelligence-solutions"></a>業界に特化した Cortana Intelligence ソリューション
-ギャラリーの **[業界](https://gallery.cortanaintelligence.com/industries)** セクションでは、以下のような業界に固有のさまざまなリソースがまとめられています。
+[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)の**[業界](https://gallery.azure.ai/industries)** セクションでは、以下のような業界に固有のさまざまなリソースがまとめられています
 
-* [小売](https://gallery.cortanaintelligence-int.com/industries/retail): 売上予測、顧客離れの予測、および価格モデルの開発などの小売り業向けソリューションを検索します。
-* [製造](https://gallery.cortanaintelligence-int.com/industries/manufacturing): 機器のメンテナンスの予測やエネルギー価格の予測などの製造ソリューションを検索します。
-* [銀行業務](https://gallery.cortanaintelligence-int.com/industries/banking): 信用リスクの予測やオンライン詐欺の監視などの銀行業務ソリューションを検索します。
-* [医療](https://gallery.cortanaintelligence-int.com/industries/healthcare): 疾患の検出や病院への再入院の予測などの医療ソリューションを検索します。
+* [小売](https://gallery.azure.ai/industries/retail): 売上予測、顧客離れの予測、および価格モデルの開発などの小売り業向けソリューションを検索します。
+* [製造](https://gallery.azure.ai/industries/manufacturing): 機器のメンテナンスの予測やエネルギー価格の予測などの製造ソリューションを検索します。
+* [銀行業務](https://gallery.azure.ai/industries/banking): 信用リスクの予測やオンライン詐欺の監視などの銀行業務ソリューションを検索します。
+* [医療](https://gallery.azure.ai/industries/healthcare): 疾患の検出や病院への再入院の予測などの医療ソリューションを検索します。
 
 これらのリソースには、実験、カスタム モジュール、API、コレクション、および作業中の業界に固有のソリューションの開発に役立つその他のギャラリー項目が含まれます。
 
@@ -48,5 +48,5 @@ ms.lasthandoff: 02/03/2018
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

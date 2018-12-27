@@ -2,28 +2,37 @@
 title: Elastic Database ジョブのインストールの概要 | Microsoft Docs
 description: 弾力性ジョブの機能のインストールについて説明します。
 services: sql-database
-manager: craigg
-author: ddove
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 4aeb18a4cdd0fc115c0d604797cf60c867455337
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: c2fb3ae20ea2b6ba71408a734c1e0c82cbeb699c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233577"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+
 [**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)は、PowerShell または Azure Portal を使用してインストールできます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。 さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
 
 既存の**エラスティック プール**から、ポータルを使用して**Elastic Database ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。 PowerShell API 経由で公開されている新しい機能を活用するために、最新の **Elastic Database ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 無料評価版については、「 [無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
-* Azure PowerShell。 [Web Platform インストーラー](http://go.microsoft.com/fwlink/p/?linkid=320376)を使用して最新バージョンをインストールします。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
-* [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、Elastic Database ジョブ パッケージをインストールします。 詳細については、http://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
+* Azure PowerShell。 [Web Platform インストーラー](https://go.microsoft.com/fwlink/p/?linkid=320376)を使用して最新バージョンをインストールします。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
+* [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、Elastic Database ジョブ パッケージをインストールします。 詳細については、 http://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Elastic Database ジョブ PowerShell パッケージをダウンロードしてインストールする
 1. Microsoft Azure PowerShell コマンド ウィンドウを開き、NuGet Command-line Utility (nuget.exe) をダウンロードしたディレクトリに移動します。
@@ -58,7 +67,7 @@ ms.lasthandoff: 04/06/2018
 <table style="width:100%">
   <tr>
     <th>パラメーター</th>
-    <th>[説明]</th>
+    <th>説明</th>
   </tr>
 
 <tr>
@@ -87,7 +96,7 @@ ms.lasthandoff: 04/06/2018
 </tr>
     <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Standard エディションのサービス レベル目標を指定します。 このパラメーターの既定値は S0 です。 S0/S1/S2/S3/S4/S6/S9/S12 のパラメーター値を指定できます。Azure SQL Database では各 SLO が使用されます。 SQL Database の SLO について詳しくは、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
+    <td>Standard エディションのコンピューティング サイズを指定します。 このパラメーターの既定値は S0 です。 S0/S1/S2/S3/S4/S6/S9/S12 のパラメーター値を指定できます。Azure SQL Database では各コンピューティング サイズが使用されます。 SQL Database のコンピューティング サイズの詳細については、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
 </tr>
 
 </tr>
@@ -119,7 +128,7 @@ ms.lasthandoff: 04/06/2018
 <table style="width:100%">
   <tr>
   <th>パラメーター</th>
-  <th>[説明]</th>
+  <th>説明</th>
 </tr>
 
   <tr>
@@ -152,7 +161,7 @@ ms.lasthandoff: 04/06/2018
 1. [Azure Portal](https://portal.azure.com/#) で、エラスティック プールのダッシュボード ビューから、**[ジョブの作成]** をクリックします。
 2. 初めてジョブを作成する場合は、**[プレビュー版の使用条件]** をクリックして、**Elastic Database ジョブ**をインストールする必要があります。
 3. チェック ボックスをクリックして条項に同意します。
-4. [サービスのインストール] ビューで、 **[ジョブの資格情報]**をクリックします。
+4. [サービスのインストール] ビューで、 **[ジョブの資格情報]** をクリックします。
    
     ![サービスのインストール][1]
 5. データベース管理者のユーザー名とパスワードを入力します。インストールの一環として、新しい Azure SQL Database サーバーが作成されます。 この新しいサーバー内に、管理データベースと呼ばれる新しいデータベースが作成され、Elastic Database ジョブのメタデータの格納に使用されます。 ここで作成されるユーザー名とパスワードは、管理データベースにログインするために使用されます。 プール内のデータベースに対するスクリプト実行には、別の資格情報が使用されます。

@@ -1,6 +1,6 @@
 ---
-title: "信頼性の高い Azure マイクロサービスを構成する | Microsoft Docs"
-description: "Azure Service Fabric のステートフル Reliable Services を構成する方法について説明します。"
+title: Azure Service Fabric Reliable Services を構成する | Microsoft Docs
+description: Azure Service Fabric のステートフル Reliable Services を構成する方法について説明します。
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
@@ -9,16 +9,17 @@ editor: vturecek
 ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 84111b37f5cdecf377442bca0b15af2092d57414
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee8010fbbadc011e04d6d43599d671a1f926bb5f
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049658"
 ---
 # <a name="configure-stateful-reliable-services"></a>ステートフル Reliable Services の構成
 Reliable Services の構成設定には 2 つのセットがあります。 1 つはクラスター内のすべての Reliable Services 用のグローバルな設定、もう 1 つは特定の Reliable Services に固有の設定です。
@@ -27,7 +28,7 @@ Reliable Services の構成設定には 2 つのセットがあります。 1 �
 Reliable Services のグローバル構成は、クラスターのクラスター マニフェストの KtlLogger セクションで指定されています。 この構成を使用すると、共有ログの場所とサイズに加えて、ロガーによって使用されるグローバル メモリ制限を構成できます。 クラスター マニフェストは、クラスター内のすべてのノードとサービスに適用される設定と構成を保持する単一の XML ファイルです。 通常、このファイルは ClusterManifest.xml という名前です。 Get-ServiceFabricClusterManifest PowerShell コマンドを使用して、クラスターのクラスター マニフェストを確認できます。
 
 ### <a name="configuration-names"></a>構成名
-| 名前 | 単位 | 既定値 | 解説 |
+| Name | 単位 | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |キロバイト |8388608 |ロガー書き込みバッファー メモリ プールに対してカーネル モードで割り当てる最小 KB 数。 このメモリ プールは、ディスクに書き込む前の状態情報のキャッシュに使用されます。 |
 | WriteBufferMemoryPoolMaximumInKB |キロバイト |制限なし |ロガー書き込みバッファー メモリ プールを拡張できる最大サイズ。 |
@@ -80,7 +81,12 @@ SharedLogSizeInMB では、すべてのノードで既定の共有ログに前�
 > 
 
 ### <a name="replicator-security-configuration"></a>レプリケーターのセキュリティ構成
-レプリケーション時に使用される通信チャネルをセキュリティ保護する場合は、レプリケーターのセキュリティ構成を使用します。 これは、サービスは互いのレプリケーション トラフィックを表示できないため、高可用性データもセキュリティ保護されることを意味します。 既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効になりません。
+レプリケーション時に使用される通信チャネルをセキュリティで保護するには、レプリケーターのセキュリティ構成を使用します。 これは、サービスは互いのレプリケーション トラフィックを表示できないため、高可用性データもセキュリティ保護されることを意味します。 既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効になりません。
+
+> [!IMPORTANT]
+> Linux ノードでは、証明書は PEM 形式でなければなりません。 Linux での証明書の場所と構成について詳しくは、[Linux 上での証明書の構成](./service-fabric-configure-certificates-linux.md)に関する記事をご覧ください。 
+> 
+> 
 
 ### <a name="default-section-name"></a>既定のセクション名
 ReplicatorSecurityConfig
@@ -103,7 +109,7 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>構成名
-| 名前 | 単位 | 既定値 | 解説 |
+| Name | 単位 | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconds |0.015 |操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。 この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。 |
 | ReplicatorEndpoint |該当なし |既定値なし - 必須パラメーター |プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。 これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。 サービス マニフェストでのエンドポイント リソース定義の詳細については、 [サービス マニフェストのリソース](service-fabric-service-manifest-resources.md) に関する記事を参照してください。 |
@@ -117,7 +123,8 @@ ReplicatorConfig
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |1 つのバックアップ ログ チェーンに含まれるバックアップ ログの最大累積サイズ (MB)。 増分バックアップを実行してバックアップ ログが生成されると関連する完全バックアップ以降の累積バックアップ ログがこのサイズを超える場合は、増分バックアップ要求が失敗します。 そのような場合には、ユーザーは完全バックアップを取得する必要があります。 |
 | SharedLogId |GUID |"" |このレプリカで使用される共有ログ ファイルの識別に使用する一意の GUID を指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogId を指定した場合は、SharedLogPath も指定する必要があります。 |
 | SharedLogPath |完全修飾パス名 |"" |このレプリカの共有ログ ファイルが作成される完全修飾パスを指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。 |
-| SlowApiMonitoringDuration |Seconds |300 |マネージ API 呼び出しの監視間隔を設定します。 たとえば、バックアップのコールバック関数を用意しておき、 一定時間が経過したときに、警告の状態レポートを Health Manager に送信します。 |
+| SlowApiMonitoringDuration |Seconds |300 |マネージド API 呼び出しの監視間隔を設定します。 たとえば、バックアップのコールバック関数を用意しておき、 一定時間が経過したときに、警告の状態レポートを Health Manager に送信します。 |
+| LogTruncationIntervalSeconds |Seconds |0 |各レプリカでログの切り捨てが開始される、構成可能な間隔です。 ログのサイズだけでなく時間に基づいてログが切り捨てられるようにする場合にも使用されます。 この設定により、リライアブル ディクショナリの削除済みエントリも強制的に消去されます。 そのため、この設定を使用すると、削除済みの項目を適切なタイミングで消去できます。 |
 
 ### <a name="sample-configuration-via-code"></a>コードによるサンプル構成
 ```csharp
@@ -183,7 +190,7 @@ MaxRecordSizeInKB 設定は、レプリケーターがログ ファイルに書�
 
 SharedLogId と SharedLogPath の設定は常に一緒に使用して、サービスがノードの既定の共有ログとは別の共有ログを使用できるようにします。 最適な効率を得るため、できるだけ多くのサービスで同じ共有ログを指定してください。 共有ログ ファイルは、ヘッドの移動の競合が減るように、共有ログ ファイル専用に使用されるディスクに配置する必要があります。 これを変更する必要があるのは、まれなケースだけであると予想されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 * [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 

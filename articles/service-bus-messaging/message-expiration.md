@@ -1,23 +1,24 @@
 ---
-title: "Azure Service Bus メッセージの有効期限の設定 | Microsoft Docs"
-description: "Azure Service Bus メッセージの Time to Live と有効期限の設定"
+title: Azure Service Bus メッセージの有効期限の設定 | Microsoft Docs
+description: Azure Service Bus メッセージの Time to Live と有効期限の設定
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: 6e1f6177ccacf24955763982189bcdb1ef69c788
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.date: 09/26/2018
+ms.author: spelluru
+ms.openlocfilehash: e2efe2bfb26fa7a14a9e80c26fba1322f82cb0eb
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856923"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 
@@ -58,7 +59,6 @@ Service Bus のキュー、トピック、およびサブスクリプション�
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)

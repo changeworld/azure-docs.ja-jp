@@ -9,16 +9,17 @@ editor: ''
 ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: vturecek
-ms.openlocfilehash: 931667509a9aa5e898cd01ad26ff046e30acd3fe
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 85eb1cd40986bd6fb83c80a274046bbae3756b7e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295455"
 ---
 # <a name="manage-secrets-in-service-fabric-applications"></a>Service Fabric アプリケーションでシークレットを管理する
 このガイドでは、Service Fabric アプリケーションでシークレットを管理する手順について説明します。 シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。
@@ -42,7 +43,7 @@ ms.lasthandoff: 03/28/2018
 この証明書は、クラスターの各ノードにインストールする必要があります。 実行時に、この証明書を使用して、サービスの Settings.xml に保存された値の暗号化が解除されます。 セットアップ手順については、[Azure Resource Manager を使用してクラスターを作成する方法][service-fabric-cluster-creation-via-arm]に関する記事をご覧ください。 
 
 ## <a name="encrypt-application-secrets"></a>アプリケーション シークレットの暗号化
-アプリケーションをデプロイするときに、証明書を使用してシークレット値を暗号化し、サービスの Settings.xml 構成ファイルに挿入します。 Service Fabric SDK には、シークレットの暗号化と暗号化解除の機能が組み込まれています。 シークレット値は作成時に暗号化し、その後、暗号化解除して、サービス コードでプログラムによって読み取ることができます。 
+アプリケーションをデプロイするときに、証明書を使用してシークレット値を暗号化し、サービスの Settings.xml 構成ファイルに挿入します。 Service Fabric SDK には、シークレットの暗号化と暗号化解除の機能が組み込まれています。 シークレット値はビルド時に暗号化し、その後、暗号化解除して、サービス コードでプログラムによって読み取ることができます。 
 
 次の PowerShell コマンドを使用して、シークレットを暗号化します。 このコマンドは値を暗号化するだけであり、暗号化テキストの署名は**行いません**。 クラスターにインストールされている同じ暗号化証明書を使用して、シークレット値の暗号化テキストを生成する必要があります。
 

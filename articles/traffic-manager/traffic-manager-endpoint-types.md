@@ -1,12 +1,9 @@
 ---
-title: "Traffic Manager エンドポイントの種類 | Microsoft Docs"
-description: "この記事では、Azure Traffic Manager で使用できるさまざまなエンドポイントの種類について説明します"
+title: Traffic Manager エンドポイントの種類 | Microsoft Docs
+description: この記事では、Azure Traffic Manager で使用できるさまざまなエンドポイントの種類について説明します
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: 
-ms.assetid: 4e506986-f78d-41d1-becf-56c8516e4d21
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,18 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: 792712e3e529d77ff20a7603b5fbf028ca60f8c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: acdae15af1e81bf194bb9e599b97152af98ef5d4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139790"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager エンドポイント
-Microsoft Azure Traffic Manager を使用すると、世界中のさまざまなデータ センターで実行されているアプリケーションのデプロイに、ネットワーク トラフィックを分散させる方法を制御できます。 Traffic Manager では、各アプリケーションのデプロイを 'エンドポイント' として構成します。 Traffic Manager が DNS 要求を受信すると、DNS 応答で返すことができるエンドポイントを選択します。 Traffic Manager は、現在のエンドポイントの状態とトラフィック ルーティング方法に基づいて選択を行います。 詳細については、「 [Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)」をご覧ください。
+Microsoft Azure Traffic Manager を使用すると、世界中のさまざまなデータ センターで実行されているアプリケーションのデプロイに、ネットワーク トラフィックを分散させる方法を制御できます。 Traffic Manager では、各アプリケーションのデプロイを 'エンドポイント' として構成します。 Traffic Manager が DNS 要求を受信すると、DNS 応答で返すことができるエンドポイントを選択します。 Traffic Manager は、現在のエンドポイントの状態とトラフィック ルーティング方法に基づいて選択を行います。 詳細については、「 [Traffic Manager のしくみ](traffic-manager-how-it-works.md)」をご覧ください。
 
 Traffic Manager がサポートするエンドポイントには、次の 3 種類があります。
 * **Azure エンドポイント** : Azure でホストされるサービスで使用されます。
-* **外部エンドポイント** : Azure 外でホストされるサービス (オンプレミス サービスまたはホスティング プロバイダーが異なるサービス) で使用されます。
+* **外部エンドポイント**: IPv4/IPv6 アドレスに対して、または Azure 外でホストされるサービス (オンプレミス サービスまたはホスティング プロバイダーが異なるサービスである可能性があります) に対して使用されます。
 * **入れ子になったエンドポイント** : Traffic Manager プロファイルを組み合わせて、より柔軟なトラフィック ルーティング スキームを作成し、より大規模で複雑なデプロイのニーズに対応するために使用されます。
 
 さまざまなエンドポイントの種類を 1 つの Traffic Manager プロファイルにまとめる方法に制限はありません。 各プロファイルでは、エンドポイントの種類を好きなように組み合わせることができます。
@@ -36,8 +34,9 @@ Traffic Manager がサポートするエンドポイントには、次の 3 種�
 
 Azure エンドポイントは、Traffic Manager で Azure ベースのサービスに使用されます。 次の Azure リソースの種類がサポートされています。
 
-* '従来の' IaaS VM と PaaS クラウド サービス。
+* PaaS クラウド サービス。
 * Web Apps
+* Web アプリ スロット
 * PublicIPAddress リソース (直接、または Azure Load Balancer を介して VM に接続可能) publicIpAddress には、Traffic Manager プロファイルで使用するために DNS 名を割り当てておく必要があります。
 
 PublicIPAddress リソースは Azure Resource Manager のリソースです。 クラシック デプロイ モデルには存在しません。 つまり、Traffic Manager の Azure Resource Manager エクスペリエンスでのみサポートされます。 その他の種類のエンドポイントは、リソース マネージャーとクラシック デプロイ モデルの両方でサポートされます。
@@ -46,11 +45,12 @@ Traffic Manager は、Azure エンドポイントを使用して、'従来の' I
 
 ## <a name="external-endpoints"></a>外部エンドポイント
 
-Azure 外部のサービスには、外部エンドポイントが使用されます。 オンプレミスのホスト サービスや他のプロバイダーなどがその例です。 外部エンドポイントは個別に使用することも、同じ Traffic Manager プロファイルで Azure エンドポイントと組み合わせることもできます。 Azure エンドポイントと外部エンドポイントを組み合わせると、次のようにさまざまなシナリオが可能になります。
+IPv4/IPv6 アドレスまたは Azure 外部のサービスには、外部エンドポイントが使用されます。 IPv4/IPv6 アドレスのエンドポイントを使用すると、Traffic Manager は、エンドポイントの DNS 名を必要とせずに、エンドポイントの正常性を確認できます。 その結果、Traffic Manager は、応答でそのエンドポイントを返すときに、A/AAAA レコードでクエリに応答できます。 Azure の外部のサービスとは、オンプレミスや他のプロバイダーでホストされているサービスなどです。 外部エンドポイントは、単独で、または同じ Traffic Manager プロファイル内の Azure エンドポイントと組み合わせて使用できます。ただし、IPv4 または IPv6 アドレスとして指定されたエンドポインは外部エンドポイントにしかできないため除きます。 Azure エンドポイントと外部エンドポイントを組み合わせると、次のようにさまざまなシナリオが可能になります。
 
-* アクティブ/アクティブまたはアクティブ/パッシブ フェールオーバー モデルでは、Azure を使用して既存のオンプレミス アプリケーションの冗長性を向上させます。
-* 世界各地のユーザーのアプリケーションの待機時間を減らすためには、Azure で既存のオンプレミス アプリケーションを他の主要地域に拡張します。 詳細については、[Traffic Manager の 'パフォーマンス' によるトラフィック ルーティング](traffic-manager-routing-methods.md#performance)に関する記事をご覧ください。
-* Azure を使用して、既存のオンプレミス アプリケーションの容量を、継続的に、または 'クラウドへのバースト' として追加し、需要の急増に対処します。
+* Azure を使用して、アクティブ/アクティブまたはアクティブ/パッシブ フェールオーバー モデルで、既存のオンプレミス アプリケーションの冗長性を向上させます。 
+* DNS 名が関連付けられていないエンドポイントにトラフィックをルーティングします。 さらに、返された DNS 名の IP アドレスを取得するために 2 番目の DNS クエリを実行する必要がないので、DNS ルックアップ全体の待機時間が減ります。 
+* 世界各地のユーザーのアプリケーションの待機時間を減らし、Azure で既存のオンプレミス アプリケーションを他の主要地域に拡張します。 詳細については、[Traffic Manager の 'パフォーマンス' によるトラフィック ルーティング](traffic-manager-routing-methods.md#performance)に関する記事をご覧ください。
+* Azure を使用して、既存のオンプレミス アプリケーションの容量を、継続的に、または "クラウドへのバースト" ソリューションとして追加し、需要の急増に対処します。
 
 場合によっては、外部エンドポイントを使用して Azure サービスを参照すると便利です (具体例については、「[FAQ](traffic-manager-faqs.md#traffic-manager-endpoints)」を参照)。 この場合、正常性チェックは、外部エンドポイントではなく、Azure エンドポイントの料金で課金されます。 ただし、Azure エンドポイントとは異なり、基になるサービスを停止または削除しても、該当する正常性チェックへの課金は、Traffic Manager でエンドポイントを無効にするか削除しない限り停止されません。
 
@@ -70,10 +70,10 @@ Traffic Manager で Web アプリをエンドポイントとして構成する�
 
 Traffic Manager でエンドポイントを無効にすると、メンテナンス モードのエンドポイントや再デプロイされるエンドポイントから一時的にトラフィックを削除するときに便利です。 エンドポイントが再度稼働状態になったら、もう一度有効にできます。
 
-エンドポイントを有効および無効にするには、Resource Manager と クラシック デプロイ モデルの両方でサポートされている、Traffic Manager ポータル、PowerShell、CLI、または REST API を使用します。
+Traffic Manager ポータル、PowerShell、CLI、または REST API を使用して、エンドポイントを有効または無効にできます。
 
 > [!NOTE]
-> エンドポイントの無効化は、デプロイメント状態とは関係ありません。 Azure サービス (VM または Web アプリケーションなど) は実行状態のままとなり、Traffic Manager で無効になってもトラフィックを受信できます。 トラフィックは、Traffic Manager プロファイルの DNS 名を介してではなく、サービス インスタンスに直接送信できます。 詳細については、「 [Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)」をご覧ください。
+> エンドポイントの無効化は、デプロイメント状態とは関係ありません。 Azure サービス (VM または Web アプリケーションなど) は実行状態のままとなり、Traffic Manager で無効になってもトラフィックを受信できます。 トラフィックは、Traffic Manager プロファイルの DNS 名を介してではなく、サービス インスタンスに直接送信できます。 詳細については、「 [Traffic Manager のしくみ](traffic-manager-how-it-works.md)」をご覧ください。
 
 現在、各エンドポイントがトラフィックを受信できるかどうかは、次の要因によって決まります。
 
@@ -89,8 +89,8 @@ Traffic Manager でエンドポイントを無効にすると、メンテナン�
 プロファイル内のすべてのエンドポイントまたはプロファイル自体が無効になっている場合、Traffic Manager は 'NXDOMAIN' 応答を新しい DNS クエリに送信します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)を確認します。
+* [Traffic Manager のしくみ](traffic-manager-how-it-works.md)を確認します。
 * Traffic Manager の [エンドポイントの監視と自動フェールオーバー](traffic-manager-monitoring.md)を確認します。
 * Traffic Manager の [トラフィック ルーティング方法](traffic-manager-routing-methods.md)を確認します。

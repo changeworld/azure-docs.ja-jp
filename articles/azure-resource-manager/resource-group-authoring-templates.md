@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートの構造と構文 | Microsoft Docs"
-description: "宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの構造とプロパティについて説明します。"
+title: Azure Resource Manager テンプレートの構造と構文 | Microsoft Docs
+description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの構造とプロパティについて説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -9,21 +9,25 @@ editor: tysonn
 ms.assetid: 19694cb4-d9ed-499a-a2cc-bcfc4922d7f5
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2017
+ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: b0bc5abd768be0fa5876aaef108cd71a15d94510
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 8f1fc9eb5e7b19f25af2005cb3a99cb320cba640
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214547"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 この記事では、Azure Resource Manager テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 テンプレートの作成方法を詳しく解説したチュートリアルについては、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」を参照してください。
 
+[!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
+
 ## <a name="template-format"></a>テンプレートの形式
+
 最も単純な構造のテンプレートは、次の要素で構成されます。
 
 ```json
@@ -32,21 +36,23 @@ ms.lasthandoff: 12/15/2017
     "contentVersion": "",
     "parameters": {  },
     "variables": {  },
+    "functions": [  ],
     "resources": [  ],
     "outputs": {  }
 }
 ```
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | $schema |[はい] |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。 前の例に示されている URL を使用します。 |
-| contentVersion |[はい] |テンプレートのバージョン (1.0.0.0 など)。 この要素には任意の値を指定できます。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。 |
+| contentVersion |[はい] |テンプレートのバージョン (1.0.0.0 など)。 この要素には任意の値を指定できます。 この値を使用し、テンプレートの大きな変更を記述します。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。 |
 | parameters |いいえ  |リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。 |
 | variables |いいえ  |テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。 |
+| functions |いいえ  |テンプレート内で使用できるユーザー定義関数。 |
 | resources |[はい] |リソース グループ内でデプロイまたは更新されるリソースの種類。 |
 | outputs |いいえ  |デプロイ後に返される値。 |
 
-各要素には、設定できるプロパティが含まれています。 次の例には、テンプレートの完全な構文が含まれています。
+各要素には、設定できるプロパティがあります。 次の例には、テンプレートの完全な構文があります。
 
 ```json
 {
@@ -92,6 +98,25 @@ ms.lasthandoff: 12/15/2017
             }
         ]
     },
+    "functions": [
+      {
+        "namespace": "<namespace-for-your-function>",
+        "members": {
+          "<function-name>": {
+            "parameters": [
+              {
+                "name": "<parameter-name>",
+                "type": "<type-of-parameter-value>"
+              }
+            ],
+            "output": {
+              "type": "<type-of-output-value>",
+              "value": "<function-expression>"
+            }
+          }
+        }
+      }
+    ],
     "resources": [
       {
           "condition": "<boolean-value-whether-to-deploy>",
@@ -185,6 +210,61 @@ ms.lasthandoff: 12/15/2017
 
 変数定義の詳細については、「[Azure Resource Manager テンプレートの変数セクション](resource-manager-templates-variables.md)」をご覧ください。
 
+## <a name="functions"></a>Functions
+
+テンプレート内で、独自の関数を作成できます。 これらの関数は、テンプレートで使用可能です。 通常は、テンプレート内で繰り返したくない複雑な式を定義します。 ユーザー定義関数は、テンプレートでサポートされている[関数](resource-group-template-functions.md)および式から作成します。
+
+ユーザー関数を定義するときに、適用される制限がいくつかあります。
+
+* 関数は変数にアクセスできません。
+* 関数は、テンプレート パラメーターにアクセスできません。 つまり、[パラメーター関数](resource-group-template-functions-deployment.md#parameters)は、関数のパラメーターに制限されます。
+* 関数は、その他のユーザー定義関数を呼び出すことはできません。
+* 関数は [reference 関数](resource-group-template-functions-resource.md#reference)を使用できません。
+* 関数のパラメーターでは既定値を指定できません。
+
+テンプレート関数との名前の競合を回避するために、お使いの関数には名前空間の値が必要です。 次の例は、ストレージ アカウント名を返す関数を示しています。
+
+```json
+"functions": [
+  {
+    "namespace": "contoso",
+    "members": {
+      "uniqueName": {
+        "parameters": [
+          {
+            "name": "namePrefix",
+            "type": "string"
+          }
+        ],
+        "output": {
+          "type": "string",
+          "value": "[concat(toLower(parameters('namePrefix')), uniqueString(resourceGroup().id))]"
+        }
+      }
+    }
+  }
+],
+```
+
+関数を呼び出すには、次を使用します。
+
+```json
+"resources": [
+  {
+    "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2016-01-01",
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "Storage",
+    "location": "South Central US",
+    "tags": {},
+    "properties": {}
+  }
+]
+```
+
 ## <a name="resources"></a>リソース
 resources セクションでは、デプロイまたは更新されるリソースを定義します。 このセクションは、複雑になりやすい部分です。適切な値を指定するためには、デプロイするリソースの種類を理解している必要があるためです。
 
@@ -202,7 +282,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 ],
 ```
 
-詳細については、「[Resources section of Azure Resource Manager templates (Azure Resource Manager テンプレートの resources セクション)](resource-manager-templates-resources.md)」をご覧ください。
+デプロイ時に条件付きでリソースを含めたり除外したりするには、[Condition 要素](resource-manager-templates-resources.md#condition)を使用します。 resources セクションの詳細については、「[Resources section of Azure Resource Manager templates (Azure Resource Manager テンプレートの resources セクション)](resource-manager-templates-resources.md)」をご覧ください。
 
 ## <a name="outputs"></a>出力
 [出力] セクションではデプロイから返される値を指定します。 たとえば、デプロイされたリソースにアクセスするための URI を返すことができます。
@@ -236,4 +316,4 @@ resources セクションでは、デプロイまたは更新されるリソー�
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
 * テンプレート内から使用できる関数の詳細については、「 [Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
 * デプロイ中に複数のテンプレートを結合するには、「 [Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」をご覧ください。
-* 別のリソース グループ内に存在するリソースの使用が必要になる場合があります。 このシナリオは、複数のリソース グループ間で共有されているストレージ アカウントまたは仮想ネットワークを使用している場合は一般的です。 詳細については、 [resourceId 関数](resource-group-template-functions-resource.md#resourceid)に関するセクションをご覧ください。
+* グローバル Azure、Azure ソブリン クラウド、Azure Stack で使用できる Resource Manager テンプレートの作成に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」をご覧ください。

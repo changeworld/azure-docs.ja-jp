@@ -1,28 +1,22 @@
 ---
-title: "Ambari ビューによる HDInsight (Hadoop) での Hive の使用 - Azure | Microsoft Docs"
-description: "Web ブラウザーから Hive ビューを使用して Hive クエリを送信する方法について説明します。 Hive ビューは、Linux ベースの HDInsight クラスターに付属する Ambari Web UI の要素です。"
+title: HDInsight (Apache Hadoop) 上で Hive と連携する Apache Ambari ビューを使用する - Azure
+description: Web ブラウザーから Hive ビューを使用して Hive クエリを送信する方法について説明します。 Hive ビューは、Linux ベースの HDInsight クラスターに付属する Ambari Web UI の要素です。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 1abe9104-f4b2-41b9-9161-abbc43de8294
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/13/2018
-ms.author: larryfr
-ms.openlocfilehash: af5fe44b611e8ff9d93aba8a30c71213c452aff9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: hrasheed
+ms.openlocfilehash: 1328119917276b8135c4a6d4188b67bcff2fc069
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632749"
 ---
-# <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>HDInsight での Ambari Hive ビューと Hadoop の使用
+# <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で Apache Ambari Hive ビューを使用する
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
@@ -30,7 +24,7 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* バージョン 3.4 以上の HDInsight クラスターでの Linux ベースの Hadoop。
+* バージョン 3.4 以上の HDInsight クラスター上の Linux ベースの Apache Hadoop。
 
   > [!IMPORTANT]
   > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -47,7 +41,7 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
 
     認証情報の入力を求められたら、クラスターの作成時に使用したクラスター ログイン (既定値は `admin`) アカウント名とパスワードを入力します。
 
-3. ビューの一覧で、__Hive ビュー__を選択します。
+3. ビューの一覧で、__Hive ビュー__ を選択します。
 
     ![Hive ビューを選択する](./media/apache-hadoop-use-hive-ambari-view/select-hive-view.png)
 
@@ -167,12 +161,12 @@ add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-これにより、クエリでこの UDF を使用できます。 たとえば、「`SELECT myawesomeudf(name) FROM people;`」のように入力します。
+これにより、クエリでこの UDF を使用できます。 たとえば、「 `SELECT myawesomeudf(name) FROM people;` 」のように入力します。
 
 HDInsight において Hive で UDF を使用する方法の詳細については、以下の記事を参照してください。
 
 * [HDInsight における Python と Hive および Pig の使用](python-udf-hdinsight.md)
-* [HDInsight にカスタムの Hive UDF を追加する方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [HDInsight にカスタムの Hive UDF を追加する方法](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a name="hive-settings"></a>Hive の設定
 

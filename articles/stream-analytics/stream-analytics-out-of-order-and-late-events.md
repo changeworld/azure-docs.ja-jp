@@ -1,24 +1,20 @@
 ---
-title: Azure Stream Analytics によるイベントの順序と遅延の処理 | Microsoft Docs
-description: データ ストリーム中の順序を逸脱したイベントまたは遅延イベントが Stream Analytics によって処理されるしくみを説明します。
-keywords: 順序の逸脱, 遅延, イベント
-documentationcenter: ''
+title: Azure Stream Analytics でのイベントの順序と遅延の処理
+description: この記事では、データ ストリーム中の順序を逸脱したイベントまたは遅延イベントが Stream Analytics によって処理されるしくみを説明します。
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 3c1924ad87715f7a44c3666991e792adc3a20af9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: f0ee486d9ff4c05269da23866edad281aa627889
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113896"
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Azure Stream Analytics のイベントの順序に関する考慮事項
 
@@ -26,7 +22,7 @@ ms.lasthandoff: 03/30/2018
 
 イベントのテンポラル データ ストリームでは、各イベントにタイム スタンプが割り当てられます。 Azure Stream Analytics は、到着時刻またはアプリケーション時間を使用して、各イベントにタイム スタンプを割り当てます。 **System.Timestamp** 列には、イベントに割り当てられたタイムスタンプが含まれます。 
 
-イベントがソースに到達すると、入力ソースに到着時刻が割り当てられます。 到着時間にアクセスするには、イベント ハブ入力の場合は **EventEnqueuedTime** プロパティを、BLOB 入力の場合は [BlobProperties.LastModified](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) プロパティを使用します。 
+イベントがソースに到達すると、入力ソースに到着時刻が割り当てられます。 到着時間にアクセスするには、Event Hubs 入力の場合は **EventEnqueuedTime** プロパティを、IoT Hub 入力の場合は **IoTHub.EnqueuedTime** プロパティを、BLOB 入力の場合は [BlobProperties.LastModified](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) プロパティを使用します。 
 
 アプリケーション時間は、イベントの生成時に割り当てられ、ペイロードの一部になります。 アプリケーション時間でイベントを処理するには、SELECT クエリで **Timestamp by** 句を使用します。 **Timestamp by** 句がない場合は、イベントは到着時刻で処理されます。 
 
@@ -115,7 +111,7 @@ Stream Analytics では、アプリケーション時間で処理する場合に
 
 構成は例 2 と同じです。 ただし、パーティションのいずれかにデータがない場合、到着遅延許容期間の追加によって出力が遅延する可能性があります。
 
-## <a name="handling-event-producers-with-differing-timelines"></a>タイムラインの異なるイベント プロデューサーの処理
+## <a name="handling-event-producers-with-differing-timelines-with-substreams"></a>"サブストリーム" があるタイムラインの異なるイベント プロデューサーの処理
 多くの場合、1 つの入力イベント ストリームには、複数のイベント プロデューサー (個々 のデバイスなど) から発生したイベントが含まれます。 これらのイベントは、前述の理由により順不同で到着する可能性があります。 そのような場合、イベント プロデューサー間での誤順序は大きくなる可能性がありますが、1 つのプロデューサーからのイベント内では、誤順序は小規模です (あるいは発生もしません)。
 
 Azure Stream Analytics では、異常イベントを処理するための一般的なメカニズムが提供されます。 これらのメカニズムでは、(遅延したイベントがシステムに到達するのを待機する間に) 処理の遅延が発生し、イベントの削除、調整、またはその両方が行われます。
@@ -132,7 +128,7 @@ Azure Stream Analytics では、[TIMESTAMP BY OVER](https://msdn.microsoft.com/l
 * 複数のタイムラインを組み合わせる場合、ソースまたはパーティションのいずれかにデータがないと、到着遅延許容期間の追加によって出力が遅延する可能性があります。
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * [Stream Analytics の概要](stream-analytics-introduction.md)

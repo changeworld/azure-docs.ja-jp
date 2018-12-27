@@ -3,7 +3,7 @@ title: Azure 仮想マシン スケール セットにアプリをデプロイ�
 description: スケール セット内の Linux と Windows の仮想マシン インスタンスにアプリケーションを展開する方法について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2017
-ms.author: iainfou
-ms.openlocfilehash: cadd0f4c07b7e8adec4956543f67313aa8442da3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 05/29/2018
+ms.author: zarhoads
+ms.openlocfilehash: 22e035be27f16e7b73e545d75eb9cd108a919114
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471205"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
 スケール セット内の仮想マシン (VM) インスタンスでアプリケーションを実行する　には、まず、アプリケーション コンポーネントと必要なファイルをインストールする必要があります。 この記事では、スケール セット内のインスタンス用にカスタム VM イメージを構築する、または既存の VM インスタンスにインストール スクリプトを自動的に実行する方法について説明します。 また、スケール セットのアプリケーションまたは OS 更新プログラムを管理する方法についても説明します。
@@ -30,19 +31,20 @@ Azure プラットフォーム イメージの 1 つを使用してスケール 
 
 スケール セットにインスタンスがプロビジョニングされると同時にアプリケーションを実行できるカスタム VM イメージを構築すれば、構成管理と VM のプロビジョニングにかかる時間を短縮できます。 スケール セットでカスタム VM イメージを作成し、使用する方法については、次のチュートリアルをご覧ください。
 
-- [Azure CLI 2.0](tutorial-use-custom-image-cli.md)
+- [Azure CLI](tutorial-use-custom-image-cli.md)
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
 ## <a name="already-provisioned"></a>カスタム スクリプト拡張機能を使用してアプリケーションをインストールする
 カスタム スクリプト拡張機能は、Azure VM でスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージや GitHub からダウンロードできます。また、拡張機能の実行時に Azure Portal に提供することもできます。 スケール セットでカスタム VM イメージを作成し、使用する方法については、次のチュートリアルをご覧ください。
 
-- [Azure CLI 2.0](tutorial-install-apps-cli.md)
+- [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
+- [Azure Resource Manager テンプレート](tutorial-install-apps-template.md)
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>PowerShell DSC を使用して Windows VM にアプリをインストールする
-[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) は、ターゲット マシンの構成を定義するための管理プラットフォームです。 DSC 構成では、マシンにインストールするものと、ホストを構成する方法を定義します。 Local Configuration Manager (LCM) エンジンは、プッシュされた構成に基づいて要求されたアクションを処理する各ターゲット ノードで実行されます。
+[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) は、ターゲット マシンの構成を定義するための管理プラットフォームです。 DSC 構成では、マシンにインストールするものと、ホストを構成する方法を定義します。 Local Configuration Manager (LCM) エンジンは、プッシュされた構成に基づいて要求されたアクションを処理する各ターゲット ノードで実行されます。
 
 PowerShell DSC 拡張機能を使用すると、PowerShell を使用してスケール セット内の VM インスタンスをカスタマイズできます。 次の例をご覧ください。
 
@@ -89,7 +91,7 @@ Update-AzureRmVmss `
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>cloud-init を使用して Linux VM にアプリをインストールする
-[cloud-Init](https://cloudinit.readthedocs.io/latest/) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 初回起動処理中に cloud-init が実行されるので、構成を適用するために追加の手順や必要なエージェントはありません。
+[cloud-Init](https://cloudinit.readthedocs.io/en/latest/index.html) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 初回起動処理中に cloud-init が実行されるので、構成を適用するために追加の手順や必要なエージェントはありません。
 
 cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義できます。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 
@@ -112,7 +114,7 @@ az vmss create \
 ### <a name="install-applications-with-os-updates"></a>OS 更新プログラムを使用してアプリケーションをインストールする
 OS の新しいリリースが使用できる場合は、新しいカスタム イメージを使用または構築して、スケール セットに [OS の更新プログラムを展開](virtual-machine-scale-sets-upgrade-scale-set.md)できます。 各 VM インスタンスは、指定した最新のイメージにアップグレードされます。 アプリケーションが事前にインストールされたカスタム イメージ、カスタム スクリプト拡張機能、または PowerShell DSC を使用して、アップグレードを実行すると同時にアプリケーションが自動的に提供されるようにできます。 このプロセスを実行する場合、アプリケーションの保守を計画して、バージョンの互換性の問題がないことを確認する必要があります。
 
-アプリケーションが事前にインストールされているカスタム VM イメージを使用すると、アプリケーションの更新プログラムをデプロイメント パイプラインに統合して新しいイメージを構築し、スケール セット全体に OS のアップグレードを展開することができます。 この方法を使用すると、パイプラインが最新のアプリケーション ビルドを選択し、VM を作成および認証し、スケール セットの VM インスタンスをアップグレードできます。 複数のカスタム VM イメージ間にわたってアプリケーション更新プログラムを構築し展開するデプロイメント パイプラインを実行するには、[Visual Studio Team Services](https://www.visualstudio.com/team-services/)、[Spinnaker](https://www.spinnaker.io/) または [Jenkins](https://jenkins.io/) を使用できます。
+アプリケーションが事前にインストールされているカスタム VM イメージを使用すると、アプリケーションの更新プログラムをデプロイメント パイプラインに統合して新しいイメージを構築し、スケール セット全体に OS のアップグレードを展開することができます。 この方法を使用すると、パイプラインが最新のアプリケーション ビルドを選択し、VM を作成および認証し、スケール セットの VM インスタンスをアップグレードできます。 複数のカスタム VM イメージ間にわたってアプリケーション更新プログラムを構築してデプロイするデプロイ パイプラインを実行する場合は、[Packer イメージを作成し、Azure DevOps Services でデプロイする](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)ことができます。また、[Spinnaker](https://www.spinnaker.io/) や [Jenkins](https://jenkins.io/) などの別のプラットフォームを使用することもできます。
 
 
 ## <a name="next-steps"></a>次の手順

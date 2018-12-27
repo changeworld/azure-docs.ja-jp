@@ -1,32 +1,30 @@
 ---
-title: "Azure Resource Manager でのデプロイ操作 | Microsoft Docs"
-description: "Azure Resource Manager のデプロイ操作を、ポータル、PowerShell、Azure CLI、および REST API を使用して表示する方法について説明します。"
+title: Azure Resource Manager でのデプロイ操作 | Microsoft Docs
+description: Azure Resource Manager のデプロイ操作を、ポータル、PowerShell、Azure CLI、および REST API を使用して表示する方法について説明します。
 services: azure-resource-manager,virtual-machines
-documentationcenter: 
+documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
-ms.date: 01/13/2017
+ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 197f890690ff68236cba221988ead9b9abd8c04e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9320e3089e02e1ca6b6bcce0287946baaf0558d9
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452039"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ操作の表示
 
-
 デプロイの操作は、Azure ポータルから確認することができます。 最も一般的な確認の対象としては、デプロイ中にエラーが発生したときに実行されていた操作が挙げられます。この記事では、失敗した操作の表示について重点的に取り上げます。 Azure ポータルには、すぐにエラーを見つけ出し、有効と考えられる解決策を特定できるインターフェイスが用意されています。
 
-監査ログまたはデプロイ操作のいずれかを確認して、デプロイのトラブルシューティングを行うことができます。 このトピックでは、両方のメソッドを示します。 特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
+監査ログまたはデプロイ操作のいずれかを確認して、デプロイのトラブルシューティングを行うことができます。 このトピックでは、両方の方法を説明します。 特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
 
 ## <a name="portal"></a>ポータル
 デプロイ操作を表示するには、次の手順に従います。
@@ -47,7 +45,7 @@ ms.lasthandoff: 02/09/2018
     ![view operations](./media/resource-manager-deployment-operations/view-operations.png)
    
     このケースでは、ストレージ アカウント、仮想ネットワーク、可用性セットは正しく作成されていることが確認できます。 パブリック IP アドレスはエラーとなり、他のリソースは実行されていません。
-5. デプロイのイベントは、 **[イベント]**を選択して表示できます。
+5. デプロイのイベントは、 **[イベント]** を選択して表示できます。
    
     ![view events](./media/resource-manager-deployment-operations/view-events.png)
 6. デプロイに関するすべてのイベントが表示され、いずれかを選択すると、さらに詳しい情報が表示されます。 関連付け ID にも注目してください。 この値は、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときに有用である可能性があります。
@@ -67,7 +65,13 @@ ms.lasthandoff: 02/09/2018
   Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
-2. 各デプロイには、複数の操作が含まれます。 各操作は、デプロイ プロセスの手順を表します。 デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。 操作の状態は、 **Get-AzureRmResourceGroupDeploymentOperation**で確認できます。
+1. 相関 ID を取得するには、以下を使用します。
+
+  ```powershell
+  (Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
+  ```
+
+1. 各デプロイには、複数の操作が含まれます。 各操作は、デプロイ プロセスの手順を表します。 デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。 操作の状態は、 **Get-AzureRmResourceGroupDeploymentOperation**で確認できます。
 
   ```powershell 
   Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
@@ -85,7 +89,7 @@ ms.lasthandoff: 02/09/2018
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
   ```
 
-3. 失敗した操作についての詳しい情報を得るには、状態が **Failed** である操作のプロパティを取得します。
+1. 失敗した操作についての詳しい情報を得るには、状態が **Failed** である操作のプロパティを取得します。
 
   ```powershell
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
@@ -108,7 +112,7 @@ ms.lasthandoff: 02/09/2018
   ```
 
     操作の serviceRequestId と trackingId に注目してください。 serviceRequestId は、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときに有用である可能性があります。 trackingId は、次の手順で特定の操作に対象を絞り込むために必要となります。
-4. 失敗した特定の操作のステータス メッセージを取得するには、次のコマンドを使用します。
+1. 失敗した特定の操作のステータス メッセージを取得するには、次のコマンドを使用します。
 
   ```powershell
   ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -121,7 +125,7 @@ ms.lasthandoff: 02/09/2018
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-4. Azure でのすべてのデプロイ操作には、要求と応答のコンテンツが含まれます。 要求コンテンツは、デプロイ中に Azure に送信するものです (たとえば、VM、OS ディスク、その他のリソースの作成)。 応答コンテンツは、Azure がデプロイメント要求に対して返信するものです。 デプロイの際に **DeploymentDebugLogLevel** パラメーターを使用して、要求または応答 (あるいは両方) がログに保存されるように指定できます。 
+1. Azure でのすべてのデプロイ操作には、要求と応答のコンテンツが含まれます。 要求コンテンツは、デプロイ中に Azure に送信するものです (たとえば、VM、OS ディスク、その他のリソースの作成)。 応答コンテンツは、Azure がデプロイメント要求に対して返信するものです。 デプロイの際に **DeploymentDebugLogLevel** パラメーターを使用して、要求または応答 (あるいは両方) がログに保存されるように指定できます。 
 
   次の PowerShell コマンドを使用すると、ログから情報を取得して、ローカルに保存できます。
 
@@ -136,24 +140,22 @@ ms.lasthandoff: 02/09/2018
 1. **azure group deployment show** コマンドを使用して、デプロイ全体の状態を取得できます。
 
   ```azurecli
-  azure group deployment show --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment show -g ExampleGroup -n ExampleDeployment
   ```
   
-  値の 1 つとして **correlationId** が返されます。 この値は、関連するイベントを追跡するために使用されます。また、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときにも有用である可能性があります。
+1. 値の 1 つとして **correlationId** が返されます。 この値は、関連するイベントを追跡するために使用されます。また、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときにも有用である可能性があります。
 
   ```azurecli
-  "properties": {
-    "provisioningState": "Failed",
-    "correlationId": "4002062a-a506-4b5e-aaba-4147036b771a",
+  az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
   ```
 
-2. デプロイ操作を表示するには、次のコマンドを使用します。
+1. デプロイ操作を表示するには、次のコマンドを使用します。
 
   ```azurecli
-  azure group deployment operation list --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment operation list -g ExampleGroup -n ExampleDeployment
   ```
 
-## <a name="rest"></a>REST ()
+## <a name="rest"></a>REST
 
 1. [テンプレート デプロイに関する情報を取得する](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Get)操作を行って、デプロイに関する情報を取得します。
 

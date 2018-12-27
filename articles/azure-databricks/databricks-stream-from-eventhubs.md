@@ -1,24 +1,21 @@
 ---
-title: 'チュートリアル: Event Hubs を使用してデータを Azure Databricks にストリーム配信する | Microsoft Docs'
+title: 'チュートリアル: Event Hubs を使用してデータを Azure Databricks にストリーム配信する '
 description: Azure Databricks と Event Hubs を使用して、Twitter からストリーミング データを取り込み、ほぼリアルタイムでデータを読み取る方法について説明します。
 services: azure-databricks
-documentationcenter: ''
 author: lenadroid
-manager: cgronlun
-editor: cgronlun
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/27/2018
+ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: c43edc6673c42a8b69bfa296e288e77adee4d0af
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6e75e549486fb260f3ccbdead7fe1dea02593f3c
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707148"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>チュートリアル: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
 
@@ -101,7 +98,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     * クラスターの名前を入力します。
     * この記事では、**4.0** ランタイムを使用してクラスターを作成します。
-    * **[Terminate after ____ minutes of inactivity]\(アクティビティが ____ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
 
     **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
@@ -109,7 +106,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ツイートのストリームを受け取るには、Twitter でアプリケーションを作成します。 手順に従って Twitter アプリケーションを作成し、このチュートリアルの完了に必要な値を記録します。
 
-1. Web ブラウザーで [Twitter アプリケーション管理](http://twitter.com/app)に移動して、**[Create New App]\(新しいアプリの作成\)** を選択します。
+1. Web ブラウザーで [Twitter アプリケーション管理](https://apps.twitter.com/)に移動して、**[Create New App]\(新しいアプリの作成\)** を選択します。
 
     ![Twitter アプリケーションを作成する](./media/databricks-stream-from-eventhubs/databricks-create-twitter-app.png "Twitter アプリケーションを作成する")
 
@@ -165,7 +162,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
     ![Databricks でノートブックを作成する](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
-    **[作成]**を選択します。
+    **作成**を選択します。
 
 3. 手順を繰り返して **ReadTweetsFromEventHub** ノートブックを作成します。
 
@@ -173,6 +170,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 **SendTweetsToEventHub** ノートブックで次のコードを貼り付けて、プレースホルダーを、先ほど作成した Event Hubs 名前空間と Twitter アプリケーションの値に置き換えます。 このノートブックによって、キーワード "Azure" が含まれたツイートがリアルタイムで Event Hubs にストリーム配信されます。
 
+```scala
     import java.util._
     import scala.collection.JavaConverters._
     import com.microsoft.azure.eventhubs._
@@ -242,6 +240,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
     // Closing connection to the Event Hub
     eventHubClient.get().close()
+```
 
 ノートブックを実行するには、**Shift + Enter** キーを押します。 以下のようなスニペットが出力されます。 出力の各イベントは、用語 "Azure" が含まれているため Event Hubs に取り込まれたツイートです。
 
@@ -264,6 +263,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 **ReadTweetsFromEventHub** ノートブックで次のコードを貼り付けて、プレースホルダーを、先ほど作成した Azure Event Hubs の値に置き換えます。 このノートブックによって、先ほど **SendTweetsToEventHub** ノートブックを使用して Event Hubs にストリーム配信したツイートが読み取られます。
 
+```scala
     import org.apache.spark.eventhubs._
 
     // Build connection string with the above information
@@ -282,6 +282,7 @@ Twitter アプリケーションについて取得した値を保存します。
     // Sending the incoming stream into the console.
     // Data comes in batches!
     incomingStream.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
+```
 
 次の出力が得られます。
 
@@ -312,6 +313,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 出力はバイナリ モードのため、次のスニペットを使用して文字列に変換します。
 
+```scala
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
 
@@ -328,6 +330,7 @@ Twitter アプリケーションについて取得した値を保存します。
     messages.printSchema
 
     messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
+```
 
 これで、次のようなスニペットが出力されます。
 
@@ -364,7 +367,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 ![Databricks クラスターを停止する](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 
-クラスター作成時に **[Terminate after __ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
+クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。

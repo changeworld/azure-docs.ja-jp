@@ -1,12 +1,36 @@
-
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: ios
+ms.workload: identity
+ms.date: 09/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: b3ced6bbd69b38e187b3ed4fa1f2b22e5dd05ce4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50142760"
+---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加
 
 この手順では、アプリケーション ID をプロジェクトに追加する必要があります。
 
-1.  `ViewController.swift` で、'`let kClientID`' で始まる行を次に変更します。
+1. `ViewController.swift` で、'`let kClientID`' で始まる行を次に変更します。
+
 ```swift
 let kClientID = "[Enter the application Id here]"
 ```
+
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
@@ -28,7 +52,6 @@ Ctrl キーを押しながら [<code>Info.plist</code>] をクリックしてコ
         <key>CFBundleURLSchemes</key>
         <array>
             <string>msal[Enter the application Id here]</string>
-            <string>auth</string>
         </array>
     </dict>
 </array>

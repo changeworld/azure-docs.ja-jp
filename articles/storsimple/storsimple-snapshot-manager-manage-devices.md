@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager を使用したデバイス管理 | Microsoft Docs"
-description: "StorSimple Snapshot Manager MMC スナップインを使用して、StorSimple デバイスを接続および管理する方法について説明します。"
+title: StorSimple Snapshot Manager を使用したデバイス管理 | Microsoft Docs
+description: StorSimple Snapshot Manager MMC スナップインを使用して、StorSimple デバイスを接続および管理する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111440"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>StorSimple Snapshot Manager を使用した StorSimple デバイスの接続と管理
 ## <a name="overview"></a>概要
@@ -82,7 +83,7 @@ StorSimple デバイスを追加または置き換えるには、以下の手順
    
     ![StorSimple デバイスの構成](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
 3. **[デバイス]** ドロップダウン ボックスで、デバイスまたは仮想デバイスの IP アドレスを選択します。 
-4. **[パスワード]** テキスト ボックスに、Azure クラシック ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。 **[OK]**をクリックします。 StorSimple Snapshot Manager により、指定したデバイスが検索されます。 
+4. **[パスワード]** テキスト ボックスに、Azure クラシック ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。 **[OK]** をクリックします。 StorSimple Snapshot Manager により、指定したデバイスが検索されます。 
    
    * デバイスを使用できる場合は、StorSimple Snapshot Manager によって接続が追加されます。
    * 何かの理由でデバイスを使用できない場合は、StorSimple Snapshot Manager によってエラー メッセージが返されます。 **[OK]** をクリックしてエラー メッセージを閉じ、**[キャンセル]** をクリックして **[デバイスの構成]** ダイアログ ボックスを閉じます。
@@ -100,7 +101,7 @@ StorSimple デバイスを追加または置き換えるには、以下の手順
 3. **[スコープ]** ウィンドウで最上位のノードを右クリックし、**[インポートの表示の切り替え]** をクリックします。
    
     ![[インポートの表示の切り替え] の選択](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
-4. **[インポートの表示の切り替え]** ダイアログ ボックスが表示され、インポートされたボリューム グループとバックアップの状態が示されます。 **[OK]**をクリックします。
+4. **[インポートの表示の切り替え]** ダイアログ ボックスが表示され、インポートされたボリューム グループとバックアップの状態が示されます。 **[OK]** をクリックします。
 
 ボリューム グループおよびバックアップが正常にインポートされたら、StorSimple Snapshot Manager を使用して作成および構成したボリューム グループやバックアップを管理する場合と同様に、StorSimple Snapshot Manager を使用してそれらを管理できます。 
 
@@ -122,7 +123,7 @@ StorSimple デバイスを追加または置き換えるには、以下の手順
 1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 2. **[スコープ]** ウィンドウで、**[デバイス]** をクリックします。
 3. **[結果]** ウィンドウで、デバイスの名前を右クリックしてから **[認証]** をクリックします。
-4. **[認証]** ダイアログ ボックスが表示されます。 デバイスのパスワードを入力し、 **[OK]**をクリックします。
+4. **[認証]** ダイアログ ボックスが表示されます。 デバイスのパスワードを入力し、 **[OK]** をクリックします。
    
     ![ダイアログ ボックスの認証](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Authenticate.png) 
 
@@ -173,9 +174,9 @@ StorSimple デバイスを追加または置き換えるには、以下の手順
 #### <a name="to-re-authenticate-the-device"></a>デバイスを再認証するには
 1. StorSimple Snapshot Manager を開始します。
 2. **[スコープ]** ウィンドウで、**[デバイス]** をクリックします。 構成されているデバイスの一覧が **[結果]** ウィンドウに表示されます。
-3. デバイスを選択して、右クリックし、 **[認証]**をクリックします。
+3. デバイスを選択して、右クリックし、 **[認証]** をクリックします。
 4. **[認証]** ウィンドウに、新しいパスワードを入力します。
-5. デバイスを選択して、右クリックし、 **[デバイスの更新]**を選択します。 これにより、デバイスが StorSimple Snapshot Manager と同期されます。
+5. デバイスを選択して、右クリックし、 **[デバイスの更新]** を選択します。 これにより、デバイスが StorSimple Snapshot Manager と同期されます。
 
 ## <a name="replace-a-failed-device"></a>障害が発生したデバイスの置き換え
 StorSimple device に障害が発生し、スタンバイ (フェールオーバー) デバイスによって置き換えられている場合は、次の手順に従って新しいデバイスに接続し、関連するバックアップを表示します。
@@ -205,7 +206,7 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
 4. StorSimple Snapshot Manager を開始します。
 5. 新しい StorSimple デバイスを構成するには、「 [StorSimple Snapshot Manager のデプロイ](storsimple-snapshot-manager-deployment.md)」にある「手順 2: StorSimple Snapshot Manager をデバイスに接続します」の手順に従ってください。
 6. **[スコープ]** ウィンドウの最上位ノード (StorSimple Snapshot Manager など) を右クリックし、**[インポートの表示の切り替え]** をクリックします。 
-7. インポートされたボリューム グループとバックアップが StorSimple Snapshot Manager に表示されると、メッセージが表示されます。 **[OK]**をクリックします。
+7. インポートされたボリューム グループとバックアップが StorSimple Snapshot Manager に表示されると、メッセージが表示されます。 **[OK]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)

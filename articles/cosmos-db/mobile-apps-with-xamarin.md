@@ -1,28 +1,31 @@
 ---
-title: Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築 | Microsoft Docs
+title: Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
 description: Azure Cosmos DB を使用して Xamarin iOS、Android、またはフォーム アプリケーションを作成するチュートリアル。 Azure Cosmos DB は、モバイル アプリ向けの高速な世界規模のクラウド データベースです。
 services: cosmos-db
-documentationcenter: .net
-author: arramac
-manager: monicar
-editor: ''
-ms.assetid: ff97881a-b41a-499d-b7ab-4f394df0e153
+author: SnehaGunda
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/15/2017
-ms.author: arramac
-ms.openlocfilehash: 0cbe9a8463e8b471e3e4b0b4403c3a5d01ed59a0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: sngun
+ms.openlocfilehash: d5c17325bfccef2c97378cb54d8843290cc98635
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878008"
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
 
-ほとんどのモバイル アプリでは、クラウドにデータを格納する必要があります。Azure Cosmos DB は、モバイル アプリ向けのクラウド データベースです。 モバイル開発者が必要なすべてのものを備えています。 必要に応じて拡大縮小できる、完全に管理されたサービスとしてのデータベースです。 ユーザーが世界中どこにいても、アプリケーションにデータを透過的に提供できます。 [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md) を使用すると、中間層なしで、Xamarin モバイル アプリが Azure Cosmos DB と直接やり取りすることができます。
+> [!div class="op_single_selector"]
+> * [.NET](sql-api-dotnet-application.md)
+> * [Java](sql-api-java-application.md)
+> * [Node.js](sql-api-nodejs-application.md)
+> * [Python](sql-api-python-application.md)
+> * [Xamarin](mobile-apps-with-xamarin.md)
+> 
+
+ほとんどのモバイル アプリでは、クラウドにデータを格納する必要があります。Azure Cosmos DB は、モバイル アプリ向けのクラウド データベースです。 モバイル開発者が必要なすべてのものを備えています。 必要に応じて拡大縮小できる、フル マネージドのサービスとしてのデータベースです。 ユーザーが世界中どこにいても、アプリケーションにデータを透過的に提供できます。 [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md) を使用すると、中間層なしで、Xamarin モバイル アプリが Azure Cosmos DB と直接やり取りすることができます。
 
 この記事では、Xamarin と Azure Cosmos DB を使用したモバイル アプリの構築についてのチュートリアルを提供します。 ユーザーとアクセス許可を管理する方法を含め、このチュートリアルの完全なソース コードについては、[GitHub の Xamarin と Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) に関するページを参照してください。
 
@@ -31,9 +34,9 @@ Azure Cosmos DB は、モバイル アプリ開発者向けの次の主要な機
 
 ![モバイル アプリ向けの Azure Cosmos DB の機能](media/mobile-apps-with-xamarin/documentdb-for-mobile.png)
 
-* スキーマなしのデータに対するリッチ クエリ。 Azure Cosmos DB では、データをスキーマなしの JSON ドキュメントとして異種コレクションに格納します。 スキーマやインデックスについて心配する必要なく、[高速なリッチ クエリ](sql-api-sql-query.md)を提供します。
+* スキーマなしのデータに対するリッチ クエリ。 Azure Cosmos DB では、データをスキーマなしの JSON ドキュメントとして異種コレクションに格納します。 スキーマやインデックスについて心配する必要なく、[高速なリッチ クエリ](how-to-sql-query.md)を提供します。
 * 高速スループット。 Azure Cosmos DB では、ドキュメントを読み書きするのにわずか数ミリ秒しかかかりません。 開発者は必要なスループットを指定でき、Azure Cosmos DB はすべての単一リージョンのアカウントに緩やかな整合性で 99.999% の可用性 SLA を提供し、全ての複数リージョンのデータベース アカウントに 99.99% の 読み取り可用性を提供します。
-* 無限のスケール。 Azure Cosmos DB のコレクションは、[アプリの規模の拡大に合わせて増加](partition-data.md)します。 小さいデータ サイズと 1 秒あたり数百件の要求のスループットから開始できます。 コレクションは、ペタバイトのデータと 1 秒あたり数億件の要求という任意の大きさのスループットに拡張できます。
+* 無限のスケール。 Azure Cosmos DB のコレクションは、[アプリの規模の拡大に合わせて増加](partition-data.md)します。 小さいデータ サイズと 1 秒あたり数百件の要求のスループットから開始できます。 コレクションまたはデータベースは、ペタバイトのデータと 1 秒あたり数億件の要求という任意の大きさのスループットに拡張できます。
 * グローバルに分散。 モバイル アプリ ユーザーは外に出かけ、世界中を飛び回ることもよくあります。 Azure Cosmos DB は、[グローバル分散データベース](distribute-data-globally.md)です。 ユーザーがデータにアクセスするには、地図をクリックします。
 * 組み込みの豊富な承認機能。 Azure Cosmos DB では、複雑なカスタムの承認コードを作成せずに、[ユーザーごとのデータ](https://aka.ms/documentdb-xamarin-todouser)やマルチ ユーザー共有データのような一般的なパターンを簡単に実装できます。
 * 地理空間クエリ。 現在、多くのモバイル アプリが地理的な場所に応じたエクスペリエンスを提供しています。 [地理空間型](geospatial.md)のファーストクラスのサポートにより、Azure Cosmos DB は、これらのエクスペリエンスの作成を簡単に実現可能なものにしています。
@@ -81,7 +84,7 @@ To-Do List アプリをマルチ ユーザーの To-Do List アプリに変更�
 
   4. Facebook を使用してリソース トークン ブローカーに対して認証するようにアプリを変更し、サインインした Facebook ユーザーのリソース トークンを要求します。 これで、UserItems コレクション内のデータにアクセスできます。  
 
-このパターンの完全なコード サンプルについては、[GitHub のリソース トークン ブローカー](http://aka.ms/documentdb-xamarin-todouser)に関するページを参照してください。 次の図には、このソリューションを示しています。
+このパターンの完全なコード サンプルについては、[GitHub のリソース トークン ブローカー](https://aka.ms/documentdb-xamarin-todouser)に関するページを参照してください。 次の図には、このソリューションを示しています。
 
 ![Azure Cosmos DB ユーザーおよびアクセス許可のブローカー](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
 
@@ -103,7 +106,7 @@ Azure Cosmos DB は、管理された DBaaS (database as a service) です。 �
 * [GitHub の Xamarin と Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) のソース コードを確認する。
 * [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md) をダウンロードする。
 * [.NET アプリケーション](sql-api-dotnet-samples.md)向けの他のコード サンプルを探す。
-* [Azure Cosmos DB のリッチ クエリ機能](sql-api-sql-query.md)について確認する。
+* [Azure Cosmos DB のリッチ クエリ機能](how-to-sql-query.md)について確認する。
 * [Azure Cosmos DB の地理空間サポート](geospatial.md)について確認する。
 
 

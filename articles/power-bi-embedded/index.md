@@ -1,22 +1,20 @@
 ---
-title: "Azure Power BI Embedded のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Power BI のデータ視覚化と対話型レポートをアプリに埋め込む方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
+title: Azure Power BI Embedded のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Power BI のデータ視覚化と対話型レポートをアプリに埋め込む方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。
 services: power-bi-embedded
-author: czeumault
-manager: carolz
+author: markingmyname
+ms.author: maghan
+manager: kfile
 layout: LandingPage
-ms.assetid: 
 ms.service: power-bi-embedded
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
-ms.date: 09/28/2017
-ms.author: carolz
-ms.openlocfilehash: d8e1fafe9b3fecc9822ef6f25d8c527eebe586cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 07/31/2018
+ms.openlocfilehash: 051b7d725a121b3160e8a572c5fab91e8289f44b
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678238"
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded のドキュメント
 
@@ -24,7 +22,7 @@ Power BI Embedded を使用して、データの視覚化と対話型のレポ�
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/power-bi-embedded/what-is-power-bi-embedded">
+        <a href="https://docs.microsoft.com/power-bi/developer/azure-pbie-what-is-power-bi-embedded">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -60,7 +58,7 @@ Power BI Embedded を使用して、データの視覚化と対話型のレポ�
         </a>
     </li>
     <li>
-        <a href="/azure/power-bi-embedded/get-started">
+        <a href="https://docs.microsoft.com/power-bi/developer/embedding#embedding-for-your-customers">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -78,7 +76,7 @@ Power BI Embedded を使用して、データの視覚化と対話型のレポ�
         </a>
     </li>
     <li>
-        <a href="https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/">
+        <a href="https://docs.microsoft.com/power-bi/developer/embed-sample-for-customers">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -107,7 +105,7 @@ Power BI Embedded を使用して、データの視覚化と対話型のレポ�
                 <div class="card">
                     <div class="cardText">
                         <h3>PowerShell</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.powerbiembedded/v2.3.0/azurerm.powerbiembedded">PowerShell</a></p>
+                        <p><a href="https://docs.microsoft.com/powershell/module/azurerm.powerbiembedded/?view=azurermps-6.5.0#power_bi_embedded_capacity">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -118,8 +116,8 @@ Power BI Embedded を使用して、データの視覚化と対話型のレポ�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>言語</h3>
-                        <p><a href="/dotnet/api/microsoft.azure.management.powerbiembedded">.NET</a></p>
+                        <h3>Languages</h3>
+                        <p><a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.management.powerbiembedded?view=azure-dotnet">.NET</a></p>
                         <p><a href="https://www.nuget.org/packages/Microsoft.PowerBI.Api/">.NET SDK ダウンロード</a></p>
                         <p><a href="https://microsoft.github.io/PowerBI-JavaScript/">JavaScript</a></p>
                         <p><a href="https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/">JavaScript SDK ダウンロード</a></p>
@@ -133,8 +131,9 @@ Power BI Embedded を使用して、データの視覚化と対話型のレポ�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
-                        <p><a href="https://msdn.microsoft.com/library/mt147898.aspx">REST API リファレンスに関するページ</a></p>
+                        <h3>REST</h3>
+                        <p><a href="https://docs.microsoft.com/rest/api/power-bi-embedded/">Azure Resource Manager REST API リファレンス</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt147898.aspx">REST API リファレンス</a></p>
                     </div>
                 </div>
             </div>

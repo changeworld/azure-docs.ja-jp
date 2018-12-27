@@ -1,24 +1,19 @@
 ---
-title: "Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能 | Microsoft Docs"
-description: "Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します"
+title: Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
+description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します
 services: backup
-documentationcenter: 
-author: JPallavi
+author: trinadhk
 manager: vijayts
-editor: 
-ms.assetid: 47bc8423-0a08-4191-826d-3f52de0b4cb8
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/08/2017
-ms.author: pajosh
-ms.openlocfilehash: f856303d4abf05178eb11a242b87390ff1484e1b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.author: trinadhk
+ms.openlocfilehash: 62b2744494fcd4d98bf75892dc95d86130dd04bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261742"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 マルウェア、ランサムウェア、侵入などのセキュリティ問題への懸念が高まっています。 これらのセキュリティ問題は、金銭とデータの両方の観点からコストがかかる可能性があります。 このような攻撃を防ぐために、Azure Backup にはハイブリッド バックアップを保護するセキュリティ機能が用意されています。 この記事では、Azure Recovery Services エージェントと Azure Backup Server を使用して、これらの機能を有効にして使用する方法について説明します。 次のような機能が該当します。
@@ -55,7 +50,7 @@ Recovery Services コンテナーを作成している場合、すべてのセ�
     ![Recovery Services コンテナーのプロパティのスクリーンショット](./media/backup-azure-security-feature/security-settings-update.png)
 
     [更新] リンクから **[セキュリティの設定]** ブレードが開きます。ここで機能の概要を確認したり、機能を有効にしたりすることができます。
-5. **[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)]** ドロップダウン リストから値を選択し、[Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) を有効にしたかどうかを確認する値を選択します。 有効にした場合は、Azure Portal へのサインイン時に別のデバイス (携帯電話など) から認証を実行するように求められます。
+5. **[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)]** ドロップダウン リストから値を選択し、[Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) を有効にしたかどうかを確認する値を選択します。 有効にした場合は、Azure Portal へのサインイン時に別のデバイス (携帯電話など) から認証を実行するように求められます。
 
    Backup で重要な操作を実行する場合、Azure Portal で使用可能なセキュリティ PIN を入力する必要があります。 Azure Multi-Factor Authentication を有効にすると、セキュリティ レイヤーが追加されます。 有効な Azure 資格情報を持ち、2 番目のデバイスから認証された承認済みのユーザーのみが Azure Portal にアクセスできます。
 6. セキュリティ設定を保存するには、**[有効]** を選択して、**[保存]** をクリックします。 **[有効]** を選択できるのは、前の手順で **[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)]** リストから値を選択した場合のみです。
@@ -86,6 +81,10 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
 ### <a name="authentication-to-perform-critical-operations"></a>重要な操作を実行するための認証
 重要な操作の認証レイヤー追加の一部として、**保護の停止 (データの削除を含む)** 操作や**パスフレーズの変更**操作の実行時にセキュリティ PIN の入力を求められます。
 
+> [!NOTE]
+
+> 現時点では、セキュリティ PIN は DPM および MABS の**保護の停止 (データの削除を含む)** ではサポートされていません。 
+
 この PIN を受け取るには次のようにします。
 
 1. Azure ポータルにサインインします。
@@ -107,7 +106,7 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
 この記事で説明するセキュリティ機能には、対象を絞った攻撃を防ぐための防御機構が用意されています。 さらに重要なことは、攻撃が行われても、これらの機能を使用してデータを回復できるということです。
 
 ## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
-| 操作 | エラーの詳細 | 解決策 |
+| Operation | エラーの詳細 | 解決策 |
 | --- | --- | --- |
 | ポリシーの変更 |バックアップ ポリシーを変更できませんでした。 エラー: サービスの内部エラー [0x29834] が発生したため、現在の操作を実行できませんでした。 しばらくしてから、操作をやり直してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |**原因:**<br/>このエラーは、セキュリティ設定が有効になっており、リテンション範囲を上記の最小値を下回るように減らそうとしたものの、サポートされていないバージョンを使用していると発生します (サポート対象のバージョンはこの記事の最初のメモに記載されています)。 <br/>**推奨される操作:**<br/> このケースでは、指定した最小リテンション期間 (日次の場合は 7 日間、週次の場合は 4 週間、月次の場合は 3 か月、年次の場合は 1 年) を上回るようにリテンション期間を設定し、ポリシー関連の更新を進めます。 他にもお勧めの方法として、バックアップ エージェント、Azure Backup Server、または DPM UR を更新して、すべてのセキュリティ更新プログラムを適用する方法があります。 |
 | パスフレーズの変更 |入力されたセキュリティ PIN が正しくありません。 (ID: 100130) この操作を完了するには、正しいセキュリティ PIN を指定してください。 |**原因:**<br/> このエラーは、重大な操作 (パスフレーズの変更など) を実行している間に、無効または有効期限の切れたセキュリティ PIN を入力すると発生します。 <br/>**推奨される操作:**<br/> 操作を完了するには、有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure Portal にログインし、Recovery Services コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
@@ -115,6 +114,6 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
 
 ## <a name="next-steps"></a>次の手順
 * [Azure Recovery Services コンテナーの使用を開始](backup-azure-vms-first-look-arm.md)して、これらの機能を有効にします。
-* [最新の Azure Recovery Services Agent をダウンロード](http://aka.ms/azurebackup_agent)して、Windows コンピューターを保護し、バックアップ データに対する攻撃を防ぎます。
+* [最新の Azure Recovery Services Agent をダウンロード](https://aka.ms/azurebackup_agent)して、Windows コンピューターを保護し、バックアップ データに対する攻撃を防ぎます。
 * [最新の Azure Backup Server をダウンロード](https://aka.ms/latest_azurebackupserver)して、ワークロードを保護し、攻撃からバックアップ データを保護します。
 * [System Center 2012 R2 Data Protection Manager の UR12 をダウンロード](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager)するか、[System Center 2016 Data Protection Manager の UR2 をダウンロード](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager)して、ワークロードを保護し、バックアップ データに対する攻撃を防ぎます。

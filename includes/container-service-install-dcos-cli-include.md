@@ -1,13 +1,13 @@
 ---
-title: "DC/OS CLI のインストール |Microsoft Docs"
-description: "DC/OS CLI をインストールします。"
+title: DC/OS CLI のインストール |Microsoft Docs
+description: DC/OS CLI をインストールします。
 services: container-service
-documentationcenter: 
+documentationcenter: ''
 author: rgardler
 manager: timlt
-editor: 
+editor: ''
 tags: acs, azure-container-service
-keywords: "コンテナー, マクロサービス, DC/OS, Azure"
+keywords: コンテナー, マクロサービス, DC/OS, Azure
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22877257"
 ---
 > [!NOTE]
 > これは、DC/OS ベースの ACS クラスターを操作することを目的としています。 Swarm ベースの ACS クラスターには、行う必要はありません。

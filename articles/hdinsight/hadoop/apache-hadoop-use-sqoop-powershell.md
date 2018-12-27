@@ -1,31 +1,25 @@
 ---
-title: "PowerShell と Azure HDInsight を使用して Sqoop ジョブを実行する | Microsoft Docs"
-description: "ワークステーションから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。"
-editor: cgronlun
-manager: jhubbard
+title: PowerShell と Azure HDInsight を使用して Apache Sqoop ジョブを実行する
+description: ワークステーションから Azure PowerShell を使用して、Apache Hadoop クラスターと Azure SQL データベース間で Apache Sqoop のインポートとエクスポートを実行する方法について説明します。
+ms.reviewer: jasonh
 services: hdinsight
-documentationcenter: 
-tags: azure-portal
-author: mumian
-ms.assetid: bbb6f53a-e019-4d01-92bd-92c208c760b6
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/20/2017
-ms.author: jgao
-ms.openlocfilehash: 1eaf55ea8e46598e261be43c646b5dbd48ac730b
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: hrasheed
+ms.openlocfilehash: 23dae8a6f0651ee6b753c4b29112eb733103b9e1
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631446"
 ---
-# <a name="run-sqoop-jobs-by-using-azure-powershell-for-hadoop-in-hdinsight"></a>HDInsight で Azure PowerShell for Hadoop を使用して Sqoop ジョブを実行する
+# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>HDInsight で Azure PowerShell for Apache Hadoop を使用して Apache Sqoop ジョブを実行する
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Azure PowerShell を使用して、HDInsight クラスターと Azure SQL データベースまたは SQL Server データベース間でインポートとエクスポートを実行する Sqoop ジョブを Azure HDInsight で実行する方法について説明します。
+Azure PowerShell を使用して、HDInsight クラスターと Azure SQL データベースまたは SQL Server データベース間でインポートとエクスポートを実行する Apache Sqoop ジョブを Azure HDInsight で実行する方法について説明します。
 
 > [!NOTE]
 > この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。 他の方法を選択するには、この記事の上部にあるタブ セレクターを使用してください。 
@@ -59,7 +53,7 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL デー
     #region - Connect to Azure subscription
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
-    catch{Login-AzureRmAccount}
+    catch{Connect-AzureRmAccount}
     #endregion
 
     #region - pre-process the source file

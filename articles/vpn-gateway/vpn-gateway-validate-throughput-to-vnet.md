@@ -1,25 +1,26 @@
 ---
-title: "Microsoft Azure Virtual Network への VPN スループットの検証 | Microsoft Docs"
-description: "このドキュメントの目的は、ユーザーがオンプレミスのリソースから Azure 仮想マシンへのネットワーク スループットを検証できるようにすることです。"
+title: Microsoft Azure Virtual Network への VPN スループットの検証 | Microsoft Docs
+description: このドキュメントの目的は、ユーザーがオンプレミスのリソースから Azure 仮想マシンへのネットワーク スループットを検証できるようにすることです。
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: jasmc
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/08/2017
+ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: e7e3c641791e7c72f5c2d6f8ecf674d1d7ee7ffa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7e6b3e7496c4a063156ff3b8feae1f5096efe55f
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035620"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>仮想ネットワークへの VPN スループットを検証する方法
 
@@ -53,7 +54,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 4.  インターネット サービス プロバイダー (ISP) の帯域幅を特定します。
 5.  (VM、ゲートウェイ、ISP) * 0.8 の最小の帯域幅の予想されるスループットを計算します。
 
-計算したスループットが、アプリケーションのベースライン スループット要件を満たしていない場合は、ボトルネックとして識別されるリソースの帯域幅を増加する必要があります。 Azure VPN Gateway のサイズを変更するには、「[ゲートウェイの SKU を変更する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。 仮想マシンのサイズを変更するには、「[VM のサイズを変更する](../virtual-machines/virtual-machines-windows-resize-vm.md)」を参照してください。 予想されるインターネット帯域幅が得られない場合、ISP に問い合わせる必要がある場合があります。
+計算したスループットが、アプリケーションのベースライン スループット要件を満たしていない場合は、ボトルネックとして識別されるリソースの帯域幅を増加する必要があります。 Azure VPN Gateway のサイズを変更するには、「[ゲートウェイの SKU を変更する](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。 仮想マシンのサイズを変更するには、「[VM のサイズを変更する](../virtual-machines/virtual-machines-windows-resize-vm.md)」を参照してください。 予想されるインターネット帯域幅が得られない場合、ISP に問い合わせる必要がある場合があります。
 
 ## <a name="validate-network-throughput-by-using-performance-tools"></a>パフォーマンス ツールを使用したネットワーク スループットの検証
 
@@ -87,7 +88,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
     ```CMD
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
-    </br>
+     
     **Azure Linux:** Azure Linux イメージには制限の緩やかなファイアウォールがあります。 ポートでリッスンするアプリケーションがある場合、トラフィックは通過を許可されます。 セキュリティ保護されているカスタム イメージには、明示的に開かれたポートが必要な可能性があります。 一般的な Linux OS レイヤー ファイアウォールには、`iptables`、`ufw`、または`firewalld` が含まれます。
 
 3. サーバー ノードで、iperf3.exe の抽出元のディレクトリに移動します。 iPerf をサーバー モードで実行し、次のコマンドとして、ポート 5001 でリッスンするように設定します。
@@ -121,7 +122,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 ## <a name="address-slow-file-copy-issues"></a>低速ファイル コピーの問題の対処
 エクスプローラーを使用するか、RDP セッション経由でドラッグ アンド ドロップする場合に、低速ファイル コピーが発生することがあります。 この問題は、次の要因の一方または両方に原因があります。
 
-- エクスプローラーや RDP などのファイル コピー アプリケーションでは、ファイルのコピー時に複数のスレッドを使用しません。 パフォーマンス向上のためには、[Richcopy](https://technet.microsoft.com/en-us/magazine/2009.04.utilityspotlight.aspx) などのマルチスレッド ファイル コピー アプリケーションを使用して、16 個または 32 個のスレッドを使用してファイルをコピーしてください。 Richcopy でファイル コピーのスレッド数を変更するには、**[アクション]**  >  **[コピー オプション]**  >  **[ファイルのコピー]** をクリックします。<br><br>
+- エクスプローラーや RDP などのファイル コピー アプリケーションでは、ファイルのコピー時に複数のスレッドを使用しません。 パフォーマンス向上のためには、[Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) などのマルチスレッド ファイル コピー アプリケーションを使用して、16 個または 32 個のスレッドを使用してファイルをコピーしてください。 Richcopy でファイル コピーのスレッド数を変更するには、**[アクション]**  >  **[コピー オプション]**  >  **[ファイルのコピー]** をクリックします。<br><br>
 ![低速ファイル コピーの問題](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 - 不十分な VM ディスク読み取り/書き込み速度。 詳細については、[Azure Storage のトラブルシューティング](../storage/common/storage-e2e-troubleshooting.md)に関するページを参照してください。
 
@@ -134,7 +135,7 @@ tracert を使用して、Microsoft Azure エッジ デバイスを追跡し、�
 オンプレミスのネットワークから、Azure Gateway または VM の VIP に対して *tracert* を実行します。 * のみが返された場合、Azure エッジに到達したことがわかります。 "MSN" を含む DNS 名が返された場合、Microsoft バックボーンに到達したことがわかります。<br><br>
 ![待機時間のチェック](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細やヘルプについては、次のリンク先を確認してください。
 
 - [Azure 仮想マシンのネットワーク スループットの最適化](../virtual-network/virtual-network-optimize-network-bandwidth.md)

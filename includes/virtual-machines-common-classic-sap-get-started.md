@@ -1,4 +1,16 @@
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 1983e7560c986df241e9c592aaaa6b646a99840f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264367"
+---
 ## <a name="planning-and-implementation"></a>計画と導入
 タイトル: Azure Virtual Machines への SAP NetWeaver の導入 – 計画/導入ガイド
 
@@ -6,16 +18,16 @@
 
 更新日: 2015 年 8 月
 
-[このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkId=397963)
+[このガイドを今すぐダウンロードする](https://go.microsoft.com/fwlink/?LinkId=397963)
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 タイトル: Azure Virtual Machines への SAP NetWeaver の導入 – デプロイ ガイド
 
 概要: SAP NetWeaver ソフトウェアを Azure 内の仮想マシンにデプロイする手順について説明します。 このホワイト ペーパーでは、Azure Monitoring Extensions for SAP の有効化に重点を置きつつ (Azure Monitoring Extensions for SAP で発生する問題のトラブルシューティングに関する推奨事項など)、3 つのデプロイ シナリオを中心に説明しています。 既に計画/導入ガイドを読んでいることを前提としています。
 
 更新日: 2015 年 9 月
 
-[このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkId=397964)
+[このガイドを今すぐダウンロードする](https://go.microsoft.com/fwlink/?LinkId=397964)
 
 ## <a name="sap-dbms-on-azure"></a>Azure における SAP DBMS
 タイトル: Azure への SAP DBMS のデプロイ ガイド
@@ -24,7 +36,7 @@
 
 更新日: 2015 年 12 月
 
-[このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkId=397965)
+[このガイドを今すぐダウンロードする](https://go.microsoft.com/fwlink/?LinkId=397965)
 
 ## <a name="sap-netweaver-on-azure"></a>Azure における SAP NetWeaver
 タイトル: SAP NetWeaver - Azure ベースの障害復旧ソリューションの構築
@@ -33,5 +45,5 @@
 
 更新日: 2015 年 9 月
 
-[このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkID=521971)
+[このガイドを今すぐダウンロードする](https://go.microsoft.com/fwlink/?LinkID=521971)
 

@@ -1,33 +1,27 @@
 ---
-title: "Azure HDInsight における Apache Spark クラスターの問題のトラブルシューティング | Microsoft Docs"
-description: "Azure HDInsight における Apache Spark のクラスターに関連する問題と、それらを解決する方法について説明します。"
+title: Azure HDInsight における Apache Spark クラスターの問題のトラブルシューティング
+description: Azure HDInsight における Apache Spark のクラスターに関連する問題と、それらを解決する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 610c4103-ffc8-4ec0-ad06-fdaf3c4d7c10
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: de7847055c00fe9d0d1cc08cf5ba5d2ab54a9fc0
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: hrasheed
+ms.openlocfilehash: c364f9d06d29a601dfb9598bb568e7a6218d0a6f
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013804"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight における Apache Spark クラスターの既知の問題
 
 このドキュメントでは、HDInsight Spark パブリック プレビューのすべての既知の問題を追跡します。  
 
 ## <a name="livy-leaks-interactive-session"></a>Livy が対話型セッションをリークする
-対話型セッションがまだ有効な状態で Livy が再起動されると (Ambari から、またはヘッドノード 0 仮想マシンの再起動のため)、対話型ジョブ セッションがリークされます。 このため、新しいジョブは受け付け済み状態のままになり、起動できません。
+対話型セッションがまだ有効な状態で Livy が再起動されると (Ambari から、またはヘッドノード 0 仮想マシンの再起動のため)、対話型ジョブ セッションがリークされます。 その結果、新しいジョブは、承諾済み状態で停止されます。
 
 **対応策:**
 
@@ -54,7 +48,12 @@ ms.lasthandoff: 02/24/2018
 Ambari から履歴サーバーを手動で開始します。
 
 ## <a name="permission-issue-in-spark-log-directory"></a>Spark ログ ディレクトリでアクセス許可の問題が発生する
-hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (アクセス許可が拒否されました) というエラーになり、ドライバー ログは書き込まれません。 
+spark-submit を使用してジョブを送信するとき、hdiuser は次のエラーを取得します。
+
+```
+java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permission denied)
+```
+また、ドライバー ログは書き込まれません。 
 
 **対応策:**
 
@@ -65,7 +64,7 @@ hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundEx
 
 ## <a name="spark-phoenix-connector-is-not-supported"></a>Spark-Phoenix コネクタがサポートされない
 
-現時点では、Spark-Phoenix コネクタは HDInsight Spark クラスターではサポートされません。
+HDInsight Spark クラスターは、Spark-Phoenix コネクターをサポートしていません。
 
 **対応策:**
 
@@ -75,7 +74,7 @@ hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundEx
 Jupyter Notebook に関連する既知の問題を以下に示します。
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>ファイル名での非 ASCII 文字の使用
-Spark HDInsight クラスターで使用できる Jupyter Notebook では、ファイル名に非 ASCII 文字を使用することはできません。 Jupyter UI を使用して、ファイル名に非 ASCII 文字が含まれたファイルをアップロードしようとすると、通知されずに失敗します (つまり、Jupyter でファイルをアップロードできませんが、明確なエラーはスローされません)。 
+Jupyter ノートブックのファイル名に ASCII 以外の文字を使用しないでください。 ファイル名に ASCII 以外を含むファイルのアップロードを Jupyter UI 経由で試行すると、エラー メッセージが表示されないまま、エラーになります。 Jupyter を使ってファイルをアップロードすることはできませんが、表示可能なエラーもスローされません。
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>大きなサイズの Notebook の読み込み中のエラー
 大きなサイズの Notebook の読み込み中にエラー **`Error loading notebook`** が発生する場合があります。  

@@ -1,3 +1,16 @@
+---
+author: sdwheeler
+ms.service: azure-powershell
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: sewhee
+ms.openlocfilehash: 5f224ab3b0040bcba6b99d8db744e9dbde4a63c9
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572399"
+---
 ## <a name="setting-up-powershell-for-resource-manager-templates"></a>リソース マネージャー テンプレート向けの PowerShell の設定
 リソース マネージャーで Azure PowerShell を使用する前に、適切なバージョンの Windows PowerShell と Azure PowerShell を用意する必要があります。
 
@@ -19,14 +32,14 @@ Windows PowerShell Version 3.0 または 4.0 があることを確認します�
     PSRemotingProtocolVersion      2.2
 
 
-**PSVersion** の値が 3.0 または 4.0 であることを確認します。 3.0 または 4.0 でない場合は、[Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)のダウンロード ページを参照してください。
+**PSVersion** の値が 3.0 または 4.0 であることを確認します。 3.0 または 4.0 でない場合は、[Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)のダウンロード ページを参照してください。
 
 ### <a name="set-your-azure-account-and-subscription"></a>Azure アカウントとサブスクリプションを設定する
 Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-Azure PowerShell コマンド プロンプトを開き、次のコマンドで Azure にログオンします。
+Azure PowerShell コマンド プロンプトを開き、次のコマンドで Azure にサインインします。
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Azure サブスクリプションが複数ある場合は、次のコマンドで、Azure サブスクリプションの一覧を表示できます。
 

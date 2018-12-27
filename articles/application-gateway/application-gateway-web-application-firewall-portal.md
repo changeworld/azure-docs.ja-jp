@@ -1,27 +1,28 @@
 ---
-title: "Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs"
-description: "Azure Portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する方法について説明します。"
+title: Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs
+description: Azure Portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: d2b8fc65e6cd03f61151dbae66bb89821cdab13b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 12ef6447e53ba0da3fbd3d56749d7798c49a2cfe
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993964"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Azure Portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する
 
 Azure Portal を使用して、[Web アプリケーション ファイアウォール](application-gateway-web-application-firewall-overview.md) (WAF) のある[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成することができます。 WAF は、[OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) ルールを使用してアプリケーションを保護します。 こうしたルールには、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの攻撃に対する保護が含まれます。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * WAF 対応のアプリケーション ゲートウェイの作成
@@ -32,7 +33,7 @@ Azure Portal を使用して、[Web アプリケーション ファイアウォ�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にログインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインする
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -78,7 +79,7 @@ Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にロ�
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-1. **[新規]**をクリックします。
+1. **[新規]** をクリックします。
 2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 

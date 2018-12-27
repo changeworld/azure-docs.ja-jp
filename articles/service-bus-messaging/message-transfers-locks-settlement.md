@@ -1,23 +1,24 @@
 ---
-title: "Azure Service Bus メッセージの転送、ロック、および解決 | Microsoft Docs"
-description: "Service Bus メッセージの転送および解決処理の概要"
+title: Azure Service Bus メッセージの転送、ロック、および解決 | Microsoft Docs
+description: Service Bus メッセージの転送および解決処理の概要
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
-ms.author: sethm
-ms.openlocfilehash: 4789da3c84d52b2615bf4250a36093a74154e1d4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.date: 09/25/2018
+ms.author: spelluru
+ms.openlocfilehash: a1835e26f67427f84abd8a3cf24ad196fec8e99d
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854424"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>メッセージの転送、ロック、および解決
 
@@ -61,7 +62,7 @@ for (int i = 0; i < 100; i++)
 {
   tasks.Add(client.SendAsync(…));
 }
-await Task.WhenAll(tasks.ToArray());
+await Task.WhenAll(tasks);
 ```
 
 すべての非同期プログラミング モデルでは、保留中の操作を保持するため、メモリ ベースの隠された作業キューが使用されることに注意してください。 [SendAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) または **Send** (Java) が返ると、送信タスクは作業キューに入りますが、プロトコル動作は、タスクの実行順序がくるまで開始されません。 信頼性が考慮されるべき状況で、メッセージを連続送信する傾向のあるコードの場合、実際に送信されるまですべての送信メッセージがメモリを使用するため、一度に送信されるメッセージが多くなりすぎないよう注意する必要があります。
@@ -78,7 +79,7 @@ for (int i = 0; i < 100; i++)
 
   tasks.Add(client.SendAsync(…).ContinueWith((t)=>semaphore.Release()));
 }
-await Task.WhenAll(tasks.ToArray());
+await Task.WhenAll(tasks);
 ```
 
 アプリケーションは、操作の結果を取得しない、"送信して放置" 方法で非同期送信する設計には**絶対にしない必要があります**。 そのような設計では、内部および隠れたタスク キューがメモリを消費し、アプリケーションが送信エラーを検知できなくなります。
@@ -125,7 +126,6 @@ for (int i = 0; i < 100; i++)
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)

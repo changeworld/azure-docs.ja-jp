@@ -1,23 +1,23 @@
 ---
-title: "Azure Application Insights での開発、テスト、およびリリースのテレメトリの分離| Microsoft Docs"
-description: "開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。"
+title: Azure Application Insights での開発、テスト、およびリリースのテレメトリの分離| Microsoft Docs
+description: 開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8d95958bce0597bfb16ef1c6b99b72ce9134e66f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 77c0baba1c30153730e87181e24137d9a20ea6b1
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012472"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>開発、テスト、および運用のテレメトリの分離
 
@@ -32,7 +32,7 @@ Web アプリに対する Application Insights の監視を設定するときは
 通常、さまざまなシナリオに応じて、複数のリソースまたは単一の共有リソースを使用することを選択します。
 
 * 複数の独立したアプリケーション - アプリごとに別のリソースと ikey を使用します。
-* 1 つのビジネス アプリケーションの複数のコンポーネントまたはロール - すべてのコンポーネント アプリに対して[単一の共有リソース](app-insights-monitor-multi-role-apps.md)を使用します。 cloud_RoleName プロパティによって、テレメトリをフィルター処理したりセグメント化したりできます。
+* 1 つのビジネス アプリケーションの複数のコンポーネントまたはロール - すべてのコンポーネント アプリに対して[単一の共有リソース](app-insights-app-map.md)を使用します。 cloud_RoleName プロパティによって、テレメトリをフィルター処理したりセグメント化したりできます。
 * 開発、テスト、およびリリース - 'スタンプ' 内のシステムのバージョンまたは運用段階ごとに、別のリソースと ikey を使用します。
 * A |B テスト - 単一のリソースを使用します。 TelemetryInitializer を作成して、バリアント型を識別するプロパティをテレメトリに追加します。
 
@@ -113,7 +113,7 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
     ```XML
 
     <?xml version="1.0" encoding="utf-8"?>
-    <DeploymentEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
+    <DeploymentEvent xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
       <ProjectName>AppVersionExpt</ProjectName>
       <Build type="MSBuild">
         <MSBuild>
@@ -153,10 +153,10 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
 ただし、Visual Studio での開発者向けのビルドではなく、Microsoft Build Engine でのみビルド バージョン番号が生成されることに注意してください。
 
 ### <a name="release-annotations"></a>リリース注釈
-Visual Studio Team Services を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](app-insights-annotations.md)できます。 このマーカーは、次の図のように表示されます。
+Azure DevOps を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](app-insights-annotations.md)できます。 このマーカーは、次の図のように表示されます。
 
-![グラフのリリース注釈の例のスクリーンショット](./media/app-insights-asp-net/release-annotation.png)
-## <a name="next-steps"></a>次のステップ
+![グラフのリリース注釈の例のスクリーンショット](media/app-insights-separate-resources/release-annotation.png)
+## <a name="next-steps"></a>次の手順
 
 * [複数のロール用の共有リソース](app-insights-monitor-multi-role-apps.md)
 * [A |B のバリアントを区別するためのテレメトリ初期化子を作成する](app-insights-api-filtering-sampling.md#add-properties)

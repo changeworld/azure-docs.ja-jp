@@ -1,5 +1,5 @@
 ---
-title: Azure の課金内容の確認
+title: Azure の課金内容を確認する | Microsoft Docs
 description: Azure サブスクリプションの使用状況と課金内容を確認して理解する方法について説明します
 services: ''
 documentationcenter: ''
@@ -10,16 +10,17 @@ tags: billing
 ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
-ms.author: tonguyen
-ms.openlocfilehash: be15c74456b0cec64455f03dd72b8b64eef2bd5d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.date: 06/14/2018
+ms.author: cwatson
+ms.openlocfilehash: be2e774bc4220d5d93f555263fa9f342f449f8b2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423444"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の確認
 Azure の課金内容を確認するには、詳細な毎日の使用状況ファイルおよび Azure ポータルのコスト管理レポートと、請求書を比較します。
@@ -32,6 +33,9 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
 請求書および詳細な毎日の使用状況ファイルの詳しい用語と説明については、[Microsoft Azure 請求書の用語の確認](billing-understand-your-invoice.md)に関する記事と「[Microsoft Azure の詳細な利用料金の用語を理解する](billing-understand-your-usage.md)」をご覧ください。 
 
 コスト管理レポートの詳細については、[Azure ポータルのコスト管理](https://docs.microsoft.com/azure/billing/billing-getting-started)に関する記事をご覧ください。
+
+> [!div class="nextstepaction"]
+> [Azure の課金に関するドキュメントの改善にご協力ください](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="charges"></a>請求書の料金が正しいことを確認する方法
 
@@ -48,7 +52,7 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
  | 請求書 (PDF) | 使用状況の詳細 (CSV)|
  | --- | --- |
 |請求サイクル | 請求期間 |
- |名前 |測定カテゴリ |
+ |Name |測定カテゴリ |
  |type |測定サブカテゴリ |
  |リソース |測定名 |
  |リージョン |測定リージョン |
@@ -101,9 +105,42 @@ Azure Portal で料金を確認することもできます。Azure Portal は、
 
 [サポート チケットを作成](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)して、支払い状況の確認に関するサポートを要求してください。 
 
+## <a name="are-there-different-azure-customer-types-how-do-i-know-what-customer-type-i-am"></a>Azure の顧客にはさまざまなタイプがありますか。 自分の顧客タイプはどうすればわかりますか。
+Azure の顧客にはさまざまなタイプがあります。 価格設定や請求書をよく理解するために、次の顧客タイプの説明をお読みください。
+
+- **Enterprise**: Enterprise 顧客は、Azure と Enterprise Agreement を締結し、交渉によって年額コミットメントを決定しています。Azure リソースのカスタム価格が提示されます。
+- **Web Direct**: Web Direct 顧客は、Azure とカスタム契約を締結していません。 このような顧客は azure.com から Azure に新規登録し、すべての Azure リソースについて一般向け価格が提示されます。
+- **クラウド サービス プロバイダー**: クラウド サービス プロバイダーとは、通常、Azure 上にソリューションを構築するようにエンド ユーザーから依頼される企業です。
+
+## <a name="why-dont-i-see-the-cost-the-resource-i-have-created-in-my-bill"></a>作成したリソースのコストが請求書に表示されないのはなぜですか。
+Azure は、リソースのコストに直接基づいて課金するわけではありません。 課金は、リソースの有効期間における使用状況を追跡するために使用する 1 つ以上の測定に基づいています。 これらの測定が課金の計算に使用されます。 Azure の測定については以下をご覧ください。
+
+## <a name="how-does-azure-charge-metering-work"></a>Azure の料金測定はどのようなしくみですか。
+仮想マシンなど 1 つの Azure リソースを使用すると、1 つ以上の測定インスタンスが作成されます。 これらの測定は、時間経過に伴ってリソースの使用状況を追跡するために使用されます。 各測定によって出力された使用状況レコードが、コスト測定システムで Azure によって課金の計算に使用されます。 
+
+たとえば、Azure に作成された 1 つの仮想マシンに対して、使用状況を追跡するために次の測定が作成される場合があります。
+
+- コンピューティング時間
+- IP アドレス時間
+- データ転送 (受信)
+- データ転送 (送信)
+- Standard マネージド ディスク
+- Standard マネージド ディスク操作
+- Standard IO - ディスク
+- Standard IO - ブロック BLOB (読み取り)
+- Standard IO - ブロック BLOB (書き込み)
+- Standard IO - ブロック BLOB (削除)
+
+VM が作成されると、上記の測定それぞれが使用状況レコードを出力し始めます。 後から Azure の測定システムで、この使用状況と測定の価格を組み合わせて、顧客に対する請求額が決定されます。
+
+> [!Note]
+> 上記の測定の例は、作成される VM に対して作成される測定のごく一部です。
+
+## <a name="what-is-the-difference-between-azure-1st-party-charges-and-azure-marketplace-charges"></a>Azure ファースト パーティ料金と Azure Marketplace 料金の違いは何ですか。
+Azure ファースト パーティ料金は、Azure が直接開発して提供しているリソースのものです。 Azure Marketplace 料金は、サード パーティ ソフトウェア ベンダーによって作成され、Azure Marketplace で入手できるリソースのものです。 たとえば、Barracuda Firewall はサード パーティによって提供される Azure Marketplace リソースです。 このファイアウォールと対応する測定に関するすべての料金は、マーケットプレース料金として表示されます。 
+
 ## <a name="tips-for-cost-management"></a>コスト管理に関するヒント
-- [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や[総保有コスト計算ツール](https://aka.ms/azure-tco-calculator)を使用してコストを推定し、[各サービスの詳細な料金情報](https://azure.microsoft.com/en-us/pricing/)を取得します。
-- [課金アラートを設定](billing-set-up-alerts.md)します。
+- [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や[総保有コスト計算ツール](https://aka.ms/azure-tco-calculator)を使用してコストを推定し、[各サービスの詳細な料金情報](https://azure.microsoft.com/pricing/)を取得します。
 - [Azure ポータルで使用状況とコストを定期的に確認します](billing-getting-started.md#costs)。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。

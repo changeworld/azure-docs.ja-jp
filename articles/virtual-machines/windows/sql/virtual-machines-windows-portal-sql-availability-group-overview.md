@@ -1,6 +1,6 @@
 ---
-title: "SQL Server 可用性グループ - Azure Virtual Machines - 概要 | Microsoft Docs"
-description: "この記事では、Azure Virtual Machines での SQL Server 可用性グループについて説明します。"
+title: SQL Server 可用性グループ - Azure Virtual Machines - 概要 | Microsoft Docs
+description: この記事では、Azure Virtual Machines での SQL Server 可用性グループについて説明します。
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -15,17 +15,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 4a531fb87d9cd2743138ba7a027bdf0d132b9747
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2c0c8b49d3f7122b71a08bc57ac615ba9e0c0108
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239442"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Always On 可用性グループの概要 #
 
 この記事では、Azure Virtual Machines での SQL Server 可用性グループについて説明します。 
 
-Azure Virtual Machines での Always On 可用性グループは、オンプレミスの Always On 可用性グループに似ています。 詳細については、「 [AlwaysOn 可用性グループ (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。 
+Azure Virtual Machines での Always On 可用性グループは、オンプレミスの Always On 可用性グループに似ています。 詳細については、「 [AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。 
 
 次の図は、Azure Virtual Machines での完全な SQL Server 可用性グループの一部を示したものです。
 

@@ -1,26 +1,21 @@
 ---
-title: "Hadoop スタック トレース エラー メッセージ - Azure HDInsight | Microsoft Docs"
-description: "Azure HDInsight での Hadoop スタック トレース エラー メッセージのインデックス。 一覧のエラーに対応するトラブルシューティング情報を確認します。"
-keywords: "スタック トレース、エラー メッセージ"
+title: Hadoop スタック トレース エラー メッセージ - Azure HDInsight
+description: Azure HDInsight での Hadoop スタック トレース エラー メッセージのインデックス。 一覧のエラーに対応するトラブルシューティング情報を確認します。
+keywords: スタック トレース、エラー メッセージ
 services: hdinsight
-documentationcenter: NA
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 310051e5-5e2f-4be2-9780-2e8c0430e52d
 ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: big-data
-ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: 49a7629987df77da0844a65b265cde87473b4d0c
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.topic: conceptual
+ms.date: 05/14/2018
+ms.openlocfilehash: 880f5fc44978a6b46b3cbaefe41296903617b4e6
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011410"
 ---
 # <a name="index-of-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight での Hadoop のトラブルシューティングに関する記事のインデックス
 記事は、エラーの種類別に整理されています。

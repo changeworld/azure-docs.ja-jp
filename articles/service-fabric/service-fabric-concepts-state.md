@@ -1,24 +1,25 @@
 ---
-title: "Azure マイクロサービスで状態を定義および管理する | Microsoft Docs"
-description: "Service Fabric でサービスの状態を定義し管理する方法"
+title: Azure Service Fabric サービスで状態を管理する | Microsoft Docs
+description: Service Fabric サービスでサービスの状態を定義して管理する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f5e618a5-3ea3-4404-94af-122278f91652
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 103fd6c3d536bc11f4e39444043a332a1d8f6c01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 48345be959bb9bebf7c30fa71de91b7881863d66
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054959"
 ---
 # <a name="service-state"></a>サービスの状態
 **サービスの状態**とは、サービスが機能するために必要な、メモリ内またはディスク上のデータのことです。 これには、たとえば、サービスが機能するために読み取りや書き込みをする、データ構造およびメンバー変数が含まれます。 サービスの設計方法によっては、ディスクに保存されているファイルやその他のリソースが含まれる場合もあります。 たとえば、データとトランザクション ログを格納するためにデータベースで使用するファイルが含まれます。
@@ -34,7 +35,7 @@ Azure Service Fabric の場合、前者のサービスはステートレス サ�
 
 状態は、この状態を操作するコードと同じ場所に配置することもできます。 Service Fabric のステートフル サービスは通常、このモデルを使用して構築されます。 Service Fabric が提供するインフラストラクチャは、その状態の可用性、一貫性、持続性の高さと、この方法で構築されたサービスの拡張の容易さを保証します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Service Fabric の概念について詳しくは、次の記事をご覧ください。
 
 * [Service Fabric サービスの可用性](service-fabric-availability-services.md)

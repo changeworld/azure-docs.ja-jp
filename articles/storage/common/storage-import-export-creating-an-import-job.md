@@ -1,24 +1,19 @@
 ---
-title: "Azure Import/Export のインポート ジョブを作成する | Microsoft Docs"
-description: "Microsoft Azure Import/Export サービスのインポート ジョブを作成する方法について説明します。"
+title: Azure Import/Export のインポート ジョブを作成する | Microsoft Docs
+description: Microsoft Azure Import/Export サービスのインポート ジョブを作成する方法について説明します。
 author: muralikk
-manager: syadav
-editor: syadav
 services: storage
-documentationcenter: 
-ms.assetid: 8b886e83-6148-4149-9d0f-5d48ec822475
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: d373d2a0e601f2796719fc5efb8761f276ab24d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: d7a9da4ac3560e67a6f7bc8b79a7c2dd37995d4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258012"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのインポート ジョブの作成
 
@@ -40,7 +35,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 
 インポート ジョブのドライブを準備する手順は、ジョブの作成にポータルを使用する場合でも、REST API を使用する場合でも同じです。
 
-次に示すのは、ドライブ準備作業の概要です。 詳しい手順については、「[Azure Import-Export ツールの参照](storage-import-export-tool-how-to-v1.md)」をご覧ください。 Azure Import/Export ツールは、[こちら](http://go.microsoft.com/fwlink/?LinkID=301900)からダウンロードできます。
+次に示すのは、ドライブ準備作業の概要です。 詳しい手順については、「[Azure Import-Export ツールの参照](storage-import-export-tool-how-to-v1.md)」をご覧ください。 Azure Import/Export ツールは、[こちら](https://go.microsoft.com/fwlink/?LinkID=301900)からダウンロードできます。
 
 ドライブの準備には次の手順が含まれます。
 
@@ -62,7 +57,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 
 ## <a name="obtaining-your-shipping-location"></a>送付先を取得する
 
-インポート ジョブを作成する前に、[List Locations](/rest/api/storageimportexport/listlocations) 操作を呼び出して、送付先の名前と住所を取得する必要があります。 `List Locations` は、送付先と住所の一覧とを返します。 返された一覧から送付先を選択し、その住所宛てにハードドライブを発送します。 `Get Location` 操作を使用して、特定の送付先の住所を取得することもできます。
+インポート ジョブを作成する前に、[List Locations](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) 操作を呼び出して、送付先の名前と住所を取得する必要があります。 `List Locations` は、送付先と住所の一覧とを返します。 返された一覧から送付先を選択し、その住所宛てにハードドライブを発送します。 `Get Location` 操作を使用して、特定の送付先の住所を取得することもできます。
 
  次の手順に従って、送付先を取得します。
 
@@ -102,8 +97,10 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 >  ドライブは、サポートされている配送サービスを通じて発送する必要があります。そうすることで、パッケージの追跡番号が提供されます。
 
 ## <a name="updating-the-import-job-with-your-shipping-information"></a>インポート ジョブの発送情報を更新する
-追跡番号を入手したら、[Update Job Properties](/api/storageimportexport/jobs#Jobs_Update) 操作を呼び出して、ジョブの配送業者名、追跡番号、および返送時の配送業者アカウント番号を更新します。 オプションで、ドライブ数、および発送日を指定することもできます。
+追跡番号を入手したら、[Update Job Properties](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Update) 操作を呼び出して、ジョブの配送業者名、追跡番号、および返送時の配送業者アカウント番号を更新します。 オプションで、ドライブ数、および発送日を指定することもできます。
 
-## <a name="next-steps"></a>次のステップ
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
+
+## <a name="next-steps"></a>次の手順
 
 * [Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)

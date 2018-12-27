@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズのボリュームを複製する | Microsoft Docs"
-description: "さまざまな複製の種類と用途、および StorSimple 8000 シリーズ デバイスでバックアップ セットを使用して個々のボリュームを複製する方法について説明します。"
+title: StorSimple 8000 シリーズのボリュームを複製する | Microsoft Docs
+description: さまざまな複製の種類と用途、および StorSimple 8000 シリーズ デバイスでバックアップ セットを使用して個々のボリュームを複製する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26333204"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Azure ポータルで StorSimple デバイス マネージャー サービスを使用してボリュームを複製する
 

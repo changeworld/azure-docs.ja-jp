@@ -9,16 +9,17 @@ editor: amanbha
 ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 088f56f33c85d3c590acf4a2eaa660a9d586f7ec
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f8e6ad4b23eeaf46cccac9c8ff9d41f71511129d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642854"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>高信頼アクターの Service Fabric プラットフォームの使用方法
 この記事では、Reliable Actors による Azure Service Fabric プラットフォームの使用方法について説明します。 Reliable Actors は、*アクター サービス*と呼ばれるステートフル リライアブル サービスの実装にホストされるフレームワークで実行されます。 アクター サービスには、アクターのライフサイクルとメッセージ ディスパッチを管理するうえで必要なコンポーネントがすべて含まれています。
@@ -41,9 +42,6 @@ Reliable Services では、サービスは `StatefulService` クラスを継承�
 * サービスのバックアップと復元。
 * すべてのアクターで共有される機能 (サーキット ブレーカーなど)。
 * アクター サービス自体と個別アクターでのリモート プロシージャ コール。
-
-> [!NOTE]
-> ステートフル サービスは、Java/Linux では現在サポートされていません。
 
 詳細については、「[Implementing service-level features in your actor service](service-fabric-reliable-actors-using.md)」 (アクター サービスでのサービス レベルの機能の実装) を参照してください。
 

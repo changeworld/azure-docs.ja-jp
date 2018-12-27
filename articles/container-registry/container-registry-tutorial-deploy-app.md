@@ -1,23 +1,23 @@
 ---
-title: Azure Container Registry チュートリアル - Azure Container Registry からの Web アプリのデプロイ
-description: Linux ベースの Web アプリを、geo レプリケーション Azure Container Registry からコンテナー イメージを使用してデプロイします。 3 部構成のシリーズのパート 2。
+title: チュートリアル - Azure 内の Geo レプリケートされている Docker レジストリからアプリをデプロイする
+description: コンテナー イメージを使用し、Geo レプリケートされている Azure コンテナー レジストリから 2 つの異なる Azure リージョンに Linux ベースの Web アプリをデプロイします。 3 部構成のシリーズのパート 2。
 services: container-registry
-author: mmacy
-manager: timlt
+author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
-ms.author: marsma
-ms.custom: mvc
-ms.openlocfilehash: 51aa3c6fc56e974fc1729a1d2fe35c889adf35e2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 08/20/2018
+ms.author: danlep
+ms.custom: seodec18, mvc
+ms.openlocfilehash: e5a38e2b6550d763f30c2462944b154f76bbe92c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253835"
 ---
-# <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>チュートリアル: Azure Container Registry からの Web アプリのデプロイ
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>チュートリアル: Geo レプリケートされている Azure コンテナー レジストリから Web アプリをデプロイする
 
-これは 3 部構成のチュートリアル シリーズの第 2 部です。 [第 1 部](container-registry-tutorial-prepare-registry.md)では、プライベートの geo レプリケーション コンテナー レジストリを作成し、ソースからコンテナー イメージを構築してレジストリにプッシュしました。 この記事では、2 つの異なる Azure リージョンの 2 つの Web アプリ インスタンスにコンテナーをデプロイして、ネットワーク上の近い場所で操作できるという geo レプリケーション レジストリの 利点を活用します。
+これは 3 部構成のチュートリアル シリーズの第 2 部です。 [第 1 部](container-registry-tutorial-prepare-registry.md)では、プライベートの geo レプリケーション コンテナー レジストリを作成し、ソースからコンテナー イメージを構築してレジストリにプッシュしました。 この記事では、2 つの異なる Azure リージョンの 2 つの Web アプリ インスタンスにコンテナーをデプロイすることで、ネットワーク上の近い場所で操作できるという geo レプリケーション レジストリの利点を活用します。 各インスタンスは、最も近いレジストリから、コンテナー イメージをプルします。
 
 シリーズの第 2 部であるこのチュートリアルでは、次のことを行います。
 
@@ -41,18 +41,20 @@ Azure Container Registry では、コンテナー化されたアプリケーシ�
 
 [Azure Portal](https://portal.azure.com) にサインインし、前のチュートリアルで作成したレジストリに移動します。
 
-**[リポジトリ]** > **[acr-helloworld]** を選択し、**[タグ]** の下の **[v1]** タグを右クリックして **[Deploy to web app]\(Web アプリにデプロイ\)** を選択します。
+**[リポジトリ]** > **[acr-helloworld]** を選択し、**[タグ]** の下の **[v1]** タグを右クリックして **[Web アプリにデプロイ]** を選択します。
 
 ![Azure Portal の [App Service へのデプロイ]][deploy-app-portal-01]
 
-表示される **[Web App for Containers]** で、各設定に次の値を設定します。
+[Web アプリにデプロイ] が無効になっている場合は、最初のチュートリアルの「[コンテナー レジストリの作成](container-registry-tutorial-prepare-registry.md#create-a-container-registry)」の指示に従ってレジストリ管理者ユーザーを有効にしていない可能性があります。 管理者ユーザーは、Azure portal の **[設定]** > **[アクセス キー]** で有効にすることができます。
+
+[Web アプリにデプロイ] を選択した後に表示される **[Web App for Containers]** で、各設定に次の値を設定します。
 
 | Setting | 値 |
 |---|---|
 | **サイト名** | Web アプリのグローバルに一意の名前。 この例では、Web アプリのデプロイ元のレジストリとリージョンを簡単に識別できるように、`<acrName>-westus` という形式を使用します。 |
 | **リソース グループ** | **[既存のものを使用]** > `myResourceGroup` |
 | **App Service プラン/場所** | **[米国西部]** リージョンに `plan-westus` という名前の新しいプランを作成します。 |
-| **イメージ** | `acr-helloworld:v1`
+| **Image** | `acr-helloworld:v1`
 
 **[作成]** を選択して、*[米国西部]* リージョンに Web アプリをプロビジョニングします。
 
@@ -81,7 +83,7 @@ geo レプリケーション コンテナー レジストリから Docker イメ
 | **サイト名** | Web アプリのグローバルに一意の名前。 この例では、Web アプリのデプロイ元のレジストリとリージョンを簡単に識別できるように、`<acrName>-eastus` という形式を使用します。 |
 | **リソース グループ** | **[既存のものを使用]** > `myResourceGroup` |
 | **App Service プラン/場所** | **[米国東部]** リージョンに `plan-eastus` という名前の新しいプランを作成します。 |
-| **イメージ** | `acr-helloworld:v1`
+| **Image** | `acr-helloworld:v1`
 
 **[作成]** を選択して、*[米国東部]* リージョンに Web アプリをプロビジョニングします。
 
@@ -103,11 +105,7 @@ geo レプリケーション コンテナー レジストリから Docker イメ
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、geo レプリケーション Azure Container Registry から 2 つの Web App for Containers インスタンスをデプロイしました。 このチュートリアルの手順に従って、次の作業を行いました。
-
-> [!div class="checklist"]
-> * コンテナー イメージを 2 つの *Web App for Containers* インスタンスにデプロイする
-> * デプロイしたアプリケーションを確認する
+このチュートリアルでは、geo レプリケーション Azure Container Registry から 2 つの Web App for Containers インスタンスをデプロイしました。
 
 次のチュートリアルに進み、更新を行った後で新しいコンテナー イメージをコンテナー レジストリにデプロイして、両方のリージョンで実行中の Web アプリが自動的に更新されたことを確認します。
 

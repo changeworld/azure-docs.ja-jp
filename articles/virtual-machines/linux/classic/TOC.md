@@ -4,10 +4,10 @@
 ## [FAQ](faq-classic.md)
 
 # 作業の開始
-## [Azure Portal を使用して Linux VM を作成する](createportal-classic.md)
+## [Linux VM の作成](createportal-classic.md)
 
 # 方法
-## 計算
+## コンピューティング
 ### [カスタム VM の作成](create-custom-classic.md)
 ### [VM のキャプチャ](capture-image-classic.md)
 ### [Linux VM でリモート デスクトップを使用する](remote-desktop-classic.md)
@@ -33,7 +33,6 @@
 ### [Ruby on Rails Web アプリケーション](ruby-rails-web-app.md)
 ### [Cassandra および Node.js クライアント](cassandra-nodejs.md)
 ### [Tomcat](setup-tomcat.md)
-### [MPI アプリケーションを実行するための RDMA クラスター](rdma-cluster.md)
 ### HPC Pack
 #### [Linux ワークロード用のクラスターの作成](hpcpack-cluster-powershell-script.md)
 #### [Linux ノードを含むクラスターの管理](hpcpack-cluster.md)

@@ -1,22 +1,24 @@
 ---
-title: "Azure Application Insights Telemetry の相関付け | Microsoft Docs"
-description: "Application Insights におけるテレメトリの相関付け"
+title: Azure Application Insights Telemetry の相関付け | Microsoft Docs
+description: Application Insights におけるテレメトリの相関付け
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: lgayhardt
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
-ms.date: 04/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 5d4abbf8194d633305877275e3dd273352906ad3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.date: 10/31/2018
+ms.reviewer: sergkanz
+ms.author: lagayhar
+ms.openlocfilehash: b61163f7e2bc4cf4e7029c9852e5baad431fa0e0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615842"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -64,7 +66,7 @@ STOCKS API という名前の外部 API を使用して株の現在の市場価�
 
 ## <a name="correlation-headers"></a>相関付けヘッダー
 
-マイクロソフトは、[相関付け HTTP プロトコル](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md)の RFC 提案に取り組んでいます。 この提案では、2 つのヘッダーを定義しています。
+マイクロソフトは、[相関付け HTTP プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)の RFC 提案に取り組んでいます。 この提案では、2 つのヘッダーを定義しています。
 
 - `Request-Id`: 呼び出しのグローバルに一意の ID を記述します。
 - `Correlation-Context`: 分散トレースのプロパティの名前と値のペアのコレクションを記述します。
@@ -73,19 +75,49 @@ STOCKS API という名前の外部 API を使用して株の現在の市場価�
 
 Application Insights は、相関付け HTTP プロトコル用の[拡張機能](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)を定義します。 それは、`Request-Context` の名前と値のペアを使用して、直前の呼び出し元または呼び出し先によって使用されたプロパティのコレクションを伝達します。 Application Insights SDK は、このヘッダーを使用して、`dependency.target` フィールドと `request.source` フィールドを設定します。
 
+### <a name="w3c-distributed-tracing"></a>W3C 分散トレース
+
+[W3C 分散トレース形式](https://w3c.github.io/trace-context/)への切り替えを実施しています。 次のように定義します。
+- `traceparent` - 呼び出しのグローバルな一意操作 ID と一意識別子を伝送します。
+- `tracestate` - トレース システム固有のコンテキストを伝送します。
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-classic-apps"></a>ASP.NET Classic アプリの W3C 分散トレース サポートを有効にする
+
+この機能は、バージョン 2.8.0 ベータ1 以降の Microsoft.ApplicationInsights.Web および Microsoft.ApplicationInsights.DependencyCollector パッケージで利用可能です。
+既定で **[オフ]** になっています。有効にするには、`ApplicationInsights.config` を次のように変更します。
+
+* `RequestTrackingTelemetryModule` 下に、値が `true` に設定されている `EnableW3CHeadersExtraction` 要素を追加します。
+* `DependencyTrackingTelemetryModule` 下に、値が `true` に設定されている `EnableW3CHeadersInjection` 要素を追加します。
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>ASP.NET Core アプリの W3C 分散トレース サポートを有効にする
+
+この機能は、Microsoft.ApplicationInsights.AspNetCore バージョン 2.5.0 ベータ 1 および Microsoft.ApplicationInsights.DependencyCollector バージョン 2.8.0 ベータ 1 で利用可能です。
+既定で **[オフ]** になっています。有効にするには、`ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` を `true` に変更します。
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddApplicationInsightsTelemetry(o => 
+        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
+    // ....
+}
+```
+
 ## <a name="open-tracing-and-application-insights"></a>Open Tracing と Application Insights
 
-[Open Tracing](http://opentracing.io/) データ モデルと Application Insights データ モデルの対比 
+[Open Tracing データ モデルの仕様](http://opentracing.io/)と Application Insights データ モデルは、次のようにマッピングされます。
 
-- `request``pageView` は、`span.kind = server` を使用して **Span** にマップします
-- `dependency`は、`span.kind = client`を使用して **Span** にマップします
-- `request` と `dependency` の `id` は **Span.Id** にマップします
-- `operation_Id` は **TraceId** にマップします
-- `operation_ParentId` は `ChildOf` 型の **Reference** にマップします
+| Application Insights                  | Open Tracing                                      |
+|------------------------------------   |-------------------------------------------------  |
+| `Request`、`PageView`                 | `span.kind = server` を含む `Span`                  |
+| `Dependency`                          | `span.kind = client` を含む `Span`                  |
+| `Request` と `Dependency` の `Id`    | `SpanId`                                          |
+| `Operation_Id`                        | `TraceId`                                         |
+| `Operation_ParentId`                  | タイプ `ChildOf` の `Reference` (親スパン)   |
 
-Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
+Application Insights データ モデルの詳細については、[データ モデル](application-insights-data-model.md)に関するページを参照してください。 
 
-Open Tracing の概念の定義については、[仕様](https://github.com/opentracing/specification/blob/master/specification.md) と [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) に関するページを参照してください。
+Open Tracing の概念の定義については、Open Tracing の[仕様](https://github.com/opentracing/specification/blob/master/specification.md)と [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) に関するページを参照してください。
 
 
 ## <a name="telemetry-correlation-in-net"></a>.NET におけるテレメトリの相関付け
@@ -104,9 +136,32 @@ ASP.NET Classic 用の新しい HTTP モジュール [Microsoft.AspNet.Telemetry
 
 Application Insights SDK は、バージョン `2.4.0-beta1` から DiagnosticsSource とアクティビティを使用してテレメトリを収集し、それを現在のアクティビティに関連付けます。 
 
+<a name="java-correlation"></a>
+## <a name="telemetry-correlation-in-the-java-sdk"></a>Java SDK におけるテレメトリの相関付け
+[Application Insights Java SDK](app-insights-java-get-started.md) のバージョン `2.0.0` 以降では、テレメトリの自動相関付けをサポートしています。 要求の範囲内で発行されたすべてのテレメトリ (トレース、例外、カスタム イベントなど) の `operation_id` が自動的に設定されます。 また、[Java SDK エージェント](app-insights-java-agent.md)が構成されている場合は、HTTP を介して、サービスの相関付けヘッダー (前述) がサービス呼び出しに伝達されます。 相関付け機能では、Apache HTTP クライアントによる呼び出しだけがサポートされます。 Spring Rest Template または Feign を使用している場合、どちらも Apache HTTP クライアントで内部的に使用できます。
+
+現時点では、メッセージング テクノロジ (Kafka、RabbitMQ、Azure Service Bus など) 間でのコンテキストの自動伝達はサポートされていません。 ただし、`trackDependency` および `trackRequest` API を使用して、このようなシナリオを手動でコーディングすることは可能です。依存関係テレメトリはプロデューサーによってエンキューされるメッセージを表し、要求はコンシューマーによって処理されるメッセージを表します。 この場合、`operation_id` と `operation_parentId` の両方を、メッセージのプロパティで伝達する必要があります。
+
+<a name="java-role-name"></a>
+### <a name="role-name"></a>ロール名
+[アプリケーション マップ](app-insights-app-map.md)にコンポーネント名を表示する方法をカスタマイズすることが必要な場合があります。 そのためには、次のいずれかを実行して `cloud_roleName` を手動で設定します。
+
+`WebRequestTrackingFilter` を使用している場合、`WebAppNameContextInitializer` によってアプリケーション名が自動的に設定されます。 次を構成ファイル (ApplicationInsights.xml) に追加します。
+```XML
+<ContextInitializers>
+  <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
+</ContextInitializers>
+```
+次のようにクラウドのコンテキスト クラスを使用します。
+```Java
+telemetryClient.getContext().getCloud().setRole("My Component Name");
+```
+
 ## <a name="next-steps"></a>次の手順
 
 - [カスタム テレメトリを記述します](app-insights-api-custom-events-metrics.md)。
 - Application Insights でマイクロ サービスのすべてのコンポーネントの利用を開始します。 [サポートされているプラットフォームを調べます](app-insights-platforms.md)。
 - Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
 - [テレメトリの拡張とフィルター処理](app-insights-api-filtering-sampling.md)を行う方法を確認します。
+- [Application Insights 構成リファレンス](app-insights-configuration-with-applicationinsights-config.md)
+

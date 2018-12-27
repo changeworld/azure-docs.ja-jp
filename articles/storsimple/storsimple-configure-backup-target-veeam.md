@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
-ms.openlocfilehash: cc1c7a3f77af76c451bb6e97a081a01c119333b5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f06b74493bad546997f82ed6eef0a89cffb7c75b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261980"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veeam を使用したバックアップ ターゲットとしての StoreSimple
 
@@ -274,11 +275,11 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、バックアップ リポジトリ ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  **[New Backup Repository] \(新しいバックアップ リポジトリ)** ダイアログ ボックスで、レポジトリの名前と説明を入力します。 **[次へ]**を選択します。
+2.  **[New Backup Repository] \(新しいバックアップ リポジトリ)** ダイアログ ボックスで、レポジトリの名前と説明を入力します。 **[次へ]** を選択します。
 
     ![Veeam 管理コンソール、名前と説明ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  タイプについて、**[Microsoft Windows server] \(Microsoft Windows サーバー)** を選択します。 Veeam サーバーを選択します。 **[次へ]**を選択します。
+3.  タイプについて、**[Microsoft Windows server] \(Microsoft Windows サーバー)** を選択します。 Veeam サーバーを選択します。 **[次へ]** を選択します。
 
     ![Veeam 管理コンソール、バックアップ リポジトリのタイプを選択する](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
@@ -291,7 +292,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、ストレージの互換性設定](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  **[New Backup Repository] \(新しいバックアップ リポ)** ダイアログ ボックスで、**[Enable vPower NFS service on the mount server (recommended)] \(マウント サーバー上で vPower NFS サービスを有効にする (推奨))** チェック ボックスをオンします。 **[次へ]**を選択します。
+6.  **[New Backup Repository] \(新しいバックアップ リポ)** ダイアログ ボックスで、**[Enable vPower NFS service on the mount server (recommended)] \(マウント サーバー上で vPower NFS サービスを有効にする (推奨))** チェック ボックスをオンします。 **[次へ]** を選択します。
 
     ![Veeam 管理コンソール、バックアップ リポジトリ ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
@@ -347,7 +348,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブの詳細設定ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. **[Storage] \(ストレージ)** タブで、**[Enable inline data deduplication] \(インライン データ重複除去を有効にする)** チェック ボックスがオフになっていることを確認します。 **[Exclude swap file blocks] \(スワップ ファイル ブロックを除外する)** チェック ボックスと **[Exclude deleted file blocks] \(削除済みのファイル ブロックを除外する)** チェック ボックスをオンにします。 **[Compression level] \(圧縮レベル)** を **[None] \(なし)** に設定します。 パフォーマンスと重複除去のバランスを取るために、**[Storage optimization] \(ストレージの最適化)** を **[LAN target] \(LAN ターゲット)** に設定します。 **[OK]**を選択します。
+6. **[Storage] \(ストレージ)** タブで、**[Enable inline data deduplication] \(インライン データ重複除去を有効にする)** チェック ボックスがオフになっていることを確認します。 **[Exclude swap file blocks] \(スワップ ファイル ブロックを除外する)** チェック ボックスと **[Exclude deleted file blocks] \(削除済みのファイル ブロックを除外する)** チェック ボックスをオンにします。 **[Compression level] \(圧縮レベル)** を **[None] \(なし)** に設定します。 パフォーマンスと重複除去のバランスを取るために、**[Storage optimization] \(ストレージの最適化)** を **[LAN target] \(LAN ターゲット)** に設定します。 **[OK]** を選択します。
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブの詳細設定ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
@@ -481,7 +482,7 @@ StorSimple クラウド スナップショット バックアップ ポリシー
 
 StorSimple デバイスからの復元は、他のブロック ストレージ デバイスからの復元と同じように行われます。 クラウドに階層化されているデータの復元は、クラウドのスピードで実行されます。 ローカル データの復元は、デバイスのローカル ディスクのスピードで実行されます。
 
-Veeam では、Veeam コンソールに組み込まれた各種エクスプローラー ビューを使用して、StorSimple 経由で詳細なファイルレベルの高速復元を行うことができます。 Veeam エクスプローラーを使用して、メール メッセージ、アクティブ ディレクトリ オブジェクト、SharePoint のアイテムなどの個別のアイテムをバックアップから復元できます。 この復元は、オンプレミス VM を中断することなく実行できます。 また、Azure SQL Database および Oracle データベースで特定の時点への復旧を行うことも可能です。 Veeam と StorSimple により、Azure からのアイテムレベルでの復元プロセスが高速かつ簡単になります。 復元の実行方法の詳細については、以下の Veeam の各ドキュメントをご覧ください。
+Veeam では、Veeam コンソールに組み込まれた各種エクスプローラー ビューを使用して、StorSimple 経由で詳細なファイルレベルの高速復元を行うことができます。 Veeam エクスプローラーを使用して、メール メッセージ、Active Directory オブジェクト、SharePoint アイテムなどの個々のアイテムをバックアップから復元できます。 この復元は、オンプレミス VM を中断することなく実行できます。 また、Azure SQL Database および Oracle データベースで特定の時点への復旧を行うことも可能です。 Veeam と StorSimple により、Azure からのアイテムレベルでの復元プロセスが高速かつ簡単になります。 復元の実行方法の詳細については、以下の Veeam の各ドキュメントをご覧ください。
 
 - [Exchange Server](https://www.veeam.com/microsoft-exchange-recovery.html) 向け
 - [Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html) 向け
@@ -509,9 +510,9 @@ Veeam では、Veeam コンソールに組み込まれた各種エクスプロ�
 この記事では次のドキュメントを参考にしています。
 
 - [StorSimple のマルチパス I/O のセットアップ](storsimple-configure-mpio-windows-server.md)
-- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](http://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [GPT ドライブを使用する (Using GPT drives)](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [共有フォルダーのシャドウ コピーのセットアップ](http://technet.microsoft.com/library/cc771893.aspx)
+- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [GPT ドライブを使用する (Using GPT drives)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
+- [共有フォルダーのシャドウ コピーのセットアップ](https://technet.microsoft.com/library/cc771893.aspx)
 
 ## <a name="next-steps"></a>次の手順
 

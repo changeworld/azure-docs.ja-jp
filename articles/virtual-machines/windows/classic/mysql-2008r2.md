@@ -1,10 +1,10 @@
 ---
-title: "MySQL を実行するクラシック Azure VM を作成する | Microsoft Docs"
-description: "クラシック デプロイ モデルを使用して、Windows Server 2012 R2 および MySQL データベースを実行する Azure 仮想マシンを作成します。"
+title: MySQL を実行するクラシック Azure VM を作成する | Microsoft Docs
+description: クラシック デプロイ モデルを使用して、Windows Server 2012 R2 および MySQL データベースを実行する Azure 仮想マシンを作成します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 98fa06d2-9b92-4d05-ac16-3f8e9fd4feaa
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
-ms.openlocfilehash: e4135f96027cc25e1e0a149857ace1672570fc4b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: be2a4232fdb59deb87d6d9340fd22909707294b8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/06/2018
+ms.locfileid: "30918117"
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>Windows Server 2016 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする
 [MySQL](https://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。 このチュートリアルでは、**Windows Server 2016** を実行している仮想マシン上の MySQL Server として **MySQL 5.7.18 の Community バージョン**をインストールして実行する方法について説明します。 他のバージョンの MySQL または Windows Server を使用しているユーザーは、同一の結果にならない場合があります。
@@ -45,26 +46,26 @@ Windows Server 2016 を実行している VM がまだない場合は、この[�
 MySQL Server の Community バージョンをインストール、構成、と実行するには、次の手順を実行します。
 
 > [!NOTE]
-> Internet Explorer を使用して項目をダウンロードする場合は、**IE セキュリティ強化の構成** を オフ に設定し、ダウンロード プロセスを簡略化できます。 スタート メニューから、管理ツール/サーバー マネージャー/ローカル サーバー をクリックし、**IE セキュリティ強化の構成**をクリックして、構成を オフ に設定します。
+> Internet Explorer を使用して項目をダウンロードする場合は、**[IE セキュリティ強化の構成]** を [オフ に設定し、ダウンロード プロセスを簡略化できます。 スタート] メニューから、管理ツール]/サーバー マネージャー]/ローカル サーバー] をクリックし、**[IE セキュリティ強化の構成]** をクリックして、構成を [オフ に設定します。
 >
 >
 
 1. リモート デスクトップを使用して仮想マシンに接続したら、スタート画面で **[Internet Explorer]** をクリックします。
 2. 右上隅の **[ツール]** (歯車のアイコン) を選択して、**[インターネット オプション]** をクリックします。 **[セキュリティ]** タブ、**[信頼済みサイト]** アイコン、**[サイト]** の順にクリックします。 信頼済みサイトの一覧に http://*.mysql.com を追加します。 **[閉じる]** をクリックし、**[OK]** をクリックします。
-3. Internet Explorer のアドレス バーに「https://dev.mysql.com/downloads/mysql/」と入力します。
+3. Internet Explorer のアドレス バーに、「 https://dev.mysql.com/downloads/mysql/」と入力します。
 4. MySQL サイトで MySQL Installer for Windows の最新バージョンを見つけ、インストールします。 MySQL Installer を選ぶ際、すべてのファイル セットが揃っているバージョンをダウンロードし (ファイル サイズが 352.8 MB の mysql-installer-community-5.7.18.0.msi など)、このインストーラーを保存します。
-5. インストーラーでダウンロードが完了したら、**[実行]**をクリックしてセットアップを起動します。
+5. インストーラーでダウンロードが完了したら、**[実行]** をクリックしてセットアップを起動します。
 6. **[License Agreement]** ページで、ライセンス契約の内容に同意し、**[Next]** をクリックします。
 7. **[Choosing a Setup Type]** ページで目的のセットアップの種類をクリックしてから、**[Next]** をクリックします。 次の手順は、セットアップの種類として **[Server only]** を選択したことを前提にしています。
 8. **[要件の確認]** ページが表示されたら、**[実行]** をクリックして、インストーラーが不足コンポーネントをインストールできるようにします。 C++ 再頒布可能パッケージ ランタイムなど、表示される指示に従います。
-9. **[Installation]** ページで、**[Execute]** をクリックします。 インストールが完了したら、 **[Next]**をクリックします。
+9. **[Installation]** ページで、**[Execute]** をクリックします。 インストールが完了したら、 **[Next]** をクリックします。
 
 10. **[Product Configuration]** ページで、**[Next]** をクリックします。
 
 11. **[Type and Networking]** ページで、必要な構成の種類を指定します。さらに、TCP ポートなど接続性のオプションについても必要に応じて指定します。 **[Show Advanced Options]**、**[Next]** の順にクリックします。
     ![](./media/mysql-2008r2/MySQL_TypeNetworking.png)
 
-12. **[Accounts and Roles]** ページで強力な MySQL のルート パスワードを指定します。 必要に応じて別の MySQL ユーザー アカウントを追加し、 **[Next]**をクリックします。
+12. **[Accounts and Roles]** ページで強力な MySQL のルート パスワードを指定します。 必要に応じて別の MySQL ユーザー アカウントを追加し、 **[Next]** をクリックします。
 
     ![](./media/mysql-2008r2/MySQL_AccountsRoles_Filled.png)
 13. **[Windows Service]** ページで、Windows サービスとして MySQL Server を実行するための、既定の設定に対する変更を必要に応じて指定し、**[Next]** をクリックします。
@@ -74,7 +75,7 @@ MySQL Server の Community バージョンをインストール、構成、と�
 15. **[Advanced Options]** ページで、必要に応じてログ オプションに対する変更を指定し、**[Next]** をクリックします。
 
     ![](./media/mysql-2008r2/MySQL_AdvOptions.png)
-16. **[Apply Server Configuration]** ページで、**[Execute]** をクリックします。 構成手順の終了後、 **[Finish]**をクリックします。
+16. **[Apply Server Configuration]** ページで、**[Execute]** をクリックします。 構成手順の終了後、 **[Finish]** をクリックします。
 17. **[Product Configuration]** ページで、**[Next]** をクリックします。
 18. **[Installation Complete]** ページで、後で内容を検討する場合は **[Copy Log to Clipboard]** をクリックしてから **[Finish]** をクリックします。
 19. スタート画面で「**mysql**」と入力してから、**[MySQL 5.7 Command Line Client]** をクリックします。
@@ -95,13 +96,13 @@ MySQL Server の Community バージョンをインストール、構成、と�
 MySQL Server サービスのエンドポイントを構成するには、次のようにします。
 
 1. Azure Portal で、**[仮想マシン (クラシック)]** をクリックし、MySQL 仮想マシンの名前をクリックしてから、**[エンドポイント]** をクリックします。
-2. コマンド バーで、 **[追加]**をクリックします。
+2. コマンド バーで、 **[追加]** をクリックします。
 3. **[エンドポイントの追加]** ページで、一意の名前を **[名前]** に入力します。
 4. プロトコルとして **[TCP]** を選択します。
 5. **[パブリック ポート]** と **[プライベート ポート]** の両方に、**3306** などのポート番号を入力し、**[OK]** をクリックします。
 
 ## <a name="add-a-windows-firewall-rule-to-allow-mysql-traffic"></a>Windows Firewall ルールを追加して MySQL トラフィックを許可する
-インターネットからの MySQL トラフィックを許可する Windows ファイアウォール ルールを追加するには、MySQL サーバー仮想マシンで、_管理者特権の Windows PowerShell コマンド プロンプト_から、次のコマンドを実行します。
+インターネットからの MySQL トラフィックを許可する Windows ファイアウォール ルールを追加するには、MySQL サーバー仮想マシンで、_管理者特権の Windows PowerShell コマンド プロンプト_ から、次のコマンドを実行します。
 
     New-NetFirewallRule -DisplayName "MySQL57" -Direction Inbound –Protocol TCP –LocalPort 3306 -Action Allow -Profile Public
 

@@ -9,16 +9,17 @@ editor: ''
 ms.assetid: 299d1f97-1ca9-440d-9f81-d1d0dd2bf4df
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: rwike77
-ms.openlocfilehash: 1e5b8523422aae00655b003bf15103d5467b4177
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4d5e74b9ecffbf8f1161cf6c5ef948cd154d993f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233169"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric アプリケーションと次の手順
 Azure Service Fabric アプリケーションが作成されました。 この記事では、試してみるべきチュートリアル、プロジェクトの構成、その他の詳細情報、考えられる次のステップについて説明します。
@@ -34,7 +35,7 @@ Azure Service Fabric アプリケーションが作成されました。 この�
 - [Windows 上のゲスト実行可能サービス](quickstart-guest-app.md) 
 - [Windows コンテナー アプリケーション](service-fabric-get-started-containers.md) 
 
-[サンプル アプリケーション](http://aka.ms/servicefabricsamples)を試してみることもできます。
+[サンプル アプリケーション](https://aka.ms/servicefabricsamples)を試してみることもできます。
 
 ## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>質問やフィードバックがある場合や  問題を報告する必要がある場合
 [よく寄せらせる質問](service-fabric-common-questions.md)に目を通し、Service Fabric で実行できる内容と使用方法に関する回答を確認します。

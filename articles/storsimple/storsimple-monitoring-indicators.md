@@ -1,11 +1,11 @@
 ---
-title: "StorSimple モニタリング インジケーター | Microsoft Docs"
-description: "StorSimple デバイスの状態を監視するための発光ダイオード (LED) と可聴アラームについて説明します。"
+title: StorSimple モニタリング インジケーター | Microsoft Docs
+description: StorSimple デバイスの状態を監視するための発光ダイオード (LED) と可聴アラームについて説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59dee7b9-ca6d-4fd9-96e6-a0071e8d248e
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/07/2017
+ms.locfileid: "24030359"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple モニタリング インジケーターを使用してデバイスを管理する
 

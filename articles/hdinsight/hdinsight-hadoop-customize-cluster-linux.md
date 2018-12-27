@@ -1,37 +1,31 @@
 ---
-title: スクリプト アクションを使って HDInsight クラスターをカスタマイズする - Azure | Microsoft Docs
+title: スクリプト アクションを使って HDInsight をカスタマイズする - Azure
 description: スクリプト アクションを使用して Linux ベースの HDInsight クラスターにカスタム コンポーネントを追加します。 スクリプト アクションは、クラスター ノード上の Bash スクリプトであり、クラスター構成のカスタマイズや、サービスとユーティリティ (Hue、Solr、R など) の追加に使用できます。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/29/2018
-ms.author: larryfr
-ms.openlocfilehash: bc8078a1681b8977a0748f633df02beb2f2bdc8a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279730"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
 
-HDInsight には、クラスターをカスタマイズするカスタム スクリプトを呼び出す **スクリプト アクション** という構成オプションがあります。 これらのスクリプトは、追加コンポーネントのインストールおよび構成設定の変更に使用されます。 スクリプト アクションは、クラスターの作成中または作成後に使用できます。
+HDInsight には、クラスターをカスタマイズするカスタム スクリプトを呼び出す**スクリプト アクション**という構成方法があります。 これらのスクリプトは、追加コンポーネントのインストールおよび構成設定の変更に使用されます。 スクリプト アクションは、クラスターの作成中または作成後に使用できます。
 
 > [!IMPORTANT]
 > 既に実行されているクラスター上でスクリプト アクションを使用する機能は、Linux ベースの HDInsight クラスターでのみ使用できます。
 >
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-スクリプト アクションは、HDInsight アプリケーションとして Azure Marketplace にも発行することができます。 このドキュメントの例では、PowerShell と .NET SDK からスクリプト アクション コマンドを使用して HDInsight アプリケーションをインストールする方法を示します。 HDInsight のアプリケーションの詳細については、「 [Azure Marketplace への HDInsight アプリケーションの発行](hdinsight-apps-publish-applications.md)」を参照してください。
+スクリプト アクションは、HDInsight アプリケーションとして Azure Marketplace にも発行することができます。 HDInsight のアプリケーションの詳細については、「 [Azure Marketplace への HDInsight アプリケーションの発行](hdinsight-apps-publish-applications.md)」を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -50,8 +44,8 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 アクセス管理の操作の詳細については、次のドキュメントを参照してください。
 
-* [Azure Portal でのアクセス管理の概要](../active-directory/role-based-access-control-what-is.md)
-* [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)
+* [Azure Portal でのアクセス管理の概要](../role-based-access-control/overview.md)
+* [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="understanding-script-actions"></a>スクリプト アクションについて
 
@@ -59,7 +53,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 * HDInsight クラスターからアクセスできる URI に保存されている必要があります。 たとえば保存スペースとして、次の場所を使用できます。
 
-    * HDInsight クラスターからアクセス可能な **Azure Data Lake Store** アカウント。 HDInsight での Azure Data Lake Store の使用について詳しくは、[Data Lake Store での HDInsight クラスターの作成](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関する記事を参照してください。
+    * HDInsight クラスターからアクセス可能な **Azure Data Lake Store** アカウント。 HDInsight での Azure Data Lake Store の使用については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」を参照してください。
 
         Data Lake Store に保管しているスクリプトを使用する場合、URI の形式は `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` になります。
 
@@ -73,7 +67,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
         URI の例については、「[スクリプト アクションのサンプル スクリプト](#example-script-action-scripts)」セクションを参照してください。
 
         > [!WARNING]
-        > __汎用__の Azure ストレージ アカウントがサポートされるのは HDInsight のみです。 現時点では、__Blob Storage__ タイプのアカウントはサポートされません。
+        > HDInsight は、Standard パフォーマンス レベルの Azure ストレージ アカウントの BLOB だけをサポートしています。 
 
 * **特定のノード タイプでのみ実行するように** (ヘッド ノードやワーカー ノードなど) に制限できます。
 
@@ -95,7 +89,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 * クラスター ノードで**ルート レベルの権限**を使用して実行されます。
 
-* **Azure Portal**、**Azure PowerShell**、**Azure CLI v1.0**、または **HDInsight .NET SDK** で使うことができます。
+* **Azure Portal**、**Azure PowerShell**、**Azure クラシック CLI**、または **HDInsight .NET SDK** で使用できます。
 
 クラスターには、実行されたすべてのスクリプトの履歴が保持されます。 履歴は、昇格または降格の操作のためスクリプトの ID を検索する必要がある場合に便利です。
 
@@ -153,20 +147,20 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 * Azure ポータル
 * Azure PowerShell
-* Azure CLI v1.0
+* Azure クラシック CLI
 * HDInsight .NET SDK
 
 HDInsight は、HDInsight クラスターで次のコンポーネントをインストールするためのスクリプトを提供します。
 
 | Name | スクリプト |
 | --- | --- |
-| **Azure のストレージ アカウントの追加** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh[HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md) を参照してください。 |
-| **Hue のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh[HDInsight クラスターでの Hue のインストールおよび使用](hdinsight-hadoop-hue-linux.md) に関する記事を参照してください。 |
-| **Presto のインストール** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh[HDInsight Hadoop クラスターに Presto をインストールして使用する](hdinsight-hadoop-install-presto.md) を参照してください。 |
-| **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh[HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md) をご覧ください。 |
-| **Giraph のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh[HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md) をご覧ください。 |
-| **Hive ライブラリの事前読み込み** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md) を参照してください。 |
-| **Mono のインストールまたは更新** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash [HDInsight での Mono のインストールまたは更新](hdinsight-hadoop-install-mono.md) を参照してください。 |
+| **Azure のストレージ アカウントの追加** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh [HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md) を参照してください。 |
+| **Hue のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. [HDInsight クラスターでの Hue のインストールおよび使用](hdinsight-hadoop-hue-linux.md) に関する記事を参照してください。 |
+| **Presto のインストール** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh. [HDInsight Hadoop クラスターに Presto をインストールして使用する](hdinsight-hadoop-install-presto.md) を参照してください。 |
+| **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh. [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md) をご覧ください。 |
+| **Giraph のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh. [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md) をご覧ください。 |
+| **Hive ライブラリの事前読み込み** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh. [HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md) を参照してください。 |
+| **Mono のインストールまたは更新** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash.  [HDInsight での Mono のインストールまたは更新](hdinsight-hadoop-install-mono.md) を参照してください。 |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>クラスターの作成時にスクリプト アクションを使用する
 
@@ -174,9 +168,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>クラスターの作成時に Azure Portal からスクリプト アクションを使用する
 
-1. [HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md) に関する記事の説明に従って、クラスターの作成を開始します。 __[クラスターの概要]__ セクションに達したら、停止します。
-
-2. __[クラスターの概要]__ セクションで、__[詳細設定]__ の __[編集]__ リンクを選択します。
+1. [HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md) に関する記事の説明に従って、クラスターの作成を開始します。 クラスターの作成時に、__[クラスターの概要]__ ページが表示されます。 __[クラスターの概要]__ ページで、__[詳細設定]__ の __[編集]__ リンクを選択します。
 
     ![[詳細設定] リンク](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 
@@ -206,11 +198,11 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
     スクリプトの追加が完了したら、__[選択]__ ボタンをクリックし、__[次へ]__ ボタンをクリックして、__[クラスターの概要]__ セクションに戻ります。
 
-3. クラスターを作成するには、__[クラスターの概要__] セクションで、__[作成]__ を選択します。
+3. クラスターを作成するには、__[クラスターの概要__] セクションで、 __[作成]__ を選択します。
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートからスクリプト アクションを使用する
 
-スクリプト アクションを Azure Resource Manager テンプレートで使用できます。 例については、「[https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/](https://azure.microsoft.com/en-us/resources/templates/hdinsight-linux-run-script-action/)」を参照してください。
+スクリプト アクションを Azure Resource Manager テンプレートで使用できます。 例については、「[https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/](https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/)」を参照してください。
 
 この例では、次のコードを使用してスクリプト アクションが追加されます。
 
@@ -232,7 +224,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>クラスターの作成時に Azure PowerShell からスクリプト アクションを使用する
 
-このセクションでは、[Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) コマンドレットを使用して、クラスターのカスタマイズを行うスクリプトを呼び出します。 次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」を参照してください。
+このセクションでは、[Add-AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) コマンドレットを使用して、クラスターのカスタマイズを行うスクリプトを呼び出します。 次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」を参照してください。
 
 次のスクリプトは、PowerShell を使用してクラスターを作成するときに、スクリプト アクションを適用する方法を示します。
 
@@ -300,10 +292,9 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>実行中のクラスターに Azure CLI からスクリプト アクションを適用する
 
-次に進む前に、Azure CLI をインストールして構成したことを確認します。 詳しくは、「[Azure CLI 1.0 のインストール](../cli-install-nodejs.md)」をご覧ください。
+次に進む前に、Azure CLI をインストールして構成したことを確認します。 詳しくは、「[Azure クラシック CLI のインストール](../cli-install-nodejs.md)」をご覧ください。
 
-> [!IMPORTANT]
-> HDInsight には Azure CLI 1.0 が必要です。 現在、Azure CLI 2.0 では HDInsight を操作するためのコマンドは提供されていません。
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 1. Azure Resource Manager モードに切り替えるには、コマンド ラインで次のコマンドを実行します。
 
@@ -388,7 +379,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="using-the-azure-cli"></a>Azure CLI の使用
+### <a name="using-the-azure-classic-cli"></a>Azure クラシック CLI を使用する
 
 | 使用 | 目的 |
 | --- | --- |
@@ -421,7 +412,7 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、 これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 HDInsight サービスでは、カスタム コンポーネントを使用する方法をいくつか用意しています。 コンポーネントの用途やクラスターへのインストール方法にかかわらず、同じレベルのサポートが適用されます。 以下は、HDInsight クラスターでのカスタム コンポーネントの用途として、最も一般的な方法の一覧です。
 

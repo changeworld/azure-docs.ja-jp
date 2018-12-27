@@ -1,25 +1,26 @@
 ---
-title: "Azure CLI のサンプル スクリプト - IIS のインストール | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - IIS のインストール"
+title: Azure CLI のサンプル スクリプト - IIS のインストール | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - IIS のインストール
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
-author: neilpeterson
-manager: timlt
+author: zr-msft
+manager: jeconnoc
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-Windows
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/28/2017
-ms.author: nepeters
-ms.openlocfilehash: fb521f31f47f6373d8e0647cf4c7301130ad35c2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: zarhoads
+ms.openlocfilehash: 1789df21c1146c367f1534f7a28eb38f65e05a23
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468349"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した仮想マシンの簡易作成
 
@@ -33,11 +34,11 @@ ms.lasthandoff: 03/09/2018
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-windows-iis/create-vm-windows-iis.sh "Quick Create VM")]
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 

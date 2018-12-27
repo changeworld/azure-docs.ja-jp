@@ -1,24 +1,25 @@
 ---
-title: "Azure Service Fabric アプリケーションのデプロイ | Microsoft Docs"
-description: "PowerShell を使用して Service Fabric でアプリケーションをデプロイおよび削除する方法"
+title: Azure Service Fabric アプリケーションのデプロイ | Microsoft Docs
+description: PowerShell を使用して Service Fabric でアプリケーションをデプロイおよび削除する方法
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: cd3c97bc95fb7ccfaa0dbf2d7ca76ae598a4b320
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: d38ec87fb634e1809959b85f0382935e8a78bf3b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697166"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell を使用してアプリケーションのデプロイと削除を実行する
 > [!div class="op_single_selector"]
@@ -178,7 +179,7 @@ PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -Appl
 パッケージが事前にイメージ ストアにコピーされていた場合は、登録操作でイメージ ストアの相対パスを指定します。
 
 ```powershell
-PS C:\> Register-ServiceFabricApplicationType -ApplicationPackagePathInImageStore MyApplicationV1
+PS C:\> Register-ServiceFabricApplicationType -ApplicationPathInImageStore MyApplicationV1
 Register application type succeeded
 ```
 
@@ -225,7 +226,7 @@ ApplicationParameters  : {}
 ```
 登録されたアプリケーションの種類の任意のバージョンに対して、複数のアプリケーション インスタンスを作成できます。 各アプリケーション インスタンスは分離して実行され、独自の作業ディレクトリとプロセスを使用します。
 
-クラスターで実行されている名前付きのアプリとサービスを確認するには、それぞれ [Get-ServiceFabricApplication](/powershell/servicefabric/vlatest/get-servicefabricapplication) コマンドレットと [Get-ServiceFabricService](/powershell/module/servicefabric/get-servicefabricservice?view=azureservicefabricps) コマンドレットを実行します。
+クラスターで実行されている名前付きのアプリとサービスを確認するには、それぞれ [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) コマンドレットと [Get-ServiceFabricService](/powershell/module/servicefabric/get-servicefabricservice?view=azureservicefabricps) コマンドレットを実行します。
 
 ```powershell
 PS C:\> Get-ServiceFabricApplication  

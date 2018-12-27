@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29972342"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -89,10 +90,10 @@ VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システ�
 4. VMDK を ESXi サーバーにアップロードします。 右側のウィンドウの **[Configuration]** タブに移動します。 **[Hardware]** で **[Storage]** を選択します。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image3.png)
-5. 右側のウィンドウの **[Datastores]**で VMDK をアップロードするデータストアを選択します。 データストアには、OS とデータ ディスク用の十分な空き領域が必要です。
+5. 右側のウィンドウの **[Datastores]** で VMDK をアップロードするデータストアを選択します。 データストアには、OS とデータ ディスク用の十分な空き領域が必要です。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image4.png)
-6. 右クリックして **[Browse Datastore]**を選択します。
+6. 右クリックして **[Browse Datastore]** を選択します。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image5.png)
 7. **[Datastore Browser]** ウィンドウが表示されます。
@@ -110,13 +111,13 @@ VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システ�
 11. ダウンロードした VMDK ファイルを参照して、ポイントします。 2 つのファイルがあります。 アップロードするファイルを選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image12m.png)
-12. **[開く]**をクリックします。 指定したデータストアへの VMDK ファイルのアップロードが開始されます。 ファイルのアップロードには数分かかる場合があります。
+12. **[開く]** をクリックします。 指定したデータストアへの VMDK ファイルのアップロードが開始されます。 ファイルのアップロードには数分かかる場合があります。
 13. アップロードが完了すると、作成したフォルダーのデータストアにファイルが表示されます。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image14.png)
 
     ここで、2 つ目の VMDK ファイルを同じデータストアにアップロードします。
-14. vSphere client のウィンドウに戻ります。 ESXi サーバーを選択して右クリックし、 **[新しい仮想マシン]**を選択します。
+14. vSphere client のウィンドウに戻ります。 ESXi サーバーを選択して右クリックし、 **[新しい仮想マシン]** を選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
 15. A **[New Virtual Machine]** ウィンドウが表示されます。 **[Configuration]** ページで **[Custom]** を選択します。 **[次へ]** をクリックします。
@@ -148,16 +149,16 @@ VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システ�
 24. **[Select a Disk]** ページで **[Use an existing virtual disk]** を選択します。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
-25. **[Select Existing Disk]** ページの **[Disk File Path]** で **[Browse]** をクリックします。 **[Browse Datastores]** ダイアログ ボックスが開きます。 VMDK をアップロードした場所に移動します。 最初にアップロードした 2 つのファイルがマージされたため、データストアには 1 つのファイルのみが表示されます。 ファイルを選択し、 **[OK]**をクリックします。 **[次へ]** をクリックします。
+25. **[Select Existing Disk]** ページの **[Disk File Path]** で **[Browse]** をクリックします。 **[Browse Datastores]** ダイアログ ボックスが開きます。 VMDK をアップロードした場所に移動します。 最初にアップロードした 2 つのファイルがマージされたため、データストアには 1 つのファイルのみが表示されます。 ファイルを選択し、 **[OK]** をクリックします。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
 26. **[Advanced Options]** ページで既定値をそのまま使用して、**[Next]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image27.png)
-27. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 **[Edit the virtual machine settings before completion]**をオンにします。 **[続行]**をクリックします。
+27. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 **[Edit the virtual machine settings before completion]** をオンにします。 **[続行]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. **[Virtual Machines Properties]** ページの **[Hardware]** タブでデバイス ハードウェアを見つけます。 **[New Hard Disk]**を選択します。 **[追加]**をクリックします。
+28. **[Virtual Machines Properties]** ページの **[Hardware]** タブでデバイス ハードウェアを見つけます。 **[New Hard Disk]** を選択します。 **[追加]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. **[Add Hardware]** ウィンドウが表示されます。 **[Device Type]** ページの **[Choose the type of device you wish to add]** から **[Hard Disk]** を選択して、**[Next]** をクリックします。
@@ -172,10 +173,10 @@ VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システ�
 32. **[Advanced Options]** ページで既定値をそのまま使用します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. **[Ready to Complete]** ページでディスク オプションを確認します。 **[完了]**をクリックします。
+33. **[Ready to Complete]** ページでディスク オプションを確認します。 **[完了]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. [Virtual Machine Properties] ページに戻ります。 新しいハード ディスクが仮想マシンに追加されます。 **[Finish]**をクリックします。
+34. [Virtual Machine Properties] ページに戻ります。 新しいハード ディスクが仮想マシンに追加されます。 **[Finish]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
 35. 仮想マシンを選択した状態で、右側のウィンドウで **[Summary]** タブに移動します。仮想マシンの設定を確認します。

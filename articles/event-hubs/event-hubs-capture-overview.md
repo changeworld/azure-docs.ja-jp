@@ -1,24 +1,25 @@
 ---
-title: "Azure Event Hubs Capture の概要 | Microsoft Docs"
-description: "Event Hubs Capture を使用したテレメトリ データのキャプチャ"
+title: Azure Event Hubs Capture の概要 | Microsoft Docs
+description: Event Hubs Capture を使用したテレメトリ データのキャプチャ
 services: event-hubs
-documentationcenter: 
-author: sethmanheim
+documentationcenter: ''
+author: ShubhaVijayasarathy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e53cdeea-8a6a-474e-9f96-59d43c0e8562
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2017
-ms.author: sethm;darosa
-ms.openlocfilehash: fbd4aef62891341ad3760b74cd8aaee7abf7b827
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.date: 08/16/2018
+ms.author: shvija
+ms.openlocfilehash: 91263d7f6e8c0c2774df560a45eeff9efc672343
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408426"
 ---
 # <a name="azure-event-hubs-capture"></a>Azure Event Hubs Capture
 
@@ -71,13 +72,13 @@ Event Hubs Capture によって生成されたファイルには、次の Avro �
 
 Avro ファイルを調べるには、Apache の [Avro Tools][Avro Tools] jar を使うと簡単です。 この jar をダウンロードしたら、次のコマンドを実行して、特定の Avro ファイルのスキーマを表示できます。
 
-```
+```shell
 java -jar avro-tools-1.8.2.jar getschema <name of capture file>
 ```
 
 このコマンドによって次の情報が返されます。
 
-```
+```json
 {
 
     "type":"record",
@@ -103,6 +104,10 @@ Apache Avro には、[Java][Java] と [Python][Python] 向けの完全な入門�
 ## <a name="how-event-hubs-capture-is-charged"></a>Event Hubs Capture に対する課金方法
 
 Event Hubs Capture の料金は、スループット単位と同様に時間単位で測定されます。 料金は、その名前空間で購入されたスループット単位の数に正比例します。 スループット単位が増減すると、Event Hubs Capture の測定もそれに応じたパフォーマンスを提供するために調整されます。 測定は連携して行われます。 料金の詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」をご覧ください。 
+
+## <a name="integration-with-event-grid"></a>Event Grid との統合 
+Event Hubs 名前空間をソースとして Azure Event Grid サブスクリプションを作成できます。 以下のチュートリアルでは、イベント ハブをソースとして、Azure Functions アプリをシンクとして使用して、Event Grid サブスクリプションを作成する方法を示します。[Event Grid および Azure Functions を使用して、キャプチャされた Event Hubs データを処理し、SQL Data Warehouse に移行します。](store-captured-data-data-warehouse.md)
+
 
 ## <a name="next-steps"></a>次の手順
 

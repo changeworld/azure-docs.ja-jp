@@ -1,28 +1,23 @@
 ---
-title: "Azure Backup: システム状態を Windows Server に復元する | Microsoft Docs"
-description: "Azure のバックアップから Windows Server のシステム状態を復元する手順について説明します。"
+title: 'Azure Backup: システム状態を Windows Server に復元する'
+description: Azure のバックアップから Windows Server のシステム状態を復元する手順について説明します。
 services: backup
-documentationcenter: 
 author: saurabhsensharma
 manager: shivamg
-editor: 
-ms.assetid: 
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 8/18/2017
-ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 57277b36c0a77247b7c91d7a0035f7b4ec60c7e0
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.author: saurse
+ms.openlocfilehash: 31784c44d7561c690278aa4764e98992fbca73ae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230786"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
-この記事では、Azure Recovery Services コンテナーから Windows Server のシステム状態バックアップを復元する方法について説明します。 システム状態を復元するには、システム状態バックアップ ([システム状態のバックアップ](backup-azure-system-state.md#back-up-windows-server-system-state)に関する記事の手順に従って作成) が必要であり、[最新バージョンの Microsoft Azure Recovery Services (MARS) エージェント](http://aka.ms/azurebackup_agent)がインストールされていることを確認する必要があります。 Azure Recovery Services コンテナーからの Windows Server システム状態データの回復は、次の 2 段階のプロセスです。
+この記事では、Azure Recovery Services コンテナーから Windows Server のシステム状態バックアップを復元する方法について説明します。 システム状態を復元するには、システム状態バックアップ ([システム状態のバックアップ](backup-azure-system-state.md#back-up-windows-server-system-state)に関する記事の手順に従って作成) が必要であり、[最新バージョンの Microsoft Azure Recovery Services (MARS) エージェント](https://aka.ms/azurebackup_agent)がインストールされていることを確認する必要があります。 Azure Recovery Services コンテナーからの Windows Server システム状態データの回復は、次の 2 段階のプロセスです。
 
 1. Azure Backup からシステム状態をファイルとして復元します。 Azure Backup からシステム状態をファイルとして復元するときは、次のいずれかを実行できます。
   * バックアップが作成されたサーバーにシステム状態を復元する。または、
@@ -98,7 +93,7 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 6. [バックアップ サーバーの選択] ウィンドウで、表示されているコンピューターの一覧から*ソース コンピューター*を選択します。
 7. [回復モードの選択] ウィンドウで、**[システム状態]** を選択し、**[次へ]** をクリックします。 
 
-    ![検索](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. **[ボリュームと日付の選択]** ウィンドウのカレンダーで回復ポイントを選択します。 任意の時点の回復ポイントから復元できます。 **太字**になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 選択した日付で複数の回復ポイントを利用できる場合は、**[時間]** ドロップダウン メニューから特定の回復ポイントを選択します。 
 
@@ -171,7 +166,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 システム状態バックアップには、Active Directory のデータが含まれています。 Active Directory Domain Services (AD DS) を現在の状態から以前の状態に復元するには、次の手順に従います。
 
 1. ディレクトリ サービス復元モード (DSRM) でドメイン コントローラーを再起動します。
-2. [ここ](https://technet.microsoft.com/en-us/library/cc794755(v=ws.10).aspx)での手順に従い、Windows Server バックアップ コマンドレットを使用して、AD DS を回復します。
+2. [ここ](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx)での手順に従い、Windows Server バックアップ コマンドレットを使用して、AD DS を回復します。
 
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>システム状態の復元に失敗した場合のトラブルシューティング

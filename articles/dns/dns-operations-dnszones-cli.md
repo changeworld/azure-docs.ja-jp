@@ -1,9 +1,9 @@
 ---
-title: Azure DNS での DNS ゾーンの管理 - Azure CLI 2.0 | Microsoft Docs
-description: Azure CLI 2.0 を使用して DNS ゾーンを管理できます。 この記事では、Azure DNS で DNS ゾーンを更新、削除、および作成する方法について説明します。
+title: Azure DNS での DNS ゾーンの管理 - Azure CLI | Microsoft Docs
+description: Azure CLI を使用して DNS ゾーンを管理できます。 この記事では、Azure DNS で DNS ゾーンを更新、削除、および作成する方法について説明します。
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: timlt
 ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
@@ -12,30 +12,31 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: kumud
-ms.openlocfilehash: d384f8867ddfd28acaf78a47a7d32729e87c5580
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: victorh
+ms.openlocfilehash: 7f132c513354a87b4f1bd37db4c6c6ed8e0fd041
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949963"
 ---
-# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure DNS で DNS ゾーンを管理する方法
+# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS で DNS ゾーンを管理する方法
 
 > [!div class="op_single_selector"]
 > * [ポータル](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
+> * [Azure CLI](dns-operations-dnszones-cli.md)
 
 
 このガイドでは、Windows、Mac、および Linux で使用できるクロス プラットフォームの Azure CLI を使用して、DNS ゾーンを管理する方法について説明します。 DNS ゾーンは、[Azure PowerShell](dns-operations-dnszones.md) または Azure Portal を使用して管理することもできます。
 
-このガイドでは、特にパブリック DNS ゾーンについて説明します。 Azure CLI を使用する Azure DNS の Private Zones の管理については、「[Azure CLI 2.0 で Azure DNS Private Zones の使用を開始する](private-dns-getstarted-cli.md)」を参照してください。
+このガイドでは、特にパブリック DNS ゾーンについて説明します。 Azure CLI を使用した Azure DNS での Private Zones の管理については、[Azure CLI を使用した Azure DNS Private Zones での作業の開始](private-dns-getstarted-cli.md)に関するページを参照してください。
 
 ## <a name="introduction"></a>はじめに
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="set-up-azure-cli-20-for-azure-dns"></a>Azure DNS 向け Azure CLI 2.0 の設定
+## <a name="set-up-azure-cli-for-azure-dns"></a>Azure DNS 向け Azure CLI の設定
 
 ### <a name="before-you-begin"></a>開始する前に
 
@@ -43,11 +44,11 @@ ms.lasthandoff: 03/23/2018
 
 * Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-* Windows、Linux、または MAC 用の最新バージョンの Azure CLI 2.0 をインストールしてください。 詳しくは、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-az-cli2)」をご覧ください。
+* Windows、Linux、または MAC 用の最新バージョンの Azure CLI をインストールしてください。 詳しくは、「 [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-az-cli2)」をご覧ください。
 
 ### <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
 
-コンソール ウィンドウを開き、資格情報を使用して認証を行います。 詳細については、「[Azure CLI から Azure へのログイン](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」をご覧ください。
+コンソール ウィンドウを開き、資格情報を使用して認証を行います。 詳細については、「[Azure CLI から Azure へのログイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」をご覧ください。
 
 ```
 az login
@@ -85,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>ヘルプの表示
 
-Azure DNS に関連するすべての CLI 2.0 コマンドは `az network dns` で始まります。 `--help` オプション (短縮形 `-h`) を使用すると、各コマンドのヘルプを利用できます。  例: 
+Azure DNS に関連するすべての Azure CLI コマンドは `az network dns` で始まります。 `--help` オプション (短縮形 `-h`) を使用すると、各コマンドのヘルプを利用できます。  例: 
 
 ```azurecli
 az network dns --help

@@ -1,30 +1,32 @@
 ---
-title: "Azure Marketplace のドキュメント | Microsoft Docs"
-description: "Azure Marketplace について説明します。"
-services: marketplace
-author: czeumault
-manager: carolz
+title: Azure Marketplace のドキュメント | Microsoft Docs
+description: Azure Marketplace について説明します。
+services: Azure, marketplace
+author: jm-aditi-ms
+manager: pabutler
+editor: ''
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: marketplace
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 04/14/2017
-ms.author: carolz
-ms.openlocfilehash: ca7282e5bc9bac7677d382fd9c263f05be9ef196
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 06/04/2018
+ms.author: ellacroi
+ms.openlocfilehash: e93d1b926b78a352e65a68fc71b07f7631d0b1af
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830024"
 ---
 # <a name="azure-marketplace-documentation"></a>Azure Marketplace のドキュメント
 
-Azure Marketplace について紹介します。Azure Marketplace は、新興企業から大企業に至るまで、ISV が自社のソリューションを世界中ののお客様に提供できるようにする、アプリケーションとサービスのオンライン マーケットプレースです。
+Azure Marketplace について紹介します。Azure Marketplace は、スタートアップ企業から大企業に至るまで、ISV が自社のソリューションを世界中のお客様に提供できるようにする、アプリケーションとサービスのオンライン マーケットプレースです。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide">
+        <a href="/azure/marketplace/marketplace-publishers-guide">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -34,7 +36,7 @@ Azure Marketplace について紹介します。Azure Marketplace は、新興�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Marketplace 販売者ガイド</h3>
+                        <h3>AppSource と Azure Marketplace のパブリッシャー ガイド</h3>
                     </div>
                 </div>
             </div>
@@ -42,7 +44,7 @@ Azure Marketplace について紹介します。Azure Marketplace は、新興�
         </a>
     </li>
     <li>
-        <a href="/azure/marketplace/cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal">
+        <a href="/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -60,5 +62,3 @@ Azure Marketplace について紹介します。Azure Marketplace は、新興�
         </a>
     </li>    
 </ul>
-
-

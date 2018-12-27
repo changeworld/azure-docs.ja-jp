@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/23/2018
+ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 51076c225167accaf386190eeda4ec159cb5657d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 937d0be2e86adf00ac2707d5fd57eb905dcea3fb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238324"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
 
@@ -44,13 +45,13 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 2. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | 場所 |
+    | 証明書 | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
     | AzureGateway-*GUID*.cloudapp.net、AzureRoot.cer    | ローカル コンピューター\信頼されたルート証明機関|
 
-3. Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID> に移動し、ユーザーおよびコンピューターのストアに手動で証明書 (*.cer ファイル) をインストールします。
+3. C:\Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID> に移動し、ユーザーおよびコンピューターのストアに手動で証明書 (*.cer ファイル) をインストールします。
 
 クライアント証明書をインストールする方法の詳細については、[ポイント対サイト接続の証明書の生成とエクスポート](vpn-gateway-certificates-point-to-site.md)に関する記事をご覧ください。
 
@@ -92,7 +93,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 1. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | 場所 |
+    | 証明書 | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
@@ -220,7 +221,7 @@ VPN クライアント構成パッケージをダウンロードしようとす�
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一度に接続する VPN クライアントが多すぎる
 
-VPN ゲートウェイあたりの接続の最大許容数は 128 です。 接続されているクライアントの総数は、Azure Portal で確認できます。
+接続の最大許容数に達しました。 接続されているクライアントの総数は、Azure Portal で確認できます。
 
 ## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>ポイント対サイト VPN でルート テーブルに 10.0.0.0/8 のルートが誤って追加される
 
@@ -275,13 +276,13 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、**C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId>** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。
+この問題を解決するには、**C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId>** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>ポイント対サイト VPN クライアントがローカル ドメイン内のリソースの FQDN を解決できません
 
 ### <a name="symptom"></a>症状
 
-クライアントがポイント対サイト VPN 接続を使用して Azure に接続するとき、ローカル ドメイン内のリソースの FQND を解決できません。
+クライアントがポイント対サイト VPN 接続を使用して Azure に接続するとき、ローカル ドメイン内のリソースの FQDN を解決できません。
 
 ### <a name="cause"></a>原因
 
@@ -304,11 +305,11 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>エラー: "失効サーバーがオフラインであったため、失効関数が失効を確認できませんでした。(エラー 0x80092013)"
 
 ### <a name="causes"></a>原因
-このエラー メッセージは、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.cr にアクセスできない場合に発生します。失効を確認するには、この 2 つのサイトにアクセスする必要があります。  この問題は、通常は、プロキシ サーバーが構成されているクライアントで発生します。 一部の環境では、要求がプロキシ サーバーを経由しない場合はエッジ ファイアウォールで拒否されます。
+このエラー メッセージは、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.crl にアクセスできない場合に発生します。  失効を確認するには、この 2 つのサイトにアクセスする必要があります。  この問題は、通常は、プロキシ サーバーが構成されているクライアントで発生します。 一部の環境では、要求がプロキシ サーバーを経由しない場合はエッジ ファイアウォールで拒否されます。
 
 ### <a name="solution"></a>解決策
 
-プロキシ サーバーの設定を調べて、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.cr にアクセスできることを確認します。
+プロキシ サーバーの設定を調べて、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.crl にアクセスできることを確認します。
 
 ## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN クライアント エラー: RAS/VPN サーバーに構成されたポリシーにより、接続できませんでした。 (エラー 812)
 
@@ -318,7 +319,7 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="solution"></a>解決策
 
-RADIUS サーバーが正しく構成されていることを確認します。 詳細については、「[RADIUS 認証と Azure Multi-Factor Authentication Server の統合](../multi-factor-authentication/multi-factor-authentication-get-started-server-radius.md)」を参照してください。
+RADIUS サーバーが正しく構成されていることを確認します。 詳細については、「[RADIUS 認証と Azure Multi-Factor Authentication Server の統合](../active-directory/authentication/howto-mfaserver-dir-radius.md)」を参照してください。
 
 ## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>VPN Gateway からルート証明書をダウンロードするときに "エラー 405" が発生します
 
@@ -360,7 +361,7 @@ Azure VPN ゲートウェイの種類は VPN で、VPN の種類は **RouteBased
 
 ### <a name="solution"></a>解決策
 
-**C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId>** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。 
+**C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId>** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>VPN クライアントがしばらくしたら休止状態またはスリープ状態になる
 

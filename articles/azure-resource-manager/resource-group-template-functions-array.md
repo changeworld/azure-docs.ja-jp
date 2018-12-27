@@ -1,24 +1,25 @@
 ---
-title: "Azure Resource Manager テンプレートの関数 - 配列とオブジェクト | Microsoft Docs"
-description: "Azure Resource Manager テンプレートで、配列とオブジェクトを操作するために使用する関数について説明します。"
+title: Azure Resource Manager テンプレートの関数 - 配列とオブジェクト | Microsoft Docs
+description: Azure Resource Manager テンプレートで、配列とオブジェクトを操作するために使用する関数について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 11/8/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7d040fe55cb46665c97668a76ccbc66adc002f89
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 660764183cdee911c49dedf74893f3d368cd9492
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346628"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数 
 
@@ -53,9 +54,9 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| convertToArray |はい |整数、文字列、配列、オブジェクト |配列に変換する値。 |
+| convertToArray |[はい] |整数、文字列、配列、オブジェクト |配列に変換する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -76,7 +77,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
         },
         "stringToConvert": {
             "type": "string",
-            "defaultValue": "a"
+            "defaultValue": "efgh"
         },
         "objectToConvert": {
             "type": "object",
@@ -104,11 +105,11 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
-| intOutput | array | [1] |
-| stringOutput | array | ["a"] |
-| objectOutput | array | [{"a": "b", "c": "d"}] |
+| intOutput | Array | [1] |
+| stringOutput | Array | ["efgh"] |
+| objectOutput | Array | [{"a": "b", "c": "d"}] |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -118,7 +119,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
 ```
 
@@ -131,10 +132,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |整数、文字列、配列、オブジェクト |null かどうかがテストされる最初の値。 |
-| 残りの引数 |いいえ |整数、文字列、配列、オブジェクト |null かどうかがテストされる残りの値。 |
+| arg1 |[はい] |整数、文字列、配列、オブジェクト |null かどうかがテストされる最初の値。 |
+| 残りの引数 |いいえ  |整数、文字列、配列、オブジェクト |null かどうかがテストされる残りの値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -190,12 +191,12 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | stringOutput | String | default |
 | intOutput | int | 1 |
 | objectOutput | オブジェクト | {"first": "default"} |
-| arrayOutput | array | [1] |
+| arrayOutput | Array | [1] |
 | emptyOutput | ブール値 | True |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
@@ -206,7 +207,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
 ```
 
@@ -219,10 +220,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |配列または文字列 |連結する最初の配列または文字列。 |
-| 残りの引数 |いいえ |配列または文字列 |順次連結する残りの配列または文字列。 |
+| arg1 |[はい] |配列または文字列 |連結する最初の配列または文字列。 |
+| 残りの引数 |いいえ  |配列または文字列 |順次連結する残りの配列または文字列。 |
 
 この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。
 
@@ -268,9 +269,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
-| return | array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -280,7 +281,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
 ```
 
@@ -308,7 +309,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -320,7 +321,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
@@ -329,14 +330,14 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="contains"></a>contains
 `contains(container, itemToFind)`
 
-配列に値が含まれるかどうか、オブジェクトにキーが含まれるかどうか、または文字列に部分文字列が含まれるかどうかを確認します。
+配列に値が含まれるかどうか、オブジェクトにキーが含まれるかどうか、または文字列に部分文字列が含まれるかどうかを確認します。 文字列比較では大文字・小文字を区別します。 ただし、オブジェクトにキーが含まれているかどうかをテストする場合、比較で大文字・小文字を区別しません。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
-| itemToFind |はい |文字列または整数 |検索対象の値。 |
+| container |[はい] |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
+| itemToFind |[はい] |文字列または整数 |検索対象の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -397,7 +398,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | stringTrue | ブール値 | True |
 | stringFalse | ブール値 | False |
@@ -414,7 +415,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
 ```
 
@@ -427,10 +428,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |文字列、整数、配列、オブジェクト |配列の最初の値。 |
-| 残りの引数 |なし |文字列、整数、配列、オブジェクト |配列の残りの値。 |
+| arg1 |[はい] |文字列、整数、配列、オブジェクト |配列の最初の値。 |
+| 残りの引数 |いいえ  |文字列、整数、配列、オブジェクト |配列の残りの値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -479,12 +480,12 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
-| stringArray | array | ["a", "b", "c"] |
-| intArray | array | [1, 2, 3] |
-| objectArray | array | [{"one": "a", "two": "b", "three": "c"}] |
-| arrayArray | array | [["one", "two", "three"]] |
+| stringArray | Array | ["a", "b", "c"] |
+| intArray | Array | [1, 2, 3] |
+| objectArray | Array | [{"one": "a", "two": "b", "three": "c"}] |
+| arrayArray | Array | [["one", "two", "three"]] |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -494,7 +495,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
 ```
 
@@ -508,9 +509,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| itemToTest |あり |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
+| itemToTest |[はい] |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -559,7 +560,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayEmpty | ブール値 | True |
 | objectEmpty | ブール値 | True |
@@ -573,7 +574,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
 ```
 
@@ -586,9 +587,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |配列または文字列 |最初の要素または文字を取得する値。 |
+| arg1 |[はい] |配列または文字列 |最初の要素または文字を取得する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -625,7 +626,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -638,7 +639,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
@@ -651,11 +652,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |配列またはオブジェクト |共通の要素の検索に使用する 1 番目の値。 |
-| arg2 |あり |配列またはオブジェクト |共通の要素の検索に使用する 2 番目の値。 |
-| 残りの引数 |いいえ |配列またはオブジェクト |共通の要素の検索に使用する残りの値。 |
+| arg1 |[はい] |配列またはオブジェクト |共通の要素の検索に使用する 1 番目の値。 |
+| arg2 |[はい] |配列またはオブジェクト |共通の要素の検索に使用する 2 番目の値。 |
+| 残りの引数 |いいえ  |配列またはオブジェクト |共通の要素の検索に使用する残りの値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -704,10 +705,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | オブジェクト | {"one": "a", "three": "c"} |
-| arrayOutput | array | ["two", "three"] |
+| arrayOutput | Array | ["two", "three"] |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -717,7 +718,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
 ```
 
@@ -728,14 +729,18 @@ JSON オブジェクトを返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |string |JSON に変換する値。 |
+| arg1 |[はい] |string |JSON に変換する値。 |
 
 
 ### <a name="return-value"></a>戻り値
 
 **null** が指定された場合は、指定された文字列の JSON オブジェクト、または空のオブジェクト。
+
+### <a name="remarks"></a>解説
+
+JSON オブジェクトにパラメーター値または変数を含める必要がある場合、 [concat](resource-group-template-functions-string.md#concat)関数を使用し、関数に渡す文字列を作成します。
 
 ### <a name="example"></a>例
 
@@ -745,6 +750,12 @@ JSON オブジェクトを返します。
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
+    "parameters": {
+        "testValue": {
+            "type": "string",
+            "defaultValue": "demo value"
+        }
+    },
     "resources": [
     ],
     "outputs": {
@@ -755,6 +766,10 @@ JSON オブジェクトを返します。
         "nullOutput": {
             "type": "bool",
             "value": "[empty(json('null'))]"
+        },
+        "paramOutput": {
+            "type": "object",
+            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
         }
     }
 }
@@ -762,10 +777,11 @@ JSON オブジェクトを返します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | jsonOutput | オブジェクト | {"a": "b"} |
 | nullOutput | Boolean | True |
+| paramOutput | オブジェクト | {「a」:「値のデモ」}
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -775,7 +791,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
 ```
 
@@ -788,9 +804,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |配列または文字列 |最後の要素または文字を取得する値。 |
+| arg1 |[はい] |配列または文字列 |最後の要素または文字を取得する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -827,7 +843,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -840,7 +856,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
@@ -853,9 +869,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
+| arg1 |[はい] |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -899,7 +915,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -912,7 +928,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
 ```
 
@@ -936,9 +952,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
+| arg1 |[はい] |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -974,7 +990,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -987,22 +1003,22 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
 <a id="min" />
 
-## <a name="min"></a>Min
+## <a name="min"></a>min
 `min(arg1)`
 
 整数の配列または整数のコンマ区切りリストから最小値を返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
+| arg1 |[はい] |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1038,7 +1054,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | intOutput | int | 0 |
@@ -1051,7 +1067,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
@@ -1064,10 +1080,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| startingInteger |はい |int |配列の最初の整数です。 |
-| numberofElements |はい |int |配列内の整数の数。 |
+| startingInteger |[はい] |int |配列の最初の整数です。 |
+| numberofElements |[はい] |int |配列内の整数の数。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1103,9 +1119,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
-| rangeOutput | array | [5, 6, 7] |
+| rangeOutput | Array | [5, 6, 7] |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -1115,7 +1131,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
 ```
 
@@ -1128,10 +1144,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| originalValue |はい |配列または文字列 |スキップ対象の配列または文字列。 |
-| numberToSkip |はい |int |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超える場合は、空の配列または文字列が返されます。 |
+| originalValue |[はい] |配列または文字列 |スキップ対象の配列または文字列。 |
+| numberToSkip |[はい] |int |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超える場合は、空の配列または文字列が返されます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1183,9 +1199,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
-| arrayOutput | array | ["three"] |
+| arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
@@ -1196,7 +1212,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
 ```
 
@@ -1209,10 +1225,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| originalValue |はい |配列または文字列 |要素の取得元となる配列または文字列。 |
-| numberToTake |あり |int |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超える場合は、その配列または文字列のすべての要素が返されます。 |
+| originalValue |[はい] |配列または文字列 |要素の取得元となる配列または文字列。 |
+| numberToTake |[はい] |int |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超える場合は、その配列または文字列のすべての要素が返されます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1264,9 +1280,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
-| arrayOutput | array | ["one", "two"] |
+| arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
@@ -1277,7 +1293,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
 ```
 
@@ -1290,11 +1306,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |配列またはオブジェクト |要素の結合に使用される 1 番目の値。 |
-| arg2 |あり |配列またはオブジェクト |要素の結合に使用される 2 番目の値。 |
-| 残りの引数 |いいえ |配列またはオブジェクト |要素の結合に使用される残りの値。 |
+| arg1 |[はい] |配列またはオブジェクト |要素の結合に使用される 1 番目の値。 |
+| arg2 |[はい] |配列またはオブジェクト |要素の結合に使用される 2 番目の値。 |
+| 残りの引数 |いいえ  |配列またはオブジェクト |要素の結合に使用される残りの値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1343,10 +1359,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | オブジェクト | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
-| arrayOutput | array | ["one", "two", "three", "four"] |
+| arrayOutput | Array | ["one", "two", "three", "four"] |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -1356,11 +1372,11 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。

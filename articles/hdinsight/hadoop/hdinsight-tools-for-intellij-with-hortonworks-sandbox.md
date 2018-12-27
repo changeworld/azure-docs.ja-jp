@@ -1,27 +1,21 @@
 ---
-title: "Hortonworks Sandbox と Azure Toolkit for IntelliJ の使用 | Microsoft Docs"
-description: "Hortonworks Sandbox と一緒に Azure Toolkit for IntelliJ の HDInsight ツールを使用する方法について説明します。"
-keywords: "Hadoop ツール, Hive クエリ, Intellij, Hortonworks Sandbox, Azure Toolkit for IntelliJ"
-services: HDInsight
-documentationcenter: 
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: b587cc9b-a41a-49ac-998f-b54d6c0bdfe0
+title: Hortonworks Sandbox と Azure Toolkit for IntelliJ の使用
+description: Hortonworks Sandbox と一緒に Azure Toolkit for IntelliJ の HDInsight ツールを使用する方法について説明します。
+keywords: Hadoop ツール, Hive クエリ, Intellij, Hortonworks Sandbox, Azure Toolkit for IntelliJ
+services: hdinsight
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/20/2017
-ms.author: jgao
-ms.openlocfilehash: 6bb29dc4e231bc859be620e56a606fbbfade102b
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: hrasheed
+ms.openlocfilehash: 2f09bd7055b987a8647a24d4ebb6ea5a27888a53
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015589"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する
 
@@ -37,7 +31,7 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
     > [!NOTE]
     > IntelliJ 用 HDInsight ツールがテストされているのは HDP 2.4 のみです。 HDP 2.4 を入手するには、[Hortonworks Sandbox ダウンロード サイト](http://hortonworks.com/downloads/#sandbox)で、**[Hortonworks Sandbox アーカイブ]** を展開します。
 
-- [Java Developer Kit (JDK) バージョン 1.8 以降](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。 Azure Toolkit for IntelliJ には JDK が必要です。
+- [Java Developer Kit (JDK) バージョン 1.8 以降](https://aka.ms/azure-jdks)。 Azure Toolkit for IntelliJ には JDK が必要です。
 
 - [IntelliJ IDEA コミュニティ エディション](https://www.jetbrains.com/idea/download)と、[Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) プラグインおよび [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij) プラグイン。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 
 
@@ -64,7 +58,7 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
 
    ![[New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
-2. **[次へ]**を選択します。
+2. **[次へ]** を選択します。
 3. 次の **[New Project]\(新しいプロジェクト\)** ダイアログ ボックスで、以下の手順を実行します。
 
     1. **[Project name]\(プロジェクト名\)** ボックスにプロジェクト名を入力します。

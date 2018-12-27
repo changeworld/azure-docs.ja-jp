@@ -2,24 +2,22 @@
 title: Azure Active Directory の接続済みサービスでエラーを診断する方法
 description: Active Directory の接続済みサービスで、サポートされていない認証の種類が検出された
 services: active-directory
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: dd89ea63-4e45-4da1-9642-645b9309670a
-ms.service: active-directory
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure-vs
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev
-ms.openlocfilehash: c3494102703b68d6861e8755ca9dafe19c7fa6d6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.custom: aaddev, vs-azure
+ms.openlocfilehash: 82449c3a8154142a64aa264f72d2dec75fe2f23c
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143462"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory の接続済みサービスでエラーを診断する
 
@@ -96,4 +94,4 @@ Web API プロジェクトで Windows 認証を検出するために、接続済
 
 認証の種類を変更するには、互換性のない認証の種類を削除して、再度接続済みサービスの追加を試行します。
 
-詳細については、「 [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
+詳細については、「 [Azure AD の認証シナリオ](authentication-scenarios.md)」を参照してください。

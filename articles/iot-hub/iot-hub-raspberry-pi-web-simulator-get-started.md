@@ -1,30 +1,27 @@
 ---
-title: "シミュレートした Raspberry Pi から クラウドへ (Node.js) - Raspberry Pi Web シミュレーターの Azure IoT Hub への接続 | Microsoft Docs"
-description: "Raspberry Pi Web シミュレーターを Azure IoT Hub に接続し、Raspberry Pi で Azure クラウドにデータを送信します。"
-services: iot-hub
-documentationcenter: 
-author: shizn
-manager: timtl
-tags: 
-keywords: "raspberry pi シミュレーター, azure iot raspberry pi, raspberry pi iot hub, raspberry pi でクラウドにデータを送信する raspberry pi からクラウドへ"
+title: シミュレートした Raspberry Pi から クラウドへ (Node.js) - Raspberry Pi Web シミュレーターの Azure IoT Hub への接続 | Microsoft Docs
+description: Raspberry Pi Web シミュレーターを Azure IoT Hub に接続し、Raspberry Pi で Azure クラウドにデータを送信します。
+author: rangv
+manager: ''
+keywords: raspberry pi シミュレーター, azure iot raspberry pi, raspberry pi iot hub, raspberry pi でクラウドにデータを送信する raspberry pi からクラウドへ
 ms.service: iot-hub
-ms.devlang: node
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 7/28/2017
-ms.author: xshi
-ms.openlocfilehash: 3b80bf35d6af91d5bdb196d97668dc0f837b92cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+services: iot-hub
+ms.devlang: nodejs
+ms.topic: conceptual
+ms.date: 04/11/2018
+ms.author: rangv
+ms.openlocfilehash: a2d067f71b7b68944e479cfd27c1dbf414762af8
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514878"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Raspberry Pi オンライン シミュレーターの Azure IoT Hub への接続 (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-このチュートリアルでは、まず Raspberry Pi オンライン シミュレーターの操作の基礎について説明します。 次に、[Azure IoT Hub](iot-hub-what-is-iot-hub.md) を使って、シミュレーターをクラウドにシームレスに接続する方法について説明します。 
+このチュートリアルでは、まず Raspberry Pi オンライン シミュレーターの操作の基礎について説明します。 次に、[Azure IoT Hub](about-iot-hub.md) を使って、シミュレーターをクラウドにシームレスに接続する方法について説明します。 
 
 物理デバイスがある場合、「[Raspberry Pi の Azure IoT Hub への接続](iot-hub-raspberry-pi-kit-node-get-started.md)」に移動して作業を開始してください。 
 
@@ -62,9 +59,13 @@ Raspberry Pi オンライン シミュレーターを起動するボタンをク
 <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Raspberry Pi シミュレーターの起動</a>
 
 Web シミュレーターには3 つの領域があります。
+
 1. アセンブリ領域 - 既定の回線は、Pi が BME280 センサーと LED に接続する回線です。 プレビュー バージョンではこの領域はロックされているため、今のところカスタマイズを行うことはできません。
+
 2. コーディング領域 - Raspberry Pi を使用してコーディングするためのオンライン コード エディター。 既定のサンプル アプリケーションは、BME280 センサーからセンサー データを収集し、、Azure IoT Hub に送信する際に役立ちます。 このアプリケーションは、実際の Pi デバイスとの完全に互換性があります。 
+
 3. 統合されたコンソール ウィンドウ - コードの出力が表示されます。 このウィンドウの上部には、3 つのボタンがあります。
+
    * **[実行]** - コーディング領域でアプリケーションを実行します。
    * **[リセット]** - コーディング領域を既定のサンプル アプリケーションにリセットします。
    * **[折りたたむ/展開する]** - 右側には、コンソール ウィンドウの折りたたみおよび展開を行うボタンがあります。
@@ -74,8 +75,17 @@ Raspberry Pi Web シミュレーターは、プレビュー バージョンで�
 
 ![Pi オンライン シミュレーターの概要](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
 
-[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
+## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+### <a name="retrieve-connection-string-for-iot-hub"></a>IoT ハブに対する接続文字列を取得する
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="run-a-sample-application-on-pi-web-simulator"></a>Pi Web シミュレーターでのサンプル アプリケーションの実行
 
@@ -84,11 +94,10 @@ Raspberry Pi Web シミュレーターは、プレビュー バージョンで�
 
 2. **[実行]** をクリックまたは `npm start` と入力してアプリケーションを実行します。
 
-
 IoT Hub に送信されるセンサー データとメッセージを示す次の出力が表示されます。![出力 - Raspberry Pi から IoT Hub に送信されるセンサー データ](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。
 

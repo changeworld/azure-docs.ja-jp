@@ -1,25 +1,25 @@
 ---
-title: "テナント リソース使用量 API | Microsoft Docs"
-description: "Azure Stack の使用状況情報を取得するリソース使用状況 API のリファレンス。"
+title: テナント リソース使用量 API | Microsoft Docs
+description: Azure Stack の使用状況情報を取得するリソース使用状況 API のリファレンス。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: b9d7c7ee-e906-4978-92a3-a2c52df16c36
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: bc0b9993119342f07c28ed0384c11ae0f15bc439
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: ab5dad550e590cd70f54ad5c8d4727d0f6370190
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379714"
 ---
 # <a name="tenant-resource-usage-api"></a>テナント リソース使用量 API
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/12/2018
 Windows PowerShell コマンドレット **Get-UsageAggregates** を使用して、Azure と同様に使用状況データを取得できます。
 
 ## <a name="api-call"></a>API 呼び出し
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 要求は、要求されたサブスクリプションと要求された期間の使用の詳細を取得します。 要求の本文はありません。
 
 | **メソッド** | **要求 URI** |

@@ -1,22 +1,23 @@
 ---
-title: "Azure Service Fabric でパラメーターを使用してサービスのポート番号を指定する方法 | Microsoft Docs"
-description: "Service Fabric でパラメーターを使ってアプリケーションのポートを指定する方法を説明します"
+title: Azure Service Fabric でパラメーターを使用してサービスのポート番号を指定する方法 | Microsoft Docs
+description: Service Fabric でパラメーターを使ってアプリケーションのポートを指定する方法を説明します
 documentationcenter: .net
 author: mikkelhegn
 manager: markfuss
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: aca5b6a476e9526498a5e4834aaa28eb73750562
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: d69e02126564388bf045693b9960e6e574307641
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391336"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Service Fabric でパラメーターを使用してサービスのポート番号を指定する方法
 
@@ -46,7 +47,7 @@ ms.lasthandoff: 01/16/2018
       </ServiceManifestImport>
     ```
 
-1. `Endpoint` 要素で、パラメーターを使って任意の属性を上書きできるようになります。 次の例では、`Port` を指定し、角かっこを使ってパラメーター名に設定しています (例: `[MyWebAPI_PortNumber]`)。
+1. `Endpoint` 要素で、パラメーターを使って任意の属性をオーバーライドできるようになります。 次の例では、`Port` を指定し、角かっこを使ってパラメーター名に設定しています (例: `[MyWebAPI_PortNumber]`)。
 
     ```xml
       <ServiceManifestImport>
@@ -81,7 +82,7 @@ ms.lasthandoff: 01/16/2018
 
     ```xml
       <Parameters>
-        <Parameter Name="MyWebAPI_PortNumber" DefaultValue="80" />
+        <Parameter Name="MyWebAPI_PortNumber" Value="80" />
       </Parameters>
     ```
 

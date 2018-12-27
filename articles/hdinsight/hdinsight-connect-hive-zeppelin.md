@@ -1,37 +1,32 @@
 ---
-title: "Zeppelin を使用して Azure HDInsight で Hive クエリを実行する | Microsoft Docs"
-description: "Zeppelin を使用して Hive クエリを実行する方法について説明します。"
-keywords: "hdinsight,hadoop,hive,対話型クエリ,LLAP"
+title: Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する
+description: Apache Zeppelin を使用して Apache Hive クエリを実行する方法について説明します。
+keywords: hdinsight,hadoop,hive,対話型クエリ,LLAP
 services: hdinsight
-documentationcenter: 
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 09/26/2017
-ms.author: jgao
-ms.openlocfilehash: 39f99bef252e93db55e0493ee284ef78b7d087a1
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.topic: conceptual
+ms.date: 11/05/2018
+ms.author: hrasheed
+ms.openlocfilehash: 75ec0e17e9866d2cd3420ff6ecf648bf22a8ae8e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277955"
 ---
-# <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Zeppelin を使用して Azure HDInsight で Hive クエリを実行する 
+# <a name="use-apache-zeppelin-to-run-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する 
 
-HDInsight 対話型クエリ クラスターには、Zeppelin ノートブックが含まれます。このノートブックを利用し、対話型 Hive クエリを実行できます。 この記事では、Zeppelin を使用して Azure HDInsight で Hive クエリを実行する方法について説明します。 
+HDInsight 対話型クエリ クラスターには、対話型 Hive クエリを実行するために使用できる Apache Zeppelin ノートブックが含まれています。 この記事では、Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
 
 * **HDInsight 対話型クエリ クラスター**。 HDInsight クラスターの作成については、「[クラスターの作成](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。  クエリの種類では対話型クエリを必ず選択してください。 
 
-## <a name="create-a-zeppelin-note"></a>Zeppelin Note を作成する
+## <a name="create-a-apache-zeppelin-note"></a>Apache Zeppelin Note を作成する
 
 1. 次の URL を参照します。
 
@@ -41,7 +36,7 @@ HDInsight 対話型クエリ クラスターには、Zeppelin ノートブック
 2. Hadoop ユーザー名とパスワードを入力します。 Zeppelin ページで、新しいノートを作成するか、既存のノートを開きます。 HiveSample には、サンプル Hive クエリが含まれています。  
 
     ![HDInsight 対話型クエリ Zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
-3. **[Note の新規作成]**をクリックします。
+3. **[Note の新規作成]** をクリックします。
 4. 次の値を入力または選択します。
 
     - Note 名: ノートの名前を入力します。

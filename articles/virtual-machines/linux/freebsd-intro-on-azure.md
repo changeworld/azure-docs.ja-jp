@@ -1,11 +1,11 @@
 ---
-title: "Azure の FreeBSD の概要 | Microsoft Docs"
-description: "Azure での FreeBSD 仮想マシンの使用について説明します。"
+title: Azure の FreeBSD の概要 | Microsoft Docs
+description: Azure での FreeBSD 仮想マシンの使用について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: thomas1206
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 32b87a5f-d024-4da0-8bf0-77e233d1422b
 ms.service: virtual-machines-linux
@@ -15,14 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: e47a00a8375659f9112da57f9e7a4747f10f8f16
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 9c3815f0083d049d9b4baed8e360f5927fcd3d69
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025686"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure の FreeBSD の概要
-このトピックでは、Azure での FreeBSD 仮想マシンの実行の概要を説明します。
+この記事では、Azure での FreeBSD 仮想マシンの実行の概要を説明します。
 
 ## <a name="overview"></a>概要
 Microsoft Azure の FreeBSD は、最新のサーバー、デスクトップ、組み込みプラットフォームを強化するために使用される先進のコンピューター オペレーティング システムです。
@@ -30,7 +31,7 @@ Microsoft Azure の FreeBSD は、最新のサーバー、デスクトップ、�
 Microsoft Corporation では、Azure で利用可能な、[Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) を事前構成した FreeBSD を用意しています。 現時点では、次のバージョンの FreeBSD がイメージとしてマイクロソフトから提供されています。
 
 - FreeBSD 10.3-RELEASE
-- FreeBSD 11.0-RELEASE
+- FreeBSD 10.4-RELEASE
 - FreeBSD 11.1-RELEASE
 
 エージェントは、初回使用時の VM のプロビジョニング (ユーザー名、パスワード、SSH キー、ホスト名など) や、選択的な VM 拡張機能の有効化などの操作で、FreeBSD VM と Azure ファブリック間の通信を担います。
@@ -40,38 +41,38 @@ FreeBSD の今後のバージョンについては、最新の機能に対応し
 ## <a name="deploying-a-freebsd-virtual-machine"></a>FreeBSD 仮想マシンのデプロイ
 FreeBSD 仮想マシンのデプロイは、Azure Marketplace から提供されたイメージをAzure Portal で使用する簡単なプロセスです。
 
-- [Azure Marketplace の FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
-- [Azure Marketplace の FreeBSD 11.0](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/)
+- [Azure Marketplace の FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103)
+- [Azure Marketplace の FreeBSD 10.4](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeBSD104)
 - [Azure Marketplace の FreeBSD 11.1](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111)
 
-### <a name="create-a-freebsd-vm-through-azure-cli-20-on-freebsd"></a>FreeBSD で Azure CLI 2.0 を使用して FreeBSD VM を作成する
-まず、FreeBSD コンピューターで次のコマンドを実行して、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) をインストールする必要があります。
+### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>FreeBSD で Azure CLI を使用して FreeBSD VM を作成する
+まず、FreeBSD コンピューターで次のコマンドを実行して、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) をインストールする必要があります。
 
-```bash 
+```bash 
 curl -L https://aka.ms/InstallAzureCli | bash
 ```
 
-Bash が FreeBSD コンピューターにインストールされていない場合は、インストールの前に次のコマンドを実行します。 
+Bash が FreeBSD コンピューターにインストールされていない場合は、インストールの前に次のコマンドを実行します。 
 
 ```bash
 sudo pkg install bash
 ```
 
-Python が FreeBSD コンピューターにインストールされていない場合は、インストールの前に次のコマンドを実行します。 
+Python が FreeBSD コンピューターにインストールされていない場合は、インストールの前に次のコマンドを実行します。 
 
 ```bash
 sudo pkg install python35
-cd /usr/local/bin 
-sudo rm /usr/local/bin/python 
+cd /usr/local/bin 
+sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
 インストール中に、`Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)` が表示されます。 `y` と回答し、`a path to an rc file to update` として `/etc/rc.conf` を入力した場合、`ERROR: [Errno 13] Permission denied` が発生することがあります。 この問題を解決するには、`etc/rc.conf` ファイルに対する書き込み権限を現在のユーザーに与える必要があります。
 
-これで、Azure にログインし、FreeBSD VM を作成できます。 FreeBSD 11.0 VM を作成する例を以下に示します。 `--public-ip-address-dns-name` パラメーターを追加して、新しく作成されるパブリック IP に対するグローバルに一意な DNS 名を指定することもできます。 
+これで、Azure にサインインし、FreeBSD VM を作成できます。 FreeBSD 11.0 VM を作成する例を以下に示します。 `--public-ip-address-dns-name` パラメーターを追加して、新しく作成されるパブリック IP に対するグローバルに一意な DNS 名を指定することもできます。 
 
 ```azurecli
-az login 
+az login 
 az group create --name myResourceGroup --location eastus
 az vm create --name myFreeBSD11 \
     --resource-group myResourceGroup \
@@ -80,7 +81,7 @@ az vm create --name myFreeBSD11 \
     --generate-ssh-keys
 ```
 
-その後、上のデプロイで出力された IP アドレスを使用して、FreeBSD VM にログインできます。 
+その後、上のデプロイで出力された IP アドレスを使用して、FreeBSD VM にサインインできます。 
 
 ```bash
 ssh azureuser@xx.xx.xx.xx -i /etc/ssh/ssh_host_rsa_key
@@ -130,7 +131,7 @@ $ sudo <COMMAND>
 `sudo -s` を使用して root シェルを取得することもできます。
 
 ## <a name="known-issues"></a>既知の問題
-[Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) バージョン 2.2.2 については、Azure 上の FreeBSD VM に対してプロビジョニング エラーが発生するという [既知の問題] (https://github.com/Azure/WALinuxAgent/pull/517) が確認されています。 修正プログラムは、[Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) バージョン 2.2.3 以降のリリースによってキャプチャされました。 
+[Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) バージョン 2.2.2 については、Azure 上の FreeBSD VM に対してプロビジョニング エラーが発生するという[既知の問題](https://github.com/Azure/WALinuxAgent/pull/517)が確認されています。 修正プログラムは、[Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) バージョン 2.2.3 以降のリリースによってキャプチャされました。 
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) に移動して、FreeBSD VM を作成します。
+* [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111) に移動して、FreeBSD VM を作成します。

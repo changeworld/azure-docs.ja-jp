@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30842015"
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する
 この記事では、Azure Virtual Machines に Linux ハイ パフォーマンス コンピューティング (HPC) ワークロードを実行する 1 つの方法について説明します。 ここでは、大規模な生体分子系の構造を計算し視覚化するために、Azure に [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) クラスターと Linux コンピューティング ノードを設定し、[NAMD](http://www.ks.uiuc.edu/Research/namd/) シミュレーションを実行します。  
@@ -221,7 +222,7 @@ host CENTOS66LN-03 ++cpus 2
 これで、HPC クラスター マネージャーで NAMD ジョブを送信する準備が整いました。
 
 1. クラスター ヘッド ノードに接続し、HPC クラスター マネージャーを開始します。
-2. **[リソース管理]** で、Linux 計算ノードが**オンライン**状態にあることを確認します。 オンライン状態にない場合は、その計算ノードを選択し、 **[オンラインにする]**をクリックします。
+2. **[リソース管理]** で、Linux 計算ノードが**オンライン**状態にあることを確認します。 オンライン状態にない場合は、その計算ノードを選択し、 **[オンラインにする]** をクリックします。
 3. **[ジョブ管理]** で、**[新しいジョブ]** をクリックします。
 4. ジョブの名前を入力します (たとえば、 *hpccharmrun*)。
    
@@ -236,7 +237,7 @@ host CENTOS66LN-03 ++cpus 2
      `/namd2/hpccharmrun.sh ++remote-shell ssh /namd2/namd2 /namd2/namdsample/1-2-sphere/ubq_ws_eq.conf > /namd2/namd2_hpccharmrun.log`
      
      > [!TIP]
-     > 上記のコマンドラインは改行なしの単一のコマンドです。 **[コマンド ライン]**の下で折り返され、複数行で表示されます。
+     > 上記のコマンドラインは改行なしの単一のコマンドです。 **[コマンド ライン]** の下で折り返され、複数行で表示されます。
      > 
      > 
    * **作業ディレクトリ** - /namd2
@@ -250,7 +251,7 @@ host CENTOS66LN-03 ++cpus 2
      > 
 8. **[OK]** をクリックしてから、**[送信]** をクリックしてこのジョブを実行します。
    
-   既定では、HPC Pack は、ログオンした現在のユーザー アカウントとしてジョブを送信します。 **[送信]**をクリックした後、ダイアログ ボックスにユーザー名とパスワードの入力を求めるメッセージが表示される場合があります。
+   既定では、HPC Pack は、ログオンした現在のユーザー アカウントとしてジョブを送信します。 **[送信]** をクリックした後、ダイアログ ボックスにユーザー名とパスワードの入力を求めるメッセージが表示される場合があります。
    
    ![ジョブの資格情報][creds]
    

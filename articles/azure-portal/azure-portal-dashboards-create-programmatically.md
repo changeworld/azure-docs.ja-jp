@@ -1,23 +1,24 @@
 ---
-title: "プログラムによる Azure ダッシュボードの作成 | Microsoft Docs"
-description: "この記事では、プログラムで Azure ダッシュボードを作成する方法について説明します。"
+title: プログラムによる Azure ダッシュボードの作成 | Microsoft Docs
+description: この記事では、プログラムで Azure ダッシュボードを作成する方法について説明します。
 services: azure-portal
-documentationcenter: 
-author: adamab
-manager: timlt
+documentationcenter: ''
+author: adamabmsft
+manager: dougeby
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
-ms.author: adamab
-ms.openlocfilehash: 0e84ff61346f2788cf475cee2783ba2056a091ad
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: cwatson
+ms.openlocfilehash: a9ca57ce916dc3f9bc8d451063596519d1d6649c
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391346"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
@@ -55,7 +56,7 @@ Azure 内の共有ダッシュボードは、仮想マシンやストレージ �
 
 ![[共有] コマンド](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-[共有] コマンドをクリックすると、発行するサブスクリプションとリソース グループを選択するダイアログが表示されます。 選択したサブスクリプションとリソース グループに[書き込みアクセス権が必要](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)であることに注意してください。
+[共有] コマンドをクリックすると、発行するサブスクリプションとリソース グループを選択するダイアログが表示されます。 選択したサブスクリプションとリソース グループに[書き込みアクセス権が必要](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)であることに注意してください。
 
 ![共有とアクセス](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
@@ -88,11 +89,11 @@ Azure では、複数のリソースの配置を調整するための機能が�
 この方法を使用する場合は、テンプレートのパラメーター構文を使用してパラメーター化する必要があります。  次のように、上記で特定したリソース ID のすべてのインスタンスを置換します。
 
 ### <a name="example-json-property-with-hard-coded-resource-id"></a>ハード コーディングされたリソース ID を使用した JSON プロパティの例
-`id: “/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1”`
+`id: "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1"`
 
 ### <a name="example-json-property-converted-to-a-parameterized-version-based-on-template-parameters"></a>テンプレート パラメーターに基づいてパラメーター化されたバージョンに変換されたサンプルの JSON プロパティ
 
-`id: "[resourceId(parameters('virtualMachineResourceGroup'), ‘Microsoft.Compute/virtualMachines’, parameters('virtualMachineName'))]"`
+`id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"`
 
 また、必要なテンプレート メタデータとパラメーターを、次のように、JSON テンプレートの上部で宣言する必要があります。
 
@@ -119,7 +120,7 @@ Azure では、複数のリソースの配置を調整するための機能が�
 
 __このドキュメントの末尾に、実際に機能する、詳細なテンプレートがあります。__
 
-テンプレートを作成したら、[REST API](https://docs.microsoft.com/rest/api/resources/deployments)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)、[Azure CLI](https://docs.microsoft.com/cli/azure/group/deployment#az_group_deployment_create)、または[ポータルの [テンプレートのデプロイ] ページ](https://portal.azure.com/#create/Microsoft.Template)を使用してデプロイできます。
+テンプレートを作成したら、[REST API](https://docs.microsoft.com/rest/api/resources/deployments)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)、[Azure CLI](https://docs.microsoft.com/cli/azure/group/deployment#az-group-deployment-create)、または[ポータルの [テンプレートのデプロイ] ページ](https://portal.azure.com/#create/Microsoft.Template)を使用してデプロイできます。
 
 ここでは、2 つのバージョンのサンプル ダッシュボード JSON があります。 1 つ目は、既にリソースにバインドされている、ポータルからエクスポートされたバージョンです。 2 つ目は、すべての VM にプログラムを使用してバインドすることができ、Azure Resource Manager を使用して展開できるテンプレート バージョンです。
 

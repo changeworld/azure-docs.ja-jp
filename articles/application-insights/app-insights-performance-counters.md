@@ -1,8 +1,8 @@
 ---
-title: "Application Insights のパフォーマンス カウンター | Microsoft Docs"
-description: "Application Insights でシステムとカスタムの .NET パフォーマンス カウンターを監視します。"
+title: Application Insights のパフォーマンス カウンター | Microsoft Docs
+description: Application Insights でシステムとカスタムの .NET パフォーマンス カウンターを監視します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 40821d32c5bdfe51bb3cb205660d6f25b2c3fadc
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: e5915f18799386ae92019073fb50dac96da107ea
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960108"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 Windows には、CPU 占有率や、メモリ、ディスク、ネットワークの使用率など、広範な[パフォーマンス カウンター](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)が用意されています。 ユーザーが独自のパフォーマンス カウンターを定義することもできます。 アプリケーションを実行している IIS が存在するオンプレミスのホストまたは仮想マシンに対し、ユーザーが管理アクセス権を持っている場合、[Application Insights](app-insights-overview.md) を使ってこれらのパフォーマンス カウンターを表示することができます。 グラフにはライブ アプリケーションで使用できるリソースが示され、サーバー インスタンス間での負荷の不均衡を識別するのに役立ちます。
@@ -26,7 +27,7 @@ Windows には、CPU 占有率や、メモリ、ディスク、ネットワー�
 
 ![Application Insights で表示されるパフォーマンス カウンター](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
-(パフォーマンス カウンターは Azure Web Apps には使用できません。 ただし、[Azure 診断を Application Insights に送信する](app-insights-azure-diagnostics.md)ことはできます。)
+(パフォーマンス カウンターは Azure Web Apps には使用できません。 ただし、[Azure 診断を Application Insights に送信する](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)ことはできます。)
 
 ## <a name="view-counters"></a>カウンターを表示する
 [サーバー] ブレードには、既定のパフォーマンス カウンターのセットが表示されます。 
@@ -95,7 +96,7 @@ Windows には、CPU 占有率や、メモリ、ディスク、ネットワー�
 ## <a name="performance-counters-in-analytics"></a>Analytics のパフォーマンス カウンター
 [Analytics](app-insights-analytics.md) でパフォーマンス カウンター レポートを検索して表示できます。
 
-**performanceCounters** スキーマは、各パフォーマンス カウンターの `category`、`counter` 名、および `instance` 名を表示します。  各アプリケーションのテレメトリでは、そのアプリケーションのカウンターのみが確認できます。 たとえば、使用できるカウンターを表示するには次のようにします。 
+**performanceCounters** スキーマは、各パフォーマンス カウンターの `category`、`counter` 名、および `instance` 名を表示します。  各アプリケーションのテレメトリでは、そのアプリケーションのカウンターのみが表示されます。 たとえば、使用できるカウンターを表示するには次のようにします。 
 
 ![Application Insights Analytics のパフォーマンス カウンター](./media/app-insights-performance-counters/analytics-performance-counters.png)
 

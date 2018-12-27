@@ -1,24 +1,27 @@
 ---
 title: Azure SQL データベースに対する分析クエリの実行 | Microsoft Docs
-description: 複数の Azure SQL Database データベースから抽出されたデータを使用した、クロステナント分析クエリについて説明します。
-keywords: SQL チュートリアル
+description: マルチテナント アプリでの複数の Azure SQL Database データベースから抽出されたデータを使用した、クロステナント分析クエリ。
 services: sql-database
-author: stevestein
-manager: jhubbard
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
-ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: fab5d893697a961ef588b0b26008fb27f92a5a18
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: anjangsh,billgib,genemi
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 5de707f3f2e6a82d880363eea91fb8ce644fb3aa
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055047"
 ---
-# <a name="cross-tenant-analytics-using-extracted-data"></a>抽出されたデータを使用したクロステナント分析
-
-このチュートリアルでは、完全な分析シナリオについて説明します。 シナリオでは、分析によって企業の賢明な意思決定を可能にする方法を示します。 シャードされたデータベースから抽出されたデータを使用した分析によって、テナントの動作 (Wingtip Tickets SaaS サンプル アプリケーションの使用など) に関する分析情報を得ます。 このシナリオには、次の 3 つの手順が含まれます。 
+# <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - マルチテナント アプリ
+ 
+このチュートリアルでは、マルチテナントの実装に関する完全な分析シナリオについて説明します。 シナリオでは、分析によって企業の賢明な意思決定を可能にする方法を示します。 シャードされたデータベースから抽出されたデータを使用した分析によって、テナントの動作 (Wingtip Tickets SaaS サンプル アプリケーションの使用など) に関する分析情報を得ます。 このシナリオには、次の 3 つの手順が含まれます。 
 
 1.  各テナント データベースから分析ストアに**データを抽出**します。
 2.  分析処理のために、**抽出されたデータを最適化**します。
@@ -173,7 +176,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として *developer*、パスワードとして *P@ssword1* を入力します。 **[接続]**をクリックします。  
+5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として *developer*、パスワードとして *P@ssword1* を入力します。 **[接続]** をクリックします。  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
@@ -205,7 +208,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 Contoso Concert Hall の上記のプロットは、購入が殺到する状態がすべてのイベントで発生しているわけではないことを示しています。 フィルター オプションを操作して、他の会場の販売動向を確認します。
 
-チケット販売パターンに関する洞察により、Wingtip Tickets でビジネス モデルを最適化できます。 Wingtip では、すべてのテナントに均等に課金するのではなく、パフォーマンス レベルが異なるサービス層を導入する必要があると考えられます。 1 日により多くのチケットを販売する必要がある大規模な会場には、サービス レベル アグリーメント (SLA) が高い上位層を提供できます。 これらの会場では、データベースごとのリソースの上限が高いプールにデータベースを配置できます。 各サービス層に時間単位の販売割り当てを設定し、割り当てを超えた場合は追加料金が課金されるようにすることもできます。 売上が定期的に激増する大規模な会場は上位層からメリットが得られ、Wingtip Tickets はサービスをより効率的に収益化できます。
+チケット販売パターンに関する洞察により、Wingtip Tickets でビジネス モデルを最適化できます。 Wingtip では、すべてのテナントに均等に課金するのではなく、コンピューティング サイズが異なるサービス レベルを導入する必要があると考えられます。 1 日により多くのチケットを販売する必要がある大規模な会場には、サービス レベル アグリーメント (SLA) が高い上位層を提供できます。 これらの会場では、データベースごとのリソースの上限が高いプールにデータベースを配置できます。 各サービス層に時間単位の販売割り当てを設定し、割り当てを超えた場合は追加料金が課金されるようにすることもできます。 売上が定期的に激増する大規模な会場は上位層からメリットが得られ、Wingtip Tickets はサービスをより効率的に収益化できます。
 
 その一方で、Wingtip Tickets の一部の顧客は、サービス コストに見合うだけのチケットを販売するのに苦戦していると不満を漏らしています。 これらの洞察の中に、業績が低迷している会場のチケットの売上を伸ばす機会がおそらくあります。 売上が増加すれば、サービスの知覚価値が高まります。 fact_Tickets を右クリックし、**[新しいメジャー]** を選択します。 **AverageTicketsSold** という新しいメジャーの次の式を入力します。
 
@@ -225,7 +228,7 @@ Wingtip Tickets SaaS マルチテナント データベース アプリケーシ
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > - 定義済みのスター スキーマ テーブルを含むテナント分析データベースをデプロイする
@@ -238,5 +241,6 @@ Wingtip Tickets SaaS マルチテナント データベース アプリケーシ
 
 ## <a name="additional-resources"></a>その他のリソース
 
-<!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). -->
+[Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) 
 - [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)
+- [抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ](saas-tenancy-tenant-analytics.md) 

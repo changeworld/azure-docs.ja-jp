@@ -3,31 +3,28 @@ title: Azure Data Factory で Hadoop Streaming アクティビティを使用し
 description: Azure Data Factory で Hadoop Streaming アクティビティを使用して、Hadoop クラスターで Hadoop Streaming プログラムを実行することによってデータを変換する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 7c882e6fd826adb415b0452c9b441405d2ff90d7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: 4c2bf83fec3d8f961a84523365e4a98fe3bf7603
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052369"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory での Hadoop Streaming アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-hadoop-streaming-activity.md)
-> * [バージョン 2 - プレビュー](transform-data-using-hadoop-streaming.md)
+> * [Version 1](v1/data-factory-hadoop-streaming-activity.md)
+> * [現在のバージョン](transform-data-using-hadoop-streaming.md)
 
 Data Factory [パイプライン](concepts-pipelines-activities.md)の HDInsight Streaming アクティビティでは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで Hadoop Streaming プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の Hadoop Streaming アクティビティ](v1/data-factory-hadoop-streaming-activity.md)を参照してください。
 
 Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](introduction.md)」を参照し、[データの変換のチュートリアル](tutorial-transform-data-spark-powershell.md)を実行してください。 
 
@@ -72,12 +69,12 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 
 ## <a name="syntax-details"></a>構文の詳細
 
-| プロパティ          | [説明]                              | 必須 |
+| プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | アクティビティの名前                     | [はい]      |
-| 説明       | アクティビティの用途を説明するテキストです。 | いいえ        |
-| 型              | Hadoop Streaming アクティビティの場合、アクティビティの種類は HDInsightStreaming です。 | [はい]      |
-| 既定のコンテナー | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
+| description        | アクティビティの用途を説明するテキストです。 | いいえ        |
+| type              | Hadoop Streaming アクティビティの場合、アクティビティの種類は HDInsightStreaming です。 | [はい]      |
+| linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
 | mapper            | mapper 実行可能ファイルの名前を指定します。 | [はい]      |
 | reducer           | reducer 実行可能ファイルの名前を指定します。 | [はい]      |
 | combiner          | combiner 実行可能ファイルの名前を指定します。 | いいえ        |

@@ -1,41 +1,46 @@
 ---
-title: "App Service on Linux の概要 | Microsoft Docs"
-description: "Azure App Service on Linux について説明します。"
+title: App Service on Linux の概要 - Azure | Microsoft Docs
+description: Azure App Service on Linux について説明します。
 keywords: Azure App Service, Linux, OSS
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/16/2017
+ms.date: 10/09/2018
 ms.author: wesmc
-ms.custom: mvc
-ms.openlocfilehash: 465e3d2c0c2b7c5d811441ede20adb9da2dbe847
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.custom: seodec18
+ms.openlocfilehash: ac8d5ddb843227e5c5d8e7508c3ea46946f4850e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257881"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
-[Web App](../app-service-web-overview.md) は、Web サイトと Web アプリケーションをホストするために最適化された、完全に管理されたコンピューティング プラットフォームです。 顧客は App Service on Linux を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。 次のセクションは、現在サポートされているアプリケーション スタックの一覧です。
+[Web App](../app-service-web-overview.md) は、Web サイトと Web アプリケーションをホストするために最適化された、フル マネージドのコンピューティング プラットフォームです。 顧客は App Service on Linux を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。 次のセクションは、現在サポートされているアプリケーション スタックの一覧です。
 
-## <a name="languages"></a>言語
+## <a name="languages"></a>Languages
 
 App Service on Linux では、開発者の生産性を向上させるために、多数の組み込みイメージがサポートされています。 アプリケーションに必要なランタイムが組み込みイメージでサポートされていない場合は、[独自の Docker イメージを作成](tutorial-custom-docker-image.md)して Web App for Containers にデプロイする方法があります。
 
 | 言語 | サポートされているバージョン |
 |---|---|
-| Node.js | 4.4、4.5、6.2、6.6、6.9 ～ 6.11、8.0、8.1 |
-| PHP | 5.6、7.0 |
-| .NET Core | 1.0、1.1、2.0 |
+| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、9.4、10.1、10.10 |
+| Java * | Tomcat 8.5、9.0、Java SE、WildFly 14 (いずれも JRE 8 を実行) |
+| PHP | 5.6、7.0、7.2 |
+| Python (プレビュー) | 3.6、3.7 |
+| .NET Core | 1.0、1.1、2.0、2.1 |
 | Ruby | 2.3 |
+
+詳細については、「[App Service on Linux で Java Web アプリを作成する](https://docs.microsoft.com/azure/app-service/containers/quickstart-java)」を参照してください。
 
 ## <a name="deployments"></a>デプロイメント
 
@@ -70,10 +75,7 @@ Azure Portal では、Web App for Containers で現在使用できる機能の�
 
 仮想ネットワーク統合、Azure Active Directory/サード パーティの認証、Kudu サイト拡張機能などの機能は、まだ利用できません。 これらの機能が利用可能になったら、ドキュメントとブログを更新し、変更についてお知らせします。
 
-App Service on Linux は [Basic および Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 App Service on Linux には、次の重要な制限もあります。
-
-* Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。
-* Web App for Containers を非 Linux Web Apps が含まれているリソース グループに作成する場合は、既存の App Service プランとは別のリソース グループに App Service プランを作成する必要があります。
+App Service on Linux は [Basic、Standard、および Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。 Windows アプリと Linux アプリを同じリソース グループ内でも混在させないという点において、現在の制限があります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -88,15 +90,25 @@ SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]**
 
 ## <a name="next-steps"></a>次の手順
 
-App Service on Linux の使用を開始するには、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
+以下の記事では、さまざまな言語で記述した Web アプリを使用して App Service on Linux での作業を開始することができます。
 
-* [Web App for Containers のカスタム Docker イメージを使用する方法](quickstart-docker-go.md)
-* [Azure App Service on Linux で .NET Core を使用する](quickstart-dotnetcore.md)
-* [Azure App Service on Linux で Ruby を使用する](quickstart-ruby.md)
-* [Azure App Service Web App for Containers の FAQ](app-service-linux-faq.md)
-* [Azure App Service on Linux での SSH のサポート](app-service-linux-ssh-support.md)
-* [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Web App for Containers による Docker Hub の継続的なデプロイ](./app-service-linux-ci-cd.md)
+* [.NET Core](quickstart-dotnetcore.md)
+* [PHP](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-php)
+* [Node.js](quickstart-nodejs.md)
+* [Java](quickstart-java.md)
+* [Python](quickstart-python.md)
+* [Ruby](quickstart-ruby.md)
+* [Go](quickstart-docker-go.md)
+* [複数コンテナー アプリ](quickstart-multi-container.md)
+
+App Service on Linux の詳細については、以下の記事も参照してください。
+
+* [App Service on Linux の FAQ](app-service-linux-faq.md)
+* [App Service on Linux での SSH のサポート](app-service-linux-ssh-support.md)
+* [App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Docker Hub の継続的なデプロイ](app-service-linux-ci-cd.md)
+
+質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

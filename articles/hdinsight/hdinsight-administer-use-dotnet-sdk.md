@@ -1,31 +1,25 @@
 ---
-title: ".NET SDK を使用した HDInsight での Hadoop クラスターの管理 - Azure | Microsoft Docs"
-description: "HDInsight .NET SDK を使用して、HDInsight で Hadoop クラスターの管理タスクを実行する方法について説明します。"
+title: .NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する - Azure
+description: HDInsight .NET SDK を使用して、HDInsight で Apache Hadoop クラスターの管理タスクを実行する方法について説明します。
 services: hdinsight
-editor: cgronlun
-manager: jhubbard
-tags: azure-portal
-author: mumian
-documentationcenter: 
-ms.assetid: fd134765-c2a0-488a-bca6-184d814d78e9
+ms.reviewer: jasonh
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/15/2017
-ms.author: jgao
-ms.openlocfilehash: d881d47e26460d3fff89c01245bba4c608dc8b08
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.topic: conceptual
+ms.date: 05/14/2018
+ms.author: hrasheed
+ms.openlocfilehash: 26aeb5641533125dcd909ae96d28c8274677cf30
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013443"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用した HDInsight での Hadoop クラスターの管理
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-[HDInsight.NET SDK](https://msdn.microsoft.com/library/mt271028.aspx)を使用して、HDInsight クラスターを管理する方法について説明します。
+[HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)を使用して、HDInsight クラスターを管理する方法について説明します。
 
 **前提条件**
 
@@ -115,7 +109,7 @@ namespace HDInsightManagement
 このプログラムを実行すると、プロンプトが表示されます。  プロンプトを表示しない場合は、「 [非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)」をご覧ください。
 
 ## <a name="create-clusters"></a>クラスターの作成
-[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
+ [.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
 
 ## <a name="list-clusters"></a>クラスターの一覧表示
 次のコード スニペットは、クラスターと一部のプロパティを一覧表示します。
@@ -148,12 +142,12 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
-* Hadoop
+* Apache Hadoop
   
     保留中または実行中のジョブに影響を与えることなく、実行中の Hadoop クラスター内の worker ノードの数をシームレスに増加できます。 処理の進行中に新しいジョブを送信することもできます。 スケール設定処理の失敗は正常に処理され、クラスターは常に機能状態になります。
   
     データ ノードの数を減らして Hadoop クラスターのスケールを小さくした場合、クラスター内の一部のサービスが再起動されます。 これにより、スケール設定処理の完了時に、実行中および保留中のすべてのジョブが失敗します。 ただし、処理が完了した後にジョブを再送信できます。
-* hbase
+* Apache HBase
   
     実行中の HBase クラスターに対して、ノードの追加または削除をシームレスに実行できます。 地域サーバーは、スケール設定処理の完了の数分以内に自動的に分散されます。 ただし、クラスターのヘッドノードにログインし、コマンド プロンプト ウィンドウから次のコマンドを実行して、地域サーバーを手動で分散することもできます。
   
@@ -162,7 +156,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
     >hbase shell
     >balancer
     ```
-* Storm
+* Apache Storm
   
     実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
   
@@ -198,9 +192,9 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 * ODBC
 * JDBC
-* Ambari
-* Oozie
-* Templeton
+* Apache Ambari
+* Apache Oozie
+* Apache Templeton
 
 既定では、これらのサービスへのアクセス許可が付与されます。 アクセス許可を取り消す/付与することができます。 取り消するには、次を実行します。
 
@@ -234,7 +228,7 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 これは、ポータルを使用して行うこともできます。 [Azure Portal ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページをご覧ください。
 
 ## <a name="update-http-user-credentials"></a>HTTP ユーザーの資格情報の更新
-[HTTP アクセス許可の付与/取り消し](#grant/revoke-access)と同じ手順です。HTTP アクセスがクラスターで許可されている場合、最初に取り消す必要があります。  次に、新しい HTTP ユーザーの資格情報を使用してアクセス許可を付与してください。
+[HTTP アクセスの付与/取り消し](#grant/revoke-access)と同じ手順です。  クラスターに HTTP アクセスが許可されている場合は、まずそれを取り消す必要があります。  次に、新しい HTTP ユーザーの資格情報を使用してアクセス許可を付与してください。
 
 ## <a name="find-the-default-storage-account"></a>既定のストレージ アカウントの検索
 次のコード スニペットは、クラスターの既定のストレージ アカウント名と既定のストレージ アカウント キーを取得する方法を示しています。
@@ -248,40 +242,40 @@ foreach (var key in results.Configuration.Keys)
 ```
 
 ## <a name="submit-jobs"></a>ジョブの送信
-**MapReduce ジョブを送信するには**
+**Apache Hadoop MapReduce ジョブを送信するには**
 
-[HDInsight での Hadoop MapReduce のサンプルの実行](hadoop/apache-hadoop-run-samples-linux.md)に関する記事をご覧ください。
+[HDInsight での Apache Hadoop MapReduce のサンプルの実行](hadoop/apache-hadoop-run-samples-linux.md)に関する記事をご覧ください。
 
-**Hive ジョブを送信するには** 
+**Apache Hive ジョブを送信するには** 
 
-[.NET SDK を使用した Hive クエリの実行](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関する記事をご覧ください。
+[.NET SDK を使用した Apache Hive クエリの実行](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関するページを参照してください。
 
-**Pig ジョブを送信するには**
+**Apache Pig ジョブを送信するには**
 
-[.NET SDK を使用した Pig ジョブの実行](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)に関する記事をご覧ください。
+[.NET SDK を使用して Apache Pig ジョブを実行する](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)に関するページを参照してください。
 
-**Sqoop ジョブを送信するには**
+**Apache Sqoop ジョブを送信するには**
 
-「 [Hadoop .NET SDK と HDInsight の使用](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)」を参照してください。
+[HDInsight での Apache Sqoop の使用](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)に関するページを参照してください。
 
-**Oozie ジョブを送信するには**
+**Apache Oozie ジョブを送信するには**
 
-「 [HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行](hdinsight-use-oozie-linux-mac.md)」を参照してください。
+[HDInsight での Apache Oozie と Hadoop を使用したワークフローの定義と実行](hdinsight-use-oozie-linux-mac.md)に関するページを参照してください。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをアップロードする
 [HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
-* [HDInsight .NET SDK リファレンス ドキュメント](https://msdn.microsoft.com/library/mt271028.aspx)
+* [HDInsight .NET SDK リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]
 * [コマンド ライン インターフェイスを使用した HDInsight の管理][hdinsight-admin-cli]
 * [HDInsight クラスターの作成][hdinsight-provision]
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
 * [Azure HDInsight の概要][hdinsight-get-started]
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

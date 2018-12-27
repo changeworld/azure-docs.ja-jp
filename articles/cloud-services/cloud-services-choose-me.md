@@ -1,9 +1,9 @@
 ---
-title: "Azure のコンピューティング オプション - Azure Cloud Services | Microsoft Docs"
-description: "Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Azure Cloud Services、Virtual Machines"
+title: Azure Cloud Services とは| Microsoft Docs
+description: Azure Cloud Services について説明します。
 services: cloud-services
-documentationcenter: 
-author: Thraka
+documentationcenter: ''
+author: jpconnock
 manager: timlt
 ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
 ms.service: multiple
@@ -12,21 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: adegeo
-ms.openlocfilehash: 2871a8c02db0ffc6d9033724e7c9f4a454afef8e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: jeconnoc
+ms.openlocfilehash: 309c7275a1e775ed2bd689520ac39501e8bd6052
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857824"
 ---
-# <a name="should-i-choose-azure-cloud-services-or-something-else"></a>Azure Cloud Services と他のサービスのどちらを選択すればよいか
-Azure Cloud Services が最適な選択ですか? Azure にはアプリケーションを実行するための複数のホスティング モデルがあります。 それぞれの実行モデルで異なるサービスのセットが提供されます。 実行する内容に正確に基づいて実行モデルを選択してください。
-
-[!INCLUDE [compute-table](../../includes/compute-options-table.md)]
-
-<a name="tellmecs"></a>
-
-## <a name="tell-me-about-azure-cloud-services"></a>Azure Cloud Services の概要
+# <a name="overview-of-azure-cloud-services"></a>Azure Cloud Services の概要
 Azure Cloud Services は、[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) の 1 つの例です。 このテクノロジは、[Azure App Service](../app-service/app-service-web-overview.md) と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。
 
 ![Azure Cloud Services の図](./media/cloud-services-choose-me/diagram.png)
@@ -39,7 +33,7 @@ Azure Cloud Services ロールには、次の 2 種類があります。 2 つ�
 
 * **worker ロール**: IIS を使用せず、アプリをスタンドアロンで実行します。
 
-たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります  (この通信は、[Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) または [Azure Queue Storage](../storage/common/storage-introduction.md) を使用する可能性があります)。
+たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります  (この通信は、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) または [Azure Queue Storage](../storage/common/storage-introduction.md) を使用する可能性があります)。
 
 上記の図に示すように、1 つのアプリケーションのすべての VM は同じクラウド サービスで実行されます。 ユーザーは 1 つのパブリック IP アドレスを通してアプリケーションにアクセスし、要求はアプリケーションの VM 間で自動的に負荷分散されます。 プラットフォームは、ハードウェアの単一障害点を回避するように、Azure Cloud Services アプリケーションで VM を[スケールおよびデプロイ](cloud-services-how-to-scale-portal.md)します。
 

@@ -3,7 +3,7 @@ title: Azure Relay に関する FAQ | Microsoft Docs
 description: Azure Relay についてよく寄せられる質問とその回答を紹介します。
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 886d2c7f-838f-4938-bd23-466662fb1c8e
@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2018
-ms.author: sethm
-ms.openlocfilehash: d433fb916280e98dd0f2af61728596b8566be71b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 05/21/2018
+ms.author: spelluru
+ms.openlocfilehash: e30e8c94547ac0f9106a69f1e99cf9a7c03abea5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695899"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
 
-この記事では、[Azure Relay](https://azure.microsoft.com/services/service-bus/) についてよく寄せられる質問とその回答を紹介します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/en-in/support/faq/)」を参照してください。
+この記事では、[Azure Relay](https://azure.microsoft.com/services/service-bus/) についてよく寄せられる質問とその回答を紹介します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 ## <a name="general-questions"></a>一般的な質問
 ### <a name="what-is-azure-relay"></a>Azure Relay とは
@@ -35,7 +36,7 @@ ms.lasthandoff: 03/28/2018
 以前は Service Bus Relay サービスという名称でしたが、現在では [WCF リレー](relay-wcf-dotnet-get-started.md)と呼ばれています。 このサービスは、これまでと同じように引き続き使用できます。 ハイブリッド接続機能は、Azure BizTalk Services から移植されたサービスの更新バージョンです。 WCF リレーとハイブリッド接続はどちらもサポートが継続されます。
 
 ## <a name="pricing"></a>価格
-このセクションでは、Relay の価格体系についてよく寄せられる質問とその回答を紹介します。 Azure の価格に関する一般的な情報については、「[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)」も参照してください。 Relay の価格の詳細については、[Service Bus の価格の詳細][Pricing overview]に関するページを参照してください。
+このセクションでは、Relay の価格体系についてよく寄せられる質問とその回答を紹介します。 Azure の価格に関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」も参照してください。 Relay の価格の詳細については、[Service Bus の価格の詳細][Pricing overview]に関するページを参照してください。
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>ハイブリッド接続と WCF リレーの課金方法を教えてください。
 Relay の価格の詳細については、Service Bus の価格の詳細ページで、[ハイブリッド接続と WCF リレー][Pricing overview]の表をご覧ください。 このページで説明されている価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送にも料金が発生します。
@@ -81,8 +82,8 @@ Service Bus リレーへのメッセージ送信は、そのメッセージを�
 | リレーの同時リスナー |エンティティ |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |25 |
 | あるサービス名前空間に含まれるリレー エンドポイント全部の同時リレー接続 |名前空間 |- |5,000 |
 | サービス名前空間ごとのリレー エンドポイント |名前空間 |- |10,000 |
-| [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx) と [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx) リレーのメッセージ サイズ |名前空間 |これらのクォータを超える受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。 |64 KB |
-| [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) と [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) リレーのメッセージ サイズ |名前空間 |メッセージ サイズに制限はありません。 |無制限 |
+| [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) と [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) リレーのメッセージ サイズ |名前空間 |これらのクォータを超える受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。 |64 KB |
+| [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) と [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) リレーのメッセージ サイズ |名前空間 |メッセージ サイズに制限はありません。 |無制限 |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Relay に使用量クォータはありますか?
 既定では、Microsoft はすべてのクラウド サービスに関し、お客様のサブスクリプション全体で算出する月単位の総使用量クォータを設定しています。 Microsoft では、実際のニーズがこれらの制限を上回る可能性があることを認識しています。 お気軽にカスタマー サービスまでお問い合わせください。お客様のニーズを確認のうえ、適宜制限を調整させていただきます。 Service Bus の総使用量クォータは次のとおりです。
@@ -108,7 +109,7 @@ Azure Portal を使用して、あるサブスクリプションから別のサ�
 
 PowerShell を使用して、ある Azure サブスクリプションから別のサブスクリプションに名前空間を移行するには、次の一連のコマンドを使用します。 この操作を実行するには、名前空間が既にアクティブになっており、PowerShell コマンドを実行するユーザーが、ソースとターゲットの両方のサブスクリプションの管理者である必要があります。
 
-```powershell
+```azurepowershell-interactive
 # Create a new resource group in the target subscription.
 Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
 New-AzureRmResourceGroup -Name 'targetRG' -Location 'East US'
@@ -136,4 +137,4 @@ Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは U
 
 [Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
 [Relay exceptions]: relay-exceptions.md
-[Shared access signatures]: ../service-bus-messaging/service-bus-sas.md
+[Shared Access Signatures]: ../service-bus-messaging/service-bus-sas.md

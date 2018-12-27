@@ -1,11 +1,11 @@
 ---
-title: "クラシックから Resource Manager への ExpressRoute 回線の移行 | Microsoft Docs"
-description: "このページでは、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルのブリッジについて知っておく必要がある情報を概説します。"
+title: クラシックから Resource Manager への ExpressRoute 回線の移行 | Microsoft Docs
+description: このページでは、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルのブリッジについて知っておく必要がある情報を概説します。
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: bdf01217-1a98-4ec0-a08e-d84fd37f78af
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22710067"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへの ExpressRoute 回線の移行
 この記事では、Azure ExpressRoute 回線をクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する意味について概説します。

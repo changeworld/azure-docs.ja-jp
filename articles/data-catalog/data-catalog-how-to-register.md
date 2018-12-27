@@ -1,29 +1,23 @@
 ---
-title: "Azure Data Catalog でのデータ ソースの登録 | Microsoft Docs"
-description: "この記事では、Azure Data Catalog でデータ ソースを登録する方法について、登録中に抽出されるメタデータ フィールドを含め重点的に説明しています。"
+title: Azure Data Catalog でのデータ ソースの登録
+description: この記事では、Azure Data Catalog でデータ ソースを登録する方法について、登録中に抽出されるメタデータ フィールドを含め重点的に説明しています。
 services: data-catalog
-documentationcenter: 
-author: steelanddata
-manager: NA
-editor: 
-tags: 
+author: markingmyname
+ms.author: maghan
 ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: 48b13eef0960afb4aab68923fb97b5b9c14a3d9f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 413f9340432f39d60ccdb43557616b4123132873
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404896"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でのデータ ソースの登録
 ## <a name="introduction"></a>はじめに
-Azure Data Catalog は、完全に管理されたクラウド サービスで、エンタープライズ データ ソースの登録と検出システムとして機能します。 つまり、Data Catalog を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。 Data Catalog でデータ ソースを検出できるようにするための最初のステップは、そのデータ ソースを登録することです。
+Azure Data Catalog は、フル マネージドのクラウド サービスで、エンタープライズ データ ソースの登録と検出システムとして機能します。 つまり、Data Catalog を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。 Data Catalog でデータ ソースを検出できるようにするための最初のステップは、そのデータ ソースを登録することです。
 
 ## <a name="register-data-sources"></a>データ ソースの登録
 登録は、メタデータをデータ ソースから抽出し、そのデータを Data Catalog サービスにコピーするプロセスです。 データは現在存在する場所に残り、現在のシステムの管理者とポリシーの制御下に留まります。

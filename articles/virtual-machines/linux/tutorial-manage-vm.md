@@ -1,12 +1,12 @@
 ---
-title: Azure CLI を使用した Linux VM の作成と管理 | Microsoft Docs
-description: チュートリアル - Azure CLI を使用した Linux VM の作成と管理
+title: チュートリアル - Azure CLI を使用して Linux VM の作成と管理を行う | Microsoft Docs
+description: このチュートリアルでは、Azure CLI を使用して、Azure 内に Linux VM を作成して管理する方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -14,15 +14,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1f0166f44661483c1c8118ddf85263166a248118
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5605ac9f3ac4f9a1c85cfedf257cb721205564db
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613428"
 ---
-# <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Azure CLI を使用した Linux VM の作成と管理
+# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用して Linux VM の作成と管理を行う
 
 Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、VM サイズや VM イメージの選択、VM のデプロイなどの Azure 仮想マシンの展開に関する基本事項について説明します。 学習内容は次のとおりです。
 
@@ -33,12 +34,11 @@ Azure 仮想マシンは、完全に構成可能で柔軟なコンピューテ�
 > * VM のサイズを変更する
 > * VM の状態を表示して理解する
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-resource-group"></a>Create resource group
+## <a name="create-resource-group"></a>リソース グループの作成
 
 [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 
 
@@ -54,10 +54,15 @@ az group create --name myResourceGroupVM --location eastus
 
 仮想マシンを作成するには、[az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) コマンドを使用します。 
 
-仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu Server を実行する *myVM* という名前の仮想マシンを作成します。 
+仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 次の例では、Ubuntu Server を実行する *myVM* という名前の VM を作成します。 VM には、*azureuser* という名前のユーザー アカウントが作成されます。また、既定のキーの場所 (*~/.ssh*) に SSH キーが存在しない場合は、SSH キーが生成されます。
 
-```azurecli-interactive 
-az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys
+```azurecli-interactive
+az vm create \
+    --resource-group myResourceGroupVM \
+    --name myVM \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys
 ```
 
 VM の作成には数分かかることがあります。 VM が作成されると、Azure CLI で VM に関する以下の情報が出力されます。 `publicIpAddress` を記録します。このアドレスは仮想マシンへのアクセスに使用します。 
@@ -80,7 +85,7 @@ VM の作成には数分かかることがあります。 VM が作成される�
 Azure Cloud Shell またはローカル コンピューターで、SSH を使用して VM に接続できるようになりました。 サンプルの IP アドレスは、前の手順で記録した `publicIpAddress` に置き換えてください。
 
 ```bash
-ssh 52.174.34.95
+ssh azureuser@52.174.34.95
 ```
 
 VM にログインしたら、アプリケーションをインストールして構成できます。 作業が終了したら、通常どおり SSH セッションを閉じます。
@@ -150,7 +155,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 次の表は、ユース ケース別にサイズを分類したものです。  
 
-| type                     | サイズ           |    [説明]       |
+| type                     | サイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0 - 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
 | [コンピューティングの最適化](sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
@@ -247,7 +252,7 @@ Azure VM は、さまざまな電源状態のいずれかになります。 こ�
 
 ### <a name="power-states"></a>電源の状態
 
-| 電源の状態 | [説明]
+| 電源の状態 | 説明
 |----|----|
 | 開始中 | 仮想マシンが起動中であることを示します。 |
 | 実行中 | 仮想マシンが実行中であることを示します。 |
@@ -257,7 +262,7 @@ Azure VM は、さまざまな電源状態のいずれかになります。 こ�
 | 割り当て解除済み | 仮想マシンがハイパーバイザーから削除されているものの、コントロール プレーンでは使用可能であることを示します。 仮想マシンが割り当て解除済みの状態でも、コンピューティング料金は発生します。 |
 | - | 仮想マシンの電源状態が不明であることを示します。 |
 
-### <a name="find-power-state"></a>電源の状態を確認する
+### <a name="find-the-power-state"></a>電源の状態を確認する
 
 特定の VM の状態を取得するには、[az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) コマンドを使用します。 必ず仮想マシンとリソース グループの有効な名前を指定してください。 
 

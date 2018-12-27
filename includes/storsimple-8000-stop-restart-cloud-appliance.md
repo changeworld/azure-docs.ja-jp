@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: c10482029e6cfce7063d205161fed54030919c48
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164535"
+---
 #### <a name="to-stop-and-start-a-cloud-appliance"></a>クラウド アプライアンスを停止および開始するには
 
 1. クラウド アプライアンスを停止するには、クラウド アプライアンスの VM に移動します。
@@ -7,7 +20,7 @@
 
     ![StorSimple Cloud Appliance 仮想マシン](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart2.png)
 
-3. 確認を求められたら、 **[はい]**をクリックします。
+3. 確認を求められたら、 **[はい]** をクリックします。
 
     ![StorSimple Cloud Appliance 仮想マシン](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
 

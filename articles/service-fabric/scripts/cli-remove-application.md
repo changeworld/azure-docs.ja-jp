@@ -1,25 +1,26 @@
 ---
-title: "Azure Service Fabric CLI スクリプトの削除のサンプル"
-description: "Azure Service Fabric CLI を使用した Azure Service Fabric クラスターからのアプリケーションの削除"
+title: Azure Service Fabric CLI (sfctl) スクリプトの削除のサンプル
+description: Azure Service Fabric CLI を使用した Azure Service Fabric クラスターからのアプリケーションの削除
 services: service-fabric
-documentationcenter: 
-author: thraka
+documentationcenter: ''
+author: TylerMSFT
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 12/06/2017
-ms.author: adegeo
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 95a6bac7ee79e3490584305e78d410104363b780
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 24b645552212c502c06cc4df725e77c1d017340e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069313"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster"></a>Service Fabric クラスターからのアプリケーションの削除
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 12/08/2017
 
 [!code-sh[main](../../../cli_scripts/service-fabric/remove-application/remove-application.sh "Remove an application from a cluster")]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 詳細については、[Service Fabric CLI ドキュメント](../service-fabric-cli.md)をご覧ください。
 

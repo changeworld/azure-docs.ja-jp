@@ -12,67 +12,78 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: c5f4c7224e04b601d7d3fe4da7d8f5f0c02c7039
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0f223660f8dc99b590f8aa80a03d60fcbf3aa5d3
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232581"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成
 
-バックアップ、または VM の問題を解決するために、OS またはデータ ディスク VHD のスナップショットを作成します。 スナップショットは、VHD の完全な読み取り専用コピーです。 
+スナップショットは、仮想ハード ドライブ (VHD) の完全な読み取り専用コピーです。 バックアップ、または仮想マシン (VM) の問題を解決するために、OS またはデータ ディスク VHD のスナップショットを取得できます。
 
-## <a name="use-azure-portal-to-take-a-snapshot"></a>Azure Portal を使ってスナップショットを作成する 
+スナップショットを使用して新しい VM を作成しようとしている場合は、進行中のすべてのプロセスを消去するため、スナップショットを作成する前に VM を正常にシャット ダウンすることをお勧めします。
+
+## <a name="use-the-azure-portal"></a>Azure ポータルの使用 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左上の **[リソースの作成]** をクリックし、**[スナップショット]** を探します。
-3. [スナップショット] ブレードで **[作成]** をクリックします。
+2. 左のメニューから、**[リソースの作成]** を選択し、**スナップショット**を探して選択します。
+3. **スナップショット** ウィンドウで、**[作成]** を選択します。 **[スナップショットの作成]** ウィンドウが表示されます。
 4. スナップショットの **[名前]** を入力します。
 5. 既存の[リソース グループ](../../azure-resource-manager/resource-group-overview.md#resource-groups)を選択するか、新しいリソース グループの名前を入力します。 
-6. Azure データセンターの場所を選択します。  
-7. **[ソース ディスク]** で、スナップショットを作成する Managed Disk を選びます。
-8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 高パフォーマンスのディスクに保存する必要がある場合を除き、**[Standard_LRS]** をお勧めします。
-9. **Create** をクリックしてください。
+6. Azure データセンターの**場所**を選択します。  
+7. **[ソース ディスク]** で、スナップショットを作成するマネージド ディスクを選びます。
+8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 スナップショットを高パフォーマンスのディスクに保存する必要がある場合を除き、**[Standard_HDD]** を選択します。
+9. **作成**を選択します。
 
-## <a name="use-powershell-to-take-a-snapshot"></a>PowerShell を使用し、スナップショットを作成する
-次の手順では、コピーする VHD ディスクの取得方法、スナップショット構成の作成方法、[New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) コマンドレットを使用したディスクのスナップショットの取得方法を示します。 
+## <a name="use-powershell"></a>PowerShell の使用
 
-AzureRM.Compute PowerShell モジュールの最新バージョンがインストールされていることを確認してください。 インストールするには次のコマンドを実行します。
+次の手順では、VHD ディスクのコピー方法、スナップショット構成の作成方法、[New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) コマンドレットを使用したディスクのスナップショットの取得方法を示します。 
 
-```
-Install-Module AzureRM.Compute -MinimumVersion 2.6.0
-```
-詳細については、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
+始める前に、AzureRM.Compute PowerShell モジュールの最新バージョン (バージョン 5.7.0 以降) があることを確認してください。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) を実行して Azure との接続を作成することも必要です。
 
-
-1. パラメーターを設定する。 
+1. パラメーターを設定します。 
 
  ```azurepowershell-interactive
 $resourceGroupName = 'myResourceGroup' 
 $location = 'eastus' 
-$dataDiskName = 'myDisk' 
+$vmName = 'myVM'
 $snapshotName = 'mySnapshot'  
 ```
 
-2. コピーされる VHD ディスクを取得する。
+2. VM を取得します。
 
  ```azurepowershell-interactive
-$disk = Get-AzureRmDisk -ResourceGroupName $resourceGroupName -DiskName $dataDiskName 
+$vm = get-azurermvm `
+   -ResourceGroupName $resourceGroupName 
+   -Name $vmName
 ```
-3. スナップショットの構成を作成する。 
+
+3. スナップショットの構成を作成します。 この例では、スナップショットは OS ディスクのものです。
 
  ```azurepowershell-interactive
-$snapshot =  New-AzureRmSnapshotConfig -SourceUri $disk.Id -CreateOption Copy -Location $location 
+$snapshot =  New-AzureRmSnapshotConfig 
+   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id 
+   -Location $location 
+   -CreateOption copy
 ```
-4. スナップショットを取得する。
+   
+   > [!NOTE]
+   > スナップショットをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、`-SkuName Standard_ZRS` パラメーターを含めます。   
+   
+4. スナップショットを取得します。
 
  ```azurepowershell-interactive
-New-AzureRmSnapshot -Snapshot $snapshot -SnapshotName $snapshotName -ResourceGroupName $resourceGroupName 
+New-AzureRmSnapshot 
+   -Snapshot $snapshot 
+   -SnapshotName $snapshotName 
+   -ResourceGroupName $resourceGroupName 
 ```
-スナップショットを使って Managed Disk を作成し、高パフォーマンスが必要な VM に接続する計画がある場合は、New-AzureRmSnapshot コマンドで `-AccountType Premium_LRS` パラメーターを使います。 スナップショットが作成され、Premium Managed Disk として保存されます。 Premium Managed Disks は、Standard Managed Disks よりも高価格です。 なので、このパラメーターを使用する前に Premium Managed Disks が本当に必要なことを確認してください。
+
 
 ## <a name="next-steps"></a>次の手順
 
-スナップショットから管理ディスクを作成し、その新しい管理ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、「[PowerShell でスナップショットから仮想マシンを作成する](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)」のサンプルを参照してください。
+スナップショットからマネージド ディスクを作成し、その新しいマネージド ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、「[PowerShell でスナップショットから仮想マシンを作成する](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)」のサンプルを参照してください。

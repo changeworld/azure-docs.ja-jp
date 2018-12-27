@@ -1,29 +1,29 @@
 ---
-title: Azure クイック スタート - Azure Storage Explorer を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs
-description: このクイック スタートでは、Azure Storage Explorer を使用して、ストレージ アカウントおよびコンテナーを作成します。 その後、Storage Explorer を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
+title: 'クイック スタート: Azure Storage Explorer を使用してオブジェクト ストレージ内に BLOB を作成する'
+description: このクイック スタートでは、Azure Storage Explorer を使用して、コンテナーと BLOB を作成する方法を学習します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を表示する方法について説明します。 また、BLOB のスナップショットを作成する方法、コンテナーのアクセス ポリシーを管理する方法、共有アクセス署名を作成する方法についても学習します。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 11/15/2018
 ms.author: tamram
-ms.openlocfilehash: f44d42b949eae0d017e3bba218234fd1e2ead78e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: eef05a5b52e807a4db058682f034f6762cb93b9f
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711193"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>クイック スタート: Azure Storage Explorer を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>クイック スタート: Azure Storage Explorer を使用してオブジェクト ストレージ内に BLOB を作成する
 
-[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) は、ストレージ アカウントのコンテンツの管理に使用するマルチプラットフォーム ユーザー インターフェイスです。 このガイドでは、Azure Storage Explorer を使用してローカル ディスクと Azure Blob Storage の間でファイルを転送する方法について詳細に説明します。
+このクイック スタートでは、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、コンテナーと BLOB を作成する方法を学習します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を表示する方法について説明します。 また、BLOB のスナップショットを作成する方法、コンテナーのアクセス ポリシーを管理する方法、共有アクセス署名を作成する方法についても学習します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+## <a name="prerequisites"></a>前提条件
 
-このクイックスタートでは、Azure Storage Explorer がインストールされていることを前提としています。 Azure Storage Explorer をインストールする必要がある場合は、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) のページから Windows、Macintosh、または Linux に対応した Azure Storage Explorer をダウンロードしてください。
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+このクイックスタートでは、Azure Storage Explorer をインストールする必要があります。 Windows、Macintosh、または Linux 用の Azure Storage Explorer をインストールする方法については、「[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)」をご覧ください。
 
 ## <a name="log-in-to-storage-explorer"></a>Storage Explorer にログインする
 
@@ -77,7 +77,7 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
 
 ## <a name="manage-snapshots"></a>スナップショットを管理する
 
-Azure Storage Explorer には、BLOB の[スナップショット](storage-blob-snapshots.md)を作成して管理する機能が用意されています。 BLOB のスナップショットを作成するには、BLOB を右クリックして **[Make Snapshot\(スナップショットの作成\)]** を選択します。 BLOB のスナップショットを表示するには、BLOB を右クリックして **[Manage Snapshots\(スナップショットの管理\)]** を選択します。 BLOB のスナップショットの一覧が現在のタブに表示されます。
+Azure Storage Explorer には、BLOB の[スナップショット](storage-blob-snapshots.md)を作成して管理する機能が用意されています。 BLOB のスナップショットを作成するには、BLOB を右クリックして **[スナップショットの作成]** を選択します。 BLOB のスナップショットを表示するには、BLOB を右クリックして **[Manage Snapshots\(スナップショットの管理\)]** を選択します。 BLOB のスナップショットの一覧が現在のタブに表示されます。
 
 ![Microsoft Azure Storage Explorer - コンテナー内の BLOB の一覧](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
 

@@ -1,25 +1,19 @@
 ---
 title: Azure Analysis Services の診断ログ | Microsoft Docs
 description: Azure Analysis Services の診断ログの設定について説明します。
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: ''
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 20e2e76e8df9421ee97671000f9557f5db34f1b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: minewiskan
+ms.openlocfilehash: a8d6080b573cbad1004166f28a3e6596560241be
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426517"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
@@ -32,7 +26,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 **[エンジン]**、**[サービス]**、および **[メトリック]** のカテゴリを選択できます。
 
-### <a name="engine"></a>エンジン
+### <a name="engine"></a>Engine
 
 **[エンジン]** を選択すると、すべての [xEvents](https://docs.microsoft.com/sql/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events) がログに記録されます。 個々のイベントを選択することはできません。 
 
@@ -48,7 +42,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 |クエリ     |   Query End      |
 |コマンド     |  Command Begin       |
 |コマンド     |  Command End       |
-|エラーと警告     |   エラー      |
+|エラーと警告     |   Error      |
 |発見     |   Discover End      |
 |通知     |    通知     |
 |Session     |  Session Initialize       |
@@ -59,11 +53,10 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 |クエリの処理     |   Direct Query Begin      |
 |クエリの処理     |  Direct Query End       |
 
-### <a name="service"></a>サービス
+### <a name="service"></a>Service
 
 |操作の名前  |発生するタイミング  |
 |---------|---------|
-|CreateGateway     |   ユーザーがサーバー上にゲートウェイを構成するとき      |
 |ResumeServer     |    サーバーを再開するとき     |
 |SuspendServer    |   サーバーを一時停止するとき      |
 |DeleteServer     |    サーバーの削除     |
@@ -210,7 +203,7 @@ Log Analytics を必ず表示してください。これは、収集されたデ
 Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。  
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。 Azure PowerShell は、このアカウントに関連付けられているすべてのサブスクリプションを取得し、既定で最初のサブスクリプションを使用します。

@@ -1,19 +1,20 @@
 ---
-title: "Azure Database for MySQL でパフォーマンスのチューニングとデータベースのメンテナンスに sys_schema を使用する方法"
-description: "この記事では、sys_schema を使ってパフォーマンスの問題を見つけ、Azure Database for MySQL のデータベースを保守する方法について説明します。"
+title: Azure Database for MySQL でパフォーマンスのチューニングとデータベースのメンテナンスに sys_schema を使用する方法
+description: この記事では、sys_schema を使ってパフォーマンスの問題を見つけ、Azure Database for MySQL のデータベースを保守する方法について説明します。
 services: mysql
 author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 2e5b6b859df06d686a97fc1b134da8d66df6783e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 08/01/2018
+ms.openlocfilehash: 1e10e3b1b5f4518732408f254eb5767acb8485c6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446909"
 ---
 # <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Azure Database for MySQL でパフォーマンスのチューニングとデータベースのメンテナンスに sys_schema を使用する方法
 
@@ -41,7 +42,7 @@ IO は、データベースで最もコストのかかる操作です。 *sys.us
 
 ![IO 待機時間: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
 
-Azure Database for MySQL ではストレージに応じて IO が増減するので、このプロビジョニングされたストレージを 1 TB に増やすと、IO 待機時間は 571 ミリ秒に減り、パフォーマンスは 26 倍にも向上します。
+Azure Database for MySQL ではストレージに応じて IO が増減するので、このプロビジョニングされたストレージを 1 TB に増やすと、IO 待機時間は 571 ミリ秒に減ります。
 
 ![IO 待機時間: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 

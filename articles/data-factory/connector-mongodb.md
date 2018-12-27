@@ -10,25 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/07/2018
+ms.topic: conceptual
+ms.date: 06/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 3c1e5dbf60c247399b620a437da92a166990087e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: debb27f49c730df4a8bef42b1f1ef9ec50f1faf0
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054060"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-on-premises-mongodb-connector.md)
-> * [バージョン 2 - プレビュー](connector-mongodb.md)
+> * [Version 1](v1/data-factory-on-premises-mongodb-connector.md)
+> * [現在のバージョン](connector-mongodb.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、MongoDB データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の MongoDB コネクタ](v1/data-factory-on-premises-mongodb-connector.md)に関する記事を参照してください。
-
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -36,7 +33,7 @@ MongoDB データベースのデータを、サポートされているシンク
 
 具体的には、この MongoDB コネクタは以下をサポートします。
 
-- MongoDB **バージョン 2.4、2.6、3.0、および 3.2**。
+- MongoDB **バージョン 2.4、2.6、3.0、3.2、3.4、3.6**。
 - **基本**または**匿名**認証を使用したデータのコピー。
 
 ## <a name="prerequisites"></a>前提条件
@@ -53,9 +50,9 @@ MongoDB データベースのデータを、サポートされているシンク
 
 MongoDB のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |type プロパティを **MongoDb** に設定する必要があります。 |[はい] |
+| type |type プロパティを **MongoDb** に設定する必要があります。 |[はい] |
 | [サーバー] |MongoDB サーバーの IP アドレスまたはホスト名。 |[はい] |
 | ポート |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ (既定値は 27017) |
 | databaseName |アクセスする MongoDB データベースの名前。 |[はい] |
@@ -63,6 +60,8 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
 | password |ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい (基本認証が使用される場合)。 |
 | authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |いいえ。 基本認証の場合、既定では管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
+| enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ  |
+| allowSelfSignedServerCert | サーバーからの自己署名証明書を許可するかどうかを指定します。 既定値は false です。  | いいえ  |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
@@ -96,9 +95,9 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 MongoDB からデータをコピーするには、データセットの type プロパティを **MongoDbCollection** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、**MongoDbCollection** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは、**MongoDbCollection** に設定する必要があります。 | [はい] |
 | collectionName |MongoDB データベースのコレクション名前。 |[はい] |
 
 **例:**
@@ -116,7 +115,7 @@ MongoDB からデータをコピーするには、データセットの type プ
             "collectionName": "<Collection name>"
         }
     }
-
+}
 ```
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
@@ -127,9 +126,9 @@ MongoDB からデータをコピーするには、データセットの type プ
 
 MongoDB からデータをコピーするには、コピー アクティビティのソースの種類を **MongoDbSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **MongoDbSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **MongoDbSource** に設定する必要があります。 | [はい] |
 | クエリ |カスタム SQL-92 クエリを使用してデータを読み取ります。 例: Select * from MyTable。 |いいえ (データセットに "collectionName" が指定されている場合) |
 
 **例:**
@@ -165,7 +164,7 @@ MongoDB からデータをコピーするには、コピー アクティビテ�
 ```
 
 > [!TIP]
-> SQL クエリを指定する場合は、DateTime 形式に注意してください。 次に例を示します。`SELECT * FROM Account WHERE LastModifiedDate >= {{ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')}'}} AND LastModifiedDate < {{ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}'}}`
+> SQL クエリを指定する場合は、DateTime 形式に注意してください。 たとえば、`SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` や、次のパラメーターを使用する場合 `SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
 
 ## <a name="schema-by-data-factory"></a>Data Factory によるスキーマ
 

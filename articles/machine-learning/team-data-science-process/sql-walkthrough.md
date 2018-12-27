@@ -1,30 +1,32 @@
 ---
-title: "Azure VM で SQL Server を使用して機械学習モデルを構築してデプロイする | Microsoft Docs'"
-description: "Advanced Analytics Process and Technology の活用"
+title: Azure VM で SQL Server を使用して機械学習モデルを構築してデプロイする | Microsoft Docs'
+description: Advanced Analytics Process and Technology の活用
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: jhubbard
+documentationcenter: ''
+author: deguhath
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 6066b083-262c-4453-a712-a5c05acc3df8
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 03def1f07d45b9bde5f54922984c33879a80744c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: deguhath
+ms.openlocfilehash: 23766598b1af4e05b007e5ba844190f1fe03a660
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394376"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
 このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
 
 ## <a name="dataset"></a>NYC タクシー乗車データセットの説明
-NYC タクシー乗車データは、約 20GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) です。1 億 7300 万以上の個々の乗車と、各乗車に支払われた料金で構成されています。 各旅行レコードには、pickup (乗車) と drop-off (降車) の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、および medallion (タクシーの一意の ID) 番号が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
+NYC タクシー乗車データは、約 20GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) です。1 億 7300 万以上の個々の乗車と、各乗車に支払われた料金で構成されています。 各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー (運転手の) 免許番号、および営業許可番号 (タクシーの一意の ID) が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
 1. 「trip_data」の CSV ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。 いくつかのサンプル レコードを次に示します。
    
@@ -68,7 +70,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 Azure のデータ サイエンス環境をセット アップするには、
 
-1. [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md)
+1. [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)
 2. [Azure Machine Learning ワークスペースの作成](../studio/create-workspace.md)
 3. [データ サイエンス仮想マシンをプロビジョニングする](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)。この仮想マシンにより、SQL Server と IPython Notebook サーバーが用意されます。
    
@@ -109,7 +111,7 @@ AzCopy を使用してデータをコピーするには
     ![スクリプトの実行][13]
 4. SQL Server の既定のデータベースとログ フォルダーを確認または変更し、新規作成したデータベースが確実にデータ ディスクに格納されるようにします。 データウェアハウス用に最適化された SQL Server VM イメージは、データとログ ディスクが事前構成されています。 VM にデータ ディスクが含まれていなかったため、VM のセットアップ プロセス中に新しい仮想ハードディスクを追加した場合は、既定のフォルダーを次のように変更します。
    
-   * 左側のパネルで SQL Server 名を右クリックしてから、 **[プロパティ]**をクリックします。
+   * 左側のパネルで SQL Server 名を右クリックしてから、 **[プロパティ]** をクリックします。
      
        ![SQL Server プロパティ][14]
    * 左側の **[ページの選択]** リストから、**[データベース設定]** を選択します。
@@ -580,7 +582,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 2. **[プロパティ]** パネルで、**Azure SQL Database** を**データ ソース**として選択します。
 3. データベースの DNS 名を **[データベース サーバー名]** フィールドに入力します。 形式: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. **データベース名** を対応するフィールドに入力します。
-5. **SQL ユーザー名**を **[サーバーのユーザーアカウント名]** に、パスワードを **[サーバーのユーザー アカウントのパスワード]** に入力します。
+5. <**SQL ユーザー名**> を **[Server user account name (サーバーのユーザー アカウント名)]** に、<**パスワード**> を **[Server user account password (サーバーのユーザー アカウントのパスワード)]** に入力します。
 7. **データベース クエリ** テキスト編集領域で、必要なデータベース フィールド (ラベルなどの計算フィールドなど) を抽出するクエリを貼り付けてから、データを希望するサンプルのサイズにダウンサンプリングします。
 
 SQL Server データベースから直接データを読み取る、二項分類の実験の例を次の図に示します。 同様の実験を、多クラス分類と回帰問題で構築することができます。
@@ -624,9 +626,9 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 このサンプルのチュートリアルとそれに付随するスクリプトおよび IPython notebooks は、MIT ライセンスの下で Microsoft と共有されています。 詳細については、GitHub のサンプル コードのディレクトリにある LICENSE.txt ファイルを確認してください。
 
 ### <a name="references"></a>参照
-•    [Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
+•    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
 •    [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-•    [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+•    [ニューヨーク市タクシー&リムジン委員会調査および統計](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sql-walkthrough/sql-walkthrough_28_1.png

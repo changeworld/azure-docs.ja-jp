@@ -1,26 +1,27 @@
 ---
-title: "複数のサイトをホストするアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs"
-description: "Azure Portal を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する方法について説明します。"
+title: 複数のサイトをホストするアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs
+description: Azure Portal を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: 403c6c254d8547b09e42f0b1561e5eff350a1f9b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: 23b627d480acf7bbbff7ade2ba6e596a57a15327
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993351"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Azure Portal を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する
 
 [アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure Portal を使用して [複数の Web サイト](application-gateway-multi-site-overview.md)のホスティングを構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www.contoso.com* と *www.fabrikam.com* の例を使用します。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * アプリケーション ゲートウェイの作成
@@ -35,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にログインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインする
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -78,7 +79,7 @@ Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にロ�
 
 この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 また、IIS を仮想マシンにインストールして、トラフィックが正常にルーティングされていることを確認します。
 
-1. **[新規]**をクリックします。
+1. **[新規]** をクリックします。
 2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 
@@ -102,7 +103,7 @@ Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にロ�
 2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
@@ -139,9 +140,9 @@ Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にロ�
 3. Click **OK**.
 4. *fabrikamListener* という名前を使用して 2 番目のリスナーを作成し、2 番目のドメイン名を使用します。 この例では、*www.fabrikam.com* が使用されています。
 
-ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールを使用してリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも前に配置する必要があります。 
+ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールを使用してリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも先に配置する必要があります。 
 
-この例では、2 つの新しいルールを作成し、アプリケーション ゲートウェイを作成したときに作成された既定のルールを削除します。 
+この例では、2 つの新しい規則を作成し、アプリケーション ゲートウェイを作成したときに作成された既定の規則を削除します。 
 
 1. **[ルール]**、**[基本]** の順にクリックします。
 2. 名前として「*contosoRule*」と入力します。
@@ -166,7 +167,7 @@ Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にロ�
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-1. ブラウザーのアドレス バーにドメイン名を入力します。 例: http://www.contoso.com。
+1. ブラウザーのアドレス バーにドメイン名を入力します。 http://www.contoso.com など。
 
     ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/application-gateway-create-multisite-portal/application-gateway-iistest.png)
 

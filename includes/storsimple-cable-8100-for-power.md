@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 0e8db8779958afe1fd3cf4bf12f2a6fd4a97c61c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166370"
+---
 <!--author=alkohli last changed: 9/16/15-->
 
 #### <a name="to-cable-for-power"></a>電源ケーブル接続を行うには
@@ -14,7 +27,7 @@
    
     **8100 デバイスの電源ケーブル接続**
    
-   | ラベル | 説明 |
+   | Label | 説明 |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |コントローラー 1 |

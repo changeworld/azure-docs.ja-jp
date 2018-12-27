@@ -1,10 +1,10 @@
 ---
-title: "Azure Cloud Services 用のインターネットに接続するロード バランサーの作成 | Microsoft Docs"
-description: "インターネットに接続するクラシック デプロイ モデルのロード バランサー (クラウド サービス用) を作成する方法について説明します"
+title: Azure Cloud Services 用のインターネットに接続するロード バランサーの作成 | Microsoft Docs
+description: インターネットに接続するクラシック デプロイ モデルのロード バランサー (クラウド サービス用) を作成する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
-manager: timlt
+author: genlin
+manager: cshepard
 tags: azure-service-management
 ms.assetid: 0bb16f96-56a6-429f-88f5-0de2d0136756
 ms.service: load-balancer
@@ -13,12 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: kumud
-ms.openlocfilehash: b389d9a01db394b79d07ff9c3d6d1cd94e811472
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: genli
+ms.openlocfilehash: b292739f5f4b7184a24ac9b14d40ed98d4921bde
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34067488"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-for-cloud-services"></a>インターネットに接続するロード バランサー (クラウド サービス用) の作成の開始
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 12/18/2017
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-classic-rm.md) について知識をつけておいてください。 この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイメント モデルについて説明します。 [Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
+> Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-classic-rm.md) について知識をつけておいてください。 この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイ モデルについて説明します。 [Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
 
 クラウド サービスはロード バランサーで自動的に構成され、サービス モデルを使用してカスタマイズできます。
 
@@ -43,22 +44,22 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 クラウド デプロイによって生成された .csdef ファイルのスニペット内を確認すると、外部エンドポイントがポート 10000、10001、10002 の HTTP ポートを使用するように構成されていることがわかります。
 
 ```xml
-<ServiceDefinition name=“Tenant“>
-    <WorkerRole name=“FERole” vmsize=“Small“>
-<Endpoints>
-    <InputEndpoint name=“FE_External_Http” protocol=“http” port=“10000“ />
-    <InputEndpoint name=“FE_External_Tcp“  protocol=“tcp“  port=“10001“ />
-    <InputEndpoint name=“FE_External_Udp“  protocol=“udp“  port=“10002“ />
+<ServiceDefinition name="Tenant">
+    <WorkerRole name="FERole" vmsize="Small">
+        <Endpoints>
+            <InputEndpoint name="FE_External_Http" protocol="http" port="10000" />
+            <InputEndpoint name="FE_External_Tcp"  protocol="tcp"  port="10001" />
+            <InputEndpoint name="FE_External_Udp"  protocol="udp"  port="10002" />
 
-    <InputEndpointname=“HTTP_Probe” protocol=“http” port=“80” loadBalancerProbe=“MyProbe“ />
+            <InputEndpoint name="HTTP_Probe" protocol="http" port="80" loadBalancerProbe="MyProbe" />
 
-    <InstanceInputEndpoint name=“InstanceEP” protocol=“tcp” localPort=“80“>
-        <AllocatePublicPortFrom>
-            <FixedPortRange min=“10110” max=“10120“  />
-        </AllocatePublicPortFrom>
-    </InstanceInputEndpoint>
-    <InternalEndpoint name=“FE_InternalEP_Tcp” protocol=“tcp“ />
-</Endpoints>
+            <InstanceInputEndpoint name="InstanceEP" protocol="tcp" localPort="80">
+                <AllocatePublicPortFrom>
+                    <FixedPortRange min="10110" max="10120"  />
+                </AllocatePublicPortFrom>
+            </InstanceInputEndpoint>
+            <InternalEndpoint name="FE_InternalEP_Tcp" protocol="tcp" />
+        </Endpoints>
     </WorkerRole>
 </ServiceDefinition>
 ```
@@ -69,7 +70,7 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 
 ```xml
 <LoadBalancerProbes>
-    <LoadBalancerProbe name=“MyProbe” protocol=“http” path=“Probe.aspx” intervalInSeconds=“5” timeoutInSeconds=“100“ />
+    <LoadBalancerProbe name="MyProbe" protocol="http" path="Probe.aspx" intervalInSeconds="5" timeoutInSeconds="100" />
 </LoadBalancerProbes>
 ```
 
@@ -81,7 +82,7 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 
 詳細については、 [正常性プローブ](https://msdn.microsoft.com/library/azure/jj151530.aspx) のサービス定義スキーマをご確認ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
 

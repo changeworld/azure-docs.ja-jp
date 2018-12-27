@@ -2,22 +2,20 @@
 title: Azure Cosmos DB で Mongoose フレームワークを使用する | Microsoft Docs
 description: Node.js Mongoose アプリを Azure Cosmos DB に接続する方法について説明します。
 services: cosmos-db
-documentationcenter: ''
-author: romitgirdhar
+author: slyons
 manager: kfile
-ms.assetid: de5eea58-ee7c-4609-b1c9-4af3e61a5883
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 01/08/2018
-ms.author: rogirdh
-ms.openlocfilehash: 4ce86c6a3fb3d191f101329025d0aedf266ce79e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: sclyon
+ms.openlocfilehash: 8cfa53a1792d8e01c05aad8e4a1a0b5239a092c1
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857397"
 ---
 # <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: Azure Cosmos DB で Mongoose フレームワークを使用する
 
@@ -52,7 +50,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 1. 新しいファイルをフォルダーに追加し、名前を ```index.js``` にします。
 1. 次の ```npm install``` オプションのいずれかを使用して、必要なパッケージをインストールします。
-    * Mongoose: ```npm install mongoose --save```
+    * Mongoose: ```npm install mongoose@5 --save```
+
+    > [!Note]
+    > 以下の Mongoose の接続の例は Mongoose 5+ に基づいており、これはその前のバージョンから変更されています。
+    
     * Dotenv (.env ファイルからシークレットを読み込む場合): ```npm install dotenv --save```
 
     >[!Note]
@@ -67,19 +69,21 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 1. Cosmos DB の接続文字列と Cosmos DB の名前を ```.env``` ファイルに追加します。
 
     ```JavaScript
-    COSMOSDB_CONNSTR={Your MongoDB Connection String Here}
-    COSMOSDB_DBNAME={Your DB Name Here}
+    COSMOSDB_CONNSTR=mongodb://{cosmos-user}.documents.azure.com:10255/{dbname}
+    COSMODDB_USER=cosmos-user
+    COSMOSDB_PASSWORD=cosmos-secret
     ```
 
 1. Mongoose フレームワークを使用して Azure Cosmos DB に接続するには、次のコードを index.js の末尾に追加します。
     ```JavaScript
-    mongoose.connect(process.env.COSMOSDB_CONNSTR+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb"); //Creates a new DB, if it doesn't already exist
-
-    var db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'connection error:'));
-    db.once('open', function() {
-    console.log("Connected to DB");
-    });
+    mongoose.connect(process.env.COSMOSDB_CONNSTR+"?ssl=true&replicaSet=globaldb", {
+      auth: {
+        user: process.env.COSMODDB_USER,
+        password: process.env.COSMOSDB_PASSWORD
+      }
+    })
+    .then(() => console.log('Connection to CosmosDB successful'))
+    .catch((err) => console.error(err));
     ```
     >[!Note]
     > ここで、環境変数は、'dotenv' npm パッケージを使用して process.env.{variableName} によって読み込まれます。

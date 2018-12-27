@@ -1,31 +1,25 @@
 ---
-title: "Apache Hive と HiveQL とは - Azure HDInsight | Microsoft Docs"
-description: "Apache Hive は、Hadoop 用のデータ ウェアハウス システムです。 Transact-SQL に似た HiveQL を使用して、Hive に格納されているデータを照会することができます。 このドキュメントでは、Azure HDInsight で Hive と HiveQL を使用する方法について説明します。"
-keywords: "HiveQL, Hive とは, Hadoop HiveQL, Hive の使い方, Hive について, Hive の概要"
+title: Apache Hive と HiveQL とは - Azure HDInsight
+description: Apache Hive は、Apache Hadoop 用のデータ ウェアハウス システムです。 Transact-SQL に似た HiveQL を使用して、Hive に格納されているデータを照会することができます。 このドキュメントでは、Azure HDInsight で Hive と HiveQL を使用する方法について説明します。
+keywords: HiveQL, Hive とは, Hadoop HiveQL, Hive の使い方, Hive について, Hive の概要
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 2c10f989-7636-41bf-b7f7-c4b67ec0814f
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/26/2018
-ms.author: larryfr
-ms.openlocfilehash: afd2bc95beb2458ec149824723ec62381b31b2da
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: conceptual
+ms.date: 04/23/2018
+ms.openlocfilehash: d7b29980321f04d1ad9325580bc48ab944f60d1c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633718"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
-[Apache Hive](http://hive.apache.org/) は、Hadoop 用のデータ ウェアハウス システムです。 Hive を使用すると、データの集計、クエリ、および分析を行うことができます。 Hive クエリは、SQL に似たクエリ言語である HiveQL で記述します。
+[Apache Hive](http://hive.apache.org/) は、Apache Hadoop 用のデータ ウェアハウス システムです。 Hive を使用すると、データの集計、クエリ、および分析を行うことができます。 Hive クエリは、SQL に似たクエリ言語である HiveQL で記述します。
 
 Hive では、大規模な非構造化データに構造を投影することができます。 構造を定義したら、HiveQL を使用することで、Java や MapReduce の知識がなくてもそのデータを照会できます。
 
@@ -45,19 +39,19 @@ HDInsight で Hive を使用するさまざまな方法を次の表に示しま�
 
 | **方法** | **対話型**クエリ | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
-| [Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任意 (ブラウザー ベース) |
-| [Beeline クライアント](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
+| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux | Linux、Unix、Mac OS X、または Windows |
+| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Linux または Windows* | Windows |
+| [Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ | Linux |任意 (ブラウザー ベース) |
+| [Beeline クライアント](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ | Linux |Linux、Unix、Mac OS X、または Windows |
 | [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux または Windows* |Linux、Unix、Mac OS X、または Windows |
-| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux、Unix、Mac OS X、または Windows |
-| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |&nbsp; |✔ |Linux または Windows* |Windows |
-| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows* |Windows |
+| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows* | Windows |
 
 > [!IMPORTANT]
 > \* Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="hiveql-language-reference"></a>HiveQL 言語のリファレンス
 
-HiveQL 言語リファレンスは、[言語マニュアル (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) から入手できます。
+HiveQL 言語のリファレンスは、[言語マニュアル (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) で入手できます。
 
 ## <a name="hive-and-data-structure"></a>Hive とデータ構造
 
@@ -76,9 +70,9 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-また、Hive では、複雑なまたは不規則な構造化データのためのカスタム **シリアライザー/デシリアライザー (SerDe)** もサポートされます。 詳細については、「[HDInsight でのカスタム JSON SerDe の使用方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx)」というドキュメントを参照してください。
+また、Hive では、複雑なまたは不規則な構造化データのためのカスタム **シリアライザー/デシリアライザー (SerDe)** もサポートされます。 詳細については、「[HDInsight でのカスタム JSON SerDe の使用方法](https://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx)」というドキュメントを参照してください。
 
-Hive でサポートされているファイル形式の詳細については、[言語マニュアル (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) を参照してください。
+Hive でサポートされるファイル形式の詳細については、[言語マニュアル (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) をご覧ください。
 
 ### <a name="hive-internal-tables-vs-external-tables"></a>Hive の内部テーブルと外部テーブル
 
@@ -104,7 +98,7 @@ Hive で作成できるテーブルには、次の 2 種類があります。
 
 ## <a name="user-defined-functions-udf"></a>ユーザー定義関数 (UDF)
 
-Hive は **ユーザー定義関数 (UDF)**で拡張することもできます。 UDF では、HiveQL で簡単にモデル化されない機能やロジックを実装することができます。 Hive での UDF の使用例については、以下のドキュメントを参照してください。
+Hive は **ユーザー定義関数 (UDF)** で拡張することもできます。 UDF では、HiveQL で簡単にモデル化されない機能やロジックを実装することができます。 Hive での UDF の使用例については、以下のドキュメントを参照してください。
 
 * [Java ユーザー定義関数と Hive の使用](../hadoop/apache-hadoop-hive-java-udf.md)
 
@@ -112,7 +106,7 @@ Hive は **ユーザー定義関数 (UDF)**で拡張することもできます�
 
 * [C# ユーザー定義関数と Hive の使用](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [HDInsight にカスタムの Hive ユーザー定義関数を追加する方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [HDInsight にカスタムの Hive ユーザー定義関数を追加する方法](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 * [日付/時刻の形式を Hive タイムスタンプに変換する Hive ユーザー定義関数の例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
@@ -228,7 +222,7 @@ HDInsight は、Interactive Query クラスター タイプの LLAP を提供し
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory では、Data Factory パイプラインの一部として HDInsight を使用できます。 パイプラインから Hive を使用する方法の詳細については、[Azure Data Factory での Hive アクティビティを使用したデータ変換](/data-factory/transform-data-using-hadoop-hive.md)に関するドキュメントをご覧ください。
+Azure Data Factory では、Data Factory パイプラインの一部として HDInsight を使用できます。 パイプラインから Hive を使用する方法の詳細については、[Azure Data Factory での Hive アクティビティを使用したデータ変換](../../data-factory/transform-data-using-hadoop-hive.md)に関するドキュメントをご覧ください。
 
 ### <a name="hive-jobs-and-sql-server-integration-services"></a>Hive ジョブと SQL Server Integration Services
 
@@ -251,8 +245,6 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
 * [HDInsight での Pig の使用][hdinsight-use-pig]
 * [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
-
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

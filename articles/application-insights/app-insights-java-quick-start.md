@@ -1,20 +1,22 @@
 ---
-title: "Azure Application Insights のクイック スタート | Microsoft docs"
-description: "Application Insights で監視する Java Web アプリを迅速にセットアップする手順を説明します"
+title: Azure Application Insights のクイック スタート | Microsoft docs
+description: Application Insights で監視する Java Web アプリを迅速にセットアップする手順を説明します
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/12/2017
+ms.reviewer: lagayhar
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: daf7fb88b41ca21ea08e1368215578971032e47d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 45d1275ac3b78836cbb77c4e1508d0689c215d69
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998604"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Java Web アプリケーションの監視を開始する
 
@@ -26,13 +28,15 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 
 このクイック スタートを完了するには、以下が必要です。
 
-- Oracle JRE 1.6 以降、または Zulu JRE 1.6 以降をインストールする
-- [無料の Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/) をインストールします。 このクイック スタートでは Eclipse Oxygen (4.7) を使用します。
+- JRE 1.7 または 1.8 のインストール
+- [無料の Eclipse IDE for Java EE Developers](https://www.eclipse.org/downloads/) をインストールします。 このクイック スタートでは Eclipse Oxygen (4.7) を使用します。
 - Azure サブスクリプションと既存の Java Dynamic Web プロジェクトが必要です。
  
 Java Dynamic Web プロジェクトをお持ちでない場合は、[Java Web アプリ作成のクイック スタート](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java)に従って作成できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+
+Spring フレームワークの方がよければ、[Spring Boot 初期化子アプリを構成して Application Insights ガイドを使用](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)してみてください
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
@@ -63,7 +67,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![新しい App Insights リソースのフォーム](./media/app-insights-java-quick-start/000-j.png)
 
-2. ```http://dl.microsoft.com/eclipse``` を "Work With" フィールドにコピーし、**[Azure Toolkit for Java]** チェックボックスをオンにした後、**[Applicatin Insights Plugin for Java] を選択し**  > **[Contact all update sites during install to find required software]** チェックボックスをオフにします。
+2. ```https://dl.microsoft.com/eclipse``` を "Work With" フィールドにコピーし、**[Azure Toolkit for Java]** チェックボックスをオンにした後、**[Applicatin Insights Plugin for Java] を選択し**  > **[Contact all update sites during install to find required software]** チェックボックスをオフにします。
 
 3. インストールが完了すると、**Eclipse を再起動**するように求められます。
 
@@ -86,25 +90,25 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 1. Azure Portal で、インストルメンテーション キーを取得した Application Insights の**概要**ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。
 
-   ![Application Insights の概要メニュー](./media/app-insights-java-quick-start/0008-j.png)
+   ![Application Insights の概要メニュー](./media/app-insights-java-quick-start/overview-001.png)
 
-2. **[App map (アプリ マップ)]** をクリックして、アプリケーション コンポーネント間の依存関係の視覚的レイアウトを取得します。 各コンポーネントには、負荷、パフォーマンス、障害、アラートなどの KPI が表示されます。
+2. **[アプリケーション マップ]** をクリックして、アプリケーション コンポーネント間の依存関係の視覚的レイアウトを取得します。 各コンポーネントには、負荷、パフォーマンス、障害、アラートなどの KPI が表示されます。
 
-   ![アプリケーション マップ](./media/app-insights-java-quick-start/005-j.png)
+   ![アプリケーション マップ](./media/app-insights-java-quick-start/application-map-001.png)
 
 3. **[アプリ分析]** アイコンをクリックし、![[アプリケーション マップ]](./media/app-insights-java-quick-start/006.png) アイコンをクリックします。 これにより、Application Insights で収集されたすべてのデータを分析するための多機能なクエリ言語を利用可能な **Application Insights Analytics** が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
    ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/app-insights-java-quick-start/0010-j.png)
 
-4. **概要**ページに戻り、**正常性の概要のタイムライン**を確認します。  このダッシュ ボードでは、着信要求の数、要求の期間、発生したエラーなど、アプリケーションの正常性に関する統計情報が提供されます。
+4. **[概要]** ページに戻って KPI グラフを観察します。  このダッシュ ボードでは、着信要求の数、要求の期間、発生したエラーなど、アプリケーションの正常性に関する統計情報が提供されます。
 
-   ![正常性の概要のタイムライン グラフ](./media/app-insights-java-quick-start/0009-j.png)
+   ![正常性の概要のタイムライン グラフ](./media/app-insights-java-quick-start/overview-perf.png)
 
    **[ページ ビューの読み込み時間]** グラフに**クライアント側のテレメトリ** データを入力できるようにするには、このスクリプトを追跡する各ページに追加します。
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 
@@ -126,7 +130,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![サーバー メトリックのグラフ](./media/app-insights-java-quick-start/livemetricsjava.png)
 
-Java の監視に関する詳細については、[App Insights Java の追加ドキュメント](.\app-insights-java-get-started.md)を参照してください。
+Java の監視に関する詳細については、[App Insights Java の追加ドキュメント](./app-insights-java-get-started.md)を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

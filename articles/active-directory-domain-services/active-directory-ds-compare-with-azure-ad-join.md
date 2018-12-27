@@ -1,24 +1,26 @@
 ---
-title: "Azure AD の参加と Azure Active Directory Domain Services の比較 | Microsoft Docs"
-description: "Azure AD の参加と Azure AD Domain Services を見極める"
+title: Azure AD の参加と Azure Active Directory Domain Services の比較 | Microsoft Docs
+description: Azure AD の参加と Azure AD Domain Services を見極める
 services: active-directory-ds
-documentationcenter: 
-author: mahesh-unnikrishnan
+documentationcenter: ''
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/26/2017
-ms.author: maheshu
-ms.openlocfilehash: fb28c7a66d26119444dd720c2e134f2818d46cfc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: ergreenl
+ms.openlocfilehash: 275f537511f721ea3f01c22a962462bab458129c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156581"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Azure Active Directory の参加と Azure Active Directory Domain Services 間で選定する
 この記事では、Azure Active Directory (AD) の参加と Azure AD Domain Services の違いを説明し、お使いのユースケースに基づく選定を支援します。
@@ -42,27 +44,27 @@ Azure AD では、組織で使用されているデバイスの ID を管理し�
 Azure AD に参加または登録しているデバイスでは、最新の OAuth/OpenID 接続ベースのプロトコルを使って、ユーザー認証が行われます。 これらのプロトコルは、インターネット経由で動作するように設計されており、ユーザーが会社のリソースにどこからでもアクセスするモバイル シナリオに最適です。
 
 
-## <a name="domain-join-to-azure-ad-domain-services-managed-domains"></a>Azure AD Domain Services 管理対象ドメインへのドメイン参加
-Azure AD Domain Services では、Azure の仮想ネットワーク内の管理対象 AD ドメインを提供しています。 従来のドメイン参加のメカニズムを使用して、この管理されたドメインにマシンを参加させることができます。 Windows クライアント (Windows 7、Windows 10) と Windows Server のコンピューターは、管理対象ドメインに参加させることができます。 さらに、管理対象ドメインに Linux と Mac OS のコンピューターを参加させることもできます。 コンピューターを AD ドメインに参加させる場合、ユーザーは会社の資格情報を使用してコンピューターにサインインできます。 これらのコンピューターはグループ ポリシーを使用して管理されるため、必然的に組織のセキュリティ ポリシーに準拠します。
+## <a name="domain-join-to-azure-ad-domain-services-managed-domains"></a>Azure AD Domain Services のマネージド ドメインへのドメイン参加
+Azure AD Domain Services では、Azure の仮想ネットワーク内の管理対象 AD ドメインを提供しています。 従来のドメイン参加のメカニズムを使用して、このマネージド ドメインにマシンを参加させることができます。 Windows クライアント (Windows 7、Windows 10) と Windows Server のコンピューターは、マネージド ドメインに参加させることができます。 さらに、マネージド ドメインに Linux と Mac OS のコンピューターを参加させることもできます。 コンピューターを AD ドメインに参加させる場合、ユーザーは会社の資格情報を使用してコンピューターにサインインできます。 これらのコンピューターはグループ ポリシーを使用して管理されるため、必然的に組織のセキュリティ ポリシーに準拠します。
 
-ドメインに参加しているコンピューターで、NTLM または Kerberos 認証プロトコルを使用してユーザー認証が行われます。 ユーザー認証が機能するように、ドメインに参加しているコンピューターから管理対象ドメインのドメイン コントローラーが見える状態になっている必要があります。 そのため、ドメインに参加しているコンピューターが、管理対象ドメインと同じ仮想ネットワーク上に存在している必要があります。 または、ドメインに参加しているコンピューターが、ピアリングされた仮想ネットワーク経由またはサイト間の VPN/ExpressRoute 接続経由で、管理対象ドメインに接続されている必要があります。 そのため、このメカニズムでは、モバイル デバイスや企業ネットワーク外に接続するデバイスにはあまり適していません。
+ドメインに参加しているコンピューターで、NTLM または Kerberos 認証プロトコルを使用してユーザー認証が行われます。 ユーザー認証が機能するように、ドメインに参加しているコンピューターからマネージド ドメインのドメイン コントローラーが見える状態になっている必要があります。 そのため、ドメインに参加しているコンピューターが、マネージド ドメインと同じ仮想ネットワーク上に存在している必要があります。 または、ドメインに参加しているコンピューターが、ピアリングされた仮想ネットワーク経由またはサイト間の VPN/ExpressRoute 接続経由で、マネージド ドメインに接続されている必要があります。 そのため、このメカニズムでは、モバイル デバイスや企業ネットワーク外に接続するデバイスにはあまり適していません。
 
 > [!NOTE]
-> 技術的には、サイト間 VPN または ExpressRoute 接続経由で、オンプレミスのクライアント ワークステーションを管理対象ドメインに参加させることは可能です。 ただし、エンドユーザーのデバイスの場合は、Azure AD (個人用デバイス) でデバイスを登録する方法か、Azure AD (会社のデバイス) にデバイスを参加させる方法のいずれかを利用することを強くお勧めします。 このメカニズムはインターネット経由でより円滑に機能し、エンドユーザーがどこからでも作業することを可能にします。 Azure AD Domain Services は、お使いのアプリケーションがデプロイされている Azure 仮想ネットワークにデプロイされた Windows または Linux サーバーの仮想マシンに最適です。
+> 技術的には、サイト間 VPN または ExpressRoute 接続経由で、オンプレミスのクライアント ワークステーションをマネージド ドメインに参加させることは可能です。 ただし、エンドユーザーのデバイスの場合は、Azure AD (個人用デバイス) でデバイスを登録する方法か、Azure AD (会社のデバイス) にデバイスを参加させる方法のいずれかを利用することを強くお勧めします。 このメカニズムはインターネット経由でより円滑に機能し、エンドユーザーがどこからでも作業することを可能にします。 Azure AD Domain Services は、お使いのアプリケーションがデプロイされている Azure 仮想ネットワークにデプロイされた Windows または Linux サーバーの仮想マシンに最適です。
 
 
 ## <a name="summary---key-differences"></a>まとめ - 主な相違点
 | **特徴** | **Azure AD Join** | **Azure AD Domain Services** |
 |:---| --- | --- |
-| デバイスの制御 | Azure AD | Azure AD Domain Services の管理対象ドメイン |
-| ディレクトリ内の表現 | Azure AD ディレクトリ内のデバイス オブジェクト。 | AAD-DS 管理対象ドメインにあるコンピューター オブジェクト。 |
-| 認証 | プロトコルに基づく OAuth/OpenID 接続 | Kerberos、NTLM プロトコル |
+| デバイスの制御 | Azure AD | Azure AD Domain Services のマネージド ドメイン |
+| ディレクトリ内の表現 | Azure AD ディレクトリ内のデバイス オブジェクト。 | AAD-DS マネージド ドメインにあるコンピューター オブジェクト。 |
+| Authentication | プロトコルに基づく OAuth/OpenID 接続 | Kerberos、NTLM プロトコル |
 | 管理 | Intune などのモバイル デバイス管理 (MDM) ソフトウェア | グループ ポリシー |
-| ネットワーク | インターネット経由で動作 | コンピューターが管理対象ドメインと同じ仮想ネットワーク上に存在する必要がある。|
+| ネットワーク | インターネット経由で動作 | コンピューターがマネージド ドメインと同じ仮想ネットワーク上に存在する必要がある。|
 | 最適な対象 | エンドユーザーのモバイルまたはデスクトップ デバイス | Azure にデプロイされたサーバーの仮想マシン |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ### <a name="learn-more-about-azure-ad-domain-services"></a>Azure AD Domain Services の詳細
 * [Azure AD Domain Services の概要](active-directory-ds-overview.md)
 * [機能](active-directory-ds-features.md)

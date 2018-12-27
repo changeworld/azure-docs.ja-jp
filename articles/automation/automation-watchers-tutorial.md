@@ -3,21 +3,23 @@ title: Azure Automation アカウントで監視タスクを作成する
 description: Azure Automation アカウントで監視タスクを作成してフォルダーに作成された新しいファイルを監視する方法を説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: eamonoreilly
 ms.author: eamono
-ms.topic: article
-ms.date: 03/19/2017
-ms.openlocfilehash: 8cd5f77d9711ffc95e6a55e97297a23fd87c6bb7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: conceptual
+ms.date: 10/30/2018
+ms.openlocfilehash: 2786de150307b21b06b624914d5fea55ded6e3c7
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249817"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>ローカル マシンでのファイル変更を追跡する Azure Automation 監視タスクを作成する
 
-Azure Automation では監視タスクを使用して、イベントを監視し、アクションをトリガーします。 このチュートリアルでは、ディレクトリへの新しいファイルの追加を監視する監視タスクの作成手順について説明します。
+Azure Automation では、PowerShell Runbook で監視タスクを使用して、イベントを監視し、アクションをトリガーします。 このチュートリアルでは、ディレクトリへの新しいファイルの追加を監視する監視タスクの作成手順について説明します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 監視 Runbook をインポートする
@@ -31,7 +33,7 @@ Azure Automation では監視タスクを使用して、イベントを監視し
 
 このチュートリアルを完了するには、以下が必要です。
 
-* として機能します。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
+* Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
 * 監視およびアクションの Runbook と監視タスクを保持する、[Automation アカウント](automation-offering-get-started.md)。
 * 監視タスクが実行される、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)。
 
@@ -40,15 +42,15 @@ Azure Automation では監視タスクを使用して、イベントを監視し
 このチュートリアルでは、**Watch-NewFile** という名前の監視 Runbook を使用して、ディレクトリ内の新規ファイルを検索します。 この監視 Runbook は、フォルダー内のファイルに対する既知の最終書き込み時刻を取得し、この基準時刻より新しいファイルを監視します。 このステップでは、この Runbook を Automation アカウントにインポートします。
 
 1. Automation アカウントを開き、**[Runbook]** ページをクリックします。
-1. **[ギャラリーの参照]** ボタンをクリックします。
-1. "監視 Runbook" を検索し、**[Watcher runbook that looks for new files in a directory]\(ディレクトリ内の新規ファイルを検索する監視 Runbook\)** を選択して **[インポート]** をクリックします。
+2. **[ギャラリーの参照]** ボタンをクリックします。
+3. "監視 Runbook" を検索し、**[Watcher runbook that looks for new files in a directory]\(ディレクトリ内の新規ファイルを検索する監視 Runbook\)** を選択して **[インポート]** をクリックします。
   ![UI での Automation Runbook のインポート](media/automation-watchers-tutorial/importsourcewatcher.png)
 1. Runbook の名前と説明を入力して **[OK]** を選択し、Automation アカウントにこの Runbook をインポートします。
 1. **[編集]** を選択し、**[公開]** をクリックします。 プロンプトが表示されたら、**[はい]** を選択して Runbook を公開します。
 
 ## <a name="create-an-automation-variable"></a>Automation 変数を作成する
 
-[Automation 変数](automation-variables.md)を使用して、上述の Runbook が各ファイルから読み取って保存するタイムスタンプを格納します。 
+[Automation 変数](automation-variables.md)を使用して、上述の Runbook が各ファイルから読み取って保存するタイムスタンプを格納します。
 
 1. **[共有リソース]** の **[変数]** を選択し、**[+ 変数の追加]** を選びます。
 1. 名前に「Watch-NewFileTimestamp」と入力します。
@@ -57,7 +59,7 @@ Azure Automation では監視タスクを使用して、イベントを監視し
 
 ## <a name="create-an-action-runbook"></a>アクション Runbook を作成する
 
-監視タスクで、アクション Runbook を使用して、監視 Runbook から渡されたデータを操作します。 この手順では、"Process-NewFile" という名前の事前定義済みのアクション Runbook をインポートして更新します。
+監視タスクで、アクション Runbook を使用して、監視 Runbook から渡されたデータを操作します。 PowerShell ワークフロー Runbook は監視タスクではサポートされておらず、PowerShell Runbook を使用する必要があります。 この手順では、"Process-NewFile" という名前の事前定義済みのアクション Runbook をインポートして更新します。
 
 1. Automation アカウントに移動して、**[プロセスの自動化]** カテゴリで **[Runbook]** を選択します。
 1. **[ギャラリーの参照]** ボタンをクリックします。
@@ -87,8 +89,8 @@ Azure Automation では監視タスクを使用して、イベントを監視し
 1. **[アクションを構成]** を選択し、“Process-NewFile” Runbook を選びます。
 1. パラメーターに次の値を入力します。
 
-   *    **EVENTDATA** - 空白のままにします。 監視 Runbook からデータが渡されます。  
-   *    **Run Settings** - この Runbook は Automation サービスで実行するので、Azure のままにします。
+   ***EVENTDATA** - 空白のままにします。 監視 Runbook からデータが渡されます。  
+   ***Run Settings** - この Runbook は Automation サービスで実行するので、Azure のままにします。
 
 1. **[OK]** をクリックし、[監視] ページに戻るように選択します。
 1. **[OK]** をクリックして監視タスクを作成します。
@@ -137,7 +139,7 @@ Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * 監視 Runbook をインポートする

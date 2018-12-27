@@ -1,29 +1,27 @@
 ---
-title: SQL Data Warehouse Transact-SQL 言語要素 | Microsoft Docs
-description: SQL Data Warehouse に使用される Transact-SQL 言語要素のリファレンス コンテンツへのリンクのリスト。
+title: Transact-SQL 言語要素 - Azure SQL Data Warehouse | Microsoft Docs
+description: Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。
 services: sql-data-warehouse
-documentationcenter: NA
-author: kevinvngo
-manager: jhubbard
-editor: ''
-ms.assetid: ea0b9a3e-e489-458e-addc-cc153e5cc158
+author: twounder
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 10/31/2016
-ms.author: kevin;barbkess
-ms.openlocfilehash: dd9dc070c817a7276369a9be7126b0d48dc9e4eb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: implement
+ms.date: 06/13/2018
+ms.author: mausher
+ms.reviewer: igorstan
+ms.openlocfilehash: d40861650f479f8ef840c5150b2153f461871331
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43310855"
 ---
-# <a name="language-elements"></a>言語要素
+# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でサポートされる T-SQL 言語要素
+Azure SQL Data Warehouse でサポートされる T-SQL 言語要素のドキュメントにリンクします。
+
 ## <a name="core-elements"></a>コア要素
-* [構文表記規則](https://msdn.microsoft.com/library/ms177563.aspx)
+* [構文表記規則](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
 * [オブジェクト名の規則](https://msdn.microsoft.com/library/ms175874.aspx)
 * [予約済みキーワード](https://msdn.microsoft.com/library/ms189822.aspx)
 * [照合順序](https://msdn.microsoft.com/library/ff848763.aspx)
@@ -279,5 +277,5 @@ ms.lasthandoff: 03/28/2018
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>次の手順
-その他の TSQL 参照については、[SQL Data Warehouse T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページをご覧ください。
+その他の参照情報については、[Azure SQL Data Warehouse の T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページと[Azure SQL Data Warehouse のシステム ビュー](sql-data-warehouse-reference-tsql-system-views.md)に関するページを参照してください。
 

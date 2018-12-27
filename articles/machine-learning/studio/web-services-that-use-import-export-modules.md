@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 61143302b21f93326f9f81885d845cd388203eb3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 27873930ebef75923088f8bf2170c8e6a383cfa8
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837414"
 ---
 # <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>データのインポート モジュールとエクスポート モジュールを使用する Azure ML Web サービスのデプロイ
 
@@ -60,7 +62,7 @@ Azure SQL テーブルからデータを読み取るには:
         [native-country],
         [income]
      from dbo.censusdata;
-8. 実験キャンバスの下部で、 **[実行]**をクリックします。
+8. 実験キャンバスの下部で、 **[実行]** をクリックします。
 
 ## <a name="create-the-predictive-experiment"></a>予測実験を作成する
 次に、Web サービスの展開元の予測実験を設定します。
@@ -125,7 +127,7 @@ Web サービスとして予測実験をデプロイできるようになりま�
 
 新しい Web サービスとしてデプロイし、それを使用するアプリケーションを作成します。
 
-1. 実験キャンバスの下部で、 **[実行]**をクリックします。
+1. 実験キャンバスの下部で、 **[実行]** をクリックします。
 2. 実行が完了したら、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [New] \(Web サービスのデプロイ [新規])]** を選択します。
 3. [実験のデプロイ] ページで、Web サービスの名前を入力し、料金プランを選択して **[デプロイ]** をクリックします。
 4. **[クイック スタート]** ページで **[使用]** をクリックします。

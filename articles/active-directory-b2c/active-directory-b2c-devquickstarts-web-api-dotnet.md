@@ -1,23 +1,23 @@
 ---
-title: セキュリティ保護された Web API の呼び出し - ASP.NET - Azure Active Directory B2C | Microsoft Docs
+title: Azure Active Directory B2C で .NET Web アプリから .NET Web API を呼び出す | Microsoft Docs
 description: Azure Active Directory B2C と OAuth 2.0 アクセス トークンを使用して、.NET Web アプリを構築し、Web API を呼び出す方法。
 services: active-directory-b2c
-documentationcenter: .net
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 75ae88898d3d6b275ec462e865347056305fd666
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 7296954a17b21183eb8be2744b42289522cf7f57
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012498"
 ---
-# <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: .NET Web アプリから .NET Web API を呼び出す
+# <a name="call-a-net-web-api-from-a-net-web-app-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で .NET Web アプリから .NET Web API を呼び出す
 
 Azure AD B2C を使用すると、Web アプリと Web API に強力な ID 管理機能を追加できます。 この記事では、アクセス トークンを要求し、"To Do リスト" Web アプリから .NET Web API を呼び出す方法について説明します。
 
@@ -31,10 +31,10 @@ Azure AD B2C を使用すると、Web アプリと Web API に強力な ID 管�
 Web API を呼び出す Web アプリケーションを構築するには、次の作業を行う必要があります。
 
 1. [Azure AD B2C テナントを作成](active-directory-b2c-get-started.md)します。
-2. [Web API を登録](active-directory-b2c-app-registration.md#register-a-web-api)します。
-3. [Web アプリを登録](active-directory-b2c-app-registration.md#register-a-web-app)します。
+2. [Web API を登録](active-directory-b2c-app-registration.md)します。
+3. [Web アプリを登録](active-directory-b2c-app-registration.md)します。
 4. [ポリシーを設定](active-directory-b2c-reference-policies.md)します。
-5. [Web API を使用するためのアクセス許可を Web アプリに付与](active-directory-b2c-access-tokens.md#publishing-permissions)します。
+5. [Web API を使用するためのアクセス許可を Web アプリに付与](active-directory-b2c-access-tokens.md)します。
 
 > [!IMPORTANT]
 > クライアント アプリケーションと Web API は、同じ Azure AD B2C ディレクトリを使用する必要があります。
@@ -87,7 +87,7 @@ Web API を呼び出すには、(サインアップ/サインイン ポリシー
         {
             ...
 
-            // Specify the scope by appending all of the scopes requested into one string (seperated by a blank space)
+            // Specify the scope by appending all of the scopes requested into one string (separated by a blank space)
             Scope = $"{OpenIdConnectScopes.OpenId} {ReadTasksScope} {WriteTasksScope}"
         }
     );

@@ -1,92 +1,57 @@
 ---
-title: Azure CLI を使用して Linux VM にディスクを追加する | Microsoft Docs
-description: Azure CLI 1.0 および 2.0 を使用して Linux VM に永続ディスクを追加する方法について説明します。
-keywords: Linux 仮想マシン,リソース ディスクの追加
+title: Azure CLI を使用して Linux VM にデータ ディスクを追加する | Microsoft Docs
+description: Azure CLI を使用して Linux VM に永続データ ディスクを追加する方法について説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: rickstercdn
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 3005a066-7a84-4dc5-bdaa-574c75e6e411
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.date: 02/02/2017
-ms.author: rclaus
+ms.date: 06/13/2018
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3d3e3468b491f366473899f5d073704ea9a95ea
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 93ff349eb14823784ca574a70279cd623c720872
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853727"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。 
 
 
-## <a name="use-managed-disks"></a>Managed Disks の使用
-Azure Managed Disks は、VM ディスクに関連付けられているストレージ アカウントを管理することで、Azure VM のディスク管理を簡素化します。 必要なディスクの種類 (Premium または Standard) とサイズを指定するだけで、ディスクの作成と管理は Azure によって行われます。 詳細については、[Managed Disks の概要](managed-disks-overview.md)に関する記事を参照してください。
+## <a name="attach-a-new-disk-to-a-vm"></a>新しいディスクの VM への接続
 
-
-### <a name="attach-a-new-disk-to-a-vm"></a>新しいディスクの VM への接続
-仮想マシンに新しいディスクが必要な場合、`--new` パラメーターを指定した [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) コマンドを使用します。 VM が可用性ゾーン内にある場合は、VM と同じゾーンで、ディスクが自動的に作成されます。 詳細については、[可用性ゾーンの概要](../../availability-zones/az-overview.md)に関するページをご覧ください。 次の例では、*myDataDisk* という名前の、*50* GB のディスクを作成します。
+VM に新しい空のデータ ディスクを追加する場合は、`--new` パラメーターを指定して [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) コマンドを使用します。 VM が可用性ゾーン内にある場合は、VM と同じゾーンで、ディスクが自動的に作成されます。 詳細については、[可用性ゾーンの概要](../../availability-zones/az-overview.md)に関するページをご覧ください。 次の例では、*myDataDisk* という名前で、サイズが 50 GB のディスクを作成します。
 
 ```azurecli
-az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
-  --new --size-gb 50
+az vm disk attach \
+   -g myResourceGroup \
+   --vm-name myVM \
+   --disk myDataDisk \
+   --new \
+   --size-gb 50
 ```
 
-### <a name="attach-an-existing-disk"></a>既存のディスクの接続 
-多くの場合は、 既に作成されているディスクを接続します。 既存のディスクを接続するには、ディスク ID を探し、[az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) コマンドに渡します。 次の例では、*myResourceGroup* 内の *myDataDisk* という名前のディスクにクエリを実行し、それを *myVM* という名前の VM に接続します。
+## <a name="attach-an-existing-disk"></a>既存のディスクの接続 
+
+既存のディスクを接続するには、ディスク ID を探し、[az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) コマンドに渡します。 次の例では、*myResourceGroup* 内の *myDataDisk* という名前のディスクにクエリを実行し、それを *myVM* という名前の VM に接続します。
 
 ```azurecli
-# find the disk id
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
+
 az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
-```
-
-出力は次のようになります (どのコマンドにも `-o table` オプションを使用して、出力の形式を設定できます)。
-
-```json
-{
-  "accountType": "Standard_LRS",
-  "creationData": {
-    "createOption": "Empty",
-    "imageReference": null,
-    "sourceResourceId": null,
-    "sourceUri": null,
-    "storageAccountId": null
-  },
-  "diskSizeGb": 50,
-  "encryptionSettings": null,
-  "id": "/subscriptions/<guid>/resourceGroups/rasquill-script/providers/Microsoft.Compute/disks/myDataDisk",
-  "location": "westus",
-  "name": "myDataDisk",
-  "osType": null,
-  "ownerId": null,
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "tags": null,
-  "timeCreated": "2017-02-02T23:35:47.708082+00:00",
-  "type": "Microsoft.Compute/disks"
-}
-```
-
-
-## <a name="use-unmanaged-disks"></a>非管理対象ディスクの使用
-非管理対象ディスクでは、基になるストレージ アカウントの作成および管理に追加のオーバーヘッドが必要です。 非管理対象ディスクは、お使いの OS ディスクと同じストレージ アカウントに作成されます。 非管理対象ディスクを作成して接続するには、[az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk?view=azure-cli-latest#az_vm_unmanaged_disk_attach) コマンドを使用します。 次の例では、*50* GB の非管理対象ディスクを、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に接続します。
-
-```azurecli
-az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
-  --new --size-gb 50
 ```
 
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Linux VM を接続して新しいディスクをマウントする
-Linux VM から使用できるように新しいディスクのパーティション分割、フォーマット、マウントを行うには、SSH で Azure VM に接続します。 詳細については、[Azure 上の Linux における SSH の使用方法](mac-create-ssh-keys.md)に関するページをご覧ください。 次の例では、パブリック DNS エントリ *mypublicdns.westus.cloudapp.azure.com* を持つ VM に、ユーザー名 *azureuser* で接続します。 
+Linux VM から使用できるように新しいディスクのパーティション分割、フォーマット、マウントを行うには、SSH で VM に接続します。 詳細については、[Azure 上の Linux における SSH の使用方法](mac-create-ssh-keys.md)に関するページをご覧ください。 次の例では、パブリック DNS エントリ *mypublicdns.westus.cloudapp.azure.com* を持つ VM に、ユーザー名 *azureuser* で接続します。 
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
@@ -114,7 +79,7 @@ dmesg | grep SCSI
 sudo fdisk /dev/sdc
 ```
 
-出力は次の例のようになります。
+`n` コマンドを使用して新しいパーティションを追加します。 この例では、プライマリ パーティションのために `p` も選択し、残りの既定値はそのまま使用します。 出力は次の例のようになります。
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -136,7 +101,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-次のようにプロンプトで「`p`」と入力して、パーティションを作成します。
+`p` を入力してパーティション テーブルを出力し、次に `w` を使用してテーブルをディスクに書き込んで終了します。 出力は次の例のようになります。
 
 ```bash
 Command (m for help): p
@@ -204,7 +169,7 @@ sudo mount /dev/sdc1 /datadrive
 再起動後にドライブを自動的に再マウントするために、そのドライブを */etc/fstab* ファイルに追加する必要があります。 ドライブを参照する際に、デバイス名 (*/dev/sdc1* など) だけでなく、UUID (汎用一意識別子) を */etc/fstab* で使用することもお勧めします。 UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされるのを防ぐことができます。 その後、残りのデータ ディスクは、その同じデバイス ID に割り当てられます。 新しいドライブの UUID を確認するには、`blkid` ユーティリティを使用します。
 
 ```bash
-sudo -i blkid
+sudo blkid
 ```
 
 出力は次の例のようになります。
@@ -265,7 +230,6 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>次の手順
-* 新しいディスクは、 [fstab](http://en.wikipedia.org/wiki/Fstab) ファイルにその情報を書き込まない限り、再起動しても VM で使用できないことに注意してください。
 * [Linux マシンのパフォーマンスの最適化](optimization.md) に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
 * ディスクを追加してストレージ容量を拡張し、 [RAID を構成](configure-raid.md) してパフォーマンスを強化します。
 

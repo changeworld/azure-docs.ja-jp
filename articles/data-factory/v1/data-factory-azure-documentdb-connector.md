@@ -10,23 +10,24 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 996fdd9934d79f1640e58c7853564ac05ebb90bb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f3ebd704129aabecffdaa2589b8b086803a2d092
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046604"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Cosmos DB との間でのデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-azure-documentdb-connector.md)
-> * [バージョン 2 - プレビュー](../connector-azure-cosmos-db.md)
+> * [Version 1](data-factory-azure-documentdb-connector.md)
+> * [バージョン 2 (現在のバージョン)](../connector-azure-cosmos-db.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Azure Cosmos DB のコネクタ](../connector-azure-cosmos-db.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Azure Cosmos DB コネクタ](../connector-azure-cosmos-db.md)に関するページを参照してください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Cosmos DB (SQL API) との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
 
@@ -59,7 +60,7 @@ JSON ファイルまたは他の Cosmos DB コレクションとの間でデー�
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
-| 型 |type プロパティを **DocumentDB** |[はい] |
+| type |type プロパティを **DocumentDB** |[はい] |
 | connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 |[はい] |
 
 例:

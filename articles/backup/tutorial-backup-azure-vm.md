@@ -1,26 +1,21 @@
 ---
-title: Azure での Azure VM の大規模なバックアップ | Microsoft Docs
+title: Azure での Azure VM の大規模なバックアップ
 description: このチュートリアルでは、複数の Azure 仮想マシンを Recovery Services コンテナーにバックアップする方法について説明します。
 services: backup
-documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
-editor: ''
 keywords: 仮想マシン バックアップ; 仮想マシンのバックアップ; バックアップとディザスター リカバリー
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/06/2017
-ms.author: trinadhk;jimpark;markgal;
+ms.author: trinadhk
 ms.custom: mvc
-ms.openlocfilehash: 62cc623dc3130119c5ec803933012c5545d703e5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d2b83963f7af52101ed298e85b6c7fd64fc99a07
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875588"
 ---
 # <a name="back-up-azure-virtual-machines-in-azure-at-scale"></a>Azure での Azure 仮想マシンの大規模なバックアップ
 

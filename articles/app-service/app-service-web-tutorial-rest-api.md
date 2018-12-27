@@ -1,31 +1,32 @@
 ---
-title: "Azure App Service での RESTful API と CORS | Microsoft Docs"
-description: "Azure App Service で CORS サポートを使用して RESTful API をホストする方法について説明します。"
+title: CORS を使用して RESTful API をホストする - Azure App Service | Microsoft Docs
+description: Azure App Service で CORS サポートを使用して RESTful API をホストする方法について説明します。
 services: app-service\api
 documentationcenter: dotnet
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 02/28/2018
+ms.date: 11/21/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 7420e92bc929808f074e9be00dfbcb7d8476654a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.custom: seodec18
+ms.openlocfilehash: b22ea49367009a4c76135d979d783c5b73449d9d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261570"
 ---
-# <a name="host-a-restful-api-with-cors-in-azure-app-service"></a>Azure App Service で CORS を使用して RESTful API をホストする
+# <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする
 
 [Azure App Service](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、App Service には、RESTful API 用の[クロスオリジン リソース共有 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) の組み込みサポートがあります。 このチュートリアルでは、CORS サポートを使用して ASP.NET Core API アプリを App Service にデプロイする方法について説明します。 コマンドライン ツールを使用してアプリを構成し、Git を使用してアプリをデプロイします。 
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure CLI を使用して App Service リソースを作成する
@@ -167,13 +168,16 @@ dotnet run
 
 ### <a name="enable-cors"></a>CORS を有効にする 
 
-Cloud Shell で [`az resource update`](/cli/azure/resource#az_resource_update) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _&lt;appname>_ プレースホルダーを置き換えます。
+Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _&lt;appname>_ プレースホルダーを置き換えます。
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01
 ```
 
 `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) で 2 つ以上のクライアント URL を設定できます。 また、`"['*']"` を使用して、すべてのクライアント URL を有効にすることもできます。
+
+> [!NOTE]
+> Cookie や認証トークンなどの資格情報をアプリで送信する必要がある場合、ブラウザーは、応答に `ACCESS-CONTROL-ALLOW-CREDENTIALS` ヘッダーを必要とします。 App Service でこれを有効にする場合は、CORS の構成で `properties.cors.supportCredentials` を `true` に設定してください。`allowedOrigins` に `'*'` が含まれているときに、これを有効にすることはできません。
 
 ### <a name="test-cors-again"></a>CORS をもう一度テストする
 
@@ -204,7 +208,7 @@ App Service CORS ではなく独自の CORS ユーティリティを使用して
 > * Git を使用して RESTful API を Azure にデプロイする
 > * App Service の CORS サポートを有効にする
 
-次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
+次のチュートリアルに進み、ユーザーを認証および承認する方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)
+> [チュートリアル: エンドツーエンドでのユーザーの認証と承認](app-service-web-tutorial-auth-aad.md)

@@ -1,21 +1,21 @@
 ---
-title: Azure Site Recovery を使用した Azure へのフェールオーバー後に接続する IP アドレス指定の設定 | Microsoft Docs
-description: Azure Site Recovery を使用したオンプレミスからのフェールオーバー後に、Azure VM へ接続する IP アドレス指定の設定方法を説明します
+title: Azure Site Recovery を使用したディザスター リカバリーと Azure へのフェールオーバー後に接続する IP アドレス指定の設定 | Microsoft Docs
+description: Azure Site Recovery を使用したディザスター リカバリーとオンプレミスからのフェールオーバー後に、Azure VM へ接続する IP アドレス指定の設定方法を説明します
 services: site-recovery
-documentationcenter: ''
-author: mayanknayar
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/24/2018
-ms.author: manayar
-ms.openlocfilehash: e74ad30ea8c4be994c1c67735ee91ef8c033b9b3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: c05a97dc5a5fe9a0e8a6f1a8598ff82fcf488ab2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253280"
 ---
-# <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Azure へのフェールオーバー後に接続する IP アドレス指定を設定する
+# <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための IP アドレス指定を設定する
 
 この記事では、Azure へのレプリケーションとフェールオーバーのために [Azure Site Recovery](site-recovery-overview.md) サービスを使用した後、Azure VM に接続するためのネットワーク要件について説明します。
 
@@ -81,7 +81,7 @@ Woodgrove が IP アドレスを維持したまま VM を Azure にレプリケ�
 
 ## <a name="assigning-new-ip-addresses"></a>新しい IP アドレスの割り当て
 
-フェールオーバー後に IP アドレスを保持する必要がない場合の Azure ネットワーク インフラストラクチャの設定方法については、こちらの[ブログ記事](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)を参照してください。 アプリケーションの説明から始まり、オンプレミスと Azure でのネットワークの設定方法を説明し、最後にフェールオーバーの実行に関する情報が示されています。
+フェールオーバー後に IP アドレスを保持する必要がない場合の Azure ネットワーク インフラストラクチャの設定方法については、こちらの[ブログ記事](https://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)を参照してください。 アプリケーションの説明から始まり、オンプレミスと Azure でのネットワークの設定方法を説明し、最後にフェールオーバーの実行に関する情報が示されています。
 
 ## <a name="next-steps"></a>次の手順
 [フェールオーバーの実行](site-recovery-failover.md)

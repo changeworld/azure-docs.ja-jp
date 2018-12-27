@@ -2,22 +2,18 @@
 title: Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理 | Microsoft Docs
 description: China Cloud、Government Cloud、および German Cloud でのAzure PowerShell を使用したストレージの管理
 services: storage
-documentationcenter: na
 author: roygara
-manager: jeconnoc
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.openlocfilehash: 31b36e6fb6a1ebf09c559b2777ffa5f554c3cfa0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: 75a3dcb5aeb3e30da570eb57d0d1495710624e54
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140975"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理
 
@@ -39,7 +35,7 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-[Get-AzureEnvironment](/powershell/module/azure/Get-AzureRmEnvironment) コマンドレットを実行し、使用できる Azure 環境を確認します。
+[Get-AzureRmEnvironment](/powershell/module/servicemanagement/azurerm.profile/get-azurermenvironment) コマンドレットを実行し、使用できる Azure 環境を確認します。
    
 ```powershell
 Get-AzureRmEnvironment
@@ -48,7 +44,7 @@ Get-AzureRmEnvironment
 接続するクラウドにアクセスできるアカウントにサインインし、環境を設定します。 次の例は、Azure Government Cloud を使用するアカウントにサインインする方法を示しています。   
 
 ```powershell
-Login-AzureRmAccount –Environment AzureUSGovernment
+Connect-AzureRmAccount –Environment AzureUSGovernment
 ```
 
 China Cloud にアクセスするには、**AzureChinaCloud** 環境を使用します。 German Cloud にアクセスするには、**AzureGermanCloud** を使用します。
@@ -61,7 +57,7 @@ Get-AzureRmLocation | select Location, DisplayName
 
 次の表は、German Cloud に対して返される場所を示しています。
 
-|場所 | DisplayName |
+|Location | DisplayName |
 |----|----|
 | germanycentral | ドイツ中部|
 | germanynortheast | ドイツ北東部 | 
@@ -85,11 +81,10 @@ Get-AzureRmEnvironment | select Name, StorageEndpointSuffix
 
 | Name| StorageEndpointSuffix|
 |----|----|
-|AzureChinaCloud | core.chinacloudapi.cn|
+| AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
 | AzureGermanCloud | core.cloudapi.de|
-| AzureUSGovernment | core.usgov.cloudapi.net |
-
+| AzureUSGovernment | core.usgovcloudapi.net |
 
 指定した環境のすべてのプロパティを取得するには、**Get AzureRmEnvironment** を呼び出してクラウドの名前を指定します。 次のコード スニペットは、プロパティの一覧を返します。一覧から **StorageEndpointSuffix** を探します。 次の例は German Cloud に対するものです。
 

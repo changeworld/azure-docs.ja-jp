@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/03/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: Thomas.Roettinger
-ms.openlocfilehash: 34b03cf1fda29706936968ab93cb35a6a2510c65
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0516ee7a8319b85765280b4c84f5febec8343ada
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965617"
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>Azure Stack の物理メモリ容量を管理する
 
@@ -32,7 +33,7 @@ Azure Stack に関して使用可能な総メモリ容量を増やすために�
 
 次のフロー図は、各スケール ユニット ノードにメモリを増設するための一般的なプロセスを示しています。
 
-![個々のスケール ユニット ノードにメモリを増設](media\azure-stack-manage-storage-physical-capacity\process-to-add-memory-to-scale-unit.png)
+![個々のスケール ユニット ノードにメモリを増設](media/azure-stack-manage-storage-physical-capacity/process-to-add-memory-to-scale-unit.png)
 
 ## <a name="add-memory-to-an-existing-node"></a>既存のノードへのメモリの増設
 次の手順は、メモリの増設プロセスの概要を示しています。 

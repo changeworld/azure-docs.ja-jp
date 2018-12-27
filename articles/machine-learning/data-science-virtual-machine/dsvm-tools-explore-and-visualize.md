@@ -6,20 +6,21 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: a89c51ae5b4b0c9d58aed04515042ed8b08dcce6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c83c9929019e6e236ead783c0c617e51523a5a8a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567385"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンの、データの探索と視覚化のツール。
 
@@ -59,7 +60,7 @@ ms.lasthandoff: 03/28/2018
 |    |           |
 | ------------- | ------------- |
 | 紹介   | 対話型データ視覚化と BI ツール    |
-| サポートされている DSVM バージョン      | Windows  |
+| サポートされている DSVM バージョン      |  Windows  |
 | 一般的な用途      |  データ視覚化とダッシュボード構築   |
 | 使用/実行方法      | デスクトップ ショートカット (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、Juno      |

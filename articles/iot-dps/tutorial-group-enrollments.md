@@ -1,22 +1,21 @@
 ---
-title: "シミュレートされた X.509 デバイスを Java と登録グループを使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs"
-description: "Azure チュートリアル - シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングします。"
-services: iot-dps
-keywords: 
-author: msebolt
-ms.author: v-masebo
+title: シミュレートされた X.509 デバイスを Java と登録グループを使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs
+description: Azure チュートリアル - シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングします。
+author: wesmc7777
+ms.author: wesmc
 ms.date: 01/04/2018
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 2f1ae92c05e02dffa22fb2c64c6c076a0adfc176
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6447061e79946abf8070daf29eeb57bad7b6fa55
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184969"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
 
@@ -27,13 +26,13 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="prepare-the-environment"></a>環境の準備 
 
-1. [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) がマシンにインストールされていることを確認します。
+1. [Java SE Development Kit 8](https://aka.ms/azure-jdks) がマシンにインストールされていることを確認します。
 
 1. [Maven](https://maven.apache.org/install.html) をダウンロードし、インストールします。
 
 1. マシンに `git` がインストールされ、コマンド ウィンドウからアクセスできる環境変数に追加されていることを確認します。 **Git Bash** (ローカル Git リポジトリと対話する際に使用するコマンドライン アプリ) など、インストールする各種 `git` ツールの最新バージョンについては、[Software Freedom Conservancy の Git クライアント ツール](https://git-scm.com/download/)に関するページを参照してください。 
 
-1. [こちらの証明書の概要](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)に従ってテスト証明書を作成します。 さらに詳しい証明書の作成方法については、「[CA が署名した X.509 証明書を管理する PowerShell スクリプト](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates)」を参照してください。
+1. [こちらの証明書の概要](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)に従ってテスト証明書を作成します。
 
     > [!NOTE]
     > この手順には [OpenSSL](https://www.openssl.org/) が必要です。OpenSSL をソースからビルドしてインストールするか、または[サード パーティ](https://wiki.openssl.org/index.php/Binaries) ([例](https://sourceforge.net/projects/openssl/)) からダウンロードしてインストールしてください。 "_ルート証明書_"、"_中間証明機関の証明書_"、"_デバイス証明書_" が既にある場合は、この手順を省略してかまいません。
@@ -50,20 +49,20 @@ ms.lasthandoff: 03/02/2018
             - 先ほど作成した **_RootCA.pem_** ファイルを選択します。
             - 作業が完了したら、**[保存]** をクリックします。
 
-        ![証明書を追加する](./media/tutorial-group-enrollments/add-certificate.png)
+           ![証明書を追加する](./media/tutorial-group-enrollments/add-certificate.png)
 
         1. 新しく作成された証明書を選択します。
             - **[確認コードを生成します]** をクリックします。 生成されたコードをコピーします。
             - 確認の手順を実行します。 "_確認コード_" を入力するか、または右クリックして実行中の PowerShell ウィンドウに貼り付けます。  **Enter** キーを押します。
             - 新しく作成した **_verifyCert4.pem_** ファイルを Azure Portal で選択します。 **[確認]** をクリックします。
 
-            ![証明書を検証する](./media/tutorial-group-enrollments/validate-certificate.png)
+              ![証明書を検証する](./media/tutorial-group-enrollments/validate-certificate.png)
 
     1. 最後に、デバイス証明書を作成し、リソースをクリーンアップする手順を実行します。
 
-    > [!NOTE]
-    > デバイス証明書を作成するとき、デバイス名には必ず小文字の英数字とハイフンだけを使ってください。
-    >
+       > [!NOTE]
+       > デバイス証明書を作成するとき、デバイス名には必ず小文字の英数字とハイフンだけを使ってください。
+       >
 
 
 ## <a name="create-a-device-enrollment-entry"></a>デバイス登録エントリを作成する

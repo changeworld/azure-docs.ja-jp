@@ -1,7 +1,7 @@
 Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で利用できます。 毎月 25,000 通の無料電子メールにより、高度なレポートおよび分析と [すべての API][all APIs] (Web、SMTP、イベント、解析など) を利用できるようになります。 SendGrid の提供するその他のサービスについては、[SendGrid のソリューション][SendGrid Solutions]に関するページにアクセスしてください。
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid アカウントにサインアップするには
-1. [Azure Portal][Azure portal] にログインします。
+1. [Azure Portal][Azure portal] にサインインします。
 2. 左側のメニューで、**[リソースの作成]** をクリックします。
 
     ![command-bar-new][command-bar-new]
@@ -38,7 +38,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
     SendGrid を使用して電子メールを送信するには、API キーを指定する必要があります。
 
 ### <a name="to-find-your-sendgrid-api-key"></a>SendGrid API キーを確認するには
-1. **[Manage]**をクリックします。
+1. **Manage**をクリックします。
 
     ![manage][manage]
 2. SendGrid のダッシュボードの左側のメニューで、**[設定]**、**[API キー]** の順に選択します。
@@ -59,11 +59,11 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
     ![key][key]
 2. パスワードは、セットアップ時に選択したものです。 変更するには、**[パスワードの変更]** または **[パスワードのリセット]** を選択します。
 
-電子メール配信を管理するには、**[Manage]** ボタンをクリックします。 これで、SendGrid のダッシュボードにリダイレクトされます。
+電子メール配信を管理するには、**管理** ボタンをクリックします。 これで、SendGrid のダッシュボードにリダイレクトされます。
 
-    ![manage][manage]
+![manage][manage]
 
-    For more information on sending email through SendGrid, visit the [Email API Overview][Email API Overview].
+SendGrid 経由での電子メールの送信の詳細については、[電子メール API の概要][Email API Overview]に関するページを参照してください。
 
 <!--images-->
 

@@ -1,24 +1,26 @@
 ---
-title: "AzCopy を使用して Azure Blob Storage 間でデータを移動する | Microsoft Docs"
-description: "AzCopy を使用して Azure BLOB ストレージ間でデータを移動する"
+title: AzCopy を使用して Azure Blob Storage 間でデータを移動する | Microsoft Docs
+description: AzCopy を使用して Azure BLOB ストレージ間でデータを移動する
 services: machine-learning,storage
-documentationcenter: 
-author: bradsev
-manager: jhubbard
+documentationcenter: ''
+author: deguhath
+manager: cgronlun
 editor: cgronlun
 ms.assetid: c309ceb2-0e83-4a07-b16d-c997dcd62d5c
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 928d579da0cb469fd714b8a456a64917158d8ebc
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: deguhath
+ms.openlocfilehash: 41e89aab65b19e22ad6f8fe0d3087c4e7f5430ab
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393406"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>AzCopy を使用して Azure Blob Storage 間でデータを移動する
 AzCopy は、Microsoft Azure の BLOB、ファイル、テーブル ストレージとの間でデータをアップロード、ダウンロード、コピーすることを目的としたコマンド ライン ユーティリティです。

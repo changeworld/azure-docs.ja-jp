@@ -1,26 +1,20 @@
 ---
-title: 発行済みアプリケーションのインストール - Datameer - Azure HDInsight | Microsoft Docs
+title: 発行済みアプリケーションのインストール - Datameer - Azure HDInsight
 description: Datameer サードパーティ Hadoop アプリケーションをインストールして使用します。
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 4b83f2a2228ef0dd7fa56b5a71b267d1e4302620
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 377dbadd7b696e62d8464258d22d0dd5ed926208
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106105"
 ---
 # <a name="install-published-application---cask-data-application-platform-cdap"></a>発行済みアプリケーションのインストール - Cask Data Application Platform (CDAP)
 
@@ -76,7 +70,7 @@ CDAP には [Cask Tracker](http://cask.co/products/tracker/) と呼ばれる拡�
 
 3. 入力を求められたら、クラスターの管理者資格情報を入力します。
 
-    ![認証](./media/hdinsight-apps-install-cask/auth.png)
+    ![Authentication](./media/hdinsight-apps-install-cask/auth.png)
 
 4. サインイン後、Cask CDAP GUI ホーム ページが表示されます。
 

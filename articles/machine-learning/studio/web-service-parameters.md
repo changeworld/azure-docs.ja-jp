@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 520427b99c05fcbc8125bdbde7d8eb56e7487292
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 91b3c9df8a7fd0e1abb79c21b1e1d833e57c24d5
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835928"
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Azure Machine Learning Web サービスのパラメーターの使用
 Azure Machine Learning Web サービスは、変更可能なパラメーターを持つモジュールを含む実験を発行すると作成されます。 状況によっては、Web サービスの実行中にモジュールの動作変更が必要になる場合がありますが、 *Web サービスのパラメーター*を使えばこのタスクを実行できます。 
@@ -49,11 +51,11 @@ Web サービスの API ドキュメントには、Web サービス アクセス
 1. Machine Learning Studio で[データのエクスポート][writer] モジュールをクリックして選択します。 実験キャンバスの右側の [プロパティ] ウィンドウにプロパティが表示されます。
 2. ストレージの種類を指定します。
    
-   * **[Please specify data destination]**で [Azure Blob Storage] を選択します。
-   * **[Please specify authentication type]**の下の [アカウント] を選択します。
+   * **[Please specify data destination]** で [Azure Blob Storage] を選択します。
+   * **[Please specify authentication type]** の下の [アカウント] を選択します。
    * Azure BLOB ストレージのアカウント情報を入力します。 
-     <p />
-3. [Path to blob beginning with container parameter] \(コンテナー パラメーターから始まる BLOB のパス\) **の右にあるアイコンをクリックします**。 次のように表示されています。
+
+3. **[Path to blob beginning with container parameter]** の右にあるアイコンをクリックします。 次のように表示されています。
    
    ![Web サービスのパラメーター アイコン][icon]
    
@@ -64,7 +66,7 @@ Web サービスの API ドキュメントには、Web サービス アクセス
 5. Web サービスのパラメーターの既定値を指定するには、名前の右側にあるアイコンをクリックして、[Provide default value] を選択して値を入力し (たとえば 「container1/output1.csv」)、 **Enter** キーを押します。
    
    ![Web サービスのパラメーター][parameter]
-6. **[実行]**をクリックします。 
+6. **[実行]** をクリックします。 
 7. **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic] \(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New] \(Web サービスのデプロイ [新規])]** を選択して、Web サービスをデプロイします。
 
 > [!NOTE] 

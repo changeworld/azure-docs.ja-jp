@@ -1,25 +1,21 @@
 ---
-title: "SQL Data Warehouse へのソリューションの移行 | Microsoft Docs"
-description: "Azure SQL Data Warehouse プラットフォームにソリューションを組み込むための移行ガイダンス。"
+title: SQL Data Warehouse へのソリューションの移行 | Microsoft Docs
+description: Azure SQL Data Warehouse プラットフォームにソリューションを組み込むための移行ガイダンス。
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: 198365eb-7451-4222-b99c-d1d9ef687f1b
+author: jrowlandjones
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: migrate
-ms.date: 06/27/2017
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 771b9456e66b8a1e41f72340b695b19e2adaf793
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: b3e01968c74060bd0dc366609275d63753ad62dd
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306708"
 ---
 # <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse にソリューションを移行する
 既存のデータベース ソリューションを Azure SQL Data Warehouse に移行するときに行うことについて説明します。 
@@ -66,7 +62,7 @@ ms.lasthandoff: 10/11/2017
 
 -->
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 CAT (Customer Advisory Team) には、ブログを通じて発行する SQL Data Warehouse の優れたガイダンスもあります。  移行に関するその他のガイダンスについては、「[Migrating data to Azure SQL Data Warehouse in practice][Migrating data to Azure SQL Data Warehouse in practice]」(Azure SQL Data Warehouse へのデータの実践移行) の記事を参照してください。
 
 <!--Image references-->

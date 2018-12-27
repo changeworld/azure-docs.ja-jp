@@ -1,25 +1,26 @@
 ---
-title: "Service Fabric CLI スクリプト サンプル - クラスター上のアプリケーションを列挙する"
-description: "Service Fabric CLI スクリプト サンプル - Service Fabric クラスターにプロビジョニングされているアプリケーションを列挙します。"
+title: Service Fabric CLI スクリプト サンプル - クラスター上のアプリケーションを列挙する
+description: Service Fabric CLI スクリプト サンプル - Service Fabric クラスターにプロビジョニングされているアプリケーションを列挙します。
 services: service-fabric
-documentationcenter: 
-author: Thraka
+documentationcenter: ''
+author: TylerMSFT
 manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
-ms.topic: article
-ms.date: 12/06/2017
-ms.author: adegeo
-ms.custom: 
-ms.openlocfilehash: f764c36bcc4905224242cbdf1602d7482e52efac
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.topic: sample
+ms.date: 04/13/2018
+ms.author: twhitney
+ms.custom: ''
+ms.openlocfilehash: bea88460ecaa093a0719d627e3608fd1d530727b
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070200"
 ---
 # <a name="list-applications-running-in-a-service-fabric-cluster"></a>Service Fabric クラスターで実行されているアプリケーションを列挙する
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 12/08/2017
 
 [!code-sh[main](../../../cli_scripts/service-fabric/list-application/list-application.sh "List provisioned applications from a cluster")]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 詳細については、[Service Fabric CLI ドキュメント](../service-fabric-cli.md)をご覧ください。
 

@@ -10,25 +10,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 1e85d5f48ce998ebaf4ccaa231bb75449e2bab16
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 417425a6982ca92e486ccfb578131ebc898a0466
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046090"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 の PowerShell サンプル](../samples-powershell.md)に関するページと [Azure コード サンプル ギャラリーのコード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-factory)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory の PowerShell サンプル](../samples-powershell.md)に関するページと [Azure コード サンプル ギャラリーのコード サンプル](https://azure.microsoft.com/resources/samples/?service=data-factory)をご覧ください。
 
 
 ## <a name="samples-on-github"></a>GitHub のサンプル
 [GitHub の Azure-DataFactory リポジトリ](https://github.com/azure/azure-datafactory) には、Azure Data Factory サービスを迅速に導入sしたり、スクリプトを変更して独自のアプリケーションで使用したりするのに役立ついくつかのサンプルがあります。 Samples\JSON フォルダーには、一般的なシナリオ用の JSON スニペットが含まれています。
 
-| サンプル | [説明] |
+| サンプル | 説明 |
 |:--- |:--- |
 | [ADF チュートリアル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |このサンプルでは、Azure Data Factory を使用したログ ファイルの処理によってログ ファイルのデータから知見を得る方法をエンドツーエンドでわかりやすく解説します。 <br/><br/>このチュートリアルでは、Data Factory パイプラインでサンプル ログを収集、処理します。ログから得たデータを参照データで補強し、そのデータを変換することによって、最近開始されたマーケティング キャンペーンの有効性を評価します。 |
 | [JSON のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |一般的なシナリオにおける JSON の使用例を紹介したサンプルです。 |
@@ -48,7 +49,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレートがあります。
 
-| テンプレート | [説明] |
+| テンプレート | 説明 |
 | --- | --- |
 | [Azure Blob Storage から Azure SQL Database にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |このテンプレートをデプロイすると、指定した Azure Blob Storage から Azure SQL Database にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |
 | [Salesforce から Azure Blob Storage にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |このテンプレートをデプロイすると、指定した Salesforce アカウントから Azure Blob Storage にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |
@@ -100,7 +101,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
     ![Data Factory Templates dialog box](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
 4. **[Data Factory Configuration]** (Data Factory の構成) ダイアログの **[Data Factory Basics]** (Data Factory の基本) ページで **[次へ]** をクリックします。
 5. **[Configure data factory]** (データ ファクトリの構成) ページで、次の手順を行います。
-   1. **[Create New Data Factory]** (Data Factory の新規作成) を選択します。 **[既存のデータ ファクトリを使用する]**を選択することもできます。
+   1. **[Create New Data Factory]** (Data Factory の新規作成) を選択します。 **[既存のデータ ファクトリを使用する]** を選択することもできます。
    2. データ ファクトリの **名前** を入力します。
    3. データ ファクトリを作成する **Azure サブスクリプション** を選択します。
    4. データ ファクトリの **リソース グループ** を選択します。
@@ -110,7 +111,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 7. **[コンピューティングの構成]** ページで、既定値を選択し、**[次へ]** をクリックします。
 8. **[概要]** ページで、すべての設定を確認し、**[次へ]** をクリックします。
 9. **[Deployment Status]** (デプロイ ステータス) ページで、デプロイが完了するまで待ってから **[完了]** をクリックします。
-10. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]**をクリックします。
+10. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]** をクリックします。
 11. **[Microsoft アカウントへのサインイン]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、**[サインイン]** をクリックします。
 12. 次のダイアログ ボックスが表示されます。
 

@@ -1,6 +1,6 @@
 ---
-title: "ARP テーブルの取得: クラシック: Azure ExpressRoute のトラブルシューティング | Microsoft Docs"
-description: "このページでは、ExpressRoute 回線の ARP テーブルを取得する手順について説明します。"
+title: 'ARP テーブルの取得: クラシック: Azure ExpressRoute のトラブルシューティング | Microsoft Docs'
+description: このページでは、ExpressRoute 回線の ARP テーブルを取得する手順について説明します。
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23013167"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>クラシック デプロイメント モデルでの ARP テーブルの取得
 > [!div class="op_single_selector"]

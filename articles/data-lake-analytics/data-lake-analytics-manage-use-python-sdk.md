@@ -1,33 +1,31 @@
 ---
-title: Python を使用して Azure Data Lake Analytics を管理する | Microsoft Docs
-description: 'Python を使用して Data Lake Store アカウントを作成し、ジョブを送信する方法について説明します。 '
+title: Python を使用して Azure Data Lake Analytics を管理する
+description: この記事では、Python を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、ジョブを管理する方法について説明します。
 services: data-lake-analytics
-documentationcenter: ''
-author: matt1883
-manager: jhubbard
-editor: cgronlun
-ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/18/2017
+author: matt1883
 ms.author: saveenr
-ms.custom: devcenter
-ms.openlocfilehash: 0182a14979550c880904ec829f6b59dee016cad2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.reviewer: jasonwhowell
+ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
+ms.topic: conceptual
+ms.date: 06/08/2018
+ms.openlocfilehash: f73ef118efbdfc94d8cb9b7d81717bd13511c785
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048284"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python を使用して Azure Data Lake Analytics を管理する
+[!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-## <a name="python-versions"></a>Python のバージョン
+この記事では、Python を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、ジョブを管理する方法について説明します。
+
+## <a name="supported-python-versions"></a>サポートされている Python のバージョン
 
 * Python の 64 ビット バージョンを使用します。
-*  **[Python.org ダウンロード](https://www.python.org/downloads/)**にある標準の Python ディストリビューションを使用できます。 
-* 多くの開発者は、 **[Anaconda Python ディストリビューション](https://www.continuum.io/downloads)**を使用すると便利なことがわかります。  
+* **[Python.org ダウンロード](https://www.python.org/downloads/)** にある標準の Python ディストリビューションを使用できます。 
+* 多くの開発者は、 **[Anaconda Python ディストリビューション](https://www.anaconda.com/download/)** を使用すると便利なことがわかります。  
 * この資料は、標準の Python ディストリビューションからの Python バージョン 3.6 を使用して作成されました。
 
 ## <a name="install-azure-python-sdk"></a>Azure Python SDK をインストールする
@@ -35,9 +33,9 @@ ms.lasthandoff: 04/05/2018
 次のモジュールをインストールします。
 
 * **azure-mgmt-resource** モジュールには、Active Directory 用のその他の Azure モジュールなどが含まれています。
-* **azure-mgmt-datalake-store** モジュールには、Azure Data Lake Store アカウント管理操作が含まれています。
 * **azure-datalake-store** モジュールには、Azure Data Lake Store ファイル システム操作が含まれています。 
-* **azure-datalake-analytics** モジュールには、Azure Data Lake Analytics 操作が含まれています。 
+* **azure-mgmt-datalake-store** モジュールには、Azure Data Lake Store アカウント管理操作が含まれています。
+* **azure-mgmt-datalake-analytics** モジュールには、Azure Data Lake Analytics 操作が含まれています。 
 
 最初に、次のコマンドを実行して最新の `pip` があることを確認します。
 
@@ -95,7 +93,7 @@ import logging, getpass, pprint, uuid, time
 
 このスクリプトを実行して、モジュールをインポートできることを確認します。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>ポップアップを使用した対話型ユーザー認証
 

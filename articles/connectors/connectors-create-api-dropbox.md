@@ -1,25 +1,22 @@
 ---
-title: Azure Logic Apps での Dropbox コネクタ | Microsoft Docs
-description: Azure App Service を使用してロジック アプリを作成します。 Dropbox に接続してファイルを管理します。 Dropbox のファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。
-services: logic-apps
-documentationcenter: .net,nodejs,java
+title: Dropbox に接続する - Azure Logic Apps | Microsoft Docs
+description: Dropbox REST API と Azure Logic Apps を使用して、ファイルをアップロードおよび管理します
 author: ecfan
-manager: anneta
-editor: ''
-tags: connectors
-ms.assetid: cb0ae033-aba7-4ac9-beaa-be561a0f0cac
-ms.service: logic-apps
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: jeconnoc
+ms.author: estfan
 ms.date: 07/15/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 7ac72cf5b18fa19bc0294abc67bf0a7089774a89
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 256a0b34d5050e17abe5bb98ca0c13ab0b61787e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094440"
 ---
 # <a name="get-started-with-the-dropbox-connector"></a>Dropbox コネクタの使用
 Dropbox に接続してファイルを管理します。 Dropbox のファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。
@@ -27,7 +24,7 @@ Dropbox に接続してファイルを管理します。 Dropbox のファイル
 [任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)から始めることができます。
 
 ## <a name="connect-to-dropbox"></a>Dropbox に接続する
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの*接続*を作成する必要があります。 接続により、ロジック アプリと別のサービスとの接続が実現します。 たとえば、Dropbox に接続するには、最初に Dropbox "*接続*" を作成する必要があります。 接続を作成するには、接続先のサービスへのアクセスに通常使用する資格情報を入力する必要があります。 たとえば、Dropbox の場合は、Dropbox への接続を作成するために Dropbox アカウントの資格情報が必要になります。 接続の詳細については、[こちら]()をご覧ください。
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの*接続*を作成する必要があります。 接続により、ロジック アプリと別のサービスとの接続が実現します。 たとえば、Dropbox に接続するには、最初に Dropbox "*接続*" を作成する必要があります。 接続を作成するには、接続先のサービスへのアクセスに通常使用する資格情報を入力する必要があります。 たとえば、Dropbox の場合は、Dropbox への接続を作成するために Dropbox アカウントの資格情報が必要になります。 
 
 ### <a name="create-a-connection-to-dropbox"></a>Dropbox への接続を作成する
 > [!INCLUDE [Steps to create a connection to Dropbox](../../includes/connectors-create-api-dropbox.md)]
@@ -51,7 +48,7 @@ Dropbox に接続してファイルを管理します。 Dropbox のファイル
 
 1. **[+ 新しいステップ]** を選択し、新しいファイルの作成時に実行するアクションを追加します。  
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action.PNG)
-2. **[アクションの追加]**を選択します。 これにより検索ボックスが開き、行う操作について検索できます。  
+2. **[アクションの追加]** を選択します。 これにより検索ボックスが開き、行う操作について検索できます。  
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-2.PNG)
 3. 「*dropbox*」と入力して、Dropbox に関連するアクションを検索します。  
 4. 選択した Dropbox フォルダーに新しいファイルが作成されたときに実行するアクションとして、**[Dropbox - Get file content using path (Dropbox - パスを使用してファイルの内容を取得する)]** を選択します。 アクションの制御ブロックが表示されます。 ロジック アプリによる Dropbox アカウントへのアクセスをまだ承認していない場合は、承認を求められます。  

@@ -1,21 +1,19 @@
 ---
-title: Azure Site Recovery を使用した保護の対象からディスクを除外する | Microsoft Docs
-description: VMware から Azure へのレプリケーションで VM ディスクを除外する理由とその方法を説明します。
-services: site-recovery
+title: Azure Site Recovery を使用した VMware の Azure へのディザスター リカバリーのレプリケーションからディスクを除外する | Microsoft Docs
+description: VMware の Azure へのディザスター リカバリーのレプリケーションから VM ディスクを除外する理由とその方法を説明します。
 author: nsoneji
-manager: garavd
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
-ms.topic: article
-ms.date: 03/05/2018
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 71d49ee07c0ccc7641941aea4f688b9700c39a57
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8e5fd094e453088dab83c1967bc0733f91a2b98
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210588"
 ---
-# <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>VMware から Azure へのレプリケーションでディスクを除外するシナリオ
+# <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>VMware VM の Azure へのレプリケーションからディスクを除外する
 
 この記事では、VMware VM を Azure にレプリケートするときにディスクを除外する方法について説明します。 除外することにより、レプリケーションによる帯域幅の消費や、このようなディスクによって使用されるターゲット側のリソースを最適化できます。 Hyper-V 用のディスクを除外する方法については、[こちらの記事](hyper-v-exclude-disk.md)を参照してください。
 
@@ -52,7 +50,7 @@ Azure Site Recovery ポータルで[レプリケーションを有効にする](
 
 >[!NOTE]
 >
-> * 除外できるのは、モビリティ サービスが既にインストールされているディスクだけです。 モビリティ サービスは手動でインストールする必要があります (モビリティ サービスのインストールは、レプリケーションを有効にした後に、必ずプッシュ機構を使用して行う必要があるため)。
+> * 除外できるのは、既にモビリティ サービスがインストールされている VM 上のディスクだけです。 モビリティ サービスは手動でインストールする必要があります (モビリティ サービスのインストールは、レプリケーションを有効にした後に、必ずプッシュ機構を使用して行う必要があるため)。
 > * レプリケーションから除外できるのは、ベーシック ディスクだけです。 オペレーティング システム ディスクまたはダイナミック ディスクは除外できません。
 > * レプリケーションを有効にした後は、レプリケートするディスクを追加または削除することはできません。 ディスクを追加または除外する場合は、マシンの保護を無効にし、再度有効にする必要があります。
 > * アプリケーションが動作するために必要なディスクを除外した場合、Azure へのフェールオーバー後、レプリケートされたアプリケーションを実行できるように、Azure でディスクを手動で作成する必要があります。 別の方法として、Azure Automation を復旧計画に組み込んで、マシンのフェールオーバー時にディスクを作成することもできます。

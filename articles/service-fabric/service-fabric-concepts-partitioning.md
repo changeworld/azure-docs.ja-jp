@@ -1,24 +1,25 @@
 ---
-title: "Service Fabric サービスのパーティション分割 | Microsoft Docs"
-description: "Service Fabric ステートフル サービスのパーティションの分割方法について説明します。 パーティション分割により、ローカル コンピューターにデータを保管し、データとコンピューティングのスケールを同時に調整できるようになります。"
+title: Service Fabric サービスのパーティション分割 | Microsoft Docs
+description: Service Fabric ステートフル サービスのパーティションの分割方法について説明します。 パーティション分割により、ローカル コンピューターにデータを保管し、データとコンピューティングのスケールを同時に調整できるようになります。
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 3c1e80305cb65f41a6981b99f69e8b87f89599ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae7eba9997c4f567eb7b07e23ab42c9ac7740698
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388111"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
@@ -361,9 +362,12 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     
     ![ブラウザーのスクリーン ショット](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-サンプルの完全なソース コードについては、 [Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)を参照してください。
+サンプルの完全なソース コードについては、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services および Reliable Actor によるサブプロセスのフォーク
+Service Fabric では、Reliable Services とそれに続く Reliable Actor によるサブプロセスのフォークはサポートされていません。 これがサポートされない理由は、サブプロセスを登録するために [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) を使用することができないこと、およびキャンセル トークンが登録済みのプロセスにのみ送信されることにあります。その結果、親プロセスがキャンセル トークンを受け取った後にサブプロセスが終了しない場合、アップグレードの失敗など、あらゆる種類の問題が発生します。 
+
+## <a name="next-steps"></a>次の手順
 Service Fabric の概念についての詳細は、次を参照してください。
 
 * [Service Fabric サービスの可用性](service-fabric-availability-services.md)

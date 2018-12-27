@@ -1,24 +1,26 @@
 ---
-title: "Azure 上の T-SQL と Python を使用した SQL Data Warehouse データ サイエンスのチュートリアル | Microsoft Docs"
-description: "SQL Data Warehouse を使用して予測分析を行う例を紹介します。"
+title: Azure 上の T-SQL と Python を使用した SQL Data Warehouse データ サイエンスのチュートリアル | Microsoft Docs
+description: SQL Data Warehouse を使用して予測分析を行う例を紹介します。
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: jhubbard
+documentationcenter: ''
+author: deguhath
+manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 745701b571a6cfa93798d7536ddb9d28ab45ea73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: deguhath
+ms.openlocfilehash: 9fcc4f9c8a3adc6443ea99606758a00ef8cc2e77
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392745"
 ---
 # <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Azure 上の T-SQL と Python を使用した SQL Data Warehouse データ サイエンスのチュートリアル
 
@@ -32,7 +34,7 @@ Team Data Science Process を実行するデータ サイエンスのチュー�
 [SQL Data Warehouse の使用](sqldw-walkthrough.md)に関するチュートリアルでは、SQL Data Warehouse (SQL DW) と公開されている NYC タクシー乗車および料金データセットを使用して、機械学習の分類および回帰モデルの構築とデプロイを行う方法を説明します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process を構成する主な要素については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Site Recovery によるセカンダリ VMware サイトへの VMware VM または物理サーバーのレプリケーションのサポート マトリックス | Microsoft Docs
-description: Azure Site Recovery によるセカンダリ サイトへの VMware/物理サーバーのレプリケーションのサポートのまとめ
-services: site-recovery
+title: Azure Site Recovery を使用した VMware VM または物理サーバーのセカンダリ VMware サイトへのディザスター リカバリーのサポート マトリックス | Microsoft Docs
+description: Azure Site Recovery を使用して VMware VM および物理サーバーをセカンダリ サイトにディザスター リカバリーする場合のサポートについてまとめています。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: b51a4573ad7a8461b7261f08d94639d2030492d9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 7e86757f42a90de971155137b44d1a8ad9cc9ac1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847917"
 ---
-# <a name="support-matrix-for-replication-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>セカンダリ サイトへの VMware VM と物理サーバーのレプリケーションのサポート マトリックス
+# <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM および物理サーバーのセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
-この記事は、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、VMware VM または Windows/Linux 物理サーバーをセカンダリの VMware サイトにレプリケートする際のサポートについてまとめてあります。
+この記事では、VMware VM または Windows/Linux 物理サーバーをセカンダリ VMware サイトにディザスター リカバリーするために、[Azure Site Recovery](site-recovery-overview.md) サービスを使用する際のサポートについてまとめています。
 
 - VMware VM または物理サーバーを Azure にレプリケートする場合は、[このサポート マトリックス](vmware-physical-azure-support-matrix.md)を確認してください。
 - Hyper-V VM をセカンダリ サイトにレプリケートする場合は、[このサポート マトリックス](hyper-v-azure-support-matrix.md)を確認してください。
@@ -39,7 +39,7 @@ vCenter サーバー | vCenter 5.5、6.0、6.5<br/><br/> 6.0 または 6.5 を�
 **オペレーティング システム** | **詳細**
 --- | ---
 Windows Server | 64 ビット Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。
-Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6.5、6.6、6.7、6.8、6.9、7.0、7.1、7.2 <br/><br/> Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5、6.8 <br/><br/> SUSE Linux Enterprise Server 11 SP3、11 SP4 
+ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6.5、6.6、6.7、6.8、6.9、7.0、7.1、7.2 <br/><br/> Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5、6.8 <br/><br/> SUSE Linux Enterprise Server 11 SP3、11 SP4 
 
 
 ## <a name="linux-machine-storage"></a>Linux マシンのストレージ
@@ -111,7 +111,7 @@ RDM | [はい]
 
 **Update** | **詳細** 
 --- | --- 
-Scout 更新プログラム | 最新の Scout 更新プログラムの[詳細とダウンロード](/vmware-physical-secondary-disaster-recovery.md#updates) | Scout 更新プログラムは累積的です。
+Scout 更新プログラム | 最新の Scout 更新プログラムの[詳細とダウンロード](vmware-physical-secondary-disaster-recovery.md#updates) | Scout 更新プログラムは累積的です。
 コンポーネント更新プログラム | Scout 更新プログラムには、RX サーバー、構成サーバー、プロセス サーバーとマスター ターゲット サーバー、vContinuum サーバー、および保護するソース サーバーを含む、すべてのコンポーネントの更新プログラムが含まれます。<br/><br/> [詳細情報](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。
 
 

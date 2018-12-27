@@ -3,23 +3,50 @@ title: Azure Storage でリージョン間持久性を実現する geo 冗長ス
 description: geo 冗長ストレージ (GRS) によって、何百キロも離れた 2 つのリージョン間でデータがレプリケートされます。 GRS は、データセンター内のハードウェア障害だけでなく地域の災害からも保護できます。
 services: storage
 author: tolandmike
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 10/20/2018
 ms.author: jeking
-ms.openlocfilehash: 1aa3f1e948921a2f356b88e31ef1b9b0f408920a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: 85d69db2f94e4bddf1258233c34c64dcf78a3eeb
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219224"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>geo 冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション
+[!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
 
-[!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
+## <a name="read-access-geo-redundant-storage"></a>読み取りアクセス geo 冗長ストレージ
+読み取りアクセス geo 冗長ストレージ (RA-GRS) は、ストレージ アカウントの可用性を最大化します。 RA-GRS は、2 つのリージョンにまたがる geo レプリケーションだけでなく、セカンダリ ロケーションにあるデータに対する読み取り専用アクセスを提供します。
+
+セカンダリ リージョンのデータに対して読み取り専用アクセスを有効にすると、ご利用のストレージ アカウントのプライマリ エンドポイントだけでなく、セカンダリ エンドポイントのデータも使用できます。 セカンダリ エンドポイントはプライマリ エンドポイントと似ていますが、アカウント名に `–secondary` というサフィックスが追加されます。 たとえば、Blob service のプライマリ エンドポイントが `myaccount.blob.core.windows.net` の場合、セカンダリ エンドポイントは `myaccount-secondary.blob.core.windows.net` になります。 ストレージ アカウントのアクセス キーは、プライマリ エンドポイントとセカンダリ エンドポイントの両方で同じです。
+
+RA-GRS 使用時の考慮事項:
+
+* RA-GRS を使うときは、通信対象のエンドポイントをアプリケーションで管理する必要があります。
+* 非同期レプリケーションには遅延が伴うため、データをプライマリ リージョンから復旧できないと、セカンダリ リージョンにまだレプリケートされていない変更は失われる可能性があります。
+* ストレージ アカウントの最後の同期時刻を確認できます。 最後の同期時刻は、GMT 日付/時刻の値です。 最後の同期時刻より前にプライマリに対して書き込まれたデータはすべて、セカンダリ ロケーションに対して正常に書き込まれています。つまり、これらのデータは、セカンダリ ロケーションから読み取ることができます。 最後の同期時刻より後にプライマリに対して書き込まれたデータに関しては、読み取りできる場合とできない場合とがあります。 この値を、[Azure Portal](https://portal.azure.com/)、[Azure PowerShell](storage-powershell-guide-full.md)、または Azure Storage クライアント ライブラリの 1 つを使用して、クエリできます。
+* Microsoft がセカンダリ リージョンへのフェールオーバーを開始した場合、フェールオーバーの完了後、そのデータへの読み取り/書き込みアクセスができるようになります。 詳細については、[ディザスター リカバリーのガイダンス](storage-disaster-recovery-guidance.md)に関するページを参照してください。
+* セカンダリ リージョンに切り替える方法については、「[Azure Storage の停止が発生した場合の対処方法](storage-disaster-recovery-guidance.md)」を参照してください。
+* RA-GRS は高可用性を目的として作られています。 スケーラビリティのガイダンスについては、[パフォーマンス チェックリスト](storage-performance-checklist.md)をご覧ください。
+* RA-GRS を使用して高可用性を確保するためのお勧めの設計方法については、「[RA-GRS を使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md)」を参照してください。
+
+## <a name="what-is-the-rpo-and-rto-with-grs"></a>GRS の RPO や RTO とは何ですか。
+**Recovery Point Objective (RPO: 目標復旧ポイント):** GRS と RA-GRS のストレージ サービスでは、データがプライマリ ロケーションからセカンダリ ロケーションに非同期的に geo レプリケートされます。 プライマリ リージョンで大規模な地域災害が発生した場合、Microsoft はセカンダリ リージョンに対してフェールオーバーを実行します。 フェールオーバーが発生した場合、geo レプリケートされていない最近の変更が失われる可能性があります。 データが失われる可能性がある分数は、RPO と呼ばれます。 RPO は、データを復旧できる対象の時点を示します。 現在、geo レプリケーションの所要時間を規定する SLA はありませんが、Azure Storage では RPO を 15 分未満とするのが一般的です。
+
+**Recovery Time Objective (RTO: 目標復旧時間):** RTO は、フェールオーバーを実行してストレージ アカウントをオンラインに戻すまでにかかる時間の指標です。 フェールオーバーの所要時間には、次のアクションが含まれます。
+
+   * プライマリ ロケーションでデータを復旧できるか、あるいはフェールオーバーが必要かどうかを、Microsoft が決定するまでに要する時間
+   * プライマリ DNS エントリの参照先をセカンダリ ロケーションに変更することで、ストレージ アカウントのフェールオーバーを実行する時間
+
+Microsoft にはお客様のデータを保持する重大な責任があります。 プライマリ リージョンでデータを復旧できる可能性があれば、Microsoft はフェールオーバーを遅らせ、お客様のデータを復旧することに注力します。 
+
+## <a name="paired-regions"></a>ペアになっているリージョン 
+ストレージ アカウントの作成時に、アカウントのプライマリ リージョンを選択します。 ペアのセカンダリ リージョンはプライマリ リージョンに基づいて決定され、変更することはできません。 Azure でサポートされているリージョンに関する最新の情報については、[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
-
 - [Azure Storage のレプリケーション](storage-redundancy.md)
 - [ローカル冗長ストレージ (LRS): Azure Storage の低コストのデータ冗長性](storage-redundancy-lrs.md)
 - [ゾーン冗長化ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)

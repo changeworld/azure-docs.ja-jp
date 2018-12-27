@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 5ec3bff505d2c887269b20c5fa4d0363a3040c1a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164584"
+---
 <!--author=alkohli last changed: 01/12/17-->
 
 ### <a name="to-take-a-backup"></a>バックアップを作成するには

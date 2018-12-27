@@ -1,26 +1,20 @@
 ---
-title: "HDInsight .NET SDK を使用して MapReduce ジョブを送信する - Azure | Microsoft Docs"
-description: "HDInsight .NET SDK を使用して、MapReduce ジョブを Azure HDInsight Hadoop に送信する方法について説明します。"
-editor: cgronlun
-manager: jhubbard
+title: HDInsight .NET SDK を使用して MapReduce ジョブを送信する - Azure
+description: HDInsight .NET SDK を使用して、MapReduce ジョブを Azure HDInsight 上の Apache Hadoop に送信する方法について説明します。
+ms.reviewer: jasonh
 services: hdinsight
-documentationcenter: 
-tags: azure-portal
-author: mumian
-ms.assetid: c85e44b0-85fd-4185-ad1c-c34a9fe5ef44
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: e967c6df89722492554998dc21e09388b7b7cdf2
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: hrasheed
+ms.openlocfilehash: a93d504af925c0082c1141c8f291c4325620428f
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632902"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを実行する
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
@@ -180,6 +174,6 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 * Hive ジョブの送信については、「[HDInsight .NET SDK を使用した Hive クエリの実行](apache-hadoop-use-hive-dotnet-sdk.md)」を参照してください。
 * HDInsight クラスターの作成については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 * HDInsight クラスターの管理については、[HDInsight での Hadoop クラスターの管理](../hdinsight-administer-use-portal-linux.md)に関するページを参照してください。
-* HDInsight .NET SDK の詳細については、[HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx)を参照してください。
+* HDInsight .NET SDK の詳細については、[HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)を参照してください。
 * 非対話型認証については、「[非対話型認証 .NET HDInsight アプリケーションを作成する](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)」を参照してください。
 

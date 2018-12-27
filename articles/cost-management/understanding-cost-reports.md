@@ -1,22 +1,23 @@
 ---
-title: Azure Cost Management のコスト管理レポートについて | Microsoft Docs
+title: Azure での Cloudyn コスト管理レポートの概要 | Microsoft Docs
 description: この記事では、Cloudyn コスト管理レポートの基本的なしくみと機能について説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/07/2018
-ms.topic: article
+ms.date: 09/18/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
+manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: bc2c696dceb3ed4741c10a5c611bd2d438b71bd5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e4d4c2115ddae592e9ca7bdf119b36d0ccee2da4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998714"
 ---
-# <a name="understanding-cost-management-reports"></a>コスト管理レポートについて
+# <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn コスト管理レポートの概要
 
 この記事では、Cloudyn コスト管理レポートの基本的なしくみと機能について説明します。 ほとんどの Cloudyn レポートは、直感的で、統一感のある外観になっています。 この記事を読むと、すべてのコスト管理レポートを利用できるようになります。 標準機能の多くは各種レポートで使用できるため、レポート間を簡単に移動できます。 レポートはカスタマイズ可能で、いくつかのオプションから計算や結果の表示方法を選択できます。
 
@@ -175,6 +176,10 @@ ms.lasthandoff: 03/23/2018
 
     [アクション] を使用して、レポートを保存、エクスポート、またはスケジュールします。
 
+15. **ポリシー**
+
+    表示されていませんが、一部のレポートには、予測されるコスト計算ポリシーが含まれます。 そのようなレポートでは、**[Consolidated]\(統合\)** ポリシーに、Microsoft 加入契約または AWS 支払人など、現在のエンティティのすべてのアカウントとサブスクリプションのレコメンデーションが表示されます。 **[スタンドアロン]** ポリシーには、他のサブスクリプションが存在しないかのように、1 つのアカウントまたはサブスクリプションのレコメンデーションが表示されます。 選択するポリシーは、組織で使用されている最適化ポリシーによって異なります。 コストのプロジェクションは、過去 30 日間の使用状況に基づいています。
+
 ## <a name="save-and-schedule-reports"></a>レポートの保存とスケジュール
 
 レポートを作成したら、今後の使用のためにレポートを保存できます。 保存したレポートは、**[My Tools]\(マイ ツール\)** > **[個人用レポート]** から使用できます。 既存のレポートに変更を加えて保存した場合、レポートは新しいバージョンとして保存されます。 なお、新規のレポートとして保存することもできます。
@@ -198,4 +203,5 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="next-steps"></a>次の手順
 
-- Cost Management の最初のチュートリアルをまだ完了していない場合は、「[使用状況とコストを確認する](tutorial-review-usage.md)」をご覧ください。
+- Cloudyn に含まれるレポートについては、「[Cloudyn レポートの使用](use-reports.md)」を参照してください。
+- レポートを使用して[ダッシュボード](dashboards.md)を作成する方法について学びます。

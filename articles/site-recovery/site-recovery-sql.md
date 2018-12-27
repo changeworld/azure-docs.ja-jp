@@ -1,28 +1,23 @@
 ---
-title: "SQL Server および Azure Site Recovery を使用したアプリケーションのレプリケート | Microsoft Docs"
-description: "この記事では、SQL Server の災害機能の Azure Site Recovery を使用して、SQL Server をレプリケートする方法について説明します。"
+title: SQL Server と Azure Site Recovery を使用して SQL Server のディザスター リカバリーを設定する | Microsoft Docs
+description: この記事では、SQL Server と Azure Site Recovery を使用して、SQL Server のディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
-documentationcenter: 
-author: prateek9us
-manager: gauravd
-editor: 
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/13/2017
-ms.author: pratshar
-ms.openlocfilehash: 7981173b419632683a40a54bc07f51f0fccab531
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.topic: conceptual
+ms.date: 07/22/2018
+ms.author: sutalasi
+ms.openlocfilehash: 46f5f73293875cd89036eb615e7bd81188bc4c67
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210263"
 ---
-# <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>SQL Server ディザスター リカバリーおよび Azure Site Recovery を使用した SQL Server の保護
+# <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server のためにディザスター リカバリーを設定する 
 
-この記事では、SQL Server のビジネス継続性とディザスター リカバリー (BCDR) テクノロジおよび[Azure Site Recovery](site-recovery-overview.md) の組み合わせを使用してアプリケーションの SQL Server バックエンドを保護する方法について説明します。
+この記事では、SQL Server のビジネス継続性とディザスター リカバリー (BCDR) テクノロジおよび [Azure Site Recovery](site-recovery-overview.md) の組み合わせを使用してアプリケーションの SQL Server バックエンドを保護する方法について説明します。
 
 開始する前に、フェールオーバー クラスタリング、Always On 可用性グループ、データベース ミラーリング、ログ配布など、SQL Server ディザスター リカバリー機能についてよく理解してください。
 
@@ -77,7 +72,7 @@ Site Recovery は、次の表に要約したネイティブの SQL Server の BC
 
 | **バージョン** | **エディション** | **デプロイ** | **オンプレミスからオンプレミス** | **オンプレミスから Azure** |
 | --- | --- | --- | --- | --- |
-| SQL Server 2014 または 2012 |Enterprise |フェールオーバー クラスター インスタンス |Always On 可用性グループ |Always On 可用性グループ |
+| SQL Server 2016、2014、2012 のいずれか |Enterprise |フェールオーバー クラスター インスタンス |Always On 可用性グループ |Always On 可用性グループ |
 || Enterprise |高可用性のための Always On 可用性グループ |Always On 可用性グループ |Always On 可用性グループ | |
 || 標準 |フェールオーバー クラスター インスタンス (FCI) |ローカルのミラーを使用した Site Recovery レプリケーション |ローカルのミラーを使用した Site Recovery レプリケーション | |
 || Enterprise または Standard |スタンドアロン |Site Recovery レプリケーション |Site Recovery レプリケーション | |
@@ -89,7 +84,6 @@ Site Recovery は、次の表に要約したネイティブの SQL Server の BC
 
 * サポートされている SQL Server のバージョンを実行しているオンプレミスの SQL Server デプロイメント。 通常、SQL Server には Active Directory も必要です。
 * デプロイするシナリオの要件。 [Azure](site-recovery-support-matrix-to-azure.md) や [オンプレミス](site-recovery-support-matrix.md)へのレプリケーションのサポート要件と、[デプロイメントの前提条件](site-recovery-prereq.md)をよく理解します。
-* Azure で復旧を設定するには、[Azure 仮想マシン準備状態評価](http://www.microsoft.com/download/details.aspx?id=40898)ツールを SQL Server 仮想マシン上で実行し、SQL Server 仮想マシンに Azure および Site Recovery との互換性があることを確認します。
 
 ## <a name="set-up-active-directory"></a>Active Directory のセットアップ
 

@@ -9,16 +9,17 @@ editor: ''
 ms.assetid: f406eac9-7271-4c37-a0d3-0a2957b60537
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: a3d0770d3b9c8702dbe4dac86f86030bea4090c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: dac96ef6fce38a0557444e181fa6eccb649cfb9a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298337"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>複数の環境向けのアプリケーションの管理
 
@@ -41,16 +42,16 @@ Azure Service Fabric クラスターは、1 台から数千台のコンピュー
 
 > [!NOTE]
 > アプリケーションおよびサービスのマニフェスト ファイルの属性の中には、パラメーターをサポートしていないものがあります。
-> そのような場合は、展開ワークフローの一部として置換文字列に依存する必要があります。 Visual Studio Team Services では、置換トークン (https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens) のような拡張機能を使用することができます。また、Jenkins では、スクリプト タスクを実行して値を置き換えることができます。
+> そのような場合は、展開ワークフローの一部として置換文字列に依存する必要があります。 Azure DevOps では、置換トークン (https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens) のような拡張機能を使用することができます。また、Jenkins では、スクリプト タスクを実行して値を置き換えることができます。
 >
 
 ## <a name="specifying-parameters-during-application-creation"></a>アプリケーション作成時のパラメーターの指定
 
 Service Fabric で名前付きアプリケーション インスタンスを作成するときは、パラメーターで渡すことができます。 その方法は、アプリケーション インスタンスの作成方法によって異なります。
 
-  - PowerShell では、[`New-ServiceFabricApplication`](https://docs.microsoft.com/en-us/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットはハッシュテーブルとしてアプリケーション パラメーターを受け取ります。
-  - sfctl では、[`sfctl application create`](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) コマンドは JSON 文字列としてパラメーターを受け取ります。 install.sh スクリプトは sfctl を使います。
-  - Visual Studio では、アプリケーション プロジェクトの Parameters フォルダーにパラメーター ファイルのセットが用意されています。 これらのパラメーター ファイルは、Visual Studio Team Service または Team Foundation Server を使って、Visual Studio から発行するときに使われます。 Visual Studio では、パラメーター ファイルは Deploy-FabricApplication.ps1 スクリプトに渡されます。
+  - PowerShell では、[`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットはハッシュテーブルとしてアプリケーション パラメーターを受け取ります。
+  - sfctl では、[`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) コマンドは JSON 文字列としてパラメーターを受け取ります。 install.sh スクリプトは sfctl を使います。
+  - Visual Studio では、アプリケーション プロジェクトの Parameters フォルダーにパラメーター ファイルのセットが用意されています。 これらのパラメーター ファイルは、Azure DevOps Services または Team Foundation Server を使って、Visual Studio から発行するときに使われます。 Visual Studio では、パラメーター ファイルは Deploy-FabricApplication.ps1 スクリプトに渡されます。
 
 ## <a name="next-steps"></a>次の手順
 以下の記事では、ここで説明したいくつかの概念の使い方が説明されています。

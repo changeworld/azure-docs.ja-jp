@@ -1,24 +1,19 @@
 ---
-title: "Azure Search でファセット ナビゲーションを実装する方法 | Microsoft Docs"
-description: "Microsoft Azure のホスト型クラウド検索サービスである Azure Search と統合するアプリケーションにファセット ナビゲーションを追加します。"
-services: search
-documentationcenter: 
+title: Azure Search でファセット ナビゲーションを実装する方法 | Microsoft Docs
+description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search と統合するアプリケーションにファセット ナビゲーションを追加します。
 author: HeidiSteen
-manager: mblythe
-editor: 
-ms.assetid: cdf98fd4-63fd-4b50-b0b0-835cb08ad4d3
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: 413f498eeb0bbc9a971c7a65200ed2fd8caa9aaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e00e875619e4ed6800f5739362ff0c52971f6f16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195296"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Azure Search でファセット ナビゲーションを実装する方法
 ファセット ナビゲーションは、検索アプリケーションで自律型のドリルダウン ナビゲーションを提供するフィルター処理メカニズムです。 「ファセット ナビゲーション」という用語は聞き慣れないかもしれませんが、気づかずに使っていることもあります。 次の例に示すように、ファセット ナビゲーションは結果のフィルター処理に使用されるカテゴリです。
@@ -67,7 +62,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="query-basics"></a>クエリの基本
 
-Azure Search では、要求は 1 つまたは複数のクエリ パラメーターによって指定されます (個々の説明については「 [Search Documents (ドキュメントの検索)](http://msdn.microsoft.com/library/azure/dn798927.aspx) 」を参照してください)。 どのクエリ パラメーターも必須ではありませんが、クエリが有効であるためには少なくとも 1 つのクエリ パラメーターが必要です。
+Azure Search では、要求は 1 つまたは複数のクエリ パラメーターによって指定されます (個々の説明については「 [Search Documents (ドキュメントの検索)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 」を参照してください)。 どのクエリ パラメーターも必須ではありませんが、クエリが有効であるためには少なくとも 1 つのクエリ パラメーターが必要です。
 
 関係のないヒットを除外する能力として理解される正確さは、以下の式の一方または両方によって実現されます。
 
@@ -234,7 +229,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-ファセット クエリ パラメーターはフィールドに対して設定され、データの種類によっては、`count:<integer>`、`sort:<>`、`interval:<integer>`、および `values:<list>` を含むコンマ区切りリストによってさらにパラメーター化できます。 値リストは、範囲を設定するときに数値データに対してサポートされます。 使用方法の詳細については、「 [Search Documents (Azure Search API) (ドキュメントの検索 (Azure Search API))](http://msdn.microsoft.com/library/azure/dn798927.aspx) 」を参照してください。
+ファセット クエリ パラメーターはフィールドに対して設定され、データの種類によっては、`count:<integer>`、`sort:<>`、`interval:<integer>`、および `values:<list>` を含むコンマ区切りリストによってさらにパラメーター化できます。 値リストは、範囲を設定するときに数値データに対してサポートされます。 使用方法の詳細については、「 [Search Documents (Azure Search API) (ドキュメントの検索 (Azure Search API))](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 」を参照してください。
 
 アプリケーションで作成する要求では、ファセットだけでなく、ファセット値の選択に基づいて候補ドキュメントのセットを絞り込むフィルターも作成する必要があります。 自転車ストアの場合、ファセット ナビゲーションでは「*どのような色、製造元、および種類の自転車が手にはいるか*」のような質問への手掛かりが提供されます。 フィルター処理は、「*赤、マウンテン バイク、特定の価格範囲という条件を満たす自転車*」のような質問に回答します。 ユーザーが [Red] をクリックして赤い商品だけを表示するように指示すると、アプリケーションが送信する次のクエリには `$filter=Color eq ‘Red’` が含まれます。
 
@@ -335,7 +330,7 @@ if (businessTitleFacet != "")
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>範囲に基づくフィルター
-検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 範囲は、数値データおよび日時値に対してサポートされています。 各方法の詳細については、「 [Search Documents (Azure Search API) (ドキュメントの検索 (Azure Search API))](http://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
+検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 範囲は、数値データおよび日時値に対してサポートされています。 各方法の詳細については、「 [Search Documents (Azure Search API) (ドキュメントの検索 (Azure Search API))](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。
 
 Azure Search では、範囲を計算する 2 つの方法が提供されており、簡単に範囲を作成できます。 どちらの方法でも、ユーザーが提供する入力に基づいて Azure Search が適切な範囲を作成します。 たとえば、範囲の値として 10|20|30 を指定すると、自動的に 0-10、10-20、20-30 という範囲が作成されます。 アプリケーションでは、空の間隔が必要に応じて削除されます。 
 
@@ -368,7 +363,7 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 * **geo.distance** 関数は、2 つの点の間の距離を、キロメートル単位で返します。 1 つはフィールドで、もう 1 つはフィルターの一部として定数で渡されます。 
 * **geo.intersects** 関数は、指定された点が指定された多角形の内部にある場合は true を返します。 点はフィールドとして、多角形は座標の定数リストとして指定されて、フィルターの一部として渡されます。
 
-フィルターの例については、「 [Azure Search の OData 式の構文](http://msdn.microsoft.com/library/azure/dn798921.aspx)」を参照してください。
+フィルターの例については、「 [Azure Search の OData 式の構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)」を参照してください。
 
 <a name="tryitout"></a>
 
@@ -437,9 +432,9 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
 [Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
-[OData expression syntax (Azure Search)]: http://msdn.microsoft.com/library/azure/dn798921.aspx
+[OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
 [http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
 [Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
+[Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
 

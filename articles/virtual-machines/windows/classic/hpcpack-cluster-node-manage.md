@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30914937"
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターのコンピューティング ノードの数と可用性を管理する
 Azure VM で HPC Pack 2012 R2 クラスターを作成した場合に、クラスターでいくつかの計算ノード VM を簡単に追加、削除、起動 (プロビジョニング)、または停止 (プロビジョニング解除) できる方法があれば便利です。 そのような作業を行うには、ヘッド ノード VM にインストールされている Azure PowerShell スクリプトを実行します。 これらのスクリプトを利用すれば、HPC Pack クラスター リソースの数と可用性を制御し、コストを管理できます。

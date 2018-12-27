@@ -1,36 +1,37 @@
 ---
-title: "Azure Notification Hubs と Node.js でのプッシュ通知の送信"
-description: "Notification Hubs を使用して Node.js アプリケーションからプッシュ通知を送信する方法について説明します。"
+title: Azure Notification Hubs と Node.js でのプッシュ通知の送信
+description: Notification Hubs を使用して Node.js アプリケーションからプッシュ通知を送信する方法について説明します。
 keywords: push notification,push notifications,node.js push,ios push
 services: notification-hubs
 documentationcenter: nodejs
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: yuaxu
-ms.openlocfilehash: ff2dd0c2ededa3664c48b5ff77b05466fceb4b3f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 8e4c97a710cc9e6d3af4ebdd7dc97bda9f8d02ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228438"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 > [!IMPORTANT]
-> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)を参照してください。
+> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)を参照してください。
 > 
 > 
 
-このガイドでは、Azure Notification Hubs を使用して、Node.js アプリケーションから直接プッシュ通知を送信する方法を説明します。 
+このガイドでは、Azure Notification Hubs を使用して Node.js アプリケーションから直接プッシュ通知を送信する方法を示します。 
 
 ここで扱うシナリオでは、次のプラットフォーム上のアプリケーションにプッシュ通知を送信します。
 
@@ -42,10 +43,10 @@ ms.lasthandoff: 12/12/2017
 通知ハブの詳細については、「 [次のステップ](#next) 」のセクションを参照してください。
 
 ## <a name="what-are-notification-hubs"></a>Notification Hubs とは
-Azure Notification Hubs によって、モバイル デバイスにプッシュ通知を送信するための、使いやすくスケーラブルなマルチプラットフォーム インフラストラクチャが提供されます。 サービス インフラストラクチャの詳細については、「 [Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) 」のページを参照してください。
+Azure Notification Hubs によって、モバイル デバイスにプッシュ通知を送信するための、使いやすくスケーラブルなマルチプラットフォーム インフラストラクチャが提供されます。 サービス インフラストラクチャの詳細については、「 [Azure Notification Hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) 」のページを参照してください。
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-このチュートリアルの最初の手順では、新しい空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][nodejswebsite]、[Node.js クラウド サービス][Node.js Cloud Service] (Windows PowerShell の使用)、または [WebMatrix を使用した Web サイト]に関する各ページをご覧ください。
+このチュートリアルの最初の手順では、新しい空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][nodejswebsite]、[Node.js クラウド サービス][Node.js Cloud Service] (Windows PowerShell の使用)、または [WebMatrix を使用した Web サイト][webmatrix]に関する各ページをご覧ください。
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>アプリケーションを構成して Notification Hubs を使用する
 Azure Notification Hubs を使用するには、Node.js [azure パッケージ](https://www.npmjs.com/package/azure)をダウンロードして使用する必要があります。このパッケージには、プッシュ通知 REST サービスと通信するためのヘルパー ライブラリの組み込みのセットが含まれています。
@@ -65,17 +66,17 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 
     var azure = require('azure');
 
-### <a name="setup-an-azure-notification-hub-connection"></a>Azure Notification Hub 接続の設定
-**NotificationHubService** オブジェクトを使用すると、通知ハブを操作できます。 次のコードは、**hubname** という名前の通知ハブのための **NotificationHubService** オブジェクトを作成します。 **server.js** ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
+### <a name="set-up-an-azure-notification-hub-connection"></a>Azure Notification Hub の接続を設定する
+**NotificationHubService** オブジェクトを使用すると、通知ハブを操作できます。 次のコードは、**hubname** という名前の通知ハブ用の **NotificationHubService** オブジェクトを作成します。 **server.js** ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-接続 **connectionstring** の値は、[Azure Portal] で次の手順を実行して取得できます。
+接続 **connectionstring** の値は、次の手順を実行することによって [Azure Portal] から取得できます。
 
-1. 左のナビゲーション ウィンドウで、 **[参照]**をクリックします。
-2. **[Notification Hubs]**を選択し、サンプルとして使用するハブを見つけます。 新しい通知ハブの作成については、 [Windows ストアの使用に関するチュートリアル](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) を参照することができます。
-3. **[設定]**を選択します。
-4. **[アクセス ポリシー]**をクリックします。 共有接続文字列とフル アクセス接続文字列の両方が表示されます。
+1. 左のナビゲーション ウィンドウで、 **[参照]** をクリックします。
+2. **[Notification Hubs]** を選択し、サンプルとして使用するハブを見つけます。 新しい通知ハブの作成については、 [Windows ストアの使用に関するチュートリアル](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) を参照することができます。
+3. **[設定]** を選択します。
+4. **[アクセス ポリシー]** をクリックします。 共有接続文字列とフル アクセス接続文字列の両方が表示されます。
 
 ![Azure Portal - Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
@@ -140,11 +141,11 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 * **Tags** - タグ識別子。 タグが指定されない場合、通知はすべてのクライアントに送信されます。
 * **Payload** - メッセージの XML ペイロード。
 * **TargetName** -  トースト通知の場合は `toast`。 `token` 。
-* **NotificationClass** - 通知の優先度。 有効な値については、「 **Push notifications from a server (サーバーからのプッシュ通知)** 」の「 [HTTP Header Elements](http://msdn.microsoft.com/library/hh221551.aspx) (HTTP ヘッダー要素)」のセクションを参照してください。
+* **NotificationClass** - 通知の優先度。 有効な値については、「 **Push notifications from a server (サーバーからのプッシュ通知)** 」の「 [HTTP Header Elements](https://msdn.microsoft.com/library/hh221551.aspx) (HTTP ヘッダー要素)」のセクションを参照してください。
 * **Options** - 省略可能な要求ヘッダー。
 * **Callback** - コールバック関数。
 
-有効な **TargetName**、**NotificationClass**、ヘッダー オプションについては、「[Push notifications from a server (サーバーからのプッシュ通知)](http://msdn.microsoft.com/library/hh221551.aspx)」を参照してください。
+有効な **TargetName**、**NotificationClass**、ヘッダー オプションについては、「[Push notifications from a server (サーバーからのプッシュ通知)](https://msdn.microsoft.com/library/hh221551.aspx)」を参照してください。
 
 次のサンプル コードは、**NotificationHubService** によって公開されている **MpnsService** インスタンスを使用して、トースト プッシュ通知を送信します。
 
@@ -164,7 +165,7 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 * **Options** - 省略可能な要求ヘッダー。
 * **Callback** - コールバック関数。
 
-有効なタイプと要求ヘッダーの一覧については、「 [プッシュ通知サービスの要求ヘッダーと応答ヘッダー](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx)」を参照してください。
+有効なタイプと要求ヘッダーの一覧については、「 [プッシュ通知サービスの要求ヘッダーと応答ヘッダー](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)」を参照してください。
 
 次のコードは、**NotificationHubService** によって公開されている **WnsService** インスタンスを使用して、UWP アプリケーションにトースト プッシュ通知を送信します。
 
@@ -175,7 +176,7 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
       }
     });
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 上記のサンプル スニペットを使用すると、さまざまなデバイスにプッシュ通知を提供するサービス インフラストラクチャを簡単に構築できます。 これで、node.js による Notification Hubs の使用の基本を学習できました。さらに次のリンクを使用して、これらの機能を拡張する方法の詳細を学習してください。
 
 * MSDN リファレンス: [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx)
@@ -204,10 +205,11 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
 [SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
-[WebMatrix を使用した Web サイト]: /develop/nodejs/tutorials/web-site-with-webmatrix/
+[Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-[nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
+[nodejswebsite]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs
+[webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure Portal]: https://portal.azure.com

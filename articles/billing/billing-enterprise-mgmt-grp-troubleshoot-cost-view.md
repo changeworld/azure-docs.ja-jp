@@ -1,26 +1,27 @@
 ---
-title: "エンタープライズ コスト表示のトラブルシューティング - Azure | Microsoft Docs"
-description: "Azure Portal で組織のコストを表示するときに発生しうる問題を解決する方法を説明します。"
+title: Azure エンタープライズのコスト表示のトラブルシューティング | Microsoft Docs
+description: Azure Portal で組織のコストを表示するときに発生しうる問題を解決する方法を説明します。
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/22/2017
-ms.author: rithorn
-ms.openlocfilehash: 54c7610f1a0d3de2503ef471ca9adc0db423f530
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.author: cwatson
+ms.openlocfilehash: 853307f24574e6cea5841bcace815fea2bbcf2c8
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47390666"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>エンタープライズ コスト表示のトラブルシューティング 
 
-エンタープライズ加入契約では、多くの設定において登録ユーザーがコストを表示できません。  これらの設定を管理するのは、登録管理者、または Microsoft と直接加入契約をしていない場合はパートナーです。  この記事では、設定の概要と、設定が登録に与える影響について説明します。 これらの設定は、[Azure RBAC ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)には依存しません。 
+エンタープライズ加入契約では、多くの設定において登録ユーザーがコストを表示できません。  これらの設定を管理するのは、登録管理者、または Microsoft と直接加入契約をしていない場合はパートナーです。  この記事では、設定の概要と、設定が登録に与える影響について説明します。 これらの設定は、[Azure RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)には依存しません。 
 
 
 ## <a name="enabling-access-to-costs"></a>コストへのアクセスを有効にする
@@ -44,4 +45,4 @@ ms.lasthandoff: 02/23/2018
 ![asset-not-found](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 アクセスを付与してもらうには、サブスクリプションまたは管理グループの管理者に問い合わせてください。  
-* サブスクリプションの場合、[Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) に関するドキュメントをお読みになり、必要なロールの判断に役立ててください。
+* サブスクリプションの場合、[Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) に関するドキュメントをお読みになり、必要なロールの判断に役立ててください。

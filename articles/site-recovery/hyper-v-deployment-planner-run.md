@@ -1,23 +1,22 @@
 ---
-title: "Hyper-V から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs"
-description: "この記事では、Hyper-V から Azure に移動する場合の Azure Site Recovery Deployment Planner の実行モードについて説明します。"
-services: site-recovery
+title: Hyper-V の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する | Microsoft Docs
+description: この記事では、Hyper-V の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する方法について説明します。
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: ae539f136578c6461ef7f680d553fbd76b10ae98
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 1df8f7025787eb864b7e9ad6f41105df8fb2cc8a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213340"
 ---
-# <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Azure Site Recovery Deployment Planner の実行 (Hyper-V から Azure)
+# <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Hyper-V の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する
 
-## <a name="modes-of-running-the-deployment-planner"></a>Deployment Planner の実行モード
-このコマンドライン ツール (ASRDeploymentPlanner.exe) は、次の 4 とおりのモードで実行できます。 
+Site Recovery Deployment Planner のコマンドライン ツール (ASRDeploymentPlanner.exe) は、次の 4 つのモードのいずれかで実行できます。 
 -   [仮想マシン (VM) の一覧の取得](#get-vm-list-for-profiling-hyper-v-vms)
 -   [プロファイル](#profile-hyper-v-vms)
 -   [レポートの生成](#generate-report)
@@ -35,18 +34,18 @@ ms.lasthandoff: 02/22/2018
 ```
 ASRDeploymentPlanner.exe -Operation GetVMList /?
 ```
-| パラメーター名 | [説明] |
+| パラメーター名 | 説明 |
 |---|---|
 | -Operation | GetVMList |
 | -User | Hyper-V ホストまたは Hyper-V クラスターに接続するためのユーザー名。 ユーザーには管理アクセス権が必要です。|
-|-ServerListFile | プロファイリングの対象 VM を含むサーバーのリストが記述されたファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 このファイルの各行には、次のいずれかの情報が記述されている必要があります。<ul><li>Hyper-V ホストの名前または IP アドレス</li><li>Hyper-V クラスターの名前または IP アドレス</li></ul><br>**例:** ServerList.txt に次のサーバーを記述します。<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
+| -ServerListFile | プロファイリングの対象 VM を含むサーバーのリストが記述されたファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 このファイルの各行には、次のいずれかの情報が記述されている必要があります。<ul><li>Hyper-V ホストの名前または IP アドレス</li><li>Hyper-V クラスターの名前または IP アドレス</li></ul><br>**例:** ServerList.txt に次のサーバーを記述します。<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
 | -Directory|(省略可) この操作の実行中に生成されたデータの格納先となる UNC (汎用名前付け規則) パスまたはローカル ディレクトリ パス。 名前を指定しなかった場合、現在のパス下の ProfiledData という名前のディレクトリが既定のディレクトリとして使用されます。|
 |-OutputFile| (省略可) Hyper-V サーバーからフェッチされた VM のリストが保存されるファイル。 名前を指定しなかった場合は、VMList.txt に詳細が保存されます。  このファイルを使用してプロファイリングを開始します。プロファイリングする必要のない VM は、あらかじめファイルから削除してください。|
 |-Password|(省略可) Hyper-V ホストに接続するためのパスワード。 パラメーターとして指定しない場合は、コマンドの実行時に指定を求めるメッセージが表示されます。|
 
 ### <a name="getvmlist-discovery"></a>GetVMList の検出
-**Hyper-V クラスター**: サーバー リスト ファイルに Hyper-V クラスターの名前を指定した場合、該当するクラスターからすべての Hyper-V ノードが検出され、その各 Hyper-V ホストに存在する VM が取得されます。
 
+- **Hyper-V クラスター**: サーバー リスト ファイルに Hyper-V クラスターの名前を指定した場合、該当するクラスターからすべての Hyper-V ノードが検出され、その各 Hyper-V ホストに存在する VM が取得されます。
 **Hyper-V ホスト**: Hyper-V ホストの名前を指定した場合は、まずそれがクラスターに属しているかどうかがチェックされます。 属している場合は、クラスターに属しているノードがフェッチされます。 その後、各 Hyper-V ホストから VM が取得されます。 
 
 プロファイリングの対象となる VM のフレンドリ名または IP アドレスを手動でファイルに列挙してもかまいません。
@@ -57,7 +56,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList /?
 
 #### <a name="store-the-list-of-vms-in-a-file"></a>VM のリストをファイルに格納する
 ```
-ASRDeploymentPlanner.exe -Operation GetVMlist -ServerListFile “E:\Hyper-V_ProfiledData\ServerList.txt" -User Hyper-VUser1 -OutputFile "E:\Hyper-V_ProfiledData\VMListFile.txt"
+ASRDeploymentPlanner.exe -Operation GetVMlist -ServerListFile "E:\Hyper-V_ProfiledData\ServerList.txt" -User Hyper-VUser1 -OutputFile "E:\Hyper-V_ProfiledData\VMListFile.txt"
 ```
 
 #### <a name="store-the-list-of-vms-at-the-default-location--directory-path"></a>VM のリストを既定の場所 (-Directory パス) に保存する
@@ -84,7 +83,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList -Directory "E:\Hyper-V_ProfiledDat
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
-| パラメーター名 | [説明] |
+| パラメーター名 | 説明 |
 |---|---|
 | -Operation | StartProfiling |
 | -User | Hyper-V ホストまたは Hyper-V クラスターに接続するためのユーザー名。 ユーザーには管理アクセス権が必要です。|
@@ -95,7 +94,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Virtualization|仮想化の種類 (VMware または Hyper-V)。|
 |-Directory|(省略可) プロファイリング中に生成されたプロファイリング データの格納先となる UNC パスまたはローカル ディレクトリ パス。 名前を指定しなかった場合、現在のパスの下の ProfiledData という名前のディレクトリが既定のディレクトリとして使用されます。|
 |-Password|(省略可) Hyper-V ホストに接続するためのパスワード。 パラメーターとして指定しない場合は、コマンドの実行時に指定を求めるメッセージが表示されます。|
-|-StorageAccountName|(省略可) オンプレミスから Azure へのデータのレプリケーションに関して達成可能なスループットの調査対象となるストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされてスループットが計算されます。 ストレージ アカウントは、General Purpose v1 または General Purpose v2 である必要があります。|
+|-StorageAccountName|(省略可) オンプレミスから Azure へのデータのレプリケーションに関して達成可能なスループットの調査対象となるストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされてスループットが計算されます。 ストレージ アカウントは、汎用 v1 (GPv1) 型にする必要があります。|
 |-StorageAccountKey|(省略可) ストレージ アカウントにアクセスするためのキー。 Azure Portal の **[ストレージ アカウント]** > [<*ストレージ アカウント名*>] > **[設定]** > **[アクセス キー]** > **[Key1]** (クラシック ストレージ アカウントの場合はプライマリ アクセス キー) の順に移動します。|
 |-Environment|(省略可) Azure ストレージ アカウントのレプリケーション先となる環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先のリージョンが Azure 米国政府機関または Azure China であるときに使用します。|
 
@@ -129,22 +128,22 @@ VM の構成は、プロファイリング処理の開始時に 1 回だけ捕�
 
 #### <a name="profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>VM を 30 日間プロファイリングし、オンプレミスから Azure へのレプリケーションのスループットを調査する
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile 30 -User Contoso\HyperVUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+ASRDeploymentPlanner.exe -Operation StartProfiling -virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -NoOfDaysToProfile 30 -User Contoso\HyperVUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
 #### <a name="profile-vms-for-15-days"></a>VM を 15 日間プロファイリングする
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  15  -User contoso\HypreVUser1
+ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\vCenter1_ProfiledData\ProfileVMList1.txt"  -NoOfDaysToProfile  15  -User contoso\HypreVUser1
 ```
 
 #### <a name="profile-vms-for-60-minutes-for-a-quick-test-of-the-tool"></a>ツールの簡単なテストを行うために VM を 60 分間プロファイリングする
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -NoOfMinutesToProfile 60 -User Contoso\HyperVUser1
+ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -NoOfMinutesToProfile 60 -User Contoso\HyperVUser1
 ```
 
 #### <a name="profile-vms-for-2-hours-for-a-proof-of-concept"></a>概念実証のために VM を 2 時間プロファイリングする
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -NoOfHoursToProfile 2 -User Contoso\HyperVUser1
+ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -NoOfHoursToProfile 2 -User Contoso\HyperVUser1
 ```
 
 ### <a name="considerations-for-profiling"></a>プロファイリングに関する考慮事項
@@ -153,7 +152,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Dire
 
 ストレージ アカウントの名前とキーを渡したときは、プロファイリングの最後の段階でスループットが測定されます。 プロファイリングが完了する前にツールを終了した場合、スループットは計算されません。 レポートが生成される前にスループットを調べるために、コマンド ライン コンソールから GetThroughput 操作を実行してください。 そのようにしないと、生成されるレポートにはスループットの情報が出力されません。
 
-Azure Site Recovery では、iSCSI ディスクやパススルー ディスクを含んだ VM がサポートされません。 ただし、VM に接続された iSCSI ディスクやパススルー ディスクをこのツールで検出してプロファイリングすることはできません。
+Azure Site Recovery では、iSCSI ディスクやパススルー ディスクを含んだ VM がサポートされません。 VM に接続された iSCSI ディスクやパススルー ディスクをこのツールで検出してプロファイリングすることはできません。
 
 ## <a name="generate-a-report"></a>レポートの生成
 Deployment Planner ツールでは、マクロ有効 Microsoft Excel ファイル (XLSM ファイル) がレポートの出力結果として生成されます。 これには、デプロイの推奨情報がすべてまとめられています。 このレポートは、指定されたディレクトリに DeploymentPlannerReport_<*一意の数値識別子*>.xlsm という名前で格納されます。
@@ -165,7 +164,7 @@ Deployment Planner ツールでは、マクロ有効 Microsoft Excel ファイ�
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
-| パラメーター名 | [説明] |
+| パラメーター名 | 説明 |
 |---|---|
 | -Operation | GenerateReport |
 |-VMListFile | レポートを生成するプロファイリング対象 VM のリストが記述されたファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 Hyper-V の場合、このファイルが GetVMList 操作の出力ファイルとして得られます。 このファイルを手動で作成する場合は、サーバー名または IP アドレスの後に VM 名を記述する必要があります (\ で区切り、1 行に 1 つずつ)。 このファイルに指定する VM 名は、Hyper-V ホスト上の VM 名と同じであることが必要です。<br><br>**例:** VMList.txt ファイルに、次のように VM を記述します。<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
@@ -178,10 +177,10 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 | -StartDate | (省略可) 開始日時を MM-DD-YYYY:HH:MM (24 時間形式) で指定します。 StartDate は EndDate と一緒に指定する必要があります。 StartDate を指定した場合、StartDate から EndDate までの間に収集されたプロファイリング データを対象にレポートが生成されます。 |
 | -EndDate | (省略可) 終了日時を MM-DD-YYYY:HH:MM (24 時間形式) で指定します。 EndDate は StartDate と一緒に指定する必要があります。 EndDate を指定した場合、StartDate から EndDate までの間に収集されたプロファイリング データを対象にレポートが生成されます。 |
 | -GrowthFactor | (省略可) 増加率 (%)。 既定値は 30% です。 |
-| -UseManagedDisks | (省略可) UseManagedDisks: Yes/No。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、仮想マシンのフェールオーバー/テスト フェールオーバーが、非管理対象ディスクではなく、管理ディスクに対して実行されるかどうかに基づいて計算されます。 |
-|-SubscriptionId |(省略可) サブスクリプションの GUID。 サブスクリプション、それに関連付けられているプラン、ターゲット Azure リージョンに基づき、指定した通貨で最新の料金に関するコスト見積もりレポートを生成する場合に、このパラメーターを使用します。|
+| -UseManagedDisks | (省略可) UseManagedDisks: Yes/No。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、仮想マシンのフェールオーバー/テスト フェールオーバーが、非管理対象ディスクではなく、マネージド ディスクに対して実行されるかどうかに基づいて計算されます。 |
+|-SubscriptionId |(省略可) サブスクリプションの GUID。 サブスクリプション、それに関連付けられているオファー、ターゲット Azure リージョンに基づき、指定した通貨で最新の料金に関するコスト見積もりレポートを生成する場合に、このパラメーターを使用します。|
 |-TargetRegion|(省略可) レプリケーション先となる Azure リージョン。 Azure のコストはリージョンによって異なるので、特定のターゲット Azure リージョンでレポートを生成するために、このパラメーターを使用します。 既定値は、WestUS2 または最近使用したターゲット リージョンです。 「[サポートされるターゲット リージョン](hyper-v-deployment-planner-cost-estimation.md#supported-target-regions)」の一覧を参照してください。|
-|-OfferId|(省略可) サブスクリプションに関連付けられているプラン。 既定値は MS-AZR-0003P (従量課金) です。|
+|-OfferId|(省略可) サブスクリプションに関連付けられているオファー。 既定値は MS-AZR-0003P (従量課金制) です。|
 |-Currency|(省略可) 生成されたレポートでコストの表示に使用する通貨。 既定値は、米ドル ($) または最近使用した通貨です。 「[サポートされる通貨](hyper-v-deployment-planner-cost-estimation.md#supported-currencies)」の一覧を参照してください。|
 
 既定では、このツールは最大で 1,000 台の VM をプロファイリングしてレポートを生成するよう構成されています。 上限を変更するには、ASRDeploymentPlanner.exe.config ファイルの MaxVMsSupported キー値を変更します。
@@ -193,39 +192,39 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ### <a name="examples"></a>例
 #### <a name="generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>既定値でレポートを生成する (プロファイリング データがローカル ドライブにある場合)
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”
+ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"
 ```
 
 #### <a name="generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>レポートを生成する (プロファイリング データがリモート サーバーにある場合)
 ユーザーには、リモート ディレクトリに対する読み取り/書き込みアクセス権が必要です。
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “\\PS1-W2K12R2\Hyper-V_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "\\PS1-W2K12R2\Hyper-V_ProfiledData" -VMListFile "\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt"
 ```
 
 #### <a name="generate-a-report-with-a-specific-bandwidth-that-you-will-provision-for-the-replication"></a>レプリケーション用にプロビジョニングする帯域幅を指定してレポートを生成する
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt” -Bandwidth 100
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt" -Bandwidth 100
 ```
 
 #### <a name="generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>増加率を既定値の 30% から 5% に変更してレポートを生成する 
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt" -GrowthFactor 5
 ```
 
 #### <a name="generate-a-report-with-a-subset-of-profiled-data"></a>一部のプロファイリング データでレポートを生成する
 たとえば、30 日間分のプロファイリング データがあるときに 20 日間のみを対象としてレポートを生成します。
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt” -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
+ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt" -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
 ```
 
 #### <a name="generate-a-report-for-a-5-minute-rpo"></a>RPO を 5 分としてレポートを生成する
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -DesiredRPO 5
 ```
 
 #### <a name="generate-a-report-for-the-south-india-azure-region-with-indian-rupee-and-a-specific-offer-id"></a>インド ルピーと特定のプラン ID でインド南部 Azure リージョンのレポートを生成する
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
 ```
 
 
@@ -272,19 +271,19 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Dire
 ```
 ASRDeploymentPlanner.exe -Operation GetThroughput /?
 ```
- パラメーター名 | [説明] |
+ パラメーター名 | 説明 |
 |---|---|
 | -Operation | GetThroughput |
 |-Virtualization|仮想化の種類 (VMware または Hyper-V)。|
 |-Directory|(省略可) プロファイリング データ (プロファイリング中に生成されたファイル) の格納先となる UNC パスまたはローカル ディレクトリ パス。 レポートを生成するには、このデータが必要となります。 名前を指定しなかった場合、現在のパスの下の ProfiledData という名前のディレクトリが既定のディレクトリとして使用されます。|
-| -StorageAccountName | オンプレミスから Azure へのデータのレプリケーションに関して、使用帯域幅の調査に使うストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされて使用帯域幅が計算されます。 ストレージ アカウントは、General Purpose v1 または General Purpose v2 である必要があります。|
+| -StorageAccountName | オンプレミスから Azure へのデータのレプリケーションに関して、使用帯域幅の調査に使うストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされて使用帯域幅が計算されます。 ストレージ アカウントは、汎用 v1 (GPv1) 型にする必要があります。|
 | -StorageAccountKey | ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の **[ストレージ アカウント]** > [<*ストレージ アカウント名*>] > **[設定]** > **[アクセス キー]** > **[Key1]** の順に移動します。|
 | -VMListFile | 使用帯域幅の計算に関して、プロファイリングの対象となる VM のリストを含んだファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 Hyper-V の場合、このファイルが GetVMList 操作の出力ファイルとして得られます。 このファイルを手動で作成する場合は、サーバー名または IP アドレスの後に VM 名を記述する必要があります (\ で区切り、1 行に 1 つずつ)。 このファイルに指定する VM 名は、Hyper-V ホスト上の VM 名と同じであることが必要です。<br><br>**例:** VMList.txt ファイルに、次のように VM を記述します。<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Environment|(省略可) Azure ストレージ アカウントのレプリケーション先となる環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China であるときに使用します。|
 
 ### <a name="example"></a>例
 ```
-ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Directory E:\Hyp-erV_ProfiledData -VMListFile E:\Hyper-V_ProfiledData\ProfileVMList1.txt  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
 ### <a name="throughput-considerations"></a>スループットに関する考慮事項

@@ -1,24 +1,24 @@
 ---
-title: "Azure ページ BLOB の固有の機能 |Microsoft Docs"
-description: "Azure のページ BLOB、利点、サンプル スクリプトを含むユース ケースの概要。"
+title: Azure ページ BLOB の固有の機能 |Microsoft Docs
+description: サンプル スクリプトでのユース ケースを含む、Azure ページ BLOB とそのメリットの概要。
 services: storage
 author: anasouma
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 04/30/2018
 ms.author: wielriac
-ms.openlocfilehash: 56e8c4c9f7ab9b40a210f284960f959a437a4e20
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.component: blobs
+ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022690"
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Azure ページ BLOB の固有の機能
 
-Azure Storage が提供する BLOB ストレージには、ブロック BLOB、追加 BLOB、ページ BLOB の 3 種類があります。 ブロック BLOB はブロックで構成され、テキストまたはバイナリ ファイルの格納と大きいファイルの効率的なアップロードに最適です。 追加 BLOB もブロックで構成されますが、追加操作用に最適化されているので、ログ記録シナリオに最適です。 ページ BLOB は 512 バイトのページ (合計で最大 8 TB) で構成され、頻繁なランダムの読み取り/書き込み操作の場合に効率的です。 ページ BLOB は、Azure IaaS ディスクの基盤です。 この記事では、ページ BLOB の機能と利点に重点を置いて説明します。
+Azure Storage が提供する BLOB ストレージには、ブロック BLOB、追加 BLOB、ページ BLOB の 3 種類があります。 ブロック BLOB はブロックで構成され、テキストまたはバイナリ ファイルの格納と大きいファイルの効率的なアップロードに最適です。 追加 BLOB もブロックで構成されますが、追加操作用に最適化されているので、ログ記録シナリオに最適です。 ページ BLOB は 512 バイトのページ (合計で最大 8 TB) で構成され、頻繁なランダムの読み取り/書き込み操作のために設計されています。 ページ BLOB は、Azure IaaS ディスクの基盤です。 この記事では、ページ BLOB の機能とメリットに重点を置いて説明します。
 
-## <a name="overview"></a>概要
 ページ BLOB は 512 バイトのページの集まりであり、任意の範囲のバイトの読み取り/書き込みを行うことができます。 そのため、ページ BLOB は、仮想マシンとデータベースの OS やデータ ディスクのような、インデックスに基づくスパース データ構造の格納に最適です。 たとえば、Azure SQL DB は、そのデータベースの基になる永続的ストレージとしてページ BLOB を使用します。 さらに、ページ BLOB は、範囲を基にした更新を含むファイルにもよく使用されます。  
 
 Azure のページ BLOB の重要な機能は、その REST インターフェイス、基礎をなすストレージの耐久性、および Azure へのシームレスな移行機能です。 これらの機能については、次のセクションで詳しく説明します。 さらに、Azure のページ BLOB は、現時点では Premium Storage と Standard Storage という 2 種類のストレージでサポートされています。 Premium Storage は、特に一貫した高いパフォーマンスと待機時間の短縮を必要とするワークロード向けに設計されているため、Premium ページ BLOB を高パフォーマンスのデータ ストレージ データベースに最適なものにします。  Standard Storage は、待機時間の影響を受けないワークロードを実行する場合はコスト効率に優れています。
@@ -41,7 +41,7 @@ Azure Site Recovery、Azure Backup のようなファースト パーティの M
 
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure1.png)
 
-#### <a name="creating-an-empty-page-blob-of-a-certain-size"></a>特定のサイズの空のページ BLOB を作成する
+#### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>指定したサイズの空のページ BLOB を作成する
 ページ BLOB を作成するには、まず、次の例で示すように、**StorageCredentialsAccountAndKey** オブジェクトと共に **CloudBlobClient** オブジェクトを作成します (ストレージ アカウント (図 1 の *pbaccount*) の BLOB ストレージにアクセスするためのベース URI を使用します)。 この例では、**CloudBlobContainer** オブジェクトへの参照の作成と、まだ存在していない場合のコンテナー (*testvhds*) の作成を示しています。 次に、**CloudBlobContainer** オブジェクトを使用して、アクセスするページ BLOB の名前 (os4.vhd) を指定することで、**CloudPageBlob** オブジェクトへの参照を作成します。 ページ BLOB を作成するには、[CloudPageBlob.Create](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) を呼び出し、作成する BLOB の最大サイズを渡します。 *blobSize* は 512 バイトの倍数にする必要があります。
 
 ```csharp
@@ -71,7 +71,7 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 ```
 
 #### <a name="writing-pages-to-a-page-blob"></a>ページ BLOB にページを書き込む
-ページを書き込むには、[CloudPageBlob.WritePages](/library/microsoft.windowsazure.storageclient.cloudpageblob.writepages.aspx) メソッドを使用します。  これにより、最大 4MB の連続した一連のページを書き込むことができます。 書き込み先のオフセットは、512 バイト境界で開始し (startingOffset %512 = = 0)、512 境界 - 1 で終了する必要があります。  次のコード例は、BLOB の **WritePages** を呼び出す方法を示しています。
+ページを書き込むには、[CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) メソッドを使用します。  これにより、最大 4MB の連続した一連のページを書き込むことができます。 書き込み先のオフセットは、512 バイト境界で開始し (startingOffset %512 = = 0)、512 境界 - 1 で終了する必要があります。  次のコード例は、BLOB の **WritePages** を呼び出す方法を示しています。
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -117,14 +117,12 @@ foreach (PageRange range in pageRanges)
 #### <a name="leasing-a-page-blob"></a>ページ BLOB をリースする
 BLOB のリース操作は、書き込み操作と削除操作のための BLOB のロックを設定および管理します。 この操作は、ページ BLOB が複数のクライアントからアクセスされているというシナリオで、一度に 1 つのクライアントしか BLOB に書き込めないようにする場合に便利です。 たとえば、Azure ディスクは、ディスクが確実に 1 つの VM でのみ管理されるようにするために、このリース メカニズムを利用します。 ロック期間は、15 ～ 60 秒にすることも、無限にすることもできます。 詳細については、[こちら](/rest/api/storageservices/lease-blob)のドキュメントを参照してください。
 
-> 多数の他のアプリケーションのシナリオ用の[コード サンプル](/resources/samples/?service=storage&term=blob&sort=0 )を入手するには、次のリンクを使用してください。 
-
 ページ BLOB は、豊富な REST API だけでなく、共有アクセス、耐久性、および強化されたセキュリティも提供します。 これらのメリットについて、次の段落で詳しく説明します。 
 
 ### <a name="concurrent-access"></a>同時アクセス
 ページ BLOB の REST API とそのリース メカニズムにより、アプリケーションが複数のクライアントからページ BLOB にアクセスすることができます。 たとえば、ストレージ オブジェクトを複数のユーザーと共有する分散クラウド サービスをビルドする必要があるとします。 これは、複数のユーザーにイメージの大規模なコレクションを提供する Web アプリケーションである可能性があります。 これを実装するための 1 つのオプションは、接続されたディスクと VM を使用することです。 この欠点として、(i) ディスクが 1 つの VM にしか接続できない、スケーラビリティや柔軟性が制限され、リスクが増すという制約があります。 VM または VM で実行されているサービスに問題がある場合は、リースのため、リース期限が切れるか中途解約するまでイメージにはアクセスできず、(ii) IaaS VM の所有に追加のコストがかかります。 
 
-もう 1 つのオプションは、Azure Storage REST API 経由でページ BLOB を直接使用することです。 このオプションは、コストの高い IaaS VM が不要で、複数のクライアントからの直接アクセスに十分な柔軟性があり、ディスクの接続/取り外しの必要をなくすことでクラシック デプロイメント モデルを簡略化し、VM 上の問題のリスクを排除します。 さらに、ランダムの読み取り/書き込み操作にディスクと同じレベルのパフォーマンスを提供します
+もう 1 つのオプションは、Azure Storage REST API 経由でページ BLOB を直接使用することです。 このオプションは、コストの高い IaaS VM が不要で、複数のクライアントからの直接アクセスに十分な柔軟性があり、ディスクの接続/取り外しの必要をなくすことでクラシック デプロイ モデルを簡略化し、VM 上の問題のリスクを排除します。 さらに、ランダムの読み取り/書き込み操作にディスクと同じレベルのパフォーマンスを提供します
 
 ### <a name="durability-and-high-availability"></a>耐久性と高可用性
 Standard Storage と Premium Storage はどちらも耐久性のあるストレージであり、ページ BLOB のデータは耐久性および高可用性を確保するために常にレプリケートされます。 Azure Storage の冗長性の詳細については、この[ドキュメント](../common/storage-redundancy.md)を参照してください。 Azure は、IaaS ディスクとページ BLOB のエンタープライズ レベルの耐久性を、業界トップ レベルの[年間故障率](https://en.wikipedia.org/wiki/Annualized_failure_rate) 0% で一貫して提供してきました。 つまり、Azure がお客様のページ BLOB のデータを失ったことは、いまだかつてありません。 

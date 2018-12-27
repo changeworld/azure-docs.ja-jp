@@ -1,30 +1,24 @@
 ---
-title: 'HDInsight で Hadoop をデバッグする: ログを表示してエラーメッセージを解釈する - Azure | Microsoft Docs'
+title: 'HDInsight 上の Apache Hadoop をデバッグする: ログの表示とエラーメッセージの解釈 - Azure '
 description: PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。
 services: hdinsight
-tags: azure-portal
-editor: cgronlun
-manager: jhubbard
+ms.reviewer: jasonh
 author: ashishthaps
-documentationcenter: ''
-ms.assetid: 7e6ceb0e-8be8-4911-bc80-20714030a3ad
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2017
-ms.author: ashish
-ms.openlocfilehash: a5db3848eda2dbb6f117562e059b909575966993
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: ashishth
+ms.openlocfilehash: 1589a5c1cab5a37322249762c840620d9ba4fc7e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634636"
 ---
 # <a name="analyze-hadoop-logs"></a>Hadoop ログの分析
 
-Azure HDInsight の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。 このストレージ アカウントを、既定のストレージ アカウントと呼びます。 クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。  クラスターの既定のストレージ アカウントを調べるには、「 [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account)」を参照してください。 ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
+Azure HDInsight 上の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。 このストレージ アカウントを、既定のストレージ アカウントと呼びます。 クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。  クラスターの既定のストレージ アカウントを調べるには、「 [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account)」を参照してください。 ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
 
 ## <a name="logs-written-to-azure-tables"></a>Azure テーブルに書き込まれたログ
 
@@ -48,12 +42,12 @@ HDInsight クラスターを作成すると、Linux ベースのクラスター�
 * EventTimestamp
 * Host
 * MALoggingHash
-* メッセージ
+* Message
 * N
 * PreciseTimeStamp
-* 役割
+* Role
 * RowIndex
-* テナント
+* Tenant
 * TIMESTAMP
 * TraceLevel
 
@@ -65,7 +59,7 @@ HDInsight クラスターを作成すると、Linux ベースのクラスター�
 * Power Query for Excel
 
 #### <a name="use-power-query-for-excel"></a>Power Query for Excel を使用する
-Power Query は、[Microsoft Power Query for Excel](http://www.microsoft.com/en-us/download/details.aspx?id=39379) からインストールできます。 システム要件については、ダウンロード ページを参照してください。
+Power Query は、[Microsoft Power Query for Excel](https://www.microsoft.com/en-us/download/details.aspx?id=39379) からインストールできます。 システム要件については、ダウンロード ページを参照してください。
 
 **Power Query を使用してサービス ログを開いて分析する**
 
@@ -93,7 +87,7 @@ Power Query は、[Microsoft Power Query for Excel](http://www.microsoft.com/en-
 
 1. Visual Studio を開きます。
 2. **[表示]** メニューの **[Cloud Explorer]** をクリックします。 または、単に **Ctrl + \,、Ctrl + X** キーを押します。
-3. **Cloud Explorer** で **[リソースの種類]** を選択します。  そのほかに、 **[リソース グループ]**というオプションも選択できます。
+3. **Cloud Explorer** で **[リソースの種類]** を選択します。  そのほかに、 **[リソース グループ]** というオプションも選択できます。
 4. **[ストレージ アカウント]**、クラスターの既定のストレージ アカウント、**[テーブル]** の順に展開します。
 5. **hadoopservicelog**をダブルクリックします。
 6. フィルターを追加します。 例: 
@@ -119,7 +113,7 @@ Azure Portal から、HDInsight クラスター名をクリックし、クラス
 
 
 ### <a name="access-the-yarn-ui"></a>Yarn UI にアクセスする
-Azure Portal から、HDInsight クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、**[ダッシュボード]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 Ambari で、左側のサービスの一覧から **[YARN]**を選択します。 表示されるページで、**[クイック リンク]** を選択し、アクティブなヘッド ノード エントリとリソース マネージャー UI を選択します。
+Azure Portal から、HDInsight クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、**[ダッシュボード]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 Ambari で、左側のサービスの一覧から **[YARN]** を選択します。 表示されるページで、**[クイック リンク]** を選択し、アクティブなヘッド ノード エントリとリソース マネージャー UI を選択します。
 
 YARN UI では、次の操作を実行できます。
 
@@ -127,7 +121,7 @@ YARN UI では、次の操作を実行できます。
   
     ![クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png)
 * **ノードの状態を取得します**。 左側のウィンドウから、**[Cluster]** を展開し、**[Nodes]** をクリックします。 ここにはクラスターの全ノード、各ノードの HTTP アドレス、各ノードに割り当てられているリソースなどが一覧表示されます。
-* **ジョブの状態を監視します**。 左側のウィンドウから、**[Cluster]** を展開し、**[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。 特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、 **[Applications]**の下にある該当リンクをクリックします。 さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
+* **ジョブの状態を監視します**。 左側のウィンドウから、**[Cluster]** を展開し、**[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。 特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、 **[Applications]** の下にある該当リンクをクリックします。 さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
 
 ### <a name="access-the-hbase-ui"></a>HBase UI にアクセスする
 Azure Portal から、HDInsight HBase クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、**[ダッシュボード]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 Ambari で、サービスの一覧から [HBase] を選択します。 ページの上部にある **[クイック リンク]** を選択し、アクティブな Zookeeper ノード リンクをポイントして、[HBase Master UI] をクリックします。
@@ -137,7 +131,7 @@ Azure Portal から、HDInsight HBase クラスター名をクリックし、ク
 
 一部のエラー メッセージは、Azure ポータルで HDinsight クラスターを管理している場合にも表示されます。 しかし、その場合に遭遇する可能性のあるエラー メッセージは、その状況で可能な対応策に制約があるため、さほどきめ細かいものではありません。 その他のエラー メッセージは、対応策が明白な文脈で提供されています。 
 
-### <a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided
+### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
 * **説明**: Hive メタストアと Oozie メタストアにカスタム設定を使用するために、1 つ以上のコンポーネントに Azure SQL Database の詳細を指定してください。
 * **対応策**: 有効な SQL Azure メタストアを指定して要求し直す必要があります。  
 

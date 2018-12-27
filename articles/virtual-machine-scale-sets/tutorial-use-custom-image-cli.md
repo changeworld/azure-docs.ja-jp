@@ -1,9 +1,9 @@
 ---
-title: チュートリアル - Azure CLI 2.0 を使用したスケール セットのカスタム VM イメージの使用 | Microsoft Docs
-description: Azure CLI 2.0 を使用して仮想マシン スケール セットをデプロイするためのカスタム VM イメージを作成する方法について説明します
+title: チュートリアル - Azure CLI を使用したスケール セットのカスタム VM イメージの使用 | Microsoft Docs
+description: Azure CLI を使用して仮想マシン スケール セットをデプロイするためのカスタム VM イメージを作成する方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dc1f9cbc87e058d3c925763a9204392791429db8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5eee55846bd6f5821be1e40b969a35f5e50bd205
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967372"
 ---
-# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>チュートリアル: Azure CLI 2.0 を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
+# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -35,10 +36,14 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.29 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.29 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 
 ## <a name="create-and-configure-a-source-vm"></a>ソース VM の作成と構成
+
+>[!NOTE]
+> このチュートリアルでは、汎用化された VM イメージを作成および使用する手順について説明します。 特殊化された VM イメージからスケール セットを作成することはできません。
+
 最初に [az group create](/cli/azure/group#az_group_create) を使用してリソース グループを作成し、次に [az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 この VM は、カスタム VM イメージのソースとして使用されます。 次の例では、*myResourceGroup* という名前のリソース グループに *myVM* という名前の VM を作成します。
 
 ```azurecli-interactive
@@ -102,7 +107,7 @@ az image create \
 
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>カスタム VM イメージからのスケール セットの作成
-[az vmss create](/cli/az/vmss#az_vmss_create) を使用して、スケール セットを作成します。 *UbuntuLTS* や *CentOS* などのプラットフォーム イメージの代わりに、カスタム VM イメージの名前を指定します。 次の例では、前の手順の *myImage* という名前のカスタム イメージを使用する、*myScaleSet* という名前のスケール セットを作成します。
+[az vmss create](/cli/azure/vmss#az-vmss-create) を使用して、スケール セットを作成します。 *UbuntuLTS* や *CentOS* などのプラットフォーム イメージの代わりに、カスタム VM イメージの名前を指定します。 次の例では、前の手順の *myImage* という名前のカスタム イメージを使用する、*myScaleSet* という名前のスケール セットを作成します。
 
 ```azurecli-interactive
 az vmss create \
@@ -155,7 +160,7 @@ az group delete --name myResourceGroup --no-wait --yes
 
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure CLI 2.0 を使用してスケール セットにカスタム VM イメージを作成して使用する方法について学習しました。
+このチュートリアルでは、Azure CLI を使用してスケール セットにカスタム VM イメージを作成して使用する方法について学習しました。
 
 > [!div class="checklist"]
 > * VM の作成とカスタマイズ

@@ -1,68 +1,77 @@
 ---
-title: "Azure Functions の zip プッシュ デプロイ | Microsoft Docs"
-description: "Kudu デプロイ サービスの .zip ファイル デプロイ機能を使用して、Azure Functions を発行します。"
+title: Azure Functions の zip プッシュ デプロイ | Microsoft Docs
+description: Kudu デプロイ サービスの .zip ファイル デプロイ機能を使用して、Azure Functions を発行します。
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: 
-tags: 
-ms.service: functions
+manager: jeconnoc
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 12/06/2017
+ms.topic: conceptual
+ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: faddb73522200f60f18294dc43e8d235943f8bbb
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 03cb9384beba1afcb97a765824e63e79ca34aa62
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717220"
 ---
-# <a name="zip-push-deployment-for-azure-functions"></a>Azure Functions の zip プッシュ デプロイ 
-この記事では、関数アプリ プロジェクト ファイルを .zip (圧縮) ファイルから Azure にデプロイする方法について説明します。 Azure CLI を使用する方法と REST API を使用する方法の両方について、プッシュ デプロイの方法を学習します。 
+# <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
 
-Azure Functions には、Azure App Service によって提供されている、さまざまな継続的デプロイと統合オプションが含まれています。 詳細については、「[Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」を参照してください。 
+この記事では、関数アプリ プロジェクト ファイルを .zip (圧縮) ファイルから Azure にデプロイする方法について説明します。 Azure CLI を使用する方法と REST API を使用する方法の両方について、プッシュ デプロイの方法を学習します。 [Azure Functions Core Tools](functions-run-local.md) は、ローカル プロジェクトを Azure に発行するときにも、このようなデプロイメント API を使用します。
 
-開発時の反復処理を迅速化する必要がある場合は、通常、関数アプリ プロジェクト ファイルを、圧縮された .zip ファイルから直接デプロイしたほうが作業が容易になります。 この .zip ファイル デプロイでは、Kudu サービスを使用することで、継続的な統合ベース デプロイを効率化できます。たとえば、次のような作業を効率化できます。
+Azure Functions には、Azure App Service によって提供されている、さまざまな継続的デプロイと統合オプションが含まれています。 詳細については、「[Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」を参照してください。
+
+開発にかかる時間を短縮するには、関数アプリ プロジェクト ファイルを .zip ファイルから直接デプロイするのが手軽であると考えられます。 .zip デプロイ API は、.zip ファイルの内容を取得して、関数アプリの `wwwroot` フォルダーに抽出します。 この .zip ファイル デプロイでは、Kudu サービスを使用することで、継続的な統合ベース デプロイを効率化できます。たとえば、次のような作業を効率化できます。
 
 + 以前のデプロイから残っているファイルの削除。
 + デプロイのカスタマイズ (デプロイ スクリプトの実行など)。
 + デプロイ ログ。
 + [従量課金プラン](functions-scale.md)関数アプリ内の関数トリガーの同期。
 
-詳細については、「[Azure Functions の継続的なデプロイ](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)」をご覧ください。 
+詳細については、[.zip デプロイのリファレンス](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)に関するページをご覧ください。
 
 ## <a name="deployment-zip-file-requirements"></a>デプロイ .zip ファイルの要件
-プッシュ デプロイに使用する .zip ファイルには、関数アプリ内のすべてのプロジェクト ファイル (関数コードを含む) を含める必要があります。 
+
+プッシュ デプロイに使用する .zip ファイルには、関数の実行に必要なすべてのファイルを含める必要があります。
 
 >[!IMPORTANT]
-> .zip プッシュ デプロイを実行した場合、既存のデプロイに含まれているファイルのうち、.zip ファイルに含まれていないものはすべて、関数アプリから削除されます。  
-
-### <a name="function-app-folder-structure"></a>関数アプリ フォルダーの構造
+> .zip デプロイを実行した場合、既存のデプロイに含まれているファイルのうち、.zip ファイルに含まれていないものはすべて、関数アプリから削除されます。  
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-### <a name="download-your-function-app-project"></a>関数アプリ プロジェクトのダウンロード
+関数アプリには、`wwwroot` ディレクトリ内のすべてのファイルとフォルダーが含まれています。 .zip ファイルの展開には、`wwwroot` ディレクトリの内容が含まれますが、ディレクトリ自体は含まれません。 C# クラス ライブラリ プロジェクトをデプロイするときは、コンパイル済みのライブラリ ファイルと依存関係を .zip パケージの `bin` サブフォルダーに含める必要があります。
 
-開発作業をローカル コンピューター上で行う場合は、開発用コンピューター上の関数アプリ プロジェクト フォルダー内に .zip ファイルを作成すると、作業が簡単です。 
+## <a name="download-your-function-app-files"></a>関数アプリ ファイルをダウンロードする
 
-ただし、Azure Portal 内のエディターを使用して関数を作成した場合、 ポータルから関数アプリ プロジェクトをダウンロードするには、次の手順を実行する必要があります。 
+開発作業をローカル コンピューター上で行う場合は、開発用コンピューター上の関数アプリ プロジェクト フォルダー内に .zip ファイルを作成すると、作業が簡単です。
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、関数アプリに移動します。
+ただし、Azure Portal 内のエディターを使用して関数を作成した場合、 既存の関数アプリ プロジェクトは、次のいずれかの方法でダウンロードできます。
 
-2. **[概要]** タブで、**[アプリのコンテンツのダウンロードド]** を選択します。 ダウンロード オプションを選択し、**[ダウンロード]** を選択します。     
++ **Azure portal から:**
 
-    ![関数アプリ プロジェクトのダウンロード](./media/deployment-zip-push/download-project.png)
+    1. [Azure Portal](https://portal.azure.com) にサインインし、関数アプリに移動します。
 
-ダウンロードした .zip ファイルは、.zip プッシュ デプロイを使用して関数アプリに再発行するための適切な形式になっています。
+    2. **[概要]** タブで、**[アプリのコンテンツのダウンロード]** を選択します。 ダウンロード オプションを選択し、**[ダウンロード]** を選択します。
 
-.zip ファイルは GitHub リポジトリからダウンロードすることもできます。 GitHub リポジトリを .zip ファイルとしてダウンロードする場合は、分岐用のフォルダー レベルが追加されることに注意してください。 この追加のフォルダー レベルは、.zip ファイルを GitHub からダウンロードする際、その .zip ファイルを直接デプロイすることはできないということを意味します。 GitHub リポジトリを使用して関数アプリを管理している場合は、[継続的インテグレーション](functions-continuous-deployment.md)を使用してアプリをデプロイする必要があります。  
+        ![関数アプリ プロジェクトのダウンロード](./media/deployment-zip-push/download-project.png)
+
+    ダウンロードした .zip ファイルは、.zip プッシュ デプロイを使用して関数アプリに再発行するための適切な形式になっています。 ポータルのダウンロードでは、Visual Studio で関数アプリを直接開くために必要なファイルを追加することもできます。
+
++ **REST API の使用:**
+
+    `<function_app>` プロジェクトからファイルをダウンロードするには、以下の展開の GET API を使用します。 
+
+        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+
+    `/site/wwwroot/` を含めると、zip ファイルには関数アプリ プロジェクト ファイルのみが含まれ、サイト全体は含まれません。 Azure にまだサインインしていない場合は、サインインするように求められます。  
+
+.zip ファイルは GitHub リポジトリからダウンロードすることもできます。 GitHub リポジトリを .zip ファイルとしてダウンロードする場合は、分岐用のフォルダー レベルが追加されます。 この追加のフォルダー レベルは、.zip ファイルを GitHub からダウンロードする際、その .zip ファイルを直接デプロイすることはできないということを意味します。 GitHub リポジトリを使用して関数アプリを管理している場合は、[継続的インテグレーション](functions-continuous-deployment.md)を使用してアプリをデプロイする必要があります。  
 
 ## <a name="cli"></a>Azure CLI を使用したデプロイ
 
-プッシュ デプロイは、Azure CLI を使用してトリガーすることもできます。 その場合は、[az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az_functionapp_deployment_source_config_zip) コマンドを使用して、.zip ファイルを関数アプリにプッシュ デプロイします。 このコマンドを使用するには、Azure CLI バージョン 2.0.21 以降を使用する必要があります。 使用している Azure CLI のバージョンを確認するには、`az --version` コマンドを使用します。
+プッシュ デプロイは、Azure CLI を使用してトリガーすることもできます。 その場合は、[az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) コマンドを使用して、.zip ファイルを関数アプリにプッシュ デプロイします。 このコマンドを使用するには、Azure CLI バージョン 2.0.21 以降を使用する必要があります。 使用している Azure CLI のバージョンを確認するには、`az --version` コマンドを使用します。
 
 次のコマンドでは、`<zip_file_path>` プレース ホルダーを .zip ファイルの場所へのパスに置き換えてください。 また、`<app_name>` を、お使いの関数アプリの一意の名前に置き換えてください。 
 
@@ -70,12 +79,18 @@ Azure Functions には、Azure App Service によって提供されている、�
 az functionapp deployment source config-zip  -g myResourceGroup -n \
 <app_name> --src <zip_file_path>
 ```
+
 このコマンドを実行すると、ダウンロードした .zip ファイル内のプロジェクト ファイルが、Azure 内の関数アプリにデプロイされます。 その後、アプリが再起動されます。 この関数アプリに対するデプロイの一覧を表示するには、REST API を使用する必要があります。
 
 Azure CLI をローカル コンピューター上で使用している場合、`<zip_file_path>` にはお使いのコンピューター上の .zip ファイルへのパスを指定します。 Azure CLI は [Azure Cloud Shell](../cloud-shell/overview.md) 内で実行することもできます。 Cloud Shell を使用する場合は、まず、Cloud Shell に関連付けられた Azure Files アカウントに .zip ファイルをアップロードする必要があります。 その場合は、`<zip_file_path>` には、Cloud Shell アカウントで使用している保存場所を指定します。 詳細については、「[Azure Cloud Shell でファイルを永続化する](../cloud-shell/persisting-shell-storage.md)」をご覧ください。
 
-
 [!INCLUDE [app-service-deploy-zip-push-rest](../../includes/app-service-deploy-zip-push-rest.md)]
+
+## <a name="run-functions-from-the-deployment-package"></a>展開パッケージから関数を実行する
+
+展開パッケージのファイルから直接関数を実行することもできます。 この方法では、パッケージから関数アプリの `wwwroot` ディレクトリにファイルをコピーする手順がスキップされます。 代わりに、パッケージ ファイルが Functions ランタイムによってマウントされ、`wwwroot` ディレクトリの内容が読み取り専用になります。  
+
+zip デプロイとこの機能は統合されており、関数アプリの設定 `WEBSITE_RUN_FROM_PACKAGE` の値を `1` に設定することで有効にできます。 詳しくは、[展開パッケージ ファイルからの関数の実行](run-functions-from-deployment-package.md)に関するページをご覧ください。
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 

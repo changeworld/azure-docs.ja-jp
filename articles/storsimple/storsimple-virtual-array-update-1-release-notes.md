@@ -1,12 +1,12 @@
 ---
-title: "StorSimple Virtual Array Update 1.0 のリリース ノート | Microsoft Docs"
-description: "Update 1.0 を実行する StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。"
+title: StorSimple Virtual Array Update 1.0 のリリース ノート | Microsoft Docs
+description: Update 1.0 を実行する StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24010865"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple Virtual Array Update 1.0 のリリース ノート
 
@@ -65,7 +66,7 @@ Update 1.0 はソフトウェア バージョン **10.0.10296.0** に対応し�
 
 次の表では、StorSimple Virtual Array の既知の問題の概要と、以前のリリースのリリース ノートに記載されていた問題を説明します。
 
-| いいえ。 | 機能 | 問題 | 対応策/コメント |
+| No. | 機能 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
 | **1.** |更新プログラム |プレビュー リリースで作成された仮想アレイは、サポートされている一般提供版に更新することはできません。 |これらの仮想アレイは、ディザスター リカバリー (DR) ワークフローを使用して一般提供リリースにフェールオーバーする必要があります。 |
 | **2.** |プロビジョニング済みのデータ ディスク |特定の指定されたサイズのデータ ディスクをプロビジョニングし、対応する StorSimple Virtual Array を作成した後は、データ ディスクを拡張または縮小することはできません。 これを行おうとすると、デバイスのローカル層のすべてのデータが失われます。 | |

@@ -4,9 +4,6 @@ description: Azure Resource Manager で Load Balancer に PowerShell を使用�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: tysonn
-ms.assetid: d0394f11-ee5a-4407-9d86-79c936297265
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d1d098f45c391363523b6a56ec0c6fdb40e64d68
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 9d11a34c499029550de12e8a47f7de0b1beac7b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235039"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Azure Load Balancer での Azure Resource Manager のサポートの使用
 
@@ -46,21 +44,21 @@ Azure リソース マネージャーでは、宣言型のテンプレートを�
 
 [テンプレートの詳細](../azure-resource-manager/resource-manager-template-walkthrough.md)
 
-[ネットワーク リソースの詳細](../virtual-network/resource-groups-networking.md)
+[ネットワーク リソースの詳細](../networking/networking-overview.md)
 
 Azure Load Balancer を使用したクイックスタート テンプレートについては、[GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)を参照してください。GitHub リポジトリには、コミュニティで作成された一連のテンプレートがホストされています。
 
 テンプレートの例を次に示します。
 
-* [ロード バランサー内の 2 台の VM と負荷分散規則](http://go.microsoft.com/fwlink/?LinkId=544799)
-* [内部ロード バランサーを使用した VNET 内の 2 台の VM と負荷分散規則](http://go.microsoft.com/fwlink/?LinkId=544800)
-* [ロード バランサー内の 2 台の VM と LB の NAT 規則の構成](http://go.microsoft.com/fwlink/?LinkId=544801)
+* [ロード バランサー内の 2 台の VM と負荷分散規則](https://go.microsoft.com/fwlink/?LinkId=544799)
+* [内部ロード バランサーを使用した VNET 内の 2 台の VM と負荷分散規則](https://go.microsoft.com/fwlink/?LinkId=544800)
+* [ロード バランサー内の 2 台の VM と LB の NAT 規則の構成](https://go.microsoft.com/fwlink/?LinkId=544801)
 
 ## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>CLI または PowerShell を使用した Azure Load Balancer の設定
 
 Azure Resource Manager コマンドレット、コマンド ライン ツール、REST API を使用する場合は、以下をご覧ください。
 
-* [Azure ネットワークのコマンドレット](https://msdn.microsoft.com/library/azure/mt163510.aspx) を使用して、ロード バランサーを作成できます。
+* [Azure ネットワークのコマンドレット](https://docs.microsoft.com/powershell/module/azurerm.network#networking) を使用して、ロード バランサーを作成できます。
 * [Azure リソース マネージャーを使用したロード バランサーの作成方法](load-balancer-get-started-ilb-arm-ps.md)
 * [Azure リソース管理での Azure CLI の使用](../xplat-cli-azure-resource-manager.md)
 * [Load Balancer REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)

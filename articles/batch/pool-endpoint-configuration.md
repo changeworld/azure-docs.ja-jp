@@ -1,6 +1,6 @@
 ---
-title: "Azure Batch プールでノード エンドポイントを構成する | Microsoft Docs"
-description: "Azure Batch プールの計算ノードで SSH ポートまたは RDP ポートへのアクセスを構成する方法と無効にする方法。"
+title: Azure Batch プールでノード エンドポイントを構成する | Microsoft Docs
+description: Azure Batch プールの計算ノードで SSH ポートまたは RDP ポートへのアクセスを構成する方法と無効にする方法。
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -8,11 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: danlep
-ms.openlocfilehash: fdc68744406c3e995a2764f93d4474b807337ff5
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 5898206761e5029f94b6d1f1b48223481ae2ca13
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358729"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールの計算ノードへのリモート アクセスを構成する/無効にする
 
@@ -23,7 +24,7 @@ Batch の既定では、ネットワークに接続している[ノード ユー
 ## <a name="about-the-pool-endpoint-configuration"></a>プール エンドポイントの構成について
 エンドポイントは、フロントエンド ポートの 1 つまたは複数の[ネットワーク アドレス変換 (NAT) プール](/rest/api/batchservice/pool/add#inboundnatpool)から構成されます。 (計算ノードの Batch プールと NAT プールを混同しないでください。)プールの計算ノードの既定の接続設定をオーバーライドするように各 NAT プールを設定します。 
 
-各 NAT プール構成には、1 つまたは複数の[ネットワーク セキュリティ グループ (NSG) ルール](/rest/api/batchservice/pool/add#networksecuritygrouprule)が含まれています。 各 NSG ルールによって、エンドポイントへの特定のネットワーク トラフィックが許可されるか、拒否されます。 すべてのトラフィック、[既定のタグ](../virtual-network/virtual-networks-nsg.md#default-tags) ("Internet" など) で識別されるトラフィック、特定の IP アドレスやサブネットから届くトラフィックを許可または拒否するように選択できます。
+各 NAT プール構成には、1 つまたは複数の[ネットワーク セキュリティ グループ (NSG) ルール](/rest/api/batchservice/pool/add#networksecuritygrouprule)が含まれています。 各 NSG ルールによって、エンドポイントへの特定のネットワーク トラフィックが許可されるか、拒否されます。 すべてのトラフィック、[サービス タグ](../virtual-network/security-overview.md#service-tags) ("Internet" など) で識別されるトラフィック、特定の IP アドレスやサブネットから届くトラフィックを許可または拒否するように選択できます。
 
 ### <a name="considerations"></a>考慮事項
 * プール エンドポイント構成は、プールの[ネットワーク構成](/rest/api/batchservice/pool/add#NetworkConfiguration)の一部です。 ネットワーク構成には任意で、[Azure 仮想ネットワーク](batch-virtual-network.md)にプールを参加させる設定を含めることができます。 仮想ネットワークにプールを設定した場合、仮想ネットワークのアドレス設定を使用する NSG ルールを作成できます。
@@ -124,7 +125,7 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure の NSG ルールに関する詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/virtual-networks-nsg.md)」をご覧ください。
+- Azure の NSG ルールに関する詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/security-overview.md)」をご覧ください。
 
 - Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。
 

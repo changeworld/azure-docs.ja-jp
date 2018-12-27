@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a2cb3d504abcd3f9c50df2427884d478ad2240c4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 46939e15100468eab0d5575546eb6bd58df4aacd
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961077"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 Web ページまたはアプリのパフォーマンスと使用状況について調べます。 [Application Insights](app-insights-overview.md) をページ スクリプトに追加すると、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。 エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。 また、JavaScript コードにトレースの呼び出しを挿入することで、Web ページ アプリケーションのさまざまな機能がどのように使用されているかを追跡できます。
@@ -47,16 +48,10 @@ Application Insights リソースは、ページのパフォーマンスと使�
 *質問がございますか?* [リソースの作成に関する詳細はここにあります](app-insights-create-new-resource.md)のサブスクリプションが必要です。
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>アプリや Web ページに SDK スクリプトを追加する
-クイック スタートで、Web ページのスクリプトを取得します。
-
-![アプリの概要ブレードで、クイック スタートを選択し、マイ Web ページを監視するためのコードを取得します。 スクリプトをコピーします。](./media/app-insights-javascript/02-monitor-web-page.png)
-
-> [!NOTE]
-> "*作業の開始*" エクスペリエンスは、Application Insights リソースの作成時に選んだアプリケーションの種類によって異なります。 実際のアプリに関して、先ほどのスクリーンショットで紹介したようなスクリプトが存在しない場合は、次のスクリプトを使用してください。
 
 ```HTML
 <!-- 
-To collect end-user usage analytics about your application, 
+To collect user behavior analytics about your application, 
 insert the following script into each page you want to track.
 Place this code immediately before the closing </head> tag,
 and before any other scripts. Your first data will appear 
@@ -113,11 +108,8 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
     // Time page load up to execution of first trackPageView().
     overridePageViewDuration: boolean,
 
-    // Set these dynamically for an authenticated user.
-    appUserId: string,
+    // Set dynamically for an authenticated user.
     accountId: string,
-
-
 
 ## <a name="run"></a>アプリを実行する
 Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。 **F5** キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
@@ -129,7 +121,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![In portal.azure.com, open your app's resource and click Settings, Browser](./media/app-insights-javascript/03.png)
 
-*まだデータが表示されませんか?ページの上部にある **[更新]** をクリックします。まだは何も表示されませんか?「[トラブルシューティング](app-insights-troubleshoot-faq.md)」を参照してください。*
+まだデータが表示されませんか?  ページの上部にある **[更新]** をクリックします。 まだは何も表示されませんか? [トラブルシューティング](app-insights-troubleshoot-faq.md)に関するページを参照します。
 
 [ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された [メトリックス エクスプローラーのブレード](app-insights-metrics-explorer.md) です。 時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。 **[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
 
@@ -238,7 +230,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 ## <a name="usage-tracking"></a>使用状況の追跡
 アプリケーションで、ユーザーが何をするのかを知る必要がありますか。
 
-* [使用状況の追跡について](app-insights-web-track-usage.md)
+* [ユーザー動作分析ツールの詳細情報](app-insights-usage-overview.md)
 * [カスタム イベントとメトリックの API の詳細情報](app-insights-api-custom-events-metrics.md)。
 
 ## <a name="video"></a> ビデオ
@@ -249,7 +241,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 
 
 ## <a name="next"></a> 次のステップ
-* [利用状況を追跡する](app-insights-web-track-usage.md)
+* [利用状況を追跡する](app-insights-usage-overview.md)
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
-* [ビルド - 測定 - 学習](app-insights-web-track-usage.md)
+* [ビルド - 測定 - 学習](app-insights-usage-overview.md)
 

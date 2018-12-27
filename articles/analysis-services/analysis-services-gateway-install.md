@@ -1,25 +1,19 @@
 ---
-title: "オンプレミスのデータ ゲートウェイをインストールする | Microsoft Docs"
-description: "オンプレミスのデータ ゲートウェイをインストールして構成する方法について説明します。"
-services: analysis-services
-documentationcenter: 
+title: オンプレミスのデータ ゲートウェイをインストールする | Microsoft Docs
+description: オンプレミスのデータ ゲートウェイをインストールして構成する方法について説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: c2cbe1c60f67c689a38d1585245610a6fa73bff4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: fa089db385995f6c44ea2238c91a3ac59946daae
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407658"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 同じリージョン内の 1 つまたは複数の Azure Analysis Services サーバーがオンプレミスのデータ ソースに接続する場合は、オンプレミスのデータ ゲートウェイが必要です。 ゲートウェイの詳細については、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)に関する記事を参照してください。
@@ -43,7 +37,10 @@ ms.lasthandoff: 02/21/2018
 * 1 台のコンピューターにインストールできるゲートウェイは 1 つだけです。
 * 常に稼働していてスリープ状態にならないコンピューターにゲートウェイをインストールします。
 * ネットワークにワイヤレス接続されているコンピューターにはゲートウェイをインストールしないでください。 パフォーマンスが低下することがあります。
+* ゲートウェイをインストールするときは、コンピューターにサインインしているユーザーアカウントに [サービスとしてログオン] 特権が必要です。 インストールが完了すると、オンプレミスのデータ ゲートウェイ サービスは NT SERVICE\PBIEgwService アカウントを使用して、サービスとしてログオンします。 セットアップ中に、またはセットアップ完了後に [サービス] で別のアカウントを指定できます。 グループ ポリシー設定で、インストール時にサインインしているアカウントと、選択したサービス アカウントの両方に [サービスとしてログオン] 特権が許可されていることを確認してください。
 * ゲートウェイを登録するサブスクリプションと同じ[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)の Azure AD アカウントを使用して Azure にサインインします。 ゲートウェイのインストールと登録では、Azure B2B (guest) アカウントはサポートされません。
+* データ ソースが Azure Virtual Network (VNet) 上にある場合は、[AlwaysUseGateway](analysis-services-vnet-gateway.md) サーバー プロパティを構成する必要があります。
+* ここで説明されている (統合) ゲートウェイは、Azure Germany リージョンではサポートされていません。 代わりに、ポータルでサーバーの **[クイック スタート]** からインストールされた、**Azure Analysis Services 専用のオンプレミス ゲートウェイ**を使用します。 
 
 
 ## <a name="download"></a>ダウンロード
@@ -82,7 +79,7 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 ## <a name="create-resource"></a>Azure ゲートウェイ リソースを作成する
 ゲートウェイをインストールして登録した後、Azure サブスクリプションにゲートウェイ リソースを作成する必要があります。 ゲートウェイを登録するときに使用したのと同じアカウントを使用して Azure にサインインします。
 
-1. Azure ポータルで、**[新しいサービスの作成]** > **[エンタープライズ統合]** > **[オンプレミスのデータ ゲートウェイ]** > **[作成]** をクリックします。
+1. Azure portal で、**[リソースの作成]** > **[統合]** > **[オンプレミスのデータ ゲートウェイ]** の順にクリックします。
 
    ![ゲートウェイ リソースを作成する](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
@@ -100,7 +97,7 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 
     * **インストール名**: ゲートウェイのインストールが既に選択されていない場合は、登録済みのゲートウェイを選択します。 
 
-    完了したら、 **[作成]**をクリックします。
+    完了したら、 **[作成]** をクリックします。
 
 ## <a name="connect-servers"></a>サーバーをゲートウェイ リソースに接続する
 
@@ -119,4 +116,5 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 
 ## <a name="next-steps"></a>次の手順
 * [Analysis Services を管理する](analysis-services-manage.md)   
-* [Azure Analysis Services からデータを取得する](analysis-services-connect.md)
+* [Azure Analysis Services からデータを取得する](analysis-services-connect.md)   
+* [Azure Virtual Network 上のデータソースに対してゲートウェイを使用する](analysis-services-vnet-gateway.md)

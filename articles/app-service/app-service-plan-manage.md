@@ -1,12 +1,12 @@
 ---
-title: "Azure で App Service プランを管理する | Microsoft Docs"
-description: "App Service プランを管理するためのさまざまなタスクを実行する方法について説明します。"
-keywords: "App Service, Azure App Service, スケール, App Service プラン, 変更する, 作成する, 管理する, 管理"
+title: Azure で App Service プランを管理する | Microsoft Docs
+description: App Service プランを管理するためのさまざまなタスクを実行する方法について説明します。
+keywords: App Service, Azure App Service, スケール, App Service プラン, 変更する, 作成する, 管理する, 管理
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 1dfe8a903e19ff524a1c4a0228e6aefcbe9ff183
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f426982163a5e49264bc4f222f6869d9cbb40c89
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166068"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
@@ -34,19 +35,19 @@ ms.lasthandoff: 02/09/2018
 
 1. [Azure Portal](https://portal.azure.com) で **[新規]** > **[Web + モバイル]** の順に選択し、**[Web アプリ]** またはその他の App Service アプリの種類を選択します。
 
-2. 新しいアプリ用に既存の App Service プランを選択するか、プランを作成します。
+1. 新しいアプリ用に既存の App Service プランを選択するか、プランを作成します。
 
    ![Azure Portal でアプリを作成します。][createWebApp]
 
    プランを作成するには:
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[[+] 新規作成]** を選択します。
+   a. **[[+] 新規作成]** を選択します。
 
       ![Create an App Service plan.][createASP] 
 
    b. **[App Service プラン]** に、プランの名前を入力します。
 
-   c. **[場所]**で、適切な場所を選択します。
+   c. **[場所]** で、適切な場所を選択します。
 
    d. **[価格レベル]** で、サービスの適切な価格レベルを選択します。 **[すべて表示]** を選択して、**Free** や **Shared** などの価格オプションをさらに表示します。 価格レベルを選択したら、 **[選択]** をクリックします。
 
@@ -56,26 +57,23 @@ ms.lasthandoff: 02/09/2018
 
 別の App Service プランへのアプリの移動は、移動元プランと移動先プランが "_同じリソース グループおよび同じ地理的リージョン_" に存在している場合に限り可能です。
 
+> [!NOTE]
+> Azure では、新しい App Service プランはそれぞれ、内部的に Web スペースと呼ばれるデプロイ ユニットにデプロイされます。 各リージョンには多数の Web スペースが存在できますが、アプリは同じ Web スペース内に作成されているプラン間でのみ移動できます。 App Service 環境は分離された Web スペースであるため、アプリは同じ App Service 環境内のプラン間で移動できますが、異なる App Service 環境内のプラン間では移動できません。
+>
+> プランを作成するときに Web スペースを指定することはできませんが、あるプランが既存のプランと確実に同じ Web スペース内に作成されるようにすることは可能です。 簡単に言えば、同じリソース グループとリージョンの組み合わせで作成されるプランはすべて同じ Web スペースにデプロイされます。 たとえば、リソース グループ A とリージョン B 内にプランを作成した場合は、その後でリソース グループ A とリージョン B 内に作成するすべてのプランが同じ Web スペースにデプロイされます。 プランは作成された後に Web スペースを移動できないため、あるプランを別のリソース グループに移動することによって、別のプランと "同じ Web スペース" に移動することはできないことに注意してください。
+> 
+
 1. [Azure Portal](https://portal.azure.com) で、移動するアプリを参照します。
 
-2. メニューで、**[App Service プラン]** セクションを探します。
+1. メニューで、**[App Service プラン]** セクションを探します。
 
-3. **[App Service プランの変更]** を選択して **[App Service プラン]** セレクターを開きます。
+1. **[App Service プランの変更]** を選択して **[App Service プラン]** セレクターを開きます。
 
    ![App Service plan selector.][change] 
 
-4. **[App Service プラン]** セレクターで、このアプリの移動先の既存プランを選択します。   
+1. **[App Service プラン]** セレクターで、このアプリの移動先の既存プランを選択します。   
 
-> [!IMPORTANT]
-> **[Select App Service plan]\(App Service プランの選択\)** ページは、次の条件でフィルター処理されます。 
-> - 同じリソース グループに存在する 
-> - 同じ地理的リージョンに存在する 
-> - 同じ Web スペースに存在する  
-> 
-> "_Web スペース_" は、サーバー リソースのグループ化を定義する App Service 内の論理コンストラクトです。 地理的リージョン (米国西部など) には、App Service の顧客を割り当てる目的で、さまざまな Web スペースが含まれています。 現在のところ、App Service リソースを Web スペース間で移動することはできません。 
-> 
-
-[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
+**[Select App Service plan] (App Service プランの選択)** ページには、現在のアプリの App Service プランと同じリソース グループおよび地理的リージョン内にあるプランのみが表示されます。
 
 各プランには価格レベルが割り当てられています。 たとえば、サイトを **Free** レベルから **Standard** レベルに移動すると、サイトに割り当てられたすべてのアプリで **Standard** レベルの機能とリソースを使うことができるようになります。 ただし、高いレベルのプランから低いレベルのプランにアプリを移動すると、特定の機能にアクセスできなくなります。 移動後のプランで利用できない機能をアプリが使っている場合、該当する機能を示すエラーが表示されます。 
 

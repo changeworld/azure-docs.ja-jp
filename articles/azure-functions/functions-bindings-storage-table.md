@@ -3,23 +3,20 @@ title: Azure Functions における Azure Table Storage のバインド
 description: Azure Functions で Azure Table のバインドを使用する方法について説明します。
 services: functions
 documentationcenter: na
-author: tdykstra
-manager: cfowler
-editor: ''
-tags: ''
+author: craigshoemaker
+manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 11/08/2017
-ms.author: tdykstra
-ms.openlocfilehash: e6d2891a8ea531bf5c7cc7e1c74b890e01f2b56b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.date: 09/03/2018
+ms.author: cshoe
+ms.openlocfilehash: 3fc31306af1c85a67a1afca8a34be82a711f2527
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999530"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
@@ -27,11 +24,19 @@ ms.lasthandoff: 03/30/2018
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>パッケージ
+## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-Table ストレージ バインディングは [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet パッケージで提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/) GitHub リポジトリにあります。
+Table ストレージ バインディングは [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet パッケージ、バージョン 2.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
+
+## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
+
+Table ストレージ バインディングは [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub リポジトリにあります。
+
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="input"></a>入力
 
@@ -41,14 +46,17 @@ Azure Table Storage の入力バインドを使用して、Azure Storage アカ�
 
 言語固有の例をご覧ください。
 
-* [C# 単一エンティティの読み取り](#input---c-example-1)
-* [C# 複数エンティティの読み取り](#input---c-example-2)
-* [C# スクリプト - 単一エンティティの読み取り](#input---c-script-example-1)
-* [C# スクリプト - 複数エンティティの読み取り](#input---c-script-example-2)
-* [F#](#input---f-example-2)
+* [C# 単一エンティティの読み取り](#input---c-example---one-entity)
+* [C# IQueryable にバインド](#input---c-example---iqueryable)
+* [C# CloudTable にバインド](#input---c-example---cloudtable)
+* [C# スクリプト - 単一エンティティの読み取り](#input---c-script-example---one-entity)
+* [C# スクリプト - IQueryable にバインド](#input---c-script-example---iqueryable)
+* [C# スクリプト - CloudTable にバインド](#input---c-script-example---cloudtable)
+* [F#](#input---f-example)
 * [JavaScript](#input---javascript-example)
+* [Java](#input---java-example)
 
-### <a name="input---c-example-1"></a>入力 - C# の例 1
+### <a name="input---c-example---one-entity"></a>入力 - C# 例 - 単一エンティティ
 
 次の例は、1 つのテーブル行を読み取る [C# 関数](functions-dotnet-class-library.md)を示しています。 
 
@@ -68,14 +76,14 @@ public class TableStorage
     public static void TableInput(
         [QueueTrigger("table-items")] string input, 
         [Table("MyTable", "MyPartition", "{queueTrigger}")] MyPoco poco, 
-        TraceWriter log)
+        ILogger log)
     {
-        log.Info($"PK={poco.PartitionKey}, RK={poco.RowKey}, Text={poco.Text}");
+        log.LogInformation($"PK={poco.PartitionKey}, RK={poco.RowKey}, Text={poco.Text}");
     }
 }
 ```
 
-### <a name="input---c-example-2"></a>入力 - C# の例 2
+### <a name="input---c-example---iqueryable"></a>入力 - C# 例 - IQueryable
 
 次の例は、複数のテーブル行を読み取る [C# 関数](functions-dotnet-class-library.md)を示しています。 `MyPoco` クラスは、`TableEntity` から派生しています。
 
@@ -91,17 +99,69 @@ public class TableStorage
     public static void TableInput(
         [QueueTrigger("table-items")] string input, 
         [Table("MyTable", "MyPartition")] IQueryable<MyPoco> pocos, 
-        TraceWriter log)
+        ILogger log)
     {
         foreach (MyPoco poco in pocos)
         {
-            log.Info($"PK={poco.PartitionKey}, RK={poco.RowKey}, Text={poco.Text}");
+            log.LogInformation($"PK={poco.PartitionKey}, RK={poco.RowKey}, Text={poco.Text}");
         }
     }
 }
 ```
 
-### <a name="input---c-script-example-1"></a>入力 - C# スクリプトの例 1
+### <a name="input---c-example---cloudtable"></a>入力 - C# 例 - CloudTable
+
+`IQueryable` は [Functions v2 ランタイム](functions-versions.md)ではサポートされていません。 代わりに、Azure Storage SDK で `CloudTable` メソッド パラメーターを使用してテーブルを読み取ります。 Azure Functions ログ テーブルにクエリを実行する 2.x 関数の例:
+
+```csharp
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
+using Microsoft.WindowsAzure.Storage.Table;
+using System;
+using System.Threading.Tasks;
+
+namespace FunctionAppCloudTable2
+{
+    public class LogEntity : TableEntity
+    {
+        public string OriginalName { get; set; }
+    }
+    public static class CloudTableDemo
+    {
+        [FunctionName("CloudTableDemo")]
+        public static async Task Run(
+            [TimerTrigger("0 */1 * * * *")] TimerInfo myTimer, 
+            [Table("AzureWebJobsHostLogscommon")] CloudTable cloudTable,
+            ILogger log)
+        {
+            log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+
+            TableQuery<LogEntity> rangeQuery = new TableQuery<LogEntity>().Where(
+                TableQuery.CombineFilters(
+                    TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, 
+                        "FD2"),
+                    TableOperators.And,
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThan, 
+                        "t")));
+
+            // Execute the query and loop through the results
+            foreach (LogEntity entity in 
+                await cloudTable.ExecuteQuerySegmentedAsync(rangeQuery, null))
+            {
+                log.LogInformation(
+                    $"{entity.PartitionKey}\t{entity.RowKey}\t{entity.Timestamp}\t{entity.OriginalName}");
+            }
+        }
+    }
+}
+```
+
+CloudTable オブジェクトの使用方法の詳細については、[Azure Table ストレージの概要](../cosmos-db/table-storage-how-to-use-dotnet.md)ページをご覧ください。
+
+`CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
+
+### <a name="input---c-script-example---one-entity"></a>入力 - C# スクリプトの例 - 単一エンティティ
 
 次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
 
@@ -136,10 +196,10 @@ public class TableStorage
 C# スクリプト コードを次に示します。
 
 ```csharp
-public static void Run(string myQueueItem, Person personEntity, TraceWriter log)
+public static void Run(string myQueueItem, Person personEntity, ILogger log)
 {
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-    log.Info($"Name in Person entity: {personEntity.Name}");
+    log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
+    log.LogInformation($"Name in Person entity: {personEntity.Name}");
 }
 
 public class Person
@@ -150,7 +210,7 @@ public class Person
 }
 ```
 
-### <a name="input---c-script-example-2"></a>入力 - C# スクリプトの例 2
+### <a name="input---c-script-example---iqueryable"></a>入力 - C# スクリプトの例 - IQueryable
 
 次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は、キュー メッセージに指定されているパーティション キーのエンティティを読み取ります。
 
@@ -185,13 +245,14 @@ public class Person
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
 using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.Extensions.Logging;
 
-public static void Run(string myQueueItem, IQueryable<Person> tableBinding, TraceWriter log)
+public static void Run(string myQueueItem, IQueryable<Person> tableBinding, ILogger log)
 {
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+    log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
     foreach (Person person in tableBinding.Where(p => p.PartitionKey == myQueueItem).ToList())
     {
-        log.Info($"Name: {person.Name}");
+        log.LogInformation($"Name: {person.Name}");
     }
 }
 
@@ -200,6 +261,69 @@ public class Person : TableEntity
     public string Name { get; set; }
 }
 ```
+
+### <a name="input---c-script-example---cloudtable"></a>入力 - C# スクリプトの例 - CloudTable
+
+`IQueryable` は [Functions v2 ランタイム](functions-versions.md)ではサポートされていません。 代わりに、Azure Storage SDK で `CloudTable` メソッド パラメーターを使用してテーブルを読み取ります。 Azure Functions ログ テーブルにクエリを実行する 2.x 関数の例:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "myTimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */1 * * * *"
+    },
+    {
+      "name": "cloudTable",
+      "type": "table",
+      "connection": "AzureWebJobsStorage",
+      "tableName": "AzureWebJobsHostLogscommon",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+```csharp
+#r "Microsoft.WindowsAzure.Storage"
+using Microsoft.WindowsAzure.Storage.Table;
+using System;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+
+public static async Task Run(TimerInfo myTimer, CloudTable cloudTable, ILogger log)
+{
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+
+    TableQuery<LogEntity> rangeQuery = new TableQuery<LogEntity>().Where(
+    TableQuery.CombineFilters(
+        TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, 
+            "FD2"),
+        TableOperators.And,
+        TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThan, 
+            "a")));
+
+    // Execute the query and loop through the results
+    foreach (LogEntity entity in 
+    await cloudTable.ExecuteQuerySegmentedAsync(rangeQuery, null))
+    {
+        log.LogInformation(
+            $"{entity.PartitionKey}\t{entity.RowKey}\t{entity.Timestamp}\t{entity.OriginalName}");
+    }
+}
+
+public class LogEntity : TableEntity
+{
+    public string OriginalName { get; set; }
+}
+```
+
+CloudTable オブジェクトの使用方法の詳細については、[Azure Table ストレージの概要](../cosmos-db/table-storage-how-to-use-dotnet.md)ページをご覧ください。
+
+`CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
 ### <a name="input---f-example"></a>入力 - F# の例
 
@@ -244,13 +368,13 @@ type Person = {
 }
 
 let Run(myQueueItem: string, personEntity: Person) =
-    log.Info(sprintf "F# Queue trigger function processed: %s" myQueueItem)
-    log.Info(sprintf "Name in Person entity: %s" personEntity.Name)
+    log.LogInformation(sprintf "F# Queue trigger function processed: %s" myQueueItem)
+    log.LogInformation(sprintf "Name in Person entity: %s" personEntity.Name)
 ```
 
 ### <a name="input---javascript-example"></a>入力 - JavaScript の例
 
-次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [JavaScript コード] (functions-reference-node.md) を示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
+次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [JavaScript コード](functions-reference-node.md)を示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
 
 *function.json* ファイルには `partitionKey` と `rowKey` が指定されています。 `rowKey` 値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
 
@@ -290,11 +414,30 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
+### <a name="input---java-example"></a>入力 - Java の例
+
+次の例では、テーブル ストレージ内の指定したパーティション内にある項目の合計数を返す、HTTP によってトリガーされる関数を示します。
+
+```java
+@FunctionName("getallcount")
+public int run(
+   @HttpTrigger(name = "req",
+                 methods = {"get"},
+                 authLevel = AuthorizationLevel.ANONYMOUS) Object dummyShouldNotBeUsed,
+   @TableInput(name = "items",
+                tableName = "mytablename",  partitionKey = "myparkey",
+                connection = "myconnvarname") MyItem[] items
+) {
+    return items.length;
+}
+```
+
+
 ## <a name="input---attributes"></a>入力 - 属性
  
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、以下の属性を使用してテーブル入力バインディングを構成します。
 
-* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)
+* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)
 
   この属性のコンストラクターは、テーブル名、パーティション キー、および行キーを受け取ります。 次の例のように、out パラメーターまたは関数の戻り値で使用できます。
 
@@ -303,7 +446,7 @@ module.exports = function (context, myQueueItem) {
   public static void Run(
       [QueueTrigger("table-items")] string input, 
       [Table("MyTable", "Http", "{queueTrigger}")] MyPoco poco, 
-      TraceWriter log)
+      ILogger log)
   {
       ...
   }
@@ -316,7 +459,7 @@ module.exports = function (context, myQueueItem) {
   public static void Run(
       [QueueTrigger("table-items")] string input, 
       [Table("MyTable", "Http", "{queueTrigger}", Connection = "StorageConnectionAppSetting")] MyPoco poco, 
-      TraceWriter log)
+      ILogger log)
   {
       ...
   }
@@ -348,6 +491,10 @@ module.exports = function (context, myQueueItem) {
 * クラスに適用される `StorageAccount` 属性。
 * 関数アプリの既定のストレージ アカウント ("AzureWebJobsStorage" アプリ設定)。
 
+## <a name="input---java-annotations"></a>入力 - Java の注釈
+
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値がテーブル ストレージに由来するパラメーターで `@TableInput` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または Optional<T> を使用した null 許容値で使用できます。 
+
 ## <a name="input---configuration"></a>入力 - 構成
 
 次の表は、*function.json* ファイルと `Table` 属性で設定したバインド構成のプロパティを説明しています。
@@ -378,8 +525,8 @@ Table Storage の入力バインドは、次のシナリオをサポートして
 
   メソッド パラメーター `IQueryable<T> <paramName>` を使用して、テーブル データにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 `T` は、`ITableEntity` を実装する型か、`TableEntity` から派生する型にする必要があります。 必要なフィルター処理があれば、`IQueryable` メソッドを使用して実行します。 `partitionKey`、`rowKey`、`filter`、`take` の各プロパティは、このシナリオでは使用しません。  
 
-> [!NOTE]
-> `IQueryable` は [Functions v2 ランタイム](functions-versions.md)ではサポートされていません。 代わりに、Azure Storage SDK で [CloudTable paramName メソッド パラメーターを使用](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)して、テーブルを読み取ります。
+  > [!NOTE]
+  > `IQueryable` は [Functions v2 ランタイム](functions-versions.md)ではサポートされていません。 代わりに、Azure Storage SDK で [CloudTable paramName メソッド パラメーターを使用](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)して、テーブルを読み取ります。 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
 * **JavaScript で 1 行または複数行を読み取る**
 
@@ -390,7 +537,7 @@ Table Storage の入力バインドは、次のシナリオをサポートして
 Azure Table Storage の出力バインドを使用して、Azure Storage アカウントのテーブルにエンティティを書き込みます。
 
 > [!NOTE]
-> この出力バインドでは、既存のエンティティの更新はサポートされていません。 既存のエンティティを更新するには、[Azure Storage SDK](https://docs.microsoft.com/en-us/azure/cosmos-db/table-storage-how-to-use-dotnet#replace-an-entity) の `TableOperation.Replace` 操作を使ってください。   
+> この出力バインドでは、既存のエンティティの更新はサポートされていません。 既存のエンティティを更新するには、[Azure Storage SDK](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-dotnet#replace-an-entity) の `TableOperation.Replace` 操作を使ってください。   
 
 ## <a name="output---example"></a>出力 - 例
 
@@ -417,9 +564,9 @@ public class TableStorage
 
     [FunctionName("TableOutput")]
     [return: Table("MyTable")]
-    public static MyPoco TableOutput([HttpTrigger] dynamic input, TraceWriter log)
+    public static MyPoco TableOutput([HttpTrigger] dynamic input, ILogger log)
     {
-        log.Info($"C# http trigger function processed: {input.Text}");
+        log.LogInformation($"C# http trigger function processed: {input.Text}");
         return new MyPoco { PartitionKey = "Http", RowKey = Guid.NewGuid().ToString(), Text = input.Text };
     }
 }
@@ -456,11 +603,11 @@ public class TableStorage
 C# スクリプト コードを次に示します。
 
 ```csharp
-public static void Run(string input, ICollector<Person> tableBinding, TraceWriter log)
+public static void Run(string input, ICollector<Person> tableBinding, ILogger log)
 {
     for (int i = 1; i < 10; i++)
         {
-            log.Info($"Adding Person entity {i}");
+            log.LogInformation($"Adding Person entity {i}");
             tableBinding.Add(
                 new Person() { 
                     PartitionKey = "Test", 
@@ -518,9 +665,9 @@ type Person = {
   Name: string
 }
 
-let Run(input: string, tableBinding: ICollector<Person>, log: TraceWriter) =
+let Run(input: string, tableBinding: ICollector<Person>, log: ILogger) =
     for i = 1 to 10 do
-        log.Info(sprintf "Adding Person entity %d" i)
+        log.LogInformation(sprintf "Adding Person entity %d" i)
         tableBinding.Add(
             { PartitionKey = "Test"
               RowKey = i.ToString()
@@ -576,7 +723,7 @@ module.exports = function (context) {
 
 ## <a name="output---attributes"></a>出力 - 属性
 
-[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs) を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs) を使用します。
 
 この属性のコンストラクターは、テーブル名を受け取ります。 次の例のように、`out` パラメーターまたは関数の戻り値で使用できます。
 
@@ -585,7 +732,7 @@ module.exports = function (context) {
 [return: Table("MyTable")]
 public static MyPoco TableOutput(
     [HttpTrigger] dynamic input, 
-    TraceWriter log)
+    ILogger log)
 {
     ...
 }
@@ -598,7 +745,7 @@ public static MyPoco TableOutput(
 [return: Table("MyTable", Connection = "StorageConnectionAppSetting")]
 public static MyPoco TableOutput(
     [HttpTrigger] dynamic input, 
-    TraceWriter log)
+    ILogger log)
 {
     ...
 }
@@ -636,7 +783,7 @@ Table Storage の出力バインドは、次のシナリオをサポートして
 
   C# または C# スクリプトでは、メソッド パラメーター `ICollector<T> paramName` または `IAsyncCollector<T> paramName` を使用して、出力テーブル エンティティにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 `T` は、追加するエンティティのスキーマを指定します。 `T` は `TableEntity` から派生するか、`ITableEntity` を実装するのが一般的ですが、必ずしもそうとは限りません。 *function.json* と `Table` 属性コンストラクターのパーティション キーと行キー値は、このシナリオでは使用しません。
 
-  代わりに、Azure Storage SDK で `CloudTable paramName` メソッド パラメーターを使用してテーブルに書き込みます。
+  代わりに、Azure Storage SDK で `CloudTable` メソッド パラメーターを使用してテーブルに書き込みます。 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。 `CloudTable` にバインドするコード例については、この記事の前半で紹介した [C#](#input---c-example---cloudtable) または [C# スクリプト](#input---c-script-example---cloudtable)の入力バインド例を参照してください。
 
 * **JavaScript で 1 行または複数行を書き込む**
 

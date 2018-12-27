@@ -1,17 +1,20 @@
 ---
-title: "Azure で Terraform を使用する"
-description: "Terraform を使用した Azure インフラストラクチャのバージョン管理およびデプロイの概要"
-ms.service: virtual-machines-linux
-keywords: "Terraform, DevOps, 概要, 計画, 適用, 自動化"
-author: binderjoe
-ms.author: jbinder
-ms.date: 10/19/2017
-ms.topic: article
-ms.openlocfilehash: 667752d8830cdac5e2338fd3ed7904917123be94
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+title: Azure で Terraform を使用する
+description: Terraform を使用した Azure インフラストラクチャのバージョン管理およびデプロイの概要
+services: terraform
+ms.service: terraform
+keywords: Terraform, DevOps, 概要, 計画, 適用, 自動化
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
+ms.date: 08/31/2018
+ms.openlocfilehash: dd340238f8a70c1dd0cfc172976bef6b1ad282b1
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665631"
 ---
 # <a name="terraform-with-azure"></a>Azure での Terraform
 
@@ -40,7 +43,7 @@ Terraform に用意されているコマンド ライン インターフェイ�
 
 Terraform は、複数クラウドのシナリオによく使用されるツールです。このシナリオでは、Azure に加えて、その他のクラウド プロバイダーまたはオンプレミス データ センターにも類似のインフラストラクチャがデプロイされます。 これにより、開発者は複数のクラウド プロバイダー上のインフラストラクチャを同じツールと構成ファイルを使用して管理できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで Terraform の概要と利点に関する説明は終了です。推奨する次の手順は、以下のとおりです。
 

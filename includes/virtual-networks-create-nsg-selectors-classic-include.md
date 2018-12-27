@@ -2,22 +2,22 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-network
-author: jimdial
+author: genlin
 ms.service: virtual-network
 ms.topic: include
 ms.date: 03/30/2018
-ms.author: jdial
+ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: a882c52813447ce39db876741d1b6509c739c317
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 987ac064432dc823dad3b8df9d3b59e71b4c2ee9
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313498"
 ---
 > [!div class="op_single_selector"]
-> * [ポータル](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+> * [ポータル](../articles/virtual-network/tutorial-filter-network-traffic.md)
 > * [PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md)
 > * [Azure CLI](../articles/virtual-network/tutorial-filter-network-traffic-cli.md)
-> * [ARM テンプレート](../articles/virtual-network/virtual-networks-create-nsg-arm-template.md)
 > * [PowerShell (クラシック)](../articles/virtual-network/virtual-networks-create-nsg-classic-ps.md)
 > * [Azure CLI (クラシック)](../articles/virtual-network/virtual-networks-create-nsg-classic-cli.md)

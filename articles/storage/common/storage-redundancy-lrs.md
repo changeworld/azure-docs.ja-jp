@@ -3,20 +3,21 @@ title: Azure Storage で低コストの冗長性を実現するローカル冗�
 description: 既定では、新しい Azure Storage アカウントはレプリケーションにローカル冗長ストレージ (LRS) を使用します。 LRS は最もコストをかけずにレプリケーションを実現できるオプションです。 LRS は、データセンター内のハードウェア障害だけでなく、データセンターレベルの災害からも保護できます。
 services: storage
 author: tolandmike
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 10/24/2018
 ms.author: jeking
-ms.openlocfilehash: ae8bc3ac24d8c3012c9643c33e0a5fe5c7f11b07
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: 101c7a9bdcb5337f06bb3e2464ecefeb5564d4f3
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739959"
 ---
 # <a name="locally-redundant-storage-lrs-low-cost-data-redundancy-for-azure-storage"></a>ローカル冗長ストレージ (LRS): Azure Storage の低コストのデータ冗長性
 
-[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
+[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-lrs.md)]
 
 ## <a name="see-also"></a>関連項目
 

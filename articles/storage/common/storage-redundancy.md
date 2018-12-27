@@ -3,16 +3,17 @@ title: Azure Storage のデータ レプリケーション | Microsoft Docs
 description: Microsoft Azure Storage アカウント内のデータは、持続性と高可用性を保証するため、レプリケートされます。 レプリケーション オプションには、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) などがあります。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 01/21/2018
+ms.date: 10/08/2018
 ms.author: tamram
-ms.openlocfilehash: bdb9bfaa85f526af0c5e42294a75664fa7137849
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: 7afbdaba46674b69aa601355e80160e7c72ff373
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240972"
 ---
 # <a name="azure-storage-replication"></a>Azure Storage のレプリケーション
 
@@ -31,25 +32,29 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 
 次の表は、特定の種類のイベント (または同様の影響を受けるイベント) に対して、各レプリケーション戦略が提供する持続性と可用性の範囲について概要を説明したものです。
 
-| シナリオ | LRS | ZRS | GRS | RA-GRS |
-|:--- |:--- |:--- |:--- |:--- |
-| データ センター内でノードを使用できない |[はい] |はい |はい |[はい]
-| データ センター全体 (ゾーンまたは非ゾーン) が使用できなくなる |いいえ  |可能  |はい |[はい] |
-| リージョン全体の停止 |いいえ  |いいえ  |可能  |[はい] |
-| リージョン全体が使用できなくなった場合に (リモートの geo 冗長化されたリージョンの) データへの読み取りアクセス |いいえ  |いいえ  |いいえ  |[はい] |
-| 1 年にわたって ___ のオブジェクトの持続性を提供するように設計 |99.999999999% (イレブン ナイン) 以上|99.9999999999% (トゥエルブ ナイン) 以上|99.99999999999999% (シックスティーン ナイン) 以上|99.99999999999999% (シックスティーン ナイン) 以上|
-| ___ のストレージ アカウントの種類で使用可能 |GPv1、GPv2、BLOB |GPv2 |GPv1、GPv2、BLOB |GPv1、GPv2、BLOB
+| シナリオ                                                                                                 | LRS                             | ZRS                              | GRS                                  | RA-GRS                               |
+| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| データ センター内でノードを使用できない                                                                 | [はい]                             | はい                              | はい                                  | [はい]                                  |
+| データ センター全体 (ゾーンまたは非ゾーン) が使用できなくなる                                           | いいえ                               | 可能                               | はい                                  | [はい]                                  |
+| リージョン全体の停止                                                                                     | いいえ                               | いいえ                                | 可能                                   | [はい]                                  |
+| リージョン全体が使用できなくなった場合に (リモートの geo 冗長化されたリージョンの) データへの読み取りアクセス | いいえ                               | いいえ                                | いいえ                                    | [はい]                                  |
+| 指定された 1 年間にわたって \_\_ オブジェクトの持続性を提供するように設計                                          | 99.999999999% (イレブン ナイン) 以上 | 99.9999999999% (トゥエルブ ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 |
+| サポートされるストレージ アカウントの種類                                                                   | GPv2、GPv1、BLOB                | GPv2                             | GPv2、GPv1、BLOB                     | GPv2、GPv1、BLOB                     |
+| 読み取り要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.99% 以上 (クール アクセス層の場合、99.9%) |
+| 書き込み要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) |
 
-さまざまな冗長オプションの料金情報については、[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。
+さまざまな冗長オプションの料金情報については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページをご覧ください。 
+
+Azure Storage の持続性と可用性の保証については、[Azure Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/) に関するページをご覧ください。
 
 > [!NOTE]
 > Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。 Premium Storage については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)」をご覧ください。
 
 ## <a name="changing-replication-strategy"></a>レプリケーション戦略の変更
-[Azure Portal](https://portal.azure.com/)、[Azure Powershell](storage-powershell-guide-full.md)、[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)、多くの [Azure クライアント ライブラリ](https://docs.microsoft.com/en-us/azure/index?view=azure-dotnet#pivot=sdkstools)のいずれかを使用して、ストレージ アカウントのレプリケーション戦略を変更できます。 使用しているストレージ アカウントのレプリケーションの種類を変更してもダウンタイムは発生しません。
+[Azure Portal](https://portal.azure.com/)、[Azure Powershell](storage-powershell-guide-full.md)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)、多くの [Azure クライアント ライブラリ](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools)のいずれかを使用して、ストレージ アカウントのレプリケーション戦略を変更できます。 使用しているストレージ アカウントのレプリケーションの種類を変更してもダウンタイムは発生しません。
 
    > [!NOTE]
-   > 現在、Azure Portal または API を使用してアカウントを ZRS に変換することはできません。 ただし、ZRS の一般公開後に、LRS、GRS、RA-GRS から ZRS への移行をサポートする予定です。 詳細については、[ゾーン冗長ストレージ (ZRS)](storage-redundancy-zrs.md) に関するページを参照してください。
+   > 現在、Azure Portal または API を使用してアカウントを ZRS に変換することはできません。 アカウントのレプリケーションを ZRS に変換する場合は、[ゾーン冗長ストレージ (ZRS)](storage-redundancy-zrs.md) に関するページを参照してください。
     
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>アカウントのレプリケーション戦略を変更するためにコストはかかりますか
 変換パスによって変わります。 最も冗長サービスのコストが低いものから高いサービスの順に並べると、LRS、ZRS、GRS、RA-GRS があります。 たとえば、LRS *から*何かに移行する場合、より高度な冗長レベルに移行することになるので、追加料金が発生します。 GRS または RA-GRS *に*移行する場合、(プライマリ リージョン内の) データがリモートのセカンダリ リージョンにレプリケートされているため、送信帯域幅の料金がかかります。 これは初期設定時に 1 回かかる料金です。 データがコピーされた後に、追加の変換料金はかかりません。 新しいデータや既存のデータへの更新をレプリケートする場合にのみ課金されます。 帯域幅の料金の詳細については、[Azure Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
@@ -63,5 +68,5 @@ GRS から LRS に変更する場合、追加のコストは発生しません�
 - [geo 冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)
 - [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)
 - [RA-GRS ストレージを使用した高可用性アプリケーションの設計](../storage-designing-ha-apps-with-ragrs.md)
-- [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [SOSP ペーパー - Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [SOSP ペーパー - Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

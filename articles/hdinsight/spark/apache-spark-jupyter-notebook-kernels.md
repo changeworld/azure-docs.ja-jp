@@ -1,27 +1,21 @@
 ---
-title: "Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル | Microsoft Docs"
-description: "Azure HDInsight 上の Spark クラスターで使用可能な Jupyter Notebook 用の PySpark、PySpark3、および Spark カーネルについて説明します。"
-keywords: "spark 上の jupyter notebook,jupyter spark"
+title: Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル
+description: Azure HDInsight 上の Spark クラスターで使用可能な Jupyter Notebook 用の PySpark、PySpark3、および Spark カーネルについて説明します。
+keywords: spark 上の jupyter notebook,jupyter spark
 services: hdinsight
-documentationcenter: 
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 0719e503-ee6d-41ac-b37e-3d77db8b121b
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: nitinme
-ms.openlocfilehash: 87e60bcc097157c733c1e08356b7cd9ea48bb868
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: hrasheed
+ms.openlocfilehash: d3694d49256b9844f6e3a76ce83f53be4b42ca48
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006092"
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル 
 
@@ -80,7 +74,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
    
     次の表は、カーネルで使用できるさまざまなマジックを一覧にしたものです。
 
-   | マジック | 例 | [説明] |
+   | マジック | 例 | 説明 |
    | --- | --- | --- |
    | help |`%%help` |利用できるすべてのマジック、その例と説明から構成されるテーブルを生成します。 |
    | info |`%%info` |現在の Livy エンドポイントのセッション情報を出力します。 |
@@ -100,7 +94,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 ## <a name="parameters-supported-with-the-sql-magic"></a>%%sql マジックでサポートされるパラメーター
 `%%sql` マジックでは、クエリの実行時に受け取る出力の種類の制御に使用できる、さまざまなパラメーターがサポートされます。 次の表に、出力を示します。
 
-| パラメーター | 例 | [説明] |
+| パラメーター | 例 | 説明 |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |クエリの結果を [Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化するには、このパラメーターを使用します。 データ フレーム変数の名前は、指定した変数の名前です。 |
 | パラメーター |`-q` |セルの視覚化をオフにするには、これを使用します。 セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、 `-q -o <VARIABLE>`を使用します。 (たとえば、`CREATE TABLE` ステートメントのような、SQL クエリを実行するために) 結果をキャプチャせずに視覚化をオフにする必要がある場合、`-o` 引数を指定せずに `-q` を使用します。 |

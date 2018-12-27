@@ -1,12 +1,25 @@
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: 5f7cbdd98d25855e9b8bb102413bd71148193318
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50132926"
+---
 ### <a name="server-auth"></a>方法: プロバイダーでの認証 (サーバー フロー)
 Mobile Apps によってアプリの認証プロセスを管理するには、アプリを ID プロバイダーに登録する必要があります。 その後、Azure App Service 内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。
 詳細については、チュートリアル「 [アプリへの認証の追加](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md)」を参照してください。
 
-ID プロバイダーを登録したら、プロバイダーの名前を指定して `.login()` メソッドを呼び出します。 たとえば、Facebook にログインするには、次のコードを使用します。
+ID プロバイダーを登録したら、プロバイダーの名前を指定して `.login()` メソッドを呼び出します。 たとえば、Facebook にサインインするには、次のコードを使用します。
 
 ```
 client.login("facebook").done(function (results) {
-     alert("You are now logged in as: " + results.userId);
+     alert("You are now signed in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
 });
@@ -17,9 +30,9 @@ client.login("facebook").done(function (results) {
 > [!NOTE]
 > 現在、サーバー フローでは Google 認証が正しく機能しません。  Google の認証には、[クライアント フロー](#client-auth)を使用する必要があります。
 
-この場合は、Azure App Service が OAuth 2.0 認証フローを管理します。  選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後で App Service 認証トークンを生成します。 login 関数は、完了すると、userId フィールドのユーザー ID と authenticationToken フィールドの App Service 認証トークンの両方を公開する JSON オブジェクトを返します。 このトークンをキャッシュし、有効期限が切れるまで再利用できます。
+この場合は、Azure App Service が OAuth 2.0 認証フローを管理します。  選択されたプロバイダーのサインイン ページを表示し、ID プロバイダーでのサインインが成功した後で App Service 認証トークンを生成します。 login 関数は、完了すると、userId フィールドのユーザー ID と authenticationToken フィールドの App Service 認証トークンの両方を公開する JSON オブジェクトを返します。 このトークンをキャッシュし、有効期限が切れるまで再利用できます。
 
-###<a name="client-auth"></a>方法: プロバイダーでの認証 (クライアント フロー)
+### <a name="client-auth"></a>方法: プロバイダーでの認証 (クライアント フロー)
 
 アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のために App Service に提供することもできます。 このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
 
@@ -32,7 +45,7 @@ client.login(
      "facebook",
      {"access_token": token})
 .done(function (results) {
-     alert("You are now logged in as: " + results.userId);
+     alert("You are now signed in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
 });
@@ -50,7 +63,7 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
             "microsoftaccount",
             {"authenticationToken": result.session.authentication_token})
       .done(function(results){
-            alert("You are now logged in as: " + results.userId);
+            alert("You are now signed in as: " + results.userId);
       },
       function(error){
             alert("Error: " + err);
@@ -61,7 +74,7 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
 
 この例では、トークンを Live Connect から取得します。このトークンは、login 関数を呼び出すことによって、App Service に渡されます。
 
-###<a name="auth-getinfo"></a>方法: 認証されたユーザーに関する情報の取得
+### <a name="auth-getinfo"></a>方法: 認証されたユーザーに関する情報の取得
 
 認証情報は、AJAX ライブラリによる HTTP 呼び出しを使用して `/.auth/me` エンドポイントから取得できます。  `X-ZUMO-AUTH` ヘッダーを認証トークンに設定していることを確認してください。  認証トークンは `client.currentUser.mobileServiceAuthenticationToken`に格納されています。  たとえば、次のフェッチ API を使用します。
 

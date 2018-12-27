@@ -1,6 +1,6 @@
 ---
 title: 'ExpressRoute 回線への仮想ネットワークのリンク: CLI: Azure | Microsoft Docs'
-description: このドキュメントでは、Resource Manager デプロイメント モデルと CLI を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
+description: このドキュメントでは、Resource Manager デプロイ モデルと CLI を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
 services: expressroute
 documentationcenter: na
 author: cherylmc
@@ -15,27 +15,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: anzaman,cherylmc
-ms.openlocfilehash: 5e8d1739aa3d7f5be6c6450edcad43bc83db71fb
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1db8a85f40182d954fdd711b203a6ee42aecc694
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248913"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
-この記事では、CLI を使用して仮想ネットワーク (VNet) を Azure ExpressRoute 回線にリンクする方法について説明します。 Azure CLI を使用してリンクするには、仮想ネットワークが Resource Manager デプロイメント モデルを使って作成されている必要があります。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。 別の方法を使用して VNet を ExpressRoute 回線に接続する場合は、次の一覧から記事を選択してください。
+この記事では、CLI を使用して仮想ネットワーク (VNet) を Azure ExpressRoute 回線にリンクする方法について説明します。 Azure CLI を使用してリンクするには、仮想ネットワークが Resource Manager デプロイ モデルを使って作成されている必要があります。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。 別の方法を使用して VNet を ExpressRoute 回線に接続する場合は、次の一覧から記事を選択してください。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [ビデオ - Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (クラシック)](expressroute-howto-linkvnet-classic.md)
 > 
 
 ## <a name="configuration-prerequisites"></a>構成の前提条件
 
-* 最新バージョンのコマンド ライン インターフェイス (CLI) が必要となります。 詳細については、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* 最新バージョンのコマンド ライン インターフェイス (CLI) が必要となります。 詳細については、「 [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認する必要があります。
 

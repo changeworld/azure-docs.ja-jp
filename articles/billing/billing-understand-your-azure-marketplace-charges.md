@@ -1,29 +1,30 @@
 ---
-title: "Azure 外部サービスの課金について | Microsoft Docs"
-description: "Azure 外部サービス (旧称 Marketplace) の課金について説明します。"
-services: 
-documentationcenter: 
+title: Azure 外部サービスの課金について | Microsoft Docs
+description: Azure 外部サービス (旧称 Marketplace) の課金について説明します。
+services: ''
+documentationcenter: ''
 author: adpick
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 5e0e2a3c-d111-4054-8508-0c111c1b749b
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/9/2017
-ms.author: adpick
+ms.topic: conceptual
+ms.date: 06/15/2018
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 64bfd8581141001aa6c11ca17ec1af681054f490
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6ee11b7b565e669f61f6ba77e02139f071c452f4
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392212"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>外部サービスの課金に対する Azure での請求について
-外部サービスは、Azure Marketplace でサード パーティ ソフトウェア ベンダーによって公開されています。 たとえば、ClearDB と SendGrid は、Azure で購入できる外部サービスですが、これらはマイクロソフトが公開したものではありません。
+外部サービスは、Azure Marketplace でサード パーティ ソフトウェア ベンダーによって公開されています。 たとえば、SendGrid は、Azure で購入できる外部サービスですが、Microsoft が公開したものではありません。
 
 新しい外部サービスまたはリソースをプロビジョニングすると、警告が表示されます。
 

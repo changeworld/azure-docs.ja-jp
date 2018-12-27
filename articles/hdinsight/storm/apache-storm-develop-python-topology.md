@@ -1,26 +1,21 @@
 ---
-title: "Python コンポーネントを使用した Apache Storm - Azure HDInsight | Microsoft Docs"
-description: "Python コンポーネントを使用する Apache Storm トポロジを作成する方法について説明します。"
+title: Python コンポーネントを使用した Apache Storm - Azure HDInsight
+description: Python コンポーネントを使用する Apache Storm トポロジを作成する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
+author: hrasheed-msft
+ms.reviewer: jasonh
 keywords: apache storm python
-ms.assetid: edd0ec4f-664d-4266-910c-6ecc94172ad8
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: python
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 1da38ebbe3354bbb36f68d1243b30bf2f4c5633f
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.topic: conceptual
+ms.date: 04/30/2018
+ms.author: hrasheed
+ms.openlocfilehash: b46fa5eb9772a19a5613fc276071167d884f6057
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008761"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight での Python を使用した Apache Storm トポロジの開発
 
@@ -29,7 +24,7 @@ Python コンポーネントを使用する Apache Storm トポロジを作成�
 > [!IMPORTANT]
 > このドキュメントの情報は、HDInsight 3.6 で Storm を使用してテストされました。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-このプロジェクトのコードは、[https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) で入手できます。
+このプロジェクトのコードは [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) で利用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,11 +34,11 @@ Python コンポーネントを使用する Apache Storm トポロジを作成�
 
 * Maven 3
 
-* (省略可能) ローカルの Storm 開発環境。 ローカルの Storm 環境は、トポロジをローカルで実行する場合にのみ必要です。 詳細については、「[Setting up a development environment (開発環境のセットアップ)](http://storm.apache.org/releases/1.1.0/Setting-up-development-environment.html)」を参照してください。
+* (省略可能) ローカルの Storm 開発環境。 ローカルの Storm 環境は、トポロジをローカルで実行する場合にのみ必要です。 詳細については、「[Setting up a development environment (開発環境のセットアップ)](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html)」を参照してください。
 
 ## <a name="storm-multi-language-support"></a>Storm の複数言語サポート
 
-Apache Storm は、任意のプログラミング言語で記述されたコンポーネントで動作するように設計されました。 コンポーネントは、[ Storm の Thrift 定義](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)の操作方法を理解する必要があります。 Python では、Storm と簡単に連動できるようにするための Apache Storm プロジェクトの一部として、モジュールが提供されます。 このモジュールは [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py)にあります。
+Apache Storm は、任意のプログラミング言語で記述されたコンポーネントで動作するように設計されました。 コンポーネントは、[ Storm の Thrift 定義](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)の操作方法を理解する必要があります。 Python では、Storm と簡単に連動できるようにするための Apache Storm プロジェクトの一部として、モジュールが提供されます。 このモジュールは [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py) にあります。
 
 Storm は、Java 仮想マシン (JVM) で実行される Java プロセスです。 他の言語で書かれたコンポーネントは、サブプロセスとして実行されます。 Storm は、stdin/stdout 経由で送信される JSON メッセージを使用して、これらのサブプロセスと通信します。 コンポーネント間の通信の詳細については、 [多言語プロトコル](https://storm.apache.org/documentation/Multilang-protocol.html) に関するドキュメントを参照してください。
 
@@ -98,7 +93,7 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 ```
 
 > [!NOTE]
-> このコマンドは、ローカルの Storm 開発環境を必要とします。 詳細については、「[Setting up a development environment (開発環境のセットアップ)](http://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html)」を参照してください。
+> このコマンドは、ローカルの Storm 開発環境を必要とします。 詳細については、「[Setting up a development environment (開発環境のセットアップ)](http://storm.apache.org/releases/current/Setting-up-development-environment.html)」を参照してください。
 
 トポロジが開始されると、次のような情報がローカル コンソールに出力されます。
 

@@ -1,34 +1,38 @@
 ---
-title: "Azure Site Recovery でセカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する (プレビュー)"
-description: "Azure Site Recovery サービスを使用してセカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する方法について説明します。"
+title: Azure Site Recovery サービスでセカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する
+description: Azure Site Recovery サービスを使用して Azure IaaS VM のセカンダリ Azure リージョンに対する Azure VM のディザスター リカバリー訓練を実行する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/07/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 66ad4f782917d41a0fd1fbbe5ce50de0dda4589e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7a93ae00a33ceba920630eed14fb0a3e308739e6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836051"
 ---
-# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region-preview"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する (プレビュー)
+# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、復旧など、オンプレミスのマシンと Azure 仮想マシン (VM) のディザスター リカバリーを管理し、調整します。
 
-このチュートリアルでは、テスト フェールオーバーを使用して、ある Azure リージョンから別のリージョンへの Azure VM のディザスター リカバリー訓練を実行する方法について説明します。 訓練ではデータ損失やダウンタイムなしでレプリケーション戦略を検証します。これは運用環境には影響しません。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、テスト フェールオーバーを使用して、ある Azure リージョンから別のリージョンへの Azure VM のディザスター リカバリー訓練を実行する方法について説明します。 訓練ではデータ損失やダウンタイムなしでレプリケーション戦略を検証します。これは運用環境には影響しません。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 前提条件を確認する
 > * 1 台の VM のテスト フェールオーバーを実行する
 
+> [!NOTE]
+> このチュートリアルは、DR ドリルを最小限のステップで実行する手順をユーザーに紹介することが目的です。ネットワークの考慮事項、オートメーション、トラブルシューティングなど、DR ドリルの実行に関する事柄をさまざまな角度から詳しく知りたい場合は、Azure VM の "操作方法" のドキュメントを参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
 - テスト フェールオーバーを実行する前に、すべてが想定どおりであることを確かめるために、VM のプロパティを確認することをお勧めします。  **[レプリケートされたアイテム]** で VM のプロパティにアクセスしてください。 **[要点]** ブレードにマシンの設定と状態に関する情報が表示されます。
-- レプリケーションを有効にしたときに設定された既定のネットワークではなく、テスト フェールオーバー用の別個の Azure VM ネットワークを使用することをお勧めします。
+- レプリケーションを有効にしたときに設定された既定のネットワークではなく、**テスト フェールオーバー用の別個の Azure VM ネットワークを使用することをお勧めします**。
 
 
 ## <a name="run-a-test-failover"></a>テスト フェールオーバーの実行

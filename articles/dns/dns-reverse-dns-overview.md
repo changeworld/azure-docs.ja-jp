@@ -1,22 +1,23 @@
 ---
-title: "Azure での逆引き DNS の概要 | Microsoft Docs"
-description: "逆引き DNS の動作および Azure での使い方について説明します"
+title: Azure での逆引き DNS の概要 | Microsoft Docs
+description: 逆引き DNS の動作および Azure での使い方について説明します
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: timlt
+author: vhorne
+manager: jeconnoc
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: jonatul
-ms.openlocfilehash: 08f4f4aca20efad8f51ebc9ca8c6df8de8d0d4c7
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.author: victorh
+ms.openlocfilehash: fa3798a35804998936e0ac166fceff02b01231a0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171512"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>逆引き DNS と Azure でのサポートの概要
 

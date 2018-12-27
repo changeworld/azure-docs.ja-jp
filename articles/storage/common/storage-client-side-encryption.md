@@ -2,23 +2,18 @@
 title: .NET による Microsoft Azure Storage のクライアント側の暗号化 | Microsoft Docs
 description: .NET 用 Azure Storage クライアント ライブラリはクライアント側の暗号化と Azure Key Vault との統合を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。
 services: storage
-documentationcenter: .net
-author: craigshoemaker
-manager: jeconnoc
-editor: tysonn
-ms.assetid: becfccca-510a-479e-a798-2044becd9a64
+author: tamram
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: cshoe
-ms.openlocfilehash: 723ef31c0247d2b2b5e546b4e4fb3d91a516773c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: tamram
+ms.component: common
+ms.openlocfilehash: 857ab3ad9870407b91b0fdc9c552a89fd1f4ccd4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140521"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -65,7 +60,7 @@ Java によるクライアント側の暗号化については、「 [Java に�
 > 
 > 
 
-暗号化された BLOB のダウンロードには、 **DownloadTo***/**BlobReadStream** 簡易メソッドを使用した BLOB 全体のコンテンツの取得も含まれます。 ラップされた CEK はラップ解除され、復号化されたデータをユーザーに返すために IV (この場合 BLOB メタデータとして格納された) と共に使用されます。
+暗号化された BLOB のダウンロードには、 **DownloadTo**\* /**BlobReadStream** 簡易メソッドを使用した BLOB 全体のコンテンツの取得も含まれます。 ラップされた CEK はラップ解除され、復号化されたデータをユーザーに返すために IV (この場合 BLOB メタデータとして格納された) と共に使用されます。
 
 暗号化された BLOB での任意の範囲 (**DownloadRange*** メソッド) のダウンロードでは、ユーザーが指定した範囲が調整されます。これは、少量の追加データを取得して、要求された範囲を正常に復号化するためです。
 

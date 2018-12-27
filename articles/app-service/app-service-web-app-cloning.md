@@ -1,11 +1,11 @@
 ---
-title: "PowerShell を使用した Web アプリの複製"
-description: "PowerShell を使用して既存の Web Apps を新しい Web Apps に複製する方法を説明します。"
+title: PowerShell を使用した Web アプリの複製
+description: PowerShell を使用して既存の Web Apps を新しい Web Apps に複製する方法を説明します。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: ahmedelnably
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.service: app-service-web
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/18/2018
+ms.locfileid: "27867473"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
 Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新しいオプションが `New-AzureRMWebApp` に追加され、異なるリージョンまたは同じリージョンで新たに作成されたアプリに既存の Web アプリを複製できるようになりました。 このオプションにより、リージョンをまたいでさまざまなアプリを迅速かつ簡単に展開できるようになります。

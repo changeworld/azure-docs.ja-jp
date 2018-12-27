@@ -1,28 +1,29 @@
 ---
-title: "Verizon からのカスタム レポート | Microsoft Docs"
-description: "次のレポートを使用して、CDN の使用パターンを表示できます: 帯域幅、転送されたデータ、ヒット数、キャッシュの状態、キャッシュ ヒット率、転送された IPV4/IPV6 データ。"
+title: Verizon からのカスタム レポート | Microsoft Docs
+description: '次のレポートを使用して、CDN の使用パターンを表示できます: 帯域幅、転送されたデータ、ヒット数、キャッシュの状態、キャッシュ ヒット率、転送された IPV4/IPV6 データ。'
 services: cdn
-documentationcenter: 
-author: dksimpson
-manager: 
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: mdgattuso
+manager: danielgi
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: v-deasim
-ms.openlocfilehash: f09195dc07a96ebcca7f7a9e4bcf521fae13630c
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.author: magattus
+ms.openlocfilehash: 75a1fb4beb4025dc3ec63d29944331d07be35d8a
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092068"
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon からのカスタム レポート
 
-[!INCLUDE[cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
 Verizon プロファイルの管理ポータル経由で Verizon カスタム レポートを使用すると、エッジ CNAME レポートに対して収集されるデータの種類を定義できます。
 
@@ -50,7 +51,7 @@ Verizon プロファイルの管理ポータル経由で Verizon カスタム �
 
    - [転送されたデータ]: カスタム レポート機能が有効になっているエッジ CNAME に転送された要求のエッジ サーバーから HTTP クライアント (Web ブラウザーなど) に転送された合計のデータ量を示します。 転送されたデータ量は、HTTP 応答ヘッダーを応答本文に追加することによって計算されます。 その結果、資産ごとの転送されたデータ量はその実際のファイル サイズより大きくなります。
 
-- [Groupings] (グループ化): 棒グラフの下に表示される統計の種類を決定します。 次のオプションがサポートされています。
+- [Groupings] \(グループ化): 棒グラフの下に表示される統計の種類を決定します。 次のオプションがサポートされています。
 
    - [HTTP 応答コード]: クライアントに返された HTTP 応答コード (200 や 403 など) で統計を整理します。 
 

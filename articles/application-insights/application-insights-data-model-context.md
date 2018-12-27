@@ -3,20 +3,22 @@ title: Azure Application Insights Telemetry のデータ モデル - テレメ�
 description: Application Insights Telemetry のコンテキスト データ モデル
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: sergkanz
-ms.openlocfilehash: 942a4bc09e632438e4a85280d723c72c4b09a015
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: b6cfae20f09b19a57cf411777e78abb1dbbf0484
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094114"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト: Application Insights データ モデル
 
@@ -120,14 +122,14 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="internal-sdk-version"></a>内部: SDK のバージョン
 
-SDK バージョン。 詳細については、「https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification」を参照してください。
+SDK バージョン。 詳細については、「 https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification」を参照してください。
 
 最大長: 64
 
 
 ## <a name="internal-node-name"></a>内部: ノード名
 
-このフィールドは、課金目的で使用されるノード名を表します。 これを使用して、ノードの標準検出を上書きします。
+このフィールドは、課金目的で使用されるノード名を表します。 これを使用して、ノードの標準検出をオーバーライドします。
 
 最大長: 256
 

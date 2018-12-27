@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 086cc528e500a55bba73796e5fc7b17c561de8b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7c6751a0432d66aee0ff3056b212dc1b348e333f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045828"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-on-premises-mongodb-connector.md)
-> * [バージョン 2 - プレビュー](../connector-mongodb.md)
+> * [Version 1](data-factory-on-premises-mongodb-connector.md)
+> * [バージョン 2 (最新バージョン)](../connector-mongodb.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での MongoDB コネクタ](../connector-mongodb.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[V2 の MongoDB コネクタ](../connector-mongodb.md)に関するページをご覧ください。
 
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの MongoDB データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
@@ -36,7 +37,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="prerequisites"></a>前提条件
 Azure Data Factory サービスをオンプレミスの MongoDB データベースに接続できるようにするには、次のコンポーネントをインストールする必要があります。
 
-- サポートされている MongoDB バージョンは、2.4、2.6、3.0、3.2 です。
+- サポートされている MongoDB バージョンは、2.4、2.6、3.0、3.2、3.4 および 3.6 です。
 - データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上にインストールされた Data Management Gateway。 Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータをクラウド サービスに接続するソフトウェアです。 Data Management Gateway の詳細については、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」をご覧ください。 データを移動するデータ パイプラインにゲートウェイをセットアップする手順については、[オンプレミスからクラウドへのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。
 
     ゲートウェイをインストールすると、MongoDB への接続に使用される Microsoft MongoDB ODBC ドライバーが自動的にインストールされます。
@@ -64,9 +65,9 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、 **OnPremisesMongoDB** のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティを **OnPremisesMongoDb** |[はい] |
+| type |type プロパティを **OnPremisesMongoDb** |[はい] |
 | [サーバー] |MongoDB サーバーの IP アドレスまたはホスト名。 |[はい] |
 | ポート |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
 | authenticationType |Basic または Anonymous。 |[はい] |
@@ -82,7 +83,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **MongoDbCollection** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | collectionName |MongoDB データベースのコレクション名前。 |はい |
 
@@ -93,7 +94,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 コピー アクティビティで、source の種類が **MongoDbSource** である場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **collectionName** が指定されている場合) |
 

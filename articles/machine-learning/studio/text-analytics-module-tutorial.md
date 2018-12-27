@@ -9,16 +9,18 @@ manager: cgronlun
 editor: ''
 ms.assetid: 08cd6723-3ae6-4e99-a924-e650942e461b
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.openlocfilehash: 6a89d77c84f7a7dd15b9d73252ac7373a7f1faf9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a9d4ee9015b5781301dcc9c0fe4f8944dbf244e8
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835884"
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でテキスト分析モデルを作成する
 Azure Machine Learning を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。 こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。
@@ -68,7 +70,7 @@ N グラム特徴抽出に代わる方法として、Feature Hashing (特徴ハ�
 ## <a name="step-3-train-classification-or-regression-model"></a>手順 3: 分類または回帰モデルのトレーニング
 テキストが数値の特徴列に変換されました。 データセットにはまだ前の段階からの文字列があるため、データセット内の列選択を使ってこれらを除外します。
 
-その後、 [2 クラスのロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905994.aspx) を使ってターゲット、つまりレビュー スコアの高低を予測します。 この時点で、テキスト分析の問題は、通常の分類問題に変換されています。 Azure Machine Learning で使用できるツールを使って、モデルを改良できます。 たとえば、実験の精度を確認するために異なる分類器を試したり、ハイパーパラメーター チューニングを使用して精度を向上させたりすることができます。
+その後、 [2 クラスのロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905994.aspx) を使ってターゲット、つまりレビュー スコアの高低を予測します。 この時点で、テキスト分析の問題は、通常の分類問題に変換されています。 Azure Machine Learning で使用できるツールを使って、モデルを改良できます。 たとえば、実験の精度を確認するために異なる分類子を試したり、ハイパーパラメーター チューニングを使用して精度を向上させたりすることができます。
 
 ![トレーニングとスコア付け](./media/text-analytics-module-tutorial/scoring-text.png)
 

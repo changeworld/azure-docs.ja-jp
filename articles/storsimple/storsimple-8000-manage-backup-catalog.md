@@ -1,12 +1,12 @@
 ---
-title: "StorSimple バックアップ カタログの管理 | Microsoft Docs"
-description: "StorSimple デバイス マネージャー サービスのバックアップ カタログ ページを使用して、バックアップ セットを一覧表示、選択、および削除する方法を説明します。"
+title: StorSimple バックアップ カタログの管理 | Microsoft Docs
+description: StorSimple デバイス マネージャー サービスのバックアップ カタログ ページを使用して、バックアップ セットを一覧表示、選択、および削除する方法を説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108380"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>StorSimple デバイス マネージャー サービスを使用してバックアップ カタログを管理する
 ## <a name="overview"></a>概要

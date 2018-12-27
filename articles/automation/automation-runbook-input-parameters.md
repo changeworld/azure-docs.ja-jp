@@ -3,16 +3,18 @@ title: Runbook の入力パラメーター
 description: Runbook の入力パラメーターを利用すれば、開始時に Runbook にデータを渡すことができて Runbook の柔軟性が上がります。 この記事では、入力パラメーターを Runbook で使用するさまざまなシナリオについて説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a2ce87c300d3e9092794e6e437dc9919c7eb0f3c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 941a7242e1f6fddd1ff91721141be4e1f9816b31
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344865"
 ---
 # <a name="runbook-input-parameters"></a>Runbook の入力パラメーター
 
@@ -37,16 +39,16 @@ Windows PowerShell では、検証、エイリアス、パラメーター セッ
 
 PowerShell Workflow Runbook のパラメーター定義には次の一般形式があります。複数のパラメーターはコンマで分けられます。
 
-   ```powershell
-     Param
-     (
-         [Parameter (Mandatory= $true/$false)]
-         [Type] Name1 = <Default value>,
+```powershell
+Param
+(
+  [Parameter (Mandatory= $true/$false)]
+  [Type] $Name1 = <Default value>,
 
-         [Parameter (Mandatory= $true/$false)]
-         [Type] Name2 = <Default value>
-     )
-   ```
+  [Parameter (Mandatory= $true/$false)]
+  [Type] $Name2 = <Default value>
+)
+```
 
 > [!NOTE]
 > パラメーターを定義するとき、 **Mandatory** 属性を指定しない場合、既定でパラメーターは任意と見なされます。 また、PowerShell Workflow Runbook のパラメーターに既定値を設定した場合、**Mandatory** 属性値に関係なく、PowerShell は任意のパラメーターとして扱います。
@@ -61,13 +63,20 @@ PowerShell Workflow Runbook のパラメーター定義には次の一般形式�
 
 Runbook に object 型の入力パラメーターが含まれている場合は、値を渡すために、(name,value) の組み合わせで PowerShell ハッシュテーブルを使用します。 たとえば、Runbook に次のパラメーターがある場合、
 
-     [Parameter (Mandatory = $true)]
-     [object] $FullName
+```powershell
+[Parameter (Mandatory = $true)]
+[object] $FullName
+```
 
 パラメーターに次の値を渡すことができます。
 
-    @{"FirstName"="Joe";"MiddleName"="Bob";"LastName"="Smith"}
-
+```powershell
+@{"FirstName"="Joe";"MiddleName"="Bob";"LastName"="Smith"}
+```
+> [!NOTE]
+> "_既定値_" が `$null` である省略可能な `[String]` 型パラメーターに値を渡さない場合、パラメーターの値は `$null` **ではなく** "_空の文字列_" になります。
+> 
+> 
 
 ## <a name="configure-input-parameters-in-graphical-runbooks"></a>グラフィカル Runbook の入力パラメーターを構成する
 
@@ -75,7 +84,7 @@ Runbook に object 型の入力パラメーターが含まれている場合は�
 
 [**Azure 実行アカウントを使用した Runbook の認証**](automation-sec-configure-azure-runas-account.md)で、Azure 認証します。
 
-[**Get-AzureRmVm**](https://msdn.microsoft.com/library/mt603718.aspx) で、仮想マシンのプロパティを取得します。
+[**Get-AzureRmVm**](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvm) で、仮想マシンのプロパティを取得します。
 
 [**Write-Output**](https://technet.microsoft.com/library/hh849921.aspx) アクティビティを利用し、仮想マシンの名前を出力できます。 **Get-AzureRmVm** アクティビティは 2 つのパラメーターを受け取ります。**仮想マシン名** と **リソース グループの名前**です。 これらのパラメーターは Runbook を起動するたびに異なる値を必要とする可能性があるため、入力パラメーターを Runbook に追加できます。 以下は入力パラメーターを追加する手順です。
 
@@ -88,10 +97,10 @@ Runbook に object 型の入力パラメーターが含まれている場合は�
    | **プロパティ** | **説明** |
    |:--- |:--- |
    | Name |必須。 パラメーターの名前。 これは Runbook 内で一意にする必要があります。文字、数字、アンダースコアのみで作成する必要があります。 先頭は文字でなければなりません。 |
-   | [説明] |省略可能。 入力パラメーターの目的に関する説明。 |
+   | 説明 |省略可能。 入力パラメーターの目的に関する説明。 |
    | type |省略可能。 パラメーター値のデータ型。 サポートされているパラメーター型は **String**、**Int32**、**Int64**、**Decimal**、**Boolean**、**DateTime**、**Object**です。 データ型が選択されていない場合、既定値は **String**になります。 |
    | 必須 |省略可能。 パラメーターの値を指定する必要があるかどうかを示します。 **[はい]** を選択した場合、Runbook の起動時に値を指定する必要があります。 **[いいえ]** を選択した場合、Runbook の起動時に値は必要ありません。既定値が設定されます。 |
-   | 既定値 |省略可能。 Runbook の起動時に値が渡されない場合にパラメーターに使用する値を指定します。 必須ではないパラメーターに既定値を設定できます。 既定値を設定するには、 **[カスタム]**を選択します。 Runbook の起動時に別の値を指定しない限り、この値が使用されます。 既定値を指定しない場合、 **[なし]** を選択します。 |
+   | 既定値 |省略可能。 Runbook の起動時に値が渡されない場合にパラメーターに使用する値を指定します。 必須ではないパラメーターに既定値を設定できます。 既定値を設定するには、 **[カスタム]** を選択します。 Runbook の起動時に別の値を指定しない限り、この値が使用されます。 既定値を指定しない場合、 **[なし]** を選択します。 |
    
     ![Add new input](media/automation-runbook-input-parameters/automation-runbook-input-parameter-new.png)
 4. **Get-AzureRmVm** アクティビティで使用される 2 つのパラメーターを次のプロパティで作成します。
@@ -108,7 +117,7 @@ Runbook に object 型の入力パラメーターが含まれている場合は�
      * 必須: いいえ
      * 既定値: カスタム
      * カスタム既定値: \<仮想マシンを含むリソース グループの名前>
-5. パラメーターを追加したら、 **[OK]**をクリックします。 パラメーターが **[入力と出力]**ブレードに表示されます。 **[OK]** をもう一度クリックし、Runbook の **[保存]** と **[発行]** をクリックします。
+5. パラメーターを追加したら、 **[OK]** をクリックします。 パラメーターが **[入力と出力]** ブレードに表示されます。 **[OK]** をもう一度クリックし、Runbook の **[保存]** と **[発行]** をクリックします。
 
 ## <a name="configure-input-parameters-in-python-runbooks"></a>Python Runbook の入力パラメーターを構成する
 
@@ -142,20 +151,20 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
 
 #### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>PowerShell コマンドレットを利用して公開済み Runbook を起動し、パラメーターを割り当てる
 
-* **Azure Resource Manager コマンドレット:**[Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx)を使用して、リソース グループに作成された Automation Runbook を起動できます。
+* **Azure Resource Manager コマンドレット:**[Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook)を使用して、リソース グループに作成された Automation Runbook を起動できます。
   
   **例:**
   
-  ```
+  ```powershell
   $params = @{“VMName”=”WSVMClassic”;”resourceGroupeName”=”WSVMClassicSG”}
   
   Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” –ResourceGroupName $resourceGroupName -Parameters $params
   ```
-* **Azure クラシック デプロイメント モデルのコマンドレット:**[Start-AzureAutomationRunbook](https://msdn.microsoft.com/library/dn690259.aspx) を使用して、既定のリソース グループに作成された Automation Runbook を起動できます。
+* **Azure クラシック デプロイ モデルのコマンドレット:**[Start-AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook) を使用して、既定のリソース グループに作成された Automation Runbook を起動できます。
   
   **例:**
   
-  ```
+  ```powershell
   $params = @{“VMName”=”WSVMClassic”; ”ServiceName”=”WSVMClassicSG”}
   
   Start-AzureAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” -Parameters $params
@@ -170,7 +179,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
 
 * **Azure Resource Manager メソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。  
   
-  ```
+  ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
       {
         var response = AutomationClient.Jobs.Create(resourceGroupName, automationAccount, new JobCreateParameters
@@ -187,9 +196,9 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
       return response.Job;
       }
   ```
-* **Azure クラシック デプロイメント モデルのメソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。
+* **Azure クラシック デプロイ モデルのメソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。
   
-  ```      
+  ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
     {
       var response = AutomationClient.Jobs.Create(automationAccount, new JobCreateParameters
@@ -209,7 +218,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
   
   このメソッドを開始するには、Runbook パラメーターの **VMName** および **resourceGroupName** とそれらの値を保存するディクショナリを作成します。 次に、Runbook を起動します。 以下は、上で定義したメソッドを呼び出す C# コード スニペットです。
   
-  ```
+  ```csharp
   IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
   
   // Add parameters to the dictionary.
@@ -239,7 +248,7 @@ Runbook ジョブにパラメーターを渡すには、要求本文を使用し
 
 **VMName** と **resourceGroupName** をパラメーターとして、先に作成した **Get-AzureVMTextual** Runbook を起動するには、要求本文に次の JSON 形式を使用します。
 
-   ```
+   ```json
     {
       "properties":{
         "runbook":{

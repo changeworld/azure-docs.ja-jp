@@ -10,17 +10,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 108045c691d711dfdd12df39fe72e536f842f68f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993212"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
 [アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure Portal を使用して [URL パス ベースのルーティング規則](application-gateway-url-route-overview.md)を構成できます。 このチュートリアルでは、仮想マシンを使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するようにルーティング規則を作成します。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * アプリケーション ゲートウェイの作成
@@ -35,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインする
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインする
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -78,7 +79,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
 この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 3 つの仮想マシンを作成します。 また、IIS を仮想マシンにインストールして、アプリケーション ゲートウェイが正常に作成されたことを確認します。
 
-1. **[新規]**をクリックします。
+1. **[新規]** をクリックします。
 2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 
@@ -102,7 +103,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
@@ -140,8 +141,8 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
 1. **[ルール]**、**[パス ベース]** の順にクリックします。
 2. 名前として「*rule2*」を入力します。
-3. 最初のパスの名前として「*イメージ*」と入力します。 パスとして「*/images/**」を入力します。 バックエンド プールとして **[imagesBackendPool]** を選択します。
-4. 2 番目のパスの名前として「*ビデオ*」と入力します。 パスとして「*/video/**」を入力します。 バックエンド プールとして **[videoBackendPool]** を選択します。
+3. 最初のパスの名前として「*イメージ*」と入力します。 パスには「*/images/*\*」と入力します。 バックエンド プールとして **[imagesBackendPool]** を選択します。
+4. 2 番目のパスの名前として「*ビデオ*」と入力します。 パスには「*/video/*\*」と入力します。 バックエンド プールとして **[videoBackendPool]** を選択します。
 
     ![パス ベース ルールの作成](./media/application-gateway-create-url-route-portal/application-gateway-route-rule.png)
 
@@ -153,7 +154,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
     ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 http://http://40.121.222.19 など。
+2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 http:// http://40.121.222.19 など。
 
     ![アプリケーション ゲートウェイでのベース URL のテスト](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 

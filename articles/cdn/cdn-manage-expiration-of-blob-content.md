@@ -1,11 +1,11 @@
 ---
-title: "Azure Content Delivery Network で Azure Blob Storage の有効期限を管理する | Microsoft Docs"
-description: "Azure CDN キャッシュで BLOB の有効期限を制御するオプションについて説明します。"
+title: Azure Content Delivery Network で Azure Blob Storage の有効期限を管理する | Microsoft Docs
+description: Azure CDN キャッシュで BLOB の有効期限を制御するオプションについて説明します。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ad4801e9-d09a-49bf-b35c-efdc4e6034e8
 ms.service: cdn
 ms.workload: media
@@ -14,13 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: bafb04a1a19c4436d8f6c1c21700e9463334b3de
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a0f89a272fa300f6acced2de02ba5465ab282079
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33765638"
 ---
-# <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Azure Content Delivery Network で Azure Blob Storage の有効期限を管理する
+# <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN で Azure Blob Storage の有効期限を管理する
 > [!div class="op_single_selector"]
 > * [Azure Web コンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure BLOB Storage](cdn-manage-expiration-of-blob-content.md)
@@ -43,7 +44,7 @@ Azure Storage の [Blob Storage サービス](../storage/common/storage-introduc
 BLOB の `Cache-Control` ヘッダーを設定するための推奨される方法は、Azure Portal でのキャッシュ規則の使用です。 CDN キャッシュ規則の詳細については、[キャッシュ規則による Azure CDN キャッシュ動作の制御](cdn-caching-rules.md)に関するページを参照してください。
 
 > [!NOTE] 
-> キャッシュ規則は、**Azure CDN from Verizon Standard** および **Azure CDN from Akamai Standard** プロファイルでのみ使用できます。 **Azure CDN from Verizon Premium** プロファイルの場合は、同様の機能に対して**管理**ポータルで [Azure CDN ルール エンジン](cdn-rules-engine.md)を使用する必要があります。
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して**管理**ポータルで [Azure CDN ルール エンジン](cdn-rules-engine.md)を使用する必要があります。
 
 **[CDN キャッシュ規則] ページに移動するには**:
 
@@ -148,7 +149,7 @@ class Program
 ## <a name="setting-cache-control-headers-by-using-other-methods"></a>他の方法を使った Cache-Control ヘッダーの設定
 
 ### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
-[Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) を使うと、*CacheControl* のようなプロパティなどの Blob Storage リソースを表示して編集できます。 
+[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使うと、*CacheControl* のようなプロパティなどの Blob Storage リソースを表示して編集できます。 
 
 Azure Storage Explorer で BLOB の *CacheControl* プロパティを更新するには、以下の操作を行います。
    1. BLOB を選択し、コンテキスト メニューから **[プロパティ]** を選択します。 
@@ -168,8 +169,8 @@ azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .
 ### <a name="azure-storage-services-rest-api"></a>Azure ストレージ サービス REST API
 [Azure ストレージ サービス REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) を使うと、要求で次の操作を使って *x-ms-blob-cache-control* プロパティを明示的に設定できます。
   
-   - [Put Blob](https://msdn.microsoft.com/en-us/library/azure/dd179451.aspx)
-   - [Put Block List](https://msdn.microsoft.com/en-us/library/azure/dd179467.aspx)
+   - [Put Blob](https://msdn.microsoft.com/library/azure/dd179451.aspx)
+   - [Put Block List](https://msdn.microsoft.com/library/azure/dd179467.aspx)
    - [Set Blob Properties](https://msdn.microsoft.com/library/azure/ee691966.aspx)
 
 ## <a name="testing-the-cache-control-header"></a>Cache-Control ヘッダーのテスト

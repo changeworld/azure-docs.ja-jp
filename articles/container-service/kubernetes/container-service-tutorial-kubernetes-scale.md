@@ -1,23 +1,27 @@
 ---
-title: Azure Container Service チュートリアル - アプリケーションのスケーリング
+title: (非推奨) Azure Container Service チュートリアル - アプリケーションのスケーリング
 description: Azure Container Service チュートリアル - アプリケーションのスケーリング
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: ea64f9c52dc89dc8eb75a39afbb087a5127505f1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b16682535e7311648e832286e1e876ee0e694712
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993071"
 ---
-# <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Kubernetes ポッドと Kubernetes インフラストラクチャをスケーリングする
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(非推奨) Kubernetes ポッドと Kubernetes インフラストラクチャをスケーリングする
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング](../../aks/tutorial-kubernetes-scale.md)」を参照してください。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ここまでチュートリアルに従って進めてきた場合は、Azure Container Service で Kubernetes クラスターが動作していて、Azure Vote アプリをデプロイしてあります。 
 
@@ -38,7 +42,7 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="manually-scale-pods"></a>ポッドを手動でスケーリングする
 
-ここまでで、Azure Vote フロントエンドと Redis インスタンスをデプロイし、それぞれに 1 つのレプリカを作成しました。 これを確認するには、[kubectl get](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドを実行します。
+ここまでで、Azure Vote フロントエンドと Redis インスタンスをデプロイし、それぞれに 1 つのレプリカを作成しました。 これを確認するには、[kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを実行します。
 
 ```azurecli-interactive
 kubectl get pods
@@ -52,13 +56,13 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-[kubectl scale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#scale) コマンドを使って、`azure-vote-front` のデプロイに含まれるポッドの数を手動で変更します。 この例では、数を 5 に増やします。
+[kubectl scale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale) コマンドを使って、`azure-vote-front` のデプロイに含まれるポッドの数を手動で変更します。 この例では、数を 5 に増やします。
 
 ```azurecli-interactive
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-[kubectl get pods](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) を実行して、Kubernetes がポッドを作成していることを確認します。 しばらくすると、追加したポッドが実行するようになります。
+[kubectl get pods](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) を実行して、Kubernetes がポッドを作成していることを確認します。 しばらくすると、追加したポッドが実行するようになります。
 
 ```azurecli-interactive
 kubectl get pods
@@ -90,7 +94,7 @@ resources:
      cpu: 500m
 ```
 
-次の例では、[kubectl autoscale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#autoscale) コマンドを使って、`azure-vote-front` のデプロイメントのポッド数を自動スケーリングします。 ここでは、CPU 使用率が 50% を超えると、自動スケーラーはポッドを最大 10 個まで増やします。
+次の例では、[kubectl autoscale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale) コマンドを使って、`azure-vote-front` のデプロイメントのポッド数を自動スケーリングします。 ここでは、CPU 使用率が 50% を超えると、自動スケーラーはポッドを最大 10 個まで増やします。
 
 
 ```azurecli-interactive
@@ -114,7 +118,7 @@ Azure Vote アプリの負荷が最低になって数分が経過すると、ポ
 
 ## <a name="scale-the-agents"></a>エージェントをスケーリングする
 
-前のチュートリアルで既定のコマンドを使って Kubernetes クラスターを作成した場合、クラスターには 3 つのエージェント ノードがあります。 クラスターのコンテナー ワークロードを増減する場合は、エージェントの数を手動で調整できます。 [az acs scale](/cli/azure/acs#az_acs_scale) コマンドを使い、`--new-agent-count` パラメーターでエージェントの数を指定します。
+前のチュートリアルで既定のコマンドを使って Kubernetes クラスターを作成した場合、クラスターには 3 つのエージェント ノードがあります。 クラスターのコンテナー ワークロードを増減する場合は、エージェントの数を手動で調整できます。 [az acs scale](/cli/azure/acs#az-acs-scale) コマンドを使い、`--new-agent-count` パラメーターでエージェントの数を指定します。
 
 次の例では、*myK8sCluster* という名前の Kubernetes クラスターのエージェント ノードの数を 4 に増やしています。 コマンドが完了するまでに数分かかります。
 

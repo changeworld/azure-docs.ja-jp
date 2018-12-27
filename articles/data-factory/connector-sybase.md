@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 0267296348821ee94dfa90b0b58c517ff7d79697
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 349fd1f129d93a2893e2585267d17661e141ad0f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242213"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-onprem-sybase-connector.md)
-> * [バージョン 2 - プレビュー](connector-sybase.md)
+> * [Version 1](v1/data-factory-onprem-sybase-connector.md)
+> * [現在のバージョン](connector-sybase.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Sybase データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Sybase connector in V1 (V1 の Sybase コネクタ)](v1/data-factory-onprem-sybase-connector.md)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -43,7 +41,7 @@ Sybase データベースから、サポートされている任意のシンク 
 この Sybase コネクタを使用するには、次の手順が必要です。
 
 - セルフホステッド統合ランタイムをセットアップします。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
-- 統合ランタイムのコンピューターに、[Sybase iAnywhere.Data.SQLAnywhere 用データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=324846) (16 以降) をインストールします。
+- 統合ランタイムのコンピューターに、[Sybase iAnywhere.Data.SQLAnywhere 用データ プロバイダー](https://go.microsoft.com/fwlink/?linkid=324846) (16 以降) をインストールします。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -55,9 +53,9 @@ Sybase データベースから、サポートされている任意のシンク 
 
 Sybase のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **Sybase** に設定する必要があります。 | [はい] |
+| type | type プロパティを **Sybase** に設定する必要があります。 | [はい] |
 | [サーバー] | Sybase サーバーの名前です。 |[はい] |
 | [データベース] | Sybase データベースの名前です。 |[はい] |
 | authenticationType | Sybase データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Windows** です。 |[はい] |
@@ -96,9 +94,9 @@ Sybase のリンクされたサービスでは、次のプロパティがサポ�
 
 Sybase からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | Sybase データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -125,10 +123,10 @@ Sybase からデータをコピーするには、データセットの type プ�
 
 Sybase からデータをコピーするには、コピー アクティビティのソース タイプを **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
+| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

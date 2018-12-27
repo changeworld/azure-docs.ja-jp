@@ -1,25 +1,20 @@
 ---
-title: "HDInsight での Mono のインストールまたは更新 - Azure | Microsoft Docs"
-description: "HDInsight クラスターで Mono の特定のバージョンを使用する方法について説明します。 Mono を使用して、Linux ベースの HDInsight クラスターで .NET アプリケーションを実行します。"
+title: HDInsight での Mono のインストールまたは更新 - Azure
+description: HDInsight クラスターで Mono の特定のバージョンを使用する方法について説明します。 Mono を使用して、Linux ベースの HDInsight クラスターで .NET アプリケーションを実行します。
 services: hdinsight
-documentationCenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/17/2018
-ms.author: larryfr
+ms.topic: conceptual
+ms.date: 04/10/2018
+ms.author: hrasheed
 ms.custom: hdinsightactive
-ms.openlocfilehash: 555f82ec9351c8c3610ad99a95159cc47d2ee539
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 9daf0d45c9bb24192750991e7bf84fa3614c970d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011036"
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>HDInsight での Mono のインストールまたは更新
 
@@ -31,7 +26,7 @@ Mono は、HDInsight 3.4 以降のバージョンにインストールされま�
 
 このスクリプトは、次のパラメーターを受け取ります。
 
-* __Mono バージョン番号__: インストールする Mono のバージョン。 [https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/) で利用可能なバージョンにする必要があります。
+* __Mono バージョン番号__: インストールする Mono のバージョン。 このバージョンは、こちら ([https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/)) から入手してください。
 
 スクリプトで、次の Mono パッケージをインストールします。
 
@@ -45,11 +40,11 @@ __スクリプトの場所__: [https://hdiconfigactions.blob.core.windows.net/in
 
 __要件__:
 
-* このスクリプトは、__ヘッド ノード__と__ワーカー ノード__に適用する必要があります。
+* このスクリプトは、__ヘッド ノード__ と __ワーカー ノード__ に適用する必要があります。
 
 ## <a name="to-use-the-script"></a>スクリプトを使用するには
 
-このスクリプトを HDInsight で使用する方法については、ドキュメント「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)」を参照してください。 スクリプトの使用には、Azure Portal、Azure PowerShell、または Azure CLI を利用できます。
+このスクリプトを HDInsight で使用する方法については、ドキュメント「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)」を参照してください。 スクリプトの使用には、Azure portal、Azure PowerShell、または Azure クラシック CLI を利用できます。
 
 スクリプト アクションのドキュメントに従って作業する際は、次の URI を使用します。
 

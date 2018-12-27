@@ -1,3 +1,16 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: 49ac1a7585ddf2a6500c7e9382880109c3f7f431
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50134437"
+---
 ## <a name="export-an-api-definition"></a>API 定義をエクスポートする
 「[関数の OpenAPI 定義の作成](../articles/azure-functions/functions-openapi-definition.md)」で作成した関数の OpenAPI 定義があります。 このプロセスの次の手順では、API 定義をエクスポートして、PowerApps と Microsoft Flow がカスタム API でこの定義を使用できるようにします。
 
@@ -14,7 +27,7 @@
 
 1. 右側のウィンドウで、次の表で指定されている設定を使用します。
 
-    |設定|Description|
+    |Setting|説明|
     |--------|------------|
     |**エクスポート モード**|**[高速]** を選択すると、カスタム API が自動生成されます。 **[手動]** を選択すると、API 定義がエクスポートされますが、その定義は、PowerApps と Microsoft Flow に手動でインポートする必要があります。 詳細については、[PowerApps と Microsoft Flow へのエクスポート](../articles/azure-functions/app-service-export-api-to-powerapps-and-flow.md)に関するページを参照してください。|
     |**Environment**|カスタム API の保存先の環境を選択します。 詳しくは、「[環境の概要 (PowerApps)](https://powerapps.microsoft.com/tutorials/environments-overview/)」または[環境の概要 (Microsoft Flow)](https://us.flow.microsoft.com/documentation/environments-overview-admin/) に関する記事をご覧ください。|
@@ -23,4 +36,4 @@
  
     ![PowerApps および Microsoft Flow にエクスポートする](media/functions-export-api-definition/export-api-2.png)
 
-1. **[OK]**をクリックします。 カスタム API が作成され、指定した環境に追加されます。
+1. Click **OK**. カスタム API が作成され、指定した環境に追加されます。

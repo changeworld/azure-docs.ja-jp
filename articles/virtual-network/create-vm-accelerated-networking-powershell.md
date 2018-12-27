@@ -3,8 +3,8 @@ title: 高速ネットワークを使った Azure 仮想マシンの作成 | Mic
 description: 高速ネットワークを使った Linux 仮想マシンの作成方法について説明します。
 services: virtual-network
 documentationcenter: ''
-author: jdial
-manager: jeconnoc
+author: gsilva5
+manager: gedegrac
 editor: ''
 ms.assetid: ''
 ms.service: virtual-network
@@ -13,22 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
-ms.author: jimdial
-ms.openlocfilehash: c0017b8759a1f01b010172be562ed869d1d51a25
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gsilva
+ms.openlocfilehash: de69cdf69f30639d048dccd7d433c86f6cb9db7b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894185"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Windows 仮想マシンの作成
 
-> [!IMPORTANT] 
-> 仮想マシンは、高速ネットワークを有効にして作成する必要があります。 この機能は、既存の仮想マシンでは有効にできません。 高速ネットワークを有効にするには、次の手順に従ってください。
->   1. 仮想マシンの削除
->   2. 高速ネットワークを有効にして仮想マシンを再作成する
->
-
-このチュートリアルでは、高速ネットワークを使った Windows 仮想マシン (VM) の作成方法について説明します。 高速ネットワークによって、VM との間でシングル ルート I/O 仮想化 (SR-IOV) が可能になり、ネットワークのパフォーマンスが大幅に向上します。 この高パフォーマンスのパスによってデータパスからホストがバイパスされ、サポートされる VM タイプの最も要件の厳しいネットワーク ワークロードで使用した場合でも、待ち時間、ジッター、CPU 使用率が軽減されます。 次の図は、2 台の VM 間の通信を、高速ネットワークを使う場合と使わない場合とで比較したものです。
+このチュートリアルでは、高速ネットワークを使った Windows 仮想マシン (VM) の作成方法について説明します。 高速ネットワークを使って Linux VM を作成する場合は、「[高速ネットワークを使った Linux 仮想マシンの作成](create-vm-accelerated-networking-cli.md)」をご覧ください。 高速ネットワークによって、VM との間でシングル ルート I/O 仮想化 (SR-IOV) が可能になり、ネットワークのパフォーマンスが大幅に向上します。 この高パフォーマンスのパスによってデータパスからホストがバイパスされ、サポートされる VM タイプの最も要件の厳しいネットワーク ワークロードで使用した場合でも、待ち時間、ジッター、CPU 使用率が軽減されます。 次の図は、2 台の VM 間の通信を、高速ネットワークを使う場合と使わない場合とで比較したものです。
 
 ![比較](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
@@ -43,29 +38,36 @@ ms.lasthandoff: 03/08/2018
 * **ジッターの削減:** 仮想スイッチの処理は、適用するポリシーの量と、処理を行う CPU のワークロードによって異なります。 ハードウェアへのポリシーの適用をオフロードすると、パケットが直接 VM に配信され、ホストと VM 間の通信とソフトウェアによる干渉やコンテキスト スイッチがなくなるため、そのばらつきはなくなります。
 * **CPU 使用率の削減:** ホストの仮想スイッチをバイパスすることによって、ネットワーク トラフィックを処理するための CPU の使用率を軽減できます。
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
-Microsoft Windows Server 2012 R2 Datacenter と Windows Server 2016。
+## <a name="limitations-and-constraints"></a>制限と制約
 
-## <a name="supported-vm-instances"></a>サポートされている VM インスタンス
-高速ネットワークは、4 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。 ハイパースレッディングをサポートする D/DSv3 や E/ESv3 などのインスタンスでは、8 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 D/DSv2、D/DSv3、E/ESv3、F/Fs/Fsv2 および Ms/Mms のシリーズがサポートされています。
+### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+Azure ギャラリーでは次のディストリビューションが既定でサポートされています。 
+* **Windows Server 2016 Datacenter** 
+* **Windows Server 2012 R2 Datacenter** 
+
+### <a name="supported-vm-instances"></a>サポートされている VM インスタンス
+高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。  サポートされているシリーズは、D/DSv2 と F/Fs です
+
+ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 サポートされているシリーズは、D/DSv3、E/ESv3、Fsv2、Ms/Mms です
 
 VM インスタンスの詳細については、[Windows VM のサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
 
-## <a name="regions"></a>リージョン
-すべてのパブリック Azure リージョンと Azure Government クラウドで使用できます。 
+### <a name="regions"></a>リージョン
+すべてのパブリック Azure リージョンと Azure Government クラウドで使用できます。
 
-## <a name="limitations"></a>制限事項
-この機能を使用する場合は、次の制限事項があります。
+### <a name="enabling-accelerated-networking-on-a-running-vm"></a>実行中の VM で高速ネットワークを有効にする
+サポートされる VM サイズで、高速ネットワークが有効になっていない場合は、VM が停止され割り当てを解除されているときにだけ機能を有効にできます。
 
-* **ネットワーク インターフェイスの作成:** 高速ネットワークは、新しい NIC でのみ有効にできます。 既存の NIC に対して有効にすることはできません。
-* **VM の作成:** 高速ネットワークを有効にした NIC は、VM の作成時にのみ VM に接続できます。 既存の VM に NIC を接続することはできません。 VM を既存の可用性セットに追加する場合は、可用性セット内のすべての VM でも高速ネットワークが有効になっている必要があります。
-* **Azure Resource Manager でのデプロイのみ:** 仮想マシン (クラシック) は高速ネットワークを使用してデプロイできません。
+### <a name="deployment-through-azure-resource-manager"></a>Azure Resource Manager によるデプロイ
+仮想マシン (クラシック) は、高速ネットワークを使用したデプロイはできません。
 
-この記事では、高速ネットワークを使用した仮想マシンを、Azure PowerShell を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure Portal を使って作成することもできます](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 ポータルで、サポートされているオペレーティング システムと VM サイズで仮想マシンを作成する際に、**[設定]** の **[高速ネットワーク]** で **[有効]** を選択します。 仮想マシンが作成されたら、「[オペレーティング システムでドライバーがインストールされていることを確認する](#confirm-the-driver-is-installed-in-the-operating-system)」の手順を完了する必要があります。
+## <a name="create-a-windows-vm-with-azure-accelerated-networking"></a>Azure 高速ネットワークが有効な Windows VM を作成する
+
+この記事では、高速ネットワークを使用した仮想マシンを、Azure PowerShell を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure Portal を使って作成することもできます](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 ポータルで仮想マシンを作成する際に、**[設定]** の **[高速ネットワーク]** で **[有効]** を選択します。 高速ネットワークを有効にするオプションは、[サポートされるオペレーティング システム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択しない限り、ポータルには表示されません。 仮想マシンが作成されたら、「[オペレーティング システムでドライバーがインストールされていることを確認する](#confirm-the-driver-is-installed-in-the-operating-system)」の手順を完了する必要があります。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[Azure PowerShell](/powershell/azure/install-azurerm-ps) バージョン 5.1.1 以降をインストールします。 現在インストールされているバージョンを見つけるには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureRM)から最新バージョンの AzureRM モジュールをインストールします。 PowerShell セッションで、[Add-AzureRmAccount](/powershell/module/AzureRM.Profile/Add-AzureRmAccount) を使用して Azure アカウントにログインします。
+[Azure PowerShell](/powershell/azure/install-azurerm-ps) バージョン 5.1.1 以降をインストールします。 現在インストールされているバージョンを見つけるには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureRM)から最新バージョンの AzureRM モジュールをインストールします。 PowerShell セッションで、[Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) を使用して Azure アカウントにログインします。
 
 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myNic*、*myVM* といったパラメーター名にします。
 
@@ -200,13 +202,101 @@ New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "cent
 
 ## <a name="confirm-the-driver-is-installed-in-the-operating-system"></a>オペレーティング システムでドライバーがインストールされていることを確認する
 
-Azure で VM を作成したら、VM に接続して、Windows でドライバーがインストールされていることを確認します。 
+Azure で VM を作成したら、VM に接続して、Windows でドライバーがインストールされていることを確認します。
 
 1. インターネット ブラウザーから Azure [Portal](https://portal.azure.com) を開いて、自分の Azure アカウントでサインインします。
 2. Azure Portal の上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに「*myVm*」と入力します。 検索結果に **myVm** が表示されたら、それをクリックします。 **[接続]** ボタンの下に **[作成中]** と表示されている場合、Azure による VM の作成がまだ完了していません。 概要の左上隅にある **[接続]** は必ず、**[接続]** ボタンの下の **[作成中]** が見えなくなってからクリックしてください。
 3. 「[仮想マシンの作成](#create-the-virtual-machine)」で入力したユーザー名とパスワードを入力します。 Azure で Windows VM に接続したことがない場合は、「[仮想マシンへの接続](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine)」を参照してください。
 4. Windows の [スタート] ボタンを右クリックし、**[デバイス マネージャー]** をクリックします。 **[ネットワーク アダプター]** ノードを展開します。 **[Mellanox ConnectX-3 Virtual Function Ethernet Adapter]** が表示されていることを確認します (下図参照)。
-   
+
     ![[デバイス マネージャー]](./media/create-vm-accelerated-networking/device-manager.png)
 
 VM の高速ネットワークが有効になりました。
+
+## <a name="enable-accelerated-networking-on-existing-vms"></a>既存の VM 上で高速ネットワークを有効にする
+高速ネットワークを有効にしないで VM を作成した場合は、既存の VM に対してこの機能を有効にすることができです。  VM は、上記で説明した次の前提条件を満たすことによって、高速ネットワークをサポートしている必要があります。
+
+* VM は高速ネットワークがサポートされるサイズである必要があります
+* VM はサポートされる Azure ギャラリー イメージ (および Linux のカーネル バージョン) である必要があります
+* 可用性セット内または VMSS 内のすべての VM は、NIC において高速ネットワークを有効にする前に、停止/割り当てを解除しておく必要があります
+
+### <a name="individual-vms--vms-in-an-availability-set"></a>個別の VM および可用性セット内の VM
+最初に、VM (可用性セットの場合は、セット内のすべての VM) を停止/割り当てを解除します。
+
+```azurepowershell
+Stop-AzureRmVM -ResourceGroup "myResourceGroup" `
+    -Name "myVM"
+```
+
+可用性セットを使用しないで個別に作成した VM の場合、高速ネットワークを有効にするには、個別の VM を停止/割り当てを解除することだけが必要です。  可用性セットを使用して作成された VM の場合は、いずれかの NIC において高速ネットワークを有効にする前に、可用性セットに含まれるすべての VM を停止/割り当てを解除する必要があります。 
+
+停止した後、VM の NIC において高速ネットワークを有効にします。
+
+```azurepowershell
+$nic = Get-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
+    -Name "myNic"
+
+$nic.EnableAcceleratedNetworking = $true
+
+$nic | Set-AzureRmNetworkInterface
+```
+
+VM (可用性セットの場合はセット内のすべての VM) を再起動し、高速ネットワークが有効になっていることを確認します。 
+
+```azurepowershell
+Start-AzureRmVM -ResourceGroup "myResourceGroup" `
+    -Name "myVM"
+```
+
+### <a name="vmss"></a>VMSS
+VMSS は若干異なりますが、同じワークフローに従います。  最初に、VM を停止します。
+
+```azurepowershell
+Stop-AzureRmVmss -ResourceGroupName "myResourceGroup" ` 
+    -VMScaleSetName "myScaleSet"
+```
+
+VM が停止した後、ネットワーク インターフェイスにおいて高速ネットワークのプロパティを更新します。
+
+```azurepowershell
+$vmss = Get-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet"
+
+$vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].EnableAcceleratedNetworking = $true
+
+Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet" `
+    -VirtualMachineScaleSet $vmss
+```
+
+VMSS には、3 つの異なる設定 (自動、ローリング、手動) を使用して更新を適用する VM のアップグレードがあります。  この手順では、再起動後すぐに VMSS がポリシーを選択するように、ポリシーを自動に設定します。  変更がすぐに選択されるように自動に設定するには、次のようにします。 
+
+```azurepowershell
+$vmss.UpgradePolicy.AutomaticOSUpgrade = $true
+
+Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet" `
+    -VirtualMachineScaleSet $vmss
+```
+
+最後に、VMSS を再起動します。
+
+```azurepowershell
+Start-AzureRmVmss -ResourceGroupName "myResourceGroup" ` 
+    -VMScaleSetName "myScaleSet"
+```
+
+再起動した後、アップグレードが完了するまで待ちます。完了すると、VM 内に VF が表示されます。  (サポートされる OS と VM サイズを使用していることを確認してください)
+
+### <a name="resizing-existing-vms-with-accelerated-networking"></a>高速ネットワークが有効な既存の VM のサイズを変更する
+
+高速ネットワークが有効になっている VM のサイズは、高速ネットワークをサポートする VM にのみ変更できます。  
+
+高速ネットワークが有効になっている VM のサイズを、高速ネットワークをサポートしていない VM インスタンスに、サイズ変更操作を使って変更することはできません。  このような VM のサイズを変更するには、次のようにします。 
+
+* VM を停止/割り当てを解除します。可用性セット/VMSS の場合は、セット/VMSS 内のすべての VM を停止/割り当てを解除します。
+* VM の NIC において、高速ネットワークを無効にする必要があります。可用性セット/VMSS の場合は、セット/VMSS 内のすべての VM において無効にします。
+* 高速ネットワークが無効になったら、高速ネットワークをサポートしていない新しいサイズに VM/可用性セット/VMSS を移動して、再起動します。  
+
+
+

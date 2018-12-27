@@ -1,22 +1,20 @@
 ---
-title: "Linux 上で Azure Blob Storage をファイル システムとしてマウントする方法 | Microsoft Docs"
-description: "Linux 上で FUSE を使用して Azure Blob Storage コンテナーをマウントする"
+title: Linux 上で Azure Blob Storage をファイル システムとしてマウントする方法 | Microsoft Docs
+description: Linux 上で FUSE を使用して Azure Blob Storage コンテナーをマウントする
 services: storage
-documentationcenter: linux
 author: seguler
-manager: jahogg
 ms.service: storage
-ms.devlang: bash
 ms.topic: article
-ms.date: 01/19/2018
+ms.date: 10/11/2018
 ms.author: seguler
-ms.openlocfilehash: 299b96c783fb3606347bb448d00d44f0071da429
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 50378fd7739567b0cc56066168ddd33c3ea14141
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957056"
 ---
-# <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse-preview"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法 (プレビュー)
+# <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
 ## <a name="overview"></a>概要
 [blobfuse](https://github.com/Azure/azure-storage-fuse) は、ストレージ アカウント内の既存のブロック BLOB データに Linux ファイル システム経由でアクセスできるようにする、Azure Blob Storage 用の仮想ファイル システム ドライバーです。 Azure Blob Storage はオブジェクト ストレージ サービスであるため、階層的な名前空間を持っていません。 blobfuse は、フォワードスラッシュ '/' を区切り記号として使用して、仮想ディレクトリ スキームによってこの名前空間を提供します。  
@@ -24,12 +22,12 @@ ms.lasthandoff: 01/23/2018
 このガイドでは、blobfuse を使用し、Linux 上で Blob Storage コンテナーをマウントしてデータにアクセスする方法を示します。 blobfuse の詳細については、「[the blobfuse repository (blobfuse リポジトリ)](https://github.com/Azure/azure-storage-fuse)」にある詳細を参照してください。
 
 > [!WARNING]
-> blobfuse は、要求を [BLOB REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api) に単純に変換するだけであるため、100% の POSIX 準拠は保証されません。 たとえば、名前変更操作は POSIX ではアトミックですが、blobfuse では違います。
+> blobfuse は、要求を [BLOB REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) に単純に変換するだけであるため、100% の POSIX 準拠は保証されません。 たとえば、名前変更操作は POSIX ではアトミックですが、blobfuse では違います。
 > ネイティブなファイル システムと blobfuse の違いの完全な一覧については、[blobfuse ソース コード リポジトリ](https://github.com/azure/azure-storage-fuse)にアクセスしてください。
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>Linux に blobfuse をインストールする
-blobfuse バイナリは、[Linux 用の Microsoft ソフトウェア リポジトリ](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)で入手できます。 blobfuse をインストールするには、次のリポジトリのいずれかを構成します。
+blobfuse バイナリは、Linux の Ubuntu および RHEL ディストリビューション用の [Microsoft ソフトウェア リポジトリ](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)で入手できます。 このようなディストリビューションに blobfuse をインストールするには、一覧からいずれかのリポジトリを構成します。 使用しているディストリビューション用のバイナリがない場合は、[こちら](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)のインストール手順に従ってソース コードからバイナリをビルドすることもできます。
 
 ### <a name="configure-the-microsoft-package-repository"></a>Microsoft パッケージ リポジトリを構成する
 [Microsoft 製品用の Linux パッケージ リポジトリ](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)を構成します。
@@ -78,7 +76,7 @@ sudo chown <youruser> /mnt/ramdisk/blobfusetmp
 ```
 
 ### <a name="use-an-ssd-for-temporary-path"></a>一時パスに SSD を使用する
-Azure では、blobfuse に待機時間の短いバッファを提供するために、VM 上で使用可能な一時ディスク (SSD) を使用できます。 Ubuntu ディストリビューションでは、この一時ディスクが '/mnt' にマウントされるのに対して、RedHat および CentOS ディストリビューションでは '/mnt/resource/' にマウントされます。
+Azure では、blobfuse に待機時間の短いバッファを提供するために、VM 上で使用可能な一時ディスク (SSD) を使用できます。 Ubuntu ディストリビューションでは、この一時ディスクが '/mnt' にマウントされるのに対して、Red Hat および CentOS ディストリビューションでは '/mnt/resource/' にマウントされます。
 
 ユーザーが一時パスにアクセスできることを確認してください。
 ```bash
@@ -91,7 +89,7 @@ blobfuse では、資格情報が次の形式でテキスト ファイルに格�
 
 ```
 accountName myaccount
-accountKey myaccesskey==
+accountKey storageaccesskey
 containerName mycontainer
 ```
 
@@ -99,6 +97,10 @@ containerName mycontainer
 ```bash
 chmod 700 fuse_connection.cfg
 ```
+
+> [!NOTE]
+> Windows で構成ファイルを作成した場合は、`dos2unix` を実行してサニタイズし、Unix 形式に変換します。 
+>
 
 ### <a name="create-an-empty-directory-for-mounting"></a>マウント用の空のディレクトリを作成する
 ```bash

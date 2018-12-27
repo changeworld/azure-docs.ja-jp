@@ -2,23 +2,21 @@
 title: Azure Cosmos DB MongoDB API でのインデックス作成 | Microsoft Docs
 description: Azure Cosmos DB MongoDB API のインデックス作成機能についての概要を紹介します。
 services: cosmos-db
-documentationcenter: ''
 author: orestis-ms
 manager: kfile
 editor: ''
-ms.assetid: daacbabf-1bb5-497f-92db-079910703047
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: javascript
-ms.topic: quickstart
+ms.component: cosmosdb-mongo
+ms.devlang: nodejs
+ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: orkostak
-ms.openlocfilehash: 6cb267096e04d4957b166e539a4fc58aa25e04cb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a3dadfc4257d43f9df1b93f5d486e5577b7889d6
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055313"
 ---
 # <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API でのインデックス作成
 

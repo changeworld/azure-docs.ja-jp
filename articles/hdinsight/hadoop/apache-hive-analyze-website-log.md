@@ -1,28 +1,22 @@
 ---
-title: "Web サイトのログ分析のための Hadoop での Hive の使用 - Azure HDInsight | Microsoft Docs"
-description: "Web サイトのログを分析するために HDInsight で Hive を使用する方法を説明します。 HDInsight テーブルへの入力にログ ファイルを使用し、HiveQL を使用してデータを照会します。"
+title: Apache Hadoop と Hive を使用して Web ログを分析する - Azure HDInsightHDInsight 上で Hive を使用して Web サイトのログを分析する方法について説明します。
+description: Learn how to use Apache Hive with HDInsight to analyze website logs. HDInsight テーブルへの入力にログ ファイルを使用し、HiveQL を使用してデータを照会します。
 services: hdinsight
-documentationcenter: 
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 6fb7b5c2-8df4-40b1-a9e2-6815080004f9
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/17/2016
-ms.author: nitinme
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5aabb69dc233dfd927c1d6cc1b131115e2d096d4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4f4067c73cac4597da3099212c9c04c2544a0b2d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634347"
 ---
-# <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Web サイトのログを分析するための Windows ベースの HDInsight での Hive の使用
+# <a name="use-apache-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Windows ベースの HDInsight 上で Apache Hive を使用して Web サイトのログを分析する
 Web サイトのログを分析するために HDInsight で HiveQL を使用する方法を説明します。 Web サイトのログ分析は、類似するアクティビティに基づく対象ユーザーの区分、人口統計によるサイト訪問者の分類、参照されたコンテンツや訪問元の Web サイトの確認などのために使用できます。
 
 > [!IMPORTANT]
@@ -40,7 +34,7 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 ## <a name="prerequisites"></a>前提条件
 * Azure HDInsight 上で Hadoop クラスターをプロビジョニングしておく必要があります。 手順については、[HDInsight クラスターのプロビジョニング](../hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 * Microsoft Excel 2013 または Microsoft Excel 2010 がインストールされていること。
-* Hive から Excel にデータをインポートするための [Microsoft Hive ODBC ドライバー](http://www.microsoft.com/download/details.aspx?id=40886) があること。
+* Hive から Excel にデータをインポートするための [Microsoft Hive ODBC ドライバー](https://www.microsoft.com/download/details.aspx?id=40886) があること。
 
 ## <a name="to-run-the-sample"></a>サンプルを実行するには
 1. [Azure ポータル](https://portal.azure.com/)のスタート画面 (ポータルにクラスターをピン留めした場合) で、サンプルを実行するクラスターのタイルをクリックします。
@@ -52,7 +46,7 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 3. 表示された Web ページの **[概要ギャラリー]** タブをクリックし、**[サンプル データを使用したソリューション]** カテゴリにある **[Web サイトのログの分析]** サンプルをクリックします。
 4. Web ページに記載されている手順に従って、サンプルを完了します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「 [Hive を HDInsight と共に使用したセンサー データの分析](apache-hive-analyze-sensor-data.md)」のサンプル手順に従ってください。
 
 [hdinsight-sensor-data-sample]: ../hdinsight-use-hive-sensor-data-analysis.md

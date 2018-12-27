@@ -1,60 +1,66 @@
 ---
-title: ドメイン参加済み Azure HDInsight のアーキテクチャ | Microsoft Docs
-description: ドメイン参加済み HDInsight を計画する方法について説明します。
+title: Enterprise セキュリティ パッケージを使用した Azure HDInsight アーキテクチャ
+description: Enterprise セキュリティ パッケージを使用して HDInsight のセキュリティを計画する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: bhanupr
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: omidm
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/20/2018
-ms.author: bprakash
-ms.openlocfilehash: b4f79388e45e24dc906a3a03dc0c0e51df52160d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: conceptual
+ms.date: 09/24/2018
+ms.openlocfilehash: 35768aed3509d6ec5b73c64c7a8a6b132957ace1
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632732"
 ---
-# <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>HDInsight で Azure のドメイン参加済み Hadoop クラスターを計画する
+# <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight で Enterprise セキュリティ パッケージを使用する
 
-標準的な HDInsight クラスターはシングル ユーザー クラスターです。 これは、大規模なデータ ワークロードを構築する小規模なアプリケーション チームを抱えているほとんどの企業に適しています。 Hadoop の普及に伴い、多くの企業では、IT チームが管理するクラスターを複数のアプリケーション チームが共有するモデルに移行しつつあります。 このため、マルチユーザーのクラスターに関わる機能は、Azure HDInsight で最も需要が高い機能となっています。
+標準的な Azure HDInsight クラスターは、シングル ユーザー クラスターです。 これは、大規模なデータ ワークロードを構築する小規模なアプリケーション チームを抱えているほとんどの企業に適しています。 ユーザーごとにオンデマンドの専用クラスターを作成し、不要になったときに破棄することができます。 
 
-HDInsight は、独自のマルチユーザー認証と承認を構築する代わりに、最も人気のある ID プロバイダー、Active Directory (AD) を利用します。 AD の強力なセキュリティ機能を使用して、HDInsight でマルチユーザー認証を管理できます。 HDInsight と AD を統合することで、AD の資格情報を使ってクラスターと通信できます。 HDInsight 内の VM は、AD ドメインに参加します。HDInsight が AD ユーザーをローカルの Hadoop ユーザーにマップするため、HDInsight で実行されているすべてのサービス (Ambari、Hive サーバー、Ranger、Spark Thrift サーバーなど) が、認証済みユーザーに対してシームレスに動作します。 さらに、管理者は、Apache Ranger を使用して強力な承認ポリシーを作成し、HDInsight 内のリソースに対するロールベースのアクセス制御を行うことができます。
+多くの企業では、IT チームが管理するクラスターを複数のアプリケーション チームが共有するモデルに移行しています。 これらの大規模企業は、Azure HDInsight での各クラスターへのマルチユーザー アクセスが必要です。
 
+HDInsight は、管理されている方法で、一般的な ID プロバイダーである Active Directory に依存します。 HDInsight を [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/active-directory-ds-overview.md) と統合することによって、ドメイン資格情報を使用してクラスターにアクセスできます。 
+
+HDInsight での仮想マシン (VM) は、指定されたドメインに参加しているドメインです。 そのため、HDInsight 上で実行されているすべてのサービス (Apache Ambari、Apache Hive サーバー、Apache Ranger、Apache Spark Thrift サーバーなど) は、認証済みユーザーに対してシームレスに動作します。 さらに、管理者は、Apache Ranger を使用して強力な承認ポリシーを作成し、クラスター内のリソースに対するロールベースのアクセス制御を行うことができます。
 
 ## <a name="integrate-hdinsight-with-active-directory"></a>HDInsight を Active Directory と統合する
 
-HDInsight を Active Directory と統合すると、HDInsight クラスター ノードは、AD ドメインに参加することになります。 クラスター上の Hadoop コンポーネントには Kerberos セキュリティが構成されます。 Active Directory には、各 Hadoop コンポーネントに対応するサービス プリンシパルが作成されます。 また、ドメインに参加する各マシンには、対応するマシン プリンシパルが作成されます。 こうしたサービス プリンシパルとマシン プリンシパルが Active Directory で無秩序に混じり合ってしまうことがあります。 そのため Active Directory には、それらのプリンシパルの配置先となる組織単位 (OU) を設けることが必要となります。 
+オープンソースの Apache Hadoop は、認証とセキュリティのために Kerberos に依存しています。 したがって、Enterprise セキュリティ パッケージ (ESP) を使用する HDInsight クラスター ノードは、Azure AD DS によって管理されるドメインに参加済みです。 クラスター上の Hadoop コンポーネントには Kerberos セキュリティが構成されます。 
+
+自動的に以下のものが作成されます。
+- 各 Hadoop コンポーネントのサービス プリンシパル 
+- ドメインに参加している各マシンのマシン プリンシパル
+- このようなサービスおよびマシンのプリンシパルを格納する各クラスターの組織単位 (OU) 
 
 これらの点を総合すると、次の要素から成る環境をセットアップする必要があります。
 
-- Active Directory ドメイン コントローラー (要 LDAPS 構成)。
-- HDInsight の仮想ネットワークから Active Directory ドメイン コントローラーへの接続。
-- Active Directory 上に作成された組織単位。
-- 次の操作に必要なアクセス許可を持つサービス アカウント:
+- Active Directory ドメイン (Azure AD DS で管理)。
+- Azure AD DS で有効になっている Secure LDAP (LDAPS)。
+- 個別の仮想ネットワークを選ぶ場合の HDInsight 仮想ネットワークから Azure AD DS 仮想ネットワークへの適切なネットワーク接続。 HDInsight 仮想ネットワーク内の VM は、仮想ネットワーク ピアリングを使用して Azure AD DS への通信経路を持つ必要があります。 HDInsight と Azure AD DS が同じ仮想ネットワーク内にデプロイされている場合、接続は自動的に提供されるので、これ以上アクションは必要ありません。
 
-    - OU にサービス プリンシパルを作成する。
-    - ドメインにマシンを参加させて OU にマシン プリンシパルを作成する。
+## <a name="set-up-different-domain-controllers"></a>異なるドメイン コントローラーの設定
+現在、HDInsight では、クラスターの Kerberos 認証に使用するメイン ドメイン コントローラーとして、Azure AD DS だけがサポートされています。 ただし、設定によって HDInsight アクセスに対する Azure AD DS が有効にされることになる場合に限り、その他の複雑な Active Directory 設定が可能です。
 
-次のスクリーンショットは、contoso.com に作成された OU を示したものです。スクリーンショットには、サービス プリンシパルとマシン プリンシパルもいくつか表示されています。
+### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services
+[Azure AD DS](../../active-directory-domain-services/active-directory-ds-overview.md) では、Windows Server Active Directory と完全に互換性のあるマネージド ドメインを提供します。 Microsoft は、高可用性 (HA) 設定のドメインの管理、修正プログラムの適用、監視を行います。 ドメイン コントローラーの管理について心配することなく、クラスターをデプロイすることができます。 
 
-![ドメイン参加済み HDInsight クラスターの OU](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png)が必要です。
+ユーザー、グループ、パスワードは、Azure Active Directory (Azure AD) から同期されます。 Azure AD インスタンスから Azure AD DS への一方向の同期により、同じ会社の資格情報を使用して、ユーザーがクラスターにサインインできます。 
 
-### <a name="the-way-of-bringing-your-own-active-directory-domain-controllers"></a>独自の Active Directory ドメイン コントローラーを導入する方法
+詳細については、[Azure AD DS を使用する ESP への HDInsight クラスター構成](./apache-domain-joined-configure-using-azure-adds.md)に関する記事を参照してください。
 
-- **Azure Active Directory Domain Services**: このサービスでは、Windows Server Active Directory と完全に互換性のある管理対象の Active Directory ドメインが提供されます。 Microsoft は、AD ドメインの管理、修正プログラムの適用、および監視を行います。 ドメイン コントローラーの管理について心配することなく、クラスターをデプロイすることができます。 ユーザー、グループおよびパスワードは、ユーザーが会社の資格情報を使ってクラスターにサインインできるように、Azure Active Directory から同期されます。 詳細については、「[Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する](./apache-domain-joined-configure-using-azure-adds.md)」を参照してください。
+### <a name="on-premises-active-directory-or-active-directory-on-iaas-vms"></a>オンプレミス Active Directory または IaaS VM 上の Active Directory
 
-> [!NOTE]
-> Azure IaaS VM の Active Directory はサポートされなくなりました。
+自分のドメインにオンプレミス Active Directory インスタンスまたはより複雑な Active Directory 設定がある場合、Azure AD Connect を使用してそれらの ID を Azure AD と同期することができます。 その後、Active Directory テナント上で Azure AD DS を有効にできます。 
+
+Kerberos はパスワード ハッシュに依存するため、[Azure AD DS でパスワード ハッシュ同期を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)必要があります。 Active Directory フェデレーション サービス (AD FS) でフェデレーションを使用していると、AD FS インフラストラクチャで障害が発生した場合のバックアップとして、オプションでパスワード ハッシュ同期を設定できます。 詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)」を参照してください。 
+
+Azure AD と Azure AD DS を使用せずに、IaaS VM 単独でオンプレミスの Azure AD または Azure AD DS を使用する構成は、ESP を使用する HDInsight クラスターではサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
-* ドメイン参加済み HDInsight クラスターを管理するには、[ドメイン参加済み HDInsight クラスターの管理](apache-domain-joined-manage.md)に関する記事をご覧ください。
-* Hive ポリシーを構成して Hive クエリを実行するには、[ドメイン参加済み HDInsight クラスターでの Hive ポリシーの構成](apache-domain-joined-run-hive.md)に関する記事をご覧ください。
-* SSH を使用してドメイン参加済み HDInsight クラスターで Hive クエリを実行する方法については、[HDInsight で SSH キーを使用する](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
+* [ESP を使用する HDInsight クラスターを構成する](apache-domain-joined-configure-using-azure-adds.md)
+* [ESP を使用する HDInsight クラスターのために Hive ポリシーを構成する](apache-domain-joined-run-hive.md)
+* [ESP を使用する HDInsight クラスターを管理する](apache-domain-joined-manage.md) 

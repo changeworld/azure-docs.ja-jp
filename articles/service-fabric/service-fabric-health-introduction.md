@@ -1,31 +1,32 @@
 ---
-title: "Service Fabric の正常性モニタリング | Microsoft Docs"
-description: "クラスター、アプリケーション、およびサービスを監視する Azure Service Fabric の正常性監視モデルの紹介です。"
+title: Service Fabric の正常性モニタリング | Microsoft Docs
+description: クラスター、アプリケーション、およびサービスを監視する Azure Service Fabric の正常性監視モデルの紹介です。
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1d979210-b1eb-4022-be24-799fd9d8e003
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d226b8f8b3252fe82cd5077d235f301cfaa83654
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6cba4e1fd9c9fe5fdaa7ff4513218a606a4eace9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215232"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric の正常性モニタリングの概要
 Azure Service Fabric に導入している正常性モデルは、機能が豊富で、柔軟性と拡張可能性を備えた正常性評価とレポートを提供します。 このモデルを使用すると、クラスターの状態とその内部で実行されているサービスの状態をほぼリアルタイムで監視することができます。 正常性の情報を容易に取得でき、潜在的な問題を事前に解決できるため、問題が連鎖的に発生して大規模なサービス停止を引き起こす事態を防げます。 一般的なモデルでは、サービスがローカルのビューに基づくレポートを送信し、その情報が集計されて、クラスター レベル全体のビューが提供されます。
 
 Service Fabric のコンポーネントは、この豊富な機能を持つ正常性モデルを使用して、現在の状態を報告します。 アプリケーションからの正常性レポートにも同じメカニズムを使用できます。 カスタム条件をキャプチャする高品質の正常性レポートに投資すれば、実行中のアプリケーションの問題をより簡単に検出し、修正できます。
 
-次の Microsoft Virtual Academy のビデオでは、Service Fabric の正常性モデルとその使用方法について説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
+次の Microsoft Virtual Academy のビデオでは、Service Fabric の正常性モデルとその使用方法についても説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
 <img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
@@ -116,7 +117,7 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 [アプリケーションの正常性ポリシー](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) は、アプリケーションとその子に関して、イベントの評価方法および子の状態の集計方法を記述します。 これは、アプリケーション パッケージにある、アプリケーション マニフェストの **ApplicationManifest.xml**ファイルで定義できます。 ポリシーが指定されていない場合、正常性状態が警告またはエラーの正常性レポートか子が見つかれば、Service Fabric はエンティティを異常と見なします。
 構成可能なポリシーは、次のとおりです。
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx)。 警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。 既定値は false です。
+* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。 既定値は false です。
 * [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications)。 異常な可能性のあるデプロイされたアプリケーションの最大許容パーセンテージを指定します。この値を超えるとアプリケーションはエラーの状態と見なされます。 このパーセンテージは、デプロイされた異常なアプリケーションの数を、クラスター内でそのアプリケーションが現在デプロイされているノードの数で除算して計算されます。 切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。 既定のパーセンテージは 0 です。
 * [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy)。 アプリケーション内のすべてのサービスの種類の既定の正常性ポリシーに代わる、既定のサービスの種類の正常性ポリシーを指定します。
 * [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap)。 サービスの種類ごとのサービス正常性ポリシーのマップを指定します。 指定された各サービスの種類について、既定のサービスの種類の正常性ポリシーは、これらのポリシーに置き換えられます。 たとえば、アプリケーションにステートレスなゲートウェイ サービスの種類とステートフルなエンジン サービスの種類がある場合は、異なる方法で評価されるように正常性ポリシーを構成できます。 サービスの種類ごとにポリシーを指定すると、サービスの正常性をより細かく制御できます。
@@ -185,8 +186,8 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 
 * すべての子が OK の状態である場合は、子の集計正常性状態は OK です。
 * OK と警告の両方の状態の子がある場合は、子の集計正常性状態は警告です。
-* エラーの状態の子が、異常な子の最大許容パーセンテージを超える場合、集計正常性状態はエラーです。
-* エラーの状態の子が、異常な子の最大許容パーセンテージ内である場合は、集計正常性状態は警告です。
+* エラーの状態の子が、異常な子の最大許容パーセンテージを超える場合、親の集計正常性状態はエラーです。
+* エラーの状態の子が、異常な子の最大許容パーセンテージ内である場合は、親の集計正常性状態は警告です。
 
 ## <a name="health-reporting"></a>正常性の報告
 システム コンポーネント、Service Fabric アプリケーション、内部/外部のウォッチドッグは、Service Fabric エンティティに対してレポートすることができます。 レポーターは、監視対象エンティティの正常性を、監視条件に基づいて *ローカルに* 判定します。 これらは、グローバル状態や集計データを確認する必要がありません。 望ましいのは、送信すべき情報を推定するために多くのことを確認しなければならない複雑な構造体ではなく、単純なレポーターを持つことです。

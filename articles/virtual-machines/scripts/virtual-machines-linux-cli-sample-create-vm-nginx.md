@@ -1,26 +1,27 @@
 ---
-title: "Azure CLI のサンプル スクリプト - NGINX がインストールされた Linux VM の作成 | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - NGINX がインストールされた Linux VM の作成"
+title: Azure CLI のサンプル スクリプト - NGINX がインストールされた Linux VM の作成 | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - NGINX がインストールされた Linux VM の作成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
-manager: timlt
+author: zr-msft
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
-ms.author: nepeters
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: a88077d405a662c0b5f83022209712545fea537f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 50a6bc40dbc79242e7c64bbc2082baeac224ba2e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467924"
 ---
 # <a name="create-a-vm-with-nginx"></a>NGINX がインストールされた VM の作成
 
@@ -36,7 +37,7 @@ ms.lasthandoff: 03/09/2018
 
 ## <a name="custom-script-extension"></a>カスタム スクリプト拡張機能
 
-このサンプルのカスタム スクリプト拡張機能では、次のスクリプトを仮想マシンにコピーします。 その後、このスクリプトを実行して NGINX Web サーバーをインストールおよび構成します。 
+このサンプルのカスタム スクリプト拡張機能では、次のスクリプトを仮想マシンにコピーします。 その後、このスクリプトを実行して NGINX Web サーバーをインストールおよび構成します。
 
 ```bash
 #!/bin/bash
@@ -48,11 +49,11 @@ apt-get -y update
 apt-get -y install nginx
 ```
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

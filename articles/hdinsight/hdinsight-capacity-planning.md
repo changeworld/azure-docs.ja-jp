@@ -1,26 +1,20 @@
 ---
-title: "Azure HDInsight のクラスターの容量計画 | Microsoft Docs"
-description: "容量とパフォーマンスのニーズを満たす HDInsight クラスターを指定する方法。"
+title: Azure HDInsight のクラスターの容量計画
+description: 容量とパフォーマンスのニーズを満たす HDInsight クラスターを指定する方法。
 services: hdinsight
-documentationcenter: 
-tags: azure-portal
 author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 70451c5a69a1a268aef0eb957cb92791b92eb221
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c3bdad6f1c199dda867370126eb7dcf5c296a12d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230429"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -44,7 +38,7 @@ HDInsight は多数の Azure リージョンで利用できます。 最も近�
 
 ### <a name="location-of-default-storage"></a>既定のストレージの場所
 
-既定のストレージ (Azure ストレージ アカウントまたは Azure Data Lake Store) は、クラスターと同じ場所に存在する必要があります。 Azure Storage はあらゆる場所で利用できます。 Data Lake Store は一部のリージョンで利用できます。Data Lake Store の現在の提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」の「*ストレージ*」を参照してください。
+既定のストレージ (Azure ストレージ アカウントまたは Azure Data Lake Store) は、クラスターと同じ場所に存在する必要があります。 Azure Storage はあらゆる場所で利用できます。 Data Lake Store Gen1 は一部のリージョンで利用できます。Data Lake Store の現在の提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」の「*ストレージ*」を参照してください。
 
 ### <a name="location-of-existing-data"></a>既存のデータの場所
 
@@ -54,7 +48,7 @@ HDInsight は多数の Azure リージョンで利用できます。 最も近�
 
 HDInsight クラスターのデプロイ後に、追加の Azure ストレージ アカウントを接続したり、他の Data Lake Store にアクセスしたりできます。 すべてのストレージ アカウントがクラスターと同じ場所に存在する必要があります。 Data Lake Store は別の場所にあっても構いませんが、その場合、データの読み取り/書き込みの待機時間が発生する可能性があります。
 
-Azure Storage には[容量制限](../azure-subscription-service-limits.md#storage-limits)がありますが、Data Lake Store には実質的に制限はありません。
+Azure Storage Gen1 には[容量制限](../azure-subscription-service-limits.md#storage-limits)がありますが、Data Lake Store には実質的に制限はありません。
 
 クラスターは、さまざまなストレージ アカウントの組み合わせにアクセスできます。 一般的な例を次に示します。
 
@@ -115,5 +109,5 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 ## <a name="next-steps"></a>次の手順
 
-* [Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md): Hadoop、Spark、Kafka、Interactive Hive、HBase、R Server、Storm の HDInsight クラスターをセットアップして構成する方法について説明します。
+* [Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md): Hadoop、Spark、Kafka、Interactive Hive、HBase、ML Services、Storm の HDInsight クラスターをセットアップして構成する方法について説明します。
 * [クラスターのパフォーマンスを監視する](hdinsight-key-scenarios-to-monitor.md): クラスターの容量に影響を及ぼす可能性のある、HDInsight クラスターの主な監視シナリオについて説明します。

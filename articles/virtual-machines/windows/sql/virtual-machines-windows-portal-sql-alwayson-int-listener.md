@@ -1,6 +1,6 @@
 ---
-title: "SQL Server 可用性グループ リスナーを Azure 仮想マシンに作成する | Microsoft Docs"
-description: "Azure Virtual Machines に SQL Server の AlwaysOn 可用性グループのリスナーを作成する手順を説明します。"
+title: SQL Server 可用性グループ リスナーを Azure 仮想マシンに作成する | Microsoft Docs
+description: Azure Virtual Machines に SQL Server の AlwaysOn 可用性グループのリスナーを作成する手順を説明します。
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 0399f9ef969098216e080140a67f81725b670115
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5e665cd0bcfdea436c2f493187c5bbea756f8f09
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248310"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Azure の AlwaysOn 可用性グループに使用するロード バランサーの構成
 この記事では、Azure Resource Manager で動作する Azure 仮想マシンに、SQL Server AlwaysOn 可用性グループのロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure 仮想マシン上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
@@ -54,7 +55,7 @@ ms.lasthandoff: 02/21/2018
 
 1. Azure ポータルで、SQL Server の仮想マシンを含んだリソース グループを開きます。 
 
-2. リソース グループで **[追加]**をクリックします。
+2. リソース グループで **[追加]** をクリックします。
 
 3. **ロード バランサー**を探し、検索結果から **[ロード バランサー]** (**Microsoft** によって発行されたもの) を選択します。
 
@@ -119,7 +120,7 @@ Azure では、バックエンド アドレス プールを "*バックエンド
 4.  Click **OK**. 
 
 > [!NOTE]
-> 指定したポートは、両方の SQL Server インスタンスのファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のインスタンスに必要となります。 詳細については、「[ファイアウォール規則を追加または編集する](http://technet.microsoft.com/library/cc753558.aspx)」をご覧ください。 
+> 指定したポートは、両方の SQL Server インスタンスのファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のインスタンスに必要となります。 詳細については、「[ファイアウォール規則を追加または編集する](https://technet.microsoft.com/library/cc753558.aspx)」をご覧ください。 
 > 
 > 
 
@@ -245,7 +246,7 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
    |**正常性プローブ** |作成したプローブを選択します。
    |**セッション永続化** |なし
    |**アイドル タイムアウト (分)** |既定値 (4)
-   |**フローティング IP (ダイレクト サーバー リターン)** | 有効
+   |**フローティング IP (ダイレクト サーバー リターン)** | Enabled
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>新しい IP アドレスを使用して可用性グループを構成する
 
@@ -275,7 +276,7 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
 可用性グループが分散可用性グループに参加している場合は、ロード バランサーに追加の規則が必要になります。 この規則には、分散可用性グループ リスナーによって使用されるポートが格納されます。
 
 >[!IMPORTANT]
->この手順は、可用性グループが[分散可用性グループ](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)に参加している場合にのみ適用されます。 
+>この手順は、可用性グループが[分散可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)に参加している場合にのみ適用されます。 
 
 1. 分散可用性グループに参加している各サーバーで、分散可用性グループ リスナーの TCP ポートに関する受信規則を作成します。 ドキュメントでは、多くの例で 5022 が使用されます。 
 
@@ -288,15 +289,17 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
    |**名前** |分散可用性グループの負荷分散規則を識別するための名前。 
    |**フロントエンド IP アドレス** |可用性グループと同じフロント エンド IP アドレスを使用します。
    |**プロトコル** |TCP
-   |**ポート** |5022 - [分散可用性グループのエンドポイント リスナー](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)用のポート。</br> 任意のポートを使用できます。  
+   |**ポート** |5022 - [分散可用性グループのエンドポイント リスナー](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)用のポート。</br> 任意のポートを使用できます。  
    |**バックエンド ポート** | 5022 - **[ポート]** と同じ値を使用します。
    |**バックエンド プール** |SQL Server インスタンスがある仮想マシンを含むプールです。 
    |**正常性プローブ** |作成したプローブを選択します。
    |**セッション永続化** |なし
    |**アイドル タイムアウト (分)** |既定値 (4)
-   |**フローティング IP (ダイレクト サーバー リターン)** | 有効
+   |**フローティング IP (ダイレクト サーバー リターン)** | Enabled
 
 分散可用性グループに参加している他の可用性グループのロード バランサーについても、これらの手順を繰り返します。
+
+Azure ネットワーク セキュリティ グループを使用してアクセスを制限する場合は、バックエンド SQL Server VM の IP アドレス、AG リスナーのロード バランサー フローティング IP アドレス、および該当する場合はクラスター コア IP アドレスが許可ルールに含まれていることを確認します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,8 +3,8 @@ title: Azure CDN による動的サイトの高速化
 description: Azure CDN は、動的コンテンツを含むファイルに対する動的サイトの高速化 (DSA) の最適化をサポートします。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: rli
-ms.openlocfilehash: d105c88105512df4a9f8d999f64ad001b5d54917
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: magattus
+ms.openlocfilehash: 4fa681e800197ea241ba1c6cf2180ba04b6e565b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092587"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN による動的サイトの高速化
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 03/30/2018
 >   
 > **Azure CDN from Verizon** プロファイルでは、CDN エンドポイントの作成後にエンドポイントの最適化を変更することはできません。
 
-## <a name="configuring-cdn-endpoint-to-accelerate-delivery-of-dynamic-files"></a>動的ファイルの配信を高速化する CDN エンドポイントを構成する
+## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>動的ファイルの配信を高速化する CDN エンドポイントの構成
 
 動的ファイルの配信を最適化するように CDN エンドポイントを構成するには、Azure Portal を使用するか、REST API またはいずれかのクライアント SDK を使用して同じことをプログラムで実行します。 
 
@@ -152,7 +153,7 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
 静的資産と動的な資産が混在している Web サイトがある場合は、最高のパフォーマンスを得るために複数の方法を使用することをお勧めします。 
 
-**Azure CDN from Verizon Standard** プロファイルおよび **Azure CDN from Akamai Standard** プロファイルでは、[キャッシュ規則](cdn-caching-rules.md)を使うことによって、特定の DSA エンドポイントのキャッシュを有効にできます。
+**Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Standard from Akamai** プロファイルでは、[キャッシュ規則](cdn-caching-rules.md)を使うことによって、特定の DSA エンドポイントのキャッシュを有効にできます。
 
 キャッシュ規則にアクセスするには:
 
@@ -164,7 +165,7 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
 2. グローバル キャッシュ規則またはカスタム キャッシュ規則を作成して、DSA エンドポイントのキャッシュを有効にします。 
 
-**Azure CDN from Verizon Premium** プロファイルの場合のみ、[ルール エンジン](cdn-rules-engine.md)を使って、特定の DSA エンドポイントのキャッシュを有効にすることができます。 作成されたルールは、プロファイルの DSA に最適化されているエンドポイントにのみ影響します。 
+**Azure CDN Premium from Verizon** プロファイルの場合のみ、[ルール エンジン](cdn-rules-engine.md)を使って、特定の DSA エンドポイントのキャッシュを有効にすることができます。 作成されたルールは、プロファイルの DSA に最適化されているエンドポイントにのみ影響します。 
 
 ルール エンジンにアクセスするには:
     
@@ -183,9 +184,6 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 2 つの CDN エンドポイントを使用することもできます。DSA を使用して最適化された一方のエンドポイントでは動的資産を配信し、静的な最適化 (一般的な Web 配信など) を使用して最適化されたもう一方のエンドポイントではキャッシュ可能な資産を配信します。 Web ページの URL を変更して、使用する予定の CDN エンドポイントの資産に直接リンクします。 
 
 例: `mydynamic.azureedge.net/index.html` は動的ページであり、DSA エンドポイントから読み込まれます。  この html ページは、静的な CDN エンドポイント (`mystatic.azureedge.net/banner.jpg` や `mystatic.azureedge.net/scripts.js` など) から読み込まれる JavaScript ライブラリや画像などの複数の静的資産を参照しています。 
-
-ASP.NET Web アプリケーションでコントローラーを使用して、特定の CDN URL を介してコンテンツを配信する方法の例については、「[Azure CDN を介してコントローラー アクションからコンテンツを配信する](https://docs.microsoft.com/azure/cdn/cdn-cloud-service-with-cdn#controller)」をご覧ください。
-
 
 
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure Cloud Shell ウィンドウの使用 | Microsoft Docs"
-description: "Azure Cloud Shell ウィンドウの使用方法の概要について説明します。"
+title: Azure Cloud Shell ウィンドウの使用 | Microsoft Docs
+description: Azure Cloud Shell ウィンドウの使用方法の概要について説明します。
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919996"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Azure Cloud Shell ウィンドウの使用
 

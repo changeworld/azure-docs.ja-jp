@@ -1,26 +1,23 @@
 ---
-title: "PowerApps から関数を呼び出す | Microsoft Docs"
-description: "カスタム コネクタを作成し、そのコネクタを使用して関数を呼び出します。"
+title: PowerApps から関数を呼び出す | Microsoft Docs
+description: カスタム コネクタを作成し、そのコネクタを使用して関数を呼び出します。
 services: functions
-keywords: "クラウド アプリ, クラウド サービス, PowerApps, ビジネス プロセス, ビジネス アプリケーション"
-documentationcenter: 
-author: mgblythe
-manager: cfowler
-editor: 
-ms.assetid: 
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+keywords: クラウド アプリ, クラウド サービス, PowerApps, ビジネス プロセス, ビジネス アプリケーション
+author: ggailey777
+manager: jeconnoc
+ms.assetid: ''
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: mblythe
-ms.custom: 
-ms.openlocfilehash: 28c2fc8246851807e1f65911d6a5d56322c5ea16
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: glenga
+ms.reviewer: sunayv
+ms.custom: ''
+ms.openlocfilehash: 49000d4fd61e7cd061b415d50545a7f5ee56f3fb
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579125"
 ---
 # <a name="call-a-function-from-powerapps"></a>PowerApps から関数を呼び出す
 [PowerApps](https://powerapps.microsoft.com) プラットフォームは、ビジネス エキスパート向けに設計されており、従来のアプリケーション コードを使用せずにアプリを作成することができます。 プロフェッショナルの開発者は Azure Functions を使用して PowerApps の機能を拡張できます。PowerApps アプリ ビルダーが技術詳細を把握している必要はありません。
@@ -44,7 +41,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 
 ## <a name="prerequisites"></a>前提条件
 
-+ Azure アカウントと同じサインイン資格情報を使用しているアクティブな [PowerApps アカウント](https://powerapps.microsoft.com/tutorials/signup-for-powerapps.md)。 
++ Azure アカウントと同じサインイン資格情報を使用しているアクティブな [PowerApps アカウント](https://docs.microsoft.com/powerapps/maker/signup-for-powerapps)。 
 + Excel と、アプリのデータ ソースとして使用する [Excel サンプル ファイル](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx)。
 + 「[関数の OpenAPI 定義の作成](functions-openapi-definition.md)」を完了している。
 
@@ -210,7 +207,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 ## <a name="run-the-app"></a>アプリの実行
 アプリが完成しました。 次はこれを実行し、関数によってアクションが呼び出されるかどうかを確認します。
 
-1. PowerApps Studio の右上にある実行ボタンをクリックします:  ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png)が必要です。
+1. PowerApps Studio の右上にある実行ボタンをクリックします:  ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png).
 
 1. **ServiceRequired** の値が `Yes` のタービンを選択し、**[Calculate costs]\(コストを計算\)** ボタンをクリックします。 次のイメージような結果が表示されます。
 

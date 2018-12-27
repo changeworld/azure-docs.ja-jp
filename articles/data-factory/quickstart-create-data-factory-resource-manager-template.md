@@ -10,25 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 01/22/2018
+ms.topic: quickstart
+ms.date: 11/28/2018
 ms.author: douglasl
-ms.openlocfilehash: 7df0c8153cc5b2e3a785d79e23ecb7d56285c6f4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2baadd0bcb5aba401e2dd6cec9a82ca401b3c9bd
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620491"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル: Azure Resource Manager テンプレートを使用した Azure データ ファクトリの作成
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-build-your-first-pipeline-using-arm.md)
-> * [バージョン 2 - プレビュー](quickstart-create-data-factory-resource-manager-template.md) 
+> * [Version 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
+> * [現在のバージョン](quickstart-create-data-factory-resource-manager-template.md) 
 
 このクイックスタートでは、Azure Resource Manager テンプレートを使用して Azure データ ファクトリを作成する方法を説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーに**コピー**します。 Azure Data Factory を使用してデータを**変換**する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](transform-data-using-spark.md)を参照してください。 
 
 > [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 を使用した初めてのデータ ファクトリの作成](v1/data-factory-build-your-first-pipeline-using-arm.md)に関する記事をご覧ください。
->
 > この記事では、Data Factory サービスの概要については詳しく取り上げません。 Azure Data Factory サービスの概要については、「[Azure Data Factory の概要](introduction.md)」をご覧ください。
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
@@ -134,9 +133,8 @@ Azure Resource Manager テンプレート全般に関する情報については
         "apiVersion": "2017-09-01-preview",
         "type": "Microsoft.DataFactory/factories",
         "location": "[parameters('dataFactoryLocation')]",
-        "properties": {
-            "loggingStorageAccountName": "[parameters('storageAccountName')]",
-            "loggingStorageAccountKey": "[parameters('storageAccountKey')]"
+        "identity": {
+            "type": "SystemAssigned"
         },
         "resources": [{
                 "type": "linkedservices",
@@ -460,7 +458,7 @@ DeploymentDebugLogLevel :
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)] 
 
-## <a name="json-definitions-for-entities"></a>エンティティの JSON 定義
+## <a name="data-factory-entities-in-the-template"></a>エンティティの JSON 定義
 JSON テンプレートには、次の Data Factory エンティティが定義されています。 
 
 - [Azure Storage のリンクされたサービス](#azure-storage-linked-service)

@@ -1,27 +1,24 @@
 ---
-title: "Azure Logic Apps の webhook コネクタ | Microsoft Docs"
-description: "webhook アクションおよびトリガーを使用して、ロジック アプリからフィルター配列などのアクションを実行する方法"
+title: イベント ベースのワークフローまたはアクションを作成する - Azure Logic Apps | Microsoft Docs
+description: Webhook と Azure Logic Apps を使ってイベント ベースのワークフローまたはアクションを自動化します
 services: logic-apps
-author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
-tags: connectors
-ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
+ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+tags: connectors
 ms.date: 07/21/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: ec407d72f90cf3616214d27c378dee0ff42f4c6f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 7b1886321ca4afd4b4710bd9fddf16d2d5eb224b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126589"
 ---
-# <a name="get-started-with-the-webhook-connector"></a>Webhook コネクタの概要
+# <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Webhook と Azure Logic Apps を使ってイベント ベースのワークフローまたはアクションを作成する
 
 webhook アクションおよびトリガーを使用すると、フローを開始、一時停止、および再開して、次のようなタスクを実行できます。
 
@@ -79,7 +76,7 @@ webhook でサポートされているトリガーとアクションの詳細を
 
 ## <a name="webhook-triggers"></a>Webhook トリガー
 
-| アクションを表示します。 | [説明] |
+| アクションを表示します。 | 説明 |
 | --- | --- |
 | HTTP Webhook |コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してロジック アプリを起動することができます。 |
 
@@ -90,7 +87,7 @@ webhook でサポートされているトリガーとアクションの詳細を
 コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してロジック アプリを起動することができます。
 \* は必須フィールドを意味します。
 
-| 表示名 | プロパティ名 | [説明] |
+| 表示名 | プロパティ名 | 説明 |
 | --- | --- | --- |
 | Subscribe Method (メソッドのサブスクライブ)* |method |サブスクライブ要求に使用する HTTP メソッド |
 | Subscribe URI (URI のサブスクライブ)* |uri |サブスクライブ要求に使用する HTTP URI |
@@ -107,7 +104,7 @@ webhook でサポートされているトリガーとアクションの詳細を
 
 Webhook 要求
 
-| プロパティ名 | データ型 | [説明] |
+| プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
 | headers |オブジェクト |Webhook 要求ヘッダー |
 | 本文 |オブジェクト |Webhook 要求オブジェクト |
@@ -115,7 +112,7 @@ Webhook 要求
 
 ## <a name="webhook-actions"></a>Webhook アクション
 
-| アクションを表示します。 | [説明] |
+| アクションを表示します。 | 説明 |
 | --- | --- |
 | HTTP Webhook |コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してワークフロー ステップを再開できます。 |
 
@@ -126,7 +123,7 @@ Webhook 要求
 コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してワークフロー ステップを再開できます。
 \* は必須フィールドを意味します。
 
-| 表示名 | プロパティ名 | [説明] |
+| 表示名 | プロパティ名 | 説明 |
 | --- | --- | --- |
 | Subscribe Method (メソッドのサブスクライブ)* |method |サブスクライブ要求に使用する HTTP メソッド |
 | Subscribe URI (URI のサブスクライブ)* |uri |サブスクライブ要求に使用する HTTP URI |
@@ -143,7 +140,7 @@ Webhook 要求
 
 Webhook 要求
 
-| プロパティ名 | データ型 | [説明] |
+| プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
 | headers |オブジェクト |Webhook 要求ヘッダー |
 | 本文 |オブジェクト |Webhook 要求オブジェクト |

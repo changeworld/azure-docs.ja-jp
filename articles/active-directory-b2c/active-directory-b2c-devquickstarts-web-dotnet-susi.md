@@ -1,21 +1,21 @@
 ---
-title: 認証、サインアップ、パスワードのリセット - ASP.NET - Azure Active Directory B2C
+title: Azure Active Directory B2C の認証、サインアップ、パスワードのリセット | Microsoft Docs
 description: Azure Active Directory B2C を使用して、サインアップおよびサインイン、プロファイルの編集、パスワード リセットを含む Web アプリケーションを構築する方法。
 services: active-directory-b2c
-documentationcenter: .net
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
-ms.openlocfilehash: f7b7cce84f8ff7be14120568e710432be639ce8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 1db805efe7eaec77fcafeb169b3d99098b57f582
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978980"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Azure Active Directory B2C のサインアップ、サインイン、プロファイル編集、パスワード リセットを使用する ASP.NET Web アプリケーションの構築
 
@@ -28,22 +28,24 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-- B2C テナントを Azure アカウントに接続する必要があります。 無料の Azure アカウントが[ここで](https://azure.microsoft.com/en-us/)作成できます。
+- B2C テナントを Azure アカウントに接続する必要があります。 無料の Azure アカウントが[ここで](https://azure.microsoft.com/)作成できます。
 - サンプル コードを表示および変更するには、[Microsoft Visual Studio](https://www.visualstudio.com/) かそれに類似したプログラムが必要です。
 
-## <a name="create-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの作成
+## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを作成する
 
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。 ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 ディレクトリをまだ作成していない場合は、先に進む前に B2C ディレクトリを作成してください。
+Azure AD B2C を使用するには、テナントを作成しておく必要があります。 テナントは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 テナントをまだ作成していない場合は、先に進む前に B2C テナントを作成してください。
 
 [!INCLUDE [active-directory-b2c-create-tenant](../../includes/active-directory-b2c-create-tenant.md)]
 
 > [!NOTE]
 > 
-> B2C テナントを Azure サブスクリプションに接続する必要があります。 **[作成]** を選択した後、**[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** オプションを選択し、**[Azure AD B2C テナント]** ドロップ ダウンで関連付けるテナントを選択します。
+> Azure AD B2C テナントを Azure サブスクリプションに接続する必要があります。 **[作成]** を選択した後、**[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** オプションを選択し、**[Azure AD B2C テナント]** ドロップ ダウンで関連付けるテナントを選択します。
 
 ## <a name="create-and-register-an-application"></a>アプリケーションの作成と登録
 
-次に、B2C ディレクトリでアプリケーションを作成し、登録する必要があります。 これにより、Azure AD B2C がアプリケーションと安全に通信するために必要な情報が提供されます。 
+次に、Azure AD B2C テナントでアプリケーションを作成し、登録する必要があります。 これにより、Azure AD B2C がアプリケーションと安全に通信するために必要な情報が提供されます。 
+
+Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。 これで、以前作成したテナントが使用されます。
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 
@@ -93,7 +95,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 * `ida:ResetPasswordPolicyId` を実際の "パスワードのリセット" ポリシーの名前に置き換えます。
 
 ## <a name="launch-the-app"></a>アプリケーションの起動
-Visual Studio 内でアプリケーションを起動します。 [タスク一覧] タブに移動して、URl が https://login.microsoftonline.com/*YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*&client_id=*YourclientID*..... であることを確認します。
+Visual Studio 内でアプリケーションを起動します。 [タスク一覧] タブに移動して、URI が https://*YourTenantName*.b2clogin.com/*YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*&client_id=*YourclientID*.... であることを確認します。
 
 電子メール アドレスまたはユーザー名を使用して、アプリにサインアップします。 サインアウトしてから再度サインインし、プロファイルを編集するかパスワードをリセットします。 サインアウトし、別のユーザーとしてサインインします。 
 
@@ -193,8 +195,8 @@ public partial class Startup
                     NameClaimType = "name"
                 },
 
-                // Specify the scope by appending all of the scopes requested into one string (seperated by a blank space)
-                Scope = $"{OpenIdConnectScopes.OpenId} {ReadTasksScope} {WriteTasksScope}"
+                // Specify the scope by appending all of the scopes requested into one string (separated by a blank space)
+                Scope = $"openid profile offline_access {ReadTasksScope} {WriteTasksScope}"
             }
         );
     }

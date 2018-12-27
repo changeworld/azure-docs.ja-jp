@@ -1,30 +1,24 @@
 ---
-title: "HDInsight での Hadoop ジョブの送信 | Microsoft Docs"
-description: "Azure HDInsight で Hadoop ジョブを送信する方法について説明します。"
-editor: cgronlun
-manager: jhubbard
+title: HDInsight で Apache Hadoop ジョブを送信する
+description: Azure HDInsight で Apache Hadoop ジョブを送信する方法について説明します。
+ms.reviewer: jasonh
 services: hdinsight
-documentationcenter: 
-tags: azure-portal
-author: mumian
-ms.assetid: 50430b96-2329-4775-9713-19c5795b775f
+ms.author: hrasheed
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/20/2017
-ms.author: jgao
-ms.openlocfilehash: f6173fed78345a2339e9bf40f414202c0ce62c0b
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.openlocfilehash: 633a5c26711b7ef9f891455c6712b77238fd3a62
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631968"
 ---
 # <a name="submit-hadoop-jobs-in-hdinsight"></a>HDInsight での Hadoop ジョブの送信
 
-Azure HDInsight で Hadoop ジョブを送信するには、HDInsight、curl、または Azure PowerShell 向けの Microsoft .NET SDK を使用します。
+Azure HDInsight で Apache Hadoop ジョブを送信するには、HDInsight、curl、または Azure PowerShell 向けの Microsoft .NET SDK を使用します。
 
 ## <a name="resources"></a>リソース
 

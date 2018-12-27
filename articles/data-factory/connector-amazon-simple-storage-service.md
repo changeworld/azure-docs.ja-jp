@@ -7,28 +7,26 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: 82d46d29b1e75995c5436b985717f45104dad955
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4885693abd8c6b66f8e68d83a8d6a2db3b0ed438
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344129"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-amazon-simple-storage-service-connector.md)
-> * [バージョン 2 - プレビュー](connector-amazon-simple-storage-service.md)
+> * [Version 1](v1/data-factory-amazon-simple-storage-service-connector.md)
+> * [現在のバージョン](connector-amazon-simple-storage-service.md)
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Blob Storage をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 のAmazon S3 コネクタ](v1/data-factory-amazon-simple-storage-service-connector.md)に関する記事を参照してください。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Amazon S3 からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-サポートされている任意のソース データ ストアのデータを Azure Data Lake Store にコピーしたり、Azure Data Lake Store のデータをサポートされている任意のシンク データ ストアにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+Amazon S3 から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 具体的には、この Amazon S3 コネクタでは、ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析することをサポートしています。
 
@@ -37,7 +35,10 @@ ms.lasthandoff: 03/23/2018
 Amazon S3 からデータをコピーするには、次のアクセス許可が付与されている必要があります。
 
 - Amazon S3 オブジェクトの操作には `s3:GetObject` と `s3:GetObjectVersion`。
-- Amazon S3 バケットの操作には `s3:ListBucket` または `s3:GetBucketLocation`。 Data Factory コピー ウィザードを使用している場合は、`s3:ListAllMyBuckets` も必要です。
+- Amazon S3 バケットの操作には `s3:ListBucket` または `s3:GetBucketLocation`。 
+
+>[!NOTE]
+>作成に Data Factory GUI を使用するとき、テスト接続やファイルパスの閲覧/移動などの操作に `s3:ListAllMyBuckets` アクセス許可も必要になります。 このアクセス許可を付与しない場合、リンクされたサービス作成ページでテスト接続をスキップし、データセット設定でパスを直接指定してください。
 
 Amazon S3 のアクセス許可の完全な一覧については、「[ポリシーでのアクセス許可の指定](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)」を参照してください。
 
@@ -51,9 +52,9 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 Amazon S3 のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **AmazonS3** に設定する必要があります。 | [はい] |
+| type | type プロパティは **AmazonS3** に設定する必要があります。 | [はい] |
 | accessKeyId | シークレット アクセス キーの ID。 |[はい] |
 | secretAccessKey | シークレット アクセス キー自体。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
@@ -90,18 +91,18 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 
 Amazon S3 からデータをコピーするには、データセットの type プロパティを **AmazonS3Object** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、**AmazonS3Object** を設定する必要があります。 |[はい] |
-| bucketName | S3 バケットの名前。 |[はい] |
-| key | S3 オブジェクト キー。 prefix が指定されていないときにのみ適用されます。 |いいえ  |
-| prefix | S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 key が指定されていない場合にのみ適用されます。 |いいえ  |
+| type | データセットの type プロパティは、**AmazonS3Object** を設定する必要があります。 |[はい] |
+| bucketName | S3 バケットの名前。 ワイルドカード フィルターはサポートされていません。 |はい (Copy/Lookup アクティビティの場合)、いいえ (GetMetadata アクティビティの場合) |
+| key | 指定されたバケットの下にある S3 オブジェクト キーの**名前またはワイルドカード フィルター**です。 "prefix" プロパティが指定されていないときにのみ適用されます。 <br/><br/>ワイルドカード フィルターがサポートされているのは、フォルダー部分ではなくファイル名部分に関してのみです。 使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"key": "rootfolder/subfolder/*.csv"`<br/>- 例 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 |いいえ  |
+| prefix | S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 "key" プロパティが指定されていないときにのみ適用されます。 |いいえ  |
 | version | S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |いいえ  |
 | format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析するか生成する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
 | compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
-> [!NOTE]
-> **bucketName とキーの組み合わせ**によって S3 オブジェクトの場所が指定されます。バケットは S3 オブジェクトのルート コンテナーであり、キーは、S3 オブジェクトへの完全パスです。
+>[!TIP]
+>フォルダーの下のすべてのファイルをコピーするには、バケットに **bucketName**、フォルダー部分に **prefix** を指定します。<br>特定の名前の単一のファイルをコピーするには、バケットに **bucketName**、フォルダー部分とファイル名に **key** を指定します。<br>フォルダーの下のファイルのサブセットをコピーするには、バケットに **bucketName**、フォルダー部分とファイル名に **key** を指定します。
 
 **例: prefix の使用**
 
@@ -162,15 +163,15 @@ Amazon S3 からデータをコピーするには、データセットの type �
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Azure Data Lake のソースとシンクでサポートされるプロパティの一覧を示します。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Amazon S3 ソースでサポートされるプロパティの一覧を示します。
 
 ### <a name="amazon-s3-as-source"></a>ソースとしての Amazon S3
 
 Amazon S3 からデータをコピーするには、コピー アクティビティのソースの種類を **FileSystemSource** (Amazon S3 が含まれます) に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |[はい] |
+| type | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |[はい] |
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダー/サブフォルダーはシンクでコピー/作成されないことに注意してください。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |
 
 **例:**

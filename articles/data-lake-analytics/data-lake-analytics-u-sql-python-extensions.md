@@ -1,26 +1,22 @@
 ---
-title: "Azure Data Lake Analytics で Python を使用して U-SQL スクリプトを拡張 |Microsoft Docs"
-description: "U-SQL スクリプトで Python コードを実行する方法"
+title: Azure Data Lake Analytics で Python を使用した U-SQL スクリプトの拡張
+description: Azure Data Lake Analytics を使用して U-SQL スクリプトで Python コードを実行する方法を説明します
 services: data-lake-analytics
-documentationcenter: 
-author: saveenr
-manager: jhubbard
-editor: cgronlun
-ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/20/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: a8acaa16265070308753c2a0df3a9e7b8a3a841a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.reviewer: jasonwhowell
+ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
+ms.topic: conceptual
+ms.date: 06/20/2017
+ms.openlocfilehash: b2179f9d81a2dad877c8ae58471f7440eb9edbe7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050993"
 ---
-# <a name="tutorial-get-started-with-extending-u-sql-with-python"></a>チュートリアル: Python を使用して U-SQL の拡張を始める
+# <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics で Python コードを使用した U-SQL スクリプトの拡張
 
 ## <a name="prerequisites"></a>前提条件
 

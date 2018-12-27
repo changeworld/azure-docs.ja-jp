@@ -1,26 +1,21 @@
 ---
-title: "Microsoft Power BI ワークスペース コレクションの概要"
-description: "Power BI ワークスペース コレクションは、アプリケーション開発者が自分のアプリケーションに対話型の Power BI レポートを追加できる Azure サービスです。"
+title: Microsoft Power BI ワークスペース コレクションの概要
+description: Power BI ワークスペース コレクションは、アプリケーション開発者が自分のアプリケーションに対話型の Power BI レポートを追加できる Azure サービスです。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+author: markingmyname
 ROBOTS: NOINDEX
 ms.assetid: 4787cf44-5d1c-4bc3-b3fd-bf396e5c1176
 ms.service: power-bi-embedded
-ms.devlang: NA
-ms.topic: hero-article
-ms.tgt_pltfrm: NA
+ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 4ee113ed25142507f381d8c9d49b25ee6553c525
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: c736a9b4962de26f43dc79773149e834c37cbe85
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233407"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Microsoft Power BI ワークスペース コレクションの概要
 
@@ -42,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 ここでは、Azure Portal を使用して **ワークスペース コレクション** を作成する手順について説明します。
 
-1. **Azure Portal** ([http://portal.azure.com](http://portal.azure.com)) を開き、サインインします。
+1. **Azure Portal** を開き、サインインします ([http://portal.azure.com](http://portal.azure.com))。
 2. 上のパネルの **[+ 新規]** を選択します。
    
    ![Azure Portal の [+ 新規]](media/get-started/create-workspace-1.png)
@@ -52,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 5. **[ワークスペース コレクション]** に、必要な情報を入力します。
    
    ![ワークスペース コレクションの作成](media/get-started/create-workspace-2.png)
-1. **[作成]**を選択します。
+1. **作成**を選択します。
 
 **ワークスペース コレクション**のプロビジョニングにはわずかに時間がかかります。 処理が完了すると、**ワークスペース コレクション**が表示されます。
 
@@ -84,7 +79,7 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 
 ## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app-using-power-bi-desktop"></a>Power BI Desktop を使用した、アプリに埋め込む Power BI データセットとレポートの作成
 
-アプリケーション用の Power BI インスタンスを作成し、**アクセス キー**の準備ができたら、埋め込む Power BI データセットとレポートを作成する必要があります。 データセットとレポートは、 **Power BI Desktop**を使用して作成できます。 [Power BI Desktop は無料で](https://go.microsoft.com/fwlink/?LinkId=521662)ダウンロードできます。 または、 [Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547)をダウンロードしてすぐに開始できます。
+アプリケーション用の Power BI インスタンスを作成し、**アクセス キー**の準備ができたら、埋め込む Power BI データセットとレポートを作成する必要があります。 データセットとレポートは、 **Power BI Desktop**を使用して作成できます。 [Power BI Desktop は無料で](https://go.microsoft.com/fwlink/?LinkId=521662)ダウンロードできます。 または、 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)をダウンロードしてすぐに開始できます。
 
 > [!NOTE]
 > **Power BI Desktop** の使用方法の詳細については、「[Power BI Desktop の概要](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop)」を参照してください。

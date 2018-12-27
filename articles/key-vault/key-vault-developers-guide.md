@@ -1,19 +1,20 @@
 ---
-title: "Azure Key Vault 開発者ガイド"
-description: "開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内で暗号化キーを管理できます。"
+title: Azure Key Vault 開発者ガイド
+description: 開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内で暗号化キーを管理できます。
 services: key-vault
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 ms.service: key-vault
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/12/2017
-ms.author: alleonar
-ms.openlocfilehash: 68a08f1f6e8036b9ca966e8d9596c09f2b2ccf81
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.date: 09/05/2018
+ms.author: bryanla
+ms.openlocfilehash: 9ab399ae50f9b04acad411b225797f89547a2824
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237538"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -22,7 +23,7 @@ Key Vault を使用すると、アプリケーション内から機密情報に�
 - 自分でコードを記述しなくても、キーとシークレットが保護され、アプリケーションから簡単に使用できます。
 - 顧客自身にキーを所有して管理してもらうことができるため、主要なソフトウェア機能の提供に集中できます。 この方法では、アプリケーションが顧客のテナント キーとシークレットに対して義務や潜在的責任を負うことはありません。
 - アプリケーションで署名と暗号化にキーを使用しながら、キー管理をアプリケーションの外部で行うことができます。これにより、ソリューションは地理的に分散したアプリを対象とすることができます。
-- Key Vault の 2016 年 9 月のリリース以降、アプリケーションで Key Vault の[証明書](https://docs.microsoft.com/rest/api/keyvault/certificate-operations)を使用できるようになりました。 詳細については、「[About keys, secrets, and certificates (キー、シークレット、証明書について)](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)」を参照してください。
+- Key Vault の 2016 年 9 月のリリース以降、アプリケーションで Key Vault の証明書を管理できるようになりました。 詳細については、「[About keys, secrets, and certificates (キー、シークレット、証明書について)](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)」を参照してください。
 
 Azure Key Vault の全般的な情報については、「 [Azure Key Vault とは](key-vault-whatis.md)」を参照してください。
 
@@ -47,16 +48,14 @@ Key Vault の新機能のパブリック プレビューは定期的にリリー
 
 このビデオで説明されているリソース:
 
-- [Azure PowerShell](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Azure Key Vault のサンプル コード](http://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
+- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
+- [Azure Key Vault のサンプル コード](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Key Vaults の作成と管理
 
-Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 管理対象サービス ID (MSI) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。 
+Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 Azure リソースのマネージド ID は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。 
 
-MSI の詳細については、[Azure リソースの管理対象サービス ID (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) を参照してください。
-
-AAD の操作の詳細については、[Azure Active Directory とアプリケーションの統合](/active-directory/develop/active-directory-integrating-applications)に関するページを参照してください。
+Azure リソースのマネージド ID の詳細については、[マネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。 AAD の操作の詳細については、[Azure Active Directory とアプリケーションの統合](/azure/active-directory/develop/active-directory-integrating-applications)に関するページを参照してください。
 
 キー コンテナーでキー、シークレット、または証明書を使用する前に、次の記事に従って、CLI、PowerShell、Resource Manager テンプレートまたは REST でキーを作成し、管理します。
 
@@ -72,7 +71,7 @@ AAD の操作の詳細については、[Azure Active Directory とアプリケ�
 
 ### <a name="supported-programming-and-scripting-languages"></a>サポートされるプログラミング言語とスクリプト言語
 
-#### <a name="rest"></a>REST ()
+#### <a name="rest"></a>REST
 
 すべてのキー コンテナー リソースは、インターフェイス、コンテナー、キー、シークレットなどの REST インターフェイスからアクセスできます。 
 
@@ -109,14 +108,14 @@ Node.js では、キー コンテナー管理 API とキー コンテナー オ�
 ### <a name="quick-start-guides"></a>クイック スタート ガイド
 
 - [Key Vault の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-- [Node.js を使用した Key Vault の概要](https://azure.microsoft.com/en-us/resources/samples/key-vault-node-getting-started/)
+- [Node.js を使用した Key Vault の概要](https://github.com/Azure-Samples/key-vault-node-getting-started)
 
 ### <a name="code-examples"></a>コード例
 
 アプリケーションで Key Vault を使用する詳細な例については、以下をご覧ください。
 
-- [Azure Key Vault コード サンプル](http://www.microsoft.com/download/details.aspx?id=45343) - .NET サンプル アプリケーション *HelloKeyVault* と Azure Web サービスの例。 
-- [Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md) - このチュートリアルでは、Azure の Web アプリケーションから Azure Key Vault を使用する方法について学習できます。 
+- [Azure Key Vault のコード サンプル](https://azure.microsoft.com/resources/samples/?service=key-vault) - Azure Key Vault のコード サンプル。 
+- [Web アプリケーションからの Azure Key Vault の使用](quick-create-net.md) - このチュートリアルでは、Azure の Web アプリケーションから Azure Key Vault を使用する方法について学習できます。 
 
 ## <a name="how-tos"></a>方法
 
@@ -130,7 +129,7 @@ Node.js では、キー コンテナー管理 API とキー コンテナー オ�
 - [Key Vault から VM に証明書をデプロイする方法](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - Azure の VM で実行するクラウド アプリケーションには証明書が必要です。 今すぐこの VM で証明書を取得する方法を説明します。
 - [エンド ツー エンドのキー ローテーションと監査で Key Vault を設定する方法](key-vault-key-rotation-log-monitoring.md): Azure Key Vault を使用して、キー ローテーションと監査を設定する方法について説明します。
 - [Key Vault を使用した Azure Web App Certificate のデプロイ]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/): Key Vault に格納されている証明書を、[App Service 証明書](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)の提供の一部としてデプロイするための手順について説明します。
-- [Key Vault にアクセスするためのアクセス許可を多数のアプリケーションに付与する](key-vault-group-permissions-for-apps.md): Key Vault のアクセス制御ポリシーでは、16 のエントリのみをサポートします。 ただし、Azure Active Directory セキュリティ グループを作成することができます。 関連するすべてのサービス プリンシパルをこのセキュリティ グループに追加し、そのセキュリティ グループに Key Vault へのアクセスを許可してください。
+- [Key Vault にアクセスするためのアクセス許可を多数のアプリケーションに付与する](key-vault-group-permissions-for-apps.md): Key Vault のアクセス制御ポリシーでは、最大 1024 のエントリをサポートします。 ただし、Azure Active Directory セキュリティ グループを作成することができます。 関連するすべてのサービス プリンシパルをこのセキュリティ グループに追加し、そのセキュリティ グループに Key Vault へのアクセスを許可してください。
 - Key Vault と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け Azure Resource Manager テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)をご覧ください。
 - 「[CLI で Key Vault の論理的な削除を使用する方法](key-vault-soft-delete-cli.md)」では、キー コンテナーの使用方法とライフサイクルおよび論理的な削除が有効な各種キー コンテナー オブジェクトを紹介します。
 - 「[How to use Key Vault soft-delete with PowerShell](key-vault-soft-delete-powershell.md)」(PowerShell で Key Vault の論理的な削除を使用する方法) では、キー コンテナーの使用方法とライフサイクルおよび論理的な削除が有効な各種キー コンテナー オブジェクトを紹介します。
@@ -141,7 +140,7 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 
 - [Azure Disk Encryption](../security/azure-security-disk-encryption.md) では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して、OS とデータ ディスクのボリュームの暗号化を提供します。 ソリューションは Azure Key Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) では、アカウントに格納されているデータを暗号化するオプションを提供します。 キーの管理に関して、Data Lake Store には、Data Lake Store に格納されているすべてのデータを暗号化解除するのに必要なマスター暗号化キー (MEK) を管理するための 2 つのモードが用意されています。 Data Lake Store に MEK の管理を任せることも、Azure Key Vault アカウントを使用して MEK の所有権を保持することもできます。 キー管理のモードは、Data Lake Store アカウントの作成時に指定します。 
-- [Azure Information Protection](/information-protection/plan-design/plan-implement-tenant-key) では、独自のテナント キーを管理できます。 たとえば、テナント キーの管理をマイクロソフトに任せる (既定値) 代わりに、組織に適用される特定の規則を遵守する独自のテナント キーを管理できます。 独自のテナント キーの管理は、BYOK (Bring Your Own Key: 独自のキーを持ち込むの意) とも呼ばれます。
+- [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) では、独自のテナント キーを管理できます。 たとえば、テナント キーの管理をマイクロソフトに任せる (既定値) 代わりに、組織に適用される特定の規則を遵守する独自のテナント キーを管理できます。 独自のテナント キーの管理は、BYOK (Bring Your Own Key: 独自のキーを持ち込むの意) とも呼ばれます。
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault の概要と概念
 
@@ -152,8 +151,8 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 
 ## <a name="social"></a>ソーシャル
 
-- [Key Vault Blog](http://aka.ms/kvblog)
-- [Key Vault Forum](http://aka.ms/kvforum)
+- [Key Vault Blog](https://aka.ms/kvblog)
+- [Key Vault Forum](https://aka.ms/kvforum)
 
 ## <a name="supporting-libraries"></a>対応ライブラリ
 

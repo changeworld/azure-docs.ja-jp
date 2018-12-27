@@ -1,25 +1,19 @@
 ---
-title: "Azure Analysis Services サーバーに接続するための .odc ファイルの作成 | Microsoft Docs"
-description: "Azure の Analysis Services サーバーに接続してデータを取得するための Office データ接続ファイルを作成する方法を説明します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services サーバーに接続するための .odc ファイルの作成 | Microsoft Docs
+description: Azure の Analysis Services サーバーに接続してデータを取得するための Office データ接続ファイルを作成する方法を説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 3d5158af0c49fca5c26ad8f4027654d7bf68d575
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 7798cea053be1662edeb5bc8bfcef00f656b8d6e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832941"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office データ接続ファイルを作成する
 
@@ -45,7 +39,7 @@ ms.lasthandoff: 02/21/2018
 **サンプル接続ファイル**
 ```
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
-xmlns="http://www.w3.org/TR/REC-html40">
+xmlns="https://www.w3.org/TR/REC-html40">
 
 <head>
 <meta http-equiv=Content-Type content="text/x-ms-odc; charset=utf-8">
@@ -56,12 +50,12 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <title>AzureAnalysisServicesConnection</title>
 <xml id=docprops><o:DocumentProperties
   xmlns:o="urn:schemas-microsoft-com:office:office"
-  xmlns="http://www.w3.org/TR/REC-html40">
+  xmlns="https://www.w3.org/TR/REC-html40">
   <o:Name>SampleAzureAnalysisServices</o:Name>
  </o:DocumentProperties>
 </xml><xml id=msodc><odc:OfficeDataConnection
   xmlns:odc="urn:schemas-microsoft-com:office:odc"
-  xmlns="http://www.w3.org/TR/REC-html40">
+  xmlns="https://www.w3.org/TR/REC-html40">
   <odc:Connection odc:Type="OLEDB">
    <odc:ConnectionString>Provider=MSOLAP.7;Data Source=asazure://<region>.asazure.windows.net/<servername>;Initial Catalog=<database>;</odc:ConnectionString>
    <odc:CommandType>Cube</odc:CommandType>

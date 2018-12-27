@@ -12,18 +12,19 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 06/08/2018
 ms.author: anwestg
-ms.reviewer: brenduns
-ms.openlocfilehash: 680cb70777574d0ed88c5f83fb0a6fa20263b951
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.reviewer: sethm
+ms.openlocfilehash: f4a3cd7d09c18506a85317db7a360b8de3a9630b
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077024"
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>Azure Stack 上の App Service: インフラストラクチャまたは worker ロールを追加する
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*  
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*  
 
 ここでは、Azure Stack インフラストラクチャおよび worker ロールでの App Service を拡大縮小する手順について説明します。 任意のサイズのアプリケーションをサポートする追加の worker ロールを作成する手順について説明します。
 
@@ -51,7 +52,7 @@ Azure Stack 上の Azure App Service では、仮想マシン スケール セ�
     ##### Scale out the AppService Role instances ######
    
     # Set context to AzureStack admin.
-    Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+    Login-AzureRmAccount -EnvironmentName AzureStackAdmin
                                                  
     ## Name of the Resource group where AppService is deployed.
     $AppServiceResourceGroupName = "AppService.local"
@@ -80,7 +81,7 @@ Azure Stack 上の Azure App Service では、仮想マシン スケール セ�
 
 ## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>[App Service Resource Provider Admin]\(App Service リソース プロバイダー管理\) 内から worker を直接追加します。
 
-1. Azure Stack 管理ポータルにサービス管理者としてログインします。
+1. Azure Stack 管理ポータルにサービス管理者としてサインインします。
 
 2. **[App Services]** を参照します。
 

@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ デバイスへの Update 5 のインストール | Microsoft Docs"
-description: "StorSimple 8000 シリーズのデバイスに StorSimple 8000 シリーズの Update 5 をインストールする方法について説明します。"
+title: StorSimple 8000 シリーズ デバイスへの Update 5 のインストール | Microsoft Docs
+description: StorSimple 8000 シリーズのデバイスに StorSimple 8000 シリーズの Update 5 をインストールする方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,11 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: d6e17c7609fd41b8f4457edda373f6882a1a9d2b
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698712"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>StorSimple デバイスへの Update 5 のインストール
 
@@ -75,19 +76,19 @@ Update 5 には、デバイス ソフトウェア、Storport と Spaceport、OS 
 
 指定の順序と推奨されるフォルダーで、次の修正プログラムをダウンロードしてインストールする必要があります。
 
-| 順序 | KB | [説明] | 更新の種類 | インストール時間 |インストールするフォルダー|
+| 順序 | KB | 説明 | 更新の種類 | インストール時間 |インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4037264 |ソフトウェア更新<br> _HcsSoftwareUpdate.exe_ と _CisMSDAgent.exe_ の両方をダウンロード |通常  <br></br>中断なし |～ 25 分 |FirstOrderUpdate|
 
 Update 4 を実行するデバイスから更新する場合は、OS の累積的な更新プログラムを、2 番目の注文の更新プログラムとしてインストールするだけです。
 
-| 順序 | KB | [説明] | 更新の種類 | インストール時間 |インストールするフォルダー|
+| 順序 | KB | 説明 | 更新の種類 | インストール時間 |インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
 | 2A. |KB4025336 |OS の累積的な更新プログラム パッケージ <br> Windows Server 2012 R2 バージョンのダウンロード |通常  <br></br>中断なし |- |SecondOrderUpdate|
 
 Update 3 以前のバージョンを実行するデバイスからインストールする場合は、累積な更新プログラムだけでなく、次の更新プログラムをインストールします。
 
-| 順序 | KB | [説明] | 更新の種類 | インストール時間 |インストールするフォルダー|
+| 順序 | KB | 説明 | 更新の種類 | インストール時間 |インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
 | 2B. |KB4011841 <br> KB4011842 |LSI ドライバーおよびファームウェアの更新プログラム <br> USM ファームウェアの更新プログラム (バージョン 3.38) |通常  <br></br>中断なし |～ 3 時間 <br> (2A. + 2B. + 2C.)|SecondOrderUpdate|
 | 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |OS のセキュリティ更新プログラム <br> Windows Server 2012 R2 バージョンのダウンロード |通常  <br></br>中断なし |- |SecondOrderUpdate|
@@ -96,7 +97,7 @@ Update 3 以前のバージョンを実行するデバイスからインスト�
 
 前の表で示したすべての更新プログラムのほか、ディスク ファームウェアの更新プログラムのインストールが必要になることもあります。 `Get-HcsFirmwareVersion` コマンドレットを実行すると、ディスク ファームウェアの更新プログラムが必要かどうかを確認できます。 `XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N003`、`0107` の各ファームウェア バージョンを実行している場合は、これらの更新プログラムをインストールする必要はありません。
 
-| 順序 | KB | [説明] | 更新の種類 | インストール時間 | インストールするフォルダー|
+| 順序 | KB | 説明 | 更新の種類 | インストール時間 | インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
 | 手順 3. |KB4037263 |ディスク ファームウェア |メンテナンス  <br></br>中断あり |～ 30 分 | ThirdOrderUpdate |
 

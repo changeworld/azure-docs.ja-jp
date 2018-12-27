@@ -1,11 +1,9 @@
 ---
-title: "PowerShell を使用して Azure の Traffic Manager を管理する | Microsoft Docs"
-description: "Azure Resource Manager での Traffic Manager に対する Powershell の使用"
+title: PowerShell を使用して Azure の Traffic Manager を管理する | Microsoft Docs
+description: Azure Resource Manager での Traffic Manager に対する Powershell の使用
 services: traffic-manager
 documentationcenter: na
 author: kumudd
-manager: timlt
-ms.assetid: bc247448-1d2e-4104-ac03-42b59ebde065
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -13,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1cd7bd7e32c96398d72c7cd3b51e2b456d60f01d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8696f4780db8b98457b56dd7f1162553697023d4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237929"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 
@@ -58,7 +57,7 @@ $profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName M
 
 | パラメーター | 説明 |
 | --- | --- |
-| 名前 |Traffic Manager プロファイル リソースのリソース名。 同じリソース グループ内のプロファイルには、一意の名前が必要です。 この名前は、DNS クエリに使用される DNS 名とは別のものです。 |
+| Name |Traffic Manager プロファイル リソースのリソース名。 同じリソース グループ内のプロファイルには、一意の名前が必要です。 この名前は、DNS クエリに使用される DNS 名とは別のものです。 |
 | ResourceGroupName |プロファイル リソースを含むリソース グループの名前。 |
 | TrafficRoutingMethod |DNS クエリへの応答で返されるエンドポイントを特定するために使用する、トラフィック ルーティング方法を指定します。 指定できる値は、'Performance'、'Weighted' または 'Priority' です。 |
 | RelativeDnsName |この Traffic Manager プロファイルで提供される DNS 名のホスト名の部分を指定します。 Azure Traffic Manager が使用する DNS ドメイン名とこの値を組み合わせて、プロファイルの完全修飾ドメイン名 (FQDN) が形成されます。 たとえば、'contoso' と値を設定すると 'contoso.trafficmanager.net' になります。 |
@@ -179,7 +178,7 @@ Traffic Manager プロファイルごとに 1 つのトラフィック ルーテ
 入れ子になったエンドポイントは、親プロファイルで特定のエンドポイントの種類 "NestedEndpoints" を使って構成します。 入れ子になったエンドポイントを指定する場合は、次のことが当てはまります。
 
 * エンドポイントは、'targetResourceId' パラメーターを使用して指定する必要があります。
-* 'Performance' トラフィック ルーティング方法を使用する場合、'EndpointLocation' が必須です。 それ以外の場合は省略可能です。 値には、[有効な Azure リージョン名](http://azure.microsoft.com/regions/)を指定する必要があります。
+* 'Performance' トラフィック ルーティング方法を使用する場合、'EndpointLocation' が必須です。 それ以外の場合は省略可能です。 値には、[有効な Azure リージョン名](https://azure.microsoft.com/regions/)を指定する必要があります。
 * Azure エンドポイントについては、'Weight' と 'Priority' は省略可能です。
 * 'MinChildEndpoints' パラメーターは省略可能で、 既定値は '1' です。 利用可能なエンドポイントの数がこのしきい値を下回った場合、親プロファイルは子プロファイルを '機能低下' と見なし、トラフィックを親プロファイルの他のエンドポイントにトラフィックを振り向けます。
 
@@ -203,6 +202,18 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```powershell
 $child = Get-AzureRmTrafficManagerEndpoint -Name child -ResourceGroupName MyRG
 New-AzureRmTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceGroupName MyRG -Type NestedEndpoints -TargetResourceId $child.Id -EndpointStatus Enabled -EndpointLocation "North Europe" -MinChildEndpoints 2
+```
+
+## <a name="adding-endpoints-from-another-subscription"></a>別のサブスクリプションからのエンドポイントの追加
+
+Traffic Manager では、別のサブスクリプションからのエンドポイントを操作できます。 追加するエンドポイントがあるサブスクリプションに切り替えて、Traffic Manager に必要な入力を取得する必要があります。 その後、Traffic Manager プロファイルがあるサブスクリプションに切り替えて、そのサブスクリプションにエンドポイントを追加する必要があります。 次の例は、パブリック IP アドレスを使ってこれを行う方法を示しています。
+
+```powershell
+Set-AzureRmContext -SubscriptionId $EndpointSubscription
+$ip = Get-AzureRmPublicIpAddress -Name $IpAddresName -ResourceGroupName $EndpointRG
+
+Set-AzureRmContext -SubscriptionId $trafficmanagerSubscription
+New-AzureRmTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName -ResourceGroupName $TrafficManagerRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
 ```
 
 ## <a name="update-a-traffic-manager-endpoint"></a>Traffic Manager エンドポイントの更新
@@ -306,7 +317,7 @@ Remove-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile [-Force]
 Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzureRmTrafficManagerProfile [-Force]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Traffic Manager の監視](traffic-manager-monitoring.md)
 

@@ -1,41 +1,38 @@
 ---
-title: PowerShell サンプル - 複数の Azure SQL Database 間の同期 | Microsoft Docs
+title: PowerShell サンプル - 複数の Azure SQL データベース間の同期 | Microsoft Docs
 description: 複数の Azure SQL データベース間を同期するための Azure PowerShell サンプル スクリプト
 services: sql-database
-documentationcenter: sql-database
-author: jognanay
-manager: craigg
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: sql-database
-ms.custom: load & move data, mvc
+ms.subservice: data-movement
+ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: database
-ms.date: 07/31/2017
-ms.author: jognanay
+author: allenwux
+ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 8a6dbf6e8cdd2fe066c11cc14ae587912873f7e4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 11347203b4d21bc046b97c1fb1ddc8348f5046af
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684928"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>PowerShell を使用した複数の SQL Database 間の同期
  
-この PowerShell サンプル スクリプトは、複数の Azure SQL データベース間で同期するデータ同期 (プレビュー) を構成します。
+この PowerShell サンプル スクリプトは、複数の Azure SQL データベース間で同期するデータ同期を構成します。
 
-このサンプルには、Azure PowerShell モジュール バージョン 4.2 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページを参照してください。
- 
-`Login-AzureRmAccount` を実行して、Azure との接続を作成します。
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-SQL データ同期の概要については、[Azure SQL データ同期 (プレビュー) を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](../sql-database-sync-data.md)に関する記事をご覧ください。
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+
+SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](../sql-database-sync-data.md)に関する記事を参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-```powershell
+```powershell-interactive
 # prerequisites: 
 # 1. Create an Azure Database from AdventureWorksLT sample database as hub database
 # 2. Create an Azure Database in the same region as sync database
@@ -96,7 +93,7 @@ $IncludedColumnsAndTables =  "[SalesLT].[Address].[AddressID]",
 $MetadataList = [System.Collections.ArrayList]::new($IncludedColumnsAndTables)
 
 
-add-azurermaccount 
+Connect-AzureRmAccount 
 select-azurermsubscription -SubscriptionId $SubscriptionId
 
 # Use this section if it is safe to show password in the script.
@@ -352,7 +349,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 | [Get-AzureRmSqlSyncAgentLinkedDatabase](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncAgentLinkedDatabase) |  同期エージェントのすべての情報を取得する |
 | [New-AzureRmSqlSyncMember](/powershell/module/azurerm.sql/New-AzureRmSqlSyncMember) |  同期グループに新しいメンバーを追加する |
 | [Update-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncSchema) |  データベース スキーマを最新の情報に更新する |
-| [Get-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncSchem) |  データベース スキーマ情報を取得する |
+| [Get-AzureRmSqlSyncSchema](https://docs.microsoft.com/powershell/module/azurerm.sql/Get-AzureRmSqlSyncSchema?view=azurermps-6.8.1) |  データベース スキーマ情報を取得する |
 | [Update-AzureRmSqlSyncGroup](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncGroup) |  同期グループを更新する |
 | [Start-AzureRmSqlSyncGroupSync](/powershell/module/azurerm.sql/Start-AzureRmSqlSyncGroupSync) | 同期をトリガする |
 | [Get-AzureRmSqlSyncGroupLog](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncGroupLog) |  同期ログを確認する |
@@ -366,16 +363,18 @@ Azure PowerShell の詳細については、[Azure PowerShell のドキュメン
 
 SQL データ同期の詳細については、以下を参照してください。
 
--   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベースにまたがるデータの同期)](../sql-database-sync-data.md)
--   [Azure SQL データ同期のセットアップ](../sql-database-get-started-sql-data-sync.md)
--   [Azure SQL データ同期のベスト プラクティス](../sql-database-best-practices-data-sync.md)
--   [OMS Log Analytics を使用した Azure SQL データ同期の監視](../sql-database-sync-monitor-oms.md)
--   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](../sql-database-troubleshoot-data-sync.md)
-
--   SQL データ同期を構成する方法を示す完全な PowerShell の例
-    -   [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](sql-database-sync-data-between-azure-onprem.md)
-
--   [SQL データ同期 REST API ドキュメントのダウンロード](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](../sql-database-sync-data.md)
+-   データ同期の設定
+    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](../sql-database-get-started-sql-data-sync.md)
+    - PowerShell の場合
+        -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](sql-database-sync-data-between-azure-onprem.md)
+-   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](../sql-database-data-sync-agent.md)
+-   ベスト プラクティス - [Azure SQL データ同期のベスト プラクティス](../sql-database-best-practices-data-sync.md)
+-   監視 - [Log Analytics による SQL データ同期の監視](../sql-database-sync-monitor-oms.md)
+-   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](../sql-database-troubleshoot-data-sync.md)
+-   同期スキーマの更新
+    -   Transact-SQL の場合 - [Azure SQL データ同期内でスキーマ変更のレプリケートを自動化する](../sql-database-update-sync-schema.md)
+    -   PowerShell の場合 - [PowerShell を使用して、既存の同期グループの同期スキーマを更新する](sql-database-sync-update-schema.md)
 
 SQL Database の詳細については、以下を参照してください。
 

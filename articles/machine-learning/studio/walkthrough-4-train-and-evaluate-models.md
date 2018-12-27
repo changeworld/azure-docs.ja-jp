@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: d905f6b3-9201-4117-b769-5f9ed5ee1cac
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 3f722fa314b42501e0f6144f71b9d74c0a9127e9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 95937ee74be3f6facbc482c3cfd80a8af9128ea3
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836014"
 ---
 # <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models"></a>チュートリアル手順 4: 予測分析モデルをトレーニングして評価する
 このトピックに含まれるのは、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)」の 4 番目の手順です。
@@ -81,7 +83,7 @@ Azure Machine Learning Studio を使用して機械学習モデルを作成す�
 
 次に SVM モデルを設定します。  
 
-最初に、SVM について少し説明されます。 ブースト デシジョン ツリーはあらゆる種類の特徴で問題なく使うことができます。 ただし、SVM モジュールは線形分類器を生成するため、これによって生成されるモデルでは、すべての数値特徴のスケールが同一である場合に最適なテスト エラーが得られます。 すべての数値特徴を同じスケールに変換するには、Tanh 変換 ([データの正規化][normalize-data]モジュール) を使用します。 これによって特徴が [0,1] の範囲に変換されます。 文字列特徴は SVM モジュールによってカテゴリ特徴に変換され、バイナリ 0/1 特徴に変換されます。このため文字列特徴を手動で変換する必要はありません。 また、[Credit Risk] 列 (21 列目) は変換しません。これは数値ですが、トレーニングによってモデルが予測する値です。このため、この値はそのままにしておきます。  
+最初に、SVM について少し説明されます。 ブースト デシジョン ツリーはあらゆる種類の特徴で問題なく使うことができます。 ただし、SVM モジュールは線形分類子を生成するため、これによって生成されるモデルでは、すべての数値特徴のスケールが同一である場合に最適なテスト エラーが得られます。 すべての数値特徴を同じスケールに変換するには、Tanh 変換 ([データの正規化][normalize-data]モジュール) を使用します。 これによって特徴が [0,1] の範囲に変換されます。 文字列特徴は SVM モジュールによってカテゴリ特徴に変換され、バイナリ 0/1 特徴に変換されます。このため文字列特徴を手動で変換する必要はありません。 また、[Credit Risk] 列 (21 列目) は変換しません。これは数値ですが、トレーニングによってモデルが予測する値です。このため、この値はそのままにしておきます。  
 
 SVM モデルを設定するには、次の操作を行います。
 

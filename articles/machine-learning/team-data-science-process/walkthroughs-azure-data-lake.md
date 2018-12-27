@@ -1,24 +1,26 @@
 ---
-title: "U-SQL を使用した Azure Data Lake データ サイエンスのチュートリアル | Microsoft Docs"
-description: "Azure Data Lake で U-SQL を使用して予測分析を行う例を紹介します。"
+title: U-SQL を使用した Azure Data Lake データ サイエンスのチュートリアル | Microsoft Docs
+description: Azure Data Lake で U-SQL を使用して予測分析を行う例を紹介します。
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: jhubbard
+documentationcenter: ''
+author: deguhath
+manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 100f75c5d21d5723bd7438b49e982ff116b75908
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: deguhath
+ms.openlocfilehash: 6625a2b1e02801a3adea08fc0e301c56d8db3f1b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392429"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>U-SQL を使用した Azure Data Lake データ サイエンスのチュートリアル
 
@@ -32,7 +34,7 @@ Team Data Science Process を実行するデータ サイエンスのチュー�
 [Azure Data Lake を使用したデータ サイエンス](data-lake-walkthrough.md)のチュートリアルでは、NYC タクシーのデータセットのサンプルで Azure Data Lake を使用して、データ調査タスクと二項分類タスクを実行し、乗客ごとにチップが支払われるかどうかを予測します。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process を構成する主な要素については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
 

@@ -1,27 +1,24 @@
 ---
-title: "定期的に実行されるワークフローとタスクのスケジューリング - Azure Logic Apps | Microsoft Docs"
-description: "定期的に実行されるタスク、アクション、ワークフロー、プロセス、ワークロードをロジック アプリで作成し、スケジューリングします。"
+title: 定期的に実行されるタスクとワークフローを Azure Logic Apps で作成する | Microsoft Docs
+description: Azure Logic Apps で Recurrence コネクタを使用し、スケジュールに従って動作するタスクとワークフローを自動化します
 services: logic-apps
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
+tags: connectors
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/25/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 0dead955f9eb723dfa232d3ce751498a09ce1b29
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 905157ab530ae042318de520f9d6fe24cb9d59ce
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127056"
 ---
-# <a name="create-and-schedule-regularly-running-tasks-with-azure-logic-apps"></a>Azure Logic Apps を使用して定期的に実行されるタスクを作成し、スケジュールを設定する
+# <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>定期的に実行されるタスクとワークフローを Azure Logic Apps で作成、実行する
 
 定期的に実行されるタスク、アクション、ワークロード、プロセスをスケジューリングするには、**[スケジュール - 繰り返し]** [トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)で開始するロジック アプリ ワークフローを作成します。 このトリガーを使用すると、タスクの実行の繰り返しを開始する日時と繰り返しのスケジュールを設定できます。たとえば、次のような例があります。
 
@@ -44,7 +41,7 @@ ms.lasthandoff: 03/05/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。 また、[従量課金のサブスクリプションにサインアップ](https://azure.microsoft.com/pricing/purchase-options/)することもできます。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。 また、[従量課金制サブスクリプションにサインアップ](https://azure.microsoft.com/pricing/purchase-options/)することもできます。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識 
 
@@ -96,7 +93,7 @@ ms.lasthandoff: 03/05/2018
 
 繰り返しトリガーに関して構成できるプロパティは次のとおりです。
 
-| Name | 必須 | プロパティ名 | type | [説明] | 
+| Name | 必須 | プロパティ名 | type | 説明 | 
 |----- | -------- | ------------- | ---- | ----------- | 
 | **頻度** | [はい] | frequency | String | 繰り返しの時間の単位。**秒**、**分**、**時**、**日**、**週**、**月**のいずれかになります。 | 
 | **間隔** | [はい] | interval | 整数 | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 <p>既定の間隔は 1 です。 間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- 秒: 1 ～ 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 | 
@@ -147,7 +144,7 @@ ms.lasthandoff: 03/05/2018
 **Q:** 他にも繰り返しのスケジュールの例があれば教えてください </br>
 **A:** 以下、他にもいくつかの例を紹介します。
 
-| 繰り返し | 間隔 | 頻度 | 開始時刻 | 設定曜日 | 設定時刻 (時間) | 設定時刻 (分) | 注 |
+| 繰り返し | interval | 頻度 | 開始時刻 | 設定曜日 | 設定時刻 (時間) | 設定時刻 (分) | Note |
 | ---------- | -------- | --------- | ---------- | ------------- | -------------- | ---------------- | ---- |
 | 15 分ごとに実行 (開始日時は指定せず) | 15 | [分] | {なし} | {使用不可} | {なし} | {なし} | このスケジュールは直ちに開始され、以降、繰り返しのタイミングは前回の実行時刻に基づいて計算されます。 | 
 | 15 分ごとに実行 (開始日時を指定) | 15 | [分] | *startDate*T*startTime*Z | {使用不可} | {なし} | {なし} | このスケジュールは、指定された開始日時 "*以降*" に開始され、その後、繰り返しのタイミングは前回の実行時刻に基づいて計算されます。 | 

@@ -1,24 +1,25 @@
 ---
-title: "Windows で Azure Service Fabric Linux クラスターを設定する | Microsoft Docs"
-description: "この記事では、Windows 開発用マシンで実行される Service Fabric Linux クラスターを設定する方法について説明します。 これは、クロス プラットフォーム開発で特に便利です。"
+title: Windows で Azure Service Fabric Linux クラスターを設定する | Microsoft Docs
+description: この記事では、Windows 開発用マシンで実行される Service Fabric Linux クラスターを設定する方法について説明します。 これは、クロス プラットフォーム開発で特に便利です。
 services: service-fabric
 documentationcenter: .net
 author: suhuruli
 manager: mfussell
-editor: 
+editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: db6ad8b83ce34a8b86de822bc074e8a13345a1b4
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: ad0d383888c173ece5a7fbd3b0de690ed13074f7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206295"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows 開発用マシンで Linux Service Fabric クラスターを設定する
 
@@ -36,7 +37,7 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
 
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>ローカル コンテナーを作成し、Service Fabric をセットアップする
-ローカル Docker コンテナーを設定し、そこでサービス ファブリック クラスターを実行するには、次の手順を実行します。
+ローカル Docker コンテナーをセットアップし、そこでサービス ファブリック クラスターを実行するには、PowerShell で次の手順を実行します。
 
 1. Docker ハブ リポジトリからイメージをプルします。
 

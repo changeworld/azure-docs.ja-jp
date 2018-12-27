@@ -1,22 +1,24 @@
 ---
-title: "Azure Application Insights .NET SDK でカスタム操作を追跡する | Microsoft Docs"
-description: "Azure Application Insights .NET SDK でカスタム操作を追跡する"
+title: Azure Application Insights .NET SDK でカスタム操作を追跡する | Microsoft Docs
+description: Azure Application Insights .NET SDK でカスタム操作を追跡する
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/30/2017
-ms.author: sergkanz
-ms.openlocfilehash: 5c6f7521614d7c8337ef31fb8102c5715f83a58d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 8295fb58bdf92ca8688f5f7b6270dc1b48632a73
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44056999"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -450,14 +452,13 @@ public async Task RunMyTaskAsync()
 
 操作を破棄すると操作が停止されるため、`StopOperation` を呼び出す代わりに実行することもできます。
 
-*警告*: 場合によっては、未処理の例外で `finally` が[呼び出されなくなる](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/try-finally)ことがあるため、操作が追跡されない可能性があります。
+*警告*: 場合によっては、未処理の例外で `finally` が[呼び出されなくなる](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally)ことがあるため、操作が追跡されない可能性があります。
 
 ### <a name="parallel-operations-processing-and-tracking"></a>並列操作の処理と追跡
 
 `StopOperation` だけが開始された操作を停止できます。 現在実行中の操作が停止する操作と一致しない場合、`StopOperation` は何も行いません。 この状況は、同じ実行コンテキストで複数の操作を並行して開始した場合に起こることがあります。
 
 ```csharp
-var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
 var firstTask = RunMyTaskAsync();
 

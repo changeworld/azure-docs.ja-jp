@@ -1,11 +1,11 @@
 ---
-title: "マルチテナント Web アプリケーションのパターン | Microsoft Docs"
-description: "Azure 上でマルチテナント Web アプリケーションを実装する方法を示す、アーキテクチャの概要と設計パターンを紹介します。"
-services: 
+title: マルチテナント Web アプリケーションのパターン | Microsoft Docs
+description: Azure 上でマルチテナント Web アプリケーションを実装する方法を示す、アーキテクチャの概要と設計パターンを紹介します。
+services: ''
 documentationcenter: .net
 author: wadepickett
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: 4f0281d2-1555-42b0-a99d-1222fade0b0f
 ms.service: active-directory
 ms.workload: identity
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23013027"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 上のマルチテナント アプリケーション
 マルチテナント アプリケーションは共有リソースであり、個別のユーザーつまり "テナント" からは独自のアプリケーションであるかのように見えます。 マルチテナント アプリケーションに適した一般的なシナリオは、アプリケーションのすべてのユーザーがユーザー エクスペリエンスをカスタマイズしたいと考えているが、基本的なビジネス要件は同じというものです。 大規模なマルチテナント アプリケーションの例は、Office 365、Outlook.com、visualstudio.com です。

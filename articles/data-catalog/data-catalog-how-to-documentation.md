@@ -1,35 +1,29 @@
 ---
-title: "データ ソースの文書化の方法 | Microsoft Docs"
-description: "この記事では、Azure Data Catalog でデータ資産を文書化する方法について重点的に説明しています。"
+title: Azure Data Catalog でデータ ソースを文書化する方法
+description: この記事では、Azure Data Catalog でデータ資産を文書化する方法について重点的に説明しています。
 services: data-catalog
-documentationcenter: 
-author: spelluru
-manager: NA
-editor: 
-tags: 
+author: markingmyname
+ms.author: maghan
 ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 1901ac534c46e4de0446543de4a40de040b8d51e
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: a7379ffea173cdae3b10a751b0d83e06e679e3c5
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406211"
 ---
 # <a name="document-data-sources"></a>データ ソースの文書化
 ## <a name="introduction"></a>はじめに
-**Microsoft Azure Data Catalog** は、完全に管理されたクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、 **Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、 *理解*、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。
+**Microsoft Azure Data Catalog** は、フル マネージドのクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、 **Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、 *理解*、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。
 
 データ ソースが **Azure Data Catalog** に登録されると、そのメタデータはサービスによってコピーされてインデックスが付けられます。ただし、これで終わりではありません。 **Azure Data Catalog** では、ユーザーが包括的な文書を独自に用意し、データ ソースの使用法や一般的なシナリオを記述することができます。
 
 「 [データ ソースに注釈を付ける方法](data-catalog-how-to-annotate.md)」では、データ ソースについて熟知している担当者がタグや説明を注釈として追加する機能を紹介しています。 **Azure Data Catalog** ポータルには、ユーザーがデータ資産とコンテナーを詳細に文書化できるよう、リッチ テキスト エディターが備わっています。 エディターは、段落の書式設定 (見出しなど) やテキストの書式設定、記号付きの箇条書き、番号付きの箇条書き、表に対応します。
 
-単純な注釈であればタグと説明で十分です。 しかし、データ ソースの用途や業務上のシナリオをデータの利用者が理解しやすいよう、データ ソースについて熟知している担当者が包括的かつ詳細な文書を提供することもできます。 データ ソースの文書化は簡単です。 データ資産またはコンテナーを選択し、 **[ドキュメント]**を選択するだけです。
+単純な注釈であればタグと説明で十分です。 しかし、データ ソースの用途や業務上のシナリオをデータの利用者が理解しやすいよう、データ ソースについて熟知している担当者が包括的かつ詳細な文書を提供することもできます。 データ ソースの文書化は簡単です。 データ資産またはコンテナーを選択し、 **[ドキュメント]** を選択するだけです。
 
 ![](media/data-catalog-documentation/data-catalog-documentation.png)
 

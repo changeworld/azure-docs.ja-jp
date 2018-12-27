@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 72d6c3acfdf095ad8652561244139304b690344a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 95000f9fb57b95bf1edcda9abfba3668b5f5b523
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835741"
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>チュートリアル手順 3: Azure Machine Learning の新しい実験を作成する
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)
@@ -34,7 +36,7 @@ ms.lasthandoff: 03/23/2018
 このチュートリアルでの次の手順は、アップロードしたデータセットを使用する実験を Machine Learning Studio で作成することです。  
 
 1. Studio で、ウィンドウの下部にある **[+新規]** をクリックします。
-2. **[実験]**を選択して、[空の実験] を選択します。 
+2. **[実験]** を選択して、[空の実験] を選択します。 
 
     ![新しい実験を作成する][0]
 
@@ -47,13 +49,13 @@ ms.lasthandoff: 03/23/2018
    > 
    > ![実験のプロパティ][6]
    > 
-3. 実験キャンバスの左側にあるモジュール パレットの **[保存されたデータセット]**を展開します。
+3. 実験キャンバスの左側にあるモジュール パレットの **[保存されたデータセット]** を展開します。
 4. 作成したデータセットを **[マイ データセット]** から見つけて、キャンバスにドラッグします。 パレットの上にある **[検索]** ボックスに名前を入力してデータセットを見つけることもできます。  
 
     ![実験キャンバスへのデータセットの追加][7]
 
 ## <a name="prepare-the-data"></a>データを準備する
-データの最初の 100 行とデータセット全体の統計情報を表示できます。データセットの出力ポート (下部の小さな円) をクリックし、**[視覚化]**を選択します。  
+データの最初の 100 行とデータセット全体の統計情報を表示できます。データセットの出力ポート (下部の小さな円) をクリックし、**[視覚化]** を選択します。  
 
 データ ファイルには列見出しがないため、ため、Studio では汎用の見出し (Col1、Col2 "*など*") が付けられます。 適切な見出しはモデルを作成するために絶対に必要なものではありませんが、実験のデータを操作する際に便利です。 また、最終的にこのモデルを Web サービスに発行する際に、見出しが設定されていることによってサービスのユーザーが列を見つけやすくなります。  
 
@@ -144,7 +146,7 @@ ms.lasthandoff: 03/23/2018
 
 1. [R スクリプトの実行][execute-r-script]モジュールを右クリックし、**[コピー]** を選択します。
 
-2. 実験キャンバスを右クリックして **[貼り付け]**を選択します。
+2. 実験キャンバスを右クリックして **[貼り付け]** を選択します。
 
 3. 新しいモジュールを適切な位置にドラッグし、[データの分割][split]モジュールの右側の出力ポートを、この新しい [ R スクリプトの実行][execute-r-script]モジュールの 1 つ目の入力ポートに接続します。 
 

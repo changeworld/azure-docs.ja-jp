@@ -6,26 +6,26 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: f176e0689c630a406ab6e2f82e9320a214ff8a1a
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: df1f8d805c950bdfbe2c18f365a450a6d630891b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300440"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack での特権エンドポイントの使用
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Stack オペレーターは、管理ポータル、PowerShell、または Azure Resource Manager API を使用して、ほとんどの日常的な管理タスクを実行します。 ただし、あまり一般的でない一部の操作については、*特権エンドポイント* (PEP) を使用する必要があります。 この PEP は、あらかじめ構成されたリモート PowerShell コンソールであり、必要なタスクを実行するために十分な機能だけを提供します。 エンドポイントは [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/en-us/powershell/jea/overview) を使用して、コマンドレットの限定的なセットのみを公開します。 PEP にアクセスしてコマンドレットの限定的なセットを起動するために、低権限のアカウントが使用されます。 管理者アカウントは必要ありません。 セキュリティ強化のため、スクリプトは許可されません。
+Azure Stack オペレーターは、管理ポータル、PowerShell、または Azure Resource Manager API を使用して、ほとんどの日常的な管理タスクを実行します。 ただし、あまり一般的でない一部の操作については、*特権エンドポイント* (PEP) を使用する必要があります。 この PEP は、あらかじめ構成されたリモート PowerShell コンソールであり、必要なタスクを実行するために十分な機能だけを提供します。 エンドポイントは [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview) を使用して、コマンドレットの限定的なセットのみを公開します。 PEP にアクセスしてコマンドレットの限定的なセットを起動するために、低権限のアカウントが使用されます。 管理者アカウントは必要ありません。 セキュリティ強化のため、スクリプトは許可されません。
 
 PEP を使用して、次のようなタスクを実行することができます。
 
@@ -55,7 +55,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - ADSK を実行している場合、開発キットのホストにサインインします。
+    - ASDK を実行している場合、開発キットのホストにサインインします。
 
 2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行しているセキュリティ強化された仮想マシンで、Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
  
@@ -67,7 +67,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       `ComputerName` パラメーターは、PEP をホストする仮想マシンの 1 台の IP アドレスまたは DNS 名のどちらかです。 
-    - ADSK を実行している場合:
+    - ASDK を実行している場合:
      
       ````PowerShell
         $cred = Get-Credential
@@ -108,7 +108,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
 
 ## <a name="tips-for-using-the-privileged-endpoint"></a>特権エンドポイントを使用するためのヒント 
 
-前述のとおり、PEP は、[PowerShell JEA](https://docs.microsoft.com/en-us/powershell/jea/overview) エンドポイントです。 JEA エンドポイントにより、強力なセキュリティ層が提供される一方で、スクリプトやタブ補完などの基本的な PowerShell の機能の一部が失われます。 何らかの種類のスクリプト操作を試みると、エラー **ScriptsNotAllowed** で操作は失敗します。 これは正しい動作です。
+前述のとおり、PEP は、[PowerShell JEA](https://docs.microsoft.com/powershell/jea/overview) エンドポイントです。 JEA エンドポイントにより、強力なセキュリティ層が提供される一方で、スクリプトやタブ補完などの基本的な PowerShell の機能の一部が失われます。 何らかの種類のスクリプト操作を試みると、エラー **ScriptsNotAllowed** で操作は失敗します。 これは正しい動作です。
 
 そのため、たとえば、特定のコマンドレットについてパラメーターの一覧を取得するには、次のコマンドを実行します。
 
@@ -116,7 +116,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
     Get-Command <cmdlet_name> -Syntax
 ```
 
-または、[Import-PSSession](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) コマンドレット使用して、ローカル コンピューターの現在のセッションにすべての PEP コマンドレットをインポートすることもできます。 これにより、PEP のすべてコマンドレットと関数を、タブ補完や、より一般にはスクリプトと共に、ローカル コンピューターで利用できるようになります。 
+または、[Import-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) コマンドレット使用して、ローカル コンピューターの現在のセッションにすべての PEP コマンドレットをインポートすることもできます。 これにより、PEP のすべてコマンドレットと関数を、タブ補完や、より一般にはスクリプトと共に、ローカル コンピューターで利用できるようになります。 
 
 ローカル コンピューターに PEP セッションをインポートするには、次の手順を実行します。
 
@@ -127,7 +127,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - ADSK を実行している場合、開発キットのホストにサインインします。
+    - ASDK を実行している場合、開発キットのホストにサインインします。
 
 2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行しているセキュリティ強化された仮想マシンで、Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
  
@@ -139,7 +139,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       `ComputerName` パラメーターは、PEP をホストする仮想マシンの 1 台の IP アドレスまたは DNS 名のどちらかです。 
-    - ADSK を実行している場合:
+    - ASDK を実行している場合:
      
       ````PowerShell
        $cred = Get-Credential

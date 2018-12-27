@@ -1,4 +1,16 @@
-
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: 9919521c8cb77f23f50a8097c4e630b4467dc725
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164525"
+---
 ### <a name="installation-failures"></a>インストール エラー
 | **サンプルのエラー メッセージ** | **推奨される操作** |
 |--------------------------|------------------------|

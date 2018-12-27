@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL でファイアウォール規則を作成および管理する"
-description: "Azure Portal を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理"
+title: Azure Database for PostgreSQL でファイアウォール規則を作成および管理する
+description: Azure Portal を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29690341"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用すると、管理者は、指定された IP アドレスまたは IP アドレス範囲から Azure Database for PostgreSQL サーバーにアクセスできます。 

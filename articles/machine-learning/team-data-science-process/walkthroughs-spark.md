@@ -1,24 +1,26 @@
 ---
-title: "Azure 上の PySpark と Scala を使用した HDInsight Spark のチュートリアル | Microsoft Docs"
-description: "Azure HDInsight Spark で PySpark と Scala を使用して予測分析を行う Team Data Science Process の例を紹介します。"
+title: Azure 上の PySpark と Scala を使用した HDInsight Spark のチュートリアル | Microsoft Docs
+description: Azure HDInsight Spark で PySpark と Scala を使用して予測分析を行う Team Data Science Process の例を紹介します。
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: jhubbard
+documentationcenter: ''
+author: deguhath
+manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 76c9382cc5210bb5ac8551ebb7b16ecabe0dcd39
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: deguhath
+ms.openlocfilehash: 3d39e752e874b6b0c6fbdf678d6eddda0b0d9404
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226550"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Azure 上の PySpark と Scala を使用した HDInsight Spark データ サイエンスのチュートリアル
 
@@ -42,10 +44,10 @@ Team Data Science Process を実行するデータ サイエンスのチュー�
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Azure Spark 上の Scala を使ってタクシーのチップを予測する
 
-[Azure Spark 上の Scala を使用](scala-walkthrough.md)したチュートリアルでは、NYC タクシーのデータを使って、チップが支払われるかどうかと、想定される金額の範囲を予測します。 Azure HDInsight Spark クラスターで Spark の機械学習ライブラリ (MLlib) と SparkML パッケージを使用して、教師あり機械学習タスクに Scala を使用する方法を説明します。 また、 [データ サイエンス プロセス](http://aka.ms/datascienceprocess)(データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。 構築されるモデルには、ロジスティック回帰と線形回帰、ランダム フォレスト、勾配ブースティング ツリーなどがあります。
+[Azure Spark 上の Scala を使用](scala-walkthrough.md)したチュートリアルでは、NYC タクシーのデータを使って、チップが支払われるかどうかと、想定される金額の範囲を予測します。 Azure HDInsight Spark クラスターで Spark の機械学習ライブラリ (MLlib) と SparkML パッケージを使用して、教師あり機械学習タスクに Scala を使用する方法を説明します。 また、 [データ サイエンス プロセス](https://aka.ms/datascienceprocess)(データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。 構築されるモデルには、ロジスティック回帰と線形回帰、ランダム フォレスト、勾配ブースティング ツリーなどがあります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process を構成する主な要素については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
 

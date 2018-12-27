@@ -1,24 +1,26 @@
 ---
-title: "Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用 | Microsoft Docs"
-description: "HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、公開されている大量 (1 TB) のデータセットを使ってモデルを構築してデプロイします"
+title: Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用 | Microsoft Docs
+description: HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、公開されている大量 (1 TB) のデータセットを使ってモデルを構築してデプロイします
 services: machine-learning,hdinsight
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 72d958c4-3205-49b9-ad82-47998d400d2b
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 760e08643fb3e71478fc899278591569da1d515b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.author: deguhath
+ms.openlocfilehash: b368bf76516b0b6f87ad8ff57ca886a44b71926c
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142462"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用
 
@@ -62,7 +64,7 @@ Criteo データは、gzip で圧縮された約 370 GB の TSV ファイル (�
 
 HDInsight クラスターを使用して予測分析ソリューションを構築するために、3 つの手順で Azure のデータ サイエンス環境をセット アップします。
 
-1. [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md): このストレージ アカウントは、Azure BLOB ストレージにデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータが格納されます。
+1. [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md): このストレージ アカウントは、Azure BLOB ストレージにデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータが格納されます。
 2. [Azure HDInsight Hadoop Clusters for Data Science のカスタマイズ](customize-hadoop-cluster.md): この手順では、すべてのノードにインストールされている 64 ビット Anaconda Python 2.7 を使用して Azure HDInsight Hadoop クラスターを作成します。 HDInsight クラスターをカスタマイズするときに実行する、2 つの重要な手順があります (このトピックで説明します)。
    
    * 作成時に、手順 1. で作成したストレージ アカウントを HDInsight クラスターにリンクする必要があります。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
@@ -437,7 +439,7 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 
 1. [Hive クエリ] を **データ ソース**
 2. **[Hive データベース クエリ]** ボックスでは、SELECT * FROM <your\_database\_name.your\_table\_name> のみで十分です。
-3. **[Hcatalog サーバー URI]**: クラスターが "abc" の場合は、https://abc.azurehdinsight.net のみです。
+3. **[Hcatalog サーバー URI]**: クラスターが "abc" の場合は、単純に https://abc.azurehdinsight.net となります。
 4. **[Hadoop ユーザーのアカウント名]**: クラスターの設定時に選択したユーザー名 (リモート アクセスのユーザー名ではありません)。
 5. **[Hadoop ユーザー アカウントのパスワード]**: クラスターの設定時に選択した上記のユーザー名のパスワード (リモート アクセスのパスワードではありません)。
 6. **[出力データの場所]**: [Azure] を選択します。

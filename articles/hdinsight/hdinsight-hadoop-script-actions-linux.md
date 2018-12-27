@@ -1,25 +1,20 @@
 ---
-title: Linux ベースの HDInsight でのスクリプト アクション開発 - Azure | Microsoft Docs
+title: Linux ベースの HDInsight でのスクリプト アクション開発 - Azure
 description: Bash スクリプトを使用して Linux ベースの HDInsight クラスターをカスタマイズする方法について説明します。 HDInsight のスクリプト アクション機能では、クラスターの作成中または作成後にスクリプトを実行できます。 スクリプトを使用して、クラスター構成設定を変更したり、追加のソフトウェアをインストールしたりできます。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: cf4c89cd-f7da-4a10-857f-838004965d3e
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/17/2018
-ms.author: larryfr
-ms.openlocfilehash: 5074345533f0fdb0c72bf319646ad614632d1940
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 04/10/2018
+ms.author: hrasheed
+ms.openlocfilehash: 90bba26bf1fd941085568cacd4d005f10eaed1b8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005395"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -38,7 +33,7 @@ Script Action は、Azure がクラスター ノードで実行して、構成�
 | --- |:---:|:---:|
 | Azure ポータル |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
-| Azure CLI |&nbsp; |✓ |
+| Azure クラシック CLI |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
 | Azure Resource Manager テンプレート |✓ |&nbsp; |
 
@@ -230,7 +225,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 次のヘルパーがスクリプトで使用できます。
 
-| ヘルパーの使用 | [説明] |
+| ヘルパーの使用 | 説明 |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |元の URI から指定されたファイルのパスに、ファイルをダウンロードします。 既定では、既存のファイルは上書きされません。 |
 | `untar_file TARFILE DESTDIR` |tar ファイルを (`-xf`を使用して) インストール先ディレクトリに抽出します。 |
@@ -279,11 +274,11 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * クラスターに関連付けられている __Azure Storage アカウント__。
 
-* クラスターに関連付けられている__追加のストレージ アカウント__。
+* クラスターに関連付けられている __追加のストレージ アカウント__。
 
 * __パブリックに読み取り可能な URI__。 たとえば、OneDrive、Dropbox、その他の ホスティング サービスに格納されたデータの URL。
 
-* HDInsight クラスターに関連付けられている __Azure Data Lake Store アカウント__。 HDInsight での Azure Data Lake Store の使用の詳細については、[Data Lake Store での HDInsight クラスターの作成](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するページをご覧ください。
+* HDInsight クラスターに関連付けられている __Azure Data Lake Store アカウント__。 HDInsight での Azure Data Lake Store の使用に関する詳細については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」を参照してください。
 
     > [!NOTE]
     > HDInsight が Data Lake Store へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
@@ -376,5 +371,5 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 ## <a name="seeAlso"></a>次のステップ
 
 * [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
-* [HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx) を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
+* [HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
 * [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。

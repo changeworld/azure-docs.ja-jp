@@ -1,37 +1,38 @@
 ---
-title: "仮想ネットワーク ゲートウェイの削除: PowerShell: Azure クラシック | Microsoft Docs"
-description: "クラシック デプロイ モデルで、PowerShell を使用して仮想ネットワーク ゲートウェイを削除します。"
+title: '仮想ネットワーク ゲートウェイの削除: PowerShell: Azure クラシック | Microsoft Docs'
+description: クラシック デプロイ モデルで、PowerShell を使用して仮想ネットワーク ゲートウェイを削除します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: b1bc18307227a728e2bc8fd95e30fdc1cbdb8c59
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 2c92db96820b9796ba2c952affcb3b3eef5b985e
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319848"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する (クラシック)
+
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [クラシック - PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
->
 
 この記事は、クラシック デプロイ モデルで、PowerShell を使用して VPN ゲートウェイを削除するのに役立ちます。 仮想ネットワーク ゲートウェイを削除したら、ネットワーク構成ファイルを変更して、使用しなくなった要素を削除します。
 
-##<a name="connect"></a>ステップ 1: Azure への接続
+## <a name="connect"></a>ステップ 1: Azure への接続
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1.最新の PowerShell コマンドレットをインストールします。
 
@@ -100,7 +101,7 @@ Status : Successful
  </Gateway>
 ```
 
-###<a name="lns"></a>ローカル ネットワーク サイト
+### <a name="lns"></a>ローカル ネットワーク サイト
 
 使用しなくなったすべてのローカル サイトを削除します。 作成済みの構成により、**LocalNetworkSite** が表示されない可能性があります。
 
@@ -194,3 +195,4 @@ Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 OperationDescription        OperationId                      OperationStatus                                                
 --------------------        -----------                      ---------------                                           
 Set-AzureVNetConfig         e0ee6e66-9167-cfa7-a746-7casb9   Succeeded
+```

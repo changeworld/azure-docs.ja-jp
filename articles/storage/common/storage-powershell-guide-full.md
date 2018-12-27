@@ -2,22 +2,18 @@
 title: Azure Storage での Azure PowerShell の使用 | Microsoft Docs
 description: Azure Storage で Azure PowerShell コマンドレットを使用する方法について説明します。
 services: storage
-documentationcenter: na
 author: roygara
-manager: jeconnoc
-ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 08/16/2018
 ms.author: rogarana
-ms.openlocfilehash: ae1c6628492de208f7c11e0b4e9d3133774ae184
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: 35813573be9b069cc920f5ede813503ab1b99b4a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227216"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
 
@@ -46,15 +42,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-`Login-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="list-the-storage-accounts-in-the-subscription"></a>サブスクリプションのストレージ アカウントの列挙
 
-[Get-AzureRMStorageAccount](/powershell/module/azurerm.resources/get-azurermstorageaccount) コマンドレットを実行して、現在のサブスクリプションのストレージ アカウントのリストを取得します。 
+[Get-AzureRMStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) コマンドレットを実行して、現在のサブスクリプションのストレージ アカウントのリストを取得します。 
 
 ```powershell
 Get-AzureRMStorageAccount | Select StorageAccountName, Location
@@ -107,11 +103,11 @@ $ctx = $storageAccount.Context
 
 このスクリプトでは、次の PowerShell コマンドレットを使用します。 
 
-*   [Get-AzureRmLocation](/powershell/module/azurerm.storage/Get-AzureRmLocation) -- 有効な場所のリストを取得します。 この例では、`eastus` を場所として使用します。
+*   [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) -- 有効な場所のリストを取得します。 この例では、`eastus` を場所として使用します。
 
-*   [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/New-AzureRmResourceGroup) -- 新しいリソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、`teststoragerg` を使用します。 
+*   [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) -- 新しいリソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、`teststoragerg` を使用します。 
 
-*   [New-AzureRmStorageAccount](/powershell/module/azurerm.resources/New-AzureRmStorageAcccount) -- 実際のストレージ アカウントを作成します。 この例では、`testpshstorage` を使用します。
+*   [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) -- ストレージ アカウントを作成します。 この例では、`testpshstorage` を使用します。
 
 SKU 名は、LRS (ローカル冗長ストレージ) など、ストレージ アカウントのレプリケーションの種類を示します。 レプリケーションの詳細については、「[Azure Storage のレプリケーション](storage-redundancy.md)」を参照してください。
 
@@ -127,7 +123,7 @@ SKU 名は、LRS (ローカル冗長ストレージ) など、ストレージ �
 
 ### <a name="storage-account-properties"></a>ストレージ アカウント プロパティ
 
-ストレージ アカウントの設定を変更するには、[Set-AzureRmStorageAccount](/powershell/module/azurerm.resources/Set-AzureRmStorageAccount) を使用します。 ストレージ アカウントの場所や格納されているリソース グループを変更することはできませんが、その他の多くのプロパティを変更できます。 PowerShell を使用して変更できるいくつかのプロパティを次に示します。
+ストレージ アカウントの設定を変更するには、[Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) を使用します。 ストレージ アカウントの場所や格納されているリソース グループを変更することはできませんが、その他の多くのプロパティを変更できます。 PowerShell を使用して変更できるいくつかのプロパティを次に示します。
 
 * ストレージ アカウントに割り当てられている**カスタム ドメイン**。
 
@@ -163,7 +159,7 @@ New-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
 いずれかのキーを再生成してもう一度取得し、新しい値を確認します。
 
 > [!NOTE] 
-> 運用環境のストレージ アカウントのキーを再生成する前には、入念な計画が必要です。 一方または両方のキーを再生成すると、再生成されたキーを使用するアプリケーションのアクセスが無効になります。 詳しくは、「[ストレージ アクセス キーの再生成](storage-create-storage-account.md#regenerate-storage-access-keys)」をご覧ください。
+> 運用環境のストレージ アカウントのキーを再生成する前には、入念な計画が必要です。 一方または両方のキーを再生成すると、再生成されたキーを使用するアプリケーションのアクセスが無効になります。 詳細については、「[Access keys](storage-account-manage.md#access-keys)」(アクセス キー) に関するページを参照してください。
 
 
 ### <a name="delete-a-storage-account"></a>ストレージ アカウントを削除する 
@@ -185,7 +181,7 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 この記事では、次の PowerShell コマンドレットを使用してこれらの設定を管理する方法を示しています。
 * [Add-AzureRmStorageAccountNetworkRule](/powershell/module/AzureRM.Storage/Add-AzureRmStorageAccountNetworkRule)
 * [Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset)
-* [Remove-AzureRmStorageAccountNetworkRule](/powershell/module/azurerm.storage/remove-azurermstorage-account-networkrule)
+* [Remove-AzureRmStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.storage/remove-azurermstorageaccountnetworkrule?view=azurermps-6.8.1)
 
 ## <a name="use-storage-analytics"></a>Storage Analytics の使用  
 
@@ -214,12 +210,11 @@ PowerShell によるストレージ アカウントの管理方法について�
 * [Azure PowerShell を使用して Azure Blob Storage の操作を実行する](../blobs/storage-how-to-use-blobs-powershell.md)
 * [PowerShell を使用して Azure Files を管理する方法](../files/storage-how-to-use-files-powershell.md)
 * [Azure PowerShell を使用し、Azure Queue Storage を操作する](../queues/storage-powershell-how-to-use-queues.md)
-* [PowerShell を使用した Azure Table Storage 操作の実行](../../cosmos-db/table-storage-how-to-use-powershell.md)
+* [PowerShell を使用した Azure Table Storage 操作の実行](../../storage/tables/table-storage-how-to-use-powershell.md)
 
 Azure Cosmos DB Table API は、ターンキー グローバル配布、低待ち時間の読み取りと書き込み、自動セカンダリ インデックス付け、専用スループットなど、テーブル ストレージに対する高度な機能を提供します。 
 
 * 詳細については、「[Azure Cosmos DB Table API](../../cosmos-db/table-introduction.md)」を参照してください。 
-* PowerShell を使用して Azure Cosmos DB Table API 操作を実行する方法については、「[PowerShell を使用した Azure Cosmos DB Table API 操作の実行](../../cosmos-db/table-powershell.md)」を参照してください。
 
 ## <a name="independent-cloud-deployments-of-azure"></a>Azure の独立したクラウドのデプロイ
 

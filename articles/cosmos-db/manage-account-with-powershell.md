@@ -2,28 +2,25 @@
 title: Azure Cosmos DB 自動化 - PowerShell での管理 | Microsoft Docs
 description: Azure PowerShell を使用して Azure Cosmos DB アカウントを管理します。
 services: cosmos-db
-author: dmakwana
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: ''
 tags: azure-resource-manager
-documentationcenter: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/21/2017
-ms.author: dimakwan
-ms.openlocfilehash: 12c7800ee2a823cca5394841cae86eeacc20fb1b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: sngun
+ms.openlocfilehash: b115058353d14a3bd7c774197e06de088030ffff
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741353"
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>PowerShell を使用して Azure Cosmos DB アカウントを作成する
 
-次のガイドでは、Azure PowerShell を使用して Azure Cosmos DB データベース アカウントの管理を自動化するためのコマンドについて説明します。 また、[複数リージョンのデータベース アカウント][scaling-globally]でアカウント キーとフェールオーバー優先度を管理するコマンドについても説明します。 データベース アカウントを更新すると、一貫性ポリシーの変更と、リージョンの追加または削除を行うことができます。 Azure Cosmos DB アカウントのクロスプラットフォーム管理には、[Azure CLI](cli-samples.md)、[リソース プロバイダーの REST API][rp-rest-api]、[Azure Portal](create-sql-api-dotnet.md#create-account) のいずれも使用可能です。
+次のガイドでは、Azure PowerShell を使用して Azure Cosmos DB データベース アカウントの管理を自動化するためのコマンドについて説明します。 また、[複数リージョンのデータベース アカウント][distribute-data-globally]でアカウント キーとフェールオーバー優先度を管理するコマンドについても説明します。 データベース アカウントを更新すると、一貫性ポリシーの変更と、リージョンの追加または削除を行うことができます。 Azure Cosmos DB アカウントのクロスプラットフォーム管理には、[Azure CLI](cli-samples.md)、[リソース プロバイダーの REST API][rp-rest-api]、[Azure Portal](create-sql-api-dotnet.md#create-account) のいずれも使用可能です。
 
 ## <a name="getting-started"></a>Getting Started (概要)
 
@@ -36,7 +33,7 @@ ms.lasthandoff: 03/30/2018
 
 ## <a id="create-documentdb-account-powershell"></a> Azure Cosmos DB アカウントを作成する
 
-このコマンドでは、Azure Cosmos DB データベース アカウントを作成できます。 新しいデータベース アカウントは、単一リージョンまたは[複数リージョン][scaling-globally]で、特定の[一貫性ポリシー](consistency-levels.md)に基づいて構成します。
+このコマンドでは、Azure Cosmos DB データベース アカウントを作成できます。 新しいデータベース アカウントは、単一リージョンまたは[複数リージョン][distribute-data-globally]で、特定の[一貫性ポリシー](consistency-levels.md)に基づいて構成します。
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -63,7 +60,7 @@ ms.lasthandoff: 03/30/2018
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ### <a name="notes"></a>メモ
-* 前の例では、2 つのリージョンでデータベース アカウントを作成します。 単一リージョン (書き込みリージョンとして指定されており、フェールオーバー優先度の値が 0 であるもの) または 3 つ以上のリージョンでデータベース アカウントを作成することも可能です。 詳細については、[複数リージョンのデータベース アカウント][scaling-globally]に関する記事を参照してください。
+* 前の例では、2 つのリージョンでデータベース アカウントを作成します。 単一リージョン (書き込みリージョンとして指定されており、フェールオーバー優先度の値が 0 であるもの) または 3 つ以上のリージョンでデータベース アカウントを作成することも可能です。 詳細については、[複数リージョンのデータベース アカウント][distribute-data-globally]に関する記事を参照してください。
 * 場所は、Azure Cosmos DB が一般公開されているリージョンである必要があります。 最新のリージョン一覧については、 [Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
 ## <a id="update-documentdb-account-powershell"></a>Azure Cosmos DB データベース アカウントを更新する
@@ -132,8 +129,8 @@ ms.lasthandoff: 03/30/2018
 
 例:
 
-    $tags = @{"dept" = "Finance”; environment = “Production”}
-    Set-AzureRmResource -ResourceType “Microsoft.DocumentDB/databaseAccounts”  -ResourceGroupName "rg-test" -Name "docdb-test" -Tags $tags
+    $tags = @{"dept" = "Finance"; environment = "Production"}
+    Set-AzureRmResource -ResourceType "Microsoft.DocumentDB/databaseAccounts"  -ResourceGroupName "rg-test" -Name "docdb-test" -Tags $tags
 
 ## <a id="list-account-keys-powershell"></a> アカウント キーの一覧表示
 
@@ -198,6 +195,7 @@ MongoDB アカウントの場合、MongoDB アプリをデータベース アカ
 * Node.js を使用して接続する方法については、[Node.js と MongoDB アプリを使った接続とクエリ](create-mongodb-nodejs.md)に関する記事をご覧ください。
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
+
 [powershell-install-configure]: https://docs.microsoft.com/azure/powershell-install-configure
 [scaling-globally]: distribute-data-globally.md#EnableGlobalDistribution
 [distribute-data-globally]: distribute-data-globally.md

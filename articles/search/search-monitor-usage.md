@@ -1,27 +1,24 @@
 ---
-title: "Azure Search サービスでの使用状況と統計の監視 | Microsoft Docs"
-description: "Microsoft Azure のホスト型クラウド検索サービスである Azure Search のリソース使用量とインデックス サイズを追跡記録します。"
-services: search
-documentationcenter: 
+title: 検索サービスの使用状況と統計を監視する - Azure Search
+description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search のリソース使用量とインデックス サイズを追跡記録します。
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 
+services: search
 ms.service: search
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: required
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: fe852afedfc1cce99d81b8ab53c6c80df34ac6d6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.custom: seodec2018
+ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314161"
 ---
-# <a name="monitoring-an-azure-search-service"></a>Azure Search サービスの監視
+# <a name="monitor-an-azure-search-service-in-azure-portal"></a>Azure portal で Azure Search サービスを監視する
 
 Azure Search には検索サービスの使用状況とパフォーマンスを追跡する各種リソースが用意されています。 メトリック、ログ、インデックスの統計、および Power BI の監視拡張機能にアクセスできます。 この記事では、異なる監視戦略を有効にする方法と、結果のデータを解釈する方法について説明します。
 
@@ -30,9 +27,9 @@ Azure Search には検索サービスの使用状況とパフォーマンスを�
 
 Azure Search は次の 3 つの異なるメトリックについてデータを収集します。
 
-* 検索の待ち時間: 検索サービスが検索クエリを処理するために必要とした時間。分単位で集計。
-* 1 秒あたりの検索クエリ数 (QPS): 1 秒間に受信した検索クエリの数。分単位で集計。
-* スロットルされた検索クエリの割合: スロットルされた検索クエリの割合。分単位で集計。
+* 検索の待ち時間: 検索サービスが検索クエリを処理するために必要とした時間。分単位で集計されます。
+* 1 秒あたりの検索クエリ数 (QPS): 1 秒間に受信した検索クエリの数。分単位で集計されます。
+* スロットルされた検索クエリの割合: スロットルされた検索クエリの割合。分単位で集計されます。
 
 ![QPS アクティビティのスクリーン ショット][1]
 
@@ -53,7 +50,7 @@ Azure Search は次の 3 つの異なるメトリックについてデータを�
 
 [使用] セクションには、使用可能なリソースのうち、現在使用中の割合を示すメーターがあります。 インデックス、ドキュメント、および記憶域のサービスごとの制限に関する情報については、「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
 
-  ![[使用量] タイル][2]
+  ![使用状況タイル][2]
 
 > [!NOTE]
 > 上記のスクリーン ショットは、無料サービスのデータを示しています。無料サービスでは、最大 1 つのレプリカとパーティションを使用でき、3 つのインデックス、10,000 個のドキュメント、または 50 MB のデータのいずれかが所定の数値に達するまでホストされます。 Basic または Standard レベルで作成されたサービスでは、サービス制限ははるかに高くなります。 レベル選択の詳細については、「[SKU または価格レベルの選択](search-sku-tier.md)」を参照してください。
@@ -98,30 +95,32 @@ PowerShell または Azure CLI の使用を有効にする方法については�
 
 | 名前 | 型 | 例 | メモ |
 | --- | --- | --- | --- |
-| time |datetime |"2015-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
+| time |Datetime |"2015-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
 | operationName |string |"Query.Search" |操作の名前 |
 | operationVersion |string |"2015-02-28" |使用されている API バージョン |
-| カテゴリ |string |"OperationLogs" |定数 |
-| resultType |string |"Success" |使用可能な値: Success または Failure |
+| category |string |"OperationLogs" |定数 |
+| resultType |string |"Success" |指定できる値成功または失敗 |
 | resultSignature |int |200 |HTTP の結果コード |
 | durationMS |int |50 |操作時間 (ミリ秒) |
-| プロパティ |オブジェクト |次の表を参照 |操作固有データを含むオブジェクト |
+| properties |オブジェクト |次の表を参照 |操作固有データを含むオブジェクト |
 
 **プロパティのスキーマ**
+
 | 名前 | 型 | 例 | メモ |
 | --- | --- | --- | --- |
-| Description |string |"GET /indexes('content')/docs" |操作のエンドポイント |
+| 説明 |string |"GET /indexes('content')/docs" |操作のエンドポイント |
 | クエリ |string |"?search=AzureSearch&$count=true&api-version=2015-02-28" |クエリ パラメーター |
-| ドキュメント |int |42 |処理されたドキュメント数 |
+| Documents |int |42 |処理されたドキュメント数 |
 | IndexName |string |"testindex" |操作に関連付けられているインデックスの名前 |
 
 #### <a name="metrics-schema"></a>メトリックのスキーマ
+
 | 名前 | 型 | 例 | メモ |
 | --- | --- | --- | --- |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
 | metricName |string |"Latency" |メトリックの名前 |
-| time |datetime |"2015-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
+| time |Datetime |"2015-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | average |int |64 |メトリックの時間間隔内の生のサンプルの平均値 |
 | minimum |int |37 |メトリックの時間間隔内の生のサンプルの最小値 |
 | maximum |int |78 |メトリックの時間間隔内の生のサンプルの最大値 |
@@ -144,7 +143,7 @@ Azure Search には、検索トラフィックを事前定義されたグラフ�
 
 ![Azure Search の Power BI ダッシュ ボード][4]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [レプリカとパーティションのスケーリング](search-limits-quotas-capacity.md)に関するページで、既存のサービスに対するパーティションとレプリカの割り当てのバランスをとる方法を検討します。
 
 サービス管理の詳細については、[Microsoft Azure での Search サービスの管理](search-manage.md)に関する記事を、チューニング ガイダンスについては、[パフォーマンスと最適化](search-performance-optimization.md)に関する考慮事項を参照してください。

@@ -1,11 +1,11 @@
 ---
-title: "Azure App Service のアプリケーション コードにアップロードされた SSL 証明書を使用する | Microsoft Docs"
-description: 
+title: Azure App Service のアプリケーション コードにアップロードされた SSL 証明書を使用する | Microsoft Docs
+description: ''
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: cephalin
-ms.openlocfilehash: 6800bf766deb2044d400f92dbe370fa15bdd5f00
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 87c9cd5955dda1a379733e5ad48d58f8361f0e6b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051478"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Azure App Service のアプリケーション コードに SSL 証明書を使用する
 
 このガイドでは、Azure App Service のアプリケーション コードにアップロード、またはインポートされた SSL 証明書を使用する方法について説明します。 ユース ケースの例では、証明書の認証を必要とするアプリが外部サービスにアクセスします。 
 
-コードで SSL 証明書を使用するこの方法では App Service の SSL 機能を使用するため、アプリは **Basic** 層以上にある必要があります。 もう 1 つの方法は、アプリケーション ディレクトリに証明書ファイルを含め、直接読み込むことです (「[代替方法: ファイルとして証明書を読み込む](#file)」を参照してください)。 ただし、この代替方法では、アプリケーション コードや開発者から、証明書の秘密キーを隠すことはできません。 さらに、アプリケーション コードがオープン ソース リポジトリ内にある場合は、リポジトリ内に秘密キーで証明書を保管することはできません。
+コードで SSL 証明書を使用するこの方法では App Service の SSL 機能を使用するため、アプリは **Basic** レベル以上にある必要があります。 もう 1 つの方法は、アプリケーション ディレクトリに証明書ファイルを含め、直接読み込むことです (「[代替方法: ファイルとして証明書を読み込む](#file)」を参照してください)。 ただし、この代替方法では、アプリケーション コードや開発者から、証明書の秘密キーを隠すことはできません。 さらに、アプリケーション コードがオープン ソース リポジトリ内にある場合は、リポジトリ内に秘密キーで証明書を保管することはできません。
 
 App Service の SSL 証明書の管理機能を使用すれば、証明書とアプリケーション コードを分離して管理し、機密データを保護できます。
 
@@ -50,7 +51,7 @@ App Service にアップロードまたはインポートされた証明書を�
 
 左側のナビゲーションで **[アプリケーション設定]** をクリックします。
 
-`WEBSITE_LOAD_CERTIFICATES` という名前を付けてアプリケーション設定を追加し、その値に証明書のサムプリントを設定します。 複数の証明書にアクセスできるようにするには、サムプリントの値をコンマで区切ります。 すべての証明書にアクセスできるようにするには、値を `*` に設定します。 
+`WEBSITE_LOAD_CERTIFICATES` という名前を付けてアプリケーション設定を追加し、その値に証明書のサムプリントを設定します。 複数の証明書にアクセスできるようにするには、サムプリントの値をコンマで区切ります。 すべての証明書にアクセスできるようにするには、値を `*` に設定します。 これにより、証明書を`CurrentUser\My`ストア内に配置していることにご留意ください。
 
 ![アプリケーション設定の構成](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
 

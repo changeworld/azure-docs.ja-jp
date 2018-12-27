@@ -1,33 +1,28 @@
 ---
-title: "Power BI ワークスペース コレクションでの認証と承認 | Microsoft Docs"
-description: "Power BI ワークスペース コレクションでの認証と承認について説明します。"
+title: Power BI ワークスペース コレクションでの認証と承認 | Microsoft Docs
+description: Power BI ワークスペース コレクションでの認証と承認について説明します。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+author: markingmyname
 ROBOTS: NOINDEX
 ms.assetid: 1c1369ea-7dfd-4b6e-978b-8f78908fd6f6
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: ae9627c6bb5e7bb099598acaa2eb29375c35593e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: a51664144d0dba8eeb82999b212beaf79b4503b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236932"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの認証と承認
 
 Power BI ワークスペース コレクション サービスでは、明示的なエンドユーザー認証ではなく、**キー**と**アプリケーション トークン**を使用して認証と承認を行います。 このモデルでは、アプリケーションがエンド ユーザーの認証と承認を管理します。 アプリケーションは、必要に応じてアプリケーション トークンを作成して送信し、要求されたレポートをレンダリングするようサービスに伝えます。 この設計では、アプリケーションでユーザーの認証と承認に Azure Active Directory を使用する必要はありません (ただし、Azure Active Directory を使用することもできます)。
 
 > [!IMPORTANT]
-> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、「[How to migrate Power BI Workspace Collection content to Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)」(Power BI Embedded に Power BI ワークスペース コレクション コンテンツを移行する方法) を参照してください。
+> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、[Power BI ワークスペース コレクション コンテンツを Power BI Embedded に移行する方法](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)に関するページを参照してください。
 
 ## <a name="two-ways-to-authenticate"></a>2 つの認証方法
 
@@ -43,10 +38,10 @@ REST 呼び出しでキーを使用するには、次の Authorization ヘッダ
 
 アプリケーション トークンには、次の要求を含めることができます。
 
-| 要求 | Description |
+| 要求 | 説明 |    
 | --- | --- |
 | **ver** |アプリケーション トークンのバージョン。 0.2.0 が現行バージョンです。 |
-| **aud** |トークンの対象となる受信者。 Power BI ワークスペース コレクションの場合は "https://analysis.windows.net/powerbi/api" を使用します。 |
+| **aud** |トークンの対象となる受信者。 Power BI ワークスペース コレクションの場合は *https:\//analysis.windows.net/powerbi/api* を使用します。 |
 | **iss** |トークンを発行したアプリケーションを示す文字列。 |
 | **type** |作成されるアプリケーション トークンの種類。 現在サポートされている種類は **embed**だけです。 |
 | **wcn** |トークンの発行対象であるワークスペース コレクション名。 |
@@ -99,7 +94,7 @@ SDK には、アプリケーション トークンの作成を容易にするメ
 
 Power BI ワークスペース コレクションで使用可能なスコープを次に示します。
 
-|Scope|Description|
+|Scope (スコープ)|説明|
 |---|---|
 |Dataset.Read|指定されたデータセットに対する読み取りアクセス許可を提供します。|
 |Dataset.Write|指定したデータセットに対する書き込みアクセス許可を提供します。|
@@ -147,7 +142,7 @@ Body
 
 ### <a name="operations-and-scopes"></a>操作とスコープ
 
-|操作|ターゲット リソース|トークン アクセス許可|
+|Operation|ターゲット リソース|トークン アクセス許可|
 |---|---|---|
 |データセットに基づいて新しいレポートを (メモリ内で) 作成する。|Dataset|Dataset.Read|
 |データセットに基づいて新しいレポートを (メモリ内で) 作成し、レポートを保存する。|Dataset|* Dataset.Read<br>* Workspace.Report.Create|
@@ -175,7 +170,7 @@ Body
    
    ![アプリケーション トークンのフロー - サービスがユーザーにレポートを送信する](media/get-started-sample/token-6.png)
 
-**Power BI ワークスペース コレクション**がユーザーにレポートを送信したら、ユーザーはカスタム アプリケーションでレポートを表示できます。 たとえば、[Analyzing Sales Data PBIX サンプル](http://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix)をインポートした場合、サンプル Web アプリが次のように表示されます。
+**Power BI ワークスペース コレクション**がユーザーにレポートを送信したら、ユーザーはカスタム アプリケーションでレポートを表示できます。 たとえば、[Analyzing Sales Data PBIX サンプル](https://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix)をインポートした場合、サンプル Web アプリが次のように表示されます。
 
 ![アプリケーションに埋め込まれたレポートのサンプル](media/get-started-sample/sample-web-app.png)
 

@@ -1,26 +1,19 @@
 ---
-title: Azure Cosmos DB で SQL を使用してクエリを実行する方法 | Microsoft Docs
+title: Azure Cosmos DB で SQL を使用してクエリを実行する方法
 description: Azure Cosmos DB で SQL を使用してクエリを実行する方法について説明します
 services: cosmos-db
-documentationcenter: ''
 author: rafats
-manager: jhubbard
-editor: ''
-tags: ''
-ms.assetid: ''
+ms.author: rafats
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: ''
 ms.date: 05/10/2017
-ms.author: rafats
-ms.openlocfilehash: 4266e4ec9e991add7099bc811f9da9f8b69a7993
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7f8c3f6d11ba7551cb0d0c9398b46bb001b9b75b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832634"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>チュートリアル: SQL API を使って Azure Cosmos DB を照会する
 
@@ -68,11 +61,11 @@ Azure Cosmos DB [SQL API](documentdb-introduction.md) では SQL を使用した
 クエリを実行するには、Azure Portal のデータ エクスプローラーを使用するか、[REST API および SDK](sql-api-sdk-dotnet.md) で行います。既存のサンプル データ セットに対してクエリを実行する [Query Playground](https://www.documentdb.com/sql/demo) を使用することもできます。
 
 SQL クエリについて詳しくは、次を参照してください。
-* [SQL クエリと SQL 構文](sql-api-sql-query.md)
+* [SQL クエリと SQL 構文](how-to-sql-query.md)
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Azure Cosmos DB アカウントとコレクションがあると仮定しています。 どちらもない場合には、 [5 分でできるクイックスタート](create-mongodb-nodejs.md)か[開発者向けチュートリアル](tutorial-develop-mongodb.md)を実行して、アカウントとコレクションを作成します。
+このチュートリアルでは、Azure Cosmos DB アカウントとコレクションがあると仮定しています。 どちらもない場合には、 [5 分でできるクイックスタート](create-mongodb-nodejs.md)を完了してください。
 
 ## <a name="example-query-1"></a>サンプル クエリ 1
 
@@ -125,14 +118,10 @@ SQL クエリについて詳しくは、次を参照してください。
     FROM Families f 
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
-    ORDER BY f.children.grade ASC
 
 **結果**
 
-    [
-      { "givenName": "Jesse" }, 
-      { "givenName": "Lisa"}
-    ]
+[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
 
 
 ## <a name="next-steps"></a>次の手順

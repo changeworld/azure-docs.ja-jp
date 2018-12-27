@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management の API テンプレート | Microsoft Docs"
-description: "Azure API Management で開発者ポータルの API ページの内容をカスタマイズする方法について説明します。"
+title: Azure API Management の API テンプレート | Microsoft Docs
+description: Azure API Management で開発者ポータルの API ページの内容をカスタマイズする方法について説明します。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 3642fd09-ba98-4358-93a6-c48ab0500431
 ms.service: api-management
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 2317047165f49de8c42c41dc864f0752df4af068
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: ba56804431048005914a79c4cd957a8365de067a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970894"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
+
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
   
 このセクションのテンプレートを使用して、開発者ポータルの API ページの内容をカスタマイズできます。  
@@ -38,7 +40,9 @@ Azure API Management には、開発者ポータルの各ページの内容を�
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)」を参照してください。  
+>  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="APIList"></a> API リスト  
  **API リスト** テンプレートを使用すると、開発者ポータルで API リスト ページの本文をカスタマイズすることができます。  
@@ -84,7 +88,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|型|説明|  
+|プロパティ|type|説明|  
 |--------------|----------|-----------------|  
 |apis|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティのコレクション。|現在のユーザーに表示される API。|  
   
@@ -339,7 +343,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|型|説明|  
+|プロパティ|type|説明|  
 |--------------|----------|-----------------|  
 |apiId|string|現在の API の ID。|  
 |apiName|string|API の名前。|  
@@ -997,7 +1001,7 @@ public class JavaSample
 <html>  
 <head>  
     <title>JSSample</title>  
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>  
 </head>  
 <body>  
   
@@ -1195,7 +1199,7 @@ int main(int argc, const char * argv[])
   
 ```xml  
 <?php  
-// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// This sample uses the HTTP_Request2 PHP library (https://github.com/pear/HTTP_Request2)  
 require_once 'HTTP/Request2.php';  
   
 $request = new Http_Request2('{{scheme}}://{{host}}{{path}}');  
@@ -1467,5 +1471,5 @@ puts response.body
 }  
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

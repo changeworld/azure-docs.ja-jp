@@ -1,18 +1,19 @@
 ---
-title: "チュートリアル: Azure Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Docs"
-description: "Azure Key Vault で Microsoft Azure Storage のクライアント側暗号化を使用して BLOB を暗号化および復号化する方法を説明します。"
+title: 'チュートリアル: Azure Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Docs'
+description: Azure Key Vault で Microsoft Azure Storage のクライアント側暗号化を使用して BLOB を暗号化および復号化する方法を説明します。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: adhurwit
-ms.openlocfilehash: 405ccb44c9daf8d555946e6c68ef318ed2b82505
-ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
+ms.author: tamram
+ms.component: blobs
+ms.openlocfilehash: 092ffa5ed34a8e0a05b69c3fae86ab7299760ac2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233101"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
 ## <a name="introduction"></a>はじめに
@@ -60,9 +61,7 @@ Visual Studio で、新しいコンソール アプリケーションを作成�
 
 ```
 Install-Package WindowsAzure.Storage
-
-// This is the latest stable release for ADAL.
-Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
+Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
 Install-Package Microsoft.Azure.KeyVault
 Install-Package Microsoft.Azure.KeyVault.Extensions
@@ -226,4 +225,4 @@ C# での Microsoft Azure Storage の使用について詳しくは、「[.NET �
 
 BLOB REST API について詳しくは、「[BLOB サービス REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)」をご覧ください。
 
-Microsoft Azure Storage の最新情報については、[Microsoft Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)をご覧ください。
+Microsoft Azure Storage の最新情報については、[Microsoft Azure Storage チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)をご覧ください。

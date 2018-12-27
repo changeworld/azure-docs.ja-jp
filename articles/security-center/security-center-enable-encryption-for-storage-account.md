@@ -3,22 +3,23 @@ title: Azure Security Center でストレージ アカウントの暗号化を�
 description: このドキュメントでは、「**Enable encryption for Azure Storage Account**」 (Azure Storage アカウント暗号化の有効化) という Azure Security Center の推奨事項を実装する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2016
-ms.author: terrylan
-ms.openlocfilehash: 82bb201c0b518d0b45e06a1eb25d54f60cb3e028
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 727e0cc7f0dac18a6ac9e97b3c6edae3ba8f62d6
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338024"
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>Azure Security Center での Azure Storage アカウント暗号化の有効化
 Azure Security Center は、Azure Storage Service Encryption for Data at Rest の有効化を勧める場合があります。
@@ -43,7 +44,7 @@ Storage Service Encryption は Resource Manager ストレージ アカウント�
    ![Enable encryption for storage account][1]
 2. **[Enable storage encryption (ストレージ暗号化の有効化)]** ブレードが開きます。 このブレードには、ストレージの暗号化が無効になっている Azure Storage アカウントが一覧表示されます。 この例では、**storageacct1** を選択します。
    ![Enable storage encryption][2]
-3. **storageacct1**の**[暗号化]** ブレードが開きます。 **[Enabled]**を選択します。
+3. **storageacct1**の **[暗号化]** ブレードが開きます。 **[Enabled]** を選択します。
    ![Encryption blade][3]
 4. **[保存]** を選択します。
 
@@ -57,12 +58,12 @@ Storage Service Encryption は Resource Manager ストレージ アカウント�
 
 セキュリティ センターの詳細については、次を参照してください。
 
-* 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」 - Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+* 「[Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md)」 - Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 - Azure リソースの正常性を監視する方法について説明しています。
 * 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 - セキュリティの警告の管理と対応の方法について説明しています。
 * 「[Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 - 推奨事項に従って Azure リソースを保護する方法について説明しています。
 * 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 - このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) - Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) - Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
 [1]: ./media/security-center-enable-encryption-for-storage-account/enable-encryption-for-storage-account.png

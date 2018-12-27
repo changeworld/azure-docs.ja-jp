@@ -4,7 +4,6 @@ description: Azure Cloud Services のゲスト OS の最新のリリース情報
 services: cloud-services
 documentationcenter: na
 author: raiye
-manager: timlt
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
@@ -12,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/19/2018
+ms.date: 11/08/2018
 ms.author: raiye
-ms.openlocfilehash: 0456bf8d8cdd84078d12c3fc0f48d16b0370cddd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 35888b205822e5d7c9576c9855610bad814901b6
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346169"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 「[Azure ゲスト OS の更新設定][Azure Guest OS Update Settings]」に説明されているゲスト OS の *自動更新*を使用するようにロールを構成している場合は、このページを読むことは必須ではありません。
@@ -35,154 +35,100 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 >
 
 > [!IMPORTANT]
-> 11 月のロールアウトから、Azure Portal ではゲスト OS の最新の 2 バージョンのみがサポートされて、使用できるようになります。
+> Azure portal ではゲスト OS の最新の 2 バージョンのみがサポートされて、使用できるようになります。
 >
 >
 
-ゲスト OS が不明か、ゲスト OS リリースのしくみが不明な場合は、 [こちら](#how-it-works)のセクションをお読みください。
+ゲスト OS の更新方法については、 [こちらを][ cloud updates]確認してください。
 
 ## <a name="news-updates"></a>最新情報
-###### <a name="march-19-2018"></a>**2018 年 3 月 19 日**
-2 月のゲスト OS がリリースされました。
 
-###### <a name="january-29-2018"></a>**2018 年 1 月 29 日**
-OS ファミリ 2 (WA-GUEST-OS-2.70_201801-01) と 3 (WA-GUEST-OS-3.57_201801-01) 向けの 1 月のゲスト OS がリリースされました。
-
-###### <a name="january-4-2018"></a>**2018 年 1 月 4 日**
-OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01) 向けの 1 月のゲスト OS がリリースされました。これには重要なセキュリティ パッチが含まれています。  
-
-###### <a name="january-4-2018"></a>**2018 年 1 月 4 日**
-12 月のゲスト OS がリリースされました。
-
-###### <a name="december-14-2017"></a>**2017 年 12 月 14 日**
-11 月のゲスト OS がリリースされました。
-
-###### <a name="november-8-2017"></a>**2017 年 11 月 8 日**
+###### <a name="november-8-2018"></a>**2018 年 11 月 8 日**
 10 月のゲスト OS がリリースされました。
 
-###### <a name="october-6-2017"></a>**2017 年 10 月 6 日**
-9 月のゲスト OS がリリースされました。 Windows Server 2016 の 9 月のリリースでは、netfx3 が既定で有効になります。 4.x のランタイムで .NET 2.x アプリを実行する必要があるワークフローの場合、または .NET 2.x アプリを実行してエラーを処理してから .NET 4.x アプリを実行した場合は、OnStart に "dism /online /disable-feature /featurename:netfx3" を追加する必要があります。
+###### <a name="october-12-2018"></a>**2018 年 10 月 12 日**
+9 月のゲスト OS がリリースされました。
 
-###### <a name="september-14-2017"></a>**2017 年 9 月 14 日**
-9 月のゲスト OS ロールアウトは 9 月 14 日に開始され、10 月 9 日にリリースされる予定です。
-
-###### <a name="august-24-2017"></a>**2017 年 8 月 24 日**
+###### <a name="september-12-2018"></a>**2018 年 9 月 12 日**
 8 月のゲスト OS がリリースされました。
 
-###### <a name="august-3-2017"></a>**2017 年 8 月 3 日**
+###### <a name="august-3-2018"></a>**2018 年 8 月 3 日**
 7 月のゲスト OS がリリースされました。
 
-###### <a name="july-19-2017"></a>**2017 年 7 月 19 日**
-7 月のゲスト OS ロールアウトは、7 月 19 日に開始し、8 月 8 日にリリースされる予定です。
+###### <a name="july-3-2018"></a>**2018 年 7 月 3 日**
+6 月のゲスト OS がリリースされました。
+
+###### <a name="june-1-2018"></a>**2018 年 6 月 1 日**
+5 月のゲスト OS がリリースされました。
+
+###### <a name="may-4-2018"></a>**2018 年 5 月 4 日**
+4 月のゲスト OS がリリースされました。
 
 
 ## <a name="releases"></a>リリース
 ## <a name="family-5-releases"></a>ファミリ 5 のリリース
 **Windows Server 2016**
 
-インストールされている .NET framework: 4.0、4.5、4.5.1、4.5.2、4.6、4.6.1、4.6.2
+インストールされている .NET Framework: 3.5、4.6.2
 
 > [!NOTE]
-> * の付いた日付は変更されることがあります。
->
 > OS ファミリ 5 用の RDP パスワードは、10 文字以上にする必要があります。
 >
 
-| 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-5.16_201802-01 |2018 年 3 月 12 日 |Post 5.18 |TBD |
-| WA-GUEST-OS-5.15_201801-01 |2018 年 1 月 4 日 |Post 5.17 |TBD |
-|~~WA-GUEST-OS-5.14_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 12 日 |TBD |
-|~~WA-GUEST-OS-5.13_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 4 日|TBD |
-|~~WA-GUEST-OS-5.12_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
-|~~WA-GUEST-OS-5.11_201709-01~~ |2017 年 10 月 6 日 |2017 年 12 月 14 日 |TBD |
-|~~WA-GUEST-OS-5.10_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |
-|~~WA-GUEST-OS-5.9_201707-01~~ |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
-|~~WA-GUEST-OS-5.8_201706-01~~ |2017 年 7 月 7 日 |2017 年 10 月 6 日 |TBD |
-|~~WA-GUEST-OS-5.7_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
-|~~WA-GUEST-OS-5.6_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
-|~~WA-GUEST-OS-5.5_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
-|~~WA-GUEST-OS-5.4_201612-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5 日|TBD |
+| 構成文字列 | リリース日 | 無効になる日 |
+| --- | --- | --- |
+| WA-GUEST-OS-5.24_201810-01 |2018 年 11 月 8 日 |5.26 のリリース後 |
+| WA-GUEST-OS-5.23_201809-01 |2018 年 10 月 12 日 |5.25 のリリース後 |
+|~~WA-GUEST-OS-5.22_201808-01~~ |2018 年 9 月 12 日 |2018 年 11 月 8 日 |
+|~~WA-GUEST-OS-5.21_201807-02~~ |2018 年 8 月 3 日 |2018 年 10 月 12 日 |
+|~~WA-GUEST-OS-5.20_201806-01~~ |2018 年 7 月 3 日 |2018 年 9 月 12 日 |
+|~~WA-GUEST-OS-5.19_201805-01~~ |2018 年 6 月 1 日 |2018 年 8 月 3 日 |
+|~~WA-GUEST-OS-5.18_201804-01~~ |2018 年 5 月 4 日 |2018 年 7 月 3 日 |
 
 ## <a name="family-4-releases"></a>ファミリ 4 のリリース
 **Windows Server 2012 R2**
 
-インストールされている .NET framework: 4.0、4.5、4.5.1、4.5.2
+インストールされている .NET Framework: 3.5、4.5.1
 
-> [!NOTE]
-> * の付いた日付は変更されることがあります
->
->
-
-| 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-4.51_201802-01 |2018 年 3 月 12 日 |Post 4.53 |TBD |
-| WA-GUEST-OS-4.50_201801-01 |2018 年 1 月 4 日 |Post 4.52 |TBD |
-|~~WA-GUEST-OS-4.49_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 12 日 |TBD |
-|~~WA-GUEST-OS-4.48_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 4 日 |TBD |
-|~~WA-GUEST-OS-4.47_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
-|~~WA-GUEST-OS-4.46_201709-01~~ |2017 年 10 月 6 日 |2017 年 12 月 14 日 |TBD |
-|~~WA-GUEST-OS-4.45_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |
-|~~WA-GUEST-OS-4.44_201707-01~~ |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
-|~~WA-GUEST-OS-4.43_201706-01~~ |2017 年 7 月 7 日 |2017 年 10 月 6 日 |TBD |
-|~~WA-GUEST-OS-4.42_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
-|~~WA-GUEST-OS-4.41_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
-|~~WA-GUEST-OS-4.40_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
-|~~WA-GUEST-OS-4.39_201612-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5 日 |TBD |
+| 構成文字列 | リリース日 | 無効になる日 |
+| --- | --- | --- |
+| WA-GUEST-OS-4.59_201810-01 |2018 年 11 月 8 日 |4.61 のリリース後 |
+| WA-GUEST-OS-4.58_201809-01 |2018 年 10 月 12 日 |4.60 のリリース後 |
+|~~WA-GUEST-OS-4.57_201808-01~~ |2018 年 9 月 12 日 |2018 年 11 月 8 日 |
+|~~WA-GUEST-OS-4.56_201807-02~~ |2018 年 8 月 3 日 |2018 年 10 月 12 日 |
+|~~WA-GUEST-OS-4.55_201806-01~~ |2018 年 7 月 3 日 |2018 年 9 月 12 日 |
+|~~WA-GUEST-OS-4.54_201805-01~~ |2018 年 6 月 1 日 |2018 年 8 月 3 日 |
+|~~WA-GUEST-OS-4.53_201804-01~~ |2018 年 5 月 4 日 |2018 年 7 月 3 日 |
 
 ## <a name="family-3-releases"></a>ファミリ 3 のリリース
 **Windows Server 2012**
 
-インストールされている .NET framework: 4.0、4.5、4.5.1、4.5.2
+インストールされている .NET Framework: 3.5、4.5
 
-> [!NOTE]
-> * の付いた日付は変更されることがあります
->
->
-
-| 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-3.58_201802-01 |2018 年 3 月 19 日 |Post 3.60 |TBD |
-| WA-GUEST-OS-3.57_201801-01 |2018 年 1 月 29 日 |Post 3.59 |TBD |
-|~~WA-GUEST-OS-3.56_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 19 日 |TBD |
-|~~WA-GUEST-OS-3.55_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 29 日 |TBD |
-|~~WA-GUEST-OS-3.54_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
-|~~WA-GUEST-OS-3.53_201709-01~~ |2017 年 10 月 6 日 |2017 年 12 月 14 日 |TBD |
-|~~WA-GUEST-OS-3.52_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |
-|~~WA-GUEST-OS-3.51_201707-01~~ |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
-|~~WA-GUEST-OS-3.50_201706-01~~ |2017 年 7 月 7 日 |2017 年 10 月 6 日 |TBD |
-|~~WA-GUEST-OS-3.49_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
-|~~WA-GUEST-OS-3.48_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
-|~~WA-GUEST-OS-3.47_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
-|~~WA-GUEST-OS-3.46_201612-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5 日 |TBD |
+| 構成文字列 | リリース日 | 無効になる日 |
+| --- | --- | --- |
+| WA-GUEST-OS-3.66_201810-01 |2018 年 11 月 8 日 |3.68 のリリース後 |
+| WA-GUEST-OS-3.65_201809-01 |2018 年 10 月 12 日 |3.67 のリリース後 |
+|~~WA-GUEST-OS-3.64_201808-01~~ |2018 年 9 月 12 日 |2018 年 11 月 8 日 |
+|~~WA-GUEST-OS-3.63_201807-02~~ |2018 年 8 月 3 日 |2018 年 10 月 12 日 |
+|~~WA-GUEST-OS-3.62_201806-01~~ |2018 年 7 月 3 日 |2018 年 9 月 12 日 |
+|~~WA-GUEST-OS-3.61_201805-01~~ |2018 年 6 月 1 日 |2018 年 8 月 3 日 |
+|~~WA-GUEST-OS-3.60_201804-01~~ |2018 年 5 月 4 日 |2018 年 7 月 3 日 |
 
 ## <a name="family-2-releases"></a>ファミリ 2 のリリース
 **Windows Server 2008 R2 SP1**
 
-インストールされている .NET framework: 3.5、4.0、4.5、4.5.1、4.5.2
+インストールされている .NET Framework: 3.5 (2.0 と 3.0 を含みます)
 
-> [!NOTE]
-> * の付いた日付は変更されることがあります
->
->
-
-| 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-2.71_201802-01 |2018 年 3 月 12 日 |Post 2.73 |TBD |
-| WA-GUEST-OS-2.70_201801-01 |2018 年 1 月 29 日 |Post 2.72 |TBD |
-|~~WA-GUEST-OS-2.69_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 12 日 |TBD |
-|~~WA-GUEST-OS-2.68_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 29 日 |TBD |
-|~~WA-GUEST-OS-2.67_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
-|~~WA-GUEST-OS-2.66_201709-01~~ |2017 年 10 月 6 日 |2017 年 12 月 14 日 |TBD |
-|~~WA-GUEST-OS-2.65_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |
-|~~WA-GUEST-OS-2.64_201707-01~~ |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
-|~~WA-GUEST-OS-2.63_201706-01~~ |2017 年 7 月 7 日 |2017 年 10 月 6 日 |TBD |
-|~~WA-GUEST-OS-2.62_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
-|~~WA-GUEST-OS-2.61_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
-|~~WA-GUEST-OS-2.60_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
-|~~WA-GUEST-OS-2.59_201701-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5 日 |TBD |
-|~~WA-GUEST-OS-2.58_201612-01~~ |2017 年 1 月 10 日 |2017 年 5 月 9 日|TBD |
-
+| 構成文字列 | リリース日 | 無効になる日 |
+| --- | --- | --- |
+| WA-GUEST-OS-2.79_201810-01 |2018 年 11 月 8 日 |2.81 のリリース後 |
+| WA-GUEST-OS-2.78_201809-01 |2018 年 10 月 12 日 |2.80 のリリース後 |
+|~~WA-GUEST-OS-2.77_201808-01~~ |2018 年 9 月 12 日 |2018 年 11 月 8 日 |
+|~~WA-GUEST-OS-2.76_201807-02~~ |2018 年 8 月 3 日 |2018 年 10 月 12 日 |
+|~~WA-GUEST-OS-2.75_201806-01~~ |2018 年 7 月 3 日 |2018 年 9 月 12 日 |
+|~~WA-GUEST-OS-2.74_201805-01~~ |2018 年 6 月 1 日 |2018 年 8 月 3 日|
+|~~WA-GUEST-OS-2.73_201804-01~~ |2018 年 5 月 4 日 |2018 年 7 月 3 日 |
 
 ## <a name="msrc-patch-updates"></a>MSRC 修正プログラム
 毎月のゲスト OS リリースに含まれる修正プログラムの一覧は、[こちら][patches]で入手できます。
@@ -209,13 +155,13 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 ゲスト OS ファミリは Microsoft Windows Server のリリース バージョンに基づいています。 ゲスト OS は、Azure Cloud Services が実行される、基になるオペレーティング システムです。 各ゲスト OS には、ファミリ、バージョン、リリース番号があります。
 
 * **Guest OS family**  
-  ゲスト OS の基盤となる Windows Server オペレーティング システムのリリース。 たとえば、" *ファミリ 3* " は Windows Server 2012 を基にしています。
+   ゲスト OS の基盤となる Windows Server オペレーティング システムのリリース。 たとえば、" *ファミリ 3* " は Windows Server 2012 を基にしています。
 * **ゲスト OS バージョン**  
   ゲスト OS ファミリ イメージと、関連する [Microsoft セキュリティ レスポンス センター (MSRC)][msrc] 修正プログラム (新しいゲスト OS バージョンが作成された時点で利用可能になる) の組み合わせに固有のバージョン。 すべての修正プログラムが含まれているわけではありません。
 
     番号は 0 から始まり、新しい更新プログラムのセットが追加されるたびに 1 ずつ増えます。 末尾のゼロが表示されるのは、重要な場合のみです。 つまり、バージョン 2.10 は、バージョン 2.1 よりかなり後の異なるバージョンです。
 * **ゲスト OS リリース**  
-  ゲスト OS バージョンの再リリース。 再リリースは、変更を必要とする問題がテスト中に見つかった場合に行われます。 最新のリリースは、公開されているかどうかに関係なく、常に以前のリリースよりも優先されます。 Azure Portal では、ユーザーは特定のバージョンの最新のリリースのみを取得できます。 前のリリースで実行中のデプロイは、通常、バグの重大度に応じてアップグレードが強制されることはありません。
+   ゲスト OS バージョンの再リリース。 再リリースは、変更を必要とする問題がテスト中に見つかった場合に行われます。 最新のリリースは、公開されているかどうかに関係なく、常に以前のリリースよりも優先されます。 Azure Portal では、ユーザーは特定のバージョンの最新のリリースのみを取得できます。 前のリリースで実行中のデプロイは、通常、バグの重大度に応じてアップグレードが強制されることはありません。
 
 次の例では、2 がファミリ、12 がバージョン、"rel2" がリリースです。
 
@@ -226,7 +172,7 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 ゲスト OS の構成文字列には、組み込まれているのと同じ情報に加えて、そのリリースで考慮された MSRC 修正プログラムを示す日付が含まれます。 この例では、2012 年 8 月までに Windows Server 2008 R2 用に作成された MSRC 修正プログラムが含まれることが想定されます。 そのバージョンの Windows Server に特に適用される修正プログラムのみが含まれます。 たとえば、Microsoft Office に適用される MSRC 修正プログラムは、製品が Windows Server 基本イメージに属さないため、ここに含まれません。
 
 ## <a name="guest-os-system-update-process"></a>ゲスト OS システムの更新プロセス
-このページには、今後予定されているゲスト OS のリリースに関する情報が含まれます。 "自動" 更新に設定している場合はクラウド サービスのロールが再起動されるため、リリースのタイミングを把握する必要があるとお客様から指摘を受けています。 ゲスト OS のリリースは、通常、毎月第 2 火曜日に発生する MSRC 更新プログラムのリリースから少なくとも 5 日以内に発生します。 新しいリリースには、ゲスト OS ファミリごとに関連するすべての MSRC 修正プログラムが含まれます。
+このページには、今後予定されているゲスト OS のリリースに関する情報が含まれます。 "自動" 更新に設定している場合はクラウド サービスのロールが再起動されるため、リリースのタイミングを把握する必要があるとお客様から指摘を受けています。 ゲスト OS のリリースは、通常、毎月第 2 火曜日に発生する MSRC 更新プログラムのリリースから 2 - 3 週間後に発生します。 新しいリリースには、ゲスト OS ファミリごとに関連するすべての MSRC 修正プログラムが含まれます。
 
 Microsoft Azure では、常に更新プログラムがリリースされています。 ゲスト OS は、パイプラインにおいて唯一のこのような更新です。 リリースは、ここに記載できないほどの多く要因の影響を受ける可能性があります。 さらに、Azure は、実際には数十万台のコンピューターで実行されています。 つまり、ロールが再起動される正確な日時を指定することはできません。 Microsoft では、再起動を制限したり時間を決めたりする計画に取り組んでいます。
 
@@ -239,8 +185,9 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 ## <a name="guest-os-supportability-and-retirement-policy"></a>ゲスト OS のサポートと提供終了のポリシー
 ゲスト OS のサポートと提供終了のポリシーについては、[こちら][retirepolicy]で説明しています。
 
+[cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service
 [ゲスト OS 更新 RSS フィード]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
 [Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
@@ -251,11 +198,11 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 [server and gos]: https://msdn.microsoft.com/library/dn775043.aspx
 [azuresupport]: http://azure.microsoft.com/support/options/
 [net install pkg]: http://www.microsoft.com/download/details.aspx?id=42643
-[msrc]: http://www.microsoft.com/security/msrc/default.aspx
+[msrc]: https://technet.microsoft.com/security/dn440717.aspx
 [update guest os portal]: https://msdn.microsoft.com/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/library/gg456324.aspx
 [restarts]: http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-[fix]: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+[fix]: https://technet.microsoft.com/library/security/ms17-010.aspx

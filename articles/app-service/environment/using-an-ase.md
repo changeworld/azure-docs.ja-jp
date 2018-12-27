@@ -1,6 +1,6 @@
 ---
-title: "Azure App Service Environment の使用"
-description: "Azure App Service Environment でアプリを作成、発行、スケールする方法"
+title: Azure App Service Environment の使用
+description: Azure App Service Environment でアプリを作成、発行、スケールする方法
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 64e1652ac4067a3f1639bf81cfcd0f79637ade9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 80abe29c80898b691aa6e5e47bf068a9e69e50e4
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303372"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Environment の使用 #
 
@@ -50,29 +51,38 @@ ASE で Web アプリを作成するには、次の手順に従います。
 
 1. **[リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** を選択します。
 
-2. Web アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
+1. Web アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
 
     ![Web アプリ名の選択][1]
 
-3. サブスクリプションを選択します。
+1. サブスクリプションを選択します。
 
-4. 新しいリソース グループの名前を指定するか、**[既存のものを使用]** を選択して、ボックスの一覧からいずれかを選択します。
+1. 新しいリソース グループの名前を指定するか、**[既存のものを使用]** を選択して、ボックスの一覧からいずれかを選択します。
 
-5. ASE で既存の App Service プランを選択するか、次の手順で新しく作成します。
+1. OS を選択します。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[新規作成]** を選択します。
+    * ASE での Linux アプリのホストは新しいプレビュー機能です。そのため、実稼働ワークロードが現在実行されている ASE に Linux アプリを追加しないようお勧めします。 
+    * ASE に Linux アプリを追加することは、ASE もプレビュー モードになることを意味します。 
+
+1. ASE で既存の App Service プランを選択するか、次の手順で新しく作成します。
+
+    a. **[新規作成]** を選択します。
 
     b. App Service プランの名前を入力します。
 
-    c. **[場所]** ボックスの一覧から該当する ASE を選択します。
+    c. **[場所]** ボックスの一覧から該当する ASE を選択します。 ASE での Linux アプリのホスティングが有効なのは、現時点で、**米国西部、米国東部、西ヨーロッパ、北ヨーロッパ、オーストラリア東部、東南アジア**の 6 つのリージョンのみです。 
 
-    d. **[分離]** 価格レベルを選択します。 **[選択]**を選択します。
+    d. **[分離]** 価格レベルを選択します。 **[選択]** を選択します。
 
-    e. **[OK]**を選択します。
+    e. **[OK]** を選択します。
     
     ![[分離] 価格レベル][2]
 
-6. **[作成]**を選択します。
+    > [!NOTE]
+    > Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
+    >
+
+1. **作成**を選択します。
 
 ## <a name="how-scale-works"></a>スケールのしくみ ##
 
@@ -126,7 +136,7 @@ ILB ASE では、デプロイ時にドメインを決定します。 ILB ASE の
 
 発行方法に大きな違いがあるのは ILB ASE です。 ILB ASE では、発行エンドポイントは ILB を介してしか利用できません。 ILB は、仮想ネットワークの ASE サブネット内のプライベート IP 上に存在します。 ILB へのネットワーク アクセスができなければ、その ASE にアプリを発行することができません。 [ILB ASE の作成と使用][MakeILBASE]に関するページで述べられているように、システム内にアプリ用の DNS を構成する必要があります。 SCM のエンドポイントも対象となります。 これらが適切に定義されてないと発行できません。 ご利用の IDE から直接発行するためには、ILB へのネットワーク アクセスが IDE にも必要です。
 
-インターネットベースの CI システム (GitHub、Visual Studio Team Services など) は ILB ASE では動作しません。発行エンドポイントにインターネットでアクセスすることができないためです。 プル モデルを使用した CI システム (Dropbox など) で代用する必要があります。
+インターネットベースの CI システム (GitHub、Azure DevOps など) は ILB ASE では動作しません。発行エンドポイントにインターネットでアクセスすることができないためです。 プル モデルを使用した CI システム (Dropbox など) で代用する必要があります。
 
 ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 これはアプリの発行プロファイルのほか、アプリのポータル ブレード (**[概要]** > **[要点]**、**[プロパティ]** など) で確認することができます。 
 
@@ -150,7 +160,7 @@ ASE を削除するには、次の手順に従います。
 
 1. **[App Service Environment]** ブレードの上部にある **[削除]** を使用します。 
 
-2. ASE の名前を入力して削除を確定します。 ASE を削除すると、その内部のコンテンツもすべて削除されます。 
+1. ASE の名前を入力して削除を確定します。 ASE を削除すると、その内部のコンテンツもすべて削除されます。 
 
     ![ASE の削除][3]
 
@@ -168,7 +178,7 @@ ASE を削除するには、次の手順に従います。
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml

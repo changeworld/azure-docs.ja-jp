@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 50a5c8d515e27db7c2c65b484cdecad8ff00baf8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165557"
+---
 <!--author=SharS last changed: 9/17/15-->
 
 #### <a name="to-connect-through-the-serial-console"></a>シリアル コンソールを使用して接続するには

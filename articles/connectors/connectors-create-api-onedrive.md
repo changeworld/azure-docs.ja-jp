@@ -1,25 +1,22 @@
 ---
-title: ロジック アプリに OneDrive コネクタを追加する | Microsoft Docs
-description: OneDrive コネクタと REST API パラメーターの概要
-services: logic-apps
-documentationcenter: ''
+title: OneDrive に接続する - Azure Logic Apps | Microsoft Docs
+description: OneDrive REST API と Azure Logic Apps を使用して、ファイルをアップロードおよび管理します
 author: ecfan
-manager: anneta
-editor: ''
-tags: connectors
-ms.assetid: 47a8582a-1b1a-4fc3-beb5-97c60c4306fe
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: jeconnoc
+ms.author: estfan
 ms.date: 10/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 15b88baf21ead5a6b9506c47ca9930d5088b8787
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 50bd9ecdd665cf72c146c63ae25efa6773934a3e
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295382"
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>OneDrive コネクタの使用
 OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。 
@@ -68,7 +65,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 1. プラス記号を選択します。 **[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
    
     ![](./media/connectors-create-api-onedrive/add-action.png)
-2. **[アクションの追加]**を選択します。
+2. **[アクションの追加]** を選択します。
 3. テキスト ボックスに「onedrive」と入力して、使用可能なすべてのアクションの一覧を取得します。
    
     ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 

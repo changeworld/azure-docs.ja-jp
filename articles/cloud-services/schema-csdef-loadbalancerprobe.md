@@ -1,23 +1,24 @@
 ---
-title: "Azure Cloud Services の定義LoadBalancerProbe スキーマ | Microsoft Docs"
-ms.custom: 
+title: Azure Cloud Services の定義LoadBalancerProbe スキーマ | Microsoft Docs
+ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
-caps.latest.revision: "14"
-author: thraka
-ms.author: adegeo
+caps.latest.revision: 14
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 31c974c5a4b9dc9cff882ff42b73ee023fc4ad9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7b0ba3b4797149798037dee0188850eff6baf1d
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003290"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services の定義: LoadBalancerProbe スキーマ
 ロード バランサー プローブは、ロール インスタンスのエンドポイントと UDP エンドポイントに対して利用者が定義する正常性プローブです。 `LoadBalancerProbe` はスタンドアロン要素ではなく、サービス定義ファイルで Web ロールまたは worker ロールと組み合わされます。 1 つの `LoadBalancerProbe` を複数のロールで使用することができます。
@@ -29,7 +30,7 @@ Azure Load Balancer の役割は、受信トラフィックを対象のロール
 
 既定のロード バランサー プローブは、仮想マシン内のゲスト エージェントを利用します。ゲスト エージェントが、プローブをリッスンし、そのインスタンスが準備完了状態である (ビジー、リサイクル中、停止中のいずれの状態でもない) ときにだけ HTTP 200 OK 応答を返します。 ゲスト エージェントが HTTP 200 OK で応答できない場合、Azure Load Balancer はそのインスタンスを応答不能と見なし、インスタンスへのトラフィックの送信を停止します。 その後も Azure Load Balancer はインスタンスに ping を送信し続け、そのゲスト エージェントが HTTP 200 で応答した場合、そのインスタンスへのトラフィックの送信を再開します。 Web ロールを使用する場合、Web サイト コードは通常、Azure ファブリックやゲスト エージェントでは監視されない w3wp.exe で実行されます。つまり、w3wp.exe が失敗 ( HTTP 500 応答など) してもゲスト エージェントにレポートされず、ロード バランサーはそのインスタンスがローテーションから除外されたことを認識しません。
 
-カスタム ロード バランサー プローブは、既定のゲスト エージェント プローブよりも優先されるので、ユーザーは独自のカスタム ロジックを作成してロール インスタンスの正常性を特定することができます。 ロード バランサーは、エンドポイントを定期的にプローブします (既定では 15 秒ごと)。タイムアウト期間内 (既定値は 31 秒) にインスタンスが TCP ACK または HTTP 200 で応答した場合は、ローテーション内にあると見なされます。 これを利用して、ロード バランサーのローテーションからインスタンスを除外するユーザー独自のロジックを実装することができます。たとえば、インスタンスの CPU 使用率が 90% を超えた場合に 200 以外の状態を返すことも可能です。 これは、w3wp.exe を使用する Web ロールについて、Web サイトが自動的に監視されるという意味でもあります。Web サイト コードに障害が発生するとロード バランサー プローブに 200 以外の状態が返されるためです。 一方、.csdef ファイルで LoadBalancerProbe を定義しなかった場合は、前述したロード バランサーの既定の動作が使用されます。
+カスタム ロード バランサー プローブは、既定のゲスト エージェント プローブをオーバーライドするので、ユーザーは独自のカスタム ロジックを作成してロール インスタンスの正常性を特定することができます。 ロード バランサーは、エンドポイントを定期的にプローブします (既定では 15 秒ごと)。タイムアウト期間内 (既定値は 31 秒) にインスタンスが TCP ACK または HTTP 200 で応答した場合は、ローテーション内にあると見なされます。 これを利用して、ロード バランサーのローテーションからインスタンスを除外するユーザー独自のロジックを実装することができます。たとえば、インスタンスの CPU 使用率が 90% を超えた場合に 200 以外の状態を返すことも可能です。 これは、w3wp.exe を使用する Web ロールについて、Web サイトが自動的に監視されるという意味でもあります。Web サイト コードに障害が発生するとロード バランサー プローブに 200 以外の状態が返されるためです。 一方、.csdef ファイルで LoadBalancerProbe を定義しなかった場合は、前述したロード バランサーの既定の動作が使用されます。
 
 カスタム ロード バランサー プローブを使用する場合は、そのロジックで RoleEnvironment.OnStop メソッドを考慮に入れる必要があります。 既定のロード バランサー プローブを使用しているときは、インスタンスをローテーションから外したうえで OnStop が呼び出されますが、カスタム ロード バランサー プローブの場合は、OnStop イベントの発生中でも 200 OK を返し続けることができます。 キャッシュのクリーンアップやサービスの停止など、サービス実行時の動作に影響を与えうる何らかの変更を OnStop イベントで行う場合は、カスタム ロード バランサー プローブのロジックで確実にそのインスタンスをローテーションから除外する必要があります。
 
@@ -58,7 +59,7 @@ Azure Load Balancer の役割は、受信トラフィックを対象のロール
 
 以下の表に、`LoadBalancerProbe` 要素の属性を示します。
 
-|Attribute|型|Description|
+|Attribute|Type|説明|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | 必須。 ロード バランサー プローブの名前です。 名前は一意である必要があります。|
 | `protocol`          | `string` | 必須。 エンド ポイントのプロトコルを指定します。 指定できる値は `http` または `tcp` です。 `tcp` を指定した場合、プローブが成功するためには ACK の受信が必要となります。 `http` を指定した場合、プローブが成功するためには、指定された URI から応答として 200 OK が返される必要があります。|

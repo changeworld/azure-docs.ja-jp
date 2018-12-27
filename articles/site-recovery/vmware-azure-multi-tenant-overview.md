@@ -1,25 +1,24 @@
 ---
-title: Azure Site Recovery を使用した Azure (CSP) への VMware VM レプリケーションに対するマルチテナント サポートの概要 | Microsoft Docs
-description: CSP プログラムを通じたマルチ テナント環境でのテナント サブスクリプションに対する、Azure Site Recovery のサポートの概要について説明します。
-services: site-recovery
-author: mayanknayar
+title: Azure Site Recovery を使用した Azure (CSP) への VMware VM ディザスター リカバリーに対するマルチテナント サポートの概要 | Microsoft Docs
+description: マルチ テナント環境 (CSP) プログラムでの、Azure への VMWare ディザスター リカバリーに対する、Azure Site Recovery のサポートの概要について説明します。
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.date: 03/05/2018
-ms.author: manayar
-ms.openlocfilehash: 9b4fbb34686a12f992b344ac61420c9ba99ee405
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 89e731d6c255092b087f0615bad49185c7181f1f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210758"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>CSP を使用した Azure への VMware レプリケーションにおけるマルチテナント サポートの概要
+# <a name="overview-of-multi-tenant-support-for-vmware-fisaster-recovery-to-azure-with-csp"></a>CSP を使用した Azure への VMware ディザスター リカバリーにおけるマルチテナント サポートの概要
 
-[Azure Site Recovery](site-recovery-overview.md) では、テナント サブスクリプションについてマルチテナント環境がサポートされます。 また、マイクロソフト クラウド ソリューション プロバイダー (CSP) プログラムを使用して作成され、管理されているテナント サブスクリプションのマルチテナントもサポートします。 
+[Azure Site Recovery](site-recovery-overview.md) では、テナント サブスクリプションについてマルチテナント環境がサポートされます。 また、マイクロソフト クラウド ソリューション プロバイダー (CSP) プログラムを使用して作成され、管理されているテナント サブスクリプションのマルチテナントもサポートします。
 
-この記事では、マルチテナント VMware の Azure へのレプリケーションについて、その実装と管理の概要を示します。 
+この記事では、マルチテナント VMware の Azure へのレプリケーションについて、その実装と管理の概要を示します。
 
 ## <a name="multi-tenant-environments"></a>マルチテナント環境
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="shared-hosting-services-provider-hsp"></a>共有ホスティング サービス プロバイダー (HSP)
 
- 他の 2 つのシナリオは共有ホスティング シナリオのサブセットであり、同じ原則を使用します。 違いについては、この共有ホスティング ガイダンスの最後に説明します。
+他の 2 つのシナリオは共有ホスティング シナリオのサブセットであり、同じ原則を使用します。 違いについては、この共有ホスティング ガイダンスの最後に説明します。
 
 マルチテナント シナリオの基本要件は、各テナントを分離することです。 テナントは別のテナントがホストしている内容を観察できないようにする必要があります。 この要件はセルフサービス環境では非常に重要な場合がありますが、パートナー管理された環境ではセルフサービス環境ほど重要ではありません。 この記事では、テナントの分離が必須であることを前提とします。
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="vcenter-account-requirements"></a>vCenter アカウントの要件
 
-構成サーバーには、特別なロールが割り当てられたアカウントを構成する必要があります。 
+構成サーバーには、特別なロールが割り当てられたアカウントを構成します。
 
 - このロール割り当ては、各 vCenter オブジェクトの vCenter アクセス アカウントに適用されるようにし、子オブジェクトには伝達されないようにする必要があります。 アクセスが伝達されると、他のオブジェクトに誤ってアクセスする可能性があるため、この構成によってテナントの分離を確保できます。
 
@@ -90,7 +89,7 @@ ms.lasthandoff: 03/08/2018
 
 3. 各種オブジェクトについて、(テナントの構成サーバーで使用される) vCenter アカウントにアクセス レベルを割り当てます。
 
->| オブジェクト | 役割 | 解説 |
+>| オブジェクト | Role | 解説 |
 >| --- | --- | --- |
 >| vCenter | 読み取り専用 | さまざまなオブジェクトを管理するために vCenter によるアクセスを許可する場合にのみ必要です。 このアカウントをテナントに提供することも、vCenter での管理操作に使用することもない場合は、このアクセス許可を削除できます。 |
 >| データセンター | Azure_Site_Recovery |  |
@@ -108,22 +107,36 @@ ms.lasthandoff: 03/08/2018
 - vCenter アクセス アカウントに *Azure_Site_Recovery* ロールを 割り当てる代わりに、*読み取り専用*ロールだけをそのアカウントに割り当てます。 このアクセス許可セットでは、VM のレプリケーションとフェールオーバーは許可されますが、フェールバックは許可されません。
 - 上記のプロセスの他のすべてのものはそのままになります。 テナントの分離を確保し、VM の検出を制限するために、すべてのアクセス許可は引き続きオブジェクト レベルでのみ割り当てられ、子オブジェクトには伝達されません。
 
+### <a name="deploy-resources-to-the-tenant-subscription"></a>テナント サブスクリプションにリソースをデプロイする
+
+1. Azure Portal でリソース グループを作成してから、通常のプロセスごとに Recovery Services コンテナーをデプロイします。
+2. コンテナー登録キーをダウンロードします。
+3. コンテナー登録キーを使用して、テナントの CS を登録します。
+4. 2 つのアクセス アカウント (vCenter サーバーにアクセスするためのアカウントと、VM にアクセスするためのアカウント) の資格情報を入力します。
+
+    ![マネージャー構成サーバー アカウント](./media/vmware-azure-multi-tenant-overview/config-server-account-display.png)
+
+### <a name="register-servers-in-the-vault"></a>コンテナー内でサーバーを登録する
+
+1. Azure Portal を使用し、以前に作成した資格情報コンテナー内で、作成した vCenter アカウントを使用して vCenter サーバーを構成サーバーに登録します。
+2. 通常のプロセスごとに、Site Recovery の "インフラストラクチャの準備" プロセスを完了します。
+3. これで VM をレプリケートする準備ができました。 **[レプリケート]** > **[仮想マシンの選択]** に、目的のテナントの VM だけが表示されていることを確認してください。
 
 ## <a name="dedicated-hosting-solution"></a>専用ホスティング ソリューション
 
-次の図に示すように、専用ホスティング ソリューションのアーキテクチャの違いは、各テナントのインフラストラクチャがそのテナントに対してのみ設定されていることです。 テナントは個別の vCenter によって分離されているため、この場合も、ホスティング プロバイダーは共有ホスティング用の CSP の手順に従う必要がありますが、テナントの分離を気にする必要はありません。 CSP のセットアップに変わりはありません。
+次の図に示すように、専用ホスティング ソリューションのアーキテクチャの違いは、各テナントのインフラストラクチャがそのテナントに対してのみ設定されていることです。
 
 ![architecture-shared-hsp](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
 **複数の vCenter を使用する専用ホスティング シナリオ**
 
 ## <a name="managed-service-solution"></a>管理されたサービス ソリューション
 
-次の図に示すように、管理されたサービス ソリューションのアーキテクチャの違いは、各テナントのインフラストラクチャが他のテナントのインフラストラクチャから物理的にも分離されていることです。 通常、このシナリオは、テナントがインフラストラクチャを所有し、ソリューション プロバイダーにディザスター リカバリーを管理してもらう場合に発生します。 この場合も、テナントは異なるインフラストラクチャによって物理的に分離されているため、パートナーは共有ホスティング用の CSP の手順に従う必要がありますが、テナントの分離を気にする必要はありません。 CSP のプロビジョニングに変わりはありません。
+次の図に示すように、管理されたサービス ソリューションのアーキテクチャの違いは、各テナントのインフラストラクチャが他のテナントのインフラストラクチャから物理的にも分離されていることです。 通常、このシナリオは、テナントがインフラストラクチャを所有し、ソリューション プロバイダーにディザスター リカバリーを管理してもらう場合に発生します。
 
 ![architecture-shared-hsp](./media/vmware-azure-multi-tenant-overview/managed-service-scenario.png)  
 **複数の vCenter を使用する管理されたサービス シナリオ**
 
 ## <a name="next-steps"></a>次の手順
-Site Recovery のロールベースのアクセス制御の詳細について[学習する](site-recovery-role-based-linked-access-control.md)。
-[VMware VM の Azure へのディザスター リカバリーをセットアップする](vmware-azure-tutorial.md)
-[CSP を使用したマルチ テナント環境での VMWare VM ディザスター リカバリーをセットアップする](vmware-azure-multi-tenant-csp-disaster-recovery.md)
+- Site Recovery のロールベースのアクセス制御の詳細について[学習する](site-recovery-role-based-linked-access-control.md)。
+- [Azure に VMware VM のディザスター リカバリーを設定する](vmware-azure-tutorial.md)方法を学習する。
+- [VMWare VM 向け CSP によるマルチ テナント](vmware-azure-multi-tenant-csp-disaster-recovery.md)について学習する。

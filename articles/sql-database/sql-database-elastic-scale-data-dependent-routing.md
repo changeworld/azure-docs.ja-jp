@@ -2,25 +2,30 @@
 title: Azure SQL Database でのデータ依存ルーティング | Microsoft Docs
 description: データ依存ルーティング (Azure SQL Database のシャード化されたデータベースの機能) のために .NET アプリで ShardMapManager クラスを使う方法について説明します。
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: scale-out
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 8a9b0b2c0541504954c4a1352180552cc650a31f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 10/05/2018
+ms.openlocfilehash: 60e00868805342c1399c3b44f3e944311af0f3b7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870573"
 ---
-# <a name="data-dependent-routing"></a>データ依存ルーティング
-**データ依存ルーティング** は、クエリ内のデータを使用して、要求を適切なデータベースにルーティングできる機能です。 これは、シャード化されたデータベースを操作するときの基本的なパターンです。 特にシャーディング キーがクエリの一部でない場合は、要求コンテキストを使用して要求をルーティングすることもできます。 データ依存ルーティングを使用したアプリケーションで、特定のクエリまたはトランザクションがそれぞれアクセスするデータベースは、要求ごとに 1 つに制限されています。 Azure SQL Database Elastic ツールでは、このルーティングは **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager)、[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)) クラスで実行します。
+# <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>データ依存ルーティングを使用して、クエリを適切なデータベースにルーティングする
+
+**データ依存ルーティング**は、クエリ内のデータを使用して、要求を適切なデータベースにルーティングできる機能です。 データ依存ルーティングは、シャード化されたデータベースを操作するときの基本的なパターンです。 特にシャーディング キーがクエリの一部でない場合は、要求コンテキストを使用して要求をルーティングすることもできます。 データ依存ルーティングを使用したアプリケーションで、特定のクエリまたはトランザクションがそれぞれアクセスするデータベースは、要求ごとに 1 つに制限されています。 Azure SQL Database Elastic ツールでは、このルーティングは **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager)、[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)) クラスで実行します。
 
 アプリケーションは、シャード化された環境の各種データ スライスに関連付けられた、さまざまな接続文字列または DB の場所を追跡する必要はありません。 代わりに [Shard Map Manager](sql-database-elastic-scale-shard-map-management.md) が正しいデータベースへの接続処理を必要に応じて管理します。 通常、このキーは、データベース要求の基本的なパラメーターである、*customer_id*、*tenant_id*、*date_key*、または他の特定の識別子です。 
 
-詳細については、「 [データ依存型ルーティングを使用した SQL Server のスケール アウト](https://technet.microsoft.com/library/cc966448.aspx)」を参照してください。
+詳細については、「[データ依存型ルーティングを使用した SQL Server のスケールアウト](https://technet.microsoft.com/library/cc966448.aspx)」を参照してください。
 
 ## <a name="download-the-client-library"></a>クライアント ライブラリのダウンロード
 ダウンロードの対象:
@@ -41,7 +46,7 @@ RangeShardMap<int> customerShardMap = smm.GetRangeShardMap<int>("customerMap");
 ```
 
 ### <a name="use-lowest-privilege-credentials-possible-for-getting-the-shard-map"></a>シャード マップの取得には最小限のアクセス許可を持つ資格情報を使用する
-アプリケーションでシャード マップ自体を操作しない場合は、ファクトリ メソッドで使用される資格情報には、 **グローバル シャード マップ** データベースに対する読み取り専用アクセス許可を付与します。 これらの資格情報は、通常、シャード マップ マネージャーへの接続で使用される資格情報とは異なります。 「 [Elastic Database クライアント ライブラリへのアクセスに使用する資格情報](sql-database-elastic-scale-manage-credentials.md)」も参照してください。 
+アプリケーションでシャード マップ自体を操作しない場合は、ファクトリ メソッドで使用される資格情報には、**グローバル シャード マップ** データベースに対する読み取り専用アクセス許可を付与します。 これらの資格情報は、通常、シャード マップ マネージャーへの接続で使用される資格情報とは異なります。 「 [Elastic Database クライアント ライブラリへのアクセスに使用する資格情報](sql-database-elastic-scale-manage-credentials.md)」も参照してください。 
 
 ## <a name="call-the-openconnectionforkey-method"></a>OpenConnectionForKey メソッドを呼び出す
 **ShardMap.OpenConnectionForKey メソッド** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._list_shard_mapper.openconnectionforkey)、[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)) は、**key** パラメーターの値に基づいて、適切なデータベースへのコマンド発行の準備が整った接続を返します。 シャード情報は、**ShardMapManager** によってアプリケーションにキャッシュされるため、これらの要求では通常は、**グローバル シャード マップ** データベースに対するルックアップは行われません。 
@@ -57,7 +62,7 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 ```
 * **key** パラメーターは、要求に対する適切なデータベースを特定するためのシャード マップへのルックアップ キーとして使用されます。 
 * **connectionString** は、必要な接続を行うためのユーザーの資格情報のみを渡すために使用されます。 この *connectionString* には、データベース名またはサーバー名は含まれません。メソッドがデータベースとサーバーを特定するために **ShardMap** を使用するためです。 
-* 分割やマージの操作の結果、シャード マップが変更されている可能性や、行が他のデータベースに移動している可能性のある環境では、**connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._connection_options)、[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions.aspx)) を **ConnectionOptions.Validate** に設定する必要があります。 そうすることで、接続要求がアプリケーションに配信される前に、ターゲット データベースにあるローカルのシャード マップ (グローバル シャード マップではない) に対する簡単なクエリが実行されます。 
+* 分割やマージの操作の結果、シャード マップが変更されている可能性や、行が他のデータベースに移動している可能性のある環境では、**connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._connection_options)、[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions.aspx)) を **ConnectionOptions.Validate** に設定する必要があります。 この検証では、接続要求がアプリケーションに配信される前に、ターゲット データベースにあるローカルのシャード マップ (グローバル シャード マップではない) に対する簡単なクエリが実行されます。 
 
 ローカルのシャード マップの検証が失敗した (キャッシュが正しくないことが示された) 場合は、シャード マップ マネージャーがグローバル シャード マップに対してクエリを実行し、ルックアップの正しい値を新しく取得します。その後、キャッシュを更新してから適切なデータベース接続を取得して戻します。 
 

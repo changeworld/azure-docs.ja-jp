@@ -1,27 +1,21 @@
 ---
-title: "HDInsight での Hadoop Oozie の使用 | Microsoft Docs"
-description: "ビッグ データ サービスとして HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。"
+title: HDInsight での Hadoop Oozie の使用
+description: ビッグ データ サービスとして HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
 services: hdinsight
-documentationcenter: 
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 870098f0-f416-4491-9719-78994bf4a369
+author: hrasheed-msft
+ms.reviewer: jasonh
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 73d8a26945be05ac0131148b5c0ffdd5f8053bcd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: affef85c917804f0b99200dcfa8e53f6d08fcbe4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684224"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -69,7 +63,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Oozie ワークフローと関連 HiveQL スクリプトを定義する
 Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書かれています。 既定のワークフロー ファイル名は *workflow.xml*です。 このチュートリアルで使用するワークフロー ファイルを次に示します。
-
+```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
         <start to = "RunHiveScript"/>
 
@@ -124,27 +118,27 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
         <end name="end"/>
     </workflow-app>
-
+```
 ワークフローでは 2 つのアクションが定義されています。 start-to アクションは *RunHiveScript*です。 このアクションが正常に実行された場合、次のアクションは *RunSqoopExport*です。
 
 RunHiveScript には、変数がいくつかあります。 その値は、Azure PowerShell を使用してワークステーションから Oozie ジョブを送信するときに渡します。
 
 <table border = "1">
-<tr><th>ワークフローの変数</th><th>Description</th></tr>
+<tr><th>ワークフローの変数</th><th>説明</th></tr>
 <tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。 HDInsight バージョン 3.0 と 2.1 では <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
 <tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。 既定のファイル システムのアドレス (たとえば、<i>wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>) を使用します。</td></tr>
 <tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。 <strong>既定値</strong>を使用します。</td></tr>
 </table>
 
 <table border = "1">
-<tr><th>Hive アクションの変数</th><th>Description</th></tr>
+<tr><th>Hive アクションの変数</th><th>説明</th></tr>
 <tr><td>${hiveDataFolder}</td><td>Hive の CREATE TABLE コマンドのソース ディレクトリを指定します。</td></tr>
 <tr><td>${hiveOutputFolder}</td><td>INSERT OVERWRITE ステートメントの出力フォルダーを指定します。</td></tr>
 <tr><td>${hiveTableName}</td><td>log4j データ ファイルを参照する Hive テーブルの名前を指定します。</td></tr>
 </table>
 
 <table border = "1">
-<tr><th>Sqoop アクションの変数</th><th>Description</th></tr>
+<tr><th>Sqoop アクションの変数</th><th>説明</th></tr>
 <tr><td>${sqlDatabaseConnectionString}</td><td>Azure SQL データベースの接続文字列を指定します。</td></tr>
 <tr><td>${sqlDatabaseTableName}</td><td>データのエクスポート先となる Azure SQL データベース テーブルを指定します。</td></tr>
 <tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダーを指定します。 これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
@@ -197,7 +191,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     OOzie ジョブの結果を確認するには、Visual Studio または他のツールを使用して Azure SQL Database に接続します。
 
 このスクリプトを次に示します。  スクリプトは、Windows PowerShell ISE から実行できます。 構成する必要があるのは、最初の 7 つの変数だけです。
-
+```powershell
     #region - provide the following values
 
     $subscriptionID = "<Enter your Azure subscription ID>"
@@ -206,7 +200,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     $sqlDatabaseLogin = "<Enter SQL Database Login Name>"
     $sqlDatabasePassword = "<Enter SQL Database Login Password>"
 
-    # HDInsight cluster HTTP user credential used for creating and connectin
+    # HDInsight cluster HTTP user credential used for creating and connecting
     $httpUserName = "admin"  # The default name is "admin"
     $httpPassword = "<Enter HDInsight Cluster HTTP User Password>"
 
@@ -244,12 +238,12 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
     catch{
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
         Select-AzureRmSubscription -SubscriptionId $subscriptionID
     }
     #endregion
 
-    #region - Create Azure resouce group
+    #region - Create Azure resource group
     Write-Host "`nCreating an Azure resource group ..." -ForegroundColor Green
     try{
         Get-AzureRmResourceGroup -Name $resourceGroupName
@@ -535,8 +529,8 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     $response = Invoke-RestMethod -Method Get -Uri $clusterUriStatus -Credential $httpCredential -OutVariable $OozieServerStatus
 
     $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-    $oozieServerSatus = $jsonResponse[0].("systemMode")
-    Write-Host "Oozie server status is $oozieServerSatus."
+    $oozieServerStatus = $jsonResponse[0].("systemMode")
+    Write-Host "Oozie server status is $oozieServerStatus."
 
     # create Oozie job
     Write-Host "Sending the following Payload to the cluster:" -ForegroundColor Green
@@ -576,7 +570,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state!" -ForegroundColor Green
 
     #endregion
-
+```
 
 **チュートリアルを再実行するには**
 
@@ -586,7 +580,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 * log4jLogsCount テーブル内のデータ
 
 使用できる PowerShell スクリプトのサンプルを次に示します。
-
+```powershell
     $resourceGroupName = "<AzureResourceGroupName>"
 
     $defaultStorageAccountName = "<AzureStorageAccountName>"
@@ -616,8 +610,9 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     $cmd.executenonquery()
 
     $conn.close()
+```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Oozie ワークフローを定義する方法と、PowerShell を使用して Oozie ジョブを実行する方法について説明しました。 詳細については、次の記事を参照してください。
 
 * [HDInsight での時間ベースの Oozie コーディネーターの使用][hdinsight-oozie-coordinator-time]
@@ -653,7 +648,6 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
-[sqldatabase-create-configue]: ../sql-database-create-configure.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
 
 [azure-management-portal]: https://portal.azure.com/
@@ -667,7 +661,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-script]: https://technet.microsoft.com/en-us/library/ee176961.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176961.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 

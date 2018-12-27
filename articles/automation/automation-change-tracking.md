@@ -3,38 +3,69 @@ title: Azure Automation で変更を追跡する
 description: Change Tracking ソリューションは、ユーザーの環境で起こるソフトウェアと Windows サービスの変更を特定するために役立ちます。
 services: automation
 ms.service: automation
+ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
-ms.topic: article
+ms.date: 10/12/2018
+ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91a093a44106ad861449b6defb140532698fa668
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167003"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
-この記事では、Change Tracking ソリューションを使用して、環境の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows および Linux ファイル、Windows レジストリ キー、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
+この記事では、Change Tracking ソリューションを使用して、ユーザーの環境内の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows および Linux ファイル、Windows レジストリ キー、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
 
 監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Windows レジストリとファイル、および Linux デーモンの変更が、クラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
 
-## <a name="enable-change-tracking-and-inventory"></a>Change Tracking と Inventory の有効化
+## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
 
+Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
+
+* Windows Server 2008 R2 以降
+
+## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
+
+次の Linux ディストリビューションは公式にサポートされています。 ただし、Linux エージェントは、ここに記載されていないディストリビューションでも動作する可能性があります。 記載されている各メジャー バージョンのマイナー リリースは、特に記載がない限りすべてサポートされます。  
+
+### <a name="64-bit"></a>64 ビット
+
+* CentOS 6 および 7
+* Amazon Linux 2017.09
+* Oracle Linux 6 および 7
+* Red Hat Enterprise Linux Server 6 および 7
+* Debian GNU/Linux 8 および 9
+* Ubuntu Linux 14.04 LTS、16.04 LTS、および 18.04 LTS
+* SUSE Linux Enterprise Server 12
+
+### <a name="32-bit"></a>32 ビット
+
+* CentOS 6
+* Oracle Linux 6
+* Red Hat Enterprise Linux Server 6
+* Debian GNU/Linux 8 および 9
+* Ubuntu Linux 14.04 LTS および 16.04 LTS
+
+## <a name="enable-change-tracking-and-inventory"></a>Change Tracking と Inventory の有効化
 
 変更の追跡を開始するには、Automation アカウントの Change Tracking および Inventory ソリューションを有効にする必要があります。
 
 1. Azure Portal で、Automation アカウントに移動します
-1. **[構成]** の **[Change Tracking]\(変更の追跡\)** を選択します。
-2. 既存の Log Analytics ワークスペースまたは **[新しいワークスペースの作成]** を選択し、**[有効化]** をクリックします。
+2. **[構成]** の **[Change Tracking]\(変更の追跡\)** を選択します。
+3. 既存の Log Analytics ワークスペースまたは **[新しいワークスペースの作成]** を選択し、**[有効化]** をクリックします。
 
 これにより Automation アカウントに対してソリューションが有効になります。 ソリューションを有効にするには最大 15 分かかります。 青のバナーは、ソリューションが有効になっていることを示します。 **[Change Tracking]\(変更の追跡\)** ページに戻って、ソリューションを管理します。
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Change Tracking と Inventory の構成
 
-コンピューターをソリューションに追加する方法については、[Automation ソリューションの配布準備](automation-onboard-solutions-from-automation-account.md)に関するページをご覧ください。 新しいファイルまたはレジストリ キーの追跡を有効にすると、Change Tracking と Inventory の両方に対して有効になります。
+コンピューターをソリューションに追加する方法については、[Automation ソリューションの配布準備](automation-onboard-solutions-from-automation-account.md)に関するページをご覧ください。 Change Tracking と Inventory ソリューションでのマシンのオンボードが完了したら、追跡する項目を構成できます。新しいファイルまたはレジストリ キーの追跡を有効にすると、Change Tracking と Inventory の両方に対して有効になります。
+
+Windows と Linux の両方でファイルの変更を追跡する場合、ファイルの MD5 ハッシュが使用されます。 これらのハッシュは、前回のインベントリから変更が加えられたかどうかを検出するために使用されます。
 
 ### <a name="configure-linux-files-to-track"></a>追跡する Linux ファイルを構成する
 
@@ -53,7 +84,8 @@ ms.lasthandoff: 03/23/2018
 |パスの種類     | 追跡する項目の種類。"ファイル" または "ディレクトリ" を指定できます。        |
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
 |sudo の使用     | この設定により、項目を確認するときに、sudo を使用するかどうかが決まります。         |
-|リンク     | この設定により、ディレクトリを走査するときの、シンボリック リンクの処理方法が決まります。<br> **無視** - シンボリック リンクを無視し、参照先のファイル/ディレクトリを含めません。<br>**フォロー** - 再帰中、シンボリック リンクをフォローします。参照先のファイル/ディレクトリも含めます。<br>**管理** - シンボリック リンクをフォローします。また、返された内容が変更が許可されます。     |
+|リンク     | この設定により、ディレクトリを走査するときの、シンボリック リンクの処理方法が決まります。<br> **無視** - シンボリック リンクを無視し、参照先のファイル/ディレクトリを含めません。<br>**フォロー** - 再帰中、シンボリック リンクに従います。参照先のファイル/ディレクトリも含めます。<br>**管理** - シンボリック リンクに従います。また、返却された内容の変更を許可します。     |
+|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用可能なオプション: **True** または **False**。|
 
 > [!NOTE]
 > "管理" リンク オプションはお勧めしません。 ファイルのコンテンツの取得はサポートされていません。
@@ -71,7 +103,24 @@ ms.lasthandoff: 03/23/2018
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|パスの入力     | ファイル確認のためのパス (例: "c:\temp\myfile.txt")。       |
+|パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。       |
+|再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
+|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用可能なオプション: **True** または **False**。|
+
+## <a name="wildcard-recursion-and-environment-settings"></a>ワイルドカード、再帰、環境設定
+
+再帰を使用すると、ワイルドカードを指定することで、複数のディレクトリを対象とした追跡を簡単に行うことができます。また、環境変数を指定すれば、複数のドライブ名や動的なドライブ名を使って、複数の環境を対象にファイルを追跡できます。 再帰を構成するときに知っておくべき基本的な情報は次のとおりです。
+
+* 複数のファイルを追跡するにはワイルドカードが必要です。
+* ワイルドカードは、パスの最後のセグメントでしか使用できません  (例: C:\folder\\**file**、/etc/*.conf など)。
+* 環境変数に無効なパスが存在する場合、検証は成功しますが、インベントリの実行時にそのパスはエラーになります。
+* パスを設定するとき、漠然としたパス (`c:\*.*` など) は避けてください。走査の対象になるフォルダーが膨大な数に上ります。
+
+## <a name="configure-file-content-tracking"></a>ファイル コンテンツの追跡を構成する
+
+ファイル コンテンツの変更の追跡を使用して、ファイル変更の前後のコンテンツを表示できます。 これは、Windows および Linux ファイルに対して使用できます。ファイルが変更されるたびに、ファイルのコンテンツがストレージ アカウントに格納され、変更の前後のファイルがインラインで、または横に並べて表示されます。 詳細については、[追跡されたファイルのコンテンツの表示](change-tracking-file-contents.md)に関するページを参照してください。
+
+![ファイル内の変更を表示する](./media/change-tracking-file-contents/view-file-changes.png)
 
 ### <a name="configure-windows-registry-keys-to-track"></a>追跡する Windows レジストリ キーを構成する
 
@@ -92,12 +141,8 @@ ms.lasthandoff: 03/23/2018
 
 現在、Change Tracking ソリューションでは以下の項目に対応していません。
 
-* Windows ファイル追跡用のフォルダー (ディレクトリ)
-* Windows ファイル追跡用の再帰
-* Windows ファイル追跡用のワイルドカード
-* パス変数
+* Windows レジストリ追跡用の再帰
 * ネットワーク ファイル システム
-* ファイル コンテンツ
 
 その他の制限事項:
 
@@ -109,7 +154,9 @@ ms.lasthandoff: 03/23/2018
 ## <a name="known-issues"></a>既知の問題
 
 現在、Change Tracking ソリューションでは、以下の問題が発生しています。
+
 * Windows 10 Creators Update および Windows Server 2016 Core RS3 マシンについては、修正プログラムの更新は収集されていません。
+* Windows ファイルの場合、現在のところ、追跡対象のフォルダー パスに新しいファイルが追加されたタイミングは Change Tracking によって検出されません
 
 ## <a name="change-tracking-data-collection-details"></a>変更の追跡データ収集の詳細
 
@@ -117,14 +164,25 @@ ms.lasthandoff: 03/23/2018
 
 | **変更の種類** | **頻度** |
 | --- | --- |
-| Windows レジストリ | 50 分 | 
-| Windows ファイル | 30 分 | 
-| Linux ファイル | 約 15 分 | 
-| Windows サービス | 30 分 | 
+| Windows レジストリ | 50 分 |
+| Windows ファイル | 30 分 |
+| Linux ファイル | 約 15 分 |
+| Windows サービス | 10 秒から 30 分</br> 既定値: 30 分 |
 | Linux デーモン | 5 分 |
-| Windows ソフトウェア | 30 分 | 
-| Linux ソフトウェア | 5 分 | 
+| Windows ソフトウェア | 30 分 |
+| Linux ソフトウェア | 5 分 |
 
+### <a name="windows-service-tracking"></a>Windows サービスの追跡
+
+Windows サービスに対する既定の収集の頻度は 30 分です。 この頻度を構成するには、**[変更の追跡]** に移動します。 **[Windows サービス]** タブの **[設定の編集]** には、Windows サービスに対する収集の頻度を 10 秒から 30 分まで変更できるスライダーがあります。 このスライダーを必要な頻度に移動すると、その頻度が自動的に保存されます。
+
+![Windows サービスのスライダー](./media/automation-change-tracking/windowservices.png)
+
+エージェントは変更のみを追跡します。これにより、エージェントのパフォーマンスが最適化されます。 しきい値を大きすぎる値に設定すると、サービスがその元の状態に戻した場合、変更が検出されない可能性があります。 頻度を小さな値に設定すると、そうしないと検出されなかった可能性がある変更を捕まえることができます。
+
+> [!NOTE]
+> エージェントは変更を 10 秒の間隔まで追跡できますが、データがポータルに表示されるにはまだ数分かかります。 ポータルに表示される期間中の変更も引き続き追跡され、ログに記録されます。
+  
 ### <a name="registry-key-change-tracking"></a>レジストリ キーの変更追跡
 
 レジストリ キーへの変更を監視する目的は、サード パーティのコードやマルウェアがアクティブ化できる拡張性のポイントを正確に特定することです。 次の一覧は、事前構成されたレジストリ キーを示しています。 これらのキーは構成されていますが、有効にはなっていません。 これらのレジストリ キーを追跡するには、それぞれを有効にする必要があります。
@@ -167,9 +225,20 @@ ms.lasthandoff: 03/23/2018
 > |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Windows オペレーティング システムの対話型ログオン サポート モデルである Winlogon からイベント通知を受信できるパッケージの一覧を監視します。|
 
+## <a name="network-requirements"></a>ネットワークの要件
+
+Change Tracking には次のアドレスが明示的に必要です。 このアドレスへの通信は、ポート 443 を使用して行われます。
+
+|Azure Public  |Azure Government  |
+|---------|---------|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.azure-automation.us|
+
 ## <a name="use-change-tracking"></a>変更の追跡を使用する
 
-ソリューションを有効にした後、監視対象コンピューターの変更の概要を表示するには、Automation アカウントの **[構成管理]** で**[Change Tracking]\(変更の追跡\)** を選択します。
+ソリューションを有効にした後、監視対象コンピューターの変更の概要を表示するには、Automation アカウントの **[構成管理]** で **[Change Tracking]\(変更の追跡\)** を選択します。
 
 コンピューターに対する変更を表示し、各イベントの詳細を確認することができます。 グラフ上部にあるドロップ ダウンを使用すると、変更の種類および時間の範囲に基づいて、グラフと詳細情報を制限できます。 グラフ上をクリックしてドラッグすることで、カスタムの時間の範囲を選択することもできます。
 

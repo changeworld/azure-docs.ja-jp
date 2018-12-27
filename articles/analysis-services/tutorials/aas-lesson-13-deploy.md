@@ -1,25 +1,19 @@
 ---
-title: "Azure Analysis Services チュートリアル - レッスン 13: デプロイする | Microsoft Docs"
-description: "Azure Analysis Services にチュートリアル用プロジェクトをデプロイする方法を説明します｡"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services チュートリアル - レッスン 13: デプロイする | Microsoft Docs'
+description: Azure Analysis Services にチュートリアル用プロジェクトをデプロイする方法を説明します｡
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 251795f394d30418e1c03ec7b92fec40a75b2c3d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: f0528af5f3a6b7309d81c36ca5bc7a3faccfa293
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427114"
 ---
 # <a name="deploy"></a>デプロイ
 
@@ -59,13 +53,13 @@ ms.lasthandoff: 02/21/2018
 
 2.  **AW Internet Sales** プロジェクトを右クリックし､**Deploy** を選択します｡
 
-    Azure Analysis Services へのデプロイでは､アカウントの入力を求められることがあります｡ 社内でのアカウントとパスワードを入力します (例: nancy@adventureworks.com)｡このアカウントは､サーバーの管理者である必要があります。
+    Azure Analysis Services へのデプロイでは､アカウントの入力を求められることがあります｡ 社内でのアカウントとパスワードを入力します (例: nancy@adventureworks.com)｡ このアカウントは､サーバーの管理者である必要があります。
   
     [Deploy] ダイアログ ボックスにモデルに含まれるメタデータと各テーブルのデプロイ状況が表示されます｡  
     
     ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
   
-3. デプロイが正常に終了したら､**[Close]**をクリックします｡  
+3. デプロイが正常に終了したら､**[Close]** をクリックします｡  
   
 
 このレッスンでは、SSDT から表形式モデルをデプロイするための最も一般的で簡単な方法を説明します。 デプロイ ウィザードや、XMLA と AMO による自動化など、高度なデプロイ オプションを使用すると、より柔軟性と一貫性が高い、スケジュールされたデプロイを行うことができます。 詳細については、「[Tabular model solution deployment (表形式モデル ソリューションのデプロイ)](https://docs.microsoft.com/sql/analysis-services/tabular-models/tabular-model-solution-deployment-ssas-tabular)」を参照してください。

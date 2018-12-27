@@ -1,7 +1,7 @@
 
 これで、Azure Blob Storage の基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
-* 利用可能な API の完全な詳細については、[.NET 用 Azure Storage クライアント ライブラリ](http://go.microsoft.com/fwlink/?LinkID=390731) の Blob service のリファレンス ドキュメントを参照してください。
+* 利用可能な API の完全な詳細については、[.NET 用 Azure Storage クライアント ライブラリ](https://go.microsoft.com/fwlink/?LinkID=390731) の Blob service のリファレンス ドキュメントを参照してください。
 * Azure Storage で作業するために記述したコードを簡略化する方法については、「 [Azure Web ジョブ SDK とは](https://github.com/Azure/azure-webjobs-sdk/wiki)
 * Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   * Azure Storage のテーブルを操作する方法については、「 [.NET を使用して Azure Table Storage を使用する](../articles/cosmos-db/table-storage-how-to-use-dotnet.md)」を参照してください。

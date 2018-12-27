@@ -1,51 +1,55 @@
 ---
-title: ".NET アプリケーションから Azure Search を使用する方法 | Microsoft Docs"
-description: ".NET アプリケーションから Azure Search を使用する方法"
-services: search
-documentationcenter: 
+title: .NET アプリケーションから Azure Search を使用する方法 | Microsoft Docs
+description: .NET アプリケーションから Azure Search を使用する方法
 author: brjohnstmsft
 manager: jlembicz
-editor: 
-ms.assetid: 93653341-c05f-4cfd-be45-bb877f964fcb
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 05/22/2017
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: 7273ae6a698f2af52e78ea2aae9ca5cd80f6a2b1
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 19913f9c30992e833e5435af7066611d4662ba56
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525639"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>.NET アプリケーションから Azure Search を使用する方法
 この記事では、 [Azure Search .NET SDK](https://aka.ms/search-sdk)を使用する手順について説明します。 .NET SDK を使用すると、Azure Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
 
 ## <a name="whats-in-the-azure-search-sdk"></a>Azure Search SDK の内容
-SDK は、クライアント ライブラリ `Microsoft.Azure.Search`で構成されます。 SDK を使用すると、インデックス、データ ソース、インデクサーの管理、ドキュメントのアップロードと管理、クエリの実行を行うことができ、HTTP や JSON の細部を処理する必要はありません。
+この SDK は､HTTP や JSON に関する詳しい知識がなくても､インデックスやデータ ソース､インデクサー､シノニム マップの管理､ドキュメントのアップロードと管理､クエリの実行を行うことを可能にするいくつかのクライアント ライブラリから構成されています｡ これらのクライアント ライブラリはすべて､NuGet パッケージとして配布されます｡
 
-クライアント ライブラリでは、`Index`、`Field`、`Document` などのクラス、および `SearchServiceClient` や `SearchIndexClient` クラス上の `Indexes.Create` や `Documents.Search` などの操作が定義されています。 これらのクラスは、次の名前空間にまとめられています。
+メインの NuGet パッケージは `Microsoft.Azure.Search` です｡このパッケージは､依存関係がある他のすべてのパッケージを含むメタパッケージです｡ 初めて取り組む場合､あるいはアプリケーションに Azure Search の全機能が必要と分かっている場合は､このパッケージを使用します｡
+
+SDK のその他の NuGet パッケージとしては以下があります｡
+ 
+  - `Microsoft.Azure.Search.Data`: Azure Search を利用して .NET アプリケーションの開発で､インデックスからドキュメントに対してクエリまたは更新のみ実行する場合に使用します｡ インデックス、シノニム マップ､またはサービス レベルのその他のリソースの作成や更新も行う必要がある場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+  - `Microsoft.Azure.Search.Service`: .NET で、Azure Search インデックス、シノニム マップ､インデクサー､データ ソース､またはサービスレベルのその他のリソースを管理するための自動化を開発する場合は、このパッケージを使用します｡ インデックス内のドキュメントのクエリまたは更新のみを行う場合は､代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Search のすべての機能が必要な場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+  - `Microsoft.Azure.Search.Common`: Azure Search .NET ライブラリに必要な共通の型です｡ アプリケーションから直接にこのパッケージを使用する必要はないでしょう｡依存関係として使用されることのみ意図しています｡
+
+各種クライアント ライブラリには、`Index`、`Field`、`Document` などのクラスや、 `SearchServiceClient` や `SearchIndexClient` クラスに対する `Indexes.Create` や `Documents.Search` などの操作が定義されています。 これらのクラスは、次の名前空間にまとめられています。
 
 * [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
 Azure Search .NET SDK の最新バージョンが一般公開されました。 次のバージョンに組み込むためにフィードバックを提供する場合は、 [フィードバック ページ](https://feedback.azure.com/forums/263029-azure-search/)を使用してください。
 
-.NET SDK は、バージョン `2016-09-01` の [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) をサポートします。 このバージョンでは、カスタム アナライザー、Azure BLOB インデクサー、Azure Table インデクサーがサポートされるようになりました。 JSON ファイルと CSV ファイルのインデックス作成のサポートなど、このバージョンに含まれて*いない*プレビュー機能は[プレビュー](search-api-2016-09-01-preview.md)段階であり、[4.0.1-preview バージョンの .NET SDK](https://aka.ms/search-sdk-preview) で提供されます。
+.NET SDK は、バージョン `2017-11-11` の [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) をサポートします。 このバージョンには､シノニムのサポートや､インデクサーに対する漸進的な改良も反映されています｡ このバージョンには､JSON アレイや CSV ファイルのインデックス作成のサポートなどのプレビュー機能は*含まれていません*｡プレビュー機能は[プレビュー](search-api-2016-09-01-preview.md)段階であり、[4.0-preview バージョンの .NET SDK](https://aka.ms/search-sdk-preview) で提供されます。
 
 この SDK では、Search サービスの作成とスケーリングや API キーの管理などの[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)はサポートされていません。 .NET アプリケーションから Search リソースを管理する必要がある場合は、[Azure Search .NET Management SDK](https://aka.ms/search-mgmt-sdk) を使用できます。
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>最新バージョンの SDK へのアップグレード
-古いバージョンの Azure Search .NET SDK を既に使用しており、一般公開された新しいバージョンにアップグレードする場合、方法については [この記事](search-dotnet-sdk-migration.md) をご覧ください。
+古いバージョンの Azure Search .NET SDK を既に使用しており、一般公開された新しいバージョンにアップグレードする場合、方法については [この記事](search-dotnet-sdk-migration-version-5.md) をご覧ください。
 
 ## <a name="requirements-for-the-sdk"></a>SDK の要件
 1. Visual Studio 2017。
 2. 自分が所有する Azure Search サービス。 SDK を使用するには、サービスの名前および 1 つまたは複数の API キーが必要です。 [ポータルでの Azure Search サービスの作成](search-create-service-portal.md) 」は、これらの手順の参考になります。
-3. Visual Studio の [NuGet パッケージの管理] を使用して、Azure Search .NET SDK の [NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.Search) をダウンロードします。 NuGet.org でパッケージの名前 `Microsoft.Azure.Search` を検索してください。
+3. Visual Studio の [NuGet パッケージの管理] を使用して、Azure Search .NET SDK の [NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.Search) をダウンロードします。 NuGet.org でパッケージ名 `Microsoft.Azure.Search` (あるいは機能の一部のみ必要な場合は､上記のうちの対応するパッケージ名) を検索します｡
 
-Azure Search .NET SDK は、.NET Framework 4.6 および .NET Core を対象とするアプリケーションをサポートします。
+Azure Search .NET SDK は、.NET Framework 4.5.2 以上と .NET Core を対象とするアプリケーションをサポートしています。
 
 ## <a name="core-scenarios"></a>主要なシナリオ
 検索アプリケーションではいくつかの処理を実行する必要があります。 このチュートリアルではこれらの主要なシナリオについて説明します。
@@ -56,7 +60,7 @@ Azure Search .NET SDK は、.NET Framework 4.6 および .NET Core を対象と�
 
 後のサンプル コードではこれらについて示します。 これらのコード スニペットを独自のアプリケーションに自由に使用してください。
 
-### <a name="overview"></a>Overview
+### <a name="overview"></a>概要
 これから説明するサンプル アプリケーションは、"hotels" という名前のインデックスを新しく作成し、いくつかのドキュメントをそこに格納してから、検索クエリを実行します。 全体的な流れがわかるメイン プログラムを次に示します。
 
 ```csharp
@@ -582,8 +586,7 @@ WriteDocuments(results);
 
 チュートリアルはここまでですが、ここで止めないでください。 **次のステップ** では、Azure Search をさらに学習するための他のリソースを提供します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンスを参照してください。
-* [ビデオおよび他のサンプルとチュートリアル](search-video-demo-tutorial-list.md)によって、知識を深めてください。
 * [名前付け規則](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) で、さまざまなオブジェクトに名前を付けるときの規則を学習してください。
 * Azure Search で [サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) を確認してください。

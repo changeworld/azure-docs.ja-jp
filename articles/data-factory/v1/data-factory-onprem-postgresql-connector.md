@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ee466c85b68ebc72dbd55849db84a473d584ffb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7357b609909c3db0bc42d58cb2cd32436c864f66
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235872"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-onprem-postgresql-connector.md)
-> * [バージョン 2 - プレビュー](../connector-postgresql.md)
+> * [Version 1](data-factory-onprem-postgresql-connector.md)
+> * [バージョン 2 (最新バージョン)](../connector-postgresql.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での PostgreSQL コネクタ](../connector-postgresql.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の PostgreSQL コネクタ](../connector-postgresql.md)に関するページを参照してください。
 
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの PostgreSQL データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
@@ -43,7 +44,7 @@ PostgreSQL データベースが Azure IaaS VM でホストされている場合
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
-Data Management Gateway で PostgreSQL Databases に接続するには、Data Management Gateway と同じシステムに 2.0.12 ～ 3.1.9 バージョンの [PostgreSQL の Ngpsql データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=282716)をインストールしてください。 PostgreSQL バージョン 7.4 以降がサポートされています。
+Data Management Gateway で PostgreSQL Databases に接続するには、Data Management Gateway と同じシステムに 2.0.12 ～ 3.1.9 バージョンの [PostgreSQL の Ngpsql データ プロバイダー](https://go.microsoft.com/fwlink/?linkid=282716)をインストールしてください。 PostgreSQL バージョン 7.4 以降がサポートされています。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールまたは API を使用して、オンプレミスの PostgreSQL データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
@@ -72,9 +73,9 @@ Data Management Gateway で PostgreSQL Databases に接続するには、Data Ma
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、PostgreSQL のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティを **OnPremisesPostgreSql** |[はい] |
+| type |type プロパティを **OnPremisesPostgreSql** |[はい] |
 | [サーバー] |PostgreSQL サーバーの名前です。 |[はい] |
 | [データベース] |PostgreSQL データベースの名前です。 |[はい] |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
@@ -88,7 +89,7 @@ Data Management Gateway で PostgreSQL Databases に接続するには、Data Ma
 
 typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (PostgreSQL データセットを含む) の typeProperties セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | tableName |リンクされたサービスが参照する PostgreSQL Databases インスタンスのテーブルの名前です。 tableName は、大文字と小文字が区別されます。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
 
@@ -99,9 +100,9 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 source の種類が **RelationalSource** (PostgreSQL を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `"query": "select * from \"MySchema\".\"MyTable\""`」のように入力します。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `"query": "select * from \"MySchema\".\"MyTable\""`)。 |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 > [!NOTE]
 > スキーマ名とテーブル名は、大文字と小文字が区別されます。 クエリ内では、これらを `""` (二重引用符) で囲んでください。  
@@ -337,7 +338,7 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | numeric [(p, s)] |decimal [(p, s)] |Decimal |
 | numrange | |String |&nbsp;
 | oid | |Int32 |&nbsp;
-| パス | |Byte[]、String |&nbsp;
+| path | |Byte[]、String |&nbsp;
 | pg_lsn | |Int64 |&nbsp;
 | point | |Byte[]、String |&nbsp;
 | polygon | |Byte[]、String |&nbsp;
@@ -345,7 +346,7 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| テキスト | |String |&nbsp;
+| text | |String |&nbsp;
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。

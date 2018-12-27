@@ -2,23 +2,19 @@
 title: Azure Storage Analytics を使用したログとメトリック データの収集 | Microsoft Docs
 description: Storage Analytics では、すべてのストレージ サービスのメトリック データを追跡し、BLOB、キュー、Table Storage のログを収集できます。
 services: storage
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 7894993b-ca42-4125-8f17-8f6dfe3dca76
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
-ms.openlocfilehash: edda01cbfe1b53d934f9f4a7bb01c645fa680873
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: 0f237b4d742c0c7de1e836e2b9d83502cfe1a30d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231013"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -77,7 +73,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 
 次の表は、ログ名を構成する各属性の説明です。
 
-| 属性 | [説明] |
+| Attribute | 説明 |
 | --- | --- |
 | <service-name> |ストレージ サービスの名前。 例: blob、table、または queue |
 | YYYY |ログの 4 桁表記の年。 例: 2011 |
@@ -100,7 +96,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 ### <a name="log-metadata"></a>ログのメタデータ
 すべてのログ BLOB はメタデータと共に格納されます。このメタデータを使って、BLOB に含まれるログ データを特定できます。 それぞれのメタデータ属性について次の表で説明します。
 
-| 属性 | [説明] |
+| Attribute | 説明 |
 | --- | --- |
 | LogType |読み取り、書き込み、削除の各操作に関連した情報がログに含まれているかどうかを表します。 この値には、操作の種類が 1 つだけ含まれている場合もあれば、3 つすべてがコンマ区切りで記録されている場合もあります。 例 1: write 例 2: read,write 例 3: read,write,delete |
 | StartTime |ログに含まれる最も古いエントリの時刻です (YYYY-MM-DDThh:mm:ssZ 形式)。 例: 2011-07-31T18:21:46Z |
@@ -115,7 +111,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 * LogVersion=1.0
 
 ### <a name="accessing-logging-data"></a>ログ データへのアクセス
-`$logs` コンテナー内のすべてのデータには、Blob service API (Azure マネージ ライブラリで提供される .NET API など) を使用してアクセスできます。 ストレージ アカウント管理者は、ログの読み取りと削除を行うことができますが、ログの作成または更新を行うことはできません。 ログの照会には、ログのメタデータとログの名前の両方を使用できます。 特定の時間のログが順番に並んでいない場合もありますが、メタデータには、ログに含まれているエントリのタイムスパンが必ず記録されています。 したがって、ログの名前とメタデータを組み合わせれば、特定のログを検索できます。
+`$logs` コンテナー内のすべてのデータには、Blob service API (Azure マネージド ライブラリで提供される .NET API など) を使用してアクセスできます。 ストレージ アカウント管理者は、ログの読み取りと削除を行うことができますが、ログの作成または更新を行うことはできません。 ログの照会には、ログのメタデータとログの名前の両方を使用できます。 特定の時間のログが順番に並んでいない場合もありますが、メタデータには、ログに含まれているエントリのタイムスパンが必ず記録されています。 したがって、ログの名前とメタデータを組み合わせれば、特定のログを検索できます。
 
 ## <a name="about-storage-analytics-metrics"></a>Storage Analytics Metrics について
 Storage Analytics では、ストレージ サービスに対する要求に関する集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。 トランザクションに関しては、API 操作レベルとストレージ サービス レベルの両方でレポートされます。容量に関しては、ストレージ サービス レベルでレポートされます。 メトリック データは、ストレージ サービスの使用状況の分析、ストレージ サービスに対する要求に関する問題の診断、サービスを使用するアプリケーションのパフォーマンスの向上に利用できます。
@@ -160,7 +156,7 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 これらのテーブルは、Storage Analytics がストレージ アカウントに対して有効化されたときに自動的に作成されます。 これらのテーブルには、ストレージ アカウントの名前空間を介してアクセスします (例: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`
 
 ### <a name="accessing-metrics-data"></a>メトリック データへのアクセス
-メトリック テーブル内のすべてのデータは、Table service API を使用してアクセスできます (Azure マネージ ライブラリで提供される .NET API など)。 ストレージ アカウント管理者は、テーブル エンティティの読み取りと削除を行うことができますが、テーブル エンティティの作成または更新を行うことはできません。
+メトリック テーブル内のすべてのデータは、Table service API を使用してアクセスできます (Azure マネージド ライブラリで提供される .NET API など)。 ストレージ アカウント管理者は、テーブル エンティティの読み取りと削除を行うことができますが、テーブル エンティティの作成または更新を行うことはできません。
 
 ## <a name="billing-for-storage-analytics"></a>Storage Analytics の課金
 すべてのメトリック データは、ストレージ アカウントのサービスによって書き込まれます。 したがって、Storage Analytics によって実行される個々の書き込み操作には料金が発生します。 加えて、メトリック データに費やされるストレージの使用量も課金対象となります。
@@ -173,7 +169,7 @@ Storage Analytics によって実行される次の操作には料金が発生�
 データ保持ポリシーを構成した場合、Storage Analytics が古いログ データやメトリック データを削除しますが、その際の削除トランザクションに対する料金は発生しません。 ただし、クライアントからの削除トランザクションは課金対象となります。 保持ポリシーの詳細については、「 [Storage Analytics のデータ保持ポリシーの設定](https://msdn.microsoft.com/library/azure/hh343263.aspx)」をご覧ください。
 
 ### <a name="understanding-billable-requests"></a>課金の対象となる要求について
-アカウントのストレージ サービスに対して実行されるそれぞれの要求は、課金対象の要求とそうでない要求とに分けられます。 Storage Analytics は、サービスに対するすべての要求をそれぞれログに記録します。たとえば、要求がどのように処理されたかを示すステータス メッセージも記録されます。 同様に、Storage Analytics は、サービスに対するメトリックと、そのサービスの API 操作に対するメトリックを保存しています (特定のステータス メッセージの数やパーセンテージなど)。 これらの機能をうまく組み合わせて利用すると、課金対象の要求を分析したり、アプリケーションを改善したり、サービスに対する要求の問題を診断したりできます。 課金の詳細については、「[Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity (Azure Storage の課金について - 帯域幅、トランザクション、容量)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)」をご覧ください。
+アカウントのストレージ サービスに対して実行されるそれぞれの要求は、課金対象の要求とそうでない要求とに分けられます。 Storage Analytics は、サービスに対するすべての要求をそれぞれログに記録します。たとえば、要求がどのように処理されたかを示すステータス メッセージも記録されます。 同様に、Storage Analytics は、サービスに対するメトリックと、そのサービスの API 操作に対するメトリックを保存しています (特定のステータス メッセージの数やパーセンテージなど)。 これらの機能をうまく組み合わせて利用すると、課金対象の要求を分析したり、アプリケーションを改善したり、サービスに対する要求の問題を診断したりできます。 課金の詳細については、「[Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity (Azure Storage の課金について - 帯域幅、トランザクション、容量)](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)」をご覧ください。
 
 Storage Analytics のデータで課金対象の要求を調べるときには、「 [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/azure/hh343260.aspx) 」の表が参考になります。 手元のログ データとメトリック データをステータス メッセージと照らし合わせながら、特定の要求が課金対象であったかどうかを確認できます。 この表は、ストレージ サービスまたは特定の API 操作の可用性を調べるときにも利用できます。
 

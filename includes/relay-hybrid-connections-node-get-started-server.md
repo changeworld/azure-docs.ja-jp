@@ -1,3 +1,16 @@
+---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
+ms.openlocfilehash: 531866ece1c4acacb926c9e9c6598158c1aa077f
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572348"
+---
 ### <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
 
 `listener.js` という新しい JavaScript ファイルを作成します。

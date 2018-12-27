@@ -1,31 +1,30 @@
 ---
-title: "Azure Functions F# 開発者向けリファレンス | Microsoft Docs"
-description: "F# を使用して Azure Functions を開発する方法について説明します。"
+title: Azure Functions F# 開発者向けリファレンス | Microsoft Docs
+description: F# スクリプトを使用して Azure Functions を開発する方法について説明します。
 services: functions
 documentationcenter: fsharp
 author: sylvanc
 manager: jbronsk
-editor: 
-tags: 
-keywords: "Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーなしのアーキテクチャ, F#"
+keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーなしのアーキテクチャ, F#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: fsharp
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 09/09/2016
+ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 039306b093d92b66883edcca10e42f7b1dbc7245
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: bd971b84b907d3fda1bea9922b2fd1881eb369e9
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087238"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開発者向けリファレンス
-[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
-Azure Functions 用 F# は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 データは関数の引数を通じて F# 関数に渡されます。 引数名は `function.json`で指定され、関数のロガーやキャンセル トークンなどにアクセスするための定義済みの名前があります。
+Azure Functions 用 F# は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 データは関数の引数を通じて F# 関数に渡されます。 引数名は `function.json`で指定され、関数のロガーやキャンセル トークンなどにアクセスするための定義済みの名前があります。 
+
+>[!IMPORTANT]
+>F# スクリプト (.fsx) は、Azure Functions [バージョン 1.x](functions-versions.md#creating-1x-apps) の関数でのみサポートされています。 F# をバージョン 2.x のランタイムで使用するには、プリコンパイル済み F# クラス ライブラリ プロジェクト (.fs) を使用する必要があります。 F# クラス ライブラリ プロジェクトを作成、管理、公開するには、[C# クラス ライブラリ プロジェクト](functions-dotnet-class-library.md)の場合と同じように Visual Studio を使用します。 Functions バージョンの詳細については、「[Azure Functions ランタイム バージョンの概要](functions-versions.md)」をご覧ください。
 
 この記事では、「 [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
@@ -33,6 +32,29 @@ Azure Functions 用 F# は、小規模なコード ("関数") をクラウドで
 `.fsx` ファイルは、F# スクリプトです。 1 つのファイルに含まれている F# プロジェクトとして考えることができます。 ファイルには、プログラムのためのコード (この場合は、Azure 関数) と、依存関係を管理するためのディレクティブの両方が含まれています。
 
 Azure 関数に対して `.fsx` を使用すると、一般に必要とされるアセンブリが自動的に含められるため、"定型" コードではなく、関数のコードに集中できます。
+
+## <a name="folder-structure"></a>フォルダー構造
+
+F# スクリプト プロジェクトのフォルダー構造は、次のようになります。
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - run.fsx
+ | | - function.json
+ | | - function.proj
+ | - MySecondFunction
+ | | - run.fsx
+ | | - function.json
+ | | - function.proj
+ | - host.json
+ | - extensions.csproj
+ | - bin
+```
+
+関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.fsx) とバインディング構成ファイル (function.json) があります。
+
+Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](functions-triggers-bindings.md#local-development-azure-functions-core-tools)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="binding-to-arguments"></a>引数へのバインド
 「[Azure Functions のトリガーとバインドの開発者用リファレンス](functions-triggers-bindings.md)」で詳しく説明されているように、各バインドはいくつかの引数のセットをサポートしています。 たとえば、BLOB トリガーでサポートされている引数バインドの 1 つは、POCO です。これは、F# レコードを使用して表すことができます。 例: 
@@ -57,7 +79,7 @@ type TestObject =
     { SenderName : string
       Greeting : string }
 
-let Run(req: TestObject, log: TraceWriter) =
+let Run(req: TestObject, log: ILogger) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
@@ -74,11 +96,11 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>ログの記録
-出力を F# の[ストリーミング ログ](../app-service/web-sites-enable-diagnostic-log.md)に記録するには、関数が `TraceWriter` 型の引数を受け取る必要があります。 一貫性のために、この引数は `log`という名前にすることをお勧めします。 例: 
+出力を F# の[ストリーミング ログ](../app-service/web-sites-enable-diagnostic-log.md)に記録するには、関数が [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 型の引数を受け取る必要があります。 一貫性のために、この引数は `log`という名前にすることをお勧めします。 例: 
 
 ```fsharp
-let Run(blob: string, output: byref<string>, log: TraceWriter) =
-    log.Verbose(sprintf "F# Azure Function processed a blob: %s" blob)
+let Run(blob: string, output: byref<string>, log: ILogger) =
+    log.LogInformation(sprintf "F# Azure Function processed a blob: %s" blob)
     output <- input
 ```
 
@@ -110,8 +132,9 @@ let Run(req: HttpRequestMessage, token: CancellationToken)
 ```fsharp
 open System.Net
 open System.Threading.Tasks
+open Microsoft.Extensions.Logging
 
-let Run(req: HttpRequestMessage, log: TraceWriter) =
+let Run(req: HttpRequestMessage, log: ILogger) =
     ...
 ```
 
@@ -135,8 +158,9 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
 open System.Net
 open System.Net.Http
 open System.Threading.Tasks
+open Microsoft.Extensions.Logging
 
-let Run(req: HttpRequestMessage, log: TraceWriter) =
+let Run(req: HttpRequestMessage, log: ILogger) =
     ...
 ```
 
@@ -174,8 +198,9 @@ F# Compiler Services をサポートしているエディターは、Azure Funct
 
 open System
 open Microsoft.Azure.WebJobs.Host
+open Microsoft.Extensions.Logging
 
-let Run(blob: string, output: byref<string>, log: TraceWriter) =
+let Run(blob: string, output: byref<string>, log: ILogger) =
     ...
 ```
 
@@ -231,10 +256,11 @@ NuGet パッケージを F# 関数で使用するには、`project.json` ファ�
 
 ```fsharp
 open System.Environment
+open Microsoft.Extensions.Logging
 
-let Run(timer: TimerInfo, log: TraceWriter) =
-    log.Info("Storage = " + GetEnvironmentVariable("AzureWebJobsStorage"))
-    log.Info("Site = " + GetEnvironmentVariable("WEBSITE_SITE_NAME"))
+let Run(timer: TimerInfo, log: ILogger) =
+    log.LogInformation("Storage = " + GetEnvironmentVariable("AzureWebJobsStorage"))
+    log.LogInformation("Site = " + GetEnvironmentVariable("WEBSITE_SITE_NAME"))
 ```
 
 ## <a name="reusing-fsx-code"></a>.fsx コードの再利用
@@ -245,15 +271,15 @@ let Run(timer: TimerInfo, log: TraceWriter) =
 ```fsharp
 #load "logger.fsx"
 
-let Run(timer: TimerInfo, log: TraceWriter) =
+let Run(timer: TimerInfo, log: ILogger) =
     mylog log (sprintf "Timer: %s" DateTime.Now.ToString())
 ```
 
 `logger.fsx`
 
 ```fsharp
-let mylog(log: TraceWriter, text: string) =
-    log.Verbose(text);
+let mylog(log: ILogger, text: string) =
+    log.LogInformation(text);
 ```
 
 `#load` ディレクティブに指定するパスは、`.fsx` ファイルの場所からの相対パスです。

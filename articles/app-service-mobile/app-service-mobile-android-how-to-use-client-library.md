@@ -1,6 +1,6 @@
 ---
-title: "Azure Mobile Apps SDK for Android の使用方法 | Microsoft Docs"
-description: "Azure Mobile Apps SDK for Android の使用方法"
+title: Azure Mobile Apps SDK for Android の使用方法 | Microsoft Docs
+description: Azure Mobile Apps SDK for Android の使用方法
 services: app-service\mobile
 documentationcenter: android
 author: conceptdev
@@ -13,11 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: f04f3fc7d2ff2e01baa78571b2ba267f8e4905c6
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: b595e62e032743be2655406ac02c8db94cf708f9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281768"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
 
@@ -152,7 +153,7 @@ Azure Mobile Apps SDK の核となるのは、モバイル アプリ バック�
 SQL Azure のテーブルからデータにアクセスするには、モバイル アプリ バックエンドのテーブルに対応するクライアント データ クラスを定義します。 このトピックの例では、次の列を含む、**MyDataTable** という名前のテーブルがあるものとします。
 
 * id
-* テキスト
+* text
 * 完了
 
 対応する型指定されたクライアント側オブジェクトは、**MyDataTable.java** という名前のファイル内に存在します。
@@ -224,13 +225,13 @@ public class ToDoItem
 
     @com.google.gson.annotations.SerializedName("createdAt")
     private DateTimeOffset mCreatedAt;
-    public DateTimeOffset getUpdatedAt() { return mCreatedAt; }
-    protected DateTimeOffset setUpdatedAt(DateTimeOffset createdAt) { mCreatedAt = createdAt; }
+    public DateTimeOffset getCreatedAt() { return mCreatedAt; }
+    protected void setCreatedAt(DateTimeOffset createdAt) { mCreatedAt = createdAt; }
 
     @com.google.gson.annotations.SerializedName("updatedAt")
     private DateTimeOffset mUpdatedAt;
     public DateTimeOffset getUpdatedAt() { return mUpdatedAt; }
-    protected DateTimeOffset setUpdatedAt(DateTimeOffset updatedAt) { mUpdatedAt = updatedAt; }
+    protected void setUpdatedAt(DateTimeOffset updatedAt) { mUpdatedAt = updatedAt; }
 
     @com.google.gson.annotations.SerializedName("version")
     private String mVersion;
@@ -767,7 +768,7 @@ public void showAllUntyped(View view) {
 Azure Mobile Apps クライアント SDK はオフライン同期も実装します。このためには、SQLite データベースを使用して、サーバー データのコピーをローカルに格納します。  オフライン テーブルで実行される操作では、モバイル接続は不要です。  オフライン同期は回復力とパフォーマンスに優れる一方で、競合の解決にはより複雑なロジックを必要とします。  Azure Mobile Apps クライアント SDK は、次の機能を実装します。
 
 * 増分同期: 更新されたレコードや新しいレコードのみがダウンロードされるため、帯域幅とメモリ消費量を節約できます。
-* オプティミスティック同時実行制御: 操作は成功することが前提とされます。  競合の解決は、更新がサーバーで実行されるまで延期されます。
+* オプティミスティック コンカレンシー: 操作は成功することが前提とされます。  競合の解決は、更新がサーバーで実行されるまで延期されます。
 * 競合の解決: SDK が、サーバーで競合の変更が行われたことを検出して、ユーザーに通知するフックを提供します。
 * 論理削除: 削除されたレコードは削除済みとマークされ、他のデバイスはオフラインキャッシュを更新することができます。
 
@@ -1046,7 +1047,7 @@ MobileServiceUser user = mClient
 
 * 従来のサーバー フローの認証と同様に、Azure App Service の認証と承認を構成します。
 * 認証用の認証プロバイダー SDK を統合して、アクセス トークンを生成します。
-* 次のように、`.login()` メソッドを呼び出します。
+* 次のように `.login()` メソッドを呼び出します (`result` は `AuthenticationResult` である必要があります)。
 
     ```java
     JSONObject payload = new JSONObject();
@@ -1064,6 +1065,8 @@ MobileServiceUser user = mClient
     });
     ```
 
+次のセクションで完全なコード例を参照してください。
+
 `onSuccess()` メソッドを、正常なログインで使用する任意のコードに置き換えます。  `{provider}` 文字列は有効なプロバイダーです: **aad** (Azure Active Directory)、**facebook**、**google**、**microsoftaccount**、または **twitter**。  カスタム認証を実装している場合、カスタム認証プロバイダー タグも使用することができます。
 
 ### <a name="adal"></a>Active Directory Authentication Library (ADAL) を使用したユーザーの認証
@@ -1073,35 +1076,35 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 1. [Active Directory ログイン用の App Service の構成方法][22]に関するチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
 2. build.gradle ファイルを変更して以下の定義を追加し、ADAL をインストールします。
 
-```
-repositories {
-    mavenCentral()
-    flatDir {
-        dirs 'libs'
+    ```
+    repositories {
+        mavenCentral()
+        flatDir {
+            dirs 'libs'
+        }
+        maven {
+            url "YourLocalMavenRepoPath\\.m2\\repository"
+        }
     }
-    maven {
-        url "YourLocalMavenRepoPath\\.m2\\repository"
+    packagingOptions {
+        exclude 'META-INF/MSFTSIG.RSA'
+        exclude 'META-INF/MSFTSIG.SF'
     }
-}
-packagingOptions {
-    exclude 'META-INF/MSFTSIG.RSA'
-    exclude 'META-INF/MSFTSIG.SF'
-}
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile('com.microsoft.aad:adal:1.1.1') {
-        exclude group: 'com.android.support'
-    } // Recent version is 1.1.1
-    compile 'com.android.support:support-v4:23.0.0'
-}
-```
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile('com.microsoft.aad:adal:1.1.1') {
+            exclude group: 'com.android.support'
+        } // Recent version is 1.1.1
+        compile 'com.android.support:support-v4:23.0.0'
+    }
+    ```
 
-1. 以下のコードを次のように置換してから、アプリケーションに追加します。
+3. 以下のコードを次のように置換してから、アプリケーションに追加します。
 
-* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。
-* **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
-* **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
-* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 この値は、*https://contoso.azurewebsites.net/.auth/login/done* のようにする必要があります。
+    * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。
+    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
+    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
+    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、*https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
 
 ```java
 private AuthenticationContext mContext;
@@ -1219,7 +1222,7 @@ private class ProgressFilter implements ServiceFilter {
             public void onSuccess(ServiceFilterResponse response) {
                 runOnUiThread(new Runnable() {
                     @Override
-                    pubic void run() {
+                    public void run() {
                         if (mProgressBar != null)
                             mProgressBar.setVisibility(ProgressBar.GONE);
                     }
@@ -1290,9 +1293,9 @@ client.setGsonBuilder(
 [Mobile Services SDK for Android]: http://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure portal]: https://portal.azure.com
 [認証の概要]: app-service-mobile-android-get-started-users.md
-[1]: http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonObject.html
+[1]: https://static.javadoc.io/com.google.code.gson/gson/2.8.5/com/google/gson/JsonObject.html
 [2]: http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson
-[3]: http://go.microsoft.com/fwlink/p/?LinkId=290801
+[3]: https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.5
 [4]: http://go.microsoft.com/fwlink/p/?LinkId=296840
 [5]: app-service-mobile-android-get-started-push.md
 [6]: ../notification-hubs/notification-hubs-push-notification-overview.md#integration-with-app-service-mobile-apps

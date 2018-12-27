@@ -1,3 +1,20 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: service-bus-relay
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 08/16/2018
+ms.author: clemensv
+ms.custom: include file
+ms.openlocfilehash: fbc5bbff62a13d9b4301271031105ecd7d17fa86
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40183148"
+---
 ### <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
 Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成します。
@@ -5,8 +22,10 @@ Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プ�
 ### <a name="add-the-relay-nuget-package"></a>Relay NuGet パッケージを追加する
 
 1. 新しく作成したプロジェクトを右クリックしてから、**[NuGet パッケージの管理]** を選択します。
-2. **[参照]** を選択し、**Microsoft.Azure.Relay** を検索します。 検索結果から、"**Microsoft Azure Relay**" を選択します。 
-3. **[インストール]** を選択してインストールを完了します。 ダイアログ ボックスを閉じます。
+2. **[プレリリースを含める]** オプションを選択します。 
+3. **[参照]** を選択し、**Microsoft.Azure.Relay** を検索します。 検索結果から、"**Microsoft Azure Relay**" を選択します。
+4. バージョンには、**[2.0.0-preview1-20180523]** を選択します。 
+5. **[インストール]** を選択してインストールを完了します。 ダイアログ ボックスを閉じます。
 
 ### <a name="write-code-to-receive-messages"></a>メッセージを受信するコードを記述する
 
@@ -17,6 +36,7 @@ Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プ�
     using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Net;
     using Microsoft.Azure.Relay;
     ```
 2. ハイブリッド接続の詳細に関する定数を `Program` クラスに追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した値に置き換えます。 必ず完全修飾名前空間名を使用してください。

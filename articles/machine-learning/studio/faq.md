@@ -6,32 +6,32 @@ services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
 ms.author: hshapiro
-manager: hjerez
-editor: cgronlun
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: ceec69ee822e118adfa3825620a31575109894ea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 77ae05c240dbb099528d7224a936d90416366816
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247774"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning に関してよく寄せられる質問: 課金、機能、制限、サポート
 ここでは、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についてよく寄せられる質問とその回答をいくつか紹介します。 この FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
 
 **ここで見つからない質問がある場合**
 
-MSDN には、Azure Machine Learning に関するフォーラムがあり、データ サイエンス コミュニティのメンバーはここで、Azure Machine Learning に関する質問をすることができます。 このフォーラムは Azure Machine Learning チームが監視しています。 [Azure Machine Learning フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)にアクセスして、既存の回答を検索するか、ご自身で新たに質問を投稿してください。
+MSDN には、Azure Machine Learning に関するフォーラムがあり、データ サイエンス コミュニティのメンバーはここで、Azure Machine Learning に関する質問をすることができます。 このフォーラムは Azure Machine Learning チームが監視しています。 [Azure Machine Learning フォーラム](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)にアクセスして、既存の回答を検索するか、ご自身で新たに質問を投稿してください。
 
 ## <a name="general-questions"></a>一般的な質問
 **Azure Machine Learning とは**
 
-Azure Machine Learning は、クラウドで予測分析ソリューションを作成、テスト、操作、管理するための、十分に管理されたサービスです。 ブラウザーさえあれば、サインイン、データのアップロード、機械学習の実験をすぐに始めることができます。 ドラッグ アンド ドロップによる予測モデリング、モジュールの大きなパレット、開始用テンプレートのライブラリによって、一般的な機械学習のタスクがシンプルになり、作業時間が短縮されます。 詳細については、「 [Azure Machine Learning サービスの概要](https://azure.microsoft.com/services/machine-learning/)」に関するページをご覧ください。 機械学習の重要な用語と概念の説明については、[Azure Machine Learning の概要](what-is-machine-learning.md)に関するページをご覧ください。
+Azure Machine Learning は、クラウドで予測分析ソリューションを作成、テスト、操作、管理するための、フル マネージドのサービスです。 ブラウザーさえあれば、サインイン、データのアップロード、機械学習の実験をすぐに始めることができます。 ドラッグ アンド ドロップによる予測モデリング、モジュールの大きなパレット、開始用テンプレートのライブラリによって、一般的な機械学習のタスクがシンプルになり、作業時間が短縮されます。 詳細については、「 [Azure Machine Learning サービスの概要](https://azure.microsoft.com/services/machine-learning/)」に関するページをご覧ください。 機械学習の重要な用語と概念の説明については、[Azure Machine Learning の概要](what-is-machine-learning.md)に関するページをご覧ください。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -49,7 +49,7 @@ Machine Learning API サービスを使用すると、Machine Learning Studio �
 
 **クラシック Web サービスの一覧はどこで確認できますか?新しい Azure Resource Manager ベースの Web サービスの一覧はどこで確認できますか?**
 
-クラシック デプロイメント モデルを使用して作成された Web サービスと新しい Azure Resource Manager デプロイメント モデルを使用して作成された Web サービスは、[Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/) ポータルに一覧表示されます。
+クラシック デプロイ モデルを使用して作成された Web サービスと新しい Azure Resource Manager デプロイ モデルを使用して作成された Web サービスは、[Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/) ポータルに一覧表示されます。
 
 クラシック Web サービスは、[Machine Learning Studio](http://studio.azureml.net) の **[Web サービス]** タブにも一覧表示されます。
 
@@ -73,7 +73,7 @@ REST API を使用して Web サービスにアクセスするには、いくつ
 
 **Azure Machine Learning の主な更新内容を教えてください。**
 
-最新の更新内容については、「[Azure Machine Learning の新機能](whats-new.md)」をご覧ください。
+最新の更新内容については、「[Azure Machine Learning の新機能](../../active-directory/fundamentals/whats-new.md)」をご覧ください。
 
 ## <a name="machine-learning-studio-questions"></a>Machine Learning Studio に関する質問
 ### <a name="import-and-export-data-for-machine-learning"></a>Machine Learning 用データのインポートとエクスポート
@@ -93,7 +93,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 次の種類のデータは、特徴の正規化の際に、より大きなデータセットに展開できますが、10 GB 未満に制限されています。
 
 * スパース
-* カテゴリ
+* Categorical
 * 文字列
 * バイナリ データ
 
@@ -123,7 +123,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 ### <a name="modules"></a>モジュール
 **探しているアルゴリズム、データ ソース、データ形式、データ変換操作が Azure Machine Learning Studio にありません。どうすればいいでしょうか?**
 
-[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)にアクセスして、機能に関する追跡中の要望をご覧いただけます。 探している機能が既に要求されている場合は、その要求に投票を追加できます。 探している機能が存在しない場合は、新しい要求を作成してください。 作成した要求の状態もフォーラムで確認できます。 この一覧はこまめに追跡され、機能の提供状況は頻繁に更新されます。 また、R と Python に対する組み込みのサポートを使用すれば、必要に応じてカスタム変換を作成できます。
+[ユーザー フィードバック フォーラム](https://go.microsoft.com/fwlink/?LinkId=404231)にアクセスして、機能に関する追跡中の要望をご覧いただけます。 探している機能が既に要求されている場合は、その要求に投票を追加できます。 探している機能が存在しない場合は、新しい要求を作成してください。 作成した要求の状態もフォーラムで確認できます。 この一覧はこまめに追跡され、機能の提供状況は頻繁に更新されます。 また、R と Python に対する組み込みのサポートを使用すれば、必要に応じてカスタム変換を作成できます。
 
 **既存のコードを Machine Learning Studio に取り込むことはできますか?**
 
@@ -182,7 +182,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 ### <a name="r-module"></a>R モジュール
 **Machine Learning Studio で使用できるのはどの R パッケージですか。**
 
-Machine Learning Studio では現在、400 を超える CRAN R パッケージがサポートされています。対象となるすべてのパッケージが記載された最新の一覧については、[こちら](http://az754797.vo.msecnd.net/docs/RPackages.xlsx)を参照してください。 また、この一覧を自身で取得する方法については、「[R を使用した実験の拡張](extend-your-experiment-with-r.md)」を参照してください。 必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)でパッケージの名前を指定してください。
+Machine Learning Studio では現在、400 を超える CRAN R パッケージがサポートされています。対象となるすべてのパッケージが記載された最新の一覧については、[こちら](http://az754797.vo.msecnd.net/docs/RPackages.xlsx)を参照してください。 また、この一覧を自身で取得する方法については、「[R を使用した実験の拡張](extend-your-experiment-with-r.md)」を参照してください。 必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム](https://go.microsoft.com/fwlink/?LinkId=404231)でパッケージの名前を指定してください。
 
 **カスタム R モジュールを構築することはできますか。**
 
@@ -207,7 +207,7 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。 詳細
 
 再トレーニング API を使用してください。 詳細については、「 [プログラムによる Machine Learning のモデルの再トレーニング](retrain-models-programmatically.md)」をご覧ください。 サンプル コードは、「 [Microsoft Azure Maching Learning Retraining Demo (Microsoft Azure Maching Learning 再トレーニング デモ)](https://azuremlretrain.codeplex.com/)」にもあります。
 
-### <a name="create"></a>[作成]
+### <a name="create"></a>Create
 **ローカルまたはインターネットに接続していないアプリケーションでモデルをデプロイすることはできますか?**
 
 いいえ。
@@ -260,7 +260,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 次の種類のデータは、特徴の正規化の際に、より大きなデータセットに展開できますが、10 GB 未満に制限されています。
 
 * スパース
-* カテゴリ
+* Categorical
 * 文字列
 * バイナリ データ
 
@@ -310,9 +310,9 @@ Machine Learning Center には継続的に新しい資料が追加されます�
 
 **どのようにして Azure Machine Learning のサポートを受けることができますか。**
 
-Azure Machine Learning のテクニカル サポートを受けるには、[Azure のサポート](/support/options/) ページにアクセスし、**[Machine Learning]**を選択します。
+Azure Machine Learning のテクニカル サポートを受けるには、[Azure のサポート](https://azure.microsoft.com/support/options/) ページにアクセスし、**[Machine Learning]** を選択します。
 
-MSDN にも、Azure Machine Learning に関するコミュニティ フォーラムがあり、ここで、Azure Machine Learning に関連する質問をすることができます。 このフォーラムは Azure Machine Learning チームが監視しています。 Azure フォーラムには[こちら](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)からアクセスできます。
+MSDN にも、Azure Machine Learning に関するコミュニティ フォーラムがあり、ここで、Azure Machine Learning に関連する質問をすることができます。 このフォーラムは Azure Machine Learning チームが監視しています。 Azure フォーラムには[こちら](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)からアクセスできます。
 
 ## <a name="billing-questions"></a>課金に関する質問
 **Machine Learning ではどのように請求が行われますか。**
@@ -372,7 +372,7 @@ Machine Learning の Free レベルでは、別個のストレージは必要あ
 
 **Machine Learning では高可用性がサポートされますか?**
 
-はい。 詳細については、「[Machine Learning の価格](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)」のサービス レベル アグリーメント (SLA) に関する説明をご覧ください。
+はい。 詳細については、「[Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)」のサービス レベル アグリーメント (SLA) に関する説明をご覧ください。
 
 **実稼働 API 呼び出しの実行には、どのような種類のコンピューティング リソースが使用されますか?**
 
@@ -472,7 +472,7 @@ BES ワークロードの場合も、同じ方法で課金されます。 ただ
 ### <a name="azure-machine-learning-free-and-standard-tier"></a>Azure Machine Learning の Free および Standard レベル
 **Azure Machine Learning の Free レベルには何が含まれますか?**
 
-Azure Machine Learning の Free レベルは、Azure Machine Learning Studio を深く体験していただくためのものです。 サインアップに必要なのは、Microsoft アカウントだけです。 Free レベルには、 [Microsoft アカウント](https://www.microsoft.com/account/default.aspx)1 つにつき 1 つの Azure Machine Learning Studio ワークスペースへの無料アクセスが含まれます。 このレベルでは、最大 10 GB のストレージを使用でき、モデルをステージング API として運用できます。 Free レベルのワークロードは SLA の対象外であり、開発や個人用の目的にのみ使用されます。 
+Azure Machine Learning の Free レベルは、Azure Machine Learning Studio を深く体験していただくためのものです。 サインアップに必要なのは、Microsoft アカウントだけです。 Free レベルには、 [Microsoft アカウント](https://account.microsoft.com/account)1 つにつき 1 つの Azure Machine Learning Studio ワークスペースへの無料アクセスが含まれます。 このレベルでは、最大 10 GB のストレージを使用でき、モデルをステージング API として運用できます。 Free レベルのワークロードは SLA の対象外であり、開発や個人用の目的にのみ使用されます。 
 
 Free レベルのワークスペースには次の制限事項があります。
 

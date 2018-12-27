@@ -1,26 +1,22 @@
 ---
-title: "Azure クイック スタート - PowerShell で VM をバックアップする | Microsoft Docs"
-description: "Azure PowerShell を使用して仮想マシンをバックアップする方法"
+title: Azure クイック スタート - PowerShell で VM をバックアップする
+description: Azure PowerShell を使用して仮想マシンをバックアップする方法
 services: backup
-documentationcenter: virtual-machines
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
-editor: 
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 2/14/2018
-ms.author: iainfou
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 55de58770bd91e000c12b42c8eeac92fb8c0a710
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7971c1399cc905353e271e8774c0e7ad36ca79a9
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869265"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Azure PowerShell を使用した Azure の仮想マシンのバックアップ
 Azure PowerShell モジュールは、コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 データは、定期的にバックアップすることで保護することができます。 Azure Backup によって、geo 冗長 Recovery コンテナーに保存できる復元ポイントが作成されます。 この記事では、Azure PowerShell モジュールを使用して仮想マシン (VM) をバックアップする方法を説明します。 これらの手順は、[Azure CLI](quick-backup-vm-cli.md) または [Azure ポータル](quick-backup-vm-portal.md)を使用して実行することもできます。
@@ -31,10 +27,10 @@ Azure PowerShell モジュールは、コマンド ラインやスクリプト�
 
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
-`Login-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Azure Backup を最初に使用するときは、[Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) を使ってサブスクリプション内で Azure Recovery Service プロバイダーを登録する必要があります。

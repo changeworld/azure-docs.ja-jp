@@ -2,18 +2,22 @@
 title: スキーマが異なるクラウド データベース間のクエリ | Microsoft Docs
 description: 列方向のパーティションでデータベース間クエリを設定する方法
 services: sql-database
-manager: craigg
-author: MladjoA
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: MladjoA
 ms.author: mlandzic
-ms.openlocfilehash: 243110e47ab7c98c9fec9b2747fde73ccb775fbc
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 5dbf6fb1b59999481348d3b4ad4775a77295b70d
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238899"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>スキーマが異なるクラウド データベース間のクエリ (プレビュー)
 ![異なるデータベースのテーブルにまたがるクエリ][1]
@@ -44,7 +48,7 @@ ms.lasthandoff: 04/06/2018
     [;]
 
 > [!NOTE]
-> `<username>` にサフィックス **"@servername"** が含まれていないことを確認してください。 
+> `<username>` にサフィックス **"\@servername"** が含まれていないことを確認してください。 
 >
 
 ## <a name="create-external-data-sources"></a>外部データ ソースの作成

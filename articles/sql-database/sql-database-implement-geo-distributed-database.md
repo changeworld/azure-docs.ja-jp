@@ -2,20 +2,24 @@
 title: 地理的に分散した Azure SQL Database ソリューションを実装する | Microsoft Docs
 description: Azure SQL Database とアプリケーションをレプリケートされたデータベースにフェールオーバーするための構成方法と、フェールオーバーをテストする方法について説明します。
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,business continuity
-ms.topic: tutorial
-ms.date: 04/01/2018
-ms.author: carlrab
-ms.openlocfilehash: 569eef6e1d930e505bc6dff9b692814438e5bd4d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: anosov1960
+ms.author: sashan
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 11/01/2018
+ms.openlocfilehash: 2508d43e876a7e463d68eed1b1ca93ddf0d1e9d1
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913346"
 ---
-# <a name="implement-a-geo-distributed-database"></a>地理的に分散したデータベースの実装
+# <a name="tutorial-implement-a-geo-distributed-database"></a>チュートリアル: geo 分散型データベースを実装する
 
 このチュートリアルでは、Azure SQL Database とアプリケーションをリモート リージョンのフェールオーバーのために構成し、その後フェールオーバー計画をテストします。 学習内容は次のとおりです。 
 
@@ -37,8 +41,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - Azure SQL Database がインストールされていること。 このチュートリアルは、次のクイック スタートのいずれかから **mySampleDatabase** という名前の AdventureWorksLT サンプル データベースを使用します。
 
    - [DB の作成 - ポータル](sql-database-get-started-portal.md)
-   - [DB の作成 - CLI](sql-database-get-started-cli.md)
-   - [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
+   - [DB の作成 - CLI](sql-database-cli-samples.md)
+   - [DB の作成 - PowerShell](sql-database-powershell-samples.md)
 
 - データベースに対して SQL スクリプトを実行する方法を指定したので、次のクエリ ツールのいずれかを使用することができます。
    - [Azure Portal](https://portal.azure.com) のクエリ エディター。 Azure Portal でクエリ エディターを使用する方法の詳細については、[クエリ エディターを使用した接続とクエリ実行](sql-database-get-started-portal.md#query-the-sql-database)に関するドキュメントを参照してください。
@@ -53,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - SQL Server Management Studio
 - Visual Studio Code
 
-これらのユーザー アカウントはセカンダリ サーバーに自動的にレプリケートされます (同期が維持されます)。 SQL Server Management Studio または Visual Studio Code を使用するには、まだファイアウォールを構成していない IP アドレスのクライアントから接続している場合、ファイアウォール規則を作成する必要がある場合があります。 詳細な手順については、「[サーバーレベルのファイアウォール規則を作成する](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)」を参照してください。
+これらのユーザー アカウントはセカンダリ サーバーに自動的にレプリケートされます (同期が維持されます)。 SQL Server Management Studio または Visual Studio Code を使用するには、まだファイアウォールを構成していない IP アドレスのクライアントから接続している場合、ファイアウォール規則を作成する必要がある場合があります。 詳細な手順については、「[サーバーレベルのファイアウォール規則を作成する](sql-database-get-started-portal-firewall.md)」を参照してください。
 
 - クエリ ウィンドウで次のクエリを実行し、データベース内に 2 つのユーザー アカウントを作成します。 このスクリプトによって **app_admin** アカウントに **db_owner** のアクセス許可が付与され、**app_user** アカウントに **SELECT** および **UPDATE** のアクセス許可が付与されます。 
 
@@ -69,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-database-level-firewall"></a>データベース レベルのファイアウォールを作成する
 
-SQL Database に[データベースレベルのファイアウォール規則](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)を作成します。 このデータベース レベルのファイアウォール規則は、このチュートリアルで作成するセカンダリ サーバーに自動的にレプリケートされます。 (このチュートリアルでは) 簡略化のために、このチュートリアルの手順を実行しているコンピューターのパブリック IP アドレスを使用します。 現在のコンピューターのファイアウォール規則に使用する IP アドレスを確認するには、「[サーバーレベルのファイアウォール規則を作成する](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)」を参照してください。  
+SQL Database に[データベースレベルのファイアウォール規則](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)を作成します。 このデータベース レベルのファイアウォール規則は、このチュートリアルで作成するセカンダリ サーバーに自動的にレプリケートされます。 (このチュートリアルでは) 簡略化のために、このチュートリアルの手順を実行しているコンピューターのパブリック IP アドレスを使用します。 現在のコンピューターのファイアウォール規則に使用する IP アドレスを確認するには、「[サーバーレベルのファイアウォール規則を作成する](sql-database-get-started-portal-firewall.md)」を参照してください。  
 
 - 開かれたクエリ ウィンドウで、前のクエリを次のクエリと置き換えます。IP アドレスは自分の環境の適切な IP アドレスに置き換えます。  
 
@@ -380,4 +384,17 @@ Java および Maven 環境をインストールして構成する方法に関�
 
 ## <a name="next-steps"></a>次の手順
 
-詳細については、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページをご覧ください。
+このチュートリアルでは、Azure SQL Database とアプリケーションをリモート リージョンのフェールオーバーのために構成し、その後フェールオーバー計画をテストしました。  以下の方法について学習しました。 
+
+> [!div class="checklist"]
+> * データベース ユーザーを作成し、アクセス許可を付与する
+> * データベースレベルのファイアウォール規則を設定する
+> * geo レプリケーション フェールオーバー グループを作成する
+> * Java アプリケーションを作成してコンパイルし、Azure SQL Database に対してクエリを実行する
+> * ディザスター リカバリー訓練を実施する
+
+次のチュートリアルに進んで、DMS を使用して SQL Server を Azure SQL Database Managed Instance に移行します。
+
+> [!div class="nextstepaction"]
+>[DMS を使用して SQL Server を Azure SQL Database Managed Instance に移行する](../dms/tutorial-sql-server-to-managed-instance.md)
+

@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化 | Microsoft Docs"
-description: "このページでは、ネットワーク セキュリティ グループの監査を構成する方法について説明します"
+title: Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化 | Microsoft Docs
+description: このページでは、ネットワーク セキュリティ グループの監査を構成する方法について説明します
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 78a01bcf-74fe-402a-9812-285f3501f877
 ms.service: network-watcher
 ms.devlang: na
@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 57f2200e541eeb629f72d60ffa0acb2d8233c018
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 227ea446a75c167be27128b15de1d3c216e6856d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363378"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化
 
 インフラストラクチャのセキュリティ体制の検証は、多くのお客様が直面する課題です。 この課題は Azure の VM にも同様に存在します。 適用するネットワーク セキュリティ グループ (NSG) 規則に基づいて、同様のセキュリティ プロファイルを確保することが重要です。 セキュリティ グループ ビューを使用すれば、NSG 内の VM に適用された規則の一覧を取得できます。 適切な NSG セキュリティ プロファイルを定義し、一週間ごとにセキュリティ グループ ビューを起動して、その出力を適切なプロファイルと比較してレポートを作成することができます。 この方法で、所定のセキュリティ プロファイルに準拠していないすべての VM を簡単に特定できます。
 
-ネットワーク セキュリティ グループについてよくご存じでない場合は、[ネットワーク セキュリティの概要](../virtual-network/virtual-networks-nsg.md)に関するページをご覧ください。
+ネットワーク セキュリティ グループについてよくご存じでない場合は、「[ネットワーク セキュリティの概要](../virtual-network/security-overview.md)」をご覧ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -139,7 +140,7 @@ $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 
 ## <a name="retrieve-security-group-view"></a>セキュリティ グループ ビューの取得
 
-次の手順では、セキュリティ グループ ビューの結果を取得します。 この結果は、先ほど表示した "基準" の json と比較されます。
+次に、セキュリティ グループ ビューの結果を取得します。 この結果は、先ほど表示した "基準" の json と比較されます。
 
 ```powershell
 $secgroup = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
@@ -185,9 +186,9 @@ Direction                : Inbound
 SideIndicator            : <=
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-設定が変更されている場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-portal.md)に関するページを参照して、問題があるネットワーク セキュリティ グループとセキュリティ規則を詳しく調べます。
+設定が変更されている場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/manage-network-security-group.md)に関するページを参照して、問題があるネットワーク セキュリティ グループとセキュリティ規則を詳しく調べます。
 
 
 

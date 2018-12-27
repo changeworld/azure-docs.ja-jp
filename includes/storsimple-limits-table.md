@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 8a349916d0c0efc0f7895368a614897e3c6a15dc
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50964579"
+---
 <!--author=alkohli last changed: 12/15/15-->
 
 | 制限の種類 | 制限 | 説明 |
@@ -5,7 +18,7 @@
 | ストレージ アカウントの資格情報の最大数 |64 | |
 | ボリューム コンテナーの最大数 |64 | |
 | ボリュームの最大数 |255 | |
-| 帯域幅テンプレートごとのスケジュールの最大数 |168 |毎日の 1 時間ごとのスケジュール (1 日 24 時間週 7 日)。 |
+| 帯域幅テンプレートごとのスケジュールの最大数 |168 |毎日の 1 時間ごとのスケジュール (24\*7)。 |
 | 物理デバイス上の階層化ボリュームの最大サイズ |8100 と 8600 では 64 TB |8100 と 8600 は物理デバイスです。 |
 | Azure 内の仮想デバイス上の階層化ボリュームの最大サイズ |8010 では 30 TB <br></br> 8020 では 64 TB |8010 と 8020 は、それぞれ Standard Storage と Premium Storage を使用する Azure の仮想デバイスです。 |
 | 物理デバイス上のローカル固定ボリュームの最大サイズ |8100 では 9 TB (テラバイト) <br></br> 8600 では 24 TB (テラバイト) |8100 と 8600 は物理デバイスです。 |

@@ -1,23 +1,23 @@
 ---
 title: 複数の Azure SQL データベースにわたるアドホック レポート クエリの実行 | Microsoft Docs
 description: マルチテナント アプリ内の複数の SQL データベースにわたってアドホック レポート クエリを実行します。
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
+ms.subservice: scenario
+ms.custom: ''
 ms.devlang: ''
-ms.topic: article
+ms.topic: conceptual
+author: AyoOlubeko
+ms.author: ayolubek
+ms.reviewer: sstein
+manager: craigg
 ms.date: 04/01/2018
-ms.author: AyoOlubeko
-ms.openlocfilehash: 88831534ffb8efe32ad3fe53a7aebb9fa67d8904
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a5c829ee77f1ba61bf8b1a19488c51dabe2262a0
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241976"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>複数の Azure SQL データベースにわたるアドホック分析クエリの実行
 

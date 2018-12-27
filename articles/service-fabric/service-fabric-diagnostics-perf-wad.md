@@ -9,23 +9,24 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
-ms.author: dekapur; srrengar
-ms.openlocfilehash: b2b740c2ececba2c3f95f8fbfbfb55e7f4811112
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: srrengar
+ms.openlocfilehash: bc86ef5a32e08bc00b5a2fa53dccb8d6313f167b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230987"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure 診断拡張機能を使用したパフォーマンスの監視
 
-このドキュメントでは、Windows Azure 診断 (WAD) 拡張機能を使用して Windows クラスター用のパフォーマンス カウンターの収集を設定するために必要な手順について説明します。 Linux クラスターの場合は、[OMS エージェント](service-fabric-diagnostics-oms-agent.md)を設定して、ノードのパフォーマンス カウンターを収集します。 
+このドキュメントでは、Windows Azure 診断 (WAD) 拡張機能を使用して Windows クラスター用のパフォーマンス カウンターの収集を設定するために必要な手順について説明します。 Linux クラスターの場合は、[Log Analytics エージェント](service-fabric-diagnostics-oms-agent.md)を設定して、ノードのパフォーマンス カウンターを収集します。 
 
  > [!NOTE]
-> これらの手順が機能するように、WAD 拡張機能をクラスターにデプロイする必要があります。 セットアップが目的でなければ、[Windows Azure 診断を使用したイベントの集計と収集](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters)をご覧ください。
+> これらの手順が機能するように、WAD 拡張機能をクラスターにデプロイする必要があります。 セットアップが目的でなければ、[Windows Azure 診断を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-wad.md)をご覧ください。  
 
 ## <a name="collect-performance-counters-via-the-wadcfg"></a>WadCfg を介してパフォーマンス カウンターを収集する
 
@@ -44,7 +45,9 @@ WAD を介してパフォーマンス カウンターを収集するには、ク
 
     `scheduledTransferPeriod` は、収集されたカウンターの値が Azure Storage テーブルと構成された任意のシンクに転送される頻度を定義します。 
 
-3. 収集するパフォーマンス カウンターを、前の手順で宣言した `PerformanceCounterConfiguration` に追加します。 収集する各カウンターは、`counterSpecifier`、`sampleRate`、`unit`、`annotation`、および関連する任意の `sinks` を使用して定義されます。 "*合計プロセッサ時間*" (CPU が処理操作に使用された時間の合計) のカウンターと、Service Fabric カスタム パフォーマンス カウンターの 1 つである "*Service Fabric Actor Method Invocations per Second*" (1 秒あたりの Service Fabric アクターメソッドの呼び出し数) がある構成の例を示します。 Service Fabric カスタム パフォーマンス カウンターの完全な一覧については、[信頼性の高いアクター パフォーマンス カウンター](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters)と[信頼性の高いサービス パフォーマンス カウンター](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters)の記事を参照してください。
+3. 収集するパフォーマンス カウンターを、前の手順で宣言した `PerformanceCounterConfiguration` に追加します。 収集する各カウンターは、`counterSpecifier`、`sampleRate`、`unit`、`annotation`、および関連する任意の `sinks` を使用して定義されます。
+
+"*合計プロセッサ時間*" (CPU が処理操作に使用された時間の合計) のカウンターと、Service Fabric カスタム パフォーマンス カウンターの 1 つである "*Service Fabric Actor Method Invocations per Second*" (1 秒あたりの Service Fabric アクターメソッドの呼び出し数) がある構成の例を示します。 Service Fabric カスタム パフォーマンス カウンターの完全な一覧については、[信頼性の高いアクター パフォーマンス カウンター](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters)と[信頼性の高いサービス パフォーマンス カウンター](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters)の記事を参照してください。
 
  ```json
  "WadCfg": {
@@ -112,9 +115,8 @@ WAD を介してパフォーマンス カウンターを収集するには、ク
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. アップグレードのロールアウトが完了したら (15 ～ 45 分かかります)、WAD はパフォーマンス カウンターを収集し、クラスターに関連付けられているストレージ アカウント内の WADPerformanceCountersTable という名前のテーブルにそれらを送信します。
+5. アップグレードのロールアウトが完了したら (15 ～ 45 分かかります)、WAD はパフォーマンス カウンターを収集し、クラスターに関連付けられているストレージ アカウント内の WADPerformanceCountersTable という名前のテーブルにそれらを送信します。 [Resource Manager テンプレートに AI シンクを追加する](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template)ことにより、Application Insights のパフォーマンス カウンターを確認します。
 
 ## <a name="next-steps"></a>次の手順
-* [Resource Manager テンプレートに AI シンクを追加する](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)ことにより、Application Insights のパフォーマンス カウンターを確認します
 * クラスターのその他のパフォーマンス カウンターを収集します。 収集が必要なカウンターの一覧については、「[パフォーマンス メトリック](service-fabric-diagnostics-event-generation-perf.md)」を参照してください。
 * [Windows VM と Azure Resource Manager テンプレートで監視と診断を利用](../virtual-machines/windows/extensions-diagnostics-template.md)して、`WadCfg` にさらに変更を加えます (診断データを送信する追加のストレージ アカウントの構成など)。

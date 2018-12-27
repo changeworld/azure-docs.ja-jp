@@ -1,5 +1,5 @@
 ---
-title: Azure Web App for Containers で Docker/Go アプリをデプロイする
+title: Linux での Docker/Go アプリの作成 - Azure App Service
 description: Web App for Containers に対して Go アプリケーションを実行する Docker イメージをデプロイする方法。
 keywords: Azure App Service, Web アプリ, Go, Docker, コンテナー
 services: app-service
@@ -11,12 +11,13 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/17/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: b8fb814aa56465f9dce51de29de37f93213bf58f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: seodec18
+ms.openlocfilehash: 36a6b73a6e358104f22d64b00f436a219f29bbd4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251880"
 ---
 # <a name="deploy-a-dockergo-web-app-in-web-app-for-containers"></a>Web App for Containers で Docker/Go Web アプリをデプロイする
 
@@ -36,7 +37,7 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../app-service-web-overview.md)を作成します。 忘れずに `<app name>` をグローバルに一意のアプリ名に置き換えてください。
+[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../app-service-web-overview.md)を作成します。 忘れずに `<app name>` をグローバルに一意のアプリ名に置き換えてください。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name microsoft/azure-appservices-go-quickstart

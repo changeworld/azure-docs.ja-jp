@@ -1,6 +1,6 @@
-﻿---
-title: "Azure のネットワーク | Microsoft Docs"
-description: "Azure のネットワーク サービスとネットワーク機能について説明します。"
+---
+title: Azure のネットワーク | Microsoft Docs
+description: Azure のネットワーク サービスとネットワーク機能について説明します。
 services: networking
 documentationcenter: na
 author: jimdial
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: b0de4aa816d7decab1831449f855ab01b101db3a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2e5862e99b3e883554b42341d2c1dbe9d8b8ec72
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366982"
 ---
 # <a name="azure-networking"></a>Azure のネットワーク
 
@@ -120,7 +121,7 @@ Azure Load Balancer には、すべての UDP と TCP プロトコル向けの�
 
 Azure リソースとの間でやり取りされるトラフィックは、次の方法でフィルタリングすることができます。
 
-- **ネットワーク:** Azure ネットワーク セキュリティ グループ (NSG) を実装することで、Azure リソースの受信トラフィックと送信トラフィックをフィルタリングすることができます。 それぞれの NSG には、受信の規則と送信の規則が含まれています。 トラフィックのフィルタリングに使用する送信元 IP アドレス、送信先 IP アドレス、ポート、プロトコルが、個々の規則によって指定されます。 NSG は個々のサブネットに適用できるほか、個々の VM に適用することができます。 NSG の詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
+- **ネットワーク:** Azure ネットワーク セキュリティ グループ (NSG) を実装することで、Azure リソースの受信トラフィックと送信トラフィックをフィルタリングすることができます。 それぞれの NSG には、受信の規則と送信の規則が含まれています。 トラフィックのフィルタリングに使用する送信元 IP アドレス、送信先 IP アドレス、ポート、プロトコルが、個々の規則によって指定されます。 NSG は個々のサブネットに適用できるほか、個々の VM に適用することができます。 NSG の詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **アプリケーション:** Web アプリケーション ファイアウォールを備えた Application Gateway を使用することで、Web アプリケーションを脆弱性やその悪用から保護することができます。 よくある攻撃の例としては、SQL インジェクション攻撃やクロス サイト スクリプティング、不正な形式のヘッダーが挙げられます。 Application Gateway は、このようなトラフィックをフィルターで取り除くことにより、Web サーバーへの到達を未然に防ぎます。 どの規則を有効にするかは、設定により変更することができます。 SSL ネゴシエーション ポリシーは設定で変更できるようになっており、特定のポリシーを無効にすることができます。 Web アプリケーション ファイアウォールの詳細については、[Web アプリケーション ファイアウォール](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 
 Azure に備わっていないネットワーク機能が必要になった場合や、オンプレミスでご利用のネットワーク アプリケーションを使う必要が生じた場合は、その製品を VM に実装したうえで VNet に接続することができます。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) には、今日普及しているネットワーク アプリケーションを使ってあらかじめ構成されたさまざまな VM が用意されています。 一般に、これらの事前構成済みの VM はネットワーク仮想アプライアンス (NVA) と呼ばれています。 NVA には、ファイアウォールや WAN 最適化などのアプリケーションが含まれています。
@@ -138,7 +139,7 @@ Azure には、ネットワークを監視したり管理したりするため�
 - **診断ログ:** 定期イベントと自然発生イベントがネットワーク リソースにより作成され、Azure Storage アカウント内に記録されるか、Azure イベント ハブまたは Azure Log Analytics に送信されます。 診断ログを通じて、リソースの正常性についての洞察を得ることができます。 診断ログは、ロード バランサー (インターネット接続)、ネットワーク セキュリティ グループ、ルーティング、Application Gateway で利用できます。 診断ログの詳細については、[診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **メトリック:** メトリックとは、リソースに関して一定期間にわたり収集されたパフォーマンスの測定値とカウンターのことです。 メトリックを使用すると、しきい値に基づいてアラートをトリガーすることができます。 現在、Application Gateway に関するメトリックが利用できます。 メトリックの詳細については、[メトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **トラブルシューティング:** トラブルシューティング情報には、Azure Portal から直接アクセスすることができます。 この情報を基に、ExpressRoute 、VPN Gateway、Application Gateway、ネットワーク セキュリティ ログ、ルーティング、DNS、ロード バランサー、Traffic Manager に関する一般的な問題を診断することができます。
-- **ロールベースのアクセス制御 (RBAC):** ネットワーク リソースをだれが作成し、だれが管理できるかは、ロールベースのアクセス制御 (RBAC) を使って制御します。 RBAC の詳細については、[RBAC の基礎](../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。 
+- **ロールベースのアクセス制御 (RBAC):** ネットワーク リソースをだれが作成し、だれが管理できるかは、ロールベースのアクセス制御 (RBAC) を使って制御します。 RBAC の詳細については、[RBAC の基礎](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。 
 - **パケット キャプチャ:** Azure Network Watcher サービスでは、VM 内の拡張機能を通じて VM のパケット キャプチャを実行することができます。 この機能は、Linux VM と Windows VM で利用できます。 パケット キャプチャの詳細については、[パケット キャプチャの概要](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **IP フロー検証:** Azure VM とリモート リソースとの間の IP フローを Network Watcher で検証することにより、パケットが許可 (または拒否) されているかどうかを調べることができます。 管理者は、この機能を利用して、接続の問題をすばやく診断することができます。 IP フローを確認する方法については、[IP フロー検証の概要](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **VPN 接続のトラブルシューティング:** Network Watcher の VPN トラブルシューティング ツールの機能で、接続やゲートウェイを照会し、リソースの正常性を確認することができます。 VPN 接続のトラブルシューティングについて詳しくは、[VPN 接続のトラブルシューティングに関する概要](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)についての記事を参照してください。
@@ -155,7 +156,7 @@ Azure のネットワーク リソースのデプロイと構成は、以下の�
 
 ## <a name="pricing"></a>価格
 
-Azure ネットワーク サービスには、料金がかかるものと無料で利用できるものがあります。 詳細については、[Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network)、[VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway)、[Application Gateway](https://azure.microsoft.com/en-us/pricing/details/application-gateway/)、[ロード バランサー](https://azure.microsoft.com/pricing/details/load-balancer)、[Network Watcher](https://azure.microsoft.com/pricing/details/network-watcher)、[DNS](https://azure.microsoft.com/pricing/details/dns)、[Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager)、[ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) の価格に関するページを参照してください。
+Azure ネットワーク サービスには、料金がかかるものと無料で利用できるものがあります。 詳細については、[Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network)、[VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway)、[Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/)、[ロード バランサー](https://azure.microsoft.com/pricing/details/load-balancer)、[Network Watcher](https://azure.microsoft.com/pricing/details/network-watcher)、[DNS](https://azure.microsoft.com/pricing/details/dns)、[Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager)、[ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) の価格に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,29 +1,27 @@
 ---
-title: Flow、Logic Apps、Functions、WebJobs の比較 | Microsoft Docs
-description: Microsoft のクラウド統合サービスを比較対照し、使用するサービスの判断に役立てます。
-services: functions,app-service\logic
+title: Flow、Logic Apps、Functions、WebJobs の比較 - Azure
+description: 統合タスクに最適化された Microsoft クラウド サービス (Flow、Logic Apps、Functions、WebJobs) を比較します。
+services: functions, logic-apps
 documentationcenter: na
-author: tdykstra
-manager: wpickett
-tags: ''
+author: ggailey777
+manager: jeconnoc
 keywords: Microsoft Flow, Flow, Logic Apps, Azure Functions, Functions, Azure WebJobs, WebJobs, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 03/20/2018
-ms.author: tdykstra
+ms.date: 04/09/2018
+ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 577031c58e95781dc97721acc71fb22114b1c606
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c22d75b4eb058942da5a3b0699cbb4a23eec42f3
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634933"
 ---
-# <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
+# <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
 
-この記事では、Microsoft Cloud で提供されている以下のサービスを比較対照しながら説明します。
+この記事では、次の Microsoft クラウド サービスを比較します。
 
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
@@ -32,9 +30,9 @@ ms.lasthandoff: 03/28/2018
 
 いずれも統合に関する問題を解決し、ビジネス プロセスの自動化を実現できるサービスです。 どのサービスでも入力、アクション、条件、出力を定義できます。 また、それぞれのサービスはスケジュールまたはトリガーを使って実行できます。 ただし、各サービスにはそれぞれ違った利点が存在します。この記事では、これらの違いについて説明します。
 
-## <a name="flow-vs-logic-apps"></a>Flow とLogic Apps
+## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>Microsoft Flow と Azure Logic Apps の比較
 
-Microsoft Flow と Azure Logic Apps はどちらも、"*構成第一*" の統合サービスです。 どちらも、各種の SaaS アプリケーションやエンタープライズ アプリケーションと統合されたワークフローを作成するものです。 
+Flow と Logic Apps はどちらも、ワークフローを作成できる "*デザイナー第一*" の統合サービスです。 どちらのサービスも、各種の SaaS アプリケーションやエンタープライズ アプリケーションと統合されます。 
 
 Flow は Logic Apps の上に構築されています。 どちらも同じワークフロー デザイナーおよび同じ[コネクタ](../connectors/apis-list.md)を共有します。 
 
@@ -49,15 +47,32 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 | デザイン ツール |ブラウザー上とモバイル アプリ、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
 | アプリケーション ライフサイクル管理 (ALM) |非運用環境で設計とテストを行い、準備ができたら運用環境に昇格します。 |DevOps: [Azure Resource Management](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) におけるソース管理、テスト、サポート、自動化、管理 |
 | 管理者向けエクスペリエンス |フロー環境とデータ損失防止 (DLP) ポリシーの管理、ライセンスの追跡 ([https://admin.flow.microsoft.com](https://admin.flow.microsoft.com)) |リソース グループの管理、接続、アクセス管理、ログ ([https://portal.azure.com](https://portal.azure.com)) |
-| セキュリティ |Office 365 セキュリティ/コンプライアンスの監査ログ、データ損失防止 (DLP)、機密データの[保存時の暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
+| セキュリティ |Office 365 セキュリティ/コンプライアンスの監査ログ、データ損失防止 (DLP)、機密データの[保存時の暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
+
+## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure Functions と Azure Logic Apps の比較
+
+Functions と Logic Apps は、サーバーレス ワークロードを可能にする Azure サービスです。 Azure Functions がサーバーレスのコンピューティング サービスであるのに対し、Azure Logic Apps はサーバーレスのワークフローを提供します。 どちらでも複雑な "*オーケストレーション*" を作成することができます。 オーケストレーションは、Logic Apps において複雑なタスクを遂行するために実行される、"*アクション*" と呼ばれる関数またはステップの集まりです。 たとえば命令のバッチを処理するのであれば、関数のインスタンスを多数並列に実行し、すべてのインスタンスの完了を待った後、その集計に対して結果を計算する関数を実行することになるでしょう。
+
+Azure Functions では、コードを記述したり [Durable Functions 拡張機能](durable/durable-functions-overview.md)を使用したりすることによって、オーケストレーションを開発します。 Logic Apps では、GUI を使用するか構成ファイルを編集することによってオーケストレーションを作成します。
+
+オーケストレーションを構築するときは、ロジック アプリから関数を呼び出したり、関数からロジック アプリを呼び出したりしながら、さまざまなサービスを組み合わせることができます。 どのように個々のオーケストレーションを構築するかは、サービスの機能や個人の好みに基づいて選択します。 これらのサービスの主な違いをいくつか次の表に示します。
+ 
+|  | Durable Functions | Logic Apps |
+| --- | --- | --- |
+| 開発 | コード第一 (命令型) | デザイナー第一 (宣言型) |
+| 接続 | [ビルトインのバインド (約 10 種類)](functions-triggers-bindings.md#supported-bindings) およびカスタム バインド (コードを記述) | [コネクタの豊富なコレクション](../connectors/apis-list.md)、[Enterprise Integration Pack (B2B のシナリオ向け)](../logic-apps/logic-apps-enterprise-integration-overview.md)、[カスタム コネクタの構築](../logic-apps/custom-connector-overview.md) |
+| Actions | 個々のアクティビティは Azure 関数 (アクティビティ関数のコードを記述する) |[既製のアクションの豊富なコレクション](../logic-apps/logic-apps-workflow-actions-triggers.md)|
+| 監視 | [Azure Application Insights](../application-insights/app-insights-overview.md) | [Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| 管理 | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](https://docs.microsoft.com/rest/api/logic/)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/?view=azurermps-5.6.0)、[Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
+| 実行コンテキスト | [ローカル](functions-runtime-overview.md)またはクラウドで実行できます。 | クラウドでのみ動作します。|
 
 <a name="function"></a>
 
-## <a name="functions-vs-webjobs"></a>Functions とWeb ジョブ
+## <a name="compare-functions-and-webjobs"></a>Functions と WebJobs の比較
 
 Azure Functions と同様、Azure App Service WebJobs と WebJobs SDK は開発者向けに設計された "*コード第一*" の統合サービスです。 どちらも [Azure App Service](../app-service/app-service-web-overview.md) の上に構築されたものであり、[ソース管理の統合](../app-service/app-service-continuous-deployment.md)、[認証](../app-service/app-service-authentication-overview.md)、[Application Insights との統合による監視](functions-monitoring.md)などの機能をサポートします。
 
-### <a name="webjobs-vs-the-webjobs-sdk"></a>WebJobs と WebJobs SDK
+### <a name="webjobs-and-the-webjobs-sdk"></a>WebJobs と WebJobs SDK
 
 App Service の *WebJobs* 機能を使用すると、スクリプトやコードを App Service Web Apps のコンテキストで実行することができます。 *WebJobs SDK* は、WebJobs 向けに設計されたフレームワークです。Azure サービス内のイベントをきっかけにして実行するコードの作成が、このフレームワークによって単純化されます。 たとえば、Azure Storage に画像の BLOB が作成されたことをきっかけにして、サムネイル画像を作成することもできます。 WebJobs SDK は、.NET コンソール アプリケーションとして実行され、この .NET コンソール アプリケーションを WebJobs にデプロイすることができます。 
 
@@ -69,7 +84,7 @@ Azure Functions は、WebJobs SDK の上に構築されているため、同じ�
 
 |  | Functions | WebJobs と WebJobs SDK |
 | --- | --- | --- |
-|[サーバーレスのアプリ モデル](https://azure.microsoft.com/overview/serverless-computing/)と[自動スケール](functions-scale.md#how-the-consumption-plan-works)|✔||
+|[サーバーレスのアプリ モデル](https://azure.microsoft.com/solutions/serverless/)と[自動スケール](functions-scale.md#how-the-consumption-plan-works)|✔||
 |[ブラウザーでの開発とテスト](functions-create-first-azure-function.md) |✔||
 |[従量課金制の価格](functions-scale.md#consumption-plan)|✔||
 |[Logic Apps との統合](functions-twitter-email.md)|✔||
@@ -114,5 +129,5 @@ Flow、Logic Apps、Functions の統合は、今後ますます強まってい�
 
 * [Christopher Anderson によるプレゼンテーション「Leveraging Azure Functions & Azure App Service for integration scenarios (統合シナリオで Azure Functions と Azure App Service を使用する)」](http://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
 * [Charles Lamanna によるプレゼンテーション「Integrations Made Simple (統合をもっとシンプルに)」](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
-* [Logic Apps のライブ Web キャスト](http://aka.ms/logicappslive)
+* [Logic Apps のライブ Web キャスト](https://aka.ms/logicappslive)
 * [Microsoft Flow のよくある質問](https://flow.microsoft.com/documentation/frequently-asked-questions/)

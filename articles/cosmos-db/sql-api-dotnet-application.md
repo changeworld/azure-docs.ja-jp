@@ -1,33 +1,31 @@
 ---
-title: 'Azure Cosmos DB の ASP.NET MVC チュートリアル: Web アプリケーションの開発 | Microsoft Docs'
+title: Azure Cosmos DB 向けの ASP.NET MVC チュートリアル:Web アプリケーション開発
 description: Azure Cosmos DB を使用して MVC Web アプリケーションを作成するための ASP.NET MVC チュートリアル。 JSON を格納し、Azure Websites でホストされている ToDo アプリからデータにアクセスします - ASP.NET MVC チュートリアル ステップ バイ ステップ
 keywords: ASP.NET MVC チュートリアル, Web アプリケーションの開発, MVC Web アプリケーション, ASP.NET MVC チュートリアル ステップ バイ ステップ
 services: cosmos-db
-documentationcenter: .net
 author: SnehaGunda
-manager: kfile
-ms.assetid: 52532d89-a40e-4fdf-9b38-aadb3a4cccbc
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
-ms.custom: devcenter
-ms.openlocfilehash: 1193ef84f8edf701f98e50d92a67426e36c40218
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.custom: devcenter, vs-azure
+ms.openlocfilehash: b0c8d46e74eec4bad7b7e664682c97eb0f0068b6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098728"
 ---
-# <a name="_Toc395809351"></a>ASP.NET MVC チュートリアル: Azure Cosmos DB を使用した Web アプリケーションの開発
+# <a name="_Toc395809351"></a>ASP.NET MVC のチュートリアル: Azure Cosmos DB を使用した Web アプリケーションの開発
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
-> * [Node.js](sql-api-nodejs-application.md)
 > * [Java](sql-api-java-application.md)
+> * [Node.js](sql-api-nodejs-application.md)
 > * [Python](sql-api-python-application.md)
-> 
+> * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
 この記事では、Azure Cosmos DB を効果的に活用して、JSON ドキュメントの保存とクエリを行う方法を強調するために、ToDo アプリを Azure Cosmos DB を使って構築するエンド ツー エンドの手順を説明します。 対象となるタスクは、JSON ドキュメントとして Azure Cosmos DB に保存するものとします。
@@ -77,7 +75,7 @@ ms.lasthandoff: 04/06/2018
       **[新しい ASP.NET Web アプリケーション]** ダイアログ ボックスが表示されます。
    
     ![MVC アプリケーション テンプレートが強調表示されている [新しい ASP.NET Web アプリケーション] ダイアログ ボックスのスクリーン ショット](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-MVC.png)
-5. テンプレート ウィンドウで、 **[MVC]**を選択します。
+5. テンプレート ウィンドウで、 **[MVC]** を選択します。
 
 6. **[OK]** をクリックすると、Visual Studio のスキャフォールディング機能によって空の ASP.NET MVC テンプレートが作成されます。 
 
@@ -202,7 +200,7 @@ ms.lasthandoff: 04/06/2018
    * **[テンプレート]** ボックスで、***[作成]*** を選択します。
    * **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
    * レイアウト ページ ボックスに、「***~/Views/Shared/_Layout.cshtml***」と入力します。
-   * **[追加]**をクリックします。
+   * **[追加]** をクリックします。
    
 #### <a name="_Toc395888515"></a>項目を編集するためのビューを追加する
 最後にもう 1 つ、 **Item** を編集するためのビューを同じように作成します。
@@ -214,7 +212,7 @@ ms.lasthandoff: 04/06/2018
    * **[テンプレート]** ボックスで、***[編集]*** を選択します。
    * **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
    * レイアウト ページ ボックスに、「***~/Views/Shared/_Layout.cshtml***」と入力します。
-   * **[追加]**をクリックします。
+   * **[追加]** をクリックします。
 
 この作業が済んだら、Visual Studio に表示されている cshtml ドキュメントをすべて閉じてください。これらのビューは後で使用します。
 
@@ -239,7 +237,7 @@ MVC の標準的な構成要素を準備できたので、次に Azure Cosmos DB
         using System.Configuration;
         using System.Linq.Expressions;
         using System.Threading.Tasks;
-        using System.Net
+        using System.Net;
         
     次のコード 
    
@@ -416,9 +414,9 @@ Azure Cosmos DBRepository および ItemController にコードを追加して�
    
     このコードは DocumentDBRepository を呼び出し、CreateItemAsync メソッドを使用して新しい todo 項目をデータベースに保存します。 
    
-    **セキュリティに関する注意**: **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。 この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。 この詳細と正しい実装方法については、[クロスサイト リクエスト フォージェリの防止][Preventing Cross-Site Request Forgery]に関するページを参照してください。 [GitHub][GitHub] で提供されるソース コードには、完全な実装が組み込まれています。
+    **セキュリティ上の注意**: **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。 この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。 この詳細と正しい実装方法については、[クロスサイト リクエスト フォージェリの防止][Preventing Cross-Site Request Forgery]に関するページを参照してください。 [GitHub][GitHub] で提供されるソース コードには、完全な実装が組み込まれています。
    
-    **セキュリティに関する注意**: メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、[ASP.NET MVC での基本的な CRUD 操作][Basic CRUD Operations in ASP.NET MVC]に関するページを参照してください。
+    **セキュリティ上の注意**: メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、[ASP.NET MVC での基本的な CRUD 操作][Basic CRUD Operations in ASP.NET MVC]に関するページを参照してください。
 
 データベースに新しい項目を追加するために必要なコードは以上です。
 
@@ -488,7 +486,7 @@ Azure Cosmos DBRepository および ItemController にコードを追加して�
             return View(item);
         }
    
-    1 つ目のメソッドは、ユーザーが **[Index]** ビューから **[Edit]** リンクをクリックしたときに発生する Http GET を処理します。 このメソッドによって、Azure Cosmos DB から [**Document**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) が取得されて、**[Edit]** ビューに渡されます。
+    1 つ目のメソッドは、ユーザーが **[Index]** ビューから **[Edit]** リンクをクリックしたときに発生する Http GET を処理します。 このメソッドによって、Azure Cosmos DB から [**Document**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) が取得されて、**[Edit]** ビューに渡されます。
    
     **[Edit]** ビューは、**IndexController** に Http POST を行います。 
    
@@ -547,8 +545,8 @@ Azure Cosmos DBRepository および ItemController にコードを追加して�
 アプリケーションに機能を追加する場合は、[Azure Cosmos DB .NET ライブラリ](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)から入手できる API を参考にしてください。また、[GitHub][GitHub] の Azure Cosmos DB .NET ライブラリにも気軽に投稿してください。 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
-[Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
-[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
+[Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
+[Preventing Cross-Site Request Forgery]: https://go.microsoft.com/fwlink/?LinkID=517254
+[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app

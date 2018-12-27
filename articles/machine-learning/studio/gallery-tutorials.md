@@ -9,22 +9,22 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 70f0eb31-7dca-4907-a5d7-504357dcd889
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 6f9c765027ccd915d6754839353a744ac0743bc2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ef653a603bccc001a5bbbb4c2af97e5ca0b20a8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344435"
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Azure AI ギャラリーでチュートリアルを発見し、共有する
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="tutorials"></a>チュートリアル
-Azure AI ギャラリーでは、機械学習のテクノロジと概念を学ぶことができるいくつかの[チュートリアル](https://gallery.cortanaintelligence.com/tutorials)が用意されています。 またチュートリアルは、機械学習の問題を解決するための高度な方法を説明している場合もあります。
+[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)では、機械学習のテクノロジと概念を学ぶことができるいくつかの[チュートリアル](https://gallery.cortanaintelligence.com/tutorials)が用意されています。 またチュートリアルは、機械学習の問題を解決するための高度な方法を説明している場合もあります。
 
 ## <a name="discover"></a>発見
 [ギャラリーで](http://gallery.cortanaintelligence.com)チュートリアルを参照するには、**[More (詳細)]** の下の **[Tutorials (チュートリアル)]** を選択します。
@@ -70,7 +70,7 @@ Azure AI ギャラリーでは、機械学習のテクノロジと概念を学�
   
     ![[Public (公開)] または [Unlisted (非公開)] を選択する](./media/gallery-tutorials/create-tutorial-page-3.png)
 
-7. **[作成]**を選択します。
+7. **作成**を選択します。
 
 これでチュートリアルが Azure AI ギャラリーに追加されます。 チュートリアルは、アカウント ページの **[Items (項目)]** タブの下に表示されます。
 

@@ -1,24 +1,25 @@
 ---
-title: "Azure Security Center でのセキュリティ構成の修復 | Microsoft Docs"
-description: "このドキュメントでは、\"セキュリティ構成の修復\" という Azure Security Center の推奨事項を実装する方法について説明します。"
+title: Azure Security Center でのセキュリティ構成の修復 | Microsoft Docs
+description: このドキュメントでは、"セキュリティ構成の修復" という Azure Security Center の推奨事項を実装する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
-ms.author: terrylan
-ms.openlocfilehash: 477973298d8cc9d99da78e36274933e0bb737c4f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: d4523a9e2d5a5466c1617930d14a8a2d25a0e16f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238779"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Azure Security Center でのセキュリティ構成の修復
 Azure Security Center では、仮想マシン (VM) とコンピューターのオペレーティング システム (OS) を日々分析して、VM とコンピューターの攻撃に対する脆弱性を高める可能性のある構成を特定します。 Security Center では、OS 構成が推奨されるセキュリティ構成規則に適合していない場合に脆弱性を解決するよう推奨し、これらの脆弱性に対処するための構成変更を推奨します。
@@ -26,11 +27,11 @@ Azure Security Center では、仮想マシン (VM) とコンピューターの�
 監視対象の具体的な構成の詳細については、[推奨される構成規則の一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)をご覧ください。 セキュリティの構成の評価をカスタマイズする方法については、「[Azure Security Center での OS セキュリティ構成のカスタマイズ [プレビュー]](security-center-customize-os-security-config.md)」をご覧ください。
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
-"セキュリティ構成の修復" は、Security Center に推奨事項として表示されます。 推奨事項は、**[推奨事項]** > **[コンピューティング]** に表示されます。
+"セキュリティ構成の修復" は、Security Center に推奨事項として表示されます。 推奨事項は、**[推奨事項]** > **[計算とアプリ]** に表示されます。
 
-この例では、**[コンピューティング]** の [Remediate security configurations]\(セキュリティ構成の修復\) の推奨事項について説明します。
-1. Security Center の左側のウィンドウで **[コンピューティング]** を選択します。  
-  **[コンピューティング]** ウィンドウが開きます。
+この例では、**[計算とアプリ]** の [Remediate security configurations]\(セキュリティ構成の修復\) の推奨事項について説明します。
+1. Security Center の左側のウィンドウで **[計算とアプリ]** を選択します。  
+  **[計算とアプリ]** ウィンドウが開きます。
 
    ![セキュリティ構成の修復][1]
 
@@ -50,7 +51,7 @@ Azure Security Center では、仮想マシン (VM) とコンピューターの�
 
   - **[CCEID]**: 規則の一意の CCE 識別子。 Security Center では、Common Configuration Enumeration (CCE) を使用して構成規則に一意の識別子を割り当てます。
   - **[名前]**: 失敗した規則の名前。
-  - **[規則の種類]**: "*レジストリ キー*"、"*セキュリティ ポリシー*"、または "*監査ポリシー*" の規則の種類。
+  - **[規則の種類]**: "*レジストリ キー*"、"*セキュリティ ポリシー*"、"*監査ポリシー*"、または "*IIS*" の規則の種類。
   - **[VM とコンピューターの数]**: 失敗した規則が適用されている VM とコンピューターの総数。
   - **[規則の重要度]**: CCE の値 ("*重大*"、"*重要*"、または "*警告*")。
   - **[状態]**: 推奨事項の現在の状態。
@@ -99,14 +100,14 @@ Azure Security Center では、仮想マシン (VM) とコンピューターの�
 
 Security Center の詳細については、次のリソースを参照してください。
 
-* サポートされている Windows VM と Linux VM の一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」をご覧ください。 
-* Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法については、「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」をご覧ください。 
-* Azure リソースの保護に推奨事項がいかに役立つかについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。 
-* Azure リソースの正常性を監視する方法については、「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」をご覧ください。 
+* サポートされている Windows VM と Linux VM の一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」をご覧ください。
+* Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法については、「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」をご覧ください。
+* Azure リソースの保護に推奨事項がいかに役立つかについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。
+* Azure リソースの正常性を監視する方法については、「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」をご覧ください。
 * セキュリティの警告の管理と対応の方法については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」をご覧ください。
 * パートナー ソリューションの正常性状態を監視する方法については、[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)に関するページをご覧ください。
 * このサービスの使用に関してよく寄せられる質問に対する回答については、「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」をご覧ください。
-* Azure のセキュリティとコンプライアンスについてのブログ記事は、[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)をご覧ください。
+* Azure のセキュリティとコンプライアンスについてのブログ記事は、[Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/)をご覧ください。
 
 <!--Image references-->
 [1]: ./media/security-center-remediate-os-vulnerabilities/compute-blade.png

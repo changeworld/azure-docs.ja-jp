@@ -1,94 +1,184 @@
 ---
-title: "Azure Portal を使用して Function App を API としてインポートする | Microsoft Docs"
-description: "このチュートリアルでは、API Management (APIM) を使用して Function App を API としてインポートする方法について説明します。"
+title: Azure API Management で Azure Function App を API としてインポートする | Microsoft Docs
+description: このチュートリアルでは、Azure Function App を API として Azure API Management にインポートする方法について説明します。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: mikebudzynski
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: c6c7b1f3c2cba9d9f99f7ee1a8e0518bc30f0d27
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: b5a38b9f16224c8b2b128b464106fe83d018b308
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129762"
 ---
-# <a name="import-a-function-app-as-an-api"></a>API としての Function App のインポート
+# <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 
-この記事では、Function App を API としてインポートする方法について説明します。 また、APIM API をテストする方法についても説明します。
+Azure API Management は、Azure Function App の新しい API としてのインポートや既存の API への追加をサポートします。 プロセスが自動的に Azure Function App 内にホスト キーを生成して、Azure API Management 内の名前付きの値に割り当てます。
 
-この記事では、次のことについて説明します:
+この記事では、Azure API Management で Azure Function App を API としてインポートする手順について説明します。 また、テストのプロセスについても説明します。
+
+学習内容:
 
 > [!div class="checklist"]
-> * API としての Function App のインポート
+> * Azure Function App の API としてのインポート
+> * Azure Function App の API への追加
+> * 新しい Azure Function App のホスト キーと Azure API Management の名前付きの値の表示
 > * Azure Portal での API のテスト
 > * 開発者ポータルでの API のテスト
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-+ サブスクリプションに Function App があることを確認します。 詳細については、「[Function App を作成する](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)」をご覧ください。
+* [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
+* サブスクリプションに Azure Functions アプリがあることを確認します。 詳細については、[Azure Function App の作成](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)に関するページを参照してください。 Azure Function App には、HTTP トリガーと *Anonymous* または *Function* に設定された承認レベルの設定を備えた関数が含まれている必要があります。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>バックエンド API のインポートと公開
+## <a name="add-new-api-from-azure-function-app"></a>Azure Function App を新しい API としてインポートする
 
-1. **[API MANAGEMENT]** で **[API]** を選択します。
-2. **[Add a new API]\(新しい API の追加\)** の一覧から **[Function App]** を選択します。
+以下の手順に従って、Azure Function App から新しい API を作成します。
 
-    ![関数アプリ](./media/import-function-app-as-api/function-app-api.png)
-3. **[参照]** をクリックして、サブスクリプション内の Function App の一覧を表示します。
-4. アプリを選択します。 APIM では、選択したアプリに関連付けられている Swagger が検索されてフェッチされ、インポートされます。 
-5. API URL サフィックスを追加します。 サフィックスは、この APIM インスタンスでこの特定の API を識別する名前です。 この APIM インスタンス内で一意である必要があります。
-6. API を成果物に関連付けることによって、API を公開します。 この場合、"*無制限*" の成果物が使用されます。  API を公開して開発者が利用できるようにする場合は、その API を成果物に追加します。 これは、API の作成時に実行することも、後で設定することもできます。
+1. お使いの **Azure API Management** サービス インスタンスで、左側のメニューから **[API]** を選択します。
 
-    成果物は、1 つまたは複数の API の関連付けです。 複数の API を含め、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず成果物をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その成果物の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているので、既定ですべての成果物をサブスクライブしています。
+2. **[Add a new API]\(新しい API の追加\)** の一覧で **[Functions App]\(Function App\)** を選択します。
 
-    すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。
+    ![Function App から追加する](./media/import-function-app-as-api/add-01.png)
 
-    * **スターター**
-    * **無制限**   
-7. **[作成]**を選択します。
+3. **[参照する]** をクリックして、インポートする Function を選択します。
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
+    ![Function App から追加する](./media/import-function-app-as-api/add-02.png)
 
-Azure Portal には、API の操作を表示およびテストするための便利な環境が用意されており、操作を直接呼び出すことができます。  
+4. **[Functions App]\(Function App\)** セクションをクリック、使用可能な Function App の一覧から選択します。
 
-1. 前の手順で作成した API を選択します。
-2. **[テスト]** タブをクリックします。
+    ![Function App から追加する](./media/import-function-app-as-api/add-03.png)
+
+5. 関数のインポート元となる Function App を検索してクリックし、**[選択]** をクリックします。
+
+    ![Function App から追加する](./media/import-function-app-as-api/add-04.png)
+
+6. インポートする Function を選択して、**[選択]** をクリックします。
+
+    ![Function App から追加する](./media/import-function-app-as-api/add-05.png)
+
+    > [!NOTE]
+    > HTTP トリガーに基づかない Function のみをインポートして、承認レベル設定を *Anonymous* または *Function* に設定できます。
+
+7. **[完全]** ビューに切り替え、**[製品]** を新しい API に割り当てます。 必要に応じて、他の事前に設定されているフィールドを編集します。
+
+    ![Function App から追加する](./media/import-function-app-as-api/add-06.png)
+
+8. **Create** をクリックしてください。
+
+## <a name="append-azure-function-app-to-api"></a> Azure Function App を既存の API に追加する
+
+以下の手順に従って、Azure Function App を既存の API に追加します。
+
+1. お使いの **Azure API Management** サービス インスタンスで、左側のメニューから **[API]** を選択します。
+
+2. Azure Function App のインポート先となる API を選択します。 **[...]** をクリックして、コンテキスト メニューから **[インポート]** を選択します。
+
+    ![Function App から追加する](./media/import-function-app-as-api/append-01.png)
+
+3. **[Function App]** タイルをクリックします。
+
+    ![Function App から追加する](./media/import-function-app-as-api/append-02.png)
+
+4. ポップアップ ウィンドウで、**[参照]** をクリックします。
+
+    ![Function App から追加する](./media/import-function-app-as-api/append-03.png)
+
+5. **[Functions App]\(Function App\)** セクションをクリック、使用可能な Function App の一覧から選択します。
+
+    ![Function App から追加する](./media/import-function-app-as-api/add-03.png)
+
+6. 関数のインポート元となる Function App を検索してクリックし、**[選択]** をクリックします。
+
+    ![Function App から追加する](./media/import-function-app-as-api/add-04.png)
+
+7. インポートする Function を選択して、**[選択]** をクリックします。
+
+    ![Function App から追加する](./media/import-function-app-as-api/add-05.png)
+
+8. **[インポート]** をクリックします。
+
+    ![Function App から追加する](./media/import-function-app-as-api/append-04.png)
+
+## <a name="function-app-import-keys"></a> 生成された Azure Function App のホスト キー
+
+Azure Function App のインポートによって、次が自動的に生成されます。
+* apim-{*お使いの Azure API Management サービス インスタンス名*} という名前の、Function App 内のホスト キー。
+* {*お使いの Azure Function App のインスタンス名*}-key という名前の、Azure API Management インスタンス内の名前付きの値。作成されたホスト キーが含まれます。
+
+> [!WARNING]
+> Azure Function App のホスト キーまたは Azure API Management の名前付きの値のいずれかの値を削除または変更すると、サービス間の通信が失われます。 値は自動的に同期されません。
+>
+> ホスト キーを交換する必要がある場合は、Azure API Management の名前付きの値も変更されることを確認します。
+
+### <a name="access-azure-function-app-host-key"></a>Azure Function App のホスト キーにアクセスする
+
+1. お使いの Azure Function App のインスタンスに移動します。
+
+2. 概要から **[Function App settings]\(Function App の設定\)** を選択します。
+
+    ![Function App から追加する](./media/import-function-app-as-api/keys-02-a.png)
+
+3. キーは **[ホスト キー]** セクションに配置されています。
+
+    ![Function App から追加する](./media/import-function-app-as-api/keys-02-b.png)
+
+### <a name="access-the-named-value-in-azure-api-management"></a>Azure API Management の名前付きの値にアクセスする
+
+お使いの Azure API Management インスタンスに移動し、左側のメニューから **[API]** をクリックします。 Azure Function App のキーは、そこに格納されています。
+
+![Function App から追加する](./media/import-function-app-as-api/keys-01.png)
+
+## <a name="test-in-azure-portal"></a> Azure Portal での新しい API Management API のテスト
+
+操作は Azure portal から直接呼び出すことができます。 Azure portal は API の操作を表示およびテストするのに便利です。  
+
+1. 前のセクションで作成した API を選択します。
+
+2. **[テスト]** タブを選びます。
+
 3. 操作を選択します。
 
-    ページに、クエリ パラメーターのフィールドとヘッダーのフィールドが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 APIM インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。 
-1. **[送信]** をクリックします。
+    ページに、クエリ パラメーターのフィールドとヘッダーのフィールドが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは **Ocp-Apim-Subscription-Key** です。 API Management インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。 
 
-    バックエンドは "**200 OK**" といくつかのデータで応答します。
+4. **[送信]** を選択します。
 
-## <a name="call-operation"></a>開発者ポータルから操作を呼び出す
+    バックエンドは **200 OK** といくつかのデータで応答します。
 
-操作を**開発者ポータル**から呼び出して API をテストすることもできます。 
+## <a name="test-in-developer-portal"></a> 開発者ポータルから操作を呼び出す
 
-1. 「バックエンド API のインポートと公開」で作成した API を選択します。
-2. **[開発者ポータル]** をクリックします。
+操作を開発者ポータルから呼び出して API をテストすることもできます。 
 
-    "開発者ポータル" サイトが開きます。
-3. 作成した **API** を選択します。
-4. テストする操作をクリックします。
-5. **[テスト]** をクリックします。
-6. **[送信]** をクリックします。
+1. 「[バックエンド API のインポートと公開](#create-api)」で作成した API を選択します。
+
+2. **[開発者ポータル]** を選択します。
+
+    開発者ポータルのサイトが開きます。
+
+3. 作成した **API** を選びます。
+
+4. テストする操作を選択します。
+
+5. **[Try it]\(試してみる\)** を選択します。
+
+6. **[送信]** を選択します。
     
     操作を呼び出すと、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
-
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [公開された API の変換と保護](transform-api.md)

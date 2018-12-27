@@ -1,30 +1,25 @@
 ---
-title: "Kafka に対する Apache Spark ストリーミング - Azure HDInsight | Microsoft Docs"
-description: "Apache Spark を使用して、DStreams による Apache Kafka 内外へのデータのストリームを行う方法について説明します。 この例では、Jupyter ノートブックを使用して HDInsight 上の Spark からデータをストリームします。"
+title: Apache Kafka に対する Apache Spark ストリーミング - Azure HDInsight
+description: Apache Spark を使用して、Apache Kafka に対して DStreams によるデータの送信または受信ストリーミングを行う方法について説明します。 この例では、Jupyter Notebook を使用して HDInsight 上で Spark からデータをストリームします。
 keywords: kafka example,kafka zookeeper,spark streaming kafka,spark streaming kafka example
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: dd8f53c1-bdee-4921-b683-3be4c46c2039
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 8c9a901b8922bf349959438487c88e3df4f2ebea
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.topic: conceptual
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: b103300c7d4b72c0605b8355b03fac5201ab6d68
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279162"
 ---
-# <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>HDInsight 上の Kafka を用いた Apache Spark ストリーミング (DStream) の例
+# <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を用いた Apache Spark ストリーミング (DStream) の例
 
-Apache Spark を使用して、DStreams による HDInsight 上の Apache Kafka 内外へのデータのストリームを行う方法について説明します。 この例では、Spark クラスター上で実行する Jupyter ノートブックを使用します。
+Apache Spark を使用して、HDInsight 上の Apache Kafka に対して DStreams による送信または受信ストリーミングを行う方法について説明します。 この例では、Spark クラスター上で実行する Jupyter ノートブックを使用します。
 
 > [!NOTE]
 > このドキュメントの手順では、HDInsight の Spark クラスターと HDInsight の Kafka クラスターの両方を含む Azure リソース グループを作成します。 これらのクラスターは両方とも、Spark クラスターが Kafka クラスターと直接通信できるように、Azure Virtual Network 内に配置します。
@@ -49,7 +44,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
     
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Azure Resource Manager テンプレートは **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** にあります。
+    Azure Resource Manager テンプレートは、**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** にあります。
 
     > [!WARNING]
     > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
@@ -64,7 +59,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
     * **[場所]**: 地理的に近い場所を選択します。
 
-    * **[Base Cluster Name] \(ベース クラスター名)**: この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdi**」と入力すると、__spark-hdi__ という名前の Spark クラスターと、**kafka-hdi** という名前の Kafka クラスターが作成されます。
+    * **[Base Cluster Name] \(ベース クラスター名)**: この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdistreaming**」と入力すると、__spark-hdistreaming__ という名前の Spark クラスターと、**kafka-hdistreaming** という名前の Kafka クラスターが作成されます。
 
     * **[Cluster Login User Name] \(クラスター ログイン ユーザー名)**: Spark クラスターと Kafka クラスターの管理者のユーザー名。
 
@@ -76,7 +71,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
 
-4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
+4. 最後に、**[購入]** を選択します。 クラスターの作成には約 20 分かかります。
 
 リソースが作成されると、概要ページが表示されます。
 
@@ -87,7 +82,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 ## <a name="use-the-notebooks"></a>ノートブックを使用する
 
-このドキュメントで説明する例で使用するコードは、[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) で入手できます。
+このドキュメントで説明した例のコードは、[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) で入手できます。
 
 この例を完了するには、`README.md` の手順に従ってください。
 

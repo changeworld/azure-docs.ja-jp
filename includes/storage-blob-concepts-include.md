@@ -1,28 +1,37 @@
-## <a name="what-is-blob-storage"></a>BLOB ストレージとは
-Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化オブジェクト データを格納するためのサービスです。 BLOB ストレージを使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 11/18/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: 32b9b12c2adf03a4cb0616a5da48dd33fc81fb4f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52973091"
+---
+Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。 非構造化データとは、特定のデータ モデルや定義に従っていないデータであり、テキスト データやバイナリ データなどがあります。 
 
-BLOB ストレージの一般的な用途には、次のようなものがあります。
+## <a name="about-blob-storage"></a>Blob Storage について
+
+Blob Storage は、次の用途に適しています。
 
 * 画像またはドキュメントをブラウザーに直接配信する。
 * 分散アクセス用にファイルを格納する。
 * ビデオおよびオーディオをストリーミング配信する。
+* ログ ファイルに書き込む。
 * バックアップと復元、ディザスター リカバリー、アーカイブのためのデータを格納する。
 * オンプレミス サービスまたは Azure ホステッド サービスで分析するデータを格納する。
 
-## <a name="blob-service-concepts"></a>Blob service の概念
-Blob service には、次のコンポーネントが含まれます。
+ユーザーまたはクライアント アプリケーションは、世界のどこからでも、HTTP/HTTPS 経由で Blob Storage 内のオブジェクトにアクセスできます。 [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/storage)、または Azure Storage クライアント ライブラリを使用して、Blob Storage 内のオブジェクトにアクセスできます。 [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client)、[Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)、[Node.js](http://azure.github.io/azure-storage-node)、[Python](https://docs.microsoft.com/python/azure/)、[Go](https://github.com/azure/azure-storage-blob-go/)、[PHP](http://azure.github.io/azure-storage-php/)、[Ruby](http://azure.github.io/azure-storage-ruby) などのさまざまな言語のクライアント ライブラリを利用できます。
 
-![Blob service のアーキテクチャ図](./media/storage-blob-concepts-include/blob1.png)
+## <a name="about-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 について 
 
-* **ストレージ アカウント:** Azure Storage にアクセスするときは必ずストレージ アカウントを使用します。 このストレージ アカウントは、**汎用ストレージ アカウント**にすることも、オブジェクトまたは BLOB の格納に特化した **BLOB ストレージ アカウント**にすることもできます。 詳細については、「[Azure ストレージ アカウントについて](../articles/storage/common/storage-create-storage-account.md)」を参照してください。
-* **コンテナー** : コンテナーは、BLOB のセットをグループ化します。 すべての BLOB はコンテナーに格納されている必要があります。 1 つのアカウントに格納できるコンテナーの数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。 コンテナー名は小文字で入力する必要があります。
-* **BLOB** : 任意の種類およびサイズのファイルです。 Azure Storage が提供する BLOB には、ブロック BLOB、追加 BLOB、ページ BLOB の 3 種類があります。
-  
-    *ブロック BLOB* は、ドキュメントやメディア ファイルなどのテキストまたはバイナリ ファイルを格納するのに最適です。 1 つのブロック BLOB は、100 MB までのブロックを最大 50,000 個まで含めることができます。合計サイズは 4.75 TB を少し上回ります (100 MB x 50,000)。 
+Blob Storage では、Microsoft のクラウド向けのエンタープライズ ビッグ データ分析ソリューションである Azure Data Lake Storage Gen2 がサポートされています。 Azure Data Lake Storage Gen2 では、階層型のファイル システムに加え、低コスト、階層型ストレージ、高可用性、強力な一貫性、ディザスター リカバリー機能を含む Blob Storage の利点が提供されます。 
 
-    *追加 BLOB* はブロック BLOB と同様にブロックで構成されますが、追加操作用に最適化されているので、ログ記録シナリオで役立ちます。 1 つの追加 BLOB は、4 MB までのブロックを最大 50,000 個まで含めることができます。合計サイズは 195 GB を少し上回ります (4 MB x 50,000)。
-  
-    *ページ BLOB* は最大 1 TB のサイズにすることができます。読み取り/書き込み操作を頻繁に実行する場合はこの BLOB が効率的です。 Azure の仮想マシンでは、ページ BLOB をオペレーティング システムとデータ ディスクとして使用します。
-  
-    コンテナーと BLOB の名前付け規則については、「[Naming and referencing containers, blobs, and metadata (コンテナー、BLOB、およびメタデータの名前付けおよび参照)](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)」を参照してください。
-
+Data Lake Storage Gen2 について詳しくは、「[Introduction to Azure Data Lake Storage Gen2 Preview](../articles/storage/data-lake-storage/introduction.md)」(Azure Data Lake Storage Gen2 Preview の概要) をご覧ください。

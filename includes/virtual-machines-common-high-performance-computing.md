@@ -1,3 +1,20 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-machines-linux, virtual-machines-windows
+author: dlepow
+ms.service: multiple
+ms.topic: include
+ms.date: 07/02/2018
+ms.author: danlep
+ms.custom: include file
+ms.openlocfilehash: 88aeaf1246583345d1d28218e8e91b3ecbcd166b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53429993"
+---
 さまざまな組織が、大規模なコンピューティングに対するニーズを抱えています。 大規模なコンピューティングを必要とするワークロードとしては、エンジニアリング設計と分析、金融分野のリスク計算、画像レンダリング、複雑なモデリング、モンテカルロ シミュレーションなどが挙げられます。 
 
 Azure クラウドを使用して、並列バッチ ジョブから従来の HPC シミュレーションに至るまで、コンピューティングが大量に発生する Linux ワークロードおよび Windows ワークロードを効率的に実行できます。 任意のコンピューティング サービス、グリッド マネージャー、Marketplace のソリューション、またはベンダーがホストする (SaaS) アプリケーションを選んで、Azure のインフラストラクチャ上で HPC ワークロードやバッチ ワークロードを実行します。 Azure の柔軟なソリューションにより、作業を分散して何千もの VM やコアにスケールし、必要なリソースが減ったときにスケール ダウンするといったことが可能です。 
@@ -21,8 +38,9 @@ Azure クラウドを使用して、並列バッチ ジョブから従来の HPC
 * **サービスとしての大規模なコンピューティング ソリューション**
     * [Azure Batch](#azure-batch) と関連する [Azure サービス](#related-azure-services)使って、カスタムの大規模コンピューティング ソリューションとワークフローを開発します。
     * [Altair](http://www.altair.com/)、[Rescale](https://www.rescale.com/azure/)、[Cycle Computing](https://cyclecomputing.com/) (現在は [Microsoft と統合](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)) などのベンダーが提供する、Azure 対応のエンジニアリングおよびシミュレーション ソリューションを実行します。
+    * Azure でホストされるサービスとして [Cray スーパー コンピューター](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure)を使用します。
 * **Marketplace のソリューション**
-    * [Azure Marketplace](https://azuremarketplace.microsoft.com/) で提供される大規模な [HPC アプリケーション](#hpc-applications)や[ソリューション](#marketplace-solutions)を使用します。 
+    * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) で提供される大規模な [HPC アプリケーション](#hpc-applications)や[ソリューション](#marketplace-solutions)を使用します。 
     
 
 
@@ -40,13 +58,13 @@ Linux と Windows の HPC 用 VM イメージとソリューションについ�
 * [Windows および Linux 用 Azure データ サイエンス VM ](../articles/machine-learning/machine-learning-data-science-virtual-machine-overview.md)
 * [D3View](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/xfinityinc.d3view-v5?tab=Overview)
 * [UberCloud](https://azure.microsoft.com/search/marketplace/?q=ubercloud)
-* [Intel Cloud Edition for Lustre](https://azuremarketplace.microsoft.com/marketplace/apps/intel.lustre-cloud-edition-eval?tab=Overview)
+* [Intel Cloud Edition for Lustre](https://azuremarketplace.microsoft.com/marketplace/apps/intel.intel-cloud-edition-gs)
 
 
  
 ## <a name="hpc-applications"></a>HPC アプリケーション
 
-Azure ではカスタム HPC アプリケーションや商用 HPC アプリケーションを実行できます。 このセクションのさまざまな例で、VM やコンピューティング コアを追加して効率的にスケールできることが確認されています。 すぐにデプロイ可能なソリューションについては、[Azure Marketplace](https://marketplace.azure.com) を参照してください。
+Azure ではカスタム HPC アプリケーションや商用 HPC アプリケーションを実行できます。 このセクションのさまざまな例で、VM やコンピューティング コアを追加して効率的にスケールできることが確認されています。 すぐにデプロイ可能なソリューションについては、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) を参照してください。
 
 > [!NOTE]
 > クラウドで実行するためのライセンスまたはその他の制限事項については、商用アプリケーションのベンダーに確認してください。 すべてのベンダーが従量課金制ライセンスを提供しているとは限りません。 ソリューション用にクラウド内にライセンス サーバーを用意したり、オンプレミスのライセンス サーバーに接続することが必要になる場合があります。
@@ -68,7 +86,6 @@ Azure ではカスタム HPC アプリケーションや商用 HPC アプリケ�
 
 ### <a name="ai-and-deep-learning"></a>AI とディープ ラーニング
 
-* ディープ ラーニング モデルの [Batch AI](../articles/batch-ai/overview.md) トレーニング
 * [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/cntk-on-azure)
 * [ディープ ラーニング VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
 * [ディープ ラーニング用の Batch Shipyard レシピ](https://github.com/Azure/batch-shipyard/tree/master/recipes#deeplearning)
@@ -107,17 +124,18 @@ SaaS のプロバイダーやデベロッパーは、Batch の SDK とツール�
 * [Azure Batch のコード サンプルを使用する](https://github.com/Azure/azure-batch-samples)
 * [Batch で優先順位の低い VM を使用する](../articles/batch/batch-low-pri-vms.md)
 * [Batch Shipyard を使ってコンテナー化した HPC ワークロードを実行する](https://github.com/Azure/batch-shipyard)
-* [Batch で R 言語を使用する](https://github.com/Azure/doAzureParallel)
-* [Batch で Azure Distributed Data Engineering Toolkit を実行する](https://github.com/Azure/aztk)
+* [Batch で並列 R ワークロードを実行する](https://github.com/Azure/doAzureParallel)
+* [Batch でオンデマンド Spark ジョブを実行する](https://github.com/Azure/aztk)
 
 ## <a name="workload-managers"></a>ワークロード マネージャー
 
 Azure のインフラストラクチャで実行できるクラスターおよびワークロード マネージャーの例を次に示します。 Azure VM にスタンドアロンのクラスターを作成するか、オンプレミス クラスターから Azure VM にバーストします。 
+* [Alces フライト コンピューティング](https://azuremarketplace.microsoft.com/marketplace/apps/alces-flight-limited.alces-flight-compute-solo?tab=Overview)
 * [TIBCO DataSynapse GridServer](https://azure.microsoft.com/blog/tibco-datasynapse-comes-to-the-azure-marketplace/) 
 * [Bright Cluster Manager](http://www.brightcomputing.com/technology-partners/microsoft)
 * [IBM Spectrum Symphony および Symphony LSF](https://azure.microsoft.com/blog/ibm-and-microsoft-azure-support-spectrum-symphony-and-spectrum-lsf/)
 * [PBS Pro](http://pbspro.org)
-* [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029(v=ws.11).aspx) - [Windows](../articles/virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) および [Linux](../articles/virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM での実行オプションを参照してください。 
+* [Microsoft HPC Pack](https://technet.microsoft.com/library/mt744885.aspx) - [Windows](../articles/virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) および [Linux](../articles/virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM での実行オプションを参照してください。 
 
 
 
@@ -127,7 +145,7 @@ Azure のインフラストラクチャで実行できるクラスターおよ�
 
 詳細情報:
 
-* [Azure での HPC ストレージの並列ファイル システム](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/)
+* [Azure での並列の仮想ファイル システム](https://azure.microsoft.com/resources/parallel-virtual-file-systems-on-microsoft-azure/)
 * [Avere](http://www.averesystems.com/about-us/about-avere) (現在は [Microsoft が買収](https://blogs.microsoft.com/blog/2018/01/03/microsoft-to-acquire-avere-systems-accelerating-high-performance-computing-innovation-for-media-and-entertainment-industry-and-beyond/)) が提供するハイ パフォーマンス クラウド ストレージ ソリューション
 
 
@@ -143,45 +161,49 @@ Azure の仮想マシン、仮想マシン スケール セット、Batch、お�
 ### <a name="data-and-analytics"></a>データと分析
 * [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
 * [Data Factory](../articles/data-factory/introduction.md)
-* [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
-* [Machine Learning](../articles/machine-learning/machine-learning-what-is-machine-learning.md)
+* [Data Lake Storage Gen1](../articles/data-lake-store/data-lake-store-overview.md)
+* [Databricks](../articles/azure-databricks/what-is-azure-databricks.md)
 * [SQL Database](../articles/sql-database/sql-database-technical-overview.md)
 
-### <a name="ai-and-cognitive-services"></a>AI と Cognitive Services
-* [Batch AI](../articles/batch-ai/overview.md)
+### <a name="ai-and-machine-learning"></a>AI と機械学習
+* [Machine Learning サービス](../articles/machine-learning/service/overview-what-is-azure-ml.md)
+* [Genomics](../articles/genomics/overview-what-is-genomics.md)
 
 ### <a name="networking"></a>ネットワーク
 * [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)
 * [ExpressRoute](../articles/expressroute/expressroute-introduction.md)
 
-### <a name="containers"></a>コンテナー
+### <a name="containers"></a>Containers
 * [Container Service](../articles/container-service/dcos-swarm/container-service-intro.md)
+* [Azure Kubernetes Service (AKS)](../articles/aks/intro-kubernetes.md)
 * [コンテナー レジストリ](../articles/container-registry/container-registry-intro.md)
 
 
 
 ## <a name="customer-stories"></a>顧客事例
 
-Azure HPC ソリューションを使ってビジネスの問題を解決したお客様の例を以下に紹介します。
+Azure HPC ソリューションを使ってビジネスの問題を解決したお客様の例:
 
 * [ANEO](https://customers.microsoft.com/story/it-provider-finds-highly-scalable-cloud-based-hpc-redu) 
 * [AXA Global P&C](https://customers.microsoft.com/story/axa-global-p-and-c)
 * [Axioma](https://customers.microsoft.com/story/axioma-delivers-fintechs-first-born-in-the-cloud-multi-asset-class-enterprise-risk-solution)
 * [d3View](https://customers.microsoft.com/story/big-data-solution-provider-adopts-new-cloud-gains-thou)
+* [EFS](https://customers.microsoft.com/story/efs-professionalservices-azure)
 * [Hymans Robertson](https://customers.microsoft.com/story/hymans-robertson)
 * [MetLife](https://enterprise.microsoft.com/en-us/customer-story/industries/insurance/metlife/)
 * [Microsoft Research](https://customers.microsoft.com/doclink/fast-lmm-and-windows-azure-put-genetics-research-on-fa)
 * [Milliman](https://customers.microsoft.com/story/actuarial-firm-works-to-transform-insurance-industry-w)
 * [Mitsubishi UFJ Securities International](https://customers.microsoft.com/story/powering-risk-compute-grids-in-the-cloud)
-* [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
+* [NeuroInitiative](https://customers.microsoft.com/en-us/story/neuroinitiative-health-provider-azure)
+* [Schlumberger](https://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
 * [Towers Watson](https://customers.microsoft.com/story/insurance-tech-provider-delivers-disruptive-solutions)
 
 
 ## <a name="next-steps"></a>次の手順
-* [エンジニアリング シミュレーション](https://simulation.azure.com/)、[レンダリング](https://simulation.azure.com/)、[銀行業および資本市場](https://finance.azure.com/)、および[ゲノミクス](https://enterprise.microsoft.com/en-us/industries/health/genomics/)向けの大規模コンピューティング ソリューションの詳細については、それぞれのトピックを参照してください。
+* [エンジニアリング シミュレーション](https://simulation.azure.com/)、[レンダリング](https://azure.microsoft.com/solutions/big-compute/rendering/)、[銀行業および資本市場](https://finance.azure.com/)、および[ゲノミクス](https://enterprise.microsoft.com/en-us/industries/health/genomics/)向けの大規模コンピューティング ソリューションの詳細については、それぞれのトピックを参照してください。
 * 最新情報については、[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)と[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)をご覧ください。
 
-* 管理されたスケーラブルな Azure [Batch](https://azure.microsoft.com/services/batch/) サービスを使用して、基礎となるインフラストラクチャを管理することなく、コンピューティングが大量に発生するワークロードを実行する ([詳細](https://azure.microsoft.com/en-us/solutions/architecture/hpc-big-compute-saas/))
+* 管理されたスケーラブルな Azure [Batch](https://azure.microsoft.com/services/batch/) サービスを使用して、基礎となるインフラストラクチャを管理することなく、コンピューティングが大量に発生するワークロードを実行する ([詳細](https://azure.microsoft.com/solutions/architecture/hpc-big-compute-saas/))
 
 
 

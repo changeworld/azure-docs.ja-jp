@@ -3,22 +3,23 @@ title: Azure Service Fabric の Reliable Collections のガイドラインと推
 description: Service Fabric Reliable Collections を使用するためのガイドラインと推奨事項
 services: service-fabric
 documentationcenter: .net
-author: mcoskun
+author: tylermsft
 manager: timlt
 editor: masnider,rajak,zhol
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
-ms.author: mcoskun
-ms.openlocfilehash: b0eb6a5aab5e71c0a8ac8263e177c493a07dafc0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: twhitney
+ms.openlocfilehash: d50fee06a291e11898de19fd49bd657d2e1a6d00
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184939"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric の Reliable Collections のガイドラインと推奨事項
 このセクションでは、Reliable State Manager および Reliable Collection を使用するためのガイドラインを提供します。 目標は、ユーザーがよくある問題を回避できるようにすることです。
@@ -48,6 +49,7 @@ ms.lasthandoff: 03/28/2018
 * セカンダリの読み取り操作では、クォーラムのコミットをしていないバージョンを読み取ることがあります。
   つまり、1 つのセカンダリから読み取られるデータのバージョンが、誤って進められる可能性があります。
   プライマリからの読み取りは常に安定しており、誤って進められることはありません。
+* アプリケーションによってリライアブル コレクションに保持されるデータのセキュリティ/プライバシーは、ユーザーの判断事項であり、ストレージ管理によって提供される保護の対象となります。 つまり、オペレーティング システムのディスク暗号化を使用して、保存データを保護できます。  
 
 ### <a name="next-steps"></a>次の手順
 * [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)

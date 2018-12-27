@@ -1,25 +1,26 @@
 ---
-title: "Azure で SMTP バナー チェック用に逆引き参照ゾーンを構成する | Microsoft Docs"
-description: "Azure で SMTP バナー チェック用に逆引き参照ゾーンを構成する方法について説明します"
+title: Azure で SMTP バナー チェック用に逆引き参照ゾーンを構成する | Microsoft Docs
+description: Azure で SMTP バナー チェック用に逆引き参照ゾーンを構成する方法について説明します
 services: virtual-network
 documentationcenter: virtual-network
 author: genlin
 manager: WillChen
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 02/06/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.custom: 
-ms.openlocfilehash: 1e95b00ea08105238a860265e46275c24ed7bfbd
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.custom: ''
+ms.openlocfilehash: 815e3c711850eab11aef63e04a1c512c4510a910
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684291"
 ---
 #  <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>SMTP バナー チェック用に逆引き参照ゾーンを構成する
 
@@ -42,7 +43,7 @@ PTR レコードを構成する際には、IP アドレスと逆引き FQDN が�
     Set-AzureRmPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership: 
                         
     1) ReverseFqdn がサブスクリプションのいずれかのパブリック IP リソースの FQDN と一致する、 
-    2) ReverseFqdn が (CNAME レコード チェーンによって) サブスクリプションのいずれかのパブリック IP リソースの FQDN に解決される、 
+    2) ReverseFqdn が (CName レコード チェーンによって) サブスクリプションのいずれかのパブリック IP リソースの FQDN に解決される、 
     3) ReverseFqdn が (CNAME レコード チェーンによって) サブスクリプションの静的パブリック IP リソースの IP アドレスに解決される。 
 
 既定の逆引き FQDN に一致するように SMTP バナーを手動で変更しても、リモート メール サーバーは、SMTP バナー ホストがドメインの MX レコードに一致することを予期する場合があるため、やはりエラーを起こす可能性があります。

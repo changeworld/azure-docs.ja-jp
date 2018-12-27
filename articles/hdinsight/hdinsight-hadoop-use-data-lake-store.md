@@ -1,26 +1,20 @@
 ---
-title: "Azure HDInsight の Hadoop で Data Lake Store を使用する | Microsoft Docs"
-description: "Azure Data Lake Store のデータに対してクエリを実行し、分析結果を格納する方法について説明します。"
-keywords: "Blob Storage,hdfs,構造化データ,非構造化データ,Data Lake Store"
+title: Azure HDInsight の Hadoop で Data Lake Store を使用する
+description: Azure Data Lake Store のデータに対してクエリを実行し、分析結果を格納する方法について説明します。
 services: hdinsight,storage
-documentationcenter: 
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 12/20/2017
-ms.author: jgao
-ms.openlocfilehash: e14de80dc1fdf82c57f2a38d4ae2719ec83e01ed
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.topic: conceptual
+ms.date: 11/06/2018
+ms.openlocfilehash: 0d76aa5091e77d8713290e6da8908e15ad3ef995
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684569"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Store を使用する
 
@@ -31,9 +25,9 @@ HDInsight クラスターでデータを分析するために、[Azure Storage](
 > [!NOTE]
 > Data Lake Store へのアクセスには必ずセキュリティで保護されたチャネルが使われるため、`adls` ファイルシステム スキーム名はありません。 常に `adl` を使用します。
 > 
-> 
 
-## <a name="availabilities-for-hdinsight-clusters"></a>HDInsight クラスターの利用可能性
+
+## <a name="availability-for-hdinsight-clusters"></a>HDInsight クラスターの可用性
 
 Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス時に、Azure Storage 内の BLOB コンテナーを既定のファイル システムとして指定できます。また、HDInsight 3.5 以降のバージョンでは、Azure Storage と Azure Data Lake Store のいずれかを既定のファイル システムとして選択できます (いくつか例外があります)。 
 
@@ -46,16 +40,17 @@ HDInsight クラスターでは、2 つの方法で Data Lake Store を使用で
 
 | HDInsight クラスターの種類 | 既定ストレージとしての Data Lake Store | 追加ストレージとしての Data Lake Store| メモ |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight Version 3.6 | [はい] | [はい] | |
+| HDInsight Version 3.6 | [はい] | [はい] | HBase は例外|
 | HDInsight Version 3.5 | [はい] | [はい] | HBase は例外|
 | HDInsight Version 3.4 | いいえ  | [はい] | |
 | HDInsight Version 3.3 | いいえ  | いいえ  | |
 | HDInsight Version 3.2 | いいえ  | [はい] | |
 | Storm | | |Data Lake Store を使って、Storm トポロジからデータを書き込むことができます。 また、Data Lake Store を、Storm トポロジから読み取ることができる参照データとして使用することもできます。|
 
+> [!WARNING]
+> HDInsight HBase は、Azure Data Lake Storage Gen 1 ではサポートされていません。
+
 Data Lake Store を追加ストレージ アカウントとして使っても、クラスターから Azure ストレージに対する読み取り/書き込みのパフォーマンスや機能には影響しません。
-
-
 ## <a name="use-data-lake-store-as-default-storage"></a>Data Lake Store を既定のストレージとして使用する
 
 Data Lake Store を既定のストレージとして HDInsight がデプロイされている場合、クラスター関連のファイルは次の場所の Data Lake Store に格納されます。
@@ -99,10 +94,10 @@ Data Lake Store アカウントを追加ストレージとして使い、複数�
 
 ## <a name="configure-data-lake-store-access"></a>Data Lake Store へのアクセスを構成する
 
-HDInsight クラスターから Data Lake Store へのアクセスを構成するには、Azure Active Directory (Azure AD) のサービス プリンシパルが必要です。 サービス プリンシパルを作成できるのは、Azure AD 管理者だけです。 サービス プリンシパルは証明書で作成する必要があります。 詳しくは、「[Configure Data Lake Store access](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#configure-data-lake-store-access)」(Data Lake Store へのアクセスを構成する) および「[自己署名証明書を使用したサービス プリンシパルの作成](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)」をご覧ください。
+HDInsight クラスターから Data Lake Store へのアクセスを構成するには、Azure Active Directory (Azure AD) のサービス プリンシパルが必要です。 サービス プリンシパルを作成できるのは、Azure AD 管理者だけです。 サービス プリンシパルは証明書で作成する必要があります。 詳しくは、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」および「[自己署名証明書を使用したサービス プリンシパルの作成](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)」をご覧ください。
 
 > [!NOTE]
-> Azure Data Lake Store を HDInsight クラスターの追加ストレージとして使用する場合は、この記事で説明されているように、クラスターを作成するときにそうすることを強くお勧めします。 Azure Data Lake Store を既存の HDInsight クラスターに追加のストレージとして追加することは、複雑なプロセスであり、エラーも発生しやすくなります。
+> Azure Data Lake Store を HDInsight クラスターの追加ストレージとして使用する場合は、この記事で説明されているように、クラスターを作成するときにそうすることを強くお勧めします。 Azure Data Lake Store を既存の HDInsight クラスターに追加のストレージとして追加することは、サポートされていないシナリオです。
 >
 
 ## <a name="access-files-from-the-cluster"></a>クラスターからファイルにアクセスする
@@ -129,20 +124,73 @@ HDInsight クラスターから Data Lake Store へのアクセスを構成す�
 
 Data Lake Store にアクセスできる HDInsight クラスターを作成する方法の詳しい手順については、以下のリンクをご覧ください。
 
-* [ポータルの使用](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [ポータルの使用](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [PowerShell の使用 (Data Lake Store を既定のストレージとして使用)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [PowerShell の使用 (Data Lake Store を追加のストレージとして使用)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Azure テンプレートの使用](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
+## <a name="refresh-the-hdinsight-certificate-for-data-lake-store-access"></a>HDInsight 証明書を更新し、Data Lake Store にアクセスする
+
+次の PowerShell コード サンプルはローカルの証明書ファイルを読み取り、Azure Data Lake Store にアクセスできるように新しい証明書で HDInsight クラスターを更新します。 独自の HDInsight クラスター名、リソース グループ名、サブスクリプション ID、アプリ ID、証明書のローカル パスを指定します。 入力を求められたら、パスワードを入力します。
+
+```powershell-interactive
+$clusterName = '<clustername>'
+$resourceGroupName = '<resourcegroupname>'
+$subscriptionId = '01234567-8a6c-43bc-83d3-6b318c6c7305'
+$appId = '01234567-e100-4118-8ba6-c25834f4e938'
+$generateSelfSignedCert = $false
+$addNewCertKeyCredential = $true
+$certFilePath = 'C:\localfolder\adls.pfx'
+$certPassword = Read-Host "Enter Certificate Password"
+
+if($generateSelfSignedCert)
+{
+    Write-Host "Generating new SelfSigned certificate"
+    
+    $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=hdinsightAdlsCert" -KeySpec KeyExchange
+    $certBytes = $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $certPassword);
+    $certString = [System.Convert]::ToBase64String($certBytes)
+}
+else
+{
+
+    Write-Host "Reading the cert file from path $certFilePath"
+
+    $cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2($certFilePath, $certPassword)
+    $certString = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes($certFilePath))
+}
+
+Login-AzureRmAccount
+Select-AzureRmSubscription -SubscriptionId $subscriptionId
+
+if($addNewCertKeyCredential)
+{
+    Write-Host "Creating new KeyCredential for the app"
+    $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
+    New-AzureRmADAppCredential -ApplicationId $appId -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
+    Write-Host "Waiting for 30 seconds for the permissions to get propagated"
+    Start-Sleep -s 30
+}
+
+Write-Host "Updating the certificate on HDInsight cluster..."
+
+Invoke-AzureRmResourceAction `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType 'Microsoft.HDInsight/clusters' `
+    -ResourceName $clusterName `
+    -ApiVersion '2015-03-01-preview' `
+    -Action 'updateclusteridentitycertificate' `
+    -Parameters @{ ApplicationId = $appId; Certificate = $certString; CertificatePassword = $certPassword.ToString() } `
+    -Force
+```
 
 ## <a name="next-steps"></a>次の手順
 この記事では、HDInsight で HDFS と互換性のある Azure Data Lake Store を使う方法について説明しました。 これにより、収集したデータを長期にわたって格納できるスケーラブルなソリューションを構築できます。さらに HDInsight を使用すると、格納されている構造化データと非構造化データから有益な情報を得ることができます。
 
-詳細については、「
+詳細については、次を参照してください。
 
 * [Azure HDInsight の概要][hdinsight-get-started]
-* [Azure Data Lake Store の概要](../data-lake-store/data-lake-store-get-started-portal.md)
-* [Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
 * [HDInsight での Hive の使用][hdinsight-use-hive]

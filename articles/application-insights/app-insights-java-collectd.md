@@ -1,23 +1,24 @@
 ---
-title: "Linux での Java Web アプリ パフォーマンスの監視 | Microsoft Docs"
-description: "Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張"
+title: Linux での Java Web アプリ パフォーマンスの監視 | Microsoft Docs
+description: Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張
 services: application-insights
 documentationcenter: java
-author: harelbr
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 40c68f45-197a-4624-bf89-541eb7323002
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: cde0fc020f1774e0e7669e7573e4aaff3534b34c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: fd8c45bf3d7fd9e392d55a82001aa8768fcce8ba
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096601"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Application Insights での Linux パフォーマンス メトリック
 

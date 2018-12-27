@@ -1,23 +1,20 @@
 ---
-title: "インデックスの照会 (REST API - Azure Search) | Microsoft Docs"
-description: "Azure Search の検索クエリを作成し、検索パラメーターを使用して検索結果のフィルター処理と並べ替えを行います。"
+title: REST API を使用してコードでインデックスのクエリを実行する - Azure Search
+description: Azure Search で検索クエリを作成するための HTTP コマンドと REST API コードです。 検索結果のフィルター処理と並べ替えを行うための検索パラメーターを追加します。
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 services: search
-documentationcenter: 
-manager: jhubbard
-author: ashmaka
-ms.assetid: 8b3ca890-2f5f-44b6-a140-6cb676fc2c9c
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.date: 01/12/2017
-ms.author: ashmaka
-ms.openlocfilehash: 49062bec233ad35cd457f9665fa94c1855343582
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.topic: quickstart
+ms.date: 04/20/2018
+ms.custom: seodec2018
+ms.openlocfilehash: ccdb872646dded34cb50cd64f56733445132c4b7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316937"
 ---
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>REST API を使用した Azure Search インデックスの照会
 > [!div class="op_single_selector"]
@@ -25,7 +22,7 @@ ms.lasthandoff: 12/18/2017
 > * [概要](search-query-overview.md)
 > * [ポータル](search-explorer.md)
 > * [.NET](search-query-dotnet.md)
-> * [REST ()](search-query-rest-api.md)
+> * [REST](search-query-rest-api.md)
 >
 >
 
@@ -50,9 +47,9 @@ Azure Search REST API に対するすべての検索操作で鍵となるコン�
 ## <a name="formulate-your-query"></a>クエリの作成
 [REST API を使用してインデックスを検索する](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)方法は 2 とおりあります。 その 1 つは、要求本文の JSON オブジェクトにクエリ パラメーターが定義された HTTP POST 要求を発行する方法です。 もう 1 つは、要求 URL にクエリ パラメーターが定義された HTTP GET 要求を発行する方法です。 POST の方が GET よりもクエリ パラメーターのサイズの[制限が緩やか](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)です。 そのため、GET の方が便利である特殊な状況を除いて、POST を使用することをお勧めします。
 
-POST でも GET でも、*サービス名*、*インデックス名*、適切な *API バージョン* (このドキュメントが書かれた時点で最新の API バージョンは `2016-09-01`) を要求 URL に指定する必要があります。 GET の場合は、URL の末尾の*クエリ文字列*でクエリ パラメーターを指定します。 この URL の形式については、以下を参照してください。
+POST でも GET でも、*サービス名*、*インデックス名*、適切な *API バージョン* (このドキュメントが書かれた時点で最新の API バージョンは `2017-11-11`) を要求 URL に指定する必要があります。 GET の場合は、URL の末尾の*クエリ文字列*でクエリ パラメーターを指定します。 この URL の形式については、以下を参照してください。
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2016-09-01
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2017-11-11
 
 POST の形式も同じですが、クエリ文字列のパラメーターで api-version だけを指定します。
 
@@ -62,9 +59,9 @@ POST の形式も同じですが、クエリ文字列のパラメーターで ap
 次のクエリは、インデックス全体で "budget" という単語を探し、`hotelName` フィールドのみを返します。
 
 ```
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=budget&$select=hotelName&api-version=2016-09-01
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=budget&$select=hotelName&api-version=2017-11-11
 
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2016-09-01
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2017-11-11
 {
     "search": "budget",
     "select": "hotelName"
@@ -74,9 +71,9 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 次のクエリは、フィルターをインデックスに適用して 1 泊 150 ドル未満のホテルを探し、`hotelId` と `description` を返します。
 
 ```
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2016-09-01
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2017-11-11
 
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2016-09-01
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2017-11-11
 {
     "search": "*",
     "filter": "baseRate lt 150",
@@ -87,9 +84,9 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 次のクエリは、インデックス全体を検索し、特定のフィールド (`lastRenovationDate`) の降順で並べ替えます。そして上位 2 件の結果を取得し、`hotelName` と `lastRenovationDate` のみを表示します。
 
 ```
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate&api-version=2016-09-01
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate&api-version=2017-11-11
 
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2016-09-01
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2017-11-11
 {
     "search": "*",
     "orderby": "lastRenovationDate desc",
@@ -111,7 +108,7 @@ GET の場合は 2 つ、POST の場合は 3 つ、要求ヘッダーを定義�
 Azure Search REST API を使用して "hotels" インデックスを検索するための HTTP GET 要求を以下に示します。ここでは、"motel" という単語を検索するシンプルなクエリを使っています。
 
 ```
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=motel&api-version=2016-09-01
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=motel&api-version=2017-11-11
 Accept: application/json
 api-key: [query key]
 ```
@@ -119,7 +116,7 @@ api-key: [query key]
 これも同じクエリの例ですが、今回は HTTP POST を使っています。
 
 ```
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2016-09-01
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2017-11-11
 Content-Type: application/json
 Accept: application/json
 api-key: [query key]

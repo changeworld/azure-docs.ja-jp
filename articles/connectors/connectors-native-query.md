@@ -1,11 +1,11 @@
 ---
-title: "ロジック アプリにクエリ アクションを追加する | Microsoft Docs"
-description: "配列のフィルター処理などのアクションを実行するためのクエリ アクションの概要です。"
-services: 
-documentationcenter: 
+title: ロジック アプリにクエリ アクションを追加する | Microsoft Docs
+description: 配列のフィルター処理などのアクションを実行するためのクエリ アクションの概要です。
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27962647"
 ---
 # <a name="get-started-with-the-query-action"></a>クエリ アクションの概要
 クエリ アクションを使用し、バッチと配列を操作して次のワークフローを実現できます。
@@ -37,7 +38,7 @@ ms.lasthandoff: 01/19/2018
 ロジック アプリにクエリ アクションを追加する方法を次に示します。
 
 1. **[新しいステップ]** をクリックします。
-2. **[アクションの追加]**を選択します。
+2. **[アクションの追加]** を選択します。
 3. アクションの検索ボックスに「**フィルター**」と入力して、**[配列のフィルター処理]** アクションを表示します。
    
     ![クエリ アクションを選択する](./media/connectors-native-query/using-action-1.png)

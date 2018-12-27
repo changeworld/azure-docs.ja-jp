@@ -1,12 +1,12 @@
 ---
-title: "PowerShell for StorSimple デバイス管理 | Microsoft Docs"
-description: "Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。"
+title: PowerShell for StorSimple デバイス管理 | Microsoft Docs
+description: Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 291de21d3d98bf9eb65adc7d506f3549171ee0a0
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 449c65d0ed746664b75bf8775dda695f569b3eb0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228387"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 
@@ -36,7 +37,7 @@ Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイス�
 
 > [!NOTE]
 > * Windows PowerShell for StorSimple コマンドレットを使用すると、シリアル コンソールから、または Windows PowerShell リモート処理経由で StorSimple デバイスを管理できます。 このインターフェイスで使用できる個々のコマンドレットの詳細については、「 [Windows PowerShell for StorSimple コマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)」を参照してください。
-> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](https://docs.microsoft.com/powershell/servicemanagement/azure.storsimple/v3.1.0/azure.storsimple)」を参照してください。
+> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)」を参照してください。
 
 
 Windows PowerShell for StorSimple には、次のいずれかの方法でアクセスできます。
@@ -67,13 +68,13 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
    | Enable extra keyboard features |Control-Alt is different from AltGr |
    
     ![サポートされる Putty 設定](./media/storsimple-windows-powershell-administration/IC740877.png)
-3. **[Apply]**をクリックします。
+3. **[Apply]** をクリックします。
 4. **[Category]** パネルで、**[Translation]** を選択します。
 5. **[Remote character set]** ボックスの一覧から **[UTF-8]** を選択します。
 6. **[Handling of line drawing characters]** の **[Use Unicode line drawing code points]** を選択します。 次のスクリーンショットに、正しい PuTTY の選択を示します。
    
     ![UTF PuTTY 設定](./media/storsimple-windows-powershell-administration/IC740878.png)
-7. **[Apply]**をクリックします。
+7. **[Apply]** をクリックします。
 
 これで、PuTTY を使用して、次の手順に従ってデバイスのシリアル コンソールに接続できます。
 
@@ -158,7 +159,7 @@ Windows PowerShell for StorSimple に接続する方法を決定するときは�
 
 Windows PowerShell for StorSimple では、コマンドレット ヘルプを利用できます。 このヘルプのオンラインの最新バージョンも利用できます。これを使用して、システム上のヘルプを更新できます。
 
-このインターフェイスでのヘルプの取得は、Windows PowerShell での操作に似ています。また、ほとんどのヘルプ関連コマンドレットで機能します。 Windows PowerShell のヘルプは、TechNet ライブラリの「[Windows PowerShell を使用したスクリプト](http://go.microsoft.com/fwlink/?LinkID=108518)」でオンライン検索できます。
+このインターフェイスでのヘルプの取得は、Windows PowerShell での操作に似ています。また、ほとんどのヘルプ関連コマンドレットで機能します。 Windows PowerShell のヘルプは、TechNet ライブラリの「[Windows PowerShell を使用したスクリプト](https://go.microsoft.com/fwlink/?LinkID=108518)」でオンライン検索できます。
 
 Windows PowerShell インターフェイスで取得できるヘルプの種類の簡単な説明を、ヘルプの更新方法も含めて次に示します。
 

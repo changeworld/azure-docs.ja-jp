@@ -1,19 +1,20 @@
 ---
-title: "Azure Kubernetes クラスターの監視 - Sysdig"
-description: "Sysdig を使用した Azure Container Service での Kubernetes クラスターの監視"
+title: Azure Kubernetes クラスターの監視 - Sysdig
+description: Sysdig を使用した Azure Container Service での Kubernetes クラスターの監視
 services: container-service
 author: bburns
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 4ff610f72af4e6a750749009f3cd4b4df632a37f
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: bbf59a35f420b5bbf292fbdaa5a8bbc173e4ee24
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091309"
 ---
 # <a name="monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>Sysdig を使用した Azure Container Service Kubernetes クラスターの監視
 
@@ -57,7 +58,7 @@ Sysdig クラウドの Web サイトへのログイン後に自分のユーザ�
 DaemonSet は、コンピューターごとに 1 つのコンテナーの 1 つのインスタンスを実行する Kubernetes API オブジェクトです。
 Sysdig の監視エージェントなどのツールをインストールする場合に最適です。
 
-Sysdig DaemonSet をインストールするには、まず[テンプレート](https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml)を sysdig からダウンロードします。 そのファイルを `sysdig-daemonset.yaml` という名前で保存します。
+Sysdig DaemonSet をインストールするには、まず[テンプレート](https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/kubernetes)を sysdig からダウンロードします。 そのファイルを `sysdig-daemonset.yaml` という名前で保存します。
 
 Linux および OS X 上では次のように実行することができます。
 

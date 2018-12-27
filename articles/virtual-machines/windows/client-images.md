@@ -1,11 +1,11 @@
 ---
-title: "Azure での Windows クライアント イメージの使用 | Microsoft Docs"
-description: "Visual Studio サブスクリプションの特典を使用して、Azure で Windows 7、Windows 8、または Windows 10 を開発/テストのシナリオにデプロイする方法"
+title: Azure での Windows クライアント イメージの使用 | Microsoft Docs
+description: Visual Studio サブスクリプションの特典を使用して、Azure で Windows 7、Windows 8、または Windows 10 を開発/テストのシナリオにデプロイする方法
 services: virtual-machines-windows
-documentationcenter: 
-author: iainfoulds
+documentationcenter: ''
+author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
-ms.author: iainfou
-ms.openlocfilehash: aaab69f452db9d4f11af2b5cfd2cd9ff6ac79954
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.author: cynthn
+ms.openlocfilehash: eb227b4b4cbdc40a4e708726bbe0f5d0c7eacb74
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364675"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
 適切な Visual Studio (以前は MSDN) サブスクリプションがある場合は、Azure で Windows 7、Windows 8、または Windows 10 Enterprise (x64) を開発/テストのシナリオに使用できます。 この記事では、Windows 7、Windows 8.1、Windows 10 Enterprise を Azure で実行するための資格要件と、次の Azure ギャラリーのイメージの使用について説明します。
@@ -47,7 +48,7 @@ ms.lasthandoff: 01/25/2018
 | [Visual Studio Premium with MSDN (特典)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P |Windows 10 |
 | [Visual Studio Enterprise サブスクライバー](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P |Windows 10 |
 | [Visual Studio Enterprise (BizSpark) サブスクライバー](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P |Windows 10 |
-| [Enterprise Dev/Test](https://azure.microsoft.com/ofers/ms-azr-0148p/) |0148P |Windows 10 |
+| [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>Azure サブスクリプションの確認
 プラン ID を把握していない場合は、次の 2 つの方法で Azure ポータルから取得できます。  
@@ -58,7 +59,7 @@ ms.lasthandoff: 01/25/2018
 
 - または、**[課金情報]** をクリックした後、サブスクリプション ID をクリックします。 *[課金情報]* ウィンドウにプラン ID が表示されます。
 
-また、Azure アカウント ポータルの ['サブスクリプション' タブ](http://account.windowsazure.com/Subscriptions) からプラン ID を表示することもできます。
+また、Azure アカウント ポータルの ['サブスクリプション' タブ](http://account.windowsazure.com/Subscriptions) からオファー ID を表示することもできます。
 
 ![Azure アカウント ポータルからのプラン ID の詳細](./media/client-images/offer-id-azure-account-portal.png) 
 

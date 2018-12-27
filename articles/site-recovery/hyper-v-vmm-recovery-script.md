@@ -1,24 +1,18 @@
 ---
-title: "Azure Site Recovery での復旧計画にスクリプトを追加する | Microsoft Docs"
-description: "Azure の復旧計画に新しい System Center Virtual Machine Manager (VMM) スクリプトを追加するための前提条件について説明します。"
-services: site-recovery
-documentationcenter: 
-author: ruturaj
-manager: shons
-editor: 
-ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
+title: Azure Site Recovery を使用したディザスター リカバリーのための復旧計画にスクリプトを追加する | Microsoft Docs
+description: VMM クラウド上にある Hyper-V VM のディザスター リカバリー用復旧計画に、VMM スクリプトを追加する方法について説明します。
+author: rajani-janaki-ram
+manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 12/13/2017
-ms.author: ruturaj
-ms.openlocfilehash: 2e00f812fb35ac9a0cb390fc6a3ba40a8678f8dd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: conceptual
+ms.date: 11/27/2018
+ms.author: rajanaki
+ms.openlocfilehash: a3d6f84de103596e27c22cbb11d709bb1a85dc91
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836846"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>復旧計画への VMM スクリプトの追加
 
@@ -51,11 +45,11 @@ ms.lasthandoff: 02/21/2018
   
   1. レジストリ エディターを開き、**HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration** に移動します。
 
-  2. **ScriptLibraryPath** の値を **\\\libserver2.contoso.com\share\\** に変更します。 完全な FQDN を指定します。 共有場所にアクセス許可を設定します。 これは共有のルート ノードです。 ルート ノードを確認するには、VMM でライブラリのルート ノードに移動します。 開くパスはパスのルートです。 これは、変数で使用する必要があるパスです。
+  1. **ScriptLibraryPath** の値を **\\\libserver2.contoso.com\share\\** に変更します。 完全な FQDN を指定します。 共有場所にアクセス許可を設定します。 これは共有のルート ノードです。 ルート ノードを確認するには、VMM でライブラリのルート ノードに移動します。 開くパスはパスのルートです。 これは、変数で使用する必要があるパスです。
 
-  3. VMM サービス アカウントと同じレベルのユーザー権限を持つユーザー アカウントを使用して、スクリプトをテストします。 このようなユーザー権限を使用して、スタンドアロンのテスト済みスクリプトが、復旧計画で実行される場合と同じ方法で実行されることを検証します。 VMM サーバーで、次の手順を実行して、実行ポリシーを bypass に設定します。
+  1. VMM サービス アカウントと同じレベルのユーザー権限を持つユーザー アカウントを使用して、スクリプトをテストします。 このようなユーザー権限を使用して、スタンドアロンのテスト済みスクリプトが、復旧計画で実行される場合と同じ方法で実行されることを検証します。 VMM サーバーで、次の手順を実行して、実行ポリシーを bypass に設定します。
 
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者として **64 ビット版 Windows PowerShell** コンソールを開きます。
+     a. 管理者として **64 ビット版 Windows PowerShell** コンソールを開きます。
      
      b. 「**Set-executionpolicy bypass**」と入力します。 詳細については、「[Set-ExecutionPolicy コマンドレットの使用](https://technet.microsoft.com/library/ee176961.aspx)」を参照してください。
 
@@ -67,19 +61,19 @@ ms.lasthandoff: 02/21/2018
 VMM ソース サイトが存在する場合、VMM サーバー上にスクリプトを作成できます。 また、そのスクリプトを復旧計画に含めることができます。
 
 1. ライブラリ共有内に、新しいフォルダーを作成します。 たとえば、\<VMM サーバー名>\MSSCVMMLibrary\RPScripts を作成します。 このフォルダーを、ソース VMM サーバーとターゲット VMM サーバーに配置します。
-2. スクリプトを作成します。 たとえば、スクリプトに RPScript と名前を付けます。 スクリプトが期待どおりに動作することを確認します。
-3. ソース VMM サーバーとターゲット VMM サーバーの \<VMM サーバー名>\MSSCVMMLibrary フォルダーにスクリプトを配置します。
+1. スクリプトを作成します。 たとえば、スクリプトに RPScript と名前を付けます。 スクリプトが期待どおりに動作することを確認します。
+1. ソース VMM サーバーとターゲット VMM サーバーの \<VMM サーバー名>\MSSCVMMLibrary フォルダーにスクリプトを配置します。
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>復旧計画へのスクリプトの追加
 
 復旧計画に VM またはレプリケーション グループを追加し、計画を作成したら、スクリプトをそのグループに追加できます。
 
 1. 復旧計画を開きます。
-2. **[ステップ]** リストで項目を選択します。 次に、**[スクリプト]** または **[手動アクション]** を選択します。
-3. 選択した項目の前または後のどちらにスクリプトまたはアクションを追加するかを指定します。 スクリプト内で上下に移動するには、**[上へ移動]** ボタンと **[下へ移動]** ボタンを使用します。
-4. VMM スクリプトを追加する場合は、**[Failover to VMM script (VMM へのフェールオーバー スクリプト)]** を選択します。 **[スクリプト パス]** に、共有への相対パスを入力します。 たとえば、「**\RPScripts\RPScript.PS1**」と入力します。
-5. Azure Automation Runbook を追加する場合は、Runbook がある Automation アカウントを指定します。 次に、使用する Azure Runbook スクリプトを選択します。
-6. 復旧計画のテスト フェールオーバーを実行して、スクリプトが期待どおりに動作することを確認します。
+1. **[ステップ]** リストで項目を選択します。 次に、**[スクリプト]** または **[手動アクション]** を選択します。
+1. 選択した項目の前または後のどちらにスクリプトまたはアクションを追加するかを指定します。 スクリプト内で上下に移動するには、**[上へ移動]** ボタンと **[下へ移動]** ボタンを使用します。
+1. VMM スクリプトを追加する場合は、**[Failover to VMM script (VMM へのフェールオーバー スクリプト)]** を選択します。 **[スクリプト パス]** に、共有への相対パスを入力します。 たとえば、「**\RPScripts\RPScript.PS1**」と入力します。
+1. Azure Automation Runbook を追加する場合は、Runbook がある Automation アカウントを指定します。 次に、使用する Azure Runbook スクリプトを選択します。
+1. 復旧計画のテスト フェールオーバーを実行して、スクリプトが期待どおりに動作することを確認します。
 
 
 ## <a name="next-steps"></a>次の手順

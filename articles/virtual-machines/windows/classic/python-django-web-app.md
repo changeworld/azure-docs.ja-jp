@@ -1,11 +1,11 @@
 ---
-title: "Windows Server Azure VM 上の Django Web アプリ | Microsoft Docs"
-description: "クラシック デプロイ モデルの Windows Server 2012 R2 Datacenter VM を使って Azure で Django ベースの Web サイトをホストする方法について説明します。"
+title: Windows Server Azure VM 上の Django Web アプリ | Microsoft Docs
+description: クラシック デプロイ モデルの Windows Server 2012 R2 Datacenter VM を使って Azure で Django ベースの Web サイトをホストする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: python
 author: huguesv
 manager: wpickett
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: e36484d1-afbf-47f5-b755-5e65397dc1c3
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24057020"
 ---
 # <a name="django-hello-world-web-app-on-a-windows-server-vm"></a>Windows Server VM での Django Hello World Web アプリ
 
@@ -56,7 +57,7 @@ ms.lasthandoff: 11/09/2017
 
      ![名前を入力し、パブリック ポートとプライベート ポートを設定する](./media/python-django-web-app/django-helloworld-add-endpoint-set-ports-new-portal.png)
 
-   4. **[OK]**をクリックします。
+   4. **[OK]** をクリックします。
      
 3. ダッシュボードで VM を選びます。 新しく作成した Azure 仮想マシンにリモート デスクトップ プロトコル (RDP) を使ってリモートでサインインするには、**[接続]** をクリックします。  
 

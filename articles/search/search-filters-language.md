@@ -1,24 +1,20 @@
 ---
-title: "Azure Search の言語フィルター | Microsoft Docs"
-description: "Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値で条件をフィルター処理してクエリの検索結果を減らします。"
-services: search
-documentationcenter: 
+title: Azure Search の言語フィルター | Microsoft Docs
+description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値で条件をフィルター処理してクエリの検索結果を減らします。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: 
 ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
-ms.openlocfilehash: 2c09de74405394d4c385dbbd0535913cf2488744
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 2bacffe64fed3e2ee0cc2eb983776b4ab7086e51
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466587"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Azure Search の言語によるフィルター処理方法 
 

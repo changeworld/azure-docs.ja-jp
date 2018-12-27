@@ -1,29 +1,24 @@
 ---
-title: "Shared Access Signature を使用してアクセスを制限する - Azure HDInsight | Microsoft Docs"
-description: "Azure Storage の BLOB に格納されたデータへの HDInsight のアクセスを制限するために、Shared Access Signature を使用する方法について説明します。"
+title: Shared Access Signature を使用してアクセスを制限する - Azure HDInsight
+description: Azure Storage の BLOB に格納されたデータへの HDInsight のアクセスを制限するために、Shared Access Signature を使用する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: 7bcad2dd-edea-467c-9130-44cffc005ff3
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/25/2018
-ms.author: larryfr
-ms.openlocfilehash: d3e37ba0f590cf0572b84a53bdd407af63a19d36
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.topic: conceptual
+ms.date: 04/23/2018
+ms.author: hrasheed
+ms.openlocfilehash: 08ffc3a9eb4942cb21c0a800d493b87b016d7f87
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016182"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
-HDInsight には、クラスターに関連付けられた Azure Storage アカウントのデータへのフル アクセス権があります。 BLOB コンテナーで Shared Access Signature を使って、データへのアクセスを制限できます。 たとえば、データへの読み取り専用アクセス権を提供できます。 Shared Access Signature (SAS) は、データへのアクセスを制限できる Azure Storage アカウントの機能です。 たとえば、データに読み取り専用のアクセス権を提供します。
+HDInsight には、クラスターに関連付けられた Azure Storage アカウントのデータへのフル アクセス権があります。 BLOB コンテナーで Shared Access Signature を使って、データへのアクセスを制限できます。 Shared Access Signature (SAS) は、データへのアクセスを制限できる Azure Storage アカウントの機能です。 たとえば、データに読み取り専用のアクセス権を提供します。
 
 > [!IMPORTANT]
 > Apache Ranger を使うソリューションでは、ドメインに参加している HDInsight を使うことを検討してください。 詳しくは、「[ドメイン参加済み HDInsight クラスターの構成](./domain-joined/apache-domain-joined-configure.md)」をご覧ください。
@@ -44,7 +39,7 @@ HDInsight には、クラスターに関連付けられた Azure Storage アカ�
     > [!IMPORTANT]
     > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-* サンプル ファイルは、 [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature)にあります。 このリポジトリには、以下が含まれます。
+* サンプル ファイルは、[https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature) にあります。 このリポジトリには、以下が含まれます。
 
   * HDInsight で使用するストレージ コンテナー、保存済みのポリシーおよび SAS を作成できる Visual Studio プロジェクト
   * HDInsight で使用するストレージ コンテナー、保存済みのポリシーおよび SAS を作成できる Python スクリプト
@@ -165,7 +160,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 1. プロンプトから次のコマンドを使用して、Azure サブスクリプションを認証します。
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
     プロンプトが表示されたら、Azure サブスクリプションのアカウントでログインします。
@@ -209,7 +204,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
      **CONTAINERNAME** を C# または SAS のアプリケーションで使用したコンテナー名に置き換えます。 **STORAGEACCOUNTNAME** を使用したストレージ アカウント名に置き換えます。
 
-5. **[追加]** ボタンをクリックしてこのキーと値を保存し、**[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、**[保存]**をクリックします。
+5. **[追加]** ボタンをクリックしてこのキーと値を保存し、**[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、**[保存]** をクリックします。
 
     変更が完了したら、 **[OK]** をクリックします。
 

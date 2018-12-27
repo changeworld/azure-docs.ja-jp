@@ -1,25 +1,20 @@
 ---
-title: "HDInsight に Azure ストレージ アカウントを追加する | Microsoft Docs"
-description: "既存の HDInsight クラスターに Azure ストレージ アカウントを追加する方法について説明します。"
+title: HDInsight に Azure ストレージ アカウントを追加する
+description: 既存の HDInsight クラスターに Azure ストレージ アカウントを追加する方法について説明します。
 services: hdinsight
-documentationCenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/22/2018
-ms.author: larryfr
+ms.topic: conceptual
+ms.date: 04/23/2018
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 72045d363516a2f16d45e3f8ee157ddd9d9242bd
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 31461e1d316953c2e69d252f1313180c57562dfd
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009193"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
@@ -59,11 +54,11 @@ __スクリプトの場所__: [https://hdiconfigactions.blob.core.windows.net/li
 
 __要件__:
 
-* スクリプトを__ヘッド ノード__に適用する必要があります。
+* スクリプトを __ヘッド ノード__ に適用する必要があります。
 
 ## <a name="to-use-the-script"></a>スクリプトを使用するには
 
-このスクリプトは、Azure Portal、Azure PowerShell、または Azure CLI 1.0 で使用できます。 詳しくは、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)」を参照してください。
+このスクリプトは、Azure portal、Azure PowerShell、または Azure クラシック CLI で使用できます。 詳しくは、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)」を参照してください。
 
 > [!IMPORTANT]
 > カスタマイズのドキュメントに記載された手順を使用する場合は、次の情報を使用してこのスクリプトを適用します。
@@ -76,7 +71,7 @@ __要件__:
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>ストレージ アカウントが Azure Portal またはツールに表示されない
 
-Azure Portal で HDInsight クラスターを表示しているときに、__[プロパティ]__ の下の __[ストレージ アカウント]__ エントリを選択すると、このスクリプト アクションを通じて追加したストレージ アカウントは表示されません。 Azure PowerShell と Azure CLI でも、追加のストレージ アカウントは表示されません。
+Azure Portal で HDInsight クラスターを表示しているときに、__[プロパティ]__ の下の __[ストレージ アカウント]__ エントリを選択すると、このスクリプト アクションを通じて追加したストレージ アカウントは表示されません。 Azure PowerShell と Azure クラシック CLI でも、追加のストレージ アカウントは表示されません。
 
 ストレージ情報が表示されないのは、スクリプトがクラスターの core-site.xml 構成を変更するだけだからです。 この情報は、Azure 管理 API を使用してクラスター情報を取得するときには使用されません。
 
@@ -100,7 +95,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > `$PASSWORD` には、クラスター ログイン (管理者) アカウントのパスワードを設定します。 `$CLUSTERNAME` には、HDInsight クラスターの名前を設定します。 `$STORAGEACCOUNTNAME` には、ストレージ アカウントの名前を設定します。
 >
-> この例では、[curl (http://curl.haxx.se/)](http://curl.haxx.se/) と [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) を使用して、JSON データを取得して解析します。
+> この例では、[curl (http://curl.haxx.se/) ](http://curl.haxx.se/) と [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/)を使用して、JSON データを取得して解析します。
 
 このコマンドを使用するときは、__CLUSTERNAME__ を HDInsight クラスターの名前に置き換えます。 __PASSWORD__ は、クラスターの HTTP ログイン パスワードに置き換えます。 __STORAGEACCOUNT__ は、スクリプト アクションを使って追加されたストレージ アカウントの名前に置き換えます。 このコマンドから返される情報は、次のテキストに似たものとなります。
 
@@ -112,7 +107,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 
 ストレージ アカウントのキーを変更すると、HDInsight はストレージ アカウントにアクセスできなくなります。 HDInsight は、クラスターの core-site.xml 内のキャッシュされたキーのコピーを使用します。 このキャッシュされたコピーは、新しいキーに一致するように更新する必要があります。
 
-スクリプト アクションを再実行しても、キーは__更新されません__。スクリプトはストレージ アカウントのエントリが既に存在するかどうかを確認します。 エントリが既に存在する場合、いかなる変更もしません。
+スクリプト アクションを再実行しても、キーは __更新されません__。スクリプトはストレージ アカウントのエントリが既に存在するかどうかを確認します。 エントリが既に存在する場合、いかなる変更もしません。
 
 この問題を回避するには、ストレージ アカウントの既存のエントリを削除する必要があります。 既存のエントリを削除するには、次の手順を実行します。
 

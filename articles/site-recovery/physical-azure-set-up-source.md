@@ -1,29 +1,29 @@
 ---
-title: "ソース環境のセットアップ (物理サーバーから Azure へ) | Microsoft Docs"
-description: "この記事では、Windows または Linux を実行している物理サーバーを Azure にレプリケートする前に、オンプレミス環境をセットアップする方法について説明します。"
+title: Azure Site Recovery を使用した物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する | Microsoft Docs
+description: この記事では、オンプレミスの物理サーバーを Azure にディザスター リカバリーするために、オンプレミスの構成サーバーを設定する方法について説明します。
 services: site-recovery
-documentationcenter: 
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 96004a70547c4bfb3a1a3bfadecb1304e4910b52
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: 739129045fab72a9b535be25b853c902c7dbd251
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209549"
 ---
-# <a name="set-up-the-source-environment-physical-server-to-azure"></a>ソース環境のセットアップ (物理サーバーから Azure へ)
+# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する
 
 この記事では、Windows または Linux を実行している物理サーバーを Azure にレプリケートする前に、オンプレミス環境をセットアップする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、次のものが既にあることを前提としています。
-1. Recovery Services コンテナー ([Azure Portal](http://portal.azure.com "Azure Portal") 内)。
-3. 構成サーバーをインストールするための物理コンピューター。
+- Recovery Services コンテナー ([Azure Portal](http://portal.azure.com "Azure Portal") 内)。
+- 構成サーバーをインストールするための物理コンピューター。
+- 構成サーバーをインストールしているコンピューターで TLS 1.0 を無効にした場合は、TLS 1.2 が有効になっていることを確認し、(強力な暗号化を無効にした) コンピューターに .NET Framework バージョン 4.6 以降がインストールされていることを確認します。 [詳細情報](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)。
 
 ### <a name="configuration-server-minimum-requirements"></a>構成サーバーの最小要件
 次の表は、構成サーバーに最低限必要なハードウェア、ソフトウェア、およびネットワークの要件を示したものです。
@@ -62,7 +62,7 @@ ms.lasthandoff: 03/08/2018
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> 構成サーバーはコマンドラインを使用してインストールすることもできます。 詳細については、[コマンドライン ツールを使用した構成サーバーのインストール](http://aka.ms/installconfigsrv)に関するページを参照してください。
+> 構成サーバーはコマンドラインを使用してインストールすることもできます。 [詳細情報](physical-manage-configuration-server.md#install-from-the-command-line)。
 
 
 ## <a name="common-issues"></a>一般的な問題

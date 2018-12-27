@@ -1,20 +1,23 @@
 ---
-title: マルチテナント SaaS チュートリアル - Azure SQL Database | Microsoft Docs
+title: シングルテナント SaaS チュートリアル - Azure SQL Database | Microsoft Docs
 description: Azure SQL Database を使用するスタンドアロン シングルテナント SaaS アプリケーションをデプロイおよび操作します。
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 11/30/2017
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: e30f096a9f02214839550c2dc143ab665e1cd85c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: sstein
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 85c5ff33fbf5979dd07ab27ccf5993149151b38a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252413"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するスタンドアロン シングルテナント アプリケーションをデプロイおよび操作する
 
@@ -24,7 +27,7 @@ ms.lasthandoff: 03/16/2018
 
 このチュートリアルでは、3 つのテナントに対応する 3 つのスタンドアロン アプリケーションを Azure サブスクリプションにデプロイします。  ユーザーには、個々のアプリケーション コンポーネントを確認して操作するフル アクセスがあります。
 
-アプリケーションのソース コードと管理スクリプトは、[WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub リポジトリから入手できます。
+アプリケーションのソース コードと管理スクリプトは、[WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub リポジトリから入手できます。 このアプリケーションは Visual Studio 2015 で作成されました。更新なしでは、Visual Studio 2017 で開いたり、コンパイルしたりできません。
 
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -41,11 +44,11 @@ ms.lasthandoff: 03/16/2018
 次のように 3 つの指定されたテナント用にアプリをデプロイします。
 
 1. 青い **[Azure へのデプロイ]** ボタンを 1 つずつクリックして、[Azure Portal](https://portal.azure.com) でデプロイ テンプレートを開きます。 各テンプレートには、2 つのパラメーター値が必要です。新しいリソース グループの名前と、アプリの他のデプロイからこのデプロイを区別するユーザー名です。 次の手順では、これらの値を設定するための詳細を提供します。<br><br>
-    <a href="http://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso Concert Hall**
+    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso Concert Hall**
 <br><br>
-    <a href="http://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Dogwood Dojo**
+    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Dogwood Dojo**
 <br><br>
-    <a href="http://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
+    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
 
 2. 各デプロイに必須のパラメーター値を入力します。
 
@@ -79,7 +82,7 @@ ms.lasthandoff: 03/16/2018
 
     (各 URL で、&lt;user&gt; を、デプロイのユーザー値に置き換えてください。)
 
-   ![イベント](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![events](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 アプリは、着信要求の分散を制御するために [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md) を使用します。 各テナント固有のアプリ インスタンスには、URL 内のドメイン名の一部としてテナント名が含まれています。 すべてのテナント URL に、特定の**ユーザー**値が含まれます。 URL の形式を次に示します。
 - http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net

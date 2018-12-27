@@ -1,11 +1,11 @@
 ---
-title: "Azure で OpenSUSE VM に MySQL をインストールする | Microsoft Docs"
-description: "Azure 上の OpenSUSE Linux 仮想マシンに MySQL をインストールする方法について説明します。"
+title: Azure で OpenSUSE VM に MySQL をインストールする | Microsoft Docs
+description: Azure 上の OpenSUSE Linux 仮想マシンに MySQL をインストールする方法について説明します。
 services: virtual-machines-linux
-documentationcenter: 
-author: cynthn
+documentationcenter: ''
+author: zr-msft
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 1594e10e-c314-455a-9efb-a89441de364b
 ms.service: virtual-machines-linux
@@ -13,13 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2018
-ms.author: cynthn
-ms.openlocfilehash: 88bd895cb3a384f1ada0394fe2da206aca86b981
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.date: 07/11/2018
+ms.author: za-rhoads
+ms.openlocfilehash: 114b929899e00df9efe64aa387e0e27bd592b57e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469437"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
 
@@ -28,17 +29,17 @@ ms.lasthandoff: 01/23/2018
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>OpenSUSE Linux を実行する仮想マシンの作成
 
-まず、リソース グループを作成します。 この例では、*mySQSUSEResourceGroup* という名前のリソース グループを "*米国東部*" リージョンに作成します。
+まず、リソース グループを作成します。 この例では、リソース グループは "*mySQSUSEResourceGroup*" という名前で、"*米国東部*" リージョンに作成します。
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-VM を作成します。 この例では、VM の名前を *myVM* にします。 この例では *Standard_D2s_v3* の VM サイズを使いますが、ユーザーは実際のワークロードに最適と思われる [VM サイズ](sizes.md)を選ぶ必要があります。
+VM を作成します。 この例では、VM は "*myVM*" という名前、VM サイズは "*Standard_D2s_v3*" ですが、ユーザーが実際のワークロードに最適であると考える [VM サイズ](sizes.md)を選ぶ必要があります。
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -95,19 +96,32 @@ systemctl is-enabled mysql
 
 このコマンドで、enabled が返る必要があります。
 
+サーバーを再起動します。
+
+```bash
+sudo reboot
+```
+
 
 ## <a name="mysql-password"></a>MySQL のパスワード
 
-インストール後、既定では MySQL ルート パスワードは空になっています。 MySQL をセキュリティで保護するには、**mysql\_secure\_installation** スクリプトを実行します。 スクリプトを実行すると、MySQL ルート パスワードの変更、匿名のユーザー アカウントの削除、リモート ルート ログインの無効化、テスト データベースの削除、および権限テーブルの再読み込みを行うように求められます。 
+インストール後、既定では MySQL ルート パスワードは空になっています。 MySQL をセキュリティで保護するには、**mysql\_secure\_installation** スクリプトを実行します。 スクリプトを実行すると、MySQL ルート パスワードの変更、匿名のユーザー アカウントの削除、リモート ルート サインインの無効化、テスト データベースの削除、および権限テーブルの再読み込みを行うように求められます。 
+
+サーバーを再起動したら、もう一度 VM に対して ssh を実行します。
+
+```azurecli-interactive  
+ssh 10.111.112.113
+```
+
 
 
 ```bash
 mysql_secure_installation
 ```
 
-## <a name="log-in-to-mysql"></a>MySQL にログインする
+## <a name="sign-in-to-mysql"></a>MySQL にサインインする
 
-この状態になると、ログインして、MySQL のプロンプトに入ることができます。
+サインインして、MySQL プロンプトに入れるようになりました。
 
 ```bash  
 mysql -u root -p
@@ -135,7 +149,7 @@ GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
 データベースのユーザー名とパスワードは、データベースに接続するスクリプトのみが使います。  データベース ユーザー アカウントは、システム上の実際のユーザー アカウントを表しているとは限りません。
 
-別のコンピューターからのログインを有効にします。 この例では、ログインするコンピューターの IP アドレスは *10.112.113.114* です。
+別のコンピューターからのサインインを有効にします。 この例では、サインインが許可された元のコンピューターの IP アドレスは "*10.112.113.114*" です。
 
 ```   
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';

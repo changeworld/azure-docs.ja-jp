@@ -10,21 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 1625b37a41082f8536d103701b1356a13a5dd837
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5cdaba2a280221fa5fa9274ebfa6cafa18e7690c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055017"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-functions-variables.md)
-> * [バージョン 2 - プレビュー](control-flow-expression-language-functions.md)
+> * [Version 1](v1/data-factory-functions-variables.md)
+> * [現在のバージョン](control-flow-expression-language-functions.md)
 
-この記事では、Azure Data Factory (バージョン 2) によってサポートされている式と関数に関する詳細情報を提供します。 
+この記事では、Azure Data Factory によってサポートされている式と関数に関する詳細情報を提供します。 
 
 ## <a name="introduction"></a>はじめに
 定義内の JSON 値には、実行時に評価されるリテラルまたは式を指定できます。 例:   
@@ -39,20 +40,15 @@ ms.lasthandoff: 03/28/2018
 "name": "@pipeline().parameters.password"
 ```
 
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Functions and variables in Data Factory V1 (Data Factory V1 の関数と変数)](v1/data-factory-functions-variables.md)」を参照してください。
-
-
 ## <a name="expressions"></a>式  
-式は、JSON 文字列値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式である場合は、アットマーク (@) を削除することによって式の本体が抽出されます。 @ で始まるリテラル文字列が必要な場合は、@@ を使用してその文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
+式は、JSON string 値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式である場合は、アットマーク (\@) を削除することによって式の本体が抽出されます。 \@ で始まるリテラル文字列が必要な場合は、\@\@ を使用してその文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
   
 |JSON 値|結果|  
 |----------------|------------|  
 |"parameters"|文字 "parameters" が返されます。|  
 |"parameters [1]"|文字 "parameters[1]" が返されます。|  
-|"@@"|\"\@\" を含む 1 文字の文字列が返されます。|  
-|\" \@\"|\" \@\" を含む 2 文字の文字列が返されます。|  
+|"\@\@"|'\@' を含む 1 文字の文字列が返されます。|  
+|" \@"|' \@' を含む 2 文字の文字列が返されます。|  
   
  また、式が `@{ ... }` にラップされる*文字列補間*と呼ばれる機能を使用して、式を文字列の内部に指定することもできます。 次に例を示します。`"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
@@ -60,13 +56,13 @@ ms.lasthandoff: 03/28/2018
   
 |JSON 値|結果|  
 |----------------|------------|  
-|"@pipeline().parameters.myString"| `foo` が文字列として返されます。|  
-|"@{pipeline().parameters.myString}"| `foo` が文字列として返されます。|  
-|"@pipeline().parameters.myNumber"| `42` が "*数値*" として返されます。|  
-|"@{pipeline().parameters.myNumber}"| `42` が "*文字列*" として返されます。|  
-|"Answer is: @{pipeline().parameters.myNumber}"| 文字列 `Answer is: 42` が返されます。|  
-|"@concat('Answer is: ', string(pipeline().parameters.myNumber))"| 文字列 `Answer is: 42` が返されます。|  
-|"Answer is: @@{pipeline().parameters.myNumber}"| 文字列 `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
+|"\@pipeline().parameters.myString"| `foo` が文字列として返されます。|  
+|"\@{pipeline().parameters.myString}"| `foo` が文字列として返されます。|  
+|"\@pipeline().parameters.myNumber"| `42` が "*数値*" として返されます。|  
+|"\@{pipeline().parameters.myNumber}"| `42` が "*string*" として返されます。|  
+|"Answer is: @{pipeline().parameters.myNumber}"| string `Answer is: 42` が返されます。|  
+|"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| string `Answer is: 42` が返されます。|  
+|"Answer is: \@\@{pipeline().parameters.myNumber}"| string `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
   
 ### <a name="examples"></a>例
 
@@ -151,7 +147,7 @@ ms.lasthandoff: 03/28/2018
 ## <a name="string-functions"></a>文字列関数  
  次の関数は、文字列にのみ適用されます。 文字列では、いくつかのコレクション関数を使用することもできます。  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |concat|任意の数の文字列を結合します。 たとえば、パラメーター 1 が `foo,` である場合、次の式は `somevalue-foo-somevalue` を返します: `concat('somevalue-',pipeline().parameters.parameter1,'-somevalue')`<br /><br /> **パラメーター番号**: 1 ... *n*<br /><br /> **名前**: String *n*<br /><br /> **説明**: 必須。 1 つの文字列に結合する文字列です。|  
 |substring|文字列から文字のサブセットを返します。 たとえば、次の式<br /><br /> `substring('somevalue-foo-somevalue',10,3)`<br /><br /> は次を返します。<br /><br /> `foo`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 部分文字列を取得する文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Start index<br /><br /> **説明**: 必須。 パラメーター 1 で取得する部分文字列の開始位置のインデックスです。<br /><br /> **パラメーター番号**: 3<br /><br /> **名前**: Length<br /><br /> **説明**: 必須。 部分文字列の長さです。|  
@@ -161,15 +157,15 @@ ms.lasthandoff: 03/28/2018
 |toUpper|文字列を大文字に変換します。 たとえば、次の式は `TWO BY TWO IS FOUR` を返します: `toUpper('Two by Two is Four')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 大文字に変換する文字列です。 文字列内の文字に大文字の対応する文字がない場合、その文字は返される文字列に変更されずに含まれます。|  
 |indexof|文字列内で値のインデックスを探します。大文字と小文字は区別されません。 たとえば、次の式は `7` を返します: `indexof('hello, world.', 'world')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 インデックスを探す値です。|  
 |lastindexof|文字列内で値の最後のインデックスを探します。大文字と小文字は区別されません。 たとえば、次の式は `3` を返します: `lastindexof('foofoo', 'foo')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 インデックスを探す値です。|  
-|startswith|文字列が値で始まっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `lastindexof('hello, world', 'hello')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 文字列が始まっている可能性のある値です。|  
-|endswith|文字列が値で終わっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `lastindexof('hello, world', 'world')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 文字列が終わっている可能性のある値です。|  
+|startswith|文字列が値で始まっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `startswith('hello, world', 'hello')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 文字列が始まっている可能性のある値です。|  
+|endswith|文字列が値で終わっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `endswith('hello, world', 'world')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 文字列が終わっている可能性のある値です。|  
 |split|区切り記号を使って文字列を分割します。 たとえば、次の式は `["a", "b", "c"]` を返します: `split('a;b;c',';')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 分割する文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 区切り記号です。|  
   
   
 ## <a name="collection-functions"></a>コレクション関数  
  これらの関数は、配列、文字列、場合によっては辞書などのコレクションに対して動作します。  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |contains|ディクショナリにキーが含まれる場合、リストに値が含まれる場合、または文字列に部分文字列が含まれる場合、true を返します。 たとえば、次の式は `true:``contains('abacaba','aca')` を返します<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Within collection<br /><br /> **説明**: 必須。 その中で検索を行うコレクションです。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Find object<br /><br /> **説明**: 必須。 **Within collection** 内で検索するオブジェクトです。|  
 |length|配列または文字列内の要素の数を返します。 たとえば、次の式は `3` を返します: `length('abc')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**: Collection<br /><br /> **説明**: 必須。 次の長さを取得するコレクション。|  
@@ -184,7 +180,7 @@ ms.lasthandoff: 03/28/2018
 ## <a name="logical-functions"></a>論理関数  
  これらの関数は条件の内部で役立ち、任意の種類のロジックを評価するために使用できます。  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |equals|2 つの値が等しい場合、true を返します。 たとえば、パラメーター 1 が foo である場合、次の式は `true` を返します: `equals(pipeline().parameters.parameter1), 'foo')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Object 1<br /><br /> **説明**: 必須。 **Object 2** と比較するオブジェクトです。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Object 2<br /><br /> **説明**: 必須。 **Object 1** と比較するオブジェクトです。|  
 |less|1 番目の引数が 2 番目の引数より小さい場合、true を返します。 値として指定できる型は integer、float、string だけであることに注意してください。 たとえば、次の式は `true` を返します: `less(10,100)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Object 1<br /><br /> **説明**: 必須。 **Object 2** より小さいかどうかを調べるオブジェクトです。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Object 2<br /><br /> **説明**: 必須。 **Object 1** より大きいかどうかを調べるオブジェクトです。|  
@@ -211,11 +207,11 @@ ms.lasthandoff: 03/28/2018
   
 -   dictionaries  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |int|パラメーターを整数に変換します。 たとえば、次の式は文字列ではなく、数値として 100 を返します: `int('100')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 整数に変換する値です。|  
 |文字列|パラメーターを文字列に変換します。 たとえば、次の式は `'10'` を返します: `string(10)` また、オブジェクトを文字列に変換することもできます。たとえば、**foo** パラメーターが 1 つのプロパティ `bar : baz` を持つオブジェクトである場合、次は `{"bar" : "baz"}` `string(pipeline().parameters.foo)` を返します<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 文字列に変換する値です。|  
-|json|パラメーターを JSON 型の値に変換します。 これは、string() の反対です。 たとえば、次の式は文字列ではなく、配列として `[1,2,3]` を返します。<br /><br /> `parse('[1,2,3]')`<br /><br /> 同様に、文字列をオブジェクトに変換することもできます。 たとえば、`json('{"bar" : "baz"}')` は次を返します。<br /><br /> `{ "bar" : "baz" }`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 ネイティブな型の値に変換する文字列です。<br /><br /> json 関数は、xml 入力もサポートします。 たとえば、次のようなパラメーター値があるものとします。<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> 次の json に変換されます。<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
+|json|パラメーターを JSON 型の値に変換します。 これは、string() の反対です。 たとえば、次の式は文字列ではなく、配列として `[1,2,3]` を返します。<br /><br /> `json('[1,2,3]')`<br /><br /> 同様に、文字列をオブジェクトに変換することもできます。 たとえば、`json('{"bar" : "baz"}')` は次を返します。<br /><br /> `{ "bar" : "baz" }`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 ネイティブな型の値に変換する文字列です。<br /><br /> json 関数は、xml 入力もサポートします。 たとえば、次のようなパラメーター値があるものとします。<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> 次の json に変換されます。<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
 |float|パラメーター引数を浮動小数点数に変換します。 たとえば、次の式は `10.333` を返します: `float('10.333')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 浮動小数点数に変換する値です。|  
 |bool|パラメーターをブール値に変換します。 たとえば、次の式は `false` を返します: `bool(0)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 ブール値に変換する値です。|  
 |coalesce|渡された引数で最初の null 以外のオブジェクトを返します。 注: 空の文字列は null ではありません。 たとえば、パラメーター 1 と 2 が定義されていない場合、これは `fallback` を返します: `coalesce(pipeline().parameters.parameter1', pipeline().parameters.parameter2 ,'fallback')`<br /><br /> **パラメーター番号**: 1 ... *n*<br /><br /> **名前**: Object*n*<br /><br /> **説明**: 必須。 `null` をチェックするオブジェクト。|  
@@ -232,7 +228,7 @@ ms.lasthandoff: 03/28/2018
 |decodeDataUri|入力データの URI 文字列のバイナリ表現を返します。 たとえば、次の式は `some string` のバイナリ表現を返します: `decodeDataUri('data:;base64,c29tZSBzdHJpbmc=')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 バイナリ表現にデコードする dataURI です。|  
 |uriComponent|値の URI でエンコードされた表現を返します。 たとえば、次の式は `You+Are%3ACool%2FAwesome: uriComponent('You Are:Cool/Awesome ')` を返します<br /><br /> パラメーターの詳細: 番号: 1、名前: String、説明: 必須。 URI でエンコードする文字列です。|  
 |uriComponentToBinary|URI でエンコードされた文字列のバイナリ表現を返します。 たとえば、次の式は `You Are:Cool/Awesome` のバイナリ表現を返します: `uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br />**説明**: 必須。 URI でエンコードされた文字列です。|  
-|uriComponentToString|URI でエンコードされた文字列の文字列表現を返します。 たとえば、次の式は `You Are:Cool/Awesome` を返します: `uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **パラメーター番号**: 1<br /><br />**名前**: String<br /><br />**説明**: 必須。 URI でエンコードされた文字列です。|  
+|uriComponentToString|URI でエンコードされた文字列の文字列表現を返します。 たとえば、次の式は `You Are:Cool/Awesome` を返します: `uriComponentToString('You+Are%3ACool%2FAwesome')`<br /><br /> **パラメーター番号**: 1<br /><br />**名前**: String<br /><br />**説明**: 必須。 URI でエンコードされた文字列です。|  
 |xml|値の xml 表現を返します。 たとえば、次の式は `'\<name>Alan\</name>'` によって表される xml コンテンツを返します: `xml('\<name>Alan\</name>')` xml 関数は、JSON オブジェクトの入力もサポートします。 たとえば、パラメーター `{ "abc": "xyz" }` は xml コンテンツ `\<abc>xyz\</abc>` に変換されます<br /><br /> **パラメーター番号**: 1<br /><br />**名前**: Value<br /><br />**説明**: 必須。 XML に変換する値です。|  
 |xpath|xpath 式が評価された値の xpath 式に一致する xml ノードの配列を返します。<br /><br />  **例 1**<br /><br /> パラメーター 'p1' の値が次の XML の文字列表現であるとします。<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1.コード `xpath(xml(pipeline().parameters.p1), '/lab/robot/name')`<br /><br /> は次を返します<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> これに対して<br /><br /> 2.コード `xpath(xml(pipeline().parameters.p1, ' sum(/lab/robot/parts)')`<br /><br /> は次を返します<br /><br /> `13`<br /><br /> <br /><br /> **例 2**<br /><br /> 次のような XML コンテンツがあるものとします。<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.コード `@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> or<br /><br /> 2.コード `@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> は、次の値は返します。<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> and<br /><br /> 手順 3.コード `@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> は、次の値は返します。<br /><br /> ``bar``<br /><br /> **パラメーター番号**: 1<br /><br />**名前**: Xml<br /><br />**説明**: 必須。 XPath 式を評価する XML です。<br /><br /> **パラメーター番号**: 2<br /><br />**名前**: XPath<br /><br />**説明**: 必須。 評価する XPath 式です。|  
 |array|パラメーターを配列に変換します。  たとえば、次の式は `["abc"]` を返します: `array('abc')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 配列に変換する値です。|
@@ -241,7 +237,7 @@ ms.lasthandoff: 03/28/2018
 ## <a name="math-functions"></a>算術関数  
  これらの関数は、**integer** 型および **float** 型の値に使うことができます。  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |追加|2 つの数値の加算の結果を返します。 たとえば、この関数は `20.333` を返します: `add(10,10.333)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Summand 1<br /><br /> **説明**: 必須。 **Summand 2** に加算する値です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Summand 2<br /><br /> **説明**: 必須。 **Summand 1** に加算する値です。|  
 |sub|2 つの数値の減算の結果を返します。 たとえば、この関数は `-0.333` を返します。<br /><br /> `sub(10,10.333)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Minuend<br /><br /> **説明**: 必須。 **Subtrahend** を減算する値です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Subtrahend<br /><br /> **説明**: 必須。 **Minuend** から減算する値です。|  
@@ -255,7 +251,7 @@ ms.lasthandoff: 03/28/2018
   
 ## <a name="date-functions"></a>データ関数  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |utcnow|現在のタイムスタンプを文字列として返します。 例: `2015-03-15T13:27:36Z`<br /><br /> `utcnow()`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |addseconds|渡されたタイムスタンプ文字列に秒数を表す整数を追加します。 秒数は正でも負でもかまいません。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-03-15T13:27:00Z`<br /><br /> `addseconds('2015-03-15T13:27:36Z', -36)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Seconds<br /><br /> **説明**: 必須。 追加する秒の値です。 負の値にして秒数を減算できます。<br /><br /> **パラメーター番号**: 3<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  

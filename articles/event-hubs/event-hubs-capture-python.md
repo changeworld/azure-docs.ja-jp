@@ -1,24 +1,25 @@
 ---
-title: "Azure Event Hubs Capture チュートリアル | Microsoft Docs"
-description: "Azure Python SDK を用いて、Event Hubs Capture 機能の使用方法を示すサンプル。"
+title: Azure Event Hubs Capture チュートリアル | Microsoft Docs
+description: Azure Python SDK を用いて、Event Hubs Capture 機能の使用方法を示すサンプル。
 services: event-hubs
-documentationcenter: 
-author: djrosanova
+documentationcenter: ''
+author: ShubhaVijayasarathy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2017
-ms.author: sethm
-ms.openlocfilehash: 97cadbde2ddedade1a8688f1380b9ff9194613e7
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 08/16/2018
+ms.author: shvija
+ms.openlocfilehash: 76102e1238346cbbb8f5159d2ffcd94c788c16d6
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145220"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture チュートリアル: Python
 

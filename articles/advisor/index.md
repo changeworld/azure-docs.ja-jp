@@ -1,22 +1,22 @@
 ---
-title: "Azure Advisor のドキュメント - チュートリアル | Microsoft Docs"
-description: 
+title: Azure Advisor のドキュメント - チュートリアル | Microsoft Docs
+description: ''
 services: advisor
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: advisor
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 29aa1bfcc0060e456c1e4b4b13ff7857fcff8373
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 14ddcea98e2b326437db8f7ddf550f8aba58b628
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651259"
 ---
 # <a name="azure-advisor-documentation"></a>Azure Advisor のドキュメント
 
@@ -42,7 +42,7 @@ Azure Advisor は、ベスト プラクティスに従って Azure デプロイ�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/resources/videos/index/?services=advisor">
+        <a href="https://azure.microsoft.com/resources/videos/index/?services=advisor">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -85,15 +85,15 @@ Azure Advisor は、ベスト プラクティスに従って Azure デプロイ�
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST API</h3>
-                        <p><a href="/rest/api/advisor">REST API リファレンスに関するページ</a></p>
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST API</h3>
+                        <p><a href="/rest/api/advisor">REST API リファレンス</a></p>
                         <h3>CLI</h3>
-                        <p><a href="/cli/azure/advisor">CLI リファレンス</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <p><a href="/cli/azure/advisor">CLI リファレンス</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>

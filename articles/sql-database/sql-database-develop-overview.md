@@ -2,19 +2,22 @@
 title: SQL Database アプリケーションの開発の概要 | Microsoft Docs
 description: SQL Database に接続するアプリケーションで使用できる接続ライブラリとベスト プラクティスについて説明します。
 services: sql-database
-author: stevestein
-manager: craigg
-ms.reviewer: genemi
 ms.service: sql-database
-ms.custom: develop apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: dc78a43fb99428eac921dd0cfffe5547f523a133
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: genemi
+manager: craigg
+ms.date: 06/20/2018
+ms.openlocfilehash: 707e10f77bf00ed12f09a23e490105f52ceed4ab
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241601"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 この記事では、Azure SQL Database に接続するコードを記述するときの基本的な考慮事項について説明します。
@@ -32,16 +35,19 @@ ms.lasthandoff: 04/06/2018
 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS コード](https://code.visualstudio.com/)などのオープン ソース ツールを活用できます。 さらに、Azure SQL Database は、[Visual Studio](https://www.visualstudio.com/downloads/)、[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) などの Microsoft ツールと連携しています。  また、Microsoft Azure 管理ポータル、PowerShell、および REST API も使用でき、生産性向上に役立ちます。
 
 ## <a name="resource-limitations"></a>リソースの制限事項
-Azure SQL Database では、リソース ガバナンスと制限の適用という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。
+Azure SQL Database では、リソース ガバナンスと制限の適用という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。 詳細については、次を参照してください。
 
-* 詳細: [Azure SQL Database のリソース制限](sql-database-service-tiers.md)。
+- [DTU ベースのリソース モデル制限 - 単一データベース](sql-database-dtu-resource-limits-single-databases.md)
+- [DTU ベースのリソース モデル制限 - エラスティック プール](sql-database-dtu-resource-limits-elastic-pools.md)
+- [仮想コアベースのリソース制限 - 単一データベース](sql-database-vcore-resource-limits-single-databases.md)
+- [仮想コアベースのリソース制限 - エラスティック プール](sql-database-vcore-resource-limits-elastic-pools.md)
 
 ## <a name="security"></a>セキュリティ
 Azure SQL Database には、SQL Database に対するアクセスの制限、データの保護、およびアクティビティの監視を行うためのリソースが用意されています。
 
 * 詳細: [SQL Database の保護](sql-database-security-overview.md)。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 * Azure SQL Database では、SQL Server 認証のユーザーとログインの両方と、 [Azure Active Directory 認証](sql-database-aad-authentication.md) ユーザーとログインがサポートされています。
 * 既定の *マスター* データベースではなく、特定のデータベースを明示的に指定する必要があります。
 * Transact-SQL の **USE myDatabaseName;** ステートメントを SQL Database に対して使用して別のデータベースに切り替えることはできません。
@@ -55,7 +61,7 @@ SQL Database への接続中に一時エラーが発生した場合は、コー�
 
 ## <a name="managing-connections"></a>接続の管理
 * クライアント接続ロジックの中で、タイムアウトが 30 秒になるように既定値をオーバーライドします。  既定では 15 秒ですが、インターネットに依存する接続の場合、それでは短すぎます。
-* [接続プール](http://msdn.microsoft.com/library/8xx3tyca.aspx)を使用している場合は、プログラムで接続をアクティブに使用しておらず、再使用の準備をしていない時間は、接続を必ず閉じてください。
+* [接続プール](https://msdn.microsoft.com/library/8xx3tyca.aspx)を使用している場合は、プログラムで接続をアクティブに使用しておらず、再使用の準備をしていない時間は、接続を必ず閉じてください。
 
 ## <a name="network-considerations"></a>ネットワークに関する考慮事項
 * クライアント プログラムをホストするコンピューターのファイアウォールで、ポート 1433 での発信 TCP が許可されていることを確認します。  詳細: [Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings.md)。

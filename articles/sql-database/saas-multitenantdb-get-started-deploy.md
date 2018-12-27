@@ -1,23 +1,25 @@
 ---
 title: Azure SQL Database を使用するシャード化されたマルチテナント データベース SaaS アプリのデプロイ | Microsoft Docs
 description: Azure SQL Database を使用して SaaS パターンを示す、シャード化された Wingtip Tickets SaaS マルチテナント データベース アプリケーションをデプロイおよび操作します。
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.workload: data-management
-ms.topic: article
-ms.date: 12/18/2017
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: 3806b165e0124e979f59b51d5583cdbb1f949366
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: billgib, stein
+manager: craigg
+ms.date: 04/02/2018
+ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352213"
 ---
-# <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するシャード化されたマルチテナント アプリケーションのデプロイと操作
+# <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>シャード化されたマルチテナント アプリケーションをデプロイおよび操作する
 
 このチュートリアルでは、Wingtip Tickets という名前のサンプル マルチテナント SaaS アプリケーションをデプロイおよび詳細確認します。 Wingtip Tickets アプリの目的は、各種 SaaS シナリオの実装を簡素化する Azure SQL Database の機能を紹介することにあります。
 
@@ -25,15 +27,15 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 
 このデータベースのパターンを使用すると、1 つ以上のテナントを各シャードまたはデータベースに保存できます。 それぞれのデータベースを複数のテナントでシャード化することによって、最小限のコストに最適化できます。 または、それぞれのデータベースに 1 つのテナントのみを格納させることによって分離性を最適化できます。 最適化の選択は、特定のテナントごとに独立して行うことができます。 テナントを最初に格納するときに選択したり、後で変更したりできます。 どちらの場合でもアプリケーションが正しく動作するように設計されています。
 
-#### <a name="app-deploys-quickly"></a>アプリのすばやいデプロイ
+## <a name="app-deploys-quickly"></a>アプリのすばやいデプロイ
 
-このアプリは Azure クラウドで実行され、Azure SQL Database を使用します。 以下のデプロイ セクションには **[Deploy to Azure (Azure にデプロイ)]** という青いボタンがあります。 このボタンを押すと、アプリは 5 分以内に Azure サブスクリプションに完全にデプロイされます。 個々のアプリケーション コンポーネントを操作するフル アクセスがあります。
+このアプリは Azure クラウドで実行され、Azure SQL Database を使用します。 以下のデプロイ セクションには **[Deploy to Azure]\(Azure にデプロイ\)** という青いボタンがあります。 このボタンを押すと、アプリは 5 分以内に Azure サブスクリプションに完全にデプロイされます。 個々のアプリケーション コンポーネントを操作するフル アクセスがあります。
 
 アプリケーションは、3 つのサンプル テナント用のデータと共にデプロイされます。 テナントは、1 つのマルチテナント データベースにまとめて保存されます。
 
 誰でも [GitHub リポジトリ][link-github-wingtip-multitenantdb-55g]から Wingtip Tickets の C# および PowerShell のソース コードをダウンロードできます。
 
-#### <a name="learn-in-this-tutorial"></a>このチュートリアルの詳細
+## <a name="learn-in-this-tutorial"></a>このチュートリアルの詳細
 
 > [!div class="checklist"]
 > - Wingtip Tickets SaaS アプリケーションのデプロイ方法。
@@ -53,30 +55,30 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>Wingtip Tickets アプリのデプロイ
 
-#### <a name="plan-the-names"></a>名前を付ける
+### <a name="plan-the-names"></a>名前を考える
 
 このセクションの手順では、リソース名がグローバルに一意であることを保証するために使用される "*ユーザー*" 値と、アプリのデプロイによって作成されるすべてのリソースを含む "*リソース グループ*" を指定します。 たとえば、名前が *Ann Finley* である場合、次のような名前にすることをお勧めします。
 - "*ユーザー:*" **af1** "*(イニシャルと一桁の数字。アプリをもう一度デプロイする場合は、別の値を使用します (例: af2)。)*"
-- "*リソース グループ:*" **wingtip-dpt-af1** "*(wingtip-dpt は、これがテナントごとのデータベース アプリであることを示します。ユーザー名 af1 の追加によって、リソース グループ名とリソースを含む名前が関連付けられます。)*"
+- "*リソース グループ:*" **wingtip-mt-af1** "*(wingtip-dpt は、これがシャード化されたマルチテナント アプリであることを示します。ユーザー名 af1 の追加によって、リソース グループ名とリソースを含む名前が関連付けられます。)*"
 
 名前を選択し、書き留めておきます。 
 
-#### <a name="steps"></a>手順
+### <a name="steps"></a>手順
 
-1. **[Deploy to Azure (Azure にデプロイ)]** という青いボタンをクリックします。
+1. **[Deploy to Azure]\(Azure にデプロイ\)** という青いボタンをクリックします。
     - Wingtip Tickets SaaS デプロイ テンプレートが指定された状態で Azure Portal が開きます。
 
-    [![[Deploy to Azure (Azure にデプロイ)] ボタン。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+    [![Deploy to Azure\(Azure にデプロイ\) ボタン。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
 1. デプロイに必須のパラメーター値を入力します。
 
     > [!IMPORTANT]
-    > このデモでは、既存のリソース グループ、サーバー、またはプールを使用しません。 代わりに、**[新しいリソース グループの作成]** を選択します。 関連する課金を停止するために、サンプル アプリケーションの操作が終了したら、このリソース グループを削除してください。
-    > 運用環境にはこのアプリケーション、またはこのアプリケーションが作成したリソースを使用しないでください。 一部の認証、およびサーバーのファイアウォール設定は、デモを容易にするために意図的にアプリ内で安全ではないものを使用しています。
+    > このデモの動作確認では、既存のリソース グループ、サーバー、またはプールを一切使用しないでください。 代わりに、**[新しいリソース グループの作成]** を選択します。 関連する課金を停止するために、サンプル アプリケーションの操作が終了したら、このリソース グループを削除してください。
+    > 運用環境にはこのアプリケーション、またはこのアプリケーションが作成したリソースを使用しないでください。 認証における一部の局面およびサーバーのファイアウォール設定は、デモを円滑にするため、このアプリ上では意図的にセキュリティで保護されていません。
 
     - **[リソース グループ]** - **[新規作成]** を選択して、リソース グループの **[名前]** を指定します (大文字と小文字が区別されます)。
         - ドロップダウン から **[場所]** を選択します。
-    - **ユーザー** - 短い**ユーザー**値を選択することをお勧めします。
+    - **ユーザー** - **ユーザー** には短い値を選択することをお勧めします。
 
 1. **アプリケーションをデプロイします**。
 
@@ -112,18 +114,18 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 2. *ResourceGroupName*と*Name*をデプロイの固有の値で更新します (10 行目および 11 行目のみ)。
 3. 変更を保存します。
 
-このファイルで設定された値はすべてのスクリプトで使用されるため、正確であることが重要です。 アプリを再デプロイする場合は、別のユーザーとリソース グループの値を選択する必要があります。 次に新しい値で UserConfig.psm1 ファイルを再度更新します。
+このファイルで設定された値はすべてのスクリプトで使用されるため、正確であることが重要です。 アプリを再デプロイする場合は、ユーザーとリソース グループにそれぞれ別の値を選択する必要があります。 次に新しい値で UserConfig.psm1 ファイルを再度更新します。
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-Wingtip アプリでは、テナントは会場です。 会場は、イベントを開催するコンサート ホール、スポーツ クラブなどです。 会場は顧客として Wingtip に登録され、テナント ID は会場ごとに生成されます。 Wingtip では、各会場の開催予定のイベントが表示され、ユーザーはイベントのチケットを購入できます。
+Wingtip アプリでは、テナントは会場です。 会場は、イベントを開催するコンサート ホール、スポーツ クラブなどです。 会場は顧客として Wingtip に登録され、テナント ID は会場ごとに生成されます。 各会場の開催予定のイベントが Wingtip 上で一覧表示され、ユーザーはイベントのチケットを購入できます。
 
-各会場が、イベントの表示やチケット販売を行うためのパーソナライズされた Web アプリを利用できます。 各 Web アプリは、他のテナントから切り離され、相互に独立しています。 Azure SQL Database　の内部では、それぞれのテナントの各データが既定でシャード化されたマルチテナント データベースに保存されます。 すべてのデータにはテナント ID がタグ付けされます。
+会場ごとに、イベントの一覧表示やチケット販売を行うためのカスタマイズされた Web アプリを利用できます。 各 Web アプリは、他のテナントから切り離され、相互に独立しています。 Azure SQL Database　の内部では、それぞれのテナントの各データが既定でシャード化されたマルチテナント データベースに保存されます。 すべてのデータにはテナント ID がタグ付けされます。
 
-中央の **Events Hub** Web ページには、特定のデプロイのテナントへのリンク一覧が表示されます。 **Events Hub** Web ページや個別の Web アプリを体験するには、次の手順に従います。
+中心となる **Events Hub** Web ページには、特定のデプロイのテナントへのリンク一覧が表示されます。 **Events Hub** Web ページや個別の Web アプリを体験するには、次の手順に従います。
 
 1. Web ブラウザーで **Events Hub** を開きます。
-    - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; "*(&lt;ユーザー&gt; をデプロイのユーザ値に置き換えます。)*"
+    - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *(&lt;user&gt; は実際のデプロイのユーザー値に置き換えてください)。*
 
     ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -131,18 +133,18 @@ Wingtip アプリでは、テナントは会場です。 会場は、イベン�
 
    ![イベント](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
-#### <a name="azure-traffic-manager"></a>Azure の Traffic Manager
+### <a name="azure-traffic-manager"></a>Azure の Traffic Manager
 
-Wingtip アプリは、着信要求の分散を制御するために [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用します。 各テナントのイベント ページには、URL にテナント名が含まれています。 各 URL には、固有のユーザー値も含まれています。 各 URL は、以下の手順で、次に示す形式に従います。
+Wingtip アプリは、受信要求の配布を制御するために [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用します。 各テナントのイベント ページには、URL にテナント名が含まれています。 各 URL には、固有のユーザー値も含まれています。 各 URL は、以下の手順で、次に示す形式に従います。
 
-- http://events.wingtip-mt.&lt;ユーザー&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. イベント アプリによって、URL からテナント名が解析されます。 前の URL の例では、テナント名は *fabrikamjazzclub* です。
 2. アプリはテナント名をハッシュして、[シャード マップ管理](sql-database-elastic-scale-shard-map-management.md)を使用するカタログにアクセスするためのキーを作成します。
 3. アプリはカタログ内のキーを検索し、テナントのデータベースの場所を取得します。
 4. アプリは場所情報を使用して、テナントのすべてのデータを含む 1 つのデータベースを見つけてアクセスします。
 
-#### <a name="events-hub"></a>Events Hub
+### <a name="events-hub"></a>Events Hub
 
 1. **Events Hub** はカタログおよびその会場に登録されているすべてのテナントを一覧表示します。
 2. **Events Hub** は、カタログ内の拡張メタデータを使用して、各マッピングに関連付けられたテナントの名前を取得し、URL を構築します。
@@ -166,7 +168,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
 ## <a name="provision-a-new-tenant-into-the-sharded-database"></a>シャード化されたデータベースへの新しいテナントのプロビジョニング
 
-最初のデプロイの *Tenants1* データベースには 3 つのサンプル テナントが含まれています。 別のテナントを作成して、デプロイ済みのアプリケーションに及ぼす影響を確認してみましょう。 この手順では、1 つのキーを押して新しいテナントを作成します。
+最初のデプロイの *Tenants1* データベースには 3 つのサンプル テナントが含まれています。 別のテナントを作成して、デプロイ済みのアプリケーションに及ぼす影響を確認してみましょう。 この手順では、キー操作 1 つで新しいテナントを作成します。
 
 1. *PowerShell ISE* で ...\\Learning Modules\\Provision and Catalog\\*Demo-ProvisionTenants.ps1* を開きます。
 2. **F5** (**F8** ではない) を押してスクリプトを実行します (この時点では、既定値のままにしておきます)。
@@ -183,6 +185,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>独自のデータベース内の新しいテナントをプロビジョニングする
 
 シャード化されたマルチテナント モデルでは、別のテナントを含むデータベース内の新しいテナントをプロビジョニングするか、または独自のデータベース内のテナントをプロビジョニングするかを選択できます。 独自のデータベースに分離されたテナントには、次の利点があります。
+
 - そのテナントのデータベースのパフォーマンスを、他のテナントのニーズに悪影響を及ぼすことなく管理できます。
 - 影響を受けるテナントがないため、必要に応じて、データベースを過去のある時点の状態に復元できます。
 
@@ -219,7 +222,6 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
    ![テナント サーバー](./media/saas-multitenantdb-get-started-deploy/tenants-server.png)
 
-
 ## <a name="monitor-the-performance-of-the-database"></a>データベースのパフォーマンスの監視
 
 ロード ジェネレーターを数分間実行したら、十分なテレメトリが生成されています。このテレメトリを使って、Azure Portal に組み込まれているデータベース監視機能を確認してみましょう。
@@ -236,7 +238,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
 ロード ジェネレーターは、各テナントがどのデータベースにあるかに関係なく、各テナントに同様の負荷をかけます。 **salixsalsa** データベースにはテナントが 1 つしかないため、このデータベースは、複数のテナントを含むデータベースよりもはるかに高い負荷に耐えることができます。 
 
-#### <a name="resource-allocations-vary-by-workload"></a>ワークロードによって異なるリソース割り当て
+### <a name="resource-allocations-vary-by-workload"></a>ワークロードによって異なるリソース割り当て
 
 マルチテナント データベースでは、優れたパフォーマンスのために、シングルテナント データベースより多くのリソースが必要な場合があります (必ずではありません)。 システム内のテナントでは、リソースの最適な割り当ては、特定のワークロード特性によって異なります。
 
@@ -247,8 +249,9 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 - マルチテナント SaaS アプリケーションの詳細については、[マルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)に関するページをご覧ください。
 
 - エラスティック プールの詳細については、以下をご覧ください。
-    - [エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング](sql-database-elastic-pool.md)
-    - [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
+
+  - [エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング](sql-database-elastic-pool.md)
+  - [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>次の手順
 

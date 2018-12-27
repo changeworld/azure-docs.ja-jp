@@ -3,25 +3,25 @@ title: Azure Functions における Mobile Apps のバインド
 description: Azure Functions で Azure Mobile Apps のバインドを使用する方法について説明します。
 services: functions
 documentationcenter: na
-author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+author: craigshoemaker
+manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 11/21/2017
-ms.author: glenga
-ms.openlocfilehash: c5fb7bdd88691c9aeab6b348507901c34502b28b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: cshoe
+ms.openlocfilehash: f61a00e3ea243dfdf777af88b5f211580f35d8a0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001658"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions における Mobile Apps のバインド 
+
+> [!NOTE]
+> Azure Mobile Apps のバインドは、Azure Functions 1.x でのみ使用できます。 これらは Azure Functions 2.x ではサポートされていません。
 
 この記事では、Azure Functions で [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) のバインドを操作する方法について説明します。 Azure Functions は、Mobile Apps の入力および出力バインドをサポートしています。
 
@@ -29,9 +29,9 @@ Mobile Apps のバインドを使用すると、モバイル アプリのデー�
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>パッケージ
+## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-Mobile Apps バインディングは [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet パッケージで提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/) GitHub リポジトリにあります。
+Mobile Apps バインディングは [Microsoft.Azure.WebJobs.Extensions.MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet パッケージ、バージョン 1.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
@@ -71,8 +71,7 @@ Mobile Apps 入力バインドは、モバイル テーブル エンドポイン
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
     }
-],
-"disabled": false
+]
 }
 ```
 これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
@@ -117,8 +116,7 @@ public static void Run(string myQueueItem, JObject record)
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
     }
-],
-"disabled": false
+]
 }
 ```
 これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
@@ -159,7 +157,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---usage"></a>入力 - 使用方法
 
-C# 関数では、指定の ID を含むレコードが検出されると、指定された [JObject](http://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) パラメーターに渡されます。 レコードが検出されなかった場合、パラメーター値は `null` になります。 
+C# 関数では、指定の ID を含むレコードが検出されると、指定された [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) パラメーターに渡されます。 レコードが検出されなかった場合、パラメーター値は `null` になります。 
 
 JavaScript 関数では、レコードは `context.bindings.<name>` オブジェクトに渡されます。 レコードが検出されなかった場合、パラメーター値は `null` になります。 
 
@@ -216,8 +214,7 @@ public static object Run(
     "apiKey": "My_MobileApp_Key",
     "direction": "out"
     }
-],
-"disabled": false
+]
 }
 ```
 

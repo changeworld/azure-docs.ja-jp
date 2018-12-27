@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9d8d0daae3fd35cd8a2527a3a29da235424830e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 901b44b829398ef92e63f94e0b35549e63cdd3db
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262252"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-onprem-teradata-connector.md)
-> * [バージョン 2 - プレビュー](../connector-teradata.md)
+> * [Version 1](data-factory-onprem-teradata-connector.md)
+> * [バージョン 2 (最新バージョン)](../connector-teradata.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Teradata コネクタ](../connector-teradata.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[V2 の Teradata コネクタ](../connector-teradata.md)に関するページをご覧ください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Teradata データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
@@ -41,7 +42,7 @@ Teradata が Azure IaaS VM でホストされている場合でも、ゲート�
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
-Data Management Gateway で Teradata データベースに接続するには、[.NET Data Provider for Teradata](http://go.microsoft.com/fwlink/?LinkId=278886) バージョン 14 以降を Data Management Gateway と同じシステムにインストールする必要があります。 Teradata バージョン 12 以降がサポートされています。
+Data Management Gateway で Teradata データベースに接続するには、[.NET Data Provider for Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) バージョン 14 以降を Data Management Gateway と同じシステムにインストールする必要があります。 Teradata バージョン 12 以降がサポートされています。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
@@ -62,9 +63,9 @@ Data Management Gateway で Teradata データベースに接続するには、[
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、Teradata のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティを **OnPremisesTeradata** |[はい] |
+| type |type プロパティを **OnPremisesTeradata** |[はい] |
 | [サーバー] |Teradata のサーバーの名前です。 |[はい] |
 | authenticationType |Teradata データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |[はい] |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
@@ -83,9 +84,9 @@ Data Management Gateway で Teradata データベースに接続するには、[
 
 source の種類が **RelationalSource** (Teradata を含む) である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |[はい] |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |[はい] |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON の使用例: Teradata から Azure BLOB にデータをコピーする
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Teradata から Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。   

@@ -1,22 +1,25 @@
 ---
-title: "Azure Application Insights による利用状況分析 | Microsoft docs"
-description: "ユーザーを理解し、提供しているアプリでユーザーが何を実行するかを理解します。"
+title: Azure Application Insights による利用状況分析 | Microsoft docs
+description: ユーザーを理解し、提供しているアプリでユーザーが何を実行するかを理解します。
 services: application-insights
-documentationcenter: 
-author: botatoes
+documentationcenter: ''
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/10/2017
-ms.author: mbullwin
-ms.openlocfilehash: 9f3eb14340205709b5409a3d16d631cc2d02eb32
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.pm_owner: daviste;NumberByColors
+ms.reviewer: mbullwin
+ms.author: daviste
+ms.openlocfilehash: 968c5fb093f3ebdb6ce7eb239f79573f19b89e0f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278635"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
@@ -26,7 +29,7 @@ ms.lasthandoff: 01/24/2018
 
 Application Insights をアプリのサーバー コードと Web ページの両方にインストールすることにより、最適な操作環境が得られます。 アプリのクライアントおよびサーバー コンポーネントから Azure Portal に分析用のテレメトリが送信されます。
 
-1. **サーバー コード:** [ASP.NET](app-insights-asp-net.md)、[Azure](app-insights-azure.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md)、または[その他](app-insights-platforms.md)のアプリ向けの適切なモジュールをインストールします。
+1. **サーバー コード:** [ASP.NET](app-insights-asp-net.md)、[Azure](app-insights-overview.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md)、または[その他](app-insights-platforms.md)のアプリ向けの適切なモジュールをインストールします。
 
     * "*サーバー コードをインストールしたくない場合は、[Azure Application Insights リソースの作成](app-insights-create-new-resource.md)のみを行ってください。*"
 
@@ -81,7 +84,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 ## <a name="retention---how-many-users-come-back"></a>リテンション期間 - サービスの利用を再開したユーザーの数
 
-リテンション期間では、一定のタイム バケットでビジネス アクションを実行したユーザーのコーホートに基づいて、ユーザーがアプリの利用を再開した頻度を把握できます。 
+リテンション期間では、一定のタイム バケットでビジネス アクションを実行したユーザーのコーホートに基づいて、ユーザーがアプリの利用を再開した頻度を把握できます。 
 
 - どのような特定の機能により、どのような特定のユーザーが使用を再開したかを把握します 
 - 実際のユーザー データに基づいて仮説を立てます 
@@ -166,7 +169,7 @@ Web アプリ初期化子 (Global.asax.cs など) 内:
     }
 ```
 
-すべての新しい TelemetryClients により、指定したプロパティ値が自動的に追加されます。 個々のテレメトリ イベントは、既定値を上書きすることができます。
+すべての新しい TelemetryClients により、指定したプロパティ値が自動的に追加されます。 個々のテレメトリ イベントは、既定値をオーバーライドすることができます。
 
 ## <a name="next-steps"></a>次の手順
    - [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)

@@ -1,22 +1,23 @@
 ---
-title: "Azure API Management インスタンスの作成 | Microsoft Docs"
-description: "新しい Azure API Management インスタンスを作成するには、このチュートリアルの手順に従います。"
+title: Azure API Management インスタンスの作成 | Microsoft Docs
+description: 新しい Azure API Management インスタンスを作成するには、このチュートリアルの手順に従います。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 84758fbf8f19728370280d5d94acb478ff739019
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ed3d21719908a4c16b92d610b8ac75ac0b235ec1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968714"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Azure API Management サービスの新しいインスタンスの作成
 
@@ -30,9 +31,11 @@ API Management (APIM) が組織にもたらす利点は、外部、パートナ�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal (http://portal.azure.com) にログインします。
+Azure Portal (https://portal.azure.com) にログインします。
 
 ## <a name="create-a-new-service"></a>新しいサービスの作成
+
+![新しい Azure API Management インスタンス](./media/get-started-create-service-instance/00-CreateResource-01.png)
 
 1. [Azure Portal](https://portal.azure.com/) で **[リソースの作成]** > **[Enterprise Integration]** > **[API management]** の順に選択します。
 
@@ -42,16 +45,17 @@ Azure Portal (http://portal.azure.com) にログインします。
 
     ![新しいインスタンス](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
 
-    | Setting      | 推奨値  | Description              |
-    | ------------ |  ------- | ---------------------------------|
-    |**名前**|API Management サービスの一意の名前| この名前を後から変更することはできません。 サービスの名前は、*{name}.azure-api.net* の形式で既定のドメイン名を生成するために使用されます。 カスタム ドメイン名を使用する場合は、[カスタム ドメインの構成](configure-custom-domain.md)に関するページをご覧ください。 <br/> サービス名は、サービスおよび対応する Azure リソースへの参照に使用されます。|
-    |**サブスクリプション**|該当するサブスクリプション | この新しいサービス インスタンスが作成されるサブスクリプション。 アクセスできる各種の Azure サブスクリプションの中から、サブスクリプションを 1 つ選択できます。|
-    |**リソース グループ**|*apimResourceGroup*|新規または既存のリソースを選択できます。 リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。 [こちら](../azure-resource-manager/resource-group-overview.md#resource-groups)をご覧ください。|
-    |**場所**|"*米国西部*"|近くの地理的リージョンを選択します。 ドロップダウン リストのボックスには、API Management サービスを利用できるリージョンのみが表示されます。 |
-    |**組織名**|組織の名前|この名前は、開発者ポータルのタイトルや通知用電子メールの送信者など、さまざまな場所に使用されます。|
-    |**管理者のメール アドレス**|*admin@org.com*|**API Management** からのすべての通知が送信されるメール アドレスを設定します。|
-    |**[価格レベル]**|*開発者*|サービスを評価するために **[開発者]** レベルを設定します。 このレベルは運用目的では使用できません。 API Management レベルのスケーリングの詳細については、[アップグレードとスケーリング](upgrade-and-scale.md)に関するをページをご覧ください。|
-3. **[作成]**を選択します。
+    | Setting                 | 推奨値                               | Description                                                                                                                                                                                                                                                                                                                         |
+|-------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **名前**                | API Management サービスの一意の名前 | この名前を後から変更することはできません。 サービスの名前は、*{name}.azure-api.net* の形式で既定のドメイン名を生成するために使用されます。 カスタム ドメイン名を使用する場合は、[カスタム ドメインの構成](configure-custom-domain.md)に関するページをご覧ください。 <br/> サービス名は、サービスおよび対応する Azure リソースへの参照に使用されます。 |
+| **サブスクリプション**        | 該当するサブスクリプション                             | この新しいサービス インスタンスが作成されるサブスクリプション。 アクセスできる各種の Azure サブスクリプションの中から、サブスクリプションを 1 つ選択できます。                                                                                                                                                            |
+| **リソース グループ**      | *apimResourceGroup*                           | 新規または既存のリソースを選択できます。 リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。 [こちら](../azure-resource-manager/resource-group-overview.md#resource-groups)をご覧ください。                                                                                                  |
+| **場所**            | "*米国西部*"                                    | 近くの地理的リージョンを選択します。 ドロップダウン リストのボックスには、API Management サービスを利用できるリージョンのみが表示されます。                                                                                                                                                                                                          |
+| **組織名**   | 組織の名前                 | この名前は、開発者ポータルのタイトルや通知用電子メールの送信者など、さまざまな場所に使用されます。                                                                                                                                                                                                             |
+| **管理者のメール アドレス** | *admin@org.com*                               | **API Management** からのすべての通知が送信されるメール アドレスを設定します。                                                                                                                                                                                                                                              |
+| **[価格レベル]**        | *開発者*                                   | サービスを評価するために **[開発者]** レベルを設定します。 このレベルは運用目的では使用できません。 API Management レベルのスケーリングの詳細については、[アップグレードとスケーリング](upgrade-and-scale.md)に関するをページをご覧ください。                                                                                                                                    |
+
+3. **[作成]** を選択します。
 
     > [!TIP]
     > API Management サービスの作成には、通常 20 分から 30 分かかります。 **[ダッシュボードにピン留めする]** を選択すると、新しく作成したサービスの検索が簡単になります。
@@ -62,13 +66,18 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 不要になった場合は、次の手順に従って、リソース グループと、関連するすべてのリソースを削除できます。
 
+1. Azure Portal で **[すべてのサービス]** を選択します。
+2. 検索ボックスに「`resource groups`」と入力し、結果をクリックします。
 
-1. Azure Portal で  ![矢印](./media/get-started-create-service-instance/arrow.png)が必要です。
-2. **[リソース グループ]** を選択します。
-3. リソース グループを見つけます。
-4. . が必要です。 . をクリックして、 グループを削除します。
+    ![リソース グループのナビゲーション](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 
-![cleanup](./media/get-started-create-service-instance/cleanup.png)
+3. 目的のリソース グループを見つけてクリックします。
+4. **[リソース グループの削除]** をクリックします。
+
+    ![リソース グループのナビゲーション](./media/get-started-create-service-instance/00-DeleteResource-02.png)
+
+5. リソース グループの名前を入力して削除を確定します。
+6. **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

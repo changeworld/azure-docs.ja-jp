@@ -1,11 +1,11 @@
 ---
-title: "App Service Environment v1 を構成する方法"
-description: "App Service Environment v1 の構成、管理、および監視"
+title: App Service Environment v1 を構成する方法
+description: App Service Environment v1 の構成、管理、および監視
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22987867"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Environment v1 の構成
 
@@ -131,7 +132,7 @@ ASE では、App Service プランはすべて、App Service 専用のプラン�
 ### <a name="settings"></a>設定
 ASE ブレードには **[設定]** セクションがあり、そこにいくつかの重要な機能が用意されています。
 
-**[設定]** > **[プロパティ]**: ASE ブレードを選択すると、**[設定]** ブレードが自動的に開きます。 その一番上に **[プロパティ]**が表示されます。 プロパティには多数の項目があり、**[要点]** に表示される項目と重複していますが、非常に役に立つのは **[仮想 IP アドレス]** と **[送信 IP アドレス]** です。
+**[設定]** > **[プロパティ]**: ASE ブレードを選択すると、**[設定]** ブレードが自動的に開きます。 その一番上に **[プロパティ]** が表示されます。 プロパティには多数の項目があり、**[要点]** に表示される項目と重複していますが、非常に役に立つのは **[仮想 IP アドレス]** と **[送信 IP アドレス]** です。
 
 ![Settings blade and Properties][4]
 

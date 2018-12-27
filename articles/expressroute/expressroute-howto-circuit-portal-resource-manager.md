@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute 回線の作成および変更: Azure Portal | Microsoft Docs"
-description: "この記事では、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。"
+title: 'ExpressRoute 回線の作成および変更: Azure Portal | Microsoft Docs'
+description: この記事では、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 68d59d59-ed4d-482f-9cbc-534ebb090613
 ms.service: expressroute
@@ -15,18 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2017
 ms.author: cherylmc;ganesr
-ms.openlocfilehash: be97f441d6eb2e97d85d598b0ed66718aec97b14
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 94d7b743bdec0d22254144d5316e0d94f5660a55
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235328"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [ビデオ - Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
 >
 
@@ -37,7 +38,7 @@ ms.lasthandoff: 02/21/2018
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
 * [Azure ポータル](https://portal.azure.com)に対するアクセスできることを確認します。
 * 新しいネットワーク リソースを作成するアクセス許可があることを確認します。 適切なアクセス許可がない場合は、アカウント管理者に連絡してください。
-* 手順をより理解するため、開始する前に[ビデオを確認](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)できます。
+* 手順をより理解するため、開始する前に[ビデオを確認](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)できます。
 
 ## <a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
 ### <a name="1-sign-in-to-the-azure-portal"></a>1.Azure ポータルにサインインします。
@@ -52,7 +53,7 @@ ms.lasthandoff: 02/21/2018
 1. 新しいリソースを作成するオプションを選択して、ExpressRoute 回線を作成できます。 次の図に示すように、**[リソースの作成]**  >  **[ネットワーク]**  >  **[ExpressRoute]** をクリックします。
 
   ![ExpressRoute 回線の作成](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
-2. **[ExpressRoute]** をクリックすると、**[ExpressRoute 回線の作成]** ページが表示されます。 このページで値を入力するときは、正しい SKU 層 (Standard または Premium) とデータ計測課金モデル (無制限または従量制) を指定してください。
+2. **[ExpressRoute]** をクリックすると、**[ExpressRoute 回線の作成]** ページが表示されます。 このページで値を入力するときは、正しい SKU レベル (Standard または Premium) とデータ計測課金モデル (無制限または従量制) を指定してください。
 
   ![SKU レベルとデータ計測方法の構成](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
@@ -112,7 +113,7 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 > 
 
 ### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7.ExpressRoute 回線への仮想ネットワークのリンク
-次に、ExpressRoute 回線に仮想ネットワークをリンクします。 Resource Manager デプロイメント モデルを使用するときは、「 [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md) 」を参照してください。
+次に、ExpressRoute 回線に仮想ネットワークをリンクします。 Resource Manager デプロイ モデルを使用するときは、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
 
 ## <a name="status"></a>ExpressRoute 回線の状態の取得
 回線を選択し、[概要] ページを表示することで回線の状態を表示できます。 

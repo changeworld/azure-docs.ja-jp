@@ -1,120 +1,135 @@
 ---
 title: Kubernetes on Azure のチュートリアル - クラスターのデプロイ
-description: AKS チュートリアル - クラスターのデプロイ
+description: この Azure Kubernetes Service (AKS) のチュートリアルでは、AKS クラスターを作成し、kubectl を使用して Kubernetes マスター ノードに接続します。
 services: container-service
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 02/24/2018
-ms.author: nepeters
+ms.date: 08/14/2018
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1f31af4fcc7ef70889ad8bc021bea0796721e5f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 80b011f9df389098095f58c02008da891b2aa8a7
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918955"
 ---
-# <a name="tutorial-deploy-an-azure-container-service-aks-cluster"></a>チュートリアル: Azure Container Service (AKS) クラスターのデプロイ
+# <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>チュートリアル: Azure Kubernetes Service (AKS) クラスターのデプロイ
 
-Kubernetes には、コンテナー化されたアプリケーション用の分散プラットフォームが用意されています。 AKS を使うと、運用開始準備の整った Kubernetes クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 このチュートリアル (8 部構成の第 3 部) では、Kubernetes クラスターが AKS にアップグレードされます。 手順は次のとおりです。
+Kubernetes には、コンテナー化されたアプリケーション用の分散プラットフォームが用意されています。 AKS を使うと、運用開始準備の整った Kubernetes クラスターのプロビジョニングを迅速に行うことができます。 このチュートリアル (7 部構成の第 3 部) では、Kubernetes クラスターを AKS にデプロイします。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Kubernetes AKS クラスターのデプロイ
-> * Kubernetes CLI (kubectl) のインストール
-> * kubectl の構成
+> * リソースとの対話に使用するサービス プリンシパルを作成する
+> * Kubernetes AKS クラスターをデプロイする
+> * Kubernetes CLI (kubectl) をインストールする
+> * kubectl を構成して AKS クラスターに接続する
 
-この後のチュートリアルでは、Azure Vote アプリケーションをクラスターにデプロイ、スケーリング、および更新します。さらに、Kubernetes クラスターを監視するように Log Analytics を構成します。
+この後のチュートリアルでは、Azure Vote アプリケーションをクラスターにデプロイ、スケーリング、および更新します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 これまでのチュートリアルでは、コンテナー イメージを作成して、Azure Container Registry インスタンスにアップロードしました。 これらの手順を完了しておらず、手順を実行する場合は、「[チュートリアル 1 - コンテナー イメージを作成する][aks-tutorial-prepare-app]」に戻ってください。
 
-## <a name="enable-aks-preview"></a>AKS プレビューの有効化
+このチュートリアルでは、Azure CLI バージョン 2.0.44 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
-AKS がプレビューである間、新しいクラスターを作成するには、サブスクリプションに機能フラグが必要です。 使用する任意の数のサブスクリプションに対して、この機能を要求することができます。 AKS プロバイダーを登録するには、次のように `az provider register` コマンドを使用します。
+## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+
+AKS クラスターが他の Azure リソースと対話できるようにするために、Azure Active Directory のサービス プリンシパルを使用します。 このサービス プリンシパルは、Azure CLI または Azure portal で自動的に作成するか、または事前に手動で作成しておいて、アクセス許可を追加で割り当てることができます。 このチュートリアルでは、サービス プリンシパルを手動で作成し、前のチュートリアルで作成した Azure Container Registry (ACR) インスタンスへのアクセス権を与えた後、AKS クラスターを作成することにします。
+
+[az ad sp create-for-rbac][] コマンドを使用して、サービス プリンシパルを作成します。 `--skip-assignment` パラメーターで、余分なアクセス許可の割り当てを制限します。
 
 ```azurecli
-az provider register -n Microsoft.ContainerService
+az ad sp create-for-rbac --skip-assignment
 ```
 
-登録すると、AKS で Kubernetes クラスターを作成できるようになります。
+出力は次の例のようになります。
 
-## <a name="create-kubernetes-cluster"></a>Kubernetes クラスターを作成する
+```
+{
+  "appId": "e7596ae3-6864-4cb8-94fc-20164b1588a9",
+  "displayName": "azure-cli-2018-06-29-19-14-37",
+  "name": "http://azure-cli-2018-06-29-19-14-37",
+  "password": "52c95f25-bd1e-4314-bd31-d8112b293521",
+  "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db48"
+}
+```
 
-次の例では、`myAKSCluster` という名前のクラスターを `myResourceGroup` という名前のリソース グループに作成します。 このリソース グループは、[前のチュートリアル][aks-tutorial-prepare-acr]で作成しました。
+*appId* と *password* を書き留めておいてください。 これらの値は、以降の手順で使用します。
+
+## <a name="configure-acr-authentication"></a>ACR 認証を構成する
+
+ACR に格納されているイメージにアクセスするためには、ACR からイメージをプルするための適切な権限を AKS のサービス プリンシパルに与える必要があります。
+
+まず、[az acr show][] を使用して、ACR のリソース ID を取得します。 `<acrName>` レジストリ名は実際の ACR インスタンスの名前に、またリソース グループは、その ACR インスタンスが存在するリソース グループの名前に置き換えてください。
 
 ```azurecli
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
+az acr show --resource-group myResourceGroup --name <acrName> --query "id" --output tsv
+```
+
+ACR に格納されているイメージを使用するための適切なアクセス権を AKS クラスターに与えるには、[az role assignment create][] コマンドを使用してロールの割り当てを作成します。 `<appId`> と `<acrId>` は、前の 2 つの手順で書き留めた値に置き換えてください。
+
+```azurecli
+az role assignment create --assignee <appId> --scope <acrId> --role Reader
+```
+
+## <a name="create-a-kubernetes-cluster"></a>Kubernetes クラスターの作成
+
+AKS クラスターでは、Kubernetes のロールベースのアクセス制御 (RBAC) を使用できます。 これらのコントロールを使用すると、ユーザーに割り当てられているロールに基づいてリソースへのアクセスを定義できます。 ユーザーに複数のロールが割り当てられている場合は、アクセス許可を組み合わせることができます。また、1 つの名前空間またはクラスター全体にわたってアクセス許可のスコープを設定できます。 AKS クラスター向けの Kubernetes RBAC は、現在プレビュー段階にあります。 Azure CLI の既定では、AKS クラスターを作成するときに RBAC が自動的に有効になります。
+
+[az aks create][] を使用して AKS クラスターを作成します。 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターを作成します。 このリソース グループは、[前のチュートリアル][aks-tutorial-prepare-acr]で作成しました。 先ほどサービス プリンシパルを作成する手順で使用した実際の `<appId>` と `<password>` を指定してください。
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 1 \
+    --service-principal <appId> \
+    --client-secret <password> \
+    --generate-ssh-keys
 ```
 
 数分してデプロイが完了すると、この AKS デプロイに関する情報が JSON 形式で表示されます。
 
-## <a name="install-the-kubectl-cli"></a>kubectl CLI をインストールする
+## <a name="install-the-kubernetes-cli"></a>Kubernetes CLI のインストール
 
-クライアント コンピューターから Kubernetes クラスターに接続するには、[kubectl][kubectl] (Kubernetes コマンドライン クライアント) を使用します。
+ローカル コンピューターから Kubernetes クラスターに接続するには、[kubectl][kubectl] (Kubernetes コマンドライン クライアント) を使用します。
 
-Azure CloudShell を使用している場合、kubectl は既にインストールされています。 ローカルにインストールする場合は、次のコマンドを実行します。
+Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 [az aks install-cli][] コマンドを使用してローカルにインストールすることもできます。
 
 ```azurecli
 az aks install-cli
 ```
 
-## <a name="connect-with-kubectl"></a>kubectl を使用して接続する
+## <a name="connect-to-cluster-using-kubectl"></a>kubectl を使用したクラスターへの接続
 
-Kubernetes クラスターに接続するように kubectl を構成するには、次のコマンドを実行します。
+Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][] を使用します。 次の例では、*myResourceGroup* の *myAKSCluster* という名前の AKS クラスターの資格情報を取得します。
 
 ```azurecli
-az aks get-credentials --resource-group=myResourceGroup --name=myAKSCluster
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
 クラスターへの接続を確認するには、[kubectl get nodes][kubectl-get] コマンドを実行します。
 
-```azurecli
-kubectl get nodes
 ```
+$ kubectl get nodes
 
-出力:
-
-```
-NAME                          STATUS    AGE       VERSION
-k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.9
-```
-
-チュートリアルが完了し、AKS クラスターはワークロードで使用できるようになりました。 後のチュートリアルでは、マルチコンテナー アプリケーションのクラスターへのデプロイ、スケールアウト、更新、監視を行います。
-
-## <a name="configure-acr-authentication"></a>ACR 認証を構成する
-
-AKS クラスターと ACR レジストリとの間で認証が構成されている必要があります。 その際、ACR レジストリからイメージをプルするための適切な権限を AKS の ID に付与することになります。
-
-まず、AKS に対して構成されているサービス プリンシパルの ID を取得します。 リソース グループの名前と AKS クラスターの名前は、お使いの環境に合わせて更新してください。
-
-```azurecli
-CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
-```
-
-ACR レジストリのリソース ID を取得します。レジストリ名は実際の ACR レジストリの名前に、またリソース グループは、その ACR レジストリが存在するリソース グループに置き換えてください。
-
-```azurecli
-ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
-```
-
-適切なアクセス権を付与するロールの割り当てを作成します。
-
-```azurecli
-az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
+NAME                       STATUS    ROLES     AGE       VERSION
+aks-nodepool1-66427764-0   Ready     agent     9m        v1.9.9
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Kubernetes クラスターが AKS にデプロイされました。 次の手順を完了しました。
+このチュートリアルでは、Kubernetes クラスターを AKS にデプロイし、`kubectl` を構成してクラスターに接続しました。 以下の方法について学習しました。
 
 > [!div class="checklist"]
-> * Kubernetes AKS クラスターのデプロイ
-> * Kubernetes CLI (kubectl) のインストール
-> * kubectl の構成
+> * リソースとの対話に使用するサービス プリンシパルを作成する
+> * Kubernetes AKS クラスターをデプロイする
+> * Kubernetes CLI (kubectl) をインストールする
+> * kubectl を構成して AKS クラスターに接続する
 
-次のチュートリアルに進んで、クラスターでのアプリケーションの実行について学習してください。
+次のチュートリアルに進み、アプリケーションをクラスターにデプロイする方法を学習してください。
 
 > [!div class="nextstepaction"]
 > [Kubernetes でアプリケーションをデプロイする][aks-tutorial-deploy-app]
@@ -127,3 +142,10 @@ az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 [aks-tutorial-deploy-app]: ./tutorial-kubernetes-deploy-application.md
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[az ad sp create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az acr show]: /cli/azure/acr#az-acr-show
+[az role assignment create]: /cli/azure/role/assignment#az-role-assignment-create
+[az aks create]: /cli/azure/aks#az-aks-create
+[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
+[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[azure-cli-install]: /cli/azure/install-azure-cli

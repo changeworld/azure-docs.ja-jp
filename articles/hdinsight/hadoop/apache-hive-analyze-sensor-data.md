@@ -1,30 +1,24 @@
 ---
-title: "Hive と Hadoop を使用したセンサー データの分析 - Azure HDInsight | Microsoft Docs"
-description: "Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセンサー データを分析してから、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。"
+title: Apache Hive と Apache Hadoop を使用してセンサー データを分析する - Azure HDInsight
+description: Apache Hive クエリ コンソールと HDInsight (Hadoop) を使用してセンサー データを分析し、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: a8ac160c-1cef-45d9-bf36-7beb5a439105
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
+ms.topic: conceptual
 ms.date: 04/14/2017
-ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: d4d216cd1d8de7c86f71d0181270607e12f761cf
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c3e4ab9dc03afe1c4a19e738804e6400b0830291
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634415"
 ---
-# <a name="analyze-sensor-data-using-the-hive-query-console-on-hadoop-in-hdinsight"></a>HDInsight の Hadoop で Hive クエリ コンソールを使用したセンサー データの分析
+# <a name="analyze-sensor-data-using-the-apache-hive-query-console-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で Apache Hive クエリ コンソールを使用してセンサー データを分析する
 
-Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセンサー データを分析してから、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
+Apache Hive クエリ コンソールと HDInsight (Apache Hadoop) を使用してセンサー データを分析し、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
 
 > [!IMPORTANT]
 > このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -47,7 +41,7 @@ Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセン
   > [!NOTE]
   > Microsoft Excel は、 [Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=en-US&rs=en-US&ad=US)を使用したデータ視覚化のために使用します。
 
-* [Microsoft Hive ODBC ドライバー](http://www.microsoft.com/download/details.aspx?id=40886)
+* [Microsoft Hive ODBC ドライバー](https://www.microsoft.com/download/details.aspx?id=40886)
 
 ## <a name="to-run-the-sample"></a>サンプルを実行するには
 

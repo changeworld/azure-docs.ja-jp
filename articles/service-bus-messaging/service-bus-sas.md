@@ -3,7 +3,7 @@ title: Shared Access Signature による Azure Service Bus のアクセスの制
 description: Shared Access Signature を使用して Service Bus のアクセスの制御を行う方法と、Azure Service Bus における SAS 承認の詳細について説明します。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2018
-ms.author: sethm;clemensv
-ms.openlocfilehash: 21e9e0a20842e365e40b71ac96888e7cd2056e52
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 09/14/2018
+ms.author: spelluru
+ms.openlocfilehash: ef1b8b2dd96a89a553239168d412d84e63a29f2a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254589"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -30,7 +31,7 @@ SAS は、承認規則に基づいて Service Bus へのアクセスを保護し
 
 Shared Access Signature は、簡単なトークンを使う要求ベースの承認メカニズムです。 SAS を使うと、ネットワーク経由でキーが渡されることがなくなります。 キーは、後でサービスによって検証が可能な情報に暗号で署名するために使われます。 SAS は、承認規則と照合キーをクライアントが直接所有しているユーザー名とパスワードの方式と同じように使うことができます。 また、SAS は使用できます、フェデレーション セキュリティ モデルと同じように使うこともできます。その場合、クライアントは時間制限のある署名されたアクセス トークンをセキュリティ トークン サービスから受け取り、署名キーを所有することはありません。
 
-Service Bus での SAS 認証は、アクセス権が関連付けられている名前付きの [Shared Access Authorization 規則](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)と、プライマリおよびセカンダリの暗号化キーのペアによって構成されます。 キーは、Base64 で表された 256 ビットの値です。 規則の構成は、名前空間レベルおよび Service Bus の[リレー](service-bus-fundamentals-hybrid-solutions.md#relays)、[キュー](service-bus-fundamentals-hybrid-solutions.md#queues)、[トピック](service-bus-fundamentals-hybrid-solutions.md#topics)で行うことができます。
+Service Bus での SAS 認証は、アクセス権が関連付けられている名前付きの [Shared Access Authorization 規則](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)と、プライマリおよびセカンダリの暗号化キーのペアによって構成されます。 キーは、Base64 で表された 256 ビットの値です。 規則の構成は、名前空間レベルおよび Service Bus の[リレー](../service-bus-relay/relay-what-is-it.md)、[キュー](/service-bus-messaging/service-bus-messaging-overview.md#queues)、[トピック](/service-bus-messaging/service-bus-messaging-overview.md#topics)で行うことができます。
 
 [Shared Access Signature](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) のトークンには、選択された承認規則、アクセスする必要があるリソースの URI、有効期限、および選択された承認規則のプライマリまたはセカンダリ暗号化キーを使ってこれらのフィールドについて計算された HMAC-SHA256 暗号化署名が含まれます。
 
@@ -56,11 +57,11 @@ Service Bus の名前空間を作成すると、**RootManageSharedAccessKey** �
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Shared Access Signature 認証の構成
 
-[SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 規則は、Service Bus の名前空間、キュー、トピックに構成できます。 Service Bus サブスクリプションに対する [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の構成は現在サポートされていませんが、名前空間またはトピックに構成されている規則を使用して、サブスクリプションへのアクセスをセキュリティで保護できます。 この手順を示す作業サンプルについては、 [Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) に関するサンプルを参照してください。
+[SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 規則は、Service Bus の名前空間、キュー、トピックに構成できます。 Service Bus サブスクリプションに対する [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の構成は現在サポートされていませんが、名前空間またはトピックに構成されている規則を使用して、サブスクリプションへのアクセスをセキュリティで保護できます。 この手順を示す作業サンプルについては、 [Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) に関するサンプルを参照してください。
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-この図では、*manageRuleNS**sendRuleNS* および *listenRuleNS* の承認規則は、キュー Q1 とトピック T1 の両方に適用されます。それに対し、*listenRuleQ* および *sendRuleQ* は、キュー Q1 にのみ適用され、*sendRuleT* はトピック T1 にのみ適用されます。
+この図では、*manageRuleNS* *sendRuleNS* および *listenRuleNS* の承認規則は、キュー Q1 とトピック T1 の両方に適用されます。それに対し、*listenRuleQ* および *sendRuleQ* は、キュー Q1 にのみ適用され、*sendRuleT* はトピック T1 にのみ適用されます。
 
 ## <a name="generate-a-shared-access-signature-token"></a>Shared Access Signature トークンの生成
 
@@ -101,7 +102,7 @@ SAS トークンは、`signature-string` で使われている `<resourceURI>` �
 
 以下で説明するシナリオには、承認規則の構成、SAS トークンの生成、クライアントの承認などが含まれます。
 
-構成を説明して SAS 承認を使用する、Service Bus アプリケーションの完全に動作するサンプルについては、 [Service Bus による Shared Access Signature 認証](http://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)に関するページを参照してください。 Service Bus サブスクリプションをセキュリティで保護するために名前空間またはトピックに構成された SAS 承認規則の使用を示す関連のサンプルについては、 [Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)に関するページを参照してください。
+構成を説明して SAS 承認を使用する、Service Bus アプリケーションの完全に動作するサンプルについては、 [Service Bus による Shared Access Signature 認証](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)に関するページを参照してください。 Service Bus サブスクリプションをセキュリティで保護するために名前空間またはトピックに構成された SAS 承認規則の使用を示す関連のサンプルについては、 [Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)に関するページを参照してください。
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>エンティティの共有アクセス承認規則へのアクセス
 
@@ -252,20 +253,20 @@ AMQP メッセージには一連のプロパティと、簡単なメッセージ
 
 次の表に、Service Bus のリソースでのさまざまな操作に必要となるアクセス権を示します。
 
-| 操作 | 必要な要求 | 要求のスコープ |
+| Operation | 必要な要求 | 要求のスコープ |
 | --- | --- | --- |
 | **名前空間** | | |
-| 名前空間での承認規則を構成する |[管理] |任意の名前空間アドレス |
+| 名前空間での承認規則を構成する |管理 |任意の名前空間アドレス |
 | **サービス レジストリ** | | |
-| プライベート ポリシーを列挙する |[管理] |任意の名前空間アドレス |
+| プライベート ポリシーを列挙する |管理 |任意の名前空間アドレス |
 | 名前空間でリッスンを開始する |リッスン |任意の名前空間アドレス |
 | 名前空間のリスナーにメッセージを送信する |送信 |任意の名前空間アドレス |
 | **キュー** | | |
-| キューを作成する |[管理] |任意の名前空間アドレス |
-| キューを削除する |[管理] |任意の有効なキュー アドレス |
-| キューを列挙する |[管理] |/$Resources/Queues |
-| キューの説明を取得する |[管理] |任意の有効なキュー アドレス |
-| キューの承認規則を構成する |[管理] |任意の有効なキュー アドレス |
+| キューを作成する |管理 |任意の名前空間アドレス |
+| キューを削除する |管理 |任意の有効なキュー アドレス |
+| キューを列挙する |管理 |/$Resources/Queues |
+| キューの説明を取得する |管理 |任意の有効なキュー アドレス |
+| キューの承認規則を構成する |管理 |任意の有効なキュー アドレス |
 | キューに送信する |Send |任意の有効なキュー アドレス |
 | キューからメッセージを受信する |リッスン |任意の有効なキュー アドレス |
 | ピーク ロック モードでメッセージを受信した後にそのメッセージを破棄または終了する |リッスン |任意の有効なキュー アドレス |
@@ -276,31 +277,30 @@ AMQP メッセージには一連のプロパティと、簡単なメッセージ
 | 後で配信するメッセージのスケジュールを設定する (例: [ScheduleMessageAsync()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_)) |リッスン | 任意の有効なキュー アドレス
 | **トピック** | | |
 | トピックを作成する |Manage |任意の名前空間アドレス |
-| トピックを削除する |[管理] |任意の有効なトピック アドレス |
-| トピックを列挙する |[管理] |/$Resources/Topics |
-| トピックの説明を取得する |[管理] |任意の有効なトピック アドレス |
-| トピックの承認規則を構成する |[管理] |任意の有効なトピック アドレス |
+| トピックを削除する |管理 |任意の有効なトピック アドレス |
+| トピックを列挙する |管理 |/$Resources/Topics |
+| トピックの説明を取得する |管理 |任意の有効なトピック アドレス |
+| トピックの承認規則を構成する |管理 |任意の有効なトピック アドレス |
 | トピックに送信する |Send |任意の有効なトピック アドレス |
 | **サブスクリプション** | | |
-| サブスクリプションの作成 |[管理] |任意の名前空間アドレス |
-| サブスクリプションを削除する |[管理] |../myTopic/Subscriptions/mySubscription |
-| サブスクリプションを列挙する |[管理] |../myTopic/Subscriptions |
-| サブスクリプションの説明を取得する |[管理] |../myTopic/Subscriptions/mySubscription |
+| サブスクリプションの作成 |管理 |任意の名前空間アドレス |
+| サブスクリプションを削除する |管理 |../myTopic/Subscriptions/mySubscription |
+| サブスクリプションを列挙する |管理 |../myTopic/Subscriptions |
+| サブスクリプションの説明を取得する |管理 |../myTopic/Subscriptions/mySubscription |
 | ピーク ロック モードでメッセージを受信した後にそのメッセージを破棄または終了する |リッスン |../myTopic/Subscriptions/mySubscription |
 | 後で取得するためにメッセージを保留する |リッスン |../myTopic/Subscriptions/mySubscription |
 | メッセージを配信不能にする |リッスン |../myTopic/Subscriptions/mySubscription |
 | トピック セッションに関連付けられた状態を取得する |リッスン |../myTopic/Subscriptions/mySubscription |
 | トピック セッションに関連付けられた状態を設定する |リッスン |../myTopic/Subscriptions/mySubscription |
 | **規則** | | |
-| 規則を作成する |[管理] |../myTopic/Subscriptions/mySubscription |
-| 規則を削除する |[管理] |../myTopic/Subscriptions/mySubscription |
+| 規則を作成する |管理 |../myTopic/Subscriptions/mySubscription |
+| 規則を削除する |管理 |../myTopic/Subscriptions/mySubscription |
 | 規則を列挙する |管理またはリッスン |../myTopic/Subscriptions/mySubscription/Rules 
 
 ## <a name="next-steps"></a>次の手順
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)

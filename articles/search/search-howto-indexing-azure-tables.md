@@ -1,24 +1,20 @@
 ---
-title: "Azure Table Storage のインデックスを Azure Search で作成する | Microsoft Docs"
-description: "Azure Table Storage に格納されているデータのインデックスを Azure Search で作成する方法について説明します"
+title: Azure Table Storage のインデックスを Azure Search で作成する | Microsoft Docs
+description: Azure Table Storage に格納されているデータのインデックスを Azure Search で作成する方法について説明します
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
-documentationcenter: 
-author: chaosrealm
-manager: pablocas
-editor: 
-ms.assetid: 1cc27411-d0cc-40ed-8aed-c7cb9ab402b9
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 04/10/2017
-ms.author: eugenesh
-ms.openlocfilehash: b167f69f853f6ecdfd56179e6ffb946cdf2f45b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.openlocfilehash: 738518f94869a55cf80db1c87b8c74b167f5cce1
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406927"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Azure Table Storage のインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Table Storage に格納されているデータのインデックスを作成する方法を示します。
@@ -27,7 +23,7 @@ ms.lasthandoff: 10/11/2017
 
 次のリソースを使用して、Azure Table Storage のインデクサーを設定できます。
 
-* [Azure ポータル](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
@@ -52,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 
 データ ソースを作成するには:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -84,7 +80,7 @@ ms.lasthandoff: 10/11/2017
 
 インデックスを作成するには:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -103,7 +99,7 @@ ms.lasthandoff: 10/11/2017
 
 インデックスとデータ ソースを作成した後、インデクサーを作成できます。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -136,7 +132,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 一部のドキュメントをインデックスを削除する必要があることを示すには、論理的な削除を使用できます。 行を削除する代わりに、プロパティを追加してそれが削除されていることを示し、データソースに論理的な削除のポリシーを設定します。 たとえば、次のポリシーは値 `"true"` が指定されたプロパティ `IsDeleted` がある行を削除されているものと見なします。
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

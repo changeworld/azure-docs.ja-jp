@@ -1,20 +1,21 @@
 ---
-title: "Azure Database for PostgreSQL での SSL 接続の構成"
-description: "SSL 接続を適切に使用できるように、Azure Database for PostgreSQL と関連アプリケーションを構成するための手順と情報。"
+title: Azure Database for PostgreSQL での SSL 接続の構成
+description: SSL 接続を適切に使用できるように、Azure Database for PostgreSQL と関連アプリケーションを構成するための手順と情報。
 services: postgresql
 author: JasonMAnderson
 ms.author: janders
 editor: jasonwhowell
 manager: kfile
 ms.service: postgresql
-ms.custom: 
+ms.custom: ''
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 0a4a7041a905470f895921cfedf2bd94e8466966
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: cc8bd25b58cf898169a4d84154f7f3f81966bb92
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985796"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL での SSL 接続の構成
 Azure Database for PostgreSQL では、クライアント アプリケーションを PostgreSQL サービスに接続する際、Secure Sockets Layer (SSL) の使用が優先されます。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
@@ -57,7 +58,7 @@ Azure Database for PostgreSQL サーバーとの SSL 経由の通信に必要な
 アプリケーションがデータベース サーバーに安全に接続するために必要な証明書ファイルをデコードするには、OpenSSL をローカル コンピューターにインストールする必要があります。
 
 #### <a name="for-linux-os-x-or-unix"></a>Linux、Mac OS X、または Unix の場合
-OpenSSL ライブラリは、[OpenSSL Software Foundation](http://www.openssl.org) から直接入手できるソース コードで提供されます。 次の手順では、Linux コンピューターに OpenSSL をインストールします。 この記事では、Ubuntu 12.04 以降で動作することがわかっているコマンドを使用します。
+OpenSSL ライブラリは、[OpenSSL Software Foundation](https://www.openssl.org) から直接入手できるソース コードで提供されます。 次の手順では、Linux コンピューターに OpenSSL をインストールします。 この記事では、Ubuntu 12.04 以降で動作することがわかっているコマンドを使用します。
 
 ターミナル セッションを開いて、OpenSSL をダウンロードします。
 ```bash
@@ -98,7 +99,7 @@ OpenSSL 1.1.0e 7 Apr 2014
 
 #### <a name="for-windows"></a>Windows の場合
 Windows PC で OpenSSL をインストールするには、次の手順を実行します。
-1. **(推奨)** Windows 10 以降でビルトインの Bash for Windows 機能を使用する場合、OpenSSL が既定でインストールされます。 Windows 10 の Bash for Windows 機能を有効にする方法については、[こちら](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)をご覧ください。
+1. **(推奨)** Windows 10 以降でビルトインの Bash for Windows 機能を使用する場合、OpenSSL が既定でインストールされます。 Windows 10 の Bash for Windows 機能を有効にする方法については、[こちら](https://msdn.microsoft.com/commandline/wsl/install_guide)をご覧ください。
 2. コミュニティが提供する Win32/64 アプリケーションをダウンロードする場合。 OpenSSL Software Foundation では、特定の Windows インストーラーの提供および保証はしていません。使用できるインストーラーの一覧については、[こちら](https://wiki.openssl.org/index.php/Binaries)をご覧ください。
 
 ### <a name="decode-your-certificate-file"></a>証明書ファイルのデコード

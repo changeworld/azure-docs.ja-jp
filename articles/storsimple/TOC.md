@@ -22,9 +22,10 @@
 
 ## 方法
 ### [Azure Portal で管理する](storsimple-virtual-array-manager-service-administration.md)
-#### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update-1.md)
+#### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update-11.md)
+##### [Update 1 のインストール](storsimple-virtual-array-install-update-1.md)
 ##### [Update 0.6 のインストール](storsimple-virtual-array-install-update-06.md)
-##### Archive
+##### アーカイブ
 ###### [Update 0.5 のインストール](storsimple-virtual-array-install-update-05.md)
 ###### [Update 0.4 をインストールする](storsimple-virtual-array-install-update-04.md)
 ###### [Update 0.3 のインストール](storsimple-virtual-array-install-update.md)
@@ -47,9 +48,10 @@
 ### [ローカル Web UI で構成する](storsimple-ova-web-ui-admin.md)
 
 ## リリース ノート
-### [Update 1 - 最新](storsimple-virtual-array-update-1-release-notes.md)
+### [Update 1.1 - 最新](storsimple-virtual-array-update-11-release-notes.md)
+### [Update 1](storsimple-virtual-array-update-1-release-notes.md)
 ### [Update 0.6](storsimple-virtual-array-update-06-release-notes.md)
-### Archive
+### アーカイブ
 #### [Update 0.5](storsimple-virtual-array-update-05-release-notes.md)
 #### [Update 0.4](storsimple-virtual-array-update-04-release-notes.md)
 #### [Update 0.3](storsimple-ova-update-03-release-notes.md)
@@ -59,10 +61,11 @@
 
 ## 概要
 ### [ソリューションとは](storsimple-overview.md)
+### [データ転送オプションの比較](storsimple-8000-choose-storage-solution.md)
 ### [StorSimple 学習マップ](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [セキュリティに関する考慮事項](storsimple-8000-security.md)
 ### [利用可能なリージョン](storsimple-regions.md)
-### [FAQ - Azure Portal に移行する](storsimple-8000-move-azure-portal-faq.md)
+
 
 ## 作業開始
 
@@ -90,7 +93,7 @@
 
 ## 方法
 
-### [管理]
+### 管理
 
 #### [StorSimple Manager サービスの使用](storsimple-8000-manager-service-administration.md)
 ##### [バックアップから復元する](storsimple-8000-restore-from-backup-set-u2.md)
@@ -178,10 +181,12 @@
 
 ### 移行
 #### [サブスクリプションとストレージ アカウント](storsimple-8000-migrate-classic-azure-portal.md)
-#### [5000/7000 シリーズのデバイスから](storsimple-8000-migrate-from-5000-7000.md)
-#### [他のストレージ デバイスから](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
+#### [5000/7000 シリーズのデバイスから](storsimple-8000-migration-options.md)
+##### [StorSimple 8000 シリーズ デバイスへ](storsimple-8000-migrate-from-5000-7000.md)
+##### [Azure File Sync へ](storsimple-5000-7000-afs-migration.md)
+#### [他のストレージ デバイスから](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
-### プライマリの
+### アップデート
 #### [Update 5 のインストール - 最新](storsimple-8000-install-update-5.md)
 #### [Update 4 をインストールする](storsimple-8000-install-update-4.md)
 
@@ -189,10 +194,11 @@
 ## リリース ノート
 ### [Update 5 - 最新](storsimple-update5-release-notes.md)
 ### [Update 4](storsimple-update4-release-notes.md)
-### [Update 3](storsimple-update3-release-notes.md)
-### [Update 2.2](storsimple-update21-release-notes.md)
 
-### Archive
+
+### アーカイブ
+#### [Update 3](storsimple-update3-release-notes.md)
+#### [Update 2.2](storsimple-update21-release-notes.md)
 #### [Update 2](storsimple-update2-release-notes.md)
 #### [Update 1](storsimple-update1-release-notes.md)
 #### [Update 0.3](storsimple-february-2015-release-notes.md)
@@ -243,8 +249,8 @@
 ## [料金](https://azure.microsoft.com/pricing/details/storsimple/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=storsimple)
-## [サポート ブログ](http://blogs.msdn.com/b/storsimple/)
-## [サード パーティに関する通知](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+## [サポート ブログ](https://blogs.msdn.com/b/storsimple/)
+## [サード パーティに関する通知](https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 

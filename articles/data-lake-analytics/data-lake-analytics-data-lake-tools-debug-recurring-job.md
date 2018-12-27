@@ -1,28 +1,24 @@
 ---
-title: "異常な定期的ジョブのトラブルシューティングを行う | Microsoft Docs"
-description: "Azure Data Lake Tools for Visual Studio Code を使って異常な定期的ジョブをデバッグする方法について説明します。"
+title: Azure Data Lake Analytics の定期的なジョブをデバッグする
+description: Azure Data Lake Tools for Visual Studio Code を使って異常な定期的ジョブをデバッグする方法について説明します。
 services: data-lake-analytics
-documentationcenter: 
 author: yanancai
-manager: 
-editor: 
+ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 09/27/2017
-ms.author: yanacai
-ms.openlocfilehash: 9b60c861810d6577b33aa0cdf14f26dc2cfc0e4d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.topic: conceptual
+ms.date: 05/20/2018
+ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260042"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>異常な定期的ジョブのトラブルシューティング
 
-この記事では、[Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) を使って定期的なジョブの問題のトラブルシューティングを行う方法を示します。 パイプラインと定期的なジョブについて詳しくは、[Azure Data Lake と Azure HDInsight のブログ](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/)をご覧ください。
+この記事では、[Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) を使って定期的なジョブの問題のトラブルシューティングを行う方法を示します。 パイプラインと定期的なジョブについて詳しくは、[Azure Data Lake と Azure HDInsight のブログ](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/)をご覧ください。
 
 通常、定期的なジョブは同じクエリ ロジックと似た入力データを共有します。 たとえば、毎週月曜日の午前 8 時に実行して 前週のアクティブなユーザーをカウントする定期的なジョブがあるとします。 これらのジョブのスクリプトはクエリ ロジックを含む 1 つのスクリプト テンプレートを共有します。 これらのジョブの入力は過去 1 週間の使用状況データです。 同じクエリ ロジックを共有して入力が似ていると、通常はこれらのジョブのパフォーマンスは似ていて安定しています。 定期的なジョブのいずれかで突然異常な実行、障害、速度低下が大量に発生した場合は、次のことを行います。
 
@@ -43,7 +39,7 @@ Azure Data Lake Tools for Visual Studio の**関連ジョブ ビュー**を使�
  
 ### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>ケース 2: 定期的なジョブのパイプラインはあるが、URL はわからない
 
-Visual Studio で、[サーバー エクスプローラー] > Azure Data Lake Analytics のアカウント > **[パイプライン]** の順に選んで、パイプライン ブラウザーを開くことができます。 ([サーバー エクスプローラー] でこのノードが見つからない場合は、[最新のプラグインをダウンロード](http://aka.ms/adltoolsvs)してください。) 
+Visual Studio で、[サーバー エクスプローラー] > Azure Data Lake Analytics のアカウント > **[パイプライン]** の順に選んで、パイプライン ブラウザーを開くことができます。 ([サーバー エクスプローラー] でこのノードが見つからない場合は、[最新のプラグインをダウンロード](https://aka.ms/adltoolsvs)してください。) 
 
 ![[パイプライン] ノードの選択](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
 

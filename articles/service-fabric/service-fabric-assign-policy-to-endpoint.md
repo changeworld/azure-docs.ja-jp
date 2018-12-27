@@ -9,25 +9,26 @@ editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: 65f47d238d4e591ddde8937d0eb3c55931c01c3f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: dac15f0b96e9e295f92f250fe387e5b6ba9ae000
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567606"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>HTTP と HTTPS エンドポイントのセキュリティ アクセス ポリシーを割り当てる
 実行ポリシーを適用する場合、サービス マニフェストによって HTTP エンドポイント リソースを宣言するときは、**SecurityAccessPolicy** を指定する必要があります。  **SecurityAccessPolicy** により、これらのエンドポイントに割り当てられたポートは、サービスが実行されるユーザー アカウントでのみ正しく使用できるようになります。 それ以外の場合は、 **http.sys** はサービスにアクセスできず、クライアントからの呼び出しで失敗します。 次の例では、Customer1 アカウントを **EndpointName** エンドポイントに適用し、フル アクセス権限を付与しています。
 
 ```xml
 <Policies>
-   <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
-   <!--SecurityAccessPolicy is needed if RunAsPolicy is defined and the Endpoint is http -->
-   <SecurityAccessPolicy ResourceRef="EndpointName" PrincipalRef="Customer1" />
+  <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
+  <!--SecurityAccessPolicy is needed if RunAsPolicy is defined and the Endpoint is http -->
+  <SecurityAccessPolicy ResourceRef="EndpointName" PrincipalRef="Customer1" />
 </Policies>
 ```
 
@@ -35,16 +36,19 @@ HTTPS エンドポイントの場合は、クライアントに返す証明書�
 
 ```xml
 <Policies>
-   <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
+  <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
   <!--SecurityAccessPolicy is needed if RunAsPolicy is defined and the Endpoint is http -->
-   <SecurityAccessPolicy ResourceRef="EndpointName" PrincipalRef="Customer1" />
+  <SecurityAccessPolicy ResourceRef="EndpointName" PrincipalRef="Customer1" />
   <!--EndpointBindingPolicy is needed if the EndpointName is secured with https -->
   <EndpointBindingPolicy EndpointRef="EndpointName" CertificateRef="Cert1" />
-</Policies
+</Policies>
 ```
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-次の手順については、次の記事を参照してください。
+> [!WARNING] 
+> HTTPS を使用する場合は、同じノードにデプロイされる (アプリケーションから独立した) 異なるサービス インスタンスに同じポートと証明書を使用しないでください。 異なるアプリケーション インスタンスで同じポートを使用して 2 つの異なるサービスをアップグレードすると、アップグレード エラーが発生します。 詳細については、「[HTTPS エンドポイントを持つ複数のアプリケーションのアップグレード](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)」を参照してください。
+> 
+
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged--> 次の手順については、次の記事を参照してください。
 * [アプリケーション モデルを理解する](service-fabric-application-model.md)
 * [サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)
 * [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)

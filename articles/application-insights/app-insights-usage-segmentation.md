@@ -1,22 +1,25 @@
 ---
-title: "Azure Application Insights でのユーザー、セッション、イベント分析 | Microsoft Docs"
-description: "Web アプリのユーザーの統計分析について説明します。"
+title: Azure Application Insights でのユーザー、セッション、イベント分析 | Microsoft Docs
+description: Web アプリのユーザーの統計分析について説明します。
 services: application-insights
-documentationcenter: 
-author: botatoes
+documentationcenter: ''
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/24/2018
-ms.author: mbullwin; daviste
-ms.openlocfilehash: 1a5380cac08ab32cfea4cf457aed1fb1510099ed
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: 6fd8adab93f5741afe6d3eab0c50ca50a327fbff
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140334"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights でのユーザー、セッション、およびイベントの分析
 
@@ -46,10 +49,10 @@ Application Insights ポータルのユーザー、セッション、または�
 * 次を使用した: カスタム イベントとページ ビューを選択します。
 * 期間: 時間範囲を選択します。
 * By (フィルター方法): 期間またはブラウザーや市などのプロパティごとにデータのバケットする方法を選択します。
-* 次で分割: データの分割またはセグメント化に使用するプロパティを選択します。 
-* フィルターの追加: ブラウザー、市などのプロパティに基づいて特定のユーザー、セッション、またはイベントに対するクエリ実行を制限します。 
- 
-## <a name="saving-and-sharing-reports"></a>レポートの保存と共有 
+* 次で分割: データの分割またはセグメント化に使用するプロパティを選択します。 
+* フィルターの追加: ブラウザー、市などのプロパティに基づいて特定のユーザー、セッション、またはイベントに対するクエリ実行を制限します。 
+ 
+## <a name="saving-and-sharing-reports"></a>レポートの保存と共有 
 [ユーザー] レポートは、個人利用のためだけに [My Reports (マイ レポート)] セクションに保存するか、[共有レポート] セクションのこの Application Insights リソースにアクセスできる他のすべてのユーザーと共有できます。
 
 ユーザー、セッション、またはイベント レポートへのリンクを共有するには、ツールバーの **[共有]** をクリックし、リンクをコピーします。

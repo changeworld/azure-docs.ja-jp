@@ -1,6 +1,6 @@
 ---
 title: Resource Manager モードでの Azure CLI コマンド | Microsoft Docs
-description: リソース マネージャー のデプロイ モデルのリソースを管理する Azure コマンド ライン インターフェイス (CLI) コマンド
+description: Resource Manager デプロイ モデルのリソースを管理する Azure コマンド ライン インターフェイス (CLI) コマンド
 services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
 documentationcenter: ''
 author: dlepow
@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 8a2bae12fae6a1bf8f5ecbdb2ae01dea5260f3cb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8b76e1a168d39d2f39098754f43bae73c21c2049
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155816"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager モードでの Azure CLI コマンド
-この記事では、Azure Resource Manager デプロイメントモデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。  
+この記事では、Azure Resource Manager デプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。  
 
 > [!NOTE]
-> この記事では、Azure CLI での Resource Manager モードのコマンドを示します。Azure CLI は Azure CLI 1.0 と呼ばれることがあります。 Resource Manager モードでの操作は、次世代のマルチプラットフォーム CLI である [Azure CLI 2.0](/cli/azure/install-az-cli2) で試すこともできます。
+> この記事では、Azure CLI での Resource Manager モードのコマンドを示します。Azure CLI は Azure クラシック CLI と呼ばれることがあります。 Resource Manager モデルでの操作は、次世代のマルチプラットフォーム CLI である [Azure CLI](/cli/azure/install-az-cli2) で試すこともできます。
 >詳細については、[新旧の Azure CLI](/cli/azure/old-and-new-clis)に関するページを参照してください。
 >
 
@@ -1452,7 +1453,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>
     --subnet-name <subnet-name>                                  the subnet name
     -m, --subnet-vnet-name <subnet-vnet-name>                        the vnet name under which subnet-name exists
-    -t, --tags <tags>                                                the comma seperated list of tags.
+    -t, --tags <tags>                                                the comma separated list of tags.
     Can be multiple. In the format of "name=value".
     Name is required and value is optional.
     For example, -t tag1=value1;tag2

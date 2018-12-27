@@ -1,21 +1,19 @@
 ---
-title: "Azure でのクラウド ストレージ アプリケーションの監視およびトラブルシューティング | Microsoft Docs"
-description: "クラウド アプリケーションをトラブルシューティングおよび監視するには、診断ツール、メトリック、およびアラートを使用します。"
+title: Azure でのクラウド ストレージ アプリケーションの監視およびトラブルシューティング | Microsoft Docs
+description: クラウド アプリケーションをトラブルシューティングおよび監視するには、診断ツール、メトリック、およびアラートを使用します。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
-ms.workload: web
-ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 07/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: a1b3a1d4bb397e19f033b8f3bfe68ca6a63725c4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 1bd237d4b8ecd826caf4ba9a150f1dd50f0c5bb6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259991"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>クラウド ストレージ アプリケーションの監視およびトラブルシューティング
 
@@ -29,9 +27,9 @@ ms.lasthandoff: 02/22/2018
 > * 正しくない SAS トークンでテスト トラフィックを実行する
 > * ログをダウンロードして分析する
 
-[Azure Storage Analytics](../common/storage-analytics.md) では、ストレージ アカウントのログ記録およびメトリック データが提供されます。 このデータにより、ストレージ アカウントの正常性を確認できます。 ストレージ アカウントの状態を確認するには、その前にデータ収集を設定する必要があります。 このプロセスには、ログ記録の有効化、メトリックの構成、およびアラートの有効化が含まれます。
+[Azure Storage Analytics](../common/storage-analytics.md) では、ストレージ アカウントのログ記録およびメトリック データが提供されます。 このデータにより、ストレージ アカウントの正常性を確認できます。 Azure Storage Analytics からデータを収集するには、ログ記録、メトリック、およびアラートを構成します。 このプロセスには、ログ記録の有効化、メトリックの構成、およびアラートの有効化が含まれます。
 
-ストレージ アカウントのログ記録とメトリックは、Azure Portal の **[診断]** タブで有効にします。 メトリックには、次の 2 種類があります。 **集計**メトリックは、受信/送信、可用性、待機時間、および成功の割合を収集します。 このメトリックは、BLOB、キュー、テーブル、ファイルのサービスごとに集計されます。 **API ごと**は、Azure Storage サービス API でのストレージ操作ごとに同じ一連のメトリックを収集します。 ストレージのログ記録では、ストレージ アカウント内の成功した要求と失敗した要求の両方の詳細を記録できます。 これらのログにより、Azure テーブル、キュー、および BLOB に対する読み取り、書き込み、および削除操作の詳細を確認できます。 また、タイムアウト、調整、承認エラーなど、失敗した要求の理由を確認することもできます。
+ストレージ アカウントのログ記録とメトリックは、Azure Portal の **[診断]** タブで有効にします。 ストレージのログ記録では、ストレージ アカウント内の成功した要求と失敗した要求の両方の詳細を記録できます。 これらのログにより、Azure テーブル、キュー、および BLOB に対する読み取り、書き込み、および削除操作の詳細を確認できます。 また、タイムアウト、調整、承認エラーなど、失敗した要求の理由を確認することもできます。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
@@ -41,11 +39,11 @@ ms.lasthandoff: 02/22/2018
 
 左側のメニューから、**[リソース グループ]** を選択し、**[myResourceGroup]** を選択してから、リソース一覧内のストレージ アカウントを選択します。
 
-**[診断]** で、**[状態]** を **[On] \(オン)** に設定します。 **[Blob aggregate metrics] \(BLOB 集計メトリック)**、**[Blob per API metrics] \(BLOB API ごとのメトリック)**、および **[Blob logs] \(BLOB ログ)** が有効になっていることを確認してください。
+**[診断設定 (クラシック)]** で、**[状態]** を **[オン]** に設定します。 **[BLOB のプロパティ]** のすべてのオプションが有効になっていることを確認します。
 
 完了したら、**[保存]** をクリックします。
 
-![[診断] ウィンドウ](media/storage-monitor-troubleshoot-storage-application/figure1.png)
+![[診断] ウィンドウ](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
 ## <a name="enable-alerts"></a>アラートを有効にする
 
@@ -53,40 +51,39 @@ ms.lasthandoff: 02/22/2018
 
 ### <a name="navigate-to-the-storage-account-in-the-azure-portal"></a>Azure Portal でストレージ アカウントに移動します。
 
-左側のメニューから、**[リソース グループ]** を選択し、**[myResourceGroup]** を選択してから、リソース一覧内のストレージ アカウントを選択します。
+**[監視]** セクションで、**[アラート (クラシック)]** を選択します。
 
-**[監視]** セクションで、**[アラート ルール]** を選択します。
+**[メトリック アラートの追加 (クラシック)]** を選択し、必要な情報を入力して **[ルールの追加]** フォームを完成させます。 **[メトリック]** ドロップダウンで、`SASClientOtherError` を選択します。 最初のエラー発生時にアラートのトリガーを許可するには、**[条件]** ドロップダウンで **[Greater than or equal to]\(この値以上\)** を選択します。
 
-**[+ Add alert] \(+ アラートの追加)** を選択し、**[アラート ルールの追加]** で、必要な情報を入力します。 **[メトリック]** ドロップダウンから `SASClientOtherError` を選択します。
-
-![[診断] ウィンドウ](media/storage-monitor-troubleshoot-storage-application/figure2.png)
+![[診断] ウィンドウ](media/storage-monitor-troubleshoot-storage-application/add-alert-rule.png)
 
 ## <a name="simulate-an-error"></a>エラーをシミュレートする
 
-有効なアラートをシミュレートするには、ストレージ アカウントに対して存在しない BLOB の要求を試みることができます。 これを行うには、`<incorrect-blob-name>` 値を存在しない値に置き換えます。 失敗した BLOB 要求をシミュレートするには、次のサンプル コードを数回実行します。
+有効なアラートをシミュレートするには、ストレージ アカウントに対して存在しない BLOB の要求を試みることができます。 次のコマンドにはストレージ コンテナー名が必要です。 既存のコンテナーの名前を使用するか、この例で使用する目的で新しいものを作成します。
+
+プレースホルダーを実際の値に置き換え (`<INCORRECT_BLOB_NAME>` が存在しない値に設定されていることを確認して)、コマンドを実行します。
 
 ```azurecli-interactive
 sasToken=$(az storage blob generate-sas \
-    --account-name <storage-account-name> \
-    --account-key <storage-account-key> \
-    --container-name <container> \
-    --name <incorrect-blob-name> \
+    --account-name <STORAGE_ACCOUNT_NAME> \
+    --account-key <STORAGE_ACCOUNT_KEY> \
+    --container-name <CONTAINER_NAME> \
+    --name <INCORRECT_BLOB_NAME> \
     --permissions r \
-    --expiry `date --date="next day" +%Y-%m-%d` \
-    --output tsv)
+    --expiry `date --date="next day" +%Y-%m-%d`)
 
-curl https://<storage-account-name>.blob.core.windows.net/<container>/<incorrect-blob-name>?$sasToken
+curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCORRECT_BLOB_NAME>?$sasToken
 ```
 
 次の図は、前の例で実行したシミュレートされた失敗に基づくアラートの例です。
 
- ![アラートの例](media/storage-monitor-troubleshoot-storage-application/alert.png)
+ ![アラートの例](media/storage-monitor-troubleshoot-storage-application/email-alert.png)
 
 ## <a name="download-and-view-logs"></a>ログをダウンロードして表示する
 
 ストレージ ログは、ストレージ アカウント内の **$logs** という名前の BLOB コンテナーにある一連の BLOB 内にデータを格納します。 このコンテナーは、アカウント内のすべての BLOB コンテナーを一覧表示しても表示されませんが、直接それにアクセスすればその内容を見ることができます。
 
-このシナリオでは、[Microsoft Message Analyzer](http://technet.microsoft.com/library/jj649776.aspx) を使用して Azure ストレージ アカウントを操作します。
+このシナリオでは、[Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) を使用して Azure ストレージ アカウントを操作します。
 
 ### <a name="download-microsoft-message-analyzer"></a>Microsoft Message Analyzer をダウンロードする
 

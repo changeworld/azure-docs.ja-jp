@@ -1,21 +1,20 @@
 ---
-title: Azure Site Recovery を使用して Azure VM をオンプレミス VMware にフェールバックしているときのエラーのトラブルシューティング | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して Azure から VMware にフェールバックするときの一般的なフェールバック エラーと再保護エラーをトラブルシューティングする方法について説明します。
-services: site-recovery
-documentationcenter: ''
+title: Azure Site Recovery を使用した VMware VM の Azure へのディザスター リカバリー時のオンプレミスへのフェールバックのトラブルシューティング | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して VMware VM を Azure にディザスター リカバリーするときのフェールバックと再保護の問題をトラブルシューティングする方法について説明します。
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/09/2018
+ms.topic: conceptual
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 480c3524ad4fb8a8c6ea02f09b8d27f254da9b08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 57630d1fa95c2133e592f691add8c515ca718afb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833433"
 ---
-# <a name="troubleshoot-failback-from-azure-to-vmware"></a>Azure から VMware へのフェールバックのトラブルシューティング
+# <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure からオンプレミスへのフェールバックのトラブルシューティング
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して Azure にフェールオーバーした後で、Azure VM をオンプレミスの VMware インフラストラクチャにフェールバックする際に発生する可能性がある問題のトラブルシューティング方法について説明します。
 

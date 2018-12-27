@@ -1,25 +1,23 @@
 ---
-title: Azure AD への接続時に WebAPI プロジェクトに行われる変更 | Microsoft Docs
+title: Azure AD への接続時に WebAPI プロジェクトに行われる変更
 description: Visual Studio を使用して Azure AD に接続した場合の WebAPI プロジェクトの変更内容の説明
 services: active-directory
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
-ms.service: active-directory
-ms.workload: web
-ms.tgt_pltfrm: vs-what-happened
-ms.devlang: na
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure-vs
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev
-ms.openlocfilehash: fc6506ccb7b4c9b7fa43a378df47094de92c73b6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.custom: aaddev, vs-azure
+ms.openlocfilehash: 04732d6541fd6132360d4c235b35979c70772922
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146598"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>WebAPI プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
 
@@ -131,5 +129,5 @@ ms.lasthandoff: 03/30/2018
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
-- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](guidedsetups/active-directory-aspnetwebapp-v1.md)
+- [Azure AD の認証シナリオ](authentication-scenarios.md)
+- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v1-aspnet-webapp.md)

@@ -1,26 +1,27 @@
 ---
-title: "無効な Azure サブスクリプションを再度有効にする | Microsoft Docs"
-description: "Azure サブスクリプションが無効になっているときに再度有効にする方法について説明します。"
-keywords: "azure サブスクリプションの無効化"
-services: 
-documentationcenter: 
+title: 無効な Azure サブスクリプションを再度有効にする | Microsoft Docs
+description: Azure サブスクリプションが無効になっているときに再度有効にする方法について説明します。
+keywords: azure サブスクリプションの無効化
+services: ''
+documentationcenter: ''
 author: genlin
-manager: jlian
-editor: 
+manager: adpick
+editor: ''
 tags: billing
 ms.assetid: 4529d685-3a87-49d9-8d7a-49baad552d76
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/22/2017
-ms.author: genli
-ms.openlocfilehash: 0b573a3745cbaa3deb583458159faaa0ac93f202
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.topic: conceptual
+ms.date: 05/11/2018
+ms.author: cwatson
+ms.openlocfilehash: 14e372ef8de0a3ec82d9a14d026487d72bfa80bd
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583722"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>私の Azure サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。
 
@@ -37,7 +38,7 @@ Azure 無料アカウントにサインアップすると、30 日間試用で�
 > [!NOTE] 
 > 無料試用版サブスクリプションを使用しているときに使用制限を削除すると、ご利用のサブスクリプションは、無料試用の終了時に従量課金制に変換されます。 残りのクレジットは、サブスクリプションの作成後、丸 30 日間保持されます。 また、12 か月間の無料サービスにアクセスすることもできます。
 
-Azure の課金アクティビティの監視および管理については、「[Azure の課金とコスト管理で予想外のコストを防ぐ](billing-getting-started.md)」および「[Microsoft Azure サブスクリプションの課金アラートの設定](billing-set-up-alerts.md)」をご覧ください。
+Azure の課金アクティビティの監視および管理については、「[Azure の課金とコスト管理で予想外のコストを防ぐ](billing-getting-started.md)」を参照してください。
 
 
 ## <a name="your-bill-is-past-due"></a>請求の支払い期限が過ぎている
@@ -60,6 +61,6 @@ Azure の課金アクティビティの監視および管理については、�
 
 その他のサブスクリプションの種類については、[サポートに連絡して](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)、サブスクリプションを再度有効にしてもらいます。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。

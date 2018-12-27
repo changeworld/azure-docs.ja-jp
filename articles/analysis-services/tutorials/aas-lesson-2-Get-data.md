@@ -1,25 +1,19 @@
 ---
-title: "Azure Analysis Services チュートリアル - レッスン 2 : データを取得する | Microsoft Docs"
-description: "Azure Analysis Services チュートリアル プロジェクトでデータを取得､インポートする方法を説明します｡"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services チュートリアル - レッスン 2 : データを取得する | Microsoft Docs'
+description: Azure Analysis Services チュートリアル プロジェクトでデータを取得､インポートする方法を説明します｡
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 138f9f6e85d5e206c8b09d5c93822cfef5dd1246
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: b7aaadb6237a3b16d166d3bc931fddc70fb4a792
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427622"
 ---
 # <a name="get-data"></a>データを取得する
 
@@ -58,11 +52,11 @@ Get Data を使うことで､Azure SQL Database や Oracle､Sybase､OData Fee
   
 5.  ナビゲーターで **AdventureWorksDW2014** データベースを選択し､**[OK]** をクリックします｡これで､データベースへの接続が作成されます｡ 
   
-6.  ナビゲータで､次の表のチェックボックスを選択します｡ **DimCustomer**､**DimDate**､ **DimGeography**､**DimProduct**､ **DimProductCategory**､ **DimProductSubcategory**､および**FactInternetSales**｡  
+6.  ナビゲーターで､次の表の **DimCustomer**､**DimDate**､ **DimGeography**､**DimProduct**､ **DimProductCategory**､ **DimProductSubcategory**､および**FactInternetSales** チェックボックスを選択し、**[編集]** をクリックします。
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-[OK] をクリックすると、クエリ エディターが開きます。 次のセクションでは、インポートするデータのみを選択します。
+    クエリ エディターが開きます。 次のセクションでは、インポートするデータのみを選択します。
 
   
 ## <a name="filter-the-table-data"></a>テーブルのデータをフィルターする  
@@ -70,7 +64,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
 #### <a name="to-filter-the-table-data-before-importing"></a>インポートの前にテーブル データをフィルターする  
   
-1.  Query Editor で**[DimCustomer]** テーブルを選択します｡ データソース (AdventureWorksDW2014 サンプル データベース) にある DimCustomer テーブルのビューが表示されます。 
+1.  Query Editor で **[DimCustomer]** テーブルを選択します｡ データソース (AdventureWorksDW2014 サンプル データベース) にある DimCustomer テーブルのビューが表示されます。 
   
 2.  Ctrl を押しながら､**SpanishEducation**､ **FrenchEducation**､**SpanishOccupation**､および **FrenchOccupation** をクリックし (複数項目の選択)､右クリックして､**[Remove Columns]** をクリックします｡ 
 
@@ -88,7 +82,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
     
     **DimDate**
     
-      |分割|  
+      |列|  
       |--------|  
       |**DateKey**|  
       |**SpanishDayNameOfWeek**|  
@@ -98,7 +92,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
     **DimGeography**
   
-      |分割|  
+      |列|  
       |-------------|  
       |**SpanishCountryRegionName**|  
       |**FrenchCountryRegionName**|  
@@ -106,7 +100,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
     **DimProduct**
   
-      |分割|  
+      |列|  
       |-----------|  
       |**SpanishProductName**|  
       |**FrenchProductName**|  
@@ -121,14 +115,14 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
     **DimProductCategory**
   
-      |分割|  
+      |列|  
       |--------------------|  
       |**SpanishProductCategoryName**|  
       |**FrenchProductCategoryName**|  
   
     **DimProductSubcategory**
   
-      |分割|  
+      |列|  
       |-----------------------|  
       |**SpanishProductSubcategoryName**|  
       |**FrenchProductSubcategoryName**|  
@@ -146,7 +140,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
     ![aas-lesson2-success](../tutorials/media/aas-lesson2-success.png) 
   
-2.  **[閉じる]**をクリックします。  
+2.  **[閉じる]** をクリックします。  
 
   
 ## <a name="save-your-model-project"></a>モデル プロジェクトを保存します｡  

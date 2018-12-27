@@ -1,25 +1,26 @@
 ---
-title: "Azure のクレジット カードの変更 | Microsoft Docs"
-description: "Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法について説明します"
-services: 
-documentationcenter: 
+title: Azure のクレジット カードの変更 | Microsoft Docs
+description: Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法について説明します
+services: ''
+documentationcenter: ''
 author: genlin
-manager: jlian
-editor: 
+manager: jureid
+editor: ''
 tags: billing
 ms.assetid: 15252ced-1841-4a66-ae79-2e58af1d3370
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/22/2017
-ms.author: genli
-ms.openlocfilehash: 9cab81b6072c6f096f6f1a419cebcca9630ebde3
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.topic: conceptual
+ms.date: 05/11/2018
+ms.author: cwatson
+ms.openlocfilehash: 69c24e08ce2434c39b8bb67cb53173f9ceaee51b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581444"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Azure のクレジット カードまたはデビット カードを追加、更新、または削除する
 
@@ -101,6 +102,6 @@ ms.lasthandoff: 12/23/2017
 
 税 ID を追加または更新するには、[Azure アカウント センターの **[プロファイル]**](https://account.azure.com/Profile) にアクセスし、**[納税記録]** を選択してください。 この税 ID は、免税の計算に使用され、請求書に表示されます。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。

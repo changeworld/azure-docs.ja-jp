@@ -1,11 +1,11 @@
 ---
-title: "App Service Environment での内部ロード バランサーの作成と使用 | Microsoft Docs"
-description: "ILB を含む ASE の作成と使用"
+title: App Service Environment での内部ロード バランサーの作成と使用 | Microsoft Docs
+description: ILB を含む ASE の作成と使用
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29388817"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service 環境での内部ロード バランサーの使用
 
@@ -74,7 +75,7 @@ ILB ASE でのアプリの作成は、通常の ASE でのアプリの作成と�
 3. サブスクリプションを選択します。
 4. リソース グループを選択または作成します。
 5. App Service プラン (ASP) を選択または作成します。 新しい ASP を作成している場合は、ASE を場所として選択し、ASP を作成するワーカー プールを選択します。 ASP を作成するときに、場所として ASE を選択し、ワーカー プールを選択します。 アプリの名前を指定すると、アプリ名の下のサブドメインが、ASE のサブドメインによって置き換えられます。 
-6. **[作成]**を選択します。 アプリをダッシュボードに表示する場合は、必ず **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。 
+6. **[作成]** を選択します。 アプリをダッシュボードに表示する場合は、必ず **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。 
 
 ![][2]
 

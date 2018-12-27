@@ -1,25 +1,26 @@
 ---
-title: "Azure Site Recovery でレプリケート済み Azure VM をセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする (プレビュー)"
-description: "Azure Site Recovery で Azure VM レプリケーションをセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする方法について説明します"
+title: Azure Site Recovery サービスを使用して、レプリケート済み Azure IaaS VM をディザスター リカバリー用のセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする。
+description: Azure Site Recovery サービスを使用して、レプリケート済み Azure VM をディザスター リカバリー用のセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dc7ead9e7d55d1b22118774e98c741991e8af2d9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 93928d7eb84ce986c8a9322188183e4c3dd76d99
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847866"
 ---
-# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions-preview"></a>Azure リージョン間で Azure VM をフェールオーバーおよびフェールバックする (プレビュー)
+# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM をフェールオーバーおよびフェールバックする
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
 
-このチュートリアルでは、1 つの Azure VM をセカンダリ Azure リージョンにフェールオーバーする方法について説明します。 フェールオーバー後、利用できるようになった時点でプライマリ リージョンにフェールバックします。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、1 つの Azure VM をセカンダリ Azure リージョンにフェールオーバーする方法について説明します。 フェールオーバー後、利用できるようになった時点でプライマリ リージョンにフェールバックします。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure VM をフェールオーバーする
@@ -27,10 +28,13 @@ ms.lasthandoff: 03/09/2018
 > * セカンダリ VM をフェールバックする
 > * プライマリ VM をセカンダリ リージョンに再保護する
 
+> [!NOTE]
+> このチュートリアルは、ターゲット リージョンへのフェールオーバーとフェールバックを最小限のカスタマイズで行う手順をユーザーに紹介することが目的です。ネットワークの考慮事項、オートメーション、トラブルシューティングなど、フェールオーバーに関する事柄をさまざまな角度から詳しく知りたい場合は、Azure VM の "操作方法" のドキュメントを参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
 - [ディザスター リカバリー訓練](azure-to-azure-tutorial-dr-drill.md)を実施して、すべてが正しく動作していることを確認します。
-- テスト フェールオーバーを実行する前に、VM のプロパティを確認します。 VM は [Azure の要件](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions)に準拠している必要があります。
+- テスト フェールオーバーを実行する前に、VM のプロパティを確認します。 VM は [Azure の要件](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)に準拠している必要があります。
 
 ## <a name="run-a-failover-to-the-secondary-region"></a>セカンダリ リージョンへのフェールオーバーを実行する
 
@@ -68,4 +72,4 @@ VM のフェールオーバー後、プライマリ リージョンにレプリ�
 
 ## <a name="fail-back-to-the-primary-region"></a>プライマリ リージョンにフェールバックする
 
-VM が再保護されたら、必要に応じてプライマリ リージョンにフェールバックできます。 これを実行するには、[フェールオーバー](#run-a-failover)の手順に従ってください。
+VM が再保護されたら、必要に応じてプライマリ リージョンにフェールバックできます。 これを行うには、この記事で説明したように、セカンダリ リージョンからプライマリ リージョンへのフェールオーバーを設定します。

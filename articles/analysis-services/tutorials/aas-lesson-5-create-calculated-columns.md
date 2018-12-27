@@ -1,25 +1,19 @@
 ---
-title: "Azure Analysis Services チュートリアル - レッスン 5: 計算列を作成する |Microsoft ドキュメント"
-description: "この Azure Analysis Services チュートリアル プロジェクトで計算列を作成する方法について説明します。"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services チュートリアル - レッスン 5: 計算列を作成する |Microsoft ドキュメント'
+description: この Azure Analysis Services チュートリアル プロジェクトで計算列を作成する方法について説明します。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 9b491af1e5c9da03f48335f5793ed71ddaf644fb
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 2d92edd0bda15ecd57a5a29375adae3a51c661c2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428132"
 ---
 # <a name="create-calculated-columns"></a>計算列を作成する
 

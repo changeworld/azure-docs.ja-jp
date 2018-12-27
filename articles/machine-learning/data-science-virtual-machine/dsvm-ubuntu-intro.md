@@ -3,26 +3,27 @@ title: Azure での Linux (Ubuntu) データ サイエンス仮想マシンの�
 description: 分析と機械学習を行うために、Azure で Linux (Ubuntu) データ サイエンス用仮想マシンの構成と作成を行います。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
+ms.author: gokuma
 manager: cgronlun
-editor: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: bradsev
-ms.openlocfilehash: 721b18845a3b839d59c7eb0a04646635fa8d9fe7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: cf5a15a55cf3f0d33edeec9440e745c9dce996c1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244867"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
-Linux データ サイエンス仮想マシンは Ubuntu ベースの仮想マシン イメージであり、Azure で簡単にディープ ラーニングを開始できます。 ディープ ラーニング ツールには以下が含まれます。
+Linux データ サイエンス仮想マシンは Ubuntu ベースの仮想マシン イメージであり、Azure 上でディープ ラーニングなどの機械学習を簡単に開始できます。 ディープ ラーニング ツールには以下が含まれます。
 
   * [Caffe](http://caffe.berkeleyvision.org/): 速度、表現、モジュール性を念頭に置いて構築されたディープ ラーニング フレームワーク
   * [Caffe2](https://github.com/caffe2/caffe2): Caffe のクロス プラットフォーム バージョン
@@ -31,6 +32,7 @@ Linux データ サイエンス仮想マシンは Ubuntu ベースの仮想マ�
   * [Keras](https://keras.io/): Python で書かれた Theano と TensorFlow 用の高度なニュートラル ネットワーク API
   * [MXNet](http://mxnet.io/): 多くの言語バインディングを含む、柔軟で効率的なディープ ラーニング ライブラリ
   * [NVIDIA DIGITS](https://developer.nvidia.com/digits): 一般的なディープ ラーニング タスクを簡略化するグラフィカル システム
+  * [PyTorch](http://pytorch.org/): 動的ネットワークをサポートする高度な Python ライブラリ
   * [TensorFlow](https://www.tensorflow.org/): Google が提供する、マシン インテリジェンス用のオープンソース ライブラリ
   * [Theano](http://deeplearning.net/software/theano/): 多次元配列を含む数式の定義、最適化、効率的な評価ができる Python 用ライブラリ
   * [Torch](http://torch.ch/): 機械学習アルゴリズムを幅広くサポートする科学コンピューティング フレームワーク
@@ -51,7 +53,7 @@ Linux データ サイエンス仮想マシンには、データ サイエンス
 * 機械学習ツール
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): オンライン、ハッシュ、allreduce、リダクション、learning2search、アクティブ、対話型学習などの手法をサポートする高速機械学習システム
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): 迅速かつ正確なブースト ツリー実装を提供するツール
-  * [Rattle](http://rattle.togaware.com/): R でデータ分析と機械学習を簡単に開始できるグラフィカル ツール
+  * [Rattle](https://togaware.com/rattle/): R でデータ分析と機械学習を簡単に開始できるグラフィカル ツール
   * [LightGBM](https://github.com/Microsoft/LightGBM): 高速、分散、高パフォーマンスの勾配ブースティング フレームワーク
 * Java、Python、node.js、Ruby、PHP の Azure SDK
 * Azure Machine Learning などの Azure サービスで使用する R と Python のライブラリ
@@ -61,8 +63,8 @@ Linux データ サイエンス仮想マシンには、データ サイエンス
 データ サイエンスでは、次の一連のタスクを反復処理します。
 
 1. データの検索、読み込み、前処理
-2. モデルの作成とテスト
-3. インテリジェント アプリケーションで使用するためのモデルのデプロイ
+1. モデルの作成とテスト
+1. インテリジェント アプリケーションで使用するためのモデルのデプロイ
 
 データ サイエンティストは、こうしたタスクを行うためにさまざまなツールを使用します。 適切なバージョンのソフトウェアを見つけ、ダウンロードし、コンパイルして、インストールするには、非常に時間がかかる場合があります。
 
@@ -79,13 +81,14 @@ Linux データ サイエンス仮想マシンを作成するには、Azure サ�
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>Linux データ サイエンス仮想マシンの作成
 Linux データ サイエンス仮想マシンのインスタンスを作成する手順は以下の通りです。
 
-1. [Azure ポータル](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)に一覧表示されている仮想マシンに移動します。
-2. 下部にある **[作成]** をクリックして、ウィザードを起動します。![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
-3. 以下のセクションでは、Microsoft データ サイエンス仮想マシンの作成に使用されるウィザードの各ステップ (上の図の右側に列挙) での入力について説明します。 以下は、これらの各ステップを構成するために必要な入力項目です。
+1. [Azure ポータル](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu)に一覧表示されている仮想マシンに移動します。 まだサインインしていない場合は、Azure アカウントへのログインを求めるメッセージが表示される可能性があります。 
+1. 下部にある **[作成]** をクリックして、ウィザードを起動します。![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
+1. 以下のセクションでは、Microsoft データ サイエンス仮想マシンの作成に使用されるウィザードの各ステップ (上の図の右側に列挙) での入力について説明します。 以下は、これらの各ステップを構成するために必要な入力項目です。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[基本]**:
+   a. **[基本]**:
    
    * **名前**: 作成するデータ サイエンス サーバーの名前です。
+   * **VM ディスクの種類**: ソリッドステート ドライブ (SSD) を使用する場合は、**[Premium SSD]** を選択します。 それ以外の場合は、**[Standard HDD]** を選択します。 
    * **ユーザー名**: 最初のアカウントのサインイン ID。
    * **パスワード**: 最初のアカウントのパスワード (パスワードの代わりに SSH 公開キーを使用できます)。
    * **サブスクリプション**: 複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。 そのサブスクリプションに対するリソース作成権限が必要です。
@@ -94,25 +97,27 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    
    b. **[サイズ]**:
    
-   * 機能の要件とコストの制約を満たしている、いずれかのサーバーの種類を選択します。 **[すべて表示]** を選択すると、VM サイズのさらに多くの選択肢が表示されます。 GPU トレーニング用に NC クラスの VM を選択します。
+   * 機能の要件とコストの制約を満たしている、いずれかのサーバーの種類を選択します。 GPU ベースの VM インスタンス用には NC クラスまたは ND クラスの VM を選択します。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページには、GPU のあるリージョンが一覧表示されます。
    
    c. **設定**:
    
-   * **ディスクの種類**: ソリッドステート ドライブ (SSD) を使用する場合は、**[Premium]** を選択します。 それ以外の場合は、 **[Standard]**を選択します。 GPU VM では、Standard ディスクが必要です。
-   * **ストレージ アカウント**: サブスクリプションに新しい Azure ストレージ アカウントを作成することも、ウィザードの **[基本]** ステップで選択した場所にある既存のストレージ アカウントを使用することもできます。
-   * **他のパラメーター**: 通常は既定値を使用します。 既定値以外の値を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
+   * ほとんどの場合は、既定値を使用できます。 既定値以外の値を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
    
    d. **概要**:
    
-   * 入力したすべての情報が正しいことを確認します。
+   * 入力したすべての情報が正しいことを確認します。 使用条件へのリンクが表示されます。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 プロビジョニングを開始するには、**[作成]** をクリックします。 
    
-   e. **[購入]**:
-   
-   * プロビジョニングを開始するには、 **[購入]**をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。
-
-プロビジョニングには、5 ～ 10 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
+プロビジョニングには 5 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Linux データ サイエンス仮想マシンにアクセスする方法
+
+3 つの方法を使って、Ubuntu DSVM にアクセスすることができます。
+1. ターミナル セッションの場合の SSH
+1. グラフィカル セッションの場合の X2Go
+1. Jupyter Notebook の場合の JupyterHub と JupyterLab
+
+### <a name="ssh"></a>SSH
+
 VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の **[基本]** セクションで作成したアカウントの資格情報を使用します。 Windows では、[Putty](http://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。
 
 > [!NOTE]
@@ -120,11 +125,11 @@ VM を作成したら、SSH を使用してサインインできます。 テキ
 > 
 > 
 
-## <a name="installing-and-configuring-x2go-client"></a>X2Go クライアントのインストールと構成
+### <a name="x2go"></a>X2Go
 Linux VM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を実行します。
 
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
-2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]**を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
+1. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
      * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
      * **[Login (ログイン)]**: Linux VM のユーザー名。
@@ -134,6 +139,14 @@ Linux VM は、既に X2Go サーバーでプロビジョニングされてお�
    * **[Shared folders] \(共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
 
 SSH クライアントを使用するか、X2Go クライアントから XFCE グラフィカル デスクトップを使用して VM にサインインしたら、VM にインストールされ、構成されているツールをすぐに使い始めることができます。 XFCE では、アプリケーション メニューのショートカットとさまざまなツールのデスクトップ アイコンが表示されます。
+
+### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub と JupyterLab
+
+Ubuntu DSVM は、マルチユーザーの Jupyter サーバーである [JupyterHub](https://github.com/jupyterhub/jupyterhub) を実行します。 接続するには、ノート PC またはデスクトップで https://your-vm-ip:8000 を参照し、VM を作成するときに使ったユーザー名とパスワードを入力して、ログインします。 多くのサンプル ノートブックを参照して試してみることができます。
+
+次世代の Jupyter Notebook と JupyterHub である JupyterLab も利用できます。 JupyterLab にアクセスするには、JupyterHub にログインし、URL https://your-vm-ip:8000/user/your-username/lab を参照します。 次の行を /etc/jupyterhub/jupyterhub_config.py に追加することにより、JupyterLab を既定のノートブック サーバーとして設定できます。
+
+    c.Spawner.default_url = '/lab'
 
 ## <a name="tools-installed-on-the-data-science-virtual-machine-for-linux"></a>Linux データ サイエンス仮想マシンにインストールされているツール
 ### <a name="deep-learning-libraries"></a>ディープ ラーニング ライブラリ
@@ -170,7 +183,7 @@ MXNet は、効率性と柔軟性の両方のために設計されたディー�
 #### <a name="nvidia-digits"></a>NVIDIA DIGITS
 DIGITS として知られる NVIDIA ディープ ラーニング GPU トレーニング システムは、高度な視覚化により、一般的なディープ ラーニング タスク (データの管理、GPU システム上でのニュートラル ネットワークの設計とトレーニング、リアル タイムでのパフォーマンスの監視など) を簡略化するシステムです。 
 
-DIGITS は、"digits (ディジッツ)" というサービスとして利用できます。 サービスを開始するには、http://localhost:5000 を参照してください。
+DIGITS は、"digits (ディジッツ)" というサービスとして利用できます。 サービスを開始するには、 http://localhost:5000 を参照します。
 
 また DIGITS は、Conda root 環境に Python モジュールとしてインストールされます。
 
@@ -193,30 +206,32 @@ R コンソールを起動するには、シェルで「**R**」と入力しま�
 必要な場合に備えて、 [上位 20 の R パッケージ](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) をインストールするための R スクリプトも用意されています。 このスクリプトを実行するには、前述のとおり、シェルで「 **R** 」と入力して R の対話型インターフェイスに入る必要があります。  
 
 ### <a name="python"></a>Python
-Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。 このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。 既定のテキスト エディターを使用できます。 また、Anaconda Python ディストリビューションにバンドルされている Spyder (Python IDE) を使用することもできます。 Spyder を使用するには、グラフィカル デスクトップまたは X11 転送が必要です。 Spyder へのショートカットは、グラフィカル デスクトップに用意されています。
+Anaconda Python は、Python 2.7 および 3.5 の環境でインストールされます。 2.7 環境は _root_ と呼ばれ、3.5 環境は _py35_ と呼ばれます。 このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。 
 
-Python 2.7 と 3.5 の両方が用意されているため、現在のセッションで利用する目的の Python バージョン (conda 環境) を明示的にアクティブ化する必要があります。 アクティブ化プロセスにより、PATH 変数は Python の目的のバージョンに設定されます。
+Py35 が既定の環境です。 root (2.7) 環境をアクティブ化するには:
 
-Python 2.7 conda 環境をアクティブにするには、シェルで次のコマンドを実行します。
+    source activate root
 
-    source /anaconda/bin/activate root
+py35 環境を再度アクティブ化するには:
 
-Python 2.7 は、 */anaconda/bin*にインストールされています。
+    source activate py35
 
-Python 3.5 conda 環境をアクティブ化するには、シェルで次のコマンドを実行します。
+シェルで「 **python** 」と入力するだけで、Python の対話型セッションを呼び出すことができます。 
 
-    source /anaconda/bin/activate py35
+```conda``` または ````pip```` を使って追加の Python ライブラリをインストールします。 PIP の場合、既定値が必要ないときは、最初に正しい環境をアクティブ化します。
 
+    source activate root
+    pip install <package>
 
-Python 3.5 は、 */anaconda/envs/py35/bin*にインストールされています。
+または PIP への完全なパスを指定します。
 
-シェルで「 **python** 」と入力するだけで、Python の対話型セッションを呼び出すことができます。 グラフィカル インターフェイスを使用している場合や X11 転送を設定している場合は、「**pycharm**」と入力して PyCharm Python IDE を起動します。
+    /anaconda/bin/pip install <package>
+    
+Conda の場合は、常に環境名 (_py35_ または _root_) を指定する必要があります。
 
-追加の Python ライブラリをインストールするには、sudo 権限で ```conda``` または ````pip```` コマンドを実行し、Python パッケージ マネージャー (conda または pip) の完全パスを指定して適切な Python 環境にインストールする必要があります。 例: 
+    conda install <package> -n py35
 
-    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
-
+グラフィカル インターフェイスを使用している場合や X11 転送を設定している場合は、「**pycharm**」と入力して PyCharm Python IDE を起動します。 既定のテキスト エディターを使用できます。 また、Anaconda Python ディストリビューションにバンドルされている Spyder (Python IDE) を使用することもできます。 Spyder を使用するには、グラフィカル デスクトップまたは X11 転送が必要です。 Spyder へのショートカットは、グラフィカル デスクトップに用意されています。
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
 Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter Notebook にも付属しています。 Jupyter Notebook には JupyterHub からアクセスします。 ローカルの Linux ユーザー名とパスワードを使用してサインインします。
@@ -312,7 +327,7 @@ VM には、次の Azure ツールがインストールされています。
 [Azure ポータル](https://portal.azure.com) には、プレインストールされている Firefox ブラウザーからアクセスできます。 Azure ポータルでは、Azure リソースを作成、管理、監視できます。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Azure Machine Learning は、予測分析ソリューションを構築、デプロイ、共有できる、完全に管理されたクラウド サービスです。 実験やモデルは、Azure Machine Learning Studio で作成します。 Azure Machine Learning Studio にアクセスするには、データ サイエンス仮想マシン上の Web ブラウザーから [Microsoft Azure Machine Learning](https://studio.azureml.net)にアクセスします。
+Azure Machine Learning は、予測分析ソリューションを構築、デプロイ、共有できる、フル マネージドのクラウド サービスです。 実験やモデルは、Azure Machine Learning Studio で作成します。 Azure Machine Learning Studio にアクセスするには、データ サイエンス仮想マシン上の Web ブラウザーから [Microsoft Azure Machine Learning](https://studio.azureml.net)にアクセスします。
 
 Azure Machine Learning Studio にサインインすると、実験キャンバスにアクセスできるようになります。実験キャンバスでは、機械学習アルゴリズムの論理フローを作成できます。 また、Azure Machine Learning でホストされている Jupyter Notebook にアクセスし、Machine Learning Studio 内の実験をシームレスに操作することもできます。 作成した機械学習モデルを Web サービス インターフェイスにラップすることで、モデルを運用可能な状態にすることができます。 これにより、任意の言語で記述されたクライアントで、機械学習モデルから予測を呼び出すことができます。 詳細については、[Machine Learning のドキュメント](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 
@@ -395,17 +410,17 @@ Rattle を実行するには、グラフィカル デスクトップのサイン
 > 
 > 
 
-1. **[実行]**をクリックします。
-2. サンプルの天候データセットを使用するかどうかをたずねるダイアログが表示されます。 **[Yes (はい)]** をクリックして、サンプルを読み込みます。
-3. **[Model (モデル)]** タブをクリックします。
-4. **[Execute (実行)]** をクリックして、デシジョン ツリーを作成します。
-5. **[Draw (表示)]** をクリックして、デシジョン ツリーを表示します。
-6. **[Forest (フォレスト)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、ランダム フォレストを作成します。
-7. **[Evaluate (評価)]** タブをクリックします。
-8. **[Risk (リスク)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、2 つのリスク (累積) パフォーマンス プロットを表示します。
-9. **[Log (ログ)]** タブをクリックして、これまでの操作の生成済み R コードを表示します 
+1. **[実行]** をクリックします。
+1. サンプルの天候データセットを使用するかどうかをたずねるダイアログが表示されます。 **[Yes (はい)]** をクリックして、サンプルを読み込みます。
+1. **[Model (モデル)]** タブをクリックします。
+1. **[Execute (実行)]** をクリックして、デシジョン ツリーを作成します。
+1. **[Draw (表示)]** をクリックして、デシジョン ツリーを表示します。
+1. **[Forest (フォレスト)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、ランダム フォレストを作成します。
+1. **[Evaluate (評価)]** タブをクリックします。
+1. **[Risk (リスク)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、2 つのリスク (累積) パフォーマンス プロットを表示します。
+1. **[Log (ログ)]** タブをクリックして、これまでの操作の生成済み R コードを表示します 
    (Rattle の現在のリリースにはバグがあるため、ログのテキストの *Export this log ...* の前に *#* 文字を挿入する必要があります)。
-10. **[Export (エクスポート)]** ボタンをクリックして、R スクリプト ファイルを *weather_script.R* という名前でホーム フォルダーに保存します。
+1. **[Export (エクスポート)]** ボタンをクリックして、R スクリプト ファイルを *weather_script.R* という名前でホーム フォルダーに保存します。
 
 Rattle と R を終了できます。これで、生成された R スクリプトを変更することも、そのまま使用することもできます。スクリプトは、いつでも実行して、Rattle UI 内で実行されたすべての操作を繰り返すことができます。 これは、特に R の初心者にとって簡単な方法です。この方法では、シンプルなグラフィカル インターフェイスで分析と機械学習をすばやく実行することができ、変更または学習する R のコードを自動的に生成できます。
 
@@ -414,6 +429,6 @@ Rattle と R を終了できます。これで、生成された R スクリプ�
 
 * チュートリアル「[Data science on the Data Science Virtual Machine for Linux](linux-dsvm-walkthrough.md)」(Linux データ サイエンス仮想マシンでのデータ サイエンス) では、ここでプロビジョニングされた Linux データ サイエンス VM を使用して、一般的なデータ サイエンス タスクをいくつか実行する方法を示します。 
 * この記事で説明しているツールを試して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを確認します。 VM にインストールされているツールの基本的な概要と詳細情報を入手できる場所は、仮想マシン内のシェルで *dsvm-more-info* を実行して確認することもできます。  
-* [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
-* [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。
+* [Team Data Science Process](https://aka.ms/tdsp)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
+* Azure AI サービスを使用する機械学習とデータ分析のサンプルについては、[Azure AI Gallery](https://gallery.azure.ai/) を参照してください。
 

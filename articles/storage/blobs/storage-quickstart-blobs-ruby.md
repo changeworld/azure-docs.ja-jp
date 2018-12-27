@@ -1,19 +1,19 @@
 ---
-title: Azure クイック スタート - Ruby を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs
-description: このクイック スタートでは、ストレージ アカウントおよびコンテナーを作成します。 その後、Ruby 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
+title: Azure クイック スタート - Ruby を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
+description: このクイック スタートでは、ストレージ アカウントとコンテナーをオブジェクト (BLOB) ストレージ内に作成します。 その後、Ruby 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: 493da815b670c15bb892fa0be750c684cab70cb9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f6a163b151a6b9066ea58c5834204ed54e51cfc2
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711227"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>クイック スタート: Ruby を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -21,18 +21,17 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、以下が必要です。 
-* [Ruby](https://www.ruby-lang.org/en/downloads/) のインストール
-* rubygem パッケージを使用して、[Ruby 向けの Azure Storage ライブラリ](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage#configure-your-application-to-access-storage)をインストールします。 
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-```
-gem install azure-storage-blob
-```
+次の追加の前提条件がインストールされていることを確認してください。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+* [Ruby](https://www.ruby-lang.org/en/downloads/)
+* [Ruby 向けの Azure Storage ライブラリ](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage#configure-your-application-to-access-storage) (rubygem パッケージを使用) 
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
-
+    ```
+    gem install azure-storage-blob
+    ```
+    
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 このクイックスタートで使う[サンプル アプリケーション](https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git)は、基本的な Ruby アプリケーションです。  
 

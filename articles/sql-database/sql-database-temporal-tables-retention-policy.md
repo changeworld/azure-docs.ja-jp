@@ -2,18 +2,22 @@
 title: リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理 | Microsoft Docs
 description: 一時的なリテンション ポリシーを使用して、履歴データを管理する方法について説明します。
 services: sql-database
-author: bonova
-manager: craigg
 ms.service: sql-database
-ms.custom: develop databases
-ms.topic: article
-ms.date: 10/12/2016
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: 36ce6889cccbf5ae7df519c5c73846f12eed4a08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: f339cadc63d5e5cd934d07e7b0fffc6342ca04c7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159102"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理
 特に履歴データを長期間保持する場合に、テンポラル テーブルは通常のテーブルよりもデータベースのサイズの増大に大きく影響することがあります。 したがって、履歴データのリテンション ポリシーは、あらゆるテンポラル テーブルのライフサイクルの計画と管理において重要な要素となります。 Azure SQL Database のテンポラル テーブルには、こういったタスクの実行に役立つ、使いやすい保持メカニズムが備わっています。
@@ -102,7 +106,7 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 ## <a name="how-sql-database-deletes-aged-rows"></a>SQL Database によって期限切れの行が削除されるしくみ
 クリーンアップ プロセスは、履歴テーブルのインデックスのレイアウトに依存します。 *クラスター化されたインデックスを持つ履歴テーブル (B ツリーまたは列ストア) のみに有限のリテンション ポリシーを構成する*ことが重要です。 有限のリテンション期間を持つすべてのテンポラル テーブルに対して、期限切れのデータのクリーンアップを実行するバックグラウンド タスクが作成されます。
-行ストア (B ツリー) のクラスター化されたインデックスのクリーンアップ ロジックでは、よりサイズの小さなまとまり (最大 10K) で期限切れの行が削除され、データベース ログや I/O サブシステムへの負荷が軽減されます。 クリーンアップ ロジックでは必須の B ツリー インデックスが使用されますが、リテンション期間を過ぎた行の削除の順序は必ずしも保証されません。 そのため、*アプリケーションではクリーンアップの順序に依存関係を持たないようにしてください*。
+行ストア (B ツリー) のクラスター化されたインデックスのクリーンアップ ロジックでは、よりサイズの小さなまとまり (最大 10K) で期限切れの行が削除され、データベース ログや IO サブシステムへの負荷が軽減されます。 クリーンアップ ロジックでは必須の B ツリー インデックスが使用されますが、リテンション期間を過ぎた行の削除の順序は必ずしも保証されません。 そのため、*アプリケーションではクリーンアップの順序に依存関係を持たないようにしてください*。
 
 クラスター化された列ストアのクリーンアップ タスクでは[行グループ](https://msdn.microsoft.com/library/gg492088.aspx)(通常は、1 グループに 100 万行が含まれます)全体が一度に削除されるため 、特に、履歴データが頻繁に生成されるような場合に効果的です。
 

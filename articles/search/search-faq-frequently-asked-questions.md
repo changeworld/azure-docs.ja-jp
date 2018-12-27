@@ -1,19 +1,19 @@
 ---
 title: Azure Search についてよく寄せられる質問 (FAQ) | Microsoft Docs
 description: Microsoft Azure Search サービスについてよく寄せられる質問とその回答が掲載されています
-services: search
 author: HeidiSteen
-manager: jhubbard
+manager: cgronlun
+services: search
 ms.service: search
-ms.technology: search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
-ms.openlocfilehash: f61fe2930bc70e800e5d79773e0de6827621e845
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 1491fdb0f208100619e569f9a74d5e697a0065a6
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841679"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search - よく寄せられる質問 (FAQ)
 
@@ -46,6 +46,12 @@ Azure Search は、複数のデータ ソース、[多数の言語の言語分�
 [インデックス定義はいつでも取得できます](https://docs.microsoft.com/rest/api/searchservice/get-index)が、クラウドで実行されている*設定済み*インデックスのローカル システムにダウンロードするため、または別の Azure Search サービスに移行するためのインデックスの抽出、スナップショット、またはバックアップ/復元機能はありません。
 
 インデックスは、作成したコードから構築および設定され、クラウド内の Azure Search でのみ実行されます。 通常、インデックスを別のサービスに移行するには、新しいエンドポイントを使用するようにコードを編集してから、インデックス作成を再実行します。 インデックスのスナップショットまたはバックアップを作成する機能が必要な場合は、[ユーザーの声](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index)で投票してください。
+
+### <a name="can-i-restore-my-index-or-service-once-it-is-deleted"></a>削除されたインデックスまたはサービスは復元できますか?
+
+いいえ、インデックスとサービスは復元できません。 Azure Search インデックスを削除した場合、この操作は最終的なものであり、インデックスを復旧することはできません。 Azure Search サービスを削除すると、サービス内のすべてのインデックスが完全に削除されます。 また、1 つ以上の Azure Search サービスを含む Azure リソース グループを削除すると、すべてのサービスが完全に削除されます。  
+
+インデックス、インデクサー、データ ソース、スキルセットなどのリソースを復元するには、コードからそれらを再作成する必要があります。 インデックスの場合、外部ソースからデータのインデックスを再作成する必要があります。 そのため、元のデータのマスター コピーまたはバックアップを、Azure SQL Database や Cosmos DB などの別のデータ ストアに保持することを強くお勧めします。
 
 ### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>SQL データベース レプリカからインデックスを作成することはできますか (対象: [Azure SQL Database インデクサー](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
 

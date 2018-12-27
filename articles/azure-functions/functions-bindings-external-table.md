@@ -1,24 +1,21 @@
 ---
-title: "Azure Functions の外部テーブル バインディング (試験段階)"
-description: "Azure Functions での外部テーブル バインディングの使用"
+title: Azure Functions の外部テーブル バインディング (試験段階)
+description: Azure Functions での外部テーブル バインディングの使用
 services: functions
-documentationcenter: 
-author: alexkarcher-msft
-manager: cfowler
-editor: 
-ms.assetid: 
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+author: craigshoemaker
+manager: jeconnoc
+ms.assetid: ''
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2017
-ms.author: alkarche
-ms.openlocfilehash: 8a4358fa67e45d0b7a2df1519d649099b5ef5850
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.author: cshoe
+ms.openlocfilehash: 5566ea8b21682c5023afc4af357e1a80e1d37384
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248473"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Azure Functions の外部テーブル バインディング (試験段階)
 
@@ -179,7 +176,7 @@ Google ドキュメントでこの例で使用する表を作成するには、`
 
 次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | [説明]|
+|function.json のプロパティ | 説明|
 |---------|----------------------|
 |**type** | `apiHubTable` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -194,7 +191,7 @@ Google ドキュメントでこの例で使用する表を作成するには、`
 |コネクタ|Dataset|テーブル|
 |:-----|:---|:---| 
 |**SharePoint**|サイト|SharePoint リスト
-|**SQL**|データベース|テーブル 
+|**SQL**|Database|テーブル 
 |**Google シート**|スプレッドシート|ワークシート 
 |**Excel**|Excel ファイル|シート 
 

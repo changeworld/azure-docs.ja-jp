@@ -1,28 +1,24 @@
 ---
-title: "Windows での Azure Files に関する問題のトラブルシューティング | Microsoft Docs"
-description: "Windows での Azure Files に関する問題のトラブルシューティング"
+title: Windows での Azure Files に関する問題のトラブルシューティング | Microsoft Docs
+description: Windows での Azure Files に関する問題のトラブルシューティング
 services: storage
-documentationcenter: 
-author: genlin
-manager: willchen
-editor: na
+author: jeffpatt24
 tags: storage
 ms.service: storage
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
-ms.author: genli
-ms.openlocfilehash: 073d163e139c9fd400e4b3177c26d4ddb6228ed0
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.date: 10/30/2018
+ms.author: jeffpatt
+ms.component: files
+ms.openlocfilehash: 0496d9b3fde8b0194ddf57b3bbfec98eb7fda7fe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250851"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
-この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有の トラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
+この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)  を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有のトラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
 
 
 <a id="error53-67-87"></a>
@@ -36,20 +32,21 @@ ms.lasthandoff: 02/27/2018
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>原因 1: 通信チャネルが暗号化されていない
 
-通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じデータセンターから行われていない場合、セキュリティ上の理由により、Azure ファイル共有への接続がブロックされます。 ユーザーのクライアント OS が SMB 暗号化をサポートしている場合に限り、通信チャネルの暗号化を利用できます。
+通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じデータセンターから行われていない場合、セキュリティ上の理由により、Azure ファイル共有への接続がブロックされます。 ストレージ アカウントで [[安全な転送が必須]](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が有効になっている場合は、同じデータセンター内の暗号化されていない接続もブロックされる可能性があります。 ユーザーのクライアント OS が SMB 暗号化をサポートしている場合に限り、通信チャネルの暗号化を利用できます。
 
 Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号化をサポートしている SMB 3.0 を含む要求をネゴシエートできます。
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
-以下のいずれかのクライアントから接続します。
+1. ストレージ アカウントで [[安全な転送が必須]](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が無効になっていることを確認します。
+2. 以下のいずれかのクライアントから接続します。
 
-- バージョンの要件 (Windows 8 または Windows Server 2012 以降であること) を満たしている
-- 同じデータセンター内の仮想マシンから、Azure ファイル共有のために使用される Azure ストレージ アカウントとして接続している
+    - バージョンの要件 (Windows 8 または Windows Server 2012 以降であること) を満たしている
+    - 同じデータセンター内の仮想マシンから、Azure ファイル共有のために使用される Azure ストレージ アカウントとして接続している
 
 ### <a name="cause-2-port-445-is-blocked"></a>原因 2: ポート 445 がブロックされている
 
-ポート 445 から Azure Files データセンターへの送信方向の通信がブロックされている場合、システム エラー 53 またはシステム エラー 67 が発生することがあります。 ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認するには、[TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) を参照してください。
+ポート 445 から Azure Files データセンターへの送信方向の通信がブロックされている場合、システム エラー 53 またはシステム エラー 67 が発生することがあります。 ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認するには、[TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) を参照してください。
 
 これが "システム エラー 53" メッセージの原因であるかどうかを把握するために、Portqry を使用して、TCP:445 エンドポイントを照会できます。 TCP:445 エンドポイントがフィルター処理済みとして表示される場合、TCP ポートがブロックされています。 クエリの使用例を次に示します。
 
@@ -97,7 +94,7 @@ IT 部門と連携して、ポート 445 の送信方向の通信を [Azure の 
 
 Azure のファイル サービスにファイルを転送しようとした場合に、パフォーマンスが低下することがあります。
 
-- 特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MB を使用することをお勧めします。
+- 特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MiB を使用することをお勧めします。
 -   書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題がない場合は、書き込みごとにサイズを増やすのではなく、事前にファイル サイズを設定します。
 -   次のように適切なコピー方法を使用します。
     -   2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
@@ -192,6 +189,24 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
   - Value = 1
 
 レジストリ キーの設定は、ネットワーク共有に対するすべてのコピー操作に影響しますのでご注意ください。
+
+## <a name="slow-enumeration-of-files-and-folders"></a>ファイルとフォルダーの列挙が遅い
+
+### <a name="cause"></a>原因
+
+この問題は、クライアント コンピューターに大規模なディレクトリに対応するための十分なキャッシュがない場合に発生することがあります。
+
+### <a name="solution"></a>解決策
+
+この問題を解決するには、**DirectoryCacheEntrySizeMax** レジストリ値を、クライアント コンピューターでより大規模なディレクトリ一覧のキャッシュが可能になるように調整します。
+
+- 場所: HKLM\System\CCS\Services\Lanmanworkstation\Parameters
+- 値の名前: DirectoryCacheEntrySizeMax 
+- 値の型: DWORD
+ 
+ 
+たとえば、これを 0x100000 に設定して、パフォーマンスが向上するかどうかを確認することができます。
+
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ支援が必要な場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

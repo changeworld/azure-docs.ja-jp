@@ -1,12 +1,9 @@
 ---
-title: "Azure Traffic Manager のパフォーマンスに関する考慮事項 | Microsoft Docs"
-description: "Traffic Manager でのパフォーマンス、および Traffic Manager を使用したときの Web サイトのパフォーマンスをテストする方法について説明します。"
+title: Azure Traffic Manager のパフォーマンスに関する考慮事項 | Microsoft Docs
+description: Traffic Manager でのパフォーマンス、および Traffic Manager を使用したときの Web サイトのパフォーマンスをテストする方法について説明します。
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: 
-ms.assetid: 3ba5dfa1-2922-43f1-9a23-d06969c4a516
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: f686685138625a53971f1fc5fc754fd22c9d67b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1bf2222e09644520bbfc6c5424c7f29d05b3c799
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257699"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager のパフォーマンスに関する考慮事項
 
@@ -76,13 +74,13 @@ Traffic Manager プロファイルの動作とパフォーマンスを理解す�
 
     このサイトでは CNAME や A レコードなど DNS のさらに詳細な情報が表示されます。 オプションで [Colorize output] と [Stats] を選択し、[Nameservers] で [All] を選択してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
 
 [Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)
 
-[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
+[Traffic Manager の操作 (REST API リファレンス)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
+[Azure Traffic Manager コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager)
 

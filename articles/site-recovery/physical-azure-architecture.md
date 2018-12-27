@@ -1,18 +1,20 @@
 ---
-title: "Azure Site Recovery での物理サーバーから Azure へのレプリケーション アーキテクチャ | Microsoft Docs"
-description: "この記事では、Azure Site Recovery サービスを使用してオンプレミスの物理サーバー を Azure にレプリケートするときに使用されるコンポーネントとアーキテクチャの概要を説明します"
+title: Azure Site Recovery を使用して物理サーバーを Azure にディザスター リカバリーするためのアーキテクチャ | Microsoft Docs
+description: この記事では、Azure Site Recovery サービスを使用してオンプレミスの物理サーバー を Azure にディザスター リカバリーするときに使用されるコンポーネントとアーキテクチャの概要を説明します。
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/09/2018
+ms.topic: conceptual
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: a8af2ee4a32925603d24aee2403ab504a0ca05a8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9dd60e31867e874ba59a6e2084714a22b661afdd
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213051"
 ---
-# <a name="physical-server-to-azure-replication-architecture"></a>物理サーバーから Azure へのレプリケーション アーキテクチャ
+# <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理サーバーの Azure へのディザスター リカバリー アーキテクチャ
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスのサイトと Azure 間で物理 Windows サーバーおよび Linux サーバーをレプリケート、フェールオーバー、および復旧する場合に使用されるアーキテクチャとプロセスについて説明します。
 

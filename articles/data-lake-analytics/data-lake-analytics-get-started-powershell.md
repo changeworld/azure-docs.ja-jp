@@ -1,24 +1,20 @@
 ---
-title: Azure PowerShell で Azure Data Lake Analytics の使用を開始する | Microsoft Docs
-description: 'Azure PowerShell を使用して Data Lake Analytics アカウントを作成し、U-SQL で Data Lake Analytics ジョブを作成して、ジョブを送信します。 '
+title: Azure PowerShell で Azure Data Lake Analytics の使用を開始する
+description: Azure PowerShell を使って Azure Data Lake Analytics アカウントを作成し、U-SQL ジョブを送信します。
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: saveenr
-editor: cgronlun
-ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/04/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: f37a4563a758d442760f4a6be3c11bb9a9ddfc28
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: jasonwhowell
+ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
+ms.topic: conceptual
+ms.date: 05/04/2017
+ms.openlocfilehash: 4b4fa05164db402122efc745302dffe8c130b97b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048070"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -39,13 +35,13 @@ Azure PowerShell を使って Azure Data Lake Analytics アカウントを作成
 サブスクリプション名でログインするには:
 
 ```
-Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
+Connect-AzureRmAccount -SubscriptionName "ContosoSubscription"
 ```
 
 サブスクリプション名の代わりに、サブスクリプション ID を使用してログインすることもできます。
 
 ```
-Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Connect-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 成功した場合、このコマンドの出力は、次のテキストのようになります。
@@ -96,34 +92,33 @@ OUTPUT @a
 "@
 ```
 
-このスクリプトを送信します。
+`Submit-AdlJob` コマンドレットと `-Script` パラメーターでスクリプト テキストを送信します。
 
 ```
-$job = Submit-AdlJob -Account $adla -Name "My Job" –Script $script
+$job = Submit-AdlJob -Account $adla -Name "My Job" �Script $script
 ```
 
-または、スクリプトをファイルとして保存し、次のコマンドで送信できます。
+別の方法として、`-ScriptPath` パラメーターを使用してスクリプト ファイルを送信することもできます。
 
 ```
 $filename = "d:\test.usql"
 $script | out-File $filename
-$job = Submit-AdlJob -Account $adla -Name "My Job" –ScriptPath $filename
+$job = Submit-AdlJob -Account $adla -Name "My Job" �ScriptPath $filename
 ```
 
-
-特定のジョブの状態を取得します。 ジョブが完了するまで、このコマンドレットを使い続けます。
+`Get-AdlJob` でジョブの状態を取得します。 
 
 ```
 $job = Get-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-ジョブが完了するまで Get-AdlAnalyticsJob を何度も呼び出す代わりに、Wait-AdlJob コマンドレットを使用することができます。
+ジョブが完了するまで Get-AdlJob を何度も呼び出すのではなく、`Wait-AdlJob` コマンドレットを使用します。
 
 ```
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-出力ファイルをダウンロードします。
+`Export-AdlStoreItem` を使用して出力ファイルをダウンロードします。
 
 ```
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"

@@ -3,31 +3,28 @@ title: Azure Data Factory で Spark アクティビティを使用してデー�
 description: Spark アクティビティを使用して、Azure Data Factory パイプラインから Spark プログラムを実行することによってデータを変換する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 3b877a9ae8fe58314171c8b556a7005e98dc3a33
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: conceptual
+ms.date: 05/31/2018
+ms.author: douglasl
+ms.openlocfilehash: abe2fabc505f94f19d4b15a406fc59bf6d6e7ac1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050337"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory での Spark アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-spark.md)
-> * [バージョン 2 - プレビュー](transform-data-using-spark.md)
+> * [Version 1](v1/data-factory-spark.md)
+> * [現在のバージョン](transform-data-using-spark.md)
 
 Data Factory [パイプライン](concepts-pipelines-activities.md)の Spark アクティビティでは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで Spark プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 オンデマンドの Spark のリンクされたサービスを使用すると、Data Factory は自動的に Spark クラスターを作成し、ジャストインタイムでデータを処理し、処理が完了するとクラスターを削除します。 
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の Spark アクティビティ](v1/data-factory-spark.md)を参照してください。
 
 > [!IMPORTANT]
 > Spark アクティビティでは、Azure Data Lake Store をプライマリ ストレージとして使用する HDInsight Spark クラスターはサポートされません。
@@ -51,7 +48,6 @@ Spark アクティビティのサンプルの JSON 定義を次に示します�
         },
         "rootPath": "adfspark\\pyFiles",
         "entryFilePath": "test.py",
-        "arguments": [ "arg1", "arg2" ],
         "sparkConfig": {
             "ConfigItem1": "Value"
         },
@@ -65,15 +61,15 @@ Spark アクティビティのサンプルの JSON 定義を次に示します�
 
 次の表で、JSON 定義で使用される JSON プロパティについて説明します。
 
-| プロパティ              | [説明]                              | 必須 |
+| プロパティ              | 説明                              | 必須 |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | パイプラインのアクティビティの名前。    | [はい]      |
-| 説明           | アクティビティの動作を説明するテキスト。  | いいえ        |
-| 型                  | Spark アクティビティの場合、アクティビティの種類は HDInsightSpark です。 | [はい]      |
-| 既定のコンテナー     | Spark プログラムが実行されている HDInsight Spark のリンクされたサービスの名前。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
+| description            | アクティビティの動作を説明するテキスト。  | いいえ        |
+| type                  | Spark アクティビティの場合、アクティビティの種類は HDInsightSpark です。 | [はい]      |
+| linkedServiceName     | Spark プログラムが実行されている HDInsight Spark のリンクされたサービスの名前。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
 | SparkJobLinkedService | Spark ジョブ ファイル、依存関係、およびログが含まれる Azure Storage のリンクされたサービス。  指定しない場合は、HDInsight クラスターに関連付けられているストレージが使用されます。 このプロパティの値には、Azure Storage のリンクされたサービスのみを指定できます。 | いいえ        |
 | rootPath              | Azure BLOB コンテナーと Spark ファイルを含むフォルダー。 ファイル名は大文字と小文字が区別されます。 このフォルダーの構造の詳細については、「フォルダー構造」(次のセクション) をご覧ください。 | [はい]      |
-| entryFilePath         | Spark コード/パッケージのルート フォルダーへの相対パス。 | [はい]      |
+| entryFilePath         | Spark コード/パッケージのルート フォルダーへの相対パス。 エントリ ファイルは、Python ファイルまたは .jar ファイルのいずれかにする必要があります。 | [はい]      |
 | className             | アプリケーションの Java/Spark のメイン クラス      | いいえ        |
 | arguments             | Spark プログラムのコマンドライン引数の一覧です。 | いいえ        |
 | proxyUser             | Spark プログラムの実行を偽装する借用すユーザー アカウント | いいえ        |
@@ -85,7 +81,7 @@ Spark ジョブは、Pig/Hive ジョブよりも拡張性に優れています�
 
 HDInsight のリンクされたサービスによって参照される Azure Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Azure Blob Storage のフォルダー構造を次に示します。     
 
-| パス                  | [説明]                              | 必須 | type   |
+| パス                  | 説明                              | 必須 | type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (ルート)            | ストレージのリンクされたサービスにおける Spark ジョブのルート パス | [はい]      | フォルダー |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス | [はい]      | ファイル   |

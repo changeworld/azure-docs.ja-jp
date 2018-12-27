@@ -1,25 +1,19 @@
 ---
-title: "Azure Analysis Services チュートリアル - レッスン 7: 主要業績評価指標を作成する |Microsoft Docs"
-description: "Azure Analysis Services チュートリアル プロジェクトで主要業績評価指標を作成する方法を説明します｡"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services チュートリアル - レッスン 7: 主要業績評価指標を作成する |Microsoft Docs'
+description: Azure Analysis Services チュートリアル プロジェクトで主要業績評価指標を作成する方法を説明します｡
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 8f25773541deba2a94d3adc0c9b61c1b90a90aa6
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 1e7fc5cd684610a5d96b5986f5c169741055c9b8
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426820"
 ---
 # <a name="create-key-performance-indicators"></a>主要業績評価指標を作成する
 
@@ -48,7 +42,7 @@ ms.lasthandoff: 01/09/2018
   
 4.  メジャー グリッドで **InternetCurrentQuarterSalesPerformance** > **Create KPI** を右クリックします。   
   
-5.  [Key Performance Indicator (KPI)] ダイアログ ボックスの**[Target]** で､**Absolute Value** を選択し､**1.1** と入力します｡  
+5.  [Key Performance Indicator (KPI)] ダイアログ ボックスの **[Target]** で､**Absolute Value** を選択し､**1.1** と入力します｡  
   
 7.  左側 (低) のスライダー フィールドに **1** を入力し､右側 (高) のスライダー フィールドに **1.07** を入力します｡  
   
@@ -75,7 +69,7 @@ ms.lasthandoff: 01/09/2018
  
 3.  Right-click **InternetCurrentQuarterMarginPerformance** > **Create KPI** を右クリックします｡  
   
-4.  [Key Performance Indicator (KPI)] ダイアログ ボックスの**[Target]** で､**Absolute Value** を選択し､**1.25** と入力します｡   
+4.  [Key Performance Indicator (KPI)] ダイアログ ボックスの **[Target]** で､**Absolute Value** を選択し､**1.25** と入力します｡   
   
 5.  左側 (低) のスライダー フィールドでそのフィールドの値が **0.8** になるまでスライドし､右側 (高) のスライダー フィールドでフィールドの値が **1.03** になるまでスライドしします｡  
   

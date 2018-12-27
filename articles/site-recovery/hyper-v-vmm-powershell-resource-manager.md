@@ -1,20 +1,21 @@
 ---
-title: PowerShell を使用して Virtual Machine Manager クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする (Azure Resource Manager) | Microsoft Docs
-description: PowerShell (Resource Manager) を使用して Virtual Machine Manager クラウド内の Hyper-V VM をセカンダリ Virtual Machine Manager サイトにレプリケートする方法について説明します。
+title: Azure Site Recovery と PowerShell を使用して、VMM クラウド内の Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する | Microsoft Docs
+description: Azure Site Recovery と PowerShell を使用して、VMM クラウド内の Hyper-V VM のセカンダリ VMM サイトへのディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
-author: sujaytalasila
+author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: ea4c2ed287619b92dba1b9b966cc0d52e0eb89c5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f0ce189ebbec6991a1ec316219d45b96cc85f202
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845945"
 ---
-# <a name="replicate-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して Hyper-V VM をセカンダリ サイトへレプリケートする
+# <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して、Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、System Center Virtual Machine Manager クラウドの Hyper-V VM をセカンダリ オンプレミス サイトの Virtual Machine Manager クラウドにレプリケートする手順を自動化する方法について説明します。
 
@@ -36,16 +37,16 @@ ms.lasthandoff: 03/16/2018
 
 次のように Virtual Machine Manager を準備します。
 
-* ソースおよびターゲット Virtual Machine Manager サーバー上に [Virtual Machine Manager 論理ネットワーク](https://docs.microsoft.com/system-center/vmm/network-logical)があることを確認します。
+* ソースおよびターゲットの Virtual Machine Manager サーバー上にそれぞれ [Virtual Machine Manager 論理ネットワーク](https://docs.microsoft.com/system-center/vmm/network-logical)があることを確認します。
 
     - ソース サーバー上の論理ネットワークは、Hyper-V ホストが配置されているソース クラウドと関連付けられている必要があります。
     - ターゲット サーバーの論理ネットワークは、ターゲット クラウドと関連付けられている必要があります。
-* ソースおよびターゲット Virtual Machine Manager サーバー上に [VM ネットワーク](https://docs.microsoft.com/system-center/vmm/network-virtual)があることを確認します。 VM ネットワークは、各場所の論理ネットワークにリンクされている必要があります。
+* ソースおよびターゲットの Virtual Machine Manager サーバー上にそれぞれ [VM ネットワーク](https://docs.microsoft.com/system-center/vmm/network-virtual)があることを確認します。 VM ネットワークは、各場所の論理ネットワークにリンクされている必要があります。
 * ソース Hyper-V ホスト上の VM をソース VM ネットワークに接続します。 
 
 ## <a name="prepare-for-powershell"></a>PowerShell の準備
 
-Azure PowerShell を使用する準備が整っていることを確認してください。
+Azure PowerShell を使用する準備が整っていることを確認します。
 
 - PowerShell を既に使用している場合は、バージョン 0.8.10 以降にアップグレードします。 PowerShell の設定方法については、[こちら](/powershell/azureps-cmdlets-docs)を参照してください。
 - PowerShell の設定と構成を完了したら、[サービス コマンドレット](/powershell/azure/overview)を確認します。
@@ -58,11 +59,11 @@ Azure PowerShell を使用する準備が整っていることを確認してく
         $Password = "<password>"
         $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
         $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
-        Login-AzureRmAccount #-Credential $Cred
+        Connect-AzureRmAccount #-Credential $Cred
 2. サブスクリプションとサブスクリプション ID の一覧を取得します。 Recovery Services コンテナーを作成するサブスクリプションの ID をメモします。 
 
         Get-AzureRmSubscription
-3. コンテナーに合わせてサブスクリプションを設定します。
+3. コンテナーのサブスクリプションを設定します。
 
         Set-AzureRmContext –SubscriptionID <subscriptionId>
 
@@ -70,9 +71,9 @@ Azure PowerShell を使用する準備が整っていることを確認してく
 1. Azure Resource Manager リソース グループを作成します (まだ存在しない場合)。
 
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
-2. 新しい Recovery Services コンテナーを作成します。 後ほど使用できるように、このコンテナー オブジェクトを変数に保存します。 
+2. 新しい Recovery Services コンテナーを作成します。 後ほど使用できるように、このコンテナー オブジェクトを変数に格納します。 
 
-        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
+        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    
     コンテナー オブジェクトは、作成後に Get-AzureRMRecoveryServicesVault コマンドレットを使用して取得できます。
 
@@ -126,7 +127,7 @@ Azure PowerShell を使用する準備が整っていることを確認してく
         $policyresult = New-AzureRmSiteRecoveryPolicy -Name $policyname -ReplicationProvider $RepProvider -ReplicationFrequencyInSeconds $Replicationfrequencyinseconds -RecoveryPoints $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours $AppConsistentSnapshotFrequency -Authentication $AuthMode -ReplicationPort $AuthPort -ReplicationMethod $InitialRepMethod
 
     > [!NOTE]
-    > Virtual Machine Manager クラウドには、複数バージョンの Windows Server を実行する Hyper-V ホストが含まれる可能性がありますが、レプリケーション ポリシーはオペレーティング システムの特定のバージョン用です。 さまざまなオペレーティング システムでさまざまなホストを実行している場合は、システムごとに個別のレプリケーション ポリシーを作成します。 たとえば、Windows Server 2012 で実行されているホストが 5 台、Windows Server 2012 R2 で実行されているホストが 3 台ある場合は、2 つのレプリケーション ポリシーを作成します。 オペレーティング システムの種類ごとに 1 つずつ作成します。
+    > Virtual Machine Manager クラウドには、複数バージョンの Windows Server を実行する Hyper-V ホストを含めることができますが、レプリケーション ポリシーはオペレーティング システムの特定のバージョン用です。 さまざまなオペレーティング システムでさまざまなホストを実行している場合は、システムごとに個別のレプリケーション ポリシーを作成してください。 たとえば、Windows Server 2012 で実行されているホストが 5 台、Windows Server 2012 R2 で実行されているホストが 3 台ある場合は、2 つのレプリケーション ポリシーを作成します。 オペレーティング システムの種類ごとに 1 つずつ作成します。
 
 2. プライマリ保護コンテナー (プライマリ Virtual Machine Manager クラウド) と復旧保護コンテナー (復旧 Virtual Machine Manager クラウド) を取得します。
 

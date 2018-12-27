@@ -1,24 +1,25 @@
 ---
-title: "Azure Service Fabric のエンティティの正常性の集計を確認する方法 | Microsoft Docs"
-description: "正常性クエリと一般クエリを通じて、Azure Service Fabric のエンティティの正常性の集計をクエリ、表示、評価する方法について説明します。"
+title: Azure Service Fabric のエンティティの正常性の集計を確認する方法 | Microsoft Docs
+description: 正常性クエリと一般クエリを通じて、Azure Service Fabric のエンティティの正常性の集計をクエリ、表示、評価する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fa34c52d-3a74-4b90-b045-ad67afa43fe5
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: e73da18ffe146d09b191f1ea5ad1772b36ad8947
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c6d5954ed3547666236130753dfd53d10475df43
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308990"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric の正常性レポートの確認
 Azure Service Fabric に正常性エンティティを使用する[正常性モデル](service-fabric-health-introduction.md)が導入されます。ここでは、システム コンポーネントやウォッチドッグで監視しているローカルの状態についてのレポートを確認できます。 すべての正常性データは[正常性ストア](service-fabric-health-introduction.md#health-store)によって集計され、エンティティが正常であるかどうかが判断されます。
@@ -31,7 +32,7 @@ Service Fabric には、エンティティの正常性の集計を取得する�
 * 正常性クエリ (PowerShell、API、または REST を使用)
 * 正常性をプロパティの 1 つとして取得するエンティティの一覧を返す一般クエリ (PowerShell、API、または REST を使用)
 
-これらのオプションについて、5 つのノードがあるローカル クラスターと [fabric:/WordCount アプリケーション](http://aka.ms/servicefabric-wordcountapp)を使用して説明します。 **fabric:/WordCount** アプリケーションには、既定のサービスとして `WordCountServiceType` というステートフル サービスと、`WordCountWebServiceType` というステートレス サービスの 2 つがあります。 ステートフル サービスと 1 つのパーティションについて、7 つのターゲット レプリカを必須にするように `ApplicationManifest.xml` を変更しました。 クラスターには 5 つのノードのみがあり、ターゲット数を下回っているため、システム コンポーネントからサービス パーティションについて警告が報告されます。
+これらのオプションについて、5 つのノードがあるローカル クラスターと [fabric:/WordCount アプリケーション](https://aka.ms/servicefabric-wordcountapp)を使用して説明します。 **fabric:/WordCount** アプリケーションには、既定のサービスとして `WordCountServiceType` というステートフル サービスと、`WordCountWebServiceType` というステートレス サービスの 2 つがあります。 ステートフル サービスと 1 つのパーティションについて、7 つのターゲット レプリカを必須にするように `ApplicationManifest.xml` を変更しました。 クラスターには 5 つのノードのみがあり、ターゲット数を下回っているため、システム コンポーネントからサービス パーティションについて警告が報告されます。
 
 ```xml
 <Service Name="WordCountService">
@@ -89,7 +90,7 @@ Service Fabric では、サポート対象の各 [エンティティ型](service
 クラスター エンティティの正常性を返し、アプリケーションとノード (クラスターの子) の正常性状態が含まれます。 次の内容を入力します。
 
 * [省略可能] ノードとクラスターのイベントを評価するために使用されるクラスターの正常性ポリシー。
-* [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー マップと正常性ポリシー。
+* [省略可能] アプリケーション マニフェストのポリシーをオーバーライドするために使用するアプリケーションの正常性ポリシー マップと正常性ポリシー。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定する、イベント、ノード、およびアプリケーションのフィルター。 すべてのイベント、ノード、およびアプリケーションは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
 * [省略可能] 正常性の統計情報を除外するフィルター。
 * [省略可能] 正常性の統計情報に fabric:/System 正常性の統計情報を含めるフィルター。 正常性の統計情報が除外されていない場合にのみ適用されます。 既定で、正常性の統計情報には、システム アプリケーションではなく、ユーザー アプリケーションの統計情報のみが含まれています。
@@ -232,7 +233,7 @@ ApplicationHealthStates :
 HealthEvents            : None
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 クラスターの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-node-health"></a>ノードの正常性の取得
@@ -301,14 +302,14 @@ _Node_1                     Ok
 _Node_0                     Ok
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 ノードの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-application-health"></a>アプリケーションの正常性の取得
 アプリケーション エンティティの正常性を返します。 デプロイされたアプリケーションとサービスの子の正常性状態が含まれます。 次の内容を入力します。
 
 * [必須] アプリケーションを識別するアプリケーション名 (URI)。
-* [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー。
+* [省略可能] アプリケーション マニフェストのポリシーをオーバーライドするために使用するアプリケーションの正常性ポリシー。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定する、イベント、サービス、およびデプロイされたアプリケーションのフィルター。 すべてのイベント、サービス、およびデプロイされたアプリケーションは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
 * [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、アプリケーションのすべての子 (サービス、パーティション、レプリカ、デプロイされたアプリケーション、デプロイされたサービス パッケージ) に関する ok、警告、エラーの数が含まれます。
 
@@ -447,14 +448,14 @@ DeployedApplicationHealthStates : None
 HealthEvents                    : None
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 アプリケーションの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-service-health"></a>サービスの正常性の取得
 サービス エンティティの正常性を返します。 パーティションの正常性状態が含まれます。 次の内容を入力します。
 
 * [必須] サービスを識別するサービス名 (URI)
-* [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー。
+* [省略可能] アプリケーション マニフェストのポリシーをオーバーライドするために使用するアプリケーションの正常性ポリシー。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定するイベントおよびパーティションのフィルター。 すべてのイベントおよびパーティションは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
 * [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、サービスのすべてのパーティションとレプリカに関する ok、警告、およびエラーの数が表示されます。
 
@@ -519,14 +520,14 @@ HealthStatistics      :
                         Partition             : 0 Ok, 1 Warning, 0 Error
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 サービスの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-partition-health"></a>パーティションの正常性の取得
 パーティション エンティティの正常性を返します。 レプリカの正常性状態が含まれます。 次の内容を入力します。
 
 * [必須] パーティションを識別するパーティション ID (GUID)。
-* [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー。
+* [省略可能] アプリケーション マニフェストのポリシーをオーバーライドするために使用するアプリケーションの正常性ポリシー。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定するイベントおよびレプリカのフィルター。 すべてのイベントおよびレプリカは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
 * [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、ok 状態、警告状態、およびエラー状態のレプリカ数が表示されます。
 
@@ -611,14 +612,14 @@ HealthStatistics      :
                         Replica               : 5 Ok, 0 Warning, 0 Error
 ```
 
-### <a name="rest"></a>REST ()
-パーティションの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+### <a name="rest"></a>REST
+パーティションの正常性を取得するには、[GET 要求](/rest/api/servicefabric/sfclient-api-getpartitionhealth)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-replica-health"></a>レプリカの正常性の取得
 ステートフル サービス レプリカまたはステートレス サービス インスタンスの正常性を返します。 次の内容を入力します。
 
 * [必須] レプリカを識別するパーティション ID (GUID) とレプリカ ID。
-* [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシーのパラメーター。
+* [省略可能] アプリケーション マニフェストのポリシーをオーバーライドするために使用するアプリケーションの正常性ポリシーのパラメーター。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定するイベントのフィルター。 すべてのイベントは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
 
 ### <a name="api"></a>API
@@ -654,14 +655,14 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 レプリカの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-deployed-application-health"></a>デプロイされたアプリケーションの正常性の取得
 ノード エンティティにデプロイされたアプリケーションの正常性を返します。 デプロイされたサービス パッケージの正常性状態が含まれます。 次の内容を入力します。
 
 * [必須] デプロイされたアプリケーションを識別するアプリケーション名 (URI) とノード名 (文字列)。
-* [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー。
+* [省略可能] アプリケーション マニフェストのポリシーをオーバーライドするために使用するアプリケーションの正常性ポリシー。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定する、イベントおよびデプロイされたサービス パッケージのフィルター。 すべてのイベントおよびデプロイされたサービス パッケージは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
 * [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、ok、警告、およびエラーの正常性状態のデプロイ済みサービス パッケージ数が表示されます。
 
@@ -713,14 +714,14 @@ HealthStatistics                   :
                                      DeployedServicePackage : 2 Ok, 0 Warning, 0 Error
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 デプロイされたアプリケーションの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-deployed-service-package-health"></a>デプロイされたサービス パッケージの正常性の取得
 デプロイされたサービス パッケージ エンティティの正常性を返します。 次の内容を入力します。
 
 * [必須] デプロイされたサービス パッケージを識別するアプリケーション名 (URI)、ノード名 (文字列)、サービス マニフェスト名 (文字列)。
-* [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー。
+* [省略可能] アプリケーション マニフェストのポリシーをオーバーライドするために使用するアプリケーションの正常性ポリシー。
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定するイベントのフィルター。 すべてのイベントは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
 
 ### <a name="api"></a>API
@@ -783,7 +784,7 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 デプロイされたサービス パッケージの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="health-chunk-queries"></a>正常性チャンク クエリ
@@ -810,7 +811,7 @@ HealthEvents               :
 クラスター エンティティの正常性を返します。これには、要求された子の階層的な正常性状態チャンクが含まれます。 次の内容を入力します。
 
 * [省略可能] ノードとクラスターのイベントを評価するために使用されるクラスターの正常性ポリシー。
-* [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー マップと正常性ポリシー。
+* [省略可能] アプリケーション マニフェストのポリシーをオーバーライドするために使用するアプリケーションの正常性ポリシー マップと正常性ポリシー。
 * [省略可能] 結果で返される対象のエントリを指定するノードとアプリケーションのフィルター。 フィルターは、複数のエンティティのうちの 1 つのエンティティまたはグループのみか、そのレベルのすべてのエンティティに適用されます。 フィルターの一覧には、一般的なフィルターを 1 つだけ含めることができるほか、特定の識別子に対応するフィルターを含めて、クエリによって返されるエンティティを絞り込むこともできます。 空の場合、既定では子は返されません。
   フィルターの詳細については、[NodeHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.nodehealthstatefilter) と [ApplicationHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthstatefilter) に関するページを参照してください。 アプリケーションのフィルターでは、子に対する高度なフィルターを再帰的に指定できます。
 
@@ -1014,7 +1015,7 @@ ApplicationHealthStateChunks :
                                     HealthState           : Ok
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 クラスターの正常性チャンクを取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/health-of-cluster)を使用できます。これらの要求の本文には、正常性ポリシーと高度なフィルターが記載されています。
 
 ## <a name="general-queries"></a>一般クエリ

@@ -1,10 +1,10 @@
 ---
 title: プランを準備およびテストして Azure Marketplace にデプロイする | Microsoft Docs
-description: マーケティング コンテンツの指定、価格プランの構成、Azure Marketplace へのデプロイ前のプランのテストに関する詳細な手順を説明します。
+description: マーケティング コンテンツの指定、価格プランの構成、Azure Marketplace へのデプロイ前のオファーのテストに関する詳細な手順を説明します。
 services: marketplace-publishing
 documentationcenter: ''
-author: msmbaldwin
-manager: mbaldwin
+author: HannibalSII
+manager: hascipio
 editor: ''
 ms.assetid: 3ccd2448-895b-477e-adf6-ab655a21d2fa
 ms.service: marketplace
@@ -13,15 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/17/2016
-ms.author: mbaldwin
-ms.openlocfilehash: 5bec9ac89487a824b9de9209547f0b96fa5fe678
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: hascipio
+ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714961"
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>マーケティング コンテンツを使用したプラン作成の実行
-発行処理のこの手順では、特定のマーケティング コンテンツと Azure Marketplace でのプランと SKU の詳細を指定する必要があります。 たとえば、製品、会社のロゴ、価格プラン、プランの詳細、プランまたは SKU をステージング環境へプッシュするために必要なその他の情報を指定します。 この情報は、Azure ポータルでマーケティング コンテンツとして使用されます。 このプロセスは、[発行ポータル][link-pubportal]で開始します。
+発行処理のこの手順では、特定のマーケティング コンテンツと Azure Marketplace でのプランと SKU の詳細を指定する必要があります。 たとえば、製品、会社のロゴ、価格プラン、プランの詳細、オファーまたは SKU をステージング環境へプッシュするために必要なその他の情報を指定します。 この情報は、Azure ポータルでマーケティング コンテンツとして使用されます。 このプロセスは、[発行ポータル][link-pubportal]で開始します。
 
 ## <a name="step-1-provide-marketplace-marketing-content"></a>手順 1: Marketplace のマーケティング コンテンツを指定する
 **英語は、既定で指定され、サポートされる唯一の言語です。** フィールドに指定するすべての情報が英語であることを確認してください。 ステージングにプッシュするまでは、すべての情報をいつでも編集することができます。
@@ -40,13 +41,13 @@ ms.lasthandoff: 03/16/2018
 2. SKU のタイトル (最大 50 文字)、SKU の概要 (最大 100 文字)、SKU の説明 (最大 2000 文字) を、 **[Plans (SKU)]** タブに入力します。
    
    > [!NOTE]
-   > プランと SKU の概要、長い概要、説明の書式設定には HTML タグを使用できます。 使用できる HTML タグは、h1、h2、h3、h4、h5、p、ol、ul、li、a[target|href]、strong、em、b、i です。
+   > オファーとプランの概要、長い概要、説明の書式設定には HTML タグを使用できます。 使用できる HTML タグは、h1、h2、h3、h4、h5、p、ol、ul、li、a[target|href]、strong、em、b、i です。
    > 
    > 
-3. プランと SKU の説明に、同じテキストを入力しないでください。
-4. SKU のタイトルとプランの長い概要に、同じテキストを入力しないでください。
-5. SKU のタイトルとプランの概要に、同じテキストを入力しないでください。
-6. 複数の SKU が指定されたプランの場合は、各 SKU のタイトルが重複しないようにしてください。
+3. オファーとプランの説明に、同じテキストを入力しないでください。
+4. SKU のタイトルとオファーの長い概要に、同じテキストを入力しないでください。
+5. SKU のタイトルとオファーの概要に、同じテキストを入力しないでください。
+6. 複数の SKU が指定されたオファーの場合は、各 SKU のタイトルが重複しないようにしてください。
 7. 必要な要件 (発行ポータルに記載された) を満たしたイメージを各サイズあたり 1 つ PNG 形式でアップロードします。
 8. ロゴが以下で説明する Azure Marketplace ロゴ ガイドラインに従っていることを確認します。
    
@@ -77,8 +78,8 @@ ms.lasthandoff: 03/16/2018
 **Hero ロゴ アイコンに関する追加のガイドライン (省略可能)**
 
 * Hero ロゴはオプションです。 パブリッシャーは、Hero ロゴをアップロードしなくてもかまいません。 **ただし、アップロードされたら、Hero アイコンは発行ポータルから削除できません。その時点で、パートナーは、Hero アイコンの Azure Marketplace ガイドラインに従う必要があります。ガイドラインに従っていない場合、プランは運用環境に対して承認されません。**
-* 発行者表示名、SKU のタイトル、およびプランの長い概要は、白のフォント色で表示されます。 このため、Hero アイコンの背景色には明るい色を使用しないでください。 黒、白、および透明は Hero アイコンの背景では使用できません。
-* プランが表示されると、パブリッシャーの表示名、SKU のタイトル、プランの長い概要、作成ボタンが、Hero ロゴ内にプログラムによって埋め込まれます。 したがって、Hero ロゴのデザイン時にはテキストを入力しないでください。 テキスト (つまり、発行者の表示名、プランのタイトル、プランの長い概要) がプログラムによって自動的に挿入されるため、右側にスペースを空けておいてください。 右側のテキスト用の空のスペースは 415 x 100 です (また、左から 370 ピクセルだけオフセットされます)。
+* 発行者表示名、プランのタイトル、およびオファーの長い概要は、白のフォント色で表示されます。 このため、Hero アイコンの背景色には明るい色を使用しないでください。 黒、白、および透明は Hero アイコンの背景では使用できません。
+* オファーが表示されると、パブリッシャーの表示名、プランのタイトル、オファーの長い概要、作成ボタンが、Hero ロゴ内にプログラムによって埋め込まれます。 したがって、Hero ロゴのデザイン時にはテキストを入力しないでください。 テキスト (つまり、発行者の表示名、プランのタイトル、オファーの長い概要) がプログラムによって自動的に挿入されるため、右側にスペースを空けておいてください。 右側のテキスト用の空のスペースは 415 x 100 です (また、左から 370 ピクセルだけオフセットされます)。
   
   ![図](media/marketplace-publishing-push-to-staging/pubportal-herobanner.png)
 
@@ -94,7 +95,7 @@ ms.lasthandoff: 03/16/2018
 > 
 > 
 
-左側のメニューの **[サンプル画像]** タブで、**[新しい画像のアップロード]** をクリックして新しいイメージをアップロードします。 既存のイメージがある場合、それを置き換えるには、 **[イメージの置換]**をクリックします。
+左側のメニューの **[サンプル画像]** タブで、**[新しい画像のアップロード]** をクリックして新しいイメージをアップロードします。 既存のイメージがある場合、それを置き換えるには、 **[イメージの置換]** をクリックします。
 
 ![図](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-sampleimg-01.png)
 
@@ -103,18 +104,24 @@ ms.lasthandoff: 03/16/2018
 
 ![図](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-legal-01.png)
 
-**注意:** Virtual Machine プランについては、一度 Azure Portal にプラン/SKU がステージングされたら、以下のフィールドは変更できません。
 
-* **プラン識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [VM イメージ] タブ > [Offer Identifier (プラン識別子)]
-* **SKU 識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [SKUs (SKU)] タブ > [Add a SKU (SKU を追加)]
+  **注意:** Virtual Machine プランについては、一度 Azure Portal にプラン/SKU がステージングされたら、以下のフィールドは変更できません。
+
+* 
+  **プラン識別子:** [発行ポータル] &gt; [Virtual Machines] &gt; [プランの選択] &gt; [VM イメージ] タブ &gt; [Offer Identifier (プラン識別子)]
+* 
+  **SKU 識別子:** [発行ポータル] &gt; [Virtual Machines] &gt; [プランの選択] &gt; [SKUs (SKU)] タブ &gt; [Add a SKU (SKU を追加)]
 * **Publisher Namespace:** [発行ポータル] > [Virtual Machines] > [チュートリアル] タブ > [Tell Us About Your Company (会社情報を入力)] (「手順 2 会社を登録する」にあります) > [Publisher Namespace] > [名前空間]
 
 Virtual Machine プランについては、一度 Azure Marketplace にプラン/SKU が表示されたら、以下のフィールドは変更できません。
 
-* **プラン識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [VM イメージ] > [Offer Identifier (プラン識別子)]
-* **SKU 識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [SKUs (SKU)] タブ > [Add a SKU (SKU を追加)]
+* 
+  **プラン識別子:** [発行ポータル] &gt; [Virtual Machines] &gt; [プランの選択] &gt; [VM イメージ] &gt; [Offer Identifier (プラン識別子)]
+* 
+  **SKU 識別子:** [発行ポータル] &gt; [Virtual Machines] &gt; [プランの選択] &gt; [SKUs (SKU)] タブ &gt; [Add a SKU (SKU を追加)]
 * **Publisher Namespace:** [発行ポータル] > [Virtual Machines] > [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] (「手順 2 登録する」にあります) > [Publisher Namespace] > [名前空間]
-* **ポート:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [VM イメージ] タブ > [ポートを開く]
+* 
+  **ポート:** [発行ポータル] &gt; [Virtual Machines] &gt; [プランの選択] &gt; [VM イメージ] タブ &gt; [ポートを開く]
 * **表示されている SKU の価格の変更**
 * **表示されている SKU の課金モデルの変更**
 * **表示されている SKU の課金リージョンの削除**
@@ -122,7 +129,7 @@ Virtual Machine プランについては、一度 Azure Marketplace にプラン
 
 ## <a name="step-2-set-your-prices"></a>手順 2.: 価格を設定する
 ### <a name="pricing-models"></a>価格モデル
-| 価格モデル | [説明] |
+| 価格モデル | 説明 |
 | --- | --- |
 | 基本 |月額固定料金 (購入時に支払い) 例: 10 ドル/月 |
 | 消費量 (別名:  使用量、メーター) |従量課金。プランの発行者が定義します。 超過料金はシートやユーザーごとなどの方法で定義できません。これは、比例配分を行うためのユーザーまたは容量の分割の概念を採用していないためです。 使用量は、時間単位でパートナーが報告します。 お客様は前払いではなく、月額プランなどの月ごとの請求サイクルで支払います。 |
@@ -130,7 +137,8 @@ Virtual Machine プランについては、一度 Azure Marketplace にプラン
 | Free レベル |プランは常時無料です |
 | プランの移行 ( 変換またはアップグレード/ダウングレードとも呼ばれます) |ユーザーが現在のプランから別の許容されるプランに移行するという概念。パートナーが定義します。 |
 
-**使用できる価格モデル (プランの種類別)**
+
+  **使用できる価格モデル (プランの種類別)**
 
 > [!IMPORTANT]
 > 特定の価格モデルを使用できるかどうかは、プランの種類によって異なります。 次の表を参照してください。
@@ -139,8 +147,8 @@ Virtual Machine プランについては、一度 Azure Marketplace にプラン
 
 |  | 基本のみ | 消費量のみ | 基本 + 消費量 |
 | --- | --- | --- | --- |
-| 仮想マシン イメージ |いいえ  |[はい] |いいえ  |
-| 開発者サービス |[はい] |[はい] |[はい] |
+| 仮想マシン イメージ |いいえ  |はい |いいえ  |
+| 開発者サービス |[はい] |はい |[はい] |
 
 ### <a name="21-set-your-vm-prices"></a>2.1. VM 料金を設定する
 仮想マシンについては、現在、次の **3 つの課金モデル**
@@ -151,16 +159,20 @@ Virtual Machine プランについては、一度 Azure Marketplace にプラン
 * **無料試用版:** これも時間単位のモデルの 1 つです。 VM をデプロイしてから最初の 30 日間は、お客様にソフトウェア コストが請求されることはありません (無料)。 30 日が経過すると、時間単位モデルでパブリッシャーによって設定された料金に基づいて、時間単位で請求が行われます。
 * **ライセンス持ち込み (BYOL):** VM で実行されているソフトウェアのライセンスが、パブリッシャーによって管理されます。
 
-**重要:** 一度 Azure Marketplace にプラン/SKU が表示されたら、以下のフィールドは変更できません。
+
+  **重要:** 一度 Azure Marketplace にプラン/SKU が表示されたら、以下のフィールドは変更できません。
 
 * **表示されている SKU の価格の変更**
 * **表示されている SKU の課金モデルの変更**
 * **表示されている SKU の課金リージョンの削除**
 * **表示されている SKU のデータ ディスク数の変更**
-* **プラン識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [VM イメージ] > [Offer Identifier (プラン識別子)]
-* **SKU 識別子:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [SKUs (SKU)] タブ > [Add a SKU (SKU を追加)]
+* 
+  **プラン識別子:** [発行ポータル] &gt; [Virtual Machines] &gt; [プランの選択] &gt; [VM イメージ] &gt; [Offer Identifier (プラン識別子)]
+* 
+  **SKU 識別子:** [発行ポータル] &gt; [Virtual Machines] &gt; [プランの選択] &gt; [SKUs (SKU)] タブ &gt; [Add a SKU (SKU を追加)]
 * **Publisher Namespace:** [発行ポータル] > [Virtual Machines] > [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] (「手順 2 登録する」にあります) > [Publisher Namespace] > [名前空間]
-* **ポート:** [発行ポータル] > [Virtual Machines] > [プランの選択] > [VM イメージ] タブ > [ポートを開く]
+* 
+  **ポート:** [発行ポータル] &gt; [Virtual Machines] &gt; [プランの選択] &gt; [VM イメージ] タブ &gt; [ポートを開く]
 
 ### <a name="sell-to-countries-of-the-sku"></a>SKU の "販売先" の国
 どこで SKU を利用できるようにするかについては、慎重に検討する必要があります。 たとえば、"Microsoft レミット" 対象として分類されている国や、"ISV レミット" 対象として分類されている国があります。
@@ -177,7 +189,8 @@ Virtual Machine プランについては、一度 Azure Marketplace にプラン
 SKU の時間単位の価格モデルを設定するには、次の手順に従ってください。
 
 1. [発行ポータル](https://publish.windowsazure.com)にログインします。
-2. **[Virtual Machines]** タブに移動し、プランを選択します。
+2. 
+  **[Virtual Machines]** タブに移動し、プランを選択します。
 3. 左側のメニューで、 **[SKUs (SKU)]** タブをクリックします。
 4. SKU が "時間単位の課金モデル" としてマークされていることを確認します。 マークされていない場合、課金モデルを元に戻すには、 **[編集]** ボタンをクリックします。 ウィンドウが開きます。 [Billing and licensing is done externally from Azure (aka Bring Your Own License) (Azure 外部のライセンス (ライセンス持ち込み) を使用して課金を行う)] チェック ボックスをオフにして、変更を保存します。
 5. SKU デプロイメントの最初の 30 日間に対して無料試用版を有効にする場合は、[Is a free trial available? (無料試用版を利用しますか)] という質問に対して [1 か月] を選択します。 それ以外の場合は、[No Trial (試用版を利用しない)] を選択します。 その後、次の手順に従ってください。
@@ -206,7 +219,8 @@ SKU の時間単位の価格モデルを設定するには、次の手順に従�
 SKU の BYOL の価格モデルを設定するには、次の手順に従ってください。
 
 1. [発行ポータル](https://publish.windowsazure.com)にログインします。
-2. **[Virtual Machines]** タブに移動し、プランを選択します。
+2. 
+  **[Virtual Machines]** タブに移動し、プランを選択します。
 3. 左側のメニューで、 **[SKUs (SKU)]** タブをクリックします。
 4. SKU に "ライセンス持ち込み SKU" のマークが付いていることを確認します。 マークされていない場合、課金モデルを元に戻すには、[編集] ボタンをクリックします。 ウィンドウが開きます。 [Billing and licensing is done externally from Azure (aka Bring Your Own License) (Azure 外部のライセンス (ライセンス持ち込み) を使用して課金を行う)] チェック ボックスをオンにして、変更を保存します。
    
@@ -220,7 +234,8 @@ SKU の BYOL の価格モデルを設定するには、次の手順に従って�
 ### <a name="22-set-your-developer-service-prices"></a>2.2. 開発者向けサービスの価格を設定する
 基本と使用量を組み合わせたプランにすることができます。ここで、"基本料金" は月額、"超過料金" は従量課金になります。 (詳細については、以下を参照してください。)
 
-**例**: Contoso 開発者サービスのプラン
+
+  **例**: Contoso 開発者サービスのプラン
 
 | プラン | 料金 | 内容 | 移行パス |
 | --- | --- | --- | --- |
@@ -236,48 +251,57 @@ SKU の BYOL の価格モデルを設定するには、次の手順に従って�
 連絡先の詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。 サポートURL は、エンド ユーザーに提供されます。
 
 1. 発行ポータルの左側にある **[サポート]** に移動します。
-2. **[エンジニアリング連絡先]**に情報を入力します。
-3. **[カスタマー サポート]**に情報を入力します。 電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
+2. **[エンジニアリング連絡先]** に情報を入力します。
+3. **[カスタマー サポート]** に情報を入力します。 電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
 4. サポート URL を入力します。
 
 ## <a name="step-4-choose-azure-marketplace-categories"></a>手順 4.: Azure Marketplace カテゴリを選択する
 **[カテゴリ]** タブには、一連の選択項目が表示されます。 該当するカテゴリを最大 5 つまで選択できます。
 
 ## <a name="how-your-marketing-will-appear"></a>マーケティングの表示例
-[Azure Marketplace Web サイト](https://azure.microsoft.com/marketplace/)と [Azure Portal](https://portal.azure.com) における、プラン マーケティング情報の使用方法についての詳細なビューを次に示します。
+
+  [Azure Marketplace Web サイト](https://azure.microsoft.com/marketplace/)と [Azure Portal](https://portal.azure.com) における、プラン マーケティング情報の使用方法についての詳細なビューを次に示します。
 
 ### <a name="azure-marketplace-website"></a>Azure Marketplace Web サイト
 ![図](media/marketplace-publishing-push-to-staging/acom-catalog-01.png)
 
 ![図](media/marketplace-publishing-push-to-staging/acom-catalog-02.png)
 
-*Azure Marketplace Web サイト上のプランの一覧*
+
+  *Azure Marketplace Web サイト上のプランの一覧*
 
 ![図](media/marketplace-publishing-push-to-staging/acom-listing-details-01.png)
 
-*Azure Marketplace Web サイト上のプランの説明の詳細*
+
+  *Azure Marketplace Web サイト上のプランの説明の詳細*
 
 ![図](media/marketplace-publishing-push-to-staging/acom-listing-details-02.png)
 
-*Azure Marketplace Web サイト上のプランの説明の価格詳細*
+
+  *Azure Marketplace Web サイト上のプランの説明の価格詳細*
 
 ### <a name="azure-portal"></a>Azure Portal
 ![図](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-01.png)
 
-*Azure Portal でのプランの一覧*
+
+  *Azure Portal でのプランの一覧*
 
 ![図](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-02.png)
 
-*Azure ポータルのプランの説明の詳細*
+
+  *Azure ポータルのプランの説明の詳細*
 
 ## <a name="next-steps"></a>次の手順
 Marketplace コンテンツが読み込まれたので、プランのステージングでのテストに進みましょう。 ただし、手順はプランの種類によって異なるため、以下の一覧から適切なプランの種類を選択する必要があります。
 
-* [ステージング環境での VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)
-* [ステージングでのソリューション テンプレート プランのテスト](marketplace-publishing-solution-template-test-in-staging.md)
+* 
+  [ステージング環境での VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)
+* 
+  [ステージングでのソリューション テンプレート プランのテスト](marketplace-publishing-solution-template-test-in-staging.md)
 
 ## <a name="see-also"></a>関連項目
-* [Microsoft Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+* 
+  [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
 [img-map-acom]:media/marketplace-publishing-push-to-staging/pubportal-mapping-acom.jpg
 [img-map-portal]:media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg

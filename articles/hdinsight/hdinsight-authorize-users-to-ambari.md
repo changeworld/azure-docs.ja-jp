@@ -1,47 +1,41 @@
 ---
-title: Ambari Views のユーザー承認 - Azure HDInsight | Microsoft Docs
-description: ドメイン参加済み HDInsight クラスターに対する Ambari ユーザーと Ambari グループのアクセス許可を管理する方法。
+title: Ambari Views のユーザー承認 - Azure HDInsight
+description: ESP が有効になっている HDInsight クラスターに対する Ambari ユーザーと Ambari グループのアクセス許可を管理する方法。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
 author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: f4dfb51cf344d1ec51363ef3a9f74c1ca59119a6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d2e7077e1196ab862d9f610f242fe30dde18ded4
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496882"
 ---
-# <a name="authorize-users-for-ambari-views"></a>Ambari Views のユーザー承認
+# <a name="authorize-users-for-apache-ambari-views"></a>Apache Ambari ビューに対してユーザーを承認する
 
-[ドメイン参加済み HDInsight クラスター](./domain-joined/apache-domain-joined-introduction.md)には、エンタープライズ グレードの機能が備わっています。Azure Active Directory ベースの認証もその 1 つです。 クラスターへのアクセスが提供されている Azure AD グループに追加された[新しいユーザーを同期](hdinsight-sync-aad-users-to-cluster.md)して、特定のユーザーに特定のアクションの実行を許可できます。 Ambari でのユーザー、グループ、およびアクセス許可の操作は、ドメイン参加済み HDInsight クラスターと標準 HDInsight クラスターの両方でサポートされます。
+[Enterprise セキュリティ パッケージ (ESP) が有効になっている HDInsight クラスター](./domain-joined/apache-domain-joined-introduction.md)には、エンタープライズ グレードの機能が備わっています。Azure Active Directory ベースの認証もその 1 つです。 クラスターへのアクセスが提供されている Azure AD グループに追加された[新しいユーザーを同期](hdinsight-sync-aad-users-to-cluster.md)して、特定のユーザーに特定のアクションの実行を許可できます。 [Apache Ambari](https://ambari.apache.org/) でのユーザー、グループ、およびアクセス許可の操作は、ESP HDInsight クラスターと標準 HDInsight クラスターの両方でサポートされています。
 
-Active Directory ユーザーはドメイン資格情報を使用してクラスター ノードにログオンできます。 また、クラスターと他の承認済みエンドポイント (Hue、Ambari Views、ODBC、JDBC、PowerShell、REST API など) との対話も、ドメイン資格情報で認証することができます。
+Active Directory ユーザーはドメイン資格情報を使用してクラスター ノードにログオンできます。 また、クラスターと他の承認済みエンドポイント ([Hue](http://gethue.com/)、Ambari Views、ODBC、JDBC、PowerShell、REST API など) との対話も、ドメイン資格情報で認証することができます。
 
 > [!WARNING]
 > Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。
 
-新しいドメイン参加済みクラスターをまだプロビジョニングしていない場合は、[こちらの手順](./domain-joined/apache-domain-joined-configure.md)に従ってプロビジョニングしてください。
+新しい ESP クラスターをまだプロビジョニングしていない場合は、[こちらの手順](./domain-joined/apache-domain-joined-configure.md)に従ってプロビジョニングしてください。
 
 ## <a name="access-the-ambari-management-page"></a>Ambari 管理ページにアクセスする
 
-[Ambari Web UI](hdinsight-hadoop-manage-ambari.md) の **Ambari 管理ページ**にアクセスするには、ブラウザーで **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** にアクセスします。 クラスターの作成時に定義したクラスタ アドミニストレーターのユーザー名とパスワードを入力します。 次に、Ambari のダッシュボードで **[admin]\(管理\)** メニューの **[Manage Ambari]\(Ambari の管理\)** を選択します。
+[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) の **Ambari 管理ページ**にアクセスするには、ブラウザーで **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** にアクセスします。 クラスターの作成時に定義したクラスタ アドミニストレーターのユーザー名とパスワードを入力します。 次に、Ambari のダッシュボードで **[admin]\(管理\)** メニューの **[Manage Ambari]\(Ambari の管理\)** を選択します。
 
 ![Ambari の管理](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 
-## <a name="grant-permissions-to-hive-views"></a>Hive ビューへのアクセス許可を付与する
+## <a name="grant-permissions-to-apache-hive-views"></a>Apache Hive ビューへのアクセス許可を付与する
 
-Ambari には、Hive や Tez のビュー インスタンスが備わっています。 Hive ビュー インスタンスへのアクセス権を付与するには、**Ambari 管理ページ**に移動します。
+Ambari には、[Apache Hive](https://hive.apache.org/) や [Apache TEZ](https://tez.apache.org/) のビュー インスタンスが備わっています。 Hive ビュー インスタンスへのアクセス権を付与するには、**Ambari 管理ページ**に移動します。
 
 1. 管理ページの左側の **[Views]\(ビュー\)** メニュー ヘッダーにある **[Views]\(ビュー\)** リンクを選択します。
 
@@ -78,9 +72,9 @@ Ambari には、Hive や Tez のビュー インスタンスが備わってい�
 
 ビューのアクセス許可をユーザーに割り当てるとき、余分なアクセス許可があるグループのメンバーにすることを望まない場合、ビューに直接ユーザーを追加する方法が便利です。 管理オーバーヘッドを減らすには、おそらくグループにアクセス許可を割り当てる方が簡単です。
 
-## <a name="grant-permissions-to-tez-views"></a>Tez ビューへのアクセス許可を付与する
+## <a name="grant-permissions-to-apache-tez-views"></a>Apache TEZ ビューへのアクセス許可を付与する
 
-Hive クエリや Pig スクリプトによって送信されたすべての Tez ジョブは、Tez ビューのインスタンスを使用して監視したりデバッグしたりすることができます。 クラスターのプロビジョニング時に、既定の Tez ビュー インスタンスが 1 つ作成されます。
+[Apache Hive](https://hive.apache.org/) クエリや [Apache Pig](https://pig.apache.org/) スクリプトによって送信されたすべての Tez ジョブは、[Apache TEZ](https://tez.apache.org/) ビューのインスタンスを使用して監視したりデバッグしたりすることができます。 クラスターのプロビジョニング時に、既定の Tez ビュー インスタンスが 1 つ作成されます。
 
 Tez ビュー インスタンスにユーザーとグループを割り当てるには、前述したように、[Views]\(ビュー\) ページの **TEZ** 行を展開します。
 
@@ -122,7 +116,7 @@ Tez ビュー インスタンスにユーザーとグループを割り当てる
 
     ![ロールのリスト ビュー - ユーザー](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* リスト ビューの [Groups]\(グループ\) カテゴリには、すべてのグループと、各グループに割り当てられているロールが表示されます。 この例に示したグループのリストは、クラスターのドメイン設定の **[Access user group]\(アクセス ユーザー グループ\)** プロパティに指定された Azure AD グループから同期されています。 [ドメイン参加 HDInsight クラスターの作成](/domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)に関するページをご覧ください。
+*  リスト ビューの [Groups]\(グループ\) カテゴリには、すべてのグループと、各グループに割り当てられているロールが表示されます。 この例に示したグループのリストは、クラスターのドメイン設定の **[Access user group]\(アクセス ユーザー グループ\)** プロパティに指定された Azure AD グループから同期されています。 [ESP が有効になっている HDInsight クラスターの作成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)に関するページを参照してください。
 
     ![ロールのリスト ビュー - グループ](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
@@ -142,7 +136,7 @@ Azure AD ドメイン ユーザー "hiveuser1" には、Hive ビューと Tez �
 
 ## <a name="next-steps"></a>次の手順
 
-* [ドメイン参加済み HDInsight での Hive ポリシーの構成](./domain-joined/apache-domain-joined-run-hive.md)
-* [ドメイン参加済み HDInsight クラスターの管理](./domain-joined/apache-domain-joined-manage.md)
-* [HDInsight での Hive View と Hadoop の使用](hadoop/apache-hadoop-use-hive-ambari-view.md)
+* [ESP HDInsight での Apache Hive ポリシーの構成](./domain-joined/apache-domain-joined-run-hive.md)
+* [ESP HDInsight クラスターの管理](./domain-joined/apache-domain-joined-manage.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive ビューを使用する](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [Azure AD ユーザーをクラスターに同期する](hdinsight-sync-aad-users-to-cluster.md)

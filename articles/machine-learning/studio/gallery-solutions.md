@@ -9,22 +9,22 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: c0be3f10-9e54-4fc1-b5df-725c2e919f65
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: a07c517ac3bfeabc1fe87ead07083c9b8b61dc7f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cb02ed61ea050c17bc7e6dc0ebc724f29f885dd7
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344337"
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>Azure AI ギャラリー ソリューションを発見する
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="solutions"></a>解決方法
-ギャラリーの**[ソリューション](https://gallery.cortanaintelligence.com/solutions)**は、構成済みのソリューション、参照アーキテクチャおよびデザイン パターンから Cortana Intelligence ソリューションを迅速に構築するためのきっかけとなります。
+[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)の**[ソリューション](https://gallery.cortanaintelligence.com/solutions)** は、構成済みのソリューション、参照アーキテクチャおよびデザイン パターンから Cortana Intelligence ソリューションを迅速に構築するためのきっかけとなります。
 含まれる手順または機能的なパートナーによって、独自のものにします。  
 
 ## <a name="discover"></a>発見

@@ -9,15 +9,15 @@ ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 46ba4ce992640e8a6d171ab839dd7cdb24e0b404
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 79921a3adc043dd84317b7613286ec5cdc460bde
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993749"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの作成
 この記事では、Azure Resource 管理を使用して [Application Insights](app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の作成、[アラート](app-insights-alerts.md)の設定、[価格の詳細](app-insights-pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/03/2018
 
 スクリプトを実行するコンピューターに Azure PowerShell モジュールをインストールします。
 
-1. [Microsoft Web Platform Installer (v5 以上)](http://www.microsoft.com/web/downloads/platform.aspx)をインストールします。
+1. [Microsoft Web Platform Installer (v5 以上)](https://www.microsoft.com/web/downloads/platform.aspx)をインストールします。
 2. このインストーラーを使用して Microsoft Azure PowerShell をインストールします。
 
 ## <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの作成
@@ -37,7 +37,7 @@ ms.lasthandoff: 04/03/2018
 
 ```JSON
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "appName": {
@@ -52,7 +52,6 @@ ms.lasthandoff: 04/03/2018
                 "allowedValues": [
                     "web",
                     "java",
-                    "HockeyAppBridge",
                     "other"
                 ],
                 "metadata": {
@@ -155,7 +154,7 @@ ms.lasthandoff: 04/03/2018
 ## <a name="create-application-insights-resources"></a>Application Insights リソースの作成
 1. PowerShell で Azure にサインインします。
    
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 2. 次のようにコマンドを実行します。
    
     ```PS
@@ -448,6 +447,6 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 * [PowerShell を使用して Application Insights のアラートを設定する](app-insights-powershell-alerts.md)
 * [Web テストを作成する](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Azure 診断を Application Insights に送信する](app-insights-powershell-azure-diagnostics.md)
-* [GitHub から Azure にデプロイする](http://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
+* [GitHub から Azure にデプロイする](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [リリースの注釈を作成する](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

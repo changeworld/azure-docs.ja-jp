@@ -1,24 +1,20 @@
 ---
-title: ジョブ ダイアグラムを使用した Azure Stream Analytics のデータ主導型デバッグ | Microsoft Docs
-description: ジョブ ダイアグラムとメトリックを使用して Stream Analytics ジョブのトラブルシューティングを行います。
-keywords: ''
-documentationcenter: ''
+title: Azure Stream Analytics でのデータ主導型デバッグ
+description: この記事では、Azure Portal のジョブ ダイアグラムとメトリックを使って、Azure Stream Analytics ジョブのトラブルシューティングを行う方法について説明します。
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 05/01/2017
 ms.author: jeanb
-ms.openlocfilehash: 65eeeee7daa22b94074f55defdfd1219049774c9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 05/01/2017
+ms.openlocfilehash: 3d50f96f3dea3646bb32a3a42d0248957dabf9f0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/18/2018
+ms.locfileid: "31526823"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>ジョブ ダイアグラムを使用したデータ主導型デバッグ
 
@@ -81,11 +77,11 @@ Azure Event Hubs の入力をパーティション単位で確認するには、
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>データの読み取りを追跡しているかどうか。
 
-*   **InputEventsSourcesBackloggedTotal** では、Event Hubs と Azure IoT Hub の入力用に読み取る必要がある追加のメッセージの数がわかります。
+*   **Input Events Backlogged (Total)** では、Event Hubs と Azure IoT Hub の入力用に読み取る必要がある追加のメッセージの数がわかります。 この数値が 0 より大きい場合は、データの取得後すぐに、ジョブがデータを処理できないことを意味します。 この場合、必要に応じて、ストリーミング ユニット数を増やしたり、ジョブを並列処理できるようにしたりします。 この処理の詳細については、[クエリの並列化に関するページ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)を参照してください。 
 
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 * [Stream Analytics の概要](stream-analytics-introduction.md)

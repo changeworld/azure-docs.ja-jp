@@ -1,24 +1,25 @@
 ---
-title: "Resource Manager テンプレートを使用して Azure Service Bus リソースを作成する | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用して Service Bus リソースの作成を自動化する"
+title: Resource Manager テンプレートを使用して Azure Service Bus リソースを作成する | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用して Service Bus リソースの作成を自動化する
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 24f6a207-0fa4-49cf-8a58-963f9e2fd655
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/10/2017
-ms.author: sethm
-ms.openlocfilehash: 0ceeb138a7432e51cabe2597c680cb01ea9eac4a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.date: 09/11/2018
+ms.author: spelluru
+ms.openlocfilehash: 5693307f9d032ad544a44eabd19126700c5a4099
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407163"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する
 
@@ -61,7 +62,7 @@ Azure Resource Manager テンプレートのデプロイの詳細については
 
 ### <a name="create-a-template"></a>テンプレートの作成
 
-GitHub から [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) テンプレートを複製またはコピーします。
+GitHub からリポジトリを複製するか、[201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) テンプレートをコピーします。
 
 ```json
 {
@@ -163,7 +164,7 @@ GitHub から [201-servicebus-create-queue](https://github.com/Azure/azure-quick
 PowerShell プロンプトから、次のコマンドを実行します。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Azure アカウントにログオンするように求められます。 ログオンしたら、次のコマンドを実行して、使用できるサブスクリプションを確認します。
@@ -180,7 +181,7 @@ Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
 ### <a name="set-the-resource-group"></a>リソース グループを設定する
 
-既存のリソース グループがない場合は、**New-AzureRmResourceGroup ** コマンドで新しいリソース グループを作成します。 使用するリソース グループの名前と場所を指定します。 次に例を示します。
+既存のリソース グループがない場合は、**New-AzureRmResourceGroup ** コマンドで新しいリソース グループを作成します。 使用するリソース グループの名前と場所を指定します。 例: 
 
 ```powershell
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
@@ -206,7 +207,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <p
 
 ### <a name="create-the-deployment"></a>デプロイを作成する
 
-新しいデプロイを作成するには、`New-AzureRmResourceGroupDeployment` コマンドレットを実行し、プロンプトに従って必要なパラメーターを指定します。 パラメーターには、デプロイの名前、リソース グループの名前、テンプレート ファイルのパスまたは URL が含まれます。 **Mode** パラメーターを指定しない場合、**Incremental** の既定値が使用されます。 詳細については、[「増分デプロイと完全デプロイ」](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)を参照してください。
+新しいデプロイを作成するには、`New-AzureRmResourceGroupDeployment` コマンドレットを実行し、プロンプトに従って必要なパラメーターを指定します。 パラメーターには、デプロイの名前、リソース グループの名前、テンプレート ファイルのパスまたは URL が含まれます。 **Mode** パラメーターを指定しない場合、**Incremental** の既定値が使用されます。 詳細については、[「増分デプロイと完全デプロイ」](../azure-resource-manager/deployment-modes.md)を参照してください。
 
 次のコマンドを実行すると、PowerShell ウィンドウに 3 つのパラメーターを指定するように求められます。
 
@@ -226,7 +227,7 @@ New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyD
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-[完全](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)デプロイを実行するには、**Mode** パラメーターを **Complete** に設定します。
+[完全](../azure-resource-manager/deployment-modes.md)デプロイを実行するには、**Mode** パラメーターを **Complete** に設定します。
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -251,7 +252,7 @@ Parameters        :
 
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Resource Manager テンプレートをデプロイする基本のワークフローとコマンドが表示されました。 詳細については、次のリンクを参照してください。
 
 * [Azure Resource Manager の概要][Azure Resource Manager overview]

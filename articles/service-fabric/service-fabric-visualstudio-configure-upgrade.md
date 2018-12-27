@@ -9,16 +9,17 @@ editor: tglee
 ms.assetid: 1757ba85-0b7b-4f16-8a23-2ddaa61c86c6
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 6bd9f23be2133ca8a207ceca19fcccc116eaf24d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 79120371ca2a62e5ef9f2bf38476635db12e9fcc
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038364"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Visual Studio での Service Fabric アプリケーションのアップグレードの構成
 Visual Studio Service Fabric ツールは、ローカルまたはリモート クラスターへの発行のアップグレード サポートを提供します。 テストやデバッグ中にアプリケーションを置き換えるのではなく、アプリケーションを新しいバージョンにアップグレードしたくなるシナリオが 3 つあります。
@@ -65,10 +66,10 @@ Visual Studio Service Fabric ツールを使用して Service Fabric アプリ�
 3. UnmonitoredManual アップグレード モードを選択した場合は、PowerShell コンソールを手動で起動してアップグレード プロセスを続行し、プロセスを完了する必要があります。 手動アップグレードのしくみについては、「 [Service Fabric アプリケーションのアップグレード: 高度なトピック](service-fabric-application-upgrade-advanced.md) 」を参照してください。
 
 ## <a name="upgrade-an-application-by-using-powershell"></a>PowerShell を使用したアプリケーションのアップグレード
-PowerShell コマンドレットを使用して、Service Fabric アプリケーションをアップグレードできます。 詳細については、「[Service Fabric アプリケーションのアップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)」および「[Start-ServiceFabricApplicationUpgrade](https://msdn.microsoft.com/library/mt125975.aspx)」を参照してください。
+PowerShell コマンドレットを使用して、Service Fabric アプリケーションをアップグレードできます。 詳細については、「[Service Fabric アプリケーションのアップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)」および「[Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade)」を参照してください。
 
 ## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>アプリケーション マニフェスト ファイルでの正常性チェック ポリシーの指定
-Service Fabric アプリケーションの各サービスでは、既定値を上書きした独自の正常性ポリシー パラメーターを使用できます。 これらのパラメーター値は、アプリケーション マニフェスト ファイルで指定できます。
+Service Fabric アプリケーションの各サービスでは、既定値をオーバーライドした独自の正常性ポリシー パラメーターを使用できます。 これらのパラメーター値は、アプリケーション マニフェスト ファイルで指定できます。
 
 次の例は、アプリケーション マニフェストで、サービスごとに独自の正常性チェック ポリシーを適用する方法を示しています。
 

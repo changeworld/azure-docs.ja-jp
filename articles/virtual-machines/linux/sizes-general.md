@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.date: 10/01/2018
 ms.author: jonbeck
-ms.openlocfilehash: 42b2fea0c2042512ad7a57538705bc8ee667b919
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 14bc1943a10de1d8a7fe7f8a703f4a6f89994d60
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854033"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>汎用仮想マシンのサイズ
 
@@ -35,6 +36,7 @@ ms.lasthandoff: 04/06/2018
 - [ストレージの最適化](sizes-storage.md)
 - [GPU](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
+- [旧世代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>次の手順
 [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。

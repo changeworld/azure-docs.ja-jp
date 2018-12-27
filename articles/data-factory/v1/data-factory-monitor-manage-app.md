@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f5ca5544a217d66d334ff468d2308af1836c7de8
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 3f234e49f1a28fd0881e47ede13ae72483ed31f3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053118"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -28,7 +29,7 @@ ms.lasthandoff: 03/29/2018
 >
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 の Data Factory パイプラインの監視と管理](../monitor-visually.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory パイプラインの監視と管理](../monitor-visually.md)に関するページを参照してください。
 
 この記事では、監視と管理アプリを使用して、Azure Data Factory パイプラインを監視、管理、デバッグする方法について説明します。 次のビデオを見ると、アプリケーションの使用方法の概要を理解できます。
 
@@ -160,7 +161,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 <table>
 <tr>
-    <th align="left">状態</th><th align="left">副状態</th><th align="left">[説明]</th>
+    <th align="left">状態</th><th align="left">副状態</th><th align="left">説明</th>
 </tr>
 <tr>
     <td rowspan="8">待機中</td><td>ScheduleTime</td><td>アクティビティ ウィンドウが実行される時刻になっていません。</td>
@@ -216,7 +217,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 </table>
 
 
-一覧でアクティビティ ウィンドウをクリックすると、右側にある **[アクティビティ ウィンドウ エクスプローラー]** または**[プロパティ]** ウィンドウに詳細が表示されます。
+一覧でアクティビティ ウィンドウをクリックすると、右側にある **[アクティビティ ウィンドウ エクスプローラー]** または **[プロパティ]** ウィンドウに詳細が表示されます。
 
 ![[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
@@ -255,7 +256,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 **[最近のアクティビティ ウィンドウ]** を選択すると、最近のアクティビティ ウィンドウが**最終試行時刻**の降順ですべて表示されます。
 
-**[失敗したアクティビティ ウィンドウ]** ビューを使用すると、失敗したアクティビティ ウィンドウすべてを一覧に表示できます。 一覧で失敗したアクティビティ ウィンドウを選択すると、その詳細が **[プロパティ]** ウィンドウまたは**[アクティビティ ウィンドウ エクスプローラー]** に表示されます。 また、失敗したアクティビティ ウィンドウのログをダウンロードすることもできます。
+**[失敗したアクティビティ ウィンドウ]** ビューを使用すると、失敗したアクティビティ ウィンドウすべてを一覧に表示できます。 一覧で失敗したアクティビティ ウィンドウを選択すると、その詳細が **[プロパティ]** ウィンドウまたは **[アクティビティ ウィンドウ エクスプローラー]** に表示されます。 また、失敗したアクティビティ ウィンドウのログをダウンロードすることもできます。
 
 ## <a name="sort-and-filter-activity-windows"></a>アクティビティ ウィンドウの並べ替えとフィルター処理
 アクティビティ ウィンドウをフィルター処理するには、コマンド バーの **[開始時刻]** と **[終了時刻]** の設定を変更します。 開始時刻と終了時刻を変更したら、終了時刻の横にあるボタンをクリックして、[アクティビティ ウィンドウ] 一覧を更新します。
@@ -267,7 +268,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 >
 >
 
-**[アクティビティ ウィンドウ]**の一覧で、列の名前 (例: 状態) をクリックします。
+**[アクティビティ ウィンドウ]** の一覧で、列の名前 (例: 状態) をクリックします。
 
 ![[アクティビティ ウィンドウ] 一覧の列メニュー](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 

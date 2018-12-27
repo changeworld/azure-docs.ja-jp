@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute の顧客のルーター構成サンプル | Microsoft Docs"
-description: "このページでは、Cisco と Juniper のルーターのルーター構成のサンプルを示します。"
+title: ExpressRoute の顧客のルーター構成サンプル | Microsoft Docs
+description: このページでは、Cisco と Juniper のルーターのルーター構成のサンプルを示します。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: d6ea716f-d5ee-4a61-92b0-640d6e7d6974
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23012977"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>NAT をセットアップして管理するためのルーター構成のサンプル
 このページでは、Cisco ASA と Juniper SRX シリーズ ルーターの NAT 構成のサンプルを示します。 これらはガイダンスとしてのみ使用することを目的としたサンプルであり、現状のまま使用することはできません。 ベンダーと協力して、ネットワークに適した構成を考えてください。 

@@ -1,24 +1,26 @@
 ---
-title: "インフラストラクチャ バックアップ サービスで Azure Stack の致命的なデータ損失から復旧する | Microsoft Docs"
-description: "致命的な障害によって Azure Stack が動作しなくなった場合、Azure Stack 展開を確立し直すときに、インフラストラクチャ データを復元できます。"
+title: インフラストラクチャ バックアップ サービスで Azure Stack の致命的なデータ損失から復旧する | Microsoft Docs
+description: 致命的な障害によって Azure Stack が動作しなくなった場合、Azure Stack 展開を確立し直すときに、インフラストラクチャ データを復元できます。
 services: azure-stack
-documentationcenter: 
-author: mattbriggs
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 2ECE8580-0BDE-4D4A-9120-1F6771F2E815
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
-ms.author: mabrigg
-ms.openlocfilehash: 141641b01b338e3426861dad7424a1de1bd2c63c
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 11/05/2018
+ms.author: jeffgilb
+ms.reviewer: hectorl
+ms.openlocfilehash: bd72abd4f8f23414ea1003c74d2f90cde3b51d34
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034339"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>致命的なデータ損失からの復旧
 
@@ -34,7 +36,7 @@ Azure Stack は、お客様の自社データセンターで Azure サービス�
 |--------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------|
 | 障害または製品のバグによって引き起こされた、致命的なデータ損失からの復旧 | 全インフラストラクチャ、ユーザー データ、アプリ データ | ユーザーのアプリケーションとデータは、インフラストラクチャ データとは別に保護されている |
 
-## <a name="workflows"></a>ワークフロー
+## <a name="workflows"></a>Workflows
 
 Azure Stack を保護する過程は、インフラストラクチャとアプリおよびテナントのデータを別々にバックアップすることから始まります。 このドキュメントでは、インフラストラクチャを保護する方法について説明します。 
 
@@ -44,7 +46,7 @@ Azure Stack を保護する過程は、インフラストラクチャとアプ�
 
 ![Azure Stack の再デプロイ](media\azure-stack-backup\azure-stack-backup-workflow2.png)
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>復元
 
 致命的なデータ損失が発生しても、ハードウェアが引き続き使用できる場合は、Azure Stack の再展開が必要になります。 再展開の際に、ストレージの場所と、バックアップのアクセスに必要な資格情報を指定できます。 このモードでは、復元の必要があるサービスを指定する必要はありません。 展開ワークフローの一部として、インフラストラクチャ バックアップ コントローラーによってコントロール プレーンの状態が挿入されます。
 
@@ -71,4 +73,4 @@ Azure Stack では、クラウド回復モードというタイプの展開が�
 
 ## <a name="next-steps"></a>次の手順
 
- - [インフラストラクチャ バックアップ サービスの使用](azure-stack-backup-best-practices.md)について、ベスト プラクティスを説明します。
+[インフラストラクチャ バックアップ サービスの使用](azure-stack-backup-best-practices.md)について、ベスト プラクティスを説明します。

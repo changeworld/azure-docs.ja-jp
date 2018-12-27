@@ -1,24 +1,25 @@
 ---
-title: "Azure Service Bus のペアの名前空間 | Microsoft Docs"
-description: "ペアの名前空間の実装の詳細とコスト"
+title: Azure Service Bus のペアの名前空間 | Microsoft Docs
+description: ペアの名前空間の実装の詳細とコスト
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2440c8d3-ed2e-47e0-93cf-ab7fbb855d2e
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/21/2017
-ms.author: sethm
-ms.openlocfilehash: f16c65286b0aa079889c9d53e98bf54e3d57c95f
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.date: 09/21/2018
+ms.author: spelluru
+ms.openlocfilehash: ac663cc382fcacd4960843c25aa6c95191210116
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395204"
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>ペアの名前空間の実装の詳細とコストの問題
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 12/22/2017
 ## <a name="creation-of-backlog-queues"></a>バックログ キューの作成
 [PairNamespaceAsync][PairNamespaceAsync] メソッドに渡される [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions] オブジェクトは、使用するバックログ キューの数を示します。 次のプロパティが明示的に設定された各バックログ キューが作成されます (その他のすべての値は、[QueueDescription][QueueDescription]の既定値に設定されます)。
 
-| パス | [primary namespace]/x-servicebus-transfer/[index] ここで [index] は [0, BacklogQueueCount) の値 |
+| Path | [primary namespace]/x-servicebus-transfer/[index] ここで [index] は [0, BacklogQueueCount) の値 |
 | --- | --- |
 | MaxSizeInMegabytes |5120 |
 | MaxDeliveryCount |int.MaxValue |

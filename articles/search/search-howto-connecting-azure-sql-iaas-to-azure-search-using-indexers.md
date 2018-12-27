@@ -1,24 +1,19 @@
 ---
-title: "Azure Search への SQL VM 接続 | Microsoft Docs"
-description: "暗号化された接続を有効にして、Azure Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。"
-services: search
-documentationcenter: 
+title: Azure Search への SQL VM 接続 | Microsoft Docs
+description: 暗号化された接続を有効にして、Azure Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。
 author: HeidiSteen
-manager: pablocas
-editor: 
-ms.assetid: 46e42e0e-c8de-4fec-b11a-ed132db7e7bc
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: bb61330ba5511955e0da16dcd5b8b19529d0e44b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7800e83891cb336bb896299b8fd4d6b3ba590178
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366462"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM での Azure Search インデクサーから SQL Server への接続の構成
 「[インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)」で説明したように、**Azure VM 上の SQL Server** (略して **SQL Azure VM**) に対してインデクサーを作成することは、Azure Search でサポートされています。ただし、最初にセキュリティ関連のいくつかの前提条件に対応する必要があります。 
@@ -58,14 +53,14 @@ Azure Search に必要な、暗号化された接続を設定した後は、Azur
 ## <a name="configure-the-network-security-group-nsg"></a>ネットワーク セキュリティ グループ (NSG) を構成する
 外部から Azure VM にアクセスできるように、NSG および対応する Azure エンドポイントまたはアクセス制御リスト (ACL) を構成することはめずらしくありません。 独自のアプリケーション ロジックから SQL Azure VM に接続できるようにするために、この構成を既に実行している可能性があります。 Azure Search から SQL Azure VM への接続もこれと同じです。 
 
-以下のリンクでは、VM デプロイメントの NSG を構成する手順を説明しています。 これらの手順を、IP アドレスに基づいて ACL および Azure Search エンドポイントに 使用してください。
+以下のリンクでは、VM デプロイメントの NSG を構成する手順を説明しています。 これらの手順を、IP アドレスに基づいて ACL および Azure Search エンドポイントに使用してください。
 
 > [!NOTE]
-> バックグラウンドの場合は、「 [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
+> バックグラウンドの場合は、「 [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/security-overview.md)
 > 
 > 
 
-* **リソース マネージャー** VM の場合は、「 [How to create NSGs for ARM deployments](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)」(ARM デプロイメントの NSG を作成する方法) をご覧ください。 
+* **リソース マネージャー** VM の場合は、「 [How to create NSGs for ARM deployments](../virtual-network/tutorial-filter-network-traffic.md)」(ARM デプロイメントの NSG を作成する方法) をご覧ください。 
 * **クラシック** VM の場合は、「 [How to create NSGs for Classic deployments](../virtual-network/virtual-networks-create-nsg-classic-ps.md)」(クラシック デプロイメントの NSG を作成する方法) をご覧ください。
 
 IP アドレスの指定ではいくつかの課題が生じる可能性がありますが、問題点と考えられる回避策を理解していれば簡単に解決できます。 以降のセクションでは、ACL 内の IP アドレスに関する問題に対処するための推奨事項を説明します。
@@ -85,6 +80,6 @@ Search サービスに検索ユニットが 1 つ (1 つのレプリカと 1 つ
 #### <a name="include-the-azure-search-portal-ip-addresses"></a>Azure Search ポータルの IP アドレスを含める
 Azure Portal を使用してインデクサーを作成する場合は、作成時に、Azure Search ポータル ロジックから SQL Azure VM にアクセスできることも必要になります。 Azure Search ポータルの IP アドレスは、 `stamp2.search.ext.azure.com`に ping を実行すると確認できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで構成が完了し、Azure VM 上 の SQL Server を Azure Search インデクサーのデータ ソースとして指定できるようになりました。 詳細については、「 [インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) 」を参照してください。
 

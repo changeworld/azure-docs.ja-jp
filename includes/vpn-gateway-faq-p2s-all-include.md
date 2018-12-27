@@ -5,33 +5,36 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 072c16a0e50a4922d44dd354b632f39b33d23cdd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: eff7ccc40cd31e604cc4e54b6da9421d1d0b4f4e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53439233"
 ---
+### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
+
+それは、ゲートウェイ SKU によって異なります。 サポートされる接続の数の詳細については、「[ゲートウェイの SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
+
 ### <a name="supportedclientos"></a>ポイント対サイト接続で使用できるクライアント オペレーティング システムを教えてください。
 
 次のクライアント オペレーティング システムがサポートされています。
 
 * Windows 7 (32 ビットと 64 ビット)
 * Windows Server 2008 R2 (64 ビットのみ)
-* Windows 8 (32 ビットと 64 ビット)
 * Windows 8.1 (32 ビットと 64 ビット)
 * Windows Server 2012 (64 ビットのみ)
 * Windows Server 2012 R2 (64 ビットのみ)
 * Windows Server 2016 (64 ビットのみ)
 * Windows 10
-* Mac OS X バージョン 10.11 (El Capitan)
-* Mac OS X バージョン 10.12 (Sierra)
+* Mac OS X バージョン 10.11 以降
+* Linux (StrongSwan)
+* iOS
 
-### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
-
-仮想ネットワークに同時に接続できる VPN クライアント数は、最大で 128 個です。
+[!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>プロキシやファイアウォールを経由してポイント対サイト接続の機能を使用できますか。
 
@@ -51,7 +54,7 @@ Azure では、ポイント対サイト VPN のオプションを 2 種類サポ
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>サイト間接続およびポイント対サイト接続の構成は、同一仮想ネットワークに共存させることはできますか。
 
-はい。 Resource Manager デプロイメント モデルの場合には、ゲートウェイにルートベースの VPN が必要になります。 クラシック デプロイメント モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、ポリシーベースの VPN ゲートウェイでは、ポイント対サイト接続はサポートされません。
+はい。 Resource Manager デプロイ モデルの場合には、ゲートウェイにルートベースの VPN が必要になります。 クラシック デプロイ モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、ポリシーベースの VPN ゲートウェイでは、ポイント対サイト接続はサポートされません。
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
 
@@ -73,11 +76,11 @@ Windows 10 または Windows Server 2016 を IKEv2 用に準備するには:
 
 1. 更新プログラムをインストールします。
 
-  | OS バージョン | 日付 | 数/リンク |
-  |---|---|---|---|
-  | Windows Server 2016<br>Windows 10 バージョン 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
-  | Windows 10 バージョン 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-  |  |  |  |  |
+   | OS バージョン | 日付 | 数/リンク |
+   |---|---|---|---|
+   | Windows Server 2016<br>Windows 10 バージョン 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10 バージョン 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   |  |  |  |  |
 
 2. レジストリ キーの値を設定します。 レジストリの "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload" REG_DWORD キーを作成するか、または 1 に設定します。
 
@@ -87,7 +90,7 @@ Windows デバイスと Mac デバイスが混在する環境で SSTP と IKEv2 
 
 ### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>Windows と Mac 以外に、Azure が P2S VPN 向けにサポートしている他のプラットフォームはありますか。
 
-Azure P2S VPN 向けにサポートしているのは、Windows と Mac だけです。
+Azure では、P2S VPN 向けに Windows、Mac、および Linux をサポートしています。
 
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Azure VPN Gateway を既にデプロイしています。 ここで RADIUS または IKEv2 VPN または両方を有効にできますか。
 

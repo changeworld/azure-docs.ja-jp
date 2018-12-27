@@ -1,24 +1,25 @@
 ---
-title: "Linux 上で Azure Service Fabric Reliable Actors Java アプリケーションを作成する | Microsoft Docs"
-description: "Java Service Fabric Reliable Actors アプリケーションを 5 分で作成してデプロイする方法について説明します。"
+title: Linux 上で Azure Service Fabric Reliable Actors Java アプリケーションを作成する | Microsoft Docs
+description: Java Service Fabric Reliable Actors アプリケーションを 5 分で作成してデプロイする方法について説明します。
 services: service-fabric
 documentationcenter: java
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/27/2018
+ms.date: 06/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: abbcb246ada9974e53c677eed37a1ab9ce48d6c5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 61b804b876c91b5fcd12ce15bd7e2438f5d897a0
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617419"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Linux で初めての Java Service Fabric Reliable Actors アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -39,7 +40,7 @@ ms.lasthandoff: 02/09/2018
 Service Fabric には、ターミナルから Yeoman テンプレート ジェネレーターを使って Service Fabric Java アプリケーションを作成できるスキャフォールディング ツールが用意されています。  Yeoman がまだインストールされていない場合は、[Linux による Service Fabric の概要](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)に関するページを参照し、Yeoman をセットアップする手順を確認してください。 Java 用 Service Fabric Yeoman テンプレート ジェネレーターをインストールするには次のコマンドを実行します。
 
   ```bash
-  sudo npm install -g generator-azuresfjava
+  npm install -g generator-azuresfjava
   ```
 
 ## <a name="basic-concepts"></a>基本的な概念
@@ -218,10 +219,25 @@ Service Fabric Java 依存関係は、Maven からフェッチされます。 Se
 アプリケーションのデプロイ後、ブラウザーを開いて [http://localhost:19080/Explorer](http://localhost:19080/Explorer) の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に移動します。
 次に、**Applications** ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認してください。
 
+> [!IMPORTANT]
+> アプリケーションを Azure 内のセキュアな Linux クラスターにデプロイするには、Service Fabric ランタイムを使用してアプリケーションを検証するように証明書を構成する必要があります。 これにより、Reliable Actors サービスが基盤の Service Fabric ランタイム API と通信できるようになります。 詳しくは、「[Reliable Services アプリを Linux クラスター上で実行するように構成する](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)」をご覧ください。  
+>
+
 ## <a name="start-the-test-client-and-perform-a-failover"></a>テスト クライアントの起動と、フェールオーバーの実行
 アクターは単独では何も実行しません。メッセージを送信するには、別のサービスまたはクライアントが必要です。 アクター テンプレートには、アクター サービスとの対話に使用できる簡単なテスト スクリプトが含まれています。
 
+> [!Note]
+> テスト クライアントは、ActorProxy クラスを使用してアクターと通信します。アクターは、アクター サービスと同じクラスター内で実行するか、同じ IP アドレス空間を共有する必要があります。  テスト クライアントは、ローカル開発クラスターと同じコンピューターで実行できます。  ただし、リモート クラスター内のアクターと通信するには、アクターとの外部通信を処理するゲートウェイをクラスターにデプロイする必要があります。
+
 1. ウォッチ ユーティリティを使用してスクリプトを実行し、アクター サービスの出力を確認します。  テスト スクリプトは、アクターに対して `setCountAsync()` メソッドを呼び出してカウンターを増分させ、`getCountAsync()` メソッドを呼び出して新しいカウンター値を取得し、その値をコンソールに表示します。
+
+   MAC OS X の場合は、次の追加コマンドを実行して、HelloWorldTestClient フォルダーをコンテナー内の場所にコピーする必要があります。    
+    
+    ```bash
+     docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
+     docker exec -it [first-four-digits-of-container-ID] /bin/bash
+     cd /home
+     ```
 
     ```bash
     cd HelloWorldActorTestClient
@@ -253,8 +269,8 @@ Service Fabric Java ライブラリは、Maven でホストされてきました
   ```XML
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
-      <artifactId>sf-actors-preview</artifactId>
-      <version>0.12.0</version>
+      <artifactId>sf-actors</artifactId>
+      <version>1.0.0</version>
   </dependency>
   ```
 
@@ -263,7 +279,7 @@ Service Fabric Java ライブラリは、Maven でホストされてきました
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-actors-preview:0.12.0'
+      compile 'com.microsoft.servicefabric:sf-actors:1.0.0'
   }
   ```
 
@@ -274,8 +290,8 @@ Service Fabric Java ライブラリは、Maven でホストされてきました
   ```XML
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
-      <artifactId>sf-services-preview</artifactId>
-      <version>0.12.0</version>
+      <artifactId>sf-services</artifactId>
+      <version>1.0.0</version>
   </dependency>
   ```
 
@@ -284,7 +300,7 @@ Service Fabric Java ライブラリは、Maven でホストされてきました
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-services-preview:0.12.0'
+      compile 'com.microsoft.servicefabric:sf-services:1.0.0'
   }
   ```
 
@@ -296,8 +312,8 @@ Service Fabric Java アプリケーションのトランスポート層サポー
   ```XML
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
-      <artifactId>sf-transport-preview</artifactId>
-      <version>0.12.0</version>
+      <artifactId>sf-transport</artifactId>
+      <version>1.0.0</version>
   </dependency>
   ```
 
@@ -306,7 +322,7 @@ Service Fabric Java アプリケーションのトランスポート層サポー
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-transport-preview:0.12.0'
+      compile 'com.microsoft.servicefabric:sf-transport:1.0.0'
   }
   ```
 
@@ -317,8 +333,8 @@ Service Fabric のシステム レベルのサポート。ネイティブの Ser
   ```XML
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
-      <artifactId>sf-preview</artifactId>
-      <version>0.12.0</version>
+      <artifactId>sf</artifactId>
+      <version>1.0.0</version>
   </dependency>
   ```
 
@@ -327,7 +343,7 @@ Service Fabric のシステム レベルのサポート。ネイティブの Ser
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-preview:0.12.0'
+      compile 'com.microsoft.servicefabric:sf:1.0.0'
   }
   ```
 

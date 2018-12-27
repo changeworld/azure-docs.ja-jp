@@ -1,21 +1,22 @@
 ---
-title: "Azure Site Recovery で Active Directory と DNS を保護する | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用して Active Directory 用のディザスター リカバリー ソリューションを実装する方法について説明します。"
+title: Azure Site Recovery で Active Directory と DNS をのディザスター リカバリーを設定する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して Active Directory と DNS 用のディザスター リカバリー ソリューションを実装する方法について説明します。
 services: site-recovery
-documentationcenter: 
-author: mayanknayar
+documentationcenter: ''
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
-ms.author: manayar
-ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: f96ed8659fc2f49b89199a813f9fab9d5f4af5a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232173"
 ---
-# <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery を使用して Active Directory と DNS を保護する
+# <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 
 SharePoint、Dynamics AX、SAP などのエンタープライズ アプリケーションは、Active Directory と DNS インフラストラクチャを基盤として正常な動作が実現されています。 アプリケーションのディザスター リカバリーを設定するときは、多くの場合、他のアプリケーション コンポーネントを復旧する前に Active Directory と DNS を復旧する必要があります。そうすることで、アプリケーションが正しく機能します。
 
@@ -30,13 +31,10 @@ SharePoint、Dynamics AX、SAP などのエンタープライズ アプリケー
 
 ## <a name="replicate-the-domain-controller"></a>ドメイン コントローラーのレプリケート
 
-ドメイン コントローラーまたは DNS をホストする少なくとも 1 つの VM で、[Site Recovery レプリケーション](#enable-protection-using-site-recovery)をセットアップする必要があります。 環境に[複数のドメイン コントローラー](#environment-with-multiple-domain-controllers)がある場合は、ターゲット サイトで[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をセットアップする必要もあります。 追加のドメイン コントローラーは、Azure またはオンプレミス データセンターに配置できます。
-
-### <a name="single-domain-controller"></a>ドメイン コントローラーが 1 つの場合
-アプリケーションの数が少なく、ドメイン コントローラーが 1 つしかない場合は、サイト全体をまとめてフェールオーバーするとよいでしょう。 このケースでは、Site Recovery を使用して、ターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にドメイン コントローラーをレプリケートすることをお勧めします。 レプリケートされた同じドメイン コントローラーまたは DNS 仮想マシンを、[テスト フェールオーバー](#test-failover-considerations)にも使用できます。
-
-### <a name="multiple-domain-controllers"></a>ドメイン コントローラーが複数の場合
-環境に多数のアプリケーションと複数のドメイン コントローラーがある場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にセットアップすることをお勧めします。 [テスト フェールオーバー](#test-failover-considerations)には、Site Recovery によってレプリケートされたドメイン コントローラーを使用できます。 フェールオーバーには、ターゲット サイト上の追加のドメイン コントローラーを使用できます。
+- ドメイン コントローラーまたは DNS をホストする少なくとも 1 つの VM で、[Site Recovery レプリケーション](#enable-protection-using-site-recovery)をセットアップする必要があります。
+- 環境に[複数のドメイン コントローラー](#environment-with-multiple-domain-controllers)がある場合は、ターゲット サイトで[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をセットアップする必要もあります。 追加のドメイン コントローラーは、Azure またはオンプレミス データセンターに配置できます。
+- アプリケーションの数が少なく、ドメイン コントローラーが 1 つしかない場合は、サイト全体をまとめてフェールオーバーするとよいでしょう。 このケースでは、Site Recovery を使用して、ターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にドメイン コントローラーをレプリケートすることをお勧めします。 レプリケートされた同じドメイン コントローラーまたは DNS 仮想マシンを、[テスト フェールオーバー](#test-failover-considerations)にも使用できます。
+- - 環境に多数のアプリケーションと複数のドメイン コントローラーがある場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にセットアップすることをお勧めします。 [テスト フェールオーバー](#test-failover-considerations)には、Site Recovery によってレプリケートされたドメイン コントローラーを使用できます。 フェールオーバーには、ターゲット サイト上の追加のドメイン コントローラーを使用できます。
 
 ## <a name="enable-protection-with-site-recovery"></a>Site Recovery による保護の有効化
 
@@ -46,7 +44,7 @@ Site Recovery を使用して、ドメイン コントローラーまたは DNS 
 Site Recovery を使用してレプリケートされたドメイン コントローラーは、[テスト フェールオーバー](#test-failover-considerations)に使用されます。 次の要件を満たしていることを確認してください。
 
 1. ドメイン コントローラーがグローバル カタログ サーバーである。
-2. ドメイン コントローラーが、テスト フェールオーバー中に必要なロールに対応する FSMO ロール所有者である。 そうでない場合、フェールオーバー後にこれらのロールを[強制する](http://aka.ms/ad_seize_fsmo)必要があります。
+2. ドメイン コントローラーが、テスト フェールオーバー中に必要なロールに対応する FSMO ロール所有者である。 そうでない場合、フェールオーバー後にこれらのロールを[強制する](https://aka.ms/ad_seize_fsmo)必要があります。
 
 ### <a name="configure-vm-network-settings"></a>VM のネットワーク設定の構成
 ドメイン コントローラーまたは DNS をホストする仮想マシンに関して、Site Recovery で、レプリケートされる仮想マシンの **[コンピューティングとネットワーク]** 設定でネットワーク設定を構成します。 これにより、仮想マシンがフェールオーバー後に適切なネットワークに接続されます。
@@ -57,16 +55,16 @@ Site Recovery を使用してレプリケートされたドメイン コント�
 セカンダリ サイトでドメイン コントローラーを作成します。 サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側で使用されているのと同じドメイン名を指定してください。 **Active Directory サイトとサービス** スナップインを使用して、サイトの追加先となるサイト リンク オブジェクトに対する設定を構成することができます。 サイト リンクで設定を構成することで、2 つまたはそれ以上のサイト間でレプリケーションを発生させる時間と頻度を制御できます。 詳細については、「[Scheduling replication between sites](https://technet.microsoft.com/library/cc731862.aspx)」(サイト間でのレプリケーションをスケジュールする) をご覧ください。
 
 ### <a name="site-to-azure-protection"></a>サイトと Azure 間の保護
-最初に、[Azure 仮想ネットワークでドメイン コントローラーを作成](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)します。 サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側と同じドメイン名を指定してください。
+最初に、Azure 仮想ネットワークでドメイン コントローラーを作成します。 サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側と同じドメイン名を指定してください。
 
-その後、Azure の DNS サーバーを使用するように[仮想ネットワークの DNS サーバーを再構成](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network)します。
+その後、Azure の DNS サーバーを使用するように仮想ネットワークの DNS サーバーを再構成します。
 
 ![Azure ネットワーク](./media/site-recovery-active-directory/azure-network.png)
 
 ### <a name="azure-to-azure-protection"></a>Azure 間の保護
-最初に、[Azure 仮想ネットワークでドメイン コントローラーを作成](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)します。 サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側と同じドメイン名を指定してください。
+最初に、Azure 仮想ネットワークでドメイン コントローラーを作成します。 サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側と同じドメイン名を指定してください。
 
-その後、Azure の DNS サーバーを使用するように[仮想ネットワークの DNS サーバーを再構成](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network)します。
+その後、Azure の DNS サーバーを使用するように仮想ネットワークの DNS サーバーを再構成します。
 
 ## <a name="test-failover-considerations"></a>テスト フェールオーバーの考慮事項
 運用環境のワークロードに影響が生じないように、テスト フェールオーバーは、運用ネットワークから分離されたネットワークで行われます。
@@ -95,7 +93,7 @@ Site Recovery を使用してレプリケートされたドメイン コント�
 
 
 ### <a name="remove-references-to-other-domain-controllers"></a>他のドメイン コントローラーへの参照の削除
-テスト フェールオーバーを開始するときは、テスト ネットワークにすべてのドメイン コントローラーを含めないでください。 運用環境に存在する他のドメイン コントローラーへの参照を削除するには、場合によっては、使用しないドメイン コントローラーに [Active Directory の FSMO ロールを強制](http://aka.ms/ad_seize_fsmo)し、[メタデータのクリーンアップ](https://technet.microsoft.com/library/cc816907.aspx)を実行する必要があります。
+テスト フェールオーバーを開始するときは、テスト ネットワークにすべてのドメイン コントローラーを含めないでください。 運用環境に存在する他のドメイン コントローラーへの参照を削除するには、場合によっては、使用しないドメイン コントローラーに [Active Directory の FSMO ロールを強制](https://aka.ms/ad_seize_fsmo)し、[メタデータのクリーンアップ](https://technet.microsoft.com/library/cc816907.aspx)を実行する必要があります。
 
 
 ### <a name="issues-caused-by-virtualization-safeguards"></a>仮想化のセーフガードが原因で発生する問題
@@ -182,12 +180,14 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-    詳細については、「[Disable the requirement that a global catalog server be available to validate user logons](http://support.microsoft.com/kb/241789)」(ユーザーのログオンを有効にするためにグローバル カタログ サーバーを利用可能にする要件を無効にする) をご覧ください。
+    詳細については、「[Disable the requirement that a global catalog server be available to validate user logons](https://support.microsoft.com/kb/241789)」(ユーザーのログオンを有効にするためにグローバル カタログ サーバーを利用可能にする要件を無効にする) をご覧ください。
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS とドメイン コントローラーが異なるマシン上に存在する場合
-DNS がドメイン コントローラーと同じ仮想マシン上にない場合、テスト フェールオーバー用の DNS 仮想マシンを作成する必要があります。 DNS とドメイン コントローラーが同じ仮想マシン上にある場合は、このセクションをスキップできます。
 
-新規の DNS サーバーを使用し、必要なすべてのゾーンを作成することができます。 たとえば、Active Directory ドメインが contoso.com である場合には、contoso.com という名前で DNS ゾーンを作成することができます。Active Directory に対応するエントリは DNS で次のように更新する必要があります。
+同じ VM 上でドメイン コントローラーと DNS を実行している場合は、この手順を省略できます。
+
+
+DNS がドメイン コントローラーと同じ VM 上にない場合は、テスト フェールオーバー用の DNS VM を作成する必要があります。 新規の DNS サーバーを使用し、必要なすべてのゾーンを作成することができます。 たとえば、Active Directory ドメインが contoso.com である場合には、contoso.com という名前で DNS ゾーンを作成することができます。 Active Directory に対応するエントリは DNS で次のように更新する必要があります。
 
 1. 復旧計画内の他のすべての仮想マシンが起動する前に、次の設定が有効になっているようにします。
    * ゾーンは、フォレスト ルート名に従って名前を付ける必要があります。

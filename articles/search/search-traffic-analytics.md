@@ -1,24 +1,19 @@
 ---
-title: "Azure Search の検索トラフィックの分析 |Microsoft Docs"
-description: "Azure Search の検索トラフィックの分析 (Microsoft Azure 上のクラウド ホスト検索サービス) を有効にして、ユーザーとデータに関する洞察のロックを解除します。"
+title: Azure Search の検索トラフィックの分析 |Microsoft Docs
+description: Azure Search の検索トラフィックの分析 (Microsoft Azure 上のクラウド ホスト検索サービス) を有効にして、ユーザーとデータに関する洞察のロックを解除します。
+author: HeidiSteen
+manager: cgronlun
 services: search
-documentationcenter: 
-author: bernitorres
-manager: jlembicz
-editor: 
-ms.assetid: b31d79cf-5924-4522-9276-a1bb5d527b13
 ms.service: search
-ms.devlang: multiple
-ms.workload: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/05/2017
-ms.author: betorres
-ms.openlocfilehash: 303ca5c820f573dc0b58f1910f258403c3baad2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: heidist
+ms.openlocfilehash: 4b40e8c9f681b7489c0ab2ffe7b369cc869c73e2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777261"
 ---
 # <a name="what-is-search-traffic-analytics"></a>検索トラフィックの分析とは
 検索トラフィックの分析は、検索サービスのフィードバック ループの実装パターンです。 このパターンでは、必要なデータと、Application Insights を使用してデータを収集する方法を示します。Application Insights は、複数のプラットフォームでサービスを監視する業界最先端のサービスです。
@@ -157,7 +152,7 @@ Azure Search サービスの[ポータル](https://portal.azure.com) ページ�
 
 *JavaScript*
 
-    appInsights.TrackEvent("Click", {
+    appInsights.trackEvent("Click", {
         SearchServiceName: <service name>,
         SearchId: <search id>,
         ClickedDocId: <clicked document id>,
@@ -184,7 +179,7 @@ Power BI Desktop テンプレートに含まれるメトリックは次のとお
 ![Application Insights から読み取るための Power BI テンプレート][3]
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 検索アプリケーションをインストルメント化して、検索サービスに関する有益で洞察に富んだデータを取得します。
 
 Application Insights の詳細については、[こちら](https://go.microsoft.com/fwlink/?linkid=842905)をご覧ください。 さまざまなサービス レベルの詳細については、Application Insights の[価格に関するページ](https://azure.microsoft.com/pricing/details/application-insights/)をご覧ください。

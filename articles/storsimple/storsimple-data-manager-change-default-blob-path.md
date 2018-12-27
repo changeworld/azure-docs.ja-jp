@@ -1,12 +1,12 @@
 ---
-title: "BLOB パスを既定値から変更する | Microsoft Docs"
-description: "BLOB ファイル パス名を変更するように Azure 関数を設定する方法について説明します"
+title: BLOB パスを既定値から変更する | Microsoft Docs
+description: BLOB ファイル パス名を変更するように Azure 関数を設定する方法について説明します
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862402"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>BLOB パスを既定のパスから変更する
 

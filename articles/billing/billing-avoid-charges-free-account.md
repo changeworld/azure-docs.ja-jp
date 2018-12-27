@@ -1,24 +1,25 @@
 ---
-title: "無料アカウントの課金の回避 - Azure | Microsoft Docs"
-description: "Azure 無料アカウントに対する課金の理由を理解します。 これらの課金を回避する方法について説明します。"
-services: 
-documentationcenter: 
+title: Azure 無料アカウントの課金を回避する | Microsoft Docs
+description: Azure 無料アカウントに対する課金の理由を理解します。 これらの課金を回避する方法について説明します。
+services: ''
+documentationcenter: ''
 author: amberbhargava
 manager: amberb
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: amberb
-ms.openlocfilehash: 527e77d7ab8c67ea538d2452357f31a698b2b6ea
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: cwatson
+ms.openlocfilehash: 37e43e4bb8b2aea21e0fa396dd197ca41793469d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394167"
 ---
 # <a name="avoid-getting-charged-for-your-azure-free-account"></a>Azure 無料アカウントの課金の回避
 

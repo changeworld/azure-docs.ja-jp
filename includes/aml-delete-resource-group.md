@@ -1,30 +1,32 @@
 ---
-title: "インクルード ファイル"
-description: "インクルード ファイル"
+title: インクルード ファイル
+description: インクルード ファイル
 services: machine-learning
-author: j-martens
 ms.service: machine-learning
-ms.author: jmartens
-manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 02/28/2018
-ms.openlocfilehash: c47c0a90535a4749ae3fd467b86102aa668285b8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+author: j-martens
+ms.author: jmartens
+ms.date: 12/04/2018
+ms.openlocfilehash: de24478a39b656c1326bc53825aab317e652d672
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53007939"
 ---
-このアプリの使用を続けない場合は、次の手順に従って、このクイック スタートで作成したすべてのリソースを削除して、課金が発生しないようにします。
+>[!IMPORTANT]
+>作成したリソースは、Azure Machine Learning サービスに関連したその他のチュートリアルおよびハウツー記事の前提条件として使用できます。 
 
->[!NOTE]
->Azure Machine Learning サービスに関する他のチュートリアルにこの後すぐ取り組む場合は、これらのリソースが必要となります。
 
-1. Azure Portal で、左端にある **[リソース グループ]** を選択します。  
+ここで作成したリソースを今後使用する予定がない場合は、課金が発生しないように削除します。
+
+1. Azure Portal で、左端にある **[リソース グループ]** を選択します。
  
    ![Azure Portal での削除](./media/aml-delete-resource-group/delete-resources.png)
 
-2. リソース グループの一覧で作成したリソース グループを選択してから、**[リソース グループの削除]** をクリックします。
+1. 作成したリソース グループを一覧から選択します。
 
-3. 削除するリソース グループの名前を入力し、**[削除]** をクリックします。
+1. **[リソース グループの削除]** を選択します。
 
+1. リソース グループの名前を入力し、**[削除]** を選択します。

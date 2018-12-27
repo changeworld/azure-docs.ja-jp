@@ -1,18 +1,18 @@
 ---
-title: "Azure Site Recovery を使用してセカンダリサイトに対して Hyper-V VM の DR ドリルを実行する | Microsoft Docs"
-description: "Azure Site Recovery を使用して、セカンダリ データセンターに対して VMM クラウド内の Hyper-V VM の DR ドリルを実行する方法について説明します。"
-services: site-recovery
+title: Azure Site Recovery を使用してセカンダリサイトに対して Hyper-V VM のディザスター リカバリー ドリルを実行する | Microsoft Docs
+description: Azure Site Recovery を使用して、セカンダリ オンプレミス データセンターに対して VMM クラウド内の Hyper-V VM の DR ドリルを実行する方法について説明します。
 author: ponatara
 manager: abhemraj
 ms.service: site-recovery
-ms.topic: article
-ms.date: 02/12/2018
+ms.topic: conceptual
+ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: a586eac3be39a4d3fb35dff7a4b1cc40f32f2720
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3f7e534e9c698e31e1061c35aec713d20c7e570f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211351"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>セカンダリサイトに対して Hyper-V VM の DR ドリルを実行する
 
@@ -52,10 +52,17 @@ ms.lasthandoff: 02/21/2018
 ### <a name="best-practices"></a>ベスト プラクティス
 
 - 運用環境のネットワークでテストを行うと、運用環境のワークロードでダウンタイムが発生します。 ディザスター リカバリー訓練の実施中は、ユーザーにアプリを使用しないように依頼してください。
-- テスト ネットワークは、テスト フェールオーバーで使用される VMM 論理ネットワークの種類と一致する必要はありません。 ただし、機能しない組み合わせもあります。レプリカが DHCP と VLAN ベースの分離を使用する場合、レプリカの VM ネットワークには、静的 IP アドレス プールは必要ありません。 このため、Windows ネットワーク仮想化を使用してテスト フェールオーバーを実行しようとすると、使用できるアドレス プールがないため失敗します。 
-        レプリカ ネットワークが分離を使用せず、テスト ネットワークが Windows ネットワーク仮想化を使用する場合、テスト フェールオーバーは失敗します。 これは、分離なしのネットワークには、Windows ネットワーク仮想化ネットワークの作成に必要なサブネットがないためです。
+
+- テスト ネットワークは、テスト フェールオーバーで使用される VMM 論理ネットワークの種類と一致する必要はありません。 ただし、いくつかの組み合わせは機能しません。
+
+     - レプリカが DHCP と VLAN ベースの分離を使用する場合、レプリカの VM ネットワークには、静的 IP アドレス プールは必要ありません。 このため、Windows ネットワーク仮想化を使用してテスト フェールオーバーを実行しようとすると、使用できるアドレス プールがないため失敗します。 
+        
+     - レプリカ ネットワークが分離を使用せず、テスト ネットワークが Windows ネットワーク仮想化を使用する場合、テスト フェールオーバーは失敗します。 これは、分離なしのネットワークには、Windows ネットワーク仮想化ネットワークの作成に必要なサブネットがないためです。
+        
 - ネットワーク マッピング用に選択したネットワークはテスト フェールオーバーでは使用しないことをお勧めします。
+
 - フェールオーバー後にマップされた VM ネットワークにレプリカ仮想マシンが接続される方法は、VMM コンソールでの VM ネットワークの構成方法によって異なります。
+
 
 ### <a name="vm-network-configured-with-no-isolation-or-vlan-isolation"></a>分離なしまたは VLAN 分離で構成された VM ネットワーク
 

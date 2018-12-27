@@ -1,26 +1,20 @@
 ---
-title: "スクリプト アクションを使用した Linux ベースの HDInsight での Solr のインストール - Azure | Microsoft Docs"
-description: "Script Action を使用して Linux ベースの HDInsight Hadoop クラスターに Solr をインストールする方法について説明します。"
+title: スクリプト アクションを使用した Linux ベースの HDInsight での Solr のインストール - Azure
+description: Script Action を使用して Linux ベースの HDInsight Hadoop クラスターに Solr をインストールする方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: cc93ed5c-a358-456a-91a4-f179185c0e98
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/20/2018
-ms.author: larryfr
-ms.openlocfilehash: f642a1f8060f566ec95b23995d0f82191b0c5315
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: hrasheed
+ms.openlocfilehash: 1c8c63e10e62af60e09af729b115cc675dae7205
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009404"
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Solr をインストールして使用する
 
@@ -39,7 +33,7 @@ ms.lasthandoff: 02/21/2018
 > [!WARNING]
 > HDInsight クラスターに付属のコンポーネントは、Microsoft によって完全にサポートされています。
 >
-> Solr といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートでは、カスタム コンポーネントの問題を解決できないことがあります。 支援を受けるため、オープン ソース コミュニティに参加することが必要になる場合があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> Solr といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートでは、カスタム コンポーネントの問題を解決できないことがあります。 支援を受けるため、オープン ソース コミュニティに参加することが必要になる場合があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 ## <a name="what-the-script-does"></a>スクリプトの機能
 
@@ -61,7 +55,7 @@ Solr がインストールされているクラスターを作成するには、
 1. __[クラスターの概要]__ セクションで、[詳細設定] を選択し、__[スクリプト アクション]__ を選択します。 次の情報を使用して、フォームに記入します。
 
    * **[名前]**: スクリプト アクションの表示名を入力します。
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
+   * **[スクリプト URI]**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
    * **[ヘッド]**: このオプションをオンにします。
    * **[ワーカー]**: このオプションをオンにします
    * **[Zookeeper]**: Zookeeper ノードにインストールするには、このオプションをオンにします
@@ -82,14 +76,17 @@ Solr がインストールされているクラスターを作成するには、
 
 1. SSH を使用して HDInsight クラスターに接続します。
 
+    > [!NOTE]
+    > `sshuser` をクラスターの SSH ユーザーに置き換えます。 `clustername` をクラスターの名前に置き換えます。
+
     ```bash
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ssh sshuser@clustername-ssh.azurehdinsight.net
     ```
 
     詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
      > [!IMPORTANT]
-     > このドキュメントの後半の手順では、SSL トンネルを使用して Solr Web UI に接続します。 これらの手順を使用するには、SSL トンネルを確立し、それを使用するようにブラウザーを構成する必要があります。
+     > このドキュメントの後半の手順では、SSH トンネルを使用して Solr Web UI に接続します。 これらの手順を使用するには、SSH トンネルを確立し、それを使用するようにブラウザーを構成する必要があります。
      >
      > 詳細については、[HDInsight での SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するドキュメントを参照してください。
 
@@ -178,7 +175,7 @@ SSH トンネルを確立したら、Solr ダッシュボードを使用する�
 
 1. プライマリ ヘッドノードのホスト名を決定します。
 
-   1. SSH を使用してクラスターのヘッド ノードに接続します。 たとえば、「`ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
+   1. SSH を使用してクラスターのヘッド ノードに接続します。 たとえば、「 `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net` 」のように入力します。
 
        SSH の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -319,7 +316,7 @@ sudo start solr
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-Solr のバックアップと復元の操作の詳細については、 [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups)をご覧ください。
+Solr のバックアップと復元の操作の詳細については、[https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

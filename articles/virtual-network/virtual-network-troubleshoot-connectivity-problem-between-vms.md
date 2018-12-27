@@ -1,24 +1,25 @@
 ---
-title: "Azure VM 間の接続に関する問題のトラブルシューティング | Microsoft Docs"
-description: "Azure VM 間の接続に関する問題をトラブルシューティングする方法について説明します。"
+title: Azure VM 間の接続に関する問題のトラブルシューティング | Microsoft Docs
+description: Azure VM 間の接続に関する問題をトラブルシューティングする方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2017
+ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 3011ef7eced5a24ba07d06e2db2f5e4d344b94de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7574ac1a5937fbe963ef764d42f04d00f6c02d69
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241771"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM 間の接続に関する問題のトラブルシューティング
 
@@ -98,11 +99,11 @@ VM のアプリまたはサービスがポートをリッスンしているか�
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>手順 7: クラシック VM のエンドポイントが作成されているかどうかを確認する
 
-クラシック デプロイメント モデルを使用して Azure で作成したすべての VM は、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。 ただし、他の仮想ネットワーク上にあるコンピューターと通信するには、受信ネットワーク トラフィックを仮想マシンに転送するエンドポイントが必要になります。 詳細については、[エンドポイントの設定方法](../virtual-machines/windows/classic/setup-endpoints.md)に関するページを参照してください。
+クラシック デプロイ モデルを使用して Azure で作成したすべての VM は、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。 ただし、他の仮想ネットワーク上にあるコンピューターと通信するには、受信ネットワーク トラフィックを仮想マシンに転送するエンドポイントが必要になります。 詳細については、[エンドポイントの設定方法](../virtual-machines/windows/classic/setup-endpoints.md)に関するページを参照してください。
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>手順 8: VM ネットワーク共有への接続を試みる
 
-VM ネットワーク共有に接続できない場合の原因として、使用できない NIC が VM にあることが考えられます。 使用できない NIC を削除するには、[使用できない NIC の削除方法](../virtual-machines/windows/reset-network-interface.md#delete-the-unavailable-nics)に関するページを参照してください。
+VM ネットワーク共有に接続できない場合の原因として、使用できない NIC が VM にあることが考えられます。 使用できない NIC を削除するには、[使用できない NIC の削除方法](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)に関するページを参照してください。
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>手順 9: VNET 間接続を確認する
 

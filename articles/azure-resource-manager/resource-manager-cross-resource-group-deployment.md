@@ -8,16 +8,17 @@ manager: timlt
 editor: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2018
+ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 90cb87b3fe94b7b3b0eba1b261d29a1c8f4348d6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fec075a744b5f47a4be7f1b960cceedfea7b9a2c
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47090794"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする
 
@@ -126,13 +127,11 @@ ms.lasthandoff: 03/16/2018
 
 存在しないリソース グループの名前を `resourceGroup` に設定した場合、デプロイは失敗します。
 
-テンプレート例をデプロイするには、Azure PowerShell 4.0.0 以降、または Azure CLI 2.0.0 以降を使用します。
+## <a name="use-the-resourcegroup-and-subscription-functions"></a>ResourceGroup() および subscription() 関数の使用
 
-## <a name="use-the-resourcegroup-function"></a>resourceGroup() 関数の使用
+リソース グループ間のデプロイの場合、[resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) および [subscription()](resource-group-template-functions-resource.md#subscription) 関数は、入れ子になったテンプレートの指定方法に基づいてさまざまに解決されます。 
 
-リソース グループ間のデプロイの場合、[resourceGroup() 関数](resource-group-template-functions-resource.md#resourcegroup)は、入れ子になったテンプレートの指定方法に基づいてさまざまに解決されます。 
-
-あるテンプレートを別のテンプレートに埋め込む場合、入れ子になったテンプレート内の resourceGroup() は親リソース グループに解決されます。 埋め込みテンプレートでは次の形式が使用されます。
+あるテンプレートを別のテンプレートに埋め込む場合、入れ子になったテンプレート内の関数は親リソース グループおよびサブスクリプションに解決されます。 埋め込みテンプレートでは次の形式が使用されます。
 
 ```json
 "apiVersion": "2017-05-10",
@@ -143,12 +142,12 @@ ms.lasthandoff: 03/16/2018
     "mode": "Incremental",
     "template": {
         ...
-        resourceGroup() refers to parent resource group
+        resourceGroup() and subscription() refer to parent resource group/subscription
     }
 }
 ```
 
-別のテンプレートにリンクする場合、リンクされたテンプレート内の resourceGroup() は入れ子になったリソース グループに解決されます。 リンクされたテンプレートでは次の形式が使用されます。
+別のテンプレートにリンクする場合、リンクされたテンプレート内の関数は入れ子になったリソース グループおよびサブスクリプションに解決されます。 リンクされたテンプレートでは次の形式が使用されます。
 
 ```json
 "apiVersion": "2017-05-10",
@@ -159,7 +158,7 @@ ms.lasthandoff: 03/16/2018
     "mode": "Incremental",
     "templateLink": {
         ...
-        resourceGroup() in linked template refers to linked resource group
+        resourceGroup() and subscription() in linked template refer to linked resource group/subscription
     }
 }
 ```
@@ -168,7 +167,7 @@ ms.lasthandoff: 03/16/2018
 
 以下のテンプレートは、複数のリソース グループのデプロイを示しています。 テンプレートをデプロイするスクリプトは、表の後に示されています。
 
-|テンプレート  |[説明]  |
+|テンプレート  |説明  |
 |---------|---------|
 |[クロス サブスクリプション テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |1 つのストレージ アカウントを 1 つのリソース グループに、また 1 つのストレージ アカウントを 2 番目のリソース グループにデプロイします。 2 番目のリソース グループが別のサブスクリプションにある場合は、サブスクリプション ID の値が含まれます。 |
 |[クロス リソース グループ プロパティ テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |`resourceGroup()` 関数の解決方法を示します。 このテンプレートではリソースはデプロイされません。 |

@@ -3,7 +3,7 @@ title: Azure DNS の委任の概要 | Microsoft Docs
 description: ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
@@ -12,12 +12,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
-ms.author: kumud
-ms.openlocfilehash: fc79999d240baf18ccf5923908c98791c4e7e7bb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: victorh
+ms.openlocfilehash: a00cc00dee3a505f88abef3ecf99f49aa027c30b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170506"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Azure DNS による DNS ゾーンの委任
 
@@ -59,7 +60,7 @@ PC やモバイル デバイスの DNS クライアントは、通常、クラ�
 1. クライアントがローカル DNS サーバーに `www.partners.contoso.net` を要求します。
 1. レコードがないため、ローカル DNS サーバーはルート ネーム サーバーに要求を行います。
 1. ルート ネーム サーバーにはレコードがありません。しかし、`.net` ネーム サーバーのアドレスがあるため、ルート ネーム サーバーはそのアドレスを DNS サーバーに提供します。
-1. DNS サーバーは `.net` ネーム サーバーに要求を送信します。.net ネーム サーバーにはレコードはありませんが、contoso.net ネーム サーバーのアドレスがあります。 この例では、これは Azure DNS でホストされている DNS ゾーンです。
+1. DNS サーバーは `.net` ネーム サーバーに要求を送信します。ネーム サーバーにはレコードはありませんが、contoso.net ネーム サーバーのアドレスがあります。 この例では、これは Azure DNS でホストされている DNS ゾーンです。
 1. `contoso.net` ゾーンにはレコードはありませんが、`partners.contoso.net` のネーム サーバーがあるので、このネーム サーバーが返されます。 この例では、これは Azure DNS でホストされている DNS ゾーンです。
 1. DNS サーバーは、`partners.contoso.net` ゾーンに対して `partners.contoso.net` の IP アドレスを要求します。 このゾーンには A レコードが格納されており、IP アドレスが返されます。
 1. DNS サーバーからクライアントに IP アドレスが提供されます。

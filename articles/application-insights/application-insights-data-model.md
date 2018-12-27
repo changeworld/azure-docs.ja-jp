@@ -1,22 +1,23 @@
 ---
-title: "Azure Application Insights Telemetry のデータ モデル | Microsoft Docs"
-description: "Application Insights データ モデルの概要"
+title: Azure Application Insights Telemetry のデータ モデル | Microsoft Docs
+description: Application Insights データ モデルの概要
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2017
+ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: b14eea46e773a4b92ba20cd3121cd258f86307c9
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 261bf1435680eb5fa25e5743f1eb44bbe53bf27f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724997"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights Telemetry のデータ モデル
 
@@ -50,7 +51,7 @@ Application Insights データ モデルはシンプルで基本的でありな�
 
 データ モデルまたはスキーマの問題やご提案を報告するには、GitHub の[ApplicationInsights ホーム](https://github.com/Microsoft/ApplicationInsights-Home/labels/schema) リポジトリを使用してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [カスタム テレメトリを記述します](app-insights-api-custom-events-metrics.md)。
 - [テレメトリの拡張とフィルター処理](app-insights-api-filtering-sampling.md)を行う方法を確認します。

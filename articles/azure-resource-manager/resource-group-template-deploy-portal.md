@@ -1,29 +1,28 @@
 ---
-title: "Azure Portal を使用した Azure リソースのデプロイ | Microsoft Docs"
-description: "Azure ポータルと Azure Resource Manager を使用して、リソースをデプロイします。"
+title: Azure Portal を使用した Azure リソースのデプロイ | Microsoft Docs
+description: Azure ポータルと Azure Resource Manager を使用して、リソースをデプロイします。
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/08/2017
+ms.topic: conceptual
+ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 39680d4e70cc47cfa119b3a46e8d51ea87fa618d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b8a6d58ad79b591548542d69e69b71ec61af79af
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220127"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
 
-このトピックでは、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースをデプロイする方法について説明します。 リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
+この記事では、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースをデプロイする方法について説明します。 リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
 
-## <a name="create-resource-group"></a>Create resource group
+## <a name="create-resource-group"></a>リソース グループの作成
 
 1. 空のリソース グループを作成するには、**[リソース グループ]** を選択します。
 
@@ -61,7 +60,7 @@ ms.lasthandoff: 02/21/2018
 
 1. 選択したリソースの種類によっては、デプロイ前に設定する必要がある、関連する一連のプロパティがあります。 すべての種類で、対象リソース グループを選択する必要があります。 次の画像は、Web アプリを作成し、先ほど作成したリソース グループにデプロイする方法を示しています。
 
-   ![Create resource group](./media/resource-group-template-deploy-portal/select-existing-group.png)
+   ![リソース グループの作成](./media/resource-group-template-deploy-portal/select-existing-group.png)
 
    また、リソースをデプロイするときにリソース グループを作成することもできます。 **[新規作成]** を選択して、リソース グループに名前を付けます。
 
@@ -79,11 +78,14 @@ ms.lasthandoff: 02/21/2018
 
 デプロイを実行するが、Marketplace 内のテンプレートを使用しない場合は、ソリューションのインフラストラクチャを定義するカスタマイズされたテンプレートを作成できます。 テンプレートの作成の詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」をご覧ください。
 
+> [!NOTE]
+> ポータル インターフェイスは、[Key Vault からのシークレット](resource-manager-keyvault-parameter.md)の参照をサポートしません。 代わりに、[PowerShell](resource-group-template-deploy.md) または [Azure CLI](resource-group-template-deploy-cli.md) を使用して、テンプレートをローカルにデプロイするか、外部 URI からデプロイします。
+
 1. カスタマイズされたテンプレートをポータル経由でデプロイするには、**[リソースの作成]** を選択し、オプションから選択できるようになるまで **[テンプレートのデプロイ]** を検索します。
 
    ![テンプレートのデプロイの検索](./media/resource-group-template-deploy-portal/search-template.png)
 
-1. **[作成]**を選択します。
+1. **作成**を選択します。
 
    ![作成の選択](./media/resource-group-template-deploy-portal/show-template-option.png)
 
@@ -113,7 +115,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="deploy-resources-from-a-template-saved-to-your-account"></a>アカウントに保存されたテンプレートからリソースをデプロイする
 
-ポータルでは、Azure アカウントにテンプレートを保存し、後で再デプロイを行うことができます。 保存したテンプレートの操作の詳細については、「 [Azure ポータルでプライベート テンプレートを使ってみる](../marketplace-consumer/mytemplates-getstarted.md)」を参照してください。
+ポータルでは、Azure アカウントにテンプレートを保存し、後で再デプロイを行うことができます。 テンプレートの詳細については、「[初めての Azure Resource Manager テンプレートを作成およびデプロイする](resource-manager-create-first-template.md)」を参照してください。
 
 1. 保存したテンプレートを検索するには、**[その他のサービス]** を選択します。
 
@@ -135,4 +137,4 @@ ms.lasthandoff: 02/21/2018
 * 監査ログの表示については、「 [Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
 * デプロイ エラーをトラブルシューティングするには、「[デプロイ操作の表示](resource-manager-deployment-operations.md)」を参照してください。
 * デプロイまたはリソース グループからテンプレートを取得するには、「 [既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
-* 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
+* 複数のリージョン間で、サービスを安全にロールアウトするには、[Azure デプロイ マネージャー](deployment-manager-overview.md)を参照してください。

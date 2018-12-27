@@ -1,40 +1,41 @@
 ---
-title: "Visual Studio Team Services からデプロイされる関数を Azure で作成する | Microsoft Docs"
-description: "Function App の作成と Visual Studio Team Services からの関数コードのデプロイ"
+title: Azure DevOps からデプロイされる関数を Azure で作成する | Microsoft Docs
+description: 関数アプリを作成して Azure DevOps から関数コードをデプロイします
 services: functions
-keywords: 
-author: syntaxc4
-ms.author: cfowler
-ms.date: 01/09/2018
+keywords: ''
+author: ggailey777
+ms.author: glenga
+ms.date: 07/03/2018
 ms.topic: sample
-ms.service: functions
+ms.service: azure-functions
 ms.custom: mvc
-ms.openlocfilehash: 0bd2e0896758b4d9f019b0c9520c5e9e1f3afd94
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 17e33e3c0e6b06266025a7f0e6403789c9468a16
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957481"
 ---
-# <a name="create-a-function-app-and-deploy-function-code-from-visual-studio-team-services"></a>関数アプリの作成と Visual Studio Team Services からの関数コードのデプロイ
+# <a name="create-a-function-app-and-deploy-function-code-from-azure-devops"></a>関数アプリを作成して Azure DevOps から関数コードをデプロイする
 
-このトピックでは、Azure Functions を使用して、[消費プラン](../functions-scale.md#consumption-plan)を使用する[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数アプリを作成する方法を説明します。 関数アプリは、関数のコンテナーであり、Visual Studio Team Services (VSTS) リポジトリから継続的にデプロイされます。 
+このトピックでは、Azure Functions を使用して、[消費プラン](../functions-scale.md#consumption-plan)を使用する[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数アプリを作成する方法を説明します。 関数アプリは、ユーザーの関数用のコンテナーであり、Azure DevOps リポジトリから継続的にデプロイされます。 
 
 [!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 このトピックを完了するには、以下が必要です。
 
-* ユーザーの関数アプリ プロジェクトが含まれ、ユーザーが管理アクセス許可を持っている VSTS リポジトリ。
-* VSTS リポジトリにアクセスするための[個人用アクセス トークン (PAT)](https://docs.microsoft.com/vsts/accounts/use-personal-access-tokens-to-authenticate)。
+* ユーザーの関数アプリ プロジェクトが含まれ、ユーザーが管理アクセス許可を持っている Azure DevOps リポジトリ。
+* Azure DevOps リポジトリにアクセスするための[個人用アクセス トークン (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Azure CLI をローカルで使用する場合は、バージョン 2.0 以降をインストールして使用する必要があります。 Azure CLI のバージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+Azure CLI をローカルで使用する場合は、バージョン 2.0 以降をインストールして使用する必要があります。 Azure CLI のバージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-このサンプルでは、Azure Function App を作成し、Visual Studio Team Services から関数コードをデプロイします。
+このサンプルでは、Azure 関数アプリを作成し、Azure DevOps から関数コードをデプロイします。
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/deploy-function-app-with-function-vsts/deploy-function-app-with-function-vsts.sh?highlight=3-4 "Azure Service")]
 
@@ -46,10 +47,10 @@ Azure CLI をローカルで使用する場合は、バージョン 2.0 以降�
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/appservice/web#az_appservice_web_delete) |
-| [az appservice web source-control config](https://docs.microsoft.com/cli/azure/appservice/web/source-control#az_appservice_web_source_control_config) | Function App を Git または Mercurial レポジトリと関連付けます。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | 関数アプリに必要なストレージ アカウントを作成します。 |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成します。 |
+| [az functionapp deployment source config](https://docs.microsoft.com/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Function App を Git または Mercurial レポジトリと関連付けます。 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,33 +1,32 @@
 ---
-title: "Azure から Linux VHD をダウンロードする | Microsoft Docs"
-description: "Azure CLI と Azure Portal を使用して Linux VHD をダウンロードします。"
+title: Azure から Linux VHD をダウンロードする | Microsoft Docs
+description: Azure CLI と Azure Portal を使用して Linux VHD をダウンロードします。
 services: virtual-machines-windows
-documentationcenter: 
-author: davidmu1
-manager: timlt
-editor: 
+documentationcenter: ''
+author: cynthn
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2017
-ms.author: davidmu
-ms.openlocfilehash: 20af28dd4caa6ee5487b9a2ed83715b9b16fad48
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 06/01/2018
+ms.author: cynthn
+ms.openlocfilehash: 5f269f074236beef3e213c888e540bcf18238be1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953703"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
 この記事では、Azure CLI と Azure Portal を使用して、Azure から [Linux 仮想ハード ディスク (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ファイルをダウンロードする方法を説明します。 
 
-Azure の仮想マシン (VM) では、オペレーティング システム、アプリケーション、およびデータを格納するための場所として[ディスク](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用します。 Azure のすべての VM には、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクは最初にイメージから作成されます。オペレーティング システム ディスクとイメージの両方は VHD であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。
-
-[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) をまだインストールしていない場合はインストールします。
+[Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) をまだインストールしていない場合はインストールします。
 
 ## <a name="stop-the-vm"></a>VM を停止する
 
@@ -35,10 +34,10 @@ VHD は、実行中の VM に接続されている場合、Azure からダウン
 
 VHD をイメージとして使用して他の VM を作成するには、次の手順を実行します。
 
-1. SSH、アカウント名、および VM のパブリック IP アドレスを使用して VM に接続し、プロビジョニング解除します。 +user パラメーターにより、前回プロビジョニングされたユーザー アカウントも削除されます。 アカウントの資格情報を VM に組み込む場合は、この +user パラメーターを指定しないでください。 次の例では、前回プロビジョニングされたユーザー アカウントを削除します。
+1. SSH、アカウント名、および VM のパブリック IP アドレスを使用して VM に接続し、プロビジョニング解除します。 パブリック IP アドレスは、[az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show) で検索できます。 +user パラメーターにより、前回プロビジョニングされたユーザー アカウントも削除されます。 アカウントの資格情報を VM に組み込む場合は、この +user パラメーターを指定しないでください。 次の例では、前回プロビジョニングされたユーザー アカウントを削除します。
 
     ```bash
-    ssh azureuser@40.118.249.235
+    ssh azureuser@<publicIpAddress>
     sudo waagent -deprovision+user -force
     exit 
     ```
@@ -59,7 +58,7 @@ VHD をイメージとして使用して他の VM を作成するには、次の
 VHD を既存の VM の新しいインスタンス用のディスクまたはデータ ディスクとして使用するには、次の手順を実行します。
 
 1.  [Azure Portal](https://portal.azure.com/) にサインインします。
-2.  ハブ メニューで **[Virtual Machines]**をクリックします。
+2.  ハブ メニューで **[Virtual Machines]** をクリックします。
 3.  一覧から VM を選択します。
 4.  VM のブレードで、**[停止]** をクリックします。
 
@@ -87,6 +86,6 @@ VHD ファイルをダウンロードするには、[Shared Access Signature (SA
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure CLI 2.0 を使用してカスタム ディスクをアップロードし、Linux VM を作成する](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法を学習します。 
+- [Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法を学習します。 
 - [Azure CLI を使用した Azure ディスクの管理](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 

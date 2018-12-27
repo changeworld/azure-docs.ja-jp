@@ -3,22 +3,24 @@ title: Team Data Science Process とは | Microsoft Docs
 description: 予測分析ソリューションとインテリジェント アプリケーションを実現するデータ サイエンス手法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: b1f677bb-eef5-4acb-9b3b-8a5819fb0e78
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: bradsev
-ms.openlocfilehash: f7c081dcd74164f4b1f054f5a65f2ff6aaabebd7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: e6e6b8e03102825a15035adbea80ac5e9f3fa404
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996453"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 
@@ -49,7 +51,7 @@ Team Data Science Process (TDSP) には、データ サイエンス プロジェ
 * **ビジネスの把握**
 * **データの取得と理解**
 * **モデリング**
-* **デプロイ**
+* **Deployment**
 * **顧客による受け入れ**
 
 次の図は、**Team Data Science Process ライフサイクル**を視覚的に表したものです。 
@@ -65,11 +67,11 @@ TDSP におけるライフサイクルの各ステージの目標、タスク、
 
 次の図は、これらの役割 (縦軸) ごとにライフサイクルの各ステージ (横軸) に関連付けられたタスク (青色) とアーティファクト (緑色) をグリッド形式で示したものです。 
 
-![TDSP の役割とタスク](./media/overview/tdsp-tasks-by-roles.png)
+[ ![TDSP の役割とタスク](./media/overview/tdsp-tasks-by-roles.png) ](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
 ## <a name="standardized-project-structure"></a>標準プロジェクト構造
 
-すべてのプロジェクトでディレクトリ構造を共有すると共に、プロジェクト ドキュメントにテンプレートを使用すれば、チーム メンバーがそのプロジェクトに関する情報を見つけやすくなります。 すべてのコードとドキュメントを Git、TFS、Subversion などのバージョン管理システム (VCS) に格納すれば、チームでのコラボレーションが可能になります。 各機能のコードも、Jira、Rally、Visual Studio Team Services などのアジャイル プロジェクト追跡システムでタスクと機能を追跡することによって綿密に追跡することができます。 こうした追跡が、チームによるコスト見積もりの精度を高めることにもつながります。 TDSP では、バージョン管理、情報セキュリティ、コラボレーションの観点から、プロジェクトごとに独立したリポジトリを VCS に作成することが推奨されています。 全プロジェクトの構造を標準化することで、組織横断的に体系化された知見を構築することができます。
+すべてのプロジェクトでディレクトリ構造を共有すると共に、プロジェクト ドキュメントにテンプレートを使用すれば、チーム メンバーがそのプロジェクトに関する情報を見つけやすくなります。 すべてのコードとドキュメントを Git、TFS、Subversion などのバージョン管理システム (VCS) に格納すれば、チームでのコラボレーションが可能になります。 各機能のコードも、Jira、Rally、Azure DevOps などのアジャイル プロジェクト追跡システムでタスクと機能を追跡することによって綿密に追跡することができます。 こうした追跡が、チームによるコスト見積もりの精度を高めることにもつながります。 TDSP では、バージョン管理、情報セキュリティ、コラボレーションの観点から、プロジェクトごとに独立したリポジトリを VCS に作成することが推奨されています。 全プロジェクトの構造を標準化することで、組織横断的に体系化された知見を構築することができます。
 
 Microsoft では、必要なドキュメントとフォルダー構造のテンプレートを標準的な場所で提供しています。 このフォルダー構造によって、データ探索と特徴抽出のコードを含んだファイルや、モデルの反復を記録するファイルが体系化されます。 これらのテンプレートによって、チーム メンバーは、他のメンバーの作業を把握しやすくなり、容易に新しいメンバーを迎え入れることができます。 ドキュメントのテンプレートは、マークダウン形式で簡単に閲覧、更新することができます。 各プロジェクトのチェックリストには、問題を明確に定義し、必要な品質を成果物に確保するために、テンプレートを使用して重要な問いを盛り込みます。 たとえば、次のようになります。
 
@@ -79,7 +81,7 @@ Microsoft では、必要なドキュメントとフォルダー構造のテン�
 - モデルのパフォーマンス メトリック (ROC 曲線、MSE など)
 
 
-![TDSP のディレクトリ](./media/overview/tdsp-dir-structure.png)
+[ ![TDSP のディレクトリ](./media/overview/tdsp-dir-structure.png) ](./media/overview/tdsp-dir-structure.png#lightbox)
 
 このディレクトリ構造は、[GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate) から複製することができます。
 
@@ -90,13 +92,13 @@ TDSP には、共有の分析およびストレージ インフラストラク�
 - データセットを格納するためのクラウド ファイル システム 
 - データベース
 - ビッグ データ (Hadoop または Spark) クラスター 
-- 機械学習サービス 
+- Machine Learning サービス 
 
 分析およびストレージ インフラストラクチャの場所は、クラウドでもオンプレミスでもかまいません。 この場所に、生のデータセットと加工済みのデータセットが格納されます。 このインフラストラクチャによって分析の再現性が得られます。 また、重複は不整合や不要なインフラストラクチャ コストの原因ともなりますが、そのような重複も排除されます。 共有リソースをプロビジョニングするための手段や、それらを追跡するための手段、また、それらのリソースに各チーム メンバーが安全に接続できるようにするための手段も用意されています。 また、プロジェクト メンバーには、一貫性のあるコンピューティング環境を作成してもらうことをお勧めします。 そうすれば、異なるチーム メンバーが実験を再現して検証することができます。
 
 以下に示したのは、クラウド分析インフラストラクチャのさまざまな構成要素を共有しながら複数のプロジェクトに取り組むチームの例です。
 
-![TDSP インフラストラクチャ](./media/overview/tdsp-analytics-infra.png)
+[ ![TDSP インフラストラクチャ](./media/overview/tdsp-analytics-infra.png) ](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>プロジェクト実行のツールとユーティリティ

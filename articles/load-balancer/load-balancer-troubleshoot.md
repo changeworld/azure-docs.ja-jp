@@ -3,8 +3,8 @@ title: Azure Load Balancer のトラブルシューティング | Microsoft Docs
 description: Azure Load Balancer に関する既知の問題のトラブルシューティング
 services: load-balancer
 documentationcenter: na
-author: RamanDhillon
-manager: timlt
+author: chadmath
+manager: cshepard
 editor: ''
 ms.assetid: ''
 ms.service: load-balancer
@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 560e2ed7cafd1018f4b64ac6d0e45134560082b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 08/09/2018
+ms.author: genli
+ms.openlocfilehash: 1a4be7b5caba751f0f90e865d8ef23e5e9c899d6
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42141122"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
 
@@ -86,7 +87,7 @@ VM 上のファイアウォールがプローブ ポートをブロックして�
 * Load Balancer バックエンド プール VM がデータ ポートでリッスンしていない 
 * ネットワーク セキュリティ グループが Load Balancer バックエンド プール VM 上のポートをブロックしている  
 * 同じ VM と NIC から Load Balancer にアクセスしている 
-* 参加している Load Balancer バックエンド プール VM からインターネット Load Balancer VIP にアクセスしている 
+* 参加している Load Balancer バックエンド プール VM からインターネット Load Balancer フロントエンドにアクセスしている 
 
 ### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>原因 1: Load Balancer バックエンド プール VM がデータ ポートでリッスンしていない 
 VM がデータ トラフィックに応答しない場合、その原因としては、参加している VM でターゲット ポートが開いていない、または VM がそのポートでリッスンしていないことが考えられます。 
@@ -103,9 +104,7 @@ VM がデータ トラフィックに応答しない場合、その原因とし�
 
 サブネットまたは VM で構成されている 1 つ以上のネットワーク セキュリティ グループが、発信元 IP またはポートをブロックしている場合、VM は応答できません。
 
-* バックエンド VM で構成されているネットワーク セキュリティ グループを一覧表示します。 詳細については、次を参照してください。
-    -  [ポータルを使用したネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-portal.md)
-    -  [PowerShell を使用したネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-ps.md)
+* バックエンド VM で構成されているネットワーク セキュリティ グループを一覧表示します。 詳細については、「[Manage network security groups](../virtual-network/manage-network-security-group.md)」(ネットワーク セキュリティ グループの管理) をご覧ください。
 * ネットワーク セキュリティ グループの一覧で、次を確認します。
     - データ ポートの受信または送信トラフィックで干渉が発生していないかどうか。 
     - サブネットまたは VM の NIC で、**すべて拒否**ネットワーク セキュリティ グループ ルールの優先順位が、Load Balancer プローブとトラフィックを許可する既定のルールよりも高くなっていないかどうか (ネットワーク セキュリティ グループでは、プローブ ポートである Load Balancer IP アドレス 168.63.129.16 が許可されている必要があります) 
@@ -120,15 +119,15 @@ Load Balancer のバックエンド VM でホストされているアプリケ�
 * アプリケーションごとに個別のバックエンド プール VM を構成する。 
 * 各アプリケーションが独自のネットワーク インターフェイスと IP アドレスを使用していたように、デュアル NIC VM でアプリケーションを構成する。 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>原因 4: 参加している Load Balancer バックエンド プール VM から内部 Load Balancer VIP にアクセスしている
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>原因4: 参加している Load Balancer バックエンド プール VM から内部 Load Balancer フロントエンドにアクセスしている
 
-ILB VIP が VNet 内で構成されている場合、参加しているバックエンド VM のいずれかが内部 Load Balancer VIP にアクセスしようと、エラーが発生します。 これはサポートされていないシナリオです。
-**解決策**: Application Gateway または他のプロキシ (nginx、haproxy など) を評価し、このようなシナリオをサポートします。 Application Gateway の詳細については、「[Application Gateway の概要](../application-gateway/application-gateway-introduction.md)」を参照してください
+内部 Load Blancer が VNet 内で構成され、参加しているバックエンド VM の 1 つが内部 Load Balancer フロントエンドにアクセスしようとしている場合は、エラーが発生し、アクセス元の VM にフローがマップされます。 このシナリオはサポートされていません。 詳しくは、「[制限事項](load-balancer-overview.md#limitations)」をご覧ください。
+
+**解決策**: このシナリオをブロック解除するには、プロキシの使用などいくつかの方法があります。 Application Gateway または他のサードパーティ製プロキシ (nginx や haproxy など) を評価してください。 Application Gateway の詳細については、「[Application Gateway の概要](../application-gateway/application-gateway-introduction.md)」を参照してください
 
 ## <a name="additional-network-captures"></a>その他のネットワーク キャプチャ
 サポート ケースを開く場合は、迅速に解決できるように次の情報を収集します。 1 つのバックエンド VM を選択して、次のテストを実行してください。
 - VNet 内にあるバックエンド VM から Psping でプローブ ポートの応答をテストし (psping 10.0.0.4:3389 など)、結果を記録します。 
-- VNet 内にあるバックエンド VM から TCPing でプローブ ポートの応答をテストし (psping 10.0.0.4:3389 など)、結果を記録します。
 - この ping テストで応答がなかった場合は、PsPing を実行しながら、バックエンド VM と VNet テスト VM で同時 Netsh トレースを実行し、その後、Netsh トレースを停止します。 
   
 ## <a name="next-steps"></a>次の手順

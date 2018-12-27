@@ -1,11 +1,11 @@
 ---
-title: "Azure ネットワーク アクセス制御リストとは"
-description: "Azure のアクセス制御リストに関する詳細情報"
+title: Azure ネットワーク アクセス制御リストとは
+description: Azure のアクセス制御リストに関する詳細情報
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
-editor: 
+author: genlin
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: 83d66c84-8f6b-4388-8767-cd2de3e72d76
 ms.service: virtual-network
@@ -14,19 +14,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
-ms.openlocfilehash: 9a0c85367968c9b38104012d75b1f3975be82cc1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: 6265a7f9f60b60d7b79e15a04feb0ec76dc59f6d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293120"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>エンドポイント アクセス制御リストとは
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、Resource Manager デプロイメント モデルを使用することをお勧めします。 
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは Resource Manager デプロイ モデルを使用することをお勧めします。 
 
-エンドポイント アクセス制御リスト (ACL) は、Azure デプロイメントに使用できるセキュリティ拡張機能です。 ACL を使用して、仮想マシン エンドポイントのトラフィックを選択して許可または拒否することができます。 このパケット フィルタリング機能は、セキュリティ レイヤーを追加します。 エンドポイント用のネットワーク ACL のみを指定できます。 仮想ネットワーク、または仮想ネットワークに含まれる特定のサブネットの ACL は指定できません。 可能な限り、ACL ではなくネットワーク セキュリティ グループ (NSG) を使用することをお勧めします。 NSG の詳細については、「[ネットワーク セキュリティ グループの概要](virtual-networks-nsg.md)」を参照してください。
+エンドポイント アクセス制御リスト (ACL) は、Azure デプロイメントに使用できるセキュリティ拡張機能です。 ACL を使用して、仮想マシン エンドポイントのトラフィックを選択して許可または拒否することができます。 このパケット フィルタリング機能は、セキュリティ レイヤーを追加します。 エンドポイント用のネットワーク ACL のみを指定できます。 仮想ネットワーク、または仮想ネットワークに含まれる特定のサブネットの ACL は指定できません。 可能な限り、ACL ではなくネットワーク セキュリティ グループ (NSG) を使用することをお勧めします。 NSG を使用する場合、エンドポイントのアクセス制御リストは置き換えられ、適用されなくなります。 NSG の詳細については、「[ネットワーク セキュリティ グループの概要](security-overview.md)」を参照してください。
 
 ACL は、PowerShell または Azure Portal のいずれかを使用して構成できます。 PowerShell を使用してネットワーク ACL を構成するには、「[PowerShell を使用してエンドポイントのアクセス制御リストを管理する](virtual-networks-acl-powershell.md)」を参照してください。 Azure Portal を使用してネットワーク ACL を構成するには、「[仮想マシンにエンドポイントをセットアップする方法](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
@@ -89,6 +90,6 @@ ACL は、ルールの一覧が格納されたオブジェクトです。 ACL �
 
 ![ネットワーク ACL と負荷分散セット](./media/virtual-networks-acl/IC674733.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [PowerShell を使用してエンドポイントのアクセス制御リストを管理する](virtual-networks-acl-powershell.md)
 

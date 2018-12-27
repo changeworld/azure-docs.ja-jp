@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: efb23500d8c718ff1dc7b59c4cfb2b2d5cdfaccb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b89fb0fbb499fa06c9e56f02937b1c586efde9b6
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833379"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Azure Machine Learning Web サービスを使用する方法
 
@@ -52,7 +54,7 @@ Machine Learning Web サービスの詳細については、「[Azure Machine Le
 
 1. Azure Machine Learning Web サービス ポータルで、上部メニューの **[Web サービス]** をクリックします。
 2. キーを取得する Web サービスをクリックします。
-3. 上部のメニューで **[Consume(使用)]**をクリックします。
+3. 上部のメニューで **[Consume(使用)]** をクリックします。
 4. **主キー**をコピーして保存します。
 
 従来の Machine Learning Web サービスの API キーを取得するには:
@@ -60,7 +62,7 @@ Machine Learning Web サービスの詳細については、「[Azure Machine Le
 1. Azure Machine Learning Web サービス ポータルで、上部メニューの **[Classic Web Services (クラシック Web サービス)]** をクリックします。
 2. 使用する Web サービスをクリックします。
 3. キーを取得するエンドポイントをクリックします。
-4. 上部のメニューで **[Consume(使用)]**をクリックします。
+4. 上部のメニューで **[Consume(使用)]** をクリックします。
 5. **主キー**をコピーして保存します。
 
 ### <a name="classic-web-service"></a>従来の Web サービス
@@ -78,7 +80,7 @@ Machine Learning API ヘルプには、予測 Web サービスの詳細が含ま
 
 1. 使用する Web サービスをクリックします。
 2. API のヘルプ ページを表示するエンドポイントをクリックします。
-3. 上部のメニューで **[Consume(使用)]**をクリックします。
+3. 上部のメニューで **[Consume(使用)]** をクリックします。
 4. [要求/応答] または [バッチの実行] の **[API ヘルプ ページ]** をクリックします。
 
 **新しい Web サービスの Machine Learning API ヘルプを表示するには**
@@ -101,7 +103,7 @@ Machine Learning Web サービスに接続するには、**Microsoft.AspNet.WebA
 
 1. 「UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」Web サービスを発行します。
 2. **[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順にクリックします。
-3. **[Install-Package Microsoft.AspNet.WebApi.Client]**を選択します。
+3. **[Install-Package Microsoft.AspNet.WebApi.Client]** を選択します。
 
 **サンプル コードを実行するには**
 

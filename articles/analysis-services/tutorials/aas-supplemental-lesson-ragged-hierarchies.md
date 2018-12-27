@@ -1,25 +1,19 @@
 ---
-title: "Azure Analysis Services チュートリアルの補足のレッスン: 不規則階層 | Microsoft Docs"
-description: "この Azure Analysis Services チュートリアルでは、不規則階層を修正する方法について説明します。"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services チュートリアルの補足のレッスン: 不規則階層 | Microsoft Docs'
+description: この Azure Analysis Services チュートリアルでは、不規則階層を修正する方法について説明します。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: c5c4a687ffe512b15372d152b517834771e46328
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: f5bd679c11139b7ac439247df81a7adb0b02b0fe
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426333"
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>補足のレッスン - 不規則階層
 
@@ -48,7 +42,7 @@ ms.lasthandoff: 01/09/2018
 
 4.  次の[リレーションシップ](../tutorials/aas-lesson-4-create-relationships.md)を作成します。
 
-    | 表 1           | 分割       | フィルターの方向   | テーブル 2     | 分割      | アクティブ |
+    | 表 1           | 列       | フィルターの方向   | テーブル 2     | 列      | アクティブ |
     |-------------------|--------------|--------------------|-------------|-------------|--------|
     | FactResellerSales | OrderDateKey | 既定値            | DimDate     | 日付        | [はい]    |
     | FactResellerSales | DueDate      | 既定値            | DimDate     | 日付        | いいえ      |

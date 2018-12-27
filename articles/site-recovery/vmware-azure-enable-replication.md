@@ -1,18 +1,17 @@
 ---
-title: Azure Site Recovery を使用して Azure への VMware VM の レプリケーションを有効にする | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して Azure への VMware VM のレプリケーションを設定する方法について説明します。
-services: site-recovery
+title: Azure Site Recovery による Azure への VMware ディザスター リカバリーのために VMware VM のレプリケーションを有効にする | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用した Azure へのディザスター リカバリーのために VMware VM のレプリケーションを有効にする方法について説明します。
 author: asgang
-manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
+ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 48d84f59a80ea14c2b40821d886fc410c7e3f2c3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c6c5aeece9e49a44654d63a7dc243991a62f2d9a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566364"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -44,7 +43,7 @@ VMware 仮想マシンをレプリケートする場合:
 2. **[ソース]** ページで **[ソース]** をクリックし、構成サーバーを選択します。
 3. **[マシンの種類]** で、**[仮想マシン]** または **[物理マシン]** を選択します。
 4. **[vCenter/vSphere Hypervisor] \(vCenter/vSphere ハイパーバイザー)** で、vSphere ホストを管理する vCenter サーバーを選択するか、ホストを選択します。 物理マシンをレプリケートする場合、この設定は関係ありません。
-5. プロセス サーバーを選択します。追加のプロセス サーバーを作成していない場合、これは構成サーバーの名前になります。 次に、 **[OK]**をクリックします
+5. プロセス サーバーを選択します。追加のプロセス サーバーを作成していない場合、これは構成サーバーの名前になります。 次に、 **[OK]** をクリックします
 
     ![レプリケーション ソースを有効にする](./media/vmware-azure-enable-replication/enable-replication2.png)
 
@@ -60,11 +59,11 @@ VMware 仮想マシンをレプリケートする場合:
 8. フェールオーバー後に Azure VM がスピンアップされたときに接続する Azure ネットワークとサブネットを選択します。 ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、**[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、**[後で構成する]** を選択します。 ネットワークがない場合は、[作成する](#set-up-an-azure-network)必要があります。 Resource Manager を使用してネットワークを作成する場合は、**[新規作成]** をクリックします。 該当する場合は、サブネットを選択し、**[OK]** をクリックします。
 
     ![レプリケーション ターゲットの設定を有効にする](./media/vmware-azure-enable-replication/enable-rep3.png)
-9. **[Virtual Machines]** > **[仮想マシンの選択]** で、レプリケートする各マシンを選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 次に、 **[OK]**をクリックします
+9. **[Virtual Machines]** > **[仮想マシンの選択]** で、レプリケートする各マシンを選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 次に、 **[OK]** をクリックします
 
     ![[レプリケーションを有効にする] で仮想マシンを選択する](./media/vmware-azure-enable-replication/enable-replication5.png)
 10. **[プロパティ]** > **[プロパティの構成]** で、モビリティ サービスをマシンに自動的にインストールするためにプロセス サーバーが使用するアカウントを選択します。  
-11. 既定では、すべてのディスクがレプリケートされます。 レプリケーションからディスクを除外するには、**[すべてのディスク]** をクリックし、レプリケートしないディスクをオフにします。  次に、 **[OK]**をクリックします 後で追加のプロパティを設定できます。 ディスクの除外の詳細については、[こちら](vmware-azure-exclude-disk.md)をご覧ください。
+11. 既定では、すべてのディスクがレプリケートされます。 レプリケーションからディスクを除外するには、**[すべてのディスク]** をクリックし、レプリケートしないディスクをオフにします。  次に、 **[OK]** をクリックします 後で追加のプロパティを設定できます。 ディスクの除外の詳細については、[こちら](vmware-azure-exclude-disk.md)をご覧ください。
 
     ![[レプリケーションを有効にする] でプロパティを構成する](./media/vmware-azure-enable-replication/enable-replication6.png)
 
@@ -77,12 +76,9 @@ VMware 仮想マシンをレプリケートする場合:
     >    * VM と物理サーバーがワークロードをミラー化できるように、これらをまとめます。 マルチ VM 整合性を有効にすると、ワークロードのパフォーマンスに影響する場合があります。 複数のマシンが同じワークロードを実行していて、整合性を持たせる必要がある場合にのみ使用してください。
 
     ![レプリケーションを有効にする](./media/vmware-azure-enable-replication/enable-replication7.png)
-14. **[レプリケーションを有効にする]**をクリックします。 **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
+14. **[レプリケーションを有効にする]** をクリックします。 **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
-> [!NOTE]
-> 保護が有効になっている場合、マシンでプッシュ インストールの準備が完了すると、モビリティ サービス コンポーネントがインストールされます。 コンポーネントがマシンにインストールされたら、保護ジョブが開始され、失敗します。 失敗後、各マシンを手動で再起動する必要があります。 再起動後に保護ジョブが再び開始され、初期レプリケーションが実行されます。
->
->
+
 
 ## <a name="view-and-manage-vm-properties"></a>VM プロパティを表示して管理する
 

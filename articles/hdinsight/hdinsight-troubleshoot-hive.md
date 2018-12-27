@@ -1,25 +1,19 @@
 ---
-title: "Azure HDInsight を使用した Hive のトラブルシューティング | Microsoft Docs"
-description: "Apache Hive と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。"
-keywords: "Azure HDInsight、Hive、よくある質問、トラブルシューティング ガイド、一般的な質問"
-services: Azure HDInsight
-documentationcenter: na
+title: Azure HDInsight を使用した Hive のトラブルシューティング
+description: Apache Hive と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。
+keywords: Azure HDInsight、Hive、よくある質問、トラブルシューティング ガイド、一般的な質問
+services: hdinsight
+ms.service: hdinsight
 author: dharmeshkakadia
-manager: 
-editor: 
-ms.assetid: 15B8D0F3-F2D3-4746-BDCB-C72944AA9252
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/2/2017
 ms.author: dharmeshkakadia
-ms.openlocfilehash: 398cc7cd0fa815f12ba5b503a1328688e1159eee
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.topic: conceptual
+ms.date: 11/2/2017
+ms.openlocfilehash: 832fab6c4f183ddad512c5e6e4309d70938a316b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600025"
 ---
 # <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Hive のトラブルシューティング
 

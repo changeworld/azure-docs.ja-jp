@@ -1,32 +1,28 @@
 ---
-title: "メーリング リストの登録申請を処理する承認ワークフローの作成 - Azure Logic Apps | Microsoft Docs"
-description: "このチュートリアルでは、メーリング リストの登録を処理する自動化された承認ワークフローを Azure Logic Apps で作成する方法について説明します。"
-author: ecfan
-manager: anneta
-editor: 
+title: メーリング リストの登録申請を処理する承認ワークフローの作成 - Azure Logic Apps | Microsoft Docs
+description: チュートリアル - メーリング リストの登録を処理する自動化された承認ワークフローを Azure Logic Apps で作成する方法
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: 4765a38689d5476331c593b89e54f94d4bd310c3
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: b48ecce1c87c0a29996e437d621c3ce396a84856
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232666"
 ---
-# <a name="manage-mailing-list-requests-with-a-logic-app"></a>ロジック アプリでメーリング リストの登録申請を管理する
+# <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Azure Logic Apps でメーリング リスト要求を管理する
 
 Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを初めとする各種の SaaS (サービスとしてのソフトウェア) アプリとオンプレミス システムの垣根を越えてワークフローを自動化したりデータを統合したりすることができます。 このチュートリアルでは、[MailChimp](https://mailchimp.com/) サービスによって管理されたメーリング リストの登録申請を処理する[ロジック アプリ](../logic-apps/logic-apps-overview.md)の作成方法を紹介します。
 このロジック アプリは、登録申請用のメール アカウントを監視して承認依頼を送信し、承認済みのメンバーをメーリング リストに追加するものです。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 空のロジック アプリを作成します。
@@ -96,7 +92,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![メールをチェックするフォルダー、間隔、頻度を指定](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | Setting | 値 | [説明] | 
+      | Setting | 値 | 説明 | 
       | ------- | ----- | ----------- | 
       | **フォルダー** | Inbox | 監視するメール フォルダー | 
       | **間隔** | 1 | チェックの間隔 (単位数) | 
@@ -197,7 +193,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[メンバーをリストに追加する] の情報を入力](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **リスト ID** | test-members-ML | MailChimp メーリング リストの名前 | 
    | **状態** | subscribed | 新しいメンバーの登録ステータス。 詳細については、「<a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Manage subscribers with the MailChimp API (MailChimp API を使った購読者管理)</a>」を参照してください。 | 
@@ -321,7 +317,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

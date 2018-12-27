@@ -3,7 +3,7 @@ title: Azure Stack 統合システムの Azure Stack 公開キー インフラ�
 description: Azure Stack 統合システムの Azure Stack PKI 証明書のデプロイ要件について説明します。
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
-ms.author: jeffgilb
+ms.date: 10/16/2018
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 583f827fe77ef7721b3098dee01c418c9e5cccd8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a6f18222e5683d2d9663b699a8f6bab399d4f45b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299862"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 
@@ -29,28 +30,31 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - これらの仕様に一致する証明書を取得するプロセス
 - デプロイ中にこれらの証明書を準備、検証、および使用する方法
 
-> [!NOTE]
+> [!Note]  
 > デプロイ時には、その対象となる ID プロバイダー (Azure AD または AD FS) に合ったデプロイ フォルダーに証明書をコピーする必要があります。 すべてのエンドポイントについて 1 つの証明書を使用する場合は、後述の表に記載した各デプロイ フォルダーに、その証明書ファイルをコピーしてください。 フォルダー構造は、デプロイ仮想マシンにあらかじめ作成されており、C:\CloudDeployment\Setup\Certificates で確認できます。 
 
 ## <a name="certificate-requirements"></a>証明書の要件
 次の一覧では、Azure Stack をデプロイするために必要な証明書の要件について説明します。 
-- 証明書は、内部の証明機関または公的証明機関のどちらかから発行されている必要があります。 公的証明機関が使用されている場合は、Microsoft の信頼されたルート機関プログラムの一部として基本オペレーティング システム イメージに含まれている必要があります。 詳細な一覧については、https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca をご覧ください。 
-- Azure Stack インフラストラクチャが、証明書の署名に使用する証明機関にネットワーク アクセスできる必要があります。
+- 証明書は、内部の証明機関または公的証明機関のどちらかから発行されている必要があります。 公的証明機関が使用されている場合は、Microsoft の信頼されたルート機関プログラムの一部として基本オペレーティング システム イメージに含まれている必要があります。 詳細な一覧については、 https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca をご覧ください。 
+- お使いの Azure Stack インフラストラクチャは、証明書において公開されている証明機関の証明書失効リスト (CRL) の場所にネットワーク アクセスできる必要があります。 この CRL は、http エンドポイントである必要があります
 - 証明書を交換する場合、証明書は、デプロイ時に指定された証明書の署名に使用したのと同じ内部の証明機関、または上記の公的パブリック証明機関のいずれかから発行されたものである必要があります。
 - 自己署名証明書は使用できません。
-- この証明書は、サブジェクトの別名 (SAN) フィールドにすべての名前空間を含む 1 つのワイルドカード証明書にすることができます。 または、必要な場所に **acs** や Key Vault などのエンドポイント用のワイルド カードを使った個々の証明書を使用できます。 
-- 証明書署名アルゴリズムを SHA1 にすることはできません。より強力にする必要があります。 
-- Azure Stack のインストールには公開キーと秘密キーの両方が必要なため、証明書の形式は PFX である必要があります。 
+- デプロイおよびローテーションの場合は、証明書のサブジェクト名フィールドとサブジェクトの別名 (SAN) フィールドのすべての名前空間をカバーする 1 つの証明書を使用するか、または、各名前空間で利用する予定の Azure Stack サービスが必要とする個別の証明書を使用することができます。 注: どちらの方法でも、それらが必要とされる場所のエンドポイントに対してワイルドカードを使用する必要があります (例: **KeyVault**､**KeyVaultInternal**)。 
+- 証明書の PFX 暗号化は、3 DES になっている必要があります。 
+- 証明書の署名アルゴリズムを SHA1 にすることはできません。 
+- Azure Stack のインストールには公開キーと秘密キーの両方が必要なため、証明書の形式は PFX である必要があります。 秘密キーにはローカル コンピューターのキー属性が設定されている必要があります。
+- PFX 暗号化は、3DES (これは、Windows 10 クライアントまたは Windows Server 2016 証明書ストアからエクスポートする場合の既定です) である必要があります。
 - 証明書 pfx ファイルの "Key Usage" フィールドには、"Digital Signature" と "KeyEncipherment" の値が含まれている必要があります。
 - 証明書の pfx ファイルの "Enhanced Key Usage" フィールドには、"Server Authentication (1.3.6.1.5.5.7.3.1)" と "Client Authentication (1.3.6.1.5.5.7.3.2)" の値が含まれている必要があります。
 - 証明書の "Issued to:" フィールドは "Issued by:" フィールドと同じにしないでください。
 - デプロイの時点で、すべての証明書 pfx ファイルのパスワードが同じである必要があります。
-- デプロイの失敗を回避するために、すべての証明書のサブジェクト名とサブジェクトの別名がこの記事で説明されている仕様に一致していることを確認してください。
+- 証明書 pfx に対するパスワードは、複雑なパスワードである必要があります。
+- サブジェクト名と、サブジェクトの別名の拡張子 (x509v3_config) のサブジェクトの別名が一致するようにします。 サブジェクトの別名フィールドでは、単一の SSL 証明書によって保護される追加のホスト名 (Web サイト、IP アドレス、共通名) を指定できます。
 
-> [!NOTE]
+> [!NOTE]  
 > 自己署名証明書は使用できません。
 
-> [!NOTE]
+> [!NOTE]  
 > 証明書の信頼チェーン内での中間証明機関の存在がサポートされています。 
 
 ## <a name="mandatory-certificates"></a>必須の証明書
@@ -58,10 +62,10 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 
 各 Azure Stack パブリック インフラストラクチャ エンドポイントの適切な DNS 名を持つ証明書が必要です。 各エンドポイントの DNS 名は、*&lt;prefix>.&lt;region>.&lt;fqdn>* の形式で表されます。 
 
-デプロイでは、[region] と [externalfqdn] の値が Azure Stack システム用に選択したリージョン名と外部ドメイン名に一致している必要があります。 例として、リージョン名が *Redmond* で、外部ドメイン名が *contoso.com* である場合、DNS 名は *&lt;prefix>.redmond.contoso.com* の形式になります。*&lt;prefix>* 値は、その証明書によってセキュリティ保護されるエンドポイントを指定するようにマイクロソフトによって事前に設計されています。 さらに、外部インフラストラクチャ エンドポイントの *&lt;prefix>* 値は、特定のエンドポイントを使用する Azure Stack サービスによって異なります。 
+デプロイでは、[region] と [externalfqdn] の値が Azure Stack システム用に選択したリージョン名と外部ドメイン名に一致している必要があります。 例として、リージョン名が *Redmond* で、外部ドメイン名が *contoso.com* である場合、DNS 名は *&lt;prefix>.redmond.contoso.com* の形式になります。 *&lt;prefix>* 値は、その証明書によってセキュリティ保護されるエンドポイントを指定するようにマイクロソフトによって事前に設計されています。 さらに、外部インフラストラクチャ エンドポイントの *&lt;prefix>* 値は、特定のエンドポイントを使用する Azure Stack サービスによって異なります。 
 
 > [!note]  
-> 証明書は、すべてのディレクトリにコピーされるサブジェクト フィールドおよびサブジェクトの別名 (SAN) フィールドのすべての名前空間をカバーする 1 つのワイルドカード証明書として、または対応するディレクトリにコピーされるエンドポイントごとの個別の証明書として、提供することができます。 どちらのオプションでも、証明書を必要とする **acs** や Key Vault などのエンドポイントにはワイルドカード証明書を使う必要があることに注意してください。 
+> 運用環境では、各証明書がエンドポイントごとに生成され、対応するディレクトリにコピーされることをお勧めします。 開発環境では、証明書は、すべてのディレクトリにコピーされるサブジェクト フィールドおよびサブジェクトの別名 (SAN) フィールドのすべての名前空間をカバーする 1 つのワイルドカード証明書として提供することができます。 すべてのエンドポイントとサービスをカバーする 1 つの証明書は開発専用であるため、安全でない状態です。 どちらのオプションでも、証明書を必要とする **acs** や Key Vault などのエンドポイントにはワイルドカード証明書を使う必要があることに注意してください。 
 
 | デプロイ フォルダー | 必要な証明書のサブジェクト名とサブジェクトの別名 (SAN) | スコープ (リージョンごと) | サブドメインの名前空間 |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
@@ -74,20 +78,8 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 | ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) | Queue Storage | queue.&lt;region>.&lt;fqdn> |
 | KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) | Key Vault | vault.&lt;region>.&lt;fqdn> |
 | KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) |  内部 Keyvault |  adminvault.&lt;region>.&lt;fqdn> |
-
-### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>1803 より前のバージョンの Azure Stack 環境の場合
-
-|デプロイ フォルダー|必要な証明書のサブジェクト名とサブジェクトの別名 (SAN)|スコープ (リージョンごと)|サブドメインの名前空間|
-|-----|-----|-----|-----|
-|パブリック ポータル|portal.*&lt;region>.&lt;fqdn>*|ポータル|*&lt;region>.&lt;fqdn>*|
-|管理ポータル|adminportal.*&lt;region>.&lt;fqdn>*|ポータル|*&lt;region>.&lt;fqdn>*|
-|Azure Resource Manager パブリック|management.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
-|Azure Resource Manager 管理|adminmanagement.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
-|ACS<sup>1</sup>|次のサブジェクトの別名を持つ 1 つのマルチサブドメイン ワイルドカード証明書<br>&#42;.blob.*&lt;region>.&lt;fqdn>*<br>&#42;.queue.*&lt;region>.&lt;fqdn>*<br>&#42;.table.*&lt;region>.&lt;fqdn>*|Storage|blob.*&lt;region>.&lt;fqdn>*<br>table.*&lt;region>.&lt;fqdn>*<br>queue.*&lt;region>.&lt;fqdn>*|
-|KeyVault|&#42;.vault.*&lt;region>.&lt;fqdn>*<br>(ワイルドカード SSL 証明書)|Key Vault|vault.*&lt;region>.&lt;fqdn>*|
-|KeyVaultInternal|&#42;.adminvault.*&lt;region>.&lt;fqdn>*<br>(ワイルドカード SSL 証明書)|内部 Keyvault|adminvault.*&lt;region>.&lt;fqdn>*|
-|
-<sup>1</sup> ACS 証明書では、1 つの証明書に 3 つのワイルドカード SAN が必要です。 1 つの証明書での複数のワイルドカード SAN は、公的証明機関によってはサポートされない可能性があります。 
+| 管理者拡張機能ホスト | *.adminhosting.\<リージョン>.\<FQDN> (ワイルドカード SSL 証明書) | 管理者拡張機能ホスト | adminhosting.\<リージョン>.\<FQDN> |
+| パブリック拡張機能ホスト | *.hosting.\<リージョン>.\<FQDN> (ワイルドカード SSL 証明書) | パブリック拡張機能ホスト | hosting.\<リージョン>.\<FQDN> |
 
 Azure AD デプロイ モードを使用して Azure Stack をデプロイする場合は、前の表に一覧表示されている証明書を要求するだけで済みます。 ただし、AD FS デプロイ モードを使用して Azure Stack をデプロイする場合は、次の表で説明されている証明書も要求する必要があります。
 

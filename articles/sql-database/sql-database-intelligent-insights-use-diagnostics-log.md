@@ -2,23 +2,26 @@
 title: Intelligent Insights のパフォーマンス診断ログ - Azure SQL Database | Microsoft Docs
 description: Intelligent Insights は、Azure SQL Database のパフォーマンスの問題の診断ログを提供します
 services: sql-database
-author: danimir
-manager: craigg
-ms.reviewer: carlrab
 ms.service: sql-database
-ms.custom: monitor & tune
-ms.topic: article
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: danimir
+ms.author: danil
+ms.reviewer: carlrab
+manager: craigg
 ms.date: 04/04/2018
-ms.author: v-daljep
-ms.openlocfilehash: 5ce83198e1d2afb713044879724df88ad2696548
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a0eac4344f1294ad2eddd4e05520c1f030a0c4d7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278221"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Database パフォーマンス診断ログを使用する
 
-このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) によって生成される Azure SQL Database パフォーマンス診断ログの使用方法、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログは、[Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)、[Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに送信できます。
+このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) によって生成される Azure SQL Database パフォーマンス診断ログの使用方法、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログは、[Azure Log Analytics](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに送信できます。
 
 ## <a name="log-header"></a>ログ ヘッダー
 
@@ -36,9 +39,7 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="issue-id-and-database-affected"></a>問題 ID と影響を受けているデータベース
 
-問題識別プロパティ (issueId_d) を使用すると、パフォーマンスの問題を、解決されるまで一意に追跡できます。 Intelligent Insights は、各問題のライフサイクルを "Active"、"Verifying"、または "Complete" として監視します。 これらの各状態フェーズ中、Intelligent Insights はログに複数のイベント レコードを記録できます。 各エントリについて、問題 ID 番号が一意に維持されます。 Intelligent Insights は、ライフサイクルを通して問題を追跡し、診断ログに 15 分ごとに分析情報を生成します。
-
-パフォーマンスの問題が検出されると、それが継続する限り、その問題は状態 (status_s) プロパティで "Active" としてレポートされます。 検出された問題が緩和されると、その問題は検証され、状態 (status_s) プロパティで "Verifying" としてレポートされます。 問題が解消された場合は、状態 (status_s) プロパティでこの問題が "Completed" としてレポートされます。
+問題識別プロパティ (issueId_d) では、パフォーマンスの問題を解決まで一意に追跡できます。 ログ内の複数のイベント レコードで同じ問題の状態が報告されている場合は、それらのレコードで同じ問題 ID が共有されます。
 
 診断ログでは、問題 ID と共に、診断ログにレポートされている問題に関連する特定のイベントの開始 (intervalStartTime_t) と終了 (intervalEndTme_t) のタイムスタンプがレポートされます。
 

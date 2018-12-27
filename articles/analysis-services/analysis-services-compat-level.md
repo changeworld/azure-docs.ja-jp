@@ -1,35 +1,29 @@
 ---
-title: "Azure Analysis Services でのデータ モデルの互換性レベル| Microsoft Docs"
-description: "表形式のデータ モデルの互換性レベルを理解します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services でのデータ モデルの互換性レベル| Microsoft Docs
+description: 表形式のデータ モデルの互換性レベルを理解します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: a07514c7734f3cd4be1e11a984151abb8ee3f23d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 87e6c19268ad8aeb486ce32cf8bfb668e4538a2a
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428217"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Analysis Services 表形式モデルの互換性レベル
 
-*互換性レベル*とは、Analysis Services エンジンにおけるリリースに固有の動作を指します。 通常、互換性レベルの変更は、SQL Server のメジャー リリースと一致します。 これらの変更は Azure Analysis Services にも実装され、両方のプラットフォーム間のパリティを維持します。 互換性レベルの変更は、表形式モデルで使用可能な機能にも影響します。 たとえば、DirectQuery とテーブル オブジェクトのメタデータは、互換性レベルによって実装が異なります。 
+*互換性レベル*とは、Analysis Services エンジンにおけるリリースに固有の動作を指します。 通常、互換性レベルの変更は、SQL Server のメジャー リリースと一致します。 これらの変更は Azure Analysis Services にも実装され、両方のプラットフォーム間のパリティを維持します。 互換性レベルの変更は、テーブルモデルに利用可能な機能にも影響を与えます。 たとえば、DirectQuery とテーブル オブジェクトのメタデータは、互換性レベルによって実装が異なります。 互換性レベルは、Visual Studio (SSDT) のテーブル モデル プロジェクトので指定されます。 Power BI Desktop で作成され、およびそこ からインポートされたモデルは、1400 互換性レベルテーブルだけです。
 
-Azure Analysis Services は、互換性レベル 1200 と 1400 の表形式モデルをサポートしています。
+Azure Analysis Services は、互換性レベル 1200 と 1400 の表形式モデルをサポートしています。 
 
 最新の互換性レベルは、1400 です。 このレベルは、SQL Server 2017 Analysis Services と一致します。 互換性レベル 1400 の主な機能は次のとおりです。
 
-*  データ接続の新しいインフラストラクチャーおよび TOM API と TMSL スクリプトをサポートする表形式モデルへのインポート。 この新しい機能により、Azure Blob Storage などの他のデータ ソースのサポートが有効になります。
+*  データ接続および、 TOM API と TMSL スクリプトのためのサポートをインポートする新しい機能。 
 *  Get Data 式と M 式の使用による、データ変換およびデータ マッシュ アップ機能。
 *  メジャーは、DAX 式で Detail Rows プロパティをサポートします。 このプロパティは、Microsoft Excel などのクライアント ツールで、集約されたレポートから詳細なデータをドリルダウンできるようにします。 たとえば、ユーザーがある地域と月の売上合計を表示するときに、関連した注文の詳細を表示できます。 
 *  表と列に含まれるデータに加え、その表と列の名前のオブジェクト レベルのセキュリティ。

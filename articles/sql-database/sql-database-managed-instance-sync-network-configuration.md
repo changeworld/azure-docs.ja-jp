@@ -1,23 +1,27 @@
 ---
 title: Azure App Service - ネットワーク構成の同期 | Microsoft Docs
 description: この記事では、Azure App Service のホスティング プラン用にネットワーク構成を同期する方法について説明します。
+services: sql-database
 ms.service: sql-database
-author: srdjan-bozovic
-manager: craigg
-ms.custom: managed instance
-ms.topic: article
-ms.date: 03/07/2018
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 5b139b1279776acfca63def25a9fdae0f627a727
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+manager: craigg
+ms.date: 03/07/2018
+ms.openlocfilehash: d5de908166e8de1d45a36f97aee8934653e59623
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163171"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>ネットワーク構成を Azure App Service のホスティング プラン用に同期する
 
-場合によっては、[アプリを Azure Virtual Network と統合したにもかかわらず](../app-service/web-sites-integrate-with-vnet.md)、マネージ インスタンスへの接続を確立できないことがあります。 その場合の対処の 1 つとして、使用するサービス プラン用にネットワーク構成を更新するという対処方法があります。 
+場合によっては、[アプリを Azure Virtual Network と統合したにもかかわらず](../app-service/web-sites-integrate-with-vnet.md)、マネージド インスタンスへの接続を確立できないことがあります。 その場合の対処の 1 つとして、使用するサービス プラン用にネットワーク構成を更新するという対処方法があります。 
 
 ## <a name="sync-network-configuration-for-app-service-hosting-plan"></a>ネットワーク構成を App Service のホスティング プラン用に同期する
 
@@ -39,8 +43,8 @@ ms.lasthandoff: 03/16/2018
   
    ![同期の完了](./media/sql-database-managed-instance-sync-networking/sync-done.png)
 
-これで、マネージ インスタンスへの接続を再確立する準備が整いました。
+これで、マネージド インスタンスへの接続を再確立する準備が整いました。
 
 ## <a name="next-steps"></a>次の手順
 
-- VNet をマネージ インスタンス用に構成する方法について詳しくは、[マネージ インスタンスの VNet 構成](sql-database-managed-instance-vnet-configuration.md)に関する記事をご覧ください。
+- VNet をマネージド インスタンス用に構成する方法について詳しくは、[マネージド インスタンス VNet 構成](sql-database-managed-instance-vnet-configuration.md)に関する記事をご覧ください。

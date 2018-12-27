@@ -1,24 +1,25 @@
 ---
-title: "Azure Site Recovery を使用して Azure に VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する | Microsoft Docs"
-description: "Azure Site Recovery サービスを使用して、Azure に System Center VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する方法について説明します。"
+title: Azure Site Recovery を使用して Azure に VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する | Microsoft Docs
+description: Azure Site Recovery サービスを使用して、Azure に System Center VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 99477757c89fe2df7ae24b7ffe95c8fb7f470c93
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: c4b5a200780761decfdd98289f7e7332244e5645
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846431"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Azure に VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
 
-このチュートリアルでは、Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する方法を紹介します。 このチュートリアルの対象は、System Center Virtual Machine Manager (VMM) で管理される Hyper-V VM です。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する方法を紹介します。 このチュートリアルの対象は、System Center Virtual Machine Manager (VMM) で管理される Hyper-V VM です。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * レプリケーションのソースとターゲットを選択します。
@@ -43,7 +44,7 @@ ms.lasthandoff: 02/22/2018
 3. **[保護の目標]** > **[マシンのある場所]** で、**[オンプレミス]** を選びます。
 4. **[マシンをどこにレプリケートしますか]** で、**[To Azure]\(Azure\)** を選びます。
 5. **[マシンは仮想化されていますか]** で、**[はい (Hyper-V の場合)]** を選びます。
-6. **[Are you using System Center VMM]\(System Center VMM を使用していますか\)** で **[はい]** を選びます。 次に、 **[OK]**をクリックします
+6. **[Are you using System Center VMM]\(System Center VMM を使用していますか\)** で **[はい]** を選びます。 次に、 **[OK]** をクリックします
 
     ![レプリケーションの目標](./media/hyper-v-vmm-azure-tutorial/replication-goal.png)
 
@@ -59,7 +60,7 @@ ms.lasthandoff: 02/22/2018
 4. コンテナー登録キーをダウンロードします。 プロバイダーをセットアップする際に、これが必要になります。 キーは生成後 5 日間有効です。
 5. Recovery Services エージェントをダウンロードします。
 
-    ![[ダウンロード]](./media/hyper-v-vmm-azure-tutorial/download-vmm.png)
+    ![ダウンロード](./media/hyper-v-vmm-azure-tutorial/download-vmm.png)
 
 ### <a name="install-the-provider-on-the-vmm-server"></a>VMM サーバーにプロバイダーをインストールする
 
@@ -79,7 +80,7 @@ ms.lasthandoff: 02/22/2018
 レプリケーション対象の VM が含まれる各 Hyper-V ホストにエージェントをインストールします。
 
 1. Microsoft Azure Recovery Services Agent セットアップ ウィザードの **[前提条件の確認]** で、**[次へ]** をクリックします。 不足している前提条件があると、それが自動的にインストールされます。
-2. **[インストール設定]** では、インストール先とキャッシュの場所の既定値を使用します。 キャッシュ ドライブには 5 GB 以上のストレージが必要です。 600 GB 以上の空き領域があるドライブをお勧めします。 その後、 **[インストール]**をクリックします。
+2. **[インストール設定]** では、インストール先とキャッシュの場所の既定値を使用します。 キャッシュ ドライブには 5 GB 以上のストレージが必要です。 600 GB 以上の空き領域があるドライブをお勧めします。 その後、 **[インストール]** をクリックします。
 3. **[インストール]** で、インストールが完了したら、**[閉じる]** をクリックしてウィザードを完了します。
 
     ![エージェントのインストール](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
@@ -100,14 +101,14 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
 2. **[ネットワーク マッピングの追加]** で、ソース VMM サーバーを選択します。 ターゲットとして **[Azure]** を選択します。
 3. サブスクリプションとフェールオーバー後のデプロイメント モデルを確認します。
 4. **[ソース ネットワーク]** で、ソース オンプレミス VM ネットワークを選択します。
-5. **[ターゲット ネットワーク]**で、フェールオーバー後の作成時、レプリカ Azure VM が配置される Azure ネットワークを選択します。 次に、 **[OK]**をクリックします
+5. **[ターゲット ネットワーク]** で、フェールオーバー後の作成時、レプリカ Azure VM が配置される Azure ネットワークを選択します。 次に、 **[OK]** をクリックします
 
     ![ネットワーク マッピング](./media/hyper-v-vmm-azure-tutorial/network-mapping-vmm.png)
 
 ## <a name="set-up-a-replication-policy"></a>レプリケーション ポリシーを設定する
 
 1. **[インフラストラクチャの準備]** > **[レプリケーションの設定]** > **[+ 作成と関連付け]** の順にクリックします。
-2. **[ポリシーの作成と関連付け]**で、ポリシー名「**ContosoReplicationPolicy**」を指定します。
+2. **[ポリシーの作成と関連付け]** で、ポリシー名「**ContosoReplicationPolicy**」を指定します。
 3. 既定の設定のままにして **[OK]** をクリックします。
     - **[コピーの頻度]** は、差分データを (初期レプリケーション後) 5 分ごとにレプリケートするように設定されています。
     - **[復旧ポイントのリテンション期間]** では、各復旧ポイントのリテンション期間が 2 時間に設定されています。
@@ -119,10 +120,10 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 
 1. **[アプリケーションのレプリケート]** で、**[ソース]** をクリックします。 
-2. **[ソース]** で、VMM クラウドを選択します。 次に、 **[OK]**をクリックします
+2. **[ソース]** で、VMM クラウドを選択します。 次に、 **[OK]** をクリックします
 3. **[ターゲット]** で、Azure がターゲットのコンテナー サブスクリプションであることを確認して、**Resource Manager** モデルを選択します。
 4. **contosovmsacct1910171607** ストレージ アカウントと、**ContosoASRnet** Azure ネットワークを選択します。
-5. **[仮想マシン]** > **[選択]** で、レプリケートする VM を選択します。 次に、 **[OK]**をクリックします
+5. **[仮想マシン]** > **[選択]** で、レプリケートする VM を選択します。 次に、 **[OK]** をクリックします
 
  **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**[保護を有効にする]** アクションの進行状況を追跡できます。 **[保護の最終処理]** ジョブが完了すると、初期レプリケーションが完了し、VM がフェールオーバーを実行できる状態になります。
 

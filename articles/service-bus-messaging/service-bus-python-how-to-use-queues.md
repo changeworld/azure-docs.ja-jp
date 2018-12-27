@@ -1,24 +1,25 @@
 ---
-title: "Azure Service Bus キューの使用方法 (Python) | Microsoft Docs"
-description: "Python から Azure Service Bus キューを使用する方法を説明します。"
+title: Azure Service Bus キューの使用方法 (Python) | Microsoft Docs
+description: Python から Azure Service Bus キューを使用する方法を説明します。
 services: service-bus-messaging
 documentationcenter: python
-author: sethmanheim
+author: spelluru
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 08/10/2017
-ms.author: sethm;lmazuel
-ms.openlocfilehash: e1e81ad1d7b4fe0e044917f090cac59dfd5b6332
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 08/30/2018
+ms.author: spelluru
+ms.openlocfilehash: cc8fc62811fe019dcaf613a1c0b50d89183e6555
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406194"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Python で Service Bus キューを使用する方法
 
@@ -107,7 +108,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 メッセージが処理された後、**delete** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は **1 回以上の処理** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次の記事をご覧ください。
 
 * [キュー、トピック、サブスクリプション][Queues, topics, and subscriptions]

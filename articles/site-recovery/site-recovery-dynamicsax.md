@@ -1,28 +1,22 @@
 ---
-title: "Azure Site Recovery を使用して多層 Dynamics AX デプロイをレプリケートする | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用して Dynamics AX をレプリケートして保護する方法について説明します"
-services: site-recovery
-documentationcenter: 
+title: Azure Site Recovery を使用して多層 Dynamics AX デプロイのディザスター リカバリーを設定する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して Dynamics AX のディザスター リカバリーを設定する方法について説明します
 author: asgang
 manager: rochakm
-editor: 
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: b390f6c62a6ddf8c800f79b42a36dac2c4f4c908
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210824"
 ---
-# <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 Dynamics AX デプロイをレプリケートする
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>多層 Dynamics AX アプリケーションのディザスター リカバリーの設定 
 
-## <a name="overview"></a>概要
+
 
 
  Dynamics AX は、複数の場所のプロセスの標準化、リソースの管理、およびコンプライアンスの簡素化を行うために企業によって使用されている最も一般的な ERP ソリューションです。 アプリケーションは組織にとってきわめて重要であるため、障害が発生した場合でも、最小の時間で再起動して稼働させる必要があります。
@@ -96,9 +90,9 @@ Dynamics AX クライアントと Application Object Server VM 用に、Site Rec
 
 * Application Object Server サーバー用に、適切な可用性セットを選択します。
 
-* 静的 IP を使用している場合は、VM に割り当てる IP を**[ターゲット IP]** テキスト ボックスに指定します。
+* 静的 IP を使用している場合は、VM に割り当てる IP を **[ターゲット IP]** テキスト ボックスに指定します。
 
-    ![ネットワーク設定 ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)が必要です。
+    ![ネットワーク設定 ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
 ### <a name="5-create-a-recovery-plan"></a>5.復旧計画の作成

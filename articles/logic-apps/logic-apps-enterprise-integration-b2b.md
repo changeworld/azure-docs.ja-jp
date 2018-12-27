@@ -1,26 +1,23 @@
 ---
-title: "B2B ソリューションを作成する - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリで Enterprise Integration Pack の B2B 機能を使用してデータを受信します"
+title: B2B エンタープライズ統合の作成 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack で B2B データを受信します
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: anneta
-editor: cgronlun
-ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 0625787ddcbc0091e70b111f687e25929720ad15
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad7a29f4a554d599b17576921542b1ac6e403911
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127766"
 ---
-# <a name="receive-data-in-logic-apps-with-the-b2b-features-in-the-enterprise-integration-pack"></a>ロジック アプリで Enterprise Integration Pack の B2B 機能を使用してデータを受信する
+# <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B データを受信する
 
 パートナーと契約を含む統合アカウントを作成した後、[Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)を使用してロジック アプリの企業間 (B2B) ワークフローを作成できます。
 
@@ -56,7 +53,7 @@ AS2 と X12 のアクションを使用するには、エンタープライズ�
 
 7. AS2 で必要な **[ヘッダー]** を追加します。これは HTTP 要求ヘッダーで見つけることができます。 この例では、ロジック アプリをトリガーする HTTP 要求のヘッダーを選択します。
 
-8. 次に、X12 メッセージのデコード アクションを追加します。 **[アクションの追加]**を選択します。
+8. 次に、X12 メッセージのデコード アクションを追加します。 **[アクションの追加]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-9.png)
 
@@ -78,7 +75,7 @@ AS2 と X12 のアクションを使用するには、エンタープライズ�
     次に、取引先から受信した X12 データをデコードし、項目を JSON オブジェクトに出力する手順を追加します。 
     データを受信したことをパートナーに知らせるために、HTTP 応答アクションで AS2 Message Disposition Notification (MDN) を含む応答を返すことができます。
 
-12. **[応答]**アクションを追加するには、**[アクションの追加]** を選択します。
+12. **[応答]** アクションを追加するには、**[アクションの追加]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
 

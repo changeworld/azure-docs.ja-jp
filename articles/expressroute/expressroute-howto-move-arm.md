@@ -1,11 +1,11 @@
 ---
-title: "クラシックから Resource Manager への ExpressRoute 回線の移行: PowerShell: Azure | Microsoft Docs"
-description: "このページでは、PowerShell を使用して、クラシックの回線を Resource Manager デプロイ モデルに移行する方法について説明します。"
+title: 'クラシックから Resource Manager への ExpressRoute 回線の移行: PowerShell: Azure | Microsoft Docs'
+description: このページでは、PowerShell を使用して、クラシックの回線を Resource Manager デプロイ モデルに移行する方法について説明します。
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 08152836-23e7-42d1-9a56-8306b341cd91
 ms.service: expressroute
@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/03/2017
+ms.date: 06/28/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: c407e01e6d881cb8adcfe55faa246468669be883
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c3a1a57a89d716245dc075e47b7970cb228ff50
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100455"
 ---
 # <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>PowerShell を使用してクラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
 
@@ -30,7 +31,7 @@ ExpressRoute 回線をクラシック デプロイ モデルと Resource Manager
 * Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) があることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 * 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、および[ワークフロー](expressroute-workflows.md)を確認してください。
 * [クラシックから Resource Manager への ExpressRoute 回線の移行](expressroute-move.md)に関する記事に記載されている情報を確認してください。 制限および制約事項について完全に理解していることを確認します。
-* 回路がクラシック デプロイメント モデルで完全に動作できることを確認します。
+* 回路がクラシック デプロイ モデルで完全に動作できることを確認します。
 * Resource Manager デプロイ モデルで作成したリソース グループがあることを確認します。
 
 ## <a name="move-an-expressroute-circuit"></a>ExpressRoute 回線の移行
@@ -71,7 +72,7 @@ Resource Manager 環境にサインインし、新しいリソース グルー�
 1. Azure Resource Manager 環境にサインインします。
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
 2. 適切な Azure サブスクリプションを選択します。
@@ -88,13 +89,15 @@ Resource Manager 環境にサインインし、新しいリソース グルー�
 
 ### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>手順 3: Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
 
-クラシック デプロイメント モデルから Resource Manager デプロイメント モデルに ExpressRoute 回線を移行する準備はできています。 先に進む前に、「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-move.md)」に記載されている情報を確認してください。
+クラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する準備はできています。 先に進む前に、「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-move.md)」に記載されている情報を確認してください。
 
 回線を移行するには、次のスニペットを変更して実行します。
 
 ```powershell
 Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
+
+クラシック モードの場合、ExpressRoute 回線には、リージョンに関連付けられるという概念はありません。 しかし、Resource Manager の場合、すべてのリソースを Azure リージョンにマップする必要があります。 Move-AzureRmExpressRouteCircuit コマンドレットに指定するリージョンは、技術的には任意のリージョンにすることが可能です。 組織化を目的とする場合は、ピアリングの場所を厳密に表すリージョンを選択してください。
 
 > [!NOTE]
 > 移行が完了した後は、前のコマンドレットで表示される新しい名前を使用してリソースにアクセスします。 回線の名前は実質的に変更されます。
@@ -104,7 +107,7 @@ Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -L
 
 ### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>両方のデプロイメント モデルに対して ExpressRoute 回線アクセスを有効にするには
 
-クラシック ExpressRoute 回線を Resource Manager デプロイメント モデルに移行した後に、両方のデプロイメント モデルへのアクセスを有効にできます。 以下のコマンドレットを実行して、両方のデプロイメント モデルへのアクセスを有効にします。
+クラシック ExpressRoute 回線を Resource Manager デプロイ モデルに移行した後に、両方のデプロイ モデルへのアクセスを有効にできます。 以下のコマンドレットを実行して、両方のデプロイメント モデルへのアクセスを有効にします。
 
 1. 回線の詳細を取得します。
 
@@ -130,14 +133,14 @@ Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -L
   get-azurededicatedcircuit
   ```
 
-5. これで、クラシック VNet についてはクラシック デプロイメント モデル コマンドを、Resource Manager VNet については Resource Manager コマンドを使用して、ExpressRoute 回線へのリンクを管理できます。 次の記事では、ExpressRoute 回線へのリンクを管理する方法について説明します。
+5. これで、クラシック VNet についてはクラシック デプロイ モデル コマンドを、Resource Manager VNet については Resource Manager コマンドを使用して、ExpressRoute 回線へのリンクを管理できます。 次の記事では、ExpressRoute 回線へのリンクを管理する方法について説明します。
 
     * [Resource Manager デプロイ モデルの ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)
     * [クラシック デプロイ モデルの ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md)
 
-### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>クラシック デプロイメント モデルへの ExpressRoute 回線アクセスを無効にするには
+### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>クラシック デプロイ モデルへの ExpressRoute 回線アクセスを無効にするには
 
-以下のコマンドレットを実行して、クラシック デプロイメント モデルへのアクセスを無効にします。
+以下のコマンドレットを実行して、クラシック デプロイ モデルへのアクセスを無効にします。
 
 1. ExpressRoute 回線の詳細を取得します。
 
@@ -157,7 +160,7 @@ Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -L
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
 * [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)

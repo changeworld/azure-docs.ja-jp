@@ -2,19 +2,22 @@
 title: Elastic Database ツールの用語集 | Microsoft Docs
 description: エラスティック データベース ツールで使用される用語の説明
 services: sql-database
-documentationcenter: ''
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 010d4f6d9f33b8fb6f1622321a3b566f68f28f5f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 7af8e25fa46155d5054d494485de336c68caa7f2
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239068"
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastic Database ツールの用語集
 Azure SQL Database の機能である [Elastic Database ツール](sql-database-elastic-scale-introduction.md)に関する用語の定義を次に示します。 このツールは、[シャード マップ](sql-database-elastic-scale-shard-map-management.md)の管理に使用するものであり、[クライアント ライブラリ](sql-database-elastic-database-client-library.md)、[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[クエリ](sql-database-elastic-query-overview.md)が含まれます。 
@@ -25,7 +28,7 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 **データベース**: Azure SQL Database。 
 
-**データ依存ルーティング**: アプリケーションが特定のシャーディング キーを持つシャードに接続することを可能にする機能。 「 [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください。 **[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)**と比較してください。
+**データ依存ルーティング**: アプリケーションが特定のシャーディング キーを持つシャードに接続することを可能にする機能。 「 [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください。 **[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)** と比較してください。
 
 **グローバル シャード マップ**: **シャード セット**内のシャーディング キーとそれに対応するシャードの間のマップ。 グローバル シャード マップは、 **シャード マップ マネージャー**に格納されます。 **ローカル シャード マップ**も参照。
 
@@ -78,7 +81,7 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 **分割**: 1 つのシャードから別の (通常は新しい) シャードに複数のシャードレットを移動する操作。 シャーディング キーは分割ポイントとしてユーザーから提供されます。
 
-**垂直スケーリング**: 個々のシャードのパフォーマンス レベルをスケール アップ (またはダウン) する操作。 たとえば、シャードを Standard から Premium に変更 (結果、コンピューティング リソースが増大)。 
+**垂直スケーリング**: 個々のシャードのコンピューティング サイズをスケール アップ (またはダウン) する操作。 たとえば、シャードを Standard から Premium に変更 (結果、コンピューティング リソースが増大)。 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

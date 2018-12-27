@@ -3,7 +3,7 @@ title: Linux VM のイメージをキャプチャする | Microsoft Docs
 description: クラシック デプロイ モデルで作成された Linux ベースの Azure の仮想マシン (VM) のイメージをキャプチャする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -15,12 +15,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: iainfou
-ms.openlocfilehash: 29a1d5bc839fcf533973271638bf283d6e48e93b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: cynthn
+ms.openlocfilehash: ae87af45ffc442c0de6c7f703694a994e536cdb8
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929214"
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>従来の Linux 仮想マシンをイメージとしてキャプチャする方法
 > [!IMPORTANT]
@@ -107,7 +108,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 また、[Azure Portal](http://portal.azure.com) を使用して、**[イメージ]** メソッドを使用し、作成したイメージを選択することで、カスタム VM を作成することもできます。 詳細については、[カスタム VM を作成する方法][How to Create a Custom Virtual Machine]に関する記事をご覧ください。
 
-**関連項目:** [Azure Linux エージェント ユーザー ガイド](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+**関連項目:** [Azure Linux エージェント ユーザー ガイド](../../extensions/agent-linux.md)
 
 [About Virtual Machine Images in Azure]:../../virtual-machines-linux-classic-about-images.md
 [How to Create a Custom Virtual Machine]:create-custom-classic.md

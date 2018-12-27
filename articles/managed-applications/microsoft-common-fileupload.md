@@ -1,23 +1,24 @@
 ---
 title: Azure の FileUpload UI 要素 | Microsoft Docs
 description: Azure Portal の Microsoft.Common.FileUpload UI 要素について説明します。
-services: azure-resource-manager
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: bfde11a189348472942248a6b90fd5ef1b5a1c89
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2886dbafe6bf20718f4e3cd2976764fc432dbb04
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021754"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 要素
 アップロードするファイルを 1 つまたは複数指定できるコントロールです。
@@ -50,6 +51,7 @@ ms.lasthandoff: 04/03/2018
 - `constraints.accept` は、ブラウザーのファイル ダイアログに表示されるファイルの種類を指定します。 [HTML5 の仕様](http://www.w3.org/TR/html5/forms.html#attr-input-accept)を参照して、使用できる値を確認します。 既定値は **null** です。
 - `options.multiple` が **true** に設定されている場合、ユーザーはブラウザーのファイル ダイアログ内の複数のファイルを選択できます。 既定値は **false** です。
 - この要素は、`options.uploadMode` の値に基づいた 2 つのモードでのファイルのアップロードをサポートしています。 **file** を指定すると、出力にファイルの内容が BLOB として含まれます。 **url** を指定すると、ファイルは一時的な場所にアップロードされ、出力には BLOB の URL が含まれます。 一時的な BLOB は 24 時間後に消去されます。 既定値は **file** です。
+- アップロードされたファイルは保護されます。 出力 URL には、デプロイ中にファイルにアクセスするための [SAS トークン](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)が含まれています。
 - `options.openMode` の値はファイルの読み取り方法を決定します。 ファイルがプレーン テキストである場合は **text** を指定し、そうでない場合は **binary** を指定します。 既定値は **text** です。
 - `options.uploadMode` が **file** に設定され、`options.openMode` が **binary** に設定されている場合、出力は Base64 でエンコードされます。
 - `options.encoding` はファイルを読み取る際に使用するエンコード方法を指定します。 既定値は **UTF-8** であり、これは `options.openMode` が **text** に設定されている場合にのみ使用されます。

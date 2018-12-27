@@ -1,30 +1,30 @@
 ---
-title: Azure AI ギャラリー コレクション | Microsoft Docs
-description: Azure AI ギャラリーでコレクションを発見および共有します。
+title: Azure AI Gallery のコレクション - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI Gallery のコレクションを使用すると、特定のソリューションまたは概念に使用する実験、API、およびその他のギャラリー項目をグループ化できます。 それらをグループ化して使用したり、後で参照するために保存したり、共有したりできます。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: c834a0dc-492f-4fa4-8a48-c86bba7b2b97
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: ee34520973a482a5a7741efe1306c8a656315277
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b88489f826bbeab636903c7c9918f34d16b2f122
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271370"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Azure AI ギャラリーでコレクションを発見および共有する
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="collections"></a>コレクション
-[コレクション](https://gallery.cortanaintelligence.com/collections)を使って、特定のソリューションまたは概念に使用する実験、API、およびその他のギャラリー項目をグループ化できます。 それらをグループ化して使用したり、後で参照するために保存したり、共有したりできます。
+[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)の[コレクション](https://gallery.cortanaintelligence.com/collections)を使用すると、特定のソリューションまたは概念に使用する実験、API、およびその他のギャラリー項目をグループ化できます。 それらをグループ化して使用したり、後で参照するために保存したり、共有したりできます。
 
 ## <a name="discover"></a>発見
 [ギャラリーで](http://gallery.cortanaintelligence.com)コレクションを参照するには、**[More (詳細)]** の下の **[Collections (コレクション)]** を選択します。
@@ -69,7 +69,7 @@ ms.lasthandoff: 03/23/2018
    > 
    
     ![[Public (公開)] または [Unlisted (非公開)] を選択する](./media/gallery-collections/create-collection-page-3.png)
-7. **[作成]**を選択します。
+7. **作成**を選択します。
 
 これで、コレクションが Azure AI ギャラリーに追加されます。 コレクションは、アカウント ページの **[Collection (コレクション)]** タブに一覧表示されます。
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 03/23/2018
 
 ![詳細ページから項目をコレクションに追加する](./media/gallery-collections/add-to-collection-from-item-details.png)
 
-コレクションの概要、説明、またはタグを変更するには、コレクションを開いて **[Edit (編集)]**を選択します。 
+コレクションの概要、説明、またはタグを変更するには、コレクションを開いて **[Edit (編集)]** を選択します。 
 
 コレクションの編集中に、コレクション内の項目の順序を変更できます。 項目の横にある矢印ボタンを使用して、順序リストで上または下に移動します。 
 
@@ -98,4 +98,4 @@ ms.lasthandoff: 03/23/2018
 
 **[ギャラリーに移動する](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+

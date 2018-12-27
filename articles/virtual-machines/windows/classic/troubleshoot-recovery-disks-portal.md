@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/21/2017
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 427dc733903a60e2fea0d7c7e8c9d9b4c250142a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 68f0a3fc13eed518318196cda7ca59c242674303
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413028"
 ---
 # <a name="troubleshoot-a-windows-classic-vm-by-attaching-the-os-disk-to-a-recovery-vm"></a>OS ディスクを復旧 VM に接続して Windows クラシック VM のトラブルシューティングを行う
 

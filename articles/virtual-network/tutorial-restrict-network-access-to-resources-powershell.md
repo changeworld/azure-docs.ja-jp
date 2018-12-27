@@ -1,44 +1,45 @@
 ---
 title: PaaS リソースへのネットワーク アクセスを制限する - Azure PowerShell | Microsoft Docs
-description: PowerShell を使用して仮想ネットワーク サービスのエンドポイントで Azure Storage、Azure SQL Database などの Azure リソースへのアクセスを制限する方法について説明します。
+description: この記事では、Azure PowerShell を使って仮想ネットワーク サービスのエンドポイントで Azure Storage、Azure SQL Database などの Azure リソースへのアクセスを制限する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: ''
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 7e402af74babda2ce32d4a1597c61d71aba89b9e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b3977e045751165947243c67291e81b998b5fcb5
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606116"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>PowerShell を使用して仮想ネットワーク サービスのエンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
 仮想ネットワーク サービスのエンドポイントを使用すると、一部の Azure サービス リソースへのネットワーク アクセスを、仮想ネットワーク サブネットに制限できます。 また、リソースに対するインターネット アクセスを排除することもできます。 サービス エンドポイントにより、使用している仮想ネットワークからサポートされている Azure サービスへの直接接続が提供されるため、ご自身の仮想ネットワークのプライベート アドレス スペースを使用して、Azure サービスにアクセスできるようになります。 サービス エンドポイントを介して Azure リソースに送信されるトラフィックは、常に Microsoft Azure のバックボーン ネットワーク上に留まります。 この記事では、次のことについて説明します:
 
-> [!div class="checklist"]
-> * 1 つのサブネットを含む仮想ネットワークを作成する
-> * サブネットを追加し、サービス エンドポイントを有効にする
-> * Azure リソースを作成し、サブネットからのみネットワーク アクセスできるようにする
-> * 各サブネットに仮想マシン (VM) をデプロイする
-> * サブネットからリソースへのアクセスを確認する
-> * サブネットおよびインターネットからリソースへのアクセスが拒否されたことを確認する
+* 1 つのサブネットを含む仮想ネットワークを作成する
+* サブネットを追加し、サービス エンドポイントを有効にする
+* Azure リソースを作成し、サブネットからのみネットワーク アクセスできるようにする
+* 各サブネットに仮想マシン (VM) をデプロイする
+* サブネットからリソースへのアクセスを確認する
+* サブネットおよびインターネットからリソースへのアクセスが拒否されたことを確認する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -75,13 +76,13 @@ $virtualNetwork | Set-AzureRmVirtualNetwork
 
 ## <a name="enable-a-service-endpoint"></a>サービス エンドポイントを有効にする 
 
-サービス エンドポイントをサポートするサービスについてのみ、サービス エンドポイントを有効にできます。 [Get-AzureRmVirtualNetworkAvailableEndpointService](/powershell/module/azurerm.network/get-azurermvirtualnetworkavailableendpointservice) を使用して、Azure の場所で使用できるサービス エンドポイント対応のサービスを表示します。 次の例では、*eastus* リージョンで使用できる、サービス エンドポイント対応サービスの一覧が返されます。 返されるサービスの一覧は、サービス エンドポイント対応の Azure サービスが増えるにつれて、時間の経過と共に大きくなります。
+サービス エンドポイントをサポートするサービスについてのみ、サービス エンドポイントを有効にできます。 [Get-AzureRmVirtualNetworkAvailableEndpointService](/powershell/module/azurerm.network/get-azurermvirtualnetworkavailableendpointservice) を使用して、Azure の場所で使用できるサービス エンドポイント対応のサービスを表示します。 次の例では、*eastus* リージョンで使用できる、サービス エンドポイント対応サービスの一覧が返されます。 将来的にサービス エンドポイント対応の Azure サービスが増えるにつれて、返されるサービスの一覧も大きくなる予定です。
 
 ```azurepowershell-interactive
 Get-AzureRmVirtualNetworkAvailableEndpointService -Location eastus | Select Name
 ``` 
 
-追加のサブネットを仮想ネットワークに作成します。 次の例では、*Microsoft.Storage* のサービス エンドポイントを持つ *Private* という名前のサブネットが作成されます。 
+追加のサブネットを仮想ネットワークに作成します。 この例では、*Microsoft.Storage* のサービス エンドポイントを持つ *Private* という名前のサブネットが作成されます。 
 
 ```azurepowershell-interactive
 $subnetConfigPrivate = Add-AzureRmVirtualNetworkSubnetConfig `
@@ -93,7 +94,7 @@ $subnetConfigPrivate = Add-AzureRmVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="restrict-network-access-to-and-from-a-subnet"></a>サブネットとの間のネットワーク アクセスを制限する
+## <a name="restrict-network-access-for-a-subnet"></a>サブネットのネットワーク アクセスを制限する
 
 [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) を使用して、ネットワーク セキュリティ グループのセキュリティ規則を作成します。 次の規則では、Azure Storage サービスに割り当てられたパブリック IP アドレスへの発信アクセスを許可します。 
 
@@ -110,11 +111,11 @@ $rule1 = New-AzureRmNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-次の規則では、すべてのパブリック IP アドレスへのアクセスを拒否します。 この規則は、優先度が高い前の規則によって上書きされます。これにより、Azure Storage のパブリック IP アドレスへのアクセスが許可されます。
+次の規則では、すべてのパブリック IP アドレスへのアクセスを拒否します。 この規則は、優先度が高い前の規則によってオーバーライドされます。これにより、Azure Storage のパブリック IP アドレスへのアクセスが許可されます。
 
 ```azurepowershell-interactive
 $rule2 = New-AzureRmNetworkSecurityRuleConfig `
-  -Name Deny-internet-All `
+  -Name Deny-Internet-All `
   -Access Deny `
   -DestinationAddressPrefix Internet `
   -DestinationPortRange * `
@@ -165,11 +166,11 @@ $virtualNetwork | Set-AzureRmVirtualNetwork
 
 ## <a name="restrict-network-access-to-a-resource"></a>リソースへのネットワーク アクセスを制限する
 
-サービス エンドポイントが有効な Azure サービスを介して作成されたリソースへのネットワーク アクセスを制限するために必要な手順は、サービスによって異なります。 各サービスの具体的な手順については、それぞれのサービスのドキュメントを参照してください。 この記事の残りの部分では、例として、Azure ストレージ アカウントのネットワーク アクセスを制限する手順を示します。
+サービス エンドポイントを有効にした Azure サービスを介して作成されたリソースへのネットワーク アクセスを制限するために必要な手順は、サービスによって異なります。 各サービスの具体的な手順については、それぞれのサービスのドキュメントをご覧ください。 この記事の残りの部分では、例として、Azure ストレージ アカウントのネットワーク アクセスを制限する手順を示します。
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) を使用して Azure ストレージ アカウントを作成します。 `<replace-with-your-unique-storage-account-name>` を Azure 全体で一意の名前 (3 ～ 24 文字で、数字と小文字のみを使用) に置き換えます。
+[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) を使用して Azure ストレージ アカウントを作成します。 `<replace-with-your-unique-storage-account-name>` を Azure 全体における一意の名前 (3 から 24 文字で、数字と小文字のみを使用) に置き換えます。
 
 ```azurepowershell-interactive
 $storageAcctName = '<replace-with-your-unique-storage-account-name>'
@@ -206,7 +207,7 @@ $share = New-AzureStorageShare my-file-share -Context $storageContext
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>ストレージ アカウントへのすべてのネットワーク アクセスを拒否する
 
-既定では、ストレージ アカウントは、任意のネットワーク上のクライアントからのネットワーク接続を受け入れます。 選択したネットワークへのアクセスを制限するには、[Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset) を使用して、既定のアクションを *Deny* に変更します。 ネットワーク アクセスが拒否されると、ストレージ アカウントには、どのネットワークからもアクセスできなくなります。
+既定では、ストレージ アカウントは、任意のネットワーク上のクライアントからのネットワーク接続を受け入れます。 選択したネットワークのみにアクセスを制限するには、[Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset) を使用して、既定のアクションを *Deny* に変更します。 ネットワーク アクセスが拒否されると、ストレージ アカウントには、どのネットワークからもアクセスできなくなります。
 
 ```azurepowershell-interactive
 Update-AzureRmStorageAccountNetworkRuleSet  `
@@ -294,7 +295,7 @@ Get-AzureRmPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-リモート デスクトップ プロトコル (.rdp) ファイルが作成され、お使いのコンピューターにダウンロードされます。 ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。 **[OK]**を選択します。 サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。
+リモート デスクトップ プロトコル (.rdp) ファイルが作成され、お使いのコンピューターにダウンロードされます。 ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。 **[OK]** を選択します。 サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。
 
 *myVmPrivate* VM で、PowerShell を使用して、Azure ファイル共有を Z ドライブにマップします。 次のコマンドを実行する前に、`<storage-account-key>` と `<storage-account-name>` を、ご自身で指定した値、または「[ストレージ アカウントの作成](#create-a-storage-account)」で取得した値で置き換えます。
 
@@ -372,9 +373,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、仮想ネットワーク サブネットのサービス エンドポイントを有効にしました。 複数の Azure サービスでデプロイされているリソースに対して、サービス エンドポイントを有効にできることを学習しました。 Azure ストレージ アカウントを作成し、そのストレージ アカウントへのネットワーク アクセスを、仮想ネットワーク サブネット内のリソースだけに制限しました。 サービス エンドポイントを運用仮想ネットワークに作成する前に、[サービス エンドポイント](virtual-network-service-endpoints-overview.md)について十分に理解しておくことをお勧めします。
+この記事では、仮想ネットワーク サブネットのサービス エンドポイントを有効にしました。 複数の Azure サービスでデプロイされているリソースに対して、サービス エンドポイントを有効にできることを学習しました。 Azure ストレージ アカウントを作成し、そのストレージ アカウントへのネットワーク アクセスを、仮想ネットワーク サブネット内のリソースだけに制限しました。 サービス エンドポイントの詳細については、[サービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)と[サブネットの管理](virtual-network-manage-subnet.md)に関するページをご覧ください。
 
-ご自身のアカウントに複数の仮想ネットワークがある場合は、各仮想ネットワーク内のリソースが相互に通信できるように、2 つの仮想ネットワークを接続することもできます。 次のチュートリアルに進み、仮想ネットワークを接続する方法を学習してください。
-
-> [!div class="nextstepaction"]
-> [仮想ネットワークを接続する](./tutorial-connect-virtual-networks-powershell.md)
+アカウントに複数の仮想ネットワークがある場合は、各仮想ネットワーク内のリソースが相互に通信できるように、2 つの仮想ネットワークを接続することもできます。 方法については、[仮想ネットワークの接続](tutorial-connect-virtual-networks-powershell.md)に関するページをご覧ください。

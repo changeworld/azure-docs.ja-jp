@@ -1,35 +1,35 @@
 ---
-title: Azure AI ギャラリー コンペティション | Microsoft Docs
-description: Azure AI ギャラリーでコンペティションを発見します。
+title: ギャラリーのコンペティション - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI ギャラリーでコンペティションを発見します。 複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う、絶好の機会を提供します。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: ef74f411-bce4-4b02-aa34-902fc8d7b519
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: d12da450fe929361b32ea607a09d3afbbd2639b9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5d38205ca614fef2ea9c10e9ad2fb94bdf3481cc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277796"
 ---
 # <a name="discover-competitions-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでコンペティションを発見する
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="cortana-intelligence-competitions"></a>Cortana Intelligence コンペティション
-**[コンペティション](https://gallery.cortanaintelligence.com/competitions)** では、Cortana Intelligence Suite を使用して複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う、絶好の機会を提供します。
+[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)の**[コンペティション](https://gallery.cortanaintelligence.com/competitions)** では、Cortana Intelligence Suite を使用して複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う、絶好の機会が提供されます。
 
 コンペティションについてよく寄せられる質問とその回答については、「[Microsoft Cortana Intelligence コンペティションの FAQ](competition-faq.md)」をご覧ください。
 
 ## <a name="discover"></a>発見
-**[[コンペティション]](https://gallery.cortanaintelligence.com/competitions)** ページ ([aka.ms/CIComp](http://aka.ms/CIComp)) には、人気のある上位のコンペティションの一覧が表示されます。
+**[[コンペティション]](https://gallery.cortanaintelligence.com/competitions)** ページ ([aka.ms/CIComp](https://aka.ms/CIComp)) には、人気のある上位のコンペティションの一覧が表示されます。
 
 ![ギャラリー ホーム ページからコンペティションを選択する](./media/gallery-competitions/select-competitions-in-gallery.png)
 
@@ -52,5 +52,5 @@ ms.lasthandoff: 03/23/2018
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

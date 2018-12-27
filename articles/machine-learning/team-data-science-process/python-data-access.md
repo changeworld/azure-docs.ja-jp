@@ -3,22 +3,24 @@ title: Machine Learning Python クライアント ライブラリを使って Py
 description: Python クライアント ライブラリをインストールして使用し、ローカル Python 環境から Azure Machine Learning データを安全に管理します。
 services: machine-learning
 documentationcenter: python
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 9ab42272-c30c-4b7e-8e66-d64eafef22d0
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: 5f0823e07f0e583e32829b664a1d3d463092169e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 496ffdcb5cc2e7b208a53dc8c1d8ba4c0818945f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719972"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -63,7 +65,7 @@ Python クライアント ライブラリは、次の環境でテストされて
 ## <a name="datasetAccess"></a>Studio Code スニペットを使ってデータ セットにアクセスする
 Python クライアント ライブラリを使うと、実行している実験から既存のデータ セットへプログラムでアクセスできるようになります。
 
-Studio Web インターフェイスから、ローカル マシンでデータ セットを Pandas DataFrame オブジェクトとしてダウンロードして逆シリアル化するために必要なすべての情報を含むコード スニペットを生成できます。
+Studio Web インターフェイスから、ローカル マシンでデータ セットを pandas DataFrame オブジェクトとしてダウンロードして逆シリアル化するために必要なすべての情報を含むコード スニペットを生成できます。
 
 ### <a name="security"></a>データ アクセスのためのセキュリティ
 Python クライアント ライブラリで使用するために Studio で提供されるコード スニペットには、ワークスペース ID や認証トークンが含まれます。 これらを使用すればワークスペースにフル アクセスできますので、パスワードなどで保護する必要があります。
@@ -72,7 +74,7 @@ Python クライアント ライブラリで使用するために Studio で提�
 
 ![セキュリティ][security]
 
-役割が **[所有者]**に設定されていない場合は、所有者として再度招待をリクエストするか、ワークスペースの所有者にコード スニペットを提供するよう依頼する必要があります。
+役割が **[所有者]** に設定されていない場合は、所有者として再度招待をリクエストするか、ワークスペースの所有者にコード スニペットを提供するよう依頼する必要があります。
 
 次のいずれかを実行することで認証トークンを取得できます。
 
@@ -89,7 +91,7 @@ Python クライアント ライブラリで使用するために Studio で提�
 ### <a name="accessingDatasets"></a>ローカル Python アプリケーションからデータ セットにアクセスする
 1. Machine Learning Studio で、左側のナビゲーション バーの **[データセット]** をクリックします。
 2. アクセスするデータ セットを選択します。 **[マイ データ セット]** リストか **[サンプル]** リストからどのデータ セットでも選択できます。
-3. 下のツールバーから、 **[データ アクセス コードの生成]**をクリックします。 データが Python クライアント ライブラリと互換性のない形式の場合、このボタンは無効になります。
+3. 下のツールバーから、 **[データ アクセス コードの生成]** をクリックします。 データが Python クライアント ライブラリと互換性のない形式の場合、このボタンは無効になります。
    
     ![データセット][datasets]
 4. 表示されるウィンドウからコード スニペットを選択し、クリップボードにコピーします。
@@ -195,7 +197,7 @@ Azure ML によって割り当てられるその他の値には次のものが�
 使用できるメタデータの詳細については、 `SourceDataset` クラスをご覧ください。
 
 ### <a name="read-contents"></a>コンテンツを読み込む
-Machine Learning Studio で提供されるコード スニペットは、データ セットを自動的にダウンロードして Pandas DataFrame オブジェクトに逆シリアル化します。 これは次の `to_dataframe` メソッドで実行されます。
+Machine Learning Studio で提供されるコード スニペットは、データ セットを自動的にダウンロードして pandas DataFrame オブジェクトに逆シリアル化します。 これは次の `to_dataframe` メソッドで実行されます。
 
     frame = ds.to_dataframe()
 
@@ -218,7 +220,7 @@ Machine Learning Studio で提供されるコード スニペットは、デー�
 ### <a name="create-a-new-dataset"></a>新しいデータセットを作成する
 Python クライアント ライブラリでは、Python プログラムからデータセットをアップロードできます。 これらのデータセットは、その後、ご利用のワークスペースで使用できます。
 
-Pandas DataFrame にデータがある場合は、次のコードを使用します。
+pandas DataFrame にデータがある場合は、次のコードを使用します。
 
     from azureml import DataTypeIds
 
@@ -240,7 +242,7 @@ Pandas DataFrame にデータがある場合は、次のコードを使用しま
         description='my description'
     )
 
-Python クライアント ライブラリは、Pandas DataFrame を次の形式にシリアル化できます ( `azureml.DataTypeIds` クラスの定数)。
+Python クライアント ライブラリは、pandas DataFrame を次の形式にシリアル化できます (`azureml.DataTypeIds` クラスの定数)。
 
 * PlainText
 * GenericCSV

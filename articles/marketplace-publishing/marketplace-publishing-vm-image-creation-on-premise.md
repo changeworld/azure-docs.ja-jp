@@ -3,8 +3,8 @@ title: Azure Marketplace 向けの仮想マシン イメージのオンプレミ
 description: VM イメージをオンプレミスで作成し、他のユーザーが購入できるように Azure Marketplace にデプロイするための手順を理解して実行します。
 services: marketplace-publishing
 documentationcenter: ''
-author: msmbaldwin
-manager: mbaldwin
+author: HannibalSII
+manager: hascipio
 editor: ''
 ms.assetid: 26dfbd5a-8685-4b19-987e-c20ca60540ec
 ms.service: marketplace
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
-ms.author: mbaldwin
-ms.openlocfilehash: 6b927ce6032092ce258eeebca49da0571439dbfb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: hascipio; v-divte
+ms.openlocfilehash: e5571a0933284a52d5567db0505ecaced6c6c336
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253501"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向けの仮想マシン イメージのオンプレミスでの作成
 Azure 仮想ハード ディスク (VHD) は、リモート デスクトップ プロトコルを使用してクラウドで直接作成することを強くお勧めします。 ただし、必要な場合は、VHD をダウンロードして、オンプレミスのインフラストラクチャを使用して開発できます。  
@@ -65,12 +66,12 @@ BLOB URL が分かったら、 [Azure ポータル](http://manage.windowsazure.c
    
    ![図](media/marketplace-publishing-vm-image-creation-on-premise/img06.png)
 6. URL を保存済みの URL と比較して、適切なオペレーティング システム VHD を選択します。
-7. **[Download]**をクリックします。
+7. **[Download]** をクリックします。
    
    ![図](media/marketplace-publishing-vm-image-creation-on-premise/img07.png)
 
 ### <a name="download-a-vhd-by-using-powershell"></a>PowerShell を使用した VHD のダウンロード
-Azure ポータルを使用する以外に、 [Save-AzureVhd](http://msdn.microsoft.com/library/dn495297.aspx) コマンドレットを使用して、オペレーティング システム VHD をダウンロードすることもできます。
+Azure ポータルを使用する以外に、 [Save-AzureVhd](https://msdn.microsoft.com/library/dn495297.aspx) コマンドレットを使用して、オペレーティング システム VHD をダウンロードすることもできます。
 
         Save-AzureVhd –Source <storageURIOfVhd> `
         -LocalFilePath <diskLocationOnWorkstation> `
@@ -93,16 +94,16 @@ VHD は、米国内のリージョンのストレージ アカウントにアッ
 **Microsoft Azure ポータルからのストレージ アカウントの作成**
 
 1. **[リソースの作成]** をクリックします。
-2. **[ストレージ]**を選択します。
+2. **[ストレージ]** を選択します。
 3. ストレージ アカウント名を入力し、場所を選択します。
    
    ![図](media/marketplace-publishing-vm-image-creation-on-premise/img08.png)
 4. **Create** をクリックしてください。
 5. 作成したストレージ アカウント用のブレードが開きます。 開かない場合は、**[参照]**  >  **[ストレージ アカウント]** の順に選択します。 [ストレージ アカウント] ブレードで、先ほど作成したストレージ アカウントを選択します。
-6. **[コンテナー]**を選択します。
+6. **[コンテナー]** を選択します。
    
    ![図](media/marketplace-publishing-vm-image-creation-on-premise/img09.png) 
-7. [コンテナー] ブレードで、 **[追加]**を選択し、コンテナー名とコンテナーのアクセス許可を入力します。 コンテナーのアクセス許可には **[プライベート]** を選択します。
+7. [コンテナー] ブレードで、 **[追加]** を選択し、コンテナー名とコンテナーのアクセス許可を入力します。 コンテナーのアクセス許可には **[プライベート]** を選択します。
 
 > [!TIP]
 > 発行する予定の SKU ごとに 1 つのコンテナーを作成することをお勧めします。
@@ -112,11 +113,11 @@ VHD は、米国内のリージョンのストレージ アカウントにアッ
   ![図](media/marketplace-publishing-vm-image-creation-on-premise/img10.png)
 
 ### <a name="create-a-storage-account-by-using-powershell"></a>PowerShell を使用したストレージ アカウントの作成
-PowerShell の [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495115.aspx) コマンドレットを使用して、ストレージ アカウントを作成します。
+PowerShell の [New-AzureStorageAccount](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azurestorageaccount) コマンドレットを使用して、ストレージ アカウントを作成します。
 
         New-AzureStorageAccount -StorageAccountName “mystorageaccount” -Location “West US”
 
-その後、そのストレージ アカウント内に、 [NewAzureStorageContainer](http://msdn.microsoft.com/library/dn495291.aspx) コマンドレットを使用してコンテナーを作成できます。
+その後、そのストレージ アカウント内に、 [New-AzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) コマンドレットを使用してコンテナーを作成できます。
 
         New-AzureStorageContainer -Name “containername” -Permission “Off”
 
@@ -138,7 +139,7 @@ PowerShell の [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495
 ストレージ アカウントとコンテナーを作成したら、準備した VHD をアップロードできます。 PowerShell、Linux コマンドライン ツール、またはその他の Azure Storage 管理ツールを使用できます。
 
 ### <a name="upload-a-vhd-via-powershell"></a>PowerShell を使用して VHD をアップロードする
-[Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx) コマンドレットを使用します。
+[Add-AzureVhd](https://msdn.microsoft.com/library/dn495173.aspx) コマンドレットを使用します。
 
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 

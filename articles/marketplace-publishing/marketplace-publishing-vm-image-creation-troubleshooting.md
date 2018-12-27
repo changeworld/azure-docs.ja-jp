@@ -3,7 +3,7 @@ title: VHD 作成中の一般的な問題をトラブルシューティングす
 description: VHD 作成中の一般的なトラブルシューティングの質問と問題にお答えします。
 services: Azure Marketplace
 documentationcenter: ''
-author: msmbaldwin
+author: HannibalSII
 manager: ''
 editor: ''
 ms.assetid: e39563d8-8646-4cb7-b078-8b10ac35b494
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 09/26/2016
-ms.author: mbaldwin
-ms.openlocfilehash: 65361ad5bd7c3311c428b64b8476ec8f2ea2d17b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: hascipio; v-divte
+ms.openlocfilehash: c4e88a9fbb15dd90d619b159ae1065dfacc1907f
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39713399"
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>VHD 作成中に発生する一般的な問題をトラブルシューティングする方法
 この記事では、Azure Marketplace の発行者や共同管理者が仮想マシン ソリューションを発行または管理するときによく発生する問題や一般的な質問について説明します。

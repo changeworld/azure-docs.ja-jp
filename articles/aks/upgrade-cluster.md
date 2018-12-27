@@ -1,23 +1,24 @@
 ---
-title: "Azure Container Service (AKS) クラスターの更新"
-description: "Azure Container Service (AKS) クラスターの更新"
+title: Azure Kubernetes Service (AKS) クラスターのアップグレード
+description: Azure Kubernetes Service (AKS) クラスターのアップグレード
 services: container-service
 author: gabrtv
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/24/2018
+ms.date: 07/18/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 9b94f858aa896eaa93430a12cd74e12d9bf02008
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 4ff2b56afc4496b6344735b4e3c813b06cee17e3
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141802"
 ---
-# <a name="upgrade-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターの更新
+# <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
-Azure Container Service (AKS) により、Kubernetes クラスターのアップグレードなど、一般的な管理タスクを容易に実行することができます。
+Azure Kubernetes Service (AKS) により、Kubernetes クラスターのアップグレードなど、一般的な管理タスクを容易に実行することができます。
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS クラスターのアップグレード
 
@@ -31,14 +32,17 @@ az aks get-upgrades --name myAKSCluster --resource-group myResourceGroup --outpu
 
 ```console
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  ----------------------------------
-default  myResourceGroup  1.7.9            1.7.9              1.7.12, 1.8.1, 1.8.2, 1.8.6, 1.8.7
+-------  ---------------  ---------------  -----------------  -------------------
+default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.6
 ```
 
-アップグレードで利用できるバージョンは、1.7.9、1.8.1、および 1.8.2 の 3 つです。 `az aks upgrade` コマンドを使用して、利用可能な最新バージョンにアップグレードします。  アップグレード プロセス中、実行中のアプリケーションの中断を最小限に抑えるために、ノードは慎重に[切断およびドレイン][kubernetes-drain]されます。  クラスター ノードの追加と削除が行われるため、クラスターのアップグレードを開始する前に、ワークロードを処理できる十分な追加のコンピューティング容量があることを確認します。
+アップグレードに利用できるバージョンは、1.9.1、1.9.2、および 1.9.6 の 3 つです。 `az aks upgrade` コマンドを使用して、利用可能な最新バージョンにアップグレードします。  アップグレード処理中、AKS は、クラスターに新しいノードを追加し、一度に 1 ノードずつ慎重に [cordon および drain][kubernetes-drain] 処理を実行して、実行中のアプリケーションの中断を最小限に抑えます。
+
+> [!NOTE]
+> AKS クラスターをアップグレードする際に、Kubernetes マイナー バージョンをスキップすることはできません。 たとえば、1.8.x から 1.9.x、または 1.9.x から 1.10.x へのアップグレードは許可されていますが、1.8 から 1.10 へのアップグレードは許可されていません。 1.8 から 1.10 へアップグレードするには、まず 1.8 から 1.9 へアップグレードした後で、さらに 1.9 から 1.10 へアップグレードする必要があります。
 
 ```azurecli-interactive
-az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.8.2
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6
 ```
 
 出力:
@@ -73,7 +77,7 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
     ],
     "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
     "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
-    "kubernetesVersion": "1.8.2",
+    "kubernetesVersion": "1.9.6",
     "linuxProfile": {
       "adminUsername": "azureuser",
       "ssh": {
@@ -97,7 +101,7 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
 }
 ```
 
-ここで、`az aks show` コマンドを使用して、アップグレードが成功したことを確認できます。
+`az aks show` コマンドを使用して、アップグレードが成功したことを確認します。
 
 ```azurecli-interactive
 az aks show --name myAKSCluster --resource-group myResourceGroup --output table
@@ -108,7 +112,7 @@ az aks show --name myAKSCluster --resource-group myResourceGroup --output table
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus     myResourceGroup  1.8.2                Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
+myAKSCluster  eastus     myResourceGroup  1.9.6                 Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>次の手順

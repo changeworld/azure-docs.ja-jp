@@ -1,11 +1,11 @@
 ---
-title: "Azure で Node.js とMongoDB Web アプリを構築する | Microsoft Docs"
-description: "MongoDB 接続文字列を使用して Cosmos DB データベースに接続する Node.js アプリを Azure で動作させる方法について説明します。"
+title: MongoDB を使用して Node.js アプリをビルドする - Azure App Service | Microsoft Docs
+description: MongoDB 接続文字列を使用して Cosmos DB データベースに接続する Node.js アプリを Azure で動作させる方法について説明します。
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.service: app-service-web
 ms.workload: web
@@ -14,20 +14,21 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: b191af9edd8fd38c819483e8836568657d0b6bf0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.custom: seodec18
+ms.openlocfilehash: 3666af764fa20a8343addedbddcdb12de0daf4a1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251506"
 ---
-# <a name="build-a-nodejs-and-mongodb-web-app-in-azure"></a>Azure で Node.js とMongoDB Web アプリを構築する
+# <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>チュートリアル:Azure で Node.js とMongoDB Web アプリを構築する
 
 > [!NOTE]
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、「[Azure App Service on Linux で Node.js および MongoDB の Web アプリを構築する](./containers/tutorial-nodejs-mongodb-app.md)」をご覧ください。
 >
 
-Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure で Node.js Web アプリを作成し、MongoDB データベースに接続する方法について説明します。 完了すると、MEAN アプリケーション (MongoDB、Express、AngularJS、および Node.js) が [Azure App Service](app-service-web-overview.md) で実行されます。 単純化するために、サンプル アプリケーションでは [MEAN.js Web フレームワーク](http://meanjs.org/)を使用します。
+Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure で Node.js Web アプリを作成し、MongoDB データベースに接続する方法について説明します。 完了すると、MEAN アプリケーション (MongoDB、Express、AngularJS、および Node.js) が [Azure App Service](app-service-web-overview.md) で実行されます。 単純化するために、サンプル アプリケーションでは [MEAN.js Web フレームワーク](https://meanjs.org/)を使用します。
 
 ![Azure App Service で実行されている MEAN.js アプリ](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -48,10 +49,10 @@ Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホ
 このチュートリアルを完了するには、以下が必要です。
 
 1. [Git をインストールする](https://git-scm.com/)
-1. [Node.js および NPM をインストールする](https://nodejs.org/)
-1. [Bower をインストールする](https://bower.io/) ([MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started) で必要です)
-1. [Gulp.js をインストールします](http://gulpjs.com/) ([MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started) で必要です)
-1. [MongoDB Community Edition をインストールして実行する](https://docs.mongodb.com/manual/administration/install-community/) 
+2. [Node.js および NPM をインストールする](https://nodejs.org/)
+3. [Bower をインストールする](https://bower.io/) ([MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) で必要です)
+4. [Gulp.js をインストールします](https://gulpjs.com/) ([MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) で必要です)
+5. [MongoDB Community Edition をインストールして実行する](https://docs.mongodb.com/manual/administration/install-community/) 
 
 ## <a name="test-local-mongodb"></a>ローカル MongoDB をテストする
 
@@ -117,6 +118,9 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 任意のタイミングで Node.js を停止するには、ターミナルで `Ctrl+C` キーを押します。 
 
+> [!NOTE]
+> [Node.js のクイック スタート](app-service-web-get-started-nodejs.md)のページでは、アプリのルート ディレクトリに web.config を置く必要があることが説明されています。 ただし、このチュートリアルでは、ZIP ファイル デプロイではなく[ローカル Git デプロイ](app-service-deploy-local-git.md)を使用してファイルをデプロイするときに、App Service によってこの web.config ファイルが自動的に生成されます。 
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-production-mongodb"></a>運用 MongoDB を作成する
@@ -131,7 +135,11 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 ### <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する
 
-Cloud Shell で、[`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create) コマンドを使用して Cosmos DB アカウントを作成します。
+> [!NOTE]
+> このチュートリアルでは、ご利用の Azure サブスクリプションに Azure Cosmos DB データベースを作成しますが、そのためには料金が発生します。 「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」で、無料の Azure Cosmos DB アカウントを 7 日間体験できるので、そちらをご利用ください。 MongoDB タイルの **[作成]** ボタンをクリックするだけで、無料の MongoDB データベースを Azure に作成できます。 データベースが作成されたら、ポータルの **[接続文字列]** に移動して Azure Cosmos DB 接続文字列を取得してください。後でこのチュートリアルの中で使用します。
+>
+
+Cloud Shell で、[`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) コマンドを使用して Cosmos DB アカウントを作成します。
 
 次のコマンドで、*\<cosmosdb_name>* プレースホルダーを一意の Cosmos DB 名に置き換えます。 この名前は、Cosmos DB エンドポイント (`https://<cosmosdb_name>.documents.azure.com/`) の一部として使用されるため、Azure のすべての Cosmos DB アカウントで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。
 
@@ -165,7 +173,7 @@ Cosmos DB アカウントが作成されると、Azure CLI によって次の例
 
 ### <a name="retrieve-the-database-key"></a>データベース キーの取得
 
-Cosmos DB データベースに接続するには、データベース キーが必要です。 Cloud Shell で、[`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_list_keys) コマンドを使用して主キーを取得します。
+Cosmos DB データベースに接続するには、データベース キーが必要です。 Cloud Shell で、[`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-keys) コマンドを使用して主キーを取得します。
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
@@ -262,7 +270,7 @@ MEAN.JS version: 0.5.0
 
 既定では、MEAN.js プロジェクトは _config/env/local-production.js_ を Git リポジトリ外で保持します。 したがって、Azure Web アプリでは、アプリ設定を使用して MongoDB 接続文字列を定義します。
 
-アプリ設定を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用します。 
+アプリ設定を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 
 
 次の例では、Azure Web アプリの `MONGODB_URI` アプリ設定を構成します。 *\<app_name>*、*\<cosmosdb_name>*、および *\<primary_master_key>* プレースホルダーを置き換えます。
 
@@ -302,10 +310,10 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://<app_name>.scm.azurewebsites.net/<app_name>.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 ``` 
 
-デプロイ プロセスにより、`npm install` の後、[Gulp](http://gulpjs.com/) が実行されます。 App Service では、デプロイ時に Gulp および Grunt タスクが実行されません。そのため、このサンプル リポジトリには、それを有効にする追加の 2 つのファイルがルート ディレクトリにあります。 
+デプロイ プロセスにより、`npm install` の後、[Gulp](https://gulpjs.com/) が実行されます。 App Service では、デプロイ時に Gulp および Grunt タスクが実行されません。そのため、このサンプル リポジトリには、それを有効にする追加の 2 つのファイルがルート ディレクトリにあります。 
 
 - _.deployment_ - このファイルは、カスタム デプロイ スクリプトとして `bash deploy.sh`を実行するよう App Service に指示します。
 - _deploy.sh_- カスタム デプロイ スクリプト。 ファイルを確認すると、`npm install` と `bower install` の後に `gulp prod` が実行されることがわかります。 
@@ -466,7 +474,7 @@ git push azure master
 
 Azure App Service で Node.js アプリケーションを実行している場合、コンソール ログをターミナルにパイプできます。 このようにすると、アプリケーション エラーのデバッグに役立つ同じ診断メッセージを取得できます。
 
-ログのストリーミングを開始するには、Cloud Shell で [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) コマンドを使用します。
+ログのストリーミングを開始するには、Cloud Shell で [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) コマンドを使用します。
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup

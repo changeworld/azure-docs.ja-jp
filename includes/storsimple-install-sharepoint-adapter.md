@@ -1,15 +1,28 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: ad45b117df545c361f17c299bee47b314a408b06
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165748"
+---
 <!--author=SharS last changed: 9/17/15-->
 
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>SharePoint 用 StorSimple アダプターをインストールするには
 1. Web フロントエンド (WFE) サーバーにインストーラーをコピーします。このサーバーは、SharePoint サーバーの全体管理 Web アプリケーションを実行するように構成されています。 
-2. 管理者特権を持つアカウントを使用して WFE サーバーにログオンします。
+2. 管理者特権を持つアカウントを使用して WFE サーバーにサインインします。
 3. インストーラーをダブルクリックします。 SharePoint 用 StorSimple アダプターのセットアップ ウィザードが起動します。 **[次へ]** をクリックしてインストールを開始します。
    
     ![StorSimple adapter setup start page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
-4. SharePoint 用 StorSimple アダプターのセットアップ構成ページで、インストールする場所を選択し、StorSimple デバイス上の DATA 0 ネットワーク インターフェイスの IP アドレスを入力し、 **[次へ]**をクリックします。 
+4. SharePoint 用 StorSimple アダプターのセットアップ構成ページで、インストールする場所を選択し、StorSimple デバイス上の DATA 0 ネットワーク インターフェイスの IP アドレスを入力し、 **[次へ]** をクリックします。 
    
     ![StorSimple adapter setup configuration page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
-5. セットアップの確認ページで、 **[インストール]**をクリックします。
+5. セットアップの確認ページで、 **[インストール]** をクリックします。
    
     ![StorSimple adapter setup confirmation page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
 6. **[完了]** をクリックしてセットアップ ウィザードを閉じます。

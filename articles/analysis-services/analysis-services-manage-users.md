@@ -1,45 +1,39 @@
 ---
-title: "Azure Analysis Services での認証とユーザーのアクセス許可 | Microsoft Docs"
-description: "Azure Analysis Services での認証とユーザーのアクセス許可について説明します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services での認証とユーザーのアクセス許可 | Microsoft Docs
+description: Azure Analysis Services での認証とユーザーのアクセス許可について説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 1011e2c8351839cc8c93fc74a7d6f51f29e52410
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 6280544a42d0d5012b01446ec8c3bc386ef861dd
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428421"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
-Azure Analysis Services では、ID 管理とユーザー認証に Azure Active Directory (Azure AD) を使用します。 Azure Analysis Services サーバーを作成、管理、またはこのサーバーに接続するユーザーには、同じサブスクリプション内の [Azure AD テナント](../active-directory/active-directory-administer.md)に有効なユーザー ID が必要です。
+Azure Analysis Services では、ID 管理とユーザー認証に Azure Active Directory (Azure AD) を使用します。 Azure Analysis Services サーバーを作成、管理、またはこのサーバーに接続するユーザーには、同じサブスクリプション内の [Azure AD テナント](../active-directory/fundamentals/active-directory-administer.md)に有効なユーザー ID が必要です。
 
 Azure Analysis Services では、[Azure AD B2B コラボレーション](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)がサポートされます。 B2B では、組織外のユーザーを Azure AD ディレクトリにゲスト ユーザーとして招待することができます。 別の Azure AD テナント ディレクトリのユーザーまたは任意の有効なメール アドレスを持つユーザーをゲストにすることができます。 招待されたユーザーが、Azure から電子メールで送信される招待状を受け入れると、ユーザー ID がテナント ディレクトリに追加されます。 それらの ID をセキュリティ グループに、またはサーバー管理者またはデータベース ロールのメンバーとして追加できます。
 
 ![Azure Analysis Services 認証のアーキテクチャ](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 すべてのクライアント アプリケーションとツールは、Analysis Services [クライアント ライブラリ](analysis-services-data-providers.md) (AMO、MSOLAP、ADOMD) の 1 つ以上を使ってサーバーに接続します。 
 
 3 つのクライアント ライブラリはすべて、Azure AD の対話型フローと非対話型認証方法の両方をサポートします。 2 つの非対話型方法である Active Directory パスワード認証方法と Active Directory 統合認証方法は、AMOMD と MSOLAP を利用しているアプリケーションで使用できます。 これら 2 つの方式では、ポップアップ ダイアログ ボックスは表示されません。
 
-Excel や Power BI Desktop などのクライアント アプリケーションと、SSMS や SSDT などのツールは、最新リリースに更新されたときにライブラリの最新バージョンをインストールします。 Power BI Desktop、SSMS、SSDT は毎月更新されます。 Excel は [Office 365 と共に更新](https://support.office.com/en-us/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)されます。 Office 365 の更新は頻度が低く、組織によっては遅延チャネルを使用して、更新が最大 3 か月間遅延されるようにしています。
+Excel や Power BI Desktop などのクライアント アプリケーションと、SSMS や SSDT などのツールは、最新リリースに更新されたときにライブラリの最新バージョンをインストールします。 Power BI Desktop、SSMS、SSDT は毎月更新されます。 Excel は [Office 365 と共に更新](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)されます。 Office 365 の更新は頻度が低く、組織によっては遅延チャネルを使用して、更新が最大 3 か月間遅延されるようにしています。
 
 使用するクライアント アプリケーションまたはツールに応じて、認証の種類とサインインの方法が異なる場合があります。 各アプリケーションは、Azure Analysis Services のようなクラウド サービスに接続するためのさまざまな機能をサポートしている場合があります。
 
 Power BI Desktop、SSDT、および SSMS は、Azure Multi-Factor Authentication (MFA) もサポートする対話型の認証方式である Active Directory ユニバーサル認証をサポートします。 Azure MFA は、シンプルなサインイン プロセスを提供しながら、データやアプリケーションへのアクセスを効果的に保護することができます。 Azure MFA は、複数の検証オプション (電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知) による強力な認証を提供します。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。 **ユニバーサル認証を使うことをお勧めします**。
 
-ユニバーサル認証が選択されていないか、使用できない (Excel) 場合に、Windows アカウントを使って Azure にサインインするには、[Active Directory フェデレーション サービス (AD FS)](../active-directory/connect/active-directory-aadconnect-azure-adfs.md) が必要です。 フェデレーションでは、Azure AD および Office 365 のユーザーはオンプレミスの資格情報を使って認証されて、Azure リソースにアクセスできます。
+ユニバーサル認証が選択されていないか、使用できない (Excel) 場合に、Windows アカウントを使って Azure にサインインするには、[Active Directory フェデレーション サービス (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) が必要です。 フェデレーションでは、Azure AD および Office 365 のユーザーはオンプレミスの資格情報を使って認証されて、Azure リソースにアクセスできます。
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 Azure Analysis Services サーバーは、Windows 認証、Active Directory パスワード認証、Active Directory のユニバーサル認証を使って [SSMS V17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 以降からの接続をサポートします。 一般に、以下の理由で Active Directory のユニバーサル認証の使用をお勧めします。
@@ -69,7 +63,7 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 
 ![Azure Portal の [アクセス制御 (IAM)]](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-このレベルのロールは、Portal で完了可能なタスクまたは Azure Resource Manager テンプレートを使って完了可能なタスクを実行する必要のあるユーザーまたはアカウントに適用します。 詳しくは、「[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)」をご覧ください。 
+このレベルのロールは、Portal で完了可能なタスクまたは Azure Resource Manager テンプレートを使って完了可能なタスクを実行する必要のあるユーザーまたはアカウントに適用します。 詳しくは、「[ロールベースのアクセス制御](../role-based-access-control/overview.md)」をご覧ください。 
 
 
 ## <a name="database-roles"></a>データベース ロール
@@ -82,7 +76,7 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Active Directory のグループによるリソースへのアクセス管理](../active-directory/active-directory-manage-groups.md)   
+[Azure Active Directory のグループによるリソースへのアクセス管理](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  
 [サーバー管理者の管理](analysis-services-server-admins.md)  
-[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)  
+[ロールベースのアクセス制御](../role-based-access-control/overview.md)  

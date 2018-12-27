@@ -1,30 +1,24 @@
 ---
-title: "大規模な抽出、変換、および読み込み (ETL) - Azure HDInsight | Microsoft Docs"
-description: "HDInsight での Hadoop による ETL の使用方法について説明します。"
+title: 大規模な抽出、変換、および読み込み (ETL) - Azure HDInsight
+description: HDInsight 上で Apache Hadoop を使用して ETL を使用する方法について説明します。
 services: hdinsight
-documentationcenter: 
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 8b55bafee83dd43d535f9ebb0488134b5c7b3446
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 17aeb847a2c701abf03b46d47e34d13b6fb27316
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633327"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
-抽出、変換、および読み込み (ETL) は、データがさまざまなソースから取得され、標準の場所に収集され、クリーニングと処理が行われ、最終的にクエリが可能なデータ ストアに読み込まれるプロセスです。 従来の ETL プロセスは、データをインポートし、所定の場所でクリーニングした後、リレーショナル データ エンジンに格納します。 HDInsight では、さまざまな Hadoop エコシステム コンポーネントが大規模な ETL の実行をサポートします。 
+抽出、変換、および読み込み (ETL) は、データがさまざまなソースから取得され、標準の場所に収集され、クリーニングと処理が行われ、最終的にクエリが可能なデータ ストアに読み込まれるプロセスです。 従来の ETL プロセスは、データをインポートし、所定の場所でクリーニングした後、リレーショナル データ エンジンに格納します。 HDInsight 上では、さまざまな Apache Hadoop エコシステム コンポーネントで、大規模な ETL の実行がサポートされます。 
 
 ETL プロセスでの HDInsight の使用は、次のパイプラインにまとめることができます。
 
@@ -60,7 +54,7 @@ Azure Data Factory の詳細については、[こちらのドキュメント](.
 
 ソース データ ファイルは、通常、Azure Storage または Azure Data Lake Store 内の場所に読み込まれます。 任意の形式のファイルを使用できますが、通常は CSV などのフラット ファイルが使用されます。 
 
-### <a name="azure-storage"></a>Azure Storage (Azure Storage) 
+### <a name="azure-storage"></a>Azure Storage 
 
 [Azure Storage](https://azure.microsoft.com/services/storage/blobs/) には、[固有のスケーラビリティ ターゲット](../../storage/common/storage-scalability-targets.md)があります。  大半の分析ノードでは、Azure Storage は、多数の小さなファイルを処理する場合に最善のスケーリングを行います。  Azure Storage は、ファイルの数やサイズが制限内である限り、数やサイズに関係なく、同等のパフォーマンスを保証します。  つまり、テラバイトのデータを格納し、そのデータのサブセットを使用する場合でもすべてを使用する場合でも、一貫性のあるパフォーマンスを得ることができます。
 
@@ -86,7 +80,7 @@ ADLS は、Azure Event Hub または Apache Storm を使用したイベントの
 
 * Azure ExpressRoute。Azure ExpressRoute を使用すると、Azure データセンターとオンプレミスのインフラストラクチャ間のプライベート接続を作成できます。 これらの接続により、大量のデータを転送するための信頼性の高いオプションが提供されます。 詳細については、 [Azure ExpressRoute のドキュメント](../../expressroute/expressroute-introduction.md)をご覧ください。
 
-* データの "オフライン" アップロード。 [Azure Import/Export サービス](../../storage/common/storage-import-export-service.md)を使用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送できます。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../../data-factory/v1/data-factory-azure-datalake-connector.md) または [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) ツールを使用して、Azure Storage BLOB から Data Lake Store にデータをコピーできます。
+* データの "オフライン" アップロード。 [Azure Import/Export サービス](../../storage/common/storage-import-export-service.md)を使用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送できます。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) または [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) ツールを使用して、Azure Storage BLOB から Data Lake Store にデータをコピーできます。
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 

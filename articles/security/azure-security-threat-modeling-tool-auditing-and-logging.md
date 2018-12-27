@@ -1,24 +1,25 @@
 ---
-title: "監査とログ記録 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威の軽減策"
+title: 監査とログ記録 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 3f1933fc59862eca7ae6ee40bbd5136e449e5cf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: 990f300055f7c0c7132dd44271dea73044649fc5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307000"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>セキュリティ フレーム: 監査とログ記録 | 対応策 
 | 製品/サービス | 記事 |
@@ -124,7 +125,7 @@ ms.lasthandoff: 10/11/2017
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -135,7 +136,7 @@ ms.lasthandoff: 10/11/2017
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure |
 | **属性**              | SQL バージョン - V12 |
@@ -146,8 +147,8 @@ ms.lasthandoff: 10/11/2017
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
-| **SDL フェーズ**               | デプロイ |  
+| **コンポーネント**               | Azure Storage | 
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし |
 | **参照**              | [Storage Analytics を使用して承認の種類を監視する](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
@@ -161,7 +162,7 @@ ms.lasthandoff: 10/11/2017
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | .NET Framework |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
 | **手順** | <p>セキュリティ インシデントが発生した後の正確な監査証跡が欠如していると、フォレンジック調査の妨げとなる場合があります。 Windows Communication Foundation (WCF) には、成功または失敗した認証の試行回数をログ記録する機能が用意されています。</p><p>失敗した認証の試行をログ記録することで、管理者は潜在的なブルート フォース攻撃を警戒することができます。 同様に、成功した認証の試行をログ記録することで、正当なアカウントが侵害された場合に有用な監査証跡となる可能性があります。 WCF のサービス セキュリティ監査機能を有効にします。 |
 
 ### <a name="example"></a>例
@@ -190,7 +191,7 @@ ms.lasthandoff: 10/11/2017
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | .NET Framework |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
 | **手順** | <p>開発されたソリューションは、監査ログへの書き込みに失敗した場合でも例外を生成しないように構成されているものです。 WCF が監査ログに書き込むことができない場合に例外をスローしないように構成されている場合、プログラムに失敗が通知されません。また、重要なセキュリティ イベントの監査も発生しない可能性があります。</p>|
 
 ### <a name="example"></a>例
@@ -240,4 +241,4 @@ ms.lasthandoff: 10/11/2017
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [IoT Hub 操作の監視の概要](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
-| **手順** | <p>IoT Hub 操作の監視を通じて収集された監査データを収集および格納できるように設計します。 次の監視のカテゴリを有効にします。</p><ul><li>デバイス ID の操作</li><li>デバイスからクラウドへの通信</li><li>クラウドからデバイスへの通信</li><li>接続</li><li>ファイルのアップロード</li></ul>|
+| **手順** | <p>IoT Hub 操作の監視を通じて収集された監査データを収集および格納できるように設計します。 次の監視のカテゴリを有効にします。</p><ul><li>デバイス ID の操作</li><li>デバイスからクラウドへの通信</li><li>クラウドからデバイスへの通信</li><li>Connections</li><li>ファイルのアップロード</li></ul>|

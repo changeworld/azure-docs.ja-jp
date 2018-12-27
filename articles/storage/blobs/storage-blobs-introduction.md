@@ -1,53 +1,77 @@
 ---
-title: Blob Storage の概要 - Azure のオブジェクト ストレージ | Microsoft Docs
-description: Azure Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化オブジェクト データを格納するよう設計されています。 アプリケーションは、PowerShell または Azure CLI、Azure Storage クライアント ライブラリ経由のコード、あるいは REST で Blob Storage のオブジェクトにアクセスできます。
+title: Blob Storage の概要 - Azure のオブジェクト ストレージ
+description: Azure Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化オブジェクト データを格納します。 Azure Blob Storage は、高度にスケーラブルな高可用性のストレージです。 クライアントは、PowerShell または Azure CLI から Azure Storage クライアント ライブラリまたは REST を使用して、Blob Storage 内のデータ オブジェクトにプログラムによってアクセスできます。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: overview
-ms.date: 03/27/2018
+ms.date: 11/19/2018
 ms.author: tamram
-ms.openlocfilehash: 0fff0032ec2452413bcd1df3175634b14a64208f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: blobs
+ms.openlocfilehash: 7628260efff34b52ca7d4bd4c35cce279d5474b3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965412"
 ---
-# <a name="introduction-to-blob-storage"></a>Blob Storage の概要
+# <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 
-Azure Blob Storage は、データ オブジェクト用の Microsoft のクラウド ストレージ ソリューションです。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化オブジェクト データを格納できます。 Blob Storage のデータには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 BLOB ストレージを使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。
+[!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
-BLOB ストレージの一般的な用途には、次のようなものがあります。
+## <a name="blob-storage-resources"></a>Blob Storage のリソース
 
-* 画像またはドキュメントをブラウザーに直接配信する
-* 分散アクセス用にファイルを格納する
-* ビデオおよびオーディオをストリーミング配信する
-* バックアップと復元、ディザスター リカバリー、アーカイブのために格納する
-* 内部設置型サービスまたは Azure ホステッド サービスで分析する データを格納する
-* Azure Virtual Machines で使用する VHD を格納する
+Blob Storage には、3 種類のリソースがあります。
 
-## <a name="blob-service-concepts"></a>Blob service の概念
+- **ストレージ アカウント** 
+- ストレージ アカウント内の**コンテナー**
+- コンテナー内の **BLOB** 
 
-Blob service には、次のコンポーネントが含まれます。
+次の図に、これらのリソースの関係を示します。
 
-![BLOB アーキテクチャ](./media/storage-blobs-introduction/blob1.png)
+![Blob Storage のアーキテクチャ図](./media/storage-blob-introduction/blob1.png)
 
-* **ストレージ アカウント** : Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。 このストレージ アカウントは **汎用ストレージ アカウント (v1 または v2)** または **BLOB ストレージ アカウント**のいずれでもかまいません。 詳細については、「[Azure ストレージ アカウントについて](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+### <a name="storage-accounts"></a>ストレージ アカウント
 
-* **コンテナー** : コンテナーは、BLOB のセットをグループ化します。 すべての BLOB はコンテナーに格納されている必要があります。 1 つのアカウントに格納できるコンテナーの数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。 コンテナー名は小文字で入力する必要があります。
+ストレージ アカウントは、データ用の一意の名前空間を Azure 内に用意します。 Azure Storage 内に格納されるすべてのオブジェクトには、一意のアカウント名を含むアドレスが割り当てられます。 アカウント名と Azure Storage サービス エンドポイントの組み合わせによって、ストレージ アカウント用のエンドポイントが形成されます。
 
-* **BLOB** : 任意の種類およびサイズのファイルです。 Azure Storage は、ブロック BLOB、[ページ BLOB](storage-blob-pageblob-overview.md)、および追加 BLOB の 3 種類の BLOB を提供します。
-  
-    *ブロック BLOB* は、ドキュメントやメディア ファイルなどのテキストまたはバイナリ ファイルを格納するのに最適です。 *追加 BLOB* はブロック BLOB と同様にブロックで構成されますが、追加操作用に最適化されているので、ログ記録シナリオで役立ちます。 1 つのブロック BLOB は、100 MB までのブロックを最大 50,000 個まで含めることができます。合計サイズは 4.75 TB を少し上回ります (100 MB x 50,000)。 1 つの追加 BLOB は、4 MB までのブロックを最大 50,000 個まで含めることができます。合計サイズは 195 GB を少し上回ります (4 MB x 50,000)。
-  
-    *ページ BLOB* は最大 8 TB のサイズにすることができます。読み取り/書き込み操作を頻繁に実行する場合はこの BLOB が効率的です。 Azure の仮想マシンでは、ページ BLOB を OS とデータ ディスクとして使用します。
-  
-    コンテナーと BLOB の名前付け規則については、「 [コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)」を参照してください。
+たとえば、ストレージ アカウントの名前が *mystorageaccount* の場合、Blob Storage の既定のエンドポイントは次のようになります。
+
+```
+http://mystorageaccount.blob.core.windows.net 
+```
+
+ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../common/storage-quickstart-create-account.md)」を参照してください。 ストレージ アカウントの詳細については、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+
+### <a name="containers"></a>コンテナー
+
+ファイル システムのディレクトリと同じように、コンテナーを使用して BLOB のセットを整理できます。 ストレージ アカウントに含めることができるコンテナーの数には制限がなく、1 つのコンテナーに格納できる BLOB の数にも制限はありません。 
+
+  > [!NOTE]
+  > コンテナー名は小文字で入力する必要があります。 コンテナーの詳細については、「[Naming and Referencing Containers, Blobs, and Metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)」(コンテナー、BLOB、およびメタデータの名前付けと参照) を参照してください。
+
+### <a name="blobs"></a>BLOB
+ 
+Azure Storage では、3 種類の BLOB がサポートされています。
+
+* **ブロック BLOB** には、約 4.7 TB までのテキストとバイナリ データが格納されます。 ブロック BLOB は、個別に管理できるデータ ブロックで構成されます。
+* **追加 BLOB** は、ブロック BLOB と同様にブロックで構成されますが、追加操作用に最適化されています。 追加 BLOB は、仮想マシンのデータのログ記録などのシナリオに最適です。
+* **ページ BLOB** には、最大 8 TB のランダム アクセス ファイルが格納されます。 ページ BLOB には、Azure 仮想マシン用のディスクとして機能する仮想ハード ドライブ (VHD) ファイルが格納されます。 ページ BLOB の詳細については、(../articles/storage/blobs/storage-blob-pageblob-overview.md) を参照してください。
+
+異なる種類の BLOB の詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)」(ブロック BLOB、追加 BLOB、ページ BLOB について) をご覧ください。
+
+## <a name="move-data-to-blob-storage"></a>Blob Storage にデータを移動する
+
+既存のデータを Blob Storage に移行するためのソリューションは多数存在します。
+
+- **AzCopy** は Windows と Linux 用の使いやすいコマンド ライン ツールであり、Blob Storage 間、コンテナー間、またはストレージ アカウント間でデータをコピーします。 AzCopy の詳細については、「[AzCopy v10 (プレビュー) を使用してデータを転送する](../common/storage-use-azcopy-v10.md)」をご覧ください。 
+- **Azure Storage Data Movement Library** は、Azure Storage サービス間でデータを移動するための .NET ライブラリです。 AzCopy ユーティリティは、Data Movement Library を使用して構築されています。 詳細については、Data Movement Library の[参照ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement)をご覧ください。 
+- **Azure Data Factory** では、Azure リソースを認証するためのアカウント キー、Shared Access Signature、サービス プリンシパル、またはマネージド ID を使用した Blob Storage 間のデータのコピーをサポートしています。 詳しくは、「[Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。 
+- **blobfuse** は Azure Blob Storage 用の仮想ファイル システム ドライバーです。 Linux ファイル システムでは、blobfuse を使用して、お客様のストレージ アカウント内の既存のブロック BLOB データにアクセスできます。 詳しくは、「[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)」をご覧ください。
+- **Azure Data Box Disk** は、大規模なデータセットやネットワーク上の制約によって有線でのデータのアップロードが非現実的になったときに、オンプレミスのデータを Blob Storage に転送するサービスです。 [Azure Data Box Disk](../../databox/data-box-disk-overview.md) を使用すると、Microsoft から SSD (Solid State Disk) を取り寄せることができます。 必要なデータは、それらのディスクにコピーし、Microsoft に送り返すことで、BLOB ストレージにアップロードすることができます。
+- **Azure Import/Export サービス**を使用すると、大量のデータをお客様のストレージ アカウントからハード ディスクにエクスポートすることができます。ハード ディスクはお客様が用意し、処理後に Microsoft からお客様のデータと共に送り返されます。 詳しくは、[Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../common/storage-import-export-service.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
 * [ストレージ アカウントの作成](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [.NET を使用して Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)
-* [.NET を使用した Azure Storage サンプル](../common/storage-samples-dotnet.md)
-* [Java を使用した Azure Storage サンプル](../common/storage-samples-java.md)
+* [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../common/storage-scalability-targets.md)

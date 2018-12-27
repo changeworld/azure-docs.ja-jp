@@ -1,32 +1,36 @@
 ---
-title: "Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ | Microsoft Docs"
-description: "Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求をカスタマイズする方法について説明します"
+title: Azure AD のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ | Microsoft Docs
+description: Azure AD のエンタープライズ アプリケーションの SAML トークンで発行された要求をカスタマイズする方法について説明します。
 services: active-directory
-documentationcenter: 
-author: jeevansd
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: jeedes
+ms.date: 10/20/2018
+ms.author: celested
+ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 7394857f55493b072e6ea549c8eeec54a808f5e5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4e80f5cb85a53281da9ec50a02d089f46e97dfde
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466718"
 ---
-# <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
-現在 Azure Active Directory では、Azure AD アプリ ギャラリーの事前統合済みアプリケーション、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでシングル サインオンをサポートしています。 ユーザーが Azure AD によって SAML 2.0 プロトコルを使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、「要求」と呼ばれる、ユーザーに関する情報が含まれています。
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
-ID 用語で「要求」とは、そのユーザーに発行するトークンの中にあるユーザーに関する ID プロバイダーが提示した情報を指します。 [SAML トークン](http://en.wikipedia.org/wiki/SAML_2.0)では、通常、このデータは SAML 属性ステートメントに含まれています。 ユーザーの一意の ID は通常、名前識別子とも呼ばれる SAML サブジェクトで表されます。
+現在 Azure Active Directory (Azure AD) では、Azure AD アプリ ギャラリーの事前統合済みアプリケーション、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでシングル サインオンをサポートしています。 ユーザーが Azure AD によって SAML 2.0 プロトコルを使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、「要求」と呼ばれる、ユーザーに関する情報が含まれています。
 
-既定では、Azure Active Directory は、アプリケーションに対して、Azure AD でのユーザーのユーザー名 (ユーザー プリンシパル名とも呼ばれます) を値に持つ NameIdentifier 要求を含む SAML トークンを発行します。 この値によって、ユーザーを一意に識別できます。 また、SAML トークンには、ユーザーの電子メール アドレス、姓名を含むその他の要求も含まれています。
+*要求*とは、そのユーザーに発行するトークンの中にあるユーザーに関する ID プロバイダーが提示した情報を指します。 [SAML トークン](http://en.wikipedia.org/wiki/SAML_2.0)では、通常、このデータは SAML 属性ステートメントに含まれています。 ユーザーの一意の ID は通常、名前識別子とも呼ばれる SAML サブジェクトで表されます。
+
+既定では、Azure AD は、アプリケーションに対して、Azure AD でのユーザーのユーザー名 (ユーザー プリンシパル名とも呼ばれます) を値に持つ NameIdentifier 要求を含む SAML トークンを発行します。 この値によって、ユーザーを一意に識別できます。 また、SAML トークンには、ユーザーの電子メール アドレス、姓名を含むその他の要求も含まれています。
 
 アプリケーションに対して SAML トークンで発行された要求を表示または編集するには、Azure Portal でアプリケーションを開きます。 その後、アプリケーションの **[ユーザー属性]** セクションの **[その他のすべてのユーザー属性を表示および編集する]** チェック ボックスをオンにします。
 
@@ -34,32 +38,49 @@ ID 用語で「要求」とは、そのユーザーに発行するトークン�
 
 SAML トークンで発行された要求を編集する必要がある理由は、2 つ考えられます。
 * アプリケーションが、別の要求 URI または要求値のセットを必要とするように記述されている。
-* NameIdentifier 要求が、Azure Active Directory に格納されているユーザー名 (ユーザー プリンシパル名) 以外の何かであることを必要とする方法で、アプリケーションがデプロイされている。
+* NameIdentifier 要求が、Azure AD に格納されているユーザー名 (ユーザー プリンシパル名) 以外の何かであることを必要とする方法で、アプリケーションがデプロイされている。
 
 既定の要求値のすべてを編集できます。 SAML トークン属性のテーブルで要求の行を選びます。 **[属性の編集]** セクションが開き、要求の名前、値、および要求に関連付けられている名前空間を編集できます。
 
 ![ユーザー属性の編集][2]
 
-コンテキスト メニューを使って、要求 (NameIdentifier 以外) を削除することもできます。メニューを開くには、**[...]** アイコンをクリックします。  **[属性の追加]** ボタンを使って、新しい要求を追加することもできます。
+コンテキスト メニューを使って、要求 (NameIdentifier 以外) を削除することもできます。メニューを開くには、**[...]** アイコンをクリックします。 **[属性の追加]** ボタンを使って、新しい要求を追加することもできます。
 
 ![ユーザー属性の編集][3]
 
 ## <a name="editing-the-nameidentifier-claim"></a>NameIdentifier 要求の編集
-異なるユーザー名を使ってデプロイされたアプリケーションの問題を解決するには、**[ユーザー属性]** セクションの **[ユーザー識別子]** ドロップダウンをクリックします。 この操作によって、複数のオプションがある次のダイアログが表示されます。
+
+異なるユーザー名を使ってデプロイされたアプリケーションの問題を解決するには、**[ユーザー属性]** セクションの **[ユーザー識別子]** ドロップダウンを選択します。 この操作によって、複数のオプションがある次のダイアログが表示されます。
 
 ![ユーザー属性の編集][4]
 
-ドロップダウンで **[user.mail]** を選んで、NameIdentifier 要求をディレクトリ内のユーザーのメール アドレスに設定します。 オンプレミスの Azure AD から同期されているユーザーの SAM アカウント名に設定する場合は、**[user.onpremisessamaccountname]** を選びます。
+### <a name="attributes"></a>属性
 
-特殊な **ExtractMailPrefix()** 関数を使って、メール アドレス、SAM アカウント名、またはユーザー プリンシパル名から、ドメイン サフィックスを削除することもできます。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。
+`NameIdentifier` (または NameID) 要求の必要なソースを選択します。 次のオプションから選択できます。
 
-![ユーザー属性の編集][5]
+| Name | 説明 |
+|------|-------------|
+| 電子メール | ユーザーのメール アドレス |
+| userprincipalName | ユーザーのユーザー プリンシパル名 (UPN) |
+| onpremisessamaccount | オンプレミスの Azure AD から同期された SAM アカウント名 |
+| objectID | Azure AD でのユーザーの objectID |
+| EmployeeID | ユーザーの EmployeeID |
+| ディレクトリ拡張機能 | [Azure AD Connect 同期を使用してオンプレミスの Active Directory から同期された](../hybrid/how-to-connect-sync-feature-directory-extensions.md)ディレクトリ拡張機能 |
+| 拡張属性 1 ～ 15 | Azure AD のスキーマを拡張するために使用されるオンプレミスの 拡張機能属性 |
 
-ユーザー識別子の値で検証済みのドメインに参加するための **join()** 関数も追加されています。 **[ユーザー識別子]** で join() 関数を選ぶときは、最初にメール アドレスやユーザー プリンシパル名などのユーザー識別子を選び、2 番目のドロップダウン リストで検証済みのドメインを選びます。 検証済みドメインでメール アドレスを選ぶと、Azure AD は最初の値からユーザー名を抽出し (joe_smith@contoso.com から joe_smith)、それに contoso.onmicrosoft.com を追加します。次の例を参照してください。
+### <a name="transformations"></a>変換
 
-![ユーザー属性の編集][6]
+特別な要求変換関数を使用することもできます。
+
+| 関数 | 説明 |
+|----------|-------------|
+| **ExtractMailPrefix()** | メール アドレス、SAM アカウント名、またはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
+| **join()** | 属性を検証済みドメインと結合します。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
+| **ToLower()** | 選択した属性の文字を小文字に変換します。 |
+| **ToUpper()** | 選択した属性の文字を大文字に変換します。 |
 
 ## <a name="adding-claims"></a>要求の追加
+
 要求を追加する場合は、属性の名前を指定できます (SAML 仕様とは異なり、URI パターンに厳密に従う必要はありません)。 ユーザー属性には、ディレクトリに格納されている値を設定します。
 
 ![ユーザー属性の追加][7]
@@ -70,7 +91,7 @@ SAML トークンで発行された要求を編集する必要がある理由は
 > 特定のユーザーに対し、選択された属性に格納されている値がない場合、その要求はトークンで発行されません。
 
 > [!TIP]
-> **user.onpremisesecurityidentifier** と **user.onpremisesamaccountname** は、[Azure AD Connect ツール](../active-directory-aadconnect.md)を使ってオンプレミスの Active Directory のユーザー データを同期する場合にのみサポートされます。
+> **user.onpremisesecurityidentifier** と **user.onpremisesamaccountname** は、[Azure AD Connect ツール](../hybrid/whatis-hybrid-identity.md)を使ってオンプレミスの Active Directory のユーザー データを同期する場合にのみサポートされます。
 
 ## <a name="restricted-claims"></a>制限付き要求
 
@@ -125,10 +146,11 @@ SAML には制限付きの要求がいくつかあります。 これらの要�
     | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier |
     | http://schemas.microsoft.com/identity/claims/scope |
 
-## <a name="next-steps"></a>次のステップ
-* [Article Index for Application Management in Azure Active Directory](../active-directory-apps-index.md)
-* [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
-* [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md)
+## <a name="next-steps"></a>次の手順
+
+* [Azure AD のアプリケーション管理](../manage-apps/what-is-application-management.md)
+* [Azure AD アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンを構成する](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+* [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saml-claims-customization/user-attribute-section.png

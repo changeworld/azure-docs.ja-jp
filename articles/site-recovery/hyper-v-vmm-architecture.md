@@ -1,18 +1,20 @@
 ---
-title: "Azure Site Recovery でのセカンダリ サイトのアーキテクチャへの Hyper-V レプリケーション | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用してオンプレミスの Hyper-V VM をセカンダリ System Center VMM サイトにレプリケートするためのアーキテクチャの概要を説明します。"
+title: Azure Site Recovery を使用したセカンダリ オンプレミス サイトへの Hyper-V ディザスター リカバリーのアーキテクチャ | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用してオンプレミスの Hyper-V VM をセカンダリの System Center VMM サイトへとフェールオーバーする、ディザスター リカバリーのアーキテクチャについて概説します。
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: a6e20b3f1f804617f78413413509d1b5bd476d23
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 599c47f8e7edaec43311ceb3d362f01e0bfa68f5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841406"
 ---
-# <a name="hyper-v-replication-to-a-secondary-site"></a>セカンダリ サイトへの Hyper-V のレプリケーション
+# <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>アーキテクチャ - セカンダリ サイトへの Hyper-V のレプリケーション
 
 この記事では、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使用して、System Center Virtual Machine Manager (VMM) クラウド内のオンプレミスの Hyper-V 仮想マシン (VM) をセカンダリ VMM サイトにレプリケートする際に使用するコンポーネントとプロセスについて説明します。
 
@@ -36,8 +38,8 @@ ms.lasthandoff: 02/21/2018
 
 1. 初期レプリケーションがトリガーされると、[Hyper-V VM スナップショット](https://technet.microsoft.com/library/dd560637.aspx)が作成されます。
 2. VM の仮想ハード ディスクが 1 つずつセカンダリの場所にレプリケーションされます。
-3. 初期レプリケーションの進行中にディスクの変更が発生した場合 
-4. 初期レプリケーションが完了したら、差分レプリケーションが開始されます。 Hyper-V レプリカのレプリケーション トラッカーは、変更を Hyper-V レプリケーション ログ (.hrl) として追跡します。 これらのログ ファイルは、ディスクと同じフォルダーに配置されます。 各ディスクには関連付けられた .hrl ファイルが存在し、これらはセカンダリの場所に送信されます。 初期レプリケーションの進行中は、スナップショットおよびログ ファイルによってディスク リソースが消費されます。
+3. 初期レプリケーションの進行中にディスクの変更が発生した場合、Hyper-V レプリカ レプリケーション トラッカーはそれらの変更を Hyper-V レプリケーション ログ (.hrl) として追跡します。 これらのログ ファイルは、ディスクと同じフォルダーに配置されます。 各ディスクには関連付けられた .hrl ファイルが存在し、これらはセカンダリの場所に送信されます。 初期レプリケーションの進行中は、スナップショットおよびログ ファイルによってディスク リソースが消費されます。
+4. 初期レプリケーションが完了すると、VM スナップショットは削除され、デルタ レプリケーションが開始されます。
 5. ログの差分ディスク変更は、親ディスクに同期され、マージされます。
 
 

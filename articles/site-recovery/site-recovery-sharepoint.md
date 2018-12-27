@@ -1,26 +1,20 @@
 ---
-title: "Azure Site Recovery を使用して多層 SharePoint アプリケーションをレプリケートする | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用して、多層 SharePoint をレプリケートする方法を説明します。"
-services: site-recovery
-documentationcenter: 
+title: Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して、多層 SharePoint のディザスター リカバリーを設定する方法を説明します。
 author: sujayt
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/23/2017
+ms.topic: conceptual
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 3610409691b71fcce0c36a3af94184dbe6db8661
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1f3168cef503fed0aea09228c9bc11dfb456f2ab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848478"
 ---
-# <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用してディザスター リカバリーの多層 SharePoint アプリケーションをレプリケートする
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して SharePoint アプリケーションを保護する方法の詳細を説明します。
 
@@ -53,7 +47,7 @@ Microsoft SharePoint は、グループあるいは部署が情報を整理、�
 
 ## <a name="sharepoint-architecture"></a>SharePoint のアーキテクチャ
 
-SharePoint は階層型トポロジーとサーバー ロールを使用して 1 つまたは複数のサーバーにデプロイすることで、特定の目標や目的に合ったファーム デザインを実現できます。 多数の同時ユーザー、大量のコンテンツ項目をサポートしている通常の大規模で高デマンドの SharePoint サーバー ファームは、そのスケーラビービリティ戦略の一環としてサービスのグループ化を利用します。 このアプローチでは、サービスを専用のサーバー上で実行します。それらサービスはグループにまとめられ、専用のサーバーが 1 つのグループとしてスケールアウトされます。 下記のトポロジは、3 層 SharePoint サーバー ファームに対するサービスとサーバーのグループ化を表しています。 さまざまな SharePoint トポロジについての詳細な指針については、SharePoint のマニュアルおよび製品系列のアーキテクチャを参照してください。 [本書](https://technet.microsoft.com/en-us/library/cc303422.aspx)でも、SharePoint 2013 のデプロイに関する詳細を説明しています。
+SharePoint は階層型トポロジーとサーバー ロールを使用して 1 つまたは複数のサーバーにデプロイすることで、特定の目標や目的に合ったファーム デザインを実現できます。 多数の同時ユーザー、大量のコンテンツ項目をサポートしている通常の大規模で高デマンドの SharePoint サーバー ファームは、そのスケーラビービリティ戦略の一環としてサービスのグループ化を利用します。 このアプローチでは、サービスを専用のサーバー上で実行します。それらサービスはグループにまとめられ、専用のサーバーが 1 つのグループとしてスケールアウトされます。 下記のトポロジは、3 層 SharePoint サーバー ファームに対するサービスとサーバーのグループ化を表しています。 さまざまな SharePoint トポロジについての詳細な指針については、SharePoint のマニュアルおよび製品系列のアーキテクチャを参照してください。 [本書](https://technet.microsoft.com/library/cc303422.aspx)でも、SharePoint 2013 のデプロイに関する詳細を説明しています。
 
 
 
@@ -71,7 +65,7 @@ SharePoint は階層型トポロジーとサーバー ロールを使用して 1
 **Hyper-V** | [はい] | [はい]
 **VMware** | [はい] | [はい]
 **物理サーバー** | [はい] | [はい]
-**Azure** | 該当なし | [はい]
+**Azure** | NA | [はい]
 
 ### <a name="sharepoint-versions"></a>SharePoint のバージョン
 次の SharePoint Server のバージョンがサポートされています。

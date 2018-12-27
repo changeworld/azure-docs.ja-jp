@@ -1,36 +1,42 @@
 ---
-title: Graph API を使用した Azure Cosmos DB Node.js アプリケーションの構築 | Microsoft Docs
+title: Gremlin API を使用して Azure Cosmos DB Node.js アプリケーションを構築する
 description: Azure Cosmos DB への接続とデータの照会に使用できる Node.js コード サンプルについて説明します
 services: cosmos-db
-documentationcenter: ''
 author: luisbosquez
-manager: kfile
-ms.assetid: daacbabf-1bb5-497f-92db-079910703046
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: ed8b76655ff0fc1a0604e59c704646aac95bd744
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 58fca9e66b0be12992d7762824df4ceb9a22e614
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073416"
 ---
-# <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Graph API を使用した Node.js アプリケーションの構築
+# <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Azure Cosmos DB: Gremlin API を使用して Node.js アプリケーションをビルドする
+
+> [!div class="op_single_selector"]
+> * [Gremlin コンソール](create-graph-gremlin-console.md)
+> * [.NET](create-graph-dotnet.md)
+> * [Java](create-graph-java.md)
+> * [Node.js](create-graph-nodejs.md)
+> * [Python](create-graph-python.md)
+> * [PHP](create-graph-php.md)
+>  
 
 Azure Cosmos DB は、Microsoft が提供するグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
-このクイック スタートでは、Azure Portal を使用した Azure Cosmos DB [Graph API](graph-introduction.md) アカウント、データベース、およびグラフの作成方法を説明します。 続いてオープンソース [Gremlin Node.js](https://www.npmjs.com/package/gremlin) ドライバーを使用して、コンソール アプリを構築し実行します。
+このクイック スタートでは、Azure portal を使用した Azure Cosmos DB [Gremlin API](graph-introduction.md) アカウント、データベース、およびグラフの作成方法を説明します。 続いてオープンソース [Gremlin Node.js](https://www.npmjs.com/package/gremlin) ドライバーを使用して、コンソール アプリを構築し実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
 このサンプルを実行する前に、以下の前提条件を満たしている必要があります。
 * [Node.js](https://nodejs.org/en/) バージョン v0.10.29 以降
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,11 +50,21 @@ Azure Cosmos DB は、Microsoft が提供するグローバルに分散された
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-GitHub から Graph API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+GitHub から Gremlin API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. Git ターミナル ウィンドウ (Git Bash など) を開き、`cd` コマンドで作業ディレクトリに移動します。
+1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
-2. 次のコマンドを実行して、サンプル リポジトリを複製します。 
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
@@ -58,7 +74,9 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
 
 ## <a name="review-the-code"></a>コードの確認
 
-アプリで何が行われているかを簡単に確認してみましょう。 `app.js` ファイルを開くと、以下のコード行が表示されます。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
+
+次のスニペットはすべて app.js ファイルからのものです。
 
 * Gremlin クライアントが作成されます。
 
@@ -128,7 +146,7 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-graph-nodejs/gremlin-uri.png)
 
-   **[Gremlin URI]** の値が空である場合は、ポータルの **[キー]** ページで値を生成できます。 そのためには、**[URI]** の値を使用し、https:// を削除し、documents を gremlin.cosmosdb に変更してください。 2017 年 12 月 20 日より前に作成したグラフ アカウントの場合は、documents を graphs に変更します。 
+   **[Gremlin URI]** の値が空である場合は、ポータルの **[キー]** ページで値を生成できます。 そのためには、**[URI]** の値を使用し、 https:// を削除し、documents を gremlin.cosmosdb に変更してください。 2017 年 12 月 20 日より前に作成したグラフ アカウントの場合は、documents を graphs に変更します。 
 
    Gremlin エンドポイントは、`mygraphdb.gremlin.cosmosdb.azure.com` のように、プロトコル/ポート番号が付いていないホスト名のみにする必要があります (`https://mygraphdb.gremlin.cosmosdb.azure.com` や `mygraphdb.gremlin.cosmosdb.azure.com:433` は不可)。
 
@@ -166,7 +184,7 @@ module.exports = config;
 
 ここで、Azure Portal のデータ エクスプローラーに戻り、新しいグラフ データの表示、クエリ実行、変更、使用を行うことができます。
 
-データ エクスプローラーで新しいデータベースが **[グラフ]** ウィンドウに表示されます。 データベース、コレクションの順に展開し、**[グラフ]** を選択します。
+データ エクスプローラーで新しいデータベースが **[グラフ]** ウィンドウに表示されます。 データベース、コンテナーの順に展開し、**[グラフ]** を選択します。
 
 **[フィルターの適用]** を選択すると、サンプル アプリで生成されたデータが、**[グラフ]** タブ内にある隣のウィンドウに表示されます。
 
@@ -178,11 +196,7 @@ module.exports = config;
 
 ## <a name="clean-up-your-resources"></a>リソースをクリーンアップする
 
-このアプリの使用を続ける予定がない場合は、次の手順を実行して、この記事で作成したすべてのリソースを削除します。 
-
-1. Azure Portal の左側のナビゲーション メニューで、**[リソース グループ]** を選択します。 次に、作成したリソースの名前を選択します。 
-
-2. リソース グループ ページで **[削除]** を選択します。 削除するリソースの名前を入力し、**[削除]** を選択します。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次の手順
 

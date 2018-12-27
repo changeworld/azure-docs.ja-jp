@@ -8,17 +8,19 @@ manager: craigg
 ms.assetid: 1751185b-ce0a-4ab2-a9c3-e37b4d149ca3
 ms.service: data-factory
 ms.workload: data-services
+ms.custom: vs-azure
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c25bd85c362e7055109e0a2a178a417ef110899a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ae8374dc8b3424f953e24ef74796602d34413bc8
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240836"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する
 > [!div class="op_single_selector"]
@@ -34,7 +36,7 @@ ms.lasthandoff: 03/23/2018
 > 
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 でのコピー アクティビティに関するチュートリアル](../quickstart-create-data-factory-dot-net.md)を参照してください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。 
 
 この記事では、Microsoft Visual Studio を使用して Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを備えたデータ ファクトリを作成します。 Azure Data Factory の使用経験がない場合は、このチュートリアルを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。   
 
@@ -47,7 +49,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="prerequisites"></a>前提条件
 1. 「 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。       
-2. Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
+2. Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
 3. コンピューターに以下がインストールされている必要があります。 
    * Visual Studio 2013 または Visual Studio 2015
    * Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
@@ -161,10 +163,10 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
   ``` 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     |:--- |:--- |
-    | 型 | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
-    | 既定のコンテナー | 前に作成した **AzureStorageLinkedService** を参照します。 |
+    | type | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
+    | linkedServiceName | 前に作成した **AzureStorageLinkedService** を参照します。 |
     | folderPath | BLOB **コンテナー**と、入力 BLOB を格納する**フォルダー**を指定します。 このチュートリアルでは、adftutorial は BLOB コンテナーで、フォルダーはルート フォルダーです。 | 
     | fileName | このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは fileName に **emp.txt** が指定されているため、このファイルのみが処理のために取得されます。 |
     | format -> type |入力ファイルはテキスト形式のため、**TextFormat** を使用します。 |
@@ -209,10 +211,10 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     ```
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     |:--- |:--- |
-    | 型 | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
-    | 既定のコンテナー | 前に作成した **AzureSqlLinkedService** を参照します。 |
+    | type | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
+    | linkedServiceName | 前に作成した **AzureSqlLinkedService** を参照します。 |
     | tableName | データのコピー先となる**テーブル**を指定します。 | 
     | frequency/interval | frequency は **Hour**、interval は **1** に、それぞれ設定されています。これは、出力スライスがパイプラインの開始時刻から終了時刻までの間 **1 時間ごと**に生成されることを表します (出力スライスは、開始時刻の前および終了時刻の後には生成されません)。  |
 
@@ -290,7 +292,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 ## <a name="publishdeploy-data-factory-entities"></a>Data Factory エンティティの発行/デプロイ
 この手順では、先ほど作成した Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) を発行します。 また、これらのエンティティを保持するために、新しいデータ ファクトリの名前を指定して作成します。  
 
-1. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]**をクリックします。 
+1. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]** をクリックします。 
 2. **[Microsoft アカウントへのサインイン]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、**[サインイン]** をクリックします。
 3. 次のダイアログ ボックスが表示されます。
    

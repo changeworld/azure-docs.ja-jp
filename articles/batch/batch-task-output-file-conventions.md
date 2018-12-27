@@ -15,13 +15,14 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bbfb40b3740f9ea43df327a01ba6f4cf52d80457
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0b4ff1799f77581452859d1dbc0e6e9cc47062e4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128051"
 ---
-# <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net-to-persist"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持 
+# <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持 
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
@@ -48,7 +49,7 @@ Azure Batch にはタスク出力を保持する方法が複数用意されて�
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Batch ファイル規則の標準
 
-[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)は、出力ファイルの書き込み先となる保存先コンテナーや BLOB パスの名前付けスキームを示します。 ファイル規則の標準に従った Azure Storage にファイルを保存すると、自動的に Azure ポータルで表示できるようになります。 Azure ポータルは名前付け規則を認識するため、その規則に従ってファイルを表示することができます。
+[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)は、出力ファイルの書き込み先となる保存先コンテナーや BLOB パスの名前付けスキームを示します。 ファイル規則の標準に従った Azure Storage にファイルを保存すると、自動的に Azure ポータルで表示できるようになります。 Azure ポータルは名前付け規則を認識するため、その規則に従ってファイルを表示することができます。
 
 .NET 用ファイル規則ライブラリは、ファイル規則の標準に従ってストレージ コンテナーとタスク出力ファイルに自動的に名前を付けます。 また、ジョブ ID、タスク ID、または目的に従って、Azure Storage 内の出力ファイルに関するクエリを実行する手段を提供します。   
 
@@ -200,7 +201,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## <a name="view-output-files-in-the-azure-portal"></a>Azure Portal での出力ファイルの表示
 
-Azure Portal では、[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions)を使って、リンク済みの Azure Storage アカウントに保持されているタスク出力ファイルとログが表示されます。 これらの規則を好きな言語で実装できるほか、自分の .NET アプリケーションのファイル規則ライブラリを使用することもできます。
+Azure Portal では、[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)を使って、リンク済みの Azure Storage アカウントに保持されているタスク出力ファイルとログが表示されます。 これらの規則を好きな言語で実装できるほか、自分の .NET アプリケーションのファイル規則ライブラリを使用することもできます。
 
 ポータルで出力ファイルの表示を有効にするには、次の要件を満たす必要があります。
 
@@ -215,7 +216,7 @@ Azure Portal でタスク出力ファイルとログを表示するには、目�
 
 [PersistOutputs][github_persistoutputs] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。 この Visual Studio ソリューションは、Azure Batch ファイル規則ライブラリを使用して永続的なストレージでタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
 
-1. **Visual Studio 2015 以降**でプロジェクトを開きます。
+1. **Visual Studio 2017** でプロジェクトを開きます。
 2. Microsoft.Azure.Batch.Samples.Common プロジェクトの **AccountSettings.settings** に、Batch と Storage の**アカウント資格情報**を追加します。
 3. **ビルド** します (ただし実行はしないでください)。 NuGet パッケージの復元を求められた場合は、復元します。
 4. Azure ポータルを使用して、 [アプリケーション パッケージ](batch-application-packages.md) を **PersistOutputsTask**としてアップロードします。 `PersistOutputsTask.exe` とそれに依存するアセンブリを .zip パッケージに含め、アプリケーション ID を "PersistOutputsTask"、アプリケーション パッケージのバージョンを "1.0" に設定します。

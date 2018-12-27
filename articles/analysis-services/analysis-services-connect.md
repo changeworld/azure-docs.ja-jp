@@ -1,27 +1,21 @@
 ---
-title: "Azure Analysis Services に接続する | Microsoft Docs"
-description: "Azure の Analysis Services サーバーに接続してデータを取得する方法を説明します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services サーバーに接続する | Microsoft Docs
+description: Azure の Analysis Services サーバーに接続してデータを取得する方法を説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: b37f70a0-9166-4173-932d-935d769539d1
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: e93544902d7ef435fb1b94e83700ae4fcd6f91f2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: cc9ed103f8c6d1436fed1048446ad1eb0f78bcd8
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426007"
 ---
-# <a name="connect-to-an-azure-analysis-services-server"></a>Azure Analysis Services サーバーに接続する
+# <a name="connecting-to-servers"></a>サーバーへの接続
 
 この記事では、SQL Server Management Studio (SSMS) や SQL Server Data Tools (SSDT) などの管理アプリケーションとデータ モデリングを使ってサーバーに接続する方法について説明します。 または、Microsoft Excel、Power BI Desktop などのクライアント レポート作成アプリケーションやカスタム アプリケーションを使用することもできます。 Azure Analysis Services への接続には HTTPS が使用されます。
 

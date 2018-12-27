@@ -3,16 +3,17 @@ title: Open Service Broker for Azure (OSBA) を使用して Azure で管理さ�
 description: Open Service Broker for Azure (OSBA) を使用して Azure で管理されたサービスと統合する
 services: container-service
 author: sozercan
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: b1b51b6c36143747a81d1c1fc035ee6d54d34076
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d0b6fc1ebd08b29b9acc28cfb0107b815c7d7bad
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068244"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Open Service Broker for Azure (OSBA) を使用して Azure で管理されたサービスと統合する
 
@@ -21,13 +22,13 @@ ms.lasthandoff: 03/28/2018
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション
 
-* Azure CLI 2.0: [ローカルにインストールする][azure-cli-install]ことも、[Azure Cloud Shell][azure-cloud-shell] で使うこともできます。
+* Azure CLI: [ローカルにインストールする][azure-cli-install]ことも、[Azure Cloud Shell][azure-cloud-shell] で使うこともできます。
 
 * Helm CLI 2.7 以降: [ローカルにインストールする][helm-cli-install]ことも、[Azure Cloud Shell][azure-cloud-shell] で使うこともできます。
 
 * Azure サブスクリプションの共同作成者ロールでサービス プリンシパルを作成するためのアクセス許可。
 
-* 既存の Azure Container Service (AKS) クラスター。 AKS クラスターが必要な場合は、「[AKS クラスターの作成][create-aks-cluster]」クイックスタートに従ってください。
+* 既存の Azure Kubernetes Service (AKS) クラスター。 AKS クラスターが必要な場合は、「[AKS クラスターの作成][create-aks-cluster]」クイックスタートに従ってください。
 
 ## <a name="install-service-catalog"></a>サービス カタログをインストールする
 
@@ -43,10 +44,16 @@ helm init --upgrade
 helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
 ```
 
-最後に、Helm チャートでサービス カタログをインストールします。
+最後に、Helm チャートを使用してサービス カタログをインストールします。 ご利用のクラスターが RBAC に対応している場合は、このコマンドを使用します。
 
 ```azurecli-interactive
-helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false
+helm install svc-cat/catalog --name catalog --namespace catalog --set controllerManager.healthcheck.enabled=false
+```
+
+ご利用のクラスターが RBAC に対応していない場合は、このコマンドを使用します。
+
+```azurecli-interactive
+helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set controllerManager.healthcheck.enabled=false
 ```
 
 Helm チャートを実行した後、次のコマンドの出力に `servicecatalog` が表示されることを確認します。
@@ -68,7 +75,7 @@ v1beta1.storage.k8s.io               10
 
 ## <a name="install-open-service-broker-for-azure"></a>Open Service Broker for Azure をインストールする
 
-次のステップでは、[Open Service Broker for Azure][open-service-broker-azure] をインストールします。これには、Azure で管理されたサービスのカタログが含まれます。 使用可能な Azure サービスの例は、Azure Database for PostgreSQL、Azure Redis Cache、Azure Database for MySQL、Azure Cosmos DB、Azure SQL Database などです。
+次のステップでは、[Open Service Broker for Azure][open-service-broker-azure] をインストールします。これには、Azure で管理されたサービスのカタログが含まれます。 使用可能な Azure サービスの例は、Azure Database for PostgreSQL、Azure Database for MySQL、Azure SQL Database などです。
 
 最初に、Open Service Broker for Azure の Helm リポジトリを追加します。
 
@@ -182,13 +189,13 @@ kubectl get secrets -n wordpress -o yaml
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Container Service (AKS) クラスターにサービス カタログをデプロイしました。 Open Service Broker for Azure を使って、Azure で管理されたサービス (この例では Azure Database for MySQL) を使う WordPress のインストールをデプロイしました。
+この記事では、Azure Kubernetes Service (AKS) クラスターにサービス カタログをデプロイしました。 Open Service Broker for Azure を使って、Azure で管理されたサービス (この例では Azure Database for MySQL) を使う WordPress のインストールをデプロイしました。
 
 他の更新された OSBA ベースの Helm チャートにアクセスするには、[Azure/helm-charts][helm-charts] リポジトリを参照してください。 OSBA で動作する独自のチャートの作成に関心がある場合は、「[Creating a New Chart][helm-create-new-chart]」(新しいチャートの作成) をご覧ください。
 
 <!-- LINKS - external -->
 [helm-charts]: https://github.com/Azure/helm-charts
-[helm-cli-install]: kubernetes-helm.md#install-helm-cli
+[helm-cli-install]: https://docs.helm.sh/helm/#helm-install
 [helm-create-new-chart]: https://github.com/Azure/helm-charts#creating-a-new-chart
 [kubernetes-service-catalog]: https://github.com/kubernetes-incubator/service-catalog
 [open-service-broker-azure]: https://github.com/Azure/open-service-broker-azure

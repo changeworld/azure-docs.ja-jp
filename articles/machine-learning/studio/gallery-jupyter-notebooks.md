@@ -1,30 +1,30 @@
 ---
-title: Azure AI ギャラリー Jupyter Notebooks | Microsoft Docs
-description: Azure AI ギャラリーで Jupyter Notebooks を発見します。
+title: Azure AI Gallery の Jupyter Notebooks - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI ギャラリーで Jupyter Notebooks を発見します。 ギャラリーの Notebook は、高度な機械学習手法とソリューションのチュートリアルと詳細な説明を提供します。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 556e0671-1b50-4bcb-92eb-889962310633
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: b684134518a04d70a951b411897417dca05c5829
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b927b63744c9871c2a2d5451c685714c2d2ea6de
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268225"
 ---
 # <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>Azure AI ギャラリーで Jupyter Notebooks を発見する
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="jupyter-notebooks"></a>Jupyter Notebooks
-**[Jupyter Notebooks](https://gallery.cortanaintelligence.com/notebooks)** には、単一の対話型のキャンバスに、コード、データの視覚化、およびドキュメントが含まれています。
+[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)の **[Jupyter Notebooks](https://gallery.cortanaintelligence.com/notebooks)** には、単一の対話型のキャンバスを使用して、コード、データの視覚化、およびドキュメントが収められています。
 ギャラリーの Notebook は、高度な機械学習手法とソリューションのチュートリアルと詳細な説明を提供します。
 
 ## <a name="discover"></a>発見
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/23/2018
 
 ![独自のコメントを追加する](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="download"></a>[ダウンロード]
+## <a name="download"></a>ダウンロード
 Machine Learning Studio ワークスペースに、ギャラリーから任意の Notebook のコピーをダウンロードできます。
 
 ### <a name="download-from-the-gallery"></a>ギャラリーからのダウンロード
@@ -68,5 +68,5 @@ Notebook は、Studio の **[Notebooks]** ページ ([Studio ホーム ページ
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

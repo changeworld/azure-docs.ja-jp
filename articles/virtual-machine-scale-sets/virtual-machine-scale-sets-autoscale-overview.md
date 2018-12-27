@@ -3,7 +3,7 @@ title: Azure 仮想マシン スケール セットでの自動スケールの�
 description: Azure 仮想マシン スケール セットをパフォーマンスや固定スケジュールに基づいて自動的にスケールするさまざまな方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
-ms.author: iainfou
+ms.date: 05/29/2018
+ms.author: zarhoads
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03053f8427fbd20b0a7288d930dca258ee3070b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 18be454c93c32e0902a55a08748045c26d649ce7
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322041"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットでの自動スケールの概要
-Azure 仮想マシン スケール セットは、アプリケーションを実行する VM インスタンスの数を自動的に増減させることができます。 この自動化された柔軟性のある動作により、アプリケーションを監視してパフォーマンスを最適化する管理上の負担を減らすことができます。 肯定的なカスタマー エクスペリエンスを得られる、許容された最小限のパフォーマンスを定義するルールを作成します。 定義したしきい値に達すると、自動スケール ルールが実行されてスケール セットの容量が調整されます。 また、決まった時間にスケール セットの容量を自動的に増減させるイベントのスケジュールを設定することもできます。 この記事では、使用できるパフォーマンス メトリックの概要と、自動スケールで実行できるアクションについて説明します。
+Azure 仮想マシン スケール セットは、アプリケーションを実行する VM インスタンスの数を自動的に増減させることができます。 この自動化された柔軟性のある動作により、アプリケーションを監視してパフォーマンスを最適化する管理上の負担を減らすことができます。 肯定的なカスタマー エクスペリエンスを得られる、許容されたパフォーマンスを定義するルールを作成します。 定義したしきい値に達すると、自動スケール ルールが実行されてスケール セットの容量が調整されます。 また、決まった時間にスケール セットの容量を自動的に増減させるイベントのスケジュールを設定することもできます。 この記事では、使用できるパフォーマンス メトリックの概要と、自動スケールで実行できるアクションについて説明します。
 
 
 ## <a name="benefits-of-autoscale"></a>自動スケールの利点
@@ -41,7 +42,7 @@ VM インスタンスから使用できるホスト メトリックを組み込�
 
 - [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
-- [Azure CLI 2.0](tutorial-autoscale-cli.md)
+- [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure テンプレート](tutorial-autoscale-template.md)
 
 より詳細なパフォーマンス メトリックを使用する自動スケール ルールを作成するには、VM インスタンスで [Azure 診断拡張機能をインストールして構成する](#in-guest-vm-metrics-with-the-azure-diagnostics-extension)か、[App Insights を使用してアプリケーションを構成](#application-level-metrics-with-app-insights)します。
@@ -56,7 +57,7 @@ VM インスタンスから使用できるホスト メトリックを組み込�
 | 現在のスケール セット    | 追加のエージェントをインストールおよび構成する必要がないホストベースのメトリックの場合。                                  |
 | ストレージ アカウント      | Azure 診断拡張機能が Azure ストレージにパフォーマンス メトリックを書き込み、それを使用して自動スケール ルールがトリガーされます。 |
 | Service Bus キュー    | アプリケーションまたはその他のコンポーネントが Azure Service Bus キューのメッセージを送信し、ルールをトリガーできます。                   |
-| アプリケーション インサイト | アプリケーションにインストールされた、アプリからメトリックを直接ストリームするインストルメンテーション パッケージ。                         |
+| Application Insights | アプリケーションにインストールされた、アプリからメトリックを直接ストリームするインストルメンテーション パッケージ。                         |
 
 
 ### <a name="autoscale-rule-criteria"></a>自動スケール ルールの条件
@@ -87,7 +88,7 @@ VM インスタンスから使用できるホスト メトリックを組み込�
 
 自動スケール ルールはその後、次のいずれかの演算子を使用して、メトリックを定義したしきい値と比較します。
 
-| 演算子                 |
+| operator                 |
 |--------------------------|
 | より大きい             |
 | 以上 |
@@ -105,7 +106,7 @@ VM インスタンスから使用できるホスト メトリックを組み込�
 | カウントを増やす量   | 作成する VM インスタンスの固定数。 VM の数が少ないスケール セットで便利です。                                           |
 | パーセントを増やす量 | VM インスタンスのパーセンテージべースの増加量。 固定量の増加ではパフォーマンスの目立った改善が見込まれない大規模なスケール セットに適しています。 |
 | 増やした後のカウント   | 目的の最大量に達するために必要な数だけ VM インスタンスを作成します。                                                            |
-| 減らした後のカウント値   | 削除する VM インスタンスの固定数。 VM の数が少ないスケール セットで便利です。                                           |
+| カウントを減らす量   | 削除する VM インスタンスの固定数。 VM の数が少ないスケール セットで便利です。                                           |
 | パーセントを減らす量 | VM インスタンスのパーセンテージべースの減少量。 固定量の増加では使用量やコストの目立った減少が見込まれない大規模なスケール セットに適しています。 |
 | 減らした後のカウント値   | 目的の最小量に達するために必要な数だけ VM インスタンスを削除します。                                                            |
 
@@ -115,7 +116,7 @@ Azure 診断拡張機能は、VM インスタンス内部で実行されるエ�
 
 Azure 診断拡張機能を使用するには、VM インスタンスで使用する Azure のストレージ アカウントを作成し、Azure 診断エージェントをインストールしてから、特定のパフォーマンス カウンターをそのストレージ アカウントにストリームするように VM を構成します。
 
-詳しくは、[Linux VM](../virtual-machines/linux/diagnostic-extension.md) または [Windows VM](../virtual-machines/windows/ps-extensions-diagnostics.md) で Azure 診断拡張機能を有効にする方法に関する記事をご覧ください。
+詳しくは、[Linux VM](../virtual-machines/extensions/diagnostics-linux.md) または [Windows VM](../virtual-machines/extensions/diagnostics-windows.md) で Azure 診断拡張機能を有効にする方法に関する記事をご覧ください。
 
 
 ## <a name="application-level-metrics-with-app-insights"></a>App Insights におけるアプリケーションレベルのメトリック
@@ -138,11 +139,11 @@ App Insights について詳しくは、「[Application Insights とは何か?](
 次のツールのいずれかを使用して、ホストベースのメトリックを使用する自動スケール ルール作成できます。
 
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
-- [Azure CLI 2.0](tutorial-autoscale-cli.md)
+- [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure テンプレート](tutorial-autoscale-template.md)
 
 この概要では、自動スケール ルールを使用して水平方向にスケーリングし、スケール セット内の VM インスタンスの "*数*" を増減する方法について説明しました。 垂直方向にスケーリングして、VM インスタンスの "*サイズ*" を増減することもできます。 詳細については、[仮想マシン スケール セットでの垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)に関するページを参照してください。
 
 VM インスタンスの管理方法については、[Azure PowerShell を使用した仮想マシン スケール セットの管理](virtual-machine-scale-sets-windows-manage.md)に関するページを参照してください。
 
-自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。
+自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../azure-monitor/platform/autoscale-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。

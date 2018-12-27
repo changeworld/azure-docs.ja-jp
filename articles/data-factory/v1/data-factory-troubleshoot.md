@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 4cf77a2267cd2a49a873c1a1c742dc4205cad29a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cbd51c48ec5b1801062e7aaf0b77e7b347018b31
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051867"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 
+> この記事は、Azure Data Factory のバージョン 1 に適用されます。 
 
 この記事では、Azure Data Factory を使用する場合の問題に対するトラブルシューティングのヒントを提供します。 ここでは、このサービスを使用する場合に発生する可能性があるすべての問題を取り上げているわけではなく、一部の問題と一般的なトラブルシューティングのヒントについて説明しています。   
 
@@ -34,7 +35,7 @@ ms.lasthandoff: 03/23/2018
 2. 次のコマンドを使用して、Azure アカウントにログインします。
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 3. 次のコマンドを実行して、Azure Data Factory プロバイダーを登録します。
 
@@ -45,7 +46,7 @@ ms.lasthandoff: 03/23/2018
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>問題: Data Factory コマンドレットを実行する際の認証エラー
 Azure PowerShell で使用する Azure アカウントまたはサブスクリプションが正しくない可能性があります。 次のコマンドレットを使用して、Azure PowerShell で使用する適切な Azure アカウントとサブスクリプションを選択してください。
 
-1. Login-AzureRmAccount - 適切なユーザー ID とパスワードを使用します。
+1. Connect-AzureRmAccount - 適切なユーザー ID とパスワードを使用します
 2. Get-AzureRmSubscription - アカウントのサブスクリプションをすべて表示します。
 3. Select-AzureRmSubscription &lt;サブスクリプション名&gt; - 適切なサブスクリプションを選択します。 Azure ポータルでデータ ファクトリの作成に使用するのと同じものを使用します。
 

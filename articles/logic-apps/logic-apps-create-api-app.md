@@ -1,27 +1,23 @@
 ---
-title: "Azure Logic Apps の Web API と REST API の作成 | Microsoft Docs"
-description: "システム統合のためにロジック アプリ ワークフローから API、サービス、またはシステムを呼び出す Web API と REST API を作成します"
-keywords: "Web API, REST API, ワークフロー, システム統合"
+title: Azure Logic Apps の Web API と REST API の作成 | Microsoft Docs
+description: Azure Logic Apps でシステム統合のために API、サービス、またはシステムを呼び出す Web API と REST API を作成します
 services: logic-apps
-author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
-ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
-ms.date: 5/26/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: ec7fe2adfb89edd635adcf247eea0b98f7007b1b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
+ms.date: 05/26/2017
+ms.openlocfilehash: a3f837b41ba6ec7ecadb3e34917a8088e4d1e2d9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233516"
 ---
-# <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>ロジック アプリのワークフローから呼び出すことができるカスタム API の作成
+# <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
 
 Azure Logic Apps が提供する [100 以上の組み込みコネクタ](../connectors/apis-list.md)をロジック アプリ ワークフローで利用できますが、コネクタとして利用できない API、システム、サービスを呼び出したい場合があります。 ロジック アプリで使用するアクションとトリガーを提供する独自の API を作成できます。 ロジック アプリのワークフローから呼び出すことができる独自の API は、次のような理由で作成する場合もあります。
 
@@ -40,11 +36,12 @@ API は [Azure App Service](../app-service/app-service-web-overview.md) でホ�
 > 
 > * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md)。 
 > * [Java](../app-service/app-service-web-get-started-java.md)
-> * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
+> * [Node.JS](../app-service/app-service-web-get-started-nodejs.md)
 > * [PHP](../app-service/app-service-web-get-started-php.md)
-> * [Python](../app-service/app-service-web-get-started-python.md)
+> * [Python](../app-service/containers/quickstart-python.md)
+> * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> ロジック アプリ用の API アプリ サンプルについては、[Azure Logic Apps GitHub リポジトリ](http://github.com/logicappsio)または[ブログ](http://aka.ms/logicappsblog)をご覧ください。
+> ロジック アプリ用の API アプリ サンプルについては、[Azure Logic Apps GitHub リポジトリ](http://github.com/logicappsio)または[ブログ](https://aka.ms/logicappsblog)をご覧ください。
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>カスタム API とカスタム コネクタの違い
 
@@ -233,7 +230,7 @@ Logic Apps、Microsoft Flow、および Microsoft PowerApps のすべてのユ�
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 
-* [Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps の改善にご協力ください。 
+* [Logic Apps ユーザー フィードバック サイト](https://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps の改善にご協力ください。 
 
 ## <a name="next-steps"></a>次の手順
 

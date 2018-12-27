@@ -3,8 +3,8 @@ title: プランを作成して Marketplace にデプロイする方法の概要
 description: Microsoft 認定開発者として、仮想マシン イメージ、テンプレート、データ サービス、または開発者向けサービスを作成して Azure Marketplace にデプロイするために必要な手順を理解します
 services: marketplace-publishing
 documentationcenter: ''
-author: msmbaldwin
-manager: mbaldwin
+author: HannibalSII
+manager: hascipio
 editor: ''
 ms.assetid: 5343bd26-c6e4-4589-85b7-4a2c00bba8ab
 ms.service: marketplace
@@ -13,21 +13,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
-ms.author: mbaldwin
-ms.openlocfilehash: 02df78de48c8466f3488ef5f8346e1852b4e3ded
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: hascipio
+ms.openlocfilehash: 2c8c97d8f5477e7640df87030ed6ef27c4c7b979
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310081"
 ---
+# <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Azure Marketplace にプランを発行して管理する
+
 > [!NOTE]
 > このドキュメントは最新ではなく、情報は正確ではありません。 代わりに Azure Marketplace の[販売者ガイド](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide)にアクセスして、Azure Marketplace へのプランの発行についてのガイダンスをご覧ください。
 
-# <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Azure Marketplace にプランを発行して管理する
 この記事では、Azure Marketplace に掲載されるソリューションを開発者が作成、デプロイ、管理し、Azure の他の顧客やパートナーに有償で提供するための方法を紹介しています。
 
 ## <a name="marketplace-publishing"></a>Marketplace への発行
-開発した革新的なソリューションやサービスを Azure の発行元として、Marketplace で他の開発者、ISV、および IT プロフェッショナルに配布および販売できます。 Marketplace を通して、クラウド ベースのアプリケーションやモバイル ソリューションを簡単に開発することを望んでいる顧客にアピールすることができます。 ソリューションのターゲットがビジネス ユーザーの場合は、[AppSource](http://appsource.microsoft.com) Marketplace を検討することをお勧めします。
+開発した革新的なソリューションやサービスを Azure の発行元として、Marketplace で他の開発者、ISV、および IT プロフェッショナルに配布および販売できます。 Marketplace を通して、クラウド ベースのアプリケーションやモバイル ソリューションを簡単に開発することを望んでいる顧客にアピールすることができます。 ソリューションのターゲットがビジネス ユーザーの場合は、[AppSource](https://appsource.microsoft.com) Marketplace を検討することをお勧めします。
 
 
 ## <a name="supported-types-of-solutions"></a>サポートされるソリューションの種類
@@ -50,7 +52,7 @@ ms.lasthandoff: 03/16/2018
 >[!NOTE]
 > パートナー アカウント マネージャーまたは DX パートナー マネージャと協力している場合は、ソリューションを Azure Certified プログラムにノミネートするように依頼してください。 [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) Web ページに移動して申し込みフォームに入力することもできます。 パートナー アカウント マネージャーまたは DX パートナー マネージャーの電子メール アドレスを **[Microsoft Sponsor Contact]\(Microsoft スポンサーの取引先担当者\)** ボックスに入力してください。
 
-[Azure Marketplace 参加ポリシー](http://go.microsoft.com/fwlink/?LinkID=526833)の資格基準を満たしている場合、アプリケーションが承認された際には、マイクロソフトがお客様のソリューションを Azure Marketplace にオンボードするお手伝いをします。
+[Azure Marketplace 参加ポリシー](https://go.microsoft.com/fwlink/?LinkID=526833)の資格基準を満たしている場合、アプリケーションが承認された際には、マイクロソフトがお客様のソリューションを Azure Marketplace にオンボードするお手伝いをします。
 
 ### <a name="register-your-account-as-a-microsoft-seller"></a>Microsoft 販売者としてアカウントを登録する
 Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-publishing-accounts-creation-registration.md)として登録します。
@@ -59,7 +61,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 ソリューションを Marketplace に公開するには、次の手順に従います。
 1. 技術面以外の前提条件を満たします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [技術面以外の前提条件](marketplace-publishing-pre-requisites.md)を満たします。
+    a. [技術面以外の前提条件](marketplace-publishing-pre-requisites.md)を満たします。
 
     b. [VM の技術面の前提条件](marketplace-publishing-vm-image-creation-prerequisites.md)を満たします。
 
@@ -67,7 +69,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 
 2. プランを作成します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [仮想マシン](marketplace-publishing-vm-image-creation.md) プランを作成します。
+    a. [仮想マシン](marketplace-publishing-vm-image-creation.md) プランを作成します。
 
     b. [ソリューション テンプレート](marketplace-publishing-solution-template-creation.md) プランを作成します。
 
@@ -75,7 +77,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 
 4. ステージング環境でプランをテストします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 VM プランを[ステージング環境](marketplace-publishing-vm-image-test-in-staging.md)でテストします。
+    a. VM プランを[ステージング環境](marketplace-publishing-vm-image-test-in-staging.md)でテストします。
 
     b. ソリューション テンプレート プランを[ステージング環境](marketplace-publishing-solution-template-test-in-staging.md)でテストします。
 

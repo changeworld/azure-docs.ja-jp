@@ -1,11 +1,11 @@
 ---
-title: "CORS を利用した Azure CDN の使用 | Microsoft Docs"
-description: "クロス オリジン リソース共有 (CORS) を利用して Azure Content Delivery Network (CDN) を使用する方法について説明します。"
+title: CORS を利用した Azure CDN の使用 | Microsoft Docs
+description: クロス オリジン リソース共有 (CORS) を利用して Azure Content Delivery Network (CDN) を使用する方法について説明します。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
 ms.service: cdn
 ms.workload: tbd
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: f9429e88525e27c0b6bad29d1927d53d05dfbcc8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33765366"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
@@ -67,7 +68,7 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 
 要求の **Origin** ヘッダーを確認するための[ルールを作成](cdn-rules-engine.md)する必要があります。  オリジンが有効である場合、ルールによって、要求で指定されたオリジンが **Access-Control-Allow-Origin** ヘッダーに設定されます。  **Origin** ヘッダーで指定されたオリジンが許可されない場合、ルールによって **Access-Control-Allow-Origin** ヘッダーが省略されます。その結果、ブラウザーは要求を拒否します。 
 
-ルール エンジンを使用してこれを行う方法は 2 つあります。  どちらの場合でも、ファイルの配信元サーバーからの **Access-Control-Allow-Origin** ヘッダーは完全に無視されます。CDN のルール エンジンが、許可される CORS オリジンを完全に管理します。
+ルール エンジンを使用してこれを行う方法は 2 つあります。 どちらの場合でも、ファイルの配信元サーバーからの **Access-Control-Allow-Origin** ヘッダーは無視され、CDN のルール エンジンが、許可される CORS オリジンを完全に管理します。
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>有効なオリジンがすべて含まれる 1 つの正規表現
 この場合、許可するオリジンがすべて含まれた正規表現を作成します。 
@@ -75,7 +76,7 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Azure CDN from Verizon** では、正規表現を作成するエンジンとして [Perl Compatible Regular Expressions](http://pcre.org/) を使用します。  正規表現を検証するには、[Regular Expressions 101](https://regex101.com/) などのツールを使用できます。  スラッシュ (/) は正規表現で有効であり、エスケープする必要はありません。ただし、この文字のエスケープはベスト プラクティスだと考えられており、一部の正規表現検証ツールではエスケープするよう想定されていることに注意してください。
+> **Azure CDN Premium from Verizon** では、正規表現を作成するエンジンとして [Perl Compatible Regular Expressions](http://pcre.org/) を使用します。  正規表現を検証するには、[Regular Expressions 101](https://regex101.com/) などのツールを使用できます。  スラッシュ (/) は正規表現で有効であり、エスケープする必要はありません。ただし、この文字のエスケープはベスト プラクティスだと考えられており、一部の正規表現検証ツールではエスケープするよう想定されていることに注意してください。
 > 
 > 
 
@@ -93,6 +94,6 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 > 
 > 
 
-### <a name="azure-cdn-standard"></a>Azure CDN Standard
-Azure CDN Standard プロファイルでは、ワイルドカード オリジンを使用せずに複数のオリジンを許可するメカニズムは、 [クエリ文字列のキャッシュ](cdn-query-string.md)を使用する方法だけです。  CDN エンドポイントのクエリ文字列設定を有効にしたうえで、許可される各ドメインからの要求について一意のクエリ文字列を使用する必要があります。 これを行うと、CDN で一意のクエリ文字列ごとに個別のオブジェクトがキャッシュされるようになります。 この手法は最適ではありませんが、CDN でキャッシュされた同じファイルのコピーが複数得られるようになります。  
+### <a name="azure-cdn-standard-profiles"></a>Azure CDN Standard プロファイル
+Azure CDN Standard プロファイル (**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、および **Azure CDN Standard from Verizon**) では、ワイルドカード オリジンを使用せずに複数のオリジンを許可するメカニズムは、[クエリ文字列のキャッシュ](cdn-query-string.md)を使用する方法だけです。 CDN エンドポイントのクエリ文字列設定を有効にしたうえで、許可される各ドメインからの要求について一意のクエリ文字列を使用してください。 これにより、CDN で一意のクエリ文字列ごとに個別のオブジェクトがキャッシュされるようになります。 この手法は最適ではありませんが、CDN でキャッシュされた同じファイルのコピーが複数得られるようになります。  
 

@@ -2,23 +2,20 @@
 title: Azure Cosmos DB 診断ログ | Microsoft Docs
 description: このチュートリアルを使用すると、Azure Cosmos DB のログ記録を簡単に始めることができます。
 services: cosmos-db
-documentationcenter: ''
-author: mimig1
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
-ms.author: mimig
-ms.openlocfilehash: 3b7c9f1acd79a2f170ecead9dedd200ad37d9388
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: sngun
+ms.openlocfilehash: 1c25db0a217d6aff984029a28932242b06096735
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423235"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
@@ -26,15 +23,15 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="logs-available-in-azure"></a>Azure で利用可能なログ
 
-Azure Cosmos DB アカウントの監視方法を説明する前に、ログと監視に関するいくつかの点を明確にしておきます。 Azure プラットフォームのログには、さまざまな種類があります。 [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)、[Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)、[Azure メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)、イベント、ハートビート監視、操作ログなどです。 大量のログが存在します。 Azure Portal の [Azure Log Analytics](https://azure.microsoft.com/en-us/services/log-analytics/) で、ログの完全な一覧を確認できます。 
+Azure Cosmos DB アカウントの監視方法を説明する前に、ログと監視に関するいくつかの点を明確にしておきます。 Azure プラットフォームのログには、さまざまな種類があります。 [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)、[Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)、[Azure メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)、イベント、ハートビート監視、操作ログなどです。 大量のログが存在します。 Azure Portal の [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) で、ログの完全な一覧を確認できます。 
 
 次の図は、利用可能な Azure ログの種類を示しています。
 
 ![さまざまな種類の Azure ログ](./media/logging/azurelogging.png)
 
-この図の**コンピューティング リソース**とは、ユーザーが Microsoft ゲスト OS にアクセスできる Azure リソースを表します。 たとえば、Azure Virtual Machines、仮想マシン スケール セット、Azure Container Service などが、コンピューティング リソースと見なされます。 コンピューティング リソースは、アクション ログ、診断ログとアプリケーション ログを生成します。 詳しくは、[Azure 監視のコンピューティング リソース](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---compute-subset)に関する記事をご覧ください。
+この図の**コンピューティング リソース**とは、ユーザーが Microsoft ゲスト OS にアクセスできる Azure リソースを表します。 たとえば、Azure Virtual Machines、仮想マシン スケール セット、Azure Container Service などが、コンピューティング リソースと見なされます。 コンピューティング リソースは、アクション ログ、診断ログとアプリケーション ログを生成します。 詳細については、[Azure でのデータ監視のソース](../azure-monitor/platform/data-sources.md)に関する記事を参照してください。
 
-**非コンピューティング リソース**とは、ユーザーが基盤となる OS にアクセスできず、リソースに直接作業するリソースです。 たとえば、ネットワーク セキュリティ グループ、Azure Logic Apps などが挙げられます。 Azure Cosmos DB は、非コンピューティング リソースです。 非コンピューティング リソースのログは、アクティビティ ログで確認するか、ポータルの [診断ログ] オプションを有効にすることで表示できます。 詳しくは、[Azure 監視の非コンピューティング リソース](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---everything-else)に関する記事をご覧ください。
+**非コンピューティング リソース**とは、ユーザーが基盤となる OS にアクセスできず、リソースに直接作業するリソースです。 たとえば、ネットワーク セキュリティ グループ、Azure Logic Apps などが挙げられます。 Azure Cosmos DB は、非コンピューティング リソースです。 非コンピューティング リソースのログは、アクティビティ ログで確認するか、ポータルの [診断ログ] オプションを有効にすることで表示できます。 詳細については、[Azure Monitor でのデータのソース](../azure-monitor/platform/data-sources.md)に関する記事を参照してください。
 
 アクティビティ ログは、Azure Cosmos DB のサブスクリプション レベルでの操作を記録します。 ListKeys や DatabaseAccounts の書き込みなどの操作が記録されます。 診断ログは、より詳細なログ記録を提供し、DataPlaneRequests (Create, Read, Query など) と MongoRequests を記録できます。
 
@@ -45,13 +42,13 @@ Azure Cosmos DB アカウントの監視方法を説明する前に、ログと�
 
 Azure アクティビティ ログは、Azure で発生したサブスクリプション レベルのイベントの分析に利用できるサブスクリプション ログです。 アクティビティ ログは、サブスクリプションのコントロール プレーン イベントを管理カテゴリで報告します。 アクティビティ ログを使うと、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 
 
-アクティビティ ログは診断ログとは異なります。 アクティビティ ログは、外部から行われるリソースの操作に関するデータを提供します ("_コントロール プレーン_")。 Azure Cosmos DB のコンテキストでは、コントロール プレーンの操作には、コレクションの作成、キーの一覧表示、キーの削除、データベースの一覧表示などが含まれます。 診断ログは、リソースによって出力され、そのリソースの操作に関する情報を提供します ("_データ プレーン_")。 診断ログでのデータ プレーン操作の例としては、Delete、Insert、ReadFeed などがあります。
+アクティビティ ログは診断ログとは異なります。 アクティビティ ログは、外部から行われるリソースの操作に関するデータを提供します ("_コントロール プレーン_")。 Azure Cosmos DB のコンテキストでは、コントロール プレーンの操作には、コンテナーの作成、キーの一覧表示、キーの削除、データベースの一覧表示などが含まれます。 診断ログは、リソースによって出力され、そのリソースの操作に関する情報を提供します ("_データ プレーン_")。 診断ログでのデータ プレーン操作の例としては、Delete、Insert、ReadFeed などがあります。
 
-アクティビティ ログ (コントロール プレーン操作) は、実際は非常に大量になる可能性があり、呼び出し元の完全な電子メール アドレス、呼び出し元の IP アドレス、リソース名、操作名、TenantId などが含まれる可能性があります。 アクティビティ ログには、データの複数の[カテゴリ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)が含まれます。 これらのカテゴリのスキーマの詳細については、「[Azure アクティビティ ログのイベント スキーマ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)」を参照してください。 ただし、診断ログでは、多くの場合 PII データがこれらのログから削除されるため、実際は限定的である可能性があります。 呼び出し元の IP アドレスが存在する可能性がありますが、最後のオクテットは削除されています。
+アクティビティ ログ (コントロール プレーン操作) は、実際は非常に大量になる可能性があり、呼び出し元の完全な電子メール アドレス、呼び出し元の IP アドレス、リソース名、操作名、TenantId などが含まれる可能性があります。 アクティビティ ログには、データの複数の[カテゴリ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)が含まれます。 これらのカテゴリのスキーマの詳細については、「[Azure アクティビティ ログのイベント スキーマ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)」を参照してください。 ただし、診断ログでは、多くの場合、個人データがこれらのログから削除されるため、実際は限定的である可能性があります。 呼び出し元の IP アドレスが存在する可能性がありますが、最後のオクテットは削除されています。
 
 ### <a name="azure-metrics"></a>Azure メトリック
 
-大半の Azure リソースによって出力される Azure テレメトリ データ (_パフォーマンスカウンター_とも呼ばれます)の最も重要な種類は、[Azure メトリック](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics)です。 メトリックを使って、Azure Cosmos DB リソースのスループット、ストレージ、整合性、可用性、および 待機時間に関する情報を表示できます。 詳細については、「[Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)」を参照してください。
+大半の Azure リソースによって出力される Azure テレメトリ データ (_パフォーマンスカウンター_ とも呼ばれます)の最も重要な種類は、[Azure メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)です。 メトリックを使って、Azure Cosmos DB リソースのスループット、ストレージ、整合性、可用性、および 待機時間に関する情報を表示できます。 詳細については、「[Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)」を参照してください。
 
 ### <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -140,7 +137,7 @@ Azure PowerShell をインストール済みで、バージョンがわからな
 Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。  
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。 Azure PowerShell は、このアカウントに関連付けられているすべてのサブスクリプションを取得し、既定で最初のサブスクリプションを使います。
@@ -175,7 +172,7 @@ $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
 ```
 
 > [!NOTE]
-> 既存のストレージ アカウントを使う場合は、アカウントは Azure Cosmos DB サブスクリプションと同じサブスクリプションを使う必要があります。 アカウントでは、クラシック デプロイメント モデルではなく Resource Manager デプロイメント モデルが使われている必要があります。
+> 既存のストレージ アカウントを使う場合は、アカウントは Azure Cosmos DB サブスクリプションと同じサブスクリプションを使う必要があります。 アカウントでは、クラシック デプロイ モデルではなく Resource Manager デプロイ モデルが使われている必要があります。
 >
 >
 
@@ -357,13 +354,16 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 <a id="#view-in-loganalytics"></a>
 ## <a name="view-logs-in-log-analytics"></a>Log Analytics ログを表示する
 
-ログ記録を有効にするときに **[Log Analytics への送信]** オプションを選択した場合、コレクションの診断ログは 2 時間以内に Log Analytics に転送されます。 ログ記録を有効にした直後に Log Analytics を見ても、データは何も表示されません。 2 時間待ってから、もう一度やり直してください。 
+ログ記録を有効にするときに **[Log Analytics への送信]** オプションを選択した場合、コンテナーの診断ログは 2 時間以内に Log Analytics に転送されます。 ログ記録を有効にした直後に Log Analytics を見ても、データは何も表示されません。 2 時間待ってから、もう一度やり直してください。 
 
-ログを確認する前に、Log Analytics ワークスペースが新しい Log Analytics クエリ言語を使用できるようにアップグレードされているかどうかを確認します。 確認するには、[Azure Portal](https://portal.azure.com) で左端の **[Log Analytics]** を選び、次の図のようにワークスペース名を選択します。 **[OMS ワークスペース]** ページが表示されます。
+ログを確認する前に、Log Analytics ワークスペースが新しい Log Analytics クエリ言語を使用できるようにアップグレードされているかどうかを確認します。 確認するには、[Azure Portal](https://portal.azure.com) で左端の **[Log Analytics]** を選び、次の図のようにワークスペース名を選択します。 **[Log Analytics ワークスペース]** ページが表示されます。
 
 ![Azure Portal の Log Analytics](./media/logging/azure-portal.png)
 
-**[OMS ワークスペース]** ページに次のメッセージが表示される場合、ワークスペースは新しい言語を使用できるようにアップグレードされていません。 新しいクエリ言語にアップグレードする方法について詳しくは、「[新しいログ検索への Azure Log Analytics ワークスペースのアップグレード](../log-analytics/log-analytics-log-search-upgrade.md)」をご覧ください。 
+>[!NOTE]
+>OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。  
+
+**[Log Analytics ワークスペース]** ページに次のメッセージが表示される場合、ワークスペースは新しい言語を使用できるようにアップグレードされていません。 新しいクエリ言語にアップグレードする方法について詳しくは、「[新しいログ検索への Azure Log Analytics ワークスペースのアップグレード](../log-analytics/log-analytics-log-search-upgrade.md)」をご覧ください。 
 
 ![Log Analytics のアップグレード メッセージ](./media/logging/upgrade-notification.png)
 
@@ -440,7 +440,7 @@ Azure Storage と Log Analytics に格納されている診断データは、ス
 
 次の表は、各ログ エントリの内容をまとめた一覧です。
 
-| Azure Storage のフィールドまたはプロパティ | Log Analytics のプロパティ | [説明] |
+| Azure Storage のフィールドまたはプロパティ | Log Analytics のプロパティ | 説明 |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作が発生した日時 (UTC)。 |
 | **resourceId** | **リソース** | ログが有効になっている Azure Cosmos DB アカウント。|
@@ -449,7 +449,7 @@ Azure Storage と Log Analytics に格納されている診断データは、ス
 | **properties** | 該当なし | このフィールドの内容については、以下の行を参照してください。 |
 | **activityId** | **activityId_g** | ログに記録された操作の一意の GUID。 |
 | **userAgent** | **userAgent_s** | 要求を実行するクライアント ユーザー エージェントを示す文字列。 {ユーザー エージェント名}/{バージョン} という形式です。|
-| **resourceType** | **ResourceType** | アクセスされたリソースの種類。 この値は、リソースの種類 Database、Collection、Document、Attachment、User、Permission、StoredProcedure、Trigger、UserDefinedFunction、または Offer のいずれかです。 |
+| **resourceType** | **ResourceType** | アクセスされたリソースの種類。 この値は、リソースの種類 Database、Container、Document、Attachment、User、Permission、StoredProcedure、Trigger、UserDefinedFunction、または Offer のいずれかです。 |
 | **statusCode** | **statusCode_s** | 操作の応答状態。 |
 | **requestResourceId** | **ResourceId** | 要求に関連するリソース ID。 値は、実行された操作によって databaseRid、collectionRid、または documentRid を示す可能性があります。|
 | **clientIpAddress** | **clientIpAddress_s** | クライアントの IP アドレス。 |

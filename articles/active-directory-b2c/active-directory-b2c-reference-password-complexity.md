@@ -1,26 +1,26 @@
 ---
-title: パスワードの複雑さ - Azure AD B2C | Microsoft Docs
-description: Azure Active Directory B2C でコンシューマーによって指定されるパスワードの複雑さの要件を構成する方法
+title: Azure Active Directory B2C のパスワードの複雑さ | Microsoft Docs
+description: Azure Active Directory B2C でコンシューマーによって指定されるパスワードの複雑さの要件を構成する方法。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: b89a404d583e9d495b65180e145295e6a106b3ab
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: b16ac10e10655bbc7e41d9336378228097ca19ff
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014722"
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: パスワードの複雑さの要件を構成する
 
 > [!NOTE]
-> "**この機能はプレビュー段階にあります。**"  この機能でテスト テナントを有効にするには、[AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) にお問い合わせください。  運用環境のテナントではこれをテストしないでください。
+> **この機能はパブリック プレビュー段階にあります。**
 
 Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時にエンド ユーザーが指定するパスワードの複雑さの要件の変更がサポートされます。  既定では、Azure AD B2C では `Strong` パスワードを使います。  Azure AD B2C では、顧客が使用できるパスワードの複雑さを制御する構成オプションもサポートしています。
 
@@ -38,15 +38,14 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 ## <a name="how-to-configure-password-complexity"></a>パスワードの複雑さを構成する方法
 
-1. 次の手順に従って [Azure AD B2C の設定に移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)します。
 1. **[サインアップまたはサインイン ポリシー]** を開きます。
-1. ポリシーを選び、**[編集]** をクリックします。
-1. **[パスワードの複雑さ]** を開きます。
-1. このポリシーのパスワードの複雑さを **[シンプル]**、**[強]**、**[カスタム]** のいずれかに変更します。
+2. ポリシーを選び、**[編集]** をクリックします。
+3. **[パスワードの複雑さ]** を開きます。
+4. このポリシーのパスワードの複雑さを **[シンプル]**、**[強]**、**[カスタム]** のいずれかに変更します。
 
 ### <a name="comparison-chart"></a>比較チャート
 
-| 複雑さ | [説明] |
+| 複雑さ | 説明 |
 | --- | --- |
 | シンプル | 少なくとも 8 ～ 64 文字のパスワード。 |
 | Strong | 少なくとも 8 ～ 64 文字のパスワード。 小文字、大文字、数字、記号の 4 種類のうち 3 種が必要です。 |

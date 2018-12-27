@@ -1,20 +1,20 @@
 ---
-title: "Azure Container Instances でコンテナー化タスクを実行する"
-description: "Azure Container Instances を使用して、ビルド、テスト、イメージ レンダリングのジョブなど、完了まで実行するタスクを実行する方法を説明します。"
+title: Azure Container Instances で再起動ポリシーを使ってコンテナー化タスクを実行する
+description: Azure Container Instances を使用して、ビルド、テスト、イメージ レンダリングのジョブなど、完了まで実行するタスクを実行する方法を説明します。
 services: container-instances
-author: mmacy
-manager: timlt
+author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/16/2017
-ms.author: marsma
-ms.openlocfilehash: a922525970eac9af6657e58daae971912183b369
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.date: 07/26/2018
+ms.author: danlep
+ms.openlocfilehash: c9e3fadd5164ca0d770f36ba95c30db933efcd39
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853894"
 ---
-# <a name="run-a-containerized-task-in-azure-container-instances"></a>Azure Container Instances でコンテナー化タスクを実行する
+# <a name="run-containerized-tasks-with-restart-policies"></a>再起動ポリシーによるコンテナー化タスクの実行
 
 Azure Container Instances ではコンテナー デプロイを簡単にすばやく行えるため、コンテナー インスタンスでのビルド、テスト、イメージ レンダリングなどの一度のみ実行されるタスクの実行に優れたプラットフォームを提供します。
 
@@ -26,7 +26,7 @@ Azure Container Instances ではコンテナー デプロイを簡単にすば�
 
 Azure Container Instances でコンテナーを作成する場合、3 つの再起動ポリシー設定のいずれかを指定できます。
 
-| 再起動ポリシー   | [説明] |
+| 再起動ポリシー   | 説明 |
 | ---------------- | :---------- |
 | `Always` | コンテナー グループ内のコンテナーを常に再起動する。 これは**既定**の設定で、コンテナー作成時に再起動ポリシーが指定されていない場合に適用されます。 |
 | `Never` | コンテナー グループ内のコンテナーを再起動しない。 コンテナーは最大で 1 回実行されます。 |
@@ -132,9 +132,9 @@ az container logs --resource-group myResourceGroup --name mycontainer2
  ('GUILDENSTERN', 54)]
 ```
 
-## <a name="command-line-override"></a>コマンド ラインの上書き
+## <a name="command-line-override"></a>コマンド ラインのオーバーライド
 
-コンテナー イメージに組み込まれたコマンド ラインを上書きするコンテナー インスタンスを作成する場合は、コマンドラインを指定します。 これは、`docker run` に対する `--entrypoint` コマンドライン引数に似ています。
+コンテナー イメージに組み込まれたコマンド ラインをオーバーライドするコンテナー インスタンスを作成する場合は、コマンドラインを指定します。 これは、`docker run` に対する `--entrypoint` コマンドライン引数に似ています。
 
 たとえば、別のコマンドラインを指定することで、このコンテナー例で*ハムレット*以外のテキストを解析できます。 コンテナーで実行される Python スクリプト *wordcount.py* は、引数として URL を受け取り、既定のページではなくそのページのコンテンツを処理します。
 
@@ -172,7 +172,7 @@ az container logs --resource-group myResourceGroup --name mycontainer3
 [aci-wordcount-image]: https://hub.docker.com/r/microsoft/aci-wordcount/
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az_container_create
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az_container_logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az_container_show
+[az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
+[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
+[az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
 [azure-cli-install]: /cli/azure/install-azure-cli

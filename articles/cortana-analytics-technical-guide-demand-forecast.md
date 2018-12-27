@@ -1,24 +1,21 @@
 ---
-title: エネルギーの需要予測に関する技術ガイド | Microsoft Docs
+title: エネルギーの需要予測に関する技術ガイド
 description: エネルギーの需要予測のための Microsoft Cortana Intelligence を使用したソリューション テンプレートに関する技術ガイドです。
-services: cortana-analytics
-documentationcenter: ''
-author: yijichen
-manager: ilanr9
-editor: yijichen
-ms.assetid: 7f1a866b-79b7-4b97-ae3e-bc6bebe8c756
-ms.service: cortana-analytics
+services: machine-learning
+author: garyericson
+manager: cgronlun
+ms.service: machine-learning
+ms.subservice: team-data-science-process
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2016
-ms.author: inqiu;yijichen;ilanr9
-ms.openlocfilehash: bb3520d36e4c34c752fe388f3126da285e2161cd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: garye
+ms.openlocfilehash: 88f6a27d4092e638403c641d72916ed9d2540708
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427065"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>エネルギーの需要予測のための Cortana Intelligence ソリューション テンプレートに関する技術ガイド
 ## <a name="overview"></a>**概要**
@@ -50,7 +47,7 @@ ms.lasthandoff: 04/05/2018
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) サービスを使用して、[Azure Event Hub](#azure-event-hub) サービスからの入力ストリームをほぼリアルタイムで分析し、結果を [Power BI](https://powerbi.microsoft.com) ダッシュボードに公開するほか、後で [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスで処理するために、未加工のすべての受信イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) サービスにアーカイブできます。
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight カスタム集計
-Azure HDInsight サービスを使用して、[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプト (Azure Data Factory によって調整される) を実行し、Azure Stream Analytics サービスによってアーカイブされた未加工のイベントの集計を行います。
+Azure HDInsight サービスを使用して、[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプト (Azure Data Factory によって調整される) を実行し、Azure Stream Analytics サービスによってアーカイブされた未加工のイベントの集計を行います。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) サービスを使用して (Azure Data Factory によって調整される)、受け取った入力から、特定の地域の将来の電力消費を予測します。
@@ -105,14 +102,14 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 ![](media/cortana-analytics-technical-guide-demand-forecast/ADF2.png)
 
-このファクトリのパイプラインのうち 5 つには、データのパーティション分割と集計に使用される [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトが含まれます。 このスクリプトは、セットアップ時に作成される [Azure ストレージ](https://azure.microsoft.com/services/storage/) アカウントに置かれます。 それらの場所は demandforecasting\\\\script\\\\hive\\\\ (または https://[Your solution name].blob.core.windows.net/demandforecasting) になります。
+このファクトリのパイプラインのうち 5 つには、データのパーティション分割と集計に使用される [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトが含まれます。 このスクリプトは、セットアップ時に作成される [Azure ストレージ](https://azure.microsoft.com/services/storage/) アカウントに置かれます。 それらの場所は demandforecasting\\\\script\\\\hive\\\\ (または https://[Your solution name].blob.core.windows.net/demandforecasting) になります。
 
-[Azure Stream Analytics](#azure-stream-analytics-1) クエリと同様に、[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは、受信データ形式に関して暗黙的に認識するため、これらのクエリをデータ形式と[特徴エンジニアリング](machine-learning/team-data-science-process/create-features.md)要件に基づいて変更する必要がある場合があります。
+[Azure Stream Analytics](#azure-stream-analytics-1) クエリと同様に、[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは、受信データ形式に関して暗黙的に認識するため、これらのクエリをデータ形式と[特徴エンジニアリング](machine-learning/team-data-science-process/create-features.md)要件に基づいて変更する必要がある場合があります。
 
 #### <a name="aggregatedemanddatato1hrpipeline"></a>*AggregateDemandDataTo1HrPipeline*
-この[パイプライン](data-factory/concepts-pipelines-activities.md)には 1 つのアクティビティが含まれます。これは [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用する [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) アクティビティで、[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行し、10 秒ごとに変電所レベルでストリームに入る需要データを 1 時間ごとに地域レベルに集計し、Azure Stream Analytics ジョブによって [Azure Storage](https://azure.microsoft.com/services/storage/) に格納します。
+この[パイプライン](data-factory/concepts-pipelines-activities.md)には 1 つのアクティビティが含まれます。これは [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用する [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) アクティビティで、[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行し、10 秒ごとに変電所レベルでストリームに入る需要データを 1 時間ごとに地域レベルに集計し、Azure Stream Analytics ジョブによって [Azure Storage](https://azure.microsoft.com/services/storage/) に格納します。
 
-このパーティション分割タスク用の [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***AggregateDemandRegion1Hr.hql*** です。
+このパーティション分割タスク用の [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***AggregateDemandRegion1Hr.hql*** です。
 
 #### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
 この[パイプライン](data-factory/concepts-pipelines-activities.md)には、次の 2 つのアクティビティが含まれます。
@@ -120,7 +117,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 * [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用する [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) アクティビティは、Hive スクリプトを実行し、変電所レベルの 1 時間ごとの履歴需要データを 1 時間ごとに地域レベルに集計し、Azure Stream Analytics ジョブの実行中に Azure Storage に格納します。
 * [コピー](https://msdn.microsoft.com/library/azure/dn835035.aspx) アクティビティは、集計されたデータを Azure Storage BLOB から、ソリューション テンプレートのインストールの一環としてプロビジョニングされた Azure SQL Database に移動します。
 
-このタスク用の [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***AggregateDemandHistoryRegion.hql*** です。
+このタスク用の [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***AggregateDemandHistoryRegion.hql*** です。
 
 #### <a name="mlscoringregionxpipeline"></a>*MLScoringRegionXPipeline*
 これらの[パイプライン](data-factory/concepts-pipelines-activities.md)には、複数のアクティビティが含まれ、それらの最終結果は、このソリューション テンプレートに関連付けられている Azure Machine Learning の実験からのスコア付けされた予測です。 これらはほぼ同じですが、それぞれで処理される地域のみが異なります。これは、ADF パイプラインに渡された各種 RegionID と各地域の Hive スクリプトによって処理されます。  
@@ -162,17 +159,17 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 このセクションでは、Azure Stream Analytics (ホット パス) からのリアルタイムのデータのほか、Azure Machine Learning (コールド パス) からの予測結果を表示する Power BI ダッシュボードの設定方法について説明します。
 
 ### <a name="setup-hot-path-dashboard"></a>ホット パス ダッシュボードの設定
-次の手順では、ソリューションのデプロイ時に生成された Stream Analytics ジョブからのリアルタイム データの出力を表示する方法について説明します。 次の手順を実行するには、 [Power BI オンライン](http://www.powerbi.com/) アカウントが必要です。 アカウントがない場合は、 [作成](https://powerbi.microsoft.com/pricing)できます。
+次の手順では、ソリューションのデプロイ時に生成された Stream Analytics ジョブからのリアルタイム データの出力を表示する方法について説明します。 次の手順を実行するには、 [Power BI オンライン](https://www.powerbi.com/) アカウントが必要です。 アカウントがない場合は、 [作成](https://powerbi.microsoft.com/pricing)できます。
 
 1. Azure Stream Analytics (ASA) に Power BI 出力を追加します。
 
    * Azure Stream Analytics ジョブの出力を Power BI ダッシュボードとして設定するには、[Azure Stream Analytics と Power BI のストリーミング データをリアルタイムで表示するリアルタイム分析ダッシュボード](stream-analytics/stream-analytics-power-bi-dashboard.md)に関する記事の手順に従う必要があります。
    * [Azure Portal](https://portal.azure.com) で Stream Analytics ジョブを見つけます。 ジョブの名前は、<ソリューション名> + "streamingjob" + <ランダムな数字> + "asapbi" となっています (例: demostreamingjob123456asapbi)。
    * ASA ジョブに PowerBI 出力を追加します。 **[出力のエイリアス]** を「**PBIoutput**」に設定します。 **[データセット名]** と **[テーブル名]** を「**EnergyStreamData**」に設定します。 出力を追加したら、ページの下部にある **[開始]** をクリックして Stream Analytics ジョブを開始します。 確認メッセージが表示されます (例: "Stream Analytics ジョブ 'myteststreamingjob12345asablob' が正常に開始されました")。
-2. [Power BI オンライン](http://www.powerbi.com)
+2.  [Power BI オンライン](https://www.powerbi.com)
 
    * 左側のパネルにある、[マイ ワークスペース] の [データセット] セクションには、Power BI の左側のパネルに表示されている新しいデータセットが表示されます。 これは、前の手順で Azure Stream Analytics からプッシュ送信したストリーミング データです。
-   * ***[処理済み]*** ウィンドウが開き、画面の右側に表示されることを確認します。
+   *  ***[処理済み]*** ウィンドウが開き、画面の右側に表示されることを確認します。
 3. "Demand by Timestamp" タイルを作成します。
 
    * 左側のパネルの [データセット] セクションで **[EnergyStreamData]** をクリックします。
@@ -205,12 +202,12 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
    * [Power BI Desktop](https://powerbi.microsoft.com/desktop)の最新バージョンがインストールされていることを確認します。
    * ダウンロードした **DemandForecastingDataGeneratorv1.0** フォルダー内にある **Power BI Template\DemandForecastPowerBI.pbix** ファイルをダブルクリックします。 初期の視覚エフェクトは、ダミー データに基づいています。 **注:** エラー メッセージが表示された場合は、Power BI Desktop の最新バージョンがインストールされていることを確認してください。
 
-     ファイルを開いたら、ファイルの上部にある **[クエリを編集]**をクリックします。 ポップアップ ウィンドウで、右側のパネルの **[ソース]** をダブルクリックします。
+     ファイルを開いたら、ファイルの上部にある **[クエリを編集]** をクリックします。 ポップアップ ウィンドウで、右側のパネルの **[ソース]** をダブルクリックします。
      ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic1.png)
    * ポップアップ ウィンドウの **[サーバー]** と **[データベース]** を独自のサーバーとデータベースの名前に置き換えて、**[OK]** をクリックします。 サーバー名については、ポート 1433 (**YourSolutionName.database.windows.net 1433**) を指定していることを確認してください。 画面に表示される警告メッセージは無視します。
-   * 次のポップアップ ウィンドウで、左側のウィンドウに 2 つのオプション (**[Windows]** と **[データベース]**) が表示されます。 **[データベース]** をクリックし、**[ユーザー名]** と **[パスワード]** (これは、初めてソリューションをデプロイし、Azure SQL データベースを作成したときに入力したユーザー名とパスワードです) を入力します。 ***[これらの設定の適用対象レベルの選択]*** で、データベース レベル オプションをオンにします。 次に **[接続]**をクリックします。
+   * 次のポップアップ ウィンドウで、左側のウィンドウに 2 つのオプション (**[Windows]** と **[データベース]**) が表示されます。 **[データベース]** をクリックし、**[ユーザー名]** と **[パスワード]** (これは、初めてソリューションをデプロイし、Azure SQL データベースを作成したときに入力したユーザー名とパスワードです) を入力します。 ***[これらの設定の適用対象レベルの選択]*** で、データベース レベル オプションをオンにします。 次に **[接続]** をクリックします。
    * 前のページに戻ったら、ウィンドウを閉じます。 メッセージが表示されます。**[適用]** をクリックします。 最後に、**[保存]** ボタンをクリックして、変更を保存します。 これで、Power BI ファイルは、サーバーへの接続を確立しました。 視覚エフェクトが空の場合、凡例の右上隅にある消しゴム アイコンをクリックして、視覚エフェクトの選択をクリアし、すべてのデータを表示します。 更新ボタンを使用して、視覚エフェクトに新しいデータを反映させます。 最初、視覚エフェクトにはシード データのみ表示されます。データ ファクトリは 3 時間ごとに更新されるようにスケジュールされています。 3 時間後、データを更新すると、視覚エフェクトに反映された新しい予測が表示されます。
-3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](http://www.powerbi.com/)に公開します。 この手順では、Power BI アカウント (または Office 365 アカウント) が必要であることに注意してください。
+3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](https://www.powerbi.com/)に公開します。 この手順では、Power BI アカウント (または Office 365 アカウント) が必要であることに注意してください。
 
    * **[公開]** をクリックします。 数秒後、緑色のチェック マークの付いた 「Power BI への公開が成功しました」と表示するウィンドウが表示されます。 次の "Power BI で demoprediction.pbix を開く" のリンクをクリックします。 詳細な手順については、「 [Power BI Desktop からの発行](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)」を参照してください。
    * 新しいダッシュボードを作成するには、左側のウィンドウで **[ダッシュボード]** セクションの横の **[+]** 記号をクリックします。 この新しいダッシュボードの名前として、「Demand Forecasting Demo」と入力します。
@@ -234,7 +231,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 各自のサブスクリプションでエネルギーの需要予測ソリューション テンプレートを実行する場合に関連する合計コストを詳しく知るために役立つ次の 2 つのツールがあります。
 
 * [Microsoft Azure 料金計算ツール (オンライン)](https://azure.microsoft.com/pricing/calculator/)
-* [Microsoft Azure 料金計算ツール (デスクトップ)](http://www.microsoft.com/download/details.aspx?id=43376)
+* [Microsoft Azure 料金計算ツール (デスクトップ)](https://www.microsoft.com/download/details.aspx?id=43376)
 
 ## <a name="acknowledgements"></a>**謝辞**
 この記事は、Microsoft のデータ サイエンティスト Yijing Chen とソフトウェア エンジニア Qiu Min によって作成されています。

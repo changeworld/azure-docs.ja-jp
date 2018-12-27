@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ デバイス用の Web プロキシを設定する | Microsoft Docs"
-description: "StorSimple 用 Windows PowerShell を使用して StorSimple デバイス用に Web プロキシを構成する方法について説明します。"
+title: StorSimple 8000 シリーズ デバイス用の Web プロキシを設定する | Microsoft Docs
+description: StorSimple 用 Windows PowerShell を使用して StorSimple デバイス用に Web プロキシを構成する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108510"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple デバイスの Web プロキシを構成する
 
@@ -28,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 このチュートリアルのガイダンスは、StorSimple 8000 シリーズの物理デバイスにのみ適用されます。 Web プロキシ構成は、StorSimple Cloud Appliance (8010 および 8020) ではサポートされません。
 
-Web プロキシは StorSimple デバイス用の_オプション_の構成です。 Web プロキシの構成には StorSimple 用 Windows PowerShell のみ使用できます。 構成には、次の 2 つの手順を実行します。
+Web プロキシは StorSimple デバイス用の _オプション_ の構成です。 Web プロキシの構成には StorSimple 用 Windows PowerShell のみ使用できます。 構成には、次の 2 つの手順を実行します。
 
 1. まず、セットアップ ウィザードまたは StorSimple 用 Windows PowerShell のコマンドレットを使用して、Web プロキシ設定を構成します。
 2. 次に、StorSimple 用 Windows PowerShell のコマンドレットを使用して、構成した Web プロキシ設定を有効にします。
@@ -62,7 +63,7 @@ Web プロキシ設定を構成するには、次のいずれかを使用しま�
    
     `Invoke-HcsSetupWizard`
 2. デバイスを登録するためにセットアップ ウィザードを初めて使用する場合は、Web プロキシを構成する前に、必要なすべてのネットワーク設定を構成する必要があります。 デバイスが既に登録されている場合は、構成済みのすべてのネットワーク設定をそのまま使用して、Web プロキシを構成できます。 セットアップ ウィザードで、Web プロキシ設定を構成するかどうかを確認するメッセージが表示されたら、「 **Yes**」と入力します。
-3. **[Web Proxy URL]**には、Web プロキシ サーバーの IP アドレスまたは完全修飾ドメイン名 (FQDN) と、クラウドと通信するときにデバイスで使用する TCP ポート番号を指定します。 次の形式を使用します。
+3. **[Web Proxy URL]** には、Web プロキシ サーバーの IP アドレスまたは完全修飾ドメイン名 (FQDN) と、クラウドと通信するときにデバイスで使用する TCP ポート番号を指定します。 次の形式を使用します。
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    

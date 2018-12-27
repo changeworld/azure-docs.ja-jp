@@ -1,25 +1,27 @@
 ---
-title: Python Machine Learning スクリプトの実行 |Microsoft Docs
-description: Azure Machine Learning における Python スクリプトのサポート、基本的な使用シナリオ、機能、制限事項の基になる設計原則について説明します。
+title: Python Machine Learning スクリプトの実行 - Azure Machine Learning Studio | Microsoft Docs
+description: Azure Machine Learning Studio における Python スクリプトのサポート、基本的な使用シナリオ、機能、制限事項の基になる設計原則について説明します。
 keywords: python の機械の学習、pandas、python pandas、python スクリプト、python スクリプトの実行
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: ee9eb764-0d3e-4104-a797-19fc29345d39
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 0efa2a7604b41b791ed3717b7f2b667b7181085d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f0fa2401e37e15137e9d5387d1395baf64b0fe61
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274073"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Python Machine Learning スクリプトの実行
 
@@ -49,7 +51,7 @@ Python は、Machine Learning のモデリングで通常使用されるワー�
 
 Azure Machine Learning Studio は、Machine Learning の実験のさまざまな部分への Python スクリプトの埋め込みに加えて、Microsoft Azure の Web サービスとしてのシームレスな公開もサポートしています。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 
 ## <a name="design-principles-of-python-scripts-in-machine-learning"></a>Machine Learning での Python スクリプトの設計原則
@@ -60,12 +62,12 @@ Azure Machine Learning Studio でのPython の主要なインターフェイス�
 
 ![Image2](./media/execute-python-scripts/embedded-machine-learning-python-script.png)
 
-図 1. **Python スクリプトの実行** モジュールと同様に、最大 3 つの入力を受け取り、最大 2 つの出力を生成します (後述)。
+図 1.  **Python スクリプトの実行** モジュールと同様に、最大 3 つの入力を受け取り、最大 2 つの出力を生成します (後述)。
 
 Azure ML Studio の [Python スクリプトの実行][execute-python-script]モジュールは、R アナログの [R スクリプトの実行][execute-r-script]モジュールと同様に、最大 3 つの入力を受け取り、最大 2 つの出力を生成します (次のセクションで説明)。 実行される Python コードは、 `azureml_main`という特別に指定されたエントリポイント関数としてパラメーター ボックスに入力されます。 次にこのモジュールの実装に使用される主要な設計原則を示します。
 
 1. *Python ユーザーにとって慣用的であること。* Python のほとんどのユーザーは、モジュール内の関数としてコードを組み込みます。 そのため、多数の実行可能ステートメントを最上位レベルのモジュールに配置することは比較的まれです。 そのため、単なるステートメントのシーケンスとは対照的に、スクリプト ボックスにも特別に指定された Python 関数が入力されます。 この関数で公開されるオブジェクトは、[Pandas](http://pandas.pydata.org/) データ フレームや [NumPy](http://www.numpy.org/) 配列などの標準的な Python ライブラリの型です。
-2. *ローカルとクラウド間の実行が高品質であること。* Python コードの実行に使用されるバックエンドは、プラットフォーム間で広く使用されている科学的な Python ディストリビューションである [Anaconda](https://store.continuum.io/cshop/anaconda/) に基づいています。 最も一般的な Python パッケージが 200 個近く付属しています。 そのため、データ サイエンティストは、ローカルの Azure Machine Learning と互換性のある Anaconda 環境で、コードをデバッグおよび検証できます。 [IPython](http://ipython.org/) notebook や [Python Tools for Visual Studio](http://aka.ms/ptvs) などの既存の開発環境を使用し、Azure ML の実験の一部として実行します。 `azureml_main` エントリ ポイントは vanilla Python 関数なので、**** は Azure ML 固有のコードや SDK がインストールされていなくても作成できます。
+2. *ローカルとクラウド間の実行が高品質であること。* Python コードの実行に使用されるバックエンドは、プラットフォーム間で広く使用されている科学的な Python ディストリビューションである [Anaconda](https://store.continuum.io/cshop/anaconda/) に基づいています。 最も一般的な Python パッケージが 200 個近く付属しています。 そのため、データ サイエンティストは、ローカルの Azure Machine Learning と互換性のある Anaconda 環境で、コードをデバッグおよび検証できます。 [IPython](http://ipython.org/) notebook や [Python Tools for Visual Studio](https://aka.ms/ptvs) などの既存の開発環境を使用し、Azure ML の実験の一部として実行します。 `azureml_main` エントリ ポイントは vanilla Python 関数なので、**** は Azure ML 固有のコードや SDK がインストールされていなくても作成できます。
 3. *他のAzure Machine Learning モジュールとシームレスに構成できること。* [Python スクリプトの実行][execute-python-script]モジュールは、入力と出力として、標準の Azure Machine Learning データセットを受け取ります。 基になるフレームワークは、Azure ML と Python ランタイムを透過的かつ効率的に結び付けます。 そのため Python は、既存の Azure ML ワークフロー (R や SQLite の呼び出しを含む) と組み合わせて使用できます。 結果として、データ サイエンティストは、以下のようなワークフローを作成できます。
    * データの前処理とクリーニングに Python と Pandas を使用する
    * データを SQL 変換にフィードし、フォームの特徴に複数のデータセットを結合する
@@ -188,7 +190,8 @@ Azure Machine Learning にインストールされた Anaconda 環境には、Nu
 ![image11](./media/execute-python-scripts/figure8.png)
 
 図 10: スコアによって特徴を順位付ける関数。
- 次の実験は、Azure Machine Learning の "ピマ インディアン糖尿病" データセットにおける特徴の重要度スコアを計算して返します。
+ 
+次の実験は次に、Azure Machine Learning の "ピマ インディアン糖尿病" データセットにおける特徴の重要度スコアを計算して返します。
 
 ![image12](./media/execute-python-scripts/figure9a.png)
 ![image13](./media/execute-python-scripts/figure9b.png)    
@@ -198,9 +201,9 @@ Azure Machine Learning にインストールされた Anaconda 環境には、Nu
 ## <a name="limitations"></a>制限事項
 [Python スクリプトの実行][execute-python-script]には、現在次のような制限があります。
 
-1. *セキュリティで保護された実行。* Python ランタイムは、現在セキュリティで保護されているため、永続的な方法でのネットワークやローカル ファイル システムへのアクセスを許可しません。 ローカルに保存されているすべてのファイルは分離され、モジュールが終了すると削除されます。 Python コードは、現在のディレクトリとそのサブディレクトリを除く、実行中のコンピューターのほとんどのディレクトリにアクセスできません。
-2. *高度な開発とデバッグ サポートの欠如。* Python モジュールは、現在、Intellisense やデバッグなどの IDE 機能をサポートしていません。 また、実行時にモジュールが失敗する場合は、Python の完全なスタック トレースを使用できます。 ただし、モジュールの出力ログで参照する必要があります。 現在のところ、IPython などの環境で Python スクリプトの開発とデバッグを行い、そのコードをモジュールにインポートすることをお勧めしています。
-3. *1 つのデータ フレームの出力。* Python のエントリ ポイントは、1 つのデータ フレームのみを出力として返すことができます。 現在は、Azure Machine Learning ランタイムに直接戻されたトレーニング済みのモデルなどの、任意の Python オブジェクトを返すことはできません。 同じ制限がある [R スクリプトの実行][execute-r-script]と同様に、多くの場合、バイト配列にオブジェクトを変換し、データ フレーム内のその部分を返すことができます。
+1. *セキュリティで保護された実行。*  Python ランタイムは、現在セキュリティで保護されているため、永続的な方法でのネットワークやローカル ファイル システムへのアクセスを許可しません。 ローカルに保存されているすべてのファイルは分離され、モジュールが終了すると削除されます。 Python コードは、現在のディレクトリとそのサブディレクトリを除く、実行中のコンピューターのほとんどのディレクトリにアクセスできません。
+2. *高度な開発とデバッグ サポートの欠如。*  Python モジュールは、現在、Intellisense やデバッグなどの IDE 機能をサポートしていません。 また、実行時にモジュールが失敗する場合は、Python の完全なスタック トレースを使用できます。 ただし、モジュールの出力ログで参照する必要があります。 現在のところ、IPython などの環境で Python スクリプトの開発とデバッグを行い、そのコードをモジュールにインポートすることをお勧めしています。
+3. *1 つのデータ フレームの出力。*  Python のエントリ ポイントは、1 つのデータ フレームのみを出力として返すことができます。 現在は、Azure Machine Learning ランタイムに直接戻されたトレーニング済みのモデルなどの、任意の Python オブジェクトを返すことはできません。 同じ制限がある [R スクリプトの実行][execute-r-script]と同様に、多くの場合、バイト配列にオブジェクトを変換し、データ フレーム内のその部分を返すことができます。
 4. *Python のインストールをカスタマイズできない*。 現時点では、カスタムの Python モジュールを追加する唯一の方法は、前に説明した zip ファイルのメカニズムを使用することです。 これは、小さなモジュールに適していますが、大きなモジュール (特にネイティブ DLL を使用するモジュール) や大量のモジュールでは、使用が面倒です。 
 
 ## <a name="conclusions"></a>まとめ

@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d2e4a014a0f7bb7f94885528abc930d2b243318b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 96daacef134ca60cb497907a770c83a4bba24a5b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956026"
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
 Microsoft Azure は、分析、仮想マシン、データベース、モバイル、ネットワーク、ストレージ、Web など、多様なパブリック クラウド サービスを一元化した集合体として成長し続け、さまざまなソリューションのホストとして理想的な形態となっています。  Microsoft Azure のスケーラブルなコンピューティング プラットフォームによって、必要なときに使用した分だけを支払う料金体系が実現され、オンプレミスのハードウェアに投資する必要がありません。  貴社の顧客のニーズに応えるうえで必要なレベルにまでソリューションをいつでもスケールアップまたはスケールアウトできる柔軟性が Azure にはあります。
@@ -27,7 +28,7 @@ Microsoft Azure は、分析、仮想マシン、データベース、モバイ�
 Amazon の AWS のさまざまな機能を使い慣れている場合は、Azure と AWS の [定義マッピング ドキュメント](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)を調べることができます。
 
 ## <a name="regions"></a>リージョン
-Microsoft Azure のリソースは、世界各国複数の地理的リージョンに分散されます。  "リージョン" とは、1 つの地域に存在する複数のデータ センターを表します。 Azure では、現在 (2017 年 11 月)、世界中で 36 か所のリージョンが一般公開されており、さらに 6 つのリージョンが発表されました。 既存のリージョンと新しく発表されたリージョンの最新の一覧は次のページで確認できます。
+Microsoft Azure のリソースは、世界各国複数の地理的リージョンに分散されます。  "リージョン" とは、1 つの地域に存在する複数のデータ センターを表します。 現時点 (2018 年 8 月現在) で、Azure には一般公開されているリージョンが世界各地に 42 個あり、さらに 12 リージョンの追加が発表されています。これは他のクラウド プロバイダーよりも多いグローバル リージョン数です。 既存のリージョンと新しく発表されたリージョンの最新の一覧は次のページで確認できます。
 
 * [Azure リージョン](https://azure.microsoft.com/regions/)
 
@@ -36,7 +37,7 @@ Azure は、単一インスタンス仮想マシン向けに、業界をリー�
 
 ## <a name="managed-disks"></a>Managed Disks
 
-Managed Disks により、Azure Storage アカウントの作成および管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がありません。 ディスク サイズとパフォーマンス レベル (Standard または Premium) を指定すると、Azure によってディスクが作成および管理されます。 ディスクの追加や VM のスケールアップとスケールダウンを行うときに、使用されているストレージについて心配する必要はありません。 新しい VM を作成する場合は、[Azure CLI 2.0](quick-create-cli.md) または Azure Portal を使用して、管理 OS とデータ ディスクで VM を作成します。 VM に非管理対象ディスクがある場合は、[VM を変換して Managed Disks でバックアップ](convert-unmanaged-to-managed-disks.md)できます。
+Managed Disks により、Azure Storage アカウントの作成および管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がありません。 ディスク サイズとパフォーマンス レベル (Standard または Premium) を指定すると、Azure によってディスクが作成および管理されます。 ディスクの追加や VM のスケールアップとスケールダウンを行うときに、使用されているストレージについて心配する必要はありません。 新しい VM を作成する場合は、[Azure CLI](quick-create-cli.md) または Azure portal を使用して、管理 OS とデータ ディスクで VM を作成します。 VM に非管理対象ディスクがある場合は、[VM を変換して Managed Disks でバックアップ](convert-unmanaged-to-managed-disks.md)できます。
 
 また、Azure リージョンごとに 1 つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../linux/managed-disks-overview.md)に関するページをご覧ください。
 
@@ -72,16 +73,16 @@ Microsoft はパートナーと連携し、利用可能なイメージが Azure 
 
 * [Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md)
 * SUSE - [Azure Marketplace - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
-* Redhat - [Azure Marketplace - RedHat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
+* Red Hat - [Azure Marketplace - Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical - [Azure Marketplace - Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian - [Azure Marketplace - Debian 8 "Jessie"](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
-* FreeBSD - [Azure Marketplace - FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
+* FreeBSD - [Azure Marketplace - FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
 * CoreOS - [Azure Marketplace - CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
 * RancherOS - [Azure Marketplace - RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
 * Bitnami - [Bitnami Library for Azure](https://azure.bitnami.com/)
 * Mesosphere - [Azure Marketplace - Mesosphere DC/OS on Azure](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
 * Docker - [Azure Marketplace - Azure Container Service with Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
-* Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
+* Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
 ## <a name="getting-started-with-linux-on-azure"></a>Microsoft Azure における Linux の概要
 Azure の使用を開始するには、Azure アカウント、Azure CLI のインストール、および SSH 公開キーと秘密キーのペアが必要です。
@@ -90,7 +91,7 @@ Azure の使用を開始するには、Azure アカウント、Azure CLI のイ�
 Azure クラウドを使用する最初の手順は、Azure アカウントにサインアップすることです。  開始するには、 [Azure アカウントのサインアップ](https://azure.microsoft.com/pricing/free-trial/) ページに移動します。
 
 ### <a name="install-the-cli"></a>CLI をインストールする
-新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、`azure-cli` をインストールします。  Mac または Linux ワークステーションに [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールします。
+新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、`azure-cli` をインストールします。  Mac または Linux ワークステーションに [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 
 ### <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
 これで Azure アカウント、Azure Web Portal、Azure CLI の準備ができました。  次の手順では、パスワードを使用せずに Linux で SSH を使用するための SSH キー ペアを作成します。  [Linux および Mac で SSH キーを作成](mac-create-ssh-keys.md) し、パスワードのないログインとセキュリティの強化を実現します。
@@ -120,7 +121,7 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 * [Azure での Linux VM へのポートの開放](nsg-quickstart.md)
 * [Azure Portal での完全修飾ドメイン名の作成](portal-create-fqdn.md)
 
-## <a name="containers"></a>コンテナー
+## <a name="containers"></a>Containers
 * [Virtual Machines とコンテナーが Azure にもたらすメリット](containers.md)
 * [Azure Container Service の概要](../../container-service/container-service-intro.md)
 * [Azure コンテナー サービス クラスターのデプロイ](../../container-service/dcos-swarm/container-service-deployment.md)

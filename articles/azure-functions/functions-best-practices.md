@@ -4,28 +4,25 @@ description: Azure Functions のベスト プラクティスとパターンに�
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: Azure Functions, パターン, ベスト プラクティス, 関数, イベント処理, webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19ca9d70f769a19556d131d1d131f1bc9d107ef0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: aecd68734999c30f3dc8e7a2ea8c7d5e9cdfacb0
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166340"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
-この記事では、[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数アプリのパフォーマンスと信頼性を向上させるためのガイダンスを紹介しています。 
+この記事では、[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数アプリのパフォーマンスと信頼性を向上させるためのガイダンスを紹介しています。 
 
 ## <a name="general-best-practices"></a>一般的なベスト プラクティス
 
@@ -77,6 +74,10 @@ Azure Functions プラットフォームで使用するコンポーネントに�
 
 関数アプリのインスタンスのスケーリングに影響を及ぼす多数の要素があります。 詳細については、[関数のスケーリング](functions-scale.md)に関するドキュメントをご覧ください。  関数アプリの最適なスケーラビリティを確保するためのベスト プラクティスを以下に示します。
 
+### <a name="share-and-manage-connections"></a>接続の共有と管理
+
+可能であれば、外部リソースへの接続を再利用します。  「[Azure Functions で接続を管理する方法](./manage-connections.md)」をご覧ください。
+
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>同じ関数アプリにテスト コードと運用環境のコードを混在させない
 
 Function App 内の関数はリソースを共有します。 たとえば、メモリは共有されます。 運用環境で Function App を使用している場合は、テストに関連する関数およびリソースを追加しないでください。 これが原因で、運用環境のコードの実行中に予期しないオーバーヘッドが発生する可能性があります。
@@ -103,20 +104,21 @@ Function App 内の関数はリソースを共有します。 たとえば、メ
 
 C# 関数の場合、型を厳密に型指定された配列に変更できます。  たとえば、メソッド シグネチャに、`EventData sensorEvent` ではなく `EventData[] sensorEvent` を指定できます。  他の言語の場合、バッチ処理を有効にするには、[こちら](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)に示すように、`function.json` の cardinality プロパティを明示的に `many` に設定する必要があります。
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>同時実行を適切に処理するようにホストの動作を構成する
+### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>コンカレンシーを適切に処理するようにホストの動作を構成する
 
-関数アプリの `host.json` ファイルでは、ホストのランタイムとトリガーの動作を構成できます。  バッチ処理の動作に加え、多数のトリガーの同時実行を管理できます。  多くの場合、これらのオプションの値を調整することで、呼び出された関数の要求に合わせて各インスタンスを適切にスケールできます。
+関数アプリの `host.json` ファイルでは、ホストのランタイムとトリガーの動作を構成できます。  バッチ処理の動作に加え、多数のトリガーのコンカレンシーを管理できます。  多くの場合、これらのオプションの値を調整することで、呼び出された関数の要求に合わせて各インスタンスを適切にスケールできます。
 
 hosts ファイルの設定は、アプリ内のすべての関数 (関数の "*1 つのインスタンス*") に適用されます。 たとえば、2 つの HTTP 関数が含まれ、同時要求数が 25 に設定された関数アプリがある場合、一方の HTTP トリガーに対する要求は共有された 25 の同時要求にカウントされます。  その関数アプリが 10 インスタンスにスケールされた場合、2 つの関数は 250 個の同時要求に効果的に対応できます (10 インスタンス * インスタンスあたり 25 個の同時要求)。
 
-**HTTP 同時実行ホストのオプション**
+**HTTP コンカレンシー ホストのオプション**
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
 他のホスト構成オプションについては、[ホスト構成に関するドキュメント](functions-host-json.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
+
 詳細については、次のリソースを参照してください。
 
-Azure Functions は Azure App Service を使用するため、App Service のガイドラインも認識しておく必要があります。
-* [パターンとプラクティスによる HTTP パフォーマンスの最適化](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)
+* [Azure Functions で接続を管理する方法](manage-connections.md)
+* [Azure App Service のベスト プラクティス](../app-service/app-service-best-practices.md)

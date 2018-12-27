@@ -1,11 +1,11 @@
 ---
-title: "複数の NIC を持つ VM (クラシック) を作成する - Azure PowerShell | Microsoft Docs"
-description: "PowerShell を使用して複数の NIC を持つ VM (クラシック) を作成する方法について説明します。"
+title: 複数の NIC を持つ VM (クラシック) を作成する - Azure PowerShell | Microsoft Docs
+description: PowerShell を使用して複数の NIC を持つ VM (クラシック) を作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
-editor: 
+author: genlin
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: 6e50f39a-2497-4845-a5d4-7332dbc203c5
 ms.service: virtual-network
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/02/2016
-ms.author: jdial
+ms.date: 10/31/2018
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 824af3f0f5f6d42341f6f1dc94104f6009b568b8
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 087de711fdbc70a4562045f8d774f2c6ae5a0db5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417040"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>PowerShell を使用して複数の NIC を持つ VM (クラシック) を作成する
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 12/20/2017
 Azure に仮想マシン (VM) を作成し、複数のネットワーク インターフェイス (NIC) を各 VM にアタッチできます。 複数 NIC では、複数の NIC 全体にトラフィック タイプを分散できます。 たとえば、インターネットと通信する NIC もあれば、インターネットに接続されていない内部リソースとのみ通信する NIC もあるとします。 アプリケーションの配布や WAN の最適化ソリューションなど、多くのネットワーク仮想アプライアンスでは、複数の NIC 間にネットワーク トラフィックを分散できる必要があります。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](../virtual-machines/windows/multiple-nics.md)を使用してこれらの手順を実行する方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](../virtual-machines/windows/multiple-nics.md)を使用してこれらの手順を実行する方法について説明します。
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
@@ -191,11 +192,17 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
         New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         
         WARNING: No deployment found in service: 'IaaSStory-Backend'.
-2. 資格情報プロンプトに必要な情報を入力して、 **[OK]**をクリックします。 次の出力が返されます。
+2. 資格情報プロンプトに必要な情報を入力して、 **[OK]** をクリックします。 次の出力が返されます。
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>手順 5 - VM オペレーティング システム内でのルーティングの構成
 
-Azure DHCP では、既定のゲートウェイが、仮想マシンに接続された最初の (プライマリ) ネットワーク インターフェイスに割り当てられます。 Azure では、既定のゲートウェイは、仮想マシンに接続された追加の (セカンダリ) ネットワーク インターフェイスに割り当てられません。 したがって、既定では、セカンダリ ネットワーク インターフェイスのサブネット外のリソースと通信することはできません。 しかし、セカンダリ ネットワーク インターフェイスは、そのサブネット外のリソースと通信できます。 セカンダリ ネットワーク インターフェイス用のルーティング構成については、「[Routing within a virtual machine operating system with multiple network interfaces (複数のネットワーク インターフェイスを持つ仮想マシンのオペレーティング システム内でのルーティング)](virtual-network-network-interface-vm.md)」を参照してください。
+Azure DHCP では、既定のゲートウェイが、仮想マシンに接続された最初の (プライマリ) ネットワーク インターフェイスに割り当てられます。 Azure では、既定のゲートウェイは、仮想マシンに接続された追加の (セカンダリ) ネットワーク インターフェイスに割り当てられません。 したがって、既定では、セカンダリ ネットワーク インターフェイスのサブネット外のリソースと通信することはできません。 しかし、セカンダリ ネットワーク インターフェイスは、そのサブネット外のリソースと通信できます。 セカンダリ ネットワーク インターフェイスへのルーティングを構成するには、次の記事を参照してください。
+
+- [複数の NIC 用に Windows VM を構成する](../virtual-machines/windows/multiple-nics.md#configure-guest-os-for-multiple-nics
+)
+
+- [複数の NIC 用に Linux VM を構成する](../virtual-machines/linux/multiple-nics.md#configure-guest-os-for-multiple-nics
+)

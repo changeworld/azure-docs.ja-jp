@@ -1,39 +1,42 @@
 ---
-title: "既存のカスタム SSL 証明書の Azure Web Apps へのバインド | Microsoft Docs"
-description: "Azure App Service で、Web アプリ、モバイル アプリのバックエンド、または API アプリにカスタム SSL 証明書をバインドする方法について説明します。"
+title: 既存のカスタム SSL 証明書のバインド - Azure App Service | Microsoft Docs
+description: Azure App Service で、Web アプリ、モバイル アプリのバックエンド、または API アプリにカスタム SSL 証明書をバインドする方法について説明します。
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5d5bf588-b0bb-4c6d-8840-1b609cfb5750
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 11/30/2017
+ms.date: 08/24/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: f69bc731b2858c338d7f7b4d347e7107a0f4eeed
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.custom: seodec18
+ms.openlocfilehash: 57046b9e199fbe5e88d0ea7fa25248641693508a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256997"
 ---
-# <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>既存のカスタム SSL 証明書の Azure Web Apps へのバインド
+# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>チュートリアル:既存のカスタム SSL 証明書の Azure Web Apps へのバインド
 
 Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、信頼された証明機関から購入したカスタム SSL 証明書を [Azure Web Apps](app-service-web-overview.md) にバインドする方法について説明します。 完了したら、カスタムの DNS ドメインの HTTPS エンドポイントで、Web アプリにアクセスできるようになります。
 
 ![カスタム SSL 証明書付きの Web アプリ](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * アプリの価格レベルをアップグレードする
-> * カスタム SSL 証明書を App Service にバインドする
-> * アプリに HTTPS を適用する
-> * スクリプトで SSL 証明書のバインドを自動化する
+> * カスタム証明書を App Service にバインドする
+> * 証明書の更新
+> * HTTPS の適用
+> * TLS 1.1/1.2 の適用
+> * スクリプトを使って TLS 管理を自動化する
 
 > [!NOTE]
 > カスタム SSL 証明書を取得する必要がある場合、Azure Portal から直接取得して Web アプリにバインドすることができます。 [App Service 証明書のチュートリアル](web-sites-purchase-ssl-web-site.md)に従ってください。
@@ -61,45 +64,7 @@ App Service で証明書を使用するには、証明書が次のすべての�
 > [!NOTE]
 > **楕円曲線暗号 (ECC) 証明書** は、App Service で使用できますが、この記事では説明しません。 ECC 証明書を作成する正確な手順については、証明機関にお問い合わせください。
 
-## <a name="prepare-your-web-app"></a>Web アプリの準備
-
-カスタム SSL 証明書を Web アプリにバインドするには、[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が **Basic**、**Standard** または **Premium** のいずれかのレベルである必要があります。 この手順では、Web アプリが、サポートされている価格レベルであることを確認します。
-
-### <a name="log-in-to-azure"></a>Azure へのログイン
-
-[Azure Portal](https://portal.azure.com)を開きます。
-
-### <a name="navigate-to-your-web-app"></a>Web アプリに移動する
-
-左側のメニューで **[App Services]** をクリックした後、Web アプリの名前をクリックします。
-
-![Web アプリの選択](./media/app-service-web-tutorial-custom-ssl/select-app.png)
-
-Web アプリの管理ページが表示されます。  
-
-### <a name="check-the-pricing-tier"></a>価格レベルの確認
-
-Web アプリ ページの左側のナビゲーションで **[設定]** セクションまでスクロールし、**[スケール アップ (App Service のプラン)]** を選択します。
-
-![スケール アップ メニュー](./media/app-service-web-tutorial-custom-ssl/scale-up-menu.png)
-
-Web アプリが **Free** レベルまたは **Shared** レベルに含まれていないことを確認します。 Web アプリの現在のレベルは、ダーク ブルーのボックスで強調表示されます。
-
-![価格レベルの確認](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
-
-カスタム SSL は、**Free** レベルまたは **Shared** レベルではサポートされていません。 スケール アップする必要がある場合は、次のセクションの手順に従います。 それ以外の場合は、**[価格レベルの選択]** ページを閉じて、[SSL 証明書のアップロードとバインド](#upload)に関するセクションにスキップします。
-
-### <a name="scale-up-your-app-service-plan"></a>App Service プランのスケール アップ
-
-**Basic**、**Standard**、**Premium** のいずれかのレベルを選択します。
-
-**[選択]**をクリックします。
-
-![価格レベルの選択](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
-
-次の通知が表示されたら、スケール操作は完了です。
-
-![スケール アップの通知](./media/app-service-web-tutorial-custom-ssl/scale-notification.png)
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
 <a name="upload"></a>
 
@@ -149,17 +114,17 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 ### <a name="upload-your-ssl-certificate"></a>SSL 証明書のアップロード
 
-SSL 証明書をアップロードするには、Web アプリの左側のナビゲーションで **[SSL 証明書]** をクリックします。
+SSL 証明書をアップロードするには、Web アプリの左側のナビゲーションで **[SSL 設定]** をクリックします。
 
 **[証明書のアップロード]** をクリックします。 
 
 **[PFX 証明書ファイル]** で、PFX ファイルを選択します。 **[証明書のパスワード]** で、PFX ファイルのエクスポート時に作成したパスワードを入力します。
 
-**[アップロード]**をクリックします。
+**[アップロード]** をクリックします。
 
 ![証明書のアップロード](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
-App Service による証明書のアップロードが完了すると、**[SSL 証明書]** ページにアップロードした証明書が表示されます。
+App Service による証明書のアップロードが完了すると、**[SSL 設定]** ページにアップロードした証明書が表示されます。
 
 ![アップロードされた証明書](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
@@ -174,9 +139,9 @@ App Service による証明書のアップロードが完了すると、**[SSL �
 >
 >
 
-**[SSL Type] \(SSL の種類)** で、**[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** ベースの SSL を使用するか IP ベースの SSL を使用するかを選択します。
+**[SSL Type] \(SSL の種類)** で、**[Server Name Indication (SNI)](https://en.wikipedia.org/wiki/Server_Name_Indication)** ベースの SSL を使用するか IP ベースの SSL を使用するかを選択します。
 
-- **SNI ベースの SSL** - SNI ベースの SSL バインドを複数追加することができます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](http://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。
+- **SNI ベースの SSL** - SNI ベースの SSL バインドを複数追加することができます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。
 - **IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 複数のドメインを保護するには、同じ SSL 証明書を使用してすべてのドメインを保護する必要があります。 これは、SSL バインドの従来のオプションです。
 
 **[Add Binding] \(バインドの追加)** をクリックします。
@@ -212,19 +177,37 @@ Web アプリの **[カスタム ドメイン]** ページが、新規の専用 
 
 <a name="bkmk_enforce"></a>
 
+## <a name="renew-certificates"></a>証明書の更新
+
+バインディングを削除すると、着信 IP アドレスが変化する場合があります。そのバインディングが IP ベースであっても同様です。 IP ベースのバインディングに既に存在する証明書を更新するときには、このことが特に重要となります。 アプリの IP アドレスに変更が生じないようにするには、次の手順に従います。
+
+1. 新しい証明書をアップロードします。
+2. 古い証明書を削除せずに、新しい証明書を目的のカスタム ドメインにバインドします。 これは、古い証明書を削除する代わりに、バインディングを置き換える操作となります。
+3. 古い証明書を削除します。 
+
 ## <a name="enforce-https"></a>HTTPS の適用
 
 既定では、どなたでも引き続き HTTP を使用して Web アプリにアクセスできます。 すべての HTTP 要求を HTTPS ポートにリダイレクトできます。
 
-Web アプリ ページで、左側のナビゲーションにある **[カスタム ドメイン]** を選択します。 その後、**[HTTPS のみ]** で、**[On]** を選択します。
+Web アプリ ページで、左側のナビゲーションにある **[SSL 設定]** を選択します。 その後、**[HTTPS のみ]** で、**[On]** を選択します。
 
 ![HTTPS の適用](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
-操作が完了すると、アプリを指定する HTTP URL のいずれかに移動します。 For example:
+操作が完了すると、アプリを指定する HTTP URL のいずれかに移動します。 例: 
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
 - `http://www.contoso.com`
+
+## <a name="enforce-tls-versions"></a>TLS バージョンを適用する
+
+アプリでは既定で [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2 が有効です。これは、[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) などの業界標準で推奨されている TLS レベルです。 異なる TLS バージョンを適用するには、次の手順を実行します。
+
+Web アプリ ページで、左側のナビゲーションにある **[SSL 設定]** を選択します。 次に、**[TLS version]\(TLS バージョン\)** で、必要な最低限の TLS バージョンを選択します。 この設定により、受信呼び出しのみが制御されます。 
+
+![TLS 1.1/1.2 の適用](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
+
+操作が完了すると、アプリは下位の TLS バージョンでの接続をすべて拒否します。
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
@@ -254,6 +237,15 @@ az webapp config ssl bind \
     --ssl-type SNI \
 ```
 
+次のコマンドを実行すると、TLS の最低バージョンが強制的に 1.2 になります。
+
+```bash
+az webapp config set \
+    --name <app_name> \
+    --resource-group <resource_group_name>
+    --min-tls-version 1.2
+```
+
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 次のコマンドは、エクスポートした PFX ファイルをアップロードし、SNI ベースの SSL バインドを追加します。
@@ -268,23 +260,27 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>パブリック証明書 (省略可能)
-[パブリック証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)は Web アプリにアップロードできます。 App Service Environment でも、アプリのパブリック証明書をご利用いただけます。 LocalMachine の証明書ストアに証明書を格納する必要がある場合は、App Service Enviroment で Web アプリを使用する必要があります。 詳細については、[Web アプリに合わせてパブリック証明書を構成する方法](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)に関するページをご覧ください。
+アプリがクライアントとしてリモート リソースにアクセスする必要があり、リモート リソースが証明書認証を必要とする場合は、[パブリック証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)を Web アプリにアップロードできます。 パブリック証明書は、アプリの SSL バインディングには必要ありません。
+
+アプリにパブリック証明書を読み込んで使用する方法の詳細については、「[Azure App Service のアプリケーション コードに SSL 証明書を使用する](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load)」を参照してください。 App Service Environment でも、アプリでパブリック証明書を使用することができます。 LocalMachine の証明書ストアに証明書を格納する必要がある場合は、App Service Enviroment で Web アプリを使用する必要があります。 詳細については、[Web アプリに合わせてパブリック証明書を構成する方法](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)に関するページをご覧ください。
 
 ![パブリック証明書のアップロード](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * アプリの価格レベルをアップグレードする
-> * カスタム SSL 証明書を App Service にバインドする
-> * アプリに HTTPS を適用する
-> * スクリプトで SSL 証明書のバインドを自動化する
+> * カスタム証明書を App Service にバインドする
+> * 証明書の更新
+> * HTTPS の適用
+> * TLS 1.1/1.2 の適用
+> * スクリプトを使って TLS 管理を自動化する
 
 次のチュートリアルに進み、Azure Content Delivery Network の使用方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [Azure App Service に Content Delivery Network (CDN) を追加する](app-service-web-tutorial-content-delivery-network.md)
+> [Azure App Service に Content Delivery Network (CDN) を追加する](../cdn/cdn-add-to-web-app.md)
 
 詳細については、「[Use an SSL certificate in your application code in Azure App Service (Azure App Service の SSL 証明書を購入して構成する)](app-service-web-ssl-cert-load.md)」をご覧ください。

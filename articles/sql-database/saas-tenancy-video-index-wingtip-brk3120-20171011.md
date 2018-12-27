@@ -2,24 +2,28 @@
 title: インデックス付きビデオ、Azure SaaS SQL アプリ | Microsoft Docs
 description: この記事では、2017 年 10 月 11 日に開催された Ignite カンファレンスで公開された、SaaS DB テナント アプリの設計に関する 81 分間のビデオのさまざまな時点のインデックスを示します。 興味のある部分にスキップできます。 少なくとも 3 つのパターンについて説明されています。 開発と管理を簡略化する Azure の機能が説明されています。
 services: sql-database
-ms.date: 04/01/2018
 ms.service: sql-database
-ms.reviewer: billgib
-ms.topic: article
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
+ms.reviewer: billgib
 manager: craigg
-ms.openlocfilehash: 7dcd4681833f227f32534ae3053b7b482bb813bc
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.date: 05/14/2018
+ms.openlocfilehash: b472baf77cc8f253337aa0780321a6e7dd3fecac
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056691"
 ---
-# <a name="video-indexed-and-annotated-for-mulit-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスおよび注釈付きのビデオ
+# <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスと注釈付きのビデオ
 
 この記事は、SaaS テナント モデルまたはパターンに関する 81 分間のビデオの時間位置への注釈付きインデックスです。 この記事から、ビデオの後方や前方の興味のある位置にスキップできます。 ビデオでは、Azure SQL Database でのマルチテナント データベース アプリケーションに関する主要な設計オプションが説明されています。 ビデオには、デモ、管理コードのチュートリアル、および場合によってはドキュメントより詳細な経験に基づく情報が含まれます。
 
-ビデオでは、以下のドキュメントの情報が詳しく説明されています。 
+ビデオでは、以下のドキュメントの情報が詳しく説明されています。
 - *概念:* [マルチテナント SaaS データベース テナント パターン][saas-concept-design-patterns-563e]
 - *チュートリアル:* [Wingtip Tickets SaaS アプリケーションのデプロイ][saas-how-welcome-wingtip-app-679t]
 
@@ -59,8 +63,8 @@ ms.lasthandoff: 04/06/2018
 - [17.正規のハイブリッド マルチテナント SaaS アプリ、0:47:33](#anchor-image-wtip-min04733)
 - [18.Wingtip SaaS サンプル アプリ、0:48:10](#anchor-image-wtip-min04810)
 - [19.チュートリアルで調査されているシナリオとパターン、0:49:10](#anchor-image-wtip-min04910)
-- [20.チュートリアルと Github リポジトリのデモ、0:50:18](#anchor-image-wtip-min05018)
-- [21.Github リポジトリ Microsoft/WingtipSaaS、0:50:38](#anchor-image-wtip-min05038)
+- [20.チュートリアルと GitHub リポジトリのデモ、0:50:18](#anchor-image-wtip-min05018)
+- [21.GitHub リポジトリ Microsoft/WingtipSaaS、0:50:38](#anchor-image-wtip-min05038)
 - [22.パターンの調査、0:56:20](#anchor-image-wtip-min05620)
 - [23.テナントのプロビジョニングとオンボード、0:57:44](#anchor-image-wtip-min05744)
 - [24.テナントとアプリケーションの接続のプロビジョニング、0:58:58](#anchor-image-wtip-min05858)
@@ -195,13 +199,13 @@ ms.lasthandoff: 04/06/2018
 
 
 &nbsp; <a name="anchor-image-wtip-min05018"/>
-#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20.チュートリアルと Github リポジトリのデモ、0:50:12
-[![チュートリアルと Github リポジトリのデモ][image-wtip-min05018-demo-tutorials-github]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3012)
+#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20.チュートリアルと GitHub リポジトリのデモ、0:50:12
+[![チュートリアルと GitHub リポジトリのデモ][image-wtip-min05018-demo-tutorials-github]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3012)
 
 
 &nbsp; <a name="anchor-image-wtip-min05038"/>
-#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21.Github リポジトリ Microsoft/WingtipSaaS、0:50:32
-[![Github リポジトリ Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
+#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21.GitHub リポジトリ Microsoft/WingtipSaaS、0:50:32
+[![GitHub リポジトリ Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
 
 
 &nbsp; <a name="anchor-image-wtip-min05620"/>
@@ -294,10 +298,10 @@ ms.lasthandoff: 04/06/2018
 
 - *チュートリアル:* [Wingtip Tickets SaaS アプリケーションのデプロイ][saas-how-welcome-wingtip-app-679t]
 
-- Wingtip Tickets SaaS テナント アプリケーションのさまざまなバージョンの Github リポジトリ:
-    - [Github リポジトリ - スタンドアロン アプリケーション モデル用][github-wingtip-standaloneapp].
-    - [Github リポジトリ - テナントごとの DB モデル][github-wingtip-dbpertenant].
-    - [Github リポジトリ - マルチテナント DB モデル][github-wingtip-multitenantdb].
+- Wingtip Tickets SaaS テナント アプリケーションのさまざまなバージョンの GitHub リポジトリ:
+    - [GitHub リポジトリ - スタンドアロン アプリケーション モデル用][github-wingtip-standaloneapp].
+    - [GitHub リポジトリ - テナントごとの DB モデル][github-wingtip-dbpertenant].
+    - [GitHub リポジトリ - マルチテナント DB モデル][github-wingtip-multitenantdb].
 
 
 
@@ -350,9 +354,9 @@ ms.lasthandoff: 04/06/2018
 
 [image-wtip-min04910-scenarios-tutorials]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min04910-scenarios-patterns-explored-tutorials.png "チュートリアルで調査されているシナリオとパターン"
 
-[image-wtip-min05018-demo-tutorials-github]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05018-demo-saas-tutorials-github-repo.png "チュートリアルと Github リポジトリのデモ"
+[image-wtip-min05018-demo-tutorials-github]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05018-demo-saas-tutorials-github-repo.png "チュートリアルと GitHub リポジトリのデモ"
 
-[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "Github リポジトリ Microsoft/WingtipSaaS"
+[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "GitHub リポジトリ Microsoft/WingtipSaaS"
 
 [image-wtip-min05620-exploring-patterns]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05620-exploring-patterns-tutorials.png "パターンの調査"
 

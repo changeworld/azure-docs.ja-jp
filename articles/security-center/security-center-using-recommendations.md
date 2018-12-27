@@ -1,24 +1,25 @@
 ---
-title: "Azure Security Center の推奨事項を使用してセキュリティを強化する |Microsoft Docs"
+title: Azure Security Center の推奨事項を使用してセキュリティを強化する |Microsoft Docs
 description: " セキュリティ ポリシーと Azure Security Center の推奨事項を使用して、セキュリティ攻撃を軽減する方法を説明します。 "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
-ms.author: terrylan
-ms.openlocfilehash: 0616f5e501324bfd821c1455ce234602f1fcf1bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rkarlin
+ms.openlocfilehash: d496f3f28cee711109c5c200102d48482bf6cd9c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340697"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
 セキュリティ ポリシーを構成し、Azure Security Center によって提供される推奨事項を実装することで、セキュリティに関する重大なイベントの可能性を低減できます。 この記事では、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します。
@@ -29,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 >
 
 ## <a name="managing-security-recommendations"></a>セキュリティ管理に関する推奨事項
-セキュリティ ポリシーは、指定されたサブスクリプションまたはリソース グループ内のリソースに推奨されるコントロールのセットを定義します。 Security Center では、セキュリティに関する会社の要件に合わせてポリシーを定義できます。 詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」を参照してください。
+セキュリティ ポリシーは、指定されたサブスクリプションまたはリソース グループ内のリソースに推奨されるコントロールのセットを定義します。 Security Center では、セキュリティに関する会社の要件に合わせてポリシーを定義できます。 詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md)」を参照してください。
 
 リソース グループに対するセキュリティ ポリシーは、サブスクリプション レベルから継承されます。
 
@@ -106,7 +107,7 @@ Jeff は最後に、優先度の低い推奨事項 **[Remediate OS vulnerabiliti
 ## <a name="conclusion"></a>まとめ
 Security Center の推奨事項を監視することにより、攻撃が行われる前にセキュリティの脆弱性を排除できます。 Security Center のセキュリティ ポリシーで保護を実装および維持することによって、セキュリティ インシデントを回避できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このシナリオでは、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明しました。 攻撃を受ける前にインシデント対応計画を策定する方法については、[インシデント対応シナリオ](security-center-incident-response.md)を参照してください。
 
 Security Center の詳細については、次の記事をご覧ください。
@@ -116,7 +117,7 @@ Security Center の詳細については、次の記事をご覧ください。
 * [セキュリティ イベントの監視と処理](security-center-events-dashboard.md) - 長期間にわたって収集されるセキュリティ イベントを監視し、処理する方法について説明します。
 * [パートナー ソリューションの監視](security-center-partner-solutions.md) -- パートナー ソリューションの正常性状態を監視する方法について説明します。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
 [1]: ./media/security-center-using-recommendations/security-center-policy-inheritance.png

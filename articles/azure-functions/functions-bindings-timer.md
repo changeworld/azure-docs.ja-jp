@@ -3,25 +3,22 @@ title: Azure Functions のタイマー トリガー
 description: Azure Functions でタイマー トリガーを使用する方法について説明します。
 services: functions
 documentationcenter: na
-author: tdykstra
-manager: cfowler
-editor: ''
-tags: ''
+author: craigshoemaker
+manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 02/27/2017
-ms.author: tdykstra
+ms.date: 09/08/2018
+ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 89469af2b1d02ef00fc347e47719956885e7f142
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6589a90f6eea2bfd7188e89b701233b37c162d54
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978767"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -29,9 +26,15 @@ ms.lasthandoff: 03/28/2018
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>パッケージ
+## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-タイマー トリガーは、[Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージで提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub リポジトリにあります。
+タイマー トリガーは、[Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン 2.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub リポジトリにあります。
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
+
+タイマー トリガーは、[Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -43,6 +46,7 @@ ms.lasthandoff: 03/28/2018
 * [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---java-example)
 
 ### <a name="c-example"></a>C# の例
 
@@ -50,13 +54,13 @@ ms.lasthandoff: 03/28/2018
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
-public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
 {
     if(myTimer.IsPastDue)
     {
-        log.Info("Timer is running late!");
+        log.LogInformation("Timer is running late!");
     }
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 }
 ```
 
@@ -78,13 +82,13 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWr
 C# スクリプト コードを次に示します。
 
 ```csharp
-public static void Run(TimerInfo myTimer, TraceWriter log)
+public static void Run(TimerInfo myTimer, ILogger log)
 {
     if(myTimer.IsPastDue)
     {
-        log.Info("Timer is running late!");
+        log.LogInformation("Timer is running late!");
     }
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}" );  
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}" );  
 }
 ```
 
@@ -106,11 +110,11 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 F# スクリプト コードを次に示します。
 
 ```fsharp
-let Run(myTimer: TimerInfo, log: TraceWriter ) =
+let Run(myTimer: TimerInfo, log: ILogger ) =
     if (myTimer.IsPastDue) then
-        log.Info("F# function is running late.")
+        log.LogInformation("F# function is running late.")
     let now = DateTime.Now.ToLongTimeString()
-    log.Info(sprintf "F# function executed at %s!" now)
+    log.LogInformation(sprintf "F# function executed at %s!" now)
 ```
 
 ### <a name="javascript-example"></a>JavaScript の例
@@ -128,7 +132,7 @@ let Run(myTimer: TimerInfo, log: TraceWriter ) =
 }
 ```
 
-JavaScript スクリプト コードを次に示します。
+JavaScript コードを次に示します。
 
 ```JavaScript
 module.exports = function (context, myTimer) {
@@ -136,12 +140,27 @@ module.exports = function (context, myTimer) {
 
     if(myTimer.isPastDue)
     {
-        context.log('Node.js is running late!');
+        context.log('Node is running late!');
     }
-    context.log('Node.js timer trigger function ran!', timeStamp);   
+    context.log('Node timer trigger function ran!', timeStamp);   
 
     context.done();
 };
+```
+
+### <a name="java-example"></a>Java の例
+
+次の例の関数は、5 分ごとにトリガーして実行します。 関数の `@TimerTrigger` 注釈では、[CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)と同じ文字列形式を使用してスケジュールが定義されています。
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
 ```
 
 ## <a name="attributes"></a>属性
@@ -152,13 +171,13 @@ module.exports = function (context, myTimer) {
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
-public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
 {
     if (myTimer.IsPastDue)
     {
-        log.Info("Timer is running late!");
+        log.LogInformation("Timer is running late!");
     }
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 }
  ```
 
@@ -171,11 +190,14 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWr
 |**type** | 該当なし | "timerTrigger" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "in" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし | 関数コード内のタイマー オブジェクトを表す変数の名前。 | 
-|**schedule**|**ScheduleExpression**|[CRON 式](#cron-expressions)または [TimeSpan](#timespan) 値。 `TimeSpan` は、App Service プランで実行している関数アプリに対してのみ使うことができます。 スケジュール式をアプリ設定に含めて、たとえば "%NameOfAppSettingWithScheduleExpression%" のように、**%** 記号で囲まれたアプリ設定名にこのプロパティを設定できます。 |
-|**runOnStartup**|**runOnStartup**|`true` の場合、関数はランタイムの開始時に呼び出されます。 たとえば、ランタイムが開始するのは、関数アプリが非アクティブになってアイドル状態に移行した後で起動したとき、 関数が変化したために関数アプリが再起動するとき、関数アプリがスケールアウトするときなどです。したがって、予期しない時にコードが実行される可能性が高くなるので、**runOnStartup** を `true` に設定することはほとんどありません。 タイマー スケジュールの外部で関数をトリガーする必要がある場合は、異なるトリガーの種類で 2 番目の関数を作成し、2 つの関数の間でコードを共有します。 たとえば、展開時にトリガーするには、展開が完了したら HTTP 要求を行って 2 番目の関数を呼び出すように、[展開をカスタマイズする](https://github.com/projectkudu/kudu/wiki/Customizing-deployments)ことができます。|
+|**schedule**|**ScheduleExpression**|[CRON 式](#cron-expressions)または [TimeSpan](#timespan) 値。 `TimeSpan` は、App Service プランで実行している関数アプリに対してのみ使うことができます。 スケジュール式をアプリ設定に含めて、たとえば "%ScheduleAppSetting%" のように、**%** 記号で囲まれたアプリ設定名にこのプロパティを設定できます。 |
+|**runOnStartup**|**runOnStartup**|`true` の場合、関数はランタイムの開始時に呼び出されます。 たとえば、ランタイムが開始するのは、関数アプリが非アクティブになってアイドル状態に移行した後で起動したとき、 関数が変化したために関数アプリが再起動するとき、関数アプリがスケールアウトするときなどです。`true` に設定されている場合でも、特に運用環境では、**runOnStartup** はほとんど呼び出されることはありません。 |
 |**useMonitor**|**UseMonitor**|`true` または `false` に設定し、スケジュールを監視する必要があるかどうかを示します。 スケジュールの監視はスケジュールの発生を維持し、関数アプリのインスタンスが再起動するときでもスケジュールが正しく維持されることを保証するのに役立ちます。 このプロパティを明示的に設定しない場合、繰り返し間隔が 1 分より長いスケジュールの既定値は `true` です。 1 分間に 2 回以上トリガーするスケジュールの既定値は `false` です。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+> [!CAUTION]
+> 運用環境では、**runOnStartup** を `true` に設定しないことをお勧めします。 この設定を使用すると、まったく予期できないときにコードが実行されます。 特定の運用環境の設定では、これらの追加の実行によって、従量課金プランでホストされるアプリのコストが大幅に高くなる可能性があります。 たとえば、**runOnStartup** を有効にすると、ご利用の関数アプリがスケーリングされるたびに、トリガーが呼び出されます。 **runOnStartup** を運用環境で有効にする前に、ご利用の関数の運用環境での動作を完全に理解していることを確認してください。   
 
 ## <a name="usage"></a>使用法
 
@@ -198,7 +220,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWr
 
 ## <a name="cron-expressions"></a>CRON 式 
 
-Azure Functions のタイマー トリガーの CRON 式には、6 つのフィールドが含まれます。 
+Azure Functions では、CRON 式を解釈するのに [NCronTab](https://github.com/atifaziz/NCrontab) ライブラリが使用されます。 CRON 式には、次の 6 つのフィールドが含まれます。
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
@@ -212,19 +234,26 @@ Azure Functions のタイマー トリガーの CRON 式には、6 つのフィ�
 |値のセット (`,` 演算子)|<nobr>"5,8,10 * * * * *"</nobr>|hh:mm:05、hh:mm:08、hh:mm:10。hh:mm は毎時の毎分です (1 分間に 3 回)|
 |間隔値 (`/` 演算子)|<nobr>"0 */5 * * * *"</nobr>|hh:05:00、hh:10:00、hh:15:00、... hh:55:00 まで。hh は毎時です (1 時間に 12 回)|
 
+月や曜日を指定するには、数値、名前、または名前の省略形を使用できます。
+
+* 曜日については、数値は 0 から 6 で指定します (0 は日曜日です)。
+* 名前は英語で指定します。 例: `Monday`, `January`。
+* 名前の大文字と小文字は区別されません。
+* 名前は省略形でも指定できます。 省略形は 3 文字にすることをお勧めします。  例: `Mon`, `Jan`。 
+
 ### <a name="cron-examples"></a>CRON の例
 
 Azure Functions のタイマー トリガーに使用できる CRON 式の例をいくつか示します。
 
 |例|トリガーのタイミング  |
 |---------|---------|
-|"0 */5 * * * *"|5 分ごとに 1 回|
-|"0 0 * * * *"|毎正時に 1 回|
-|"0 0 */2 * * *"|2 時間に 1 回|
-|"0 0 9-17 * * *"|午前 9 時から午後 5 時ま、1 時間に 1 回|
-|"0 30 9 * * *"|毎日午前 9 時 30 分|
-|"0 30 9 * * 1-5"|平日の毎日午前 9 時 30 分|
-
+|`"0 */5 * * * *"`|5 分ごとに 1 回|
+|`"0 0 * * * *"`|毎正時に 1 回|
+|`"0 0 */2 * * *"`|2 時間に 1 回|
+|`"0 0 9-17 * * *"`|午前 9 時から午後 5 時ま、1 時間に 1 回|
+|`"0 30 9 * * *"`|毎日午前 9 時 30 分|
+|`"0 30 9 * * 1-5"`|平日の毎日午前 9 時 30 分|
+|`"0 30 9 * Jan Mon"`|1 月の毎週月曜日の午前 9時 30分|
 >[!NOTE]   
 >CRON 式の例はオンラインで見つかりますが、その多くでは `{second}` フィールドが省略されています。 それらのいずれかをコピーして、欠けている `{second}` フィールドを追加します。 通常、そのフィールドにはアスタリスクではなく 0 を設定します。
 
@@ -237,14 +266,16 @@ CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) �
 たとえば、"*東部標準時*" は UTC-05:00 です。 タイマー トリガーが毎日東部標準時の 10:00 AM に発生するように設定するには、UTC タイム ゾーンを考慮した次の CRON 式を使用できます。
 
 ```json
-"schedule": "0 0 15 * * *",
+"schedule": "0 0 15 * * *"
 ``` 
 
 または、Function App のアプリ設定を `WEBSITE_TIME_ZONE` という名前で作成し、その値を "**東部標準時**" に設定します。  そして、次の CRON 式を使います。 
 
 ```json
-"schedule": "0 0 10 * * *",
+"schedule": "0 0 10 * * *"
 ``` 
+
+`WEBSITE_TIME_ZONE` を使用すると、夏時間などの特定のタイムゾーンでの時間変更に対応するように、時刻が調整されます。 
 
 ## <a name="timespan"></a>timespan
 
@@ -258,7 +289,7 @@ CRON 式とは異なり、`TimeSpan` の値は各関数呼び出しの間の時�
 |---------|---------|
 |"01:00:00" | 1 時間ごと        |
 |"00:01:00"|1 分ごと         |
-|"24:00:00" | 24 日ごと        |
+|"24:00:00" | 毎日        |
 
 ## <a name="scale-out"></a>スケールアウト
 
@@ -271,6 +302,10 @@ CRON 式とは異なり、`TimeSpan` の値は各関数呼び出しの間の時�
 ## <a name="retry-behavior"></a>再試行の動作
 
 キュー トリガーとは異なり、タイマー トリガーは関数が失敗した後で再試行しません。 失敗した関数は、次のスケジュール時刻まで再び呼び出されることはありません。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+タイマー トリガーが期待どおりに機能しない場合の対処方法については、[タイマー トリガーが設定された関数が発生しない問題の調査と報告](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

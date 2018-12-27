@@ -1,24 +1,21 @@
 ---
-title: "Ruby から Queue Storage を使用する方法 | Microsoft Docs"
-description: "Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。 コード サンプルは Ruby で記述されています。"
+title: Ruby から Queue Storage を使用する方法 | Microsoft Docs
+description: Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。 コード サンプルは Ruby で記述されています。
 services: storage
-documentationcenter: ruby
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 59c2d81b-db9c-46ee-ade2-2f0caae6b1e6
 ms.service: storage
-ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: 0d7624d47a6924a5c8dec66b47ac0887ff493879
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.component: queues
+ms.openlocfilehash: 67a5dc0eddb6deb51ec69c68c48d5edf308cf43e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231568"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Ruby から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -62,7 +59,7 @@ Azure ポータルでクラシックまたは Resource Manager ストレージ �
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 使用するストレージ アカウントを表示します。
-3. 右側の [設定] ブレードで、 **[アクセス キー]**をクリックします。
+3. 右側の [設定] ブレードで、 **[アクセス キー]** をクリックします。
 4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。 このいずれかを使用できます。 
 5. コピー アイコンをクリックしてキーをクリップボードにコピーします。 
 
@@ -156,7 +153,7 @@ azure_queue_service.delete_queue("test-queue")
 ## <a name="next-steps"></a>次の手順
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
-* [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure Storage チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)
 * GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-この記事で説明されている Azure Queue サービスと、「[Service Bus キューの使用方法](/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Azure キューと Service Bus キューの比較](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)」をご覧ください。
+この記事で説明されている Azure Queue サービスと、「[Service Bus キューの使用方法](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Azure キューと Service Bus キューの比較](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)」をご覧ください。

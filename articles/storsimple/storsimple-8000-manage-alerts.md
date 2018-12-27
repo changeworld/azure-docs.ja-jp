@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ デバイスのアラートの表示と管理 | Microsoft Docs"
-description: "StorSimple アラートの状態と重大度、アラート通知の構成方法、および StorSimple Device Manager サービスを使用してアラートを管理する方法について説明します。"
+title: StorSimple 8000 シリーズ デバイスのアラートの表示と管理 | Microsoft Docs
+description: StorSimple アラートの状態と重大度、アラート通知の構成方法、および StorSimple Device Manager サービスを使用してアラートを管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27745780"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple Device Manager サービスを使用して StorSimple アラートを表示および管理する
 
@@ -80,7 +81,7 @@ StorSimple デバイスごとに、アラート状態について電子メール
    > [!NOTE]
    > テスト通知のメッセージを送信できない場合、StorSimple デバイス マネージャー サービスにその旨を通知するエラー メッセージが表示されます。 数分待ってから、再度テスト通知のメッセージを送信してみてください。 
 
-5. 構成が完了したら、**[保存]** をクリックします。 確認を求められたら、 **[はい]**をクリックします。
+5. 構成が完了したら、**[保存]** をクリックします。 確認を求められたら、 **[はい]** をクリックします。
 
      ![Alerts test notification email sent](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
 
@@ -98,7 +99,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 情報を Microsoft サポートに送信する必要がある場合は、テキスト ファイルにアラートの詳細をコピーできます。 推奨事項に従い、オンプレミスのアラートの状態が解決したら、**[アラート]** ブレードでアラートを選択してから **[クリア]** をクリックし、デバイスからアラートをクリアする必要があります。 複数のアラートをクリアするには、各アラートを選択し、**[アラート]** 列以外の任意の列をクリックします。クリアするアラートをすべて選択したら、**[クリア]** をクリックします。 一部のアラートは、問題が解決した場合や、システムによりアラートが新しい情報に更新された場合に、自動的にクリアされます。
 
-**[クリア]**をクリックした場合、問題を解決する際に実行した手順とアラートについてのコメントを追加できます。 一部のイベントは、新しい情報で別のイベントがトリガーされると、システムによってクリアされます。 その場合は、次のメッセージが表示されます。
+**[クリア]** をクリックした場合、問題を解決する際に実行した手順とアラートについてのコメントを追加できます。 一部のイベントは、新しい情報で別のイベントがトリガーされると、システムによってクリアされます。 その場合は、次のメッセージが表示されます。
 
 ![Clear alert message](./media/storsimple-manage-alerts/admin_alerts_system_clear.png)
 

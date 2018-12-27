@@ -1,23 +1,25 @@
 ---
-title: 'Azure Active Directory B2C: 検証としての REST API 要求の交換 | Microsoft Docs'
-description: Azure Active Directory B2C のカスタム ポリシーに関するトピック
+title: Azure Active Directory B2C での検証としての REST API 要求の交換 | Microsoft Docs
+description: Azure Active Directory B2C のカスタム ポリシーに関するトピック。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
-ms.openlocfilehash: 50968cb96a5ef2cf8fe450899e04d7856e8d4dcc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 0ac9b98a9dfe06492775481cd590bfb4d0db4b55
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542584"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>チュートリアル: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 ID 開発者は、Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework (IEF) を使用して、RESTful API との対話をユーザー体験に統合できます。  
 
@@ -116,7 +118,7 @@ IEF は、Azure 関数が返す `userMessage` 要求を予期しています。 
 
 1. TrustFrameworkBase.xml ファイルを開き、`<TechnicalProfile Id="SelfAsserted-ProfileUpdate">` を検索します。
 2. この技術プロファイルの構成を確認します。 ユーザーとの交換が、ユーザーに対する要求 (入力要求) とセルフ アサート プロバイダーから返されることが期待される要求 (出力要求) として、どのように定義されているかを確認します。
-3. `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate` を検索します。このプロファイルは、オーケストレーション手順 4 `<UserJourney Id="ProfileEdit">` として呼び出されます。
+3. `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate` を検索します。このプロファイルは、オーケストレーション手順 5 `<UserJourney Id="ProfileEdit">` として呼び出されます。
 
 ## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>手順 4: プロファイルの編集 RP ポリシー ファイルをアップロードしてテストする
 

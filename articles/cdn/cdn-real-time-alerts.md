@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN のリアルタイム アラート | Microsoft Docs"
-description: "Microsoft Azure CDN のリアルタイム アラート。 リアルタイム アラートは、CDN プロファイル内のエンドポイントのパフォーマンスに関する通知を提供します。"
+title: Azure CDN のリアルタイム アラート | Microsoft Docs
+description: Microsoft Azure CDN のリアルタイム アラート。 リアルタイム アラートは、CDN プロファイル内のエンドポイントのパフォーマンスに関する通知を提供します。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1e85b809-e1a9-4473-b835-69d1b4ed3393
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22998327"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Microsoft Azure CDN のリアルタイム アラート
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -40,7 +41,7 @@ ms.lasthandoff: 10/11/2017
     ![[CDN プロファイル] の [管理] ボタン](./media/cdn-real-time-alerts/cdn-manage-btn.png)
    
     CDN 管理ポータルが開きます。
-3. **[分析]** タブにマウス ポインターを合わせ、次に **[Real-Time Stats (リアルタイム統計情報)]** フライアウトにポインターを合わせます。  **[Real-Time Alerts (リアルタイム アラート)]**をクリックします。
+3. **[分析]** タブにマウス ポインターを合わせ、次に **[Real-Time Stats (リアルタイム統計情報)]** フライアウトにポインターを合わせます。  **[Real-Time Alerts (リアルタイム アラート)]** をクリックします。
    
     ![CDN management portal](./media/cdn-real-time-alerts/cdn-premium-portal.png)
    
@@ -64,14 +65,14 @@ ms.lasthandoff: 10/11/2017
    > 
 8. **[メトリック]**、**[演算子]**、および **[トリガー値]** を選択して、監視する**式**を作成します。
    
-   * **[メトリック]**では、監視条件の種類を選択します。  **[Bandwidth Mbps (帯域幅 Mbps)]** は、メガビット/秒単位の使用帯域幅の量です。  **[合計接続数]** は、エッジ サーバーへの同時 HTTP 接続の数です。  さまざまなキャッシュ ステータスとステータス コードの定義については、「[Azure CDN Cache Status Codes (Azure CDN のキャッシュ ステータス コード)](https://msdn.microsoft.com/library/mt759237.aspx)」と「[Azure CDN HTTP Status Codes (Azure CDN の HTTP ステータス コード)](https://msdn.microsoft.com/library/mt759238.aspx)」を参照してください
+   * **[メトリック]** では、監視条件の種類を選択します。  **[Bandwidth Mbps (帯域幅 Mbps)]** は、メガビット/秒単位の使用帯域幅の量です。  **[合計接続数]** は、エッジ サーバーへの同時 HTTP 接続の数です。  さまざまなキャッシュ ステータスとステータス コードの定義については、「[Azure CDN Cache Status Codes (Azure CDN のキャッシュ ステータス コード)](https://msdn.microsoft.com/library/mt759237.aspx)」と「[Azure CDN HTTP Status Codes (Azure CDN の HTTP ステータス コード)](https://msdn.microsoft.com/library/mt759238.aspx)」を参照してください
    * **[演算子]** は、メトリックとトリガー値の間のリレーションシップを確立する算術演算子です。
    * **[トリガー値]** は、通知の送信前に満たす必要があるしきい値です。
      
      次の例で作成される式は、404 状態コードの数が 25 を超えると通知が送信されることを示しています。
      
      ![リアルタイム アラートのサンプル式](./media/cdn-real-time-alerts/cdn-expression.png)
-9. **[間隔]**に、式を評価する頻度を入力します。
+9. **[間隔]** に、式を評価する頻度を入力します。
 10. **[Notify on (通知タイミング)]** ドロップダウンで、式が true のときに通知を行うタイミングを選択します。
     
     * **[Condition Start]\(条件開始時\)** は、指定された条件を最初に検出したときに通知を送信することを示します。

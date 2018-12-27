@@ -1,23 +1,22 @@
 ---
-title: "Azure Cosmos DB と HDInsight でのラムダ アーキテクチャ (Apache Spark) | Microsoft Docs"
-description: "この記事では、Azure Cosmos DB、HDInsight、Spark を使ってラムダ アーキテクチャを実装する方法について説明します"
-keywords: "ラムダ アーキテクチャ"
+title: Azure Cosmos DB と HDInsight でのラムダ アーキテクチャ (Apache Spark) | Microsoft Docs
+description: この記事では、Azure Cosmos DB、HDInsight、Spark を使ってラムダ アーキテクチャを実装する方法について説明します
+keywords: ラムダ アーキテクチャ
 services: cosmos-db
-documentationcenter: 
-author: dennyglee
-manager: jhubbard
-editor: 
-ms.assetid: 273aeae9-e31c-4a43-b216-5751c46f212e
+author: tknandu
+manager: kfile
+editor: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: denlee
-ms.openlocfilehash: f88f3fb05495b0f3330d5a4cde7718fe89b2f694
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.author: ramkris
+ms.openlocfilehash: c926c67a330648e09c1fd8133164f64582ad9a34
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701077"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Azure プラットフォームでラムダ アーキテクチャを実装する 
 
@@ -31,17 +30,12 @@ Azure にラムダ アーキテクチャを実装するには、以下のテク�
 
 この記事では、オリジナルのマルチレイヤー設計に基づくラムダ アーキテクチャの基礎と、操作を簡略化する "再設計された" ラムダ アーキテクチャの利点について説明します。  
 
-ラムダ アーキテクチャの概要と、ラムダ アーキテクチャ サンプルで利用可能なリソースについては、次のビデオをご覧ください。
-
-> [!VIDEO https:///channel9.msdn.com/Events/Connect/2017/T135/player]
->
-
 ## <a name="what-is-a-lambda-architecture"></a>ラムダ アーキテクチャとは
 ラムダ アーキテクチャは、[Nathan Marz](https://twitter.com/nathanmarz) が説明しているように、バッチ処理と待機時間高速化のシナリオのための、汎用的でスケーラブルなフォールト トレラントのデータ処理アーキテクチャです。
 
 ![ラムダ アーキテクチャを示す図](./media/lambda-architecture/lambda-architecture-intro.png)
 
-出典: http://lambda-architecture.net/
+ソース: http://lambda-architecture.net/
 
 ラムダ アーキテクチャの基本原理は、[https://lambda-architecture.net](http://lambda-architecture.net/) から提供されている前記の図で説明されているようなものです。
 
@@ -207,7 +201,7 @@ tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
  
 #### <a name="resources"></a>リソース
 
-完全なコード サンプルについては、[azure-cosmosdb-spark/samples/lambda](vhttps://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda) をご覧ください。次のものが含まれます。
+完全なコード サンプルについては、[azure-cosmosdb-spark/samples/lambda](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda) をご覧ください。次のものが含まれます。
 * ラムダ アーキテクチャの再設計 - バッチ レイヤー [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb)
 * ラムダ アーキテクチャの再設計 - バッチからサービス レイヤー [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb)
 

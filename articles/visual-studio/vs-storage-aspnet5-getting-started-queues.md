@@ -2,23 +2,22 @@
 title: Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET Core) | Microsoft Docs
 description: Visual Studio の ASP.NET Core プロジェクトで Azure Queue Storage の使用を開始する方法
 services: storage
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 04977069-5b2d-4cba-84ae-9fb2f5eb1006
-ms.service: storage
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: e2d11102d07eeb151769f81e79abd22dfa1d8734
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 237294c1bc603402c349f7a56f20c34ed8d210fe
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42140988"
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET Core)
 

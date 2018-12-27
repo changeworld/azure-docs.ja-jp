@@ -3,22 +3,23 @@ title: Azure での Linux CentOS データ サイエンス仮想マシンのプ�
 description: 分析と機械学習を行うために、Azure で Linux データ サイエンス仮想マシンを構成および作成します。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: bradsev
-ms.openlocfilehash: 7f683fff142a3654249560ed5299ed3cd7cb9cce
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: gokuma
+ms.openlocfilehash: 3883fc71c099718face38c16897040788fe0c6ab
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246786"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Azure での Linux CentOS データ サイエンス仮想マシンのプロビジョニング
 
@@ -37,7 +38,7 @@ Linux データ サイエンス仮想マシンは、一連のツールがプレ�
   * [Cognitive Toolkit](https://github.com/Microsoft/CNTK): Microsoft Research のディープ ラーニング ソフトウェア ツールキット。
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): オンライン、ハッシュ、allreduce、リダクション、learning2search、アクティブ、対話型学習などの手法をサポートする高速機械学習システム。
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): 迅速かつ正確なブースト ツリー実装を提供するツール。
-  * [Rattle](http://rattle.togaware.com/) (R Analytical Tool To Learn Easily): GUI ベースのデータ探索と R コードの自動生成によるモデリングにより、R でデータ分析と機械学習を簡単に開始できるツール。
+  * [Rattle](https://togaware.com/rattle/) (R Analytical Tool To Learn Easily): GUI ベースのデータ探索と R コードの自動生成によるモデリングにより、R でデータ分析と機械学習を簡単に開始できるツール。
 * Java、Python、node.js、Ruby、PHP の Azure SDK
 * Azure Machine Learning などの Azure サービスで使用する R と Python のライブラリ
 * 開発ツールとエディター (RStudio、PyCharm、IntelliJ、Emacs、gedit、vi)
@@ -46,8 +47,8 @@ Linux データ サイエンス仮想マシンは、一連のツールがプレ�
 データ サイエンスでは、次の一連のタスクを反復処理します。
 
 1. データの検索、読み込み、前処理
-2. モデルの作成とテスト
-3. インテリジェント アプリケーションで使用するためのモデルのデプロイ
+1. モデルの作成とテスト
+1. インテリジェント アプリケーションで使用するためのモデルのデプロイ
 
 データ サイエンティストは、こうしたタスクを行うためにさまざまなツールを使用します。 適切なバージョンのソフトウェアを見つけ、ダウンロードし、コンパイルして、インストールするには、非常に時間がかかる場合があります。
 
@@ -62,16 +63,16 @@ Linux データ サイエンス仮想マシンはそうした問題の大部分�
 Linux データ サイエンス仮想マシンを作成する前に、次を用意する必要があります。
 
 * **Azure サブスクリプション**: これを取得する場合は、 [Azure 無試用版の取得](https://azure.microsoft.com/free/)に関するページを参照してください。
-* **Azure ストレージ アカウント**: Azure ストレージ アカウントを作成するには、 [Azure ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)に関するセクションをご覧ください。 既存のアカウントを使用しない場合は、VM の作成プロセスの一環としてストレージ アカウントを作成することもできます。
+* **Azure ストレージ アカウント**: Azure ストレージ アカウントを作成するには、 [Azure ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)に関するセクションをご覧ください。 既存のアカウントを使用しない場合は、VM の作成プロセスの一環としてストレージ アカウントを作成することもできます。
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンの作成
 Linux データ サイエンス仮想マシンのインスタンスを作成する手順を以下に示します。
 
 1. [Azure ポータル](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vmlinuxdsvm)に一覧表示されている仮想マシンに移動します。
-2. 下部にある **[作成]** をクリックして、ウィザードを起動します。![configure-data-science-vm](./media/linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
-3. 以下のセクションでは、Microsoft データ サイエンス仮想マシンの作成に使用されるウィザードの各ステップ (上の図の右側に列挙) での入力について説明します。 以下は、これらの各ステップを構成するために必要な入力項目です。
+1. 下部にある **[作成]** をクリックして、ウィザードを起動します。![configure-data-science-vm](./media/linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
+1. 以下のセクションでは、Microsoft データ サイエンス仮想マシンの作成に使用されるウィザードの各ステップ (上の図の右側に列挙) での入力について説明します。 以下は、これらの各ステップを構成するために必要な入力項目です。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[基本]**:
+   a. **[基本]**:
    
    * **名前**: 作成するデータ サイエンス サーバーの名前です。
    * **ユーザー名**: 最初のアカウントのサインイン ID。
@@ -86,7 +87,7 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    
    c. **設定**:
    
-   * **ディスクの種類**: ソリッドステート ドライブ (SSD) を使用する場合は、**[Premium]** を選択します。 それ以外の場合は、 **[Standard]**を選択します。
+   * **ディスクの種類**: ソリッドステート ドライブ (SSD) を使用する場合は、**[Premium]** を選択します。 それ以外の場合は、 **[Standard]** を選択します。
    * **ストレージ アカウント**: サブスクリプションに新しい Azure ストレージ アカウントを作成することも、ウィザードの **[基本]** ステップで選択した場所にある既存のストレージ アカウントを使用することもできます。
    * **他のパラメーター**: 通常は既定値を使用します。 既定値以外の値を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
    
@@ -96,7 +97,7 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    
    e. **[購入]**:
    
-   * プロビジョニングを開始するには、 **[購入]**をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。
+   * プロビジョニングを開始するには、 **[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。
 
 プロビジョニングには、10 ～ 20 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
 
@@ -112,7 +113,7 @@ VM を作成したら、SSH を使用してサインインできます。 テキ
 Linux VM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を実行します。
 
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
-2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]**を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
+1. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
      * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
      * **[Login (ログイン)]**: Linux VM のユーザー名。
@@ -262,7 +263,7 @@ VM には、次の Azure ツールがインストールされています。
 [Azure ポータル](https://portal.azure.com) には、プレインストールされている Firefox ブラウザーからアクセスできます。 Azure ポータルでは、Azure リソースを作成、管理、監視できます。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Azure Machine Learning は、予測分析ソリューションを構築、デプロイ、共有できる、完全に管理されたクラウド サービスです。 実験やモデルは、Azure Machine Learning Studio で作成します。 Azure Machine Learning Studio にアクセスするには、データ サイエンス仮想マシン上の Web ブラウザーから [Microsoft Azure Machine Learning](https://studio.azureml.net)にアクセスします。
+Azure Machine Learning は、予測分析ソリューションを構築、デプロイ、共有できる、フル マネージドのクラウド サービスです。 実験やモデルは、Azure Machine Learning Studio で作成します。 Azure Machine Learning Studio にアクセスするには、データ サイエンス仮想マシン上の Web ブラウザーから [Microsoft Azure Machine Learning](https://studio.azureml.net)にアクセスします。
 
 Azure Machine Learning Studio にサインインすると、実験キャンバスにアクセスできるようになります。実験キャンバスでは、機械学習アルゴリズムの論理フローを作成できます。 また、Azure Machine Learning でホストされている Jupyter Notebook にアクセスし、Machine Learning Studio 内の実験をシームレスに操作することもできます。 作成した機械学習モデルを Web サービス インターフェイスにラップすることで、モデルを運用可能な状態にすることができます。 これにより、任意の言語で記述されたクライアントで、機械学習モデルから予測を呼び出すことができます。 詳細については、[Machine Learning のドキュメント](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 
@@ -354,17 +355,17 @@ Rattle を実行するには、グラフィカル デスクトップのサイン
 > 
 > 
 
-1. **[実行]**をクリックします。
-2. サンプルの天候データセットを使用するかどうかをたずねるダイアログが表示されます。 **[Yes (はい)]** をクリックして、サンプルを読み込みます。
-3. **[Model (モデル)]** タブをクリックします。
-4. **[Execute (実行)]** をクリックして、デシジョン ツリーを作成します。
-5. **[Draw (表示)]** をクリックして、デシジョン ツリーを表示します。
-6. **[Forest (フォレスト)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、ランダム フォレストを作成します。
-7. **[Evaluate (評価)]** タブをクリックします。
-8. **[Risk (リスク)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、2 つのリスク (累積) パフォーマンス プロットを表示します。
-9. **[Log (ログ)]** タブをクリックして、これまでの操作の生成済み R コードを表示します 
+1. **[実行]** をクリックします。
+1. サンプルの天候データセットを使用するかどうかをたずねるダイアログが表示されます。 **[Yes (はい)]** をクリックして、サンプルを読み込みます。
+1. **[Model (モデル)]** タブをクリックします。
+1. **[Execute (実行)]** をクリックして、デシジョン ツリーを作成します。
+1. **[Draw (表示)]** をクリックして、デシジョン ツリーを表示します。
+1. **[Forest (フォレスト)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、ランダム フォレストを作成します。
+1. **[Evaluate (評価)]** タブをクリックします。
+1. **[Risk (リスク)]** ラジオ ボタンをクリックし、**[Execute (実行)]** をクリックして、2 つのリスク (累積) パフォーマンス プロットを表示します。
+1. **[Log (ログ)]** タブをクリックして、これまでの操作の生成済み R コードを表示します 
    (Rattle の現在のリリースにはバグがあるため、ログのテキストの *Export this log ...* の前に *#* 文字を挿入する必要があります)。
-10. **[Export (エクスポート)]** ボタンをクリックして、R スクリプト ファイルを *weather_script.R* という名前でホーム フォルダーに保存します。
+1. **[Export (エクスポート)]** ボタンをクリックして、R スクリプト ファイルを *weather_script.R* という名前でホーム フォルダーに保存します。
 
 Rattle と R を終了できます。これで、生成された R スクリプトを変更することも、そのまま使用することもできます。スクリプトは、いつでも実行して、Rattle UI 内で実行されたすべての操作を繰り返すことができます。 これは、特に R の初心者にとって簡単な方法です。この方法では、シンプルなグラフィカル インターフェイスで分析と機械学習をすばやく実行することができ、変更または学習する R のコードを自動的に生成できます。
 

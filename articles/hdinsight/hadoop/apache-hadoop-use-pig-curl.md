@@ -1,35 +1,29 @@
 ---
-title: "REST を使用した HDInsight 内での Hadoop Pig の使用 - Azure | Microsoft Docs"
-description: "REST を使用して Azure HDInsight の Hadoop クラスターで Pig Latin ジョブを実行する方法を説明します。"
+title: UHDInsight 上で REST を使用して Apache Hadoop Pig を使用する - Azure
+description: REST を使用して、Azure HDInsight 上の Apache Hadoop クラスターで Pig Latin ジョブを実行する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ed5e10d1-4f47-459c-a0d6-7ff967b468c4
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/17/2018
-ms.author: larryfr
-ms.openlocfilehash: c2c441d92607a017b4451cd8a06fb78a5e8e7135
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.topic: conceptual
+ms.date: 04/10/2018
+ms.author: hrasheed
+ms.openlocfilehash: cb96933569c18b8c70d8991c9ba19f9f3e1243e6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633701"
 ---
-# <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>REST を使用した HDInsight の Hadoop での Pig ジョブの実行
+# <a name="run-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>REST を使用して HDInsight 上の Apache Hadoop で Pig ジョブを実行する
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Azure HDInsight クラスターに REST を要求して Pig Latin ジョブを実行する方法について説明します。 Curl は、WebHCat REST API を使用して HDInsight とやり取りする方法を示すために使用されます。
+Azure HDInsight クラスターに REST 要求を行うことで、Apache Pig Latin ジョブを実行する方法について説明します。 Curl は、WebHCat REST API を使用して HDInsight とやり取りする方法を示すために使用されます。
 
 > [!NOTE]
-> Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「 [Linux での HDInsight の使用方法](../hdinsight-hadoop-linux-information.md)」をご覧ください。
+> Linux ベースの Apache Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、[Linux ベースの HDInsight のヒント](../hdinsight-hadoop-linux-information.md)に関する記事をご覧ください。
 
 ## <a id="prereq"></a>前提条件
 
@@ -66,7 +60,7 @@ Azure HDInsight クラスターに REST を要求して Pig Latin ジョブを�
     * **-u**: 要求の認証に使用するユーザー名とパスワード
     * **-G**: この要求が GET 要求であることを示します。
 
-     URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、すべての要求において共通です。 パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) のステータスを返すことを示します。
+     URL の最初の部分 **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** は、すべての要求で同じです。 パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) のステータスを返すことを示します。
 
 2. 次のコードを使用して、Pig Latin ジョブをクラスターに送信します。
 

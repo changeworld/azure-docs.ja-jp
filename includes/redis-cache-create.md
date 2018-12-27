@@ -1,36 +1,40 @@
-キャッシュを作成するには、まず [Azure Portal](https://portal.azure.com) にサインインし、**[リソースの作成]** > **[データベース]** > **[Redis Cache]** の順にクリックします。
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: redis-cache
+author: wesmc7777
+ms.service: cache
+ms.topic: include
+ms.date: 03/28/2018
+ms.author: wesmc
+ms.custom: include file
+ms.openlocfilehash: 0f1decae5fb3ec4a07f01c5bff7475f3d73a3cbb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111904"
+---
+1. キャッシュを作成するには、まず [Azure portal](https://portal.azure.com) にサインインします。 **[リソースの作成]** > **[データベース]** > **[Azure Cache for Redis]** を選択します。
 
-> [!NOTE]
-> Azure アカウントがない場合は、数分あれば [Azure アカウントを無料で作成](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero) することができます。
-> 
-> 
+    ![新しいキャッシュ](media/redis-cache-create/redis-cache-new-cache-menu.png)
 
-![新しいキャッシュ](media/redis-cache-create/redis-cache-new-cache-menu.png)
+2. **[New Azure Cache for Redis]\(新規 Azure Cache for Redis\)** で、新しいキャッシュの設定を構成します。
 
-> [!NOTE]
-> キャッシュは、Azure ポータルだけでなく、Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。
-> 
-> * Resource Manager テンプレートを使用してキャッシュを作成する方法については、「 [テンプレートを使用して Redis Cache を作成する](../articles/redis-cache/cache-redis-cache-arm-provision.md)」をご覧ください。
-> * Azure PowerShell を使用してキャッシュを作成する方法については、「 [Azure PowerShell を使用した Azure Redis Cache の管理](../articles/redis-cache/cache-howto-manage-redis-cache-powershell.md)」をご覧ください。
-> * Azure CLI を使用してキャッシュを作成する方法については、「 [Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法](../articles/redis-cache/cache-manage-cli.md)」を参照してください。
-> 
-> 
+    | Setting      | 推奨値  | 説明 |
+    | ------------ |  ------- | -------------------------------------------------- |
+    | **DNS 名** | グローバルに一意の名前 | キャッシュ名。 1 から 63 文字の文字列で、数字、英字、`-` 文字のみを使用する必要があります。 キャッシュ名の先頭と末尾には `-` 文字を使用できません。また、連続する `-` 文字は無効です。  | 
+    | **サブスクリプション** | 該当するサブスクリプション | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
+    | **[リソース グループ]** |  *TestResources* | その中にキャッシュを作成する新しいリソース グループの名前。 アプリのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すると、そのアプリに関連付けられているすべてのリソースが削除されます。 | 
+    | **場所** | 米国東部 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
+    | **[価格レベル](https://azure.microsoft.com/pricing/details/cache/)** |  Basic C0 (250 MB のキャッシュ) |  価格レベルによって、キャッシュに使用できるのサイズ、パフォーマンス、および機能が決まります。 詳細については、[Azure Cache for Redis の概要](../articles/azure-cache-for-redis/cache-overview.md)に関するページを参照してください。 |
+    | **ダッシュボードにピン留めする** |  オン | 新しいキャッシュをダッシュボードにピン留めし、簡単に見つけられるようにします。 |
 
-**[新規 Redis Cache]** で、必要なキャッシュ構成を指定します。
+    ![キャッシュの作成](media/redis-cache-create/redis-cache-cache-create.png) 
 
-![キャッシュの作成](media/redis-cache-create/redis-cache-cache-create.png) 
+3. 新しいキャッシュ設定を構成したら、**[作成]** を選択します。 
 
-* キャッシュ エンドポイントに使用する一意のキャッシュ名を **[DNS 名]** に入力します。 キャッシュ名は 1 ～ 63 文字の文字列で、数字、英字、`-` 文字のみを使用する必要があります。 キャッシュ名の先頭と末尾には `-` 文字を使用できません。また、連続する `-` 文字は無効です。
-* **[サブスクリプション]**で、キャッシュに使用する Azure サブスクリプションを選択します。 アカウントにサブスクリプションが 1 つしかない場合は自動的に選択されるため、**[サブスクリプション]** ドロップダウンは表示されません。
-* **[リソース グループ]**で、キャッシュのリソース グループを選択または作成します。 詳細については、[リソース グループを使用した Azure リソースの管理](../articles/azure-resource-manager/resource-group-overview.md)に関するページを参照してください。 
-* **[場所]** を使用して、キャッシュのホストの地理的位置を指定します。 パフォーマンスを最大限に引き出すために、キャッシュは、キャッシュ クライアント アプリケーションと同じリージョンに作成することを強くお勧めします。
-* **[価格レベル]** を使用して、必要なキャッシュ サイズと機能を選択します。
-* **Redis クラスター** では、53 GB を超えるキャッシュを作成でき、複数の Redis ノード間でデータを共有することもできます。 詳細については、「 [Premium Azure Redis Cache のクラスタリングの構成方法](../articles/redis-cache/cache-how-to-premium-clustering.md)」を参照してください。
-* **Redis の永続化** を使用して、Azure ストレージ アカウントにキャッシュを保持できます。 永続化の構成手順については、「 [Premium Azure Redis Cache の永続性の構成方法](../articles/redis-cache/cache-how-to-premium-persistence.md)」を参照してください。
-* **Virtual Network** では、指定された Azure Virtual Network 内にあるクライアントのみにキャッシュへのアクセス権を制限することで、セキュリティと分離が強化されます。 サブネット、アクセス制御ポリシー、およびその他の Redis へのアクセスをさらに制限する機能を始め、VNet のすべての機能を使用できます。 詳細については、「 [Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](../articles/redis-cache/cache-how-to-premium-vnet.md)」を参照してください。
-* 新しいキャッシュでは、SSL を使用しないアクセスが既定で無効になっています。 非 SSL ポートを有効にするには、**[ポート 6379 のブロックを解除 (SSL 暗号化されていません)]** をオンにします。
+    キャッシュが作成されるまで数分かかる場合があります。 状態を確認するには、ダッシュボードで進行状況を監視してください。 キャッシュが作成されると、**実行中**の状態が表示され、使用できるようになります。
 
-新しいキャッシュ オプションを構成したら、 **[作成]**をクリックします。 キャッシュが作成されるまで数分かかる場合があります。 状態を確認するには、スタート画面で進行状況を監視してください。 キャッシュが作成されると、新しいキャッシュの状態が **実行中** になって、 [既定の設定](../articles/redis-cache/cache-configure.md#default-redis-server-configuration)で使用できるようになります。
-
-![作成されたキャッシュ](media/redis-cache-create/redis-cache-cache-created.png)
+    ![作成されたキャッシュ](media/redis-cache-create/redis-cache-cache-created.png)
 

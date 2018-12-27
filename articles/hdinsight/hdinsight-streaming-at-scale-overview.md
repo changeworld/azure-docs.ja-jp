@@ -1,26 +1,19 @@
 ---
-title: "Azure HDInsight での大規模なストリーミング | Microsoft Docs"
-description: "スケーラブルな HDInsight クラスターでデータ ストリーミングを使用する方法。"
+title: Azure HDInsight での大規模なストリーミング
+description: スケーラブルな HDInsight クラスターでデータ ストリーミングを使用する方法。
 services: hdinsight
-documentationcenter: 
-tags: azure-portal
-author: raghavmohan
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: ramoha
-ms.openlocfilehash: 46b5723805ab5d8bc1cf5b5183d9501cd3e4e3a2
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 6588d65a4f19c06e3ee4990aba226dbd11119c91
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016252"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight での大規模なストリーミング
 

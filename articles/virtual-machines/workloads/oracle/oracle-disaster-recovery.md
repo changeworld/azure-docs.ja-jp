@@ -1,25 +1,26 @@
 ---
-title: "Azure 環境における Oracle ディザスター リカバリー シナリオの概要 | Microsoft Docs"
-description: "Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー シナリオ"
+title: Azure 環境における Oracle ディザスター リカバリー シナリオの概要 | Microsoft Docs
+description: Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー シナリオ
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: v-shiuma
-manager: timlt
-editor: 
+author: romitgirdhar
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 6/2/2017
-ms.author: rclaus
-ms.openlocfilehash: aede44d964994bd2ef9b46a133b1f1ee303ef309
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 08/02/2018
+ms.author: rogirdh
+ms.openlocfilehash: 9f525e68502e32a3f9c7e7cebe6d45627f9077c3
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495029"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー
 
@@ -103,7 +104,7 @@ Azure セットアップの概要は次のとおりです。
 - [Oracle のバックアップと回復](oracle-backup-recovery.md)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [チュートリアル: 高可用性 VM の作成](../../linux/create-cli-complete.md)
 - [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)

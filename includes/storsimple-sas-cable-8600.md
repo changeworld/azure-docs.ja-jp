@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 792589f4aa2a80c05378224ffe4e4d1dad2f935c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166385"
+---
 <!--author=alkohli last changed:02/22/16-->
 
 #### <a name="to-attach-the-sas-cables"></a>SAS ケーブルの取り付け方法
@@ -7,7 +20,7 @@
    
     **主エンクロージャと EBOD エンクロージャの背面**
    
-   | ラベル | 説明 |
+   | Label | 説明 |
    |:--- |:--- |
    | 1 |主エンクロージャ |
    | 2 |EBOD エンクロージャ |
@@ -17,7 +30,7 @@
    
     **シリアル番号ステッカーの位置**
    
-   | ラベル | 説明 |
+   | Label | 説明 |
    |:--- |:--- |
    | 1 |エンクロージャの耳 |
 3. 次のように、付属の SAS ケーブルを使用して EBOD エンクロージャを主エンクロージャに接続します。
@@ -30,10 +43,10 @@
       
       **SAS ケーブル接続**
       
-      | ラベル | 説明 |
+      | Label | 説明 |
       |:--- |:--- |
       | A |主エンクロージャ |
-      | B |EBOD エンクロージャ |
+      | b |EBOD エンクロージャ |
       | 1 |コントローラー 0 |
       | 2 |コントローラー 1 |
       | 3 |EBOD コントローラー 0 |

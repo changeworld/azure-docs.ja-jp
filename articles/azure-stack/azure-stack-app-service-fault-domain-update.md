@@ -12,13 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: 851747263879aa89fabe8b168876238a004ea8b2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d361b4165c1fbbf79321e3f6d2ade711f9173c56
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267217"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>障害ドメインに分散して Azure App Service on Azure Stack を再配布する方法
 
@@ -26,14 +27,12 @@ ms.lasthandoff: 03/16/2018
 
 1802 更新プログラムにより、Azure Stack で、障害ドメイン間のワークロードの分散がサポートされるようになりました。この機能は高可用性のために重要です。
 
-> [!IMPORTANT]
-> 障害ドメインのサポートを利用するには、Azure Stack 統合システムを 1802 に更新しておく必要があります。  このドキュメントは、1802 更新プログラムの前に完了していた App Service リソース プロバイダーの展開にのみ適用されます。  Azure Stack に 1802 更新プログラムが適用された後に Azure Stack に App Service を展開した場合、リソース プロバイダーは既に障害ドメイン間で分散されています。
->
->
+>[!IMPORTANT]
+>障害ドメインのサポートを利用するには、Azure Stack 統合システムを 1802 に更新する必要があります。 このドキュメントは、1802 更新プログラムの前に終了していた App Service リソース プロバイダーのデプロイにのみ適用されます。 Azure Stack に 1802 更新プログラムが適用された後に Azure Stack に App Service をデプロイした場合、リソース プロバイダーは既に障害ドメイン間で分散されています。
 
 ## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>障害ドメイン間で App Service リソース プロバイダーを再調整する
 
-App Service リソース プロバイダー向けに展開されたスケール セットを再配布するには、スケール セットごとに以下の手順を実行する必要があります。  既定でスケール セットの名前は次のとおりです。
+App Service リソース プロバイダー向けにデプロイされたスケール セットを再配布するには、この記事の手順をスケール セットごとに実行する必要があります。 既定でスケール セットの名前は次のとおりです。
 
 * ManagementServersScaleSet
 * FrontEndsScaleSet
@@ -43,39 +42,40 @@ App Service リソース プロバイダー向けに展開されたスケール 
 * MediumWorkerTierScaleSet
 * LargeWorkerTierScaleSet
 
-> [!NOTE]
-> 一部の worker 階層スケール セットに展開されているインスタンスがない場合、それらのスケール セットを再調整する必要はありません。  スケール セットは、今後スケールアウトするときに正しく調整されます。
->
->
+>[!NOTE]
+> 一部の worker 階層スケール セットにデプロイされているインスタンスがない場合、それらのスケール セットを再調整する必要はありません。 スケール セットは、今後スケールアウトするときに正しく調整されます。
 
-1. Azure Stack 管理者ポータルで Virtual Machine Scale Sets を参照します。  App Service 展開の一部として展開されている既存のスケール セットは、インスタンス数情報と共に表示されます。
+スケール セットをスケールアウトするには、次の手順を実行します。
 
-    ![Azure App Service スケール セットは、仮想マシン スケール セット UX に表示されます][1]
+1. Azure Stack 管理者ポータルにサインインします。
+1. **[すべてのサービス]** を選択します。
+2. **コンピューター** カテゴリで、**[仮想マシン スケール セット]** を選択します。 App Service 展開の一部として展開されている既存のスケール セットは、インスタンス数情報と共に表示されます。 次の画面キャプチャは、スケール セットの例を示しています。
 
-2. 次に、各セットをスケールアウトします。  たとえば、スケール セット内に 3 つの既存のインスタンスがある場合は、3 つの新しいインスタンスが障害ドメイン間でプロビジョニングされるように、6 にスケールアウトする必要があります。
-    a. [PowerShell で Azure Stack 管理環境を設定します](azure-stack-powershell-configure-admin.md)。b. この例を使用して、スケール セットをスケールアウトします。
-        ```powershell
-                Login-AzureRMAccount -EnvironmentName AzureStackAdmin 
+      ![Azure App Service スケール セットは、仮想マシン スケール セット UX に表示されます][1]
 
-                # Get current scale set
-                $vmss = Get-AzureRmVmss -ResourceGroupName "AppService.local" -VMScaleSetName "SmallWorkerTierScaleSet"
+1. 各セットをスケールアウトします。 たとえば、スケール セット内に 3 つの既存のインスタンスがある場合は、3 つの新しいインスタンスが障害ドメインにデプロイされるように、6 にスケールアウトする必要があります。 次の PowerShell の例は、スケール セットをスケールアウトする方法を示します。
 
-                # Set and update the capacity of your scale set
-                $vmss.sku.capacity = 6
-                Update-AzureRmVmss -ResourceGroupName "AppService.local" -Name "SmallWorkerTierScaleSet" -VirtualMachineScaleSet $vmss
-        '''
-> [!NOTE]
-> ロールの種類とインスタンスの数によっては、この手順が完了するまでに何時間もかかる場合があります。
->
->
+   ```powershell
+   Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
 
-3. App Service の管理ロール ブレードで新しいロール インスタンスの状態を監視します。  リスト内のロールの種類をクリックして、個々のロール インスタンスの状態を確認します。
+   # Get current scale set
+   $vmss = Get-AzureRmVmss -ResourceGroupName "AppService.local" -VMScaleSetName "SmallWorkerTierScaleSet"
+
+   # Set and update the capacity of your scale set
+   $vmss.sku.capacity = 6
+   Update-AzureRmVmss -ResourceGroupName AppService.local" -Name "SmallWorkerTierScaleSet" -VirtualMachineScaleSet $vmss
+   ```
+
+   >[!NOTE]
+   >ロールの種類とインスタンスの数によっては、この手順が終了するまでに何時間もかかる場合があります。
+
+1. **App Service の管理ロール**で、新しいロール インスタンスの状態を監視します。 ロール インスタンスの状態を確認するために、リスト内のロールの種類を選択します
 
     ![Azure Stack ロール上の Azure App Service][2]
 
-4. 1 つの新しいインスタンスが**準備完了**状態であることを確認したら、仮想マシン スケール セット ブレードに戻り、古いインスタンスを**削除**します。
+1. 新しいロール インスタンスの状態が **[準備完了]** の場合は、**[仮想マシン スケール セット]** に戻り、古いロール インスタンスを**削除**します。
 
-5. 仮想マシンスケールセット**ごとに**これらの手順を繰り返します。
+1. 仮想マシンスケールセット**ごとに**これらの手順を繰り返します。
 
 ## <a name="next-steps"></a>次の手順
 

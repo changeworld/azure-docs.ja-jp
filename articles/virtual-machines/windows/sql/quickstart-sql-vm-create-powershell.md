@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: daa5043a948e660b6c3e685e933855afff8f7671
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: bebb153d5ff840a0eed7d6afffccd03a5236592d
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42022620"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>クイック スタート: Azure PowerShell で SQL Server Windows 仮想マシンを作成する
 
@@ -40,10 +41,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-powershell"></a>PowerShell の構成
 
-1. PowerShell を開いて **Add-AzureRmAccount** コマンドを実行し、Azure アカウントにアクセスできる状態にします。
+1. PowerShell を開いて **Connect-AzureRmAccount** コマンドを実行し、Azure アカウントへのアクセスを確立します。
 
    ```PowerShell
-   Add-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 1. 資格情報を入力するためのサインイン画面が表示されます。 Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
@@ -82,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    # Create a virtual network
    $Vnet = New-AzureRmVirtualNetwork -ResourceGroupName $ResourceGroupName -Location $Location `
-      -Name VnetName -AddressPrefix 192.168.0.0/16 -Subnet $SubnetConfig
+      -Name $VnetName -AddressPrefix 192.168.0.0/16 -Subnet $SubnetConfig
 
    # Create a public IP address and specify a DNS name
    $Pip = New-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName -Location $Location `
@@ -175,7 +176,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. リモート デスクトップ セッションにログインしたら、スタート メニューから **SQL Server Management Studio 2017** を起動します。
 
-1. **[サーバーに接続]** ダイアログでは、既定の設定をそのまま使用します。 サーバー名は VM の名前です。 認証は **[Windows 認証]** に設定されます。 **[接続]**をクリックします。
+1. **[サーバーに接続]** ダイアログでは、既定の設定をそのまま使用します。 サーバー名は VM の名前です。 認証は **[Windows 認証]** に設定されます。 **[接続]** をクリックします。
 
 これで、SQL Server にローカル接続されました。 リモート接続する場合は、ポータルから、または手動で[接続を構成する](virtual-machines-windows-sql-connect.md)必要があります。
 

@@ -1,6 +1,6 @@
 ---
-title: "Service Fabric のバックアップと復元 | Microsoft Docs"
-description: "Service Fabric のバックアップと復元の概念をまとめた文書"
+title: Service Fabric のバックアップと復元 | Microsoft Docs
+description: Service Fabric のバックアップと復元の概念をまとめた文書
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -9,16 +9,17 @@ editor: subramar,zhol
 ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: d276ce9233da9137c49faf8c4d975bd1dcf2ff81
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 46f9c6129ccf99fb72a285fa4089b7b3f01f7d7b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643034"
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services と Reliable Actors のバックアップよび復元
 Azure Service Fabric は高可用性プラットフォームであり、複数のノードに状態を複製し、その高可用性を維持します。  つまり、クラスター内の 1 つのノードに障害が発生した場合でも、サービスは引き続き利用できます。 このプラットフォームに組み込まれている冗長性で十分と考えられますが、(外部ストアに) サービスのデータをバックアップすることが望ましい場合もあります。
@@ -153,7 +154,7 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 > 
 
 ## <a name="deleted-or-lost-service"></a>サービスの削除または損失
-サービスが削除された場合、先にサービスを作成し直さないとデータを復元できません。  データを途切れなく復元するために、サービスを同じ構成 (パーティショニング スキームなど) で作成することが重要です。  サービスが起動したら、そのサービスのあらゆるパーティションで、データを復元する API (上記の `OnDataLossAsync`) を呼び出す必要があります。 その方法の 1 つは、すべてのパーティションで `[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)` を使用することです。  
+サービスが削除された場合、先にサービスを作成し直さないとデータを復元できません。  データを途切れなく復元するために、サービスを同じ構成 (パーティショニング スキームなど) で作成することが重要です。  サービスが起動したら、そのサービスのあらゆるパーティションで、データを復元する API (上記の `OnDataLossAsync`) を呼び出す必要があります。 その方法の 1 つは、すべてのパーティションで [FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) を使用することです。  
 
 この点から、実装は上記のシナリオと同じになります。 各パーティションで、外部ストアから最新の関連バックアップを復元する必要があります。 ここで注意する点は、ランタイムが動的にパーティション ID を作成するため、パーティション ID が変更されている可能性があることです。 そのため、各パーティションで復元する正しい最新のバックアップを識別するために、サービスでパーティション情報とサービス名を保存する必要があります。
 
@@ -222,7 +223,7 @@ class MyCustomActorService : ActorService
   - レプリカがプライマリになったために完全バックアップを取得していない。
   - 前回のバックアップが行われた後に、ログ レコードの一部が切り捨てられた。
 
-増分バックアップが有効になっている場合、`KvsActorStateProvider` は循環バッファーを使用して自身のログ レコードを管理することはせず、ログ レコードを定期的に切り捨てます。 ユーザーが 45 分間バックアップを行わなかった場合、システムは自動的にログ レコードを切り捨てます。 この間隔は、`KvsActorStateProvider` コンストラクターで `logTrunctationIntervalInMinutes` を指定することによって構成できます (増分バックアップを有効にする場合と同様のやり方です)。 ログ レコードは、プライマリ レプリカの全データを送信して別のレプリカを作成する必要がある場合にも、切り捨てられる可能性があります。
+増分バックアップが有効になっている場合、`KvsActorStateProvider` は循環バッファーを使用して自身のログ レコードを管理することはせず、ログ レコードを定期的に切り捨てます。 ユーザーが 45 分間バックアップを行わなかった場合、システムは自動的にログ レコードを切り捨てます。 この間隔は、`KvsActorStateProvider` コンストラクターで `logTrunctationIntervalInMinutes` を指定することによって構成できます (増分バックアップを有効にする場合と同様のやり方です)。 ログ レコードは、プライマリ レプリカの全データを送信して別のレプリカをビルドする必要がある場合にも、切り捨てられる可能性があります。
 
 バックアップ チェーンから復元を行う際には、Reliable Services と同様、BackupFolderPath に複数のサブディレクトリを含める必要があります。その際、1 つのサブディレクトリに完全バックアップを含め、その他のサブディレクトリに増分バックアップを含めます。 バックアップ チェーンの検証が失敗した場合、復元 API は適切なエラー メッセージと共に FabricException をスローします。 
 
@@ -241,12 +242,13 @@ class MyCustomActorService : ActorService
 ## <a name="under-the-hood-more-details-on-backup-and-restore"></a>具体的な内容: バックアップと復元の詳細
 バックアップと復元の詳細を以下に示します。
 
-### <a name="backup"></a>バックアップ
+### <a name="backup"></a>Backup
+
 Reliable State Manager には、読み書き操作を中断することなく、一貫性のあるバックアップを作成する機能があります。 そのために、チェックポイントとログ永続化のメカニズムが活用されます。  Reliable State Manager は特定の時点でファジー (簡易) チェックポイントを作成し、トランザクション ログからの負荷を軽減し、復元時間を早めます。  `BackupAsync` が呼び出されると、最新のチェックポイント ファイルをローカル バックアップ フォルダーにコピーするように、Reliable State Manager がすべての Reliable Object に指示します。  次に、Reliable State Manager は "開始ポインター" から最新のログ レコードまですべてのログ レコードをバックアップ フォルダーにコピーします。  最新のログ レコードまでのすべてログ レコードがバックアップに含まれており、Reliable State Manager が先書きログを維持するため、コミットされた (`CommitAsync` が正常に制御を返した) すべてのトランザクションがバックアップに含まれていることが Reliable State Manager によって保証されます。
 
 `BackupAsync` が呼び出された後にコミットするトランザクションは、バックアップに含まれていることもあれば、含まれていないこともあります。  プラットフォームによりローカルのバックアップ フォルダーにデータが入力されると (すなわち、ローカルのバックアップがランタイムにより完了すると)、サービスのバックアップ コールバックが呼び出されます。  このコールバックは、Azure Storage などの外部の場所にバックアップ フォルダーを移動する役割を担います。
 
-### <a name="restore"></a>復元
+### <a name="restore"></a>Restore
 Reliable State Manager には、`RestoreAsync` API を使用してバックアップから復元する機能があります。  
 `RestoreContext` での `RestoreAsync` メソッドは、`OnDataLossAsync` メソッド内のみで呼び出すことができます。
 `OnDataLossAsync` により返されるブール値は、サービスの状態が外部ソースから復元されたかどうかを示すものです。
@@ -255,17 +257,13 @@ Reliable State Manager には、`RestoreAsync` API を使用してバックア�
 次に、新しいプライマリで `OnDataLossAsync` が呼び出されます。
 サービスが (true または false を返し) この API を完了し、関連再構成を完了するまで、API は 1 つずつ呼び出され続けます。
 
-`RestoreAsync` は、まず、このメソッドが呼び出されたプライマリ レプリカで、既存の状態をすべて削除します。  
-次に、Reliable State Manager は、バックアップ フォルダーに存在するすべての Reliable Objects を作成します。  
-次に、Reliable Objects はバックアップ フォルダーのチェックポイントから復元するように指示されます。  
-最後に、Reliable State Manager はバックアップ フォルダー内のログ レコードからそれ自体の状態を復元し、復元を実行します。  
-復元プロセスの一環として、バックアップ フォルダーにコミット ログ レコードがある "開始ポイント" から始まる操作が Reliable Objects に対して再生されます。  
-この手順により、復元したステートに一貫性が与えられます。
+`RestoreAsync` は、まず、このメソッドが呼び出されたプライマリ レプリカで、既存の状態をすべて削除します。 次に、Reliable State Manager は、バックアップ フォルダーに存在するすべての Reliable Objects を作成します。 次に、Reliable Objects はバックアップ フォルダーのチェックポイントから復元するように指示されます。 最後に、Reliable State Manager はバックアップ フォルダー内のログ レコードからそれ自体の状態を復元し、復元を実行します。 復元プロセスの一環として、バックアップ フォルダーにコミット ログ レコードがある "開始ポイント" から始まる操作が Reliable Objects に対して再生されます。 この手順により、復元したステートに一貫性が与えられます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
   - [Reliable Collection](service-fabric-work-with-reliable-collections.md)
   - [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
   - [Reliable Services の構成](service-fabric-reliable-services-configuration.md)
   - [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  - [Azure Service Fabric での定期的なバックアップと復元](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 

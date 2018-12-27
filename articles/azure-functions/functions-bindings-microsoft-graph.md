@@ -2,24 +2,23 @@
 title: Azure Functions における Microsoft Graph のバインド
 description: Azure Functions で Microsoft Graph のトリガーとバインドを使用する方法について説明します。
 services: functions
-author: mattchenderson
-manager: cfowler
-editor: ''
-ms.service: functions
-ms.tgt_pltfrm: na
+author: craigshoemaker
+manager: jeconnoc
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: mahender
-ms.openlocfilehash: 2de80760484ae1869b340898ea1e5f740fbc2883
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.author: cshoe
+ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51301018"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
-この記事では、Azure Functions で Microsoft Graph のトリガーとバインドを構成および操作する方法について説明します。 これらと Azure Functions を使用して、[Microsoft Graph](https://graph.microsoft.io) からのデータ、分析情報、およびイベントを処理できます。
+この記事では、Azure Functions で Microsoft Graph のトリガーとバインドを構成および操作する方法について説明します。 これらと Azure Functions を使用して、[Microsoft Graph](https://developer.microsoft.com/graph) からのデータ、分析情報、およびイベントを処理できます。
 
 Microsoft Graph の拡張機能には、次のバインドが用意されています。
 - [認証トークンの入力バインド](#token-input)では、任意の Microsoft Graph API とやり取りできます。
@@ -39,11 +38,11 @@ Microsoft Graph の拡張機能には、次のバインドが用意されてい�
 
 認証トークンの入力バインディングは [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) NuGet パッケージで提供されます。 他の Microsoft Graph バインディングは [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) パッケージで提供されます。 パッケージのソース コードは、[azure-functions-microsoftgraph-extension](https://github.com/Azure/azure-functions-microsoftgraph-extension/) GitHub リポジトリにあります。
 
-[!INCLUDE [functions-package](../../includes/functions-package.md)]
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="setting-up-the-extensions"></a>拡張機能の設定
 
-Microsoft Graph のバインドは、_バインド拡張機能_から入手できます。 バインド拡張機能は、Azure Functions ランタイム向けのオプション コンポーネントです。 このセクションでは、Microsoft Graph と認証トークンの拡張機能を設定する方法を示します。
+Microsoft Graph のバインドは、_バインド拡張機能_ から入手できます。 バインド拡張機能は、Azure Functions ランタイム向けのオプション コンポーネントです。 このセクションでは、Microsoft Graph と認証トークンの拡張機能を設定する方法を示します。
 
 ### <a name="enabling-functions-20-preview"></a>Functions 2.0 プレビューを有効にする
 
@@ -128,9 +127,10 @@ C# スクリプト コードは、トークンを使用して Microsoft Graph �
 ```csharp
 using System.Net; 
 using System.Net.Http; 
-using System.Net.Http.Headers; 
+using System.Net.Http.Headers;
+using Microsoft.Extensions.Logging; 
 
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string graphToken, TraceWriter log)
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string graphToken, ILogger log)
 {
     HttpClient client = new HttpClient();
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", graphToken);
@@ -172,7 +172,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string
 JavaScript スクリプト コードは、トークンを使用して Microsoft Graph への HTTP 呼び出しを行い、結果を返します。
 
 ```js
-const rp = require('request-promise');
+const rp = require('request-promise');
 
 module.exports = function (context, req) {
     let token = "Bearer " + context.bindings.graphToken;
@@ -209,7 +209,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Token` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**||必須 - 認証トークンの関数コードで使用される変数名。 「[コードから認証トークンの入力バインドを使用する](#token-input-code)」をご覧ください。|
 |**type**||必須 - `token` に設定する必要があります。|
@@ -284,9 +284,10 @@ Excel テーブルの入力バインドは、OneDrive に格納されている E
 ```csharp
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives; 
+using Microsoft.Extensions.Primitives;
+using Microsoft.Extensions.Logging;
 
-public static IActionResult Run(HttpRequest req, string[][] excelTableData, TraceWriter log)
+public static IActionResult Run(HttpRequest req, string[][] excelTableData, ILogger log)
 {
     return new OkObjectResult(excelTableData);
 }
@@ -342,7 +343,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Excel` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**||必須 - Excel テーブルの関数コードで使用される変数名。 「[コードから Excel テーブルの入力バインドを使用する](#excel-input-code)」をご覧ください。|
 |**type**||必須 - `excel` に設定する必要があります。|
@@ -434,8 +435,9 @@ C# スクリプト コードは、クエリ文字列からの入力に基づい�
 ```csharp
 using System.Net;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
-public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRow, TraceWriter log)
+public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRow, ILogger log)
 {
     string input = req.Query
         .FirstOrDefault(q => string.Compare(q.Key, "text", true) == 0)
@@ -502,7 +504,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Excel` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**||必須 - 認証トークンの関数コードで使用される変数名。 「[コードから Excel テーブルの出力バインドを使用する](#excel-output-code)」をご覧ください。|
 |**type**||必須 - `excel` に設定する必要があります。|
@@ -588,10 +590,11 @@ C# スクリプト コードは、クエリ文字列で指定されたファイ�
 
 ```csharp
 using System.Net;
+using Microsoft.Extensions.Logging;
 
-public static void Run(HttpRequestMessage req, Stream myOneDriveFile, TraceWriter log)
+public static void Run(HttpRequestMessage req, Stream myOneDriveFile, ILogger log)
 {
-    log.Info(myOneDriveFile.Length.ToString());
+    log.LogInformation(myOneDriveFile.Length.ToString());
 }
 ```
 
@@ -646,7 +649,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `OneDrive` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**||必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの入力バインドを使用する](#onedrive-input-code)」をご覧ください。|
 |**type**||必須 - `onedrive` に設定する必要があります。|
@@ -667,7 +670,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - byte[]
 - ストリーム
-- 文字列
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -731,13 +734,15 @@ C# スクリプト コードは、クエリ文字列からテキストを取得�
 ```csharp
 using System.Net;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
-public static async Task Run(HttpRequest req, TraceWriter log, Stream myOneDriveFile)
+public static async Task Run(HttpRequest req, ILogger log, Stream myOneDriveFile)
 {
     string data = req.Query
         .FirstOrDefault(q => string.Compare(q.Key, "text", true) == 0)
         .Value;
     await myOneDriveFile.WriteAsync(Encoding.UTF8.GetBytes(data), 0, data.Length);
+    myOneDriveFile.Close();
     return;
 }
 ```
@@ -791,7 +796,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `OneDrive` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**||必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの出力バインドを使用する](#onedrive-output-code)」をご覧ください。|
 |**type**||必須 - `onedrive` に設定する必要があります。|
@@ -812,7 +817,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - byte[]
 - ストリーム
-- 文字列
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -829,7 +834,7 @@ Outlook メッセージの出力バインドは、Outlook でメール メッセ
 * [例](#outlook-output---example)
 * [属性](#outlook-output---attributes)
 * [構成](#outlook-output---configuration)
-* [使用方法](#outlook-outnput---usage)
+* [使用方法](#outlook-output---usage)
 
 ### <a name="outlook-output---example"></a>Outlook の出力 - 例
 
@@ -867,8 +872,9 @@ C# スクリプト コードでは、クエリ文字列で指定された受信�
 
 ```csharp
 using System.Net;
+using Microsoft.Extensions.Logging;
 
-public static void Run(HttpRequest req, out Message message, TraceWriter log)
+public static void Run(HttpRequest req, out Message message, ILogger log)
 { 
     string emailAddress = req.Query["to"];
     message = new Message(){
@@ -940,7 +946,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Outlook` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**||必須 - `outlook` に設定する必要があります。|
@@ -960,7 +966,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- 文字列
+- string
 - カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
 
 
@@ -970,12 +976,12 @@ module.exports = function (context, req) {
 
 ## <a name="webhooks"></a>Webhook
 
-Webhook を使用すると、Microsoft Graph でのイベントに応答できます。 Webhook をサポートするには、_webhook サブスクリプション_の作成、更新、および対応のための関数が必要です。 webhook の完全なソリューションには、次のバインドの組み合わせが必要です。
+Webhook を使用すると、Microsoft Graph でのイベントに応答できます。 Webhook をサポートするには、_webhook サブスクリプション_ の作成、更新、および対応のための関数が必要です。 webhook の完全なソリューションには、次のバインドの組み合わせが必要です。
 - [Microsoft Graph の webhook トリガー](#webhook-trigger)を使用すると、受信した webhook に応答できます。
 - [Microsoft Graph webhook サブスクリプションの入力バインド](#webhook-input)を使用すると、既存のサブスクリプションを一覧表示し、必要に応じて更新できます。
 - [Microsoft Graph webhook サブスクリプションの出力バインド](#webhook-output)を使用すると、webhook サブスクリプションを作成または削除できます。
 
-バインド自体には Azure AD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions#permissions)をご覧ください。
+バインド自体には Azure AD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions)をご覧ください。
 
 webhook について詳しくは、「[Microsoft Graph の Webhooks での作業]」をご覧ください。
 
@@ -1027,14 +1033,15 @@ C# スクリプト コードでは、受信メール メッセージに応答し
 #r "Microsoft.Graph"
 using Microsoft.Graph;
 using System.Net;
+using Microsoft.Extensions.Logging;
 
-public static async Task Run(Message msg, TraceWriter log)  
+public static async Task Run(Message msg, ILogger log)  
 {
-    log.Info("Microsoft Graph webhook trigger function processed a request.");
+    log.LogInformation("Microsoft Graph webhook trigger function processed a request.");
 
     // Testable by sending oneself an email with the subject "Azure Functions" and some text body
     if (msg.Subject.Contains("Azure Functions") && msg.From.Equals(msg.Sender)) {
-        log.Info($"Processed email: {msg.BodyPreview}");
+        log.LogInformation($"Processed email: {msg.BodyPreview}");
     }
 }
 ```
@@ -1081,7 +1088,7 @@ module.exports = function (context) {
 
 次の表は、*function.json* ファイルと `GraphWebHookTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**||必須 - `graphWebhook` に設定する必要があります。|
@@ -1160,13 +1167,14 @@ C# スクリプト コードは、サブスクリプションを取得し、そ�
 
 ```csharp
 using System.Net;
+using Microsoft.Extensions.Logging;
 
-public static async Task Run(HttpRequest req, string[] existingSubscriptions, IAsyncCollector<string> subscriptionsToDelete, TraceWriter log)
+public static async Task Run(HttpRequest req, string[] existingSubscriptions, IAsyncCollector<string> subscriptionsToDelete, ILogger log)
 {
-    log.Info("C# HTTP trigger function processed a request.");
+    log.LogInformation("C# HTTP trigger function processed a request.");
     foreach (var subscription in existingSubscriptions)
     {
-        log.Info($"Deleting subscription {subscription}");
+        log.LogInformation($"Deleting subscription {subscription}");
         await subscriptionsToDelete.AddAsync(subscription);
     }
 }
@@ -1232,7 +1240,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `GraphWebHookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**||必須 - `graphWebhookSubscription` に設定する必要があります。|
@@ -1309,10 +1317,11 @@ C# スクリプト コードは、呼び出し元のユーザーが Outlook メ�
 ```csharp
 using System;
 using System.Net;
+using Microsoft.Extensions.Logging;
 
-public static HttpResponseMessage run(HttpRequestMessage req, out string clientState, TraceWriter log)
+public static HttpResponseMessage run(HttpRequestMessage req, out string clientState, ILogger log)
 {
-  log.Info("C# HTTP trigger function processed a request.");
+  log.LogInformation("C# HTTP trigger function processed a request.");
     clientState = Guid.NewGuid().ToString();
     return new HttpResponseMessage(HttpStatusCode.OK);
 }
@@ -1356,7 +1365,7 @@ public static HttpResponseMessage run(HttpRequestMessage req, out string clientS
 JavaScript コードは、呼び出し元のユーザーが Outlook メッセージを受信するとこの関数アプリに通知する、webhook を登録します。
 
 ```js
-const uuidv4 = require('uuid/v4');
+const uuidv4 = require('uuid/v4');
 
 module.exports = function (context, req) {
     context.bindings.clientState = uuidv4();
@@ -1372,7 +1381,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `GraphWebHookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**||必須 - `graphWebhookSubscription` に設定する必要があります。|
@@ -1387,7 +1396,7 @@ module.exports = function (context, req) {
 ### <a name="webhook-output---usage"></a>webhook の出力 - 使用方法
 
 バインドは、.NET 関数に次の種類を公開します。
-- 文字列
+- string
 - Microsoft.Graph.Subscription
 
 
@@ -1449,15 +1458,16 @@ C# スクリプト コードは、サブスクリプションを更新します�
 
 ```csharp
 using System;
+using Microsoft.Extensions.Logging;
 
-public static void Run(TimerInfo myTimer, string[] existingSubscriptions, ICollector<string> subscriptionsToRefresh, TraceWriter log)
+public static void Run(TimerInfo myTimer, string[] existingSubscriptions, ICollector<string> subscriptionsToRefresh, ILogger log)
 {
     // This template uses application permissions and requires consent from an Azure Active Directory admin.
     // See https://go.microsoft.com/fwlink/?linkid=858780
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
     foreach (var subscription in existingSubscriptions)
     {
-      log.Info($"Refreshing subscription {subscription}");
+      log.LogInformation($"Refreshing subscription {subscription}");
       subscriptionsToRefresh.Add(subscription);
     }
 }
@@ -1505,8 +1515,8 @@ module.exports = function (context) {
     const existing = context.bindings.existingSubscriptions;
     var toRefresh = [];
     for (var i = 0; i < existing.length; i++) {
-        context.log(`Deleting subscription ${existing[i]}`);
-        todelete.push(existing[i]);
+        context.log(`Refreshing subscription ${existing[i]}`);
+        toRefresh.push(existing[i]);
     }
     context.bindings.subscriptionsToRefresh = toRefresh;
     context.done();
@@ -1542,10 +1552,11 @@ C# スクリプト コードは、各ユーザーの ID を使用してサブス
 
 ```csharp
 using System;
+using Microsoft.Extensions.Logging;
 
-public static async Task Run(TimerInfo myTimer, UserSubscription[] existingSubscriptions, IBinder binder, TraceWriter log)
+public static async Task Run(TimerInfo myTimer, UserSubscription[] existingSubscriptions, IBinder binder, ILogger log)
 {
-  log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+  log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
     foreach (var subscription in existingSubscriptions)
     {
         // binding in code to allow dynamic identity
@@ -1557,7 +1568,7 @@ public static async Task Run(TimerInfo myTimer, UserSubscription[] existingSubsc
             }
         ))
         {
-            log.Info($"Refreshing subscription {subscription}");
+            log.LogInformation($"Refreshing subscription {subscription}");
             await subscriptionsToRefresh.AddAsync(subscription);
         }
 

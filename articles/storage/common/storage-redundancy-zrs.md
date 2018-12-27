@@ -3,24 +3,104 @@ title: ゾーン冗長ストレージ (ZRS) に高可用 Azure Storage アプリ
 description: ゾーン冗長ストレージ (ZRS) を利用すると、高可用アプリケーションを簡単に構築できます。 ZRS は、データセンターのハードウェア障害だけでなく、一部の地域の災害からも保護できます。
 services: storage
 author: tolandmike
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 10/24/2018
 ms.author: jeking
-ms.openlocfilehash: 8c20178e539aeccd9a1d9c41206fc4823fe6f128
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: b310c06f508395635976009005dd2c4db2917abc
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218742"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>ゾーン冗長化ストレージ (ZRS): 高可用 Azure Storage アプリケーション
+[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 
-[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
+## <a name="support-coverage-and-regional-availability"></a>サポート範囲とリージョンの可用性
+現在、ZRS は標準の汎用 v2 のアカウントの種類をサポートしています。 ストレージ アカウントの種類の詳細については、[Azure Storage アカウントの概要](storage-account-overview.md)に関するページを参照してください。
 
+ZRS は、ブロック BLOB、非ディスク ページ BLOB、ファイル、テーブル、およびキューに使用できます。
+
+ZRS は、次のリージョンで一般公開されています。
+
+- 米国東部
+- 米国東部 2
+- 米国西部 2
+- 米国中部
+- 北ヨーロッパ
+- 西ヨーロッパ
+- フランス中部
+- 東南アジア
+
+Microsoft は、今後も ZRS が有効な Azure リージョンを増やす予定です。 新しいリージョンの情報については、[Azure サービスの更新情報](https://azure.microsoft.com/updates/)に関するページを定期的に参照してください。
+
+## <a name="what-happens-when-a-zone-becomes-unavailable"></a>ゾーンが利用不可になった場合
+データは、ゾーンが使用できなくなった場合でもアクセスできます。 一時的な障害の処理の方法に従うことをお勧めします。 これらの方法には、指数バックオフを使用した再試行ポリシーの実行などがあります。
+
+ゾーンが利用不可になると、Azure は DNS の再指定などのネットワークの更新を実行します。 このような更新は、更新が完了する前にデータにアクセスしている場合、アプリケーションに影響を与える可能性があります。
+
+ZRS は、複数のゾーンが永続的に影響を受けるリージョンの災害からデータを保護することはできませんが、 データが一時的に利用できなくなった場合は、そのデータの回復性を提供します。 リージョンの災害から保護するには、geo 冗長ストレージ (GRS) を使用することをお勧めします。 GRS の詳細については、「[geo 冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)」を参照してください。
+
+## <a name="converting-to-zrs-replication"></a>ZRS レプリケーションへの変換
+LRS、GRS、および RA-GRS 間の移行は簡単です。 アカウントの冗長性の種類を変更するには、Azure portal またはストレージ リソース プロバイダー API を使用します。 その後 Azure は、データを適宜レプリケートします。 
+
+ZRS との間のデータ移行には別の戦略が必要です。 ZRS 移行には、リージョン内の 1 つのストレージ スタンプから複数のスタンプへのデータの物理的移動が含まれます。
+
+ZRS との間の移行には、主に 2 つの選択肢があります。 
+
+- 既存のアカウントから新しい ZRS アカウントにデータを手動でコピーまたは移動する。
+- ライブ マイグレーションを要求する。
+
+手動の移行を実行することを強くお勧めします。 手動の移行はライブ マイグレーションよりも高い柔軟性を備えています。 手動の移行では、タイミングを制御できます。
+
+手動の移行を実行する場合は、次の選択肢があります。
+- AzCopy のような既存のツール、Azure Storage クライアント ライブラリのいずれか、 または信頼できるサード パーティ製ツールを使用します。
+- Hadoop または HDInsight に詳しい場合は、ソースと宛先 (ZRS) の両方のアカウントをクラスターにアタッチします。 次に、DistCp などのツールを使用してデータ コピー処理を並列化します。
+- Azure Storage クライアント ライブラリのいずれかを使用して、独自のツールをビルドします。
+
+手動の移行ではアプリケーションのダウンタイムが発生することがあります。 アプリケーションが高可用性を必要とする場合、Microsoft はライブ マイグレーションのオプションも提供します。 ライブ マイグレーションはインプレース移行です。 
+
+ライブ マイグレーション中は、データがソースと宛先のストレージ スタンプ間で移行中にストレージ アカウントを使用できます。 移行プロセス中は、通常と同じレベルの持続性と可用性の SLA を維持できます。
+
+ライブ マイグレーションでは次の制限に注意してください。
+
+- Microsoft はお客様のライブ マイグレーションの要求に速やかに対応しますが、ライブ マイグレーションがいつ完了するかについての保証はありません。 データを特定の日付までに ZRS に移行する必要がある場合は、手動の移行を実行することをお勧めします。 一般的に、アカウントで保存しているデータが多いほど、データの移行には時間がかかります。 
+- ライブ マイグレーションは、LRS または GRS のレプリケーションを使用するストレージ アカウントについてのみサポートされます。 自分のアカウントが RA-GRS を使用している場合は、続行する前に、まず自分のアカウントのレプリケーションの種類を LRS または GRS のいずれかに変更する必要があります。 この中間の手順により、移行前に RA GRS によって提供される読み取り専用のセカンダリ エンドポイントが削除されます。
+- アカウントにはデータが含まれている必要があります。
+- 同じリージョン内のデータのみ移行できます。 ソース アカウントとは異なるリージョンにある ZRS アカウントにデータを移行する場合は、手動の移行を実行する必要があります。
+- Standard ストレージ アカウントの種類のみがライブ マイグレーションをサポートします。 Premium ストレージ アカウントは手動で移行する必要があります。
+
+ライブ マイグレーションは [Azure サポート ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)から要求できます。 ポータルから、ZRS に変換するストレージ アカウントを選択します。
+1. **[新しいサポート要求]** を選択します
+2. アカウント情報に基づき **[基本]** に入力します。 **[サービス]** セクションで、**[Storage Account Management]\(ストレージ アカウントの管理)** と ZRS に変換するリソースを選択します。 
+3. **[次へ]** を選択します。 
+4. **[Problem]\(問題)** セクションで以下の値を指定します。 
+    - **[Severity]\(重大度)**: 既定値をそのまま使用します。
+    - **[問題の種類]**: **[データ移行]** を選択します。
+    - **[カテゴリ]**: **[Migrate to ZRS within a region]\(リージョン内の ZRS への移行\)** を選択します。
+    - **[タイトル]**: **ZRS アカウント移行**などのわかりやすいタイトルを入力します。
+    - **[詳細]**: **[詳細]** ボックスには、たとえば、\_\_ リージョンで [LRS、GRS] から ZRS に移行するなどの詳細情報を入力します。 
+5. **[次へ]** を選択します。
+6. **[連絡先情報]** ブレードの連絡先情報が正しいことを確認します。
+7. **作成**を選択します。
+
+サポート担当者はお客様に連絡し、必要なサポートを提供します。 
+
+## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS クラシック: BLOB の冗長性をブロックするレガシー オプション
+> [!NOTE]
+> Microsoft は、2021 年 3 月 31 日に ZRS クラシック アカウントを非推奨にして移行します。 ZRS クラシックのお客様には、非推奨になる前に詳細をご連絡します。 
+>
+> リージョンで ZRS が[一般公開](#support-coverage-and-regional-availability)されると、そのリージョンのポータルからは ZRS クラシック アカウントを作成できなくなります。 Microsoft PowerShell と Azure CLI を使用した ZRS クラシック アカウントの作成は、ZRS クラシックが非推奨になるまでのオプションです。
+
+ZRS クラシックでは、1 つから 2 つのリージョン内の複数のデータセンターに、データが非同期的にレプリケートされます。 Microsoft がセカンダリへのフェールオーバーを開始していないと、レプリケートされたデータを利用できないことがあります。 ZRS クラシック アカウントと LRS、GRS、または RA-GRS を相互に変換することはできません。 また、ZRS クラシック アカウントは、メトリックまたはログをサポートしていません。
+
+ZRS クラシックを利用できるのは、汎用 V1 (GPv1) ストレージ アカウントの**ブロック BLOB** に限られます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](storage-account-overview.md)」をご覧ください。
+
+LRS、ZRS クラシック、GRS、または RA-GRS アカウントとの間で ZRS アカウント データを手動で移行するには、AzCopy、Azure Storage Explorer、Azure PowerShell、または Azure CLI のいずれかのツールを使用します。 また、Azure Storage クライアント ライブラリのいずれかを使用して、独自の移行ソリューションを構築することもできます。
 
 ## <a name="see-also"></a>関連項目
-
 - [Azure Storage のレプリケーション](storage-redundancy.md)
 - [ローカル冗長ストレージ (LRS): Azure Storage の低コストのデータ冗長性](storage-redundancy-lrs.md)
 - [geo 冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)

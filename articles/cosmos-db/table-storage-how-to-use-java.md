@@ -1,28 +1,24 @@
 ---
-title: Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法 | Microsoft Docs
-description: NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。
+title: Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
+description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 services: cosmos-db
-documentationcenter: java
-author: mimig1
-manager: jhubbard
-editor: tysonn
-ms.assetid: 45145189-e67f-4ca6-b15d-43af7bfd3f97
+author: SnehaGunda
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: Java
-ms.topic: article
-ms.date: 03/20/2018
-ms.author: mimig
-ms.openlocfilehash: b11faf56ac700399fc411c7feb9910ada355e952
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: sample
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: e6bae31f0e3558f274ee638c380e69c15b7c3889
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079315"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>概要
 この記事では、Azure Table Storage サービスと Azure Cosmos DB を使用する一般的なシナリオの実行方法について説明します。 サンプルは Java で記述され、 [Azure Storage SDK for Java][Azure Storage SDK for Java]を利用しています。 テーブルの**作成**、**一覧表示**、および**削除**と、テーブル内のエンティティの**挿入**、**照会**、**変更**、および**削除**の各シナリオについて説明します。 テーブルの詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。
@@ -31,14 +27,19 @@ ms.lasthandoff: 03/28/2018
 > SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。 詳細については、「[Azure Storage SDK for Android に関するページ][Azure Storage SDK for Android]｣をご覧ください。
 >
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
+
+### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 このガイドで使用するストレージ機能は、Java アプリケーション内でローカルで実行することも、Azure の Web ロールまたは worker ロールで動作するコード内で実行することもできます。
 
-この記事のサンプルを使用するには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。 その次に、開発システムが、GitHub の [Azure Storage SDK for Java][Azure Storage SDK for Java] リポジトリに示されている最小要件と依存関係を満たしていることを確認します。 システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。 それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
+この記事のサンプルを使用するには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントまたは Azure Cosmos DB アカウントを作成する必要があります。 その次に、開発システムが、GitHub の [Azure Storage SDK for Java][Azure Storage SDK for Java] リポジトリに示されている最小要件と依存関係を満たしていることを確認します。 システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。 それらのタスクが完了すると、この記事の例を使用した Java アプリケーションを作成できます。
 
 ## <a name="configure-your-application-to-access-table-storage"></a>テーブル ストレージにアクセスするようにアプリケーションを構成する
 Azure Storage API または Azure Cosmos DB Table API を使用してテーブルにアクセスする Java ファイルの先頭には、次の import ステートメントを追加します。
@@ -63,7 +64,7 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-## <a name="add-an-azure-cosmos-db-connection-string"></a>Azure Cosmos DB 接続文字列の追加
+## <a name="add-an-azure-cosmos-db-table-api-connection-string"></a>Azure Cosmos DB Table API 接続文字列の追加
 Azure Cosmos DB アカウントは、接続文字列を使用して、テーブルのエンドポイントと資格情報を格納します。 クライアント アプリケーションの実行時、Azure Cosmos DB 接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、[Azure Portal](https://portal.azure.com) に表示される Azure Cosmos DB アカウントの名前とプライマリ アクセス キーを使用します。 
 
 この例では、Azure Cosmos DB 接続文字列を保持する静的フィールドを宣言する方法が示されています。
@@ -414,7 +415,7 @@ catch (Exception e)
 ```
 
 ## <a name="modify-an-entity"></a>エンティティを変更する
-エンティティを変更するには、そのエンティティをテーブル サービスから取得し、エンティティ オブジェクトに変更を加えて、その変更を置換またはマージ操作でテーブル サービスに戻して保存します。 次のコードは、既存のユーザーの電話番号を変更します。 挿入の場合のように **TableOperation.insert** を呼び出すのではなく、このコードは **TableOperation.replace** を呼び出します。 このアプリケーションがエンティティを取得した後で別のアプリケーションが変更を加えていない限り、 **CloudTable.execute** メソッドはテーブル サービスを呼び出し、このエンティティは置き換えられます。 別のアプリケーションが変更を加えた場合は、例外がスローされるので、このエンティティを取得して変更し、もう一度保存する必要があります。 このオプティミスティック同時実行制御の再試行パターンは、分散したストレージ システムでは一般的です。
+エンティティを変更するには、そのエンティティをテーブル サービスから取得し、エンティティ オブジェクトに変更を加えて、その変更を置換またはマージ操作でテーブル サービスに戻して保存します。 次のコードは、既存のユーザーの電話番号を変更します。 挿入の場合のように **TableOperation.insert** を呼び出すのではなく、このコードは **TableOperation.replace** を呼び出します。 このアプリケーションがエンティティを取得した後で別のアプリケーションが変更を加えていない限り、 **CloudTable.execute** メソッドはテーブル サービスを呼び出し、このエンティティは置き換えられます。 別のアプリケーションが変更を加えた場合は、例外がスローされるので、このエンティティを取得して変更し、もう一度保存する必要があります。 このオプティミスティック コンカレンシーの再試行パターンは、分散したストレージ システムでは一般的です。
 
 ```java
 try
@@ -454,7 +455,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを照会する
-テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。 プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。 次のコードのクエリは、**select** メソッドを使って、テーブル内のエンティティの電子メール アドレスだけを返します。 結果は **EntityResolver** によって **String** コレクションへのプロジェクション (サーバーから返されるエンティティの型変換) が行われます。 プロジェクションの詳細については、「[Azure Tables: Introducing Upsert and Query Projection (Azure Tables: アップサートとクエリ プロジェクションの概要)][Azure Tables: Introducing Upsert and Query Projection]」をご覧ください。 プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
+テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。 プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。 次のコードのクエリは、**select** メソッドを使って、テーブル内のエンティティの電子メール アドレスだけを返します。 結果は **EntityResolver** によって **String** コレクションへのプロジェクション (サーバーから返されるエンティティの型変換) が行われます。 プロジェクションの詳細については、[Azure テーブル: アップサートおよびクエリ プロジェクションの概要][Azure Tables: Introducing Upsert and Query Projection] に関するページを参照してください。 プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
 
 ```java
 try
@@ -496,7 +497,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>エンティティの挿入または置換を行う
-エントリをテーブルに追加するときは、多くの場合、そのエントリがテーブル内に既に存在しているかどうかを把握していません。 エンティティの挿入または置換操作では、エンティティが存在しない場合にそのエンティティを挿入し、エンティティが存在する場合はその既存のエンティティを置き換えるという操作を 1 つの要求で処理することができます。 これまでの例に対して、次のコードは "Walter Harp" のエンティティを挿入または置換します。 新しいエンティティを作成すると、このコードは **TableOperation.insertOrReplace** メソッドを呼び出します。 その後、**CloudTable** オブジェクトの **execute** を呼び出し、テーブルとそのテーブルの挿入および置換操作をパラメーターとして渡します。 エンティティの一部のみ更新するには、**TableOperation.insertOrMerge** メソッドを代わりに使えます。 挿入または置換はローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。 挿入または置換、挿入またはマージの詳細については、「[Azure Tables: Introducing Upsert and Query Projection (Azure Tables: アップサートとクエリ プロジェクションの概要)][Azure Tables: Introducing Upsert and Query Projection]」をご覧ください。
+エントリをテーブルに追加するときは、多くの場合、そのエントリがテーブル内に既に存在しているかどうかを把握していません。 エンティティの挿入または置換操作では、エンティティが存在しない場合にそのエンティティを挿入し、エンティティが存在する場合はその既存のエンティティを置き換えるという操作を 1 つの要求で処理することができます。 これまでの例に対して、次のコードは "Walter Harp" のエンティティを挿入または置換します。 新しいエンティティを作成すると、このコードは **TableOperation.insertOrReplace** メソッドを呼び出します。 その後、**CloudTable** オブジェクトの **execute** を呼び出し、テーブルとそのテーブルの挿入および置換操作をパラメーターとして渡します。 エンティティの一部のみ更新するには、**TableOperation.insertOrMerge** メソッドを代わりに使えます。 挿入または置換はローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。 挿入または置換、および挿入またはマージの詳細については、この [Azure テーブル: アップサートおよびクエリ プロジェクションの概要][Azure Tables: Introducing Upsert and Query Projection] に関するページを参照してください。
 
 ```java
 try
@@ -530,7 +531,7 @@ catch (Exception e)
 ```
 
 ## <a name="delete-an-entity"></a>エンティティを削除する
-エンティティは、取得後に簡単に削除できます。 エンティティを取得したら、削除するエンティティを指定して **TableOperation.delete** を呼び出します。 その後、**CloudTable** オブジェクトの **execute** を呼び出します。 次のコードは、ユーザー エンティティを取得して削除します。
+エンティティは、取得後に簡単に削除できます。 エンティティを取得した後、削除するエンティティを指定して **TableOperation.delete** を呼び出します。 その後、**CloudTable** オブジェクトの **execute** を呼び出します。 次のコードは、ユーザー エンティティを取得して削除します。
 
 ```java
 try
@@ -597,14 +598,12 @@ catch (Exception e)
 * [Azure Storage SDK for Java][Azure Storage SDK for Java]
 * [Azure ストレージ クライアント SDK リファレンス][Azure ストレージ クライアント SDK リファレンス]
 * [Azure Storage REST API][Azure Storage REST API]
-* [Azure Storage チーム ブログ][Azure Storage Team Blog]
+* [Azure Storage チームのブログ][Azure Storage チームのブログ]
 
 詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」を参照してください。
 
-[Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
+[Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure ストレージ クライアント SDK リファレンス]: http://azure.github.io/azure-storage-java/
+[Azure ストレージ クライアント SDK リファレンス]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

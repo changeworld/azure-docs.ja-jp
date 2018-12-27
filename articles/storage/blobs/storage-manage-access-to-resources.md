@@ -1,18 +1,18 @@
 ---
-title: "Azure Blob Storage のコンテナーと BLOB に対するパブリック読み取りアクセスを有効にする | Microsoft Docs"
-description: "コンテナーと BLOB で匿名アクセスを使用できるようにする方法、およびこれらにプログラムでアクセスする方法について説明します。"
+title: Azure Blob Storage のコンテナーと BLOB に対するパブリック読み取りアクセスを有効にする | Microsoft Docs
+description: コンテナーと BLOB で匿名アクセスを使用できるようにする方法、およびこれらにプログラムでアクセスする方法について説明します。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: 4ddafb095816b5be82a18faa9c60869094e5e4c6
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e27be86a7a14a38c5083949a1a7255574d2d0dc6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956083"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名読み取りアクセスを管理する
 Azure Blob Storage のコンテナーとその BLOB に対する匿名のパブリック読み取りアクセスを有効にすることができます。 そうすることで、アカウント キーを共有せず、Shared Access Signature (SAS) も必要とせずに、これらのリソースに対する読み取り専用のアクセスを付与できます。
@@ -32,14 +32,14 @@ Azure Blob Storage のコンテナーとその BLOB に対する匿名のパブ�
 
 * [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure CLI 2.0](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
+* [Azure CLI](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
 * ストレージ クライアント ライブラリのいずれか、または REST API を使用して、プログラムで設定
 
 ### <a name="set-container-permissions-in-the-azure-portal"></a>Azure Portal でコンテナーのアクセス許可を設定する
 [Azure Portal](https://portal.azure.com) でコンテナーのアクセス許可を設定するには、次の手順に従います。
 
 1. ポータルで **[ストレージ アカウント]** ブレードを開きます。 ストレージ アカウントを検索するには、メイン ポータル メニュー ブレードで **[ストレージ アカウント]** を選択します。
-1. メニュー ブレードの **[BLOB サービス]** で、**[コンテナー]** を選択します。
+1. メニュー ブレードの **[BLOB サービス]** で、**[BLOB]** を選択します。
 1. コンテナーの行を右クリックするか、省略記号を選択して、コンテナーの**コンテキスト メニュー**を開きます。
 1. コンテキスト メニューの **[アクセス ポリシー]** を選択します。
 1. ドロップダウン メニューの **[アクセスの種類]** を選択します。
@@ -117,21 +117,21 @@ public static void DownloadBlobAnonymously()
 | --- | --- | --- |
 | List Containers |所有者のみ |所有者のみ |
 | コンテナーの作成 |所有者のみ |所有者のみ |
-| コンテナーのプロパティの取得 |すべて |所有者のみ |
-| Get Container Metadata |すべて |所有者のみ |
+| コンテナーのプロパティの取得 |All |所有者のみ |
+| Get Container Metadata |All |所有者のみ |
 | Set Container Metadata |所有者のみ |所有者のみ |
 | コンテナー ACL の取得 |所有者のみ |所有者のみ |
 | Set Container ACL |所有者のみ |所有者のみ |
 | Delete Container |所有者のみ |所有者のみ |
-| BLOBs の一覧 |すべて |所有者のみ |
+| BLOBs の一覧 |All |所有者のみ |
 | Put Blob |所有者のみ |所有者のみ |
-| Get Blob |すべて |すべて |
-| BLOB のプロパティの取得 |すべて |すべて |
+| Get Blob |All |All |
+| BLOB のプロパティの取得 |All |All |
 | Set Blob Properties |所有者のみ |所有者のみ |
-| BLOB のメタデータの取得 |すべて |すべて |
+| BLOB のメタデータの取得 |All |All |
 | Set Blob Metadata |所有者のみ |所有者のみ |
 | Put Block |所有者のみ |所有者のみ |
-| Get Block List (REST API) (コミット後のブロックのみ) |すべて |すべて |
+| Get Block List (REST API) (コミット後のブロックのみ) |All |All |
 | Get Block List (REST API) (コミット前のブロックのみまたは全ブロック) |所有者のみ |所有者のみ |
 | Put Block List |所有者のみ |所有者のみ |
 | Delete Blob |所有者のみ |所有者のみ |
@@ -139,7 +139,7 @@ public static void DownloadBlobAnonymously()
 | Snapshot Blob |所有者のみ |所有者のみ |
 | Lease Blob |所有者のみ |所有者のみ |
 | Put Page |所有者のみ |所有者のみ |
-| ページ範囲の取得 |すべて |すべて |
+| ページ範囲の取得 |All |All |
 | Append Blob |所有者のみ |所有者のみ |
 
 ## <a name="next-steps"></a>次の手順

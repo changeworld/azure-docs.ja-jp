@@ -1,6 +1,6 @@
 ---
-title: "ロード バランサーの TCP アイドル タイムアウトの構成 | Microsoft Docs"
-description: "ロード バランサーの TCP アイドル タイムアウトの構成"
+title: ロード バランサーの TCP アイドル タイムアウトの構成 | Microsoft Docs
+description: ロード バランサーの TCP アイドル タイムアウトの構成
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23020907"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer の TCP アイドル タイムアウト設定を構成する
 

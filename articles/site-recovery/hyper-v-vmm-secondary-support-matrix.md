@@ -1,20 +1,21 @@
 ---
-title: Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする場合のサポート マトリックス | Microsoft Docs
+title: Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにディザスター リカバリーする場合のサポート マトリックス | Microsoft Docs
 description: Azure Site Recovery を使用した、セカンダリ サイトへの VMM クラウド内の Hyper-V VM のレプリケーションのサポートについてまとめます。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 767b0e76b73c082ddb75374f51700b85272f713e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1fbc243332684e549f6ce2fd10a10bac3aa383d1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836841"
 ---
-# <a name="support-matrix-for-replication-of-hyper-v-vms-to-a-secondary-site"></a>セカンダリ サイトへの Hyper-V VM のレプリケーションのサポート マトリックス
+# <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、System Center Virtual Machine Manager (VMM) クラウドで管理されている Hyper-V VM をセカンダリ サイトにレプリケートするときに、サポートされるものをまとめます。 Hyper-V VM を Azure にレプリケートする場合は、[こちらのサポート マトリックス](hyper-v-azure-support-matrix.md)を確認してください。
 
@@ -109,7 +110,7 @@ RDM | 該当なし
 
 **最新** | **更新プログラム**
 --- | --- | --- | --- | ---
-5.1.19 ([ポータルから入手可能](http://aka.ms/downloaddra) | [最新の機能と修正](https://support.microsoft.com/kb/3155002)
+5.1.19 ([ポータルから入手可能](https://aka.ms/downloaddra) | [最新の機能と修正](https://support.microsoft.com/kb/3155002)
 
 
 

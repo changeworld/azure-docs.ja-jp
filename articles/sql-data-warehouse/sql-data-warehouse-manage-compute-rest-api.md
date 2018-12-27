@@ -2,23 +2,20 @@
 title: REST を使って Azure SQL Data Warehouse の一時停止、再開、スケーリングを行う | Microsoft Docs
 description: REST API を介して、SQL Data Warehouse でコンピューティング能力を管理します。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: kfile
-editor: ''
+author: kevinvngo
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 03/22/2018
-ms.author: barbkess
-ms.openlocfilehash: 518bbe23f1dcb9ffdffcfb67f875165617762c78
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 8db4d5cb69b65e60cd77d85d743798168bc6d813
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300835"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の REST API
 Azure SQL Data Warehouse でコンピューティング能力を管理するための REST API について説明します。

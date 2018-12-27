@@ -1,26 +1,20 @@
 ---
-title: "Linux ベースの Azure HDInsight で Hadoop Oozie ワークフローを使用する | Microsoft Docs"
-description: "Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。"
+title: Linux ベースの Azure HDInsight で Hadoop Oozie ワークフローを使用する
+description: Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 53c249c24af774499becdf18350ff75dbc2ab861
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+author: omidm1
+ms.author: omidm
+ms.reviewer: jasonh
+ms.topic: conceptual
+ms.date: 06/26/2018
+ms.openlocfilehash: 4ea8ded6abcdee397511272c539f9be6cdd12c0e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685533"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Hadoop で Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -36,14 +30,12 @@ Azure HDInsight で Apache Oozie と Hadoop を使用する方法を説明しま
 Oozie を使って、Java プログラムやシェル スクリプトなどの、システムに固有のジョブをスケジュールすることもできます。
 
 > [!NOTE]
-> HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory を使う方法です。 Data Factory について詳しくは、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。
+> HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory を使う方法です。 Data Factory について詳しくは、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。 Enterprise セキュリティ パッケージを使用したクラスターで Oozie を使用するには、「[Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)」を参照してください。
 
-> [!IMPORTANT]
-> ドメイン参加済みの HDInsight では、Oozie は有効になっていません。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight クラスター**: [Linux での HDInsight の使用](/hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* **通常の HDInsight クラスター**: [Linux での HDInsight の使用](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください
 
 > [!IMPORTANT]
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以降の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -108,6 +100,9 @@ Oozie では、ジョブに必要なすべてのリソースを同じディレ�
 ```bash
 hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 ```
+
+> [!NOTE]
+> ファイルが既に存在するというメッセージが表示される場合があります。
 
 ワークフローで他のリソース (MapReduce アプリケーションを含む jar など) を使っている場合は、これらのリソースも追加する必要があります。
 
@@ -692,7 +687,7 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
 **解決方法**: ジョブが使う Blob Storage アドレスを変更します。
 
-### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie is not allowed to impersonate &lt;USER> (Oozie は &lt;USER> の偽装を許可されていません)
+### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie is not allowed to impersonate &lt;USER&gt; (Oozie は &lt;USER&gt; の偽装を許可されていません)
 
 **現象**: ジョブの状態が **SUSPENDED** に変更されます。 ジョブの詳細に、`RunHiveScript` の状態が **START_MANUAL** と示されます。 アクションを選ぶと、次のエラー メッセージが表示されます。
 
@@ -758,7 +753,6 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 [hdinsight-get-started-emulator]: hdinsight-get-started-emulator.md
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
-[sqldatabase-create-configue]: sql-database-create-configure.md
 [sqldatabase-get-started]: sql-database-get-started.md
 
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
@@ -771,7 +765,7 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-script]: https://technet.microsoft.com/en-us/library/ee176961.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176961.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 

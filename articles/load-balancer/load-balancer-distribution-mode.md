@@ -4,8 +4,6 @@ description: ソース IP アフィニティをサポートするように Azure
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-ms.assetid: 7df27a4d-67a8-47d6-b73e-32c0c6206e6e
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: ae793bad9cef86158418eb87e0c38ee0370a6bd2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b521d633f5779daeab431a16a13f72bbf301182c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415527"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer の分散モードを構成する
 
@@ -47,7 +46,15 @@ Load Balancer は、ソース IP アフィニティ分散モードを使用し�
 
 ## <a name="configure-source-ip-affinity-settings"></a>ソース IP アフィニティ設定を構成する
 
-仮想マシンの場合、タイムアウト設定を変更するには Azure PowerShell をご使用ください。 次のようにして、Azure エンドポイントを仮想マシンに追加してロード バランサー分散モードを構成します。
+Resource Manager を使用してデプロイされた仮想マシンの場合は、PowerShell を使用して、既存の負荷分散規則でのロード バランサーの分散設定を変更します。 これにより分散モードが更新されます。 
+
+```powershell 
+$lb = Get-AzureRmLoadBalancer -Name MyLb -ResourceGroupName MyLbRg 
+$lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp' 
+Set-AzureRmLoadBalancer -LoadBalancer $lb 
+```
+
+従来の仮想マシンの場合は、Azure PowerShell を使用して分散設定を変更します。 次のようにして、Azure エンドポイントを仮想マシンに追加してロード バランサー分散モードを構成します。
 
 ```powershell
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
@@ -117,9 +124,9 @@ Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol
 
 ### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>デプロイ済みの負荷分散セットの分散モードを変更する
 
-Azure クラシック デプロイメント モデルを使用して、既存のデプロイ構成を変更します。 `x-ms-version` ヘッダーを追加し、値をバージョン 2014-09-01 以降に設定します。
+Azure クラシック デプロイ モデルを使用して、既存のデプロイ構成を変更します。 `x-ms-version` ヘッダーを追加し、値をバージョン 2014-09-01 以降に設定します。
 
-#### <a name="request"></a>要求
+#### <a name="request"></a>Request
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml

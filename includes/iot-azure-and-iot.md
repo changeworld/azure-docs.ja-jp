@@ -1,4 +1,20 @@
-
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/25/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: f27dbf20eab5866ac3061d888c17e970a1d197f7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34666757"
+---
 # <a name="azure-and-the-internet-of-things"></a>Azure とモノのインターネット
 
 Microsoft Azure とモノのインターネット (IoT) にようこそ この記事では、クラウドの IoT ソリューションの一般的な特性について説明します。 IoT ソリューションでは、数百万に達する可能性があるデバイスと、ソリューション バックエンドとの間にセキュリティで保護された双方向通信が必要です。 たとえばソリューションでは、自動化された予測分析を使用して、デバイスとクラウドとの間でやり取りされるイベント ストリームから知見を得ることが考えられます。
@@ -58,14 +74,14 @@ IoT ソリューション アーキテクチャでは、通常、デバイスが
 
 ### <a name="presentation-and-business-connectivity"></a>プレゼンテーションおよびビジネスの接続性
 
-プレゼンテーションおよびビジネスの接続性レイヤーでは、エンド ユーザーが IoT ソリューションおよびデバイスとやり取りできます。 このレイヤーによって、ユーザーが、デバイスから収集されたデータを表示して分析することができます。 これらのビューは、履歴データとほぼリアルタイムのデータの両方を表示できる、ダッシュボードまたは BI レポートの形式をとることができます。 たとえば、オペレーターは、特定のポンプ場の状態を確認し、システムによって生成されるアラートを参照できます。 また、このレイヤーによって、IoT ソリューション バックエンドと既存の基幹業務アプリケーションの統合が可能になり、企業のビジネス プロセスやワークフローと結びつけることができます。 たとえば、予測メンテナンス ソリューションは、メンテナンスを必要とするポンプ を特定したときに、エンジニアのポンプ場訪問を予約するスケジューリング システムと統合することができます。
+プレゼンテーションおよびビジネスの接続性レイヤーでは、エンド ユーザーが IoT ソリューションおよびデバイスとやり取りできます。 このレイヤーによって、ユーザーが、デバイスから収集されたデータを表示して分析することができます。 これらのビューは、履歴データとほぼリアルタイムのデータの両方を表示できる、ダッシュボードまたは BI レポートの形式をとることができます。 たとえば、オペレーターは、特定のポンプ場の状態を確認し、システムによって生成されるアラートを参照できます。 また、このレイヤーによって、IoT ソリューション バックエンドと既存の基幹業務アプリケーションの統合が可能になり、企業のビジネス プロセスやワークフローと結びつけることができます。 たとえば、予測メンテナンス ソリューションアクセレレータは、メンテナンスを必要とするポンプ を特定したときに、エンジニアのポンプ場訪問を予約するスケジューリング システムと統合することができます。
 
 [img-solution-architecture]: ./media/iot-azure-and-iot/iot-reference-architecture.png
 [img-dashboard]: ./media/iot-azure-and-iot/iot-suite.png
 
 [lnk-iot-hub]: ../articles/iot-hub/iot-hub-what-is-iot-hub.md
-[lnk-iot-suite]: ../articles/iot-suite/iot-suite-overview.md
+[lnk-iot-suite]: ../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
 [lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
-[Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
+[Azure IoT solution accelerators]: http://azure.microsoft.com/solutions/iot
 [lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf

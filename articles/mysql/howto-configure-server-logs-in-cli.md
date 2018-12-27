@@ -6,15 +6,16 @@ author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 037f631b3b23e66f1ed54106cc5be14a809b2e22
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e3940f07ab97eb2ad03c347c39bf2412a8497f5e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978456"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Azure CLI を使用してサーバー ログを構成してアクセスする
 Azure CLI (Azure のコマンドライン ユーティリティ) を使用して Azure Database for MySQL のサーバー ログをダウンロードできます。
@@ -22,7 +23,7 @@ Azure CLI (Azure のコマンドライン ユーティリティ) を使用して
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドの手順を実行するには、以下が必要です。
 - [Azure Database for MySQL サーバー](quickstart-create-mysql-server-database-using-azure-cli.md)
-- [Azure CLI 2.0](/cli/azure/install-azure-cli)、またはブラウザーでの Azure Cloud Shell
+- ブラウザーでの [Azure CLI](/cli/azure/install-azure-cli) または Azure Cloud Shell
 
 ## <a name="configure-logging-for-azure-database-for-mysql"></a>Azure Database for MySQL のログ記録の構成
 以下の手順に従って、MySQL 低速クエリ ログにアクセスするサーバーを構成できます。
@@ -40,14 +41,14 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ```
 
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーのログの一覧表示
-サーバーの利用可能なログ ファイルを一覧表示するには、[az mysql server-logs list](/cli/azure/mysql/server-logs#az_mysql_server_logs_list) コマンドを実行します。
+サーバーの利用可能なログ ファイルを一覧表示するには、[az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) コマンドを実行します。
 
 リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mysql.database.azure.com** のログ ファイルを一覧表示できます。 その後、ログ ファイルの一覧を **log\_files\_list.txt** という名前のテキスト ファイルに送信します。
 ```azurecli-interactive
 az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>サーバーからログをダウンロードする
-[az mysql server-logs download](/cli/azure/mysql/server-logs#az_mysql_server_logs_download) コマンドで、サーバーの個々のログ ファイルをダウンロードできます。 
+[az mysql server-logs download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) コマンドで、サーバーの個々のログ ファイルをダウンロードできます。 
 
 次の例を使用して、リソース グループ **myresourcegroup** のサーバー **mydemoserver.mysql.database.azure.com** の特定のログ ファイルを、ローカル環境にダウンロードします。
 ```azurecli-interactive

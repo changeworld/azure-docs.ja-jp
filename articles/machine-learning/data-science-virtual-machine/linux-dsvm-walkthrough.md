@@ -3,27 +3,29 @@ title: Azure での Linux データ サイエンス仮想マシンを使用し�
 description: Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/16/2018
-ms.author: bradsev
-ms.openlocfilehash: aff0dd17baa72b3f58ed5effbedb3a4c630f22c6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 07/16/2018
+ms.author: gokuma
+ms.openlocfilehash: 49956234c00129508254b96d7d63a4b30af3ad55
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037585"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
 
-このチュートリアルで説明するデータ サイエンス タスクは、「 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)」で説明されている手順に従います。 このプロセスは、データ サイエンティストのチームがインテリジェント アプリケーションの構築ライフサイクルにわたって効果的に共同作業できるようにする体系的なアプローチをデータ サイエンスにもたらします。 また、個人が従うことができるデータ サイエンスの反復的なフレームワークも提供します。
+このチュートリアルで説明するデータ サイエンス タスクは、「 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)」で説明されている手順に従います。 このプロセスは、データ サイエンティストのチームがインテリジェント アプリケーションの構築ライフサイクルにわたって効果的に共同作業できるようにする体系的なアプローチをデータ サイエンスにもたらします。 また、個人が従うことができるデータ サイエンスの反復的なフレームワークも提供します。
 
 このチュートリアルでは、[spambase](https://archive.ics.uci.edu/ml/datasets/spambase) データセットを分析します。 このデータセットは、スパムまたはハム (スパムではないメール) としてマークされた一連のメールです。メールの内容に関する統計情報も含まれています。 含まれている統計情報については、次の次のセクションで説明します。
 
@@ -40,7 +42,7 @@ Linux データ サイエンス仮想マシンを使用する前に、次を用�
 [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) データセットは、比較的小さく、4601 例しか含まれていません。 このサイズでは、リソース要件が中程度に抑えられるため、データ サイエンス VM の主要な機能をいくつか示す際に便利です。
 
 > [!NOTE]
-> このチュートリアルは、D2 v2 サイズの Linux データ サイエンス仮想マシンで作成されました。 このサイズの DSVM でこのチュートリアルの手順を処理できます。
+> このチュートリアルは、D2 v2 サイズの Linux Data Science Virtual Machine (CentOS Edition) で作成されました。 このサイズの DSVM でこのチュートリアルの手順を処理できます。
 >
 >
 
@@ -75,12 +77,8 @@ R を使って、データを確認し、基本的な機械学習を実行して
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
-ターミナル ウィンドウを開き、R の対話型コンソールを使用して、新しい R セッションを開始します。
+ターミナル ウィンドウを開き、R の対話型コンソールを使用して、新しい R セッションを開始するか、コンピューターにプレインストールされている RStudio を使用します。
 
-> [!NOTE]
-> 次の手順には、RStudio を使用することもできます。 RStudio をインストールするには、ターミナルで次のコマンドを実行します。 `./Desktop/DSVM\ tools/installRStudio.sh`
->
->
 
 データをインポートし、環境を設定するには、次を実行します。
 
@@ -185,12 +183,13 @@ R を使って、データを確認し、基本的な機械学習を実行して
 
 前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio にサインインする必要があります。 サインインするには、ワークスペース ID と認証トークンが必要です。 これらの値を見つけ、これらの値で AzureML の変数を初期化するには、次を実行します。
 
-左側のメニューにある **[設定]** を選択します。 **[ワークスペース ID]**の値をメモします。 ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
+左側のメニューにある **[設定]** を選択します。 **[ワークスペース ID]** の値をメモします。 ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
 上部にあるメニューの **[Authorization Tokens (認証トークン)]** を選択し、**[Primary Authorization Token (プライマリ認証トークン)]** の値をメモします。![3](./media/linux-dsvm-walkthrough/workspace-token.png)
 
 DSVM の R セッションで、 **AzureML** パッケージを読み込み、変数の値にメモしたトークンとワークスペース ID を設定します。
 
+    if(!require("AzureML")) install.packages("AzureML")
     require(AzureML)
     wsAuth = "<authorization-token>"
     wsID = "<workspace-id>"
@@ -205,29 +204,28 @@ DSVM の R セッションで、 **AzureML** パッケージを読み込み、�
 
 特徴を入力として受け取り、予測値を返す予測関数が必要です。
 
-    predictSpam <- function(char_freq_dollar, word_freq_remove, word_freq_hp) {
-        predictDF <- predict(model.rpart, data.frame("char_freq_dollar" = char_freq_dollar,
-        "word_freq_remove" = word_freq_remove, "word_freq_hp" = word_freq_hp))
-        return(colnames(predictDF)[apply(predictDF, 1, which.max)])
+    predictSpam <- function(newdata) {
+      predictDF <- predict(model.rpart, newdata = newdata)
+      return(colnames(predictDF)[apply(predictDF, 1, which.max)])
     }
+
 
 **publishWebService** 関数を使用して、predictSpam 関数を AzureML に発行します。
 
-    spamWebService <- publishWebService("predictSpam",
-        "spamWebService",
-        list("char_freq_dollar"="float", "word_freq_remove"="float","word_freq_hp"="float"),
-        list("spam"="int"),
-        wsID, wsAuth)
+    spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
+
 
 この関数は、**predictSpam** 関数を受け取り、入力と出力が定義された **spamWebService** という名前の Web サービスを作成し、新しいエンドポイントに関する情報を返します。
 
-次のコマンドを使用して、API エンドポイントやキー アクセスなど、発行された Web サービスの詳細を確認します。
+次のコマンドを使用して、API エンドポイントやキー アクセスなど、公開されている最新の Web サービスの詳細を確認します。
 
-    spamWebService[[2]]
+    s<-tail(services(ws, name = "spamWebService"), 1)
+    ep <- endpoints(ws,s)
+    ep
 
 テスト セットの最初の 10 行に対して試すには、次を実行します。
 
-    consumeDataframe(spamWebService$endpoints[[1]]$PrimaryKey, spamWebService$endpoints[[1]]$ApiLocation, smallTestSet[1:10, 1:3])
+    consume(ep, smallTestSet[1:10, ])
 
 
 ## <a name="use-other-tools-available"></a>利用できるその他のツールを使用する
@@ -263,7 +261,7 @@ python またはコマンド ラインから呼び出すこともできます。
 Python を使用して開発するために、DSVM には Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。
 
 > [!NOTE]
-> Anaconda ディストリビューションには、[Condas](http://conda.pydata.org/docs/index.html) が含まれています。これを使うと、さまざまなバージョンやパッケージがインストールされている、Python 用のカスタム環境を作成できます。
+> Anaconda ディストリビューションには、[Conda](http://conda.pydata.org/docs/index.html) が含まれています。これを使用して、さまざまなバージョンやパッケージがインストールされている、Python 用のカスタム環境を作成できます。
 >
 >
 
@@ -283,7 +281,7 @@ scikit-learn のサポート ベクター マシンを使用して、spambase �
 
 AzureML エンドポイントを発行する方法を示すために、前に R モデルを発行したときのように、3 つの変数の簡略化されたモデルを作成します。
 
-    X = data.ix[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
+    X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
     y = data.ix[:, 57]
     clf = svm.SVC()
     clf.fit(X, y)
@@ -315,6 +313,24 @@ AzureML エンドポイントを発行する方法を示すために、前に R 
 
 ## <a name="jupyterhub"></a>Jupyterhub
 DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Python、R、または Julia のコードと分析を共有するためのクロスプラットフォーム環境) が付属しています。 Jupyter Notebook には JupyterHub からアクセスします。 ローカルの Linux ユーザー名とパスワードを使用して、***https://\<VM の DNS 名または IP アドレス\>:8000/*** にサインインします。 JupyterHub のすべての構成ファイルは、 **/etc/jupyterhub**ディレクトリにあります。
+
+> [!NOTE]
+> 現在のカーネルの Jupyter Notebook から (`pip` コマンドを通して) Python Package Manager を使用するには、コード セルで、次のコマンドを次の例のように使用できます。
+```python
+   import sys
+   ! {sys.executable} -m pip install numpy -y
+```
+>
+>
+
+> [!NOTE]
+> 現在のカーネルの Jupyter Notebook から (`conda` コマンドを通して) Conda インストーラーを使用するには、コード セルで、次のコマンドを次の例のように使用できます。
+```python
+   import sys
+   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+```
+>
+>
 
 いくつかのサンプル Notebook は、VM に既にインストールされています。
 
@@ -358,14 +374,14 @@ Rattle では、タブベースのインターフェイスを使用します。 
 
 **[Explore (探索)]** タブでは、洞察力に富んださまざまなプロットを生成することもできます。 データのヒストグラムをプロットするには:
 
-* **[Distributions (ディストリビューション)]**を選択します。
+* **[Distributions (ディストリビューション)]** を選択します。
 * **word_freq_remove** と **word_freq_you** の **[Histogram (ヒストグラム)]** チェック ボックスをオンにします。
-* **[Execute (実行)]**を選択します。 1 つのグラフ ウィンドウに両方の密度プロットが表示され、メールには "you" という単語が "remove" よりも頻繁に出現することが明確に示されます。
+* **[Execute (実行)]** を選択します。 1 つのグラフ ウィンドウに両方の密度プロットが表示され、メールには "you" という単語が "remove" よりも頻繁に出現することが明確に示されます。
 
 相関関係プロットも興味深いものです。 相関関係プロットを作成するには:
 
 * **[Type (種類)]** として **[Correlation (相関関係)]** を選択します。
-* **[Execute (実行)]**を選択します。
+* **[Execute (実行)]** を選択します。
 * 推奨される変数の最大数が 40 である旨の警告が表示されます。 **[Yes (はい)]** を選択して、プロットを表示します。
 
 興味深い相関関係が表示されます。たとえば、"technology" が "HP" および "labs" と強力に相関しています。 また、"650" とも強力に相関しています。これは、データセットの提供者の市外局番が 650 であるためです。
@@ -387,7 +403,7 @@ Rattle では、クラスター分析を実行することもできます。 出
 * word_freq_business
 * spam
 
-次に、**[Cluster (クラスター)]** タブに移動し、**[KMeans]** を選択して、*[Number of clusters (クラスター数)]* を 4 に設定します。 **[Execute (実行)]**を選択します。 結果が出力ウィンドウに表示されます。 1 つのクラスターには高い頻度で "george" と "hp" が含まれているため、おそらく本物の仕事のメールでしょう。
+次に、**[Cluster (クラスター)]** タブに移動し、**[KMeans]** を選択して、*[Number of clusters (クラスター数)]* を 4 に設定します。 **[Execute (実行)]** を選択します。 結果が出力ウィンドウに表示されます。 1 つのクラスターには高い頻度で "george" と "hp" が含まれているため、おそらく本物の仕事のメールでしょう。
 
 単純なデシジョン ツリーの機械学習モデルを作成するには:
 
@@ -399,7 +415,7 @@ Rattle では、クラスター分析を実行することもできます。 出
 Rattle の便利な機能の 1 つに、複数の機械学習メソッドを実行し、それらをすばやく評価する機能があります。 手順は次のとおりです。
 
 * **[Type (種類)]** として **[All (すべて)]** を選択します。
-* **[Execute (実行)]**を選択します。
+* **[Execute (実行)]** を選択します。
 * その後で、**[Type (種類)]** で **[SVM]** などのいずれか 1 つをクリックして、結果を表示できます。
 * また、 **[Evaluate (評価)]** タブを使用して、検証セットに対するモデルのパフォーマンスを比較することもできます。たとえば、 **[Error Matrix (誤差マトリックス)]** を選択すると、検証セットに対する各モデルの混同行列、全体の誤差、および平均クラス誤差が表示されます。
 * また、ROC 曲線のプロット、感度解析の実行、および他の種類のモデル評価を行うこともできます。
@@ -467,7 +483,7 @@ psql (PostgreSQL の対話型ターミナル) を組み込みの postgres ユー
 * **[PostgreSQL]** を右クリックし、**[Modify Driver (ドライバーの変更)]** を選択します。
 * **[Extra Class Path (その他のクラス パス)]**、**[Add (追加)]** の順に選択します。
 * **[File Name (ファイル名)]** に「***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar***」と入力します。
-* **[Open (開く)]**を選択します。
+* **[Open (開く)]** を選択します。
 * [List Drivers (ドライバーの一覧)] を選択し、**[Class Name (クラス名)]** で **[org.postgresql.Driver]** を選択して、**[OK]** を選択します。
 
 ローカル サーバーへの接続を設定するには:
@@ -479,7 +495,7 @@ psql (PostgreSQL の対話型ターミナル) を組み込みの postgres ユー
 * "*ユーザー名*" と "*パスワード*" を入力します。
 * Click **OK**.
 * **[Connection (接続)]** ウィンドウを開くには、***Spam database*** エイリアスをダブルクリックします。
-* **[接続]**を選択します。
+* **[接続]** を選択します。
 
 クエリを実行するには:
 
@@ -528,6 +544,6 @@ sqlcmd を使用してクエリを実行します。
 Squirrel SQL を使用してクエリを実行することもできます。 Microsoft MSSQL Server JDBC Driver (***/usr/share/java/jdbcdrivers/sqljdbc42.jar*** で見つけることができます) を使用して、PostgreSQL の同様の手順に従います。
 
 ## <a name="next-steps"></a>次の手順
-Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [Team Data Science Process](http://aka.ms/datascienceprocess)に関するページをご覧ください。
+Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)に関するページをご覧ください。
 
 シナリオごとの Team Data Science Process の手順を示したエンド ツー エンドのチュートリアルの詳細については、「 [Team Data Science Process のチュートリアル](../team-data-science-process/walkthroughs.md)」をご覧ください。 これらのチュートリアルでは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法についても説明します。

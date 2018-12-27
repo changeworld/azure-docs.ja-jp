@@ -1,23 +1,24 @@
 ---
-title: "Azure Service Bus のメッセージ数 | Microsoft Docs"
-description: "Azure Service Bus のメッセージ数の取得"
+title: Azure Service Bus のメッセージ数 | Microsoft Docs
+description: Azure Service Bus のメッセージ数の取得
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: e6524fe056ee2a1d81c9cccf257008b2369352b1
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.date: 09/26/2018
+ms.author: spelluru
+ms.openlocfilehash: 954c16cefe6d7ffe61a0b04b274b9bf92306a587
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857586"
 ---
 # <a name="message-counters"></a>メッセージ カウンター
 
@@ -45,7 +46,6 @@ PowerShell を使用して、次のように、メッセージ数を取得でき
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)

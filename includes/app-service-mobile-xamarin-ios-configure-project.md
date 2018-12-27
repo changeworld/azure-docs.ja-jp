@@ -1,3 +1,16 @@
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: a69df0cc9ea14a2c9fa172c77663afb1d6861f9b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133753"
+---
 #### <a name="configure-the-ios-project-in-xamarin-studio"></a>Xamarin Studio での iOS プロジェクトの構成
 1. Xamarin.Studio で **Info.plist** を開き、新しい App ID で前に作成した Bundle ID で **[Bundle Identifier (バンドル識別子)]** を更新します。
 
@@ -13,7 +26,7 @@
    これで、プロジェクトではコード署名のために新しいプロファイルを使用するようになります。 公式の Xamarin デバイス プロビジョニングのドキュメントについては、 [Xamarin デバイス プロビジョニング]に関するページを参照してください。
 
 #### <a name="configure-the-ios-project-in-visual-studio"></a>Visual Studio での iOS プロジェクトの構成
-1. Visual Studio で、プロジェクトを右クリックし、 **[プロパティ]**をクリックします。
+1. Visual Studio で、プロジェクトを右クリックし、 **[プロパティ]** をクリックします。
 2. [プロパティ] ページで、**[iOS アプリケーション]** タブをクリックし、前に作成した ID で **[識別子]** を更新します。
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-23.png)

@@ -2,20 +2,28 @@
 title: PowerShell を使用したエラスティック ジョブの作成と管理 | Microsoft Docs
 description: Azure SQL Database プールを管理するために使用するPowerShell
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: pwershell
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 425213f66a4b9960cf68a40c935fedff12f9f75d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: 9ed5026211bec11b510d095decac25f8d4b8a52a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243199"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
+
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
 
 **エラスティック データベース ジョブ** 用 PowerShell API (プレビュー) を使うと、スクリプトの実行対象となるデータベースのグループを定義できます。 この記事では、PowerShell のコマンドレットを使用して **エラスティック データベース ジョブ** を作成して管理する方法について説明します。 [エラスティック ジョブの概要](sql-database-elastic-jobs-overview.md)に関するページを参照してください。 
 
@@ -38,7 +46,7 @@ ms.lasthandoff: 04/06/2018
 <table style="width:100%">
   <tr>
     <th>オブジェクトの種類</th>
-    <th>[説明]</th>
+    <th>説明</th>
     <th>関連する PowerShell API</th>
   </tr>
   <tr>
@@ -208,7 +216,7 @@ ms.lasthandoff: 04/06/2018
 * 資格情報には、ジョブ タスクの実行に必要最小限の特権を持たせます。  詳細については、MSDN の記事「 [SQL Server の承認とアクセス許可](https://msdn.microsoft.com/library/bb669084.aspx) 」を参照してください。
 
 ### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>データベース全体に対するジョブ実行用に暗号化された資格情報を作成するには
-新しい暗号化された資格情報を作成するには、[**Get-Credential コマンドレット**](https://technet.microsoft.com/library/hh849815.aspx)を実行します。ユーザー名とパスワードの入力が求められます。この資格情報は [**New-AzureSqlJobCredential コマンドレット**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential)に渡すことができます。
+新しい暗号化された資格情報を作成するには、[**Get-Credential コマンドレット**](/powershell/module/microsoft.powershell.security/get-credential)を実行します。ユーザー名とパスワードの入力が求められます。この資格情報は [**New-AzureSqlJobCredential コマンドレット**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential)に渡すことができます。
 
     $credentialName = "{Credential Name}"
     $databaseCredential = Get-Credential

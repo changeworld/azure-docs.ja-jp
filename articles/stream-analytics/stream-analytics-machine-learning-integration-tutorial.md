@@ -1,24 +1,20 @@
 ---
-title: Azure Stream Analytics と Machine Learning の統合 | Microsoft Docs
-description: Stream Analytics ジョブで、ユーザー定義関数および Machine Learning を使用する方法
-keywords: ''
-documentationcenter: ''
+title: Azure Stream Analytics と Azure Machine Learning の統合
+description: この記事では、Azure Machine Learning を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。ここではユーザーが定義した関数を使用します。
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
+ms.author: mamccrea
 manager: kfile
-ms.assetid: cfced01f-ccaa-4bc6-81e2-c03d1470a7a2
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/01/2018
-ms.author: sngun
-ms.openlocfilehash: e5661f9f3871619201ff9106e87785de802e8933
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.topic: conceptual
+ms.date: 04/16/2018
+ms.openlocfilehash: 2169c3a41991b0b49a4324c16ea079f5943fad0b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685754"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Azure Stream Analytics と Azure Machine Learning を使用した感情分析の実行
 この記事では、Azure Machine Learning を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。 ここでは、Cortana Intelligence ギャラリーの Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。 Cortana Intelligence Suite を使用すると、感情分析モデルを構築する複雑な作業を心配することなくこのタスクを実行できます。
@@ -68,13 +64,13 @@ ms.lasthandoff: 03/30/2018
 
     ![BLOB コンテナーを作成する](./media/stream-analytics-machine-learning-integration-tutorial/create-sa2.png)
 
-5. コンテナーの名前 (この例では `azuresamldemoblob`) を指定し、**[アクセスの種類]** が **[BLOB]** に設定されていることを確認します。 完了したら **[OK]**をクリックします。
+5. コンテナーの名前 (この例では `azuresamldemoblob`) を指定し、**[アクセスの種類]** が **[BLOB]** に設定されていることを確認します。 完了したら **[OK]** をクリックします。
 
     ![BLOB コンテナーの詳細を指定する](./media/stream-analytics-machine-learning-integration-tutorial/create-sa3.png)
 
 6. **[コンテナー]** ブレードで新しいコンテナーを選択します。そのコンテナーのブレードが開きます。
 
-7. **[アップロード]**をクリックします。
+7. **[アップロード]** をクリックします。
 
     ![コンテナーの [アップロード] ボタン](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
@@ -162,7 +158,7 @@ ms.lasthandoff: 03/30/2018
 
    |フィールド  |値  |
    |---------|---------|
-   |**出力エイリアス** | 名前 `datainput` を使用して、**[Select blob storage from your subscription]\(自分のサブスクリプションから Blob ストレージを選択する\)** を選択します。       |
+   |**出力エイリアス** | 名前 `datamloutput` を使用して、**[Select blob storage from your subscription]\(自分のサブスクリプションから Blob ストレージを選択する\)** を選択します。       |
    |**ストレージ アカウント**  |  以前に作成したストレージ アカウントを選択します。  |
    |**コンテナー**  | 以前に作成したコンテナー (`azuresamldemoblob`) を選択します。        |
    |**イベントのシリアル化の形式**  |  **[CSV]** を選択します。       |
@@ -203,14 +199,15 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
 
 3. 次のクエリを入力します。
 
-    ```
+    ```SQL
     WITH sentiment AS (  
-    SELECT text, sentiment(text) as result from datainput  
+    SELECT text, sentiment1(text) as result 
+    FROM datainput  
     )  
 
-    Select text, result.[Score]  
-    Into datamloutput
-    From sentiment  
+    SELECT text, result.[Score]  
+    INTO datamloutput
+    FROM sentiment  
     ```    
 
     このクエリは、入力内の各ツイートに対して感情分析を実行するために、以前に作成した関数 (`sentiment`) を呼び出します。 
@@ -227,7 +224,7 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
 
 2. ブレードの上部にある **[開始]** をクリックします。
 
-3. **[ジョブの開始]** で **[カスタム]** を選択し、CSV ファイルを BLOB ストレージにアップロードした時刻の 1 日前を選びます。 終了したら **[開始]**をクリックします。  
+3. **[ジョブの開始]** で **[カスタム]** を選択し、CSV ファイルを BLOB ストレージにアップロードした時刻の 1 日前を選びます。 終了したら **[開始]** をクリックします。  
 
 
 ### <a name="check-the-output"></a>出力をチェックする

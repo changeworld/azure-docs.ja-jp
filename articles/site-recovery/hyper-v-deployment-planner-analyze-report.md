@@ -1,18 +1,19 @@
 ---
-title: "Hyper-V から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs"
-description: "この記事では、Azure Site Recovery Deployment Planner で生成されるレポートの分析について、Hyper-V から Azure へのシナリオを想定して説明します。"
+title: Hyper-V VM から Azure へのディザスター リカバリーについての Azure Site Recovery Deployment Planner レポートを分析する | Microsoft Docs
+description: この記事では、Hyper-V VM から Azure へのディザスター リカバリーについて、Azure Site Recovery Deployment Planner によって生成されるレポートを分析する方法を説明します。
 services: site-recovery
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 060d51406f67ad8a55cdf61506cd66f5390ebe4c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: ad53b32b9809e8cce459d8317a916a9ddab0e336
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210933"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポートの分析
 この記事では、Azure Site Recovery Deployment Planner で、Hyper-V から Azure へのシナリオに関して生成される Excel レポート内のシートについて取り上げます。
@@ -40,7 +41,7 @@ ms.lasthandoff: 02/22/2018
 
 **[Observed typical data churn per day (GB) (観察された 1 日あたりの標準的なデータの変更頻度 (GB))]**: プロファイリングの全日数にわたって観察されたデータ変更頻度の平均値です。
 
-## <a name="recommendations"></a>推奨事項 
+## <a name="recommendations"></a>Recommendations 
 Hyper-V to Azure レポートの [Recommendations]\(推奨事項\) シートには、[Desired RPO]\(必要な RPO\) の選択内容に応じて、次の情報が表示されます。
 
 ![Recommendations for Hyper-V to Azure レポート](media/hyper-v-deployment-planner-analyze-report/Recommendations-h2a.png)
@@ -239,7 +240,7 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 
 * VM サイズの合計 (レプリケーション + テスト フェールオーバー) が、サポートされている Premium ストレージ アカウントの上限サイズ (35 TB) を超えている。 これは通常、VM にあるいずれか 1 台のディスクのパフォーマンス特性が、Azure または Site Recovery でサポートされる Standard ストレージの上限を超えている場合に発生します。 そのような VM は Premium Storage の領域に分類されます。 一方、Premium ストレージ アカウントでサポートされる最大サイズは 35 TB です。 保護対象となる単一の VM を複数のストレージ アカウントにまたがって保護することはできません。 
 
-    テスト フェールオーバー用に構成されているのが非管理対象ディスクである場合、保護対象 VM で実行されるテスト フェールオーバーは、レプリケーション処理と同じストレージ アカウントで実行されます。 この場合、レプリケーションの記憶域と同じ容量の記憶域が別途必要となります。 レプリケーションの進行と同時にテスト フェールオーバーを正常に完了できるようにするためです。 テスト フェールオーバー用に構成されているのが管理ディスクである場合、テスト フェールオーバー VM のための追加の領域は不要です。
+    テスト フェールオーバー用に構成されているのが非管理対象ディスクである場合、保護対象 VM で実行されるテスト フェールオーバーは、レプリケーション処理と同じストレージ アカウントで実行されます。 この場合、レプリケーションの記憶域と同じ容量の記憶域が別途必要となります。 レプリケーションの進行と同時にテスト フェールオーバーを正常に完了できるようにするためです。 テスト フェールオーバー用に構成されているのがマネージド ディスクである場合、テスト フェールオーバー VM のための追加の領域は不要です。
 
 * レプリケーション元の IOPS が、ストレージでサポートされている IOPS の上限 (ディスクあたり 7,500 IOPS) を超えている。
 

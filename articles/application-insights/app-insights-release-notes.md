@@ -1,23 +1,23 @@
 ---
-title: "Azure Application Insights のリリース ノート | Microsoft Docs"
-description: "Application Insights SDK の最新の更新内容。"
+title: Azure Application Insights のリリース ノート | Microsoft Docs
+description: Application Insights SDK の最新の更新内容。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9cd2ecdb-c2b9-4e4a-b6aa-beb0c2ca4ffc
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8c399ab17471ddb14ec29f77e0d636e394900f52
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 343593929c31a8da7542695fbc6f5d95cfbdc0cd
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720832"
 ---
 # <a name="sdk-release-notes---application-insights"></a>SDK リリース ノート - Application Insights
 リリース ノートと SDK の更新手順の詳細を以下に示します。

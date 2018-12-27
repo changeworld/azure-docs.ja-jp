@@ -1,22 +1,21 @@
 ---
-title: "Azure IoT Hub Device Provisioning Service (.NET) を使用してデバイスをプロビジョニングする | Microsoft Docs"
-description: "Azure IoT Hub Device Provisioning Service (.NET) を使用して、1 つの IoT ハブにデバイスをプロビジョニングします"
-services: iot-dps
-keywords: 
-author: msebolt
-ms.author: v-masebo
+title: Azure IoT Hub Device Provisioning Service (.NET) を使用してデバイスをプロビジョニングする | Microsoft Docs
+description: Azure IoT Hub Device Provisioning Service (.NET) を使用して、1 つの IoT ハブにデバイスをプロビジョニングします
+author: wesmc7777
+ms.author: wesmc
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
-ms.devlang: na
+ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 6919f962d853faa572ee7ad5d0cb9aeacd3bd2b6
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 8602f020481249282756a952a46b32bd9e768372
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241329"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 
@@ -49,7 +48,7 @@ ms.lasthandoff: 01/20/2018
 
 - X.509 ベースのデバイスの場合:
     - *.pem* ファイルまたは *.cer* ファイルの形式で[デバイスに発行された X.509 証明書](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)。 個別登録では、X.509 システムの "*リーフ証明書*" を使用する必要があります。登録グループでは、"*ルート証明書*" または同等の "*署名者証明書*" を使用する必要があります。
-    - 名前空間/スコープ内でデバイスを一意に識別するために使用する "*登録 ID*"。 これは、デバイス ID と同じである場合もあれば、異なる場合もあります。 この ID はすべてのデバイスで必須です。 X.509 ベースのデバイスの場合、登録 ID は証明書の共通名 (CN) から派生します。 これらの要件の詳細については、[デバイスの概念](https://docs.microsoft.com/en-us/azure/iot-dps/concepts-device)に関するページを参照してください。
+    - 名前空間/スコープ内でデバイスを一意に識別するために使用する "*登録 ID*"。 これは、デバイス ID と同じである場合もあれば、異なる場合もあります。 この ID はすべてのデバイスで必須です。 X.509 ベースのデバイスの場合、登録 ID は証明書の共通名 (CN) から派生します。 これらの要件の詳細については、[デバイスの概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)に関するページを参照してください。
 
 デバイスを Device Provisioning Service に登録するには、次の 2 つの方法があります。
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 01/20/2018
     
 1. ソリューション エクスプローラーで **[DeviceProvisioning]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices.provisioning.service** を検索します。 エントリを選択し、**[インストール]** をクリックして **Microsoft.Azure.Devices.Provisioning.Service** パッケージをインストールして、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet パッケージへの参照とその依存関係が追加されます。
+1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices.provisioning.service** を検索します。 エントリを選択し、**[インストール]** をクリックして **Microsoft.Azure.Devices.Provisioning.Service** パッケージをインストールして、使用条件に同意します。 この手順により、[Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet パッケージがダウンロードおよびインストールされ、パッケージへの参照とパッケージの依存関係が追加されます。
 
 1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
@@ -71,10 +70,10 @@ ms.lasthandoff: 01/20/2018
     using Microsoft.Azure.Devices.Provisioning.Service;
     ```
 
-1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションに記載されている DPS 接続文字列に置き換えてください。
+1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで書き留めておいた Device Provisioning Service 接続文字列に置き換えてください。
    
     ```csharp
-    static readonly string ServiceConnectionString = "{DPS connection string}";
+    static readonly string ServiceConnectionString = "{Device Provisioning Service connection string}";
 
     private const string SampleRegistrationId = "sample-individual-csharp";
     private const string SampleTpmEndorsementKey =
@@ -231,7 +230,7 @@ ms.lasthandoff: 01/20/2018
 
 ## <a name="verify-the-device-is-registered"></a>デバイスが登録されていることを確認する
 
-デバイスが起動すると、次のアクションが実行されます。 詳細については、TPM シミュレーター サンプル アプリケーションの [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) を参照してください。 
+デバイスが起動すると、次のアクションが実行されます。 詳細については、[プロビジョニング デバイス クライアントのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device)に関するページを参照してください。 
 
 1. デバイスが Device Provisioning Service に登録要求を送信します。
 2. TPM デバイスの場合、Device Provisioning Service が登録チャレンジを送信し、デバイスがこれに応答します。 
@@ -242,7 +241,7 @@ ms.lasthandoff: 01/20/2018
     ![ポータルに表示されたハブへの成功した接続](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * デバイスを登録する

@@ -1,24 +1,25 @@
 ---
-title: "既存の可用性セットへの Azure VM の追加のサポート | Microsoft Docs"
-description: "既存の可用性セットへの Azure VM の追加のサポートについて説明します。"
+title: 既存の可用性セットへの Azure VM の追加のサポート | Microsoft Docs
+description: 既存の可用性セットへの Azure VM の追加のサポートについて説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: Deland-Han
 manager: cshepard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines
 ms.workload: virtual-machines
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 8bf2a55563772e26239445732b2b08df677436ef
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 13448f4b335d84264d4141cb4fb8c3eadcf0303e
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092142"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>既存の可用性セットへの Azure VM の追加のサポート
 

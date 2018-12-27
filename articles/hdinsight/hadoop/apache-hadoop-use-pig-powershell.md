@@ -1,32 +1,26 @@
 ---
-title: "HDInsight での Hadoop Pig と PowerShell の使用 - Azure | Microsoft Docs"
-description: "Azure PowerShell を使用して HDInsight で Pig ジョブを Hadoop クラスターに送信する方法を説明します。"
+title: PowerShell を使用して HDInsight 上で Apache Pig を使用する - Azure
+description: Azure PowerShell を使用して HDInsight 上の Apache Hadoop クラスターに Pig ジョブを送信する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 737089c1-b494-4387-9def-7b4dac3be532
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/16/2018
-ms.author: larryfr
+ms.topic: conceptual
+ms.date: 05/09/2018
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 7fa50e206c86b307f7e2a90ff0938571b64f41bb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1e9f6778f12f4f6260bfc20c3a78f7929f13405b
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634534"
 ---
-# <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Azure PowerShell を使用して HDInsight で Pig ジョブを使用する
+# <a name="use-azure-powershell-to-run-apache-pig-jobs-with-hdinsight"></a>Azure PowerShell を使用して HDInsight 上で Apache Pig ジョブを実行する
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-このドキュメントでは、Azure PowerShell を使用して HDInsight クラスターで Pig ジョブを Hadoop に送信する方法を説明します。 Pig では map 関数や reduce 関数ではなく、データ変換をモデル化する言語 (Pig Latin) を使用して MapReduce ジョブを記述できます。
+このドキュメントでは、Azure PowerShell を使用して HDInsight クラスター上の Apache Hadoop に Apache Pig ジョブを送信する方法について説明します。 Pig では map 関数や reduce 関数ではなく、データ変換をモデル化する言語 (Pig Latin) を使用して MapReduce ジョブを記述できます。
 
 > [!NOTE]
 > このドキュメントには、例で使用される Pig Latin ステートメントで何が実行されるかに関する詳細は含まれていません。 この例で使用される Pig Latin については「 [HDInsight での Pig Latin と Hadoop の使用](hdinsight-use-pig.md)」をご覧ください。
@@ -46,7 +40,7 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
 
 リモート HDInsight クラスターで Pig ジョブを実行するときに次のコマンドレットを使用します。
 
-* **Login-AzureRmAccount**: Azure サブスクリプションに対して Azure PowerShell を認証します。
+* **Connect-AzureRmAccount**: Azure サブスクリプションに対して Azure PowerShell を認証します。
 * **New-AzureRmHDInsightPigJobDefinition**: 指定された Pig Latin ステートメントを使用して "*ジョブ定義*" を作成します。
 * **Start-AzureRmHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
 * **Wait-AzureRmHDInsightJob**: ジョブ オブジェクトを使用して、ジョブのステータスを確認します。 ジョブの完了を待機するか、待機時間が上限に達します。

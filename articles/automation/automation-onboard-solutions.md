@@ -7,13 +7,14 @@ author: eamonoreilly
 ms.author: eamono
 manager: carmonm
 ms.topic: tutorial
-ms.date: 03/16/2018
+ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 97db493b77483d68860c6124f1063bc4a743c3be
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5cf09753645d8238232e064af2ba1a301a2a7217
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41920846"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Update と Change Tracking ソリューションの Azure Automation への配布準備をする
 
@@ -30,13 +31,13 @@ ms.lasthandoff: 03/23/2018
 
 このチュートリアルを完了するには、以下が必要です。
 
-* として機能します。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
+* Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
 * マシンを管理する [Automation アカウント](automation-offering-get-started.md)。
 * オンボードする[仮想マシン](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="onboard-an-azure-vm"></a>Azure VM の配布準備
 
-マシンの配布準備を行う方法は複数あります。[仮想マシン](automation-onboard-solutions-from-vm.md)や [Automation アカウント](automation-onboard-solutions-from-automation-account.md)から、または Runbook を使用して行うことができます。 このチュートリアルでは、Runbook を使用して Update Management を有効にする方法について説明します。 さらに大きな規模で Azure Virtual Machines の配布準備を行うには、Change Tracking または Update Management ソリューションで既存の VM の配布準備をする必要があります。 この手順では、Update Management および Change Tracking で仮想マシンの配布準備を行います。
+マシンの使用準備を行う方法は複数あります。[仮想マシンから](automation-onboard-solutions-from-vm.md)、[Automation アカウントから](automation-onboard-solutions-from-automation-account.md)[複数のマシンから参照することから](automation-onboard-solutions-from-browse.md)、または Runbook によって、ソリューションの使用準備を行うことができます。 このチュートリアルでは、Runbook を使用して Update Management を有効にする方法について説明します。 さらに大きな規模で Azure Virtual Machines の配布準備を行うには、Change Tracking または Update Management ソリューションで既存の VM の配布準備をする必要があります。 この手順では、Update Management および Change Tracking で仮想マシンの配布準備を行います。
 
 ### <a name="enable-change-tracking-and-inventory"></a>Change Tracking と Inventory の有効化
 

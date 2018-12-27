@@ -1,11 +1,11 @@
 ---
-title: "VPN ゲートウェイの複数のサイト間接続を VNet に追加する: Azure Portal: Resource Manager| Microsoft Docs"
-description: "マルチサイトのサイト間接続を、既存の接続がある VPN Gateway に追加する"
+title: 'VPN ゲートウェイの複数のサイト間接続を VNet に追加する: Azure Portal: Resource Manager| Microsoft Docs'
+description: マルチサイトのサイト間接続を、既存の接続がある VPN Gateway に追加する
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f3e8b165-f20a-42ab-afbb-bf60974bb4b1
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29398612"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する
 

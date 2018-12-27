@@ -15,14 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: f43790d3495e1c09730e90b5077ec840731a7d83
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9032a0b68c4c8789010b0304b64a63d4924521fb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141573"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFoam を実行する
-この記事では、Azure 仮想マシンで OpenFoam を実行する一例を紹介します。 ここでは、Linux 計算ノードを含む Microsoft HPC Pack クラスターを Azure にデプロイし、Intel MPI で [OpenFoam](http://openfoam.com/) ジョブを実行します。 計算ノードに RDMA 対応の Azure VM を使用できるため、計算ノードは Azure RDMA ネットワーク経由で通信します。 Azure で OpenFoam を実行するその他のオプションとして、 Marketplace で入手できる、完全に構成済みの商用のイメージ (UberCloud の [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/) など) を [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) で実行するというものがあります。 
+この記事では、Azure 仮想マシンで OpenFoam を実行する一例を紹介します。 ここでは、Linux 計算ノードを含む Microsoft HPC Pack クラスターを Azure にデプロイし、Intel MPI で [OpenFoam](http://openfoam.com/) ジョブを実行します。 計算ノードに RDMA 対応の Azure VM を使用できるため、計算ノードは Azure RDMA ネットワーク経由で通信します。 Azure で OpenFoam を実行するその他のオプションとして、 Marketplace で入手できる、完全に構成済みの商用のイメージ (UberCloud の [OpenFoam 2.3 on CentOS 6](https://azuremarketplace.microsoft.com/marketplace/apps/cfd-direct.cfd-direct-from-the-cloud) など) を [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) で実行するというものがあります。 
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -45,7 +46,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
   * Linux ノードをデプロイした後は、SSH 接続を使用してその他の管理タスクを実行します。 Azure Portal で、各 Linux VM の SSH 接続の詳細を探します。  
 * **Intel MPI** - Azure の SLES 12 HPC 計算ノード上で OpenFOAM を実行するには、[Intel.com サイト](https://software.intel.com/en-us/intel-mpi-library/)から Intel MPI Library 5 ランタイムをインストールする必要があります。 (CentOS ベースの HPC イメージには、Intel MPI 5 がプレインストールされています)。その後、必要に応じて Linux 計算ノードに Intel MPI をインストールします。 この手順の準備をするには、Intel に登録した後、確認の電子メールに含まれる関連 Web ページへのリンクをクリックします。 次に、適切なバージョンの Intel MPI の .tgz ファイルのダウンロード リンクをコピーします。 この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。
 * **OpenFOAM Source Pack** - [OpenFOAM Foundation のサイト](http://openfoam.org/download/2-3-1-source/)から Linux 用の OpenFOAM Source Pack ソフトウェアをダウンロードします。 この記事は、OpenFOAM-2.3.1.tgz としてダウンロードできる Source Pack Version 2.3.1 に基づいて説明しています。 Linux 計算ノードに対する OpenFOAM のアンパックとコンパイルについては、この記事で後述する手順に従ってください。
-* **EnSight** (省略可) - OpenFOAM シミュレーションの結果を確認するには、可視化分析プログラムである [EnSight](https://www.ceisoftware.com/download/) をダウンロードしてインストールします。 ライセンスとダウンロードの詳細については、EnSight のサイトを参照してください。
+* **EnSight** (省略可) - OpenFOAM シミュレーションの結果を確認するには、可視化分析プログラムである [EnSight](https://ensighttransfe.wpengine.com/direct-access-downloads/) をダウンロードしてインストールします。 ライセンスとダウンロードの詳細については、EnSight のサイトを参照してください。
 
 ## <a name="set-up-mutual-trust-between-compute-nodes"></a>コンピューティング ノードの相互の信頼関係をセットアップする
 複数の Linux ノード上でクロス ノード ジョブを実行するには、すべてのノードが互いに信頼関係を持っている必要があります ( **rsh** または **ssh** によって)。 Microsoft HPC Pack IaaS デプロイ スクリプトを使用して HPC Pack クラスターを作成する場合は、指定した管理者アカウントに対して永続的な相互の信頼関係がスクリプトによって自動的にセットアップされます。 管理者以外のユーザーをクラスター ドメインに作成した場合は、それらのユーザーにジョブを割り当てるときに、ノード間に一時的な相互の信頼関係をセットアップする必要があります。ジョブ終了後、この関係は破棄します。 ユーザーごとに信頼を確立するには、HPC Pack で信頼関係に使用するクラスターに RSA キー ペアを指定します。
@@ -298,12 +299,12 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 いよいよ HPC クラスター マネージャーでジョブを送信します。 いくつかのジョブ タスクでは、コマンド ラインにスクリプト hpcimpirun.sh を指定する必要があります。
 
 1. クラスター ヘッド ノードに接続し、HPC クラスター マネージャーを開始します。
-2. **[リソース管理]** で、Linux 計算ノードが**オンライン**状態にあることを確認します。 オンライン状態にない場合は、その計算ノードを選択し、 **[オンラインにする]**をクリックします。
+2. **[リソース管理]** で、Linux 計算ノードが**オンライン**状態にあることを確認します。 オンライン状態にない場合は、その計算ノードを選択し、 **[オンラインにする]** をクリックします。
 3. **[ジョブ管理]** で、**[新しいジョブ]** をクリックします。
 4. ジョブの名前を入力します (たとえば、 *sloshingTank3D*)。
    
    ![Job details][job_details]
-5. **[ジョブ リソース]**で、リソースの種類として “ノード” を選択し、[最小] を 2 に設定します。 この例では、この構成により、それぞれ 8 個のコアを持つ 2 つの Linux ノード上でジョブが実行されます。
+5. **[ジョブ リソース]** で、リソースの種類として “ノード” を選択し、[最小] を 2 に設定します。 この例では、この構成により、それぞれ 8 個のコアを持つ 2 つの Linux ノード上でジョブが実行されます。
    
    ![[ジョブ リソース]][job_resources]
 6. 左側のナビゲーションで **[Edit Tasks (タスクの編集)]** をクリックしてから、**[追加]** をクリックしてタスクをジョブに追加します。 次のコマンド ラインと設定を使用して、4 つのタスクをジョブに追加します。
@@ -342,7 +343,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
    ![Task dependencies][task_dependencies]
 8. **[送信]** をクリックして、このジョブを実行します。
    
-   既定では、HPC Pack は、ログオンした現在のユーザー アカウントとしてジョブを送信します。 **[送信]**をクリックした後、ユーザー名とパスワードの入力を求めるダイアログ ボックスが表示される場合があります。
+   既定では、HPC Pack は、ログオンした現在のユーザー アカウントとしてジョブを送信します。 **[送信]** をクリックした後、ユーザー名とパスワードの入力を求めるダイアログ ボックスが表示される場合があります。
    
    ![ジョブの資格情報][creds]
    
@@ -361,7 +362,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 10. ジョブが終了したら、C:\OpenFoam\sloshingTank3D 下のフォルダーにあるジョブの結果と、C:\OpenFoam にあるログ ファイルを探します。
 
 ## <a name="view-results-in-ensight"></a>EnSight で結果を表示する
-OpenFOAM ジョブの結果は、 [EnSight](https://www.ceisoftware.com/) を使用して必要に応じて可視化したり分析したりすることができます。 EnSight での可視化とアニメーションの詳細については、こちらの [ビデオ ガイド](http://www.ceisoftware.com/wp-content/uploads/screencasts/vof_visualization/vof_visualization.html)を参照してください。
+OpenFOAM ジョブの結果は、 [EnSight](http://www.ensight.com/) を使用して必要に応じて可視化したり分析したりすることができます。 EnSight での可視化とアニメーションの詳細については、こちらの [ビデオ ガイド](http://www.ensight.com/ensight.com/envideo/)を参照してください。
 
 1. ヘッド ノードに EnSight をインストールし、起動します。
 2. C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case を開きます。
@@ -376,7 +377,7 @@ OpenFOAM ジョブの結果は、 [EnSight](https://www.ceisoftware.com/) を使
    
    ![Edit isosurface color][isosurface_color]
 5. **[Parts]** パネルの **[walls]** を選択して **[walls]** から **[Iso-volume]** を作成し、ツール バーの **[Isosurfaces]** ボタンをクリックします。
-6. ダイアログ ボックスで **[Type]** に **[Isovolume]** を選び、**[Isovolume range]** の [Min] を「0.5」に設定します。 Isovolume を作成するには、 **[Create with selected parts (選択したパーツで作成)]**をクリックします。
+6. ダイアログ ボックスで **[Type]** に **[Isovolume]** を選び、**[Isovolume range]** の [Min] を「0.5」に設定します。 Isovolume を作成するには、 **[Create with selected parts (選択したパーツで作成)]** をクリックします。
 7. 前の手順で作成した **Iso_volume_part** の色を設定します。 たとえば濃い水色に設定します。
 8. **walls**の色を設定します。 たとえば透明白色に設定します。
 9. これで **[Play]** をクリックすると、シミュレーションの結果が表示されます。

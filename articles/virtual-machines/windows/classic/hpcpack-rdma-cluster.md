@@ -15,16 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 03/06/2018
 ms.author: danlep
-ms.openlocfilehash: 437c475735ec3823de51c5f9e996a5303fe9cfa7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 52338cc21e46b544c2abb79cd7094615c837a2e8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233781"
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)
 並列 Message Passing Interface (MPI) アプリケーションを実行するように、[Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) と [RDMA 対応 HPC VM サイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances)を使って Azure の Windows RDMA クラスターを設定します。 HPC Pack クラスターで RDMA 対応の Windows Server ベースのノードを設定すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく Azure の低待機時間で高スループットのネットワークを介して効率的に通信します。
-
-Linux VM 上で Azure RDMA ネットワークにアクセスする MPI ワークロードを実行する場合は、「 [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../../linux/classic/rdma-cluster.md)」を参照してください。
 
 ## <a name="hpc-pack-cluster-deployment-options"></a>HPC Pack クラスターのデプロイ オプション
 Microsoft HPC Pack は、追加コストなしで提供され、Windows または Linux HPC アプリケーションを実行するための HPC クラスターをオンプレミスまたは Azure で作成するために使用できます。 HPC Pack には、Microsoft が実装する Windows 用 Message Passing Interface (MS-MPI) のランタイム環境が含まれています。 サポートされている Windows Server オペレーティング システムを実行している RDMA 対応のインスタンスで使用する場合、HPC Pack は、Azure RDMA ネットワークにアクセスする Windows MPI アプリケーションを実行するための効率的なオプションとなります。 
@@ -52,19 +51,19 @@ Microsoft HPC Pack は、追加コストなしで提供され、Windows また�
     HPC Pack インストール パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=49922)からダウンロードします。 Azure のバースト デプロイの要件と手順については、[Microsoft HPC Pack を使用した Azure worker インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)に関する記事をご覧ください。
 2. **Azure のサブスクリプションで管理証明書を構成する**
    
-    ヘッド ノードと Azure の間の接続をセキュリティで保護するための証明書を構成します。 オプションと手順については、 [HPC Pack 用に Azure の管理証明書を構成するシナリオ](http://technet.microsoft.com/library/gg481759.aspx)に関するページを参照してください。 テスト デプロイでは、HPC Pack により、Azure サブスクリプションに迅速にアップロードできる既定の Microsoft HPC Azure 管理証明書がインストールされます。
+    ヘッド ノードと Azure の間の接続をセキュリティで保護するための証明書を構成します。 オプションと手順については、 [HPC Pack 用に Azure の管理証明書を構成するシナリオ](https://technet.microsoft.com/library/gg481759.aspx)に関するページを参照してください。 テスト デプロイでは、HPC Pack により、Azure サブスクリプションに迅速にアップロードできる既定の Microsoft HPC Azure 管理証明書がインストールされます。
 3. **新しいクラウド サービスとストレージ アカウントを作成する**
    
     Azure Portal を使用して、クラウド サービス (クラシック) とストレージ アカウント (クラシック) を展開用に作成します。 使用する H シリーズ、A8、A9 のサイズが使用可能なリージョンで、これらのリソースを作成します。 [リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/) を参照してください。
 
 4. **Azure ノード テンプレートを作成する**
    
-    HPC クラスター マネージャーのノード テンプレートの作成ウィザードを使用します。 手順については、Microsoft HPC Pack を使用して Azure ノードをデプロイする手順に関するページの [Azure ノード テンプレートの作成](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) に関するセクションを参照してください。
+    HPC クラスター マネージャーのノード テンプレートの作成ウィザードを使用します。 手順については、Microsoft HPC Pack を使用して Azure ノードをデプロイする手順に関するページの [Azure ノード テンプレートの作成](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) に関するセクションを参照してください。
    
     初期テスト用に、手動可用性ポリシーをテンプレートに構成することをお勧めします。
 5. **クラスターにノードを追加する**
    
-    HPC クラスター マネージャーのノードの追加ウィザードを使用します。 詳細については、 [Azure ノードを Windows HPC クラスターに追加する手順](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Add)に関するセクションを参照してください。
+    HPC クラスター マネージャーのノードの追加ウィザードを使用します。 詳細については、 [Azure ノードを Windows HPC クラスターに追加する手順](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Add)に関するセクションを参照してください。
    
     ノードのサイズを指定するときは、RDMA 対応のインスタンス サイズのいずれかを選択します。
    
@@ -77,13 +76,13 @@ Microsoft HPC Pack は、追加コストなしで提供され、Windows また�
     ノードを選択し、HPC クラスター マネージャーの **[開始]** 操作を使用します。 プロビジョニングが完了したら、ノードを選択し、HPC クラスター マネージャーの **[オンラインにする]** 操作を使用します。 ノードでジョブを実行する準備が整います。
 7. **クラスターにジョブを送信する**
    
-   HPC Pack のジョブ送信ツールを使用して、クラスター ジョブを実行します。 [Microsoft HPC Pack のジョブ管理](http://technet.microsoft.com/library/jj899585.aspx)に関するページを参照してください。
+   HPC Pack のジョブ送信ツールを使用して、クラスター ジョブを実行します。 [Microsoft HPC Pack のジョブ管理](https://technet.microsoft.com/library/jj899585.aspx)に関するページを参照してください。
 8. **ノードを停止 (プロビジョニング解除) する**
    
    ジョブの実行が完了したら、HPC クラスター マネージャーでノードをオフラインにし、 **[停止]** 操作を使用します。
 
 ## <a name="scenario-2-deploy-compute-nodes-in-compute-intensive-vms-iaas"></a>シナリオ 2: 計算ノードをコンピューティング集中型 VM にデプロイする (IaaS)
-このシナリオでは、Azure 仮想ネットワークの VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 HPC Pack には、自動デプロイ スクリプトや Azure クイックスタート テンプレートなど、[Azure VM でのデプロイ オプション](../../linux/hpcpack-cluster-options.md)がいくつか用意されています。 例として、下記の考慮事項と手順は、[HPC Pack IaaS デプロイ スクリプト](hpcpack-cluster-powershell-script.md) を使用して Azure での HPC Pack 2012 R2 クラスターのデプロイを自動化する方法を示しています。
+このシナリオでは、Azure 仮想ネットワークの VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 HPC Pack には、自動デプロイ スクリプトや Azure クイックスタート テンプレートなど、[Azure VM でのデプロイ オプション](../../windows/hpcpack-cluster-options.md)がいくつか用意されています。 例として、下記の考慮事項と手順は、[HPC Pack IaaS デプロイ スクリプト](hpcpack-cluster-powershell-script.md) を使用して Azure での HPC Pack 2012 R2 クラスターのデプロイを自動化する方法を示しています。
 
 ![Cluster in Azure VMs][iaas]
 
@@ -99,7 +98,7 @@ Microsoft HPC Pack は、追加コストなしで提供され、Windows また�
    * **仮想ネットワーク**: 使用する H シリーズ、A8、A9 のサイズが使用可能なリージョンで、新しい仮想ネットワークを指定します。 [リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/) を参照してください。
 
    * **Windows Server オペレーティング システム**: RDMA 接続をサポートするには、計算ノード VM に Windows Server 2012 R2 などの互換性のある Windows Server オペレーティング システムを指定します。
-   * **クラウド サービス**: スクリプトでクラシック展開モデルが使用されているため、クラスター VM は Azure クラウド サービスを使用して展開されます (構成ファイルの `ServiceName` 設定)。 1 つのクラウド サービスにヘッド ノードを展開し、コンピューティング ノードは異なるクラウド サービスにデプロイすることをお勧めします。 
+   * **クラウド サービス**: スクリプトでクラシック デプロイ モデルが使用されているため、クラスター VM は Azure クラウド サービスを使用して展開されます (構成ファイルの `ServiceName` 設定)。 1 つのクラウド サービスにヘッド ノードを展開し、コンピューティング ノードは異なるクラウド サービスにデプロイすることをお勧めします。 
    * **ヘッド ノードのサイズ**: このシナリオでは、ヘッド ノードに少なくとも A4 (XL) サイズを用意することを検討してください。
    * **HpcVmDrivers 拡張機能**: デプロイ スクリプトは、Windows Server オペレーティング システムを持つ A8 または A9 サイズの計算ノードをデプロイするときに、Azure VM エージェントと HpcVmDrivers 拡張機能を自動的にインストールします。 HpcVmDrivers は、RDMA ネットワークに接続するためのドライバーを計算ノード VM にインストールします。 RDMA 対応の H シリーズの VM では、HpcVmDrivers 拡張機能を手動でインストールする必要があります。 「[ハイ パフォーマンス コンピューティング VM のサイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
    * **クラスター ネットワークの構成**: デプロイ スクリプトにより、HPC Pack クラスターはトポロジ 5 (Enterprise ネットワークのすべてのノード) で自動的にセットアップされます。 このトポロジは、VM でのすべての HPC Pack クラスターのデプロイに必要です。 クラスター ネットワークのトポロジを後で変更しないでください。
@@ -184,7 +183,6 @@ Azure で HPC Pack を使用して MPI アプリケーションを実行する�
 
 ## <a name="next-steps"></a>次の手順
 * HPC Pack を使用する代わりに、Azure Batch サービスを開発し、Azure の計算ノードの管理されたプールで MPI アプリケーションを実行します。 「 [Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](../../../batch/batch-mpi.md)」をご覧ください。
-* Azure RDMA ネットワークにアクセスする Linux MPI ワークロードを実行する場合は、「 [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../../linux/classic/rdma-cluster.md)」を参照してください。
 
 <!--Image references-->
 [burst]:media/hpcpack-rdma-cluster/burst.png

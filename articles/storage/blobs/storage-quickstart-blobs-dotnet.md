@@ -1,29 +1,27 @@
 ---
-title: Azure クイック スタート - .NET を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs
-description: このクイック スタートでは、ストレージ アカウントおよびコンテナーを作成します。 その後、.NET 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
+title: 'クイック スタート: .NET を使用してオブジェクト ストレージ内に BLOB を作成する - Azure Storage'
+description: このクイック スタートでは、.NET 用 Azure Storage クライアント ライブラリを使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: b84a56996a335f8a137c4219c55b9878e39b5a3b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4b632d9aab89e4c8d79983855bdd12aeafb05147
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712026"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-net"></a>クイック スタート: .NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>クイック スタート: .NET を使用してオブジェクト ストレージ内に BLOB を作成する
 
-このクイックスタートでは、Azure Storage 用の .NET クライアント ライブラリを使用して、コンテナー内のブロック BLOB のアップロード、ダウンロード、および一覧取得を行う方法を説明します。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+このクイック スタートでは、.NET 用 Azure Storage クライアント ライブラリを使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、まず、[Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) で Azure ストレージ アカウントを作成します。 アカウントの作成については、「[ストレージ アカウントの作成](../common/storage-quickstart-create-account.md)」を参照してください。
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 次に、ご使用のオペレーティング システム用の .NET Core 2.0 をダウンロードしてインストールします。 Windows を実行している場合は、Visual Studio をインストールして、.NET Framework を使用してもかまいません。 オペレーティング システムで使用するエディターをインストールすることもできます。
 
@@ -56,26 +54,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 git clone https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart.git
 ```
 
-このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、storage-blobs-dotnet-quickstart フォルダーを開き、storage-blobs-dotnet-quickstart.sln をダブルクリックします。 
+このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、*storage-blobs-dotnet-quickstart* フォルダーを開き、*storage-blobs-dotnet-quickstart.sln* をダブルクリックします。 
+
+[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
 
-アプリケーションを実行するには、ストレージ アカウントの接続文字列を指定する必要があります。 Azure Portal から接続文字列をコピーし、新しい環境変数に書き込みます。 サンプルでは、環境変数から接続文字列を読み取り、それを使って、Azure Storage に対する要求の認証を行います。
+アプリケーションを実行するには、ストレージ アカウントの接続文字列を指定する必要があります。 サンプル アプリケーションは、環境変数から接続文字列を読み取り、それを使って、Azure Storage に対する要求を承認します。
 
-### <a name="copy-your-connection-string-from-the-azure-portal"></a>Azure Portal から接続文字列をコピーする
-
-接続文字列をコピーするには、次の手順を実行します。
-
-1. [Azure Portal](https://portal.azure.com) に移動します。
-2. 自分のストレージ アカウントを探します。
-3. ストレージ アカウントの概要の **[設定]** セクションで、**[アクセス キー]** を選択します。
-4. **[Key1]** の **[接続文字列]** の値を見つけて **[コピー]** ボタンをクリックし、接続文字列をコピーします。  
-
-    ![Azure Portal から接続文字列をコピーする方法を示すスクリーン ショット](media/storage-quickstart-blobs-dotnet/portal-connection-string.png)
-
-## <a name="write-your-connection-string-to-an-environment-variable"></a>環境変数に接続文字列を書き込む
-
-次に、アプリケーションを実行するローカル コンピューター上に新しい環境変数を作成します。 環境変数を設定するには、コンソール ウィンドウを開いて、お使いのオペレーティング システムの手順に従います。 `<yourconnectionstring>` は、実際の接続文字列に置き換えてください。
+接続文字列をコピーした後、アプリケーションを実行しているローカル マシンの新しい環境変数にそれを書き込みます。 環境変数を設定するには、コンソール ウィンドウを開いて、お使いのオペレーティング システムの手順に従います。 `<yourconnectionstring>` は、実際の接続文字列に置き換えてください。
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -260,7 +247,6 @@ do
     {
         Console.WriteLine(item.Uri);
     }
-    blobContinuationToken = results.ContinuationToken;
 } while (blobContinuationToken != null); // Loop while the continuation token is not null. 
 
 ```

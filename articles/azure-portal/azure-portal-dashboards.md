@@ -1,24 +1,25 @@
 ---
-title: "Azure Portal のダッシュボードの作成と共有 | Microsoft Docs"
-description: "この記事では、Azure Portal でダッシュボードを作成して編集する方法について説明します。"
+title: Azure Portal のダッシュボードの作成と共有 | Microsoft Docs
+description: この記事では、Azure Portal でダッシュボードを作成して編集する方法について説明します。
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: sewatson
-manager: timlt
+manager: doubeby
 editor: tysonn
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
-ms.author: sewatson
-ms.openlocfilehash: 7f90c882285170bac34bfe020831d3ac04010a11
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.author: cwatson
+ms.openlocfilehash: 6062e54f0fb584dec4c2db540565c5860ae92a2d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394966"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure Portal でのダッシュボードの作成と共有
 ダッシュボードを複数作成し、ご自分の Azure サブスクリプションにアクセスできる他のユーザーと共有することができます。  この記事では、ダッシュボードの作成、編集、発行のほか、ダッシュボードへのアクセスの管理に関する基本について説明します。
@@ -75,7 +76,7 @@ ms.lasthandoff: 12/11/2017
 
 ![share dashboard](./media/azure-portal-dashboards/share-dashboard.png)
 
-ダッシュボードの発行先となるサブスクリプションとリソース グループを選択するよう求められます。 ダッシュボードをエコシステムにシームレスに統合するために、Microsoft は Azure リソースとして共有ダッシュボードを実装しています (このため、電子メール アドレスを入力して共有することはできません)。  ポータルのほとんどのタイルに表示される情報へのアクセスは、[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)によって管理されています。 アクセス制御の見地からは、共有ダッシュボードは仮想マシンやストレージ アカウントと変わりありません。  
+ダッシュボードの発行先となるサブスクリプションとリソース グループを選択するよう求められます。 ダッシュボードをエコシステムにシームレスに統合するために、Microsoft は Azure リソースとして共有ダッシュボードを実装しています (このため、電子メール アドレスを入力して共有することはできません)。  ポータルのほとんどのタイルに表示される情報へのアクセスは、[Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)によって管理されています。 アクセス制御の見地からは、共有ダッシュボードは仮想マシンやストレージ アカウントと変わりありません。  
 
 Azure サブスクリプションがあり、チームのメンバーに、サブスクリプションの**所有者**、**共同作成者**、または**閲覧者**ロールが割り当てられているとします。  所有者または共同作成者であるユーザーは、そのサブスクリプション内でダッシュボードを一覧表示、表示、作成、変更、削除できます。  閲覧者であるユーザーは、ダッシュボードの一覧表示と表示はできますが、変更と削除はできません。  閲覧者アクセス許可を持つユーザーは、共有ダッシュボードにローカルで編集を加えることはできますが、その変更をサーバーに戻すことはできません。  ただし、自分で使用するためにダッシュボードのプライベート コピーを作成することができます。  通常どおり、ダッシュボードの個々のタイルには、対応するリソースに基づいて独自のアクセス制御ルールが適用されます。  
 
@@ -91,7 +92,7 @@ Azure サブスクリプションがあり、チームのメンバーに、サ�
 
 ![manage access control](./media/azure-portal-dashboards/manage-access.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * リソースの管理については、「 [ポータルを使用した Azure リソースの管理](../azure-resource-manager/resource-group-portal.md)」を参照してください。
 * リソースのデプロイについては、「 [Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-portal.md)」を参照してください。
 

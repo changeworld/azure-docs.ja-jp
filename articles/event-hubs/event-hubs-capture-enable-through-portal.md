@@ -1,26 +1,28 @@
 ---
-title: "ポータルを使用した Azure Event Hubs Capture の有効化 | Microsoft Docs"
-description: "Azure Portal を使用して Event Hubs Capture 機能を有効にします。"
+title: Azure portal を使用してストリーミング イベントをキャプチャする - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure portal を使用し、Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする方法について説明します。
 services: event-hubs
-documentationcenter: 
-author: sethmanheim
+documentationcenter: ''
+author: ShubhaVijayasarathy
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: 39fbdba404bda9383c9164dd1ecd9cb23bfb5cd7
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 12/06/2018
+ms.author: shvija
+ms.openlocfilehash: 7f57e75f90511ace45198d7516a5d2550123d9be
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075116"
 ---
-# <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Azure Portal を使用して Event Hubs Capture を有効にする
+# <a name="enable-capturing-of-events-streaming-through-azure-event-event-hubs"></a>Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする
 
 Azure [Event Hubs Capture][capture-overview] を使用すると、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) アカウントまたは [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) アカウントを選んで、Event Hubs のストリーミング データを自動的に配布することができます。
 
@@ -34,7 +36,7 @@ Capture は、イベント ハブを作成するときに、**[イベント ハ�
 
 既定の時間ウィンドウは 5 分です。 最小値は 1、最大値は 15 です。 **サイズ** ウィンドウの範囲は 10 ～ 500 MB です。
 
-![][1]
+![キャプチャの時間枠][1]
 
 ## <a name="capture-data-to-an-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントへのデータのキャプチャ
 
@@ -51,7 +53,7 @@ Azure Data Lake Store にデータをキャプチャするには、次の手順�
 2. **[イベント ハブの作成]** ポータル ページで、**[Capture Provider]\(キャプチャ プロバイダー\)** ボックスの **[Azure Data Lake Store]** を選択します。
 3. **[Data Lake Store の選択]** で、先ほど作成した Data Lake Store アカウントを指定し、作成したデータ フォルダーのパスを **[Data Lake Path]\(Data Lake のパス\)** フィールドに入力します。
 
-    ![][3]
+    ![Data Lake Storage アカウントの選択][3]
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>既存のイベント ハブに対する Capture の追加または構成
 
@@ -59,21 +61,22 @@ Capture は、Event Hubs 名前空間内の既存のイベント ハブに対し
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-![][2]
+![Azure Blob Storage の構成][2]
 
 ### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 
-![][4]
+![Azure Data Lake Storage の構成][4]
 
 [1]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture1.png
 [2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Event Hubs Capture の詳細については、[Event Hubs Capture の概要][capture-overview]に関するページを参照してください。
 - Event Hubs Capture は Azure Resource Manager テンプレートを使用して構成することもできます。 詳細については、[Azure Resource Manager テンプレートを使用した Capture の有効化](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)に関するページを参照してください。
+- [Event Hubs 名前空間をソースとして Azure Event Grid サブスクリプションを作成する方法を確認します](store-captured-data-data-warehouse.md)。
 - [Azure Portal で Azure Data Lake Store の使用を開始する](../data-lake-store/data-lake-store-get-started-portal.md)
 
 [capture-overview]: event-hubs-capture-overview.md

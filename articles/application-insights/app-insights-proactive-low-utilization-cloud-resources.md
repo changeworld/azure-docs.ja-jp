@@ -1,27 +1,27 @@
 ---
-title: "スマート検出 - Azure Application Insights によって検出される使用率が低いクラウド リソース | Microsoft Docs"
-description: "Azure Application Insights を使用して、アプリケーションの使用率が低いクラウド リソースを監視します。"
+title: スマート検出 - Azure Application Insights によって検出される使用率が低いクラウド リソース | Microsoft Docs
+description: Azure Application Insights を使用して、アプリケーションの使用率が低いクラウド リソースを監視します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8382f6047ae222a01cc0e8d6ca9dcf5593d0dff6
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 7cf72068b9cabceb0c5b535986ac4dfb62151b94
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726918"
 ---
-# <a name="low-utilization-of-cloud-resources-preview"></a>使用率が低いクラウド リソース (プレビュー)
+# <a name="low-cpu-utilization-in-cloud-resources-preview"></a>クラウド リソースでの低い CPU 使用率 (プレビュー)
 
-Application Insights は、アプリケーションの各ロール インスタンスの CPU 使用量を自動的に分析し、CPU 使用率が低いインスタンスを検出します。 この検出を使用して、各ロールが使用するロール インスタンスの数を減らすか、ロールの数を減らすことで、Azure リソースを減らしてコストを削減できます。
+Application Insight は、アプリケーションの各ロール インスタンスの CPU 消費を自動的に分析し、CPU 使用率が低いインスタンスを検出します。 この検出を使用して、各ロールが使用するロール インスタンスの数を減らすか、ロールの数を減らすことで、Azure リソースを減らしてコストを削減できます。
 
 この機能を使用するには、アプリの[パフォーマンス カウンターを構成する](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters)こと以外は、特別な設定は必要ありません。 それは、アプリが十分な CPU パフォーマンス カウンター テレメトリ (% プロセッサ時間) を生成しているときにアクティブになります。
 

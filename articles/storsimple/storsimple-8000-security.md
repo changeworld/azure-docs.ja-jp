@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/27/2018
+ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: ee0534ab8bc3400854ddf550df9ca2f395f8d80d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: ded3c89774c39b5edee02b9e3c6807ce75ff16a4
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566195"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple のセキュリティとデータの保護
 
@@ -42,7 +43,7 @@ Microsoft Azure StorSimple ソリューションは、互いに連携し合う 4
 
 StorSimple デバイス マネージャー サービスは、Microsoft Azure でホストされる管理サービスです。組織が導入したすべての StorSimple デバイスは、このサービスを使用して管理されます。 StorSimple デバイス マネージャー サービスには、Web ブラウザーから組織の資格情報を使用して Azure ポータルにログオンすることでアクセスできます。
 
-StorSimple デバイス マネージャー サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを組織が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。 Azure サブスクリプションを組織が保有していない場合は、「[Azure への組織としてのサインアップ](../active-directory/sign-up-organization.md)」で詳しい情報をご覧いただけます。
+StorSimple デバイス マネージャー サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを組織が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。 Azure サブスクリプションを組織が保有していない場合は、「[Azure への組織としてのサインアップ](../active-directory/fundamentals/sign-up-organization.md)」で詳しい情報をご覧いただけます。
 
 StorSimple デバイス マネージャー サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
 
@@ -120,7 +121,7 @@ StorSimple Snapshot Manager の詳細については、「 [StorSimple Snapshot 
 StorSimple のパスワードの強度と保護を徹底するために、次のガイドラインに従うようお勧めします。
 
 * 3 か月に 1 回はパスワードを変更してください。 年に 1 回のパスワードの変更が強制されます。
-* 強力なパスワードを使用します。 詳細については、 [より強力なパスワードの作成と保護](http://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/)に関するページを参照してください。
+* 強力なパスワードを使用します。 詳細については、 [より強力なパスワードの作成と保護](https://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/)に関するページを参照してください。
 * アクセス メカニズムの種類ごとに必ず異なるパスワードを使用してください。指定する各パスワードは一意であることが必要です。
 * StorSimple デバイスへのアクセスが許可されていない人物とは、それがだれであれパスワードを共有することは避けます。
 * 人前でパスワードについて話したり、パスワードの形式をほのめかしたりすることも避けます。
@@ -204,6 +205,18 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 [!INCLUDE [storsimple Cloud Appliance security](../../includes/storsimple-virtual-device-security.md)]
 
+## <a name="managing-personal-information"></a>個人情報の管理
+
+物理および仮想の両方のシリーズの StorSimple デバイス マネージャーは、次のキー インスタンスに個人情報を収集します。
+
+- ユーザーのメール アドレスが構成されているアラート ユーザー設定。 この情報は、管理者が表示およびクリアできます。 これは、StorSimple 8000 シリーズ デバイスと StorSimple Virtual Array の両方に適用されます。
+ * StorSimple 8000 シリーズの設定を表示およびクリアするには、[StorSimple アラートの表示および管理](storsimple-8000-manage-alerts.md#configure-alert-settings)に関するページにある手順に従います。
+ * StorSimple Virtual Array の設定を表示およびクリアするには、[StorSimple アラートの表示および管理](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)に関するページにある手順に従います。
+- 共有に存在するデータにアクセスできるユーザー。 共有データにアクセスできるユーザーの一覧が表示され、確認できるようになります。 共有が削除されると、この一覧も削除されます。 これは、StorSimple Virtual Array にのみ適用されます。
+ * 共有にアクセスできるユーザーの一覧を表示するか、または共有を削除するには、[StorSimple Virtual Array での共有の管理](storsimple-virtual-array-manage-shares.md)に関するページにある手順に従います。
+
+詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
+
 ## <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
 セキュリティと Microsoft Azure StorSimple に関するいくつかの質問と回答を以下に示します。
@@ -254,7 +267,7 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 **A:** 新しい証明書を StorSimple デバイス マネージャー サービスからダウンロードできます。その後、リモート アクセス クライアントの証明書ストアに新しい証明書をインストールしてください。 手順については、次をご覧ください。
 
-* [Import-Certificate コマンドレット](https://technet.microsoft.com/library/hh848630.aspx)
+* [Import-Certificate コマンドレット](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
 **Q:** StorSimple デバイス マネージャー サービスのセキュリティが侵害されてもデータは保護されますか。
 
@@ -268,19 +281,7 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 **A:** サービス上のすべてのデータは暗号化されており、秘密キーはデバイスに保管されているため、政府機関はお客様に対してデータを要求する必要があります。
 
-## <a name="gdpr-compliance"></a>GDPR コンプライアンス
 
-[一般データ保護規則 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR には、個人情報を収集、格納、および使用する方法に関する多くの要件が含まれています。 GDPR の規則は、EU で運営され、EU の居住者に関係するデータを収集して分析する企業、政府機関、およびその他の組織に課されます。 
-
-物理と仮想の両方のシリーズの StorSimple デバイス マネージャーは GDPR に準拠しています。 個人情報が収集され、サービスで表示される 2 つのキー インスタンスが存在します。
-
-- ユーザーのメール アドレスが構成されているアラート ユーザー設定。 この情報は、管理者が表示およびクリアできます。 これは、StorSimple 8000 シリーズ デバイスと StorSimple Virtual Array の両方に適用されます。
- * StorSimple 8000 シリーズの設定を表示およびクリアするには、[StorSimple アラートの表示および管理](storsimple-8000-manage-alerts.md#configure-alert-settings)に関するページにある手順に従います。
- * StorSimple Virtual Array の設定を表示およびクリアするには、[StorSimple アラートの表示および管理](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)に関するページにある手順に従います。
-- 共有に存在するデータにアクセスできるユーザー。 共有データにアクセスできるユーザーの一覧が表示され、確認できるようになります。 共有が削除されると、この一覧も削除されます。 これは、StorSimple Virtual Array にのみ適用されます。
- * 共有にアクセスできるユーザーの一覧を表示するか、または共有を削除するには、[StorSimple Virtual Array での共有の管理](storsimple-virtual-array-manage-shares.md)に関するページにある手順に従います。
-
-詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

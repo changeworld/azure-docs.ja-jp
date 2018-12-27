@@ -1,24 +1,18 @@
 ---
 title: Azure ExpressRoute のルーティングの要件 | Microsoft Docs
 description: このページでは、ExpressRoute 回線のルーティングを構成および管理するための詳細な要件について説明します。
-documentationcenter: na
 services: expressroute
 author: ganesr
-manager: ganesr
-editor: ''
-ms.assetid: 5b382e79-fa3f-495a-a764-c5ff86af66a2
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.topic: conceptual
+ms.date: 11/05/2018
 ms.author: ganesr
-ms.openlocfilehash: 7380629344b27d5bb1e7af0aeddcb8f7665c1a5c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: cb48a9470a39cbe152f821333050e3dd5a28e1ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230950"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -45,27 +39,21 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
   * [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。  
 
 #### <a name="example-for-private-peering"></a>プライベート ピアリング用の例
-a.b.c.d/29 を使用してピアリングをセットアップすることを選択した場合、このサブネットは 2 つの /30 サブネットに分割されます。 次の例では、a.b.c.d/29 サブネットがどのように使用されるかについて注目します。 
+a.b.c.d/29 を使用してピアリングをセットアップすることを選択した場合、このサブネットは 2 つの /30 サブネットに分割されます。 次の例では、a.b.c.d/29 サブネットの使用方法に注意してください。
 
-a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョニング API を介して Microsoft に渡されます。 a.b.c.d+1 をプライマリ PE の VRF IP として使用すると、Microsoft は a.b.c.d+2 をプライマリ MSEE の VRF IP として使用します。 a.b.c.d+5 をセカンダリ PE の VRF IP として使用すると、Microsoft は a.b.c.d+6 をセカンダリ MSEE の VRF IP として使用します。
+* a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョニング API を介して Microsoft に渡されます。
+  * a.b.c.d+1 をプライマリ PE の VRF IP として使用すると、Microsoft は a.b.c.d+2 をプライマリ MSEE の VRF IP として使用します。
+  * a.b.c.d+5 をセカンダリ PE の VRF IP として使用すると、Microsoft は a.b.c.d+6 をセカンダリ MSEE の VRF IP として使用します。
 
 ここで、192.168.100.128/29 を選択してプライベート ピアリングをセットアップするとします。 192.168.100.128/29 には、192.168.100.128 ～ 192.168.100.135 の範囲のアドレスが含まれています。この中で、
 
 * 192.168.100.128/30 は link1 に割り当てられます。プロバイダーは 192.168.100.129 を使用し、Microsoft は 192.168.100.130 を使用します。
 * 192.168.100.132/30 は link2 に割り当てられます。プロバイダーは 192.168.100.133 を使用し、Microsoft は 192.168.100.134 を使用します。
 
-### <a name="ip-addresses-used-for-azure-public-peering"></a>Azure パブリック ピアリングに使用する IP アドレス
-ユーザーは、所有しているパブリック IP アドレスを使用して BGP セッションをセットアップする必要があります。 Microsoft は、ルーティング インターネット レジストリおよびインターネット ルーティング レジストリを介して IP アドレスの所有権を確認できる必要があります。 
-
-* ユーザーは、一意の /29 サブネットまたは 2 つの /30 サブネットを使用して、ExpressRoute 回線ごとに (複数存在する場合) それぞれのピアリングの BGP ピアリングをセットアップする必要があります。 
-* /29 サブネットを使用すると、2 つの /30 サブネットに分割されます。 
-  * 最初の /30 サブネットはプライマリ リンク用に使用され、2 つ目の /30 サブネットはセカンダリ リンク用に使用されます。
-  * それぞれの /30 サブネットに対し、ルーター上で /30 サブネットの最初の IP アドレスを使用する必要があります。 Microsoft は、/30 サブネットの 2 番目の IP アドレスを使用して BGP セッションをセットアップします。
-  * [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。
-
 ### <a name="ip-addresses-used-for-microsoft-peering"></a>Microsoft ピアリングに使用する IP アドレス
 ユーザーは、所有しているパブリック IP アドレスを使用して BGP セッションをセットアップする必要があります。 Microsoft は、ルーティング インターネット レジストリおよびインターネット ルーティング レジストリを介して IP アドレスの所有権を確認できる必要があります。
 
+* ポータルの、Microsoft ピアリング用にアドバタイズされたパブリック プレフィックスの一覧に表示されている IP アドレスによって、これらの IP から送信される受信トラフィックを許可する Microsoft コア ルーターの ACL が作成されます。 
 * ユーザーは、一意のサブネット (IPv4 の場合は /29、IPv6 の場合は /125) または 2 つのサブネット (IPv4 の場合は /30、IPv6 の場合は /126) サブネットを使用して、ExpressRoute 回線ごとに (複数存在する場合) それぞれのピアリングの BGP ピアリングをセットアップする必要があります。
 * /29 サブネットを使用すると、2 つの /30 サブネットに分割されます。
 * 最初の /30 サブネットはプライマリ リンク用に使用され、2 つ目の /30 サブネットはセカンダリ リンク用に使用されます。
@@ -75,27 +63,29 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
 * それぞれの /126 サブネットに対し、ルーター上で /126 サブネットの最初の IP アドレスを使用する必要があります。 Microsoft は、/126 サブネットの 2 番目の IP アドレスを使用して BGP セッションをセットアップします。
 * [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。
 
+### <a name="ip-addresses-used-for-azure-public-peering"></a>Azure パブリック ピアリングに使用する IP アドレス
+
+> [!NOTE]
+> Azure パブリック ピアリングは、新しい回線では使用できません。
+> 
+
+ユーザーは、所有しているパブリック IP アドレスを使用して BGP セッションをセットアップする必要があります。 Microsoft は、ルーティング インターネット レジストリおよびインターネット ルーティング レジストリを介して IP アドレスの所有権を確認できる必要があります。 
+
+* ユーザーは、一意の /29 サブネットまたは 2 つの /30 サブネットを使用して、ExpressRoute 回線ごとに (複数存在する場合) それぞれのピアリングの BGP ピアリングをセットアップする必要があります。 
+* /29 サブネットを使用すると、2 つの /30 サブネットに分割されます。 
+  * 最初の /30 サブネットはプライマリ リンク用に使用され、2 つ目の /30 サブネットはセカンダリ リンク用に使用されます。
+  * それぞれの /30 サブネットに対し、ルーター上で /30 サブネットの最初の IP アドレスを使用する必要があります。 Microsoft は、/30 サブネットの 2 番目の IP アドレスを使用して BGP セッションをセットアップします。
+  * [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。
+
 ## <a name="public-ip-address-requirement"></a>パブリック IP アドレス要件
 
 ### <a name="private-peering"></a>プライベート ピアリング
 パブリックまたはプライベート IPv4 アドレスをプライベート ピアリングに使用することもできます。 プライベート ピアリングの場合に他の顧客とのアドレスの重複が発生しないように、トラフィックのエンド ツー エンドの分離が提供されます。 これらのアドレスはインターネットにはアドバタイズされません。 
 
-
-### <a name="public-peering"></a>パブリック ピアリング
-Azure パブリック ピアリング パスを利用すれば、パブリック IP アドレスで Azure にホストされているすべてのサービスに接続できます。 たとえば、 [ExpessRoute FAQ](expressroute-faqs.md) の一覧にあるサービスや Microsoft Azure で ISV によりホストされているサービスです。 パブリック ピアリングでの Microsoft Azure への接続は常にネットワークから Microsoft ネットワークに対して開始されます。 Microsoft ネットワークに送信されるトラフィックには、パブリック IP アドレスを使用する必要があります。
-
-> [!IMPORTANT]
-> すべての Azure PaaS サービスは、Microsoft ピアリング経由でアクセスすることもできます。 Microsoft ピアリングを作成し、Microsoft ピアリング経由で Azure PaaS サービスに接続することをお勧めします。  
->   
-
-
-パブリック ピアリングでは、プライベート AS 番号を使用できます。
-
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
-Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 対象となるサービスには、Exchange Online、SharePoint Online、Skype for Business、Dynamics 365 などの Office 365 サービスが含まれます。 Microsoft では、Microsoft ピアリングで双方向接続をサポートしています。 Microsoft クラウド サービスに送信されるトラフィックが Microsoft ネットワークに入るには、有効なパブリック IPv4 アドレスを使用している必要があります。
+Microsoft ピアリング パスを使用して、Microsoft クラウド サービスに接続できます。 対象となるサービスには、Exchange Online、SharePoint Online、Skype for Business、Dynamics 365 などの Office 365 サービスが含まれます。 Microsoft では、Microsoft ピアリングで双方向接続をサポートしています。 Microsoft クラウド サービスに送信されるトラフィックが Microsoft ネットワークに入るには、有効なパブリック IPv4 アドレスを使用している必要があります。
 
 以下のレジストリのいずれかで IP アドレスと AS 番号が自分に登録されていることを確認します。
-
 
 * [ARIN](https://www.arin.net/)
 * [APNIC](https://www.apnic.net/)
@@ -110,12 +100,21 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 Microsoft ピアリングではプライベート AS 番号を使用できますが、手動による検証も必要になります。 さらに、受信したプレフィックスの AS PATH からプライベート AS 番号が削除されます。 その結果、[Microsoft ピアリングのルーティングを制御するために](expressroute-optimize-routing.md)、AS PATH にプライベート AS 番号を付加できません。 
 
 > [!IMPORTANT]
-> ExpressRoute 経由で Microsoft にアドバタイズされるパブリック IP アドレスは、インターネットにアドバタイズしないでください。 他の Microsoft サービスへの接続が切断される場合があります。 ただし、Microsoft 内の O365 エンドポイントと通信するネットワーク内のサーバーが使用するパブリック IP アドレスは、ExpressRoute 経由でアドバタイズされることがあります。 
+> パブリック インターネット向けと ExpressRoute 経由で同じパブリック IP ルートをアドバタイズしないでください。 ExpressRoute 経由ではより具体的なルートを、また [NAT](expressroute-nat.md) 用のインターネットにはより一般的なルートをアドバタイズすることを強くお勧めします。 NAT 用のパブリック ルートに加えて、Microsoft 内の Office 365 エンドポイントと通信するオンプレミスのネットワーク内のサーバーによって使用されるパブリック IP アドレスを ExpressRoute 経由でアドバタイズすることもできます。 
 > 
 > 
 
+### <a name="public-peering-deprecated---not-available-for-new-circuits"></a>パブリック ピアリング (非推奨 - 新しい回線では使用できません)
+Azure パブリック ピアリング パスを利用すれば、パブリック IP アドレスで Azure にホストされているすべてのサービスに接続できます。 たとえば、 [ExpessRoute FAQ](expressroute-faqs.md) の一覧にあるサービスや Microsoft Azure で ISV によりホストされているサービスです。 パブリック ピアリングでの Microsoft Azure への接続は常にネットワークから Microsoft ネットワークに対して開始されます。 Microsoft ネットワークに送信されるトラフィックには、パブリック IP アドレスを使用する必要があります。
+
+> [!IMPORTANT]
+> すべての Azure PaaS サービスは、Microsoft ピアリング経由でアクセスできます。
+>   
+
+パブリック ピアリングでは、プライベート AS 番号を使用できます。
+
 ## <a name="dynamic-route-exchange"></a>動的なルート交換
-ルーティングの交換は eBGP プロトコル上で実行されます。 MSEE とルーターとの間に EBGP セッションが確立されます。 BGP セッションの認証は必須ではありません。 必要な場合は、MD5 ハッシュを構成することができます。 BGP セッションの構成については、[ルーティングの構成](expressroute-howto-routing-classic.md)に関する記事および[回線のプロビジョニング ワークフローと回線の状態](expressroute-workflows.md)に関する記事をご覧ください。
+ルーティングの交換は eBGP プロトコル上で実行されます。 MSEE とルーターとの間に EBGP セッションが確立されます。 BGP セッションの認証は必須ではありません。 必要な場合は、MD5 ハッシュを構成することができます。 BGP セッションの構成については、[ルーティングの構成](how-to-routefilter-portal.md)に関する記事および[回線のプロビジョニング ワークフローと回線の状態](expressroute-workflows.md)に関する記事をご覧ください。
 
 ## <a name="autonomous-system-numbers"></a>自律システム番号
 Microsoft は、Azure パブリック、Azure プライベート、および Microsoft ピアリングのために AS 12076 を使用します。 ASN 65515 ～ 65520 は、内部使用のために予約されています。 16 ビットと 32 ビットの両方の AS 番号がサポートされています。
@@ -139,7 +138,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 * ユーザー定義のルーティングを使用して、インターネット接続を必要とするすべてのサブネットに対してインターネット接続を許可している。
 
 > [!NOTE]
-> 既定のルートをアドバタイズすると、Windows VM や他の VM のライセンス認証が破棄されます。 これを回避する方法については、 [このページ](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) を参照してください。
+> 既定のルートをアドバタイズすると、Windows VM や他の VM のライセンス認証が破棄されます。 これを回避する方法については、 [このページ](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) を参照してください。
 > 
 > 
 
@@ -152,7 +151,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 
 地理的リージョン、関連付けられている Azure リージョン、および対応する ExpressRoute のピアリングの場所の詳細な一覧については、「 [ExpressRoute パートナーとピアリングの場所](expressroute-locations.md) 」を参照してください。
 
-地理的リージョンごとに複数の ExpressRoute 回線を購入できます。 複数の接続を持つことで、geo 冗長性による高可用性が確保される大きなメリットがあります。 複数の ExpressRoute 回線がある場合、パブリック ピアリングおよび Microsoft ピアリング パスで Microsoft からアドバタイズされたプレフィックスの同じセットを受け取ります。 これは、ネットワークから Microsoft へのパスが複数あることを意味します。 これは、ネットワーク内で十分に最適化されないルーティングの決定が行われる可能性があることを示します。 その結果、さまざまなサービスの接続エクスペリエンスが十分に最適化されない可能性があります。 ユーザーは、このコミュニティ値に依存して、[最適なルーティングをユーザーに](expressroute-optimize-routing.md)提供するための適切なルーティングの決定を行うことができます。
+地理的リージョンごとに複数の ExpressRoute 回線を購入できます。 複数の接続を持つことで、geo 冗長性による高可用性が確保される大きなメリットがあります。 複数の ExpressRoute 回線がある場合、Microsoft パブリック ピアリングおよび Microsoft ピアリング パスで Microsoft からアドバタイズされたプレフィックスの同じセットを受け取ります。 これは、ネットワークから Microsoft へのパスが複数あることを意味します。 これは、ネットワーク内で十分に最適化されないルーティングの決定が行われる可能性があることを示します。 その結果、さまざまなサービスの接続エクスペリエンスが十分に最適化されない可能性があります。 ユーザーは、このコミュニティ値に依存して、[最適なルーティングをユーザーに](expressroute-optimize-routing.md)提供するための適切なルーティングの決定を行うことができます。
 
 | **Microsoft Azure リージョン** | **BGP コミュニティ値** |
 | --- | --- |
@@ -185,6 +184,9 @@ ExpressRoute をトランジット ルーターとして構成することはで
 | **オーストラリア** | |
 | オーストラリア東部 | 12076:51015 |
 | オーストラリア南東部 | 12076:51016 |
+| **オーストラリア政府** | |
+| オーストラリア中部 | 12076:51032 |
+| オーストラリア中部 2 | 12076:51033 |
 | **インド** | |
 | インド南部 | 12076:51019 |
 | インド西部 | 12076:51018 |
@@ -209,20 +211,24 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 | SharePoint Online | 12076:5020 |
 | Skype for Business Online | 12076:5030 |
 | Dynamics 365 | 12076:5040 |
+| Azure Global Services* | 12076:5050 |
 | その他の Office 365 Online サービス | 12076:5100 |
+
+***Azure Global Services には Azure DevOps が含まれる**
+
 
 > [!NOTE]
 > Microsoft は、Microsoft にアドバタイズされるルートに設定されたすべての BGP コミュニティ値を無視します。
 > 
 > 
 
-### <a name="bgp-community-support-in-national-clouds-preview"></a>National Clouds (プレビュー) の BGP コミュニティのサポート
+### <a name="bgp-community-support-in-national-clouds"></a>National Clouds の BGP コミュニティのサポート
 
 | **National Clouds Azure リージョン**| **BGP コミュニティ値** |
 | --- | --- |
 | **米国政府** |  |
 | 米国政府アリゾナ | 12076:51106 |
-| 米国政府アイオワ州 | 12076:51109 |
+| US Gov アイオワ | 12076:51109 |
 | 米国政府バージニア州 | 12076:51105 |
 | 米国政府テキサス | 12076:51108 |
 | US DoD Central | 12076:51209 |

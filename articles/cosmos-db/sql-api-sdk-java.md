@@ -2,24 +2,22 @@
 title: 'Azure Cosmos DB: SQL Java API、SDK、およびリソース | Microsoft Docs'
 description: リリース日、提供終了日、Azure Cosmos DB SQL Java SDK の各バージョン間の変更など、SQL Java API と SDK に関するあらゆる詳細を提供します。
 services: cosmos-db
-documentationcenter: java
 author: rnagpal
-manager: jhubbard
+manager: kfile
 editor: cgronlun
-ms.assetid: 7861cadf-2a05-471a-9925-0fec0599351b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: java
-ms.topic: article
-ms.date: 11/14/2017
-ms.author: khdang
+ms.topic: reference
+ms.date: 06/29/2018
+ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 547bc8933d8afc593db7620b2e610d50d6e22cdf
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d7d00d6236b601d145be03e6086bec2d72faafcd
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344939"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Java SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -33,8 +31,8 @@ ms.lasthandoff: 03/30/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 SQL API Java SDK は、同期操作をサポートしています。 非同期サポートの場合は、[SQL API Async Java SDK](sql-api-sdk-async-java.md) を使用してください。 
 
@@ -46,7 +44,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 
 <tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
 
-<tr><td>**概要**</td><td>[Java SDK の開始](sql-api-java-get-started.md)</td></tr>
+<tr><td>**作業の開始**</td><td>[Java SDK の開始](sql-api-java-get-started.md)</td></tr>
 
 <tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)</td></tr>
 
@@ -54,6 +52,29 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
+* ストリーミングのフェールオーバーに対するサポートが追加されました。
+* カスタム メタデータのサポートが追加されました。
+* セッション処理ロジックが強化されました。
+* パーティション キー範囲のキャッシュのバグを修正しました。
+* 直接モードでの NPE バグを修正しました。
+
+### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
+* 一意なインデックスのサポートが追加されました。
+* フィード オプションに、継続トークンのサイズを制限するためのサポートが追加されました。
+* JSON のシリアル化のバグを修正しました (タイムスタンプ)。
+* JSON のシリアル化のバグを修正しました (列挙)。
+* com.fasterxml.jackson.core:jackson-databind への依存関係が 2.9.5 にアップグレードされました。
+
+### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
+* 直接モードの接続プールが改善されました。
+* orderby 以外のクロス パーティション クエリのプリフェッチが向上しました。
+* UUID の生成が強化されました。
+* セッション整合性ロジックが改善されました。
+* マルチポリゴンのサポートが追加されました
+* コレクションに対するパーティション キー範囲の統計のサポートが追加されました。
+* マルチリージョンのサポートでのバグを修正します。
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 * JSON シリアル化のパフォーマンスが向上しました。
@@ -133,10 +154,10 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * 複数リージョンのデータベース アカウントのサポートを追加しました。
 * 最大再試行回数と最大再試行待機時間をカスタマイズするオプションと共に、調整された要求での自動再試行のサポートを追加しました。  RetryOptions と ConnectionPolicy.getRetryOptions() をご覧ください。
-* IPartitionResolver に基づくカスタム パーティション分割コードを廃止しました。 大量のストレージとスループットを必要とする場合、パーティション分割コレクションをお使いください。
+* IPartitionResolver に基づくカスタム パーティション分割コードを非推奨にしました。 大量のストレージとスループットを必要とする場合、パーティション分割コレクションをお使いください。
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* スロットルのための再試行ポリシー サポートを追加しました。  
+* レート制限の再試行ポリシー サポートを追加しました。  
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
 * ドキュメントの有効期限 (TTL) サポートを追加しました。
@@ -184,6 +205,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.16.2](#1.16.2) |2018 年 6 月 29 日 |--- |
+| [1.16.1](#1.16.1) |2018 年 5 月 16 日 |--- |
+| [1.16.0](#1.16.0) |2018 年 3 月 15 日 |--- |
 | [1.15.0](#1.15.0) |2017 年 11 月 14 日 |--- |
 | [1.14.0](#1.14.0) |2017 年 10 月 28 日 |--- |
 | [1.13.0](#1.13.0) |2017 年 8 月 25 日 |--- |

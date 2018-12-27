@@ -1,25 +1,21 @@
 ---
-title: MongoDB API を使用して Azure Cosmos DB アプリを構築する | Microsoft Docs
+title: MongoDB API を使用して Azure Cosmos DB アプリをビルドする
 description: MongoDB 用の Azure Cosmos DB API を使用してオンライン データベースを作成するチュートリアル。
 keywords: mongodb の例
 services: cosmos-db
-author: AndrewHoh
-manager: jhubbard
-editor: ''
-documentationcenter: ''
-ms.assetid: fb38bc53-3561-487d-9e03-20f232319a87
+author: SnehaGunda
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.component: cosmosdb-mongo
+ms.devlang: nodejs
+ms.topic: sample
 ms.date: 03/23/2018
-ms.author: anhoh
-ms.openlocfilehash: 1571ed8bc3146a6351d0010a9f072cad986d6dc7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.author: sngun
+ms.openlocfilehash: e24c64f0042d65cc499e02dff7b53f3ca812f356
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864079"
 ---
 # <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Node.js を使用して Azure Cosmos DB: MongoDB 用 API を構築する
 > [!div class="op_single_selector"]
@@ -27,9 +23,7 @@ ms.lasthandoff: 03/29/2018
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
 > * [Java](sql-api-java-get-started.md)
 > * [MongoDB 用 Node.js](mongodb-samples.md)
-> * [Node.JS](sql-api-nodejs-get-started.md)
-> * [C++](sql-api-cpp-get-started.md)
->  
+> * [Node.js](sql-api-nodejs-get-started.md)
 >
 
 次の例は、Node.js を使用して Azure Cosmos DB: MongoDB 用 API コンソール アプリを構築する方法を示しています。

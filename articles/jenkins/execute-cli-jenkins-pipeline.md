@@ -1,25 +1,19 @@
 ---
-title: "Jenkins で Azure CLI を実行する | Microsoft Docs"
-description: "Azure CLI を使用して Java Web アプリを Jenkins パイプラインで Azure にデプロイする方法について説明します"
-services: app-service\web
-documentationcenter: 
-author: mlearned
-manager: douge
-editor: 
-ms.assetid: 
+title: Jenkins を使用して Azure CLI を実行する
+description: Azure CLI を使用して Java Web アプリを Jenkins パイプラインで Azure にデプロイする方法について説明します
 ms.service: jenkins
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
+keywords: Jenkins, Azure, 開発, App Service, CLI
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 6/7/2017
-ms.author: mlearned
-ms.custom: Jenkins
-ms.openlocfilehash: 2b568bd22858a42178e2821e0e97a3b4ebdfccd5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b9ca8848da543bbfb27246109c3a4ab97eb6bc58
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974920"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Jenkins と Azure CLI を使用して Azure App Service にデプロイする
 Java Web アプリを Azure にデプロイするには、[Jenkins パイプライン](https://jenkins.io/doc/book/pipeline/)で Azure CLI を使用します。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
@@ -32,7 +26,7 @@ Java Web アプリを Azure にデプロイするには、[Jenkins パイプラ�
 > * Jenkins パイプラインを作成する
 > * パイプラインを実行し、Web アプリを確認する
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -45,7 +39,7 @@ Azure 資格情報のプラグインでは、Jenkins に Microsoft Azure サー�
 * Jenkins ダッシュボード内で、**[Manage Jenkins]\(Jenkins の管理\) -> [プラグイン マネージャー] ->** の順にクリックして **[Azure 資格情報]** を検索します。 
 * バージョンが 1.2 以前である場合は、プラグインを更新します。
 
-Java JDK と Maven も Jenkins マスターで必要です。 インストールするには、SSH を使用して Jenkins マスターにログインし、次のコマンドを実行します。
+Java JDK と Maven も Jenkins マスターで必要です。 インストールするには、SSH を使用して Jenkins マスターにサインインし、次のコマンドを実行します。
 ```bash
 sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
@@ -62,7 +56,7 @@ Azure CLI を実行するには、Azure の資格情報が必要です。
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Java Web アプリをデプロイするための Azure App Service の作成
 
-[az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) CLI コマンドを使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
+[az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) CLI コマンドを使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -91,7 +85,7 @@ az appservice plan create \
 
 ### <a name="create-an-azure-web-app"></a>Azure Web アプリを作成する
 
- [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) CLI コマンドを使用して、`myAppServicePlan` App Service プランで Web アプリ定義を作成します。 Web アプリ定義によって、アプリケーションにアクセスするための URL が提供され、Azure にコードをデプロイするためのいくつかのオプションが構成されます。 
+ [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) CLI コマンドを使用して、`myAppServicePlan` App Service プランで Web アプリ定義を作成します。 Web アプリ定義によって、アプリケーションにアクセスするための URL が提供され、Azure にコードをデプロイするためのいくつかのオプションが構成されます。 
 
 ```azurecli-interactive
 az webapp create \
@@ -121,7 +115,7 @@ Web アプリ定義の準備が完了すると、Azure CLI によって次の例
 
 ### <a name="configure-java"></a>Java を構成する 
 
-[az appservice web config update](/cli/azure/appservice/web/config#az_appservice_web_config_update) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
+[az appservice web config update](/cli/azure/webapp/config#az-appservice-web-config-update) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
 
 次のコマンドでは、最新の Java 8 JDK および [Apache Tomcat](http://tomcat.apache.org/) 8.0 で動作するように Web アプリを構成します。
 

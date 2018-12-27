@@ -1,22 +1,20 @@
 ---
-title: "Azure Search のフルテキスト検索エンジン (Lucene) アーキテクチャ | Microsoft Docs"
-description: "Azure Search に関して Lucene のフルテキスト検索に使用されるクエリ処理と文書検索の概念について説明します。"
-services: search
-manager: jhubbard
+title: Azure Search のフルテキスト検索エンジン (Lucene) アーキテクチャ | Microsoft Docs
+description: Azure Search に関して Lucene のフルテキスト検索に使用されるクエリ処理と文書検索の概念について説明します。
+manager: jlembicz
 author: yahnoosh
-documentationcenter: 
+services: search
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 04/06/2017
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 0b2e66cd40c1b49832b865e5bf59edcf78996eb8
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: 55d361e90dbc5fe48bc118088a6f859d096048ff
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036872"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
 
@@ -55,7 +53,7 @@ ms.lasthandoff: 02/13/2018
 次の例は、[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用して Azure Search に送信できる検索要求です。  
 
 ~~~~
-POST /indexes/hotels/docs/search?api-version=2016-09-01 
+POST /indexes/hotels/docs/search?api-version=2017-11-11 
 {  
     "search": "Spacious, air-condition* +\"Ocean view\"",  
     "searchFields": "description, title",  
@@ -187,7 +185,7 @@ Spacious,||air-condition*+"Ocean view"
 
 ### <a name="exceptions-to-lexical-analysis"></a>字句解析の例外 
 
-字句解析が適用されるのは、語句全体を必要とする種類の検索 (単語検索とフレーズ検索) だけです。 語句全体を必要としない種類の検索 (プレフィックス検索、ワイルドカード検索、正規表現検索など) やあいまい検索には適用されません。 前出の例の *air-condition\** という語を使ったプレフィックス検索も含め、こうした種類の検索は、解析段階を経ずに直接クエリ ツリーに追加されます。 こうした種類の検索語に対して適用される変換は、大文字から小文字への変換だけです。
+字句解析が適用されるのは、語句全体を必要とする種類の検索 (単語検索とフレーズ検索) だけです。 語句全体を必要としない種類の検索 (プレフィックス検索、ワイルドカード検索、正規表現検索など) やあいまい検索には適用されません。 前出の例の `air-condition*` という語を使ったプレフィックス検索も含め、こうした種類の検索は、解析段階を経ずに直接クエリ ツリーに追加されます。 こうした種類の検索語に対して適用される変換は、大文字から小文字への変換だけです。
 
 <a name="stage3"></a>
 
@@ -363,7 +361,7 @@ search=Spacious, air-condition* +"Ocean view"
 Azure Search の関連度スコアは、次の 2 とおりの方法でチューニングできます。
 
 1. **スコアリング プロファイル**: ランク付けされた結果リストにおいて、一連のルールに基づく重みを文書に与えます。 このページの例では、title フィールドに一致の見つかった文書の方が、description フィールドに一致の見つかった文書よりも関連性が高いと見なすことができます。 加えて、仮にホテルごとの料金フィールドをインデックスに含めた場合、料金の低い方の文書に高い重みを与えることも可能です。 詳細については、[スコアリング プロファイルを検索インデックスに追加する方法](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)に関するページを参照してください。
-2. **項目ブースト** (Full Lucene クエリ構文のみで使用可能): クエリ ツリーの任意の構成要素に適用できるブースト演算子 `^` が用意されています。 この例では、プレフィックスを検索する代わりに*air-condition*\*、正確なという用語は、いずれかのいずれかの検索でした*air-condition*や、プレフィックスが、正確な語句に一致するドキュメントは語句クエリをブーストを適用して上位: * 空気条件 ^2 | |air-condition * *。 詳細については、[項目ブースト](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)に関するセクションを参照してください。
+2. **項目ブースト** (Full Lucene クエリ構文のみで使用可能): クエリ ツリーの任意の構成要素に適用できるブースト演算子 `^` が用意されています。 このページの例では、*air-condition*\* というプレフィックスで検索する代わりに、*air-condition^2||air-condition** のように単語検索にブーストを適用することもできます。そうすれば、*air-condition* で完全一致する語句と、プレフィックスで一致する語句との両方を検索したうえで、完全一致の語句で一致した文書の方に、より高いランクを与えることができます。 詳細については、[項目ブースト](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)に関するセクションを参照してください。
 
 
 ### <a name="scoring-in-a-distributed-index"></a>分散されたインデックスにおけるスコア付け

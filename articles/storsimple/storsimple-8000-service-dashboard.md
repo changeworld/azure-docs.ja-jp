@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ デバイスの概要の使用 | Microsoft Docs"
-description: "StorSimple サービスの概要ブレードと、そのブレードを使用して StorSimple ソリューションの状態を監視する方法について説明します。"
+title: StorSimple 8000 シリーズ デバイスの概要の使用 | Microsoft Docs
+description: StorSimple サービスの概要ブレードと、そのブレードを使用して StorSimple ソリューションの状態を監視する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108210"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのサービスの概要ブレードを使用する
 

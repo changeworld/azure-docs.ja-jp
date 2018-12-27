@@ -1,24 +1,25 @@
 ---
-title: "StorSimple 8000 シリーズ デバイスの CHAP の構成 | Microsoft Docs"
-description: "StorSimple デバイスにチャレンジ ハンドシェイク認証プロトコル (CHAP) を構成する方法について説明します。"
+title: StorSimple 8000 シリーズ デバイスの CHAP の構成 | Microsoft Docs
+description: StorSimple デバイスにチャレンジ ハンドシェイク認証プロトコル (CHAP) を構成する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: TBD
-ms.date: 07/03/2017
+ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 61e0877187759d76b6f7efcef0a5ed8bec8500fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1a558769ffaa52ed2e996a2b537a5ea409101bd
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012660"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>StorSimple デバイスの CHAP の構成
 
@@ -58,7 +59,7 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
    3. パスワードを確認入力します。
 
        ![[CHAP イニシエーター]](./media/storsimple-8000-configure-chap/configure-chap6.png)
-3. [ **Save**] をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
+3. **[Save]** をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Windows ホスト サーバーで一方向認証を構成するには
 1. Windows ホスト サーバーで、iSCSI イニシエーターを開始します。
@@ -67,19 +68,19 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
    1. **[探索]** タブをクリックします。
       
        ![[iSCSI イニシエーターのプロパティ]](./media/storsimple-configure-chap/IC740944.png)
-   2. **[ポータルの探索]**をクリックします。
+   2. **[ポータルの探索]** をクリックします。
 3. **[ターゲット ポータルの探索]** ダイアログ ボックスで、次の手順を実行します。
    
    1. デバイスの IP アドレスを指定します。
-   2. **[詳細設定]**をクリックします。
+   2. **[詳細設定]** をクリックします。
       
        ![[ターゲット ポータルの探索]](./media/storsimple-configure-chap/IC740945.png)
 4. **[詳細設定]** ダイアログ ボックスで、次の手順を実行します。
    
    1. **[CHAP ログオンを有効にする]** チェック ボックスをオンにします。
-   2. **[名前]** フィールドに、クラシック ポータルで CHAP イニシエーターに指定したユーザー名を入力します。
-   3. **[ターゲット シークレット]** フィールドに、クラシック ポータルで CHAP イニシエーターに指定したパスワードを入力します。
-   4. **[OK]**をクリックします。
+   2. **[名前]** フィールドに、Azure portal で CHAP イニシエーターに指定したユーザー名を入力します。
+   3. **[ターゲット シークレット]** フィールドに、Azure portal で CHAP イニシエーターに指定したパスワードを入力します。
+   4. Click **OK**.
       
        ![詳細設定 (全般)](./media/storsimple-configure-chap/IC740946.png)
 5. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[ターゲット]** タブに、デバイスの状態が **[接続中]** として表示されます。 StorSimple 1200 デバイスを使用する場合、各ボリュームは iSCSI ターゲットとしてマウントされます。 そのため、ボリュームごとに手順 3 と手順 4 を繰り返す必要があります。
@@ -112,17 +113,17 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
    3. パスワードを確認入力します。
 
        ![[CHAP イニシエーター]](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. [ **Save**] をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
+4. **[Save]** をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Windows ホスト サーバーで双方向認証を構成するには
 
 1. Windows ホスト サーバーで、iSCSI イニシエーターを開始します。
 2. **[iSCSI イニシエーターのプロパティ]** ウィンドウで、**[構成]** タブをクリックします。
-3. **[CHAP]**をクリックします。
+3. **[CHAP]** をクリックします。
 4. **[iSCSI イニシエーターの相互 CHAP シークレット]** ダイアログ ボックスで、次の手順を実行します。
    
    1. Azure Portal で構成した **[リバース CHAP のパスワード]** を入力します。
-   2. **[OK]**をクリックします。
+   2. Click **OK**.
       
        ![[iSCSI イニシエーターの相互 CHAP シークレット]](./media/storsimple-configure-chap/IC740949.png)
 5. **[ターゲット]** タブをクリックします。
@@ -131,8 +132,8 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
 8. **[詳細プロパティ]** ダイアログ ボックスで、次の手順を実行します。
    
    1. **[CHAP ログオンを有効にする]** チェック ボックスをオンにします。
-   2. **[名前]** フィールドに、クラシック ポータルで CHAP イニシエーターに指定したユーザー名を入力します。
-   3. **[ターゲット シークレット]** フィールドに、クラシック ポータルで CHAP イニシエーターに指定したパスワードを入力します。
+   2. **[名前]** フィールドに、Azure portal で CHAP イニシエーターに指定したユーザー名を入力します。
+   3. **[ターゲット シークレット]** フィールドに、Azure portal で CHAP イニシエーターに指定したパスワードを入力します。
    4. **[相互認証の実行]** チェック ボックスをオンにします。
       
        ![詳細設定 (相互認証)](./media/storsimple-configure-chap/IC740950.png)
@@ -157,17 +158,17 @@ CHAP の構成が正しくない場合、 **"認証エラー"** というエラ�
 次の手順を実行することで、CHAP が使用されていることを確認します。
 
 #### <a name="to-verify-your-chap-configuration"></a>CHAP の構成を確認するには
-1. **[お気に入りのターゲット]**をクリックします。
+1. **[お気に入りのターゲット]** をクリックします。
 2. 認証を有効にしたターゲットを選択します。
-3. **[詳細]**をクリックします。
+3. **[詳細]** をクリックします。
    
     ![iSCSI initiator properties favorite targets](./media/storsimple-configure-chap/IC740951.png)
 4. **[お気に入りのターゲットの詳細]** ダイアログ ボックスで、**[認証]** フィールドのエントリを確認します。 正常に構成されている場合、" **CHAP**" と表示されます。
    
     ![Favorite target details](./media/storsimple-configure-chap/IC740952.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [StorSimple のセキュリティの詳細](storsimple-8000-security.md)
-* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)を参照します。
+* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細
 

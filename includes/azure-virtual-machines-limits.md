@@ -1,4 +1,4 @@
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
 | クラウド サービスあたりの[仮想マシン数](../articles/virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<sup>1</sup> |50 |50 |
 | クラウド サービスあたりの入力エンドポイント数 <sup>2</sup> |150 |150 |

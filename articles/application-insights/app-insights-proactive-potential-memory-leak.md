@@ -1,23 +1,23 @@
 ---
-title: "スマート検出 - Azure Application Insights によって検出されるメモリ リークの可能性 | Microsoft Docs"
-description: "Azure Application insights を使用して、メモリ リークの可能性を監視します。"
+title: スマート検出 - Azure Application Insights によって検出されるメモリ リークの可能性 | Microsoft Docs
+description: Azure Application insights を使用して、メモリ リークの可能性を監視します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: e98caaa387418d746905990436b69925a591b260
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: e430b1e976ac26f7320b28d50dd39923066cfa41
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721121"
 ---
 # <a name="memory-leak-detection-preview"></a>メモリ リーク検出 (プレビュー)
 
@@ -25,12 +25,10 @@ Application Insight は、アプリケーションの各プロセスのメモリ
 
 この機能を使用するには、アプリの[パフォーマンス カウンターを構成する](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters)こと以外は、特別な設定は必要ありません。 アプリケーションから十分な量のメモリ パフォーマンス カウンター テレメトリ (プライベート バイトなど) が生成されると、有効になります。
 
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>この種類のスマート検出通知はどのような場合に取得されますか。
+一般的な通知は、アプリケーションの一部である 1 つ以上のプロセスや 1 つ以上のコンピューターで、長時間にわたってメモリ使用量が一貫して増加すると送信されます。 メモリ リークのパターンに一致するメモリ消費の増加を検出するため、機械学習アルゴリズムが使用されます。
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>この種類のスマート検出通知はどのような場合に受け取りますか
-一般的な通知は、アプリケーションの一部である 1 つ以上のプロセスや 1 つ以上のコンピューターで、長時間 (数時間) にわたってメモリ使用量が一貫して増加すると送信されます。
-自然に増加するアプリケーション使用によるメモリ使用量の増加とは異なり、メモリ リークのパターンと一致するメモリ使用量の増加を検出するために機械学習アルゴリズムが使用されます。
-
-## <a name="does-my-app-definitely-have-a-problem"></a>アプリに問題があるのは確かですか
+## <a name="does-my-app-really-have-a-problem"></a>アプリに問題があるのは確かですか
 いいえ。通知は、アプリに確実に問題があることを示すものではありません。 通常、メモリ リーク パターンはアプリケーションの問題を示していますが、特定のプロセスに典型的なパターンか、自然なビジネス上の正当性があり無視できるパターンの可能性があります。
 
 ## <a name="how-do-i-fix-it"></a>どのように修正すればよいですか

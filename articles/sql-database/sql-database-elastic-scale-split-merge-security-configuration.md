@@ -1,20 +1,23 @@
 ---
 title: Split-Merge セキュリティの構成 | Microsoft Docs
 description: Elastic Scale の Split/Merge サービスを使用して暗号化するための x409 資格情報を設定します。
-metakeywords: Elastic Database certificates security
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 694c1755b5263d48fdfa5cad3c0b13e42bfb8522
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 6967805044bb11e9aed3fe66d580df059f7a461a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231399"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 Split/Merge サービスを使用するには、セキュリティが正しく構成されていなければなりません。 このサービスは、Microsoft Azure SQL Database の Elastic Scale 機能の一部です。 詳しくは、「 [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」をご覧ください。
@@ -26,21 +29,21 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 2. [クライアント証明書を構成するには](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>証明書を取得するには
-証明書はパブリック証明機関 (CA) または [Windows Certificate Service](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)から取得できます。 これは証明書を取得するための推奨方法です。
+証明書はパブリック証明機関 (CA) または [Windows Certificate Service](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)から取得できます。 これは証明書を取得するための推奨方法です。
 
 これらの方法が利用可能でない場合は、 **自己署名証明書**を生成できます。
 
 ## <a name="tools-to-generate-certificates"></a>証明書を生成するツール
-* [makecert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](http://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>ツールを実行するには
-* Visual Studio の開発者コマンド プロンプトで、「 [Visual Studio コマンド プロンプト](http://msdn.microsoft.com/library/ms229859.aspx) 
+* Visual Studio の開発者コマンド プロンプトで、「 [Visual Studio コマンド プロンプト](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     インストールされている場合は、次のように参照します。
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* 「 [Windows 8.1: キットとツールのダウンロード](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* 「 [Windows 8.1: キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>SSL 証明書を構成するには
 通信の暗号化やサーバーの認証には SSL 証明書が必要です。 以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。
@@ -382,12 +385,12 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 1. Mmc.exe を実行します。
 2. [ファイル]、[スナップインの追加と削除] の順にクリックします。
-3. **[証明書]**を選択します。
-4. **[追加]**をクリックします。
+3. **[証明書]** を選択します。
+4. **[追加]** をクリックします。
 5. 証明書ストアの場所を選択します。
-6. **[完了]**をクリックします。
+6. **[完了]** をクリックします。
 7. Click **OK**.
-8. **[証明書]**を展開します。
+8. **[証明書]** を展開します。
 9. 証明書ストアを展開します。
 10. 証明書の子ノードを展開します。
 11. 一覧から 1 つの証明書を選択します。
@@ -400,12 +403,12 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 3. **[次へ]** をクリックします。
 4. 目的の出力ファイル形式を選択します。
 5. 必要なオプションを確認します。
-6. **[パスワード]**をオンにします。
+6. **[パスワード]** をオンにします。
 7. 強力なパスワードを入力し、確定します。
 8. **[次へ]** をクリックします。
 9. 証明書が格納されているファイル名を入力するか参照します (拡張子 .PFX を使用)。
 10. **[次へ]** をクリックします。
-11. **[完了]**をクリックします。
+11. **[完了]** をクリックします。
 12. Click **OK**.
 
 ## <a name="import-certificate"></a>証明書のインポート
@@ -421,20 +424,20 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
    1. 秘密キーの情報を保護するパスワードを入力する
    2. インポート オプションを選択する
 5. 次のストアに証明書の "場所" を選択します。
-6. **[参照]**をクリックします。
+6. **[参照]** をクリックします。
 7. 目的のストアを選択します。
-8. **[完了]**をクリックします。
+8. **[完了]** をクリックします。
    
-   * [信頼されたルート証明機関ストア] を選択した場合は、 **[はい]**をクリックします。
+   * [信頼されたルート証明機関ストア] を選択した場合は、 **[はい]** をクリックします。
 9. すべてのダイアログ ウィンドウで **[OK]** をクリックします。
 
 ## <a name="upload-certificate"></a>証明書のアップロード
 [Azure Portal](https://portal.azure.com/) で次のように実行します
 
-1. **[クラウド サービス]**を選択します。
+1. **[クラウド サービス]** を選択します。
 2. クラウド サービスを選択します。
-3. 上部メニューで **[証明書]**をクリックします。
-4. 下部のバーで **[アップロード]**をクリックします。
+3. 上部メニューで **[証明書]** をクリックします。
+4. 下部のバーで **[アップロード]** をクリックします。
 5. 証明書ファイルを選択します。
 6. .PFX ファイルの場合は、秘密キーのパスワードを入力します。
 7. 完了したら、一覧内の新しいエントリから証明書の拇印をコピーします。

@@ -1,23 +1,24 @@
 ---
-title: Apache Spark ジョブを Azure Container Service (AKS) で実行する
-description: Azure Container Service (AKS) を使用して Apache Spark job を実行します
+title: Apache Spark ジョブを Azure Kubernetes Service (AKS) で実行する
+description: Azure Kubernetes Service (AKS) を使用して Apache Spark job を実行します
 services: container-service
 author: lenadroid
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 3991312d7f7609bb0a206ccc0ecc67123ebec469
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ddaff590fd493b430a72c30dd35cb1b891b80d84
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414031"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
-[Apache Spark] [apache-spark] は、大規模データ処理用の高速エンジンです。 [Spark 2.3.0 リリース][spark-latest-release]以降、Apache Spark は、Kubernetes クラスターとのネイティブな統合をサポートしています。 Azure Container Service (AKS) は、Azure で実行される Kubernetes 管理環境です。 このドキュメントでは、Apache Spark ジョブを準備して Azure Container Service (AKS) クラスターで 実行する方法を詳しく説明します。
+[Apache Spark] [apache-spark] は、大規模データ処理用の高速エンジンです。 [Spark 2.3.0 リリース][spark-latest-release]以降、Apache Spark は、Kubernetes クラスターとのネイティブな統合をサポートしています。 Azure Kubernetes Service (AKS) は、Azure で実行される Kubernetes 管理環境です。 このドキュメントでは、Apache Spark ジョブを準備して Azure Kubernetes Service (AKS) クラスターで 実行する方法を詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
 
-大規模データ処理で使用される Spark は、Spark リソース要件を満たすようにサイズ調整された Kubernetes ノードを必要とします。 Azure Container Service (AKS) ノードには、最小サイズの `Standard_D3_v2` をお勧めします。
+大規模データ処理で使用される Spark は、Spark リソース要件を満たすようにサイズ調整された Kubernetes ノードを必要とします。 Azure Kubernetes Service (AKS) ノードには、最小サイズの `Standard_D3_v2` をお勧めします。
 
 この最小推奨事項を満たしている AKS クラスターが必要な場合は、次のコマンドを実行します。
 
@@ -324,7 +325,7 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 <!-- LINKS - external -->
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
-[java-install]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+[java-install]: https://aka.ms/azure-jdks
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
 [spark-latest-release]: https://spark.apache.org/releases/spark-release-2-3-0.html
@@ -332,8 +333,8 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 
 
 <!-- LINKS - internal -->
-[acr-aks]: https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks
-[acr-create]: https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli
-[aks-quickstart]: https://docs.microsoft.com/en-us/azure/aks/
-[azure-cli]: https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest
-[storage-account]: https://docs.microsoft.com/en-us/azure/storage/common/storage-azure-cli
+[acr-aks]: https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks
+[acr-create]: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
+[aks-quickstart]: https://docs.microsoft.com/azure/aks/
+[azure-cli]: https://docs.microsoft.com/cli/azure/?view=azure-cli-latest
+[storage-account]: https://docs.microsoft.com/azure/storage/common/storage-azure-cli

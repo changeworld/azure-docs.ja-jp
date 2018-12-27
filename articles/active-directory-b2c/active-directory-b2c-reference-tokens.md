@@ -1,23 +1,25 @@
 ---
-title: トークン リファレンス - Azure AD B2C | Microsoft Docs
+title: Azure Active Directory B2C のトークン リファレンス | Microsoft Docs
 description: Azure Active Directory B2C で発行されるトークンの種類
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: e5cc6a0974f9481491518779209ec5256870921f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 5ff4ddee3d8af15caf082be56a51b1aa0d36f02a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339979"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: トークン リファレンス
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 Azure Active Directory B2C (Azure AD B2C) は、各[認証フロー](active-directory-b2c-apps.md)を処理するときにいくつかの種類のセキュリティ トークンを出力します。 このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。
 
@@ -68,18 +70,18 @@ Azure AD B2C では、トークンの内容を細かく制御できます。 ア
 
 ID トークン内の要求は特定の順序では返されないことに注意してください。 また、新しい要求が ID トークンに導入される可能性が常にあります。 新しい要求が導入されたときに、アプリで問題が起きないようにする必要があります。 Azure AD B2C によって発行された ID およびアクセス トークン内に存在することが予測される要求を次に示します。 追加の要求はすべて、ポリシーによって決定されます。 試しに、サンプルの ID トークンを [jwt.ms](https://jwt.ms) に貼り付けて、その中の要求を調べてみてください。 さらに詳細な情報は、 [OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)で参照できます。
 
-| Name | 要求 | 値の例 | [説明] |
+| Name | 要求 | 値の例 | 説明 |
 | --- | --- | --- | --- |
-| 対象ユーザー |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |受信者要求は、トークンの受信対象を識別します。 Azure AD B2C の場合、対象となる読者は、アプリ登録ポータルでアプリに割り当てられたアプリのアプリケーション ID です。 アプリでは、この値を検証し、一致しない場合はトークンを拒否する必要があります。 |
-| 発行者 |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |この要求は、トークンを構築して返す Security Token Service (STS) を識別します。 また、ユーザーが認証された Azure AD ディレクトリも識別します。 アプリは、そのトークンが Azure Active Directory v2.0 エンドポイントから来たことを確認するために発行者要求を検証する必要があります。 |
+| 対象ユーザー |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |受信者要求は、トークンの受信対象を識別します。 Azure AD B2C の場合、対象となる読者は、アプリ登録ポータルでアプリに割り当てられたアプリのアプリケーション ID です。 アプリでは、この値を検証し、一致しない場合はトークンを拒否する必要があります。 対象ユーザーは、リソースと同義です。 |
+| 発行者 |`iss` |`https://{tenantname}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |この要求は、トークンを構築して返す Security Token Service (STS) を識別します。 また、ユーザーが認証された Azure AD ディレクトリも識別します。 アプリは、そのトークンが Azure Active Directory v2.0 エンドポイントから来たことを確認するために発行者要求を検証する必要があります。 |
 | 発行時刻 |`iat` |`1438535543` |この要求は、トークンが発行された日時です。エポック時間で表されます。 |
 | 期限切れ日時 |`exp` |`1438539443` |期限切れ日時要求は、トークンが無効になる日時です。エポック時間で表されます。 アプリでは、このクレームを使用してトークンの有効期間の有効性を確認する必要があります。 |
 | 期間の開始時刻 |`nbf` |`1438535543` |この要求は、トークンが有効になる日時です。エポック時間で表されます。 これは通常、トークンが発行されたときと同じ日時です。 アプリでは、このクレームを使用してトークンの有効期間の有効性を確認する必要があります。 |
-| バージョン |`ver` |`1.0` |これは ID トークンのバージョンです。Azure AD で定義されています。 |
+| Version |`ver` |`1.0` |これは ID トークンのバージョンです。Azure AD で定義されています。 |
 | コード ハッシュ |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |コード ハッシュは、トークンが OAuth 2.0 認証コードと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、認証コードの信頼性を検証できます。 この検証を実行する方法の詳細については、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)を参照してください。  |
 | アクセス トークン ハッシュ |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |アクセス トークン ハッシュは、トークンが OAuth 2.0 アクセス トークンと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、アクセス トークンの信頼性を検証できます。 この検証を実行する方法の詳細については、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)を参照してください  |
 | nonce |`nonce` |`12345` |nonce は、トークンのリプレイ攻撃を緩和するために使用される戦略です。 アプリでは、`nonce` クエリ パラメーターを使用して、承認要求で nonce を指定できます。 要求で指定した値は、ID トークンの `nonce` 要求のみに、変更されずに出力されます。 これにより、アプリではこの値を要求で指定した値と比較して検証できます。この値は、アプリのセッションと特定の ID トークンを関連付けます。 アプリでは、ID トークンの検証プロセス中に、この検証を実行する必要があります。 |
-| 件名 |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |これは、トークンが情報 (アプリのユーザーなど) をアサートするプリンシパルです。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 既定では、サブジェクト要求には、ディレクトリ内のユーザーのオブジェクト ID が設定されます。 詳細については、「[Azure Active Directory B2C: トークン、セッション、およびシングル サインオンの構成](active-directory-b2c-token-session-sso.md)」を参照してください。 |
+| Subject |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |これは、トークンが情報 (アプリのユーザーなど) をアサートするプリンシパルです。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 既定では、サブジェクト要求には、ディレクトリ内のユーザーのオブジェクト ID が設定されます。 詳細については、「[Azure Active Directory B2C: トークン、セッション、およびシングル サインオンの構成](active-directory-b2c-token-session-sso.md)」を参照してください。 |
 | 認証コンテキスト クラスの参照 |`acr` |適用不可 |現在使用されていません (古いポリシーの場合を除く)。 詳細については、「[Azure Active Directory B2C: トークン、セッション、およびシングル サインオンの構成](active-directory-b2c-token-session-sso.md)」を参照してください。 |
 | 信頼フレームワーク ポリシー |`tfp` |`b2c_1_sign_in` |これは、ID トークンの取得に使用されたポリシーの名前です。 |
 | 認証時刻 |`auth_time` |`1438535543` |この要求は、ユーザーが資格情報を最後に入力した時刻です。エポック時間で表されます。 |
@@ -118,7 +120,7 @@ Azure AD B2C トークンは、RSA 256 などの業界標準の非対称暗号�
 Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあります。 これにより、アプリは実行時に Azure AD B2C に関する情報を取得できます。 この情報には、エンドポイント、トークンの内容、トークンの署名キーが含まれます。 B2C ディレクトリには、ポリシー別の JSON メタデータ ドキュメントがあります。 たとえば、`fabrikamb2c.onmicrosoft.com` 内の `b2c_1_sign_in` ポリシーのメタデータ ドキュメントは次の場所にあります。
 
 ```
-https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
 ```
 
 `fabrikamb2c.onmicrosoft.com` はユーザーの認証に使用される B2C ディレクトリ、`b2c_1_sign_in` はトークンの取得に使用されるポリシーです。 トークンの署名でどのポリシーが使用されたかと、メタデータをどこで取得できるかは、2 つの方法で判断できます。 最初の方法では、ポリシー名がトークンの `acr` 要求に含まれています。 本文を Base 64 でデコードし、結果の JSON 文字列を逆シリアル化することによって、JWT の本文から要求を解析できます。 `acr` 要求は、トークンの発行に使用されたポリシーの名前です。  もう 1 つの方法です。要求を発行するとき、`state` パラメーターの値に含まれるポリシーを符号化し、それから復号化して使用されたポリシーを判断します。 どちらの方法も有効です。
@@ -126,7 +128,7 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/o
 メタデータ ドキュメントは、いくつかの便利な情報が含まれている JSON オブジェクトです。 たとえば、OpenID Connect 認証を実行するために必要なエンドポイントの場所などです。 また、トークンの署名に使用される公開キーのセットの場所を示す `jwks_uri`も含まれます。 次に示すのがその場所ですが、メタデータ ドキュメントを使用して `jwks_uri`を解析することにより、動的にその場所をフェッチするのが最善の方法です。
 
 ```
-https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
 ```
 
 この URL にある JSON ドキュメントには、特定の時点で使用されているすべての公開キー情報が含まれています。 アプリでは、JWT ヘッダーの `kid` 要求を使用して、特定のトークンの署名に使用される JSON ドキュメント内の公開キーを選択できます。 その後、正しい公開キーと指定されたアルゴリズムを使用して、署名の検証を実行できます。
@@ -146,7 +148,7 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/key
 ## <a name="token-lifetimes"></a>トークンの有効期間
 以下のトークンの有効期間は、より詳細な知識が必要な場合のために提供されています。 アプリの開発やデバッグの際に、役立つ場合があります。 これらの有効期間が一定で変わらないものという想定でアプリを記述しないでください。 変更される可能性があります。 Azure AD B2C での[トークンの有効期間のカスタマイズ](active-directory-b2c-token-session-sso.md)に関する詳細を参照してください。
 
-| トークン | 有効期間 | [説明] |
+| トークン | 有効期間 | 説明 |
 | --- | --- | --- |
 | ID トークン |1 時間 |通常、ID トークンの有効期間は 1 時間です。 Web アプリは、この有効期間を使用して、ユーザーとの独自のセッションを維持できます (推奨)。 また、別のセッション有効期間を選択することもできます。 アプリで新しい ID トークンを取得する必要がある場合は、Azure AD に対して新しいサインイン要求を行うだけで済みます。 ユーザーが Azure AD との有効なブラウザー セッションを使用している場合、そのユーザーは資格情報を再度入力する必要がない可能性があります。 |
 | 更新トークン |最大 14 日 |1 つの更新トークンは、最大 14 日間有効です。 ただし、更新トークンはさまざまな理由で、いつでも無効になる可能性があります。 アプリは、要求が失敗するまで、またはアプリが更新トークンを新しいトークンに置き換えるまで、更新トークンの使用を試み続ける必要があります。 更新トークンはまた、ユーザーが最後に資格情報を入力してから 90 日が経過した場合にも無効になる可能性があります。 |

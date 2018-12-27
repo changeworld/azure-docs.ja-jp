@@ -1,24 +1,24 @@
 ---
-title: "Azure Application Insights から SQL へのエクスポート | Microsoft Docs"
-description: "Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。"
+title: Azure Application Insights から SQL へのエクスポート | Microsoft Docs
+description: Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
-editor: mrbullwinkle
 ms.assetid: 48903032-2c99-4987-9948-d6e4559b4a63
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 03/06/2015
+ms.topic: conceptual
+ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8d008727d964df56d128265b632dafa4ab776f98
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 70086cdff3ed313d2b6851139ca8c8a937426aab
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716793"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法を示します。 
@@ -143,21 +143,21 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
 [Azure Portal](https://portal.azure.com/) で、Azure Stream Analytics サービスを選び、新しい Stream Analytics ジョブを作成します。
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA001.png)
+![Stream Analytics の設定](./media/app-insights-code-sample-export-sql-stream-analytics/SA001.png)
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/SA002.png)
 
 新しいジョブが作成されたら、**[リソースに移動]** を選びます。
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA003.png)
+![Stream Analytics の設定](./media/app-insights-code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>新しい入力を追加する
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA004.png)
+![Stream Analytics の設定](./media/app-insights-code-sample-export-sql-stream-analytics/SA004.png)
 
 連続エクスポート BLOB から入力を取るよう設定します。
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA005.png)
+![Stream Analytics の設定](./media/app-insights-code-sample-export-sql-stream-analytics/SA0005.png)
 
 ここで、ストレージ アカウントからのプライマリ アクセス キーが必要になります。これは前にメモしておいたものです。 ストレージ アカウント キーとしてこれを設定します。
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management ポリシーのサンプル - 転送ヘッダーを追加する | Microsoft Docs"
-description: "Azure API Management ポリシーのサンプル - 受信要求に転送ヘッダーを追加して、バックエンド API が適切な URL を構築できるようにする方法を説明します。"
+title: Azure API Management ポリシーのサンプル - 転送ヘッダーを追加する | Microsoft Docs
+description: Azure API Management ポリシーのサンプル - 受信要求に転送ヘッダーを追加して、バックエンド API が適切な URL を構築できるようにする方法を説明します。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: cc2df914532b6cda37c951b65b243e90b63d57cb
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: a9dfcbf4be4b659d761d66d67d2ae4c7b70a245e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284166"
 ---
 # <a name="add-a-forwarded-header"></a>転送ヘッダーの追加
 
@@ -27,9 +28,9 @@ ms.lasthandoff: 12/04/2017
 
 コードを **inbound** ブロックに貼り付けます。
 
-[!code-xml[Main](../../../api-management-policy-samples/Snippets/Forward gateway hostname to backend for generating correct urls in responses.policy.xml)]
+[!code-xml[Main](../../../api-management-policy-samples/examples/Forward gateway hostname to backend for generating correct urls in responses.policy.xml)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 APIM ポリシーの詳細については、以下をご覧ください。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory (ベータ) を使用して Marketo からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Marketo からデータをコピーする (プレビュー) | Microsoft Docs
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Marketo のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 151e84ffdcdc7c528c1708322c172901aed9a44e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 02d21db5c5fadb65ec63e41cbd9e2db8869ed2e7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415833"
 ---
-# <a name="copy-data-from-marketo-using-azure-data-factory-beta"></a>Azure Data Factory (ベータ) を使用して Marketo からデータをコピーする
+# <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Marketo からデータをコピーする (プレビュー)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Marketo からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Copy Activity in V1 (V1 でのコピー アクティビティ)](v1/data-factory-data-movement-activities.md)」を参照してください。
-
 > [!IMPORTANT]
-> このコネクタは、現在ベータ版です。 実際にお試しいただき、フィードバックをお寄せください。 運用環境では使用しないでください。
+> このコネクタは、現在プレビューの段階です。 実際にお試しいただき、フィードバックをお寄せください。 ソリューションでプレビュー版コネクタの依存関係を取得したい場合、[Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -35,9 +33,12 @@ Marketo から、サポートされている任意のシンク データ スト�
 
 Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
 
+>[!NOTE]
+>この Marketo コネクタは、Marketo REST API の上に構築されています。 Marketo では、サービス側に[同時要求の制限](http://developers.marketo.com/rest-api/)があることに注意してください。 "Error while attempting to use REST API: Max rate limit '100' exceeded with in '20' secs (606)" (REST API の使用を試みたときにエラーが発生しました: '20' 秒以内の最大レート制限 '100' を超えました (606)) または "Error while attempting to use REST API: Concurrent access limit '10' reached (615)" (REST API の使用を試みたときにエラーが発生しました: 同時アクセス制限 '10' に達しました (615)) というエラーが発生する場合は、サービスに対する要求の数を減らすため、同時コピー アクティビティの実行数を減らすことを検討してください。
+
 ## <a name="getting-started"></a>使用の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Marketo コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -45,9 +46,9 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Marketo のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **Marketo** に設定する必要があります | [はい] |
+| type | type プロパティを **Marketo** に設定する必要があります | [はい] |
 | endpoint | Marketo サーバーのエンドポイント。 (つまり、123-ABC-321.mktorest.com)  | [はい] |
 | clientId | Marketo サービスのクライアント ID。  | [はい] |
 | clientSecret | Marketo サービスのクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
@@ -103,10 +104,10 @@ Marketo からデータをコピーするには、データセットの type プ
 
 Marketo からデータをコピーするには、コピー アクティビティのソースの種類を **MarketoSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **MarketoSource** に設定する必要があります | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Activitiy_Types"`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **MarketoSource** に設定する必要があります | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Activitiy_Types"`)。 | [はい] |
 
 **例:**
 

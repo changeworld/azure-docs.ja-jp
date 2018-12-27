@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array のポータルの準備 | Microsoft Docs"
-description: "StorSimple Virtual Array をデプロイする最初のチュートリアルでは、Azure Portal の準備を行います。"
+title: StorSimple Virtual Array のポータルの準備 | Microsoft Docs
+description: StorSimple Virtual Array をデプロイする最初のチュートリアルでは、Azure Portal の準備を行います。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
 ms.devlang: NA
@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6685c5ab7768176a0c8e7084c8512d5345732d9a
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 2d87642b93d58d92660a2df71f2561ffe502315a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257267"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
 
@@ -43,7 +44,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 | --- | --- | --- | --- |
 | 1. |**Azure Portal のセットアップ** |StorSimple Virtual Array をプロビジョニングする前に、StorSimple デバイス マネージャー サービスを作成して構成します。 |[ポータルを準備する](storsimple-virtual-array-deploy1-portal-prep.md) |
 | 2. |**Virtual Array のプロビジョニング** |Hyper-V の場合、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。 <br></br> <br></br> VMware の場合、VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。<br></br> |[Hyper-V で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md) |
-| 3. |**Virtual Array のセットアップ** |ファイル サーバーの場合: 初期セットアップを実行し、StorSimple ファイル サーバーを登録して、デバイスのセットアップを完了します。 これで、SMB 共有をプロビジョニングできます。 <br></br> <br></br> iSCSI サーバーの場合: 初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了します。 これで、iSCSI ボリュームをプロビジョニングできます。 |[ファイル サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[iSCSI サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-iscsi-setup.md) |
+| 手順 3. |**Virtual Array のセットアップ** |ファイル サーバーの場合: 初期セットアップを実行し、StorSimple ファイル サーバーを登録して、デバイスのセットアップを完了します。 これで、SMB 共有をプロビジョニングできます。 <br></br> <br></br> iSCSI サーバーの場合: 初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了します。 これで、iSCSI ボリュームをプロビジョニングできます。 |[ファイル サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[iSCSI サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 これで、Azure Portal をセットアップする準備が整いました。
 
@@ -51,8 +52,8 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 
 構成チェックリストでは、StorSimple Virtual Array でソフトウェアを構成する前に収集する必要のある情報について説明します。 事前にこの情報を準備することで、環境内に StorSimple デバイスをデプロイするプロセスを効率化できます。 StorSimple Virtual Array を、ファイル サーバーとしてデプロイする場合と iSCSI サーバーとしてデプロイする場合とでは、チェックリストの内容が異なります。
 
-* [StorSimple Virtual Array のファイル サーバー構成チェックリスト](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)をダウンロード
-* [StorSimple Virtual Array の iSCSI サーバー構成チェックリスト](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)をダウンロード
+* [StorSimple Virtual Array のファイル サーバー構成チェックリスト](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)をダウンロード
+* [StorSimple Virtual Array の iSCSI サーバー構成チェックリスト](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)をダウンロード
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,7 +64,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 開始する前に次の点を確認します。
 
 * アクセスの資格情報を持つ Microsoft アカウントがあること。
-* アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがある。
+* アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 * Microsoft Azure サブスクリプションが StorSimple デバイス マネージャー サービスに対して有効であること。
 
 ### <a name="for-the-storsimple-virtual-array"></a>StorSimple Virtual Array の場合
@@ -143,7 +144,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 
 この手順は省略可能で、サービスでストレージ アカウントの自動作成を有効にしていない場合にのみ実行する必要があります。
 
-別のリージョンで Azure ストレージ アカウントを作成する必要がある場合、詳しい手順については、[ストレージ アカウントの作成方法](../storage/common/storage-create-storage-account.md#create-a-storage-account)に関するセクションをご覧ください。
+別のリージョンで Azure ストレージ アカウントを作成する必要がある場合、詳しい手順については、[ストレージ アカウントの作成方法](../storage/common/storage-quickstart-create-account.md)に関するセクションをご覧ください。
 
 既存の Microsoft Azure ストレージ アカウントを追加するには、[Azure Portal](https://ms.portal.azure.com/) の [StorSimple Device Manager service (StorSimple デバイス マネージャー サービス)] ページで、次の手順を実行します。
 
@@ -151,7 +152,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 
 1. デバイス マネージャー サービスに移動し、選択してダブルクリックします。 **[概要]** ブレードが開きます。
 2. **[構成]** セクションで **[ストレージ アカウントの資格情報]** を選択します。
-3. **[追加]**をクリックします。
+3. **[追加]** をクリックします。
 4. **[ストレージ アカウントの追加]** ブレードで、次の操作を行います。
    
     1. **[サブスクリプション]** で **[現在]** を選択します。
@@ -160,7 +161,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
    
     3. **[有効にする]** を選択し、StorSimple デバイスとクラウドの間のネットワーク通信用に、セキュリティで保護されたチャネルを作成します。 **[無効にする]** は、プライベート クラウド内で動作している場合にのみ選択します。
    
-    4. **[追加]**をクリックします。 ストレージ アカウントが正常に作成されると、その旨が通知が表示されます。<br></br>
+    4. **[追加]** をクリックします。 ストレージ アカウントが正常に作成されると、その旨が通知が表示されます。<br></br>
    
      ![既存のストレージ アカウントの資格情報の追加](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

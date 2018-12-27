@@ -1,35 +1,28 @@
 ---
-title: "Azure Analysis Services Adventure Works チュートリアル | Microsoft Docs"
-description: "Azure Analysis Services の Adventure Works チュートリアルを紹介します｡"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: Azure Analysis Services Adventure Works チュートリアル | Microsoft Docs
+description: Azure Analysis Services の Adventure Works チュートリアルを紹介します｡
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/10/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 3bc0ed965aea043fd5c105752ec39d07c4af818f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 146467ef50c605f730fe6f65c349fc8a3a1fd045
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426245"
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services - Adventure Works チュートリアル
 
-このチュートリアルは､Visual Studio と [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用して 1400 互換性レベルで表形式モデルを作成､配備する方法に関するレッスンで構成されます｡  
-
+このチュートリアルは､Visual Studio [Analysis Services プロジェクト](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects) または [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用して 1400 互換性レベルで表形式モデルを作成､配備する方法に関するレッスンで構成されます｡  
 Analysis Services および表形式モデルが初めてという方は、このチュートリアルを最後まで終えることで、Visual Studio を使用して基本的な表形式モデルを作成してデプロイする方法を最短で学ぶことができます。 前提条件となるものをすべて整えた後､このチュートリアルを終えるのに要する時間は 2 ～ 3 時間です｡  
   
 ## <a name="what-you-learn"></a>学習内容   
   
--   Visual Studio で SSDT を使用して、**1400 互換性レベル**で新しい表形式モデルのプロジェクトを作成する方法
+-   Visual Studio において **1400 互換性レベル**で新しい表形式モデルのプロジェクトを作成する方法
   
 -   リレーショナル データベースから表形式モデルのプロジェクト ワークスペース データベースにデータをインポートする方法  
   
@@ -43,7 +36,7 @@ Analysis Services および表形式モデルが初めてという方は、こ�
   
 -   ユーザー メンバーとともにロールを作成することによってモデル オブジェクトとモデル データのセキュリティを保護する方法  
   
--   SSDT を使用して **Azure Analysis Services** サーバーまたは **SQL Server 2017 Analysis Services** サーバーに表形式モデルをデプロイする方法  
+-   Visual Studio を使用して **Azure Analysis Services** サーバーまたは **SQL Server 2017 Analysis Services** サーバーに表形式モデルをデプロイする方法  
   
 ## <a name="prerequisites"></a>前提条件  
 このチュートリアルを完了するには、次のものが必要です。  

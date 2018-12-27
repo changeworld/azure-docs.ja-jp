@@ -1,23 +1,22 @@
 ---
-title: "仮想マシンの変更の監視 - Azure Event Grid と Logic Apps | Microsoft Doc"
-description: "Azure Event Grid と Logic Apps を使用して、仮想マシン (VM) の構成の変更を確認します"
-keywords: "ロジック アプリ, イベント グリッド, 仮想マシン, VM"
+title: 仮想マシンの変更の監視 - Azure Event Grid と Logic Apps | Microsoft Doc
+description: Azure Event Grid と Logic Apps を使用して、仮想マシン (VM) の構成の変更を確認します
 services: logic-apps
-author: ecfan
-manager: anneta
-ms.assetid: 
-ms.workload: logic-apps
 ms.service: logic-apps
-ms.topic: article
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: tutorial
 ms.date: 11/30/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 3d99dabe778b9b9234db9fe130ba503cd8b57834
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 06fa9b9191104db3b141b6268a90a7c8f206280e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106075"
 ---
-# <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Azure Event Grid と Logic Apps で仮想マシンの変更を監視する
+# <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>チュートリアル: Azure Event Grid と Logic Apps で仮想マシンの変更を監視する
 
 特定のイベントが Azure リソースまたはサード パーティのリソースで発生したときに、自動[ロジック アプリ ワークフロー](../logic-apps/logic-apps-overview.md)を開始できます。 こうしたリソースは、そのイベントを [Azure Event Grid](../event-grid/overview.md) に発行できます。 また、そのイベントは、イベント グリッドによって、エンドポイントとしてキュー、webhook、または [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) を持つサブスクライバーにプッシュされます。 ロジック アプリはサブスクライバーとして、イベント グリッドからのイベントを待機してから、自動ワークフローを実行してタスクを実行できます。コードを記述する必要はありません。
 
@@ -32,7 +31,7 @@ ms.lasthandoff: 02/21/2018
 
 ![概要 - イベント グリッドとロジック アプリによる仮想マシンの監視](./media/monitor-virtual-machine-changes-event-grid-logic-app/monitor-virtual-machine-event-grid-logic-app-overview.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * イベント グリッドからイベントを監視するロジック アプリを作成する。
@@ -82,27 +81,27 @@ ms.lasthandoff: 02/21/2018
    Logic Apps デザイナーには現在、ロジック アプリの開始に使用できる[*コネクタ*](../connectors/apis-list.md)や[*トリガー*](../logic-apps/logic-apps-overview.md#logic-app-concepts)のほか、タスクを実行するためにトリガーの後に追加できるアクションも表示されます。 トリガーは、ロジック アプリ インスタンスを作成し、ロジック アプリ ワークフローを開始するイベントです。 
    ロジック アプリには、最初の項目としてトリガーが必要です。
 
-6. 検索ボックスに、フィルターとして「event grid」と入力します。 トリガーとして **[Azure Event Grid - On a resource event]\(Azure Event Grid - リソース イベントの発生時\)** を選択します。
+6. 検索ボックスに、フィルターとして「event grid」と入力します。 トリガーとして、**[Azure Event Grid - On a resource event]\(Azure Event Grid - リソース イベントの発生時\)** を選択します
 
-   ![トリガーとして [Azure Event Grid - On a resource event]\(Azure Event Grid - リソース イベントの発生時\) を選択する](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
+   ![トリガーとして、[Azure Event Grid - On a resource event]\(Azure Event Grid - リソース イベントの発生時\) を選択する](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
 
 7. メッセージが表示されたら、Azure の資格情報で Azure Event Grid にサインインします。
 
    ![Azure の資格情報でサインイン](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > @outlook.com または @hotmail.com などの個人用の Microsoft アカウントでサインインした場合、Event Grid トリガーが正しく表示されないことがあります。 この問題を回避するには、[[サービス プリンシパルを使用して接続する]](../azure-resource-manager/resource-group-create-service-principal-portal.md) を選択するか、*ユーザー名*@emailoutlook.onmicrosoft.com などの Azure サブスクリプションに関連する Azure Active Directory のメンバーとして認証します。
+   > @outlook.com または @hotmail.com などの個人用の Microsoft アカウントでサインインした場合、Event Grid トリガーが正しく表示されないことがあります。 この問題を回避するには、[[サービス プリンシパルを使用して接続する]](../active-directory/develop/howto-create-service-principal-portal.md) を選択するか、*ユーザー名*@emailoutlook.onmicrosoft.com などの Azure サブスクリプションに関連する Azure Active Directory のメンバーとして認証します。
 
 8. 次に、ロジック アプリを発行元イベントに登録します。 次の表で指定したように、イベント サブスクリプションの詳細を指定します。
 
    ![イベント サブスクリプションの詳細を指定する](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details-generic.png)
 
-   | Setting | 推奨値 | [説明] | 
+   | Setting | 推奨値 | 説明 | 
    | ------- | --------------- | ----------- | 
    | **サブスクリプション** | *{仮想マシンの Azure サブスクリプション}* | イベント発行元の Azure サブスクリプションを選択します。 このチュートリアルでは、ご利用の仮想マシンの Azure サブスクリプションを選択します。 | 
    | **リソースの種類** | Microsoft.Resources.resourceGroups | イベント発行元のリソースの種類を選択します。 このチュートリアルでは、指定した値を選択するため、ロジック アプリはリソース グループだけを監視します。 | 
    | **リソース名** | *{仮想マシンのリソース グループ名}* | 発行元のリソース名を選択します。 このチュートリアルでは、仮想マシンのリソース グループの名前を選択します。 | 
-   | オプションの設定を指定する場合は、**[詳細オプションを表示する]** を選択します。 | *{説明を確認する}* | * **プレフィックス フィルター**: このチュートリアルでは、この設定は空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてプレフィックス文字列を指定できます。たとえば、特定のリソースのパスとパラメーターを指定できます。 <p>* **サフィックス フィルター**: このチュートリアルでは、この設定は空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてサフィックス文字列を指定できます。たとえば、特定の種類のファイルが必要なときは、ファイル名拡張子を指定できます。<p>* **サブスクリプション名**: イベント サブスクリプションの一意の名前を指定します。 |
+   | オプションの設定を指定する場合は、**[詳細オプションを表示する]** を選択します。 | *{説明を確認する}* | * **プレフィックス フィルター**:このチュートリアルでは、この設定は空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてプレフィックス文字列を指定できます。たとえば、特定のリソースのパスとパラメーターを指定できます。 <p>* **サフィックス フィルター**:このチュートリアルでは、この設定は空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてサフィックス文字列を指定できます。たとえば、特定の種類のファイルが必要なときは、ファイル名拡張子を指定できます。<p>* **サブスクリプション名**:イベント サブスクリプションに一意の名前を指定します。 |
    | | | 
 
    完了すると、イベント グリッド トリガーが次の例のようになることがあります。
@@ -180,11 +179,11 @@ ms.lasthandoff: 02/21/2018
    > [!TIP]
    > ワークフローで使用できるフィールドから選択するには、編集ボックスで **[動的なコンテンツ]** をクリックして一覧を開くか、**[動的なコンテンツの追加]** を選択します。 他のフィールドについては、一覧の各セクションの **[もっと見る]** を選択します。 **[動的なコンテンツ]** 一覧を閉じるには、**[動的なコンテンツの追加]** を選択します。
 
-   | Setting | 推奨値 | [説明] | 
+   | Setting | 推奨値 | 説明 | 
    | ------- | --------------- | ----------- | 
    | **To** | *{受信者の電子メール アドレス}* |受信者の電子メール アドレスを入力します。 テスト目的で自分の電子メール アドレスを使用できます。 | 
-   | **[件名]** | 更新リソース: **件名**| 電子メールの件名の内容を入力します。 このチュートリアルでは、推奨テキストを入力し、イベントの**[件名]** フィールドを選択します。 ここでは、電子メールの件名には更新リソース (仮想マシン) の名前が含まれています。 | 
-   | **本文** | リソース グループ: **トピック** <p>イベントの種類: **イベントの種類**<p>イベント ID: **ID**<p>時間: **イベント時間** | 電子メールの本文の内容を入力します。 このチュートリアルでは、推奨テキストを入力し、その更新に関するリソース グループ名、イベントの種類、イベント タイムスタンプ、イベント ID が電子メールに含まれるように、**[トピック]**、**[イベントの種類]**、**[ID]**、**[イベント時間]** フィールドを選択します。 <p>コンテンツに空白行を追加するには、Shift + Enter キーを押します。 | 
+   | **[件名]** | 更新リソース:**[件名]**| 電子メールの件名の内容を入力します。 このチュートリアルでは、推奨テキストを入力し、イベントの **[件名]** フィールドを選択します。 ここでは、電子メールの件名には更新リソース (仮想マシン) の名前が含まれています。 | 
+   | **本文** | リソース グループ:**トピック** <p>イベントの種類:**イベントの種類**<p>イベント ID:**ID**<p>時間:**イベント時間** | 電子メールの本文の内容を入力します。 このチュートリアルでは、推奨テキストを入力し、その更新に関するリソース グループ名、イベントの種類、イベント タイムスタンプ、イベント ID が電子メールに含まれるように、**[トピック]**、**[イベントの種類]**、**[ID]**、**[イベント時間]** フィールドを選択します。 <p>コンテンツに空白行を追加するには、Shift + Enter キーを押します。 | 
    | | | 
 
    > [!NOTE] 

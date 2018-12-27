@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 8000 シリーズ デバイスのオンとオフ | Microsoft Docs"
-description: "新しい StorSimple デバイスの電源を入れる方法、シャットダウンまたは電力喪失後にデバイスの電源を入れる方法、動作中のデバイスの電源を切る方法について説明します。"
+title: StorSimple 8000 シリーズ デバイスのオンとオフ | Microsoft Docs
+description: 新しい StorSimple デバイスの電源を入れる方法、シャットダウンまたは電力喪失後にデバイスの電源を入れる方法、動作中のデバイスの電源を切る方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
 ms.devlang: NA
@@ -16,10 +16,11 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 95fd00608be9cfafb4c703c32ec3ed4713855ca5
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38670968"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのオンとオフ
 
@@ -152,7 +153,7 @@ StorSimple デバイスを移動する場合や廃棄する場合、不具合の
 > [!IMPORTANT]
 > デバイス背面の電源ボタンで動作中のデバイスをシャットダウンすることは避けてください。
 > 
-> デバイスをシャットダウンする前に、すべてのデバイス コンポーネントが正常であることを確認してください。 Azure Portal で、**[デバイス]** > **[監視]** > **[ハードウェアの正常性]** に移動し、すべてのコンポーネントのステータスが緑になっていることを確認します。 この表示になるのは、システムが正常な状態にある場合だけです。 システムをシャットダウンするときや、不調なコンポーネントを交換するとき、 **[ハードウェア状態]**に、エラー (赤色) または機能低下 (黄色) ステータスがコンポーネントごとに表示されます。
+> デバイスをシャットダウンする前に、すべてのデバイス コンポーネントが正常であることを確認してください。 Azure Portal で、**[デバイス]** > **[監視]** > **[ハードウェアの正常性]** に移動し、すべてのコンポーネントのステータスが緑になっていることを確認します。 この表示になるのは、システムが正常な状態にある場合だけです。 システムをシャットダウンするときや、不調なコンポーネントを交換するとき、 **[ハードウェア状態]** に、エラー (赤色) または機能低下 (黄色) ステータスがコンポーネントごとに表示されます。
 > 
 > 
 

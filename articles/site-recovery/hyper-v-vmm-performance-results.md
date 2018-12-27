@@ -1,20 +1,21 @@
 ---
-title: "Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする場合のテスト結果 | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする場合のパフォーマンス テストについて説明します。"
-services: site-recovery
+title: Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする場合のテスト結果 | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする場合のパフォーマンス テストについて説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 02/13/2018
+ms.topic: conceptual
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: e15f435a3f32b8908b5b93bccc6c57710ab589bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d4540a00ed08f4c5a54108192868b4555eba3fa9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850926"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>セカンダリ サイトへの Hyper-V レプリケーションのテスト結果
+
 
 この記事では、System Center Virtual Machine Manager (VMM) クラウドの Hyper-V VM をセカンダリ データセンターにレプリケートする場合のパフォーマンス テストの結果について説明します。
 
@@ -107,7 +108,7 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 | サーバー | RAM | モデル | プロセッサ | プロセッサの数 | NIC | ソフトウェア |
 | --- | --- | --- | --- | --- | --- | --- |
-| クラスター内の Hyper-V サーバー:  <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 に 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 (2.20 GHz) |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| クラスター内の Hyper-V サーバー:  <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 に 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@(2.20 GHz) |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
 | VMM サーバー |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>セカンダリ サイト
@@ -119,9 +120,9 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 | サーバー | RAM | モデル | プロセッサ | プロセッサの数 | NIC | ソフトウェア |
 | --- | --- | --- | --- | --- | --- | --- |
-| クラスター内の Hyper-V サーバー:  <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 (2.30 GHz) |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
-| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 (2.20 GHz) |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
-| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 (2.20 GHz) |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| クラスター内の Hyper-V サーバー:  <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 \@(2.30 GHz) |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@(2.20 GHz) |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
+| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@(2.20 GHz) |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V ロール |
 | VMM サーバー |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>サーバー ワークロード

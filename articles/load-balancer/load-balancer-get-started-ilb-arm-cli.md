@@ -1,33 +1,30 @@
 ---
-title: 内部 Basic Load Balancer を作成する - Azure CLI 2.0 | Microsoft Docs
-description: Azure CLI 2.0 を使用して内部ロード バランサーを作成する方法について説明します
+title: 内部 Basic Load Balancer を作成する - Azure CLI | Microsoft Docs
+description: Azure CLI を使用して内部ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/27/2017
+ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: d90a4e74b6ad3bb95e91ad3a5327c887a87784bd
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 369c47a48d49a91985f7a9534230e04cff1e7ce6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413691"
 ---
-# <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Azure CLI 2.0 を使用して VM の負荷を分散する内部ロード バランサーを作成する
+# <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
 この記事では、VM の負荷を分散する内部ロード バランサーを作成する方法について説明します。 ロード バランサーをテストするには、Web アプリの負荷を分散するために、Ubuntu サーバーを実行する 2 つの仮想マシン (VM) をデプロイします。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.28 以降のバージョンを実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.28 以降のバージョンを実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -46,7 +43,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ```azurecli-interactive
   az network vnet create \
-    --name myVnet
+    --name myVnet \
     --resource-group myResourceGroupILB \
     --location eastus \
     --subnet-name mySubnet
@@ -88,7 +85,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-the-load-balancer-rule"></a>ロード バランサー規則を作成する
 
-ロード バランサー規則は、着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) を使用してロード バランサー規則 *myLoadBalancerRuleWeb* を作成します。この規則では、フロントエンド プール *myFrontEndPool* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。 
+ロード バランサー規則は、着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) を使用してロード バランサー規則 *myHTTPRule* を作成します。この規則では、フロントエンド プール *myFrontEnd* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -107,36 +104,9 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 いくつかの VM をデプロイしてロード バランサーをテストする前に、サポート用の仮想ネットワーク リソースを作成します。
 
-###  <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
-ネットワーク セキュリティ グループを作成して、仮想ネットワークへの受信接続を定義します。
-
-```azurecli-interactive
-  az network nsg create \
-    --resource-group myResourceGroupILB \
-    --name myNetworkSecurityGroup
-```
-
-### <a name="create-a-network-security-group-rule"></a>ネットワーク セキュリティ グループ規則を作成する
-
-ネットワーク セキュリティ グループ規則を作成して、ポート 80 を通じた受信接続を許可します。
-
-```azurecli-interactive
-  az network nsg rule create \
-    --resource-group myResourceGroupILB \
-    --nsg-name myNetworkSecurityGroup \
-    --name myNetworkSecurityGroupRuleHTTP \
-    --protocol tcp \
-    --direction inbound \
-    --source-address-prefix '*' \
-    --source-port-range '*' \
-    --destination-address-prefix '*' \
-    --destination-port-range 22 \
-    --access allow \
-    --priority 300
-```
 ### <a name="create-nics"></a>NIC の作成
 
-[az network nic create](/cli/azure/network/nic#az_network_nic_create) を使用して 2 つのネットワーク インターフェイスを作成し、それらをプライベート IP アドレスとネットワーク セキュリティ グループに関連付けます。 
+[az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用して 2 つのネットワーク インターフェイスを作成し、それらをプライベート IP アドレスに関連付けます。 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -145,7 +115,6 @@ for i in `seq 1 2`; do
     --name myNic$i \
     --vnet-name myVnet \
     --subnet mySubnet \
-    --network-security-group myNetworkSecurityGroup \
     --lb-name myLoadBalancer \
     --lb-address-pools myBackEndPool
 done
@@ -157,7 +126,7 @@ done
 
 ### <a name="create-an-availability-set"></a>可用性セットを作成する
 
-[az vm availabilityset create](/cli/azure/network/nic#az_network_availabilityset_create) を使用して、可用性セットを作成します。
+[az vm availabilityset create](/cli/azure/network/nic#az-network-availabilityset-create) を使用して、可用性セットを作成します。
 
  ```azurecli-interactive
   az vm availability-set create \
@@ -211,7 +180,7 @@ runcmd:
   - nodejs index.js
 ``` 
  
-[az vm create](/cli/azure/vm#az_vm_create) で、仮想マシンを作成します。
+[az vm create](/cli/azure/vm#az-vm-create) で、仮想マシンを作成します。
 
  ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -248,14 +217,14 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network lb show \
-    --name myLoadBalancer
+    --name myLoadBalancer \
     --resource-group myResourceGroupILB
 ``` 
 ![ロード バランサーをテストする](./media/load-balancer-get-started-ilb-arm-cli/load-balancer-test.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除できます。
+必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除できます。
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupILB

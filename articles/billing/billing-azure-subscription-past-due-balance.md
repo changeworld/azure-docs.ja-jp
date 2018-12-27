@@ -1,25 +1,26 @@
 ---
-title: "Azure からの支払期限を過ぎた未払い額に関する電子メール | Microsoft Docs"
-description: "Azure サブスクリプションに支払期限を過ぎた未払い額がある場合の支払い方法について説明します"
-services: 
-documentationcenter: 
+title: Azure からの支払期限を過ぎた未払い額に関する電子メール | Microsoft Docs
+description: Azure サブスクリプションに支払期限を過ぎた未払い額がある場合の支払い方法について説明します
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: d0b88c92-fb9d-4d12-931b-c26104ad63e9
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/30/2017
-ms.author: genli
-ms.openlocfilehash: 20761f9c6caf029b2b6bbc8e02b2f041c45abf01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.date: 05/11/2018
+ms.author: cwatson
+ms.openlocfilehash: fbc1f906812c0fb40a173fd90eac315753c893ef
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393233"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>Azure から電子メールを受信した後の支払期限を過ぎた Azure サブスクリプション未払い額の支払い
 

@@ -1,25 +1,19 @@
 ---
-title: "Azure Data Catalog でサポートされるデータ ソース | Microsoft Docs"
-description: "この記事では、現在サポートされているデータ ソースの仕様を示します。"
+title: Azure Data Catalog でサポートされるデータ ソース
+description: この記事では、現在サポートされているデータ ソースの仕様を示します。
 services: data-catalog
-documentationcenter: 
-author: steelanddata
-manager: jstevens
-editor: 
-tags: 
+author: markingmyname
+ms.author: maghan
 ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: b76f3cc3d8538a50895f5be32a800cb469c81203
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 56fa449bd665457ab1b98b67bb42ec52e0742c5f
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410189"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
 
@@ -375,7 +369,7 @@ ms.lasthandoff: 01/19/2018
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td></td>
+      <td>対応しているのは､DocumentDB の従来のコレクションと Azure Cosmos DB の SQL API コレクションだけです｡ 新しい Cosmos DB API は、まだサポートされていません。 データ ソースの一覧で Azure DocumentDB を選択します。</td>
     </tr>
     <tr>
       <td>汎用 ODBC テーブル</td>
@@ -540,32 +534,6 @@ ms.lasthandoff: 01/19/2018
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name
-        
-      </td>
-    </tr>
-    <tr>
-      <td>Cosmos</td>
-      <td>Container</td>
-      <td>Virtual cluster</td>
-      <td>
-        
-            Protocol: cosmos
-            <br>Authentication: {basic, windows}
-            <br>Address:
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
-        
-      </td>
-    </tr>
-    <tr>
-      <td>Cosmos</td>
-      <td>Table</td>
-      <td>Stream, stream set, view</td>
-      <td>
-        
-            Protocol: cosmos
-            <br>Authentication: {basic, windows}
-            <br>Address:
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
         
       </td>
     </tr>
@@ -1396,8 +1364,8 @@ ms.lasthandoff: 01/19/2018
     </tr>
     <tr>
       <td>Other (none of the above)</td>
-      <td>\*</td>
-      <td>\*</td>
+      <td>&#10033;</td>
+      <td>&#10033;</td>
       <td>
         
             Protocol: generic-asset

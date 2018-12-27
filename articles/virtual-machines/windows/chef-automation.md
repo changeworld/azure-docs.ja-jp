@@ -15,18 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 36293c41219a1b42d75850fa66d3c631637bb855
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: de89756a3f9ef1139e855da16c0343a9919b56cb
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585376"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Chef で Azure 仮想マシンの展開を自動化する
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef は自動化と必要な状態の構成を提供する優れたツールです。
 
-Chef は最新の cloud-api リリースで Azure とのシームレスな統合を提供しており、1 つのコマンドで構成状態をプロビジョニングしてデプロイできます。
+Chef は最新のクラウド API リリースで Azure とのシームレスな統合を提供しており、1 つのコマンドで構成状態をプロビジョニングしてデプロイできます。
 
 この記事では、Chef 環境を設定し、Azure 仮想マシンをプロビジョニングした後、ポリシーまたは "CookBook" を作成して、それを Azure 仮想マシンに展開します。
 
@@ -41,7 +42,7 @@ Chef は最新の cloud-api リリースで Azure とのシームレスな統合
 
 Chef には、Chef サーバー、Chef クライアント (ノード)、および Chef ワークステーションという 3 つの主要なアーキテクチャ コンポーネントがあります。
 
-Chef サーバーは管理ポイントとなります。Chef サーバーにはホスト型ソリューションとオンプレミスのソリューションの 2 つのオプションがあります。 ここではホスト型ソリューションを使用します。
+Chef サーバーは管理ポイントとなります。Chef サーバーにはホスト型ソリューションとオンプレミスのソリューションの 2 つのオプションがあります。 このチュートリアルではホスト型ソリューションを使用します。
 
 Chef クライアント (ノード) は管理対象のサーバーに置かれるエージェントです。
 
@@ -58,7 +59,7 @@ Chef ワークステーションは管理者用のワークステーションで
 
 Azure 設定ファイルをダウンロードして Chef が Azure のサブスクリプションと通信できるようにする必要があります。
 
-PowerShell Azure の [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) コマンドを使用して、発行設定をダウンロードします。 
+PowerShell Azure の [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) コマンドを使用して、発行設定をダウンロードします。 
 
 発行設定ファイルを C:\chef に保存します。
 
@@ -108,7 +109,7 @@ PEM ファイルには組織と管理者の通信用秘密キーが含まれ、k
 これらの行によって、Knife が c:\chef\cookbooks の cookbook ディレクトリを参照し、Azure 操作中に Azure パブリッシュ設定を使用するようになります。
 
 ## <a name="installing-the-chef-development-kit"></a>Chef 開発キットのインストール
-次に ChefDK (Chef 開発キット) を [ダウンロードしてインストール](http://downloads.getchef.com/chef-dk/windows) し、Chef Workstation を設定します。
+次に ChefDK (Chef 開発キット) を[ダウンロードしてインストール](http://downloads.getchef.com/chef-dk/windows)し、Chef Workstation を設定します。
 
 ![][7]
 
@@ -118,7 +119,9 @@ PATH 変数に C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\you
 
 ない場合は必ずこのパスを追加してください。
 
-*パスの順序が重要ですのでご注意ください。* opscode パスの順序が正しくない場合は、問題が生じます。
+> [!NOTE]
+> パスの順序が重要です。 opscode パスの順序が正しくない場合は、問題が生じます。 
+> 
 
 続行する前にワークステーションを再起動します。
 

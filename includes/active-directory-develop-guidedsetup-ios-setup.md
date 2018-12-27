@@ -1,28 +1,51 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: ios
+ms.workload: identity
+ms.date: 09/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 4f820a95759d16a9b6ac1eb1e442ae0bc8d681a3
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988251"
+---
 ## <a name="setting-up-your-ios-application"></a>iOS アプリケーションをセットアップする
 
 このセクションでは、新しいプロジェクトの作成方法について順を追って説明し、iOS アプリケーション (Swift) に *"Microsoft でサインイン"* を統合して、トークンを必要とする Web API でクエリを実行できるようにする方法を示します。
 
-> 代わりにこのサンプルの XCode プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)したら[構成](#create-an-application-express)手順に進み、実行前にコード サンプルを構成します。
-
+> 代わりにこのサンプルの XCode プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)したら[構成](#register-your-application)手順に進み、実行前にコード サンプルを構成します。
 
 ## <a name="install-carthage-to-download-and-build-msal"></a>Carthage をインストールし、MSAL をダウンロードしてビルドする
+
 Carthage パッケージ マネージャーは MSAL のプレビュー期間中に使用されます。XCode との統合が行われますが、その間、Microsoft はライブラリを変更できます。
 
-- Carthage の最新リリースを[ここ]からダウンロードし、インストールします(https://github.com/Carthage/Carthage/releases "Carthage ダウンロード URL")
+- Carthage の最新リリースを[ここ]からダウンロードし、インストールします(https://github.com/Carthage/Carthage/releases "Carthage ダウンロード URL")。
 
 ## <a name="creating-your-application"></a>アプリケーションの作成
 
-1.  Xcode を開き、`Create a new Xcode project` を選択します
-2.  `iOS` > `Single view Application` を選択し、*[次へ]* をクリックします
-3.  製品に名前を付け、*[次へ]* をクリックします
-4.  アプリを作成するフォルダーを選択し、*[作成]* をクリックします
+1. Xcode を開き、**[Create a new Xcode project (新しい Xcode プロジェクトを作成)]** を選択します。
+2. **[iOS] > [Single View Application (単一ビュー アプリケーション)]** を選択し、**[次へ]** を選択します。
+3. 製品に名前を付け、**[次へ]** を選択します。
+4. アプリを作成するフォルダーを選択し、*[作成]* をクリックします
 
 ## <a name="build-the-msal-framework"></a>MSAL フレームワークをビルドする
 
 下の手順に従い、Carthage を利用して MSAL ライブラリの最新版をプルし、ビルドします。
 
-1.  バッシュ ターミナルを開き、アプリのルート フォルダーに移動します
-2.  下のコマンドをコピーし、バッシュ ターミナルに貼り付け、‘Cartfile’ ファイルを作成します
+1. Bash ターミナルを開き、アプリのルート フォルダーに移動します。
+2. 下のコマンドをコピーし、バッシュ ターミナルに貼り付け、‘Cartfile’ ファイルを作成します
 
 ```bash
 echo "github \"AzureAD/microsoft-authentication-library-for-objc\" \"master\"" > Cartfile
@@ -38,15 +61,16 @@ echo "github \"AzureAD/microsoft-authentication-library-for-objc\" \"master\"" >
 carthage update
 ```
 
-> 上記のプロセスは Microsoft Authentication Library (MSAL) のダウンロードとビルドに使用されます。 MSAL は、Azure Active Directory v2 で保護される API へのアクセスで使用するユーザー トークンの取得、キャッシュ、更新を処理します。
+> 上記のプロセスは Microsoft Authentication Library (MSAL) のダウンロードとビルドに使用されます。 MSAL は、Azure Active Directory v2.0 で保護される API へのアクセスで使用するユーザー トークンの取得、キャッシュ、更新を処理します。
 
 ## <a name="add-the-msal-framework-to-your-application"></a>MSAL フレームワークをアプリケーションに追加する
-1.  Xcode で、[`General`] タブを開きます
-2.  [`Linked Frameworks and Libraries`] セクションに進み、[`+`] をクリックします
-3.  `Add other…` を選択します
-4.  `Carthage` > `Build` > `iOS` > `MSAL.framework` の順に選択し、*[開く]* をクリックします。 `MSAL.framework` が一覧に追加されるはずです。
-5.  [`Build Phases`] タブに進み、`+` アイコンをクリックし、`New Run Script Phase` を選択します
-6.  *スクリプト領域*に次の内容を追加します
+
+1. Xcode で、**[General (全般)]** タブを開きます。
+2. **[Linked Frameworks and Libraries (リンクされたフレームワークとライブラリ)]** セクションに移動し、**+** を選択します。
+3. **[Add other... (その他を追加...)]** を選択します。
+4. **[Carthage] > [Build (ビルド)] > [iOS] > [MSAL.framework]** の順に選択し、**[Open (オープン)]** を選びます。 `MSAL.framework` が一覧に追加されるはずです。
+5. **[Build Phases (ビルド フェーズ)]** タブに移動し、**+** アイコンを選択してから、**[New Run Script Phase (新しい実行スクリプト フェーズ)]** を選択します。
+6. *スクリプト領域*に次の内容を追加します
 
 ```text
 /usr/local/bin/carthage copy-frameworks
@@ -64,6 +88,7 @@ $(SRCROOT)/Carthage/Build/iOS/MSAL.framework
 ```
 
 ## <a name="creating-your-applications-ui"></a>アプリケーションの UI を作成する
+
 Main.storyboard ファイルは、プロジェクト テンプレートの一部として自動的に作成されます。 アプリの UI を作成するには、以下の手順に従います。
 
 1.  Ctrl キーを押しながら `Main.storyboard` をクリックしてコンテキスト メニューを表示し、`Open As` > `Source Code` の順にクリックします
@@ -117,7 +142,7 @@ Main.storyboard ファイルは、プロジェクト テンプレートの一部
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9u4-b8-vmX">
                             <rect key="frame" x="137" y="138" width="100" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Sign-Out"/>
+                            <state key="normal" title="Sign Out"/>
                             <connections>
                                 <action selector="signoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kZT-P8-0Zy"/>
                             </connections>

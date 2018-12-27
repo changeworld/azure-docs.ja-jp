@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL サーバーのファイアウォール規則"
-description: "この記事では、Azure Database for PostgreSQL サーバーのファイアウォール規則について説明します。"
+title: Azure Database for PostgreSQL サーバーのファイアウォール規則
+description: この記事では、Azure Database for PostgreSQL サーバーのファイアウォール規則について説明します。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29689889"
 ---
 # <a name="azure-database-for-postgresql-server-firewall-rules"></a>Azure Database for PostgreSQL サーバーのファイアウォール規則
 Azure Database for PostgreSQL Server ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。

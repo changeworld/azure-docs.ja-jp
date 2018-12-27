@@ -1,23 +1,24 @@
 ---
-title: "Azure Service Bus のメッセージ、ペイロード、およびシリアル化 | Microsoft Docs"
-description: "Service Bus メッセージのペイロードの概要"
+title: Azure Service Bus のメッセージ、ペイロード、およびシリアル化 | Microsoft Docs
+description: Service Bus メッセージのペイロードの概要
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: 9ac7e71002a375961b8d06b44bbccce2919129e4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.date: 09/26/2018
+ms.author: spelluru
+ms.openlocfilehash: 00c7605b09c32328a8324b13b8151a258a39dc22
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857603"
 ---
 # <a name="messages-payloads-and-serialization"></a>メッセージ、ペイロード、およびシリアル化
 
@@ -31,11 +32,11 @@ Service Bus メッセージは、どのような形式でもサービス側で S
  
 かっこ内には、AMQP プロトコル レベルで使用される同等の名前を示しています。 
 
-| プロパティ名                         | [説明]                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| プロパティ名                         | 説明                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (content-type)           | これは省略可能であり、RFC2045 のセクション 5 の形式に従った記述子を使用してメッセージのペイロードを記述します (例: `application/json`)。                                                                                                                                                                                                                                                                                             |
 |  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (correlation-id)       | 相関関係のために、アプリケーションがメッセージのコンテキストを指定できるようにします (たとえば、応答されるメッセージの **MessageId** を示すなど)。                                                                                                                                                                                                                                                                  |
-| [DeadLetterSource](/dotnet/api/microsoft.azure.servicebus.message.deadlettersource)                      | 配信不能になっていて、後で配信不能キューから別のエンティティに自動転送されるメッセージでのみ設定されます。 メッセージが配信不能になったエンティティを示します。 このプロパティは読み取り専用です。                                                                                                                                                                                                                                  |
+| [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource)                      | 配信不能になっていて、後で配信不能キューから別のエンティティに自動転送されるメッセージでのみ設定されます。 メッセージが配信不能になったエンティティを示します。 このプロパティは読み取り専用です。                                                                                                                                                                                                                                  |
 | [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deliverycount)                         | このメッセージに対して試行された配信の数です。 このカウントは、メッセージのロックが有効期限切れになった場合、またはメッセージが受信者によって明示的に破棄された場合に増分されます。 このプロパティは読み取り専用です。                                                                                                                                                                                                                                                  |
 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber)                | このプロパティは、自動転送されたメッセージの場合に、元の送信地点で最初にメッセージに割り当てられたシーケンス番号を示します。 このプロパティは読み取り専用です。                                                                                                                                                                                                                                                                |
 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc)                       | メッセージがエンティティで受け入れおよび格納された UTC 時刻。 この値は、受信者が送信者の時計を信頼したくない場合に、信頼できる中立的な到着時間インジケーターとして使用できます。 このプロパティは読み取り専用です。                                                                                                                                                                                                   |
@@ -45,7 +46,7 @@ Service Bus メッセージは、どのような形式でもサービス側で S
 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc)                        | このプロパティは、ロックされた状態 (事前設定ではなくピーク ロック受信モード) で取得されたメッセージの場合に、メッセージがキュー/サブスクリプション内でロック状態に保持される期限の UTC 時刻を示します。 ロックが有効期限切れになると [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deliverycount) が増分され、メッセージが再び取得可能になります。 このプロパティは読み取り専用です。                                                                                                                         |
 | [LockToken](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.locktoken)                             | ロック トークンは、ブローカーが "*ピーク ロック*" 受信モードで保持しているロックへの参照です。 このトークンを使用すると、[遅延](message-deferral.md) API を使用してロックをピン留めし、メッセージを通常の配信状態フローから除外することができます。 このプロパティは読み取り専用です。                                                                                                                                                               |
 | [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) (message-id)                | メッセージ識別子は、アプリケーションによって定義される、メッセージとそのペイロードを一意に識別する値です。 この識別子は自由形式の文字列で、GUID またはアプリケーションのコンテキストから派生した識別子を反映することができます。 有効にした場合、[重複データ検出](duplicate-detection.md)機能は、同じ **MessageId** を持つメッセージの 2 回目以降の送信を識別して削除します。                                                                |
-| [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)                          | [パーティション分割されたエンティティ](service-bus-partitioning.md)の場合、この値を設定すると、関連するメッセージを同じ内部パーティションに割り当てて、送信順序が正しく記録されるようにできます。 パーティションはハッシュ関数でこの値を介して選択され、直接選択することはできません。 セッションを認識するエンティティの場合、この値は **SessionId** プロパティによって上書きされます。                                                                                                       |
+| [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)                          | [パーティション分割されたエンティティ](service-bus-partitioning.md)の場合、この値を設定すると、関連するメッセージを同じ内部パーティションに割り当てて、送信順序が正しく記録されるようにできます。 パーティションはハッシュ関数でこの値を介して選択され、直接選択することはできません。 セッションを認識するエンティティの場合、この値は **SessionId** プロパティによってオーバーライドされます。                                                                                                       |
 | [ReplyTo](/dotnet/api/microsoft.azure.servicebus.message.replyto) (reply-to)                    | これはアプリケーションによって定義される省略可能な値であり、メッセージの受信者への応答パスを表す標準的な方法です。 応答が必要な場合、送信者は、この値を応答の送信先にするキューまたはトピックの絶対または相対パスに設定します。                                                                                                                                           |
 | [ReplyToSessionId](/dotnet/api/microsoft.azure.servicebus.message.replytosessionid) (reply-to-group-id)  | この値は、**ReplyTo** の情報を補足し、応答が応答エンティティに送信されるときに設定する必要がある **SessionId** を指定します。                                                                                                                                                                                                                                                                            |
 | [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc)               | このプロパティは、遅延後にのみ取得可能になるメッセージの場合に、メッセージが論理的にエンキューされ、シーケンス処理されて取得可能になる UTC 時刻を定義します。                                                                                                                                                                                                                 |
@@ -88,7 +89,6 @@ Java または .NET Standard バージョンとは異なり、.NET Framework バ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)

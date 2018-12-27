@@ -1,31 +1,27 @@
 ---
-title: "スケジューラに基づいて自動化されたワークフローを作成する - Azure Logic Apps | Microsoft Docs"
-description: "このチュートリアルでは、スケジューラに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps で作成する方法について説明します。"
-author: ecfan
-manager: anneta
-editor: 
+title: スケジューラに基づいて自動化されたワークフローを作成する - Azure Logic Apps | Microsoft Docs
+description: チュートリアル - スケジューラに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps で作成する方法
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: 4360249367632a01e4357c527f595f8416c7cc38
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 8a8c8c7abf5b6f0f2a870f6983c7e855db1e0192
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231816"
 ---
-# <a name="check-traffic-with-a-scheduler-based-logic-app"></a>スケジュールに基づいたロジック アプリでトラフィックをチェックする
+# <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Azure Logic Apps を使用してスケジュールに従ってトラフィックをチェックする
 
 スケジュールに従って実行されるワークフローは、Azure Logic Apps を使って簡単に自動化することができます。 このチュートリアルでは、スケジューラ トリガーを使った[ロジック アプリ](../logic-apps/logic-apps-overview.md)の作成方法を紹介します。このロジック アプリは、平日朝に毎日実行され、移動時間 (2 地点間の交通量を含む) をチェックします。 その時間が特定の上限を超えた場合、目的地までの移動時間と超過時間が記載されたメールをロジック アプリから送信します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 空のロジック アプリを作成します。 
@@ -92,7 +88,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![スケジュールと定期実行の詳細を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/schedule-recurrence-trigger-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **間隔** | 1 | チェックの間隔 (単位数) | 
    | **頻度** | 週 | 定期実行の時間の単位 | 
@@ -335,7 +331,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

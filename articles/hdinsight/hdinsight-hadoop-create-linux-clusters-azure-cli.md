@@ -1,37 +1,28 @@
 ---
-title: "コマンド ラインを使用して Hadoop クラスターを作成する - Azure HDInsight | Microsoft Docs"
-description: "クロス プラットフォーム Azure CLI 1.0 を使用して HDInsight クラスターを作成する方法について説明します。"
+title: Azure クラシック CLI を使用して Apache Hadoop クラスターを作成する - Azure HDInsight
+description: クロスプラットフォームの Azure クラシック CLI を使用して HDInsight クラスターを作成する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 50b01483-455c-4d87-b754-2229005a8ab9
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 983e167d248d711efde9c64a70f59d5a9e81769a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: hrasheed
+ms.openlocfilehash: f82ac972e54dac6df5a913a8059417b701e2f7e0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191582"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLI を使用した HDInsight クラスターの作成
+# <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して HDInsight クラスターを作成する
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-このドキュメントの手順では、Azure CLI 1.0 を使用して HDInsight 3.5 クラスターをプロセスを順を追って説明します。
+このドキュメントの手順では、Azure クラシック CLI を使用して HDInsight 3.5 クラスターをプロセスを順を追って説明します。
 
-> [!IMPORTANT]
-> このトピックでは、Azure CLI 1.0 を使用して HDInsight クラスターを作成する方法について説明します。 このバージョンの CLI は非推奨となっています。また、Azure CLI 2.0 には、HDInsight クラスターの作成機能がまだ追加されていません。
->
-> HDInsight クラスターの作成と管理は、Azure PowerShell を使用して行うこともできます。 詳しくは、[Azure PowerShell を使用した HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)に関するページをご覧ください。
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,14 +30,11 @@ ms.lasthandoff: 02/28/2018
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-* **Azure CLI**。 このドキュメントの手順は、Azure CLI バージョン 0.10.14 で最後にテストされました。
-
-    > [!IMPORTANT]
-    > Azure CLI 1.0 は非推奨となっています。また、Azure CLI 2.0 には、HDInsight クラスターの作成機能がまだ追加されていません。
+* **Azure クラシック CLI**。 このドキュメントの手順は、Azure クラシック CLI バージョン 0.10.14 で最後にテストされました。
 
 ## <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションにログイン
 
-「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](/cli/azure/authenticate-azure-cli)」に記載されている手順に従い、 **login** メソッドを使用してサブスクリプションに接続します。
+「[Azure コマンド ライン インターフェイスからの Azure サブスクリプションへの接続](/cli/azure/authenticate-azure-cli)」に記載されている手順に従い、**login** メソッドを使用してサブスクリプションに接続します。
 
 ## <a name="create-a-cluster"></a>クラスターの作成
 
@@ -56,7 +44,7 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
         azure login
 
-    名前とパスワードを入力するように求められます。 複数の Azure サブスクリプションがある場合は、 `azure account set <subscriptionname>` を使用して、Azure CLI コマンドが使用するサブスクリプションを設定します。
+    名前とパスワードを入力するように求められます。 複数の Azure サブスクリプションがある場合は、`azure account set <subscriptionname>` を使用して、クラシック CLI コマンドが使用するサブスクリプションを設定します。
 
 2. 次のコマンドで Azure リソース マネージャー モードに切り替えます。
 
@@ -92,7 +80,7 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
     * `groupname` には、リソース グループ名を指定します。
     * `storagename` には、ストレージ アカウントの名前を指定します。
 
-     返されたデータで、`key1` の `key` の値を保存します。
+      返されたデータで、`key1` の `key` の値を保存します。
 
 6. HDInsight クラスターを作成します。
 
@@ -102,8 +90,8 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
     * `Hadoop` には、作成するクラスターの種類を指定します。 たとえば、`Hadoop`、`HBase`、`Kafka`、`Spark`、`Storm` などです。
 
-     > [!IMPORTANT]
-     > HDInsight クラスターにはさまざまな種類があり、それぞれに適したワークロードやテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。
+      > [!IMPORTANT]
+      > HDInsight クラスターにはさまざまな種類があり、それぞれに適したワークロードやテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。
 
     * `location` には、前の手順で使用した場所を指定します。
 
@@ -117,12 +105,12 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
     * `sshuser` と `sshuserpassword` には、SSH を使用してクラスターにアクセスするときに使用するユーザー名とパスワードを指定します。
 
-    > [!IMPORTANT]
-    > この例では、2 つの worker ノードを持つクラスターが作成されます。 クラスターの作成後にスケーリング操作を実行することによって、ワーカー ノードの数を変更することもできます。 32 個を超えるワーカー ノードの使用を予定している場合は、コアが 8 個以上で RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。 ヘッド ノード サイズは、クラスターの作成中に `--headNodeSize` パラメーターを使用して設定できます。
-    >
-    > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
-
-    クラスターの作成処理は、完了までに数分かかる場合があります。 通常は約 15 です。
+      > [!IMPORTANT]
+      > この例では、2 つの worker ノードを持つクラスターが作成されます。 クラスターの作成後にスケーリング操作を実行することによって、ワーカー ノードの数を変更することもできます。 32 個を超えるワーカー ノードの使用を予定している場合は、コアが 8 個以上で RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。 ヘッド ノード サイズは、クラスターの作成中に `--headNodeSize` パラメーターを使用して設定できます。
+      >
+      > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+      
+      クラスターの作成処理は、完了までに数分かかる場合があります。 通常は約 15 です。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
@@ -130,21 +118,21 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI を使用して HDInsight クラスターを作成したら、クラスターの使用方法について、以下のトピックを参照してください。
+クラシック CLI を使用して HDInsight クラスターを作成したら、クラスターの使用方法について、以下のトピックを参照してください。
 
-### <a name="hadoop-clusters"></a>Hadoop クラスター
+### <a name="apache-hadoop-clusters"></a>Apache Hadoop クラスター
 
-* [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hadoop/hdinsight-use-pig.md)
-* [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
+* [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
+* [HDInsight での Apache Hadoop MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a>HBase クラスター
+### <a name="apache-hbase-clusters"></a>Apache HBase クラスター
 
-* [HDInsight での HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [HDInsight での HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
+* [HDInsight での Apache HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [HDInsight での Apache HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="storm-clusters"></a>Storm クラスター
+### <a name="apache-storm-clusters"></a>Apache Storm クラスター
 
-* [HDInsight での Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
-* [HDInsight の Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
-* [HDInsight の Storm を使用したトポロジのデプロイと監視](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [HDInsight での Apache Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
+* [HDInsight の Apache Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
+* [Deploy and monitor topologies with Apache Storm on HDInsight (HDInsight の Storm を使用したトポロジのデプロイと監視)](storm/apache-storm-deploy-monitor-topology-linux.md)

@@ -1,11 +1,11 @@
 ---
-title: "クラウド サービスを作成してデプロイする方法 | Microsoft Docs"
-description: "Azure ポータルを使用してクラウド サービスを作成およびデプロイする方法について説明します。"
+title: クラウド サービスを作成してデプロイする方法 | Microsoft Docs
+description: Azure ポータルを使用してクラウド サービスを作成およびデプロイする方法について説明します。
 services: cloud-services
-documentationcenter: 
-author: Thraka
+documentationcenter: ''
+author: jpconnock
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 56ea2f14-34a2-4ed9-857c-82be4c9d0579
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: adegeo
-ms.openlocfilehash: 96b92690cd164b1012380f82a1d1bd3336350e57
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: jeconnoc
+ms.openlocfilehash: ece3511d0d3c12be13a649385ea9b6dd5c75bfe0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303712"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>クラウド サービスを作成してデプロイする方法
 Azure Portal には、クラウド サービスを作成してデプロイする方法として、"*簡易作成*" と "*カスタム作成*" の 2 つの方法が用意されています。
@@ -26,7 +27,7 @@ Azure Portal には、クラウド サービスを作成してデプロイする
 このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、**[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。 この方法を使うと、Azure ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。 クラウド サービスの作成時にデプロイする準備が整っている場合は、[カスタム作成] を使用して作成とデプロイを同時に実行できます。
 
 > [!NOTE]
-> Visual Studio Team Services (VSTS) からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、[Azure クイック スタート] またはダッシュボードから VSTS 発行を設定する必要があります。 詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信][TFSTutorialForCloudService]」を参照するか、**[クイック スタート]** ページのヘルプを参照してください。
+> Azure DevOps からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、[Azure クイック スタート] またはダッシュボードから Azure DevOps 発行を設定する必要があります。 詳細については、[Azure DevOps を使用した Azure への継続的デリバリー][TFSTutorialForCloudService]に関するページを参照するか、**[クイック スタート]** ページのヘルプを参照してください。
 >
 >
 
@@ -64,11 +65,11 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
     ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. 新しい **[クラウド サービス]** ウィンドウで、**[DNS 名]** の値を入力します。
 4. 新しい **リソース グループ** を作成するか、または既存のリソース グループを選択します。
-5. **[場所]**を選択します。
-6. **[パッケージ]**をクリックします。 これにより、**[パッケージのアップロード]** ウィンドウが開きます。 必須フィールドに必要事項を入力します。 いずれかのロールに単一インスタンスが含まれている場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします]** チェック ボックスがオンになっていることを確認してください。
+5. **[場所]** を選択します。
+6. **[パッケージ]** をクリックします。 これにより、**[パッケージのアップロード]** ウィンドウが開きます。 必須フィールドに必要事項を入力します。 いずれかのロールに単一インスタンスが含まれている場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします]** チェック ボックスがオンになっていることを確認してください。
 7. **[デプロイの開始]** がオンになっていることを確認します。
 8. **[OK]** をクリックして、**[パッケージのアップロード]** ウィンドウを閉じます。
-9. 追加する証明書がない場合は、 **[作成]**をクリックします。
+9. 追加する証明書がない場合は、 **[作成]** をクリックします。
 
     ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 

@@ -1,9 +1,9 @@
 ---
-title: Azure CLI 1.0 を使用したクラシック Linux VM の作成 | Microsoft Docs
-description: クラシック デプロイ モデルを使用して Azure CLI 1.0 で Linux 仮想マシンを作成する方法について説明する
+title: Azure クラシック CLI を使用してクラシック Linux VM を作成する | Microsoft Docs
+description: クラシック デプロイ モデルを使用して Azure クラシック CLI で Linux 仮想マシンを作成する方法について説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -15,18 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
-ms.author: iainfou
-ms.openlocfilehash: 6d3f0dd0c82ad32df4d6e17058d9b1bea57c301f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: cynthn
+ms.openlocfilehash: d8e469289f72fe892ea7c3da99972e6326c75eb9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242538"
 ---
-# <a name="how-to-create-a-classic-linux-vm-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用してクラシック Linux VM を作成する方法
+# <a name="how-to-create-a-classic-linux-vm-with-the-azure-classic-cli"></a>Azure クラシック CLI を使用してクラシック Linux VM を作成する方法
 > [!IMPORTANT] 
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager バージョンについては、[こちら](../create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
 
-このトピックでは、クラシック デプロイ モデルを使用して Azure CLI 1.0 で Linux 仮想マシン (VM) を作成する方法について説明します。 ここでは、Azure 上の使用可能な **イメージ** にある Linux イメージを使用します。 Azure CLI 1.0 コマンドでは、次のような構成を選択できます。
+このトピックでは、クラシック デプロイ モデルを使用して Azure クラシック CLI で Linux 仮想マシン (VM) を作成する方法について説明します。 ここでは、Azure 上の使用可能な **イメージ** にある Linux イメージを使用します。 Azure クラシック CLI コマンドでは、次のような構成を選択できます。
 
 * 仮想ネットワークと VM との接続
 * 既存のクラウド サービスへの VM の追加
@@ -34,7 +35,7 @@ ms.lasthandoff: 04/05/2018
 * 可用性セットまたは場所への VM の追加
 
 > [!IMPORTANT]
-> VM が仮想ネットワークを使用して、ホスト名を使用した直接接続またはクロスプレミス接続の設定ができるには、VM の作成時に必ず仮想ネットワークを指定する必要があります。 VM が仮想ネットワークに接続するように設定できるのは、VM の作成時に限られています。 仮想ネットワークの詳細については、「 [Virtual Network の概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
+> VM が仮想ネットワークを使用して、ホスト名を使用した直接接続またはクロスプレミス接続の設定ができるには、VM の作成時に必ず仮想ネットワークを指定する必要があります。 VM が仮想ネットワークに接続するように設定できるのは、VM の作成時に限られています。 仮想ネットワークの詳細については、「 [Virtual Network の概要](https://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
 > 
 > 
 

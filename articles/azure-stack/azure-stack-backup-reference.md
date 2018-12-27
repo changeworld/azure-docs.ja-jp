@@ -1,24 +1,26 @@
 ---
-title: "Azure Stack インフラストラクチャ バックアップ サービスのリファレンス | Microsoft Docs"
-description: "この記事には、Azure Stack インフラストラクチャ バックアップ サービスについての参考資料が記載されています。"
+title: Azure Stack インフラストラクチャ バックアップ サービスのリファレンス | Microsoft Docs
+description: この記事には、Azure Stack インフラストラクチャ バックアップ サービスについての参考資料が記載されています。
 services: azure-stack
-documentationcenter: 
-author: mattbriggs
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: D6EC0224-97EA-446C-BC95-A3D32F668E2C
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
-ms.author: mabrigg
-ms.openlocfilehash: 4e6e0a52b2c55239e38757223f54e5e94dc98c42
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.date: 10/25/2018
+ms.author: jeffgilb
+ms.reviewer: hectorl
+ms.openlocfilehash: 35929d820ac6f72b83d6c3f25547255ca3423fc8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138448"
 ---
 # <a name="infrastructure-backup-service-reference"></a>インフラストラクチャ バックアップ サービスのリファレンス
 
@@ -77,7 +79,7 @@ Azure Stack は、ポータル、Azure Resource Manager、インフラストラ�
 
 #### <a name="supported-smb-versions"></a>サポートされる SMB バージョン
 
-| SMB | バージョン |
+| SMB | Version |
 |-----|---------|
 | SMB | 3.x     |
 
@@ -87,7 +89,7 @@ Azure Stack は、ポータル、Azure Resource Manager、インフラストラ�
 
 | 環境のスケール | バックアップの予測サイズ | 必要な領域の合計サイズ |
 |-------------------|--------------------------|--------------------------------|
-| 4 - 12 ノード        | 10 GB                     | 140 GB                          |
+| 4-16 ノード        | 10 GB                     | 140 GB                          |
 
 ### <a name="network-requirements"></a>ネットワークの要件
 | 保存先                                                                 | 詳細                                                                                                                                                                                 |

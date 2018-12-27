@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Azure StorSimple 8000 シリーズ デバイスのバッテリ交換 | Microsoft Docs"
-description: "StorSimple デバイスのバックアップ バッテリ モジュールの取り外し、交換、メンテナンスの方法について説明します。"
+title: Microsoft Azure StorSimple 8000 シリーズ デバイスのバッテリ交換 | Microsoft Docs
+description: StorSimple デバイスのバックアップ バッテリ モジュールの取り外し、交換、メンテナンスの方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27742815"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>StorSimple デバイスのバックアップ バッテリ モジュールを交換する
 
@@ -39,7 +40,7 @@ Microsoft Azure StorSimple デバイスの主エンクロージャの電源お�
 StorSimple デバイスのバックアップ バッテリ モジュールは、現場交換可能ユニットです。 PCM に取り付けるまで、バッテリ モジュールは元のパッケージに格納しておく必要があります。 バックアップ バッテリーを取り外すには、次の手順を実行します。
 
 #### <a name="to-remove-the-backup-battery-module"></a>バックアップ バッテリ モジュールを取り外すには
-1. Azure Portal で StorSimple デバイス マネージャー サービス ブレードに移動します。 **[デバイス]** に移動し、デバイスの一覧から目的のデバイスを選択します。 **[監視]** > **[ハードウェアの正常性]** に移動します。 **[共有コンポーネント]**で、バッテリの状態を確認します。
+1. Azure Portal で StorSimple デバイス マネージャー サービス ブレードに移動します。 **[デバイス]** に移動し、デバイスの一覧から目的のデバイスを選択します。 **[監視]** > **[ハードウェアの正常性]** に移動します。 **[共有コンポーネント]** で、バッテリの状態を確認します。
 2. バッテリが故障している PCM を特定します。 図 1 では、StorSimple デバイスの背面を示します。
    
     ![デバイスの主エンクロージャ モジュールのバックプレーン](./media/storsimple-battery-replacement/IC740994.png)

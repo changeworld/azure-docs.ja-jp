@@ -1,26 +1,22 @@
 ---
-title: "カスタム API への認証の追加 - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリからカスタム API への呼び出しの認証を設定します"
-author: ecfan
-manager: anneta
-editor: 
+title: カスタム API への認証の追加 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps からカスタム API を呼び出すための認証を設定します
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 2528f4318d92bbfdc1008795876f0240a5e3e4f6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7e1f2411db828917d7a3c5e21348b553a5a5a3bb
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087510"
 ---
-# <a name="secure-calls-to-your-custom-apis-from-logic-apps"></a>ロジック アプリからのカスタム API の呼び出しのセキュリティ保護
+# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps からのカスタム API の呼び出しのセキュリティ保護
 
 API の呼び出しをセキュリティで保護するために、Azure Portal で Azure Active Directory (Azure AD) を設定できます。コードを更新する必要はありません。 あるいは、API のコードで認証を要求し、強制できます。
 
@@ -28,7 +24,7 @@ API の呼び出しをセキュリティで保護するために、Azure Portal 
 
 次の方法でカスタム API の呼び出しを保護できます。
 
-* [コードを変更しない](#no-code): Azure ポータル経由で [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md) を利用し、API を保護します。そのため、コードを更新したり、API を再デプロイしたりする必要がありません。
+* [コードを変更しない](#no-code): Azure ポータル経由で [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) を利用し、API を保護します。そのため、コードを更新したり、API を再デプロイしたりする必要がありません。
 
   > [!NOTE]
   > 既定では、Azure Portal で Azure AD 認証をオンにしてもきめ細かい認証は実行されません。 たとえば、この認証は、特定のユーザーやアプリではなく、特定のテナントに API を制限します。 
@@ -53,7 +49,7 @@ API の呼び出しをセキュリティで保護するために、Azure Portal 
 
 **Azure ポータルでロジック アプリのアプリケーション ID を作成する**
 
-1. [Azure ポータル](https://portal.azure.com "https://portal.azure.com") で、**[Azure Active Directory]** を選択します。 
+1. [Azure portal](https://portal.azure.com "https://portal.azure.com") で、**[Azure Active Directory]** を選択します。 
 
 2. Web アプリまたは API アプリと同じディレクトリにいることを確認します。
 
@@ -100,15 +96,15 @@ API の呼び出しをセキュリティで保護するために、Azure Portal 
 
 このタスクは Azure Resource Manager と PowerShell で実行できます。 PowerShell で、次のコマンドレットを実行します。
 
-1. `Switch-AzureMode AzureResourceManager`
+1. `Add-AzureRmAccount`
 
-2. `Add-AzureAccount`
+2. `$SecurePassword = Read-Host -AsSecureString` (パスワードを入力し、Enter キーを押します)
 
-3. `New-AzureADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password "identity-password"`
+3. `New-AzureRmADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
 
 4. **テナント ID** (Azure AD テナントの GUID)、**アプリケーション ID**、使用したパスワードを必ずコピーします。
 
-詳細については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../azure-resource-manager/resource-group-authenticate-service-principal.md)」を参照してください。
+詳細については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)」を参照してください。
 
 #### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>パート 2: Web アプリまたは API アプリの Azure AD アプリケーション ID を作成する
 
@@ -116,7 +112,7 @@ Web アプリまたは API アプリが既にデプロイされている場合�
 
 **デプロイされたアプリに対し、Azure ポータルでアプリケーション ID を作成し、認証をオンにする**
 
-1. [Azure ポータル](https://portal.azure.com "https://portal.azure.com") で、Web アプリまたは API アプリを見つけ、選択します。 
+1. [Azure portal](https://portal.azure.com "https://portal.azure.com") で、Web アプリまたは API アプリを探して選択します。 
 
 2. **[設定]** で、**[認証/承認]** を選択します。 **[App Service 認証]** で認証を **[オン]** にします。 **[認証プロバイダー]** の下の **[Azure Active Directory]** を選択します。
 
@@ -192,14 +188,14 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 | 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
-| テナント | あり | Azure AD テナントの GUID | 
-| 対象となる読者 | あり | アクセスするターゲット リソースの GUID。Web アプリまたは API アプリのアプリケーション ID からのクライアント ID です | 
-| clientId | あり | アクセスを要求するクライアントの GUID。ロジック アプリのアプリケーション ID からのクライアント ID です | 
-| secret | あり | アクセス トークンを要求しているクライアントのアプリケーション ID からのキーまたはパスワード | 
-| type | あり | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 | 
+| tenant | はい | Azure AD テナントの GUID | 
+| 対象となる読者 | はい | アクセスするターゲット リソースの GUID。Web アプリまたは API アプリのアプリケーション ID からのクライアント ID です | 
+| clientId | はい | アクセスを要求するクライアントの GUID。ロジック アプリのアプリケーション ID からのクライアント ID です | 
+| secret | はい | アクセス トークンを要求しているクライアントのアプリケーション ID からのキーまたはパスワード | 
+| type | はい | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 | 
 |||| 
 
-For example:
+例: 
 
 ``` json
 {
@@ -238,9 +234,9 @@ For example:
 
 | 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
-| type | あり | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 | 
-| パスワード | あり | クライアント証明書 (PFX ファイル) にアクセスするためのパスワード | 
-| pfx | あり | Base64 でエンコードされた、クライアント証明書のコンテンツ (PFX ファイル) | 
+| type | はい | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 | 
+| password | はい | クライアント証明書 (PFX ファイル) にアクセスするためのパスワード | 
+| pfx | はい | Base64 でエンコードされた、クライアント証明書のコンテンツ (PFX ファイル) | 
 |||| 
 
 <a name="basic"></a>
@@ -251,13 +247,13 @@ For example:
 
 **[承認]** セクションで、次の行を追加します。
 
-`{"type": "basic", "username": "username", "password": "password"}`」を参照してください。
+`{"type": "basic", "username": "username", "password": "password"}`
 
 | 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
-| type | あり | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
-| username | あり | 認証に使用するユーザー名 | 
-| パスワード | あり | 認証に使用するパスワード | 
+| type | はい | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
+| username | はい | 認証に使用するユーザー名 | 
+| password | はい | 認証に使用するパスワード | 
 |||| 
 
 <a name="azure-ad-code"></a>
@@ -275,6 +271,6 @@ and not use the Azure portal, learn how to
 To create an application identity for your logic app and use that identity to call your API, 
 you must follow the previous steps. -->
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ロジック アプリ ワークフローからカスタム API をデプロイして呼び出す](../logic-apps/logic-apps-custom-api-host-deploy-call.md)

@@ -1,26 +1,29 @@
 ---
 title: Azure の UI 定義作成要素 | Microsoft Docs
 description: Azure Portal の UI 定義を作成するときに使う要素について説明します。
-services: azure-resource-manager
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 09/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: d6f96d4aa66839518023b4d567caf1ff839a29fb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 895b5cfb121347f9400d1aa315fef05d9088c55c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366473"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition の要素
-この記事では、CreateUiDefinition でサポートされるすべての要素のスキーマとプロパティについて説明します。 ほとんどの要素のスキーマは、次のようになっています。
+この記事では、CreateUiDefinition でサポートされるすべての要素のスキーマとプロパティについて説明します。 
+
+## <a name="schema"></a>スキーマ
+
+ほとんどの要素のスキーマは、次のようになっています。
 
 ```json
 {
@@ -35,10 +38,10 @@ ms.lasthandoff: 04/03/2018
 }
 ```
 
-| プロパティ | 必須 | [説明] |
+| プロパティ | 必須 | 説明 |
 | -------- | -------- | ----------- |
 | name | [はい] | 要素の特定のインスタンスを参照するための内部的な識別子。 要素名が最もよく使用されるのは `outputs` で、指定した要素の出力値がテンプレートのパラメーターにマッピングされます。 これを使って要素の出力値を別の要素の `defaultValue` にバインドすることもできます。 |
-| 型 | [はい] | レンダリングする要素の UI コントロール。 サポートされる型の一覧については、「[要素](#elements)」を参照してください。 |
+| type | [はい] | レンダリングする要素の UI コントロール。 サポートされる型の一覧については、「[要素](#elements)」を参照してください。 |
 | label | [はい] | 要素の表示テキスト。 要素の種類によっては複数のラベルが含まれるため、この値は複数の文字列を含んだオブジェクトになる場合があります。 |
 | defaultValue | いいえ  | 要素の既定値。 要素の種類によっては複合的な既定値がサポートされるため、この値はオブジェクトになる場合があります。 |
 | toolTip | いいえ  | 要素のヒントに表示するテキスト。 `label` と同様、要素によっては複数のヒント文字列がサポートされます。 マークダウン構文を使ってインライン リンクを埋め込むことができます。
@@ -52,9 +55,11 @@ ms.lasthandoff: 04/03/2018
 
 - [Microsoft.Common.DropDown](microsoft-common-dropdown.md)
 - [Microsoft.Common.FileUpload](microsoft-common-fileupload.md)
+- [Microsoft.Common.InfoBox](microsoft-common-infobox.md)
 - [Microsoft.Common.OptionsGroup](microsoft-common-optionsgroup.md)
 - [Microsoft.Common.PasswordBox](microsoft-common-passwordbox.md)
 - [Microsoft.Common.Section](microsoft-common-section.md)
+- [Microsoft.Common.TextBlock](microsoft-common-textblock.md)
 - [Microsoft.Common.TextBox](microsoft-common-textbox.md)
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)

@@ -1,30 +1,24 @@
 ---
-title: 発行済みアプリケーションのインストール - H2O Sparkling Water - Azure HDInsight | Microsoft Docs
+title: 発行済みアプリケーションのインストール - H2O Sparkling Water - Azure HDInsight
 description: H2O Sparkling Water サードパーティ Hadoop アプリケーションをインストールして使用します。
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 8734daa5303aa76e9f8a074b5f709727cabb58b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 60b80843ce343c667413be55b59d02ac14b349f3
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037517"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>発行済みアプリケーションのインストール - H2O Sparkling Water
 
-この記事では、[H2O Sparkling Water](http://www.h2o.ai/) の発行済み Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
+この記事では、[H2O Sparkling Water](http://www.h2o.ai/) の発行済み Apache Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
 
 ## <a name="about-h2o-sparkling-water"></a>H2O Sparkling Water について
 
@@ -39,7 +33,7 @@ H2O Sparkling Water の提供内容:
 
 ### <a name="resource-links"></a>リソース リンク
 
-* [H2O.ai エンジニアリング ロードマップ](https://jira.h2o.ai/)
+* [H2O.ai エンジニアリング ロードマップ](http://jira.h2o.ai/)
 * [H2O.ai ホーム](http://www.h2o.ai/)
 * [H2O.ai ドキュメント](http://docs.h2o.ai/)
 * [H2O.ai サポート](https://support.h2o.ai/)
@@ -84,9 +78,9 @@ H2O Sparkling Water の提供内容:
 
     ![Million_Songs.flow の選択](./media/hdinsight-apps-install-h2o/million-songs.png)
 
-7. **milsongs-cls-train.csv.gz** が含まれているパスを見つけ、パス全体を **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz** に置き換えます。
+7. **milsongs-cls-train.csv.gz** が含まれるパスを見つけ、パス全体を **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz** で置換します。
 
-8. **milsongs-cls-test.csv.gz** が含まれているパスを見つけ、それを **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-test.csv.gz** に置き換えます。
+8. **milsongs-cls-test.csv.gz** が含まれるパスを見つけ、それを **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-test.csv.gz** で置換します。
 
 9. Notebook セル内のすべてのステートメントを実行するには、ツール バーにある **[Run All]\(すべて実行\)** ボタンを選択します。
 
@@ -96,7 +90,7 @@ H2O Sparkling Water の提供内容:
 
     ![出力](./media/hdinsight-apps-install-h2o/output.png)
 
-これで完了です。 わずか数分の内に Spark で人工知能を利用しました。 次は、さまざまな種類の機会学習アルゴリズムのデモを行う H2O Flow のサンプルをさらに試すことができます。
+これで完了です。 わずか数分の内に Spark で人工知能を利用しました。 次は、さまざまな種類の機械学習アルゴリズムのデモを行う H2O Flow のサンプルをさらに試すことができます。
 
 ## <a name="next-steps"></a>次の手順
 

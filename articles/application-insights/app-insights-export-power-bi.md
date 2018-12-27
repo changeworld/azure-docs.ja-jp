@@ -1,51 +1,35 @@
 ---
-title: "Azure Application Insights から Power BI にエクスポートする | Microsoft Docs"
-description: "Power BI で Analytics クエリを表示できます。"
+title: Azure Application Insights から Power BI にエクスポートする | Microsoft Docs
+description: Power BI で Analytics クエリを表示できます。
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
-ms.date: 10/18/2016
+ms.topic: conceptual
+ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 19595983ba49a88d9139c85afbf38d3106d4a81d
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 83dfd77c311e1b3324540d352432ec7a6b706d78
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993356"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
-[Power BI](http://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
+[Power BI](https://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
 
-Application Insights のデータを Power BI にエクスポートする場合、3 つの推奨される方法があります。 これらの方法は個別に使用することも、組み合わせて使用することもできます。
+Application Insights のデータを Power BI にエクスポートする場合、3 つの方法があります。
 
-* [**Power BI アダプター**](#power-pi-adapter)。 アプリのテレメトリの完全なダッシュボードを設定します。 グラフ セットが事前定義されていますが、他のソースの独自のクエリを追加できます。
-* [**Analytics クエリのエクスポート**](#export-analytics-queries)。 必要なクエリを作成し、Power BI にエクスポートします。 クエリは、Analytics を使って、または使用状況フィルターから作成できます。 このクエリは、他のデータと共にダッシュボードに配置できます。
-* [**連続エクスポートと Azure Stream Analytics**](app-insights-export-stream-analytics.md)。 この方法は、データを長期間保持する必要がある場合に便利です。 ただし、この方法はセットアップ作業が多いので、保持する必要がない場合は、他のどちらかの方法を使います。
+* [**Analytics クエリのエクスポート**](#export-analytics-queries)。 可能であればこの方法の使用をお勧めします。 必要なクエリを作成し、Power BI にエクスポートします。 このクエリは、他のデータと共にダッシュボードに配置できます。
+* [**連続エクスポートと Azure Stream Analytics**](app-insights-export-stream-analytics.md)。 この方法は、データを長期間保存する必要がある場合に便利です。 長期にわたるデータ保有要件がない場合は、Analytics クエリのエクスポートの方法を使用します。 連続エクスポートと Stream Analytics では、多くの設定作業と追加のストレージ オーバーヘッドが必要になります。
+* [**Power BI アダプター**](#power-pi-adapter)。 グラフ セットが事前定義されていますが、他のソースの独自のクエリを追加できます。
 
-## <a name="power-bi-adapter"></a>Power BI アダプター
-この方法では、テレメトリの完全なダッシュボードが作成されます。 初期データ セットが事前定義されていますが、さらに多くのデータを追加できます。
-
-### <a name="get-the-adapter"></a>アダプターの入手
-1. [Power BI](https://app.powerbi.com/) にサインインします。
-2. **[データを取得]**、**[サービス]**、**[Application Insights]** の順に開きます。
-   
-    ![Application Insights データ ソースから取得する手順のスクリーンショット](./media/app-insights-export-power-bi/power-bi-adapter.png)
-3. Application Insights リソースの詳細を指定します。
-   
-    ![Application Insights データ ソースから取得する手順のスクリーンショット](./media/app-insights-export-power-bi/azure-subscription-resource-group-name.png)
-4. データがインポートされるまで 1 ～ 2 分待ちます。
-   
-    ![Power BI アダプターのスクリーンショット](./media/app-insights-export-power-bi/010.png)
-
-Application Insights のグラフを他のソースのグラフや Analytics クエリと組み合わせて、ダッシュボードを編集できます。 ビジュアル ギャラリーではさらに多くのグラフを入手でき、各グラフにはユーザーが設定できるパラメーターがあります。
-
-最初のインポート後は、ダッシュボードとレポートが毎日更新されます。 データセットの更新スケジュールを管理できます。
+> [!NOTE]
+> 現在、Power BI アダプターは**非推奨**となっています。 このソリューションの定義済みのグラフは、編集できない静的なクエリによって入力されます。 これらのクエリを編集することはできません。データの特定のプロパティによっては、Power BI への接続が成功する可能性がありますが、データは入力されません。 これは、ハードコードされたクエリ内で設定されている除外条件によるものです。 一部のお客様はこのソリューションをまだ利用できる場合がありますが、アダプターの柔軟性が不足しているため、[**Analytics クエリのエクスポート**](#export-analytics-queries)機能を使用するというソリューションをお勧めします。
 
 ## <a name="export-analytics-queries"></a>Analytics クエリのエクスポート
 この方法では、必要な Analytics クエリを作成するか、使用状況フィルターからエクスポートした後、それを Power BI ダッシュボードにエクスポートできます  (アダプターによって作成されたダッシュボードに追加できます)。
@@ -56,7 +40,7 @@ Application Insights のクエリをインポートするには、Power BI の�
 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) をインストールします。
 
 ### <a name="export-an-analytics-query"></a>Analytics クエリのエクスポート
-1. [Analytics を開き、クエリを作成](app-insights-analytics-tour.md)します。
+1. [Analytics を開き、クエリを作成](../azure-monitor/log-query/get-started-portal.md)します。
 2. 満足のいく結果が得られるまで、クエリをテストして改善します。 エクスポートする前に、クエリが Analytics で正しく実行されることを確認します。
 3. **[エクスポート]** メニューの **[Power BI (M)]** を選択します。 テキスト ファイルを保存します。
    
@@ -67,25 +51,25 @@ Application Insights のクエリをインポートするには、Power BI の�
 
     ![詳細エディターが強調表示されている Power BI Desktop のスクリーンショット](./media/app-insights-export-power-bi/power-bi-import-analytics-query.png)
 
-1. Power BI が Azure にアクセスできるようにするには、資格情報の指定が必要な場合があります。 **[組織アカウント]** を使って、Microsoft アカウントでサインインします。
+5. Power BI が Azure にアクセスできるようにするには、資格情報の指定が必要な場合があります。 **[組織アカウント]** を使って、Microsoft アカウントでサインインします。
    
     ![Power BI の [クエリの設定] ダイアログ ボックスのスクリーンショット](./media/app-insights-export-power-bi/power-bi-import-sign-in.png)
 
     資格情報を確認する必要がある場合は、クエリ エディターの **[データ ソース設定]** メニュー コマンドを使います。 Azure 用の資格情報を指定するように注意してください。これは Power BI 用の資格情報とは異なる可能性があります。
-2. クエリの視覚エフェクトを選び、x 軸、y 軸、セグメント化ディメンションの各フィールドを選びます。
+6. クエリの視覚エフェクトを選び、x 軸、y 軸、セグメント化ディメンションの各フィールドを選びます。
    
     ![Power BI Desktop の視覚エフェクト オプションのスクリーンショット](./media/app-insights-export-power-bi/power-bi-analytics-visualize.png)
-3. Power BI クラウド ワークスペースにレポートを発行します。 そこから、同期されたバージョンを他の Web ページに埋め込むことができます。
+7. Power BI クラウド ワークスペースにレポートを発行します。 そこから、同期されたバージョンを他の Web ページに埋め込むことができます。
    
     ![[発行] ボタンが強調表示されている Power BI Desktop のスクリーンショット](./media/app-insights-export-power-bi/publish-power-bi.png)
-4. レポートを周期的に手動で更新するか、オプション ページで更新のスケジュールを設定します。
+8. レポートを周期的に手動で更新するか、オプション ページで更新のスケジュールを設定します。
 
 ### <a name="export-a-funnel"></a>フィルターをエクスポートする
 1. [フィルターを作成します](usage-funnels.md)。
-2. **[Power BI]**を選択します。 
+2. **[Power BI]** を選択します。
 
    ![Power BI ボタンのスクリーンショット](./media/app-insights-export-power-bi/button.png)
-   
+
 3. Power BI Desktop で、**[データの取得]** > **[空のクエリ]** の順に選びます。 その後、クエリ エディターで、**[表示]** の **[詳細エディター]** を選びます。
 
    ![[空のクエリ] ボタンが強調表示されている Power BI Desktop のスクリーンショット](./media/app-insights-export-power-bi/blankquery.png)
@@ -121,10 +105,9 @@ Analytics クエリから取得するデータセットを小さくすると要�
 
 1. [API キー](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)を作成します。
 2. Azure Resource Manager の URL を Application Insights の API に置き換えて、Analytics からエクスポートした Power BI の M スクリプトを更新します。
-   * **https://management.azure.com/subscriptions/...** を
-   * **https://api.applicationinsights.io/beta/apps/...**に置き換える
+   * 置き換え前 **https://management.azure.com/subscriptions/...**
+   * 置き換え後 **https://api.applicationinsights.io/beta/apps/...**
 3. 最後に、資格情報を基本に更新して、API キーを使います。
-  
 
 **元のスクリプト**
  ```
@@ -138,8 +121,37 @@ Analytics クエリから取得するデータセットを小さくすると要�
 ## <a name="about-sampling"></a>サンプリングについて
 アプリケーションで大量のデータを送信する場合は、アダプティブ サンプリング機能を使って、テレメトリの一部だけを送信することができます。 これは、SDK または取り込みでサンプリングを手動で設定した場合にも当てはまります。 [サンプリングの詳細についてはこちらを参照してください](app-insights-sampling.md)。
 
+## <a name="power-bi-adapter-deprecated"></a>Power BI アダプター (非推奨)
+この方法では、テレメトリの完全なダッシュボードが作成されます。 初期データ セットが事前定義されていますが、さらに多くのデータを追加できます。
 
-## <a name="next-steps"></a>次のステップ
-* [Power BI - 詳細](http://www.powerbi.com/learning/)
-* [Analytics のチュートリアル](app-insights-analytics-tour.md)
+### <a name="get-the-adapter"></a>アダプターの入手
+1. [Power BI](https://app.powerbi.com/) にサインインします。
+2. **[データを取得]** ![左下隅の GetData アイコンのスクリーンショット](./media/app-insights-export-power-bi/001.png)、**[サービス]** の順に開きます。
+
+    ![Application Insights データ ソースから取得する手順のスクリーンショット](./media/app-insights-export-power-bi/002.png)
+
+3. Application Insights で **[今すぐ入手する]** を選択します。
+
+   ![Application Insights データ ソースから取得する手順のスクリーンショット](./media/app-insights-export-power-bi/003.png)
+4. Application Insights リソースの詳細を入力し、**サインイン**します。
+
+    ![Application Insights データ ソースから取得する手順のスクリーンショット](./media/app-insights-export-power-bi/005.png)
+
+     この情報は、Application Insights の概要ウィンドウにあります。
+
+     ![Application Insights データ ソースから取得する手順のスクリーンショット](./media/app-insights-export-power-bi/004.png)
+
+5. 新しく作成した Application Insights Power BI アプリを開きます。
+
+6. データがインポートされるまで 1 ～ 2 分待ちます。
+
+    ![Power BI アダプターのスクリーンショット](./media/app-insights-export-power-bi/010.png)
+
+Application Insights のグラフを他のソースのグラフや Analytics クエリと組み合わせて、ダッシュボードを編集できます。 ビジュアル ギャラリーではさらに多くのグラフを入手でき、各グラフにはユーザーが設定できるパラメーターがあります。
+
+最初のインポート後は、ダッシュボードとレポートが毎日更新されます。 データセットの更新スケジュールを管理できます。
+
+## <a name="next-steps"></a>次の手順
+* [Power BI - 詳細](https://www.powerbi.com/learning/)
+* [Analytics のチュートリアル](../azure-monitor/log-query/get-started-portal.md)
 

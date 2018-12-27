@@ -1,39 +1,32 @@
 ---
-title: "Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成 | Microsoft Docs"
-description: "Azure Search を使用して CSV BLOB のインデックスを作成する方法について説明します。"
+title: Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成 | Microsoft Docs
+description: Azure Search を使用して CSV BLOB のインデックスを作成する方法について説明します。
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
-documentationcenter: 
-author: chaosrealm
-manager: pablocas
-editor: 
-ms.assetid: ed3c9cff-1946-4af2-a05a-5e0b3d61eb25
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 12/28/2017
-ms.author: eugenesh
-ms.openlocfilehash: 40b7f1f4f75d389a64329e7d8fd3c7feb79d5e55
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.topic: conceptual
+ms.openlocfilehash: b1f97b5e9542e32096bb060bce40e7b9620d0f49
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406077"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成
-既定では、 [Azure Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は区切りテキスト BLOB を 1 つのテキスト チャンクとして解析します。 ただし、CSV データを含む BLOB では、BLOB の各行を個別のドキュメントとして処理することがよくあります。 たとえば、次のような区切りテキストがあるとします。 
+既定では、 [Azure Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は区切りテキスト BLOB を 1 つのテキスト チャンクとして解析します。 ただし、CSV データを含む BLOB では、BLOB の各行を個別のドキュメントとして処理することがよくあります。 たとえば、次のような区切りテキストを解析し、それぞれが "id"、"datePublished"、"tags" フィールドを含む 2 つのドキュメントに格納するような場合です。 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-この場合、区切りテキストを解析して、"id"、"datePublished"、"tags" の各フィールドがそれぞれ含まれた 2 つのドキュメントにすることができます。
-
 この記事では、Azure Search BLOB インデクサーを使用して CSV BLOB を解析する方法について説明します。 
 
 > [!IMPORTANT]
-> 現在この機能はプレビュー版です。 バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。 プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。 
-> 
+> この機能は現在パブリック プレビューなので、運用環境では使わないでください。 詳しくは、[REST api-version 2017-11-11-Preview](search-api-2017-11-11-preview.md) に関するページをご覧ください。 
 > 
 
 ## <a name="setting-up-csv-indexing"></a>CSV インデックス作成の設定
@@ -57,10 +50,10 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
 > [!NOTE]
-> 現在サポートされているのは、UTF-8 エンコードだけです。 他のエンコードのサポートが必要な場合は、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search)でお知らせください。
+> 現在サポートされているのは、UTF-8 エンコードだけです。 他のエンコードのサポートが必要な場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) で投票してください。
 
 > [!IMPORTANT]
-> 区切りテキスト解析モードを使用すると、Azure Search ではデータ ソース内のすべての BLOB が CSV になると見なされます。 CSV と CSV 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search)でお知らせください。
+> 区切りテキスト解析モードを使用すると、Azure Search ではデータ ソース内のすべての BLOB が CSV になると見なされます。 CSV と CSV 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) で投票してください。
 > 
 > 
 
@@ -69,7 +62,7 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
 
 データソース: 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -82,7 +75,7 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
 
 インデクサー:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -94,5 +87,5 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
     }
 
 ## <a name="help-us-make-azure-search-better"></a>Azure Search の品質向上にご協力ください
-ご希望の機能や品質向上のアイデアがありましたら、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
+ご希望の機能や品質向上のアイデアがありましたら、[UserVoice](https://feedback.azure.com/forums/263029-azure-search/) までお寄せください。
 

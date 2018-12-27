@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 7b8fe61731a9412c61152bc58e55deebb611d011
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2bdda273a32167f70633096d463be59884eca033
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718227"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Azure Stack Development Kit (ASDK) のインストール
 [ASDK ホスト コンピューターの準備](asdk-prepare-host.md)ができたら、この記事の次の手順に従って ASDK を CloudBuilder.vhdx イメージにデプロイできます。
@@ -32,12 +33,12 @@ ms.lasthandoff: 03/23/2018
 
 
 1. ホスト コンピューターが CloudBuilder.vhdx イメージで正常に起動した後、ASDK インストールの[開発キットのホスト コンピューターを準備](asdk-prepare-host.md)するときに指定した管理者資格情報を使ってログインします。 これは、開発キット ホストのローカル管理者の資格情報と同じである必要があります。
-2. 管理者特権で PowerShell コンソールを開き、**&lt;drive letter>\AzureStack_Installer\asdk-installer.ps1** スクリプト (現時点では CloudBuilder.vhdx イメージの C:\ 以外のドライブにある可能性があります) を実行します。 **[インストール]**をクリックします。
+2. 管理者特権で PowerShell コンソールを開き、**&lt;drive letter>\AzureStack_Installer\asdk-installer.ps1** スクリプト (現時点では CloudBuilder.vhdx イメージの C:\ 以外のドライブにある可能性があります) を実行します。 **[インストール]** をクリックします。
 
     ![](media/asdk-install/1.PNG) 
 
 3. ID プロバイダーの **[タイプ]** ドロップダウン ボックスで、**[Azure クラウド]** または **[AD FS]** を選択します。 **[ローカル管理者のパスワード]** の **[パスワード]** ボックスに、(現在の構成済みのローカル管理者パスワードと同じ) ローカル管理者パスワードを入力し、**[次へ]** をクリックします。
-    - **Azure クラウド**: Azure Active Directory (Azure AD) を ID プロバイダーとして構成します。 このオプションを使うには、インターネット接続、Azure AD ディレクトリ テナントのフル ネーム (*domainname*.onmicrosoft.com 形式) または Azure AD 確認済みカスタム ドメイン名、および指定したディレクトリのグローバル管理者資格情報が必要です。 
+    - **Azure クラウド**: Azure Active Directory (Azure AD) を ID プロバイダーとして構成します。 このオプションを使うには、インターネット接続、Azure AD ディレクトリ テナントのフル ネーム (*domainname*.onmicrosoft.com 形式) または Azure AD 確認済みカスタム ドメイン名、および指定したディレクトリのグローバル管理者資格情報が必要です。 デプロイの後、Azure Active Directory の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に再配置するか、*既定のプロバイダー サブスクリプション*の所有者である個別の全体管理者アカウントを使用するかのいずれかを行うことができます。
     - **AD FS**: 既定のスタンプ ディレクトリ サービスが ID プロバイダーとして使われます。 サインインに使用する既定のアカウントは azurestackadmin@azurestack.local であり、使用するパスワードは、セットアップの一部として指定したものです。
 
     ![](media/asdk-install/2.PNG) 
@@ -57,7 +58,7 @@ ms.lasthandoff: 03/23/2018
     - 有効な**タイム サーバー IP** アドレスを入力します。 この必須フィールドでは、開発キットによって使われるタイム サーバーを設定します。 このパラメーターは、有効なタイム サーバーの IP アドレスとして指定する必要があります。 サーバー名はサポートされていません。
 
       > [!TIP]
-      > タイム サーバーの IP アドレスを検索するには、[pool.ntp.org](http:\\pool.ntp.org) にアクセスするか、time.windows.com に ping を実行します。 
+      > タイム サーバーの IP アドレスを検索するには、[pool.ntp.org](http://pool.ntp.org) にアクセスするか、time.windows.com に ping を実行します。 
 
     - **任意で**、次の値を設定します。
         - **[VLAN ID]**: VLAN ID を設定します。 このオプションは、ホストと AzS-BGPNAT01 が物理ネットワーク (およびインターネット) にアクセスするために VLAN ID を構成する必要がある場合にのみ使用します。 

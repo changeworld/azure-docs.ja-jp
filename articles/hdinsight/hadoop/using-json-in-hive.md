@@ -1,25 +1,20 @@
 ---
-title: Azure HDInsight での Apache Hive による JSON ドキュメントの分析および処理 | Microsoft Docs
+title: Azure HDInsight での Apache Hive による JSON ドキュメントの分析および処理
 description: JSON ドキュメントの使用方法および Azure HDInsight での Apache Hive による分析方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: e17794e8-faae-4264-9434-67f61ea78f13
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/20/2017
-ms.author: jgao
-ms.openlocfilehash: 04c3a8262e52a630012a0a70e4b1ccb0ade76449
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: hrasheed
+ms.openlocfilehash: 0322b95c6fecc120fd6a50b05dbf502f28afa114
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006568"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
 

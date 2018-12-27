@@ -1,26 +1,20 @@
 ---
-title: "外部メタデータ ストアの使用 - Azure HDInsight | Microsoft Docs"
-description: "HDInsight クラスターで外部メタデータ ストアを使用します。"
+title: 外部メタデータ ストアの使用 - Azure HDInsight
+description: HDInsight クラスターで外部メタデータ ストアを使用します。
 services: hdinsight
-documentationcenter: 
-author: mumian
-manager: cgronlun
-tags: azure-portal
-editor: cgronlun
-ms.assetid: 
+author: hrasheed-msft
+ms.reviewer: jasonh
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/16/2018
-ms.author: jgao
-ms.openlocfilehash: 767a1b8a8213b0139878c82d64639b2ba10b5f4f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.topic: conceptual
+ms.date: 09/14/2018
+ms.openlocfilehash: 288ee46e9a5741a49ddcec1ef155c6f08b7b6cbc
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016179"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight での外部メタデータ ストアの使用
 
@@ -35,11 +29,11 @@ HDInsight クラスター用の metastore をセットアップできる方法�
 
 ## <a name="default-metastore"></a>既定の metastore
 
-既定では、HDInsight は、すべてのクラスターの種類の metastore をプロビジョニングします。 代わりに、カスタム metastore を指定できます。 既定の metastore には、次の考慮事項が含まれます。
-- 追加コストはありません。 HDInsight は、すべてのクラスターの種類の metastore を追加コストなしでプロビジョニングします。
-- それぞれの既定の metastore は、クラスターのライフ サイクルの一部です。 metastore があるクラスターを削除すると、メタデータも削除されます。
+既定では、すべてのクラスターの種類を含む metastore が作成されます。 代わりに、カスタム metastore を指定できます。 既定の metastore には、次の考慮事項が含まれます。
+- 追加コストはありません。 HDInsight では、すべてのクラスターの種類を含む metastore が追加コストなしで作成されます。
+- それぞれの既定の metastore は、クラスターのライフ サイクルの一部です。 クラスターを削除すると、対応する metastore とメタデータも削除されます。
 - 既定の metastore は、他のクラスターと共有できません。
-- 既定の metastore では、5 DTU (データベース トランザクション ユニット) の制限がある基本的な Azure SQL DB を使用します。
+- 既定の metastore では、5 DTU (データベース トランザクション ユニット) の制限がある基本的な Azure SQL DB が使用されます。
 この既定の metastore は、通常は、複数のクラスターを必要とせず、クラスターのライフ サイクルを超えてメタデータを保持する必要がない、比較的単純なワークロードで使用されます。
 
 
@@ -52,11 +46,7 @@ HDInsight では、カスタム metastore もサポートします。運用ク�
 - metastore (Azure SQL DB) のコストは、選択したパフォーマンス レベルに応じて支払います。
 - metastore は、必要に応じて拡張できます。
 
-
 ![HDInsight Hive メタデータ ストアのユース ケース](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
-
-<!-- Image – Typical shared custom Metastore scenario in HDInsight (?) -->
-
 
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>クラスターの作成時にカスタム metastore を選択する
@@ -74,11 +64,13 @@ Azure Portal または Ambari 構成 ([Hive] > [詳細設定]) から、他の�
 いくつかの一般的な HDInsight Hive metastore のベスト プラクティスを次に示します。
 
 - 可能な限り、カスタム metastore を使用します。これにより、コンピューティング リソース (実行中のクラスター) とメタデータ (metastore に格納されます) を分離できます。
-- 50 DTU と 250 GB のストレージを提供する S2 層から開始します。 ボトルネックを確認した場合は、データベースをスケール アップできます。
-- あるバージョンの HDInsight クラスター用に作成された metastore が、別のバージョンの HDInsight クラスターと共有されないことを確認します。 異なるバージョンの Hive は異なるスキーマを使用します。 たとえば、Hive 1.2 クラスターと Hive 2.1 クラスターの両方で metastore を共有することはできません。
-- カスタム metastore を定期的にバックアップします。
-- metastore と HDInsight クラスターを同じリージョンで保持します。
+- 50 DTU と 250 GB のストレージを提供する S2 レベルから開始します。 ボトルネックを確認した場合は、データベースをスケール アップできます。
+- 複数の HDInsight クラスターで異なるデータにアクセスする場合は、クラスターごとに metastore に対して別のデータベースを使用します。 複数の HDInsight クラスターで metastore を共有する場合は、クラスターが同じメタデータおよび基になるユーザー データ ファイルを使用することを意味します。
+- カスタム metastore を定期的にバックアップします。 Azure SQL Database ではバックアップが自動的に生成されますが、バックアップのリテンション期間は異なります。 詳しくは、「[SQL Database 自動バックアップについての詳細情報](../sql-database/sql-database-automated-backups.md)」をご覧ください。
+- パフォーマンスを最高にして、ネットワーク エグレスの課金を最小にするには、metastore と HDInsight クラスターを同じリージョンで検索します。
 - Azure Portal や Azure Log Analytics などの Azure SQL Database 監視ツールを使用して、metastore のパフォーマンスと可用性を監視します。
+- 既存のカスタム metastore データベースに対して、より高いバージョンの Azure HDInsight が新しく作成された場合、システムは metastore のスキーマをアップグレードします。バックアップからデータベースを復元しないかぎり、これを元に戻すことはできません。
+- 複数のクラスター間で metastore を共有する場合は、すべてのクラスターの HDInsight を確実に同じバージョンにします。 異なるバージョンの Hive は、異なる metastore データベース スキーマを使用します。 たとえば、バージョン 1.2 の Hive クラスターと 2.1 の Hive クラスターで metastore を共有することはできません。 
 
 ## <a name="oozie-metastore"></a>Oozie metastore
 

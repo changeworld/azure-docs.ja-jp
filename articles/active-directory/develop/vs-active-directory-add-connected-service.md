@@ -1,24 +1,24 @@
 ---
-title: Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する | Microsoft Docs
+title: Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
 description: Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用してアプリに Azure Active Directory を追加する
-services: visual-studio-online
-documentationcenter: na
+services: active-directory
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
-ms.service: active-directory
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: 882ba1c7ea8ef6889bc9ad20031070cd54100026
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 565a484d2eae0879b625e79ef7ffbdd8eb5e4455
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251038"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
 
@@ -31,10 +31,11 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
 ## <a name="prerequisites"></a>前提条件
 
 - Azure アカウント : Azure アカウントがない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)するか、[Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にします。
+- **Visual Studio 2015** またはそれ以降。 [Visual Studio 2017 を今すぐダウンロードする](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>[接続済みサービス] ダイアログを使用して Azure Active Directory に接続する
 
-1. Visual Studio で、ASP.NET MVC プロジェクトまたは ASP.NET Web API プロジェクトを作成するか開きます。 MVC、Web API、シングル ページ アプリケーション、Azure API App、Azure Mobile App、および Azure Mobile Service テンプレートを使用できます。
+1. Visual Studio で、ASP.NET MVC プロジェクトまたは ASP.NET Web API プロジェクトを作成するか開きます。 MVC、Web API、シングルページ アプリケーション、Azure API App、Azure Mobile App、および Azure Mobile Service テンプレートを使用できます。
 
 1. **[プロジェクト] > [接続済みサービスの追加]** メニュー コマンドを選択するか、ソリューション エクスプローラーでプロジェクト以下にある **[接続済みサービス]** ノードをダブル クリックします。
 
@@ -63,7 +64,7 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
     - [.NET MVC プロジェクトの作業開始](vs-active-directory-dotnet-getting-started.md)
     - [WebAPI プロジェクトの作業開始](vs-active-directory-webapi-getting-started.md)
 
-1. Active Directory ドメインは [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) でも確認できます。
+1. Active Directory ドメインは [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) でも確認できます。
 
 ## <a name="how-your-project-is-modified"></a>プロジェクトを変更する方法
 
@@ -74,5 +75,5 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
-- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](guidedsetups/active-directory-aspnetwebapp-v1.md)
+- [Azure AD の認証シナリオ](authentication-scenarios.md)
+- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v1-aspnet-webapp.md)

@@ -3,7 +3,7 @@ title: Azure Resource Manager テンプレートの仮想マシン | Microsoft A
 description: Azure Resource Manager テンプレートで仮想マシン リソースがどのように定義されるかについて説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: davidmu1
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: davidmu
-ms.openlocfilehash: 43cd6322bb03b5c781a890c3280247cbb2d118f6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987698"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -163,7 +164,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 - REST API - [すべてのリソース プロバイダーの一覧を表示する](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
-- Azure CLI 2.0 - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
+- Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
 
 ## <a name="parameters-and-variables"></a>パラメーターと変数
 
@@ -236,7 +237,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 ```
 
 > [!NOTE] 
->この例では、仮想マシンの管理ディスクを使用します。
+>この例では、仮想マシンのマネージド ディスクを使用します。
 >
 >
 
@@ -279,7 +280,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 いくつかのプロファイル要素は、仮想マシン リソースを定義する際に使用されます。 必須のものもあれば、省略可能なものもあります。 たとえば、hardwareProfile、osProfile、storageProfile、networkProfile 要素は必須で、diagnosticsProfile 要素は省略可能です。 これらのプロファイルは、次のような設定を定義します。
    
 - [サイズ](sizes.md)
-- [名前](/architecture/best-practices/naming-conventions)と資格情報
+- [名前](/azure/architecture/best-practices/naming-conventions)と資格情報
 - ディスクと[オペレーティング システムの設定](cli-ps-findimage.md)
 - [ネットワーク インターフェイス](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - ブート診断
@@ -312,7 +313,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 },
 ```
 
-オペレーティング システム ディスクの構成設定は、osDisk 要素で割り当てられます。 この例では、キャッシュ モードが **ReadWrite** に設定された新しい管理ディスクを定義し、ディスクが[プラットフォーム イメージ](cli-ps-findimage.md)から作成されるようにします。
+オペレーティング システム ディスクの構成設定は、osDisk 要素で割り当てられます。 この例では、キャッシュ モードが **ReadWrite** に設定された新しいマネージド ディスクを定義し、ディスクが[プラットフォーム イメージ](cli-ps-findimage.md)から作成されるようにします。
 
 ```
 "osDisk": { 
@@ -322,7 +323,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 },
 ```
 
-### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>既存の管理ディスクから新しい仮想マシンを作成する
+### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>既存のマネージド ディスクから新しい仮想マシンを作成する
 
 既存のディスクから仮想マシンを作成する場合は、imageReference 要素と osProfile 要素を削除し、次のディスク設定を定義します。
 
@@ -357,7 +358,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 
 ### <a name="attach-data-disks"></a>データ ディスクを接続する
 
-必要に応じて、VM にデータ ディスクを追加することができます。 [ディスク数](sizes.md)は、使用するオペレーティング システム ディスクのサイズによって異なります。 VM のサイズが Standard_DS1_v2 に設定されている場合、VM に追加できるデータ ディスクの最大数は 2 です。 次の例では、各 VM に 1 つの管理データ ディスクが追加されます。
+必要に応じて、VM にデータ ディスクを追加することができます。 [ディスク数](sizes.md)は、使用するオペレーティング システム ディスクのサイズによって異なります。 VM のサイズが Standard_DS1_v2 に設定されている場合、VM に追加できるデータ ディスクの最大数は 2 です。 次の例では、各 VM に 1 つのマネージド データ ディスクが追加されます。
 
 ```
 "dataDisks": [
@@ -441,7 +442,7 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 
 ![拡張機能の状態の確認](./media/template-description/virtual-machines-show-extensions.png)
 
-また、**Get-AzureRmVMExtension** PowerShell コマンド、**vm extension get** Azure CLI 2.0 コマンド、または **Get extension information** REST API を使用して、拡張機能の情報を取得することもできます。
+また、**Get-AzureRmVMExtension** PowerShell コマンド、**vm extension get** Azure CLI コマンド、または **Get extension information** REST API を使用して、拡張機能の情報を取得することもできます。
 
 ## <a name="deployments"></a>デプロイメント
 

@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a572824225c0d83af698c4ff18d6b297b1ebb729
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f33ff3f588dac49e295a5aa96d71557d32407e46
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38667440"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-create-datasets.md)
-> * [バージョン 2 - プレビュー](../concepts-datasets-linked-services.md)
+> * [Version 1](data-factory-create-datasets.md)
+> * [バージョン 2 (最新バージョン)](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での データセット](../concepts-datasets-linked-services.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 のデータセット](../concepts-datasets-linked-services.md)に関するページを参照してください。
 
 この記事では、データセットの詳細、データセットを JSON 形式で定義する方法、Azure Data Factory パイプラインで使用する方法について説明します。 また、データセット JSON 定義の各セクション (構造、可用性、ポリシーなど) の詳細について説明します。 さらに、データセット JSON 定義で **offset**、**anchorDateTime**、**style** の各プロパティを使用する例も紹介します。
 
@@ -79,10 +80,10 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 
 次の表では、上記の JSON のプロパティについて説明します。   
 
-| プロパティ | [説明] | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
 | name |データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |[はい] |該当なし |
-| 型 |データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、「[データセットの型](#Type)」セクションを参照してください。 |[はい] |該当なし |
+| type |データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、「[データセットの型](#Type)」セクションを参照してください。 |[はい] |該当なし |
 | structure |データセットのスキーマ。<br/><br/>詳細については、「[データセット構造](#Structure)」セクションを参照してください。 |いいえ  |該当なし |
 | typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルなど) によって異なります。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#Type)」セクションを参照してください。 |[はい] |該当なし |
 | 外部 | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 アクティビティの入力データセットが現在のパイプラインによって生成されない場合は、このフラグを true に設定します。 パイプラインの最初のアクティビティの入力データセットについてはこのフラグを true に設定します。  |いいえ  |false |
@@ -192,10 +193,10 @@ structure:
 
 structure の各列には次のプロパティが含まれます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | name |列の名前です。 |[はい] |
-| 型 |列のデータ型です。  |いいえ  |
+| type |列のデータ型です。  |いいえ  |
 | culture |.NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 |いいえ  |
 | format |.NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 |いいえ  |
 
@@ -235,7 +236,7 @@ structure の各列には次のプロパティが含まれます。
 
 次の表では、availability セクションで使用できるプロパティについて説明します。
 
-| プロパティ | [説明] | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
 | frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされている頻度</b>は、Minute、Hour、Day、Week、Month です。 |[はい] |該当なし |
 | interval |頻度の乗数を指定します。<br/><br/>"frequency x interval" で、スライスが生成される頻度が決まります。 たとえば、データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/>注: **frequency** に **Minute** を指定する場合は、interval を 15 以上に設定してください。 |[はい] |該当なし |
@@ -282,7 +283,7 @@ structure の各列には次のプロパティが含まれます。
 データセット定義の **policy** セクションでは、データセット スライスで満たさなければならない基準または条件を定義します。
 
 ### <a name="validation-policies"></a>検証ポリシー
-| ポリシー名 | [説明] | 適用先 | 必須 | 既定値 |
+| ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |**Azure Blob Storage** のデータが最小サイズ要件 (MB 単位) を満たしていることを検証します。 |Azure BLOB ストレージ |いいえ  |該当なし |
 | minimumRows |**Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL データベース</li><li>Azure テーブル</li></ul> |いいえ  |該当なし |
@@ -318,7 +319,7 @@ structure の各列には次のプロパティが含まれます。
 
 データセットは Data Factory で作成されている場合を除き、**external** とマークされます。 この設定は通常、パイプライン内の最初のアクティビティの入力に適用されます (アクティビティまたはパイプラインの連鎖が使用されている場合を除く)。
 
-| Name | [説明] | 必須 | 既定値 |
+| Name | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
 | dataDelay |特定のスライスの外部データの可用性チェックを遅らせる時間。 たとえば、この設定を使用して、時間単位のチェックを延期することができます。<br/><br/>この設定は、現在の時刻にのみ適用されます。  たとえば、現在時刻が午後 1 時 00 分で、この値が 10 分の場合、検証は午後 1 時 10 分に開始されます。<br/><br/>注: この設定は、過去のスライスには影響しません。 **スライス終了時間** + **dataDelay** < **現在時刻**であるスライスは、遅延なく処理されます。<br/><br/>23 時間 59 分を超える時間は、`day.hours:minutes:seconds` 形式で指定してください。 たとえば、24 時間を指定する場合は、24:00:00 を使用するのではなく、 1.00:00:00 を使用してください。 24:00:00 を使用した場合は、24 日間 (24.00:00:00) として処理されます。 1 日と 4 時間の場合は 1:04:00:00 と指定します。 |いいえ  |0 |
 | retryInterval |エラーから次の試行までの待機時間です。 この設定は、現在の時刻に適用されます。 前の試行が失敗した場合に、次に試行できるのは **retryInterval** が経過した後です。 <br/><br/>現在時刻が午後 1 時 00 分の場合に最初の試行を開始したとします。 最初の検証チェックを完了するための時間が 1 分のとき、操作に失敗した場合、次の再試行は "午後 1 時 00 分 + 1 分 (チェック時間) + 1 分 (再試行間隔) = 午後 1 時 02 分" になります。 <br/><br/>過去のスライスの場合、遅延はありません。 再試行は直ちに行われます。 |いいえ  |00:01:00 (1 分) |

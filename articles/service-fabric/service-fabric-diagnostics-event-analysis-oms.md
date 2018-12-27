@@ -1,79 +1,111 @@
 ---
-title: "OMS を使用した Azure Service Fabric イベント分析 | Microsoft Docs"
-description: "Azure Service Fabric クラスターの監視と診断に OMS を使用したイベントの視覚化と分析について説明します。"
+title: Log Analytics を使用した Azure Service Fabric イベント分析 | Microsoft Docs
+description: Azure Service Fabric クラスターの監視と診断に Log Analytics を使用したイベントの視覚化と分析について説明します。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: 977c5d64a32157b39aa6b618196dde20c4c3cc8e
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.date: 05/29/2018
+ms.author: srrengar
+ms.openlocfilehash: 6dee895ba9fc024baac0500619b7d6cc62167b6d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404479"
 ---
-# <a name="event-analysis-and-visualization-with-oms"></a>OMS を使用したイベントの分析と視覚化
+# <a name="event-analysis-and-visualization-with-log-analytics"></a>Log Analytics を使用したイベントの分析と視覚化
+Log Analytics では、クラウド内でホストされているアプリケーションとサービスからテレメトリが収集および分析され、可用性とパフォーマンスを最大限にできるように分析ツールが提供されます。 この記事では、Log Analytics でクエリを実行して洞察を取得する方法と、クラスター内の処理をトラブルシューティングする方法について説明します。 次のような一般的な質問に対応します。
 
-Operations Management Suite (OMS) は、クラウドでホストされるアプリケーションとサービスの監視と診断に役立つ管理サービスのコレクションです。 OMS および OMS が提供するサービスの詳細については、[OMS とは](../operations-management-suite/operations-management-suite-overview.md)を参照してください
+* 正常性イベントをどのようにトラブルシューティングすればいいか。
+* ノードがダウンするタイミングを知るにはどうすればいいか。
+* 自分のアプリケーションのサービスが起動または停止されたかを知るにはどうすればいいか。
 
-## <a name="log-analytics-and-the-oms-workspace"></a>Log Analytics と OMS ワークスペース
+## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
 
-Log Analytics は、Azure ストレージ テーブルまたはエージェントなどの管理対象リソースからデータを収集し、中央レポジトリ内で保守します。 それらのデータは分析、アラート、および視覚化、さらにエクスポートに使用できます。 Log Analytics は、イベント、パフォーマンス データ、またはその他のカスタム データをサポートします。
+Log Analytics は、Azure ストレージ テーブルまたはエージェントなどの管理対象リソースからデータを収集し、中央レポジトリ内で保守します。 それらのデータは分析、アラート、および視覚化、さらにエクスポートに使用できます。 Log Analytics は、イベント、パフォーマンス データ、またはその他のカスタム データをサポートします。 [診断の拡張機能を設定してイベントを集計する手順](service-fabric-diagnostics-event-aggregation-wad.md)および [Log Analytics ワークスペースを作成してストレージ内のイベントから読み取りを行う手順](service-fabric-diagnostics-oms-setup.md)を確認して、データが確実に Log Analytics へ配信されるようにしてください。
 
-OMS が構成されているときは特定の *OMS ワークスペース*にアクセスして、ダッシュボード内でデータを照会したり視覚化したりできます。
+Log Analytics がデータを受け取った後、Azure にはいくつかの*管理ソリューション*が用意されています。これらは受け取るデータを監視するために事前にパッケージ化されたソリューションで、いくつかのシナリオに合わせてカスタマイズされています。 *Service Fabric Analytics* ソリューションと*コンテナー* ソリューションが含まれており、これらは Service Fabric クラスターを使用する際の診断と監視に最も関連性の高いソリューションです。 この記事では、ワークスペースを使って作成される、Service Fabric Analytics ソリューションを使用する方法について説明します。
 
-Log Analytics がデータを受け取った後、OMS にはいくつかの*管理ソリューション*が用意されています。これらは受け取るデータを監視するために事前にパッケージ化されたソリューションで、いくつかのシナリオに合わせてカスタマイズされています。 *Service Fabric Analytics* ソリューションと*コンテナー* ソリューションが含まれており、これらは Service Fabric クラスターを使用する際の診断と監視に最も関連性の高いソリューションです。 調査してみる価値のあるソリューションが他にもいくつかあり、OMS ではカスタム ソリューションを作成することもできます。詳細については[こちら](../operations-management-suite/operations-management-suite-solutions.md)をご覧ください。 クラスターに使用するために選択する各ソリューションは、同じ OMS ワークスペース内に Log Analytics と一緒に構成できます。 ワークスペースでは、カスタム ダッシュボードを作成でき、データを視覚化したり、収集、処理、および分析するデータに変更を加えたりできます。
+## <a name="access-the-service-fabric-analytics-solution"></a>Service Fabric Analytics ソリューションへのアクセス
 
-## <a name="setting-up-an-oms-workspace-with-the-service-fabric-analytics-solution"></a>Service Fabric Analytics ソリューションによる OMS ワークスペースの設定
-OMS ワークスペースに Service Fabric ソリューションを含めることをお勧めします。プラットフォーム/アプリケーション レベルから入ってくるさまざまなログのチャネルを表示するダッシュボードが用意されており、Service Fabric 固有のログを照会することもできます。 ここで、比較的単純な Service Fabric ソリューションを示します。クラスター上に単一アプリケーションが展開されます。
+1. Azure Portal で Service Fabric Analytics ソリューションを作成したリソース グループに移動します。
 
-![OMS SF ソリューション](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
+2. リソースの [**ServiceFabric\<nameOfOMSWorkspace\>**] を選択します。
 
-お使いのクラスターでこの作業を始める場合は、[OMS Log Analytics の設定](service-fabric-diagnostics-oms-setup.md)に関する記事をご覧ください。
+2. 概要には、有効なソリューションごとのグラフ形式のタイルが表示されます (Service Fabric のタイルも含まれています)。 **Service Fabric** グラフ (下にある最初の画像) をクリックして、Service Fabric Analytics ソリューション (下にある 2 つ目の画像) に進みます。
 
-## <a name="using-the-oms-agent"></a>OMS エージェントの使用
+    ![Service Fabric ソリューション](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-EventFlow と WAD を集計ソリューションとして使用することをお勧めします。診断と監視をモジュール方式で使用できます。 たとえば、EventFlow からの出力を変更する場合は、実際のインストルメンテーションを変更する必要はなく、構成ファイルを変更するだけで済みます。 ただし、OMS Log Analytics を使用することに投資すると決めた場合は、[OMS エージェント](../log-analytics/log-analytics-windows-agent.md)を設定する必要があります。 クラスターにコンテナーをデプロイするときは、次の説明のように OMS エージェントも使用する必要があります。 
+    ![Service Fabric ソリューション](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
-この手順については、「[Add the OMS Agent to a cluster (OMS エージェントのクラスターへの追加)](service-fabric-diagnostics-oms-agent.md)」をご覧ください。
+上の画像は、Service Fabric Analytics ソリューションのホーム ページです。 これは、クラスター内で行われる処理のスナップショット ビューです。 クラスター作成時に診断を有効にした場合は、以下に対するイベントが表示されます。 
 
-これの利点は次のとおりです。
+* [操作チャネル](service-fabric-diagnostics-event-generation-operational.md): Service Fabric プラットフォーム (システム サービスのコレクション) が実行するより高いレベルの操作。
+* [Reliable Actors プログラミング モデル イベント](service-fabric-reliable-actors-diagnostics.md)
+* [Reliable Services プログラミング モデル イベント](service-fabric-reliable-services-diagnostics.md)
 
-* パフォーマンス カウンターおよびメトリック面に関するデータが豊富
-* クラスターから収集されるメトリックを簡単に構成できます。クラスターの構成を更新する必要がありません。 エージェントの設定は OMS ポータルから変更できます。また、必要な構成に合わせるためにエージェントが自動的に再起動します。 特定のパフォーマンス カウンターを選択するように OMS エージェントを構成するには、ワークスペースの **[Home] \(ホーム)、[Settings] \(設定)、[Data] \(データ)、[Windows Performance Counters] \(Windows パフォーマンス カウンター)** の順に移動し、収集するデータを選択します
-* データが速く表示される (データは OMS / Log Analytics によって選択される前に保存される必要があるが、それより速く表示される)
-* コンテナーの監視はもっと簡単です。Docker ログ(stdout、stderr) と統計 (コンテナーおよびノード レベルに関するパフォーマンス メトリック) を選択できます。
+>[!NOTE]
+>[診断の拡張機能の構成を更新する](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)ことで、操作チャネルだけでなく、より詳細なシステム イベントが収集できます。
 
-ここでの主な考慮事項は、エージェントはすべてのアプリケーションと共にクラスターに展開されるため、クラスター上のアプリケーションのパフォーマンスにいくらかの影響が出るということです。
+### <a name="view-service-fabric-events-including-actions-on-nodes"></a>ノードでの操作を含む Service Fabric Events を表示する
 
-## <a name="monitoring-containers"></a>コンテナーの監視
+1. Service Fabric Analytics ページで、**Service Fabric Events** グラフをクリックします。
 
-コンテナーを Service Fabric クラスターに展開するときは、クラスターが OMS エージェントで設定され、監視と診断を有効にするためにコンテナー ソリューションが OMS ワークスペースに追加されていることが推奨されます。 ここで、ワークスペース内のコンテナー ソリューションを示します。
+    ![Service Fabric ソリューションの操作チャネル](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-![基本的な OMS のダッシュボード](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+2. 一覧内のイベントを表示するには、**[一覧]** をクリックします。 ここで、収集済みのすべてのシステム イベントが表示されます。 参照用として、下図のシステム イベントは Azure Storage アカウントの WADServiceFabricSystemEventsTable に由来し、次に確認する Reliable Service イベントや Reliable Actor イベントも同様に、それぞれのテーブルに由来します。
+    
+    ![クエリの操作チャネル](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-エージェントはいくつかのコンテナー固有ログの収集を有効にします。これらは、OMS 内で照会したり、視覚化されたパフォーマンス インジケーターに使用したりできます。 収集されるログの種類は次のとおりです。
+または、左側にある虫眼鏡をクリックし、Kusto クエリ言語を使って検索対象を見つけることもできます。 たとえば、クラスター内のノードに対して行われたすべての操作を検索するは、次のクエリを使用できます。 使用されているイベント ID は、[操作チャネルのイベント リファレンス](service-fabric-diagnostics-event-generation-operational.md)で確認できます。
 
-* ContainerInventory: コンテナーの場所、名前、およびイメージに関する情報を表示
-* ContainerImageInventory: ID やサイズなど、デプロイ済みのイメージに関する情報
-* ContainerLog: 特定のエラー ログ、Docker ログ (stdout など)、およびその他のエントリ
-* ContainerServiceLog: 実行されている Docker デーモン コマンド
-* Perf: コンテナーの CPU、メモリ、ネットワーク トラフィック、ディスク I/O、およびホスト コンピューターからのカスタム メトリックなどのパフォーマンス カウンター
+```kusto
+ServiceFabricOperationalEvent
+| where EventId < 25627 and EventId > 25619 
+```
 
-「[Monitor containers with OMS Log Analytics (OMS Log Analytics でのコンテナーの監視)](service-fabric-diagnostics-oms-containers.md)」では、クラスターを監視するようにコンテナーを設定するために必要な手順について説明しています。 OMS のコンテナー ソリューションの詳細については、ソリューションの[ドキュメント](../log-analytics/log-analytics-containers.md)を参照してください。
+特定のノード (Computer) やシステム サービス (TaskName) など、より多くのフィールドに対してクエリを実行できます。
 
-## <a name="next-steps"></a>次のステップ
+### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Service Fabric Reliable Service および Actor イベントの表示
 
-必要に応じてワークスペースをカスタマイズするには、次の OMS ツールとオプションを調べてください。
+1. Service Fabric Analytics ページで、**Reliable Services** グラフをクリックします。
 
-* オンプレミス クラスター用に、OMS はデータを OMS に送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供します。 詳細については、[インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って OMS に接続する](../log-analytics/log-analytics-oms-gateway.md)を参照してください
-* OMS を構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する
-* Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
+    ![Service Fabric ソリューションの Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
+
+2. 一覧内のイベントを表示するには、**[一覧]** をクリックします。 ここで、Reliable Services のイベントを確認できます。 通常はデプロイおよびアップグレードで行われるサービス runasync の開始時点および完了時点に関する、さまざまなイベントを表示できます。 
+
+    ![クエリの Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
+
+Reliable Actor のイベントも、同様の方式で表示できます。 Reliable Actor により詳細なイベントを設定するには、診断の拡張機能の構成 (以下に示します) で `scheduledTransferKeywordFilter` を変更する必要があります。 これらの値の詳細については、「[Reliable Actors の診断とパフォーマンス監視](service-fabric-reliable-actors-diagnostics.md#keywords)」を参照してください。
+
+```json
+"EtwEventSourceProviderConfiguration": [
+                {
+                    "provider": "Microsoft-ServiceFabric-Actors",
+                    "scheduledTransferKeywordFilter": "1",
+                    "scheduledTransferPeriod": "PT5M",
+                    "DefaultEvents": {
+                    "eventDestination": "ServiceFabricReliableActorEventTable"
+                    }
+                },
+```
+
+Kusto クエリ言語は優れています。 実行可能なもう 1 つの重要なクエリでは、どのノードで大部分のイベントが生成されているかを検出します。 次のスクリーン ショットのクエリは、特定のサービスとノードで集計された Service Fabric の操作イベントを示しています。
+
+![クエリのノードごとのイベント](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
+
+## <a name="next-steps"></a>次の手順
+
+* インフラストラクチャの監視、つまりパフォーマンス カウンターを有効にするために、[Log Analytics エージェントの追加](service-fabric-diagnostics-oms-agent.md)に関するページにアクセスしてください。 エージェントによって、パフォーマンス カウンターが収集され、既存のワークスペースに追加されます。
+* オンプレミス クラスター用に、Log Analytics ではデータを Log Analytics に送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供します。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する](../log-analytics/log-analytics-oms-gateway.md)」を参照してください。
+* 検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を構成します。
+* Log Analytics の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる。
+* Log Analytics および Log Analytics が提供するサービスの詳しい概要について、[Log Analytics とは何か](../operations-management-suite/operations-management-suite-overview.md)に関するページで確認します。

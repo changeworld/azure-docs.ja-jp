@@ -1,159 +1,246 @@
 ---
-layout: LandingPage
-description: ディレクトリを同期し、シングル サインオンを有効にする方法について説明します。 ドキュメントでは、一連の ID 管理機能を統合する方法を紹介します。
+layout: HubPage
+hide_bc: false
 title: Azure Active Directory のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Azure Active Directory (Azure AD) は、Microsoft のマルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスで、中核となるディレクトリ サービス、アプリケーションのアクセス管理機能、ID の保護機能が 1 つのソリューションに統合されています。
 services: active-directory
-author: rolyon
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 39226c7ada2bf3672cb62b6a0def4191bee342c0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 11/30/2018
+ms.author: mtillman
+ms.openlocfilehash: 38efd682c530e79bdea3747bd6f14faa10d399c4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723348"
 ---
-# <a name="azure-active-directory-documentation"></a>Azure Active Directory のドキュメント
-
-ディレクトリを同期し、Azure Active Directory (Azure AD) によるシングル サインオンを有効にする方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、多要素認証、デバイスの登録、ロールベースのアクセス制御、セキュリティの監視とアラートなど、ID 管理機能を統合する方法を紹介します。
-
-<ul class="panelContent cardsFTitle">
-    <li>
-        <a href="/azure/active-directory/active-directory-whatis">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/active-directory.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Active Directory について</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=active-directory">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Active Directory のビデオ ライブラリ</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/active-directory/active-directory-howto-tenant">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Active Directory の概要</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/active-directory/active-directory-get-started-premium">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Active Directory Premium の概要</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-       <li>
-        <a href="/azure/active-directory/develop/active-directory-developers-guide">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Active Directory でのアプリの開発</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li> 
-</ul>
-
----
-
-<h2>リファレンス</h2>
-<ul class="panelContent cardsW">
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/azure/overview?azureadps=2.0">PowerShell</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>言語</h3>
-                        <p><a href="/active-directory/adal/microsoft.identitymodel.clients.activedirectory">.NET</a></p>
-                        <p><a href="/java/api">Java</a></p>
-                   </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>その他</h3>
-                        <p><a href="/azure/active-directory/active-directory-service-limits-restrictions">サービスの制限と制約</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
+<div id="main" class="v2">
+    <div class="container">
+        <h1>Azure Active Directory のドキュメント</h1>
+        <p>Azure Active Directory (Azure AD) は、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。</p>
+        <hr style="margin: 30px 0;" />
+        <ul class="pivots">
+            <li>
+                <a href="#products"></a>
+                <ul id="products">
+                    <li>
+                        <a class="singlePanelNavItem selected" style="display: none" href="#indexA" data-linktype="self-bookmark"></a>
+                        <ul class="panelContent singlePanelContent" id="indexA" style="border: medium; border-image: none; margin-top: 0px; display: flex; float: left;">
+                            <li class="fullSpan">
+                                <a href="#index1" data-linktype="self-bookmark"></a>
+                                <ul class="cardsF cols cols4" id="index1" style="float: left; display: flex; width: 100%; border-bottom: 1px var(--grey-lighter) solid;">  
+                                    <li>
+                                        <ul class="cardsB panelContent" id="cardtypes-B" style="float: left; display: flex; width: 100%;">
+                                            <li>
+                                                <a href="">
+                                                    <div class="cardSize">
+                                                        <div class="cardPadding">
+                                                            <div class="card">
+                                                                <div class="cardImageOuter">
+                                                                    <div class="cardImage">
+                                                                        <img alt="" src="https://docs.microsoft.com/media/common/i_learn-about.svg" data-linktype="external">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cardText" style="padding-left: 0px">
+                                                                    <h3><a href="fundamentals/index.yml">基礎を学ぶ</a></h3> 
+                                                                    <p>
+                                                                        <a href="fundamentals/active-directory-whatis.md">Azure AD とは</a><br>
+                                                                        <a href="fundamentals/add-custom-domain.md">カスタム ドメイン名の追加</a><br>
+                                                                        <a href="fundamentals/customize-branding.md">会社のブランドを追加する</a><br>
+                                                                        <a href="fundamentals/add-users-azure-active-directory.md">グループを作成してメンバーを追加する</a><br>
+                                                                        <a href="fundamentals/active-directory-users-assign-role-azure-portal.md">ユーザーにロールを割り当てる</a><br>
+                                                                        <a href="fundamentals/active-directory-how-subscriptions-associated-directory.md">Azure サブスクリプションを関連付ける</a><br>
+                                                                        <a href="fundamentals/index.yml"><i>さらに表示する &gt;</i></a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <div class="cardSize">
+                                                        <div class="cardPadding">
+                                                            <div class="card">
+                                                                <div class="cardImageOuter">
+                                                                    <div class="cardImage">
+                                                                        <img alt="" src="/learn/achievements/secure-azure-resources-with-conditional-access.svg" data-linktype="external">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cardText" style="padding-left: 0px">
+                                                                    <h3><a href="/learn/">Microsoft Learn でスキルを身に付ける</a></h3> 
+                                                                    <p>
+                                                                        <a href="/learn/modules/secure-azure-resources-with-conditional-access/">条件付きアクセスを使用して Azure リソースをセキュリティ保護する</a><br>
+                                                                        <a href="/learn/browse/?products=azure-active-directory"><i>対話型学習の詳細&gt;</i></a><br>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3><a href="manage-apps/index.yml">アプリケーション管理</a></h3>
+                                                        <p>
+                                                            <a href="manage-apps/what-is-single-sign-on.md">シングル サインオン (SSO) とは</a><br>
+                                                            <a href="manage-apps/configure-single-sign-on-portal.md">シングル サインオンの構成</a><br>
+                                                            <a href="manage-apps/application-proxy.md">オンプレミス アプリ用のアプリケーション プロキシ</a><br>
+                                                            <a href="manage-apps/index.yml"><i>さらに表示する &gt;</i></a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="authentication/index.yml">認証</a></h3>
+                                                        <p>
+                                                            <a href="authentication/concept-mfa-howitworks.md">動作のしくみ: Azure MFA</a><br>
+                                                            <a href="authentication/concept-sspr-howitworks.md">Azure AD のセルフ サービスによるパスワードのリセット</a><br>
+                                                            <a href="authentication/concept-password-ban-bad.md">Azure AD のパスワード保護</a><br>
+                                                            <a href="authentication/index.yml"><i>さらに表示する &gt;</i></a>
+                                                            </p>
+                                                        <br><br>
+                                                        <h3><a href="b2b/index.yml">企業間 (B2B)</a></h3>
+                                                        <p>
+                                                            <a href="b2b/what-is-b2b.md">Azure AD B2B とは</a><br>
+                                                            <a href="b2b/add-users-administrator.md">ポータルでゲスト ユーザーを追加する</a><br>
+                                                            <a href="b2b/o365-external-user.md">B2B と Office 365 の共有</a><br>
+                                                            <a href="b2b/index.yml"><i>さらに表示する &gt;</i></a>
+                                                            </p>
+                                                        <br><br>
+                                                        <h3><a href="/azure/active-directory-b2c/index">企業-消費者間 (B2C)</a></h3>
+                                                        <p>
+                                                            <a href="/azure/active-directory-b2c/active-directory-b2c-overview">Azure AD B2C とは</a><br>
+                                                            <a href="/azure/active-directory-b2c/tutorial-create-tenant">Azure AD B2C テナントの作成</a><br>
+                                                            <a href="/azure/active-directory-b2c/active-directory-b2c-get-started-custom">Azure AD B2C のカスタム ポリシー</a><br>
+                                                            <a href="/azure/active-directory-b2c/index"><i>さらに表示する &gt;</i></a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="conditional-access/index.yml">条件付きアクセス</a></h3>
+                                                        <p>
+                                                            <a href="conditional-access/overview.md">条件付きアクセスとは</a><br>
+                                                            <a href="conditional-access/app-based-mfa.md">特定のアプリで MFA を必須にする</a><br>
+                                                            <a href="conditional-access/location-condition.md">場所に基づく条件</a><br>
+                                                            <a href="conditional-access/index.yml"><i>さらに表示する &gt;</i></a>
+                                                            </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3><a href="develop/index.yml">開発者</a></h3>
+                                                        <p>
+                                                            <a href="develop/about-microsoft-identity-platform.md">Microsoft ID プラットフォームについて</a><br>
+                                                            <a href="develop/v2-oauth2-auth-code-flow.md">OAuth 2.0 コード フロー付与</a><br>
+                                                            <a href="develop/quickstart-register-app.md">Microsoft ID プラットフォームにアプリを登録する</a><br>
+                                                            <a href="develop/index.yml"><i>さらに表示する &gt;</i></a>
+                                                            </p>
+                                                        <br><br>
+                                                        <h3><a href="devices/index.yml">デバイス管理</a></h3>
+                                                        <p>
+                                                            <a href="devices/overview.md">デバイス管理とは</a><br>
+                                                            <a href="devices/hybrid-azuread-join-plan.md">ハイブリッド Azure AD 参加を計画する</a><br>
+                                                            <a href="devices/azureadjoin-plan.md">Azure AD 参加を計画する</a><br>
+                                                            <a href="devices/index.yml"><i>さらに表示する &gt;</i></a><br>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="/azure/active-directory-domain-services/index">ドメイン サービス</a></h3>
+                                                        <p>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-overview">Azure AD Domain Services とは</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">Azure AD Domain Services を有効にする</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy">グループ ポリシーを管理する</a><br>
+                                                            <a href="/azure/active-directory-domain-services/index"><i>さらに表示する &gt;</i></a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="users-groups-roles/index.yml">エンタープライズ ユーザー</a></h3>
+                                                        <p>
+                                                            <a href="users-groups-roles/groups-create-rule.md">動的グループの作成</a><br>
+                                                            <a href="users-groups-roles/groups-settings-v2-cmdlets.md">Azure AD グループ用の PowerShell</a><br>
+                                                            <a href="users-groups-roles/directory-service-limits-restrictions.md">Azure AD サービスの制限と制約</a><br>
+                                                            <a href="users-groups-roles/index.yml"><i>さらに表示する &gt;</i></a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="hybrid/index.yml">ハイブリッド ID</a></h3>
+                                                        <p>
+                                                            <a href="hybrid/whatis-hybrid-identity.md">ハイブリッド ID とは</a><br>
+                                                            <a href="hybrid/how-to-connect-sso.md">Azure AD Connect によるシングル サインオン</a><br>
+                                                            <a href="hybrid/how-to-connect-install-custom.md">Azure AD Connect のカスタム インストール</a><br>
+                                                            <a href="hybrid/index.yml"><i>さらに表示する &gt;</i></a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3><a href="governance/index.yml">Identity Governance</a></h3>
+                                                        <p>
+                                                            <a href="governance/create-access-review.md">アクセス レビューの作成</a><br>
+                                                            <a href="governance/perform-access-review.md">アクセス レビューを開始する</a><br>
+                                                            <a href="governance/active-directory-tou.md">利用規約の使用</a><br>
+                                                            <a href="governance/index.yml"><i>さらに表示する &gt;</i></a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="identity-protection/index.yml">ID 保護</a></h3>
+                                                        <p>
+                                                            <a href="identity-protection/overview.md">ID 保護とは</a><br>
+                                                            <a href="identity-protection/quickstart-sign-in-risk-policy.md">セッションのリスクが検出されたときにアクセスをブロックする</a><br>
+                                                            <a href="identity-protection/howto-unblock-user.md">ユーザーのブロックを解除する方法</a><br>
+                                                            <a href="identity-protection/index.yml"><i>さらに表示する &gt;</i></a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="managed-identities-azure-resources/index.yml">Azure リソースのマネージド ID</a></h3>
+                                                        <p>
+                                                            <a href="managed-identities-azure-resources/tutorial-windows-vm-access-sql.md">Windows VM を使用して Azure SQL にアクセスする</a><br>
+                                                            <a href="managed-identities-azure-resources/how-to-use-vm-token.md">Azure VM を使用したトークンの取得</a><br>
+                                                            <a href="managed-identities-azure-resources/services-support-msi.md">マネージド ID をサポートするサービス</a><br>
+                                                            <a href="managed-identities-azure-resources/index.yml"><i>さらに表示する &gt;</i></a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="privileged-identity-management/index.yml">Privileged Identity Management (PIM)</a></h3>
+                                                        <p>
+                                                            <a href="privileged-identity-management/pim-getting-started.md">PIM の使用を開始する</a><br>
+                                                            <a href="privileged-identity-management/pim-how-to-activate-role.md">自分のディレクトリ ロールをアクティブ化する</a><br>
+                                                            <a href="privileged-identity-management/pim-how-to-add-role-to-user.md">ディレクトリ ロールを割り当てる</a><br>
+                                                            <a href="privileged-identity-management/index.yml"><i>さらに表示する &gt;</i></a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="reports-monitoring/index.yml">レポートと監視</a></h3>
+                                                        <p>
+                                                            <a href="reports-monitoring/concept-audit-logs.md">監査ログ</a><br>
+                                                            <a href="reports-monitoring/concept-sign-ins.md">サインイン ログ</a><br>
+                                                            <a href="reports-monitoring/reference-sign-ins-error-codes.md">サインインのエラー コード リファレンス</a><br>
+                                                            <a href="reports-monitoring/index.yml"><i>さらに表示する &gt;</i></a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

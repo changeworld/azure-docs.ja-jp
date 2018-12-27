@@ -1,24 +1,25 @@
 ---
-title: "Azure Service Fabric Java クライアント API | Microsoft Docs"
-description: "Service Fabric クライアント REST API 仕様を使って、Service Fabric Java クライアント API を生成して使います"
+title: Azure Service Fabric Java クライアント API | Microsoft Docs
+description: Service Fabric クライアント REST API 仕様を使って、Service Fabric Java クライアント API を生成して使います
 services: service-fabric
 documentationcenter: java
 author: rapatchi
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 6f9b9d46be36b292fe2c3be92d90d4cf87155210
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 987959742335940dca8eb57c54d593aea90dec15
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111186"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java クライアント API
 
@@ -133,5 +134,5 @@ AutoRest ツールを使って Service Fabric Java クライアント コード�
     * API 呼び出しのこのバリエーションは、リアクティブな非同期プログラミングを使い、未処理の REST 応答を扱いたい場合に、使うことができます
 
 ## <a name="next-steps"></a>次の手順
-* [Service Fabric REST API](https://docs.microsoft.com/en-us/rest/api/servicefabric/) についての詳細
+* [Service Fabric REST API](https://docs.microsoft.com/rest/api/servicefabric/) についての詳細
 

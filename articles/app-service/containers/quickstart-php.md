@@ -1,5 +1,5 @@
 ---
-title: PHP Web アプリの作成と App Service on Linux へのデプロイ | Microsoft Docs
+title: Linux での PHP Web アプリの作成 - Azure App Service | Microsoft Docs
 description: 初めての PHP Hello World を App Service on Linux に数分でデプロイします。
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 1cbd29b480c80c93f750b97d47ccb3c09c984942
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.custom: seodec18
+ms.openlocfilehash: 2c9586bb5abce66e4043e3df80b420174a582cbb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257405"
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>App Service on Linux での PHP Web アプリの作成
 
@@ -53,7 +54,7 @@ cd php-docs-hello-world
 
 ## <a name="run-the-app-locally"></a>アプリをローカルで実行する
 
-ターミナル ウィンドウを開き、`php` コマンドを使って組み込みの PHP Web サーバーを起動して、ローカルでアプリケーションを実行します。
+アプリケーションをローカルで実行すると、アプリケーションを Azure にデプロイするとどう表示されるかを把握できます。 ターミナル ウィンドウを開き、`php` コマンドを使用して組み込みの PHP Web サーバーを起動します。
 
 ```bash
 php -S localhost:8080

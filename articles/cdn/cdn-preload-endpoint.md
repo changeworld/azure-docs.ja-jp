@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN エンドポイント上のアセットを事前に読み込む | Microsoft Docs"
-description: "Azure CDN エンドポイント上のキャッシュされたコンテンツを事前に読み込む方法について説明します。"
+title: Azure CDN エンドポイント上のアセットを事前に読み込む | Microsoft Docs
+description: Azure CDN エンドポイント上のキャッシュされたコンテンツを事前に読み込む方法について説明します。
 services: cdn
-documentationcenter: 
-author: dksimpson
-manager: akucer
-editor: 
+documentationcenter: ''
+author: mdgattuso
+manager: danielgi
+editor: ''
 ms.assetid: 5ea3eba5-1335-413e-9af3-3918ce608a83
 ms.service: cdn
 ms.workload: tbd
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
-ms.author: mazha
-ms.openlocfilehash: e00205ddcaab277029d7185d0158a64818d0d49b
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.author: magattus
+ms.openlocfilehash: d2dc8ad1e4b7e429dc758a96e49aa4825ae108e5
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091319"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN エンドポイント上の資産を事前に読み込む
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -67,6 +68,6 @@ ms.lasthandoff: 02/14/2018
 
 ## <a name="see-also"></a>関連項目
 * [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
-* [Azure CDN REST API リファレンス: エンドポイント上のコンテンツの事前読み込み](https://docs.microsoft.com/en-us/rest/api/cdn/endpoints/loadcontent)
-* [Azure CDN REST API リファレンス: エンドポイントからのコンテンツの消去](https://docs.microsoft.com/en-us/rest/api/cdn/endpoints/purgecontent)
+* [Azure CDN REST API リファレンス: エンドポイント上のコンテンツの事前読み込み](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
+* [Azure CDN REST API リファレンス: エンドポイントからのコンテンツの消去](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
 

@@ -6,20 +6,21 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 6f141fc03b64d0ca922d003f6352b7751ab9967d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2f642a91bd656cb74cdce2a98c44372a64f23cb9
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50237879"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシン上の開発ツール
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 03/28/2018
 | ------------- | ------------- |
 | 紹介   | Python 言語用のクライアント IDE    |
 | サポートされている DSVM バージョン      | Linux      |
-| 一般的な用途      |  R 開発     |
+| 一般的な用途      |  Python 開発     |
 | 使用/実行方法      | Linux のデスクトップ ショートカット (`/usr/bin/pycharm`)      |
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、RStudio      |
 

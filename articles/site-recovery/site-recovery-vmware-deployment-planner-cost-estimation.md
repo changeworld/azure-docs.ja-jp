@@ -1,26 +1,20 @@
 ---
-title: VMware から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs
-description: Azure Site Recovery Deployment Planner のユーザー ガイドです。
-services: site-recovery
-documentationcenter: ''
+title: Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する | Microsoft Docs
+description: この記事では、VMware の Azure へのディザスター リカバリーのために、Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する方法について説明します。
 author: nsoneji
 manager: garavd
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
-ms.date: 03/09/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 337217e66fe4d3780af197911a0e72c6f936e411
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7244aa2c0b665b47d597662b98ec291d6bfeeddd
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215023"
 ---
-# <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート  
+# <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する
 
 Deployment Planner のレポートでは、コスト見積もりの概要が [[Recommendations]\(推奨事項\)](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) シートに、詳しいコスト分析が [Cost Estimation]\(コスト見積もり\) シートに表示されます。 コスト分析は、VM ごとに詳しく表示されます。 
 
@@ -45,8 +39,8 @@ Azure Site Recovery を使用してすべての適合 VM を Azure に保護す�
 **[Azure storage cost per Month/Year]\(月/年単位の Azure Storage コスト\)** Premium ストレージと Standard ストレージに関して、レプリケーションと DR ドリルで生じる合計ストレージ コストが表示されます。
 
 ## <a name="detailed-cost-analysis"></a>Detailed cost analysis (詳細コスト分析)
-Azure のコンピューティング、ストレージ、ネットワークなどの料金は Azure リージョンによって異なります。 サブスクリプションやそれに関連付けられているプランに基づき、ターゲット Azure リージョンと通貨を指定して、最新の Azure 料金に関するコスト見積もりレポートを生成することができます。 既定では、Azure リージョンに "米国西部 2" が、通貨には米ドル (USD) が使用されます。 その他のリージョンや通貨を使用した場合、次回サブスクリプション ID、プラン ID、ターゲット リージョン、通貨を指定せずにレポートを生成すると、前回使用したターゲット リージョンと通貨に基づく料金がコスト見積もりに使用されます。
-このセクションには、レポート生成に使用されたサブスクリプション ID とプラン ID が表示されます。  使用しなかった場合は、何も表示されません。
+Azure のコンピューティング、ストレージ、ネットワークなどの料金は Azure リージョンによって異なります。 サブスクリプションやそれに関連付けられているオファーに基づき、ターゲット Azure リージョンと通貨を指定して、最新の Azure 料金に関するコスト見積もりレポートを生成することができます。 既定では、Azure リージョンに "米国西部 2" が、通貨には米ドル (USD) が使用されます。 その他のリージョンや通貨を使用した場合、次回サブスクリプション ID、オファー ID、ターゲット リージョン、通貨を指定せずにレポートを生成すると、前回使用したターゲット リージョンと通貨に基づく料金がコスト見積もりに使用されます。
+このセクションには、レポート生成に使用されたサブスクリプション ID とオファー ID が表示されます。  使用しなかった場合は、何も表示されません。
 
 レポート全体のうち、灰色でマークされたセルは読み取り専用です。 白色のセルは、必要に応じて変更できます。
 
@@ -91,8 +85,8 @@ Azure の料金総額に対して何らかの割引を受ける資格のある A
 ### <a name="number-of-virtual-machines-type-and-compute-cost-per-year"></a>Number of virtual machines type and compute cost (per year) (各種仮想マシンの数とコンピューティング コスト (年間))
 このテーブルには、Windows VM の数と非 Windows VM の数、さらに、それぞれの DR ドリルのコンピューティング コストが表示されます。
 
-### <a name="settings"></a>[設定] 
-**[Using managed disk]\(管理ディスクの使用\)**: DR ドリル時に管理ディスクが使用されているかどうかを指定します。 既定値は [Yes]\(はい\) です。 -UseManagedDisks を [No]\(いいえ\) に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
+### <a name="settings"></a>設定 
+**[Using managed disk]\(マネージド ディスクの使用\)**: DR ドリル時にマネージド ディスクが使用されているかどうかを指定します。 既定値は [Yes]\(はい\) です。 -UseManagedDisks を [No]\(いいえ\) に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
 
 **[Currency]\(通貨\)**: レポートの生成に使用される通貨。 [Cost duration]\(コスト期間\): すべてのコストは、月または年単位で表示できます。 
 
@@ -130,7 +124,7 @@ VM を手動で追加するには、次の手順に従います。
 
 **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**: 1 年間に実行する DR ドリルの回数。 既定では、年間 4 回です。 特定の VM の期間を変更できるほか、一番上の行に新しい値を入力し、[Apply to all]\(すべてに適用\) ボタンをクリックすることで、すべての VM に新しい値を適用することができます。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。  
 
-**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**: 各 DR ドリルの期間。 [ディザスター リカバリーのソフトウェア アシュアランス特典](https://azure.microsoft.com/en-in/pricing/details/site-recovery)により、90 日ごとに 7 日が既定値となります。 特定の VM の期間を変更できるほか、一番上の行に新しい値を入力し、[Apply to all]\(すべてに適用\) ボタンをクリックすることで、すべての VM に新しい値を適用することができます。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。
+**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**: 各 DR ドリルの期間。 [ディザスター リカバリーのソフトウェア アシュアランス特典](https://azure.microsoft.com/pricing/details/site-recovery)により、90 日ごとに 7 日が既定値となります。 特定の VM の期間を変更できるほか、一番上の行に新しい値を入力し、[Apply to all]\(すべてに適用\) ボタンをクリックすることで、すべての VM に新しい値を適用することができます。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。
   
 **[OS の種類]**: VM の OS の種類。 Windows または Linux を指定できます。 OS の種類が Windows の場合は、その VM に Azure ハイブリッド使用特典を適用できます。 
 
@@ -159,7 +153,7 @@ Azure Site Recovery Deployment Planner は、次のいずれかの通貨でコ�
 |ARS|アルゼンチン ペソ ($)||AUD|オーストラリア ドル ($)||BRL|ブラジル レアル (R$)|
 |CAD|カナダ ドル ($)||CHF|スイス フラン  (chf)||DKK|デンマーク クローネ (kr)|
 |EUR|ユーロ (€)||GBP|イギリス ポンド (£)||HKD|香港ドル (HK$)|
-|IDR|インドネシア ルピア (Rp)||INR|インド ルピー (₹)||JPY|日本円 (¥)|
+|IDR|インドネシア ルピア (Rp)||INR|インド ルピー ()||JPY|日本円 (¥)|
 |KRW|韓国ウォン (₩)||MXN|メキシコ ペソ (MX$)||MYR|マレーシア リンギ (RM$)|
 |NOK|ノルウェー クローネ (kr)||NZD|ニュージーランド ドル ($)||RUB|ロシア ルーブル (руб)|
 |SAR|サウジ リアル (SR)||SEK|スウェーデン クローナ (kr)||TWD|台湾ドル (NT$)|

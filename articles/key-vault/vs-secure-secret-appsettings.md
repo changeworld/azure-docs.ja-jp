@@ -1,31 +1,32 @@
 ---
-title: "Web アプリケーション用のシークレット アプリケーション設定の安全な保存 | Microsoft Docs"
-description: "ASP.NET Core Key Vault Provider、User Secret、または .NET 4.7.1 構成ビルダーを使用して Azure 資格情報またはサード パーティ製 API キーなどのシークレット アプリケーション設定を安全に保存する方法"
+title: Web アプリケーション用のシークレット アプリケーション設定の安全な保存 | Microsoft Docs
+description: ASP.NET Core Key Vault Provider、User Secret、または .NET 4.7.1 構成ビルダーを使用して Azure 資格情報またはサード パーティ製 API キーなどのシークレット アプリケーション設定を安全に保存する方法
 services: visualstudio
-documentationcenter: 
-author: cawa
+documentationcenter: ''
+author: cawaMS
 manager: paulyuk
-editor: 
-ms.assetid: 
-ms.service: 
+editor: ''
+ms.assetid: ''
+ms.service: ''
 ms.workload: web, azure
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 612b8d2c36e9b46e99452e78d1b30fda03474151
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7578950af2dafdade3c97650dfd212240053dd3b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625455"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 
 ## <a name="overview"></a>概要
 この記事では、Azure アプリケーションのシークレット アプリケーション構成設定を安全に保存する方法について説明します。
 
-従来、すべての Web アプリケーション構成設定は、Web.config などの構成ファイルに保存されます。この演習では、クラウド資格情報などのシークレット設定を、Github などのパブリック ソース管理システムにチェックインする方法を示します。 その一方で、ソース コードの変更と開発設定の再構成に必要なオーバーヘッドが原因で、セキュリティのベスト プラクティスに従うことが困難である可能性があります。
+従来、すべての Web アプリケーション構成設定は、Web.config などの構成ファイルに保存されます。この演習では、クラウド資格情報などのシークレット設定を、GitHub などのパブリック ソース管理システムにチェックインする方法を示します。 その一方で、ソース コードの変更と開発設定の再構成に必要なオーバーヘッドが原因で、セキュリティのベスト プラクティスに従うことが困難である可能性があります。
 
 アプリケーション シークレット設定を安全に保存するためのツールとフレームワーク ライブラリが作成されますが、開発プロセスの安全性を確保するためソース コードの変更は行われないか最小限に抑えられます。
 
@@ -39,7 +40,7 @@ ms.lasthandoff: 12/08/2017
 .NET Core コンソール アプリケーションを実行している場合は、Key Vault を使用して、シークレットを安全に保存します。
 
 ### <a name="save-secret-settings-in-azure-key-vault"></a>Azure Key Vault にシークレット設定を保存する
-チーム プロジェクトを開発しており、ソース コードを安全に共有する必要がある場合は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を使用します。
+プロジェクトを開発しており、ソース コードを安全に共有する必要がある場合は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を使用します。
 
 1. の Azure サブスクリプションで Key Vault を作成します。 UI 上のすべての必須フィールドに入力し、ブレードの下部にある *[作成]* をクリックします
 
@@ -99,20 +100,19 @@ ms.lasthandoff: 12/08/2017
 
 1. プロジェクトに次の NuGet パッケージをインストールします
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic.1.0.0-alpha1.nupkg
+    Microsoft.Configuration.ConfigurationBuilders.Basic
     ```
 
 2. 次のようなファイルを作成します。 プロジェクト フォルダーの外部の場所に保存します。
 
     ```xml
-
-       <root>
-              <secrets ver="1.0">
-                     <secret name="secret1" value="foo_one" />
-                        <secret name="secret2" value="foo_two" />
-                       </secrets>
-      </root>
-      ```
+    <root>
+        <secrets ver="1.0">
+            <secret name="secret1" value="foo_one" />
+            <secret name="secret2" value="foo_two" />
+        </secrets>
+    </root>
+    ```
 
 3. Web.config ファイルでそのシークレット ファイルを構成ビルダーとして定義します。 このセクションは *appSettings* セクションの前に配置します。
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 12/08/2017
 
 1. プロジェクトに次の NuGet パッケージをインストールします
 ```
-Microsoft.Configuration.ConfigurationBuilders.Azure.1.0.0-alpha1.nupkg
+Microsoft.Configuration.ConfigurationBuilders.UserSecrets
 ```
 
 2. Web.config で Key Vault 構成ビルダーを定義します。このセクションは *appSettings* セクションの前に配置します。 お客様の Key Vault がパブリック Azure 内にある場合は、*vaultName* を Key Vault 名に置き換え、管理権のあるクラウドを使用している場合は完全 URI に置き換えます。
@@ -156,7 +156,7 @@ Microsoft.Configuration.ConfigurationBuilders.Azure.1.0.0-alpha1.nupkg
     </configSections>
     <configBuilders>
         <builders>
-            <add name="KeyVault" vaultName="Test911" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
+            <add name="AzureKeyVault" vaultName="Test911" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
         </builders>
     </configBuilders>
     ```

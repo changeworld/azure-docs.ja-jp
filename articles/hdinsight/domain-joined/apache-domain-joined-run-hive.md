@@ -1,32 +1,26 @@
 ---
-title: ドメイン参加済み HDInsight での Hive ポリシーの構成 - Azure | Microsoft Docs
-description: 詳細....
+title: Enterprise セキュリティ パッケージで HDInsight に Hive ポリシーを構成する - Azure
+description: Enterprise セキュリティ パッケージを使用して Azure HDInsight サービスに Hive 用の Apache Ranger ポリシーを構成する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: saurinsh
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 3fade1e5-c2e1-4ad5-b371-f95caea23f6d
 ms.service: hdinsight
+author: omidm1
+ms.author: omidm
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 10/25/2016
-ms.author: saurinsh
-ms.openlocfilehash: 919a0a45c4c8c94b19ed1d602ed20df0afabd09a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 09/24/2018
+ms.openlocfilehash: 43b3e293bf2990c953aeb2947b1113ee30175dee
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632817"
 ---
-# <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>ドメイン参加済み HDInsight での Hive ポリシーの構成
-Hive 用 Apache Ranger ポリシーを構成する方法について説明します。 この記事では、hivesampletable へのアクセスを制限する 2 つの Ranger ポリシーを作成します。 hivesampletable は HDInsight クラスターに付属しています。 ポリシーを構成したら、Excel と ODBC ドライバーを使用して HDInsight の Hive テーブルに接続します。
+# <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
+Apache Hive 用 Apache Ranger ポリシーを構成する方法について説明します。 この記事では、hivesampletable へのアクセスを制限する 2 つの Ranger ポリシーを作成します。 hivesampletable は HDInsight クラスターに付属しています。 ポリシーを構成したら、Excel と ODBC ドライバーを使用して HDInsight の Hive テーブルに接続します。
 
 ## <a name="prerequisites"></a>前提条件
-* ドメイン参加済み HDInsight クラスター。 [ドメイン参加済み HDInsight クラスターの構成](apache-domain-joined-configure.md)に関する記事をご覧ください。
+* Enterprise セキュリティ パッケージを使用している HDInsight クラスター。 [ESP を使用した HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
 * Office 2016、Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone、または Office 2010 Professional Plus がインストールされたワークステーション。
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger 管理 UI への接続
@@ -40,15 +34,15 @@ Hive 用 Apache Ranger ポリシーを構成する方法について説明しま
    >
 2. クラスター管理者のドメイン ユーザー名とパスワードを使用してログインします。
 
-    ![HDInsight のドメイン参加済み Ranger のホーム ページ](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    ![HDInsight ESP Ranger のホーム ページ](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
 
     現在、Ranger は Yarn および Hive でのみ機能します。
 
 ## <a name="create-domain-users"></a>ドメイン ユーザーの作成
-hiveruser1 と hiveuser2 を作成する方法については、「[ドメイン参加済み HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)」を参照してください。 このチュートリアルでは、この 2 つのユーザー アカウントを使用します。
+hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)」をご覧ください。 このチュートリアルでは、この 2 つのユーザー アカウントを使用します。
 
 ## <a name="create-ranger-policies"></a>Ranger ポリシーの作成
-このセクションでは、hivesampletable にアクセスするための 2 つの Ranger ポリシーを作成します。 異なる列セットに対する select 権限を付与します。 両方のユーザーは[ドメイン参加済み HDInsight クラスターの構成](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)で作成されました。 次のセクションでは、2 つのポリシーを Excel でテストします。
+このセクションでは、hivesampletable にアクセスするための 2 つの Ranger ポリシーを作成します。 異なる列セットに対する select 権限を付与します。 両方のユーザーは、「[ESP の HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)」で作成されました。 次のセクションでは、2 つのポリシーを Excel でテストします。
 
 **Ranger ポリシーを作成するには**
 
@@ -63,7 +57,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ドメイン
    * Select User: hiveuser1
    * Permissions: select
 
-     ![HDInsight のドメイン参加済み Ranger での Hive ポリシーの構成](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)が必要です。
+     ![HDInsight ESP Ranger での Hive ポリシーの構成](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)。
 
      > [!NOTE]
      > [Select User] にドメイン ユーザーが設定されていない場合は、Ranger が AAD と同期するまでしばらく待ってください。
@@ -82,16 +76,16 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ドメイン
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC データ ソースの作成
 手順については、「[Hive ODBC データ ソースの作成](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)」をご覧ください。  
 
- | プロパティ  |[説明] |
+ | プロパティ  |説明 |
  | --- | --- |
  | データ ソース名 | データ ソースに名前を付けます。 |
- | Host | 「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
+ | ホスト | 「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
  | ポート | **443** を使用します。 (このポートは 563 から 443 に変更されました)。 |
  | データベース | **既定値**を使用します。 |
  | Hive サーバーの種類 | **Hive Server 2** を選択します。 |
  | メカニズム | **Azure HDInsight サービス**を選択します。 |
  | HTTP パス | 空白のままにします。 |
- | ユーザー名 | 「hiveuser1@contoso158.onmicrosoft.com」を入力します。ドメイン名が異なる場合は、ドメイン名を更新します。 |
+ | ユーザー名 | 「hiveuser1@contoso158.onmicrosoft.com」を入力します。 ドメイン名が異なる場合は、ドメイン名を更新します。 |
  | パスワード | hiveuser1 のパスワードを入力します。 |
 
 データ ソースを保存する前に、必ず **[Test]** をクリックしてください。
@@ -107,8 +101,8 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ドメイン
 4. ODBC データ ソースから、前の手順で作成したデータ ソース名を選択し、**[次へ]** をクリックします。
 5. ウィザードでクラスターのパスワードを再入力し、**[OK]** をクリックします。 **[データベースとテーブルの選択]** ダイアログが開くのを待ちます。 この処理には数秒かかります。
 6. **[hivesampletable]** を選択し、**[次へ]** をクリックします。
-7. **[完了]**をクリックします。
-8. **[データのインポート]** ダイアログでは、クエリを変更または指定できます。 これを行うには、 **[プロパティ]**をクリックします。 この処理には数秒かかります。
+7. **[完了]** をクリックします。
+8. **[データのインポート]** ダイアログでは、クエリを変更または指定できます。 これを行うには、 **[プロパティ]** をクリックします。 この処理には数秒かかります。
 9. **[定義]** タブをクリックします。コマンド テキストを次に示します。
 
        SELECT * FROM "HIVE"."default"."hivesampletable"
@@ -137,9 +131,9 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ドメイン
     インポートが完了すると、インポートされた 2 列のデータが表示されます。
 
 ## <a name="next-steps"></a>次の手順
-* ドメイン参加済み HDInsight クラスターの構成については、[ドメイン参加済み HDInsight クラスターの構成](apache-domain-joined-configure.md)に関する記事を参照してください。
-* ドメイン参加済み HDInsight クラスターの管理については、「[ドメイン参加済み HDInsight クラスターの管理](apache-domain-joined-manage.md)」をご覧ください。
-* SSH を使用してドメイン参加済み HDInsight クラスターで Hive クエリを実行する方法については、[HDInsight で SSH キーを使用する](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)に関するページをご覧ください。
+* Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
+* ESP での HDInsight クラスターの管理については、「[Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する](apache-domain-joined-manage.md)」をご覧ください。
+* SSH を使用して ESP を含む HDInsight クラスターで Hive クエリを実行する方法については、「[HDInsight で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)」をご覧ください。
 * Hive JDBC を使用して Hive に接続する方法については、「[Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続する](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)」をご覧ください。
 * Hive ODBC を使用して Excel を Hadoop に接続する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)」をご覧ください。
 * Power Query を使用して Excel を Hadoop に接続する方法については、「[Power Query を使用した Excel から Hadoop への接続](../hadoop/apache-hadoop-connect-excel-power-query.md)」をご覧ください。

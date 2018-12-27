@@ -4,23 +4,20 @@ description: Azure Functions を使用して、Azure Storage キューに送信�
 services: azure-functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 03/28/2018
+ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: d9ab8115ad273101a0a25a094436bc0a24a45e68
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 33f7367d9cdc510cf04f349f44b6e85215d46038
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995584"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Queue Storage によってトリガーされる関数の作成
 
@@ -30,7 +27,7 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](http://storageexplorer.com/)。
+- [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](https://storageexplorer.com/)。
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -46,24 +43,31 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
 ## <a name="create-a-queue-triggered-function"></a>キューによってトリガーされる関数の作成
 
-1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックします。 これが Function App で初めての関数の場合、**[カスタム関数]** を選びます。 関数テンプレートの完全なセットが表示されます。
+1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、**[ポータル内]**、**[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
 
-    ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
+   ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
 
-2. 検索フィールドに、「`queue`」と入力し、Queue storage トリガー テンプレート用の目的の言語を選択します。
+1. **[その他のテンプレート]**、**[Finish and view templates]\(終了してテンプレートを表示\)** の順に選択します。
 
-    ![ストレージ キューのトリガー テンプレートを選択します。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+    ![Functions のクイック スタート: [その他のテンプレート] を選択する](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
 
-3. 画像の下の表に指定した設定を使用してください。
-    ![ストレージ キューによってトリガーされる関数を構成します。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
-    
+1. 検索フィールドに「`queue`」と入力し、**キュー トリガー** テンプレートを選択します。
+
+1. プロンプトが表示されたら、**[インストール]** を選択して Azure Storage 拡張機能とすべての依存関係を関数アプリにインストールします。 インストールが正常に完了したら、**[続行]** を選択します。
+
+    ![バインディング拡張機能をインストールする](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+
+1. 画像の下の表に指定した設定を使用してください。
+
+    ![ストレージ キューによってトリガーされる関数を構成する。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
+
     | Setting | 推奨値 | Description |
     |---|---|---|
     | **名前** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
     | **キュー名**   | myqueue-items    | ストレージ アカウント内の接続先のキューの名前。 |
     | **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |    
 
-3. **[作成]** をクリックして関数を作成します。
+1. **[作成]** をクリックして関数を作成します。
 
 次に、Azure Storage アカウントに接続し、**myqueue-items** ストレージ キューを作成します。
 
@@ -73,7 +77,7 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
     ![ストレージ アカウント接続の資格情報を取得します。](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
 
-1. [Microsoft Azure Storage Explorer](http://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key] \(ストレージ アカウント名とキーを使用)** を選択し、**[次へ]** をクリックします。
+1. [Microsoft Azure Storage Explorer](https://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key] \(ストレージ アカウント名とキーを使用)** を選択し、**[次へ]** をクリックします。
 
     ![ストレージ アカウント エクスプローラー ツールを実行します。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
 

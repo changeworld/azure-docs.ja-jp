@@ -1,28 +1,25 @@
 ---
-title: "B2B 監視の X12 追跡スキーマ - Azure Logic Apps | Microsoft Docs"
-description: "X12 追跡スキーマを使用して、Azure 統合アカウントのトランザクションからの B2B メッセージを監視します。"
-author: padmavc
-manager: anneta
-editor: 
+title: B2B メッセージの X12 追跡スキーマ - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack の統合アカウントで B2B メッセージを監視する X12 追跡スキーマを作成します
 services: logic-apps
-documentationcenter: 
-ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3782c0a76ea8728a146b3d73774f74c31187cbfd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cfd195f2f812c8b2e09058d325d0dbb6f7a60d59
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125603"
 ---
-# <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>X12 メッセージの追跡を開始または有効にして、成功、失敗、メッセージのプロパティを監視する
-Azure 統合アカウントでは、次の X12 追跡スキーマを使用して企業間 (B2B) 取引の監視に役立てることができます。
+# <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps の統合アカウントで X12 メッセージを追跡するスキーマを作成する
+
+企業間 (B2B) 取引における成功、エラー、メッセージ プロパティは、統合アカウントで次の X12 追跡スキーマを使って監視できます。
 
 * X12 トランザクション セット追跡スキーマ
 * X12 トランザクション セット受信確認追跡スキーマ
@@ -32,35 +29,35 @@ Azure 統合アカウントでは、次の X12 追跡スキーマを使用して
 * X12 機能グループ受信確認追跡スキーマ
 
 ## <a name="x12-transaction-set-tracking-schema"></a>X12 トランザクション セット追跡スキーマ
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "transactionSetControlNumber": "",
-                "CorrelationMessageId": "",
-                "messageType": "",
-                "isMessageFailed": "",
-                "isTechnicalAcknowledgmentExpected": "",
-                "isFunctionalAcknowledgmentExpected": "",
-                "needAk2LoopForValidMessages":  "",
-                "segmentsCount": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "transactionSetControlNumber": "",
+      "CorrelationMessageId": "",
+      "messageType": "",
+      "isMessageFailed": "",
+      "isTechnicalAcknowledgmentExpected": "",
+      "isFunctionalAcknowledgmentExpected": "",
+      "needAk2LoopForValidMessages":  "",
+      "segmentsCount": ""
+   }
+}
+```
 
-| プロパティ | 型 | Description |
+| プロパティ | type | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | String | X12 メッセージ受信者のパートナー名。 (省略可能) |
@@ -80,42 +77,43 @@ Azure 統合アカウントでは、次の X12 追跡スキーマを使用して
 | isFunctionalAcknowledgmentExpected | Boolean | X12 契約で機能確認が構成されているかどうか。 (必須) |
 | needAk2LoopForValidMessages | Boolean | 有効なメッセージのために AK2 ループが必要かどうか。 (必須) |
 | segmentsCount | 整数 | X12 トランザクション セット内のセグメントの数。 (省略可能) |
+||||
 
 ## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12 トランザクション セット受信確認追跡スキーマ
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "isaSegment": "",
-                "gsSegment": "",
-                "respondingfunctionalGroupControlNumber": "",
-                "respondingFunctionalGroupId": "",
-                "respondingtransactionSetControlNumber": "",
-                "respondingTransactionSetId": "",
-                "statusCode": "",
-                "processingStatus": "",
-                "CorrelationMessageId": ""
-                "isMessageFailed": "",
-                "ak2Segment": "",
-                "ak3Segment": "",
-                "ak5Segment": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "isaSegment": "",
+      "gsSegment": "",
+      "respondingfunctionalGroupControlNumber": "",
+      "respondingFunctionalGroupId": "",
+      "respondingtransactionSetControlNumber": "",
+      "respondingTransactionSetId": "",
+      "statusCode": "",
+      "processingStatus": "",
+      "CorrelationMessageId": "",
+      "isMessageFailed": "",
+      "ak2Segment": "",
+      "ak3Segment": "",
+      "ak5Segment": ""
+   }
+}
+```
 
-| プロパティ | 型 | Description |
+| プロパティ | type | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | String | X12 メッセージ受信者のパートナー名。 (省略可能) |
@@ -141,38 +139,39 @@ Azure 統合アカウントでは、次の X12 追跡スキーマを使用して
 | ak2Segment | String | 受信された機能グループ内のトランザクション セットに対する受信確認。 (省略可能) |
 | ak3Segment | String | データ セグメントでのエラーを報告します。 (省略可能) |
 | ak5Segment | String | AK2 セグメント内で識別されたトランザクション セットが承認されるか拒否されるかと、その理由を報告します。 (省略可能) |
+||||
 
 ## <a name="x12-interchange-tracking-schema"></a>X12 インターチェンジ追跡スキーマ
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "isaSegment": "",
-                "isTechnicalAcknowledgmentExpected": "",
-                "isMessageFailed": "",
-                "isa09": "",
-                "isa10": "",
-                "isa11": "",
-                "isa12": "",
-                "isa14": "",
-                "isa15": "",
-                "isa16": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "isaSegment": "",
+      "isTechnicalAcknowledgmentExpected": "",
+      "isMessageFailed": "",
+      "isa09": "",
+      "isa10": "",
+      "isa11": "",
+      "isa12": "",
+      "isa14": "",
+      "isa15": "",
+      "isa16": ""
+   }
+}
+```
 
-| プロパティ | 型 | Description |
+| プロパティ | type | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | String | X12 メッセージ受信者のパートナー名。 (省略可能) |
@@ -193,35 +192,37 @@ Azure 統合アカウントでは、次の X12 追跡スキーマを使用して
 | isa14 | String | X12 受信確認が要求されます。 (省略可能) |
 | isa15 | String | テストか実稼働かのインジケーター。 (省略可能) |
 | isa16 | String | 要素の区切り記号。 (省略可能) |
+||||
 
 ## <a name="x12-interchange-acknowledgement-tracking-schema"></a>X12 インターチェンジ受信確認追跡スキーマ
-````java
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "isaSegment": "",
-                "respondingInterchangeControlNumber": "",
-                "isMessageFailed": "",
-                "statusCode": "",
-                "processingStatus": "",
-                "ta102": "",
-                "ta103": "",
-                "ta105": ""
-            }
-    }
-````
 
-| プロパティ | 型 | Description |
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "isaSegment": "",
+      "respondingInterchangeControlNumber": "",
+      "isMessageFailed": "",
+      "statusCode": "",
+      "processingStatus": "",
+      "ta102": "",
+      "ta103": "",
+      "ta105": ""
+   }
+}
+```
+
+| プロパティ | type | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | String | X12 メッセージ受信者のパートナー名。 (省略可能) |
@@ -240,40 +241,41 @@ Azure 統合アカウントでは、次の X12 追跡スキーマを使用して
 | ta102 | String | インターチェンジ日付。 (省略可能) |
 | ta103 | String | インターチェンジ時刻。 (省略可能) |
 | ta105 | String | インターチェンジ通知コード。 (省略可能) |
+||||
 
 ## <a name="x12-functional-group-tracking-schema"></a>X12 機能グループ追跡スキーマ
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "gsSegment": "",
-                "isTechnicalAcknowledgmentExpected": "",
-                "isFunctionalAcknowledgmentExpected": "",
-                "isMessageFailed": "",
-                "gs01": "",
-                "gs02": "",
-                "gs03": "",
-                "gs04": "",
-                "gs05": "",
-                "gs07": "",
-                "gs08": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "gsSegment": "",
+      "isTechnicalAcknowledgmentExpected": "",
+      "isFunctionalAcknowledgmentExpected": "",
+      "isMessageFailed": "",
+      "gs01": "",
+      "gs02": "",
+      "gs03": "",
+      "gs04": "",
+      "gs05": "",
+      "gs07": "",
+      "gs08": ""
+   }
+}
+```
 
-| プロパティ | 型 | Description |
+| プロパティ | type | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | String | X12 メッセージ受信者のパートナー名。 (省略可能) |
@@ -296,38 +298,40 @@ Azure 統合アカウントでは、次の X12 追跡スキーマを使用して
 | gs05 | String | 機能グループ時刻。 (省略可能) |
 | gs07 | String | 担当機関コード。 (省略可能) |
 | gs08 | String | バージョン/リリース/業種識別コード。 (省略可能) |
+||||
 
 ## <a name="x12-functional-group-acknowledgement-tracking-schema"></a>X12 機能グループ受信確認追跡スキーマ
-````java
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "isaSegment": "",
-                "gsSegment": "",
-                "respondingfunctionalGroupControlNumber": "",
-                "respondingFunctionalGroupId": "",
-                "isMessageFailed": "",
-                "statusCode": "",
-                "processingStatus": "",
-                "ak903": "",
-                "ak904": "",
-                "ak9Segment": ""
-            }
-    }
-````
 
-| プロパティ | 型 | Description |
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "isaSegment": "",
+      "gsSegment": "",
+      "respondingfunctionalGroupControlNumber": "",
+      "respondingFunctionalGroupId": "",
+      "isMessageFailed": "",
+      "statusCode": "",
+      "processingStatus": "",
+      "ak903": "",
+      "ak904": "",
+      "ak9Segment": ""
+   }
+}
+```
+
+| プロパティ | type | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | String | X12 メッセージ受信者のパートナー名。 (省略可能) |
@@ -349,10 +353,16 @@ Azure 統合アカウントでは、次の X12 追跡スキーマを使用して
 | ak903 | String | 受信されたトランザクション セットの数。 (省略可能) |
 | ak904 | String | 識別された機能グループで承認されたトランザクション セットの数。 (省略可能) |
 | ak9Segment | String | AK1 セグメントで識別された機能グループが承認されるか拒否されるかと、その理由。 (省略可能) |
+|||| 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="b2b-protocol-tracking-schemas"></a>B2B プロトコル追跡スキーマ
+
+B2B プロトコル追跡スキーマ について詳しくは、次のページをご覧ください。
+
+* [AS2 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
+* [B2B カスタム追跡スキーマ](logic-apps-track-integration-account-custom-tracking-schema.md)
+
+## <a name="next-steps"></a>次の手順
+
 * [B2B メッセージの監視方法](logic-apps-monitor-b2b-message.md)についての詳細情報。
-* [AS2 追跡スキーマ](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)についての詳細情報。
-* [B2B カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)についての詳細情報。
-* [Operations Management Suite ポータルでの B2B メッセージ追跡](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)についての詳細情報。
-* [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) についての詳細情報。  
+* [Log Analytics での B2B メッセージの追跡方法](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)についての詳細情報。

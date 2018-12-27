@@ -1,27 +1,21 @@
 ---
-title: HDInsight 上の Spark MLlib を使用した Machine Learning の例 - Azure | Microsoft Docs
+title: HDInsight 上の Spark MLlib を使用した Machine Learning の例 - Azure
 description: Spark MLlib を使用して、ロジスティック回帰による分類を使用してデータセットを分析する Machine Learning アプリを作成する方法について説明します。
 keywords: Spark Machine Learning、Spark Machine Learning の例
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: c0fd4baa-946d-4e03-ad2c-a03491bd90c8
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/13/2018
-ms.author: jgao
-ms.openlocfilehash: ec9852cb47ab57736edadecf38173c314195f324
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: conceptual
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: e553833f8b9a5daab5c454cea628acdda0320e76
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257641"
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Spark MLlib を使用して Machine Learning アプリケーションを構築し、データセットを分析する
 
@@ -84,7 +78,7 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
         sio.close()
         return value
     
-    inspections = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
+    inspections = sc.textFile('/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
                     .map(csvParse)
     ```
 
@@ -127,7 +121,7 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
     StructField("results", StringType(), False),
     StructField("violations", StringType(), True)])
     
-    df = sqlContext.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
+    df = spark.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
     df.registerTempTable('CountResults')
     ```
 
@@ -283,7 +277,7 @@ model = pipeline.fit(labeledData)
     testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
                 .map(csvParse) \
                 .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
-    testDf = sqlContext.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
+    testDf = spark.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
     predictionsDf = model.transform(testDf)
     predictionsDf.registerTempTable('Predictions')
     predictionsDf.columns
@@ -347,13 +341,19 @@ model = pipeline.fit(labeledData)
     ```PySpark
     %%sql -q -o true_positive
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND results = 'Fail'
+    ```
 
+    ```PySpark
     %%sql -q -o false_positive
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
+    ```
 
+    ```PySpark
     %%sql -q -o true_negative
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND results = 'Fail'
+    ```
 
+    ```PySpark
     %%sql -q -o false_negative
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
     ```

@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: c4779ada60fab2db5249a107abfc7ca6f80cb16f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 535f70658593ff5a9ae1642ae7a97646e3fefb63
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288256"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
@@ -28,11 +29,11 @@ ms.lasthandoff: 02/09/2018
 - **外部 ASE**: ASE でホストされたアプリをインターネット アクセス可能な IP アドレスで公開します。 詳細については、[外部 ASE の作成][MakeExternalASE]に関するページを参照してください。
 - **ILB ASE**: ASE でホストされたアプリを VNet 内部の IP アドレスで公開します。 内部エンドポイントは内部ロード バランサー (ILB) であるため、ILB ASE と呼ばれています。 詳細については、[ILB ASE の作成と使用][MakeILBASE]に関するページを参照してください。
 
-現在、App Service Environment には ASEv1 と ASEv2 の 2 つのバージョンがあります。 ASEv1 については、「[App Service Environment v1 の概要][ASEv1Intro]」をご覧ください。 ASEv1 は、クラシックまたは Resource Manager VNet にデプロイできます。 ASEv2 は、Resource Manager VNet にのみデプロイできます。
+App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 ASEv1 については、「[App Service Environment v1 の概要][ASEv1Intro]」をご覧ください。 ASEv1 は、クラシックまたは Resource Manager VNet にデプロイできます。 ASEv2 は、Resource Manager VNet にのみデプロイできます。
 
-インターネットにアクセスする ASE からのすべての呼び出しは、ASE に割り当てられた VIP を経由して VNet から出ます。 この VIP のパブリック IP は、インターネットにアクセスする ASE からのすべての呼び出しの送信元 IP になります。 ASE 内のアプリが VNet 内のリソースまたは VPN 全体にわたるリソースへの呼び出しを行う場合、ソース IP は、その ASE によって使用されるサブネット内の IP のいずれかです。 ASE は VNet 内にあるため、追加の構成をしなくても、VNet 内のリソースにもアクセスできます。 VNet がオンプレミスのネットワークに接続されている場合、ASE 内のアプリもそこにあるリソースにアクセスできます。 ASE またはアプリをそれ以上構成する必要はありません。
+インターネットにアクセスする ASE からのすべての呼び出しは、ASE に割り当てられた VIP を経由して VNet から出ます。 この VIP のパブリック IP は、インターネットにアクセスする ASE からのすべての呼び出しのための送信元 IP になります。 ASE 内のアプリが VNet 内のリソースまたは VPN 全体にわたるリソースへの呼び出しを行う場合、ソース IP は、その ASE によって使用されるサブネット内の IP のいずれかです。 ASE は VNet 内にあるため、追加の構成をしなくても、VNet 内のリソースにもアクセスできます。 VNet がオンプレミスのネットワークに接続されている場合、追加の構成なしで ASE 内のアプリもそこにあるリソースにアクセスできます。
 
-![外部 ASE][1] 
+![外部 ASE][1] 
 
 外部 ASE が存在する場合は、パブリック VIP も、ASE アプリが次のために解決されるエンドポイントです。
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 02/09/2018
 
 ![ILB ASE][2]
 
-ILB ASE が存在する場合、ILB の IP アドレスは、HTTP/S、FTP/S、Web デプロイ、およびリモート デバッグのためのエンドポイントです。
+ILB ASE が存在する場合、ILB のアドレスは、HTTP/S、FTP/S、Web デプロイ、およびリモート デバッグのためのエンドポイントです。
 
 通常のアプリのアクセス ポートは次のとおりです。
 
@@ -51,20 +52,24 @@ ILB ASE が存在する場合、ILB の IP アドレスは、HTTP/S、FTP/S、We
 |----------|---------|-------------|
 |  HTTP/HTTPS  | ユーザーが構成可能 |  80、443 |
 |  FTP/FTPS    | ユーザーが構成可能 |  21、990、10001-10020 |
-|  Visual Studio リモート デバッグ  |  ユーザーが構成可能 |  4016、4018、4020、4022 |
+|  Visual Studio リモート デバッグ  |  ユーザーが構成可能 |  4020、4022、4024 |
 
 これは、ユーザーが外部 ASE または ILB ASE にいる場合に当てはまります。 外部 ASE にいる場合は、パブリック VIP でこれらのポートにヒットします。 ILB ASE にいる場合は、ILB でこれらのポートにヒットします。 ポート 443 をロックダウンすると、ポータルで公開されている一部の機能に影響が出る場合があります。 詳細については、「[ポータルの依存関係](#portaldep)」を参照してください。
 
 ## <a name="ase-subnet-size"></a>ASE サブネットのサイズ ##
 
-ASE をデプロイした後は、ASE をホストするために使用されるサブネットのサイズを変更することはできません。  ASE では、インフラストラクチャのロールごと、および独立した App Service プラン インスタンスごとにアドレスが使用されます。  さらに、作成されたすべてのサブネットに対して Azure ネットワークが使用するアドレスが 5 つあります。  App Service プランを持たない ASE では、アプリを作成する前の段階で 12 個のアドレスが使用されます。  ILB ASE の場合は、その ASE にアプリを作成する前の段階で 13 個のアドレスが使用されます。 App Service プランをスケールアウトする場合は、追加されるフロントエンドごとに追加のアドレスが必要になります。  既定では、合計 15 個の App Service プラン インスタンスごとにフロントエンド サーバーが追加されます。 
+ASE をデプロイした後は、ASE をホストするために使用されるサブネットのサイズを変更することはできません。  ASE では、インフラストラクチャのロールごと、および独立した App Service プラン インスタンスごとにアドレスが使用されます。  さらに、作成されたすべてのサブネットに対して Azure ネットワークが使用するアドレスが 5 つあります。  App Service プランを持たない ASE では、アプリを作成する前の段階で 12 個のアドレスが使用されます。  ILB ASE の場合は、その ASE にアプリを作成する前の段階で 13 個のアドレスが使用されます。 ご利用の ASE をスケールアウトすると、インフラストラクチャ ロールが App Service プラン インスタンスの 15 および 20 の倍数ごとに追加されます。
 
    > [!NOTE]
-   > サブネット内には ASE の他に何も存在できません。 将来の拡張を考慮に入れたアドレス空間を選択するようにしてください。 この設定を後で変更することはできません。 推奨されるサイズは、128 のアドレスを持つ `/25` です。
+   > サブネット内には ASE の他に何も存在できません。 将来の拡張を考慮に入れたアドレス空間を選択するようにしてください。 この設定を後で変更することはできません。 推奨されるサイズは、256 のアドレスを持つ `/24` です。
+
+スケールアップまたはスケールダウンすると、適切なサイズの新しいロールが追加されてから、ワークロードが現在のサイズからターゲット サイズに移行されます。 アプリの移行後にのみ、元の VM が削除されます。 つまり、100 ASP インスタンスの ASE がある場合、VM の数を 2 倍にする必要がある期間があることになります。  この理由から、必要になる可能性がある変更に対応するために、'/24' を使用することをお勧めします。  
 
 ## <a name="ase-dependencies"></a>ASE の依存関係 ##
 
-ASE の着信アクセスの依存関係は次のとおりです。
+### <a name="ase-inbound-dependencies"></a>ASE の受信依存関係 ###
+
+ASE の受信アクセス依存関係は次のとおりです。
 
 | 用途 | ソース | ターゲット |
 |-----|------|----|
@@ -73,7 +78,7 @@ ASE の着信アクセスの依存関係は次のとおりです。
 |  Azure Load Balancer の着信を許可 | Azure Load Balancer | ASE サブネット: すべてのポート
 |  アプリに割り当てられた IP アドレス | アプリに割り当てられたアドレス | ASE サブネット: すべてのポート
 
-着信トラフィックは、システムの監視に加え、ASE のコマンドと制御を提供します。 このトラフィックのソース IP は、 [ASE 管理アドレス][ASEManagement] に関するドキュメントで一覧を確認できます。 ネットワーク セキュリティ構成では、ポート 454 および 455 上のすべての IP からのアクセスを許可する必要があります。
+受信管理トラフィックでは、システムの監視に加え、ASE のコマンドと制御が提供されます。 このトラフィックのソース アドレスは、[ASE 管理アドレス][ASEManagement]に関するドキュメントにリストされています。 ネットワーク セキュリティ構成では、ポート 454 および 455 上のすべての IP からのアクセスを許可する必要があります。 これらのアドレスからのアクセスをブロックすると、ASE が正常でなくなり、中断されます。
 
 ASE サブネット内には、内部コンポーネントの通信に使用されるポートが多数あり、それらのポートは変更可能です。  そのためには、ASE サブネットのすべてのポートに、ASE サブネットからアクセスできる必要があります。 
 
@@ -81,20 +86,13 @@ Azure Load Balancer と ASE サブネット間の通信では、最低限開く�
 
 アプリに割り当てられた IP アドレスを使用している場合は、ご使用のアプリに割り当てられている IP から ASE サブネットへのトラフィックを許可する必要があります。
 
-発信アクセスについては、ASE は複数の外部システムに依存します。 これらのシステム依存関係は DNS 名で定義され、固定された一連の IP アドレスにはマップされません。 そのため、ASE には、ASE サブネットからさまざまなポートにまたがるすべての外部 IP への送信アクセスが必要です。 ASE には、次の発信の依存関係があります。
+ポート 454 と 455 に入ってくる TCP トラフィックは同じ VIP から出ていく必要があります。そうしないと、非対称ルーティングの問題が発生します。 
 
-| 用途 | ソース | ターゲット |
-|-----|------|----|
-| Azure Storage (Azure Storage) | ASE サブネット | table.core.windows.net、blob.core.windows.net、queue.core.windows.net、file.core.windows.net: 80、443、445 (445 は ASEv1 にのみ必要です。) |
-| の接続文字列 | ASE サブネット | database.windows.net: 1433、11000-11999、14000-14999 (詳細については、[SQL Database V12 ポートの使用](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)に関するページを参照。)|
-| Azure の管理 | ASE サブネット | management.core.windows.net、management.azure.com: 443 
-| SSL 証明書の検証 |  ASE サブネット            |  ocsp.msocsp.com、mscrl.microsoft.com、crl.microsoft.com: 443
-| Azure Active Directory        | ASE サブネット            |  インターネット: 443
-| App Service の管理        | ASE サブネット            |  インターネット: 443
-| Azure DNS                     | ASE サブネット            |  インターネット: 53
-| ASE 内部通信    | ASE サブネット: すべてのポート |  ASE サブネット: すべてのポート
+### <a name="ase-outbound-dependencies"></a>ASE の送信依存関係 ###
 
-ASE がこれらの依存関係へのアクセスを失うと、ASE は停止します。 それがある程度長く続くと、ASE は中断されます。
+発信アクセスについては、ASE は複数の外部システムに依存します。 これらのシステム依存関係の多くは DNS 名で定義され、固定された一連の IP アドレスにはマップされません。 そのため、ASE には、ASE サブネットからさまざまなポートにまたがるすべての外部 IP への送信アクセスが必要です。 
+
+送信依存関係の完全なリストは、[App Service 環境の送信トラフィックのロック ダウン](./firewall-integration.md)について説明されているドキュメントに示されています。 ASE でその依存関係へのアクセスが失われた場合、動作は停止します。 それがある程度長く続くと、ASE は中断されます。 
 
 ### <a name="customer-dns"></a>顧客 DNS ###
 
@@ -102,11 +100,15 @@ VNet に顧客が定義した DNS サーバーが構成されている場合、�
 
 VNet で VPN のもう一方の側に顧客 DNS が構成されている場合は、ASE が含まれるサブネットからその DNS サーバーに到達できる必要があります。
 
+Web アプリから解決をテストする場合は、コンソール コマンドの *nameresolver* を使用できます。 ご利用のアプリ用の scm サイトにあるデバッグ ウィンドウに移動するか、ポータルのアプリに移動してコンソールを選択します。 シェル プロンプトから、検索するアドレスと共に *nameresolver* コマンドを実行できます。 返される結果は、同じ検索を行ったときにアプリで得られる内容と同じです。 nslookup を使用する場合は、代わりに Azure DNS を使って検索します。
+
+ご利用の ASE が含まれる VNet の DNS 設定を変更する場合は、その ASE を再起動する必要があります。 ASE を再起動しないようにする場合は、ASE を作成する前に、ご利用の VNet に対して DNS 設定を構成することを強くお勧めします。  
+
 <a name="portaldep"></a>
 
 ## <a name="portal-dependencies"></a>ポータルの依存関係 ##
 
-ASE の機能的な依存関係に加えて、ポータルのエクスペリエンスに関連したいくつかの追加項目があります。 Azure Portal の一部の機能は、_SCM サイト_への直接アクセスに依存しています。 Azure App Service 内のどのアプリにも 2 つの URL が存在します。 1 つ目の URL はアプリにアクセスするためのものです。 2 つ目の URL は SCM サイト (_Kudu コンソール_とも呼ばれます) にアクセスするためのものです。 SCM サイトを使用する機能には、次のものが含まれます。
+ASE の機能的な依存関係に加えて、ポータルのエクスペリエンスに関連したいくつかの追加項目があります。 Azure Portal の一部の機能は、_SCM サイト_ への直接アクセスに依存しています。 Azure App Service 内のどのアプリにも 2 つの URL が存在します。 1 つ目の URL はアプリにアクセスするためのものです。 2 つ目の URL は SCM サイト (_Kudu コンソール_ とも呼ばれます) にアクセスするためのものです。 SCM サイトを使用する機能には、次のものが含まれます。
 
 -   Web ジョブ
 -   Functions
@@ -128,7 +130,7 @@ ILB ASE がドメイン名 *contoso.net* であり、アプリ名が *testapp* �
 
 ## <a name="functions-and-web-jobs"></a>関数と Web ジョブ ##
 
-関数と Web ジョブはどちらも SCM サイトによって異なりますが、アプリが ILB ASE 内にある場合でも、ブラウザーで SCM サイトに到達できる限り、ポータルでの使用がサポートされます。  ILB ASE で自己署名証明書を使用している場合は、ブラウザーがその証明書を信頼するようにできる必要があります。  IE と Microsoft Edge の場合には、証明書がコンピューターのトラスト ストア内に存在している必要があることになります。  Chrome を使用している場合は、ブラウザーで事前に証明書を受け入れたことになります。SCM サイトに直接到達することによるものと考えられます。  最も良い方法として、ブラウザーの信頼チェーンにある商用証明書を使用することをお勧めします。  
+関数と Web ジョブはどちらも SCM サイトによって異なりますが、アプリが ILB ASE 内にある場合でも、ブラウザーで SCM サイトに到達できる限り、ポータルでの使用がサポートされます。  ILB ASE で自己署名証明書を使用している場合は、ブラウザーがその証明書を信頼するようにできる必要があります。  IE と Edge の場合には、証明書がコンピューターのトラスト ストア内に存在している必要があることになります。  Chrome を使用している場合は、ブラウザーで事前に証明書を受け入れたことになります。SCM サイトに直接到達することによるものと考えられます。  最も良い方法として、ブラウザーの信頼チェーンにある商用証明書を使用することをお勧めします。  
 
 ## <a name="ase-ip-addresses"></a>ASE IP アドレス ##
 
@@ -140,6 +142,9 @@ ASE で認識されている必要のある IP アドレスがいくつかあり
 - **アプリに割り当てられた IP ベースの SSL アドレス**: 外部 ASE でのみ、かつ IP ベースの SSL が構成されている場合にのみ可能です。
 
 これらすべての IP アドレスは、ASE UI から Azure Portal の ASEv2 で簡単に確認できます。 ILB ASE が存在する場合は、ILB の IP が一覧表示されます。
+
+   > [!NOTE]
+   > ASE が稼働している限り、これらの IP アドレスは変更されません。  ASE が中断され、復元されると、ASE で使用されるアドレスが変更されます。 通常は、受信管理アクセスをブロックしたり、ASE 依存関係へのアクセスをブロックした場合に、ASE が中断されます。 
 
 ![IP アドレス][3]
 
@@ -165,7 +170,7 @@ NSG は、Azure Portal または PowerShell を使用して構成できます。
 
 既定の規則を使用すると、VNet 内の IP は ASE サブネットにアクセスできます。 別の既定の規則を使用すると、ロード バランサー (パブリック VIP とも呼ばれます) は ASE と通信できます。 既定の規則を確認するには、**[追加]** アイコンの横にある **[既定の規則]** を選択します。 NSG 規則が表示された後に他のすべてを拒否する規則を設定すると、VIP と ASE の間のトラフィックが妨げられます。 VNet の内部からトラフィックが来ないようにするには、受信を許可するための独自の規則を追加します。 **[任意]** の宛先と **\*** のポート範囲が含まれた AzureLoadBalancer に等しいソースを使用します。 NSG 規則は ASE サブネットに適用されるため、宛先を限定する必要はありません。
 
-アプリに IP アドレスを割り当てた場合は、必ずポートを開いたままにしてください。 ポートを確認するには、**[App Service 環境]** > **[IP アドレス]** を選択します。  
+アプリに IP アドレスを割り当てた場合は、必ずポートを開いたままにしてください。 ポートを確認するには、**[App Service 環境]** > **[IP アドレス]** を選択します。  
 
 次の送信規則に示されている項目は、最後の項目を除き、すべて必要です。 これらは、この記事の前の方で説明した ASE の依存関係へのネットワーク アクセスを有効にします。 それらのいずれかをブロックすると、ASE は動作を停止します。 リストの最後の項目は、ASE が VNet 内の他のリソースと通信できるようにします。
 
@@ -173,33 +178,12 @@ NSG は、Azure Portal または PowerShell を使用して構成できます。
 
 NSG が定義されたら、それを ASE が存在するサブネットに割り当てます。 ASE VNet またはサブネットを覚えていない場合は、ASE ポータル ページから確認できます。 NSG をサブネットに割り当てるには、サブネット UI に移動して、NSG を選択します。
 
-## <a name="routes"></a>ルート ##
+## <a name="routes"></a>Routes ##
 
-強制トンネリングとは何か、またどのように扱えばよいかを考えるうえで、ルートは重要な要素です。 Azure 仮想ネットワークでは、最長プレフィックス一致 (LPM) に基づいてルーティングが実行されます。 同じ LPM マッチの複数のルートが存在する場合は、そのルートが検出された経緯に応じて次の順序でルートが選択されます。
+VNet でルートを設定し、送信トラフィックがインターネットに直接送信されるのではなく、ExpressRoute ゲートウェイや仮想アプライアンスなどの他の場所に送信されるようにすることを強制トンネリングといいます。  ASE をこのように構成する必要がある場合には、「[強制トンネリングを使用した App Service Environment の構成][forcedtunnel]」のドキュメントを参照してください。  このドキュメントでは、ExpressRoute および強制トンネリングで使用できるオプションについて説明しています。
 
-- ユーザー定義のルート (UDR)
-- BGP のルート (ExpressRoute を使用している場合)
-- システム ルート
-
-仮想ネットワークにおけるルーティングの詳細については、[ユーザー定義ルートと IP 転送][UDRs]に関するページをご覧ください。
-
-ASE がシステムを管理するために使用する Azure SQL データベースには、ファイアウォールがあります。 これには、ASE パブリック VIP から発信するための通信が必要です。 ASE から SQL データベースへの接続は、ExpressRoute 接続経由で別の IP アドレスに送信される場合は拒否されます。
-
-受信管理要求への応答が ExpressRoute 経由で送信される場合、その応答アドレスは元の宛先とは異なります。 この不一致により、TCP 通信が停止します。
-
-VNet が ExpressRoute で構成されている間も ASE を機能させるために最も簡単な方法は次のとおりです。
-
--   _0.0.0.0/0_ をアドバタイズするように ExpressRoute を構成します。 既定では、すべての送信トラフィックをオンプレミスに強制的にトンネリングします。
--   UDR を作成します。 それを ASE が含まれるサブネットに _[0.0.0.0/0]_ のアドレス プレフィックスと _[インターネット]_ の次ホップの種類を指定して適用します。
-
-これらの 2 つの変更を行った場合、ASE サブネットから発信されたインターネット宛てのトラフィックは ExpressRoute を強制的に経由せず、ASE は機能します。 
-
-> [!IMPORTANT]
-> UDR に定義されているルートは、ExpressRoute 構成でアドバタイズされたどのルートよりも優先されるように、詳細にする必要があります。 前の例では、0.0.0.0/0 という広いアドレス範囲を使用しています。 これは、より具体的なアドレス範囲を使用するルート アドバタイズによって誤って上書きされる可能性があります。
->
-> ASE は、ルートをパブリックピアリング パスからプライベートピアリング パスにクロスアドバタイズする ExpressRoute 構成ではサポートされません。 パブリック ピアリングが構成された ExpressRoute 構成は、Microsoft からルート アドバタイズを受信します。 これらのアドバタイズには、Microsoft Azure の一連の広い IP アドレス範囲が含まれています。 これらのアドレス範囲がプライベートピアリング パスでクロスアドバタイズされた場合、ASE のサブネットからの送信ネットワーク パケットはすべて、顧客のオンプレミスのネットワーク インフラストラクチャに強制的にトンネリングされます。 現在、このネットワーク フローは ASE でサポートされていません。 この問題の 1 つの解決策として、パブリックピアリング パスからプライベートピアリング パスへのクロスアドバタイズ ルートの停止があります。
-
-UDR を作成するには、次の手順を実行します
+ポータルで ASE を作成するときに、ASE で作成されるサブネットのルート テーブルのセットも作成します。  これらのルートでは、単純に送信トラフィックを直接インターネットに送信します。  
+同じルートを手動で作成するには、次の手順に従います。
 
 1. Azure Portal にアクセスします。 **[ネットワーク]** > **[ルート テーブル]** を選択します。
 
@@ -217,17 +201,15 @@ UDR を作成するには、次の手順を実行します
 
     ![NSG とルート][7]
 
-### <a name="deploy-into-existing-azure-virtual-networks-that-are-integrated-with-expressroute"></a>ExpressRoute と統合された既存の Azure 仮想ネットワークにデプロイする ###
+## <a name="service-endpoints"></a>サービス エンドポイント ##
 
-ASE を ExpressRoute と統合された VNet にデプロイするには、ASE をデプロイするサブネットを事前に構成します。 次に、Resource Manager テンプレートを使用してデプロイします。 VNet で ExpressRoute が既に構成されている ASE を作成するには、次の手順を実行します。
+サービス エンドポイントを設けることで、マルチテナント サービスへのアクセスを、一連の Azure 仮想ネットワークとサブネットに制限することができます。 サービス エンドポイントについて詳しくは、「[仮想ネットワーク サービスのエンドポイント][serviceendpoints]」のドキュメントをご覧ください。 
 
-- ASE をホストするサブネットを作成します。
+リソースに対するサービス エンドポイントを有効にすると、他のどのルートよりも高い優先度でルートが作成されます。 トンネリングが強制された ASE との間でサービス エンドポイントを使用した場合、Azure SQL と Azure Storage の管理トラフィックについては、強制的にトンネリングされることはありません。 
 
-    > [!NOTE]
-    > サブネット内には ASE の他に何も存在できません。 将来の拡張を考慮に入れたアドレス空間を選択するようにしてください。 この設定を後で変更することはできません。 推奨されるサイズは、128 のアドレスを持つ `/25` です。
+サブネットに対し、Azure SQL インスタンスとのサービス エンドポイントを有効にすると、そのサブネットから接続されるすべての Azure SQL インスタンスについてサービス エンドポイントが有効になります。 同じサブネットから複数の Azure SQL インスタンスにアクセスする場合に、サービス エンドポイントの有効と無効を Azure SQL インスタンスごとに分けることはできません。 Azure Storage の動作は、Azure SQL のそれとは異なります。 Azure Storage とのサービス エンドポイントを有効にした場合、そのリソースには、自分のサブネットからしかアクセスできないようロックされますが、他の Azure Storage アカウントには、サービス エンドポイントが有効になっていなくても引き続きアクセスすることができます。  
 
-- 先に説明したように UDR (ルート テーブルなど) を作成し、それをサブネット上に設定します。
-- [Resource Manager テンプレートを使用した ASE の作成][MakeASEfromTemplate]に関するページに従って、Resource Manager テンプレートを使用して ASE を作成します。
+![サービス エンドポイント][8]
 
 <!--Image references-->
 [1]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow.png
@@ -237,6 +219,7 @@ ASE を ExpressRoute と統合された VNet にデプロイするには、ASE �
 [5]: ./media/network_considerations_with_an_app_service_environment/networkase-outboundnsg.png
 [6]: ./media/network_considerations_with_an_app_service_environment/networkase-udr.png
 [7]: ./media/network_considerations_with_an_app_service_environment/networkase-subnet.png
+[8]: ./media/network_considerations_with_an_app_service_environment/serviceendpoint.png
 
 <!--Links-->
 [Intro]: ./intro.md
@@ -246,7 +229,7 @@ ASE を ExpressRoute と統合された VNet にデプロイするには、ASE �
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
@@ -258,3 +241,6 @@ ASE を ExpressRoute と統合された VNet にデプロイするには、ASE �
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ASEManagement]: ./management-addresses.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[forcedtunnel]: ./forced-tunnel-support.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md

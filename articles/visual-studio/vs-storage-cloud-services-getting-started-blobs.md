@@ -2,23 +2,22 @@
 title: Blob Storage と Visual Studio 接続済みサービスの概要 (クラウド サービス) | Microsoft Docs
 description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio のクラウド サービス プロジェクトで Azure BLOB ストレージの使用を開始する方法について説明します。
 services: storage
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 1144a958-f75a-4466-bb21-320b7ae8f304
-ms.service: storage
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.custom: vs-azure
+ms.workload: azure-vs
+ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 7c13e7d1f48365e9c1a345b1770d16724c5ed6a1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d7f832164a41c2107a2cb9fdca3530b1f5d785cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253603"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス プロジェクト)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -65,7 +64,7 @@ Azure BLOB ストレージは、大量の非構造化データを格納して HT
 
 ## <a name="create-a-container-in-code"></a>コードでコンテナーを作成する
 > [!NOTE]
-> ASP.NET で Azure Storage への呼び出しを実行する API の一部は非同期です。 詳細については、「 [Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx) 」を参照してください。 次の例のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+> ASP.NET で Azure Storage への呼び出しを実行する API の一部は非同期です。 詳細については、「 [Async および Await を使用した非同期プログラミング](https://msdn.microsoft.com/library/hh191443.aspx) 」を参照してください。 次の例のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 > 
 > 
 

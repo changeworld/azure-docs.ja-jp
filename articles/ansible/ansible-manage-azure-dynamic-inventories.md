@@ -4,15 +4,16 @@ description: Ansible を使用して Azure の動的インベントリを管理�
 ms.service: ansible
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, 動的インベントリ
 author: tomarcher
-manager: routlaw
+manager: jeconnoc
 ms.author: tarcher
-ms.date: 01/14/2018
+ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 799be6d2bb521de38af952376bf8ee14a18846de
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1f19d5918d81acb76936edf8989a556335a3c0df
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261266"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Ansible を使用した Azure の動的インベントリの管理
 Ansible を使用して、(Azure などのクラウド ソースを含む) さまざまなソースから "*動的インベントリ*" にインベントリ情報をプルすることができます。 この記事では、[Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) を使用して、Ansible Azure 動的インベントリを構成します。この動的インベントリに 2 つの仮想マシンを作成した後、そのうちの 1 つの仮想マシンにタグを付け、タグを付けた仮想マシンに Nginx をインストールします。
@@ -25,11 +26,14 @@ Ansible を使用して、(Azure などのクラウド ソースを含む) さ�
 
 ## <a name="create-the-test-virtual-machines"></a>テスト用仮想マシンの作成
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
-1. [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) を開きます。
+1. [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。
 
 1. このチュートリアル用の仮想マシンを保持する Azure リソース グループを作成します。
+
+    > [!IMPORTANT]  
+    > この手順で作成する Azure リソース グループには、名前をすべて小文字で指定する必要があります。 それ以外の場合、動的インベントリの生成は失敗します。
 
     ```azurecli-interactive
     az group create --resource-group ansible-inventory-test-rg --location eastus
@@ -56,7 +60,7 @@ Ansible を使用して、(Azure などのクラウド ソースを含む) さ�
 ## <a name="tag-a-virtual-machine"></a>仮想マシンへのタグ付け
 [タグを使用して、Azure リソースをユーザー定義のカテゴリ別に整理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#azure-cli)できます。 
 
-次の [az resource tag](/cli/azure/resource?view=azure-cli-latest.md#az_resource_tag) コマンドを入力して、仮想マシン `ansible-inventory-test-vm1` にキー `nginx` を使用してタグを付けます。
+次の [az resource tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) コマンドを入力して、仮想マシン `ansible-inventory-test-vm1` にキー `nginx` を使用してタグを付けます。
 
 ```azurecli-interactive
 az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
@@ -133,25 +137,26 @@ ansible-inventory-test-vm1 | SUCCESS => {
 1. 新しく作成した `nginx.yml` ファイルに次のコードを挿入します。
 
     ```yml
+    ---
     - name: Install and start Nginx on an Azure virtual machine
     hosts: azure
     become: yes
     tasks:
     - name: install nginx
-        apt: pkg=nginx state=installed
-        notify:
-        - start nginx
+      apt: pkg=nginx state=installed
+      notify:
+      - start nginx
 
     handlers:
     - name: start nginx
-        service: name=nginx state=started
+      service: name=nginx state=started
     ```
 
 1. `nginx.yml` プレイブックを実行します。
 
-  ```azurecli-interactive
-  ansible-playbook -i azure_rm.py nginx.yml
-  ```
+    ```azurecli-interactive
+    ansible-playbook -i azure_rm.py nginx.yml
+    ```
 
 1. プレイブックを実行すると、次の出力のような結果が表示されます。
 
@@ -174,7 +179,7 @@ ansible-inventory-test-vm1 | SUCCESS => {
 ## <a name="test-nginx-installation"></a>Nginx のインストールのテスト
 このセクションでは、Nginx が仮想マシンにインストールされているかどうかをテストする 1 つの方法を示します。
 
-1. [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_ip_addresses) コマンドを使用して、`ansible-inventory-test-vm1` 仮想マシンの IP アドレスを取得します。 次に、返された値 (仮想マシンの IP アドレス) を、仮想マシンに接続するための SSH コマンドのパラメーターとして使用します。
+1. [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) コマンドを使用して、`ansible-inventory-test-vm1` 仮想マシンの IP アドレスを取得します。 次に、返された値 (仮想マシンの IP アドレス) を、仮想マシンに接続するための SSH コマンドのパラメーターとして使用します。
 
     ```azurecli-interactive
     ssh `az vm list-ip-addresses \
@@ -182,7 +187,7 @@ ansible-inventory-test-vm1 | SUCCESS => {
     --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
     ```
 
-1. [nginx -v](https://nginx.org/en/docs/switches.html) コマンドは、通常、Nginx バージョンを印刷するために使用します。 また、このコマンドは、Nginx がインストールされているかどうかを判断するためにも使用できます。 `ansible-inventory-test-vm1` 仮想マシンに接続しているときにこのコマンドを入力します。
+1. `ansible-inventory-test-vm1` の仮想マシンに接続されている間に、[nginx -v](https://nginx.org/en/docs/switches.html) コマンドを実行して Nginx がインストールされていることを判定します。
 
     ```azurecli-interactive
     nginx -v

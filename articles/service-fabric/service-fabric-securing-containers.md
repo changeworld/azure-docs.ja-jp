@@ -3,22 +3,23 @@ title: Azure Service Fabric で実行されているコンテナーに証明書�
 description: Service Fabric コンテナー サービスに証明書ファイルをインポートする方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: a26ebbe9395fd10563b32a27a66ed2e1595a00a3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: twhitney, subramar
+ms.openlocfilehash: d49c16741f581b2ad09dc173e8380fdf77391dbe
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299063"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Service Fabric で実行されているコンテナーに証明書ファイルをインポートする
 

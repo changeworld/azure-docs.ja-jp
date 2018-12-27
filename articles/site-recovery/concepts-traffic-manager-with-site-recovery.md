@@ -1,19 +1,19 @@
 ---
-title: "Azure Traffic Manager と Azure Site Recovery | Microsoft Docs"
-description: "Azure Traffic Manager と Azure Site Recovery を使ってディザスター リカバリーと移行を行う方法を説明します"
+title: Azure Traffic Manager と Azure Site Recovery | Microsoft Docs
+description: Azure Traffic Manager と Azure Site Recovery を使ってディザスター リカバリーと移行を行う方法を説明します
 services: site-recovery
-documentationcenter: 
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
-ms.author: manayar
-ms.openlocfilehash: 8305a354588875926cab52a55d99d3a29bcfb509
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.date: 11/27/2018
+ms.author: mayg
+ms.openlocfilehash: ca898f36b09d09cb7e0d67d373c54c46e15e0264
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842566"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager と Azure Site Recovery
 

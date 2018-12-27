@@ -1,23 +1,24 @@
 ---
-title: "Azure Cloud Services 定義スキーマ (.cscfg ファイル) | Microsoft Docs"
-ms.custom: 
+title: Azure Cloud Services 定義スキーマ (.cscfg ファイル) | Microsoft Docs
+services: cloud-services
+ms.custom: ''
 ms.date: 12/07/2016
-ms.prod: azure
-ms.reviewer: 
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 3ddc7fea-3339-4fc0-bdf9-853c32b25f69
-caps.latest.revision: "35"
-author: thraka
-ms.author: adegeo
+caps.latest.revision: 35
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: bba02688e443d4b5bde89691ca0b74b3597b453a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96df87a0d49296280140e392509c0d735f904957
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007024"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services 構成のスキーマ (.cscfg ファイル)
 サービス構成ファイルは、サービスのロールごとに配置するロール インスタンスの数、すべての構成設定の値、ロールに関連付けられているすべての証明書のサムプリントを指定します。 サービスが仮想ネットワークの一部である場合は、仮想ネットワーク構成ファイルだけでなく、サービス構成ファイルでネットワークの構成情報を指定してください。 サービス構成ファイルの既定の拡張子は .cscfg です。
@@ -59,7 +60,7 @@ ms.lasthandoff: 10/11/2017
 
 以下の表に、`ServiceConfiguration` 要素の属性を示します。 すべての属性値は、文字列型です。
 
-| Attribute | Description |
+| Attribute | 説明 |
 | --------- | ----------- |
 |serviceName|必須。 クラウド サービスの名前。 ここで与えられた名前は、サービス定義ファイルで指定された名前と一致する必要があります。|
 |osFamily|省略可能。 クラウド サービスのロール インスタンスで実行されるゲスト OS を指定します。 サポートされるゲスト OS のリリース版については、「[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)」をご覧ください。<br /><br /> `osFamily` 値を含めず、特定のゲスト OS バージョンについて `osVersion` 属性を設定していない場合、既定値 1 が使用されます。|

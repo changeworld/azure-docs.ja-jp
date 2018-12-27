@@ -1,26 +1,31 @@
 ---
-title: "Azure SQL データ同期 (プレビュー) のベスト プラクティス | Microsoft Docs"
-description: "Azure SQL データ同期 (プレビュー) の構成と実行に関するベスト プラクティスについて説明します。"
+title: Azure SQL データ同期のベスト プラクティス | Microsoft Docs
+description: Azure SQL データ同期の構成と実行に関するベスト プラクティスについて説明します。
 services: sql-database
-ms.date: 11/13/2017
-ms.topic: article
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: allenwux
+ms.author: xiwu
+ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 1c8ad4b318d52b5cb6af284b3304cfa7ad35522b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.date: 10/22/2018
+ms.openlocfilehash: fa5ce7264fd003e0a49d6408acae070577879cdd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686621"
 ---
-# <a name="best-practices-for-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) のベスト プラクティス 
+# <a name="best-practices-for-sql-data-sync"></a>SQL データ同期のベスト プラクティス 
 
-この記事では、Azure SQL データ同期 (プレビュー) のベスト プラクティスについて説明します。
+この記事では、Azure SQL データ同期のベスト プラクティスについて説明します。
 
-Azure SQL データ同期 (プレビュー) の概要については、「[SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)」をご覧ください。
+SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](sql-database-sync-data.md)に関する記事を参照してください。
 
-## <a name="security-and-reliability">セキュリティと信頼性</a>
+## <a name="security-and-reliability"></a>セキュリティと信頼性
 
 ### <a name="client-agent"></a>クライアント エージェント
 
@@ -43,16 +48,16 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 -   フェーズごとに資格情報を変更します (たとえば、セットアップには *credentials1* を使用し、継続的な同期には *credentials2* を使用します)。  
 -   資格情報のアクセス許可を変更します (つまり、同期の設定後にアクセス許可を変更します)。
 
-## <a name="setup"></a>[Setup]
+## <a name="setup"></a>セットアップ
 
 ### <a name="database-considerations-and-constraints"></a>データベースの考慮事項と制約
 
 #### <a name="sql-database-instance-size"></a>SQL Database インスタンスのサイズ
 
-新しい SQL Database インスタンスを作成するときは、デプロイするデータベースよりも常に大きいサイズになるように最大サイズを設定します。 デプロイするデータベースより大きい最大サイズを設定していない場合、同期は失敗します。 SQL データ同期 (プレビュー) では自動拡張が行われませんが、`ALTER DATABASE` コマンドを実行して、作成後にデータベースのサイズを増やすことができます。 SQL Database インスタンスのサイズの制限を超えないようにしてください。
+新しい SQL Database インスタンスを作成するときは、デプロイするデータベースよりも常に大きいサイズになるように最大サイズを設定します。 デプロイするデータベースより大きい最大サイズを設定していない場合、同期は失敗します。 SQL データ同期では自動拡張が行われませんが、`ALTER DATABASE` コマンドを実行して、作成後にデータベースのサイズを増やすことができます。 SQL Database インスタンスのサイズの制限を超えないようにしてください。
 
 > [!IMPORTANT]
-> SQL データ同期 (プレビュー) では、各データベースで追加のメタデータを格納します。 必要な領域を計算するときに、このメタデータを必ず考慮してください。 追加されるオーバーヘッドの量は、テーブルの幅 (たとえば、幅が狭いテーブルでは必要なオーバーヘッドが増えます) とトラフィックの量に関係しています。
+> SQL データ同期では、各データベースで追加のメタデータを格納します。 必要な領域を計算するときに、このメタデータを必ず考慮してください。 追加されるオーバーヘッドの量は、テーブルの幅 (たとえば、幅が狭いテーブルでは必要なオーバーヘッドが増えます) とトラフィックの量に関係しています。
 
 ### <a name="table-considerations-and-constraints"></a>テーブルの考慮事項と制約
 
@@ -62,32 +67,36 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 
 #### <a name="primary-keys"></a>主キー
 
-同期グループ内の各テーブルには主キーが必要です。 SQL データ同期 (プレビュー) サービスは、主キーを持たないテーブルと同期できません。
+同期グループ内の各テーブルには主キーが必要です。 SQL データ同期サービスは、主キーを持たないテーブルと同期できません。
 
-運用環境で SQL データ同期 (プレビュー) を使用する前に、初期同期と継続的な同期のパフォーマンスをテストしてください。
+運用環境で SQL データ同期を使用する前に、初期同期と継続的な同期のパフォーマンスをテストしてください。
+
+#### <a name="empty-tables-provide-the-best-performance"></a>空のテーブルが最高のパフォーマンスを提供する
+
+初期化時には空のテーブルが最高のパフォーマンスを提供します。 ターゲット テーブルが空の場合、データ同期は一括挿入を使用してデータを読み込みます。 それ以外の場合、データ同期は行単位の比較と挿入を行って競合を確認します。 ただし、パフォーマンスが重要でない場合は、既にデータが含まれているテーブル間の同期を設定することができます。
 
 ### <a name="provisioning-destination-databases"></a>同期先データベースをプロビジョニングする
 
-SQL データ同期 (プレビュー) は、データベースの基本的な自動プロビジョニングを提供します。
+SQL データ同期は、データベースの基本的な自動プロビジョニングを提供します。
 
-このセクションでは、SQL データ同期 (プレビュー) のプロビジョニングの制限事項について説明します。
+このセクションでは、SQL データ同期のプロビジョニングの制限事項について説明します。
 
 #### <a name="autoprovisioning-limitations"></a>自動プロビジョニングの制限事項
 
-SQL データ同期 (プレビュー) には、自動プロビジョニングについて次のような制限事項があります。
+SQL データ同期には、自動プロビジョニングについて次のような制限事項があります。
 
--   選択できるのは同期先テーブルに作成された列のみです。  
-    同期グループに含まれていない列はすべて、同期先テーブルにプロビジョニングされません。
--   選択した列のインデックスだけが作成されます。  
-    同期元テーブルのインデックスに同期グループに含まれていない列がある場合、それらのインデックスは同期先テーブルにプロビジョニングされません。  
+-   選択できるのは同期先テーブルに作成された列のみです。 同期グループに含まれていない列はすべて、同期先テーブルにプロビジョニングされません。
+-   選択した列のインデックスだけが作成されます。 同期元テーブルのインデックスに同期グループに含まれていない列がある場合、それらのインデックスは同期先テーブルにプロビジョニングされません。  
 -   XML 型の列のインデックスはプロビジョニングされません。  
 -   CHECK 制約はプロビジョニングされません。  
 -   同期元テーブルの既存のトリガーはプロビジョニングされません。  
 -   ビューとストアド プロシージャは同期先データベースに作成されません。
+-   外部キー制約の UPDATE CASCADE および ON DELETE CASCADE アクションは、同期先テーブルに再作成されません。
+-   有効桁数が 28 を超える decimal 列または numeric 列がある場合、SQL データ同期では同期中に変換オーバーフローの問題が発生する可能性があります。decimal 列または numeric 列の有効桁数は 28 未満に制限することをお勧めします。
 
 #### <a name="recommendations"></a>Recommendations
 
--   サービスをテストする場合にのみ、SQL データ同期 (プレビュー) の自動プロビジョニング機能を使用します。  
+-   サービスをテストする場合にのみ、SQL データ同期の自動プロビジョニング機能を使用します。  
 -   運用環境では、データベース スキーマをプロビジョニングします。
 
 ### <a name="locate-hub"></a>ハブ データベースを配置する場所
@@ -113,7 +122,7 @@ SQL データ同期 (プレビュー) には、自動プロビジョニングに
 
 #### <a name="how-initial-sync-works"></a>初期同期のしくみ
 
-同期グループを作成する場合、最初は 1 つのデータベースのデータだけを使用します。 複数のデータベースにデータがあると、SQL データ同期 (プレビュー) は、解決が必要な競合としてそれぞれの行を扱います。 この競合の解決のために、初期同期に時間がかかります。 複数のデータベースにデータがあると、データベースのサイズによって、初期同期に数日や数か月かかる場合があります。
+同期グループを作成する場合、最初は 1 つのデータベースのデータだけを使用します。 複数のデータベースにデータがあると、SQL データ同期は、解決が必要な競合としてそれぞれの行を扱います。 この競合の解決のために、初期同期に時間がかかります。 複数のデータベースにデータがあると、データベースのサイズによって、初期同期に数日や数か月かかる場合があります。
 
 複数のデータベースが別々のデータセンターにある場合、それぞれの行が異なるデータセンター間を行き来することになります。 これにより、初期同期のコストが増加します。
 
@@ -207,17 +216,21 @@ SQL データ同期 (プレビュー) には、自動プロビジョニングに
 
 データベースを削除した後、変更のいずれかをデプロイする前に同期グループを編集すると、いずれか一方の操作が失敗します。 ポータルのインターフェイスが不整合な状態になる場合があります。 その場合は、ページを更新することで正しい状態を復元できます。
 
-## <a name="next-steps"></a>次のステップ
-SQL データ同期 (プレビュー) の詳細については、以下をご覧ください。
+## <a name="next-steps"></a>次の手順
+SQL データ同期の詳細については、以下を参照してください。
 
--   [Azure SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
--   [Azure SQL データ同期 (プレビュー) をセットアップする](sql-database-get-started-sql-data-sync.md)
--   [OMS Log Analytics を使用した Azure SQL データ同期 (プレビュー) の監視](sql-database-sync-monitor-oms.md)
--   [Azure SQL データ同期 (プレビュー) に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)  
--   SQL データ同期 (プレビュー) の構成方法を示した完全な PowerShell の例:  
-    -   [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)  
-    -   [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [SQL データ同期 (プレビュー) の REST API ドキュメントのダウンロード](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
+-   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
+-   データ同期の設定
+    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
+    - PowerShell の場合
+        -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](sql-database-data-sync-agent.md)
+-   監視 - [Log Analytics による SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
+-   同期スキーマの更新
+    -   Transact-SQL の場合 - [Azure SQL データ同期内でスキーマ変更のレプリケートを自動化する](sql-database-update-sync-schema.md)
+    -   PowerShell の場合 - [PowerShell を使用して、既存の同期グループの同期スキーマを更新する](scripts/sql-database-sync-update-schema.md)
 
 SQL Database の詳細については、以下をご覧ください。
 

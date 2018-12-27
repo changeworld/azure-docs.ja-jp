@@ -1,8 +1,8 @@
 ---
-title: "Web アプリケーション パフォーマンスの監視 - Azure Application Insights | Microsoft Docs"
-description: "開発運用サイクルへの Application Insights の組み込み"
+title: Web アプリケーション パフォーマンスの監視 - Azure Application Insights | Microsoft Docs
+description: 開発運用サイクルへの Application Insights の組み込み
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 24e249bb515c509f2fba1f943ac5e23a1ea9965e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ae033b944e93fe90392af9b17de883d791d3e4dc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958604"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights を使用した Web アプリおよびサービスの詳細な診断
 ## <a name="why-do-i-need-application-insights"></a>Application Insights が必要な理由
@@ -27,7 +28,7 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 
 最新のアプリケーションでは、実行中の監視が不可欠です。 最も重要なのは、ほとんどの顧客よりも早くエラーを検出することです。 致命的なものでなくても、速度の低下を招いたり、ユーザーに不都合をもたらしたりする可能性のあるパフォーマンスの問題を検出して修正することも必要です。 また、システムが期待どおりに動作している場合は、ユーザーがシステムを使用して何をしているのか、つまり、最新機能を使用しているか、 うまく使用できているか、などを知りたいと思うでしょう。
 
-最新の Web アプリケーションは、新機能または機能強化をリリースし、それがユーザー環境でどの程度正常に動作しているかを確認して、その知識に基づいて次の開発の強化を計画するという、継続的な提供サイクルの中で開発されます。 このサイクルで重要なのは観察のフェーズです。 Application Insights は、Web アプリケーションのパフォーマンスと使用状況を監視するためのツールを提供します。
+最新の Web アプリケーションは、新機能または機能強化をリリースし、それがユーザー環境でどの程度正常に動作しているかを確認して、その知識に基づいて次の開発の強化を計画するという、継続的デリバリーのサイクルの中で開発されます。 このサイクルで重要なのは観察のフェーズです。 Application Insights は、Web アプリケーションのパフォーマンスと使用状況を監視するためのツールを提供します。
 
 このプロセスで最も重要なのは診断です。 アプリケーションがうまく動かないと、ビジネスの損失が発生します。 したがって、監視フレームワークの最も重要な役割は、エラーを確実に検出してすぐに通知し、問題を診断するために必要な情報を提供することです。 これこそが Application Insights の機能です。
 
@@ -151,7 +152,7 @@ Log4N、NLog、System.Diagnostics.Trace などのトレース ログ記録フレ
 デバッグ中は、開発用コンピューターにテレメトリを保存し、ポータルに送信することなく Visual Studio でそれを表示するオプションが用意されています。 このローカル オプションにより、デバッグと運用環境のテレメトリの混合を回避できます。
 
 ### <a name="build-annotations"></a>注釈の作成
-Visual Studio Team Services を使用してアプリのビルドとデプロイを行う場合、デプロイの注釈がポータルのグラフに表示されます。 お使いの最新のリリースがメトリックに影響を与える場合、これは明白になります。
+Azure DevOps を使用してアプリのビルドとデプロイを行う場合、デプロイの注釈がポータルのグラフに表示されます。 お使いの最新のリリースがメトリックに影響を与える場合、これは明白になります。
 
 ![注釈の作成](./media/app-insights-devops/070.png)
 
@@ -168,10 +169,10 @@ Application Insights では、アラートが発生したときに、作業項�
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Application Insights の操作は簡単です。 主なオプションは次のとおりです。
 
-* 既に実行中の Web アプリをインストルメント化します。 これにより、すべての組み込みのパフォーマンス テレメトリが提供されます。 [Java](app-insights-java-live.md)、[IIS サーバー](app-insights-monitor-performance-live-website-now.md)のほか、[Azure Web Apps](app-insights-azure.md) でも使用できます。
+* 既に実行中の Web アプリをインストルメント化します。 これにより、すべての組み込みのパフォーマンス テレメトリが提供されます。 [Java](app-insights-java-live.md)、[IIS サーバー](app-insights-monitor-performance-live-website-now.md)のほか、[Azure Web Apps](app-insights-overview.md) でも使用できます。
 * 開発中のプロジェクトをインストルメント化します。 これは、[ASP.NET](app-insights-asp-net.md) または [Java](app-insights-java-get-started.md) アプリだけでなく、[Node.js](app-insights-nodejs.md) や[他の種類](app-insights-platforms.md)のホストでも実行できます。 
 * 短いコード スニペットを追加して、 [任意の Web ページ](app-insights-javascript.md) をインストルメント化します。
 

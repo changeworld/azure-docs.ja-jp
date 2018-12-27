@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23109850"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>StorSimple Snapshot Manager を使用したボリューム グループの作成と管理
 ## <a name="overview"></a>概要
@@ -106,7 +107,7 @@ ms.lasthandoff: 04/05/2018
 #### <a name="to-edit-a-volume-group"></a>ボリューム グループを編集するには
 1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 2. **[スコープ]** ウィンドウで、**[ボリューム グループ]** ノードを展開し、ボリューム グループ名を右クリックして、**[編集]** をクリックします。
-3. **[ボリューム グループの作成]** ダイアログ ボックスが表示されます。 **[名前]**、**[アプリケーション]**、**[ボリューム]** エントリは変更できます。
+3. [ボリューム グループの作成] ダイアログ ボックスが表示されます。 **[名前]**、**[アプリケーション]**、**[ボリューム]** エントリは変更できます。
 4. **[OK]** をクリックして変更を保存します。
 
 ## <a name="delete-a-volume-group"></a>ボリューム グループの削除

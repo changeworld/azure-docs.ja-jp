@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ Update 5 リリース ノート | Microsoft Docs"
-description: "StorSimple 8000 シリーズ Update 5 における新機能、問題、回避策について説明します。"
+title: StorSimple 8000 シリーズ Update 5 リリース ノート | Microsoft Docs
+description: StorSimple 8000 シリーズ Update 5 における新機能、問題、回避策について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/13/2017
+ms.locfileid: "24518921"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 シリーズ Update 5 リリース ノート
 

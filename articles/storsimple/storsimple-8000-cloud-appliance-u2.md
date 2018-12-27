@@ -1,12 +1,12 @@
 ---
 title: StorSimple Cloud Appliance Update 3 | Microsoft Docs
-description: "Microsoft Azure Virtual Network で StorSimple Cloud Appliance を作成、デプロイ、管理する方法を説明します。 StorSimple Update 3 以降が対象となります。"
+description: Microsoft Azure Virtual Network で StorSimple Cloud Appliance を作成、デプロイ、管理する方法を説明します。 StorSimple Update 3 以降が対象となります。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 4d47b5426da5d857085991767faa5fb227476408
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 33be58ae3ac5fcc8d0b35b240f9f378ccce134cc
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387686"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
 
@@ -43,7 +44,7 @@ StorSimple Cloud Appliance は、Standard 8010 (以前の 1100) と Premium 8020
 | --- | --- | --- |
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 コア、7 GB メモリ)| Standard_DS3 (4 コア、14 GB メモリ)|
-| **利用可能なリージョン** |すべての Azure リージョン |Premium Storage と DS3 Azure VM をサポートする Azure リージョン<br></br>[こちらの表](https://azure.microsoft.com/regions/services/)を参照し、該当するリージョンで**「Virtual Machines」の「DS シリーズ」**と**「Storage」の「Disk Storage」**の両方が利用できるかどうかを確認してください。 |
+| **利用可能なリージョン** |すべての Azure リージョン |Premium Storage と DS3 Azure VM をサポートする Azure リージョン<br></br>[こちらの表](https://azure.microsoft.com/regions/services/)を参照し、該当するリージョンで **「Virtual Machines」の「DS シリーズ」** と **「Storage」の「Disk Storage」** の両方が利用できるかどうかを確認してください。 |
 | **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/common/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../virtual-machines/windows/premium-storage.md)方法を参照 |
 | **ワークロードのガイダンス** |バックアップからファイルを項目レベルで取得 |クラウドの開発とテストのシナリオ <br></br>短い待ち時間と高いパフォーマンスが求められるワークロード<br></br>障害復旧のためのセカンダリ デバイス |
 
@@ -264,7 +265,7 @@ DR の前提条件:
 ## <a name="troubleshoot-internet-connectivity-errors"></a>インターネット接続エラーのトラブルシューティング
 クラウド アプライアンスを作成する際、インターネットに接続されていないと作成手順は失敗します。 インターネット接続エラーのトラブルシューティングを行うには、Azure Portal で次の手順を実行します。
 
-1. [Azure で Windows Server 2012 仮想マシンを作成](/articles/virtual-machines/windows/quick-create-portal.md)します。 この仮想マシンでは、クラウド アプライアンスで使用されているのと同じストレージ アカウント、VNet、およびサブネットを使用してください。 同じストレージ アカウント、VNet、およびサブネットを使用している既存の Windows Server ホストが Azure にある場合は、インターネット接続のトラブルシューティングにも使用できます。
+1. [Azure portal で Windows 仮想マシンを作成します](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)。 この仮想マシンでは、クラウド アプライアンスで使用されているのと同じストレージ アカウント、VNet、およびサブネットを使用してください。 同じストレージ アカウント、VNet、およびサブネットを使用している既存の Windows Server ホストが Azure にある場合は、インターネット接続のトラブルシューティングにも使用できます。
 2. 前の手順で作成した仮想マシンにリモート ログインします。
 3. 仮想マシン内でコマンド ウィンドウを開きます (Win + R キーを押し、「 `cmd`」と入力します)。
 4. プロンプトで次のコマンドを実行します。

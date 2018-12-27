@@ -1,8 +1,21 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 956a374a66c765168f0c872999611318e1b7bdac
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166191"
+---
 <!--author=SharS last changed: 9/17/15-->
 
 
 #### <a name="to-create-a-new-service"></a>新しいサービスを作成するには
-1. Microsoft アカウントの資格情報を使用して、 [Microsoft Azure Government ポータル](https://portal.azure.us/)にログオンします。
+1. Microsoft アカウントの資格情報を使用し、[Microsoft Azure Government ポータル](https://portal.azure.us/)にサインインします。
 2. Government ポータルで **+** をクリックし、Marketplace で **[すべて表示]** をクリックします。 "_StorSimple 物理_" を検索します。 **[StorSimple 物理デバイス シリーズ]** を選択してクリックし、**[作成]** をクリックします。 または、Government ポータルで **+** をクリックし、**[ストレージ]** で **[StorSimple 物理デバイス シリーズ]** をクリックします。
 3. **[StorSimple デバイス マネージャー]** ブレードで、次の操作を実行します。
    

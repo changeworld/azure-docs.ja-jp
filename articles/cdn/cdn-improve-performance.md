@@ -1,44 +1,50 @@
 ---
-title: "Azure CDN でのファイル圧縮によるパフォーマンスの向上 | Microsoft Docs"
-description: "Azure CDN でファイルを圧縮して、ファイル転送速度とページ読み込みパフォーマンスを向上させる方法を説明します。"
+title: Azure CDN でのファイル圧縮によるパフォーマンスの向上 | Microsoft Docs
+description: Azure CDN でファイルを圧縮して、ファイル転送速度とページ読み込みパフォーマンスを向上させる方法を説明します。
 services: cdn
-documentationcenter: 
-author: dksimpson
-manager: akucer
-editor: 
+documentationcenter: ''
+author: mdgattuso
+manager: danielgi
+editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
-ms.author: mazha
-ms.openlocfilehash: 743d1db803cdb58ae8fa37430ccffa10ca003f93
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.date: 09/13/2018
+ms.author: magattus
+ms.openlocfilehash: 2468462170f970cd597dd1296417d5b93a88c2ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997275"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 ファイル圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるため、ファイルの転送速度とページ読み込みのパフォーマンスを向上させることができる簡単で効率的な方法です。 ファイル圧縮により、帯域幅のコストを軽減し、ユーザーへの応答を改善することができます。
 
 ファイル圧縮を有効にするには、次の 2 つの方法があります。
 
-- 配信元サーバーで圧縮を有効にします。 この方法では、CDN は圧縮ファイルを受け渡し、要求したクライアントに配信します。
-- CDN エッジ サーバーで直接、圧縮を有効にします。 この方法では、配信元サーバーで圧縮されていない場合でも、CDN でファイルが圧縮され、エンド ユーザーに渡されます。
+- 配信元サーバーで圧縮を有効にします。 この方法では、Azure CDN は圧縮ファイルを受け渡し、要求したクライアントに配信します。
+- CDN POP サーバーで直接、圧縮を有効にします (*即時圧縮*)。 この方法では、配信元サーバーで圧縮されていない場合でも、CDN でファイルが圧縮され、エンド ユーザーに渡されます。
 
 > [!IMPORTANT]
-> CDN 構成の変更がネットワーク全体に反映されるまでには時間がかかる可能性があります。 **Azure CDN from Akamai** プロファイルの場合、通常、反映は 1 分以内で完了します。  **Azure CDN from Verizon** プロファイルの場合、通常、反映は 90 分以内で完了します。 今回初めて CDN エンドポイントの圧縮を設定した場合は、トラブルシューティングの前に、圧縮設定が確実に POP に反映されるように 1 ～ 2 時間の待機時間を検討してください。
+> Azure CDN 構成の変更がネットワーク全体に反映されるまでには時間がかかる可能性があります。 
+- **Azure CDN Standard from Microsoft** プロファイルの場合、通常、反映は 10 分以内で完了します。 
+- **Azure CDN Standard from Akamai** プロファイルの場合、通常、反映は 1 分以内で完了します。 
+- **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 10 分で完了します。 
+>
+> 今回初めて CDN エンドポイントの圧縮を設定した場合は、トラブルシューティングの前に、圧縮設定が確実に POP に反映されるように 1 ～ 2 時間の待機時間を検討してください。
 > 
 > 
 
 ## <a name="enabling-compression"></a>圧縮の有効化
 Standard および Premium CDN レベルでは同じ圧縮機能が提供されますが、ユーザー インターフェイスは異なります。 Standard と Premium CDN レベルの違いの詳細については、[Azure CDN の概要](cdn-overview.md)に関するページを参照してください。
 
-### <a name="standard-tier"></a>Standard レベル
+### <a name="standard-cdn-profiles"></a>Standard CDN プロファイル 
 > [!NOTE]
-> このセクションは、**Azure CDN Standard from Verizon** プロファイルと **Azure CDN Standard from Akamai** プロファイルに適用されます。
+> このセクションは、**Azure CDN Standard from Microsoft** プロファイル、**Azure CDN Standard from Verizon** プロファイル、および **Azure CDN Standard from Akamai** プロファイルに適用されます。
 > 
 > 
 
@@ -60,10 +66,14 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
    > [!TIP]
    > 圧縮形式に圧縮を適用することは可能ですが、推奨されません。 たとえば、ZIP、MP3、MP4、JPG などの形式です。
    > 
+   
+   > [!NOTE]
+   > 現在、MIME の種類の既定一覧を変更することは、Microsoft の Azure CDN Standard でサポートされていません。
+   > 
  
 5. 変更後、**[保存]** を選択します。
 
-### <a name="premium-tier"></a>Premium レベル
+### <a name="premium-cdn-profiles"></a>Premium CDN プロファイル
 > [!NOTE]
 > このセクションは、**Azure CDN Premium from Verizon** プロファイルだけに適用されます。
 > 
@@ -90,9 +100,22 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 
 ## <a name="compression-rules"></a>圧縮のルール
 
-### <a name="azure-cdn-from-verizon-profiles-both-standard-and-premium-tiers"></a>Azure CDN from Verizon プロファイル (Standard と Premium の両レベル)
+### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Azure CDN Standard from Microsoft プロファイル
 
-**Azure CDN from Verizon** プロファイルの場合、条件を満たすファイルのみが圧縮されます。 圧縮を実行可能にするためのファイルの条件は、次のとおりです。
+**Azure CDN Standard from Microsoft** プロファイルの場合、対象ファイルのみが圧縮されます。 圧縮対象とするには、ファイルは次の条件を満たす必要があります。- [圧縮用に構成されている](#enabling-compression) MIME の種類であること
+- 1 KB より大きく 8 MB より小さいこと
+
+これらのプロファイルでは、次の圧縮エンコードがサポートされています。
+- gzip (GNU zip)
+- brotli 
+ 
+要求で複数の圧縮の種類がサポートされている場合、brotli 圧縮が優先されます。
+
+アセットの要求で gzip 圧縮が指定され、要求がキャッシュ ミスになった場合、Azure CDN は POP サーバー上で直接アセットの gzip 圧縮を行います。 その後、圧縮ファイルがキャッシュから提供されます。
+
+### <a name="azure-cdn-from-verizon-profiles"></a>Azure CDN from Verizon プロファイル
+
+**Azure CDN Standard from Verizon** プロファイルと **Azure CDN Premium from Verizon** プロファイルについては、条件を満たすファイルのみが圧縮されます。 圧縮を実行可能にするためのファイルの条件は、次のとおりです。
 - 128 バイトより大きい
 - 1 MB 未満
  
@@ -104,11 +127,11 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
  
 要求で複数の圧縮の種類がサポートされている場合、それらの圧縮の種類は brotli 圧縮よりも優先されます。
 
-アセットの要求で brotli 圧縮が指定され (`Accept-Encoding: br` HTTP ヘッダー)、要求がキャッシュ ミスになった場合、Azure CDN は元のサーバー上でアセットの brotli 圧縮を行います。 その後、圧縮ファイルがキャッシュから直接提供されます。
+アセットの要求で brotli 圧縮が指定され (HTTP ヘッダーは `Accept-Encoding: br`)、要求がキャッシュ ミスになった場合、Azure CDN は POP サーバー上で直接アセットの brotli 圧縮を行います。 その後、圧縮ファイルがキャッシュから提供されます。
 
-### <a name="azure-cdn-from-akamai-profiles"></a>Azure CDN from Akamai プロファイル
+### <a name="azure-cdn-standard-from-akamai-profiles"></a>Azure CDN Standard from Akamai プロファイル
 
-**Azure CDN from Akamai** プロファイルの場合、すべてのファイルが圧縮対象です。 ただし、ファイルは[圧縮用に構成されている](#enabling-compression) MIME の種類である必要があります。
+**Azure CDN Standard from Akamai** プロファイルの場合、すべてのファイルが圧縮対象です。 ただし、ファイルは[圧縮用に構成されている](#enabling-compression) MIME の種類である必要があります。
 
 これらのプロファイルでは、gzip 圧縮エンコーディングのみがサポートされています。 プロファイル エンドポイントが gzip エンコーディングのファイルを要求する場合は、クライアントの要求に関係なく、常に配信元からの要求です。 
 
@@ -130,7 +153,7 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 | --- | --- | --- | --- |
 | 圧縮 |圧縮 |圧縮 |CDN が、サポートされている形式間のトランスコードを実行します。 |
 | 圧縮 |非圧縮 |圧縮 |CDN が圧縮を実行します。 |
-| 圧縮 |キャッシュなし |圧縮 |配信元から非圧縮ファイルが返された場合、CDN が圧縮を実行します。 <br/>**Azure CDN from Verizon** は、最初の要求で圧縮されていないファイルを渡し、後続の要求のためにファイルを圧縮してキャッシュします。 <br/>Cache-Control 付きのファイル: no-cache ヘッダーの場合、圧縮は実行されません。 |
+| 圧縮 |キャッシュなし |圧縮 |配信元から非圧縮ファイルが返された場合、CDN が圧縮を実行します。 <br/>**Azure CDN from Verizon** は、最初の要求で圧縮されていないファイルを渡し、後続の要求のためにファイルを圧縮してキャッシュします。 <br/>`Cache-Control: no-cache` ヘッダーがあるファイルは圧縮されません。 |
 | 非圧縮 |圧縮 |非圧縮 |CDN が展開を実行します。 |
 | 非圧縮 |非圧縮 |非圧縮 | |
 | 非圧縮 |キャッシュなし |非圧縮 | |

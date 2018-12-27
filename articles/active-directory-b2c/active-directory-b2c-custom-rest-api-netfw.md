@@ -1,23 +1,26 @@
 ---
-title: 'Azure Active Directory B2C: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する'
+title: REST API 要求交換を Azure Active Directory B2C ユーザー体験に統合する | Microsoft Docs
 description: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
-ms.openlocfilehash: 9429f690940e1282d94b4d67ad1c618a24655cb5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: e3d938c4464fc5141b97f85220bf096920e17d00
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339595"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework を使用すると、ユーザー体験における RESTful API と統合することができます。 このチュートリアルでは、Azure AD B2C と .NET Framework RESTful サービス (Web API) がどのようなやり取りをするかを学習します。
 
 ## <a name="introduction"></a>はじめに
@@ -131,7 +134,7 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
     ```
 
 ### <a name="step-22-add-a-controller"></a>手順 2.2: コントローラーを追加する
-Web API では、_コントローラー_は、HTTP 要求を処理するオブジェクトです。 コントローラーは、出力要求を返すか、名前が有効でない場合は HTTP 競合のエラー メッセージをスローします。
+Web API では、_コントローラー_ は、HTTP 要求を処理するオブジェクトです。 コントローラーは、出力要求を返すか、名前が有効でない場合は HTTP 競合のエラー メッセージをスローします。
 
 1. ソリューション エクスプローラーで、**Controllers** フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順に選択します。
 
@@ -363,7 +366,7 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
   "exp": 1507125903,
   "nbf": 1507122303,
   "ver": "1.0",
-  "iss": "https://login.microsoftonline.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
+  "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
   "aud": "e1d2612f-c2bc-4599-8e7b-d874eaca1ee1",
   "acr": "b2c_1a_signup_signin",
   "nonce": "defaultNonce",

@@ -1,24 +1,25 @@
 ---
-title: "C# を使用して Linux で初めての Azure マイクロサービス アプリを作成する | Microsoft Docs"
-description: "C# を使用して、Service Fabric アプリケーションを作成し、デプロイします"
+title: C# を使用して Linux 上で最初の Azure Service Fabric アプリを作成する | Microsoft Docs
+description: C# と .NET Core 2.0 を使用して、Service Fabric アプリケーションを作成し、デプロイする方法について説明します。
 services: service-fabric
 documentationcenter: csharp
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5a96d21d-fa4a-4dc2-abe8-a830a3482fb1
 ms.service: service-fabric
 ms.devlang: csharp
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/23/2018
+ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: 9a97a560034b288823d662d83d6366383c9e1706
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e917119e2d0f9b7b5cfa9ea145cc6e540486ac66
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052598"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>最初の Azure Service Fabric アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -40,27 +41,19 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
 
 1. マシンに nodejs と NPM をインストールします。
 
-   Ubuntu
    ```bash
-   sudo apt-get install npm
-   sudo apt install nodejs-legacy
+   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
+   nvm install node 
    ```
-
-   Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
-   ```bash
-   sudo yum install nodejs
-   sudo yum install npm
-   ```
-
 2. NPM からマシンに [Yeoman](http://yeoman.io/) テンプレート ジェネレーターをインストールします。
 
   ```bash
-  sudo npm install -g yo
+  npm install -g yo
   ```
-3. NPM から Service Fabric Yeo Java アプリケーション ジェネレーターをインストールします。
+3. NPM から Service Fabric Yeoman C# アプリケーション ジェネレーターをインストールします。
 
   ```bash
-  sudo npm install -g generator-azuresfcsharp
+  npm install -g generator-azuresfcsharp
   ```
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
@@ -107,11 +100,23 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 
 アプリケーションのデプロイ後、ブラウザーを開いて [http://localhost:19080/Explorer](http://localhost:19080/Explorer) の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に移動します。 次に、**Applications** ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認してください。
 
+> [!IMPORTANT]
+> アプリケーションを Azure 内のセキュアな Linux クラスターにデプロイするには、Service Fabric ランタイムを使用してアプリケーションを検証するように証明書を構成する必要があります。 これにより、Reliable Services サービスが基盤の Service Fabric ランタイム API と通信できるようになります。 詳しくは、「[Reliable Services アプリを Linux クラスター上で実行するように構成する](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)」をご覧ください。  
+>
+
 ## <a name="start-the-test-client-and-perform-a-failover"></a>テスト クライアントの起動と、フェールオーバーの実行
 アクター プロジェクトは、それ自体では何も行いません。 これにメッセージを送信する別のサービスまたはクライアントが必要です。 アクター テンプレートには、アクター サービスとの対話に使用できる簡単なテスト スクリプトが含まれています。
 
 1. ウォッチ ユーティリティを使用してスクリプトを実行し、アクター サービスの出力を確認します。
 
+   MAC OS X の場合は、次の追加コマンドを実行して、myactorsvcTestClient フォルダーをコンテナー内の場所にコピーする必要があります。
+    
+    ```bash
+    docker cp  [first-four-digits-of-container-ID]:/home
+    docker exec -it [first-four-digits-of-container-ID] /bin/bash
+    cd /home
+    ```
+    
     ```bash
     cd myactorsvcTestClient
     watch -n 1 ./testclient.sh

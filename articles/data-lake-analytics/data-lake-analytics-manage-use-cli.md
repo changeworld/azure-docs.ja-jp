@@ -1,25 +1,21 @@
 ---
-title: "Azure コマンド ライン インターフェイスを使用して Azure Data Lake Analytics を管理する | Microsoft Docs"
-description: "Azure CLI を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ジョブ、およびユーザーを管理する方法について説明します。"
+title: Azure コマンド ライン インターフェイスを使用して Azure Data Lake Analytics を管理する
+description: この記事では、Azure CLI を使用して、Data Lake Analytics のジョブ、データ ソース、ユーザーを管理する方法について説明します。
 services: data-lake-analytics
-documentationcenter: 
-author: SnehaGunda
-manager: Kfile
+author: jasonwhowell
+ms.author: jasonh
 ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: sngun
-ms.openlocfilehash: edaedaa517a672cd4bad5dc35527f4595ab4a85f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e265a46533264bbb1d437edbfe1bbfb3306614ad
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43044825"
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-command-line-interface-cli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics を管理する
+# <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics を管理する
 
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
@@ -32,7 +28,7 @@ Azure CLI を使用して、Azure Data Lake Analytics のアカウント、デ�
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* Azure CLI。 「 [Azure CLI のインストールと構成](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)」をご覧ください。
+* Azure CLI。 「 [Azure CLI のインストールと構成](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」をご覧ください。
 
    * このデモを完了するためには、 **プレリリース版の** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases) をダウンロードしてインストールします。
 
@@ -50,7 +46,7 @@ Azure CLI を使用して、Azure Data Lake Analytics のアカウント、デ�
    az dla -h
    ```
 
-## <a name="manage-accounts"></a>アカウントの管理
+## <a name="manage-accounts"></a>[アカウントの管理]
 
 Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカウントが必要です。 Azure HDInsight とは異なり、ジョブを実行しなければ、Analytics アカウントには課金されません。 ジョブの実行時にのみ課金されます。  詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。  
 
@@ -195,22 +191,25 @@ list コマンドを使用してジョブ ID を検索した後、cancel を使�
    az dla job cancel --account "<Data Lake Analytics account name>" --job-identity "<Job Id>"
    ```
 
-## <a name="use-azure-resource-manager-groups"></a>Azure リソース マネージャー グループの使用
-アプリケーションは通常、Web アプリ、データベース、データベース サーバー、ストレージ、サード パーティのサービスなど、複数のコンポーネントで構成されます。 Azure Resource Manager を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらのすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
+## <a name="pipelines-and-recurrences"></a>パイプラインと繰り返し
 
-Data Lake Analtyics サービスには、次のコンポーネントを含めることができます。
+**パイプラインと繰り返しについての情報を取得する**
 
-* Azure Data Lake Analytics アカウント
-* 必要な既定の Azure Data Lake Storage アカウント
-* 追加の Azure Data Lake Storage アカウント
-* 追加の Azure Storage アカウント
+`az dla job pipeline` コマンドを使って前に送信したジョブのパイプライン情報を確認します。
 
-管理しやすくするために 1 つの Resource Manager グループの下にこれらすべてのコンポーネントを作成できます。
+```
+az dla job pipeline list --account "<Data Lake Analytics Account Name>"
 
-![Azure Data Lake Analytics のアカウントとストレージ](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
+az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeline-identity "<Pipeline ID>"
+```
 
-Data Lake Analytics アカウントと従属するストレージ アカウントは同じ Azure データ センターに配置する必要があります。
-ただし、Resource Manager グループは別のデータ センターに配置できます。  
+`az dla job recurrence` コマンドを使って前に送信したジョブの繰り返し情報を確認します。
+
+```
+az dla job recurrence list --account "<Data Lake Analytics Account Name>"
+
+az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
+```
 
 ## <a name="see-also"></a>関連項目
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)

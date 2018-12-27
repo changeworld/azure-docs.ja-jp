@@ -1,6 +1,6 @@
 ---
-title: Azure Windows VM をバックアップする | Microsoft Doc
-description: Windows VM は、Azure Backup を使用してそれら VM をバックアップすることによって保護します。
+title: チュートリアル - Azure Portal を使用して Windows 仮想マシンをバックアップする | Microsoft Docs
+description: このチュートリアルでは、Azure portal を使用して Azure Backup により Windows 仮想マシンを保護する方法を説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -10,29 +10,27 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 12859bf967cf8de1b57ab9dfd5c0bd080806f2eb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7c6f5e199041af7d0ecd829ace2b56f5789f4955
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890451"
 ---
-# <a name="back-up-windows-virtual-machines-in-azure"></a>Windows 仮想マシンをバックアップする
+# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>チュートリアル: Azure 内の Windows 仮想マシンのファイルをバックアップおよび復元する
 
-データは、定期的にバックアップすることで保護することができます。 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体を復元するか、特定のファイルだけを復元することができます。 この記事では、VM が稼働する Windows サーバーおよび IIS に 1 つのファイルを復元する方法を説明します。 使用する VM をまだ作成していない場合は、[Windows クイック スタート](quick-create-portal.md)を使用して作成できます｡ このチュートリアルで学習する内容は次のとおりです。
+データは、定期的にバックアップすることで保護することができます。 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体を復元するか、特定のファイルを復元することができます。 この記事では、VM が稼働する Windows サーバーおよび IIS に 1 つのファイルを復元する方法を説明します。 使用する VM をまだ作成していない場合は、[Windows クイック スタート](quick-create-portal.md)を使用して作成できます｡ このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * VM のバックアップを作成する
 > * 毎日のバックアップをスケジュールする
 > * バックアップからファイルを復元する
-
-
-
 
 ## <a name="backup-overview"></a>Backup の概要
 
@@ -49,7 +47,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 左側のメニューから **[仮想マシン]** を選択します。 
 3. バックアップする VM を一覧から選択します。
-4. その VM のブレードの **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
+4. その VM のブレードの **[操作]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
 5. **[Recovery Services コンテナー]** の **[新規作成]** をクリックして、新しいコンテナーの名前を入力します。 仮想マシンと同じリソース グループで、仮想マシンと同じ場所に新しいコンテナーが作成されます。
 6. **[バックアップ ポリシー]** をクリックします。 この例では、既定値のまま **[OK]** をクリックします。
 7. **[バックアップの有効化]** ブレードの **[バックアップの有効化]** をクリックします。 これで、既定のスケジュールで毎日のバックアップが作成されます。
@@ -77,7 +75,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 
     ![既定の IIS web ページ](./media/tutorial-backup-vms/iis-broken.png)
 
-5. ローカル コンピューターで新しいタブを開き､ [Azure ポータル](https://portal.azure.com)に移動します。
+5. ローカル コンピューターで新しいタブを開き､[Azure portal](https://portal.azure.com) に移動します。
 6. 左側のメニューで **[仮想マシン]** を選択し､一覧から VM を選択します。
 8. その VM のブレードの **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップ]** ブレードが開きます。 
 9. ブレード上部のメニューで **[ファイルの回復]** を選択します。 **[ファイルの回復]** ブレードが開きます。
@@ -85,7 +83,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 11. **[ステップ 2: ファイルを参照および回復するためのスクリプトをダウンロードする]** の **[実行可能ファイルのダウンロード]** ボタンをクリックします。 **[ダウンロード]** フォルダーにファイルを保存します｡
 12. ローカル コンピュータで **ファイル エクスプローラー**を開き､**ダウンロード** フォルダに移動して､ダウンロードした .exe ファイルをコピーします｡ ファイル名には､プリフィックスとして VM 名が付けられます｡ 
 13. VM (RDP 接続経由) のデスクトップに .exe ファイルを貼り付けます｡ 
-14. VM のデスクトップに移動し､.exe ファイルをダブルクリックします｡ コマンド プロンプトが開き､アクセス可能なファイル共有として回復ポイントが作成されます｡ 共有の作成が完了したら､**q** を入力してコマンド プロンプトを閉じます｡
+14. VM のデスクトップに移動し､.exe ファイルをダブルクリックします｡ コマンド プロンプトが開き､アクセス可能なファイル共有として復旧ポイントが作成されます｡ 共有の作成が完了したら､**q** を入力してコマンド プロンプトを閉じます｡
 15. VM で**ファイル エクスプローラー**を開き､ファイル共有に使用したドライ文字に移動します｡
 16. \inetpub\wwwroot に移動し､ファイル共有から **iisstart.png** をコピーして､\inetpub\wwwroot に貼り付けます｡ たとえば､F:\inetpub\wwwroot\iisstart.png をコピーし､c:\inetpub\wwwroot に貼り付けることでファイルを回復できます｡
 17. ローカル コンピューターで、既定の IIS ページを表示する VM の IP アドレスに接続したブラウザー タブを開きます。 Ctrl キーを押しながら F5 キーを押して、ブラウザー ページを最新の情報に更新します。 これで､イメージが復元されたことを確認できます｡
@@ -94,7 +92,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * VM のバックアップを作成する

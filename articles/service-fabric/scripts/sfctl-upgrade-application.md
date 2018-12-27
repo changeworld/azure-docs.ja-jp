@@ -1,25 +1,26 @@
 ---
-title: "Service Fabric CLI スクリプト サンプル - クラスター上のアプリケーションを更新する"
-description: "Service Fabric CLI スクリプト サンプル - アプリケーションを新しいバージョンで更新する この例では、デプロイされているアプリケーションも新しいビットでアップグレードされます。"
+title: Service Fabric CLI スクリプト サンプル - クラスター上のアプリケーションを更新する
+description: Service Fabric CLI スクリプト サンプル - アプリケーションを新しいバージョンで更新する この例では、デプロイされているアプリケーションも新しいビットでアップグレードされます。
 services: service-fabric
-documentationcenter: 
-author: Thraka
+documentationcenter: ''
+author: TylerMSFT
 manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.date: 12/06/2017
-ms.author: adegeo
-ms.custom: 
-ms.openlocfilehash: 059022a7f447fe2b0decaacf44ef7bc2e9a241d1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: twhitney
+ms.custom: ''
+ms.openlocfilehash: bd0941cc6e67a759dd5fcb2e8912f8fcd6e9b18c
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071166"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>アプリケーション証明書の Service Fabric クラスターへの追加
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 12/08/2017
 
 [!code-sh[main](../../../cli_scripts/service-fabric/upgrade-application/upgrade-application.sh "Upload and update an application on a Service Fabric cluster")]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 詳細については、[Service Fabric CLI ドキュメント](../service-fabric-cli.md)をご覧ください。
 

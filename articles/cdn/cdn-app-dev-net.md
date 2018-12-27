@@ -1,11 +1,11 @@
 ---
-title: ".NET 向け Azure CDN ライブラリの概要 | Microsoft Docs"
-description: "Visual Studio を使用して Azure CDN を管理するための .NET アプリケーションを記述する方法について説明します。"
+title: .NET 向け Azure CDN ライブラリの概要 | Microsoft Docs
+description: Visual Studio を使用して Azure CDN を管理するための .NET アプリケーションを記述する方法について説明します。
 services: cdn
 documentationcenter: .net
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 63cf4101-92e7-49dd-a155-a90e54a792ca
 ms.service: cdn
 ms.workload: tbd
@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 5379586355ece98af6295236d6cbd09cb31c742b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38454466"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
-> * [Node.JS](cdn-app-dev-node.md)
+> * [Node.js](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
 > 
 > 
@@ -41,7 +42,7 @@ ms.lasthandoff: 12/21/2017
 ## <a name="create-your-project-and-add-nuget-packages"></a>プロジェクトを作成し、NuGet パッケージを追加する
 これまでの手順で、CDN プロファイルのリソース グループを作成し、そのグループ内の CDN プロファイルとエンドポイントを管理するための Azure AD アプリケーション アクセス許可を割り当てました。この段階で、アプリケーションの作成を開始できます。
 
-Visual Studio 2015 で、**[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックして、新しいプロジェクト ダイアログを開きます。  左側のウィンドウで **[Visual C#]** を展開し、**[Windows]** を選択します。  中央のウィンドウで **[コンソール アプリケーション]** をクリックします。  プロジェクトに名前を付け、 **[OK]**をクリックします。  
+Visual Studio 2015 で、**[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックして、新しいプロジェクト ダイアログを開きます。  左側のウィンドウで **[Visual C#]** を展開し、**[Windows]** を選択します。  中央のウィンドウで **[コンソール アプリケーション]** をクリックします。  プロジェクトに名前を付け、 **[OK]** をクリックします。  
 
 ![新しいプロジェクト](./media/cdn-app-dev-net/cdn-new-project.png)
 
@@ -50,7 +51,7 @@ Visual Studio 2015 で、**[ファイル]**、**[新規]**、**[プロジェク�
 1. **[ツール]** メニュー、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** を順にクリックします。
    
     ![Manage Nuget Packages](./media/cdn-app-dev-net/cdn-manage-nuget.png)
-2. パッケージ マネージャー コンソールで、次のコマンドを実行して、 **Active Directory Authentication Library (ADAL)**をインストールします。
+2. パッケージ マネージャー コンソールで、次のコマンドを実行して、 **Active Directory Authentication Library (ADAL)** をインストールします。
    
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 3. 次のコマンドを実行して、 **Azure CDN Management Library**をインストールします。
@@ -334,7 +335,7 @@ Visual Studio の **[開始]** をクリックして、プログラムをコン�
 
 ![Program completing](./media/cdn-app-dev-net/cdn-program-running-2.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルの完成したプロジェクトを確認するには、 [サンプルをダウンロード](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c)してください。
 
 Azure CDN Management Library for .NET に関連するドキュメントについては、 [MSDN のリファレンス](https://msdn.microsoft.com/library/mt657769.aspx)を参照してください。

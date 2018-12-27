@@ -1,30 +1,31 @@
 ---
-title: "Azure Event Grid サブスクリプション スキーマ"
-description: "Azure Event Grid でイベントにサブスクライブするためのプロパティについて説明します。"
+title: Azure Event Grid サブスクリプション スキーマ
+description: Azure Event Grid でイベントにサブスクライブするためのプロパティについて説明します。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
-ms.topic: article
-ms.date: 03/09/2018
+ms.topic: reference
+ms.date: 05/02/2018
 ms.author: babanisa
-ms.openlocfilehash: 888196225ec5998405113842344469d02a2cf5c7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: cfb4dabea12f2988108d24b025e324cf05afb325
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301721"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid サブスクリプション スキーマ
 
 Event Grid サブスクリプションを作成するには、 Create Event サブスクリプション操作に対して要求を送信します。 次の形式を使用します。
 
-```
+```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
 たとえば、`examplegroup` という名前のリソース グループに、`examplestorage` という名前のストレージ アカウントのイベント サブスクリプションを作成するには、次の形式を使用します。
 
-```
+```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
@@ -51,7 +52,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 | includedEventTypes | array | イベント メッセージのイベントの種類がこれらのイベントの種類名のいずれかと完全に一致した場合に、適合します。 イベント名がイベント ソースに対して登録済みのイベントの種類名と一致しない場合は、エラーを発生させます。 既定では、すべてのイベントの種類と一致します。 |
 | subjectBeginsWith | 文字列 | イベント メッセージの件名フィールドに対する、プレフィックス一致のフィルター。 既定値または空の文字列はすべて一致します。 | 
 | subjectEndsWith | 文字列 | イベント メッセージの件名フィールドに対する、サフィックス一致のフィルター。 既定値または空の文字列はすべて一致します。 |
-| subjectIsCaseSensitive | 文字列 | フィルターの大文字小文字の一致を制御します。 |
+| isSubjectCaseSensitive | 文字列 | フィルターの大文字小文字の一致を制御します。 |
 
 
 ## <a name="example-subscription-schema"></a>サブスクリプション スキーマの例
@@ -69,7 +70,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
       "includedEventTypes": [ "Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobDeleted" ],
       "subjectBeginsWith": "blobServices/default/containers/mycontainer/log",
       "subjectEndsWith": ".jpg",
-      "subjectIsCaseSensitive": "true"
+      "isSubjectCaseSensitive ": "true"
     }
   }
 }

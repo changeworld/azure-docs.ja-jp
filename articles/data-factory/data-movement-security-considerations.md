@@ -10,28 +10,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/26/2018
+ms.topic: conceptual
+ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 56602e269a441f9541314424190da04be2c4add5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3c2b44455b417d1bc764337d91a5535d7ffa34a5
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783374"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-data-movement-security-considerations.md)
-> * [バージョン 2 - プレビュー](data-movement-security-considerations.md)
+> * [Version 1](v1/data-factory-data-movement-security-considerations.md)
+> * [現在のバージョン](data-movement-security-considerations.md)
 
 この記事では、Azure Data Factory のデータ移動サービスがデータの保護を容易にするために使用する基本的なセキュリティ インフラストラクチャについて説明します。 Data Factory 管理リソースは、Azure のセキュリティ インフラストラクチャ上に構築されており、Azure が提供する利用可能なすべてのセキュリティ対策を使用します。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[データ移動のセキュリティに関する考慮事項 (バージョン 1)](v1/data-factory-data-movement-security-considerations.md) に関するページを参照してください。
-
 Data Factory ソリューションでは、1 つ以上のデータ [パイプライン](concepts-pipelines-activities.md)を作成します。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 これらのパイプラインは、データ ファクトリが作成されたリージョンに存在します。 
 
-データ ファクトリを利用できるリージョンは米国東部、米国東部 2、西ヨーロッパだけですが (バージョン 2 プレビュー)、データ移動サービスは[複数のリージョンでグローバルに](concepts-integration-runtime.md#azure-ir)利用できます。 Data Factory サービスでは、データ移動サービスがまだデプロイされていないリージョンを代替リージョンとして使用するようにサービスに明示的に指示しない限り、データが地域またはリージョンを離れないことが保証されます。 
+Data Factory を利用できるのは少数のリージョンだけですが、データ移動サービスはデータのコンプライアンス、効率性、ネットワーク送信コスト削減のために[グローバルに利用できます](concepts-integration-runtime.md#integration-runtime-location)。 
 
 Azure Data Factory は、クラウド データ ストアのリンクされたサービス資格情報以外のデータを格納しません。その資格情報は証明書を使用して暗号化されます。 Azure Data Factory を使用すると、データドリブン ワークフローを作成し、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)間でのデータ移動と、他のリージョンまたはオンプレミスの環境にある[コンピューティング サービス](compute-linked-services.md)を使用したデータ処理を調整できます。 また、SDK と Azure Monitor を使用して、ワークフローを監視および管理することもできます。
 
@@ -41,7 +39,7 @@ Data Factory を使用したデータ移動は、次の認定を取得してい�
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018)
 -   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
 
-Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center (セキュリティ センター)](https://www.microsoft.com/trustcenter) にアクセスしてください。
+Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center (セキュリティ センター)](https://microsoft.com/en-us/trustcenter/default.aspx) にアクセスしてください。
 
 この記事では、次の 2 つのデータ移動シナリオでセキュリティに関する考慮事項を確認します。 
 
@@ -61,6 +59,14 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 > [!NOTE]
 > データがデータベースとの間で転送中である間は、Azure SQL Database および Azure SQL Data Warehouse への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 JSON を使用してパイプラインを作成する場合は、encryption プロパティを追加し、接続文字列で **true** に設定します。 Azure Storage では、接続文字列で **HTTPS** を使用できます。
 
+> [!NOTE]
+> Oracle からデータを移動している間、転送中の暗号化を有効にするには、次のいずれかのオプションを実行します。
+> 1. Oracle サーバーで Oracle Advanced Security (OAS) に移動し、暗号化の設定を構成します。Triple-DES Encryption (3DES) と Advanced Encryption Standard (AES) がサポートされています。詳細については、[こちら](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)をご覧ください。 ADF は暗号化方法を自動的にネゴシエートし、Oracle への接続を確立するときにユーザーが OAS で構成した方法を使用します。
+> 2. ADF では、(リンクされたサービス内の) 接続文字列に EncryptionMethod=1 を追加できます。 これにより、暗号化方法として SSL/TLS が使用されます。 これを使用するには、Oracle サーバー側の OAS で非 SSL 暗号化の設定を無効にして、暗号化の競合を回避する必要があります。
+
+> [!NOTE]
+> 使用される TLS のバージョンは、1.2 です。
+
 ### <a name="data-encryption-at-rest"></a>保存データの暗号化
 一部のデータ ストアは、保存データの暗号化をサポートしています。 そうしたデータ ストアに対してはデータ暗号化メカニズムを有効にすることをお勧めします。 
 
@@ -68,7 +74,7 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
-Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database と Data Warehouse の透過的なデータ暗号化](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
+Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database と Data Warehouse の透過的なデータ暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Azure Data Lake Store では、アカウントに格納されているデータを暗号化することもできます。 暗号化を有効にすると、Data Lake Store によってデータの永続化の前の暗号化と取得前の暗号化解除が自動的に行われるので、データにアクセスするクライアントに対してこの動作が透過的になります。 詳細については、「[Azure Data Lake Store のセキュリティ](../data-lake-store/data-lake-store-security-overview.md)」をご覧ください。 
@@ -86,7 +92,7 @@ Amazon Redshift では、保存データのクラスター暗号化をサポー�
 Salesforce では、ファイル、添付ファイル、カスタム フィールドをすべて暗号化できる Shield Platform Encryption をサポートしています。 詳細については、「[Understanding the Web Server OAuth Authentication Flow (Web サーバーの OAuth 認証フローについて)](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)」をご覧ください。  
 
 ## <a name="hybrid-scenarios"></a>ハイブリッド シナリオ
-ハイブリッド シナリオでは、オンプレミス ネットワーク、仮想ネットワーク (Azure)、または仮想プライベート クラウド (Amazon) 内にセルフホステッド統合ランタイムをインストールする必要があります。 セルフホステッド統合ランタイムは、ローカルのデータ ストアにアクセスできる必要があります。 セルフホステッド統合ランタイムの詳細については、「[自己ホスト型統合ランタイムを作成し構成する方法](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime)」を参照してください。 
+ハイブリッド シナリオでは、オンプレミス ネットワーク、仮想ネットワーク (Azure)、または仮想プライベート クラウド (Amazon) 内にセルフホステッド統合ランタイムをインストールする必要があります。 セルフホステッド統合ランタイムは、ローカルのデータ ストアにアクセスできる必要があります。 セルフホステッド統合ランタイムの詳細については、「[自己ホスト型統合ランタイムを作成し構成する方法](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)」を参照してください。 
 
 ![セルフホステッド統合ランタイム チャネル](media/data-movement-security-considerations/data-management-gateway-channels.png)
 
@@ -136,18 +142,19 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 ![IPSec VPN とゲートウェイの使用](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-addresses"></a>ファイアウォール構成とホワイトリストに登録する IP アドレス
+### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a> ファイアウォール構成とホワイトリストに登録する IP アドレス
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>オンプレミス/プライベート ネットワークのファイアウォール要件  
 企業では、組織の中央ルーターで企業ファイアウォールが実行されています。 セルフホステッド統合ランタイムがインストールされているローカル コンピューターで Windows ファイアウォールがデーモンとして実行されています。 
 
 次の表には、企業ファイアウォールの送信ポートとドメインの要件を示しています。
 
-| ドメイン名                  | 送信ポート | [説明]                              |
+| ドメイン名                  | 送信ポート | 説明                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
 | `*.servicebus.windows.net`    | 443            | セルフホステッド統合ランタイムが Data Factory のデータ移動サービスに接続するために必要です。 |
-| `*.core.windows.net`          | 443            | [ステージング コピー](copy-activity-performance.md#staged-copy)機能を使用する場合に、セルフホステッド統合ランタイムが Azure ストレージ アカウントに接続するために使用します。 |
 | `*.frontend.clouddatahub.net` | 443            | セルフホステッド統合ランタイムが Data Factory サービスに接続するために必要です。 |
+| `download.microsoft.com`    | 443            | セルフホステッド統合ランタイムが更新プログラムをダウンロードするために必要です。 自動更新を無効にした場合は、これをスキップできます。 |
+| `*.core.windows.net`          | 443            | [ステージング コピー](copy-activity-performance.md#staged-copy)機能を使用する場合に、セルフホステッド統合ランタイムが Azure ストレージ アカウントに接続するために使用します。 |
 | `*.database.windows.net`      | 1433           | (オプション) Azure SQL Database または Azure SQL Data Warehouse との間でコピーするときに必要です。 ステージング コピー機能を使用すると、ポート 1433 を開かずに Azure SQL Database または Azure SQL Data Warehouse にデータをコピーします。 |
 | `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | (オプション) Azure Data Lake Store との間でコピーするときに必要です。 |
 
@@ -156,7 +163,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 次の表には、Windows ファイアウォールの受信ポートの要件があります。
 
-| 受信ポート | [説明]                              |
+| 受信ポート | 説明                              |
 | ------------- | ---------------------------------------- |
 | 8050 (TCP)    | 「[Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する](encrypt-credentials-self-hosted-integration-runtime.md)」に説明されているように PowerShell 暗号化コマンドレットと、セルフホステッド統合ランタイムのオンプレミス データ ストアに安全に資格情報を設定するために資格情報マネージャー アプリケーションで必要です。 |
 
@@ -181,7 +188,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 **セルフホステッド統合ランタイムの動作にはどのようなポートの要件がありますか?**
 
-セルフホステッド統合ランタイムは、インターネットにアクセスするために HTTP ベースの接続を行います。 セルフホステッド統合ランタイムがこの接続を確立するには、送信ポート 443 と 80 を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (オンプレミスのファイアウォール レベルではない) でのみ受信ポート 8050 を開きます。 Azure SQL Database または Azure SQL Data Warehouse をソースまたは移動先として使用する場合は、ポート 1433 も開く必要があります。 詳細については、[ファイアウォール構成とホワイトリストに登録する IP アドレス](#firewall-configurations-and-whitelisting-ip-address-of-gateway)に関するセクションを参照してください。 
+セルフホステッド統合ランタイムは、インターネットにアクセスするために HTTP ベースの接続を行います。 セルフホステッド統合ランタイムがこの接続を確立するには、送信ポート 443 を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (オンプレミスのファイアウォール レベルではない) でのみ受信ポート 8050 を開きます。 Azure SQL Database または Azure SQL Data Warehouse をソースまたは移動先として使用する場合は、ポート 1433 も開く必要があります。 詳細については、[ファイアウォール構成とホワイトリストに登録する IP アドレス](#firewall-configurations-and-whitelisting-ip-address-of-gateway)に関するセクションを参照してください。 
 
 
 ## <a name="next-steps"></a>次の手順

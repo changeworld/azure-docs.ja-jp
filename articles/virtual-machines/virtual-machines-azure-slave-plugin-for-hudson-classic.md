@@ -1,11 +1,11 @@
 ---
-title: "Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法 | Microsoft Docs"
-description: "Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法について説明します。"
+title: Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法 | Microsoft Docs
+description: Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rmcmurray
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: b2083d1c-4de8-4a19-a615-ccc9d9b6e1d9
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -19,19 +19,20 @@ ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27704423"
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法
 Hudson 用 Azure スレーブ プラグインを使用して、分散されたビルドを実行するときにスレーブ ノードを Azure にプロビジョニングできます。
 
 ## <a name="install-the-azure-slave-plug-in"></a>Azure スレーブ プラグインをインストールする
-1. Hudson ダッシュボードで、 **[Manage Hudson]**をクリックします。
+1. Hudson ダッシュボードで、 **[Manage Hudson]** をクリックします。
 2. **[Manage Hudson (Hudson の管理)]** ページで **[Manage Plugins (プラグインの管理)]** をクリックします。
 3. **[Available]** タブをクリックします。
 4. **[Search (検索)]** をクリックし、「**Azure**」と入力して、一覧を関連するプラグインに制限します。
    
     使用可能なプラグインの一覧をスクロールする場合、Azure スレーブ プラグインは **[Others (その他)]** タブの **[Cluster Management and Distributed Build (クラスタ管理と分散ビルド)]** セクションにあります。
-5. **[Azure Slave Plugin]**チェックボックスをオンにします。
-6. **[インストール]**をクリックします。
+5. **[Azure Slave Plugin]** チェックボックスをオンにします。
+6. **[インストール]** をクリックします。
 7. Hudson を再起動します。
 
 これでプラグインがインストールされました。次に、Azure サブスクリプション プロファイルを使用してプラグインを構成し、スレーブ ノードの VM の作成に使用するテンプレートを作成します。
@@ -65,8 +66,8 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
 
 サブスクリプション プロファイルを用意したら、次の手順に従って Azure スレーブ プラグインを構成します。
 
-1. Hudson ダッシュボードで、 **[Manage Hudson]**をクリックします。
-2. **[Configure System]**をクリックします。
+1. Hudson ダッシュボードで、 **[Manage Hudson]** をクリックします。
+2. **[Configure System]** をクリックします。
 3. ページを下にスクロールして **[Cloud]** セクションを探します。
 4. **[Add new cloud (新しいクラウドの追加)]、[Microsoft Azure]** の順にクリックします。
    
@@ -78,14 +79,14 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
 5. サブスクリプション プロファイルからサブスクリプションID と管理証明書をコピーし、適切なフィールドに貼り付けます。
    
     サブスクリプション ID と管理証明書をコピーするときは、 値を囲む引用符を含めないでください。
-6. **[Verify configuration]**をクリックします。
-7. 構成が正しいことが確認されたら、 **[Save]**をクリックします。
+6. **[Verify configuration]** をクリックします。
+7. 構成が正しいことが確認されたら、 **[Save]** をクリックします。
 
 ## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Azure スレーブ プラグイン用の仮想マシン テンプレートを設定する
 仮想マシン テンプレートでは、プラグインが Azure でスレーブ ノードを作成する際に使用するパラメーターを定義します。 次の手順では、Ubuntu VM 用のテンプレートを作成します。
 
-1. Hudson ダッシュボードで、 **[Manage Hudson]**をクリックします。
-2. **[Configure System]**をクリックします。
+1. Hudson ダッシュボードで、 **[Manage Hudson]** をクリックします。
+2. **[Configure System]** をクリックします。
 3. ページを下にスクロールして **[Cloud]** セクションを探します。
 4. **[Cloud (クラウド)]** セクションで、**[Add Azure Virtual Machine Template (Azure 仮想マシン テンプレートの追加)]** を探し、**[Add (追加)]** ボタンをクリックします。
    
@@ -97,7 +98,7 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
 9. 適切な VM サイズを選択します。
 10. VM が作成されるストレージ アカウントを指定します。 使用するクラウド サービスと同じリージョン内にあることを確認します。 新しいストレージを作成する場合は、このフィールドを空白のままにすることができます。
 11. [Retention time] は、その時間を経過するとHudson がアイドル状態のスレーブを削除する分数を指定します。 これは、既定値 60 のままにします。
-12. **[Usage]**で、このスレーブノードが使用される適切な条件を選択します。 ここでは、 **[Utilize this node as much as possible]**を選択します。
+12. **[Usage]** で、このスレーブノードが使用される適切な条件を選択します。 ここでは、 **[Utilize this node as much as possible]** を選択します。
     
      この時点で、フォームは次のようになります。
     
@@ -139,16 +140,16 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
      **Init スクリプト** は、VM が作成された後で実行されます。 この例では、スクリプトは、Java、git、および ant をインストールします。
 16. **[Username (ユーザー名)]** フィールドと **[Password (パスワード)]** フィールドに、VM に作成される管理者アカウント用の優先値を入力します。
 17. **[Verify Template]** をクリックして、指定したパラメーターが有効であることを確認します。
-18. **[Save]**をクリックします。
+18. **[Save]** をクリックします。
 
 ## <a name="create-a-hudson-job-that-runs-on-a-slave-node-on-azure"></a>Azure のスレーブ ノードで実行される Hudson ジョブを作成する
 このセクションでは、Azure のスレーブ ノードで実行される Hudson タスクを作成します。
 
-1. Hudson ダッシュボードで、 **[New Job]**をクリックします。
+1. Hudson ダッシュボードで、 **[New Job]** をクリックします。
 2. 作成するジョブの名前を入力します。
-3. ジョブの種類として、 **[Build a free-style software job]**を選択します。
+3. ジョブの種類として、 **[Build a free-style software job]** を選択します。
 4. Click **OK**.
-5. ジョブを構成するページで、 **[Restrict where this project can be run]**を選択します。
+5. ジョブを構成するページで、 **[Restrict where this project can be run]** を選択します。
 6. **[Node and label menu (ノードとラベルのメニュー)]** を選択し、**[linux]** を選択します (このラベルは、前のセクションで仮想マシン テンプレートを作成するときに指定したものです)。
 7. **[Build (ビルド)]** セクションで、**[Add build step (ビルド ステップの追加)]** をクリックし、**[Execute shell (シェルの実行)]** を選択します。
 8. 次のスクリプトを編集します。**{your github account name}**、**{your project name}**、**{your project directory}** を適切な値に置き換え、編集後のスクリプトを次に表示されるテキスト領域に貼り付けます。
@@ -176,7 +177,7 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
         #Execute build task
    
         ant
-9. **[Save]**をクリックします。
+9. **[Save]** をクリックします。
 10. Hudson ダッシュボードで、作成したばかりのジョフ゛を探し、 **[Schedule a build]** アイコンをクリックします。
 
 Hudson は、前のセクションで作成したテンプレートを使用してスレーブ ノードを作成し、このタスク用のビルド手順に指定されたスクリプトを実行します。

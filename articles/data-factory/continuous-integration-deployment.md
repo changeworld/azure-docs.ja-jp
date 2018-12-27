@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory における継続的インテグレーションと配置 | Microsoft Docs
-description: 継続的インテグレーションと配置を使用して Data Factory パイプラインをある環境 (開発、テスト、実稼働) から別の環境に移動する方法について説明します。
+title: Azure Data Factory における継続的インテグレーションとデリバリー | Microsoft Docs
+description: 継続的インテグレーションとデリバリーを使用して Data Factory パイプラインをある環境 (開発、テスト、運用) から別の環境に移動する方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -9,20 +9,25 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/29/2018
+ms.topic: conceptual
+ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: e021403cd5544f0570e8ea3c73a17a57b241a65f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623793"
 ---
-# <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと配置
+# <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)
 
-継続的インテグレーションは、コードベースに対して行われた変更を、できるだけ早く自動的にテストするプラクティスです。 継続的配置は、継続的インテグレーションの間に発生したテストに続けて、変更をステージングまたは実稼働システムにプッシュします。
+継続的インテグレーションは、コードベースに対して行われた変更を、できるだけ早く自動的にテストするプラクティスです。 継続的デリバリーは、継続的インテグレーションの間に発生したテストに続けて、変更をステージングまたは実稼働システムにプッシュします。
 
-Azure Data Factory では、継続的インテグレーションと配置とは、Data Factory パイプラインをある環境 (開発、テスト、実稼働) から別の環境に移動することを意味します。 継続的インテグレーションと配置を行うために、Data Factory UI 統合と Azure Resource Manager テンプレートを使用できます。 **ARM テンプレート** オプションを選択すると、Data Factory UI によって Resource Manager テンプレートを生成できます。 **[ARM テンプレートのエクスポート]** を選択すると、ポータルで、データ ファクトリ用の Resource Manager テンプレートと、すべての接続文字列とその他のパラメーターを含む構成ファイルが生成されます。 次に、環境 (開発、テスト、実稼働) ごとに 1 つの構成ファイルを作成する必要があります。 すべての環境で使用されるメインの Resource Manager テンプレート ファイルは変更しません。
+Azure Data Factory では、継続的インテグレーションと継続的デリバリーとは、Data Factory パイプラインをある環境 (開発、テスト、実稼働) から別の環境に移動することを意味します。 継続的インテグレーションと継続的デリバリーを行うために、Data Factory UI 統合と Azure Resource Manager テンプレートを使用できます。 **ARM テンプレート** オプションを選択すると、Data Factory UI によって Resource Manager テンプレートを生成できます。 **[ARM テンプレートのエクスポート]** を選択すると、ポータルで、データ ファクトリ用の Resource Manager テンプレートと、すべての接続文字列とその他のパラメーターを含む構成ファイルが生成されます。 次に、環境 (開発、テスト、実稼働) ごとに 1 つの構成ファイルを作成する必要があります。 すべての環境で使用されるメインの Resource Manager テンプレート ファイルは変更しません。
+
+この機能の概要とデモンストレーションについては、以下の 9 分間の動画を視聴してください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>各環境用の Resource Manager テンプレートを作成する
 **[ARM テンプレートのエクスポート]** を選択して、データ ファクトリ用の Resource Manager テンプレートを開発環境にエクスポートします。
@@ -43,83 +48,56 @@ Azure Data Factory では、継続的インテグレーションと配置とは�
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
 
+**[接続文字列]**。 接続文字列の作成に必要な情報は、各コネクタに関する記事で見つかります。 たとえば、Azure SQL Database の場合は、「[Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー](connector-azure-sql-database.md)」をご覧ください。 正しい接続文字列は、Data Factory UI でリソースに対するコード ビューを開いて確認することもできます (リンクされたサービスの場合など)。 ただし、コード ビューでは、接続文字列のパスワードまたはアカウント キーの部分は削除されます。 コード ビューを開くには、次のスクリーンショットで強調表示されているアイコンを選択します。
+
+![コード ビューを開いて接続文字列を確認する](media/continuous-integration-deployment/continuous-integration-codeview.png)
+
 ## <a name="continuous-integration-lifecycle"></a>継続的インテグレーションのライフサイクル
-Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続的インテグレーションと配置のライフサイクル全体を次に示します。
+Data Factory UI で Azure Repos Git 統合を有効にした後で使用できる継続的インテグレーションと継続的デリバリーのライフサイクル全体を次に示します。
 
-1.  すべての開発者がパイプラインやデータセットなどの Data Factory リソースを作成できる開発データ ファクトリを VSTS で設定します。
+1.  すべての開発者がパイプラインやデータセットなどの Data Factory リソースを作成できる開発データ ファクトリを Azure Repos で設定します。
 
-2.  開発者は、パイプラインなどのリソースを変更できます。 開発者は、変更を行った後、**[デバッグ]** を選択して、最新の変更を行ったパイプラインがどのように実行されるかを確認できます。
+1.  開発者は、パイプラインなどのリソースを変更できます。 開発者は、変更を行った後、**[デバッグ]** を選択して、最新の変更を行ったパイプラインがどのように実行されるかを確認できます。
 
-3.  開発者は、変更の結果に満足したら、各自のブランチからマスター ブランチ (または、コラボレーション ブランチ) へのプル要求を作成して、同僚が変更をレビューできるようにします。
+1.  開発者は、変更の結果に満足したら、各自のブランチからマスター ブランチ (または、コラボレーション ブランチ) への pull request を作成して、同僚が変更をレビューできるようにします。
 
-4.  変更がマスター ブランチに反映されたら、開発者は、**[発行]** を選択して、開発ファクトリに発行できます。
+1.  変更がマスター ブランチに反映されたら、開発者は、**[発行]** を選択して、開発ファクトリに発行できます。
 
-5.  チームは、変更をテスト ファクトリと実稼働ファクトリにレベル上げする準備ができたら、マスター ブランチから Resource Manager テンプレートをエクスポートできます。マスター ブランチがライブ開発 Data Factory に戻っている場合は、他のブランチからエクスポートできます。
+1.  チームは、変更をテスト ファクトリと実稼働ファクトリにレベル上げする準備ができたら、マスター ブランチから Resource Manager テンプレートをエクスポートできます。マスター ブランチがライブ開発 Data Factory に戻っている場合は、他のブランチからエクスポートできます。
 
-6.  エクスポートされた Resource Manager テンプレートは、異なるパラメーター ファイルを使用してテスト ファクトリと実稼働ファクトリにデプロイできます。
+1.  エクスポートされた Resource Manager テンプレートは、異なるパラメーター ファイルを使用してテスト ファクトリと実稼働ファクトリにデプロイできます。
 
-## <a name="automate-continuous-integration-with-vsts-releases"></a>VSTS リリースを使用して継続的インテグレーションを自動化する
+## <a name="automate-continuous-integration-with-azure-pipelines-releases"></a>Azure Pipelines リリースを使用して継続的インテグレーションを自動化する
 
-データ ファクトリの複数の環境へのデプロイを自動化できるように VSTS リリースを設定する手順を次に示します。
+データ ファクトリの複数の環境へのデプロイを自動化できるように Azure Pipelines リリースを設定する手順を次に示します。
+
+![Azure Pipelines を使用した継続的インテグレーションの図](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>必要条件
 
--   [*Azure Resource Manager サービス エンドポイント*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)を使用して Team Foundation Server または VSTS にリンクされた Azure サブスクリプション。
+-    [*Azure Resource Manager サービス エンドポイント*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)を使用して Team Foundation Server または Azure Repos にリンクされた Azure サブスクリプション。
 
--   VSTS Git が構成されている Data Factory。
+-   Azure Repos Git 統合が構成されたデータ ファクトリ。
 
--   シークレットを格納する [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
+-   シークレットを格納する  [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 。
 
-### <a name="set-up-a-vsts-release"></a>VSTS リリースを設定する
+### <a name="set-up-an-azure-pipelines-release"></a>Azure Pipelines リリースをセットアップする
 
-1.  Data Factory で構成したのと同じプロジェクトの VSTS ページに移動します。
+1.  Data Factory で構成したのと同じプロジェクトの Azure Repos ページに移動します。
 
-2.  上部メニュー **[ビルドとリリース]** &gt; **[リリース]** &gt; **[リリース定義の作成]** をクリックします。
+1.  上部メニューの **[Azure Pipelines]** &gt; **[リリース]** &gt; **[リリース定義の作成]** をクリックします。
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-3.  **[空のプロセス]** テンプレートを選択します。
+1.  **[空のプロセス]** テンプレートを選択します。
 
-4.  環境の名前を入力します。
+1.  環境の名前を入力します。
 
-5.  Git 成果物を追加し、Data Factory で構成したのと同じリポジトリを選択します。 最新の既定のバージョンを使用する既定のブランチとして `adf\_publish`を選択します。
+1.  Git 成果物を追加し、Data Factory で構成したのと同じリポジトリを選択します。 最新の既定のバージョンを使用する既定のブランチとして `adf_publish`を選択します。
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
-6.  Azure Key Vault からシークレットを取得します。 シークレットを処理する方法は 2 つあります。
-
-    a.  シークレットをパラメーター ファイルに追加する:
-
-        -   発行ブランチにアップロードされたパラメーター ファイルのコピーを作成し、キー コンテナーから取得するパラメーターの値を次の形式で設定します。
-
-        ```json
-        {
-            "parameters": {
-                "azureSqlReportingDbPassword": {
-                    "reference": {
-                        "keyVault": {
-                            "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
-                        },
-                        "secretName": " &lt secret - name &gt "
-                    }
-                }        
-            }
-        }
-        ```
-
-        -   このメソッドを使用すると、シークレットはキー コンテナーから自動的にプルされます。
-
-        -   パラメーター ファイルも発行ブランチ内に存在する必要があります。
-
-    b.  [Azure Key Vault タスク](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)を追加する:
-
-        -   **[タスク]** タブを選択し、新しいタスクを作成した後、**Azure Key Vault** を探して追加します。
-
-        -   Key Vault タスクでは、キー コンテナーを作成したサブスクリプションを選択し、必要に応じて資格情報を指定した後、そのキー コンテナーを選択します。
-
-            ![](media/continuous-integration-deployment/continuous-integration-image8.png)
-
-7.  Azure Resource Manager デプロイ タスクを追加します。
+1.  Azure Resource Manager デプロイ タスクを追加します。
 
     a.  新しいタスクを作成し、**Azure リソース グループのデプロイ**を探して追加します。
 
@@ -127,54 +105,90 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
     c.  **[リソース グループの作成または更新]** アクションを選択します。
 
-    d.  **[…]** を選択します  (**[テンプレート]** フィールドにあります)。 ポータルでの発行操作によって作成された Resource Manager テンプレートを参照します (*ARMTemplateForFactory.json*)。 このファイルは、`adf\_publish` ブランチのルート フォルダーで探します。
+    d.  **[…]** を選択します  (**[テンプレート]** フィールドにあります)。 ポータルでの発行操作によって作成された Resource Manager テンプレートを参照します (*ARMTemplateForFactory.json*)。 `adf_publish` ブランチの `<FactoryName>` フォルダーでこのファイルを探します。
 
     e.  パラメーター ファイルに対して同じことを行います。 コピーを作成したか既定のファイル *ARMTemplateParametersForFactory.json* を使用しているかに応じて、適切なファイルを選択します。
 
-    f.  **[…]** を選択します  (**[テンプレート パラメーターの無視]** フィールドの横にあります)。ターゲットの Data Factory の情報を入力します。 キー コンテナー の資格情報については、シークレットと同じ名前を次の形式で使用します。たとえばシークレットの名前が `cred1` の場合は、`"$(cred1)"` と入力します (引用符で囲みます)。
+    f.  **[…]** を選択します  (**[テンプレート パラメーターのオーバーライド]** フィールドの横にあります)。ターゲットの Data Factory の情報を入力します。 キー コンテナー の資格情報については、シークレットと同じ名前を次の形式で使用します。たとえばシークレットの名前が `cred1` の場合は、`"$(cred1)"` と入力します (引用符で囲みます)。
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-8.  リリース定義を保存します。
+    g. **[増分]** デプロイ モードを選択します。
 
-9.  このリリース定義から新しいリリースを作成します。
+    > [!WARNING]
+    > **[完全]** デプロイ モードを選択すると、Resource Manager テンプレートに定義されていないターゲット リソース グループ内のすべてのリソースを含む既存のリソースが削除される可能性があります。
+
+1.  リリース パイプラインを保存します。
+
+1.  このリリース パイプラインから新しいリリースを作成します。
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
-### <a name="grant-permissions-to-the-vsts-agent"></a>VSTS エージェントへのアクセス許可を与える
-Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗する可能性があります。 リリースのログをダウンロードし、VSTS エージェントへのアクセス許可を与えるコマンドがある `.ps1` ファイルを探します。 コマンドは直接実行するか、ファイルからプリンシパル ID をコピーし、Azure Portal でアクセス ポリシーを手動で追加できます  (必要な最低限のアクセス許可は、*Get*と*List* です)。
+### <a name="optional---get-the-secrets-from-azure-key-vault"></a>省略可能 - Azure Key Vault からシークレットを取得する
+
+Azure Resource Manager テンプレートに渡すシークレットがある場合は、Azure Pipelines リリースで Azure Key Vault を使うことをお勧めします。
+
+シークレットを処理する方法は 2 つあります。
+
+1.  シークレットをパラメーター ファイルに追加します。 詳しくは、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)」をご覧ください。
+
+    -   発行ブランチにアップロードされたパラメーター ファイルのコピーを作成し、キー コンテナーから取得するパラメーターの値を次の形式で設定します。
+
+    ```json
+    {
+        "parameters": {
+            "azureSqlReportingDbPassword": {
+                "reference": {
+                    "keyVault": {
+                        "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
+                    },
+                    "secretName": " < secret - name > "
+                }
+            }
+        }
+    }
+    ```
+
+    -   このメソッドを使用すると、シークレットはキー コンテナーから自動的にプルされます。
+
+    -   パラメーター ファイルも発行ブランチ内に存在する必要があります。
+
+1.  前のセクションで説明されている Azure Resource Manager デプロイ タスクの前に、[Azure Key Vault タスク](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)を追加します。
+
+    -   **[タスク]** タブを選択し、新しいタスクを作成した後、**Azure Key Vault** を探して追加します。
+
+    -   Key Vault タスクでは、キー コンテナーを作成したサブスクリプションを選択し、必要に応じて資格情報を指定した後、そのキー コンテナーを選択します。
+
+    ![](media/continuous-integration-deployment/continuous-integration-image8.png)
+
+### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines エージェントにアクセス許可を与える
+Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗する可能性があります。 リリースのログをダウンロードし、Azure Pipelines エージェントへのアクセス許可を与えるコマンドがある `.ps1` ファイルを探します。 コマンドは直接実行するか、ファイルからプリンシパル ID をコピーし、Azure Portal でアクセス ポリシーを手動で追加できます  (必要な最低限のアクセス許可は、*Get*と*List* です)。
 
 ### <a name="update-active-triggers"></a>アクティブなトリガーを更新する
 アクティブなトリガーを更新しようとした場合、デプロイは失敗します。 アクティブなトリガーを更新するには、手動でそれらを停止し、デプロイ後に起動する必要があります。 次の例に示すように、この目的のための Azure Powershell タスクを追加できます。
 
-1.  VSTS リリースの [タスク] タブで、**[Azure Powershell]** を探します。
+1.  リリースの [タスク] タブで、**[Azure Powershell]** を探します。
 
-2.  接続の種類として **[Azure Resource Manager]** を選択し、サブスクリプションを選択します。
+1.  接続の種類として **[Azure Resource Manager]** を選択し、サブスクリプションを選択します。
 
-3.  スクリプトの種類として **[インライン スクリプト]** を選択し、コードを入力します。 次の例は、トリガーを停止します。
+1.  スクリプトの種類として **[インライン スクリプト]** を選択し、コードを入力します。 次の例は、トリガーを停止します。
 
     ```powershell
-    $armTemplate="$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json"
+    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 
-    $templateJson = Get-Content "$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json" | ConvertFrom-Json
-
-    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName
-    $DataFactoryName -ResourceGroupName $ResourceGroupName
-
-    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $\_.name -Force }
+    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
 同様の手順と同様のコード (`Start-AzureRmDataFactoryV2Trigger` 関数) を使用して、デプロイ後にトリガーを再起動できます。
 
-## <a name="sample-template-and-script"></a>テンプレートとスクリプトのサンプル
-Data Factory の継続的インテグレーションと配置を開始するために使用できる 2 つのサンプルを次に示します。
+> [!IMPORTANT]
+> 継続的インテグレーションと継続的デプロイ シナリオでは、Integration Runtime の種類は異なる環境間で同じである必要があります。 たとえば、開発環境に "*セルフホステッド*" Integration Runtime (IR) がある場合、テストや運用などの他の環境環境でも、IR の種類は "*セルフホステッド*" である必要があります。 同様に、複数のステージ間で統合ランタイムを共有している場合は、開発、テスト、運用のすべての環境で、IR を "*リンクされたセルフホステッド*" として構成する必要があります。
 
--   VSTS にインポートできるサンプル デプロイ テンプレート。
--   デプロイ前にトリガーを停止し、デプロイ後に再起動するサンプル スクリプト。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。
+## <a name="sample-deployment-template"></a>デプロイ テンプレートの例
 
-VSTS にインポートできるサンプル デプロイ テンプレートを次に示します。
+Azure Pipelines にインポートできるサンプル デプロイ テンプレートを次に示します。
 
 ```json
 {
@@ -712,7 +726,9 @@ VSTS にインポートできるサンプル デプロイ テンプレートを�
 }
 ```
 
-デプロイ前にトリガーを停止し、デプロイ後に再起動するサンプル スクリプトを次に示します。
+## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>トリガーの停止と再起動およびクリーンアップを行うサンプル スクリプト
+
+デプロイ前にトリガーを停止し、デプロイ後に再起動するサンプル スクリプトを次に示します。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。 最新バージョンの Azure PowerShell をインストールするには、「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.9.0)」を参照してください。
 
 ```powershell
 param
@@ -724,7 +740,6 @@ param
     [parameter(Mandatory = $false)] [Bool] $predeployment=$true
 
 )
-
 
 $templateJson = Get-Content $armTemplate | ConvertFrom-Json
 $resources = $templateJson.resources
@@ -741,13 +756,12 @@ $triggerstostop = $triggerNames | where { ($triggersADF | Select-Object name).na
 if ($predeployment -eq $true) {
     #Stop all triggers
     Write-Host "Stopping deployed triggers"
-    $triggerstostop | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force }
+    $triggerstostop | ForEach-Object { 
+        Write-host "Disabling trigger " $_
+        Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+    }
 }
 else {
-
-    #start Active triggers
-    Write-Host "Starting active triggers"
-    $activeTriggerNames | ForEach-Object { Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force }
 
     #Deleted resources
     #pipelines
@@ -777,14 +791,170 @@ else {
 
     #delte resources
     Write-Host "Deleting triggers"
-    $deletedtriggers | ForEach-Object { Remove-AzureRmDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
+    $deletedtriggers | ForEach-Object { 
+        Write-Host "Deleting trigger "  $_.Name
+        $trig = Get-AzureRmDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
+        if ($trig.RuntimeState -eq "Started") {
+            Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
+        }
+        Remove-AzureRmDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
     Write-Host "Deleting pipelines"
-    $deletedpipelines | ForEach-Object { Remove-AzureRmDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
+    $deletedpipelines | ForEach-Object { 
+        Write-Host "Deleting pipeline " $_.Name
+        Remove-AzureRmDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
     Write-Host "Deleting datasets"
-    $deleteddataset | ForEach-Object { Remove-AzureRmDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
+    $deleteddataset | ForEach-Object { 
+        Write-Host "Deleting dataset " $_.Name
+        Remove-AzureRmDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
     Write-Host "Deleting linked services"
-    $deletedlinkedservices | ForEach-Object { Remove-AzureRmDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
+    $deletedlinkedservices | ForEach-Object { 
+        Write-Host "Deleting Linked Service " $_.Name
+        Remove-AzureRmDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
     Write-Host "Deleting integration runtimes"
-    $deletedintegrationruntimes | ForEach-Object { Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
+    $deletedintegrationruntimes | ForEach-Object { 
+        Write-Host "Deleting integration runtime " $_.Name
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+
+    #Start Active triggers - After cleanup efforts (moved code on 10/18/2018)
+    Write-Host "Starting active triggers"
+    $activeTriggerNames | ForEach-Object { 
+        Write-host "Enabling trigger " $_
+        Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+    }
+}
+```
+
+## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Resource Manager テンプレートでカスタム パラメーターを使用する
+
+Resource Manager テンプレートにカスタム パラメーターを定義できます。 必要なのは、リポジトリのルート フォルダーに `arm-template-parameters-definition.json` という名前のファイルを配置するだけです  (ファイル名は、ここに示されている名前と正確に一致する必要があります)。Data Factory は、コラボレーション ブランチからだけでなく、現在作業中のどのブランチからもファイルの読み取りを試みます。 ファイルが見つからない場合、Data Factory では既定のパラメーターと値が使用されます。
+
+### <a name="syntax-of-a-custom-parameters-file"></a>カスタム パラメーター ファイルの構文
+
+カスタム パラメーター ファイルの作成時に使用するいくつかのガイドラインを次に示します。 この構文の例を確認するには、下記の「[サンプルのカスタム パラメーター ファイル](#sample)」セクションを参照してください。
+
+1. 定義ファイルに配列を指定した場合、テンプレート内の一致するプロパティが配列であることを指示します。 Data Factory は、配列の最初のオブジェクトに指定された定義を使用して、配列内のすべてのオブジェクトを反復処理します。 2 番目のオブジェクトである文字列は、各反復処理のパラメーターの名前として使用されるプロパティ名です。
+
+    ```json
+    ...
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    ...
+    ```
+
+2. プロパティ名に `*` を設定した場合、、明示的に定義されているものを除き、そのレベルにあるすべてのプロパティをテンプレートで使用することを指示します。
+
+3. プロパティの値を文字列として設定した場合、プロパティをパラメーター化することを指示します。 `<action>:<name>:<stype>` の形式を使用します。
+    1.  `<action>` は次のいずれかの値になります。 
+        1.  `=` は、パラメーターの既定値として現在の値を保持することを意味します。
+        2.  `-` は、パラメーターの既定値を保持しないことを意味します。
+        3.  `|` は、接続文字列に対する Azure Key Vault からのシークレットの特殊なケースです。
+    2.  `<name>` は、パラメーターの名前です。 `<name`> が空白の場合、パラメーターの名前になります。 
+    3.  `<stype>` は、パラメーターの型です。 `<stype>` が空白の場合、既定の型は文字列です。
+4.  パラメーター名の冒頭に `-` 文字を入力すると、完全な Resource Manager パラメーター名が `<objectName>_<propertyName>` に短縮されます。
+たとえば、`AzureStorage1_properties_typeProperties_connectionString` は `AzureStorage1_connectionString` に短縮されます。
+
+
+### <a name="sample"></a>サンプルのカスタム パラメーター ファイル
+
+次の例で、サンプルのパラメーター ファイルを示します。 このサンプルを参照として使用して、独自のカスタム パラメーター ファイルを作成します。 指定したファイルが適切な JSON 形式ではない場合、Data Factory によりブラウザーのコンソールにエラー メッセージが出力され、Data Factory の UI に表示されている既定のパラメーターと値に戻されます。
+
+```json
+{
+    "Microsoft.DataFactory/factories/pipelines": {},
+    "Microsoft.DataFactory/factories/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "ssisProperties": {
+                    "catalogInfo": {
+                        "catalogServerEndpoint": "=",
+                        "catalogAdminUserName": "=",
+                        "catalogAdminPassword": {
+                            "value": "-::secureString"
+                        }
+                    },
+                    "customSetupScriptProperties": {
+                        "sasToken": {
+                            "value": "-::secureString"
+                        }
+                    }
+                },
+                "linkedInfo": {
+                    "key": {
+                        "value": "-::secureString"
+                    }
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "accountName": "=",
+                    "username": "=",
+                    "userName": "=",
+                    "accessKeyId": "=",
+                    "servicePrincipalId": "=",
+                    "userId": "=",
+                    "clientId": "=",
+                    "clusterUserName": "=",
+                    "clusterSshUserName": "=",
+                    "hostSubscriptionId": "=",
+                    "clusterResourceGroup": "=",
+                    "subscriptionId": "=",
+                    "resourceGroupName": "=",
+                    "tenant": "=",
+                    "dataLakeStoreUri": "=",
+                    "baseUrl": "=",
+                    "connectionString": "|:-connectionString:secureString"
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/datasets": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "folderPath": "=",
+                    "fileName": "="
+                }
+            }
+        }
+    }
 }
 ```

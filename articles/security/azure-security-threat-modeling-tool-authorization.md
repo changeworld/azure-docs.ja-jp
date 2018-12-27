@@ -1,24 +1,25 @@
 ---
-title: "承認 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威への対応"
+title: 承認 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: b9ad3ceeb77a4adc2c47b262aa40a48c14423198
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: eec628a5084dc663978e16e617192802d3ecfcfa
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307658"
 ---
 # <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム: 承認 | 対応策 
 | 製品/サービス | 記事 |
@@ -45,7 +46,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -56,7 +57,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -67,7 +68,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -140,7 +141,7 @@ WHERE userID=:id < - session var
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -151,7 +152,7 @@ WHERE userID=:id < - session var
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | SQL バージョン - V12、SQL バージョン - MsSQL2016 |
@@ -164,7 +165,7 @@ WHERE userID=:id < - session var
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -176,7 +177,7 @@ WHERE userID=:id < - session var
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT クラウド ゲートウェイ | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ゲートウェイの選択 - Azure IoT Hub |
 | **参照**              | [IoT Hub Access Control](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#Security) |
@@ -242,7 +243,7 @@ WHERE userID=:id < - session var
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure |
 | **参照**              | [ロール ベースのアクセス制御 (Service Fabric クライアント用)](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security-roles/) |
@@ -311,7 +312,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **手順** | <p>脆弱なクラス参照が使用されているため、攻撃者が未承認コードを実行できる可能性があります。 プログラムが参照するのは、一意に識別されていないユーザー定義のクラスです。 この厳密に識別されていないクラスが .NET によって読み込まれると、CLR 型ローダーは、指定した順序で次の場所にあるクラスを検索します。</p><ol><li>アセンブリの種類がわかっている場合、ローダーは構成ファイルのリダイレクト場所、GAC、構成ファイルを使用している現在のアセンブリ、およびアプリケーション ベース ディレクトリを検索します</li><li>アセンブリがわからない場合、ローダーは現在のアセンブリ、mscorlib、および TypeResolve イベント ハンドラーによって返される場所を検索します</li><li>この CLR 検索順序は、Type Forwarding メカニズム、AppDomain.TypeResolve イベントなどのフックで変更できます</li></ol><p>攻撃者が、同じ名前のクラスを別に作成して、CLR が最初に読み込む代替場所に配置することにより CLR 検索順序を悪用すると、攻撃者によって提供されたコードが CLR によって意図せずに実行されます</p>|
 
 ### <a name="example"></a>例
@@ -348,7 +349,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
 | **手順** | <p>このサービスでは、承認コントロールが使用されません。 クライアントが特定の WCF サービスを呼び出すと、WCF は、呼び出し元に、サーバーでサービス メソッドを実行する権限が付与されていることを確認するさまざまな承認スキームを提供します。 承認コントロールが WCF サービスに対して有効でない場合は、認証されたユーザーが、権限の昇格を実行できます。</p>|
 
 ### <a name="example"></a>例

@@ -1,12 +1,25 @@
+---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
+ms.openlocfilehash: 13ac2ec0569dc79791eca9efb2bd51e7b76ddd05
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572353"
+---
 1. [Azure Portal][Azure portal] にサインインします。
-2. 左側のメニューで、**[+ リソースの作成]** を選択します。 次に、**[エンタープライズ統合]** > **[リレー]** を選択します。
+2. 左側のメニューで、**[+ リソースの作成]** を選択します。 次に、**[統合]**、**[リレー]** の順に選択します。 一覧に **[リレー]** がない場合、右上隅にある **[すべて表示]** を選択してください。 
 3. **[名前空間の作成]** の下に、名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
 4. **[サブスクリプション]** ボックスで、名前空間を作成する Azure サブスクリプションを選択します。
 5. [[リソース グループ]](../articles/azure-resource-manager/resource-group-portal.md) ボックスで、名前空間を配置する既存のリソース グループを選択するか、新しいリソース グループを作成します。  
 6. **[場所]** で、名前空間をホストする国またはリージョンを選択します。
    
     ![[名前空間の作成]][create-namespace]
-7. **[作成]**を選択します。 システムによってサービス名前空間が作成され、有効になります。 数分後に、アカウントのリソースがプロビジョニングされます。
+7. **作成**を選択します。 システムによってサービス名前空間が作成され、有効になります。 数分後に、アカウントのリソースがプロビジョニングされます。
 
 ### <a name="get-management-credentials"></a>管理資格情報を取得する
 

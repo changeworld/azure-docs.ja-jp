@@ -1,25 +1,19 @@
 ---
-title: "Azure Data Catalog 導入のためのアプローチとプロセス | Microsoft Docs"
-description: "この記事では、Azure Data Catalog の導入を検討している組織向けのアプローチとプロセスを紹介します。具体的には、ビジョンの定義、主要なビジネス ユース ケースの特定、パイロット プロジェクトの選択などを取り上げます。"
+title: Azure Data Catalog 導入のためのアプローチとプロセス
+description: この記事では、Azure Data Catalog の導入を検討している組織向けのアプローチとプロセスを紹介します。具体的には、ビジョンの定義、主要なビジネス ユース ケースの特定、パイロット プロジェクトの選択などを取り上げます。
 services: data-catalog
-documentationcenter: 
-author: steelanddata
-manager: NA
-editor: 
-tags: 
+author: markingmyname
+ms.author: maghan
 ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: hero-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: d092613d88a4186c17c8c91046bb598c4f60b307
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 07323f1b0541555ef71919e026ecaf2494056dad
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406500"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Azure Data Catalog 導入のためのアプローチとプロセス
 この記事は、組織における **Azure Data Catalog** の導入方法について説明します。 **Azure Data Catalog** の導入を成功に導くためには、主にビジョンの定義、組織内の主要ビジネスのユースケースの識別、パイロット プロジェクトの選択の 3 点が重要になります。
@@ -31,7 +25,7 @@ ms.lasthandoff: 01/19/2018
 
 **Azure Data Catalog とは何ですか**
 
-**Azure Data Catalog** は Azure 内で完全に管理されたサービスで、セルフ サービスのデータ ソース検出を可能にする企業全体の情報 (メタデータ) カタログです。 Data Catalog を使用して、データ資産を登録および検出し、データ資産に注釈を付けたり接続したりします。 Data Catalog は雑多な情報資産を管理することでデータ資産を見つけやすく、把握しやすく、そして接続しやすくすることを意図したものです。 利用できるデータから洞察を得るまでの時間を短縮し、より大きな価値を組織にもたらします。 詳細については、「 [Microsoft Azure Data Catalog](https://azure.microsoft.com/services/data-catalog/)」を参照してください。
+**Azure Data Catalog** は Azure 内のフル マネージドのサービスで、セルフ サービスのデータ ソース検出を可能にする企業全体の情報 (メタデータ) カタログです。 Data Catalog を使用して、データ資産を登録および検出し、データ資産に注釈を付けたり接続したりします。 Data Catalog は雑多な情報資産を管理することでデータ資産を見つけやすく、把握しやすく、そして接続しやすくすることを意図したものです。 利用できるデータから洞察を得るまでの時間を短縮し、より大きな価値を組織にもたらします。 詳細については、「 [Microsoft Azure Data Catalog](https://azure.microsoft.com/services/data-catalog/)」を参照してください。
 
 ## <a name="azure-data-catalog-adoption-plan"></a>Azure Data Catalog の導入計画
 **Azure Data Catalog** の導入計画では、そのサービスを使用する利点をどのように利害関係者およびユーザーに伝達するか、およびユーザーに提供するトレーニングの種類について説明します。 Data Catalog を導入するための成功の鍵になる推進力の 1 つは、どのようにしてユーザーおよび利害関係者にサービスの価値を効率的に伝達するかということです。 初期導入計画の主な対象者は、サービスのユーザーです。 利害関係者からどれだけ購入されていたとしても、Data Catalog オファリングのユーザー (顧客) に使用されていなければ、導入が成功することはありません。 そのため、この記事は購入する利害関係者がいることを前提とし、Data Catalog のユーザー導入向けの計画を作成することに注目します。
@@ -142,7 +136,7 @@ Nancy と彼女のチームがどのように容易に価値の高いデータ�
 パイロット チームが Data Catalog の使用に参加する前に、1 回目の会議を予定し、パイロット プロジェクトの期待値について検討して、最初のトレーニングを提供します。
 
 ### <a name="set-expectations"></a>期待値の設定
-例外と目標を設定すると、ビジネス ユーザーが特定の成果物に集中するために役立ちます。 プロジェクトを順調に進めるには、定期的に (範囲およびパイロット期間に基づいて毎日または毎週など) 宿題を割り当てます。 Data Catalog の最も重要の機能の 1 つは、クラウドソーシング データ資産であるため、ビジネス ユーザーは企業データの知識から恩恵を受けることができます。 最適な宿題の割り当ては、各パイロット チーム メンバーが使用したデータ ソースを少なくとも 1 つ登録するか、注釈を付けることです。 詳細については、[データ ソースの登録](data-catalog-get-started.md)に関するページと[データ ソースに注釈を付ける方法](data-catalog-get-started.md)に関するページを、それぞれ参照してください。
+期待値と目標を設定すると、ビジネス ユーザーが特定の成果物に集中するために役立ちます。 プロジェクトを順調に進めるには、定期的に (範囲およびパイロット期間に基づいて毎日または毎週など) 宿題を割り当てます。 Data Catalog の最も重要の機能の 1 つは、クラウドソーシング データ資産であるため、ビジネス ユーザーは企業データの知識から恩恵を受けることができます。 最適な宿題の割り当ては、各パイロット チーム メンバーが使用したデータ ソースを少なくとも 1 つ登録するか、注釈を付けることです。 詳細については、[データ ソースの登録](data-catalog-get-started.md)に関するページと[データ ソースに注釈を付ける方法](data-catalog-get-started.md)に関するページを、それぞれ参照してください。
 
 定期的にチームと会議を行い、一部の注釈をレビューします。 データ ソースに関する適切な注釈は、中央の場所に意味のあるデータ ソースの洞察を提供するため、Data Catalog 導入の成功の核になります。 適切な注釈がなければ、データ ソースに関する知識は、企業全体にわたって分散して残ります。 「 [データ ソースに注釈を付ける方法](data-catalog-get-started.md)」を参照してください。
 

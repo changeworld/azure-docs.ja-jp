@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: fe916df286b0e50430464b3f2f8837b898abb827
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9543b1f3b10c246dadaf21b6960c7b6785fb66f4
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566382"
 ---
 # <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>API Management を使用した AzureML Web サービスの管理方法
 ## <a name="overview"></a>概要
@@ -151,7 +153,7 @@ API を作成するには、次の手順に従います。
 
    ![demoazureml-api](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
-3. 操作の **[RRS Execute]** を選択します。 **[試用版]**をクリックします。
+3. 操作の **[RRS Execute]** を選択します。 **[試用版]** をクリックします。
 
    ![try-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
@@ -163,7 +165,7 @@ API を作成するには、次の手順に従います。
 
    ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
-5. **[Send]**をクリックします。
+5. **[Send]** をクリックします。
 
    ![[Send]](./media/manage-web-service-endpoints-using-api-management/send.png)
 
@@ -175,7 +177,7 @@ API を作成するには、次の手順に従います。
 ### <a name="creating-the-experiment"></a>実験の作成
 シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。 Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。 例: 
 
-| テキスト | ハッシュされたテキスト |
+| Text | ハッシュされたテキスト |
 | --- | --- |
 | This is a good day |1 1 2 2 0 2 0 1 |
 
@@ -212,7 +214,7 @@ Web サービスを作成します。 **[Web サービス]** を展開し、**[�
 
 ![output-to-feature-hashing](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
 
-**[Web サービスの発行]**をクリックします。
+**[Web サービスの発行]** をクリックします。
 
 ![publish-web-service](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
 
@@ -375,7 +377,7 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 
     while True:
         print("Checking the job status...")
-        # If you are using Python 3+, replace urllib2 with urllib.request in the follwing code
+        # If you are using Python 3+, replace urllib2 with urllib.request in the following code
         req = urllib2.Request(url2, headers = { "Authorization":("Bearer " + api_key) })
         try:
             response = urllib2.urlopen(req)

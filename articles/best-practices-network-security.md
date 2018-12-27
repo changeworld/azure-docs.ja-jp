@@ -1,11 +1,11 @@
 ---
-title: "Azure のネットワーク セキュリティに関するベスト プラクティス | Microsoft Docs"
-description: "セキュリティで保護されたネットワーク環境を作成するために Azure で利用できる主な機能の一部を説明します。"
+title: Azure のネットワーク セキュリティに関するベスト プラクティス | Microsoft Docs
+description: セキュリティで保護されたネットワーク環境を作成するために Azure で利用できる主な機能の一部を説明します。
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: d169387a-1243-4867-a602-01d6f2d8a2a1
 ms.service: virtual-network
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: fb5e399d4ab02a7f2805cc280b213bf5b44f6993
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf015f4857a22b755813d0be1af5a55a8b7b6535
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360474"
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>Microsoft クラウド サービスとネットワーク セキュリティ
 Microsoft クラウド サービスでは、ハイパースケール サービスとインフラストラクチャ、エンタープライズ レベルの機能、ハイブリッド接続の多くの選択肢を提供しています。 顧客は、これらのサービスにインターネット経由でアクセスするか、プライベート ネットワーク接続を提供する Azure ExpressRoute を使用してアクセスするかを選択できます。 Microsoft Azure Platform により、顧客は自身のインフラストラクチャをシームレスにクラウドに拡張し、多層アーキテクチャを構築できます。 また、サード パーティは、セキュリティ サービスや仮想アプライアンスを提供することで、機能を強化できます。 このホワイト ペーパーでは、顧客が ExpressRoute 経由でアクセスした Microsoft クラウド サービスを使用するときに考慮する必要がある、セキュリティとアーキテクチャの問題の概要を説明します。 また、Azure 仮想ネットワークでより安全なサービスを作成する方法についても説明します。
@@ -92,7 +93,7 @@ Microsoft は、クラウド インフラストラクチャの保護に多額の
 * **クロスプレミス接続**: Azure で 1 つの仮想ネットワークと複数のオンプレミス サイトや他の仮想ネットワークとの間にクロスプレミス接続を確立できます。 顧客は、接続を構成する際、VNet のピアリング、Azure VPN ゲートウェイ、サードパーティ製のネットワーク仮想アプライアンス、または ExpressRoute を使用できます。 Azure では、標準的な IPsec/IKE プロトコルと ExpressRoute プライベート接続を使用したサイト間 (S2S) VPN をサポートしています。
 * **NSG** を使用して、必要なレベルの粒度 (ネットワーク インターフェイス、個々の VM、仮想サブネットなど) でルール (ACL) を作成できます。 顧客は、仮想ネットワーク内でのワークロード間の通信を許可または拒否することで、クロスプレミス接続を介した顧客のネットワーク上のシステムからのアクセス、または直接インターネット通信を制御できます。
 * **UDR** と **IP 転送**を使用して、仮想ネットワーク内の異なる層間の通信経路を定義できます。 ファイアウォール、IDS/IPS、その他の仮想アプライアンスをデプロイし、これらのセキュリティ アプライアンスを介してネットワーク トラフィックをルーティングすることで、セキュリティ境界ポリシーを適用、監査、検査することができます。
-* **ネットワーク仮想アプライアンス** : ファイアウォール、ロード バランサー、IDS/IPS などのセキュリティ アプライアンスは、Azure Marketplace と VM イメージ ギャラリーで入手できます。 これらのアプライアンスを仮想ネットワーク、特にセキュリティ境界 (境界ネットワーク サブネットを含む) にデプロイすることで、多層のセキュリティで保護されたネットワーク環境を実現できます。
+* Azure Marketplace の**ネットワーク仮想アプライアンス**: ファイアウォール、ロード バランサー、IDS/IPS などのセキュリティ アプライアンスは、Azure Marketplace と VM イメージ ギャラリーで入手できます。 これらのアプライアンスを仮想ネットワーク、特にセキュリティ境界 (境界ネットワーク サブネットを含む) にデプロイすることで、多層のセキュリティで保護されたネットワーク環境を実現できます。
 
 このような機能を使用した場合に Azure で境界ネットワーク アーキテクチャがどのように構築されるかについて、一例を次の図に示します。
 
@@ -515,9 +516,9 @@ ExpressRoute プライベート ピアリング ネットワーク接続を追�
 * Azure Resource Manager を使用した Azure へのアクセス
 * PowerShell を使用した Azure へのアクセス: [https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azure/overview)
 * 仮想ネットワークのドキュメント: [https://docs.microsoft.com/azure/virtual-network/](https://docs.microsoft.com/azure/virtual-network/)
-* ネットワーク セキュリティ グループのドキュメント: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/virtual-networks-nsg.md)
-* ユーザー定義ルーティングのドキュメント: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
-* Azure の仮想ゲートウェイ: [https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway/)
+* ネットワーク セキュリティ グループのドキュメント: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/security-overview.md)
+* ユーザー定義のルーティングのドキュメント: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
+* Azure 仮想ゲートウェイ: [https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway/)
 * サイト間 VPN: [https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell](vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * ExpressRoute のドキュメント (作業の開始に関するセクションおよび「方法」セクションをご確認ください): [https://docs.microsoft.com/azure/expressroute/](https://docs.microsoft.com/azure/expressroute/)
 

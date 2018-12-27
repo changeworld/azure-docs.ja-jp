@@ -3,7 +3,7 @@ title: チュートリアル - Azure 仮想マシン スケール セットの�
 description: Azure PowerShell を使用して仮想マシン スケール セットを作成するための方法と一般的な管理タスク (インスタンスの起動と停止、スケール セット容量の変更の方法など) について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2018
-ms.author: iainfou
+ms.date: 05/18/2018
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 54f63ec4cddf64110eadf25fff60167238f9f9a6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: f525603419149c42a4f979b11547222ad00fc74c
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465986"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットの作成および管理
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 このチュートリアルで学習する内容は次のとおりです。
@@ -30,13 +31,13 @@ ms.lasthandoff: 03/30/2018
 > * VM イメージを選択して使用する
 > * 特定の VM インスタンス サイズを確認して使用する
 > * スケール セットを手動でスケーリングする
-> * 一般的なスケール セットの管理タスクを実行する
+> * スケール セットの一般的な管理タスクを実行する
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.6.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 6.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
@@ -96,7 +97,7 @@ Get-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleS
 
 
 ## <a name="list-connection-information"></a>接続情報を一覧表示する
-パブリック IP アドレスは、トラフィックを個々の VM インスタンスにルーティングするロード バランサーに割り当てられます。 既定では、リモート接続トラフィックを特定のポート上の各 VM に転送する Azure ロード バランサーにネットワーク アドレス変換 (NAT) 規則が追加されます。 スケール セット内の VM インスタンスに接続するには、割り当てられたパブリック IP アドレスとポート番号へのリモート接続を作成します。
+トラフィックを個々の VM インスタンスにルーティングするロード バランサーに、パブリック IP アドレスが割り当てられます。 既定では、リモート接続トラフィックを特定のポート上の各 VM に転送する Azure ロード バランサーにネットワーク アドレス変換 (NAT) 規則が追加されます。 スケール セット内の VM インスタンスに接続するには、割り当てられたパブリック IP アドレスとポート番号へのリモート接続を作成します。
 
 スケール セット内の VM インスタンスに接続するための NAT ポートを一覧表示するには、まず、[Get-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancer) を使用して、ロード バランサー オブジェクトを取得します。 次に、[Get-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancerInboundNatRuleConfig) を使用して、受信 NAT 規則を表示します。
 
@@ -145,7 +146,7 @@ VM インスタンスにログインすると、必要に応じて手動で構�
 
 
 ## <a name="understand-vm-instance-images"></a>VM インスタンス イメージについて
-前の手順で [Set-AzureRmVmssStorageProfile](/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile) を使用してスケール セット構成を定義したときは、Windows Server 2016 Datacenter イメージを使用しました。 Azure Marketplace には、VM インスタンスの作成に使用できる多くのイメージが用意されています。 使用可能な発行元の一覧を表示するには、[Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) コマンドを使用します。
+Azure Marketplace には、VM インスタンスの作成に使用できる多くのイメージが用意されています。 使用可能な発行元の一覧を表示するには、[Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) コマンドを使用します。
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "EastUS"
@@ -188,7 +189,7 @@ New-AzureRmVmss `
   -SubnetName "mySubnet2" `
   -PublicIpAddressName "myPublicIPAddress2" `
   -LoadBalancerName "myLoadBalancer2" `
-  -UpgradePolicy "Automatic" `
+  -UpgradePolicyMode "Automatic" `
   -ImageName "MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:latest" `
   -Credential $cred
 ```
@@ -245,14 +246,14 @@ New-AzureRmVmss `
   -SubnetName "mySubnet3" `
   -PublicIpAddressName "myPublicIPAddress3" `
   -LoadBalancerName "myLoadBalancer3" `
-  -UpgradePolicy "Automatic" `
+  -UpgradePolicyMode "Automatic" `
   -VmSize "Standard_F1" `
   -Credential $cred
 ```
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>スケール セットの容量を変更する
-スケール セットを作成したときは、2 つの VM インスタンスを要求しました。 スケール セット内の VM インスタンスの数を増やすか、または減らすために、手動でその容量を変更できます。 スケール セットでは、必要な数の VM インスタンスを作成または削除した後、トラフィックを分散するようにロード バランサーを構成します。
+スケール セットを作成したときは、2 つの VM インスタンスを要求しました。 スケール セット内の VM インスタンスの数を増やすか、または減らすために、手動でその容量を変更できます。 スケール セットにより、必要な数の VM インスタンスが作成または削除され、その後、トラフィックを分散するようにロード バランサーが構成されます。
 
 最初に、[Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) を使用してスケール セット オブジェクトを作成し、次に `sku.capacity` に新しい値を指定します。 容量の変更を適用するには、[Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) を使用します。 次の例では、スケール セット内の VM インスタンスの数を *3* に設定します。
 
@@ -324,7 +325,7 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 > * VM イメージを選択して使用する
 > * 特定の VM サイズを確認して使用する
 > * スケール セットを手動でスケーリングする
-> * 一般的なスケール セットの管理タスクを実行する
+> * スケール セットの一般的な管理タスクを実行する
 
 次のチュートリアルに進み、スケール セット ディスクについて確認してください。
 

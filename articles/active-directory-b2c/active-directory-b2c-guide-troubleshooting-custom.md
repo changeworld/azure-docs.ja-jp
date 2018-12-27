@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: カスタム ポリシーのトラブルシューティング | Microsoft Docs'
-description: Azure Active Directory でカスタム ポリシーを使って作業するときに発生するエラーを解決する方法について説明します。
+title: Azure Active Directory B2C でのカスタム ポリシーのトラブルシューティング | Microsoft Docs
+description: Azure Active Directory B2C でカスタム ポリシーを使って作業するときに発生するエラーを解決する方法について説明します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
-ms.openlocfilehash: e51990bd2e121b89e7260e0d745d08ecc82ff8a0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 32692cbe7959650d5181c9e9dfcd7dd5ee55a46e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024595"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C のカスタム ポリシーと Identity Experience Framework のトラブルシューティング
 
@@ -74,4 +74,4 @@ XML ルールのレビューが役に立つ可能性があります。 Azure AD 
 
 ## <a name="next-steps"></a>次の手順
 
-* GitHub から、[active-directory-b2c-custom-policy-starterpack] (https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) .zip ファイルをダウンロードします。
+* GitHub から、[active-directory-b2c-custom-policy-starterpack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) .zip ファイルをダウンロードします。

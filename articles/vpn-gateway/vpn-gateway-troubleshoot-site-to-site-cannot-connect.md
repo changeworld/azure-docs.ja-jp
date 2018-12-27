@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 3e590df66f84cd88ba7ba251373c14a44a94ca77
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: a2330cee3d5ea48f9f679ac02f6889ccce6c1d7c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242757"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>トラブルシューティング: Azure サイト間 VPN が動作を停止して接続できない
 
@@ -62,7 +63,7 @@ Azure VPN 接続の共有キーを確認するには、次のいずれかの方�
 
 **Azure PowerShell**
 
-Azure Resource Manager デプロイメント モデルの場合:
+Azure Resource Manager デプロイ モデルの場合:
 
     Get-AzureRmVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
 

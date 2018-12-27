@@ -1,27 +1,23 @@
 ---
-title: "Azure を対象とした MongoDB、Angular、Node のチュートリアル - パート 4 | Microsoft Docs"
-description: "Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 4 です。"
-services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 
+title: MongoB API を使用する Node.Js、Angular アプリ (パート 4)
+titleSuffix: Azure Cosmos DB
+description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 4 です。
+author: johnpapa
 ms.service: cosmos-db
-ms.workload: 
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 09/05/2017
-ms.author: mimig
-ms.custom: mvc
-ms.openlocfilehash: e1d96fe8cb06be08863bbcd1885080aaca8fbd61
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 12/06/2018
+ms.author: jopapa
+ms.custom: seodec18
+ms.openlocfilehash: d6119186bd8ffbda4fa3bb2c432dd58d851992ea
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136224"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account-using-the-azure-cli"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 4: Azure CLI を使って Azure Cosmos DB アカウントを作成する
+# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 4:Azure Cosmos DB アカウントを作成する
 
 複数のパートから成るこのチュートリアルでは、Node.js で Express、Angular、Azure Cosmos DB データベースを使って記述された新しい [MongoDB API](mongodb-introduction.md) アプリの作成方法を紹介します。
 
@@ -39,7 +35,7 @@ ms.lasthandoff: 02/01/2018
 
 本チュートリアルのこのパートに取り組む前に、[パート 3](tutorial-develop-mongodb-nodejs-part3.md) の手順を済ませておいてください。 
 
-このチュートリアル セクションでは、インターネット ブラウザーから Azure Cloud Shell を使用するか、ローカルにインストールされた [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用できます。 Azure CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降が実行されていることを確認してください。 コマンド プロンプトから `az --version` を実行して、ご使用のバージョンを確認します。 
+このチュートリアル セクションでは、インターネット ブラウザーから Azure Cloud Shell を使用するか、ローカルにインストールされた [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用できます。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -52,7 +48,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
-Azure Cosmos DB アカウントは、[`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) コマンドで作成します。
+Azure Cosmos DB アカウントは、[`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) コマンドで作成します。
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB

@@ -1,24 +1,25 @@
 ---
-title: "Linux 用の Azure Service Fabric パッチ オーケストレーション アプリケーション | Microsoft Docs"
-description: "Linux Service Fabric クラスターでオペレーティング システムへのパッチの適用を自動化するためのアプリケーション。"
+title: Linux 用の Azure Service Fabric パッチ オーケストレーション アプリケーション | Microsoft Docs
+description: Linux Service Fabric クラスターでオペレーティング システムへのパッチの適用を自動化するためのアプリケーション。
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/22/2018
+ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: dac8068705e284b04d84d128eb1ce62c459d44ff
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746719"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Linux オペレーティング システムへのパッチの適用
 
@@ -61,9 +62,9 @@ ms.lasthandoff: 02/21/2018
 ### <a name="ensure-that-your-azure-vms-are-running-ubuntu-1604"></a>Azure VM で、Ubuntu 16.04 が実行されていることを確認する
 このドキュメントの執筆時点では、サポートされているバージョンは Ubuntu 16.04 (`Xenial Xerus`) のみです。
 
-### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-61x-and-above"></a>Service Fabric Linux クラスターがバージョン 6.1.x 以降であることを確認する
+### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-62x-and-above"></a>Service Fabric Linux クラスターがバージョン 6.2.x 以降であることを確認する
 
-パッチ オーケストレーション アプリケーション Linux では、Service Fabric ランタイム バージョン 6.1.x 以降でのみ使用できる特定のランタイム機能を使用します。
+パッチ オーケストレーション アプリケーション Linux では、Service Fabric ランタイム バージョン 6.2.x 以降でのみ使用できる特定のランタイム機能を使用します。
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>修復マネージャー サービスを有効にする (まだ実行されていない場合)
 
@@ -78,9 +79,9 @@ Azure Linux クラスターの持続性層がシルバーおよびゴールド�
 ![Azure Portal から修復マネージャーを有効にする画像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデル
-[Azure Resource Manager デプロイメント モデル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して、新規および既存の Service Fabric クラスターで修復マネージャー サービスを有効にすることもできます。 デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Azure Resource Manager デプロイメント モデル テンプレートを作成することもできます。 
+[Azure Resource Manager デプロイ モデル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して、新規および既存の Service Fabric クラスターで修復マネージャー サービスを有効にすることもできます。 デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Azure Resource Manager デプロイ モデル テンプレートを作成することもできます。 
 
-[Azure Resource Manager デプロイメント モデル テンプレート](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して修復マネージャー サービスを有効にするには:
+[Azure Resource Manager デプロイ モデル テンプレート](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して修復マネージャー サービスを有効にするには:
 
 1. まず、`Microsoft.ServiceFabric/clusters` リソースの `apiversion` が `2017-07-01-preview` に設定されていることを確認します。 値が異なる場合は、`apiVersion` を `2017-07-01-preview` 以上に更新する必要があります。
 
@@ -118,11 +119,13 @@ Ubuntu の場合、[unattended-upgrades](https://help.ubuntu.com/community/Autom
 
 ## <a name="download-the-app-package"></a>アプリ パッケージのダウンロード
 
-このアプリケーションは、[こちらのダウンロード リンク](https://go.microsoft.com/fwlink/?linkid=867984)からダウンロードできます。
+インストール スクリプトを備えたアプリケーションは、[アーカイブ リンク](https://go.microsoft.com/fwlink/?linkid=867984)からダウンロード可能です。
+
+sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/POA/POA_v2.0.2.sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
 
 ## <a name="configure-the-app"></a>Configure the app
 
-パッチ オーケストレーション アプリケーションの動作はニーズに合わせて構成できます。 アプリケーションの作成時または更新時にアプリケーション パラメーターを渡して既定値を上書きします。 アプリケーション パラメーターを渡すには、`Start-ServiceFabricApplicationUpgrade` コマンドレットまたは `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定します。
+パッチ オーケストレーション アプリケーションの動作はニーズに合わせて構成できます。 アプリケーションの作成時または更新時にアプリケーション パラメーターを渡して既定値をオーバーライドします。 アプリケーション パラメーターを渡すには、`Start-ServiceFabricApplicationUpgrade` コマンドレットまたは `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定します。
 
 |**パラメーター**        |**種類**                          | **詳細**|
 |:-|-|-|
@@ -131,7 +134,7 @@ Ubuntu の場合、[unattended-upgrades](https://help.ubuntu.com/community/Autom
 | UpdateOperationTimeOutInMinutes | int <br>(既定: 180)                   | 更新操作 (ダウンロードまたはインストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
 | RescheduleCount      | int <br> (既定値: 5)                  | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする最大回数。          |
 | RescheduleTimeInMinutes  | int <br>(既定値: 30) | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする間隔。 |
-| UpdateFrequency           | コンマ区切りの文字列 (既定値: "Weekly, Wednesday, 7:00:00")     | クラスターでの OS 更新プログラムのインストールの頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD, HH:MM:SS (例: Monthly, 5, 12:22:32)。 <br> -   Weekly, DAY, HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、更新が実行されないことを示します。  <br><br> 時刻はすべて UTC 形式です。|
+| UpdateFrequency           | コンマ区切りの文字列 (既定値: "Weekly, Wednesday, 7:00:00")     | クラスターでの OS 更新プログラムのインストールの頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD, HH:MM:SS (例: Monthly, 5, 12:22:32)。 <br> -   Weekly, DAY,HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、更新が実行されないことを示します。  <br><br> 時刻はすべて UTC 形式です。|
 | UpdateClassification | コンマ区切りの文字列 (既定値: "securityupdates") | クラスター ノードにインストールする必要のある更新プログラムの種類。 指定できる値は、securityupdates, all です。 <br> -  securityupdates - セキュリティ更新プログラムのみをインストールします <br> -  all - apt から利用可能な更新プログラムをすべてインストールします。|
 | ApprovedPatches | コンマ区切りの文字列 (既定値: "") | これは、クラスター ノードにインストールする必要がある承認済み更新プログラムの一覧です。 コンマ区切りリストには、承認されているパッケージと、必要に応じて目的のターゲット バージョンが含まれています。<br> 例: "apt-utils = 1.2.10ubuntu1, python3-jwt, apt-transport-https < 1.2.194, libsystemd0 >= 229-4ubuntu16" <br> 上記によって、次がインストールされます <br> - バージョン 1.2.10ubuntu1 の apt-utils (apt-cache で使用可能な場合)。 この特定のバージョンを使用できない場合は、何も行われません。 <br> - python3-jwt は利用可能な最新バージョンにアップグレードされます。 パッケージが存在しない場合は、何も行われません。 <br> - apt-transport-https は最新バージョン (1.2.194 未満) にアップグレードされます。 このバージョンが存在しない場合は、何も行われません。 <br> - libsystemd0 は最新バージョン (229-4ubuntu16 以上) にアップグレードされます。 このようなバージョンが存在しない場合は、何も行われません。|
 | RejectedPatches | コンマ区切りの文字列 (既定値: "") | これは、クラスター ノードにインストールしない更新プログラムの一覧です <br> 例: "bash, sudo" <br> 前述の例では、bash、sudo が更新プログラムの受信から除外されます。 |
@@ -319,6 +322,10 @@ Q. **アップグレード後に、オーケストレーション アプリケ�
 
 A. はい、クリーンアップはインストール後の手順の一部として行われます。 
 
+Q. **パッチ オーケストレーション アプリを、自分の開発クラスター (1 ノード クラスター) にパッチを適用するために使用できますか?**
+
+A. いいえ、パッチ オーケストレーション アプリは、1 ノード クラスターへのパッチ適用には使用できません。 この制限は設計によるものです。パッチ適用の修復ジョブは、[Service Fabric のシステム サービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services)または任意の顧客アプリにダウンタイムが発生するため、いずれも修復マネージャーからの承認が得られないからです。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="a-node-is-not-coming-back-to-up-state"></a>ノードが稼働状態に戻らない
@@ -360,5 +367,11 @@ A. はい、クリーンアップはインストール後の手順の一部と�
 ### <a name="version-010"></a>バージョン 0.1.0
 - プライベート プレビュー リリース
 
-### <a name="version-200-latest"></a>バージョン 2.0.0 (最新)
+### <a name="version-200"></a>バージョン 2.0.0
 - 公開リリース
+
+### <a name="version-201"></a>バージョン 2.0.1
+- 最新の Service Fabric SDK を使用してアプリを再コンパイル
+
+### <a name="version-202-latest"></a>バージョン 2.0.2 (最新)
+- 再起動時に正常性の警告が残る問題を修正しました。

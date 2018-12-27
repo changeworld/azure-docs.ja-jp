@@ -1,19 +1,35 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: billing
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 10/19/2018
+ms.author: jroth
+ms.custom: include file
+ms.openlocfilehash: ef670c2dc701f888be3c7bb9a546c8a8a46f993a
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458871"
+---
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md) |リージョンあたり 10,000 <sup>1</sup> |リージョンあたり 10,000 |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの VM の合計コア数 |リージョンあたり 20 件<sup>1</sup> | サポートにお問い合せください |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのシリーズ (Dv2、F など) ごとの VM のコア数 |リージョンあたり 20 件<sup>1</sup> | サポートにお問い合せください |
 | [共同管理者](../articles/billing-add-change-azure-subscription-administrator.md) 数 |無制限 |無制限 |
-| [Storage アカウント](../articles/storage/common/storage-create-storage-account.md) 数 |200 |200<sup>2</sup> |
-| サブスクリプションあたりの[リソース グループ数](../articles/azure-resource-manager/resource-group-overview.md) |800 |800 |
+| サブスクリプションあたりのリージョンごとの[ストレージ アカウント数](../articles/storage/common/storage-quickstart-create-account.md) |200 |200<sup>2</sup> |
+| サブスクリプションあたりの[リソース グループ数](../articles/azure-resource-manager/resource-group-overview.md) |980 |980 |
 | [可用性セット](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) 数 |リージョンあたり 2,000 |リージョンあたり 2,000 |
-| リソース マネージャー API 読み取り数 |1 時間あたり 15,000 |1 時間あたり 15,000 |
-| リソース マネージャー API 書き込み数 |1 時間あたり 1,200 |1 時間あたり 1,200 |
 | リソース マネージャー API 要求のサイズ |4,194,304 バイト |4,194,304 バイト |
 | サブスクリプションあたりのタグ数<sup>3</sup> |無制限 |無制限 |
 | サブスクリプションあたりの一意のタグの計算<sup>3</sup> | 10,000 | 10,000 |
 | [クラウド サービス](../articles/cloud-services/cloud-services-choose-me.md) 数 |該当なし<sup>4</sup> |該当なし<sup>4</sup> |
 | [アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) 数 |該当なし<sup>4</sup> |該当なし<sup>4</sup> |
+| 場所あたりの[サブスクリプション レベルのデプロイ](../articles/azure-resource-manager/deploy-to-subscription.md) | 800 | 800 |
 
 <sup>1</sup>既定の制限は、プラン カテゴリの種類 (無料試用版や従量課金制など) とシリーズ (Dv2、F、G など) によって異なります。
 

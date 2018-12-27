@@ -2,7 +2,7 @@
 
 ![Cloud Shell ストレージ アカウントを検索する](../articles/app-service/media/app-service-deploy-zip/upload-choose-storage-account.png)
 
-ストレージ アカウントの **[概要]** ページで、**[ファイル]**を選択します。
+ストレージ アカウントの **[概要]** ページで、**[ファイル]** を選択します。
 
 自動生成されたファイル共有を選択し、**[アップロード]** を選択します。 このファイル共有は、`clouddrive` として Cloud Shell にマウントされます。
 

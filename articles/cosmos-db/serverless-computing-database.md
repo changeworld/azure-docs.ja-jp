@@ -1,27 +1,22 @@
 ---
-title: サーバーレス データベース コンピューティング - Azure Functions と Azure Cosmos DB | Microsoft Docs
+title: サーバーレス データベース コンピューティング - Azure Functions と Azure Cosmos DB
 description: Azure Cosmos DB と Azure Functions の両方を使用して、イベント ドリブンのサーバーレス コンピューティング アプリケーションを作成する方法について説明します。
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
-documentationcenter: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 9b1ffe7e63157f86a1cfe643e297c0cb3eb5c235
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f0f0308233334e2662704e818c765c625a80019d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878331"
 ---
-# <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Azure Functions を使用したサーバーレス データベース コンピューティング
+# <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 
-サーバーレス コンピューティングとは、繰り返し可能でステートレスな個々のロジックに集中できる機能です。 個々のロジックにインフラストラクチャの管理は必要ありません。秒単位またはミリ秒単位の実行時間のみリソースを使用します。 サーバーレス コンピューティングのムーブメントの中心には、関数があります。関数は、Azure エコシステムの[Azure Functions](https://azure.microsoft.com/services/functions) で使用できます。
+サーバーレス コンピューティングとは、繰り返し可能でステートレスな個々のロジックに集中できる機能です。 個々のロジックにインフラストラクチャの管理は必要ありません。秒単位またはミリ秒単位の実行時間のみリソースを使用します。 サーバーレス コンピューティングのムーブメントの中心には、関数があります。関数は、Azure エコシステムの[Azure Functions](https://azure.microsoft.com/services/functions) で使用できます。 Azure での他のサーバーレス実行環境については、「[Azure でのサーバーレス](https://azure.microsoft.com/solutions/serverless/)」ページをご覧ください。 
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) と Azure Functions 間のネイティブ統合を使用すると、Azure Cosmos DB アカウントからデータベースのトリガー、入力バインディング、出力バインディングを直接作成できます。 Azure Functions と Azure Cosmos DB を使用すると、グローバル ユーザー ベース向けの、リッチ データに低待機時間でアクセスできる、イベント ドリブンのサーバーレス アプリケーションを作成およびデプロイすることができます。
 
@@ -30,11 +25,12 @@ ms.lasthandoff: 04/06/2018
 Azure Cosmos DB と Azure Functions を使用して、次の方法でデータベースとサーバーレス アプリケーションを統合できます。
 
 * Azure Functions でイベント ドリブンの **Azure Cosmos DB トリガー**を作成します。 このトリガーは、[変更フィード](change-feed.md) ストリームを利用して、Azure Cosmos DB コンテナーの変更を監視しています。 コンテナーに変更が加えられると、変更フィード ストリームがトリガーに送信され、それによって Azure Functions が呼び出されます。
-* または、**入力バインディング**を使用して、Azure Functions を Azure Cosmos DB コレクションにバインドします。 関数が実行されると、入力バインディングはコンテナーのデータを読み取ります。
-* **出力バインディング**を使用して、関数を Azure Cosmos DB コレクションにバインドします。 関数が完了すると、出力バインディングはコンテナーにデータを書き込みます。
+* または、**入力バインディング**を使用して、Azure Functions を Azure Cosmos DB コンテナーにバインドします。 関数が実行されると、入力バインディングはコンテナーのデータを読み取ります。
+* **出力バインディング**を使用して、関数を Azure Cosmos DB コンテナーにバインドします。 関数が完了すると、出力バインディングはコンテナーにデータを書き込みます。
 
 > [!NOTE]
-> 現時点で、Azure Cosmos DB トリガー、入力バインディング、出力バインディングは、SQL API アカウントと Graph API アカウントにのみ使用できます。
+> 現在のところ、Azure Cosmos DB トリガー、入力バインディング、および出力バインディングは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API については、MongoDB API、Cassandra API、Gremlin API、Table API など、API 用の静的クライアントを使用して関数からデータベースにアクセスする必要があります。
+
 
 次の各図は、これら 3 つの統合を示しています。 
 
@@ -61,7 +57,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 4. トリガーは、センサー データ コレクションに対するデータの変更ごとに呼び出されます。また、変更が変更フィード経由でストリームされたときにも呼び出されます。
 5. 関数でしきい値の条件を使用して、センサー データを保証部門に送信します。
 6. 温度が特定の値を超えた場合も、警告が所有者に送信されます。
-7. 関数に対する**出力バインディング**によって、別の Azure Cosmos DB コレクションの車の記録が更新され、エンジンのチェック イベントに関する情報が保存されます。
+7. 関数に対する**出力バインディング**によって、別の Azure Cosmos DB コンテナーの車の記録が更新され、エンジンのチェック イベントに関する情報が保存されます。
 
 次の図は、このトリガーで Azure Portal で書き込まれるコードを示しています。
 
@@ -85,7 +81,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 ### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>ゲームのユース ケース - Azure Cosmos DB トリガーと出力バインディング
 
-ゲームでは、新しいユーザーを作成するときに、[Azure Cosmos DB Graph API](graph-introduction.md) を使用して、知っている可能性のある他のユーザーを検索することができます。 簡単に取得できるように、結果を [Azure Cosmos DB SQL データベース] に書き込むことができます。
+ゲームでは、新しいユーザーを作成するときに、[Azure Cosmos DB Gremlin API](graph-introduction.md) を使用して、知っている可能性のある他のユーザーを検索することができます。 簡単に取得できるように、結果を [Azure Cosmos DB SQL データベース] に書き込むことができます。
 
 **実装:** Azure Cosmos DB トリガーと出力バインディングを使用する
 
@@ -96,11 +92,11 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 ### <a name="retail-use-case---multiple-functions"></a>小売のユース ケース - 複数の関数
 
-小売の実装では、ユーザーが項目をバスケットに追加したときに、オプションのビジネス パイプライン コンポーネントの関数を柔軟に作成し、呼び出すことができるようになります。
+小売の実装では、ユーザーがアイテムをバスケットに追加したときに、オプションのビジネス パイプライン コンポーネントの関数を柔軟に作成し、呼び出すことができるようになります。
 
-**実装:** 1 つの接続をリッスンする複数の Azure Cosmos DB トリガー
+**実装:** 1 つのコンテナーをリッスンする複数の Azure Cosmos DB トリガー
 
-1. 複数の Azure 関数を作成するには、それぞれに Azure Cosmos DB トリガーを追加します。これらはすべて、ショッピング カート データの同じ変更フィードをリッスンします。 複数の関数が同じ変更フィードをリッスンする際は、各関数に新しいリース コレクションが必要になることに注意してください。 リース コレクションの詳細については、「[Change Feed Processor ライブラリの概要](change-feed.md#understand-cf)」を参照してください。
+1. 複数の Azure 関数を作成するには、それぞれに Azure Cosmos DB トリガーを追加します。これらはすべて、ショッピング カート データの同じ変更フィードをリッスンします。 複数の関数が同じ変更フィードをリッスンする際は、各関数に新しいリース コレクションが必要になることに注意してください。 リース コレクションの詳細については、「[Change Feed Processor ライブラリの概要](change-feed-processor.md)」を参照してください。
 2. 新しい項目がユーザーのショッピング カートに追加されるたびに、各関数はショッピング カート コンテナーの変更フィードから個別に呼び出されます。
     * 1 つの関数で現在のバスケットの内容を使用して、ユーザーが関心を持つ可能性がある他の項目の表示を変更することができます。
     * 別の関数で在庫の合計を更新できます。
@@ -113,27 +109,24 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 ## <a name="tooling"></a>ツール
 
 Azure Portal と Visual Studio 2017 では、Azure Cosmos DB と Azure Functions 間のネイティブ統合を使用できます。
-* Azure Functions ポータルでは、Azure Cosmos DB トリガーを作成できます。 クイックスタートの手順については、[Azure Portal での Azure Cosmos DB トリガーの作成](https://aka.ms/cosmosdbtriggerportalfunc)に関するページを参照してください。![Azure Functions ポータルで Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/azure-function-cosmos-db-trigger.png) 
-* Azure Functions ポータルでは、Azure Cosmos DB 入力バインディングと出力バインディングを他の種類のトリガーに追加することもできます。 クイックスタートの手順については、「[Azure Functions と Cosmos DB を使用して非構造化データを格納する](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)」を参照してください。
-    ![Azure Functions ポータルで Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/function-portal-input-binding.png)
-*   Azure Cosmos DB ポータルで、Azure Cosmos DB トリガーを同じリソース グループ内の既存の Azure Functions アプリに追加できます。
-    ![Azure Functions ポータルで Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/cosmos-db-portal.png)
-* Visual Studio 2017 では、統合テンプレートを利用して Azure Cosmos DB トリガーを作成できます。
+
+* Azure Functions ポータルでは、Azure Cosmos DB トリガーを作成できます。 クイック スタートの手順については、[Azure portal での Azure Cosmos DB トリガーの作成](https://aka.ms/cosmosdbtriggerportalfunc)に関するページをご覧ください。
+* Azure Cosmos DB ポータルで、Azure Cosmos DB トリガーを同じリソース グループ内の既存の Azure Functions アプリに追加できます。
+* Visual Studio 2017 では、[Visual Studio 2017 用の Azure Functions Tools](../azure-functions/functions-develop-vs.md) を利用して Azure Cosmos DB トリガーを作成できます。
 
     >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
-
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>サーバーレス コンピューティングに Azure Functions 統合を選択する理由
 
 Azure Functions には、スケーラブルなユニットの作業や、オンデマンドで実行できるロジックの簡潔な部分を作成する機能があります。インフラストラクチャをプロビジョニングまたは管理する必要はありません。 Azure Functions を使用すると、Azure Cosmos DB データベースの変更に反応する本格的なアプリケーションを作成する必要はありません。特定のタスクのために小さな再利用可能な関数を作成できます。 また、HTTP 要求または適時のトリガーなどのイベントに応答して、Azure Functions への入力または出力として Azure Cosmos DB データを使用することもできます。
 
-Azure Cosmos DB は、サーバーなしのコンピューティング アーキテクチャに推奨されるデータベースです。その理由は次のとおりです。
+Azure Cosmos DB は、サーバーレス コンピューティング アーキテクチャに推奨されるデータベースです。その理由は次のとおりです。
 
-* **すべてのデータにすぐにアクセス**: Azure Cosmos DB の既定では、すべてのデータの[インデックスが自動的に作成され](indexing-policies.md)、それらのインデックスをすぐに使用できるため、格納されているすべての値に対するアクセス権を細かくすることができます。 つまり、データベースに対して新しい項目のクエリ、更新、追加をいつでも実行し、Azure Functions 経由ですぐにアクセスできます。
+* **すべてのデータにすぐにアクセス**:Azure Cosmos DB の既定では、すべてのデータの[インデックスが自動的に作成され](index-policy.md)、それらのインデックスをすぐに使用できるため、格納されているすべての値に対するアクセス権を細かくすることができます。 つまり、データベースに対して新しい項目のクエリ、更新、追加をいつでも実行し、Azure Functions 経由ですぐにアクセスできます。
 
 * **スキーマレス**。 Azure Cosmos DB はスキーマレスです。そのため、Azure Functions からすべてのデータ出力を一意に処理できます。 この "すべてを処理する" アプローチによって、すべてを Azure Cosmos DB に出力する多様な関数を簡単に作成できます。
 
-* **スケーラブルなスループット**。 Azure Cosmos DB のスループットのスケール アップとスケール ダウンはすぐに行うことができます。 数百から数千単位の Functions のクエリがあり、同じコレクションに書き込む場合、負荷を処理する [RU/秒](request-units.md)をスケール アップできます。 すべての関数は、割り当てられた RU/秒を使用して並列処理できます。また、データの[整合性](consistency-levels.md)が保証されます。
+* **スケーラブルなスループット**。 Azure Cosmos DB のスループットのスケール アップとスケール ダウンはすぐに行うことができます。 数百から数千単位の Functions のクエリがあり、同じコンテナーに書き込む場合、負荷を処理する [RU/秒](request-units.md)をスケール アップできます。 すべての関数は、割り当てられた RU/秒を使用して並列処理できます。また、データの[整合性](consistency-levels.md)が保証されます。
 
 * **グローバル レプリケーション** ユーザーのいる場所に最も近いデータの位置を特定することで、[世界中](distribute-data-globally.md)の Azure Cosmos DB データをレプリケートして待機時間を短縮できます。 すべての Azure Cosmos DB クエリと同様に、イベント ドリブン トリガーのデータは、ユーザーに最も近い Azure Cosmos DB から読み取られます。
 
@@ -155,7 +148,6 @@ Flow、Logic Apps、Azure Functions、または WebJobs が実装に適してい
 
 * [Azure Portal で Azure Cosmos DB トリガーを作成する](https://aka.ms/cosmosdbtriggerportalfunc)
 * [Azure Cosmos DB 入力バインディングを使用して Azure Functions HTTP トリガーを作成する](https://aka.ms/cosmosdbinputbind)
-* [Azure Functions と Cosmos DB を使用して非構造化データを格納する](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)
 * [Azure Cosmos DB のバインディングとトリガー](../azure-functions/functions-bindings-cosmosdb.md)
 
 

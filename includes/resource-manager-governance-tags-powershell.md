@@ -1,18 +1,19 @@
 ---
-title: "インクルード ファイル"
-description: "インクルード ファイル"
+title: インクルード ファイル
+description: インクルード ファイル
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 02/16/2018
+ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 21216d19fb8a37d3e9e02e410d39b2a999d3935e
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 5914789675edba0d56e6899728fc2c3c7768374a
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312472"
 ---
 リソース グループに 2 つのタグを追加するには、[Set-AzureRmResourceGroup](/powershell/module/azurerm.resources/set-azurermresourcegroup) コマンドを使用します。
 
@@ -25,7 +26,7 @@ Set-AzureRmResourceGroup -Name myResourceGroup -Tag @{ Dept="IT"; Environment="T
 ```azurepowershell-interactive
 # Get existing tags and add a new tag
 $tags = (Get-AzureRmResourceGroup -Name myResourceGroup).Tags
-$tags += @{Project="Documentation"}
+$tags.Add("Project", "Documentation")
 
 # Reapply the updated set of tags 
 Set-AzureRmResourceGroup -Tag $tags -Name myResourceGroup
@@ -39,26 +40,32 @@ $group = Get-AzureRmResourceGroup myResourceGroup
 
 if ($group.Tags -ne $null) {
     # Get the resources in the resource group
-    $resources = $group | Find-AzureRmResource
+    $resources = Get-AzureRmResource -ResourceGroupName $group.ResourceGroupName
 
     # Loop through each resource
     foreach ($r in $resources)
     {
         # Get the tags for this resource
         $resourcetags = (Get-AzureRmResource -ResourceId $r.ResourceId).Tags
-
-        # Loop through each tag from the resource group
-        foreach ($key in $group.Tags.Keys)
+        
+        # If the resource has existing tags, add new ones
+        if ($resourcetags)
         {
-            # Check if the resource already has a tag for the key from the resource group. If so, remove it from the resource
-            if (($resourcetags) -AND ($resourcetags.ContainsKey($key))) { $resourcetags.Remove($key) }
+            foreach ($key in $group.Tags.Keys)
+            {
+                if (-not($resourcetags.ContainsKey($key)))
+                {
+                    $resourcetags.Add($key, $group.Tags[$key])
+                }
+            }
+
+            # Reapply the updated tags to the resource 
+            Set-AzureRmResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
         }
-
-        # Add the tags from the resource group to the resource tags
-        $resourcetags += $group.Tags
-
-        # Reapply the updated tags to the resource 
-        Set-AzureRmResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
+        else
+        {
+            Set-AzureRmResource -Tag $group.Tags -ResourceId $r.ResourceId -Force
+        }
     }
 }
 ```
@@ -70,13 +77,25 @@ if ($group.Tags -ne $null) {
 $g = Get-AzureRmResourceGroup -Name myResourceGroup
 
 # Find all the resources in the resource group, and for each resource apply the tags from the resource group
-Find-AzureRmResource -ResourceGroupNameEquals $g.ResourceGroupName | ForEach-Object {Set-AzureRmResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
+Get-AzureRmResource -ResourceGroupName $g.ResourceGroupName | ForEach-Object {Set-AzureRmResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
 ```
 
 1 つのタグに複数の値を結合するには、JSON 文字列を使用します。
 
 ```azurepowershell-interactive
 Set-AzureRmResourceGroup -Name myResourceGroup -Tag @{ CostCenter="{`"Dept`":`"IT`",`"Environment`":`"Test`"}" }
+```
+
+既存のタグを失うことなく複数の値を持つ新しいタグを追加するには、既存のタグを取得し、JSON 文字列を使用して新しいタグを追加して、タグのコレクションを再適用する必要があります。
+
+```azurepowershell-interactive
+# Get existing tags and add a new tag
+$ResourceGroup = Get-AzureRmResourceGroup -Name myResourceGroup
+$Tags = $ResourceGroup.Tags
+$Tags.Add("CostCenter", "{`"Dept`":`"IT`",`"Environment`":`"Test`"}")
+
+# Reapply the updated set of tags
+$ResourceGroup | Set-AzureRmResourceGroup -Tag $Tags
 ```
 
 すべてのタグを削除するには、空のハッシュ テーブルを渡します。

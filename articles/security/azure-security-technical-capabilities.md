@@ -1,12 +1,12 @@
 ---
-title: "Azure セキュリティの技術的な機能 | Microsoft Docs"
-description: "クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。"
+title: Azure セキュリティの技術的な機能 | Microsoft Docs
+description: クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 536745d869ea3bcd0beedad3712597b00e600796
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249032"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 
@@ -134,7 +135,7 @@ Azure Active Directory B2C を使用すると、コンシューマーは、既�
 
 #### <a name="device-registration"></a>デバイス登録
 
-[Azure AD Device Registration](https://docs.microsoft.com/en-us/azure/active-directory/device-management-introduction) は、デバイスに基づいて[条件付きでアクセス](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-device-registration-on-premises-setup)を許可するというシナリオの基礎となる機能です。 デバイスが登録されると、ユーザーがサインインしたときにデバイスを認証するために使用される ID が、Azure AD のデバイス登録によって指定されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
+[Azure AD Device Registration](https://docs.microsoft.com/azure/active-directory/device-management-introduction) は、デバイスに基づいて[条件付きでアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup)を許可するというシナリオの基礎となる機能です。 デバイスが登録されると、ユーザーがサインインしたときにデバイスを認証するために使用される ID が、Azure AD のデバイス登録によって指定されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
 
 Intune などの[モバイル デバイス管理 (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) ソリューションと組み合わせて使用すると、Azure Active Directory のデバイスの属性は、デバイスに関する情報が追加されて更新されます。 これにより、条件付きアクセス規則を作成できます。この規則に従い、デバイスからのアクセス時にセキュリティおよび法令遵守の基準を満たす必要があります。
 
@@ -166,7 +167,7 @@ Azure のアクセス制御では、最初に課金に注目します。 [Azure 
 
 サブスクリプションは、ディレクトリとも関連付けられています。 ディレクトリでは、一連のユーザーを定義します。 たとえば、ディレクトリを作成した職場や学校のユーザーや、外部ユーザー (つまり、Microsoft アカウント) として定義できます。 サブスクリプションは、サービス管理者 (SA) または共同管理者 (CA) のいずれかとして割り当てられているディレクトリ ユーザーのサブセットからアクセス可能です。唯一の例外は、従来版との兼ね合いから、Microsoft アカウント (旧 Windows Live ID) はディレクトリに存在しなくても SA または CA として割り当てることができる、という点です 。
 
-セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 [Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
+セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 [Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
 
 ![セキュリティで保護されたリソース アクセス ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
@@ -198,7 +199,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 
 **データを保存するすべての場所を特定する**
 
-保存データの暗号化の目的は、すべてのデータを暗号化することです。 これにより、重要なデータや保持されているすべての場所が失われる可能性がなくなります。アプリケーションによって格納されたすべてのデータを列挙します。 
+保存データの暗号化の目的は、すべてのデータを暗号化することです。 これにより、重要なデータや保持されているすべての場所が失われる可能性がなくなります。 アプリケーションによって格納されたすべてのデータを列挙します。 
 
 > [!Note] 
 > "アプリケーション データ" や "PII" だけでなく、アカウント メタデータ (サブスクリプション マッピング、コントラクト情報、PII) などのアプリケーションに関連するすべてのデータが対象です。
@@ -237,7 +238,7 @@ Service Fabric を使用して PaaS v2 で実行されているサービスで�
 
 ほとんどのサービスはストレージ リソース プロバイダーの暗号化の活用を試行します。 一部のサービスでは明示的な暗号化を実行する必要があります。たとえば、保持されたキー マテリアル (証明書、ルート/マスター キー) はすべて Key Vault に格納する必要があります。
 
-顧客管理キーを使用したサービス側暗号化をサポートしている場合、お客様がマイクロソフトにキーを渡す手段が必要です。 サポートおよび推奨されている方法は、Azure Key Valut (AKV) を使用して統合する方法です。 この場合、Azure Key Vault を使用してキーを追加および管理できます。 AKV を使用する方法について詳しくは、「[Key Vault の概要](http://go.microsoft.com/fwlink/?linkid=521402)」をご覧ください。
+顧客管理キーを使用したサービス側暗号化をサポートしている場合、お客様がマイクロソフトにキーを渡す手段が必要です。 サポートおよび推奨されている方法は、Azure Key Valut (AKV) を使用して統合する方法です。 この場合、Azure Key Vault を使用してキーを追加および管理できます。 AKV を使用する方法について詳しくは、「[Key Vault の概要](https://go.microsoft.com/fwlink/?linkid=521402)」をご覧ください。
 
 Azure Key Vault と統合するには、解読に必要なときに AKV からキーをリクエストするためのコードを追加します。
 
@@ -282,7 +283,7 @@ Azure RMS の導入を計画するときは、次の準備を行うことをお�
 
 - ビジネス要件を反映した[カスタム テンプレート](https://technet.microsoft.com/library/dn642472.aspx)を作成します。 たとえば、すべての極秘メールに適用する、極秘データ用テンプレートを作成します。
 
-[データ分類](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)やデータ保護が不十分な組織は、データ漏洩のリスクが高くなる可能性があります。 ファイルを適切に保護しなければ、ビジネスを分析し、不正使用を監視し、ファイルへの悪意のあるアクセスを防ぐことはできません。
+[データ分類](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)やデータ保護が不十分な組織は、データ漏洩のリスクが高くなる可能性があります。 ファイルを適切に保護しなければ、ビジネスを分析し、不正使用を監視し、ファイルへの悪意のあるアクセスを防ぐことはできません。
 
 > [!Note]
 > Azure RMS の詳細については、[Azure Rights Management の概要](https://technet.microsoft.com/library/jj585016.aspx)に関するページをご覧ください。
@@ -326,7 +327,7 @@ Web アプリケーション ファイアウォールで保護される一般的
 
 - [クライアントの IP アドレスによってアプリへのアクセスを制限する](http://microsoftazurewebsitescheatsheet.info/#filtering-traffic-by-ip)
 
-- [クライアントの動作 (要求の頻度と同時実行) によってアプリへのアクセスを制限する](http://microsoftazurewebsitescheatsheet.info/#dynamic-ip-restrictions)
+- [クライアントの動作 (要求の頻度とコンカレンシー) によってアプリへのアクセスを制限する](http://microsoftazurewebsitescheatsheet.info/#dynamic-ip-restrictions)
 
 - [Tinfoil Security Scanning を使って Web アプリ コードをスキャンして脆弱性を検出する](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)
 
@@ -363,7 +364,7 @@ Azure は [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressro
 
 Azure では、Microsoft、Symantec、Trend Micro、Kaspersky などのセキュリティ ベンダーが提供する[マルウェア対策ソフトウェア](https://docs.microsoft.com/azure/security/azure-security-antimalware)を利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。
 
-Azure Cloud Services および 仮想マシン に対する Microsoft マルウェア対策は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。 Microsoft マルウェア対策は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。
+Azure Cloud Services および 仮想マシン に対する Microsoft マルウェア対策は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。 Microsoft Antimalware は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。
 
 [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) は、設備投資なしで、また最小限の運用コストでアプリケーション データを保護できる、スケーラブルなソリューションです。 アプリケーション エラーが発生するとデータが破損するおそれがあり、ヒューマン エラーが生じればアプリケーションにバグが生まれる危険があります。 Azure Backup により、Windows と Linux で実行されている仮想マシンが保護されます。
 
@@ -397,17 +398,17 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
 
-### <a name="microsoft-operations-management-suiteoms"></a>Microsoft Operations Management Suite (OMS)
+### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
 
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、ハイブリッド クラウド向けの IT 管理ソリューションです。 OMS は単独で使用されるかまたは System Center の既存のデプロイを拡張するために使用され、インフラストラクチャをクラウドベースで管理するための柔軟な制御を最大限に実現します。
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、ハイブリッド クラウド向けの IT 管理ソリューションです。 Log Analytics は単独で使用されるかまたは System Center の既存のデプロイを拡張するために使用され、インフラストラクチャをクラウドベースで管理するための柔軟な制御を最大限に実現します。
 
-![Microsoft Operations Management Suite (OMS)](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-OMS を使用すれば、オンプレミス型、Azure、AWS、Windows Server、Linux、VMware、OpenStack など、あらゆるクラウドのインスタンスを競合ソリューションよりも低コストで管理できます。 クラウド中心に構築された OMS は、新しいビジネス課題に対応し、新しいワークロード、アプリケーション、およびクラウド環境にも対応する最も高速でコスト効率の良い新たな企業の管理方法を提供します。
+Log Analytics を使用すれば、オンプレミス型、Azure、AWS、Windows Server、Linux、VMware、OpenStack など、あらゆるクラウドのインスタンスを競合ソリューションよりも低コストで管理できます。 クラウド中心に構築された Log Analytics は、新しいビジネス課題に対応し、新しいワークロード、アプリケーション、およびクラウド環境にも対応する最も高速でコスト効率の良い新たな企業の管理方法を提供します。
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) は、管理対象のリソースから中央リポジトリにデータを収集する OMS の監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) は、管理対象リソースから中央リポジトリにデータを収集する監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
 
 ![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
@@ -459,7 +460,7 @@ OMS を使用すれば、オンプレミス型、Azure、AWS、Windows Server、
 
 [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) では、ストレージ サービスへの要求に関して集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。 トランザクションに関しては、API 操作レベルとストレージ サービス レベルの両方でレポートされます。容量に関しては、ストレージ サービス レベルでレポートされます。 メトリック データは、ストレージ サービスの使用状況の分析、ストレージ サービスに対する要求に関する問題の診断、サービスを使用するアプリケーションのパフォーマンスの向上に利用できます。
 
-### <a name="application-insights"></a>アプリケーション インサイト
+### <a name="application-insights"></a>Application Insights
 
 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。 devOps プロセスと統合され、さまざまな開発ツールへの接続ポイントを備えています。
 

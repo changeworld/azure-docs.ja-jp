@@ -3,22 +3,23 @@ title: Azure Security Center でのセキュリティ ソリューションの�
 description: Azure Security Center とパートナーの統合によって Azure リソースの全体的なセキュリティを強化する方法について説明します。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
-ms.topic: hero-article
+ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2018
-ms.author: yurid
-ms.openlocfilehash: 48648c2e84d2a2e4de01f04495fb08df603c6017
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 08/20/2018
+ms.author: terrylan
+ms.openlocfilehash: 1abf9efb5c0bed205ce5b87b1f055c14a11ce9ec
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245018"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -32,20 +33,24 @@ Security Center を使用すると、Azure で統合されたセキュリティ 
 
 現時点では、統合されたセキュリティ ソリューションには以下が含まれます。
 
-- エンドポイント保護 ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、Symantec、Windows Defender、および System Center Endpoint Protection (SCEP))
-- Web アプリケーション ファイアウォール ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall)、[F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html)、[Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF)、[Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets)、[Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
-- 次世代ファイアウォール ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html))
-- 脆弱性評価 ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/))  
+- エンドポイント保護 ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://www.microsoft.com/windows/comprehensive-security)、および [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection))
+- Web アプリケーション ファイアウォール ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall)、[F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html)、[Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF)、[Fortinet](https://www.fortinet.com/products.html)、[Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
+- 次世代ファイアウォール ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html)、および [Palo Alto Networks](https://www.paloaltonetworks.com/products))
+- 脆弱性評価 ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) および [Rapid7](https://www.rapid7.com/products/insightvm/))
 
-エンドポイント保護の統合エクスペリエンスはソリューションによって異なります。 次の表に、各ソリューションのエクスペリエンスの詳細を示します。
+> [!NOTE]
+> ほとんどのセキュリティ ベンダーがアプライアンス上での外部エージェントの実行を禁止しているため、Security Center はパートナー仮想アプライアンスに Microsoft Monitoring Agent をインストールしません。
+>
+>
+
 
 | エンドポイント保護               | プラットフォーム                             | Security Center のインストール | Security Center の検出 |
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
 | Windows Defender (Microsoft Antimalware)                  | Windows Server 2016                   | いいえ、OS に組み込まれている           | [はい]                       |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 | 拡張機能を介して                | [はい]                       |
-| Trend Micro – すべてのバージョン         | Windows Server ファミリ                 | 拡張機能を介して                | [はい]                       |
-| Symantec v12.1.1100 以降                     | Windows Server ファミリ                 | いいえ                            | [はい]                        |
-| MacAfee                           | Windows Server ファミリ                 | いいえ                            | いいえ                         |
+| Trend Micro – すべてのバージョン         | Windows Server ファミリ                 | いいえ                            | [はい]                       |
+| Symantec v12.1.1100 以降              | Windows Server ファミリ                 | いいえ                            | [はい]                       |
+| McAfee v10 以降                       | Windows Server ファミリ                 | いいえ                            | [はい]                       |
 | Kaspersky                         | Windows Server ファミリ                 | いいえ                            | いいえ                         |
 | Sophos                            | Windows Server ファミリ                 | いいえ                            | いいえ                         |
 
@@ -65,11 +70,11 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
 1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
 
-2. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
+2. **[Microsoft Azure] メニュー**の **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
+
+3. Security Center のメニューで、**[セキュリティ ソリューション]** を選択します。
 
   ![Security Center の概要](./media/security-center-partner-integration/overview.png)
-
-3. **[概要]** で、**[セキュリティ ソリューション]** を選択します。
 
 **[セキュリティ ソリューション]** では、統合された Azure セキュリティ ソリューションの正常性に関する情報を表示し、基本的な管理タスクを実行することができます。 また、共通イベント形式 (CEF) の Azure Active Directory Identity Protection のアラートやファイアウォール ログなど、他の種類のセキュリティ データ ソースを接続することもできます。
 
@@ -86,7 +91,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 Security Center は、Azure で実行されていても Security Center に接続されていないセキュリティ ソリューションを自動的に検出し、**[検出されたソリューション]** セクションにソリューションを表示します。 これには、[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) などの Azure ソリューションだけでなく、パートナー ソリューションも含まれます。
 
 > [!NOTE]
-> "検出されたソリューション" 機能は、Security Center の Standard レベルで利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
+> 検出されたソリューション機能のサブスクリプション レベルで、Security Center の Standard レベルが必要です。 セキュリティの価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
 >
 >
 
@@ -112,4 +117,4 @@ Security Center は、共通イベント形式 (CEF) のログを転送するこ
 * [Security Center でのセキュリティ正常性の監視](security-center-monitoring.md)。 Azure リソースの正常性を監視する方法について説明しています。
 * [Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)。 パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center の FAQ](security-center-faq.md)。 Security Center の使用に関してよく寄せられる質問とその回答を紹介しています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)。 Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/)。 Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

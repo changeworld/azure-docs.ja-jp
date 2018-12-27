@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center クイックスタート - Windows コンピューターでの Security Center の利用開始 | Microsoft Docs"
-description: "このクイック スタートでは、Windows コンピューターで Microsoft Monitoring Agent をプロビジョニングする方法を示します。"
+title: Azure Security Center クイックスタート - Windows コンピューターでの Security Center の利用開始 | Microsoft Docs
+description: このクイック スタートでは、Windows コンピューターで Microsoft Monitoring Agent をプロビジョニングする方法を示します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: 8d9b0fcc8b72f947cbc64c6ac9a428ac29f8dfd2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.date: 12/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: 57560a035f4d0468625e4c8f3ad6b7a7e516590f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850679"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイックスタート: Windows コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Microsoft Monitoring Agent をプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。
@@ -29,7 +30,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
-このクイックスタートを開始するには、Security Center の Standard 価格レベルを使用する必要があります。 アップグレード手順については、「[クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」をご覧ください。 Security Center の Standard は最初の 60 日間、無料でお試しいただけます。
+このクイックスタートを開始するには、Security Center の Standard 価格レベルを使用する必要があります。 アップグレード手順については、「[クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」をご覧ください。 Security Center の Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 ## <a name="add-new-windows-computer"></a>新しい Windows コンピューターの追加
 
@@ -38,14 +39,14 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 
  ![Security Center の概要][2]
 
-3. Security Center のメイン メニューで、**[高度なセキュリティへのオンボード]** を選択します。
-4. **[Azure 以外のコンピューターを追加しますか?]** を選択します。
+3. Security Center メイン メニューの **[使用の開始]** を選択します。
+4. **[Get started] (使用の開始)** タブを選択します。
 
-   ![高度なセキュリティへのオンボード][3]
+   ![作業開始][3]
 
-5. **[Azure 以外のコンピューターの新規追加]** に、Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
+5. **[Azure 以外のコンピューターの新規追加]** で **[構成]** をクリックします。 Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
 
-    ![Azure 以外のコンピューターの追加][4]
+    ![Azure 以外のコンピューターの追加](./media/quick-onboard-windows-computer/non-azure.png)
 
   **[ダイレクト エージェント]** ブレードに、Windows エージェントをダウンロードするためのリンクと、エージェントの構成時に使用するワークスペース ID のキーが表示されます。
 
@@ -62,7 +63,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 2. **[ようこそ]** ページで **[次へ]** をクリックします。
 3. **[ライセンス条項]** ページの記述内容を確認し、**[同意する]** を選択します。
 4. **[インストール先フォルダー]** ページで、既定のインストール フォルダーを変更するか、そのまま使用して、**[次へ]** を選択します。
-5. **[エージェントのセットアップ オプション]** ページで、エージェントを接続する Azure Log Analytics (OMS) をクリックし、**[次へ]** を選択します。
+5. **[エージェントのセットアップ オプション]** ページで、エージェントを接続する Azure Log Analytics を選択し、**[次へ]** を選択します。
 6. **[Azure Log Analytics]** ページで、前の手順でメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー (主キー)** を貼り付けます。
 7. コンピューターが Azure Government クラウド内の Log Analytics ワークスペースにレポートする必要がある場合は、**[Azure クラウド]** ドロップダウン リストから **[Azure US Government]** を選択します。  コンピューターがプロキシ サーバーを介して Log Analytics サービスと通信する必要がある場合は、**[詳細]** を選択し、プロキシ サーバーの URL とポート番号を指定します。
 8. 必要な構成設定が完了したら、**[次へ]** を選択します。
@@ -74,7 +75,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 
 完了すると、**コントロール パネル**に **Microsoft Monitoring Agent** が表示されます。 構成を検証して、エージェントが接続されていることを確認できます。
 
-エージェントのインストールと構成について詳しくは、[Windows コンピューターの接続](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup-wizard)に関するページをご覧ください。
+エージェントのインストールと構成について詳しくは、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)に関するページをご覧ください。
 
 これで、Azure VM と Azure 以外のコンピューターを 1 か所で監視できます。 **[計算]** に、すべての VM とコンピューターの概要が推奨事項と共に表示されます。 各列は、推奨事項の 1 つのセットを表します。 色は、その推奨事項の VM またはコンピューターの現在のセキュリティの状態を表します。 Security Center では、セキュリティの警告でのこれらのコンピューターの検出も明らかになります。
 
@@ -91,7 +92,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 
 エージェントを削除するには:
 
-1. **[コントロール パネル]**を開きます。
+1. **[コントロール パネル]** を開きます。
 2. **[プログラムと機能]** を開きます。
 3. **[プログラムと機能]** で、**[Microsoft Monitoring Agent]** をクリックし、**[アンインストール]** をクリックします。
 
@@ -103,7 +104,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png
-[3]: ./media/quick-onboard-windows-computer/onboard-windows-computer.png
+[3]: ./media/quick-onboard-windows-computer/get-started.png
 [4]: ./media/quick-onboard-windows-computer/add-computer.png
 [5]: ./media/quick-onboard-windows-computer/log-analytics-mma-setup-laworkspace.png
 [6]: ./media/quick-onboard-windows-computer/compute.png

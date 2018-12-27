@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array のトラブルシューティング | Microsoft Docs"
-description: "StorSimple デバイス マネージャーの診断機能と、その診断機能を使用して StorSimple Virtual Array のトラブルシューティングを行う方法について説明します。"
+title: StorSimple Virtual Array のトラブルシューティング | Microsoft Docs
+description: StorSimple デバイス マネージャーの診断機能と、その診断機能を使用して StorSimple Virtual Array のトラブルシューティングを行う方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 53f57d17-07af-457f-a0e8-741e52fbbc2a
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108900"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して、StorSimple Virtual Array のトラブルシューティングを行います
 ## <a name="overview"></a>Overview

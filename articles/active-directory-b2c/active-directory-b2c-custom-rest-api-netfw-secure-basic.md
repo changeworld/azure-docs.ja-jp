@@ -1,23 +1,26 @@
 ---
-title: 'Azure Active Directory B2C: HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する'
-description: HTTP 基本認証を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する
+title: Azure Active Directory B2C の HTTP 基本認証を使用して RESTful サービスをセキュリティ保護する | Microsoft Docs
+description: HTTP 基本認証を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 90bbcc865f13a1d048ea12fdccd3ca848cf362ba
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: e6cff4e2daf86b63bc0db0d4f2d537322d2841df
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409305"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 [関連する Azure AD B2C の記事](active-directory-b2c-custom-rest-api-netfw.md)では、Azure Active Directory B2C (Azure AD B2C) のユーザー体験を認証なしで統合する RESTful サービス (Web API) を作成しました。 
 
 この記事では、RESTful サービスに HTTP 基本認証を追加して、B2C を含む検証済みのユーザーのみが API にアクセスできるようにします。 HTTP 基本認証では、ユーザーの資格情報 (アプリ ID とアプリ シークレット) をカスタム ポリシーに設定します。 
@@ -225,7 +228,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 2. **[ポリシー キー]** を選択して、テナント内で使用できるキーを表示します。
 
-3. **[追加]**を選択します。
+3. **[追加]** を選択します。
 
 4. **[オプション]** には **[手動]** を選択します。
 
@@ -236,7 +239,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 7. **[キー使用法]** には **[シークレット]** を選択します。
 
-8. **[作成]**を選択します。
+8. **作成**を選択します。
 
 9. `B2C_1A_B2cRestClientId` キーを作成したことを確認します。
 
@@ -245,7 +248,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 2. **[ポリシー キー]** を選択して、テナント内で利用できるキーを表示します。
 
-3. **[追加]**を選択します。
+3. **[追加]** を選択します。
 
 4. **[オプション]** には **[手動]** を選択します。
 
@@ -256,7 +259,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 7. **[キー使用法]** には **[シークレット]** を選択します。
 
-8. **[作成]**を選択します。
+8. **作成**を選択します。
 
 9. `B2C_1A_B2cRestClientSecret` キーを作成したことを確認します。
 
@@ -323,7 +326,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
       "exp": 1507125903,
       "nbf": 1507122303,
       "ver": "1.0",
-      "iss": "https://login.microsoftonline.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
+      "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
       "aud": "e1d2612f-c2bc-4599-8e7b-d874eaca1ee1",
       "acr": "b2c_1a_signup_signin",
       "nonce": "defaultNonce",

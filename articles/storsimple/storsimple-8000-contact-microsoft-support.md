@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズのサポート チケットまたはサポート ケースを作成する | Microsoft Docs"
-description: "サポート要求をログに記録する方法と StorSimple 8000 シリーズ デバイスでサポート セッションを開始する方法について説明します。"
+title: StorSimple 8000 シリーズのサポート チケットまたはサポート ケースを作成する | Microsoft Docs
+description: サポート要求をログに記録する方法と StorSimple 8000 シリーズ デバイスでサポート セッションを開始する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743052"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 
@@ -99,7 +100,7 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 
 1. シリアル コンソールから直接デバイスにアクセスするか、リモート コンピューターから telnet セッションを使用してデバイスにアクセスします。 そのためには、「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)」の手順を実行します。
 2. 開いたセッションで、 **Enter** キーを押して、コマンド プロンプトを開きます。
-3. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]**を選択します。
+3. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]** を選択します。
 4. プロンプトで、次のパスワードを入力します。
    
     `Password1`

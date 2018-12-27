@@ -1,37 +1,37 @@
 ---
 title: Azure IoT Edge モジュールの構成 | Microsoft Docs
-description: Azure IoT Edge モジュールを構成する内容と、それらをどのように再利用できるかについて説明します。
-services: iot-edge
-keywords: ''
+description: デプロイ マニフェストを使ってデプロイするモジュールを宣言する方法、モジュールをデプロイする方法、モジュール間のメッセージ ルートを作成する方法について説明します。
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
-ms.date: 03/23/2018
-ms.topic: article
+ms.date: 06/06/2018
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 7df566ced755e1e817b3107dac8f17e9f6e9b8e4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+services: iot-edge
+ms.openlocfilehash: 3201e8509e7c63bb0d9b607d26292bd85e2b605d
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569235"
 ---
-# <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する - プレビュー
+# <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
 
-各 IoT Edge デバイスは、少なくとも 2 つのモジュール $edgeAgent と $edgeHub を実行します。IoT Edge ランタイムはこのモジュールによって構成されます。 この 2 つの標準のモジュールに加えて、IoT Edge デバイスでは複数のモジュールを実行して、任意の数のプロセスを実行できます。 デバイスにすべてのモジュールを一度にデプロイする場合、含めるモジュール、およびモジュール同士の連携の仕方について宣言する方法が必要です。 
+各 IoT Edge デバイスは、少なくとも 2 つのモジュール $edgeAgent と $edgeHub を実行します。IoT Edge ランタイムはこのモジュールによって構成されます。 加えて、IoT Edge デバイスでは複数のモジュールを実行して、任意の数のプロセスを実行できます。 デバイスにすべてのモジュールを一度にデプロイする場合、含めるモジュール、およびモジュール同士の連携の仕方について宣言する方法が必要です。 
 
 *デプロイ マニフェスト*は、次の内容が記述された JSON ドキュメントです。
 
-* デプロイする必要がある IoT Edge モジュールと、その作成および管理オプション。
+* Edge エージェントの構成には、各モジュールのコンテナー イメージ、プライベート コンテナー レジストリにアクセスするための資格情報、および各モジュールを作成し管理する方法についての指示が含まれます。
 * Edge ハブの構成 (モジュール間および最終的には IoT Hub へのメッセージのフロー方法を含む)。
-* オプションで、モジュール ツインの必要なプロパティに設定したり、個々のモジュール アプリケーションを構成したりするための値。
+* オプションとして、モジュール ツインの必要なプロパティ。
 
 すべての IoT Edge デバイスをデプロイ マニフェストで構成する必要があります。 新しくインストールされた IoT Edge ランタイムは、有効なマニフェストで構成されるまでエラー コードを報告します。 
 
-Azure IoT Edge チュートリアルでは、Azure IoT Edge ポータルでウィザードを使用することによってデプロイ マニフェストを作成します。 また、REST または IoT Hub サービス SDK を使用して、プログラムでデプロイ マニフェストを適用することもできます。 IoT Edge デプロイの詳細については、「[Deploy and monitor (デプロイおよび監視)][lnk-deploy]」を参照してください。
+Azure IoT Edge チュートリアルでは、Azure IoT Edge ポータルでウィザードを使用することによってデプロイ マニフェストを作成します。 また、REST または IoT Hub サービス SDK を使用して、プログラムでデプロイ マニフェストを適用することもできます。 詳細については、[IoT Edge のデプロイ](module-deployment-monitoring.md)に関する記事を参照してください。
 
 ## <a name="create-a-deployment-manifest"></a>配置マニフェストの作成
 
-高いレベルでは、配置マニフェストは、IoT Edge デバイスにデプロイされた IoT Edge モジュールのモジュール ツインの必要なプロパティを構成します。 これらのモジュールのうちの 2 つである Edge エージェントと Edge ハブは常に存在します。
+高いレベルでは、配置マニフェストは、IoT Edge デバイスにデプロイされた IoT Edge モジュールのモジュール ツインの必要なプロパティを構成します。 これらの `$edgeAgent` と `$edgeHub` の 2 つのモジュールが常に存在します。
 
 IoT Edge ランタイム (エージェントとハブ) のみが含まれた配置マニフェストは有効です。
 
@@ -39,11 +39,12 @@ IoT Edge ランタイム (エージェントとハブ) のみが含まれた配�
 
 ```json
 {
-    "moduleContent": {
+    "modulesContent": {
         "$edgeAgent": {
             "properties.desired": {
                 // desired properties of the Edge agent
                 // includes the image URIs of all modules
+                // includes container registry credentials
             }
         },
         "$edgeHub": {
@@ -67,7 +68,7 @@ IoT Edge ランタイム (エージェントとハブ) のみが含まれた配�
 
 ## <a name="configure-modules"></a>モジュールの構成
 
-デプロイするモジュールに必要なプロパティを確立するのに加えて、それらをインストールする方法を IoT Edge ランタイムに指示する必要があります。 すべてのモジュールの構成と管理情報は、**$edgeAgent** の必要なプロパティに含めます。 この情報には、Edge エージェント自体の構成パラメーターが含まれます。 
+IoT Edge ランタイムに、デプロイメントにモジュールをインストールする方法について指示する必要があります。 すべてのモジュールの構成と管理情報は、**$edgeAgent** の必要なプロパティに含めます。 この情報には、Edge エージェント自体の構成パラメーターが含まれます。 
 
 含めることができるプロパティおよび必須プロパティの完全な一覧については、[Edge エージェントおよび Edge ハブのプロパティ](module-edgeagent-edgehub.md)に関するページをご覧ください。
 
@@ -78,6 +79,11 @@ $EdgeAgent プロパティは次の構造に従います。
     "properties.desired": {
         "schemaVersion": "1.0",
         "runtime": {
+            "settings":{
+                "registryCredentials":{ // give the edge agent access to container images that aren't public
+                    }
+                }
+            }
         },
         "systemModules": {
             "edgeAgent": {
@@ -88,7 +94,7 @@ $EdgeAgent プロパティは次の構造に従います。
             }
         },
         "modules": {
-            "{module1}": { //optional
+            "{module1}": { // optional
                 // configuration and management details
             },
             "{module2}": { // optional
@@ -122,7 +128,7 @@ Edge ハブは、モジュール間およびモジュールと IoT Hub の間で
 ### <a name="source"></a>ソース
 ソースでは、メッセージがどこから送信されるのかを指定します。 次のいずれかの値を指定できます。
 
-| ソース | [説明] |
+| ソース | 説明 |
 | ------ | ----------- |
 | `/*` | 任意のデバイスまたはモジュールからの、デバイスからクラウドへのすべてのメッセージ |
 | `/messages/*` | 何らかの出力と共に、または出力なしでデバイスまたはモジュールによって送信された、デバイスからクラウドへの任意のメッセージ |
@@ -132,7 +138,7 @@ Edge ハブは、モジュール間およびモジュールと IoT Hub の間で
 | `/messages/modules/{moduleId}/outputs/{output}` | {output} を使用して {moduleId} によって送信された、デバイスからクラウドへの任意のメッセージ |
 
 ### <a name="condition"></a>条件
-条件は、ルートの宣言では省略可能です。 シンクからソースへのメッセージをすべて渡す場合は、**WHERE** 句全体をそのまま削除します。 または、[IoT Hub クエリ言語][lnk-iothub-query] を使用して、条件を満たす特定のメッセージまたはメッセージの種類をフィルター処理することができます。
+条件は、ルートの宣言では省略可能です。 シンクからソースへのメッセージをすべて渡す場合は、**WHERE** 句全体をそのまま削除します。 または、[IoT Hub クエリ言語](../iot-hub/iot-hub-devguide-routing-query-syntax.md)を使用して、条件を満たす特定のメッセージまたはメッセージの種類をフィルター処理することができます。
 
 IoT Edge のモジュール間を通過するメッセージは、デバイスと Azure IoT Hub の間を通過するメッセージと同じ形式になります。 すべてのメッセージは JSON で書式設定され、パラメーターとして **systemProperties**、**appProperties**、**body** が与えられます。 
 
@@ -142,23 +148,23 @@ IoT Edge のモジュール間を通過するメッセージは、デバイス�
 * アプリケーション プロパティ: `<propertyName>`
 * 本文プロパティ: `$body.<propertyName>` 
 
-メッセージ プロパティのクエリを作成する方法の例は、「[デバイスからクラウドへのメッセージ ルートのクエリ式](../iot-hub/iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions)」を参照してください。
+メッセージ プロパティのクエリを作成する方法の例は、「[デバイスからクラウドへのメッセージ ルートのクエリ式](../iot-hub/iot-hub-devguide-routing-query-syntax.md)」を参照してください。
 
 IoT Edge に固有の例としては、たとえば、リーフ デバイスからゲートウェイ デバイスに到着したメッセージにフィルターを適用します。 モジュールから送信されるメッセージには、**connectionModuleId** と呼ばれるシステム プロパティが含まれます。 したがって、リーフ デバイスからメッセージを直接 IoT Hub にルーティングする場合は、次のルートを使用してモジュールのメッセージを除外します。
 
 ```sql
-FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
+FROM /messages/\* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 ```
 
 ### <a name="sink"></a>シンク
 シンクでは、メッセージの送信先が定義されます。 次のいずれかの値を指定できます。
 
-| シンク | [説明] |
+| シンク | 説明 |
 | ---- | ----------- |
 | `$upstream` | IoT Hub にメッセージを送信する |
 | `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | モジュール `{moduleId}` の入力 `{input}` にメッセージを送信する |
 
-Edge ハブが少なくとも 1 つの保証を提供することに注意することが重要です。つまり、ルートがそのシンクにメッセージを配信できない場合 (たとえば、Edge ハブが IoT Hub に接続できない場合や、ターゲット モジュールが接続されていない場合)、メッセージはローカルに格納されます。
+IoT Edge は、At-Least-Once 保証を提供します。 Edge ハブは、ルートがそのシンクにメッセージを配達できなかった場合のために、ローカルにメッセージを保存します。 たとえば、Edge ハブが IoT ハブに接続できない場合、またはターゲット モジュールが接続されていない場合です。
 
 Edge ハブでは、[Edge ハブの必要なプロパティ](module-edgeagent-edgehub.md)の `storeAndForwardConfiguration.timeToLiveSecs` プロパティで指定した時間まで、メッセージが格納されます。
 
@@ -168,7 +174,7 @@ Edge ハブでは、[Edge ハブの必要なプロパティ](module-edgeagent-ed
 
 デプロイ マニフェストでモジュール ツインの必要なプロパティを指定しない場合、IoT Hub はモジュール ツインをどのような方法でも変更しないため、ユーザーは必要なプロパティをプログラムで設定できます。
 
-デバイス ツインを変更できるのと同じメカニズムを使用してモジュール ツインを変更できます。 詳しくは、[デバイス ツインの開発者ガイド](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins)に関するページをご覧ください。   
+デバイス ツインを変更できるのと同じメカニズムを使用してモジュール ツインを変更できます。 詳細については、[モジュール ツイン開発者ガイド](../iot-hub/iot-hub-devguide-module-twins.md)をご覧ください。   
 
 ## <a name="deployment-manifest-example"></a>デプロイ マニフェストの例
 
@@ -176,72 +182,79 @@ Edge ハブでは、[Edge ハブの必要なプロパティ](module-edgeagent-ed
 
 ```json
 {
-"moduleContent": {
+  "modulesContent": {
     "$edgeAgent": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "runtime": {
-                "type": "docker",
-                "settings": {
-                    "minDockerVersion": "v1.25",
-                    "loggingOptions": ""
-                }
-            },
-            "systemModules": {
-                "edgeAgent": {
-                    "type": "docker",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-agent:1.0-preview",
-                    "createOptions": ""
-                    }
-                },
-                "edgeHub": {
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-hub:1.0-preview",
-                    "createOptions": ""
-                    }
-                }
-            },
-            "modules": {
-                "tempSensor": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
-                    "createOptions": "{}"
-                    }
-                },
-                "filtermodule": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "myacr.azurecr.io/filtermodule:latest",
-                    "createOptions": "{}"
-                    }
-                }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+          "type": "docker",
+          "settings": {
+            "minDockerVersion": "v1.25",
+            "loggingOptions": "",
+            "registryCredentials": {
+              "ContosoRegistry": {
+                "username": "myacr",
+                "password": "{password}",
+                "address": "myacr.azurecr.io"
+              }
             }
+          }
+        },
+        "systemModules": {
+          "edgeAgent": {
+            "type": "docker",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "createOptions": ""
+            }
+          },
+          "edgeHub": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "createOptions": ""
+            }
+          }
+        },
+        "modules": {
+          "tempSensor": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+              "createOptions": "{}"
+            }
+          },
+          "filtermodule": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "myacr.azurecr.io/filtermodule:latest",
+              "createOptions": "{}"
+            }
+          }
         }
+      }
     },
     "$edgeHub": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "routes": {
-                "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-                "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
-            },
-            "storeAndForwardConfiguration": {
-                "timeToLiveSecs": 10
-            }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+          "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+          "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 10
         }
+      }
     }
-}
+  }
 }
 ```
 
@@ -249,10 +262,4 @@ Edge ハブでは、[Edge ハブの必要なプロパティ](module-edgeagent-ed
 
 * $edgeAgent および $edgeHub に含めることができるプロパティおよび含める必要があるプロパティの完全な一覧については、[Edge エージェントおよび Edge ハブのプロパティ](module-edgeagent-edgehub.md)に関するページをご覧ください。
 
-* これで IoT Edge モジュールがどのように使用されるかがわかったので、「[Understand the requirements and tools for developing IoT Edge modules (IoT Edge モジュールを開発するための要件およびツールを理解する)][lnk-module-dev]」に進みます。
-
-[lnk-deploy]: module-deployment-monitoring.md
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-query-language.md
-[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
-[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
-[lnk-module-dev]: module-development.md
+* これで IoT Edge モジュールがどのように使用されるかがわかったので、「[IoT Edge モジュールを開発するための要件とツールについて理解する](module-development.md)」に進みます。

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 646caa5e4aacd58377c0a2b5985a69277d00cec3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2f8a41834c1451d80c53cfed4bae3b7e36281702
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32779262"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
@@ -211,7 +212,7 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>次の手順
 
-ポータルを使用して VPN ゲートウェイと接続を診断する方法については、[Azure Portal を使用したゲートウェイのトラブルシューティング](network-watcher-troubleshoot-manage-portal.md)に関するページを参照してください。
+ゲートウェイまたはゲートウェイの接続に関する問題を診断する方法については、[ネットワーク間の通信の問題を診断する方法](diagnose-communication-problem-between-networks.md)に関するページを参照してください。
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png

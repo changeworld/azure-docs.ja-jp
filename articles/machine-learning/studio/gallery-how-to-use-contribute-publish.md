@@ -1,31 +1,33 @@
 ---
-title: Azure AI ギャラリー | Microsoft Docs
+title: Azure AI Gallery - Azure Machine Learning Studio | Microsoft Docs
 description: Azure AI ギャラリーで分析リソースなどを共有し、発見します。 他のユーザーを参考にしてコミュニティに投稿を行います。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: cf518538-6046-4657-a7cb-a0bc487c67e6
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 540f97d1383b8a992a12426b03249ef82af0e7a4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c9acd902eb536bbd252f0aca6d162ff92d9e6e00
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270962"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
-[!INCLUDE [gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-<!-- separating these 2 includes -->
+**[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)** は、Azure AI を使用して構築されたソリューションを入手および共有するためのコミュニティ主導のサイトです。
+このギャラリーには、独自の分析ソリューションの開発に使用できるさまざまなリソースが含まれています。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="what-can-i-find-in-the-gallery"></a>ギャラリーではどのようなものが見つかるのですか。
 Azure AI ギャラリーには、独自の分析ソリューションの開発に使用できるさまざまなリソースが含まれています。
@@ -46,7 +48,7 @@ Azure AI ギャラリーには、独自の分析ソリューションの開発�
 * **[コレクション](gallery-collections.md)**: コレクションでは、特定のソリューションまたは概念に対応する実験、API、およびその他のギャラリー項目をグループ化できます。
 * **[業界](gallery-industries.md)**: ギャラリーの [業界] セクションでは、小売、製造、銀行、医療機関などの業界に固有のさまざまなリソースがまとめられています。
 
-最後に、**[コンペティション](gallery-competitions.md)**では、Cortana Intelligence Suite を使用して複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う絶好の機会を提供します。
+最後に、**[コンペティション](gallery-competitions.md)** では、Cortana Intelligence Suite を使用して複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う絶好の機会を提供します。
 
 ![Azure AI ギャラリーのホーム ページ](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
 

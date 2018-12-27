@@ -1,11 +1,11 @@
 ---
-title: "Azure Biztalk Services のドキュメント - チュートリアル | Microsoft Docs"
-description: "BizTalk Services を使用して、クラウドからオンプレミスに接続し、SAP、Oracle EBS、SQL Server、PeopleSoft の基幹業務アプリケーションを統合する方法について説明します。"
+title: Azure Biztalk Services のドキュメント - チュートリアル | Microsoft Docs
+description: BizTalk Services を使用して、クラウドからオンプレミスに接続し、SAP、Oracle EBS、SQL Server、PeopleSoft の基幹業務アプリケーションを統合する方法について説明します。
 services: biztalk-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: biztalk-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26625098"
 ---
 # <a name="biztalk-services-documentation"></a>BizTalk Services のドキュメント
 

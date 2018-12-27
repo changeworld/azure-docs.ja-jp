@@ -1,59 +1,87 @@
 ---
-title: "AzCopy on Linux で Azure Storage にデータをコピーまたは移動する | Microsoft Docs"
-description: "AzCopy on Linux ユーティリティを使用して、BLOB およびファイル コンテンツとの間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。"
+title: AzCopy on Linux で Azure Storage にデータをコピーまたは移動する | Microsoft Docs
+description: AzCopy on Linux ユーティリティを使用して、BLOB およびファイル コンテンツとの間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
 services: storage
-documentationcenter: 
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: aa155738-7c69-4a83-94f8-b97af4461274
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 04/26/2018
 ms.author: seguler
-ms.openlocfilehash: 2fd89684176cd832b656dae8c8f94a6f1ccbbbe8
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.component: common
+ms.openlocfilehash: 79aa9cd3e634238702419d01650c7ef29c4dbb95
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242027"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>AzCopy on Linux を使用したデータの転送
 
-AzCopy は、最適なパフォーマンスのシンプルなコマンドを使用して Microsoft Azure BLOB、ファイル、およびテーブルの各ストレージとの間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
+AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage および File Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
 
-ダウンロードできる AzCopy には、2 つのバージョンがあります。 AzCopy on Linux は .NET Core Framework を使って構築されています。その対象プラットフォームは Linux で、POSIX スタイルのコマンド ライン オプションが備わっています。 [AzCopy on Windows](../storage-use-azcopy.md) は .NET Framework を使って構築され、Windows スタイルのコマンド ライン オプションが備わっています。 この記事では AzCopy on Linux について説明します。
+ダウンロードできる AzCopy には、2 つのバージョンがあります。 AzCopy on Linux の対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 [AzCopy on Windows](../storage-use-azcopy.md) には、Windows スタイルのコマンドライン オプションが用意されています。 この記事では AzCopy on Linux について説明します。 
+
+> [!NOTE]  
+> AzCopy 7.2 バージョン以降、.NET Core の依存関係は AzCopy パッケージにパッケージ化されています。 7.2 バージョン以降を使用する場合、前提条件として .NET Core をインストールする必要はなくなりました。
 
 ## <a name="download-and-install-azcopy"></a>AzCopy のダウンロードとインストール
+
 ### <a name="installation-on-linux"></a>Linux へのインストール
 
-この記事には、Ubuntu のさまざまなリリース用のコマンドが含まれています。  `lsb_release -a` コマンドを使用して、配布リリースおよびコードネームをご確認ください。 
+> [!NOTE]
+> ディストリビューションに応じて、[.NET Core の前提条件に関する記事](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)に示されている .NET Core 2.1 の依存関係のインストールが必要な場合があります。 
+>
+> RHEL 7 ディストリビューションでは、ICU と libunwind の依存関係をインストールします: ```yum install -y libunwind icu```
 
-AzCopy on Linux では、.NET Core Framework (バージョン 2.0) がプラットフォームに存在している必要があります。 [.NET Core](https://www.microsoft.com/net/download/linux) ページのインストール手順を参照してください。
+AzCopy on Linux (v7.2 以降) のインストールは簡単で、tar パッケージを抽出し、インストール スクリプトを実行するだけです。 
 
-例として、.NET Core を Ubuntu 16.04 にインストールしてみましょう。 最新のインストール ガイドについては、[.NET Core on Linux](https://www.microsoft.com/net/download/linux) のインストール ページを参照してください。
-
-
+**RHEL 6 ベースのディストリビューション**: [ダウンロード リンク](https://aka.ms/downloadazcopylinuxrhel6)
 ```bash
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-get update
-sudo apt-get install dotnet-sdk-2.0.2
-```
-
-.NET Core をインストールしたら、AzCopy をダウンロードしてインストールします。
-
-```bash
-wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinuxrhel6
 tar -xf azcopy.tar.gz
 sudo ./install.sh
 ```
 
-抽出したファイルは、AzCopy on Linux のインストール後、削除してかまいません。 スーパーユーザーの特権がない場合は、抽出したフォルダー内のシェル スクリプト "azcopy" を使用して AzCopy を実行することもできます。 
+**その他すべての Linux ディストリビューション**: [ダウンロード リンク](https://aka.ms/downloadazcopylinux64)
+```bash
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
+tar -xf azcopy.tar.gz
+sudo ./install.sh
+```
 
+抽出したファイルは、AzCopy on Linux のインストール後、削除してかまいません。 スーパーユーザーの特権がない場合は、抽出したフォルダー内のシェル スクリプト azcopy を使用して `azcopy` を実行することもできます。
+
+### <a name="alternative-installation-on-ubuntu"></a>Ubuntu のバージョンごとのインストール方法
+
+**Ubuntu 14.04**
+
+Microsoft Linux 製品リポジトリの apt ソースを追加し、AzCopy をインストールします。
+
+```bash
+sudo echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod/ trusty main" > azure.list
+sudo cp ./azure.list /etc/apt/sources.list.d/
+sudo apt-key adv --keyserver packages.microsoft.com --recv-keys EB3E94ADBE1229CF
+```
+
+```bash
+sudo apt-get update
+sudo apt-get install azcopy
+```
+
+**Ubuntu 16.04**
+
+Microsoft Linux 製品リポジトリの apt ソースを追加し、AzCopy をインストールします。
+
+```bash
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/ xenial main" > azure.list
+sudo cp ./azure.list /etc/apt/sources.list.d/
+sudo apt-key adv --keyserver packages.microsoft.com --recv-keys EB3E94ADBE1229CF
+```
+
+```bash
+sudo apt-get update
+sudo apt-get install azcopy
+```
 
 ## <a name="writing-your-first-azcopy-command"></a>AzCopy コマンドの基本
 AzCopy コマンドの基本構文は次のとおりです。
@@ -206,6 +234,14 @@ azcopy \
 
 存在しない仮想ディレクトリを指定すると、アップロードされるファイルの BLOB 名に仮想ディレクトリが含められます (*例* `vd/abc.txt` 例: 上記の例の)。
 
+### <a name="redirect-from-stdin"></a>stdin からリダイレクトする
+
+```azcopy
+gzip myarchive.tar -c | azcopy \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/mydir/myarchive.tar.gz \
+    --dest-key <key>
+```
+
 ### <a name="upload-all-files"></a>すべてのファイルをアップロードする
 
 ```azcopy
@@ -307,6 +343,9 @@ azcopy \
     --set-content-type
 ```
 
+### <a name="customizing-the-mime-content-type-mapping"></a>MIME コンテンツの種類のマッピングのカスタマイズ
+AzCopy は、ファイル拡張子とコンテンツの種類のマッピングが含まれる構成ファイルを使用します。 このマッピングをカスタマイズし、必要に応じて新しいペアを追加できます。 マッピングは ```/usr/lib/azcopy/AzCopyConfig.json``` に配置されます。
+
 ## <a name="blob-copy"></a>BLOB: コピー
 ### <a name="copy-single-blob-within-storage-account"></a>ストレージ アカウント内の 1 つの BLOB をコピーする
 
@@ -318,7 +357,7 @@ azcopy \
     --dest-key <key>
 ```
 
---sync-copy オプションを指定せずに 1 つの BLOB をコピーすると、[サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
+--sync-copy オプションを指定せずに 1 つの BLOB をコピーすると、[サーバー側でコピー](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
 
 ### <a name="copy-single-blob-across-storage-accounts"></a>複数のストレージ アカウントに 1 つの BLOB をコピーする
 
@@ -330,7 +369,7 @@ azcopy \
     --dest-key <key2>
 ```
 
---sync-copy オプションを指定せずに 1 つの BLOB をコピーすると、[サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
+--sync-copy オプションを指定せずに 1 つの BLOB をコピーすると、[サーバー側でコピー](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
 
 ### <a name="copy-single-blob-from-secondary-region-to-primary-region"></a>1 つの BLOB をセカンダリ リージョンからプライマリ リージョンにコピーする
 
@@ -449,7 +488,7 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-ファイル共有をまたがってファイルをコピーすると、[サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
+ファイル共有をまたがってファイルをコピーすると、[サーバー側でコピー](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
 
 ### <a name="copy-from-file-share-to-blob"></a>ファイル共有から BLOB にコピーする
 
@@ -461,7 +500,7 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-ファイル共有から BLOB にファイルをコピーすると、[サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
+ファイル共有から BLOB にファイルをコピーすると、[サーバー側でコピー](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
 
 ### <a name="copy-from-blob-to-file-share"></a>BLOB からファイル共有にコピーする
 
@@ -473,7 +512,7 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-BLOB からファイル共有にファイルをコピーすると、[サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
+BLOB からファイル共有にファイルをコピーすると、[サーバー側でコピー](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
 
 ### <a name="synchronously-copy-files"></a>ファイルを同期的にコピーする
 オプション `--sync-copy` を指定すると、File Storage から File Storage に、File Storage から Blob Storage に、Blob Storage から File Storage にデータを同期的にコピーすることができます。 この操作は、AzCopy がソース データをローカル メモリにダウンロードし、それを宛先に再度アップロードすることによって実行されます。 その場合は、標準的な送信コストが適用されます。
@@ -601,10 +640,31 @@ azcopy \
 >[!TIP]
 >AzCopy の全パラメーターを一覧表示するには、"azcopy --help" メニューを確認してください。
 
-## <a name="known-issues-and-best-practices"></a>既知の問題とベスト プラクティス
-### <a name="error-net-sdk-20-is-not-found-in-the-system"></a>エラー: .NET SDK 2.0 がシステムに見つかりません。
-AzCopy は、バージョン AzCopy 7.0 以降では .NET SDK 2.0 に依存します。 これよりも前のバージョンの AzCopy では .NET Core 1.1 が使用されていました。 .NET Core 2.0 がシステムにインストールされていないというエラーが発生した場合は、[.NET Core のインストール手順](https://www.microsoft.com/net/learn/get-started/linuxredhat)に従ってインストールまたはアップグレードする必要があります。
+## <a name="installation-steps-for-azcopy-71-and-earlier-versions"></a>AzCopy 7.1 以前のバージョンのインストール手順
 
+AzCopy on Linux (v7.1 以前のみ) には、.NET Core Framework が必要です。 インストール手順については、[.NET Core のインストール](https://www.microsoft.com/net/core#linuxubuntu)に関するページをご覧ください。
+
+たとえば、Ubuntu 16.10 への .NET Core のインストールから開始します。 最新のインストール ガイドについては、[.NET Core on Linux](https://www.microsoft.com/net/core#linuxubuntu) のインストール ページを参照してください。
+
+
+```bash
+sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ yakkety main" > /etc/apt/sources.list.d/dotnetdev.list' 
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+sudo apt-get update
+sudo apt-get install dotnet-sdk-2.0.0
+```
+
+.NET Core をインストールしたら、AzCopy をダウンロードしてインストールします。
+
+```bash
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
+tar -xf azcopy.tar.gz
+sudo ./install.sh
+```
+
+抽出したファイルは、AzCopy on Linux のインストール後、削除してかまいません。 スーパーユーザーの特権がない場合は、抽出したフォルダー内のシェル スクリプト azcopy を使用して `azcopy` を実行することもできます。
+
+## <a name="known-issues-and-best-practices"></a>既知の問題とベスト プラクティス
 ### <a name="error-installing-azcopy"></a>AzCopy のインストール中のエラー
 AzCopy のインストールで問題が発生した場合は、抽出した `azcopy` フォルダーにある bash スクリプトを使って AzCopy を実行してみてください。
 
@@ -618,8 +678,26 @@ AzCopy を使用して BLOB またはファイルをコピーする場合は、�
 
 コピーしている BLOB またはファイルに対する他のアプリケーションによる書き込みを回避できない場合は、ジョブが終了した時点で、コピー対象のリソースがソース リソースとの間に完全なパリティを保持していない可能性があることを覚えておいてください。
 
-### <a name="run-one-azcopy-instance-on-one-machine"></a>1 つのマシンでは 1 つの AzCopy インスタンスを実行します。
-AzCopy はマシン リソースの利用率を最大限に高めてデータ転送を高速化する設計になっています。1 つのマシンで実行する AzCopy インスタンスは 1 つのみとすること、同時実行操作の数を増やす必要がある場合はオプション `--parallel-level` を指定することをお勧めします。 詳細については、コマンド ラインに「 `AzCopy --help parallel-level` 」と入力してください。
+### <a name="running-multiple-azcopy-processes"></a>複数の AzCopy プロセスの実行
+異なるジャーナル フォルダーを使用している場合は、単一のクライアント上で複数の AzCopy プロセスを実行できます。 複数の AzCopy プロセスに対して単一のジャーナル フォルダーを使用することはサポートされていません。
+
+最初のプロセス:
+```azcopy
+azcopy \
+    --source /mnt/myfiles1 \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/myfiles1 \
+    --dest-key <key> \
+    --resume "/mnt/myazcopyjournal1"
+```
+
+2 番目のプロセス:
+```azcopy
+azcopy \
+    --source /mnt/myfiles2 \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/myfiles2 \
+    --dest-key <key> \
+    --resume "/mnt/myazcopyjournal2"
+```
 
 ## <a name="next-steps"></a>次の手順
 Azure Storage および AzCopy の詳細については、以下のリソースを参照してください。
@@ -628,20 +706,19 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 * [Azure ストレージの概要](../storage-introduction.md)
 * [ストレージ アカウントの作成](../storage-create-storage-account.md)
 * [ストレージ エクスプローラーを使用した BLOB の管理](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
-* [Azure Storage での Azure CLI 2.0 の使用](../storage-azure-cli.md)
+* [Azure Storage での Azure CLI の使用](../storage-azure-cli.md)
 * [C++ から BLOB ストレージを使用する方法](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Java から BLOB ストレージを使用する方法](../blobs/storage-java-how-to-use-blob-storage.md)
 * [Node.js から BLOB ストレージを使用する方法](../blobs/storage-nodejs-how-to-use-blob-storage.md)
 * [Python から BLOB ストレージを使用する方法](../blobs/storage-python-how-to-use-blob-storage.md)
 
 ### <a name="azure-storage-blog-posts"></a>Azure Storage に関するブログの投稿:
-* [Announcing AzCopy on Linux Preview (AzCopy on Linux プレビューの発表)](https://azure.microsoft.com/en-in/blog/announcing-azcopy-on-linux-preview/)
+* [Announcing AzCopy on Linux Preview (AzCopy on Linux プレビューの発表)](https://azure.microsoft.com/blog/announcing-azcopy-on-linux-preview/)
 * [Azure Storage Data Movement Library プレビューの概要](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [AzCopy: Introducing synchronous copy and customized content type (AzCopy: 同期コピーとカスタマイズしたコンテンツの種類の概要)](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [AzCopy: Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support (AzCopy: AzCopy 3.0 の一般公開とテーブルおよびファイルのサポートを伴う AzCopy 4.0 のプレビュー リリースのお知らせ)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [AzCopy: Optimized for Large-Scale Copy Scenarios (AzCopy: 大量のコピーのシナリオ用の最適化)](http://go.microsoft.com/fwlink/?LinkId=507682)
-* [AzCopy - Support for read-access geo-redundant storage (AzCopy - 地理冗長ストレージの読み取りアクセスのサポート)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [AzCopy - Transfer data with restartable mode and SAS token (AzCopy - 再起動可能モードまたは SAS トークンを使用したデータの転送)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
-
+* [AzCopy: Introducing synchronous copy and customized content type (AzCopy: 同期コピーとカスタマイズしたコンテンツの種類の概要)](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
+* [AzCopy: Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support (AzCopy: AzCopy 3.0 の一般公開とテーブルおよびファイルのサポートを伴う AzCopy 4.0 のプレビュー リリースのお知らせ)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [AzCopy: Optimized for Large-Scale Copy Scenarios (AzCopy: 大量のコピーのシナリオ用の最適化)](https://go.microsoft.com/fwlink/?LinkId=507682)
+* [AzCopy - Support for read-access geo-redundant storage (AzCopy - 地理冗長ストレージの読み取りアクセスのサポート)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
+* [AzCopy - Transfer data with restartable mode and SAS token (AzCopy - 再起動可能モードまたは SAS トークンを使用したデータの転送)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

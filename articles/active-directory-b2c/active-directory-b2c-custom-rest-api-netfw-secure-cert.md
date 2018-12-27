@@ -1,23 +1,26 @@
 ---
-title: 'Azure Active Directory B2C: クライアント証明書を使用して RESTful サービスをセキュリティで保護する'
+title: Azure Active Directory B2C のクライアント証明書を使用して RESTful サービスをセキュリティで保護する | Microsoft Docs
 description: クライアント証明書を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: f1b9ef9a78715c08c5361e4bab6a31384c5c98d3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 7bf7add75f60bf64f64119979e5eee81be0f6e7b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344967"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>クライアント証明書を使用して RESTful サービスをセキュリティで保護する
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 関連する記事では、Azure Active Directory B2C (Azure AD B2C) と対話する [RESTful サービスを作成](active-directory-b2c-custom-rest-api-netfw.md)します。
 
 この記事では、クライアント証明書を使用して Azure Web アプリ (RESTful API) へのアクセスを制限する方法について説明します。 このメカニズムは TLS 相互認証または*クライアント証明書認証*と呼ばれ、 適切な証明書を持つサービス (Azure AD B2C など) のみが、RESTful サービスにアクセスできます。
@@ -35,21 +38,13 @@ ms.lasthandoff: 03/23/2018
 * 有効な証明書 (秘密キーを備えた .pfx ファイル) がある。
 
 ## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>手順 1: Web アプリのクライアント証明書認証を構成する
-クライアント証明書を要求するように **Azure App Service** を設定するには、Web アプリの `clientCertEnabled` サイト設定を *true* に設定します。 この変更を行うには、REST API を使用する必要があります。 この設定は、Azure Portal の管理エクスペリエンスを通じて使用できます。 この設定を見つけるには、RESTful アプリケーションの **[設定]** メニューの **[開発ツール]** で、**[リソース エクスプローラー]** を選択します。
+クライアント証明書を要求するように **Azure App Service** を設定するには、Web アプリの `clientCertEnabled` サイト設定を *true* に設定します。 この変更を行うには、Azure portal で Web アプリのページを開きます。 左側のナビゲーションの **[設定]** で **[SSL 設定]** を選択します。 **[クライアント証明書]** セクションで、**[着信クライアント証明書]** オプションをオンにします。
 
 >[!NOTE]
 >Azure App Service プランが Standard 以上であることを確認してください。 詳細については、[Azure App Service プランの詳細な概要](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)に関する記事をご覧ください。
 
-
-次の図のように、[Azure Resource Explorer (プレビュー)](https://resources.azure.com) を使用して、**clientCertEnabled** プロパティを *true* に設定します。
-
-![Azure Resource Explorer で clientCertEnabled を設定](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-resource-explorer.png)
-
 >[!NOTE]
 >**clientCertEnabled** プロパティを設定する方法の詳細については、[Web アプリの TLS 相互認証を構成する](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)方法に関する記事をご覧ください。
-
->[!TIP]
->また、[ARMClient](https://github.com/projectkudu/ARMClient) ツールを使用して、REST API 呼び出しを簡単に作成することもできます。
 
 ## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>手順 2: 証明書を Azure AD B2C ポリシー キーにアップロードする
 `clientCertEnabled` を *true* に設定すると、RESTful API との通信にクライアント証明書が求められます。 クライアント証明書を取得し、Azure AD B2C テナントにアップロードして保存するには、次の手順を実行する必要があります。 
@@ -57,7 +52,7 @@ ms.lasthandoff: 03/23/2018
 
 2. テナント内で使用できるキーを表示するには、**[ポリシー キー]** を選択します。
 
-3. **[追加]**を選択します。  
+3. **[追加]** を選択します。  
     **[キーの作成]** ウィンドウが開きます。
 
 4. **[オプション]** ボックスで、**[アップロード]** を選択します。
@@ -71,7 +66,7 @@ ms.lasthandoff: 03/23/2018
 
     ![ポリシー キーのアップロード](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
-7. **[作成]**を選択します。
+7. **作成**を選択します。
 
 8. テナント内で利用できるキーを表示して、作成したキー `B2C_1A_B2cRestClientCertificate` を確認するには、**[ポリシー キー]** を選択します。
 
@@ -141,7 +136,7 @@ ms.lasthandoff: 03/23/2018
      "exp": 1507125903,
      "nbf": 1507122303,
      "ver": "1.0",
-     "iss": "https://login.microsoftonline.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
+     "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
      "aud": "e1d2612f-c2bc-4599-8e7b-d874eaca1ee1",
      "acr": "b2c_1a_signup_signin",
      "nonce": "defaultNonce",

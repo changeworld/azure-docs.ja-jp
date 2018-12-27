@@ -1,192 +1,78 @@
 ---
-title: "Azure Privileged Identity Management の承認ワークフロー | Microsoft Docs"
-description: "Privileged Identity Management (PIM) での承認ワークフローについて学習する"
+title: PIM で Azure AD ディレクトリ ロールに対する要求を承認または拒否する | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure AD ディレクトリ ロールに対する要求を承認または拒否する方法について説明します。
 services: active-directory
-documentationcenter: 
-author: barclayn
+documentationcenter: ''
+author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/28/2017
-ms.author: barclayn
+ms.component: pim
+ms.date: 08/29/2018
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f30dd06417d9ce4d71c88ba170a4f3169b5fccd7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9402824540f965cb89aa00791d093bd87712a89a
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665844"
 ---
-# <a name="approvals"></a>承認
+# <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールに対する要求を承認または拒否する
 
-## <a name="overview"></a>概要
+Azure AD Privileged Identity Management (PIM) を使用して、アクティブ化の承認を必要とするようにロールを構成できます。また、代理承認者として 1 名以上のユーザーまたはグループを選択できます。 Azure AD ディレクトリ ロールの要求を承認または拒否するには、この記事の手順に従ってください。
 
-Privileged Identity Management の承認を使用して、ロールがアクティブ化の承認を必要とするように構成できます。また、代理承認者として 1 名以上のユーザーあるいはグループを選択できます。 ロールの構成と承認者の選択を行う方法については後ほど説明します。
+## <a name="view-pending-requests"></a>保留中の要求を表示する
 
+代理承認者は、Azure AD ディレクトリ ロール要求が代理承認者による承認を待っている状態になると、電子メール通知を受け取ります。 これらの保留中の要求は、PIM で表示できます。
 
-## <a name="new-terminology"></a>新しい用語
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-*対象ロール ユーザー* – 対象ロール ユーザーとは、組織内で対象の Azure AD ロール (アクティブ化を必要とするロール) に割り当てられているユーザーです。
+1. **[Azure AD Privileged Identity Management]** を開きます。
 
-*代理承認者* – 代理承認者は、ロールのアクティブ化要求を承認する、Azure AD 内の 1 名以上の個人またはグループです。
+1. **[Azure AD ディレクトリ ロール]** をクリックします。
 
-## <a name="scenarios"></a>シナリオ
+1. **[申請の承認]** をクリックします。
 
-プライベート プレビューでは、次のシナリオをサポートしています。
+    ![PIM Azure AD ディレクトリ ロール - ロール](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
-**特権ロール管理者 (PRA) として:**
+    承認が保留されている要求の一覧を確認できます。
 
--   [特定のロールの承認を有効化します。](#enable-approval-for-specific-roles)
+## <a name="approve-requests"></a>要求の承認
 
--   [要求を承認するユーザーまたはグループ (あるいは両方) を指定します。](#specify-approver-users-and/or-groups-to-approve-requests)
+1. 承認する要求を選択し、**[承認]** をクリックして、[選択した要求の承認] ウィンドウを開きます。
 
--   [すべての特権ロールの要求と承認の履歴を表示します。](#view-request-and-approval-history-for-all-privileged-roles)
+    ![PIM の [申請の承認] リスト](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
-**指定された承認者として:**
+1. **[承認の理由]** ボックスに理由を入力します。
 
--   [保留中の承認 (要求) を表示します。](#view-pending-approvals-requests)
+    ![PIM の [選択した要求の承認]](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
--   [ロールの昇格の要求を承認または拒否します (単独および一括)。](#approve-or-reject-requests-for-role-elevation-single-and/or-bulk)
+1. **[Approve]\(承認\)** をクリックします。
 
--   [自分の承認/却下の理由を説明します。](#provide-justification-for-my-approval/rejection) 
+    承認すると、状態シンボルが更新されます。
 
-**対象ロール ユーザーとして:**
+    ![PIM の [選択した要求の承認]](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
 
--   [承認が必要なロールのアクティブ化を要求します。](#request-activation-of-a-role-that-requires-approval)
+## <a name="deny-requests"></a>要求を拒否する
 
--   [アクティブ化要求の状態を表示します。](#view-the-status-of-your-request-to-activate)
+1. 拒否する要求を選択し、**[拒否]** をクリックして、[選択した要求の拒否] ウィンドウを開きます。
 
--   [アクティブ化が承認された場合に Azure AD でタスクを完了します。](#complete-your-task-in-azure-ad-if-activation-was-approved)
+    ![PIM の [申請の承認] リスト](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 
-### <a name="navigation"></a>「ナビゲーション」
+1. **[拒否の理由]** ボックスに理由を入力します。
 
-承認に対応するためにナビゲーションが更新されました。
+    ![PIN の[選択した要求の拒否]](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
-![](media/azure-ad-pim-approval-workflow/image001.png)
+1. **[拒否]** をクリックします。
 
-既定のランディング ページから、PIM に関する情報や新しい承認ドキュメントに簡単にアクセスできます。
+    拒否すると、状態シンボルが更新されます。
 
-![](media/azure-ad-pim-approval-workflow/image002.png)
+## <a name="next-steps"></a>次の手順
 
-PIM のすべてのユーザーのために [My Audit History (My 監査履歴)] という新しいセクションも追加されています。 ここでは自分の ID に関するすべての情報を確認できます。 ここでは一箇所に、保留中の要求、完了した要求、解決する要求に関して行ったすべての決定事項、過去のロール アクティブ化すべてが含まれます。
-
-![](media/azure-ad-pim-approval-workflow/image003.png)
-
-### <a name="enable-approval-for-specific-roles"></a>特定のロールの承認を有効化する
-
-特定のロールの承認を有効化するには、まず左のナビゲーションから [Directory Roles (ディレクトリ ロール)] を選択します。
-
-![](media/azure-ad-pim-approval-workflow/image004.png)
-
-[Directory Roles (ディレクトリ ロール)] の左側のナビゲーションで [設定] を選択します。
-
-![](media/azure-ad-pim-approval-workflow/image006.png)
-
-次のように [特権ロール] を選択します。
-
-![](media/azure-ad-pim-approval-workflow/image009.png)
-
-[承認を要求する] セクションで [有効化] を選択します。
-
-![](media/azure-ad-pim-approval-workflow/image011.png)
-
-有効にすると、次の詳細を表示するブレードが展開されます。
-
-![](media/azure-ad-pim-approval-workflow/image013.png)
-
->[!NOTE]
-承認者を指定しない場合は、PRA が既定の承認者になります。 PRA が、このロールのすべてのアクティブ化要求を承認する必要があります。
-
-### <a name="specify-approver-users-andor-groups-to-approve-requests"></a>要求を承認するユーザーまたはグループ (あるいは両方) を指定する
-
-承認を委任するには、[承認者の選択] のオプションをクリックします。
-
-![](media/azure-ad-pim-approval-workflow/image015.png)
-
-[承認者の選択] ブレードが読み込まれたら、特定のユーザーまたはグループを上部の検索バーを使用して検索するか、値が設定済みのリストから選択し、[選択] をクリックします。
-
-![](media/azure-ad-pim-approval-workflow/image017.png)
-
-注: 一度に複数のユーザーまたはグループを選択できます。
-
-次に示すように、選択した承認者の一覧に選択内容が表示されます。
-
-![](media/azure-ad-pim-approval-workflow/image019.png)
-
-承認者を削除するには、その名前の横にある [削除] ボタンをクリックします。
-
-承認者を追加するには、プロセスを繰り返します。
-
-## <a name="view-request-and-approval-history-for-all-privileged-roles"></a>すべての特権ロールの要求と承認の履歴を表示する
-
-すべての特権ロールの要求と承認の履歴を表示するには、ダッシュボードから [監査履歴] を選択します。
-
-![](media/azure-ad-pim-approval-workflow/image021.png)
-
->[!NOTE]
-[アクション] でデータを並べ替え、[アクティブ化 - 承認済み] を探します。
-
-### <a name="view-pending-approvals-requests"></a>保留中の承認 (要求) を表示する
-
-代理承認者として、承認の要求が保留されると電子メール通知を受け取ります。 PIM ポータルでこれらの要求を表示するには、ダッシュボード (新ナビゲーション) の左側のナビゲーション バーで [保留中の承認要求] タブを選択します。
-
-![](media/azure-ad-pim-approval-workflow/image023.png)
-
-ここで、承認が保留されている要求の一覧を確認できます。
-
-![](media/azure-ad-pim-approval-workflow/image024.png)
-
-### <a name="approve-or-reject-requests-for-role-elevation-single-andor-bulk"></a>ロールの昇格の要求を承認または拒否する (単独および一括)
-
-承認または拒否する要求を選択し、処理に対応するアクション バーのボタンをクリックします。
-
-![](media/azure-ad-pim-approval-workflow/image025.png)
-
-### <a name="provide-justification-for-my-approvalrejection"></a>自分の承認/却下の理由を説明する
-
-新しいブレードが開き、ここで一度に複数の要求を承認または拒否できます。 決定の理由を入力し、ブレードの下部で [承認] \(または [拒否]) をクリックします。
-
-![](media/azure-ad-pim-approval-workflow/image029.png)
-
-要求のプロセスが完了すると、行った決定が状態のシンボルに反映されます (この例の決定は承です)。
-
-![](media/azure-ad-pim-approval-workflow/image031.png)
-
-### <a name="request-activation-of-a-role-that-requires-approval"></a>承認が必要なロールのアクティブ化を要求する
-
-承認を必要とするロールのアクティブ化の要求は、以前の PIM ナビゲーションからも新しいナビゲーションからも行うことができます。ロールのアクティブ化のプロセスは変わっていません。 アクティブ化するロールを一覧から選択するだけです。
-
-![](media/azure-ad-pim-approval-workflow/image033.png)
-
-特権ロールが Multi-Factor Authentication を必要とする場合は、最初にそのタスクを完了するように求められます。
-
-![](media/azure-ad-pim-approval-workflow/image035.png)
-
-完了したら、[アクティブ化] をクリックし、必要であれば理由を入力します。
-
-![](media/azure-ad-pim-approval-workflow/image037.png)
-
-依頼者には、要求の承認が保留されているという通知が表示されます。
-
-![](media/azure-ad-pim-approval-workflow/image039.png)
-
-### <a name="view-the-status-of-your-request-to-activate"></a>アクティブ化要求の状態を表示する
-
-保留中のアクティブ化要求の状態を表示するには、新しいナビゲーションからアクセスする必要があります。 左側のナビゲーション バーで [My Requests (My 要求)] タブを選択します。
-
-![](media/azure-ad-pim-approval-workflow/image041.png)
-
-要求の状態は既定では [保留中] ですが、すべての要求または拒否された要求の表示に切り替えることができます。
-
-### <a name="complete-your-task-in-azure-ad-if-activation-was-approved"></a>アクティブ化が承認された場合に Azure AD でタスクを完了する
-
-要求が承認されると、ロールがアクティブになり、そのロールを必要とするすべての作業を進めることができます。
-
-![](media/azure-ad-pim-approval-workflow/image043.png)
-
-## <a name="next-steps"></a>次のステップ
-
-お客様のフィードバックを必要としています。 ご意見やフィードバックをぜひお寄せください。
+- [PIM での電子メール通知](pim-email-notifications.md)
+- [PIM で Azure リソース ロールに対する要求を承認または拒否する](pim-resource-roles-approval-workflow.md)

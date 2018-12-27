@@ -1,25 +1,26 @@
 ---
-title: "チュートリアル: REST API を使用して Azure Data Factory パイプラインを作成する | Microsoft Docs"
-description: "このチュートリアルでは、REST API を使用してコピー アクティビティが含まれた Azure Data Factory パイプラインを作成し、Azure Blob Storage から Azure SQL データベースにデータをコピーします。"
+title: 'チュートリアル: REST API を使用して Azure Data Factory パイプラインを作成する | Microsoft Docs'
+description: このチュートリアルでは、REST API を使用してコピー アクティビティが含まれた Azure Data Factory パイプラインを作成し、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0b7383c8b984c5f9e9600c0f04be703f6bc20711
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4ce344292577dd286abcd7fbf9e067800da0e0b3
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958994"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル: REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -35,7 +36,7 @@ ms.lasthandoff: 03/02/2018
 > 
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 でのコピー アクティビティに関するチュートリアル](../quickstart-create-data-factory-rest-api.md)を参照してください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-rest-api.md)に関するページを参照してください。 
 
 この記事では、REST API を使用して、Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを備えたデータ ファクトリを作成します。 Azure Data Factory の使用経験がない場合は、このチュートリアルを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。   
 
@@ -51,7 +52,7 @@ ms.lasthandoff: 03/02/2018
 ## <a name="prerequisites"></a>前提条件
 * 「 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
 * コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。 データ ファクトリを作成するには、Curl ツールと REST コマンドを使用します。 
-* [この記事](../../azure-resource-manager/resource-group-create-service-principal-portal.md) の手順に従って、次の操作を行います。 
+* [この記事](../../active-directory/develop/howto-create-service-principal-portal.md) の手順に従って、次の操作を行います。 
   1. Azure Active Directory に、 **ADFCopyTutorialApp** という名前の Web アプリケーションを作成します。
   2. **クライアント ID** と**秘密キー**を取得します。 
   3. **テナント ID**を取得します。 
@@ -62,7 +63,7 @@ ms.lasthandoff: 03/02/2018
   1. 次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
     
     ```PowerShell 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```   
   2. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
@@ -102,7 +103,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys)」を参照してください。
+> **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../../storage/common/storage-account-manage.md#access-keys)」を参照してください。
 
 ```JSON
 {
@@ -176,10 +177,10 @@ JSON プロパティの詳細については、[Azure SQL のリンクされた�
 
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
-| 型 | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
-| 既定のコンテナー | 前に作成した **AzureStorageLinkedService** を参照します。 |
+| type | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
+| linkedServiceName | 前に作成した **AzureStorageLinkedService** を参照します。 |
 | folderPath | BLOB **コンテナー**と、入力 BLOB を格納する**フォルダー**を指定します。 このチュートリアルでは、adftutorial は BLOB コンテナーで、フォルダーはルート フォルダーです。 | 
 | fileName | このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは fileName に **emp.txt** が指定されているため、このファイルのみが処理のために取得されます。 |
 | format -> type |入力ファイルはテキスト形式のため、**TextFormat** を使用します。 |
@@ -219,10 +220,10 @@ JSON プロパティの詳細については、[Azure SQL のリンクされた�
 ```
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
-| 型 | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
-| 既定のコンテナー | 前に作成した **AzureSqlLinkedService** を参照します。 |
+| type | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
+| linkedServiceName | 前に作成した **AzureSqlLinkedService** を参照します。 |
 | tableName | データのコピー先となる**テーブル**を指定します。 | 
 | frequency/interval | frequency は **Hour**、interval は **1** に、それぞれ設定されています。これは、出力スライスがパイプラインの開始時刻から終了時刻までの間 **1 時間ごと**に生成されることを表します (出力スライスは、開始時刻の前および終了時刻の後には生成されません)。  |
 
@@ -350,7 +351,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 以下の点に注意してください。
 
-* Azure Data Factory の名前はグローバルに一意にする必要があります。 results に **"データ ファクトリ名 "ADFCopyTutorialDF" は利用できません"**というエラーが表示される場合は、次の手順に従います。  
+* Azure Data Factory の名前はグローバルに一意にする必要があります。 results に **"データ ファクトリ名 "ADFCopyTutorialDF" は利用できません"** というエラーが表示される場合は、次の手順に従います。  
   
   1. **datafactory.json** ファイルで名前を変更します (たとえば、yournameADFCopyTutorialDF)。
   2. **$cmd** 変数に値が割り当てられる最初のコマンドで、ADFCopyTutorialDF を新しい名前に置き換え、コマンドを実行します。 

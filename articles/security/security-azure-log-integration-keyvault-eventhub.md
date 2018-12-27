@@ -1,28 +1,31 @@
 ---
-title: "Event Hubs を使用して Azure Key Vault からのログを統合する | Microsoft Docs"
-description: "このチュートリアルには、Azure ログ統合を利用して Key Vault ログを SIEM で使用できるようにするための必要な手順が用意されています。"
+title: Event Hubs を使用して Azure Key Vault からのログを統合する | Microsoft Docs
+description: このチュートリアルには、Azure ログ統合を利用して Key Vault ログを SIEM で使用できるようにするための必要な手順が用意されています。
 services: security
 author: barclayn
 manager: MBaldwin
 editor: TomShinder
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 06/07/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: e5bd27c94569228693d1a9c80c6e5362b50c4a44
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b91d405b8ada1446a477dc10a116b5dfdf349131
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440048"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure ログ統合チュートリアル: Event Hubs を使用した Azure Key Vault イベントの処理
 
+>[!IMPORTANT]
+> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月27 日で無効になります。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
+
 Azure ログ統合を使用すると、ログに記録されたイベントを取得し、Security Information and Event Management (SIEM) システムで使用できます。 このチュートリアルでは、Azure Event Hubs で取得されるログの処理に Azure ログ統合を使用する方法の例を説明しています。
 
->[!IMPORTANT]
->Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Monitor コネクタを使用し、こちらの[手順](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)に従うことです。 ただし、SIEM ベンダーが Azure Monitor にコネクタを提供していない場合は、このようなコネクタが使用可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
+Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Monitor コネクタを使用し、こちらの[手順](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)に従うことです。 ただし、SIEM ベンダーが Azure Monitor にコネクタを提供していない場合は、このようなコネクタが使用可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
 
  
 このチュートリアルを使用して、次の手順例に従い、各手順が解決策をどのようにサポートしているかを理解することで、Azure ログ統合と Event Hubs を連携する方法に慣れることをお勧めします。 ここで学習した内容を利用して、自社に固有の要件をサポートする独自の手順を作成することができます。
@@ -51,24 +54,24 @@ Azure ログ統合を使用すると、ログに記録されたイベントを�
 
 1. Azure のサブスクリプションと、管理者権限のあるそのサブスクリプションのアカウント。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成できます。
  
-2. Azure ログ統合のインストール要件を満たす、インターネットにアクセス可能なシステム。 このシステムは、クラウド サービスでも、オンプレミスでホストされていても構いません。
+1. Azure ログ統合のインストール要件を満たす、インターネットにアクセス可能なシステム。 このシステムは、クラウド サービスでも、オンプレミスでホストされていても構いません。
 
-3. [Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324)がインストールされている。 インストールするには:
+1. [Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324)がインストールされている。 インストールするには:
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 リモート デスクトップを使用して、手順 2 で説明したシステムに接続します。   
+   a. リモート デスクトップを使用して、手順 2 で説明したシステムに接続します。   
    b. Azure ログ統合のインストーラーをシステムにコピーします。 [ここからインストール ファイルをダウンロード](https://www.microsoft.com/download/details.aspx?id=53324)できます。   
    c. インストーラーを起動し、マイクロソフト ソフトウェア ライセンス条項に同意します。   
    d. 利用統計情報を提供する場合は、チェック ボックスをオンのままにします。 使用状況に関する情報をマイクロソフトに送信しない場合は、チェック ボックスをオフにします。
    
    Azure ログ統合とインストール方法について詳しくは、「[Azure 診断ログおよび Windows イベント転送による Azure ログ統合](security-azure-log-integration-get-started.md)」をご覧ください。
 
-4. 最新の PowerShell バージョン。
+1. 最新の PowerShell バージョン。
  
    Windows Server 2016 がインストールされている場合は、PowerShell 5.0 以上が必要です。 その他のバージョンの Windows Server を使用している場合は、それ以前のバージョンの PowerShell がインストールされている可能性があります。 PowerShell ウィンドウで ```get-host``` と入力すると、バージョンを確認できます。 PowerShell 5.0 がインストールされていない場合は、こちらから[ダウンロード](https://www.microsoft.com/download/details.aspx?id=50395)できます。
 
    PowerShell 5.0 以上がインストールされていれば、最新バージョンのインストールに進むことができます。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 PowerShell ウィンドウで、```Install-Module Azure``` コマンドを入力します。 インストール手順を完了します。    
+   a. PowerShell ウィンドウで、```Install-Module Azure``` コマンドを入力します。 インストール手順を完了します。    
    b. ```Install-Module AzureRM``` コマンドを入力します。 インストール手順を完了します。
 
    詳しくは、[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0)に関する記事をご覧ください。
@@ -77,19 +80,19 @@ Azure ログ統合を使用すると、ログに記録されたイベントを�
 ## <a name="create-supporting-infrastructure-elements"></a>サポート インフラストラクチャ要素を作成する
 
 1. 管理者特権の PowerShell ウィンドウを開き、**C:\Program Files\Microsoft Azure Log Integration** に移動します。
-2. LoadAzLogModule.ps1 スクリプトを実行して AzLog コマンドレットをインポートします。 `.\LoadAzLogModule.ps1` コマンドを入力します。 (このコマンドの ".\" に注意してください)。次のような結果が表示されます。</br>
+1. LoadAzLogModule.ps1 スクリプトを実行して AzLog コマンドレットをインポートします。 `.\LoadAzLogModule.ps1` コマンドを入力します。 (このコマンドの ".\" に注意してください)。次のような結果が表示されます。</br>
 
    ![読み込まれたモジュール一覧](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
-3. `Login-AzureRmAccount` コマンドを入力します。 ログイン ウィンドウで、このチュートリアルで使用するサブスクリプションの資格情報を入力します。
+1. `Connect-AzureRmAccount` コマンドを入力します。 ログイン ウィンドウで、このチュートリアルで使用するサブスクリプションの資格情報を入力します。
 
    >[!NOTE]
    >これがこのマシンから Azure への初回ログインの場合、マイクロソフトによる PowerShell 使用状況データの収集を許可するかどうかに関するメッセージが表示されます。 使用状況データの収集は Azure PowerShell の向上に利用されるため、有効にすることをお勧めします。
 
-4. 認証およびログインに成功すると、次のスクリーンショットの情報が表示されます。 サブスクリプション ID と サブスクリプション名をメモに取ります。後の手順で使用します。
+1. 認証およびログインに成功すると、次のスクリーンショットの情報が表示されます。 サブスクリプション ID と サブスクリプション名をメモに取ります。後の手順で使用します。
 
    ![PowerShell ウィンドウ](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
-5. 後で使用される値を格納する変数を作成します。 次の PowerShell の各行を入力します。 使用する環境に合わせて値を調整する必要がある場合があります。
+1. 後で使用される値を格納する変数を作成します。 次の PowerShell の各行を入力します。 使用する環境に合わせて値を調整する必要がある場合があります。
     - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’``` (サブスクリプション名が異なる可能性があります。 前のコマンドの出力の一部として確認できます。)
     - ```$location = 'West US'``` (この変数はリソースが作成される場所を渡すために使用されます。 この変数を選択した場所のものに変更できます。)
     - ```$random = Get-Random```
@@ -97,32 +100,32 @@ Azure ログ統合を使用すると、ログに記録されたイベントを�
     - ``` $storageName = $name``` (この変数はストレージ アカウント名に使用されます。)
     - ```$rgname = $name ``` (この変数はリソース グループ名に使用されます。)
     - ``` $eventHubNameSpaceName = $name``` (イベント ハブの名前空間の名前。)
-6. 使用するサブスクリプションを指定します。
+1. 使用するサブスクリプションを指定します。
     
     ```Select-AzureRmSubscription -SubscriptionName $subscriptionName```
-7. リソース グループを作成します。
+1. リソース グループを作成します。
     
     ```$rg = New-AzureRmResourceGroup -Name $rgname -Location $location```
     
    この時点で「`$rg`」と入力した場合、このスクリーンショットのような出力が表示されます。
 
    ![リソース グループ作成後の出力](./media/security-azure-log-integration-keyvault-eventhub/create-rg.png)
-8. 状態情報の追跡に使用されるストレージ アカウントを作成します。
+1. 状態情報の追跡に使用されるストレージ アカウントを作成します。
     
     ```$storage = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $location -SkuName Standard_LRS```
-9. イベント ハブの名前空間を作成します。 これは、イベント ハブの作成に必要です。
+1. イベント ハブの名前空間を作成します。 これは、イベント ハブの作成に必要です。
     
     ```$eventHubNameSpace = New-AzureRmEventHubNamespace -ResourceGroupName $rgname -NamespaceName $eventHubnamespaceName -Location $location```
-10. Insights プロバイダーで使用されるルール ID を取得します。
+1. Insights プロバイダーで使用されるルール ID を取得します。
     
     ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
-11. 指定可能なすべての Azure の場所を取得し、後の手順で使用できる変数に名前を追加します。
+1. 指定可能なすべての Azure の場所を取得し、後の手順で使用できる変数に名前を追加します。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ```$locationObjects = Get-AzureRMLocation```    
+    a. ```$locationObjects = Get-AzureRMLocation```    
     b. ```$locations = @('global') + $locationobjects.location```
     
     この時点で「`$locations`」と入力すると、場所の名前が表示されますが、Get-AzureRmLocation によって返される追加情報は表示されません。
-12. Azure Resource Manager ログ プロファイルを作成します。 
+1. Azure Resource Manager ログ プロファイルを作成します。 
     
     ```Add-AzureRmLogProfile -Name $name -ServiceBusRuleId $sbruleid -Locations $locations```
     
@@ -139,7 +142,7 @@ Azure ログ統合を使用すると、ログに記録されたイベントを�
 
    ```$kv = New-AzureRmKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location ```
 
-2. キー コンテナーのログの記録を構成します。
+1. キー コンテナーのログの記録を構成します。
 
    ```Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true ```
 
@@ -150,15 +153,15 @@ Key Vault にログ アクティビティ生成の要求を送信する必要が
 1. 現在のストレージ キーを表示します。
     
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
-2. 新しい **key2** を生成します。
+1. 新しい **key2** を生成します。
     
    ```New-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname -KeyName key2```
-3. キーをもう一度表示し、**key2** が別の値であることを確認します。
+1. キーをもう一度表示し、**key2** が別の値であることを確認します。
     
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
-4. シークレットを設定して読み取り、追加のログ エントリを生成します。
+1. シークレットを設定して読み取り、追加のログ エントリを生成します。
     
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b.  ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a. ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b.  ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![返されるシークレット](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 
@@ -168,14 +171,14 @@ Key Vault にログ アクティビティ生成の要求を送信する必要が
 これで Key Vault によるイベント ハブへのログ記録に必要なすべての要素を構成できました。次は Azure ログ統合を構成する必要があります。
 
 1. ```$storage = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename```
-2. ```$eventHubKey = Get-AzureRmEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
-3. ```$storagekeys = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
-4. ``` $storagekey = $storagekeys[0].Value```
+1. ```$eventHubKey = Get-AzureRmEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
+1. ```$storagekeys = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
+1. ``` $storagekey = $storagekeys[0].Value```
 
 各イベント ハブで AzLog コマンドを実行します。
 
 1. ```$eventhubs = Get-AzureRmEventHub -ResourceGroupName $rgname -NamespaceName $eventHubNamespaceName```
-2. ```$eventhubs.Name | %{Add-AzLogEventSource -Name $sub' - '$_ -StorageAccount $storage.StorageAccountName -StorageKey $storageKey -EventHubConnectionString $eventHubKey.PrimaryConnectionString -EventHubName $_}```
+1. ```$eventhubs.Name | %{Add-AzLogEventSource -Name $sub' - '$_ -StorageAccount $storage.StorageAccountName -StorageKey $storageKey -EventHubConnectionString $eventHubKey.PrimaryConnectionString -EventHubName $_}```
 
 しばらく (または最後の 2 つのコマンドを実行した後しばらく) すると、生成中の JSON ファイルが表示されます。 ディレクトリ **C:\users\AzLog\EventHubJson** でこれを確認できます。
 

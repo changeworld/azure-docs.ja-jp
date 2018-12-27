@@ -1,12 +1,12 @@
 ---
-title: "Azure Automation を使用して StorSimple Data Manager でジョブを起動する | Microsoft Docs"
-description: "Azure Automation を使用して StorSimple Data Manager ジョブをトリガーする方法について説明します"
+title: Azure Automation を使用して StorSimple Data Manager でジョブを起動する | Microsoft Docs
+description: Azure Automation を使用して StorSimple Data Manager ジョブをトリガーする方法について説明します
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862198"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Automation を使用してジョブをトリガーする
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 01/17/2018
     1. Automation アカウントの **[名前]** を指定します。
     2. StorSimple Data Manager サービスにリンクされている **[サブスクリプション]** を選びます。
     3. 新しいリソース グループを作成するか、既存のリソース グループを選択します。
-    4. **[場所]**を選択します。
+    4. **[場所]** を選択します。
     5. **[Create Run As account]\(実行アカウントの作成\)** オプションは既定値の選択状態のままにします。
     6. ダッシュボードでのクイック アクセス用のリンクを取得するには、**[ダッシュボードにピン留めする]** をオンにします。 **Create** をクリックしてください。
 

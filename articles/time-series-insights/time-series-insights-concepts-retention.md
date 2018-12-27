@@ -1,29 +1,36 @@
 ---
-title: "Azure Time Series Insights 環境のデータ保有について | Microsoft Docs"
-description: "この記事では、Azure Time Series Insights 環境のデータ保有を制御する 2 つの設定について説明します。"
-services: time-series-insights
+title: Azure Time Series Insights 環境のデータ保有について | Microsoft Docs
+description: この記事では、Azure Time Series Insights 環境のデータ保有を制御する 2 つの設定について説明します。
 ms.service: time-series-insights
-author: anshan
+services: time-series-insights
+author: ashannon7
 ms.author: anshan
-manager: kfile
-editor: MicrosoftDocs/tsidocs
+manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 46e0c4fa25c7d8a56763b80bf7de97c775c7ee99
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: e265a66b841530d1133d760ebdcdf56046d1aee1
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364131"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>Time Series Insights のデータ保有について
+
 この記事では、Time Series Insights 環境 (TSI) のデータ保有を制御する 2 つの設定について説明します。
+
+## <a name="video"></a>ビデオ: 
+
+### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>この動画では、Time Series Insights データの保有と、それを計画する方法を紹介します。</br>
+
+> [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 TSI 環境ごとに**データ保有期間**を制御する設定があります。 この値は 1 ～ 400 日間となっています。 環境の記憶域容量に達したとき、または保有期間 (1 から 400) が終了したときのいずれか早い方でデータが削除されます。
 
-TSI 環境ごとに、**ストレージ制限を超過したときの動作**という追加設定があります。 この設定によって、環境の最大容量に到達したときのイングレスと消去の動作が制御されます。 動作の選択肢:
-- **古いデータを消去** (既定値)  
+TSI 環境ごとに、**[ストレージ制限を超過したときの動作]** という追加設定があります。 この設定によって、環境の最大容量に到達したときのイングレスと消去の動作が制御されます。 次の 2 つの動作の選択肢があります。
+- **[Purge old data]\(古いデータを消去\)** (既定値)  
 - **イングレスを一時停止**
 
 > [!NOTE]

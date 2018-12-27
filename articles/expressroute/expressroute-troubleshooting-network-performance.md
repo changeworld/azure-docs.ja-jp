@@ -1,12 +1,12 @@
 ---
-title: "Azure 仮想ネットワークのパフォーマンスのトラブルシューティング | Microsoft Docs"
-description: "このページでは、Azure ネットワーク リンクのパフォーマンスをテストする標準化された方法について説明します。"
+title: Azure 仮想ネットワークのパフォーマンスのトラブルシューティング | Microsoft Docs
+description: このページでは、Azure ネットワーク リンクのパフォーマンスをテストする標準化された方法について説明します。
 services: expressroute
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27318771"
 ---
 # <a name="troubleshooting-network-performance"></a>ネットワーク パフォーマンスのトラブルシューティング
 ## <a name="overview"></a>概要

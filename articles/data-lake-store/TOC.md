@@ -1,17 +1,17 @@
-# [Data Lake Store のドキュメント](index.md)
+# [Data Lake Storage Gen1 のドキュメント](index.md)
+# [Data Lake Storage Gen2 (プレビュー) のドキュメントに切り替え](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction)
 
 # 概要
-## [Azure Data Lake Store の概要](data-lake-store-overview.md)
-## [Azure Data Lake Store と Azure Storage を比較する](data-lake-store-comparison-with-blob-storage.md)
-## [Azure Data Lake Store によるビッグ データの処理](data-lake-store-data-scenarios.md)
-## [Azure Data Lake Store で機能するオープン ソース アプリケーション](data-lake-store-compatible-oss-other-applications.md)
-## [Data Lake Store を使用するためのベスト プラクティス](data-lake-store-best-practices.md)
+## [Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
+## [Azure Storage との比較](data-lake-store-comparison-with-blob-storage.md)
+## [ビッグ データの処理](data-lake-store-data-scenarios.md)
+## [オープン ソース アプリケーションの使用](data-lake-store-compatible-oss-other-applications.md)
+## [ベスト プラクティス](data-lake-store-best-practices.md)
 
 # 作業開始
-## [ポータルの使用](data-lake-store-get-started-portal.md)
-## [PowerShell の使用](data-lake-store-get-started-powershell.md)
-## [Azure CLI 2.0 の使用](data-lake-store-get-started-cli-2.0.md)
-
+## [Azure Portal の使用](data-lake-store-get-started-portal.md)
+## [Azure PowerShell の使用](data-lake-store-get-started-powershell.md)
+## [Azure CLI の使用](data-lake-store-get-started-cli-2.0.md)
 
 # 方法
 ## データの読み込みと移動
@@ -21,15 +21,16 @@
 ### [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
 ### [Sqoop の使用](data-lake-store-data-transfer-sql-sqoop.md)
 ### [オフライン ソースからデータをアップロードする](data-lake-store-offline-bulk-data-upload.md)
-### [リージョン間で Azure Data Lake Store を移行する](data-lake-store-migration-cross-region.md)
+### [リージョン間での Data Lake Storage Gen1 の移行](data-lake-store-migration-cross-region.md)
 
 ## データのセキュリティ保護
 ### [セキュリティの概要](data-lake-store-security-overview.md)
-### [Data Lake Store のアクセス制御](data-lake-store-access-control.md)
-### [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
+### [アクセス制御](data-lake-store-access-control.md)
+### [保存データのセキュリティ保護](data-lake-store-secure-data.md)
 ### [暗号化](data-lake-store-encryption.md)
+### [仮想ネットワークの統合 (プレビュー)](data-lake-store-network-security.md)
 
-## Data Lake Store での認証
+## Data Lake Storage Gen1 での認証
 ### [認証オプション](data-lakes-store-authentication-using-azure-active-directory.md)
 ### [エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)
 #### [Java の使用](data-lake-store-end-user-authenticate-java-sdk.md)
@@ -42,7 +43,7 @@
 #### [REST API の使用](data-lake-store-service-to-service-authenticate-rest-api.md)
 #### [Python の使用](data-lake-store-service-to-service-authenticate-python.md)
 
-## Data Lake Store の操作
+## Data Lake Storage Gen1 の操作
 ### アカウント管理操作
 #### [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
 #### [REST API の使用](data-lake-store-get-started-rest-api.md)
@@ -54,12 +55,12 @@
 #### [Python の使用](data-lake-store-data-operations-python.md)
 
 ## [パフォーマンス]
-### [Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-guidance.md)
-### [Azure Data Lake Store で PowerShell を使用するためのパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-powershell.md)
-### [HDInsight のSpark と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-spark.md)
-### [HDInsight の Hive と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-hive.md)
-### [HDInsight の MapReduce と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-mapreduce.md)
-### [HDInsight の Storm と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-storm.md)
+### [概要](data-lake-store-performance-tuning-guidance.md)
+### [Azure PowerShell の使用](data-lake-store-performance-tuning-powershell.md)
+### [HDInsight での Spark の使用](data-lake-store-performance-tuning-spark.md)
+### [HDInsight での Hive の使用](data-lake-store-performance-tuning-hive.md)
+### [HDInsight での MapReduce の使用](data-lake-store-performance-tuning-mapreduce.md)
+### [HDInsight での Storm の使用](data-lake-store-performance-tuning-storm.md)
 
 ## Azure サービスと統合する
 ### HDInsight を使用
@@ -78,28 +79,27 @@
 ### [SQL Server Integration Services と共に使用する](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)
 ### [その他の Azure 統合オプション](data-lake-store-integrate-with-other-services.md)
 
-## [管理]
+## 管理
 ### [診断ログにアクセスする](data-lake-store-diagnostic-logs.md)
 ### [高可用性向けの計画](data-lake-store-disaster-recovery-guidance.md)
 
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-store)
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=data-lake-store)
 ## [Azure PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)
-## [Python (アカウント管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
+## [Python (アカウント管理)](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)
 ## [Python (ファイルシステム管理)](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/updates/?product=data-lake-store)
 ## [Data Lake Store のブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [料金](https://azure.microsoft.com/pricing/details/data-lake-store/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-lake-store)
 ## [Stack Overflow フォーラム](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)

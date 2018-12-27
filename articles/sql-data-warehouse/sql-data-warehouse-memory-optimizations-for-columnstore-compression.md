@@ -2,23 +2,20 @@
 title: 列ストア インデックスのパフォーマンスを上げる - Azure SQL Data WareHouse | Microsoft Docs
 description: メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: ''
+author: ckarst
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 03/15/2018
-ms.author: barbkess
-ms.openlocfilehash: 74e641f9da418d678bdbef0c69f9f59ccee32303
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: e30320631a7fd9b4ee27096556af01f2ad77a746
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306834"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>列ストアの行グループの品質を最大限にする
 
@@ -38,7 +35,7 @@ ms.lasthandoff: 03/17/2018
 
 それぞれの行グループに 10,000 行以上を圧縮する十分なメモリがない場合、SQL Data Warehouse はエラーを生成します。
 
-一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](https://msdn.microsoft.com/en-us/library/dn935008.aspx#Bulk load into a clustered columnstore index)」セクションを参照してください。
+一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index)」セクションを参照してください。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>行グループの品質を監視する方法
 
@@ -139,7 +136,7 @@ OPTION (MAXDOP 1);
 DWU のサイズとユーザー リソースのクラスによって、ユーザー クエリで使用可能なメモリの量が決まります。 読み込みクエリのメモリ許可を増やすために、DWU の数を増やすか、リソース クラスを増やすことができます。
 
 - DWU を増やす方法については、[パフォーマンスのスケーリング方法](quickstart-scale-compute-portal.md)に関するセクションを参照してください。
-- クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](resource-classes-for-workload-management.md#assigning-resource-classes)」を参照してください。
+- クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](resource-classes-for-workload-management.md#change-a-users-resource-class)」を参照してください。
 
 たとえば、DWU 100 の場合、smallrc リソース クラス内のユーザーはディストリビューションごとに 100 MB のメモリを使用できます。 詳細については、[SQL Data Warehouse での同時実行](resource-classes-for-workload-management.md)に関する記事を参照してください。
 
@@ -153,11 +150,3 @@ DWU のサイズとユーザー リソースのクラスによって、ユーザ
 
 SQL Data Warehouse でのパフォーマンスを向上させるその他の方法については、[パフォーマンスの概要](sql-data-warehouse-overview-manage-user-queries.md)に関する記事を参照してください。
 
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-<!--Other Web references-->

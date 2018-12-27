@@ -1,19 +1,23 @@
 ---
 title: Azure Portal での SQL Database アラートの作成 | Microsoft Docs
 description: Azure Portal を使用して SQL Database アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。
-author: aamalvea
-manager: craigg
 services: sql-database
 ms.service: sql-database
-ms.custom: monitor and tune
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: aamalvea
 ms.author: aamalvea
-ms.openlocfilehash: 0c543ccf1d2104a83f7610bc870334b460ec40fb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 11/02/2018
+ms.openlocfilehash: 11777013eca0ba3a759635ef99c2cfa04104e24b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978997"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Azure Portal を使用した SQL Database と Data Warehouse のアラートの作成
 
@@ -40,19 +44,15 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure ポータルでメトリックにアラート ルールを作成する
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
-2. この手順は、SQL DB およびエラスティック プールと SQL DW では異なります。 
-
-   - **SQL DB とエラスティック プールのみ**: [監視] セクションで、**[アラート]** または **[アラート ルール]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
+2. [監視] セクションで、**[アラート (クラシック)]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
    
-     ![監視](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButton.png)
+     ![監視](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **SQL DW のみ**: 主なタスク セクションで **監視** を選択します。 **[DWU 利用状況]** グラフをクリックします。
+   - **SQL DW ONLY**: **[DWU 利用状況]** グラフをクリックします。 **[クラシック アラートの表示]** を選択します
 
-     ![主なタスク](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButtonDW.png)
-
-3. **[アラートの追加]** コマンドを選択し、フィールドに入力します。
+3. **[メトリック アラートの追加 (クラシック)]** ボタンを選択して、フィールドに入力します。
    
-    ![[アラートの追加]](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPage.png)
+    ![[アラートの追加]](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. アラート ルールに**名前**を付けて、**説明**を選択します。この説明は通知電子メールにも表示されます。
 5. 監視する**メトリック**を選択し、メトリックの**条件**と**しきい値**を選択します。 また、 **[期間]** では、どのくらいの期間メトリック ルールが満たされた後、アラートがトリガーされるかを選択します。 たとえば、期間として [PT5M] を使用すると、アラートは 80% を超える CPU を見つけて、その CPU が 5 分間で**平均** 80% を超えた時点でトリガーされます。 最初のトリガーが発生したら、次のアラートは、CPU が 5 分間で平均 80% を下回ったときにトリガーされます。 CPU 測定は 1 分ごとに発生します。 各アラートが使用するサポートされる間隔と集計タイプを、以下の表で確認してください。ただし、すべてのアラートで平均値が使用されるわけではありません。   
 6. アラートが発生したときに管理者と共同管理者に電子メールが送信されるようにするには、 **[メールの所有者...]** をオンにします。
@@ -107,7 +107,7 @@ ms.lasthandoff: 04/06/2018
 | SQL Data Warehouse | connection_successful | 成功した接続 | 合計 | 10 分 |
 | SQL Data Warehouse | connection_failed | 失敗した接続 | 合計 | 10 分 |
 | SQL Data Warehouse | blocked_by_firewall | ファイアウォールによってブロックされる | 合計 | 10 分 |
-| SQL Data Warehouse | service_level_objective | データベースのサービス レベル目標 | 合計 | 10 分 |
+| SQL Data Warehouse | service_level_objective | データベースのサービス レベル | 合計 | 10 分 |
 | SQL Data Warehouse | dwu_limit | DWU 上限 | 最大値 | 10 分 |
 | SQL Data Warehouse | dwu_consumption_percent | DWU の割合 | 平均 | 10 分 |
 | SQL Data Warehouse | dwu_used | 使用済み DWU | 平均 | 10 分 |

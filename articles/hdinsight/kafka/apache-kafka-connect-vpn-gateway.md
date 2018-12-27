@@ -1,25 +1,20 @@
 ---
-title: "仮想ネットワークを使用して Kafka へ接続する - Azure HDInsight | Microsoft Docs"
-description: "Azure Virtual Network 経由で HDInsight 上の Kafka へ直接接続する方法について説明します。 VPN ゲートウェイを使用して開発環境のクライアントから、または VPN ゲートウェイ デバイスを使用してオンプレミス ネットワークから Kafka へ接続する方法について説明します。"
+title: 仮想ネットワークを使用して Kafka へ接続する - Azure HDInsight
+description: Azure Virtual Network 経由で HDInsight 上の Kafka へ直接接続する方法について説明します。 VPN ゲートウェイを使用して開発環境のクライアントから、または VPN ゲートウェイ デバイスを使用してオンプレミス ネットワークから Kafka へ接続する方法について説明します。
 services: hdinsight
-documentationCenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/05/2018
-ms.author: larryfr
-ms.openlocfilehash: c82629c0f3d3b32314d22467164a06a4c7bcabfe
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.topic: conceptual
+ms.date: 11/06/2018
+ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283072"
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Kafka に接続する
 
@@ -40,7 +35,7 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
     2. サイト間構成を使用する VPN ゲートウェイを作成します。 このドキュメントで使用する構成では、オンプレミス ネットワーク内の VPN ゲートウェイ デバイスへ接続します。
     3. 仮想ネットワーク内に DNS サーバーを作成します。
     4. 各ネットワークの DNS サーバー間の転送を構成します。
-    5. 仮想ネットワークに HDInsight 上の Kafka をインストールします。
+    5. 仮想ネットワーク内の HDInsight クラスターに Kafka を作成します。
 
     詳細については、「[オンプレミス ネットワークから Kafka に接続する](#on-premises)」セクションを参照してください。 
 
@@ -48,8 +43,8 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
 
     1. 仮想ネットワークを作成します。
     2. ポイント対サイト構成を使用する VPN ゲートウェイを作成します。 この構成は、Windows と MacOS の両方のクライアントで使用することができます。
-    3. 仮想ネットワークに HDInsight 上の Kafka をインストールします。
-    4. IP を提供するように Kafka を構成します。 この構成を行うことで、クライアントでドメイン名の代わりに IP アドレスを使用して接続を行えるようになります。
+    3. 仮想ネットワーク内の HDInsight クラスターに Kafka を作成します。
+    4. IP を提供するように Kafka を構成します。 この構成を行うことで、クライアントでドメイン名の代わりに ブローカー IP アドレスを使用して接続を行えるようになります。
     5. 開発システムに VPN クライアントをダウンロードして使用します。
 
     詳細については、「[VPN クライアントを使用して Kafka に接続する](#vpnclient)」セクションを参照してください。
@@ -92,7 +87,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 2. PowerShell プロンプトを開き、次のコードを使用して Azure サブスクリプションにログインします。
 
     ```powershell
-    Add-AzureRmAccount
+    Connect-AzureRmAccount
     # If you have multiple subscriptions, uncomment to set the subscription
     #Select-AzureRmSubscription -SubscriptionName "name of your subscription"
     ```
@@ -244,7 +239,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 既定では、Zookeeper は、Kafka ブローカーのドメイン名をクライアントに返します。 この構成では、仮想ネットワーク内のエンティティに対して名前解決を使用できないため、VPN ソフトウェア クライアントは使用できません。 このように構成する場合は、次の手順を実行して、ドメイン名ではなく IP アドレスを提供するように Kafka を構成します。
 
-1. Web ブラウザーで、https://CLUSTERNAME.azurehdinsight.net に移動します。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
+1. Web ブラウザーを使用し、 https://CLUSTERNAME.azurehdinsight.net にアクセスします。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
 
     プロンプトが表示されたら、クラスターの HTTPS ユーザー名とパスワードを入力します。 クラスターの Ambari Web UI が表示されます。
 
@@ -256,7 +251,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
     ![Kafka の構成リンク](./media/apache-kafka-connect-vpn-gateway/select-kafka-config.png)
 
-4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__フィールドに「`kafka-env`」と入力します。
+4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
 
     ![kafka-env の Kafka 構成](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
@@ -341,7 +336,7 @@ Kafka への接続を検証するには、次の手順に従って Python プロ
 
     * __ソフトウェア VPN クライアント__ を使用している場合、`kafka_broker` エントリはワーカー ノードの IP アドレスに置き換えます。
 
-    * __カスタム DNS サーバー経由での名前解決を有効化__している場合は、`kafka_broker` エントリをワーカー ノードの FQDN に置き換えます。
+    * __カスタム DNS サーバー経由での名前解決を有効化__ している場合は、`kafka_broker` エントリをワーカー ノードの FQDN に置き換えます。
 
     > [!NOTE]
     > このコードは、文字列 `test message` をトピック `testtopic` に送信します。 HDInsight 上の Kafka の既定の構成では、トピックが存在しない場合は作成します。
@@ -364,7 +359,7 @@ Kafka への接続を検証するには、次の手順に従って Python プロ
 
     * __ソフトウェア VPN クライアント__ を使用している場合、`kafka_broker` エントリはワーカー ノードの IP アドレスに置き換えます。
 
-    * __カスタム DNS サーバー経由での名前解決を有効化__している場合は、`kafka_broker` エントリをワーカー ノードの FQDN に置き換えます。
+    * __カスタム DNS サーバー経由での名前解決を有効化__ している場合は、`kafka_broker` エントリをワーカー ノードの FQDN に置き換えます。
 
 ## <a name="next-steps"></a>次の手順
 

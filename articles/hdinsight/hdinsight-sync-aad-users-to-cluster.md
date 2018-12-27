@@ -1,50 +1,44 @@
 ---
-title: Azure Active Directory ユーザーをクラスターに同期する - Azure HDInsight | Microsoft Docs
+title: Azure Active Directory ユーザーをクラスターに同期する - Azure HDInsight
 description: Azure Active Directory の認証されたユーザーをクラスターに同期します。
 services: hdinsight
-documentationcenter: ''
-author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/19/2018
+author: ashishthaps
 ms.author: ashishth
-ms.openlocfilehash: ad1586a6e358dfb1ca2391474ecdd9bee2f6226d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.reviewer: mamccrea
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 09/24/2018
+ms.openlocfilehash: b63f2566220d556f9695687dc743a7d47e27acf1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984315"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 
-[ドメイン参加済み HDInsight クラスター](hdinsight-domain-joined-introduction.md)は、Azure Active Directory (Azure AD) ユーザーに強力な認証を使用したり、*ロールベースのアクセス制御* (RBAC) ポリシーを使用したりできます。 Azure AD にユーザーやグループを追加するとき、アクセスが必要なユーザーをクラスターに同期できます。
+[Enterprise セキュリティ パッケージ (ESP) を使用する HDInsight クラスター](hdinsight-domain-joined-introduction.md)は、Azure Active Directory (Azure AD) ユーザーに強力な認証を使用したり、*ロールベースのアクセス制御* (RBAC) ポリシーを使用したりできます。 Azure AD にユーザーやグループを追加するとき、アクセスが必要なユーザーをクラスターに同期できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-まだ完了していない場合は、[ドメイン参加済み HDInsight クラスターを作成します](hdinsight-domain-joined-configure.md)。
+まだそのようにしていない場合は、[Enterprise セキュリティ パッケージを使用する HDInsight クラスターを作成します](hdinsight-domain-joined-configure.md)。
 
 ## <a name="add-new-azure-ad-users"></a>新しい Azure AD ユーザーを追加する
 
 ホストを表示するには、Ambari Web UI を開きます。 各ノードが、新しい無人アップグレードの設定で更新されます。
 
-1. [Azure Portal](https://portal.azure.com) で、ドメイン参加済みクラスターに関連付けられた Azure AD ディレクトリに移動します。
+1. [Azure Portal](https://portal.azure.com) で、ESP クラスターに関連付けられた Azure AD ディレクトリに移動します。
 
 2. 左側のメニューから **[すべてのユーザー]** を選択してから、**[New user] (新しいユーザー)** を選択します。
 
     ![[すべてのユーザー] ペイン](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
 
-3. 新しいユーザーのフォームを完了します。 クラスター ベースのアクセス許可を割り当てるために作成したグループを選択します。 この例では、新しいユーザーを割り当てることのできる "HiveUsers" という名前のグループを作成します。 ドメイン参加済みクラスターを作成するための [ 手順の例 ](hdinsight-domain-joined-configure.md) には、`HiveUsers` と `AAD DC Administrators` という 2 つのグループの追加が含まれています。
+3. 新しいユーザーのフォームを完了します。 クラスター ベースのアクセス許可を割り当てるために作成したグループを選択します。 この例では、新しいユーザーを割り当てることのできる "HiveUsers" という名前のグループを作成します。 ESP クラスターを作成するための[手順の例](hdinsight-domain-joined-configure.md)には、`HiveUsers` と `AAD DC Administrators` という 2 つのグループの追加が含まれています。
 
     ![[New user] (新しいユーザー) ペイン](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
 
-4. **[作成]**を選択します。
+4. **作成**を選択します。
 
 ## <a name="use-the-ambari-rest-api-to-synchronize-users"></a>Ambari REST API を使用してユーザーを同期する
 
@@ -81,10 +75,10 @@ ms.lasthandoff: 04/05/2018
     }
     ```
 
-4. 同期の状態を表示するには、前のコマンドから返された `href` 値を使用して、新しい `curl` コマンドを実行します。
+4. 同期の状態を表示するには、新しい `curl` コマンドを実行します。
 
     ```bash
-    curl -u admin:<YOUR PASSWORD> http://hn0-hadoop.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1
+    curl -u admin:<YOUR PASSWORD> https://<YOUR CLUSTER NAME>.azurehdinsight.net/api/v1/ldap_sync_events/1
     ```
     
     応答は次のようになります。
@@ -154,6 +148,6 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="see-also"></a>関連項目
 
-* [ドメイン参加済み HDInsight での Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)
-* [ドメイン参加済み HDInsight クラスターの管理](hdinsight-domain-joined-manage.md)
+* [ESP HDInsight での Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)
+* [ESP での HDInsight クラスターの管理](hdinsight-domain-joined-manage.md)
 * [Ambari に対するユーザーの承認](hdinsight-authorize-users-to-ambari.md)

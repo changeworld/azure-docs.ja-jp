@@ -2,18 +2,22 @@
 title: Recovery Manager を使用したシャード マップに関する問題の解決 | Microsoft Docs
 description: RecoveryManager クラスを使用したシャード マップに関する問題の解決
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: scale-out
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 350ea0d4b744467849916f2d958cc49fd72d3e4b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 70ac86197d4d7fac7ca820ead01ecb6948d832a6
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240071"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>RecoveryManager クラスを使用したシャード マップに関する問題の解決
 [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) クラスを使用すると、ADO.Net アプリケーションで、シャード化されたデータベース環境におけるグローバル シャード マップ (GSM) とローカル シャード マップ (LSM) 間の不整合を簡単に検出して修正できます。 
@@ -121,7 +125,7 @@ Azure SQL Database の Elastic Database ツール、geo レプリケーション
 geo フェールオーバーが発生する場合は、セカンダリ データベースが書き込みアクセス許可を与えられて、新しいプライマリ データベースになります。 サーバーの名前が、場合によっては (構成による) データベースの名前も、元のプライマリと異なっている今年があります。 そのため、GSM と LSM のシャードのマッピング エントリを修正する必要があります。 同様に、データベースを別の名前、別の場所、または以前の時点に復元した場合も、シャード マップで不整合が生じている可能性があります。 適切なデータベースへのオープンな接続の分配は、シャード マップ マネージャーが処理します。 分配は、シャード マップ内のデータと、アプリケーション要求の対象であるシャーディング キーに基づいて行われます。 geo フェールオーバー後は、この情報を、回復されたデータベースの正確なサーバー名、データベース名、およびシャード マッピングを使用して更新する必要があります。 
 
 ## <a name="best-practices"></a>ベスト プラクティス
-geo フェールオーバーと復旧は一般的に、アプリケーションのクラウド管理者が Azure SQL Database のビジネス継続性機能の 1 つを意図的に使用して管理する操作です。 ビジネス継続性の計画には、ビジネス運営を中断なく確実に続行できるプロセス、手順、手段が必要です。 実行する復旧アクションに基づいて GSM と LSM が最新の状態に維持されるように、RecoveryManager クラスの一部として提供されているメソッドをこのワークフロー内で使用してください。 フェールオーバー後に GSM と LSM に正確な情報が反映されていることを正しく確認するには、次の 5 つの基本的な手順を実行します。 これらの手順を実行するアプリケーション コードを、既存のツールやワークフローに統合できます。 
+geo フェールオーバーと復旧は一般的に、アプリケーションのクラウド管理者が Azure SQL データベースのビジネス継続性機能の 1 つを意図的に使用して管理する操作です。 ビジネス継続性の計画には、ビジネス運営を中断なく確実に続行できるプロセス、手順、手段が必要です。 実行する復旧アクションに基づいて GSM と LSM が最新の状態に維持されるように、RecoveryManager クラスの一部として提供されているメソッドをこのワークフロー内で使用してください。 フェールオーバー後に GSM と LSM に正確な情報が反映されていることを正しく確認するには、次の 5 つの基本的な手順を実行します。 これらの手順を実行するアプリケーション コードを、既存のツールやワークフローに統合できます。 
 
 1. Recovery Manager を ShardMapManager から取得します。 
 2. シャード マップから使用しなくなったシャードをデタッチします。

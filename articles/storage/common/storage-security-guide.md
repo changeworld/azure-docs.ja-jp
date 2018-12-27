@@ -2,26 +2,27 @@
 title: Azure Storage セキュリティ ガイド | Microsoft Docs
 description: RBAC、Storage Service Encryption、クライアント側の暗号化、SMB 3.0、Azure Disk Encryption など、Azure Storage をセキュリティで保護するさまざまな方法について、詳しく説明します。
 services: storage
-author: craigshoemaker
-manager: jeconnoc
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2018
-ms.author: cshoe
-ms.openlocfilehash: 73353d3b27b65298d804a138b33cdf2de23726fe
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.date: 05/31/2018
+ms.author: tamram
+ms.component: common
+ms.openlocfilehash: 3d9da96e5bf6c88f76089dea930b02248cfa1d24
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243796"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
-
-## <a name="overview"></a>概要
 
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。
 
 - Azure Storage に書き込まれるすべてのデータは、[Storage Service Encryption (SSE)](storage-service-encryption.md) を使用して自動的に暗号化されます。 詳しくは、「[Announcing Default Encryption for Azure Blobs, Files, Table and Queue Storage (Azure Blob、Files、Table、Queue Storage 用の既定の暗号化の発表)](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)」をご覧ください。
-- ストレージ アカウント自体は、ロールベースのアクセス制御と Azure Active Directory を使用して保護できます。 
+- Azure Active Directory (Azure AD) とロールベースのアクセス制御 (RBAC) は、Azure Storage のリソース管理操作とデータ操作の両方でサポートされます。   
+    - ストレージ アカウントを対象とする RBAC ロールをセキュリティ プリンシパルに割り当て、Azure AD を使用して、キー管理などのリソース管理操作を承認できます。
+    - Azure AD の統合は、Blob および Queue サービスでのデータ操作のサポートされます (プレビュー段階)。 サブスクリプション、リソース グループ、ストレージ アカウント、または個々のコンテナーやキューを対象とする RBAC ロールをセキュリティ プリンシパルまたは Azure リソースのマネージド ID に割り当てることができます。 詳細については、[Azure Active Directory を使用したAzure Storage へのアクセスの認証 (プレビュー)](storage-auth-aad.md) に関する記事を参照してください。   
 - アプリケーションと Azure の間で送信されるデータを、 [クライアント側暗号化](../storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。  
 - Azure 仮想マシンに使用する OS とデータ ディスクは、[Azure Disk Encryption](../../security/azure-security-disk-encryption.md) を使用して暗号化できます。 
 - Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権は、 [Shared Access Signature](../storage-dotnet-shared-access-signature-part-1.md)を使用して付与できます。
@@ -32,13 +33,13 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 
 * [管理プレーンのセキュリティ](#management-plane-security) - ストレージ アカウントのセキュリティ保護
 
-  管理プレーンは、ストレージ アカウントの管理に使用するリソースが構成されます。 このセクションでは、Azure Resource Manager デプロイメント モデルと、ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントへのアクセスを制御する方法について説明します。 また、ストレージ アカウント キーの管理とその再生成方法についても説明します。
+  管理プレーンは、ストレージ アカウントの管理に使用するリソースが構成されます。 このセクションでは、Azure Resource Manager デプロイ モデルと、ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントへのアクセスを制御する方法について説明します。 また、ストレージ アカウント キーの管理とその再生成方法についても説明します。
 * [データ プレーンのセキュリティ](#data-plane-security) - データへのアクセスのセキュリティ保護
 
   このセクションでは、Shared Access Signature と保存されたアクセス ポリシーを使用して、BLOB、ファイル、キュー、テーブルなど、ストレージ アカウントの実際のデータ オブジェクトに対してアクセスを許可する方法について説明します。 サービスレベルの SAS とアカウントレベルの SAS の両方が対象です。 また、特定の IP アドレス (または IP アドレスの範囲) に対するアクセスを制限する方法、HTTPS に使用されるプロトコルを制限する方法、Shared Access Signature が期限切れになる前に無効にする方法についても説明します。
 * [転送中の暗号化](#encryption-in-transit)
 
-  このセクションでは、Azure Storage とのデータの送受信時にデータをセキュリティで保護する方法について説明します。 Azure ファイル共有用の SMB 3.0 に使用される HTTPS と暗号化の推奨される使用方法について説明します。 また、クライアント側の暗号化についても取り上げます。クライアント側の暗号化の場合、クライアント アプリケーションで Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化することができます。
+  このセクションでは、Azure Storage とのデータの送受信時にデータをセキュリティで保護する方法について説明します。 Azure ファイル共有に対して SMB 3.0 による暗号化と HTTPS の推奨される使用方法について説明します。 また、クライアント側の暗号化についても取り上げます。クライアント側の暗号化の場合、クライアント アプリケーションで Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化することができます。
 * [保存時の暗号化](#encryption-at-rest)
 
   新規および既存のストレージ アカウントに対して自動的に有効になる Storage Service Encryption (SSE) について説明します。 また、Azure Disk Encryption の使用方法についても取り上げ、Disk Encryption、SSE、およびクライアント側認証の基本的な違いと、例についても説明します。 さらに、米国政府のコンピューターの FIPS 準拠についても簡単に取り上げます。
@@ -85,22 +86,22 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
 * PowerShell または Azure CLI を使用して、アクセス権の付与したユーザーまたは無効にしたユーザー、アクセス権の種類、アクセス権が付与されたユーザーまたは無効にされたユーザー、アクセス権のスコープについて、レポートを作成できます。
 
 #### <a name="resources"></a>リソース
-* [Azure Active Directory のロールベースのアクセス制御](../../active-directory/role-based-access-control-configure.md)
+* [Azure Active Directory のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)
 
   この記事では、Azure Active Directory のロールベースのアクセス制御とそのしくみについて説明しています。
-* [RBAC: 組み込みのロール](../../active-directory/role-based-access-built-in-roles.md)
+* [RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)
 
   この記事では、RBAC で使用できるすべての組み込みロールについて詳しく説明しています。
 * [リソース マネージャー デプロイと従来のデプロイを理解する](../../azure-resource-manager/resource-manager-deployment-model.md)
 
-  この記事では、Resource Manager デプロイとクライアント デプロイ モデル、Resource Manager とリソース グループを使用する利点について説明しています。 また、Resource Manager モデルでの Azure Compute、Network、Storage プロバイダーの動作についても説明します。
-* [REST API を使用したロールベースのアクセス制御の管理](../../active-directory/role-based-access-control-manage-access-rest.md)
+  この記事では、Resource Manager デプロイ モデルとクラシック デプロイ モデル、Resource Manager とリソース グループを使用する利点について説明しています。 また、Resource Manager モデルでの Azure Compute、Network、Storage プロバイダーの動作についても説明します。
+* [REST API を使用したロールベースのアクセス制御の管理](../../role-based-access-control/role-assignments-rest.md)
 
   この記事では、REST API を使用して RBAC を管理する方法について説明しています。
 * [Azure Storage Resource Provider REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   この API リファレンスでは、ストレージ アカウントをプログラムで管理するときに使用できる API について説明します。
-* [Developer’s guide to auth with Azure Resource Manager API (Azure Resource Manager API を使用して認証するための開発者ガイド)](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)
+* [サブスクリプションにアクセスするための Resource Manager 認証 API の使用](../../azure-resource-manager/resource-manager-api-authentication.md)
 
   この記事では、 Resource Manager API を使用して認証する方法について説明しています。
 * [Role-Based Access Control for Microsoft Azure from Ignite (Ignite での Microsoft Azure 向けロールベースのアクセス制御の説明)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
@@ -141,31 +142,26 @@ Azure Key Vault を使用すると、ストレージ キーのセキュリティ
 
 Azure Key Vault を使用するもう 1 つの利点は、Azure Active Directory を使用してキーへのアクセス権を制御することもできる点です。 つまり、Azure Key Vault からキーを取得する必要がある多数のアプリケーションに対してアクセス権を付与できます。また、アクセス許可が明示的に付与されていない他のアプリケーションが、キーにアクセスできないことを把握できます。
 
-注: すべてのアプリケーションで、同時にいずれかのキーのみを使用することをお勧めします。 キー 1 を使用する場所とキー 2 を使用する場所がある場合、キーを循環させるときに、一部のアプリケーションがアクセス権を失います。
+> [!NOTE]
+> Microsoft では、すべてのアプリケーションで、同時にいずれかのキーのみを使用することをお勧めします。 キー 1 を使用する場所とキー 2 を使用する場所がある場合、キーを循環させるときに、一部のアプリケーションがアクセス権を失います。
 
 #### <a name="resources"></a>リソース
-* [Azure ストレージ アカウントについて](storage-create-storage-account.md#regenerate-storage-access-keys)
 
-  この記事では、ストレージ アカウントの概要と、ストレージ アカウント キーの表示、コピー、再生成について説明しています。
+* [Azure portal でストレージ アカウント設定を管理する](storage-account-manage.md)
 * [Azure Storage Resource Provider REST API リファレンス](https://msdn.microsoft.com/library/mt163683.aspx)
-
-  この記事では、REST API を使用した Azure アカウントのストレージ アカウント キーの取得および再生成に関する記事のリンクを紹介しています。 注: Resource Manager ストレージ アカウント向けの記事です。
-* [Operations on storage accounts (ストレージ アカウントに対する操作)](https://msdn.microsoft.com/library/ee460790.aspx)
-
-  Storage Service Manager REST API リファレンスのこの記事では、REST API を使用したストレージ アカウント キーの取得および再生成に関する記事のリンクを紹介しています。 注: クラシック ストレージ アカウント向けの記事です。
-* [Say goodbye to key management – manage access to Azure Storage data using Azure AD (キー管理にさよなら - Azure AD を使用して Azure Storage データへのアクセスを管理する)](http://www.dushyantgill.com/blog/2015/04/26/say-goodbye-to-key-management-manage-access-to-azure-storage-data-using-azure-ad/)
-
-  この記事では、Active Directory を使用して、Azure Key Vault 内の Azure Storage キーへのアクセスを制限する方法について説明しています。 また、Azure Automation ジョブを使用して 1 時間ごとにキーを再生成する方法についても説明しています。
 
 ## <a name="data-plane-security"></a>データ プレーンのセキュリティ
 データ プレーンのセキュリティとは、Azure Storage に格納されているデータ オブジェクト (BLOB、キュー、テーブル、ファイル) をセキュリティで保護するために使用される方法のことを指します。 これまで、データの転送中にデータを暗号化する方法とセキュリティについて説明してきましたが、オブジェクトへのアクセスを制御するにはどうすればよいのでしょうか。
 
-データ オブジェクト自体に対するアクセスを承認するには、2 つの方法があります。 ストレージ アカウント キーに対するアクセスを制御する方法と、Shared Access Signature を使用して、一定期間、特定のデータ オブジェクトに対するアクセス権を付与する方法です。
+Azure Storage 内のデータ オブジェクトへのアクセスを承認するための 3 つのオプションがあります。
+
+- Azure AD を使用してコンテナーとキューへのアクセスを承認する (プレビュー)。 他の承認方法と比較した Azure AD の利点には、コード内にシークレットを格納する必要がないことが含まれます。 詳細については、[Azure Active Directory を使用したAzure Storage へのアクセスの認証 (プレビュー)](storage-auth-aad.md) に関する記事を参照してください。 
+- ストレージ アカウント キーを使用して、共有キーを介したアクセスを承認する。 共有キーを介した承認では、ストレージ アカウント キーをアプリケーション内に格納する必要があるため、可能であれば、代わりに Azure AD を使用することをお勧めします。 実稼働アプリケーション、または Azure のテーブルとファイルへのアクセスの承認では、Azure AD の統合がプレビュー段階にある間は、引き続き共有キーを使用してください。
+- 共有アクセス署名を使用して、特定のデータ オブジェクトへの制御されたアクセス許可を特定の期間付与する。
 
 さらに、Blob Storage の場合、BLOB に対してパブリック アクセスを許可するには、その BLOB を保持するコンテナーのアクセス レベルを設定します。 コンテナーから BLOB またはコンテナーに対するアクセス権を設定すると、そのコンテナー内の BLOB に対してパブリック読み取りアクセスが許可されます。 つまり、誰でも、そのコンテナー内の BLOB を指す URL をブラウザーで開くことができます。Shared Access Signature を使用する必要や、ストレージ アカウント キーを持っている必要はありません。
 
 承認を使用してアクセスを制限する以外に、[ファイアウォールと仮想ネットワーク](storage-network-security.md)を使用し、ネットワーク ルールに基づいてストレージ アカウントへのアクセスを制限する方法もあります。  このアプローチを使用すると、パブリック インターネット トラフィックに対するアクセスを拒否し、特定の Azure Virtual Network またはパブリック インターネット IP アドレスの範囲にのみアクセスを許可することができます。
-
 
 ### <a name="storage-account-keys"></a>ストレージ アカウント キー
 ストレージ アカウント キーは、Azure で作成される 512 ビットの文字列です。ストレージ アカウント名と共に使用して、ストレージ アカウントに保存されているデータ オブジェクトへのアクセスに使用できます。
@@ -205,7 +201,7 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 &sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D (signature used for the authentication of the SAS)
 ```
 
-#### <a name="how-the-shared-access-signature-is-authenticated-by-the-azure-storage-service"></a>Azure Storage サービスで Shared Access Signature を認証する方法
+#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>Azure Storage サービスで Shared Access Signature を承認する方法
 Storage サービスが要求を受け取ると、入力クエリ パラメーターを取得し、呼び出し元プログラムと同じ方法で署名を作成します。 次に、2 つの署名を比較します。 一致する場合、ストレージ サービスでは、ストレージ サービスのバージョンをチェックする、有効であることを確認する、現在の日時が指定した期間内であることを検証する、要求されたアクセス権が実行された要求に対応していることを確認するなどの処理を実行できます。
 
 たとえば、上記の URL で、URL が BLOB ではなくファイルを指していた場合、Shared Access Signature が BLOB 用と指定されているため、この要求は失敗します。 BLOB を更新する REST コマンドが呼び出された場合、Shared Access Signature は読み取りアクセス権のみを付与することを指定しているので、コマンドは失敗します。
@@ -248,7 +244,7 @@ Shared Access Signature と Stored Access Policy の詳しい使用方法と例�
 
     この記事には、SAS モデルの説明、Shared Access Signature の例、Shared Access Signature のベスト プラクティスの使用の推奨が含まれています。 また、付与されたアクセス許可の無効化についても説明しています。
 
-* 認証
+* Authentication
 
   * [Azure Storage サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * Shared Access Signature の概要チュートリアル
@@ -263,22 +259,10 @@ REST API を呼び出すときや、ストレージ内のオブジェクトに�
 
 ストレージ アカウントの [[安全な転送が必須]](../storage-require-secure-transfer.md) を有効にすると、ストレージ アカウント内のオブジェクトにアクセスするための REST API を呼び出す際に HTTPS の使用を強制することができます。 このオプションを有効にすると、HTTP を使った接続は拒否されます。
 
-### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Azure ファイル共有での転送中に暗号化を使用する
-Azure Files は、REST API の使用時に HTTPS をサポートしていますが、VM にアタッチされる SMB ファイル共有として使用する方が一般的です。 SMB 2.1 は暗号化をサポートしていないので、Azure の同じリージョン内でのみ接続が許可されます。 一方、SMB 3.0 は暗号化をサポートしており、Windows Server 2012 R2、Windows 8、Windows 8.1、Windows 10 で使用できるので、リージョンをまたがるアクセスとデスクトップ上のアクセスの両方が許可されます。
+### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Azure ファイル共有での転送中の暗号化の使用
+[Azure Files](../files/storage-files-introduction.md) では、File REST API の使用時に、SMB 3.0 による暗号化と HTTPS の使用をサポートします。 Azure ファイル共有が配置されている Azure リージョン以外の場所 (オンプレミスや別の Azure リージョンなど) でマウントを行う場合は、SMB 3.0 による暗号化が常に必要です。 SMB 2.1 は暗号化をサポートしていないため、同じ Azure リージョン内では既定の接続のみが許可されますが、ストレージ アカウントに対する[セキュリティで保護された転送を要求する](../storage-require-secure-transfer.md)ことで、SMB 3.0 による暗号化を使用できます。
 
-Azure ファイル共有は Unix で使用できますが、Linux SMB クライアントはまだ暗号化をサポートしていないため、アクセスは Azure リージョン内でのみ許可されます。 Linux での暗号化のサポートは、SMB 機能を担当している Linux 開発者によって実装される予定です。 暗号化を追加すると、Linux で Azure ファイル共有にアクセスした場合に、Windows と同じ機能を利用できるようになります。
-
-ストレージ アカウントの [[安全な転送が必須]](../storage-require-secure-transfer.md) を有効にすると、Azure Files サービスでの暗号化の使用を強制することができます。 REST API を使う場合は、HTTPS が必須となります。 SMB に関しては、暗号化をサポートした SMB 接続しか正常に接続できなくなります。
-
-#### <a name="resources"></a>リソース
-* [Azure Files の概要](../files/storage-files-introduction.md)
-* [Windows で Azure Files を使用する](../files/storage-how-to-use-files-windows.md)
-
-  この記事では、Azure ファイル共有の概要と、Windows 上でマウントし、使用する方法について説明しています。
-
-* [Linux で Azure Files を使用する方法](../files/storage-how-to-use-files-linux.md)
-
-  この記事では、Azure ファイル共有を Linux システムにマウントし、ファイルをアップロード/ダウンロードする方法について説明しています。
+SMB 3.0 による暗号化は、Windows 7 と Windows Server 2008 R2 を除く[すべてのサポートされている Windows および Windows Server オペレーティング システム](../files/storage-how-to-use-files-windows.md)で利用できます (Windows 7 と Windows Server 2008 R2 では SMB 2.1 のみがサポートされます)。 SMB 3.0 は、[macOS](../files/storage-how-to-use-files-mac.md) と、Linux カーネル 4.11 以降を使用している [Linux](../files/storage-how-to-use-files-linux.md) のディストリビューションでもサポートされます。 SMB 3.0 による暗号化のサポートは、複数の Linux ディストリビューションによって、Linux カーネルの古いバージョンにも移植されています。[SMB クライアントの要件](../files/storage-how-to-use-files-linux.md#smb-client-reqs)に関する記事を参照してください。
 
 ### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>クライアント側の暗号化を使用してストレージに送信するデータをセキュリティで保護する
 クライアント アプリケーションと Storage 間でデータが転送されるときにセキュリティで保護するためのもう 1 つのオプションは、クライアント側の暗号化です。 データは暗号化されてから、Azure Storage に転送されます。 Azure Storage からデータを取得するときは、クライアント側で受け取った後にデータが暗号化されます。 データの転送時に暗号化される場合でも、HTTPS も使用することをお勧めします。データ整合性チェックが組み込まれるので、データの整合性に影響があるネットワーク エラーを軽減することができます。
@@ -294,7 +278,7 @@ Azure には、保存時の暗号化を提供する機能が 3 つあります�
 
 SSE は、すべてのストレージ アカウントに対して有効になり、無効にすることはできません。 SSE は、Azure Storage への書き込み時にデータを自動的に暗号化します。 Azure Storage からデータを読み取ると、Azure Storage によって復号化されてから返されます。 SSE を使用すると、コードを変更したり、アプリケーションにコードを追加したりする必要なしにデータをセキュリティで保護できます。
 
-SSE に使用されるキーは Microsoft によって管理されます。 Microsoft は、社内ポリシーの定義に従って、キーを生成し、キーの安全な保存と定期的な循環を管理しています。 顧客管理キーは、Microsoft が管理するキーから顧客管理キーへの移行パスに従って最終的に使用可能になります。
+Microsoft 管理キーまたは独自のカスタム キーを使用できます。 Microsoft は、Microsoft の社内ポリシーの定義に従って管理キーを生成し、キーの安全な保存と定期的な循環を処理しています。 カスタム キーを使用する方法の詳細については、[Azure Key Vault のユーザー管理キーを使用した Storage Service Encryption](storage-service-encryption-customer-managed-keys.md) に関するページを参照してください。
 
 SSE は、すべてのパフォーマンス レベル (Standard および Premium)、すべてのデプロイ モデル (Azure Resource Manager とクラシック)、すべての Azure Storage サービス (BLOB、Queue、Table、File) のデータを自動的に暗号化します。 
 
@@ -363,7 +347,7 @@ IaaS VM で使用されるデータ ディスクには、Azure Disk Encryption �
 
 オンプレミスの暗号化されていない VHD がある場合、カスタム イメージとしてギャラリーにアップロードし、そこから VM をプロビジョニングできます。 この処理に Resource Manager テンプレートを使用する場合、VM の起動時に Azure Disk Encryption を有効にするように指示できます。
 
-データ ディスクを追加し、VM にマウントするときに、そのデータ ディスクで Azure Disk Encryption を有効にすることができます。 有効にすると、まずそのデータ ディスクがローカルで暗号化され、クラシック デプロイメント モデル レイヤーでストレージに対して遅延書き込みが行われるので、ストレージ コンテンツは暗号化されます。
+データ ディスクを追加し、VM にマウントするときに、そのデータ ディスクで Azure Disk Encryption を有効にすることができます。 有効にすると、まずそのデータ ディスクがローカルで暗号化され、クラシック デプロイ モデル レイヤーでストレージに対して遅延書き込みが行われるので、ストレージ コンテンツは暗号化されます。
 
 #### <a name="client-side-encryption"></a>クライアント側暗号化
 クライアント側の暗号化は、転送前にデータが暗号化されるため、データを暗号化する上で最も安全な方法です。  ただし、ストレージを使用してアプリケーションにコードを追加する必要があります。 このような場合は、HTTPS を使用して転送中にデータをセキュリティで保護できます。 データが Azure Storage に到達すると、SSE によって暗号化されます。
@@ -412,11 +396,11 @@ Azure Storage に対するすべての要求がログに記録されます。 �
 
 ![ログ ファイル内のフィールドのスナップショット](./media/storage-security-guide/image3.png)
 
-ここでは、GetBlob のエントリとその認証方法を扱っているため、operation-type が "Get-Blob" であるエントリを探し、request-status (4</sup> 番目の列) と authorization-type (8</sup> 番目の列) をチェックする必要があります。
+ここでは、GetBlob のエントリとその承認方法を扱っているため、operation-type が "Get-Blob" であるエントリを探し、request-status (4</sup> 番目の列) と authorization-type (8</sup> 番目の列) をチェックする必要があります。
 
-たとえば、上の一覧の先頭数行では、request-status は "Success"、authorization-type は "authenticated" です。 つまり、要求はストレージ アカウント キーを使用して検証されています。
+たとえば、上の一覧の先頭数行では、request-status は "Success"、authorization-type は "authenticated" です。 つまり、要求はストレージ アカウント キーを使用して承認されています。
 
-#### <a name="how-are-my-blobs-being-authenticated"></a>BLOB の承認方法
+#### <a name="how-is-access-to-my-blobs-being-authorized"></a>承認されている BLOB へのアクセス方法
 ここでは、3 つの事例について扱っています。
 
 1. BLOB がパブリックであり、Shared Access Signature を使用せずに、URL を使用してアクセスできます。 この場合、request-status は "AnonymousSuccess" であり、authorization-type は "anonymous" です。
@@ -460,7 +444,7 @@ Azure Storage には、どのような処理が必要でしょうか。 JSON、X
 この問題を解決するもう 1 つの方法は、Web アプリケーションがストレージ呼び出しの際にプロキシとして動作するようにすることです。 つまり、ファイルを Blob Storage にアップロードすると、Web アプリケーションがローカルで書き込み、それを Blob Storage にコピーしたり、すべてをメモリに読み込んで Blob Storage に書き込んだりすることができます。 また、ファイルをローカルでアップロードし、Blob Storage に書き込む専用の Web アプリケーション (Web API など) を作成することもできます。 いずれの方法でも、スケーラビリティのニーズを決定するときにその機能を考慮する必要があります。
 
 #### <a name="how-can-cors-help"></a>CORS の機能
-Azure Storage では、CORS (クロス オリジン リソース共有) を有効にできます。 ストレージ アカウントごとに、そのストレージ アカウントのリソースにアクセスできるドメインを指定できます。 たとえば、前述の例のように、fabrikam.blob.core.windows.net ストレージ アカウントで CORS を有効にして、contoso.com へのアクセスを許可するように構成できます。構成すると、Web アプリケーションの contoso.com から、fabrikam.blob.core.windows.net のリソースに直接アクセスできるようになります。
+Azure Storage では、CORS (クロス オリジン リソース共有) を有効にできます。 ストレージ アカウントごとに、そのストレージ アカウントのリソースにアクセスできるドメインを指定できます。 たとえば、前述の例のように、fabrikam.blob.core.windows.net ストレージ アカウントで CORS を有効にして、contoso.com へのアクセスを許可するように構成できます。 構成すると、Web アプリケーションの contoso.com から、fabrikam.blob.core.windows.net のリソースに直接アクセスできるようになります。
 
 ただし、CORS でアクセスを許可できますが、認証機能はありません。認証機能は、ストレージ リソースのすべての非パブリック アクセスに必要です。 つまり、BLOB がパブリックの場合、または Shared Access Signature を含めて適切なアクセス許可を付与した場合にのみ、BLOB にアクセスできます。 テーブル、キュー、ファイルにはパブリック アクセスがないので、SAS が必要です。
 
@@ -495,7 +479,7 @@ CORS と CORS を有効にする方法については、次のリソースをご
 * [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services on MSDN (MSDN の Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート)](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
   Azure Storage サービスの CORS サポートに関する参照ドキュメントです。 各ストレージ サービスに適用される記事のリンクと例が紹介されています。また、CORS ファイルの各要素についても説明しています。
-* [Microsoft Azure Storage: Introducing CORS (Microsoft Azure Storage: CORS の概要)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+* [Microsoft Azure Storage: Introducing CORS (Microsoft Azure Storage: CORS の概要)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
   CORS を発表し、CORS の使用方法を示す初期のブログ記事へのリンクです。
 
@@ -506,15 +490,14 @@ CORS と CORS を有効にする方法については、次のリソースをご
 
    トランスポート レベルのセキュリティを提供する HTTPS を使用できる場合は、MD5 チェックを使用することは冗長となり、不要です。
 
-   詳細については、 [Azure BLOB MD5 の概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)に関するブログ記事をご覧ください。
+   詳細については、 [Azure BLOB MD5 の概要](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)に関するブログ記事をご覧ください。
 2. **米国政府の FIPS 準拠はどうなっていますか**
 
    米国連邦情報処理規格 (FIPS) には、機密データの保護のために、米国連邦政府のコンピューター システムで使用することが承認されている暗号化アルゴリズムが定義されています。 Windows Server またはデスクトップで FIPS モードを有効にすると、FIPS が検証された暗号化アルゴリズムのみを使用するように OS に指示されます。 アプリケーションが準拠していないアルゴリズムを使用している場合、アプリケーションは停止します。 .NET Framework バージョン 4.5.2 以降の場合、コンピューターを FIPS モードにすると、FIPS に準拠しているアルゴリズムを使用するようにアプリケーションの暗号化アルゴリズムが自動的に切り替わります。
 
    FIPS モードを有効にするかどうかは、ユーザーの判断に委ねられます。 政府の規制対象ではないユーザーには、既定で FIPS モードを有効にしなければならない理由はないと Microsoft は考えます。
 
-   **リソース**
-
+### <a name="resources"></a>リソース
 * [Why We’re Not Recommending “FIPS Mode” Anymore ("FIPS モード" を推奨しなくなった理由)](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   このブログの記事では、FIPS の概要と、既定で FIPS モードを有効にしていない理由について説明しています。

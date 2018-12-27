@@ -1,28 +1,31 @@
 ---
-title: "Azure Event Grid Service Bus のイベント スキーマ"
-description: "Azure Event Grid で Service Bus イベント用に提供されているプロパティについて説明します"
+title: Azure Event Grid Service Bus のイベント スキーマ
+description: Azure Event Grid で Service Bus イベント用に提供されているプロパティについて説明します
 services: event-grid
 author: banisadr
 manager: darosa
 ms.service: event-grid
-ms.topic: article
-ms.date: 02/21/2018
+ms.topic: reference
+ms.date: 08/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 72780bff3807534efb456a9a7998f7d4de3c6f12
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: afb85f20c49821ca98e078791730a3376198e9e5
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144915"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Service Bus 用の Azure Event Grid イベント スキーマ
 
 この記事では、Service Bus イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
+サンプル スクリプトとチュートリアルの一覧については、[Service Bus のイベント ソース](event-sources.md#service-bus)に関する記事を参照してください。
+
 ## <a name="available-event-types"></a>使用可能なイベントの種類
 
 Service Bus から出力されるイベントの種類は次のとおりです。
 
-| イベントの種類 | [説明] |
+| イベントの種類 | 説明 |
 | ---------- | ----------- |
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | キューまたはサブスクリプションにアクティブなメッセージがあり、リッスンしているレシーバーがない場合に生成されます。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | 配信不能キューにアクティブなメッセージがあり、アクティブなレシーバーがない場合に生成されます。 |
@@ -77,9 +80,9 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | type | [説明] |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| トピック | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
 | eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
 | eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
@@ -90,9 +93,9 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | [説明] |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| nameSpaceName | 文字列 | リソースが存在する Service Bus 名前空間。 |
+| namespaceName | 文字列 | リソースが存在する Service Bus 名前空間。 |
 | requestUri | 文字列 | イベントを生成している特定のキューまたはサブスクリプションの URI。 |
 | entityType | 文字列 | イベントを生成している Service Bus エンティティの種類 (キューまたはサブスクリプション)。 |
 | queueName | 文字列 | キューをサブスクライブしている場合、アクティブなメッセージのあるキュー。 トピック/サブスクリプションを使っている場合は値 null。 |

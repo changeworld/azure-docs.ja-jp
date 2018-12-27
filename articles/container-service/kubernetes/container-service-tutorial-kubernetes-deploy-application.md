@@ -1,23 +1,27 @@
 ---
-title: Azure Container Service チュートリアル - アプリケーションのデプロイ
+title: (非推奨) Azure Container Service チュートリアル - アプリケーションのデプロイ
 description: Azure Container Service チュートリアル - アプリケーションのデプロイ
 services: container-service
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7119976ada00e10ebeadf6fcff2daf125f439c17
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998767"
 ---
-# <a name="run-applications-in-kubernetes"></a>Kubernetes でアプリケーションを実行する
+# <a name="deprecated-run-applications-in-kubernetes"></a>(非推奨) Kubernetes でアプリケーションを実行する
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの実行](../../aks/tutorial-kubernetes-deploy-application.md)」を参照してください。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 このチュートリアル (4/7) では、サンプル アプリケーションを Kubernetes クラスターにデプロイします。 手順は次のとおりです。
 
@@ -42,7 +46,7 @@ ms.lasthandoff: 03/28/2018
 
 このチュートリアルでは、Azure Container Registry (ACR) を使用してコンテナー イメージを保存しています。 アプリケーションを実行する前に、Kubernetes マニフェスト ファイルの ACR ログイン サーバー名を更新する必要があります。
 
-ACR ログイン サーバー名を取得するには、[az acr list](/cli/azure/acr#az_acr_list) コマンドを使います。
+ACR ログイン サーバー名を取得するには、[az acr list](/cli/azure/acr#az-acr-list) コマンドを使います。
 
 ```azurecli-interactive
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -66,7 +70,7 @@ containers:
 
 ## <a name="deploy-application"></a>アプリケーションをデプロイする
 
-[kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) コマンドを使用してアプリケーションを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。
+[kubectl create](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) コマンドを使用してアプリケーションを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。
 
 ```azurecli-interactive
 kubectl create -f azure-vote-all-in-one-redis.yml
@@ -85,7 +89,7 @@ service "azure-vote-front" created
 
 アプリケーションをインターネットに公開する [Kubernetes サービス](https://kubernetes.io/docs/concepts/services-networking/service/)が作成されます。 このプロセスには数分かかることがあります。 
 
-進行状況を監視するには、[kubectl get service](https://review.docs.microsoft.com/azure/container-service/container-service-kubernetes-walkthrough?branch=pr-en-us-17681) コマンドを `--watch` 引数と一緒に使用します。
+進行状況を監視するには、[kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを `--watch` 引数と一緒に使用します。
 
 ```azurecli-interactive
 kubectl get service azure-vote-front --watch

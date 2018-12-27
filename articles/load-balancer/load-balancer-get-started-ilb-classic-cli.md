@@ -1,27 +1,24 @@
 ---
-title: "内部ロード バランサーの作成 - Azure CLI クラシック | Microsoft Docs"
-description: "クラシック デプロイ モデルで Azure CLI を使用して、内部ロード バランサーを作成する方法について説明します。"
+title: 内部ロード バランサーを作成する - Azure クラシック CLI | Microsoft Docs
+description: クラシック デプロイ モデルで Azure クラシック CLI を使用して、内部ロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
-manager: timlt
-editor: 
-tags: azure-service-management
-ms.assetid: becbbbde-a118-4269-9444-d3153f00bf34
+author: genlin
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
-ms.author: kumud
-ms.openlocfilehash: f740633230b2479f77d7d09a31dbbf3f72ffb174
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.date: 10/31/2018
+ms.author: genli
+ms.openlocfilehash: c7659937599d778d9dc945254fcfff52840622dc
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415068"
 ---
-# <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Azure CLI を使用した内部ロード バランサー (クラシック) の作成の概要
+# <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用した内部ロード バランサーの作成の概要
 
 > [!div class="op_single_selector"]
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
@@ -31,7 +28,7 @@ ms.lasthandoff: 12/18/2017
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-cli.md)方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-cli.md)方法について説明します。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -43,11 +40,11 @@ ms.lasthandoff: 12/18/2017
 2. 着信トラフィックを受信できる仮想マシンに対応するエンドポイントを追加します。
 3. 内部負荷分散インスタンスの仮想 IP (VIP) アドレスにトラフィックを送信するようにサーバーを構成します。
 
-## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>CLI を使用した内部ロード バランサーの作成手順
+## <a name="step-by-step-creating-an-internal-load-balancer-using-classic-cli"></a>クラシック CLI を使用した内部ロード バランサーの作成手順
 
 このガイドでは、前述のシナリオに基づいてインターネット ロード バランサーを作成する方法を説明します。
 
-1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. クラシック CLI を初めて使用する場合は、「[Azure CLI のインストールと構成](../cli-install-nodejs.md)」を参照し、Azure のアカウントとサブスクリプションを選択する時点までの指示に従ってください。
 2. 次に示すように、 **azure config mode** コマンドを実行して、以下に示すようにクラシック モードに切り替えます。
 
     ```azurecli
@@ -174,7 +171,7 @@ azure vm endpoint delete DB1 tcp-1433-1433
 
 詳細については、「 `azure vm endpoint --help` 」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ソース IP アフィニティを使用したロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 

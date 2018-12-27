@@ -1,24 +1,25 @@
 ---
-title: "Azure Security Center でのセキュリティ イベントの監視と処理 | Microsoft Docs"
-description: "Security Center のイベント ダッシュ ボードを使用して、Azure VM と Azure 以外のコンピューターからのセキュリティ イベントを表示する方法について説明します。"
+title: Azure Security Center でのセキュリティ イベントの監視と処理 | Microsoft Docs
+description: Security Center のイベント ダッシュ ボードを使用して、Azure VM と Azure 以外のコンピューターからのセキュリティ イベントを表示する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
-ms.author: terrylan
-ms.openlocfilehash: 367067874b167268bd690a9e0b55412e92e08122
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rkarlin
+ms.openlocfilehash: 5b50e9fea8edd9d73a1d382ae4135edb4e4241ec
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967829"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Azure Security Center でのセキュリティ イベントの監視と処理
 イベント ダッシュ ボードは、時間の経過とともに収集されたセキュリティ イベントの数と、注意を払う必要がある重要なイベントの一覧の概要を示します。  
@@ -79,7 +80,7 @@ Security Center は、すぐに使用できる注目すべきイベントを提�
 
   ![クエリの入力][8]
 
-4. **[OK]**を選択します。
+4. **[OK]** を選択します。
 
 ## <a name="update-your-workspace-for-events-processing"></a>イベント処理用にワークスペースを更新する
 Security Center でイベント処理を使用するには、ワークスペースが Log Analytics バージョン 2 を実行していて、Security Center の Standard レベルに存在する必要があります。 **[イベント ダッシュボード]** ワークスペース セレクターで、これらの要件を満たしていないワークスペースを識別できます。
@@ -111,11 +112,11 @@ Security Center でイベント処理を使用するには、ワークスペー�
 
 3. **[高度なセキュリティへのオンボード]** で、アップグレードするワークスペースを選択します。
 4. **[価格]** で、**[Standard]** を選択します。
-5. [ **保存**] を選択します。
+5. **[保存]** を選択します。
 
   ![Standard レベルにアップグレードする][12]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Security Center のイベント ダッシュボードの使用方法について説明しました。 ダッシュボードのしくみと、イベント クエリを作成する方法についての詳細は、以下を参照してください。
 
 - [Log Analytics とは](../log-analytics/log-analytics-overview.md) - Log Analytics の概要

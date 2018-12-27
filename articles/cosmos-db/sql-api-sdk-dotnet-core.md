@@ -2,24 +2,22 @@
 title: 'Azure Cosmos DB: SQL .NET Core API、SDK、およびリソース | Microsoft Docs'
 description: リリース日、提供終了日、Azure Cosmos DB .NET Core SDK の各バージョン間の変更など、SQL .NET Core API と SDK に関するあらゆる詳細を提供します。
 services: cosmos-db
-documentationcenter: .net
 author: rnagpal
-manager: jhubbard
+manager: kfile
 editor: cgronlun
-ms.assetid: f899b314-26ac-4ddb-86b2-bfdf05c2abf2
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b26a06f1dfba6124254f42c216891596b118d4d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d5216a4a21fbbded4a10429c658f4842db225657
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161720"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB .NET Core SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -33,8 +31,8 @@ ms.lasthandoff: 03/30/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 <table>
 
@@ -54,6 +52,50 @@ ms.lasthandoff: 03/30/2018
 ## <a name="release-notes"></a>リリース ノート
 
 Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md) と同等の機能が備わっています。
+
+### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
+
+* System.Net.Security を 4.3.2 に更新しました。
+
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
+
+* 診断トレーシング機能を強化しました。
+
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
+
+* マルチリージョンの要求の一時的な障害に対する回復力を上げました。
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+
+* マルチリージョンの書き込みがサポートされるようになりました。
+* TOP と MaxBufferedItemCount でクロス パーティションのクエリ パフォーマンスが改善されました。
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+
+* 要求をキャンセルできるようになりました。
+* SetCurrentLocation を ConnectionPolicy に追加しました。これにより、優先される場所がリージョンに基づいて自動的に事前設定されます。
+* 個々のパーティション上のいずれのドキュメントにも一致しないフィルターや Min/Max を含むクロス パーティション クエリのバグを修正しました。
+* DocumentClient のメソッドが IDocumentClient と等価になりました。
+* 確立される接続数を減らすために、ダイレクト TCP トランスポート スタックを更新しました。
+* 非 Windows クライアント向けにダイレクト モード TCP のサポートを追加しました。
+
+### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
+
+* 要求をキャンセルできるようになりました。
+* SetCurrentLocation を ConnectionPolicy に追加しました。これにより、優先される場所がリージョンに基づいて自動的に事前設定されます。
+* 個々のパーティション上のいずれのドキュメントにも一致しないフィルターや Min/Max を含むクロス パーティション クエリのバグを修正しました。
+
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
+
+* DocumentClient のメソッドが IDocumentClient と等価になりました。
+* 確立される接続数を減らすために、ダイレクト TCP トランスポート スタックを更新しました。
+* 非 Windows クライアント向けにダイレクト モード TCP のサポートを追加しました。
+
+### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
+
+* ConsistencyLevel Property を FeedOptions に追加しました。
+* JsonSerializerSettings を RequestOptions および FeedOptions に追加しました。
+* EnableReadRequestsFallback を ConnectionPolicy に追加しました。
 
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
 
@@ -81,7 +123,7 @@ Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .N
  
  * API リファレンス ドキュメント、アセンブリ内のメタデータ情報、および NuGet パッケージでの Azure DocumentDB から Azure Cosmos DB へのブランド名の変更。 
  * 直接接続モードで送信された要求の応答からの診断情報と待ち時間の公開。 プロパティ名は ResourceResponse クラスの RequestDiagnosticsString と RequestLatency です。
- * この SDK バージョンでは、https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
+ * この SDK バージョンでは、 https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
  
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 
@@ -147,12 +189,12 @@ Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .N
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
-* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](sql-api-sql-query.md#Aggregates)に関するトピックを参照してください。
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](how-to-sql-query.md#Aggregates)に関するトピックを参照してください。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
-Azure Cosmos DB .NET Core SDK を使用すると、Windows、Mac、Linux で実行できるクロスプラットフォーム対応の高速な [ASP.NET Core](https://www.asp.net/core) アプリと [.NET Core](https://www.microsoft.com/net/core#windows) アプリを構築できるようになります。 Azure Cosmos DB .NET Core SDK の最新リリースは、[Xamarin](https://www.xamarin.com) との完全な互換性を持ち、iOS、Android、Mono (Linux) を対象とするアプリケーションの構築に使用されます。  
+Azure Cosmos DB .NET Core SDK を使用すると、Windows、Mac、Linux で実行できるクロスプラットフォーム対応の高速な [ASP.NET Core](https://www.asp.net/core) アプリと [.NET Core](https://www.microsoft.com/net/core#windows) アプリを構築できるようになります。 Azure Cosmos DB .NET Core SDK の最新リリースは、[Xamarin](https://www.xamarin.com) との完全な互換性を持ち、iOS、Android、Mono (Linux) を対象とするアプリケーションの構築に使用されます。  
 
 ### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-preview
 
@@ -168,8 +210,13 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |
+| [2.1.2](#2.1.2) |2018 年 10 月 4 日 |--- |
+| [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |
+| [2.1.0](#2.1.0) |2018 年 9 月 21 日 |--- |
+| [2.0.0](#2.0.0) |2018 年 9 月 7 日 |--- |
 | [1.9.1](#1.9.1) |2018 年 3 月 9 日 |--- |
 | [1.8.2](#1.8.2) |2018 年 2 月 21 日 |--- |
 | [1.8.1](#1.8.1) |2018 年 2 月 5 日 |--- |

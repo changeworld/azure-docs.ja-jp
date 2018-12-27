@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6c715f07f75c9196b7cf2cc8659c6e541e1260da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3caa45064c41b641aa913e210aa698d818d5355e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970272"
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Microsoft Azure Stack Development Kit (ASDK) のトラブルシューティング
 このドキュメントでは、ASDK の一般的なトラブルシューティング情報を提供します。 記載されていない問題が発生している場合は、[Azure Stack MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)で追加のサポートと情報についてご確認ください。  
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/23/2018
 
 このセクションで説明されている問題のトラブルシューティングの推奨事項は、複数のソースから取得しており、特定の問題を解決できない場合があります。 コード例は "そのまま" 提供されており、期待される結果を保証できません。 このセクションは、製品の機能強化の実装に合わせて、頻繁に編集および更新されます。
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 ### <a name="deployment-failure"></a>デプロイの失敗
 インストール時に障害が発生した場合、次の例に示すように、デプロイ スクリプトの -rerun オプションを使用して、失敗した手順からデプロイを再開できます。
 
@@ -63,7 +64,7 @@ Azure Stack に VM をデプロイする前に、まず Windows Server イメー
 
 "孤立" VHD が表示された場合、それが削除されたストレージ アカウントのフォルダーの一部であるかどうかを知ることが重要です。 ストレージ アカウントが削除されていない場合は、まだ存在していても正常です。
 
-リテンション期間しきい値と、オンデマンドの再利用の設定について詳しくは、[ストレージ アカウントの管理](.\.\azure-stack-manage-storage-accounts.md)に関するページを参照してください。
+リテンション期間しきい値と、オンデマンドの再利用の設定について詳しくは、[ストレージ アカウントの管理](../azure-stack-manage-storage-accounts.md)に関するページを参照してください。
 
 ## <a name="storage"></a>Storage
 ### <a name="storage-reclamation"></a>記憶域の再利用
@@ -71,4 +72,3 @@ Azure Stack に VM をデプロイする前に、まず Windows Server イメー
 
 ## <a name="next-steps"></a>次の手順
 [Azure Stack サポート フォーラムを参照する](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)
-

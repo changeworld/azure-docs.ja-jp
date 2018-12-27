@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI を使用した Resource Manager テンプレートのエクスポート | Microsoft Docs"
-description: "Azure Resource Manager と Azure CLI を使用して、リソース グループからテンプレートをエクスポートします。"
+title: Azure CLI を使用した Resource Manager テンプレートのエクスポート | Microsoft Docs
+description: Azure Resource Manager と Azure CLI を使用して、リソース グループからテンプレートをエクスポートします。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -8,16 +8,17 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15e7e811c7cb1777e34f1bfb629fa24a60f9e5cb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d4a1a687700badc550d37bf74f6a7e1680388897
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440317"
 ---
 # <a name="export-azure-resource-manager-templates-with-azure-cli"></a>Azure CLI を使用した Azure Resource Manager テンプレートのエクスポート
 
@@ -44,7 +45,7 @@ az group deployment create \
 
 ## <a name="save-template-from-deployment-history"></a>デプロイ履歴からのテンプレートの保存
 
-デプロイ履歴からテンプレートを取得するには、[az group deployment export](/cli/azure/group/deployment#az_group_deployment_export) コマンドを使用します。 次の例では、前にデプロイしたテンプレートを保存します。
+デプロイ履歴からテンプレートを取得するには、[az group deployment export](/cli/azure/group/deployment#az-group-deployment-export) コマンドを使用します。 次の例では、前にデプロイしたテンプレートを保存します。
 
 ```azurecli
 az group deployment export --name NewStorage --resource-group ExampleGroup
@@ -55,7 +56,7 @@ az group deployment export --name NewStorage --resource-group ExampleGroup
 
 ## <a name="export-resource-group-as-template"></a>リソース グループをテンプレートとしてエクスポート
 
-デプロイ履歴からテンプレートを取得するのではなく、リソース グループの現在の状態を表すテンプレートを取得するには、[az group export](/cli/azure/group#az_group_export) コマンドを使用します。 このコマンドは、リソース グループを大幅に変更し、すべての変更が反映されたテンプレートがないときに使用します。 リソース グループのスナップショットとして意図されており、同じリソース グループへの再デプロイに使うことができます。 エクスポートされたテンプレートを他のソリューションに使うには、大幅な変更を行う必要があります。
+デプロイ履歴からテンプレートを取得するのではなく、リソース グループの現在の状態を表すテンプレートを取得するには、[az group export](/cli/azure/group#az-group-export) コマンドを使用します。 このコマンドは、リソース グループを大幅に変更し、すべての変更が反映されたテンプレートがないときに使用します。 リソース グループのスナップショットとして意図されており、同じリソース グループへの再デプロイに使うことができます。 エクスポートされたテンプレートを他のソリューションに使うには、大幅な変更を行う必要があります。
 
 ```azurecli
 az group export --name ExampleGroup

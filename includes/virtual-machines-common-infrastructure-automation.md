@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: efca5c4155372456100126671e7d5cd1ccf0cbbc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53027923"
+---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
 
@@ -10,8 +23,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
     - [Azure Automation](#azure-automation) は、Azure とオンプレミス インフラストラクチャでアクションを実行できます。
 
 - アプリケーションのデプロイと配信を自動化する
-    - たとえば、[Visual Studio Team Services](#visual-studio-team-services) や [Jenkins](#jenkins) があります。
-
+    - サンプルには、[Azure DevOps Services](#azure-devops-services) や [Jenkins](#jenkins) が含まれます。
 
 ## <a name="ansible"></a>Ansible
 [Ansible](https://www.ansible.com/) は、構成の管理、VM の作成、またはアプリケーションのデプロイ用の自動化エンジンです。 Ansible では、ターゲット マシンを認証および管理するために、通常は SSH キーによる、エージェントレス モデルを使用します。 構成タスクはプレイブックで定義し、特定のタスクを実行するために利用できるさまざまな Ansible モジュールが用意されています。 詳細については、「[How Ansible works (Ansible のしくみ)](https://www.ansible.com/how-ansible-works)」を参照してください。
@@ -19,8 +31,8 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 以下の項目について説明します。
 
 - [Azure で使用するために Linux で Ansible をインストールおよび構成する](../articles/virtual-machines/linux/ansible-install-configure.md)。
-- [基本的な VM を作成する](../articles/virtual-machines/linux/ansible-create-vm.md)。
-- [サポート リソースを含む完全な VM 環境を作成する](../articles/virtual-machines/linux/ansible-create-complete-vm.md)。
+- [Linux 仮想マシンを作成する](../articles/virtual-machines/linux/ansible-create-vm.md)。
+- [Linux 仮想マシンを管理する](../articles/virtual-machines/linux/ansible-manage-linux-vm.md)。
 
 
 ## <a name="chef"></a>Chef
@@ -37,7 +49,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 以下の項目について説明します。
 
-- [Azure Marketplace から Puppet をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2016-1?tab=Overview)。
+- [Azure Marketplace から Puppet をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview)。
 
 
 ## <a name="cloud-init"></a>cloud-init
@@ -47,13 +59,13 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
  Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。 次の表は、現時点において Azure プラットフォームで利用できる cloud-init 対応イメージの概要を示したものです。
 
-| 発行元 | プラン | SKU | バージョン | cloud-init 対応
+| 発行元 | プラン | SKU | Version | cloud-init 対応
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |16.04 LTS |最新 |はい | 
-|Canonical |UbuntuServer |14.04.5-LTS |最新 |はい |
-|CoreOS |CoreOS |安定版 |最新 |はい |
-|OpenLogic |CentOS |7-CI |最新 |プレビュー |
-|RedHat |RHEL |7-RAW-CI |最新 |プレビュー |
+|Canonical |UbuntuServer |16.04 LTS |latest |はい | 
+|Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
+|CoreOS |CoreOS |安定版 |latest |はい |
+|OpenLogic |CentOS |7-CI |latest |preview |
+|RedHat |RHEL |7-RAW-CI |latest |preview |
 
 Azure の cloud-init について詳しくは、次のページをご覧ください。
 
@@ -62,7 +74,7 @@ Azure の cloud-init について詳しくは、次のページをご覧くだ�
 
 
 ## <a name="powershell-dsc"></a>PowerShell DSC
-[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) は、ターゲット マシンの構成を定義するための管理プラットフォームです。 DSC は、[Open Management Infrastructure (OMI) サーバー](https://collaboration.opengroup.org/omi/)を介して Linux で使用することもできます。
+[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) は、ターゲット マシンの構成を定義するための管理プラットフォームです。 DSC は、[Open Management Infrastructure (OMI) サーバー](https://collaboration.opengroup.org/omi/)を介して Linux で使用することもできます。
 
 DSC 構成では、マシンにインストールするものと、ホストを構成する方法を定義します。 Local Configuration Manager (LCM) エンジンは、プッシュされた構成に基づいて要求されたアクションを処理する各ターゲット ノードで実行されます。 プル サーバーは、中央ホストで実行され、DSC 構成と関連リソースを格納する Web サービスです。 プル サーバーは、各ターゲット ホスト上の LCM エンジンと通信して、必要な構成を提供し、コンプライアンスについて報告します。
 
@@ -114,12 +126,12 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 - [Azure Automation DSC を使用する](../articles/automation/automation-dsc-getting-started.md)。
 
 
-## <a name="visual-studio-team-services"></a>Visual Studio Team Services
-[Team Services](https://www.visualstudio.com/team-services/) は、コードの共有と追跡、自動ビルドの使用、完全な継続的インテグレーションと開発 (CI/CD) パイプラインの作成に役立つ一連のツールです。 Team Services は、Visual Studio や他のエディターと統合して、簡単に使用できるようにします。 Team Services では、Azure VM を作成して構成した後、VM にコードをデプロイすることもできます。
+## <a name="azure-devops-services"></a>Azure DevOps Services
+[Azure DevOps Services](https://www.visualstudio.com/team-services/) は、コードの共有と追跡、自動ビルドの使用、完全な継続的インテグレーションと開発 (CI/CD) パイプラインの作成に役立つ一連のツールです。 Azure DevOps Services は、Visual Studio や他のエディターと統合して、簡単に使用できるようにします。 Azure DevOps Services では、Azure VM を作成して構成した後、VM にコードをデプロイすることもできます。
 
-以下の項目について説明します。
+各項目の詳細情報
 
-- [Team Services を使用して継続的インテグレーション パイプラインを作成する](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md)。
+- [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts)。
 
 
 ## <a name="jenkins"></a>Jenkins

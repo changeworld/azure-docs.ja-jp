@@ -1,3 +1,16 @@
+---
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: dobett
+ms.openlocfilehash: 1807dc67d09b521e66314fb98535fb2c1225d34f
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50964584"
+---
 次の表には、各サービス レベル (S1、S2、S3、F1) に関連付けられている制限がリストされています。 各レベルのそれぞれの *ユニット* のコストについては、「 [IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
 | リソース | S1 Standard | S2 Standard | S3 Standard | F1 Free |
@@ -14,12 +27,13 @@
 
 | リソース | 制限 |
 | --- | --- |
-| Azure サブスクリプションごとの最大有料 IoT Hub |10 |
+| Azure サブスクリプションごとの最大有料 IoT Hub |50 |
 | Azure サブスクリプションごとの最大無料 IoT Hub |1 |
+| デバイス ID の最大文字数 | 128 |
 | 1 回の呼び出しで返される<br/> デバイス ID の最大数 |1,000 |
 | デバイスからクラウドへのメッセージの IoT Hub メッセージの最大リテンション期間 |7 日 |
 | デバイスからクラウドへのメッセージの最大サイズ |256 KB |
-| デバイスからクラウドへのバッチの最大サイズ |256 KB |
+| デバイスからクラウドへのバッチの最大サイズ |AMQP および HTTP: バッチ全体で 256 KB <br/>MQTT: 各メッセージで 256 KB |
 | デバイスからクラウドへのバッチの最大メッセージ数 |500 |
 | クラウドからデバイスへのメッセージの最大サイズ |64 KB |
 | クラウドからデバイスへのメッセージの最大 TTL |2 日 |
@@ -37,11 +51,11 @@
 
 
 > [!NOTE]
-> Azure サブスクリプションで 10 個を超える有料 IoT Hub が必要な場合は、Microsoft サポートにお問い合わせください。
+> Azure サブスクリプションで 50 個を超える有料 IoT Hub が必要な場合は、Microsoft サポートにお問い合わせください。
 
 
 > [!NOTE]
-> 現時点では、1 つの IoT Hub に接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/en-us/support/options/)にお問い合わせください。
+> 現時点では、1 つの IoT ハブに接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 IoT Hub サービスは、次のクォータを超えた場合に、要求を調整します。
 

@@ -1,27 +1,28 @@
 ---
-title: "Azure Service Fabric ランタイムのアップグレード | Microsoft Docs"
-description: "このチュートリアルでは、PowerShell を使用して、Azure でホストされる Service Fabric クラスターのランタイムをアップグレードする方法を説明します。"
+title: Azure で Service Fabric ランタイムをアップグレードする | Microsoft Docs
+description: このチュートリアルでは、PowerShell を使用して、Azure でホストされる Service Fabric クラスターのランタイムをアップグレードする方法を説明します。
 services: service-fabric
 documentationcenter: .net
-author: Thraka
+author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/28/2017
-ms.author: adegeo
+ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 49211a88e004bbcbcc41b6674a34934db39513c7
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 3d3559f789d928f546042d5b2ee4f18edcedc052
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227384"
 ---
-# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster"></a>チュートリアル: Service Fabric クラスターのランタイムをアップグレードする
+# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターのランタイムをアップグレードする
 
 このチュートリアルは、3 つのシリーズの一部で、Azure Service Fabric クラスター上の Service Fabric ランタイムをアップグレードする方法について説明します。 チュートリアルのこの部分は、Azure で実行されている Service Fabric クラスター用に書かれており、スタンドアロン Service Fabric クラスターには適用されません。
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 02/24/2018
 
 クラスターで既に最新の Service Fabric ランタイムが実行されている場合は、この手順を実行する必要はありません。 ただ、この記事は、サポート対象のランタイムを Azure Service Fabric クラスターにインストールする場合も使用できます。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * クラスター バージョンの読み取り
@@ -41,21 +42,24 @@ ms.lasthandoff: 02/24/2018
 > * テンプレートを使用して、セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成する
 > * [クラスターをスケールインまたはスケールアウトする](service-fabric-tutorial-scale-cluster.md)
 > * クラスターのランタイムをアップグレードする
-> * [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
+> * [クラスターの削除](service-fabric-tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>前提条件
+
 このチュートリアルを開始する前に
-- Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
-- [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)または [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールします。
-- セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成します。
-- Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](http://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
-- Linux クラスターをデプロイする場合は、Java 開発環境を [Linux](service-fabric-get-started-linux.md) または [MacOS](service-fabric-get-started-mac.md) にセットアップします。  [Service Fabric CLI](service-fabric-cli.md) をインストールします。 
+
+* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
+* [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
+* セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成します。
+* Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
+* Linux クラスターをデプロイする場合は、Java 開発環境を [Linux](service-fabric-get-started-linux.md) または [MacOS](service-fabric-get-started-mac.md) にセットアップします。  [Service Fabric CLI](service-fabric-cli.md) をインストールします。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
+
 Azure アカウントにサインインし、Azure のコマンドを実行する前にサブスクリプションを選択します。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```
@@ -97,7 +101,7 @@ Set-AzureRmServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 > [!IMPORTANT]
 > クラスターのアップグレードが完了するまでには時間がかかる場合があります。 アップグレードの実行中は PowerShell がブロックされます。 別の PowerShell セッションを使用して、アップグレードの状態を確認できます。
 
-アップグレードの状態は、PowerShell または `sfctl`CLI を使用して監視できます。
+アップグレードの状態は、PowerShell または Azure Service Fabric CLI (sfctl) を使用して監視できます。
 
 まず、チュートリアルの最初の部分で作成した SSL 証明書を使用して、クラスターに接続します。 `Connect-ServiceFabricCluster` コマンドレット、または `sfctl cluster upgrade-status` を使用します。
 
@@ -191,14 +195,12 @@ sfctl cluster upgrade-status
 }
 ```
 
-## <a name="conclusion"></a>まとめ
-このチュートリアルで学習した内容は次のとおりです。
+## <a name="next-steps"></a>次の手順
+
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * クラスターのランタイムのバージョンを取得する
 > * クラスター ランタイムをのアップグレードする
 > * アップグレードを監視する
 
-次のチュートリアルでは、Service Fabric クラスターを使用して API Management をデプロイする方法について説明します。
-> [!div class="nextstepaction"]
-> [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)

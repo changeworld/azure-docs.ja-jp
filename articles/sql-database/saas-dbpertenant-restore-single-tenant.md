@@ -1,21 +1,23 @@
 ---
 title: マルチテナント SaaS アプリで Azure SQL Database を復元する | Microsoft Docs
 description: データを誤って削除した場合にシングル テナントの SQL データベースを復元する方法について説明します
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: eb7e87934269a5e1ba453e20f6f409a10dfbda5b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 228f5135165cbf8806516e5e932f210586013402
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056745"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>テナント単位データベース SaaS アプリケーションで、シングル テナントを復元します。
 
@@ -107,7 +109,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 ブラウザーに表示されるイベントをスクロールして、前述のセクションで削除したイベントが復元されていることを確認します。
 
-独自のイベント アプリを使用して、復元されたテナントを追加のテナントとして公開することは、復元されたデータに対してテナント アクセスを提供する方法とは異なります。 復元パターンを示すのに役立ちます。 一般的に、古いデータへの読み取りアクセス許可を付与し、復元されたデータベースを定義した期間保持します。 サンプルでは、_復元されたテナントの削除_のシナリオの実行を完了した後に、復元されたテナント エントリを削除できます。
+独自のイベント アプリを使用して、復元されたテナントを追加のテナントとして公開することは、復元されたデータに対してテナント アクセスを提供する方法とは異なります。 復元パターンを示すのに役立ちます。 一般的に、古いデータへの読み取りアクセス許可を付与し、復元されたデータベースを定義した期間保持します。 サンプルでは、_復元されたテナントの削除_ のシナリオの実行を完了した後に、復元されたテナント エントリを削除できます。
 
 1. **$DemoScenario** = **4** を設定します *(復元されたテナントを削除します)*。
 2. F5 キーを押してスクリプトを実行します。
@@ -130,7 +132,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 

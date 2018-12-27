@@ -1,23 +1,23 @@
 ---
-title: カスタム ポリシーを使用した UI のカスタマイズ - Azure AD B2C | Microsoft Docs
-description: Azure AD B2C でカスタム ポリシーを使用して、ユーザー インターフェイス (UI) をカスタマイズする方法について説明します。
+title: Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする | Microsoft Docs
+description: Azure Active Directory B2C でカスタム ポリシーを使用してユーザー インターフェイスをカスタマイズする方法について説明します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
-ms.date: 04/04/2017
+ms.topic: conceptual
+ms.date: 10/23/2018
 ms.author: davidmu
-ms.openlocfilehash: f92629a3a5d20cce050aa7f124b140b1f4eb32d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: B2C
+ms.openlocfilehash: b0e24da86d253139a85e792bf3c59d777cf5db6a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833946"
 ---
-# <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: カスタム ポリシーでの UI カスタマイズの構成
+# <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,13 +25,13 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)に関するページを読み終えておく必要があります。 ローカル アカウントでのサインアップとサインインのために作業用カスタム ポリシーを持つ必要があります。
+[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)に関するページの手順を完了します。 ローカル アカウントでのサインアップとサインインのために作業用カスタム ポリシーを持つ必要があります。
 
 ## <a name="page-ui-customization"></a>ページ UI のカスタマイズ
 
 ページ UI のカスタマイズ機能を使用することで、任意のカスタム ポリシーの外観をカスタマイズできます。 さらに、アプリケーションと Azure AD B2C との間で、ブランドと視覚的な一貫性を維持することもできます。
 
-しくみは次のとおりです。Azure AD B2C は、ユーザーのブラウザーでコードを実行する共に、[クロス オリジン リソース共有 (CORS)](http://www.w3.org/TR/cors/) と呼ばれる最新の手法を使用します。 最初に、カスタマイズされた HTML コンテンツを含むカスタム ポリシーで URL を指定します。 Azure AD B2C により、UI 要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
+しくみは次のとおりです。Azure AD B2C によって、顧客のブラウザーでコードが実行され、[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/) と呼ばれる最新の手法が使用されます。 最初に、カスタマイズされた HTML コンテンツを含むカスタム ポリシーで URL を指定します。 Azure AD B2C により、UI 要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
 
 ## <a name="create-your-html5-content"></a>HTML5 のコンテンツの作成
 
@@ -87,10 +87,10 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 3. **[名前]** に「**$root**」と入力します。
 4. **[Access type]** (アクセスの種類) を **[Blob]** に設定します。
 5. **$root** をクリックして、新しいコンテナーを開きます。
-6. **[アップロード]**をクリックします。
+6. **[アップロード]** をクリックします。
 7. **[ファイルの選択]** の横にあるフォルダー アイコンをクリックします。
 8. 先ほど「[ページ UI のカスタマイズ](#the-page-ui-customization-feature)」セクションで作成した **customize-ui.html** に移動します。
-9. **[アップロード]**をクリックします。
+9. **[アップロード]** をクリックします。
 10. アップロードした customize-ui.html BLOB を選択します。
 11. **[URL]** の横にある **[コピー]** をクリックします。
 12. ブラウザーで、コピーした URL を貼り付けて、そのサイトに移動します。 サイトにアクセスできない場合は、コンテナーのアクセスの種類が **[BLOB]** に設定されていることを確認してください。
@@ -99,47 +99,60 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 
 次の手順を実行して、クロス オリジン リソース共有用に Blob Storage を構成します。
 
->[!NOTE]
->サンプル HTML と CSS コンテンツを使用して UI のカスタマイズ機能を試すことができます。 Blob Storage アカウントにサンプル コンテンツをアップロードし、構成する[簡単なヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)が提供されています。 このツールを使用する場合は、「[サインアップまたはサインイン カスタム ポリシーを変更する](#modify-your-sign-up-or-sign-in-custom-policy)」に進んでください。
-
-1. **[設定]** の下にある **[ストレージ]** ブレードで、**[CORS]** を開きます。
-2. **[追加]**をクリックします。
-3. **[Allowed origins]\(許可されたオリジン\)** にアスタリスク (\*) を入力します。
-4. **[使用できる動詞]** ボックスの一覧で、**[GET]** と **[OPTIONS]** の両方を選択します。
-5. **[許可されたヘッダー]** にアスタリスク (\*) を入力します。
-6. **[公開されるヘッダー]** にアスタリスク (\*) を入力します。
-7. **[最大期間 (秒)]** に「**200**」と入力します。
-8. **[追加]**をクリックします。
+1. メニューで **[CORS]** を選択します。
+2. **[許可されるオリジン]** には、`your-tenant-name.b2clogin.com` を入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「 `fabrikam.b2clogin.com` 」のように入力します。 テナント名を入力するときは、すべて小文字を使用する必要があります。
+3. **[許可されたメソッド]** に、`GET` と `OPTIONS` を両方選択します。
+4. **[許可されたヘッダー]** に、アスタリスク (*) を入力します。
+5. **[公開されるヘッダー]** に、アスタリスク (*) を入力します。
+6. **[最長有効期間]** には「200」と入力します。
+7. **[Save]** をクリックします。
 
 ## <a name="test-cors"></a>CORS のテスト
 
 準備が整ったことを検証するには、次の手順を実行します。
 
-1. [www.test-cors.org](http://www.test-cors.org/) Web サイトに移動し、目的の URL を **[リモート URL]** ボックスに貼り付けます。
+1. [www.test-cors.org](https://www.test-cors.org/) Web サイトに移動し、目的の URL を **[リモート URL]** ボックスに貼り付けます。
 2. **[Send Request]\(要求を送信する\)** をクリックします。  
     エラーが発生した場合、[CORS の設定](#configure-cors)が正しいことを確認します。 場合によっては、ブラウザーのキャッシュをクリアするか、Ctrl + Shift + P キーを押してプライベート ブラウズ セッションを開く必要もあります。
 
-## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>サインアップまたはサインイン カスタム ポリシーを変更する
+## <a name="modify-the-extensions-file"></a>拡張ファイルを変更する
 
-トップレベルの *\<TrustFrameworkPolicy\>* タグの下に、*\<BuildingBlocks\>* タグがあります。 次のコード例をコピーして、*\<BuildingBlocks\>* タグ内に *\<ContentDefinitions\>* タグを追加します。 *your_storage_account* は、ご利用のストレージ アカウントの名前に置き換えてください。
+UI のカスタマイズを構成するには、**ContentDefinition** とその子要素を基本ファイルから拡張ファイルにコピーします。
 
-  ```xml
-  <BuildingBlocks>
-    <ContentDefinitions>
-      <ContentDefinition Id="api.idpselections">
-        <LoadUri>https://{your_storage_account}.blob.core.windows.net/customize-ui.html</LoadUri>
-        <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
-  </BuildingBlocks>
-  ```
+1. ポリシーの基本ファイルを開きます。 たとえば、*TrustFrameworkBase.xml* などです。
+2. **ContentDefinitions** 要素を検索し、その内容全体をコピーします。
+3. 拡張ファイルを開きます。 たとえば、*TrustFrameworkExtensions.xml* です。 **BuildingBlocks** 要素を検索します。 要素が存在しない場合は追加します。
+4. コピーした **ContentDefinitions** 要素の内容全体を **BuildingBlocks** 要素の子として貼り付けます。 
+5. コピーした XML で `Id="api.signuporsignin"` を含む **ContentDefinition** 要素を検索します。
+6. **LoadUri** の値を、ストレージにアップロードした HTML ファイルの URL に変更します。 たとえば、 https://mystore1.azurewebsites.net/b2c/customize-ui.html です。
+    
+    カスタム ポリシーは次のようになります。
+
+    ```xml
+    <BuildingBlocks>
+      <ContentDefinitions>
+        <ContentDefinition Id="api.signuporsignin">
+          <LoadUri>https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html</LoadUri>
+          <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+          <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
+          <Metadata>
+            <Item Key="DisplayName">Signin and Signup</Item>
+          </Metadata>
+        </ContentDefinition>
+      </ContentDefinitions>
+    </BuildingBlocks>
+    ```
+
+7. 拡張ファイルを保存します。
 
 ## <a name="upload-your-updated-custom-policy"></a>更新したカスタム ポリシーをアップロードします。
 
-1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキストに切り替えて](active-directory-b2c-navigate-to-b2c-context.md)、**[Azure AD B2C]** ブレードを開きます。
+1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+4. **[Identity Experience Framework]** を選択します。
 2. **[All Policies]**(すべてのポリシー) をクリックします。
 3. **[ポリシーのアップロード]** をクリックします。
-4. 先ほど *\<ContentDefinitions\>* タグを追加した `SignUpOrSignin.xml` をアップロードします。
+4. 前に変更した拡張ファイルをアップロードします。
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>**[今すぐ実行]** を使用したカスタム ポリシーのテスト
 
@@ -157,7 +170,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 sample_templates/wingtip フォルダーには、次の HTML ファイルが含まれています。
 
-| HTML5 テンプレート | [説明] |
+| HTML5 テンプレート | 説明 |
 |----------------|-------------|
 | *phonefactor.html* | このファイルは、多要素認証ページのテンプレートとして使用します。 |
 | *resetpassword.html* | このファイルは、パスワードを忘れた場合のページのテンプレートとして使用します。 |
@@ -167,7 +180,7 @@ sample_templates/wingtip フォルダーには、次の HTML ファイルが含�
 
 「[サインアップまたはサインイン カスタム ポリシーを変更する](#modify-your-sign-up-or-sign-in-custom-policy)」セクションでは、`api.idpselections` のコンテンツ定義を構成しました。 次の表には、Azure AD B2C Identity Experience Framework で検出されるすべてのコンテンツ定義 ID とその説明を示します。
 
-| コンテンツ定義 ID | [説明] | 
+| コンテンツ定義 ID | 説明 | 
 |-----------------------|-------------|
 | *api.error* | **エラー ページ**。 このページは、例外またはエラーが発生した場合に表示されます。 |
 | *api.idpselections* | **ID プロバイダーの選択ページ**。 このページには、サインイン時にユーザーが選択できる ID プロバイダーの一覧が含まれます。 ID プロバイダーは、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Store との間でのデータのコピー | Microsoft Docs
+title: Azure Data Lake Storage Gen1 との間でのデータのコピー | Microsoft Docs
 description: Azure Data Factory を使って Data Lake Store に、または Data Lake Store からデータをコピーする方法を説明します
 services: data-factory
 documentationcenter: ''
@@ -10,25 +10,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ce5909bd522ab7af77846af598506ea69058bd5c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 97bd2081df8c90f885996629862f25cbec8fd2c2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860233"
 ---
-# <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Data Factory を使用して Data Lake Store との間でデータをコピーする
+# <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-azure-datalake-connector.md)
-> * [バージョン 2 - プレビュー](../connector-azure-data-lake-store.md)
+> * [Version 1](data-factory-azure-datalake-connector.md)
+> * [バージョン 2 (最新バージョン)](../connector-azure-data-lake-store.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Azure Data Lake Store コネクタ](../connector-azure-data-lake-store.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Azure Data Lake Storage Gen1 コネクター](../connector-azure-data-lake-store.md)に関するページを参照してください。
 
-この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Data Lake Store との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の概要についての記事「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」が基になっています。
+この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Data Lake Storage Gen1 (旧称 Azure Data Lake Store) との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の概要についての記事「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」が基になっています。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 **Azure Data Lake Store から**以下のデータ ストアにデータをコピーできます。
@@ -70,7 +71,7 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 リンクされたサービスは、データ ストアをデータ ファクトリにリンクします。 Data Lake Store のデータをデータ ファクトリにリンクするには、**AzureDataLakeStore** 型のリンクされたサービスを作成します。 次の表では、Data Lake Store のリンクされたサービスに固有の JSON 要素について説明します。 サービス プリンシパル認証とユーザー資格情報認証のどちらかを選ぶことができます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | **type** | type プロパティは **AzureDataLakeStore** に設定する必要があります。 | [はい] |
 | **dataLakeStoreUri** | Azure Data Lake Store アカウントに関する情報です。 この情報の形式は、`https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` です。 | [はい] |
@@ -91,7 +92,7 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 次のプロパティを指定して、サービス プリンシパル認証を使います。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | アプリケーションのクライアント ID を取得します。 | [はい] |
 | **servicePrincipalKey** | アプリケーションのキーを取得します。 | [はい] |
@@ -118,7 +119,7 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 ### <a name="user-credential-authentication"></a>ユーザー資格情報認証
 または、次のプロパティを指定することで、ユーザー資格情報認証を使って、Data Lake Store との間でデータをコピーすることもできます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | **authorization** | Data Factory エディターで **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | [はい] |
 | **sessionId** | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使うと、この設定が自動的に生成されます。 | [はい] |
@@ -237,7 +238,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 
 **AzureDataLakeStore** 型の **typeProperties** セクションには、次のプロパティが含まれます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | **folderPath** |Data Lake Store のコンテナーとフォルダーのパスです。 |[はい] |
 | **fileName** |Azure Data Lake Store 内のファイルの名前です。 **fileName** プロパティは省略可能で、大文字と小文字を区別します。 <br/><br/>**fileName** を指定すると、アクティビティ (コピーを含む) は特定のファイルで動作します。<br/><br/>**fileName** が指定されていない場合、コピーには入力データセットの **folderPath** のすべてのファイルが含まれます。<br/><br/>出力データセットに **fileName** が指定されておらず、アクティビティ シンクで **preserveHierarchy** が指定されていない場合は、生成されるファイル名は "Data._Guid_.txt" という形式になります。 例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |いいえ  |
@@ -281,14 +282,14 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 
 **AzureDataLakeStoreSource** の **typeProperties** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | **recursive** |データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True (既定値)、False |いいえ  |
 
 
 **AzureDataLakeStoreSink** の **typeProperties** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | **copyBehavior** |コピー動作を指定します。 |<b>PreserveHierarchy</b>: ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><br/><b>FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの最上位レベルに作成されます。 ターゲット ファイルは、自動生成された名前で作成されます。<br/><br/><b>MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイルまたは BLOB の名前を指定した場合、マージされたファイル名は指定した名前になります。 指定しないと、ファイル名は自動生成されます。 |いいえ  |
 
@@ -308,7 +309,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」を参照してください。
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Data Lake Store との間でのデータのコピーに関する JSON の例
-次の例では、JSON 定義のサンプルを示します。 これらのサンプル定義を使うと、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使ってパイプラインを作成できます。 以下の例では、Data Lake Store と Azure BLOB Storage との間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに_直接_コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」セクションを参照してください。  
+次の例では、JSON 定義のサンプルを示します。 これらのサンプル定義を使うと、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使ってパイプラインを作成できます。 以下の例では、Data Lake Store と Azure BLOB Storage との間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに _直接_ コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」セクションを参照してください。  
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>例: Azure Blob Storage から Azure Data Lake Store にデータをコピーする
 このセクションのコード例では以下を示します。

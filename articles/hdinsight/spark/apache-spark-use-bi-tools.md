@@ -1,41 +1,40 @@
 ---
-title: "Azure HDInsight でデータ視覚化ツールを使用する Spark BI | Microsoft Docs"
-description: "HDInsight クラスター上で Apache Spark BI を使用して分析用のデータ視覚化ツールを使用する"
-keywords: "apache spark bi,spark bi, spark データ視覚化, spark ビジネス インテリジェンス"
+title: 'チュートリアル: Azure HDInsight での Power BI を使用した Apache Spark データの分析 '
+description: Microsoft Power BI を使用して HDInsight クラスターに格納されている Apache Spark データを視覚化する
 services: hdinsight
-documentationcenter: 
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 1448b536-9bc8-46bc-bbc6-d7001623642a
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
-ms.author: jgao
-ms.openlocfilehash: 97305ec6774e89e776653adbcdcf86b1cd63642f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: hdinsightactive,mvc
+ms.topic: tutorial
+ms.date: 05/07/2018
+ms.openlocfilehash: e862000df1edc5101c0768f1f96c11953f1485c7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583280"
 ---
-# <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>Azure HDInsight のデータ視覚化ツールを使用する Apache Spark BI
+# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル: HDInsight での Power BI を使用した Apache Spark データの分析 
 
-[Microsoft Power BI](http://powerbi.microsoft.com) を使用して Azure HDInsight の Apache Spark クラスター内のデータを視覚化する方法について説明します。
+[Microsoft Power BI](https://powerbi.microsoft.com/) を使用して [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) で [Apache Spark](https://spark.apache.org/) クラスター内のデータを視覚化する方法について説明します。
+
+このチュートリアルでは、以下の内容を学習します。
+> [!div class="checklist"]
+> * Power BI を使用して Spark データを視覚化する
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **記事「[HDInsight で Spark クラスターに対して対話型クエリを実行する](./apache-spark-load-data-run-query.md)」を完了する**。
+* **記事「[チュートリアル: Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行](./apache-spark-load-data-run-query.md)**」を完了します。
 * **Power BI**: [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) と [Power BI 試用版サブスクリプション](https://app.powerbi.com/signupredirect?pbi_source=web) (省略可能)。
 
 
-## <a name="hivetable"></a>データを検証する
+## <a name="verify-the-data"></a>データの検証
 
-[前のチュートリアル](apache-spark-load-data-run-query.md)で作成した Jupyter Notebook には、`hvac` テーブルを作成するコードが含まれています。 このテーブルは、**\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv** のすべての HDInsight Spark クラスターで使用可能な CSV ファイルに基づいています。 データの検証に使用する手順は、以下のとおりです。
+[前のチュートリアル](apache-spark-load-data-run-query.md)で作成した [Jupyter Notebook](https://jupyter.org/) には、`hvac` テーブルを作成するためのコードが含まれています。 このテーブルは、**\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv** のすべての HDInsight Spark クラスターで使用可能な CSV ファイルに基づいています。 データの検証に使用する手順は、以下のとおりです。
 
 1. Jupyter Notebook から次のコードを貼り付けて、**Shift + Enter** キーを押します。 このコードによってテーブルの存在が検証されます。
 
@@ -48,8 +47,7 @@ ms.lasthandoff: 02/21/2018
 
     ![Spark でのテーブルの表示](./media/apache-spark-use-bi-tools/show-tables.png)
 
-    このチュートリアルを開始する前に Notebook を閉じると、`hvactemptable` はクリーンアップされるため、出力に含まれません。
-    BI ツールからアクセスできるのは、metastore に保存された Hive テーブル (**isTemporary** 列に **False** と表示される) のみです。 このチュートリアルでは、作成した **hvac** テーブルに接続します。
+    このチュートリアルを開始する前に Notebook を閉じると、`hvactemptable` はクリーンアップされるため、出力に含まれません。  BI ツールからアクセスできるのは、metastore に保存された Hive テーブル (**isTemporary** 列に **False** と表示される) のみです。 このチュートリアルでは、作成した **hvac** テーブルに接続します。
 
 2. 次のコードを空のセルに貼り付け、**Shift + Enter** キーを押します。 このコードによってテーブル内のデータが検証されます。
 
@@ -64,21 +62,7 @@ ms.lasthandoff: 02/21/2018
 
 3. Notebook の **[ファイル]** メニューの **[Close and Halt]\(閉じて停止\)** をクリックします。 Notebook をシャットダウンしてリソースを解放します。 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## <a name="powerbi"></a>Power BI の使用
+## <a name="visualize-the-data"></a>データの視覚化
 
 このセクションでは、Power BI を使用して Spark クラスター データから視覚エフェクト、レポート、およびダッシュボードを作成します。 
 
@@ -94,7 +78,7 @@ Spark を操作する最初のステップでは、Power BI Desktop のクラス
     ![HDInsight Apache Spark から Power BI Desktop にデータを取得](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Apache Spark BI から Power BI にデータを取得")
 
 
-2. 検索ボックスに「`Spark`」と入力し、**[Azure HDInsight Spark (ベータ版)]** を選択して、**[接続]** をクリックします。
+2. 検索ボックスに「`Spark`」と入力し、**[Azure HDInsight Spark]** を選択して、**[接続]** をクリックします。
 
     ![Apache Spark BI から Power BI にデータを取得](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Apache Spark BI から Power BI にデータを取得")
 
@@ -180,7 +164,7 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 10. レポートで、**[ダッシュボードへ移動]** をクリックします。 
 
-ビジュアルはダッシュボードにピン留めされます。他のビジュアルをレポートに追加して、同じダッシュボードにピン留めすることもできます。 レポートとダッシュボードの詳細については、「[Power BI のレポート](https://powerbi.microsoft.com/documentation/powerbi-service-reports/)」および [Power BI のダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)に関する記事をご覧ください。
+ビジュアルはダッシュボードにピン留めされます。他のビジュアルをレポートに追加して、同じダッシュボードにピン留めすることもできます。 レポートとダッシュボードの詳細については、「[Power BI のレポート](https://powerbi.microsoft.com/documentation/powerbi-service-reports/)」のほか、[Power BI のダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)に関する記事を参照してください。
 
 <!--
 ## <a name="tableau"></a>Use Tableau Desktop 
@@ -192,14 +176,14 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 1. Install [Tableau Desktop](http://www.tableau.com/products/desktop) on the computer where you are running this Apache Spark BI tutorial.
 
-2. Make sure that computer also has Microsoft Spark ODBC driver installed. You can install the driver from [here](http://go.microsoft.com/fwlink/?LinkId=616229).
+2. Make sure that computer also has Microsoft Spark ODBC driver installed. You can install the driver from [here](https://go.microsoft.com/fwlink/?LinkId=616229).
 
 1. Launch Tableau Desktop. In the left pane, from the list of server to connect to, click **Spark SQL**. If Spark SQL is not listed by default in the left pane, you can find it by click **More Servers**.
 2. In the Spark SQL connection dialog box, provide the values as shown in the screenshot, and then click **OK**.
 
     ![Connect to a cluster for Apache Spark BI](./media/apache-spark-use-bi-tools/connect-to-tableau-apache-spark-bi.png "Connect to a cluster for Apache Spark BI")
 
-    The authentication drop-down lists **Microsoft Azure HDInsight Service** as an option, only if you installed the [Microsoft Spark ODBC Driver](http://go.microsoft.com/fwlink/?LinkId=616229) on the computer.
+    The authentication drop-down lists **Microsoft Azure HDInsight Service** as an option, only if you installed the [Microsoft Spark ODBC Driver](https://go.microsoft.com/fwlink/?LinkId=616229) on the computer.
 3. On the next screen, from the **Schema** drop-down, click the **Find** icon, and then click **default**.
 
     ![Find schema for Apache Spark BI](./media/apache-spark-use-bi-tools/tableau-find-schema-apache-spark-bi.png "Find schema for Apache Spark BI")
@@ -228,8 +212,11 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 ## <a name="next-steps"></a>次の手順
 
-これまでに、クラスターを作成し、データを照会するための Spark データ フレームを作成し、BI ツールからそのデータにアクセスする方法を学習しました。 次は、クラスターのリソースを管理し、HDInsight Spark クラスターで実行されているジョブをデバッグする方法を見ていきましょう。
+このチュートリアルでは、以下の内容を学習しました。
 
-* [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
-* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)
+- Power BI を使用して Azure Spark データを視覚化する。
+
+次の記事に進んで、Spark に登録したデータを Power BI などの BI 分析ツールに取り込む方法を確認してください。 
+> [!div class="nextstepaction"]
+> [Apache Spark ストリーミング ジョブを実行する](apache-spark-eventhub-streaming.md)
 

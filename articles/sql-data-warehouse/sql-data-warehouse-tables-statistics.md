@@ -1,58 +1,74 @@
 ---
-title: SQL Data Warehouse のテーブルの統計の管理 | Microsoft Docs
-description: Azure SQL Data Warehouse のテーブルの統計の概要です。
+title: 統計の作成と更新 - Azure SQL Data Warehouse | Microsoft Docs
+description: Azure SQL Data Warehouse 内のテーブルに関するクエリ用に最適化された統計の作成と更新の推奨事項と例を示します。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: ''
-ms.assetid: faa1034d-314c-4f9d-af81-f5a9aedf33e4
+author: ckarst
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 11/06/2017
-ms.author: barbkess
-ms.openlocfilehash: 5e7fd3c8790bb9a1a7ae8662f9a7047ae54892d2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.component: implement
+ms.date: 05/09/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 1a7ea00e8bdf4fa1a22dd765e5108dce72e2d380
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307464"
 ---
-# <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルの統計の管理
-> [!div class="op_single_selector"]
-> * [概要][Overview]
-> * [データ型][Data Types]
-> * [分散][Distribute]
-> * [インデックス][Index]
-> * [パーティション][Partition]
-> * [統計][Statistics]
-> * [一時][Temporary]
-> 
-> 
+# <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 内のテーブルに関する統計の作成と更新
+Azure SQL Data Warehouse 内のテーブルに関するクエリ用に最適化された統計の作成と更新の推奨事項と例を示します。
 
+## <a name="why-use-statistics"></a>統計を使用する理由
 Azure SQL Data Warehouse がデータに関する情報を多く持っているほど、データに対するクエリを高速に実行できます。 データに関する統計情報を収集し、それを SQL Data Warehouse に読み込むことは、クエリの最適化のために実行できる最も重要なことの 1 つです。 これは、SQL Data Warehouse のクエリ オプティマイザーがコストに基づくオプティマイザーであるためです。 オプティマイザーはさまざまなクエリ プランのコストを比較して、最も低コストなプランを選択します。多くの場合、それは最も高速に実行されるプランです。 たとえば、オプティマイザーが、クエリでフィルター選択されている日付が 1 行を返すと推定した場合、選択された日付が 100 万行を返すと推定した場合とはまったく異なるプランを選択する可能性があります。
 
-現時点では、統計を作成および更新するプロセスは手動ですが、簡単に実行できます。  まもなく、単一の列およびインデックスの統計を自動的に作成して更新することが可能になります。  次の情報を使用すると、データの統計情報の管理を大幅に自動化できます。 
+## <a name="automatic-creation-of-statistics"></a>統計の自動作成
+統計の自動作成オプション (AUTO_CREATE_STATISTICS) が有効な場合､SQL Data Warehouse は送られてくるユーザー クエリを分析し､統計がない列に対して統計列を 1 つ作成します｡ クエリ オプティマイザーはクエリ述語あるいは結合条件内の個々の列に統計を作成することでクエリ プランに対するカーディナリティ評価を改善します｡ 既定では､統計の自動作成は有効です｡
 
-## <a name="getting-started-with-statistics"></a>統計の概要
-作業を開始する簡単な方法は、すべての列のサンプリングされた統計を作成することです。 統計情報が古いと、クエリのパフォーマンスが最適化されなくなります。 ただし、すべての列の統計を更新すると、データが増すにつれてメモリが消費される可能性があります。 
+データ ウェアハウスにこのオプションが構成されているかどうかは､次のコマンドで確認できます｡
 
-さまざまなシナリオの推奨事項を次に示します。
-| **シナリオ** | 推奨 |
-|:--- |:--- |
-| **概要** | SQL Data Warehouse への移行後にすべての列を更新 |
-| **最も重要な列の統計** | ハッシュ分散キー |
-| **次に重要な列の統計** | パーティション キー |
-| **その他の重要な列の統計** | Date、頻繁な JOIN、GROUP BY、HAVING と WHERE |
-| **統計の更新の頻度**  | 控えめ: 毎日 <br></br> データを読み込むか変換した後 |
-| **サンプリング** |  行数が 10 億未満の場合は、既定のサンプリング (20%) を使用 <br></br> 行数が 10 億を超える場合は、2% の範囲に関する統計が適切 |
+```sql
+SELECT name, is_auto_create_stats_on 
+FROM sys.databases
+```
+データ ウェアハウスに AUTO_CREATE_STATISTICS が構成されていない場合は､次のコマンドでこのプロパティを有効にすることをお勧めします｡
+
+```sql
+ALTER DATABASE <yourdatawarehousename> 
+SET AUTO_CREATE_STATISTICS ON
+```
+結合が含まれていること､あるいは述語の存在が検出されると､SELECT､INSERT-SELECT､CTAS､UPDATE､ DELETE､および EXPLAIN ステートメントによって統計の自動作成がトリガーされmす｡ 
+
+> [!NOTE]
+> 一時テーブルや外部テーブルに対して自動作成の統計が作成にされることはありません｡
+> 
+
+自動作成の統計は同期生成されるため､列にすべてに統計が作成されている場合は､クエリのパフォーマンスが多少低下することがあります｡ テーブルのサイズによって異なりますが､統計の作成には列 1 つあたり数秒を要します｡ 性能低下の測定､特に性能ベンチマーク時の測定を回避するには､システムをプロファイルする前にベンチマーク用ワークロード実行することによって統計を先に作成しておくようにしてください｡
+
+> [!NOTE]
+> 統計の作成は､各ユーザー コンテキスト内の [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) にログ記録されます｡
+> 
+
+自動統計が作成されると､_WA_Sys_<16 進 8 桁の列 ID>_<16 進 8 桁のテーブル ID> の形式でログ記録されます｡ 作成済みの統計は、[DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) コマンドを実行して表示できます。
+
+```sql
+DBCC SHOW_STATISTICS (<tablename>, <targetname>)
+```
+最初の引数は、表示する統計情報を含むテーブルです。 外部テーブルは使用できません。 2 番目の引数は、ターゲットのインデックス、統計、または統計情報を表示する列の名前です。
+
+
 
 ## <a name="updating-statistics"></a>統計の更新
 
 ベスト プラクティスの 1 つが、新しい日付が追加されるたびに日付列の統計を更新することです。 新しい行がデータ ウェアハウスに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらによってデータの分布が変わり、統計が古くなります。 一方、顧客テーブルの国列の統計は更新する必要がないと考えられます。一般的に値の分布は変わらないためです。 顧客間で分布が一定であると仮定すると、テーブル バリエーションに新しい行を追加しても、データの分布が変わることはありません。 ただし、データ ウェアハウスに 1 つの国しか含まれておらず、新しい国のデータを取り込んで複数の国のデータが格納されるようになった場合は、国列の統計を更新する必要があります。
+
+統計更新のレコメンデーションは次の通りです｡
+
+|||
+|-|-|
+| **統計の更新の頻度**  | 控えめ: 毎日 <br></br> データを読み込むか変換した後 |
+| **サンプリング** |  行数が 10 億未満の場合は、既定のサンプリング (20%) を使用 <br></br> 行数が 10 億を超える場合は、2% の範囲に関する統計が適切 |
 
 クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「**統計は最新の状態ですか**」というものです。
 
@@ -94,7 +110,7 @@ WHERE
 
 たとえば、データ ウェアハウスの**日付列**では、通常、統計を頻繁に更新する必要があります。 新しい行がデータ ウェアハウスに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらによってデータの分布が変わり、統計が古くなります。  一方、顧客テーブルの性別列の統計は更新する必要がないと考えられます。 顧客間で分布が一定であると仮定すると、テーブル バリエーションに新しい行を追加しても、データの分布が変わることはありません。 ただし、データ ウェアハウスに 1 つの性別しか含まれておらず、新しい要件によって複数の性別が含まれるようになった場合は、性別列の統計を更新する必要があります。
 
-詳細については、MSDN の「[統計][Statistics]」をご覧ください。
+詳しくは、「[統計](/sql/relational-databases/statistics/statistics)」をご覧ください。
 
 ## <a name="implementing-statistics-management"></a>統計管理の実装
 多くの場合、読み込みの終わりに統計が確実に更新されるように、データ読み込みプロセスを拡張することが推奨されます。 テーブルのサイズや値の分布が変わる頻度が最も高いのがデータの読み込み時です。 したがって、これが管理プロセスを実装する論理的な場所となります。
@@ -107,7 +123,7 @@ WHERE
 * 静的な分布列の更新頻度を減らすことを検討します。
 * 各統計オブジェクトは順序どおりに更新されることに注意してください。 特に、多数の統計オブジェクトが含まれた幅の広いテーブルでは、 `UPDATE STATISTICS <TABLE_NAME>` を実装するだけでは十分とはいえない場合があります。
 
-詳細については、MSDN の[基数推定][Cardinality Estimation]に関するページをご覧ください。
+詳細については、「[カーディナリティ推定](/sql/relational-databases/performance/cardinality-estimation-sql-server)」を参照してください。
 
 ## <a name="examples-create-statistics"></a>例: 統計の作成
 以下の例では、さまざまなオプションを使用して統計を作成する方法を示します。 各列に使用するオプションは、データの特性とクエリでの列の使用方法によって異なります。
@@ -172,7 +188,7 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-詳細については、MSDN の [CREATE STATISTICS][CREATE STATISTICS] に関するページをご覧ください。
+詳細については、「[CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql)」をご覧ください。
 
 ### <a name="create-multi-column-statistics"></a>複数列統計の作成
 複数列統計オブジェクトを作成するには、これまでの例を使用するだけですが、複数の列を指定します。
@@ -362,9 +378,9 @@ UPDATE STATISTICS dbo.table1;
 > 
 > 
 
-`UPDATE STATISTICS` プロシージャの実装については、[一時テーブル][Temporary]に関する記事をご覧ください。 実装方法は前述の `CREATE STATISTICS` プロシージャと若干異なりますが、結果は同じです。
+`UPDATE STATISTICS` プロシージャの実装については、[一時テーブル](sql-data-warehouse-tables-temporary.md)に関する記事をご覧ください。 実装方法は前述の `CREATE STATISTICS` プロシージャと若干異なりますが、結果は同じです。
 
-完全な構文については、MSDN の [Update Statistics][Update Statistics] に関するページをご覧ください。
+完全な構文については、「[UPDATE STATISTICS ](/sql/t-sql/statements/update-statistics-transact-sql)」を参照してください。
 
 ## <a name="statistics-metadata"></a>統計のメタデータ
 統計に関する情報を確認する際に使用できるシステム ビューとシステム関数がいくつかあります。 たとえば、stats-date 関数を使用して、統計が最後に作成または更新されたのがいつであるかを確認することで、統計オブジェクトが古くなっているかどうかがわかります。
@@ -372,23 +388,23 @@ UPDATE STATISTICS dbo.table1;
 ### <a name="catalog-views-for-statistics"></a>統計のカタログ ビュー
 次のシステム ビューは、統計に関する情報を提供します。
 
-| カタログ ビュー | [説明] |
+| カタログ ビュー | 説明 |
 |:--- |:--- |
-| [sys.columns][sys.columns] |列ごとに 1 行。 |
-| [sys.objects][sys.objects] |データベース内のオブジェクトごとに 1 行。 |
-| [sys.schemas][sys.schemas] |データベースのスキーマごとに 1 行。 |
-| [sys.stats][sys.stats] |統計オブジェクトごとに 1 行。 |
-| [sys.stats_columns][sys.stats_columns] |統計オブジェクトの列ごとに 1 行。 sys.columns にリンク。 |
-| [sys.tables][sys.tables] |テーブル (外部テーブルを含む) ごとに 1 行。 |
-| [sys.table_types][sys.table_types] |データ型ごとに 1 行。 |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |列ごとに 1 行。 |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |データベース内のオブジェクトごとに 1 行。 |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |データベースのスキーマごとに 1 行。 |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |統計オブジェクトごとに 1 行。 |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |統計オブジェクトの列ごとに 1 行。 sys.columns にリンク。 |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |テーブル (外部テーブルを含む) ごとに 1 行。 |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |データ型ごとに 1 行。 |
 
 ### <a name="system-functions-for-statistics"></a>統計のシステム関数
 次のシステム関数は統計の操作に役立ちます。
 
-| システム関数 | [説明] |
+| システム関数 | 説明 |
 |:--- |:--- |
-| [STATS_DATE][STATS_DATE] |統計オブジェクトの最終更新日。 |
-| [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] |統計オブジェクトで認識される値の分布に関する概要レベルの情報と詳細情報。 |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |統計オブジェクトの最終更新日。 |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |統計オブジェクトで認識される値の分布に関する概要レベルの情報と詳細情報。 |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>1 つのビューへの統計列と関数の統合
 このビューには、統計に関連する列と、STATS_DATE() 関数の結果が一緒に表示されます。
@@ -436,7 +452,7 @@ DBCC SHOW_STATISTICS() は、統計オブジェクト内に保持されている
 - 密度ベクトル
 - ヒストグラム
 
-ヘッダーには、統計に関するメタデータが含まれます。 ヒストグラムには、統計オブジェクトの最初のキー列の値の分布が表示されます。 密度ベクトルは、列間の相関関係を測定します。 SQL Data Warehouse では、統計オブジェクト内のデータを使用して基数推定値を計算します。
+ヘッダーには、統計に関するメタデータが含まれます。 ヒストグラムには、統計オブジェクトの最初のキー列の値の分布が表示されます。 密度ベクトルは、列間の相関関係を測定します。 SQL Data Warehouse では、統計オブジェクト内のデータを使用してカーディナリティ推定値を計算します。
 
 ### <a name="show-header-density-and-histogram"></a>ヘッダー、密度、ヒストグラムの表示
 次の簡単な例は、統計オブジェクトの 3 つの部分をすべて表示します。
@@ -476,37 +492,5 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW_STATISTICS() がよ
 - カスタム エラー 2767 はサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
-MSDN の [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] に関するページで詳細を確認します。
+クエリのパフォーマンスをさらに向上させるには、[ワークロードの監視](sql-data-warehouse-manage-monitor.md)に関する記事を参照してください
 
-  [テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[一時テーブル][Temporary]に関する各記事で詳細を確認します。
-  
-   [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事でベスト プラクティスの詳細を確認します。  
-
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->  
-[Cardinality Estimation]: https://msdn.microsoft.com/library/dn600374.aspx
-[CREATE STATISTICS]: https://msdn.microsoft.com/library/ms188038.aspx
-[DBCC SHOW_STATISTICS]:https://msdn.microsoft.com/library/ms174384.aspx
-[Statistics]: https://msdn.microsoft.com/library/ms190397.aspx
-[STATS_DATE]: https://msdn.microsoft.com/library/ms190330.aspx
-[sys.columns]: https://msdn.microsoft.com/library/ms176106.aspx
-[sys.objects]: https://msdn.microsoft.com/library/ms190324.aspx
-[sys.schemas]: https://msdn.microsoft.com/library/ms190324.aspx
-[sys.stats]: https://msdn.microsoft.com/library/ms177623.aspx
-[sys.stats_columns]: https://msdn.microsoft.com/library/ms187340.aspx
-[sys.tables]: https://msdn.microsoft.com/library/ms187406.aspx
-[sys.table_types]: https://msdn.microsoft.com/library/bb510623.aspx
-[UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
-
-<!--Other Web references-->  

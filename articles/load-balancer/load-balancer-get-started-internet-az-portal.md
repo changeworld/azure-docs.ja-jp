@@ -4,10 +4,6 @@ description: Azure Portal でゾーン冗長パブリック IP アドレス フ�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1f1c8d0305334d85500b501aee5a71664bb49050
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 70514433d11bbe7606d75a3e2c1f6dffc251621f
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740945"
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>Azure Portal でゾーン冗長パブリック IP アドレス フロントエンドを使用してパブリック Load Balancer Standard を作成する
 
@@ -45,9 +42,6 @@ Azure Portal (https://portal.azure.com) にログインします。
     >[!NOTE] 
     > この手順で作成されるパブリック IP は既定で Standard SKU であり、ゾーン冗長です。 
 8. **[場所]** から **[米国東部 2]** を選択し、**[OK]** をクリックします。 ロード バランサーのデプロイが開始されます。デプロイが正常に完了するまでに数分かかります。
-
-    ![Azure Portal を使用してゾーン冗長 Load Balancer Standard を作成する](./media/load-balancer-get-started-internet-az-portal/create-zone-redundant-load-balancer-standard.png)
-
 
 ## <a name="next-steps"></a>次の手順
 - [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)を確認します。

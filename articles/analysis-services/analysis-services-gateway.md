@@ -1,28 +1,22 @@
 ---
-title: オンプレミスのデータ ゲートウェイ | Microsoft Docs
+title: オンプレミスのデータ ゲートウェイ
 description: Azure の Analysis Services サーバーがオンプレミスのデータ ソースに接続する場合、オンプレミスのゲートウェイが必要です。
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: cd596155-b608-4a34-935e-e45c95d884a9
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 04/03/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 09/11/2018
 ms.author: owend
-ms.openlocfilehash: f38faf4d75125201ee209eb40c9f223a0487f042
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.reviewer: minewiskan
+ms.openlocfilehash: 84c82da933b17679e8c69c08b0c9cc7372951cfd
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802055"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Azure のオンプレミスのデータゲートウェイを使用してオンプレミスのデータ ソースに接続する
-オンプレミスのデータ ゲートウェイはブリッジとして機能し、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。 同じリージョン内の複数の Azure Analysis Services サーバーで機能するだけでなく、最新バージョンのゲートウェイは、Azure Logic Apps、Power BI、Power Apps、および Microsoft Flow でも機能します。 同じリージョン内の複数のサービスを1 つのゲートウェイに関連付けることができます。 
+オンプレミスのデータ ゲートウェイはブリッジとして機能し、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。 同じリージョン内の複数の Azure Analysis Services サーバーで機能するだけでなく、最新バージョンのゲートウェイは、Azure Logic Apps、Power BI、Power Apps、および Microsoft Flow でも機能します。 同じサブスクリプションと同じリージョン内の複数のサービスを 1 つのゲートウェイに関連付けることができます。 
 
 ゲートウェイの初回のセットアップは、4 つのパートで構成されるプロセスです。
 
@@ -32,7 +26,7 @@ ms.lasthandoff: 04/05/2018
 
 - **ゲートウェイ リソースを Azure 内に作成する**: この手順では、Azure サブスクリプションにゲートウェイ リソースを作成します。
 
-- **サーバーをゲートウェイ リソースに接続する**: サブスクリプションにゲートウェイ リソースを用意したら、サーバーの接続を開始できます。 複数のサーバーとその他のリソースをそこに接続できます。
+- **サーバーをゲートウェイ リソースに接続する**: サブスクリプションにゲートウェイ リソースを用意したら、サーバーの接続を開始できます。 複数のサーバーとその他のリソースを接続できます。ただし、同じサブスクリプションと同じリージョンにあることが条件です。
 
 今すぐ開始するには、「[オンプレミスのデータ ゲートウェイをインストールして構成する](analysis-services-gateway-install.md)」を参照してください。
 
@@ -67,7 +61,7 @@ ms.lasthandoff: 04/05/2018
 
 ゲートウェイで使われる完全修飾ドメイン名を次に示します。
 
-| ドメイン名 | 送信ポート | [説明] |
+| ドメイン名 | 送信ポート | 説明 |
 | --- | --- | --- |
 | *.powerbi.com |80 |インストーラーのダウンロードに使用される HTTP。 |
 | *.powerbi.com |443 |HTTPS |
@@ -89,6 +83,11 @@ ms.lasthandoff: 04/05/2018
     <value>Https</value>
 </setting>
 ```
+
+## <a name="tenant-level-administration"></a>テナント レベルの管理 
+
+現在、他のユーザーがインストールおよび構成したすべてのゲートウェイをテナント管理者が管理できる 1 つの場所はありません。  テナント管理者の場合、インストールするすべてのゲートウェイにテナント管理者を管理者として追加するように、組織内のユーザーに依頼することをお勧めします。 これにより、[ゲートウェイ設定] ページまたは [PowerShell コマンド](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters)を使用して組織内のすべてのゲートウェイを管理できます。 
+
 
 ## <a name="faq"></a>よく寄せられる質問
 
@@ -173,8 +172,6 @@ ms.lasthandoff: 04/05/2018
 #### <a name="configuration-logs"></a>構成ログ
 
 `C:\Users\<username>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator.log`
-
-
 
 
 #### <a name="event-logs"></a>イベント ログ

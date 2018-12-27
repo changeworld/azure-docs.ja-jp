@@ -1,7 +1,7 @@
 ---
 title: Azure リソース ポリシーに関する RequestDisallowedByPolicy エラー | Microsoft Docs
 description: RequestDisallowedByPolicy エラーの原因について説明します。
-services: azure-resource-manager,azure-portal
+services: azure-resource-manager
 documentationcenter: ''
 author: genlin
 manager: cshepard
@@ -10,14 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: support-article
-ms.date: 03/09/2018
+ms.topic: troubleshooting
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 5a9efa6b807e933726104e7af315589ede5d9b74
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7330c8369fa8232c90fe6931745e298107ed6ad1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418060"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure リソース ポリシーに関する RequestDisallowedByPolicy エラー
 
@@ -50,7 +51,7 @@ PowerShell では、そのポリシー識別子を `Id` パラメーターとし
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI 2.0 では、ポリシー定義の名前を指定します。
+Azure CLI では、ポリシー定義の名前を指定します。
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment

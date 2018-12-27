@@ -2,35 +2,35 @@
 title: PowerShell サンプル - アクティブ geo レプリケーション - 単一 Azure SQL Database | Microsoft Docs
 description: 単一の Azure SQL Database のアクティブ geo レプリケーションをセットアップし、フェールオーバーする Azure PowerShell のサンプル スクリプト
 services: sql-database
-documentationcenter: sql-database
-author: janeng
-manager: jstrauss
-editor: carlrab
-tags: azure-service-management
-ms.assetid: ''
 ms.service: sql-database
-ms.custom: business continuity, mvc
+ms.subservice: high-availability
+ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: database
-ms.date: 04/01/2018
-ms.author: janeng
-ms.openlocfilehash: 24d95d8d0c22ca295abfd5a21ac88c6953e67719
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+author: CarlRabeler
+ms.date: 09/07/2018
+ms.author: carlrab
+ms.reviewer: ''
+manager: craigg
+ms.openlocfilehash: d102cde625865ea1db6ed09382161366d3994def
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961911"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-single-azure-sql-database"></a>PowerShell を使用し、単一 Azure SQL データベースのアクティブ geo レプリケーションを構成する
 
 この PowerShell サンプル スクリプトでは、単一 Azure SQL データベースのアクティブ geo レプリケーションを構成し、そのデータベースを Azure SQL Database のセカンダリ レプリカにフェールオーバーします。
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="sample-scripts"></a>サンプルのスクリプト
 
-[!code-powershell[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover-database/setup-geodr-and-failover-database.ps1?highlight=17-20 "Set up active geo-replication for single database")]
+[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover/setup-geodr-and-failover-single-database.ps1?highlight=17-20 "Set up active geo-replication for single database")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

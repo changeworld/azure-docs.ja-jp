@@ -1,23 +1,23 @@
 ---
-title: "Azure Application Insights のスマート検出 | Microsoft Docs"
-description: "Application Insights は、アプリのテレメトリの詳細な分析を自動的に実行し、潜在的なパフォーマンスの問題について警告します。"
+title: Azure Application Insights のスマート検出 | Microsoft Docs
+description: Application Insights は、アプリのテレメトリの詳細な分析を自動的に実行し、潜在的なパフォーマンスの問題について警告します。
 services: application-insights
 documentationcenter: windows
-author: rakefetj
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2eeb4a35-c7a1-49f7-9b68-4f4b860938b2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: c15db8451cc1c5380bcf4a29c5e722d09c0a603b
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b884fc15770e91268d1033dc4bab9bf96766de94
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868943"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights のスマート検出
  スマート検出により、Web アプリケーションの潜在的なパフォーマンスの問題について警告を自動的に受け取ることができます。 スマート検出では、アプリから [Application Insights](app-insights-overview.md) に送信されるテレメトリがプロアクティブに分析されます。 障害発生率が急激に上昇したり、クライアントまたはサーバーのパフォーマンスに異常なパターンが発生したりした場合に、アラートが表示されます。 この機能には構成は不要です。 アプリケーションから適切なテレメトリが送信されていれば動作します。
@@ -51,12 +51,12 @@ ms.lasthandoff: 11/01/2017
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これらの診断ツールを使用すると、アプリからテレメトリを調査できます。
 
 * [メトリックス エクスプローラー](app-insights-metrics-explorer.md)
 * [Search エクスプローラー](app-insights-diagnostic-search.md)
-* [Analytics - 強力なクエリ言語](app-insights-analytics-tour.md)
+* [Analytics - 強力なクエリ言語](../azure-monitor/log-query/get-started-portal.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 

@@ -1,24 +1,25 @@
 ---
-title: "Azure Cloud Services アプリのマイクロサービスへの変換 | Microsoft Docs"
-description: "このガイドでは、Cloud Services から Service Fabric に移行するときのために、Cloud Services の Web ロールと worker ロールと、Service Fabric のステートレス サービスの比較を説明します。"
+title: Azure Cloud Services アプリの Service Fabric への変換 | Microsoft Docs
+description: このガイドでは、Cloud Services から Service Fabric に移行するときのために、Cloud Services の Web ロールと worker ロールと、Service Fabric のステートレス サービスの比較を説明します。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: fd24881444846d3905f8db61356656960698b7eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 4eed3825d52fe52025077980e21f3763cc5751ac
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049951"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Web ロールと worker ロールを Service Fabric ステートレス サービスに変換する手順
 この記事では、Cloud Services の Web ロールと worker ロールを Service Fabric ステートレス サービスに移行する方法について説明します。 アーキテクチャ全体をほぼ同じまま維持するアプリケーションの場合、これが Cloud Services から Service Fabric への最も単純な移行パスです。
@@ -207,7 +208,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ## <a name="startup-tasks"></a>スタートアップ タスク
 スタートアップ タスクは、アプリケーションの起動前に実行されるアクションです。 通常、スタートアップ タスクは、昇格された特権を使用してセットアップ スクリプトを実行するために使用されます。 Cloud Services と Service Fabric のいずれもスタートアップ タスクをサポートしています。 主な違いは、Cloud Services の場合、ロール インスタンスの一部なので、スタートアップ タスクは VM に関連付けられている点です。一方、Service Fabric では、スタートアップ タスクはサービスに関連付けられており、特定の VM には関連付けられていません。
 
-| Cloud Services | Service Fabric |
+| Service Fabric | Cloud Services |
 | --- | --- | --- |
 | 構成の場所 |ServiceDefinition.csdef |
 | 特権 |"制限付き" または "昇格された" 特権 |

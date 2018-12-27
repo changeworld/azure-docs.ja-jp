@@ -3,37 +3,40 @@ title: Azure Application Insights を使用した Java Web アプリの分析 | 
 description: 'Application Insights を使用した Java Web アプリのアプリケーション パフォーマンス監視 '
 services: application-insights
 documentationcenter: java
-author: harelbr
+author: lgayhardt
 manager: carmonm
 ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 03/14/2017
-ms.author: mbullwin
-ms.openlocfilehash: 7331c3385f70de7d13895fc88d1d8630af4e9b05
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.topic: conceptual
+ms.date: 10/09/2018
+ms.author: lagayhar
+ms.openlocfilehash: 2538bbf32b41e51796e333c11b7af6c091a71ede
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309091"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 [パフォーマンスの問題や例外を検出および診断](app-insights-detect-triage-diagnose.md)したり、アプリケーションで何が実行されているかを追跡する[コードを記述][api]したりすることができます。
 
-![サンプル データ](./media/app-insights-java-get-started/5-results.png)
+![概要サンプル データのスクリーンショット](./media/app-insights-java-get-started/overview-graphs.png)
 
 Application Insights は、Linux、Unix、Windows で動作する Java アプリをサポートします。
 
 必要なもの:
 
-* Oracle JRE バージョン 1.7 または 1.8、あるいは Zulu JRE バージョン 1.7 または 1.8
+* JRE バージョン 1.7 または 1.8
 * [Microsoft Azure](https://azure.microsoft.com/) サブスクリプション。
 
 *既にライブの Web アプリがある場合、代替手順に従って [Web サーバーで実行時に SDK を追加](app-insights-java-live.md)できます。これによってコードのリビルドを回避できますが、ユーザーの利用状況を追跡するためにコードを記述することができなくなります。*
+
+Spring フレームワークの方がよければ、[Spring Boot 初期化子アプリを構成して Application Insights ガイドを使用](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)してみてください
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1.Application Insights のインストルメンテーション キーを取得する
 1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインします。
@@ -46,9 +49,6 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2.Application Insights SDK for Java をプロジェクトに追加する
 *プロジェクトに適した方法を選択してください。*
-
-#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project"></a>Eclipse を使用して動的 Web プロジェクトを作成している場合:
-[Application Insights SDK for Java プラグイン][eclipse]を使用します。
 
 #### <a name="if-youre-using-maven-a-namemaven-setup-"></a>Maven を使用している場合: <a name="maven-setup" />
 プロジェクトが既に Maven を使用してビルドする設定になっている場合は、pom.xml ファイルに次のコードをマージします。
@@ -76,7 +76,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 ```
 
 * *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `<version>2.0.n</version>`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
-* *新しい SDK に更新する必要がありますか?* プロジェクトの依存関係を更新します。
+* *新しい SDK に更新する必要がありますか?*  プロジェクトの依存関係を更新します。
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Gradle を使用している場合: <a name="gradle-setup" />
 プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、build.gradle ファイルに次のコードをマージします。
@@ -94,6 +94,9 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
       // or applicationinsights-core for bare API
     }
 ```
+
+#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Eclipse を使用して動的 Web プロジェクトを作成している場合:
+[Application Insights SDK for Java プラグイン][eclipse]を使用します。 注意: (Maven/Gradle を使用していないとの想定において) このプラグインを使用することで Application Insights をより迅速に実行できるとしても、それは依存関係管理システムではありません。 そのため、プラグインが更新されても、プロジェクトの Application Insights ライブラリは自動的に更新されません。
 
 * *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `version:'2.0.n'`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
 * "*新しい SDK に更新するには*" プロジェクトの依存関係を更新します。
@@ -170,6 +173,78 @@ Application Insights SDK は、次の順序でキーを探します。
 ## <a name="4-add-an-http-filter"></a>4.HTTP フィルターを追加する
 最後の構成手順では、HTTP 要求コンポーネントが各 Web 要求をログに記録できるようにします  (単に最小限の API が必要な場合はこの手順を行う必要はありません)。
 
+### <a name="spring-boot-applications"></a>Spring Boot アプリケーション
+Application Insights の `WebRequestTrackingFilter` を Configuration クラスに登録します。
+
+```Java
+package <yourpackagename>.configurations;
+
+import javax.servlet.Filter;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.Ordered;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import com.microsoft.applicationinsights.TelemetryConfiguration;
+import com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter;
+
+@Configuration
+public class AppInsightsConfig {
+
+    @Bean
+    public String telemetryConfig() {
+        String telemetryKey = System.getenv("<instrumentation key>");
+        if (telemetryKey != null) {
+            TelemetryConfiguration.getActive().setInstrumentationKey(telemetryKey);
+        }
+        return telemetryKey;
+    }
+
+    /**
+     * Programmatically registers a FilterRegistrationBean to register WebRequestTrackingFilter
+     * @param webRequestTrackingFilter
+     * @return Bean of type {@link FilterRegistrationBean}
+     */
+    @Bean
+    public FilterRegistrationBean webRequestTrackingFilterRegistrationBean(WebRequestTrackingFilter webRequestTrackingFilter) {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(webRequestTrackingFilter);
+        registration.addUrlPatterns("/*");
+        registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 10);
+        return registration;
+    }
+
+
+    /**
+     * Creates bean of type WebRequestTrackingFilter for request tracking
+     * @param applicationName Name of the application to bind filter to
+     * @return {@link Bean} of type {@link WebRequestTrackingFilter}
+     */
+    @Bean
+    @ConditionalOnMissingBean
+
+    public WebRequestTrackingFilter webRequestTrackingFilter(@Value("${spring.application.name:application}") String applicationName) {
+        return new WebRequestTrackingFilter(applicationName);
+    }
+
+
+}
+```
+
+> [!NOTE]
+> Spring Boot 1.3.8 以前を使用している場合は、次の行で FilterRegistrationBean を置き換えます
+
+```Java
+    import org.springframework.boot.context.embedded.FilterRegistrationBean;
+```
+
+このクラスにより、`WebRequestTrackingFilter` が http フィルター チェーンの最初のフィルターとして構成されます。 また、取得可能な場合は、オペレーティング システムの環境変数からインストルメンテーション キーがプルされます。
+
+> ここでは Spring MVC 構成ではなく Web http フィルター構成を使用しています。なぜなら、これは Spring Boot アプリケーションであり、独自の Spring MVC 構成があるためです。 Spring MVC に固有の構成については、以降のセクションを参照してください。
+
+### <a name="applications-using-webxml"></a>Web.xml を使用するアプリケーション
 プロジェクトの web.xml ファイルを見つけて開きます。アプリケーション フィルターが構成されている web-app ノードの下に次のコードをマージします。
 
 最も正確な結果を得るためには、他のすべてのフィルターの前にこのフィルターをマップする必要があります。
@@ -186,6 +261,11 @@ Application Insights SDK は、次の順序でキーを探します。
        <filter-name>ApplicationInsightsWebFilter</filter-name>
        <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+   <!-- This listener handles shutting down the TelemetryClient when an application/servlet is undeployed. -->
+    <listener>
+      <listener-class>com.microsoft.applicationinsights.web.internal.ApplicationInsightsServletContextListener</listener-class>
+    </listener>
 ```
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Spring Web MVC 3.1 以降を使用している場合
@@ -262,7 +342,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 
 * Windows サーバーに次のものをインストールします。
 
-  * [Microsoft Visual C++ 再頒布可能パッケージ](http://www.microsoft.com/download/details.aspx?id=40784)
+  * [Microsoft Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/details.aspx?id=40784)
 
     (このコンポーネントにより、パフォーマンス カウンターが有効になります。)
 
@@ -340,6 +420,30 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 ### <a name="unix-performance-counters"></a>Unix パフォーマンス カウンター
 * [Application Insights プラグインを使用して collectd をインストール](app-insights-java-collectd.md) し、さまざまな種類のシステムとネットワークに関するデータを取得します。
 
+## <a name="local-forwarder"></a>ローカル フォワーダー
+
+[ローカル フォワーダー](https://docs.microsoft.com/azure/application-insights/local-forwarder)とは、さまざまな SDK やフレームワークから Application Insights または [OpenCensus](https://opencensus.io/) のテレメトリを収集して、それを Application Insights にルーティングするエージェントです。 これは、Windows と Linux で実行できます。
+
+```xml
+<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
+<DeveloperMode>false</DeveloperMode>
+<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
+<!-- The properties below are optional. The values shown are the defaults for each property -->
+<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
+<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
+</Channel>
+```
+
+SpringBoot スターターを使用する場合は、構成ファイル (application.properies) に次を追加します。
+
+```yml
+azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
+azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
+azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
+```
+
+SpringBoot の application.properties と applicationinsights.xml の構成の既定値は同じです。
+
 ## <a name="get-user-and-session-data"></a>ユーザーとセッションのデータを取得する
 Web サーバーからテレメトリを送信しようとしているところです。 ここで、アプリケーションの状態を完全に把握するために、監視を追加することもできます。
 
@@ -388,7 +492,7 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [apiexceptions]: app-insights-api-custom-events-metrics.md#trackexception
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
-[eclipse]: app-insights-java-eclipse.md
+[eclipse]: app-insights-java-quick-start.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-javascript.md

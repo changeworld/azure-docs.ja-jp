@@ -1,22 +1,24 @@
 ---
-title: "Azure Application Insights のファネル"
-description: "ファネルを使って、顧客によるアプリケーションの操作状況を把握する方法を説明します。"
+title: Azure Application Insights のファネル
+description: ファネルを使って、顧客によるアプリケーションの操作状況を把握する方法を説明します。
 services: application-insights
-documentationcenter: 
-author: mrbullwinkle
+documentationcenter: ''
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/17/2017
-ms.author: mbullwin
-ms.openlocfilehash: bbb25af888f34737f6a61cf43890ff248c4cc4de
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.pm_owner: daviste;NumberByColors
+ms.reviewer: mbullwin
+ms.author: daviste
+ms.openlocfilehash: 3782b322231011b544eef4ae832ba3fe2c373eb0
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725048"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Application Insights のファネルを使って、顧客がどのようにアプリケーションを利用しているか把握する
 
@@ -37,7 +39,7 @@ ms.lasthandoff: 11/29/2017
 以下のスクリーンショットは、ファネル ツールによって生成されるデータの種類の例を示しています。 Fabrikam の事業主は、過去 90 日間に、ホーム ページを閲覧した顧客の 54.3 パーセントが顧客チケットを作成したことを確認できます。 2,700 人の顧客がホーム ページからインデックスを訪れたことも分かります。 これは更新に関する問題を示唆している可能性があります。
 
 
-![ファネル ツールとデータのスクリーンショット](./media/app-insights-understand-usage-patterns/funnel1.png)
+![ファネル ツールとデータのスクリーンショット](media/usage-funnels/funnel1.png)
 
 ### <a name="funnels-features"></a>ファネルの機能
 前掲のスクリーンショットには、強調表示されている領域が 5 箇所あります。 これらはファネルの機能です。 スクリーンショットの対応する各領域についての詳細は、次のとおりです。
@@ -47,7 +49,7 @@ ms.lasthandoff: 11/29/2017
 4. コンバージョン履歴のグラフによって、過去 90 日間のコンバージョン レートが表示されます。 
 5. ユーザー ツールにアクセスすることで、ユーザーの理解を深めます。 各ステップでフィルターを使用できます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
   * [利用状況の概要](app-insights-usage-overview.md)
   * [ユーザー、セッション、およびイベント](app-insights-usage-segmentation.md)
   * [保持](app-insights-usage-retention.md)

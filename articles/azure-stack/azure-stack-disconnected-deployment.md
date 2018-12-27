@@ -1,30 +1,31 @@
 ---
-title: "Azure Stack 統合システムの Azure から切断されたデプロイの決定 | Microsoft Docs"
-description: "マルチノード Azure Stack の Azure に接続されたデプロイのためのデプロイ計画の決定を確認します。"
+title: Azure Stack 統合システムの Azure から切断されたデプロイの決定 | Microsoft Docs
+description: マルチノード Azure Stack の Azure に接続されたデプロイのためのデプロイ計画の決定を確認します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e697dec0f3d104af073fd61bac81a00e182524e1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5714257fce53fafa148b8ae4d5a3addf3b872c6f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035477"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムの Azure から切断されたデプロイ計画の決定
 [Azure Stack をハイブリッド クラウド環境に統合する方法](azure-stack-connection-models.md)を決定したら、Azure Stack デプロイの決定を完成させることができます。
 
-Azure からの切断デプロイ オプションを使用すると、インターネットへの接続なしで Azure Stack をデプロイして使用できます。 ただし、切断されたデプロイでは、AD FS ID ストアおよび容量ベースの課金モデルに制限されます。 
+インターネットに接続していなくても、Azure Stack をデプロイして使用することができます。 ただし、切断されたデプロイでは、AD FS ID ストアおよび容量ベースの課金モデルに制限されます。 
 
 このオプションは、次の場合に選択します。
 - インターネットに接続されていない環境で Azure Stack をデプロイすることが必要なセキュリティまたはその他の制限がある。
@@ -39,15 +40,15 @@ Azure からの切断デプロイ オプションを使用すると、インタ�
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>切断されたデプロイで損なわれるか、または使用できない機能 
 Azure Stack は Azure に接続されているときに最適に機能するように設計されているため、切断モードでは損なわれるか、または完全に使用できない機能がいくつか存在することに注意する必要があります。 
 
-|Feature|切断モードでの影響|
+|機能|切断モードでの影響|
 |-----|-----|
 |VM のデプロイ後を構成するための DSC 拡張機能を備えた VM デプロイ|損なわれる - DSC 拡張機能は、最新の WMF がないかどうかインターネットを参照します。|
 |Docker コマンドを実行するための Docker 拡張機能を備えた VM デプロイ|損なわれる – Docker は最新バージョンがないかどうかインターネットをチェックするため、このチェックは失敗します。|
 |Azure Stack ポータルでのドキュメント リンク|使用できない – インターネット URL を使用するリンク ([フィードバックのご提供]、[ヘルプ]、[クイック スタート] など) は機能しません。|
 |オンライン修復ガイドを参照する、アラートによる修復/軽減|使用できない – インターネット URL を使用するアラート修復リンクはすべて機能しません。|
-|マーケットプレース シンジケーション – Azure Marketplace から直接ギャラリー パッケージを選択して追加する機能|使用できない – この機能には、Azure への接続と Azure Active Directory アカウントが必要です。|
+|Marketplace – Azure Marketplace から直接ギャラリー パッケージを選択して追加する機能|損なわれる - Azure Stack を非接続モード (インターネット接続なし) でデプロイする場合、Azure Stack ポータルを使用して Marketplace アイテムをダウンロードすることはできません。 ただし、[マーケットプレース シンジケーション ツール](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity)を使用して、インターネットに接続されたマシンに Marketplace アイテムをダウンロードしてから、Azure Stack 環境に転送することができます。|
 |Azure Stack デプロイを管理するための Azure Active Directory フェデレーション アカウントの使用|使用できない – この機能には Azure への接続が必要です。 代わりに、ローカルの Active Directory インスタンスによる AD FS を使用する必要があります。|
-|WebApps や SQL などのリソース プロバイダー|使用できない - WebApps や SQL などのリソース プロバイダーには、コンテンツ用のインターネット アクセスが必要です。|
+|アプリケーション サービス|損なわれる - WebApps では、コンテンツの更新のためにインターネットへのアクセスが必要です。|
 |コマンド ライン インターフェイス (CLI)|損なわれる – CLI は、サービス プリンシパルの認証およびプロビジョニングの点で機能が削減されます。|
 |Visual Studio – クラウド検出|損なわれる – Cloud Discovery は別のクラウドを検出するか、またはまったく機能しないかのどちらかです。|
 |Visual Studio – AD FS|損なわれる – AD FS をサポートするのは Visual Studio Enterprise だけです。

@@ -1,23 +1,20 @@
 ---
-title: "Azure Search .NET SDK バージョン 1.1 へのアップグレード | Microsoft Docs"
-description: "Azure Search .NET SDK バージョン 1.1 へのアップグレード"
-services: search
-documentationcenter: 
+title: Azure Search .NET SDK バージョン 1.1 へのアップグレード | Microsoft Docs
+description: Azure Search .NET SDK バージョン 1.1 へのアップグレード
 author: brjohnstmsft
-manager: pablocas
-editor: 
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
-ms.openlocfilehash: 387a052a116388cc9ad816ec8b339347d5c28322
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ccefd21e2aa89a2b46129956b3c4417d548cbf32
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
+ms.locfileid: "31796746"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Azure Search .NET SDK バージョン 1.1 へのアップグレード
 

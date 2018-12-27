@@ -1,11 +1,11 @@
 ---
-title: "オンプレミスの AlwaysOn 可用性グループの Azure への拡張 | Microsoft Docs"
-description: "このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。"
+title: オンプレミスの AlwaysOn 可用性グループの Azure への拡張 | Microsoft Docs
+description: このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 7ca7c423-8342-4175-a70b-d5101dfb7f23
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400479"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>オンプレミスの AlwaysOn 可用性グループの Azure への拡張
 AlwaysOn 可用性グループは、セカンダリ レプリカを追加することで、データベースのグループの高可用性を実現します。 これらのレプリカを使用すると、障害発生時にデータベースをフェールオーバーできます。 また、読み取りワークロードやバックアップ タスクをオフロードすることもできます。
@@ -74,7 +75,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
 11. **[次へ]** をクリックします。
-12. **[最初のデータの同期を選択]** ページで、使用するデータの同期方法を選択し、**[次へ]** をクリックします。 ほとんどのシナリオでは、 **[完全データ同期]**を選択します。 データ同期方法の詳細については、「 [[最初のデータの同期を選択] ページ (AlwaysOn 可用性グループ ウィザード)](https://msdn.microsoft.com/library/hh231021.aspx)」をご覧ください。
+12. **[最初のデータの同期を選択]** ページで、使用するデータの同期方法を選択し、**[次へ]** をクリックします。 ほとんどのシナリオでは、 **[完全データ同期]** を選択します。 データ同期方法の詳細については、「 [[最初のデータの同期を選択] ページ (AlwaysOn 可用性グループ ウィザード)](https://msdn.microsoft.com/library/hh231021.aspx)」をご覧ください。
 13. **[検証]** ページで結果を確認します。 未解決の問題を修正し、必要に応じて、検証を再実行します。 **[次へ]** をクリックします。
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742866.png)

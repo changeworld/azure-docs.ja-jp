@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: f84bb3546260622eec921684be8e2492adcdcd52
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: aed816dadcced36946d6e173ca259a6c0f373727
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957465"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。 
@@ -60,12 +61,12 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 
 
 
-| プロパティ                      | [説明]                              | 必須 |
+| プロパティ                      | 説明                              | 必須 |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | パイプラインのアクティビティの名前。     | [はい]      |
-| 説明                   | アクティビティの動作を説明するテキスト。  | いいえ        |
-| 型                          | Azure Machine Learning 更新リソース アクティビティの場合、アクティビティの種類は **AzureMLUpdateResource** です。 | [はい]      |
-| 既定のコンテナー             | updateResourceEndpoint プロパティが含まれる Azure Machine Learning のリンクされたサービス。 | [はい]      |
+| description                   | アクティビティの動作を説明するテキスト。  | いいえ        |
+| type                          | Azure Machine Learning 更新リソース アクティビティの場合、アクティビティの種類は **AzureMLUpdateResource** です。 | [はい]      |
+| linkedServiceName             | updateResourceEndpoint プロパティが含まれる Azure Machine Learning のリンクされたサービス。 | [はい]      |
 | trainedModelName              | Web サービスの実験で更新されるようにトレーニング済みのモデル モジュールの名前 | [はい]      |
 | trainedModelLinkedServiceName | 更新操作によってアップロードされる iLearner ファイルを保持する Azure Storage のリンクされたサービスの名前 | [はい]      |
 | trainedModelFilePath          | 更新操作によってアップロードされる iLearner ファイルを表す trainedModelLinkedService 内の相対ファイル パス | [はい]      |
@@ -97,7 +98,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 [Azure Machine Learning Web サービスのポータル](https://services.azureml.net/)で Web サービスにクエリを実行するときに、URL 内のプレースホルダーの値を取得できます。 
 
-新しい種類の更新リソース エンドポイントでは、サービス プリンシパルの認証が必要です。 サービス プリンシパルの認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、Web サービスが属するサブスクリプションまたはリソース グループの**共同作成者**または**所有者**のロールを付与します。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページをご覧ください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+新しい種類の更新リソース エンドポイントでは、サービス プリンシパルの認証が必要です。 サービス プリンシパルの認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、Web サービスが属するサブスクリプションまたはリソース グループの**共同作成者**または**所有者**のロールを付与します。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページをご覧ください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 
 - アプリケーション ID
 - アプリケーション キー 

@@ -1,26 +1,20 @@
 ---
-title: "機械学習の概要 - Azure HDInsight | Microsoft Docs"
-description: "HDInsight の機械学習オプションについて説明します。"
+title: 機械学習の概要 - Azure HDInsight
+description: HDInsight の機械学習オプションについて説明します。
 services: hdinsight
-documentationcenter: 
-tags: azure-portal
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: nitinme
-ms.openlocfilehash: ff99a7a60573cad5e6dd30d4ca48903423e9f87f
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.author: hrasheed
+ms.openlocfilehash: 2ac108d65b42221189e50987238ad3d7edad1e30
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005341"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight での機械学習
 
@@ -34,17 +28,17 @@ Apache Spark 用の Microsoft Machine Learning ライブラリは [MMLSpark](htt
 
 ## <a name="r"></a>R
 
-[R](https://www.r-project.org/) は現在、世界で最も普及している統計プログラミング言語です。 これは、ユーザー数が 250 万を超え、さらに成長しているコミュニティを抱えるオープンソースのデータ視覚化ツールです。 その増大するユーザー ベースと 8,000 を超える提供パッケージにより、R は、機械学習が必要な多くの企業にとって有望な選択肢です。 大量のデータセットとモデルで使用されるように準備された R Server を使用して HDInsight クラスターを作成できます。 この機能は、データ サイエンティストや統計学者に、クラスターのセットアップやメンテナンスのオーバーヘッドなしで HDInsight を通してオンデマンドで拡張できる使い慣れた R インターフェイスを提供します。
+[R](https://www.r-project.org/) は現在、世界で最も普及している統計プログラミング言語です。 これは、ユーザー数が 250 万を超え、さらに成長しているコミュニティを抱えるオープンソースのデータ視覚化ツールです。 その増大するユーザー ベースと 8,000 を超える提供パッケージにより、R は、機械学習が必要な多くの企業にとって有望な選択肢です。 大量のデータセットとモデルで使用されるように準備された ML Services を使用して HDInsight クラスターを作成できます。 この機能は、データ サイエンティストや統計学者に、クラスターのセットアップやメンテナンスのオーバーヘッドなしで HDInsight を通してオンデマンドで拡張できる使い慣れた R インターフェイスを提供します。
 
 ![R Server での予測のためのトレーニング](./media/hdinsight-machine-learning-overview/r-training.png)
 
 クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。  また、ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間で R スクリプトを実行するオプションも提供されます。
 
-Spark を使用した HDInsight 上の R Server により、Spark コンピューティング コンテキストを使用して、クラスターのノード間でトレーニングを並列化できます。 必要に応じて、使用可能なすべてのコアを並列に使用して、エッジ ノード上で直接 R スクリプトを実行できます。 あるいは、クラスター内のすべてのノードにわたって分散された処理を開始するために、エッジ ノードからコードを実行できます。 Spark を使用した HDInsight 上の R Server ではまた、必要に応じて、オープンソースの R パッケージからの関数の並列化も可能になります。
+Spark を使用した HDInsight 上の ML Services により、Spark コンピューティング コンテキストを使用して、クラスターのノード間でトレーニングを並列化できます。 必要に応じて、使用可能なすべてのコアを並列に使用して、エッジ ノード上で直接 R スクリプトを実行できます。 あるいは、クラスター内のすべてのノードにわたって分散された処理を開始するために、エッジ ノードからコードを実行できます。 Spark を使用した HDInsight 上の ML Services ではまた、必要に応じて、オープンソースの R パッケージからの関数の並列化も可能になります。
 
 ## <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning と Hive
 
-Azure Machine Learning は、予測分析をモデル化するためのツールだけでなく、予測モデルを、すぐに使用できる Web サービスとしてデプロイするために使用できる完全管理型のサービスを提供します。 Azure Machine Learning は、予測モデルの作成、テスト、操作可能化、および管理のために使用できる、クラウド内の完全な予測分析ソリューションです。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
+Azure Machine Learning は、予測分析をモデル化するためのツールだけでなく、予測モデルを、すぐに使用できる Web サービスとしてデプロイするために使用できるフル マネージドのサービスを提供します。 Azure Machine Learning は、予測モデルの作成、テスト、操作可能化、および管理のために使用できる、クラウド内の完全な予測分析ソリューションです。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
 
 ![Microsoft Azure Machine Learning により高度な分析で Hadoop にアクセスできるようにする](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
 

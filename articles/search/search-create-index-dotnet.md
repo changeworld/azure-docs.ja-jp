@@ -1,32 +1,29 @@
 ---
-title: "インデックスの作成 (.NET API - Azure Search) | Microsoft Docs"
-description: "Azure Search .NET SDK を使用して、コードでインデックスを作成します。"
-services: search
-documentationcenter: 
+title: .NET API を使用してコードでインデックスを作成する - Azure Search
+description: Azure Search .NET SDK と C# のサンプル コードを使用して、全文検索可能なインデックスを作成する方法について説明します。
 author: brjohnstmsft
-manager: jhubbard
-editor: 
+manager: jlembicz
 tags: azure-portal
-ms.assetid: 3a851647-fc7b-4fb6-8506-6aaa519e77cd
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: fac41903c3e5731d17f832ff58145fe74dfa29f1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.custom: seodec2018
+ms.openlocfilehash: 6d111b1be310a345e23c440f1af9da4183efff43
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312597"
 ---
 # <a name="create-an-azure-search-index-using-the-net-sdk"></a>.NET SDK を使用した Azure Search インデックスの作成
 > [!div class="op_single_selector"]
 > * [概要](search-what-is-an-index.md)
 > * [ポータル](search-create-index-portal.md)
 > * [.NET](search-create-index-dotnet.md)
-> * [REST ()](search-create-index-rest-api.md)
+> * [REST](search-create-index-rest-api.md)
 > 
 > 
 
@@ -35,7 +32,7 @@ ms.lasthandoff: 12/18/2017
 このガイドに従ってインデックスを作成する前に、既に [Azure Search サービスを作成済み](search-create-service-portal.md)です。
 
 > [!NOTE]
-> この記事のサンプル コードはすべて C# で記述されています。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 サンプル コードの詳細なチュートリアルについては、[Azure Search .NET SDK](search-howto-dotnet-sdk.md) に関する記事も参照してください。
+> この記事のサンプル コードはすべて C# で記述されています。 [GitHub](https://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 サンプル コードの詳細なチュートリアルについては、[Azure Search .NET SDK](search-howto-dotnet-sdk.md) に関する記事も参照してください。
 
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>Azure Search サービスの管理者 API キーの識別
@@ -57,7 +54,7 @@ Azure Search サービスのプロビジョニングが完了すると、あと�
 ## <a name="create-an-instance-of-the-searchserviceclient-class"></a>SearchServiceClient クラスのインスタンスの作成
 Azure Search .NET SDK を使い始めるには、`SearchServiceClient` クラスのインスタンスを作成する必要があります。 このクラスにはいくつかのコンストラクターがあります。 目的のコンストラクターは、パラメーターとして検索サービスの名前と `SearchCredentials` オブジェクトを使用します。 `SearchCredentials` は API キーをラップします。
 
-次のコードは、アプリケーションの構成ファイル ([サンプル アプリケーション](http://aka.ms/search-dotnet-howto)では `appsettings.json`) に格納されている検索サービスの名前と API キーの値を使用して新しい `SearchServiceClient` を作成します。
+次のコードは、アプリケーションの構成ファイル ([サンプル アプリケーション](https://aka.ms/search-dotnet-howto)では `appsettings.json`) に格納されている検索サービスの名前と API キーの値を使用して新しい `SearchServiceClient` を作成します。
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -189,6 +186,6 @@ serviceClient.Indexes.Delete("hotels");
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Search インデックスを作成すると、データの検索を開始できるように [インデックスにコンテンツをアップロードする](search-what-is-data-import.md) 準備が完了します。
 

@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array のバックアップを複製する | Microsoft Docs"
-description: "バックアップから複製し、StorSimple Virtual Array からファイルを回復する方法について説明します。"
+title: StorSimple Virtual Array のバックアップを複製する | Microsoft Docs
+description: バックアップから複製し、StorSimple Virtual Array からファイルを回復する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: af6e979c-55e3-477c-b53e-a76a697f80c9
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110110"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Virtual Array のバックアップから複製する
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 10/11/2017
    
    b.    フィルター処理されたバックアップの一覧から、複製元のバックアップを選択します。
    
-   c.    **[OK]**をクリックします。
+   c.    **[OK]** をクリックします。
    
    ![バックアップの複製](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. **[複製]** ブレードで **[ターゲット設定]** をクリックし、次の操作を行います。
@@ -56,7 +57,7 @@ ms.lasthandoff: 10/11/2017
    
    e.    この共有の管理者を割り当てます。 複製が完了したら、ファイル エクスプローラーを使用して共有のプロパティを変更できます。
    
-   f.    **[OK]**をクリックします。
+   f.    **[OK]** をクリックします。
    
    ![バックアップの複製](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
@@ -81,7 +82,7 @@ ms.lasthandoff: 10/11/2017
    
    b.    フィルター処理されたバックアップの一覧から、複製元のバックアップを選択します。
    
-   c.    **[OK]**をクリックします。
+   c.    **[OK]** をクリックします。
    
    ![バックアップの複製](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. **[複製]** ブレードで **[ターゲット ボリューム設定]** をクリックし、次の操作を行います。
@@ -95,7 +96,7 @@ ms.lasthandoff: 10/11/2017
    d. **[接続済みのホスト]** で **[選択]** をクリックします。
    
    ![バックアップの複製](./media/storsimple-virtual-array-clone/clonevolume4.png)
-4. **[接続済みホスト]** ブレードで、既存の ACR から選択するか、新しい ACR を追加します。 新しい ACR を追加するには、ACR 名とホスト IQN を指定する必要があります。 **[選択]**をクリックします。
+4. **[接続済みホスト]** ブレードで、既存の ACR から選択するか、新しい ACR を追加します。 新しい ACR を追加するには、ACR 名とホスト IQN を指定する必要があります。 **[選択]** をクリックします。
    
    ![バックアップの複製](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. **[複製]** をクリックして、複製ジョブを開始します。
@@ -105,8 +106,8 @@ ms.lasthandoff: 10/11/2017
    
    ![バックアップの複製](./media/storsimple-virtual-array-clone/clonevolume8.png)
 7. ボリュームの一覧にボリュームが [オンライン] と表示されたら、ボリュームは使用可能です。 iSCSI イニシエーターのホストで、iSCSI イニシエーターのプロパティ ウィンドウにあるターゲットの一覧を更新します。 複製されたボリューム名を含む新しいターゲットが、[状態] 列に "非アクテイブ" として表示されます。
-8. ターゲットを選択し、 **[接続]**をクリック します。 イニシエーターがターゲットに接続されると、状態が **[接続]**に変わります。
-9. 次の図に示すように、マウントされているボリュームが **[ディスクの管理]** ウィンドウに表示されます。 検出されたボリュームを右クリックし (ディスク名をクリック)、 **[オンライン]**をクリックします。
+8. ターゲットを選択し、 **[接続]** をクリック します。 イニシエーターがターゲットに接続されると、状態が **[接続]** に変わります。
+9. 次の図に示すように、マウントされているボリュームが **[ディスクの管理]** ウィンドウに表示されます。 検出されたボリュームを右クリックし (ディスク名をクリック)、 **[オンライン]** をクリックします。
 
 > [!IMPORTANT]
 > バックアップ セットからボリュームまたは共有を複製するとき、複製ジョブが失敗したのに、ポータルでターゲットのボリュームまたは共有が作成されることがあります。 将来、これに起因して発生する問題を最小限に抑えるために、このターゲット ボリュームまたは共有を削除することが重要です。

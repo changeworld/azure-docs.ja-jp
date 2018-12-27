@@ -7,18 +7,20 @@ author: eringreenlee
 manager: ''
 editor: ''
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 38885caacfb98f76627854a782aa56d8a609aad9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e3a31749407f9ec0494e8452b602ed9966c5ab83
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504211"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services - Secure LDAP の構成のトラブルシューティング
 
@@ -28,11 +30,11 @@ ms.lasthandoff: 03/16/2018
 
 **アラート メッセージ:**
 
-"*インターネット経由での Secure LDAP が管理対象ドメインで有効にされています。ただし、ポート 636 へのアクセスはネットワーク セキュリティ グループを使用してロックダウンされていません。これによって管理対象ドメイン上のユーザー アカウントがパスワードのブルート フォース攻撃にさらされる可能性があります。*"
+"*マネージド ドメインに対してインターネット経由のセキュリティで Secure LDAP が有効になっています。ただし、ポート 636 へのアクセスはネットワーク セキュリティ グループを使用してロックダウンされていません。これにより、マネージド ドメインのユーザー アカウントがパスワードの総当り攻撃の対象になる可能性があります。*"
 
 ### <a name="secure-ldap-port"></a>Secure LDAP ポート
 
-Secure LDAP を有効にするときは、特定の IP アドレスからの受信 LDAPS アクセスのみを許可する追加規則を作成することをお勧めします。 これらの規則は、セキュリティの脅威となる可能性があるブルート フォース攻撃からドメインを保護します。 ポート 636 は、管理対象ドメインへのアクセスを許可します。 Secure LDAP へのアクセスを許可するように NSG を更新する方法を次に示します。
+Secure LDAP を有効にするときは、特定の IP アドレスからの受信 LDAPS アクセスのみを許可する追加規則を作成することをお勧めします。 これらの規則は、セキュリティの脅威となる可能性があるブルート フォース攻撃からドメインを保護します。 ポート 636 は、マネージド ドメインへのアクセスを許可します。 Secure LDAP へのアクセスを許可するように NSG を更新する方法を次に示します。
 
 1. Azure Portal で、[[ネットワーク セキュリティ グループ] タブ](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)に移動します
 2. テーブルから、ドメインに関連付けられている NSG を選びます。
@@ -56,7 +58,7 @@ Secure LDAP を有効にするときは、特定の IP アドレスからの受�
 
 **アラート メッセージ:**
 
-"*管理対象ドメインのセキュリティで保護された LDAP 証明は XX に有効期限が切れます。*"
+*マネージド ドメインのセキュリティで保護された LDAP 証明は[日付] に有効期限が切れます。*
 
 **解決策:**
 

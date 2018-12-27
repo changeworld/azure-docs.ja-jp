@@ -1,22 +1,23 @@
 ---
-title: "Azure Site Recovery でのフェールバック | Microsoft Docs"
-description: "この記事では、さまざまな種類のフェールバックの概要のほか、Azure Site Recovery サービスを使用してオンプレミスにフェールバックする際に考慮すべき注意事項を示します。"
+title: Azure Site Recovery を使用したディザスター リカバリー中にフェールバックする | Microsoft Docs
+description: この記事では、さまざまな種類のフェールバックの概要のほか、Azure Site Recovery サービスを使用したディザスター リカバリー中に、オンプレミスにフェールバックする際に考慮すべき注意事項を示します。
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 11/27/2018
 ms.author: rajanki
-ms.openlocfilehash: 372a7867b47960338d7a1bf7e646fb9fffbe72e1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9b181f21affa5b762dd6e9062953badc3a37191d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841882"
 ---
 # <a name="overview-of-failback"></a>フェールバックの概要
 
-Azure にフェールオーバーした後、オンプレミス サイトにフェールバックすることができます。 Azure Site Recovery で可能なフェールバックには 2 種類あります。 
+ディザスター リカバリー プロセスの一部として Azure にフェールオーバーした後、オンプレミス サイトにフェールバックすることができます。 Azure Site Recovery で可能なフェールバックには 2 種類あります。 
 
 - 元の場所にフェールバックする 
 - 別の場所にフェールバックする

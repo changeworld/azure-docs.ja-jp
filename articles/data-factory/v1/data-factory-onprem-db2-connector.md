@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e597574c1993e2f2a5421d24063cf9f42a7e57b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 88e56f522545f9c1f38bf0d0fdbcebdc171c294b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046532"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-onprem-db2-connector.md)
-> * [バージョン 2 - プレビュー](../connector-db2.md)
+> * [Version 1](data-factory-onprem-db2-connector.md)
+> * [バージョン 2 (最新バージョン)](../connector-db2.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での DB2 コネクタ](../connector-db2.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の DB2 コネクタ](../connector-db2.md)に関するページをご覧ください。
 
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、オンプレミスの DB2 データベースからデータ ストアにデータをコピーする方法について説明します。 データは、[Data Factory のデータ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関する記事でサポートされているシンクとして挙げられているストアにコピーできます。 Data Factory についてのこの記事は、本トピックのベースになっており、コピー アクティビティを使ったデータ移動の概要や、サポートされるデータ ストアの組み合わせの一覧を掲載しています。 
@@ -79,7 +80,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 ## <a name="db2-linked-service-properties"></a>DB2 のリンクされたサービスのプロパティ
 次の表は、DB2 のリンクされたサービスに固有の JSON プロパティの一覧です。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | **type** |このプロパティは **OnPremisesDb2** に設定されている必要があります。 |[はい] |
 | **server** |DB2 サーバーの名前です。 |[はい] |
@@ -95,7 +96,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (DB2 データセットを含む) の **typeProperties** セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | **tableName** |リンクされたサービスが参照する DB2 データベース インスタンスのテーブルの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ (種類が **RelationalSource** のコピー アクティビティの **query** プロパティが指定されている場合) |
 
@@ -104,7 +105,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 コピー アクティビティで、source の種類が **RelationalSource** (DB2 を含む) である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | **query** |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 次に例を示します。`"query": "select * from "MySchema"."MyTable""` |いいえ (データセットの **tableName** プロパティが指定されている場合) |
 

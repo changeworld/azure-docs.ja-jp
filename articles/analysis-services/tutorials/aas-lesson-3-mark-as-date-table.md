@@ -1,25 +1,19 @@
 ---
-title: "Azure Analysis Services チュートリアル - レッスン 3: 日付テーブルとしてマークする | Microsoft Docs"
-description: "Azure Analysis Services チュートリアル プロジェクトで日付テーブルをマークする方法を説明します｡"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services チュートリアル - レッスン 3: 日付テーブルとしてマークする | Microsoft Docs'
+description: Azure Analysis Services チュートリアル プロジェクトで日付テーブルをマークする方法を説明します｡
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 25e4475c77a25e4dcdcb90729f8633656bb186ff
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 9cbbf8c5ea05915293c785028bdd0a47ba081036
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426024"
 ---
 # <a name="mark-as-date-table"></a>日付テーブルとしてマークする
 
@@ -49,7 +43,7 @@ ms.lasthandoff: 01/09/2018
   
 2.  **[Table]** メニューをクリックし､**[Date]** をクリックして､**[Mark as Date Table]** をクリックします｡  
   
-3.  **[Mark as Date Table]** ダイアログ ボックスの**[Date]** リストボックスで､一意の識別子として**[Date]** 列を選択します｡ この列は既定で選択されています｡ Click **OK**. 
+3.  **[Mark as Date Table]** ダイアログ ボックスの **[Date]** リストボックスで､一意の識別子として **[Date]** 列を選択します｡ この列は既定で選択されています｡ Click **OK**. 
 
     ![aas-lesson3-date-table](../tutorials/media/aas-lesson3-date-table.png)
   

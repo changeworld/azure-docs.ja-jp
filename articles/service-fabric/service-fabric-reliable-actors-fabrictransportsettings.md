@@ -1,24 +1,25 @@
 ---
-title: "Azure マイクロサービスで FabricTransport の設定を変更する | Microsoft Docs"
-description: "Azure Service Fabric アクターの通信の設定を構成する方法について説明します。"
+title: Azure Service Fabric アクターで FabricTransport の設定を変更する | Microsoft Docs
+description: Azure Service Fabric アクターの通信の設定を構成する方法について説明します。
 services: Service-Fabric
 documentationcenter: .net
 author: suchiagicha
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 7a21dfde5544045e4961549fe5728e14647eb886
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: aa4339fa1fe4b21369004e748492ee71cbe6d616
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052141"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors の FabricTransport 設定を構成する
 
@@ -50,6 +51,10 @@ https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fa
 ## <a name="config-package"></a>構成パッケージ
 
 [構成パッケージ](service-fabric-application-and-service-manifests.md)を使用して既定の構成を変更できます。
+
+> [!IMPORTANT]
+> Linux ノードでは、証明書は PEM 形式でなければなりません。 Linux での証明書の場所と構成について詳しくは、[Linux 上での証明書の構成](./service-fabric-configure-certificates-linux.md)に関する記事をご覧ください。 
+> 
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>アクター サービスの FabricTransport 設定を構成する
 

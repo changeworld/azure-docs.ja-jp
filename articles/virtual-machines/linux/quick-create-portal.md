@@ -1,9 +1,9 @@
 ---
-title: Azure クイック スタート - ポータルで VM を作成する | Microsoft Docs
-description: Azure クイック スタート - ポータルで VM を作成する
+title: クイック スタート - Azure portal で Linux VM を作成する | Microsoft Docs
+description: このクイック スタートでは、Azure portal を使用して Linux 仮想マシンを作成する方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,114 +13,118 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/11/2017
-ms.author: iainfou
+ms.date: 10/12/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6585f28e2b70aee6efbfa99bf2ec4320d6d15382
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 693f9144d1cb454b0a9dd98b5ae63938abd7d26d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420406"
 ---
-# <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Azure Portal で Linux 仮想マシンを作成する
+# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure portal で Linux 仮想マシンを作成する
 
-Azure 仮想マシンは、Azure Portal で作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで仮想マシンとそれに関連するすべてのリソースを作成して構成できます。 このクイック スタートでは、仮想マシンを作成してそこに Web サーバーをインストールする手順を紹介します。
+Azure 仮想マシン (VM) は、Azure portal で作成できます。 Azure portal では、ブラウザー ベースのユーザー インターフェイスを使用して、VM とその関連リソースを作成できます。 このクイック スタートでは、Azure portal を使用して、Ubuntu 16.04 LTS を実行する Linux 仮想マシン (VM) をデプロイする方法を示します。 また、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="create-ssh-key-pair"></a>SSH キー ペアの作成
 
-このクイック スタートの作業には SSH キー ペアが必要です。 既存の SSH キー ペアがある場合は、この手順はスキップしてかまいません。
+このクイック スタートを完了するには、SSH キー ペアが必要です。 既存の SSH キーの組がある場合は、この手順をスキップできます。
 
-Bash シェルから次のコマンドを実行して画面の指示に従います。 コマンド出力に公開キー ファイルの名前が表示されます。 公開キー ファイル (`cat ~/.ssh/id_rsa.pub`) の内容をクリップボードにコピーします。 Linux 用 Windows サブシステムを使用している場合は、出力から改行文字をコピーしないよう注意してください。 後で使うので秘密キー ファイルのファイル名をメモしておきます。
+Bash シェルを開き、[ssh-keygen](https://www.ssh.com/ssh/keygen/) を使用して SSH キー ペアを作成します。 Bash シェルがローカル コンピューターにない場合は、[Azure Cloud Shell](https://shell.azure.com/bash) を使用してください。  
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-このプロセスに関する詳細情報は、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)でご覧ください
+上のコマンドは、公開キーと秘密キーを既定の名前 (`id_rsa`) で `~/.ssh directory` に生成します。 このコマンドからは、公開キーの完全パスが返されます。 `cat` に公開キーのパスを指定すれば、その内容が表示されます。
 
-## <a name="log-in-to-azure"></a>Azure にログインする 
+```bash 
+cat ~/.ssh/id_rsa.pub
+```
 
-Azure Portal (http://portal.azure.com) にログインします。
+このコマンドの出力結果を保存します。 VM にログインするための管理者アカウントを構成する際に必要となります。
+
+PuTTy の使用を含む SSH キー ペアの作成方法の詳細については、[Windows で SSH キーを使用する方法](ssh-from-windows.md)に関するページを参照してください。
+
+Cloud Shell を使用して SSH キーの組を作成した場合、[Cloud Shell により自動的にマウントされる](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage) Azure ファイル共有にキー ペアが格納されます。 キーを取得するまでは、このファイル共有またはストレージ アカウントを削除しないでください。削除すると、VM にアクセスできなくなります。 
+
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
+
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
+1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 
-2. **[コンピューティング]**、**[Ubuntu Server 16.04 LTS]** の順に選択します。 
+1. Azure Marketplace リソースの一覧の上にある検索ボックスで Canonical の **Ubuntu Server 16.04 LTS** を検索して選択し、**[作成]** を選択します。
 
-3. 仮想マシンの情報を入力します。 **[認証の種類]** には **[SSH 公開キー]** を選択します。 [SSH 公開キー] にキーを貼り付けるときに、先頭と末尾の空白は削除するように注意してください。 完了したら、**[OK]** をクリックします。
+1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、**[リソース グループ]** で **[新規作成]** を選択します。 ポップアップで、リソース グループの名前として「*myResourceGroup*」と入力し、**[OK]** を選択します。 
 
-    ![ポータルのブレードで VM に関する基本情報を入力する](./media/quick-create-portal/create-vm-portal-basic-blade.png)
+    ![VM の新しいリソース グループを作成する](./media/quick-create-portal/project-details.png)
 
-4. VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 
+1. **[Instance details] (インスタンスの詳細)** で、**[仮想マシン名]** として「*myVM*」と入力し、**[リージョン]** として *[米国東部]* を選択します。 他の既定値はそのままにします。
 
-    ![VM のサイズを示すスクリーンショット](./media/quick-create-portal/create-linux-vm-portal-sizes.png)  
+    ![[Instance details] (インスタンスの詳細) セクション](./media/quick-create-portal/instance-details.png)
 
-5. **[設定]** は既定値のままにして、**[OK]** をクリックします。
+1. **[Administrator account] (管理者アカウント)** で、**[SSH Public Key] (SSH 公開キー)** を選択し、ユーザー名を入力して公開キーをテキスト ボックスに貼り付けます。 公開キーの先頭または末尾の空白はすべて削除します。
 
-6. 概要ページで **[OK]** をクリックして、仮想マシンの展開を開始します。
+    ![[Administrator account] (管理者アカウント)](./media/quick-create-portal/administrator-account.png)
 
-7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。
+1. **[受信ポートの規則]** > **[Public inbound ports] (パブリック受信ポート)** で、**[Allow selected ports] (選択されたポートを許可する)** を選択してから、ドロップダウンから **[SSH (22)]** と **[HTTP (80)]** を選択します。 
 
+    ![RDP と HTTP のポートを開く](./media/quick-create-portal/inbound-port-rules.png)
 
+1. 残りの既定値はそのままにして、ページの一番下にある **[Review + create] (確認および作成)** ボタンを選択します。
+
+1. **[仮想マシンの作成]** ページで、これから作成しようとしている VM の詳細を確認できます。 準備ができたら **[作成]** を選択します。
+
+VM がデプロイされるまでに数分かかります。 デプロイが完了したら、次のセクションに移動してください。
+
+    
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
-仮想マシンとの SSH 接続を作成します。
+VM との SSH 接続を作成します。
 
-1. 仮想マシンのプロパティで、**[接続]** ボタンをクリックします。 仮想マシンへの接続に使用できる SSH 接続文字列が表示されます。
+1. VM の概要ページの **[接続]** ボタンを選択します。 
 
-    ![ポータル 9](./media/quick-create-portal/portal-quick-start-9.png) 
+    ![ポータル 9](./media/quick-create-portal/portal-quick-start-9.png)
 
-2. 次のコマンドを実行して、SSH セッションを作成します。 接続文字列を、Azure Portal からコピーしたものに置き換えます。
+2. **[Connect to virtual machine]\(仮想マシンへの接続\)** ページで、ポート 22 を介して IP アドレスで接続する既定のオプションをそのまま使用します。 **[VM ローカル アカウントを使用してログインする]** に、接続コマンドが表示されます。 ボタンをクリックしてこのコマンドをコピーします。 SSH 接続コマンドの例を次に示します。
 
-```bash 
-ssh azureuser@40.112.21.50
-```
+    ```bash
+    ssh azureuser@10.111.12.123
+    ```
 
-## <a name="install-nginx"></a>NGINX のインストール
+3. SSH キーの組を作成したときと同じ Bash シェル ([Azure Cloud Shell](https://shell.azure.com/bash) またはローカルの Bash シェルなど) を使用して、SSH 接続コマンドをシェルに貼り付け、SSH セッションを作成します。 
 
-次の bash スクリプトを使用して、パッケージのソースを更新し、最新の NGINX パッケージをインストールします。 
+## <a name="install-web-server"></a>Web サーバーのインストール
 
-```bash 
-#!/bin/bash
+VM の動作を確認するために、NGINX Web サーバーをインストールします。 SSH セッションからパッケージ ソースを更新し、最新の NGINX パッケージをインストールします。
 
-# update package source
+```bash
 sudo apt-get -y update
-
-# install NGINX
 sudo apt-get -y install nginx
 ```
 
-完了したら SSH セッションを終了し、Azure Portal の VM のプロパティに戻ります。
+完了したら、`exit` と入力して SSH セッションを終了します。
 
 
-## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く 
+## <a name="view-the-web-server-in-action"></a>動作中の Web サーバーを表示する
 
-受信トラフィックと送信トラフィックのセキュリティは、ネットワーク セキュリティ グループ (NSG) で確保します。 Azure Portal から VM を作成すると、SSH 接続用のポート 22 に対する受信の規則が作成されます。 この VM は Web サーバーのホストとなるため、ポート 80 に対する NSG 規則を作成する必要があります。
+任意の Web ブラウザーを使用して、NGINX の既定のウェルカム ページを表示します。 Web アドレスとして、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、VM の概要ページで確認できるほか、先ほど使用した SSH 接続文字列にも含まれています。
 
-1. 仮想マシンで **[リソース グループ]** の名前をクリックします。
-2. **[ネットワーク セキュリティ グループ]** を選択します。 NSG は **[種類]** 列で確認できます。 
-3. 左側のメニューの設定で、**[受信セキュリティ規則]** をクリックします。
-4. **[追加]** をクリックします。
-5. **[名前]** で「**http**」と入力します。 **[発信元ポート範囲]** が `*` に設定されていること、**[宛先ポート範囲]** が *80* に設定されていること、および **[アクション]** が *[許可]* に設定されていることを確認します。 
-6. Click **OK**.
-
-
-## <a name="view-the-nginx-welcome-page"></a>NGINX のようこそページの表示
-
-NGINX がインストールされ、ご利用の VM に対してポート 80 が開放されると、Web サーバーにインターネットからアクセスできるようになります。 Web ブラウザーを開いて、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、Azure Portal の VM のプロパティで確認できます。
-
-![NGINX の既定のサイト](./media/quick-create-cli/nginx.png) 
+![NGINX の既定のサイト](./media/quick-create-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、仮想マシンのリソース グループを選択し、**[削除]** をクリックします。
+必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 これを行うには、仮想マシンのリソース グループを選択し、**[削除]** を選択して、削除するリソース グループの名前を確認します。
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、単純な仮想マシンとネットワーク セキュリティ グループの規則をデプロイし、Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Linux VM のチュートリアルを参照してください。
+このクイック スタートでは、単純な仮想マシンをデプロイし、ネットワーク セキュリティ グループと規則を作成し、基本的な Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Linux VM のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure Linux 仮想マシンのチュートリアル](./tutorial-manage-vm.md)

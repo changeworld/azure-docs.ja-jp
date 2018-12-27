@@ -1,32 +1,28 @@
 ---
-title: "データのアップロード (REST API - Azure Search) | Microsoft Docs"
-description: "REST API を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。"
+title: Search サービス REST API を使用してコードでデータをアップロードする - Azure Search
+description: HTTP 要求と REST API を使用して、Azure Search の全文検索可能なインデックスにデータをアップロードする方法について説明します。
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 services: search
-documentationcenter: 
-author: ashmaka
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 8d0749fb-6e08-4a17-8cd3-1a215138abc6
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.date: 12/08/2016
-ms.author: ashmaka
-ms.openlocfilehash: f22a33ed86fbfc46dfa732239263a49f34c4afee
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.topic: quickstart
+ms.date: 04/20/2018
+ms.custom: seodec2018
+ms.openlocfilehash: b3044ec3fb21e77c5174ebd5a6b2dabd2282240f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312858"
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>REST API を使用した Azure Search へのデータのアップロード
 > [!div class="op_single_selector"]
 >
 > * [概要](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
-> * [REST ()](search-import-data-rest-api.md)
+> * [REST](search-import-data-rest-api.md)
 >
 >
 
@@ -55,7 +51,7 @@ REST API を使用する場合は、JSON 要求本文を利用して HTTP POST �
 
 "value" 配列内の各 JSON オブジェクトは、インデックスを作成するドキュメントを表します。 これらの各オブジェクトにはドキュメントのキーが含まれます。また、これらの各オブジェクトで、目的のインデックス作成アクション (アップロード、マージ、削除など) を指定します。 以下のアクションのうちどれを選ぶかに応じて、各ドキュメントに含める必要のあるフィールドは異なります。
 
-| @search.action | Description | 各ドキュメントに必要なフィールド | メモ |
+| @search.action | 説明 | 各ドキュメントに必要なフィールド | メモ |
 | --- | --- | --- | --- |
 | `upload` |`upload` アクションは、ドキュメントが新しい場合は挿入され、存在する場合は更新/置換される "upsert" に似ています。 |キーのほか、定義するその他すべてのフィールド |既存のドキュメントを更新または置換する際に、要求で指定されていないフィールドは `null`に設定されます。 この処理は、フィールドが null 以外の値に設定されていた場合にも行われます。 |
 | `merge` |指定されたフィールドで既存のドキュメントを更新します。 ドキュメントがインデックスに存在しない場合、マージは失敗します。 |キーのほか、定義するその他すべてのフィールド |マージで指定したすべてのフィールドは、ドキュメント内の既存のフィールドを置き換えます。 これには、 `Collection(Edm.String)`型のフィールドも含まれます。 たとえば、ドキュメントにフィールド `tags` があり、その値が `["budget"]` である場合、`tags` に値 `["economy", "pool"]` を指定してマージを実行すると、`tags` フィールドの最終的な値は `["economy", "pool"]` になります。 `["budget", "economy", "pool"]`にはなりません。 |
@@ -66,9 +62,9 @@ REST API を使用する場合は、JSON 要求本文を利用して HTTP POST �
 インデックス アクションに必要なフィールド値を収集したので、実際の HTTP 要求と JSON 要求本文を構築してデータをインポートする準備が整いました。
 
 #### <a name="request-and-request-headers"></a>要求と要求ヘッダー
-URL では、サービス名とインデックス名 (この場合は "hotels") のほか、適切な API バージョン (このドキュメントが書かれた時点で最新の API バージョンは `2016-09-01` ) を指定する必要があります。 `Content-Type` および `api-key` 要求ヘッダーを定義する必要があります。 後者については、サービスの管理者キーのいずれかを使用してください。
+URL では、サービス名とインデックス名 (この場合は "hotels") のほか、適切な API バージョン (このドキュメントが書かれた時点で最新の API バージョンは `2017-11-11` ) を指定する必要があります。 `Content-Type` および `api-key` 要求ヘッダーを定義する必要があります。 後者については、サービスの管理者キーのいずれかを使用してください。
 
-    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
+    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -177,5 +173,5 @@ URL では、サービス名とインデックス名 (この場合は "hotels") 
 
 ドキュメント アクションおよび成功/エラー応答の詳細については、「 [ドキュメントの追加、更新、削除](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)」を参照してください。 エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「 [HTTP status codes (Azure Search) (HTTP 状態コード (Azure Search))](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。 詳細については、「 [Azure Search インデックスの照会](search-query-overview.md) 」を参照してください。

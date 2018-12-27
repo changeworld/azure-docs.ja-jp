@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 5de25f574cb876701ffce74f1dca8c4bb9764157
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b5314ce874c253151b88882b086257f96612c019
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615400"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>ASDK ホスト コンピューターの準備
 ASDK をホスト コンピューターにインストールする前に、インストール用の ASDK 環境を準備する必要があります。 開発キットのホスト コンピューターが準備されると、CloudBuilder.vhdx 仮想マシンのハード ドライブから起動して ASDK のデプロイが開始します。
@@ -46,14 +47,13 @@ ASDK をホスト コンピューターにインストールする前に、ASDK 
 
     ![](media/asdk-prepare-host/1.PNG) 
 
-5. インストーラーの **[Select Cloudbuilder vhdx]\(Cloudbuilder vhdx の選択\)** ページで、[前の手順](asdk-download.md)でダウンロードおよび展開した **cloudbuilder.vhdx** ファイルを探して選択します。 このページでは、開発キットのホスト コンピューターに他のドライバーを追加する必要がある場合、オプションで **[ドライバーの追加]** チェック ボックスをオンにすることもできます。 **[次へ]** をクリックします。  
+5. インストーラーの **[Select Cloudbuilder vhdx]\(Cloudbuilder vhdx の選択\)** ページで、[前の手順](asdk-download.md)でダウンロードおよび展開した **cloudbuilder.vhdx** ファイルを探して選択します。 このページでは、開発キットのホスト コンピューターに他のドライバーを追加する必要がある場合、オプションで **[ドライバーの追加]** チェック ボックスをオンにすることもできます。  **[次へ]** をクリックします。  
 
     ![](media/asdk-prepare-host/2.PNG)
 
 6. **[オプション設定]** ページで、開発キットのホスト コンピューターのローカル管理者アカウント情報を指定し、**[次へ]** をクリックします。 次のオプションの設定の値を指定することもできます。
   - **[コンピューター名]**: このオプションでは、開発キットのホスト名が設定されます。 名前は FQDN の要件に準拠している必要があり、長さは 15 文字以下にする必要があります。 既定は、Windows によって生成されたランダムなコンピューター名です。
-  - **[タイム ゾーン]**: 開発キットのホストのタイム ゾーンが設定されます。 既定は、(UTC-8:00) 太平洋標準時 (米国およびカナダ) です。
-  - **[Static IP configuration]\(静的な IP 構成\)**: デプロイが静的 IP アドレスを使用するよう設定されます。 それ以外の場合、インストーラーが cloudbuilder.vhx から再起動されるときに、ネットワーク インターフェイスが DHCP と構成されます。
+  - **[Static IP configuration]\(静的 IP 構成\)**: デプロイが静的 IP アドレスを使用するよう設定されます。 それ以外の場合、インストーラーが cloudbuilder.vhdx から再起動されるときに、ネットワーク インターフェイスが DHCP と構成されます。
 
     ![](media/asdk-prepare-host/3.PNG)
 

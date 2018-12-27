@@ -1,17 +1,18 @@
 ---
-title: " Azure Site Recovery での物理サーバー ディザスター リカバリーのために構成サーバーを管理する | Microsoft Docs"
-description: この記事では、Azure Site Recovery サービスで、Azure への物理サーバー ディザスター リカバリー用に既存の構成サーバーを管理する方法について説明します。
+title: Azure Site Recovery を使用したオンプレミスの物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを管理する | Microsoft Docs
+description: この記事では、物理サーバーの Azure へのディザスター リカバリーのために Azure Site Recovery 構成サーバーを管理する方法について説明します。
 services: site-recovery
-author: AnoopVasudavan
+author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 2fdccade577788d3fc5bc076604547b2ab6690d9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 11/27/2018
+ms.author: ramamill
+ms.openlocfilehash: 62a9fd6eee15618e7153fd84030840b429e214ed
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833518"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
@@ -24,7 +25,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 | **コンポーネント** | **要件** |
 | --- |---|
 | CPU コア数| 8 |
-| RAM | 12 GB|
+| RAM | 16 GB|
 | ディスクの数 | 3、OS ディスク、プロセス サーバーのキャッシュ ディスク、フェールバック用リテンション ドライブを含みます |
 | ディスクの空き領域 (プロセス サーバー キャッシュ) | 600 GB
 | ディスクの空き領域 (リテンション ディスク) | 600 GB|
@@ -36,12 +37,12 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 | IIS | - 既存の Web サイトが存在しない <br> - [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする  <br> - ポート 443 でリッスンしている既存の Web サイト/アプリケーションが存在しない<br>|
 | NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合) |
 | IP アドレスの種類 | 静的 |
-| インターネットへのアクセス | サーバーは、次の URL にアクセスできる必要があります。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (スケールアウト プロセス サーバーの場合は不要) <br> - time.nist.gov <br> - time.windows.com |
+| インターネットへのアクセス | サーバーは、次の URL にアクセスできる必要があります。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (スケールアウト プロセス サーバーには必要なし) <br> - time.nist.gov <br> - time.windows.com |
 | ポート | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送)|
 
 ## <a name="download-the-latest-installation-file"></a>最新のインストール ファイルのダウンロード
 
-構成サーバーのインストール ファイルの最新バージョンは、Site Recovery ポータルで入手できます。 また、[Microsoft ダウンロード センター](http://aka.ms/unifiedsetup)から直接ダウンロードできます。
+構成サーバーのインストール ファイルの最新バージョンは、Site Recovery ポータルで入手できます。 また、[Microsoft ダウンロード センター](https://aka.ms/unifiedsetup)から直接ダウンロードできます。
 
 1. Azure Portal にログオンし、Recovery Services コンテナーを参照します。
 2. **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** \([For VMware & Physical Machines] \(VMware および物理マシン) の下) に移動します。
@@ -97,7 +98,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 
 ### <a name="sample-usage"></a>使用例
   ```
-  MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /xC:\Temp\Extracted
+  MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
   cd C:\Temp\Extracted
   UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "CS" /InstallLocation "D:\" /MySQLCredsFilePath "C:\Temp\MySQLCredentialsfile.txt" /VaultCredsFilePath "C:\Temp\MyVault.vaultcredentials" /EnvType "VMWare"
   ```
@@ -105,7 +106,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 
 ### <a name="parameters"></a>parameters
 
-|パラメーター名| type | [説明]| 値|
+|パラメーター名| type | 説明| 値|
 |-|-|-|-|
 | /ServerMode|必須|構成サーバーとプロセス サーバーの両方をインストールするか、プロセス サーバーだけをインストールするかを指定します。|CS<br>PS|
 |/InstallLocation|必須|コンポーネントがインストールされているフォルダー。| コンピューター上の任意のフォルダー|
@@ -266,7 +267,7 @@ ProxyPassword="Password"
 1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0)します。
 2. 次のコマンドを使用して、Azure アカウントにログインします。
     
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 3. コンテナーが存在するサブスクリプションを選択します。
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`

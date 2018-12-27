@@ -6,15 +6,20 @@ author: tdykstra
 manager: cfowler
 ms.service: functions
 ms.topic: include
-ms.date: 03/12/2018
+ms.date: 05/23/2018
 ms.author: tdykstra
 ms.custom: include file
-ms.openlocfilehash: e94b817e6e08fcf2aee6e3000842bc1b853d512e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 75be516dc3f23ee02638a6ca9981a6732b00e27a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38738917"
 ---
-Azure Functions バージョン 2.x のローカル開発では、パッケージを使用して、[バインド拡張機能の登録](../articles/azure-functions/functions-triggers-bindings.md#local-development-azure-functions-core-tools)が行われます。 Functions 1.x と 2.x での C# クラス ライブラリの開発では、バインドのサポートは、[パッケージのインストール](../articles/azure-functions/functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code)によって追加されます。
+次の表に、各開発環境でこのバインディングのサポートを追加する方法を示します。
 
-ソース コードは、WebJobs SDK バージョン番号の番号付けに従うことに注意してください。WebJobs SDK バージョン 2.x は Azure Functions 1.x に相当するため、Functions 1.x のコードは、リポジトリの v2.x ブランチに配置されます。 マスター ブランチと開発ブランチには Web Jobs 3.x のコードが含まれますが、それは Functions 2.x と同じです。
+| 開発環境               | サポートを追加するバージョン: <br>Functions 1.x  |
+|----------------------|----------------|---------------|
+|ローカル開発 - C# クラス ライブラリ       | [パッケージをインストールする](../articles/azure-functions/functions-triggers-bindings.md#c-class-library-with-visual-studio-2017) | 
+|ローカル開発で - C# スクリプト、JavaScript、F# |自動         |
+|Portal 開発|  自動    |

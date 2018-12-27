@@ -1,29 +1,29 @@
 ---
-title: "Azure Stack でユーザーごとにリソースへのアクセス許可を管理する (サービス管理者およびテナント) | Microsoft Azure"
-description: "サービス管理者またはテナントとして、RBAC アクセス許可を管理する方法を説明します。"
+title: Azure Stack でユーザーごとにリソースへのアクセス許可を管理する (サービス管理者およびテナント) | Microsoft Azure
+description: サービス管理者またはテナントとして、RBAC アクセス許可を管理する方法を説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
-manager: fenila
-editor: 
-ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
+manager: femila
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.reviewer: thomas.roettinger
-ms.openlocfilehash: 0e50ea44ebb0b0a7285dab04666dd55cad480c6a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: thoroet
+ms.openlocfilehash: ab61e1f892f46ad36df741b7a72afcfcbaa0ed87
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376937"
 ---
 # <a name="manage-role-based-access-control"></a>ロールベースのアクセス制御の管理
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack のユーザーは、サブスクリプション、リソース グループ、またはサービスの各インスタンスの閲覧者、所有者、または共同作業者になることができます。 たとえば、ユーザー A にはサブスクリプション 1 に対する閲覧者アクセス許可と、仮想マシン 7 に対する所有者アクセス許可がある可能性があります。
 

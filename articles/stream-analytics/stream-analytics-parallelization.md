@@ -1,24 +1,20 @@
 ---
-title: Azure Stream Analytics でのクエリの並列処理の活用 | Microsoft Docs
-description: Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
-keywords: データ ストリーミング、ストリーミング データ処理、分析のチューニング
+title: Azure Stream Analytics でのクエリの並列処理とスケールの使用
+description: この記事では、Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: eb19a9b4e92e7007f64ae7b593663be6a47a7a4b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 05/07/2018
+ms.openlocfilehash: 83fbebc07be3a61d7fd54953f842a320a537a7ac
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985014"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
@@ -34,8 +30,8 @@ Stream Analytics ジョブのスケーリングでは、入力または出力で
 
 ### <a name="inputs"></a>入力
 Azure Stream Analytics のすべての入力では、パーティション分割を利用できます。
--   EventHub (パーティション キーを明示的に設定する必要があります)
--   IoT Hub (パーティション キーを明示的に設定する必要があります)
+-   EventHub (PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
+-   IoT Hub (PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
 -   BLOB ストレージ
 
 ### <a name="outputs"></a>出力
@@ -44,13 +40,13 @@ Azure Stream Analytics を使用するときは、出力でパーティション
 -   Azure Data Lake Storage
 -   Azure Functions
 -   Azure テーブル
--   BLOB ストレージ
+-   Blob Storage (パーティション キーを明示的に設定できます)
 -   CosmosDB (パーティション キーを明示的に設定する必要があります)
 -   EventHub (パーティション キーを明示的に設定する必要があります)
 -   IoT Hub (パーティション キーを明示的に設定する必要があります)
 -   Service Bus
 
-PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割はサポートされません。 ただし、[このセクション](#multi-step-query-with-a-grouping-key)の説明に従って入力をパーティション分割することはできます 
+PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割はサポートされません。 ただし、[このセクション](#multi-step-query-with-different-partition-by-values)の説明に従って入力をパーティション分割することはできます 
 
 パーティションの詳細については、次の記事をご覧ください。
 
@@ -61,18 +57,19 @@ PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割
 ## <a name="embarrassingly-parallel-jobs"></a>驚異的並列ジョブ
 *驚異的並列*ジョブは、Azure Stream Analytics において最もスケーラブルなシナリオです。 入力の 1 つのパーティションを、出力の 1 つのパーティションに対するクエリの 1 つのインスタンスに接続します。 この並列処理には次の要件があります。
 
-1. クエリ ロジックが同じクエリ インスタンスによって処理される同じキーに依存する場合、イベントが入力の同じパーティションに送信されるようにする必要があります。 イベント ハブの場合、イベント データに **PartitionKey** 値が設定されている必要があります。 代わりに、パーティション分割された送信元を使用することもできます。 Blob Storage の場合、イベントが同じパーティション フォルダーに送信される必要があります。 クエリ ロジックで、同じクエリ インスタンスによって処理される同じキーが不要の場合は、この要件を無視してかまいません。 このロジックの例として、単純な select-project-filter クエリがあります。  
+1. クエリ ロジックが同じクエリ インスタンスによって処理される同じキーに依存する場合、イベントが入力の同じパーティションに送信されるようにする必要があります。 Event Hubs または IoT Hub の場合、イベント データに **PartitionKey** 値が設定されている必要があります。 代わりに、パーティション分割された送信元を使用することもできます。 Blob Storage の場合、イベントが同じパーティション フォルダーに送信される必要があります。 クエリ ロジックで、同じクエリ インスタンスによって処理される同じキーが不要の場合は、この要件を無視してかまいません。 このロジックの例として、単純な select-project-filter クエリがあります。  
 
 2. データが入力側でレイアウトされている場合、クエリがパーティション分割されている必要があります。 そのためには、すべてのステップで **PARTITION BY** を使用する必要があります。 複数のステップが許可されますが、すべてのステップが同じキーでパーティション分割されている必要があります。 現時点では、完全な並列ジョブにするために、パーティション キーを **PartitionId** に設定する必要があります。  
 
-3. ほとんどの出力でパーティション分割を利用できますが、ジョブのパーティション分割をサポートしない出力の種類を使用する場合、ジョブは完全には並列になりません。 詳しくは、「[出力](#Outputs)」セクションをご覧ください。
+3. ほとんどの出力でパーティション分割を利用できますが、ジョブのパーティション分割をサポートしない出力の種類を使用する場合、ジョブは完全には並列になりません。 詳しくは、「[出力](#outputs)」セクションをご覧ください。
 
-4. 入力パーティションの数が出力パーティションの数と同じである必要があります。 現在、Blob Storage 出力ではパーティションをサポートしていませんが、 アップストリーム クエリのパーティション構成を継承するので問題ありません。 完全な並列ジョブを可能にするパーティション値の例を次に示します。  
+4. 入力パーティションの数が出力パーティションの数と同じである必要があります。 Blob Storage 出力では、パーティションをサポートでき、アップストリーム クエリのパーティション構成を継承します。 Blob Storage のパーティション キーを指定すると、データが入力パーティションごとにパーティション分割されるため、結果も完全に並列になります。 完全な並列ジョブを可能にするパーティション値の例を次に示します。
 
    * 8 個のイベント ハブ入力パーティションと 8 個のイベント ハブ出力パーティション
-   * 8 個のイベント ハブ入力パーティションと Blob Storage 出力  
-   * 8 個の Blob Storage 入力パーティションと Blob Storage 出力  
-   * 8 個の Blob Storage 入力パーティションと 8 個のイベント ハブ出力パーティション  
+   * 8 個のイベント ハブ入力パーティションと Blob Storage 出力
+   * 8 個のイベント ハブ 入力パーティションと任意のカーディナリティのカスタム フィールドによってパーティション分割された Blob Storage 出力
+   * 8 個の Blob Storage 入力パーティションと Blob Storage 出力
+   * 8 個の Blob Storage 入力パーティションと 8 個のイベント ハブ出力パーティション
 
 以下のセクションでは、驚異的並列であるシナリオの例を示します。
 
@@ -221,7 +218,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
@@ -239,11 +236,11 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 
 <!--Link references-->
 
-[microsoft.support]: http://support.microsoft.com
-[azure.event.hubs.developer.guide]: http://msdn.microsoft.com/library/azure/dn789972.aspx
+[microsoft.support]: https://support.microsoft.com
+[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
 

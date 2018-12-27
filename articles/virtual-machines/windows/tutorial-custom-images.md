@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell を使用したカスタム VM イメージの作成 | Microsoft Docs
-description: チュートリアル - Azure PowerShell を使用してカスタム VM イメージを作成します。
+title: チュートリアル - Azure PowerShell を使用してカスタム VM イメージを作成する | Microsoft Docs
+description: このチュートリアルでは、Azure PowerShell を使って Azure にカスタム仮想マシン イメージを作成する方法について説明します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -10,19 +10,20 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 443f47b98ea063c6fe1f0b3517c00b6cf3692161
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 415652739c4987deafe820c31499132ec3829c8b
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263317"
 ---
-# <a name="create-a-custom-image-of-an-azure-vm-using-powershell"></a>PowerShell を使用した Azure VM のカスタム イメージの作成
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Azure VM のカスタム イメージを作成する
 
 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 このチュートリアルでは、Azure 仮想マシンの独自のカスタム イメージを作成します。 学習内容は次のとおりです。
 
@@ -33,7 +34,6 @@ ms.lasthandoff: 03/28/2018
 > * サブスクリプション内のすべてのイメージを一覧表示する
 > * イメージを削除する
 
-
 ## <a name="before-you-begin"></a>開始する前に
 
 以下の手順では、既存の VM を取得し、新しい VM インスタンスの作成に使用できる再利用可能なカスタム イメージに変換する方法について詳しく説明します。
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/28/2018
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは AzureRM モジュール バージョン 5.6.0 以降が必要になります。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは AzureRM モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
 ## <a name="prepare-vm"></a>VM の準備
 
@@ -50,7 +50,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 ### <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
 
-特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
 
 1. 仮想マシンへの接続
@@ -86,7 +86,7 @@ Set-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM -Generalized
 $vm = Get-AzureRmVM -Name myVM -ResourceGroupName myResourceGroup
 ```
 
-イメージの構成を作成します。
+イメージの設定を作成します。
 
 ```azurepowershell-interactive
 $image = New-AzureRmImageConfig -Location EastUS -SourceVirtualMachineId $vm.ID 
@@ -101,7 +101,7 @@ New-AzureRmImage -Image $image -ImageName myImage -ResourceGroupName myResourceG
  
 ## <a name="create-vms-from-the-image"></a>イメージからの VM の作成
 
-イメージが用意できたので、イメージから新しい VM を 1 つ以上作成できます。 カスタム イメージからの VM の作成は、Marketplace イメージを使用した VM の作成によく似ています。 Marketplace イメージを使用する際は、イメージ、イメージ プロバイダー、プラン、SKU、バージョンに関する情報を提供する必要があります。 リソース グループが同じであれば、[New-AzureRMVM]() コマンドレットに設定されている簡易パラメーターを利用し、カスタム イメージの名前を指定する必要があります。 
+イメージが用意できたので、イメージから新しい VM を 1 つ以上作成できます。 カスタム イメージからの VM の作成は、Marketplace イメージを使用した VM の作成に似ています。 Marketplace イメージを使うときは、イメージ、イメージ プロバイダー、プラン、SKU、バージョンに関する情報を提供する必要があります。 リソース グループが同じであれば、[New-AzureRMVM](/powershell/module/azurerm.compute/new-azurermvm) コマンドレットに設定されている簡易パラメーターを利用し、カスタム イメージの名前を指定する必要があります。 
 
 この例では、*myResourceGroup* で *myImage* から *myVMfromImage* という名前の VM が作成されます。
 
@@ -121,20 +121,20 @@ New-AzureRmVm `
 
 ## <a name="image-management"></a>イメージの管理 
 
-ここでは、一般的なイメージ管理タスクと PowerShell を使用してそれらを完了する方法の例をいくつか示します。
+ここでは、一般的なマネージド イメージ タスクと PowerShell を使用してそれらを完了する方法の例をいくつか示します。
 
 すべてのイメージの名前を一覧表示します。
 
 ```azurepowershell-interactive
-$images = Find-AzureRMResource -ResourceType Microsoft.Compute/images 
+$images = Get-AzureRMResource -ResourceType Microsoft.Compute/images 
 $images.name
 ```
 
-イメージを削除します。 この例では、*myOldImage* という名前のイメージを *myResourceGroup* から削除します。
+イメージを削除します。 この例では、*myImage* という名前のイメージを *myResourceGroup* から削除します。
 
 ```azurepowershell-interactive
 Remove-AzureRmImage `
-    -ImageName myOldImage `
+    -ImageName myImage `
     -ResourceGroupName myResourceGroup
 ```
 

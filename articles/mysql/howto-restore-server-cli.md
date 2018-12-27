@@ -6,15 +6,16 @@ author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 322de1fb19461455a063d939ace3d5553ed1fc79
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3f4e7a911e98ea09376b4b6ac56e9441fe98e426
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135194"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 
@@ -30,33 +31,7 @@ Azure Database for MySQL サーバーは、復元機能が有効になるよう�
  
 
 > [!IMPORTANT]
-> このガイドで説明する方法では、Azure CLI バージョン 2.0 以降を使う必要があります。 バージョンを確認するには、Azure CLI コマンド プロンプトで「`az --version`」と入力します。 インストールまたはアップグレードする必要には、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」をご覧ください。
-
-## <a name="add-the-extension"></a>拡張機能の追加
-次のコマンドを使用して最新の Azure Database for MySQL 管理拡張機能を追加します。
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-正しいバージョンの拡張機能がインストールされていることを確認します。 
-```azurecli-interactive
-az extension list
-```
-
-返される JSON には、次の内容が含まれている必要があります。 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-バージョン 0.0.5 が返されなかった場合には、次のコマンドを実行して拡張機能を更新します。 
-```azurecli-interactive
-az extension update --name rdbms
-```
-
+> このガイドで説明する方法では、Azure CLI バージョン 2.0 以降を使う必要があります。 バージョンを確認するには、Azure CLI コマンド プロンプトで「`az --version`」と入力します。 インストールまたはアップグレードする必要には、「[Azure CLI のインストール]( /cli/azure/install-azure-cli)」をご覧ください。
 
 ## <a name="set-backup-configuration"></a>バックアップ構成の設定
 
@@ -68,14 +43,14 @@ az extension update --name rdbms
 
 `az mysql server create` コマンドでサーバーを作成するときに、`--geo-redundant-backup` パラメーターでバックアップの冗長オプションを指定します。 `Enabled` を指定すると、地理冗長バックアップが取得されます。 `Disabled` を指定すると、ローカル冗長バックアップが取得されます。 
 
-バックアップのリテンション期間は、`--backup-retention-days` パラメーターで設定します。 
+バックアップのリテンション期間は、`--backup-retention` パラメーターで設定します。 
 
 作成中のこれらの値の設定について詳しくは、[Azure Database for MySQL サーバーの CLI のクイック スタート](quickstart-create-mysql-server-database-using-azure-cli.md)に関するページをご覧ください。
 
 サーバーのバックアップのリテンション期間は、次のようにして変更できます。
 
 ```azurecli-interactive
-az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention-days 10
+az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
 上記の例では、mydemoserver のバックアップ リテンション期間が 10 日に変更されます。
@@ -85,7 +60,7 @@ az mysql server update --name mydemoserver --resource-group myresourcegroup --ba
 ## <a name="server-point-in-time-restore"></a>サーバーのポイントインタイム リストア
 サーバーを以前の状態に復元できます。 復元されたデータは新しいサーバーにコピーされ、既存のサーバーはそのまま残されます。 たとえば、今日の正午にテーブルが誤って削除された場合、正午の直前に復元できます。 その後、不足しているテーブルとデータを、サーバーの復元されたコピーから取得できます。 
 
-サーバーを復元するには、Azure CLI コマンド [az mysql server restore](/cli/azure/mysql/server#az_mysql_server_restore) を使用します。
+サーバーを復元するには、Azure CLI コマンド [az mysql server restore](/cli/azure/mysql/server#az-mysql-server-restore) を使用します。
 
 ### <a name="run-the-restore-command"></a>復元コマンドを実行する
 
@@ -96,9 +71,10 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 ```
 
 `az mysql server restore` コマンドには、次のパラメーターが必要です。
-| Setting | 推奨値 | [説明]  |
+
+| Setting | 推奨値 | 説明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2018-03-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、`2018-03-13T05:59:00-08:00` など自身のローカル タイム ゾーンを使用できます。 また、`2018-03-13T13:59:00Z` など UTC Zulu 形式も使用できます。 |
 | source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |
@@ -113,6 +89,10 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for MySQL を使用できる任意のリージョンに作成できます。  
 
 地理冗長バックアップを使ってサーバーを作成するには、Azure CLI の `az mysql server georestore` コマンドを使います。
+
+> [!NOTE]
+> サーバーが最初に作成された時点では、すぐには geo リストアで使用できない可能性があります。 必要なメタデータが設定されるまで数時間かかる場合があります。
+>
 
 サーバーを geo リストアするには、Azure CLI コマンド プロンプトで、次のコマンドを入力します。
 
@@ -129,7 +109,8 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 ```
 
 `az mysql server georestore` コマンドには、次のパラメーターが必要です。
-| Setting | 推奨値 | [説明]  |
+
+| Setting | 推奨値 | 説明  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新しいサーバーが属するリソース グループの名前。|
 |name | mydemoserver-georestored | 新しいサーバーの名前。 |

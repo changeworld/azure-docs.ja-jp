@@ -1,35 +1,37 @@
 ---
-title: Machine Learning Web サービスをデプロイする | Microsoft Docs
-description: トレーニング実験を予測実験に変換する方法、デプロイメントの準備をする方法、Azure Machine Learning Web サービスとしてデプロイする方法について説明します。
+title: Machine Learning Studio Web サービスをデプロイする - Azure | Microsoft Docs
+description: トレーニング実験を予測実験に変換する方法、デプロイメントの準備をする方法、Azure Machine Learning Studio Web サービスとしてデプロイする方法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 73a3e9c6-00d0-41d4-8cf1-2ec87713867e
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 3ce4104040e90a4740442d7692b3bf4a0789bde0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 71315b6c36a9e41e5805d5a15bde5b1d1d84f2b5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269925"
 ---
-# <a name="deploy-an-azure-machine-learning-web-service"></a>Azure Machine Learning Web サービスをデプロイする
+# <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Azure Machine Learning Studio Web サービスをデプロイする
 Azure Machine Learning では、予測分析ソリューションをビルド、テスト、およびデプロイできます。
 
 大まかに次の 3 つの手順で行われます。
 
 * **[トレーニング実験を作成する]** - Azure Machine Learning Studio は、供給するトレーニング データを活用した予測分析モデルの学習とテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
 * **[予測実験に変換する]** - 既存のデータでモデルが学習され、それを使用して新しいデータをスコア付けする準備ができると、予測用に実験を用意し、合理化します。
-* **[Web サービスとしてデプロイする]** - 予測実験を[新規]または[従来]の Azure Web サービスとしてデプロイできます。 ユーザーはご利用のモデルにデータを送信し、モデルの予測を受信できます。
+* **[Web サービスとしてデプロイする]** - 予測実験を[New]または[従来]の Azure Web サービスとしてデプロイできます。 ユーザーはご利用のモデルにデータを送信し、モデルの予測を受信できます。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="create-a-training-experiment"></a>トレーニング実験を作成する
 予測分析モデルを学習するには、Azure Machine Learning Studio を使用してトレーニング実験を作成します。ここではトレーニング データを読み込み、必要に応じてデータを用意し、機械学習アルゴリズムに適用し、結果を評価するさまざまなモジュールを含めることができます。 実験を繰り返し、別の機械学習アルゴリズムを試して結果を比較したり評価したりできます。
@@ -71,8 +73,8 @@ Azure Machine Learning では、予測分析ソリューションをビルド、
 料金プランを選択します。 既存の料金プランがある場合はそのプランを選択できます。ない場合は、サービス用に新しい料金プランを作成する必要があります。
 
 1. **[Price Plan (料金プラン)]** ドロップダウンで、既存のプランを選択するか、**[Select new plan (新しいプランを選択する)]** オプションを選択します。
-2. **[プラン名]**に、請求書でプランを識別する名前を入力します。
-3. **[Monthly Plan Tiers (月額プラン レベル)]**のいずれか 1 つを選択します。 プラン レベルは既定では既定のリージョンのプランになり、Web サービスはそのリージョンにデプロイされます。
+2. **[プラン名]** に、請求書でプランを識別する名前を入力します。
+3. **[Monthly Plan Tiers (月額プラン レベル)]** のいずれか 1 つを選択します。 プラン レベルは既定では既定のリージョンのプランになり、Web サービスはそのリージョンにデプロイされます。
 
 **[デプロイ]** をクリックすると、Web サービスの **[クイック スタート]** ページが開きます。
 
@@ -85,17 +87,17 @@ Web サービスの [クイック スタート] ページでは、新しい Web 
 
 RRS テストのページには、入力、出力、および実験用に定義したすべてのグローバル パラメーターが表示されます。 Web サービスをテストするには、手動で適切な入力値を入力するか、テスト値を含むコンマ区切り値 (CSV) の書式設定されたファイルを指定できます。
 
-RRS を使用してテストするには、リスト ビュー モードから適切な入力値を入力し、 **[Test Request-Response (要求応答のテスト)]**をクリックします。 予測結果は、左側の出力列に表示されます。
+RRS を使用してテストするには、リスト ビュー モードから適切な入力値を入力し、 **[Test Request-Response (要求応答のテスト)]** をクリックします。 予測結果は、左側の出力列に表示されます。
 
 ![Web サービスをデプロイする](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
-BES をテストするには、 **[バッチ]**をクリックします。 バッチ テストのページで、入力の下の [参照] をクリックし、適切なサンプル値を含む CSV ファイルを選択します。 CSV ファイルがなく、Machine Learning Studio を使用して予測実験を作成した場合は、予測実験用のデータ セットをダウンロードし、それを使用できます。
+BES をテストするには、 **[バッチ]** をクリックします。 バッチ テストのページで、入力の下の [参照] をクリックし、適切なサンプル値を含む CSV ファイルを選択します。 CSV ファイルがなく、Machine Learning Studio を使用して予測実験を作成した場合は、予測実験用のデータ セットをダウンロードし、それを使用できます。
 
 データ セットをダウンロードするには、Machine Learning Studio を開きます。 予測実験を開き、実験の入力を右クリックします。 コンテキスト メニューの **[データセット]** を選択し、**[ダウンロード]** を選択します。
 
 ![Web サービスをデプロイする](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
-**[Test]**をクリックします。 バッチ実行ジョブの進行状況は、**[Test Batch Jobs (バッチ ジョブのテスト)]** の右下に表示されます。
+**[Test]** をクリックします。 バッチ実行ジョブの進行状況は、**[Test Batch Jobs (バッチ ジョブのテスト)]** の右下に表示されます。
 
 ![Web サービスをデプロイする](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
 
@@ -119,7 +121,7 @@ Machine Learning Studio から Web サービスをデプロイすると、サー
 Machine Learning Web サービスへのアクセスの詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)」を参照してください。
 
 #### <a name="manage-your-new-web-service"></a>新しい Web サービスを管理する
-新しい Web サービスの Machine Learning Web サービス ポータルを管理することができます。 [メイン ポータル ページ](https://services.azureml-test.net/) で **[Web サービス]**をクリックします。 Web サービスのページでは、サービスを削除したり、コピーしたりすることができます。 特定のサービスを監視するには、サービスをクリックし、 **[ダッシュボード]**をクリックします。 Web サービスに関連付けられたバッチ ジョブを監視するには、 **[Batch Request Log (バッチ要求ログ)]**をクリックします。
+新しい Web サービスの Machine Learning Web サービス ポータルを管理することができます。 [メイン ポータル ページ](https://services.azureml-test.net/) で **[Web サービス]** をクリックします。 Web サービスのページでは、サービスを削除したり、コピーしたりすることができます。 特定のサービスを監視するには、サービスをクリックし、 **[ダッシュボード]** をクリックします。 Web サービスに関連付けられたバッチ ジョブを監視するには、 **[Batch Request Log (バッチ要求ログ)]** をクリックします。
 
 ### <a name="deploy-the-predictive-experiment-as-a-classic-web-service"></a>従来の Web サービスとして予測実験をデプロイする
 
@@ -133,7 +135,7 @@ Machine Learning Web サービスへのアクセスの詳細については、�
 
 Web サービスは、Machine Learning Web サービス ポータルまたは Machine Learning Studio のいずれかでテストできます。
 
-要求 - 応答 Web サービスをテストするには、Web サービス ダッシュボードで **[テスト]** をクリックします。 ダイアログ ボックスが表示され、サービスへのデータの入力が促されます。 これらはスコア付け実験で想定される列になります。 データのセットを入力し、 **[OK]**をクリックします。 Web サービスによって生成された結果がダッシュボードの下部に表示されます。
+要求 - 応答 Web サービスをテストするには、Web サービス ダッシュボードで **[テスト]** をクリックします。 ダイアログ ボックスが表示され、サービスへのデータの入力が促されます。 これらはスコア付け実験で想定される列になります。 データのセットを入力し、 **[OK]** をクリックします。 Web サービスによって生成された結果がダッシュボードの下部に表示されます。
 
 「新しい Web サービス」セクションで説明したように、**[テスト]** プレビュー リンクをクリックして、サービスを Azure Machine Learning Web サービス ポータルでテストできます。
 
@@ -170,7 +172,7 @@ For more information on how to manage Azure Machine Learning web service endpoin
 ## <a name="update-the-web-service"></a>Web サービスを更新する
 別のトレーニング データでのモデルの更新など、Web サービスに変更を加えたり、元の Web サービスを上書きしてもう一度デプロイしたりできます。
 
-Web サービスを更新するには、Web サービスのデプロイに使用した元の予測実験を開き、 **[名前を付けて保存]**をクリックして編集可能なコピーを作成します。 必要な変更を加えて **[WEB サービスのデプロイ]**をクリックします。
+Web サービスを更新するには、Web サービスのデプロイに使用した元の予測実験を開き、 **[名前を付けて保存]** をクリックして編集可能なコピーを作成します。 必要な変更を加えて **[WEB サービスのデプロイ]** をクリックします。
 
 この実験は前にデプロイ済みであるため、既存のサービスを上書きするか (従来の Web サービス)、更新するか (新しい Web サービス) 確認されます。 **[はい]** または **[更新]** をクリックすると、既存の Web サービスが停止され、新しい予測実験が代わりにデプロイされます。
 
@@ -185,8 +187,8 @@ Web サービスを更新するオプションの 1 つに、モデルをプロ�
 [トレーニング実験を作成する]: #create-a-training-experiment
 [予測実験に変換する]: #convert-the-training-experiment-to-a-predictive-experiment
 [Web サービスとしてデプロイする]: #deploy-it-as-a-web-service
-[新規]: #deploy-the-predictive-experiment-as-a-new-Web-service
-[従来]: #deploy-the-predictive-experiment-as-a-new-Web-service
+[New]: #deploy-the-predictive-experiment-as-a-new-web-service
+[従来]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service

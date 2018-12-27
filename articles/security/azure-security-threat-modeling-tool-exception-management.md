@@ -1,24 +1,25 @@
 ---
-title: "例外管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威への対応"
+title: 例外管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 9a8e0154faccca356c7fb8ce93e43ce67cc0aae2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: ce748be7f11d440e656e4af5cdd3cee3bbc9e313
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302151"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>セキュリティ フレーム: 例外管理 | 対応策 
 | 製品/サービス | 記事 |
@@ -35,7 +36,7 @@ ms.lasthandoff: 01/24/2018
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **手順** | Windows Communication Framework (WCF) サービスでは、デバッグ情報を公開する構成が可能です。 デバッグ情報は、運用環境では使用しないようにしてください。 `<serviceDebug>` タグにより、WCF サービスでデバッグ情報機能を有効にするかどうかが定義されます。 includeExceptionDetailInFaults 属性が true に設定されている場合、アプリケーションからの例外情報はクライアントに返されます。 攻撃者は、デバッグ出力から入手した追加の情報を使用して、アプリケーションが使用するフレームワーク、データベース、その他のリソースを対象とした攻撃をマウントすることができます。 |
 
 ### <a name="example"></a>例
@@ -59,7 +60,7 @@ ms.lasthandoff: 01/24/2018
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ジェネリック、NET Framework 3 |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **手順** | サービスに関する情報を公開すると、サービスの悪用について攻撃者に多くの洞察を与えてしまう可能性があります。 `<serviceMetadata>` タグにより、メタデータの公開機能が有効化されます。 サービス メタデータには、パブリックにアクセスできないようにする必要がある機密情報が含まれている可能性があります。 少なくとも、信頼されたユーザーにのみメタデータへのアクセスを許可し、不要な情報は公開されないことを確認してください。 メタデータを公開する機能をすべて無効にすると、より安全です。 安全な WCF 構成には `<serviceMetadata>` タグが含まれません。 |
 
 ## <a id="exception"></a>ASP.NET Web API で適切な例外処理が実行されたことを確認する
@@ -105,7 +106,7 @@ public Product GetProduct(int id)
     return item;
 }
 ```
-`HttpResponseException` 型ではない、ハンドルされない例外をキャッチするには、例外フィルターを使用できます。 例外フィルターは `System.Web.Http.Filters.IExceptionFilter` インターフェイスを実装します。 例外フィルターを記述する最も簡単な方法は、`System.Web.Http.Filters.ExceptionFilterAttribute` クラスから派生させ、OnException メソッドを上書きすることです。 
+`HttpResponseException` 型ではない、ハンドルされない例外をキャッチするには、例外フィルターを使用できます。 例外フィルターは `System.Web.Http.Filters.IExceptionFilter` インターフェイスを実装します。 例外フィルターを記述する最も簡単な方法は、`System.Web.Http.Filters.ExceptionFilterAttribute` クラスから派生させ、OnException メソッドをオーバーライドすることです。 
 
 ### <a name="example"></a>例
 `NotImplementedException` 例外を HTTP 状態コード `501, Not Implemented` に変換するフィルターを次に示します。 
@@ -207,7 +208,7 @@ ASP.Net Web API での例外処理とモデルの検証の詳細については�
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [deployment 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |

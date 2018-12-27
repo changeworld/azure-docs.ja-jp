@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: B2C テナントへの切り替え | Microsoft Docs'
-description: Active Directory B2C テナントのコンテキストに切り替える方法
+title: Azure Active Directory B2C で B2C テナントに切り替える | Microsoft Docs
+description: Active Directory B2C テナントのコンテキストに切り替える方法。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/13/2017
 ms.author: davidmu
-ms.openlocfilehash: 6469636ee05c2b28a24b1d559f0ee7569e784393
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 8c0b6cb411618b01adfc23fa124ff624206da7b2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836102"
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Azure AD B2C テナントへの切り替え
 
@@ -25,7 +25,7 @@ Azure AD B2C を構成するには、Azure AD B2C テナントのコンテキス
 
 Azure AD B2C テナントに移動するには、Azure AD B2C テナントのグローバル管理者として Azure Portal にログインする必要があります。
 
-1. [Azure Portal](http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. テナントを切り替えるには、右上隅にある電子メール アドレスまたは画像をクリックします。
 1. 表示された `Directory` の一覧で、管理する Azure AD B2C テナントを選択します。
 

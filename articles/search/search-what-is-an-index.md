@@ -1,29 +1,26 @@
 ---
-title: "Azure Search のインデックス | Microsoft Docs"
-description: "Azure Search におけるインデックスの概念とその使用方法について説明します。"
+title: Azure Search のインデックス | Microsoft Docs
+description: Azure Search におけるインデックスの概念とその使用方法について説明します。
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 services: search
-documentationcenter: 
-author: ashmaka
-ms.assetid: a395e166-bf2e-4fca-8bfc-116a46c5f7b1
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/08/2017
-ms.author: ashmaka
-ms.openlocfilehash: 87f1121594d8577b5dacac4026aa7d86b2921d10
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: cc2c56d4463203aa2561e820540acdfff651d80a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/23/2018
+ms.locfileid: "31793404"
 ---
 # <a name="indexes-in-azure-search"></a>Azure Search のインデックス
 > [!div class="op_single_selector"]
 > * [概要](search-what-is-an-index.md)
 > * [ポータル](search-create-index-portal.md)
 > * [.NET](search-create-index-dotnet.md)
-> * [REST ()](search-create-index-rest-api.md)
+> * [REST](search-create-index-rest-api.md)
 > 
 > 
 
@@ -35,7 +32,7 @@ Azure Search における "*インデックス*" とは、Azure Search サービ
 スキーマを定義する際に、インデックスの各フィールドの名前、型、属性を指定する必要があります。 フィールドの型によって、そのフィールドに格納されているデータが分類されます。 属性は個々のフィールドに設定されてフィールドの使用方法を指定します。 次の表に、指定できる型と属性をまとめます。
 
 ### <a name="field-types"></a>フィールドの型
-| 型 | Description |
+| type | [説明] |
 | --- | --- |
 | *Edm.String* |フルテキスト検索 (単語区切り、ステミングなど) のために必要に応じてトークン化することのできるテキスト。 |
 | *Collection(Edm.String)* |フルテキスト検索のために必要に応じてトークン化することのできる一連の文字列。 コレクション内の項目の数に理論上の上限はありませんが、ペイロードのサイズに対する 16 MB の上限がコレクションに適用されます。 |
@@ -49,7 +46,7 @@ Azure Search における "*インデックス*" とは、Azure Search サービ
 Azure Search のサポートされるデータ型の詳細については、[このページ](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)を参照してください。
 
 ### <a name="field-attributes"></a>フィールド属性
-| 属性 | Description |
+| 属性 | [説明] |
 | --- | --- |
 | *キー* |ドキュメント検索に使用される各ドキュメントの一意の ID を提供する文字列です。 各インデックスに、1 つのキーが必要です。 1 つのフィールドだけをキーにすることができ、その型を Edm.String に設定する必要があります。 |
 | *Retrievable* |検索結果でフィールドを返すことができるかどうかを設定します。 |

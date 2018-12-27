@@ -1,24 +1,25 @@
 ---
-title: "Azure Security Center で次世代ファイアウォールを追加する | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center の推奨事項、\"**次世代ファイアウォールの追加**\" および \"**NGFW 経由に限定したトラフィックのルーティング**\" を実装する方法について説明します。"
+title: Azure Security Center で次世代ファイアウォールを追加する | Microsoft Docs
+description: このドキュメントでは、Azure Security Center の推奨事項、"**次世代ファイアウォールの追加**" および "**NGFW 経由に限定したトラフィックのルーティング**" を実装する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 48b99015-4db8-4ce8-85e4-b544c0fa203e
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2017
-ms.author: terrylan
-ms.openlocfilehash: 30589d0a943517c03394a3aae7c03c8094e78c1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 0f1949373e99df1cccd6c49ff92c80d595519377
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341153"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Azure Security Center で次世代ファイアウォールを追加する
 Azure Security Center では、セキュリティ保護を強化するために、Microsoft パートナーの次世代ファイアウォール (NGFW) を追加することをお勧めします。 このドキュメントでは、追加方法の例を紹介します。
@@ -49,7 +50,7 @@ Azure Security Center では、セキュリティ保護を強化するために�
    ![NGFW 経由に限定したトラフィックのルーティング][7]
 2. **[Route traffic through NGFW only (NGFW 経由に限定したトラフィックのルーティング)]** ブレードが開き、トラフィックのルーティング先として指定できる VM の一覧が表示されます。 一覧から VM を選択します。
    ![Select a VM][8]
-3. 選択した VM のブレードが開き、関連する受信規則が表示されます。 考えられる次のステップに関する詳細情報が示されます。 **[受信の規則を編集する]** を選択して、受信規則の編集に進みます。 NGFW にリンクされているインターネット接続エンドポイントの場合、**[ソース]** は **[任意]** に設定されません。 受信規則のプロパティの詳細については、「 [NSG ルール](../virtual-network/virtual-networks-nsg.md#nsg-rules)」をご覧ください。
+3. 選択した VM のブレードが開き、関連する受信規則が表示されます。 考えられる次のステップに関する詳細情報が示されます。 **[受信の規則を編集する]** を選択して、受信規則の編集に進みます。 NGFW にリンクされているインターネット接続エンドポイントの場合、**[ソース]** は **[任意]** に設定されません。 受信規則のプロパティの詳細については、「[セキュリティ規則](../virtual-network/security-overview.md#security-rules)」をご覧ください。
    ![アクセスを制限する規則の構成][9]
    ![受信規則の編集][10]
 
@@ -57,17 +58,17 @@ Azure Security Center では、セキュリティ保護を強化するために�
 このドキュメントでは、"次世代ファイアウォールの追加" というセキュリティ センターの推奨事項を実装する方法について説明しました。 NGFW と Check Point パートナー ソリューションの詳細については、次を参照してください。
 
 * [次世代ファイアウォール](https://en.wikipedia.org/wiki/Next-Generation_Firewall)
-* [Check Point vSEC](https://azure.microsoft.com/marketplace/partners/checkpoint/check-point-r77-10/)
+* [Check Point vSEC](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec)
 
 セキュリティ センターの詳細については、次を参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- セキュリティ ポリシーの構成方法について説明しています。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- セキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」-- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
 [1]: ./media/security-center-add-next-gen-firewall/add-next-gen-firewall.png

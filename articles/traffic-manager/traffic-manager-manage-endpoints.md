@@ -1,12 +1,9 @@
 ---
-title: "Azure Traffic Manager でのエンドポイントの管理 | Microsoft Docs"
-description: "この記事では、Azure Traffic Manager からエンドポイントの追加、削除、有効化、無効化する方法について説明します。"
+title: Azure Traffic Manager でのエンドポイントの管理 | Microsoft Docs
+description: この記事では、Azure Traffic Manager からエンドポイントの追加、削除、有効化、無効化する方法について説明します。
 services: traffic-manager
-documentationcenter: 
-author: kumudd
-manager: timlt
-editor: 
-ms.assetid: ade2bbc2-35a7-43c5-8001-4698f7254526
+documentationcenter: ''
+author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: c80d104fc456849f8bfd5169dd8ce1361d906a65
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 28ea626adf87ad9f115b5acc5452dfc91ad833c5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245009"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>エンドポイントの追加、削除、有効化、無効化
 
@@ -47,7 +45,7 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 7.  両方のエンドポイントは、追加が完了すると、**[Traffic Manager プロファイル]** ブレードに、監視ステータスが **[オンライン]** の状態で表示されます。
 
 > [!NOTE]
-> *[フェールオーバー]* トラフィック ルーティング方法でプロファイルにエンドポイントを追加したり、プロファイルからエンドポイントを削除したりすると、フェールオーバー優先度リストの順番が適切ではなくなる可能性があります。 フェールオーバー優先度リストの順番は、[構成] ページで調整できます。 詳細については、「 [フェールオーバーによるトラフィック ルーティング方法の構成](traffic-manager-configure-failover-routing-method.md)」をご覧ください。
+> "*フェールオーバー*" トラフィック ルーティング方法でプロファイルにエンドポイントを追加したり、プロファイルからエンドポイントを削除したりすると、フェールオーバー優先度リストの順番が期待どおりではなくなる可能性があります。 フェールオーバー優先度リストの順番は、[構成] ページで調整できます。 詳細については、「 [フェールオーバーによるトラフィック ルーティング方法の構成](traffic-manager-configure-failover-routing-method.md)」をご覧ください。
 
 ## <a name="to-disable-an-endpoint"></a>エンドポイントを無効にするには
 
@@ -76,11 +74,11 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 5. **[エンドポイント]** ブレードでエンドポイントの状態を **[有効]** に変更し、**[保存]** をクリックします。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)
 * [ルーティング方法の構成](traffic-manager-configure-routing-method.md)
 * [Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 * [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
-* [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkID=313584)
+* [Traffic Manager の操作 (REST API リファレンス)](https://go.microsoft.com/fwlink/p/?LinkID=313584)
 

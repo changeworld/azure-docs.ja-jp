@@ -1,5 +1,5 @@
 ---
-title: Linux 用 Azure N シリーズ ドライバー セットアップ | Microsoft Docs
+title: Linux 用 Azure N シリーズ GPU ドライバーのセットアップ | Microsoft Docs
 description: Azure で Linux を実行する N シリーズ VM 用の NVIDIA GPU ドライバーの設定方法を説明します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,24 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/03/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f6b91f09b6c38c5461638b953f3a0df921fc7c30
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2bd9f8508f67a3c4b87533fb514854b5f66a5f6b
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017265"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
-Linux を実行する Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA グラフィック ドライバーをインストールする必要があります。 この記事では、N シリーズ VM をデプロイした後のドライバーのセットアップ手順について説明します。 ドライバーのセットアップ情報は、[Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) でも利用可能です。
+Linux を実行する Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA GPU ドライバーをインストールする必要があります。 [NVIDIA GPU ドライバー拡張機能](../extensions/hpccompute-gpu-linux.md)は、N シリーズ VM 上に適切な NVIDIA CUDA または GRID ドライバーをインストールします。 この拡張機能は、Azure Portal または Azure CLI や Azure Resource Manager テンプレートなどのツールを使用してインストールまたは管理します。 サポートされるディストリビューションおよびデプロイ手順については、[NVIDIA GPU ドライバー拡張機能のドキュメント](../extensions/hpccompute-gpu-linux.md)を参照してください。
+
+GPU ドライバーを手動でインストールすることを選択した場合、この記事では、サポートされるディストリビューション、ドライバー、インストールおよび検証手順について説明します。 手動でのドライバーのセットアップ情報は、[Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) でも利用可能です。
 
 N シリーズ VM の仕様、ストレージの容量、およびディスクの詳細については、「[GPU Linux VM のサイズ](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。 
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>NC、NCv2、NCv3、ND シリーズ VM 用の CUDA ドライバーのインストール
+## <a name="install-cuda-drivers-on-n-series-vms"></a>N シリーズ VM への CUDA ドライバーのインストール
 
 NVIDIA CUDA Toolkit から N シリーズ VM に CUDA ドライバーをインストールする手順は次のとおりです。 
 
@@ -52,7 +55,7 @@ lspci | grep -i NVIDIA
 
 1. CUDA ドライバーをダウンロードしてインストールします。
   ```bash
-  CUDA_REPO_PKG=cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
+  CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
@@ -96,7 +99,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS または Red Hat Enterprise Linux 7.3 または 7.4
 
-1. カーネルを更新します。
+1. カーネルを更新します (推奨)。 カーネルを更新しない場合は、`kernel-devel` と `dkms` のバージョンがカーネルに対して確実に適切であるようにします。
 
   ```
   sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -124,7 +127,7 @@ sudo reboot
 
   sudo yum install dkms
 
-  CUDA_REPO_PKG=cuda-repo-rhel7-9.1.85-1.x86_64.rpm
+  CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
 
   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
@@ -155,7 +158,7 @@ GPU デバイスの状態を照会するには、VM に SSH 接続し、ドラ�
 
 ## <a name="rdma-network-connectivity"></a>RDMA ネットワーク接続
 
-RDMA ネットワーク接続は、同じ可用性セットまたは VM スケール セットにデプロイされた NC24r など、RDMA 対応の N シリーズ VM で有効にすることができます。 RDMA ネットワークは、Intel MPI 5.x 以降のバージョンで実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 その他の要件は次のとおりです。
+RDMA ネットワーク接続は、同じ可用性セット内にデプロイまたは VM スケール セット内の単一の配置グループにデプロイされた NC24r など、RDMA 対応の N シリーズ VM で有効にすることができます。 RDMA ネットワークは、Intel MPI 5.x 以降のバージョンで実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 その他の要件は次のとおりです。
 
 ### <a name="distributions"></a>ディストリビューション
 
@@ -167,9 +170,9 @@ N シリーズ VM で RDMA 接続をサポートする Azure Marketplace で、�
 
 * **CentOS ベースの 7.4 HPC** - RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。
 
-## <a name="install-grid-drivers-for-nv-series-vms"></a>NV シリーズ VM 用の GRID ドライバーのインストール
+## <a name="install-grid-drivers-on-nv-or-nvv2-series-vms"></a>NV または NVv2 シリーズの VM に GRID ドライバーをインストールする
 
-NV シリーズ VM に NVIDIA GRID ドライバーをインストールするには、各 VM への SSH 接続を作成して、Linux ディストリビューションに応じた手順に従います。 
+NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバーをインストールするには、各 VM への SSH 接続を作成して、Linux ディストリビューションに応じた手順に従います。 
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
@@ -186,7 +189,7 @@ NV シリーズ VM に NVIDIA GRID ドライバーをインストールするに
 
   sudo apt-get install build-essential ubuntu-desktop -y
   ```
-3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
+3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NVv2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
 
   ```
   blacklist nouveau
@@ -204,7 +207,7 @@ NV シリーズ VM に NVIDIA GRID ドライバーをインストールするに
 5. GRID ドライバーをダウンロードしてインストールします。
 
   ```bash
-  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
+  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
 
   chmod +x NVIDIA-Linux-x86_64-grid.run
 
@@ -222,14 +225,14 @@ NV シリーズ VM に NVIDIA GRID ドライバーをインストールするに
 8. 次を `/etc/nvidia/gridd.conf` に追加します。
  
   ```
-  IgnoreSP=TRUE
+  IgnoreSP=FALSE
   ```
 9. VM を再起動して、インストールの確認に進みます。
 
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS または Red Hat Enterprise Linux 
 
-1. カーネルと DKMS を更新します。
+1. カーネルと DKMS を更新します (推奨)。 カーネルを更新しない場合は、`kernel-devel` と `dkms` のバージョンがカーネルに対して確実に適切であるようにします。
  
   ```bash  
   sudo yum update
@@ -241,7 +244,7 @@ NV シリーズ VM に NVIDIA GRID ドライバーをインストールするに
   sudo yum install dkms
   ```
 
-2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
+2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NV2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
 
   ```
   blacklist nouveau
@@ -269,7 +272,7 @@ NV シリーズ VM に NVIDIA GRID ドライバーをインストールするに
 5. GRID ドライバーをダウンロードしてインストールします。
 
   ```bash
-  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
+  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
 
   chmod +x NVIDIA-Linux-x86_64-grid.run
 
@@ -286,7 +289,7 @@ NV シリーズ VM に NVIDIA GRID ドライバーをインストールするに
 8. 次を `/etc/nvidia/gridd.conf` に追加します。
  
   ```
-  IgnoreSP=TRUE
+  IgnoreSP=FALSE
   ```
 9. VM を再起動して、インストールの確認に進みます。
 
@@ -301,7 +304,7 @@ GPU デバイスの状態を照会するには、VM に SSH 接続し、ドラ�
  
 
 ### <a name="x11-server"></a>X11 サーバー
-NV VM へのリモート接続用に X11 サーバーが必要な場合は、グラフィックスのハードウェア アクセラレータを許可している [x11vnc](http://www.karlrunge.com/x11vnc/) をお勧めします。 M60 デバイスの BusID は xconfig ファイルに手動で追加する必要があります (Ubuntu 16.04 LTS では `etc/X11/xorg.conf`、CentOS 7.3 または Red Hat Enterprise Server 7.3 では `/etc/X11/XF86config`)。 次のような `"Device"` セクションを追加します。
+NV または NVv2 の VM へのリモート接続用に X11 サーバーが必要な場合は、グラフィックスのハードウェア アクセラレータを許可している [x11vnc](http://www.karlrunge.com/x11vnc/) をお勧めします。 M60 デバイスの BusID は、X11 構成ファイル (通常、 `etc/X11/xorg.conf`) に手動で追加する必要があります。 次のような `"Device"` セクションを追加します。
  
 ```
 Section "Device"
@@ -309,7 +312,7 @@ Section "Device"
     Driver         "nvidia"
     VendorName     "NVIDIA Corporation"
     BoardName      "Tesla M60"
-    BusID          "your-BusID:0:0:0"
+    BusID          "PCI:0@your-BusID:0:0"
 EndSection
 ```
  
@@ -318,19 +321,26 @@ EndSection
 10 進数 BusID は次を実行して見つけることができます。
 
 ```bash
-echo $((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
+nvidia-xconfig --query-gpu-info | awk '/PCI BusID/{print $4}'
 ```
  
-VM が再割り当てまたは再起動されると、BusID が変更される場合があります。 そのため、スクリプトを使用して、VM が再起動されたときに、X11 の構成で BusID を更新することができます。 例: 
+VM が再割り当てまたは再起動されると、BusID が変更される場合があります。 そのため、スクリプトを作成して、VM が再起動されたときに、X11 の構成で BusID を更新することができます。 たとえば、次のような内容で `busidupdate.sh` という名前 (または別の目的の名前) のスクリプトを作成します。
 
 ```bash 
 #!/bin/bash
-BUSID=$((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
+XCONFIG="/etc/X11/xorg.conf"
+OLDBUSID=`awk '/BusID/{gsub(/"/, "", $2); print $2}' ${XCONFIG}`
+NEWBUSID=`nvidia-xconfig --query-gpu-info | awk '/PCI BusID/{print $4}'`
 
-if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed to ${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
+if [[ "${OLDBUSID}" == "${NEWBUSID}" ]] ; then
+        echo "NVIDIA BUSID not changed - nothing to do"
+else
+        echo "NVIDIA BUSID changed from \"${OLDBUSID}\" to \"${NEWBUSID}\": Updating ${XCONFIG}" 
+        sed -e 's|BusID.*|BusID          '\"${NEWBUSID}\"'|' -i ${XCONFIG}
+fi
 ```
 
-このファイルは、`/etc/rc.d/rc3.d` でそのファイルのエントリを作成することで、起動時にルートとして呼び出すことができます。
+次に、ブート時にスクリプトがルートとして呼び出されるように、`/etc/rc.d/rc3.d` に更新スクリプト用のエントリを作成します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

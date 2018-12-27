@@ -1,28 +1,23 @@
 ---
-title: "障害と災害に対する Azure Service Bus アプリケーションの保護 | Microsoft Docs"
-description: "発生する可能性がある Service Bus の障害からアプリケーションを保護するために使用できる手法。"
+title: 障害と災害に対する Azure Service Bus アプリケーションの保護 | Microsoft Docs
+description: 発生する可能性がある Service Bus の障害からアプリケーションを保護するために使用できる手法。
 services: service-bus-messaging
-documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
-editor: 
-ms.assetid: fd9fa8ab-f4c4-43f7-974f-c876df1614d4
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
-ms.author: sethm
-ms.openlocfilehash: 7b01412202b5091ad3ae420089049bf456f9a30b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 09/14/2018
+ms.author: spelluru
+ms.openlocfilehash: 85481deceeadaf4154659d35fccf777f489bd782
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393709"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
-ミッション クリティカルなアプリケーションは、予期しない障害や災害が発生した場合でも継続して稼働する必要があります。 このトピックでは、発生する可能性がある Service Bus の障害や災害からアプリケーションを保護するために使用できる手法について説明します。
+ミッション クリティカルなアプリケーションは、予期しない障害や災害が発生した場合でも継続して稼働する必要があります。 この記事では、発生する可能性がある Service Bus の障害や災害からアプリケーションを保護するために使用できる手法について説明します。
 
 障害とは、Azure Service Bus が一時的に利用できなくなることです。 障害によって、メッセージング ストアなどの Service Bus の一部のコンポーネント、さらにはデータセンター全体に影響が及ぶ場合があります。 問題が解決されると、Service Bus は再び利用可能になります。 通常、障害によってメッセージなどのデータが失われることはありません。 コンポーネントのエラーの例としては、特定のメッセージング ストアが利用できなくなることが挙げられます。 データセンター全体の障害の例としては、データセンターの電源障害や、データセンターのネットワーク スイッチの障害などがあります。 障害は、数分間から数日間続く場合があります。
 
@@ -34,7 +29,9 @@ Service Bus では、複数のメッセージング ストアを使用して、�
 Service Bus のメッセージング エンティティ (キュー、トピック、リレー) はすべて、データセンターと連携する 1 つのサービスの名前空間に存在します。 Service Bus は、名前空間のレベルで、[*geo ディザスター リカバリー*と *geo レプリケーション*](service-bus-geo-dr.md)の両方をサポートするようになりました。
 
 ## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>メッセージング ストアのエラーからキューおよびトピックを保護する
-パーティション分割されていないキューまたはトピックは 1 つのメッセージング ストアに割り当てられます。 このメッセージング ストアを使用できない場合、そのキューまたはトピックに対するすべての操作が失敗します。 一方、パーティション分割されたキューは複数のフラグメントで構成されます。 各フラグメントは異なるメッセージング ストアに格納されます。 パーティション分割されたキューまたはトピックにメッセージが送信されると、Service Bus はそのメッセージをいずれかのフラグメントに割り当てます。 対応するメッセージング ストアを使用できない場合は、可能であれば Service Bus はメッセージを別のフラグメントに書き込みます。 パーティション分割されたエンティティの詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
+パーティション分割されていないキューまたはトピックは 1 つのメッセージング ストアに割り当てられます。 このメッセージング ストアを使用できない場合、そのキューまたはトピックに対するすべての操作が失敗します。 一方、パーティション分割されたキューは複数のフラグメントで構成されます。 各フラグメントは異なるメッセージング ストアに格納されます。 パーティション分割されたキューまたはトピックにメッセージが送信されると、Service Bus はそのメッセージをいずれかのフラグメントに割り当てます。 対応するメッセージング ストアを使用できない場合は、可能であれば Service Bus はメッセージを別のフラグメントに書き込みます。 パーティション分割されたエンティティは [Premium SKU](service-bus-premium-messaging.md) ではサポートされなくなりました。 
+
+パーティション分割されたエンティティの詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
 
 ## <a name="protecting-against-datacenter-outages-or-disasters"></a>データセンターの障害や災害から保護する
 2 つのデータセンター間でのフェールオーバーを可能にするために、各データセンターに 1 つの Service Bus サービスの名前空間を作成できます。 たとえば、Service Bus サービスの名前空間 **contosoPrimary.servicebus.windows.net** を米国 (北/中央) リージョンに配置し、**contosoSecondary.servicebus.windows.net** を米国 (南部/中央) リージョンに配置することができます。 データセンターの障害発生時にも Service Bus メッセージング エンティティにアクセスできる状態を維持する必要がある場合、両方の名前空間内にそのエンティティを作成します。
@@ -81,6 +78,17 @@ Service Bus のメッセージング エンティティ (キュー、トピッ�
 
 Service Bus は、名前空間のレベルで、geo ディザスター リカバリーと geo レプリケーションをサポートします。 詳細については、「[Azure Service Bus の geo ディザスター リカバリー](service-bus-geo-dr.md)」を参照してください。 [Premium SKU](service-bus-premium-messaging.md) でのみ利用できるディザスター リカバリー機能は、メタデータの災害復旧を実装しており、一次および二次障害復旧の名前空間に依存しています。
 
+## <a name="availability-zones-preview"></a>Availability Zones (プレビュー)
+
+Service Bus Premium SKU では、Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) がサポートされています。 
+
+> [!NOTE]
+> Availability Zones プレビューは、**米国中部**、**米国東部 2**、および**フランス中部**リージョンのみでサポートされます。
+
+Azure Portal を使用して、新しい名前空間でのみ Availability Zones を有効にすることができます。 Service Bus では、既存の名前空間の移行はサポートされていません。 名前空間でゾーン冗長を有効にした後に、無効にすることはできません。
+
+![1][]
+
 ## <a name="next-steps"></a>次の手順
 ディザスター リカバリーの詳細については、次の記事を参照してください。
 
@@ -96,3 +104,5 @@ Service Bus は、名前空間のレベルで、geo ディザスター リカバ
 [Geo-replication with Service Bus Brokered Messages]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
+
+[1]: ./media/service-bus-outages-disasters/az.png

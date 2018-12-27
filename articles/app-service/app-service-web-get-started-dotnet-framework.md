@@ -1,45 +1,43 @@
 ---
-title: "Azure に ASP.NET Framework Web アプリを作成する | Microsoft Docs"
-description: "既定の ASP.NET Web アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。"
+title: C# ASP.NET Framework Web アプリを作成する - Azure App Service | Microsoft Docs
+description: 既定の C# ASP.NET Web アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/30/2017
+ms.date: 09/05/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 6ce5d49fe4e58b3c89c09ef80d563d001a4abb41
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.custom: seodec18
+ms.openlocfilehash: 5f32ed74086b26f91f3ab24cd619bb117d497012
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251268"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure に ASP.NET Framework Web アプリを作成する
 
 [Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure Web Apps に初めての ASP.NET Web アプリをデプロイする方法を示します。 作業が完了すると、デプロイされた Web アプリケーションを使って、App Service プランと Azure Web アプリで構成されるリソース グループを入手できます。
 
-このクイックスタートの手順が実行されているところを次の動画で確認したうえで、実際に手順に従って初めての .NET アプリを Azure に発行してください。
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
+![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下が必要です。
+このチュートリアルを完了するには、**ASP.NET および Web 開発**のワークロードと共に、<a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> をインストールします。
 
-* 次のワークロードを使って、<a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> をインストールします。
-    - **ASP.NET と Web 開発**
-    - **Azure 開発**
+Visual Studio 2017 を既にインストールしている場合:
 
-    ![ASP.NET および Web 開発と Azure 開発 ([Web & Cloud\(Webとクラウド\)] 下)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+- **[ヘルプ]**、**[更新プログラムの確認]** の順にクリックし、Visual Studio に最新の更新プログラムをインストールします。
+- **[ツール]**、**[ツールと機能を取得]** の順にクリックし、ワークロードを追加します。
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する
 
@@ -53,7 +51,7 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 
 任意の種類の ASP.NET Web アプリを Azure にデプロイできます。 このクイックスタートでは、**[MVC]** テンプレートを選択し、認証が **[認証なし]** に設定されていることを確認してください。
       
-**[OK]**を選択します。
+**[OK]** を選択します。
 
 ![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/app-service-web-get-started-dotnet-framework/select-mvc-template.png)
 
@@ -61,17 +59,15 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 
 ![アプリをローカルで実行する](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
-## <a name="publish-to-azure"></a>Azure に発行する
+## <a name="launch-the-publish-wizard"></a>発行ウィザードを起動する
 
 **ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、**[発行]** を選択します。
 
 ![ソリューション エクスプローラーから発行する](./media/app-service-web-get-started-dotnet-framework/solution-explorer-publish.png)
 
-**[Microsoft Azure App Service]** が選択されていることを確認し、**[発行]** をクリックします。
+発行ウィザードが自動的に起動します。 **[App Service]**、**[発行]** の順に選択し、**[App Service の作成]** ダイアログを開きます。
 
 ![プロジェクトの概要ページから発行する](./media/app-service-web-get-started-dotnet-framework/publish-to-app-service.png)
-
-**[App Service の作成]** ダイアログ ボックスが表示されます。このダイアログ ボックスでは、Azure で ASP.NET Web アプリを実行するために必要なすべての Azure リソースを作成できます。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -96,33 +92,33 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-**[App Service プラン]** の横にある **[新規]** をクリックします。 
+**[ホスティング プラン]** の隣にある **[新規]** を選択します。 
 
-**[App Service プランの構成]** ダイアログ ボックスで、スクリーン ショットの次の表に示した設定を使用します。
+**[ホスティング プランの構成]** ダイアログ ボックスで、スクリーン ショットの次の表に示した設定を使用します。
 
 ![Create App Service plan](./media/app-service-web-get-started-dotnet-framework/configure-app-service-plan.png)
 
-| 設定 | 推奨値 | [説明] |
+| Setting | 推奨値 | 説明 |
 |-|-|-|
 |App Service プラン| myAppServicePlan | App Service プランの名前です。 |
 | 場所 | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
 | サイズ | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
 
-**[OK]**を選択します。
+**[OK]** を選択します。
 
 ## <a name="create-and-publish-the-web-app"></a>Web アプリを作成して発行する
 
-**[Web アプリ名]** に一意のアプリ名 (有効な文字は `a-z`、`0-9`、および `-`) を入力するか、自動的に生成された一意の名前をそのまま使用します。 Web アプリの URL は`http://<app_name>.azurewebsites.net`です。`<app_name>` には Web アプリの名前を指定します。
+**[アプリ名]** に一意のアプリ名 (有効な文字は `a-z`、`0-9`、`-`) を入力するか、自動的に生成された一意の名前をそのまま使用します。 Web アプリの URL は `http://<app_name>.azurewebsites.net` です。`<app_name>` には自分のアプリの名前を指定します。
 
 **[作成]** をクリックして、Azure リソースの作成を開始します。
 
-![Web アプリ名を構成する](./media/app-service-web-get-started-dotnet-framework/web-app-name.png)
+![アプリ名を構成する](./media/app-service-web-get-started-dotnet-framework/web-app-name.png)
 
 ウィザードの完了後に、Azure に ASP.NET Web アプリを発行してから、既定のブラウザーでアプリを起動します。
 
 ![Azure で発行された ASP.NET Web アプリ](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
-Web アプリを[作成して発行する手順](#create-and-publish-the-web-app)で指定した名前が、`http://<app_name>.azurewebsites.net` 形式の URL プレフィックスとして使用されます。
+アプリを[作成して発行する手順](#create-and-publish-the-web-app)で指定した名前が、`http://<app_name>.azurewebsites.net` 形式の URL プレフィックスとして使用されます。
 
 ASP.NET Web アプリを Azure App Services でライブ実行することができました。
 
@@ -141,7 +137,8 @@ ASP.NET Web アプリを Azure App Services でライブ実行することがで
 
 Azure に再デプロイするには、**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、**[発行]** を選択します。
 
-発行ページで **[発行]** をクリックします。
+発行ページで **[発行]** を選択します。
+![Visual Studio の発行の概要ページ](./media/app-service-web-get-started-dotnet-framework/publish-summary-page.png)
 
 発行が完了すると、Visual Studio で Web アプリの URL のブラウザーが起動されます。
 
@@ -160,6 +157,12 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 ![Azure Portal の App Service ブレード](./media/app-service-web-get-started-dotnet-framework/web-app-blade.png)
 
 左側のメニューは、アプリを構成するためのさまざまなページを示しています。 
+
+## <a name="video"></a>ビデオ
+
+このクイックスタートの手順が実行されているところを次の動画で確認したうえで、実際に手順に従って初めての .NET アプリを Azure に発行してください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

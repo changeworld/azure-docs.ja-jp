@@ -2,24 +2,26 @@
 title: ワークロードの分析 - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse でのワークロードに対するクエリの優先順位付けを分析するための手法。
 services: sql-data-warehouse
-author: sqlmojo
-manager: jhubbard
+author: kevinvngo
+manager: craigg
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 03/28/2018
-ms.author: joeyong
-ms.reviewer: jrj
-ms.openlocfilehash: 7fa5bbd8d9a50bb1dcd1ab5be73f4e248cbbf8fc
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 4ce84e9714b580bcc243285dc1da5ae24a27e8e5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248095"
 ---
-# <a name="analyze-your-workload"></a>ワークロードの分析
+# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の ワークロードの分析 | Microsoft Docs
 Azure SQL Data Warehouse でのワークロードに対するクエリの優先順位付けを分析するための手法。
 
 ## <a name="workload-groups"></a>ワークロード グループ 
-SQL Data Warehouse では、ワークロード グループを使用してリソース クラスを実装します。 各 DWU サイズでのリソース クラスの動作を制御するワークロード グループは合計で 8 つあります。 いずれの DWU でも、使用するのは 8 つのワークロード グループのうち 4 つだけです。 各ワークロード グループは smallrc、mediumrc、largerc、または xlargerc のうちの 1 つに割り当てられるため、これは当然のことです。 ワークロード グループを理解するうえで、これらのワークロード グループの一部は上位の *重要度*に設定されることに注意する必要があります。 重要度は、CPU のスケジュール設定に使用されます。 重要度が "高" のクエリには、重要度が "中" のクエリと比べて 3 倍の CPU サイクルが与えられます。 そのため、同時実行スロットのマッピングにより、CPU の優先度も決まります。 16 個以上のスロットを使用するクエリは、"高" 重要度として実行されます。
+SQL Data Warehouse では、ワークロード グループを使用してリソース クラスを実装します。 各 DWU サイズでのリソース クラスの動作を制御するワークロード グループは合計で 8 つあります。 いずれの DWU でも、使用するのは 8 つのワークロード グループのうち 4 つだけです。 各ワークロード グループは smallrc、mediumrc、largerc、または xlargerc のうちの 1 つに割り当てられるため、この方法は理にかなっています。 ワークロード グループを理解するうえで、これらのワークロード グループの一部は上位の *重要度*に設定されることに注意する必要があります。 重要度は、CPU のスケジュール設定に使用されます。 重要度が "高" のクエリには、重要度が "中" のクエリの実行と比べて 3 倍の CPU サイクルが与えられます。 そのため、同時実行スロットのマッピングにより、CPU の優先度も決まります。 16 個以上のスロットを使用するクエリは、"高" 重要度として実行されます。
 
 次の表に、各ワークロード グループの重要度のマッピングを示します。
 
@@ -27,37 +29,36 @@ SQL Data Warehouse では、ワークロード グループを使用してリソ
 
 | ワークロード グループ | 同時実行スロットのマッピング | MB / ディストリビューション (弾力性) | MB / ディストリビューション (コンピューティング) | 重要度のマッピング |
 |:---------------:|:------------------------:|:------------------------------:|:---------------------------:|:------------------:|
-| SloDWGroupC00   | 1                        |    100                         | 250                         | 中             |
-| SloDWGroupC01   | 2                        |    200                         | 500                         | 中             |
-| SloDWGroupC02   | 4                        |    400                         | 1,000                        | 中             |
-| SloDWGroupC03   | 8                        |    800                         | 2000                        | 中             |
+| SloDWGroupC00   | 1                        |    100                         | 250                         | Medium             |
+| SloDWGroupC01   | 2                        |    200                         | 500                         | Medium             |
+| SloDWGroupC02   | 4                        |    400                         | 1,000                        | Medium             |
+| SloDWGroupC03   | 8                        |    800                         | 2000                        | Medium             |
 | SloDWGroupC04   | 16                       |  1,600                         | 4000                        | 高               |
 | SloDWGroupC05   | 32                       |  3,200                         | 8000                        | 高               |
 | SloDWGroupC06   | 64                       |  6,400                         | 16,000                      | 高               |
 | SloDWGroupC07   | 128                      | 12,800                         | 32,000                      | 高               |
 | SloDWGroupC08   | 256                      | 25,600                         | 64,000                      | 高               |
 
-<!-- where are the allocation and consumption of concurrency slots charts? -->
-**同時実行スロットの割り当てと使用数** の表から、DW500 では smallrc、mediumrc、largerc、および xlargerc のそれぞれで 1 個、4 個、8 個、または 16 個の同時実行スロットが使用されることが分かります。 上の表でこれらの値を調べることで、各リソース クラスの重要度を確認できます。
+<!-- where are the allocation and consumption of concurrency slots charts? --> **同時実行スロットの割り当てと使用数**の表から、DW500 では smallrc、mediumrc、largerc、および xlargerc のそれぞれで 1 個、4 個、8 個、または 16 個の同時実行スロットが使用されることが分かります。 上の表でこれらの値を調べることで、各リソース クラスの重要度を確認できます。
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500 での重要度に対するリソース クラスのマッピング
 | リソース クラス | ワークロード グループ | 使用される同時実行スロット数 | MB / ディストリビューション | 重要度 |
 |:-------------- |:-------------- |:----------------------:|:-----------------:|:---------- |
-| smallrc        | SloDWGroupC00  | 1                      | 100               | 中     |
-| mediumrc       | SloDWGroupC02  | 4                      | 400               | 中     |
+| smallrc        | SloDWGroupC00  | 1                      | 100               | Medium     |
+| mediumrc       | SloDWGroupC02  | 4                      | 400               | Medium     |
 | largerc        | SloDWGroupC03  | 8                      | 800               | 中     |
 | xlargerc       | SloDWGroupC04  | 16                     | 1,600             | 高       |
-| staticrc10     | SloDWGroupC00  | 1                      | 100               | 中     |
-| staticrc20     | SloDWGroupC01  | 2                      | 200               | 中     |
-| staticrc30     | SloDWGroupC02  | 4                      | 400               | 中     |
-| staticrc40     | SloDWGroupC03  | 8                      | 800               | 中     |
+| staticrc10     | SloDWGroupC00  | 1                      | 100               | Medium     |
+| staticrc20     | SloDWGroupC01  | 2                      | 200               | Medium     |
+| staticrc30     | SloDWGroupC02  | 4                      | 400               | Medium     |
+| staticrc40     | SloDWGroupC03  | 8                      | 800               | Medium     |
 | staticrc50     | SloDWGroupC03  | 16                     | 1,600             | 高       |
 | staticrc60     | SloDWGroupC03  | 16                     | 1,600             | 高       |
 | staticrc70     | SloDWGroupC03  | 16                     | 1,600             | 高       |
 | staticrc80     | SloDWGroupC03  | 16                     | 1,600             | 高       |
 
 ## <a name="view-workload-groups"></a>ワークロード グループの表示
-次の DMV クエリを使用すると、リソース ガバナーの観点からメモリ リソースの割り当ての違いを詳細に確認できます。また、トラブルシューティングを行うときにワークロード グループのアクティブな使用状況と過去の使用状況を分析することもできます。
+次のクエリで、リソース ガバナーから見たメモリ リソース割り当ての詳細情報がわかります。 この情報は、トラブルシューティング時にワークロード グループのアクティブな使用状況と使用履歴を分析する場合に役立ちます。
 
 ```sql
 WITH rg
@@ -106,7 +107,7 @@ ORDER BY
 ```
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>キューに配置されたクエリの検出とその他の DMV
-`sys.dm_pdw_exec_requests` DMV を使用すると、同時実行キューで待機中のクエリを特定できます。 同時実行スロットを待機しているクエリは、 **中断**状態となります。
+`sys.dm_pdw_exec_requests` DMV を使用すると、同時実行キューで待機中のクエリを特定できます。 同時実行スロットを待機しているクエリは、**中断**状態になります。
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -229,16 +230,6 @@ FROM    sys.dm_pdw_wait_stats w
 ```
 
 ## <a name="next-steps"></a>次の手順
-データベース ユーザーの管理とセキュリティの詳細については、「[SQL Data Warehouse でのデータベース保護][Secure a database in SQL Data Warehouse]」を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「 [セグメントの品質を向上させるためのインデックスの再構築]」を参照してください。
+データベース ユーザーの管理とセキュリティの詳細については、「[SQL Data Warehouse でのデータベース保護](sql-data-warehouse-overview-manage-security.md)」を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「 [セグメントの品質を向上させるためのインデックスの再構築](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)」を参照してください。
 
-<!--Image references-->
 
-<!--Article references-->
-[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
-[セグメントの品質を向上させるためのインデックスの再構築]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
-[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
-
-<!--MSDN references-->
-[Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
-
-<!--Other Web references-->

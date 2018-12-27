@@ -1,24 +1,25 @@
 ---
-title: "Ruby で Azure Service Bus キューを使用する方法 | Microsoft Docs"
-description: "Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Ruby で記述されています。"
+title: Ruby で Azure Service Bus キューを使用する方法 | Microsoft Docs
+description: Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Ruby で記述されています。
 services: service-bus-messaging
 documentationcenter: ruby
-author: sethmanheim
+author: spelluru
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0a11eab2-823f-4cc7-842b-fbbe0f953751
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 08/10/2017
-ms.author: sethm
-ms.openlocfilehash: 357a7277dd42b6973cf35a9f642b8eec36a745e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 09/10/2017
+ms.author: spelluru
+ms.openlocfilehash: 2ad5ac7b191e3be9fbb8eebb754fef2f430c0473
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407095"
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>Ruby で Service Bus キューを使用する方法
 
@@ -90,7 +91,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 メッセージが処理された後、`delete_queue_message()` メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、このプロセスは "*1 回以上の処理*" と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの `message_id` プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 * [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)の概要。

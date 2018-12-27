@@ -1,26 +1,27 @@
 ---
-title: "複数のサブネットを含んだ Azure 仮想ネットワーク (クラシック) を作成する | Microsoft Docs"
-description: "Azure で、複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する方法について説明します。"
+title: 複数のサブネットを含んだ Azure 仮想ネットワーク (クラシック) を作成する | Microsoft Docs
+description: Azure で、複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する方法について説明します。
 services: virtual-network
-documentationcenter: 
-author: jimdial
-manager: timlt
-editor: 
-tags: azure-resource-manager
-ms.assetid: 
+documentationcenter: ''
+author: genlin
+manager: cshepard
+editor: ''
+tags: azure-service-management
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
-ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 1ec6d8d5327ec6d5ebb92e125cb4c52a7a929c0e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 10/31/2018
+ms.author: genli
+ms.custom: ''
+ms.openlocfilehash: e40648ef47b108050486d43eefdb1564786c053e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421392"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する
 
@@ -38,7 +39,7 @@ ms.lasthandoff: 03/09/2018
 
 ## <a name="portal"></a>ポータル
 
-1. インターネット ブラウザーで [Azure Portal](https://portal.azure.com) を開きます。 [Azure アカウント](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)を使用してログインします。 Azure アカウントを持っていない場合、 [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)でサインアップできます。
+1. インターネット ブラウザーで [Azure Portal](https://portal.azure.com) を開きます。 [Azure アカウント](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)を使用してログインします。 Azure アカウントを持っていない場合、[無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)でサインアップできます。
 2. ポータルで **[リソースの作成]** をクリックします。
 3. 表示された **[新規]** ウィンドウの上部にある **[Marketplace を検索]** ボックスに「"*仮想ネットワーク*"」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それをクリックします。
 4. 表示された **[仮想ネットワーク]** ウィンドウの **[デプロイ モデルの選択]** ボックスで **[クラシック]** を選択し、**[作成]** をクリックします。 
@@ -162,7 +163,6 @@ ms.lasthandoff: 03/09/2018
 ## <a name="next-steps"></a>次の手順
 
 - すべての仮想ネットワークとサブネットの設定について詳しくは、[仮想ネットワークの管理](manage-virtual-network.md)、および[仮想ネットワークのサブネットの管理](virtual-network-manage-subnet.md)に関する記事をご覧ください。 運用環境の仮想ネットワークとサブネットを使用して別の要件を満たすには、さまざまなオプションがあります。
-- 受信方向と送信方向のサブネット トラフィックをフィルタリングするには、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を作成してサブネットに適用します。
 - [Windows 仮想マシン](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Linux 仮想マシン](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成して、既存の仮想ネットワークに接続します。
 - 同じ Azure の場所の 2 つの仮想ネットワークを接続するには、仮想ネットワーク間の[仮想ネットワーク ピアリング](create-peering-different-deployment-models.md)を作成します。 仮想ネットワーク (Resource Manager) を仮想ネットワーク (クラシック) にピアリングすることはできますが、2 つの仮想ネットワーク (クラシック) 間でピアリングを作成することはできません。
 - [VPN Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Azure ExpressRoute ](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)回線を使用して、仮想ネットワークをオンプレミスのネットワークに接続します。

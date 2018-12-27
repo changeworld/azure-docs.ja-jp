@@ -1,131 +1,171 @@
 ---
-title: "Kafka での Apache Spark 構造化ストリーミング - Azure HDInsight | Microsoft Docs"
-description: "Apache Spark ストリーミング (DStreams) を使って Apache Kafka 内外でデータを取得する方法について説明します。 この例では、Jupyter Notebook を使用して HDInsight 上で Spark からデータをストリームします。"
+title: チュートリアル:Apache Kafka での Apache Spark 構造化ストリーミング - Azure HDInsight
+description: Apache Spark ストリーミングを使用して、Apache Kafka 内外でデータを取得する方法について説明します。 このチュートリアルでは、Jupyter Notebook を使用して HDInsight の Spark からデータをストリーミングします。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 78f89d1355545a944d981d6d65ed41a1afa2fec3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.custom: hdinsightactive,seodec18
+ms.topic: tutorial
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 4ac341d780a3c348f9ba9f8fd0241c351bd5fdc5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162435"
 ---
-# <a name="use-spark-structured-streaming-with-kafka-on-hdinsight"></a>HDInsight 上で Kafka を用いて Spark 構造化ストリーミングを使用する
+# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>チュートリアル:HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用する
 
-Spark 構造化ストリーミングを使って、Azure HDInsight 上で Apache Kafka からデータを読み込む方法を説明します。
+このチュートリアルでは、Azure HDInsight で [Apache Kafka](https://kafka.apache.org/) による [Apache Spark 構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)を使用してデータを読み書きする方法について説明します。
 
-Spark 構造化ストリーミングは、Spark SQL に組み込まれたストリーミング処理エンジンであり、 静的データに対してバッチ計算と同様にストリーミング計算を表現できるようになります。 構造化ストリーミングの詳細については、「[Structured Streaming Programming Guide [Alpha]](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)」(構造化ストリーミングのプログラミング ガイド [アルファ]) をご覧ください。
+Spark 構造化ストリーミングは、Spark SQL に組み込まれたストリーミング処理エンジンであり、 静的データに対してバッチ計算と同様にストリーミング計算を表現できるようになります。 
+
+このチュートリアルでは、以下の内容を学習します。
+
+> [!div class="checklist"]
+> * Kafka での構造化ストリーミング
+> * Kafka クラスターと Spark クラスターの作成
+> * Spark への Notebook のアップロード
+> * ノートブックを使用する
+> * リソースのクリーンアップ
+
+このドキュメントの手順を完了したら、余分に課金されないようにするためにクラスターは削除してください。
+
+## <a name="prerequisites"></a>前提条件
+
+* HDInsight の Spark での [Jupyter Notebook](https://jupyter.org/) の使用方法を熟知していること。 詳細については、[HDInsight の Apache Spark を使用したデータの読み込みとクエリの実行](spark/apache-spark-load-data-run-query.md)に関するドキュメントを参照してください。
+
+* [Scala](https://www.scala-lang.org/) プログラミング言語の知識があること。 このチュートリアルで使用するコードは、Scala で記述されています。
+
+* Kafka トピックの作成方法を熟知していること。 詳細については、[HDInsight の Apache Kafka のクイック スタート](kafka/apache-kafka-get-started.md)に関するドキュメントを参照してください。
 
 > [!IMPORTANT]
-> この例では、HDInsight 3.6 上で Spark 2.1 を使用しました。 構造化ストリーミングは、Spark 2.1 では__アルファ__と見なされます。
+> このドキュメントの手順には、HDInsight の Spark クラスターと HDInsight の Kafka クラスターの両方を含む Azure リソース グループが必要です。 これらのクラスターは両方とも、Spark クラスターが Kafka クラスターと直接通信できるように、Azure Virtual Network 内に配置します。
+> 
+> 利便性のために、このドキュメントは、必要なすべての Azure リソースを作成できるテンプレートにリンクしています。 
 >
-> このドキュメントの手順では、HDInsight の Spark クラスターと HDInsight の Kafka クラスターの両方を含む Azure リソース グループを作成します。 これらのクラスターは両方とも、Spark クラスターが Kafka クラスターと直接通信できるように、Azure Virtual Network 内に配置します。
->
-> このドキュメントの手順を完了したら、余分に課金されないようにするためにクラスターは削除してください。
+> 仮想ネットワークでの HDInsight の使用方法の詳細については、[仮想ネットワークを使用した HDInsight の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するドキュメントをご覧ください。
+
+## <a name="structured-streaming-with-apache-kafka"></a>Apache Kafka での構造化ストリーミング
+
+Spark 構造化ストリーミングは、Spark SQL エンジンを基盤とするストリーム処理エンジンです。 構造化ストリーミングを使用すると、バッチ クエリと同様にストリーミング クエリを記述できます。
+
+次のコード スニペットは、Kafka からの読み取りとファイルへの保存を示しています。 最初のコード スニペットはバッチ操作であり、2 番目はストリーミング操作です。
+
+```scala
+// Read a batch from Kafka
+val kafkaDF = spark.read.format("kafka")
+                .option("kafka.bootstrap.servers", kafkaBrokers)
+                .option("subscribe", kafkaTopic)
+                .option("startingOffsets", "earliest")
+                .load()
+// Select data and write to file
+kafkaDF.select(from_json(col("value").cast("string"), schema) as "trip")
+                .write
+                .format("parquet")
+                .option("path","/example/batchtripdata")
+                .option("checkpointLocation", "/batchcheckpoint")
+                .save()
+```
+
+```scala
+// Stream from Kafka
+val kafkaStreamDF = spark.readStream.format("kafka")
+                .option("kafka.bootstrap.servers", kafkaBrokers)
+                .option("subscribe", kafkaTopic)
+                .option("startingOffsets", "earliest")
+                .load()
+// Select data from the stream and write to file
+kafkaStreamDF.select(from_json(col("value").cast("string"), schema) as "trip")
+                .writeStream
+                .format("parquet")
+                .option("path","/example/streamingtripdata")
+                .option("checkpointLocation", "/streamcheckpoint")
+                .start.awaitTermination(30000)
+```
+
+どちらのスニペットでも、データは Kafka から読み取られ、ファイルに書き込まれます。 これらの例の違いは次のとおりです。
+
+| Batch | ストリーミング |
+| --- | --- |
+| `read` | `readStream` |
+| `write` | `writeStream` |
+| `save` | `start` |
+
+ストリーミング操作では、30000 ミリ秒後にストリームを停止する、`awaitTermination(30000)` も使用されています。 
+
+Kafka で構造化ストリーミングを使用するには、プロジェクトに `org.apache.spark : spark-sql-kafka-0-10_2.11` パッケージの依存関係が必要です。 このパッケージのバージョンは、HDInsight の Spark のバージョンと一致する必要があります。 Spark 2.2.0 (HDInsight 3.6 で使用可能) の場合、さまざまなプロジェクトの種類の依存関係情報を [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar) で確認できます。
+
+このチュートリアルで提供される Jupyter Notebook では、次のセルでこのパッケージの依存関係を読み込みます。
+
+```
+%%configure -f
+{
+    "conf": {
+        "spark.jars.packages": "org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0",
+        "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11"
+    }
+}
+```
 
 ## <a name="create-the-clusters"></a>クラスターの作成
 
-HDInsight の Apache Kafka では、パブリック インターネットを介した Kafka ブローカーへのアクセスは提供されていません。 Kafka と通信するすべてのものは、Kafka クラスター内のノードと同じ Azure 仮想ネットワークに存在している必要があります。 この例では、Kafka クラスターと Spark クラスターの両方を Azure 仮想ネットワーク内に配置します。 次の図に、クラスター間の通信フローを示します。
+HDInsight の Apache Kafka では、パブリック インターネットを介した Kafka ブローカーへのアクセスは提供されていません。 Kafka を使用するものは、すべて同じ Azure 仮想ネットワークに属している必要があります。 このチュートリアルでは、Kafka クラスターと Spark クラスターの両方を同じ Azure 仮想ネットワーク内に配置します。 
+
+次の図に、Spark と Kafka の間の通信フローを示します。
 
 ![Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
 > [!NOTE]
 > Kafka サービスは、仮想ネットワーク内の通信に制限されます。 SSH や Ambari など、クラスター上の他のサービスは、インターネット経由でアクセスできます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
 
-Azure 仮想ネットワーク、Kafka、および Spark クラスターは手動で作成できますが、Azure Resource Manager テンプレートを使用する方が簡単です。 次の手順に従って、Azure 仮想ネットワーク、Kafka クラスター、および Spark クラスターを Azure サブスクリプションにデプロイします。
+Azure 仮想ネットワークを作成し、その仮想ネットワーク内に Kafka クラスターと Spark クラスターを作成するには、次の手順に従います。
 
 1. 次のボタンを使用して Azure にサインインし、Azure Portal でテンプレートを開きます。
     
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-kafka-structured-streaming%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Azure Resource Manager テンプレートは **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** にあります。
+    Azure Resource Manager テンプレートは、**https://raw.githubusercontent.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming/master/azuredeploy.json** にあります。
 
     このテンプレートでは、次のリソースを作成します。
 
     * HDInsight 3.6 クラスター上の Kafka。
-    * HDInsight 3.6 クラスター上の Spark
+    * HDInsight 3.6 クラスター上の Spark 2.2.0。
     * Azure Virtual Network (HDInsight クラスターを含む)
 
     > [!IMPORTANT]
-    > この例で使用する構造化ストリーミングのノートブックでは、HDInsight 3.6 上に Spark が必要です。 HDInsight 上で以前のバージョンの Spark を使用している場合は、ノートブックを使用するとエラーを受信します。
+    > このチュートリアルで使用する構造化ストリーミング Notebook では、HDInsight 3.6 上に Spark 2.2.0 が必要です。 HDInsight 上で以前のバージョンの Spark を使用している場合は、ノートブックを使用するとエラーを受信します。
 
-2. 以下の情報を使用して、**[カスタム デプロイ]** セクションに各エントリを入力します。
+2. 次の情報に従って、**[カスタマイズされたテンプレート]** セクションの各エントリに入力します。
+
+    | Setting | 値 |
+    | --- | --- |
+    | サブスクリプション | お使いの Azure サブスクリプション |
+    | リソース グループ | リソースが含まれるリソース グループ。 |
+    | 場所 | リソースが作成される Azure リージョン。 |
+    | [Spark Cluster Name]\(Spark クラスター名\) | Spark クラスターの名前。 最初の 6 文字は、Kafka クラスターの名前と異なるものにする必要があります。 |
+    | [Kafka Cluster Name]\(Kafka クラスター名\) | Kafka クラスターの名前。 最初の 6 文字は、Spark クラスターの名前と異なるものにする必要があります。 |
+    | [Cluster Login User Name]\(クラスター ログイン ユーザー名\) | クラスターの管理者ユーザー名。 |
+    | [クラスター ログイン パスワード] | クラスターの管理者ユーザー パスワード。 |
+    | [SSH ユーザー名] | クラスター用に作成する SSH ユーザー。 |
+    | [SSH パスワード] | SSH ユーザーのパスワード。 |
    
-    ![HDInsight のカスタム デプロイ](./media/hdinsight-apache-spark-with-kafka/parameters.png)
-   
-    * **[リソース グループ]**: グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
-
-    * **[場所]**: 地理的に近い場所を選択します。
-
-    * **[Base Cluster Name] \(ベース クラスター名)**: この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdi**」と入力すると、spark-hdi__ という名前の Spark クラスターと、**kafka-hdi** という名前の Kafka クラスターが作成されます。
-
-    * **[Cluster Login User Name] \(クラスター ログイン ユーザー名)**: Spark クラスターと Kafka クラスターの管理者のユーザー名。
-
-    * **[クラスター ログイン パスワード]**: Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。
-
-    * **[SSH ユーザー名]**: Spark クラスターおよび Kafka クラスターの作成に使用する SSHユーザー。
-
-    * **[SSH パスワード]**: Spark クラスターおよび Kafka クラスター用の SSH ユーザーのパスワード。
+    ![カスタマイズされたテンプレートのスクリーンショット](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
 3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
 
-4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
-
-リソースが作成されると、概要ページが表示されます。
-
-![vnet とクラスターのリソース グループ情報](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
-
-> [!IMPORTANT]
-> 各 HDInsight クラスターの名前が **spark-BASENAME** および **kafka-BASENAME** であることに注目してください。BASENAME はテンプレートで指定した名前です。 これらの名前は、後の手順でクラスターに接続するときに使用します。
-
-## <a name="get-the-kafka-brokers"></a>Kafka ブローカーを取得する
-
-この例のコードは、Kafka クラスターにある Kafka ブローカー ホストに接続します。 2 つの Kafka ブローカー ホストのアドレスを検出するには、以下の PowerShell または Bash の例を使います。
-
-```powershell
-$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
-$clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
-    -Credential $creds
-$respObj = ConvertFrom-Json $resp.Content
-$brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
-($brokerHosts -join ":9092,") + ":9092"
-```
-
-```bash
-curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
-```
-
-プロンプトが表示されたら、クラスター ログイン (管理者) アカウントのパスワードを入力します。
+4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。 
 
 > [!NOTE]
-> この例では、`$CLUSTERNAME` に Kafka クラスターの名前に含めることを前提としています。
->
-> この例では、[jq](https://stedolan.github.io/jq/) ユーティリティを使って JSON ドキュメントからのデータを解析します。
+> クラスターの作成には最大で 20 分かかります。
 
-出力は次のテキストのようになります。
-
-`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
-
-このドキュメントの以降のセクションで使用するため、この情報を保存してください。
-
-## <a name="get-the-notebooks"></a>ノートブックを取得する
-
-このドキュメントに示す例のコードは、[https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming) で入手できます。
-
-## <a name="upload-the-notebooks"></a>ノートブックをアップロードする
+## <a name="upload-the-notebook"></a>Notebook のアップロード
 
 プロジェクトから HDInsight クラスター上の Spark へノートブックをアップロードするには、以下の手順を使用します。
+
+1. [https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming) からプロジェクトをダウンロードします。
 
 1. Web ブラウザーで、Spark クラスターの Jupyter Notebook に接続します。 次の URL の`CLUSTERNAME` をお使いの __Spark__ クラスターの名前に置き換えます。
 
@@ -133,29 +173,39 @@ curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUST
 
     プロンプトが表示されたら、クラスターの作成時に使用したログイン (管理者) パスワードを入力します。
 
-2. ページの右上隅の __[アップロード]__ ボタンを使用して、__Stream-Tweets-To_Kafka.ipynb__ ファイルをクラスターにアップロードします。 __[開く]__ を選択して、アップロードを開始します。
+2. ページの右上隅の __[アップロード]__ ボタンを使用して、__spark-structured-streaming-kafka.ipynb__ ファイルをクラスターにアップロードします。 __[開く]__ を選択して、アップロードを開始します。
 
     ![[アップロード] ボタンを使用して、Notebook を選択してアップロード](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-button.png)
 
     ![KafkaStreaming.ipynb ファイルを選択する](./media/hdinsight-apache-kafka-spark-structured-streaming/select-notebook.png)
 
-3. ノートブックの一覧で __Stream-Tweets-To_Kafka.ipynb__ エントリを検索し、横にある __[アップロード]__ ボタンを選択します。
+3. ノートブックの一覧で __spark-structured-streaming-kafka.ipynb__ エントリを検索し、横にある __[アップロード]__ ボタンを選択します。
 
     ![ノートブックをアップロードするために KafkaStreaming.ipynb エントリの [アップロード] ボタンを使用する](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-notebook.png)
 
-4. 手順 1 ～ 3 を繰り返して、__Spark-Structured-Streaming-From-Kafka.ipynb__ ノートブックを読み込みます。
 
-## <a name="load-tweets-into-kafka"></a>Kafka にツイートを読み込む
+## <a name="use-the-notebook"></a>ノートブックを使用する
 
-ファイルをアップロードした後、__Stream-Tweets-To_Kafka.ipynb__ エントリを選択してノートブックを開きます。 ノートブックの手順に従って Kafka にツイートを読み込みます。
+ファイルをアップロードした後、__spark-structured-streaming-kafka.ipynb__ エントリを選択してノートブックを開きます。 HDInsight 上の Kafka で Spark 構造化ストリーミングを使用する方法については、ノートブックの指示に従ってください。
 
-## <a name="process-tweets-using-spark-structured-streaming"></a>Spark 構造化ストリーミングを使用してツイートを処理する
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-Jupyter Notebook のホーム ページから、__Spark-Structured-Streaming-From-Kafka.ipynb__ エントリを選択します。 ノートブックの手順に従い、Spark 構造化ストリーミングを使って Kafka からツイートを読み込みます。
+このチュートリアルで作成したリソースをクリーンアップするために、リソース グループを削除することができます。 リソース グループを削除すると、関連付けられている HDInsight クラスター、およびリソース グループに関連付けられているその他のリソースも削除されます。
+
+Azure Portal を使用してリソース グループを削除するには:
+
+1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、__[リソース グループ]__ を選択して、リソース グループの一覧を表示します。
+2. 削除するリソース グループを見つけて、一覧の右側にある __[詳細]__ ボタン ([...]) を右クリックします。
+3. __[リソース グループの削除]__ を選択し、確認します。
+
+> [!WARNING]
+> HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。
+> 
+> HDInsight クラスター上の Kafka を削除すると、Kafka に格納されているすべてのデータが削除されます。
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Spark 構造化ストリームの使用方法を説明しました。Spark および Kafka の操作に関する詳細については、以下のドキュメントをご覧ください。
+このチュートリアルでは、[Apache Spark 構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)を使用して、HDInsight の [Apache Kafka](https://kafka.apache.org/) からデータを読み書きする方法を説明しました。 Kafka で [Apache Storm](https://storm.apache.org/) を使用する方法については、次のリンクを参照してください。
 
-* [Kafka で Spark ストリーミングを (DStream) を使用する方法](hdinsight-apache-spark-with-kafka.md)
-* [HDInsight で Jupyter Notebook と Spark を使い始める](spark/apache-spark-jupyter-spark-sql.md)
+> [!div class="nextstepaction"]
+> [Apache Kafka で Apache Storm を使用する](hdinsight-apache-storm-with-kafka.md)

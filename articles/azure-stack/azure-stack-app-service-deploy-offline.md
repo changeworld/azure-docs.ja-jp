@@ -12,20 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 7a44c5d182aa3c66c07c3dad8c82e171429f2ee4
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 54ceadc8173526e8638e70c8c859109eea157fa7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614040"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>App Service リソースプロバイダーを AD FS によって保護されているオフラインの Azure Stack 環境に追加する
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 > [!IMPORTANT]
-> Azure App Service をデプロイする前に、Azure Stack 統合システムに 1802 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
+> Azure App Service 1.4 をデプロイする前に、Azure Stack 統合システムに 1809 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
 >
 >
 
@@ -73,16 +74,21 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
 5. サード パーティのライセンス条項を確認して同意し、**[次へ]** をクリックします。
 
-6. App Service クラウド構成情報が正しいことを確認します。 Azure Stack Development Kit の展開中に既定の設定を使用した場合は、ここで既定値を受け入れることができます。 ただし、Azure Stack のデプロイ時にオプションをカスタマイズした場合、または統合システムにデプロイしている場合は、それを反映するように、このウィンドウで値を編集する必要があります。 たとえば、ドメイン サフィックス mycloud.com を使用する場合は、Azure Stack テナントの Azure Resource Manager エンドポイントを management.<region>.mycloud.com に変更する必要があります。自分の情報を確認したら、**[次へ]** をクリックします。
+6. App Service クラウド構成情報が正しいことを確認します。 Azure Stack Development Kit の展開中に既定の設定を使用した場合は、ここで既定値を受け入れることができます。 ただし、Azure Stack のデプロイ時にオプションをカスタマイズした場合、または統合システムにデプロイしている場合は、それを反映するように、このウィンドウで値を編集する必要があります。 たとえば、ドメイン サフィックス mycloud.com を使用する場合は、Azure Stack テナントの Azure Resource Manager エンドポイントを management.<region>.mycloud.com に変更する必要があります。 自分の情報を確認したら、**[次へ]** をクリックします。
 
     ![App Service インストーラー][3]
 
 7. 次のページで、次の操作を行います。
     1. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスの横にある **[接続]** をクリックします。
-        - 管理者アカウントを指定します。 たとえば、「cloudadmin@azurestack.local」のように入力します。 パスワードを入力し、**[サインイン]** をクリックします。
-    2. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスで、自分のサブスクリプションを選びます。
+        - 管理者アカウントを指定します。 たとえば、「 cloudadmin@azurestack.local 」のように入力します。 パスワードを入力し、**[サインイン]** をクリックします。
+    2. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスで、**[Default Provider Subscription]\(既定のプロバイダー サブスクリプション\)** を選びます。
+    
+    > [!NOTE]
+    > App Service は、**既定のプロバイダー サブスクリプション**にのみデプロイできます。
+    >
+    
     3. **[Azure Stack Locations]\(Azure Stack の場所\)** ボックスで、デプロイしているリージョンに対応する場所を選びます。 たとえば、Azure Stack Development Kit にデプロイしている場合は、**[ローカル]** を選びます。
-    4. **[次へ]** をクリックします。
+    4.  **[次へ]** をクリックします。
 
     ![App Service インストーラー][4]
 
@@ -98,10 +104,10 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
 9. ファイル共有の情報を入力してから、**[次へ]** をクリックします。 ファイル共有のアドレスには、ファイル サーバーの完全修飾ドメイン名、または IP アドレスを使用する必要があります。 たとえば、\\\appservicefileserver.local.cloudapp.azurestack.external\websites、または \\\10.0.0.1\websites を使用します。
 
-> [!NOTE]
-> インストーラーは、続行する前にファイル共有への接続をテストしようとします。  ただし、既存の仮想ネットワークにデプロイすることを選んだ場合、インストーラーはファイル共有に接続できない可能性があり、続行するかどうかを確認する警告が表示されます。  ファイル共有情報を確認し、正しい場合は続行します。
->
->
+    > [!NOTE]
+    > インストーラーは、続行する前にファイル共有への接続性をテストしようとします。  ただし、既存の仮想ネットワークにデプロイすることを選んだ場合、インストーラーはファイル共有に接続できない可能性があり、続行するかどうかを確認する警告が表示されます。  ファイル共有情報を確認し、正しい場合は続行します。
+    >
+    >
 
    ![App Service インストーラー][8]
 
@@ -110,7 +116,7 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
     2. **[Identity Application certificate file]\(ID アプリケーションの証明書ファイル\)** ボックスで、証明書ファイルの場所を入力 (または参照) します。
     3. **[Identity Application certificate password]\(ID アプリケーションの証明書パスワード\)** ボックスで、証明書のパスワードを入力します。 このパスワードは、証明書作成のスクリプトを使ったときに書き留めたものです。
     4. **[Azure Resource Manager root certificate file]\(Azure Resource Manager のルート証明書ファイル\)** ボックスで、証明書ファイルの場所を入力 (または参照) します。
-    5. **[次へ]** をクリックします。
+    5.  **[次へ]** をクリックします。
 
     ![App Service インストーラー][10]
 
@@ -126,12 +132,22 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
     ![App Service インストーラー][11]
 
-12. App Service リソースプロバイダー データベースをホストするために使うサーバー インスタンスについて、SQL Server の詳細を入力してから、**[次へ]** をクリックします。 インストーラーにより、SQL 接続のプロパティが検証されます。
+12. App Service リソースプロバイダー データベースをホストするために使うサーバー インスタンスについて、SQL Server の詳細を入力してから、**[次へ]** をクリックします。 インストーラーにより、SQL 接続のプロパティが検証されます。 内部 IP または SQL Server 名の完全修飾ドメイン名を入力する**必要**があります。
 
-> [!NOTE]
-> インストーラーは、続行する前に SQLServer への接続をテストしようとします。  ただし、既存の仮想ネットワークにデプロイすることを選んだ場合、インストーラーは SQL Server に接続できない可能性があり、続行するかどうかを確認する警告が表示されます。  SQL Server 情報を確認し、正しい場合は続行します。
->
->
+    > [!NOTE]
+    > インストーラーは、続行する前に SQL Server への接続性をテストしようとします。  ただし、既存の仮想ネットワークにデプロイすることを選んだ場合、インストーラーは SQL Server に接続できない可能性があり、続行するかどうかを確認する警告が表示されます。  SQL Server 情報を確認し、正しい場合は続行します。
+    >
+    > Azure App Service on Azure Stack 1.3 以降では、インストーラーは、SQL Server がデータベース包含を SQL Server レベルで有効にしているかどうかを確認します。  そうなっていない場合は、次の例外が表示されます。
+    > ```sql
+    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
+    >    ***********************************************************
+    >    sp_configure 'contained database authentication', 1;  
+    >    GO  
+    >    RECONFIGURE;  
+    >    GO
+    >    ***********************************************************
+    > ```
+    > 詳細については、[Azure App Service on Azure Stack 1.3 のリリース ノート](azure-stack-app-service-release-notes-update-three.md)を参照してください。
    
    ![App Service インストーラー][12]
 
@@ -142,9 +158,9 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
      >
      >
 
-    | 役割 | インスタンスの最小値 | SKU の最小値 | メモ |
+    | Role | インスタンスの最小値 | SKU の最小値 | メモ |
     | --- | --- | --- | --- |
-    | コントローラー | 1 | Standard_A1 - (1 vCPU、1792 MB) | App Service クラウドの正常性を管理および維持します。 |
+    | コントローラー | 1 | Standard_A2 - (2 vCPU、3584 MB) | App Service クラウドの正常性を管理および維持します。 |
     | 管理 | 1 | Standard_A2 - (2 vCPU、3584 MB) | App Service Azure Resource Manager および API のエンドポイント、ポータル拡張機能 (管理、テナント、Functions ポータル)、データ サービスを管理します。 フェールオーバーをサポートする場合は、お勧めのインスタンス数は 2 つに増えます。 |
     | 発行元 | 1 | Standard_A1 - (1 vCPU、1792 MB) | FTP および Web デプロイによってコンテンツを公開します。 |
     | FrontEnd | 1 | Standard_A1 - (1 vCPU、1792 MB) | App Service アプリケーションに要求をルーティングします。 |
@@ -153,14 +169,14 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
     ![App Service インストーラー][14]
 
     > [!NOTE]
-    > **Windows Server 2016 Core は、Azure Stack 上で Azure App Service と共に使用するためにサポートされているプラットフォーム イメージではありません。運用デプロイには評価版イメージを使用しないでください。**
+    > **Windows Server 2016 Core は、Azure Stack 上で Azure App Service と共に使用するためにサポートされているプラットフォーム イメージではありません。運用デプロイには評価版イメージを使用しないでください。Azure App Service on Azure Stack では、デプロイに使用されるイメージで Microsoft .Net 3.5.1 SP1 をアクティブにすることが必要です。 Marketplace にシンジケート化された Windows Server 2016 イメージでは、この機能は有効ではありません。そのため、この機能をあらかじめ有効にして Windows Server 2016 イメージを作成し、使用する必要があります。**
 
-14. **[プラットフォーム イメージの選択]** ボックスで、App Service クラウド用のコンピューティング リソースプロバイダーで選択可能な項目の中から、ご自分のデプロイの Windows Server 2016 仮想マシン イメージを選びます。 **[次へ]** をクリックします。
+14. **[プラットフォーム イメージの選択]** ボックスで、App Service クラウド用のコンピューティング リソースプロバイダーで選択可能な項目の中から、ご自分のデプロイの Windows Server 2016 仮想マシン イメージを選びます。  **[次へ]** をクリックします。
 
 15. 次のページで、次の操作を行います。
      1. Worker ロールの仮想マシン管理者のユーザー名とパスワードを入力します。
      2. その他のロールの仮想マシン管理者のユーザー名とパスワードを入力します。
-     3. **[次へ]** をクリックします。
+     3.  **[次へ]** をクリックします。
 
     ![App Service インストーラー][16]
 
@@ -184,19 +200,32 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 2. 概要の状態で、**[状態]** に **[ロールはいずれも準備ができています]** と表示されていることを確認します。
 
     ![App Service の管理](media/azure-stack-app-service-deploy/image12.png)
+    
+> [!NOTE]
+> ファイル サーバーに接続するために既存の仮想ネットワークと内部 IP アドレスへデプロイする場合は、送信セキュリティ規則を追加して、worker サブネットとファイル サーバー間の SMB トラフィックを有効にする必要があります。  これを行うには、管理者ポータルで WorkersNsg に移動し、次のプロパティを持つ送信セキュリティ規則を追加します。
+> * 送信元: 任意
+> * 送信元ポート範囲: *
+> * 送信先: IP アドレス
+> * 送信先 IP アドレス: ファイルサーバーの IP の範囲
+> * 送信先ポート範囲: 445
+> * プロトコル: TCP
+> * アクション: 許可
+> * 優先順位: 700
+> * 名前: Outbound_Allow_SMB445
+>
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>App Service on Azure Stack を試してみる
 
 App Service リソースプロバイダーをデプロイして登録したら、テストしてユーザーが Web アプリと API アプリをデプロイできることを確認します。
 
 > [!NOTE]
-> プラン内に Microsoft.Web 名前空間があるサービスを作る必要があります。 その後、このオファーをサブスクライブするテナント サブスクリプションが必要となります。 詳しくは、「[Azure Stack でのオファーの作成](azure-stack-create-offer.md)」および「[Azure Stack でのプランの作成](azure-stack-create-plan.md)」をご覧ください。
+> プラン内に Microsoft.Web 名前空間があるオファーを作る必要があります。 その後、このオファーをサブスクライブするテナント サブスクリプションが必要となります。 詳しくは、「[Azure Stack でのオファーの作成](azure-stack-create-offer.md)」および「[Azure Stack でのプランの作成](azure-stack-create-plan.md)」をご覧ください。
 >
 App Service on Azure Stack を使うアプリケーションを作るには、テナント サブスクリプションが*必要です*。 管理ポータル内でサービス管理者が実行できる機能は、App Service のリソースプロバイダー管理に関連するものだけです。 これらの機能には、容量の追加、展開ソースの構成、Worker 層と SKU の追加などがあります。
 >
 3 番目のテクニカル プレビューの時点では、Web アプリ、API アプリ、Azure Functions アプリを作るには、テナント ポータルを使う必要があり、テナント サブスクリプションがある必要があります。
 
-1. Azure Stack テナント ポータルで、**[新規]**  >  **[Web + モバイル]**  >  **[Web アプリ]** の順にクリックします。
+1. Azure Stack テナント ポータルで、**[+ リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** の順にクリックします。
 
 2. **[Web アプリ]** ブレードで、**[Web アプリ]** ボックスに名前を入力します。
 

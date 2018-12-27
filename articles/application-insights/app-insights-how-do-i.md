@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights での作業 | Microsoft Docs"
-description: "Application Insights での FAQ。"
+title: Azure Application Insights での作業 | Microsoft Docs
+description: Application Insights での FAQ。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: a32127f14c93012b5ace11ff982824f9ecba7d94
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8cee346a45cd20e7dd677fd7f2efed5500175598
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096396"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -29,9 +30,9 @@ ms.lasthandoff: 11/01/2017
 
 ![](./media/app-insights-how-do-i/030-server.png)
 
-アプリがエラー コードを返すことによって負荷の兆候を示す場合もあります。 **[失敗した要求]**でアラートを設定します。
+アプリがエラー コードを返すことによって負荷の兆候を示す場合もあります。 **[失敗した要求]** でアラートを設定します。
 
-**[サーバーの例外]**でアラートを設定する場合は、データを表示するために [追加セットアップ](app-insights-asp-net-exceptions.md) が必要になる場合があります。
+**[サーバーの例外]** でアラートを設定する場合は、データを表示するために [追加セットアップ](app-insights-asp-net-exceptions.md) が必要になる場合があります。
 
 ### <a name="email-on-exceptions"></a>例外での電子メール
 1. [例外の監視を設定します](app-insights-asp-net-exceptions.md)

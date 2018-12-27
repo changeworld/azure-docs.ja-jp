@@ -1,26 +1,21 @@
 ---
-title: "Azure Power BI ワークスペース コレクションでレポートを埋め込む | Microsoft Docs"
-description: "Power BI ワークスペース コレクションでレポートをアプリケーションに埋め込む方法について説明します。"
+title: Azure Power BI ワークスペース コレクションでレポートを埋め込む | Microsoft Docs
+description: Power BI ワークスペース コレクションでレポートをアプリケーションに埋め込む方法について説明します。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+author: markingmyname
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 56e7ca90132527c0ef9d4bd478e99b75ca055272
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 94476486ed87662f3d6b989b8d5360dd792f8824
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041182"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでレポートを埋め込む
 
@@ -116,7 +111,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="embed-using-javascript"></a>JavaScript を使用して埋め込む
 
-アクセス トークンとレポート ID を取得したら、JavaScript を使用してレポートを埋め込むことができます。 そのためには、NuGet [Power BI JavaScript パッケージ](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)をインストールする必要があります。 embedUrl は https://embedded.powerbi.com/appTokenReportEmbed になります。
+アクセス トークンとレポート ID を取得したら、JavaScript を使用してレポートを埋め込むことができます。 そのためには、NuGet [Power BI JavaScript パッケージ](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)をインストールする必要があります。 embedUrl は https://embedded.powerbi.com/appTokenReportEmbed です。
 
 > [!NOTE]
 > [JavaScript によるレポートの埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)を使用して、機能をテストできます。 ここでは、使用可能なさまざまな操作のコード例も紹介されています。
@@ -146,7 +141,7 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 
 ### <a name="set-the-size-of-embedded-elements"></a>埋め込み要素のサイズを設定する
 
-レポートは、コンテナーのサイズに基づいて自動的に埋め込まれます。 埋め込まれた項目の既定のサイズは、幅と高さの CSS クラス属性またはインライン スタイルを追加するだけで上書きできます。
+レポートは、コンテナーのサイズに基づいて自動的に埋め込まれます。 埋め込まれた項目の既定のサイズは、幅と高さの CSS クラス属性またはインライン スタイルを追加するだけでオーバーライドできます。
 
 ## <a name="see-also"></a>関連項目
 

@@ -1,11 +1,29 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 09/17/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 218fc33390575a3df96d0b7d7696b3085c38c8f2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263895"
+---
 > [!div class="op_single_selector"]
-> * [Windows 上の C](../articles/iot-suite/iot-suite-connecting-devices.md)
-> * [Linux 上の C](../articles/iot-suite/iot-suite-connecting-devices-linux.md)
-> * [Node.js (汎用)](../articles/iot-suite/iot-suite-connecting-devices-node.md)
-> * [Raspberry Pi の Node.js](../articles/iot-suite/iot-suite-connecting-pi-node.md)
-> * [Raspberry Pi の C](../articles/iot-suite/iot-suite-connecting-pi-c.md)
+> * [Windows 上の C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
+> * [Linux 上の C](../articles/iot-accelerators/iot-accelerators-connecting-devices-linux.md)
+> * [Raspberry Pi の C](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
+> * [Node.js (汎用)](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
+> * [Raspberry Pi の Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
+> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
-このチュートリアルでは、次のテレメトリを、リモート監視の[構成済みソリューション](../articles/iot-suite/iot-suite-what-are-preconfigured-solutions.md)に送信する **Chiller** デバイスを実装します。
+このチュートリアルでは、次のテレメトリを、リモート監視の[ソリューション アクセラレータ](../articles/iot-accelerators/about-iot-accelerators.md)に送信する **Chiller** デバイスを実装します。
 
 * 気温
 * 圧力
@@ -19,17 +37,17 @@
 * ソリューションの **[デバイス]** ページからトリガーされたアクションに応答する。
 * ソリューションの **[デバイス]** ページから送信された構成変更に応答する。
 
-このチュートリアルを完了するには、アクティブな Azure アカウントが必要になります。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+このチュートリアルを完了するには、アクティブな Azure アカウントが必要になります。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 ## <a name="before-you-start"></a>開始する前に
 
-デバイス用のコードを作成する前に、リモート監視構成済みソリューションをデプロイし、そのソリューションに新しい物理デバイスを追加します。
+デバイス用のコードを作成する前に、リモート監視ソリューション アクセラレータをデプロイし、そのソリューションに新しい物理デバイスを追加します。
 
-### <a name="deploy-your-remote-monitoring-preconfigured-solution"></a>リモート監視構成済みソリューションをデプロイする
+### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをデプロイする
 
-このチュートリアルで作成する **Chiller** デバイスは、[リモート監視](../articles/iot-suite/iot-suite-remote-monitoring-explore.md)構成済みソリューションのインスタンスにデータを送信します。 リモート監視構成済みソリューションを Azure アカウントにまだプロビジョニングしていない場合は、「[Deploy the remote monitoring preconfigured solution (リモート監視構成済みソリューションをデプロイする)](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)」を参照してください
+このチュートリアルで作成する **Chiller** デバイスは、[リモート監視](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)ソリューション アクセラレータのインスタンスにデータを送信します。 リモート監視ソリューション アクセラレータを Azure アカウントにまだプロビジョニングしていない場合は、「[Deploy the remote monitoring solution accelerator (リモート監視ソリューション アクセラレータをデプロイする)](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)」を参照してください
 
-リモート監視ソリューションのデプロイ プロセスが完了したら、 **[起動]** をクリックしてブラウザーでソリューション ダッシュボードを開きます。
+リモート監視ソリューションのデプロイ プロセスが完了したら、**[起動]** をクリックしてブラウザーでソリューション ダッシュボードを開きます。
 
 ![ソリューション ダッシュボード](media/iot-suite-selector-connecting/dashboard.png)
 
@@ -38,7 +56,7 @@
 > [!NOTE]
 > ソリューションにデバイスを既に追加している場合は、この手順を省略して構いません。 ただし、次の手順では、デバイスの接続文字列が必要です。 デバイスの接続文字列は、[Azure Portal](https://portal.azure.com) から、または [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI ツールを使用して取得できます。
 
-デバイスが構成済みソリューションに接続するには、有効な資格情報を使用して IoT Hub に対してデバイス自身の ID を証明する必要があります。 ソリューションにデバイスを追加するときに、これらの資格情報を含むデバイスの接続文字列を保存できます。 このチュートリアルの後半で、クライアント アプリケーションにデバイスの接続文字列を含めます。
+デバイスがソリューション アクセラレータに接続するには、有効な資格情報を使用して IoT Hub に対してデバイス自身の ID を証明する必要があります。 ソリューションにデバイスを追加するときに、これらの資格情報を含むデバイスの接続文字列を保存できます。 このチュートリアルの後半で、クライアント アプリケーションにデバイスの接続文字列を含めます。
 
 デバイスをリモート監視ソリューションに追加するには、ソリューションの **[デバイス]** ページで次の手順を実行します。
 
@@ -54,9 +72,9 @@
 
     ![資格情報の取得](media/iot-suite-selector-connecting/credentials.png)
 
-これで、物理デバイスをリモート監視構成済みソリューションに追加して、デバイスの接続文字列をメモできました。 以降のセクションでは、デバイスの接続文字列を使用してソリューションに接続するクライアント アプリケーションを実装します。
+これで、物理デバイスをリモート監視ソリューション アクセラレータに追加して、デバイスの接続文字列をメモできました。 以降のセクションでは、デバイスの接続文字列を使用してソリューションに接続するクライアント アプリケーションを実装します。
 
-クライアント アプリケーションでは、組み込みの **Chiller** デバイス モデルが実装されます。 構成済みソリューションのデバイス モデルは、デバイスについて次の情報を指定します。
+クライアント アプリケーションでは、組み込みの **Chiller** デバイス モデルが実装されます。 ソリューション アクセラレータのデバイス モデルは、デバイスについて次の情報を指定します。
 
 * デバイスがソリューションにレポートするプロパティ。 たとえば、**Chiller** デバイスは、そのファームウェアと位置に関する情報をレポートします。
 * デバイスがソリューションに送信するテレメトリの種類。 たとえば、**Chiller** デバイスは、温度、湿度、および気圧の値を送信します。

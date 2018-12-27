@@ -1,24 +1,19 @@
 ---
-title: "Node.js での Azure Search の使用 | Microsoft Docs"
-description: "プログラミング言語として Node.js を使用して Azure のホスト型クラウド検索サービスに基づいた検索アプリケーションを作成する手順を示します。"
+title: Node.js での Azure Search の使用 | Microsoft Docs
+description: プログラミング言語として Node.js を使用して Azure のホスト型クラウド検索サービスに基づいた検索アプリケーションを作成する手順を示します。
+author: jj09
+manager: jlembicz
 services: search
-documentationcenter: 
-author: EvanBoyle
-manager: pablocas
-editor: v-lincan
-ms.assetid: 0625dc1b-9db6-40d5-ba9a-4738b75cbe19
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: hero-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/26/2017
-ms.author: evboyle
-ms.openlocfilehash: 511f3327972672deaa321fb34bc5f91d355370a2
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.author: jjed
+ms.openlocfilehash: 713e5304ca54039413f68ebc189dd049e77cdaa0
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527577"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js での Azure Search の使用
 > [!div class="op_single_selector"]
@@ -58,7 +53,7 @@ ms.lasthandoff: 01/18/2018
 次のいずれかの方法を使用してサンプルをダウンロードします。
 
 1. [search-node-indexer-demo](https://github.com/Azure-Samples/search-node-indexer-demo) に移動します。
-2. **[Download ZIP]**をクリックして .zip ファイルを保存した後、すべてのファイルをコンテナーに抽出します。
+2. **[Download ZIP]** をクリックして .zip ファイルを保存した後、すべてのファイルをコンテナーに抽出します。
 
 以降のすべてのファイル変更および実行ステートメントは、このフォルダー内のファイルに対して行われます。
 
@@ -106,7 +101,7 @@ USGS データ セットには、ロードアイランド州に関連するレ�
 
 Azure Search についての知識が既にある場合は、このサンプルを基にして、サジェスター (先行入力またはオートコンプリート クエリ)、フィルター、ファセット ナビゲーションなどを試すことができます。 また、件数を追加してドキュメントを一括処理することで検索結果の表示を改善し、ユーザーが結果をページ移動できるようにすることもできます。
 
-Azure Search を初めて使用する場合は、 他のチュートリアルも試して、作成できるものについての理解を深めることをお勧めします。 他のリソースについては、[ドキュメントのページ](https://azure.microsoft.com/documentation/services/search/)を参照してください。 [ビデオとチュートリアルの一覧](search-video-demo-tutorial-list.md)のリンクから、さらに多くの情報にアクセスすることもできます。
+Azure Search を初めて使用する場合は、 他のチュートリアルも試して、作成できるものについての理解を深めることをお勧めします。 他のリソースについては、[ドキュメントのページ](https://azure.microsoft.com/documentation/services/search/)を参照してください。 
 
 <!--Image references-->
 [1]: ./media/search-get-started-Nodejs/create-search-portal-1.PNG

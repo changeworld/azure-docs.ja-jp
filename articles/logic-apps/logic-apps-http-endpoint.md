@@ -1,12 +1,12 @@
 ---
-title: "HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする - Azure Logic Apps | Microsoft Docs"
-description: "HTTP エンドポイントを設定し、Azure Logic Apps のワークフローを呼び出したり、トリガーしたり、入れ子にします"
+title: HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする - Azure Logic Apps | Microsoft Docs
+description: HTTP エンドポイントを設定し、Azure Logic Apps のワークフローを呼び出したり、トリガーしたり、入れ子にします
 services: logic-apps
-keywords: "ワークフロー, HTTP エンドポイント"
+keywords: ワークフロー, HTTP エンドポイント
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.service: logic-apps
 ms.devlang: na
@@ -16,11 +16,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: de4f4ee086fbf3799fcac1f1b008d9237b5e7a09
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 7920fee1bacf569ac41c36142fc68080b4de5780
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230490"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>ロジック アプリで HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする
 
@@ -244,7 +245,7 @@ HTTP エンドポイントを作成したら、完全な URL への `POST` メ�
 
 応答には、次のプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | StatusCode |受信要求に応答するための HTTP 状態コードを指定します。 2xx、4xx、または 5xx で始まる任意の有効な状態コードを使用できます。 ただし、3xx 状態コードは指定できません。 |
 | headers |応答に含める任意の数のヘッダーを定義します。 |
@@ -311,7 +312,7 @@ A: 変更内容を以下にまとめました。
 
 [Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)では、質問の投稿や質問への回答を行うことができるほか、他の Azure Logic Apps ユーザーがどのようなことを行っているかがわかります。
 
-[Azure Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Azure Logic Apps とコネクタの改善にご協力ください。
+[Azure Logic Apps ユーザー フィードバック サイト](https://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Azure Logic Apps とコネクタの改善にご協力ください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,26 +1,20 @@
 ---
-title: Azure HDInsight における Phoenix のパフォーマンス | Microsoft Docs
+title: Azure HDInsight における Phoenix のパフォーマンス
 description: Phoenix のパフォーマンスを最適化するためのベスト プラクティス。
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 42b95d6b67f3449a2de2619f0a25b3b8f798950d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: ff194ef7f5ae609eba5334eb5c66db02d660ab08
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049633"
 ---
 # <a name="phoenix-performance-best-practices"></a>Phoenix のパフォーマンスのベスト プラクティス
 

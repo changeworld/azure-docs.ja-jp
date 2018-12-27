@@ -1,26 +1,20 @@
 ---
-title: "スクリプト アクションを使用して Hadoop クラスターに Solr をインストールする - Azure | Microsoft Docs"
-description: "Script Action を使って HDInsight クラスターを Solr でカスタマイズする方法について説明します。"
+title: スクリプト アクションを使用して Hadoop クラスターに Solr をインストールする - Azure
+description: Script Action を使って HDInsight クラスターを Solr でカスタマイズする方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: b1e6f338-8ac1-4b38-bbb5-2f7388b9de3b
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2016
-ms.author: nitinme
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6efb7ea26c3cdf7748fff4b02b5810c85cc41e1a
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: 6a3f9928fa685c36a0495ba5d423c3be7bff2bea
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009168"
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Windows ベースの HDInsight クラスターに Solr をインストールして使用する
 
@@ -30,7 +24,7 @@ ms.lasthandoff: 02/13/2018
 > このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースのクラスターでの Solr の操作については、「 [HDInsight Hadoop クラスターに Solr をインストールして使用する (Linux)](hdinsight-hadoop-solr-install-linux.md)」を参照してください。
 
 
-*Script Action*を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に Solr をインストールできます。 HDInsight クラスターに Solr をインストールするためのサンプル スクリプトは、 [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)の読み取り専用 Azure ストレージ BLOB から入手できます。
+*Script Action*を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に Solr をインストールできます。 HDInsight クラスターに Solr をインストールするサンプル スクリプトは、読み取り専用の Azure Storage Blob ([https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)) から入手できます。
 
 サンプル スクリプトは、HDInsight クラスター version 3.1 でのみ機能します。 HDInsight クラスター バージョンの詳細については、「 [HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
 
@@ -57,7 +51,7 @@ ms.lasthandoff: 02/13/2018
         <tr><td>Name</td>
             <td>スクリプト アクションの名前を指定します。 たとえば、<b>Install Solr</b> のような名前にします。</td></tr>
         <tr><td>スクリプト URI</td>
-            <td>クラスターをカスタマイズするために呼び出すスクリプトの Uniform Resource Identifier (URI) を指定します。 例: <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
+            <td>クラスターをカスタマイズするために呼び出すスクリプトの Uniform Resource Identifier (URI) を指定します。 たとえば、<i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i> のように指定します。</td></tr>
         <tr><td>ノードの種類</td>
             <td>カスタマイズ スクリプトが実行されるノードを指定します。 <b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。
         <tr><td>parameters</td>
@@ -86,7 +80,7 @@ ms.lasthandoff: 02/13/2018
 3. **Solr ダッシュボードを使用して、インデックス付きドキュメント内を検索します**。 HDInsight クラスターへの RDP セッションで Internet Explorer を開き、**http://headnodehost:8983/solr/#/** で Solr のダッシュ ボードを起動します。 左側のウィンドウの **[Core Selector]** ボックスから、**[collection1]** を選択し、メニューの中から **[クエリ]** をクリックします。 例として、Solr 内のすべてのドキュメントを選択して返すために、次の値を指定します。
 
    * **[q]** ボックスに「**\*:**\*」を入力します。 これにより、Solr でインデックス付けされたすべてのドキュメントが返されます。 ドキュメント内の特定の文字列を検索する場合には、ここにその文字列を入力することができます。
-   * **[wt]** ボックスでは、出力形式を選択します。 既定値は、 **json**です。 **[Execute Query]**をクリックします。
+   * **[wt]** ボックスでは、出力形式を選択します。 既定値は、 **json**です。 **[Execute Query]** をクリックします。
 
      ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-solr-install/hdi-solr-dashboard-query.png "Solr ダッシュボードでクエリを実行する")
 
@@ -150,27 +144,33 @@ ms.lasthandoff: 02/13/2018
            http://localhost:8983/solr/replication?command=backup
 
        次のように、応答が表示されます。
-
-           <?xml version="1.0" encoding="UTF-8"?>
-           <response>
+            
+      ```xml
+      <?xml version="1.0" encoding="UTF-8"?>
+          <response>
              <lst name="responseHeader">
                <int name="status">0</int>
                <int name="QTime">9</int>
              </lst>
-             <str name="status">OK</str>
-           </response>
-   2. リモート セッションで、{SOLR_HOME}\{Collection}\data に移動します。 サンプル スクリプトを通じて作成したクラスターの場合、この部分は **C:\apps\dist\solr-4.7.2\example\solr\collection1\data** となります。 この場所でのような名前で作成されたスナップショット フォルダーを表示する必要があります **スナップショット*。タイムスタンプ * * *。
+            <str name="status">OK</str>
+          </response>
+      ```
+      
+   2. リモート セッションで、{SOLR_HOME}\{Collection}\data に移動します。 サンプル スクリプトを使用して作成されたクラスターの場合は、`C:\apps\dist\solr-4.7.2\example\solr\collection1\data` となります。 この場所には、**snapshot.* timestamp*** のような名前でスナップショット フォルダーが作成されています。
+   
    3. スナップショット フォルダーを zip 圧縮して Azure BLOB ストレージにアップロードします。 Hadoop コマンド ラインで、次のコマンドを使用して、スナップショット フォルダーの場所に移動します。
 
-             hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
+      ```
+      hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
+      ```
 
-       このコマンドは、クラスターに関連付けられている既定のストレージ アカウント内のコンテナーの下にある /example/data/ にスナップショットをコピーします。
+   このコマンドは、クラスターに関連付けられている既定のストレージ アカウント内のコンテナーの下にある /example/data/ にスナップショットをコピーします。
 
 ## <a name="install-solr-using-aure-powershell"></a>Aure PowerShell を使用して Solr をインストールする
-「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」を参照してください。  このサンプルでは、Azure PowerShell を使用して Spark をインストールする方法を示します。 スクリプトをカスタマイズし、 [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)を使用する必要があります。
+「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」を参照してください。  このサンプルでは、Azure PowerShell を使用して Spark をインストールする方法を示します。 スクリプトをカスタマイズして、[https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) を使用する必要があります。
 
 ## <a name="install-solr-using-net-sdk"></a>.NET SDK を使用して Solr をインストールする
-「[Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」を参照してください。 このサンプルでは、.NET SDK を使用して Spark をインストールする方法を示します。 スクリプトをカスタマイズし、 [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)を使用する必要があります。
+「[Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」を参照してください。 このサンプルでは、.NET SDK を使用して Spark をインストールする方法を示します。 スクリプトをカスタマイズして、[https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) を使用する必要があります。
 
 ## <a name="see-also"></a>関連項目
 * [HDInsight Hadoop クラスターに Solr をインストールして使用する (Linux)](hdinsight-hadoop-solr-install-linux.md)
@@ -178,11 +178,9 @@ ms.lasthandoff: 02/13/2018
 * [スクリプト アクションを使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]: スクリプト アクションを使用した HDInsight クラスターのカスタマイズに関する一般情報。
 * [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions.md)。
 * [HDInsight クラスターに Spark をインストールし、使用する][hdinsight-install-spark]: Spark のインストールに関する Script Action サンプル。
-* [HDInsight クラスターに R をインストールし、使用する][hdinsight-install-r]: R のインストールに関する Script Action サンプル。
 * [HDInsight クラスターに Giraph をインストールし、使用する](hdinsight-hadoop-giraph-install.md): Giraph のインストールに関する Script Action サンプル。
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

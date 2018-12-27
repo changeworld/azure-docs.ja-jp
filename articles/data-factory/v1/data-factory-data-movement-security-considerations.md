@@ -9,20 +9,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c2b6c494a9c4d0dac37315520b8d7b962f3490b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 222558a6596c676034e52812d3b2dd0c77e1466b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046903"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 のデータ移動のセキュリティに関する考慮事項](../data-movement-security-considerations.md)に関する記事を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスの現在のバージョンを使用している場合は、[Data Factory のデータ移動のセキュリティ上の考慮事項](../data-movement-security-considerations.md)に関する記事を参照してください。
 
 ## <a name="introduction"></a>はじめに
 この記事では、Azure Data Factory のデータ移動サービスがデータを保護するために使用する基本的なセキュリティ インフラストラクチャについて説明します。 Azure Data Factory 管理リソースは、Azure のセキュリティ インフラストラクチャ上に構築されており、Azure が提供する利用可能なすべてのセキュリティ対策を使用します。
@@ -39,7 +40,7 @@ Azure Data Factory を使用したデータ移動は、次の**認定を取得**
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
 -   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
-Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、 [Microsoft Trust Center (セキュリティ センター)](https://www.microsoft.com/TrustCenter/default.aspx)にアクセスしてください。 
+Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、 [Microsoft Trust Center (セキュリティ センター)](https://microsoft.com/en-us/trustcenter/default.aspx)にアクセスしてください。 
 
 この記事では、次の 2 つのデータ移動シナリオでセキュリティに関する考慮事項を確認します。 
 
@@ -148,7 +149,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 次の表には、**企業ファイアウォール**の**送信ポート**とドメインの要件を示しています。
 
-| ドメイン名 | 送信ポート | [説明] |
+| ドメイン名 | 送信ポート | 説明 |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443、80 | ゲートウェイが Data Factory のデータ移動サービスに接続するために必要です。 |
 | `*.core.windows.net` | 443 | [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)機能を使用する場合に、ゲートウェイが Azure ストレージ アカウントに接続するために使用します。 | 
@@ -161,7 +162,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 次の表には、**Windows ファイアウォール**の**受信ポート**の要件を示しています。
 
-| 受信ポート | [説明] | 
+| 受信ポート | 説明 | 
 | ------------- | ----------- | 
 | 8050 (TCP) | 資格情報マネージャー アプリケーションがゲートウェイでオンプレミス データ ストアの資格情報を安全に設定するために必要です。 | 
 

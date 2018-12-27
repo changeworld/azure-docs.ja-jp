@@ -1,11 +1,11 @@
 ---
-title: "チュートリアル: Azure BizTalk Services を使用して EDIFACT 請求書を処理する | Microsoft Docs"
-description: "Box コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+title: 'チュートリアル: Azure BizTalk Services を使用して EDIFACT 請求書を処理する | Microsoft Docs'
+description: Box コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法
 services: biztalk-services
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7e0b93fa-3e2b-4a9c-89ef-abf1d3aa8fa9
 ms.service: biztalk-services
 ms.devlang: multiple
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: 2ebd6a8cb70f218c3b56bc78c9b853dbf51ab468
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb07e3ab8043aab24d6d8c3e3db3f3674b28c6f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244493"
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>チュートリアル: Azure BizTalk Services を使用して EDIFACT 請求書を処理する
 
@@ -27,10 +28,10 @@ ms.lasthandoff: 12/11/2017
 BizTalk Services ポータルを使用して、X12 契約と EDIFACT 契約を構成し、デプロイできます。 このチュートリアルでは、EDIFACT 契約を作成し、取引先間で請求書を交換する方法について説明します。 このチュートリアルは、EDIFACT メッセージを交換している Northwind と Contoso という 2 社の取引先を対象とするエンド ツー エンドのビジネス ソリューションに基づいて作成されています。  
 
 ## <a name="sample-based-on-this-tutorial"></a>このチュートリアルをベースにしたサンプル
-このチュートリアルは、 **MSDN のコード ギャラリー**からダウンロードできる、 [BizTalk Services を使用した EDIFACT 請求書の送信](http://go.microsoft.com/fwlink/?LinkId=401005)に関するサンプルに基づいて作成されています。 このサンプルを参照しながらチュートリアルを進めると、サンプルがどのように作成されたかを理解できます。 また、このチュートリアルを使用して、ソリューションを自分でゼロから作成することもできます。 ソリューションがどのように作成されるかを理解できるように、このチュートリアルでは後者のアプローチを目標としています。 このチュートリアルは、できる限りサンプルと整合するよう配慮されており、アーティファクト (スキーマや変換など) にはサンプルで使用されるものと同じ名前を使用しています。  
+このチュートリアルは、 **MSDN のコード ギャラリー**からダウンロードできる、 [BizTalk Services を使用した EDIFACT 請求書の送信](https://go.microsoft.com/fwlink/?LinkId=401005)に関するサンプルに基づいて作成されています。 このサンプルを参照しながらチュートリアルを進めると、サンプルがどのように作成されたかを理解できます。 また、このチュートリアルを使用して、ソリューションを自分でゼロから作成することもできます。 ソリューションがどのように作成されるかを理解できるように、このチュートリアルでは後者のアプローチを目標としています。 このチュートリアルは、できる限りサンプルと整合するよう配慮されており、アーティファクト (スキーマや変換など) にはサンプルで使用されるものと同じ名前を使用しています。  
 
 > [!NOTE]
-> このソリューションには EAI ブリッジから EDI ブリッジへのメッセージ送信が含まれるため、 [BizTalk Services ブリッジのチェーン](http://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104) に関するサンプルが再利用されています。  
+> このソリューションには EAI ブリッジから EDI ブリッジへのメッセージ送信が含まれるため、 [BizTalk Services ブリッジのチェーン](https://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104) に関するサンプルが再利用されています。  
 > 
 > 
 
@@ -58,7 +59,7 @@ BizTalk Services ポータルを使用して、X12 契約と EDIFACT 契約を�
 * BizTalk Services サブスクリプションが必要です。 このチュートリアルでは、「 **contosowabs**」という名前の BizTalk Services サブスクリプションがあるものと想定しています。
 * BizTalk Services ポータルに BizTalk Services サブスクリプションを登録する必要があります。 手順については、 [BizTalk Services ポータルでの BizTalk サービス配置の登録と更新](https://msdn.microsoft.com/library/hh689837.aspx)
 * Visual Studio をインストールする必要があります。
-* BizTalk Services SDK をインストールする必要があります。 SDK は [http://go.microsoft.com/fwlink/?LinkId=235057](http://go.microsoft.com/fwlink/?LinkId=235057)  
+* BizTalk Services SDK をインストールする必要があります。 その SDK は、[http://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057) からダウンロードできます。  
 
 ## <a name="step-1-create-the-service-bus-queues"></a>手順1. Service Bus キューを作成する
 このソリューションでは、Service Bus キューを使用して、取引先間でメッセージを交換します。 Contoso と Northwind はメッセージをキューに送り、EAI ブリッジと EDI ブリッジがこのキューからメッセージを取得して処理します。 このソリューションでは、次の 3 つの Service Bus キューが必要です。
@@ -74,7 +75,7 @@ BizTalk Services ポータルを使用して、X12 契約と EDIFACT 契約を�
 3. 表示された画面で、Service Bus ACS 名前空間、発行者名、発行者キーを入力します。
    
    ![][2]  
-4. Service Bus 名前空間に 3 つのキューが作成されることがメッセージ ボックスに表示されます。 **[OK]**をクリックします。
+4. Service Bus 名前空間に 3 つのキューが作成されることがメッセージ ボックスに表示されます。 Click **OK**.
 5. チュートリアル クライアントを実行したままにしておきます。 **[Service Bus]**  >  ***使用する Service Bus 名前空間***  >  **[キュー]** の順にクリックし、3 つのキューが作成されていることを確認します。  
 
 ## <a name="step-2-create-and-deploy-trading-partner-agreement"></a>手順 2. 取引先契約を作成してデプロイする
@@ -100,7 +101,7 @@ Contoso と Northwind の間の取引先契約を作成します。 取引先契
    **[続行]** をクリックすると、**[受信の設定]** タブと **[送信の設定]** タブが利用できるようになります。
 3. Contoso と Northwind の間に送信契約を作成します。 この契約によって、Contoso が EDIFACT 請求書を Northwind に送信する方法が制御されます。
    
-   1. **[送信の設定]**をクリックします。
+   1. **[送信の設定]** をクリックします。
    2. **[受信 URL]**、**[変換]**、**[バッチ処理]** の各タブは既定値のままにします。
    3. **[プロトコル]** タブの **[スキーマ]** セクションで、**EFACT_D93A_INVOIC.xsd** スキーマをアップロードします。 このスキーマは、サンプル パッケージと共に提供されています。
       
@@ -112,7 +113,7 @@ Contoso と Northwind の間の取引先契約を作成します。 取引先契
       **[トランスポート設定] > [トランスポートの種類]** と **[メッセージ保留の設定] > [トランスポートの種類]** で、[Azure Service Bus] を選択し、図に示すように値を入力します。
 4. Contoso と Northwind の間に受信契約を作成します。 この契約によって、Contoso が Northwind から受信確認を受信する方法が制御されます。
    
-   1. **[受信の設定]**をクリックします。
+   1. **[受信の設定]** をクリックします。
    2. **[トランスポート]** タブと **[変換]** タブは既定値のままにします。
    3. **[プロトコル]** タブの **[スキーマ]** セクションで、**EFACT_4.1_CONTRL.xsd** スキーマをアップロードします。 このスキーマは、サンプル パッケージと共に提供されています。
    4. **[ルート]** タブで、Northwind から Contoso にのみ受信確認を送信するためのフィルターを作成します。 **[ルートの設定]** で、**[追加]** をクリックし、ルーティング フィルターを作成します。
@@ -143,7 +144,7 @@ Contoso と Northwind の間の取引先契約を作成します。 取引先契
    
    ![][7]  
 3. ツールボックスから、 **XML 一方向ブリッジ** をキャンバスにドラッグします。 ブリッジの **[エンティティ名]** プロパティと **[相対アドレス]** プロパティを **ProcessInvoiceBridge** に設定します。 **[ProcessInvoiceBridge]** をダブルクリックし、ブリッジ構成画面を開きます。
-4. **[メッセージの種類]** ボックスで、プラス (**+**) ボタンをクリックし、受信メッセージのスキーマを指定します。 EAI ブリッジの受信メッセージは常に社内請求書であるため、これを **[INHOUSEINVOICE]**に設定します。
+4. **[メッセージの種類]** ボックスで、プラス (**+**) ボタンをクリックし、受信メッセージのスキーマを指定します。 EAI ブリッジの受信メッセージは常に社内請求書であるため、これを **[INHOUSEINVOICE]** に設定します。
    
    ![][8]  
 5. **[XML 変換]** 図形をクリックし、[プロパティ] ボックスで、**[マップ]** プロパティの省略記号 (**...**) ボタンをクリックします。 **[マップの選択]** ダイアログ ボックスで、**INHOUSEINVOICE_to_D93AINVOIC** 変換ファイルを選択し、**[OK]** をクリックします。
@@ -153,7 +154,7 @@ Contoso と Northwind の間の取引先契約を作成します。 取引先契
 7. ソリューション エクスプローラーで、**MessageFlowItinerary.bcs** を展開し、**EDIBridge.config** ファイルをダブルクリックします。 **EDIBridge.config** の内容を以下のコードに置き換えます。
    
    > [!NOTE]
-   > .config ファイルの編集が必要になるのには理由があります。 ブリッジ デザイナー キャンバスに追加した外部サービス エンドポイントは、前にデプロイした EDI ブリッジを表しています。 EDI ブリッジは送信側と受信側がある双方向ブリッジです。 一方、ブリッジ デザイナーに追加した EAI ブリッジは一方向ブリッジです。 そこで、2 つのブリッジそれぞれのメッセージ交換パターンを処理するために、.config ファイルに設定を追加して、カスタムのブリッジ動作を使用しています。 また、このカスタムの動作は EDI 送信ブリッジ エンドポイントの認証も処理します。このカスタムの動作は、独立したサンプルとして、「[BizTalk Services Bridge chaining sample - EAI to EDI (BizTalk Services ブリッジの EAI から EDI へのチェーンのサンプル)](http://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104)」で提供されています。 このソリューションでは、このサンプルを再利用しています。  
+   > .config ファイルの編集が必要になるのには理由があります。 ブリッジ デザイナー キャンバスに追加した外部サービス エンドポイントは、前にデプロイした EDI ブリッジを表しています。 EDI ブリッジは送信側と受信側がある双方向ブリッジです。 一方、ブリッジ デザイナーに追加した EAI ブリッジは一方向ブリッジです。 そこで、2 つのブリッジそれぞれのメッセージ交換パターンを処理するために、.config ファイルに設定を追加して、カスタムのブリッジ動作を使用しています。 また、このカスタムの動作は EDI 送信ブリッジ エンドポイントの認証も処理します。このカスタムの動作は、独立したサンプルとして、「[BizTalk Services Bridge chaining sample - EAI to EDI (BizTalk Services ブリッジの EAI から EDI へのチェーンのサンプル)](https://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104)」で提供されています。 このソリューションでは、このサンプルを再利用しています。  
    > 
    > 
    
@@ -216,7 +217,7 @@ Contoso と Northwind の間の取引先契約を作成します。 取引先契
 ### <a name="deploy-the-project"></a>プロジェクトをデプロイする
 1. BizTalk Services プロジェクトを作成したコンピューターに、BizTalk Services サブスクリプションの SSL 証明書をダウンロードし、インストールします。 BizTalk Services で **[ダッシュボード]** をクリックし、**[SSL 証明書のダウンロード]** をクリックします。 証明書をダブルクリックし、画面の指示に従ってインストールを完了します。 必ず **[信頼されたルート証明機関]** 証明書ストアに証明書をインストールします。
 2. Visual Studio ソリューション エクスプローラーで、**[InvoiceProcessingBridge]** プロジェクトを右クリックし、**[デプロイ]** をクリックします。
-3. 図に示すように値を入力し、 **[デプロイ]**をクリックします。 BizTalk Services ダッシュボードから **[接続情報]** をクリックすると、BizTalk Services の ACS 資格情報を取得できます。
+3. 図に示すように値を入力し、 **[デプロイ]** をクリックします。 BizTalk Services ダッシュボードから **[接続情報]** をクリックすると、BizTalk Services の ACS 資格情報を取得できます。
    
    ![][11]  
    
@@ -238,7 +239,7 @@ Contoso と Northwind の間の取引先契約を作成します。 取引先契
 5. 数秒後に、Northwind に請求書が届きます。 **[メッセージの表示]** リンクをクリックし、Northwind が受信した請求書を確認します。 Northwind が受信した請求書が標準 EDIFACT スキーマであり、Contoso が送信した請求書が社内スキーマである点に注目してください。
    
    ![][14]  
-6. 請求書を選択し、 **[受信確認の送信]**をクリックします。 ダイアログ ボックスが表示されたら、受信された請求書と送信される受信確認でインターチェンジ ID が同じであることに注目してください。 **[受信確認の送信]** ダイアログ ボックスで [OK] をクリックします。
+6. 請求書を選択し、 **[受信確認の送信]** をクリックします。 ダイアログ ボックスが表示されたら、受信された請求書と送信される受信確認でインターチェンジ ID が同じであることに注目してください。 **[受信確認の送信]** ダイアログ ボックスで [OK] をクリックします。
    
    ![][15]  
 7. 数秒後に、Contoso に受信確認が届きます。
@@ -258,7 +259,7 @@ BizTalk Services EDI ブリッジでは、メッセージを一括送信する�
 4. バッチ リリース条件を指定します。 ドロップダウン リストから、**[MessageCountBased]** を選択し、**[カウント]** に「**3**」を指定します。 これで、3 つのメッセージをまとめたバッチが Northwind に送信されます。 **[次へ]** をクリックします。
    
    ![][18]  
-5. 概要を確認し、 **[保存]**をクリックします。 **[デプロイ]** をクリックし、契約を再デプロイします。
+5. 概要を確認し、 **[保存]** をクリックします。 **[デプロイ]** をクリックし、契約を再デプロイします。
 6. **チュートリアル クライアント**に戻り、**[社内請求書の送信]** をクリックし、画面の指示に従って請求書を送信します。 バッチ サイズに到達していないため、請求書は Northwind に届きません。 3 つの請求書メッセージが Northwind に届くように、この手順をさらに 2 回繰り返します。 これで 3 通のメッセージというバッチ リリース条件が満たされたため、Northwind に請求書が届きます。
 
 <!--Image references-->

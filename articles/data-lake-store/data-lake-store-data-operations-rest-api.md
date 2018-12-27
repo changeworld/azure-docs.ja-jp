@@ -1,25 +1,24 @@
 ---
-title: "REST API: Azure Data Lake Store に対するファイルシステム操作 | Microsoft Docs"
-description: "WebHDFS REST API を使用して、Data Lake Store に対するファイルシステム操作を実行します"
+title: 'REST API: Azure Data Lake Storage Gen1 に対するファイルシステム操作 | Microsoft Docs'
+description: WebHDFS REST API を使用して、Azure Data Lake Storage Gen1 に対するファイルシステム操作を実行します
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: a850b3fdff956abe41ac9a4af10a96dc119a75f4
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 62ecf3b1983853629f6bc5fd594231188aa67bcd
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391608"
 ---
-# <a name="filesystem-operations-on-azure-data-lake-store-using-rest-api"></a>REST API を使用した Azure Data Lake Store に対するファイルシステム操作
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -28,30 +27,30 @@ ms.lasthandoff: 01/10/2018
 >
 > 
 
-この記事では、WebHDFS REST API と Data Lake Store REST API を使用して Azure Data Lake Store に対するファイルシステム操作を実行する方法について説明します。 REST API を使用して Data Lake Store に対するアカウント管理操作を実行する方法については、[REST API を使用した Data Lake Store に対するアカウント管理操作](data-lake-store-get-started-rest-api.md)に関するページを参照してください。
+この記事では、WebHDFS REST API と Data Lake Storage Gen1 REST API を使用して Azure Data Lake Storage Gen1 に対するファイルシステム操作を実行する方法について説明します。 REST API を使用して Data Lake Storage Gen1 に対するアカウント管理操作を実行する方法については、[REST API を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-rest-api.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* **Azure Data Lake Store アカウント**。 「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
+* **Azure Data Lake Storage Gen1 アカウント**。 「[Azure portal で Azure Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
 
-* **[cURL](http://curl.haxx.se/)**。 この記事では、cURL を使用して、Data Lake Store アカウントに対して REST API 呼び出しを行う方法を説明します。
+* **[cURL](http://curl.haxx.se/)**。 この記事では、cURL を使用して、Data Lake Storage Gen1 アカウントに対して REST API 呼び出しを行う方法を説明します。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する方法
 Azure Active Directory を使用した認証方法には 2 つあります。
 
-* アプリケーションのエンドユーザー認証 (対話型) については、「[End-user authentication with Data Lake Store using .NET SDK (.NET SDK を使用した Data Lake Store に対するエンドユーザー認証)](data-lake-store-end-user-authenticate-rest-api.md)」を参照してください。
-* アプリケーションのサービス間認証 (非対話型) については、「[Service-to-service authentication with Data Lake Store using .NET SDK (.NET SDK を使用した Data Lake Store に対するサービス間認証)](data-lake-store-service-to-service-authenticate-rest-api.md)」を参照してください。
+* アプリケーションのエンドユーザー認証 (対話型) については、「[End-user authentication with Data Lake Storage Gen1 using .NET SDK](data-lake-store-end-user-authenticate-rest-api.md)」 (.NET SDK を使用した Data Lake Storage Gen1 に対するエンドユーザー認証) を参照してください。
+* アプリケーションのサービス間認証 (非対話型) については、「[Service-to-service authentication with Data Lake Storage Gen1 using .NET SDK](data-lake-store-service-to-service-authenticate-rest-api.md)」 (.NET SDK を使用した Data Lake Storage Gen1 に対するサービス間認証) を参照してください。
 
 
 ## <a name="create-folders"></a>フォルダーを作成します。
 この操作は、 [ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-次の cURL コマンドを使用します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
+次の cURL コマンドを使用します。 **\<yourstorename>** を自分の Data Lake Storage Gen1 アカウント名に変更します。
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS'
 
-上記のコマンドの \<`REDACTED`\> を、以前に取得した承認トークンに置き換えます。 このコマンドを実行すると、Data Lake Store アカウントのルート フォルダーの下に **mytempdir** という名前のディレクトリが作成されます。
+上記のコマンドの \<`REDACTED`\> を、以前に取得した承認トークンに置き換えます。 このコマンドを実行すると、Data Lake Storage Gen1 アカウントのルート フォルダーの下に **mytempdir** という名前のディレクトリが作成されます。
 
 操作が正常に完了すると、次のスニペットのような応答が表示されます。
 
@@ -60,7 +59,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 ## <a name="list-folders"></a>フォルダーを一覧表示する
 この操作は、 [ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-次の cURL コマンドを使用します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
+次の cURL コマンドを使用します。 **\<yourstorename>** を自分の Data Lake Storage Gen1 アカウント名に変更します。
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS'
 
@@ -88,7 +87,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 ## <a name="upload-data"></a>データのアップロード
 この操作は、 [ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-次の cURL コマンドを使用します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
+次の cURL コマンドを使用します。 **\<yourstorename>** を自分の Data Lake Storage Gen1 アカウント名に変更します。
 
     curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
 
@@ -110,12 +109,12 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 ## <a name="read-data"></a>データの読み取り
 この操作は、 [ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-Data Lake Store アカウントからのデータの読み取りは、2 段階のプロセスとなります。
+Data Lake Storage Gen1 アカウントからのデータの読み取りは、2 段階のプロセスとなります。
 
 * まず、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`に対して GET 要求を送信します。 この呼び出しにより、次の GET 要求の送信先が返されます。
 * 次に、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true`に対して GET 要求を送信します。 この呼び出しにより、ファイルの内容が表示されます。
 
-ただし、1 番目の手順と 2 番目の手順の間に入力パラメーターの違いはないため、 `-L` パラメーターを使用して最初の要求を送信できます。 `-L` オプションにより、基本的に 2 つの要求が 1 つの要求に結合され、新しい場所で cURL により要求がやり直されます。 最後に、次のスニペットに示すように、すべての要求呼び出しの出力が表示されます。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
+ただし、1 番目の手順と 2 番目の手順の間に入力パラメーターの違いはないため、 `-L` パラメーターを使用して最初の要求を送信できます。 `-L` オプションにより、基本的に 2 つの要求が 1 つの要求に結合され、新しい場所で cURL により要求がやり直されます。 最後に、次のスニペットに示すように、すべての要求呼び出しの出力が表示されます。 **\<yourstorename>** を自分の Data Lake Storage Gen1 アカウント名に変更します。
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 
@@ -134,7 +133,7 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
 ## <a name="rename-a-file"></a>ファイル名を変更する
 この操作は、 [ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-ファイルの名前を変更するには、次の cURL コマンドを使用します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
+ファイルの名前を変更するには、次の cURL コマンドを使用します。 **\<yourstorename>** を自分の Data Lake Storage Gen1 アカウント名に変更します。
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt'
 
@@ -148,7 +147,7 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
 ## <a name="delete-a-file"></a>ファイルを削除する
 この操作は、 [ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-次の cURL コマンドを使用して、ファイルを削除します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
+次の cURL コマンドを使用して、ファイルを削除します。 **\<yourstorename>** を自分の Data Lake Storage Gen1 アカウント名に変更します。
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE'
 
@@ -160,9 +159,9 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
     {"boolean":true}
 
 ## <a name="next-steps"></a>次の手順
-* [REST API を使用した Data Lake Store に対するアカウント管理操作](data-lake-store-get-started-rest-api.md)。
+* [REST API を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-rest-api.md)
 
 ## <a name="see-also"></a>関連項目
-* [Azure Data Lake Store REST API リファレンス](https://docs.microsoft.com/rest/api/datalakestore/)
-* [Azure Data Lake Store と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
+* [Azure Data Lake Storage Gen1 REST API リファレンス](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
 

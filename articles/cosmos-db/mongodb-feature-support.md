@@ -4,20 +4,18 @@ description: MongoDB 3.4 に対して Azure Cosmos DB の MongoDB API で提供�
 services: cosmos-db
 author: alekseys
 manager: kfile
-documentationcenter: ''
-ms.assetid: 29b6547c-3201-44b6-9e0b-e6f56e473e24
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: cadf637dd3a71e040fef8188f7290907659e5cdb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d9616f87e76231c3bb587c2018572b7526b471a5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050342"
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>MongoDB の機能と構文に対する MongoDB API サポート
 
@@ -25,14 +23,19 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 Azure Cosmos DB の MongoDB API を使用すれば、使い慣れた MongoDB API を活用できます。[グローバル配信](distribute-data-globally.md)、[自動シャーディング](partition-data.md)、可用性や待ち時間の保証、すべてのフィールドの自動インデックス作成、保存時の暗号化、バックアップを始めとする Azure Cosmos DB のエンタープライズ機能も、すべて利用できます。
 
+## <a name="mongodb-protocol-support"></a>MongoDB のプロトコル サポート
+
+Azure Cosmos DB MongoDB API は、既定で MongoDB Server バージョン **3.2** と互換性があります。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 現在、MongoDB バージョン **3.4** で追加された機能やクエリ演算子は、プレビュー機能として使用できます。 これらのプロトコルを認識するクライアント ドライバーはすべて、MongoDB API を使用して Cosmos DB に接続できる必要があります。
+
+また、現在、[MongoDB 集計パイプライン](#aggregation-pipeline)も、別個のプレビュー機能として使用できます。
+
 ## <a name="mongodb-query-language-support"></a>MongoDB クエリ言語のサポート
 
 Azure Cosmos DB の MongoDB API は、MongoDB クエリ言語の構成要素を包括的にサポートしています。 以下に、現在サポートされている操作、演算子、ステージ、コマンド、およびオプションの詳細な一覧を示します。
 
-
 ## <a name="database-commands"></a>データベース コマンド
 
-Azure Cosmos DB は、MongoDB API のすべてのアカウントで、以下のデータベース コマンドをサポートしています。 
+Azure Cosmos DB は、MongoDB API のすべてのアカウントで、以下のデータベース コマンドをサポートしています。
 
 ### <a name="query-and-write-operation-commands"></a>クエリおよび書き込み操作コマンド
 - 削除
@@ -212,7 +215,7 @@ Azure Cosmos DB は、パブリック プレビューで集計パイプライン
 }
 ```
 
-演算子 | 例 |
+operator | 例 |
 --- | --- |
 $eq | ``` { "Volcano Name": { $eq: "Rainier" } } ``` |  | -
 $gt | ``` { "Elevation": { $gt: 4000 } } ``` |  | -
@@ -267,7 +270,7 @@ $regex クエリでは、左固定の式でインデックス検索が可能で�
 
 ### <a name="geospatial-operators"></a>地理空間演算子
 
-演算子 | 例 
+operator | 例 
 --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | [はい]
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | [はい]
@@ -283,13 +286,17 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 ## <a name="additional-operators"></a>その他の演算子
 
-演算子 | 例 | メモ 
+operator | 例 | メモ 
 --- | --- | --- |
 $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` | 
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
 $size | ```{ "Location.coordinates": { $size: 2 } }``` | 
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
-$text |  | サポートされていません。 代わりに $regex を使用 
+$text |  | サポートされていません。 代わりに $regex を使用してください。
+
+## <a name="unsupported-operators"></a>サポートされていない演算子
+
+```$where``` と ```$eval``` の演算子は、Azure Cosmos DB ではサポートされていません。
 
 ### <a name="methods"></a>メソッド
 
@@ -303,7 +310,7 @@ cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | 並べ替えキーを�
 
 ## <a name="unique-indexes"></a>一意なインデックス
 
-Azure Cosmos DB では、既定で、データベースに書き込まれるドキュメントのすべてのフィールドにインデックスが付けられます。 一意なインデックスによって、特定のフィールドの値が、コレクション内のすべてのドキュメントにわたって重複していないことが保証されます。これは、既定の "_id" キーで一意性が保持される方法と似ています。 これで、'unique' 制約を含めて createIndex コマンドを使用すれば、Azure Cosmos DB でカスタム インデックスを作成できます。
+Azure Cosmos DB では、既定で、データベースに書き込まれるドキュメントのすべてのフィールドにインデックスが付けられます。 一意なインデックスによって、特定のフィールドの値が、コレクション内のすべてのドキュメントにわたって重複していないことが保証されます。これは、既定の "_id" キーで一意性が保持される方法と似ています。 これで、"unique" 制約を含めて createIndex コマンドを使用すれば、Azure Cosmos DB でカスタム インデックスを作成できます。
 
 一意なインデックスは、MongoDB API のすべてのアカウントで使用できます。
 
@@ -318,6 +325,10 @@ Azure Cosmos DB では、ユーザーとロールはまだサポートされて�
 ## <a name="replication"></a>レプリケーション
 
 Cosmos azure DB では、最下位のレイヤーで、自動のネイティブ レプリケーションがサポートされています。 このロジックは、低待機時間のグローバルなレプリケーションも実現するために拡張されています。 Azure Cosmos DB Cosmos では、手動のレプリケーション コマンドはサポートされていません。
+
+## <a name="write-concern"></a>書き込み確認
+
+一部の MongoDB の API では、書き込み操作中に必要とされる応答の数を指定する、[書き込み確認](https://docs.mongodb.com/manual/reference/write-concern/)の指定がサポートされています。 Cosmos DB が背景でレプリケーションを処理する方法により、既定ですべての書き込みが自動的にクォーラムになります。 クライアント コードによって指定される書き込み確認はすべて無視されます。 詳細については、[整合性レベルを使用して可用性とパフォーマンスを最大化する方法](consistency-levels.md)に関するページを参照してください。
 
 ## <a name="sharding"></a>シャーディング
 

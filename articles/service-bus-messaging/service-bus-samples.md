@@ -1,46 +1,41 @@
 ---
-title: "Azure Service Bus メッセージングのサンプルの概要 | Microsoft Docs"
-description: "Service Bus メッセージングのサンプルについて説明します。各サンプルへのリンクも掲載しています。"
+title: Azure Service Bus メッセージングのサンプルの概要 | Microsoft Docs
+description: Service Bus メッセージングのサンプルについて説明します。各サンプルへのリンクも掲載しています。
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0b420343-2d2a-4c65-98f1-ee0e39ef55c8
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/21/2017
-ms.author: sethm
-ms.openlocfilehash: 7bdb336b8aad0031412a31b58a10296242e7da18
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.date: 09/21/2018
+ms.author: spelluru
+ms.openlocfilehash: 4713033ec8729a68f4c5ee13ac6140e0c5f33779
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578104"
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus メッセージングのサンプル
 
 Service Bus メッセージングのサンプルでは、[Service Bus メッセージング](https://azure.microsoft.com/services/service-bus/)の主要な機能をデモンストレーションしています。 現在、サンプルは次の 2 か所でご覧いただけます。
 
-- [GitHub の Service Bus メッセージングのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet): GitHub でホストされている比較的新しいサンプル。 これらの .NET サンプルについては、リポジトリの [Readme ファイル](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.ServiceBus.Messaging/README.md)を参照してください。 サンプルは継続的に更新されています。最新の情報をチェックしてください。
-- [MSDN のサンプル ページ](https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=5): MSDN コード ギャラリーに置かれている比較的古いサンプル。 現在も動作しますが、メンテナンスされておらず、現在推奨されているプログラミングの慣例から見ると、情報が古い可能性があります。
- 
+- [.NET と Java](https://github.com/Azure/azure-service-bus/tree/master/samples)。 .NET のサンプルの説明についてはリポジトリの [.NET readme](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.ServiceBus.Messaging/README.md) を、Java のサンプルの説明については [Java readme](https://github.com/Azure/azure-service-bus/tree/master/samples/Java) をご覧ください。
+- [Typescript](https://github.com/Azure/azure-service-bus-node/tree/master/examples)
+
 ## <a name="service-bus-explorer"></a>サービス バス Explorer
 
 [Service Bus エクスプローラー](https://github.com/paolosalvatori/ServiceBusExplorer)も、GitHub でホストされているサンプルの 1 つです。Service Bus サービス名前空間に接続してメッセージング エンティティを簡単に管理することができます。 このツールには、インポート/エクスポート機能、メッセージング エンティティとリレー サービスをテストする機能など、高度な機能が用意されています。 Service Bus エクスプローラーの完全なソースとドキュメントは、[GitHub](https://github.com/paolosalvatori/ServiceBusExplorer) でご覧いただけます。
 
 ## <a name="next-steps"></a>次の手順
 
-サンプルの場所は以下のとおりです。
-
-- [GitHub のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples)
-- [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
-
 Service Bus の概念の要約については、次のトピックを参照してください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 * [Service Bus のアーキテクチャ](service-bus-architecture.md)
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 

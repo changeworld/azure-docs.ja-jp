@@ -1,27 +1,22 @@
 ---
-title: "Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理 | Microsoft Docs"
-description: "Linux ベースの HDInsight で Storm ダッシュボードを使用して Apache Storm トポロジをデプロイ、監視、管理する方法について説明します。 Hadoop Tools for Visual Studio を使用します。"
+title: Azure HDInsight での Apache Storm トポロジのデプロイと管理
+description: Linux ベースの HDInsight で Storm ダッシュボードを使用して Apache Storm トポロジをデプロイ、監視、管理する方法について説明します。 Hadoop Tools for Visual Studio を使用します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 35086e62-d6d8-4ccf-8cae-00073464a1e1
 ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 18b7b5d56acb4d9d0c2ed007f0521193e37d82e8
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 6cb3102206174422a3d8b4a0fb18f989d875e093
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259056"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>HDInsight での Apache Storm トポロジのデプロイと管理
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm トポロジのデプロイと管理 
 
 このドキュメントでは、HDInsight クラスターで Storm を実行している Storm トポロジを管理および監視する方法の基本について説明します。
 
@@ -41,9 +36,9 @@ ms.lasthandoff: 02/23/2018
 
     下記いずれかのバージョンの Visual Studio
 
-  * Visual Studio 2012 ([Update 4](http://www.microsoft.com/download/details.aspx?id=39305))
+  * Visual Studio 2012 Update 4
 
-  * Visual Studio 2013 ([Update 4](http://www.microsoft.com/download/details.aspx?id=44921)) または [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+  * Visual Studio 2013 Update 4 または [Visual Studio 2013 Community](https://go.microsoft.com/fwlink/?LinkId=517284)
   * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
 
   * Visual Studio 2015 (任意のエディション)
@@ -59,11 +54,11 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
     > [!NOTE]
     > Data Lake Tools for Visual Studio は、以前は HDInsight Tools for Visual Studio と呼ばれていました。
     >
-    > Data Lake Tools for Visual Studio は、Visual Studio 2017 用の __Azure ワークロード__に含まれています。
+    > Data Lake Tools for Visual Studio は、Visual Studio 2017 用の __Azure ワークロード__ に含まれています。
 
 2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** を選択します。
 
-3. **[新しいプロジェクト]** ダイアログで、**[インストール済]** > **[テンプレート]** の順に展開して **[HDInsight]** を選択します。 テンプレートの一覧から **[Storm Sample]**を選択します。 ダイアログ ボックスの下部に、アプリケーションの名前を入力します。
+3. **[新しいプロジェクト]** ダイアログで、**[インストール済]** > **[テンプレート]** の順に展開して **[HDInsight]** を選択します。 テンプレートの一覧から **[Storm Sample]** を選択します。 ダイアログ ボックスの下部に、アプリケーションの名前を入力します。
 
     ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 
@@ -110,7 +105,7 @@ Visual Studio を使用してトポロジが送信されたら、**Storm トポ�
 
 ### <a name="deactivate-and-reactivate"></a>アクティブ化の解除と再アクティブ化
 
-トポロジが強制終了または再アクティブ化されるまで、トポロジのアクティブ化の解除は一時停止されます。 これらの操作を実行するには、__トポロジの概要__の上部にある __[非アクティブ化]__ と __[再アクティブ化]__ のボタンを使用します。
+トポロジが強制終了または再アクティブ化されるまで、トポロジのアクティブ化の解除は一時停止されます。 これらの操作を実行するには、__トポロジの概要__ の上部にある __[非アクティブ化]__ と __[再アクティブ化]__ のボタンを使用します。
 
 ### <a name="rebalance"></a>再調整
 
@@ -213,7 +208,7 @@ Storm UI のメイン ページには、次の情報が表示されます。
 
 Storm UI は、REST API を基に構築されているため、REST API を使用して同様の管理や監視機能を実行できます。 REST API を使用して、Storm トポロジの管理や監視用のカスタム ツールを作成できます。
 
-詳細については、「 [Storm UI REST API](http://storm.apache.org/releases/0.9.6/STORM-UI-REST-API.html)」を参照してください。 以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
+詳細については、「 [Storm UI REST API](http://storm.apache.org/releases/current/STORM-UI-REST-API.html)」を参照してください。 以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
 
 > [!IMPORTANT]
 > Storm REST API は、インターネットでパブリックに使用できません。SSH トンネルを使用して HDInsight クラスター ヘッド ノードにアクセスする必要があります。 SSH トンネルの作成と使用については、[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする方法](../hdinsight-linux-ambari-ssh-tunnel.md)に関するページを参照してください。
@@ -228,7 +223,7 @@ Linux ベースの HDInsight クラスターの REST API のベース URI は、
 * **Ambari Web から**: ページの一番上から **[サービス]** を選択し、**[Storm]** を選択します。 **[概要 ]** タブで **[Storm UI Server]** を選択します。 Storm UI と REST API をホストするノードの FQDN はページの一番上で確認できます。
 * **Ambari REST API から**: `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。 **CLUSTERNAME** をクラスター名に置き換えます。 メッセージが表示されたら、ログイン (管理者) アカウントのパスワードを入力します。 応答の「host_name」エントリにノードの FQDN が含まれます。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
 REST API への要求では、HDInsight クラスターの管理者名とパスワードを使用して、 **基本認証**を使用する必要があります。
 

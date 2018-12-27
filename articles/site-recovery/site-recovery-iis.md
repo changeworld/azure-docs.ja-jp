@@ -1,20 +1,20 @@
 ---
-title: Azure Site Recovery を使用して IIS ベースの多層 Web アプリケーションをレプリケートする | Microsoft Docs
+title: Azure Site Recovery を使用して多層 IIS ベース Web アプリケーションのディザスター リカバリーを設定する | Microsoft Docs
 description: Azure Site Recovery を使用して IIS Web ファームの仮想マシンをレプリケートする方法について説明します。
-services: site-recovery
 author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 1ed0184ac76b5fb3e607458559327da5e8fe90c5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 49435665ae1e99dd2b9696e5e5bb048e438dcc4c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832958"
 ---
-# <a name="replicate-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションをレプリケートする
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションのディザスター リカバリーの設定
 
 アプリケーション ソフトウェアは、組織のビジネス生産性の原動力です。 さまざまな Web アプリケーションが組織のさまざまな目的に役立ちます。 アプリケーションによっては、組織にとって不可欠なものとなる場合もあります (給与処理、財務、顧客向け Web サイトに使用されるアプリケーションなど)。 生産性の低下を防ぐには、それらのアプリケーションを常時稼働させる必要があります。 さらに、それらのアプリケーションを一貫性をもって使用できるようにすることは、組織のブランドやイメージが損なわれるのを防ぐことにもつながります。
 
@@ -63,7 +63,7 @@ ARR、IIS サーバー、アプリケーション サーバー、および SQL S
 Hyper-V | [はい] | [はい]
 VMware | [はい] | [はい]
 物理サーバー | いいえ  | [はい]
-Azure|該当なし|[はい]
+Azure|NA|[はい]
 
 ## <a name="replicate-virtual-machines"></a>仮想マシンのレプリケート
 
@@ -133,7 +133,7 @@ SSL 証明書は、次のコンポーネントに対して発行できます。
 * Web サイトの完全修飾ドメイン名。
 * サーバーの名前。
 * ドメイン名のワイルドカード証明書。  
-* IP アドレス。 SSL 証明書が IIS サーバーの IP アドレスに対して発行されている場合、Azure サイト上にある IIS サーバーの IP アドレスに対して別の SSL 証明書を発行し、 その証明書の追加の SSL バインドを作成する必要があります。 そのため、IP アドレスに対して発行された SSL 証明書は使用しないことをお勧めします。 この方法はあまり広くは使用されておらず、新しい証明書機関/ブラウザー フォーラムの変更に従って、間もなく廃止される予定です。
+* IP アドレス。 SSL 証明書が IIS サーバーの IP アドレスに対して発行されている場合、Azure サイト上にある IIS サーバーの IP アドレスに対して別の SSL 証明書を発行し、 その証明書の追加の SSL バインドを作成する必要があります。 そのため、IP アドレスに対して発行された SSL 証明書は使用しないことをお勧めします。 この方法はあまり広くは使用されておらず、新しい証明書機関/ブラウザー フォーラムの変更に従って、間もなく非推奨となる予定です。
 
 #### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>Web 層とアプリケーション層の依存関係の更新
 仮想マシンの IP アドレスに基づいたアプリケーション固有の依存関係がある場合は、フェールオーバー後にその依存関係を更新する必要があります。

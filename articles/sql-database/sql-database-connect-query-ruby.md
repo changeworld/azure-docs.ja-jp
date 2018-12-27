@@ -2,31 +2,34 @@
 title: Ruby を使用して Azure SQL Database に照会する | Microsoft Docs
 description: このトピックでは、Azure SQL Database に接続して Transact-SQL ステートメントでデータベースを照会するプログラムを Ruby で作成する方法について説明します。
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,develop apps
+ms.subservice: development
+ms.custom: ''
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 04/01/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 30dce6caefc0b95435d1dadc48aa927be475fc66
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 11/01/2018
+ms.openlocfilehash: 751e7d6b401417ee3efd4ffc30263d2507ff2627
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913655"
 ---
-# <a name="use-ruby-to-query-an-azure-sql-database"></a>Ruby を使用して Azure SQL Database に照会する
+# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>クイック スタート: Ruby を使用して Azure SQL Database に照会する
 
-このクイック スタート チュートリアルでは、Azure SQL Database に接続して Transact-SQL ステートメントでデータを照会するプログラムを [Ruby](https://www.ruby-lang.org) で作成する方法について説明します。
+このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを [Ruby](https://www.ruby-lang.org) を使って作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタート チュートリアルを完了するには、次の前提条件を満たしている必要があります。
+このクイック スタートを完了するには、次の前提条件を満たしている必要があります。
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- このクイック スタート チュートリアルに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+- このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
 
 - ご使用のオペレーティング システムに対応した Ruby とそれに関連するソフトウェアをインストール済みであること。
     - **MacOS**: Homebrew をインストールし、rbenv と ruby-build をインストールした後、Ruby と FreeTDS を順にインストールします。 [手順 1.2.、手順 1.3.、手順 1.4.、手順 1.5.](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/) を参照してください。
@@ -37,7 +40,7 @@ ms.lasthandoff: 04/06/2018
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 > [!IMPORTANT]
-> このチュートリアルを実行するコンピューターのパブリック IP アドレスに対してファイアウォール規則を設定しておく必要があります。 別のコンピューターから実行する場合または別のパブリック IP アドレスがある場合は、[Azure Portal でサーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)を作成してください。 
+> このチュートリアルを実行するコンピューターのパブリック IP アドレスに対してファイアウォール規則を設定しておく必要があります。 別のコンピューターから実行する場合または別のパブリック IP アドレスがある場合は、[Azure Portal でサーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)を作成してください。 
 
 ## <a name="insert-code-to-query-sql-database"></a>SQL Database に照会するコードの挿入
 

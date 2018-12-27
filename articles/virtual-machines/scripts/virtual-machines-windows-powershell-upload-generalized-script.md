@@ -1,26 +1,27 @@
 ---
-title: "Azure PowerShell のサンプル スクリプトに一般化した VHD をアップロードする | Microsoft Docs"
-description: "一般化した VHD を Azure にアップロードし、Resource Manager デプロイメント モデルと Managed Disks を使用した新しい VM を作成する、PowerShell サンプル スクリプトです。"
+title: Azure PowerShell のサンプル スクリプトに一般化した VHD をアップロードする | Microsoft Docs
+description: 一般化した VHD を Azure にアップロードし、Resource Manager デプロイ モデルと Managed Disks を使用した新しい VM を作成する、PowerShell サンプル スクリプトです。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 01/02/2017
+ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9534ce2a32ac57a441535cfa26f2981b804182d1
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 786dbb258fa4299f80f7ff9d24a1c129a9506bb7
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43663747"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>VHD を Azure にアップロードし新しい VM を作成するサンプル スクリプト
 
@@ -50,7 +51,6 @@ $ipName = 'myPip'
 $nicName = 'myNic'
 $nsgName = 'myNsg'
 $ruleName = 'myRdpRule'
-$vmName = 'myVM'
 $computerName = 'myComputerName'
 $vmSize = 'Standard_DS1_v2'
 
@@ -81,13 +81,13 @@ $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGr
     -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
 $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $resourceGroup -Location $location `
     -AllocationMethod Dynamic
-$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $resourceGroup -Location $location `
-    -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 $rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name $ruleName -Description 'Allow RDP' -Access Allow `
     -Protocol Tcp -Direction Inbound -Priority 110 -SourceAddressPrefix Internet -SourcePortRange * `
     -DestinationAddressPrefix * -DestinationPortRange 3389
 $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
     -Name $nsgName -SecurityRules $rdpRule
+$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $resourceGroup -Location $location `
+    -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Name $vnetName
 
 # Start building the VM configuration
@@ -131,24 +131,24 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 | コマンド                                                                                                             | メモ                                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)                           | すべてのリソースを格納するリソース グループを作成します。                                                                                                                          |
-| [New-AzureRmStorageAccount](/powershell/module/azurerm.resources/new-azurermstorageaccount)                         | ストレージ アカウントを作成します。                                                                                                                                                           |
-| [Add-AzureRmVhd](/powershell/module/azurerm.resources/add-azurermvhd)                                               | Azure のクラウド ストレージ アカウントの BLOB に、オンプレミスの仮想マシンから仮想ハード ディスクをアップロードします。                                                                       |
-| [New-AzureRmImageConfig](/powershell/module/azurerm.resources/new-azurermimageconfig)                               | 構成可能なイメージ オブジェクトを作成します。                                                                                                                                                 |
-| [Set-AzureRmImageOsDisk](/powershell/module/azurerm.resources/set-azurermimageosdisk)                               | イメージ オブジェクトのオペレーティング システム ディスクのプロパティを設定します。                                                                                                                        |
-| [New-AzureRmImage](/powershell/module/azurerm.resources/new-azurermimage)                                           | 新しいイメージを作成します。                                                                                                                                                                 |
-| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.resources/new-azurermvirtualnetworksubnetconfig) | サブネット構成を作成します。 この構成は、仮想ネットワークの作成プロセスで使用されます。                                                                                |
-| [New-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/new-azurermvirtualnetwork)                         | 仮想ネットワークを作成します。                                                                                                                                                           |
-| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.resources/new-azurermpublicipaddress)                       | パブリック IP アドレスを作成します。                                                                                                                                                         |
-| [New-AzureRmNetworkInterface](/powershell/module/azurerm.resources/new-azurermnetworkinterface)                     | ネットワーク インターフェイスを作成します。                                                                                                                                                         |
-| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermnetworksecurityruleconfig)   | ネットワーク セキュリティ グループ規則の構成を作成します。 この構成は、NSG の作成時に NSG 規則を作成するために使用されます。                                                       |
-| [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.resources/new-azurermnetworksecuritygroup)             | ネットワーク セキュリティ グループを作成します。                                                                                                                                                    |
-| [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/get-azurermvirtualnetwork)                         | リソース グループ内の仮想ネットワークを取得します。                                                                                                                                          |
-| [New-AzureRmVMConfig](/powershell/module/azurerm.resources/new-azurermvmconfig)                                     | VM 構成を作成します。 この構成には、VM 名、オペレーティング システム、管理資格情報などの情報が含まれます。 この構成は、VM の作成時に使用されます。 |
-| [Set-AzureRmVMSourceImage](/powershell/module/azurerm.resources/set-azurermvmsourceimage)                           | 仮想マシンのイメージを指定します。                                                                                                                                            |
-| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.resources/set-azurermvmosdisk)                                     | 仮想マシンにオペレーティング システム ディスクのプロパティを設定します。                                                                                                                      |
-| [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.resources/set-azurermvmoperatingsystem)                   | 仮想マシンにオペレーティング システム ディスクのプロパティを設定します。                                                                                                                      |
-| [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.resources/add-azurermvmnetworkinterface)                 | 仮想マシンにネットワーク インターフェイスを追加します。                                                                                                                                       |
-| [New-AzureRmVM](/powershell/module/azurerm.resources/new-azurermvm)                                                 | 仮想マシンを作成します。                                                                                                                                                            |
+| [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount)                         | ストレージ アカウントを作成します。                                                                                                                                                           |
+| [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd)                                               | Azure のクラウド ストレージ アカウントの BLOB に、オンプレミスの仮想マシンから仮想ハード ディスクをアップロードします。                                                                       |
+| [New-AzureRmImageConfig](/powershell/module/azurerm.compute/new-azurermimageconfig)                               | 構成可能なイメージ オブジェクトを作成します。                                                                                                                                                 |
+| [Set-AzureRmImageOsDisk](/powershell/module/azurerm.compute/set-azurermimageosdisk)                               | イメージ オブジェクトのオペレーティング システム ディスクのプロパティを設定します。                                                                                                                        |
+| [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage)                                           | 新しいイメージを作成します。                                                                                                                                                                 |
+| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | サブネット構成を作成します。 この構成は、仮想ネットワークの作成プロセスで使用されます。                                                                                |
+| [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork)                         | 仮想ネットワークを作成します。                                                                                                                                                           |
+| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress)                       | パブリック IP アドレスを作成します。                                                                                                                                                         |
+| [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)                     | ネットワーク インターフェイスを作成します。                                                                                                                                                         |
+| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)   | ネットワーク セキュリティ グループ規則の構成を作成します。 この構成は、NSG の作成時に NSG 規則を作成するために使用されます。                                                       |
+| [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)             | ネットワーク セキュリティ グループを作成します。                                                                                                                                                    |
+| [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork)                         | リソース グループ内の仮想ネットワークを取得します。                                                                                                                                          |
+| [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig)                                     | VM 構成を作成します。 この構成には、VM 名、オペレーティング システム、管理資格情報などの情報が含まれます。 この構成は、VM の作成時に使用されます。 |
+| [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage)                           | 仮想マシンのイメージを指定します。                                                                                                                                            |
+| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk)                                     | 仮想マシンにオペレーティング システム ディスクのプロパティを設定します。                                                                                                                      |
+| [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem)                   | 仮想マシンにオペレーティング システム ディスクのプロパティを設定します。                                                                                                                      |
+| [Add-AzureRmVMNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmnetworkinterface?view=azurermps-6.8.1)                 | 仮想マシンにネットワーク インターフェイスを追加します。                                                                                                                                       |
+| [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm)                                                 | 仮想マシンを作成します。                                                                                                                                                            |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)                     | リソース グループと、それに含まれているすべてのリソースを削除します。                                                                                                                         |
 
 ## <a name="next-steps"></a>次の手順

@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 231d505e91fc036b30344e2fd9971db8ba2fdf05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 97107bb5ca1a598906cac9adbf508b2d15668e7d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227242"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル
 
@@ -39,7 +41,7 @@ Microsoft Azure Machine Learning には、多くの強力なマシン ラーニ�
 
 このクイック スタート ガイドでは、カリフォルニアでの酪農生産と価格データを扱います。 このデータには、いくつかの酪農製品の生産、乳脂の価格、ベンチマーク商品に関する月単位の情報が含まれます。
 
-この記事で使用されているデータと R スクリプトは、[こちらからダウンロード][download]できます。 このデータは、最初はウィスコンシン大学 (http://future.aae.wisc.edu/tab/production.html) から入手可能な情報から合成されました。
+この記事で使用されているデータと R スクリプトは、[こちらからダウンロード](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv)できます。 このデータは、最初はウィスコンシン大学 (https://dairymarkets.com) から入手可能な情報から合成されました。
 
 ### <a name="organization"></a>Organization
 Azure Machine Learning 環境で R コードを作成、テストし、分析とデータ操作を実行する方法を学習する際は、いくつかの手順に従って進行します。  
@@ -121,7 +123,7 @@ Azure Machine Learning には、350 を超える R 言語パッケージがプ�
 今のところ、このコードの最終行が理解できないかもしれませんが、読んでみてください。 これ以降このドキュメントでは、Azure Machine Learning 環境での R の使用について幅広く説明します。
 
 ### <a name="introduction-to-rstudio"></a>RStudio の概要
-RStudio は、広く使用されている R 向けの IDE です。このクイック スタート ガイドで使用される R コードの一部は、RStudio を使用して編集、テスト、デバッグします。 R コードをテストして準備ができたら、単純に RStudio エディターで切り取って、Machine Learning Studio の [R スクリプトの実行][execute-r-script]モジュールに貼り付けます。  
+RStudio は、広く使用されている R 向けの IDE です。このクイックスタート ガイドで使用される R コードの一部は、RStudio を使用して編集、テスト、デバッグします。 R コードをテストして準備ができたら、単純に RStudio エディターで切り取って、Machine Learning Studio の [R スクリプトの実行][execute-r-script]モジュールに貼り付けることができます。  
 
 デスクトップ コンピューターに R プログラミング言語がインストールされていない場合は、すぐにインストールすることをお勧めします。 オープンソースの R 言語の無料ダウンロードが、包括的な R アーカイブ ネットワーク (CRAN) ([http://www.r-project.org/](http://www.r-project.org/)) で入手できます。 Windows、Mac OS、Linux/UNIX で利用できるダウンロードが用意されています。 お近くのミラー サイトを選択し、ダウンロードの指示に従ってください。 さらに、CRAN には、便利な分析とデータ操作のパッケージが豊富に用意されています。
 
@@ -227,7 +229,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 4. zip ファイルを、**データセット**から **ML Studio キャンバス**にドラッグ アンド ドロップします。
 5. **zip データ アイコン**の出力を、[R スクリプトの実行][execute-r-script]モジュールの**スクリプト バンドル**入力に接続します。
 6. [R スクリプトの実行][execute-r-script]モジュールのコード ウィンドウに、`source()` 関数を zip ファイル名を指定して入力します。 たとえば、「 `source("src/simpleplot.R")`」と入力します。  
-7. 必ず **[保存]**をクリックします。
+7. 必ず **[保存]** をクリックします。
 
 これらの手順の完了後に実験を実行すると、[R スクリプトの実行][execute-r-script]モジュールは zip ファイル内の R スクリプトを実行します。 この時点で、実験は図 5 のように表示されます。
 
@@ -291,7 +293,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 
     maml.mapOutputPort('cadairydata')
 
-この実験の実行後、結果データセット 1 出力ポートをクリックし、 **[視覚化]**をクリックします。 図 6 の内容が表示されます。
+この実験の実行後、結果データセット 1 出力ポートをクリックし、 **[視覚化]** をクリックします。 図 6 の内容が表示されます。
 
 ![カリフォルニア酪農データの出力の視覚化][7]
 
@@ -302,7 +304,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 ### <a name="r-device-output"></a>R デバイス出力
 [R スクリプトの実行][execute-r-script]モジュールのデバイス出力には、メッセージとグラフィックスの出力が含まれています。 R からの標準出力と標準エラー メッセージは両方とも、R デバイス出力ポートに送信されます。  
 
-R デバイス出力を表示するは、ポートをクリックして、 **[視覚化]**をクリックします。 R スクリプトからの標準出力と標準エラーが表示されます (図 7 を参照)。
+R デバイス出力を表示するは、ポートをクリックして、 **[視覚化]** をクリックします。 R スクリプトからの標準出力と標準エラーが表示されます (図 7 を参照)。
 
 ![R デバイス ポートからの標準出力と標準エラー][8]
 

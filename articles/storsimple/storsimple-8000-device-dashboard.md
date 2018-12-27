@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ デバイスの概要の使用 | Microsoft Docs"
-description: "StorSimple デバイス マネージャー サービスのデバイスの概要と、ストレージ メトリックと接続されているイニシエーターを表示してシリアル番号と IQN を確認する方法について説明します。"
+title: StorSimple 8000 シリーズ デバイスの概要の使用 | Microsoft Docs
+description: StorSimple デバイス マネージャー サービスのデバイスの概要と、ストレージ メトリックと接続されているイニシエーターを表示してシリアル番号と IQN を確認する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108260"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービスでデバイスの概要を使用する
 
@@ -87,7 +88,7 @@ StorSimple デバイス ブレードには、StorSimple デバイスを管理す
 
     ![[使用量] タイル](./media/storsimple-8000-device-dashboard/device-summary8.png)
 
-    容量が階層化ストレージとローカル固定ボリュームにどのようにプロビジョニングされているかを確認するには、このタイルをクリックします。 **[Remaining Tiered]\(残りの階層型容量\)**は、クラウドを含めてプロビジョニングするために使用できる容量です。**[Remaining Local]\(残りのローカル容量\)** は、このディスクに接続されているディスクに残っている容量です。
+    容量が階層化ストレージとローカル固定ボリュームにどのようにプロビジョニングされているかを確認するには、このタイルをクリックします。 **[Remaining Tiered]\(残りの階層型容量\)** は、クラウドを含めてプロビジョニングするために使用できる容量です。**[Remaining Local]\(残りのローカル容量\)** は、このディスクに接続されているディスクに残っている容量です。
 
     ![使用状況グラフをクリックする](./media/storsimple-8000-device-dashboard/device-summary13.png)
 

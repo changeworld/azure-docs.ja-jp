@@ -3,28 +3,28 @@ title: Azure Resource Manager の vCPU クォータを増やす要求 | Microsof
 description: Azure Resource Manager の vCPU クォータを増やす要求
 author: ganganarayanan
 ms.author: gangan
-ms.date: 3/15/2018
+ms.date: 6/13/2018
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: a42fa8e4e8dae140db4fcc8977bda335455b97a1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1be05ac7216a65922927b94d1cc4ba2a893433b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250987"
 ---
 # <a name="resource-manager-vcpu-quota-increase-requests"></a>Resource Manager の vCPU クォータを増やす要求
 
 Resource Manager の vCPU クォータは、リージョン レベルおよび SKU のファミリ レベルで適用されます。
-クォータを適用する方法について詳しくは、[Azure のサブスクリプションとサービスの制限](http://aka.ms/quotalimits)に関するページをご覧ください。
-SKU のファミリについては、[Virtual Machines の料金](http://aka.ms/pricingcompute)ページでコストとパフォーマンスを比較できます。
+クォータを適用する方法について詳しくは、[Azure のサブスクリプションとサービスの制限](https://aka.ms/quotalimits)に関するページをご覧ください。
+SKU のファミリについては、[Virtual Machines の料金](https://aka.ms/pricingcompute)ページでコストとパフォーマンスを比較できます。
 
-vCPU 数の増加を要求するには、Azure Portal ([https://portal.azure.com](https://portal.azure.com)) で vCPU についてクォータのサポート ケースを作成します。
+引き上げを依頼するには、以下の手順に従い、Azure portal で使用できる Azure の [使用量 + クォータ] ブレードでサポート要求を作成します。 
 
-> [!NOTE]
-> Azure Portal で[サポート要求を作成](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)する方法
+## <a name="request-quota-increase-at-subscription-level"></a>サブスクリプション レベルでクォータの引き上げを依頼する
 
-1. **[サブスクリプション]** を選択します。
+1. https://portal.azure.com から **[サブスクリプション]** を選択します。
 
    ![サブスクリプション](./media/resource-manager-core-quotas-request/subscriptions.png)
 
@@ -40,6 +40,22 @@ vCPU 数の増加を要求するには、Azure Portal ([https://portal.azure.com
 
    ![引き上げを依頼する](./media/resource-manager-core-quotas-request/request-increase.png)
 
-5. クォータの種類として、**[コア]** を選択します。 
+5. 手順 1: クォータの種類として、**[コア]** を選択します。 
 
    ![フォームに入力する](./media/resource-manager-core-quotas-request/forms.png)
+   
+6. 手順 2: [デプロイ モデル] として [リソース マネージャー] を選択して [場所] を選択します。
+
+    ![クォータの [問題] ブレード](./media/resource-manager-core-quotas-request/Problem-step.png)
+
+3. 増加する必要がある SKU のファミリを選択します。
+
+    ![選択した SKU シリーズ](./media/resource-manager-core-quotas-request/SKU-selected.png)
+
+4. サブスクリプションに対して必要な新しい制限を入力します。
+
+    ![SKU の新しいクォータ要求](./media/resource-manager-core-quotas-request/SKU-new-quota.png)
+
+- 行を削除するには、[SKU family (SKU ファミリ)] ドロップダウン リストで該当する SKU をオフにするか、破棄アイコン (x) をクリックします。
+各 SKU ファミリに必要なクォータを入力した後に、[問題] ステップ ページの [次へ] をクリックしてサポート要求の作成を続行します。
+

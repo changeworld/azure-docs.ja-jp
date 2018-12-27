@@ -6,82 +6,85 @@ documentationcenter: na
 author: rloutlaw
 manager: justhe
 keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ, java
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 11/07/2017
+ms.topic: conceptual
+ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 71576e65d20d7e8cb7f5ff1c5f19c82439bb6807
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5f74ee390ac327a9e697d3dc67da4ea604b64d69
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686894"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
-> [!div class="op_single_selector"]
-[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
+
+[!INCLUDE [functions-java-preview-note](../../includes/functions-java-preview-note.md)]
 
 ## <a name="programming-model"></a>プログラミング モデル 
 
-開発する Azure 関数は、入力を処理し出力を生成するステートレス クラス メソッドである必要があります。 インスタンスのメソッドを記述できますが、開発する関数は、クラスのインスタンス フィールドに依存することはできません。 すべての関数のメソッドには、`public` アクセス修飾子が必要です。
+[トリガーとバインド](functions-triggers-bindings.md)の概念は、Azure Functions の基盤です。 トリガーによって、コードの実行が開始します。 バインドでは、データを関数に渡し、関数からデータを返す方法が提供されます。カスタム データ アクセス コードを記述する必要はありません。
+
+入力を処理し、出力を生成するには、関数がステートレス メソッドである必要があります。 関数は、クラスのどのインスタンス フィールドにも依存しない必要があります。 すべての関数メソッドは `public` である必要があり、注釈 @FunctionName を持つメソッドは一意である必要があります。メソッド名が関数のエントリを定義するためです。
+
+## <a name="folder-structure"></a>フォルダー構造
+
+Azure Functions の Java プロジェクトのフォルダー構造を次に示します。
+
+```
+FunctionsProject
+ | - src
+ | | - main
+ | | | - java
+ | | | | - FunctionApp
+ | | | | | - MyFirstFunction.java
+ | | | | | - MySecondFunction.java
+ | - target
+ | | - azure-functions
+ | | | - FunctionApp
+ | | | | - FunctionApp.jar
+ | | | | - host.json
+ | | | | - MyFirstFunction
+ | | | | | - function.json
+ | | | | - MySecondFunction
+ | | | | | - function.json
+ | | | | - bin
+ | | | | - lib
+ | - pom.xml
+```
+
+関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.java) とバインディング構成ファイル (function.json) があります。
+
+1 つのプロジェクトに複数の関数を含めることができます。 複数の jar に関数を分けることは避けてください。 ターゲット ディレクトリの FunctionApp が、Azure 内の関数アプリにデプロイされます。
 
 ## <a name="triggers-and-annotations"></a>トリガーと注釈
 
-通常、Azure 関数は、外部トリガーによって呼び出されます。 開発する関数は、トリガーとそれに関連付けられている入力を処理し、1 つ以上の出力を生成する必要があります。
+ Azure の関数は、HTTP 要求、タイマー、日付の更新などのトリガーで呼び出されます。 関数はそのトリガーと他の入力を処理して 1 つまたは複数の出力を生成する必要があります。
 
-入力と出力をメソッドにバインドするための Java の注釈は、`azure-functions-java-core` パッケージに含まれています。 サポートされる入力トリガーと出力バインドの注釈を次の表に示します。
-
-バインド | 注釈
----|---
-Cosmos DB | 該当なし
-HTTP | <ul><li>`HttpTrigger`</li><li>`HttpOutput`</li></ul>
-Mobile Apps | 該当なし
-Notification Hubs | 該当なし
-ストレージ BLOB | <ul><li>`BlobTrigger`</li><li>`BlobInput`</li><li>`BlobOutput`</li></ul>
-ストレージ キュー | <ul><li>`QueueTrigger`</li><li>`QueueOutput`</li></ul>
-ストレージ テーブル | <ul><li>`TableInput`</li><li>`TableOutput`</li></ul>
-Timer | <ul><li>`TimerTrigger`</li></ul>
-Twilio | 該当なし
-
-トリガーの入力と出力は、アプリケーション用の [function.json](/azure/azure-functions/functions-reference#function-code) に定義することもできます。
+[com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) パッケージに含まれる Java の注釈を使用して、入力と出力をメソッドにバインドします。 詳しくは、[Java リファレンスドキュメント](/java/api/com.microsoft.azure.functions.annotation)のページをご覧ください。
 
 > [!IMPORTANT] 
 > Azure Storage Blob、Queue、または Table のトリガーをローカルに実行するには、[local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) に Azure Storage アカウントを構成する必要があります。
 
-注釈の使用例:
+例:
 
 ```java
-import com.microsoft.azure.serverless.functions.annotation.HttpTrigger;
-import com.microsoft.azure.serverless.functions.ExecutionContext;
-
 public class Function {
-    public String echo(@HttpTrigger(name = "req", methods = {"post"},  authLevel = AuthorizationLevel.ANONYMOUS) 
+    public String echo(@HttpTrigger(name = "req", 
+      methods = {"post"},  authLevel = AuthorizationLevel.ANONYMOUS) 
         String req, ExecutionContext context) {
         return String.format(req);
     }
 }
 ```
 
-注釈なしで記述された同じ関数:
-
-```java
-package com.example;
-
-public class MyClass {
-    public static String echo(String in) {
-        return in;
-    }
-}
-```
-
-対応する `function.json`:
+[azure-functions-maven-plugin](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin) によって生成された、対応する `function.json` を次に示します:
 
 ```json
 {
   "scriptFile": "azure-functions-example.jar",
-  "entryPoint": "com.example.MyClass.echo",
+  "entryPoint": "com.example.Function.echo",
   "bindings": [
     {
       "type": "httpTrigger",
@@ -100,197 +103,184 @@ public class MyClass {
 
 ```
 
-## <a name="data-types"></a>データ型
+## <a name="jdk-runtime-availability-and-support"></a>JDK ランタイムの使用可能性とサポート 
 
-入力データと出力データでは、ネイティブ型、Java 型をカスタマイズした型、`azure-functions-java-core` パッケージに定義された特別な Azure 型を含む Java のすべての種類のデータ型を使用できます。 Azure Functions ランタイムが、受信した入力をコードで要求された型に変換します。
+Java 関数アプリをローカルで開発するには、[Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) から [Azul Zulu for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) JDK をダウンロードして使用します。 JDK は、Windows、Linux、macOS で利用できます。 [Azure サポート](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support)は、[認定サポート プラン](https://azure.microsoft.com/support/plans/)を通じてご利用いただけます。
 
-### <a name="strings"></a>文字列
+## <a name="third-party-libraries"></a>サードパーティ製ライブラリ 
 
-関数のメソッドに渡された値は、関数の対応する入力パラメーターの型が `String` 型の場合は、文字列にキャストされます。 
+Azure Functions はサード パーティ製ライブラリの使用をサポートしています。 既定で、プロジェクトの `pom.xml` ファイルで指定されているすべての依存関係は、[`mvn package`](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) 目標の間に自動的にバンドルされます。 `pom.xml` ファイルの依存関係として指定されていないライブラリの場合は、関数のルート ディレクトリ以下の `lib` ディレクトリに配置します。 `lib` ディレクトリに配置された依存関係は、実行時にシステム クラス ローダーに追加されます。
+
+`com.microsoft.azure.functions:azure-functions-java-library` 依存関係はクラスパスにおいて既定で提供されており、`lib` ディレクトリに含める必要はありません。 また、[ここ](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies)に示されている依存関係が、[azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker) によってクラスパスに追加されます。
+
+## <a name="data-type-support"></a>データ型のサポート
+
+Plain old Java object (POJO)、`azure-functions-java-library` 内で定義されている型、または文字列や整数などのプリミティブなデータ型を使用して入力/出力バインドにバインドできます。
 
 ### <a name="plain-old-java-objects-pojos"></a>Plain old Java object (POJO)
 
-JSON でフォーマットされる文字列は、関数のメソッドの入力が特定の Java 型を予期している場合は、その Java 型にキャストされます。 この変換によって、自分のコードの中で変換を実装することなく、JSON 入力を関数に渡してコード内で Java 型を操作できます。
-
-関数への入力として使用される POJO 型は、それが使用される関数のメソッドと同じ `public` アクセス修飾子を持っている必要があります。 POJO クラスのフィールドで `public` を宣言する必要はありません。 たとえば、JSON 文字列 `{ "x": 3 }` は、次の POJO 型に変換できます。
-
-```Java
-public class MyData {
-    private int x;
-}
-```
+入力データを POJO に変換する場合、[azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker) では [gson](https://github.com/google/gson) ライブラリが使用されます。 関数への入力として使用される POJO の型は `public` である必要があります。
 
 ### <a name="binary-data"></a>バイナリ データ
 
-バイナリ データは、Azure 関数コードでは `byte[]` と表わされます。 バイナリの入力または出力を関数にバインドするには、function.json の `dataType` フィールドを `binary` に設定します。
-
-```json
- {
-  "scriptFile": "azure-functions-example.jar",
-  "entryPoint": "com.example.MyClass.echo",
-  "bindings": [
-    {
-      "type": "blob",
-      "name": "content",
-      "direction": "in",
-      "dataType": "binary",
-      "path": "container/myfile.bin",
-      "connection": "ExampleStorageAccount"
-    },
-  ]
-}
-```
-
-その後、開発する関数コード内でそれを使用します。
+バイナリの入力または出力を `byte[]` にバインドするには、使用する function.json 内の `dataType` フィールドを `binary` に設定します。
 
 ```java
-// Class definition and imports are omitted here
-public static String echoLength(byte[] content) {
-}
+   @FunctionName("BlobTrigger")
+    @StorageAccount("AzureWebJobsStorage")
+     public void blobTrigger(
+        @BlobTrigger(name = "content", path = "myblob/{fileName}", dataType = "binary") byte[] content,
+        @BindingName("fileName") String fileName,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Java Blob trigger function processed a blob.\n Name: " + fileName + "\n Size: " + content.length + " Bytes");
+    }
 ```
 
-バイナリ出力をバインドするには、`OutputBinding<byte[]>` 型を使用します。
+null 値が必要な場合は `Optional<T>` を使用します
 
+## <a name="bindings"></a>バインド
 
-## <a name="function-method-overloading"></a>関数のメソッドのオーバー ロード
+入出力バインドによって、コード内からデータに接続する宣言型の方法が提供されます。 関数は複数の入出力バインドを持つことができます。
 
-関数のメソッドは、名前は同じだが型は異なるものでオーバーロードできます。 たとえば、1 つのクラスに `String echo(String s)` と `String echo(MyType s)` を設定でき、どちらを呼び出すかは、実際の入力の型を調べることで Azure Functions ランタイムが決定します (HTTP 入力では MIME の種類 `text/plain` は `String` になり、`application/json` は `MyType` を表します)。
-
-## <a name="inputs"></a>入力
-
-Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 `function.json` ではこれらは同じではありませんが、Java コードでは同じように使用されます。 次のコード スニペットを例として使用します。
+### <a name="example-input-binding"></a>入力バインディングの例
 
 ```java
 package com.example;
 
-import com.microsoft.azure.serverless.functions.annotation.BindingName;
-import java.util.Optional;
+import com.microsoft.azure.functions.annotation.*;
 
-public class MyClass {
-    public static String echo(Optional<String> in, @BindingName("item") MyObject obj) {
-        return "Hello, " + in.orElse("Azure") + " and " + obj.getKey() + ".";
+public class Function {
+    @FunctionName("echo")
+    public static String echo(
+        @HttpTrigger(name = "req", methods = { "put" }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
+        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData
+        @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData,
+    ) {
+        testOutputData.setValue(new Person(httpbody + "Partition", httpbody + "Row", httpbody + "Name"));
+        return "Hello, " + inputReq + " and " + inputData.getKey() + ".";
     }
 
-    private static class MyObject {
+    public static class TestInputData {
         public String getKey() { return this.RowKey; }
         private String RowKey;
     }
-}
-```
+    public static class Person {
+        public String PartitionKey;
+        public String RowKey;
+        public String Name;
 
-`@BindingName` 注釈は、`function.json` に定義されたバインド/トリガーの名前を表す `String` プロパティを受け入れます。
-
-```json
-{
-  "scriptFile": "azure-functions-example.jar",
-  "entryPoint": "com.example.MyClass.echo",
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "name": "req",
-      "direction": "in",
-      "authLevel": "anonymous",
-      "methods": [ "put" ],
-      "route": "items/{id}"
-    },
-    {
-      "type": "table",
-      "name": "item",
-      "direction": "in",
-      "tableName": "items",
-      "partitionKey": "Example",
-      "rowKey": "{id}",
-      "connection": "ExampleStorageAccount"
-    },
-    {
-      "type": "http",
-      "name": "$return",
-      "direction": "out"
+        public Person(String p, String r, String n) {
+            this.PartitionKey = p;
+            this.RowKey = r;
+            this.Name = n;
+        }
     }
-  ]
 }
 ```
 
-したがって、この関数が呼び出されると、HTTP 要求のペイロードは、引数 `in` に省略可能な `String` を渡し、引数 `obj` に Azure Table Storage の `MyObject` 型を渡します。 `Optional<T>` 型を使用して、null にできる関数に入力値を渡して処理します。
+この関数は、HTTP 要求を使用して呼び出されます。 
+- HTTP 要求のペイロードは、引数 `inputReq` に `String` として渡されます
+- 1 つのエントリが Azure Table Storage から取得され、引数 `inputData` に `TestInputData` として渡されます。
 
-## <a name="outputs"></a>出力
+入力のバッチを受信するには、`String[]`、`POJO[]`、`List<String>` または `List<POJO>` にバインドできます。
 
-出力は、戻り値または出力パラメーターの両方で表現できます。 出力が 1 つのみの場合は、戻り値を使用することをお勧めします。 複数の出力では、出力パラメーターを使用する必要があります。
+```java
+@FunctionName("ProcessIotMessages")
+    public void processIotMessages(
+        @EventHubTrigger(name = "message", eventHubName = "%AzureWebJobsEventHubPath%", connection = "AzureWebJobsEventHubSender", cardinality = Cardinality.MANY) List<TestEventData> messages,
+        final ExecutionContext context)
+    {
+        context.getLogger().info("Java Event Hub trigger received messages. Batch size: " + messages.size());
+    }
+    
+    public class TestEventData {
+    public String id;
+}
 
-戻り値は最も単純な出力形式であり、任意の型の値を返すと、Azure Functions ランタイムが実際の型に戻すことを試行します (HTTP 応答など)。 `functions.json` では、出力バインドの名前として `$return` を使用します。
+```
 
-複数の出力値を生成するには、`azure-functions-java-core` パッケージに定義されている `OutputBinding<T>` 型を使用します。 HTTP 応答と、キューへのメッセージのプッシュも行う必要がある場合は、次のようなコードを記述できます。
+この関数は、構成済みのイベント ハブに新しいデータが見つかるたびにトリガーされます。 `cardinality` が `MANY` に設定されているので、関数はイベント ハブからメッセージのバッチを受信します。 イベント ハブからの EventData は関数実行のために `TestEventData` に変換されます。
+
+### <a name="example-output-binding"></a>出力バインディングの例
+
+`$return` を使用して、出力バインディングを戻り値にバインドすることができます 
 
 ```java
 package com.example;
 
-import com.microsoft.azure.serverless.functions.OutputBinding;
-import com.microsoft.azure.serverless.functions.annotation.BindingName;
+import com.microsoft.azure.functions.annotation.*;
 
-public class MyClass {
-    public static String echo(String body, 
-    @QueueOutput(queueName = "messages", connection = "AzureWebJobsStorage", name = "queue") OutputBinding<String> queue) {
-        String result = "Hello, " + body + ".";
-        queue.setValue(result);
-        return result;
+public class Function {
+    @FunctionName("copy")
+    @StorageAccount("AzureWebJobsStorage")
+    @BlobOutput(name = "$return", path = "samples-output-java/{name}")
+    public static String copy(@BlobTrigger(name = "blob", path = "samples-input-java/{name}") String content) {
+        return content;
     }
 }
 ```
 
-`function.json` に出力バインドを定義する必要があります。
+複数の出力バインディングが存在する場合は、そのうちの 1 つにのみ戻り値を使用します。
 
-```json
-{
-  "scriptFile": "azure-functions-example.jar",
-  "entryPoint": "com.example.MyClass.echo",
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "name": "req",
-      "direction": "in",
-      "authLevel": "anonymous",
-      "methods": [ "post" ]
-    },
-    {
-      "type": "queue",
-      "name": "queue",
-      "direction": "out",
-      "queueName": "messages",
-      "connection": "AzureWebJobsStorage"
-    },
-    {
-      "type": "http",
-      "name": "$return",
-      "direction": "out"
+複数の出力値を送信するには、`azure-functions-java-library` パッケージに定義されている `OutputBinding<T>` を使用します。 
+
+```java
+@FunctionName("QueueOutputPOJOList")
+    public HttpResponseMessage QueueOutputPOJOList(@HttpTrigger(name = "req", methods = { HttpMethod.GET,
+            HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @QueueOutput(name = "itemsOut", queueName = "test-output-java-pojo", connection = "AzureWebJobsStorage") OutputBinding<List<TestData>> itemsOut, 
+            final ExecutionContext context) {
+        context.getLogger().info("Java HTTP trigger processed a request.");
+       
+        String query = request.getQueryParameters().get("queueMessageId");
+        String queueMessageId = request.getBody().orElse(query);
+        itemsOut.setValue(new ArrayList<TestData>());
+        if (queueMessageId != null) {
+            TestData testData1 = new TestData();
+            testData1.id = "msg1"+queueMessageId;
+            TestData testData2 = new TestData();
+            testData2.id = "msg2"+queueMessageId;
+
+            itemsOut.getValue().add(testData1);
+            itemsOut.getValue().add(testData2);
+
+            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + queueMessageId).build();
+        } else {
+            return request.createResponseBuilder(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Did not find expected items in CosmosDB input list").build();
+        }
     }
-  ]
-}
-```
-## <a name="specialized-types"></a>特殊な型
 
-場合によっては、関数で入力と出力を細かく制御する必要があります。 `azure-functions-java-core` パッケージには、要求情報を操作し、HTTP トリガーの戻り値の状態を調整するための特殊な型が用意されています。
+     public static class TestData {
+        public String id;
+    }
+```
+
+上記の関数が HttpRequest 上で呼び出され、複数の値が Azure キューに書き込まれます
+
+## <a name="httprequestmessage-and-httpresponsemessage"></a>HttpRequestMessage と HttpResponseMessage
+
+ `azure-functions-java-library` 内で定義されている HttpRequestMessage 型と HttpResponseMessage 型は、HttpTrigger 関数を操作するためのヘルパー型です
 
 | 特殊な型      |       ターゲット        | 一般的な用途                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    HTTP トリガー     | メソッド、ヘッダー、またはクエリを取得する |
-| `HttpResponseMessage<T>` | HTTP 出力のバインド | 200 以外の状態を返す   |
+| `HttpResponseMessage` | HTTP 出力のバインド | 200 以外の状態を返す   |
 
-> [!NOTE] 
-> `@BindingName` 注釈を使用して、HTTP ヘッダーとクエリを取得することもできます。 たとえば、`@BindingName("name") String query` は、HTTP 要求ヘッダーとクエリを反復処理し、その値をメソッドに渡します。 たとえば、要求 URL が `http://example.org/api/echo?name=test` の場合、`query` は `"test"` になります。
+## <a name="metadata"></a>Metadata
 
-### <a name="metadata"></a>Metadata
+いくつかのトリガーでは、入力データと共に[トリガー メタデータ](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties)が送信されます。 注釈 `@BindingName` を使用して、トリガー メタデータにバインドできます
 
-メタデータは、HTTP ヘッダー、HTTP クエリ、[トリガー メタデータ](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties) などのさまざまなソースから取得されます。 `@BindingName` 注釈をメタデータ名と一緒に使用して値を取得します。
-
-たとえば、次のコード スニペットの `queryValue` は、要求された URL が `http://{example.host}/api/metadata?name=test` である場合 `"test"` になります。
 
 ```Java
 package com.example;
 
 import java.util.Optional;
-import com.microsoft.azure.serverless.functions.annotation.*;
+import com.microsoft.azure.functions.annotation.*;
 
-public class MyClass {
+
+public class Function {
     @FunctionName("metadata")
     public static String metadata(
         @HttpTrigger(name = "req", methods = { "get", "post" }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
@@ -300,20 +290,39 @@ public class MyClass {
     }
 }
 ```
-
-## <a name="functions-execution-context"></a>Functions の実行コンテキスト
-
-Azure Functions 実行環境との対話は、`azure-functions-java-core` パッケージに定義された `ExecutionContext` オブジェクト経由で行います。 開発するコード内で呼び出し情報と関数の実行時の情報を使用するには、`ExecutionContext` オブジェクトを使用します。
-
-### <a name="logging"></a>ログの記録
-
-`ExecutionContext` オブジェクトを介して Functions ランタイム ロガーにアクセスできます。 このロガーは、Azure モニターに関連付けられているため、関数の実行中に発生した警告とエラーのフラグを設定できます。
-
-次のコード例は、受信した要求の本文が空の場合に警告メッセージをログに記録します。
+上記の例では、`queryValue` は `name`Http 要求 URL`http://{example.host}/api/metadata?name=test` 内のクエリ文字列パラメーターにバインドされています。 キュー トリガー メタデータから `Id` にバインドする別の例を次に示します
 
 ```java
-import com.microsoft.azure.serverless.functions.annotation.HttpTrigger;
-import com.microsoft.azure.serverless.functions.ExecutionContext;
+ @FunctionName("QueueTriggerMetadata")
+    public void QueueTriggerMetadata(
+        @QueueTrigger(name = "message", queueName = "test-input-java-metadata", connection = "AzureWebJobsStorage") String message,@BindingName("Id") String metadataId,
+        @QueueOutput(name = "output", queueName = "test-output-java-metadata", connection = "AzureWebJobsStorage") OutputBinding<TestData> output,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Java Queue trigger function processed a message: " + message + " whith metadaId:" + metadataId );
+        TestData testData = new TestData();
+        testData.id = metadataId;
+        output.setValue(testData);
+    }
+```
+
+> [!NOTE]
+> 注釈に指定されている名前がメタデータ プロパティと一致する必要があります
+
+## <a name="execution-context"></a>実行コンテキスト
+
+`ExecutionContext` 内で定義されている `azure-functions-java-library` には、関数ランタイムと通信するためのヘルパー メソッドが含まれています。
+
+### <a name="logger"></a>ロガー
+
+`ExecutionContext` 内で定義されている `getLogger` を使用して、関数コードからログを書き込みます。
+
+例:
+
+```java
+
+import com.microsoft.azure.functions.*;
+import com.microsoft.azure.functions.annotation.*;
 
 public class Function {
     public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
@@ -325,33 +334,57 @@ public class Function {
 }
 ```
 
-## <a name="environment-variables"></a>環境変数
+## <a name="view-logs-and-trace"></a>ログとトレースの表示
 
-多くの場合は、セキュリティ上の理由で、ソース コードからシークレット情報を抽出することが求められます。 これにより、資格情報を他の開発者に誤って提供することなく、コードをソース コード リポジトリに発行できます。 これは、Azure Functions をローカルに実行する場合と、Azure に関数をデプロイする場合の両方で環境変数を使用することによって簡単に実現できます。
+Java の stdout と stderr ログ、その他の各種アプリケーション ログは、Azure CLI を使用してストリーム配信することができます。 
 
-Azure Functions をローカルに実行する場合に環境変数を容易に設定するには、これらの変数を local.settings.json ファイルに追加することを選択できます。 このファイルが関数プロジェクトのルート ディレクトリに存在しない場合は、これを自由に作成できます。 このファイルは次のようになります。
+Azure CLI を使って、アプリケーション ログを出力するための構成を関数アプリケーションに対して行います。
 
-```xml
-{
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "",
-    "AzureWebJobsDashboard": ""
-  }
-}
+```azurecli-interactive
+az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
 ```
 
-`values` マップ内の各キー/値のマッピングは、`System.getenv("<keyname>")` を呼び出すことによってアクセスできる環境変数として実行時に使用可能になります (たとえば、`System.getenv("AzureWebJobsStorage")`)。 キー/値のペアの追加は許容され、それが推奨される手法です。
+Azure CLI を使って関数アプリのログ出力をストリーム配信するには、コマンド プロンプト、Bash、ターミナルのいずれかのセッションを新たに開いて、次のコマンドを入力します。
 
-> [!NOTE]
-> この方法が実行される場合は、local.settings.json ファイルをリポジトリの無視ファイルに追加して、それがコミットされないようにするかどうかを考慮するようにしてください。
+```azurecli-interactive
+az webapp log tail --name webappname --resource-group myResourceGroup
+```
+[az webapp log tail](/cli/azure/webapp/log) コマンドには、`--provider` オプションを使って出力をフィルター処理するオプションが用意されています。 
 
-これで、コードがこれらの環境変数に依存するようになったので、Azure Portal にログインして関数アプリ設定で同じキー/値のペアを設定することにより、コードがローカルにテストする場合と Azure にデプロイされた場合とで同等に機能するようにできます。
+Azure CLI を使ってログ ファイルを単一の ZIP ファイルとしてダウンロードするには、コマンド プロンプト、Bash、ターミナルのいずれかのセッションを新たに開いて、次のコマンドを入力します。
+
+```azurecli-interactive
+az webapp log download --resource-group resourcegroupname --name functionappname
+```
+
+このコマンドを実行する前に、Azure portal または Azure CLI でファイル システム ログを有効にしておく必要があります。
+
+## <a name="environment-variables"></a>環境変数
+
+Functions では、サービス接続文字列などの[アプリ設定](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings)は、実行中に環境変数として公開されます。 `System.getenv("AzureWebJobsStorage")` を使用して、これらの設定にアクセスすることができます
+
+例:
+
+名前が testAppSetting で値が testAppSettingValue の[AppSetting](https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings) を追加します
+
+```java
+
+public class Function {
+    public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
+        context.getLogger().info("testAppSetting "+ System.getenv("testAppSettingValue"));
+        return String.format(req);
+    }
+}
+
+```
 
 ## <a name="next-steps"></a>次の手順
-詳細については、次のリソースを参照してください。
+
+Java による Azure Functions 開発の詳細については、次のリソースを参照してください。
 
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
+- [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md)、[Eclipse](functions-create-maven-eclipse.md) を使ったローカルでの開発とデバッグ 
 * [Visual Studio Code を使用した Java Azure Functions のリモート デバッグ](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* [Maven plugin for Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) - `azure-functions:add` ゴールを使って関数の作成を効率化し、[ZIP ファイル デプロイ](deployment-zip-push.md)に向けてステージング ディレクトリを準備します。

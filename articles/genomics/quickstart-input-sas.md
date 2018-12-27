@@ -1,23 +1,22 @@
 ---
-title: "ストレージ アカウント キーの代わりに SAS を使用してワークフローを送信する | Microsoft Docs"
+title: ストレージ アカウント キーではなく SAS を使用してワークフローを送信する - Microsoft Genomics
 titleSuffix: Azure
-description: "このクイックスタートでは、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。"
-services: microsoft-genomics
+description: このクイックスタートでは、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 03/02/2018
-ms.openlocfilehash: b6d84428749d8f5f78374efcca22ef913ee96c5e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9a22e4bb0949544e18237e789ca807e57ed59abf
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733499"
 ---
-# <a name="submit-a-workflow-using-a-sas-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに SAS を使用してワークフローを送信する
+# <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに SAS を使用してワークフローを Microsoft Genomics に送信する 
 
 このクイックスタートでは、ストレージ アカウント キーの代わりに [Shared Access Signature (SAS) ](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)を含む config.txt ファイルを使用して Microsoft Genomics サービスにワークフローを送信する方法について説明します。 この機能は、config.txt ファイルでストレージ アカウント キーを表示できる状態にすることにセキュリティ上の懸念がある場合に役立ちます。 この記事では、`msgen` クライアントを既にインストールして実行していること、また、Azure Storage の使用方法をよく理解していることを前提とします。 提供されたサンプル データを使用してワークフローの送信に成功した場合、このクイックスタートを進める準備ができています。 
 
@@ -50,7 +49,7 @@ SAS トークンを作成するには、Azure Storage Explorer を使用する�
 
 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) は、Azure Storage に保存したリソースを管理するツールです。  Azure Storage Explorer の使用方法については、[こちら](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)を参照してください。
 
-入力ファイルの SAS は特定の入力ファイル (BLOB) に範囲を設定する必要があります。 SAS トークンを作成するには、[こちらの手順](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-storage-explorer#work-with-shared-access-signatures)に従ってください。 SAS を作成すると、クエリ文字列を含む完全な URL とクエリ文字列が表示され、画面からコピーできるようになります。
+入力ファイルの SAS は特定の入力ファイル (BLOB) に範囲を設定する必要があります。 SAS トークンを作成するには、[こちらの手順](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer#work-with-shared-access-signatures)に従ってください。 SAS を作成すると、クエリ文字列を含む完全な URL とクエリ文字列が表示され、画面からコピーできるようになります。
 
  ![Genomics SAS Storage Explorer](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomics SAS Storage Explorer")
 

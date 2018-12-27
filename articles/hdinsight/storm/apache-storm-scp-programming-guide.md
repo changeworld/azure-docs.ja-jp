@@ -1,25 +1,20 @@
 ---
-title: "SCP.NET プログラミング ガイド | Microsoft Docs"
-description: "SCP.NET を使用して、HDInsight 上の Storm で使用するための NET ベースの Storm トポロジを作成する方法について説明します。"
+title: Azure HDInsight における Storm の SCP.NET プログラミング ガイド
+description: SCP.NET を使用して、Azure HDInsight で実行されている Storm で使用するための .NET ベースの Storm トポロジを作成する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: raviperi
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 34192ed0-b1d1-4cf7-a3d4-5466301cf307
 ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 05/16/2016
-ms.author: raviperi
-ms.openlocfilehash: a0ce92ba58fbcda812a3d4e5e275178b73400d6c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496863"
 ---
 # <a name="scp-programming-guide"></a>SCP プログラミング ガイド
 SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。 OSS コミュニティが設計したストリーム処理システムである [Apache Storm](http://storm.incubator.apache.org/) を基に構築されています。 Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されました。 信頼性の高い分散化した調整と状態管理を実現するために、別の Apache プロジェクトである [Apache ZooKeeper](http://zookeeper.apache.org/)を利用しています。 
@@ -155,7 +150,7 @@ Context は、アプリケーションに実行環境を提供します。 各 I
     public Dictionary<string, Object> stormConf { get; set; }  
     public Dictionary<string, Object> pluginConf { get; set; }  
 
-`stormConf` は Storm で定義されているパラメーターで、`pluginConf` は SCP で定義されているパラメーターです。 For example:
+`stormConf` は Storm で定義されているパラメーターで、`pluginConf` は SCP で定義されているパラメーターです。 例: 
 
     public class Constants
     {
@@ -210,9 +205,9 @@ ACK をサポートする非トランザクション ボルトには、受け取
     public abstract void Fail(SCPTuple tuple);
 
 ### <a name="statestore"></a>StateStore
-`StateStore` は、メタデータ サービス、モノトニックなシーケンスの生成、および wait-free 調整を提供します。 高度なレベルでの分散同時実行の抽象化は、`StateStore` に基づいて構築されています。これには、分散ロック、分散キュー、バリア、およびトランザクション サービスが含まれます。
+`StateStore` は、メタデータ サービス、モノトニックなシーケンスの生成、および wait-free 調整を提供します。 高度なレベルでの分散コンカレンシーの抽象化は、`StateStore` に基づいて構築されています。これには、分散ロック、分散キュー、バリア、およびトランザクション サービスが含まれます。
 
-SCP アプリケーションでは、 `State` オブジェクトを使用して、ZooKeeper に情報 (特にトランザクション トポロジの情報) を保持できます。 それによって、トランザクション スパウトがクラッシュして再起動する場合、ZooKeeper から必要な情報を取得し、パイプラインを再起動できます。
+SCP アプリケーションでは、 `State` オブジェクトを使用して、[Apache ZooKeeper](https://zookeeper.apache.org/) に情報 (特にトランザクション トポロジの情報) を保持できます。 それによって、トランザクション スパウトがクラッシュして再起動する場合、ZooKeeper から必要な情報を取得し、パイプラインを再起動できます。
 
 `StateStore` オブジェクトには主として、次のメソッドがあります。
 
@@ -351,7 +346,7 @@ ISCPBatchBolt では、`parms` の `StormTxAttempt` を取得し、それを使�
         }
 
 ## <a name="topology-specification-language"></a>トポロジ仕様言語
-SCP Topology Specification は、SCP トポロジを記述して構成するためのドメイン固有の言語です。 Storm の Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) を基にし、SCP によって拡張されています。
+SCP Topology Specification は、SCP トポロジを記述して構成するためのドメイン固有の言語です。 これは Storm の Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) に基づいており、SCP によって拡張されます。
 
 トポロジの仕様は、***runspec*** コマンドを介して Storm クラスターに直接送信されて実行されます。
 
@@ -646,10 +641,10 @@ ISCPBatchBolt インスタンスが作成されると、入力パラメーター
 ### <a name="scphostdemo"></a>SCPHostDemo
 この例は、基本的に HelloWorld と同じです。 唯一の相違点は、ユーザー コードが DLL としてコンパイルされ、トポロジが SCPHost.exe を使用して送信されることです。 詳細な説明については、「SCP ホスト モード」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
-SCP を使用して作成された Storm トポロジの例については、次のドキュメントを参照してください。
+## <a name="next-steps"></a>次の手順
+SCP を使用して作成された Apache Storm トポロジの例については、次のドキュメントを参照してください。
 
 * [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](apache-storm-develop-csharp-visual-studio-topology.md)
-* [HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)](apache-storm-develop-csharp-event-hub-topology.md)
-* [Process vehicle sensor data from Event Hubs using Storm on HDInsight (HDInsight での Storm を使用した Event Hubs からの車両センサー データの処理)](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
-* [Azure Event Hubs から HBase への抽出、変換、ロード (ETL)](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
+* [HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する](apache-storm-develop-csharp-event-hub-topology.md)
+* [HDInsight 上の Apache Storm を使用して Event Hubs からの車両センサー データを処理する](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
+* [Azure Event Hubs から Apache HBase への抽出、変換、ロード (ETL)](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)

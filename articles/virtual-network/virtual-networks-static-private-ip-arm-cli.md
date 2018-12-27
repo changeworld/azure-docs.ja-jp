@@ -1,11 +1,11 @@
 ---
-title: "VM のプライベート IP アドレスの構成 - Azure CLI | Microsoft Docs"
-description: "Azure コマンド ライン インターフェイス (CLI) を使用して、仮想マシンのプライベート IP アドレスを構成する方法について説明します。"
+title: VM のプライベート IP アドレスの構成 - Azure CLI | Microsoft Docs
+description: Azure コマンド ライン インターフェイス (CLI) を使用して、仮想マシンのプライベート IP アドレスを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9fe7020719079e11150c62068650aa6ca17b056
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0ffcf483b2852ec87c263573a97b4508d5b5d39c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997473"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンのプライベート IP アドレスを構成する
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 03/09/2018
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-この記事では、リソース マネージャーのデプロイ モデルについて説明します。 [クラシック デプロイ モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-classic-cli.md)こともできます。
+この記事では、Resource Manager デプロイ モデルについて説明します。 [クラシック デプロイ モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-classic-cli.md)こともできます。
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
@@ -41,13 +42,13 @@ ms.lasthandoff: 03/09/2018
 
 静的プライベート IP *192.168.1.101* を使用して、*TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、次の手順を実行します。
 
-1. まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。 
+1. まだ行っていない場合は、最新の [Azure CLI](/cli/azure/install-azure-cli) をインストールして構成し、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。
 
 2. [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) コマンドを使用して VM のパブリック IP を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
 
     > [!NOTE]
     > 今回の手順とこの後の手順では、環境に応じて引数に異なる値を使用したほうが良い場合や、異なる値を使用する必要がある場合があります。
-   
+
     ```azurecli
     az network public-ip create \
     --name TestPIP \
@@ -57,7 +58,7 @@ ms.lasthandoff: 03/09/2018
     ```
 
     予想される出力:
-   
+
    ```json
    {
         "publicIp": {
@@ -158,6 +159,7 @@ ms.lasthandoff: 03/09/2018
 
    * `--nics`: VM が接続されている NIC の名前。
    
+VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、[Windows VM に複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-cli.md)場合など、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure [ネットワーク インターフェイス](virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>VM の静的プライベート IP アドレス情報を取得する
 
@@ -267,9 +269,7 @@ Azure Resource Manager デプロイ用の Azure CLI では、NIC から静的プ
 
     > [!NOTE]
     > VM が複数の NIC を持つのに十分な大きさである場合、**azure network nic delete** コマンドを実行して、古い NIC を削除します。
-   
-## <a name="next-steps"></a>次の手順
-* [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
-* [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
-* [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。
 
+## <a name="next-steps"></a>次の手順
+
+[IP アドレス設定](virtual-network-network-interface-addresses.md)の管理について学習します。

@@ -3,56 +3,67 @@ title: Azure Stack での API バージョンのプロファイルの管理 | Mi
 description: Azure Stack での API バージョンのプロファイルについて説明します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
-editor: ''
-ms.assetid: 8A336052-8520-41D2-AF6F-0CCE23F727B4
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
-ms.author: mabrigg
+ms.date: 09/17/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 452ed1de0588b380747edaa44dd0cc3805c51392
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1b63a75a2505ecbd82896932018ef4f0936b9b37
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182894"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Azure Stack での API バージョンのプロファイルの管理
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-API プロファイルでは、Azure リソース プロバイダーと Azure REST エンドポイントの API バージョンが指定されます。 API プロファイルを使用して、さまざまな言語でカスタム クライアントを作成できます。 各クライアントは API プロファイルを使用して、適切なリソース プロバイダーと Azure Stack の API バージョンに連絡します。 
+API プロファイルでは、Azure リソース プロバイダーと Azure REST エンドポイントの API バージョンが指定されます。 API プロファイルを使用して、さまざまな言語でカスタム クライアントを作成できます。 各クライアントは API プロファイルを使用して、適切なリソース プロバイダーと Azure Stack の API バージョンに連絡します。
 
-各リソース プロバイダー API の正確にどのバージョンが Azure Stack と互換性があるかを選別せずに、Azure リソース プロバイダーと連携するアプリを作成できます。 アプリケーションをプロファイルに整合させるだけです。SDK によって適切な API-version に戻されます。
-
+各リソース プロバイダー API の正確にどのバージョンが Azure Stack と互換性があるかを選別せずに、Azure リソース プロバイダーと連携するアプリを作成できます。 アプリケーションをプロファイルに整合させるだけで、SDK によって適切な API バージョンに戻されます。
 
 このトピックは、以下に役立ちます。
+
  - Azure Stack の API プロファイルの理解
  - API プロファイルを使用してソリューションを開発する方法
- - コード固有のガイダンスが見つかる場所
+ - コード固有のガイダンスが提供されている場所
 
 ## <a name="summary-of-api-profiles"></a>API プロファイルの概要
 
 - API プロファイルは、一連の Azure リソース プロバイダーとその API バージョンを表すために使用されます。
-- API プロファイルは、複数の Azure クラウド間でテンプレートを作成する開発者向けに作成されました。 互換性のある安定したインターフェイスのニーズを満たすよう設計されています。
+- API プロファイルは、複数の Azure クラウド間でテンプレートを作成するユーザー向けに作成されました。 プロファイルは、互換性があり、安定したインターフェイスに対するニーズを満たすよう設計されています｡
 - プロファイルは、1 年に 4 回リリースされます。
-- 3 つのプロファイル名前付け規則を紹介します。
+- 次の 3 つのプロファイル名前付け規則が使用されます。
     - **latest**  
-        Azure でリリースされる最新の API バージョンです。
+        グローバル Azure でリリースされた最新の API バージョンを含みます。
     - **yyyy-mm-dd-hybrid**  
-    年 2 回リリースされ、複数のクラウド間での一貫性と安定性に重点が置かれています。
-    - **yyyy-mm-dd-profile**  
-    最適な安定性と最新の機能の中間に位置します。
+    年 2 回リリースされ、複数のクラウド間での一貫性と安定性に重点が置かれています。 このプロファイルは Azure Stack との最適な互換性を目指しています｡
+    - **yyyy-mm-dd-profile** 最適な安定性と最新の機能の中間に位置します。
+
+## <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Azure API プロファイルと Azure Stack の互換性
+
+最新の API プロファイルは Azure Stack との互換性がありません｡ 次の名前付け規則を使用して、Azure Stack ソリューションにどのプロファイルを使用するか識別できます。
+
+**最新**  
+このプロファイルはグローバル Azure にある最新の API バージョンであり､Azure Stack では機能しません｡ **最新** このプロファイルには､最も多くの重大な変更が含まれています｡ このプロファイルでは､安定性および他のクラウドとの互換性は配慮されていません｡ 最新の API バージョンを使用する場合は､**最新**プロファイルを使用してください。
+
+**yyyy-mm-dd-hybrid**  
+このプロファイルは､毎年 3月と 9 月にリリースされます｡ このプロファイルには最適な安定性と各種クラウドとの互換性があります｡ **Yyyy-mm-dd-hybrid** プロファイルは､グローバル Azure と Microsoft Azure Stack の両方を対象に設計されています｡ このプロファイルに記載されている Azure API バージョンは､Azure Stack に記載されているものと同じです｡ このプロファイルを利用して､ハイブリッド クラウド ソリューション向けのコードを開発することができます｡
+
+**yyyy-mm-dd-profile**  
+このプロファイルは､グローバル Azure 向けに 6 月と 12 月にリリースされます｡ このプロファイルは Azure Stack では機能しません｡一般的に重大な変更が多数含まれています｡ 最適な安定性と最新の機能の間に位置しますが、**最新**プロファイルとこのプロファイルの違いは､API のリリース時期に関係なく、**最新**プロファイルはつねに最新のバージョンで構成されることです｡ たとえば､Compute API 用に新しい API バージョンが明日作成されるとすると､**最新**プロファイルには､その API バージョンが記載されますが､このプロファイルはすでに存在するため、**yyyy-mm-dd-profile** には記載されません｡  **yyyy-mm-dd-profile** は、6 月または 12 月の前にリリースされた最新のバージョンが対応します｡
 
 ## <a name="azure-resource-manager-api-profiles"></a>Azure Resource Manager API プロファイル
 
-Azure Stack は、グローバル Azure にある API バージョンの最新バージョンを使用しません。 独自のソリューションの作成では、Azure Stack と互換性のある Azure の各リソース プロバイダーの API バージョンを見つける必要があります。
+Azure Stack は､グローバル Azure にある API バージョンのうちの最新バージョンを使用しません｡ 独自のソリューションを作成する場合は、Azure Stack と互換性のある Azure の各リソース プロバイダーの API バージョンを特定する必要があります。
 
-各リソース プロバイダーや Azure Stack でサポートされている特定のバージョンを調査しなくても、API プロファイルを使用できます。 プロファイルは、リソース プロバイダーと API バージョンのセットを指定します。 SDK、または SDK でビルドされたツールによって、プロファイルで指定されたターゲット api-version に戻されます。 API プロファイルを使用すると、テンプレート全体に適用されるプロファイル バージョンを指定でき、AAzure Resource Manager によってリソースの適切なバージョンが選択されます。
+すべてのリソース プロバイダーや Azure Stack でサポートされている特定のバージョンを調査する代わりに、API プロファイルを使用できます。 プロファイルは、リソース プロバイダーと API バージョンのセットを指定します。 SDK、または SDK でビルドされたツールによって、プロファイルで指定されたターゲット api-version に戻されます。 API プロファイルを使用すると、テンプレート全体に適用されるプロファイル バージョンを指定でき、AAzure Resource Manager によってリソースの適切なバージョンが選択されます。
 
 API プロファイルは、Azure Resource Manager を使用するツール (PowerShell、Azure CLI、SDK で提供されるコード、Microsoft Visual Studio など) と連携します。 ツールや SDK はプロファイルを使用して、アプリケーションのビルド時に含むモジュールやライブラリのバージョンを読み取ります。
 
@@ -66,17 +77,20 @@ API プロファイルは、Azure Resource Manager を使用するツール (Pow
 
 プロファイルを使用して、Azure Stack を使って目的の言語でソリューションを統合するためのコード サンプルが用意されています。 現在、次の言語用のガイダンスとサンプルを使用できます。
 
+- **.NET** .NET API プロファイルを使用すると、リソース プロバイダーのパッケージに含まれる各リソースの種類の、最も安定した最新バージョンを取得できます。 詳細については、[Azure Stack での .NET による API バージョンのプロファイルの使用](azure-stack-version-profiles-net.md)についてのページを参照してください。
 - **PowerShell**  
-PowerShell ギャラリーから入手できる **AzureRM.Bootstrapper** モジュールを使用して、API バージョンのプロファイルを操作するために必要な PowerShell コマンドレットを取得できます。  
-詳しくは、「[Use API version profiles for PowerShell (PowerShell 向け API バージョン プロファイルの使用)](azure-stack-version-profiles-powershell.md)」をご覧ください。
-- **Azure CLI 2.0**  
-Azure Stack 固有の API バージョンのプロファイルを使用するようにお使いの環境の構成を更新できます。  
-詳しくは、「[Use API version profiles for Azure CLI 2.0 (Azure CLI 2.0 向け API バージョン プロファイルの使用)](azure-stack-version-profiles-azurecli2.md)」をご覧ください。
+PowerShell ギャラリーから入手できる **AzureRM.Bootstrapper** モジュールを使用して、API バージョンのプロファイルを操作するために必要な PowerShell コマンドレットを取得できます。 詳しくは、「[Use API version profiles for PowerShell (PowerShell 向け API バージョン プロファイルの使用)](azure-stack-version-profiles-powershell.md)」をご覧ください。
+- **Azure CLI**  
+Azure Stack 固有の API バージョンのプロファイルを使用するようにお使いの環境の構成を更新できます。 詳細については、[Azure CLI での API バージョンのプロファイルの使用](azure-stack-version-profiles-azurecli2.md)に関するページを参照してください。
 - **GO**  
-GO SDK では、プロファイルはさまざまな種類のリソースと多様なサービスのさまざまなバージョンの組み合わせが用意されています。 プロファイルは、**YYYY-MM-DD** 形式のバージョンと共に profiles/ path で利用できます。  
-詳しくは、「[Use API version profiles for GO (GO 向け API バージョン プロファイルの使用)](azure-stack-version-profiles-go.md)」をご覧ください。
+GO SDK では、プロファイルはさまざまな種類のリソースと多様なサービスのさまざまなバージョンの組み合わせが用意されています。 プロファイルは、**YYYY-MM-DD** 形式のバージョンと共に profiles/ path で利用できます。 詳しくは、「[Use API version profiles for GO (GO 向け API バージョン プロファイルの使用)](azure-stack-version-profiles-go.md)」をご覧ください。
+- **Ruby**  
+Azure Stack Resource Manager 向けの Ruby SDK には､インフラストラクチャの構築と管理に役立つツールが用意されています。 SDK のリソース プロバイダには､Ruby 言語を使用したコンピュートや仮想ネットワーク､ストレージがあります｡ 詳しくは、「[Use API version profiles with Ruby](azure-stack-version-profiles-ruby.md)」をご覧ください。
+- **Python**  
+Python SDK では、Azure Stack とグローバル Azure などの異なるクラウド プラットフォームをターゲットとする API バージョン プロファイルをサポートします。 ハイブリッド クラウド向けのソリューションの作成時に API プロファイルを使用できます。 詳しくは、「[Azure Stack での Python による API バージョンのプロファイルの使用](azure-stack-version-profiles-python.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
+
 * [PowerShell for Azure Stack のインストール](azure-stack-powershell-install.md)
 * [Azure Stack ユーザーの PowerShell 環境の構成](azure-stack-powershell-configure-user.md)
 * [プロファイルでサポートされているリソース プロバイダーの API バージョンの詳細を確認します](azure-stack-profiles-azure-resource-manager-versions.md)。

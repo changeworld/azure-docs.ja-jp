@@ -1,12 +1,12 @@
 ---
-title: "StorSimple での 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー | Microsoft Docs"
-description: "StorSimple デバイスを、そのデバイス自体、別の物理デバイス、またはクラウド アプライアンスにフェールオーバーする方法について説明します。"
+title: StorSimple での 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー | Microsoft Docs
+description: StorSimple デバイスを、そのデバイス自体、別の物理デバイス、またはクラウド アプライアンスにフェールオーバーする方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108480"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー
 
@@ -33,13 +34,13 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="disaster-recovery-dr-and-device-failover"></a>障害復旧 (DR) とデバイスのフェールオーバー
 
-ディザスター リカバリー (DR) シナリオでは、プライマリ デバイスの機能が停止します。 StorSimple はプライマリ デバイスを_ソース_として使用し、関連付けられているクラウド データを別の_ターゲット_ デバイスに移動します。 このプロセスを *フェールオーバー*といいます。 次の図は、フェールオーバーのプロセスを示しています。
+ディザスター リカバリー (DR) シナリオでは、プライマリ デバイスの機能が停止します。 StorSimple はプライマリ デバイスを _ソース_ として使用し、関連付けられているクラウド データを別の _ターゲット_ デバイスに移動します。 このプロセスを *フェールオーバー*といいます。 次の図は、フェールオーバーのプロセスを示しています。
 
 ![デバイスのフェールオーバーでは何が起きるか](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
 
 フェールオーバーのターゲット デバイスは、物理デバイスにすることも、クラウド アプライアンスにすることもできます。 ターゲット デバイスは、ソース デバイスと地理的に同じ場所または別の場所に配置できます。
 
-フェールオーバー時には、移行用のボリューム コンテナーを選択できます。 StorSimple は次に、これらのボリューム コンテナーの所有権を、ソース デバイスからターゲット デバイスに変更します。 所有権が変更されたボリューム コンテナーは、StorSimple によってソース デバイスから削除されます。 削除が完了すると、ターゲット デバイスをフェールバックできます。 _フェールバック_によって、所有権が元のソース デバイスに転送されます。
+フェールオーバー時には、移行用のボリューム コンテナーを選択できます。 StorSimple は次に、これらのボリューム コンテナーの所有権を、ソース デバイスからターゲット デバイスに変更します。 所有権が変更されたボリューム コンテナーは、StorSimple によってソース デバイスから削除されます。 削除が完了すると、ターゲット デバイスをフェールバックできます。 _フェールバック_ によって、所有権が元のソース デバイスに転送されます。
 
 ### <a name="cloud-snapshot-used-during-device-failover"></a>デバイスのフェールオーバー時に使用されるクラウド スナップショット
 

@@ -1,21 +1,22 @@
 ---
-title: "Ruby を使用して Azure Database for MySQL に接続する"
-description: "このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、Ruby コード サンプルをいくつか紹介します。"
+title: Ruby を使用して Azure Database for MySQL に接続する
+description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、Ruby コード サンプルをいくつか紹介します。
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 84898a5bc3afd21aa6b922b4074fd09b4315dd6e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: cfaf6cc5b93ee80017a8fe5634c7afa7b9ce0ccf
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986801"
 ---
 # <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database for MySQL: Ruby を使用した接続とデータの照会
 このクイックスタートでは、Windows、Ubuntu Linux、Mac の各プラットフォームから [Ruby](https://www.ruby-lang.org) アプリケーションと [mysql2](https://rubygems.org/gems/mysql2) gem を使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、Ruby を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
@@ -29,7 +30,7 @@ ms.lasthandoff: 02/28/2018
 ご使用のコンピューターに Ruby、Gem、MySQL2 ライブラリをインストールします。 
 
 ### <a name="windows"></a>Windows
-1. バージョン 2.3 の [Ruby](http://rubyinstaller.org/downloads/) をダウンロードしてインストールします。
+1. バージョン 2.3 の [Ruby](https://rubyinstaller.org/downloads/) をダウンロードしてインストールします。
 2. スタート メニューから新しいコマンド プロンプト (cmd) を起動します。
 3. バージョン 2.3 の Ruby ディレクトリに移動します。 `cd c:\Ruby23-x64\bin`
 4. Ruby のインストールをテストします。`ruby -v` コマンドを実行して、インストールされているバージョンを確認してください。
@@ -69,7 +70,7 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
 接続し、**CREATE TABLE** SQL ステートメントでテーブルを作成してから、**INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
 
-このコードは、[mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを何度か呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 その後、[close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを何度か呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
 ```ruby
@@ -114,7 +115,7 @@ end
 ## <a name="read-data"></a>データの読み取り
 接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
-このコードは、[mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを呼び出して SELECT コマンドを実行します。 その後、[close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを呼び出して SELECT コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
 
@@ -153,7 +154,7 @@ end
 ## <a name="update-data"></a>データの更新
 接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
 
-このコードは、[mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを呼び出して UPDATE コマンドを実行します。 その後、[close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを呼び出して UPDATE コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
 
@@ -190,7 +191,7 @@ end
 ## <a name="delete-data"></a>データの削除
 接続し、**DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
-このコードは、[mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを呼び出して DELETE コマンドを実行します。 その後、[close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを呼び出して DELETE コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
 

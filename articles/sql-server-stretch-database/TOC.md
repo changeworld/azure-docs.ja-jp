@@ -22,7 +22,7 @@
 ### [Strech Database を無効にする](/sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data)
 
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=sql-server-database)
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=sql-server-database)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

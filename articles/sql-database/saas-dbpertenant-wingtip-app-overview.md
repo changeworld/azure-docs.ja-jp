@@ -1,20 +1,23 @@
 ---
 title: Azure SQL Database マルチテナント アプリの例 - Wingtip SaaS | Microsoft Docs
 description: Azure SQL Database を使用するマルチテナント アプリケーションのサンプルを使用して、Wingtip SaaS の例について説明します
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 11/12/2017
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 563d82076721a669069ba3e36df84a050188813c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: dd67e49a80c403e807b24276cf14b9e8c47037b9
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055511"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナントごとのデータベース パターンを使用するマルチテナント SaaS アプリケーションの概要
 
@@ -24,7 +27,7 @@ Wingtip SaaS アプリケーションは、サンプルのマルチテナント 
 
 ## <a name="application-architecture"></a>アプリケーションのアーキテクチャ
 
-Wingtip SaaS アプリでは、テナントごとのデータベース モデルを使用します。 SQL エラスティック プールを使用して効率を最大化します。 テナントをプロビジョニングしてデータにマッピングするために、カタログ データベースが使用されます。 主要な Wingtip SaaS アプリケーションは、3 つのサンプル テナントと 1 つのカタログ データベースを備えたプールを使用します。 Wingtip SaaS チュートリアルの多くを完了すると、初期デプロイにアドオンが追加されます。 分析データベースやデータベース間のスキーマ管理などのアドオンが導入されます。
+Wingtip SaaS アプリでは、テナントごとのデータベース モデルを使用します。 SQL エラスティック プールを使用して効率を最大化します。 テナントをプロビジョニングしてデータにマッピングするために、カタログ データベースが使用されます。 主要な Wingtip SaaS アプリケーションは、3 つのサンプル テナントと 1 つのカタログ データベースを備えたプールを使用します。 カタログとテナントのサーバーが DNS エイリアスでプロビジョニングされています。 これらの別名は、Wingtip アプリケーションによって使用されているアクティブなリソースへの参照を維持するために使用されます。 これらの別名は、災害復旧のチュートリアルで回復のリソースへのポイントに更新されます。 Wingtip SaaS チュートリアルの多くを完了すると、初期デプロイにアドオンが追加されます。 分析データベースやデータベース間のスキーマ管理などのアドオンが導入されます。
 
 
 ![Wingtip SaaS のアーキテクチャ](media/saas-dbpertenant-wingtip-app-overview/app-architecture.png)
@@ -43,7 +46,7 @@ Wingtip SaaS アプリでは、テナントごとのデータベース モデル
 |[Wingtip SaaS アプリケーションをデプロイして調査する](saas-dbpertenant-get-started-deploy.md)|  Wingtip SaaS アプリケーションをお使いの Azure サブスクリプションにデプロイして調査します。 |
 |[テナントのプロビジョニングおよびカタログ登録を行う](saas-dbpertenant-provision-and-catalog.md)| アプリケーションがカタログ データベースを使用してテナントに接続する方法と、カタログがテナントを各自のデータにマッピングする方法について説明します。 |
 |[パフォーマンスを監視および管理する](saas-dbpertenant-performance-monitoring.md)| SQL Database の監視機能の使用方法と、パフォーマンスのしきい値を超過した場合のアラートの設定方法について説明します。 |
-|[Azure Log Analytics (Operations Management Suite) を使用して管理する](saas-dbpertenant-log-analytics.md) | [Log Analytics](../log-analytics/log-analytics-overview.md) を使用して、複数のプールにある大量のリソースを監視する方法を説明します。 |
+|[Log Analytics を使用して監視する](saas-dbpertenant-log-analytics.md) | [Log Analytics](../log-analytics/log-analytics-overview.md) を使用して、複数のプールにある大量のリソースを監視する方法を説明します。 |
 |[シングル テナントを復元する](saas-dbpertenant-restore-single-tenant.md)| テナント データベースを前のポイント イン タイムに復元する方法を説明します。 既存のテナント データベースをオンラインにしたまま、並列のデータベースに復元する手順についても説明します。 |
 |[テナント データベースのスキーマの管理に関するページ](saas-tenancy-schema-management.md)| すべてのテナント データベースに対してスキーマの更新と参照データの更新を行う方法について説明します。 |
 |[テナント間で分散クエリを実行する](saas-tenancy-cross-tenant-reporting.md) | アドホック分析データベースを作成し、すべてのテナントに対して実行されるリアルタイムの分散クエリを実行します。  |

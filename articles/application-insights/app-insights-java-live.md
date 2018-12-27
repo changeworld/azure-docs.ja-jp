@@ -1,26 +1,25 @@
 ---
-title: "既にライブの Java Web アプリ向けの Application Insights"
-description: "サーバーで既に実行中の Web アプリケーションの監視を開始する"
+title: 既にライブの Java Web アプリ向けの Application Insights
+description: サーバーで既に実行中の Web アプリケーションの監視を開始する
 services: application-insights
 documentationcenter: java
-author: harelbr
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 12f3dbb9-915f-4087-87c9-807286030b0b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: 152e21bd9fc6db424c3caff4ce425e54ecab11e2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8e8a2e19e97bc07ed481adb3ecc3ae1d34ea8368
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721002"
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>既にライブの Java Web アプリ向けの Application Insights
-
 
 J2EE サーバーで既に実行されている Web アプリケーションがある場合、 [Application Insights](app-insights-overview.md) を使用すると、コードの変更やプロジェクトの再コンパイルなしで監視を開始できます。 この方法では、サーバーに送信される HTTP 要求、未処理の例外、パフォーマンス カウンターに関する情報が取得されます。
 
@@ -32,7 +31,7 @@ J2EE サーバーで既に実行されている Web アプリケーションが�
 > 
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1.Application Insights のインストルメンテーション キーを取得する
-1. [Microsoft Azure ポータル](https://portal.azure.com)
+1.  [Microsoft Azure ポータル](https://portal.azure.com)
 2. 新しい Application Insights リソースを作成し、アプリケーション タイプを Java Web アプリケーションに設定します。
    
     ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-live/02-create.png)
@@ -131,9 +130,9 @@ HTTP 要求に関するテレメトリが概要ブレードに表示されます
 
 [メトリックの詳細についてはこちらをご覧ください。](app-insights-metrics-explorer.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Web ページにテレメトリを追加](app-insights-javascript.md) して、ページ ビューやユーザー メトリックを監視します。
 * [Web テストを設定](app-insights-monitor-web-app-availability.md) して、アプリケーションが動作していて応答できることを確認します。
 * [ログ トレースをキャプチャする](app-insights-java-trace-logs.md)
 * [イベントおよびログを検索](app-insights-diagnostic-search.md) します。
-
+* [Spring Boot Initializer アプリを構成する](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)

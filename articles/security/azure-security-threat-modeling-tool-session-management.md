@@ -1,26 +1,27 @@
 ---
-title: "セッション管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威の軽減策"
+title: セッション管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 24bd0e8eff616920dba0eb5353f983444e3161cd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: 182a0232b5317b1a375a20bdd4c6467578dc775b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232744"
 ---
-# <a name="security-frame-session-management--articles"></a>セキュリティ フレーム: セッション管理 | 記事 
+# <a name="security-frame-session-management"></a>セキュリティ フレーム: セッション管理
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[Azure AD を使うときは、ADAL のメソッドを使って適切なログアウトを実装する](#logout-adal)</li></ul> |
@@ -156,7 +157,7 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - OnPrem |
-| **参照**              | [httpCookies 要素 (ASP.NET 設定スキーマ)](http://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、 [HttpCookie.Secure プロパティ](http://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **参照**              | [httpCookies 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、 [HttpCookie.Secure プロパティ](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
 | **手順** | 通常、cookie はそれがスコープ指定されたドメインからのみアクセスできます。 残念ながら、"domain" の定義にはプロトコルが含まれないため、HTTPS 経由で作成された cookie に HTTP 経由でアクセスできます。 "secure" 属性は、cookie を HTTPS 経由でのみ使用できるようにする必要があることをブラウザーに示します。 HTTPS で設定されるすべての cookie が、**secure** 属性を使うようにする必要があります。 この要件は、web.config ファイルで requireSSL 属性を true に設定することによって適用できます。 これは、コードを変更することなく、現在および将来のすべての cookie に **secure** 属性を強制できるので、推奨される方法です。|
 
 ### <a name="example"></a>例
@@ -379,36 +380,42 @@ void Page_Init (object sender, EventArgs e) {
 | **手順** | セッションのタイムアウトは、Web サーバーで定義されている期間中にユーザーが Web サイトでアクションを何も実行しないと発生するイベントを表します。 サーバー側では、イベントはユーザー セッションの状態を "無効" (たとえば、"もう使われない") に変更し、Web サーバーにそれを破棄する (そこに含まれるすべてのデータを削除する) ように指定します。 次のコード例では、Web.config ファイルでタイムアウト セッション属性を 15 分に設定しています。|
 
 ### <a name="example"></a>例
-```XML コード <configuration> <system.web> <sessionState mode="InProc" cookieless="true" timeout="15" /> </system.web> </configuration>
+```XML 
+<configuration>
+  <system.web>
+    <sessionState mode="InProc" cookieless="true" timeout="15" />
+  </system.web>
+</configuration>
 ```
 
-## <a id="threat-detection"></a>Enable Threat detection on Azure SQL
-```
-
-| タイトル                   | 詳細      |
-| ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
-| **適用できるテクノロジ** | Web フォーム |
-| **属性**              | 該当なし  |
-| **参照**              | [authentication の forms 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
-| **手順** | フォーム認証チケット cookie のタイムアウトを 15 分に設定します。|
-
-### <a name="example"></a>例
-```XML コード <forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
-</forms>
+## <a id="threat-detection"></a>Azure SQL での脅威の検出を有効にする
 ```
 
 | Title                   | Details      |
 | ----------------------- | ------------ |
 | **Component**               | Web Application | 
 | **SDL Phase**               | Build |  
-| **Applicable Technologies** | Web Forms, MVC5 |
-| **Attributes**              | EnvironmentType - OnPrem |
-| **References**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
-| **Steps** | When the web application is Relying Party and ADFS is the STS, the lifetime of the authentication cookies - FedAuth tokens - can be set by the following configuration in web.config:|
+| **Applicable Technologies** | Web Forms |
+| **Attributes**              | N/A  |
+| **References**              | [forms Element for authentication (ASP.NET Settings Schema)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **Steps** | Set the Forms Authentication Ticket cookie timeout to 15 minutes|
 
 ### Example
+```XML
+<forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
+</forms>
+```
+
+| タイトル                   | 詳細      |
+| ----------------------- | ------------ |
+| **コンポーネント**               | Web Application | 
+| **SDL フェーズ**               | 構築 |  
+| **適用できるテクノロジ** | Web フォーム、MVC5 |
+| **属性**              | EnvironmentType - OnPrem |
+| **参照**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
+| **手順** | Webアプリケーションが証明書利用者であり、ADFS が STS の場合、認証 Cookie (FedAuth トークン) の有効期間は web.config の次の構成で設定できます。|
+
+### <a name="example"></a>例
 ```XML
   <system.identityModel.services>
     <federationConfiguration>
@@ -551,6 +558,11 @@ public ViewResult SubmitUpdate()
 | **手順** | Web API は、OAuth 2.0 を使ってセキュリティ保護されている場合、承認要求ヘッダーにベアラー トークンが含まれることを想定し、トークンが有効な場合にのみ要求にアクセスを許可します。 cookie ベースの認証とは異なり、ブラウザーは要求にベアラー トークンを添付しません。 要求元のクライアントは、要求ヘッダーにベアラー トークンを明示的に追加する必要があります。 したがって、OAuth 2.0 を使って保護されている ASP.NET Web API では、ベアラー トークンは CSRF 攻撃に対する防御と見なされます。 アプリケーションの MVC 部分がフォーム認証を使っている (つまり、cookie を使っている) 場合は、MVC Web アプリで偽造防止トークンを使う必要があることに注意してください。 |
 
 ### <a name="example"></a>例
-ベアラー トークンのみを利用し、cookie は利用しないように、Web API に通知する必要があります。 これは、`WebApiConfig.Register` メソッドで次のように構成して行うことができます。```C-Sharp code config.SuppressDefaultHostAuthentication(); config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+ベアラー トークンのみを利用し、cookie は利用しないように、Web API に通知する必要があります。 この処理は、`WebApiConfig.Register` メソッドの次の構成で実行できます。
+
+```csharp
+config.SuppressDefaultHostAuthentication();
+config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 ```
-The SuppressDefaultHostAuthentication method tells Web API to ignore any authentication that happens before the request reaches the Web API pipeline, either by IIS or by OWIN middleware. That way, we can restrict Web API to authenticate only using bearer tokens.
+
+SuppressDefaultHostAuthentication メソッドは、IIS または OWIN ミドルウェアから送信された要求が Web API パイプラインに到達する前に発生したすべての認証を無視するように Web API に指示します。 そのため、ベアラー トークンを使用する場合にのみ認証するように Web API を制限することができます。

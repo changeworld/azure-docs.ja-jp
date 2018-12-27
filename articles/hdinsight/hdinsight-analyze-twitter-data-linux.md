@@ -1,30 +1,24 @@
 ---
-title: "Apache Hive を使用した Twitter データの分析 - Azure HDInsight | Microsoft Docs"
-description: "Hive と Hadoop を HDInsight で使用して、生の TWitter データを検索可能な Hive テーブルに変換する方法を学びます。"
+title: Apache Hive を使用した Twitter データの分析 - Azure HDInsight
+description: Apache Hive と Apache Hadoop を HDInsight で使用して、生の Twitter データを検索可能な Hive テーブルに変換する方法を学びます。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: e1e249ed-5f57-40d6-b3bc-a1b4d9a871d3
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/22/2018
-ms.author: larryfr
+ms.topic: conceptual
+ms.date: 06/26/2018
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: b6e540576bc4a5876bc8546262a181bd82ad9727
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 01d1ef428804838df4257a4c28dfcddbdd8f156b
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010996"
 ---
-# <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>HDInsight での Hive と Hadoop を使用した Twitter データの分析
+# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight で Apache Hive と Apache Hadoop を使用して Twitter データを分析する
 
-Apache Hive を使用して Twitter データを処理する方法を説明します。 結果として、特定の単語が含まれた最も多くのツイートを送信した Twitter ユーザーのリストが返されます。
+[Apache Hive](https://hive.apache.org/) を使用して Twitter データを処理する方法を説明します。 結果として、特定の単語が含まれた最も多くのツイートを送信した Twitter ユーザーのリストが返されます。
 
 > [!IMPORTANT]
 > このドキュメントの手順は、HDInsight 3.6 でテストされています。
@@ -33,20 +27,20 @@ Apache Hive を使用して Twitter データを処理する方法を説明し�
 
 ## <a name="get-the-data"></a>データを取得する
 
-Twitter では、REST API を使用して、JavaScript Object Notation (JSON) ドキュメントとして [各ツイートのデータ](https://dev.twitter.com/docs/platform-objects/tweets) を取得できます。 [OAuth](http://oauth.net) が必要です。
+Twitter では、REST API を使用して、JavaScript Object Notation (JSON) ドキュメントとして各ツイートのデータを取得できます。 [OAuth](http://oauth.net) が必要です。
 
 ### <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
 
-1. Web ブラウザーから [https://apps.twitter.com/](https://apps.twitter.com/)にサインインします。 Twitter アカウントを持っていない場合は、**[今すぐ登録]** リンクをクリックします。
+1. Web ブラウザーで、[https://apps.twitter.com/](https://apps.twitter.com/) にサインインします。 Twitter アカウントを持っていない場合は、**[今すぐ登録]** リンクをクリックします。
 
-2. **[Create New App]**をクリックします。
+2. **[Create New App]** をクリックします。
 
 3. **名前**、**説明**、**Web サイト**を入力します。 **[Website]** フィールドの URL を構成することができます。 次のテーブルは使用する値のサンプルを示しています。
 
    | フィールド | 値 |
    |:--- |:--- |
    | Name |MyHDInsightApp |
-   | [説明] |MyHDInsightApp |
+   | 説明 |MyHDInsightApp |
    | Web サイト |http://www.myhdinsightapp.com |
 
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
@@ -55,7 +49,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 6. **[Keys and Access Tokens]** タブをクリックします。
 
-7. **[Create my access token]**をクリックします。
+7. **[Create my access token]** をクリックします。
 
 8. ページの右上隅にある **[Test OAuth]** をクリックします。
 
@@ -179,16 +173,16 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 HDInsight のストレージにデータをアップロードするには、次のコマンドを使用します。
 
-   ```bash
-   hdfs dfs -mkdir -p /tutorials/twitter/data
-   hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
+```bash
+hdfs dfs -mkdir -p /tutorials/twitter/data
+hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 ```
 
 クラスター内のすべてのノードがアクセスできる場所にデータが保存されます。
 
 ## <a name="run-the-hiveql-job"></a>HiveQL ジョブの実行
 
-1. 次のコマンドを使用して、HiveQL ステートメントを含むファイルを作成します。
+1. 次のコマンドを使用して、[HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) ステートメントを含むファイルを作成します。
 
    ```bash
    nano twitter.hql
@@ -328,15 +322,14 @@ HDInsight のストレージにデータをアップロードするには、次�
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、構造化されていない JSON データ セットを構造化された Hive テーブルに変換する方法を学習しました。 HDInsight での Hive の詳細については、次のドキュメントを参照してください。
+ここでは、構造化されていない JSON データ セットを構造化された [Apache Hive](https://hive.apache.org/) テーブルに変換する方法を学習しました。 HDInsight での Hive の詳細については、次のドキュメントを参照してください。
 
 * [HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data-linux.md)
 
 [curl]: http://curl.haxx.se
-[curl-download]: http://curl.haxx.se/download.html
+[curl-download]: https://curl.haxx.se/download.html
 
 [apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial
 
-[twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter

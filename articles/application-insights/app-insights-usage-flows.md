@@ -1,22 +1,24 @@
 ---
-title: "Azure Application Insights でユーザー フローを使用してユーザーのナビゲーション パターンを分析する | Microsoft docs"
-description: "ユーザーが Web アプリのページ間および機能間をどのように移動しているかを分析します。"
+title: Azure Application Insights でユーザー フローを使用してユーザーのナビゲーション パターンを分析する | Microsoft docs
+description: ユーザーが Web アプリのページ間および機能間をどのように移動しているかを分析します。
 services: application-insights
-documentationcenter: 
-author: numberbycolors
+documentationcenter: ''
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/24/2018
-ms.author: mbullwin; daviste
-ms.openlocfilehash: 63139bfb190959284cb5d25df1a8dd91bd7d913f
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: 05853cb494ef6cc615bea7eecb1cfac288b46f3b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721954"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Application Insights でユーザー フローを使用してユーザーのナビゲーション パターンを分析する
 

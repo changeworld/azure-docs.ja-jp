@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 9bd2ee708f7d27cff5d07ca7f86d925ca6d2741d
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165208"
+---
 <!--author=SharS last changed: 12/01/15-->
 
 #### <a name="to-enter-maintenance-mode"></a>メンテナンス モードを開始するには

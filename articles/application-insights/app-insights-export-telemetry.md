@@ -1,8 +1,8 @@
 ---
-title: "Application Insights からのテレメトリの連続エクスポート | Microsoft Docs"
-description: "診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。"
+title: Application Insights からのテレメトリの連続エクスポート | Microsoft Docs
+description: 診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
@@ -10,19 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 02/23/2017
+ms.topic: conceptual
+ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7d1f648bc2c2a42cfbd668f180bce8f56ebd065b
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: bc505aa9dc2258a8752d1986489957c401e4e4c4
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023509"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
-
-連続エクスポートを使用すると追加料金が発生する場合があります。 [価格モデル](http://azure.microsoft.com/pricing/details/application-insights/)を確認してください。
 
 連続エクスポートをセットアップする前に、次の代替手段を検討してください。
 
@@ -31,17 +30,16 @@ ms.lasthandoff: 11/01/2017
 * [Analytics](app-insights-analytics.md) にはテレメトリ用の強力なクエリ言語があります。 結果をエクスポートすることもできます。
 * [Power BI でデータを探索](app-insights-export-power-bi.md)する場合は、連続エクスポートを使用せずに実行できます。
 * [データ アクセス REST API](https://dev.applicationinsights.io/) を使用すると、テレメトリにプログラムでアクセスすることができます。
+* [PowerShell を使用して連続エクスポート](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0)の設定にアクセスすることもできます。
 
 連続エクスポートによってストレージ (必要な期間の保持が可能) にコピーされたデータは、通常の[リテンション期間](app-insights-data-retention-privacy.md)が過ぎるまで引き続き Application Insights で使用できます。
 
 ## <a name="setup"></a>連続エクスポートを作成する
 1. アプリの Application Insights リソースで、[連続エクスポート] を開き、**[追加]** を選択します。
 
-    ![下へスクロールし、[連続エクスポート] をクリックします](./media/app-insights-export-telemetry/01-export.png)
-
 2. テレメトリをエクスポートするデータ型を選択します。
 
-3. データの保存先となる [Azure ストレージ アカウント](../storage/common/storage-introduction.md)を作成または選択します。
+3. データの保存先となる [Azure ストレージ アカウント](../storage/common/storage-introduction.md)を作成または選択します。 ストレージの価格オプションの詳細については、[価格に関する公式のページ](https://azure.microsoft.com/pricing/details/storage/)を参照してください。
 
     > [!Warning]
     > 既定では、ストレージの場所は、Application Insights のリソースと同じ地理的リージョンに設定されます。 別のリージョンに保存する場合は、転送の料金が発生する可能性があります。
@@ -112,7 +110,7 @@ Where
 
 ![適切なツールでテレメトリを表示します](./media/app-insights-export-telemetry/06-json.png)
 
-時間の長さはティック単位で表記されます。10,000 ティックが 1 ミリ秒です。 たとえば、これらの値は、ブラウザーから要求を送信するのに 1 ミリ秒、要求を受信するのに 3 ミリ秒、ブラウザーでページを処理するのに 1.8 秒の時間がかかったことを示しています。
+時間の長さはティック単位で表記されます。10,000 ティックが 1 ミリ秒です。 たとえば、次の値は、ブラウザーから要求を送信するのに 1 ミリ秒、要求を受信するのに 3 ミリ秒、ブラウザーでページを処理するのに 1.8 秒の時間がかかったことを示しています。
 
     "sendRequest": {"value": 10000.0},
     "receiveRequest": {"value": 30000.0},
@@ -121,7 +119,7 @@ Where
 [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](app-insights-export-data-model.md)
 
 ## <a name="processing-the-data"></a>データの処理
-小規模な処理では、データを分解してスプレッドシートに読み込んだ後で他の処理を実行するコードを記述できます。 次に例を示します。
+小規模な処理では、データを分解してスプレッドシートに読み込んだ後で他の処理を実行するコードを記述できます。 例: 
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -164,7 +162,7 @@ Where
 ## <a name="q--a"></a>Q & A
 * *グラフを 1 回だけダウンロードしたいのですが。*  
 
-    はい、できます。 ブレードの上部にある、 **[データのエクスポート]**をクリックします。
+    はい、できます。 ブレードの上部にある、 **[データのエクスポート]** をクリックします。
 * *エクスポートを設定したのにストアにデータがありません。*
 
     エクスポートを設定した時点以降に Application Insights がアプリからテレメトリを受信していますか。 取得されるのは新しいデータのみです。

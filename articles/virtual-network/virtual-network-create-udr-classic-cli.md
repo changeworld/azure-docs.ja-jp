@@ -1,11 +1,11 @@
 ---
-title: "Azure Virtual Network でのルーティングの制御 - CLI - クラシック | Microsoft Docs"
-description: "クラシック デプロイメント モデルで Azure CLI を使用して VNet でのルーティングを制御する方法を説明する"
+title: Azure Virtual Network でのルーティングの制御 - CLI - クラシック | Microsoft Docs
+description: クラシック デプロイ モデルで Azure CLI を使用して VNet でのルーティングを制御する方法を説明する
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
-editor: 
+author: genlin
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: ca2b4638-8777-4d30-b972-eb790a7c804f
 ms.service: virtual-network
@@ -14,19 +14,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
-ms.openlocfilehash: 6bfdfcdde39d64d662bb6d2ea55fadca24d49091
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: genli
+ms.openlocfilehash: 0b6c8da03c4a67aadb38280ba958a9b0feb88d1f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38678580"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Azure CLI を使用してルーティングを制御し仮想アプライアンス (クラシック) を使用する
 
 > [!div class="op_single_selector"]
 > * [PowerShell](tutorial-create-route-table-powershell.md)
 > * [Azure CLI](tutorial-create-route-table-cli.md)
-> * [テンプレート](virtual-network-create-udr-arm-template.md)
 > * [PowerShell (クラシック)](virtual-network-create-udr-classic-ps.md)
 > * [CLI (クラシック)](virtual-network-create-udr-classic-cli.md)
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/08/2018
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-この記事では、クラシック デプロイメント モデルについて説明します。 [リソース マネージャーのデプロイメント モデルでルーティングを制御し、仮想アプライアンスを使用する](tutorial-create-route-table-cli.md)こともできます。
+この記事では、クラシック デプロイ モデルについて説明します。 [Resource Manager デプロイ モデルでルーティングを制御し、仮想アプライアンスを使用する](tutorial-create-route-table-cli.md)こともできます。
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 

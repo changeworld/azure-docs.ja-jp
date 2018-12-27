@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights を使用して Node.js サービスを監視する | Microsoft Docs"
-description: "Application Insights を使用して Node.js サービスのパフォーマンスを監視して問題を診断します。"
+title: Azure Application Insights を使用して Node.js サービスを監視する | Microsoft Docs
+description: Application Insights を使用して Node.js サービスのパフォーマンスを監視して問題を診断します。
 services: application-insights
 documentationcenter: nodejs
 author: mrbullwinkle
@@ -9,15 +9,15 @@ ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5b8e35a953c936949af0d496345f537ad85fc359
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a2ac309afc6b25f7fdb4667b767ead59cae3b696
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877322"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -211,7 +211,7 @@ server.on("listening", () => {
 ## <a name="next-steps"></a>次の手順
 
 * [ポータル内でテレメトリを監視する](app-insights-dashboards.md)
-* [テレメトリに関する分析クエリを記述する](app-insights-analytics-tour.md)
+* [テレメトリに関する分析クエリを記述する](../azure-monitor/log-query/get-started-portal.md)
 
 <!--references-->
 

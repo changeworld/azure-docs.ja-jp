@@ -1,11 +1,11 @@
 ---
-title: "Azure のサイト間接続用に強制トンネリングを構成する: Resource Manager | Microsoft Docs"
-description: "すべてのインターネットへのトラフィックをオンプレミスの場所に \"強制的に\" リダイレクトする方法。"
+title: 'Azure のサイト間接続用に強制トンネリングを構成する: Resource Manager | Microsoft Docs'
+description: すべてのインターネットへのトラフィックをオンプレミスの場所に "強制的に" リダイレクトする方法。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: cbe58db8-b598-4c9f-ac88-62c865eb8721
 ms.service: vpn-gateway
@@ -16,10 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2018
 ms.author: cherylmc
 ms.openlocfilehash: 00330f49d4acc9bd2d720a60b743b78c86b08f86
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308154"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 02/03/2018
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
 
-この記事では、Resource Manager デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する手順について説明します。 強制トンネリングは、ポータルを経由せずに、PowerShell を使用して構成できます。 従来のデプロイ モデル向けに強制トンネリングを構成する場合は、次のドロップダウン リストから従来の記事を選択します。
+この記事では、Resource Manager デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する手順について説明します。 強制トンネリングは、ポータルを経由せずに、PowerShell を使用して構成できます。 クラシック デプロイ モデル向けに強制トンネリングを構成する場合は、次のドロップダウン リストから従来の記事を選択します。
 
 > [!div class="op_single_selector"]
 > * [PowerShell - クラシック](vpn-gateway-about-forced-tunneling.md)

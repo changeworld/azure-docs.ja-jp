@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 36966151b616a14e429807feb63df93503e7b249
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: a73559e233f647d5bf0812a5acdf5e19f05b0858
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255423"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>クラウド サービス ロールが起動しないときのトラブルシューティング
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
@@ -104,8 +105,8 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 3. インスタンスが起動したら、 **サーバー エクスプローラー**を開きます。
 4. **Azure\\Cloud Services** ノードを展開し、対象のデプロイを特定します。
 5. ロール インスタンスが表示されるまでデプロイメントを展開します。 いずれかのインスタンスを右クリックします。
-6. **[IntelliTrace ログの表示]**を選択します。 **[IntelliTrace の概要]** が表示されます。
-7. 概要の例外セクションを探します。 例外が存在する場合、そのセクションには **[例外データ]**という見出しが付きます。
+6. **[IntelliTrace ログの表示]** を選択します。 **[IntelliTrace の概要]** が表示されます。
+7. 概要の例外セクションを探します。 例外が存在する場合、そのセクションには **[例外データ]** という見出しが付きます。
 8. **[例外データ]** を展開し、次のような **System.IO.FileNotFoundException** エラーを探します。
 
 ![Exception data, missing file or assembly](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
@@ -124,4 +125,4 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 ## <a name="next-steps"></a>次の手順
 クラウド サービスの他の [トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) を参照します。
 
-Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
+Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。

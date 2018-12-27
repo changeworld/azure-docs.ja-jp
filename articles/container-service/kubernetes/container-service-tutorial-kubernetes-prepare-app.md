@@ -1,23 +1,27 @@
 ---
-title: "Azure Container Service チュートリアル - アプリの準備"
-description: "Azure Container Service チュートリアル - アプリの準備"
+title: (非推奨) Azure Container Service チュートリアル - アプリの準備
+description: Azure Container Service チュートリアル - アプリの準備
 services: container-service
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 696ba0d19aef0c550b00616d00438d081081027c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: a003248104c45fa2bcc1020e0ad8ea895d759457
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992371"
 ---
-# <a name="create-container-images-to-be-used-with-azure-container-service"></a>Azure Container Service で使用するコンテナー イメージを作成する
+# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(非推奨) Azure Container Service で使用するコンテナー イメージを作成する
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[チュートリアル: Azure Kubernetes Service (AKS) 用のアプリケーションの準備](../../aks/tutorial-kubernetes-prepare-app.md)」を参照してください。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 このチュートリアルは、7 つあるうちの 1 番目で、複数コンテナー アプリケーションを Kubernetes で使用する準備をします。 手順は次のとおりです。  
 
@@ -99,7 +103,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="test-application-locally"></a>ローカルでアプリケーションをテストする
 
-ブラウザーで http://localhost:8080 に移動して、実行中のアプリケーションを確認します。
+実行中のアプリケーションを探すには、 http://localhost:8080 を参照します。
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/azure-vote.png)
 

@@ -3,7 +3,7 @@ title: Azure Virtual Machine Scale Sets の FAQ | Microsoft Docs
 description: 仮想マシン スケール セットについてよく寄せられる質問の回答を示します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,22 +14,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
-ms.author: negat
+ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: e7fc12c9b4cc79109975e34f64f236394c33af25
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 40af55e48e0097f1ad6cb52a76b78fab40c2074c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447182"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
 Azure における仮想マシン スケール セットについてよく寄せられる質問の回答を示します。
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>Scale Sets に関してよく寄せられる質問
+
 **Q.** Scale Sets には何個の VM を設定できますか?
 
-**A.** スケール セットには、プラットフォーム イメージに基づいて 0 ～ 1,000 個の VM、またはカスタム イメージに基づいて 0 ～ 300 個の VM を含めることができます。 
+**A.** スケール セットには、プラットフォーム イメージに基づいて 0 ～ 1,000 個の VM、またはカスタム イメージに基づいて 0 ～ 300 個の VM を含めることができます。
 
 **Q.** Scale Sets 内でデータ ディスクはサポートされていますか?
 
@@ -47,7 +49,7 @@ Azure における仮想マシン スケール セットについてよく寄せ
 
 **Q.** カスタム イメージを使用して Scale Sets を作成するにはどうすればよいですか?
 
-**A.** カスタム イメージ VHD に基づいて管理ディスクを作成し、Scale Sets テンプレートで参照します。 [こちら](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os)でサンプルをご覧ください。
+**A.** VM イメージを作成しキャプチャしてから、それをスケール セットのソースとして使用します。 カスタム VM イメージを作成して使用する方法のチュートリアルについては、[Azure CLI](tutorial-use-custom-image-cli.md) または [Azure PowerShell](tutorial-use-custom-image-powershell.md) に関するページを参照してください。
 
 **Q.** Scale Sets 容量を 20 から 15 に減らすと、どの VM が削除されますか?
 
@@ -63,14 +65,14 @@ Azure における仮想マシン スケール セットについてよく寄せ
 
 **Q.** Scale Sets は、Azure 可用性セットと連携できますか?
 
-**A.** リージョン (非ゾーン) スケール セットは*配置グループ*を使用します。各配置グループは、5 つの障害ドメインと 5 つの更新ドメインを使用する暗黙的な可用性セットとして機能するように構成できます。 100 を超える VM のスケール セットは複数の配置グループにまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
+**A.** リージョン (非ゾーン) スケール セットは*配置グループ*を使用します。配置グループは、5 つの障害ドメインと 5 つの更新ドメインを使用する暗黙的な可用性セットとして機能します。 100 を超える VM のスケール セットは複数の配置グループにまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
 
 **Q.** スケール セットは、Azure 可用性ゾーンと連携しますか。
 
-**A.** はい。 詳細については、[スケール セットのゾーン](./virtual-machine-scale-sets-use-availability-zones.md)に関するドキュメントを参照してください。
+**A.**  はい。 詳細については、[スケール セットのゾーン](./virtual-machine-scale-sets-use-availability-zones.md)に関するドキュメントを参照してください。
 
 
-## <a name="autoscale"></a>Autoscale
+## <a name="autoscale"></a>自動スケール
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Azure の自動スケールのベスト プラクティスを教えてください。
 
@@ -119,7 +121,7 @@ VM の自動スケール設定は、ホストレベルのメトリックまた�
 
 仮想マシン スケール セットのメトリックに対するアラートは、PowerShell または Azure CLI で作成できます。 詳細については、「[Azure Monitor の PowerShell クイックスタート サンプル](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules)」と「[Azure Monitor クロスプラットフォーム CLI のクイックスタート サンプル](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts)」を参照してください。
 
-仮想マシン スケール セットの TargetResourceId は次のような形式になっています。 
+仮想マシン スケール セットの TargetResourceId は次のような形式になっています。
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
@@ -127,8 +129,12 @@ VM の自動スケール設定は、ホストレベルのメトリックまた�
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>仮想マシン スケール セットに対する自動スケールを PowerShell で設定する方法を教えてください。
 
-PowerShell を使って仮想マシン スケール セットに自動スケールを設定する方法については、[Azure 仮想マシン スケール セットに自動スケールを追加する方法](https://msftstack.wordpress.com/2017/03/05/how-to-add-autoscale-to-an-azure-vm-scale-set/)に関するブログ記事を参照してください。
+PowerShell を使用して仮想マシン スケール セットに対する自動スケールを設定するには、[仮想マシン スケール セットを自動的にスケーリングする](tutorial-autoscale-powershell.md)に関するページを参照してください。 また、[Azure CLI](tutorial-autoscale-cli.md) および [Azure テンプレート](tutorial-autoscale-template.md)を使用して、自動スケールを構成することもできます。
 
+
+### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>VM が停止 (割り当て解除) されている場合、その VM は自動スケール操作の一環として起動されますか?
+
+いいえ。 自動スケール ルールによって、追加の VM インスタンスがスケール セットの一部として必要とされている場合は、新しい VM インスタンスが作成されます。 停止 (割り当て解除) されている VM インスタンスは、自動スケール イベントの一部としては起動されません。 ただし、そのような停止 (割り当て解除) された VM は、任意の VM インスタンスが VM インスタンス ID の順序に基づいて削除される場合があるのと同様に、インスタンスの数をスケールインする自動スケール イベントの一環として削除される場合があります。
 
 
 
@@ -170,7 +176,7 @@ VM に対して証明書を安全に配布するには、お客様のキー コ�
     ```powershell
     Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
     ```
@@ -236,9 +242,9 @@ VM に対して証明書を安全に配布するには、お客様のキー コ�
 詳細については、[仮想マシン スケール セットの作成または更新](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration)に関するページを参照してください。
   
 
-### <a name="how-do-i-remove-deprecated-certificates"></a>使用されていない証明書を削除するにはどうすればよいですか? 
+### <a name="how-do-i-remove-deprecated-certificates"></a>非推奨の証明書を削除するにはどうすればよいですか? 
 
-今後使用しない証明書を削除するには、コンテナーの証明書一覧からその古い証明書を削除します。 コンピューターに残しておきたい証明書はすべて一覧に残しておいてください。 この操作ですべての VM から証明書が削除されるわけではありません。 また、仮想マシン スケール セットに作成された新しい VM にその証明書が追加されることもありません。 
+今後非推奨の証明書を削除するには、コンテナーの証明書一覧からその古い証明書を削除します。 コンピューターに残しておきたい証明書はすべて一覧に残しておいてください。 この操作ですべての VM から証明書が削除されるわけではありません。 また、仮想マシン スケール セットに作成された新しい VM にその証明書が追加されることもありません。 
 
 既存の VM から証明書を削除するには、証明書ストアから証明書を手動で削除するカスタム スクリプト拡張機能を作成する必要があります。
  
@@ -260,10 +266,10 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
     }
 ```
  
-linuxConfiguration の要素名 | 必須 | type | [説明]
+linuxConfiguration の要素名 | 必須 | type | 説明
 --- | --- | --- | --- |  ---
 ssh | いいえ  | コレクション | Linux OS の SSH キーの構成を指定します。
-パス | [はい] | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
+path | [はい] | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
 keyData | [はい] | String | Base64 でエンコードされた SSH 公開キーを指定します。
 
 実際の例については、[GitHub の 101-vm-sshkey クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)を参照してください。
@@ -365,7 +371,7 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 仮想マシン スケール セットと VM では、JSON オブジェクトに証明書がラップされている必要があります。 
 
-コンテンツ タイプとして application/x-pkcs12 もサポートされています。 application/x-pkcs12 を使用する手順については、「[PFX certificates in Azure Key Vault (Azure Key Vault 内の PFX 証明書)](http://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/)」を参照してください。
+コンテンツ タイプとして application/x-pkcs12 もサポートされています。 
  
 .cer ファイルは現在サポートされていません。 .cer ファイルを使用するには、それらを .pfx コンテナーにエクスポートする必要があります。
 
@@ -381,7 +387,7 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/Compliance/PCI)を参照してください。
 
-### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>[Azure 管理対象サービス ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットでも機能しますか。
+### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットで機能しますか。
 
 はい。 Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。 Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux)。 Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows)。
 
@@ -402,9 +408,9 @@ Update-AzureRmVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vms
  
 `$vmss` に extensionName の値が確認できます。
    
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-operations-management-suite"></a>Operations Management Suite と統合する仮想マシン スケール セット テンプレートの例はありますか。
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-log-analytics"></a>Log Analytics と統合する仮想マシン スケール セット テンプレートの例はありますか。
 
-Operations Management Suite と統合する仮想マシン スケール セット テンプレートの例については、[Azure Service Fabric クラスターをデプロイし、Log Analytics を使って監視を有効にする方法](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric)に関するページの 2 番目の例を参照してください。
+Log Analytics と統合する仮想マシン スケール セット テンプレートの例については、[Azure Service Fabric クラスターをデプロイし、Log Analytics を使って監視を有効にする方法](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric)に関するページの 2 番目の例を参照してください。
    
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>拡張機能が仮想マシン スケール セットで並列実行されているようです。 それが原因で、カスタム スクリプト拡張機能が失敗します。 修正するにはどうすればよいですか。
 
@@ -450,9 +456,9 @@ Operations Management Suite と統合する仮想マシン スケール セッ�
 
 既存の VM でサービス復旧を実行した場合、これは VM の再起動と同様であり、拡張機能は再実行されません。 既存の VM を再イメージ化した場合、これは OS ドライブをソース イメージに置き換えた場合と同様です。 最新モデルの特性 (拡張機能など) が実行されます。
  
-### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-azure-ad-domain"></a>仮想マシン スケール セットを Azure AD ドメインに参加させるにはどうすればよいですか。
+### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-active-directory-domain"></a>仮想マシン スケール セットを Active Directory ドメインに参加させるにはどうすればよいですか。
 
-仮想マシン スケール セットを Azure Active Directory (Azure AD) ドメインに参加させるには、拡張機能を定義してください。 
+仮想マシン スケール セットを Active Directory (AD) ドメインに参加させるには、拡張機能を定義してください。 
 
 拡張機能を定義するには、JsonADDomainExtension プロパティを使用します。
 
@@ -693,13 +699,13 @@ Azure Portal で既存のリソース グループにスケール セットを�
 
 詳細については、[仮想マシン スケール セットのすべての VM の管理](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set)に関するページを参照してください。
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-oms-operations-management-suite"></a>複数のスケール セットを Azure OMS (Operations Management Suite) に統合することはできますか。
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-log-analytics"></a>複数のスケール セットを Azure Log Analytics に統合することはできますか。
 
-はい、スケール セットの VM に OMS 拡張機能をインストールすると可能です。 Azure CLI の例を次に示します。
+はい、スケール セットの VM に Log Analytics 拡張機能をインストールすることで可能です。 Azure CLI の例を次に示します。
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
-OMS ポータルに、必要な workspaceId と workspaceKey が表示されます。 [概要] ページで、[設定] タイルをクリックします。 上部の [接続されたソース] タブをクリックします。
+Azure portal の Log Analytics ワークスペースに、必要な workspaceId と workspaceKey が表示されます。 [概要] ページで、[設定] タイルをクリックします。 上部の [接続されたソース] タブをクリックします。
 
 注: スケール セット _upgradePolicy_ が手動に設定されている場合、セット内のすべての VM でアップグレードを呼び出して拡張機能を適用することが必要になります。 CLI ではこれは _az vmss update-instances_ になります。
 

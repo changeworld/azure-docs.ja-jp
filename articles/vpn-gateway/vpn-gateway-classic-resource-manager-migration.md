@@ -1,6 +1,6 @@
 ---
-title: "VPN Gateway クラシックから Resource Manager への移行 | Microsoft Docs"
-description: "このページでは、VPN Gateway クラシックから Resource Manager への移行の概要を示します。"
+title: VPN Gateway クラシックから Resource Manager への移行 | Microsoft Docs
+description: このページでは、VPN Gateway クラシックから Resource Manager への移行の概要を示します。
 documentationcenter: na
 services: vpn-gateway
 author: amsriva
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23127100"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN Gateway クラシックから Resource Manager への移行
 VPN Gateway は クラシック モデル から Resource Manager デプロイ モデルに移行できるようになりました。 詳細については、Azure Resource Manager の[機能と利点](../azure-resource-manager/resource-group-overview.md)をご覧ください。 この記事では、従来のデプロイメントから新しい Resource Manager ベースモデルへの移行方法について説明します。 

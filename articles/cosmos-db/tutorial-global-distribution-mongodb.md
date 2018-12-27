@@ -1,28 +1,23 @@
 ---
-title: "MongoDB API の Azure Cosmos DB グローバル分散チュートリアル | Microsoft Docs"
-description: "MongoDB API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。"
+title: MongoDB API による Azure Cosmos DB グローバル分散のチュートリアル
+description: MongoDB API を使用して Azure Cosmos DB グローバル分散を設定する方法について説明します。
 services: cosmos-db
-keywords: "グローバル分散, MongoDB"
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
+keywords: グローバル分散, MongoDB
+author: SnehaGunda
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: d051c648ac66a42cefe0113d2571fe0a3050a237
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 27fa9849c13de151f6922e829514cc8838f295ea
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874767"
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>MongoDB API を使用して Azure Cosmos DB グローバル分散をセットアップする方法
+# <a name="set-up-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>MongoDB API を使用して Azure Cosmos DB グローバル分散を設定する
 
 この記事では、Azure Portal を使用して Azure Cosmos DB グローバル分散をセットアップし、MongoDB API を使用して接続する方法を説明します。
 
@@ -95,7 +90,7 @@ collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode
 
 このチュートリアルはこれで終わりです。 [Azure Cosmos DB の一貫性レベル](consistency-levels.md)に関する記事を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認できます。 また、Azure Cosmos DB におけるグローバル データベース レプリケーションの動作の詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](distribute-data-globally.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の手順を行いました。
 

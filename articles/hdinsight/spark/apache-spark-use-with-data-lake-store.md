@@ -1,25 +1,20 @@
 ---
-title: "Azure Data Lake Store での Apache Spark を使用したデータ分析 | Microsoft Docs"
-description: "Spark ジョブを実行して Azure Data Lake Store に格納されているデータを分析する"
+title: Azure Data Lake Store での Apache Spark を使用したデータ分析
+description: Spark ジョブを実行して Azure Data Lake Store に格納されているデータを分析する
 services: hdinsight
-documentationcenter: 
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 1f174323-c17b-428c-903d-04f0e272784c
 ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 6e44ffc26bbb618e0ff14d412ed77e4827232b42
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 9fe4b3e49f8e3270f58929a5708a83ab02e2486c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255252"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>HDInsight Spark クラスターを使用して Data Lake Store のデータを分析する
 
@@ -29,7 +24,7 @@ ms.lasthandoff: 02/24/2018
 
 * Azure Data Lake Store アカウント。 「[Azure Portal で Azure Data Lake Store の使用を開始する](../../data-lake-store/data-lake-store-get-started-portal.md)」の手順に従ってください。
 
-* Data Lake Store をストレージとして使用する Azure HDInsight Spark クラスター。 手順については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
+* Data Lake Store をストレージとして使用する Azure HDInsight Spark クラスター。 「[クイック スタート: HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」の手順に従います。
 
     
 ## <a name="prepare-the-data"></a>データを準備する
@@ -39,7 +34,7 @@ ms.lasthandoff: 02/24/2018
 >
 >
 
-Data Lake Store を追加ストレージとして使用し、Azure Storage Blob を既定のストレージとして使用する HDInsight クラスターを作成した場合は、まず、いくつかのサンプル データを Data Lake Store アカウントにコピーする必要があります。 HDInsight クラスターに関連付けられている Azure Storage Blob のサンプル データを使用することができます。 この操作には、 [ADLCopy ツール](http://aka.ms/downloadadlcopy) を使用できます。 リンク先からツールをダウンロードしてインストールします。
+Data Lake Store を追加ストレージとして使用し、Azure Storage Blob を既定のストレージとして使用する HDInsight クラスターを作成した場合は、まず、いくつかのサンプル データを Data Lake Store アカウントにコピーする必要があります。 HDInsight クラスターに関連付けられている Azure Storage Blob のサンプル データを使用することができます。 この操作には、 [ADLCopy ツール](https://aka.ms/downloadadlcopy) を使用できます。 リンク先からツールをダウンロードしてインストールします。
 
 1. コマンド プロンプトを開き、AdlCopy がインストールされているディレクトリ (通常は `%HOMEPATH%\Documents\adlcopy`) に移動します。
 

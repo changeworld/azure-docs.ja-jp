@@ -1,38 +1,42 @@
 ---
-title: Node.js から Azure Table Storage または Azure Cosmos DB を使用する方法 | Microsoft Docs
-description: Azure Table Storage または Azure Cosmos DB を使用して、構造化データをクラウドに格納します。
+title: Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
+description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 services: cosmos-db
-documentationcenter: nodejs
-author: mimig1
-manager: jhubbard
-editor: tysonn
-ms.assetid: fc2e33d2-c5da-4861-8503-53fdc25750de
+author: SnehaGunda
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 03/23/2018
-ms.author: mimig
-ms.openlocfilehash: fc6e3ca079b4d1edefa82e06dbe63b393ab2fbb3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: sample
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: b00c7168891c848f4b153acb1bf09728b7a78908
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106483"
 ---
-# <a name="how-to-use-azure-table-storage-from-nodejs"></a>Node.js から Azure Table Storage を使用する方法
+# <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>概要
-この記事では、Node.js アプリケーションで Azure Storage Table サービスまたは Azure Comsos DB を使用して一般的なシナリオを実行する方法について説明します。
+この記事では、Node.js アプリケーションで Azure Storage Table サービスまたは Azure Cosmos DB を使用して一般的なシナリオを実行する方法について説明します。
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-## <a name="configure-your-application-to-access-azure-storage"></a>Azure Storage にアクセスするようにアプリケーションを構成する
-Azure Storage を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
+### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
+
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
+
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントを作成する
+
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
+
+## <a name="configure-your-application-to-access-azure-storage-or-the-azure-cosmos-db-table-api"></a>Azure Storage または Azure Cosmos DB Table API にアクセスするようにアプリケーションを構成する
+Azure Storage または Azure Cosmos DB を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージをインストールする
 1. **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使って、アプリケーションを作成したフォルダーに移動します。
@@ -64,7 +68,7 @@ Azure モジュールは、Azure Storage アカウントに接続するために
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
-## <a name="add-an-azure-comsos-db-connection"></a>Azure Comsos DB 接続を追加する
+## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB の接続を追加する
 Azure Cosmos DB 接続を追加するには、**TableService** オブジェクトを作成し、アカウント名、主キー、およびエンドポイントを指定します。 これらの値は、自分の Cosmos DB アカウントの Azure Portal で **[設定]** > **[接続文字列]** を選択することによりコピーできます。 例: 
 
 ```nodejs
@@ -118,7 +122,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 * **PartitionKey** - エンティティが格納されるパーティションを決定します。
 * **RowKey** - パーティション内のエンティティを一意に識別します。
 
-**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。 詳細については、「 [Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
+**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。 詳細については、「 [Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
 エンティティを定義する例を次に示します。 **dueDate** が **Edm.DateTime** の型として定義されている点に注意してください。 型の指定は省略可能です。型を指定しなかった場合、型は推測されます。
 
@@ -158,7 +162,7 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 });
 ```
 
-操作が成功した場合、`result` には挿入されたレコードの [ETag](http://en.wikipedia.org/wiki/HTTP_ETag) が含まれ、`response` には操作に関する情報が含まれます。
+操作が成功した場合、`result` には挿入されたレコードの [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) が含まれ、`response` には操作に関する情報が含まれます。
 
 応答の例:
 
@@ -389,9 +393,11 @@ var host = tableSvc.host;
 
 SAS の保有者がテーブルにアクセスするときに必要なホスト情報も提供する必要があることに注意してください。
 
-クライアント アプリケーションは、この SAS と **TableServiceWithSAS** を使用してテーブルに対する操作を実行します。 次の例では、テーブルに接続してクエリを実行しています。
+クライアント アプリケーションは、この SAS と **TableServiceWithSAS** を使用してテーブルに対する操作を実行します。 次の例では、テーブルに接続してクエリを実行しています。 tableSAS の形式については、[Shared Access Signature の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md#examples-of-sas-uris)に関する記事を参照してください。 
 
 ```nodejs
+// Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
+
 var sharedTableService = azure.createTableServiceWithSas(host, tableSAS);
 var query = azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');

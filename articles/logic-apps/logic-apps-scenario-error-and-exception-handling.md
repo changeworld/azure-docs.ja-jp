@@ -1,26 +1,21 @@
 ---
-title: "例外処理とエラー ロギングのシナリオ - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps の高度な例外処理とエラー ロギングに関する実際のユース ケースについて説明します"
-keywords: 
+title: 例外処理とエラー ロギングのシナリオ - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps の高度な例外処理とエラー ロギングに関する実際のユース ケースを紹介します
 services: logic-apps
-author: hedidin
-manager: anneta
-editor: 
-documentationcenter: 
-ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: hedidin
+ms.author: b-hoedid
+ms.reviewer: estfan, LADocs
+ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
-ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
-ms.author: LADocs; b-hoedid
-ms.openlocfilehash: a8bae22b28b7de2f2579f310c8bd4b0e43885a0d
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0c6062fb9e9708b0fa6aef7a6d7390287cbf69d4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124037"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジックアプリの例外処理とエラーのログ記録
 
@@ -439,7 +434,7 @@ Microsoft がソース コードを公開している Azure Logic Apps 例外管
 
 Azure Cosmos DB 内の各ドキュメントには、一意 ID が割り当てられている必要があります。 ここでは `PatientId` を使用し、Unix のタイムスタンプ値 (double) に変換したタイムスタンプを追加しています。 小数桁を除外するために値の切り詰め処理を行っています。
 
-エラー コント ローラー API のソース コードは、[GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs) で参照することができます。
+エラー コントローラー API のソース コードは、[GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs) から表示できます。
 
 この API は、ロジック アプリから次の構文を使用して呼び出します。
 
@@ -476,7 +471,7 @@ Azure Cosmos DB 内の各ドキュメントには、一意 ID が割り当てら
 
 前のコード サンプルの式は、*Create_NewPatientRecord* ステータスが **Failed** であるかどうかをチェックします。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 
 * ログ処理とエラー処理は、ロジック アプリで簡単に実装できます。
 * ログ レコードとエラー レコード (ドキュメント) のリポジトリとしては、Azure Cosmos DB を使用できます。
@@ -486,7 +481,7 @@ Azure Cosmos DB 内の各ドキュメントには、一意 ID が割り当てら
 
 lLogic Apps 例外管理 API アプリケーションのソース コードは、こちらの [GitHub リポジトリ](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic Apps 例外管理 API")のサイトでプロジェクトの概要ビデオをご覧いただけます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [さらに他のロジック アプリ の例とシナリオを見る](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [ロジック アプリの監視について知る](../logic-apps/logic-apps-monitor-your-logic-apps.md)

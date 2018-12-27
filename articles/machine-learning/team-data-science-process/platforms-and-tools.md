@@ -2,24 +2,26 @@
 title: データ サイエンス チーム プロジェクトのためのプラットフォームとツール - Azure | Microsoft Docs
 description: Team Data Science Process を標準とする企業が利用できるデータおよび分析リソースを列記し、各リソースについて説明します。
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 404e3dd106edf82f4f22e4c6a17987bd0bc51f65
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 5cfe86414473f352673f39850a34f8ef265c91f5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258903"
 ---
-# <a name="platforms-and-tools-for-data-science-team-projects"></a>データ サイエンス チーム プロジェクトのためのプラットフォームとツール
+# <a name="platforms-and-tools-for-data-science-projects"></a>データ サイエンス プロジェクトのためのプラットフォームとツール
 
 Microsoft では、クラウド プラットフォームまたはオンプレミス プラットフォーム向けの各種データおよび分析サービスとリソースを提供しています。 これらをデプロイすることで、データ サイエンス プロジェクトを効率的かつスケーラブルに実行できます。 [Team Data Science Process](overview.md) (TDSP) によって、バージョン管理された追跡可能な方法でデータ サイエンス プロジェクトを共同で実装するチーム向けのガイダンスが提供されます。  このプロセスを標準とするデータ サイエンス チームの人員の役割とそれに関連したタスクの概要については、「[Team Data Science Process Roles and tasks (Team Data Science Process での役割とタスク)](roles-tasks.md)」をご覧ください。
 
@@ -100,9 +102,9 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 R Services (データベース内) は、新たな洞察を発見できるインテリジェント アプリケーションを開発、デプロイするためのプラットフォームです。 R コミュニティで提供される多数のパッケージを含め、豊富で強力な R 言語を使用して、SQL Server データを使ったモデルの作成や予測の生成を行うことができます。 R Services (データベース内) では R 言語が SQL Server と統合されるため、常にデータの近くで分析が実行されます。これにより、データの移動に関連するコストやセキュリティ リスクが排除されます。
 
-R Services (データベース内) では、SQL Server のツールとテクノロジの包括的なセットを使用してオープン ソースの R 言語をサポートします。 R Services (データベース内) は、優れたパフォーマンス、セキュリティ、信頼性、管理容易性を実現します。 使い慣れた便利なツールを使用して、R ソリューションをデプロイできます。 実稼働アプリケーションでは、R ランタイムを呼び出し、Transact-SQL を使用して予測やビジュアルを取得できます。 また、ScaleR ライブラリを使用して、R ソリューションのスケールとパフォーマンスを向上させることもできます。 詳細については、[SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx) に関する記事をご覧ください。
+R Services (データベース内) では、SQL Server のツールとテクノロジの包括的なセットを使用してオープン ソースの R 言語をサポートします。 R Services (データベース内) は、優れたパフォーマンス、セキュリティ、信頼性、管理容易性を実現します。 使い慣れた便利なツールを使用して、R ソリューションをデプロイできます。 実稼働アプリケーションでは、R ランタイムを呼び出し、Transact-SQL を使用して予測やビジュアルを取得できます。 また、ScaleR ライブラリを使用して、R ソリューションのスケールとパフォーマンスを向上させることもできます。 詳細については、[SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services) に関する記事をご覧ください。
 
-Microsoft の TDSP チームは、SQL Server 2016 R Services でデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは R プログラマ向けで、もう 1 つは SQL 開発者向けです。 **R プログラマ**の場合は、[データ サイエンスのエンド ツー エンド チュートリアル](https://msdn.microsoft.com/library/mt612857.aspx)をご覧ください。 **SQL 開発者**の場合は、[SQL 開発者向けの高度なデータベース内分析のチュートリアル](https://msdn.microsoft.com/library/mt683480.aspx)をご覧ください。
+Microsoft の TDSP チームは、SQL Server 2016 R Services でデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは R プログラマ向けで、もう 1 つは SQL 開発者向けです。 **R プログラマ**の場合は、[データ サイエンスのエンド ツー エンド チュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)をご覧ください。 **SQL 開発者**の場合は、[SQL 開発者向けの高度なデータベース内分析のチュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)をご覧ください。
 
 
 ## <a name="appendix"></a>付録: データ サイエンス プロジェクトを設定するためのツール
@@ -124,7 +126,7 @@ Linux (CentOS) マシンに Git をインストールするには、次の Bash 
 
 ### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Linux (CentOS) マシンでの SSH 公開キーの生成
 
-Linux (CentOS) マシンを使用して Git コマンドを実行する場合は、そのマシンが VSTS サーバーに認識されるように、マシンの SSH 公開キーを VSTS サーバーに追加する必要があります。 まず、SSH 公開キーを生成し、VSTS のセキュリティ設定ページでそのキーを SSH 公開キーに追加します。 
+Linux (CentOS) コンピューターを使用して Git コマンドを実行している場合は、このコンピューターが Azure DevOps Services によって認識されるように、コンピューターの SSH 公開キーを Azure DevOps Services に追加する必要があります。 まず、SSH 公開キーを生成し、Azure DevOps Services のセキュリティ設定ページでそのキーを SSH 公開キーに追加する必要があります。 
 
 - SSH キーを生成するには、次の 2 つのコマンドを実行します。 
 
@@ -134,7 +136,7 @@ Linux (CentOS) マシンを使用して Git コマンドを実行する場合は
 ![](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - *ssh-rsa* も含めた SSH キー全体をコピーします。 
-- VSTS サーバーにログインします。 
+- Azure DevOps Services にログインします。 
 - ページの右上隅にある **<自分の名前\>** をクリックし、**[セキュリティ]** をクリックします。 
     
     ![](./media/platforms-and-tools/resources-2-user-setting.png)
@@ -150,4 +152,4 @@ Linux (CentOS) マシンを使用して Git コマンドを実行する場合は
 
 また、 **特定のシナリオ** のプロセスに伴うすべての段階をリハーサル的に最初から最後まで実証することも可能です。 これらは、[サンプル チュートリアル](walkthroughs.md)のトピックで簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 
 
-Azure Machine Learning Studio を使用する Team Data Science Process のステップを実行する例については、[Azure ML の使用](http://aka.ms/datascienceprocess)ラーニング パスをご覧ください。
+Azure Machine Learning Studio を使用する Team Data Science Process のステップを実行する例については、[Azure ML の使用](https://aka.ms/datascienceprocess)ラーニング パスをご覧ください。

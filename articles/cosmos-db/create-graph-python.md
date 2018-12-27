@@ -1,28 +1,34 @@
 ---
-title: 'クイックスタート: Python での Graph API の使用 - Azure Cosmos DB | Microsoft Docs'
-description: このクイックスタートでは、Azure Portal および Python で Azure Cosmos DB Graph API を使ってコンソール アプリケーションを作成する方法を説明します
+title: 'クイック スタート: Python での Gremlin API の使用 - Azure Cosmos DB'
+description: このクイック スタートでは、Azure portal および Python で Azure Cosmos DB Gremlin API を使ってコンソール アプリケーションを作成する方法を説明します
 services: cosmos-db
-documentationcenter: python
 author: luisbosquez
-manager: kfile
-ms.assetid: 383a51c5-7857-440d-ab54-1efb1c0c7079
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: aa1d70d33e1f9cefee4d06ea182ffb3fc960e07a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b8a26164145360bdd46656a86817b8ec61bcb56c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081491"
 ---
-# <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Python と Azure Portal を使用してグラフ データベースを作成する
+# <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Python と Azure portal を使用してグラフ データベースを作成する
 
-このクイックスタートでは、Python と Azure Cosmos DB [Graph API](graph-introduction.md) を使って、GitHub から例を複製することによりコンソール アプリを作成する方法を説明します。 このクイックスタートでは、Web ベースの Azure Portal を使って Azure Cosmos DB アカウントを作成する手順についても説明します。   
+> [!div class="op_single_selector"]
+> * [Gremlin コンソール](create-graph-gremlin-console.md)
+> * [.NET](create-graph-dotnet.md)
+> * [Java](create-graph-java.md)
+> * [Node.js](create-graph-nodejs.md)
+> * [Python](create-graph-python.md)
+> * [PHP](create-graph-php.md)
+>  
+
+このクイック スタートでは、Python と Azure Cosmos DB [Gremlin API](graph-introduction.md) を使って、GitHub から例を複製することによりコンソール アプリを作成する方法を説明します。 このクイックスタートでは、Web ベースの Azure Portal を使って Azure Cosmos DB アカウントを作成する手順についても説明します。   
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、テーブル、キーと値、およびグラフ データベースをすばやく作成およびクエリできます。  
 
@@ -36,7 +42,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 加えて次の作業を行います。
 * [Python](https://www.python.org/downloads/) バージョン v3.5 以降
 * [pip パッケージ マネージャー](https://pip.pypa.io/en/stable/installing/)
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [Gremlin 用 Python ドライバー](https://github.com/apache/tinkerpop/tree/master/gremlin-python)
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
@@ -47,28 +53,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="add-a-graph"></a>グラフの追加
 
-Azure Portal でデータ エクスプローラー ツールを使用してグラフ データベースを作成できるようになりました。 
-
-1. **[データ エクスプローラー]** > **[New Graph]\(新しいグラフ\)** をクリックします。
-
-    **[グラフの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。
-
-    ![Azure Portal データ エクスプローラーの [グラフの追加] ページ](./media/create-graph-python/azure-cosmosdb-data-explorer-graph.png)
-
-2. **[グラフの追加]** ページで、新しいグラフの設定を入力します。
-
-    Setting|推奨値|[説明]
-    ---|---|---
-    データベース ID|sample-database|新しいデータベースの名前として「*sample-database*」と入力します。 データベース名は、1 - 255 文字である必要があります。また、`/ \ # ?` は使えず、末尾にスペースを入れることもできません。
-    グラフ ID|sample-graph|新しいコレクションの名前として「*sample-graph*」と入力します。 グラフ名の文字要件はデータベース ID と同じです。
-    ストレージの容量|固定 (10 GB)|既定値の**固定 (10 GB)** のままにします。 この値は、データベースの記憶域容量です。
-    Throughput|400 RU|スループットを 400 要求ユニット (RU/秒) に変更します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。
-
-3. フォームに入力したら、**[OK]** をクリックします。
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-次は、コードを使った作業に移りましょう。 GitHub から Graph API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。  
+次は、コードを使った作業に移りましょう。 GitHub から Gremlin API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。  
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -90,13 +79,13 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 スニペットはすべて、C:\git-samples\azure-cosmos-db-graph-python-getting-started\ フォルダーの `connect.py` ファイルから取得されます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 スニペットはすべて、C:\git-samples\azure-cosmos-db-graph-python-getting-started\ フォルダーの connect.py ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。 
 
 * Gremlin の `client` は、`connect.py` の 104 行目で初期化されます。
 
     ```python
     ...
-    client = client.Client('wss://<YOUR_ENDPOINT>.graphs.azure.com:443/','g', 
+    client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/<YOUR_DATABASE>/colls/<YOUR_COLLECTION_OR_GRAPH>", 
         password="<YOUR_PASSWORD>")
     ...
@@ -112,7 +101,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 ここで Azure Portal に戻り、接続情報を取得して、アプリにコピーします。 これらの設定により、アプリはホストされているデータベースと通信できるようになります。
 
-1. [Azure Portal](http://portal.azure.com/) で **[キー]** をクリックします。 
+1. [Azure Portal](https://portal.azure.com/) で **[キー]** をクリックします。 
 
     URI の値の最初の部分をコピーします。
 
@@ -121,7 +110,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 2. connect.py ファイルを開き、104 行目の `<YOUR_ENDPOINT>` に URI の値を貼り付けます。
 
     ```python
-    client = client.Client('wss://<YOUR_ENDPOINT>.graphs.azure.com:443/','g', 
+    client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/<YOUR_DATABASE>/colls/<YOUR_COLLECTION_OR_GRAPH>", 
         password="<YOUR_PASSWORD>")
     ```
@@ -129,14 +118,12 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     クライアント オブジェクトの URI 部分は、次のコードにようになります。
 
     ```python
-    client = client.Client('wss://test.graphs.azure.com:443/','g', 
+    client = client.Client('wss://test.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/<YOUR_DATABASE>/colls/<YOUR_COLLECTION_OR_GRAPH>", 
         password="<YOUR_PASSWORD>")
     ```
 
-3. クライアント名の `graphs.azure.com` を `gremlin.cosmosdb.azure.com` に変更します。 (2017 年 12 月 20 日より前に作成したグラフ データベース アカウントの場合は、変更を行わずに次の手順に進んでください。)
-
-4. `client` オブジェクトの 2 番目のパラメーターを、`<YOUR_DATABASE>` と `<YOUR_COLLECTION_OR_GRAPH>` の文字列に置き換えます。 提案された値を使った場合、パラメーターは次のコードのようになります。
+3. `client` オブジェクトの 2 番目のパラメーターを、`<YOUR_DATABASE>` と `<YOUR_COLLECTION_OR_GRAPH>` の文字列に置き換えます。 提案された値を使った場合、パラメーターは次のコードのようになります。
 
     `username="/dbs/sample-database/colls/sample-graph"`
 
@@ -148,7 +135,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
         password="<YOUR_PASSWORD>")
     ```
 
-5. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、`password=<YOUR_PASSWORD>` パラメーターの `<YOUR_PASSWORD>` に貼り付けます。
+4. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、`password=<YOUR_PASSWORD>` パラメーターの `<YOUR_PASSWORD>` に貼り付けます。
 
     `client` オブジェクトの定義全体は、次のコードのようになります。
     ```python

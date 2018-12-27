@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: b62cf2ca-dd2a-4a83-bb54-469f948fb026
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.openlocfilehash: d558db176f2fa6888ead1dd3228f31d942049fc4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4e1444f385859044b2dadd83c8e9841d8fc78bb0
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096413"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する
 Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
@@ -43,14 +45,14 @@ Machine Learning Web サービス ポータルでは、次のことができま�
 
 ワークスペースの作成方法について詳しくは、「[Azure Machine Learning ワークスペースの作成と共有](create-workspace.md)」をご覧ください。
 
-アクセス許可の設定について詳しくは、「[Azure Portal のユーザーとグループのアクセス権の割り当てを表示 - パブリック プレビュー](../../active-directory/role-based-access-control-manage-assignments.md)」をご覧ください。
+アクセス許可の設定の詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 
 ## <a name="manage-new-web-services"></a>新しい Web サービスを管理する
 新しい Web サービスを管理するには、次のようにします。
 
 1. Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、 [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにサインインします。
-2. メニューで、 **[Web サービス]**をクリックします。
+2. メニューで、 **[Web サービス]** をクリックします。
 
 すると、サブスクリプションにデプロイされている Web サービスの一覧が表示されます。 
 
@@ -119,7 +121,7 @@ Web サービスの [クイック スタート] ページで、 **[プラン]** 
 1. Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、 [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにサインインします。
 2. **[Classic Web Services (クラシック Web サービス)]** をクリックします。
 
-クラシック Web サービスを管理するには、**[Classic Web Services (クラシック Web サービス)]**をクリックします。 [Classic Web Services (クラシック Web サービス)]ページでは、次の操作を実行できます。
+クラシック Web サービスを管理するには、**[Classic Web Services (クラシック Web サービス)]** をクリックします。 [Classic Web Services (クラシック Web サービス)]ページでは、次の操作を実行できます。
 
 * Web サービスをクリックして、関連付けられているエンドポイントを表示する。
 * Web サービスを削除する。

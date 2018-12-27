@@ -4,22 +4,19 @@ description: すべてのポートで内部トラフィックを負荷分散す�
 services: load-balancer
 documentationcenter: na
 author: rdhillon
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/20178
+ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 7f7f8e254e0ed0556446e7b08eaf46ec59977f62
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8e1b94dbdef66c6423d16ffcbc9df4cd60a13c69
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415544"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>内部ロード バランサー用の高可用性ポートの構成
 
@@ -39,18 +36,12 @@ ms.lasthandoff: 03/23/2018
 ![高可用性ポートのデプロイ例](./media/load-balancer-configure-ha-ports/haports.png)
 
 
-## <a name="preview-sign-up"></a>プレビューのサインアップ
-
-Azure Load Balancer Standard の高可用性ポート機能のプレビューに参加するには、Azure CLI 2.0 または PowerShell を使用してサブスクリプションを登録し、アクセス権を取得します。 サブスクリプションを [Load Balancer Standard プレビュー](https://aka.ms/lbpreview#preview-sign-up)に登録します。
-
->[!NOTE]
->Load Balancer Standard プレビューの登録には、最大 1 時間かかる場合があります。
 
 ## <a name="configure-high-availability-ports"></a>高可用性ポートの構成
 
 高可用性ポートを構成するには、バックエンド プール内の NVA で内部ロード バランサーを設定します。 NVA の正常性を検出するための対応するロード バランサー正常性プローブ構成と、高可用性ポートのロード バランサー規則を設定します。 ロード バランサー関連の全般的な構成については、[概要](load-balancer-get-started-ilb-arm-portal.md)に関する記事をご覧ください。 この記事では、高可用性ポートの構成を取り上げます。
 
-構成では、基本的にフロントエンド ポートとバックエンド ポートの値を **0** に設定する必要があります。 プロトコル値は **All** に設定します。 この記事では、Azure Portal、PowerShell、Azure CLI 2.0 を使用して高可用性ポートを構成する方法について説明します。
+構成では、基本的にフロントエンド ポートとバックエンド ポートの値を **0** に設定する必要があります。 プロトコル値は **All** に設定します。 この記事では、Azure portal、PowerShell、Azure CLI を使用して高可用性ポートを構成する方法について説明します。
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>Azure Portal を使用して高可用性ポートのロード バランサー規則を構成する
 
@@ -100,7 +91,7 @@ PowerShell で、次のコマンドを使用して高可用性ポートのロー
 lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
 ```
 
-### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli-20"></a>Azure CLI 2.0 を使用して高可用性ポートのロード バランサー規則を構成する
+### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli"></a>Azure CLI を使用して高可用性ポートのロード バランサー規則を構成する
 
 [内部ロード バランサー セットの作成](load-balancer-get-started-ilb-arm-cli.md)に関する記事の手順 4. で、次のコマンドを使用して高可用性ポートのロード バランサー規則を作成します。
 

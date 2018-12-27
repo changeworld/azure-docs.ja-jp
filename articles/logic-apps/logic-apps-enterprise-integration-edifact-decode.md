@@ -1,24 +1,21 @@
 ---
-title: "EDIFACT メッセージをデコードする - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps で Enterprise Integration Pack の EDIFACT メッセージ デコーダーを使用して EDI の検証および受信確認の生成を行います"
+title: EDIFACT メッセージをデコードする - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack の EDIFACT メッセージ デコーダーを使用して EDI の検証および受信確認の生成を行います
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: anneta
-editor: 
-ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 41bd0291f3ff8f5dd61a21d1ba4ecb3b60a3cbfb
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b101922d15a3f90c29eff51c223d2ea7dc30ddf2
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125354"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の EDIFACT メッセージをデコードする
 

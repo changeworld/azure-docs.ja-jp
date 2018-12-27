@@ -1,33 +1,34 @@
 ---
-title: "Azure の Linux VM にリモート デスクトップを使用する | Microsoft Docs"
-description: "リモート デスクトップ (xrdp) をインストールして、Azure の Linux VM に接続するように構成する方法を説明します。"
+title: Azure の Linux VM にリモート デスクトップを使用する | Microsoft Docs
+description: リモート デスクトップ (xrdp) をインストールして、Azure の Linux VM に接続するように構成する方法を説明します。
 services: virtual-machines-linux
-documentationcenter: 
-author: iainfoulds
+documentationcenter: ''
+author: cynthn
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
-ms.author: iainfou
-ms.openlocfilehash: 1aa75b87b01417b8864632b7a09539bd6be05d0b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 05/30/2018
+ms.author: cynthn
+ms.openlocfilehash: 44b0f8b3d11b737ad88f7d33b036b52d24b70e33
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960329"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する
-Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Resource Manager デプロイメント モデルを使用して、Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](http://www.xrdp.org)) をインストールして構成する方法を詳しく説明します。
+Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Resource Manager デプロイ モデルを使用して、Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](http://www.xrdp.org)) をインストールして構成する方法を詳しく説明します。
 
 
 ## <a name="prerequisites"></a>前提条件
 この記事は、Ubuntu 16.04 LTS VM が Azure にあることを前提としています。 VM を作成する必要がある場合は、次のいずれかの方法を実行してください。
 
-- [Azure CLI 2.0](quick-create-cli.md)
+- [Azure CLI](quick-create-cli.md)
 - [Azure Portal](quick-create-portal.md)
 
 
@@ -36,7 +37,7 @@ Azure のほとんどの Linux VM では、デスクトップ環境は既定で�
 
 次の例では、軽量 [xfce4](https://www.xfce.org/) デスクトップ環境を Ubuntu 16.04 LTS VM にインストールします。 他のディストリビューションではコマンドが若干異なります (たとえば、Red Hat Enterprise Linux をインストールし、適切な `selinux` 規則をする場合は `yum` を使用し、SUSE にインストールするには `zypper` を使用します)。
 
-最初に、VM に SSH 接続します。 次の例では、*myvm.westus.cloudapp.azure.com* という名前の VM に *azureuser* のユーザー名を使用して接続しています。
+最初に、VM に SSH 接続します。 次の例では、*myvm.westus.cloudapp.azure.com* という名前の VM に *azureuser* のユーザー名を使用して接続しています。 独自の値を使用してください。
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
@@ -56,6 +57,7 @@ sudo apt-get install xfce4
 
 ```bash
 sudo apt-get install xrdp
+sudo systemctl enable xrdp
 ```
 
 セッションの開始時に使用するデスクトップ環境を xrdp に指定します。 xfce をデスクトップ環境として使用するように xrdp を構成します。
@@ -83,9 +85,9 @@ sudo passwd azureuser
 
 
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>リモート デスクトップ トラフィックにネットワーク セキュリティ グループ ルールを作成する
-リモート デスクトップのトラフィックを Linux VM に接続できるようにするには、ポート 3389 で VM への TCP の接続を許可するネットワーク セキュリティ グループ ルールを作成する必要があります。 ネットワーク セキュリティ グループ ルールの詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 また、[Azure Portal を使用してネットワーク セキュリティ グループ ルールを作成することもできます](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+リモート デスクトップのトラフィックを Linux VM に接続できるようにするには、ポート 3389 で VM への TCP の接続を許可するネットワーク セキュリティ グループ ルールを作成する必要があります。 ネットワーク セキュリティ グループ ルールの詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 また、[Azure Portal を使用してネットワーク セキュリティ グループ ルールを作成することもできます](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-次の例では、[az vm open-port](/cli/azure/vm#az_vm_open_port) で、ネットワーク セキュリティ グループの規則をポート *3389* に作成しています。
+次の例では、[az vm open-port](/cli/azure/vm#az-vm-open-port) で、ネットワーク セキュリティ グループの規則をポート *3389* に作成しています。 Azure CLI から、VM への SSH セッションではなく、次のネットワーク セキュリティ グループ ルールを開きます。
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389
@@ -100,6 +102,8 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 認証後、xfce デスクトップ環境が読み込まれ、次の例のように表示されます。
 
 ![xrdp を介した xfce デスクトップ環境](./media/use-remote-desktop/xfce-desktop-environment.png)
+
+ローカル RDP クライアントがネットワーク レベル認証 (NLA) を使っている場合は、その接続設定を無効にすることが必要な場合があります。 現在、XRDP は NLA をサポートしていません。 [FreeRDP](http://www.freerdp.com) など、NLA をサポートする RDP ソリューションを代わりに使うこともできます。
 
 
 ## <a name="troubleshoot"></a>トラブルシューティング

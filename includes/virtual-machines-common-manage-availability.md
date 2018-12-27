@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8173a5abbbeea38bc831b7cc76898714cd4dd4d4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e6c5f4623f3483dcfb0dde0f55b77161eee2c562
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50035460"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM の再起動について - メンテナンスとダウンタイム
 Azure の仮想マシンに影響する可能性のあるシナリオには、計画外のハードウェア メンテナンス、予期しないダウンタイム、および計画メンテナンスの 3 つがあります。
@@ -20,7 +21,7 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 * **計画外のハードウェア メンテナンス イベント**は、物理マシンに関連するハードウェアまたはプラットフォーム コンポーネントの故障が起こることを Azure プラットフォームが予測した場合に発生します。 プラットフォームが故障を予測すると、そのハードウェアでホストされている仮想マシンへの影響を軽減するために、計画外のハードウェア メンテナンス イベントが発生します。 Azure では、ライブ マイグレーション テクノロジを使用して、故障が起こるハードウェアから正常な物理マシンに仮想マシンを移行します。 ライブ マイグレーションは、仮想マシンを短時間一時停止するだけの VM 保持操作です。 メモリ、開いているファイル、ネットワーク接続は保持されますが、イベントの前後にパフォーマンスが低下する可能性があります。 ライブ マイグレーションを使用できない場合、以下で説明する VM で予期しないダウンタイムが発生します。
 
 
-* **予期しないダウンタイム**は、仮想マシンの基盤となるハードウェアまたは物理インフラストラクチャに何らかの不具合が起きた場合にまれに発生します。 こうした不具合には、ネットワーク障害、ローカル ディスク障害、またはその他のラック レベルでの障害が挙げられます。 そのような故障が検知されると、Azure プラットフォームは、同じデータセンター内の正常な物理マシンに仮想マシンを自動的に移行 (復旧) します。 復旧中に、仮想マシンでダウンタイム (再起動) が発生し、場合によっては一時ドライブが失われることがあります。 接続されている OS とデータ ディスクは常に保持されます。 
+* **予期しないダウンタイム**は、ハードウェアまたは仮想マシンの物理インフラストラクチャが予期せず失敗した場合に発生します。 こうした不具合には、ネットワーク障害、ローカル ディスク障害、またはその他のラック レベルでの障害が挙げられます。 障害が検知されると、Azure プラットフォームは、同じデータセンター内の正常な物理マシンに仮想マシンを自動的に移行 (復旧) します。 復旧中に、仮想マシンでダウンタイム (再起動) が発生し、場合によっては一時ドライブが失われることがあります。 接続されている OS とデータ ディスクは常に保持されます。 
 
   仮想マシンでも、データセンター全体やリージョン全体に影響する停電や災害といった予期しない事象によってダウンタイムが発生することがあります。 こうしたシナリオにおいて、Azure は[可用性ゾーン](../articles/availability-zones/az-overview.md)や[リージョン ペア](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)といった保護オプションを提供します。
 
@@ -30,8 +31,8 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 前述のようなイベントが 1 つ以上発生した場合にダウンタイムの影響を低減するため、下記のような高可用性のためのベスト プラクティスを仮想マシンに適用することをお勧めします。
 
 * [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]
-* [可用性セット内の VM に管理ディスクを使用する]
-* [VM に影響するイベントにプロアクティブに応答する定期的なイベントを使用する](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [可用性セット内の VM にマネージド ディスクを使用する]
+* [VM に影響するイベントにプロアクティブに応答するスケジュール化されたイベントを使用する](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [各アプリケーション層に対して別々の可用性セットを構成する]
 * [ロード バランサーと可用性セットを結合する]
 * [可用性ゾーンを使ってデータセンター レベルの障害から保護する]
@@ -46,14 +47,13 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 
 障害ドメインは電源とネットワーク スイッチを共有する仮想マシンのグループを定義します。 既定では、可用性セット内に構成された仮想マシンは、Resource Manager のデプロイ用に最大 3 つの障害ドメインに分けられます (クラシックの場合は 2 つの障害ドメイン)。 仮想マシンを可用性セットに配置しても、アプリケーションがオペレーティング システムやアプリケーションの障害から保護されるわけではありませんが、潜在的な物理ハードウェア障害、ネットワーク障害、または電力の中断の影響を低下させることができます。
 
-<!--Image reference-->
-   ![更新ドメインと障害ドメインの構成の概念図](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+<!--Image reference--> ![更新ドメインと障害ドメインの構成の概念図](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
-## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>可用性セット内の VM に管理ディスクを使用する
+## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>可用性セット内の VM にマネージド ディスクを使用する
 現在、管理されていないディスクを持つ VM を使用している場合は、[可用性セット内の VM を Managed Disks を使用するように変換する](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)ことを強くお勧めします。
 
 [管理ディスク](../articles/virtual-machines/windows/managed-disks-overview.md)では、可用性セットの VM のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまなストレージ障害ドメイン (記憶域クラスター) に自動的に配置し、VM 障害ドメインに合わせて調整することによって実現されます。 ストレージ障害ドメインが、ハードウェアまたはソフトウェアの障害によって機能しなくなった場合は、そのストレージ障害ドメイン上のディスクを含む VM インスタンスだけが機能しなくなります。
-![管理ディスク FD](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+![マネージド ディスク FD](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
 > 管理対象の可用性セットに使用される障害ドメインの数は、リージョンによって異なります (リージョンあたり 2 つまたは 3 つになります)。 リージョンあたりの数を以下の表に示します。
@@ -71,8 +71,7 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 
 たとえば、ISS、Apache、Nginx を実行しているアプリケーションのフロントエンド内のすべての仮想マシンを、1 つの可用性セットに配置します。 このとき、フロントエンド仮想マシンのみが同じ可用性セット内に配置されるようにします。 同様に、別の可用性セットには、複製された SQL Server 仮想マシンまたは MySQL 仮想マシンのように、データ層の仮想マシンのみが配置されるようにします。
 
-<!--Image reference-->
-   ![アプリケーション層](./media/virtual-machines-common-manage-availability/application-tiers.png)
+<!--Image reference--> ![アプリケーション層](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-sets"></a>ロード バランサーと可用性セットを結合する
 [Azure Load Balance](../articles/load-balancer/load-balancer-overview.md) と可用性セットを結合することで、アプリケーションの復元性を最大化できます。 Azure Load Balanceは、複数の仮想マシンにトラフィックを振り分けます。 当社の標準層の仮想マシンには Azure Load Balanceが含まれています。 すべての仮想マシン層に Azure Load Balancer が含まれているわけではありません。 仮想マシンの負荷分散の詳細については、「 [仮想マシンの負荷分散](../articles/virtual-machines/virtual-machines-linux-load-balance.md)」を参照してください。
@@ -93,5 +92,5 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 [各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-sets
 [ロード バランサーと可用性セットを結合する]: #combine-a-load-balancer-with-availability-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
-[可用性セット内の VM に管理ディスクを使用する]: #use-managed-disks-for-vms-in-an-availability-set
+[可用性セット内の VM にマネージド ディスクを使用する]: #use-managed-disks-for-vms-in-an-availability-set
 [可用性ゾーンを使ってデータセンター レベルの障害から保護する]: #use-availability-zones-to-protect-from-datacenter-level-failures

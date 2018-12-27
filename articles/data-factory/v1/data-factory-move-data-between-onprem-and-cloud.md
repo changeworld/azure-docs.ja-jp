@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: eff58d77b2f79581ee0f611ca25d6cbbc258e996
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1bf915bf702cdf9492cce1f32886c0049fbf9867
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242842"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 を使用してオンプレミスとクラウドとの間でデータをコピーする方法](../tutorial-hybrid-copy-powershell.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory を使用したオンプレミスとクラウド間でのデータのコピー](../tutorial-hybrid-copy-powershell.md)に関するページを参照してください。
 
 この記事では、Data Factory を使用したオンプレミス データ ストアとクラウド データ ストア間でのデータ統合の概要について説明します。 この記事は、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事と、Data Factory の中核となる概念である[データセット](data-factory-create-datasets.md)と[パイプライン](data-factory-create-pipelines.md)に関する他の記事に基づいています。
 
@@ -46,8 +47,8 @@ ms.lasthandoff: 03/23/2018
 ## <a name="prerequisites-for-the-tutorial"></a>このチュートリアルの前提条件
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
-* **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](http://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
-* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
+* **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
+* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md) 」をご覧ください。
 * **SQL Server**。 このチュートリアルでは、オンプレミスの SQL Server データベースを**ソース** データ ストアとして使用します。 
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
@@ -64,7 +65,7 @@ ms.lasthandoff: 03/23/2018
    > [!IMPORTANT]
    > Azure Data Factory の名前はグローバルに一意にする必要があります。 " **データ ファクトリ名 "ADFTutorialOnPremDF" は使用できません**" というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialOnPremDF など) 作成し直してください。 このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialOnPremDF の代わりに使用します。
    >
-   > データ ファクトリの名前は今後、 **DNS** 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
+   > データ ファクトリの名前は今後、**DNS** 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
    >
    >
 4. データ ファクトリを作成する **Azure サブスクリプション** を選択します。
@@ -72,7 +73,7 @@ ms.lasthandoff: 03/23/2018
 6. **[新しい Data Factory]** ページで **[作成]** をクリックします。
 
    > [!IMPORTANT]
-   > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
+   > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
    >
    >
 7. 作成が完了すると、次の図に示すような **[Data Factory]** ページが表示されます。
@@ -179,8 +180,8 @@ ms.lasthandoff: 03/23/2018
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>Azure ストレージ アカウント用のリンクされたサービスを追加する
 1. **Data Factory エディター**で、コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure ストレージ]** をクリックします。
-2. Azure ストレージ アカウントの名前を **[アカウント名]**に入力します。
-3. Azure ストレージ アカウントのキーを **[アカウント キー]**に入力します。
+2. Azure ストレージ アカウントの名前を **[アカウント名]** に入力します。
+3. Azure ストレージ アカウントのキーを **[アカウント キー]** に入力します。
 4. **[デプロイ]** をクリックして **AzureStorageLinkedService** をデプロイします。
 
 ## <a name="create-datasets"></a>データセットを作成する
@@ -359,7 +360,7 @@ ms.lasthandoff: 03/23/2018
 
    * activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
    * アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
-   * **typeProperties** セクションでは、**ソースの種類**として **SqlSource** が指定され、**シンクの種類**として **BlobSink ** が指定されています。
+   * **typeProperties** セクションでは、**ソースの種類**として **SqlSource** が指定され、**シンクの種類**として **BlobSink** が指定されています。
    * **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ `select * from emp` を指定します。
 
    start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 (例: 2014-10-14T16:32:41Z)。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。

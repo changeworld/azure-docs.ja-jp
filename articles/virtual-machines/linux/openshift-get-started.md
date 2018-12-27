@@ -1,25 +1,26 @@
 ---
-title: "Azure の OpenShift の概要 | Microsoft Docs"
-description: "Azure の OpenShift の概要について説明します。"
+title: Azure の OpenShift の概要 | Microsoft Docs
+description: Azure の OpenShift の概要について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: haroldw
-manager: najoshi
-editor: 
+author: haroldwongms
+manager: joraio
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 5d154a1c860a5ebd7af2efd55b470bb14efe6c67
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: d68215359d50ac153d6df3bbcce5a9b6171698bb
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085441"
 ---
 # <a name="openshift-in-azure"></a>Azure の OpenShift
 
@@ -31,18 +32,15 @@ OpenShift には、コンテナーのオーケストレーションと管理の�
 - 容易なデプロイとスケール変更。
 - チームおよびアプリケーション向けの長期的なライフサイクル メンテナンス。
 
-OpenShift には複数のバージョンがあり、そのうちの 2 つが Azure で実行可能です。
+以下の複数のバージョンの OpenShift を使用できます。
 
-- OpenShift Origin
 - OpenShift Container Platform
-- OpenShift Online
+- OpenShift On Azure (2019 年の初めに公開予定のフル マネージド OpenShift)
+- OKD (旧称 OpenShift Origin)
 - OpenShift Dedicated
+- OpenShift Online
 
-この記事で扱う 4 つのバージョンのうち 2 つ (OpenShift Origin と OpenShift Container Platform) は、顧客自身が Azure にデプロイできます。
-
-## <a name="openshift-origin"></a>OpenShift Origin
-
-Origin は OpenShift の[オープン ソース](https://www.openshift.org/)上流プロジェクトであり、コミュニティによりサポートされています。 Origin は CentOS または Red Hat Enterprise Linux (RHEL) にインストールできます。
+この記事で扱う 5 つのバージョンのうち、現時点でお客様がAzure にデプロイできるのは 2 つ (OpenShift Container Platform と OKD) のみです。
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 
@@ -50,20 +48,29 @@ Container Platform は Red Hat 製のエンタープライズ対応[市販バー
 
 プラットフォーム全体を顧客が "所有" しているため、プラットフォームを自社のオンプレミスのデータセンターや、パブリック クラウド (Azure、AWS、Google など) にインストールすることができます。
 
+## <a name="openshift-on-azure"></a>OpenShift On Azure
+
+OpenShift On Azure は Azure で実行される フル マネージド OpenShift です。 このサービスは、Microsoft と Red Hat によって共同で管理され、サポートされています。 クラスターは、お客様の Azure サブスクリプションにデプロイされます。 サービスは、現在プライベート プレビュー段階であり、2019 年の初めに一般公開される予定です。 一般公開が近づくにつれて、サービスの詳細がさらに提供されます。
+
+## <a name="okd-formerly-openshift-origin"></a>OKD (旧称 OpenShift Origin)
+
+OKD は OpenShift の[オープン ソース](https://www.okd.io/)上流プロジェクトであり、コミュニティによりサポートされています。 OKD は CentOS または Red Hat Enterprise Linux (RHEL) にインストールできます。
+
+## <a name="openshift-dedicated"></a>OpenShift Dedicated
+
+Dedicated は、Red Hat によって管理される*シングルテナント*の OpenShift であり、OpenShift Container Platform を使用します。 すべての基になるインフラストラクチャ (VM、OpenShift クラスター、ネットワーク、ストレージなど) は、Red Hat によって管理されています。 クラスターはお客様専用であり、パブリック クラウド (AWS や Googleなど) で実行されます。 開始クラスターには 4 つのアプリケーション ノードが含まれ、すべてのコストは年単位で前払いされます。
+
 ## <a name="openshift-online"></a>OpenShift Online
 
 Online は、Red Hat によって管理されている、Container Platform を使用する*マルチテナント* OpenShift です。 すべての基になるインフラストラクチャ (VM、OpenShift クラスター、ネットワーク、ストレージなど) は、Red Hat によって管理されています。 
 
 このバージョンで、顧客はコンテナーをデプロイしますが、コンテナーを実行するホストは制御できません。 Online はマルチテナントなので、他の顧客のコンテナーと同じ VM ホストにコンテナーが配置される場合があります。 コストは、コンテナーごとに課金されます。
 
-## <a name="openshift-dedicated"></a>OpenShift Dedicated
-
-Dedicated は、Red Hat によって管理されている、Container Platform を使用する*シングルテナント*の OpenShift です。 すべての基になるインフラストラクチャ (VM、OpenShift クラスター、ネットワーク、ストレージなど) は、Red Hat によって管理されています。 クラスターは各顧客専用で、パブリック クラウド (AWS、Google、Azure (2018 年初頭に公開予定)) で実行されます。 クラスターの開始には、1 年間に $48,000 (前払い) の 4 つのアプリケーション ノードが含まれています。
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure で OpenShift の共通の前提条件を構成する](./openshift-prerequisites.md)
-- [Azure に OpenShift Origin をデプロイする](./openshift-origin.md)
 - [OpenShift Container Platform の Azure へのデプロイ](./openshift-container-platform.md)
+- [OKD を Azure にデプロイする](./openshift-okd.md)
+- [OpenShift を Azure Stack にデプロイする](./openshift-azure-stack.md)
 - [デプロイ後タスク](./openshift-post-deployment.md)
 - [OpenShift デプロイのトラブルシューティング](./openshift-troubleshooting.md)

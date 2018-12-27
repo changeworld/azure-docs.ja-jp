@@ -1,11 +1,11 @@
 ---
-title: "Azure 内の Linux 上にある Cassandra クラスターを Node.js から実行する"
-description: "Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法"
+title: Azure 内の Linux 上にある Cassandra クラスターを Node.js から実行する
+description: Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法
 services: virtual-machines-linux
 documentationcenter: nodejs
 author: craigshoemaker
 manager: routlaw
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 30de1f29-e97d-492f-ae34-41ec83488de0
 ms.service: virtual-machines-linux
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 00e42a00dffd1be37073f10f6ff7bff619fdee85
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3f7b216be79be1307a5668d6686fd73a27ae5574
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237861"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Azure 内の Linux 上にある Cassandra クラスターを Node.js で実行する
 
@@ -48,7 +49,7 @@ Cassandra は、単一の Azure リージョンにデプロイすることも、
 ### <a name="single-region-deployment"></a>単一リージョン デプロイ
 まず単一リージョン デプロイから学習し、その後、複数リージョン モデルを作成しましょう。 Azure の仮想ネットワークは、上記で説明したネットワーク セキュリティ要件を実現するための分離サブネットの作成に使用されます。  単一リージョン デプロイの作成について説明したプロセスでは、Ubuntu 14.04 LTS と Cassandra 2.08 を使用しています。 ただし、このプロセスはその他の Linux バリアントにも簡単に導入することができます。 単一リージョン デプロイのシステムの特徴を次に示します。  
 
-**高可用性:** 図 1 の Cassandra ノードは 2 つの可用性セットにデプロイされており、ノードが複数の障害ドメインに分散されて高可用性が確保されるようになっています。 各可用性セットが注釈として付与された VM は、2 つの障害ドメインにマップされています。 Azure では、計画外のダウン タイム (たとえばハードウェア障害やソフトウェア障害) を管理するために、障害ドメインの概念が使用されます。 スケジュールされたダウンタイムの管理には、アップグレード ホストの概念が使用されます (たとえば、ホストまたはゲスト OS の修正プログラム適用やアップグレード、アプリケーションのアップグレードなど)。 高可用性を実現する上での障害ドメインおよびアップグレード ドメインの役割については、「 [Azure アプリケーションの障害復旧と高可用性](http://msdn.microsoft.com/library/dn251004.aspx) 」を参照してください。
+**高可用性:** 図 1 の Cassandra ノードは 2 つの可用性セットにデプロイされており、ノードが複数の障害ドメインに分散されて高可用性が確保されるようになっています。 各可用性セットが注釈として付与された VM は、2 つの障害ドメインにマップされています。 Azure では、計画外のダウン タイム (たとえばハードウェア障害やソフトウェア障害) を管理するために、障害ドメインの概念が使用されます。 スケジュールされたダウンタイムの管理には、アップグレード ホストの概念が使用されます (たとえば、ホストまたはゲスト OS の修正プログラム適用やアップグレード、アプリケーションのアップグレードなど)。 高可用性を実現する上での障害ドメインおよびアップグレード ドメインの役割については、「 [Azure アプリケーションの障害復旧と高可用性](https://msdn.microsoft.com/library/dn251004.aspx) 」を参照してください。
 
 ![単一リージョン デプロイ](./media/cassandra-nodejs/cassandra-linux1.png)
 
@@ -60,7 +61,7 @@ Cassandra は、単一の Azure リージョンにデプロイすることも、
 
 **クラスター シード:** 新しいノードは、クラスターのトポロジを検出するためにシード ノードと通信するため、シードには最も可用性の高いノードを選択することが重要です。 単一障害点を回避するために、可用性セットごとに 1 つのノードをシード ノードとして指定します。
 
-**レプリケーション係数と一貫性レベル:** Cassandra に組み込まれた高い可用性とデータの持続性は、レプリケーション係数 (RF、クラスターに格納されている行ごとのコピーの数) と一貫性レベル (呼び出し元に結果を返すまでのレプリカの読み取り/書き込み数) で示されます。 レプリケーション係数は、KEYSPACE (リレーショナル データベースに似ています) の作成時に指定され、一貫性レベルは CRUD クエリの発行時に指定されます。 一貫性についての詳細とクォーラムの計算式については、Cassandra のマニュアルで、 [一貫性の設定](http://www.datastax.com/documentation/cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) に関するページを参照してください。
+**レプリケーション係数と一貫性レベル:** Cassandra に組み込まれた高い可用性とデータの持続性は、レプリケーション係数 (RF、クラスターに格納されている行ごとのコピーの数) と一貫性レベル (呼び出し元に結果を返すまでのレプリカの読み取り/書き込み数) で示されます。 レプリケーション係数は、KEYSPACE (リレーショナル データベースに似ています) の作成時に指定され、一貫性レベルは CRUD クエリの発行時に指定されます。 一貫性についての詳細とクォーラムの計算式については、Cassandra のマニュアルで、 [一貫性の設定](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html) に関するページを参照してください。
 
 Cassandra では、"一貫性" と "結果的な一貫性" の 2 種類のデータ一貫性モデルがサポートされています。レプリケーション係数と一貫性レベルで、書き込み操作が完了してすぐに一貫性が確保されるのか、結果的に一貫性が確保されるのかが決まります。 たとえば、一貫性レベルに、QUORUM を指定すると、常に、データの一貫性が確保されます。一方、QUORUM を確保するために必要に応じて書き込まれるレプリカの数未満の一貫性レベル (たとえば、ONE) を指定すると、データの一貫性は結果的に確保されます。
 
@@ -74,8 +75,8 @@ Cassandra では、"一貫性" と "結果的な一貫性" の 2 種類のデー
 | レプリケーション係数 (RF) |3 |行のレプリカの数 |
 | 一貫性レベル (書き込み) |QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) |呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
 | 一貫性レベル (読み取り) |QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) |呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
-| レプリケーションの方法 |NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「 [Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) 」を参照してください) |デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
-| スニッチ |GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「[Switches (スイッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html)」を参照してください) |NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。 GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。 この場合、クラスターはゴシップを使用して情報を伝達します。 このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
+| レプリケーションの方法 |NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「 [Data Replication (データ レプリケーション)](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) 」を参照してください) |デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
+| スニッチ |GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「[Switches (スイッチ)](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html)」を参照してください) |NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。 GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。 この場合、クラスターはゴシップを使用して情報を伝達します。 このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
 
 **Cassandra クラスターに関する Azure での考慮事項:** Microsoft Azure Virtual Machines では、ディスクの永続性を実現するために Azure Blob ストレージを使用してします。Azure Storage は、高い耐久性を確保するために、各ディスクのレプリカを 3 つ保存します。 つまり、Cassandra テーブルに挿入された各データ行は、既に 3 つのレプリカに格納されています。 そのため、レプリケーション係数 (RF) が 1 の場合でも、データの整合性は既に確保されています。 レプリケーション係数が 1 の場合の主な問題は、1 つの Cassandra ノードのみで障害が発生した場合でも、アプリケーションにダウンタイムが発生することです。 ただし、Azure ファブリック コントローラーによって認識される問題 (ハードウェア、システム ソフトウェアの障害など) によってノードがダウンした場合は、同じストレージ ドライブを使用して、代わりの新しいノードが準備されます。 古いノードを置き換えるための新しいノードのプロビジョニングには、数分間かかる場合があります。  同様に、ゲスト OS の変更、Cassandra のアップグレード、アプリケーションの変更といった計画済みのメンテナンス アクティビティの場合も、Azure ファブリック コントローラーは、クラスター内のノードのローリング アップグレードを実行します。  ローリング アップグレードの実行時にも、一度にいくつかのノードがダウンする場合があり、そのため、クラスターで、いくつかのパーティションのダウンタイムが短時間発生する可能性があります。 ただし、Azure Storage に冗長性が組み込まれているため、データは失われません。  
 
@@ -109,21 +110,21 @@ Azure にデプロイされたシステムのうち高い可用性(たとえば 
 | レプリケーション係数 (RF) |3 |行のレプリカの数 |
 | 一貫性レベル (書き込み) |LOCAL_QUORUM [(sum(RF)/2) +1) = 4] \(数式の結果の小数点以下の値は、切り捨てられます) |2 つのノードが、最初のデータ センターに同期的に書き込まれます。クォーラムに必要な追加の 2 つのノードは、2 番目のデータ センターに非同期的に書き込まれます。 |
 | 一貫性レベル (読み取り) |LOCAL_QUORUM ((RF/2) +1) = 2 数式の結果の小数点以下の値は、切り捨てられます。 |1 つのリージョンのみで、読み取り要求に対応します。応答がクライアントに送信される前に、2 つのノードが読み取られます。 |
-| レプリケーションの方法 |NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「 [Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) 」を参照してください) |デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
-| スニッチ |GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「 [Snitches (スニッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) 」を参照してください) |NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。 GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。 この場合、クラスターはゴシップを使用して情報を伝達します。 このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
+| レプリケーションの方法 |NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「 [Data Replication (データ レプリケーション)](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) 」を参照してください) |デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
+| スニッチ |GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「 [Snitches (スニッチ)](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) 」を参照してください) |NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。 GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。 この場合、クラスターはゴシップを使用して情報を伝達します。 このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
 
 ## <a name="the-software-configuration"></a>ソフトウェア構成
 デプロイ時には、次のソフトウェア バージョンが使用されます。
 
 <table>
-<tr><th>ソフトウェア</th><th>ソース</th><th>バージョン</th></tr>
-<tr><td>JRE    </td><td>[JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
+<tr><th>ソフトウェア</th><th>ソース</th><th>Version</th></tr>
+<tr><td>JRE    </td><td>[JRE 8](https://aka.ms/azure-jdks) </td><td>8U5</td></tr>
 <tr><td>JNA    </td><td>[JNA](https://github.com/twall/jna) </td><td> 3.2.7</td></tr>
-<tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/2.0.8/apache-cassandra-2.0.8-bin.tar.gz)</td><td> 2.0.8</td></tr>
+<tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/)</td><td> 2.0.8</td></tr>
 <tr><td>Ubuntu    </td><td>[Microsoft Azure](https://azure.microsoft.com/) </td><td>14.04 LTS</td></tr>
 </table>
 
-JRE をダウンロードする際には、手動で Oracle ライセンスに同意する必要があります。 そのため、デプロイを簡略化するには、必要なすべてのソフトウェアをデスクトップにダウンロードするようにしてください。 その後、それらを Ubuntu テンプレート イメージにアップロードし、クラスター デプロイの前段階として作成します。
+デプロイを簡略化するため、必要なすべてのソフトウェアをデスクトップにダウンロードします。 その後、それらを Ubuntu テンプレート イメージにアップロードし、クラスター デプロイの前段階として作成します。
 
 上記のソフトウェアは、ローカル コンピューター上の既知のダウンロード ディレクトリ (Windows の %TEMP%/downloads や大部分の Linux ディストリビューションや Mac の ~/Downloads など) にダウンロードします。
 
@@ -298,7 +299,7 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
 仮想マシンが強調表示されていることを確認し、下部にあるコマンド バーから [シャットダウン] リンクをクリックします。
 
 ##### <a name="3-capture-the-image"></a>3: イメージのキャプチャ
-仮想マシンが強調表示されていることを確認し、下部にあるコマンド バーから [キャプチャ] リンクをクリックします。 次の画面で、[イメージの名前] (たとえば、hk-cas-2-08-ub-14-04-2014071)、イメージの説明を入力し、[チェック] マークをクリックして、キャプチャ プロセスを終了します。
+仮想マシンが強調表示されていることを確認し、下部にあるコマンド バーから [キャプチャ] リンクをクリックします。 次の画面で、[イメージの名前] \(たとえば、hk-cas-2-08-ub-14-04-2014071)、イメージの説明を入力し、[チェック] マークをクリックして、キャプチャ プロセスを終了します。
 
 このプロセスは数秒で完了し、その後、イメージ ギャラリーの [マイ イメージ] セクションでイメージが利用できるようになります。 ソース VM は、イメージが正常にキャプチャされた後に自動的に削除されます。 
 
@@ -355,7 +356,7 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
         #Tested with Azure Powershell - November 2014
         #This powershell script deployes a number of VMs from an existing image inside an Azure region
         #Import your Azure subscription into the current Powershell session before proceeding
-        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. crate a list of VMs from the template
+        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. create a list of VMs from the template
 
         #fundamental variables - change these to reflect your subscription
         $country="us"; $region="west"; $vnetName = "your_vnet_name";$storageAccount="your_storage_account"
@@ -395,7 +396,7 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
         #Create internal load balancer
         Add-AzureInternalLoadBalancer -ServiceName $serviceName -InternalLoadBalancerName $ilbName -SubnetName "data" -StaticVNetIPAddress "$ilbIP"
         Write-Host "Created $ilbName"
-        #Add add the thrift endpoint to the internal load balancer for all the VMs
+        #Add the thrift endpoint to the internal load balancer for all the VMs
         foreach($vmName in $vmNames)
         {
             Get-AzureVM -ServiceName $serviceName -Name $vmName |
@@ -425,7 +426,7 @@ VM にログインし、次の処理を行います。
 8 ノードのクラスターについて、以下のような情報が画面に表示されます。
 
 <table>
-<tr><th>状態</th><th>Address    </th><th>Load    </th><th>トークン    </th><th>所有 </th><th>ホスト ID    </th><th>ラック</th></tr>
+<tr><th>Status</th><th>Address    </th><th>Load    </th><th>トークン    </th><th>所有 </th><th>ホスト ID    </th><th>ラック</th></tr>
 <tr><th>UN    </td><td>10.1.2.4     </td><td>87.81 KB    </td><td>256    </td><td>38.0%    </td><td>Guid (removed)</td><td>rack1</td></tr>
 <tr><th>UN    </td><td>10.1.2.5     </td><td>41.08 KB    </td><td>256    </td><td>68.9%    </td><td>Guid (removed)</td><td>rack1</td></tr>
 <tr><th>UN    </td><td>10.1.2.6     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>Guid (removed)</td><td>rack2</td></tr>
@@ -498,7 +499,7 @@ Azure の仮想ネットワークのローカル ネットワークは、プラ�
 ### <a name="step-3-map-local-network-to-the-respective-vnets"></a>手順 3. "ローカル" ネットワークを各 VNET にマップ
 Azure Portal から、各 VNET を選択し、[構成] をクリックして、[ローカル ネットワークに接続する] をチェックして、次の情報にしたがってローカル ネットワークを選択します。
 
-| 仮想ネットワーク | ローカル ネットワーク |
+| Virtual Network | ローカル ネットワーク |
 | --- | --- |
 | hk-vnet-west-us |hk-lnet-map-to-east-us |
 | hk-vnet-east-us |hk-lnet-map-to-west-us |

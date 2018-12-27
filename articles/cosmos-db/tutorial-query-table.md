@@ -1,26 +1,20 @@
 ---
-title: Azure Cosmos DB でテーブル データのクエリを実行する方法 | Microsoft Docs
+title: Azure Cosmos DB でテーブル データのクエリを実行する方法
 description: Azure Cosmos DB でテーブル データのクエリを実行する方法を学習する
 services: cosmos-db
-documentationcenter: ''
 author: kanshiG
-manager: jhubbard
-editor: ''
-tags: ''
-ms.assetid: 14bcb94e-583c-46f7-9ea8-db010eb2ab43
-ms.service: cosmos-db
-ms.devlang: na
-ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: ''
-ms.date: 11/15/2017
 ms.author: govindk
+ms.service: cosmos-db
+ms.component: cosmosdb-table
+ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 969b16457b32cedb7140bb032c1830e95ebed9be
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 11/15/2017
+ms.openlocfilehash: 3d50e51a0d4ccbbd9b21cda87dc457ea1cbe02fd
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879198"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>チュートリアル: Table API を使って Azure Cosmos DB を照会する
 
@@ -97,9 +91,9 @@ CloudTable table = tableClient.GetTableReference("people");
 TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
     .Where(
         TableQuery.CombineFilters(
-            TableQuery.GenerateFilterCondition(PartitionKey, QueryComparisons.Equal, "Smith"),
+            TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"),
             TableOperators.And,
-            TableQuery.GenerateFilterCondition(Email, QueryComparisons.Equal,"Ben@contoso.com")
+            TableQuery.GenerateFilterCondition("Email", QueryComparisons.Equal,"Ben@contoso.com")
     ));
 
 await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);

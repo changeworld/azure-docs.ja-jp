@@ -1,31 +1,25 @@
 ---
-title: "HDInsight のクエリ コンソールでの Hadoop Hive の使用 - Azure | Microsoft Docs"
-description: "Web ベースのクエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。"
+title: HDInsight 上のクエリ コンソールで Apache Hive を使用する - Azure
+description: Web ベースのクエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスター上で Apache Hive クエリを実行する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 5ae074b0-f55e-472d-94a7-005b0e79f779
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: larryfr
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: d6032b8a1e3d338b046c958804102aeb9efcf4ab
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: da270792c8987ff43c422c5b03eb8b789b8bda5e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634592"
 ---
-# <a name="run-hive-queries-using-the-query-console"></a>クエリ コンソールを使用して Hive クエリを実行
+# <a name="run-apache-hive-queries-using-the-query-console"></a>クエリ コンソールを使用して Apache Hive クエリを実行する
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-この記事では、HDInsight クエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。
+この記事では、HDInsight クエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスター上で Apache Hive クエリを実行する方法について説明します。
 
 > [!IMPORTANT]
 > HDInsight クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -39,8 +33,8 @@ ms.lasthandoff: 11/03/2017
 * 最新の Web ブラウザー
 
 ## <a id="run"></a> クエリ コンソールを使用して Hive クエリを実行
-1. Web ブラウザーを開いて **https://CLUSTERNAME.azurehdinsight.net** に移動します。**CLUSTERNAME** は実際の HDInsight クラスターの名前です。 プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
-2. ページ上部のリンクから、 **[Hive エディター]**を選択します。 HDInsight クラスターで実行する HiveQL ステートメントの入力に使用できるフォームが表示されます。
+1. Web ブラウザーを開き、**https://CLUSTERNAME.azurehdinsight.net** に移動します。**CLUSTERNAME** は実際の HDInsight クラスターの名前です。 プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
+2. ページ上部のリンクから、 **[Hive エディター]** を選択します。 HDInsight クラスターで実行する HiveQL ステートメントの入力に使用できるフォームが表示されます。
 
     ![Hive エディター](./media/apache-hadoop-use-hive-query-console/queryconsole.png)
 
@@ -68,7 +62,7 @@ ms.lasthandoff: 11/03/2017
    * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data directory) と、データはテキストとして格納されていることを示します。
    * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が 3 行あるため、 **3** という値が返されています。
    * **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
-3. **[Submit]**をクリックします。 ページ下部の **[ジョブ セッション]** にジョブの詳細が表示されます。
+3. **[送信]** をクリックします。 ページ下部の **[ジョブ セッション]** にジョブの詳細が表示されます。
 4. **[ステータス]** フィールドが **Completed** に変わったら、ジョブの **[詳細の表示]** を選択します。 詳細ページの **[ジョブ出力]** に `[ERROR]    3` が含まれます。 このフィールドの下にある **[ダウンロード]** ボタンを使用して、ジョブの出力を含むファイルをダウンロードします。
 
 ## <a id="summary"></a>概要
@@ -92,8 +86,6 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 * [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](../hdinsight-debug-ambari-tez-view.md)
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
-
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

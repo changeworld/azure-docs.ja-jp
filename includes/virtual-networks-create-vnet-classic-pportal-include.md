@@ -1,7 +1,24 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-network
+author: genlin
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: genli
+ms.custom: include file
+ms.openlocfilehash: 815a217526117325ff80759701141b2b4d148514
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/23/2018
+ms.locfileid: "31805303"
+---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>Azure ポータルで従来の VNet を作成する方法
 前述のシナリオに基づいて従来の VNet を作成するには、次の手順に従います。
 
-1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
+1. ブラウザーで http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 2. **[リソースの作成]** > **[ネットワーク]** > **[仮想ネットワーク]** の順にクリックします。 **[デプロイ モデルの選択]** の一覧に **[クラシック]** が既に表示されています。 手順 3. 次の図のように **[作成]** をクリックします。
    
     ![Azure ポータルでの VNet の作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure1.gif)

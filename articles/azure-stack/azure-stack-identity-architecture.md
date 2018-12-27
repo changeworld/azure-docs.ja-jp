@@ -3,7 +3,7 @@ title: Azure Stack の ID アーキテクチャ | Microsoft Docs
 description: Azure Stack で使用できる ID アーキテクチャについて説明します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: PatAltimore
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/28/2018
-ms.author: brenduns
-ms.reviewer: ''
-ms.openlocfilehash: 899e0fc0c1eb93d68c79c92c9cc042462ebc2fef
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 11/07/2018
+ms.author: patricka
+ms.reviewer: fiseraci
+ms.openlocfilehash: a16a6596d6bc33200f87a1dfd3b2ea5b02628e10
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277819"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Azure Stack の ID アーキテクチャ
 Azure Stack で使用する ID プロバイダーを選択する前に、Azure Active Directory (Azure AD) と Active Directory フェデレーション サービス (AD FS) のオプションの重要な違いを理解してください。 
@@ -33,7 +34,7 @@ Azure Stack で使用する ID プロバイダーを選択する前に、Azure A
 |------------------------------|----------|-------|
 |インターネットに接続されている     |[はい]       |省略可能|
 |マルチテナントのサポート     |[はい]       |いいえ       |
-|Marketplace シンジケーション       |[はい]       |はい。 [オフラインの Marketplace シンジケーション](azure-stack-download-azure-marketplace-item.md#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) ツールを使用する必要があります。|
+|Marketplace で項目を提供する |[はい]       |はい。 [オフラインの Marketplace シンジケーション](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) ツールを使用する必要があります。|
 |Active Directory Authentication Library (ADAL) のサポート |[はい] |[はい]|
 |Azure CLI、Visual Studio、PowerShell などのツールのサポート  |[はい] |[はい]|
 |Azure Portal を通じてサービス プリンシパルを作成する     |[はい] |いいえ |

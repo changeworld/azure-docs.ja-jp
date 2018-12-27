@@ -1,57 +1,115 @@
+items:
 - name: Azure Cost Management のドキュメント
   href: index.yml
-- name: 概要
   items:
+  - name: 概要
+    items:
     - name: コスト管理とは
-      href: overview.md
-- name: クイック スタート
-  expanded: true
-  items:
-    - name: コスト データの表示
-      href: quick-register-azure-sub.md
-    - name: コスト データの表示 - EA
-      href: quick-register-ea.md
-    - name: コスト データの表示 - CSP
-      href: quick-register-csp.md
-- name: チュートリアル
-  items:
-    - name: 1 - 使用状況とコストを確認する
-      href: tutorial-review-usage.md
-    - name: 2 - 支出を予測する
-      href: tutorial-forecast-spending.md
-    - name: 3 - コストを管理する
-      href: tutorial-manage-costs.md
-    - name: 4 - 予約インスタンスを最適化する
-      href: tutorial-optimize-reserved-instances.md
-    - name: 5 - データへのアクセスを制御する
-      href: tutorial-user-access.md
-- name: 概念
-  items:
-    - name: コスト レポートについて
-      href: understanding-cost-reports.md
-- name: ハウツー ガイド
-  items:
-    - name: Azure サブスクリプションとアカウントのアクティブ化
-      href: activate-subs-accounts.md
-    - name: VM の拡張メトリックの追加
-      href: azure-vm-extended-metrics.md
-    - name: Google アカウントの接続
-      href: connect-google-account.md
-    - name: AWS アカウントの接続
-      href: connect-aws-account.md
-    - name: ストレージ アカウントの構成
-      href: storage-accounts.md
-    - name: Cost Management レポートの使用
-      href: use-reports.md
-- name: リソース
-  items:
-    - name: コスト管理のビデオ
-      href: ref-videos.md
+      href: overview-cost-mgt.md
+  - name: クイック スタート
+    items:
+    - name: コストの分析を開始する
+      href: quick-acm-cost-analysis.md
+    expanded: true
+  - name: チュートリアル
+    items:
+    - name: 1 - 予算を作成して管理する
+      href: tutorial-acm-create-budgets.md
+    - name: 2 - データのエクスポート
+      href: tutorial-export-acm-data.md
+    - name: 3 - 推奨事項の処理
+      href: tutorial-acm-opt-recommendations.md
+  - name: 概念
+    items:
+    - name: Azure Cost Management のベスト プラクティス
+      href: cost-mgt-best-practices.md
+  - name: ハウツー ガイド
+    items:
+    - name: データへのアクセスの割り当て
+      href: assign-access-acm-data.md
+  - name: リファレンス
+    items:
+    - name: Azure Cost Management REST API
+      href: https://docs.microsoft.com/rest/api/cost-management
+    - name: Azure Consumption REST API
+      href: https://docs.microsoft.com/rest/api/consumption
+  - name: リソース
+    items:
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/browse/?products=azure-cost-management
+    - name: Cost Management のフィードバック フォーラム
+      href: https://feedback.azure.com/forums/906772-cost-management
     - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
+      href: https://azure.microsoft.com/roadmap/
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cost-management'
+      href: https://azure.microsoft.com/pricing/details/cost-management
     - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/en-us/regions/services/'
-    - name: FAQ
-      href: cost-mgt-faq.md
+      href: https://azure.microsoft.com/regions/services/
+  - name: Cloudyn
+    items:
+    - name: 概要
+      items:
+      - name: Cloudyn とは
+        href: overview.md
+    - name: クイック スタート
+      items:
+      - name: コスト データの表示
+        href: quick-register-azure-sub.md
+      - name: コスト データの表示 - EA
+        href: quick-register-ea.md
+      - name: コスト データの表示 - CSP
+        href: quick-register-csp.md
+    - name: チュートリアル
+      items:
+      - name: 1 - 使用状況とコストを確認する
+        href: tutorial-review-usage.md
+      - name: 2 - 支出を予測する
+        href: tutorial-forecast-spending.md
+      - name: 3 - コストを管理する
+        href: tutorial-manage-costs.md
+      - name: 4 - 予約インスタンスを最適化する
+        href: tutorial-optimize-reserved-instances.md
+      - name: 5 - データへのアクセスを制御する
+        href: tutorial-user-access.md
+    - name: 概念
+      items:
+      - name: コスト レポートについて
+        href: understanding-cost-reports.md
+    - name: ハウツー ガイド
+      items:
+      - name: Azure サブスクリプションとアカウントのアクティブ化
+        href: activate-subs-accounts.md
+      - name: VM の拡張メトリックの追加
+        href: azure-vm-extended-metrics.md
+      - name: Google アカウントの接続
+        href: connect-google-account.md
+      - name: AWS アカウントの接続
+        href: connect-aws-account.md
+      - name: ストレージ アカウントの構成
+        href: storage-accounts.md
+      - name: Cloudyn レポートの使用
+        href: use-reports.md
+      - name: ダッシュボードの使用
+        href: dashboards.md
+      - name: 予算の管理
+        href: manage-budgets.md
+    - name: リソース
+      items:
+      - name: Cloudyn の動画
+        href: ref-videos.md
+      - name: Azure のロードマップ
+        href: https://azure.microsoft.com/roadmap/
+      - name: Cloudyn の価格
+        href: https://azure.microsoft.com/pricing/details/cost-management
+      - name: Cloudyn のリージョン別の提供状況
+        href: https://azure.microsoft.com/regions/services/
+      - name: Cloudyn に関する FAQ
+        href: cost-mgt-faq.md
+      - name: Cloudyn のサポートに問い合わせる
+        href: support-request-cost-management.md
+ms.openlocfilehash: 1aecf5906350e1e69f3e8c028e6c82d5e2bc3988
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623267"

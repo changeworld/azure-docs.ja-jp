@@ -1,24 +1,20 @@
 ---
-title: Azure Stream Analytics でのリアルタイム Twitter 感情分析 | Microsoft Docs
-description: リアルタイム Twitter センチメント分析で Stream Analytics を使用する方法について説明します。 イベントの生成からライブ ダッシュボード上でのデータ操作までの手順。
-keywords: リアルタイム Twitter 傾向分析、センチメント分析、ソーシャル メディア分析、傾向分析の例
+title: Azure Stream Analytics でのリアルタイム Twitter 感情分析
+description: この記事では、リアルタイム Twitter 感情分析に Stream Analytics を使う方法について説明します。 イベントの生成からライブ ダッシュボード上でのデータ操作までの手順。
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 42068691-074b-4c3b-a527-acafa484fda2
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/29/2017
 ms.author: jeanb
-ms.openlocfilehash: 87a9ecc5984075d700ddc64a1377342d5fe7e494
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.reviewer: jasonh
+manager: kfile
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/29/2017
+ms.openlocfilehash: de0ddbc041d6f177e5bfcd24d593b8d63a8e1e23
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248729"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
@@ -239,7 +235,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 1. **[入力]** ブレードを閉じます (まだ閉じていない場合)。
 
-2. ジョブ ブレードで、**[クエリ]** ボックスをクリックします。 そのジョブ用に構成されている入力と出力が一覧表示されます。出力に送信される入力ストリームを変換できるクエリを作成できます。
+2. **[概要]** ブレードで、クエリ ボックスの右上付近にある **[クエリの編集]** をクリックします。 そのジョブ用に構成されている入力と出力が一覧表示されます。出力に送信される入力ストリームを変換できるクエリを作成できます。
 
 3. TwitterWpfClient アプリケーションが実行されていることを確認します。 
 
@@ -271,7 +267,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
     このクエリは、**System.Timestamp** プロパティを使用して、各期間の終わりのタイムスタンプにもアクセスします。
 
-5. **[Test]**をクリックします。 サンプリングされたデータに対してクエリが実行されます。
+5. **[Test]** をクリックします。 サンプリングされたデータに対してクエリが実行されます。
     
 6. **[Save]** をクリックします。 クエリが Stream Analytics ジョブの一部として保存されます  (サンプル データは保存されません)。
 
@@ -286,7 +282,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 |トピック | 指定したキーワードと一致するトピック|
 |SentimentScore | Sentiment140 のセンチメント スコア|
 |Author | ツイートを送信した Twitter ハンドル|
-|テキスト | ツイートの全文|
+|Text | ツイートの全文|
 
 
 ## <a name="create-an-output-sink"></a>出力シンクの作成
@@ -306,7 +302,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
     * **[インポート オプション]**: **[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
     * **[ストレージ アカウント]**。 **[新しいストレージ アカウントを作成する]** を選択します。
     * **[ストレージ アカウント]** (2 つ目のボックス):  「`YOURNAMEsa`」と入力します。`YOURNAME` は、自分の名前または別の一意の文字列です。 名前には小文字と数字だけを使用できます。名前は Azure 全体で一意である必要があります。 
-    * **[コンテナー]**:  「`socialtwitter`」を入力します。
+    * **[コンテナー]**:  「 `socialtwitter` 」を入力します。
     ストレージ アカウント名とコンテナー名は、BLOB ストレージの URI を指定するときに次のように組み合わせて使われます。 
 
     `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`
@@ -342,7 +338,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 ジョブの実行が開始されたら、リアルタイム Twitter ストリームの処理中に、感情分析の出力を表示できます。
 
-[Azure Storage エクスプローラー](https://http://storageexplorer.com/)や [Azure エクスプローラー](http://www.cerebrata.com/products/azure-explorer/introduction)などのツールを使用して、ジョブ出力をリアルタイムで表示できます。 ここから、[Power BI](https://powerbi.com/) を使用してアプリケーションを拡張し、次のスクリーンショットに示すようなカスタマイズされたダッシュボードを含めることができます。
+[Azure Storage エクスプローラー](https://storageexplorer.com/)や [Azure エクスプローラー](http://www.cerebrata.com/products/azure-explorer/introduction)などのツールを使用して、ジョブ出力をリアルタイムで表示できます。 ここから、[Power BI](https://powerbi.com/) を使用してアプリケーションを拡張し、次のスクリーンショットに示すようなカスタマイズされたダッシュボードを含めることができます。
 
 ![Power BI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 
@@ -374,7 +370,7 @@ Twitter のセンチメントを理解するために使用できるもう 1 つ
 
 
 ## <a name="get-support"></a>サポートを受ける
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

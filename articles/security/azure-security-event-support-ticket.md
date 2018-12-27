@@ -1,6 +1,6 @@
 ---
-title: "セキュリティ イベント サポート チケットをログに記録する方法 - Azure | Microsoft Docs"
-description: "セキュリティ イベントの可能性があるイベントを確認したため、Azure Marketplace を利用する販売者として適切なチケットをログに記録する方法を知る必要があります。"
+title: セキュリティ イベント サポート チケットをログに記録する方法 - Azure | Microsoft Docs
+description: セキュリティ イベントの可能性があるイベントを確認したため、Azure Marketplace を利用する販売者として適切なチケットをログに記録する方法を知る必要があります。
 services: security
 documentationcenter: na
 author: DavidBosland
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26129942"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>セキュリティ イベント サポート チケットをログに記録する方法
 

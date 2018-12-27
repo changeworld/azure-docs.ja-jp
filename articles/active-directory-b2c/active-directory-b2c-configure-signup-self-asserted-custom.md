@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: カスタム ポリシーのサインアップを変更し、セルフ アサート プロバイダーを構成する'
+title: カスタム ポリシーのサインアップを変更してセルフ アサート プロバイダーを構成する | Microsoft Docs
 description: サインアップに要求を追加し、ユーザー入力を構成するチュートリアル
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
-ms.openlocfilehash: b9ea48f0700509194602dd15ff42c7c689685a53
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 6b2a6d84fffecbe30bd2a47c795ee6143458ee2b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345002"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: 新しい要求を追加するようにサインアップを変更し、ユーザー入力を構成する
 
@@ -251,7 +251,7 @@ ms.lasthandoff: 03/23/2018
   "exp": 1493596822,
   "nbf": 1493593222,
   "ver": "1.0",
-  "iss": "https://login.microsoftonline.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
+  "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
   "sub": "9c2a3a9e-ac65-4e46-a12d-9557b63033a9",
   "aud": "4e87c1dd-e5f5-4ac8-8368-bc6a98751b8b",
   "acr": "b2c_1a_trustf_signup_signin",
@@ -277,8 +277,8 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="next-steps"></a>次の手順
 
-以下に示す TechnicalProfile を変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 これらは、ロケーターとして alternativeSecurityId を使用してユーザー データの書き込みと読み取りを行うために、ソーシャル/フェデレーション アカウント ログインで使用されます。
-```xml
-<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
-<TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-```
+ポリシーでソーシャル アカウントがサポートされている場合は、以下に示す技術プロファイルを変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 これらの要求は、ユーザーからデータを収集して書き込むために、ソーシャル アカウント ログインによって使用されます。
+
+1. 技術プロファイル **SelfAsserted-Social** を見つけて、出力要求を追加します。 **OutputClaims** 内の要求の順序は、Azure AD B2C が画面に要求を表示する順序を制御します。 たとえば、「 `<OutputClaim ClaimTypeReferenceId="city" />` 」のように入力します。
+2. 技術プロファイル **AAD-UserWriteUsingAlternativeSecurityId** を見つけて、永続化要求を追加します。 たとえば、「 `<PersistedClaim ClaimTypeReferenceId="city" />` 」のように入力します。
+3. 技術プロファイル **AAD-UserReadUsingAlternativeSecurityId** を見つけて、出力要求を追加します。 たとえば、「 `<OutputClaim ClaimTypeReferenceId="city" />` 」のように入力します。

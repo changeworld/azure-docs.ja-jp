@@ -1,27 +1,22 @@
 ---
-title: "Azure Files のデプロイ方法 | Microsoft Docs"
-description: "Azure Files をデプロイする方法を開始から終了まで説明します。"
+title: Azure Files のデプロイ方法 | Microsoft Docs
+description: Azure Files をデプロイする方法を開始から終了まで説明します。
 services: storage
-documentationcenter: 
 author: wmgries
-manager: klaasl
-editor: jgerend
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 05/22/2018
 ms.author: wgries
-ms.openlocfilehash: c33639723657d3c2875ed9607a887775d558be16
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.component: files
+ms.openlocfilehash: b9a98cea8ee19846afc30b322c3fdacb21f2bf44
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242457"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files のデプロイ方法
-[Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 この記事では、実際に組織内で Azure Files をデプロイする方法を示します。
+[Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、実際に組織内で Azure Files をデプロイする方法を示します。
 
 この記事の手順を進める前に、[Azure Files のデプロイの計画](storage-files-planning.md)を読むことを強くお勧めします。
 
@@ -32,15 +27,15 @@ ms.lasthandoff: 01/19/2018
 - ストレージ アカウントに、目的のクォータで Azure ファイル共有を作成していること。 ファイル共有の詳しい作成手順については、[ファイル共有の作成](storage-how-to-create-file-share.md)に関するページを参照してください。
 
 ## <a name="transfer-data-into-azure-files"></a>Azure Files へのデータ転送
-新しい Azure ファイル共有に、オンプレミスに保存されているファイル共有などの既存のファイル共有を移行したい場合があります。 このセクションでは、[計画ガイド](storage-files-planning.md#data-transfer-method)に記載されているいくつかの一般的な方法を使用して、Azure ファイル共有にデータを移行する方法を示します。
+新しい Azure ファイル共有に、オンプレミスに保存されているファイル共有などの既存のファイル共有を移行したい場合があります。 このセクションでは、[計画ガイド](storage-files-planning.md#data-transfer-method)に記載されているいくつかの一般的な方法を使用して、Azure ファイル共有にデータを移行する方法を示します
 
-### <a name="azure-file-sync-preview"></a>Azure ファイル同期 (プレビュー)
-Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
+### <a name="azure-file-sync"></a>Azure File Sync
+Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
 
-Azure ファイル同期は、この同期メカニズムを長期的に利用する必要がない場合でも、Azure ファイル共有にデータを移行するために使用されることがあります。 Azure ファイル同期を使用して Azure ファイル共有にデータを転送する方法の詳細については、[Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)と[Azure ファイル同期をデプロイする方法](storage-sync-files-deployment-guide.md)を参照してください。
+Azure File Sync は、この同期メカニズムを長期的に利用する必要がない場合でも、Azure ファイル共有にデータを移行するために使用されることがあります。 Azure File Sync を使用して Azure ファイル共有にデータを転送する方法について詳しくは、[Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)と [Azure ファイル同期をデプロイする方法](storage-sync-files-deployment-guide.md)に関する記事をご覧ください。
 
 ### <a name="azure-importexport"></a>Azure Import/Export
-Azure Import/Export サービスを使うと、ハード ディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure ファイル共有に安全に転送できます。 サービスの概要について、詳しくは [Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)を参照してください。
+Azure Import/Export サービスを使うと、ハード ディスク ドライブを Azure データセンターに送付することで、大量のデータを Azure ファイル共有に安全に転送できます。 サービスの概要について、詳しくは [Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)を参照してください。
 
 > [!Note]  
 > Azure Import/Export サービスは、現時点では Azure ファイル共有からのファイルのエクスポートをサポートしていません。
@@ -82,7 +77,7 @@ Azure Import/Export サービスを使うと、ハード ディスク ドライ�
     
     詳細については[ドライブセット CSV ファイルの準備](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-initialdriveset-or-additionaldriveset-csv-file)を参照してください。
 
-6. [WAImportExport ツール](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip)を使用して、1 台以上のハード ドライブにデータをコピーします。
+6. [WAImportExport ツール](https://www.microsoft.com/en-us/download/details.aspx?id=55280)を使用して、1 台以上のハード ドライブにデータをコピーします。
 
     ```
     WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
@@ -91,18 +86,18 @@ Azure Import/Export サービスを使うと、ハード ディスク ドライ�
     > [!Warning]  
     > ディスクの準備が完了した後に、ハード ディスク ドライブのデータやジャーナル ファイルを変更しないでください。
 
-7. [インポート ジョブを作成します](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-an-export-job)。
+7. [インポート ジョブを作成します](../common/storage-import-export-data-to-files.md#step-2-create-an-import-job)。
     
 ### <a name="robocopy"></a>Robocopy
 Robocopy は、Windows および Windows Server に付属するよく知られたコピー ツールです。 Robocopy では、ファイル共有をローカルにマウントした後、マウントした場所を Robocopy コマンドのコピー先として使って、Azure Files にデータを転送できます。 Robocopy の使用は、非常にシンプルです。
 
-1. [Azure Files 共有をマウント](storage-how-to-use-files-windows.md)します。 最適なパフォーマンスを得るために、データを格納しているサーバーのローカルで Azure ファイル共有をマウントすることをお勧めします。 データを提供するファイル サーバーが NAS デバイスの場合などは、これを行えない可能性があります。 その場合は、PC 上の Azure ファイル共有をマウントしてもまったく差し支えありません。 この例では、コマンドラインで `net use` を使用してファイル共有をマウントします。
+1. [Azure ファイル共有をマウント](storage-how-to-use-files-windows.md)します。 最適なパフォーマンスを得るために、データを格納しているサーバーのローカルで Azure ファイル共有をマウントすることをお勧めします。 データを提供するファイル サーバーが NAS デバイスの場合などは、これを行えない可能性があります。 その場合は、PC 上の Azure ファイル共有をマウントしてもまったく差し支えありません。 この例では、コマンドラインで `net use` を使用してファイル共有をマウントします。
 
     ```
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
     ```
 
-2. コマンドラインで `robocopy` 使用してデータを Azure ファイル共有に移動します。
+2. コマンドラインで `robocopy` を使用してデータを Azure ファイル共有に移動します。
 
     ```
     robocopy <path-to-local-share> <path-to-azure-file-share> /E /Z /MT:32
@@ -113,8 +108,8 @@ Robocopy は、Windows および Windows Server に付属するよく知られ�
 ### <a name="azcopy"></a>AzCopy
 AzCopy は、最高のパフォーマンスの単純なコマンドを使って Azure Files および Azure Blob Storage との間で双方向にデータをコピーするために設計された、コマンドライン ユーティリティです。 AzCopy の使用は簡単です。
 
-1. [最新バージョンの AzCopy on Windows](http://aka.ms/downloadazcopy) または AzCopy on [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy)をダウンロードします。
-2. コマンドラインで `azcopy` 使用してデータを Azure ファイル共有に移動します。 Windows での構文は次のとおりです。 
+1. [最新バージョンの AzCopy on Windows](https://aka.ms/downloadazcopy) または AzCopy on [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy)をダウンロードします。
+2. コマンドラインで `azcopy` を使用してデータを Azure ファイル共有に移動します。 Windows での構文は次のとおりです。 
 
     ```
     azcopy /Source:<path-to-local-share> /Dest:https://<storage-account>.file.core.windows.net/<file-share>/ /DestKey:<storage-account-key> /S

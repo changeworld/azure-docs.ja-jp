@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 32f533d06b7db0284459951e65f9c04fe0bb0285
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226620"
+---
 可用性セットは、メンテナンス時などのシステム停止時に仮想マシンを利用するのに役立ちます。 同じように構成された 2 つ以上の仮想マシンを同じ可用性セットに割り当てることによって、仮想マシンが実行するアプリケーションやサービスの可用性を維持するために必要な冗長性が実現されます。 このしくみの詳細については、[仮想マシンの可用性管理][Manage the availability of virtual machines]に関する記事を参照してください。
 
 アプリケーションをいつでも利用できるようにするだけでなく、効率的に実行できるようにするためには、可用性セットと負荷分散エンドポイントの両方を使用することをお勧めします。 負荷分散されたエンドポイントの詳細については、[Azure インフラストラクチャ サービスの負荷分散][Load balancing for Azure infrastructure services]に関する記事を参照してください。
@@ -31,7 +41,7 @@ Azure ポータルを使用するには。
 7. **[オプションの構成]、[可用性セット]** の順に選択し、仮想マシンを追加する可用性セットを選択します。
    
     ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png) 
-8. 構成設定を確認します。 完了したら、 **[作成]**をクリックします。
+8. 構成設定を確認します。 完了したら、 **[作成]** をクリックします。
 9. Azure が仮想マシンを作成している間の進捗状況は、ハブ メニューの **[仮想マシン]** で追跡できます。
 
 Azure PowerShell コマンドを使用して Azure 仮想マシンを作成し、新規または既存の可用性セットに追加する方法については、[Azure PowerShell を使用した Windows ベースの仮想マシンの作成および事前構成](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。

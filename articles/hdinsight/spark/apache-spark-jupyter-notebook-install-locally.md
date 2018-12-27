@@ -1,26 +1,20 @@
 ---
-title: "Jupyter をローカルにインストールして Azure HDInsight Spark クラスターに接続する | Microsoft Docs"
-description: "Jupyter Notebook をローカル コンピューターにインストールして Azure HDInsight 上の Apache Spark クラスターに接続する方法を説明します。"
+title: Jupyter をローカルにインストールして Azure HDInsight の Spark に接続する
+description: Jupyter Notebook をローカル コンピューターにインストールして Apache Spark クラスターに接続する方法を説明します。
 services: hdinsight
-documentationcenter: 
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 48593bdf-4122-4f2e-a8ec-fdc009e47c16
 ms.service: hdinsight
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: nitinme
-ms.openlocfilehash: 5549c175c280961b09f5996e3387a50dae31222f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: hrasheed
+ms.openlocfilehash: 9bab98d8009704d570dc4b03a97b9cbc5d085b4c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007554"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 
@@ -45,7 +39,7 @@ HDInsight クラスターの Jupyter Notebook で使用できるカスタム カ
 Jupyter Notebook をインストールする前に Python をインストールする必要があります。 Python と Jupyter はどちらも、[Anaconda ディストリビューション](https://www.continuum.io/downloads)に同梱されています。 Anaconda をインストールすると、Python のディストリビューションがインストールされます。 Jupyter 環境は、Anaconda のインストール後に適切なコマンドを実行して追加します。
 
 1. ご使用のプラットフォーム用の [Anaconda インストーラー](https://www.continuum.io/downloads) をダウンロードし、セットアップ プログラムを実行します。 セットアップ ウィザードを実行する過程で、Anaconda を PATH 変数に追加するためのオプションを忘れずに選択してください。
-2. 次のコマンドを実行して Jupyter をインストールします。
+1. 次のコマンドを実行して Jupyter をインストールします。
 
         conda install jupyter
 
@@ -74,8 +68,8 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
         import os
         print(os.path.expanduser('~'))
 
-2. home ディレクトリに移動して **.sparkmagic** というフォルダーを作成します (まだ存在しない場合)。
-3. このフォルダーに **config.json** というファイルを作成し、次の JSON スニペットを追加します。
+1. home ディレクトリに移動して **.sparkmagic** というフォルダーを作成します (まだ存在しない場合)。
+1. このフォルダーに **config.json** というファイルを作成し、次の JSON スニペットを追加します。
 
         {
           "kernel_python_credentials" : {
@@ -90,9 +84,9 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
           }
         }
 
-4. **{USERNAME}****{CLUSTERDNSNAME}****{BASE64ENCODEDPASSWORD}**は、それぞれ適切な値に置き換えてください。 base64 エンコード パスワードは、ご利用のプログラミング言語のユーティリティまたはオンライン ユーティリティを使用して、実際のパスワードから生成してください。
+1. **{USERNAME}****{CLUSTERDNSNAME}****{BASE64ENCODEDPASSWORD}** は、それぞれ適切な値に置き換えてください。 base64 エンコード パスワードは、ご利用のプログラミング言語のユーティリティまたはオンライン ユーティリティを使用して、実際のパスワードから生成してください。
 
-5. `config.json` で右側のハートビート設定を構成します。 この設定は、前に追加した `kernel_python_credentials` と`kernel_scala_credentials` のスニペットと同じレベルに追加する必要があります。 ハートビート設定を追加する方法と場所の例については、こちらの [ config.json のサンプル](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)を参照してください。
+1. `config.json` で右側のハートビート設定を構成します。 この設定は、前に追加した `kernel_python_credentials` と`kernel_scala_credentials` のスニペットと同じレベルに追加する必要があります。 ハートビート設定を追加する方法と場所の例については、こちらの [ config.json のサンプル](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)を参照してください。
 
     * `sparkmagic 0.2.3` (クラスター V3.4) の場合は、次が含まれます。
 
@@ -109,13 +103,13 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
     >[!TIP]
     >ハートビートが送信され、セッションがリークしないことが確認されます。 コンピューターがスリープ状態になるかシャットダウンすると、ハートビートは送信されず、セッションがクリーンアップされます。 クラスター v3.4 の場合、この動作を無効にするには、Ambari UI から Livy config `livy.server.interactive.heartbeat.timeout` を `0` に設定します。 クラスター v3.5 の場合、上記の 3.5 構成を設定しないと、セッションは削除されません。
 
-6. Jupyter を起動します。 コマンド プロンプトから次のコマンドを使用します。
+1. Jupyter を起動します。 コマンド プロンプトから次のコマンドを使用します。
 
         jupyter notebook
 
-7. Jupyter Notebook を使用してクラスターに接続できること、カーネルに備わっている Spark マジックを使用できることを確認します。 次の手順に従います。
+1. Jupyter Notebook を使用してクラスターに接続できること、カーネルに備わっている Spark マジックを使用できることを確認します。 次の手順に従います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 新しい Notebook を作成します。 右隅にある **[新規]** をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。 **[PySpark]**をクリックします。
+    a. 新しい Notebook を作成します。 右隅にある **[新規]** をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。 **[PySpark]** をクリックします。
 
     ![Jupyter Notebook のカーネル](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Jupyter Notebook のカーネル")
 

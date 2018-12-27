@@ -3,34 +3,32 @@ title: Azure Health Analytics のブループリント
 description: HIPAA/HITRUST Health Analytics のブループリントのデプロイに関するガイダンス
 services: security
 documentationcenter: na
-author: simorjay
-manager: mbaldwin
-editor: tomsh
+author: RajeevRangappa
 ms.assetid: 26566e0a-0a54-49f4-a91d-48e20b7cef71
 ms.service: security
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/27/2018
-ms.author: simorjay
-ms.openlocfilehash: 700378d23f869427fb50b9dee5bcf8448ac73404
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 07/23/2018
+ms.author: rarangap
+ms.openlocfilehash: c0255ff31353ca8fe0cf684af53a12654b400208
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407556"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
 ## <a name="overview"></a>概要
 
-**Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI は、業界のコンプライアンス要件を満たしながら、ヘルス データの取り込み、保存、分析、操作を安全に行う方法を示す Azure PaaS ソリューションのターンキー デプロイを提供します。このブループリントは、規制されたデータを使用するお客様のために、クラウドの導入と利用の促進を支援します。**
+**Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI は、業界のコンプライアンス要件を満たしながら、ヘルス データの取り込み、保存、分析、操作、識別、およびソリューションのデプロイを安全に行う方法を示す Azure PaaS および IaaS ソリューションのターンキー デプロイを提供します。このブループリントは、規制されたデータを使用するお客様のために、クラウドの導入と利用の促進を支援します。**
 
-エンド ツー エンド ソリューションとしてデプロイされる、Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI ブループリントは、セキュリティで保護された多層クラウド環境で、個人および個人以外の医療記録の取り込み、保存、分析、操作を行うための、セキュリティで保護された、HIPAA (医療保険の携行性と責任に関する法律) および HITRUST (Health Information Trust Alliance) 対応 PaaS (サービスとしてのプラットフォーム) 環境の展開に役立つツールとガイダンスを提供します。 これは一般的な参照アーキテクチャを紹介し、Microsoft Azure の導入を簡素化するために設計されています。 提供されるアーキテクチャは、デプロイの負担を軽減し、コストを削減するクラウドベースのアプローチを求めている組織のニーズを満たすソリューションを示しています。
+エンド ツー エンド ソリューションとしてデプロイされる、Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI ブループリントは、セキュリティで保護された多層クラウド環境で、個人および個人以外の医療記録の取り込み、保存、分析、操作を行うための、セキュリティで保護された、HIPAA (医療保険の携行性と責任に関する法律) および HITRUST (Health Information Trust Alliance) 対応 PaaS (サービスとしてのプラットフォーム) 環境の展開に役立つツールとガイダンスを提供します。 
+
+IaaS ソリューションは、オンプレミスの SQL ベースのソリューションを Azure に移行する方法と、クラウドベースのサービスとソリューションを安全に管理するために Privileged Access Workstation (PAW) を実装する方法を示します。 IaaS SQL Server データベースは、SQL IaaS VM にインポートされる潜在的な実験データを追加し、その VM が MSI 認証アクセスを使用して SQL Azure PaaS サービスと対話します。これらはどちらも一般的な参照アーキテクチャを示すもので、Microsoft Azure の導入を簡略化するよう設計されています。 提供されるアーキテクチャは、デプロイの負担を軽減し、コストを削減するクラウドベースのアプローチを求めている組織のニーズを満たすソリューションを示しています。
 
 ![](images/components.png)
 
-このソリューションは、医療情報を電子的に交換するための世界標準である Fast Healthcare Interoperability Resources (FHIR) を使用してフォーマットされたサンプル データ セットを使用し、これを安全に保存するように設計されています。 お客様は、Azure Machine Learning を使用し、強力なビジネスおよびインテリジェンス ツールと分析機能を活用して、サンプル データで行われた予測を確認できます。 Azure Machine Learning が推進できる実験の種類の例として、ブループリントには、病院施設での患者の入院期間を予測するためのサンプル データ セット、スクリプト、ツールが含まれています。 
+このソリューションは、医療情報を電子的に交換するための世界標準である Fast Healthcare Interoperability Resources (FHIR) を使用してフォーマットされたサンプル データ セットを使用し、これを安全に保存するように設計されています。 お客様は、Azure Machine Learning Studio を使用し、強力なビジネスおよびインテリジェンス ツールと分析機能を活用して、サンプル データで行われた予測を確認できます。 Azure Machine Learning Studio が推進できる実験の種類の例として、ブループリントには、病院施設での患者の入院期間を予測するためのサンプル データ セット、スクリプト、ツールが含まれています。 
 
 このブループリントは、臨床および運用ユース ケース シナリオを解決するために Azure Machine Learning の新しい実験を開発することで、お客様が特定の要件に合わせて調整するモジュールの基盤として機能することを目的としています。 デプロイ時にセキュリティとコンプライアンスを維持するように設計されていますが、ロールの適切な構成と変更の実装はお客様が行う必要があります。 以下の点に注意してください。
 
@@ -42,30 +40,22 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="deploying-the-automation"></a>Automation のデプロイ
 
-- ソリューションをデプロイするには、デプロイ ガイダンスに記載されている手順に従います。 
+- ソリューションをデプロイするには、[デプロイ ガイダンス](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/deployment.md)に記載されている手順に従います。 
 
-[![](./images/deploy.png)](https://aka.ms/healthblueprintdeploy)
-
-このソリューションの機能の概要を簡単に把握するために、ソリューションのデプロイの説明とデモンストレーションを行っている[このビデオ](https://aka.ms/healthblueprintvideo)をご覧ください。
+- このソリューションの機能の概要を簡単に把握するために、ソリューションのデプロイの説明とデモンストレーションを行っている[このビデオ](https://aka.ms/healthblueprintvideo)をご覧ください。
 
 - よくある質問については、[FAQ](https://aka.ms/healthblueprintfaq) ガイダンスをご覧ください。
 
 -   **アーキテクチャ図**:  この図は、ブループリントとユース ケース シナリオの例で使用される参照アーキテクチャを示します。
 
--   **デプロイ テンプレート**:  このデプロイでは、[Azure Resource Manager テンプレート](/azure/azure-resource-manager/resource-group-overview#template-deployment) を使用してアーキテクチャのコンポーネントを Microsoft Azure に自動的にデプロイします (これは、セットアップ時に構成パラメーターを指定することによって行います)。
-
--   **[自動化されたデプロイ スクリプト](https://aka.ms/healthblueprintdeploy)**:  これらのスクリプトを使用して、ソリューションをデプロイします。 次のスクリプトが含まれます。
-
-
--   モジュールのインストールと[グローバル管理者](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)のセットアップ スクリプト。インストールを行い、必要な PowerShell モジュールとグローバル管理者ロールが正しく構成されていることを確認するために使用します。 
--   インストール PowerShell スクリプト。ソリューションをデプロイするために使用します。事前に構築されたデモ機能を含む .zip ファイルで提供されます。
+-   [IaaS 拡張機能](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) - このソリューションは、オンプレミスの SQL ベースのソリューションを Azure に移行する方法と、クラウドベースのサービスとソリューションを安全に管理するために Privileged Access Workstation を実装する方法を示します。 
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 
 
 この基本アーキテクチャは次のコンポーネントで構成されています。
 
--   **[脅威モデル](https://aka.ms/healththreatmodel)**: [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168) で使用するために、包括的な脅威モデルが tm7 形式で提供され、ソリューションのコンポーネント、コンポーネント間のデータ フロー、信頼境界が示されます。 このモデルは、機械学習コンポーネントや他の変更点を開発するときに、システム インフラストラクチャの潜在的なリスク箇所を理解するのに役立ちます。
+-   **[脅威モデル](https://aka.ms/healththreatmodel)**: [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168) で使用するために、包括的な脅威モデルが tm7 形式で提供され、ソリューションのコンポーネント、コンポーネント間のデータ フロー、信頼境界が示されます。 このモデルは、Machine Learning Studio コンポーネントや他の変更点を開発するときに、システム インフラストラクチャの潜在的なリスク箇所を理解するのに役立ちます。
 
 -   **[お客様の実装マトリックス](https://aka.ms/healthcrmblueprint)**: Microsoft Excel ブックに、関連する HITRUST の要件が示され、各要件を満たす際に Microsoft とお客様が負う責任が記載されます。
 
@@ -74,19 +64,19 @@ ms.lasthandoff: 03/28/2018
 # <a name="architectural-diagram"></a>アーキテクチャ図
 
 
-![](images/refarch.png)
+![](images/ra2.png)
 
 ## <a name="roles"></a>ロール
 
 
-このブループリントでは、管理ユーザー (オペレーター) の 2 つのロールと、病院管理および患者ケアに従事するユーザーの 3 つのロールが定義されています。 6 番目の役割は、HIPAA や他の規制の遵守を評価する監査担当者向けに定義されています。 Azure のロールベースのアクセス制御 (RBAC) は、組み込みロールとカスタム ロールによって、ソリューションの各ユーザーの厳密に対象を絞ったアクセス管理を実現します。 RBAC、ロール、アクセス許可の詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)」および「[Azure ロールベースのアクセス制御の組み込みロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)」をご覧ください。
+このブループリントでは、管理ユーザー (オペレーター) の 2 つのロールと、病院管理および患者ケアに従事するユーザーの 3 つのロールが定義されています。 6 番目の役割は、HIPAA や他の規制の遵守を評価する監査担当者向けに定義されています。 Azure のロールベースのアクセス制御 (RBAC) は、組み込みロールとカスタム ロールによって、ソリューションの各ユーザーの厳密に対象を絞ったアクセス管理を実現します。 RBAC、ロール、アクセス許可の詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](https://docs.microsoft.com/azure/role-based-access-control/overview)」および「[Azure ロールベースのアクセス制御の組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)」をご覧ください。
 
 ### <a name="site-administrator"></a>サイト管理者
 
 
 サイト管理者は、顧客の Azure サブスクリプションに対して責任を負います。 全体的なデプロイを管理しますが、患者記録にアクセスすることはできません。
 
--   既定のロールの割り当て: [所有者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#owner)
+-   既定のロールの割り当て: [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 -   カスタム ロールの割り当て: 該当なし
 
@@ -97,7 +87,7 @@ ms.lasthandoff: 03/28/2018
 データベース アナリストは、SQL Server インスタンスおよびデータベースを管理します。
 患者記録にアクセスすることはできません。
 
--   組み込みロールの割り当て: [SQL DB 共同作業者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-db-contributor)、[SQL Server 共同作業者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-server-contributor)
+-   組み込みロールの割り当て: [SQL DB 共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor)、[SQL Server 共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
 -   カスタム ロールの割り当て: 該当なし
 
@@ -106,9 +96,9 @@ ms.lasthandoff: 03/28/2018
  ### <a name="data-scientist"></a>データ サイエンティスト
 
 
-データ サイエンティストは、Azure Machine Learning サービスを運用します。 データのインポート、エクスポート、管理を行い、レポートを実行できます。 データ サイエンティストは患者データにアクセスできますが、管理特権はありません。
+データ サイエンティストは、Azure Machine Learning Studio サービスを運用します。 データのインポート、エクスポート、管理を行い、レポートを実行できます。 データ サイエンティストは患者データにアクセスできますが、管理特権はありません。
 
--   組み込みロールの割り当て: [ストレージ アカウント共同作成者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#storage-account-contributor)
+-   組み込みロールの割り当て: [ストレージ アカウント共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
 -   カスタム ロールの割り当て: 該当なし
 
@@ -138,7 +128,7 @@ CMIO は、医療機関において情報科学/技術の専門家と医療従�
 
 監査担当者は、コンプライアンスについてソリューションを評価します。 ネットワークに直接アクセスすることはできません。
 
--   組み込みロールの割り当て: [閲覧者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#reader)
+-   組み込みロールの割り当て: [閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
 -   カスタム ロールの割り当て: 該当なし
 
@@ -147,12 +137,12 @@ CMIO は、医療機関において情報科学/技術の専門家と医療従�
 ## <a name="example-use-case"></a>ユース ケースの例
 
 
-このブループリントに含まれているユース ケースの例は、ブループリントを使用してクラウド内のヘルス データで機械学習と分析を可能にする方法を示しています。 Contosoclinic は米国にある小さな病院です。 病院ネットワーク管理者は、運用ワークロードの効率を高め、提供できるケアの質を向上させるために、Azure Machine Learning を使用して患者の入院時に入院期間をより正確に予測したいと考えています。
+このブループリントに含まれているユース ケースの例は、ブループリントを使用してクラウド内のヘルス データで機械学習と分析を可能にする方法を示しています。 Contosoclinic は米国にある小さな病院です。 病院ネットワーク管理者は、運用ワークロードの効率を高め、提供できるケアの質を向上させるために、Azure Machine Learning Studio を使用して患者の入院時に入院期間をより正確に予測したいと考えています。
 
 ### <a name="predicting-length-of-stay"></a>入院期間の予測
 
 
-ユース ケース シナリオの例では、Azure Machine Learning を使用して、問診時に入手した医療情報を以前の患者の集計済み履歴データと比較することによって、新しく入院した患者の入院期間を予測します。
+ユース ケース シナリオの例では、Azure Machine Learning Studio を使用して、問診時に入手した医療情報を以前の患者の集計済み履歴データと比較することによって、新しく入院した患者の入院期間を予測します。
 ブループリントには、ソリューションのトレーニングおよび予測機能を示すために、大量の匿名化された医療記録が含まれています。 運用環境では、環境、施設、患者の詳細を反映したより正確な予測を行うために、お客様独自の記録を使用してソリューションをトレーニングします。
 
 ### <a name="users-and-roles"></a>ユーザーと役割
@@ -222,7 +212,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 -   [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) は、組織の ID に影響を及ぼす可能性のある脆弱性を検出し、検出された、組織の ID に関連する疑わしいアクションに対する自動応答を構成します。さらに、疑わしいインシデントを調査し、適切なアクションを実行してそれらを解決します。
 
--   [Azure のロールベースのアクセス制御 (RBAC)](/azure/active-directory/role-based-access-control-configure) は、Azure の厳密に対象を絞ったアクセス管理を実現します。 サブスクリプションへのアクセスはサブスクリプション管理者に制限され、Azure Key Vault へのアクセスはサイト管理者に制限されます。 強力なパスワード (12 文字以上で、大文字/小文字、数字、および特殊文字を少なくとも 1 つ含む) が必要です。
+-   [Azure のロールベースのアクセス制御 (RBAC)](/azure/role-based-access-control/role-assignments-portal) は、Azure の厳密に対象を絞ったアクセス管理を実現します。 サブスクリプションへのアクセスはサブスクリプション管理者に制限され、Azure Key Vault へのアクセスはサイト管理者に制限されます。 強力なパスワード (12 文字以上で、大文字/小文字、数字、および特殊文字を少なくとも 1 つ含む) が必要です。
 
 -   デプロイ時に -enableMFA スイッチが有効になっている場合、多要素認証がサポートされます。
 
@@ -230,7 +220,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 **ロール:**
 
--   ソリューションでは、[組み込みロール](/azure/active-directory/role-based-access-built-in-roles)を使用してリソースへのアクセスを管理します。
+-   ソリューションでは、[組み込みロール](/azure/role-based-access-control/built-in-roles)を使用してリソースへのアクセスを管理します。
 
 -   すべてのユーザーに、特定の組み込みロールが既定で割り当てられます。
 
@@ -352,11 +342,11 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 ## <a name="analyze"></a>分析
 
-### <a name="machine-learning"></a>機械学習
+### <a name="machine-learning"></a>Machine Learning
 
 
--   Machine Learning Web サービスでは、[ログが有効](/azure/machine-learning/studio/web-services-logging)になっています。
-- [Machine Learning](/azure/machine-learning/preview/experimentation-service-configuration) Workbench を使用するには、ソリューション セットに予測機能を提供するために、実験を開発する必要があります。 [Workbench を統合](/azure/machine-learning/preview/using-git-ml-project)すると、実験の管理を効率化できます。
+-   Machine Learning Studio Web サービスでは、[ログが有効](/azure/machine-learning/studio/web-services-logging)になっています。
+- [Machine Learning Studio](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench を使用するには、ソリューション セットに予測機能を提供するために、実験を開発する必要があります。 [Workbench を統合](/azure/machine-learning/desktop-workbench/using-git-ml-project)すると、実験の管理を効率化できます。
 
 ## <a name="security"></a>セキュリティ
 
@@ -365,14 +355,14 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 - [Azure Advisor](/azure/advisor/advisor-overview) は、ベスト プラクティスに従って Azure デプロイメントを最適化できるようにする、個人用に設定されたクラウド コンサルタントです。 Azure のリソースの構成と利用統計情報を分析し、Azure リソースの費用対効果、パフォーマンス、高可用性、およびセキュリティを向上させるために役立つソリューションを推奨します。
 
-### <a name="application-insights"></a>アプリケーション インサイト
+### <a name="application-insights"></a>Application Insights
 - [Application Insights](/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスの異常が検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
 
 ### <a name="azure-alerts"></a>Azure アラート
 - アラートは Azure サービスの監視方法の 1 つであり、データに対する条件を構成できます。 また、アラートの条件が監視データと一致したときに、通知を受け取ることができます。
 
-### <a name="operations-management-suite-oms"></a>Operations Management Suite (OMS)
-[Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) は一連の管理サービスです。
+### <a name="log-analytics"></a>Log Analytics
+[Log Analytics](/azure/operations-management-suite/operations-management-suite-overview) は管理サービスのコレクションです。
 
 -   Security Center でワークスペースが有効になっています。
 

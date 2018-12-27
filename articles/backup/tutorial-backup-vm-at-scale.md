@@ -1,19 +1,20 @@
 ---
-title: "Azure 仮想マシンの大規模なバックアップ | Microsoft Docs"
-description: "同時に複数の仮想マシンを Azure にバックアップする"
+title: Azure 仮想マシンの大規模なバックアップ
+description: 同時に複数の仮想マシンを Azure にバックアップする
 services: backup
-keywords: "仮想マシンのバックアップ; 仮想マシン バックアップ; VM のバックアップ; VM バックアップ; Azure VM のバックアップ; バックアップとディザスター リカバリー"
-author: markgalioto
-ms.author: markgal
+keywords: 仮想マシンのバックアップ; 仮想マシン バックアップ; VM のバックアップ; VM バックアップ; Azure VM のバックアップ; バックアップとディザスター リカバリー
+author: rayne-wiselman
+ms.author: raynew
 ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: f1cfa72d0fb3c83ef6265649b740dec317f0e4b2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1d9daf5bdccb24db80eaf41597daa15a08ce1bd4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878305"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal を使用して複数の仮想マシンをバックアップする
 
@@ -33,7 +34,7 @@ Azure でデータをバックアップする場合は、Recovery Services コ�
 
 Recovery Services コンテナーには、バックアップ データと、保護される仮想マシンに適用されるバックアップ ポリシーが含まれます。 仮想マシンのバックアップはローカルな処理です。 ある場所から別の場所にある Recovery Services コンテナーに仮想マシンをバックアップすることはできません。 そのため、バックアップする仮想マシンがある Azure の場所ごとに、少なくとも 1 つの Recovery Services コンテナーが存在する必要があります。
 
-1. 左側のメニューで **[すべてのサービス]** を選択し、サービスの一覧に*「Recovery Services」*と入力します。 入力中、リソースにフィルターが適用されます。 Recovery Services コンテナーが一覧に表示される場合、それを選択すると [Recovery Services コンテナー] メニューが開きます。
+1. 左側のメニューで **[すべてのサービス]** を選択し、サービスの一覧に *「Recovery Services」* と入力します。 入力中、リソースにフィルターが適用されます。 Recovery Services コンテナーが一覧に表示される場合、それを選択すると [Recovery Services コンテナー] メニューが開きます。
 
     ![[Recovery Services コンテナー] メニューを開く](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png) <br/>
 
@@ -41,9 +42,9 @@ Recovery Services コンテナーには、バックアップ データと、保�
 
     ![コンテナー メニューを開く](./media/tutorial-backup-vm-at-scale/provide-vault-detail-2.png)
 
-3. [Recovery Services コンテナー] メニューで、 
+3. [Recovery Services コンテナー] メニューで、
 
-    - **[名前]** に "*「myRecoveryServicesVault」*" と入力します
+    - **[名前]** に「*myRecoveryServicesVault*」と入力します。
     - 現在のサブスクリプション ID が **[サブスクリプション]** に表示されます。 追加のサブスクリプションがある場合は、新しいコンテナーに別のサブスクリプションを選択できます。
     - **[リソース グループ]** で **[既存のものを使用]** を選択し、"*[myResourceGroup]*" を選択します。 "*[myResourceGroup]*" が存在しない場合は、**[新規作成]** を選択し、"*「myResourceGroup」*" と入力します。
     - **[場所]** ドロップダウン メニューから "*[西ヨーロッパ]*" を選択します。
@@ -51,13 +52,13 @@ Recovery Services コンテナーには、バックアップ データと、保�
 
 Recovery Services コンテナーは、保護する仮想マシンと同じ場所にある必要があります。 複数のリージョンに仮想マシンがある場合は、各リージョンで Recovery Services コンテナーを作成します。 このチュートリアルでは、Recovery Services コンテナーを "*西ヨーロッパ*" に作成します。"*myVM*" (クイックスタートで作成された仮想マシン) は西ヨーロッパに作成されたためです。
 
-Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。
+Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域に状態が通知され、確認することが出来ます。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。
 
 Recovery Services コンテナーを作成する場合、既定では、コンテナーには geo 冗長ストレージがあります。 データの回復性を提供するために、geo 冗長ストレージは 2 つの Azure リージョン間でデータを複数回レプリケートします。
 
 ## <a name="set-backup-policy-to-protect-vms"></a>VM を保護するバックアップ ポリシーを設定する
 
-Recovery Services コンテナーを作成した後、次の手順は、データの種類に合わせてコンテナーを構成することと、バックアップ ポリシーを設定することです。 バックアップ ポリシーは、復旧ポイントを作成する頻度と時期のスケジュールです。 ポリシーには、復旧ポイントの保持期間も含まれます。 このチュートリアルでは、ビジネスがホテル、スタジアム、レストランと売店を備えたスポーツ複合施設であり、仮想マシン上のデータを保護することを前提とします。 次の手順では、財務データのバックアップ ポリシーを作成します。
+Recovery Services コンテナーを作成した後、次の手順は、データの種類に合わせてコンテナーを構成することと、バックアップ ポリシーを設定することです。 バックアップ ポリシーは、復旧ポイントを作成する頻度と時期のスケジュールです。 ポリシーには、復旧ポイントの保持期間も含まれます。 このチュートリアルでは、ホテル、スタジアム、レストランと売店を備えたスポーツ複合施設のビジネスで、仮想マシン上のデータを保護することを前提とします。 次の手順では、財務データのバックアップ ポリシーを作成します。
 
 1. Recovery Services コンテナーの一覧から **[myRecoveryServicesVault]** を選択し、そのダッシュボードを開きます。
 
@@ -75,7 +76,7 @@ Recovery Services コンテナーを作成した後、次の手順は、デー�
 
     ![Select workload](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
-5. **[バックアップ ポリシー]** メニューで、**[ポリシー名]** に "*「Finance」*" と入力します。 バックアップ ポリシーの次の変更を入力します。 
+5. **[バックアップ ポリシー]** メニューで、**[ポリシー名]** に "*「Finance」*" と入力します。 バックアップ ポリシーの次の変更を入力します。
     - **[バックアップの頻度]** には、"*中部標準時*" のタイム ゾーンを設定します。 スポーツ複合施設はテキサス州にあるため、所有者は時間をローカルにすることを希望しています。 バックアップの頻度は、毎日午前 3 時 30 分に設定したままにします。
     - **[毎日のバックアップ ポイントの保持期間]** には、90 日の期間を設定します。
     - **[毎週のバックアップ ポイントの保持期間]** には、"*[月曜日]*" の復元ポイントを使用し、52 週間保持します。
@@ -83,21 +84,21 @@ Recovery Services コンテナーを作成した後、次の手順は、デー�
     - **[毎年のバックアップ ポイントの保持期間]** オプションの選択を解除します。 財務部門のリーダーは、36 か月間より長くデータを保持することを希望していません。
     - **[OK]** をクリックしてバックアップ ポリシーを作成します。
 
-    ![Select workload](./media/tutorial-backup-vm-at-scale/set-new-policy.png) 
+    ![Select workload](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
     バックアップ ポリシーを作成した後に、ポリシーを仮想マシンに関連付けます。
 
-6. **[仮想マシンの選択]** ダイアログで、"*[myVM]*" を選択し、**[OK]** をクリックしてバックアップ ポリシーを仮想マシンにデプロイします。 
+6. **[仮想マシンの選択]** ダイアログで、"*[myVM]*" を選択し、**[OK]** をクリックしてバックアップ ポリシーを仮想マシンにデプロイします。
 
     同じ場所にあり、まだバックアップ ポリシーに関連付けられていないすべての仮想マシンが表示されます。 "*myVMH1*" と "*myVMR1*" が選択されて "*財務*" ポリシーに関連付けられます。
 
-    ![Select workload](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png) 
+    ![Select workload](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png)
 
     デプロイが完了すると、デプロイが正常に完了したことを示す通知を受信します。
 
 ## <a name="initial-backup"></a>初回バックアップ
 
-Recovery Services コンテナーのバックアップを有効にしましたが、初回バックアップは作成されていません。 データが保護されるように最初のバックアップをトリガーすることが、ディザスター リカバリーのベスト プラクティスです。 
+Recovery Services コンテナーのバックアップを有効にしましたが、初回バックアップは作成されていません。 データが保護されるように最初のバックアップをトリガーすることが、ディザスター リカバリーのベスト プラクティスです。
 
 オンデマンド バックアップ ジョブを実行するには、次の手順に従います。
 
@@ -129,10 +130,10 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
     デプロイ通知で、バックアップ ジョブがトリガーされたこと、および [バックアップ ジョブ] ページでジョブの進行状況を監視できることが示されます。 仮想マシンのサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
 
-    初回バックアップ ジョブが完了したら、[バックアップ ジョブ] メニューでその状態を確認できます。 オンデマンド バックアップ ジョブで、"*myVM*" の最初の復元ポイントが作成されました。 他の仮想マシンをバックアップする場合は、各仮想マシンでこの手順を繰り返します。 
+    初回バックアップ ジョブが完了したら、[バックアップ ジョブ] メニューでその状態を確認できます。 オンデマンド バックアップ ジョブで、"*myVM*" の最初の復元ポイントが作成されました。 他の仮想マシンをバックアップする場合は、各仮想マシンでこの手順を繰り返します。
 
     ![Backup Jobs tile](./media/tutorial-backup-vm-at-scale/initial-backup-complete.png)
-  
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 引き続きチュートリアルの作業を行う場合は、このチュートリアルで作成したリソースをクリーンアップしないでください。 作業を続行しない場合は、次の手順に従って、このチュートリアルで作成したすべてのリソースを Azure Portal で削除します。
@@ -152,17 +153,17 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
     ![Settings icon](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
-4. コンテキスト メニューで、**[バックアップの停止]** を選択して [バックアップの停止] メニューを開きます。 
+4. コンテキスト メニューで、**[バックアップの停止]** を選択して [バックアップの停止] メニューを開きます。
 
     ![Settings icon](./media/tutorial-backup-vm-at-scale/context-menu-for-delete.png)
 
 5. **[バックアップの停止]** メニューで、上のドロップダウン メニューを選択し、**[バックアップ データの削除]** を選択します。
 
 6. **[Type the name of the Backup item]\(バックアップ項目の名前を入力してください\)** ダイアログで、"*「myVM」*" と入力します。
- 
-7. バックアップ項目が確認されると (チェックマークが表示されます)、**[バックアップの停止]** ボタンが有効になります。 **[バックアップの停止]** をクリックしてポリシーを停止し、復元ポイントを削除します。 
 
-    ![[バックアップの停止] をクリックしてコンテナーを削除する](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)が必要です。
+7. バックアップ項目が確認されると (チェックマークが表示されます)、**[バックアップの停止]** ボタンが有効になります。 **[バックアップの停止]** をクリックしてポリシーを停止し、復元ポイントを削除します。
+
+    ![[バックアップの停止] をクリックしてコンテナーを削除する](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
 8. **[myRecoveryServicesVault]** メニューで、**[削除]** をクリックします。
 
@@ -182,7 +183,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 > * 複数の仮想マシンを保護するポリシーを割り当てる
 > * 仮想マシンのオンデマンド バックアップをトリガーする
 
-ディスクから Azure 仮想マシンを復元するには、次のチュートリアルに進みます。 
+ディスクから Azure 仮想マシンを復元するには、次のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
 > [CLI を使用して VM を復元する](./tutorial-restore-disk.md)

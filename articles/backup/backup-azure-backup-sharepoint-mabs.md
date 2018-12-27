@@ -1,24 +1,19 @@
 ---
-title: "Azure Backup Server を使用して SharePoint ファームを Azure にバックアップする | Microsoft Docs"
-description: "Azure Backup Server を使用して SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。"
+title: Azure Backup サーバーを使用した SharePoint ファームの Azure へのバックアップ
+description: Azure Backup Server を使用して SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。
 services: backup
-documentationcenter: 
 author: pvrk
 manager: shivamg
-editor: 
-ms.assetid: 34ba87a4-91f1-4054-a4a1-272af1e15496
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/24/2017
+ms.topic: conceptual
+ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: 3ed000affd326eb1bd7c99773ec021ad6e03cc3b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4dff27d8ef7357e5af3635cc39fb52963689e7bb
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247967"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint ファームの Azure へのバックアップ
 Microsoft Azure Backup Server (MABS) を使用して SharePoint ファームを Microsoft Azure にバックアップする方法は、他のデータ ソースのバックアップとよく似ています。 Azure Backup ではバックアップのスケジュールを柔軟に設定して日、週、月、年の単位でバックアップ ポイントを作成でき、さまざまなバックアップ ポイントに対応する保有ポリシー オプションがあります。 また、目標復旧時間 (RTO) 短縮のためにはローカル ディスク コピーを保存でき、コスト効率に優れた長期リテンション期間のためには Azure にコピーできます。
@@ -37,13 +32,13 @@ SharePoint ファームを Azure にバックアップする前に、確認す�
 作業を進める前に、ワークロードを保護するために、[Azure Backup Server がインストールされていて、準備が完了している](backup-azure-microsoft-azure-backup.md)ことを確認します。
 
 ### <a name="protection-agent"></a>保護エージェント
-保護エージェントを、SharePoint を実行するサーバー、SQL Server を実行するサーバー、および SharePoint ファームを構成するその他のすべてのサーバーにインストールする必要があります。 保護エージェントのセットアップ方法の詳細については、「[保護エージェントの設定](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx)」をご覧ください。  唯一の例外は、1 台の Web フロント エンド (WFE) サーバーにだけエージェントをインストールすることです。 保護のエントリ ポイントとして使用するためにエージェントをインストールする必要がある WFE サーバーは 1 台だけです。
+Azure Backup エージェントを、SharePoint を実行するサーバー、SQL Server を実行するサーバー、および SharePoint ファームを構成するその他のすべてのサーバーにインストールする必要があります。 保護エージェントのセットアップ方法の詳細については、「[保護エージェントの設定](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx)」をご覧ください。  唯一の例外は、1 台の Web フロント エンド (WFE) サーバーにだけエージェントをインストールすることです。 Azure Backup Server が保護のエントリ ポイントとして使用するためにエージェントをインストールする必要がある WFE サーバーは 1 台だけです。
 
 ### <a name="sharepoint-farm"></a>SharePoint ファーム
 MABS フォルダーが存在するボリュームには、ファーム内の 1,000 万項目ごとに 2 GB 以上の容量が必要です。 この容量はカタログ生成のために必要です。 MABS が特定の項目 (サイト コレクション、サイト、リスト、ドキュメント ライブラリ、フォルダー、個々のドキュメント、リスト項目) を回復できるよう、カタログ生成では各コンテンツ データベースに含まれる URL のリストが作成されます。 MABS 管理者コンソールの**回復**タスク領域の [回復可能な項目] ウィンドウで、URL の一覧を確認できます。
 
 ### <a name="sql-server"></a>SQL Server
-MABS は、LocalSystem アカウントとして実行されます。 SQL Server データベースをバックアップする場合、MABS はそのアカウントに SQL Server を実行しているサーバーに対する sysadmin 権限を必要とします。 バックアップする前に、SQL Server を実行しているサーバーで NT AUTHORITY\SYSTEM を *sysadmin* に設定します。
+Azure Backup Server は、LocalSystem アカウントとして実行されます。 SQL Server データベースをバックアップする場合、MABS はそのアカウントに SQL Server を実行しているサーバーに対する sysadmin 権限を必要とします。 バックアップする前に、SQL Server を実行しているサーバーで NT AUTHORITY\SYSTEM を *sysadmin* に設定します。
 
 SharePoint ファームの SQL Server データベースが SQL Server エイリアスで構成されている場合は、MABS によって保護されるフロント エンド Web サーバーに SQL Server クライアント コンポーネントをインストールします。
 
@@ -104,8 +99,8 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
    > 回復が最も頻繁に必要になるのは作成されてから 5 日間未満のデータなので、この例では、ディスクへの保有期間として 5 日を選択し、業務時間外にバックアップが行われるようにします。
    >
    >
-6. 保護グループに割り当てられているストレージ プール ディスクの容量を確認し、 **[次へ]**をクリックします。
-7. すべての保護グループについて、MABS はレプリカを格納および管理するためのディスク領域を割り当てます。 この時点で、MABS は選択されたデータのコピーを作成する必要があります。 レプリカを作成する方法とタイミングを選択し、 **[次へ]**をクリックします。
+6. 保護グループに割り当てられているストレージ プール ディスクの容量を確認し、 **[次へ]** をクリックします。
+7. すべての保護グループについて、MABS はレプリカを格納および管理するためのディスク領域を割り当てます。 この時点で、MABS は選択されたデータのコピーを作成する必要があります。 レプリカを作成する方法とタイミングを選択し、 **[次へ]** をクリックします。
 
     ![レプリカ作成方法の選択](./media/backup-azure-backup-sharepoint/choose-replica-creation-method.png)
 
@@ -113,7 +108,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
    > ネットワーク トラフィックが影響を受けないように、業務時間外の時刻を選択します。
    >
    >
-8. MABS はレプリカに対して整合性チェックを実行することにより、データの整合性を保証します。 次の 2 つのオプションを使用できます。 整合性チェックを実行するスケジュールを定義することも、レプリカが不整合になった場合に必ず DPM に自動的にレプリカの整合性チェックを実行させることもできます。 適切なオプションを選択し、 **[次へ]**をクリックします。
+8. MABS はレプリカに対して整合性チェックを実行することにより、データの整合性を保証します。 次の 2 つのオプションを使用できます。 整合性チェックを実行するスケジュールを定義することも、レプリカが不整合になった場合に必ず DPM に自動的にレプリカの整合性チェックを実行させることもできます。 適切なオプションを選択し、 **[次へ]** をクリックします。
 
     ![整合性チェック](./media/backup-azure-backup-sharepoint/consistency-check.png)
 9. **[オンライン保護するデータの指定]** ページで、保護する SharePoint ファームを選択し、**[次へ]** をクリックします。
@@ -135,12 +130,12 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
     > MABS が使用する祖父 - 父 - 子の保有方式では、異なるバックアップ ポイントに対して異なるリテンション期間ポリシーを選択できます。
     >
     >
-12. ディスクと同様に、Azure でも最初の参照ポイント レプリカを作成する必要があります。 Azure に対する初期バックアップ コピーの適切な作成オプションを選択して、 **[次へ]**をクリックします。
+12. ディスクと同様に、Azure でも最初の参照ポイント レプリカを作成する必要があります。 Azure に対する初期バックアップ コピーの適切な作成オプションを選択して、 **[次へ]** をクリックします。
 
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 13. **[概要]** ページで選択した設定を確認し、**[グループの作成]** をクリックします。 保護グループが作成されると、成功メッセージが表示されます。
 
-    ![概要](./media/backup-azure-backup-sharepoint/summary.png)
+    ![まとめ](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>MABS を使用したディスクからの SharePoint アイテムの復元
 次の例では、 *Recovering SharePoint item* が誤って削除され、回復する必要があります。
@@ -162,7 +157,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
 6. アイテムを右クリックして **[回復]** を選択し、**回復ウィザード**を開きます。 **[次へ]** をクリックします。
 
     ![回復の選択の確認](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
-7. 実行する回復の種類を選択して、 **[次へ]**をクリックします。
+7. 実行する回復の種類を選択して、 **[次へ]** をクリックします。
 
     ![回復の種類](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
@@ -183,7 +178,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
     MABS は、SharePoint アイテムをホストしているコンテンツ データベースを、一時的な SQL Server インスタンスにアタッチします。 MABS は、コンテンツ データベースからアイテムを回復し、MABS 上のステージング ファイルの場所に格納します。 次に、ステージングの場所に回復されたアイテムを、SharePoint ファーム上のステージング場所にエクスポートする必要があります。
 
     ![ステージングの場所 2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. **[回復オプションの指定]**を選択し、SharePoint ファームに対するセキュリティ設定を適用するか、または回復ポイントのセキュリティ設定を適用します。 **[次へ]** をクリックします。
+10. **[回復オプションの指定]** を選択し、SharePoint ファームに対するセキュリティ設定を適用するか、または回復ポイントのセキュリティ設定を適用します。 **[次へ]** をクリックします。
 
     ![回復オプション](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -213,7 +208,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
    > SharePoint ファームは Azure では長期リテンション期間用に保護されているので、MABS には使用可能なカタログ情報 (メタデータ) がありません。 その結果、特定時点の SharePoint コンテンツ データベースを回復する必要があるときは常に、SharePoint ファームを再カタログ化する必要があります。
    >
    >
-3. **[再カタログ化]**をクリックします。
+3. **[再カタログ化]** をクリックします。
 
     ![MABS の SharePoint 保護 10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -221,10 +216,10 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
 
     ![MABS の SharePoint 保護 11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    カタログ化が完了すると、ステータスが *[成功]*に変わります。 **[閉じる]**をクリックします。
+    カタログ化が完了すると、ステータスが *[成功]* に変わります。 **[閉じる]** をクリックします。
 
     ![MABS の SharePoint 保護 12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. MABS の **[回復]** タブに表示される SharePoint オブジェクトをクリックして、コンテンツ データベースの構造を取得します。 該当する項目を右クリックし、 **[回復]**をクリックします。
+4. MABS の **[回復]** タブに表示される SharePoint オブジェクトをクリックして、コンテンツ データベースの構造を取得します。 該当する項目を右クリックし、 **[回復]** をクリックします。
 
     ![MABS の SharePoint 保護 13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. この時点で、 [この記事で前述した回復手順](#restore-a-sharepoint-item-from-disk-using-dpm) に従ってディスクから SharePoint コンテンツ データベースを回復します。
@@ -236,5 +231,7 @@ A: はい、元の SharePoint サイトにアイテムを回復できます。
 Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?<br>
 A: SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、MABS は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
 
-## <a name="next-steps"></a>次のステップ
-* SharePoint の MABS 保護に関する詳細 - [Video シリーズ「DPM Protection of SharePoint (SharePoint の DPM 保護)」](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
+## <a name="next-steps"></a>次の手順
+
+[Exchange サーバーのバックアップ](backup-azure-exchange-mabs.md)について確認してください。
+[SQL Server のバックアップ](backup-azure-sql-mabs.md)について確認してください。

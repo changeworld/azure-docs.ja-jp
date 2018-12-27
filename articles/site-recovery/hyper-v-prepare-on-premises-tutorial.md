@@ -1,18 +1,19 @@
 ---
-title: Hyper-V VM から Azure へのディザスター リカバリーのためにオンプレミス Hyper-V サーバーを準備する | Microsoft Docs
-description: Azure Site Recovery サービスを使用して、Azure へのディザスター リカバリーのために、System Center VMM で管理されていないオンプレミス Hyper-V VM を準備する方法について説明します。
+title: Hyper-V VM の Azure へのディザスター リカバリーのためにオンプレミス Hyper-V サーバーを準備する | Microsoft Docs
+description: Azure Site Recovery サービスを使用して、オンプレミス Hyper-V VM の Azure へのディザスター リカバリーを準備する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1290a186ca8e83b09f53b286e80c5ce75f08d88c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e392ab08647ea6e6cee2c2ca232daf809a4b7e35
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846591"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス Hyper-V サーバーを準備する
 
@@ -58,15 +59,16 @@ VMM を使用している場合、[ネットワーク マッピング](site-reco
 
 ## <a name="verify-internet-access"></a>インターネット アクセスを確認する
 
-1. このチュートリアルの目的として、最も簡単な構成は、Hyper-V ホストと VMM サーバー (該当する場合) がプロキシを使用せずにインターネットに直接アクセスする方法です。 
-2. Hyper-V ホストと VMM サーバー (関連する場合) が次の URL にアクセスできることを確認します。 
-
-    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
+1. このチュートリアルの目的として、最も簡単な構成は、Hyper-V ホストと VMM サーバーがプロキシを使用せずにインターネットに直接アクセスする方法です。 
+2. Hyper-V ホストと VMM サーバー (関連する場合) が下の必須 URL にアクセスできることを確認します。   
+3. IP アドレスでアクセスをコントロールしている場合は、次のことを確認してください。
+    - IP アドレスベースのファイアウォール ルールが [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)および HTTPS (443) ポートに接続できること。
+    - お使いのサブスクリプションの Azure リージョンの IP アドレス範囲を許可します。
     
-3. 次のことを確認します。
-    - IP アドレスベースのファイアウォール規則がある場合、その規則で Azure への通信を許可します。
-    - [Azure データセンターの IP の範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可します。
-    - ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します (Access Control と ID 管理に使用されます)。
+### <a name="required-urls"></a>必須 URL
+
+
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする
@@ -78,7 +80,7 @@ VMM を使用している場合、[ネットワーク マッピング](site-reco
 1. インターネット経由でアクセスするには、フェールオーバーの前に、オンプレミスの VM 上の RDP を有効にします。 TCP と UDP の規則が **[パブリック]** プロファイルに追加されていることを確認し、**[Windows ファイアウォール]** > **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。
 2. サイト間 VPN 経由でアクセスするには、オンプレミスのコンピューターで RDP を有効にします。 RDP は、**[Windows ファイアウォール]** -> **[許可されたアプリおよび機能]** から、**ドメインとプライベート** ネットワークでの使用を許可する必要があります。
    オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細情報](https://support.microsoft.com/kb/3031135)。 フェールオーバーをトリガーするときに、VM に保留中の Windows 更新プログラムがないようにします。 ある場合は、更新が完了するまで、仮想マシンにログインすることはできません。
-3. フェールオーバー後の Microsoft Azure VM で **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を確認してください。
+3. フェールオーバー後の Microsoft Azure VM で **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を確認してください。
 
 フェールオーバー後、Azure VM には、レプリケートされたオンプレミス VM と同じ IP アドレスか、別の IP アドレスを使用してアクセスできます。 フェールオーバー用の IP アドレスの設定については、[こちら](concepts-on-premises-to-azure-networking.md)を参照してください。
 

@@ -1,11 +1,11 @@
 ---
-title: "パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する | Microsoft Docs"
-description: "この記事では、Azure Network Watcher を使用して、アラートでトリガーされるパケット キャプチャを作成する方法について説明します"
+title: パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する | Microsoft Docs
+description: この記事では、Azure Network Watcher を使用して、アラートでトリガーされるパケット キャプチャを作成する方法について説明します
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: bdd4b7ddd5ebaf0187ed4943a518a83fc2531da4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2035d342a89ace6d286fc205c346591b29646c5d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270146"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 
@@ -145,7 +146,7 @@ Network Watcher PowerShell コマンドレットを使うには、最新の Powe
 
     ![PowerShell ファイル][functions7]
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
 PowerShell コマンドレットを使用するには、認証する必要があります。 Function App で認証を構成します。 認証を構成するには、環境変数を構成して、暗号化されたキー ファイルを Function App にアップロードする必要があります。
 
@@ -289,7 +290,7 @@ $Encryptedpassword
             #Authentication
             $secpassword = $pw | ConvertTo-SecureString -Key (Get-Content $keypath)
             $credential = New-Object System.Management.Automation.PSCredential ($clientid, $secpassword)
-            Add-AzureRMAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
+            Connect-AzureRmAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
 
 
             #Get the VM that fired the alert
@@ -330,7 +331,7 @@ $Encryptedpassword
 
     ![関数の URL のコピー][2]
 
-webhook POST 要求のペイロードでカスタム プロパティが必要な場合は、「[Azure メトリック アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)」をご覧ください。
+webhook POST 要求のペイロードでカスタム プロパティが必要な場合は、「[Azure メトリック アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)」をご覧ください。
 
 ## <a name="configure-an-alert-on-a-vm"></a>VM のアラートの構成
 

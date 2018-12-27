@@ -1,24 +1,20 @@
 ---
-title: "カスタム コネクタのトピックへのリンク - Azure Logic Apps | Microsoft Docs"
-description: "カスタム コネクタを作成、使用、共有、および認定する方法に関するトピックへのリンク"
-author: ecfan
-manager: anneta
-editor: 
+title: カスタム コネクタのトピックへのリンク - Azure Logic Apps | Microsoft Docs
+description: カスタム コネクタを作成、使用、共有、および認定する方法に関するトピックへのリンク
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 1/30/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: 301a6547590acbb689c190dc713535f53b61cbf5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 89bbc0be27453ba6a6c61c844b8fd8901eea0e80
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125621"
 ---
 # <a name="custom-connectors-in-logic-apps"></a>Logic Apps のカスタム コネクタ
 

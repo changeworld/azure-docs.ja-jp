@@ -1,23 +1,20 @@
 ---
-title: 作成時に Azure VM のバックアップを有効にする | Microsoft Docs
+title: 作成時に Azure VM のバックアップを有効にする
 description: 作成プロセスの間に Azure 仮想マシンのバックアップを有効にする手順を説明します。
 services: backup, virtual-machines
-documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: ''
 ms.service: backup, virtual-machines
-ms.devlang: na
-ms.topic: article
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: e16714eee697d9dc8102b5f29d9639d650517562
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 518d171c96b9c4f9bf3e195a7130f4c022b7ad07
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879878"
 ---
 # <a name="enable-backup-during-azure-virtual-machine-creation"></a>Azure 仮想マシンの作成時にバックアップを有効にする 
 
@@ -70,7 +67,7 @@ Microsoft によって公開されている以下のコア イメージの一覧
 
 - **Windows** - Windows Server 2016 Datacenter、Windows Server 2016 Data Center core、Windows Server 2012 DataCenter、Windows Server 2012 R2 DataCenter、Windows Server 2008 R2 SP1 
 - **Ubuntu** - Ubuntu Server 1710、Ubuntu Server 1704、UUbuntu Server 1604(LTS)、Ubuntu Server 1404(LTS) 
-- **Redhat** - RHEL 6.7、6.8、6.9、7.2、7.3、7.4 
+- **Red Hat** - RHEL 6.7、6.8、6.9、7.2、7.3、7.4 
 - **SUSE** - SUSE Linux Enterprise Server 11 SP4、12 SP2、12 SP3 
 - **Debian** - Debian 8、Debian 9 
 - **CentOS** - CentOS 6.9、CentOS 7.3 

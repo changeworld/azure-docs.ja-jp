@@ -1,13 +1,13 @@
 ---
-title: "Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト | Microsoft Docs"
-description: "Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト"
+title: Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト | Microsoft Docs
+description: Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 645e358b-3ca1-4d3d-bf70-b0f287498d7a
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: hermannd
-ms.openlocfilehash: 072a70c1da74b3b50ad8c0a93ee3c079a724d81f
-ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
+ms.openlocfilehash: 8a16fa9f639a6a4a17d6904d6bc9a0e31f774e0c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950048"
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>Microsoft Azure SUSE Linux VM での SAP NetWeaver の実行
 この記事では、Microsoft Azure SUSE Linux 仮想マシン (VM) で SAP NetWeaver を実行する際のさまざまな考慮事項について説明します。 2016 年 5 月 19 日の時点で、SAP NetWeaver は Azure 上の SUSE Linux VM で正式にサポートされています。 Linux のバージョン、SAP カーネルのバージョン、その他の前提条件など、すべての詳細については、SAP Note 1928533 "SAP Applications on Azure: Supported Products and Azure VM types" (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類) を参照してください。
@@ -118,7 +119,7 @@ SUSE VM をオンプレミスから Azure にアップロードする手順に�
    ```
 JSON テンプレート ファイルの詳細については、「[Azure Resource Manager のテンプレートの作成](../../../resource-group-authoring-templates.md)」と「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
 
-CLI と Azure Resource Manager の詳細については、「[Azure Resource Manager での、Mac、Linux、および Windows 用 Azure CLI の使用](../../../xplat-cli-azure-resource-manager.md)」を参照してください。
+Azure クラシック CLI と Azure Resource Manager の詳細については、[Azure Resource Manager での Mac、Linux、および Windows 用 Azure クラシック CLI の使用](../../../xplat-cli-azure-resource-manager.md)に関する記事を参照してください。
 
 ## <a name="sap-license-and-hardware-key"></a>SAP のライセンスとハードウェア キー
 正式な SAP-Azure 証明書のために、SAP ライセンスに使用される SAP ハードウェア キーを計算するための新しいメカニズムが導入されました。 SAP カーネルはこの新しいアルゴリズムを利用するように適合させる必要がありました。 Linux 向けの SAP カーネルの以前のバージョンには、このコード変更が含まれていませんでした。 そのため、特定の状況 (Azure VM のサイズ変更など) では、SAP ハードウェア キーが変更され、SAP のライセンスが無効になりました。 最新の SAP Linux カーネルで解決策が提供されます。  この SAP カーネル パッチの詳細は SAP Note 1928533 にあります。
@@ -128,7 +129,7 @@ SUSE には、一連の SAP 固有の設定を管理する、"sapconf" と呼ば
 
 また、'sapconf - tuned-adm' に代わる新しいツールもあります。 そのツールの詳細については、次の 2 つのリンク先をご覧ください。
 
-- ['tuned-adm' プロファイルの sap-hana に関する SLES ドキュメント](https://www.suse.com/documentation/sles-for-sap-12/book_s4s/data/sec_s4s_configure_sapconf.html) 
+- ['tuned-adm' プロファイルの sap-hana に関する SLES ドキュメント](https://www.suse.com/documentation/sles-for-sap-12/book_s4s/data/sec_saptune.html) 
 
 - ['tuned-adm' を使用した SAP ワークロードのチューニング システム](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/book_s4s/book_s4s.pdf) (第 6.2 章)
 

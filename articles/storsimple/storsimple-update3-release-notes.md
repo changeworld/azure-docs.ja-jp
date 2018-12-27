@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 8000 シリーズ Update 3 リリース ノート | Microsoft Docs"
-description: "StorSimple 8000 シリーズ Update 3 における新機能、問題、回避策について説明します。"
+title: StorSimple 8000 シリーズ Update 3 リリース ノート | Microsoft Docs
+description: StorSimple 8000 シリーズ Update 3 における新機能、問題、回避策について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 2158aa7a-4ac3-42ba-8796-610d1adb984d
 ms.service: storsimple
 ms.devlang: NA
@@ -15,16 +15,14 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c22e3859fad55a8632d62aaf5f656081d6d662bd
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 9308602b77903e553e26d6f0586d963a4c58230d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057827"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスの Update 3 リリース ノート
-> [!NOTE]
-> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
-
 
 ## <a name="overview"></a>概要
 次のリリース ノートでは、StorSimple 8000 シリーズの Update 3 の新機能について説明し、未解決の重要な問題を示します。 また、このリリースに含まれる StorSimple のソフトウェアの更新プログラムの一覧も含まれています。 
@@ -50,7 +48,7 @@ Update 3 では、主に次の機能強化とバグ修正が行われていま�
 ## <a name="issues-fixed-in-update-3"></a>Update 3 で修正された問題
 次の表は、Update 3 で修正された問題の概要を示しています。    
 
-| いいえ  | 機能 | 問題 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
+| いいえ  | Feature | 問題 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
 | --- | --- | --- | --- | --- |
 | 1 |ホスト側データの移行 |以前のリリースでは、ホスト側のデータの移行の際、StorSimple Cloud Appliance がオフラインになっていました。 この問題は今回のリリースで修正されました。 |いいえ  |[はい] |
 | 2 |ローカル固定ボリューム |以前のリリースでは、I/O エラー、ボリュームの変換エラー、またローカル固定ボリュームのデータパス エラーに関連する問題が見られました。 今回のリリースでは、これらの問題の根本原因を探り、問題が修正されました。 |[はい] |いいえ  |
@@ -62,7 +60,7 @@ Update 3 では、主に次の機能強化とバグ修正が行われていま�
 ## <a name="known-issues-in-update-3"></a>Update 3 の既知の問題
 次の表に、このリリースでの既知の問題の概要を示します。
 
-| いいえ。 | 機能 | 問題 | コメント/回避策 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
+| No. | Feature | 問題 | コメント/回避策 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |ディスク クォーラム |まれに、8600 デバイスの EBOD エンクロージャに搭載されているディスクの大半が切断され、ディスク クォーラムが存在しない状況になり、記憶域プールがオフラインになるケースがあります。 ディスクを再接続してもオフラインの状態は変わりません。 |ユーザーは、デバイスを再起動する必要があります。 問題が解消しない場合は、Microsoft サポートに対処法をお問い合わせください。 |[はい] |いいえ  |
 | 2 |不正確なコントローラー ID |コントローラーの交換を実施すると、コントローラー 0 がコントローラー 1 として表示されることがあります。 コントローラーの交換中、ピア ノードからイメージが読み込まれるときに、コントローラー ID が最初、ピア コントローラーの ID として表示される場合があります。 まれなケースですが、この動作がシステムの再起動後に生じることもあります。 |ユーザーによる対処は不要です。 この状況は、コントローラーの交換が完了すると自然に解決します。 |[はい] |いいえ  |

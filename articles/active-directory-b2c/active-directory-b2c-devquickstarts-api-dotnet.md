@@ -1,21 +1,21 @@
 ---
-title: Web API のセキュリティ保護 - ASP.NET - Azure Active Directory B2C | Microsoft Docs
+title: Azure Active Directory B2C での ASP.NET Web API のセキュリティ保護 | Microsoft Docs
 description: Azure Active Directory B2C を使用し、認証に OAuth 2.0 アクセス トークンを使用してセキュリティ保護された .NET Web API を構築する方法。
 services: active-directory-b2c
-documentationcenter: .net
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/14/2018
 ms.author: davidmu
-ms.openlocfilehash: c64ca3546c5c2d21b00b379c297c9265b264cb9a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 2e93a8340699d1fcf68c53baa87990e799bc933d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447587"
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: .NET Web API を構築する
 

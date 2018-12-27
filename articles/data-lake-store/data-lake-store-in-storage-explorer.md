@@ -1,6 +1,6 @@
 ---
-title: Azure Storage Explorer で Azure Data Lake Store リソースを管理する
-description: Azure Data Lake Store のデータやリソースに Azure Storage Explorer からアクセスして管理する方法について説明します。
+title: Azure Storage Explorer 上で Azure Data Lake Storage Gen1 リソースを管理する
+description: Azure Data Lake Storage Gen1 のデータやリソースに Azure Storage Explorer からアクセスして管理する方法について説明します
 Keywords: Azure Data Lake Store, Azure Storage Explorer
 services: Data Lake Store
 documentationcenter: ''
@@ -8,31 +8,30 @@ author: jejiang
 manager: DJ
 editor: Jenny Jiang
 ms.assetid: ''
-ms.service: Data Lake Store
+ms.service: data-lake-store
 ms.custom: Azure Data Lake Store
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a02844c678c08d8aefbceb16d3908faeffd755fb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6cc4a5d5bfc2056f2517bcbcecb19b9f6b2f437a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966264"
 ---
-# <a name="manage-azure-data-lake-store-resources-by-using-storage-explorer"></a>Azure Storage Explorer を使用して Azure Data Lake Store リソースを管理する
+# <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Storage Explorer を使用して Azure Data Lake Storage Gen1 リソースを管理する
 
-[Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview) は、テキストやバイナリ データなどの大量の非構造化データを格納するためのサービスです。 そのデータには、HTTP または HTTPS を介してどこからでもアクセスすることができます。 Azure Storage Explorer で Data Lake Store を使用すると、BLOB やキューなど、他の Azure エンティティと共に、Data Lake Store のデータおよびリソースにアクセスし、管理できます。 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理できるようになりました。
+[Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) は、テキストやバイナリ データなどの大量の非構造化データを格納するためのサービスです。 そのデータには、HTTP または HTTPS を介してどこからでもアクセスすることができます。 Azure Storage Explorer 上で Data Lake Storage Gen1 を使用すると、BLOB やキューなど、他の Azure エンティティと共に、Data Lake Storage Gen1 のデータおよびリソースにアクセスし、管理できます。 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理できるようになりました。
 
-もう 1 つの利点は、Data Lake Store データを管理するためにサブスクリプションのアクセス許可が不要であることです。 Storage Explorer では、アクセス許可が付与されていれば、**[Local and Attached]\(ローカルで接続済み\)** ノードに Data Lake Store パスをアタッチできます。
+もう 1 つの利点は、Data Lake Storage Gen1 データを管理するためにサブスクリプションのアクセス許可が不要であることです。 Storage Explorer では、アクセス許可が付与されていれば、**[Local and Attached]\(ローカルで接続済み\)** ノードに Data Lake Storage Gen1 パスをアタッチできます。
 
 ## <a name="prerequisites"></a>前提条件
 この記事の手順を完了するには、次の前提条件を満たす必要があります。
 
 *   Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial)に関するページを参照してください。
-*   Azure Data Lake Store アカウント。 このアカウントを作成する手順については、[Azure Data Lake Store の使用開始](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal)に関するページを参照してください。
+*   Data Lake Storage Gen1 アカウント。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)に関する記事をご覧ください。
 
 ## <a name="install-storage-explorer"></a>Storage Explorer のインストール
 
@@ -60,10 +59,10 @@ Azure Storage Explorer の最新版は、[製品 Web ページ](https://azure.mi
 
     ![アカウントの一覧](./media/data-lake-store-in-storage-explorer/account-list.png)
 
-Azure Data Lake Store から Azure サブスクリプションに正常に接続されています。
+Data Lake Storage Gen1 から Azure サブスクリプションに正常に接続されています。
 
-## <a name="connect-to-data-lake-store"></a>Data Lake Store に接続する
-ご利用のサブスクリプションに存在しないリソースであっても、そのリソースの URI を支給してもらえば、アクセスすることができます。 サインイン後、その URI を使って Data Lake Store に接続することができます。
+## <a name="connect-to-data-lake-storage-gen1"></a>Data Lake Storage Gen1 への接続
+ご利用のサブスクリプションに存在しないリソースであっても、そのリソースの URI を支給してもらえば、アクセスすることができます。 サインイン後、その URI を使って Data Lake Storage Gen1 に接続することができます。
 1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで **[Local and Attached]\(ローカルで接続済み\)** を展開します。
 3. **[Data Lake Store]** を右クリックし、**[Connect to Data Lake Store]\(Data Lake Store に接続する\)** を選択します。
@@ -74,42 +73,42 @@ Azure Data Lake Store から Azure サブスクリプションに正常に接続
 
       ![[Connect to Data Lake Store]\(Data Lake Store に接続する\) ダイアログ ボックスと URI を入力するためのテキスト ボックス](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-uri-attach-dialog.png)
 
-      ![Data Lake Store に接続した結果](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-attach-finish.png)
+      ![Data Lake Storage Gen1 に接続した結果](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-attach-finish.png)
 
-## <a name="view-an-azure-data-lake-store-accounts-contents"></a>Azure Data Lake Store アカウントの内容を表示する
-Azure Data Lake Store アカウントのリソースには、フォルダーとファイルが含まれます。
+## <a name="view-a-data-lake-storage-gen1-accounts-contents"></a>Data Lake Storage Gen1 アカウントの内容の表示
+Data Lake Storage Gen1 アカウントのリソースには、フォルダーとファイルが含まれます。
 
-次の手順では、Storage Explorer 内で Data Lake Store アカウントの内容を表示する方法を説明します。
+次の手順では、Storage Explorer 内で Data Lake Storage Gen1 アカウントの内容を表示する方法を説明します。
 
 1. ストレージ エクスプローラーを開きます。
-2. 左側のウィンドウで、表示する Azure Data Lake Store アカウントが含まれているサブスクリプションを展開します。
+2. 左側のウィンドウで、表示する Data Lake Storage Gen1 アカウントが含まれているサブスクリプションを展開します。
 3. **[Data Lake Store]** を展開します。
-4. 表示する Azure Data Lake Store アカウントのノードを右クリックし、**[開く]** を選択します。 Data Lake Store アカウントをダブルクリックして開くこともできます。 
+4. 表示する Data Lake Storage Gen1 アカウントのノードを右クリックし、**[開く]** を選択します。 Data Lake Storage Gen1 アカウントをダブルクリックして開くこともできます。 
    
-   メイン ウィンドウには、Data Lake Store アカウントの内容が表示されます。
+   メイン ウィンドウには、Data Lake Storage Gen1 アカウントの内容が表示されます。
 
    ![メイン ウィンドウとフォルダーの一覧](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-toolbar-mainpane.png) 
 
-## <a name="manage-resources-in-azure-data-lake-store"></a>Azure Data Lake Store でのリソースの管理
+## <a name="manage-resources-in-data-lake-storage-gen1"></a>Data Lake Storage Gen1 のリソースを管理する
 
-次の操作を実行することで、Azure Data Lake Store リソースを管理できます。
-*   複数の Azure Data Lake アカウントを対象に Data Lake Store のリソースを閲覧する。  
-*   接続文字列を使用して、直接 Data Lake Store に接続し、管理する。 
-*   他のユーザーが ACL を使用して共有した Data Lake Store リソースを **[Local and Attached]\(ローカルで接続済み\)** で表示する。
+次の操作を実行することで、Data Lake Storage Gen1 リソースを管理できます。
+*   複数の Data Lake Storage Gen1 アカウントを対象に Data Lake Storage Gen1 のリソースを閲覧する。  
+*   接続文字列を使用して、直接 Data Lake Storage Gen1 に接続し、管理する。 
+*   他のユーザーが ACL を使用して共有した Data Lake Storage Gen1 リソースを **[Local and Attached]\(ローカルで接続済み\)** に表示する。
 *   ファイルとフォルダーの CRUD 操作を実行する (再帰的フォルダーとファイルの複数選択に対応)。 
 *   フォルダーをドラッグ アンド ドロップして、クイック アクセスの最近使用した場所に追加する。 この操作は、デスクトップのエクスプローラーの操作とよく似ています。 
-*   Storage Explorer から 1 回のクリックで、Azure Data Lake のハイパーリンクをコピーして開く。 
+*   Storage Explorer から 1 回のクリックで、Data Lake Storage Gen1 のハイパーリンクをコピーして開く。 
 *   右下のウィンドウにアクティビティ ログを表示し、アクティビティの状態を確認する。
 *   フォルダーの統計とファイルのプロパティを表示する。
 
 ## <a name="manage-resources-in-azure-storage-explorer"></a>Azure Storage Explorer でリソースを管理する
-Azure Data Lake Store アカウントの作成後、次の操作を実行できます。
+Data Lake Storage Gen1 アカウントを作成した後で、次の操作を実行できます。
 
 * ローカル コンピューターでのフォルダーやファイルのアップロードとダウンロード、リソースの表示
 * **[クイック アクセス]** のピン留め、新しいフォルダーの作成、URL のコピー、すべて選択
 * コピー、貼り付け、名前の変更、削除、フォルダーの統計情報の取得、最新の情報への更新
 
-次の項目では、Azure Data Lake Store アカウント内でリソースを管理する方法を示します。 実行したいタスクの手順に従ってください。
+次の項目では、Data Lake Storage Gen1 アカウント内でリソースを管理する方法を示します。 実行したいタスクの手順に従ってください。
 
 ### <a name="upload-files"></a>ファイルのアップロード
 
@@ -137,20 +136,20 @@ Azure Data Lake Store アカウントの作成後、次の操作を実行でき�
 
    ![アップロードが進行中のダイアログ ボックス](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png) 
 
-> [!NOTE] 
+> [!NOTE]
 > ローカル コンピューター上のフォルダーとファイルは、アップロードを開始するために直接ドラッグできます。 
        
 ### <a name="download-folders-or-files-to-your-local-computer"></a>フォルダーまたはファイルをローカル コンピューターにダウンロードする
 
 1. ダウンロードするフォルダーまたはファイルを選択します。
-2. メイン ウィンドウのツール バーで、 **[ダウンロード]**を選択します。
+2. メイン ウィンドウのツール バーで、 **[ダウンロード]** を選択します。
 3. **[Select a folder to save the downloaded files into]\(ダウンロードしたファイルを保存するフォルダーの選択\)** ダイアログ ボックスで、場所と名前を指定します。
 4. **[保存]** を選択します。
 
 ### <a name="open-a-folder-or-file-from-your-local-computer"></a>ローカル コンピューターからフォルダーまたはファイルを開く
 
 1. 開くフォルダーまたはファイルを選択します。
-2. メイン ウィンドウのツール バーで、 **[開く]**を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[開く]** を選択します。
+2. メイン ウィンドウのツール バーで、 **[開く]** を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[開く]** を選択します。
 
 ファイルがダウンロードされ、その基になるファイルの種類に関連付けられているアプリケーションで開かれます。 または、メイン ウィンドウでフォルダーが開きます。
 
@@ -159,21 +158,21 @@ Azure Data Lake Store アカウントの作成後、次の操作を実行でき�
 ### <a name="copy-folders-or-files-to-the-clipboard"></a>フォルダーまたはファイルをクリップボードにコピーする
 
 1. コピーするフォルダーまたはファイルを選択します。
-2. メイン ウィンドウのツール バーで、 **[コピー]**を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[コピー]** を選択します。
-3. 左側のウィンドウで別の Data Lake Store アカウントに移動し、それをダブルクリックして、メイン ウィンドウに表示します。
+2. メイン ウィンドウのツール バーで、 **[コピー]** を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[コピー]** を選択します。
+3. 左側のウィンドウで別の Data Lake Storage Gen1 アカウントを参照し、それをダブルクリックして、メイン ウィンドウに表示します。
 4. メイン ウィンドウのツール バーで **[貼り付け]** を選択して、コピーを作成します。 または、コピー先のショートカット メニューで **[貼り付け]** を選択します。
 
 ![フォルダーをコピーするための選択](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-copy-paste.png)
 
-> [!NOTE] 
-> 異なる種類のストレージ間でのコピー/貼り付け操作はサポートされていません。 Data Lake Store のフォルダーまたはファイルをコピーして、それらを別の Data Lake Store アカウントに貼り付けることはできます。 一方、Data Lake Store のフォルダーやファイルをコピーして、Azure Blob Storage に貼り付けることも、その逆の操作を行うことも "*できません*"。
+> [!NOTE]
+> 異なる種類のストレージ間でのコピー/貼り付け操作はサポートされていません。 Data Lake Storage Gen1 のフォルダーまたはファイルをコピーして、それらを別の Data Lake Storage Gen1 アカウントに貼り付けることはできます。 一方、Data Lake Storage Gen1 のフォルダーやファイルをコピーして、Azure Blob Storage に貼り付けることも、その逆の操作を行うことも "*できません*"。
 > 
 > コピー/貼り付け操作は、フォルダーまたはファイルをローカル コンピューターにダウンロードして、目的の場所にアップロードすることで動作します。 ツールがバックエンドでアクションを実行することは "*ありません*"。 大きなファイルのコピー/貼り付け操作には時間がかかります。 パフォーマンスの高いファイルのコピーと移動の最適化が行われています。
 
 ### <a name="delete-folders-or-files"></a>フォルダーまたはファイルを削除する
 
 1. 削除するフォルダーまたはファイルを選択します。
-2. メイン ウィンドウのツール バーで、 **[削除]**を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[削除]** を選択します。
+2. メイン ウィンドウのツール バーで、 **[削除]** を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[削除]** を選択します。
 3. 確認のダイアログ ボックスで **[はい]** を選択します。
 
 ![フォルダーを削除するための選択](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-delete.png)
@@ -197,7 +196,7 @@ URL がある場合は、エクスプローラーまたはブラウザーのア�
 
 ## <a name="next-steps"></a>次の手順
 * [最新の Storage Explorer のリリース ノートとビデオ](http://www.storageexplorer.com)を確認します。
-* [Azure Storage Explorer で Azure Cosmos DB を管理する](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer)方法を学習します。
-* [Storage Explorer の概要](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer)を参照します。
-* [Azure Data Lake Store の概要](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview)を参照します。
+* [Azure Storage Explorer で Azure Cosmos DB を管理する](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)方法を学習します。
+* [Storage Explorer の概要](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)を参照します。
+* [Azure Data Lake Storage Gen1 の使用を開始する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)。
 * [Azure Storage Explorer で Azure Cosmos DB を使用する方法に関する YouTube ビデオ](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)を視聴します。

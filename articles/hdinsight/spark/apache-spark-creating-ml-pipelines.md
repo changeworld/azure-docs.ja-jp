@@ -1,26 +1,20 @@
 ---
-title: "Apache Spark Machine Learning パイプラインを作成する - Azure HDInsight | Microsoft Docs"
-description: "データ パイプラインを作成するには、Apache Spark Machine Learning ライブラリを使用します。"
+title: Apache Spark Machine Learning パイプラインを作成する - Azure HDInsight
+description: データ パイプラインを作成するには、Apache Spark Machine Learning ライブラリを使用します。
 services: hdinsight
-documentationcenter: 
-tags: azure-portal
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
+author: maxluk
 ms.author: maxluk
-ms.openlocfilehash: 238ab5f940fbea836b75e20b015ae16f22eef3e9
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.reviewer: jasonh
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 01/19/2018
+ms.openlocfilehash: 3cd27438247b801e384b80d96ba288896b4c5aae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234224"
 ---
 # <a name="create-a-spark-machine-learning-pipeline"></a>Spark 機械学習パイプラインの作成
 
@@ -46,6 +40,11 @@ ML パイプラインの実際的な使用を示すために、この例では�
 4. トレーニング データを作成します。
 
 ```python
+from pyspark.ml import Pipeline
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.feature import HashingTF, Tokenizer
+from pyspark.sql import Row
+
 # The data structure (column meanings) of the data array:
 # 0 Date
 # 1 Time

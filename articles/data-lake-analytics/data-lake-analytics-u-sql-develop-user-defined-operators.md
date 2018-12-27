@@ -1,29 +1,23 @@
 ---
-title: U-SQL ユーザー定義演算子 (UDO) の開発 | Microsoft Docs
-description: 'Data Lake Analytics ジョブで使用および再使用されるユーザー定義演算子の開発方法について説明します。 '
+title: Azure Data Lake Analytics の U-SQL ユーザー定義演算子 (UDO) の開発
+description: Azure Data Lake Analytics ジョブで使用および再使用されるユーザー定義演算子の開発方法について説明します。
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: kfile
-editor: cgronlun
-ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 7c0b9c193f8f1c3a3043824186e337f942ebfd56
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: jasonwhowell
+ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
+ms.topic: conceptual
+ms.date: 12/05/2016
+ms.openlocfilehash: 9751801449eebc5d07ca4bbb9b408d9679fef24e
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43040992"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL ユーザー定義演算子 (UDO) の開発
-U-SQL ジョブ内のデータを処理するユーザー定義演算子を開発する方法について説明します。
-
-U-SQL の汎用アセンブリを開発する手順については、「[Develop U-SQL assemblies for Azure Data Lake Analytics jobs (Azure Data Lake Analytics ジョブの U-SQL アセンブリの開発)](data-lake-analytics-u-sql-develop-assemblies.md)」を参照してください
+このアーティクルでは、U-SQL ジョブ内のデータを処理するユーザー定義演算子を開発する方法について説明します。
 
 ## <a name="define-and-use-a-user-defined-operator-in-u-sql"></a>U-SQL でのユーザー定義演算子の定義と使用
 **U-SQL ジョブを作成して送信するには**
@@ -121,7 +115,7 @@ U-SQL の汎用アセンブリを開発する手順については、「[Develop
 8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトのビルド]** をクリックします。
 9. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトの送信]** をクリックします。
 10. Azure サブスクリプションに接続していない場合は、Azure アカウント資格情報の入力を求められます。
-11. **[送信]**をクリックします。 送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
+11. **[送信]** をクリックします。 送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
 12. 最新のジョブの状態を表示して、画面を更新するには、**[更新]** ボタンをクリックします。
 
 **出力を表示するには**
@@ -130,5 +124,5 @@ U-SQL の汎用アセンブリを開発する手順については、「[Develop
 2. [サンプル]、[出力] の順にクリックしてから、 **Drivers.csv**をダブルクリックします。
 
 ## <a name="see-also"></a>関連項目
-* [ユーザー コードによる U-SQL 式の拡張](https://msdn.microsoft.com/en-us/library/azure/mt621316.aspx)
+* [ユーザー コードによる U-SQL 式の拡張](https://msdn.microsoft.com/library/azure/mt621316.aspx)
 * [U-SQL アプリケーションを開発するための Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)

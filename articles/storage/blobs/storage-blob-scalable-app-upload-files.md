@@ -3,19 +3,19 @@ title: Azure Storage に大量のランダム データを並行でアップロ�
 description: Azure SDK を使用して Azure Storage アカウントに大量のランダム データを並行でアップロードする方法を説明します。
 services: storage
 author: roygara
-manager: jeconnoc
 ms.service: storage
-ms.workload: web
-ms.devlang: csharp
+ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 668700cf3ff3d1a90f9639129ef2953ddca016f1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: blobs
+ms.openlocfilehash: a69d67ee455b447eb038903bb8fafb644d025662
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565736"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Azure Storage に大量のランダム データを並行でアップロードする
 
@@ -65,11 +65,11 @@ setx storageconnectionstring "<storageConnectionString>" /m
 dotnet run
 ```
 
-アプリケーションでは、ランダムな名前のコンテナーを 5 つ作成し、ステージング ディレクトリのファイルをストレージ アカウントにアップロードする処理を開始します。 アプリケーションの実行時に大規模数の同時実行接続が確実に許可されるように、アプリケーションではスレッドの最小数を 100 に、また、[DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) を 100 に設定します。
+アプリケーションでは、ランダムな名前のコンテナーを 5 つ作成し、ステージング ディレクトリのファイルをストレージ アカウントにアップロードする処理を開始します。 アプリケーションの実行時に大規模数のコンカレント接続が確実に許可されるように、アプリケーションではスレッドの最小数を 100 に、また、[DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) を 100 に設定します。
 
 スレッドの設定と接続制限設定に加えて、[UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) メソッドの [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) が、並行処理を使用し MD5 ハッシュ検証が無効になるように構成されます。 ファイルは 100 MB のブロック単位でアップロードされます。この構成によってパフォーマンスは向上しますが、パフォーマンスが低いネットワークを使用している場合は、100 MB ブロック全体が再試行されるエラーが発生している場合と同然に、負荷が高くなる恐れがあります。
 
-|プロパティ|値|[説明]|
+|プロパティ|値|説明|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| アップロード時に、設定によって BLOB がブロックに分割されます。 最高のパフォーマンスを得るために、この値はコア数の 8 倍にしておく必要があります。 |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| このプロパティは、アップロードされたコンテンツの MD5 ハッシュのチェックを無効にします。 MD5 の検証を無効にすると、転送が高速になります。 ただし、転送されるファイルの有効性や整合性は確認されません。   |
@@ -95,7 +95,7 @@ private static async Task UploadFilesAsync()
         int max_outstanding = 100;
         int completed_count = 0;
 
-        // Define the BlobRequestionOptions on the upload.
+        // Define the BlobRequestOptions on the upload.
         // This includes defining an exponential retry policy to ensure that failed connections are retried with a backoff policy. As multiple large files are being uploaded
         // large block sizes this can cause an issue if an exponential retry policy is not defined.  Additionally parallel operations are enabled with a thread count of 8
         // This could be should be multiple of the number of cores that the machine has. Lastly MD5 hash validation is disabled for this example, this improves the upload speed.
@@ -174,7 +174,7 @@ Upload has been completed in 142.0429536 seconds. Press any key to continue
 
 ### <a name="validate-the-connections"></a>接続の検証
 
-ファイルのアップロード中に、ストレージ アカウントへの同時接続の数を確認できます。 **コマンド プロンプト**を開き、`netstat -a | find /c "blob:https"` を入力します。 このコマンドは、現在 `netstat` を使用して開かれている接続の数を示します。 実際にチュートリアルを実行したときに表示される出力の例を以下に示します。 この例からわかるように、ストレージ アカウントにランダム ファイルをアップロードするときに、800 個の接続が開かれました。 この値は、アップロードの実行全体を通して変化します。 ブロック チャンクを並行でアップロードすることで、コンテンツの転送に必要な時間が大幅に削減されます。
+ファイルのアップロード中に、ストレージ アカウントへのコンカレント接続の数を確認できます。 **コマンド プロンプト**を開き、`netstat -a | find /c "blob:https"` を入力します。 このコマンドは、現在 `netstat` を使用して開かれている接続の数を示します。 実際にチュートリアルを実行したときに表示される出力の例を以下に示します。 この例からわかるように、ストレージ アカウントにランダム ファイルをアップロードするときに、800 個の接続が開かれました。 この値は、アップロードの実行全体を通して変化します。 ブロック チャンクを並行でアップロードすることで、コンテンツの転送に必要な時間が大幅に削減されます。
 
 ```
 C:\>netstat -a | find /c "blob:https"
@@ -196,6 +196,6 @@ C:\>
 シリーズの第 3 部では、ストレージ アカウントから大量のデータをダウンロードする方法へと進みます。
 
 > [!div class="nextstepaction"]
-> [ストレージ アカウントに大量のランダム ファイルを並行でアップロードする](storage-blob-scalable-app-download-files.md)
+> [Azure Storage から大量のランダム データをダウンロードする](storage-blob-scalable-app-download-files.md)
 
 [previous-tutorial]: storage-blob-scalable-app-create-vm.md

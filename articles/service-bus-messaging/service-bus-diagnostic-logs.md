@@ -1,25 +1,26 @@
 ---
-title: "Azure Service Bus 診断ログ | Microsoft Docs"
-description: "Service Bus の診断ログを設定する方法について説明します。"
-keywords: 
+title: Azure Service Bus 診断ログ | Microsoft Docs
+description: Service Bus の診断ログを設定する方法について説明します。
+keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
-author: banisadr
+author: spelluru
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/05/2018
-ms.author: sethm
-ms.openlocfilehash: 4ce724adc9ca167634be9a0b7137b6a3d54211bf
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 09/05/2018
+ms.author: spelluru
+ms.openlocfilehash: 85bbd59cb921e5f20feb7b1cf1073fd7b695864f
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393572"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus の診断ログ
 
@@ -63,17 +64,17 @@ Azure Service Bus の 2 種類のログを表示できます。
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-Name | [説明]
+Name | 説明
 ------- | -------
 ActivityId | 内部 ID。追跡目的で使用されます
 EventName | 操作の名前           
-ResourceId | Azure Resource Manager リソース ID
+resourceId | Azure Resource Manager リソース ID
 SubscriptionId | サブスクリプション ID
 EventTimeString | 操作時間
 EventProperties | 操作プロパティ
-状態 | 操作の状態
+Status | 操作の状態
 Caller | 操作の呼び出し元 (Azure Portal または管理クライアント)
-カテゴリ | OperationalLogs
+category | OperationalLogs
 
 操作ログの JSON 文字列の例を次に示します。
 

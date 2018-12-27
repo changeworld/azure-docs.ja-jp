@@ -1,63 +1,68 @@
 ---
-title: "Azure Stream Analytics ジョブを使用した Azure Functions の実行 | Microsoft Docs"
-description: "Stream Analytics ジョブへの出力シンクとして Azure Functions を構成する方法を説明します。"
-keywords: "データ出力, ストリーミング データ, Azure Functions"
-documentationcenter: 
+title: チュートリアル:Azure Stream Analytics ジョブを使用して Azure Functions を実行する | Microsoft Docs
+description: このチュートリアルでは、Stream Analytics ジョブへの出力シンクとして Azure Functions を構成する方法を説明します。
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
 manager: kfile
-ms.assetid: 
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: tutorial
+ms.custom: mvc
 ms.workload: data-services
-ms.date: 12/19/2017
-ms.author: sngun
-ms.openlocfilehash: f2f4a8d8cda752dc6ed197b8402119f7cbcaf58f
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.date: 04/09/2018
+ms.author: mamccrea
+ms.reviewer: jasonh
+ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164162"
 ---
-# <a name="run-azure-functions-with-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブを使用した Azure Functions の実行 
+# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブから Azure Functions を実行する 
 
-Azure Stream Analytics で Azure Functions を実行するには、Stream Analytics ジョブへの出力シンクの 1 つとして Functions を構成します。 Functions はイベント ドリブン型コンピューティング オンデマンド エクスペリエンスであり、これにより、Azure またはサード パーティのサービスで発生するイベントによってトリガーされるコードを実装できます。 トリガーに応答する Azure Functions の機能によって、それは Azure Stream Analytics への自然な出力になります。
+Azure Stream Analytics から Azure Functions を実行するには、Stream Analytics ジョブへの出力シンクの 1 つとして Functions を構成します。 Functions はイベント ドリブン型コンピューティング オンデマンド エクスペリエンスであり、これにより、Azure またはサード パーティのサービスで発生するイベントによってトリガーされるコードを実装できます。 トリガーに応答する Azure Functions の機能によって、それは Azure Stream Analytics への自然な出力になります。
 
 Stream Analytics では、HTTP トリガーを使用して Functions を呼び出します。 Functions の出力アダプターにより、ユーザーは Functions を Stream Analytics に接続し、Stream Analytics クエリに基づいてイベントをトリガーできるようになります。 
 
-このチュートリアルでは、[Azure Functions](../azure-functions/functions-overview.md) を使用して、Stream Analytics を [Azure Redis Cache](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md) に接続する方法について説明します。 
+このチュートリアルでは、以下の内容を学習します。
+
+> [!div class="checklist"]
+> * Stream Analytics のジョブの作成
+> * Azure 関数の作成
+> * ジョブへの出力としての Azure 関数の構成
+
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>関数を実行するための Stream Analytics ジョブの構成を行う 
 
-このセクションでは、Azure Redis Cache にデータを書き込む関数を実行するための Stream Analytics ジョブの構成方法について説明します。 Stream Analytics ジョブは、Azure Event Hubs からイベントを読み取り、関数を呼び出すクエリを実行します。 この関数は、Stream Analytics ジョブからデータを読み取って、Azure Redis Cache に書き込みます。
+このセクションでは、Azure Cache for Redis にデータを書き込む関数を実行するための Stream Analytics ジョブの構成方法について説明します。 Stream Analytics ジョブは、Azure Event Hubs からイベントを読み取り、関数を呼び出すクエリを実行します。 この関数では、Stream Analytics ジョブからデータを読み取って、Azure Cache for Redis に書き込みます。
 
 ![Azure サービス間の関係を示す図](./media/stream-analytics-with-azure-functions/image1.png)
 
 このタスクを実現するためには、次の手順が必要です。
-* [入力としての Event Hubs で Stream Analytics ジョブを作成する](#create-stream-analytics-job-with-event-hub-as-input)  
-* [Azure Redis Cache インスタンスを作成する](#create-an-azure-redis-cache)  
-* [Azure Redis Cache にデータを書き込むことができる関数を Azure Functions で作成する](#create-an-azure-function-that-can-write-data-to-the-redis-cache)    
-* [出力としての関数で Stream Analytics ジョブを更新する](#update-the-stream-analytic-job-with-azure-function-as-output)  
-* [Azure Redis Cache の結果を確認する](#check-redis-cache-for-results)  
+* [入力としての Event Hubs で Stream Analytics ジョブを作成する](#create-a-stream-analytics-job-with-event-hubs-as-input)  
+* [Azure Cache for Redis インスタンスを作成する](#create-an-azure-redis-cache-instance)  
+* [Azure Cache for Redis にデータを書き込むことができる関数を Azure Functions で作成する](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* [出力としての関数で Stream Analytics ジョブを更新する](#update-the-stream-analytics-job-with-the-function-as-output)  
+* [Azure Cache for Redis の結果を確認する](#check-azure-redis-cache-for-results)  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>入力としての Event Hubs で Stream Analytics ジョブを作成する
 
 チュートリアル「[Azure Stream Analytics の使用 | リアルタイムの不正行為の検出](stream-analytics-real-time-fraud-detection.md)」の説明に従って、イベント ハブを作成し、イベント ジェネレーター アプリケーションを起動し、Stream Analytics ジョブを作成します  (クエリおよび出力を作成する手順は省略します。 Functions 出力を設定するには後続のセクションを参照してください)。
 
-## <a name="create-an-azure-redis-cache-instance"></a>Azure Redis Cache インスタンスを作成する
+## <a name="create-an-azure-cache-for-redis-instance"></a>Azure Cache for Redis インスタンスを作成する
 
-1. 「[キャッシュの作成](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)」に記載の手順を使用して、Azure Redis Cache でキャッシュを作成します。  
+1. 「[Create a cache](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)」 (キャッシュを作成する) で説明されている手順を使用して、Azure Cache for Redis でキャッシュを作成します。  
 
 2. キャッシュを作成したら、**[設定]** にある **[アクセス キー]** を選択します。 **プライマリ接続文字列**をメモします。
 
-   ![Azure Redis Cache の接続文字列のスクリーンショット](./media/stream-analytics-with-azure-functions/image2.png)
+   ![Azure Cache for Redis の接続文字列のスクリーンショット](./media/stream-analytics-with-azure-functions/image2.png)
 
-## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache"></a>Azure Redis Cache にデータを書き込むことができる関数を Azure Functions で作成する
+## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Azure Cache for Redis にデータを書き込むことができる関数を Azure Functions で作成する
 
 1. Functions ドキュメントの[関数アプリの作成](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)に関するセクションを参照してください。 関数アプリと [HTTP によってトリガーされる関数を Azure Functions で作成](../azure-functions/functions-create-first-azure-function.md#create-function) (CSharp 言語を使用して) する方法が説明されています。  
 
-2. **run.csx** 関数を参照します。 これを以下のコードで更新します  (“\<your redis cache connection string goes here \> (ここに、ご利用の Redis Cache 接続文字列が入ります)” を前のセクションで取得した Azure Redis Cache のプライマリ接続文字列に必ず置き換えます)。  
+2. **run.csx** 関数を参照します。 これを以下のコードで更新します  ("\<your Azure Cache for Redis connection string goes here\> (ここに、ご利用の Azure Cache for Redis 接続文字列が入ります)" を前のセクションで取得した Azure Cache for Redis のプライマリ接続文字列に必ず置き換えます)。  
 
    ```csharp
    using System;
@@ -80,7 +85,7 @@ Stream Analytics では、HTTP トリガーを使用して Functions を呼び�
       {        
          return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
       }
-      var connection = ConnectionMultiplexer.Connect("<your redis cache connection string goes here>");
+      var connection = ConnectionMultiplexer.Connect("<your Azure Cache for Redis connection string goes here>");
       log.Info($"Connection string.. {connection}");
     
       // Connection refers to a property that returns a ConnectionMultiplexer
@@ -180,19 +185,41 @@ Stream Analytics では、HTTP トリガーを使用して Functions を呼び�
     
 6.  Stream Analytics ジョブを開始します。
 
-## <a name="check-azure-redis-cache-for-results"></a>Azure Redis Cache の結果を確認する
+## <a name="check-azure-cache-for-redis-for-results"></a>Azure Cache for Redis の結果を確認する
 
-1. Azure Portal を参照して Azure Redis Cache を見つけます。 **[コンソール]** を説明します。  
+1. Azure portal を参照し、Azure Cache for Redis を見つけます。 **[コンソール]** を説明します。  
 
-2. [Redis キャッシュ コマンド](https://redis.io/commands)を使用して、Redis キャッシュに目的のデータがあることを確認します  (コマンドの形式は Get {key} となります)。例: 
+2. [Azure Cache for Redis コマンド](https://redis.io/commands)を使用して、Azure Cache for Redis にデータがあることを確認します  (コマンドの形式は Get {key} となります)。例: 
 
    **Get "12/19/2017 21:32:24 - 123414732"**
 
    このコマンドにより、指定したキーの値が出力されるはずです。
 
-   ![Azure Redis Cache 出力のスクリーンショット](./media/stream-analytics-with-azure-functions/image5.png)
+   ![Azure Cache for Redis 出力のスクリーンショット](./media/stream-analytics-with-azure-functions/image5.png)
+   
+## <a name="error-handling-and-retries"></a>エラー処理と再試行
+Stream Analytics は、Azure Functions へのイベントの送信中にエラーが発生した場合、操作を正常に完了するために再試行します。 ただし、再試行が行われないエラーがいくつかあります。たとえば、次のようなエラーです。
+
+ 1. HttpRequestExceptions
+ 2. 要求のエンティティが大きすぎます (Http エラー コード 413)
+ 3. ApplicationExceptions
 
 ## <a name="known-issues"></a>既知の問題
 
 Azure Portal では、最大バッチ サイズ/最大バッチ カウントの値を空 (既定値) にリセットしようとしても、保存時には以前に入力した値に戻ります。 この場合は、それらのフィールドに既定値を手動で入力します。
 
+Azure Functions での [HTTP ルーティング](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)の使用は、現在、Stream Analytics ではサポートされていません。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
+
+1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。  
+2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
+
+## <a name="next-steps"></a>次の手順
+
+このチュートリアルでは、Azure 関数を実行する単純な Stream Analytics ジョブを作成しました。Stream Analytics ジョブについてさらに学習するには、次のチュートリアルに進んでください。
+
+> [!div class="nextstepaction"]
+> [Stream Analytics ジョブ内で JavaScript ユーザー定義関数を実行する](stream-analytics-javascript-user-defined-functions.md)

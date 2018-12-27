@@ -2,22 +2,19 @@
 title: Azure Cosmos DB の要求およびストレージの監視 | Microsoft Docs
 description: パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) を利用して、Azure Cosmos DB アカウントを監視する方法について説明します。
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 4c6a2e6f-6e78-48e3-8dc6-f4498b235a9e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: sngun
-ms.openlocfilehash: 008c47bbceeba1345c56b5171f5fbc1f8676b02c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1f4bf4ba660e83be9879c56d04b27c932d563e17
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354069"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Azure Cosmos DB を監視する
 Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) から監視できます。 Azure Cosmos DB アカウントごとに、メトリックの完全なスイートが提供されており、スループット、ストレージ、可用性、待機時間、一貫性を監視できます。
@@ -35,9 +32,9 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
 
 ## <a name="view-performance-metrics-by-using-azure-monitoring"></a>Azure Monitoring を使用してパフォーマンス メトリックを表示する
 1. [Azure Portal](https://portal.azure.com/) で、左側のバーの **[モニター]** をクリックします。
-2. リソース メニューの **[メトリック]**をクリックします。
+2. リソース メニューの **[メトリック]** をクリックします。
 3. **[モニター - メトリック]** ウィンドウで、監視する Azure Cosmos DB アカウントに関連付けられたリソース グループを **[リソース グループ]** ドロップダウン メニューで選択します。 
-4. **[リソース]**ドロップ ダウン メニューで、監視するデータベース アカウントを選択します。
+4. **[リソース]** ドロップ ダウン メニューで、監視するデータベース アカウントを選択します。
 5. **[利用可能なメトリック]** の一覧で、表示するメトリックを選択します。 複数選択するには、Cｔｒｌ キーを使用します。 
 
 ## <a name="view-performance-metrics-on-the-account-page"></a>アカウントのページでパフォーマンス メトリックを表示する
@@ -79,7 +76,7 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
 
 クエリでメトリックを個別に取得する場合には、次の形式を使用します。
 
-    https://management.azure.com/subscriptions/{SubecriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
+    https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
 
 詳しくは、[Azure Monitor REST API を使用したリソース メトリックの取得](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/02/23/retrieving-resource-metrics-via-the-azure-insights-api/)に関する記事を参照してください。 なお、"Azure Insights" は "Azure Monitor" に名称変更されましたが、  このブログ記事では古い名称を使用しています。
 

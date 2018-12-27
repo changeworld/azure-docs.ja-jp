@@ -1,25 +1,21 @@
 ---
-title: "Azure SQL Data Warehouse のよく寄せられる質問 | Microsoft Docs"
-description: "この記事では、Azure SQL Data Warehouse に関して顧客と開発者からよく寄せられる質問を示します"
+title: Azure SQL Data Warehouse のよく寄せられる質問 | Microsoft Docs
+description: この記事では、Azure SQL Data Warehouse に関して顧客と開発者からよく寄せられる質問を示します
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: 812CA525-3BF3-49DF-8DF3-FB4342464F4F
+author: acomet
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: overview
-ms.date: 3/1/2017
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 4c00710ecc0c91f8407eca81b78176075fcbd6ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/17/2018
+ms.author: acomet
+ms.reviewer: igorstan
+ms.openlocfilehash: 35252b4d262833daef330a89f1874cc0835c480a
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306742"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse のよく寄せられる質問
 
@@ -53,7 +49,7 @@ A. 機能の要求がある場合は、[UserVoice] ページでお送りくだ�
 
 Q. 何かを行う方法を知るにはどうすればよいですか。
 
-A. SQL Data Warehouse での開発については、[Stack Overflow のページ]で質問できます。 
+A. SQL Data Warehouse での開発については、[Stack Overflow]で質問できます。 
 
 Q. サポート チケットはどのように送信すればよいですか。
 
@@ -92,7 +88,7 @@ A: Orc、RC、Parquet、およびフラット区切りテキストです。
 
 Q: PolyBase を使うと SQL DW から何に接続できますか。 
 
-A: [Azure Data Lake Store] と [Azure Storage Blob] です。
+A: [Azure Data Lake Store] と [Azure Storage Blobs] です。
 
 Q: Azure Storage Blob または ADLS に接続するとき、計算プッシュダウンは可能ですか。 
 
@@ -102,14 +98,14 @@ Q: HDI に接続できますか。
 
 A: HDI は、HDFS レイヤーとして ADLS または WASB を使うことができます。 HDFS レイヤーとしていずれかがある場合は、SQL DW にそのデータを読み込むことができます。 ただし、HDI インスタンスに対するプッシュダウン計算を生成することはできません。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SQL Data Warehouse 全体について詳しくは、[概要に関するページ]をご覧ください。
 
 
 <!-- Article references -->
 [UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [接続文字列に関するページ]: ./sql-data-warehouse-connection-strings.md
-[Stack Overflow のページ]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [サポート チケット]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [セキュリティ]: ./sql-data-warehouse-overview-manage-security.md
 [Microsoft のコンプライアンスに関するページ]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
@@ -117,7 +113,7 @@ SQL Data Warehouse 全体について詳しくは、[概要に関するページ
 [データ型に関するページ]: ./sql-data-warehouse-tables-data-types.md
 [サポートされていないテーブルの機能]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
-[Azure Storage Blob]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[Azure Storage Blobs]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
 [データベース プロジェクト機能要求に関するページ]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
-[MSDN]: https://msdn.microsoft.com/en-us/library/azure/mt163685.aspx
+[MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
 [概要に関するページ]: ./sql-data-warehouse-overview-faq.md

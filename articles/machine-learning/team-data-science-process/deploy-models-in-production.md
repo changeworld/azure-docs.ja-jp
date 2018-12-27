@@ -2,22 +2,24 @@
 title: 運用環境へモデルのデプロイ - Azure Machine Learning | Microsoft Docs
 description: ビジネス意思決定を行う上で有効な役割を果たすために、実稼働環境にモデルを展開する方法を説明します。
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: bradsev
-ms.openlocfilehash: ddb45dd5fae0fbdecebbc262d7bac78ff2b10f21
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 0505d58261ec32015f8847b710791249f87f049b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838294"
 ---
 # <a name="deploy-models-in-production"></a>運用環境でのモデルのデプロイ
 
@@ -27,7 +29,7 @@ ms.lasthandoff: 03/28/2018
 モデルを運用環境にデプロイするには、さまざまな方法とプラットフォームがあります。 いくつかの選択肢を次に示します。
 
 
-- [Azure Machine Learning でのモデルのデプロイ](../preview/model-management-overview.md)
+- [Azure Machine Learning でのモデルのデプロイ](../desktop-workbench/model-management-overview.md)
 - [SQL server でのモデルのデプロイ](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

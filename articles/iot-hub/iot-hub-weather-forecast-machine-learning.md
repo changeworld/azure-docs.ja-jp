@@ -1,25 +1,21 @@
 ---
-title: "Azure Machine Learning で IoT Hub からのデータを使用して天気予報を行う | Microsoft Docs"
-description: "Azure Machine Learning を使用して、IoT Hub がセンサーから収集した気温と湿度のデータに基づき、降水確率を予測します。"
-services: iot-hub
-documentationcenter: 
-author: shizn
-manager: timlt
-tags: 
-keywords: "機械学習を使用した天気予報"
-ms.assetid: 8ba7d9e7-699c-4448-b353-0f3e1429d198
+title: Azure Machine Learning で IoT Hub からのデータを使用して天気予報を行う | Microsoft Docs
+description: Azure Machine Learning を使用して、IoT Hub がセンサーから収集した気温と湿度のデータに基づき、降水確率を予測します。
+author: rangv
+manager: ''
+keywords: 機械学習を使用した天気予報
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/25/2017
-ms.author: xshi
-ms.openlocfilehash: ec6bd6b053f6546c77508d29065de25739619d96
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
+ms.author: rangv
+ms.openlocfilehash: a331f8a8a69ffe41a368c1b36f1680890aaac8bf
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666876"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う
 

@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: afb702a883606557c3ceaaaf2c2bd27073bab835
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164213"
+---
 <!--author=alkohli last changed: 01/18/2017-->
 
 
@@ -9,7 +22,7 @@
 
 3. デバイスに設定する言語を選択するように求められます。 言語を指定し、**Enter** キーを押します。
 
-4. 表示されるシリアル コンソール メニューで、オプション 1 を選択して**フル アクセスでログイン**します。
+4. 表示されるシリアル コンソール メニューで、オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択します。
      手順 5. ～ 12. に従って、デバイスで必要な最小のネットワーク設定を構成します。 **これらの構成手順は、デバイスのアクティブ コントローラーで実行する必要があります。** シリアル コンソール メニューでは、バナー メッセージにコントローラーの状態が示されます。 アクティブ コントローラーに接続されていない場合は、切断してアクティブ コントローラーに接続します。
 
 5. コマンド プロンプトにパスワードを入力します。 デバイスの既定のパスワードは **Password1**です。

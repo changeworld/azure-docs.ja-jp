@@ -1,30 +1,31 @@
 ---
-title: "クラスターの Azure Load Balancer 規則の作成"
-description: "Azure Service Fabric クラスターのポートを開くように Azure Load Balancer を構成します。"
+title: クラスターの Azure Load Balancer 規則の作成
+description: Azure Service Fabric クラスターのポートを開くように Azure Load Balancer を構成します。
 services: service-fabric
 documentationcenter: na
-author: thraka
+author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: adegeo
-ms.openlocfilehash: 71dbc2b5f6c3c37e432f5318169a088c5607f083
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.author: ryanwi
+ms.openlocfilehash: e41e5d48141b120ec1f80b0faa899bda07a2934e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962065"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric クラスターのポートを開く
 
 Azure Service Fabric クラスターにデプロイされたロード バランサーは、ノード上で動作するアプリにトラフィックを送信します。 別のポートを使用するようにアプリを変更する場合は、Azure Load Balancer でそのポートを公開 (または別のポートをルーティング) する必要があります。
 
-Service Fabric クラスターを Azure にデプロイすると、ロード バランサーが自動的に作成されます。 ロード バランサーがない場合は、[インターネットに接続するロード バランサーの構成](..\load-balancer\load-balancer-get-started-internet-portal.md)に関するページを参照してください。
+Service Fabric クラスターを Azure にデプロイすると、ロード バランサーが自動的に作成されます。 ロード バランサーがない場合は、[インターネットに接続するロード バランサーの構成](../load-balancer/load-balancer-get-started-internet-portal.md)に関するページを参照してください。
 
 ## <a name="configure-service-fabric"></a>Service Fabric の構成
 
@@ -32,7 +33,7 @@ Service Fabric アプリケーションの **ServiceManifest.xml** 構成ファ�
 
 ## <a name="create-a-load-balancer-rule"></a>ロード バランサー規則の作成
 
-ロード バランサー規則は、インターネットに接続するポートを開き、アプリケーションが使用する内部ノードのポートにトラフィックを転送します。 ロード バランサーがない場合は、[インターネットに接続するロード バランサーの構成](..\load-balancer\load-balancer-get-started-internet-portal.md)に関するページを参照してください。
+ロード バランサー規則は、インターネットに接続するポートを開き、アプリケーションが使用する内部ノードのポートにトラフィックを転送します。 ロード バランサーがない場合は、[インターネットに接続するロード バランサーの構成](../load-balancer/load-balancer-get-started-internet-portal.md)に関するページを参照してください。
 
 ロード バランサー規則を作成するには、次の情報を収集する必要があります。
 
@@ -67,7 +68,7 @@ Azure CLI コマンドには、いくつかのパラメーターがあります�
 
 
 >[!NOTE]
->Azure CLI を使用してロード バランサーを作成する方法の詳細については、[Azure CLI を使用したロード バランサーの作成](..\load-balancer\load-balancer-get-started-internet-arm-cli.md)に関するページを参照してください。
+>Azure CLI を使用してロード バランサーを作成する方法の詳細については、[Azure CLI を使用したロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-arm-cli.md)に関するページを参照してください。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -103,8 +104,8 @@ $lb | Set-AzureRmLoadBalancer
 `New-AzureRmLoadBalancerRuleConfig` コマンドでは、`-FrontendPort` はロード バランサーが外部接続用に公開するポートを表し、`-BackendPort` は Service Fabric アプリがリッスンするポートを表します。
 
 >[!NOTE]
->PowerShell を使用してロード バランサーを作成する方法の詳細については、[PowerShell を使用したロード バランサーの作成](..\load-balancer\load-balancer-get-started-internet-arm-ps.md)に関するページを参照してください。
+>PowerShell を使用してロード バランサーを作成する方法の詳細については、[PowerShell を使用したロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-arm-ps.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Service Fabric でのネットワーク](service-fabric-patterns-networking.md)の詳細について確認する。

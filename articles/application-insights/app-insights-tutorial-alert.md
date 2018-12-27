@@ -1,7 +1,7 @@
 ---
-title: "Azure Application Insights からのアラートの送信 | Microsoft Docs"
-description: "Azure Application Insights を使用して、アプリケーションのエラーに応じてアラートを送信するためのチュートリアルです。"
-keywords: 
+title: Azure Application Insights からのアラートの送信 | Microsoft Docs
+description: Azure Application Insights を使用して、アプリケーションのエラーに応じてアラートを送信するためのチュートリアルです。
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23659345"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Azure Application Insights でアプリケーションの正常性を監視してアラートを送信する
 

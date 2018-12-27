@@ -1,22 +1,22 @@
 ---
-title: Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にレプリケートする際に起こる問題のトラブルシューティング | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にレプリケートする際に起こる、一般的な問題の解決方法について説明します。
-services: site-recovery
-author: asgang
+title: Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にディザスター リカバリーする場合のレプリケーションの問題のトラブルシューティング | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にディザスター リカバリーする際の一般的なレプリケーションの問題のトラブルシューティング情報を提供します。
+author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: asgang
-ms.openlocfilehash: 9291840428c9a8d7ba5d65bc94ce5964728316f3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 10/29/2018
+ms.author: ramamill
+ms.openlocfilehash: 915f7d7d2d6be02dfef0cd6bb9a2fa156ed565bc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214734"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
-Azure Site Recovery を使用して VMware 仮想マシンや物理サーバーを保護する際には、特定のエラー メッセージが表示される場合があります。 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用してオンプレミスの VMware VM や物理サーバーをレプリケートする際に起こる、一般的な問題について説明します。
+VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使用して保護する際に、特定のエラー メッセージが表示される場合があります。 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用してオンプレミスの VMware VM や物理サーバーをレプリケートする際に起こる、一般的な問題について説明します。
 
 ## <a name="initial-replication-issues"></a>初期レプリケーションの問題。
 
@@ -73,25 +73,7 @@ Azure Site Recovery を使用して VMware 仮想マシンや物理サーバー�
 
 * **プロセス サーバーの URL ベースのファイアウォールがアクセスをブロックしていないかどうかを確認**: サーバーで URL ベースのファイアウォール ルールを使用している場合は、以下の URL がファイアウォール構成に追加されていることを確認します。
 
-  `*.accesscontrol.windows.net:` アクセス制御と ID 管理に使用
-
-  `*.backup.windowsazure.com:` レプリケーション データの転送とオーケストレーションに使用
-
-  `*.blob.core.windows.net:` レプリケートされたデータを格納するストレージ アカウントへのアクセスに使用
-
-  `*.hypervrecoverymanager.windowsazure.com:` レプリケーション管理操作とオーケストレーションに使用
-
-  `time.nist.gov` と `time.windows.com`: システム時刻とグローバル時刻間の時刻同期の確認に使用。
-
-**Azure Government クラウド**の URL:
-
-`* .ugv.hypervrecoverymanager.windowsazure.us`
-
-`* .ugv.backup.windowsazure.us`
-
-`* .ugi.hypervrecoverymanager.windowsazure.us`
-
-`* .ugi.backup.windowsazure.us`
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 * **プロセス サーバーのプロキシ設定がアクセスをブロックしていないかどうかを確認**:   プロキシ サーバーを使用している場合は、DNS サーバーでプロキシ サーバー名が解決されていることを確認します。
 構成サーバーのセットアップ時に指定した内容を確認するには、 レジストリ キーに移動します。

@@ -1,35 +1,29 @@
 ---
-title: "HDInsight の Hadoop において Hive および Pig で C# を使用する - Azure | Microsoft Docs"
-description: "Azure HDInsight において Hive および Pig のストリーミングで C# ユーザー定義関数 (UDF) を使用する方法について説明します。"
+title: HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig で C# を使用する - Azure
+description: Azure HDInsight 上の Apache Hive と Apache Pig のストリーミングで C# のユーザー定義関数 (UDF) を使用する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: d83def76-12ad-4538-bb8e-3ba3542b7211
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 8455a45f1c39c5cb04f742d57a16a81776f850e0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: hrasheed
+ms.openlocfilehash: 2ef88fff1313a0e7b1aa0abb502629512daaf636
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633837"
 ---
-# <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>HDInsight の Hadoop の Hive と Pig ストリーミングでの C# ユーザー定義関数 (UDF) の使用
+# <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig ストリーミングで C# のユーザー定義関数 (UDF) を使用する
 
-HDInsight において Apache Hive と Pig で C# ユーザー定義関数 (UDF) を使用する方法について説明します。
+HDInsight 上の Apache Hive と Apache Pig で C# のユーザー定義関数 (UDF) を使用する方法について説明します。
 
 > [!IMPORTANT]
 > このドキュメントの手順は、Linux および Windows ベースの HDInsight クラスターに対してのみ有効です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン管理](../hdinsight-component-versioning.md)」を参照してください。
 
-Hive と Pig では、両方とも、外部のアプリケーションにデータを渡して処理できます。 このプロセスは_ストリーミング_と呼ばれます。 .NET アプリケーションを使用する場合、データは STDIN 上のアプリケーションに渡され、そのアプリケーションから結果が STDOUT に返されます。 STDIN および STDOUT から読み取りと書き込みを実行する場合は、`Console.ReadLine()` と `Console.WriteLine()` をコンソール アプリケーションから使用できます。
+Hive と Pig では、両方とも、外部のアプリケーションにデータを渡して処理できます。 このプロセスは _ストリーミング_ と呼ばれます。 .NET アプリケーションを使用する場合、データは STDIN 上のアプリケーションに渡され、そのアプリケーションから結果が STDOUT に返されます。 STDIN および STDOUT から読み取りと書き込みを実行する場合は、`Console.ReadLine()` と `Console.WriteLine()` をコンソール アプリケーションから使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +31,7 @@ Hive と Pig では、両方とも、外部のアプリケーションにデー�
 
     * 必要なすべての IDE を使用します。 [Visual Studio](https://www.visualstudio.com/vs) 2015、2017、または [Visual Studio Code](https://code.visualstudio.com/) をお勧めします。 このドキュメントの手順では、Visual Studio 2017 を使用します。
 
-* .exe ファイルをクラスターにアップロードして Pig と Hive のジョブを実行する方法。 Visual Studio、Azure PowerShell、Azure CLI の Data Lake ツールをお勧めします。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、ファイルをアップロードし、サンプルの Hive クエリを実行します。
+* .exe ファイルをクラスターにアップロードして Pig と Hive のジョブを実行する方法。 Visual Studio、Azure PowerShell、Azure Classic CLI の Data Lake ツールをお勧めします。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、ファイルをアップロードし、サンプルの Hive クエリを実行します。
 
     Hive クエリと Pig ジョブを実行する他の方法については、次のドキュメントを参照してください。
 
@@ -49,7 +43,7 @@ Hive と Pig では、両方とも、外部のアプリケーションにデー�
 
 ## <a name="net-on-hdinsight"></a>HDInsight の .NET
 
-* [Mono (https://mono-project.com)](https://mono-project.com) を使用した __Linux ベースの HDInsight__ クラスターで .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。
+* __Linux ベースの HDInsight__ クラスターでは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。
 
     .NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](http://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
 
@@ -166,19 +160,19 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 2. **[Azure]** を展開して、**[HDInsight]** を展開します。
 
-3. 入力を求められた場合は、Azure サブスクリプションの資格情報を入力し、 **[サインイン]**をクリックします。
+3. 入力を求められた場合は、Azure サブスクリプションの資格情報を入力し、 **[サインイン]** をクリックします。
 
 4. このアプリケーションをデプロイする HDInsight クラスターを展開します。 エントリとテキスト __(既定のストレージ アカウント)__ が一覧表示されます。
 
     ![クラスターのストレージ アカウントを表示するサーバー エクスプローラー](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
+    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__ を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
 
     * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Store__ を使用します。 クラスターの既定のストレージにファイルを表示するには、__(既定のストレージ アカウント)__ エントリをダブルクリックします。
 
 6. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
 
-    * __Azure ストレージ アカウント__を使用している場合は、アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
+    * __Azure ストレージ アカウント__ を使用している場合は、アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
 
         ![アップロード アイコン](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
@@ -216,13 +210,13 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 5. **[送信]** をクリックして、HDInsight クラスターにジョブを送信します。 **[Hive ジョブの概要]** ウィンドウが開きます。
 
-6. **[更新]** をクリックし、**[ジョブの状態]** が **[完了]** に変わるまで概要を更新します。 ジョブの出力を表示するには、 **[ジョブの出力]**をクリックします。
+6. **[更新]** をクリックし、**[ジョブの状態]** が **[完了]** に変わるまで概要を更新します。 ジョブの出力を表示するには、 **[ジョブの出力]** をクリックします。
 
 ## <a name="run-a-pig-job"></a>Pig ジョブを実行する
 
 1. HDInsight クラスターに接続するには、次のいずれかの方法を使用します。
 
-    * __Linux ベース__の HDInsight クラスターを使用している場合は、SSH を使用します。 たとえば、「`ssh sshuser@mycluster-ssh.azurehdinsight.net`」のように入力します。 詳細については、「[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+    * __Linux ベース__ の HDInsight クラスターを使用している場合は、SSH を使用します。 たとえば、「 `ssh sshuser@mycluster-ssh.azurehdinsight.net` 」のように入力します。 詳細については、「[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
     
     * __Windows ベース__ の HDInsight クラスターを使用している場合は、[リモート デスクトップを使用してクラスターに接続します。](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
 

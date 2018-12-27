@@ -1,25 +1,19 @@
 ---
-title: "Azure Analysis Services でサポートされるデータ ソース | Microsoft Docs"
-description: "Azure Analysis Services のデータ モデルでサポートされるデータ ソースについて説明します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services でサポートされるデータ ソース | Microsoft Docs
+description: Azure Analysis Services のデータ モデルでサポートされるデータ ソースについて説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 6ec63319-ff9b-4b01-a1cd-274481dc8995
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/27/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: owend
-ms.openlocfilehash: 9f2a4acdd0a2b29bc1485f62c0049f0065cbf711
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.reviewer: minewiskan
+ms.openlocfilehash: 7d8bde6beeb4bd0c6234d7c5aa63be9e150953f5
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427248"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -29,16 +23,14 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 
 |データソース  |メモリ内  |DirectQuery  |
 |---------|---------|---------|
-|の接続文字列     |   [はい]      |    [はい]      |
+|Azure SQL Database     |   [はい]      |    [はい]      |
 |Azure SQL Data Warehouse     |   [はい]      |   [はい]       |
 |Azure Blob Storage*     |   [はい]       |    いいえ       |
 |Azure Table Storage*    |   [はい]       |    いいえ       |
-|Azure Cosmos DB (ベータ)*     |  [はい]        |  いいえ         |
+|Azure Cosmos DB*     |  [はい]        |  いいえ         |
 |Azure Data Lake Store*     |   [はい]       |    いいえ       |
 |Azure HDInsight HDFS*     |     [はい]     |   いいえ        |
-|Azure HDInsight Spark (ベータ)*     |   [はい]       |   いいえ        |
-|Azure Database for MySQL (プレビュー)*     |   [はい]       |   いいえ       |
-|Azure Database for PostgreSQL (プレビュー)*     | [はい]         |  いいえ        |
+|Azure HDInsight Spark*     |   [はい]       |   いいえ        |
 ||||
 
 \* 表形式 1400 モデルのみ。
@@ -71,7 +63,8 @@ Azure AS サーバーからオンプレミスのデータ ソースに接続す�
 |Dynamics CRM*     |  
 |Excel ブック     |  
 |Exchange*     |  
-|フォルダー*     | 
+|フォルダー*     |
+|IBM Informix* (ベータ) |
 |JSON ドキュメント*     |  
 |バイナリからの行*     | 
 |MySQL Database     | 
@@ -79,6 +72,8 @@ Azure AS サーバーからオンプレミスのデータ ソースに接続す�
 |ODBC クエリ     | 
 |OLE DB     |   
 |Postgre SQL データベース*    | 
+|Salesforce オブジェクト* |  
+|Salesforce レポート* |
 |SAP HANA*    |  
 |SAP Business Warehouse*    |  
 |SharePoint*     |   

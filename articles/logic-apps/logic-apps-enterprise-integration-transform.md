@@ -1,27 +1,24 @@
 ---
-title: 変換による XML データの変更 - Azure Logic Apps | Microsoft Docs
-description: Enterprise Integration SDK を使用して、ロジック アプリで XML データの形式を変更する変換 (マップ) を作成する
+title: データ形式間の XML 変換 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack でデータ形式間の XML 変換 (マップ) を作成します。
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: anneta
-editor: cgronlun
-ms.assetid: add01429-21bc-4bab-8b23-bc76ba7d0bde
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: add01429-21bc-4bab-8b23-bc76ba7d0bde
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: fd59b6b3f51adb538e774bc5bb089880ca22e97e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9dd471f70407191734b4c5a3aa84d5365a7beab8
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125297"
 ---
-# <a name="enterprise-integration-with-xml-transforms"></a>XML 変換での Enterprise Integration
-## <a name="overview"></a>概要
+# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack でデータ形式間の XML 変換マップを作成する
+
 Enterprise Integration Transform コネクタは、データをある形式から別の形式に変換します。 たとえば、受信メッセージに YearMonthDay 形式で現在の日付が含まれていたとします。 この日付を、変換を使用して MonthDayYear 形式に変更できます。
 
 ## <a name="what-does-a-transform-do"></a>変換でできること

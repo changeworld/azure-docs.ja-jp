@@ -1,23 +1,24 @@
 ---
-title: "Azure Active Directory Access Control Service から Shared Access Signature 承認への移行 | Microsoft Docs"
-description: "Access Control Service から SAS へのアプリケーションの移行"
+title: Azure Active Directory Access Control Service から Shared Access Signature 承認への移行 | Microsoft Docs
+description: Access Control Service から SAS へのアプリケーションの移行
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2017
-ms.author: sethm
-ms.openlocfilehash: 7a2a55a6ad6a721a39c9f064aad817f841dd3235
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.date: 09/21/2018
+ms.author: spelluru
+ms.openlocfilehash: 7045172fcd3c64cb0d979f5e3e8381c49579f1d2
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855257"
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Active Directory Access Control Service から Shared Access Signature 承認への移行
 
@@ -65,5 +66,4 @@ Service Bus 認証の詳細については、次のトピックをご覧くだ�
 
 * [Service Bus の認証と承認](service-bus-authentication-and-authorization.md)
 * [Shared Access Signature による Service Bus の認証](service-bus-sas.md)
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 

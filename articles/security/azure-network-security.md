@@ -1,12 +1,12 @@
 ---
-title: "Azure のネットワーク セキュリティ | Microsoft Docs"
-description: "クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。"
+title: Azure のネットワーク セキュリティ | Microsoft Docs
+description: クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f0cc1716daa70bf7c860373819568774cf6f95d9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 1d94ac5f799fc4bad13ab6a5e97a225a7499380d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405975"
 ---
 # <a name="azure-network-security"></a>Azure のネットワーク セキュリティ
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 11/22/2017
 
 Microsoft Azure では、透過的な説明責任を実現しつつ、顧客データの機密性、整合性、および可用性を提供しています。 この記事「Azure Security の概要」は、Microsoft Azure に実装されている多数のネットワーク セキュリティ コントロールについて、お客様側の観点から理解を深めるために作成されました。この記事では、Microsoft Azure で使用できるネットワーク セキュリティ コントロールについて総合的に説明します。
 
-この記事は、Azure にデプロイするソリューションのセキュリティを強化するために構成できる幅広いネットワーク コントロールに関する情報を提供します。 Azure プラットフォーム自体のネットワーク ファブリックのセキュリティを確保するマイクロソフトの対策について詳しくは、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/security/azure-security) の Azure セキュリティのセクションをご覧ください。
+この記事は、Azure にデプロイするソリューションのセキュリティを強化するために構成できる幅広いネットワーク コントロールに関する情報を提供します。 Azure プラットフォーム自体のネットワーク ファブリックのセキュリティを確保するマイクロソフトの対策について詳しくは、[Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/cloudservices/azure) の Azure セキュリティのセクションをご覧ください。
 
 ## <a name="azure-platform"></a>Azure プラットフォーム
 
@@ -178,9 +179,9 @@ VM ロール インスタンスと Cloud Services ロール インスタンス�
 
 **ルーティング**
 
-必要に応じて、独自のルートを構成するかネットワーク ゲートウェイ経由で BGP ルートを使用することで、Azure の既定のルーティングを上書きできます。
+必要に応じて、独自のルートを構成するかネットワーク ゲートウェイ経由で BGP ルートを使用することで、Azure の既定のルーティングをオーバーライドできます。
 
-Azure では、VNet 内の任意のサブネットに接続されている複数のリソースが相互通信できるようにするルート テーブルが既定で作成されます。 次のオプションのいずれかまたは両方を実装して、Azure によって作成される既定のルートを上書きできます。
+Azure では、VNet 内の任意のサブネットに接続されている複数のリソースが相互通信できるようにするルート テーブルが既定で作成されます。 次のオプションのいずれかまたは両方を実装して、Azure によって作成される既定のルートをオーバーライドできます。
 
 - **ユーザー定義ルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含むカスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)に関する記事をご覧ください。
 
@@ -365,7 +366,7 @@ Azure ネットワークのセキュリティ アプライアンスは VNet の�
 
 -   多要素認証
 
-#### <a name="application-gateway"></a>フロント エンド
+#### <a name="application-gateway"></a>Application gateway
 
 [Microsoft Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) は専用の仮想アプライアンスで、サービスとしてアプリケーション配信コントローラー (ADC) を提供します。
 
@@ -392,7 +393,7 @@ Application Gateway の WAF は検出モードや保護モードで実行でき�
 
 JSON 形式のログはお客様のストレージ アカウントに直接入ります。 これらのログは完全に制御可能で、独自のアイテム保持ポリシーを適用できます。
 
-また、[Azure ログ統合](https://aka.ms/AzLog)を使用してそれらのログを独自の分析システムに取り込むこともできます。 WAF のログは [Operations Management Suite (OMS)](https://www.microsoft.com/cloud-platform/operations-management-suite) にも統合されており、OMS のログ分析を使用して洗練されたきめ細かなクエリを実行できます。
+また、[Azure ログ統合](https://aka.ms/AzLog)を使用してそれらのログを独自の分析システムに取り込むこともできます。 WAF のログは [Log Analytics](../log-analytics/log-analytics-overview.md) にも統合されており、Log Analytics を使用して洗練されたきめ細かなクエリを実行できます。
 
 #### <a name="azure-web-application-firewall-waf"></a>Azure Web アプリケーション ファイアウォール (WAF)
 
@@ -459,8 +460,6 @@ Azure ネットワークの検証は、Azure ネットワークが構成され�
 
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
 
--   [Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
-
 -   [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
 -   [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
@@ -469,7 +468,7 @@ Azure で運用可能なセキュリティとは、ユーザーのデータ、�
 
 -   [Azure Storage analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
--   Azure リソース マネージャー
+-   Azure Resource Manager
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -477,7 +476,7 @@ Microsoft Azure を運用するユーザーやプロセスは、おそらくプ�
 
 アプリケーションのインフラストラクチャは通常、仮想マシン、ストレージ アカウント、仮想ネットワーク、Web アプリ、データベース、データベース サーバー、サード パーティのサービスなど、複数のコンポーネントで構成されます。 これらのコンポーネントは別々のエンティティではなく、1 つのエンティティの中で互いに関連付けられ相互依存しています。 これらのコンポーネントを、1 つのグループとしてデプロイ、管理、および監視するのが好ましいです。 Azure Resource Manager を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。
 
-ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 リソース マネージャーには、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
+ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
 
 **Resource Manager を使用する利点**
 
@@ -532,7 +531,7 @@ Network Watcher は地域サービスであり、ネットワーク シナリオ
 
 #### <a name="variable-packet-capture"></a>可変パケット キャプチャ
 
-Network Watcher の[可変パケット キャプチャ](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)を使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するパケット キャプチャ セッションを作成できます。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報の取得などがあり、クライアントとサーバーの間で行われる通信のデバッグなどに役立ちます。
+Network Watcher の[可変パケット キャプチャ](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)を使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するパケット キャプチャ セッションを作成できます。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報を取得などがあり、クライアント サーバー間の通信のデバッグなどに役立ちます。
 
 パケット キャプチャは、Network Watcher によりリモートで開始される、仮想マシン拡張機能です。 この機能により、目的の仮想マシンでパケット キャプチャを手動で実行する負担が軽減され、貴重な時間の節約になります。 パケット キャプチャは、ポータル、PowerShell、CLI、REST API を介してトリガーできます。 パケット キャプチャをトリガーできる方法の一例は、仮想マシンのアラートの使用です。
 
@@ -606,7 +605,7 @@ Network Watcher には診断ログ ビューが用意されています。 こ�
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) は、[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
+[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) は Azure のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
 
 Log Analytics には、ネットワークを監視することを目的とした次のソリューションが用意されています。
 
@@ -650,7 +649,7 @@ Application Gateway に関しては、次のメトリックがサポートされ
 
 - **NetworkSecurityGroupRuleCounter:** トラフィックを許可または拒否するために各 NSG ルールが適用された回数に関するエントリが含まれます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 セキュリティについて詳しくは、セキュリティについて掘り下げた次のトピックをご覧ください。
 
 -   [ネットワーク セキュリティ グループ (NSG) のためのログ分析](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)

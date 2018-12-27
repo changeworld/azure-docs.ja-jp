@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 17dea2d1106a57aa678a88db6647c71048d8c38f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bbbbaab6090941141abd7a2bbd2eac6dbf9fd354
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051544"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-ftp-connector.md)
-> * [バージョン 2 - プレビュー](../connector-ftp.md)
+> * [Version 1](data-factory-ftp-connector.md)
+> * [Version 2 (現在のバージョン)](../connector-ftp.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での FTP コネクター](../connector-ftp.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の FTP コネクタ](../connector-ftp.md)に関するページを参照してください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、FTP サーバーからデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
@@ -63,9 +64,9 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、FTP リンク サービスに固有の JSON 要素について説明しています。
 
-| プロパティ | [説明] | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
-| 型 |FtpServer に設定します。 |[はい] |&nbsp; |
+| type |FtpServer に設定します。 |[はい] |&nbsp; |
 | host |FTP サーバーの名前または IP アドレスを指定します。 |[はい] |&nbsp; |
 | authenticationType |認証の種類を指定します。 |[はい] |Basic、Anonymous |
 | username |FTP サーバーへのアクセスを持つユーザーを指定します。 |いいえ  |&nbsp; |
@@ -75,6 +76,9 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 | ポート |FTP サーバーがリッスンしているポートを指定します。 |いいえ  |21 |
 | enableSsl |SSL/TLS チャネル上の FTP を使用するかどうかを指定します。 |いいえ  |true |
 | enableServerCertificateValidation |FTP over SSL/TLS チャネルを使用しているときにサーバーの SSL 証明書の検証を有効にするかどうかを指定します。 |いいえ  |true |
+
+>[!NOTE]
+>FTP コネクタでは、暗号化なしまたは明示的な SSL/TLS 暗号化での FTP サーバーへのアクセスがサポートされています。暗黙的な SSL/TLS 暗号化はサポートされていません。
 
 ### <a name="use-anonymous-authentication"></a>匿名認証を使用
 
@@ -150,7 +154,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 
 **typeProperties** セクションは、データセットの型ごとに異なります。 これは、データセット型に固有の情報を提供します。 **FileShare** 型のデータセットの **typeProperties** セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのサブパス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始および終了日時に基づくフォルダー パスを使用できます。 |[はい] |
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに **fileName** が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ  |
@@ -201,7 +205,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 
 コピー アクティビティで、source が **FileSystemSource** 型の場合は、**typeProperties** セクションで次のプロパティを使用できます:
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | recursive |データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True、False (既定値) |いいえ  |
 

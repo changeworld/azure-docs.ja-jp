@@ -1,26 +1,20 @@
 ---
-title: "Azure HDInsight で実行される Apache Spark ジョブのデバッグ | Microsoft Docs"
-description: "Azure HDInsight の Spark クラスターで実行されるジョブの追跡とデバッグには、YARN UI、Spark UI、Spark History Server を使用します。"
+title: Azure HDInsight で実行される Apache Spark ジョブのデバッグ
+description: Azure HDInsight の Spark クラスターで実行されるジョブの追跡とデバッグには、YARN UI、Spark UI、Spark History Server を使用します。
 services: hdinsight
-documentationcenter: 
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 59af05a7-2bd9-44b0-b55f-2438d294198b
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: jgao
-ms.openlocfilehash: 5606df8770cf611d7d278800c9871bee17c5b895
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: hrasheed
+ms.openlocfilehash: c1589ab2662c3cfb4485afbd73f3d69d50e3cefd
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013634"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight で実行される Apache Spark ジョブのデバッグ
 
@@ -47,14 +41,14 @@ ms.lasthandoff: 02/21/2018
     ![Find Spark application ID](./media/apache-spark-job-debugging/find-application-id.png)
    
     Jupyter Notebook から起動されたアプリケーションの場合、ノートブックを終了するまでステータスは常に **[実行中]** になります。
-3. アプリケーション ビューからドリルダウンして、アプリケーションやログ (stdout/stderr) に関連付けられているコンテナーを探すことができます。 次のように、 **[追跡 URL]**に対応するリンクをクリックして Spark UI を起動することもできます。 
+3. アプリケーション ビューからドリルダウンして、アプリケーションやログ (stdout/stderr) に関連付けられているコンテナーを探すことができます。 次のように、 **[追跡 URL]** に対応するリンクをクリックして Spark UI を起動することもできます。 
    
     ![Download container logs](./media/apache-spark-job-debugging/download-container-logs.png)
 
 ## <a name="track-an-application-in-the-spark-ui"></a>Spark UI でのアプリケーションの追跡
 以前アプリケーションを実行したときに生成された Spark ジョブは、Spark UI からドリルダウンすることができます。
 
-1. Spark UI を起動するには、アプリケーション ビューから **[追跡 URL]**に対応するリンクをクリックします (上のスクリーン ショットを参照)。 Jupyter Notebook で実行中のアプリケーションによって開始されたすべての Spark ジョブを表示できます。
+1. Spark UI を起動するには、アプリケーション ビューから **[追跡 URL]** に対応するリンクをクリックします (上のスクリーン ショットを参照)。 Jupyter Notebook で実行中のアプリケーションによって開始されたすべての Spark ジョブを表示できます。
    
     ![View Spark jobs](./media/apache-spark-job-debugging/view-spark-jobs.png)
 2. **[Executors]** タブをクリックすると、実行プログラムごとの処理や記憶域の情報が表示されます。 **[Thread Dump (スレッド ダンプ)]** リンクをクリックして呼び出し履歴を取得することもできます。
@@ -108,6 +102,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="see-also"></a>関連項目
 *  [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
+*  [拡張された Spark History Server を使用して Spark ジョブをデバッグする方法に関する記事](apache-azure-spark-history-server.md)
 
 ### <a name="for-data-analysts"></a>データ アナリスト向け
 

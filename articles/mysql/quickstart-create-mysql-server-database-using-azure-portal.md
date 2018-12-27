@@ -6,15 +6,16 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 03/20/2018
-ms.openlocfilehash: 8740da198036e9b628c633b97a02fb4963db9879
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 11/01/2018
+ms.openlocfilehash: b413636f173a682ed74bf92688126d33d429839e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959224"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL サーバーの作成
 
@@ -43,14 +44,14 @@ Azure Database for MySQL サーバーを作成するには、次の手順に従�
     **設定** | **推奨値** | **フィールドの説明** 
     ---|---|---
     サーバー名 | 一意のサーバー名 | Azure Database for MySQL サーバーを識別する一意の名前を選択します。 たとえば mydemoserver を選択します。 指定したサーバー名にドメイン名 *.mysql.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 ～ 63 文字にする必要があります。
-    [サブスクリプション] | 該当するサブスクリプション | サーバーに使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
+    サブスクリプション | 該当するサブスクリプション | サーバーに使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     リソース グループ | *myresourcegroup* | 新規または既存のリソース グループの名前を入力します。    リソース グループ|*myresourcegroup*| 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。
     ソースの選択 | "*空白*" | *[空白]* を選択し、最初から新しいサーバーを作成します  (既存の Azure Database for MySQL サーバーの geo バックアップからサーバーを作成する場合は、*[Backup]* を選択します)。
     サーバー管理者のログイン | myadmin | サーバーに接続するときに使用するサインイン アカウント。 管理者のサインイン名に **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
     パスワード | *<任意>* | サーバー管理者アカウントの新しいパスワードを入力します。 8 文字以上 128 文字以内にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 ～ 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
     パスワードの確認 | *<任意>*| 管理者アカウントのパスワードを確認します。
-    場所 | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
-    バージョン | "*最新バージョン*"| 最新バージョン (別のバージョンを指定する特定の要件がある場合を除く)。
+    Location | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
+    Version | *最新のメジャー バージョン*| 最新メジャー バージョン (別のバージョンを指定する特定の要件がある場合を除く)。
     [価格レベル]  | **汎用**、**Gen 4**、**2 仮想コア**、**5 GB**、**7 日**、**地理冗長** | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[価格レベル]** を選択します。 次に、**[汎用]** タブを選択します。*Gen 4*、"*2 仮想コア*"、*5 GB*、および "*7 日*" は、それぞれ **[コンピューティング世代]**、**[仮想コア]**、**[ストレージ]**、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、**[バックアップ冗長オプション]** から **[地理冗長]** を選択します。 この価格レベルの選択を保存するには、**[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
   
     > [!IMPORTANT]
@@ -73,17 +74,11 @@ Azure Database for MySQL サービスでは、サーバー レベルでファイ
 
 2. サーバーのページで、**[接続のセキュリティ]** を選択します。
 
-3.  **[ファイアウォール規則]** という見出しの下で、**[規則名]** 列の空白のテキスト ボックスを選択し、ファイアウォール規則の作成を開始します。 
-
-   このクイックスタートでは、各列のボックスに以下の値を入力することで、サーバーへのすべての IP アドレスを許可します。
-
-   規則の名前 | 開始 IP | 終了 IP 
-   ---|---|---
-   AllowAllIps |  0.0.0.0 | 255.255.255.255
+3.  **[ファイアウォール規則]** という見出しの下で、**[規則名]** 列の空白のテキスト ボックスを選択し、ファイアウォール規則の作成を開始します。 このサーバーにアクセスする予定のクライアントの正確な IP の範囲を入力します。
    
-   ![[接続のセキュリティ] - [ファイアウォール規則]](./media/quickstart-create-mysql-server-database-using-azure-portal/5_firewall-settings.png)
+   ![[接続のセキュリティ] - [ファイアウォール規則]](./media/quickstart-create-mysql-server-database-using-azure-portal/5-firewall-2.png)
 
-   すべての IP アドレスを許可することは、安全とは言えません。 この例は単純化していますが、実際のシナリオでは、アプリケーションとユーザーのために追加する IP アドレス範囲を厳密に把握しておく必要があります。 
+
 
 4. **[接続のセキュリティ]** ページの上部のツール バーで、**[保存]** を選択します。 更新が正常に完了したことを示す通知が表示されるまで待ってから次に進んでください。 
 
@@ -103,20 +98,9 @@ Azure Database for MySQL サービスでは、サーバー レベルでファイ
 この例では、サーバー名は **mydemoserver.mysql.database.azure.com**、サーバー管理者サインインは **myadmin@mydemoserver** です。
 
 ## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>mysql コマンド ライン ツールを使用した MySQL への接続
-Azure Database for MySQL サーバーに接続するために使用できるアプリケーションは多数あります。 
+**mysql.exe** コマンドライン ツールを使用してサーバーに接続します。 MySQL を[ここ](https://dev.mysql.com/downloads/)からダウンロードして、コンピューターにインストールすることができます。 
 
-まず、サーバーに接続する方法を示すために、[mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) コマンドライン ツールを使用してみましょう。 別途ソフトウェアをインストールしなくても、ここで説明するように、Web ブラウザーと Azure Cloud Shell を使用することもできます。 mysql ユーティリティがローカルにインストールしてある場合は、そこからも接続できます。
-
-1. Azure Portal の右上にあるターミナル アイコン (**>_**) で Azure Cloud Shell を起動します。
-![Azure Cloud Shell のターミナル シンボル](./media/quickstart-create-mysql-server-database-using-azure-portal/7-cloud-console.png)
-
-2.  Azure Cloud Shell がブラウザーで開き、bash シェル コマンドを入力できます。
-
-   ![コマンド プロンプト - mysql コマンド ラインの例](./media/quickstart-create-mysql-server-database-using-azure-portal/8-bash.png)
-
-3. Cloud Shell プロンプトで、mysql コマンド ラインを入力して Azure Database for MySQL サーバーに接続します。
-
-    mysql ユーティリティで Azure Database for MySQL サーバーに接続するには、次の形式を使用します。
+1. mysql ユーティリティで Azure Database for MySQL サーバーに接続するには、次の形式を使用します。
 
     ```bash
     mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
@@ -124,13 +108,13 @@ Azure Database for MySQL サーバーに接続するために使用できるア�
 
     たとえば、次のコマンドは、サンプル サーバーに接続します。
 
-    ```azurecli-interactive
+    ```bash
     mysql --host mydemoserver.mysql.database.azure.com --user myadmin@mydemoserver -p
     ```
 
-    mysql パラメーター |推奨値|[説明]
+    mysql パラメーター |推奨値|説明
     ---|---|---
-    --host | *[サーバー名]* | 前に Azure Database for MySQL サーバーを作成したときに使用したサーバー名の値。 この例におけるサーバーは、**mydemoserver.mysql.database.azure.com** です。例で示されているように、完全修飾ドメイン名 (**\*.mysql.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
+    --host | *サーバー名* | 前に Azure Database for MySQL サーバーを作成したときに使用したサーバー名の値。 この例におけるサーバーは、**mydemoserver.mysql.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (**\*.mysql.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     --user | "*サーバー管理者ログイン名*" |前の手順で Azure Database for MySQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username@servername* です。
     -p | "*プロンプトが表示されるまで待つ*" |プロンプトが表示されたら、サーバーの作成時に指定したのと同じパスワードを入力してください。 入力したパスワードの文字は bash プロンプトには表示されないことに注意してください。 パスワードを入力したら、**Enter** キーを押します。
 
@@ -154,7 +138,7 @@ Azure Database for MySQL サーバーに接続するために使用できるア�
     mysql>
     ```
     > [!TIP]
-    > Azure Cloud Shell の IP アドレスを許可するようにファイアウォールが構成されていない場合、次のエラーが発生します。
+    > クライアントの IP アドレスを許可するようにファイアウォールが構成されていない場合、次のエラーが発生します。
     >
     > エラー 2003 (28000): IP アドレス 123.456.789.0 のクライアントはこのサーバーへのアクセスが許可されていません。
     >
@@ -183,7 +167,7 @@ Azure Database for MySQL サーバーに接続するために使用できるア�
     SHOW DATABASES;
     ```
 
-7.  「`\q`」を入力してから、**Enter** キーを押して mysql ツールを終了します。 終了したら Azure Cloud Shell を閉じることができます。
+7.  「`\q`」を入力してから、**Enter** キーを押して mysql ツールを終了します。 
 
 これで、Azure Database for MySQL サーバーに接続し、空のユーザー データベースを作成することができました。 次のセクションに進んで、同様の練習をしましょう。 次の練習では、広く使われているもう 1 つのツール、MySQL Workbench を使って同じサーバーに接続します。
 
@@ -202,7 +186,7 @@ GUI ツールである MySQL Workbench を使用してサーバーに接続す�
     |---|---|---|
      接続名 | Demo connection | この接続のラベル。 |
     接続方法 | Standard (TCP/IP) | Standard (TCP/IP) で十分です。 |
-    ホスト名 | *[サーバー名]* | 前に Azure Database for MySQL サーバーを作成したときに使用したサーバー名の値。 この例におけるサーバーは、**mydemoserver.mysql.database.azure.com** です。例で示されているように、完全修飾ドメイン名 (**\*.mysql.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。|
+    ホスト名 | *[サーバー名]* | 前に Azure Database for MySQL サーバーを作成したときに使用したサーバー名の値。 この例におけるサーバーは、**mydemoserver.mysql.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (**\*.mysql.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。|
      ポート | 3306 | Azure Database for MySQL サーバーに接続するときに使用するポート。 |
     ユーザー名 |  "*サーバー管理者ログイン名*" | 前の手順で Azure Database for MySQL サーバーを作成したときに指定したサーバー管理者サインイン情報。 この例のユーザー名は **myadmin@mydemoserver** です。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username@servername* です。
     パスワード | "*パスワード*" | **[Store in Vault]\(コンテナーに保存\)** ボタンを選択してパスワードを保存します。 |
@@ -233,7 +217,7 @@ GUI ツールである MySQL Workbench を使用してサーバーに接続す�
 
    ![Azure Database for MySQL - サーバーの削除](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
 
-3.  削除するサーバーの名前を確認し、影響を受けるデータベースをその下に表示します。 目的のサーバー名 (例に示した **mydemoserver** など) をボックスに入力します。 **[削除]**を選択します。
+3.  削除するサーバーの名前を確認し、影響を受けるデータベースをその下に表示します。 目的のサーバー名 (例に示した **mydemoserver** など) をボックスに入力します。 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

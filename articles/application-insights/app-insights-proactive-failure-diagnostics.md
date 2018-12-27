@@ -1,23 +1,24 @@
 ---
-title: "スマート検出 - Application Insights での失敗の異常 |Microsoft Docs"
-description: "Web アプリに対する要求の失敗率の異常な変化を通知し、診断分析を行います。 構成は必要ありません。"
+title: スマート検出 - Application Insights での失敗の異常 |Microsoft Docs
+description: Web アプリに対する要求の失敗率の異常な変化を通知し、診断分析を行います。 構成は必要ありません。
 services: application-insights
-documentationcenter: 
-author: yorac
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/09/2017
+ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: ca484f4d11cf8ab18db2d0c6152f369a90311f10
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 0895d31475de5d78c82f3bfedc0765e5a9549339
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877600"
 ---
 # <a name="smart-detection---failure-anomalies"></a>スマート検出 - 失敗の異常
 [Application Insights](app-insights-overview.md) では、Web アプリで要求失敗率が異常に増加すると、ほぼリアルタイムで自動的にユーザーに通知します。 具体的には、失敗として報告された HTTP 要求または依存関係の呼び出しの割合が異常に上昇すると、それが検出されます。 要求の場合、失敗した要求の応答コードは、通常、400 以上です。 通知には、問題のトリアージと診断に役立つよう、失敗の特性および関連するテレメトリの分析結果が記載されています。 また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。 この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
@@ -38,8 +39,8 @@ ms.lasthandoff: 11/01/2017
 次の指標が提示されます。
 
 * 通常のアプリケーションの動作と比較したエラー率。
-* 影響を受けるユーザーの数。アラートの重要度がわかります。
-* エラーに関連付けられている特徴的パターン。 この例では、特定の応答コード、要求名 (操作)、およびアプリケーションのバージョンがあります。 これにより、コードのどこから探すべきかすぐにわかります。 他には特定のブラウザーやクライアント オペレーティング システムなどが想定されます。
+* 影響を受けるユーザーの数 - アラートの重要度がわかります。
+* エラーに関連付けられている特徴的パターン。 この例では、特定の応答コード、要求名 (操作)、およびアプリのバージョンがあります。 これにより、コードのどこから探すべきかすぐにわかります。 他には特定のブラウザーやクライアント オペレーティング システムなどが想定されます。
 * 特徴付けられた失敗に関連するように見える例外、ログ トレース、依存関係エラー (データベースやその他の外部コンポーネント)。
 * Application Insights の製品利用統計情報の関連検索に直接リンクします。
 
@@ -90,7 +91,7 @@ ms.lasthandoff: 11/01/2017
 
 さらに詳しく調査する場合は、関連する要求、例外、依存関係、トレースで絞り込まれた [検索ページ](app-insights-diagnostic-search.md) に、各セクションのリンクから直接移動できます。 また、 [Azure ポータル](https://portal.azure.com)を開き、アプリケーションの Application Insights リソースに移動して、[エラー] ブレードを開くという方法もあります。
 
-この例では、"依存関係エラーの詳細を表示する" リンクをクリックすると、Application Insights の検索ブレードが開き、 SQL ステートメントについての、根本原因の例 (必須フィールドに NULL が指定されており、保存操作時に検証に合格しなかった) が表示されます。
+この例では、"依存関係エラーの詳細を表示する" リンクをクリックすると、Application Insights の検索ブレードが開き、 SQL ステートメントについての、根本原因の例 (必須フィールドにNULL が指定されており、保存操作時に検証に合格しなかった) が表示されます。
 
 ![診断検索](./media/app-insights-proactive-failure-diagnostics/051.png)
 
@@ -140,12 +141,12 @@ ms.lasthandoff: 11/01/2017
 
 * バックログでアラートを非表示にできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これらの診断ツールを使用すると、アプリからテレメトリを調査できます。
 
 * [メトリックス エクスプローラー](app-insights-metrics-explorer.md)
 * [Search エクスプローラー](app-insights-diagnostic-search.md)
-* [Analytics - 強力なクエリ言語](app-insights-analytics-tour.md)
+* [Analytics - 強力なクエリ言語](../azure-monitor/log-query/get-started-portal.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 

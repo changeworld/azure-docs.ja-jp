@@ -3,79 +3,220 @@ title: Azure Functions 用 JavaScript 開発者向けリファレンス | Micros
 description: JavaScript を使用して関数を開発する方法について説明します。
 services: functions
 documentationcenter: na
-author: tdykstra
-manager: cfowler
-editor: ''
-tags: ''
+author: ggailey777
+manager: jeconnoc
 keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: nodejs
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 03/04/2018
-ms.author: tdykstra
-ms.openlocfilehash: 9d63c95c849c8ef6011557c72240e56071ba614f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 10/26/2018
+ms.author: glenga
+ms.openlocfilehash: 506bbcf31833b20a6ee06e85fbad166d1f0b80e2
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567147"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
-[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
-Azure Functions の JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインディングを介してデータの送受信を行ったりする場合に `context` オブジェクトとして渡される関数を簡単にエクスポートできます。
+このガイドには、JavaScript で Azure 関数を記述する複雑な作業についての情報が含まれます。
 
-この記事では、「 [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
+JavaScript 関数はエクスポートされた `function` であり、トリガーされると実行します ([トリガーは function.json で構成します](functions-triggers-bindings.md))。 各関数の最初の引数には `context` オブジェクトが渡され、バインド データの送受信、ログ記録、ランタイムとの通信に使用されます。
+
+この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 [Visual Studio Code](functions-create-first-function-vs-code.md) を使用または [portal](functions-create-first-azure-function.md) 内で最初の関数を作成する Functions のクイック スタートも終えている必要があります。
+
+## <a name="folder-structure"></a>フォルダー構造
+
+JavaScript プロジェクトでは、次のようなフォルダー構造が必要です。 この既定値は変更可能です。 詳しくは、後の [scriptFile](#using-scriptfile) に関するセクションをご覧ください。
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - index.js
+ | | - function.json
+ | - MySecondFunction
+ | | - index.js
+ | | - function.json
+ | - SharedCode
+ | | - myFirstHelperFunction.js
+ | | - mySecondHelperFunction.js
+ | - node_modules
+ | - host.json
+ | - package.json
+ | - extensions.csproj
+ | - bin
+```
+
+プロジェクトのルートには、関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.js) とバインド構成ファイル (function.json) が含まれるフォルダーがあります。 `function.json` の親ディレクトリの名前は常に関数の名前です。
+
+Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](functions-triggers-bindings.md#local-development-azure-functions-core-tools)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="exporting-a-function"></a>関数のエクスポート
-すべての JavaScript 関数では、ランタイムが関数を見つけて実行するために、`module.exports` を使用して `function` を 1 つエクスポートする必要があります。 この関数には、常に `context` オブジェクトを含める必要があります。
+
+[`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports) (または [`exports`](https://nodejs.org/api/modules.html#modules_exports)) を使用して、JavaScript 関数をエクスポートする必要があります。 エクスポートする関数は、トリガーされたときに実行される JavaScript 関数である必要があります。
+
+既定では、Functions ランタイムは `index.js` で関数を検索します。`index.js` は、対応する `function.json` と同じ親ディレクトリを共有します。 既定では、エクスポートされる関数は、そのファイルからの唯一のエクスポートである必要があります (`run` または `index` という名前のエクスポート)。 関数のファイルの場所とエクスポートの名前を構成する方法については、後の「[関数のエントリ ポイントを構成する](functions-reference-node.md#configure-function-entry-point)」をご覧ください。
+
+エクスポートされる関数には、実行時に多数の引数が渡されます。 受け取る最初の引数は常に、`context` オブジェクトです。 関数が同期の場合 (Promise を返しません)、正しく使用するためには `context.done` の呼び出しが必要なので、`context` オブジェクトを渡す必要があります。
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(context) {
-    // Additional inputs can be accessed by the arguments property
-    if(arguments.length === 4) {
-        context.log('This function has 4 inputs');
-    }
-};
-// or you can include additional inputs in your arguments
+// You should include context, other arguments are optional
 module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
+    context.done();
 };
 ```
 
-`direction === "in"` のバインディングが関数の引数と一緒に渡されます。つまり、[`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) を使用して、新しい入力を動的に処理できます (たとえば、`arguments.length` を使用して、すべての入力を繰り返し処理できます)。 この機能は、トリガーのみがあり、追加の入力がない場合に便利です。これは、`context` オブジェクトを参照しなくてもトリガーのデータに予測どおりにアクセスできるためです。
+### <a name="exporting-an-async-function"></a>async function をエクスポートする
+JavaScript の [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 宣言または JavaScript の [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (関数 v1.x では使用できません) を返すときは、[`context.done`](#contextdone-method) コールバックを呼び出して関数が完了したことを明示的に通知する必要はありません。 エクスポートされた async function/Promise が完了すると、関数は完了します。
 
-引数は、exports ステートメントで順序を指定していなくても、*function.json*に出現する順序で常に関数に渡されます。 たとえば、`function(context, a, b)` があり、それを `function(context, a)` に変更しても、`arguments[2]` を参照することで、関数コードの `b` の値を取得できます。
+[`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 宣言またはバージョン 2.x の Functions ランタイムでプレーンな JavaScript の [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) を使用するときは、[`context.done`](#contextdone-method) コールバックを呼び出して関数が完了したことを明示的に通知する必要はありません。 エクスポートされた async function/Promise が完了すると、関数は完了します。 バージョン 1.x ランタイムを対象とする関数では、引き続きコードの実行が完了した際に [`context.done`](#contextdone-method) を呼び出す必要があります。
 
-すべてのバインディングも、方向に関係なく、`context` オブジェクトと一緒に渡されます (以下のスクリプトを参照)。 
+次の例で示すのは、トリガーされてすぐに実行が完了したことを記録する簡単な関数です。
+
+```javascript
+module.exports = async function (context) {
+    context.log('JavaScript trigger function processed a request.');
+};
+```
+
+async function をエクスポートするときは、`return` の値を取得するための出力バインドを構成することもできます。 これは、出力バインドが 1 つしかない場合に推奨されます。
+
+`return` を使用して出力を割り当てるには、`function.json` で `name` プロパティを `$return` に変更します。
+
+```json
+{
+  "type": "http",
+  "direction": "out",
+  "name": "$return"
+}
+```
+
+この場合、関数は次の例のようになります。
+
+```javascript
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+    // You can call and await an async method here
+    return {
+        body: "Hello, world!"
+    };
+}
+```
+
+## <a name="bindings"></a>バインド 
+JavaScript では、[バインド](functions-triggers-bindings.md)が構成され、関数の function.json で定義されます。 関数は、さまざまな方法でバインドを操作します。
+
+### <a name="inputs"></a>入力
+Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 関数は、トリガーと他の入力バインド (`direction === "in"` のバインド) を 3 つの方法で読み取ることができます。
+ - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 なお、*function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
+ 
+   ```javascript
+   module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
+   ```
+   
+ - **[`context.bindings`](#contextbindings-property) オブジェクトのメンバーを使用します。** 各メンバーの名前は、*function.json* で定義されている `name` プロパティによって決まります。
+ 
+   ```javascript
+   module.exports = async function(context) { 
+       context.log("This is myTrigger: " + context.bindings.myTrigger);
+       context.log("This is myInput: " + context.bindings.myInput);
+       context.log("This is myOtherInput: " + context.bindings.myOtherInput);
+   };
+   ```
+   
+ - **JavaScript の [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) オブジェクトの入力を使用します。** これは、基本的にパラメーターとして入力を渡すのと同じですが、動的に入力を処理することができます。
+ 
+   ```javascript
+   module.exports = async function(context) { 
+       context.log("This is myTrigger: " + arguments[1]);
+       context.log("This is myInput: " + arguments[2]);
+       context.log("This is myOtherInput: " + arguments[3]);
+   };
+   ```
+
+### <a name="outputs"></a>出力
+関数は、さまざまな方法で出力 (`direction === "out"` のバインド) に書き込むことができます。 どの場合も、*function.json* で定義されているバインドの `name` プロパティは、関数に書き込むオブジェクトのメンバーの名前に対応しています。 
+
+次の方法のいずれかで、出力バインドにデータを割り当てることができます。 これらの方法は、組み合わせて使用しないでください。
+- **_[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期/Promise を返す関数を使用している場合は、出力データを割り当てたオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
+
+  ```javascript
+  module.exports = async function(context) {
+      let retMsg = 'Hello, world!';
+      return {
+          httpResponse: {
+              body: retMsg
+          },
+          queueOutput: retMsg
+      };
+  };
+  ```
+  
+  同期関数を使用している場合、[`context.done`](#contextdone-method) を使用してこのオブジェクトを返すことができます (例を参照)。
+- **_[出力が 1 つの場合に推奨]_ 直接値を返し $return バインド名を使用します。** これは、関数を返す非同期/Promise でのみ機能します。 「[async function をエクスポートする](#exporting-an-async-function)」の例を参照してください。 
+- **`context.bindings` に値を割り当てます。** context.bindings に直接値を割り当てることができます。
+
+  ```javascript
+  module.exports = async function(context) {
+      let retMsg = 'Hello, world!';
+      context.bindings.httpResponse = {
+          body: retMsg
+      };
+      context.bindings.queueOutput = retMsg;
+      return;
+  };
+  ```
+ 
+### <a name="bindings-data-type"></a>バインドのデータ型
+
+入力バインドのデータ型を定義するには、バインド定義の `dataType` プロパティを使用します。 たとえば、バイナリ形式で HTTP 要求のコンテンツを読み取るには、`binary` 型を使用します。
+
+```json
+{
+    "type": "httpTrigger",
+    "name": "req",
+    "direction": "in",
+    "dataType": "binary"
+}
+```
+
+`dataType` のオプションは、`binary`、`stream`、`string` です。
 
 ## <a name="context-object"></a>context オブジェクト
-ランタイムでは、`context` オブジェクトを使用して、関数との間でデータをやり取りし、ユーザーがランタイムと通信できるようにします。
+ランタイムでは、`context` オブジェクトを使用して、関数との間でデータをやり取りし、ユーザーがランタイムと通信できるようにします。 コンテキスト オブジェクトは、バインドからのデータの読み取りや設定、ログの書き込み、およびエクスポートされた関数が同期である場合の `context.done` コールバックに使用できます。
 
-`context` オブジェクトは、常に関数の最初のパラメーターとし、必ず含める必要があります。context オブジェクトには、ランタイムを適切に使用するのに必要な `context.done` や `context.log` などのメソッドが用意されているためです。 オブジェクトには、任意の名前 (`ctx` や `c` など) を付けることができます。
+`context` オブジェクトは、常に関数の最初のパラメーターです。 `context.done` や `context.log` などの重要なメソッドがあるので、必ず含める必要があります。 オブジェクトには、任意の名前 (`ctx` や `c` など) を付けることができます。
 
 ```javascript
 // You must include a context, but other arguments are optional
-module.exports = function(context) {
+module.exports = function(ctx) {
     // function logic goes here :)
+    ctx.done();
 };
 ```
 
 ### <a name="contextbindings-property"></a>context.bindings プロパティ
 
-```
+```js
 context.bindings
 ```
-すべての入力データと出力データを含む名前付きオブジェクトを返します。 たとえば、*function.json* に次のバインディング定義が含まれている場合は、`context.bindings.myInput` オブジェクトからキューの内容にアクセスできます。 
+
+すべての入力データと出力データを含む名前付きオブジェクトを返します。 たとえば、function.json で次のようなバインド定義を使用すると、`context.bindings.myInput` からキューの内容にアクセスし、`context.bindings.myOutput` を使用して出力をキューに割り当てることができます。
 
 ```json
 {
     "type":"queue",
     "direction":"in",
     "name":"myInput"
+    ...
+},
+{
+    "type":"queue",
+    "direction":"out",
+    "name":"myOutput"
     ...
 }
 ```
@@ -89,65 +230,67 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
-### <a name="contextdone-method"></a>context.done メソッド
+`context.binding` オブジェクトの代わりに `context.done` メソッドを使用して、出力バインド データを定義できます (下記参照)。
+
+### <a name="contextbindingdata-property"></a>context.bindingData プロパティ
+
+```js
+context.bindingData
 ```
+
+トリガーのメタデータと関数呼び出しデータを含む名前付きオブジェクトを返します (`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`)。 トリガーのメタデータの例については、こちらの[イベント ハブの例](functions-bindings-event-hubs.md#trigger---javascript-example)をご覧ください。
+
+### <a name="contextdone-method"></a>context.done メソッド
+
+```js
 context.done([err],[propertyBag])
 ```
 
-コードが完了したことをランタイムに通知します。 ユーザーは `context.done` を呼び出す必要があります。そうしないと、ランタイムに関数の完了が通知されず、実行がタイムアウトになります。 
+ランタイムにコードが完了したことを知らせます。 関数で [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 宣言を使用する場合、`context.done()` を使用する必要はありません。 `context.done` コールバックは暗黙的に呼び出されます。 非同期関数は Node 8 以降のバージョンで使用できますが、それにはバージョン 2.x の Functions ランタイムが必要です。
 
-`context.done` メソッドを使用すると、ユーザー定義のエラーに加えて、`context.bindings` オブジェクトのプロパティを上書きするプロパティのプロパティ バッグをランタイムに渡すことができます。
+関数が async function でない場合は、関数が完了したことをランタイムに通知するために、`context.done` を**呼び出す必要があります**。 これがない場合、実行はタイムアウトします。
+
+`context.done` メソッドを使用すると、ランタイムに対するユーザー定義のエラーと、出力バインド データを含む JSON オブジェクトの両方を、戻すことができます。 `context.done` に渡されるプロパティは、`context.bindings` オブジェクトで設定されているすべてのものを上書きします。
 
 ```javascript
 // Even though we set myOutput to have:
-//  -> text: hello world, number: 123
+//  -> text: 'hello world', number: 123
 context.bindings.myOutput = { text: 'hello world', number: 123 };
 // If we pass an object to the done function...
 context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
-// the done method will overwrite the myOutput binding to be: 
-//  -> text: hello there, world, noNumber: true
+// the done method overwrites the myOutput binding to be: 
+//  -> text: 'hello there, world', noNumber: true
 ```
 
 ### <a name="contextlog-method"></a>context.log メソッド  
 
-```
+```js
 context.log(message)
 ```
-既定のトレース レベルでストリーミング コンソール ログに書き込むことができます。 `context.log` で利用可能な、他のトレース レベルでコンソール ログに書き込むことができるログ記録方法が他にあります。
+
+既定のトレース レベルでストリーミング関数ログに書き込むことができます。 `context.log` には、他のトレース レベルで関数のログを書き込むことができる追加のログ記録メソッドがあります。
 
 
-| 方法                 | [説明]                                |
+| 方法                 | 説明                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | エラー レベルのログ、またはそれ以下に書き込みます。   |
 | **warn(_message_)**    | 警告レベルのログ、またはそれ以下に書き込みます。 |
 | **info(_message_)**    | 情報レベルのログ、またはそれ以下に書き込みます。    |
 | **verbose(_message_)** | 詳細なレベルのログに書き込みます。           |
 
-次の例は、警告トレース レベルでコンソールに書き込みます。
+次の例では、警告トレース レベルでログを書き込んでいます。
 
 ```javascript
 context.log.warn("Something has happened."); 
 ```
-host.json ファイルにログを記録する場合のトレース レベルのしきい値を設定したり、それを無効にしたりできます。  ログに書き込む方法の詳細については、次のセクションを参照してください。
 
-## <a name="binding-data-type"></a>バインド データ型
+host.json ファイルでは、[ログに対するトレース レベルのしきい値を構成する](#configure-the-trace-level-for-console-logging)ことができます。 ログの書き込みについて詳しくは、後の「[トレース出力をコンソールに書き込む](#writing-trace-output-to-the-console)」をご覧ください。
 
-入力バインドのデータ型を定義するには、バインド定義の `dataType` プロパティを使用します。 たとえば、バイナリ形式で HTTP 要求のコンテンツを読み取るには、`binary` 型を使用します。
-
-```json
-{
-    "type": "httpTrigger",
-    "name": "req",
-    "direction": "in",
-    "dataType": "binary"
-}
-```
-
-`dataType` のその他のオプションは、`stream` と `string` です。
+関数のログの表示とクエリについて詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。
 
 ## <a name="writing-trace-output-to-the-console"></a>トレース出力をコンソールに書き込む 
 
-関数で、`context.log` メソッドを使用してトレース出力をコンソールに書き込みます。 この時点では、`console.log` を使用してコンソールに書き込むことはできません。
+関数で、`context.log` メソッドを使用してトレース出力をコンソールに書き込みます。 Functions v2.x では、`console.log` を使用するトレース出力は Function App レベルでキャプチャされます。 つまり、`console.log` からの出力は特定の関数呼び出しに関連付けられておらず、そのため特定の関数のログには表示されません。 ただし、Application Insights に伝達されます。 Functions v1.x では、`console.log` を使用してコンソールに書き込むことはできません。
 
 `context.log()` を呼び出すと、既定のトレース レベルである、_情報_ トレース レベルでコンソールにメッセージが書き込まれます。 次のコードは、情報トレース レベルでコンソールに書き込みます。
 
@@ -155,22 +298,21 @@ host.json ファイルにログを記録する場合のトレース レベルの
 context.log({hello: 'world'});  
 ```
 
-上記のコードは次のコードと同等です。
+次のコードは、上記のコードと同等です。
 
 ```javascript
 context.log.info({hello: 'world'});  
 ```
 
-次のコードは、エラー レベルでコンソールに書き込みます。
+このコードは、エラー レベルでコンソールに書き込みます。
 
 ```javascript
 context.log.error("An error has occurred.");  
 ```
 
-_エラー_ は最高のトレース レベルであるため、ログ記録が有効になっている限り、このトレースはすべてのトレース レベルで出力に書き込まれます。  
+_エラー_ は最高のトレース レベルであるため、ログ記録が有効になっている限り、このトレースはすべてのトレース レベルで出力に書き込まれます。
 
-
-すべての `context.log` メソッドは、Node.js の [util.format メソッド](https://nodejs.org/api/util.html#util_util_format_format)でサポートされているのと同じパラメーター形式をサポートしています。 既定のトレース レベルを使用してコンソールに出力する次のコードについて検討してください。
+すべての `context.log` メソッドは、Node.js の [util.format メソッド](https://nodejs.org/api/util.html#util_util_format_format)でサポートされているのと同じパラメーター形式をサポートしています。 既定のトレース レベルを使用して関数ログに書き込む次のようなコードについて考えます。
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
@@ -189,9 +331,9 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 関数を使用して、コンソールに書き込むためのしきい値のトレース レベルを定義できます。これによって、関数からコンソールにトレースを書き込む方法を簡単に制御できます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、host.json ファイルの `tracing.consoleLevel` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。 次の例では、詳細ログ記録が有効になるようにトレースのしきい値を設定します。
 
 ```json
-{ 
-    "tracing": {      
-        "consoleLevel": "verbose"     
+{
+    "tracing": {
+        "consoleLevel": "verbose"
     }
 }  
 ```
@@ -204,9 +346,9 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 ### <a name="request-object"></a>要求オブジェクト
 
-`request` オブジェクトには、次のプロパティがあります。
+`context.req` (要求) オブジェクトには、次のプロパティがあります。
 
-| プロパティ      | [説明]                                                    |
+| プロパティ      | 説明                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 要求の本文を格納するオブジェクト。               |
 | _headers_     | 要求ヘッダーを格納するオブジェクト。                   |
@@ -219,9 +361,9 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 ### <a name="response-object"></a>応答オブジェクト
 
-`response` オブジェクトには、次のプロパティがあります。
+`context.res` (応答) オブジェクトには、次のプロパティがあります。
 
-| プロパティ  | [説明]                                               |
+| プロパティ  | 説明                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 応答の本文を格納するオブジェクト。         |
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
@@ -230,15 +372,9 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 ### <a name="accessing-the-request-and-response"></a>要求と応答へのアクセス 
 
-HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答オブジェクトにアクセスする方法は 3 つあります。
+HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答オブジェクトにアクセスする方法がいくつかあります。
 
-+ 名前付きの入力バインディングと出力バインディングから。 この方法で、HTTP トリガーとバインディングは他のバインディングと同じように動作します。 次の例では、名前付き `response` バインディングを使用して、応答オブジェクトを設定します。 
-
-    ```javascript
-    context.bindings.response = { status: 201, body: "Insert succeeded." };
-    ```
-
-+ `context` オブジェクトの `req` プロパティと `res` プロパティから。 この方法で、完全な `context.bindings.name` パターンを使用する代わりに、従来のパターンを使用して context オブジェクトから HTTP データにアクセスできます。 次の例では、`context` の `req` オブジェクトと `res` オブジェクトにアクセスする方法を示します。
++ **`context` オブジェクトの `req` プロパティと `res` プロパティから。** この方法で、完全な `context.bindings.name` パターンを使用する代わりに、従来のパターンを使用して context オブジェクトから HTTP データにアクセスできます。 次の例では、`context` の `req` オブジェクトと `res` オブジェクトにアクセスする方法を示します。
 
     ```javascript
     // You can access your http request off the context ...
@@ -247,7 +383,21 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ `context.done()` の呼び出しで。 これは、`context.done()` メソッドに渡される応答を返す特殊な種類の HTTP バインディングです。 次の HTTP 出力バインディングで、`$return` 出力パラメーターを定義します。
++ **名前付きの入力バインディングと出力バインディングから。** この方法で、HTTP トリガーとバインディングは他のバインディングと同じように動作します。 次の例では、名前付き `response` バインディングを使用して、応答オブジェクトを設定します。 
+
+    ```json
+    {
+        "type": "http",
+        "direction": "out",
+        "name": "response"
+    }
+    ```
+    ```javascript
+    context.bindings.response = { status: 201, body: "Insert succeeded." };
+    ```
++ **_[応答のみ]_ `context.res.send(body?: any)` の呼び出し。** HTTP の応答は、入力 `body` を応答本文として使用して作成されます。 `context.done()` は暗黙的に呼び出されます。
+
++ **_[応答のみ]_ `context.done()` の呼び出し。** これは、`context.done()` メソッドに渡される応答を返す特殊な種類の HTTP バインディングです。 次の HTTP 出力バインディングで、`$return` 出力パラメーターを定義します。
 
     ```json
     {
@@ -256,38 +406,25 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
       "name": "$return"
     }
     ``` 
-    この出力バインディングでは、次のように `done()` を呼び出すときにユーザーに応答を返すことを想定しています。
-
     ```javascript
      // Define a valid response object.
     res = { status: 201, body: "Insert succeeded." };
     context.done(null, res);   
     ```  
 
-## <a name="node-version-and-package-management"></a>Node のバージョンとパッケージの管理
+## <a name="node-version"></a>Node バージョン
 
 次の表は、使用される Node.js バージョンを、Functions ランタイムのメジャー バージョンごとに示しています。
 
 | Functions バージョン | Node.js バージョン | 
 |---|---|
 | 1.x | 6.11.2 (ランタイムによりロック) |
-| 2.x  |現在の LTS 8.9.4 を備えた 8.4.0 以上を推奨。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用してバージョンを設定します。|
+| 2.x  | "_アクティブ LTS_" と偶数の "_現在の_" Node.js のバージョン (8.11.1 と 10.6.0 を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用してバージョンを設定します。|
 
-ランタイムが使用している現在のバージョンを確認するには、任意の関数から `process.version` を出力します。
+ランタイムが使用している現在のバージョンを確認するには、上記のアプリ設定を調べるか、または任意の関数から `process.version` を出力します。
 
-次の手順で、関数アプリにパッケージを含めることができます。 
-
-1. `https://<function_app_name>.scm.azurewebsites.net` にアクセスします。
-
-2. **[デバッグ コンソール]** > **[CMD]** をクリックします。
-
-3. `D:\home\site\wwwroot` に移動し、ページの上半分にある **wwwroot** フォルダーに package.json ファイルをドラッグします。  
-    関数アプリにファイルをアップロードする方法は、他にもあります。 詳細については、「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」を参照してください。 
-
-4. package.json ファイルがアップロードされたら、**Kudu リモート実行コンソール**で `npm install` コマンドを実行します。  
-    この操作によって、package.json ファイルに示されているパッケージがダウンロードされ、関数アプリが再起動されます。
-
-必要なパッケージがインストールされたら、次の例に示すように `require('packagename')` を呼び出すことで、インストールされたパッケージを関数にインポートします。
+## <a name="dependency-management"></a>依存関係の管理
+JavaScript コードでコミュニティ ライブラリを使用するには、次の例で示すように、Azure 内の関数アプリにすべての依存関係がインストールされている必要があります。
 
 ```javascript
 // Import the underscore.js library
@@ -300,16 +437,39 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-関数アプリのルートに `package.json` ファイルを定義する必要があります。 このファイルを定義することによって、アプリのすべての関数を同じキャッシュされたパッケージで共有し、最高クラスのパフォーマンスを得ることができます。 バージョンの競合がある場合は、個別の関数のフォルダーに `package.json` ファイルを追加することで競合を解決できます。  
+> [!NOTE]
+> 関数アプリのルートに `package.json` ファイルを定義する必要があります。 このファイルを定義することによって、アプリのすべての関数を同じキャッシュされたパッケージで共有し、最高クラスのパフォーマンスを得ることができます。 バージョンの競合がある場合は、個別の関数のフォルダーに `package.json` ファイルを追加することで競合を解決できます。  
+
+ソース管理から関数アプリをデプロイする場合、リポジトリ内に存在する `package.json` ファイルはすべて、デプロイ中にそのフォルダー内の `npm install` をトリガーします。 ただし、ポータルまたは CLI 経由でデプロイする場合は、パッケージを手動でインストールする必要があります。
+
+関数アプリにパッケージをインストールするには 2 つの方法があります。 
+
+### <a name="deploying-with-dependencies"></a>依存関係と共に展開する
+1. `npm install` を実行して、すべての必要なパッケージをローカルにインストールします。
+
+2. コードを展開し、`node_modules` フォルダーが展開に含まれることを確認します。 
+
+
+### <a name="using-kudu"></a>Kudu を使用する
+1. `https://<function_app_name>.scm.azurewebsites.net` にアクセスします。
+
+2. **[デバッグ コンソール]** > **[CMD]** をクリックします。
+
+3. `D:\home\site\wwwroot` に移動し、ページの上半分にある **wwwroot** フォルダーに package.json ファイルをドラッグします。  
+    関数アプリにファイルをアップロードする方法は、他にもあります。 詳細については、「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」を参照してください。 
+
+4. package.json ファイルがアップロードされたら、**Kudu リモート実行コンソール**で `npm install` コマンドを実行します。  
+    この操作によって、package.json ファイルに示されているパッケージがダウンロードされ、関数アプリが再起動されます。
 
 ## <a name="environment-variables"></a>環境変数
-環境変数またはアプリ設定値を取得するには、次のコード例のように、 `process.env`を使用します。
+
+Functions では、サービス接続文字列などの[アプリ設定](functions-app-settings.md)は、実行中に環境変数として公開されます。 次の `GetEnvironmentVariable` 関数で示すように、これらの設定には `process.env` を使用してアクセスできます。
 
 ```javascript
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
-    context.log('Node.js timer trigger function ran!', timeStamp);   
+    context.log('Node.js timer trigger function ran!', timeStamp);
     context.log(GetEnvironmentVariable("AzureWebJobsStorage"));
     context.log(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
 
@@ -321,21 +481,99 @@ function GetEnvironmentVariable(name)
     return name + ": " + process.env[name];
 }
 ```
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+ローカルで実行する場合、アプリ設定は [local.settings.json](functions-run-local.md#local-settings-file) プロジェクト ファイルから読み取られます。
+
+## <a name="configure-function-entry-point"></a>関数のエントリ ポイントを構成する
+
+`function.json` のプロパティ `scriptFile` と `entryPoint` を使用して、エクスポートされた関数の名前と場所を構成できます。 これらのプロパティは、JavaScript がトランスパイルされる場合に重要になることがあります。
+
+### <a name="using-scriptfile"></a>`scriptFile` を使用する
+
+既定では、JavaScript 関数は `index.js` から実行されます。これは、対応する `function.json` と同じ親ディレクトリを共有するファイルです。
+
+`scriptFile` を使用すると、次の例のようなフォルダー構造を取得できます。
+
+```
+FunctionApp
+ | - host.json
+ | - myNodeFunction
+ | | - function.json
+ | - lib
+ | | - nodeFunction.js
+ | - node_modules
+ | | - ... packages ...
+ | - package.json
+```
+
+`myNodeFunction` に対する `function.json` には、エクスポートされた関数を実行するファイルを指し示す `scriptFile` プロパティが含まれている必要があります。
+
+```json
+{
+  "scriptFile": "../lib/nodeFunction.js",
+  "bindings": [
+    ...
+  ]
+}
+```
+
+### <a name="using-entrypoint"></a>`entryPoint` を使用する
+
+`scriptFile` (または `index.js`) では、関数が発見されて実行されるためには、`module.exports` を使用して関数をエクスポートする必要があります。 既定では、トリガーされたときに実行される関数は、そのファイルからの唯一のエクスポートです (`run` という名前のエクスポート、または `index` という名前のエクスポート)。
+
+これは、次の例で示すように、`entryPoint` の `function.json` を使用して構成することができます。
+
+```json
+{
+  "entryPoint": "logFoo",
+  "bindings": [
+    ...
+  ]
+}
+```
+
+Functions v2.x では、ユーザー関数内の `this` パラメーターがサポートされており、関数のコードは次の例のようになります。
+
+```javascript
+class MyObj {
+    constructor() {
+        this.foo = 1;
+    };
+
+    function logFoo(context) { 
+        context.log("Foo is " + this.foo); 
+        context.done(); 
+    }
+}
+
+const myObj = new MyObj();
+module.exports = myObj;
+```
+
+この例では、オブジェクトはエクスポートされていますが、実行間で状態が保持される保証はないことに注意することが重要です。
+
 ## <a name="considerations-for-javascript-functions"></a>JavaScript 関数に関する考慮事項
 
-JavaScript 関数を使用するときは、以下の 2 つのセクションに記載されている事柄に注意する必要があります。
+JavaScript 関数を使用するときは、以下のセクションに記載されている事柄に注意する必要があります。
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>シングル vCPU App Service プランを選択する
 
 App Service プランを使用する関数アプリを作成するときは、複数の vCPU を持つプランではなく、シングル vCPU プランを選択することをお勧めします。 今日では、関数を使用して、シングル vCPU VM で JavaScript 関数をより効率的に実行できるようになりました。そのため、大規模な VM を使用しても、期待以上にパフォーマンスが向上することはありません。 必要な場合は、シングル vCPU VM インスタンスを追加することで手動でスケールアウトするか、自動スケールを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)」を参照してください。    
 
 ### <a name="typescript-and-coffeescript-support"></a>TypeScript と CoffeeScript のサポート
+
 ランタイムによる TypeScript/CoffeeScript の自動コンパイルはまだ直接サポートされていません。そのため、デプロイ時にランタイムの外部ですべて処理する必要があります。 
 
+### <a name="cold-start"></a>コールド スタート
+
+サーバーレス ホスティング モデルで Azure 関数を開発するときは、コールド スタートが現実のものになります。 *コールド スタート*とは、非アクティブな期間の後で初めて関数アプリが起動するとき、起動に時間がかかることを意味します。 特に、大きな依存関係ツリーを持つ JavaScript 関数の場合は、コールド スタートが重要になる可能性があります。 コールド スタート プロセスをスピードアップするには、可能な場合、[パッケージ ファイルとして関数を実行](run-functions-from-deployment-package.md)します。 多くの展開方法ではパッケージからの実行モデルが既定で使用されますが、大規模なコールド スタートが発生していて、この方法で実行していない場合は、変更が大きな向上につながる可能性があります。
+
 ## <a name="next-steps"></a>次の手順
+
 詳細については、次のリソースを参照してください。
 
-* [Azure Functions のベスト プラクティス](functions-best-practices.md)
-* [Azure Functions 開発者向けリファレンス](functions-reference.md)
-* [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
-
++ [Azure Functions のベスト プラクティス](functions-best-practices.md)
++ [Azure Functions 開発者向けリファレンス](functions-reference.md)
++ [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)

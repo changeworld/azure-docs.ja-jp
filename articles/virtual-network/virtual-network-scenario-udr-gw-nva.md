@@ -1,6 +1,6 @@
 ---
-title: "2 層アプリケーションを使用するハイブリッド接続 |Microsoft Docs"
-description: "仮想アプライアンスと UDR をデプロイして Azure 内に多層アプリケーション環境を作成する方法について説明します。"
+title: 2 層アプリケーションを使用するハイブリッド接続 |Microsoft Docs
+description: 仮想アプライアンスと UDR をデプロイして Azure 内に多層アプリケーション環境を作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/31/2017
+ms.locfileid: "23643866"
 ---
 # <a name="virtual-appliance-scenario"></a>仮想アプライアンスを使用するシナリオ
 大型 Azure 顧客の間の一般的なシナリオは、オンプレミス データセンターからバック層へのアクセスを許可する一方でインターネットへの公開を行う 2 層アプリケーションを用意する必要があることです。 このドキュメントでは、ユーザー定義ルート (UDR)、VPN Gateway、およびネットワーク仮想アプライアンスを使用して、次の要件を満たす 2 層環境をデプロイするシナリオについて説明します。

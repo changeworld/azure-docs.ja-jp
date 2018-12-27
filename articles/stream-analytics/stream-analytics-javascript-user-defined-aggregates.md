@@ -1,26 +1,23 @@
 ---
-title: Azure Stream Analytics の JavaScript ユーザー定義集計 | Microsoft Docs
-description: JavaScript のユーザー定義集計を使用して高度なクエリ機構を実行する
-keywords: JavaScript, ユーザー定義集計, UDA
+title: Azure Stream Analytics の JavaScript ユーザー定義集計
+description: この記事では、Azure Stream Analytics の JavaScript ユーザー定義集計で高度なクエリ機構を実行する方法を説明します。
 services: stream-analytics
-author: minhe-msft
-manager: santoshb
-ms.assetid: ''
+author: rodrigoamicrosoft
+ms.author: rodrigoa
+manager: kfile
+ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 10/28/2017
-ms.author: minhe
-ms.openlocfilehash: 9f9a2e33f97fc90265933ee9941f2d02a92cbc4c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: bdf5b5188dd584c5eb20f72ff4a98ba6904bc53e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702376"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics の JavaScript ユーザー定義集計 (プレビュー)
-
+ 
 Azure Stream Analytics は JavaScript で記述されたユーザー定義集計 (UDA) をサポートしています。これを使用すると複雑なステートフルのビジネス ロジックを実装できます。 UDA 内では、状態のデータ構造、状態の蓄積、状態の処分および集計結果の計算を完全にコントロールできます。 この記事では、2 つの異なる JavaScript UDA インターフェイスと UDA の作成手順、および Stream Analytics クエリのウィンドウ ベースの操作を介して UDA を使用する方法について説明します。
 
 ## <a name="javascript-user-defined-aggregates"></a>JavaScript ユーザー定義集計
@@ -83,7 +80,7 @@ function main() {
 
 ### <a name="function-alias"></a>関数のエイリアス
 
-関数のエイリアスは、UDA 識別子です。 Stream Analytics クエリ内で呼び出されると、UDA エイリアスは常にプレフィックス "uda" が付いて 始まります。
+関数のエイリアスは、UDA 識別子です。 Stream Analytics クエリ内で呼び出されると、UDA エイリアスは常にプレフィックス "uda." が付いて 始まります。
 
 ### <a name="function-type"></a>関数の型
 
@@ -174,11 +171,11 @@ JavaScript UDA のデータ型については、[JavaScript UDF の統合](strea
 
 1. [保存] ボタンをクリックすると、関数リストに UDA が表示されます。
 
-1. 新しい関数 “TWA” をクリックして関数の定義を確認できます。
+1. 新しい関数 "TWA" をクリックして関数の定義を確認できます。
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>ASA クエリで JavaScript UDA を呼び出す
 
-Azure Portal でジョブを開き、クエリを編集して必須プレフィックス "uda." を持つ TWA() 関数を呼び出します。 例: 
+Azure portal でジョブを開き、クエリを編集して必須プレフィックス "uda." を持つ TWA() 関数を呼び出します。 例: 
 
 ````SQL
 WITH value AS
@@ -230,7 +227,7 @@ GROUP BY TumblingWindow(minute, 5)
 
 ## <a name="get-help"></a>問い合わせ
 
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)をご覧ください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

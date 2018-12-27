@@ -1,26 +1,23 @@
 ---
-title: "EDIFACT メッセージをエンコードする - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps で Enterprise Integration Pack の EDIFACT メッセージ エンコーダーを使用して EDI の検証および XML の生成を行います"
+title: EDIFACT メッセージをエンコードする - Azure Logic Apps | Microsoft Docs
+description: Enterprise Integration Pack を備えた Azure Logic Apps 向けの EDIFACT メッセージ エンコーダーを使用して、EDI の検証と XML の生成を行います
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: anneta
-editor: 
-ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 799d444632b67788520be8a777ec656076022583
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e1c990030a9fa9ad25950ccb24b36b82a8c69f5c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122355"
 ---
-# <a name="encode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の EDIFACT メッセージをエンコードする
+# <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps の EDIFACT メッセージをエンコードする
 
 Encode EDIFACT Message コネクタでは、EDI およびパートナー固有のプロパティを検証したり、各トランザクション セットに対して XML ドキュメントを生成したり、技術確認と機能確認のいずれかまたは両方を要求したりできます。
 このコネクタを使用するには、ロジック アプリの既存のトリガーにコネクタを追加する必要があります。

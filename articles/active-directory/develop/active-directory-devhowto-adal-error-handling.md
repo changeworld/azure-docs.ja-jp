@@ -5,19 +5,21 @@ services: active-directory
 documentationcenter: ''
 author: danieldobalian
 manager: mtillman
-ms.author: bryanla
+ms.author: celested
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: ''
-ms.openlocfilehash: 2b4c945f5707c158c76c8edbd233d1a8b034111f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: db1d2f16c6497ce3c14d162a9c354dda995058f6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974784"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス
 
@@ -42,14 +44,14 @@ AcquireTokenSilent は、エンド ユーザーにユーザー インターフ�
 
 ### <a name="application-scenarios"></a>アプリケーションのシナリオ
 
-- [ネイティブ クライアント](active-directory-dev-glossary.md#native-client) アプリケーション (iOS、Android、.NET デスクトップ、または Xamarin)
-- [リソース](active-directory-dev-glossary.md#resource-server) (.NET) を呼び出す [Web クライアント](active-directory-dev-glossary.md#web-client) アプリケーション
+- [ネイティブ クライアント](developer-glossary.md#native-client) アプリケーション (iOS、Android、.NET デスクトップ、または Xamarin)
+- [リソース](developer-glossary.md#resource-server) (.NET) を呼び出す [Web クライアント](developer-glossary.md#web-client) アプリケーション
 
 ### <a name="error-cases-and-actionable-steps"></a>エラー ケースと実施可能な手順
 
 基本的に、AcquireTokenSilent エラーには 2 つのケースがあります。
 
-| ケース | [説明] |
+| ケース | 説明 |
 |------|-------------|
 | **ケース 1**: エラーは対話型のサインインで解決できる | 有効なトークンがないことが原因のエラーの場合は、対話型の要求が必要です。 具体的には、キャッシュ参照と無効/有効期限切れの更新トークンを解決するには AcquireToken 呼び出しが必要です。<br><br>このような場合は、エンド ユーザーにサインインを求める必要があります。 アプリケーションは対話型の要求をすぐに行うか、エンドユーザーの操作 ([サインイン] ボタンを押すなど) の後に行うか、またはそれ以降に行うかを選択できます。 選択は、アプリケーションの目的の動作によって決まります。<br><br>この特定のケースとそれを診断するエラーについては、次のセクションのコードをご覧ください。|
 | **ケース 2**: エラーは対話型のサインインで解決できない | ネットワーク エラーと一時的なエラー、またはその他のエラーの場合は、対話型の AcquireToken 要求を実行しても問題は解決しません。 不必要な対話型サインインのプロンプトはエンド ユーザーにストレスを感じさせることもあります。 ADAL は、AcquireTokenSilent エラー発生時にほとんどのエラーについて再試行を自動的に 1 回行います。<br><br>クライアント アプリケーションは後で再試行してみることもできますが、実行するタイミングと方法は、アプリケーションの動作と必要なエンドユーザー エクスペリエンスによって決まります。 たとえば、アプリケーションは数分後に、またはなんらかのエンドユーザー アクションへの応答として AcquireTokenSilent の再試行を行うことができます。 すぐに再試行するとアプリケーションが制限されるため、試行しないでください。<br><br>後続の再試行が同じエラーで失敗しても、クライアントが AcquireToken を使って対話型の要求を行う必要があるということは意味しません。対話型の要求ではエラーは解決されません。<br><br>この特定のケースとそれを診断するエラーについては、次のセクションのコードをご覧ください。 |
@@ -74,7 +76,7 @@ catch (AdalSilentTokenAcquisitionException e) {
     // Exception: AdalSilentTokenAcquisitionException
     // Caused when there are no tokens in the cache or a required refresh failed. 
 
-    // Action: Case 1, resolvable with an interactive request.  
+    // Action: Case 1, resolvable with an interactive request. 
 } 
 
 catch(AdalServiceException e) {
@@ -157,7 +159,7 @@ public void onError(Exception e) {
             // Error: AD_ERROR_CACHE_MULTIPLE_USERS
             // Description: There was ambiguity in the silent request resulting in multiple cache items.
             // Action: Special Case, application should perform another silent request and specify the user using ADUserIdentifier. 
-            // Can be caused in cases of a multi-user application.  
+            // Can be caused in cases of a multi-user application. 
 
             // Action: Case 2, not resolvable with an interactive request.
             // Attempt retry after some time or user action.
@@ -170,9 +172,9 @@ public void onError(Exception e) {
 
 ## <a name="acquiretoken"></a>AcquireToken
 
-AcquireToken は、トークンを取得するために使われる既定の ADAL メソッドです。 ユーザー ID が必要な場合、AcquireToken は最初にトークンを自動で取得しようとしてから、(PromptBehavior.Never が渡されていない限り) 必要に応じて UI を表示します。 アプリケーション ID が必要な場合、AcquireToken はトークンを取得しようとしますが、エンド ユーザーが存在しないため UI は表示しません。  
+AcquireToken は、トークンを取得するために使われる既定の ADAL メソッドです。 ユーザー ID が必要な場合、AcquireToken は最初にトークンを自動で取得しようとしてから、(PromptBehavior.Never が渡されていない限り) 必要に応じて UI を表示します。 アプリケーション ID が必要な場合、AcquireToken はトークンを取得しようとしますが、エンド ユーザーが存在しないため UI は表示しません。 
 
-AcquireToken エラーを処理する場合、エラー処理は、プラットフォームと、アプリケーションが実現しようとしているシナリオに依存します。  
+AcquireToken エラーを処理する場合、エラー処理は、プラットフォームと、アプリケーションが実現しようとしているシナリオに依存します。 
 
 オペレーティング システムでは、特定のアプリケーションに依存するエラー処理を必要とする一連のエラーが生成されることもあります。 詳しくは、「[エラーとログ記録のリファレンス](#error-and-logging-reference)」の「オペレーティング システム エラー」をご覧ください。 
 
@@ -180,14 +182,14 @@ AcquireToken エラーを処理する場合、エラー処理は、プラット�
 
 - ネイティブ クライアント アプリケーション (iOS、Android、.NET デスクトップ、または Xamarin)
 - リソース API (.NET) を呼び出す Web アプリケーション
-- シングル ページ アプリケーション (JavaScript)
+- シングルページ アプリケーション (JavaScript)
 - サービス間アプリケーション (.NET、Java)
   - On-Behalf-Of を含むすべてのシナリオ
   - On-Behalf-Of 固有のシナリオ
 
 ### <a name="error-cases-and-actionable-steps-native-client-applications"></a>エラー ケースと実施可能な手順: ネイティブ クライアント アプリケーション
 
-ネイティブ クライアント アプリケーションを構築する場合は、ネットワークの問題、一時的なエラー、その他のプラットフォーム固有のエラーに関連して考慮すべきいくつかのエラー処理ケースがあります。 ほとんどの場合、アプリケーションではすぐに再試行を実行する必要はなく、サインインを求めるエンドユーザー操作を待機します。  
+ネイティブ クライアント アプリケーションを構築する場合は、ネットワークの問題、一時的なエラー、その他のプラットフォーム固有のエラーに関連して考慮すべきいくつかのエラー処理ケースがあります。 ほとんどの場合、アプリケーションではすぐに再試行を実行する必要はなく、サインインを求めるエンドユーザー操作を待機します。 
 
 1 回の再試行で問題を解決できる特別なケースがいくつかあります。 たとえば、ユーザーがデバイス上のデータを有効にする必要がある場合や、最初のエラーの後に Azure AD ブローカーのダウンロードが完了した場合などです。 
 
@@ -363,9 +365,9 @@ catch (AdalException e) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>エラー ケースと実施可能な手順: 単一ページ アプリケーション (adal.js)
+### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>エラー ケースと実施可能な手順: シングルページ アプリケーション (adal.js)
 
-AcquireToken で adal.js を使って単一ページ アプリケーションを構築する場合、エラー処理コードは通常のサイレント呼び出しのコードと同様です。  具体的には、adal.js では AcquireToken は UI を決して表示しません。 
+AcquireToken で adal.js を使ってシングルページ アプリケーションを構築する場合、エラー処理コードは通常のサイレント呼び出しのコードと同様です。 具体的には、adal.js では AcquireToken は UI を決して表示しません。 
 
 失敗した AcquireToken には次のケースがあります。
 
@@ -512,7 +514,7 @@ Logger.getInstance().setExternalLogger(new ILogger() {
     @Override   
     public void Log(String tag, String message, String additionalMessage, LogLevel level, ADALError errorCode) { 
     // …
-    // You can write this to logfile depending on level or errorcode.     
+    // You can write this to logfile depending on level or errorcode. 
     writeToLogFile(getApplicationContext(), tag +":" + message + "-" + additionalMessage);    
     }
 }
@@ -584,12 +586,7 @@ window.Logging = {
 Microsoft のコンテンツ改善のため、以下のコメント セクションよりご意見をお寄せください。
 
 [![サインイン ボタン][AAD-Sign-In]][AAD-Sign-In]
-<!--Reference style links -->
-[AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md
-[AAD-Auth-Scenarios]: ./active-directory-authentication-scenarios.md
-[AAD-Dev-Guide]: ./active-directory-developers-guide.md
-[AAD-Integrating-Apps]: ./active-directory-integrating-applications.md
-[AZURE-portal]: https://portal.azure.com
+<!--Reference style links --> [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md [AAD-Auth-Scenarios]:authentication-scenarios.md [AAD-Dev-Guide]:azure-ad-developers-guide.md [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md [AZURE-portal]: https://portal.azure.com
 
 <!--Image references-->
 [AAD-Sign-In]:./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png

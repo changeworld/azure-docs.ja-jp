@@ -1,27 +1,23 @@
 ---
-title: Virtual Network - Azure を使用した HDInsight の拡張 | Microsoft Docs
+title: Virtual Network を使用した HDInsight の拡張 - Azure
 description: Azure Virtual Network を使用して HDInsight を他のクラウド リソースまたはデータ センター内のリソースに接続する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 37b9b600-d7f8-4cb1-a04a-0b3a827c6dcc
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/21/2018
-ms.author: larryfr
-ms.openlocfilehash: b02a4625e3973ca7679d1d2018bd37ff1d2ae2ba
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 11/06/2018
+ms.openlocfilehash: 62502e946922928b8b4179d38ce9f9ae55f9930d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238983"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) での HDInsight の使用方法について説明します。 Azure Virtual Network を使用すると、次のシナリオが可能になります。
 
@@ -29,7 +25,7 @@ ms.lasthandoff: 03/28/2018
 
 * HDInsight を Azure Virtual Network 内のデータ ストアに接続する。
 
-* インターネット公開されていない Hadoop サービスに直接アクセスする。 たとえば、Kafka Api や HBase Java API にアクセスできます。
+* インターネットで公開されていない Apache Hadoop サービスに直接アクセスする。 たとえば、Kafka Api や HBase Java API にアクセスできます。
 
 > [!WARNING]
 > このドキュメントの情報を理解するには、TCP/IP ネットワークの知識が必要です。 TCP/IP ネットワークに詳しくない方は、実稼働ネットワークに変更を加えた経験のある方をパートナーにすることをおすすめします。
@@ -60,7 +56,7 @@ ms.lasthandoff: 03/28/2018
 > [!NOTE]
 > 仮想ネットワークに既存の HDInsight クラスターを追加することはできません。
 
-1. 使用中の仮想ネットワークは、従来の配置モデルですか、Resource Manager の配置モデルですか。
+1. 使用中の仮想ネットワークは、クラシック デプロイ モデルですか、Resource Manager デプロイ モデルですか。
 
     HDInsight 3.4 以降では、Resource Manager の仮想ネットワークが必要です。 HDInsight の以前のバージョンでは、従来の仮想ネットワークが必要です。
 
@@ -68,15 +64,15 @@ ms.lasthandoff: 03/28/2018
 
     一度接続すると、Resource Manager ネットワークにインストールされた HDInsight は従来のネットワーク内のリソースとやり取りできます。
 
-2. 強制トンネリングを使用していますか。 強制トンネリングとは、ログ記録と検査を目的として、送信インターネット トラフィックをデバイスに強制的に向かわせるサブネット設定です。 HDInsight は強制トンネリングをサポートしていません。 HDInsight をサブネットにインストールする前に強制トンネリングを削除するか、HDInsight 用の新しいサブネットを作成してください。
+2. 強制トンネリングを使用していますか。 強制トンネリングとは、ログ記録と検査を目的として、送信インターネット トラフィックをデバイスに強制的に向かわせるサブネット設定です。 HDInsight は強制トンネリングをサポートしていません。 HDInsight を既存のサブネットにデプロイする前に強制トンネリングを削除するか、HDInsight 用の強制トンネリングなしで新しいサブネットを作成してください。
 
 3. 仮想ネットワークの送受信トラフィックを制限するために、ネットワーク セキュリティ グループ、ユーザー定義のルート、Virtual Network Appliances を使用していますか。
 
-    マネージ サービスとして、HDInsight は Azure データ センターの複数の IP アドレスに制限なくアクセスできる必要があります。 これらの IP アドレスとの通信を可能にするために、既存のネットワーク セキュリティ グループやユーザー定義のルートを更新してください。
+    マネージド サービスとして、HDInsight は Azure データ センターの複数の IP アドレスに制限なくアクセスできる必要があります。 これらの IP アドレスとの通信を可能にするために、既存のネットワーク セキュリティ グループやユーザー定義のルートを更新してください。
 
     HDInsight では、さまざまなポートを使用する複数のサービスをホストします。 これらのポートへのトラフィックはブロックしないでください。 仮想アプライアンスのファイアウォールの通過を許可するポートの一覧については、「[セキュリティ](#security)」のセクションをご覧ください。
 
-    既存のセキュリティ構成を検索するには、次の Azure PowerShell または Azure CLI コマンドを使用します。
+    既存のセキュリティ構成を検索するには、次の Azure PowerShell または Azure クラシック CLI コマンドを使用します。
 
     * ネットワーク セキュリティ グループ
 
@@ -90,10 +86,10 @@ ms.lasthandoff: 03/28/2018
         az network nsg list --resource-group $RESOURCEGROUP
         ```
 
-        詳細については、「 [ネットワーク セキュリティ グループのトラブルシューティング](../virtual-network/virtual-network-nsg-troubleshoot-portal.md) 」をご覧ください。
+        詳細については、「 [ネットワーク セキュリティ グループのトラブルシューティング](../virtual-network/diagnose-network-traffic-filter-problem.md) 」をご覧ください。
 
         > [!IMPORTANT]
-        > ネットワーク セキュリティ グループ ルールは、ルールの優先順位に基づく順序で適用されます。 トラフィック パターンに一致する最初のルールが適用され、そのトラフィックには他のルールは適用されません。 ルールは、最も制限の緩やかなルールから最も制限の厳しいルールへと順番付けします。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/virtual-networks-nsg.md)」をご覧ください。
+        > ネットワーク セキュリティ グループ ルールは、ルールの優先順位に基づく順序で適用されます。 トラフィック パターンに一致する最初のルールが適用され、そのトラフィックには他のルールは適用されません。 ルールは、最も制限の緩やかなルールから最も制限の厳しいルールへと順番付けします。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/security-overview.md)」をご覧ください。
 
     * ユーザー定義のルート
 
@@ -107,13 +103,13 @@ ms.lasthandoff: 03/28/2018
         az network route-table list --resource-group $RESOURCEGROUP
         ```
 
-        詳細については、「 [ルートのトラブルシューティング](../virtual-network/virtual-network-routes-troubleshoot-portal.md)」をご覧ください。
+        詳細については、「 [ルートのトラブルシューティング](../virtual-network/diagnose-network-routing-problem.md)」をご覧ください。
 
 4. HDInsight クラスターを作成し、構成時に Azure Virtual Network を選択します。 次のドキュメントの手順を使って、クラスターの作成プロセスを理解してください。
 
     * [Azure Portal を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-portal.md)
     * [Azure PowerShell を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-    * [Azure CLI 1.0 を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+    * [Azure クラシック CLI を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [Azure Resource Manager テンプレートを使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
   > [!IMPORTANT]
@@ -125,16 +121,16 @@ ms.lasthandoff: 03/28/2018
 
 Azure には、仮想ネットワークにインストールされている Azure サービスの名前解決が用意されています。 この組み込みの名前解決を使用することにより、HDInsight は、完全修飾ドメイン名 (FQDN) を使用して、次のリソースに接続することができます。
 
-* インターネットで利用可能なリソース。 たとえば、microsoft.com、google.com など。
+* インターネットで利用可能なリソース。 たとえば、microsoft.com、windowsupdate.com など。
 
-* 同じ Azure Virtual Network 内にあるリソース (リソースの__内部 DNS 名__を使用)。 たとえば、既定の名前解決を使用する場合、HDInsight ワーカー ノードに割り当てられている内部 DNS 名の例として次のようなものがあります。
+* 同じ Azure Virtual Network 内にあるリソース (リソースの __内部 DNS 名__ を使用)。 たとえば、既定の名前解決を使用する場合、HDInsight ワーカー ノードに割り当てられている内部 DNS 名の例として次のようなものがあります。
 
     * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
     * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     これら両方のノードは、内部 DNS 名を使用して、互いに直接通信でき、また HDInsight 内の他のノードとも直接通信できます。
 
-既定の名前解決では、仮想ネットワークに結合されているネットワーク内のリソースの名前解決を HDInsight が行うことは__できません__。 よくある例として、オンプレミス ネットワークと仮想ネットワークの結合があります。 既定の名前解決のみ使用している場合、 HDInsight は名前で、オンプレミス ネットワーク内のリソースにアクセスすることはできません。 逆の場合も同様で、オンプレミス ネットワーク内のリソースは、仮想ネットワーク内のリソースに名前でアクセスすることはできません。
+既定の名前解決では、仮想ネットワークに結合されているネットワーク内のリソースの名前解決を HDInsight が行うことは __できません__。 よくある例として、オンプレミス ネットワークと仮想ネットワークの結合があります。 既定の名前解決のみ使用している場合、 HDInsight は名前で、オンプレミス ネットワーク内のリソースにアクセスすることはできません。 逆の場合も同様で、オンプレミス ネットワーク内のリソースは、仮想ネットワーク内のリソースに名前でアクセスすることはできません。
 
 > [!WARNING]
 > HDInsight クラスターを作成する前に、カスタムの DNS サーバーを作成し、これを使用するように仮想ネットワークを構成する必要があります。
@@ -177,7 +173,7 @@ Azure には、仮想ネットワークにインストールされている Azur
 
 ## <a name="directly-connect-to-hadoop-services"></a>Hadoop サービスへの直接接続
 
-HDInsight のほとんどのドキュメントでは、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、https://CLUSTERNAME.azurehdinsight.net でクラスターに接続できることが必要です。 このアドレスではパブリック ゲートウェイが使用されていますが、NSG または UDR を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。
+https://CLUSTERNAME.azurehdinsight.net でクラスターに接続できます。 このアドレスはパブリック IP を使用しているため、NSG を使用してインターネットからの着信トラフィックを制限している場合は到達できない可能性があります。 さらに、VNet にクラスターをデプロイするときは、プライベート エンドポイント https://CLUSTERNAME-int.azurehdinsight.net を使用してそれにアクセスできます。 このエンドポイントはクラスターがアクセスできるように VNet 内のプライベート IP に解決されます。
 
 仮想ネットワーク経由で Ambari やその他の Web ページに接続するには、次の手順を使用します。
 
@@ -214,16 +210,16 @@ HDInsight のほとんどのドキュメントでは、インターネット経�
 
 Azure Virtual Network のネットワーク トラフィックは次のメソッドを使用してコントロールできます。
 
-* **ネットワーク セキュリティ グループ** (NSG) を使用すると、ネットワーク の送受信トラフィックをフィルター処理できます。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/virtual-networks-nsg.md)」をご覧ください。
+* **ネットワーク セキュリティ グループ** (NSG) を使用すると、ネットワーク の送受信トラフィックをフィルター処理できます。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/security-overview.md)」をご覧ください。
 
     > [!WARNING]
-    > HDInsight では、送信トラフィックの制限をサポートしていません。
+    > HDInsight では、送信トラフィックの制限をサポートしていません。 すべての送信トラフィックを許可する必要があります。
 
 * **ユーザー定義ルート**(UDR) は、ネットワーク内のリソース間のトラフィックのフローを定義します。 ユーザー定義ルートの詳細については、「[user-defined routes and IP forwarding (ユーザー定義ルートと IP 転送)](../virtual-network/virtual-networks-udr-overview.md)」をご覧ください。
 
 * **ネットワーク仮想アプライアンス**は、ファイアウォールやルーターなどのデバイスの機能をレプリケートします。 詳細については、「[ネットワーク アプライアンス](https://azure.microsoft.com/solutions/network-appliances)」をご覧ください。
 
-マネージ サービスとして、HDInsight は Azure クラウドの正常性と管理サービスに制限なくアクセスできる必要があります。 NSG と UDR を使用する場合は、これらのサービスが HDInsight と通信できることを確認する必要があります。
+マネージド サービスとして HDInsight には、VNET からの受信および送信トラフィックの両方に対して、HDinsight の正常性および管理サービスへの無制限アクセスが必要です。 NSG と UDR を使用する場合は、これらのサービスが引き続き HDInsight クラスターと通信できることを確認する必要があります。
 
 HDInsight では、いくつかのポート上のサービスを公開します。 仮想アプライアンスのファイアウォールを使用する場合は、これらのサービスで使用されるポートのトラフィックを許可する必要があります。 詳細については、「必須ポート」のセクションをご覧ください。
 
@@ -237,18 +233,18 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 
 3. HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループまたはユーザー定義のルートを作成または変更します。
 
-    * __ネットワーク セキュリティ グループ__: IP アドレスからの__受信__トラフィックをポート __443__ で許可します。
-    * __ユーザー定義のルート__: 各 IP アドレスへのルートを作成し、__次ホップの種類__を__インターネット__に設定します。
+    * __ネットワーク セキュリティ グループ__: IP アドレスからの __受信__ トラフィックをポート __443__ で許可します。 これにより、HDI 管理サービスが VNET の外部から、クラスターに確実に到達できます。
+    * __ユーザー定義のルート__: UDR を使用する予定がある場合は、IP アドレスごとにルートを作成し、__次ホップの種類__ を __インターネット__ に設定します。 その他の VNET からのすべての送信トラフィックを制限なしで許可する必要もあります。 たとえば、監視のために、その他のすべてのトラフィックを Azure ファイヤウォールやネットワーク仮想アプライアンス (Azure でホストされている) にルーティングできますが、送信トラフィックがブロックされないようにする必要があります。
 
 ネットワーク セキュリティ グループまたはユーザー定義のルートの詳細については、次のドキュメントをご覧ください。
 
-* [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
+* [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
 
 * [ユーザー定義のルート](../virtual-network/virtual-networks-udr-overview.md)
 
-#### <a name="forced-tunneling"></a>強制トンネリング
+#### <a name="forced-tunneling-to-on-premise"></a>オンプレミスへの強制トンネリング
 
-強制トンネリングは、サブネットからのすべてのトラフィックを強制的に、特定のネットワークまたは場所に送るユーザー定義のルーティングの構成です。 HDInsight は強制トンネリングをサポート__していません__。
+強制トンネリングは、サブネットからのすべてのトラフィックを強制的に、特定のネットワークまたは場所に送るユーザー定義のルーティングの構成です。 HDInsight では、オンプレミス ネットワークへの強制トンネリングをサポートして __いません__。 Azure Firewall または Azure でホストされているネットワーク仮想アプライアンスを使用している場合は、UDR を使用して、監視のために、それにトラフィックをルーティングし、すべての送信トラフィックを許可できます。
 
 ## <a id="hdinsight-ip"></a>必須 IP アドレス
 
@@ -257,7 +253,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 >
 > トラフィックの制御に、ネットワーク セキュリティ グループもユーザー定義のルートも使用しない場合は、このセクションを無視してもかまいません。
 
-ネットワーク セキュリティ グループまたはユーザー定義のルートを使用する場合は、Azure の正常性および管理サービスからのトラフィックが HDInsight に到達できるように許可する必要があります。 次の手順を使用して、許可する必要がある IP アドレスを見つけます。
+ネットワーク セキュリティ グループまたはユーザー定義のルートを使用する場合は、Azure の正常性および管理サービスからのトラフィックが HDInsight に到達できるように許可する必要があります。 また、サブネット内の VM 間のトラフィックも許可する必要があります。 次の手順を使用して、許可する必要がある IP アドレスを見つけます。
 
 1. 常に次の IP アドレスからのトラフィックを許可する必要があります。
 
@@ -284,16 +280,18 @@ HDInsight では、いくつかのポート上のサービスを公開します�
     | &nbsp; | カナダ中部 | 52.228.37.66</br>52.228.45.222 | 443 | 受信 |
     | 中国 | 中国 (北部) | 42.159.96.170</br>139.217.2.219 | 443 | 受信 |
     | &nbsp; | 中国 (東部) | 42.159.198.178</br>42.159.234.157 | 443 | 受信 |
+    | &nbsp; | 中国北部 2 | 40.73.37.141</br>40.73.38.172 | 443 | 受信 |
     | ヨーロッパ | 北ヨーロッパ | 52.164.210.96</br>13.74.153.132 | 443 | 受信 |
     | &nbsp; | 西ヨーロッパ| 52.166.243.90</br>52.174.36.244 | 443 | 受信 |
     | ドイツ | ドイツ中部 | 51.4.146.68</br>51.4.146.80 | 443 | 受信 |
     | &nbsp; | ドイツ北東部 | 51.5.150.132</br>51.5.144.101 | 443 | 受信 |
     | インド | インド中部 | 52.172.153.209</br>52.172.152.49 | 443 | 受信 |
+    | &nbsp; | インド南部 | 104.211.223.67<br/>104.211.216.210 | 443 | 受信 |
     | 日本 | 東日本 | 13.78.125.90</br>13.78.89.60 | 443 | 受信 |
     | &nbsp; | 西日本 | 40.74.125.69</br>138.91.29.150 | 443 | 受信 |
     | 韓国 | 韓国中部 | 52.231.39.142</br>52.231.36.209 | 433 | 受信 |
     | &nbsp; | 韓国南部 | 52.231.203.16</br>52.231.205.214 | 443 | 受信
-    | 英国 | 英国西部 | 51.141.13.110</br>51.141.7.20 | 443 | 受信 |
+    | イギリス | 英国西部 | 51.141.13.110</br>51.141.7.20 | 443 | 受信 |
     | &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | 443 | 受信 |
     | 米国 | 米国中央部 | 13.67.223.215</br>40.86.83.253 | 443 | 受信 |
     | &nbsp; | 米国東部 | 13.82.225.233</br>40.71.175.99 | 443 | 受信 |
@@ -304,7 +302,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 
     Azure Government に使用する IP アドレスについては、「[Azure Government Intelligence + Analytics (Azure Government のインテリジェンスと分析)](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)」をご覧ください。
 
-3. 仮想ネットワークでカスタム DNS サーバーを使用する場合は、__168.63.129.16__ からのアクセスを許可する必要もあります。 これは、Azure の再帰リゾルバーのアドレスです。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
+3. また、__168.63.129.16__ からのアクセスも許可する必要があります。 これは、Azure の再帰リゾルバーのアドレスです。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 詳細については、「[ネットワーク トラフィックのコントロール](#networktraffic)」のセクションをご覧ください。
 
@@ -434,7 +432,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
     -Name $subnetName `
     -AddressPrefix $subnet.AddressPrefix `
     -NetworkSecurityGroup $nsg
-$vnet | Set-AzureRmVirtual Network
+$vnet | Set-AzureRmVirtualNetwork
 ```
 
 > [!IMPORTANT]
@@ -446,7 +444,7 @@ $vnet | Set-AzureRmVirtual Network
 > Add-AzureRmNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 > ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
 次の手順を使用して、受信トラフィックを制限するが HDInsight が必要とする IP アドレスからのトラフィックは許可する仮想ネットワークを作成します。
 
@@ -515,7 +513,7 @@ $vnet | Set-AzureRmVirtual Network
 
 仮想ネットワークのカスタム DNS サーバーで次を実行します。
 
-1. Azure PowerShell または Azure CLI を使用して、仮想ネットワークの DNS サフィックスを見つけます。
+1. Azure PowerShell または Azure クラシック CLI を使用して、仮想ネットワークの DNS サフィックスを見つけます。
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
@@ -578,7 +576,7 @@ $vnet | Set-AzureRmVirtual Network
     
     * `192.168.0.1` の値を、オンプレミスの DNS サーバーの IP アドレス と置き換えます。 このエントリにより、その他の DNS 要求はすべて、オンプレミスの DNS サーバーにルーティングされます。
 
-3. 構成を使用するには、バインドを再起動します。 たとえば、「`sudo service bind9 restart`」のように入力します。
+3. 構成を使用するには、バインドを再起動します。 たとえば、「 `sudo service bind9 restart` 」のように入力します。
 
 4. オンプレミスの DNS サーバーに、条件付きフォワーダーを追加します。 手順 1 で見つけた DNS サフィックスへの要求をカスタム DNS サーバーに送信するように条件付きフォワーダーを構成します。
 
@@ -597,7 +595,7 @@ $vnet | Set-AzureRmVirtual Network
 
 * [バインド](https://www.isc.org/downloads/bind/)がカスタム DNS サーバーにインストールされている。
 
-1. Azure PowerShell または Azure CLI を使用して、両方の仮想ネットワークの DNS サフィックスを見つけます。
+1. Azure PowerShell または Azure クラシック CLI を使用して、両方の仮想ネットワークの DNS サフィックスを見つけます。
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
@@ -620,7 +618,7 @@ $vnet | Set-AzureRmVirtual Network
     };
     ```
 
-    `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` の値を、__別の__仮想ネットワークの DNS サフィックスに置き換えます。 このエントリにより、リモート ネットワークの DNS サフィックスへの要求はそのネットワークのカスタム DNS にルーティングされます。
+    `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` の値を、__別の__ 仮想ネットワークの DNS サフィックスに置き換えます。 このエントリにより、リモート ネットワークの DNS サフィックスへの要求はそのネットワークのカスタム DNS にルーティングされます。
 
 3. 両方の仮想ネットワークのカスタム DNS サーバーで、`/etc/bind/named.conf.options` ファイルの内容として次のテキストを使用します。
 
@@ -666,6 +664,6 @@ $vnet | Set-AzureRmVirtual Network
 * HBase geo レプリケーションの構成については、「[Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する](hbase/apache-hbase-replication.md)」を参照してください。
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
 
-* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関するページをご覧ください。
+* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関するページをご覧ください。
 
 * ユーザー定義のルートの詳細については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」に関するページをご覧ください。

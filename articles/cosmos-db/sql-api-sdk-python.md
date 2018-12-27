@@ -2,49 +2,47 @@
 title: 'Azure Cosmos DB: SQL Python API、SDK、およびリソース | Microsoft Docs'
 description: リリース日、提供終了日、Azure Cosmos DB Python SDK の各バージョン間の変更など、SQL Python API と SDK に関するあらゆる詳細を提供します。
 services: cosmos-db
-documentationcenter: python
 author: rnagpal
-manager: jhubbard
+manager: kfile
 editor: cgronlun
-ms.assetid: 3ac344a9-b2fa-4a3f-a4cc-02d287e05469
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: python
-ms.topic: article
-ms.date: 1/4/2018
+ms.topic: reference
+ms.date: 9/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbc23dda366e38bda20010576c3258f0fd6e656b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 75b5fd2f586a9122aa1248ba88d7ceab59b13215
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269294"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Python SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.JS](sql-api-sdk-node.md)
+> * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 <table>
 
-<tr><td>**SDK のダウンロード**</td><td>[PyPI](https://pypi.python.org/pypi/pydocumentdb)</td></tr>
+<tr><td>**SDK のダウンロード**</td><td>[PyPI](https://pypi.org/project/azure-cosmos)</td></tr>
 
-<tr><td>**API ドキュメント**</td><td>[Python の API リファレンス ドキュメント](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.html)</td></tr>
+<tr><td>**API ドキュメント**</td><td>[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)</td></tr>
 
-<tr><td>**SDK のインストール手順**</td><td>[Python SDK のインストール手順](http://azure.github.io/azure-documentdb-python/)</td></tr>
+<tr><td>**SDK のインストール手順**</td><td>[Python SDK のインストール手順](https://github.com/Azure/azure-cosmos-python)</td></tr>
 
-<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
+<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-cosmos-python)</td></tr>
 
 <tr><td>**作業開始**</td><td>[Python SDK の開始](sql-api-python-application.md)</td></tr>
 
@@ -52,11 +50,20 @@ ms.lasthandoff: 03/30/2018
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0
+* マルチリージョンの書き込みがサポートされるようになりました。
+* 名前空間が azure.cosmos に変更されました。
+* コレクションとドキュメントの概念の名前がコンテナーとアイテムに変更され、document_client の名前が cosmos_client に変更されました。 
+
+### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
+* 接続に問題が発生したとき、デフォルトで再試行されるようになりました。
+
 ### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
 * Azure DocumentDB ではなく Azure Cosmos DB を参照するように更新されたドキュメントです。
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
-* この SDK バージョンでは、https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
+* この SDK バージョンでは、 https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * 集計辞書のバグを修正しました。
@@ -136,8 +143,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.3.2](#2.3.2) |2018 年 5 月 8 日 |--- |
 | [2.3.1](#2.3.1) |2017 年 12 月 21 日 |--- |
 | [2.3.0](#2.3.0) |2017 年 11 月 10 日 |--- |
 | [2.2.1](#2.2.1) |2017 年 9 月 29 日 |--- |

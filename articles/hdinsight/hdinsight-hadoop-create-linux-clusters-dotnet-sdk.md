@@ -1,33 +1,27 @@
 ---
-title: ".NET を使用して Hadoop クラスターを作成する - Azure HDInsight | Microsoft Docs"
-description: "HDInsight .NET SDK を使用して、HDInsight 用の Linux ベースの Hadoop、HBase、Storm、または Spark クラスターを作成する方法について説明します。"
+title: .NET を使用して Apache Hadoop クラスターを作成する - Azure HDInsight
+description: HDInsight .NET SDK を使用して、Linux 上に HDInsight 用の Apache Hadoop、Apache HBase、Apache Storm、または Apache Spark クラスターを作成する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 9c74e3dc-837f-4c90-bbb1-489bc7124a3d
+author: mamccrea
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: a2258aa6df04f213652f6ce460b8cf0e7e3969e5
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.topic: conceptual
+ms.date: 08/16/2018
+ms.author: mamccrea
+ms.openlocfilehash: 943d5aeccf949c1dd494dc8ec8fda0d782527749
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035682"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 
-.NET SDK を使用して、Azure HDInsight クラスターで Hadoop クラスターを作成する方法について説明します。
+.NET SDK を使用して、Azure HDInsight クラスターで Apache Hadoop クラスターを作成する方法について説明します。
 
 > [!IMPORTANT]
 > このドキュメントの手順では、worker ノードが 1 つあるクラスターを作成します。 クラスター作成または作成後のスケーリングで 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択する必要があります。
@@ -39,7 +33,7 @@ ms.lasthandoff: 02/23/2018
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **Azure ストレージ アカウント**。 「[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+* **Azure ストレージ アカウント**。 「[ストレージ アカウントを作成する](../storage/common/storage-quickstart-create-account.md)」を参照してください。
 * **Visual Studio 2013、Visual Studio 2015、または Visual Studio 2017**。
 
 ## <a name="create-clusters"></a>クラスターの作成
@@ -166,12 +160,12 @@ ms.lasthandoff: 02/23/2018
             static TokenCloudCredentials GetTokenCloudCredentials(string TenantId, string ClientId, string SubscriptionId)
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + TenantId);
-                var tokenAuthResult = authContext.AcquireToken("https://management.core.windows.net/", 
+                var tokenAuthResult = authContext.AcquireTokenAsync("https://management.core.windows.net/",
                     ClientId, 
                     new Uri("urn:ietf:wg:oauth:2.0:oob"), 
-                    PromptBehavior.Always, 
+                    new PlatformParameters(PromptBehavior.Always), 
                     UserIdentifier.AnyUser);
-                return new TokenCloudCredentials(SubscriptionId, tokenAuthResult.AccessToken);
+                return new TokenCloudCredentials(SubscriptionId, tokenAuthResult.Result.AccessToken);
             }
             /// <summary>
             /// Marks your subscription as one that can use HDInsight, if it has not already been marked as such.
@@ -196,7 +190,7 @@ ms.lasthandoff: 02/23/2018
 
 ## <a name="use-bootstrap"></a>ブートストラップの使用
 
-ブートストラップを使用して、クラスターの作成中に追加の設定を構成できます。  詳細については、「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)」をご覧ください。
+ブートストラップを使用して、クラスターの作成中に追加の設定を構成できます。  詳細については、「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md) 」をご覧ください。
 
 [クラスターの作成](#create-clusters) のサンプルを変更し、Hive の設定を構成します。
 
@@ -397,6 +391,7 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Livy を使用して Spark クラスターでジョブをリモートで実行する](spark/apache-spark-livy-rest-interface.md)
 * [Spark と BI: HDInsight で BI ツールと Spark を使用した対話型データ分析の実行](spark/apache-spark-use-bi-tools.md)
 * [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](spark/apache-spark-machine-learning-mllib-ipython.md)
+
 ### <a name="run-jobs"></a>ジョブの実行
 * [.NET SDK を使用して HDInsight で Hive ジョブを実行する](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
 * [.NET SDK を使用して HDInsight で Pig ジョブを実行する](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)

@@ -1,19 +1,20 @@
 ---
-title: "Azure Container Service と Azure Container Registry で Draft を使用する"
-description: "ACS Kubernetes クラスターと Azure Container Registry を作成し、Draft を使用して Azure に最初のアプリケーションを作成します。"
+title: Azure Container Service と Azure Container Registry で Draft を使用する
+description: ACS Kubernetes クラスターと Azure Container Registry を作成し、Draft を使用して Azure に最初のアプリケーションを作成します。
 services: container-service
 author: squillace
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: de1e8ec1b712aeb5572c7972b22412f2ae90b7b9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c635a869506918ab7ee032df349eb307987c1284
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432281"
 ---
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Azure Container Service と Azure Container Registry で Draft を使用して、アプリケーションを構築し Kubernetes にデプロイする
 
@@ -32,7 +33,7 @@ Draft は、すべての Docker イメージ レジストリと、ローカル�
       az group create --name draft --location eastus
       ```
 
-2. [az acr create](/cli/azure/acr#az_acr_create) を使用して ACR イメージ レジストリを作成し、`--admin-enabled` オプションが `true` に設定されていることを確認します。
+2. [az acr create](/cli/azure/acr#az-acr-create) を使用して ACR イメージ レジストリを作成し、`--admin-enabled` オプションが `true` に設定されていることを確認します。
       ```azurecli
       az acr create --resource-group draft --name draftacs --sku Basic
       ```
@@ -40,7 +41,7 @@ Draft は、すべての Docker イメージ レジストリと、ローカル�
 
 ## <a name="create-an-azure-container-service-with-kubernetes"></a>Kubernetes を使用して Azure Container Service をデプロイする
 
-これで、[az acs create](/cli/azure/acs#az_acs_create) を使用し、Kubernetes を `--orchestrator-type` の値として、ACS クラスターを作成する準備が整いました。
+これで、[az acs create](/cli/azure/acs#az-acs-create) を使用し、Kubernetes を `--orchestrator-type` の値として、ACS クラスターを作成する準備が整いました。
 ```azurecli
 az acs create --resource-group draft --name draft-kube-acs --dns-prefix draft-cluster --orchestrator-type kubernetes --generate-ssh-keys
 ```
@@ -220,7 +221,7 @@ Draft によって、作成される各 Helm チャート (作業対象の各ア
     ```
 
 2. ドメインの DNS ゾーンを作成します。
-[az network dns zone create](/cli/azure/network/dns/zone#az_network_dns_zone_create) コマンドを使用して、ドメインに関して DNS の制御を Azure DNS に委任するネームサーバーを取得します。
+[az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) コマンドを使用して、ドメインに関して DNS の制御を Azure DNS に委任するネームサーバーを取得します。
     ```azurecli
     az network dns zone create --resource-group squillace.io --name squillace.io
     {

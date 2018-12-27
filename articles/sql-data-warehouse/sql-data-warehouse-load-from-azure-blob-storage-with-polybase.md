@@ -1,36 +1,25 @@
 ---
-title: "Azure Blob から Azure Data Warehouse に読み込む | Microsoft Docs"
-description: "PolyBase を使用して、Azure Blob Storage から SQL Data Warehouse にデータを読み込む方法について説明します。 パブリック データから Contoso Retail Data Warehouse スキーマにテーブルをいくつか読み込みます。"
+title: Contoso Retail データを Azure SQL Data Warehouse に読み込む | Microsoft Docs
+description: PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Azure SQL Data Warehouse に読み込みます。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: barbkess
-editor: 
-ms.assetid: faca0fe7-62e7-4e1f-a86f-032b4ffcb06e
+author: ckarst
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 10/31/2016
-ms.author: barbkess
-ms.openlocfilehash: 4221bcd5a50fad680427a500e32837c1e75dd990
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: cf484d5d7a48117bac659dcfad356238f1e9f8a2
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307439"
 ---
-# <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase)
-> [!div class="op_single_selector"]
-> * [Data Factory](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
-> * [PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-> 
-> 
+# <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Contoso Retail データを Azure SQL Data Warehouse に読み込む
 
-PolyBase コマンドと T-SQL コマンドを使用して、Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込みます。 
-
-このチュートリアルでは、シンプルにするために、パブリック Azure Storage BLOB の 2 つのテーブルを Contoso Retail Data Warehouse スキーマに読み込みます。 完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail Data Warehouse を読み込む][Load the full Contoso Retail Data Warehouse]例を実行します。
+PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Azure SQL Data Warehouse に読み込みます。 完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail Data Warehouse を読み込む](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)例を実行します。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -116,7 +105,7 @@ WITH
 );
 ``` 
 
-## <a name="3-create-the-external-tables"></a>3.外部テーブルの作成
+## <a name="3-create-the-external-tables"></a>手順 3.外部テーブルの作成
 データ ソースとファイル形式を指定したら、外部テーブルを作成できます。 
 
 ### <a name="31-create-a-schema-for-the-data"></a>3.1. データのスキーマを作成する
@@ -354,7 +343,7 @@ JOIN    [cso].[DimProduct]      AS p ON f.[ProductKey] = p.[ProductKey]
 GROUP BY p.[BrandName]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Contoso Retail Data Warehouse データを完全に読み込むには、スクリプトを使います。開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要に関する記事][SQL Data Warehouse development overview]をご覧ください。
 
 <!--Image references-->
@@ -369,8 +358,8 @@ Contoso Retail Data Warehouse データを完全に読み込むには、スク�
 [label]: sql-data-warehouse-develop-label.md
 
 <!--MSDN references-->
-[CREATE EXTERNAL DATA SOURCE]: https://msdn.microsoft.com/en-us/library/dn935022.aspx
-[CREATE EXTERNAL FILE FORMAT]: https://msdn.microsoft.com/en-us/library/dn935026.aspx
+[CREATE EXTERNAL DATA SOURCE]: https://msdn.microsoft.com/library/dn935022.aspx
+[CREATE EXTERNAL FILE FORMAT]: https://msdn.microsoft.com/library/dn935026.aspx
 [CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
 [sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
 [REBUILD]: https://msdn.microsoft.com/library/ms188388.aspx

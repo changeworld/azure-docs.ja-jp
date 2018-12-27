@@ -1,32 +1,33 @@
 ---
-title: "Azure Service Fabric でのサービスのリモート処理 | Microsoft Docs"
-description: "Service Fabric のリモート処理では、クライアントとサービスがリモート プロシージャ コールを使用してサービスと通信できるようにします。"
+title: Azure Service Fabric での Java を使用したサービスのリモート処理 | Microsoft Docs
+description: Service Fabric のリモート処理では、クライアントとサービスがリモート プロシージャ コールを使用して Java のサービスと通信できるようにします。
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
 manager: timlt
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 51a9c8bd628ef9e65d04a3a4ddbdc127d84d4b54
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3215ee4adf907524626b4919b637ce23b9e0e782
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750182"
 ---
-# <a name="service-remoting-with-reliable-services"></a>Reliable Services によるサービスのリモート処理
+# <a name="service-remoting-in-java-with-reliable-services"></a>Java での Reliable Services を使用したサービスのリモート処理
 > [!div class="op_single_selector"]
-> * [Windows での C# ](service-fabric-reliable-services-communication-remoting.md)
+> * [Windows での C#](service-fabric-reliable-services-communication-remoting.md)
 > * [Linux での Java](service-fabric-reliable-services-communication-remoting-java.md)
 >
 >
 
-Reliable Services フレームワークではリモート メカニズムが提供され、これにより、サービスのリモート プロシージャ コールを迅速かつ簡単に設定できます。
+WebAPI や Windows Communication Foundation (WCF) など、特定の通信プロトコルやスタックに関連付けられていないサービスでは、サービスのリモート プロシージャ コールを迅速かつ簡単に設定するためのリモート処理メカニズムを Reliable Services フレームワークが提供します。  この記事では、Java で作成されたサービス向けにリモート プロシージャ コールを設定する方法について説明します。
 
 ## <a name="set-up-remoting-on-a-service"></a>サービスでのリモート処理の設定
 サービスのリモート処理の設定は、次の 2 つの簡単な手順で行われます。
@@ -87,11 +88,11 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 リモート処理フレームワークは、サービスでスローされた例外をクライアントに伝達します。 そのため、 `ServiceProxyBase` を使用したクライアントでの例外処理ロジックでは、サービスがスローする例外を直接処理できます。
 
 ## <a name="service-proxy-lifetime"></a>サービス プロキシの有効期間
-ServiceProxy の作成は負荷の低い操作であり、ユーザーは必要に応じていくつでも ServiceProxy を作成できます。 サービス プロキシは、ユーザーがそれを必要とする間、再利用することができます。 例外が発生した場合は、同じプロキシを再利用することができます。 各 ServiceProxy は、メッセージをネットワーク経由で送信するための通信クライアントを含んでいます。 API を呼び出す間、使用されている通信クライアントが有効であるかどうかが内部的にチェックされます。 その結果に基づいて、通信クライアントが再作成されます。 したがって例外が発生した場合の ServiceProxy の再作成をユーザーが行う必要はありません。
+ServiceProxy の作成は負荷の低い処理であり、必要に応じていくつでも ServiceProxy を作成できます。 サービス プロキシ インスタンスは、それらが必要とされる間、再利用することができます。 リモート プロシージャ コールから例外がスローされても、同じプロキシ インスタンスを再利用できます。 各 ServiceProxy は、メッセージをネットワーク経由で送信するための通信クライアントを含んでいます。 リモート呼び出しが実行されると、通信クライアントが有効かどうかを調べる内部チェックが実行されます。 それらのチェックの結果に基づき、必要に応じて通信クライアントが再作成されます。 したがって例外が発生しても、`ServiceProxy` を自分で再作成する必要はありません。
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory の有効期間
 [FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client._fabric_service_proxy_factory) は、さまざまなリモート処理インターフェイスのプロキシを作成するファクトリです。 プロキシの作成に API `ServiceProxyBase.create` を使っている場合、フレームワークは `FabricServiceProxyFactory` を作成します。
-手動での作成は、[ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client._service_remoting_client_factory) プロパティを上書きする必要があるときに効果的です。
+手動での作成は、[ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client._service_remoting_client_factory) プロパティをオーバーライドする必要があるときに効果的です。
 ファクトリは負荷の高い操作です。 `FabricServiceProxyFactory` は通信クライアントのキャッシュを保持します。
 ベスト プラクティスは `FabricServiceProxyFactory` をできるだけ長くキャッシュすることです。
 
@@ -101,7 +102,7 @@ ServiceProxy の作成は負荷の低い操作であり、ユーザーは必要�
 ServiceProxy は、それが作成されたサービス パーティションのすべてのフェールオーバー例外を処理します。 フェールオーバー例外 (一時的ではない例外) が発生した場合、エンドポイントを再度解決し、正しいエンドポイントでの呼び出しを再試行します。 フェールオーバー例外の再試行回数に上限はありません。
 一時的な例外の場合は、単に呼び出しが再試行されます。
 
-既定の再試行パラメーターは、[OperationRetrySettings] で指定します。 (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) OperationRetrySettings オブジェクトを ServiceProxyFactory コンストラクターに渡すことでこれらの値を構成できます。
+既定の再試行パラメーターは、[OperationRetrySettings] で指定します。 (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) ユーザーは、ServiceProxyFactory コンストラクターに OperationRetrySettings オブジェクトを渡すことによって、これらの値を構成できます。
 
-## <a name="next-steps"></a>次のステップ
-* [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
+## <a name="next-steps"></a>次の手順
+* [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication-java.md)

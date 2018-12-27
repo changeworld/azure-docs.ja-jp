@@ -2,24 +2,18 @@
 title: 'クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: ポータル | Microsoft Docs'
 description: VPN Gateway とポータルを使用して従来の VNets を Resource Manager VNets に接続する手順
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: 5a90498c-4520-4bd3-a833-ad85924ecaf9
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 65cfbafbd5fbdd576f01b5cba638c1b5869f377b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405006"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -80,7 +74,7 @@ Connection name = RMtoClassic
 
 次の表には、VNet の例とローカル サイトの定義方法の例を示します。
 
-| 仮想ネットワーク | アドレス空間 | リージョン | ローカル ネットワーク サイトへの接続 |
+| Virtual Network | アドレス空間 | リージョン | ローカル ネットワーク サイトへの接続 |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |米国西部 | RMVNetLocal (192.168.0.0/16) |
 | RMVNet | (192.168.0.0/16) |米国東部 |ClassicVNetLocal (10.0.0.0/24) |
@@ -89,7 +83,7 @@ Connection name = RMtoClassic
 
 このセクションでは、クラシック VNet、ローカル ネットワーク (ローカル サイト)、および仮想ネットワーク ゲートウェイを作成します。 スクリーンショットは例として示されています。 例の値を実際の値で置き換えるか、[例](#values)の値を使用してください。
 
-### 1.<a name="classicvnet">クラシック VNet の作成</a>
+### 1.<a name="classicvnet"></a>クラシック VNet の作成
 
 クラシック VNet を所有しておらず、これらの手順を演習として実行している場合、[この記事](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)と上記の設定[例](#values)の値を使用して VNet を作成できます。
 
@@ -179,7 +173,7 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 
 **例の値:** ローカル ネットワーク ゲートウェイ = ClassicVNetLocal
 
-| 仮想ネットワーク | アドレス空間 | リージョン | ローカル ネットワーク サイトへの接続 |ゲートウェイのパブリック IP アドレス|
+| Virtual Network | アドレス空間 | リージョン | ローカル ネットワーク サイトへの接続 |ゲートウェイのパブリック IP アドレス|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |米国西部 | RMVNetLocal (192.168.0.0/16) |ClassicVNet ゲートウェイに割り当てられているパブリック IP アドレス|
 | RMVNet | (192.168.0.0/16) |米国東部 |ClassicVNetLocal (10.0.0.0/24) |RMVNet ゲートウェイに割り当てられているパブリック IP アドレス|
@@ -232,7 +226,7 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 管理者特権を使って PowerShell コンソールを開き、Azure アカウントにログインします。 ログイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。 次のコマンドレットは、Resource Manager デプロイ モデルの Azure アカウント用のログイン資格情報をユーザーに求めます。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Azure サブスクリプションの一覧を取得します。
@@ -293,7 +287,7 @@ Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
 -LocalNetworkSiteName "172B9E16_RMVNetLocal" -SharedKey abc123
 ```
 
-##<a name="verify"></a>セクション 6 - 接続を確認する
+## <a name="verify"></a>セクション 6 - 接続を確認する
 
 Azure Portal または PowerShell を使って、接続を確認できます。 確認するときは、接続が作成されるまで 1 ～ 2 分待たなければならない場合があります。 接続が成功すると、接続性の状態が [接続中] から [接続済み] に変わります。
 

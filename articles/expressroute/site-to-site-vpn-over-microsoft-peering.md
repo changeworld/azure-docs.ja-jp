@@ -1,24 +1,18 @@
 ---
-title: "Azure ExpressRoute の Microsoft ピアリング経由のサイト間 VPN を構成する | Microsoft Docs"
-description: "サイト間 VPN ゲートウェイを使用した ExpressRoute Microsoft ピアリング回線経由の Azure への IPsec/IKE 接続を構成します。"
-documentationcenter: na
+title: Azure ExpressRoute の Microsoft ピアリング経由のサイト間 VPN を構成する | Microsoft Docs
+description: サイト間 VPN ゲートウェイを使用した ExpressRoute Microsoft ピアリング回線経由の Azure への IPsec/IKE 接続を構成します。
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: 
-ms.assetid: 
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/06/2017
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 64203e2cbac1206224f0e0ad8b7d364f19ad0332
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 5fb4a4034a744b8b2b769a1cfd2d9df12ea90dde
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240913"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft ピアリング経由のサイト間 VPN を構成する
 
@@ -28,12 +22,13 @@ ms.lasthandoff: 12/07/2017
 
 Microsoft ピアリングを活用すると、選択したオンプレミス ネットワークと Azure VNet の間に、サイト間 IPsec/IKE VPN トンネルを確立できます。
 
-  ![接続の概要](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
-
->[!NOTE]
+  >[!NOTE]
 >Microsoft ピアリング経由のサイト間 VPN を設定すると、VPN ゲートウェイおよび VPN エグレスに対して料金が発生します。 詳細については、「[VPN Gateway の価格](https://azure.microsoft.com/pricing/details/vpn-gateway)」を参照してください。
 >
 >
+
+  ![接続の概要](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
+
 
 高可用性と冗長性を実現するために、ExpressRoute 回線の 2 つの MSEE-PE ペア経由のトンネルを複数構成し、トンネル間で負荷分散できます。
 
@@ -111,7 +106,7 @@ sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 
 正しいプレフィックス セットを受信していることを確認するために、クロス検証を実行できます。 次の Azure PowerShell コマンドは、サービスおよび Azure リージョンごとに Microsoft ピアリング経由で公開されたプレフィックスの一覧を出力します。
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmBgpServiceCommunity
 ```
 
@@ -166,7 +161,7 @@ IPsec トンネル ペア経由で、eBGP セッションが確立され、プ�
   "gatewayName": "vpnGw",                 // Name of the Azure VPN gateway
   "gatewaySku": "VpnGw1",                 // Azure VPN gateway SKU
   "vpnType": "RouteBased",                // type of VPN gateway
-  "sharedKey": "string",                  // shared secret needs to match with on-premise configuration
+  "sharedKey": "string",                  // shared secret needs to match with on-premises configuration
   "asnVpnGateway": 65000,                 // BGP Autonomous System number assigned to the VPN Gateway 
   "asnRemote": 65010,                     // BGP Autonmous Syste number assigned to the on-premises device
   "bgpPeeringAddress": "172.16.0.3",      // IP address of the remote BGP peer on-premises
@@ -486,13 +481,13 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 
 IPsec トンネルの状態を Azure VPN ゲートウェイで確認するには、次の Powershell コマンドを使用します。
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
 ```
 
 出力例:
 
-```powershell
+```azurepowershell
 ConnectionStatus        : Connected
 EgressBytesTransferred  : 17734660
 IngressBytesTransferred : 10538211
@@ -500,13 +495,13 @@ IngressBytesTransferred : 10538211
 
 Azure VPN ゲートウェイ インスタンスのトンネルの状態を個別に確認するには、次の例を使用します。
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
 ```
 
 出力例:
 
-```powershell
+```azurepowershell
 Tunnel                           : vpn2local1_52.175.250.191
 ConnectionStatus                 : Connected
 IngressBytesTransferred          : 4877438
@@ -622,13 +617,13 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 
 Azure VPN ゲートウェイで、BGP ピアの状態を確認します。
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
 ```
 
 出力例:
 
-```powershell
+```azurepowershell
   Asn ConnectedDuration LocalAddress MessagesReceived MessagesSent Neighbor    RoutesReceived State    
   --- ----------------- ------------ ---------------- ------------ --------    -------------- -----    
 65010 00:57:19.9003584  10.2.0.228               68           72   172.16.0.10              2 Connected
@@ -638,13 +633,13 @@ Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw 
 
 オンプレミスの VPN コンセントレーターから eBGP 経由で受信したネットワーク プレフィックスの一覧を確認するには、"Origin" 属性によってフィルター処理できます。
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
 ```
 
 出力例では、ASN 65010 は、オンプレミス VPN の BGP 自律システム番号です。
 
-```powershell
+```azurepowershell
 AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 ------ ------------ -------      -------     ------ ----------  ------
 65010  10.2.0.228   10.1.10.0/25 172.16.0.10 EBgp   172.16.0.10  32768
@@ -653,13 +648,13 @@ AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 
 公開されたルートの一覧を表示するには、次のコマンドを使用します。
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
 ```
 
 出力例:
 
-```powershell
+```azurepowershell
 AsPath LocalAddress Network        NextHop    Origin SourcePeer Weight
 ------ ------------ -------        -------    ------ ---------- ------
        10.2.0.229   10.2.0.0/24    10.2.0.229 Igp                  0
@@ -693,7 +688,7 @@ Total number of prefixes 4
 
 オンプレミスの Cisco CSR1000 から Azure VPN ゲートウェイに公開されたネットワークの一覧を表示するには、次のコマンドを使用します。
 
-```powershell
+```
 csr1#show ip bgp neighbors 10.2.0.228 advertised-routes
 BGP table version is 7, local router ID is 172.16.0.10
 Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
@@ -710,7 +705,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 Total number of prefixes 2
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ExpressRoute に使用する Network Performance Monitor の構成](how-to-npm.md)
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure 開発者向けファースト ステップ ガイド | Microsoft Docs"
-description: "ここでは、開発のニーズに対応するために Microsoft Azure プラットフォームの使用を検討している開発者に必要不可欠な情報を説明します。"
-services: 
-cloud: 
-documentationcenter: 
+title: Azure 開発者向けファースト ステップ ガイド | Microsoft Docs
+description: ここでは、開発のニーズに対応するために Microsoft Azure プラットフォームの使用を検討している開発者に必要不可欠な情報を説明します。
+services: ''
+cloud: ''
+documentationcenter: ''
 author: ggailey777
 manager: erikre
-ms.assetid: 
+ms.assetid: ''
 ms.service: na
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: e740b655cbd22a08aab988e83a057cc770e8dfe3
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 4c56a1164a589af5d325d1378f331a7d0ee138b7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956444"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -44,7 +45,7 @@ Azure が提供しているどのサービスでも、ソリューション ア�
 
 Azure は、アプリケーションの実行に利用できるクラウドベースのコンピューティング サービスをいくつか提供しています。そのため、インフラストラクチャの詳細について心配する必要はありません。 アプリケーションの使用量の増大に合わせてリソースのスケール アップまたはスケール アウトを簡単に実行できます。
 
-Azure は、アプリケーション開発とホスティングのニーズをサポートするサービスを提供しています。 また、アプリケーション ホスティングを詳細に制御できるサービスとしてのインフラストラクチャ (IaaS) も提供しています。 Azure のサービスとしてのプラットフォーム (PaaS) サービスは、アプリの強化に必要な完全に管理されたサービスを提供しています。 Azure には、本当の意味でのサーバーレス ホスティングもあります。このサービスを利用する場合、ユーザーに必要な作業はコードの作成のみです。
+Azure は、アプリケーション開発とホスティングのニーズをサポートするサービスを提供しています。 また、アプリケーション ホスティングを詳細に制御できるサービスとしてのインフラストラクチャ (IaaS) も提供しています。 Azure のサービスとしてのプラットフォーム (PaaS) サービスは、アプリの強化に必要なフル マネージドのサービスを提供しています。 Azure には、本当の意味でのサーバーレス ホスティングもあります。このサービスを利用する場合、ユーザーに必要な作業はコードの作成のみです。
 
 ![Azure アプリケーション ホスティングのオプション](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
@@ -57,11 +58,11 @@ Web アプリ、モバイル アプリ バックエンド、および API アプ
 
 上に示した 3 つのアプリケーションの種類は、いずれも App Service ランタイムを共有しているため、1 つのプロジェクトやソリューションから、Web サイトのホスト、モバイル クライアントのサポート、自作 API を Azure で公開することのすべてを行うことができます。 App Service の詳細については、「[Web Apps の概要](../../app-service/app-service-web-overview.md)」を参照してください。
 
-App Service は DevOps を念頭に置いて設計されています。 GitHub webhook、Jenkins、Visual Studio Team Services、TeamCity など、公開と継続的インテグレーション デプロイに対応する多様なツールをサポートしています。
+App Service は DevOps を念頭に置いて設計されています。 GitHub webhooks、Jenkins、Azure DevOps、TeamCity など、公開と継続的インテグレーション デプロイに対応する多様なツールをサポートしています。
 
 [オンライン移行ツール](https://www.migratetoazure.net/)を使用して、既存のアプリケーションを App Service に移行することができます。
 
->**使用する場合**: App Service を使用するのは、既存の Web アプリケーションを Azure に移行する場合、および Web アプリ用に完全に管理されているホスティング プラットフォームが必要な場合です。 また、モバイル クライアントをサポートする必要がある場合、またはアプリと共に REST API を公開する必要がある場合にも App Service を使用できます。
+>**使用する場合**: App Service を使用するのは、既存の Web アプリケーションを Azure に移行する場合、および Web アプリ用にフル マネージドのホスティング プラットフォームが必要な場合です。 また、モバイル クライアントをサポートする必要がある場合、またはアプリと共に REST API を公開する必要がある場合にも App Service を使用できます。
 
 >**作業開始**: App Service を使用すると、初めての [Web アプリ](../../app-service/app-service-web-get-started-dotnet.md)、[モバイル アプリ](../../app-service-mobile/app-service-mobile-ios-get-started.md)、[API アプリ](../../app-service/app-service-web-tutorial-rest-api.md)でも簡単に作成、デプロイできます。
 
@@ -153,7 +154,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
     >**作業開始**: [Linux で App Service 用のカスタム Docker イメージを使用します](../../app-service/containers/quickstart-docker-go.md)。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
 アプリケーションの使用者を把握することだけでなく、リソースへの不正アクセスを防止することも重要です。 Azure には、アプリ クライアントを認証する方法がいくつか用意されています。
 
@@ -161,7 +162,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
     >**使用する場合**: SSO エクスペリエンスを提供する場合、Graph ベースのデータを使用する場合、またはドメインベースのユーザーを認証する場合。
 
-    >**作業開始**: 詳細については、「[開発者のための Azure Active Directory](../../active-directory/develop/active-directory-developers-guide.md)」を参照してください。
+    >**作業開始**: 詳細については、「[開発者のための Azure Active Directory](../../active-directory/develop/v1-overview.md)」を参照してください。
 
 -   **App Service 認証**: App Service を選択してアプリをホストする場合、Azure AD の組み込みの認証サポートと共に、ソーシャル ID プロバイダー (Facebook、Google、Microsoft、Twitter など) も利用できます。
 
@@ -185,7 +186,7 @@ Azure でアプリケーションを起動し、実行する場合、パフォ�
 
 ### <a name="devops-integration"></a>DevOps 統合
 
-VM をプロビジョニングするか、継続的インテグレーションによって Web アプリを発行するかにかかわらず、Azure は人気のある DevOps ツールの多くと統合できます。 Jenkins、GitHub、Puppet、Chef、TeamCity、Ansible、VSTS などのツールがサポートされているので、既に所有しているツールを利用し、経験を最大限に活用することができます。
+VM をプロビジョニングするか、継続的インテグレーションによって Web アプリを発行するかにかかわらず、Azure は人気のある DevOps ツールの多くと統合できます。 Jenkins、GitHub、Puppet、Chef、TeamCity、Ansible、Azure DevOps などのツールがサポートされているため、既に所有しているツールを利用し、経験を最大限に活用することができます。
 
 >**今すぐ試す:** [DevOps 統合のいくつかを試しましょう](https://azure.microsoft.com/try/devops/)。
 
@@ -204,7 +205,7 @@ Azure を使用する利点の 1 つは、世界中のさまざまなデータ�
 
 可能性は低いのですが、自然災害やインターネット障害などの事象により、データ センター全体がオフラインになる可能性があります。 最大限の可用性を提供するため、重要なビジネス アプリケーションは複数のデータ センターでホストすることがベスト プラクティスです。 複数のリージョンを使用することで、ローカル ユーザーの待機時間が短縮され、アプリケーションの更新時に柔軟性が向上する可能性もあります。
 
-Virtual Machine や App Service など、一部のサービスでは、[Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) を使用してリージョン間のフェールオーバーによるマルチリージョン サポートを可能にして、可用性の高いエンタープライズ アプリケーションをサポートできます。 例については、「[Azure の参照アーキテクチャ: 高可用性 Web アプリケーション](../../guidance/guidance-web-apps-multi-region.md)」を参照してください。
+Virtual Machine や App Service など、一部のサービスでは、[Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) を使用してリージョン間のフェールオーバーによるマルチリージョン サポートを可能にして、可用性の高いエンタープライズ アプリケーションをサポートできます。 例については、[Azure リファレンス アーキテクチャの「Web アプリケーションを複数のリージョンで実行する」](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)を参照してください。
 
 >**使用する場合**: フェールオーバーとレプリケーションを利用するエンタープライズおよび高可用性アプリケーションがある場合。
 
@@ -233,13 +234,14 @@ Azure は、Azure Portal UI をサポートする REST API のセットに基づ
 REST API だけでなく、多くの Azure サービスでは、次の開発プラットフォーム用 SDK を含め、プラットフォーム固有の Azure SDK を使用して、アプリケーションのリソースをプログラムで管理できます。
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](http://azure.github.io/azure-sdk-for-node/)
--   [Java](https://docs.microsoft.com/java/api/)
+-   [Node.JS](https://docs.microsoft.com/javascript/azure)
+-   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
--   [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/)
+-   [Python](https://docs.microsoft.com/python/azure)
 -   [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
+-   [Go](https://docs.microsoft.com/go/azure)
 
-[Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) や [Azure Media Services](../../media-services/media-services-dotnet-how-to-use.md) などのサービスには、Web およびモバイル クライアント アプリからサービスにアクセスできるクライアント側 SDK があります。
+[Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) や [Azure Media Services](../../media-services/previous/media-services-dotnet-how-to-use.md) などのサービスには、Web およびモバイル クライアント アプリからサービスにアクセスできるクライアント側 SDK があります。
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
@@ -259,27 +261,15 @@ Azure Resource Manager では、関連するリソースを論理的にグルー
 
 ### <a name="what-is-an-azure-account"></a>Azure アカウントとは
 
-Azure サブスクリプションの作成または使用には、Azure アカウントを持っている必要があります。 Azure アカウントは、Azure AD、または Azure AD から信頼されているディレクトリ (職場、学校組織など) の単なる ID です。 このような組織に属していない場合でも、Azure AD から信頼されている Microsoft アカウントを使用して、常にサブスクリプションを作成できます。 オンプレミス Windows Server Active Directory を Azure AD と統合する方法については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../../active-directory/active-directory-aadconnect.md)」を参照してください。
+Azure サブスクリプションの作成または使用には、Azure アカウントを持っている必要があります。 Azure アカウントは、Azure AD、または Azure AD から信頼されているディレクトリ (職場、学校組織など) の単なる ID です。 このような組織に属していない場合でも、Azure AD から信頼されている Microsoft アカウントを使用して、常にサブスクリプションを作成できます。 オンプレミス Windows Server Active Directory を Azure AD と統合する方法については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../../active-directory/hybrid/whatis-hybrid-identity.md)」を参照してください。
 
-すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../../active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
+すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
-Azure AD では、個々の Azure アカウント ID (*ユーザー*とも呼ばれます) を定義できるだけでなく、*グループ*も定義できます。 ロールベースのアクセス制御 (RBAC) を使用して、サブスクリプション内のリソースへのアクセスを管理するには、ユーザー グループを作成することをお勧めします。 グループの作成の詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/active-directory-groups-create-azure-portal.md)」を参照してください。 [PowerShell を使用](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md)してグループの作成と管理を行うこともできます。
+Azure AD では、個々の Azure アカウント ID (*ユーザー*とも呼ばれます) を定義できるだけでなく、*グループ*も定義できます。 ロールベースのアクセス制御 (RBAC) を使用して、サブスクリプション内のリソースへのアクセスを管理するには、ユーザー グループを作成することをお勧めします。 グループの作成の詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。 [PowerShell を使用](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)してグループの作成と管理を行うこともできます。
 
 ### <a name="manage-your-subscriptions"></a>サブスクリプションを管理する
 
-サブスクリプションは、Azure アカウントにリンクされている Azure サービスの論理ユニットです。 サブスクリプションには、関連付けられている各アカウントに 1 つのロールがあります。 Azure サービスの課金は、サブスクリプションごとに行われます。 使用できるサブスクリプション プランの種類別一覧については、「[Microsoft Azure プランの詳細](https://azure.microsoft.com/support/legal/offer-details/)」を参照してください。
-
-#### <a name="administrator-roles"></a>管理者ロール
-
-Azure サブスクリプションには複数のアカウント管理者ロールがあり、いつでも割り当てることができます。
-
--   **アカウント管理者**: このロールは、サブスクリプションを完全に制御します。また、課金を担当するアカウントです。
-
--   **サービス管理者**: このロールは、サブスクリプション内のすべてのサービスを制御します。 既定では、これはアカウント管理者と同じアカウントです。
-
--   **共同管理者**: このロールは、サブスクリプションと Azure ディレクトリの関連付けを変更できないという点を除き、サービス アカウントと同じアクセス権を持ちます。
-
-管理者ロールの詳細については、「[サブスクリプションの管理者を追加する](../../billing/billing-add-change-azure-subscription-administrator.md#add-an-admin-for-a-subscription)」を参照してください。
+サブスクリプションは、Azure アカウントにリンクされている Azure サービスを論理的にグループ化したものです。 1 つの Azure アカウントに複数のサブスクリプションを含めることができます。 Azure サービスの課金は、サブスクリプションごとに行われます。 使用できるサブスクリプション オファーの種類別一覧については、「[Microsoft Azure オファーの詳細](https://azure.microsoft.com/support/legal/offer-details/)」を参照してください。 Azure サブスクリプションにはアカウント管理者とサービス管理者が割り当てられます。アカウント管理者にはサブスクリプションを制御する権限が与えられ、サービス管理者にはサブスクリプションに含まれるすべてのサービスを制御する権限が与えられます。 従来のサブスクリプション管理者の詳細については、「[Azure サブスクリプション管理者を追加または変更する](../../billing/billing-add-change-azure-subscription-administrator.md)」を参照してください。 管理者に加え、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を使用して Azure リソースを細かく管理する権限が個々のアカウントに与えられます。
 
 #### <a name="resource-groups"></a>リソース グループ
 
@@ -291,15 +281,15 @@ Azure Resource Explorer は、サブスクリプションで作成済みのリ�
 
 Azure リソースへのアクセス権を許可する場合、そのタスクの実行に必要最小限の特権をユーザーに付与することが常にベスト プラクティスです。
 
--   **ロールベースのアクセス制御 (RBAC)**: Azure では、指定したスコープ (サブスクリプション、リソース グループ、または個々のリソース) でユーザー アカウント (プリンシパル) にアクセス権を付与することができます。 RBAC を使用すると、リソースのセットをリソース グループにデプロイし、特定のユーザーまたはグループにアクセス許可を付与できます。 また、対象のリソース グループに属するリソースにのみアクセスを制限することもできます。 仮想マシンや仮想ネットワークなど、1 つのリソースにアクセス権を付与することもできます。 アクセス権を付与するには、ロールをユーザー、グループ、またはサービス プリンシパルに割り当てます。 定義済みのロールが多数ありますが、独自のカスタム ロールを定義することもできます。
+-   **ロールベースのアクセス制御 (RBAC)**: Azure では、指定したスコープ (サブスクリプション、リソース グループ、または個々のリソース) でユーザー アカウント (プリンシパル) にアクセス権を付与することができます。 RBAC を使用すると、リソースのセットをリソース グループにデプロイし、特定のユーザーまたはグループにアクセス許可を付与できます。 また、対象のリソース グループに属するリソースにのみアクセスを制限することもできます。 仮想マシンや仮想ネットワークなど、1 つのリソースにアクセス権を付与することもできます。 アクセス権を付与するには、ロールをユーザー、グループ、またはサービス プリンシパルに割り当てます。 定義済みのロールが多数ありますが、独自のカスタム ロールを定義することもできます。 詳細については、「[ロールベースのアクセス制御 (RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 
-    >**使用する場合**: ユーザーとグループについて細かく調整されたアクセス管理が必要な場合。
+    >**使用目的**: ユーザーやグループに対する詳細なアクセス管理が必要な場合、またはユーザーをサブスクリプションの所有者にする必要がある場合に使用します。
 
-    >**作業開始**: 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../../active-directory/role-based-access-control-what-is.md)」を参照してください。
+    >**作業開始**: 詳細については、「[RBAC と Azure ポータルを使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 -   **サービス プリンシパル オブジェクト**: ユーザー プリンシパルとグループへのアクセス権を付与するだけでなく、サービス プリンシパルに同じアクセス権を付与することができます。
 
-    > **使用する場合**: Azure リソースの管理やアプリケーションのアクセス権付与をプログラムで行う場合。 詳細については、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../../resource-group-create-service-principal-portal.md)」を参照してください。
+    > **使用する場合**: Azure リソースの管理やアプリケーションのアクセス権付与をプログラムで行う場合。 詳細については、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」を参照してください。
 
 #### <a name="tags"></a>タグ
 
@@ -320,9 +310,3 @@ Azure には、Azure サブスクリプションのリソース使用状況と�
 コストを事前に見積もることは困難ですが、Azure には、デプロイされているリソースのコストを見積もるときに使用できる[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)があります。 ポータルと Billing REST API で [課金] ブレードを使用し、現在の使用状況に基づいて、今後のコストを見積もることもできます。
 
 >**使用開始**: 「[Azure Billing API を使用して、Azure の使用状況に関する詳細なデータをプログラムによって取得する](../../billing-usage-rate-card-overview.md)」を参照してください。
-
-#### <a name="set-up-billing-alerts"></a>課金アラートのセットアップ
-
-Azure でアプリケーションまたはソリューションをデプロイした後は、アラートを作成して、アラートに定義されている使用制限に近づいたときに電子メールを送信することができます。
-
->**使用開始**: 詳細については、「[Microsoft Azure サブスクリプションの課金アラートまたはクレジット アラートの設定](../../billing-set-up-alerts.md)」を参照してください。

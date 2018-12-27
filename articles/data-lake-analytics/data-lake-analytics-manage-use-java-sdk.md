@@ -1,33 +1,30 @@
 ---
-title: "Azure Java SDK を使用して Azure Data Lake Analytics を管理する | Microsoft Docs"
-description: "Azure Data Lake Analytics Java SDK を使用してアプリケーションを開発する"
+title: Azure Java SDK を使用して Azure Data Lake Analytics を管理する
+description: このアーティクルでは、 Data Lake Analytics のジョブ、データ ソース、およびユーザーを管理するアプリケーションを作成するために Azure Java SDK を使用する方法について説明します。
 services: data-lake-analytics
-documentationcenter: 
-author: matt1883
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/18/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 8a0c1c7aab89f3bb62d0eb9f42e8ac65309d617e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.reviewer: jasonwhowell
+ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
+ms.topic: conceptual
+ms.date: 06/18/2017
+ms.openlocfilehash: f2a4b98404139abead411c20648b82d9081481f9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230191"
 ---
-# <a name="manage--azure-data-lake-analytics-using-java-sdk"></a>Java SDK を使用して Azure Data Lake Analytics を管理する
+# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Java アプリケーション を使用して Azure Data Lake Analytics を管理する
+[!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-このチュートリアルでは、Azure Data Lake の一般的な操作を実行する Java コンソール アプリケーションを開発します。
+このアーティクルでは、 Azure Java SDK を使用して作成したアプリを使用して、Azure Data Lake Analytics アカウント、データ ソース、ユーザー、ジョブを管理する方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 * **Java Development Kit (JDK) 8** (Java バージョン 1.8 を使用)。
 * **IntelliJ** または別の適切な Java 開発環境。 このドキュメントの説明では IntelliJ を使います。
-* Azure Active Directory (AAD) アプリケーションを作成し、**そのクライアント ID**、**テナント ID**、および**キー**を取得します。 AAD アプリケーションと、クライアント ID の取得方法の詳細については、 [ポータルを使用した Active Directory のアプリケーションとサービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。 アプリケーションを作成しキーを生成したら、応答 URI とキーをポータルから使うことができます。
+* Azure Active Directory (AAD) アプリケーションを作成し、**そのクライアント ID**、**テナント ID**、および**キー**を取得します。 AAD アプリケーションと、クライアント ID の取得方法の詳細については、 [ポータルを使用した Active Directory のアプリケーションとサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。 アプリケーションを作成しキーを生成したら、応答 URI とキーをポータルから使うことができます。
 
 ## <a name="authenticating-using-azure-active-directory"></a>Azure Active Directory を使用した認証
 
@@ -35,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 1. IntelliJ を開き、**コマンド ライン アプリ** テンプレートを使って Java プロジェクトを作成します。
-2. 画面の左側にあるプロジェクトを右クリックし、 **[フレームワーク サポートの追加]**をクリックします。 **[Maven]** を選択し、**[OK]** をクリックします。
+2. 画面の左側にあるプロジェクトを右クリックし、 **[フレームワーク サポートの追加]** をクリックします。 **[Maven]** を選択し、**[OK]** をクリックします。
 3. 新しく作成された **"pom.xml"** ファイルを開き、**\</version>** タグと **\</project>** タグの間に、次のテキストのスニペットを追加します。
 
 ```
@@ -89,7 +86,7 @@ ms.lasthandoff: 10/11/2017
 </dependencies>
 ```
 
-**[File]\(ファイル\) > [Settings]\(設定\) > [Build]\(ビルド\) > [Execution]\(実行\) > [Deployment]\(デプロイ\)** に移動します。 **[Build Tools]\(ビルド ツール\) > [Maven] > [Importing]\(インポート\)** を選択します。 次に、 **[Maven プロジェクトを自動的にインポートする]**をオンにします。
+**[File]\(ファイル\) > [Settings]\(設定\) > [Build]\(ビルド\) > [Execution]\(実行\) > [Deployment]\(デプロイ\)** に移動します。 **[Build Tools]\(ビルド ツール\) > [Maven] > [Importing]\(インポート\)** を選択します。 次に、 **[Maven プロジェクトを自動的にインポートする]** をオンにします。
 
 `Main.java` を開き、既存のコード ブロックを次のコード スニペットに置き換えます。
 
@@ -377,8 +374,8 @@ public static String GetJobStatus(UUID jobId) throws IOException, CloudException
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」および「[U-SQL Language Reference (U-SQL 言語リファレンス)](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
+* U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」および「[U-SQL Language Reference (U-SQL 言語リファレンス)](https://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
 * 管理タスクについては、「 [Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 * Data Lake Analytics の概要については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。

@@ -1,9 +1,9 @@
 ---
-title: Azure CLI 2.0 のサンプル | Microsoft Docs
-description: Azure CLI 2.0 のサンプル
+title: Azure CLI のサンプル | Microsoft Docs
+description: Azure CLI のサンプル
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,17 +14,18 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 69fc81d4d0569ee7a66fbda5ab500ef2ee15c694
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 58e387ce6827fa7ef182d247a2740b94d9b988f1
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471273"
 ---
-# <a name="azure-cli-20-samples-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure CLI 2.0 サンプル
+# <a name="azure-cli-samples-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure CLI サンプル
 
-次の表には、Azure CLI 2.0 を使用して構築された Bash スクリプトへのリンクが含まれています。
+次の表には、Azure CLI を使用して構築された Bash スクリプトへのリンクが含まれています。
 
 | | |
 |---|---|

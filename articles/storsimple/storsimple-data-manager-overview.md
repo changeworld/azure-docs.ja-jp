@@ -1,24 +1,25 @@
 ---
-title: "Microsoft Azure StorSimple データ マネージャーの概要 | Microsoft Docs"
-description: "StorSimple Data Manager サービスの概要について説明します"
+title: Microsoft Azure StorSimple データ マネージャーの概要 | Microsoft Docs
+description: StorSimple Data Manager サービスの概要について説明します
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
 manager: syadav
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/26/2018
+ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 4d27bc3660035ace25436a4f756c41e88200649d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 5845fd246b20d29739eb6d60bbc8621489ccc0d6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011940"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager ソリューションの概要
 
@@ -80,6 +81,18 @@ StorSimple Data Manager では、StorSimple 形式からネイティブ形式に
 Data Manager のリージョンがジョブ定義のリージョンと異なる場合は、これらの各リージョンにどのようなデータ/メタデータが存在するかを理解しておくことが重要です。 次の図では、Data Manager とジョブ定義が異なるリージョンにある場合の影響を示します。
 
 ![異なるリージョンのサービスとジョブ定義](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
+
+## <a name="managing-personal-information"></a>個人情報の管理
+
+StorSimple データ マネージャーは、個人情報の収集も表示もしません。 詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
+
+## <a name="known-limitations"></a>既知の制限事項
+
+現在、このサービスには、次のような制限があります。
+- StorSimple Data Manager は現在、bitlocker で暗号化されたボリュームに対しては動作しません。 暗号化されたドライブに対してこのサービスを実行しようとすると、ジョブが失敗したというメッセージが表示されます。
+- ファイル (ACL を含む) のメタデータが、変換されたデータに 保持されない場合があります。
+- このサービスは、NTFS ボリュームに対してのみ動作します。
+- ファイル パスの長さは、256 文字未満にする必要があります。そうしないと、ジョブが失敗します。
 
 ## <a name="next-steps"></a>次の手順
 

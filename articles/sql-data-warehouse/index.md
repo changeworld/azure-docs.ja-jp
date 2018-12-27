@@ -1,26 +1,26 @@
 ---
-title: "Azure SQL Data Warehouse のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "SQL Data Warehouse を使用して、SQL Server に超並列処理を統合する方法について説明します。 ドキュメントでは、データの読み込み、分析、管理、エクスポートの方法を紹介します。"
+title: Azure SQL Data Warehouse のドキュメント - チュートリアル、概念 | Microsoft Docs
+description: SQL リレーショナル データベースに超並列処理を統合する Azure SQL Data Warehouse の使用方法について説明します。 チュートリアルなどのドキュメントでは、データ ウェアハウスを使ってデータを設計、読み込み、管理、分析する方法を紹介します。
 services: sql-data-warehouse
-author: czeumault
-manager: carolz
+author: hirokib
+manager: craigg
 layout: LandingPage
-ms.assetid: 
 ms.service: sql-data-warehouse
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 47807360dd58f0c19360d90ed66f726d8922be1e
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.topic: overview
+ms.component: design
+ms.date: 04/11/2018
+ms.author: elbutter
+ms.reviewer: igorstan
+ms.openlocfilehash: 4e6f8cd6bd1a84e7c2a6024bf6bcdb1b6b61620c
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287269"
 ---
 # <a name="sql-data-warehouse-documentation"></a>SQL Data Warehouse のドキュメント
 
-SQL Server リレーショナル データベースに超並列処理を統合する SQL Data Warehouse の使用方法について説明します。 チュートリアルなどのドキュメントでは、データをウェアハウスに読み込み、分析、管理、エクスポートする方法を紹介します。
+SQL リレーショナル データベースに超並列処理を統合する Azure SQL Data Warehouse の使用方法について説明します。 チュートリアルなどのドキュメントでは、データ ウェアハウスを使ってデータを設計、読み込み、管理、分析する方法を紹介します。 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -101,7 +101,7 @@ SQL Server リレーショナル データベースに超並列処理を統合�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>言語</h3>
+                        <h3>Languages</h3>
                         <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements">T-SQL 言語要素</a></p>
                         <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements">T-SQL ステートメント</a></p>
                         <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views">T-SQL システム ビュー</a></p>

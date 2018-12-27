@@ -9,16 +9,17 @@ editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
-ms.author: mfussell;mikhegn
-ms.openlocfilehash: f0c6c54b0f168f87ff122dee70a091fdcb96014e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: mfussell
+ms.openlocfilehash: 0f4bb3f32b264bd894341a8776d48eb9f8b061a2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258733"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルのパッケージ化と Service Fabric へのデプロイ
 [ゲスト実行可能](service-fabric-guest-executables-introduction.md)ファイルを既存の実行可能ファイルとしてパッケージ化する際、Visual Studio プロジェクト テンプレートを使用するか、[アプリケーション パッケージを手動で作成する](#manually)かを選択できます。 Visual Studio を使用する場合、アプリケーション パッケージの構造とマニフェスト ファイルは新しいプロジェクト テンプレートによって作成されます。
@@ -68,7 +69,7 @@ Yeoman により、インストールおよびアンインストール スクリ
 4. アプリケーション マニフェスト ファイルを編集します。
 
 <!--
->[AZURE.NOTE] We do provide a packaging tool that allows you to create the ApplicationPackage automatically. The tool is currently in preview. You can download it from [here](http://aka.ms/servicefabricpacktool).
+>[AZURE.NOTE] We do provide a packaging tool that allows you to create the ApplicationPackage automatically. The tool is currently in preview. You can download it from [here](https://aka.ms/servicefabricpacktool).
 -->
 
 ### <a name="create-the-package-directory-structure"></a>パッケージ ディレクトリ構造を作成する
@@ -167,7 +168,9 @@ SetupEntryPoint は 1 つしかないため、アプリケーションのセッ�
 </EntryPoint>
 ```
 
-サービス マニフェスト ファイルの `EntryPoint` 要素では、サービスの起動方法を指定します。 `ExeHost` 要素は、サービスの起動に使用する実行可能ファイル (および引数) を指定します。
+サービス マニフェスト ファイルの `EntryPoint` 要素では、サービスの起動方法を指定します。
+
+`ExeHost` 要素は、サービスの起動に使用する実行可能ファイル (および引数) を指定します。 必要に応じて、`IsExternalExecutable="true"` 属性を `ExeHost` に追加して、プログラムがコード パッケージに含まれない外部の実行可能ファイルであることを示すことができます。 たとえば、「 `<ExeHost IsExternalExecutable="true">` 」のように入力します。
 
 * `Program` には、サービスを開始する必要がある実行可能ファイルの名前を指定します。
 * `Arguments` には、実行可能ファイルに渡す引数を指定します。 引数を含むパラメーターの一覧を指定することもできます。
@@ -248,7 +251,7 @@ WorkingFolder は、アプリケーション スクリプトと初期化スク�
 
 ログ ファイルは、サービスの作業ディレクトリのいずれかに保存されます。 ファイルの場所を特定するには、Service Fabric Explorer を使用して、サービスが実行されているノードと使用されている作業ディレクトリを確認します。 この方法については、この記事の後半で説明します。
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 最後のステップは、[アプリケーションのデプロイ](service-fabric-deploy-remove-applications.md)です。 次の PowerShell スクリプトは、ローカル デプロイ用クラスターにアプリケーションをデプロイし、新しい Service Fabric サービスを開始する方法を示しています。
 
 ```PowerShell

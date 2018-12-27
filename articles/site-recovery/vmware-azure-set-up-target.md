@@ -2,27 +2,28 @@
 title: Azure への VMware レプリケーションのターゲット環境を準備する | Microsoft Docs
 description: この記事では、Azure への VMware VM レプリケーションの Azure ターゲット環境を準備する方法について説明します。
 services: site-recovery
-author: bsiva
-manager: abhemraj
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: bsiva
-ms.openlocfilehash: 5f14bbed7ae59737f62fb736591775cb7ba495c5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 10/29/2018
+ms.author: ramamill
+ms.openlocfilehash: a6f983b08415659b9a989ebed824cddd210396e1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233431"
 ---
-# <a name="prepare-the-target-environment-for-vmware-replication-to-azure"></a>Azure への VMware レプリケーションのターゲット環境を準備する
+# <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>VMware VM または物理サーバーの Azure へのディザスター リカバリーのためのターゲット環境を準備する
 
-この記事では、VMware 仮想マシンの Azure へのレプリケーションを開始するための Azure ターゲット環境を準備する方法について説明します。
+この記事では、VMware 仮想マシンおよび物理サーバーの Azure へのレプリケーションを開始するための Azure ターゲット環境を準備する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事は以下を前提としています。
-- VMware の仮想マシンを保護するための Recovery Services コンテナーを作成してあること。 Recovery Services コンテナーは [Azure Portal](http://portal.azure.com "Azure Portal") から作成できます。
-- VMware の仮想マシンを Azure にレプリケートできるように[オンプレミス環境をセットアップ](vmware-azure-set-up-source.md)してあること。
+- Recovery Services コンテナーを[Azure portal](http://portal.azure.com "Azure portal")上で作成し、ソース マシンを保護します。
+- ソースの[VMware の仮想マシン](vmware-azure-set-up-source.md)および[物理サーバー](physical-azure-set-up-source.md)を Azure にレプリケートできるようにオンプレミス環境をセットアップします。
 
 ## <a name="prepare-target"></a>ターゲットを準備する
 
@@ -30,10 +31,10 @@ ms.lasthandoff: 03/08/2018
 
 ![ターゲットを準備する](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 
-1. **サブスクリプション:** ドロップダウン メニューから、仮想マシンのレプリケート先のサブスクリプションを選びます。
+1. **サブスクリプション:** ドロップダウン メニューから、仮想マシンおよび物理サーバーのレプリケート先のサブスクリプションを選びます。
 2. **デプロイメント モデル:** デプロイメント モデルを選びます (クラシックまたは Resource Manager)。
 
-選んだデプロイメント モデルに基づいて検証が実行され、仮想マシンのレプリケートおよびフェールオーバー先のターゲット サブスクリプションに、互換性のあるストレージ アカウントと仮想ネットワークが少なくとも 1 つはあることが確認されます。
+選んだデプロイメント モデルに基づいて検証が実行され、仮想マシンおよび物理サーバーのレプリケートおよびフェールオーバー先のターゲット サブスクリプションに、互換性のあるストレージ アカウントと仮想ネットワークが少なくとも 1 つはあることが確認されます。
 
 検証が正常に完了した後、[OK] をクリックして次の手順に進みます。
 

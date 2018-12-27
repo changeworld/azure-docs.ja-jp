@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights を使用した Java トレース ログの探索 | Microsoft Docs"
-description: "Application Insights を使用して Log4J または Logback のトレースを検索します"
+title: Azure Application Insights を使用した Java トレース ログの探索 | Microsoft Docs
+description: Application Insights を使用して Log4J または Logback のトレースを検索します
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -9,15 +9,15 @@ ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: mbullwin
-ms.openlocfilehash: fae3269e21d0f760ae77a70333047306c07c2961
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 934d5929048627bf378f50814f0cecde794ddab9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727853"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights を使用した Java トレース ログの探索
 トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
@@ -100,7 +100,7 @@ ms.lasthandoff: 02/28/2018
 #### <a name="otherwise-"></a>それ以外の場合:
 Application Insights Java SDK を手動でインストールするガイドラインに従って、適切なアペンダーの Jar (Maven Central ページに移動した後、ダウンロード セクションの 'jar' リンクをクリック) をダウンロードし、ダウンロードされたアペンダー Jar をプロジェクトに追加します。
 
-| ロガー | [ダウンロード] | ライブラリ |
+| ロガー | ダウンロード | ライブラリ |
 | --- | --- | --- |
 | Logback |[Logback アペンダー Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v2.0 |[Log4J v2 アペンダー Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |

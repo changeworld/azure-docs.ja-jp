@@ -3,21 +3,22 @@ title: Azure Application Insights におけるテレメトリ サンプリング
 description: テレメトリのボリュームを抑制する方法。
 services: application-insights
 documentationcenter: windows
-author: vgorbenko
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
-ms.date: 03/24/2017
+ms.topic: conceptual
+ms.date: 10/02/2018
+ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: d0614e2eae0f60068e69b7a4687fc62fbe082c64
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 103f4b10d5fbb7fbcf9c3721a82fe4075abe0dc4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877617"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -33,12 +34,13 @@ ms.lasthandoff: 04/03/2018
 * サンプリングはまた、ネットワーク トラフィックも削減するために、ポータルでは [使用量と推定コスト] ページ、ASP.NET SDK では .config ファイル、Java SDK では ApplicationInsights.xml ファイルのいずれかで手動で設定することもできます。
 * カスタム イベントをログに記録していて、イベントのセットがまとめて保持または破棄されていることを確認したい場合は、同じ OperationId 値があることを確認します。
 * サンプリング除数 *n* は、`itemCount` プロパティでレコードごとに報告されます。この値は、"要求カウント" または "イベント数" というわかりやすい名前で検索結果に表示されます。 サンプリング操作が行われていない場合、`itemCount==1` となります。
-* Analytics クエリを作成する場合は、 [サンプリングを考慮する](app-insights-analytics-tour.md#counting-sampled-data)必要があります。 具体的には、単純にレコードをカウントするのではなく、 `summarize sum(itemCount)`を使用する必要があります。
+* Analytics クエリを作成する場合は、 [サンプリングを考慮する](../azure-monitor/log-query/aggregations.md)必要があります。 具体的には、単純にレコードをカウントするのではなく、 `summarize sum(itemCount)`を使用する必要があります。
 
 ## <a name="types-of-sampling"></a>サンプリングの種類
 現在は 3 つのサンプリング メソッドがあります。
 
-* **アダプティブ サンプリング** は、ASP.NET アプリの SDK から送信されるテレメトリの量を自動的に調整します。 SDK v 2.0.0-beta3 以降では、これが既定のサンプリング方法です。 アダプティブ サンプリングは、現在、ASP.NET サーバー側テレメトリでのみ利用できます。 
+* **アダプティブ サンプリング** は、ASP.NET アプリの SDK から送信されるテレメトリの量を自動的に調整します。 SDK v 2.0.0-beta3 以降では、これが既定のサンプリング方法です。 アダプティブ サンプリングは、現在、ASP.NET サーバー側テレメトリでのみ利用できます。 フル Framework をターゲットとする ASP.NET Core アプリケーションの場合、アダプティブ サンプリングは Microsoft.ApplicationInsights.AspNetCore SDK のバージョン 1.0.0 以降から使用できます。 NetCore をターゲットとする ASP.NET Core アプリケーションの場合、アダプティブ サンプリングは Microsoft.ApplicationInsights.AspNetCore SDK のバージョン 2.2.0-beta1 以降から使用できます。
+
 * **固定レート サンプリング**は、ASP.NET または Java サーバーとユーザーのブラウザーの両方から送信されるテレメトリの量を削減します。 管理者がレートを設定します。 クライアントとサーバーはサンプリングを同期するので、検索では関連のあるページ ビューと要求の間を移動できます。
 * **インジェスト サンプリング**は Azure Portal で動作し、 アプリケーションから受信したテレメトリの一部を、設定したサンプリング レートで破棄します。 インジェスト サンプリングはアプリから送信されるテレメトリのトラフィックを削減しませんが、トラフィックを月間のクォータ (上限) 以内で維持するのに役立ちます。 インジェスト サンプリングの主な利点は、アプリを再デプロイしなくてもサンプリング レートを設定でき、すべてのサーバーとクライアントで一様に動作することです。 
 
@@ -204,7 +206,7 @@ SDK ベースのアダプティブ サンプリングまたは固定レート �
 ### <a name="configuring-fixed-rate-sampling-in-aspnet"></a>ASP.NET での固定レート サンプリングの構成 ###
 
 1. **プロジェクトの NuGet パッケージ**を Application Insights の最新の*プレリリース* バージョンに更新します。 Visual Studio のソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選びます。**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。 
-2. **アダプティブ サンプリングを無効にする**: [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) で、`AdaptiveSamplingTelemetryProcessor` ノードを削除するか、コメントにします。
+2. **アダプティブ サンプリングを無効にする**:[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) で、`AdaptiveSamplingTelemetryProcessor` ノードを削除するか、コメントにします。
    
     ```xml
    
@@ -247,7 +249,7 @@ SDK ベースのアダプティブ サンプリングまたは固定レート �
                 <!-- E.g. 50 (=100/2), 33.33 (=100/3), 25 (=100/4), 20, 1 (=100/100), 0.1 (=100/1000) -->
                 <Add name = "SamplingPercentage" value = "50" />
             </Processor>
-        </BuilrInProcessors>
+        </BuiltInProcessors>
     <TelemetryProcessors/>
 ```
 
@@ -261,7 +263,7 @@ SDK ベースのアダプティブ サンプリングまたは固定レート �
         <IncludedType>Exception</IncludedType>
     </IncludedTypes>
 ```
-サンプリングに含めたり、サンプリングから除外したりできるテレメトリの種類は、依存関係、イベント、例外、ページ ビュー、要求、およびトレースです。
+サンプリングに含めたり、サンプリングから除外したりできるテレメトリの種類は、依存関係、イベント、例外、ページビュー、要求、およびトレースです。
 
 > [!NOTE]
 > サンプリング率には、N を整数として 100/N に近い割合を選択します。  サンプリングでは現在、その他の値はサポートされていません。
@@ -279,7 +281,7 @@ SDK ベースのアダプティブ サンプリングまたは固定レート �
     using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
     ...
 
-    var builder = TelemetryConfiguration.Active.GetTelemetryProcessorChainBuilder();
+    var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
     builder.UseSampling(10.0); // percentage
 
     // If you have other telemetry processors:
@@ -324,9 +326,12 @@ Java SDK では、既定ではどのサンプリングも有効になってい�
 ## <a name="how-do-i-know-whether-sampling-is-in-operation"></a>サンプリングが実行中かどうかを知る方法
 適用されている場所に関係なく、実際のサンプリング レートを検出するには、次のように [Analytics クエリ](app-insights-analytics.md) を使用します。
 
-    requests | where timestamp > ago(1d)
-    | summarize 100/avg(itemCount) by bin(timestamp, 1h) 
-    | render areachart 
+```
+union * 
+| where timestamp > ago(1d)
+| summarize 100/avg(itemCount) by bin(timestamp, 1h), itemType
+| render timechart 
+```
 
 保持されている各レコードで、 `itemCount` は、それが表す元のレコードの数 (1 + 以前に破棄されたレコードの数と同じ) を示します。 
 
@@ -335,7 +340,7 @@ ASP.NET バージョン 2.0.0 以降および Java SDK バージョン 2.0.1 以
 
 サンプリング アルゴリズムでは、削除するテレメトリ項目と、保持するテレメトリ項目を決定します (SDK または Application Insights サービスのいずれで動作しているかに関係なく)。 サンプリングはいくつかのルールに基づいて決定されますが、このルールのねらいは、削減されたデータ セットを使用する場合でも、Application Insights の診断機能を実用的で信頼性の高いものに維持しながら、すべての相互に関連するデータ ポイントはそのままの状態で保持することです。 たとえば、失敗した要求に対してアプリが追加のテレメトリ項目 (この要求からログに記録された例外やトレースなど) を送信した場合、サンプリングでは、この要求とその他のテレメトリを分割することはありません。 すべてをまとめて維持するか、削除するかのどちらかです。 そのため、Application Insights で要求の詳細を表示する場合は、その要求に加えて、関連付けられているテレメトリ項目も常に表示されます。 
 
-"ユーザー" を定義するアプリケーション (つまり、最も一般的な Web アプリケーション) の場合、サンプリングはユーザー ID のハッシュに基づいて決定されるため、特定のユーザーのすべてのテレメトリが保持されるか、削除されることになります。 ユーザーを定義しないタイプのアプリケーション (Web サービスなど) の場合、サンプリングは要求の操作 ID に基づいて決定されます。 最後に、ユーザーも操作 ID も設定されていないテレメトリ項目 (http コンテキストのない、非同期スレッドから報告されたテレメトリ項目など) の場合、サンプリングでは各タイプのテレメトリ項目を単純に一定の割合ずつキャプチャします。 
+サンプリングは、要求の操作 ID に基づいて決定されます。つまり、特定の操作に属するすべてのテレメトリ項目が保存またはドロップされます。 操作 ID が設定されていないテレメトリ項目 (http コンテキストのない、非同期スレッドから報告されたテレメトリ項目など) の場合、サンプリングでは各タイプのテレメトリ項目を単純に一定の割合ずつキャプチャします。 .NET SDK の 2.5.0-beta2 および ASP.NET Core SDK の 2.2.0-beta3 より前のバージョンでは、サンプリングは、"ユーザー" (つまり、最も一般的な Web アプリケーション) を定義するアプリケーションのユーザー ID のハッシュに基づいて決定されていました。 ユーザーを定義しない種類のアプリケーション (Web サービスなど) の場合、サンプリングは要求の操作 ID に基づいて決定されていました。
 
 テレメトリを表示する場合、Application Insights サービスは、不足しているデータ ポイントを補正するために、収集時に使用したものと同じサンプリング率でメトリックを調整します。 そのため、Application Insights でテレメトリを表示する場合、ユーザーは統計的に正しく、実際の数値に非常に近い近似値を見ていることになります。
 
@@ -374,7 +379,7 @@ ASP.NET バージョン 2.0.0 以降および Java SDK バージョン 2.0.1 以
 
 *サンプリング率を低く構成しすぎると、どうなりますか。*
 
-* Application Insights がデータ量の減少に関してデータの可視化を補正しようとしている場合、極端に低いサンプリング率 (過度にアグレッシブなサンプリング) は、近似精度の低下につながります。 また、低頻度の失敗や遅い要求の一部はサンプリングから除外される場合があるため、診断機能に悪影響を及ぼす可能性もあります。
+* Application Insights がデータ量の減少に関してデータの視覚化を補正しようとしている場合、極端に低いサンプリング率 (過度にアグレッシブなサンプリング) は、近似精度の低下につながります。 また、低頻度の失敗や遅い要求の一部はサンプリングから除外される場合があるため、診断機能に悪影響を及ぼす可能性もあります。
 
 *サンプリング率を高く構成しすぎると、どうなりますか。*
 

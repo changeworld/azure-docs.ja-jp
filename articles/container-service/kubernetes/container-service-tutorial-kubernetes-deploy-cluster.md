@@ -1,23 +1,27 @@
 ---
-title: Azure Container Service チュートリアル - クラスターのデプロイ
+title: (非推奨) Azure Container Service チュートリアル - クラスターのデプロイ
 description: Azure Container Service チュートリアル - クラスターのデプロイ
 services: container-service
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cb7bdbaf095cefa72d1de302d90afeebbdb9d027
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d77396cdcaa3f2f291aff52dfd1e6793aee4039c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997857"
 ---
-# <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Azure Container Service で Kubernetes クラスターをデプロイする
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(非推奨) Azure Container Service で Kubernetes クラスターをデプロイする
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[チュートリアル:Azure Kubernetes Service (AKS) クラスターのデプロイ](../../aks/tutorial-kubernetes-deploy-cluster.md)」を参照してください。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Kubernetes には、コンテナー化されたアプリケーション用の分散プラットフォームが用意されています。 Azure Container Service を使うと、運用開始準備の整った Kubernetes クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 この 7 部構成の 3 番目のチュートリアルでは、Azure Container Service の Kubernetes クラスターをデプロイします。 手順は次のとおりです。
 
@@ -34,7 +38,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 
 ## <a name="create-kubernetes-cluster"></a>Kubernetes クラスターを作成する
 
-[az acs create](/cli/azure/acs#az_acs_create) コマンドを使用して Azure Container Service に Kubernetes クラスターを作成します。 
+[az acs create](/cli/azure/acs#az-acs-create) コマンドを使用して Azure Container Service に Kubernetes クラスターを作成します。 
 
 次の例では、`myK8sCluster` という名前のクラスターを `myResourceGroup` という名前のリソース グループに作成します。 このリソース グループは、[前のチュートリアル](./container-service-tutorial-kubernetes-prepare-acr.md)で作成しました。
 
@@ -42,7 +46,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
-制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#az_acs_create) コマンドに追加して、既定のエージェント数を減らします。 
+制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#az-acs-create) コマンドに追加して、既定のエージェント数を減らします。 
 
 数分してデプロイが完了すると、この ACS デプロイに関する情報が JSON 形式で表示されます。
 
@@ -68,7 +72,7 @@ Kubernetes クラスターに接続するように kubectl を構成するには
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
 ```
 
-クラスターへの接続を確認するには、[kubectl get nodes](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドを実行します。
+クラスターへの接続を確認するには、[kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを実行します。
 
 ```azurecli-interactive
 kubectl get nodes

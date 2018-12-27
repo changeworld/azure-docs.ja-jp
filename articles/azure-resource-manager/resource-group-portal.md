@@ -1,8 +1,8 @@
 ---
-title: "Azure Portal を使用した Azure リソースの管理 | Microsoft Docs"
-description: "Azure ポータルと Azure Resource Manager を使用してリソースを管理します。 ダッシュボードを使用してリソースを監視する方法について説明します。"
+title: Azure Portal を使用した Azure リソースの管理 | Microsoft Docs
+description: Azure ポータルと Azure Resource Manager を使用してリソースを管理します。 ダッシュボードを使用してリソースを監視する方法について説明します。
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -11,18 +11,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 27213482c3ef6b35e1e3f887c9a336b946850802
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 7398e01a46b5d296f26905e2063acdb98383f567
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38600363"
 ---
 # <a name="manage-azure-resources-through-portal"></a>ポータルを使用した Azure リソースの管理
 
 この記事では、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースを管理する方法について説明します。 ポータルを使用したリソースのデプロイについては、「 [Deploy resources with Resource Manager templates and Azure portal (Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ)](resource-group-template-deploy-portal.md)」を参照してください。
+
+[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="manage-resource-groups"></a>リソース グループの管理
 
@@ -30,22 +33,22 @@ ms.lasthandoff: 11/16/2017
 
 リソース グループには、リソースについてのメタデータが格納されます。 そのため、リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
 
-1. 自分のサブスクリプションのリソース グループをすべて表示するには、 **[リソース グループ]**を選択します。
+1. 自分のサブスクリプションのリソース グループをすべて表示するには、 **[リソース グループ]** を選択します。
    
     ![リソース グループの参照](./media/resource-group-portal/browse-groups.png)
-2. 空のリソース グループを作成するために、 **[追加]**を選択します。
+2. 空のリソース グループを作成するために、 **[追加]** を選択します。
    
     ![add resource group](./media/resource-group-portal/add-resource-group.png)
-3. 新しいリソース グループの名前と場所を入力します。 **[作成]**を選択します。
+3. 新しいリソース グループの名前と場所を入力します。 **[作成]** を選択します。
    
     ![リソースグループの作成](./media/resource-group-portal/create-empty-group.png)
 4. **[最新の情報に更新]** を選択して、先ほど作成したリソース グループを表示します。
    
     ![refresh resource group](./media/resource-group-portal/refresh-resource-groups.png)
-5. リソース グループについて表示される情報をカスタマイズするために、 **[列]**を選択します。
+5. リソース グループについて表示される情報をカスタマイズするために、 **[列]** を選択します。
    
     ![customize columns](./media/resource-group-portal/select-columns.png)
-6. 追加する列を選択してから、 **[更新]**を選択します。
+6. 追加する列を選択してから、 **[更新]** を選択します。
    
     ![add columns](./media/resource-group-portal/add-columns.png)
 7. 新しいリソース グループへのリソースのデプロイについては、「 [Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](resource-group-template-deploy-portal.md)」を参照してください。
@@ -73,7 +76,7 @@ ms.lasthandoff: 11/16/2017
 3. セクションをダッシュボードにピン留めすると、ダッシュボード上に概要が表示されます。 さらに、それを選択すると、データの詳細情報が即時に表示されます。
    
     ![view dashboard](./media/resource-group-portal/view-startboard.png)
-4. ポータルから監視するデータを完全にカスタマイズするには、既定のダッシュボードに移動して、 **[新しいダッシュボード]**を選択します。
+4. ポータルから監視するデータを完全にカスタマイズするには、既定のダッシュボードに移動して、 **[新しいダッシュボード]** を選択します。
    
     ![dashboard](./media/resource-group-portal/dashboard.png)
 5. 新しいダッシュボードに名前を付けて、ダッシュボードにタイルをドラッグします。 タイルは、さまざまなオプションでフィルター処理されます。
@@ -93,7 +96,7 @@ ms.lasthandoff: 11/16/2017
 別のリソース グループまたは別のサブスクリプションにリソースを移動する必要がある場合は、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 
 ## <a name="lock-resources"></a>リソースのロック
-サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止できます。 詳細については、「 [Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
+サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止できます。 詳細については、[「Azure Resource Manager によるリソースのロック」](resource-group-lock-resources.md)を参照してください。
 
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
@@ -123,10 +126,10 @@ ms.lasthandoff: 11/16/2017
 
 ![グループの削除](./media/resource-group-portal/delete-group.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * アクティビティ ログの表示については、[Resource Manager の監査操作](resource-group-audit.md)に関するページを参照してください。
 * デプロイの詳細については、「[デプロイ操作の表示](resource-manager-deployment-operations.md)」を参照してください。
 * ポータルを使用したリソースのデプロイについては、「 [Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](resource-group-template-deploy-portal.md)」を参照してください。
-* リソースへのアクセスの管理については、「 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
-* 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
+* リソースへのアクセスの管理については、「 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+* 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance)」を参照してください。
 

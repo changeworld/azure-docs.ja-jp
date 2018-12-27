@@ -1,18 +1,19 @@
 ---
-title: "Azure Portal の Azure Container Registry リポジトリ"
-description: "Azure Portal で Azure Container Registry リポジトリを表示する方法"
+title: Azure Portal の Azure Container Registry リポジトリ
+description: Azure Portal で Azure Container Registry リポジトリを表示する方法
 services: container-registry
 author: cristy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: cristyg
-ms.openlocfilehash: 593972e972207a27d1232fcb0c1bf220ac3a8def
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 171593483fc94c1c67013ab520b0085ca98f3a82
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33768330"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Azure Portal でコンテナー レジストリ リポジトリを表示する
 
@@ -49,7 +50,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、ポータルでリポジトリを表示し、使用する方法の基本を学んだので、[Azure Container Registry と Azure Container Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md) クラスターを使用してみてください。
+ここでは、ポータルでリポジトリを表示し、使用する方法の基本を学んだので、Azure Container Registry と [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md) クラスターを使用してみてください。
 
 <!-- LINKS - External -->
 [docker-install]: https://docs.docker.com/engine/installation/

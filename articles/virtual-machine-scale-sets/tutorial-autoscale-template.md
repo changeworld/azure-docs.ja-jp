@@ -3,7 +3,7 @@ title: 'チュートリアル: Azure テンプレートを使用したスケー�
 description: Azure Resource Manager テンプレートを使用して CPU 需要の増減に合わせて仮想マシンのスケール セットを自動的にスケーリングする方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 97c92a68009a378d13daed35520c7d338c5b932a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e1257cbe14d8d0fe9dc6d9b0f2a48dbb8b3cc6e4
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466561"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>チュートリアル: Azure テンプレートを使用して仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
@@ -35,7 +36,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.29 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.29 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
 
 ## <a name="define-an-autoscale-profile"></a>自動スケール プロファイルの定義
@@ -45,7 +46,7 @@ Azure テンプレート内で自動スケール プロファイルを定義す�
 {
 "type": "Microsoft.insights/autoscalesettings",
 "name": "Autoscale",
-"apiVersion": "2014-04-01",
+"apiVersion": "2015-04-01",
 "location": "[variables('location')]",
 "scale": null,
 "properties": {
@@ -80,7 +81,7 @@ Azure テンプレート内で自動スケール プロファイルを定義す�
 | *threshold*       | 自動スケール ルールがアクションをトリガーする値。                                                      | 70%             |
 | *direction*       | ルールが適用されるときにスケール セットをスケールインするかスケールアウトするかを定義します。                                              | Increase (増加)        |
 | *type*            | VM インスタンスの数を特定の値で変更することを示します。                                    | 変更数    |
-| *値*           | ルールが適用されるときにスケールインまたはスケールアウトする VM インスタンスの数。                                             | 3               |
+| *value*           | ルールが適用されるときにスケールインまたはスケールアウトする VM インスタンスの数。                                             | 3               |
 | *cooldown*        | ルールを再度適用する前に待機する時間。この値を超えると、自動スケール操作が反映されます。 | 5 分       |
 
 次のルールを、前のセクションの *Microsoft.insights/autoscalesettings* リソース プロバイダーのプロファイル セクションに追加します。
@@ -253,7 +254,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
            6  True                  eastus      myScaleSet_6  Creating             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-**stress** が最初の VM インスタンスで停止すると、平均 CPU 負荷は正常に戻ります。 その 5 分後、自動スケール ルールによって VM インスタンスの数がスケールインされます。 スケールイン アクションでは、ID が最も大きな VM インスタンスが最初に削除されます。 次の出力例には、スケール セットの自動スケールインによって削除された 1 つの VM インスタンスが示されています。
+**stress** が最初の VM インスタンスで停止すると、平均 CPU 負荷は正常に戻ります。 その 5 分後、自動スケール ルールによって VM インスタンスの数がスケールインされます。 スケールイン アクションでは、ID が最も大きな VM インスタンスが最初に削除されます。 スケール セットが可用性セットまたは可用性ゾーンを使用する場合、スケールイン アクションはこれらの VM インスタンスに均等に分散されます。 次の出力例には、スケール セットの自動スケールインによって削除された 1 つの VM インスタンスが示されています。
 
 ```bash
            6  True                  eastus      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
@@ -271,7 +272,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure CLI 2.0 を使用してスケール セットを自動的にスケールインまたはスケールアウトする方法について学習しました。
+このチュートリアルでは、Azure CLI を使用してスケール セットを自動的にスケールインまたはスケールアウトする方法について学習しました。
 
 > [!div class="checklist"]
 > * スケール セットの自動スケールを使用する
@@ -279,7 +280,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > * VM インスタンスのストレステストを行い、自動スケール ルールをトリガーする
 > * 需要の減少に合わせて元のサイズに自動的にスケーリングする
 
-実際に動作している仮想マシン スケール セットの例については、次のサンプルの Azure CLI 2.0 サンプル スクリプトを参照してください。
+実際に動作している仮想マシン スケール セットの例については、次のサンプルの Azure CLI サンプル スクリプトを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure CLI 2.0 用のスケール セット スクリプトのサンプル](cli-samples.md)
+> [Azure CLI 用のスケール セット スクリプトのサンプル](cli-samples.md)

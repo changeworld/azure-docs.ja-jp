@@ -1,7 +1,7 @@
 ---
 title: Azure リソースが見つからないエラー | Microsoft Docs
 description: リソースが見つからない場合に、エラーを解決する方法について説明します。
-services: azure-resource-manager,azure-portal
+services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
 manager: timlt
@@ -10,14 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: support-article
-ms.date: 03/08/2018
+ms.topic: troubleshooting
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6844c1c2938873b0a74fe66e846dc733a4bd6ff7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 176de6f19274dfd8a6cf0335bb4cf16a8baa874b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525346"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Azure リソースが見つからないエラーを解決する
 
@@ -32,7 +33,7 @@ Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-解決できないリソースで [reference](resource-group-template-functions-resource.md#reference) または [listKeys](resource-group-template-functions-resource.md#listkeys) 関数を使用しようとした場合、次のエラーが発生します。
+解決できないリソースで [reference](resource-group-template-functions-resource.md#reference) または [listKeys](resource-group-template-functions-resource.md#listkeys) 関数を使用すると、次のエラーが発生します。
 
 ```
 Code=ResourceNotFound;
@@ -59,7 +60,7 @@ Resource Manager はリソースのプロパティを取得する必要があり
 }
 ```
 
-また、不要な依存関係を設定するのは望ましくありません。 不要な依存関係があると、相互に依存していないリソースを並行してデプロイすることを妨げるため、デプロイ時間が長くなります。 さらに、循環依存関係が作成されてデプロイがブロックされる恐れがあります。 [reference](resource-group-template-functions-resource.md#reference) 関数は、リソースが同じテンプレートにデプロイされる場合、参照されたリソースに対する暗黙的な依存関係を作成します。 このため、**dependsOn** プロパティで指定したよりも多くの依存関係が作成されることがあります。 [resourceId](resource-group-template-functions-resource.md#resourceid) 関数は暗黙的な依存関係を作成しません。また、リソースの存在を検証することもしません。
+また、不要な依存関係を設定するのは望ましくありません。 不要な依存関係があると、相互に依存していないリソースを並行してデプロイすることを妨げるため、デプロイ時間が長くなります。 さらに、循環依存関係が作成されてデプロイがブロックされる恐れがあります。 [reference](resource-group-template-functions-resource.md#reference) 関数および [list*](resource-group-template-functions-resource.md#list) 関数では、参照されているリソースが同じテンプレートでデプロイされ、(リソース ID ではなく) 名前によって参照されている場合、そのリソースに対する暗黙的な依存関係が作成されます。 このため、**dependsOn** プロパティで指定したよりも多くの依存関係が作成されることがあります。 [resourceId](resource-group-template-functions-resource.md#resourceid) 関数は暗黙的な依存関係を作成しません。また、リソースの存在を検証することもしません。 [reference](resource-group-template-functions-resource.md#reference) 関数および [list*](resource-group-template-functions-resource.md#list) 関数は、リソースがリソース ID によって参照されているときは、暗黙的な依存関係を作成しません。 暗黙的な依存関係を作成するには、同じテンプレートでデプロイされるリソースの名前を渡します。
 
 依存関係の問題が発生した場合は、リソースのデプロイ順序を把握する必要があります。 デプロイ操作の順序を確認するには、次の手順に従います。
 

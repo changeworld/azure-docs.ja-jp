@@ -1,11 +1,11 @@
 ---
-title: "Mobile Apps と Mobile Services のクライアントとサーバーの SDK バージョン管理 | Microsoft Docs"
-description: "Mobile Services と Azure Mobile Apps のクライアント SDK およびサーバー SDK バージョンとの互換性の一覧"
+title: Mobile Apps と Mobile Services のクライアントとサーバーの SDK バージョン管理 | Microsoft Docs
+description: Mobile Services と Azure Mobile Apps のクライアント SDK およびサーバー SDK バージョンとの互換性の一覧
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 37bf36af535eb9b5c8b0ba38434b71f1a6686811
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: 1f5626b1001f2d5deb3fa84d64eab6acf6c94b7e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239527"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理
 Azure Mobile Services の最新版は Azure App Service の **Mobile Apps** 機能です。
@@ -69,17 +70,17 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 注: Mobile Services クライアント SDK は `ZUMO-API-VERSION` のヘッダー値を送信 "*しません*"。 サービスがこのヘッダーやクエリ文字列値を受け取った場合、前述のように明示的に除外しない限り、エラーが返されます。
 
 ### <a name="MobileServicesClients"></a> Mobile *Services* クライアント SDK
-| クライアント プラットフォーム | バージョン | バージョンのヘッダー値 |
+| クライアント プラットフォーム | Version | バージョンのヘッダー値 |
 | --- | --- | --- |
 | 管理されたクライアント (Windows、Xamarin) |[1.3.2](https://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.2) |該当なし |
-| iOS |[2.2.2](http://aka.ms/gc6fex) |該当なし |
+| iOS |[2.2.2](https://aka.ms/gc6fex) |該当なし |
 | Android |[2.0.3](https://go.microsoft.com/fwLink/?LinkID=280126) |該当なし |
 | HTML |[1.2.7](http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js) |該当なし |
 
 ### <a name="mobile-services-server-sdks"></a>Mobile *Services* サーバー SDK
-| サーバー プラットフォーム | バージョン | 同意済みのバージョン ヘッダー |
+| サーバー プラットフォーム | Version | 同意済みのバージョン ヘッダー |
 | --- | --- | --- |
-| .NET |[WindowsAzure.MobileServices.Backend.* バージョン 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |**バージョン ヘッダーなし ** |
+| .NET |[WindowsAzure.MobileServices.Backend.* バージョン 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |**バージョン ヘッダーなし** |
 | Node.js |(近日対応予定) |**バージョン ヘッダーなし** |
 
 <!-- TODO: add Node npm version -->
@@ -95,11 +96,11 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 ### <a name="MobileAppsClients"></a> Mobile *Apps* クライアント SDK
 バージョン チェックは **Azure Mobile Apps**の次のバージョンのクライアント SDK から導入されました。
 
-| クライアント プラットフォーム | バージョン | バージョンのヘッダー値 |
+| クライアント プラットフォーム | Version | バージョンのヘッダー値 |
 | --- | --- | --- |
 | 管理されたクライアント (Windows、Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
-| iOS |[3.0.0](http://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
-| Android |[3.0.0](http://go.microsoft.com/fwlink/?LinkID=717033&clcid=0x409) |3.0.0 |
+| iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
+| Android |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=717033&clcid=0x409) |3.0.0 |
 
 <!-- TODO: add HTML version when released -->
 

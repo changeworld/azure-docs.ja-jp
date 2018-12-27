@@ -1,24 +1,25 @@
 ---
-title: "Azure Event Hubs 認証とセキュリティ モデルの概要 | Microsoft Docs"
-description: "Event Hubs の認証とセキュリティ モデルの概要"
+title: Azure Event Hubs 認証とセキュリティ モデルの概要 | Microsoft Docs
+description: Event Hubs の認証とセキュリティ モデルの概要
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 93841e30-0c5c-4719-9dc1-57a4814342e7
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2017
-ms.author: sethm;clemensv
-ms.openlocfilehash: bfe7b95236c1a5336c1bb3a93d0eb5ca880adabf
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 08/16/2018
+ms.author: shvija
+ms.openlocfilehash: 0e8dcf9eede744d52e38b742946a59944988f199
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144320"
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs の認証とセキュリティ モデルの概要
 

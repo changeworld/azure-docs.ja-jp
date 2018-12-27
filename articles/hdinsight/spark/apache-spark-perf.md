@@ -1,25 +1,20 @@
 ---
-title: "パフォーマンスのための Spark ジョブの最適化 - Azure HDInsight | Microsoft Docs"
-description: "Spark クラスターのパフォーマンスを最適にするための一般的な戦略を示します。"
+title: パフォーマンスのための Spark ジョブの最適化 - Azure HDInsight
+description: Spark クラスターのパフォーマンスを最適にするための一般的な戦略を示します。
 services: hdinsight
-documentationcenter: 
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/11/2018
+author: maxluk
 ms.author: maxluk
-ms.openlocfilehash: 64ddb70f071a9fadc6fef64dcd3506c6d6255481
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.reviewer: jasonh
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 01/11/2018
+ms.openlocfilehash: 4a7777be01cc15ed5cc4c9c091230afe1ddfa897
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047444"
 ---
 # <a name="optimize-spark-jobs"></a>Spark ジョブの最適化
 

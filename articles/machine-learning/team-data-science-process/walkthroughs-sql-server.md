@@ -1,24 +1,26 @@
 ---
-title: "R、Python、T-SQL を使用した SQL Server データ サイエンスのチュートリアル | Microsoft Docs"
-description: "SQL Server で R、Python、T-SQL を使用して予測分析を行う例を紹介します。"
+title: R、Python、T-SQL を使用した SQL Server データ サイエンスのチュートリアル | Microsoft Docs
+description: SQL Server で R、Python、T-SQL を使用して予測分析を行う例を紹介します。
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: jhubbard
+documentationcenter: ''
+author: deguhath
+manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 3f7d6a0b7b1f874d87e10c490d0b48fe6e6083ef
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: deguhath
+ms.openlocfilehash: b1b49d9f2f215d08586d4e988fbe5f647da3b937
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394911"
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>R、Python、T-SQL を使用した SQL Server データ サイエンスのチュートリアル
 
@@ -47,7 +49,7 @@ Team Data Science Process を実行するデータ サイエンスのチュー�
 [SQL Server Python Services で T-SQL を使用する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers)に関するチュートリアルでは、SQL プログラマが SQL Server で機械学習ソリューションの構築を体験できます。 Python コードをストアド プロシージャに追加することによって、Python をアプリケーションに組み込む方法を示しています。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process を構成する主な要素については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
 

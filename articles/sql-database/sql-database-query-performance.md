@@ -2,18 +2,22 @@
 title: Azure SQL Database の Query Performance Insight | Microsoft Docs
 description: クエリのパフォーマンスを監視して、Azure SQL Database の CPU 消費量の多いクエリを明らかにします。
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
-ms.topic: article
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: danimir
+ms.author: danil
+ms.reviewer: carlrab
+manager: craigg
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: 85f25946974b7ede64f9f8fb0009eed42c55c25a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 0dd6430021eed5571a6590f411a68e747cd7b506
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274889"
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Azure SQL Database Query Performance Insight
 リレーショナル データベースのパフォーマンスの管理とチューニングは、かなりの専門知識と時間の投入を必要とする困難な作業です。 Query Performance Insight を使用すると、短時間でデータベース パフォーマンスのトラブルシューティングを行うことができます。以下の情報が提供されます。
@@ -21,7 +25,7 @@ ms.lasthandoff: 04/06/2018
 * データベース リソース (DTU) の消費量の詳細な情報。 
 * CPU/期間/実行回数の上位クエリ。パフォーマンス向上のためのチューニングの対象となる可能性があります。
 * クエリの詳細にドリルダウンして、テキストやリソース使用率履歴を表示する機能。 
-* [SQL Azure Database Advisor](sql-database-advisor.md)  
+*  [SQL Azure Database Advisor](sql-database-advisor.md)  
 
 
 
@@ -29,7 +33,7 @@ ms.lasthandoff: 04/06/2018
 * Query Performance Insight では、 [クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx) がデータベース上で実行されている必要があります。 クエリ ストアが実行されていない場合、ポータルで、クエリ ストアを有効にするよう求められます。
 
 ## <a name="permissions"></a>アクセス許可
-Query Performance Insight を使用するには、次の [ロール ベースのアクセス制御](../active-directory/role-based-access-control-what-is.md) 権限が必要です。 
+Query Performance Insight を使用するには、次の [ロール ベースのアクセス制御](../role-based-access-control/overview.md) 権限が必要です。 
 
 * トップ リソース コンシューマー クエリとグラフを表示するには、**閲覧者**、**所有者**、**共同作成者**、**SQL DB 共同作業者**、または **SQL Server 共同作業者**の権限が必要です。 
 * クエリ テキストを表示するには、**所有者**、**共同作成者**、**SQL DB 共同作業者**、または **SQL Server 共同作業者**の権限が必要です。

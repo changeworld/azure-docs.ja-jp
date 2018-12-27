@@ -1,0 +1,20 @@
+- name: Speaker Recognition のドキュメント
+- name: 概要
+  items:
+    - name: Speaker Recognition について
+      href: Home.md
+- name: リファレンス
+  items:
+    - name: API リファレンス
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797'
+      items:
+        - name: SDK
+          items:
+            - name: Android
+              href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Android'
+            - name: Windows
+              href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Windows'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'

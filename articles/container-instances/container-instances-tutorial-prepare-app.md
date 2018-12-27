@@ -1,21 +1,21 @@
 ---
-title: Azure Container Instances チュートリアル - アプリの準備
-description: Azure Container Instances チュートリアル第 1 部 (全 3 部) - Azure Container Instances にデプロイするアプリを準備する
+title: チュートリアル - Azure Container Instances に使用するコンテナー イメージを準備する
+description: Azure Container Instances チュートリアル第 1 部 (全 3 部) - Azure Container Instances にデプロイするアプリをコンテナー イメージとして準備します
 services: container-instances
-author: mmacy
-manager: timlt
+author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: marsma
-ms.custom: mvc
-ms.openlocfilehash: 134cc6ea84a5851755c757cbcf20130bf890575c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: danlep
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 029b4f2d0f0f88f56ca1f3e282d8c80e76f4d5c7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186414"
 ---
-# <a name="tutorial-create-container-for-deployment-to-azure-container-instances"></a>チュートリアル: デプロイするコンテナーを Azure Container Instances に作成する
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>チュートリアル: Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する
 
 Azure Container Instances では、仮想マシンをプロビジョニングしたり、上位レベルのサービスを採用したりせずに、Azure のインフラストラクチャ上に Docker コンテナーをデプロイすることができます。 このチュートリアルでは、小さな Node.js Web アプリケーションを、Azure Container Instances を使用して実行できるコンテナー イメージにパッケージ化します。
 

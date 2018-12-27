@@ -1,6 +1,6 @@
 ---
-title: "軽減策 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Microsoft Threat Modeling Tool の [Mitigations]\\(軽減策\\) ページでは、生成された脅威のうち、最も危険な脅威の軽減策が強調表示されます。"
+title: 軽減策 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: Microsoft Threat Modeling Tool の [Mitigations]\(軽減策\) ページでは、生成された脅威のうち、最も危険な脅威の軽減策が強調表示されます。
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23043437"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool の軽減策
 
@@ -48,7 +49,7 @@ Threat Modeling Tool の軽減策は、Web アプリケーションのセキュ�
 * 最も一般的な間違いがどこで起きるか
 * 最も実践的な機能強化をどこで行うことができるか
 
-そのため、これらのカテゴリを使用して、セキュリティに関連する作業の対象と優先順位を定めることができます。最も一般的なセキュリティの問題が入力の検証、認証、および承認のカテゴリで発生することが判明した場合は、そこから作業を開始できます。 詳細については、**[このブログ投稿](https://www.google.com/patents/US7818788)**を参照してください。
+そのため、これらのカテゴリを使用して、セキュリティに関連する作業の対象と優先順位を定めることができます。最も一般的なセキュリティの問題が入力の検証、認証、および承認のカテゴリで発生することが判明した場合は、そこから作業を開始できます。 詳細については、**[このブログ投稿](https://www.google.com/patents/US7818788)** を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

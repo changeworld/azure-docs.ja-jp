@@ -3,7 +3,7 @@ title: Azure の Windows VM でパスワードまたはリモート デスクト
 description: Azure Portal または Azure PowerShell を使用して、クラシック デプロイ モデルで作成された Windows VM でアカウントのパスワードまたはリモート デスクトップ サービスをリセットする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -14,16 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: iainfou
-ms.openlocfilehash: 516cb740f9acad19dac77db0239341b42a2b27fe
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: e91f75299dddf0ac173499a531ea959292082a9f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246550"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 また、[Resource Manager のデプロイ モデルを使用して作成された VM でこれらの手順を実行](../reset-rdp.md)することもできます。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 また、[Resource Manager デプロイ モデルを使用して作成された VM でこれらの手順を実行](../reset-rdp.md)することもできます。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 
@@ -48,7 +49,7 @@ Windows 仮想マシンを選び、**[Reset Remote... (リモートのリセッ�
 
 ![パスワード リセット ページ](./media/reset-rdp/Portal-PW-Reset-Windows.png)
 
-新しいユーザー名とパスワードを入力して、 **[保存]**をクリックします。
+新しいユーザー名とパスワードを入力して、 **[保存]** をクリックします。
 
 ## <a name="vmaccess-extension-and-powershell"></a>VMAccess 拡張機能と PowerShell
 仮想マシンに VM エージェントがインストールされていることを確認します。 VM エージェントを使用するには、VMAccess 拡張機能を使用前にインストールしておく必要があります。 次のコマンドを使用して VM エージェントがインストールされていることを確認します。 ("myCloudService" と "myVM" は、それぞれ実際のクラウド サービスの名前と VM に置き換えます。 これらの名前を確認するには、パラメーターを指定せずに `Get-AzureVM` を実行します)。
@@ -58,7 +59,7 @@ $vm = Get-AzureVM -ServiceName "myCloudService" -Name "myVM"
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-**write-host** コマンドで **True** が表示される場合は、VM エージェントがインストールされています。 **False**が表示される場合は、Azure ブログの [VM エージェントと拡張機能に関する記事のパート 2](http://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) で手順とダウンロード用リンクをご確認ください。
+**write-host** コマンドで **True** が表示される場合は、VM エージェントがインストールされています。 **False**が表示される場合は、Azure ブログの [VM エージェントと拡張機能に関する記事のパート 2](https://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) で手順とダウンロード用リンクをご確認ください。
 
 ポータルで仮想マシンを作成した場合、 `$vm.GetInstance().ProvisionGuestAgent` を実行して **True**が返されるかどうかを確認します。 作成していない場合は、次のコマンドを使用して設定できます。
 
@@ -107,7 +108,7 @@ Azure VM アクセス拡張機能が応答せず、パスワードをリセッ�
 
 [Azure VM 拡張機能とその機能](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[RDP または SSH を使用した Azure Virtual Machines への接続](http://msdn.microsoft.com/library/azure/dn535788.aspx)
+[RDP または SSH を使用した Azure Virtual Machines への接続](https://msdn.microsoft.com/library/azure/dn535788.aspx)
 
 [Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関するトラブルシューティング](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

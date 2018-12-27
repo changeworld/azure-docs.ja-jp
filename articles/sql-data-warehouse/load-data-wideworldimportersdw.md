@@ -1,31 +1,25 @@
 ---
 title: 'チュートリアル: Azure SQL Data Warehouse へのデータの読み込み | Microsoft Docs'
-description: このチュートリアルでは、Azure Portal と SQL Server Management Studio を使って、Azure Blob Storage から Azure SQL Data Warehouse に WideWorldImportersDW データ ウェアハウスを読み込みます。
+description: チュートリアルでは、Azure Portal と SQL Server Management Studio を使って、パブリック Azure Blob から Azure SQL Data Warehouse に WideWorldImportersDW データ ウェアハウスを読み込みます。
 services: sql-data-warehouse
-documentationcenter: ''
 author: ckarst
-manager: jhubbard
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: craigg
 ms.service: sql-data-warehouse
-ms.custom: mvc,develop data warehouses
-ms.devlang: na
-ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 03/06/2018
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
 ms.author: cakarst
-ms.reviewer: barbkess
-ms.openlocfilehash: 7e7d9a299e141ef8fd564e7f97077471264420ea
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: igorstan
+ms.openlocfilehash: 57803d6b83b71e65064c4ec701ed5b7e7607321f
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286935"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>チュートリアル: Azure SQL Data Warehouse へのデータの読み込み
 
-このチュートリアルでは、Azure Blob Storage から Azure SQL Data Warehouse に WideWorldImportersDW データ ウェアハウスを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) を使って、次のことを行います。 
+このチュートリアルでは、PolyBase を使用して、Azure Blob Storage から Azure SQL Data Warehouse に WideWorldImportersDW データ ウェアハウスを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、次のことを行います。 
 
 > [!div class="checklist"]
 > * Azure Portal でデータ ウェアハウスを作成する
@@ -42,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) をダウンロードしてインストールします。
+このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) をダウンロードしてインストールします。
 
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
@@ -51,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>空の SQL Data Warehouse を作成する
 
-Azure SQL Data Warehouse は、定義済みの一連の[コンピューティング リソースリソース](performance-tiers.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
+Azure SQL Data Warehouse は、定義済みの一連の[コンピューティング リソースリソース](memory-and-concurrency-limits.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
 
 空の SQL Data Warehouse を作成するには、次のようにします。 
 
@@ -63,9 +57,9 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 3. SQL Data Warehouse のフォームで、次の情報を入力します。   
 
-   | Setting | 推奨値 | [説明] | 
+   | Setting | 推奨値 | 説明 | 
    | ------- | --------------- | ----------- | 
-   | **[データベース名]** | SampleDW | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
+   | **データベース名** | SampleDW | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
    | **[リソース グループ]** | SampleRG | 有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
    | **[ソースの選択]** | 空のデータベース | 空のデータベースの作成を指定します。 データ ウェアハウスはデータベースの 1 つの種類であることに注意してください。|
@@ -74,16 +68,16 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-    | Setting | 推奨値 | [説明] | 
+    | Setting | 推奨値 | 説明 | 
     | ------- | --------------- | ----------- |
-    | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
-    | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
+    | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
+    | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
     | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
     | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
 
     ![データベース サーバーを作成する](media/load-data-wideworldimportersdw/create-database-server.png)
 
-5. **[選択]**をクリックします。
+5. **[選択]** をクリックします。
 
 6. **[パフォーマンス レベル]** をクリックし、データ ウェアハウスを弾力性または計算能力に最適化するかどうか、および Data Warehouse ユニットの数を指定します。 
 
@@ -91,8 +85,8 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
     ![パフォーマンスを構成する](media/load-data-wideworldimportersdw/configure-performance.png)
 
-8. **[Apply]**をクリックします。
-9. [SQL Data Warehouse] ページで、空のデータベースの **[照合順序]** を選びます。 このチュートリアルでは、既定の値を使います。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations.md)」を参照してください。
+8. **[Apply]** をクリックします。
+9. [SQL Data Warehouse] ページで、空のデータベースの **[照合順序]** を選びます。 このチュートリアルでは、既定の値を使います。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations)」を参照してください。
 
 11. これで SQL Database フォームの入力が完了したので、**[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
 
@@ -141,29 +135,29 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20171113.database.windows.net です。 
+3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。  この例の完全修飾名は mynewserver-20171113.database.windows.net です。 
 
     ![接続情報](media/load-data-wideworldimportersdw/find-server-name.png)  
 
 ## <a name="connect-to-the-server-as-server-admin"></a>サーバー管理者としてサーバーに接続する
 
-このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) を使って、Azure SQL Server に対する接続を確立します。
+このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、Azure SQL Server に対する接続を確立します。
 
 1. SQL Server Management Studio を開きます。
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-    | Setting      | 推奨値 | [説明] | 
+    | Setting      | 推奨値 | 説明 | 
     | ------------ | --------------- | ----------- | 
     | サーバーの種類 | データベース エンジン | この値は必須です |
     | サーバー名 | 完全修飾サーバー名 | たとえば、**sample-svr.database.windows.net** は完全修飾サーバー名です。 |
-    | 認証 | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
+    | Authentication | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
     | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
     | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
 
     ![[サーバーへの接続]](media/load-data-wideworldimportersdw/connect-to-server.png)
 
-4. **[接続]**をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
+4. **[接続]** をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
 
 5. オブジェクト エクスプローラーで、**[データベース]** を展開します。 **[システム データベース]**、**[master]** の順に展開し、マスター データベースのオブジェクトを表示します。  **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
 
@@ -171,7 +165,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 ## <a name="create-a-user-for-loading-data"></a>データを読み込むためのユーザーを作成する
 
-サーバー管理者アカウントは管理操作を実行するためのものであり、ユーザー データに対するクエリの実行には適していません。 データの読み込みは、メモリを大量に消費する操作です。 [メモリの最大値](performance-tiers.md#memory-maximums)は、[パフォーマンス レベル](performance-tiers.md)と[リソース クラス](resource-classes-for-workload-management.md)に従って定義されます。 
+サーバー管理者アカウントは管理操作を実行するためのものであり、ユーザー データに対するクエリの実行には適していません。 データの読み込みは、メモリを大量に消費する操作です。 メモリの最大値は、使用している SQL Data Warehouse の世代、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)、[リソース クラス](resource-classes-for-workload-management.md)に従って定義されます。 
 
 データの読み込みに専用のログインとユーザーを作成することをお勧めします。 その後、適切な最大メモリ割り当てを有効にする[リソース クラス](resource-classes-for-workload-management.md)に読み込みユーザーを追加します。
 
@@ -188,7 +182,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
     ```
 
-3. **[実行]**をクリックします。
+3. **[実行]** をクリックします。
 
 4. **SampleDW** を右クリックして、**[新しいクエリ]** を選びます。 新しいクエリ ウィンドウが開きます。  
 
@@ -202,7 +196,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     EXEC sp_addrolemember 'staticrc60', 'LoaderRC60';
     ```
 
-6. **[実行]**をクリックします。
+6. **[実行]** をクリックします。
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>読み込みユーザーとしてサーバーに接続する
 
@@ -214,7 +208,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 2. 完全修飾サーバー名を入力し、ログインとして「**LoaderRC60**」と入力します。  LoaderRC60 のパスワードを入力します。
 
-3. **[接続]**をクリックします。
+3. **[接続]** をクリックします。
 
 4. 接続する準備ができると、オブジェクト エクスプローラーに 2 つのサーバー接続が表示されます。 1 つは ServerAdmin としての接続、もう 1 つは LoaderRC60 としての接続です。
 
@@ -238,7 +232,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     CREATE MASTER KEY;
     ```
 
-4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql.md) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部のタクシー データの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、**[実行]** をクリックします。
+4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部のタクシー データの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、**[実行]** をクリックします。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -249,7 +243,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     );
     ```
 
-5. 次の [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql.md) T-SQL ステートメントを実行して、外部データ ファイルの書式設定の特性とオプションを指定します。 このステートメントでは、外部データがテキストとして格納されており、値がパイプ ("|") 文字で区切られていることを指定します。  
+5. 次の [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql) T-SQL ステートメントを実行して、外部データ ファイルの書式設定の特性とオプションを指定します。 このステートメントでは、外部データがテキストとして格納されており、値がパイプ ("|") 文字で区切られていることを指定します。  
 
     ```sql
     CREATE EXTERNAL FILE FORMAT TextFileFormat 
@@ -264,7 +258,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     );
     ```
 
-6.  次の [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql.md) ステートメントを実行して、外部ファイルの形式のスキーマを作成します。 ext スキーマを使って、作成しようとしている外部テーブルを構造化できます。 データが格納される標準テーブルは、wwi スキーマで構造化します。 
+6.  次の [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql) ステートメントを実行して、外部ファイルの形式のスキーマを作成します。 ext スキーマを使って、作成しようとしている外部テーブルを構造化できます。 データが格納される標準テーブルは、wwi スキーマで構造化します。 
 
     ```sql
     CREATE SCHEMA ext;
@@ -559,7 +553,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 > このチュートリアルでは、最終テーブルにデータを直接読み込みます。 運用環境では、通常、CREATE TABLE AS SELECT を使用して、ステージング テーブルに読み込みます。 データがステージング テーブルにある間に、必要な変換を実行できます。 ステージング テーブルのデータを運用テーブルに追加するには、INSERT...SELECT ステートメントを使用します。 詳細については、「[運用テーブルにデータを挿入する](guidance-for-loading-data.md#inserting-data-into-a-production-table)」を参照してください。
 > 
 
-このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントが外部テーブルから選択すると、SQL Data Warehouse はデータ ウェアハウスのリレーショナル テーブルにデータをインポートします。 
+このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントが外部テーブルから選択すると、SQL Data Warehouse はデータ ウェアハウスのリレーショナル テーブルにデータをインポートします。 
 
 このスクリプトでは、wwi.dimension_Date テーブルと wwi.fact_Sales テーブルへのデータの読み込みは行いません。 これらのテーブルは、大量の行を格納できるようにするため、後続の手順で生成されます。
 
@@ -953,12 +947,13 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
         END;
 
     END;
+    ```
 
-## Generate millions of rows
-Use the stored procedures you created to generate millions of rows in the wwi.fact_Sales table, and corresponding data in the wwi.dimension_Date table. 
+## <a name="generate-millions-of-rows"></a>大量の行を生成する
+作成したストアド プロシージャを使用して、wwi.fact_Sales テーブル内に大量の行と、wwi.dimension_Date テーブル内に対応するデータを生成します。 
 
 
-1. Run this procedure to seed the [wwi].[seed_Sale] with more rows.
+1. この手順を実行して、さらに多くの行を持つ [wwi].[seed_Sale] をシード処理します。
 
     ```sql    
     EXEC [wwi].[InitialSalesDataPopulation]

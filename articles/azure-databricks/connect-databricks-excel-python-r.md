@@ -1,23 +1,20 @@
 ---
-title: "Excel、Python、R から Azure Databricks に接続する | Microsoft Docs"
-description: "Simba ドライバーを使用して Excel、Python、R から Azure Databricks に接続する方法を説明します。"
+title: 'Excel、Python、R から Azure Databricks に接続する '
+description: Simba ドライバーを使用して Excel、Python、R から Azure Databricks に接続する方法を説明します。
 services: azure-databricks
-documentationcenter: 
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: mamccrea
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/02/2018
-ms.author: nitinme
-ms.openlocfilehash: 9daa7d30036d0a0f98d079e03a69c29d11e49664
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: conceptual
+ms.date: 06/27/2018
+ms.author: mamccrea
+ms.openlocfilehash: c57550a8b683ad8f184884374c4f09216417fc40
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995633"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Excel、Python、R から Azure Databricks に接続する
 
@@ -99,10 +96,13 @@ Excel のブックにデータを取得したら、分析操作を実行でき�
 
 ## <a name="connect-from-r"></a>R からの接続
 
+> [!NOTE]
+> このセクションでは、デスクトップ上で稼働している R Studio クライアントを Azure Databricks に統合する方法について説明します。 Azure Databricks クラスター自体の上で R Studio を使用する方法については、「[R Studio on Azure Databricks](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html)」(Azure Databricks 上での R Studio) を参照してください。
+
 このセクションでは、R 言語 IDE を使用して Azure Databricks にあるデータを参照します。 開始する前に、ご使用のコンピューターに以下がインストールされている必要があります。
 
 * R 言語の IDE。 この記事では、RStudio for Desktop を使用します。 これは [R Studio ダウンロード](https://www.rstudio.com/products/rstudio/download/)からインストールできます。
-* IDE として RStudio for Desktop を使用する場合は、[http://aka.ms/rclient/](http://aka.ms/rclient/) から Microsoft R Client もインストールしてください。 
+* IDE として RStudio for Desktop を使用する場合は、[https://aka.ms/rclient/](https://aka.ms/rclient/) から Microsoft R Client もインストールしてください。 
 
 RStudio を開き、次の手順を実行します。
 

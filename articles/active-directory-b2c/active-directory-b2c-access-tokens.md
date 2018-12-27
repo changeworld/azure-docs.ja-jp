@@ -1,25 +1,25 @@
 ---
-title: アクセス トークンの要求 - Azure AD B2C | Microsoft Docs
+title: Azure Active Directory B2C でのアクセス トークンの要求 | Microsoft Docs
 description: この記事では、クライアント アプリケーションをセットアップし、アクセス トークンを取得する方法について説明します。
 services: active-directory-b2c
-documentationcenter: android
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
-ms.openlocfilehash: bd919543072a8d2bf5fb0ebba17e69ba2f467218
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015351"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: アクセス トークンの要求
 
-アクセス トークン (Azure AD B2C からの応答に **access\_token** として示される) とは、[承認サーバー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-protocols#the-basics)によってセキュリティ保護されているリソース (Web API など) にアクセスするためにクライアントが使用できるセキュリティ トークンの形式です。 アクセス トークンは [JWT](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#types-of-tokens) として表され、対象となるリソース サーバーと、付与されるサーバーへのアクセス許可に関する情報が含まれます。 リソース サーバーを呼び出すときは、HTTP 要求でアクセス トークンを提示する必要があります。
+アクセス トークン (Azure AD B2C からの応答では **access\_token** として示されます) とは、 [承認サーバー](active-directory-b2c-reference-protocols.md)によってセキュリティ保護されているリソース (Web API など) にアクセスするためにクライアントが使用できるセキュリティ トークンの形式です。 アクセス トークンは [JWT](active-directory-b2c-reference-tokens.md) として表され、対象となるリソース サーバーと、付与されるサーバーへのアクセス許可に関する情報が含まれます。 リソース サーバーを呼び出すときは、HTTP 要求でアクセス トークンを提示する必要があります。
 
 この記事では、**アクセス\_ トークン**を取得するためにクライアント アプリケーションと Web API を構成する方法について説明します。
 
@@ -37,22 +37,22 @@ ms.lasthandoff: 03/23/2018
 ### <a name="register-a-web-api"></a>Web API の登録
 
 1. Azure Portal の Azure AD B2C 機能メニューで、**[アプリケーション]** をクリックします。
-1. メニューの上部にある **[+追加]** をクリックします。
-1. アプリケーションの **[名前]** には、コンシューマーがアプリケーションの機能を把握できるような名前を設定します。 たとえば、「Contoso API」と入力します。
-1. **[Include web app / web API (Web アプリ/Web API を含める)]** スイッチを **[はい]** に切り替えます。
-1. **[返信 URL]** に任意の値を入力します。 たとえば、「 `https://localhost:44316/`」のように入力します。 API は Azure AD B2C から直接トークンを受け取らないため、この値は重要ではありません。
-1. **[アプリケーション ID/URI]** を入力します。 これは Web API に使用される ID です。 たとえば、ボックスに「notes」と入力します。 **[アプリケーション ID/URI]** は `https://{tenantName}.onmicrosoft.com/notes` となります。
-1. **[作成]** をクリックして、アプリケーションを登録します。
-1. 作成したアプリケーションをクリックし、後でコードの作成時に使用するために、グローバルに一意の **アプリケーション クライアント ID** をメモしておきます。
+2. メニューの上部にある **[+追加]** をクリックします。
+3. アプリケーションの **[名前]** には、コンシューマーがアプリケーションの機能を把握できるような名前を設定します。 たとえば、「Contoso API」と入力します。
+4. **[Include web app / web API (Web アプリ/Web API を含める)]** スイッチを **[はい]** に切り替えます。
+5. **[返信 URL]** に任意の値を入力します。 たとえば、「 `https://localhost:44316/`」のように入力します。 API は Azure AD B2C から直接トークンを受け取らないため、この値は重要ではありません。
+6. **[アプリケーション ID/URI]** を入力します。 これは Web API に使用される ID です。 たとえば、ボックスに「notes」と入力します。 **[アプリケーション ID/URI]** は `https://{tenantName}.onmicrosoft.com/notes` となります。
+7. **[作成]** をクリックして、アプリケーションを登録します。
+8. 作成したアプリケーションをクリックし、後でコードの作成時に使用するために、グローバルに一意の **アプリケーション クライアント ID** をメモしておきます。
 
 ### <a name="publishing-permissions"></a>アクセス許可の発行
 
 スコープはアクセス許可に似ていますが、これはアプリが API を呼び出すときに必要となります。 スコープの例には "読み取り" や "書き込み" などがあります。 Web アプリまたはネイティブ アプリで API から "読み取り" を行うとします。 アプリは Azure AD B2C を呼び出し、"読み取り" スコープにアクセスするためのアクセス トークンを要求します。 Azure AD B2C でこのようなアクセス トークンを発行するには、特定の API からの "読み取り" アクセス許可がアプリに付与されている必要があります。 これを行うには、まず API で "読み取り" スコープを発行する必要があります。
 
 1. Azure AD B2C の **[アプリケーション]** メニュー内で、Web API アプリケーション ("Contoso API") を開きます。
-1. **[Published scopes (公開スコープ)]** をクリックします。 ここで、他のアプリケーションに付与できるアクセス許可 (スコープ) を定義します。
-1. 必要に応じて**スコープ値**を追加します (たとえば、"read")。 既定では、"user_impersonation" スコープが定義されます。 これは、不要であれば無視できます。 **[スコープ名]** 列にスコープの説明を入力します。
-1. **[Save]** をクリックします。
+2. **[Published scopes (公開スコープ)]** をクリックします。 ここで、他のアプリケーションに付与できるアクセス許可 (スコープ) を定義します。
+3. 必要に応じて**スコープ値**を追加します (たとえば、"read")。 既定では、"user_impersonation" スコープが定義されます。 これは、不要であれば無視できます。 **[スコープ名]** 列にスコープの説明を入力します。
+4. **[Save]** をクリックします。
 
 > [!IMPORTANT]
 > **[スコープ名]** は、**スコープ値**の説明です。 スコープを使用する場合は、必ず**スコープ値**を使用してください。
@@ -62,11 +62,11 @@ ms.lasthandoff: 03/23/2018
 API を構成してスコープを発行したら、Azure Portal を使用して、クライアント アプリケーションにこれらのスコープへのアクセス許可を付与する必要があります。
 
 1. Azure AD B2C 機能メニューの **[アプリケーション]** メニューに移動します。
-1. まだであれば、クライアント アプリケーション ([Web アプリ](active-directory-b2c-app-registration.md#register-a-web-app)または[ネイティブ クライアント](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)) を登録します。 出発点としてこのガイドを利用している場合は、クライアント アプリケーションを登録する必要があります。
-1. **[API アクセス]** をクリックします。
-1. **[追加]** をクリックします。
-1. Web API と付与するスコープ (アクセス許可) を選択します。
-1. Click **OK**.
+2. まだであれば、クライアント アプリケーション ([Web アプリ](active-directory-b2c-app-registration.md)または[ネイティブ クライアント](active-directory-b2c-app-registration.md)) を登録します。 出発点としてこのガイドを利用している場合は、クライアント アプリケーションを登録する必要があります。
+3. **[API アクセス]** をクリックします。
+4. **[追加]** をクリックします。
+5. Web API と付与するスコープ (アクセス許可) を選択します。
+6. Click **OK**.
 
 > [!NOTE]
 > Azure AD B2C がクライアント アプリケーション ユーザーに同意を求めることはありません。 代わりに、上記のアプリケーション間で構成されたアクセス許可に基づいて、すべて管理者が同意します。 アプリケーションに付与されたアクセス許可を取り消すと、そのアクセス許可をこれまで取得できていたすべてのユーザーがアクセス許可を取得できなくなります。
@@ -79,7 +79,7 @@ API を構成してスコープを発行したら、Azure Portal を使用して
 > 現在、カスタム ドメインとアクセス トークンの併用はサポートされていません。 要求 URL には、tenantName.onmicrosoft.com ドメインを使用する必要があります。
 
 ```
-https://login.microsoftonline.com/<tenantName>.onmicrosoft.com/oauth2/v2.0/authorize?p=<yourPolicyId>&client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
+https://<tenantName>.b2clogin.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
 同じ要求で複数のアクセス許可を取得するには、1 つの **scope** パラメーターに複数のエントリをスペースで区切って追加します。 例: 
@@ -114,7 +114,7 @@ OpenID Connect 標準では、いくつかの特別な "scope" 値を指定し�
 
 (`/authorize` または `/token` エンドポイントから) 正常に発行された **access\_token** では、次の要求が提示されます。
 
-| Name | 要求 | [説明] |
+| Name | 要求 | 説明 |
 | --- | --- | --- |
 |対象ユーザー |`aud` |トークンによってアクセスが許可される 1 つのリソースの**アプリケーション ID**。 |
 |Scope (スコープ) |`scp` |付与されるリソースへのアクセス許可。 付与される複数のアクセス許可はスペースで区切られます。 |

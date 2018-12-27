@@ -1,34 +1,23 @@
 ---
-title: "インデックスの照会 (ポータル - Azure Search) | Microsoft Docs"
-description: "Azure Portal の Search エクスプローラーで検索クエリを発行します。"
+title: Azure Search でインデックスのクエリを実行するための Search エクスプローラー | Microsoft Docs
+description: Azure Search でインデックスのクエリを実行するための Search エクスプ ローラーを使用する方法について説明します。
+manager: cgronlun
+author: HeidiSteen
 services: search
-manager: jhubbard
-documentationcenter: 
-author: ashmaka
-ms.assetid: 8e524188-73a7-44db-9e64-ae8bf66b05d3
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.date: 07/10/2017
-ms.author: ashmaka
-ms.openlocfilehash: dd68d8ed073bf7b8666ddef35a2f1f84df690b4b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.topic: conceptual
+ms.date: 07/10/2018
+ms.author: heidist
+ms.openlocfilehash: 520d9e7b1899c54d922ff6fb77e0901f9609b029
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004135"
 ---
-# <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>Azure Portal の Search エクスプローラーを使用して Azure Search インデックスを照会する
-> [!div class="op_single_selector"]
-> * [概要](search-query-overview.md)
-> * [ポータル](search-explorer.md)
-> * [.NET](search-query-dotnet.md)
-> * [REST ()](search-query-rest-api.md)
-> 
-> 
+# <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>Azure Search で Search エクスプ ローラーを使用してインデックスのクエリを実行する方法 
 
-この記事では、Azure Portal の **Search エクスプローラー**を使用して Azure Search インデックスを照会する方法について説明します。 Search エクスプローラーを使用すると、サービス内の既存のインデックスに対して単純または完全な Lucene クエリ文字列を送信することができます。
+この記事では、Azure Portal で **Search エクスプローラー**を使用して、既存の Azure Search インデックスのクエリを実行する方法について説明します。 Search エクスプローラーを使用すると、サービス内の既存のインデックスに対して単純または完全な Lucene クエリ文字列を送信できます。
 
 ## <a name="open-the-service-dashboard"></a>サービスのダッシュボードを開く
 1. [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) の左側にあるジャンプ バーで **[すべてのリソース]** をクリックします。
@@ -42,7 +31,7 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="open-search-explorer"></a>Search エクスプローラーを開く
 
-[Search エクスプローラー] タイルをクリックして、検索バーと結果のウィンドウを開きます。
+[Search エクスプローラー] タイルをクリックして、検索バーと結果ウィンドウを開きます。
 
    ![](./media/search-explorer/search-explorer-tile.png)
 
@@ -60,7 +49,7 @@ Search エクスプローラーを使用している場合は、[クエリ パ�
 
    ![](./media/search-explorer/search-bar.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 クエリ構文のその他の情報や例については、次のリソースを参照してください。
 

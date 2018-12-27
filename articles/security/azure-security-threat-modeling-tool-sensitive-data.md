@@ -1,24 +1,25 @@
 ---
-title: "機密データ - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威への対応"
+title: 機密データ - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 8d7189ea4b01d43cea709e3300d8ed71d266f5c9
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262371"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム: 機密データ | 軽減策 
 | 製品/サービス | 記事 |
@@ -40,7 +41,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -62,7 +63,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -140,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN: autocomplete 属性](http://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[HTML での AutoComplete の使用](http://msdn.microsoft.com/library/ms533032.aspx)、[HTML サニタイズの脆弱性](http://technet.microsoft.com/security/bulletin/MS10-071)、[オートコンプリートをまた有効にするのですか](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **参照**              | [MSDN: autocomplete 属性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[HTML での AutoComplete の使用](https://msdn.microsoft.com/library/ms533032.aspx)、[HTML サニタイズの脆弱性](https://technet.microsoft.com/security/bulletin/MS10-071)、[オートコンプリートをまた有効にするのですか](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **手順** | autocomplete 属性は、フォームがオートコンプリートをオンまたはオフにするかどうかを指定します。 オートコンプリートがオンのとき、ブラウザーは前にユーザーが入力した値に基づいて値を自動的に完成させます。 たとえば、新しい名前とパスワードがフォームに入力されて、フォームが送信されるとき、ブラウザーはパスワードを保存する必要があるかどうかを尋ねます。その後、フォームが表示されるとき、名前とパスワードは自動的に入力されるか、または名前が入力されると完成されます。 ローカルにアクセスできる攻撃者は、ブラウザーのキャッシュからクリア テキストのパスワードを入手する可能性があります。 既定ではオートコンプリートは有効なので、明示的に無効にする必要があります。 |
 
 ### <a name="example"></a>例
@@ -166,7 +167,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | SQL バージョン - V12、SQL バージョン - MsSQL2016 |
@@ -177,7 +178,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -188,7 +189,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | SQL バージョン - すべて |
@@ -199,7 +200,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -210,7 +211,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | SQL バージョン - V12、SQL バージョン - MsSQL2014 |
@@ -257,7 +258,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure IaaS VM の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Disk Encryption を使用して仮想マシンに使用されるディスクを暗号化する](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
@@ -290,7 +291,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Dynamics CRM | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -301,7 +302,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Dynamics CRM | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -312,7 +313,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Dynamics CRM | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -409,7 +410,7 @@ Allow screen capture
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [Fortify](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
 | **手順** | 暗号化されていないチャネルを介してプレーン テキスト パスワードで UsernameToken を使うと、攻撃者にパスワードが暴露され、SOAP メッセージを傍受できます。 UsernameToken を使うサービス プロバイダーは、プレーン テキストで送信されるパスワードを受け付ける場合があります。 暗号化されていないチャネル経由でプレーン テキスト パスワードを送信すると、資格情報が攻撃者に暴露されて SOAP メッセージを傍受できるようになります。 | 
 
 ### <a name="example"></a>例
@@ -428,7 +429,7 @@ clientCredentialType を Certificate または Windows に設定してくださ�
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | セキュリティ モード - トランスポート、セキュリティ モード - メッセージ |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html)、[WCF セキュリティの基礎 CoDe マガジン](http://www.codemag.com/article/0611051) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled)、[WCF セキュリティの基礎 CoDe マガジン](http://www.codemag.com/article/0611051) |
 | **手順** | トランスポートまたはメッセージのセキュリティが定義されていません。 トランスポートまたはメッセージのセキュリティなしでメッセージを送信するアプリケーションは、メッセージの機密性または整合性を保証できません。 WCF セキュリティのバインドが None に設定されている場合、トランスポートとメッセージのセキュリティはどちらも無効になります。 |
 
 ### <a name="example"></a>例

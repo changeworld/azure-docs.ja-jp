@@ -1,37 +1,41 @@
 ---
-title: Google Cloud Platform アカウントを Azure Cost Management に接続する | Microsoft Docs
-description: Google Cloud Platform アカウントを接続して、Cost Management レポートにコストや使用状況のデータを表示します。
+title: Azure で Google Cloud Platform アカウントを Cloudyn に接続する | Microsoft Docs
+description: Google Cloud Platform アカウントを接続して、Cloudyn レポートにコストや使用状況のデータを表示します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2018
-ms.topic: article
+ms.date: 10/05/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
+manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 8f8c157be0a369817099afa211015ba7587017e3
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 48f1afcbef873e1af4346199c00ee2fadb1ad858
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830246"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Google Cloud Platform アカウントの接続
 
-Azure Cost Management には既存の Google Cloud Platform アカウントを接続できます。 アカウントを Cost Management に接続すると、Cost Management レポートにコストや使用状況のデータを表示できるようになります。 この記事は、Google アカウントを構成して Cost Management と接続する際に役立ちます。
+Cloudyn には既存の Google Cloud Platform アカウントを接続できます。 お客様のアカウントを Cloudyn に接続すると、Cloudyn レポートにコストや使用状況のデータを表示できるようになります。 この記事は、Google アカウントを構成して Cloudyn に接続する際に役立ちます。
+
+> [!NOTE]
+> Google ではそのアカウントのセキュリティを変更しています。これにより、Cloudyn と Google 間で新しい接続を確立することができなくなっています。 Cloudyn は、既に Cloudyn が Google に接続されているユーザーの Google データを収集し続けます。 ただし、現時点では Cloudyn に新しい Google アカウントを追加することはできません。 Cloudyn チームでは、Cloudyn に新しい Google アカウントを追加するためのサポートが再開される時期を把握していません。 サポートが再開されたら、このメモは削除します。
 
 ## <a name="collect-project-information"></a>プロジェクト情報を収集する
 
 最初に、プロジェクトに関する情報を収集します。
 
 1. [https://console.cloud.google.com](https://console.cloud.google.com) で Google Cloud Platform コンソールにサインインします。
-2. Cost Management にオンボードするプロジェクト情報を確認し、**[プロジェクト名]** と **[プロジェクト ID]** をメモします。 この情報は、後続の手順のために手元に用意しておいてください。  
+2. Cloudyn にオンボードするプロジェクト情報を確認し、**[プロジェクト名]** と **[プロジェクト ID]** をメモします。 この情報は、後続の手順のために手元に用意しておいてください。  
     ![Google Cloud Platform コンソール](./media/connect-google-account/gcp-console01.png)
 3. 請求先が有効でなく、プロジェクトにリンクされていない場合は、請求先アカウントを作成します。 詳細については、「[新しい請求先アカウントの作成](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account)」を参照してください。
 
 ## <a name="enable-storage-bucket-billing-export"></a>ストレージ バケットの課金データのエクスポートを有効にする
 
-Cost Management は、ストレージ バケットから Google の課金データを取得します。 後で Cost Management の登録中に使用できるように、**[バケット名]** と **[レポート接頭辞]** の情報を手元に用意しておきます。
+Cloudyn は、ストレージ バケットから Google の課金データを取得します。 後で Cloudyn の登録中に使用できるように、**[バケット名]** と **[レポート接頭辞]** の情報を手元に用意しておきます。
 
 Google Cloud Storage を使用して使用状況レポートを保存した場合は、料金が最小限に抑えられます。 詳細については、「[Google Cloud Storage の料金体系](https://cloud.google.com/storage/pricing)」を参照してください。
 
@@ -41,7 +45,7 @@ Google Cloud Storage を使用して使用状況レポートを保存した場�
 
 ## <a name="enable-google-cloud-platform-apis"></a>Google Cloud Platform API を有効にする
 
-利用状況と資産の情報を収集するには、Cost Management で次の Google Cloud Platform API が有効になっている必要があります。
+利用状況と資産の情報を収集するには、Cloudyn で次の Google Cloud Platform API が有効になっている必要があります。
 
 - BigQuery API
 - Google Cloud SQL
@@ -52,14 +56,14 @@ Google Cloud Storage を使用して使用状況レポートを保存した場�
 
 ### <a name="enable-or-verify-apis"></a>API の有効化または確認
 
-1. Google Cloud Platform コンソールで、Cost Management に登録するプロジェクトを選択します。
+1. Google Cloud Platform コンソールで、Cloudyn に登録するプロジェクトを選択します。
 2. **[API とサービス]** > **[ライブラリ]** の順に移動します。
 3. 検索を使用して、上記の各 API を探します。
 4. API ごとに、**[API enabled]\(API が有効\)** が表示されていることを確認します。 それ以外の場合は、**[有効にする]** をクリックします。
 
-## <a name="add-a-google-cloud-account-to-cost-management"></a>Cost Management に Google Cloud アカウントを追加する
+## <a name="add-a-google-cloud-account-to-cloudyn"></a>Cloudyn に Google Cloud アカウントを追加する
 
-1. Azure Portal から Cloudyn ポータルを開くか [https://azure.cloudyn.com](https://azure.cloudyn.com/) に移動し、ログインします。
+1. Azure portal から Cloudyn ポータルを開くか、[https://azure.cloudyn.com](https://azure.cloudyn.com/) に移動してサインインします。
 2. **[Settings]\(設定\)** (歯車記号) をクリックし、**[Cloud Accounts]\(クラウド アカウント\)** を選択します。
 3. **[Accounts Management]\(アカウント管理\)** で **[Google Accounts]\(Google アカウント\)** タブを選択し、**[Add new +]\(新規追加 +\)** をクリックします。
 4. **[Google Account Name]\(Google アカウント名\)** に請求先アカウントのメール アドレスを入力し、**[Next]\(次へ\)** をクリックします。
@@ -69,8 +73,8 @@ Google Cloud Storage を使用して使用状況レポートを保存した場�
 
 Google アカウントはアカウントの一覧に表示され、**[Authenticated]\(認証済み\)** と示されます。 その下に Google プロジェクトの名前と ID が表示され、緑のチェック マーク記号が付いています。 アカウントの状態は **[Completed]\(完了\)** と示されます。
 
-数時間以内に、Cost Management のレポートには Google のコストと使用状況に関する情報が表示されます。
+数時間以内に、Cloudyn のレポートには Google のコストと使用状況に関する情報が表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Cost Management の詳細については、Cost Management に関する「[使用状況とコストを確認する](./tutorial-review-usage.md)」チュートリアルに進んでください。
+- Cloudyn の詳細については、Cloudyn のチュートリアル「[使用状況とコストを確認する](./tutorial-review-usage.md)」に進んでください。

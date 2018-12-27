@@ -1,19 +1,20 @@
 ---
-title: "Azure Portal での Azure Database for MySQL のサーバー ログの構成とアクセス"
-description: "この記事では、Azure Portal から Azure Database for MySQL のサーバー ログの構成方法とアクセス方法について説明します。"
+title: Azure Portal での Azure Database for MySQL のサーバー ログの構成とアクセス
+description: この記事では、Azure Portal から Azure Database for MySQL のサーバー ログの構成方法とアクセス方法について説明します。
 services: mysql
 author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: b68d92688b18e69f74c0e0a9b2e572795a288579
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 030c9bf32da7b635066a744270739251b9bf3d03
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984708"
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Azure Portal でのサーバー ログの構成とアクセス
 
@@ -26,7 +27,7 @@ Azure Portal から [Azure Database for MySQL のサーバー ログ](concepts-s
 ## <a name="configure-logging"></a>ログの構成
 MySQL の低速クエリ ログへのアクセスを構成します。 
 
-1. [Azure Portal](http://portal.azure.com/) にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
 2. Azure Database for MySQL サーバーを選択します。
 

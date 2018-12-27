@@ -1,25 +1,20 @@
 ---
-title: "Power BI ワークスペース コレクションでの行レベルのセキュリティ"
-description: "Power BI ワークスペース コレクションでの行レベルのセキュリティの詳細"
+title: Power BI ワークスペース コレクションでの行レベルのセキュリティ
+description: Power BI ワークスペース コレクションでの行レベルのセキュリティの詳細
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+author: markingmyname
 ROBOTS: NOINDEX
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 8c3ce8bc69a098d3133f27a2604f9d564693ea54
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 80208c83c96ba78db052017c2baa3bc0db63953f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258852"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの行レベルのセキュリティ
 
@@ -28,7 +23,7 @@ ms.lasthandoff: 10/11/2017
 ![Power BI ワークスペース コレクションでの行レベルのセキュリティのフロー](media/row-level-security/flow-1.png)
 
 > [!IMPORTANT]
-> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、「[How to migrate Power BI Workspace Collection content to Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)」(Power BI Embedded に Power BI ワークスペース コレクション コンテンツを移行する方法) を参照してください。
+> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、[Power BI ワークスペース コレクション コンテンツを Power BI Embedded に移行する方法](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)に関するページを参照してください。
 
 RLS を利用するには、ユーザー、ロール、ルールの 3 つの主要概念を理解しておくことが重要です。 各概念について詳しく見てみましょう。
 
@@ -40,7 +35,7 @@ RLS を利用するには、ユーザー、ロール、ルールの 3 つの主�
 
 ### <a name="example"></a>例
 
-この記事の残りの部分では、RLS を作成し、埋め込みアプリケーション内でその RLS を使用する例を紹介します。 この例では、 [Retail Analysis Sample](http://go.microsoft.com/fwlink/?LinkID=780547) PBIX ファイルを使用します。
+この記事の残りの部分では、RLS を作成し、埋め込みアプリケーション内でその RLS を使用する例を紹介します。 この例では、 [Retail Analysis Sample](https://go.microsoft.com/fwlink/?LinkID=780547) PBIX ファイルを使用します。
 
 ![セールス レポートの例](media/row-level-security/scenario-2.png)
 
@@ -63,7 +58,7 @@ RLS は Power BI Desktop で作成されます。 データセットとレポー
 
 その方法は次のとおりです。
 
-1. [モデリング] タブで **[ロールの管理]**をクリックします。  
+1. [モデリング] タブで **[ロールの管理]** をクリックします。  
    ![[モデリング] リボンの [ロールの管理] ボタン](media/row-level-security/modeling-tab-5.png)
 2. **Manager**という新しいロールを作成します。  
    ![Power BI Desktop でのロールの作成](media/row-level-security/manager-role-6.png)
@@ -92,7 +87,7 @@ RLS は Power BI Desktop で作成されます。 データセットとレポー
 1. **[ファイル]** -> **[オプションと設定]** -> **[プレビュー機能]** -> **[Enable cross filtering in both directions for DirectQuery (DirectQuery 用に両方向のクロス フィルターを有効にする)]**。
 2. **[ファイル]** -> **[オプションと設定]** -> **[DirectQuery]** -> **[DirectQuery モードで無制限のメジャーを許可する]**。
 
-双方向のクロス フィルターの詳細については、ホワイトペーパー [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional cross-filtering in Analysis Services 2016 and Power BI.docx) をダウンロードしてください。
+双方向のクロス フィルターの詳細については、ホワイトペーパー [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](https://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) をダウンロードしてください。
 
 このホワイトペーパーでは、Power BI Desktop で実行する必要があるすべての作業がまとめられていますが、定義した RLS のルールを Power BI Embedded で機能させるために実行する必要がある作業がもう 1 つあります。 ユーザーはアプリケーションによって認証および承認され、アプリ トークンを使用して、そのユーザーに特定の Power BI Embedded レポートへのアクセス権が付与されます。 Power BI Embedded には、ユーザーが誰であるかに関する具体的な情報はありません。 RLS を機能させるには、アプリケーション トークンの一部として追加のコンテキストを渡す必要があります。
 

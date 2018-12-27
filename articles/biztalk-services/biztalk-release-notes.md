@@ -1,11 +1,11 @@
 ---
-title: "Azure BizTalk Services のリリース ノート | Microsoft Docs"
-description: "Azure BizTalk Services の既知の問題を一覧にまとめています"
+title: Azure BizTalk Services のリリース ノート | Microsoft Docs
+description: Azure BizTalk Services の既知の問題を一覧にまとめています
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: f4906fdc-4cd9-4a57-a007-a88c2e51a18f
 ms.service: biztalk-services
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 0f3662ed386c3a3d2d132a483e7192bddc26de06
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253433"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk Services のリリース ノート
 
@@ -65,11 +66,11 @@ Visual Studio では、ソリューションが正常に "ビルド" されま�
   "<Path to DLL> から "bin\Debug\FileName.dll" にファイルをコピーできません" というエラーが発生します。 ファイル ‘bin\Debug\FileName.dll’ は、別のプロセスで使用されているため、アクセスできません。  
 
 #### <a name="workaround"></a>対処法
-* [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) をインストールしている場合、次の 2 つの選択肢があります。
+* [Visual Studio 2012 Update 3](https://docs.microsoft.com/visualstudio/releasenotes/vs2012-update3-vs) をインストールしている場合、次の 2 つの選択肢があります。
   
   * Visual Studio を再起動します。
   * ソリューションを再起動します。 起動後、ソリューションのビルドのみを実行します。  
-* [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) がインストールされていない場合は、タスク マネージャーを起動し、[プロセス] タブをクリックして、MSBuild.exe プロセスをクリックし、[プロセスの終了] ボタンをクリックします。  
+* [Visual Studio 2012 Update 3](https://docs.microsoft.com/visualstudio/releasenotes/vs2012-update3-vs) がインストールされていない場合は、タスク マネージャーを起動し、[プロセス] タブをクリックして、MSBuild.exe プロセスをクリックし、[プロセスの終了] ボタンをクリックします。  
 
 ### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>印刷不可能な文字が HTTP ヘッダーとして昇格されている場合、ブリッジと BizTalk Services ポータルから BasicHttpRelay エンドポイントにルーティングできない
 メッセージの昇格されたプロパティの一部として印刷不可能な文字を使用している場合は、BasicHttpRelay バインドを使用しているリレー先にそのメッセージをルーティングすることはできません。 また、追跡の一部として使用できる昇格されたプロパティは、BLOB 用には URL にエンコードされますが、送信先用にはエンコードされません。  
@@ -139,7 +140,7 @@ BizTalk アダプター サービス機能に含まれている BizTalk Adapter 
 > 
 
 ### <a name="restarting-the-biztalk-adapter-service-web-site"></a>BizTalk アダプター サービス Web サイトの再起動
-**BizTalk Adapter サービスのランタイム**をインストールすると、**BAService** アプリケーションが含まれた **BizTalk Adapter サービス** Web サイトが IIS に作成されます。 **BAService** アプリケーションでは、オンプレミスのサービス エンドポイントの範囲をクラウドまで拡大するために、リレー バインドを内部で使用しています。 サービスがオンプレミスでホストされている場合、オンプレミス サービスが開始されて初めて、対応するリレー エンドポイントが Service Bus に登録されます。  
+**BizTalk Adapter サービスのランタイム**\*をインストールすると、**BAService** アプリケーションが含まれた **BizTalk Adapter サービス** Web サイトが IIS に作成されます。 **BAService** アプリケーションでは、オンプレミスのサービス エンドポイントの範囲をクラウドまで拡大するために、リレー バインドを内部で使用しています。 サービスがオンプレミスでホストされている場合、オンプレミス サービスが開始されて初めて、対応するリレー エンドポイントが Service Bus に登録されます。  
 
 アプリケーションを停止して開始すると、アプリケーションを自動開始する構成は有効になりません。 そのため、**BAService** が停止した場合は、常に **BizTalk アダプター サービス** Web サイトを再起動する必要があります。 **BAService** アプリケーションは、開始も停止もしないでください。
 
@@ -156,7 +157,7 @@ LOB コンポーネントのアドレスとエンティティ名には特殊文�
 "DateTime 再フォーマット" マップ操作がデザイン画面に追加されて構成されると、[フォーマット] ボックスの一覧がグレー表示される場合があります。これは、コンピューターのディスプレイが **[中 – 125%]** または **[大 – 150%]** に設定されている場合に発生することがあります。 この問題を解決するには、次の手順に従って、ディスプレイを **[小 - 100% (既定)]** に設定します。  
 
 1. **コントロール パネル**を開き、**[デスクトップのカスタマイズ]** をクリックします。
-2. **[ディスプレイ]**をクリックします。
+2. **[ディスプレイ]** をクリックします。
 3. **[小 - 100% (既定)]** をクリックし、**[適用]** をクリックします。
 
 これで、 **[フォーマット]** ボックスの一覧は正常に動作するようになります。
@@ -187,7 +188,7 @@ BizTalk サービス プロジェクトで名前ベースの動作を使用し�
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>SQL Database がオフラインの場合でも、ブリッジがメッセージの処理を続行する
 (デプロイされたアーティファクトやパイプラインなどの実行中の情報が格納されている) Microsoft Azure SQL Database がオフラインになっても、BizTalk Services ブリッジはしばらくの間メッセージの処理を続行します。 これは、BizTalk Services がキャッシュされたアーティファクトとブリッジ構成を使用しているためです。
-SQL Database がオフラインのときにブリッジがメッセージを処理しないようにするには、BizTalk Services PowerShell コマンドレットを使用して、BizTalk サービスを停止または一時停止します。 操作を管理するための Windows PowerShell コマンドレットについては、 [Azure BizTalk Services 管理のサンプル](http://go.microsoft.com/fwlink/p/?LinkID=329019) に関するページを参照してください。  
+SQL Database がオフラインのときにブリッジがメッセージを処理しないようにするには、BizTalk Services PowerShell コマンドレットを使用して、BizTalk サービスを停止または一時停止します。 操作を管理するための Windows PowerShell コマンドレットについては、 [Azure BizTalk Services 管理のサンプル](https://go.microsoft.com/fwlink/p/?LinkID=329019) に関するページを参照してください。  
 
 ### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>ブリッジのカスタム コード コンポーネント内の XML メッセージを読み込むと、余分な BOM 文字が追加される
 ブリッジのカスタム コード内の XML メッセージを読み込むシナリオが該当します。 .NET API System.Text.Encoding.UTF8.GetString(bytes) を使用すると、余分な BOM 文字が出力メッセージの先頭に追加されます。 そのため、出力に余分な BOM 文字が追加されないようにするには、 ```System.IO.StreamReader().ReadToEnd()```を使用する必要があります。

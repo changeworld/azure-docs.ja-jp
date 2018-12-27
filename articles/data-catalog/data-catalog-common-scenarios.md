@@ -1,25 +1,19 @@
 ---
-title: "Azure Data Catalog の一般的なシナリオ | Microsoft Docs"
-description: "高価値のデータ ソースの登録と検出、セルフ サービス ビジネス インテリジェンスの有効化、データ ソースとプロセスに関する既存の組織固有の知識のキャプチャなど、Azure Data Catalog の一般的なシナリオの概要を説明します。"
+title: Azure Data Catalog の一般的なシナリオ
+description: 高価値のデータ ソースの登録と検出、セルフ サービス ビジネス インテリジェンスの有効化、データ ソースとプロセスに関する既存の組織固有の知識のキャプチャなど、Azure Data Catalog の一般的なシナリオの概要を説明します。
 services: data-catalog
-documentationcenter: 
-author: steelanddata
-manager: NA
-editor: 
-tags: 
+author: markingmyname
+ms.author: maghan
 ms.assetid: 60930d78-d2d4-4d5d-9651-bdda50b0da0e
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: 156710ad50349e8a3632e31c7752387d4449a65d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 531c5890cb2164b51d7b383d0b1fdd1b92d9e8eb
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405031"
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Azure Data Catalog の一般的なシナリオ
 この記事では、Azure Data Catalog を使用して組織が既存のデータ ソースからさらなる価値を得ることができる一般的なシナリオを紹介します。

@@ -1,23 +1,21 @@
 ---
-title: "Azure Search の moreLikeThis (プレビュー) | Microsoft Docs"
-description: "Azure Search REST API で公開されている moreLikeThis (プレビュー) 機能の暫定版ドキュメント。"
-services: search
-documentationCenter: na
-authors: mhko
+title: Azure Search の moreLikeThis (プレビュー) - Azure Search
+description: Azure Search REST API で公開されている moreLikeThis (プレビュー) 機能の暫定版ドキュメント。
+author: brjohnstmsft
 manager: jlembicz
-editor: na
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/27/2016
-ms.author: nateko
-ms.openlocfilehash: 20f6a1166d47799f15275cb5b6a9ea4934ae57e2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: brjohnst
+ms.custom: seodec2018
+ms.openlocfilehash: 1b91fbbcc025456b48ac8fcfcb3f286ede893541
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314501"
 ---
 # <a name="morelikethis-in-azure-search-preview"></a>Azure Search の moreLikeThis (プレビュー)
 

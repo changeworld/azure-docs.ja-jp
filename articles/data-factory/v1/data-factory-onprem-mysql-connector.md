@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 685998729e9aa01f60c80735b5f2f4d278769bdb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 34de57188dffb7375889ed9ed89a759238b035ac
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046886"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-onprem-mysql-connector.md)
-> * [バージョン 2 - プレビュー](../connector-mysql.md)
+> * [Version 1](data-factory-onprem-mysql-connector.md)
+> * [バージョン 2 (現在のバージョン)](../connector-mysql.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での MySQL コネクタ](../connector-mysql.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の MySQL コネクタ](../connector-mysql.md)に関するページを参照してください。
 
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの MySQL データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
@@ -42,7 +43,7 @@ MySQL データベースが Azure IaaS 仮想マシン (VM) でホストされ�
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
-Data Management Gateway で MySQL Database に接続するには、[MySQL コネクタ/Net for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (バージョン 6.6.5 以降) を Data Management Gateway と同じシステムにインストールする必要があります。 この 32 ビット ドライバーは 64 ビット Data Management Gateway と互換性があります。 MySQL バージョン 5.1 以降がサポートされています。
+Data Management Gateway で MySQL Database に接続するには、[MySQL コネクタ/Net for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (バージョン 6.6.5 から 6.10.7 まで) を Data Management Gateway と同じシステムにインストールする必要があります。 この 32 ビット ドライバーは 64 ビット Data Management Gateway と互換性があります。 MySQL バージョン 5.1 以降がサポートされています。
 
 > [!TIP]
 > エラー "リモート パーティがトランスポート ストリームを終了したため、認証に失敗しました。" が発生した場合は、MySQL コネクタ/Net をより新しいバージョンにアップグレードすることを検討してください。
@@ -66,7 +67,7 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、MySQL のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティを **OnPremisesMySql** |[はい] |
 | [サーバー] |MySQL サーバーの名前です。 |[はい] |
@@ -82,7 +83,7 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (MySQL データセットを含む) の typeProperties セクションには次のプロパティがあります
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | tableName |リンクされたサービスが参照する MySQL Databases インスタンスのテーブルの名前です。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
 
@@ -93,7 +94,7 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 
 コピー アクティビティの source の種類が **RelationalSource** (MySQL を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **tableName** が指定されている場合) |
 

@@ -1,31 +1,25 @@
 ---
-title: "Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続 | Microsoft Docs"
-description: "Data Lake Tools for Visual Studio をインストールし、それを使用して Azure HDInsight の Hadoop クラスターに接続し、Hive クエリを実行する方法について説明します。"
-keywords: "Hadoop ツール, Hive クエリ, Visual Studio, Visual Studio Hadoop"
-services: HDInsight
-documentationcenter: 
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ce9c572a-1e98-46bf-9581-13a9767f1fa5
+title: Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続
+description: Data Lake Tools for Visual Studio をインストールし、それを使用して Azure HDInsight 上の ApacheHadoop クラスターに接続し、Hive クエリを実行する方法について説明します。
+keywords: Hadoop ツール, Hive クエリ, Visual Studio, Visual Studio Hadoop
+services: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: afd40d75bb9c5fd3170a4da215925244994d7749
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.custom: hdinsightactive, hdiseo17may2017
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.openlocfilehash: 670de3f61047bcc8b168863f5981e41084225ec4
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634670"
 ---
-# <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する
+# <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 
-Data Lake Tools for Visual Studio (Azure Data Lake and Stream Analytics Tools for Visual Studio とも呼ばれます) を使用して [Azure HDInsight](../hdinsight-hadoop-introduction.md) の Hadoop クラスターに接続し、Hive クエリを送信する方法について説明します。 
+Data Lake Tools for Visual Studio (Azure Data Lake and Stream Analytics Tools for Visual Studio とも呼ばれます) を使用して [Azure HDInsight](../hdinsight-hadoop-introduction.md) 上の Apache Hadoop クラスターに接続し、Hive クエリを送信する方法について説明します。 
 
 HDInsight の使用に関する詳細については、[HDInsight の概要](../hdinsight-hadoop-introduction.md)と [HDInsight の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。 
 
@@ -71,7 +65,7 @@ Visual Studio がインストールされていない場合は、[Web Platform I
 Data Lake Tools for Visual Studio を使用して、HDInsight クラスターへの接続、いくつかの基本的な管理操作の実行、および Hive クエリの実行が可能です。
 
 > [!NOTE]
-> 汎用の Hadoop クラスターに接続する方法の詳細については、「[Write and submit Hive queries by using Visual Studio](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)」(Visual Studio を使用した Hive クエリの書き込みと送信) をご覧ください。
+> 汎用の Hadoop クラスターに接続する方法の詳細については、「[Write and submit Hive queries by using Visual Studio](https://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)」(Visual Studio を使用した Hive クエリの書き込みと送信) をご覧ください。
 > 
 > 
 

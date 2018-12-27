@@ -1,20 +1,21 @@
 ---
-title: "Azure Service Fabric CLI を使用した Azure Service Fabric アプリケーションの管理"
-description: "Azure Service Fabric CLI を使用して Azure Service Fabric クラスターにアプリケーションをデプロイまたは Azure Service Fabric クラスターからアプリケーションを削除する方法について説明します。"
+title: Azure Service Fabric CLI (sfctl) を使用した Azure Service Fabric アプリケーションの管理
+description: Azure Service Fabric CLI を使用して Azure Service Fabric クラスターにアプリケーションをデプロイまたは Azure Service Fabric クラスターからアプリケーションを削除する方法について説明します。
 services: service-fabric
 author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
-ms.topic: article
-ms.date: 08/22/2017
+ms.topic: conceptual
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 2d330921b66a1c261298601dad46f00f66659037
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2e71996e22fee34b29139fdf19764c47616beb1d
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492751"
 ---
-# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli"></a>Azure Service Fabric CLI を使用した Azure Service Fabric アプリケーションの管理
+# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLI (sfctl) を使用した Azure Service Fabric アプリケーションの管理
 
 Azure Service Fabric クラスターで実行されているアプリケーションを作成および削除する方法について説明します。
 
@@ -156,7 +157,7 @@ sfctl store delete --content-path app_package_dir_2
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 
-アップグレードでは、指定されているセットによって既存のパラメーターが上書きされます。 必要な場合には、アプリケーション パラメーターを引数としてアップグレード コマンドに渡してください。 アプリケーション パラメーターは JSON オブジェクトとしてエンコードする必要があります。
+アップグレードでは、指定されているセットによって既存のパラメーターがオーバーライドされます。 必要な場合には、アプリケーション パラメーターを引数としてアップグレード コマンドに渡してください。 アプリケーション パラメーターは JSON オブジェクトとしてエンコードする必要があります。
 
 以前指定したパラメーターを取得するには、`sfctl application info` コマンドを使用できます。
 

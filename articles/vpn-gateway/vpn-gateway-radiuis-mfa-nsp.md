@@ -1,25 +1,26 @@
 ---
-title: "Multi-Factor Authentication 用の NPS サーバーを使用した Azure VPN ゲートウェイ RADIUS 認証のセキュリティ保護 | Microsoft Docs"
-description: "Azure ゲートウェイ RADIUS 認証と Multi-Factor Authentication 用の NPS サーバーの統合について説明します。"
+title: Multi-Factor Authentication 用の NPS サーバーを使用した Azure VPN ゲートウェイ RADIUS 認証のセキュリティ保護 | Microsoft Docs
+description: Azure ゲートウェイ RADIUS 認証と Multi-Factor Authentication 用の NPS サーバーの統合について説明します。
 services: vpn-gateway
 documentationcenter: na
 author: ahmadnyasin
 manager: willchen
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/13/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f0d95cc0dabb253a72afdbc1bc518df882c4d861
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 12e2f96e66305370499fbacf9ae6a834a22eb504
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412501"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN ゲートウェイ RADIUS 認証と Multi-Factor Authentication 用の NPS サーバーを統合する 
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 02/14/2018
 
 ## <a name="prerequisite"></a>前提条件
 
-MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD) 内に存在し、それがオンプレミスかクラウド環境から同期されている必要があります。 また、ユーザーが MFA の自動登録プロセスを完了している必要もあります。  詳細については、「[アカウントへの 2 段階認証の設定](../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)」を参照してください。
+MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD) 内に存在し、それがオンプレミスかクラウド環境から同期されている必要があります。 また、ユーザーが MFA の自動登録プロセスを完了している必要もあります。  詳細については、「[アカウントへの 2 段階認証の設定](../active-directory/user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください。
 
 ## <a name="detailed-steps"></a>詳細な手順
 
@@ -50,7 +51,7 @@ MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD)
  
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>手順 2. Azure MFA 用の NPS を構成する
 
-1. NPS サーバーで、[Azure MFA 用の NPS 拡張機能をインストール](../multi-factor-authentication/multi-factor-authentication-nps-extension.md#install-the-nps-extension)します。
+1. NPS サーバーで、[Azure MFA 用の NPS 拡張機能をインストール](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension)します。
 2. NPS コンソールを開き、**[RADIUS Clients]\(RADIUS クライアント\)** を右クリックして、**[新規]** を選択します。 次の設定を指定して、RADIUS クライアントを作成します。
 
     - **[フレンドリ名]**: 任意の名前を入力します。
@@ -80,5 +81,5 @@ MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD)
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
-- [Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](../multi-factor-authentication/multi-factor-authentication-nps-extension.md)
+- [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
+- [Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](../active-directory/authentication/howto-mfa-nps-extension.md)

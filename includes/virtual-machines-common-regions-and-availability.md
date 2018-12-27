@@ -2,17 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-machines
-author: iainfoulds
+author: zr-msft
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: zarhoads
 ms.custom: include file
-ms.openlocfilehash: a6b75b3804e7736fe5203caecb8c6badcfbf9ab4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 231dcee1a9b330b2f8721283c39c71002a75fcac
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49476355"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Azure の仮想マシンのリージョンと可用性について
 Azure は、世界中の複数のデータセンターで動作しています。 これらのデータセンターは、地理的なリージョンにグループ化されていて、アプリケーションの作成場所を選択するときの柔軟性を与えています。 Azure で仮想マシン (VM) がどこで、どのように運用されているかを理解するのは重要なことです。また、パフォーマンス、可用性、冗長性を最大化するためのオプションとしてどのようなものがあるかを知っておくことにも、大きな意義があります。 この記事では、可用性と冗長性に関する Azure の各種機能の概要を紹介します。
@@ -23,7 +24,7 @@ Azure のリソースは、"米国西部"、"北ヨーロッパ"、"東南アジ
 ## <a name="special-azure-regions"></a>特殊な Azure リージョン
 Azure には、コンプライアンスまたは法的な目的に合致したアプリケーションを構築する際に使用できる特別なリージョンがいくつかあります。 特殊なリージョンは次のとおりです。
 
-* **米国政府バージニア**および**米国政府アイオワ**
+* **米国政府バージニア**および **US Gov アイオワ**
   * 物理的および論理的にネットワークが分離された Azure インスタンス。米国の政府機関やパートナー (選別された米国の担当者が運営する) 向け。 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP)、[DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA) などのその他のコンプライアンス証明書が含まれます。 詳細については [Azure Government](https://azure.microsoft.com/features/gov/) に関するページをご覧ください。
 * **中国東部**および**中国北部**
   * これらのリージョンは、Microsoft と 21Vianet 間の特異なパートナーシップを通じてご利用いただけます。この契約により、Microsoft はデータ センターを直接管理しません。 詳細については、[Microsoft Azure の中国語ページ](http://www.windowsazure.cn/)をご覧ください。
@@ -48,7 +49,7 @@ Azure には、コンプライアンスまたは法的な目的に合致した�
 リージョンのペアの完全な一覧は [こちら](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)で確認できます。
 
 ## <a name="feature-availability"></a>使用可能な機能
-特定の VM サイズやストレージ タイプなど、一部のサービスや VM 機能は特定のリージョンのみでご利用いただけます。 [Azure Active Directory](../articles/active-directory/active-directory-whatis.md)、[Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md)、[Azure DNS](../articles/dns/dns-overview.md) など、特定のリージョンを選択する必要がないグローバル Azure サービスもあります。 アプリケーション環境の設計をスムーズにするために、 [各リージョンの Azure サービスの可用性のページ](https://azure.microsoft.com/regions/#services)をご確認ください。 [各リージョンでサポートされている VM のサイズと制限をプログラムでクエリする](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md)こともできます。
+特定の VM サイズやストレージ タイプなど、一部のサービスや VM 機能は特定のリージョンのみでご利用いただけます。 [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md)、[Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md)、[Azure DNS](../articles/dns/dns-overview.md) など、特定のリージョンを選択する必要がないグローバル Azure サービスもあります。 アプリケーション環境の設計をスムーズにするために、 [各リージョンの Azure サービスの可用性のページ](https://azure.microsoft.com/regions/#services)をご確認ください。 [各リージョンでサポートされている VM のサイズと制限をプログラムでクエリする](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md)こともできます。
 
 ## <a name="storage-availability"></a>ストレージの可用性
 Azure のリージョンと Geo を理解することは、使用可能なストレージのレプリケーション オプションを検討する際に重要になります。 ストレージのタイプに応じて、さまざまなレプリケーションのオプションがあります。
@@ -75,7 +76,7 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 | 1 次拠点と 2 次拠点からデータの読み取りが可能 |いいえ  |いいえ  |いいえ  |[はい] |
 | 個別のノードで保持されるデータ コピーの数 |3 |3 |6 |6 |
 
-詳細については、 [Azure ストレージのレプリケーション オプションのページ](../articles/storage/common/storage-redundancy.md)を参照してください。 管理ディスクについて詳しくは、「[Azure Managed Disks overview](../articles/virtual-machines/windows/managed-disks-overview.md)」(Azure Managed Disks の概要) をご覧ください。
+詳細については、 [Azure ストレージのレプリケーション オプションのページ](../articles/storage/common/storage-redundancy.md)を参照してください。 マネージド ディスクの詳細については、「[Azure Managed Disks の概要](../articles/virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
 
 ### <a name="storage-costs"></a>ストレージのコスト
 価格は、ストレージの種類と選択した可用性によって異なります。
@@ -101,12 +102,16 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 ### <a name="update-domains"></a>更新ドメイン
 更新ドメインは、メンテナンスや再起動が同時に行われる可能性のある、基盤となるハードウェアの論理グループです。 可用性セット内に作成した VM は、Azure プラットフォームにより自動で複数の更新ドメインに分散して配布されます。 これにより、Azure プラットフォームに定期メンテナンスを実施している間もアプリケーションのインスタンスが常に 1 つは稼働している状態を確保することができます。 計画的メンテナンス中は、更新ドメインの再起動が順番に処理されない場合がありますが、一度に再起動される更新ドメインは 1 つのみです。
 
+![可用性セット](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+
 ### <a name="managed-disk-fault-domains"></a>管理ディスクの障害ドメイン
-[Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) を使用している VM の場合、VM は管理対象の可用性セットを使用している場合に管理ディスクの障害ドメインに合わせて配置されます。 この配置により、VM に接続されたすべての管理ディスクは必ず同じ管理ディスクの障害ドメイン内にあります。 管理対象の可用性セットには、管理ディスクを持つ VM だけを作成できます。 管理ディスクの障害ドメインの数はリージョンによって異なり、管理ディスクの障害ドメインはリージョンあたり 2 つまたは 3 つになります。 [Linux VM](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) または [Windows VM](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) のこれらの管理対象ディスク障害ドメインの詳細を参照してください。
+[Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) を使用している VM の場合、VM は管理対象の可用性セットを使用している場合にマネージド ディスクの障害ドメインに合わせて配置されます。 この配置により、VM に接続されたすべてのマネージド ディスクは必ず同じマネージド ディスクの障害ドメイン内にあります。 管理対象の可用性セットには、マネージド ディスクを持つ VM だけを作成できます。 マネージド ディスクの障害ドメインの数はリージョンによって異なり、マネージド ディスクの障害ドメインはリージョンあたり 2 つまたは 3 つになります。 [Linux VM](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) または [Windows VM](../articles/virtual-machines/windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) のこれらのマネージド ディスク障害ドメインの詳細を参照してください。
+
+![可用性セットの管理](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 ## <a name="availability-zones"></a>可用性ゾーン
 
-[可用性ゾーン](../articles/availability-zones/az-overview.md)は可用性セットに代わる機能で、よりきめ細やかな制御により VM 上のアプリケーションとデータの可用性を維持します。 可用性ゾーンとは、Azure リージョンの物理的に独立したゾーンのことです。 サポートされている Azure リージョンごとに 3 つの可用性ゾーンがあります。 可用性ゾーンはそれぞれ異なる供給源、ネットワーク、および冷却装置を持ち、Azure リージョン内で他の可用性ゾーンから論理的に分離されています。 複数のゾーンにレプリケートされた VM を使用するソリューションを構築することで、1 つのデータセンターで障害が発生してもアプリケーションとデータを保護することができます。 1 つのゾーンが侵害された場合、レプリケートされたアプリとデータが別のゾーンですぐに利用可能になります。 
+[可用性ゾーン](../articles/availability-zones/az-overview.md)は可用性セットに代わる機能で、よりきめ細やかな制御により VM 上のアプリケーションとデータの可用性を維持します。 可用性ゾーンとは、Azure リージョンの物理的に独立したゾーンのことです。 サポートされている Azure リージョンごとに 3 つの可用性ゾーンがあります。 可用性ゾーンはそれぞれ異なる電源、ネットワーク、および冷却装置を持ちます。 複数のゾーンにレプリケートされた VM を使用するソリューションを構築することで、1 つのデータセンターで障害が発生してもアプリケーションとデータを保護することができます。 1 つのゾーンが侵害された場合、レプリケートされたアプリとデータが別のゾーンですぐに利用可能になります。 
 
 ![可用性ゾーン](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 

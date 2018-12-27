@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array の Web UI による管理 | Microsoft Docs"
-description: "StorSimple Virtual Array の Web UI を使用して、基本的なデバイス管理タスクを実行する方法について説明します。"
+title: StorSimple Virtual Array の Web UI による管理 | Microsoft Docs
+description: StorSimple Virtual Array の Web UI を使用して、基本的なデバイス管理タスクを実行する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ea65b4c7-a478-43e6-83df-1d9ea62916a6
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109960"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Web UI を使用した StorSimple Virtual Array の管理
 ![セットアップ プロセス フロー](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -40,7 +41,7 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 
 #### <a name="to-get-the-service-data-encryption-key"></a>サービス データ暗号化キーを取得するには
 1. ローカル Web UI に接続します。 **[構成]** > **[クラウド設定]** に移動します。
-2. ページの下部にある **[サービス データ暗号化キーの取得]**をクリックします。 キーが表示されます。 このキーをコピーして保存します。
+2. ページの下部にある **[サービス データ暗号化キーの取得]** をクリックします。 キーが表示されます。 このキーをコピーして保存します。
    
     ![サービス データ暗号化キーの取得 1](./media/storsimple-ova-web-ui-admin/image27.png)
 
@@ -51,7 +52,7 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 1. ローカル Web UI で、**[トラブルシューティング]** > **[診断テスト]** に移動します。
    
     ![診断の実行 1](./media/storsimple-ova-web-ui-admin/image29.png)
-2. ページの下部にある **[診断テストの実行]**をクリックします。 これにより、ネットワーク、デバイス、Web プロキシ、時刻、またはクラウドの設定で発生する可能性のある問題を診断するためのテストが開始されます。 デバイスでテストを実行中であることが通知されます。
+2. ページの下部にある **[診断テストの実行]** をクリックします。 これにより、ネットワーク、デバイス、Web プロキシ、時刻、またはクラウドの設定で発生する可能性のある問題を診断するためのテストが開始されます。 デバイスでテストを実行中であることが通知されます。
 3. テストが完了すると、結果が表示されます。 次の例は、診断テストの結果を示しています。 このデバイスでは Web プロキシ設定が構成されていないため、Web プロキシのテストは実行されていません。 ネットワーク設定、DNS サーバー、および時刻設定を調べる他のテストはすべて正常に完了しています。
    
     ![診断の実行 2](./media/storsimple-ova-web-ui-admin/image30.png)
@@ -63,14 +64,14 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 1. ローカル Web UI で、**[トラブルシューティング]** > **[システム ログ]** に移動します。
    
     ![ログ パッケージの生成 1](./media/storsimple-ova-web-ui-admin/image31.png)
-2. ページの下部にある **[ログ パッケージの作成]**をクリックします。 システム ログのパッケージが作成されます。 作成には数分かかります。
+2. ページの下部にある **[ログ パッケージの作成]** をクリックします。 システム ログのパッケージが作成されます。 作成には数分かかります。
    
     ![ログ パッケージの生成 2](./media/storsimple-ova-web-ui-admin/image32.png)
    
     パッケージが正常に作成されると通知されます。ページが更新され、パッケージの作成日時が示されます。
    
     ![ログ パッケージの生成 3](./media/storsimple-ova-web-ui-admin/image33.png)
-3. **[ログ パッケージのダウンロード]**をクリックします。 圧縮されたパッケージがシステムにダウンロードされます。
+3. **[ログ パッケージのダウンロード]** をクリックします。 圧縮されたパッケージがシステムにダウンロードされます。
    
     ![ログ パッケージの生成 4](./media/storsimple-ova-web-ui-admin/image34.png)
 4. ダウンロードしたログ パッケージを解凍すると、システム ログ ファイルを表示できます。
@@ -80,7 +81,7 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 
 #### <a name="to-shut-down-your-virtual-device"></a>仮想デバイスをシャットダウンするには
 1. ローカル Web UI で、**[メンテナンス]** > **[電源設定]** に移動します。
-2. ページの下部にある **[シャット ダウン]**をクリックします。
+2. ページの下部にある **[シャット ダウン]** をクリックします。
    
     ![デバイスのシャットダウン 1](./media/storsimple-ova-web-ui-admin/image36.png)
 3. デバイスをシャットダウンすると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。 チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png)に移動します。
@@ -95,7 +96,7 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 
 #### <a name="to-restart-your-virtual-device"></a>仮想デバイスを再起動するには
 1. ローカル Web UI で、**[メンテナンス]** > **[電源設定]** に移動します。
-2. ページの下部にある **[再起動]**をクリックします。
+2. ページの下部にある **[再起動]** をクリックします。
    
     ![デバイスの再起動](./media/storsimple-ova-web-ui-admin/image36.png)
 3. デバイスを再起動すると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。 チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png)に移動します。

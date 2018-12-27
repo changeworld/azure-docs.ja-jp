@@ -3,27 +3,28 @@ title: Spark を使用した高度なデータ探索とモデリング | Microso
 description: HDInsight Spark を使用して、データ探索を実行し、二項分類モデルと回帰モデルのトレーニングを行います。クロス検証とハイパーパラメーターの最適化を使用しています。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
-manager: jhubbard
+author: deguhath
+manager: cgronlun
 editor: cgronlun
 ms.assetid: f90d9a80-4eaf-437b-a914-23514390cd60
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: bradsev
-ms.openlocfilehash: 3d4cd29596b14e6de07fdf06191f7d69c2d39641
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: deguhath
+ms.openlocfilehash: 3763b7df8830d2555afd9beb492cb6878505afa4
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566501"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Spark を使用した高度なデータ探索とモデリング
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
-このチュートリアルでは、HDInsight Spark を使用して、データ探索を実行し、二項分類モデルと回帰モデルのトレーニングを行います。2013 年の NYC タクシーの乗車と料金に関するデータセットのサンプルに対し、クロス検証とハイパーパラメーターの最適化を使用しています。 チュートリアルでは、エンド ツー エンドの[データ サイエンス プロセス](http://aka.ms/datascienceprocess)の手順について説明します。処理には HDInsight Spark クラスターを使用し、Azure BLOB にデータとモデルを保存します。 プロセスでは、Azure Storage BLOB のデータを探索し、視覚化した後、予測モデルを構築するためのデータを準備します。 ソリューションのコーディングと関連するプロットの表示には、Python が使用されています。 これらのモデルは、二項分類および回帰モデリング タスクを実行する Spark MLlib キットを使用して構築されます。 
+このチュートリアルでは、HDInsight Spark を使用して、データ探索を実行し、二項分類モデルと回帰モデルのトレーニングを行います。2013 年の NYC タクシーの乗車と料金に関するデータセットのサンプルに対し、クロス検証とハイパーパラメーターの最適化を使用しています。 チュートリアルでは、エンド ツー エンドの[データ サイエンス プロセス](https://aka.ms/datascienceprocess)の手順について説明します。処理には HDInsight Spark クラスターを使用し、Azure BLOB にデータとモデルを保存します。 プロセスでは、Azure Storage BLOB のデータを探索し、視覚化した後、予測モデルを構築するためのデータを準備します。 ソリューションのコーディングと関連するプロットの表示には、Python が使用されています。 これらのモデルは、二項分類および回帰モデリング タスクを実行する Spark MLlib キットを使用して構築されます。 
 
 * **二項分類** タスクでは、乗車でチップが支払われるかどうかを予測します。 
 * **回帰** タスクでは、チップの他の特徴に基づいてチップの金額を予測します。 
@@ -1252,7 +1253,7 @@ Jupyter サーバーを使用してデータをプロットするコードを次
     # cvModel uses the best model found (lrModel).
     predictionAndLabels = cv_model.transform(testDataFrame)
 
-    # CONVERT TO DF AND SAVE REGISER DF AS TABLE
+    # CONVERT TO DF AND SAVE REGISTER DF AS TABLE
     predictionAndLabels.registerTempTable("tmp_results");
 
     # PRINT ELAPSED TIME
@@ -1413,7 +1414,7 @@ R-sqr = 0.740751197012
 
 PythonRDD[122] at RDD at PythonRDD.scala: 43
 
-**consumption notebook で使用するモデル ファイルのパスを出力します。 **独立したデータセットの取り込みとスコア付けを行うには、これらのファイル名をコピーして "Consumption notebook" に貼り付ける必要があります。
+\*\*consumption notebook で使用するモデル ファイルのパスを出力します。 \*\*独立したデータセットの取り込みとスコア付けを行うには、これらのファイル名をコピーして "Consumption notebook" に貼り付ける必要があります。
 
     # PRINT MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";

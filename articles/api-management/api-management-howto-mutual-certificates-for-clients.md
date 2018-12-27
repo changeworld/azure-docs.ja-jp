@@ -1,11 +1,11 @@
 ---
-title: "API Management でのクライアント証明書認証を使用した API の保護 - Azure API Management | Microsoft Docs"
-description: "クライアント証明書を使用して API へのアクセスを保護する方法の詳細"
+title: API Management でのクライアント証明書認証を使用した API の保護 - Azure API Management | Microsoft Docs
+description: クライアント証明書を使用して API へのアクセスを保護する方法の詳細
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26406745"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management でクライアント証明書認証を使用して API を保護する方法
 

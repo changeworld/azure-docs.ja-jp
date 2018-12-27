@@ -1,23 +1,27 @@
 ---
-title: Azure Container Service チュートリアル - Kubernetes の監視
+title: (非推奨) Azure Container Service チュートリアル - Kubernetes の監視
 description: Azure Container Service チュートリアル - Log Analytics を使用した Kubernetes の監視
 services: container-service
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 04/05/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5b11c3cdf3eb457ade111d0908a2dac867ac1278
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 6f95aa701228730682c0122dc1fd46d8a2537ce1
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001608"
 ---
-# <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Log Analytics を使用した Kubernetes クラスターの監視
+# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>(非推奨) Log Analytics を使用した Kubernetes クラスターの監視
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[コンテナーに対する Azure Monitor (プレビュー) の概要](../../azure-monitor/insights/container-insights-overview.md)」を参照してください。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Kubernetes クラスターとコンテナーの監視は重要なことであり、複数のアプリを含む大規模な運用クラスターを管理するときは特に重要です。
 
@@ -27,8 +31,8 @@ Microsoft または他のプロバイダーから提供されている複数の 
 
 > [!div class="checklist"]
 > * Log Analytics ワークスペースの設定を取得する
-> * Kubernetes ノード上に OMS エージェントを設定する
-> * OMS ポータルまたは Azure Portal で監視情報にアクセスする
+> * Kubernetes ノード上に Log Analytics エージェントを設定する
+> * Log Analytics ポータルまたは Azure Portal で監視情報にアクセスする
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -38,7 +42,7 @@ Microsoft または他のプロバイダーから提供されている複数の 
 
 ## <a name="get-workspace-settings"></a>ワークスペースの設定を取得する
 
-[OMS ポータル](https://mms.microsoft.com)にアクセスできる場合は、**[設定]** > **[接続されたソース]** > **[Linux サーバー]** に移動します。 そこでは、"*ワークスペース ID*" とプライマリまたはセカンダリの "*ワークスペース キー*" がわかります。 クラスターに OMS エージェントを設定するときに必要になるので、これらの値を書き留めます。
+[Log Analytics ポータル](https://mms.microsoft.com)にアクセスできる場合は、**[設定]** > **[接続されたソース]** > **[Linux サーバー]** に移動します。 そこでは、"*ワークスペース ID*" とプライマリまたはセカンダリの "*ワークスペース キー*" がわかります。 クラスターに Log Analytics エージェントを設定するときに必要になるので、これらの値を書き留めます。
 
 ## <a name="create-kubernetes-secret"></a>Kubernetes シークレットを作成する
 
@@ -48,7 +52,7 @@ Microsoft または他のプロバイダーから提供されている複数の 
 kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
 ```
 
-## <a name="set-up-oms-agents"></a>OMS エージェントを設定する
+## <a name="set-up-log-analytics-agents"></a>Log Analytics エージェントを設定する
 
 次の Kubernetes マニフェスト ファイルを使用して、Kubernetes クラスター上にコンテナー監視エージェントを構成できます。 このファイルでは、各クラスター ノードで単一の同じポッドを実行する Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) が作成されます。
 
@@ -142,17 +146,17 @@ omsagent   3         3         3         0            3           <none>        
 
 ## <a name="access-monitoring-data"></a>監視データにアクセスする
 
-OMS ポータルまたは Azure Portal で[コンテナー ソリューション](../../log-analytics/log-analytics-containers.md)を使ってコンテナー監視データを表示および分析します。
+Log Analytics ポータルまたは Azure Portal で[コンテナー ソリューション](../../azure-monitor/insights/containers.md)を使ってコンテナー監視データを表示および分析します。
 
-[OMS ポータル](https://mms.microsoft.com)を使ってコンテナー ソリューションをインストールするには、**[ソリューション ギャラリー]** に移動します。 そこで、**コンテナー ソリューション**を追加します。 または、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview) からコンテナー ソリューションを追加します。
+[Log Analytics ポータル](https://mms.microsoft.com)を使ってコンテナー ソリューションをインストールするには、**[ソリューション ギャラリー]** に移動します。 そこで、**コンテナー ソリューション**を追加します。 または、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview) からコンテナー ソリューションを追加します。
 
-OMS ポータルのダッシュボードで、**[コンテナー]** 概要タイルを探します。 タイルをクリックすると、コンテナー イベント、エラー、状態、イメージ インベントリ、CPU とメモリの使用量などの詳細が表示されます。 さらに詳しい情報を見るには、いずれかのタイルで行をクリックするか、[ログ検索](../../log-analytics/log-analytics-log-searches.md)を実行します。
+Log Analytics ポータルのダッシュボードで、**[コンテナー]** 概要タイルを探します。 タイルをクリックすると、コンテナー イベント、エラー、状態、イメージ インベントリ、CPU とメモリの使用量などの詳細が表示されます。 さらに詳しい情報を見るには、いずれかのタイルで行をクリックするか、[ログ検索](../../log-analytics/log-analytics-log-searches.md)を実行します。
 
-![OMS ポータルのコンテナー ダッシュボード](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
+![Azure portal のコンテナー ダッシュボード](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
 同様に、Azure Portal では、**[Log Analytics]** に移動してワークスペースを選択します。 **[コンテナー]** 概要タイルを表示するには、**[ソリューション]** > **[コンテナー]** の順にクリックします。 詳細を表示するには、タイルをクリックします。
 
-監視データの照会と分析の詳しいガイダンスについては、[Azure Log Analytics のドキュメント](../../log-analytics/index.yml)をご覧ください。
+監視データの照会と分析の詳しいガイダンスについては、[Azure Log Analytics のドキュメント](../../azure-monitor/log-query/log-query-overview.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -160,8 +164,8 @@ OMS ポータルのダッシュボードで、**[コンテナー]** 概要タイ
 
 > [!div class="checklist"]
 > * Log Analytics ワークスペースの設定を取得する
-> * Kubernetes ノード上に OMS エージェントを設定する
-> * OMS ポータルまたは Azure Portal で監視情報にアクセスする
+> * Kubernetes ノード上に Log Analytics エージェントを設定する
+> * Log Analytics ポータルまたは Azure Portal で監視情報にアクセスする
 
 
 Container Service のビルド済みスクリプト サンプルを見るには、次のリンクをクリックしてください。

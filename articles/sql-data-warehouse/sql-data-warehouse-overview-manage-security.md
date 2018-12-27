@@ -1,25 +1,21 @@
 ---
-title: "SQL Data Warehouse でのデータベースの保護 | Microsoft Docs"
-description: "ソリューション開発のための Azure SQL Data Warehouse でのデータベース保護に関するヒント。"
+title: SQL Data Warehouse でのデータベースの保護 | Microsoft Docs
+description: ソリューション開発のための Azure SQL Data Warehouse でのデータベース保護に関するヒント。
 services: sql-data-warehouse
-documentationcenter: NA
-author: ronortloff
-manager: jhubbard
-editor: 
-ms.assetid: 8fa2f5ca-4cf5-4418-99a2-4dc745799850
+author: kavithaj
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: security
-ms.date: 12/14/2017
-ms.author: rortloff;barbkess
-ms.openlocfilehash: efc0ca9b156bd69a39197d40083830c6c7e77647
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: 8abb40b0c1a5b9cd3f8d1e23124090c00e8cfadb
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302541"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>SQL Data Warehouse でのデータベース保護
 > [!div class="op_single_selector"]
@@ -41,7 +37,7 @@ SQL Data Warehouse では、サーバーレベルのファイアウォール規�
 
 SQL Data Warehouse への接続は、既定で暗号化されます。  暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL Data Warehouse では現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory による認証がサポートされています。 
 
 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを SQL Server 認証を通して認証できます。
@@ -65,7 +61,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
 ログインの作成や新しいデータベースの作成などの追加の操作を実行するアクセス許可をユーザーに与えるには、master データベース内の `Loginmanager` ロールと `dbmanager` ロールにユーザーを割り当てます。 これらの追加のロールと SQL Database の認証の詳細については、[Azure SQL Database におけるデータベースとログインの管理][Managing databases and logins in Azure SQL Database]に関する記事をご覧ください。  詳細については、[Azure Active Directory 認証を使用した SQL Data Warehouse への接続][Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication]に関する記事をご覧ください。
 
-## <a name="authorization"></a>承認
+## <a name="authorization"></a>Authorization
 承認とは、Azure SQL Data Warehouse データベース内で実行できる操作を指します。 承認の特権は、ロール メンバーシップとアクセス許可によって指定されます。 ベスト プラクティスとして、必要最低限の特権をユーザーに付与することをお勧めします。 ロールを管理するには、次のストアド プロシージャを使用します。
 
 ```sql

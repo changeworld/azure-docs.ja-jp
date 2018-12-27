@@ -1,26 +1,20 @@
 ---
-title: "クラスター サイズのスケーリング - Azure HDInsight | Microsoft Docs"
-description: "ワークロードに合わせて HDInsight クラスターをスケーリングします。"
+title: クラスター サイズのスケーリング - Azure HDInsight
+description: ワークロードに合わせて HDInsight クラスターをスケーリングします。
 services: hdinsight
-documentationcenter: 
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 7e9ee660c07d6265e55e94cf79ed13334fcb3d16
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 93eb6fb0da86909dfc880db2a9bb2331abe4418a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948129"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight クラスターのスケーリング
 
@@ -34,11 +28,13 @@ HDInsight では、クラスター内のワーカー ノードの数をスケー
     Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
     ```
     
-* [Azure CLI](hdinsight-administer-use-command-line.md) でクラスターをスケーリングするには:
+* [Azure クラシック CLI](hdinsight-administer-use-command-line.md) でクラスターをスケーリングするには:
 
     ```
     azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
     ```
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
     
 * [Azure Portal](https://portal.azure.com) でクラスターをスケーリングするには、HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスターのスケール設定]** を選択し、[クラスターのスケール設定] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。
 

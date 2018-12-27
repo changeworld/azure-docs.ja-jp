@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa5ca52f399f74ac6b3eae5c6918442292f87955
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f68e1077ebc26245b25eae3b0310db74b6d1357e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046447"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-azure-search-connector.md)
-> * [バージョン 2 - プレビュー](../connector-azure-search.md)
+> * [Version 1](data-factory-azure-search-connector.md)
+> * [バージョン 2 (最新バージョン)](../connector-azure-search.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Azure Search コネクタ](../connector-azure-search.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[V2 の Azure Search コネクタ](../connector-azure-search.md)に関するページをご覧ください。
 
 この記事では、コピー アクティビティを使用して、サポートされているソース データ ストアから Azure Search インデックスにデータをプッシュする方法について説明します。 サポートされているソース データ ストアについては、[サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表のソースの列を参照してください。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
@@ -56,9 +57,9 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 次の表は、Azure Search のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| 型 | type プロパティを **AzureSearch** に設定する必要があります。 | [はい] |
+| type | type プロパティを **AzureSearch** に設定する必要があります。 | [はい] |
 | URL | Azure Search サービスの URL。 | [はい] |
 | key | Azure Search サービスの管理者キー。 | [はい] |
 
@@ -66,9 +67,9 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 データセットの定義に使用できるセクションとプロパティの完全な一覧については、 [データセットの作成](data-factory-create-datasets.md) に関する記事をご覧ください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型でほぼ同じです。 **typeProperties** セクションは、データセットの型ごとに異なります。 **AzureSearchIndex** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| 型 | type プロパティを **AzureSearchIndex** に設定する必要があります。| [はい] |
+| type | type プロパティを **AzureSearchIndex** に設定する必要があります。| [はい] |
 | indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | [はい] |
 
 
@@ -77,7 +78,7 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 コピー アクティビティで、シンクの種類が **AzureSearchIndexSink** である場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 詳細については、「[WriteBehavior プロパティ](#writebehavior-property)」を参照してください。| マージ (既定値)<br/>アップロード| いいえ  |
 | WriteBatchSize | バッファー サイズが writeBatchSize に達したときに、Azure Search インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。 | 1 ～ 1,000。 既定値は 1,000 です。 | いいえ  |

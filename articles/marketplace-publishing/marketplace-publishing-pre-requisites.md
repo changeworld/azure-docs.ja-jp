@@ -3,8 +3,8 @@ title: Azure Marketplace 向けプランを作成するための技術以外の�
 description: 他のユーザーが購入できるプランを作成して、Azure Marketplace にデプロイするための要件を理解します。
 services: marketplace-publishing
 documentationcenter: ''
-author: msmbaldwin
-manager: mbaldwin
+author: HannibalSII
+manager: hascipio
 editor: ''
 ms.assetid: 3dae463b-8f48-4f52-8fa8-4e3975f09f43
 ms.service: marketplace
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
-ms.author: mbaldwin
-ms.openlocfilehash: 5c30e62bf345843fe83b3f17b728e1a937d19ce3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: hascipio
+ms.openlocfilehash: ef19380372354b8f34343f9f94ebf6b384996f14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261556"
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Azure Marketplace 向けプラン作成の一般的な前提条件
 プランの作成プロセスに必要な、ビジネス処理中心の一般的な前提条件を理解します。
@@ -58,18 +59,18 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
     ![図](media/marketplace-publishing-pre-requisites/imgDeleteAdmin_03.png)
 
 > [!IMPORTANT]
-> 無料プランのみを発行する予定 (またはライセンス持ち込み) であれば、会社の税金や銀行情報を入力する必要はありません。
+> 無料オファーのみを発行する予定 (またはライセンス持ち込み) であれば、会社の税金や銀行情報を入力する必要はありません。
 > 
 > プラン作成を開始するには、会社の登録を完了する必要があります。 ただし、会社が Microsoft デベロッパー アカウントで税金と銀行情報を入力している途中でも、開発者は [発行ポータル](https://publish.windowsazure.com)で仮想マシン イメージの作成を開始し、それらのイメージの認定取得、および Azure ステージング環境でのテストを実行できます。 販売者アカウントの承認が必要になるのは、プランを Azure Marketplace に発行する最後の手順のみです。
 > 
 > 
 
 ## <a name="acquire-an-azure-pay-as-you-go-subscription"></a>Azure の "従量課金制" サブスクリプションを取得する
-これは、VM イメージを作成して、それらのイメージを [Azure Marketplace](https://azure.microsoft.com/marketplace/) に渡すために使用するサブスクリプションです。 既存のサブスクリプションがない場合は、https://account.windowsazure.com/signup?offer=ms-azr-0003p でサインアップしてください。
+これは、VM イメージを作成して、それらのイメージを [Azure Marketplace](https://azure.microsoft.com/marketplace/) に渡すために使用するサブスクリプションです。 既存のサブスクリプションがない場合は、 https://account.windowsazure.com/signup?offer=ms-azr-0003p でサインアップしてください。
 
 ## <a name="sell-from-countries"></a>「販売元」の国
 > [!WARNING]
-> Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの「販売元」の国からのものである必要があります。 この制限は、支払いおよび課税上の理由から生じます。 「販売元」の国の範囲は今後拡大される予定です。 完全な一覧については、 [Azure Marketplace 参加ポリシー](http://go.microsoft.com/fwlink/?LinkID=526833)のセクション 1b を参照してください。
+> Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの「販売元」の国からのものである必要があります。 この制限は、支払いおよび課税上の理由から生じます。 「販売元」の国の範囲は今後拡大される予定です。 完全な一覧については、 [Azure Marketplace 参加ポリシー](https://go.microsoft.com/fwlink/?LinkID=526833)のセクション 1b を参照してください。
 > 
 > 
 
@@ -80,5 +81,5 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
 * [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md)
 
 ## <a name="see-also"></a>関連項目
-* [Microsoft Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+* [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 

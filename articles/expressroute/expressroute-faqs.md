@@ -1,24 +1,18 @@
 ---
 title: Azure ExpressRoute の FAQ | Microsoft Docs
 description: ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: 09b17bc4-d0b3-4ab0-8c14-eed730e1446e
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.topic: conceptual
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 557c6a75140f399f74d77543de834af086871032
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8cde172207717aca2af5dfa706f7d9c6d290c36e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239204"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -52,7 +46,7 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>同じプライベート ネットワーク接続を、仮想ネットワークや他の Azure サービスに同時に使用できますか。
 
-はい。 ExpressRoute 回線のセットアップが完了すると、1 本の回線で仮想ネットワーク内のサービスや他の Azure サービスに同時にアクセスできるようになります。 仮想ネットワークにはプライベート ピアリング パス経由で接続し、他のサービスにはパブリック ピアリング パス経由で接続します。
+はい。 ExpressRoute 回線のセットアップが完了すると、1 本の回線で仮想ネットワーク内のサービスや他の Azure サービスに同時にアクセスできるようになります。 仮想ネットワークにはプライベート ピアリング パス経由で接続し、他のサービスには Microsoft ピアリング パス経由で接続します。
 
 ### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>ExpressRoute ではサービス レベル アグリーメント (SLA) は提供されますか。
 
@@ -68,30 +62,27 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="public-peering"></a>パブリック ピアリング
 
+>[!NOTE]
+>新しい ExpressRoute 回線では、パブリック ピアリングは無効になっています。 Azure サービスは、Microsoft ピアリングで利用できます。
+>
+
 * Power BI
 * Dynamics 365 for Finance and Operations (旧称 Dynamics AX Online)
 * ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br>
   以下のサービスはサポートされていません。
     * CDN
-    * Visual Studio Team Services のロード テスト
     * Multi-factor Authentication
     * Traffic Manager
 
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
 
-* [Office 365](http://aka.ms/ExpressRouteOffice365)
-* Dynamics 365 Customer Engagement アプリケーション (旧称 CRM Online)
-  * Dynamics 365 for Sales
-  * Dynamics 365 for Customer Service
-  * Dynamics 365 for Field Service
-  * Dynamics 365 for Project Service
-* [ルート フィルター](#route-filters-for-microsoft-peering)を使用して、Microsoft ピアリングで同じパブリック サービスへのアクセスを取得します。
-  * Power BI
-  * Dynamics 365 for Finance and Operations
-  * ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br>
-  以下のサービスはサポートされていません。
+* [Office 365](https://aka.ms/ExpressRouteOffice365)
+* Dynamics 365 
+* Power BI
+* Azure Active Directory
+* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure Global Services コミュニティ)
+* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br>以下のサービスは**サポートされていません**。
     * CDN
-    * Visual Studio Team Services のロード テスト
     * Multi-factor Authentication
     * Traffic Manager
 
@@ -127,7 +118,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>ExpressRoute に接続されている仮想ネットワークで高可用性を確保する方法
 
-別のピアリング場所 (例: Singapore、Singapore2) にある ExpressRoute 回線を仮想ネットワークに接続することで、高可用性を実現できます。 1 つの ExpressRoute サイトがダウンした場合、接続は別の ExpressRoute サイトにフェールオーバーされます。 仮想ネットワークを離れるトラフィックは、既定で Equal Cost Multi-path Routing (ECMP) に基づいてルーティングされます。 接続の重みを使用して、ある回線を別の回線よりも優先することができます。 接続の重みの詳細については、「[ExpressRoute ルーティングの最適化](expressroute-optimize-routing.md)」を参照してください。
+別のピアリング場所 (例: Singapore、Singapore2) にある ExpressRoute 回線を仮想ネットワークに接続することで、高可用性を実現できます。 1 つの ExpressRoute サイトがダウンした場合、接続は別の ExpressRoute サイトにフェールオーバーされます。 仮想ネットワークを離れるトラフィックは、既定で Equal Cost Multi-path Routing (ECMP) に基づいてルーティングされます。 接続の重みを使用して、ある回線を別の回線よりも優先することができます。 詳細については、「[ExpressRoute ルーティングの最適化](expressroute-optimize-routing.md)」を参照してください。
 
 ### <a name="onep2plink"></a>クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を 2 つ注文する必要がありますか。
 
@@ -147,12 +138,12 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 はい。 多くのサービス プロバイダーで ExpressRoute 回線をご利用いただけます。 各 ExpressRoute 回線は、1 つのサービス プロバイダーのみに関連付けられます。 
 
-### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-eg-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>同じ都市圏に 2 つの ExpressRoute のピアリング場所 (例: Singapore と Singapore2) があります。 ExpressRoute 回線を作成するのに、どちらのピアリング場所を選択する必要がありますか。
+### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-for-example-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>同じ都市圏に 2 つの ExpressRoute のピアリング場所 (例: Singapore と Singapore2) があります。 ExpressRoute 回線を作成するのに、どちらのピアリング場所を選択する必要がありますか。
 サービス プロバイダーが両方のサイトで ExpressRoute を提供している場合は、プロバイダーと協力して ExpressRoute をセットアップするサイトを選択できます。 
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>同じ都市圏に複数の ExpressRoute 回線を配置することはできますか。 同じ仮想ネットワークにリンクすることはできますか。
 
-はい。 複数の ExpressRoute 回線を配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 都市圏に複数の ExpressRoute ピアリング場所があり、さまざまな場所で回路が作成されている場合は、同じ仮想ネットワークにそれらをリンクすることができます。 回路が同じピアリング場所で作成されている場合は、同じ仮想ネットワークにそれらをリンクすることはできません。
+はい。 複数の ExpressRoute 回線を配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 都市圏に複数の ExpressRoute ピアリング場所があり、異なる場所で回線が作成されている場合は、同じ仮想ネットワークにそれらをリンクすることができます。 回線が同じピアリング場所で作成されている場合は、同じ仮想ネットワークにそれらをリンクすることはできません。 Azure portal または PowerShell/CLI API における各場所の名前は、1 つのピアリング場所を表します。 たとえば、ピアリング場所として "Singapore" と "Singapore2" を選び、それぞれの場所から同じ仮想ネットワークに回線を接続できます。 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続するにはどうすればいいですか。
 
@@ -198,9 +189,9 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>ExpressRoute 回線に接続されている仮想ネットワークに対するインターネット接続をブロックできますか。
 
-はい。 既定ルート (0.0.0.0/0) をアドバタイズして仮想ネットワーク内にデプロイされた仮想マシンへのインターネット接続をすべてブロックし、すべてのトラフィックが ExpressRoute 回線を経由しないようにルーティングすることができます。
+はい。 既定ルート (0.0.0.0/0) をアドバタイズして仮想ネットワーク内にデプロイされた仮想マシンへのインターネット接続をすべてブロックし、すべてのトラフィックが ExpressRoute 回線を経由するようにルーティングすることができます。
 
-ただし、既定ルートをアドバタイズすると、パブリック ピアリング経由で提供されるサービス (Azure ストレージや SQL DB など) へのトラフィックが強制的にオンプレミスにルーティングされます。 パブリック ピアリング パス経由またはインターネット経由でトラフィックを Azure に返すようにルーターを構成する必要があります。 サービスのサービス エンドポイント (プレビュー) を有効にした場合、サービスへのトラフィックはオンプレミスに強制されません。 トラフィックは Azure のバックボーン ネットワーク内にとどまります。 サービス エンドポイントの詳細については、「[仮想ネットワークのサービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)」を参照してください。
+ただし、既定ルートをアドバタイズすると、Microsoft ピアリング経由で提供されるサービス (Azure ストレージや SQL DB など) へのトラフィックが強制的にオンプレミスにルーティングされます。 Microsoft ピアリング パス経由またはインターネット経由でトラフィックを Azure に返すようにルーターを構成する必要があります。 サービスのサービス エンドポイントを有効にした場合、サービスへのトラフィックはオンプレミスに強制されません。 トラフィックは Azure のバックボーン ネットワーク内にとどまります。 サービス エンドポイントの詳細については、「[仮想ネットワークのサービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)」を参照してください。
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>同じ ExpressRoute 回線に接続されている仮想ネットワークは互いに通信できますか。
 
@@ -208,27 +199,19 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>仮想ネットワーク用のサイト間接続を、ExpressRoute と併用できますか。
 
-はい。 ExpressRoute は、サイト間 VPN と共存できます。
-
-### <a name="can-i-move-a-virtual-network-from-site-to-site--point-to-site-configuration-to-use-expressroute"></a>仮想ネットワークを、サイト間/ポイント対サイト構成から ExpressRoute を使用する構成に移行できますか。
-
-はい。 仮想ネットワーク内に ExpressRoute ゲートウェイを作成する必要があります。 このプロセスに関連して、わずかにダウンタイムが発生します。
+はい。 ExpressRoute は、サイト間 VPN と共存できます。 「[ExpressRoute 接続とサイト間接続の共存を構成する](expressroute-howto-coexist-resource-manager.md)」をご覧ください。
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>仮想ネットワークで ExpressRoute ゲートウェイに関連付けられているパブリック IP アドレスが存在するのはなぜですか。
 
 パブリック IP アドレスは内部管理にのみ使われ、仮想ネットワークのセキュリティを損なうことはありません。
 
-### <a name="what-do-i-need-to-connect-to-azure-storage-over-expressroute"></a>ExpressRoute を経由して Azure Storage に接続するには何が必要ですか。
-
-ExpressRoute 回線を確立し、パブリック ピアリング用のルートを構成する必要があります。
-
 ### <a name="are-there-limits-on-the-number-of-routes-i-can-advertise"></a>アドバタイズできるルートの数に上限はありますか。
 
-はい。 プライベート ピアリング用に最大 4,000 個およびパブリック ピアリングと Microsoft ピアリング用にそれぞれ 200 個のルート プレフィックスを使用できます。 ExpressRoute Premium 機能を有効にすると、プライベート ピアリング用のこの上限を 10,000 ルートに増やすことができます。
+はい。 プライベート ピアリング用に最大 4,000 個、Microsoft ピアリング用に 200 個のルート プレフィックスを使用できます。 ExpressRoute Premium 機能を有効にすると、プライベート ピアリング用のこの上限を 10,000 ルートに増やすことができます。
 
 ### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>BGP セッションを介してアドバタイズできる IP 範囲に制限はありますか。
 
-パブリックと Microsoft のピアリング BGP セッションでは、プライベート プレフィックス (RFC1918) は受け付けられません。
+Microsoft ピアリング BGP セッションでは、プライベート プレフィックス (RFC1918) は受け付けられません。
 
 ### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>BGP の上限を超えるとどうなりますか。
 
@@ -237,18 +220,6 @@ BGP セッションが切断されます。 プレフィックス数が上限未
 ### <a name="what-is-the-expressroute-bgp-hold-time-can-it-be-adjusted"></a>ExpressRoute BGP ホールド時間とは何ですか。 それは調整できますか。
 
 ホールド時間は 180 です。 キープ アライブ メッセージは、60 秒ごとに送信されます。 これらは Microsoft 側の固定設定であり、変更することはできません。 異なる時間を構成できます。この構成に応じて、BGP セッションのパラメーターはネゴシエートされます。
-
-### <a name="after-i-advertise-the-default-route-00000-to-my-virtual-networks-i-cant-activate-windows-running-on-my-azure-vms-how-to-i-fix-this"></a>仮想ネットワークへの既定ルート (0.0.0.0/0) のアドバタイズ後に、Azure Virtual Network で実行する Windows をライセンス認証できません。 どうしたらいいですか。
-
-次の手順を実行して、Azure にライセンス認証要求を認識させることができます。
-
-1. ExpressRoute 回線用にパブリック ピアリングを確立します。
-2. DNS 参照を実行し、 **kms.core.windows.net**
-3. キー管理サービスは、ライセンス認証要求が Azure から送信され、この要求を優先することを認識する必要があります。 以下の 3 つのタスクのいずれかを行います。
-
-   * オンプレミス ネットワークで、手順 2 で取得した IP アドレス宛てのトラフィックをパブリック ピアリング経由で Azure にルーティングする。
-   * NSP プロバイダーに依頼して、トラフィックをパブリック ピアリング経由で Azure に U ターンしてもらう。
-   * 次ホップとしてのインターネットを持つその IP をポイントするユーザー定義ルートを作成し、これをこれらの仮想マシンがあるサブネットに適用します。
 
 ### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>ExpressRoute 回線の帯域幅を変更できますか。
 
@@ -269,18 +240,18 @@ REST API や PowerShell コマンドレットを使用して、ExpressRoute 回�
 ExpressRoute Premium は、次の機能のコレクションです。
 
 * プライベート ピアリング用ルートの上限が 4,000 から 10,000 に増加されたルーティング テーブル。
-* ExpressRoute 回線に接続できる数が増加された VNET (既定は 10)。 詳しくは、「[ExpressRoute の制限](#limits)」の表をご覧ください。
+* ExpressRoute 回線で有効にできる VNet と ExpressRoute Global Reach の接続数の増加 (既定は 10)。 詳しくは、「[ExpressRoute の制限](#limits)」の表をご覧ください。
 * Office 365 や Dynamics 365 への接続。
 * Microsoft のコア ネットワーク経由のグローバル接続。 ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになりました。<br>
     **例:**
 
     *  西ヨーロッパで作成された VNET をシリコン バレーで作成された ExpressRoute 回線に接続できます。 
-    *  パブリック ピアリングで、他の地理的リージョンのプレフィックスがアドバタイズされ、たとえばシリコン バレーの回線から西ヨーロッパの SQL Azure に接続できるようになります。
+    *  Microsoft ピアリングで、他の地理的リージョンのプレフィックスがアドバタイズされ、たとえばシリコン バレーの回線から西ヨーロッパの SQL Azure に接続できるようになります。
 
 
-### <a name="limits"></a>ExpressRoute Premium を有効にすると、どれくらいの VNET を ExpressRoute 回線に接続できますか。
+### <a name="limits"></a>ExpressRoute プレミアムを有効にした場合、ExpressRoute 回路で有効にできる VNet と ExpressRoute Global Reach の接続数はいくつですか。
 
-次の表は、ExpressRoute の制限と、ExpressRoute 回線ごとの VNet の数を示しています。
+次の表に、ExpressRoute の上限と、ExpressRoute 回線ごとの VNet と ExpressRoute Global Reach の数を示します。
 
 [!INCLUDE [ExpressRoute limits](../../includes/expressroute-limits.md)]
 
@@ -304,37 +275,33 @@ ExpressRoute Premium を無効にするには、REST API や PowerShell コマ�
 
 はい。 ExpressRoute Premium 料金は、ExpressRoute 回線の料金と接続プロバイダーに必要な料金に追加する形で適用されます。
 
-## <a name="expressroute-for-office-365-and-dynamics-365"></a>Office 365 および Dynamics 365 向けの ExpressRoute
+## <a name="expressroute-for-office-365"></a>Office 365 向け ExpressRoute
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services-and-dynamics-365"></a>Office 365 サービスおよび Dynamics 365 に接続する ExpressRoute 回線はどのようにして作成しますか。
+### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>Office 365 サービスに接続する ExpressRoute 回線はどのようにして作成しますか。
 
 1. [ExpressRoute の前提条件のページ](expressroute-prerequisites.md)を参照して、要件を満たしていることを確認します。
 2. 接続ニーズが満たされることを確認するには、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関する記事でサービス プロバイダーとサービスの場所の一覧を確認します。
-3. 「 [Office 365 のネットワーク計画とパフォーマンスのチューニング](http://aka.ms/tune/)」を参照して、容量の要件を計画します。
+3. 「 [Office 365 のネットワーク計画とパフォーマンスのチューニング](https://aka.ms/tune/)」を参照して、容量の要件を計画します。
 4. 接続をセットアップするには、「[回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー](expressroute-workflows.md)」に示されている手順に従います。
 
 > [!IMPORTANT]
-> Office 365 サービスおよび Dynamics 365 への接続を構成するときは、ExpressRoute Premium アドオンを有効にしていることを確認します。
+> Office 365 サービスへの接続を構成するときは、ExpressRoute Premium アドオンを有効にしていることを確認します。
 > 
 > 
-
-### <a name="do-i-need-to-enable-azure-public-peering-to-connect-to-office-365-services-and-dynamics-365"></a>Office 365 サービスと Dynamics 365 に接続するには、Azure パブリック ピアリングを有効にする必要がありますか。
-
-いいえ、有効にする必要があるのは Microsoft ピアリングだけです。 Azure AD への認証トラフィックは Microsoft ピアリングを介して送信されます。 
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>既存の ExpressRoute 回線が Office 365 サービスおよび Dynamics 365 への接続をサポートするようにできますか。
 
-はい。 既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。 Office 365 サービスに接続するための十分な容量があり、Premium アドオンを有効にしていることを確認します。 [Office 365 のネットワーク プランニングとパフォーマンス チューニング](http://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。 「 [ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
+はい。 既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。 Office 365 サービスに接続するための十分な容量があり、Premium アドオンを有効にしていることを確認します。 [Office 365 のネットワーク プランニングとパフォーマンス チューニング](https://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。 「 [ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
 
 ### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>ExpressRoute 接続経由でアクセスできる Office 365 のサービスはどれですか。
 
-ExpressRoute でサポートされているサービスの最新の状態の一覧については、「[Office 365 URL および IP アドレス範囲](http://aka.ms/o365endpoints)」を参照してください。
+ExpressRoute でサポートされているサービスの最新の状態の一覧については、「[Office 365 URL および IP アドレス範囲](https://aka.ms/o365endpoints)」を参照してください。
 
-### <a name="how-much-does-expressroute-for-office-365-services-and-dynamics-365-cost"></a>Office 365 サービスおよび Dynamics 365 に対応した ExpressRoute の料金はいくらですか。
+### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Office 365 サービスに対応した ExpressRoute の料金はいくらですか。
 
-Office 365 サービスおよび Dynamics 365 では、Premium アドオンを有効にする必要があります。 料金については、[料金詳細のページ](https://azure.microsoft.com/pricing/details/expressroute/)を参照してください。
+Office 365 サービスでは、Premium アドオンを有効にする必要があります。 料金については、[料金詳細のページ](https://azure.microsoft.com/pricing/details/expressroute/)を参照してください。
 
 ### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>ExpressRoute for Office 365 はどのリージョンでサポートされていますか。
 
@@ -351,10 +318,6 @@ Office 365 サービスおよび Dynamics 365 では、Premium アドオンを�
 
 はい。 Office 365 GCC サービス エンドポイントに、Azure US Government ExpressRoute を通してアクセスすることができます。 ただし、まず、Azure Portal でサポート チケットを開いて、Microsoft にアドバタイズするプレフィックスを提供する必要があります。 サポート チケットが解決された後に、Office 365 GCC サービスへの接続が確立されます。 
 
-### <a name="can-dynamics-365-for-operations-formerly-known-as-dynamics-ax-online-be-accessed-over-an-expressroute-connection"></a>ExpressRoute 接続経由で Dynamics 365 for Operations (旧称 Dynamics AX Online) にアクセスできますか。
-
-はい。 [Dynamics 365 for Operations](https://www.microsoft.com/dynamics365/operations) は、Azure でホストされています。 それに接続するには、ExpressRoute 回線で Azure パブリック ピアリングを有効にします。
-
 ## <a name="route-filters-for-microsoft-peering"></a>Microsoft ピアリングのルート フィルター
 
 ### <a name="i-am-turning-on-microsoft-peering-for-the-first-time-what-routes-will-i-see"></a>初めて Microsoft ピアリングを有効にしています。どのルートが表示されますか。
@@ -369,7 +332,7 @@ Office 365 サービスおよび Dynamics 365 では、Premium アドオンを�
 
 いいえ、Dynamics 365 の承認は不要です。 承認なしでルールを作成し、Dynamics 365 コミュニティを選択できます。
 
-### <a name="i-enabled-microsoft-peering-prior-to-august-1st-2017-how-can-i-take-advantage-of-route-filters"></a>2017 年 8 月 1 日より前に Microsoft ピアリングを有効にしました。どうすればルート フィルターを利用できますか。
+### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>2017 年 8 月 1 日より前に Microsoft ピアリングを有効にしました。どうすればルート フィルターを利用できますか。
 
 既存の回線では、Office 365 と Dynamics 365 のプレフィックスのアドバタイズが継続されます。 同じ Microsoft ピアリング上に Azure パブリック プレフィックスのアドバタイズを追加する場合、ルート フィルターを作成し、アドバタイズが必要なサービス (必要な Office 365 サービス、Dynamics 365 など) を選択し、フィルターを Microsoft ピアリングにアタッチすることができます。 手順については、[Microsoft ピアリングのルート フィルターを構成する](how-to-routefilter-powershell.md)をご覧ください。
 
@@ -377,4 +340,12 @@ Office 365 サービスおよび Dynamics 365 では、Premium アドオンを�
 
 * 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングでアドバタイズされます。
 
-* 2017 年 8 月 1 日以降に構成された ExpressRoute 回路の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 既定ではプレフィックスは表示されません。
+* 2017 年 8 月 1 日以降に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 既定ではプレフィックスは表示されません。
+
+## <a name="expressRouteDirect"></a>ExpressRoute Direct (プレビュー)
+
+[!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
+
+## <a name="globalreach"></a>Global Reach (プレビュー)
+
+[!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]

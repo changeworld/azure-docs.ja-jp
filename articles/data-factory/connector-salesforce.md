@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/26/2018
+ms.topic: conceptual
+ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: e6440bfd3297ee68cd4ff79c8654b5f97cba077e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bc98fc2465c280c41a77823de239a5572c5d27e4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409579"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-salesforce-connector.md)
-> * [バージョン 2 - プレビュー](connector-salesforce.md)
+> * [Version 1](v1/data-factory-salesforce-connector.md)
+> * [現在のバージョン](connector-salesforce.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Salesforce から、または Salesforce にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 Data Factory のバージョン 1 (一般公開版) を使用している場合は、[バージョン 1 での Salesforce コネクタ](v1/data-factory-salesforce-connector.md)に関する記事をご覧ください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -37,6 +35,8 @@ Salesforce から、サポートされている任意のシンク データ ス�
 
 - Salesforce Developer、Professional、Enterprise、または Unlimited エディション。
 - Salesforce 運用環境、サンドボックス、およびカスタム ドメインをコピー先またはコピー元とするデータのコピー。
+
+Salesforce コネクタは、データのコピー元として [v39](https://developer.salesforce.com/docs/atlas.en-us.206.0.api_rest.meta/api_rest/resources_list.htm)、データのコピー先として [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) を使用して、Salesforce REST API 上に構築されています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,9 +61,9 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 Salesforce のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |type プロパティを **Salesforce** に設定する必要があります。 |[はい] |
+| type |type プロパティを **Salesforce** に設定する必要があります。 |[はい] |
 | environmentUrl | Salesforce インスタンスの URL を指定します。 <br> 既定値は `"https://login.salesforce.com"` です。 <br> - サンドボックスからデータをコピーするには、`"https://test.salesforce.com"` を指定します。 <br> - カスタム ドメインからデータをコピーするには、`"https://[domain].my.salesforce.com"`のように指定します。 |いいえ  |
 | username |ユーザー アカウントのユーザー名を指定します。 |[はい] |
 | password |ユーザー アカウントのパスワードを指定します。<br/><br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
@@ -139,9 +139,9 @@ Salesforce のリンクされたサービスでは、次のプロパティがサ
 
 Salesforce をコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを **SalesforceObject** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **SalesforceObject** に設定する必要があります。  | [はい] |
+| type | type プロパティは **SalesforceObject** に設定する必要があります。  | [はい] |
 | objectApiName | データの取得元の Salesforce オブジェクト名。 | ソースの場合はいいえ、シンクの場合ははい |
 
 > [!IMPORTANT]
@@ -170,9 +170,9 @@ Salesforce をコピー元またはコピー先としてデータをコピーす
 >[!NOTE]
 >旧バージョンとの互換性の維持: Salesforce からデータをコピーする際に、以前の "RelationalTable" 型のデータセットを引き続き使用できますが、新しい "SalesforceObject" 型に切り替えることを推奨するメッセージが表示されます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | Salesforce のテーブル名。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
@@ -183,10 +183,10 @@ Salesforce をコピー元またはコピー先としてデータをコピーす
 
 Salesforce からデータをコピーするには、コピー アクティビティのソースの種類を **SalesforceSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは **SalesforceSource** に設定する必要があります。 | [はい] |
-| クエリ |カスタム クエリを使用してデータを読み取ります。 SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリを使用できます。 例: `select * from MyTable__c`。 | いいえ (データセットの "tableName" が指定されている場合) |
+| type | コピー アクティビティのソースの type プロパティは **SalesforceSource** に設定する必要があります。 | [はい] |
+| query |カスタム クエリを使用してデータを読み取ります。 [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリまたは SQL-92 クエリを使用できます。 その他のヒントについては、「[クエリのヒント](#query-tips)」セクションをご覧ください。 クエリが指定されていない場合は、データセット内の "objectApiName"で指定された Salesforce オブジェクトのすべてのデータが取得されます。 | いいえ (データセットの "objectApiName" が指定されている場合) |
 | readBehavior | 既存のレコード、または削除されたものを含むすべてのレコードの、どちらのクエリを行うかを示します。 指定しない場合の既定の動作は前者です。 <br>使用可能な値: **query** (既定値)、**queryAll**.  | いいえ  |
 
 > [!IMPORTANT]
@@ -233,9 +233,9 @@ Salesforce からデータをコピーするには、コピー アクティビ�
 
 Salesforce にデータをコピーするには、コピー アクティビティのシンクの種類を **SalesforceSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのシンクの type プロパティは **SalesforceSink** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのシンクの type プロパティは **SalesforceSink** に設定する必要があります。 | [はい] |
 | writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **Insert** および **Upsert**。 | いいえ (既定値は Insert) |
 | externalIdFieldName | Upsert 操作の外部 ID フィールドの名前。 指定するフィールドは、Salesforce オブジェクトに "External Id Field" として定義されている必要があります。 対応する入力データに NULL 値を持つことはできません。 | "Upsert" の場合ははい |
 | writeBatchSize | 各バッチで Salesforce に書き込まれたデータの行数。 | いいえ (既定値は 5,000) |
@@ -284,17 +284,27 @@ Salesforce にデータをコピーするには、コピー アクティビテ�
 
 ### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>Salesforce のごみ箱から削除済みレコードを取得する
 
-論理的に削除されたレコードを Salesforce のごみ箱から検索するには、クエリで **"IsDeleted = 1"** と指定できます。 例: 
+論理的に削除されたレコードを Salesforce のごみ箱から検索するには、`readBehavior` を `queryAll` と指定できます。 
 
-* 削除されたレコードのみを検索するには、"select * from MyTable__c **where IsDeleted= 1**" と指定します。
-* 既存および削除済みを含むすべてのレコードを検索するには、"select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1**" と指定します。
+### <a name="difference-between-soql-and-sql-query-syntax"></a>SOQL クエリと SQL クエリの構文の違い
+
+Salesforce からデータをコピーするときは、SOQL クエリまたは SQL クエリのいずれかを使用できます。 これら 2 つのクエリでは構文と機能のサポートが異なるので、混在させないでください。 Salesforce でネイティブにサポートされている SOQL クエリを使用することをお勧めします。 次の表に、主な違いを示します。
+
+| 構文 | SOQL モード | SQL モード |
+|:--- |:--- |:--- |
+| 列の選択 | コピーするフィールドをクエリで列挙する必要があります (例: `SELECT field1, filed2 FROM objectname`) | 列の選択に加えて、`SELECT *` がサポートされています。 |
+| 引用符 | フィールド/オブジェクト名を引用符で囲むことはできません。 | フィールド/オブジェクト名を引用符で囲むことができます (例: `SELECT "id" FROM "Account"`) |
+| 日時の形式 |  [こちら](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm)の詳細と次のセクションのサンプルをご覧ください。 | [こちら](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017)の詳細と次のセクションのサンプルをご覧ください。 |
+| ブール値 | `False` および `True` と表されます (例: `SELECT … WHERE IsDeleted=True`)。 | 0 または 1 と表されます (例: `SELECT … WHERE IsDeleted=1`)。 |
+| 列の名前変更 | サポートされていません。 | サポートされています (例: `SELECT a AS b FROM …`)。 |
+| リレーションシップ | サポートされています (例: `Account_vod__r.nvs_Country__c`)。 | サポートされていません。 |
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>DateTime 列で where 句を使用してデータを取得する
 
 SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の違いに注意してください。 例: 
 
 * **SOQL サンプル**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
-* **SQL の例**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}"`
+* **SQL の例**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
 ## <a name="data-type-mapping-for-salesforce"></a>Salesforce のデータ型マッピング
 
@@ -303,19 +313,19 @@ Salesforce からデータをコピーするとき、次の Salesforce のデー
 | Salesforce のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | オート ナンバー |String |
-| チェックボックス |ブール |
-| 通貨 |Double |
+| チェックボックス |Boolean |
+| 通貨 |Decimal |
 | 日付 |Datetime |
 | 日付/時刻 |Datetime |
 | 電子メール |String |
 | ID |String |
 | 参照リレーションシップ |String |
 | 複数選択の候補リスト |String |
-| Number |Double |
-| Percent |Double |
+| Number |Decimal |
+| Percent |Decimal |
 | 電話 |String |
 | 候補リスト |String |
-| テキスト |String |
+| Text |String |
 | テキスト領域 |String |
 | テキスト領域 (ロング) |String |
 | テキスト領域 (リッチ) |String |

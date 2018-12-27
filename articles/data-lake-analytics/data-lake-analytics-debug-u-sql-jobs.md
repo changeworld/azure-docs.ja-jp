@@ -1,30 +1,26 @@
 ---
-title: 失敗した Azure Data Lake U-SQL ジョブについてユーザー定義の C# コードをデバッグする | Microsoft Docs
-description: Azure Data Lake Tools for Visual Studio を使用して、U-SQL の失敗した頂点をデバッグする方法について説明します。
+title: 失敗した Azure Data Lake U-SQL ジョブについてユーザー定義の C# コードをデバッグする
+description: この記事では、Azure Data Lake Tools for Visual Studio を使用して、U-SQL の失敗した頂点をデバッグする方法について説明します。
 services: data-lake-analytics
-documentationcenter: ''
-author: yanancai
-manager: jhubbard
-editor: cgronlun
-ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 11/31/2017
+author: yanancai
 ms.author: yanacai
-ms.openlocfilehash: b614583079347c2634f8d03531517d1d32c75132
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: jasonwhowell
+ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
+ms.topic: conceptual
+ms.date: 11/30/2017
+ms.openlocfilehash: 11587d5a0520d42d554c13a525c3b57db82326aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229477"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>失敗した U-SQL ジョブに対するユーザー定義の C# コードをデバッグする
 
 U-SQL は C# を使用した機能拡張モデルを提供しています。 U-SQL スクリプトでは、C# 関数を簡単に呼び出して、SQL のような宣言型言語がサポートしていない分析関数を実行できます。 U-SQL 機能拡張の詳細については、「[U-SQL プログラミング ガイド](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf)」を参照してください。 
 
-実際にはすべてのコードにデバッグが必要ですが、限られたログ ファイルを使用して、クラウド上にカスタム コードを持つ分散ジョブをデバッグするのは困難です。 [Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) には**失敗した頂点のデバッグ**と呼ばれる機能が用意されており、カスタム コードで発生したエラーをより簡単にデバッグするのに役立ちます。 U-SQL ジョブが失敗すると、サービスではエラーの状態が維持されます。このツールは、クラウドのエラー環境をローカル マシンにダウンロードしてデバッグするうえで役立ちます。 ローカルのダウンロードには、入力データとユーザー コードを含むクラウド環境全体がキャプチャされています。
+実際にはすべてのコードにデバッグが必要ですが、限られたログ ファイルを使用して、クラウド上にカスタム コードを持つ分散ジョブをデバッグするのは困難です。 [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) には**失敗した頂点のデバッグ**と呼ばれる機能が用意されており、カスタム コードで発生したエラーをより簡単にデバッグするのに役立ちます。 U-SQL ジョブが失敗すると、サービスではエラーの状態が維持されます。このツールは、クラウドのエラー環境をローカル マシンにダウンロードしてデバッグするうえで役立ちます。 ローカルのダウンロードには、入力データとユーザー コードを含むクラウド環境全体がキャプチャされています。
 
 次のビデオでは、Azure Data Lake Tools for Visual Studio の失敗した頂点のデバッグ機能をデモンストレーションします。
 

@@ -1,23 +1,19 @@
 ---
 title: Azure IoT Hub を使用してジョブのスケジュールを設定する (Java) | Microsoft Docs
 description: 複数のデバイスでダイレクト メソッドを呼び出して、必要なプロパティを設定するように Azure IoT Hub ジョブのスケジュールを設定する方法。 Azure IoT device SDK for Java を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for Java を使用して、ジョブを実行するサービス アプリを実装します。
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
-manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: af853a378a36c97edd74ea99fc5dcce92a073fea
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 52c5e1a2166c2c609b2edc486bd451f01b3395fa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515796"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>ジョブのスケジュールとブロードキャスト (Java)
 
@@ -34,13 +30,15 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 これらの各機能の詳細については、次の記事をご覧ください。
 
 * デバイス ツインとプロパティ: [デバイス ツインの概要](iot-hub-java-java-twin-getstarted.md)
-* ダイレクト メソッド: [ダイレクト メソッドに関する IoT Hub 開発者ガイド](iot-hub-devguide-direct-methods.md)と[ダイレクト メソッドの使用に関するチュートリアル](iot-hub-java-java-direct-methods.md)
+
+* ダイレクト メソッド: [ダイレクト メソッドに関する IoT Hub 開発者ガイド](iot-hub-devguide-direct-methods.md)と[ダイレクト メソッドの使用に関するチュートリアル](quickstart-control-device-java.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 このチュートリアルでは、次の操作方法について説明します。
 
 * **lockDoor** と呼ばれるダイレクト メソッドを実装するデバイス アプリの作成。 デバイス アプリは、バックエンド アプリから必要なプロパティの変更も受信します。
+
 * 複数のデバイスで **lockDoor** ダイレクト メソッドを呼び出すジョブを作成するバックエンド アプリの作成。 もう 1 つのジョブは、必要なプロパティの更新を複数のデバイスに送信します。
 
 このチュートリアルが終わると、次の java コンソール デバイス アプリと java コンソール バックエンド アプリが完成しています。
@@ -56,34 +54,45 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 このチュートリアルを完了するには、次のものが必要です。
 
-* 最新の [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* 最新の [Java SE Development Kit 8](https://aka.ms/azure-jdks)
+
 * [Maven 3](https://maven.apache.org/install.html)
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](http://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
 
-[!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
 
-[!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
+## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-デバイス ID をプログラムで作成する場合は、記事「[Java を使用してデバイスを IoT Hub に接続する](iot-hub-java-java-getstarted.md#create-a-device-identity)」の該当セクションを参照してください。 [Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)ツールを使って、デバイスを IoT Hub に追加することもできます。
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="create-the-service-app"></a>サービス アプリを作成する
+### <a name="retrieve-connection-string-for-iot-hub"></a>IoT ハブに対する接続文字列を取得する
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
+
+[Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)ツールを使って、デバイスを IoT Hub に追加することもできます。
+
+## <a name="create-the-service-app"></a>デバイス アプリを作成する
 
 このセクションでは、ジョブを使用する Java コンソール アプリを作成して、次の操作を行います。
 
 * 複数のデバイスで **lockDoor** ダイレクト メソッドを呼び出す。
+
 * 必要なプロパティを複数のデバイスに送信する。
 
 アプリを作成するには:
 
 1. 開発用コンピューターで、`iot-java-schedule-jobs` という名前の空のフォルダーを作成します。
 
-1. コマンド プロンプトで次のコマンドを使用して、`iot-java-schedule-jobs` フォルダー内に **schedule-jobs** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
+2. コマンド プロンプトで次のコマンドを使用して、`iot-java-schedule-jobs` フォルダー内に **schedule-jobs** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=schedule-jobs -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. コマンド プロンプトで、`schedule-jobs` フォルダーに移動します。
+3. コマンド プロンプトで、`schedule-jobs` フォルダーに移動します。
 
-1. テキスト エディターを使用して、`schedule-jobs` フォルダー内の `pom.xml` ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリで **iot-service-client** パッケージを使用して IoT Hub と通信できるようになります。
+4. テキスト エディターを使用して、`schedule-jobs` フォルダー内の `pom.xml` ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリで **iot-service-client** パッケージを使用して IoT Hub と通信できるようになります。
 
     ```xml
     <dependency>
@@ -97,7 +106,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     > [!NOTE]
     > [Maven 検索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-service-client** の最新バージョンを確認できます。
 
-1. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
+5. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
 
     ```xml
     <build>
@@ -115,11 +124,11 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     </build>
     ```
 
-1. `pom.xml` ファイルを保存して閉じます。
+6. `pom.xml` ファイルを保存して閉じます。
 
-1. テキスト エディターで、`schedule-jobs\src\main\java\com\mycompany\app\App.java` ファイルを開きます。
+7. テキスト エディターで、`schedule-jobs\src\main\java\com\mycompany\app\App.java` ファイルを開きます。
 
-1. ファイルに次の **import** ステートメントを追加します。
+8. ファイルに次の **import** ステートメントを追加します。
 
     ```java
     import com.microsoft.azure.sdk.iot.service.devicetwin.DeviceTwinDevice;
@@ -137,7 +146,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     import java.util.UUID;
     ```
 
-1. 次のクラスレベル変数を **App** クラスに追加します。 `{youriothubconnectionstring}` を、「*IoT Hub の作成*」セクションで書き留めた IoT Hub 接続文字列で置換します。
+9. 次のクラスレベル変数を **App** クラスに追加します。 `{youriothubconnectionstring}` を、「*IoT Hub の作成*」セクションで書き留めた IoT Hub 接続文字列で置換します。
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -148,7 +157,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     private static final long maxExecutionTimeInSeconds = 30;
     ```
 
-1. デバイス ツインで次のメソッドを **App** クラスに追加して、必要なプロパティ **Building** および **Floor** を更新するようにジョブのスケジュールを設定します。
+10. デバイス ツインで次のメソッドを **App** クラスに追加して、必要なプロパティ **Building** および **Floor** を更新するようにジョブのスケジュールを設定します。
 
     ```java
     private static JobResult scheduleJobSetDesiredProperties(JobClient jobClient, String jobId) {
@@ -178,7 +187,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-1. **lockDoor** メソッドを呼び出すようにジョブのスケジュールを設定するには、次のメソッドを **App** クラスに追加します。
+11. **lockDoor** メソッドを呼び出すようにジョブのスケジュールを設定するには、次のメソッドを **App** クラスに追加します。
 
     ```java
     private static JobResult scheduleJobCallDirectMethod(JobClient jobClient, String jobId) {
@@ -202,7 +211,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     };
     ```
 
-1. ジョブを監視するには、次のメソッドを **App** クラスに追加します。
+12. ジョブを監視するには、次のメソッドを **App** クラスに追加します。
 
     ```java
     private static void monitorJob(JobClient jobClient, String jobId) {
@@ -229,7 +238,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-1. 実行したジョブの詳細に関するクエリを実行するには、次のメソッドを追加します。
+13. 実行したジョブの詳細に関するクエリを実行するには、次のメソッドを追加します。
 
     ```java
     private static void queryDeviceJobs(JobClient jobClient, String start) throws Exception {
@@ -246,13 +255,13 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-1. **main** メソッドのシグネチャを、次の `throws` 句を含むように更新します。
+14. **main** メソッドのシグネチャを、次の `throws` 句を含むように更新します。
 
     ```java
     public static void main( String[] args ) throws Exception
     ```
 
-1. 2 つのジョブの順番に実行して監視するには、次のコードを **main** メソッドに追加します。
+15. 2 つのジョブの順番に実行して監視するには、次のコードを **main** メソッドに追加します。
 
     ```java
     // Record the start time
@@ -279,9 +288,9 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     System.out.println("Shutting down schedule-jobs app");
     ```
 
-1. `schedule-jobs\src\main\java\com\mycompany\app\App.java` ファイルを保存して閉じます。
+16. `schedule-jobs\src\main\java\com\mycompany\app\App.java` ファイルを保存して閉じます。
 
-1. **schedule-jobs** アプリをビルドし、エラーを修正します。 コマンド プロンプトで `schedule-jobs` フォルダーに移動し、次のコマンドを実行します。
+17. **schedule-jobs** アプリをビルドし、エラーを修正します。 コマンド プロンプトで `schedule-jobs` フォルダーに移動し、次のコマンドを実行します。
 
     `mvn clean package -DskipTests`
 
@@ -293,9 +302,9 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. コマンド プロンプトで、`simulated-device` フォルダーに移動します。
+2. コマンド プロンプトで、`simulated-device` フォルダーに移動します。
 
-1. テキスト エディターを使用して、`simulated-device` フォルダー内の `pom.xml` ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリで **iot-device-client** パッケージを使用して IoT Hub と通信できるようになります。
+3. テキスト エディターを使用して、`simulated-device` フォルダー内の `pom.xml` ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリで **iot-device-client** パッケージを使用して IoT Hub と通信できるようになります。
 
     ```xml
     <dependency>
@@ -308,7 +317,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     > [!NOTE]
     > [Maven 検索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-device-client** の最新バージョンを確認できます。
 
-1. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
+4. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
 
     ```xml
     <build>
@@ -326,11 +335,11 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     </build>
     ```
 
-1. `pom.xml` ファイルを保存して閉じます。
+5. `pom.xml` ファイルを保存して閉じます。
 
-1. テキスト エディターで、`simulated-device\src\main\java\com\mycompany\app\App.java` ファイルを開きます。
+6. テキスト エディターで、`simulated-device\src\main\java\com\mycompany\app\App.java` ファイルを開きます。
 
-1. ファイルに次の **import** ステートメントを追加します。
+7. ファイルに次の **import** ステートメントを追加します。
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -341,7 +350,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     import java.util.Scanner;
     ```
 
-1. 次のクラスレベル変数を **App** クラスに追加します。 `{youriothubname}` を IoT Hub 名に置き換え、`{yourdevicekey}` を「*デバイス ID の作成*」セクションで生成したデバイス キーの値に置き換えます。
+8. 次のクラスレベル変数を **App** クラスに追加します。 `{youriothubname}` を IoT Hub 名に置き換え、`{yourdevicekey}` を「*デバイス ID の作成*」セクションで生成したデバイス キーの値に置き換えます。
 
     ```java
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myDeviceID;SharedAccessKey={yourdevicekey}";
@@ -352,7 +361,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
     このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。
 
-1. デバイス ツイン通知をコンソールに出力するには、次の入れ子になったクラスを **App** クラスに追加します。
+9. デバイス ツイン通知をコンソールに出力するには、次の入れ子になったクラスを **App** クラスに追加します。
 
     ```java
     // Handler for device twin operation notifications from IoT Hub
@@ -363,7 +372,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-1. ダイレクト メソッド通知をコンソールに出力するには、次の入れ子になったクラスを **App** クラスに追加します。
+10. ダイレクト メソッド通知をコンソールに出力するには、次の入れ子になったクラスを **App** クラスに追加します。
 
     ```java
     // Handler for direct method notifications from IoT Hub
@@ -374,7 +383,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-1. IoT Hub からのダイレクト メソッド呼び出しを処理するには、次の入れ子になったクラスを **App** クラスに追加します。
+11. IoT Hub からのダイレクト メソッド呼び出しを処理するには、次の入れ子になったクラスを **App** クラスに追加します。
 
     ```java
     // Handler for direct method calls from IoT Hub
@@ -399,13 +408,13 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-1. **main** メソッドのシグネチャを、次の `throws` 句を含むように更新します。
+12. **main** メソッドのシグネチャを、次の `throws` 句を含むように更新します。
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException
     ```
 
-1. 次の操作を行うコードを **main** メソッドに追加します。
+13. 次の操作を行うコードを **main** メソッドに追加します。
     * IoT Hub と通信するデバイス クライアントを作成します。
     * デバイス ツインのプロパティを格納する **Device** オブジェクトを作成します。
 
@@ -423,7 +432,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     };
     ```
 
-1. デバイス クライアント サービスを開始するには、次のコードを **main** メソッドに追加します。
+14. デバイス クライアント サービスを開始するには、次のコードを **main** メソッドに追加します。
 
     ```java
     try {
@@ -441,7 +450,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-1. ユーザーが **Enter** キーを押してからシャット ダウンするには、次のコードを **main** メソッドの末尾に追加します。
+15. ユーザーが **Enter** キーを押してからシャット ダウンするには、次のコードを **main** メソッドの末尾に追加します。
 
     ```java
     // Close the app
@@ -453,9 +462,9 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     scanner.close();
     ```
 
-1. `simulated-device\src\main\java\com\mycompany\app\App.java` ファイルを保存して閉じます。
+16. `simulated-device\src\main\java\com\mycompany\app\App.java` ファイルを保存して閉じます。
 
-1. **simulated-device** アプリをビルドし、エラーを修正します。 コマンド プロンプトで `simulated-device` フォルダーに移動し、次のコマンドを実行します。
+17. **simulated-device** アプリをビルドし、エラーを修正します。 コマンド プロンプトで `simulated-device` フォルダーに移動し、次のコマンドを実行します。
 
     `mvn clean package -DskipTests`
 
@@ -467,17 +476,17 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![デバイス クライアントが開始する](media/iot-hub-java-java-schedule-jobs/device-app-1.png)
+    ![デバイス クライアントが開始する](./media/iot-hub-java-java-schedule-jobs/device-app-1.png)
 
-1. `schedule-jobs` フォルダーのコマンド プロンプトで、次のコマンドによって **schedule-jobs** サービス アプリを実行し、2 つのジョブを実行します。 最初のジョブで必要なプロパティの値が設定され、2 つ目のジョブでダイレクト メソッドが呼び出されます。
+2. `schedule-jobs` フォルダーのコマンド プロンプトで、次のコマンドによって **schedule-jobs** サービス アプリを実行し、2 つのジョブを実行します。 最初のジョブで必要なプロパティの値が設定され、2 つ目のジョブでダイレクト メソッドが呼び出されます。
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![Java IoT Hub サービス アプリで 2 つのジョブが作成される](media/iot-hub-java-java-schedule-jobs/service-app-1.png)
+    ![Java IoT Hub サービス アプリで 2 つのジョブが作成される](./media/iot-hub-java-java-schedule-jobs/service-app-1.png)
 
-1. デバイス アプリは必要なプロパティの変更とダイレクト メソッド呼び出しを処理します。
+3. デバイス アプリは必要なプロパティの変更とダイレクト メソッド呼び出しを処理します。
 
-    ![デバイス クライアントは変更に応答する](media/iot-hub-java-java-schedule-jobs/device-app-2.png)
+    ![デバイス クライアントは変更に応答する](./media/iot-hub-java-java-schedule-jobs/device-app-2.png)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -485,5 +494,6 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 詳細については、次のリソースをご覧ください。
 
-* [IoT Hub の概要](iot-hub-java-java-getstarted.md)に関するチュートリアルでデバイスからテレメトリを送信する。
-* 「[ダイレクト メソッドの使用](iot-hub-java-java-direct-methods.md)」チュートリアルで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。
+* [IoT Hub の概要](quickstart-send-telemetry-java.md)に関するチュートリアルでデバイスからテレメトリを送信する。
+
+* デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど): [ダイレクト メソッドの使用](quickstart-control-device-java.md)に関するチュートリアル。

@@ -1,6 +1,6 @@
 ---
-title: C# でアクター ベースの Azure マイクロサービスを初めて作成する | Microsoft Docs
-description: このチュートリアルでは、Service Fabric Reliable Actors を使用して簡単なアクターベースのサービスを作成、デバッグ、デプロイする手順について説明します。
+title: Azure Service Fabric でアクター ベースのサービスを作成する | Microsoft Docs
+description: C# で Service Fabric Reliable Actors を使用して、最初のアクタベースのサービスを作成、デバッグ、およびデプロイする方法を説明します。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,16 +9,17 @@ editor: ''
 ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 20786522a9a25d84a32a53e5e111b4b542501287
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4ff896902c1a92c244c3bcd147c3daeeb9e49c77
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054759"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]

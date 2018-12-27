@@ -4,28 +4,25 @@ description: Azure Function App の設定を構成する方法について説明
 services: ''
 documentationcenter: .net
 author: ggailey777
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: dotnet
-ms.devlang: na
-ms.topic: article
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 8974b2ca243da5dd2f7202c66602f7254496d040
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d9fa5d70a633f423c82457759d7ed18047167e3e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999913"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
 Azure Functions では、関数アプリに個々の関数の実行コンテキストが用意されています。 関数アプリの動作は、特定の関数アプリによってホストされるすべての関数に適用されます。 このトピックでは、Azure Portal で関数アプリを構成して管理する方法について説明します。
 
-まず、[Azure Portal](http://portal.azure.com) に移動し、Azure アカウントにサインインします。 ポータルの上部にある検索バーで関数アプリの名前を入力し、一覧からその関数アプリを選択します。 関数アプリを選択すると、次のページが表示されます。
+まず、[Azure Portal](https://portal.azure.com) に移動し、Azure アカウントにサインインします。 ポータルの上部にある検索バーで関数アプリの名前を入力し、一覧からその関数アプリを選択します。 関数アプリを選択すると、次のページが表示されます。
 
 ![Azure Portal の関数アプリの概要](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
@@ -53,7 +50,7 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 
 **[設定]** タブでは、関数アプリで使用される関数のランタイム バージョンを更新できます。 また、関数アプリでホストされるすべての関数への HTTP アクセスを制限するホスト キーを管理します。
 
-Functions では、従量課金ホスティング プランと App Service ホスティング プランの両方がサポートされます。 詳細については、「[Azure Functions の適切なサービス プランを選択する](functions-scale.md)」を参照してください。 従量課金プランで予測しやすいように、Functions では、毎日の使用量クォータをギガバイト秒で設定してプラットフォームの使用量を制限できます。 毎日の使用量クォータに達すると、関数アプリは停止されます。 使用量クォータに達した結果として停止した関数アプリは、毎日の使用量クォータの設定と同じ手順で再び有効にすることができます。 課金の詳細については、[Azure Functions の価格のページ](http://azure.microsoft.com/pricing/details/functions/)をご覧ください。   
+Functions では、従量課金ホスティング プランと App Service ホスティング プランの両方がサポートされます。 詳細については、「[Azure Functions の適切なサービス プランを選択する](functions-scale.md)」を参照してください。 従量課金プランで予測しやすいように、Functions では、毎日の使用量クォータをギガバイト秒で設定してプラットフォームの使用量を制限できます。 毎日の使用量クォータに達すると、関数アプリは停止されます。 使用量クォータに達した結果として停止した関数アプリは、毎日の使用量クォータの設定と同じ手順で再び有効にすることができます。 課金の詳細については、[Azure Functions の価格のページ](https://azure.microsoft.com/pricing/details/functions/)をご覧ください。   
 
 ## <a name="platform-features-tab"></a>[プラットフォーム機能] タブ
 
@@ -114,7 +111,7 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 
 | | |
 |-|-|
-| ![Azure Portal の関数アプリのデプロイ オプション](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Functions を使用すると、ローカル コンピューターで関数コードを開発できます。 その後、ローカル関数アプリ プロジェクトを Azure にアップロードすることができます。 Functions を使用すると、従来の FTP アップロード以外に、GitHub、VSTS、Dropbox、Bitbucket などの一般的な継続的インテグレーション ソリューションを使用して、関数アプリをデプロイできます。 詳細については、「[Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」を参照してください。 FTP またはローカル Git を使用して手動でアップロードするには、[デプロイ資格情報を構成](functions-continuous-deployment.md#credentials)する必要もあります。 |
+| ![Azure Portal の関数アプリのデプロイ オプション](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Functions を使用すると、ローカル コンピューターで関数コードを開発できます。 その後、ローカル関数アプリ プロジェクトを Azure にアップロードすることができます。 Functions を使用すると、従来の FTP アップロード以外に、GitHub、Azure DevOps、Dropbox、Bitbucket などの一般的な継続的インテグレーション ソリューションを使用して、関数アプリをデプロイできます。 詳細については、「[Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」を参照してください。 FTP またはローカル Git を使用して手動でアップロードするには、[デプロイ資格情報を構成](functions-continuous-deployment.md#credentials)する必要もあります。 |
 
 
 ### <a name="cors"></a>CORS

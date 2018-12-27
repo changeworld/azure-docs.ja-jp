@@ -1,24 +1,21 @@
 ---
 title: PHP から Queue Storage を使用する方法 | Microsoft Docs
 description: Azure Queue ストレージを使用して、キューの作成と削除のほか、メッセージの挿入、取得、削除を行う方法を説明します。 サンプルは PHP で記述されています。
-documentationcenter: php
 services: storage
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 7582b208-4851-4489-a74a-bb952569f55b
 ms.service: storage
-ms.workload: storage
 ms.tgt_pltfrm: na
-ms.devlang: PHP
+ms.devlang: php
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 737054aefa684b3fc486c860253c69afbb6eaf0c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.component: queues
+ms.openlocfilehash: 70efdf1fb2c1b8411e922f16fdf401d1bf428d08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140960"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>PHP から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -419,7 +416,7 @@ catch(ServiceException $e){
 * [Azure Storage PHP クライアント ライブラリの API リファレンス](http://azure.github.io/azure-storage-php/)を参照してください。
 * [詳細な Queue の例](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php)を参照してください。
 
-詳細については、 [PHP デベロッパー センター](/develop/php/)も参照してください。
+詳細については、 [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)も参照してください。
 
 [download]: https://github.com/Azure/azure-storage-php
 [require_once]: http://www.php.net/manual/en/function.require-once.php

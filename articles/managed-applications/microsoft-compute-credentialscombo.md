@@ -1,32 +1,45 @@
 ---
 title: Azure の CredentialsCombo UI 要素 | Microsoft Docs
 description: Azure Portal の Microsoft.Compute.CredentialsCombo UI 要素について説明します。
-services: azure-resource-manager
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 09/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: c17677a9e34de4c1afca8f04c8bd22c2155c3439
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0412d55fe60524cde404e6a640723d3259e020e1
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586242"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI 要素
 Windows と Linux のパスワードと SSH 公開キーの検証が組み込まれているコントロールのグループです。
 
 ## <a name="ui-sample"></a>UI サンプル
-![Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
+
+Windows ユーザーの場合、ユーザーには次のような画面が表示されます。
+
+![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
+
+Linux でパスワードが選択されている場合、ユーザーには次のような画面が表示されます。
+
+![Microsoft.Compute.CredentialsCombo Linux パスワード](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+
+Linux で SSH パブリック キーが選択されている場合、ユーザーには次のような画面が表示されます。
+
+![Microsoft.Compute.CredentialsCombo Linux キー](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>スキーマ
-`osPlatform` が **Windows** の場合、次のスキーマが使用されます。
+Windows の場合、次のスキーマを使います。
+
 ```json
 {
   "name": "element1",
@@ -40,8 +53,8 @@ Windows と Linux のパスワードと SSH 公開キーの検証が組み込ま
   },
   "constraints": {
     "required": true,
-    "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
-    "customValidationMessage": "The password must contain at least 8 characters, with at least 1 letter and 1 number."
+    "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{12,}$",
+    "customValidationMessage": "The password must contain at least 12 characters, with at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false
@@ -51,7 +64,8 @@ Windows と Linux のパスワードと SSH 公開キーの検証が組み込ま
 }
 ```
 
-`osPlatform` が **Linux** の場合、次のスキーマが使用されます。
+**Linux** の場合、次のスキーマを使います。
+
 ```json
 {
   "name": "element1",
@@ -69,8 +83,8 @@ Windows と Linux のパスワードと SSH 公開キーの検証が組み込ま
   },
   "constraints": {
     "required": true,
-    "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
-    "customValidationMessage": "The password must contain at least 8 characters, with at least 1 letter and 1 number."
+    "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{12,}$",
+    "customValidationMessage": "The password must contain at least 12 characters, with at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false,
@@ -83,22 +97,23 @@ Windows と Linux のパスワードと SSH 公開キーの検証が組み込ま
 
 ## <a name="remarks"></a>解説
 - `osPlatform` は指定する必要があり、**Windows** と **Linux** のいずれかを使用できます。
-- `constraints.required` が **true** に設定されている場合、パスワードまたは SSH 公開キーのテキスト ボックスには、正常に検証を完了できる値を含める必要があります。 既定値は **true**です。
+- `constraints.required` が **true** に設定されている場合、パスワードまたは SSH 公開キーのテキスト ボックスには、正常に検証を完了できる値を指定する必要があります。 既定値は **true**です。
 - `options.hideConfirmation` が **true** に設定されている場合、ユーザーのパスワードを確認するための 2 つ目のテキスト ボックスは表示されません。 既定値は **false** です。
 - `options.hidePassword` が **true** に設定されている場合、パスワード認証を使用するオプションは表示されません。 これは `osPlatform` が **Linux** であるときのみ使用できます。 既定値は **false** です。
 - `customPasswordRegex` プロパティを使用して、許可されたパスワードに対する追加の制約を実装できます。 `customValidationMessage` 内の文字列は、パスワードのカスタム検証が失敗したときに表示されます。 これらのプロパティの既定値は両方とも **null** です。
 
 ## <a name="sample-output"></a>サンプル出力
-`osPlatform` が **Windows** の場合、またはユーザーが SSH 公開キーではなくパスワードを指定した場合、出力は次のようになります。
+`osPlatform` が **Windows**、または `osPlatform` が **Linux** で、ユーザーが SSH 公開キーではなくパスワードを指定した場合、コントロールは次のような出力を返します。
 
 ```json
 {
   "authenticationType": "password",
-  "password": "p4ssw0rd",
+  "password": "p4ssw0rddem0",
 }
 ```
 
-ユーザーが SSH 公開キーを指定した場合、出力は次のようになります。
+`osPlatform` が **Linux** で、ユーザーが SSH 公開キーを指定した場合、コントロールは次のような出力を返します。
+
 ```json
 {
   "authenticationType": "sshPublicKey",

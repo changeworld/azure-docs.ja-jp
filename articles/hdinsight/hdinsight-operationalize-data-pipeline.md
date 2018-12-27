@@ -1,25 +1,20 @@
 ---
-title: "データ分析パイプラインを運用化する - Azure | Microsoft Docs"
-description: "新しいデータによってトリガーされて簡潔な結果を生成するサンプル データ パイプラインを設定して実行します。"
+title: データ分析パイプラインを運用化する - Azure
+description: 新しいデータによってトリガーされて簡潔な結果を生成するサンプル データ パイプラインを設定して実行します。
 services: hdinsight
-documentationcenter: 
-author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/11/2018
+author: ashishthaps
 ms.author: ashishth
-ms.openlocfilehash: 7a439c9d25a470a2474b427f6b20addb6ff3b0c7
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.reviewer: jasonh
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 01/11/2018
+ms.openlocfilehash: 9057d9f5d63598ea249e8f3193b84fd715018829
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43109973"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 
@@ -103,7 +98,7 @@ Azure SQL Database の準備ができました。
 #### <a name="provision-an-hdinsight-hadoop-cluster"></a>HDInsight Hadoop クラスターをプロビジョニングする
 
 1. Azure Portal で **[+ 新規]** を選んで、HDInsight を検索します。
-2. **[作成]**を選択します。
+2. **作成**を選択します。
 3. [基本] ウィンドウで、クラスターの一意名を指定し、Azure サブスクリプションを選びます。
 
     ![HDInsight クラスターの名前とサブスクリプション](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
@@ -137,7 +132,7 @@ Azure SQL Database の準備ができました。
 
        ![HDInsight のメタストアの設定](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
-12. **[次へ]**を選択します。
+12. **[次へ]** を選択します。
 13. **[概要]** ウィンドウで、**[作成]** を選んでクラスターを展開します。
 
 ### <a name="verify-ssh-tunneling-setup"></a>SSH トンネリングの設定を確認する
@@ -161,7 +156,7 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
 ### <a name="configure-hive"></a>Hive を構成する
 
-1. 1 か月のフライト データを含むサンプル CSV ファイルをダウンロードします。 ZIP ファイル `2017-01-FlightData.zip` を [HDInsight Github リポジトリ](https://github.com/hdinsight/hdinsight-dev-guide)からダウンロードし、その CSV ファイル `2017-01-FlightData.csv` を解凍します。 
+1. 1 か月のフライト データを含むサンプル CSV ファイルをダウンロードします。 ZIP ファイル `2017-01-FlightData.zip` を [HDInsight GitHub リポジトリ](https://github.com/hdinsight/hdinsight-dev-guide)からダウンロードし、その CSV ファイル `2017-01-FlightData.csv` を解凍します。 
 
 2. この CSV ファイルを、HDInsight クラスターに接続されている Azure Storage アカウントにコピーして、`/example/data/flights` フォルダーに配置します。
 
@@ -219,7 +214,7 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
     ![Ambari での Hive クエリ](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
-6. `flights` テーブルを作成するには、クエリのテキスト領域内のテキストを次のステートメントに置き換えます。 `flights` テーブルは Hive のマネージ テーブルであり、読み込まれたデータを年、月、日で分割します。 このテーブルには、フライトごとに 1 行というソース データの最小の細分性で、すべてのフライト履歴データが格納されます。
+6. `flights` テーブルを作成するには、クエリのテキスト領域内のテキストを次のステートメントに置き換えます。 `flights` テーブルは Hive のマネージド テーブルであり、読み込まれたデータを年、月、日で分割します。 このテーブルには、フライトごとに 1 行というソース データの最小の細分性で、すべてのフライト履歴データが格納されます。
 
     ```
     SET hive.exec.dynamic.partition.mode=nonstrict;

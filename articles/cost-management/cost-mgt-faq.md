@@ -1,30 +1,31 @@
 ---
-title: Azure Cost Management に関してよく寄せられる質問 | Microsoft Docs
-description: Azure Cost Management についてよく寄せられる質問にお答えします。
+title: Azure の Cloudyn に関してよく寄せられる質問 | Microsoft Docs
+description: Cloudyn についてよく寄せられる質問にお答えします。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/14/2018
-ms.topic: article
+ms.date: 11/14/2018
+ms.topic: troubleshooting
 ms.service: cost-management
-manager: carmonm
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 8920ff082fa1b442aa147068080085c40760e290
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3b137a170edf2be13fa4999947994ee12a374aa9
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276280"
 ---
-# <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure Cost Management に関してよく寄せられる質問
+# <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn に関してよく寄せられる質問
 
-この記事では、Azure Cost Management についてよく寄せられる質問にお応えします (Cloudyn とも呼ばれます)。 Cost Management について質問がある場合は、「[FAQs for Azure Cost Management (Azure Cost Management に関する FAQ)](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn)」で質問してください。
+この記事では、Cloudyn についてよく寄せられる質問にお答えします。 Cloudyn について質問がある場合は、[Cloudyn に関する FAQ](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn) のページで質問してください。
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>間接加入契約のエンタープライズ設定に関する問題全般を解決するにはどうすればよいですか
 
 Cloudyn ポータルを始めて使用する際、Enterprise Agreement またはクラウド ソリューション プロバイダー (CSP) ユーザーのお客様の場合、次のメッセージが表示されることがあります。
 
-- **Azure Cost Management 設定**ウィザードに "The specified API key is not a top level enrollment key\(指定された API キーは、最上位レベルの登録キーではありません\)" と表示される。
+- **Cloudyn 設定**ウィザードに "The specified API key is not a top level enrollment key (指定された API キーは、最上位レベルの登録キーではありません)" と表示される。
 - Enterprise Agreement ポータルに "Direct Enrollment – No\(直接登録 – いいえ\)" と表示される。
 - Cloudyn ポータルに "No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account\(過去 30 日間に使用状況データが見つかりませんでした。ディストリビューターに連絡してお使いの Azure アカウントに対してマークアップが有効になっていることを確認してください\)" と表示される。
 
@@ -34,9 +35,9 @@ Cloudyn ポータルを始めて使用する際、Enterprise Agreement または
 
 1. 再販業者がユーザーのアカウントの "_マークアップ_" を有効にする。 手順については、「[間接加入契約者向けオンボード ガイド](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)」をご覧ください。
 
-2. ユーザーが Cloudyn で使用する Azure Enterprise Agreement キーを生成する。 手順については、「[Adding Your Azure EA (Azure EA を追加する)](https://support.cloudyn.com/hc/en-us/articles/210429585-Adding-Your-AZURE-EA)」または[自分の EA 登録 ID と API キーを探す方法](https://youtu.be/u_phLs_udig)に関するビデオをご覧ください。
+2. ユーザーが Cloudyn で使用する Azure Enterprise Agreement キーを生成する。 手順については、「[Adding Your Azure EA (Azure EA を追加する)](quick-register-ea.md#register-with-cloudyn)」または[自分の EA 登録 ID と API キーを探す方法](https://youtu.be/u_phLs_udig)に関するビデオをご覧ください。
 
-Cost Management を有効にできるのは Azure のサービス管理者のみです。 共同管理者のアクセス許可では不十分です。
+Cloudyn を有効にできるのは、Azure サービス管理者だけです。 共同管理者のアクセス許可では不十分です。
 
 Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前に、次の手順に従って Azure Billing API を有効にする必要があります。
 
@@ -61,7 +62,7 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 1.  Cloudyn ポータルで、右上にある **[設定]** をクリックして **[クラウド アカウント]** を選択します。
 2.  [Microsoft Azure Accounts] \(Microsoft Azure アカウント) タブで、**アクティブ化されていない**サブスクリプションを持つアカウントを探します。
 3.  アクティブ化されていないアカウントの右にある、鉛筆に似た **[編集]** 記号をクリックします。
-4.  テナント ID とレート ID が自動的に検出されます。 **[次へ]** をクリックします。
+4.  テナント ID とレート ID が自動的に検出されます。  **[次へ]** をクリックします。
 5.  Azure Portal にリダイレクトされます。 ポータルにサインインし、Cloudyn Collector が Azure データにアクセスすることを承認します。
 6.  次に、[Cloudyn Accounts] (Cloudyn アカウント) 管理ページにリダイレクトされ、サブスクリプションが**アクティブな**アカウント状態に更新されます。 そこには緑色のチェックマーク記号が表示されます。
 7.  1 つ以上のサブスクリプションに緑色のチェックマーク記号が表示されていない場合は、そのサブスクリプションのリーダー アプリ (CloudynCollector) を作成するためのアクセス許可がないことを示しています。 そのサブスクリプションのより高いアクセス許可を持つユーザーが手順 3 と 4 を繰り返す必要があります。  
@@ -71,16 +72,20 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>中断またはロックアウトされたユーザーを有効にするにはどうすればよいですか
 
+最初に、ユーザー アカウントが*initiallySuspended*する原因となる最も一般的なシナリオを見てみましょうです。
+
+> Admin1 は、Microsoft Cloud ソリューション プロバイダーまたはエンタープライズ契約ユーザーの可能性があります。 彼の組織では、Cloudyn の使用を開始する準備が整いました。  彼は、Microsoft Azure portal で登録し、Cloudyn ポータルにサインインします。 彼は、Cloudyn サービスを登録し、Cloudyn ポータルにサインインする人として、"*プライマリ管理者*" になります。 Admin1 はユーザーアカウントを作成しません。 ただし、Cloudyn ポータルを使用すると、Azure アカウントを作成およびエンティティ階層を設定できます。 Admin1 は、テナント管理者である Admin2 に Cloudyn で登録し、Cloudyn ポータルにサインインするよう通知します。
+
+> Admin2 は Azure portal を使用して登録します。 しかし、 Cloudyn ポータルにサインインしようとした時、彼はアカウントの**中断**を示すエラーを受け取ります。 プライマリ管理者の Admin1 に、アカウントの中断が通知されます。 Admin1 は、Admin2 のアカウントをアクティブにし、適したエンティティへの *管理エンティティへのアクセス*を付与して、ユーザーの管理アクセス権とユーザー アカウントをアクティブにするアクセスを許可する必要があります。
+
+
 ユーザーのアクセスの許可を要求するアラートを受け取った場合、そのユーザーのアカウントをアクティブにする必要があります。
 
 ユーザー アカウントをアクティブにするには:
 
 1. Cloudyn の設定に使用した Azure の管理ユーザーのアカウントを使用して Cloudyn にサインインします。 または、管理者アクセスが付与されたユーザー アカウントでサインインします。
-
 2. 右上にある歯車記号を選択し、**[ユーザー管理]** を選択します。
-
 3. ユーザーを検索し、鉛筆記号を選択してユーザーを編集します。
-
 4. **[ユーザーの状態]** で、状態を **[中断]** から **[アクティブ]** に変更します。
 
 Cloudyn のユーザー アカウントが Azure のシングル サインオンを使用して接続されます。 パスワードの入力を間違えると、Azure にはアクセスできても、Cloudyn からロックアウトされることがあります。
@@ -89,13 +94,13 @@ Cloudyn の電子メール アドレスを Azure の既定のアドレスから�
 
 一方のアカウントがロックアウトされた場合を考慮して、Cloudyn の管理者アカウントを 2 つ以上作成することをお勧めします。
 
-Cloudyn ポータルにサインインできない場合は、Azure Cost Management の正しい URL を使用して Cloudyn にサインインしていることを確認します。 [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade) を使用します。
+Cloudyn ポータルにサインインできない場合は、正しい URL を使用して Cloudyn にサインインしていることを確認します。 [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade) を使用します。
 
 Cloudyn のダイレクト URL https://app.cloudyn.com は使用しないでください。
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Azure の資格情報でアクティブになっていないアカウントをアクティブにする方法を教えてください
 
-Cloudyn で Azure のアカウントが見つかるとすぐに、コスト データがコストベースのレポートに提供されます。 ただし、Cloudyn が使用状況データとパフォーマンス データを提供するには、そのアカウントの Azure の資格情報を登録する必要があります。 手順については、[Azure Resource Manager の追加](https://support.cloudyn.com/hc/en-us/articles/212784085-Adding-Azure-Resource-Manager)に関するページを参照してください。
+Cloudyn で Azure のアカウントが見つかるとすぐに、コスト データがコストベースのレポートに提供されます。 ただし、Cloudyn が使用状況データとパフォーマンス データを提供するには、そのアカウントの Azure の資格情報を登録する必要があります。 手順については、「[アカウントを追加するか、サブスクリプションを更新する](activate-subs-accounts.md#add-an-account-or-update-a-subscription)」を参照してください。
 
 アカウントの Azure の資格情報を追加するには、Cloudyn ポータルで、サブスクリプションではなく、アカウント名の右にある編集記号を選択します。
 
@@ -103,10 +108,7 @@ Cloudyn にお使いの Azure の資格情報が追加されるまで、アカ�
 
 ## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>既存のサブスクリプションに複数のアカウントやエンティティを追加するにはどうすればよいですか
 
-追加のエンティティは、Cloudyn のサブスクリプションに Enterprise Agreement をさらに追加するために使用されます。 エンティティをさらに追加する方法については、次のリンクで説明されています。
-
-- 「[Adding an Entity (エンティティを追加する)](https://support.cloudyn.com/hc/en-us/articles/212016145-Adding-an-Entity)」の記事
-- [コスト エンティティでの階層の定義](https://support.cloudyn.com/hc/en-us/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities)に関するビデオ
+追加のエンティティは、Cloudyn のサブスクリプションに Enterprise Agreement をさらに追加するために使用されます。 詳細については、「[エンティティを作成および管理する](tutorial-user-access.md#create-and-manage-entities)」を参照してください。
 
 CSP の場合:
 
@@ -134,6 +136,14 @@ Cloudyn は前日の全データが利用可能になったタイミングで、
 
 Azure から Cloudyn へのデータの送信が遅延した場合、データは Azure に記録されたままになります。 データは接続が復元されたタイミングで Cloudyn に転送されます。
 
+## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cloudyn コスト レポートでのコストの変動
+
+コスト レポートは、更新した課金ファイルをクラウド サービス プロバイダーが送信するたびに、コストの変動を表示できます。 コストの変動は、通常の日単位または月単位のレポート スケジュール以外でクラウド サービス プロバイダーから新しいファイルを受信したときに発生します。 Cloudyn の再計算に起因するコストの変更は発生しません。
+
+1 か月にわたってクラウド サービス プロバイダーによって送信されるすべての課金ファイルは、毎日のコストの概算値です。 データが頻繁に更新される場合があり、1 日に複数回更新されることもあります。 更新は、Azure よりも AWS のほうが頻繁に行われます。 コストの合計は、前月の課金計算が完了し、最後の課金ファイルが受信されたときに、変動しなくなります。 通常は、毎月 10 日までには安定します。
+
+変更は、クラウド サービス プロバイダーからコスト調整を受信したときに発生します。 クレジットの受信は、その一例です。 変更は、関連する月が終わった後の数か月後に発生する可能性があります。 変更は、クラウド サービス プロバイダーによって再計算が行われるたびに表示されます。 Cloudyn は、履歴データを更新して、すべての調整が再計算されることを確認します。 それらのコストがレポートに正確に表示されていることも確認します。
+
 ## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>直接 CSP が間接 CSP のお客様やパートナーの Cloudyn のアクセスを構成するにはどうすればよいですか
 
 手順については、「[Cloudyn で間接 CSP アクセスを構成する](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn)」をご覧ください。
@@ -142,10 +152,10 @@ Azure から Cloudyn へのデータの送信が遅延した場合、データ�
 
 Azure Resource Manager アクセスを追加し、データが収集されると、**オプティマイザー** オプションが表示されます。 Azure Resource Manager アクセスをアクティブにするには、「[Azure の資格情報でアクティブになっていないアカウントをアクティブにする方法を教えてください](#how-do-i-activate-unactivated-accounts-with-azure-credentials)」を参照してください
 
-## <a name="is-cost-managementcloudyn-agent-based"></a>Cost Management/Cloudyn エージェントがベースになっていますか
+## <a name="is-cloudyn-agent-based"></a>Cloudyn エージェントがベースになっていますか
 
 いいえ。 エージェントは使用されていません。 VM の Azure 仮想マシンのメトリック データは、Microsoft Insights API から収集されます。 Azure VM からメトリック データを収集する場合は、診断設定を有効にする必要があります。
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn レポートでは、レポートあたり複数の AD テナントが表示されますか
 
-はい。 自身の AD テナントごとに[対応するクラウド アカウント エンティティを作成](tutorial-user-access.md#create-entities)できます。 その後、すべての Azure AD テナント データと、アマゾン ウェブ サービス、Google Cloud Platform など、他のクラウド プラットフォーム プロバイダーを表示できます。
+はい。 自身の AD テナントごとに[対応するクラウド アカウント エンティティを作成](tutorial-user-access.md#create-and-manage-entities)できます。 その後、すべての Azure AD テナント データと、アマゾン ウェブ サービス、Google Cloud Platform など、他のクラウド プラットフォーム プロバイダーを表示できます。

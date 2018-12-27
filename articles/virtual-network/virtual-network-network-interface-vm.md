@@ -1,13 +1,13 @@
 ---
-title: "Azure Virtual Machines に対するネットワーク インターフェイスの追加と削除 | Microsoft Docs"
-description: "仮想マシンにネットワーク インターフェイスを追加する、または仮想マシンからネットワーク インターフェイスを削除する方法について説明します。"
+title: Azure Virtual Machines に対するネットワーク インターフェイスの追加と削除 | Microsoft Docs
+description: 仮想マシンにネットワーク インターフェイスを追加する、または仮想マシンからネットワーク インターフェイスを削除する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: jdial
-ms.openlocfilehash: bb21690865cd9384fe3d3c82e60f11e0fc64114c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 7a981297c3b0d958761f0c802bbe9a75dc0220b4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987789"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>仮想マシンのネットワーク インターフェイスの追加と削除
 
@@ -32,9 +33,9 @@ Azure 仮想マシン (VM) を作成する際に既存のネットワーク イ�
 この記事のセクションに記載された手順を始める前に、次のタスクを完了してください。
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
-- ポータルを使用する場合は、https://portal.azure.com を開き、Azure アカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.2.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
-- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.26 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
+- ポータルを使用する場合は、 https://portal.azure.com を開き、Azure アカウントでログインします。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.2.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.26 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="add-existing-network-interfaces-to-a-new-vm"></a>既存のネットワーク インターフェイスを新しい VM に追加する
 
@@ -62,7 +63,7 @@ VM を作成する前に、「[ネットワーク インターフェイスの作
 
     既存のネットワーク インターフェイスがない場合は、最初に作成する必要があります。 これを行うには、**[ネットワーク インターフェイスの作成]** を選択します。 ネットワーク インターフェイスの作成方法の詳細については、「[ネットワーク インターフェイスの作成](virtual-network-network-interface.md#create-a-network-interface)」を参照してください。 ネットワーク インターフェイスを仮想マシンに追加するときの追加の制約に関する詳細については、「[制約](#constraints)」を参照してください。
 
-6. **[OK]**を選択します。
+6. **[OK]** を選択します。
 7. **[設定]** で、**[概要]**、**[開始]** の順に選択し、仮想マシンを開始します。
 8. 複数のネットワーク インターフェイスが適切に使用されるように VM オペレーティング システムを構成します。 複数のネットワーク インターフェイスについては、[Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) または [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) の構成方法に関するページをご確認ください。
 
@@ -75,7 +76,7 @@ VM を作成する前に、「[ネットワーク インターフェイスの作
 
 VM にアタッチされているネットワーク インターフェイスを表示して、各ネットワーク インターフェイスの構成の詳細や、各ネットワーク インターフェイスに割り当てられている IP アドレスを確認できます。 
 
-1. ご利用のサブスクリプションの所有者、共同作成者、またはネットワーク共同作成者いずれかのロールが割り当てられているアカウントで、[Azure Portal](https://portal.azure.com) にサインインします。 アカウントへのロールの割り当て方法の詳細については、「[Azure ロールベースのアクセス制御の組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」を参照してください。
+1. ご利用のサブスクリプションの所有者、共同作成者、またはネットワーク共同作成者いずれかのロールが割り当てられているアカウントで、[Azure Portal](https://portal.azure.com) にサインインします。 アカウントへのロールの割り当て方法の詳細については、「[Azure ロールベースのアクセス制御の組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」を参照してください。
 2. Azure Portal 上部に "**リソースの検索**" というテキストが表示されたボックスがあります。そこに "**仮想マシン**" と入力します。 検索結果に **[仮想マシン]** が表示されたら、それを選択します。
 3. ネットワーク インターフェイスを表示する VM の名前を選択します。
 4. 選択した VM の **[設定]** セクションで、**[ネットワーク]** を選択します。 ネットワーク インターフェイスの設定とそれを変更する方法については、[ネットワーク インターフェイスの管理](virtual-network-network-interface.md)に関するページをご覧ください。 ネットワーク インターフェイスに割り当てる IP アドレスの追加、変更、または削除を行う方法については、[ネットワーク インターフェイスの IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページを参照してください。
@@ -91,13 +92,13 @@ VM にアタッチされているネットワーク インターフェイスを�
 
 1. Azure ポータルにサインインします。
 2. ポータルの上部にある検索ボックスで、ネットワーク インターフェイスを削除 (デタッチ) する VM の名前を検索するか、**[すべてのサービス]**、**[仮想マシン]** の順に選択して VM を参照します。 VM が見つかったら、選択します。
-3. **[設定]**で **[概要]** を選択し、次に **[停止]** を選択します。 VM の**状態**が **[停止済み (割り当て解除)]** に変わるまで待ちます。 
+3. **[設定]** で **[概要]** を選択し、次に **[停止]** を選択します。 VM の**状態**が **[停止済み (割り当て解除)]** に変わるまで待ちます。 
 4. **[設定]** で、**[ネットワーク]** を選択します。
 5. **[ネットワーク インターフェイスの切断]** を選択します。 現在仮想マシンに接続されているネットワーク インターフェイスの一覧で、デタッチするネットワーク インターフェイスを選択します。 
 
     >[!NOTE]
     1 つのネットワーク インターフェイスしか表示されていない場合、そのインターフェイスはデタッチできません。仮想マシンには、少なくとも 1 つのネットワーク インターフェイスが必ず接続されている必要があります。
-6. **[OK]**を選択します。
+6. **[OK]** を選択します。
 
 ### <a name="commands"></a>コマンド
 

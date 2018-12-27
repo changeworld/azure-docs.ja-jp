@@ -2,22 +2,31 @@
 title: 条件付きアクセス - Azure SQL Database および Data Warehouse | Microsoft Doc
 description: Azure SQL Database と Data Warehouse 用に条件付きアクセスを構成する方法を説明します。
 services: sql-database
-author: GithubMirek
-manager: johammer
-ms.custom: security
 ms.service: sql-database
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: security
+ms.custom: sql-data-warehouse
+ms.devlang: ''
+ms.topic: conceptual
+author: GithubMirek
 ms.author: mireks
-ms.openlocfilehash: f7f34bc7a28cdf3a23af54785002b12fba4baf1d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: vanto
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: e7386e2f926132f5657bdb17011dafe1e1c7b101
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063083"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)  
 
-SQL Database と SQL Data Warehouse の両方で Microsoft の条件付きアクセスがサポートされています。 次の手順では、条件付きアクセス ポリシーを適用するように SQL Database を構成する方法を示します。  
+Azure [SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の両方で Microsoft の条件付きアクセスがサポートされています。 
+
+> [!NOTE]
+> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
+
+次の手順では、条件付きアクセス ポリシーを適用するように SQL Database を構成する方法を示します。  
 
 ## <a name="prerequisites"></a>前提条件  
 - Azure Active Directory 認証をサポートするように SQL Database または SQL Data Warehouse を構成する必要があります。 具体的な手順については、「[SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](sql-database-aad-authentication-configure.md)」を参照してください。  

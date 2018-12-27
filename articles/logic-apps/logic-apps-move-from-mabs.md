@@ -1,26 +1,22 @@
 ---
-title: "アプリを BizTalk Services から Azure Logic Apps に移動する | Microsoft Docs"
-description: "Azure BizTalk Services (MABS) を Azure Logic Apps に移動または移行する"
+title: アプリを BizTalk Services から Azure Logic Apps に移動する | Microsoft Docs
+description: Azure BizTalk Services (MABS) から Azure Logic Apps に移行する
 services: logic-apps
-documentationcenter: 
-author: jonfancey
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: jonfancey
+ms.author: jonfan
+ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: jonfan; LADocs
-ms.openlocfilehash: 6e00e62e60c059a16731a77e529b4b93f50802e9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f27e82e780917e00625ef6a14ab8317d1f5b8ae8
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124801"
 ---
-# <a name="move-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services から Azure Logic Apps への移行
+# <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services から Azure Logic Apps への移行
 
 Microsoft Azure BizTalk Services (MABS) は廃止されました。 MABS 統合ソリューションを [Azure Logic Apps](../logic-apps/logic-apps-overview.md) に移行するときは、この記事のガイダンスに従ってください。 
 
@@ -130,7 +126,7 @@ BizTalk Services とは異なり、これらのアクションはトランスポ
 
 ## <a name="manage-and-monitor"></a>管理および監視
 
-BizTalk Services では、専用ポータルに、問題の監視とトラブルシューティングのための追跡機能が用意されていました。 Logic Apps では、[Azure Portal](../logic-apps/logic-apps-monitor-your-logic-apps.md) および [Operations Management Suite B2B ソリューション](../logic-apps/logic-apps-monitor-b2b-message.md) によって、より豊富な追跡および監視機能が提供されます。これには、移動中に監視するためのモバイル アプリも含まれます。
+BizTalk Services では、専用ポータルに、問題の監視とトラブルシューティングのための追跡機能が用意されていました。 Logic Apps では、[Azure Portal](../logic-apps/logic-apps-monitor-your-logic-apps.md) によって、より豊富な追跡および監視機能が提供されます。これには、移動中に監視するためのモバイル アプリも含まれます。
 
 ## <a name="high-availability"></a>高可用性
 

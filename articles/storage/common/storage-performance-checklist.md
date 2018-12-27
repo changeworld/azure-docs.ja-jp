@@ -2,23 +2,18 @@
 title: Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト | Microsoft Docs
 description: 高パフォーマンス アプリケーションの開発において Azure Storage で使用するための実証済みプラクティスのチェックリストです。
 services: storage
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 959d831b-a4fd-4634-a646-0d2c0c462ef8
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.openlocfilehash: 945289a172270eea56625287baf437fd4b70c7f3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: f865768e6ebfd9e01de1bd7e69c1224b66f2ea5e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231790"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
 ## <a name="overview"></a>概要
@@ -34,7 +29,7 @@ Azure Storage を使用するアプリケーション開発者は、この記事
 * テーブル
 * キュー  
 
-| 完了 | 領域 | カテゴリ | 質問 |
+| 完了 | 領域 | Category | 質問 |
 | --- | --- | --- | --- |
 | &nbsp; | すべてのサービス |スケーラビリティ ターゲット |[アプリケーションは、スケーラビリティ ターゲットへの接近を回避する設計になっていますか?](#subheading1) |
 | &nbsp; | すべてのサービス |スケーラビリティ ターゲット |[命名規則は負荷分散を向上できるように設計されていますか?](#subheading47) |
@@ -45,10 +40,10 @@ Azure Storage を使用するアプリケーション開発者は、この記事
 | &nbsp; | すべてのサービス |クライアントへの直接アクセス |[プロキシではなく、SAS と CORS を使用して、ストレージへの直接アクセスを許可していますか?](#subheading6) |
 | &nbsp; | すべてのサービス |キャッシュ |[繰り返し使用し、ほとんど変更されないデータをアプリケーションでキャッシュしていますか?](#subheading7) |
 | &nbsp; | すべてのサービス |キャッシュ |[アプリケーションでバッチ更新 (クライアント側でキャッシュし、より大きなセットにアップロードする方法) を実行していますか?](#subheading8) |
-| &nbsp; | すべてのサービス |.NET 構成 |[十分な数の同時接続を使用するようにクライアントを構成していますか?](#subheading9) |
+| &nbsp; | すべてのサービス |.NET 構成 |[十分な数のコンカレント接続を使用するようにクライアントを構成していますか?](#subheading9) |
 | &nbsp; | すべてのサービス |.NET 構成 |[十分な数のスレッドを使用するように .NET を構成していますか?](#subheading10) |
 | &nbsp; | すべてのサービス |.NET 構成 |[ガベージ コレクション機能が向上した .NET 4.5 以降を使用していますか?](#subheading11) |
-| &nbsp; | すべてのサービス |並列処理 |[クライアントの機能やスケーラビリティ ターゲットに過剰な負荷がかからないように、並列処理を適切に制限していますか?](#subheading12) |
+| &nbsp; | すべてのサービス |Parallelism |[クライアントの機能やスケーラビリティ ターゲットに過剰な負荷がかからないように、並列処理を適切に制限していますか?](#subheading12) |
 | &nbsp; | すべてのサービス |ツール |[Microsoft が提供する最新バージョンのクライアント ライブラリとツールを使用していますか?](#subheading13) |
 | &nbsp; | すべてのサービス |再試行 |[エラーとタイムアウトの調整に、指数関数的バックオフによる再試行ポリシーを使用していますか?](#subheading14) |
 | &nbsp; | すべてのサービス |再試行 |[再試行できないエラーに対するアプリケーションの再試行を回避していますか?](#subheading15) |
@@ -95,7 +90,7 @@ Azure Storage を使用するアプリケーション開発者は、この記事
 * [1 秒あたりのキュー メッセージ](#subheading39)  
 
 #### <a name="sub1bandwidth"></a>すべてのサービスに対する帯域幅のスケーラビリティ ターゲット
-この記事の執筆時点で、米国での地理冗長ストレージ (GRS) アカウントに対する帯域幅ターゲットは、受信 (ストレージ アカウントに送信されるデータ) の場合に 10 Gbps、送信 (ストレージ アカウントから送信されるデータ) の場合に 20 Gbps です。 ローカル冗長ストレージ (LRS) アカウントでは、この上限がより高く、受信で 20 Gbps、送信で 30 Gbps です。  国際的な帯域幅制限はこれよりも低い場合があるため、 [スケーラビリティ ターゲットに関するページ](http://msdn.microsoft.com/library/azure/dn249410.aspx)を参照してください。  ストレージの冗長オプションの詳細については、後の「 [有用な情報](#sub1useful) 」のリンク先を参照してください。  
+この記事の執筆時点で、米国での地理冗長ストレージ (GRS) アカウントに対する帯域幅ターゲットは、受信 (ストレージ アカウントに送信されるデータ) の場合に 10 Gbps、送信 (ストレージ アカウントから送信されるデータ) の場合に 20 Gbps です。 ローカル冗長ストレージ (LRS) アカウントでは、この上限がより高く、受信で 20 Gbps、送信で 30 Gbps です。  国際的な帯域幅制限はこれよりも低い場合があるため、 [スケーラビリティ ターゲットに関するページ](https://msdn.microsoft.com/library/azure/dn249410.aspx)を参照してください。  ストレージの冗長オプションの詳細については、後の「 [有用な情報](#sub1useful) 」のリンク先を参照してください。  
 
 #### <a name="what-to-do-when-approaching-a-scalability-target"></a>スケーラビリティ ターゲットに近づいている場合の対処法
 アプリケーションが 1 つのストレージ アカウントに対するスケーラビリティ ターゲットに接近している場合は、次の方法のいずれかを検討し、適用します。  
@@ -109,7 +104,7 @@ Azure Storage を使用するアプリケーション開発者は、この記事
 以下のリンクから、スケーラビリティ ターゲットに関する詳細を確認できます。
 
 * スケーラビリティ ターゲットの詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md) 」を参照してください。
-* ストレージ冗長オプションについては、「[Azure Storage のレプリケーション](storage-redundancy.md)」およびブログ投稿「[Azure Storage Redundancy Options and Read Access Geo Redundant Storage (Azure ストレージ冗長オプションと読み取りアクセス地理冗長ストレージ)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)」をご覧ください。
+* ストレージ冗長オプションについては、「[Azure Storage のレプリケーション](storage-redundancy.md)」およびブログ投稿「[Azure Storage Redundancy Options and Read Access Geo Redundant Storage (Azure ストレージ冗長オプションと読み取りアクセス地理冗長ストレージ)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)」をご覧ください。
 * 各種 Azure サービスの料金の最新情報については、「 [Azure の料金設定](https://azure.microsoft.com/pricing/overview/)」を参照してください。  
 
 ### <a name="subheading47"></a>パーティションの命名規則
@@ -145,7 +140,7 @@ Web サイトのホーム ページに表示される製品デモ ビデオの�
 Azure CDN の詳細については、「 [Azure CDN](https://azure.microsoft.com/services/cdn/)」を参照してください。  
 
 ### <a name="subheading6"></a>SAS と CORS の使用
-ユーザーの Web ブラウザーやモバイル アプリケーションで Azure Storage のデータにアクセスする JavaScript などのコードを承認する必要がある場合は、アプリケーションを Web ロールでプロキシとして使用する方法があります。ユーザーのデバイスは Web ロールで認証を実行し、次にストレージ サービスで認証を行います。 この方法では、安全でないデバイスにストレージ アカウント キーを知らせずに済みます。 しかし、ユーザーのデバイスとストレージ サービス間で転送されるデータがすべて、Web ロールを通過するため、Web ロールに大きなオーバーヘッドが生じます。 Shared Access Signature (SAS) を使用すると、Web ロールをストレージ サービスのプロキシとして用いることを回避できます。場合によっては、SAS とクロス オリジン リソース共有 (CORS) ヘッダーと組み合わせて使用します。 SAS を使用すると、ユーザーのデバイスは限られたアクセス トークンでストレージ サービスに直接、要求を実行できるようになります。 たとえば、ユーザーがアプリケーションに写真をアップロードする場合は、Web ロールが特定の BLOB またはコンテナーに対する書き込みアクセスを 30 分間だけ許可する SAS トークンを生成し、ユーザーのデバイスに送信します (30 分が経過すると、SAS トークンは期限切れになります)。
+ユーザーの Web ブラウザーやモバイル アプリケーションで Azure Storage のデータにアクセスする JavaScript などのコードを承認する必要がある場合は、アプリケーションを Web ロールでプロキシとして使用する方法があります。ユーザーのデバイスは Web ロールで認証を実行し、次にストレージ リソースへのアクセスを承認します。 この方法では、安全でないデバイスにストレージ アカウント キーを知らせずに済みます。 しかし、ユーザーのデバイスとストレージ サービス間で転送されるデータがすべて、Web ロールを通過するため、Web ロールに大きなオーバーヘッドが生じます。 Shared Access Signature (SAS) を使用すると、Web ロールをストレージ サービスのプロキシとして用いることを回避できます。場合によっては、SAS とクロス オリジン リソース共有 (CORS) ヘッダーと組み合わせて使用します。 SAS を使用すると、ユーザーのデバイスは限られたアクセス トークンでストレージ サービスに直接、要求を実行できるようになります。 たとえば、ユーザーがアプリケーションに写真をアップロードする場合は、Web ロールが特定の BLOB またはコンテナーに対する書き込みアクセスを 30 分間だけ許可する SAS トークンを生成し、ユーザーのデバイスに送信します (30 分が経過すると、SAS トークンは期限切れになります)。
 
 通常は、あるドメイン上の Web サイトにホストされているページで、他のドメインに対する "PUT" などの特別な操作を実行する JavaScript は許可されません。 たとえば、"contosomarketing.cloudapp.net" で Web ロールをホストしている場合に、クライアント側の JavaScript で BLOB を "contosoproducts.blob.core.windows.net" のストレージ アカウントにアップロードしようとすると、ブラウザーの "Same Origin Policy" によって操作が禁止されます。 CORS は、ソース ドメイン (この例では Web ロール) で生成された要求を信頼するようブラウザーに通知することを、ターゲット ドメイン (この例ではストレージ アカウント) に許可するブラウザー機能です。  
 
@@ -154,7 +149,7 @@ Azure CDN の詳細については、「 [Azure CDN](https://azure.microsoft.com
 #### <a name="useful-resources"></a>有用な情報
 SAS の詳細については、「 [共有アクセス署名、パート 1:SAS モデルについて](../storage-dotnet-shared-access-signature-part-1.md)」を参照してください。  
 
-CORS の詳細については、「 [Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート](http://msdn.microsoft.com/library/azure/dn535601.aspx)」を参照してください。  
+CORS の詳細については、「 [Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート](https://msdn.microsoft.com/library/azure/dn535601.aspx)」を参照してください。  
 
 ### <a name="caching"></a>キャッシュ
 #### <a name="subheading7"></a>データの取得
@@ -164,7 +159,7 @@ CORS の詳細については、「 [Azure ストレージ サービスでのク
 
 アプリケーションが常に使用する構成や検索などのデータは、頻繁にキャッシュの対象とされます。  
 
-.NET を使用して BLOB のプロパティを取得し、最終更新日を確認する方法の例については、「[プロパティおよびメタデータの設定と取得](../blobs/storage-properties-metadata.md)」をご覧ください。 条件付きダウンロードの詳細については、MSDN の「 [BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/library/azure/dd179371.aspx)」を参照してください。  
+.NET を使用して BLOB のプロパティを取得し、最終更新日を確認する方法の例については、「[プロパティおよびメタデータの設定と取得](../blobs/storage-properties-metadata.md)」をご覧ください。 条件付きダウンロードの詳細については、MSDN の「 [BLOB サービス操作の条件ヘッダーの指定](https://msdn.microsoft.com/library/azure/dd179371.aspx)」を参照してください。  
 
 #### <a name="subheading8"></a>データの一括アップロード
 一部のアプリケーション シナリオでは、データをローカルで集計し、それらをすぐ個別にアップロードするのではなく、定期的に一括でアップロードすることができます。 たとえば、Web アプリケーションがアクティビティのログ ファイルを保持する場合があります。つまり、アプリケーションはアクティビティが発生するたびに、それぞれの詳細をテーブル エンティティとしてアップロードできますが (多くのストレージ操作が必要)、ほかに、アクティビティの詳細をローカルのログ ファイルに保存し、それらの全詳細を区切り記号で区切って記録したファイルを定期的に BLOB にアップロードすることもできます。 各ログ エントリが 1 KB であれば、1 回の "Put Blob" トランザクションで何千個もアップロードできます (1 回のトランザクションで最大 64 MB の BLOB をアップロード可能)。 もちろん、アップロードする前にローカル マシンがクラッシュし、ログ データが失われる可能性もあります。アプリケーション開発者は、クライアント デバイスに障害が起きたり、アップロードに失敗したりする可能性を設計に組み込む必要があります。  単発のアクティビティではなく、複数の期間にわたってアクティビティ データをダウンロードする必要がある場合は、テーブルよりも BLOB をお勧めします。
@@ -183,7 +178,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 他のプログラミング言語については、対象の言語のドキュメントで接続数の上限の設定方法を確認してください。  
 
-詳細については、ブログの投稿「 [Web Services: Concurrent Connections (Web サービス: 同時接続数)](http://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx)」を参照してください。  
+詳細については、ブログの投稿「 [Web Services: Concurrent Connections (Web サービス: コンカレント接続数)](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx)」を参照してください。  
 
 #### <a name="subheading10"></a>非同期タスクを伴う同期コードを使用する場合は、スレッド プールの最小スレッド数 (ThreadPool Min Threads) を増やす
 このコードはスレッド プールの最小スレッド数を増やします:  
@@ -192,12 +187,12 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-詳細については、「 [ThreadPool.SetMinThreads メソッド](http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx)」を参照してください。  
+詳細については、「 [ThreadPool.SetMinThreads メソッド](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx)」を参照してください。  
 
 #### <a name="subheading11"></a>.NET 4.5 のガベージ コレクションを活用する
 クライアント アプリケーション用に .NET 4.5 以降を使用すると、サーバー ガベージ コレクションによるパフォーマンス向上が期待できます。
 
-詳細については、記事「 [.NET 4.5 におけるパフォーマンス向上の概要](http://msdn.microsoft.com/magazine/hh882452.aspx)」を参照してください。  
+詳細については、記事「 [.NET 4.5 におけるパフォーマンス向上の概要](https://msdn.microsoft.com/magazine/hh882452.aspx)」を参照してください。  
 
 ### <a name="subheading12"></a>無制限の並列処理
 並列処理はパフォーマンスにとって非常に有用ですが、複数のワーカーを使用して同じストレージ アカウント内の複数のパーティション (コンテナー、キュー、テーブル パーティション) にアクセスする状況や、同じパーティション内の複数の項目にアクセスする状況で、データのアップロードとダウンロードに無制限の並列処理 (スレッドや並列要求の数の上限なし) を使用する場合には、注意が必要です。 並列処理が無制限の場合、アプリケーションはクライアント デバイスの処理能力やストレージ アカウントのスケーラビリティ ターゲットを超過することがあり、その結果、遅延や調整時間が長くなります。  
@@ -215,7 +210,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 クライアント ライブラリは、再試行できるエラーとできないエラーを区別します。 しかし、ストレージ REST API に対して独自のコードを記述する場合は、一部のエラーでは再試行を実施しないでください。たとえば、400 (正しくない要求) 応答は、クライアント アプリケーションが想定されていない形式で要求を送信したため、処理できなかったという事態を示します。 この要求を再送信しても、毎回同じ応答が返されることになるので、再試行は無意味です。 ストレージ REST API に対して独自のコードを記述する場合は、エラー コードの示す内容と各エラーに対する適切な再試行の方法 (または可否) を理解する必要があります。  
 
 #### <a name="useful-resources"></a>有用な情報
-ストレージのエラー コードの詳細については、Microsoft Azure Web サイトの「 [ステータス コードとエラー コード](http://msdn.microsoft.com/library/azure/dd179382.aspx) 」を参照してください。  
+ストレージのエラー コードの詳細については、Microsoft Azure Web サイトの「 [ステータス コードとエラー コード](https://msdn.microsoft.com/library/azure/dd179382.aspx) 」を参照してください。  
 
 ## <a name="blobs"></a>BLOB
 既に説明した [すべてのサービス](#allservices) 向けの実証済みプラクティスに加えて、ここでは、BLOB サービスに適用する実証済みプラクティスについて説明します。  
@@ -241,7 +236,7 @@ BLOB のターゲット スループットの詳細については、「 [Azure 
 
 通常、同一のストレージ アカウント内でのコピーは、すばやく完了します。  
 
-詳細については、「 [Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx)」を参照してください。  
+詳細については、「 [Copy Blob](https://msdn.microsoft.com/library/azure/dd894037.aspx)」を参照してください。  
 
 #### <a name="subheading18"></a>AzCopy の使用
 Azure Storage チームは、ストレージ アカウントとの間やストレージ アカウント間で多数の BLOB を一括転送できる、"AzCopy" コマンド ライン ツールをリリースしました。  このツールは、そうしたシナリオに最適であり、高い転送速度を実現できます。  アップロードやダウンロード、コピーを一括で実行するシナリオに使用してください。 詳細情報とダウンロード方法については、「 [AzCopy コマンドライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。  
@@ -258,7 +253,7 @@ BLOB サービスは HEAD 要求をサポートしており、BLOB に関する�
 BLOB を迅速にアップロードするには、まず、アップロードする BLOB は 1 つか、それとも複数かということを考えます。  以下のガイダンスを参考に、状況に応じて、適切な方法を見つけてください。  
 
 #### <a name="subheading21"></a>1 つの大きな BLOB を迅速にアップロードする
-1 つの大きな BLOB を迅速にアップロードするには、クライアント アプリケーションがブロックやページを並列アップロードする必要があります (個々の BLOB とストレージ アカウント全体に関するスケーラビリティ ターゲットに注意してください)。  Microsoft が提供する公式の RTM ストレージ クライアント ライブラリ (.NET、Java) で、このアップロードを実行できます。  ライブラリごとに指定されている以下のオブジェクトまたはプロパティを使用して、同時実行のレベルを設定します。  
+1 つの大きな BLOB を迅速にアップロードするには、クライアント アプリケーションがブロックやページを並列アップロードする必要があります (個々の BLOB とストレージ アカウント全体に関するスケーラビリティ ターゲットに注意してください)。  Microsoft が提供する公式の RTM ストレージ クライアント ライブラリ (.NET、Java) で、このアップロードを実行できます。  ライブラリごとに指定されている以下のオブジェクトまたはプロパティを使用して、コンカレンシーのレベルを設定します。  
 
 * .NET: BlobRequestOptions オブジェクトで ParallelOperationThreadCount の使用を設定します。
 * Java/Android: BlobRequestOptions.setConcurrentRequestCount() を使用します。
@@ -271,7 +266,7 @@ BLOB を迅速にアップロードするには、まず、アップロードす
 ### <a name="subheading23"></a>正しい種類の BLOB の選択
 Azure Storage がサポートしている BLOB には、*ページ* BLOB と*ブロック* BLOB の 2 種類があります。 特定の使用シナリオでは、BLOB の種類の選択がソリューションのパフォーマンスとスケーラビリティに影響を及ぼします。 ブロック blob は大量のデータを効率的にアップロードする場合に適しています。たとえば、クライアント アプリケーションが BLOB ストレージに写真やビデオをアップロードする必要がある場合です。 ページ blob はアプリケーションがランダム書き込みを実行する必要がある場合に適しています。たとえば、Azure VHD がページ blob として格納されている場合です。  
 
-詳細については、「 [ブロック BLOB、追加 BLOB、ページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。  
+詳細については、「 [ブロック BLOB、追加 BLOB、ページ BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。  
 
 ## <a name="tables"></a>テーブル
 既に説明した [すべてのサービス](#allservices) 向けの実証済みプラクティスに加えて、ここでは、テーブル サービスに適用する実証済みプラクティスについて説明します。  
@@ -291,12 +286,12 @@ Azure Storage がサポートしている BLOB には、*ページ* BLOB と*ブ
 #### <a name="subheading25"></a>JSON の使用
 ストレージ サービス Version 2013-08-15 より、テーブル サービスでは、テーブル データの転送用に、XML ベースの AtomPub 形式に代えて JSON を使用できるようになりました。 これにより、ペイロード サイズが 75% 程度に抑えられ、アプリケーションのパフォーマンスを大幅に引き上げることができます。
 
-詳しくは、投稿「[Microsoft Azure Tables: Introducing JSON (Microsoft Azure テーブル: JSON の紹介)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)」と、「[テーブル サービス操作のペイロード形式](http://msdn.microsoft.com/library/azure/dn535600.aspx)」をご覧ください。
+詳しくは、投稿「[Microsoft Azure Tables: Introducing JSON (Microsoft Azure テーブル: JSON の紹介)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)」と、「[テーブル サービス操作のペイロード形式](https://msdn.microsoft.com/library/azure/dn535600.aspx)」をご覧ください。
 
 #### <a name="subheading26"></a>Nagle のオフ
 Nagle のアルゴリズムは、ネットワーク パフォーマンスを向上させる方法として、TCP/IP ネットワークで広く使用されています。 しかし、すべての状況に適しているわけではありません (高度な対話形式の環境などには不向き)。 Azure Storage では、Nagle のアルゴリズムがテーブル サービスやキュー サービスに対する要求のパフォーマンスにマイナスの影響を及ぼすため、可能な場合は無効にしてください。  
 
-詳しくは、ブログ記事「[Nagle's Algorithm is Not Friendly towards Small Requests (Nagle のアルゴリズムは小さな要求に不親切)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)」をご覧ください。この記事では、Nagle アルゴリズムがテーブルやキューの要求に十分対応できない理由を説明し、クライアント アプリケーションでこのアルゴリズムを無効にする方法を示しています。  
+詳しくは、ブログ記事「[Nagle's Algorithm is Not Friendly towards Small Requests (Nagle のアルゴリズムは小さな要求に不親切)](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)」をご覧ください。この記事では、Nagle アルゴリズムがテーブルやキューの要求に十分対応できない理由を説明し、クライアント アプリケーションでこのアルゴリズムを無効にする方法を示しています。  
 
 ### <a name="schema"></a>スキーマ
 データの表現とクエリの方法は、テーブル サービスのパフォーマンスに影響を及ぼす単一要因として最大のものです。 アプリケーションごとに違いはありますが、このセクションでは、以下に関連する一般的な実証済みプラクティスの概略を示します。  

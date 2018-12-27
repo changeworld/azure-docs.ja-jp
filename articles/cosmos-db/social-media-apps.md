@@ -5,31 +5,28 @@ keywords: ソーシャル メディア アプリ
 services: cosmos-db
 author: ealsur
 manager: kfile
-documentationcenter: ''
-ms.assetid: 2dbf83a7-512a-4993-bf1b-ea7d72e095d9
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/29/2017
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 53abefd4f3dd1f8da60b8b8efed1e7070b471383
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bc31c7ebec7c1f7a02be65b15805fb48b1ef275d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260314"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
 大規模に相互接続された社会で生きていると、日々の生活の中で **ソーシャル ネットワーク**に参加することになります。 ソーシャル ネットワークを使用して、友人や同僚、家族と交流し、共通の関心を持つ人々と情熱を分かち合うこともあります。
 
 エンジニアや開発者は、これらのネットワークがデータをどのように保存し、相互接続しているのか疑問に思っているかもしれません。また、特定のニッチ市場向けの新しいソーシャル ネットワークの構築や設計を任されている場合もあるでしょう。 そこで、"このすべてのデータはどのように保存されているのか" という大きな疑問が生じます。
 
-写真、ビデオ、音楽などの関連メディアと共に記事を投稿できる新しいソーシャル ネットワークを構築しようとしていると仮定しましょう。 ユーザーは投稿にコメントしたり、投稿を評価したりできます。 メインの Web サイト ランディング ページに表示され、ユーザーが操作できる投稿のフィードもあります。 これは (最初は) それほど複雑ではないように思われますが、簡潔にするために、ここまでにしておきましょう (関係性の影響を受けるカスタム ユーザー フィードを深く掘り下げて考えることもできましたが、それはこの記事の目的ではありません)。
+写真、ビデオ、音楽などの関連メディアと共に記事を投稿できる新しいソーシャル ネットワークを構築しようとしていると仮定しましょう。 ユーザーは投稿にコメントしたり、投稿を評価したりできます。 メインの Web サイト ランディング ページに表示され、ユーザーが操作できる投稿のフィードもあります。 この方法は (最初は) 複雑でないように聞こえますが、簡潔にするために、ここで止めておきましょう (関連性の影響を受けるカスタム ユーザー フィードを深く掘り下げることもできますが、それはこの記事の目的を超えています)。
 
 では、データはどこにどのように保存すればよいのでしょうか。
 
-皆さんの多くは、SQL データベースの使用経験があるか、少なくとも [データのリレーショナル モデリング](https://en.wikipedia.org/wiki/Relational_model) をご存知だと思いますので、次のようなものを作成したくなるかもしれません。
+ユーザーが SQL データベースを経験していたり、[データのリレーショナル モデリング](https://en.wikipedia.org/wiki/Relational_model)の概念を持っていたりすると、次のような図から始めたくなるかもしれません。
 
 ![相対リレーショナル モデルを示すダイアグラム](./media/social-media-apps/social-media-apps-sql.png) 
 
@@ -42,7 +39,7 @@ ms.lasthandoff: 04/06/2018
 コンテンツを提供するために、こうした多数の結合を使用する何千ものクエリを解決できるだけの能力を備えた巨大な SQL インスタンスを使用することもできますが、実際のところ、よりシンプルなソリューションが存在するのに、そのようなインスタンスをわざわざ使用する必要があるでしょうか。
 
 ## <a name="the-nosql-road"></a>NoSQL への道
-この記事では、Azure の NoSQL データベース [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) を使用して、コスト効果の高い方法でソーシャル プラットフォームのデータをモデル化する方法をご紹介し、また [Gremlin Graph API](../cosmos-db/graph-introduction.md) などの Azure Cosmos DB の他の機能を活用する方法もご紹介します。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような 1 つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
+この記事では、Azure の NoSQL データベース [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) を使用して、コスト効果の高い方法でソーシャル プラットフォームのデータをモデル化する方法をご紹介し、また [Gremlin API](../cosmos-db/graph-introduction.md) などの Azure Cosmos DB の他の機能を活用する方法もご紹介します。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような 1 つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
 
 
     {
@@ -62,7 +59,7 @@ ms.lasthandoff: 04/06/2018
         ]
     }
 
-また、投稿を 1 つのクエリで結合なしに取得できます。 これははるかにシンプルでわかりやすい方法です。予算的にも、必要なリソースを減らして大きな成果を上げることができます。
+また、投稿を 1 つのクエリで結合なしに取得できます。 このクエリははるかにシンプルでわかりやすい方法です。予算的にも、必要なリソースを減らして大きな成果を上げることができます。
 
 Azure Cosmos DB では、[カスタマイズ](indexing-policies.md)も可能な自動インデックス作成機能によって、すべてのプロパティのインデックスが作成されます。 このスキーマフリーのアプローチにより、さまざまな動的構造でドキュメントを保存できます。将来的には、カテゴリのリストや投稿に関連付けられたハッシュタグを投稿に含めたいと考えています。Cosmos DB では、余分な作業を必要とせずに、追加された属性を使用して新しいドキュメントを処理します。
 
@@ -133,14 +130,14 @@ Azure Cosmos DB では、[カスタマイズ](indexing-policies.md)も可能な�
         "totalPoints":11342
     }
 
-フォロワーの実際のグラフは、Azure Cosmos DB の [Gremlin Graph API](../cosmos-db/graph-introduction.md) を使用して保存し、各ユーザーの[頂点](http://mathworld.wolfram.com/GraphVertex.html)と、"A が B をフォローする" という関係性を維持する[エッジ](http://mathworld.wolfram.com/GraphEdge.html)を作成できます。 Graph API によって特定のユーザーのフォロワーが分かるだけでなく、ユーザーの共通点を示唆するより複雑なクエリも作成できます。 ユーザーのお気に入りや楽しんでいるコンテンツ カテゴリをグラフに追加すれば、フォローしている人のお気に入りコンテンツを勧めたり、共通点の多いユーザーを見つけたりといった、高度なコンテンツ検出機能を備えたエクスペリエンスの創造に取り掛かることができます。
+フォロワーの実際のグラフは、Azure Cosmos DB の [Gremlin API](../cosmos-db/graph-introduction.md) を使用して保存し、各ユーザーの[頂点](http://mathworld.wolfram.com/GraphVertex.html)と、"A が B をフォローする" という関係性を維持する[エッジ](http://mathworld.wolfram.com/GraphEdge.html)を作成できます。 Gremlin API によって特定のユーザーのフォロワーがわかるだけでなく、ユーザーの共通点を示唆するより複雑なクエリも作成できます。 ユーザーのお気に入りや楽しんでいるコンテンツ カテゴリをグラフに追加すれば、フォローしている人のお気に入りコンテンツを勧めたり、共通点の多いユーザーを見つけたりといった、高度なコンテンツ検出機能を備えたエクスペリエンスの創造に取り掛かることができます。
 
 ユーザー統計情報ドキュメントを使用して、UI またはクイック プロファイル プレビューのカードを作成することもできます。
 
 ## <a name="the-ladder-pattern-and-data-duplication"></a>"ラダー (梯子)" パターンとデータの重複
 投稿を参照する JSON ドキュメントでお気付きかと思いますが、同じユーザーが何度も出現します。 皆さんの推測どおり、この非正規化を考慮すると、これはユーザーを表す情報が複数の場所に存在する可能性があることを意味します。
 
-クエリの高速化を可能するために、データの重複が発生しています。 この副作用による問題は、何らかの操作によってユーザーのデータが変更された場合に、そのユーザーがこれまでに実行したすべてのアクティビティを見つけ、そのすべてを更新する必要があることです。 あまり現実的ではなさそうですよね。
+クエリの高速化を可能するために、データの重複が発生しています。 この副作用による問題は、何らかの操作によってユーザーのデータが変更された場合に、そのユーザーがこれまでに実行したすべてのアクティビティを見つけ、そのすべてを更新する必要があることです。 現実的ではなさそうですよね。
 
 私たちは、アクティビティごとにアプリケーションで表示するユーザーのキー属性を識別することでこの問題を解決しようとしています。 アプリケーションで投稿を視覚的に示し、作成者の名前と写真だけを表示する場合、ユーザーのすべてのデータを "createdBy" 属性に保存するのはなぜでしょうか。 各コメントにユーザーの写真を表示するだけなら、そのユーザーのその他の情報は実際には不要です。 ここで、私が "ラダー パターン" と呼ぶものが効果を発揮し始めます。
 
@@ -153,7 +150,7 @@ Azure Cosmos DB では、[カスタマイズ](indexing-policies.md)も可能な�
         "address":"742 Evergreen Terrace",
         "birthday":"1983-05-07",
         "email":"john@doe.com",
-        "twitterHandle":"@john",
+        "twitterHandle":"\@john",
         "username":"johndoe",
         "password":"some_encrypted_phrase",
         "totalPoints":100,
@@ -178,7 +175,7 @@ Azure Cosmos DB では、[カスタマイズ](indexing-policies.md)も可能な�
         "surname":"Doe",
         "username":"johndoe"
         "email":"john@doe.com",
-        "twitterHandle":"@john"
+        "twitterHandle":"\@john"
     }
 
 さらに、投稿は次のようになります。
@@ -211,24 +208,24 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 
 答えは簡単です。情報ストリームを活用し、情報ストリームから学ぶのです。
 
-しかし、何を学ぶことができるのでしょうか。 簡単な例としては、 [センチメント分析](https://en.wikipedia.org/wiki/Sentiment_analysis)、ユーザーの好みに基づくコンテンツの推奨、ソーシャル ネットワークで公開されるすべてのコンテンツが家族向けの安全なものであることを保証する自動コンテンツ モデレーターなどがあります。
+しかし、何を学ぶことができるのでしょうか。 簡単な例としては、 [センチメント分析](https://en.wikipedia.org/wiki/Sentiment_analysis)、ユーザーの好みに基づくコンテンツのレコメンデーション、ソーシャル ネットワークで公開されるすべてのコンテンツが家族向けの安全なものであることを保証する自動コンテンツ モデレーターなどがあります。
 
 人を夢中にさせるような話なので、シンプルなデータベースやファイルからこれらのパターンや情報を抽出するには、数理科学の博士号が必要と思っておられるでしょう。しかし、それは違います。
 
-[Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx) に含まれる [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) は、完全に管理されたクラウド サービスです。このサービスを利用することで、シンプルなドラッグ アンド ドロップ インターフェイスでのアルゴリズムを使用したワークフローの作成や、[R](https://en.wikipedia.org/wiki/R_\(programming_language\)) での独自のアルゴリズムのコーディング、構築済みのすぐに使える API ([Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[Content Moderator](https://www.microsoft.com/moderator)、[Recommendations](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2) など) の使用が可能になります。
+[Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx) に含まれる [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) は、完全に管理されたクラウド サービスです。このサービスを利用することで、シンプルなドラッグ アンド ドロップ インターフェイスでのアルゴリズムを使用したワークフローの作成や、[R](https://en.wikipedia.org/wiki/R_\(programming_language\)) での独自のアルゴリズムのコーディング、構築済みのすぐに使える API ([Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、Content Moderator、[Recommendations](https://gallery.azure.ai/Solution/Recommendations-Solution) など) の使用が可能になります。
 
 これらの Machine Learning シナリオは、さまざまなソースからの情報を取り込むために [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) を使用し、その情報の処理と Azure Machine Learning で処理できる出力の生成に [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) を使用することで実現できます。
 
-利用できる別のオプションとして、[Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) を使用したユーザーのコンテンツの分析があります。ユーザーが何を書いているかを [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api) で分析してコンテンツを深く理解できるだけではなく、望ましくないコンテンツや成人向けのコンテンツを [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) で検出することもできます。 Cognitive Services には、Machine Learning の知識を必要とせずに使用できる独創的なソリューションがたくさん含まれています。
+利用できる別のオプションとして、[Azure Cognitive Services](https://www.microsoft.com/cognitive-services) を使用したユーザーのコンテンツの分析があります。ユーザーが何を書いているかを [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api) で分析してコンテンツを深く理解できるだけではなく、望ましくないコンテンツや成人向けのコンテンツを [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) で検出し、それに応じて対処することもできます。 Cognitive Services には、Machine Learning の知識を必要とせずに使用できる独創的なソリューションがたくさん含まれています。
 
 ## <a name="a-planet-scale-social-experience"></a>世界規模のソーシャル エクスペリエンス
-最後に触れなければならない重要なトピックは**スケーラビリティ**です。 アーキテクチャを設計するときは、データの処理量の増加や地理的範囲の拡大に対応しなければならないため、各コンポーネントが自動的に拡張できることが非常に重要です。 Cosmos DB を使用すると、こうした複雑な作業を**ターンキー エクスペリエンス**として実現できます。
+最後に触れなければならない重要な項目は**スケーラビリティ**です。 アーキテクチャを設計するときは、データの処理量の増加や地理的範囲の拡大に対応しなければならないため、各コンポーネントが自動的に拡張できることが非常に重要です。 Cosmos DB を使用すると、こうした複雑な作業を**ターンキー エクスペリエンス**として実現できます。
 
-Cosmos DB では、指定された**パーティション キー** (ドキュメントの属性の 1 つとして定義) に基づいてパーティションが自動作成されるため、[動的なパーティション分割](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)機能をすぐに使用できます。 使用可能な[ベスト プラクティス](../cosmos-db/partition-data.md#designing-for-partitioning)を考慮しながら、適切なパーティション キーをデザイン時に定義する必要があります。ソーシャル エクスペリエンスの場合、パーティション分割戦略は、クエリ実行方法と書き込み方法に合わせる必要があります。クエリ実行については、同じパーティション内で読み取ることが望ましく、書き込みについては、複数のパーティションに書き込みを分散させることで "ホット スポット" を回避します。 たとえば、一時的なキー (日/月/週)、コンテンツのカテゴリ、地理的リージョン、ユーザーに基づいてパーティション分割でき、どの方法でパーティション分割するかは、データに対してどのようにクエリを実行し、そのデータをソーシャル エクスペリエンスでどのように表示するかによって異なります。 
+Cosmos DB では、指定された**パーティション キー** (ドキュメントの属性の 1 つとして定義) に基づいてパーティションが自動作成されるため、[動的なパーティション分割](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)機能をすぐに使用できます。 正しいパーティション キーの定義は、設計時に行う必要があります。詳細については、[正しいパーティション キーの選択](partitioning-overview.md#choose-partitionkey)に関する記事を参照してください。 ソーシャル エクスペリエンスの場合は、パーティション分割戦略をクエリの実行方法 (同じパーティション内の読み取りが望ましい) および書き込み方法 (書き込みを複数のパーティションに分散させることによって "ホット スポット" を回避する) と整合させる必要があります。 たとえば、一時的なキー (日/月/週)、コンテンツのカテゴリ、地理的リージョン、ユーザーに基づいてパーティション分割でき、どの方法でパーティション分割するかは、データに対してどのようにクエリを実行し、そのデータをソーシャル エクスペリエンスでどのように表示するかによって異なります。 
 
 特筆すべきは、Cosmos DB では、すべてのパーティションでクエリ ([集計](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)を含む) が透過的に実行される点です。データが拡大しても、ロジックを追加する必要はありません。
 
-トラフィックやリソースの消費量 ([RU](request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザーベースが拡大し、ユーザーによるコンテンツの作成や読み取りが多くなり始めると、ご自身の読み書きの頻度も増えるため、**スループットの拡張**機能が重要になってきます。 RU は非常に簡単に増やすことができます。RU を増やすには、Azure Portal で数回クリックするか [API でコマンドを発行](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer)します。
+トラフィックやリソースの消費量 ([RU](request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザー ベースが拡大し、ユーザーによるコンテンツの作成や読み取りが多くなり始めると、ご自身の読み書きの頻度も増えるため、**スループットの拡張**機能が重要になってきます。 RU は簡単に増やすことができます。RU を増やすには、Azure Portal で数回クリックするか [API でコマンドを発行](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer)します。
 
 ![スケールアップとパーティション キーの定義](./media/social-media-apps/social-media-apps-scaling.png)
 
@@ -236,7 +233,7 @@ Cosmos DB では、指定された**パーティション キー** (ドキュメ
 
 でも、待ってください... やがては、プラットフォームのユーザー エクスペリエンスが最適ではないことに気が付きます。自分のリージョンからかなり離れた場所にユーザーがいる場合、その待ち時間は相当なものになります。でも、そのユーザーにはプラットフォームの使用をやめてほしくありません。 簡単に**グローバル展開**できる手段さえあれば、と思うでしょう... ところが、手段はあるのです。
 
-Cosmos DB を使用すると、数回のクリックで[データをグローバルかつ透過的にレプリケート](../cosmos-db/tutorial-global-distribution-sql-api.md)し、使用可能なリージョンの中で、[クライアント コード](../cosmos-db/tutorial-global-distribution-sql-api.md)からそのリージョンを選択できます。 また、これは[複数のフェールオーバー リージョン](regional-failover.md)を確保できることも意味します。 
+Cosmos DB を使用すると、数回のクリックで[データをグローバルかつ透過的にレプリケート](../cosmos-db/tutorial-global-distribution-sql-api.md)し、使用可能なリージョンの中で、[クライアント コード](../cosmos-db/tutorial-global-distribution-sql-api.md)からそのリージョンを選択できます。 また、これは[複数のフェールオーバー リージョン](high-availability.md)を確保できることも意味します。 
 
 データをグローバルにレプリケートするときは、クライアントがそのデータを利用できるかどうかを確認する必要があります。 Web フロントエンドを使用する場合、またはモバイル クライアントから API にアクセスする場合は、[Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) をデプロイし、必要なリージョンすべてに Azure App Service の複製を作成します。その際に、拡張されたグローバル カバレッジをサポートするためのパフォーマンス構成を使用します。 フロントエンドまたは API にアクセスしたクライアントは、最も近い App Service にルーティングされ、その APP Service はローカルの Cosmos DB レプリカに接続されます。
 

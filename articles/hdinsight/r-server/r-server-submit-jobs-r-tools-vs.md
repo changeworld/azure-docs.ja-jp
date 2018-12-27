@@ -1,29 +1,24 @@
 ---
-title: "R Tools for Visual Studio からのジョブの送信 - Azure HDInsight | Microsoft Docs"
-description: "ローカルの Visual Studio マシンから HDInsight クラスターに R ジョブを送信します。"
+title: R Tools for Visual Studio からのジョブの送信 - Azure HDInsight
+description: ローカルの Visual Studio マシンから HDInsight クラスターに R ジョブを送信します。
 services: hdinsight
-documentationcenter: 
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/11/2018
+author: maxluk
 ms.author: maxluk
-ms.openlocfilehash: 1a82ba7790f739768156a8bee33a74d7130e24e1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.reviewer: jasonh
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 06/27/2018
+ms.openlocfilehash: 400cb16e4f4440283a783116c4ee843bc0a7344c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248573"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 
-[R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) は、[Visual Studio 2017](https://www.visualstudio.com/downloads/) と [Visual Studio 2015 Update 3](http://go.microsoft.com/fwlink/?LinkId=691129) 以降の両方の Community Edition (無料)、Professional Edition、Enterprise Edition 向けの無料のオープンソース拡張機能です。
+[R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) は、[Visual Studio 2017](https://www.visualstudio.com/downloads/) と [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 以降の両方の Community Edition (無料)、Professional Edition、Enterprise Edition 向けの無料のオープンソース拡張機能です。
 
 RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、IntelliSense (コード補完)、ggplot2 や ggviz などの R ライブラリを介した[プロットの視覚化](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data)、[R コードのデバッグ](https://docs.microsoft.com/visualstudio/rtvs/debugging)などの多彩なツールを提供することにより、R ワークフローを強化します。
 
@@ -38,7 +33,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 3. SSH 認証のための公開キーと秘密キーを用意します。
 <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. マシンに [Microsoft R Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) をインストールします。 Microsoft R Server により、[`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 関数と `RxSpark` 関数が提供されます。
+4. お使いのコンピューターに [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) をインストールします。 ML Server により、[`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 関数と `RxSpark` 関数が提供されます。
 
 5. ローカル クライアントから HDInsight クラスターに対して `RevoScaleR` 関数を実行するための計算コンテキストを提供する、[PuTTY](http://www.putty.org/) をインストールします。
 
@@ -54,7 +49,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 
 ## <a name="execute-local-r-methods"></a>ローカル R メソッドを実行する
 
-1. [Microsoft R Server HDInsight クラスター](r-server-get-started.md)を作成します。
+1. [HDInsight ML Services クラスター](r-server-get-started.md).
 2. [RTVS 拡張機能](https://docs.microsoft.com/visualstudio/rtvs/installation)をインストールします。
 3. [サンプル zip ファイル](https://github.com/Microsoft/RTVS-docs/archive/master.zip)をダウンロードします。
 4. `examples/Examples.sln` を開いて、Visual Studio でソリューションを起動します。
@@ -67,13 +62,13 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 
     ![[データ サイエンスの設定...]](./media/r-server-submit-jobs-r-tools-vs/workspace.png)
 
-## <a name="submit-jobs-to-an-hdinsight-r-cluster"></a>HDInsight R クラスターにジョブを送信する
+## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>HDInsight ML Services クラスターにジョブを送信する
 
-PuTTY が搭載された Windows コンピューターから Microsoft R Server/Microsoft R Client を使用して、ローカル クライアントから HDInsight クラスターに対して分散された `RevoScaleR` 関数を実行する計算コンテキストを作成できます。 `RxSpark` を使用して計算コンテキストを作成し、ユーザー名、Hadoop クラスターのエッジ ノード、SSH スイッチなどを指定します。
+PuTTY が搭載された Windows コンピューターから Microsoft ML Server/Microsoft R Client を使用して、ローカル クライアントから HDInsight クラスターに対して分散された `RevoScaleR` 関数を実行する計算コンテキストを作成できます。 `RxSpark` を使用して計算コンテキストを作成し、ユーザー名、Hadoop クラスターのエッジ ノード、SSH スイッチなどを指定します。
 
-1. エッジ ノードのホスト名を調べるには、Azure で HDInsight R クラスターのウィンドウを開き、[概要] ウィンドウの上部のメニューで **[SSH (Secure Shell)]** を選択します。
+1. エッジ ノードのホスト名を調べるには、Azure で HDInsight ML Services クラスターのウィンドウを開き、[概要] ウィンドウの上部のメニューで **[SSH (Secure Shell)]** を選択します。
 
-    ![[SSH (Secure Shell)]](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
+    ![[Secure Shell (SSH)]](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
 
 2. **[エッジ ノードのホスト名]** の値をコピーします。
 
@@ -123,7 +118,7 @@ PuTTY が搭載された Windows コンピューターから Microsoft R Server/
 
 5. `rxHadoopCopy` によって、サンプル データ フォルダーの `people.json` ファイルが新しく作成された `/user/RevoShare/newUser` フォルダーに正常にコピーされたことを確認します。
 
-    1. Azure の HDInsight R クラスターのウィンドウで、左側のメニューから **[ストレージ アカウント]** を選択します。
+    1. Azure の HDInsight ML Services クラスターのウィンドウで、左側のメニューから **[ストレージ アカウント]** を選択します。
 
         ![ストレージ アカウント](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
 
@@ -131,7 +126,7 @@ PuTTY が搭載された Windows コンピューターから Microsoft R Server/
 
     3. ストレージ アカウントのウィンドウの左側のメニューで **[コンテナー]** を選択します。
 
-        ![コンテナー](./media/r-server-submit-jobs-r-tools-vs/containers.png)
+        ![Containers](./media/r-server-submit-jobs-r-tools-vs/containers.png)
 
     4. クラスターのコンテナー名を選択し、**[user]** フォルダーを参照して (一覧の一番下の *[さらに読み込む]* のクリックが必要な場合があります)、*[RevoShare]*、**[newUser]** の順に選択します。 `newUser` フォルダーに `people.json` ファイルが表示されます。
 
@@ -145,6 +140,6 @@ PuTTY が搭載された Windows コンピューターから Microsoft R Server/
 
 ## <a name="next-steps"></a>次の手順
 
-* [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](r-server-compute-contexts.md)
+* [HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
 * 「[HDInsight で ScaleR と SparkR を組み合わせる](../hdinsight-hadoop-r-scaler-sparkr.md)」では、航空会社のフライトの遅延を予測する例が示されています。
 <!-- * You can also submit R jobs with the [R Studio Server](hdinsight-submit-jobs-from-r-studio-server.md) -->

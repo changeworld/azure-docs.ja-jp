@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 38c1611c0404202be2e100d3059b4ba1ed1a9236
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2104f2690e681c53649b9a37c6c764380aa94568
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051502"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した SAP Business Warehouse からのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-sap-business-warehouse-connector.md)
-> * [バージョン 2 - プレビュー](../connector-sap-business-warehouse.md)
+> * [Version 1](data-factory-sap-business-warehouse-connector.md)
+> * [Version 2 (現在のバージョン)](../connector-sap-business-warehouse.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での SAP Business Warehouse コネクタ](../connector-sap-business-warehouse.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の SAP Business Warehouse コネクタ](../connector-sap-business-warehouse.md)に関するページを参照してください。
 
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの SAP Business Warehouse (BW) からデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
@@ -62,7 +63,7 @@ SAP BW への接続を有効にするには、次のコンポーネントをイ�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、SAP Business Warehouse (BW) のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-プロパティ | [説明] | 使用できる値 | 必須
+プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 [サーバー] | SAP BW インスタンスが存在するサーバーの名前。 | 文字列 | [はい]
 systemNumber | SAP BW システムのシステムの数。 | 2 桁の 10 進数の文字列として表されます。 | [はい]
@@ -85,7 +86,7 @@ encryptedCredential | 暗号化された資格情報の文字列。 | 文字列 
 
 コピー アクティビティのソースの種類が **RelationalSource** (SAP BW を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | クエリ | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | MDX クエリ。 | [はい] |
 

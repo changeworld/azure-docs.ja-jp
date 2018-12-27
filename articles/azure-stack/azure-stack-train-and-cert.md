@@ -1,19 +1,19 @@
 ---
-title: "Azure Stack のトレーニングと認定"
-description: "Azure Stack のトレーニングと認定の機会について説明します。"
+title: Azure Stack のトレーニングと認定
+description: Azure Stack のトレーニングと認定の機会について説明します。
 services: azure-stack
 author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-keywords: 
-ms.openlocfilehash: 3ac1d83c4f40bd8bbd072486489b72de73084ade
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2b9a769abb1e704dce0bd6924372be62bb85d68d
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376869"
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure Stack のトレーニングと認定
 
@@ -25,9 +25,10 @@ Azure Stack について学習し、Azure Stack に関するスキルをデモ�
 
 - [コース 20537A: Microsoft Azure Stack を使用したハイブリッド クラウドの構成および操作](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
 - [edX: Azure Stack オンライン トレーニング](https://aka.ms/AzureStackMOOC)
-- [ジョブの役割とラーニング パス](https://azure.microsoft.com/en-us/training/learning-paths/)
+- [ジョブの役割とラーニング パス](https://azure.microsoft.com/training/learning-paths/)
 
 ## <a name="certification"></a>認定
+
 Azure Stack の認定は現在開発中です。 最新の更新を確認してください。
 
 ## <a name="next-steps"></a>次の手順

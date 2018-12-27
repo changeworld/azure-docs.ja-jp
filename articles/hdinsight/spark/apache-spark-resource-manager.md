@@ -1,26 +1,20 @@
 ---
-title: "Azure HDInsight 上の Apache Spark クラスターのリソースを管理する | Microsoft Docs"
-description: "Azure HDInsight で Spark クラスターのリソースを管理してパフォーマンスを向上させる方法について説明します。"
+title: Azure HDInsight での Apache Spark クラスターのリソースの管理
+description: Azure HDInsight で Spark クラスターのリソースを管理してパフォーマンスを向上させる方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 9da7d4e3-458e-4296-a628-77b14643f7e4
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: jgao
-ms.openlocfilehash: 914811812b7e01f7b58f92c85cb5a16580c45796
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: hrasheed
+ms.openlocfilehash: 166d52322504e57e01a4bd798252fc956c1a3e44
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014586"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターのリソースの管理 
 
@@ -82,7 +76,7 @@ Spark クラスターで現在実行されているアプリケーションを�
 2. 一連の既定値は、クラスター上で 4 つの Spark アプリケーションを同時実行することを想定して決められています。 次のスクリーンショットに示すように、これらの値をユーザー インターフェイスから変更できます。
 
     ![Set parameters using Ambari](./media/apache-spark-resource-manager/set-executor-parameters.png)
-3. **[保存]** をクリックして構成の変更を保存します。 変更に関係したサービスをすべて再開するよう求めるメッセージがページの上部に表示されます。 **[Restart (再開)]**をクリックします。
+3. **[保存]** をクリックして構成の変更を保存します。 変更に関係したサービスをすべて再開するよう求めるメッセージがページの上部に表示されます。 **[Restart (再開)]** をクリックします。
 
     ![Restart services](./media/apache-spark-resource-manager/restart-services.png)
 
@@ -128,14 +122,14 @@ Spark Thrift サーバーでは、Spark の Dynamic Executor Allocation が使�
 ## <a name="reclaim-spark-cluster-resources"></a>Spark クラスター リソースを解放する
 Spark の動的割り当てにより、Thrift サーバーから利用できるリソースは、2 つのアプリケーション マスターのリソースのみです。 これらのリソースの領域を解放するには、クラスター上で実行されている Thrift サーバー サービスを停止する必要があります。
 
-1. Ambari UI の左ペインで **[Spark]**をクリックします。
-2. 次のページで、 **[Spark Thrift Servers]**をクリックします。
+1. Ambari UI の左ペインで **[Spark]** をクリックします。
+2. 次のページで、 **[Spark Thrift Servers]** をクリックします。
 
     ![Restart thrift server](./media/apache-spark-resource-manager/restart-thrift-server-1.png)
 3. Spark Thrift サーバーが実行されている 2 つのヘッド ノードが表示されます。 いずれかのヘッド ノードをクリックしてください。
 
     ![Restart thrift server](./media/apache-spark-resource-manager/restart-thrift-server-2.png)
-4. そのヘッド ノードで実行されているすべてのサービスが次のページに一覧表示されます。 一覧内の Spark Thrift サーバーの横にあるドロップダウン ボタンをクリックし、 **[Stop (停止)]**をクリックします。
+4. そのヘッド ノードで実行されているすべてのサービスが次のページに一覧表示されます。 一覧内の Spark Thrift サーバーの横にあるドロップダウン ボタンをクリックし、 **[Stop (停止)]** をクリックします。
 
     ![Restart thrift server](./media/apache-spark-resource-manager/restart-thrift-server-3.png)
 5. もう一方のヘッド ノードについても同じ手順を繰り返します。
@@ -151,7 +145,7 @@ Spark の動的割り当てにより、Thrift サーバーから利用できる�
 ![リソースの制限](./media/apache-spark-resource-manager/resource-limit.png "リソースの制限")
 
 ## <a name="kill-running-applications"></a>実行中のアプリケーションを強制終了する
-1. Yarn UI の左側のパネルで**[Running]** をクリックします。 実行中のアプリケーションの一覧から、強制終了するアプリケーションを決定し、**[ID]** をクリックします。
+1. Yarn UI の左側のパネルで **[Running]** をクリックします。 実行中のアプリケーションの一覧から、強制終了するアプリケーションを決定し、**[ID]** をクリックします。
 
     ![App1 の強制終了](./media/apache-spark-resource-manager/kill-app1.png "App1 の強制終了")
 

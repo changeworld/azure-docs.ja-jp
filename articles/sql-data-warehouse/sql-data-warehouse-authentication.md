@@ -1,35 +1,24 @@
 ---
-title: "Azure SQL Data Warehouse への認証 | Microsoft Docs"
-description: "Azure SQL Data Warehouse への Azure Active Directory (AAD) および SQL Server 認証。"
+title: Azure SQL Data Warehouse に対して認証する | Microsoft Docs
+description: Azure Active Directory (AAD) または SQL Server 認証を使用して Azure SQL Data Warehouse に対して認証する方法について説明します。
 services: sql-data-warehouse
-documentationcenter: 
-author: ronortloff
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: fefaaa75-2d0c-4e5d-aadb-410342d1ad73
+author: kavithaj
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-management
-ms.custom: security
-ms.date: 03/21/2017
-ms.author: rortloff;barbkess
-ms.openlocfilehash: 92f48027051bc4aff4d6b8d66fdd6de81bba3657
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: d082ba8bd2819450609a8a6e4ab41b4320158d4b
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43310794"
 ---
-# <a name="authentication-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse への認証
-> [!div class="op_single_selector"]
-> * [セキュリティの概要](sql-data-warehouse-overview-manage-security.md)
-> * [認証](sql-data-warehouse-authentication.md)
-> * [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
-> * [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
-> 
-> 
+# <a name="authenticate-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse に対して認証する
+Azure Active Directory (AAD) または SQL Server 認証を使用して Azure SQL Data Warehouse に対して認証する方法について説明します。
 
 SQL Data Warehouse に接続するには、認証のためのセキュリティ資格情報を渡す必要があります。 接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されます。  
 
@@ -90,11 +79,11 @@ Azure Active Directory 認証を構成するには、次の手順に従います
 * Azure Active Directory 認証を構成および使用する手順は、Azure SQL Database と Azure SQL Data Warehouse ではほぼ同じです。 詳細な手順については、「 [Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](../sql-database/sql-database-aad-authentication.md)」を参照してください。
 * カスタム データベース ロールを作成し、ロールにユーザーを追加します。 その後、ロールに詳細なアクセス許可を付与します。 詳細については、「 [データベース エンジンの権限の概要](https://msdn.microsoft.com/library/mt667986.aspx)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Visual Studio またはその他のアプリケーションを使用してデータ ウェアハウスに対するクエリを開始するには、[Visual Studio を使用したクエリ][Query with Visual Studio]に関するページをご覧ください。
 
 <!-- Article references -->
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
-[What is Azure Active Directory]: ../active-directory/active-directory-whatis.md
+[What is Azure Active Directory]:../active-directory/fundamentals/active-directory-whatis.md
 [Azure AD features and limitations]: ../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations

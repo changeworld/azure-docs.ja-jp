@@ -1,24 +1,25 @@
 ---
-title: "Service Fabric クラスター リソース マネージャー - 配置ポリシー | Microsoft Docs"
-description: "Service Fabric サービスの追加の配置ポリシーとルールの概要"
+title: Service Fabric クラスター リソース マネージャー - 配置ポリシー | Microsoft Docs
+description: Service Fabric サービスの追加の配置ポリシーとルールの概要
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c240643d2a7ce98ddd7f7871eeef654cced953f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66c51b08884c9d7a4d522c94f7b81774ec7a8bda
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642004"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric サービスの配置ポリシー
 配置ポリシーは、特定のあまり一般的ではないシナリオでサーバーの配置の制御に使用できる追加の規則です。 このようなシナリオのいくつかの例は、次のとおりです。
@@ -90,7 +91,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```csharp
 ServicePlacementPreferPrimaryDomainPolicyDescription primaryDomain = new ServicePlacementPreferPrimaryDomainPolicyDescription();
 primaryDomain.DomainName = "fd:/EastUS/";
-serviceDescription.PlacementPolicies.Add(invalidDomain);
+serviceDescription.PlacementPolicies.Add(primaryDomain);
 ```
 
 Powershell:
@@ -100,7 +101,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 ## <a name="requiring-replica-distribution-and-disallowing-packing"></a>レプリカの分散を必須にしてパッキングを許可しない
-クラスターが正常に動作している場合、_通常_、レプリカは障害ドメインとアップグレード ドメイン全体に分散されています。 ただし、指定されたパーティションの複数のレプリカが、1 つのドメインに一時的にパッキングされる結果になる場合があります。 たとえば、fd:/0、fd:/1、fd:/2 という 3 つの障害ドメイン内に 9 つのノードがあるクラスターがあるとします。 また、サービスには 3 つのレプリカがあります。 この環境で fd:/1 と fd:/2 のレプリカに使用されていたノードが停止したとします。 通常、クラスター リソース マネージャーによって、これらの同じ障害ドメインの他のノードが優先されます。 この場合、容量の問題でこれらのドメイン内の他のいずれのノードも有効ではなかったと仮定します。 Cluster Resource Manager でそれらのレプリカの置き換えを構築する場合、fd:/0 のノードを選択する必要があります。 ただし、_その選択_を実行すると、障害ドメインの制約違反になる状況が生じます。 複数のレプリカをパッキングすると、レプリカ セット全体が停止したり、失われたりする可能性が高まります。 
+クラスターが正常に動作している場合、_通常_、レプリカは障害ドメインとアップグレード ドメイン全体に分散されています。 ただし、指定されたパーティションの複数のレプリカが、1 つのドメインに一時的にパッキングされる結果になる場合があります。 たとえば、fd:/0、fd:/1、fd:/2 という 3 つの障害ドメイン内に 9 つのノードがあるクラスターがあるとします。 また、サービスには 3 つのレプリカがあります。 この環境で fd:/1 と fd:/2 のレプリカに使用されていたノードが停止したとします。 通常、クラスター リソース マネージャーによって、これらの同じ障害ドメインの他のノードが優先されます。 この場合、容量の問題でこれらのドメイン内の他のいずれのノードも有効ではなかったと仮定します。 Cluster Resource Manager でそれらのレプリカの置き換えを構築する場合、fd:/0 のノードを選択する必要があります。 ただし、_その選択_ を実行すると、障害ドメインの制約違反になる状況が生じます。 複数のレプリカをパッキングすると、レプリカ セット全体が停止したり、失われたりする可能性が高まります。 
 
 > [!NOTE]
 > 制約と制約の優先順位の概要については、[このトピック](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities)をご覧ください。
@@ -127,7 +128,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 では、これらの構成を地理的に分散していないクラスターのサービスに使用することはできるでしょうか。 使用できますが、あまり利点はありません。 シナリオで必要な場合を除き、必須のドメイン、無効なドメイン、および優先されるドメインの構成は避けることをお勧めします。 特定のワークロードを単一のラックで実行したり、ローカル クラスターのセグメントを他のものより優先することは意味がありません。 異なるハードウェアの構成を複数のドメインや、通常の配置の制約とノードのプロパティを通じて処理される障害ドメインに分散する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - サービスの構成の詳細については、[サービスの構成についての学習](service-fabric-cluster-resource-manager-configure-services.md)に関する記事を参照してください。
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png

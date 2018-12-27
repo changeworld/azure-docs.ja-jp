@@ -1,28 +1,27 @@
 ---
-title: "Azure Functions のアプリケーション設定のリファレンス"
-description: "Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。"
+title: Azure Functions のアプリケーション設定のリファレンス
+description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 services: functions
-author: tdykstra
-manager: cfowler
-editor: 
-tags: 
-keywords: 
-ms.service: functions
+author: ggailey777
+manager: jeconnoc
+keywords: ''
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 09/26/2017
-ms.author: tdykstra
-ms.openlocfilehash: ce7bf2cf650b0df7e8998766b2d3f5a37c4a1b72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.date: 09/22/2018
+ms.author: glenga
+ms.openlocfilehash: 2eb736891b12c07441bc8828ca07dd0b9fa13d98
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458124"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
-関数アプリのアプリケーション設定には、その関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 ローカルで実行する場合、これらの設定は環境変数にあります。 この記事では、関数アプリで使用できるアプリケーション設定の一覧を紹介します。
+関数アプリのアプリケーション設定には、その関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 ローカルで実行する場合、これらの設定は[環境変数](functions-run-local.md#local-settings-file)にあります。 この記事では、関数アプリで使用できるアプリケーション設定の一覧を紹介します。
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 [host.json](functions-host-json.md) ファイルと [local.settings.json](functions-run-local.md#local-settings-file) ファイルには、他のグローバル構成オプションもあります。
 
@@ -36,15 +35,18 @@ Application Insights を使用している場合の Application Insights イン�
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-ログの保存と、それらをポータルの [**モニター**] タブに表示する、オプションのストレージ アカウントの接続文字列です。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](functions-create-function-app-portal.md#storage-account-requirements)」を参照してください。
+ログの保存と、それらをポータルの **[モニター]** タブに表示する、オプションのストレージ アカウントの接続文字列です。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](functions-create-function-app-portal.md#storage-account-requirements)」を参照してください。
 
 |キー|値の例|
 |---|------------|
 |AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
+> [!TIP]
+> パフォーマンスとエクスペリエンスのために、AzureWebJobsDashboard ではなく APPINSIGHTS_INSTRUMENTATIONKEY と App Insights を使用して監視することをお勧めします。
+
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true` は、関数アプリのルート URL 用に表示される既定のランディング ページを無効にすることを意味します。 既定値は `false`です。
+`true` は、関数アプリのルート URL 用に表示される既定のランディング ページを無効にすることを意味します。 既定値は `false` です。
 
 |キー|値の例|
 |---|------------|
@@ -56,7 +58,7 @@ Application Insights を使用している場合の Application Insights イン�
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true` は、.NET コードのコンパイルにリリース モードを使用することを意味し、`false` は、デバッグ モードを使用することを意味します。 既定値は `true`です。
+`true` は、.NET コードのコンパイルにリリース モードを使用することを意味し、`false` は、デバッグ モードを使用することを意味します。 既定値は `true` です。
 
 |キー|値の例|
 |---|------------|
@@ -80,11 +82,11 @@ Application Insights を使用している場合の Application Insights イン�
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-キーの保存に使用するリポジトリまたはプロバイダーを指定します。 現時点では、blob ("Blob") およびファイル システム ("disabled") のリポジトリがサポートされています。 既定のファイル システムは ("disabled") です。
+キーの保存に使用するリポジトリまたはプロバイダーを指定します。 現時点でサポートされているリポジトリは、BLOB ストレージ ("Blob") およびローカル ファイル システム ("Files") です。 既定では、バージョン 1 では BLOB、バージョン 2 ではファイル システムが使用されます。 バージョン 1 では、ファイル システムは App Service プラン内で実行される関数にのみ有効であることに注意してください。
 
 |キー|値の例|
 |---|------------|
-|AzureWebJobsSecretStorageType|disabled|
+|AzureWebJobsSecretStorageType|ファイル|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -112,11 +114,19 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 
 ## <a name="functionsextensionversion"></a>FUNCTIONS\_EXTENSION\_VERSION
 
-この関数アプリで使用する Azure Functions ランタイムのバージョンです。 メジャー バージョンのチルダ (例: "~1") は、そのメジャー バージョンの最新バージョンを使用することを意味します。 同じメジャー バージョンの新しいバージョンが使用できる場合、それらは関数アプリに自動的にインストールされています。 特定のバージョンにアプリを固定するには、完全なバージョン番号 (例: "1.0.12345") を使用します。 既定は "~1" です。
+この関数アプリで使用する Functions ランタイムのバージョンです。 メジャー バージョンのチルダ (例: "~2") は、そのメジャー バージョンの最新バージョンを使用することを意味します。 同じメジャー バージョンの新しいバージョンが使用できる場合、それらは関数アプリに自動的にインストールされています。 特定のバージョンにアプリを固定するには、完全なバージョン番号 (例: "2.0.12345") を使用します。 既定値は "~2" です。 `~1` の値は、アプリをバージョン 1.x のランタイムに固定します。
 
 |キー|値の例|
 |---|------------|
-|FUNCTIONS\_EXTENSION\_VERSION|~1|
+|FUNCTIONS\_EXTENSION\_VERSION|~2|
+
+## <a name="functionsworkerruntime"></a>FUNCTIONS\_WORKER\_RUNTIME
+
+ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、"dotnet")。 関数の言語が混在する場合、関数ごとに対応するワーカー ランタイム値を設定して、関数を複数のアプリに公開する必要があります。  有効な値は、`dotnet` (C#/F#)、`node` (JavaScript)、`java` (Java) です。
+
+|キー|値の例|
+|---|------------|
+|FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
 ## <a name="websitecontentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
@@ -126,7 +136,7 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
-## <a name="websitecontentshare"></a>WEBSITE_CONTENTSHARE
+## <a name="websitecontentshare"></a>WEBSITE\_CONTENTSHARE
 
 従量課金プラン用のみです。 関数アプリ コードと構成へのファイル パスです。 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING と共に使用されます。 既定は、関数アプリ名で始まる一意文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
 
@@ -139,24 +149,34 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 関数アプリがスケールアウトできる最大のインスタンス数です。 既定は無制限です。
 
 > [!NOTE]
-> この設定は、プレビュー機能用です。
+> この設定は、プレビュー機能です。5 以下の値を設定した場合にのみ、信頼して使用できます。
 
 |キー|値の例|
 |---|------------|
-|WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|10|
+|WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|5|
 
 ## <a name="websitenodedefaultversion"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
-既定は "6.5.0" です。
+既定値は "8.11.1" です。
 
 |キー|値の例|
 |---|------------|
-|WEBSITE\_NODE\_DEFAULT_VERSION|6.5.0|
+|WEBSITE\_NODE\_DEFAULT_VERSION|8.11.1|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="websiterunfrompackage"></a>WEBSITE\_RUN\_FROM\_PACKAGE
 
-> [!div class="nextstepaction"]
-> [アプリケーション設定の更新方法](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
+マウントされたパッケージ ファイルから関数アプリを実行できるようにします。
 
-> [!div class="nextstepaction"]
-> [host.json ファイルのグローバル設定を参照する](functions-host-json.md)
+|キー|値の例|
+|---|------------|
+|WEBSITE\_RUN\_FROM\_PACKAGE|1|
+
+有効な値は、展開パッケージ ファイルの場所に解決される URL、または `1` です。 `1` に設定した場合、パッケージは `d:\home\data\SitePackages` フォルダーに存在する必要があります。 この設定で zip デプロイを使用すると、パッケージは自動的にこの場所にアップロードされます。 プレビューでは、この設定は `WEBSITE_RUN_FROM_ZIP` という名前でした。 詳細については、[パッケージ ファイルからの関数の実行](run-functions-from-deployment-package.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+[アプリケーション設定の更新方法](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
+
+[host.json ファイルのグローバル設定を参照する](functions-host-json.md)
+
+[App Service アプリの他のアプリ設定を参照する](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

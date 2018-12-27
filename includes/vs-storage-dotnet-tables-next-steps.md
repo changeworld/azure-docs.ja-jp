@@ -1,6 +1,19 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: tamram
+ms.openlocfilehash: aff0ac5f2b761047a3e365e8e6702909a673e464
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440283"
+---
 これで、Azure Table Storage の基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
-* 利用可能な API の完全な詳細については、 [.NET 用 Azure Storage クライアント ライブラリ](http://go.microsoft.com/fwlink/?LinkID=390731) リファレンスの Table サービス リファレンス ドキュメントを参照してください。
+* 利用可能な API の完全な詳細については、 [.NET 用 Azure Storage クライアント ライブラリ](https://go.microsoft.com/fwlink/?LinkID=390731) リファレンスの Table サービス リファレンス ドキュメントを参照してください。
 * Azure Storage で作業するために記述したコードを簡略化する方法については、「 [Azure Web ジョブ SDK とは](https://github.com/Azure/azure-webjobs-sdk/wiki)
 * Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   * Azure Storage の BLOB を操作する方法については、「 [.NET を使用して Azure Blob Storage を使用する](../articles/storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。

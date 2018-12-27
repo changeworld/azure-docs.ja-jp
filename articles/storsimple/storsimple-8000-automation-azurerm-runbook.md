@@ -1,12 +1,12 @@
 ---
-title: "Azure Automation Runbook を使用して StorSimple デバイスを管理する | Microsoft Docs"
-description: "Azure Automation Runbook を使用して StorSimple ジョブを自動化する方法について説明します"
+title: Azure Automation Runbook を使用して StorSimple デバイスを管理する | Microsoft Docs
+description: Azure Automation Runbook を使用して StorSimple ジョブを自動化する方法について説明します
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/24/2017
+ms.locfileid: "23493132"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation Runbook を使用して StorSimple デバイスを管理する
 
@@ -203,7 +204,7 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
 
 4. 新しく作成されたアカウントで、**[共有リソース] > [モジュール]** に移動し、**[+ モジュールの追加]** をクリックします。
 
-5. **[モジュールの追加]** ブレードで、zip 形式のモジュールの場所を参照し、モジュールを選択して開きます。 **[OK]**をクリックします。
+5. **[モジュールの追加]** ブレードで、zip 形式のモジュールの場所を参照し、モジュールを選択して開きます。 **[OK]** をクリックします。
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 

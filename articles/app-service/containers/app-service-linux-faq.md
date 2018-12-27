@@ -1,31 +1,32 @@
 ---
-title: "Azure App Service on Linux の FAQ | Microsoft Docs"
-description: "Azure App Service on Linux の FAQ"
-keywords: "Azure App Service, Web アプリ, FAQ, Linux, OSS"
+title: Azure App Service on Linux の FAQ | Microsoft Docs
+description: Azure App Service on Linux の FAQ
+keywords: Azure App Service、Web アプリ、FAQ、Linux、OSS、コンテナー用の Web アプリ、複数コンテナー、マルチコンテナー
 services: app-service
-documentationCenter: 
-author: ahmedelnably
-manager: cfowler
-editor: 
-ms.assetid: 
+documentationCenter: ''
+author: yili
+manager: stefsch
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
-ms.author: aelnably;wesmc
-ms.openlocfilehash: b22d5f3497c388192764aa6b4ee8c95fec568bd8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 10/30/2018
+ms.author: yili
+ms.openlocfilehash: 94e61cf5bf4f629dfd776cf9ea2ae54233e91dc6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417584"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
 App Service on Linux のリリースでは、機能の追加とプラットフォームの品質向上に取り組んでいます。 この記事では、最近お客様からお問い合わせのあったご質問に回答しています。
 
-ご質問がある場合は、この記事の最後にあるコメント欄をご利用ください。できるだけ早く回答いたします。
+ご不明な点がある場合は、この記事についてのコメントをお寄せください。
 
 ## <a name="built-in-images"></a>組み込まれているイメージ
 
@@ -35,7 +36,7 @@ App Service on Linux のリリースでは、機能の追加とプラットフ�
 
 **ランタイム スタックを構成する場合、[スタートアップ ファイル] セクションではどのような値が有効ですか。**
 
-Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイルを指定します。 .NET Core の場合は、コンパイル済みの DLL 名を指定します。 Ruby の場合は、アプリの初期化に使用する Ruby スクリプトを指定できます。
+Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイルを指定します。 .NET Core の場合は、コンパイル済みの DLL 名を `dotnet <myapp>.dll` として指定します。 Ruby の場合は、アプリの初期化に使用する Ruby スクリプトを指定できます。
 
 ## <a name="management"></a>管理
 
@@ -47,6 +48,10 @@ Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイ�
 
 はい、ソース管理 (SCM) サイトからご利用いただけます。
 
+> [!NOTE]
+> SSH、SFTP、または Visual Studio Code (ライブ デバッグ Node.js アプリ用) を使用して、ローカル開発用コンピューターから直接アプリ コンテナーに接続することもできます。 詳細については、[Linux での App Service のリモート デバッグと SSH](https://aka.ms/linux-debug) に関するページをご覧ください。
+>
+
 **SDK または Azure Resource Manager テンプレートから Linux App Service プランを作成するにはどうすればよいですか。**
 
 アプリ サービスの**予約済み**フィールドを *true* に設定する必要があります。
@@ -55,25 +60,25 @@ Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイ�
 
 **自分の Web アプリでは、Docker Hub 上のイメージを更新した後も、古い Docker コンテナー イメージを引き続き使用しています。カスタム コンテナーの継続的な統合およびデプロイをサポートしていますか。**
 
-Azure Container Registry または DockerHub イメージの継続的インテグレーションと継続的デプロイをセットアップするには、「[Azure Web App for Containers での継続的デプロイ](./app-service-linux-ci-cd.md)」をご覧ください。 プライベート レジストリでは、Web アプリを停止してから起動することでコンテナーを更新できます。 または、ダミー アプリケーション設定を変更または追加して、コンテナーを強制的に更新できます。
+はい、Azure Container Registry または DockerHub の継続的インテグレーションと継続的デプロイをセットアップするには、「[Azure Web App for Containers での継続的デプロイ](./app-service-linux-ci-cd.md)」をご覧ください。 プライベート レジストリでは、Web アプリを停止してから起動することでコンテナーを更新できます。 または、ダミー アプリケーション設定を変更または追加して、コンテナーを強制的に更新できます。
 
 **ステージング環境はサポートしていますか。**
 
 はい。
 
-**"*Web デプロイ*" を使用して Web アプリをデプロイすることはできますか。**
+***WebDeploy/MSDeploy* を使用して Web アプリをデプロイすることはできますか。**
 
 はい。`WEBSITE_WEBDEPLOY_USE_SCM` というアプリ設定を *false* に設定する必要があります。
 
 **Linux Web アプリを使用すると、アプリケーションの Git デプロイが失敗します。この問題を回避する方法はありますか。**
 
-Linux Web アプリに対して Git デプロイが失敗する場合は、以下の代替オプションを選択してアプリケーション コードをデプロイできます。
+Linux Web アプリに対して Git デプロイが失敗する場合は、以下のいずれかのオプションを選択してアプリケーション コードをデプロイします。
 
-- 継続的配信 (プレビュー) 機能を使用する: アプリのソース コードを、Team Services の Git リポジトリか GitHub リポジトリに格納して、Azure の継続的配信を使用できます。 詳細については、[Linux Web アプリに対して継続的配信を構成する方法](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)に関するページをご覧ください。
+- 継続的配信 (プレビュー) 機能を使用する: アプリのソース コードを、Azure DevOps の Git リポジトリか GitHub リポジトリに格納して、Azure の継続的配信を使用できます。 詳しくは、[Linux Web アプリに対して継続的配信を構成する方法](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)に関するページをご覧ください。
 
-- [ZIP デプロイ API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file) を使用する: この API を使用するには、[Web アプリに SSH で接続](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection)し、コードをデプロイするフォルダーに移動します。 次のコマンドレットを実行します。
+- [ZIP デプロイ API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file) を使用する: この API を使用するには、[Web アプリに SSH で接続](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection)し、コードをデプロイするフォルダーに移動します。 次のコードを実行します。
 
-   ```
+   ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
@@ -81,12 +86,13 @@ Linux Web アプリに対して Git デプロイが失敗する場合は、以�
 
 ## <a name="language-support"></a>言語のサポート
 
-**WebSocket を Node.js アプリケーションで使用したいと考えています。特別な設定や構成が必要でしょうか。**
+**Web ソケットを Node.js アプリケーションで使用したいと考えています。特別な設定や構成が必要でしょうか。**
 
-はい、サーバー側の Node.js コードで `perMessageDeflate` を無効にします。 たとえば、socket.io を使用している場合、次の操作を行います。
-```
+はい、サーバー側の Node.js コードで `perMessageDeflate` を無効にします。 たとえば、socket.io を使用している場合、次のコードを使います。
+
+```nodejs
 var io = require('socket.io')(server,{
-  perMessageDeflate :false
+  perMessageDeflate :false
 });
 ```
 
@@ -96,20 +102,20 @@ var io = require('socket.io')(server,{
 
 **PHP アプリの依存関係マネージャーとして Composer はサポートされていますか。**
 
-はい。 Git のデプロイ中に、Kudu は (composer.lock ファイルの存在により) PHP アプリケーションをデプロイしていることを検出し、その後 Kudu は Composer のインストールを自動的にトリガーします。
+はい、Git のデプロイ中に、Kudu は (composer.lock ファイルの存在により) PHP アプリケーションをデプロイしていることを検出し、その後 Kudu は Composer のインストールをトリガーします。
 
 ## <a name="custom-containers"></a>カスタム コンテナー
 
 **自分が所有するカスタム コンテナーを使用しています。プラットフォームを SMB 共有の `/home/` ディレクトリにマウントさせたいと考えています。**
 
-`WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を *true* に設定するか、またはアプリ設定を完全に削除することで、マウントできます。 これにより、プラットフォームのストレージの変更時に、コンテナーの再起動が行われることに注意してください。 
+これは、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を *true* に設定することで実現できます。 これにより、プラットフォームのストレージの変更時に、コンテナーの再起動が行われることに注意してください。
 
 >[!NOTE]
->`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が *false* の場合、`/home/` ディレクトリはスケール インスタンス間で共有されず、このディレクトリに書き込まれたファイルは再起動後には保持されません。
+>`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が指定されていない場合や *false* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で共有されず、このディレクトリに書き込まれたファイルは再起動後には保持されません。
 
 **カスタム コンテナーの起動に時間がかかり、起動が終了する前にプラットフォームがコンテナーを再起動します。**
 
-プラットフォームがコンテナーを再起動する前の待機時間を構成できます。 これを行うには、`WEBSITES_CONTAINER_START_TIME_LIMIT` アプリ設定を目的の値に設定します。 既定値は 230 秒であり、最大値は 600 秒です。
+プラットフォームがコンテナーを再起動する前の待機時間を構成できます。 これを行うには、`WEBSITES_CONTAINER_START_TIME_LIMIT` アプリ設定を目的の値に設定します。 既定値は 230 秒であり、最大値は 1800 秒です。
 
 **プライベート レジストリ サーバーの URL の形式は何ですか。**
 
@@ -117,7 +123,7 @@ var io = require('socket.io')(server,{
 
 **プライベート レジストリ オプションのイメージ名の形式は何ですか。**
 
-プライベート レジストリ の URL を含む完全なイメージ名を追加します (例: myacr.azurecr.io/dotnet:latest)。 カスタム ポートを使用するイメージ名は、[ポータル経由で入力することはできません](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 `docker-custom-image-name` を設定するには、[`az` コマンドライン ツール](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set)を使用します。
+プライベート レジストリ の URL を含む完全なイメージ名を追加します (例: myacr.azurecr.io/dotnet:latest)。 カスタム ポートを使用するイメージ名は、[ポータル経由で入力することはできません](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 `docker-custom-image-name` を設定するには、[`az` コマンドライン ツール](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)を使用します。
 
 **カスタム コンテナー イメージで複数のポートを公開できますか。**
 
@@ -139,6 +145,35 @@ SCM サイトは別のコンテナーで実行されています。 アプリ �
 
 いいえ、共有フロントエンドでの HTTPS の終了はプラットフォームが処理します。
 
+## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Docker Compose と Kubernetes を使用した複数コンテナー
+
+**複数コンテナーで使用するように、Azure Container Registry (ACR) を構成する方法を教えてください。**
+
+複数コンテナーで ACR を使用するには、**すべてのコンテナー イメージ**を同じ ACR レジストリ サーバーでホストする必要があります。 コンテナーを同じレジストリ サーバーに配置したら、アプリケーション設定を作成し、Docker Compose または Kubernetes の構成ファイルに ACR のイメージ名を含めて更新する必要があります。
+
+次のアプリケーション設定を作成します。
+
+- DOCKER_REGISTRY_SERVER_USERNAME
+- DOCKER_REGISTRY_SERVER_URL (完全な URL、例: https://<server-name>.azurecr.io)
+- DOCKER_REGISTRY_SERVER_PASSWORD (ACR 設定で管理者アクセスを有効にする)
+
+次の例のように、構成ファイル内で ACR イメージを参照します。
+
+```yaml
+image: <server-name>.azurecr.io/<image-name>:<tag>
+```
+
+**インターネットにアクセスできるコンテナーを識別する方法を教えてください。**
+
+- アクセスできるコンテナーは 1 つのみ
+- ポート 80 および 8080 のみがアクセス可能 (公開ポート)
+
+アクセス可能なコンテナーを判断するためのルールを次に示します (優先順)。
+
+- コンテナー名に設定されるアプリケーション設定 `WEBSITES_WEB_CONTAINER_NAME`
+- ポート 80 または 8080 を定義する最初のコンテナー
+- 上記のいずれにも当てはまらない場合、ファイルで定義されている最初のコンテナーがアクセス可能 (公開) になります
+
 ## <a name="pricing-and-sla"></a>料金と SLA
 
 **一般的にサービスが利用できる現在の料金を教えてください。**
@@ -155,8 +190,8 @@ SCM サイトは別のコンテナーで実行されています。 アプリ �
 
 [Web Apps フィードバック フォーラム](https://aka.ms/webapps-uservoice)でご自分のアイデアを送信できます。 アイデアのタイトルに "[Linux]" を追加してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [Azure App Service on Linux とは](app-service-linux-intro.md)
-* [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Web App for Containers での継続的デプロイ](./app-service-linux-ci-cd.md)
+- [Azure App Service on Linux とは](app-service-linux-intro.md)
+- [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Web App for Containers での継続的デプロイ](./app-service-linux-ci-cd.md)

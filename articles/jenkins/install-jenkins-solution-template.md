@@ -1,20 +1,19 @@
 ---
 title: Azure に Jenkins サーバーを作成する
 description: Jenkins ソリューション テンプレートから Azure Linux 仮想マシンに Jenkins をインストールし、サンプル Java アプリケーションをビルドする方法について説明します。
+ms.service: jenkins
+keywords: Jenkins, Azure, 開発, ポータル, 仮想マシン, ソリューション テンプレート
 author: tomarcher
-manager: rloutlaw
-ms.service: multiple
-ms.workload: web
-ms.devlang: na
-ms.topic: article
-ms.date: 03/12/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.custom: Jenkins
-ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: quickstart
+ms.date: 6/7/2017
+ms.openlocfilehash: 92a0583ad01c4dc9263988f6ef48c95c380c9289
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086576"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Azure Portal から Azure Linux VM に Jenkins サーバーを作成する
 
@@ -76,7 +75,7 @@ Jenkins コンソールから **[Create new jobs]\(新しいジョブの作成\)
 
 ![Gradle ラッパーを使用したビルド](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-**[Advanced]\(詳細設定\)** を選択し、 **[Root Build script]\(ルート ビルド スクリプト\)** フィールドに「`complete`」と入力します。 **[保存]** を選択します。
+**[詳細]** を選択し、**[Root Build script]\(ルート ビルド スクリプト\)** フィールドに `complete` と入力します。 **[保存]** を選択します。
 
 ![Gradle ラッパー ビルド ステップの詳細設定](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 
@@ -87,6 +86,10 @@ Jenkins コンソールから **[Create new jobs]\(新しいジョブの作成\)
 ![ワークスペースを参照画面で選択し、ビルドから JAR ファイルを取得します。](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
 
 ビルドが成功したことを確かめるために、`complete/build/libs` に移動し、`gs-spring-boot-0.1.0.jar` が存在することを確認します。 Azure 上の Jenkins サーバーで独自のプロジェクトをビルドする準備が整いました。
+
+## <a name="troubleshooting-the-jenkins-solution-template"></a>Jenkins ソリューション テンプレートのトラブルシューティング
+
+Jenkins ソリューション テンプレートに関するバグを見つけた場合は、[Jenkins GitHub リポジトリ](https://github.com/azure/jenkins/issues)で問題を報告してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,24 +1,20 @@
 ---
-title: "Microsoft Azure Storage Data Movement Library を使用してデータを転送する | Microsoft Docs"
-description: "Data Movement Library ユーティリティを使用して、BLOB およびファイル間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。"
+title: Microsoft Azure Storage Data Movement Library を使用してデータを転送する | Microsoft Docs
+description: Data Movement Library ユーティリティを使用して、BLOB およびファイル間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
 services: storage
-documentationcenter: 
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: 
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
-ms.openlocfilehash: eb96f3697d5369ba96a1b0c491e3eacf09e7aac4
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.component: common
+ms.openlocfilehash: e62023f5aeca73973598430ed357e8e9800a17f8
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732245"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Microsoft Azure Storage Data Movement Library を使用してデータを転送する
 
@@ -39,10 +35,10 @@ Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB および
 **必要なもの:**
 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)
+* [Azure ストレージ アカウント](storage-quickstart-create-account.md)
 
 > [!NOTE]
-> このガイドでは、既に [Azure Storage](https://azure.microsoft.com/services/storage/)を使い慣れている前提で説明します。 使い慣れていない場合は、「[Microsoft Azure Storage の概要](storage-introduction.md)」を参照してください。 最も重要なのは、Data Movement Library を使用し始めるには、[ストレージ アカウントを作成する](storage-create-storage-account.md#create-a-storage-account)必要がある、ということです。
+> このガイドでは、既に [Azure Storage](https://azure.microsoft.com/services/storage/)を使い慣れている前提で説明します。 使い慣れていない場合は、「[Microsoft Azure Storage の概要](storage-introduction.md)」を参照してください。 最も重要なのは、Data Movement Library を使用し始めるには、[ストレージ アカウントを作成する](storage-quickstart-create-account.md)必要がある、ということです。
 > 
 > 
 

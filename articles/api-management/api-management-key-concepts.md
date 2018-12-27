@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management の概要と主な概念 | Microsoft Docs"
-description: "API、成果物、ロール、グループ、その他 API Management の重要概念について説明します。"
+title: Azure API Management の概要と主な概念 | Microsoft Docs
+description: API、成果物、ロール、グループ、その他 API Management の重要概念について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 0410e0176d5c853e1110fe3460c7d9314e7fd397
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 0ede6c0c55e2f953e0d109d2d371313759ed4d06
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965157"
 ---
 # <a name="what-is-api-management"></a>API Management とは
 
@@ -58,7 +59,7 @@ API Management を使用するには、管理者が API を作成します。 AP
   * API キーを取得するために、アカウントを作成してサブスクライブします。
   * 自分自身の使用に関する分析にアクセスします。
 
-詳細については、 [クラウド ベースの API Management: API が持つ力の活用](http://j.mp/ms-apim-whitepaper) に関する PDF ホワイトペーパーをご覧ください。 CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。 
+詳しくは、「[Cloud-based API Management: Harnessing the Power of APIs](https://j.mp/ms-apim-whitepaper)」(クラウドベースの API 管理: API のパワーを利用する) ホワイトペーパー (PDF) をご覧ください。 CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。 
  
  * API の一般的な要件と課題
  * API の分離とファサードの提供
@@ -91,7 +92,7 @@ API Management サービス インスタンスの基礎となるのは API で�
 詳細については、[グループを作成して使用する方法][How to create and use groups]に関するページを参照してください。
 
 ## <a name="developers"> </a> 開発者
-開発者は、API Management サービス インスタンス内のユーザー アカウントです。 開発者アカウントは、管理者が作成したり参加を呼びかけたりすることができるほか、[開発者ポータル][Developer portal]からサインアップすることもできます。 それぞれの開発者はグループ (複数可) に所属し、そのグループに閲覧が認められている成果物のサブスクリプションを得ることができます。
+開発者は、API Management サービス インスタンス内のユーザー アカウントです。 開発者アカウントは、管理者が作成したり参加を呼びかけたりすることができるほか、[開発者ポータル][Developer portal]からサインアップすることもできます。 それぞれの開発者はグループ (複数可) に所属し、そのグループに閲覧が認められている成果物をサブスクライブすることができます。
 
 成果物のサブスクリプションを持つ開発者には、その成果物へのプライマリ キーとセカンダリ キーが付与されます。 成果物の API を呼び出す際は、このキーを使用することになります。
 

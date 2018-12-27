@@ -1,26 +1,27 @@
 ---
-title: "Windows Server 用の Service Fabric スタンドアロン パッケージ | Microsoft Docs"
-description: "Windows Server 用の Service Fabric スタンドアロン パッケージの説明と内容。"
+title: Windows Server 用の Service Fabric スタンドアロン パッケージ | Microsoft Docs
+description: Windows Server 用の Service Fabric スタンドアロン パッケージの説明と内容。
 services: service-fabric
 documentationcenter: .net
 author: maburlik
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
-ms.author: chackdan;maburlik
-ms.openlocfilehash: 6a6bacedde04419449a061554d5ce9ad37259a2f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maburlik
+ms.openlocfilehash: afb6c8345cd71e7d39b7f3a0b2307c99cf31b449
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253338"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージの内容
-[ダウンロードした](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。
+[ダウンロードした](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。
 
 | **ファイル名** | **簡単な説明** |
 | --- | --- |
@@ -32,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 | TestConfiguration.ps1 |Cluster.json で指定されたインフラストラクチャを分析するための PowerShell スクリプト。 |
 | DownloadServiceFabricRuntimePackage.ps1 |デプロイするコンピューターがインターネットに接続されていない場合に、帯域外の最新のランタイム パッケージをダウンロードするために使用される PowerShell スクリプト。 |
 | DeploymentComponentsAutoextractor.exe |スタンドアロン パッケージ スクリプトによって使用されるデプロイ コンポーネントが格納されている自己解凍アーカイブ。 |
-| EULA_ENU.txt |Microsoft Azure Service Fabric のスタンドアロン Windows Server パッケージの使用に関するライセンス条項。 [使用許諾契約書のコピーのダウンロード](http://go.microsoft.com/fwlink/?LinkID=733084) ができるようになりました。 |
+| EULA_ENU.txt |Microsoft Azure Service Fabric のスタンドアロン Windows Server パッケージの使用に関するライセンス条項。 [使用許諾契約書のコピーのダウンロード](https://go.microsoft.com/fwlink/?LinkID=733084) ができるようになりました。 |
 | Readme.txt |リリース ノートや基本的なインストール手順へのリンク。 このドキュメントに記載の説明も一部含まれています。 |
 | ThirdPartyNotice.rtf |パッケージに同梱されるサードパーティ製ソフトウェアに関する注意。 |
 | Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |必要に応じて実行され、サポートのためにトレース ログを収集して Microsoft にアップロードする StandaloneLogCollector.exe。 |
@@ -47,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 | ClusterConfig.Windows.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (または仮想マシン) を持つ、Windows セキュリティを使用するセキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各マシンの情報を含む) が含まれています。 クラスターは [Windows ID](https://msdn.microsoft.com/library/ff649396.aspx) を使用して保護されます。 |
 | ClusterConfig.x509.DevCluster.json |クラスター構成サンプル ファイル。3 つのノードと 1 つのマシン (または仮想マシン) を持つ、セキュリティ保護された開発クラスターのすべての設定 (クラスターの各ノードの情報を含む) が含まれています。 クラスターは x509 証明書を使用して保護されます。 |
 | ClusterConfig.x509.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (仮想マシン) を持つ、セキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各ノードの情報を含む) が含まれています。 クラスターは x509 証明書を使用して保護されます。 |
-| ClusterConfig.gMSA.Windows.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (仮想マシン) を持つ、セキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各ノードの情報を含む) が含まれています。 クラスターは、[グループ管理サービス アカウント](https://technet.microsoft.com/en-us/library/jj128431(v=ws.11).aspx)を使用して保護されます。 |
+| ClusterConfig.gMSA.Windows.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (仮想マシン) を持つ、セキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各ノードの情報を含む) が含まれています。 クラスターは、[グループ管理サービス アカウント](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)を使用して保護されます。 |
 
 ## <a name="cluster-configuration-samples"></a>クラスター構成の例
 クラスター構成テンプレートの最新バージョンは次の GitHub ページにあります。[スタンドアロン クラスター構成のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)

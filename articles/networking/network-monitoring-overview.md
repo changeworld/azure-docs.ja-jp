@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 7b9f42607f313f5570f414e810eafc6775ea18b9
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 0656cfcc2dcded284be1a337f797681117f3b313
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144350"
 ---
 # <a name="network-monitoring-solutions"></a>ネットワーク監視ソリューション 
 
@@ -34,11 +35,11 @@ Network Performance Monitor (NPM) は機能のスイートであり、各機能�
 * ミッション クリティカルな多層アプリケーション/マイクロサービス
 * ユーザーの場所と Web ベースのアプリケーション (HTTP/HTTPS) 
 
-パフォーマンス モニター、ExpressRoute モニター、およびサービス エンドポイント モニターは、NPM 内の監視機能です。以下のセクションでこれらについて説明します。
+パフォーマンス モニター、ExpressRoute モニター、およびサービス接続モニターは、NPM 内の監視機能です。以下のセクションでこれらについて説明します。
 
-## <a name="performance-monitor"></a>パフォーマンス モニター
+## <a name="performance-monitor"></a>パフォーマンスの監視
 
-パフォーマンス モニターは NPM の一部であり、クラウド、ハイブリッド、オンプレミスの環境のネットワーク監視を行います。 リモート ブランチとフィールド オフィス、店舗の場所、データ センター、クラウドの間のネットワーク接続性を監視できます。 ユーザーから不満があがる前に、ネットワークの問題を検出できます。 主な利点は次のとおりです。
+Performance Monitor は NPM の一部であり、クラウド、ハイブリッド、オンプレミスの環境のネットワーク監視を行います。 リモート ブランチとフィールド オフィス、店舗の場所、データ センター、クラウドの間のネットワーク接続性を監視できます。 ユーザーから不満があがる前に、ネットワークの問題を検出できます。 主な利点は次のとおりです。
 
 * 各種サブネット間の損失と待ち時間を監視し、アラートを設定する
 * ネットワーク上のすべてのパス (冗長パスを含む) を監視する
@@ -56,22 +57,25 @@ Network Performance Monitor (NPM) は機能のスイートであり、各機能�
 
 ## <a name="expressroute-monitor"></a>ExpressRoute モニター
 
-ExpressRoute 用の NPM は、プライベート ピアリング接続の包括的な ExpressRoute 監視を提供します。 ExpressRoute 経由のブランチ オフィスと Azure 間の E2E 接続性とパフォーマンスを監視できます。 主な機能は次のとおりです。
+ExpressRoute 用の NPM は、Azure Private ピアリングおよび Microsoft ピアリング接続の包括的な ExpressRoute 監視を提供します。 ExpressRoute 経由のブランチ オフィスと Azure 間の E2E 接続性とパフォーマンスを監視できます。 主な機能は次のとおりです。
 
 * サブスクリプションに関連付けられている ER 回線の自動検出
 * オンプレミスからクラウド アプリケーションへのネットワーク トポロジの検出
-* 容量計画、使用率分析
+* 容量計画、帯域幅の使用率分析
 * プライマリ パスとセカンダリ パス両方の監視とアラート
+* ExpressRoute を介した Office 365 や Dynamics 365 などの Azure サービスへの接続の監視
 * VNet への接続性の低下の検出
+
+![リージョン間のトラフィックを示すマップ](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
 詳細については、次の記事を参照してください。
 
 * [ExpressRoute に使用する Network Performance Monitor の構成](../expressroute/how-to-npm.md)
 * [ブログの投稿](https://aka.ms/NPMExRmonitorGA)
 
-## <a name="service-endpoint-monitor"></a>サービス エンドポイント モニター
+## <a name="service-connectivity-monitor"></a>サービス接続モニター
 
-サービス エンドポイントの監視では、アプリケーションの到達可能性をテストし、オンプレミス、通信事業者ネットワーク、クラウド/プライベート データ センターの間のパフォーマンス ボトルネックを検出できます。
+サービス接続の監視では、アプリケーションの到達可能性をテストし、オンプレミス、通信事業者ネットワーク、クラウド/プライベート データ センターの間のパフォーマンス ボトルネックを検出できます。
 
 * アプリケーションへのエンド ツー エンドのネットワーク接続性を監視する
 * アプリケーションの配信とネットワークのパフォーマンスを関連付け、ユーザーとアプリケーションの間のパスに沿った低下の正確な場所を検出する
@@ -116,7 +120,6 @@ DNS 管理者用に開発されたこのソリューションは、DNS ログの
 関連リンク:
 * [ブログ記事](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/)、[ドキュメント](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="next-steps"></a>次の手順
+## <a name="miscellaneous"></a>その他
 
-* [Network Performance Monitor の構成](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor)
-* [ExpressRoute に使用する Network Performance Monitor の構成](../expressroute/how-to-npm.md)
+* [新しい価格](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

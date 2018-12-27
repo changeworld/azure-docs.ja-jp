@@ -3,22 +3,19 @@ title: HL7 FHIR リソースの Change Feed - Azure Cosmos DB | Microsoft Docs
 description: Azure Logic Apps、Azure Cosmos DB、Service Bus を使用して、HL7 FHIR 患者医療記録の変更通知を設定する方法について説明します。
 keywords: hl7 fhir
 services: cosmos-db
-author: hedidin
+author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 0d25c11f-9197-419a-aa19-4614c6ab2d06
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: d9894709cc10c55295e63f64a0db89137bf36826
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: aab6e5247830ee444bcab0b15bda34e4464aaad1
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565481"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Logic Apps と Azure Cosmos DB を使用して HL7 FHIR 医療記録の変更を患者に通知する
 
@@ -137,7 +134,7 @@ Azure Cosmos DB SQL .NET API の [`CreateDocumentChangeFeedQuery`](https://msdn.
             /// <returns></returns>
             [Metadata("Get New or Modified FHIR Documents",
                 "Query for new or modifed FHIR Documents By Resource Type " +
-                "from Last Run Date or Begining of Collection creation"
+                "from Last Run Date or Beginning of Collection creation"
             )]
             [SwaggerResponse(HttpStatusCode.OK, type: typeof(Task<dynamic>))]
             [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modifed Documents found")]

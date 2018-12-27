@@ -1,29 +1,23 @@
 ---
-title: Hive ODBC ドライバーを使用した Excel から Hadoop への接続 - Azure HDInsight | Microsoft Docs
+title: Hive ODBC ドライバーを使用して Excel を Apache Hadoop に接続する - Azure HDInsight
 description: Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。
 keywords: hadoop excel,hive excel,hive odbc
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-tags: azure-portal
-editor: cgronlun
-ms.assetid: a7665a14-0211-4521-b3e7-3b26e8029cc0
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: 2050741b46699043836cae1e6465e18dbae87d25
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: hrasheed
+ms.openlocfilehash: 09642aba1cd0daa05e56e418330f21361d9263a2
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632511"
 ---
-# <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用した Excel から Azure HDInsight の Hadoop への接続
+# <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用して Excel を Azure HDInsight 上の Apache Hadoop に接続する
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
@@ -45,7 +39,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 
 このドライバーをインストールできるのは、32 ビットまたは 64 ビットバージョンの Windows 7、Windows 8、Windows 10、Windows Server 2008 R2、および Windows Server 2012 です。 このドライバーを使用して Azure HDInsight に接続できます。 ODBC ドライバーを使用するアプリケーションのバージョンに合致したバージョンをインストールする必要があります。 このチュートリアルでは、Office Excel のドライバーが使用されます。
 
-## <a name="create-hive-odbc-data-source"></a>Hive ODBC データ ソースの作成
+## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC データ ソースを作成する
 次の手順に従って、Hive ODBC データ ソースを作成します。
 
 1. Windows 8 または Windows 10 で、Windows キーを押してスタート画面を開き、 **データ ソース**を入力します。
@@ -57,10 +51,10 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 4. **[Microsoft Hive ODBC ドライバー]** を選択し、**[完了]** をクリックします。 **[Microsoft Hive ODBC ドライバーの DNS セットアップ]** ダイアログが開きます。
 5. 次の値を入力または選択します。
    
-   | プロパティ | [説明] |
+   | プロパティ | 説明 |
    | --- | --- |
    |  データ ソース名 |データ ソースに名前を付けます。 |
-   |  Host |「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
+   |  ホスト |「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
    |  ポート |<strong>443</strong> を使用します。 (このポートは 563 から 443 に変更されました)。 |
    |  データベース |<strong>既定値</strong>を使用します。 |
    |  メカニズム |<strong>Azure HDInsight サービス</strong>を選択します。 |
@@ -69,9 +63,9 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
    
     </table>
    
-    **[詳細オプション]**をクリックするときに、注意する必要のある重要なパラメーターがいくつかあります。
+    **[詳細オプション]** をクリックするときに、注意する必要のある重要なパラメーターがいくつかあります。
    
-   | パラメーター | [説明] |
+   | パラメーター | 説明 |
    | --- | --- |
    |  ネイティブ クエリの使用 |これを選択すると、ODBC ドライバーは TSQL を HiveQL に変換しません。 純粋な HiveQL ステートメントを送信していることを確認している場合にのみ使用します。 SQL Server または Azure SQL Database に接続している場合は、オフのままにします。 |
    |  ブロック単位でフェッチされた行 |大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。 |
@@ -79,7 +73,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 
     ![詳細オプション](./media/apache-hadoop-connect-excel-hive-odbc-driver/HDI.HiveOdbc.DataSource.AdvancedOptions1.png "DSN の詳細構成オプション")
 
-1. **[テスト]** をクリックして、データ ソースをテストします。 データ ソースが正しく構成された場合、 *テストは無事に完了しました。*と表示されます。
+1. **[テスト]** をクリックして、データ ソースをテストします。 データ ソースが正しく構成された場合、 *テストは無事に完了しました。* と表示されます。
 2. **[OK]** をクリックして [テスト] ダイアログを閉じます。 新しいデータ ソースが **[ODBC データ ソース アドミニストレーター]** に表示されます。
 3. **[OK]** をクリックしてウィザードを終了します。
 

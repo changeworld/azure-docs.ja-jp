@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management の FAQ | Microsoft Docs"
-description: "Azure API Management についてよくあるご質問 (FAQ) の回答、パターン、ベスト プラクティスについて説明します。"
+title: Azure API Management の FAQ | Microsoft Docs
+description: Azure API Management についてよくあるご質問 (FAQ) の回答、パターン、ベスト プラクティスについて説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2fa193cd-ea71-4b33-a5ca-1f55e5351e23
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 091cfaaf8fa1cccf2f8b819732946bbbd08fd426
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 760feae2c9b58e162dae487e240dda72099ed91b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227979"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -76,8 +77,8 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 はい、API Management は次の手段を使用してプログラムで管理できます。
 
 * [API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx)
-* [Microsoft Azure ApiManagement Service Management Library SDK](http://aka.ms/apimsdk)
-* [サービスのデプロイ](https://msdn.microsoft.com/library/mt619282.aspx)および[サービスの管理](https://msdn.microsoft.com/library/mt613507.aspx)用の PowerShell コマンドレット
+* [Microsoft Azure ApiManagement Service Management Library SDK](https://aka.ms/apimsdk)
+* [サービスのデプロイ](https://docs.microsoft.com/powershell/module/wds)および[サービスの管理](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)用の PowerShell コマンドレット
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>ユーザーを Administrators グループに追加するにはどうすればよいですか。
 次の手順に従って、ユーザーを Administrators グループに追加できます。
@@ -86,9 +87,9 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 2. 更新する API Management インスタンスが含まれているリソース グループに移動します。
 3. API Management で、目的のユーザーに **API Management 共同作成者**ロールを割り当てます。
 
-新しく追加した共同作成者は Azure PowerShell [コマンドレット](https://msdn.microsoft.com/library/mt613507.aspx)を使用できます。 次の手順に従って、管理者としてサインインできます。
+新しく追加した共同作成者は Azure PowerShell [コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用できます。 次の手順に従って、管理者としてサインインできます。
 
-1. `Login-AzureRmAccount` コマンドレットを使用してサインインします。
+1. `Connect-AzureRmAccount` コマンドレットを使用してサインインします。
 2. `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` を使用して、このサービスが含まれているサブスクリプションのコンテキストを設定します。
 3. `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` を使用して、シングル サインオン URL を取得します。
 4. この URL を使って管理ポータルにアクセスできます。
@@ -103,7 +104,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 * 異なるテナントで同じ API をホストする。
 
 ### <a name="can-i-use-soap-with-api-management"></a>API Management で SOAP を使用することはできますか。
-[SOAP パススルー](http://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/)がサポートされるようになりました。 管理者が SOAP サービスの WSDL をインポートすると、Azure API Management によって SOAP フロント エンドが作成されます。 開発者ポータル ドキュメント、テスト コンソール、ポリシーと分析を、SOAP サービスで利用できます。
+[SOAP パススルー](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/)がサポートされるようになりました。 管理者が SOAP サービスの WSDL をインポートすると、Azure API Management によって SOAP フロント エンドが作成されます。 開発者ポータル ドキュメント、テスト コンソール、ポリシーと分析を、SOAP サービスで利用できます。
 
 ### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>API Management ゲートウェイ IP アドレスは一定ですか。 それをファイアウォール ルールで使用できますか。
 API Management のすべてのレベルでは、API Management テナントのパブリック IP アドレス (VIP) は、テナントの有効期間中、静的です。ただし、いくつかの例外があります。 IP アドレスは次の状況では変化します。
@@ -125,7 +126,7 @@ Active Directory フェデレーション サービス (AD FS) セキュリテ�
 API Management では、複数の地理的な場所へのデプロイで[パフォーマンス トラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#performance)を使用します。 着信トラフィックは、最も近い API ゲートウェイにルーティングされます。 1 つのリージョンがオフラインになった場合、着信トラフィックは自動的に次に最も近いゲートウェイにルーティングされます。 ルーティング方法の詳細については、[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)に関するページを参照してください。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Azure Resource Manager テンプレートを使用して API Management サービス インスタンスを作成することはできますか。
-はい。 詳細については、[Azure API Management サービス](http://aka.ms/apimtemplate)のクイックスタート テンプレートを参照してください。
+はい。 詳細については、[Azure API Management サービス](https://aka.ms/apimtemplate)のクイックスタート テンプレートを参照してください。
 
 ### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>バックエンドに自己署名 SSL 証明書を使用できますか。
 はい。 これを行うには、PowerShell を使用するか、API に直接送信します。 これにより、証明書チェーン検証を無効になり、API Management からバックエンド サービスへの通信時に、自己署名証明書または個人署名証明書を使用することができます。
@@ -150,7 +151,7 @@ Git Credential Manager を使用しているか、Visual Studio を使用して 
 はい。 API Management は Azure ExpressRoute と共に使用できます。
 
 ### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>Resource Manager スタイルの VNET に API Management をデプロイする場合、その VNET 内に専用サブネットが必要なのはなぜですか。
-API Management に専用サブネットが必要な理由は、それがクラシック (PAAS V1 レイヤー) デプロイメント モデルを基に構築されているためです。 Resource Manager VNET (V2 レイヤー) へのデプロイは可能ですが、それによる影響も無視できません。 Azure のクラシック デプロイメント モデルは Resource Manager モデルと緊密に結び付いていないため、V2 レイヤーにリソースを作成しても V1 レイヤーではそれを認識できず、既に NIC (V2 上に構築) に割り当てられている IP を API Management が使用しようとするなど、問題が生じる可能性があります。
+API Management に専用サブネットが必要な理由は、それがクラシック (PAAS V1 レイヤー) デプロイメント モデルを基に構築されているためです。 Resource Manager VNET (V2 レイヤー) へのデプロイは可能ですが、それによる影響も無視できません。 Azure のクラシック デプロイ モデルは Resource Manager モデルと緊密に結び付いていないため、V2 レイヤーにリソースを作成しても V1 レイヤーではそれを認識できず、既に NIC (V2 上に構築) に割り当てられている IP を API Management が使用しようとするなど、問題が生じる可能性があります。
 クラシック モデルと Resource Manager モデルの違いの詳細については、[デプロイメント モデル間の差異](../azure-resource-manager/resource-manager-deployment-model.md)に関するページを参照してください。
 
 ### <a name="what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet"></a>API Management を VNET にデプロイする場合に必要な最小サブネット サイズはどれくらいですか。

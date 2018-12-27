@@ -1,29 +1,25 @@
 ---
-title: "Azure SQL Data Warehouse のエラスティック クエリのチュートリアル | Microsoft Docs"
-description: "Azure SQL Data Warehouse のエラスティック クエリの使用方法を説明します。"
+title: 'チュートリアル: Azure SQL Data Warehouse のエラスティック クエリ | Microsoft Docs'
+description: このチュートリアルでは、エラスティック クエリ機能を使用して、Azure SQL Database から Azure SQL Data Warehouse を照会します。
 services: sql-data-warehouse
-documentationcenter: NA
 author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67g
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 11/03/2017
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/14/2018
 ms.author: elbutter
-ms.openlocfilehash: 20bbdbbde7edc4351563685761785874870a3c82
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.reviewer: igorstan
+ms.openlocfilehash: 355ae1c27d0af8f77c2c9bda61c3581562050fc4
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307094"
 ---
-# <a name="configure-elastic-query-with-sql-data-warehouse"></a>SQL Data Warehouse のエラスティック クエリの構成
+# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>チュートリアル: エラスティック クエリを使用して Azure SQL Data Warehouse のデータに Azure SQL Database からアクセスする
 
-このチュートリアルでは、エラスティック クエリを使用して SQL Database から SQL Data Warehouse にクエリを送信する方法を学習します。 エラスティック クエリは、Azure SQL 製品間に存在する機能です。 概念としてのエラスティック クエリの詳細については、「[**SQL Data Warehouse のエラスティック クエリの使用方法**][How to use Elastic Query with SQL Data Warehouse]」をご覧ください。
+このチュートリアルでは、エラスティック クエリ機能を使用して、Azure SQL Database から Azure SQL Data Warehouse を照会します。 
 
 ## <a name="prerequisites-for-the-tutorial"></a>このチュートリアルの前提条件
 
@@ -128,7 +124,7 @@ ms.lasthandoff: 12/11/2017
 
 5. **SQL データベース インスタンス**に外部テーブル定義が作成されたことを確認します。
 
-   ![エラスティック クエリの外部テーブル定義](./media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
+   ![エラスティック クエリの外部テーブル定義](media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
 
 
 6. 次のクエリを送信します。これにより、データ ウェアハウス インスタンスに対してクエリが実行されます。 手順 2 で挿入した 5 つの値が返されるはずです。 
@@ -143,15 +139,5 @@ SELECT * FROM [dbo].[OrderInformation];
 
 これで、ごく基本的なエラスティック クエリの設定が完了しました。 
 
-
-
-
-<!--Image references-->
-
-<!--Article references-->
-
-[How to use Elastic Query with SQL Data Warehouse]: ./how-to-use-elastic-query-with-sql-data-warehouse.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
+## <a name="next-steps"></a>次の手順
+推奨事項については、[Azure SQL Data Warehouse でエラスティック クエリを使用する場合のベスト プラクティス](how-to-use-elastic-query-with-sql-data-warehouse.md)に関するページを参照してください。

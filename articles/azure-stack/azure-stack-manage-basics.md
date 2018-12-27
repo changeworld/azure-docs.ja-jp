@@ -3,7 +3,7 @@ title: Azure Stack の管理の基本 | Microsoft Docs
 description: Azure Stack を管理するために知っておく必要があることについて説明します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
@@ -12,13 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
-ms.author: mabrigg
-ms.openlocfilehash: df4a5a17ad034ae5d6ab82791c020634a8758b71
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.date: 10/15/2018
+ms.author: jeffgilb
+ms.openlocfilehash: 5d3073c3ed499ecdb20243e6db2b217aec3e1448
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254521"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack の管理の基本
 Azure Stack の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイドでは、Azure Stack オペレーターとしての役割の概要と、ユーザーがすばやく生産的になれるようにユーザーに伝える必要があることを説明します。
@@ -31,7 +32,7 @@ Azure Stack 統合システムを使用している場合、Azure Stack の更�
  
 ### <a name="development-kit"></a>開発キット
 
-Azure Stack Development Kit を使用している場合は、「[What is Azure Stack? (Azure Stack とは)](.\asdk\asdk-what-is.md)」の記事を確認し、Development Kit の目的と制限事項について確実に理解しておいてください。 開発キットは "サンド ボックス" として使用する必要があります。その中では、Azure Stack を評価し、非運用環境でアプリの開発とテストを行うことができます。 (デプロイの情報については、[Azure Stack Development Kit](.\asdk\asdk-deploy.md) のデプロイ チュートリアルを参照してください。)
+Azure Stack Development Kit を使用している場合は、「[What is Azure Stack? (Azure Stack とは)](.\asdk\asdk-what-is.md)」の記事を確認し、Development Kit の目的と制限事項について確実に理解しておいてください。 開発キットは "サンド ボックス" として使用する必要があります。その中では、Azure Stack を評価し、非運用環境でアプリの開発とテストを行うことができます。 (デプロイの情報については、[Azure Stack Development Kit のデプロイ](.\asdk\asdk-install.md)に関する記事を参照してください。)
 
 Azure のように、Microsoft は迅速にイノベーションを進めています。 新しいビルドは定期的にリリースされます。 Development Kit を実行しており、最新のビルドに移行する場合は、[Azure Stack を再デプロイ](.\asdk\asdk-redeploy.md)する必要があります。 更新プログラム パッケージは適用できません。 このプロセスは時間がかかりますが、最新の機能を試すことができるというメリットがあります。 Microsoft Web サイトの Development Kit ドキュメントには、最新のリリース ビルドが反映されています。
 
@@ -68,11 +69,11 @@ Azure Stack には、引き続き Azure サービスのサポートが追加さ�
 Azure Stack を管理する場合に注意するいくつかのアカウントに関する考慮事項があります。 特に、Azure Active Directory (Azure AD) ではなく ID プロバイダーとして Windows Server Active Directory Federation Services (AD FS) を使用する展開では注意が必要です。 次のアカウントに関する考慮事項は、Azure Stack 統合システムと ASDK 展開の両方に適用されます。
 
 
-|アカウント|Azure AD|AD FS|
+|Account|Azure AD|AD FS|
 |-----|-----|-----|
 |ローカル管理者 (.\Administrator)|ASDK ホスト管理者|ASDK ホスト管理者|
-|AzureStack\AzureStackAdmin|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルにログインできます<br><br>Service Fabric リングを表示および管理するためのアクセス権|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルへのアクセス権なし<br><br>Service Fabric リングを表示および管理するためのアクセス権<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者ではなくなりました|
-|AzureStack\CloudAdmin|特権エンドポイント内で許可されたコマンドにアクセス、実行できます|特権エンドポイント内で許可されたコマンドにアクセス、実行できます<br><br>ASDK ホストにログインできません<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者|
+|AzureStack\AzureStackAdmin|ASDK ホスト管理者<br><br>Azure Stack 管理ポータルにサインインするために使用できます<br><br>Service Fabric リングを表示および管理するためのアクセス権|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルへのアクセス権なし<br><br>Service Fabric リングを表示および管理するためのアクセス権<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者ではなくなりました|
+|AzureStack\CloudAdmin|特権エンドポイント内で許可されたコマンドにアクセス、実行できます|特権エンドポイント内で許可されたコマンドにアクセス、実行できます<br><br>ASDK ホストにサインインできません<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者|
 |Azure AD 全体管理者|インストール時に使用<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者|適用不可|
 |
 
@@ -80,7 +81,7 @@ Azure Stack を管理する場合に注意するいくつかのアカウント�
  
 [管理者ポータル](azure-stack-manage-portals.md)または PowerShell を使用して Azure Stack を管理できます。 基本的概念を学ぶためには、ポータルを介するのが最も容易な方法です。 PowerShell を使用する場合は、準備の手順があります。 PowerShell を[インストール](azure-stack-powershell-install.md)し、追加モジュールを[ダウンロード](azure-stack-powershell-download.md)して、PowerShell を[構成](azure-stack-powershell-configure-admin.md)する必要があります。
 
-Azure Stack はデプロイ、管理、整理のための基礎となるメカニズムとして、Azure Resource Manager を使用します。 Azure Stack の管理とユーザーのサポートを行う予定であれば、Resource Manager について学習する必要があります。 「[Azure Resource Manager の概要](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)」ホワイトペーパーを参照してください。
+Azure Stack はデプロイ、管理、整理のための基礎となるメカニズムとして、Azure Resource Manager を使用します。 Azure Stack の管理とユーザーのサポートを行う予定であれば、Resource Manager について学習する必要があります。 「[Azure Resource Manager の概要](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)」ホワイトペーパーを参照してください。
 
 ## <a name="your-typical-responsibilities"></a>クラウド オペレーターの通常の担当範囲
 
@@ -121,7 +122,7 @@ Azure Stack 内のサービスを使用してアプリを構築する前に、�
 
 PowerShell を使用する場合、ユーザーはサービスを使用する前にリソース プロバイダーに登録する必要がある場合があります。 (リソース プロバイダーがサービスを管理しています。 たとえば、ネットワーク リソース プロバイダーは仮想ネットワーク、ネットワーク インターフェイス、ロード バランサーなどのリソースを管理しています。)ユーザーは PowerShell を[インストール](user/azure-stack-powershell-install.md)し、追加のモジュールを[ダウンロード](user/azure-stack-powershell-download.md)して、PowerShell を[構成](user/azure-stack-powershell-configure-user.md)する (これにはリソース プロバイダーの登録が含まれます) 必要があります。
 
-**プランへのサブスクライブ**
+**オファーへのサブスクライブ**
 
 ユーザーはサービスにアクセスする前に、オペレーターが作成した[オファーをサブスクライブする](azure-stack-subscribe-plan-provision-vm.md)必要があります。
 
@@ -143,6 +144,6 @@ Development Kit については、[Microsoft フォーラム](https://social.msd
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Stack でのリージョンの管理](azure-stack-region-management.md)
+[Azure Stack でのリージョンの管理](azure-stack-region-management.md)
 
 

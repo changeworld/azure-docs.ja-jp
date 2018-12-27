@@ -1,32 +1,26 @@
 ---
-title: ".NET SDK for Hadoop で Apache Pig ジョブを実行する - Azure HDInsight | Microsoft Docs"
-description: ".NET SDK for Hadoop を使用して HDInsight で Hadoop に Pig ジョブを送信する方法を説明します。"
+title: .NET SDK for Hadoop で Apache Pig ジョブを実行する - Azure HDInsight
+description: .NET SDK for Hadoop を使用して HDInsight で Hadoop に Pig ジョブを送信する方法を説明します。
 services: hdinsight
-documentationcenter: .net
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: fa11d49a-328c-47e7-b16d-e7ed2a453195
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/29/2018
-ms.author: larryfr
-ms.openlocfilehash: 5510d64b518e4694caa8e35140907b55c01ecd8a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.topic: conceptual
+ms.date: 05/01/2018
+ms.author: hrasheed
+ms.openlocfilehash: 0aa45ae807f153e6f1a3fde1d648571b29802dc2
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632477"
 ---
-# <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
+# <a name="run-apache-pig-jobs-using-the-net-sdk-for-apache-hadoop-in-hdinsight"></a>.NET SDK for Apache Hadoop を使用して HDInsight 上で Apache Pig ジョブを実行する
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-.NET SDK for Hadoop を使用して Azure HDInsight で Hadoop に Apache Pig ジョブを送信する方法を説明します。
+.NET SDK for Apache Hadoop を使用して Azure HDInsight 上の Hadoop に Apache Pig ジョブを送信する方法について説明します。
 
 HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。 Pig では、一連のデータ変換をモデル化することで MapReduce 操作を作成できます。 このドキュメントでは、基本的な C# アプリケーションを使用して、Pig ジョブを HDInsight クラスターに送信する方法を説明します。
 
@@ -53,7 +47,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
    | ------ | ------ |
    | カテゴリ | テンプレート/Visual C#/Windows |
    | テンプレート | コンソール アプリケーション |
-   | Name | SubmitPigJob |
+   | 名前 | SubmitPigJob |
 
 3. **[OK]** をクリックしてプロジェクトを作成します。
 

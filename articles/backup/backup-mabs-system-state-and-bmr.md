@@ -1,24 +1,20 @@
 ---
-title: "Azure Backup Server でシステム状態を保護してベア メタルに回復する | Microsoft Docs"
-description: "Azure Backup Server を使用して、システム状態をバックアップし、とベア メタル回復 (BMR) 保護を提供します。"
+title: Azure Backup Server でシステム状態を保護してベア メタルに回復する
+description: Azure Backup Server を使用して、システム状態をバックアップし、とベア メタル回復 (BMR) 保護を提供します。
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-keywords: 
-ms.assetid: 
+keywords: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.targetplatform: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: markgal,masaran
-ms.openlocfilehash: 30f70a702d7d9a3e1196c04096708c035e406607
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: 7cb87847d6a1e191fb20dfa9cdf263066704eb6d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238813"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Azure Backup Server を使用してシステム状態をバックアップし、ベア メタルに回復する
 
@@ -33,15 +29,15 @@ Azure Backup Server は、システム状態をバックアップし、ベア �
 
 次の表は、バックアップと復旧を実行できる項目のまとめです。 システム状態および BMR を使用して保護できるアプリのバージョンの詳細については、「[What does Azure Backup Server back up?](backup-mabs-protection-matrix.md)」(Azure Backup Server がバックアップするもの) を参照してください。
 
-|Backup|問題|Azure Backup Server バックアップからの復旧|システム状態のバックアップからの復旧|BMR|
+|バックアップ|問題|Azure Backup Server バックアップからの復旧|システム状態のバックアップからの復旧|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**ファイル データ**<br /><br />通常のデータのバックアップ<br /><br />BMR/システム状態のバックアップ|ファイル データの損失|Y|N|N|
 |**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|オペレーティング システムの損失または破損|N|Y|Y|
 |**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サーバーの損失 (データ ボリュームは正常)|N|N|Y|
-|**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サーバーの損失 (データ ボリュームも損失)|Y|いいえ|はい (BMR、この後にバックアップ ファイル データの通常回復を実行)|
+|**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サーバーの損失 (データ ボリュームも損失)|Y|いいえ |はい (BMR、この後にバックアップ ファイル データの通常回復を実行)|
 |**SharePoint データ**:<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サイト、リスト、リスト アイテム、ドキュメントの損失|Y|N|N|
 |**SharePoint データ**:<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|オペレーティング システムの損失または破損|N|Y|Y|
-|**SharePoint データ**:<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|ディザスター リカバリー|N|N|N|
+|**SharePoint データ**:<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|障害復旧|N|N|N|
 |Windows Server 2012 R2 Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|VM の損失|Y|N|N|
 |Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|オペレーティング システムの損失または破損|N|Y|Y|
 |Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|HYPER-V ホストの損失 (VM は正常)|N|N|Y|
@@ -101,15 +97,15 @@ Backup Server は、Windows Server バックアップを呼び出し、その BM
 ## <a name="before-you-begin"></a>開始する前に
 
 1.  **Azure Backup Server をデプロイ**します。 Backup Server が正しくデプロイされていることを確認します。 詳細については、次を参照してください。
-    * [Azure Backup Server のシステム要件](http://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
+    * [Azure Backup Server のシステム要件](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
     * [Backup Server の保護マトリックス](backup-mabs-protection-matrix.md)
 
 2.  **記憶域をセットアップ**します。 Azure では、ディスク、テープ、およびクラウドにバックアップ データを格納できます。 詳細については、[データ記憶域の準備](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage)に関するページを参照してください。
 
-3.  **保護エージェントをセットアップ**します。 バックアップを作成するコンピューターに保護エージェントをインストールします。 詳細については、[DPM 保護エージェントのデプロイ](http://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent)に関するページを参照してください。
+3.  **保護エージェントをセットアップ**します。 バックアップを作成するコンピューターに保護エージェントをインストールします。 詳細については、[DPM 保護エージェントのデプロイ](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent)に関するページを参照してください。
 
 ## <a name="back-up-system-state-and-bare-metal"></a>システム状態とベア メタルのバックアップ
-[保護グループのデプロイ](http://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)に関するページの説明に従って保護グループをセットアップします。 別のグループで同じコンピューターの BMR とシステム状態を保護することはできません。 また、BMR を選択した場合、システム状態は自動的に有効になります。
+[保護グループのデプロイ](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)に関するページの説明に従って保護グループをセットアップします。 別のグループで同じコンピューターの BMR とシステム状態を保護することはできません。 また、BMR を選択した場合、システム状態は自動的に有効になります。
 
 
 1.  Backup Server 管理者コンソールで、[新しい保護グループの作成] ウィザードを開くには、**[保護]** > **[アクション]** > **[保護グループの作成]** の順に選択します。
@@ -118,7 +114,7 @@ Backup Server は、Windows Server バックアップを呼び出し、その BM
 
 3.  **[グループ メンバーの選択]** ページで、コンピューターを展開して、**BMR** または**システム状態**のいずれかを選択します。
 
-    別のグループで同じコンピューターの BMR とシステム状態の両方を保護することはできません。 また、BMR を選択した場合、システム状態は自動的に有効になります。 詳細については、[保護グループのデプロイ](http://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)に関するページを参照してください。
+    別のグループで同じコンピューターの BMR とシステム状態の両方を保護することはできません。 また、BMR を選択した場合、システム状態は自動的に有効になります。 詳細については、[保護グループのデプロイ](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)に関するページを参照してください。
 
 4.  **[データ保護方法の選択]** ページで、短期バックアップおよび長期バックアップを処理する方法を選択します。 短期バックアップは常にディスクへのバックアップが優先されますが、Azure Backup を使用してディスクから Azure クラウドにバックアップするオプションもあります (短期または長期)。 クラウドへの長期バックアップの代替方法は、スタンドアロン テープ デバイスまたは Backup Server に接続されているテープ ライブラリへの長期バックアップのセットアップです。
 

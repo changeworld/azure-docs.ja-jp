@@ -1,28 +1,24 @@
 ---
-title: "Operations Management Suite で B2B メッセージを追跡する - Azure Logic Apps | Microsoft Docs"
-description: "Azure Log Analytics を使用して Operations Management Suite (OMS) で統合アカウントおよびロジック アプリの B2B 通信を追跡する"
-author: padmavc
-manager: anneta
-editor: 
+title: Log Analytics を使用して B2B メッセージを追跡する - Azure Logic Apps | Microsoft Docs
+description: Azure Log Analytics で統合アカウントと Azure Logic Apps の B2B 通信を追跡します
 services: logic-apps
-documentationcenter: 
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.date: 07/21/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: d62be25678044ead469f65362b6f47c1a2df893b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 10/19/2018
+ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996534"
 ---
-# <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS) で B2B 通信を追跡する
+# <a name="track-b2b-messages-with-azure-log-analytics"></a>Azure Log Analytics を使用して B2B メッセージを追跡する
 
-統合アカウント経由で 2 つの実行中のビジネス プロセスまたはアプリケーション間で B2B 通信を設定した後、これらのエンティティは互いにメッセージを交換できます。 これらのメッセージが正しく処理されているかどうかを確認するには、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) で [Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して AS2、X12、および EDIFACT メッセージを追跡できます。 たとえば、メッセージを追跡するために次の Web ベースの追跡機能を使用できます。
+統合アカウントで取引先間の B2B 通信を設定すると、これらの取引先が AS2、X12、および EDIFACT などのプロトコルを使用してメッセージを交換できるようになります。 これらのメッセージが正しく処理されていることを確認するには、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用してこれらのメッセージを追跡できます。 たとえば、メッセージを追跡するために次の Web ベースの追跡機能を使用できます。
 
 * メッセージの数と状態
 * 受信確認の状態
@@ -30,67 +26,68 @@ ms.lasthandoff: 02/21/2018
 * エラーの詳細な説明
 * 検索機能
 
-## <a name="requirements"></a>必要条件
+> [!NOTE]
+> このページでは、以前、Microsoft Operations Management Suite (OMS) を使用してこれらのタスクを実行する手順を説明していましたが、OMS は [2019 年 1 月に廃止される](../azure-monitor/platform/oms-portal-transition.md)ため、代わりに Azure Log Analytics を使用する手順に置き換えられています。 
+
+## <a name="prerequisites"></a>前提条件
 
 * 診断ログが設定されているロジック アプリ。 [ロジック アプリを作成する方法](quickstart-create-first-logic-app-workflow.md)および[そのロジック アプリのログを設定する方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
 
 * 監視とログが設定されている統合アカウント。 [統合アカウントを作成する方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)および[そのアカウントの監視とログを設定する方法](../logic-apps/logic-apps-monitor-b2b-message.md)を参照してください。
 
-* まだ実行していない場合は、OMS で [Log Analytics に診断データを発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)します。
+* まだ実行していない場合は、[Log Analytics に診断データを発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)します。
 
-> [!NOTE]
-> 前の要件を満たした後、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 内にワークスペースを用意する必要があります。 OMS で B2B 通信を追跡するための同じ OMS ワークスペースを使用する必要があります。 
->  
-> OMS ワークスペースがない場合は、[OMS ワークスペースを作成する方法](../log-analytics/log-analytics-get-started.md)を参照してください。
+* 上記の要件を満たしたら、Log Analytics を使用して B2B 通信を追跡するために使用する Log Analytics ワークスペースも必要になります。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。
 
-## <a name="add-the-logic-apps-b2b-solution-to-the-operations-management-suite-oms"></a>Logic Apps B2B ソリューションを Operations Management Suite (OMS) に追加する
+## <a name="install-logic-apps-b2b-solution"></a>Logic Apps B2B ソリューションをインストールする
 
-OMS でロジック アプリの B2B メッセージを追跡するには、OMS ポータルに **Logic Apps B2B** ソリューションを追加する必要があります。 [OMS へのソリューションの追加](../log-analytics/log-analytics-get-started.md)に関する詳細を参照してください。
+Log Analytics でロジック アプリの B2B メッセージを追跡するには、事前に Log Analytics に **Logic Apps B2B** ソリューションを追加します。 [Log Analytics へのソリューションの追加](../azure-monitor/learn/quick-create-workspace.md)に関する詳細を参照してください。
 
-1. [Azure Portal](https://portal.azure.com) で、**[すべてのサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
+1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
 
-   ![Log Analytics を見つける](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
+   ![[Log Analytics] を選択する](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
 
-2. **[Log Analytics]** で、OMS ワークスペースを見つけて選択します。 
+1. **[Log Analytics]** で、ご利用の Log Analytics ワークスペースを見つけて選択します。 
 
-   ![OMS ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
-3. **[管理]** で、**[OMS ポータル]** を選択します。
+1. **[Log Analytics の使用を開始する]** > **[監視ソリューションの構成]** の順に選択し、**[ソリューションの表示]** を選択します。
 
-   ![OMS ポータルを選択する](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![[ソリューションの表示] を選択する](media/logic-apps-track-b2b-messages-omsportal/log-analytics-workspace.png)
 
-4. OMS ホーム ページが開いた後、**[ソリューション ギャラリー]** を選択します。    
+1. [概要] ページで、**[追加]** を選択して、**[管理ソリューション]** の一覧を開きます。 その一覧から **[Logic Apps B2B]** を選択します。 
 
-   ![[ソリューション ギャラリー] を選択する](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
+   ![Logic Apps B2B ソリューションを選択する](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-5. **[All solutions] \(すべてのソリューション)** で、**[Logic Apps B2B]** を見つけて選択します。     
+   ソリューションが見つからない場合は、ソリューションが表示されるまで一覧の下端にある **[さらに読み込む]** を選択します。
 
-   ![[Logic Apps B2B] を選択する](media/logic-apps-track-b2b-messages-omsportal/omshomepage2.png)
+1. **[作成]** を選択し、ソリューションをインストールする Log Analytics ワークスペースを確認してから、もう一度 **[作成]** を選択します。   
 
-6. **[Logic Apps B2B]** で、**[追加]** を選択します。
+   ![Logic Apps B2B の [作成] を選択する](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
 
-   ![[追加] の選択](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
+   既存のワークスペースを使用しない場合は、この時点で新しいワークスペースを作成することもできます。
 
-   OMS ホーム ページに、**[Logic Apps B2B メッセージ]** のタイルが表示されるようになります。 
-   このタイルは、B2B メッセージが処理されたらメッセージ カウントを更新します。
+1. 完了したら、ワークスペースの **[概要]** ページに戻ります。 
 
-   ![OMS ホーム ページの [Logic Apps B2B メッセージ] タイル](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
+   Logic Apps B2B ソリューションが、[概要] ページに表示されます。 
+   B2B メッセージが処理されているときに、このページのメッセージ数が更新されます。
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-the-operations-management-suite"></a>Operations Management Suite でメッセージの状態と詳細を追跡する
+## <a name="view-b2b-message-information"></a>B2B メッセージ情報を表示する
 
-1. B2B メッセージが処理された後、それらのメッセージの状態と詳細を表示できます。 OMS ホーム ページで、**[Logic Apps B2B メッセージ]** タイルを選択します。
+B2B メッセージが処理された後、それらのメッセージの状態と詳細を **[Logic Apps B2B]** タイルに表示できます。
 
-   ![更新されたメッセージ カウント](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
+1. Logic Analytics ワークスペースに移動し、[概要] ページを開きます。 **[Logic Apps B2B]** を選択します。
+
+   ![更新されたメッセージ カウント](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
-   > 既定では、**[Logic Apps B2B メッセージ]** タイルには 1 日に基づいたデータが表示されます。 データの範囲を異なる間隔に変更するには、OMS ページの上部にある範囲コントロールを選択します。
+   > 既定では、**[Logic Apps B2B]** タイルには 1 日に基づいたデータが表示されます。 データの範囲を異なる間隔に変更するには、ページの上部にある範囲コントロールを選択します。
    > 
-   > ![データの範囲を変更する](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
-   >
+   > ![間隔を変更する](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
 
-2. メッセージの状態ダッシュボードが表示された後、特定のメッセージの種類の詳細を表示できます。ここには、1 日に基づいたデータが表示されます。 **AS2**、**X12**、または **EDIFACT** のタイルを選択します。
+1. メッセージの状態ダッシュボードが表示された後、特定のメッセージの種類の詳細を表示できます。ここには、1 日に基づいたデータが表示されます。 **AS2**、**X12**、または **EDIFACT** のタイルを選択します。
 
    ![メッセージの状態を表示する](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 
@@ -147,12 +144,12 @@ OMS でロジック アプリの B2B メッセージを追跡するには、OMS 
 
 AS2 メッセージごとのプロパティの説明を次に示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | 送信者 | **[受信設定]** で指定されているゲスト パートナー、または AS2 契約の **[送信設定]** で指定されているホスト パートナー |
 | 受信者 | **[受信設定]** で指定されているホスト パートナー、または AS2 契約の **[送信設定]** で指定されているゲスト パートナー |
 | ロジック アプリ | AS2 アクションが設定されているロジック アプリ |
-| 状態 | AS2 メッセージの状態 <br>[成功] = 有効な AS2 メッセージを受信または送信しました。 MDN が設定されていません。 <br>[成功] = 有効な AS2 メッセージを受信または送信しました。 MDN が設定および受信されたか、または MDN が送信されました。 <br>[失敗] = 無効な AS2 メッセージを受信しました。 MDN が設定されていません。 <br>[Pending] \(保留中) = 有効な AS2 メッセージを受信または送信しました。 MDN が設定されており、MDN が予測されています。 |
+| Status | AS2 メッセージの状態 <br>[成功] = 有効な AS2 メッセージを受信または送信しました。 MDN が設定されていません。 <br>[成功] = 有効な AS2 メッセージを受信または送信しました。 MDN が設定および受信されたか、または MDN が送信されました。 <br>[失敗] = 無効な AS2 メッセージを受信しました。 MDN が設定されていません。 <br>[Pending] \(保留中) = 有効な AS2 メッセージを受信または送信しました。 MDN が設定されており、MDN が予測されています。 |
 | Ack | MDN メッセージの状態 <br>[承認済み] = 肯定の MDN を受信または送信しました。 <br>[Pending] \(保留中) = MDN の受信または送信を待機しています。 <br>[拒否] = 否定の MDN を受信または送信しました。 <br>[必要なし] = MDN が契約で設定されていません。 |
 | 方向 | AS2 メッセージの方向 |
 | 関連付け ID | ロジック アプリ内のすべてのトリガーとアクションを関連付ける ID |
@@ -178,12 +175,12 @@ AS2 メッセージごとのプロパティの説明を次に示します。
 
 X12 メッセージごとのプロパティの説明を次に示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | 送信者 | **[受信設定]** で指定されているゲスト パートナー、または X12 契約の **[送信設定]** で指定されているホスト パートナー |
 | 受信者 | **[受信設定]** で指定されているホスト パートナー、または X12 契約の **[送信設定]** で指定されているゲスト パートナー |
 | ロジック アプリ | X12 アクションが設定されているロジック アプリ |
-| 状態 | X12 メッセージの状態 <br>[成功] = 有効な X12 メッセージを受信または送信しました。 機能確認が設定されていません。 <br>[成功] = 有効な X12 メッセージを受信または送信しました。 機能確認が設定および受信されたか、または機能確認が送信されました。 <br>[失敗] = 無効な X12 メッセージを受信または送信しました。 <br>[Pending] \(保留中) = 有効な X12 メッセージを受信または送信しました。 機能確認が設定されており、機能確認が予測されています。 |
+| Status | X12 メッセージの状態 <br>[成功] = 有効な X12 メッセージを受信または送信しました。 機能確認が設定されていません。 <br>[成功] = 有効な X12 メッセージを受信または送信しました。 機能確認が設定および受信されたか、または機能確認が送信されました。 <br>[失敗] = 無効な X12 メッセージを受信または送信しました。 <br>[Pending] \(保留中) = 有効な X12 メッセージを受信または送信しました。 機能確認が設定されており、機能確認が予測されています。 |
 | Ack | 機能確認 (997) の状態 <br>[承認済み] = 肯定の機能確認を受信または送信しました。 <br>[拒否] = 否定の機能確認を受信または送信しました。 <br>[Pending] \(保留中) = 機能確認を予測していましたが、受信しませんでした。 <br>[Pending] \(保留中) = 機能確認を生成しましたが、パートナーに送信できません。 <br>[必要なし] = 機能確認が設定されていません。 |
 | 方向 | X12 メッセージの方向 |
 | 関連付け ID | ロジック アプリ内のすべてのトリガーとアクションを関連付ける ID |
@@ -211,12 +208,12 @@ X12 メッセージごとのプロパティの説明を次に示します。
 
 EDIFACT メッセージごとのプロパティの説明を次に示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | 送信者 | **[受信設定]** で指定されているゲスト パートナー、または EDIFACT 契約の **[送信設定]** で指定されているホスト パートナー |
 | 受信者 | **[受信設定]** で指定されているホスト パートナー、または EDIFACT 契約の **[送信設定]** で指定されているゲスト パートナー |
 | ロジック アプリ | EDIFACT アクションが設定されているロジック アプリ |
-| 状態 | EDIFACT メッセージの状態 <br>[成功] = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定されていません。 <br>[成功] = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定および受信されたか、または機能確認が送信されました。 <br>[失敗] = 無効な EDIFACT メッセージを受信または送信しました。 <br>[Pending] \(保留中) = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定されており、機能確認が予測されています。 |
+| Status | EDIFACT メッセージの状態 <br>[成功] = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定されていません。 <br>[成功] = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定および受信されたか、または機能確認が送信されました。 <br>[失敗] = 無効な EDIFACT メッセージを受信または送信しました。 <br>[Pending] \(保留中) = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定されており、機能確認が予測されています。 |
 | Ack | 機能確認 (997) の状態 <br>[承認済み] = 肯定の機能確認を受信または送信しました。 <br>[拒否] = 否定の機能確認を受信または送信しました。 <br>[Pending] \(保留中) = 機能確認を予測していましたが、受信しませんでした。 <br>[Pending] (保留中) = 機能確認を生成しましたが、パートナーに送信できません。 <br>[必要なし] = 機能確認が設定されていません。 |
 | 方向 | EDIFACT メッセージの方向 |
 | 関連付け ID | ロジック アプリ内のすべてのトリガーとアクションを関連付ける ID |
@@ -240,7 +237,7 @@ EDIFACT メッセージごとのプロパティの説明を次に示します。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Operations Management Suite で B2B メッセージのクエリを行う](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [Log Analytics での B2B メッセージのクエリ](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [AS2 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

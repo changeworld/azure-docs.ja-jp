@@ -1,21 +1,21 @@
 ---
-title: iOS アプリケーションでの AppAuth の使用 - Azure Active Directory B2C
+title: Azure Active Directory B2C の iOS アプリケーションで AppAuth を使用する | Microsoft Docs
 description: この記事では、Azure Active Directory B2C と AppAuth を使用してユーザー ID の管理とユーザーの認証を行う iOS アプリを作成する方法を説明します。
 services: active-directory-b2c
-documentationcenter: ios
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2017
 ms.author: davidmu
-ms.openlocfilehash: 18c3801b18fb9adb444918cc45ee70c2611b213d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 5f95b71497b59eafff09d4add2b4bb1c20656592
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339360"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: iOS アプリケーションを使用してサインインする
 
@@ -50,7 +50,7 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポ�
 ポリシーを作成したら、アプリを構築できます。
 
 ## <a name="download-the-sample-code"></a>サンプル コードのダウンロード
-AppAuth と Azure AD B2C を使用する実稼働するサンプルが [github](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c) に用意されています。 そのコードをダウンロードして実行できます。 独自の Azure AD B2C テナントを使用するには、[README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) の指示に従います。
+AppAuth と Azure AD B2C を使用する実稼働するサンプルが [GitHub](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c) に用意されています。 そのコードをダウンロードして実行できます。 独自の Azure AD B2C テナントを使用するには、[README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) の指示に従います。
 
 このサンプルは、[GitHub の iOS AppAuth プロジェクト](https://github.com/openid/AppAuth-iOS)の README の指示に従って作成されています。 サンプルとライブラリの動作の詳細については、GitHub の AppAuth README を参照します。
 
@@ -69,13 +69,13 @@ Azure AD B2C との通信は、承認エンドポイント URI とトークン �
 トークン エンドポイント URI は、次の URL の Tenant\_ID と Policy\_Name を置き換えることで生成できます。
 
 ```objc
-static NSString *const tokenEndpoint = @"https://login.microsoftonline.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
+static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
 承認エンドポイント URI は、次の URL の Tenant\_ID と Policy\_Name を置き換えることで生成できます。
 
 ```objc
-static NSString *const authorizationEndpoint = @"https://login.microsoftonline.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
+static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
 ```
 
 AuthorizationServiceConfiguration オブジェクトを作成するには、次のコードを実行します。

@@ -1,6 +1,6 @@
 ---
-title: "StorSimple Linux ホストの MPIO の構成 | Microsoft Docs"
-description: "CentOS 6.6 を実行している Linux ホストに接続されている StorSimple で MPIO を構成します。"
+title: StorSimple Linux ホストの MPIO の構成 | Microsoft Docs
+description: CentOS 6.6 を実行している Linux ホストに接続されている StorSimple で MPIO を構成します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 2fbae15c1c6a9ec886f57f9df903612ae10d8e12
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: d1188b40021fbb221bc19af6d4a5397f7ba8f800
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439874"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。
@@ -55,7 +56,7 @@ Linux のマルチパスは、次の表のように、カーネル コンポー�
 
 multipath.conf には次の 5 つのセクションがあります。
 
-- **システム レベルの既定値** *(defaults)*: システム レベルの既定値を上書きすることができます。
+- **システム レベルの既定値***(defaults)*: システム レベルの既定値をオーバーライドすることができます。
 - **ブラックリストに載っているデバイス** *(blacklist)*: device-mapper で制御してはいけないデバイスの一覧を指定することができます。
 - **ブラックリストの例外** *(blacklist_exceptions)*: ブラックリストに載っている場合でもマルチパス デバイスとして扱う特定のデバイスを指定することができます。
 - **記憶域コントローラー固有の設定** *(devices)*: 仕入先および製品の情報を持つデバイスに適用する構成設定を指定することができます。
@@ -105,21 +106,21 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
           TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
-2. CentOS サーバーに *iSCSI-initiator-utils* をインストールします。 次の手順を実行して、 *iSCSI-initiator-utils*をインストールします。
+1. CentOS サーバーに *iSCSI-initiator-utils* をインストールします。 次の手順を実行して、 *iSCSI-initiator-utils*をインストールします。
    
    1. CentOS ホストに `root` としてログオンします。
-   2. *iSCSI-initiator-utils*をインストールします。 次のコマンドを入力します: 
+   1. *iSCSI-initiator-utils*をインストールします。 次のコマンドを入力します: 
       
        `yum install iscsi-initiator-utils`
-   3. *iSCSI-Initiator-utils* が正常にインストールされた後で、iSCSI サービスを開始します。 次のコマンドを入力します: 
+   1. *iSCSI-Initiator-utils* が正常にインストールされた後で、iSCSI サービスを開始します。 次のコマンドを入力します: 
       
        `service iscsid start`
       
        時折、`iscsid` が実際には開始されず、`--force` オプションが必要になる場合があります。
-   4. ブート時に iSCSI イニシエーターが確実に有効であるようにするには、 `chkconfig` コマンドを使用してサービスを有効にします。
+   1. ブート時に iSCSI イニシエーターが確実に有効であるようにするには、 `chkconfig` コマンドを使用してサービスを有効にします。
       
        `chkconfig iscsi on`
-   5. 正しく設定されていることを確認するには、次のコマンドを実行します。
+   1. 正しく設定されていることを確認するには、次のコマンドを実行します。
       
        `chkconfig --list | grep iscsi`
       
@@ -129,7 +130,7 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
            iscsid  0:off   1:off   2:on3:on4:on5:on6:off
       
        上の例から、iSCSI 環境では、2、3、4、5 の実行レベルでのブート時に実行されることが確認できます。
-3. *device-mapper-multipath*をインストールします。 次のコマンドを入力します: 
+1. *device-mapper-multipath*をインストールします。 次のコマンドを入力します: 
    
     `yum install device-mapper-multipath`
    
@@ -141,7 +142,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 * iSCSI 用に有効になっている 2 つ以上のインターフェイス。 StorSimple デバイス上の 2 つのインターフェイスが iSCSI に対応していることを確認するには、StorSimple デバイスの Azure クラシック ポータルで次の手順を実行します。
   
   1. StorSimple デバイスのクラシック ポータルにログインします。
-  2. StorSimple Manager サービスを選択し、 **[デバイス]** をクリックして特定の StorSimple デバイスを選択します。 **[構成]** をクリックし、ネットワーク インターフェイスの設定を確認します。 2 つの iSCSI 対応ネットワーク インターフェイスを示したスクリーン ショットは次のとおりです。 DATA 2 と DATA 3 の両方で、iSCSI の 10 GbE インターフェイスが有効になっています。
+  1. StorSimple Manager サービスを選択し、 **[デバイス]** をクリックして特定の StorSimple デバイスを選択します。 **[構成]** をクリックし、ネットワーク インターフェイスの設定を確認します。 2 つの iSCSI 対応ネットワーク インターフェイスを示したスクリーン ショットは次のとおりです。 DATA 2 と DATA 3 の両方で、iSCSI の 10 GbE インターフェイスが有効になっています。
      
       ![MPIO StorSimple DATA 2 の構成](./media/storsimple-configure-mpio-on-linux/IC761347.png)
      
@@ -150,8 +151,8 @@ StorSimple デバイスに必要なものは次のとおりです。
       **[構成]** ページで次の手順に従います。
      
      1. 両方のネットワーク インターフェイスが確実に iSCSI に対応するようにします。 **[iSCSI 対応]** フィールドを **[はい]** に設定する必要があります。
-     2. ネットワーク インターフェイスの速度が同じで、両方が 1 GbE または 10 GbE になるようにします。
-     3. iSCSI 対応インターフェイスの IPv4 アドレスをメモし、ホスト上で後ほど使用するために保存します。
+     1. ネットワーク インターフェイスの速度が同じで、両方が 1 GbE または 10 GbE になるようにします。
+     1. iSCSI 対応インターフェイスの IPv4 アドレスをメモし、ホスト上で後ほど使用するために保存します。
 * StorSimple デバイスの iSCSI インターフェイスは、CentOS サーバーから到達できる必要があります。
       これを確認するには、ホスト サーバーの StorSimple iSCSI 対応ネットワーク インターフェイスの IP アドレスを指定する必要があります。 使用するコマンドと DATA2 (10.126.162.25) および DATA3 (10.126.162.26) の対応する出力を次に示します。
   
@@ -190,14 +191,14 @@ StorSimple デバイスに必要なものは次のとおりです。
      `mpathconf --enable`
    
     上のコマンドによって、 `sample/etc/multipath.conf` ファイルが作成されます。
-2. マルチパス サービスを開始します。 次のコマンドを入力します: 
+1. マルチパス サービスを開始します。 次のコマンドを入力します: 
    
     `service multipathd start`
    
     次の出力が表示されます。
    
     `Starting multipathd daemon:`
-3. マルチパスの自動検出を有効にします。 次のコマンドを入力します: 
+1. マルチパスの自動検出を有効にします。 次のコマンドを入力します: 
    
     `mpathconf --find_multipaths y`
    
@@ -215,7 +216,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 1. `/etc/mulitpath.conf` ファイルを編集します。 次のコマンドを入力します: 
    
     `vi /etc/multipath.conf`
-2. multipath.conf ファイルの blacklist_exceptions セクションを見つけます。 StorSimple デバイスを、ブラックリストの例外としてこのセクションに記載する必要があります。 このファイル内の関連する行のコメントを解除して、次のように変更することができます (使用するデバイスの特定のモデルのみを使用します)。
+1. multipath.conf ファイルの blacklist_exceptions セクションを見つけます。 StorSimple デバイスを、ブラックリストの例外としてこのセクションに記載する必要があります。 このファイル内の関連する行のコメントを解除して、次のように変更することができます (使用するデバイスの特定のモデルのみを使用します)。
    
         blacklist_exceptions {
             device {
@@ -234,7 +235,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 1. `/etc/multipath.conf` ファイルを編集します。 次のコマンドを入力します: 
    
     `vi /etc/multipath.conf`
-2. `defaults` セクションの `path_grouping_policy` を `multibus` に設定します。 `path_grouping_policy` では、指定されていないマルチパスに適用する既定のパスグループ化ポリシーを指定します。 既定値のセクションは次のようになります。
+1. `defaults` セクションの `path_grouping_policy` を `multibus` に設定します。 `path_grouping_policy` では、指定されていないマルチパスに適用する既定のパスグループ化ポリシーを指定します。 既定値のセクションは次のようになります。
    
         defaults {
                 user_friendly_names yes
@@ -253,7 +254,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 1. `multipathd` デーモンを再起動します。 次のコマンドを入力します: 
    
     `service multipathd restart`
-2. 出力は次のようになります。
+1. 出力は次のようになります。
    
         [root@centosSS ~]# service multipathd start
         Starting multipathd daemon:  [OK]
@@ -261,7 +262,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 ### <a name="step-5-verify-multipathing"></a>手順 5. マルチパスを確認する
 1. まず、iSCSI 接続が、StorSimple デバイスで次のように確立されていることを確認します。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 StorSimple デバイスを検出します。 次のコマンドを入力します: 
+   a. StorSimple デバイスを検出します。 次のコマンドを入力します: 
       
     ```
     iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
@@ -297,9 +298,9 @@ StorSimple デバイスに必要なものは次のとおりです。
 
     ここに表示されているのが 1 つのホスト インターフェイスと 2 つのパスのみの場合は、iSCSI 用にホストの両方のインターフェイスを有効にする必要があります。 [Linux ドキュメントの詳細な手順](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)を参照してください。
 
-2. ボリュームは、StorSimple デバイスから CentOS サーバーに公開されます。 詳細については、(StorSimple デバイス上で Azure Portal を使用して)「[手順 6. ボリュームを作成する](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)」を参照してください。
+1. ボリュームは、StorSimple デバイスから CentOS サーバーに公開されます。 詳細については、(StorSimple デバイス上で Azure Portal を使用して)「[手順 6. ボリュームを作成する](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)」を参照してください。
 
-3. 使用可能なパスを確認します。 次のコマンドを入力します: 
+1. 使用可能なパスを確認します。 次のコマンドを入力します: 
 
       ```
       multipath –l
@@ -419,7 +420,7 @@ A. ご使用のデバイスがホワイトリストに登録されているか�
 詳細については、 [マルチパス用のトラブルシューティングのための対話型コマンドを使用する](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html)方法を参照してください。
 
 ## <a name="list-of-useful-commands"></a>便利なコマンドの一覧
-| 確認を求められたら、「 | コマンド | [説明] |
+| 確認を求められたら、「 | コマンド | 説明 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |iSCSI サービスを開始する |
 | &nbsp; |`service iscsid stop` |iSCSI サービスを停止する |
@@ -444,5 +445,5 @@ A. ご使用のデバイスがホワイトリストに登録されているか�
 Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキュメントも参照することが必要になる場合があります。
 
 * [CentOS での MPIO の設定](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
-* [Linux トレーニング ガイド](http://linux-training.be/files/books/LinuxAdm.pdf)
+* [Linux トレーニング ガイド](http://linux-training.be/linuxsys.pdf)
 

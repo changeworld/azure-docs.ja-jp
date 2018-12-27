@@ -1,24 +1,25 @@
 ---
-title: "スタンドアロン Azure Service Fabric クラスターの作成 | Microsoft Docs"
-description: "オンプレミスまたはクラウドにある Windows Server が実行されているマシン (物理コンピューターまたは仮想マシン) で、Azure Service Fabric クラスターを作成します。"
+title: スタンドアロン Azure Service Fabric クラスターの作成 | Microsoft Docs
+description: オンプレミスまたはクラウドにある Windows Server が実行されているマシン (物理コンピューターまたは仮想マシン) で、Azure Service Fabric クラスターを作成します。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
-ms.author: dekapur;chackdan;maburlik
-ms.openlocfilehash: 7d65845d21205e22a3e5b0868acb637ff614fb42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: dekapur
+ms.openlocfilehash: f91a6b305a3d531aa1c733685f6d896ed07054ae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257607"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server で実行されるスタンドアロン クラスターの作成
 Azure Service Fabric を使用すると、Windows Server を実行するあらゆる仮想マシンまたはコンピューター上に Service Fabric クラスターを作成できます。 つまり相互に接続された一連の Windows Server コンピューターを含む環境さえあれば、オンプレミスであれ、クラウド プロバイダーであれ、Service Fabric アプリケーションをデプロイして実行できるということです。 Service Fabric には、Service Fabric クラスターを作成するためのセットアップ パッケージ (スタンドアロン Windows Server パッケージ) が用意されています。
@@ -26,7 +27,7 @@ Azure Service Fabric を使用すると、Windows Server を実行するあら�
 この記事では、Service Fabric スタンドアロン クラスターの作成手順について説明します。
 
 > [!NOTE]
-> このスタンドアロン Windows Server パッケージは市販されており、運用環境デプロイに使用できます。 このパッケージには、Service Fabric の "プレビュー" 段階の新機能が含まれている場合があります。 プレビュー機能の一覧については、「[このパッケージに含まれるプレビュー機能](#previewfeatures_anchor)」を ご覧ください。 [使用許諾契約書のコピーのダウンロード](http://go.microsoft.com/fwlink/?LinkID=733084) ができるようになりました。
+> このスタンドアロン Windows Server パッケージは市販されており、運用環境デプロイに使用できます。 このパッケージには、Service Fabric の "プレビュー" 段階の新機能が含まれている場合があります。 プレビュー機能の一覧については、「[このパッケージに含まれるプレビュー機能](#previewfeatures_anchor)」を ご覧ください。 [使用許諾契約書のコピーのダウンロード](https://go.microsoft.com/fwlink/?LinkID=733084) ができるようになりました。
 > 
 > 
 
@@ -34,7 +35,7 @@ Azure Service Fabric を使用すると、Windows Server を実行するあら�
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Windows Server 用 Service Fabric パッケージのサポートを受ける
 * Windows Server 用 Service Fabric スタンドアロン パッケージに関するコミュニティへの質問を [Azure Service Fabric フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?) で投稿します。
-* [Service Fabric の専門家によるサポート](http://support.microsoft.com/oas/default.aspx?prid=16146)については、チケットを申請してください。  Microsoft によるプロフェッショナル サポートの詳細については、[こちら](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)をご覧ください。
+* [Service Fabric の専門家によるサポート](https://support.microsoft.com/oas/default.aspx?prid=16146)については、チケットを申請してください。  Microsoft によるプロフェッショナル サポートの詳細については、[こちら](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)をご覧ください。
 * [Microsoft Premier サポート](https://support.microsoft.com/en-us/premier)の一環として、このパッケージのサポートを受けることもできます。
 * 詳細については、「[Azure Service Fabric のサポート オプション](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)」を参照してください。
 * サポート目的でログを収集するには、[Service Fabric スタンドアロン ログ コレクター](service-fabric-cluster-standalone-package-contents.md)を実行します。
@@ -43,7 +44,7 @@ Azure Service Fabric を使用すると、Windows Server を実行するあら�
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Windows Server 用 Service Fabric パッケージをダウンロードする
 クラスターの作成には、次の場所にある Windows Server 用 Service Fabric パッケージ (Windows Server 2012 R2 以降) を使用します。 <br>
-[ダウンロード リンク - Service Fabric スタンドアロン パッケージ - Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690)
+[ダウンロード リンク - Service Fabric スタンドアロン パッケージ - Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)
 
 パッケージ内容の詳細については[こちら](service-fabric-cluster-standalone-package-contents.md)を参照してください。
 
@@ -56,10 +57,15 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 <a id="createcluster"></a>
 
 ## <a name="create-the-cluster"></a>クラスターを作成する
+セットアップ パッケージと共に、いくつかのサンプル クラスター構成ファイルがインストールされます。 *ClusterConfig.Unsecure.DevCluster.json* は最も単純なクラスター構成です。1 台のコンピューターで動作する 3 ノード クラスターとなっており、セキュリティ対策は施されていません。  その他の構成ファイルには、X.509 証明書または Windows セキュリティによって安全性が確保された 1 台または複数台のコンピューターから成るクラスターが記述されています。  このチュートリアルのために既定の構成設定を変更する必要はありませんが、構成ファイルに目を通して、設定の概要を把握しておいてください。  **nodes** セクションでは、クラスター内の 3 つのノードの name、IP address、[node type、fault domain、および upgrade domain](service-fabric-cluster-manifest.md#nodes-on-the-cluster) が記述されています。  **properties** セクションでは、クラスターの[セキュリティ、信頼性レベル、診断コレクション、およびノードの種類](service-fabric-cluster-manifest.md#cluster-properties)が定義されています。
+
+この記事で作成するクラスターは安全ではありません。  だれでも匿名で接続し、管理操作を実行することができるため、運用クラスターは常に X.509 証明書または Windows セキュリティを使用して保護する必要があります。  セキュリティを構成できるのはクラスターを作成するときだけであり、クラスターの作成後はセキュリティを有効にすることはできません。 構成ファイルを更新して、[証明書によるセキュリティ](service-fabric-windows-cluster-x509-security.md)または [Windows のセキュリティ](service-fabric-windows-cluster-windows-security.md)を有効にします。 Service Fabric クラスターのセキュリティについて詳しくは、[クラスターのセキュリティ保護](service-fabric-cluster-security.md)についてのページを参照してください。
+
+### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>手順 1A: セキュリティで保護されないローカルの開発クラスターを作成する
 [サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)に含まれる "*ClusterConfig.Unsecure.DevCluster.json*" ファイルを使用すると、Service Fabric を 1 台のマシンから成る開発クラスターにデプロイできます。
 
 スタンドアロン パッケージをマシンに解凍してサンプルの構成ファイルをローカル マシンにコピーしてから、管理者権限の PowerShell セッションでスタンドアロン パッケージのフォルダーにある *CreateServiceFabricCluster.ps1* スクリプトを実行します。
-### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>手順 1A: セキュリティで保護されないローカルの開発クラスターを作成する
+
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 ```
@@ -69,18 +75,19 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 開発シナリオの実行が完了したら、Service Fabric クラスターは、「[クラスターの削除](#removecluster_anchor)」の手順を参照してマシンから削除できます。 
 
 ### <a name="step-1b-create-a-multi-machine-cluster"></a>手順 1B: 複数のマシンから成るクラスターを作成する
-下記リンクで説明されている計画および準備の手順を完了すると、独自のクラスター構成ファイルを使用して運用クラスターを作成できるようになります。 <br>
-[クラスターのデプロイの計画と準備](service-fabric-cluster-standalone-deployment-preparation.md)
+[クラスターのデプロイの計画と準備](service-fabric-cluster-standalone-deployment-preparation.md)に関するページで説明されている計画および準備の手順を完了すると、独自のクラスター構成ファイルを使用して運用クラスターを作成できるようになります。
 
-1. スタンドアロン パッケージのフォルダーから *TestConfiguration.ps1* スクリプトを実行して、作成した構成ファイルを検証します。  
+クラスターのデプロイと構成を行うクラスター管理者には、コンピューターに対する管理特権が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
+
+1. スタンドアロン パッケージの *TestConfiguration.ps1* スクリプトをベスト プラクティス アナライザーとして使って、特定の環境にクラスターをデプロイできるかどうかを検証します。 前提条件と環境の要件については、[デプロイの準備](service-fabric-cluster-standalone-deployment-preparation.md)のページを参照してください。 スクリプトを実行して、開発クラスターを作成できるかどうかを検証します。  
 
     ```powershell
     .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
     ```
 
-    次のような出力結果が表示されます。 1 番下の "Passed" フィールドで "True" が返された場合、サニティ チェックは成功であり、クラスターは入力した構成を基にデプロイ可能と考えられます。
+    次のような出力が表示されます。 1 番下の "Passed" フィールドで "True" が返された場合、サニティ チェックは成功であり、クラスターは入力した構成を基にデプロイ可能と考えられます。
 
-    ```
+    ```powershell
     Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
     Running Best Practices Analyzer...
     Best Practices Analyzer completed successfully.
@@ -109,28 +116,46 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 
 ### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>手順 1C: オフライン (インターネット非接続) クォータを作成する
 Service Fabric ランタイム パッケージは、クラスターの作成時に自動でダウンロードされます。 インターネットに接続していないコンピューターにクラスターをデプロイする場合、Service Fabric ランタイム パッケージを別にダウンロードしておき、クラスターの作成時にそのパスを指定する必要があります。
-ランタイム パッケージはインターネットに接続されている他のコンピューターから別にダウンロードすることができます ([ダウンロード リンク - Service Fabric ランタイム - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354))。 オフライン クラスターをデプロイしている場所にランタイム パッケージをコピーし、次のように `-FabricRuntimePackagePath` パラメーターを指定して `CreateServiceFabricCluster.ps1` を実行してクラスターを作成します。 
+ランタイム パッケージはインターネットに接続されている他のコンピューターから別にダウンロードすることができます ([ダウンロード リンク - Service Fabric ランタイム - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354))。 オフライン クラスターをデプロイしている場所にランタイム パッケージをコピーし、次の例のように `-FabricRuntimePackagePath` パラメーターを指定して `CreateServiceFabricCluster.ps1` を実行してクラスターを作成します。 
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
 ```
-この `.\ClusterConfig.json` と `.\MicrosoftAzureServiceFabric.cab` は、それぞれクラスター構成のパスとランタイムの .cab ファイルです。
 
+*.\ClusterConfig.json* と *.\MicrosoftAzureServiceFabric.cab* は、それぞれクラスター構成とランタイムの .cab ファイルのパスです。
 
 ### <a name="step-2-connect-to-the-cluster"></a>手順 2: クラスターに接続する
-セキュリティで保護されたクラスターに接続するには、[セキュリティで保護されたクラスターへの Service Fabric の接続](service-fabric-connect-to-secure-cluster.md)参照してください。
+クラスターに接続し、クラスターが実行されており使用可能であることを確認します。 Service Fabric ランタイムをインストールすると、ServiceFabric PowerShell モジュールがインストールされます。  クラスター ノードのいずれか、または Service Fabric ランタイムがインストールされたリモート コンピューターから、クラスターに接続できます。  クラスターへの接続は、[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットで確立します。
 
 セキュリティで保護されていないクラスターに接続するには、次の PowerShell コマンドを実行します。
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
-例:
+
+例: 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
-### <a name="step-3-bring-up-service-fabric-explorer"></a>手順 3: Service Fabric Explorer を起動する
-これで、Service Fabric Explorer を使用してクラスターに接続できるようになりました。http://localhost:19080/Explorer/index.html を使っていずれかのマシンから直接接続するか、http://<*IPAddressofaMachine*>:19080/Explorer/index.html を使ってリモートで接続することができます。
+
+その他の方法でクラスターに接続する例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md)」を参照してください。 クラスターに接続した後、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) コマンドレットを使って、クラスターに含まれている一連のノードとノードごとの状態情報を表示します。 すべてのノードで **HealthState** が *OK* になっている必要があります。
+
+```powershell
+PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
+
+NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersion NodeStatus NodeUpTime NodeDownTime HealthState
+-------------------- -------- --------------- --------  -----------  ------------- ---------- ---------- ------------ -----------
+                     vm2      localhost       NodeType2 5.6.220.9494 0                     Up 00:03:38   00:00:00              OK
+                     vm1      localhost       NodeType1 5.6.220.9494 0                     Up 00:03:38   00:00:00              OK
+                     vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
+```
+
+### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>手順 3: Service Fabric Explorer を使用してクラスターを視覚化する
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、クラスターを視覚化してアプリケーションを管理するための最適なツールです。  Service Fabric Explorer はクラスターで動作するサービスであり、ブラウザーから [http://localhost:19080/Explorer](http://localhost:19080/Explorer) でアクセスすることができます。
+
+クラスター ダッシュボードにクラスターの概要 (アプリケーションとノードの正常性の概要など) が表示されます。 ノード ビューには、クラスターの物理的なレイアウトが表示されます。 特定のノードについて、そのノードでコードがデプロイされているアプリケーション、
+
+![Service Fabric Explorer][service-fabric-explorer]
 
 ## <a name="add-and-remove-nodes"></a>ノードの追加と削除
 ビジネス ニーズの変化に応じて、スタンドアロン Service Fabric クラスターでノードを追加または削除できます。 詳細の手順については、[「Service Fabric スタンドアロン クラスターでノードを追加または削除する」](service-fabric-cluster-windows-server-add-remove-nodes.md) をお読みください。
@@ -141,12 +166,12 @@ Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 
 このスクリプトは、クラスター構成ファイルにノードとして列挙されているすべてのマシンに管理者アクセスできれば、どのマシンでも実行できます。 このスクリプトが実行されるマシンがクラスターに属している必要はありません。
 
-```
+```powershell
 # Removes Service Fabric from each machine in the configuration
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -Force
 ```
 
-```
+```powershell
 # Removes Service Fabric from the current machine
 .\CleanFabric.ps1
 ```
@@ -154,7 +179,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>収集されるテレメトリ データとオプトアウトの方法
-製品品質の向上を図るために、Service Fabric の使用状況に関するテレメトリが既定で収集されます。 セットアップの過程で実行されるベスト プラクティス アナライザーは、 [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)に対する接続の可否をチェックします。 この URL に到達できなかった場合、テレメトリを無効にしない限り、セットアップは失敗します。
+製品品質の向上を図るために、Service Fabric の使用状況に関するテレメトリが既定で収集されます。 セットアップの過程で実行されるベスト プラクティス アナライザーは、[https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) に対する接続の可否をチェックします。 この URL に到達できなかった場合、テレメトリを無効にしない限り、セットアップは失敗します。
 
 1. テレメトリ パイプラインは、以下のデータを 1 日に 1 回、[https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) にアップロードしようと試みます。 アップロードはベスト エフォートで実行され、クラスターの動作には一切影響しません。 テレメトリの送信元になるのは、Failover Manager プライマリを実行しているノードだけです。 それ以外のノードからはテレメトリが送信されません。
 2. テレメトリは次のデータで構成されています。
@@ -204,3 +229,4 @@ Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 
 <!--Image references-->
 [Trusted Zone]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png
+[service-fabric-explorer]: ./media/service-fabric-cluster-creation-for-windows-server/sfx.png

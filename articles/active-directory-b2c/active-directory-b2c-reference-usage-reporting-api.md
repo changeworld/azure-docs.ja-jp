@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: 使用状況レポート API のサンプルと定義 | Microsoft Docs'
-description: Azure AD B2C テナントのユーザー、認証、および多要素認証に関するレポートの取得についてのガイドとサンプル
+title: Azure Active Directory B2C の使用状況レポート API のサンプルと定義 | Microsoft Docs
+description: Azure AD B2C テナントのユーザー、認証、多要素認証に関するレポートの取得についてのガイドとサンプル。
 services: active-directory-b2c
-documentationcenter: dev-center-name
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
-ms.topic: article
+ms.service: active-directory
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 07029181423927f0796cb85e728df416d01466e8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: B2C
+ms.openlocfilehash: 544b0618f9135b684846c42bb7edeb37cf599883
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445536"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Reporting API による Azure AD B2C の使用状況レポートへのアクセス
 

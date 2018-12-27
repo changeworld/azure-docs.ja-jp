@@ -1,22 +1,21 @@
 ---
 title: シミュレートされた TPM デバイスを Java を使って Azure IoT Hub にプロビジョニングする | Microsoft Docs
-description: Azure クイックスタート - Azure IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使い、シミュレートされた TPM デバイスを作成してプロビジョニングする
-services: iot-dps
-keywords: ''
-author: msebolt
-ms.author: v-masebo
-ms.date: 12/05/2017
+description: Azure クイック スタート - Azure IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使い、シミュレートされた TPM デバイスを作成してプロビジョニングします。 このクイック スタートでは、個別登録を使用します。
+author: wesmc7777
+ms.author: wesmc
+ms.date: 04/09/2018
 ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: b97ed35750116591a919444b810faae8677ac136
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c1426ebb5a64a1e0552cc35a736186fda60a5af1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415153"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使い、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
@@ -24,13 +23,19 @@ ms.lasthandoff: 04/03/2018
 
 以下の手順では、Windows OS を実行する開発マシンにシミュレートされたデバイスを作成し、そのデバイスの[ハードウェア セキュリティ モジュール (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) として Windows TPM シミュレーターを実行します。その後、コード サンプルを使って、そのシミュレートされたデバイスを Device Provisioning Service および IoT ハブに接続します。 
 
-事前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順を済ませておいてください。
+自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」も確認してください。 また、先に進む前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
-[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
+Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
+- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
+- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
+
+この記事では、個別登録の使用方法を示します。
+
+[!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>環境の準備 
 
-1. [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) がマシンにインストールされていることを確認します。
+1. [Java SE Development Kit 8](https://aka.ms/azure-jdks) がマシンにインストールされていることを確認します。
 
 1. [Maven](https://maven.apache.org/install.html) をダウンロードし、インストールします。
 
@@ -63,11 +68,11 @@ ms.lasthandoff: 04/03/2018
     cd provisioning/provisioning-samples/provisioning-tpm-sample
     ```
 
-1. Azure Portal にログインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。 "_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" をメモします。
+1. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。 "_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" をメモします。
 
-    ![DPS 情報](./media/java-quick-create-simulated-device/extract-dps-endpoints.png)
+    ![Device Provisioning サービスの情報](./media/java-quick-create-simulated-device/extract-dps-endpoints.png)
 
-1. `src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningTpmSample.java` を編集して、メモした _ID スコープ_と _Provisioning Service のグローバル エンドポイント_を含めます。  
+1. `src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningTpmSample.java` を編集して、メモした "_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" を含めます。  
 
     ```java
     private static final String idScope = "[Your ID scope here]";
@@ -90,11 +95,11 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="create-a-device-enrollment-entry"></a>デバイス登録エントリを作成する
 
-1. Azure Portal にログインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
+1. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
 
-1. Device Provisioning Service の概要ブレードで、**[Manage enrollments]\(登録の管理\)** を選択します。 **[Individual Enrollments]\(個々の登録\)** タブの上部にある **[追加]** ボタンをクリックします。 
+1. Device Provisioning Service の概要ブレードで、**[Manage enrollments]\(登録の管理\)** を選択します。 **[個別登録]** タブを選択し、上部にある **[個別登録の追加]** ボタンをクリックします。 
 
-1. **[Add enrollment list entry]\(登録リスト エントリの追加\)** で、次の情報を入力します。
+1. **[Add Enrollment] (登録の追加)** で、次の情報を入力します。
     - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
     - 前にメモした TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。 
     - プロビジョニング サービスにリンクされた IoT ハブを選択します。
@@ -102,7 +107,7 @@ ms.lasthandoff: 04/03/2018
     - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
     - 作業が完了したら、**[保存]** をクリックします。 
 
-    ![ポータルのブレードにデバイス登録情報を入力します。](./media/java-quick-create-simulated-device/enter-device-enrollment.png)  
+    ![ポータルのブレードにデバイス登録情報を入力します。](./media/java-quick-create-simulated-device/enterdevice-enrollment.png)  
 
    登録に成功すると、*[個々の登録]* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 
@@ -115,7 +120,7 @@ ms.lasthandoff: 04/03/2018
 
 1. プロビジョニング サービスにリンクされた IoT ハブに対し、シミュレートされたデバイスが正常にプロビジョニングされると、ハブの **[デバイス エクスプローラー]** ブレードにデバイス ID が表示されます。
 
-    ![IoT ハブに登録されたデバイス](./media/java-quick-create-simulated-device/hub-registration.png) 
+    ![IoT ハブに登録されたデバイス](./media/java-quick-create-simulated-device/hubregistration.png) 
 
     *[Initial device twin state]\(初期のデバイス ツインの状態\)* をデバイスの登録エントリの既定値から変更した場合、デバイスはハブから目的のツインの状態をプルし、それに従って動作することができます。 詳細については、「[IoT Hub のデバイス ツインの理解と使用](../iot-hub/iot-hub-devguide-device-twins.md)」を参照してください。
 

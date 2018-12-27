@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: セルフサービスによるパスワードの変更 | Microsoft Docs'
-description: Azure Active Directory B2C でコンシューマー向けにセルフサービスによるパスワードの変更をセットアップする方法を示すトピック
+title: Azure Active Directory B2C でのセルフサービスによるパスワードの変更 | Microsoft Docs
+description: Azure Active Directory B2C でコンシューマー向けにセルフサービスによるパスワードの変更をセットアップする方法を示すトピック。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/05/2016
 ms.author: davidmu
-ms.openlocfilehash: 4c54abe8c3375b49b786c7849c7e963e5849fa3a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: fdbf2d9bebb26a36e3f83e1149c4f97921aeaa1d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407029"
 ---
 # <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーにパスワードの変更を構成する  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]

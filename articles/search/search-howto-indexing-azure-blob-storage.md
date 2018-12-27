@@ -1,24 +1,20 @@
 ---
 title: Azure Blob Storage のインデックスを Azure Search で作成する
 description: Azure Search で Azure Blob Storage のインデックスを作成し、ドキュメントからテキストを抽出する方法について説明します。
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
-documentationcenter: ''
-author: chaosrealm
-manager: pablocas
-editor: ''
-ms.assetid: 2a5968f4-6768-4e16-84d0-8b995592f36a
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 03/22/2018
-ms.author: eugenesh
-ms.openlocfilehash: 67f6775fb68f4cd13c52ebe66727f2b4df23c692
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: conceptual
+ms.openlocfilehash: d2706d4b10303cb62066f0381f9a69b553c05cb4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406974"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
@@ -54,7 +50,7 @@ BLOB インデックス作成の場合は、次の必須プロパティがデー
 
 データ ソースを作成する方法を次に示します。
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -86,7 +82,7 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
 
 ここでは、BLOB から抽出されたテキストを格納するために、検索可能な `content` フィールドを含むインデックスを作成する方法を示します。   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -105,7 +101,7 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
 
 インデックスとデータ ソースを作成したら、インデクサーを作成できます。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -176,7 +172,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 以下に示したのは、それらを反映したコードです。既存のインデクサーに対してフィールドのマッピングを追加し、キーの base-64 エンコーディングを有効にしています。
 
-    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -202,7 +198,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>特定のファイル拡張子を持つ BLOB のみのインデックスを作成する
 `indexedFileNameExtensions` インデクサー構成パラメーターを使用すると、指定したファイル名拡張子を持つ BLOB のインデックスだけを作成できます。 値は、(先頭にピリオドが付いた) ファイル拡張子のコンマ区切りの一覧を含む文字列です。 たとえば、.PDF や .DOCX の BLOB のみのインデックスを作成する場合は、この操作を行います。
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -214,7 +210,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>特定のファイル拡張子を持つ BLOB を除外する
 `excludedFileNameExtensions` 構成パラメーターを使用すると、特定のファイル名拡張子を持つ BLOB をインデックス作成から除外できます。 値は、(先頭にピリオドが付いた) ファイル拡張子のコンマ区切りの一覧を含む文字列です。 たとえば、.PNG と .JPEG の拡張子を持つ BLOB を除くすべての BLOB のインデックスを作成する場合は、この操作を行います。
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -236,7 +232,7 @@ BLOB のどの部分にインデックスを作成するかは、`dataToExtract`
 
 たとえば、ストレージ メタデータのみにインデックスを作成するには、次のように使用します。
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -259,7 +255,7 @@ BLOB のどの部分にインデックスを作成するかは、`dataToExtract`
 
 既定では、BLOB インデクサーは、サポートされていないコンテンツの種類 (画像など) が含まれる BLOB を検出するとすぐに停止されます。 もちろん、`excludedFileNameExtensions` パラメーターを使用して特定のコンテンツの種類をスキップすることもできますが、 存在する可能性のあるすべてのコンテンツの種類が事前にわからないまま BLOB のインデックスを作成する必要がある場合もあります。 サポートされていないコンテンツの種類が検出されたときにインデックス作成を続行するには、`failOnUnsupportedContentType` 構成パラメーターを `false` に設定します。
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -297,7 +293,7 @@ BLOB の解析中またはインデックスへのドキュメントの追加中
 
 たとえば、次のポリシーでは、BLOB のメタデータ プロパティ `IsDeleted` の値が `true` のときに、その BLOB が削除されるものと見なされます。
 
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -344,7 +340,7 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 すべての BLOB に同じエンコードのプレーンテキストが含まれている場合、**テキスト解析モード**を使用してインデックス作成のパフォーマンスを大幅に改善できます。 テキスト解析モードを使用するには、`parsingMode` 構成プロパティを `text` に設定します。
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

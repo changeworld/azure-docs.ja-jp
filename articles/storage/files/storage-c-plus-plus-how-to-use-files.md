@@ -1,24 +1,19 @@
 ---
-title: "C++ での Azure Files 用の開発 | Microsoft Docs"
-description: "Azure Files を使用してファイル データを格納する C++ アプリケーションおよびサービスを開発する方法について説明します。"
+title: C++ での Azure Files 用の開発 | Microsoft Docs
+description: Azure Files を使用してファイル データを格納する C++ アプリケーションおよびサービスを開発する方法について説明します。
 services: storage
-documentationcenter: .net
 author: renashahmsft
-manager: aungoo
-editor: tysonn
-ms.assetid: a1e8c99e-47a6-43a9-9541-c9262eb00b38
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.openlocfilehash: d2f55b5ca6348ba8e190c65ec9a72c6f730d869e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: files
+ms.openlocfilehash: f2b6a03ce4e2c03f148fda67cfad1c4d51636b7a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234971"
 ---
 # <a name="develop-for-azure-files-with-c"></a>C++ での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -26,9 +21,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>このチュートリアルについて
-
 このチュートリアルでは、Azure Files で基本的な操作を実行する方法を紹介します。 C++ で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 初めて Azure Files を使用する場合は、次のセクションの概念に目を通すと、サンプルを理解するのに役立ちます。
-
 
 * Azure ファイル共有を作成および削除する
 * ディレクトリを作成および削除する
@@ -38,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 * 共有で定義されている共有アクセス ポリシーを使用するファイルの Shared Access Signature (SAS キー) を作成する
 
 > [!Note]  
-> Azure Files には SMB 経由でアクセスできるため、標準の C++ I/O クラスおよび関数を使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述できます。 この記事では、[File REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使用して Azure Files と通信する Azure Storage C++ SDK を使用するアプリケーションを記述する方法について説明します。
+> Azure Files には SMB 経由でアクセスできるため、標準の C++ I/O クラスおよび関数を使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述できます。 この記事では、[File REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) を使用して Azure Files と通信する Azure Storage C++ SDK を使用するアプリケーションを記述する方法について説明します。
 
 ## <a name="create-a-c-application"></a>C++ アプリケーションの作成
 サンプルをビルドするには、C++ 用 Azure Storage クライアント ライブラリ 2.4.0 をインストールする必要があります。 また、Azure ストレージ アカウントを作成しておく必要があります。
@@ -353,10 +346,10 @@ if (share.exists())
 
 }
 ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Storage についてさらに学習するには、次のリソースを参照してください。
 
 * [C++ 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp)
 * [C++ での Azure Storage ファイル サービスのサンプル](https://github.com/Azure-Samples/storage-file-cpp-getting-started)
-* [Azure Storage Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Azure Storage Explorer](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)

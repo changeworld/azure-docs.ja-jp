@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure Cloud Services のアプリケーションとサービスの可用性の問題についてよくあるご質問 | Microsoft Docs"
-description: "この記事では、Microsoft Azure Cloud Services のアプリケーションとサービスの可用性についてよくあるご質問を紹介します。"
+title: Microsoft Azure Cloud Services のアプリケーションとサービスの可用性の問題についてよくあるご質問 | Microsoft Docs
+description: この記事では、Microsoft Azure Cloud Services のアプリケーションとサービスの可用性についてよくあるご質問を紹介します。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 663a89ca5b3cfdafd873b27bae6ae8d158ac976a
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 68f3fe0dbd16d3d71dc66af05de6f90156d67dfa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246363"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のアプリケーションとサービスの可用性の問題: よくあるご質問 (FAQ)
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 11/04/2017
 
 最新のゲスト OS の更新に関する完全な詳細については、「[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)」を参照してください。
 
-再起動に関する有益な情報と、ゲスト OS とホスト OS の更新プログラムの技術的な詳細のヒントについては、MSDN の [OS のアップグレードによるロール インスタンスの再起動](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)に関するブログ記事を参照してください。
+再起動に関する有益な情報と、ゲスト OS とホスト OS の更新プログラムの技術的な詳細のヒントについては、MSDN の [OS のアップグレードによるロール インスタンスの再起動](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)に関するブログ記事を参照してください。
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>クラウド サービスがしばらくの間アイドル状態だった後、サービスに対する最初の要求が通常より長くかかるのはなぜですか。
 Web サーバーが最初の要求を受信すると、まずコードを再コンパイルしてから要求を処理します。 最初の要求にかかる時間が他の要求よりも長い理由はそこにあります。 既定では、ユーザーが非アクティブになると、アプリケーション プールがシャットダウンします。 また、アプリケーション プールは、既定では 1,740 分 (29 時間) ごとにリサイクルされます。

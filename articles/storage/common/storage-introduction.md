@@ -1,53 +1,56 @@
 ---
-title: Azure Storage の概要 | Microsoft Docs
-description: クラウドにおける Microsoft のデータ ストレージ Azure Storage について概要を紹介します。
+title: Azure Storage の概要 - Azure のクラウド ストレージ | Microsoft Docs
+description: Azure Storage は、Microsoft のクラウド ストレージ ソリューションです。 Azure Storage は、高可用性、セキュリティ、持続性、高度なスケーラビリティ、および冗長性を備えた、データ オブジェクト向けのストレージを提供します。
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 03/06/2018
+ms.date: 07/11/2018
 ms.author: tamram
-ms.openlocfilehash: 18a8065bba8a4a0ec2025d6b9134fe9fab21eb5f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: e483997140efc1d75466d887e42383d887f8a6f4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963251"
 ---
-# <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure Storage の概要
+# <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
-Microsoft Azure Storage は、高い可用性とセキュリティ、耐久性、スケーラビリティ、冗長性を備えたストレージを提供する、Microsoft が管理するクラウド サービスです。 メンテナンスや重大な問題には、Microsoft がお客様に代わって対処します。
+Azure Storage は、最新のデータ ストレージ シナリオ用の Microsoft のクラウド ストレージ ソリューションです。 Azure Storage は、データ オブジェクトのための高度にスケーラブルなオブジェクト ストア、クラウドのためのファイル システム サービス、信頼性の高いメッセージングのためのメッセージング ストア、および NoSQL ストアを提供します。 Azure Storage の特徴を次に示します。
 
-Azure Storage は、Blob Storage、File Storage、Queue Storage の 3 つのデータ サービスから成ります。 Blob Storage は、Standard Storage と Premium Storage の両方をサポートします。Premium Storage では、パフォーマンスを最大限に引き出すために SSD のみが使われます。 さらに別の機能として、利用頻度の低い大量のデータを低コストで保管できるクール ストレージがあります。
+- **持続性と高可用性。** 冗長性により、一時的なハードウェア障害が発生した場合でも、データが安全に保たれます。 地域的な災害または自然災害から保護するために、データセンターまたは地理的リージョンにまたがってデータをレプリケートすることもできます。 この方法でレプリケートされたデータは、予期しない停止が発生した場合でも高可用性を維持します。 
+- **セキュリティ保護。** Azure Storage に書き込まれたすべてのデータは、サービスによって暗号化されます。 Azure Storage では、データにアクセスできるユーザーをきめ細かく制御できます。
+- **スケーラブル。** Azure Storage には、今日のアプリケーションのデータ ストレージとパフォーマンスに関するニーズを満たすために、高度にスケーラブルな設計が採用されています。 
+- **マネージド。** メンテナンスや重大な問題は、Microsoft Azure がお客様に代わって処理します。
+- **アクセス可能。** Azure Storage 内のデータには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 Microsoft では、.NET、Java、Node.js、Python、PHP、Ruby、Go などのさまざまな言語の Azure Storage 用の SDK と、成熟した REST API を提供しています。 Azure Storage では、Azure PowerShell または Azure CLI によるスクリプトの実行がサポートされます。 また、Azure Portal と Azure Storage Explorer により、データを操作するための使いやすい視覚的ソリューションが提供されます。  
 
-この記事で取り上げる内容は次のとおりです。
-* Azure Storage サービス
-* ストレージ アカウントの種類
-* BLOB、キュー、ファイルへのアクセス
-* 暗号化
-* レプリケーション
-* ストレージへのデータの転送とストレージからのデータの転送
-* 公開されている各種ストレージ クライアント ライブラリ
+## <a name="azure-storage-services"></a>Azure Storage サービス
 
-Azure Storage を稼働させるには、[ストレージ アカウントの作成](storage-quickstart-create-account.md)に関するページを参照してください。
+Azure Storage には、次のデータ サービスが含まれます。 
 
-## <a name="introducing-the-azure-storage-services"></a>Azure Storage サービスの概要
+- [Azure BLOB](../blobs/storage-blobs-introduction.md):テキストおよびバイナリ データのための高度にスケーラブルなオブジェクト ストア。
+- [Azure ファイル](../files/storage-files-introduction.md):クラウドまたはオンプレミスのデプロイ用のマネージド ファイル共有。
+- [Azure キュー](../queues/storage-queues-introduction.md):アプリケーション コンポーネント間の信頼性の高いメッセージングのためのメッセージング ストア。 
+- [Azure テーブル](../tables/table-storage-overview.md):構造化データのスキーマレス ストレージのための NoSQL ストア。
 
-Azure Storage で提供されているいずれかのサービス (Blob Storage、File Storage、Queue Storage) を使うにはまず、ストレージ アカウントを作成します。その作成したストレージ アカウント内の特定のサービスに対してデータを転送したり、そこからデータを転送したりすることができます。
+それぞれのサービスには、ストレージ アカウントを通じてアクセスします。 作業を開始するには、「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」を参照してください。
 
 ## <a name="blob-storage"></a>BLOB ストレージ
 
-BLOB は基本的には、お使いのコンピューター (またはタブレット、モバイル デバイスなど) に保管されているものと同じようなファイルです。 画像や Microsoft Excel ファイル、HTML ファイル、仮想ハード ディスク (VHD) から、ログやデータベースのバックアップなど大きなデータまで、ほとんど何でも格納することができます。 BLOB は、フォルダーに似たコンテナーに格納されます。
+Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 BLOB ストレージは、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。 
 
-Blob Storage に保存したファイルには、URL や REST インターフェイスのほか、いずれかの Azure SDK ストレージ クライアント ライブラリを使って世界中のどこからでもアクセスすることができます。 ストレージ クライアント ライブラリは、Node.js、Java、PHP、Ruby、Python、.NET などさまざまな言語で利用できます。
+BLOB ストレージは、次の目的に最適です。
 
-BLOB には、ブロック BLOB、ページ BLOB (VHD ファイル用)、追加 BLOB の 3 種類があります。
+* 画像またはドキュメントをブラウザーに直接配信する。
+* 分散アクセス用にファイルを格納する。
+* ビデオおよびオーディオをストリーミング配信する。
+* バックアップと復元、ディザスター リカバリー、アーカイブのためのデータを格納する。
+* オンプレミス サービスまたは Azure ホステッド サービスで分析するデータを格納する。
 
-* ブロック BLOB は、約 4.7 TB までの標準的なファイルの保存に使用されます。
-* ページ BLOB は最大 8 TB のランダム アクセス ファイルの保存に使用されます。 VM に使用される VHD ファイルには、これらが使用されます。
-* 追加 BLOB は、ブロック BLOB のようなブロックから成りますが、追加操作に最適化されています。 同じ BLOB に対して複数の VM から情報を記録するような用途に使用されます。
+BLOB ストレージ内のオブジェクトには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 ユーザーまたはクライアント アプリケーションは、URL、[Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/storage)、または Azure Storage クライアント ライブラリを介して BLOB にアクセスできます。 ストレージ クライアント ライブラリは、[.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client)、[Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)、[Node.js](http://azure.github.io/azure-storage-node)、[Python](https://azure-storage.readthedocs.io/)、[PHP](http://azure.github.io/azure-storage-php/)、[Ruby](http://azure.github.io/azure-storage-ruby) など、さまざまな言語で利用できます。
 
-ネットワーク上の制限があるために、有線接続経由で Blob Storage にデータをアップロードまたはダウンロードできない場合は、一連のハード ドライブを Microsoft に送付し、データ センターから直接データをインポートまたはエクスポートできます。 「 [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage-import-export-service.md)」を参照してください。
+Blob Storage の詳細については、「[Blob Storage の概要](../blobs/storage-blobs-introduction.md)」をご覧ください。
 
 ## <a name="azure-files"></a>Azure Files
 [Azure Files](../files/storage-files-introduction.md) では、標準的なサーバー メッセージ ブロック (SMB) プロトコルを使用してアクセスできる可用性の高いネットワーク ファイル共有を設定することができます。 つまり、複数の VM が、読み取りアクセス権と書き込みアクセス権の両方を使用して同じファイルを共有できます。 また、REST インターフェイスまたはストレージ クライアント ライブラリを使用してファイルを読み取ることもできます。
@@ -64,19 +67,25 @@ Azure Files と企業のファイル共有上のファイルとの違いの 1 �
 
 Active Directory ベースの認証およびアクセス制御リスト (ACL) は現時点でサポートされていませんが、将来的にサポートされる予定です。 ファイル共有へのアクセスの認証を提供するために、ストレージ アカウントの資格情報が使用されます。 これは、共有をマウントしている全員に、共有に対する完全な読み取り/書き込みアクセス権が与えられることを意味します。
 
-## <a name="queue-storage"></a>Queue Storage
+Azure Files の詳細については、「[Azure Files の概要](../files/storage-files-introduction.md)」を参照してください。
+
+## <a name="queue-storage"></a>ストレージ
 
 Azure Queue サービスは、メッセージの保管と取得に使用します。 キューに許容されるメッセージ サイズは最大 64 KB で、1 つのキューに数百万件のメッセージを格納することができます。 一般に、非同期的に処理するメッセージのリストを格納するのがキューの用途となります。
 
 たとえば、画像をアップロードしてそれぞれにサムネイルを作成する機能をユーザーに提供するとしましょう。 もちろん画像のアップロードの際、サムネイルを作成するまでユーザーに待ってもらうことはできます。 しかし、その代わりの方法として、キューを使うこともできます。 ユーザーからのアップロードが完了したら、メッセージをキューに書き込みます。 その後、Azure Functions でキューからメッセージを取得して、サムネイルを作成するのです。 この処理では、各段階を個別にスケーリングすることができるので、用途に応じたチューニングの自由度が高まります。
 
+Azure キューの詳細については、「[キューの概要](../queues/storage-queues-introduction.md)」を参照してください。
+
 ## <a name="table-storage"></a>テーブル ストレージ
 
-Azure Cosmos DB に、新たに Azure Table Storage が加わりました。 Azure Table Storage のドキュメントについては、「[Azure Table Storage の概要](../../cosmos-db/table-storage-overview.md)」を参照してください。 既存の Azure Table Storage サービスに加えて、スループットに最適化されたテーブル、グローバルな分散、自動セカンダリ インデックスを利用できる新しい Azure Cosmos DB Table API プランが追加されています。 詳細を確認し、新しい Premium 版を使ってみるには、[Azure Cosmos DB の Table API](https://aka.ms/premiumtables) に関する記事を参照してください。
+Azure Cosmos DB に、新たに Azure Table Storage が加わりました。 Azure Table Storage のドキュメントについては、「[Azure Table Storage の概要](../tables/table-storage-overview.md)」を参照してください。 既存の Azure Table Storage サービスに加えて、スループットに最適化されたテーブル、グローバルな分散、自動セカンダリ インデックスを利用できる新しい Azure Cosmos DB Table API プランが追加されています。 詳細を確認し、新しい Premium 版を使ってみるには、[Azure Cosmos DB の Table API](https://aka.ms/premiumtables) に関する記事を参照してください。
 
-## <a name="disk-storage"></a>ディスク ストレージ
+テーブル ストレージの詳細については、「[Azure Table Storage の概要](../tables/table-storage-overview.md)」を参照してください。
 
-Azure Storage には、仮想マシンで使用される管理ディスクと非管理対象ディスクの機能も含まれています。 これらの機能の詳細については、[コンピューティング サービスのドキュメント](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)を参照してください。
+## <a name="disk-storage"></a>Disk Storage
+
+Azure Storage には、仮想マシンで使用されるマネージド ディスクと非管理対象ディスクの機能も含まれています。 これらの機能の詳細については、[コンピューティング サービスのドキュメント](https://docs.microsoft.com/azure/#pivot=products&panel=Compute)を参照してください。
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類
 
@@ -84,7 +93,7 @@ Azure Storage には、仮想マシンで使用される管理ディスクと非
 
 |**ストレージ アカウントの種類**|**汎用 (Standard)**|**汎用 (Premium)**|**Blob Storage (ホット アクセス レベルとクール アクセス レベル)**|
 |-----|-----|-----|-----|
-|**サポートされるサービス**| Blob service、File サービス、Queue サービス | Blob service | Blob service|
+|**サポートされるサービス**| Blob service、File サービス、Queue サービス、Table service | Blob service | Blob service|
 |**サポートされる BLOB の種類**|ブロック BLOB、ページ BLOB、追加 BLOB | ページ blob | ブロック BLOB と追加 BLOB|
 
 ### <a name="general-purpose-storage-accounts"></a>汎用ストレージ アカウント
@@ -131,6 +140,7 @@ Storage サービスには、2 種類の基本的な暗号化を使用できま�
 
 保存時の Azure Storage Service Encryption (SSE) は、データを保護して安全性を確保し、組織のセキュリティとコンプライアンスの要件を満たすお手伝いをします。 この機能を使用すると、Azure Storage はストレージに保存する前にデータを自動的に暗号化し、取得する前に復号化します。 暗号化、復号化、キーの管理は、ユーザーにはまったく意識されずに行われます。
 
+
 SSE は、すべてのパフォーマンス レベル (Standard および Premium)、すべてのデプロイ モデル (Azure Resource Manager とクラシック)、すべての Azure Storage サービス (BLOB、Queue、Table、File) のデータを自動的に暗号化します。 SSE は、Azure Storage のパフォーマンスに影響しません。
 
 保存時の SSE 暗号化の詳細については、「[Azure Storage Service Encryption for Data at Rest](storage-service-encryption.md)」を参照してください。
@@ -160,6 +170,8 @@ AzCopy は [Azure Data Movement Library](https://www.nuget.org/packages/Microsof
 
 Azure Import/Export サービスを利用すると、ストレージ アカウントとの間で大量の BLOB データをインポートまたはエクスポートできます。 複数のハード ドライブを用意して Azure データ センターに発送すると、そのデータ センターで、ハード ドライブにデータを転送 (またはハード ドライブからデータを転送) して返送してくれます。 Import/Export サービスの詳細については、「 [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage-import-export-service.md)」を参照してください。
 
+大量の BLOB データを短時間で、経済的に、かつ信頼性の高い方法でストレージ アカウントにインポートする手段としては、Azure Data Box Disk を使用することもできます。 Microsoft から地域の運送業者を通じて、容量 40 TB の暗号化された SSD (Solid State Disk) を最大 5 台、お客様のデータセンターに発送します。 お客様はそのディスクを速やかに構成し、USB 接続でデータをディスクにコピーしてから、Azure にディスクを返送することになります。 そのデータは、Azure のデータセンターにてドライブからクラウドへと自動的にアップロードされます。 このソリューションの詳細については、[Azure Data Box Disk の概要](https://docs.microsoft.com/azure/databox/data-box-disk-overview)に関するページを参照してください。
+
 ## <a name="pricing"></a>価格
 
 Azure Storage の価格の詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/storage/blobs/)を参照してください。
@@ -167,101 +179,33 @@ Azure Storage の価格の詳細については、[価格のページ](https://a
 ## <a name="storage-apis-libraries-and-tools"></a>ストレージ API、ライブラリ、ツール
 Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語からアクセスできます。 さらに、主要な複数の言語のプログラミング ライブラリも用意されています。 これらのライブラリを使用すると、同期呼び出しと非同期呼び出し、操作のバッチ処理、例外管理、自動再試行、実行動作などの詳細が処理され、Azure Storage の使用に関するさまざまな側面が簡略化されます。 ライブラリは、次の言語およびプラットフォーム用が現在提供されており、その他についても準備中です。
 
-### <a name="azure-storage-data-services"></a>Azure Storage データ サービス
-* [Storage サービス REST API](/rest/api/storageservices/)
-* [.NET 用ストレージ クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/?view=azurestorage-8.1.1)
+### <a name="azure-storage-data-api-and-library-references"></a>Azure Storage データ API およびライブラリのリファレンス
+* [Storage サービス REST API](https://docs.microsoft.com/rest/api/storageservices/)
+* [.NET 用ストレージ クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
+* [Java/Android 用ストレージ クライアント ライブラリ](https://docs.microsoft.com/java/api/overview/azure/storage)
+* [Node.js 用ストレージ クライアント ライブラリ](https://docs.microsoft.com/javascript/api/azure-storage)
+* [Python 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-python)
+* [PHP 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-php)
+* [Ruby 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-ruby)
 * [C++ 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp)
-* [Java/Android 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/java/)
-* [Node.js 用ストレージ クライアント ライブラリ](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [PHP 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/php/)
-* [Python 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/python/)
-* [Ruby 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/ruby/)
-* [PowerShell 用ストレージ コマンドレット](/powershell/module/azure.storage/?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)
-* [CLI 2.0 用ストレージ コマンド](/cli/azure/storage)
+
+### <a name="azure-storage-management-api-and-library-references"></a>Azure Storage 管理 API およびライブラリのリファレンス
+* [ストレージ リソース プロバイダー REST API](https://docs.microsoft.com/rest/api/storagerp/)
+* [.NET 用 Storage Resource Provider クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/storage/management)
+* [Storage Service Management REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
+
+### <a name="azure-storage-data-movement-api-and-library-references"></a>Azure Storage データ移動 API およびライブラリのリファレンス
+* [Storage Import/Export Service REST API](https://docs.microsoft.com/rest/api/storageimportexport/)
+* [.NET 用 Storage Data Movement クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement)
+
+### <a name="tools-and-utilities"></a>ツールとユーティリティ
+* [ストレージ用 Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azure.storage)
+* [ストレージ用 Azure CLI コマンドレット](https://docs.microsoft.com/cli/azure/storage)
+* [AzCopy コマンド ライン ユーティリティ](https://aka.ms/downloadazcopy)
+* [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+* [Azure Storage クライアント ツール](../storage-explorers.md)
+* [Azure 開発者ツール](https://azure.microsoft.com/tools/)
 
 ## <a name="next-steps"></a>次の手順
 
-* [Blob Storage の詳細](../blobs/storage-blobs-introduction.md)
-* [File Storage の詳細](../storage-files-introduction.md)
-* [Queue Storage の詳細](../queues/storage-queues-introduction.md)
-
 Azure Storage を稼働させるには、[ストレージ アカウントの作成](storage-quickstart-create-account.md)に関するページを参照してください。
-
-<!-- FIGURE OUT WHAT TO DO WITH ALL THESE LINKS.
-
-Azure Storage resources can be accessed by any language that can make HTTP/HTTPS requests. Additionally, Azure Storage offers programming libraries for several popular languages. These libraries simplify many aspects of working with Azure Storage by handling details such as synchronous and asynchronous invocation, batching of operations, exception management, automatic retries, operational behavior and so forth. Libraries are currently available for the following languages and platforms, with others in the pipeline:
-
-### Azure Storage data services
-* [Storage Services REST API](https://docs.microsoft.com/rest/api/storageservices/)
-* [Storage Client Library for .NET](https://docs.microsoft.com/dotnet/api/?view=azurestorage-8.1.1)
-* [Storage Client Library for C++](https://github.com/Azure/azure-storage-cpp)
-* [Storage Client Library for Java/Android](https://azure.microsoft.com/develop/java/)
-* [Storage Client Library for Node.js](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [Storage Client Library for PHP](https://azure.microsoft.com/develop/php/)
-* [Storage Client Library for Python](https://azure.microsoft.com/develop/python/)
-* [Storage Client Library for Ruby](https://azure.microsoft.com/develop/ruby/)
-* [Storage Cmdlets for PowerShell](/powershell/module/azure.storage/?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)
-
-### Azure Storage management services
-* [Storage Resource Provider REST API Reference](/rest/api/storagerp/)
-* [Storage Resource Provider Client Library for .NET](/dotnet/api/microsoft.azure.management.storage)
-* [Storage Resource Provider Cmdlets for PowerShell 1.0](/powershell/module/azure.storage)
-* [Storage Service Management REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
-
-### Azure Storage data movement services
-* [Storage Import/Export Service REST API](../storage-import-export-service.md)
-* [Storage Data Movement Client Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
-
-### Tools and utilities
-* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to work visually with Azure Storage data on Windows, macOS, and Linux.
-* [Azure Storage Client Tools](../storage-explorers.md)
-* [Azure SDKs and Tools](https://azure.microsoft.com/tools/)
-* [Azure Storage Emulator](http://www.microsoft.com/download/details.aspx?id=43709)
-* [Azure PowerShell](/powershell/azure/overview)
-* [AzCopy Command-Line Utility](http://aka.ms/downloadazcopy)
-
-## Next steps
-To learn more about Azure Storage, explore these resources:
-
-### Documentation
-* [Azure Storage Documentation](https://azure.microsoft.com/documentation/services/storage/)
-* [Create a storage account](../storage-create-storage-account.md)
-
--->
-
-### <a name="for-administrators"></a>管理者向け
-* [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)
-* [Azure Storage での Azure CLI の使用](../storage-azure-cli.md)
-
-### <a name="for-net-developers"></a>.NET 開発者向け
-* [.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md)
-* [.NET での Azure Files 用の開発](../files/storage-dotnet-how-to-use-files.md)
-* [.NET を使用して Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-* [.NET を使用して Azure Queue Storage を使用する](../storage-dotnet-how-to-use-queues.md)
-
-### <a name="for-javaandroid-developers"></a>Java/Android 開発者向け
-* [Java から BLOB ストレージを使用する方法](../blobs/storage-java-how-to-use-blob-storage.md)
-* [Java を使用して Azure Files 用に開発する](../files/storage-java-how-to-use-file-storage.md)
-* [Java からテーブル ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Java から Queue ストレージを使用する方法](../storage-java-how-to-use-queue-storage.md)
-
-### <a name="for-nodejs-developers"></a>Node.js 開発者向け
-* [Node.js から BLOB ストレージを使用する方法](../blobs/storage-nodejs-how-to-use-blob-storage.md)
-* [Node.js から Table ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-nodejs.md)
-* [Node.js から Queue ストレージを使用する方法](../storage-nodejs-how-to-use-queues.md)
-
-### <a name="for-php-developers"></a>PHP 開発者向け
-* [PHP から BLOB ストレージを使用する方法](../blobs/storage-php-how-to-use-blobs.md)
-* [PHP から Table ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-php.md)
-* [PHP から Queue ストレージを使用する方法](../storage-php-how-to-use-queues.md)
-
-### <a name="for-ruby-developers"></a>Ruby 開発者向け
-* [Ruby から BLOB ストレージを使用する方法](../blobs/storage-ruby-how-to-use-blob-storage.md)
-* [Ruby から Table ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-ruby.md)
-* [Ruby から Queue ストレージを使用する方法](../storage-ruby-how-to-use-queue-storage.md)
-
-### <a name="for-python-developers"></a>Python 開発者向け
-* [Python から BLOB ストレージを使用する方法](../blobs/storage-python-how-to-use-blob-storage.md)
-* [Python を使用して Azure Files 用に開発する](../files/storage-python-how-to-use-file-storage.md)
-* [Python から Table ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-python.md)
-* [Python から Queue ストレージを使用する方法](../storage-python-how-to-use-queue-storage.md)

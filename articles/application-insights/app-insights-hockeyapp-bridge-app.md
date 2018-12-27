@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights での HockeyApp データの探索 | Microsoft Docs"
-description: "Application Insights を使用して Azure アプリの使用状況とパフォーマンスを分析します。"
+title: Azure Application Insights での HockeyApp データの探索 | Microsoft Docs
+description: Application Insights を使用して Azure アプリの使用状況とパフォーマンスを分析します。
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -9,22 +9,20 @@ ms.assetid: 97783cc6-67d6-465f-9926-cb9821f4176e
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: bec2b2dc8a29e5c94e3d3c7f2f0333e07bfe3a4f
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 2f9b61a212251332cd94379b40f93eb52d49c729
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870074"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Application Insights での HockeyApp データの探索
 
 > [!NOTE]
-> Visual Studio App Center は、新しいモバイル アプリを監視するための、Microsoft の推奨されるサービスとなりました。 [App Center と Application Insights でアプリを設定する方法を確認してください](app-insights-mobile-center-quickstart.md)。
-> 
-> 
+> HockeyApp は新しいアプリケーションでは使用できなくなりました。 既存の HockeyApp の展開については今後も動作します。 Visual Studio App Center は、新しいモバイル アプリを監視するための、Microsoft の推奨されるサービスとなりました。 [App Center と Application Insights でアプリを設定する方法を確認してください](app-insights-mobile-center-quickstart.md)。
 
 [HockeyApp](https://azure.microsoft.com/services/hockeyapp/) は、稼働中のデスクトップ アプリとモバイル アプリを監視するためのサービスです。 HockeyApp から、(クラッシュ データの取得だけでなく) カスタム テレメトリやトレース テレメトリを送信して、使用状況を監視し、診断に役立てることができます。 このテレメトリのストリームは、[Azure Application Insights](app-insights-overview.md) の強力な [Analytics](app-insights-analytics.md) 機能を使用して照会できます。 さらに、 [カスタム テレメトリとトレース テレメトリをエクスポートする](app-insights-export-telemetry.md)こともできます。 これらの機能を有効にするには、Application Insights に HockeyApp カスタム データを中継するブリッジを設定します。
 
@@ -35,7 +33,7 @@ HockeyApp で [Account Settings (アカウント設定)]、 [[API Tokens (API �
 
 ![Get a HockeyApp API token](./media/app-insights-hockeyapp-bridge-app/01.png)
 
-Microsoft Azure Portal を開いて、 [Application Insights のリソースを作成](app-insights-create-new-resource.md)します。 [アプリケーションの種類] を [HockeyApp bridge application (HockeyApp ブリッジ アプリケーション)] に設定します。
+Microsoft Azure Portal を開いて、 [Application Insights のリソースを作成](app-insights-create-new-resource.md)します。 [アプリケーションの種類] を [HockeyApp ブリッジ アプリケーション] に設定します。
 
 ![New Application Insights resource](./media/app-insights-hockeyapp-bridge-app/02.png)
 
@@ -45,7 +43,7 @@ HockeyApp ブリッジのフィールドが表示されます。
 
 ![Enter bridge fields](./media/app-insights-hockeyapp-bridge-app/03.png)
 
-前の手順で控えを取った HockeyApp トークンを入力します。 この操作により、[HockeyApp Application (HockeyApp アプリケーション)] ドロップダウン メニューにすべての HockeyApp アプリケーションが設定されます。 使用するアプリケーションを 1 つ選択すると、残りのフィールドにも値が設定されます。 
+前の手順で控えを取った HockeyApp トークンを入力します。 この操作により、[HockeyApp アプリケーション] ドロップダウン メニューにすべての HockeyApp アプリケーションが設定されます。 使用するアプリケーションを 1 つ選択すると、残りのフィールドにも値が設定されます。 
 
 新しいリソースを開きます。 
 
@@ -53,22 +51,22 @@ HockeyApp ブリッジのフィールドが表示されます。
 
 ![Application Insights resource waiting for data](./media/app-insights-hockeyapp-bridge-app/04.png)
 
-これで終了です。 これ以降、HockeyApp でインストルメント化されたアプリで収集されたカスタムおよびトレース データは、Application Insights の Analytics 機能と連続エクスポート機能でも利用できるようになります。
+これで完了です。 これ以降、HockeyApp でインストルメント化されたアプリで収集されたカスタムおよびトレース データは、Application Insights の Analytics 機能と連続エクスポート機能でも利用できるようになります。
 
 利用可能になったこれらの機能それぞれについて簡単に確認しましょう。
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 Analytics はデータのアドホック クエリのための強力なツールです。使用すると、テレメトリを診断、分析し、根本原因とパターンを迅速に突き止めることができます。
 
 ![[分析]](./media/app-insights-hockeyapp-bridge-app/05.png)
 
-* [Analytics の詳細](app-insights-analytics-tour.md)
+* [Analytics の詳細](../azure-monitor/log-query/get-started-portal.md)
 
 ## <a name="continuous-export"></a>連続エクスポート
 連続エクスポートを使用すると、Azure Blob Storage コンテナーにデータをエクスポートできます。 これは、Application Insights で現在提供されている保有期間よりも長くデータを保持する必要がある場合に非常に便利です。 データは、Blob Storage で保持し、SQL データベースやお好みのデータ ウェアハウス ソリューションに加工処理することができます。
 
 [連続エクスポートの詳細](app-insights-export-telemetry.md)
 
-## <a name="next-steps"></a>次のステップ
-* [Analytics をデータに適用する](app-insights-analytics-tour.md)
+## <a name="next-steps"></a>次の手順
+* [Analytics をデータに適用する](../azure-monitor/log-query/get-started-portal.md)
 

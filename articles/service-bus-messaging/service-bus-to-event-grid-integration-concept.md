@@ -3,7 +3,7 @@ title: Azure Service Bus と Event Grid の統合の概要 | Microsoft Docs
 description: Service Bus メッセージングと Event Grid の統合の説明
 services: service-bus-messaging
 documentationcenter: .net
-author: ChristianWolf42
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 02/15/2018
-ms.author: chwolf
-ms.openlocfilehash: e0c32510ee49b95bc3606ea1efff7e2a6f72799b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 09/15/2018
+ms.author: spelluru
+ms.openlocfilehash: c5dcfcb61903c3dbb92e942a5d3dca264ad454e3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834385"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus と Event Grid の統合の概要
 
@@ -35,10 +36,7 @@ Service Bus では、レシーバーがない場合にキューまたはサブ�
 ![19][]
 
 ### <a name="verify-that-you-have-contributor-access"></a>共同作成者アクセスがあることの確認
-
-Service Bus 名前空間に移動して、次に示すように **[アクセス制御 (IAM)]** を選択します。
-
-![1][]
+Service Bus 名前空間に移動して、**[アクセス制御 (IAM)]** を選択し、**[ロールの割り当て]** を選択します。名前空間への共同作成者アクセス権を持っていることを確認します。 
 
 ### <a name="events-and-event-schemas"></a>イベントとイベント スキーマ
 
@@ -47,9 +45,9 @@ Service Bus 名前空間に移動して、次に示すように **[アクセス�
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * [DeadletterMessagesAvailable](#dead-lettered-messages-available-event)
 
-さらに、Service Bus では、標準の Event Grid セキュリティと[認証メカニズム](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication)が使用されます。
+さらに、Service Bus では、標準の Event Grid セキュリティと[認証メカニズム](https://docs.microsoft.com/azure/event-grid/security-authentication)が使用されます。
 
-詳細については、「[Azure Event Grid イベント スキーマ](https://docs.microsoft.com/en-us/azure/event-grid/event-schema)」を参照してください。
+詳細については、「[Azure Event Grid イベント スキーマ](https://docs.microsoft.com/azure/event-grid/event-schema)」を参照してください。
 
 #### <a name="active-messages-available-event"></a>アクティブなメッセージが利用可能なイベント
 
@@ -128,9 +126,9 @@ Service Bus 名前空間の Event Grid サブスクリプションは、次の 3
 2. 左側のウィンドウで **[Event Grid]** を選択します。 
 3. **[イベント サブスクリプション]** を選びます。  
 
-   次の画像に表示されている名前空間には、いくつかの Event Grid サブスクリプションが存在します。
+   次の画像には、Event Grid サブスクリプションがある名前空間が表示されています。
 
-   ![20][]
+   ![Event Grid サブスクリプション](./media/service-bus-to-event-grid-integration-concept/sbtoeventgridportal.png)
 
    次の画像には、特定のフィルターなしで関数または webhook をサブスクライブする方法が示されています。
 
@@ -138,7 +136,7 @@ Service Bus 名前空間の Event Grid サブスクリプションは、次の 3
 
 ## <a name="azure-cli-instructions"></a>Azure CLI の手順
 
-最初に、Azure CLI バージョン 2.0 以降がインストールされていることを確認してください。 [インストーラーをダウンロード](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
+最初に、Azure CLI バージョン 2.0 以降がインストールされていることを確認してください。 [インストーラーをダウンロード](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
 
 次のコードを実行します。
 
@@ -154,10 +152,10 @@ az eventgrid event-subscription create --resource-id $namespaceid --name “<YOU
 
 ## <a name="powershell-instructions"></a>PowerShell の手順
 
-Azure PowerShell がインストールされていることを確認してください。 [インストーラーをダウンロード](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.4.0)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
+Azure PowerShell がインストールされていることを確認してください。 [インストーラーをダウンロード](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.4.0)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
 
 ```PowerShell-interactive
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 Select-AzureRmSubscription -SubscriptionName "<YOUR SUBSCRIPTION NAME>"
 
@@ -175,10 +173,10 @@ New-AzureRmEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBS
 ## <a name="next-steps"></a>次の手順
 
 * Service Bus と Event Grid の[例](service-bus-to-event-grid-integration-example.md)を確認します。
-* [Event Grid](https://docs.microsoft.com/en-us/azure/azure-functions/) の詳細を確認します。
-* [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/) について学習します。
-* [Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/) の詳細を見る
-* [Service Bus](https://docs.microsoft.com/en-us/azure/azure-functions/) の詳細を確認します。
+* [Event Grid](https://docs.microsoft.com/azure/event-grid/) の詳細を確認します。
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) について学習します。
+* [Logic Apps](https://docs.microsoft.com/azure/logic-apps/) の詳細を見る
+* [Service Bus](https://docs.microsoft.com/azure/service-bus/) の詳細を確認します。
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

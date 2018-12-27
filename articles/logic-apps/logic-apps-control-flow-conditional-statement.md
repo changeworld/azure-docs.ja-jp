@@ -1,29 +1,24 @@
 ---
-title: "条件付きステートメント - 条件に基づいてステップを実行する - Azure Logic Apps | Microsoft Docs"
-description: "条件を満たした後にのみロジック アプリのステップを実行します。 指定された条件に基づいてワークフローを実行するデシジョン ツリーを作成します。"
+title: 条件付きステートメントをワークフローに追加する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps のワークフロー内のアクションを制御する条件を作成する方法です
 services: logic-apps
-keywords: "条件付きステートメント、デシジョン ツリー"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 486c1053f42ed3becc2c4b60accc993db7f24baa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.date: 10/09/2018
+ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230337"
 ---
-# <a name="conditional-statements-run-steps-based-on-a-condition-in-logic-apps"></a>条件付きステートメント: ロジック アプリで条件に基づいてステップを実行する
+# <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションを制御する条件付きステートメントを作成する
 
-指定された条件を満たした後でのみステップを実行するには、"*条件付きステートメント*" を使用します。 この構造体は、ワークフローのデータを特定の値またはフィールドと比較します。 その後、データが条件を満たしたかどうかによって実行するさまざまなステップを定義できます。 条件は入れ子にすることができます。
+指定した条件が満たされた後でのみロジック アプリ内の特定のアクションを実行するには、"*条件付きステートメント*" を追加します。 この制御構造は、ワークフローのデータを特定の値またはフィールドと比較します。 その後、データが条件を満たしたかどうかによって実行するさまざまなアクションを指定できます。 条件は入れ子にすることができます。
 
 たとえば、Web サイトの RSS フィードに新しい項目が出現したときに送信される電子メールが多すぎるロジック アプリがあるとします。 条件付きステートメントを追加して、新しい項目に特定の文字列が含まれる場合のみ電子メールを送信することができます。 
 
@@ -38,67 +33,78 @@ ms.lasthandoff: 03/05/2018
 
 * この記事の例に従うには、Outlook.com や Office 365 の Outlook アカウントを使用して、[このサンプルのロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
-## <a name="add-a-condition"></a>条件を追加する
+## <a name="add-condition"></a>条件を追加する
 
 1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> のロジック アプリ デザイナーでロジック アプリを開きます。
 
-2. 必要な場所に条件を追加します。 
+1. 必要な場所に条件を追加します。 
 
-   ステップの間に条件を追加するには、条件を追加する位置の矢印の上にポインターを移動します。 表示される**プラス記号** (**+**) を選択し、**[条件の追加]** を選択します。 例: 
+   ステップの間に条件を追加するには、条件を追加する位置の矢印の上にポインターを移動します。 表示される**プラス記号** (**+**) を選択し、**[アクションの追加]** を選択します。 例: 
 
-   ![ステップ間に条件を追加する](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
+   ![ステップの間にアクションを追加する](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   ワークフローの末尾に条件を追加するときは、ロジック アプリの一番下で **[+ 新しいステップ]** > **[条件の追加]** を選択します。
+   ワークフローの末尾に条件を追加するときは、ロジック アプリの一番下で **[新しいステップ]** > **[アクションの追加]** を選択します。
 
-3. **[条件]** で、条件を作成します。 
+1. 検索ボックスに、フィルターとして「条件」と入力します。 アクション **[条件 - 制御]** を選択します
+
+   ![条件を追加する](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
+
+1. **[条件]** ボックスで、条件を作成します。 
 
    1. 左のボックスに、比較するデータまたはフィールドを指定します。
 
-      **[動的なコンテンツの追加]** リストで、自分のロジック アプリの既存のフィールドを選択できます。
+      左側のボックス内をクリックすると、動的コンテンツの一覧が表示され、ロジック アプリの前のステップからの出力を選択できます。 
+      この例では、RSS フィードの概要を選択します。
 
-   2. 中央のリストで、実行する操作を選択します。 
-   3. 右のボックスに、条件として値またはフィールドを指定します。
+      ![条件を作成する](./media/logic-apps-control-flow-conditional-statement/edit-condition.png)
 
-   例: 
+   1. 中央のボックスで、実行する操作を選択します。 
+   この例では、 **[次の値を含む]** を選択します。 
 
-   ![基本モードで条件を編集する](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode.png)
+   1. 右のボックスに、条件として値またはフィールドを指定します。 
+   この例では、**Microsoft** の文字列を指定します。
 
    完成した条件を次に示します。
 
-   ![完成した条件](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode-2.png)
+   ![完成した条件](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
+
+   条件に別の行を追加するには、**[追加]** > **[行の追加]** を選択します。 
+   サブ条件のグループを追加するには、**[追加]** > **[グループの追加]** を選択します。 
+   既存の行をグループ化するには、グループ化する行のチェック ボックスをオンにし、いずれかの行の省略記号 [...] ボタンを選択して、**[Make group]\(グループにする\)** を選択します。
+
+1. **[If true]\(true の場合\)** と **[If false]\(false の場合\)** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。 例: 
+
+   ![[If true]\(true の場合\) パスと [If false]\(false の場合\) パスを使用した条件](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
-   > 高度な条件を作成したり、式を使用したりするには、**[Edit in advanced mode]\(詳細モードで編集\)** を選択します。 [ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で定義された式を使用できます。
-   > 
-   > 例: 
-   >
-   > ![コードで条件を編集する](./media/logic-apps-control-flow-conditional-statement/edit-condition-advanced-mode.png)
+   > 既存のアクションを **[If true]\(true の場合\)** パスと **[If false]\(false の場合\)** パスにドラッグできます。
 
-5. **IF YES** と **IF NO** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。 例: 
-
-   ![YES および NO のパスの条件](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
-
-   > [!TIP]
-   > 既存のアクションを **IF YES** と **IF NO** のパスにドラッグできます。
-
-6. ロジック アプリを保存し、
+1. ロジック アプリを保存し、
 
 これで、このロジック アプリは、RSS フィードの新しい項目が条件を満たす場合のみメールを送信します。
 
 ## <a name="json-definition"></a>JSON の定義
 
-条件付きステートメントを使用してロジック アプリを作成しました。ここで、条件付きステートメントの背後にあるコード定義の概要を見てみましょう。
+条件ステートメントの背後にある上位レベルのコードの定義を次に示します。
 
 ``` json
 "actions": {
-  "myConditionName": {
+  "Condition": {
     "type": "If",
-    "expression": "@contains(triggerBody()?['summary'], 'Microsoft')",
     "actions": {
       "Send_an_email": {
-        "inputs": { },
+        "inputs": {},
         "runAfter": {}
-      }
+    },
+    "expression": {
+      "and": [ 
+        { 
+          "contains": [ 
+            "@triggerBody()?['summary']", 
+            "Microsoft"
+          ]
+        } 
+      ]
     },
     "runAfter": {}
   }
@@ -108,7 +114,7 @@ ms.lasthandoff: 03/05/2018
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

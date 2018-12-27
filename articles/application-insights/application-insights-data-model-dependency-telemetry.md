@@ -1,30 +1,32 @@
 ---
-title: "Azure Application Insights Telemetry のデータ モデル - 依存関係テレメトリ | Microsoft Docs"
-description: "依存関係テレメトリ用の Application Insights データ モデル"
+title: Azure Application Insights Telemetry のデータ モデル - 依存関係テレメトリ | Microsoft Docs
+description: 依存関係テレメトリ用の Application Insights データ モデル
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2017
+ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: aa305c30dc358997420be6802d43fa69e45f4a5f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 5765be9fc88cbe38841078b5c298d3ee12269e6d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092555"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依存関係テレメトリ: Application Insights データ モデル
 
 依存関係テレメトリ ([Application Insights](app-insights-overview.md)) は、監視対象のコンポーネントと、SQL や HTTP エンドポイントのようなリモート コンポーネントとのやりとりを表します。
 
-## <a name="name"></a>名前
+## <a name="name"></a>Name
 
-この依存関係呼び出しで開始されたコマンドの名前。 小さな基数の値です。 例として、ストアド プロシージャ名と URL パス テンプレートがあります。
+この依存関係呼び出しで開始されたコマンドの名前。 小さなカーディナリティの値です。 例として、ストアド プロシージャ名と URL パス テンプレートがあります。
 
 ## <a name="id"></a>ID
 
@@ -34,15 +36,15 @@ ms.lasthandoff: 11/01/2017
 
 この依存関係呼び出しによって開始されるコマンド。 例: すべてのクエリ パラメーターを使用する SQL ステートメントと HTTP URL。
 
-## <a name="type"></a>型
+## <a name="type"></a>type
 
-依存関係の種類の名前。 依存関係を論理的にグループ化するための小さな基数の値と、commandName や resultCode のようなフィールドの変換です。 例: SQL、Azure テーブル、HTTP。
+依存関係の種類の名前。 依存関係を論理的にグループ化するための小さなカーディナリティの値と、commandName や resultCode のようなフィールドの変換です。 例: SQL、Azure テーブル、HTTP。
 
 ## <a name="target"></a>ターゲット
 
 依存関係呼び出しのターゲット サイト。 例: サーバー名、ホスト アドレス。 詳細については、[相関付け](application-insights-correlation.md)に関するページを参照してください。
 
-## <a name="duration"></a>時間
+## <a name="duration"></a>duration
 
 `DD.HH:MM:SS.MMMMMM` 形式の要求時間。 `1000` 日未満である必要があります。
 
@@ -50,7 +52,7 @@ ms.lasthandoff: 11/01/2017
 
 依存関係呼び出しの結果コード。 例: SQL エラー コードと HTTP 状態コード。
 
-## <a name="success"></a>成功
+## <a name="success"></a>Success
 
 呼び出しの成功または失敗を示す値。
 
@@ -63,7 +65,7 @@ ms.lasthandoff: 11/01/2017
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [.NET](app-insights-asp-net-dependencies.md) の依存関係追跡を設定します。
 - [Java](app-insights-java-agent.md) の依存関係追跡を設定します。

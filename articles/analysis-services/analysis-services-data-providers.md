@@ -1,25 +1,19 @@
 ---
-title: "Azure Analysis Services への接続に必要なクライアント ライブラリ | Microsoft Docs"
-description: "Azure Analysis Services に接続するクライアント アプリケーションとツールに必要なクライアント ライブラリについて説明します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services への接続に必要なクライアント ライブラリ | Microsoft Docs
+description: Azure Analysis Services に接続するクライアント アプリケーションとツールに必要なクライアント ライブラリについて説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/27/2018
+ms.service: azure-analysis-services
+ms.topic: conceptual
+ms.date: 10/12/2018
 ms.author: owend
-ms.openlocfilehash: 5c847f5cd02503b708db8a0a0211b5d403df0943
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.reviewer: minewiskan
+ms.openlocfilehash: f0c852b0b3de4edcf894d80ae397eae6c8980d49
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240411"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
@@ -29,25 +23,25 @@ ms.lasthandoff: 02/28/2018
 
 |[ダウンロード]  |製品バージョン  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.1.208      |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.1.208      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.0.2     |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.0.2     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.2.39      |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.2.39      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.7.0.2    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.7.0.2     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO と ADOMD (NuGet パッケージ)
 
 Analysis Services 管理オブジェクト (AMO) と ADOMD クライアント ライブラリは、インストール可能なパッケージとして [NuGet.org](https://www.nuget.org/) で入手できます。Windows インストーラーを使用する代わりに、NuGet 参照へ移行することをお勧めします。 
 
-|パッケージ  | 製品バージョン  | 
+|Package  | 製品バージョン  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.0.2.0      |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.0.2.0      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.7.0.2    |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.7.02     |
 
 NuGet パッケージ アセンブリの AssemblyVersion は、セマンティック バージョニングである MAJOR.MINOR.PATCH に従います。 NuGet 参照では、(MSI のインストールの結果として得られる) GAC 内に別のバージョンがある場合でも、必要なバージョンが読み込まれます。 PATCH は、リリースごとにインクリメントされます。 AMO と ADOMD のバージョンは常に同期されます。
 
 ## <a name="understanding-client-libraries"></a>クライアント ライブラリについて
 
-Analysis Services では、データ プロバイダーとも呼ばれる、3 つのクライアント ライブラリが利用されています。 ADOMD.NET と Analysis Services 管理オブジェクト (AMO) は、マネージ クライアント ライブラリです。 Analysis Services OLE DB Provider (MSOLAP DLL) は、ネイティブ クライアント ライブラリです。 通常は、3 つすべてが同時にインストールされます。 **Azure Analysis Services では、3 つのライブラリすべての最新バージョンが必要です**。 
+Analysis Services では、データ プロバイダーとも呼ばれる、3 つのクライアント ライブラリが利用されています。 ADOMD.NET と Analysis Services 管理オブジェクト (AMO) は、マネージド クライアント ライブラリです。 Analysis Services OLE DB Provider (MSOLAP DLL) は、ネイティブ クライアント ライブラリです。 通常は、3 つすべてが同時にインストールされます。 **Azure Analysis Services では、3 つのライブラリすべての最新バージョンが必要です**。 
 
 Power BI Desktop や Excel などの Microsoft クライアント アプリケーションでは、3 つのクライアント ライブラリがすべてインストールされ、新しいバージョンが使用可能になると更新されます。 更新のバージョンや頻度によっては、一部のクライアント ライブラリが、Azure Analysis Services で必要な最新バージョンに更新されないことがあります。 これは、カスタム アプリケーションまたは AsCmd、TOM、ADOMD.NET など他のインターフェイスでも同様です。 これらのアプリケーションでは、ライブラリを手動かプログラムでインストールする必要があります。 手動インストール用のクライアント ライブラリは、配布可能なパッケージとして SQL Server Feature Pack に含まれています。 ただし、これらのクライアント ライブラリは SQL Server のバージョンに対応しており、最新版ではない可能性があります。  
 
@@ -65,12 +59,12 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 
 ### <a name="amo"></a>AMO  
 
- AMO は、サーバーの管理とデータの定義に使用されるマネージ クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 たとえば、SQL Server Management Studio (SSMS) は、AMO を使用して Analysis Services に接続します。 AMO を使用した接続は、通常は最小で、`“data source=\<servername>”` で構成されています。 接続の確立後は、API を使用して、データベース コレクションおよび主要なオブジェクトを操作します。 SSDT と SSMS のどちらも、AMO を使用して Analysis Services インスタンスに接続します。  
+ AMO は、サーバーの管理とデータの定義に使用されるマネージド クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 たとえば、SQL Server Management Studio (SSMS) は、AMO を使用して Analysis Services に接続します。 AMO を使用した接続は、通常は最小で、`"data source=\<servername>"` で構成されています。 接続の確立後は、API を使用して、データベース コレクションおよび主要なオブジェクトを操作します。 SSDT と SSMS のどちらも、AMO を使用して Analysis Services インスタンスに接続します。  
 
   
 ### <a name="adomd"></a>ADOMD
 
- ADOMD.NET は、Analysis Services データの照会に使用されるマネージ データ クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 
+ ADOMD.NET は、Analysis Services データの照会に使用されるマネージド データ クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 
   
  データベースに接続する際、3 つのライブラリの接続文字列プロパティは、どれも似ています。 [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](https://msdn.microsoft.com/library/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring.aspx) を使用して ADOMD.NET 用に定義するほぼすべての接続文字列が、AMO と Analysis Services OLE DB Provider (MSOLAP) でも機能します。 詳細については、「[接続文字列プロパティ &#40;Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services)」を参照してください。  
 
@@ -79,7 +73,7 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
   
 ### <a name="oleddb-msolap"></a>OLEDDB (MSOLAP)  
   
-1.  C:\Program Files\Microsoft Analysis Services\AS OLEDB\ に移動します。 複数のフォルダーがある場合は、番号の大きい方を選択します。
+1.  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
   
 2.  **[msolap.dll]** > **[プロパティ]** > **[詳細]** の順にクリック (最初は右クリック) します。 ファイル名が msolap140.dll である場合は、最新のバージョンよりも古いバージョンであるため、アップグレードする必要があります。
     

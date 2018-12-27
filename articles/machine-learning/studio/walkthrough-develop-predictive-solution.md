@@ -6,20 +6,20 @@ services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
 ms.author: hshapiro
-manager: hjerez
-editor: cgronlun
 ms.assetid: 43300854-a14e-4cd2-9bb1-c55c779e0e93
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: d8a9776d97f10c64f7c29fa32fb1187bd76af714
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a107907dd01b15015c644f835239f6f90b948296
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245836"
 ---
 # <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する
 
@@ -57,4 +57,4 @@ ms.lasthandoff: 03/23/2018
 > [!TIP] 
 > [Azure AI ギャラリー](https://gallery.cortanaintelligence.com)には、このチュートリアルで開発する実験の作業コピーがあります。 「**[Walkthrough - Credit risk prediction (チュートリアル - クレジット リスクの予測)](https://gallery.cortanaintelligence.com/Experiment/Walkthrough-Credit-risk-prediction-1)**」にアクセスし、**[Open in Studio (Studio で開く)]** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
 > 
-> このチュートリアルは、[ギャラリー](http://gallery.cortanaintelligence.com/)にもある「[Binary Classfication: Credit risk prediction (二項分類: クレジット リスクの予測)](http://go.microsoft.com/fwlink/?LinkID=525270)」のサンプル実験の簡略版に基づいています。
+> このチュートリアルは、[ギャラリー](http://gallery.cortanaintelligence.com/)にもある「[Binary Classfication: Credit risk prediction (二項分類: クレジット リスクの予測)](https://go.microsoft.com/fwlink/?LinkID=525270)」のサンプル実験の簡略版に基づいています。

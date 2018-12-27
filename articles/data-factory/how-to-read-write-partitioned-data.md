@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法 | Microsoft Docs
-description: Azure Data Factory バージョン 2 に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法について説明します。
+description: Azure Data Factory に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -10,23 +10,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: e3b6ccd1e7066ed86b3d6d2d85228688b06931c4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 24464d110b00508cfb3fde4ab1a050773511e255
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091051"
 ---
-# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory-version-2"></a>Azure Data Factory バージョン 2 に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法
-Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 バージョン 2 では、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 
+# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Azure Data Factory に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法
+
+Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**WindowStart**、および **WindowEnd** システム変数を使用して、パーティション分割されたデータの読み取りまたは書き込みが可能でした。 現在のバージョンの Data Factory では、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻またはスケジュールされた時刻を使用してこの動作を実現できます。 
 
 ## <a name="use-a-pipeline-parameter"></a>パイプライン パラメーターを使用する 
-バージョン 1 では、次の例に示すように、partitionedBy プロパティと SliceStart システム変数を使用できました。 
+
+Data Factory バージョン 1 では、次の例に示すように、**partitionedBy** プロパティと **SliceStart** システム変数を使用できました。 
 
 ```json
-"folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/yearno={Year}/monthno={Month}/dayno={Day}/",
+"folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/{Year}/{Month}/{Day}/",
 "partitionedBy": [
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "%M" } },
@@ -34,29 +37,36 @@ Azure Data Factory のバージョン 1 では、パーティション分割さ�
 ],
 ```
 
-PartitonedBy プロパティの詳細については、[バージョン 1 での Azure Blob コネクタ](v1/data-factory-azure-blob-connector.md#dataset-properties)に関する記事を参照してください。 
+**partitonedBy** プロパティの詳細については、「[Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー](v1/data-factory-azure-blob-connector.md#dataset-properties)」を参照してください。 
 
-バージョン 2 では、この動作を実現する方法は、次のアクションを行うことです。 
+現在のバージョンの Data Factory でこの動作を実現するには: 
 
-1. 文字列型の**パイプライン パラメーター**を定義します。 次の例では、パイプライン パラメーターの名前は **scheduledRunTime** です。 
-2. データセット定義内の **folderPath** に、パイプライン パラメーターの値を設定します。 
-3. パイプラインを実行する前に、パラメーター用のハードコードされた値を渡します。 または、実行時にトリガーの開始時刻またはスケジュールされた時刻を動的に渡します。 
+1. **文字列**型の*パイプライン パラメーター*を定義します。 次の例では、パイプライン パラメーターの名前は **windowStartTime** です。 
+2. パイプライン パラメーターの値を参照するために、データセット定義内に **folderPath** を設定します。 
+3. パイプラインをオンデマンドで起動するときに、パラメーターの実際の値を渡します。 また、実行時にトリガーの開始時刻またはスケジュールされた時刻を動的に渡すこともできます。 
 
 ```json
 "folderPath": {
-      "value": "@concat(pipeline().parameters.blobContainer, '/logs/marketingcampaigneffectiveness/yearno=', formatDateTime(pipeline().parameters.scheduledRunTime, 'yyyy'), '/monthno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%M'), '/dayno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%d'), '/')",
+      "value": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/@{formatDateTime(pipeline().parameters.windowStartTime, 'yyyy/MM/dd')}/",
       "type": "Expression"
 },
 ```
 
-## <a name="pass-in-value-from-a-trigger"></a>トリガーから値を渡す
-次のトリガー定義では、トリガーのスケジュールされた時刻が **scheduledRunTime** パイプライン パラメーターの値として渡されます。 
+## <a name="pass-in-a-value-from-a-trigger"></a>トリガーから値を渡す
+
+次のタンブリング ウィンドウ トリガー定義では、トリガーのウィンドウの開始時刻がパイプライン パラメーター **windowStartTime** の値として渡されます。 
 
 ```json
 {
     "name": "MyTrigger",
     "properties": {
-       ...
+        "type": "TumblingWindowTrigger",
+        "typeProperties": {
+            "frequency": "Hour",
+            "interval": "1",
+            "startTime": "2018-05-15T00:00:00Z",
+            "delay": "00:10:00",
+            "maxConcurrency": 10
         },
         "pipeline": {
             "pipelineReference": {
@@ -64,7 +74,7 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
                 "referenceName": "MyPipeline"
             },
             "parameters": {
-                "scheduledRunTime": "@trigger().scheduledTime"
+                "windowStartTime": "@trigger().outputs.windowStartTime"
             }
         }
     }
@@ -73,14 +83,15 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
 
 ## <a name="example"></a>例
 
-サンプルのデータセット定義を次に示します (`date` という名前のパラメーターを使用します)。
+データセット定義の例を次に示します。
 
 ```json
 {
+  "name": "SampleBlobDataset",
   "type": "AzureBlob",
   "typeProperties": {
     "folderPath": {
-      "value": "@concat(pipeline().parameters.blobContainer, '/logs/marketingcampaigneffectiveness/yearno=', formatDateTime(pipeline().parameters.scheduledRunTime, 'yyyy'), '/monthno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%M'), '/dayno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%d'), '/')",
+      "value": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/@{formatDateTime(pipeline().parameters.windowStartTime, 'yyyy/MM/dd')}/",
       "type": "Expression"
     },
     "format": {
@@ -129,20 +140,16 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
                         "value": "@concat('wasb://', pipeline().parameters.blobContainer, '@', pipeline().parameters.blobStorageAccount, '.blob.core.windows.net/logs/', pipeline().parameters.inputRawLogsFolder, '/')",
                         "type": "Expression"
                     },
-                    "PARTITIONEDOUTPUT": {
-                        "value": "@concat('wasb://', pipeline().parameters.blobContainer, '@', pipeline().parameters.blobStorageAccount, '.blob.core.windows.net/logs/partitionedgameevents/')",
-                        "type": "Expression"
-                    },
                     "Year": {
-                        "value": "@formatDateTime(pipeline().parameters.scheduledRunTime, 'yyyy')",
+                        "value": "@formatDateTime(pipeline().parameters.windowStartTime, 'yyyy')",
                         "type": "Expression"
                     },
                     "Month": {
-                        "value": "@formatDateTime(pipeline().parameters.scheduledRunTime, '%M')",
+                        "value": "@formatDateTime(pipeline().parameters.windowStartTime, 'MM')",
                         "type": "Expression"
                     },
                     "Day": {
-                        "value": "@formatDateTime(pipeline().parameters.scheduledRunTime, '%d')",
+                        "value": "@formatDateTime(pipeline().parameters.windowStartTime, 'dd')",
                         "type": "Expression"
                     }
                 }
@@ -154,7 +161,7 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
             "name": "HivePartitionGameLogs"
         }],
         "parameters": {
-            "scheduledRunTime": {
+            "windowStartTime": {
                 "type": "String"
             },
             "blobStorageAccount": {
@@ -165,9 +172,6 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
             },
             "inputRawLogsFolder": {
                 "type": "String"
-            },
-            "partitionHiveScriptFile": {
-                "type": "String"
             }
         }
     }
@@ -175,4 +179,6 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
 ```
 
 ## <a name="next-steps"></a>次の手順
-パイプラインを使用したデータ ファクトリの作成に関する完全なチュートリアルについては、[クイック スタート: データ ファクトリの作成](quickstart-create-data-factory-powershell.md)に関する記事を参照してください。 
+
+パイプラインを含むデータ ファクトリを作成する方法の完全なチュートリアルについては、「[クイック スタート: データ ファクトリを作成する](quickstart-create-data-factory-powershell.md)」を参照してください。 
+

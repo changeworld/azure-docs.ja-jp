@@ -1,24 +1,25 @@
 ---
-title: "Azure Cloud Services でパフォーマンス カウンターを収集する | Microsoft Docs"
-description: "Azure 診断および Application Insights を使用して、Cloud Services でパフォーマンス カウンターを検出、使用、作成する方法について説明します。"
+title: Azure Cloud Services でパフォーマンス カウンターを収集する | Microsoft Docs
+description: Azure 診断および Application Insights を使用して、Cloud Services でパフォーマンス カウンターを検出、使用、作成する方法について説明します。
 services: cloud-services
 documentationcenter: .net
-author: thraka
+author: jpconnock
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cloud-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
-ms.author: adegeo
-ms.openlocfilehash: 3e0af48c172fa912f0ac9e05b7b761dd7eaad795
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: jeconnoc
+ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322945"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure Cloud Services のパフォーマンス カウンターの収集
 
@@ -81,7 +82,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 
 パフォーマンス カウンターは、Azure 診断または Application Insights のクラウド サービスに追加できます。
 
-### <a name="application-insights"></a>アプリケーション インサイト
+### <a name="application-insights"></a>Application Insights
 
 Cloud Services 用の Azure Application Insights では、収集するパフォーマンス カウンターを指定できます。 [プロジェクトに Application Insights を追加する](../application-insights/app-insights-cloudservices.md#sdk)と、**ApplicationInsights.config** という名前の構成ファイルが Visual Studio プロジェクトに追加されます。 この構成ファイルでは、Application Insights で収集して Azure に送信する情報の種類を定義します。
 
@@ -126,7 +127,7 @@ Cloud Services 用の Azure 診断拡張機能では、収集するパフォー�
 
 収集するパフォーマンス カウンターは、**diagnostics.wadcfgx** ファイルで定義されています。 このファイル (ロールごとに定義されています) を Visual Studio で開き、**DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 要素を探します。 新しい **PerformanceCounterConfiguration** 要素を子として追加します。 この要素には、`counterSpecifier` と `sampleRate` の 2 つの属性があります。 `counterSpecifier` 属性では、収集するシステム パフォーマンス カウンター セット (前のセクションで説明) を定義します。 `sampleRate` 値は、その値がポーリングされる頻度を示します。 全体として、すべてのパフォーマンス カウンターは、親 `PerformanceCounters` 要素の `scheduledTransferPeriod` 属性値に従って Azure に転送されます。
 
-`PerformanceCounters` スキーマ要素の詳細については、[Azure 診断スキーマ](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element)に関するページを参照してください。
+`PerformanceCounters` スキーマ要素の詳細については、[Azure 診断スキーマ](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)に関するページを参照してください。
 
 `sampleRate` 属性で定義された期間は、XML 期間データ型を使用して、パフォーマンス カウンターのポーリング頻度を示します。 下の例では、頻度が `PT3M` に設定されています。これは、`[P]eriod[T]ime[3][M]inutes` (3 分ごと) を意味します。
 
@@ -239,7 +240,7 @@ counterServiceUsed.Increment();
 アプリケーションでカスタム カウンターが使用されているため、カウンターを追跡するように Azure 診断または Application Insights を構成する必要があります。
 
 
-### <a name="application-insights"></a>アプリケーション インサイト
+### <a name="application-insights"></a>Application Insights
 
 既に説明したとおり、Application Insights のパフォーマンス カウンターは **ApplicationInsights.config** ファイルで定義されています。 **ApplicationInsights.config** を開き、**ApplicationInsights** > **TelemetryModules** > **Add** > **Counters** 要素を見つけます。 `<Add>` 子要素を作成し、`PerformanceCounter` 属性を、コードで作成したパフォーマンス カウンターのカテゴリと名前に設定します。 `ReportAs` 属性を、ポータルに表示するわかりやすい名前に設定します。
 
@@ -296,4 +297,4 @@ counterServiceUsed.Increment();
 - [Azure Cloud Services 向けの Application Insights](../application-insights/app-insights-cloudservices.md#performance-counters)
 - [Application Insights のシステム パフォーマンス カウンター](../application-insights/app-insights-performance-counters.md)
 - [カウンター パスの指定](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Azure 診断のスキーマ - パフォーマンス カウンター](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element)
+- [Azure 診断のスキーマ - パフォーマンス カウンター](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

@@ -1,37 +1,36 @@
 ---
-title: "特権エンドポイントを使用した Azure Stack での更新プログラムのモニター | Microsoft Docs"
-description: "特権エンドポイントを使用して Azure Stack 統合システムの更新プログラムの状態をモニターする方法を説明します。"
+title: 特権エンドポイントを使用した Azure Stack での更新プログラムのモニター | Microsoft Docs
+description: 特権エンドポイントを使用して Azure Stack 統合システムの更新プログラムの状態をモニターする方法を説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 11/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 96eebf340f13f2f5e9e922fee8032d04fce1d130
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.reviewer: fiseraci
+ms.openlocfilehash: 4641dce6fe8518016ee85cd480de6d11354fe170
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037220"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>特権エンドポイントを使用して Azure Stack での更新プログラムをモニターする
 
 *適用対象: Azure Stack 統合システム*
 
-特権エンドポイントを使用すると、Azure Stack 更新プログラムの実行の進行状況を監視し、Azure Stack ポータルが使用できなくなった場合は、失敗した更新プログラムの実行を成功した最後の手順から再開することができます。  Azure Stack ポータルの使用は、Azure Stack で更新プログラムを管理するための推奨される方法です。
+[特権エンドポイント](azure-stack-privileged-endpoint.md)を使用すると、Azure Stack 更新プログラムの実行の進行状況を監視し、Azure Stack ポータルが使用できなくなった場合に、失敗した更新プログラムの実行を成功した最後の手順から再開することができます。  Azure Stack ポータルの使用は、Azure Stack で更新プログラムを管理するための推奨される方法です。
 
 更新管理用の次の新しい PowerShell コマンドレットは、Azure Stack 統合システムの 1710 更新プログラムに含まれています。
 
-| コマンドレット  | [説明]  |
+| コマンドレット  | 説明  |
 |---------|---------|
 | `Get-AzureStackUpdateStatus` | 現在実行中、完了済み、または失敗した更新プログラムの状態を返します。 更新操作の状態の詳細と、現在のステップと対応する状態の両方について説明する XML ドキュメントを提供します。 |
-| `Get-AzureStackUpdateVerboseLog` | 更新プログラムによって生成される詳細ログを返します。 |
 | `Resume-AzureStackUpdate` | 失敗した更新プログラムを失敗した時点から再開します。 特定のシナリオでは、更新プログラムを再開する前に、リスク軽減の手順を完了しなければならない場合があります。         |
 | | |
 
@@ -77,7 +76,6 @@ ms.lasthandoff: 01/06/2018
    CommandType     Name                                               Version    Source                                                  PSComputerName
     -----------     ----                                               -------    ------                                                  --------------
    Function        Get-AzureStackUpdateStatus                         0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
-   Function        Get-AzureStackUpdateVerboseLog                     0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
    Function        Resume-AzureStackUpdate                            0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
    ``` 
 
@@ -158,29 +156,6 @@ $updateStatus.SelectNodes("//Step[@Status='InProgress']")
     Status        : InProgress
     Task          : Task
 ```
-
-### <a name="get-the-verbose-progress-log"></a>詳細な進行状況ログを取得する
-
-このログは、調査できるようにファイルに書き込むことができます。 これは、更新プログラムのエラーを診断するのに役立ちます。
-
-```powershell
-$log = Invoke-Command -Session $pepSession -ScriptBlock { Get-AzureStackUpdateVerboseLog }
-
-$log > ".\UpdateVerboseLog.txt" 
-```
-
-### <a name="actively-view-the-verbose-logging"></a>詳細なログ記録をアクティブに表示する
-
-更新実行中に詳細ログをアクティブに表示し、最新のエントリにジャンプするには、次のコマンドを実行して、対話モードでセッションに入り、ログを表示します。
-
-```powershell
-Enter-PSSession -Session $pepSession 
-
-Get-AzureStackUpdateVerboseLog -Wait 
-```
-ログが 60 秒ごとに更新され、新しいコンテンツ (使用可能な場合) がコンソールに書き込まれます。 
-
-実行時間が長いバックグラウンド プロセスの場合、コンソール出力がしばらくの間コンソールに書き込まれない場合があります。 対話型の出力をキャンセルするには、Ctrl キーを押しながら C キーを押します。 
 
 ### <a name="resume-a-failed-update-operation"></a>失敗した更新操作を再開する
 

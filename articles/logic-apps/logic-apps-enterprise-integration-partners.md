@@ -1,27 +1,23 @@
 ---
-title: 企業間 (B2B) メッセージのパートナーを作成する - Azure Logic Apps | Microsoft Docs
-description: Enterprise Integration Pack と Logic Apps を使用してパートナーを統合アカウントに追加する方法について説明します
+title: B2B 統合の取引先を追加する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack の統合アカウントに対して取引先を作成します。
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: anneta
-editor: ''
-ms.assetid: b179325c-a511-4c1b-9796-f7484b4f6873
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: b179325c-a511-4c1b-9796-f7484b4f6873
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17f15c49e0f8137d5f11c57fa600588cda791c28
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 20ca5e06cd1cd0d0abfe6d31f622cd6b61b4178f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125263"
 ---
-# <a name="add-or-update-partners-in-business-to-business-agreements-in-your-workflow"></a>ワークフロー内の企業間契約のパートナーを追加または更新する
+# <a name="add-trading-partners-for-integration-accounts-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack の統合アカウントに対して取引先を追加する
 
 パートナーとは、企業間 (B2B) のトランザクションとメッセージング交換に参加するエンティティです。 これらのトランザクションで自身の組織と別の組織を表すパートナーを作成するには、まず交換するメッセージを識別して検証するための情報を共有する必要があります。 これらの詳細について話し合い、取引関係を開始する準備が整ったら、統合アカウントに両者を表すパートナーを作成できます。
 

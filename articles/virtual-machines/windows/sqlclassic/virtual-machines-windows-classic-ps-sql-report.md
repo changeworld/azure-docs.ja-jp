@@ -3,7 +3,7 @@ title: ネイティブ モードのレポート サーバーを実行する VM �
 description: 'このトピックでは、Azure 仮想マシンで SQL Server Reporting Services ネイティブ モードのレポート サーバーをデプロイおよび構成する手順について説明します。 '
 services: virtual-machines-windows
 documentationcenter: na
-author: guyinacube
+author: markingmyname
 manager: erikre
 editor: monicar
 tags: azure-service-management
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
-ms.author: asaxton
-ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: maghan
+ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233084"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
 > [!IMPORTANT] 
@@ -39,7 +40,7 @@ ms.lasthandoff: 04/05/2018
   * コア クォータを増やすには、 [Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 VM サイズについては、「 [Azure の仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 * **Windows PowerShell スクリプト**: このトピックは、Windows PowerShell の使用方法に関する基本的な知識があることを前提としています。 Windows PowerShell の使用方法の詳細については、次のトピックをご覧ください。
   
-  * [Starting Windows PowerShell on Windows Server (Windows Server での Windows PowerShell の起動)](https://technet.microsoft.com/library/hh847814.aspx)
+  * [Starting Windows PowerShell on Windows Server (Windows Server での Windows PowerShell の起動)](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell)
   * [Getting Started with Windows PowerShell (Windows PowerShell の概要)](https://technet.microsoft.com/library/hh857337.aspx)
 
 ## <a name="step-1-provision-an-azure-virtual-machine"></a>手順 1: Azure 仮想マシンをプロビジョニングする
@@ -47,17 +48,17 @@ ms.lasthandoff: 04/05/2018
 2. 左側のウィンドウで、 **[Virtual Machines]** をクリックします。
    
     ![Microsoft Azure Virtual Machines](./media/virtual-machines-windows-classic-ps-sql-report/IC660124.gif)
-3. **[新規]**をクリックします。
+3. **[新規]** をクリックします。
    
     ![[新規] ボタン](./media/virtual-machines-windows-classic-ps-sql-report/IC692019.gif)
-4. **[ギャラリーから]**をクリックします。
+4. **[ギャラリーから]** をクリックします。
    
     ![ギャラリーから新しい VM を作成](./media/virtual-machines-windows-classic-ps-sql-report/IC692020.gif)
 5. **[SQL Server 2014 RTM Standard – Windows Server 2012 R2]** をクリックし、矢印をクリックして続行します。
    
     ![[次へ]](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
    
-    Reporting Services のデータ ドリブン サブスクリプション機能が必要な場合は、 **[SQL Server 2014 RTM Enterprise – Windows Server 2012 R2]**を選択します。 SQL Server の各エディションと機能のサポートの詳細については、「 [SQL Server 2012 の各エディションがサポートする機能](https://msdn.microsoft.com/library/cc645993.aspx#Reporting)」をご覧ください。
+    Reporting Services のデータ ドリブン サブスクリプション機能が必要な場合は、 **[SQL Server 2014 RTM Enterprise – Windows Server 2012 R2]** を選択します。 SQL Server の各エディションと機能のサポートの詳細については、「 [SQL Server 2012 の各エディションがサポートする機能](https://msdn.microsoft.com/library/cc645993.aspx#Reporting)」をご覧ください。
 6. **[仮想マシンの構成]** ページで、以下のフィールドを編集します。
    
    * **バージョンのリリース日**が複数存在する場合は、最新バージョンを選択します。
@@ -70,7 +71,7 @@ ms.lasthandoff: 04/05/2018
 7. 次のページでは、以下のフィールドを編集します。
    
    * **[クラウド サービス]**: **[新しいクラウド サービスの作成]** を選択します。
-   * **[クラウド サービス DNS 名]**: VM に関連付けられるクラウド サービスのパブリック DNS 名です。 既定の名前は、VM 名として入力した名前です。 このトピックの後の手順で信頼済み SSL 証明書を作成する場合、この DNS 名が証明書の**[発行先]**の値に使用されます。
+   * **[クラウド サービス DNS 名]**: VM に関連付けられるクラウド サービスのパブリック DNS 名です。 既定の名前は、VM 名として入力した名前です。 このトピックの後の手順で信頼済み SSL 証明書を作成する場合、この DNS 名が証明書の **[発行先]** の値に使用されます。
    * **[リージョン/アフィニティ グループ/Virtual Network]**: エンド ユーザーに最も近いリージョンを選択します。
    * **[ストレージ アカウント]**: 自動的に生成されたストレージ アカウントを使用します。
    * **[可用性セット]**: ありません。
@@ -89,7 +90,7 @@ ms.lasthandoff: 04/05/2018
 
 VM で HTTPS を使用するには、信頼済み SSL 証明書が必要です。 シナリオに応じて、次の 2 つの方法のいずれかを使用できます。
 
-* 証明機関 (CA) が発行し、Microsoft が信頼する有効な SSL 証明書。 CA ルート証明書が Microsoft ルート証明書プログラムによって配布されている必要があります。 このプログラムの詳細については、「[Windows and Windows Phone 8 SSL Root Certificate Program (Member CAs)](http://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx)」 (Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA))、および「[Introduction to The Microsoft Root Certificate Program](http://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx)」 (Microsoft ルート証明書プログラムの概要) を参照してください。
+* 証明機関 (CA) が発行し、Microsoft が信頼する有効な SSL 証明書。 CA ルート証明書が Microsoft ルート証明書プログラムによって配布されている必要があります。 このプログラムの詳細については、「[Windows and Windows Phone 8 SSL Root Certificate Program (Member CAs)](https://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx)」 (Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA))、および「[Introduction to The Microsoft Root Certificate Program](https://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx)」 (Microsoft ルート証明書プログラムの概要) を参照してください。
 * 自己署名証明書。 運用環境では、自己署名証明書を使用しないことをお勧めします。
 
 ### <a name="to-use-a-certificate-created-by-a-trusted-certificate-authority-ca"></a>信頼された証明機関 (CA) によって作成された証明書を使用するには
@@ -127,13 +128,13 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
    2. Mmc.exe を実行します。 詳細については、「 [方法: MMC スナップインを使用して証明書を参照する](https://msdn.microsoft.com/library/ms788967.aspx)」をご覧ください。
    3. コンソール アプリケーションの **[ファイル]** メニューで、**[証明書]** スナップインを追加します。メッセージが表示されたら、**[コンピューター アカウント]** を選択し、**[次へ]** をクリックします。
    4. 管理対象として **[ローカル コンピューター]** を選択し、**[完了]** をクリックします。
-   5. **[OK]** をクリックし、**[証明書 - 個人]** ノードを展開して、**[証明書]** をクリックします。 証明書の名前は VM の DNS 名に基づいており、 **cloudapp.net**で終わります。 証明書の名前を右クリックし、 **[コピー]**をクリックします。
+   5. **[OK]** をクリックし、**[証明書 - 個人]** ノードを展開して、**[証明書]** をクリックします。 証明書の名前は VM の DNS 名に基づいており、 **cloudapp.net**で終わります。 証明書の名前を右クリックし、 **[コピー]** をクリックします。
    6. **[信頼されたルート証明機関]** ノードを展開し、**[証明書]** を右クリックして、**[貼り付け]** をクリックします。
    7. 検証するために、 **[信頼されたルート証明機関]** で証明書の名前をダブルクリックし、エラーがないことと、追加した証明書であることを確認します。 このトピックに用意されている HTTPS スクリプトを使用してレポート サーバーを構成する場合、スクリプトのパラメーターとして証明書の **[拇印]** の値が必要となります。 **拇印の値を取得するには**、次の手順を実行します。 「 [スクリプトを使用してレポート サーバーと HTTPS を構成する](#use-script-to-configure-the-report-server-and-HTTPS)」には、拇印を取得するための PowerShell サンプルも用意されています。
       
       1. 証明書の名前 (例: ssrsnativecloud.cloudapp.net) をダブルクリックします。
       2. **[詳細]** タブをクリックします。
-      3. **[拇印]**をクリックします。 詳細フィールドに拇印の値が表示されます (例: ‎a6 08 3c df f9 0b f7 e3 7c 25 ed a4 ed 7e ac 91 9c 2c fb 2f)。
+      3. **[拇印]** をクリックします。 詳細フィールドに拇印の値が表示されます (例: ‎a6 08 3c df f9 0b f7 e3 7c 25 ed a4 ed 7e ac 91 9c 2c fb 2f)。
       4. 拇印をコピーし、後で編集できるように値を保存するか、スクリプトをすぐに編集します。
       5. (*) スクリプトを実行する前に、値の各ペアの間にあるスペースを削除します。 たとえば、上記の拇印は ‎a6083cdff90bf7e37c25eda4ed7eac919c2cfb2f になります。
       6. サーバー証明書をレポート サーバーに割り当てます。 この割り当ては、次のセクションでレポート サーバーを構成したときに完了します。
@@ -469,7 +470,7 @@ Windows PowerShell を使用してレポート サーバーを構成するには
    * VM で mmc.exe を実行し、 **証明書** スナップインを追加します。
    * **[信頼されたルート証明機関]** ノードで、証明書の名前をダブルクリックします。 VM の自己署名証明書を使用している場合、証明書の名前は VM の DNS 名に基づいており、 **cloudapp.net**で終わります。
    * **[詳細]** タブをクリックします。
-   * **[拇印]**をクリックします。 詳細フィールドに拇印の値が表示されます (例: af 11 60 b6 4b 28 8d 89 0a 82 12 ff 6b a9 c3 66 4f 31 90 48)。
+   * **[拇印]** をクリックします。 詳細フィールドに拇印の値が表示されます (例: af 11 60 b6 4b 28 8d 89 0a 82 12 ff 6b a9 c3 66 4f 31 90 48)。
    * **スクリプトを実行する前に**、値の各ペアの間にあるスペースを削除します。 (例: af1160b64b288d890a8212ff6ba9c3664f319048)。
 7. **$httpsport** パラメーターを変更します。 
    
@@ -500,23 +501,23 @@ Windows PowerShell を使用してレポート サーバーを構成するには
     ![Azure 仮想マシンに接続](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif)
 2. Windows Update を実行し、VM に更新プログラムをインストールします。 VM の再起動が必要な場合は、VM を再起動し、Azure Portal から VM に再接続します。
 3. VM の [スタート] メニューで「**Reporting Services**」と入力し、**Reporting Services 構成マネージャー**を開きます。
-4. **[サーバー名]** と **[レポート サーバー インスタンス]** は既定値のままにしておきます。 **[接続]**をクリックします。
-5. 左側のウィンドウで、 **[Web サービス URL]**をクリックします。
+4. **[サーバー名]** と **[レポート サーバー インスタンス]** は既定値のままにしておきます。 **[接続]** をクリックします。
+5. 左側のウィンドウで、 **[Web サービス URL]** をクリックします。
 6. 既定では、RS は HTTP ポート 80 で構成され、IP は "すべて割り当て" に設定されます。 HTTPS を追加するには、次の手順を実行します。
    
    1. **[SSL 証明書]** で、使用する証明書を選択します。たとえば、[VM 名].cloudapp.net を選択します。 証明書が表示されない場合、VM に証明書をインストールして信頼する方法については、「**手順 2: サーバー証明書を作成する**」をご覧ください。
-   2. **[SSL ポート]**で 443 を選択します。 VM で別のプライベート ポートを使用して HTTPS プライベート エンドポイントを構成した場合は、ここでその値を使用します。
+   2. **[SSL ポート]** で 443 を選択します。 VM で別のプライベート ポートを使用して HTTPS プライベート エンドポイントを構成した場合は、ここでその値を使用します。
    3. **[適用]** をクリックし、処理が完了するまで待ちます。
-7. 左側のウィンドウで、 **[データベース]**をクリックします。
+7. 左側のウィンドウで、 **[データベース]** をクリックします。
    
-   1. **[データベースの変更]**をクリックします。
+   1. **[データベースの変更]** をクリックします。
    2. **[新しいレポート サーバー データベースを作成する]** をクリックし、**[次へ]** をクリックします。
    3. **[サーバー名]** では、既定の VM 名をそのまま使用します。**[認証の種類]** も、既定の **[現在のユーザー** - **統合セキュリティ]** のままにしておきます。 **[次へ]** をクリックします。
    4. **[データベース名]** を既定の **[ReportServer]** のままにし、**[次へ]** をクリックします。
    5. **[認証の種類]** を既定の **[サービス資格情報]** のままにし、**[次へ]** をクリックします。
    6. 左側のウィンドウで、 **[次へ]** on the **[次へ]** をクリックします。
-   7. 構成が完了したら、 **[完了]**をクリックします。
-8. 左側のウィンドウで、 **[レポート マネージャー URL]**をクリックします。 **[仮想ディレクトリ]** を既定の **[Reports]** のままにし、**[適用]** をクリックします。
+   7. 構成が完了したら、 **[完了]** をクリックします。
+8. 左側のウィンドウで、 **[レポート マネージャー URL]** をクリックします。 **[仮想ディレクトリ]** を既定の **[Reports]** のままにし、**[適用]** をクリックします。
 9. **[終了]** をクリックして、Reporting Services 構成マネージャーを閉じます。
 
 ## <a name="step-4-open-windows-firewall-port"></a>手順 4: Windows ファイアウォール ポートを開く
@@ -585,7 +586,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
   
   * [Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)
   * [Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2012](https://www.microsoft.com/download/details.aspx?id=36843)
-  * [SQL Server Data Tools and SQL Server Business Intelligence (SSDT-BI)](http://curah.microsoft.com/30004/sql-server-data-tools-ssdt-and-sql-server-business-intelligence)
+  * [SQL Server Data Tools and SQL Server Business Intelligence (SSDT-BI)](https://docs.microsoft.com/sql/ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi)
 * **SQL Server Data Tools: Remote**: ローカル コンピューター上の SQL Server Data Tools で、Reporting Services レポートを含む Reporting Services プロジェクトを作成します。 Web サービス URL に接続するようにプロジェクトを構成します。
   
     ![SSRS プロジェクトの SSDT プロジェクト プロパティ](./media/virtual-machines-windows-classic-ps-sql-report/IC650114.gif)
@@ -597,8 +598,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 ## <a name="more-information"></a>詳細情報
 ### <a name="resources"></a>リソース
-* SQL Server Business Intelligence と SharePoint 2013 のシングル サーバー デプロイに関する類似コンテンツについては、「 [Use Windows PowerShell to Create an Azure VM With SQL Server BI and SharePoint 2013 (SQL Server BI と SharePoint 2013 を実行する Azure VM を Windows PowerShell を使用して作成する)](https://msdn.microsoft.com/library/azure/dn385843.aspx)」をご覧ください。
-* SQL Server Business Intelligence と SharePoint 2013 のマルチサーバー デプロイに関する類似コンテンツについては、「 [Deploy SQL Server Business Intelligence in Azure Virtual Machines (Azure Virtual Machines の SQL Server Business Intelligence のデプロイ)](https://msdn.microsoft.com/library/dn321998.aspx)」をご覧ください。
+* SQL Server Business Intelligence と SharePoint 2013 のシングル サーバー デプロイに関する類似コンテンツについては、「 [Use Windows PowerShell to Create an Azure VM With SQL Server BI and SharePoint 2013 (SQL Server BI と SharePoint 2013 を実行する Azure VM を Windows PowerShell を使用して作成する)](https://blogs.technet.microsoft.com/ptsblog/2013/10/24/use-powershell-to-create-a-windows-azure-vm-with-sql-server-bi-and-sharepoint-2013/)」をご覧ください。
 * Azure Virtual Machines の SQL Server Business Intelligence のデプロイに関する一般情報については、「 [SQL Server Business Intelligence in Azure Virtual Machines (Azure Virtual Machines の SQL Server Business Intelligence)](virtual-machines-windows-classic-ps-sql-bi.md)」をご覧ください。
 * Azure Compute のコストの詳細については、「 [Azure 価格計算ツール](https://azure.microsoft.com/pricing/calculator/?scenario=virtual-machines)」の [Virtual Machines] タブをご覧ください。
 

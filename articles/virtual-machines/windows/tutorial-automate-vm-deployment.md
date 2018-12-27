@@ -1,28 +1,30 @@
 ---
-title: "Azure で Windows VM をカスタマイズする | Microsoft Docs"
-description: "カスタム スクリプト拡張機能を使用して Azure 内の Windows VM へのアプリケーションのインストールを自動化する方法について説明します。"
+title: チュートリアル - Azure 内の Windows VM 上にアプリケーションをインストールする | Microsoft Docs
+description: このチュートリアルでは、カスタム スクリプト拡張機能を使ってスクリプトを実行し、Azure 内の Windows 仮想マシンにアプリケーションを展開する方法を説明します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/09/2018
-ms.author: iainfou
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 63858da0a4a47d67ec659e922ab10f9f7bc97938
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: b183e9f3149f9fa8b856215ea9cd5ee33c1e6d79
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465462"
 ---
-# <a name="how-to-customize-a-windows-virtual-machine-in-azure"></a>Azure で Windows 仮想マシンをカスタマイズする方法
+# <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>チュートリアル - カスタム スクリプト拡張機能を使って Azure 内の Windows 仮想マシンにアプリケーションを展開する
+
 仮想マシン (VM) を迅速かつ一貫した方法で構成するには、一般的に、何らかの形で自動化することが望ましいです。 Windows VM をカスタマイズする一般的なアプローチとして、[Windows のカスタム スクリプト拡張機能](extensions-customscript.md)を使用する方法があります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -32,7 +34,7 @@ ms.lasthandoff: 02/14/2018
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.3 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 
 ## <a name="custom-script-extension-overview"></a>カスタム スクリプト拡張機能の概要

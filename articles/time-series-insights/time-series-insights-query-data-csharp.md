@@ -1,22 +1,23 @@
 ---
-title: C# コードを使用して Azure Time Series Insights 環境からデータを照会する | Microsoft Docs
+title: Azure Time Series Insights での C# によるクエリ - C# コードを使用して Azure Time Series Insights 環境からデータを照会する | Microsoft Docs
 description: この記事では、C# .NET 言語で記述されたカスタム アプリをコーディングして、Azure Time Series Insights 環境からデータを照会する方法について説明します。
-services: time-series-insights
 ms.service: time-series-insights
-author: ankryach
-ms.author: ankryach
-manager: jhubbard
-editor: MicrosoftDocs/tsidocs
+services: time-series-insights
+author: ashannon7
+ms.author: anshan
+manager: cshankar
 reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 2cbdf4a5c7272e88430b1db7b853f8b6d441c893
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.custom: seodec18
+ms.openlocfilehash: 82a3d4527d241aba80eb471508c99c7781dd4a41
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277951"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>C# を使用して Azure Time Series Insights 環境からデータを照会する
 

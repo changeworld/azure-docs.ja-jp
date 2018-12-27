@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.openlocfilehash: a28b46e10bbdd5331cc665fad3f80523b3aa8a58
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0f9f300f589a4818afb0c0de5ede94e5c4fab15e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248730"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec を使用したバックアップ ターゲットとしての StorSimple
 
@@ -172,7 +173,7 @@ StorSimple のデプロイメントの詳細なガイダンスについては、
 
 ### <a name="deploy-backup-exec"></a>Backup Exec のデプロイ
 
-Backup Exec のインストールのベスト プラクティスについては、[Backup Exec のインストールのベスト プラクティス](https://www.veritas.com/support/en_US/article.000068207)に関するページをご覧ください。
+Backup Exec のインストールのベスト プラクティスについては、[Backup Exec のインストールのベスト プラクティス](https://www.veritas.com/content/support/en_US/doc/72686287-131623464-0/v70444238-131623464)に関するページをご覧ください。
 
 ## <a name="set-up-the-solution"></a>ソリューションのセットアップ
 
@@ -272,7 +273,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
     ![Backup Exec 管理コンソール、ストレージの選択ページ](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  **Saturday Full** (土曜日・完全) などの内容が分かる名前と説明を入力します。 **[次へ]**を選択します。
+3.  **Saturday Full** (土曜日・完全) などの内容が分かる名前と説明を入力します。 **[次へ]** を選択します。
 
     ![Backup Exec 管理コンソール、名前と説明のページ](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
@@ -411,7 +412,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
-6.  **[OK]**を選択します。
+6.  **[OK]** を選択します。
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
@@ -479,9 +480,9 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 この記事では次のドキュメントを参考にしています。
 
 - [StorSimple のマルチパス I/O のセットアップ](storsimple-configure-mpio-windows-server.md)
-- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](http://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [GPT ドライブを使用する (Using GPT drives)](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [共有フォルダーのシャドウ コピーのセットアップ](http://technet.microsoft.com/library/cc771893.aspx)
+- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [GPT ドライブを使用する (Using GPT drives)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
+- [共有フォルダーのシャドウ コピーのセットアップ](https://technet.microsoft.com/library/cc771893.aspx)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,26 +1,22 @@
 ---
-title: "Azure クイックスタート - Azure ポータルで VM をバックアップする | Microsoft Docs"
-description: "Azure ポータルを使用して仮想マシンをバックアップする方法を説明します"
+title: Azure クイック スタート - Azure portal で VM をバックアップする
+description: Azure ポータルを使用して仮想マシンをバックアップする方法を説明します
 services: backup
-documentationcenter: virtual-machines
 author: saurabhsensharma
 manager: shivamg
-editor: 
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-ms.date: 2/14/2018
-ms.author: iainfou
+ms.date: 7/17/2018
+ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 60963553e012e6655e7ef9bf90d4ff6958427c9f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9d2578e10916d3770e73ab88e4d0e63aea3fe420
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114778"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure で仮想マシンをバックアップする
 Azure ポータルで Azure のバックアップを作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスで Azure のバックアップを作成し、すべての関連リソースを構成できます。 データは、定期的にバックアップすることで保護することができます。 Azure Backup によって、geo 冗長 Recovery コンテナーに保存できる復元ポイントが作成されます。 この記事では、Azure ポータルを使用して仮想マシン (VM) をバックアップする方法を説明します。 
@@ -67,7 +63,7 @@ Recovery Services コンテナーが作成されるまでしばらく待ちま�
 
 
 ## <a name="monitor-the-backup-job"></a>バックアップ ジョブを監視する
-目的の VM の **[バックアップ]** ウィンドウに、バックアップの状態と完了した復元ポイントの数が表示されます。 VM バックアップ ジョブが完了すると、**[前回のバックアップ時刻]**、**[最新の復元ポイント]** および **[最も前の復元ポイント]**が **[概要]** ウィンドウの右側に表示されます。
+目的の VM の **[バックアップ]** ウィンドウに、バックアップの状態と完了した復元ポイントの数が表示されます。 VM バックアップ ジョブが完了すると、**[前回のバックアップ時刻]**、**[最新の復元ポイント]** および **[最も前の復元ポイント]** が **[概要]** ウィンドウの右側に表示されます。
 
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
@@ -77,7 +73,7 @@ VM のデータを復元する方法を説明するバックアップ チュー�
 
 1. 目的の VM の **[バックアップ]** オプションを選択します。
 
-2. **[...More]\(...その他\)** を選択して他のオプションを表示し、**[バックアップの停止]** を選択します。
+2. **[...さらに表示]** を選択して他のオプションを表示し、**[バックアップの停止]** を選択します。
 
     ![Azure ポータルから VM のバックアップを停止する](./media/quick-backup-vm-portal/stop-backup.png)
 

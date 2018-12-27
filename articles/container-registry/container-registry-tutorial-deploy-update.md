@@ -1,21 +1,21 @@
 ---
-title: Azure Container Registry のチュートリアル - 更新されたイメージのリージョン デプロイへのプッシュ
+title: チュートリアル - 更新されたコンテナー イメージをリージョンの Azure アプリのデプロイにプッシュする
 description: 変更された Docker イメージを Geo レプリケートされた Azure コンテナー レジストリにプッシュした後、それらの変更が複数のリージョンで実行されている Web アプリに自動的にデプロイされたことを確認します。 3 部構成のシリーズの第 3 部。
 services: container-registry
-author: mmacy
-manager: timlt
+author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
-ms.author: marsma
-ms.custom: mvc
-ms.openlocfilehash: f8eab93d1e6633ae4f17c5bb4836d96629d55cd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 04/30/2018
+ms.author: danlep
+ms.custom: seodec18, mvc
+ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256623"
 ---
-# <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>チュートリアル: 更新されたイメージのリージョン デプロイへのプッシュ
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>チュートリアル:更新されたコンテナー イメージをリージョンの Web アプリのデプロイ用に geo レプリケーション コンテナー レジストリにプッシュする
 
 これは 3 部構成のチュートリアル シリーズの第 3 部です。 [前のチュートリアル](container-registry-tutorial-deploy-app.md)では、Geo レプリケーションは 2 つの異なるリージョン Web アプリ デプロイに対して構成されました。 このチュートリアルでは、まずアプリケーションを変更してから、新しいコンテナー イメージを構築し、それを Geo レプリケートされたレジストリにプッシュします。 最後に、両方の Web アプリ インスタンスで、Azure Container Registry Webhook によって自動的にデプロイされた変更を表示します。
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="rebuild-the-image"></a>イメージを再構築する
 
-これで Web アプリケーションが更新されたので、そのコンテナー イメージを再構築します。 前と同様に、タグには完全修飾イメージ名 (ログイン サーバー URL を含む) を使用します。
+これで Web アプリケーションが更新されたので、そのコンテナー イメージを再構築します。 以前と同様に、タグにはログイン サーバー URL を含む完全修飾イメージ名（FQDN）を使用します:
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
@@ -84,9 +84,10 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-出力は次のようになります。
+`docker push`出力は次のようになります:
 
-```bash
+```console
+$ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
 5b9454e91555: Pushed
 d6803756744a: Layer already exists
@@ -126,19 +127,17 @@ Web ブラウザーで両方のリージョン Web アプリ デプロイに移�
 
 ![米国東部リージョンで実行されている変更された Web アプリのブラウザー ビュー][deployed-app-eastus-modified]
 
-1 つの `docker push` で、両方のリージョン Web アプリ デプロイを更新し、Azure Container Registry はネットワーク上の近い場所にあるリポジトリからコンテナー イメージを提供しました。
+1 つの`docker push`で、両方地域で Web アプリの展開で実行されている web アプリケーションが自動的に更新されました。 Azure Container Registry は、各デプロイの一番近くに位置するデポジトリからコンテナー イメージを提供します。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Web アプリケーション コンテナーの新しいバージョンを更新し、それを Geo レプリケートされたレジストリにプッシュしました。 Azure Container Registry の Webhook が Web Apps for Containers に更新を通知し、それがレジストリ レプリカからのローカル プルをトリガーしました。
+このチュートリアルでは、Web アプリケーション コンテナーの新しいバージョンを更新し、それを Geo レプリケートされたレジストリにプッシュしました。 Azure Container Registry の Webhook が Web Apps for Containers に更新を通知し、それが一番近いレジストリ レプリカからのローカル プルをトリガーしました。
 
-このシリーズの最後のチュートリアルでは、次のことを行いました。
+### <a name="acr-build-automated-image-build-and-patch"></a>ACR のビルド:自動イメージ ビルドとパッチ
 
-> [!div class="checklist"]
-> * Web アプリケーション HTML を更新しました
-> * Docker イメージを構築してタグ付けしました
-> * 変更を Azure Container Registry にプッシュしました
-> * 2 つの異なるリージョン内の更新されたアプリを表示しました
+Geo レプリケーションに加えて、ACR ビルドはコンテナー展開パイプラインを最適化するための別のAzure Container Registry です。 ACRビルド概要から始めて、機能を理解するアイデアを得ましょう:
+
+[ACRビルドを使用してOSとフレームワークの修正プログラムの適用を自動化する](container-registry-tasks-overview.md)
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

@@ -1,26 +1,20 @@
 ---
-title: "HDInsight (Hadoop) に Giraph をインストールして使用する - Azure | Microsoft Docs"
-description: "スクリプト アクションを使用して Linux ベースの HDInsight クラスターに Giraph をインストールする方法について説明します。 スクリプト アクションでは、クラスター構成を変更するか、サービスとユーティリティをインストールすることで、クラスターを作成時にカスタマイズできます。"
+title: HDInsight (Hadoop) に Giraph をインストールして使用する - Azure
+description: スクリプト アクションを使用して Linux ベースの HDInsight クラスターに Giraph をインストールする方法について説明します。 スクリプト アクションでは、クラスター構成を変更するか、サービスとユーティリティをインストールすることで、クラスターを作成時にカスタマイズできます。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 9fcac906-8f06-4002-9fe8-473e42f8fd0f
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 1f2ee45d5d3a4dbb53faf43f67989ea92488b92a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.topic: conceptual
+ms.date: 04/23/2018
+ms.author: hrasheed
+ms.openlocfilehash: 202a68d219bec3a70e50afa68228cbc6bf453518
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011665"
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop クラスターに Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
 
@@ -42,7 +36,7 @@ HDInsight クラスターで Apache Giraph をインストールする方法に�
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> Giraph といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートで問題を解決できる場合があります。 解決できない場合は、その技術に関して豊富な専門知識のあるオープン ソース コミュニティを参照する必要があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> Giraph といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートで問題を解決できる場合があります。 解決できない場合は、その技術に関して豊富な専門知識のあるオープン ソース コミュニティを参照する必要があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 
 ## <a name="what-the-script-does"></a>スクリプトの機能
@@ -64,7 +58,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 > [!NOTE]
 > スクリプト アクションは、次の方法を使用して適用できます。
 > * Azure PowerShell
-> * Azure CLI
+> * Azure クラシック CLI
 > * HDInsight .NET SDK
 > * Azure Resource Manager のテンプレート
 > 
@@ -160,7 +154,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
     hdfs dfs -text /example/output/shortestpaths/*
     ```
 
-    出力は次のテキストのようになります。
+    次のテキストのような出力が表示されます。
 
         0    1.0
         4    5.0

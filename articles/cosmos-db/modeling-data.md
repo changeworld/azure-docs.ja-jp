@@ -1,25 +1,21 @@
 ---
-title: "NoSQL データベースのドキュメント データのモデル化 | Microsoft Docs"
-description: "NoSQL データベースのドキュメント データのモデル化について"
-keywords: "データのモデル化"
+title: NoSQL データベースのドキュメント データのモデル化 | Microsoft Docs
+description: NoSQL データベースのドキュメント データのモデル化について
+keywords: データのモデル化
 services: cosmos-db
-author: arramac
-manager: jhubbard
-editor: mimig1
-documentationcenter: 
-ms.assetid: 69521eb9-590b-403c-9b36-98253a4c88b5
+author: aliuy
+manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2016
-ms.author: arramac
-ms.openlocfilehash: 73e546dea2c1c102736a2043e0b67f0f2c622b18
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: andrl
+ms.openlocfilehash: c577c9734490e3aacc148153f550162371ae482e
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038469"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>NoSQL データベースのドキュメント データのモデル化
 Azure Cosmos DB のようなスキーマのないデータベースでは、データ モデルに対する変更を受け入れることはとても簡単ですが、データについて十分検討する必要があります。 

@@ -1,20 +1,22 @@
 ---
-title: "Azure Application Insights のクイック スタート | Microsoft docs"
-description: "Application Insights と App Center で監視するモバイル アプリを迅速にセットアップする手順を説明します"
+title: Azure Application Insights のクイック スタート | Microsoft docs
+description: Application Insights と App Center で監視するモバイル アプリを迅速にセットアップする手順を説明します
 services: application-insights
-keywords: 
-author: numberbycolors
-ms.author: daviste
-ms.date: 10/05/2017
+keywords: ''
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 07/11/2018
 ms.service: application-insights
+ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 04e379e1bbd84929fca68cf2de8ebfcc217a51d2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 040e54b02161386dcc16b943956f39b86b264303
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950524"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
@@ -66,9 +68,9 @@ Analytics.trackEvent("Video clicked")
 アプリからカスタム イベントが送信され、App Center で受信されるようになったら、Azure Portal で App Center 型の Application Insights リソースを作成する必要があります。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. **[リソースの作成]** > **[監視 + 管理]** > **[Application Insights]** の順に選択します。
+2. **[リソースの作成]** > **[管理ツール]** > **[Application Insights]** の順に選択します。
 
-    ![Application Insights リソースの追加](./media/app-insights-mobile-center-quickstart/add.png)
+    ![Application Insights リソースの追加](./media/app-insights-mobile-center-quickstart/add-b.png)
 
     構成ボックスが表示されます。 下の表を使用して、入力フィールドに入力します。
 
@@ -124,7 +126,7 @@ Application Insights は、App Center で提供されている分析ツールよ
    1. テキスト エディターでクエリの任意の場所をクリックして、クエリを選択します。
    2. **[実行]** をクリックしてクエリを実行します。 
 
-   詳しくは、[Application Insights Analytics](app-insights-analytics.md)に関するページおよび [Log Analytics クエリ言語](https://docs.loganalytics.io/docs/Language-Reference)に関するページをご覧ください。
+   詳しくは、[Application Insights Analytics](app-insights-analytics.md)に関するページおよび [Log Analytics クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)に関するページをご覧ください。
 
 
 2. **カスタム イベント テレメトリのセグメント化とフィルター。** Application Insights の **[概要]** ページで、目次の **[ユーザー]** を選択します。
@@ -143,7 +145,7 @@ Application Insights は、App Center で提供されている分析ツールよ
 
    [ユーザー フロー] ツールは、特定の開始イベントの後にユーザーがどのようなイベントを送信するかを視覚化します。 これは、ユーザーがアプリ内をどのように移動しているかの全体像を把握するのに便利です。 また、多くのユーザーがアプリから離脱している場所や、何度も同じアクションを繰り返している場所を特定できます。
 
-   Application Insights には、[ユーザー フロー] 以外にも、特定の質問に答えるための利用状況分析ツールがいくつか用意されています。
+   Application Insights には、[ユーザー フロー] 以外にも、特定の質問に答えるためのユーザー行動分析ツールがいくつか用意されています。
 
    * **[じょうご]**: コンバージョン レートを分析および監視します。
    * **[リテンション期間]**: アプリが時間の経過と共にどの程度ユーザーを保持できているかを分析します。

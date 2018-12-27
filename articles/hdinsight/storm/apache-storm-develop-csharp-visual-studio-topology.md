@@ -1,27 +1,20 @@
 ---
-title: "Visual Studio と C# を使った Apache Storm トポロジ - Azure HDInsight | Microsoft Docs"
-description: "C# で Storm トポロジを作成する方法について説明します。 Hadoop Tools for Visual Studio を使用して、Visual Studio で簡単なワード カウント トポロジを作成します。"
+title: Visual Studio と C# を使った Apache Storm トポロジ - Azure HDInsight
+description: C# で Storm トポロジを作成する方法について説明します。 Hadoop Tools for Visual Studio を使用して、Visual Studio で簡単なワード カウント トポロジを作成します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 380d804f-a8c5-4b20-9762-593ec4da5a0d
 ms.service: hdinsight
-ms.custom: 
-ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
+ms.topic: conceptual
 ms.date: 11/27/2017
-ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: c89556cf66526f793ab81383e205ff45075385a3
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 5dcc9dcada981a6a4174ce34748356d49582f598
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237572"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
@@ -48,9 +41,9 @@ C# トポロジを Linux ベースのクラスターで使うには、プロジ�
 
 SCP.NET による C# トポロジの開発は、次のいずれかのバージョンの Visual Studio を使って行うことができます。
 
-* Visual Studio 2012 ([Update 4](http://www.microsoft.com/download/details.aspx?id=39305))
+* Visual Studio 2012 Update 4
 
-* Visual Studio 2013 ([Update 4](http://www.microsoft.com/download/details.aspx?id=44921)) または [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+* Visual Studio 2013 Update 4 または [Visual Studio 2013 Community](https://go.microsoft.com/fwlink/?LinkId=517284)
 
 * Visual Studio 2015 または [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
 
@@ -64,7 +57,7 @@ Data Lake Tools for Visual Studio は、[Data Lake Tools for Visual Studio の�
 
 Visual Studio から Storm トポロジを送信すると、そのトポロジと依存関係を含んだ zip ファイルが SCP.NET によって生成されます。 これらの zip ファイルは、Java を使って作成されます。Java で使われる形式の方が、Linux ベースのクラスターとの互換性が高いためです。
 
-1. Java Developer Kit (JDK) 7 以降を開発環境にインストールします。 Oracle JDK は、[Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html) から入手できます。 [他の Java ディストリビューション](http://openjdk.java.net/)を使用してもかまいません。
+1. Java Developer Kit (JDK) 7 以降を開発環境にインストールします。 Oracle JDK は、[Oracle](https://aka.ms/azure-jdks) から入手できます。 [他の Java ディストリビューション](http://openjdk.java.net/)を使用してもかまいません。
 
 2. `JAVA_HOME` 環境変数は、Java があるディレクトリを指している必要があります。
 
@@ -77,30 +70,30 @@ using System;
 using System.IO;
 namespace ConsoleApplication2
 {
-   class Program
-   {
-       static void Main(string[] args)
-       {
-           string javaHome = Environment.GetEnvironmentVariable(“JAVA_HOME”);
-           if (!string.IsNullOrEmpty(javaHome))
-           {
-               string jarExe = Path.Combine(javaHome + @”\bin”, “jar.exe”);
-               if (File.Exists(jarExe))
-               {
-                   Console.WriteLine(“JAVA Is Installed properly”);
-                    return;
-               }
-               else
-               {
-                   Console.WriteLine(“A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.”);
-               }
-           }
-           else
-           {
-             Console.WriteLine(“A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.”);
-           }
-       }  
-   }
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+           if (!string.IsNullOrEmpty(javaHome))
+           {
+               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
+               if (File.Exists(jarExe))
+               {
+                   Console.WriteLine("JAVA Is Installed properly");
+                    return;
+               }
+               else
+               {
+                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
+               }
+           }
+           else
+           {
+             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
+           }
+       }  
+   }
 }
 ```
 
@@ -141,7 +134,7 @@ HBase のリーダーとライターのテンプレートは、HBase Java API �
 
 1. Visual Studio を開いて、**[ファイル]** > **[新規]** の順に選び、**[プロジェクト]** を選びます。
 
-2. **[新しいプロジェクト]** ウィンドウで、**[インストール済み]** > **[テンプレート]** の順に展開して、**[Azure Data Lake]** を選択します。 テンプレートの一覧から、 **[Storm Application]**を選択します。 画面の下部に、アプリケーションの名前として「 **WordCount** 」と入力します。
+2. **[新しいプロジェクト]** ウィンドウで、**[インストール済み]** > **[テンプレート]** の順に展開して、**[Azure Data Lake]** を選択します。 テンプレートの一覧から、 **[Storm Application]** を選択します。 画面の下部に、アプリケーションの名前として「 **WordCount** 」と入力します。
 
     ![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
 
@@ -537,7 +530,7 @@ SCP.NET の最新リリースでは、NuGet からパッケージをアップグ
 
 1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選びます。
 
-2. パッケージ マネージャーから **[更新プログラム]**を選択します。 更新プログラムが利用できる場合、それが一覧表示されます。 パッケージに対応する **[更新]** をクリックすると、そのパッケージがインストールされます。
+2. パッケージ マネージャーから **[更新プログラム]** を選択します。 更新プログラムが利用できる場合、それが一覧表示されます。 パッケージに対応する **[更新]** をクリックすると、そのパッケージがインストールされます。
 
 > [!IMPORTANT]
 > NuGet を使用しない以前のバージョンの SCP.NET を利用してプロジェクトが作成された場合、次の手順で新しいバージョンに更新する必要があります。
@@ -579,7 +572,7 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
    > [!NOTE]
    > トポロジをクラスターにデプロイする前に、必ず **[出力の種類]** を **[クラス ライブラリ]** に戻すようにしてください。
 
-2. **ソリューション エクスプローラー**で、プロジェクトを右クリックして、**[追加]** > **[新しいアイテム]** の順に選択します。 **[クラス]** を選んで、クラス名として「**LocalTest.cs**」と入力します。 最後に **[追加]**をクリックします。
+2. **ソリューション エクスプローラー**で、プロジェクトを右クリックして、**[追加]** > **[新しいアイテム]** の順に選択します。 **[クラス]** を選んで、クラス名として「**LocalTest.cs**」と入力します。 最後に **[追加]** をクリックします。
 
 3. **LocalTest.cs** を開いて、先頭に次の **using** ステートメントを追加します。
 

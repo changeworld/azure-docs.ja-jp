@@ -1,11 +1,11 @@
 ---
-title: "Linux 仮想マシンで Apache Tomcat をセットアップする | Microsoft Docs"
-description: "Linux を実行している Azure 仮想マシンを使用して Apache Tomcat7 をセットアップする方法について説明します。"
+title: Linux 仮想マシンで Apache Tomcat をセットアップする | Microsoft Docs
+description: Linux を実行している Azure 仮想マシンを使用して Apache Tomcat7 をセットアップする方法について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 45ecc89c-1cb0-4e80-8944-bd0d0bbedfdc
 ms.service: virtual-machines-linux
@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: f3bd3167c9a879a876774e5d91fbb10fd340c6a8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8c04c9fffbb85bb4db7a369b0dbbad6279f5d6f6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420083"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Azure で Linux 仮想マシンに Tomcat7 をセットアップする
 Apache Tomcat (または単に Tomcat、旧称は Jakarta Tomcat) は、Apache Software Foundation (ASF) によって開発されたオープン ソース Web サーバーであり、サーブレット コンテナーです。 Tomcat には、Sun Microsystems の Java Servlet と JavaServer Pages (JSP) 仕様が実装されています。 Tomcat は、Java コードを実行する純粋な Java HTTP Web サーバー環境を提供します。 最も単純な構成では Tomcat は単一のオペレーティング システムのプロセスで実行されます。 このプロセスは、Java 仮想マシン (JVM) を実行します。 ブラウザーからの Tomcat に対するすべての HTTP 要求は、Tomcat プロセスで個別のスレッドとして処理されます。  
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイメント モデルの使用方法について説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Open JDK と Tomcat を使用して Ubuntu VM をデプロイするための Resource Manager テンプレートを使用するには、[こちらの記事](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/)を参照してください。
+> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Open JDK と Tomcat を使用して Ubuntu VM をデプロイするための Resource Manager テンプレートを使用するには、[こちらの記事](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/)を参照してください。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 この記事では、Linux イメージ上に Tomcat7 をインストールして、Azure にデプロイします。  
@@ -54,13 +55,13 @@ SSH はシステム管理者にとって重要なツールです。 ただし、
 
 次の手順に従って、SSH 認証のキーを生成します。
 
-1. 次の場所から PuTTYgen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. 次の場所から PuTTYgen をダウンロードしてインストールします。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2. Puttygen.exe を実行します。
 3. **[生成]** をクリックしてキーを生成します。 処理中にウィンドウの空白の領域にマウスを移動すると、ランダム性を高めることができます。  
    ![新しいキーの生成ボタンが表示されている PuTTY Key Generator のスクリーンショット][1]
 4. 生成処理が終わると、新しい公開キーが表示されます。  
    ![新しい公開キーと [Save private key (秘密キーの保存)] ボタンが表示されている PuTTY Key Generator のスクリーンショット][2]
-5. 公開キーを選択してコピーし、publicKey.pem という名前のファイルに保存します。 保存された公開キーの形式は使用する公開キーの形式と異なるため、 **[公開キーの保存]**をクリックしないでください。
+5. 公開キーを選択してコピーし、publicKey.pem という名前のファイルに保存します。 保存された公開キーの形式は使用する公開キーの形式と異なるため、 **[公開キーの保存]** をクリックしないでください。
 6. **[Save private key (秘密キーの保存)]** をクリックし、privateKey.ppk という名前のファイルに保存します。
 
 ### <a name="step-2-create-the-image-in-the-azure-portal"></a>手順 2. Azure Portal でイメージを作成する
@@ -86,13 +87,13 @@ TCP ポート 8080 は、Tomcat がリッスンに使用する既定のポート
    ![仮想マシン ディレクトリのスクリーンショット][5]
 2. 仮想マシンにエンドポイントを追加するには、 **[エンドポイント]** ボックスをクリックします。
    ![[エンドポイント] ボックスのスクリーンショット][6]
-3. **[追加]**をクリックします。  
+3. **[追加]** をクリックします。  
 
    1. エンドポイントについては、**[エンドポイント]** にエンドポイントの名前を入力し、**[パブリック ポート]** に「80」と入力します。  
 
-      80 に設定した場合は、Tomcat にアクセスするための URL にポート番号を含める必要はありません。 たとえば、http://tomcatdemo.cloudapp.net のようになります。    
+      80 に設定した場合は、Tomcat にアクセスするための URL にポート番号を含める必要はありません。 たとえば、「 http://tomcatdemo.cloudapp.net 」のように入力します。    
 
-      別の値 (81 など) に設定した場合は、Tomcat にアクセスするための URL にポート番号を追加する必要があります。 たとえば、http://tomcatdemo.cloudapp.net:81/。
+      別の値 (81 など) に設定した場合は、Tomcat にアクセスするための URL にポート番号を追加する必要があります。 たとえば、 http://tomcatdemo.cloudapp.net:81/ を使用します。
    2. **[プライベート ポート]** に「8080」と入力します。 既定では、Tomcat は TCP ポート 8080 でリッスンします。 Tomcat の既定のリッスン ポートを変更した場合は、Tomcat のリッスン ポートと同じになるように **[プライベート ポート]** を更新する必要があります。  
       ![[追加] コマンド、[パブリック ポート]、[プライベート ポート] が表示されている UI のスクリーンショット][7]
 4. **[OK]** をクリックして、仮想マシンにエンドポイントを追加します。
@@ -116,7 +117,7 @@ SSH ツールを選択すると、仮想マシンに接続できます。 この
 5. 左側のウィンドウで、**[Connection (接続)]** > **[SSH]** > **[Auth (認証)]** の順にクリックし、**[Browse (参照)]** をクリックして privateKey.ppk ファイルの場所を指定します。 privateKey.ppk ファイルには、この記事の「フェーズ 1: イメージを作成する」セクションで PuTTYgen によって生成された秘密キーが含まれています。  
 ![[Connection (接続)] ディレクトリ階層と [Browse (参照)] ボタンを示すスクリーンショット][10]
 
-6. **[開く]**をクリックします。 メッセージ ボックスによるアラートが表示される場合があります。 DNS 名とポート番号を正しく構成してある場合は、 **[はい]**をクリックします。
+6. **[開く]** をクリックします。 メッセージ ボックスによるアラートが表示される場合があります。 DNS 名とポート番号を正しく構成してある場合は、 **[はい]** をクリックします。
 ![通知のスクリーンショット][11]
 
 7. ユーザー名を入力するように求められます。  
@@ -129,52 +130,19 @@ SSH ツールを選択すると、仮想マシンに接続できます。 この
 このフェーズでは、Java ランタイム環境、Tomcat7、その他の Tomcat7 コンポーネントをインストールします。  
 
 ### <a name="java-runtime-environment"></a>Java ランタイム環境
-Tomcat は Java で記述します。 Java 開発キット (JDK) には、OpenJDK と Oracle JDK の 2 種類があります。 お好みの開発キットを選択できます。  
-
-> [!NOTE]
-> どちらの JDK でも Java API のクラスのコードはほぼ同じですが、仮想マシンのコードは異なります。 OpenJDK はオープン ライブラリを使用する傾向があるのに対し、Oracle JDK はクローズ ライブラリを使用する傾向があります。 Oracle JDK の方がクラスが多く、いくつかのバグが修正されていて、OpenJDK よりも安定しています。
-
-#### <a name="install-openjdk"></a>OpenJDK をインストールする  
-
-次のコマンドを使用して、OpenJDK をダウンロードします。   
-
-    sudo apt-get update  
-    sudo apt-get install openjdk-7-jre  
+Tomcat は Java で記述します。 完全にサポートされる Java ランタイムを入手する方法については、[Azure でサポートされる JDK](https://aka.ms/azure-jdks) に関するページを参照してください。 独自のものを取り入れることも可能ですが、この記事の残りの部分では、Azure でサポートされているリリースを使用します。
 
 
-* JDK のファイルを格納するディレクトリを作成するには:  
+#### <a name="install-azure-supported-jdk"></a>Azure でサポートされている JDK をインストールする
 
-        sudo mkdir /usr/lib/jvm  
-* JDK のファイルを /usr/lib/jvm/ ディレクトリに抽出するには:  
-
-        sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/
-
-#### <a name="install-oracle-jdk"></a>Oracle JDK をインストールする
-
-
-次のコマンドを使用して、Oracle の Web サイトから Oracle JDK をダウンロードします。  
-
-     wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz  
-* JDK のファイルを格納するディレクトリを作成するには:  
-
-        sudo mkdir /usr/lib/jvm  
-* JDK のファイルを /usr/lib/jvm/ ディレクトリに抽出するには:  
-
-        sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/  
-* Oracle JDK を既定の Java 仮想マシンとして設定するには:  
-
-        sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_05/bin/java 100  
-
-        sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_05/bin/javac 100  
+[Azure 用の Azul Zulu Enteprise](https://www.azul.com/downloads/azure-only/zulu/#apt-repo) の Web サイトに記載されている `apt-get` のインストール手順に従います。
 
 #### <a name="confirm-that-java-installation-is-successful"></a>Java のインストールが成功したことを確認する
 次のようなコマンドを使用して Java ランタイム環境が正しくインストールされているかどうかをテストすることができます。  
-
     java -version  
 
-OpenJDK をインストールすると、次のようなメッセージが表示されます。![OpenJDK のインストール成功のメッセージ][14]
+次のようなメッセージが表示されます。![OpenJDK のインストール成功のメッセージ][14]
 
-Oracle JDK をインストールすると、次のようなメッセージが表示されます。![Oracle JDK のインストール成功のメッセージ][15]
 
 ### <a name="install-tomcat7"></a>Tomcat7 をインストールする
 次のコマンドを使用して、Tomcat7 をインストールします。  
@@ -184,7 +152,7 @@ Oracle JDK をインストールすると、次のようなメッセージが表
 Tomcat7 を使用しない場合は、このコマンドを適宜変更して使用してください。  
 
 #### <a name="confirm-that-tomcat7-installation-is-successful"></a>Tomcat7 のインストールが成功したことを確認する
-Tomcat7 が正常にインストールされたかどうかを確認するには、Tomcat サーバーの DNS 名を参照します。 この記事では、URL の例は http://tomcatexample.cloudapp.net/ です。 次のようなメッセージが表示された場合は、Tomcat7 は正常にインストールされています。
+Tomcat7 が正常にインストールされたかどうかを確認するには、Tomcat サーバーの DNS 名を参照します。 この記事では、例の URL は http://tomcatexample.cloudapp.net/ です。 次のようなメッセージが表示された場合は、Tomcat7 は正常にインストールされています。
 ![Tomcat7 のインストール成功のメッセージ][16]
 
 ### <a name="install-other-tomcat7-components"></a>その他の Tomcat7 コンポーネントをインストールする
@@ -231,7 +199,7 @@ Tomcat のユーザー構成ファイルを編集して、管理者の資格情�
 
     sudo /etc/init.d/tomcat7 restart  
 
-ブラウザーを開き、URL として「**http://<your tomcat server DNS name>/manager/html**」と入力します。 たとえば、この記事では、URL は http://tomcatexample.cloudapp.net/manager/html. です。  
+ブラウザーを開き、URL として「**http://<your tomcat server DNS name>/manager/html**」と入力します。 この記事の例では、URL は http://tomcatexample.cloudapp.net/manager/htmlです。  
 
 接続後に、次のようなものが表示されます。  
 ![Tomcat Web Application Manager のスクリーンショット][18]

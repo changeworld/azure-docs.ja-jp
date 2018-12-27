@@ -1,24 +1,19 @@
 ---
-title: "Azure のクラウド ストレージ間で大量のデータを移動する | Microsoft Docs"
-description: "Azure Storage との間でデータを移動するためのさまざまな方法の概要を説明します。"
+title: Azure のクラウド ストレージ間で大量のデータを移動する | Microsoft Docs
+description: Azure Storage との間でデータを移動するためのさまざまな方法の概要を説明します。
 services: storage
-documentationcenter: 
-author: JarrettRenshaw
-manager: msmets
-editor: tysonn
-ms.assetid: 5e3947a9-d99b-4108-9d57-3eb67c03e7ba
+author: tamram
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
-ms.author: jarrettr
-ms.openlocfilehash: 980e4675c2d2e88716a3133abb027988aecd538f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.date: 08/26/2018
+ms.author: tamram
+ms.component: common
+ms.openlocfilehash: 76da33a74ad95d7f074bc4efd3a8d9f97c19d612
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830314"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Azure Storage との間でのデータの移動
 オンプレミスのデータを Azure Storage に (またはその逆に) 移動する場合は、さまざまな方法があります。 最適な方法は、シナリオによって異なります。 この記事では、さまざまなシナリオとそれぞれに適した手段の概要を説明します。
@@ -26,7 +21,7 @@ ms.lasthandoff: 02/03/2018
 ## <a name="building-applications"></a>アプリケーションの構築
 アプリケーションを構築する場合は、REST API またはいずれかのクライアント ライブラリを使用するのが、Azure Storage との間でデータを移動する優れた方法です。
 
-Azure Storage では、.NET、iOS、Java、Android、Universal Windows Platform (UWP)、Xamarin、C++、Node.JS、PHP、Ruby、Python 用の充実したクライアント ライブラリが用意されています。 クライアント ライブラリは、再試行ロジック、ログ、並列アップロードといった高度な機能を提供します。 また、REST API を直接使用して開発することもでき、HTTP/HTTPS 要求を行うどの言語からでも呼び出すことができます。
+Azure Storage には、.NET、Java、Android、Go、Xamarin、C++、Node.JS、PHP、Ruby、Python、iOS など、広く使われているさまざまな言語用の充実したクライアント ライブラリが用意されています。 クライアント ライブラリは、再試行ロジック、ログ、並列アップロードといった高度な機能を提供します。 また、REST API を直接使用して開発することもでき、HTTP/HTTPS 要求を行うどの言語からでも呼び出すことができます。
 
 詳細については、「 [.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md) 」を参照してください。
 
@@ -43,7 +38,7 @@ Azure Storage のデータを簡単に表示するだけでなく、データの
 ### <a name="azcopy"></a>AzCopy
 AzCopy は、Azure Storage との間で高パフォーマンスのデータ コピーを行うように設計されたコマンドライン ユーティリティです。 同じストレージ アカウント内または異なるストレージ アカウント間でデータをコピーすることもできます。 AzCopy には [Windows](storage-use-azcopy.md) 版と [Linux](storage-use-azcopy-linux.md) 版があります。
 
-詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」または「[AzCopy on Linux を使用したデータの転送](storage-use-azcopy-linux.md)」を参照してください。
+オンプレミスのデータを Azure Storage に移行する方法については、「[チュートリアル: AzCopy を使用したオンプレミス データのクラウド ストレージへの移行](storage-use-azcopy-migrate-on-premises-data.md)」を参照してください。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Azure PowerShell は、Azure でサービスを管理するためのコマンドレットを提供するモジュールです。 タスク ベースのコマンドライン シェルであり、特にシステム管理用に設計されたスクリプト言語です。

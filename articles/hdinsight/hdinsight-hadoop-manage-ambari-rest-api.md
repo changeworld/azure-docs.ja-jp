@@ -1,26 +1,20 @@
 ---
-title: "Ambari REST API を使用して Hadoop を監視および管理する - Azure HDInsight | Microsoft Docs"
-description: "Ambari を使用して Azure HDInsight の Hadoop クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari REST API を使用する方法について説明します。"
+title: Ambari REST API を使用して Hadoop を監視および管理する - Azure HDInsight
+description: Ambari を使用して Azure HDInsight の Hadoop クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari REST API を使用する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 2400530f-92b3-47b7-aa48-875f028765ff
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 44066a3b4d5bebc67b089bebc2f3c11d33c77000
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.topic: conceptual
+ms.date: 04/23/2018
+ms.author: hrasheed
+ms.openlocfilehash: cd999a5bfd9f5691c1e624f7a8226eefee5709eb
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015811"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -51,7 +45,7 @@ Bash を使用する場合でも PowerShell を使用する場合でも、[jq](h
 
 ### <a name="base-uri-for-ambari-rest-api"></a>Ambari Rest API のベース URI
 
-HDInsight の Ambari REST API のベース URI は、https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME (**CLUSTERNAME** はクラスターの名前) です。
+HDInsight の Ambari REST API のベース URI は、 https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME です。ここで、**CLUSTERNAME** はクラスターの名前です。
 
 > [!IMPORTANT]
 > URI (CLUSTERNAME.azurehdinsight.net) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。 たとえば、クラスター名が `MyCluster` であれば、有効な URI は次のようになります。
@@ -66,7 +60,7 @@ HDInsight の Ambari REST API のベース URI は、https://CLUSTERNAME.azurehd
 >
 > `https://MyCluster.azurehdinsight.net/api/v1/clusters/mycluster`
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
 HDInsight の Ambari に接続するには、HTTPS が必要です。 クラスターの作成中に入力した管理者アカウント名 (既定値は **admin**) とパスワードを使用します。
 

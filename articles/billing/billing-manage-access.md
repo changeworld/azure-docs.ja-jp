@@ -1,29 +1,30 @@
 ---
-title: "ロールを使用した Azure 課金情報へのアクセスの管理 | Microsoft Docs"
-description: 
-services: 
-documentationcenter: 
+title: ロールを使用した Azure 課金情報へのアクセスの管理 | Microsoft Docs
+description: ''
+services: ''
+documentationcenter: ''
 author: vikramdesai01
 manager: vikdesai
-editor: 
+editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/22/2017
-ms.author: vikdesai
-ms.openlocfilehash: c70904097f139bc2178feed83f1cf1274f3c738d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cwatson
+ms.openlocfilehash: 38cfd354f11ef3d888ad70e71549868d398495f5
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429645"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>ロールに基づくアクセス制御を使用した Azure の課金情報へのアクセスの管理
 
-Azure 課金情報へのアクセス権をチームのメンバーに与えるには、いずれかのユーザー ロール (アカウント管理者、サービス管理者、共同管理者、所有者、共同作成者、閲覧者または請求閲覧者) をサブスクリプションに割り当てます。 メンバーに [Azure Portal](https://portal.azure.com/) での課金情報へのアクセス権が与えられ、[請求 API](billing-usage-rate-card-overview.md) を使用して請求書 (オプトイン済み) と使用明細をプログラムによって取得できるようになります。 ロールを付与できるユーザーの詳細や、ロールごとに行うことができる操作については、[Azure RBAC のロール](../active-directory/role-based-access-built-in-roles.md)に関する記事を参照してください。
+Azure 課金情報へのアクセス権をチームのメンバーに与えるには、いずれかのユーザー ロール (アカウント管理者、サービス管理者、共同管理者、所有者、共同作成者、閲覧者または請求閲覧者) をサブスクリプションに割り当てます。 メンバーに [Azure Portal](https://portal.azure.com/) での課金情報へのアクセス権が与えられ、[請求 API](billing-usage-rate-card-overview.md) を使用して請求書 (オプトイン済み) と使用明細をプログラムによって取得できるようになります。 ロールを付与できるユーザーの詳細や、ロールごとに行うことができる操作については、[Azure RBAC のロール](../role-based-access-control/built-in-roles.md)に関する記事を参照してください。
 
 ## <a name="opt-in"></a> その他のユーザーの請求書へのアクセスを許可する
 
@@ -66,11 +67,11 @@ Azure 課金情報へのアクセス権をチームのメンバーに与える�
     ![Azure Portal で請求閲覧者が見られる情報を表示するスクリーンショット](./media/billing-manage-access/billing-reader-view.png)
 
 > [!NOTE]
-> 請求閲覧者機能はプレビュー段階であり、エンタープライズ (EA) サブスクリプションや非グローバル クラウドはまだサポートされていません。
+> 請求閲覧者機能はプレビュー段階であり、非グローバル クラウドはまだサポートされていません。 Enterprise サブスクリプションでは、エンタープライズ管理者が請求金額の表示を有効にしている場合、コストを表示できます。
 
 ## <a name="adding-users-to-other-roles"></a>ユーザーをその他のロールに追加する
 
-所有者または共同作成者など他のロールのユーザーは、課金状況だけではなく、Azure サービスにもアクセスできます。 これらのロールを管理するには、「[サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する](billing-add-change-azure-subscription-administrator.md)」を参照してください。
+所有者または共同作成者など他のロールのユーザーは、課金状況だけではなく、Azure サービスにもアクセスできます。 これらのロールの管理については、「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="who-can-access-the-account-centerhttpsaccountwindowsazurecom"></a>[アカウント センター](https://account.windowsazure.com)にアクセスできるユーザー
 

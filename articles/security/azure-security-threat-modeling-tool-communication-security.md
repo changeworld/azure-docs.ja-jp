@@ -1,24 +1,25 @@
 ---
-title: "通信セキュリティ - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威への対応"
+title: 通信セキュリティ - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 71bbe53595f2afab50d6220f335d615ada957a85
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247383"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信セキュリティの | 対応策 
 | 製品/サービス | 記事 |
@@ -64,7 +65,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Data Factory | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | リンクされたサービスの種類 - Azure とオンプレミス |
 | **参照**              |[オンプレミスと Azure Data Factory の間でデータを移動する](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway)、[データ管理ゲートウェイ](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
@@ -75,7 +76,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Identity Server | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [IdentityServer3 - キー、署名、および暗号化](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html)、[IdentityServer3 - デプロイ](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -112,7 +113,7 @@ ms.lasthandoff: 01/24/2018
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - Azure |
 | **参照**              | [Azure App Service に HTTPS を適用する](../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
-| **手順** | <p>Azure では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Azure App Service に対して、HTTPS が既に有効になっていますが、適用されていません。 訪問者は引き続き HTTP を使用してアプリにアクセスするため、アプリのセキュリティが侵害される可能性があります。したがって HTTPS を明示的に適用する必要があります。 ASP.NET MVC アプリケーションは、セキュリティで保護されていない HTTP 要求が HTTPS 経由で再送信されるように強制する、[RequireHttps フィルター](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)を使用する必要があります。</p><p>また、Azure App Service に組み込まれている URL 書き換えモジュールを使用して、HTTPS を適用することもできます。 URL 書き換えモジュールを使用すると、アプリケーションに渡す前に受信要求に適用するルールを開発者が定義できます。 URL 書き換えルールは、アプリケーションのルートに格納されている web.config ファイルで定義されます</p>|
+| **手順** | <p>Azure では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Azure App Service に対して、HTTPS が既に有効になっていますが、適用されていません。 訪問者は引き続き HTTP を使用してアプリにアクセスするため、アプリのセキュリティが侵害される可能性があります。したがって HTTPS を明示的に適用する必要があります。 ASP.NET MVC アプリケーションは、セキュリティで保護されていない HTTP 要求が HTTPS 経由で再送信されるように強制する、[RequireHttps フィルター](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)を使用する必要があります。</p><p>また、Azure App Service に組み込まれている URL 書き換えモジュールを使用して、HTTPS を適用することもできます。 URL 書き換えモジュールを使用すると、アプリケーションに渡す前に受信要求に適用するルールを開発者が定義できます。 URL 書き換えルールは、アプリケーションのルートに格納されている web.config ファイルで定義されます</p>|
 
 ### <a name="example"></a>例
 次の例には、すべての受信トラフィックに HTTPS の使用を強制する基本的な URL 書き換えルールが含まれています
@@ -134,7 +135,7 @@ ms.lasthandoff: 01/24/2018
   </system.webServer>
 </configuration>
 ```
-このルールは、ユーザーが HTTP を使用してページを要求したときに HTTP 状態コード 301 (永続的なリダイレクト) を返すことで動作します。 301 は、訪問者が要求した URL と同じ URL へ要求をリダイレクトしますが、要求の HTTP 部分は HTTPS で置き換えられます。 たとえば、HTTP://contoso.com は、HTTPS://contoso.com にリダイレクトされます。 
+このルールは、ユーザーが HTTP を使用してページを要求したときに HTTP 状態コード 301 (永続的なリダイレクト) を返すことで動作します。 301 は、訪問者が要求した URL と同じ URL へ要求をリダイレクトしますが、要求の HTTP 部分は HTTPS で置き換えられます。 たとえば、HTTP://contoso.com は HTTPS://contoso.com に制限されます。 
 
 ## <a id="http-hsts"></a>HTTP Strict Transport Security (HSTS) を有効にする
 
@@ -145,24 +146,24 @@ ms.lasthandoff: 01/24/2018
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [OWASP HTTP Strict Transport Security チート シートを有効にする](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **手順** | <p>HTTP Strict Transport Security (HSTS) は、特別な応答ヘッダーを使用して Web アプリケーションで指定されるオプトイン セキュリティ拡張機能です。 サポートされているブラウザーがこのヘッダーを受け取ると、そのブラウザーでは、指定したドメインへの HTTP 経由の通信を送信できなくなり、代わりにすべての通信が HTTPS 経由で送信されます。 HTTPS クリックスルー メッセージもブラウザーに表示されなくなります。</p><p>HSTS を実装するには、コードまたは config で、応答ヘッダー Strict-Transport-Security: max-age=300; includeSubDomains を、Web サイトに対してグローバルに構成する必要があります。HSTS では、次の脅威に対応します。</p><ul><li>ユーザーが http://example.com をブックマークするか手動で入力し、man-in-the middle 攻撃を受けている: HSTS は、HTTP 要求を対象ドメインの HTTPS に自動的にリダイレクトします</li><li>HTTPS のみを対象とする Web アプリケーションに不注意で HTTP リンクが含まれている、または HTTP 経由でコンテンツを提供している: HSTS は、HTTP 要求を対象ドメインの HTTPS に自動的にリダイレクトします</li><li>man-in-the-middle 攻撃者が、無効な証明書を使用して攻撃対象ユーザーからのトラフィックを傍受しようとしており、そのユーザーが不正な証明書を受け入れることを期待している: HSTS は、ユーザーによる無効な証明書メッセージの上書きを許可しません</li></ul>|
+| **手順** | <p>HTTP Strict Transport Security (HSTS) は、特別な応答ヘッダーを使用して Web アプリケーションで指定されるオプトイン セキュリティ拡張機能です。 サポートされているブラウザーがこのヘッダーを受け取ると、そのブラウザーでは、指定したドメインへの HTTP 経由の通信を送信できなくなり、代わりにすべての通信が HTTPS 経由で送信されます。 HTTPS クリックスルー メッセージもブラウザーに表示されなくなります。</p><p>HSTS を実装するには、コードまたは config で、応答ヘッダー Strict-Transport-Security: max-age=300; includeSubDomains を、Web サイトに対してグローバルに構成する必要があります。HSTS では、次の脅威に対応します。</p><ul><li>ユーザーが http://example.com をブックマークするか手動で入力し、man-in-the middle 攻撃を受けている: HSTS は、HTTP 要求を対象ドメインの HTTPS に自動的にリダイレクトします</li><li>HTTPS のみを対象とする Web アプリケーションに不注意で HTTP リンクが含まれている、または HTTP 経由でコンテンツを提供している: HSTS は、HTTP 要求を対象ドメインの HTTPS に自動的にリダイレクトします</li><li>man-in-the-middle 攻撃者が、無効な証明書を使用して攻撃対象ユーザーからのトラフィックを傍受しようとしており、そのユーザーが不正な証明書を受け入れることを期待している: HSTS は、ユーザーによる無効な証明書メッセージのオーバーライドを許可しません</li></ul>|
 
 ## <a id="sqlserver-validation"></a>SQL Server 接続の暗号化と証明書の検証を確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure  |
 | **属性**              | SQL バージョン - V12 |
-| **参照**              | [SQL Database 用のセキュリティで保護された接続文字列の書き込みに関するベスト プラクティス](http://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
+| **参照**              | [SQL Database 用のセキュリティで保護された接続文字列の書き込みに関するベスト プラクティス](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
 | **手順** | <p>SQL Database とクライアント アプリケーションの間の通信はすべて、常に Secure Sockets Layer (SSL) を使用して暗号化されます。 SQL Database では、暗号化されていない接続はサポートされません。 アプリケーション コードやツールで証明書を検証するには、暗号化された接続を明示的に要求し、サーバー証明書は信頼しないようにします。 アプリケーション コードやツールが、暗号化された接続を要求しない場合でも、暗号化された接続を受け付けることはできます</p><p>ただし、サーバー証明書は検証されず、"man in the middle" 攻撃を受けやすくなります。 ADO.NET アプリケーション コードで証明書を検証するには、データベース接続文字列で `Encrypt=True` と `TrustServerCertificate=False` を設定します。 SQL Server Management Studio を使用して証明書を検証するには、[サーバーに接続] ダイアログ ボックスを開きます。 [接続プロパティ] タブの [暗号化接続] をクリックします</p>|
 
 ## <a id="encrypted-sqlserver"></a>SQL サーバーへの通信を強制的に暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | OnPrem |
 | **属性**              | SQL バージョン - MsSQL2016、SQL バージョン - MsSQL2012、SQL バージョン - MsSQL2014 |
@@ -174,7 +175,7 @@ ms.lasthandoff: 01/24/2018
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Storage | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Storage トランスポート レベルの暗号化 - HTTPS の使用](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
@@ -287,7 +288,7 @@ namespace CertificatePinningExample
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **手順** | アプリケーションは、機密情報へのすべてのアクセスに対して HTTPS が確実に使用されるよう構成されている必要があります。<ul><li>**説明:** アプリケーションが機密情報を処理しており、メッセージ レベルの暗号化が使用されていない場合は、暗号化されたトランスポート チャネル経由での通信のみを許可します。</li><li>**推奨:** HTTP トランスポートが無効になっていることを確認し、代わりに HTTPS トランスポートを有効にします。 たとえば、`<httpTransport/>` を `<httpsTransport/>` タグに置き換えます。 アプリケーションへのアクセス チャネルを確実にセキュリティで保護したい場合は、ネットワーク構成 (ファイアウォール) には依存しないでください。 論理的に言えば、アプリケーションのセキュリティをネットワークに依存するべきではありません。</li></ul><p>実際的な観点から言うと、ネットワーク セキュリティ担当者は、アプリケーションの進化に伴うアプリケーションのセキュリティ要件を常に把握しているわけではありません。</p>|
 
 ## <a id="message-protection"></a>WCF: メッセージのセキュリティ保護レベルを EncryptAndSign に設定する

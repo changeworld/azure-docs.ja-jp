@@ -9,16 +9,17 @@ editor: ''
 ms.assetid: b76bb756-c1ba-49f9-9666-e9807cf8f92f
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 4987cc271a3e3d8a1a69c4c7fbd213d73ca2eb96
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ea2f27069ca445a4d74ddc634f5c396ab13564a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248998"
 ---
 # <a name="deploy-multiple-guest-executables"></a>複数のゲスト実行可能ファイルのデプロイ
 この記事では、複数のゲスト実行可能ファイルをパッケージ化して Azure Service Fabric にデプロイする方法について説明します。 単一の Service Fabric のパッケージを作成しデプロイする方法については、「[Service Fabric へのゲスト実行可能ファイルのデプロイ](service-fabric-deploy-existing-app.md)」を参照してください。
@@ -32,7 +33,7 @@ Visual Studio を使用して、複数のゲスト実行可能ファイルを含
 * [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>複数のゲスト実行可能アプリケーションを手動でパッケージ化する
-別の方法として、ゲスト実行可能ファイルを手動でパッケージ化することができます。 この記事では、手動のパッケージ化に、[http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool) にある Service Fabric パッケージ化ツールを使用します。
+別の方法として、ゲスト実行可能ファイルを手動でパッケージ化することができます。 この記事では、手動のパッケージ化に、[http://aka.ms/servicefabricpacktool](https://aka.ms/servicefabricpacktool) にある Service Fabric パッケージ化ツールを使用します。
 
 ### <a name="packaging-the-nodejs-application"></a>Node.js アプリケーションのパッケージ化
 この記事は、Service Fabric クラスター内のノードに Node.js がインストールされていないことを前提としています。 そのため、パッケージ化する前に、ノード アプリケーションのルート ディレクトリに Node.exe を追加する必要があります。 (Express Web フレームワークと Jade テンプレート エンジンを使用する) Node.js アプリケーションのディレクトリ構造は、次のようになります。

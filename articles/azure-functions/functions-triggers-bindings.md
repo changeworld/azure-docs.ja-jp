@@ -3,23 +3,20 @@ title: Azure Functions のトリガーとバインド
 description: Azure Functions で、トリガーとバインドを使用してコード実行をオンライン イベントおよびクラウドベース サービスに接続する方法について説明します。
 services: functions
 documentationcenter: na
-author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+author: craigshoemaker
+manager: jeconnoc
 keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 02/07/2018
-ms.author: glenga
-ms.openlocfilehash: 559cfee1a8116703371a5641cf4534b7ad6f7578
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 09/24/2018
+ms.author: cshoe
+ms.openlocfilehash: 9b2539d94c645f71b596e53429e6e0d8cc46b9ad
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016745"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -31,61 +28,11 @@ ms.lasthandoff: 03/08/2018
 
 入出力*バインド*によって、コード内からデータに接続する宣言型の方法が提供されます。 バインドは省略可能で、関数は複数の入出力バインドを持つことができます。 
 
-トリガーとバインドを使用すると、操作するサービスの詳細をハードコードする必要がなくなります。 関数は、関数パラメーターでデータ (キュー メッセージの内容など) を受信します。 関数の戻り値、`out` パラメーター、または[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用して、(たとえば、キュー メッセージを作成するために) データを送信します。
+トリガーとバインドを使用すると、操作するサービスの詳細をハードコードする必要がなくなります。 関数は、関数パラメーターでデータ (キュー メッセージの内容など) を受信します。 関数の戻り値を使用して、(たとえば、キュー メッセージを作成するために) データを送信します。 C# と C# スクリプトでは、`out` パラメーターや[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用してデータを送信できます。
 
 Azure Portal を使用して関数を開発する場合、トリガーとバインドは *function.json* ファイルに構成されます。 ポータルではこの構成のために UI が提供されますが、**詳細エディター**に切り替えることで直接ファイルを編集できます。
 
 Visual Studio を使用してクラス ライブラリを作成して関数を開発する場合は、メソッドとパラメーターを属性で修飾してトリガーとバインドを構成します。
-
-## <a name="supported-bindings"></a>サポートされるバインディング
-
-[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
-
-どのバインディングがプレビューでどのバインディングが実稼働環境で承認されているかについては、[サポートされている言語](supported-languages.md)に関する記事をご覧ください。
-
-## <a name="register-binding-extensions"></a>バインディング拡張機能を登録する
-
-Azure Functions ランタイムのバージョン 2.x では、関数アプリで使用する[バインディング拡張機能](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md)を明示的に登録する必要があります。 
-
-拡張機能は、パッケージ名が通常 [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) で始まる NuGet パッケージとして配信されます。  バインディング拡張機能をインストールおよび登録する方法は、次に示す関数の開発方法によって異なります。 
-
-+ [Visual Studio または VS Code を使用して C# でローカルに](#precompiled-functions-c)
-+ [Azure Functions Core Tools を使用してローカルに](#local-development-azure-functions-core-tools)
-+ [Azure Portal で](#azure-portal-development) 
-
-バージョン 2.x には、拡張機能としては提供されない一連のコア バインディングがあります。 HTTP、タイマ、および Azure Storage のトリガーとバインディングでは拡張機能を登録する必要はありません。 
-
-Functions ランタイムのバージョン 2.x を使用するように関数アプリを設定する方法については、[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)に関するページを参照してください。 Functions ランタイムのバージョン 2.x は現在、プレビューの段階です。 
-
-このセクションで示されているパッケージ バージョンは、例としてのみ提供されています。 関数アプリの他の依存関係に特定の拡張機能のどのバージョンが必要かを特定するには、[NuGet.org のサイト](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions)を確認してください。    
-
-###  <a name="local-c-development-using-visual-studio-or-vs-code"></a>Visual Studio または VS Code を使用したローカルでの C# 開発 
-
-Visual Studio または Visual Studio Code を使用して C# で関数をローカルに開発する場合は、単純に拡張機能のための NuGet パッケージを追加する必要があります。 
-
-+ **Visual Studio**: NuGet Package Manager ツールを使用します。 次の [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) コマンドは、パッケージ マネージャー コンソールから Azure Cosmos DB 拡張機能をインストールします。
-
-    ```
-    Install-Package Microsoft.Azure.WebJobs.Extensions.CosmosDB -Version 3.0.0-beta6 
-    ```
-+ **Visual Studio Code**: .NET CLI で、次のように [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) コマンドを使用してコマンド プロンプトからパッケージをインストールできます。
-
-    ```
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version 3.0.0-beta6 
-    ```
-
-### <a name="local-development-azure-functions-core-tools"></a>ローカル開発の Azure Functions Core Tools
-
-[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
-
-### <a name="azure-portal-development"></a>Azure Portal 開発
-
-関数を作成するか、または既存の関数にバインディングを追加する場合は、追加されるトリガーまたはバインディング用の拡張機能に登録が必要になるとメッセージが表示されます。   
-
-インストールされる特定の拡張機能に関する警告が表示されたら、**[インストール]** をクリックして拡張機能を登録します。 各拡張機能は、特定の関数アプリごとに 1 回だけインストールする必要があります。 
-
->[!Note] 
->ポータル内のインストール プロセスは、従量課金プランで最大 10 分かかります。
 
 ## <a name="example-trigger-and-binding"></a>トリガーとバインディングの例
 
@@ -128,11 +75,12 @@ Azure ポータルで *function.json* の内容を表示して編集するには
 ```cs
 #r "Newtonsoft.Json"
 
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 
 // From an incoming queue message that is a JSON object, add fields and write to Table storage
 // The method return value creates a new row in Table Storage
-public static Person Run(JObject order, TraceWriter log)
+public static Person Run(JObject order, ILogger log)
 {
     return new Person() { 
             PartitionKey = "Orders", 
@@ -177,7 +125,7 @@ function generateRandomId() {
      [return: Table("outTable", Connection = "MY_TABLE_STORAGE_ACCT_APP_SETTING")]
      public static Person Run(
          [QueueTrigger("myqueue-items", Connection = "MY_STORAGE_ACCT_APP_SETTING")]JObject order, 
-         TraceWriter log)
+         ILogger log)
      {
          return new Person() {
                  PartitionKey = "Orders",
@@ -196,6 +144,66 @@ function generateRandomId() {
  }
 ```
 
+## <a name="supported-bindings"></a>サポートされるバインディング
+
+[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
+
+どのバインディングがプレビューでどのバインディングが実稼働環境で承認されているかについては、[サポートされている言語](supported-languages.md)に関する記事をご覧ください。
+
+## <a name="register-binding-extensions"></a>バインディング拡張機能を登録する
+
+一部の開発環境では、明示的に使用するバインディングを*登録する*必要があります。 バインディング拡張機能は NuGet パッケージで提供されます。また、拡張機能を登録するにはパッケージをインストールします。 次の表に、バインディング拡張機能を登録するタイミングと方法を示します。
+
+|開発環境 |登録<br/> (Functions 1.x)  |登録<br/> (Functions 2.x)  |
+|---------|---------|---------|
+|Azure ポータル|自動|[プロンプトで自動](#azure-portal-development)|
+|Azure Functions Core Tools を使用するローカル|自動|[Core Tools CLI コマンドを使用](#local-development-azure-functions-core-tools)|
+|Visual Studio 2017 を使用する C# クラス ライブラリ|[NuGet ツールを使用](#c-class-library-with-visual-studio-2017)|[NuGet ツールを使用](#c-class-library-with-visual-studio-2017)|
+|Visual Studio Code を使用する C# クラス ライブラリ|該当なし|[.NET Core CLI を使用](#c-class-library-with-visual-studio-code)|
+
+バインドの種類 HTTP とタイマーは、すべてのバージョンと環境に自動登録されているため、明示的な登録を必要としない例外です。
+
+### <a name="azure-portal-development"></a>Azure Portal 開発
+
+このセクションは Functions 2.x にのみ適用されます。 バインディングの拡張機能は、Functions 1.x に明示的に登録する必要はありません。
+
+関数を作成するか、またはバインディングを追加する場合に、トリガーまたはバインディングの拡張機能が登録を必要とするときは、プロンプトが表示されます。 **[インストール]** をクリックして拡張機能を登録することで、プロンプトに応答します。 従量課金プランで、インストールには最大 10 分かかる可能性があります。
+
+各拡張機能は、特定の関数アプリごとに 1 回だけインストールする必要があります。 ポータルで使用できないバインディングをサポートするか、またはインストールされている拡張機能を更新するために、[ポータルから Azure Functions バインディング拡張機能を手動でインストールまたは更新する](install-update-binding-extensions-manual.md)こともできます。  
+
+### <a name="local-development-azure-functions-core-tools"></a>ローカル開発の Azure Functions Core Tools
+
+このセクションは Functions 2.x にのみ適用されます。 バインディングの拡張機能は、Functions 1.x に明示的に登録する必要はありません。
+
+[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+
+<a name="local-csharp"></a>
+### <a name="c-class-library-with-visual-studio-2017"></a>Visual Studio 2017 を使用する C# クラス ライブラリ
+
+**Visual Studio 2017** では、次の例に示すように [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) コマンドを使用して、Package Manager Console からパッケージをインストールできます。
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <target_version>
+```
+
+特定のバインディングに使用するパッケージ名は、該当のバインディングのリファレンス記事に示されています。 たとえば、[Service Bus バインディングのリファレンス記事にある「パッケージ」セクション](functions-bindings-service-bus.md#packages---functions-1x)を参照してください。
+
+例の中の `<target_version>` を `3.0.0-beta5` などの特定のバージョンのパッケージに置き換えます。 有効なバージョンは、[NuGet.org](https://nuget.org) の個々のパッケージ ページに記載されています。Functions ランタイム 1.x または 2.x に対応する主要なバージョンは、バインデイングのリファレンス記事に示されています。
+
+### <a name="c-class-library-with-visual-studio-code"></a>Visual Studio Code を使用する C# クラス ライブラリ
+
+**Visual Studio Code** では、次の例のように、.NET Core CLI の [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) コマンドを使用してコマンド プロンプトからパッケージをインストールできます。
+
+```terminal
+dotnet add package Microsoft.Azure.WebJobs.Extensions.ServiceBus --version <target_version>
+```
+
+.NET Core CLI は、Azure Functions 2.x 開発のみに使用できます。
+
+特定のバインディングに使用するパッケージ名は、該当のバインディングのリファレンス記事に示されています。 たとえば、[Service Bus バインディングのリファレンス記事にある「パッケージ」セクション](functions-bindings-service-bus.md#packages---functions-1x)を参照してください。
+
+例の中の `<target_version>` を `3.0.0-beta5` などの特定のバージョンのパッケージに置き換えます。 有効なバージョンは、[NuGet.org](https://nuget.org) の個々のパッケージ ページに記載されています。Functions ランタイム 1.x または 2.x に対応する主要なバージョンは、バインデイングのリファレンス記事に示されています。
+
 ## <a name="binding-direction"></a>バインドの方向
 
 すべてのトリガーとバインドには、*function.json* ファイルに `direction` プロパティがあります。
@@ -213,9 +221,11 @@ function generateRandomId() {
 * C# クラス ライブラリでは、メソッド戻り値に出力バインディング属性を適用します。
 * その他の言語では、*function.json* 内の `name` プロパティを `$return` に設定します。
 
-複数の項目を書き込む必要がある場合は、戻り値の代わりに[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用します。 複数の出力バインディングが存在する場合は、そのうちの 1 つにのみ戻り値を使用します。
+複数の出力バインディングが存在する場合は、そのうちの 1 つにのみ戻り値を使用します。
 
-言語固有の例をご覧ください。
+C# と C# スクリプトでは、`out` パラメーターや[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用してデータを出力バインディングに送信できます。
+
+言語固有の戻り値の使用例を次に示します。
 
 * [C#](#c-example)
 * [C# スクリプト (.csx)](#c-script-example)
@@ -229,10 +239,10 @@ function generateRandomId() {
 ```cs
 [FunctionName("QueueTrigger")]
 [return: Blob("output-container/{id}")]
-public static string Run([QueueTrigger("inputqueue")]WorkItem input, TraceWriter log)
+public static string Run([QueueTrigger("inputqueue")]WorkItem input, ILogger log)
 {
     string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
-    log.Info($"C# script processed queue message. Item={json}");
+    log.LogInformation($"C# script processed queue message. Item={json}");
     return json;
 }
 ```
@@ -240,10 +250,10 @@ public static string Run([QueueTrigger("inputqueue")]WorkItem input, TraceWriter
 ```cs
 [FunctionName("QueueTrigger")]
 [return: Blob("output-container/{id}")]
-public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, TraceWriter log)
+public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogger log)
 {
     string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
-    log.Info($"C# script processed queue message. Item={json}");
+    log.LogInformation($"C# script processed queue message. Item={json}");
     return Task.FromResult(json);
 }
 ```
@@ -264,19 +274,19 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, Trace
 C# スクリプト コードと非同期の例を次に示します。
 
 ```cs
-public static string Run(WorkItem input, TraceWriter log)
+public static string Run(WorkItem input, ILogger log)
 {
     string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
-    log.Info($"C# script processed queue message. Item={json}");
+    log.LogInformation($"C# script processed queue message. Item={json}");
     return json;
 }
 ```
 
 ```cs
-public static Task<string> Run(WorkItem input, TraceWriter log)
+public static Task<string> Run(WorkItem input, ILogger log)
 {
     string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
-    log.Info($"C# script processed queue message. Item={json}");
+    log.LogInformation($"C# script processed queue message. Item={json}");
     return Task.FromResult(json);
 }
 ```
@@ -297,9 +307,9 @@ public static Task<string> Run(WorkItem input, TraceWriter log)
 F# コードを次に示します。
 
 ```fsharp
-let Run(input: WorkItem, log: TraceWriter) =
+let Run(input: WorkItem, log: ILogger) =
     let json = String.Format("{{ \"id\": \"{0}\" }}", input.Id)   
-    log.Info(sprintf "F# script processed queue message '%s'" json)
+    log.LogInformation(sprintf "F# script processed queue message '%s'" json)
     json
 ```
 
@@ -392,9 +402,9 @@ JavaScript などの動的に型指定される言語の場合は、*function.js
 [FunctionName("QueueTrigger")]
 public static void Run(
     [QueueTrigger("%input-queue-name%")]string myQueueItem, 
-    TraceWriter log)
+    ILogger log)
 {
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+    log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
 }
 ```
 
@@ -436,9 +446,9 @@ BLOB トリガーの `path` は、他のバインディングや関数コード�
 
 ```csharp
 // C# example of binding to {filename}
-public static void Run(Stream image, string filename, Stream imageSmall, TraceWriter log)  
+public static void Run(Stream image, string filename, Stream imageSmall, ILogger log)  
 {
-    log.Info($"Blob trigger processing: {filename}");
+    log.LogInformation($"Blob trigger processing: {filename}");
     // ...
 } 
 ```
@@ -454,9 +464,9 @@ public static void Run(
     [BlobTrigger("sample-images/{filename}")] Stream image,
     [Blob("sample-images-sm/{filename}", FileAccess.Write)] Stream imageSmall,
     string filename,
-    TraceWriter log)
+    ILogger log)
 {
-    log.Info($"Blob trigger processing: {filename}");
+    log.LogInformation($"Blob trigger processing: {filename}");
     // ...
 }
 
@@ -519,7 +529,7 @@ public static void Run(
       "name": "blobContents",
       "type": "blob",
       "direction": "in",
-      "path": "strings/{BlobName.FileName}.{BlobName.Extension}",
+      "path": "strings/{BlobName}",
       "connection": "AzureWebJobsStorage"
     },
     {
@@ -535,17 +545,20 @@ C# および F# でこれが機能するには、次の例に示すように、�
 
 ```csharp
 using System.Net;
+using Microsoft.Extensions.Logging;
 
 public class BlobInfo
 {
     public string BlobName { get; set; }
 }
   
-public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, string blobContents)
+public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, string blobContents, ILogger log)
 {
     if (blobContents == null) {
         return req.CreateResponse(HttpStatusCode.NotFound);
     } 
+
+    log.LogInformation($"Processing: {info.BlobName}");
 
     return req.CreateResponse(HttpStatusCode.OK, new {
         data = $"{blobContents}"

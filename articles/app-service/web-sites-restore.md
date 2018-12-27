@@ -1,8 +1,8 @@
 ---
-title: "Azure でのアプリの復元"
-description: "アプリをバックアップから復元する方法について説明します。"
+title: Azure でのアプリの復元
+description: アプリをバックアップから復元する方法について説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 60b55acaf687dae76e054b428b8d6584d8eb09f8
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 69e0e8282ee0b8503fe11a57b8ba6037247822dd
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160503"
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元
 この記事では、[Azure App Service](../app-service/app-service-web-overview.md) でアプリをバックアップから復元する方法を示します (バックアップについては「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください)。 リンクされたデータベースをオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりできます。 Azure App Service では、次のデータベースのバックアップと復元がサポートされます。
-- [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
-- [Azure Database for MySQL (プレビュー)](https://azure.microsoft.com/en-us/services/mysql)
-- [Azure Database for PostgreSQL (プレビュー)](https://azure.microsoft.com/en-us/services/postgres)
+- [SQL Database](https://azure.microsoft.com/services/sql-database/)
+- [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
+- [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
 - [アプリ内 MySQL](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
 バックアップからの復元は、**Standard** レベルか **Premium** レベルで実行されているアプリでのみ利用できます。 アプリのスケーリングについて詳しくは、「 [Azure App Service の Web アプリをスケーリングする](web-sites-scale.md)」をご覧ください。 **Premium** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
@@ -42,18 +43,23 @@ ms.lasthandoff: 11/18/2017
     **[アプリのバックアップ]** オプションには、現在のアプリの既存のバックアップがすべて表示されるので、バックアップを簡単に選択することができます。
     **[ストレージ]** オプションを使用すると、サブスクリプションに含まれる既存の Azure Storage アカウントとコンテナーから、任意のバックアップ ZIP ファイルを選択できます。
     別のアプリのバックアップを復元する場合は、 **[ストレージ]** オプションを使用します。
-3. 次に、 **[復元先]**でアプリの復元先を指定します。
+3. 次に、 **[復元先]** でアプリの復元先を指定します。
    
     ![](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
-   > **[上書き]**を選択した場合、現在のアプリの既存のデータはすべて消去され上書きされます。 **[OK]**をクリックする前に、実行する操作内容が正しいことを確認します。
+   > **[上書き]** を選択した場合、現在のアプリの既存のデータはすべて消去され上書きされます。 **[OK]** をクリックする前に、実行する操作内容が正しいことを確認します。
+   > 
+   > 
+   
+   > [!WARNING]
+   > 復元中のデータベースに App Service がデータを書き込んだ場合、プライマリ キーの違反やデータの損失などの症状が生じることがあります。 データベースの復元を開始する前に、App Service を停止しておくことをお勧めします。
    > 
    > 
    
     **[既存のアプリ]** を選択して、アプリのバックアップを同じリソース グループ内の別のアプリに復元することができます。 このオプションを使用する前に、リソース グループ内に別のアプリを作成済みであり、データベース構成を、アプリのバックアップ内に定義されている構成にミラーリングしている必要があります。 コンテンツの復元先として**新しい**アプリを作成することもできます。
 
-4. **[OK]**をクリックします。
+4. Click **OK**.
 
 <a name="StorageAccount"></a>
 

@@ -1,43 +1,107 @@
 ---
-title: "ワークロード管理用のリソース クラス - Azure SQL Data Warehouse | Microsoft Docs"
-description: "Azure SQL Data Warehouse のクエリで、リソース クラスを使用して、同時実行とコンピューティング リソース を管理するためのガイダンスです。"
+title: ワークロード管理用のリソース クラス - Azure SQL Data Warehouse | Microsoft Docs
+description: Azure SQL Data Warehouse のクエリで、リソース クラスを使用して、同時実行とコンピューティング リソース を管理するためのガイダンスです。
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
+author: ronortloff
+manager: craigg
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/23/2017
-ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: c76fb73c9beda93c407d1af29e157682c7fe58c0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/26/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 8d0138d20e1a30ab3efc509eb71f17a6b1e4e8e5
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287474"
 ---
-# <a name="resource-classes-for-workload-management"></a>ワークロード管理用のリソース クラス
-Azure SQL Data Warehouse のクエリで、リソース クラスを使用して、同時に実行される同時クエリの数とコンピューティング リソース を管理するためのガイダンスです。
+# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のリソース クラスでのワークロード管理
+Azure SQL Data Warehouse のクエリで、リソース クラスを使用して、メモリと同時実行を管理するためのガイダンスです。  
  
 ## <a name="what-is-workload-management"></a>ワークロード管理とは
-ワークロード管理は、すべてのクエリの全体的なパフォーマンスを最適化する機能です。 適切に調整されたワークロードは、クエリと読み込み操作を、コンピューティング集中型であるか IO 集約型であるかに関係なく、効率的に実行します。 
+ワークロード管理は、すべてのクエリの全体的なパフォーマンスを最適化する機能です。 適切に調整されたワークロードは、クエリと読み込み操作を、コンピューティング集中型であるか IO 集約型であるかに関係なく、効率的に実行します。  SQL Data Warehouse は、マルチ ユーザー環境向けのワークロード管理機能を備えています。 データ ウェアハウスは、マルチテナント ワークロードを想定していません。
 
-SQL Data Warehouse は、マルチ ユーザー環境向けのワークロード管理機能を備えています。 データ ウェアハウスは、マルチテナント ワークロードを想定していません。
+データ ウェアハウスのパフォーマンス容量は、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)によって決まります。 
+
+- すべてのパフォーマンス プロファイルのメモリおよび同時実行の制限を確認するには、「[Memory and concurrency limits](memory-and-concurrency-limits.md)」 (メモリと同時実行の制限) を参照してください。
+- パフォーマンス能力を調整するには、[スケールアップまたはスケールダウン](quickstart-scale-compute-portal.md)してください。
+
+クエリのパフォーマンス容量は、クエリのリソース クラスによって決定されます。 この記事の残りの部分では、リソース クラスとその調整方法について説明します。
 
 ## <a name="what-are-resource-classes"></a>リソース クラスとは
-リソース クラスは、クエリの実行を制御するあらかじめ決められたリソースの制限です。 SQL Data Warehouse は、リソース クラスに従って、各クエリのコンピューティング リソースを制限します。 
+クエリのパフォーマンス能力は、ユーザーのリソース クラスによって決定されます。  リソース クラスとは、コンピューティング リソースとのクエリの同時実行を制御する Azure SQL Data Warehouse のあらかじめ決定されたリソース制限です。 リソース クラスでは、同時実行されるクエリの数と、各クエリに割り当てられているコンピューティング リソースの数に制限を設定して、ワークロードを管理するのに役立ちます。 メモリと同時実行の間にはトレードオフがあります。
 
-リソース クラスを使用して、データ ウェアハウスのワークロードの全体的なパフォーマンスを管理できます。リソース クラスを効果的に使用して、同時に実行されるクエリの数と各クエリに割り当てられるコンピューティング リソースに制限を設定することで、ワークロードを管理できます。 
+- リソース クラスが少数の場合、クエリごとの最大メモリは減少しますが、同時実行は増えます。
+- より大規模なリソース クラスでは、クエリあたりの最大メモリは増えますが、同時実行は減ります。 
 
-- 小規模リソース クラスは、コンピューティング リソースを少し使用しますが、クエリの全体的な同時実行性を大きくすることができます。
-- 大規模リソース クラスは、コンピューティング リソースをたくさん使用しますが、クエリの同時実行性は制限されます。
+リソース クラスは 2 種類あります｡
 
-リソース クラスは、データ管理と操作アクティビティのために設計されています。 大規模な結合と並べ替えがある場合に、システムがディスクを使用せずにメモリ内でのみクエリを実行できるため、非常に複雑なクエリにとってもメリットがあります。
+- 静的リソース クラス｡同時実行数が高くデータセットのサイズが固定ので同時実行が増える場合に適しています｡
+- 動的リソース クラス｡サービス レベルのスケール アップに応じてデータ セットのサイズが大きくなり､パフォーマンスを高める場合に適しています｡   
+
+リソース クラスでは、リソースの消費を測定するのに同時実行スロットを使用します。  [同時実行スロット](#concurrency-slots)については、この記事で後述します。 
+
+- リソース クラスのリソース使用率を表示するには、「[Memory and concurrency limits](memory-and-concurrency-limits.md#concurrency-maximums)」 (メモリと同時実行の制限) を参照してください。
+- リソース クラスを調整するには、別のユーザーとしてクエリを実行するか、[現在のユーザーのリソース クラス](#change-a-users-resource-class) メンバーシップを変更します。 
+
+### <a name="static-resource-classes"></a>静的リソース クラス
+静的リソース クラスは、現在のパフォーマンス レベルに関係なく、同じメモリ量を割り当てます。これは [Data Warehouse ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)で測定されます。 パフォーマンス レベルに関係なく、クエリには同じ量のメモリが割り当てられるため、[データ ウェアハウスのスケール アウト](quickstart-scale-compute-portal.md)によってリソース クラス内でより多くのクエリが実行できるようになります。  データ ボリュームが既知でサイズが一定の場合は､静的リソース クラスが適しています｡
+
+これらの静的なリソース クラスは、これらの事前定義されたデータベース ロールを使用して実装されます。
+
+- staticrc10
+- staticrc20
+- staticrc30
+- staticrc40
+- staticrc50
+- staticrc60
+- staticrc70
+- staticrc80
+
+### <a name="dynamic-resource-classes"></a>動的リソース クラス
+動的リソース クラスは、現在のサービス レベルに応じたメモリ量を割り当てます。 静的リソース クラスが同時実行が多く､かつデータ ボリュームが静的である場合に有用であるのに対し､動的リソース クラスはデータ量が増大または変化する場合に有用です｡  より大きなサービス レベルにスケールアップすると、クエリは自動的により多くのメモリを取得します。  
+
+動的なリソース クラスは、次の定義済みのデータベース ロールによって実装されます。
+
+- smallrc
+- mediumrc
+- largerc
+- xlargerc 
+
+### <a name="gen2-dynamic-resource-classes-are-truly-dynamic"></a>Gen2 動的リソース クラスは真の意味で動的
+Gen1 の動的リソース クラスを詳しく見ていくと､それらの動作を解釈する上で複雑さを増しているいくつかの要素があることが分かります｡
+
+- smallrc リソース クラスは静的リソース クラス同様に固定メモリ モデルで動作します｡  Smallrc のクエリでは､サービス レベルの上昇に応じて動的にメモリが増えるわけではありません｡
+- サービス レベルが変化すると､可能なクエリの同時実行数は上下することがあります｡
+- 同じリソース クラスに割り当てられているメモリーは､サービス レベルのスケーリングに比例して変化するわけではありません｡
+
+**Gen2 のみ**では､動的リソース クラスは､上記の点の対処において真の意味で動的です｡  新しいルールは､small-medium-large-xlarge のリソース クラスに対するメモリ 割り当て率の 3-10-22-70です｡この割り当て率は**サービス レベルに依存しません**｡  次の表は､サービス レベルに依存しない､メモリ割り当て率とクエリの最小同時実行数をまとめています｡
+
+| リソース クラス | メモリ率 | 最小同時実行クエリ数 |
+|:--------------:|:-----------------:|:----------------------:|
+| smallrc        | 3%                | 32                     |
+| mediumrc       | 10%               | 10                     |
+| largerc        | 22%               | 4                      |
+| xlargerc       | 70%               | 1                      |
+
+
+### <a name="default-resource-class"></a>既定のリソース クラス
+既定では、各ユーザーは動的リソース クラス **smallrc** のメンバーです。 
+
+サービス管理者のリソース クラスは固定され、変更できません。  サービス管理者はプロビジョニング プロセス中に作成されるユーザーです。
+
+> [!NOTE]
+> Active Directory 管理者として定義されたユーザーまたはグループは、サービス管理者でもあります。
+>
+>
+
+## <a name="resource-class-operations"></a>リソース クラスの操作
+
+リソース クラスは、データ管理と操作アクティビティのパフォーマンスを向上するために設計されています。 複雑なクエリも、大規模なリソース クラス下で実行するとメリットがあります。 たとえば、クエリをメモリ内で実行できるほどリソース クラスが十分に大きい場合、大規模な結合と並べ替えのクエリ パフォーマンスは向上します。
+
+### <a name="operations-governed-by-resource-classes"></a>リソース クラスによって管理される操作
 
 リソース クラスによって、次の操作が制御されます。
 
@@ -56,50 +120,7 @@ SQL Data Warehouse は、マルチ ユーザー環境向けのワークロード
 > 
 > 
 
-## <a name="static-and-dynamic-resource-classes"></a>静的リソース クラスと動的リソース クラス
-
-リソース クラスには、動的と静的の 2 種類があります。
-
-- **静的リソース クラス**は、現在のサービス レベルに関係なく、同じメモリ量を割り当てます。これは[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)で測定されます。 この静的割り当ては、大きなサービス レベルでは、各リソース クラスでより多くのクエリを実行できることを意味します。  静的リソース クラスの名前は、staticrc10、staticrc20、staticrc30、staticrc40、staticrc50、staticrc60、staticrc70、および staticrc80 です。 これらのリソース クラスは、リソース クラスを追加することでコンピューティング リソースを追加取得するソリューションに最適です。
-
-- **動的リソース クラス**は、現在のサービス レベルに応じたメモリ量を割り当てます。 より大きなサービス レベルにスケールアップすると、クエリは自動的により多くのメモリを取得します。 動的リソース クラスの名前は、smallrc、mediumrc、largerc、および xlargerc です。 これらのリソース クラスは、コンピューティング スケールを増やすことでリソースを追加取得するソリューションに最適です。 
-
-[パフォーマンス レベル](performance-tiers.md)も同じリソース クラス名を使用しますが、[メモリと同時実行の仕様](performance-tiers.md)が異なります。 
-
-
-## <a name="assigning-resource-classes"></a>リソース クラスの割り当て
-
-リソース クラスは、ユーザーにデータベース ロールを割り当てることによって実装されます。 ユーザーがクエリを実行すると、クエリはユーザーのリソース クラスで実行されます。 たとえば、ユーザーが smallrc または staticrc10 データベース ロールのメンバーの場合、クエリは少量のメモリを使用して実行されます。 データベース ユーザーが xlargerc または staticrc80 データベース ロールのメンバーの場合、クエリは大量のメモリを使用して実行されます。 
-
-ユーザーのリソース クラスを大きくするには、[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ストアド プロシージャを使用します。 
-
-```sql
-EXEC sp_addrolemember 'largerc', 'loaduser';
-```
-
-リソース クラスを小さくするには、[sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) を使用します。  
-
-```sql
-EXEC sp_droprolemember 'largerc', 'loaduser';
-```
-
-サービス管理者のリソース クラスは固定され、変更できません。  サービス管理者はプロビジョニング プロセス中に作成されるユーザーです。
-
-> [!NOTE]
-> Active Directory 管理者として定義されたユーザーまたはグループは、サービス管理者でもあります。
->
->
-
-### <a name="default-resource-class"></a>既定のリソース クラス
-既定では、各ユーザーは小規模リソース クラス **smallrc** のメンバーです。 
-
-### <a name="resource-class-precedence"></a>リソース クラスの優先順位
-ユーザーは、複数のリソース クラスのメンバーになることができます。 ユーザーが 1 つ以上のリソース クラスに属す場合:
-
-- 動的リソース クラスが静的リソースクラスに優先します。 たとえば、ユーザーが mediumrc (動的) と staticrc80 (静的) のメンバーの場合、クエリは mediumrc で実行されます。
-- 大規模リソース クラスが小規模リソースクラスに優先します。 たとえば、ユーザーが mediumrc と largerc のメンバーの場合、クエリは largerc で実行されます。 同様に、ユーザーが staticrc20 と statirc80 の両方のメンバーの場合、クエリは staticrc80 に対するリソースの割り当てを使用して実行されます。
-
-### <a name="queries-exempt-from-resource-classes"></a>リソース クラスの対象外となるクエリ
+### <a name="operations-not-governed-by-resource-classes"></a>リソース クラスによって管理されない操作
 一部のクエリは、ユーザーが大規模リソース クラスのメンバーであっても、常に smallrc リソース クラスで実行されます。 これらの対象外のクエリは、同時実行の制限にはカウントされません。 たとえば、同時実行の制限が 16 の場合、利用可能な同時実行スロットに影響を与えることなく、システム ビューから多数のユーザーを選択できます。
 
 次のステートメントはリソース クラスの対象外であり、常に smallrc で実行されます。
@@ -127,6 +148,46 @@ Removed as these two are not confirmed / supported under SQLDW
 - REDISTRIBUTE
 -->
 
+## <a name="concurrency-slots"></a>同時実行スロット
+同時実行スロットは、クエリの実行に使用可能なリソースを追跡するために便利な方法です。 座席数が制限されているため、コンサートの座席を予約するチケットに似ています。 データ ウェアハウスあたりの同時実行スロットの合計数は、サービス レベルによって決まります。 クエリが実行を開始する前に、十分な数の同時実行スロットを予約できる必要があります。 クエリが完了すると、その同時実行スロットは解放されます。  
+
+- 10 個の同時実行スロットを使用して実行されるクエリは、2 つの同時実行スロットを使用して実行されるクエリよりも 5 倍のコンピューティング リソースにアクセスできます。
+- クエリあたり 10 個の同時実行スロットが必要で 40 の同時実行スロットがある場合は、同時に実行できるのは 4 つのクエリのみになります。
+ 
+リソースが管理されているクエリのみが、同時実行スロットを使用します。 システム クエリやいくつかの重要度の低いクエリは、スロットを使用しません。使用される同時実行スロットの正確な数値は、クエリのリソース クラスによって決定されます。
+
+## <a name="view-the-resource-classes"></a>リソース クラスの参照
+
+リソース クラスは、定義済みのデータベース ロールとして実装されています。 リソース クラスには、動的と静的の 2 種類があります。 リソース クラスの一覧を表示するには、次のクエリを使用します。
+
+```sql
+SELECT name 
+FROM   sys.database_principals
+WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
+```
+
+## <a name="change-a-users-resource-class"></a>ユーザーのリソース クラスの変更
+
+リソース クラスは、ユーザーにデータベース ロールを割り当てることによって実装されます。 ユーザーがクエリを実行すると、クエリはユーザーのリソース クラスで実行されます。 たとえば、ユーザーが smallrc または staticrc10 データベース ロールのメンバーの場合、クエリは少量のメモリを使用して実行されます。 データベース ユーザーが xlargerc または staticrc80 データベース ロールのメンバーの場合、クエリは大量のメモリを使用して実行されます。 
+
+ユーザーのリソース クラスを大きくするには、[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ストアド プロシージャを使用します。 
+
+```sql
+EXEC sp_addrolemember 'largerc', 'loaduser';
+```
+
+リソース クラスを小さくするには、[sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) を使用します。  
+
+```sql
+EXEC sp_droprolemember 'largerc', 'loaduser';
+```
+
+## <a name="resource-class-precedence"></a>リソース クラスの優先順位
+ユーザーは、複数のリソース クラスのメンバーになることができます。 ユーザーが 1 つ以上のリソース クラスに属す場合:
+
+- 動的リソース クラスが静的リソースクラスに優先します。 たとえば、ユーザーが mediumrc (動的) と staticrc80 (静的) のメンバーの場合、クエリは mediumrc で実行されます。
+- 大規模リソース クラスが小規模リソースクラスに優先します。 たとえば、ユーザーが mediumrc と largerc のメンバーの場合、クエリは largerc で実行されます。 同様に、ユーザーが staticrc20 と statirc80 の両方のメンバーの場合、クエリは staticrc80 に対するリソースの割り当てを使用して実行されます。
+
 ## <a name="recommendations"></a>Recommendations
 お勧めするのは、特定の種類のクエリまたは読み込み操作を実行する専用のユーザーを作成することです。 頻繁にリソース クラスを変更する代わりに、そのユーザーに永続的なリソース クラスを指定します。 静的リソース クラスを指定すると、ワークロード全体が制御しやすくなります。さらに、動的リソース クラスを検討する前に、まず静的リソース クラスを使用することをお勧めします。
 
@@ -153,7 +214,7 @@ Removed as these two are not confirmed / supported under SQLDW
 
 ## <a name="example-code-for-finding-the-best-resource-class"></a>最適なリソース クラスを見つけるためのコードの例
  
-次のストアド プロシージャを使用して、特定の SLO の同時実行性とリソース クラスあたりのメモリ割り当てを割り出せば、特定のリソース クラスの非分割 CCI テーブルでのメモリ消費量の多い CCI 操作に最適なリソース クラスを特定することができます。
+**Gen1 のみ**で次のストアド プロシージャを使用することで、特定の SLO でのリソース クラスあたりの同時実行数とメモリ割り当て量､また特定のリソース クラスでの非分割 CCI テーブルに対するメモリ消費量の多い CCI 操作でベストに近いリソース クラスを割り出すことができます｡
 
 このストアド プロシージャの目的を次に示します。  
 1. 特定の SLO のリソース クラスあたりの同時実行性とメモリ許可を特定すること。 次の例に示すように、スキーマとテーブル名の両方に NULL を指定する必要があります。  
@@ -184,6 +245,10 @@ EXEC dbo.prc_workload_management_by_DWU NULL, 'dbo', 'Table1';
 EXEC dbo.prc_workload_management_by_DWU 'DW6000', NULL, NULL;  
 EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;  
 ```
+> [!NOTE]
+> ストアド プロシージャのこのバージョンで定義されている値は Gen1 に適用されるだけです｡
+>
+>
 
 次のステートメントは、前の例で使用される Table1 を作成します。
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
@@ -250,7 +315,7 @@ AS
   UNION ALL
     SELECT 'DW400', 16, 16, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
-     SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
+    SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
     SELECT 'DW600', 24, 24, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
@@ -262,7 +327,7 @@ AS
   UNION ALL
     SELECT 'DW2000', 32, 80, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
   UNION ALL
-   SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
+    SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
   UNION ALL
     SELECT 'DW6000', 32, 240, 1, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128
 )

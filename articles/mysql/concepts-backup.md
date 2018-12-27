@@ -1,19 +1,20 @@
 ---
-title: "Azure Database for MySQL でのバックアップと復元"
-description: "Azure Database for MySQL サーバーの自動バックアップと復元について説明します。"
+title: Azure Database for MySQL でのバックアップと復元
+description: Azure Database for MySQL サーバーの自動バックアップと復元について説明します。
 services: mysql
-author: kamathsun
-ms.author: sukamat
+author: ajlam
+ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 1cc2c6ccb4459c5c942297cab46378502b63c5bc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 9d07f6cd5fa6a2df82dc2cbf9c1ebe08e5941acf
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125019"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Azure Database for MySQL でのバックアップと復元
 
@@ -52,7 +53,7 @@ Azure Database for MySQL で復元を実行すると、元のサーバーのバ�
 復旧の推定所要時間は、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅、同じリージョン内で同時に復旧するデータベースの合計数など、複数の要因によって異なります。 通常は 12 時間もかかりません。
 
 > [!IMPORTANT]
-> サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 削除されたサーバーを復元することはできません。
+> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
@@ -65,6 +66,8 @@ Azure Database for MySQL で復元を実行すると、元のサーバーのバ�
 ### <a name="geo-restore"></a>geo リストア
 
 geo 冗長バックアップ用にサーバーを構成した場合は、サービスを使用できる別の Azure リージョンにサーバーを復元できます。 geo リストアは、サーバーがホストされているリージョンでのインシデントが原因でサーバーが利用できない場合の既定の復旧オプションです。 リージョン内の大規模なインシデントにより、データベース アプリケーションが使用できなくなった場合、geo 冗長バックアップから他の任意のリージョン内のサーバーに、サーバーを復元できます。 バックアップが取得される時刻と、別のリージョンにそのバックアップがレプリケートされる時刻には時間差があります。 この時間差は最大 1 時間なので、障害が発生した場合、最大 1 時間分のデータが損失する可能性があります。
+
+geo リストア中に変更できるサーバー構成は、コンピューティング世代、仮想コア、バックアップの保有期間、バックアップ冗長オプションなどです。 geo リストア中の、価格レベル (Basic、汎用、またはメモリ最適化) とストレージのサイズの変更はいずれもできません。
 
 ### <a name="perform-post-restore-tasks"></a>復元後のタスクの実行
 

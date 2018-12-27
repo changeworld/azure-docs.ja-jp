@@ -1,30 +1,30 @@
 ---
-title: "Azure Cloud Services 向けの Application Insights | Microsoft Docs"
-description: "Application Insights で Web と worker ロールを効果的に監視する"
+title: Azure Cloud Services 向けの Application Insights | Microsoft Docs
+description: Application Insights で Web と worker ロールを効果的に監視する
 services: application-insights
-documentationcenter: 
-keywords: "WAD2AI, Azure 診断"
+documentationcenter: ''
+keywords: WAD2AI, Azure 診断
 author: mrbullwinkle
 manager: carmonm
-editor: alancameronwills
 ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
 ms.service: application-insights
 ms.devlang: na
 ms.tgt_pltfrm: ibiza
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.workload: tbd
-ms.date: 05/05/2017
+ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: dd35ef2239469be6ecf478f44a7e97389e5c5dd3
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 2b43e3487493f8568903ee0799fdd3d86e9a6542
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279672"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services 向けの Application Insights
 [Microsoft Azure Cloud Services アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況は、[Application Insights][start] で監視できます。それには、Application Insights の SDK から得られるデータと、Cloud Services から得られる [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)データとを組み合わせて使用します。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
 
-![例](./media/app-insights-cloudservices/sample.png)
+![概要ダッシュボードのスクリーンショット](./media/app-insights-cloudservices/overview-graphs.png)
 
 ## <a name="before-you-start"></a>開始する前に
 必要なものは次のとおりです。
@@ -81,9 +81,8 @@ Application Insights がクラウド サービスに追加され、2 つの woke
 1. [Azure Portal][portal] で、新しい Application Insights リソースを作成します。 アプリケーションの種類として ASP.NET アプリを選択します。 
 
     ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-cloudservices/01-new.png)
-2. 各リソースはインストルメンテーション キーによって識別されることに注意してください。 これは、後で SDK を手動で構成する場合や SDK の構成を確認する場合に必要になる可能性があります。
+2. 各リソースは、インストルメンテーション キーによって識別されます。 これは、後で SDK を手動で構成する場合や SDK の構成を確認する場合に必要になる可能性があります。
 
-    ![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-cloudservices/02-props.png) 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Set up Azure Diagnostics for each role (各ロール用の Azure 診断を設定する)
 このオプションは、Application Insights でアプリを監視する場合に設定します。 Web ロールの場合は、これによってパフォーマンスの監視、アラート、診断に加え、使用状況の分析が提供されます。 その他のロールの場合は、再起動、パフォーマンス カウンター、System.Diagnostics.Trace への呼び出しなどの Azure 診断を検索して監視できます。 
@@ -97,7 +96,7 @@ Application Insights がクラウド サービスに追加され、2 つの woke
 
 これにより、Application Insights のインストルメンテーション キーが `ServiceConfiguration.*.cscfg` という名前のファイルに挿入されます  ([サンプル コード](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg))。
 
-Application Insights に送信される診断情報のレベルを変更する場合は、[`.cscfg` ファイルを直接編集](app-insights-azure-diagnostics.md)できます。
+Application Insights に送信される診断情報のレベルを変更する場合は、[`.cscfg` ファイルを直接編集](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)できます。
 
 ## <a name="sdk"></a>各プロジェクトに SDK をインストールする
 このオプションを選択すると、アプリケーションの使用状況やパフォーマンスを詳しく分析するためにカスタム ビジネス テレメトリを任意のロールに追加できるようになります。
@@ -107,14 +106,14 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 1. **Web ロール**: プロジェクトを右クリックし、**[Application Insights の構成]** または **[追加] > [Application Insights Telemetry]** を選択します。
 
 2. **Worker ロール**: 
- * プロジェクトを右クリックし、**[Nuget パッケージの管理]** を選択します。
+ * プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
  * [Windows サーバー用の Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) を追加します。
 
     ![Search for "Application Insights"](./media/app-insights-cloudservices/04-ai-nuget.png)
 
 3. データを Application Insights リソースに送信するように SDK を構成します。
 
-    適切なスタートアップ関数で、.cscfg ファイル内の構成設定から入手したインストルメンテーション キーを設定します。
+    適切なスタートアップ関数内で、``.cscfg file`` に含まれている構成設定のインストルメンテーション キーを設定します。
  
     ```csharp
    
@@ -128,7 +127,7 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
    * [Web ページ向け](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 4. ApplicationInsights.config ファイルが常に出力ディレクトリにコピーされるように設定します。 
    
-    (.config ファイルの中に、インストルメンテーション キーの配置を求めるメッセージがあります。 ただし、クラウド アプリケーションでは、それは .cscfg ファイルから設定することをお勧めします。 これにより、ポータルでロールが正確に識別されます)。
+    (.config ファイルの中に、インストルメンテーション キーの配置を求めるメッセージがあります。 ただし、クラウド アプリケーションでは、それは ``.cscfg file`` から設定することをお勧めします。 これにより、ポータルでロールが正確に識別されます)。
 
 #### <a name="run-and-publish-the-app"></a>アプリを実行して発行する
 アプリを実行し、Azure にサインインします。 作成した Application Insights リソースを開くと、[検索](app-insights-diagnostic-search.md)に個々のデータ ポイントが表示され、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)に集計データが表示されます。 
@@ -152,7 +151,7 @@ Application Insights では、[Azure 診断](https://docs.microsoft.com/azure/mo
 
 ![Azure 診断のデータ](./media/app-insights-cloudservices/23-wad.png)
 
-[検索](app-insights-diagnostic-search.md)または [Analytics クエリ](app-insights-analytics-tour.md)を使用して、Azure 診断によって送信されるさまざまなトレース ログを検索します。 たとえば、ハンドルされない例外が発生して、ロールがクラッシュし、リサイクルされたとします。 その情報は、Windows イベント ログのアプリケーション チャンネルに表示されます。 ユーザーは、検索を使用して Windows イベント ログのエラーを確認し、例外の完全なスタック トレースを取得できます。 この機能は、問題の根本原因の発見に役立ちます。
+[検索](app-insights-diagnostic-search.md)または [Analytics クエリ](../log-analytics/query-language/get-started-analytics-portal.md)を使用して、Azure 診断によって送信されるさまざまなトレース ログを検索します。 たとえば、ハンドルされない例外が発生して、ロールがクラッシュし、リサイクルされたとします。 その情報は、Windows イベント ログのアプリケーション チャンネルに表示されます。 ユーザーは、検索を使用して Windows イベント ログのエラーを確認し、例外の完全なスタック トレースを取得できます。 この機能は、問題の根本原因の発見に役立ちます。
 
 ![Azure 診断の検索](./media/app-insights-cloudservices/25-wad.png)
 
@@ -197,7 +196,7 @@ Web ロールの場合、以下のカウンターも収集されます。
 
 追加のカスタム パフォーマンス カウンターやその他の Windows パフォーマンス カウンターは、[この例のように](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14) ApplicationInsights.config を編集することで指定できます。
 
-  ![パフォーマンス カウンター](./media/app-insights-cloudservices/OLfMo2f.png)
+  ![パフォーマンス カウンター](./media/app-insights-cloudservices/002-servers.png)
 
 ## <a name="correlated-telemetry-for-worker-roles"></a>worker ロールのテレメトリの関連付け
 豊富な診断のエクスペリエンスでは、要求が失敗した場合や待機時間が長い場合の原因を確認できます。 Web ロールを使用すると、SDK によって関係するテレメトリの間に関連付けが自動的に設定されます。 worker ロールの場合は、カスタムのテレメトリ初期化子を使用して、すべてのテレメトリに共通の Operation.Id context 属性を設定することで、これを実現できます。 これにより、待機時間/失敗の問題の原因が依存関係とコードのどちらにあるかを一目で把握することができます。 
@@ -206,11 +205,7 @@ Web ロールの場合、以下のカウンターも収集されます。
 
 * [こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36)に示すように、CallContext に関連付け ID を設定します。 このケースでは、要求 ID を関連付け ID として使用しています。
 * カスタムの TelemetryInitializer 実装を追加します。これにより、上で設定した correlationId に Operation.Id が設定されます。 例についてはこちらをご覧ください ([ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13))。
-* カスタムのテレメトリ初期化子を追加します。 これは、ApplicationInsights.config ファイル内か、 [こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)
-
-これで完了です。 ポータル エクスペリエンスは既に、関連付けられたすべてのテレメトリを一目で確認できるように設定されています。
-
-![相関関係を持つテレメトリ](./media/app-insights-cloudservices/bHxuUhd.png)
+* カスタムのテレメトリ初期化子を追加します。 これは ApplicationInsights.config ファイル内か、[こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)に記載されているコードで行うことができます。
 
 ## <a name="client-telemetry"></a>クライアント テレメトリ
 [Web ページに JavaScript SDK を追加][client]して、ページ ビュー数、ページの読み込み時間、スクリプトの例外などのブラウザー ベースのテレメトリを取得し、ページ スクリプトにカスタムのテレメトリを記述できます。
@@ -223,7 +218,7 @@ Web ロールの場合、以下のカウンターも収集されます。
 
 システムで Stream Analytics などの他の Azure サービスが使用されている場合は、その監視グラフも含めます。 
 
-クライアント モバイル アプリがある場合は、主要なユーザー操作の際にカスタム イベントを送信するコードを挿入してから、[HockeyApp ブリッジ](app-insights-hockeyapp-bridge-app.md)を作成します。 [Analytics](app-insights-analytics.md) でクエリを作成してイベント カウントを表示してから、それをダッシュボードにピン留めします。
+クライアントのモバイル アプリがある場合は、[App Center](app-insights-mobile-center-quickstart.md) を使用してください。 [Analytics](app-insights-analytics.md) でクエリを作成してイベント カウントを表示してから、それをダッシュボードにピン留めします。
 
 ## <a name="example"></a>例
 [この例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) では、1 つの Web ロールと 2 つの worker ロールが含まれたサービスを監視します。
@@ -236,14 +231,14 @@ Web ロールの場合、以下のカウンターも収集されます。
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>次の手順
-* [Application Insights に Azure 診断を送信するための構成](app-insights-azure-diagnostics.md)
+* [Application Insights に Azure 診断を送信するための構成](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Application Insights リソースの作成の自動化](app-insights-powershell.md)
 * [Azure 診断の自動化](app-insights-powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 
 [api]: app-insights-api-custom-events-metrics.md
 [availability]: app-insights-monitor-web-app-availability.md
-[azure]: app-insights-azure.md
+[azure]: app-insights-overview.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
 [netlogs]: app-insights-asp-net-trace-logs.md

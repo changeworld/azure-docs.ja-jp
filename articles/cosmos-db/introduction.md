@@ -1,25 +1,19 @@
 ---
-title: Azure Cosmos DB の概要 | Microsoft Docs
-description: Azure Cosmos DB について説明します。 このグローバルに分散されたマルチモデル データベースは、待ち時間が少なく、柔軟なスケーラビリティを備え、高可用性を実現することを目指して構築されています。
+title: Azure Cosmos DB の概要
+description: Azure Cosmos DB について説明します。 このグローバルに分散されたマルチモデル データベースは、少ない待ち時間、柔軟なスケーラビリティ、高可用性を実現し、NoSQL データのネイティブ サポートを提供することを目指して構築されています。
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: monicar
-documentationcenter: ''
-ms.assetid: a855183f-34d4-49cc-9609-1478e465c3b7
+author: SnehaGunda
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 12/15/2017
-ms.author: mimig
+ms.date: 04/08/2018
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: e78480ceb47e472029795848739b4416e0c4256e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 50abe2b067770976f19ae9b70c97c2df8354640f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091580"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
@@ -36,17 +30,17 @@ Azure Cosmos DB は、グローバルに分散された複数モデルのデー�
 * **ターンキー グローバル配信**
     * [ボタンをクリック](tutorial-global-distribution-sql-api.md)して、任意の数の [Azure リージョン](https://azure.microsoft.com/regions/)に[データを配布](distribute-data-globally.md)できます。 これにより、ユーザーの近くにデータを配置でき、顧客の待ち時間を最小限に抑えることができます。 
     * Azure Cosmos DB のマルチホーム API を使用すると、アプリは最も近いリージョンを常に把握し、最も近いデータ センターに要求を送信します。 これはすべて構成を変更せずにできます。 書き込みリージョンと必要な数の読み取りリージョンを設定し、残りは自動的に処理されます。
-    * Cosmos DB データベースのリージョンを追加および削除するとき、アプリケーションを再展開する必要はなく、マルチホーム API 機能によりアプリケーションの高可用性が維持されます。
+    * Azure Cosmos DB データベースのリージョンを追加および削除するとき、アプリケーションを再展開する必要はなく、マルチホーム API 機能によりアプリケーションの高可用性が維持されます。
 
 * **データに対するアクセスとクエリのため、各種のデータ モデルと人気の API をサポート**
     * Azure Cosmos DB の基盤となるアトム レコード シーケンス (ARS) ベースのデータ モデルでは、ドキュメント、グラフ、キーと値、テーブル、列ファミリの各データ モデルなど、複数のデータ モデルをネイティブでサポートします。
     * 次のデータ モデルの API は SDK でサポートされており、複数の言語で利用できます。
-        * [SQL API](sql-api-introduction.md): 豊富な SQL クエリ機能を備えたスキーマのない JSON データベース エンジン。
-        * [MongoDB API](mongodb-introduction.md): Azure Cosmos DB データベースを利用する非常にスケーラブルな*サービスとしての MongoDB*。 MongoDB の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
-        * [Cassandra API](cassandra-introduction.md): Azure Cosmos DB データベースを利用するグローバルに分散されたサービスとしての Cassandra。 [Apache Cassandra](https://cassandra.apache.org/) の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
-        * [Graph (Gremlin) API](graph-introduction.md): 完全に管理された水平方向にスケーラブルなグラフ データベース サービス。Open Graph API (Apache Gremlin の [Apache TinkerPop 仕様](http://tinkerpop.apache.org/)に基づきます) をサポートする緊密に接続されたデータセットを使用するアプリケーションを簡単に構築して実行できます。
+        * [SQL API](sql-api-introduction.md): 豊富な SQL クエリ機能を備えた、スキーマのない JSON データベース エンジン。
+        * [MongoDB API](mongodb-introduction.md): Azure Cosmos DB プラットフォームを利用する非常にスケーラブルな*サービスとしての MongoDB*。 MongoDB の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
+        * [Cassandra API](cassandra-introduction.md): Azure Cosmos DB プラットフォームを利用するグローバルに分散されたサービスとしての Cassandra。 [Apache Cassandra](https://cassandra.apache.org/) の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
+        * [Gremlin API](graph-introduction.md): フル マネージドの、水平方向にスケーラブルなグラフ データベース サービス。Open Gremlin API (Apache Gremlin の [Apache TinkerPop 仕様](https://tinkerpop.apache.org/)に基づきます) をサポートする緊密に接続されたデータセットを使用するアプリケーションを簡単に構築して実行できます。
         * [テーブル API](table-introduction.md): 既存の Azure テーブル ストレージ アプリケーションに高度な機能 (自動インデックス作成、低待機時間の保証、グローバルな分散など) を提供する、キーと値のデータベース サービス。アプリを変更する必要はありません。
-        * 他のデータ モデルも近日対応予定です。
+        * 他のデータ モデルおよび API も近日対応予定です。
 
 * **世界中のどこでも、必要に応じて、スループットとストレージを柔軟に独立してスケール**
     * [秒単位](request-units.md)の粒度でデータベースのスループットを簡単にスケールし、必要なときにいつでも変更できます。 
@@ -54,38 +48,38 @@ Azure Cosmos DB は、グローバルに分散された複数モデルのデー�
 
 * **応答性に優れたミッション クリティカルなアプリケーションを構築**
     * Azure Cosmos DB では、お客様に対してエンドツーエンドの待ち時間を 99% の確率で低水準にとどめることを保証しています。 
-    * 一般的な 1 KB の項目であれば、エンドツーエンドの待ち時間は読み取りが 10 ミリ秒未満、インデックス付きの書き込みが 15 ミリ秒未満となる確率が 99% です (同じ Azure リージョンを対象とする場合に限ります)。 待ち時間の中央値はこれよりも大幅に低く、5 ミリ秒未満です。
+    * 一般的な 1 KB の項目であれば、エンドツーエンドの待ち時間は読み取りが 10 ミリ秒未満、インデックス付きの書き込みが 10 ミリ秒未満となる確率が 99% です (同じ Azure リージョンを対象とする場合に限ります)。 待ち時間の中央値はこれよりも大幅に低く、5 ミリ秒未満です。
 
 * **"常時オン" の可用性の確保**
     * すべての単一リージョン データベース アカウントに対しては 99.99% の可用性 SLA、およびすべてのマルチリージョン データベース アカウントに対しては 99.999% の読み取り可用性を提供します。
     * 可用性とパフォーマンスをさらに高めるために、任意の数の [Azure リージョン](https://azure.microsoft.com/regions)に展開できます。
-    * リージョンに優先順位を動的に設定します。また、データ損失ゼロを保証している 1 つ以上のリージョンで[障害のシミュレーション](regional-failover.md)を行って、(データベースだけでなく) アプリ全体のエンド ツー エンドの可用性をテストします。 
+    * リージョンに優先順位を動的に設定します。また、データ損失ゼロを保証している 1 つ以上のリージョンで[障害のシミュレーション](high-availability.md)を行って、(データベースだけでなく) アプリ全体のエンド ツー エンドの可用性をテストします。 
 
 * **グローバルに分散されたアプリケーションを正しく作成**
     * 明確に定義された実用的でわかりやすい 5 種類の[整合性モデル](consistency-levels.md)により、SQL のような厳密な整合性から、緩やかな NoSQL のような結果整合性 (およびその 2 つの中間) に至るまで、幅広く対応できます。 
   
 * **返金保証**
-    * ミッション クリティカルなデータの可用性、待機時間、スループット、整合性に対し、業界をリードする、財務的に裏付けられた、包括的な[サービス レベル アグリーメント](https://aka.ms/acdbsla)が提供されます。 
+    * ミッション クリティカルなデータの可用性、待ち時間、スループット、整合性に対し、業界をリードする、財務的に裏付けられた、包括的な[サービス レベル アグリーメント](https://aka.ms/acdbsla) (SLA) が提供されます。 
 
 * **データベース スキーマ/インデックスの管理が不要**
     * データベースのスキーマやインデックスの管理に関して心配する必要はなく、アプリケーションのスキーマをすばやく反復処理できます。
     * Azure Cosmos DB のデータベース エンジンは、完全にスキーマ フリーとなっています。取り込んだデータにはすべて自動でインデックスが作成されるため、スキーマやインデックスの指定が求められることはありません。さらに、クエリもきわめて高速です。 
 
 * **保有コストを削減**
-    * 管理されていないソリューションまたはオンプレミスの NoSQL ソリューションの 5 ～ 10 倍の[コスト効率](https://aka.ms/cosmos-db-tco-paper)を実現しました。
+    * 非マネージド ソリューションまたはオンプレミスの NoSQL ソリューションの 5 から 10 倍のコスト効果を実現しました。
     * AWS DynamoDB や Google Spanner の 3 分の 1 の価格です。
 
 ## <a name="capability-comparison"></a>機能の比較
 
-Azure Cosmos DB では、リレーショナル データベースと非リレーショナル データベースのどちらにも最適な機能を用意しています。
+Azure Cosmos DB では、従来のリレーショナル データベースと非リレーショナル データベースのどちらにも最適な機能を用意しています。
 
 | 機能 | リレーショナル データベース   | 非リレーショナル (NoSQL) データベース |    Azure Cosmos DB |
 | --- | --- | --- | --- |
 | グローバル配信 | いいえ  | いいえ  | あり (30 以上のリージョンでターンキー配信、マルチホーム API を使用した場合)|
 | 水平スケール | いいえ  | [はい] | あり (ストレージとスループットを個別に調整できます) | 
-| 待ち時間の保証 | いいえ  | [はい] | あり (読み取りが 10 ミリ秒未満、書き込みが 15 ミリ秒未満となる確率が 99% です) | 
+| 待ち時間の保証 | いいえ  | [はい] | あり (読み取りが 10 ミリ秒未満、書き込みが 10 ミリ秒未満となる確率が 99% です) | 
 | 高可用性 | いいえ  | [はい] | あり (Azure Cosmos DB は常時オンで、明確に定義された PACELC のトレードオフがあり、自動および手動のフェールオーバー オプションを備えています)|
-| データモデル + API | リレーショナル + SQL | マルチモデル + OSS API | マルチモデル + SQL + OSS API (近日追加予定) |
+| データモデル + API | リレーショナル + SQL | マルチモデル + OSS API | マルチモデル + SQL + OSS API |
 | SLA | [はい] | いいえ  | あり (待ち時間、スループット、整合性、可用性に関する包括的 SLA) |
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Azure Cosmos DB の恩恵を受けるソリューション
@@ -98,7 +92,7 @@ Azure Cosmos DB では、リレーショナル データベースと非リレー
 * [Azure Cosmos DB SQL API を使ってみる](create-sql-api-dotnet.md)
 * [Azure Cosmos DB MongoDB API を使ってみる](create-mongodb-nodejs.md)
 * [Azure Cosmos DB Cassandra API を使ってみる](create-cassandra-dotnet.md)
-* [Azure Cosmos DB Graph API を使ってみる](create-graph-dotnet.md)
+* [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
 * [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)
 
 > [!div class="nextstepaction"]

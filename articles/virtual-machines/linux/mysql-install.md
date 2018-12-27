@@ -1,9 +1,9 @@
 ---
 title: Azure で MySQL を Linux VM にセットアップする | Microsoft Docs
-description: Azure 上の Linux 仮想マシン (Ubuntu または RedHat ファミリ OS) に MySQL スタックをインストールする方法について説明します。
+description: Azure 上の Linux 仮想マシン (Ubuntu または Red Hat ファミリ OS) に MySQL スタックをインストールする方法について説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
-ms.author: iainfou
-ms.openlocfilehash: d91f8cf8455a60d3e0afb2f209ba07933bcdee1c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: zarhoads
+ms.openlocfilehash: f7120decd4a5d43f88b55e7d7e20992af34cadc4
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469573"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>MySQL を Azure でインストールする方法
 この記事では、Linux を実行している Azure 仮想マシンに MySQL をインストールして構成する方法を説明します。

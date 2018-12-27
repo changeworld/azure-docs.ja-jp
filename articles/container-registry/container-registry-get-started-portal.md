@@ -1,21 +1,21 @@
 ---
-title: クイックスタート - Azure Portal を使用した Azure のプライベート Docker レジストリの作成
+title: クイック スタート - Azure でのプライベート Docker レジストリの作成 - Azure portal
 description: Azure Portal を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。
 services: container-registry
-author: mmacy
-manager: timlt
+author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 03/03/2018
-ms.author: marsma
-ms.custom: mvc
-ms.openlocfilehash: 7ea0ae9c0c071a08c9ff99587cd8c5dc8034fe69
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 11/06/2018
+ms.author: danlep
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 865c53fdda60f6a0384157ec68042b4b8b243a7a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255365"
 ---
-# <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用したコンテナー レジストリの作成
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>クイック スタート:Azure portal を使用したプライベート コンテナー レジストリの作成
 
 Azure Container Registry は、プライベート Docker コンテナー イメージを保存および管理する Azure のプライベート Docker レジストリです。 このクイック スタートでは、Azure Portal を使ってコンテナー レジストリを作成し、そのレジストリにコンテナー イメージをプッシュして、最後に Azure Container Instances (ACI) に対してレジストリからコンテナーをデプロイします。
 
@@ -23,15 +23,15 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal (https://portal.azure.com) にサインインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-**[リソースの作成]** > **[コンテナー]** > **[Azure Container Registry]** の順に選択します。
+**[リソースの作成]** > **[コンテナー]** > **[コンテナー レジストリ]** の順に選択します。
 
 ![Azure Portal でコンテナー レジストリを作成する][qs-portal-01]
 
-**[レジストリ名]** と **[リソース グループ]** に値を入力します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 `myResourceGroup` というリソース グループを作成し、**[SKU]** に [Basic] を選択します。 **[作成]** を選択して ACR インスタンスをデプロイします。
+**[レジストリ名]** と **[リソース グループ]** に値を入力します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 このクイック スタートでは、`myResourceGroup` という名前の新しいリソース グループを `West US` に作成し、**[SKU]** には [Basic] を選択します。 **[作成]** を選択して ACR インスタンスをデプロイします。
 
 ![Azure Portal でコンテナー レジストリを作成する][qs-portal-03]
 
@@ -71,29 +71,29 @@ Azure Container Registry にイメージをプッシュするには、まずイ�
 docker pull microsoft/aci-helloworld
 ```
 
-イメージをレジストリにプッシュする前に、イメージに ACR ログイン サーバー名を使用してタグを付ける必要があります。 [docker tag][docker-tag] コマンドを使用してイメージにタグ付けします。 *login server* を前述の手順でメモしたログイン サーバー名で置き換えます。
+イメージをレジストリにプッシュする前に、イメージに ACR ログイン サーバー名を使用してタグを付ける必要があります。 [docker tag][docker-tag] コマンドを使用してイメージにタグ付けします。 *login server* を前述の手順でメモしたログイン サーバー名で置き換えます。 *repository name* には、リポジトリ内のイメージの配置先 (**`myrepo`** など) を追加します。
 
 ```bash
-docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
+docker tag microsoft/aci-helloworld <login server>/<repository name>/aci-helloworld:v1
 ```
 
-最後に、[docker push][docker-push] を使用して、ACR インスタンスにイメージをプッシュします。 *login server* を ACR インスタンスのログイン サーバー名で置き換えます。
+最後に、[docker push][docker-push] を使用して、ACR インスタンスにイメージをプッシュします。 *login server* は、ACR インスタンスのログイン サーバー名に、また、*repository name* は、前のコマンドで使用したリポジトリの名前に置き換えます。
 
 ```bash
-docker push <login server>/aci-helloworld:v1
+docker push <login server>/<repository name>/aci-helloworld:v1
 ```
 
 `docker push` コマンドが成功すると、次のように出力されます。
 
 ```
-The push refers to a repository [uniqueregistryname.azurecr.io/aci-helloworld]
-7c701b1aeecd: Pushed
-c4332f071aa2: Pushed
-0607e25cc175: Pushed
+The push refers to repository [specificregistryname.azurecr.io/myrepo/aci-helloworld]
+31ba1ebd9cf5: Pushed
+cd07853fe8be: Pushed
+73f25249687f: Pushed
 d8fbd47558a8: Pushed
 44ab46125c35: Pushed
 5bef08742407: Pushed
-v1: digest: sha256:f2867748615cc327d31c68b1172cc03c0544432717c4d2ba2c1c2d34b18c62ba size: 1577
+v1: digest: sha256:565dba8ce20ca1a311c2d9485089d7ddc935dd50140510050345a1b0ea4ffa6e size: 1576
 ```
 
 ## <a name="list-container-images"></a>コンテナー イメージの一覧表示
@@ -114,7 +114,7 @@ ACR インスタンスのイメージ一覧を表示するには、ポータル�
 
 ![ACI を起動するためのコンテキスト メニュー][qs-portal-11]
 
-**[コンテナー名]** を入力し、サブスクリプションが正しく選択されていることを確認して、既存の**リソース グループ**の "myResourceGroup" を選択し、**[OK]** をクリックして、Azure Container Instances を起動します。
+**[コンテナー名]** を入力し、サブスクリプションが正しく選択されていることを確認して、既存の**リソース グループ**の "myResourceGroup" を選択します。 "パブリック IP アドレス" オプションを **[はい]** に設定して有効にし、**[OK]** をクリックして Azure Container Instances を起動します。
 
 ![ACI のデプロイ開始オプション][qs-portal-12]
 
@@ -136,7 +136,7 @@ mycontainer コンテナー グループを選択して、コンテナー グル
 
 リソースをクリーンアップするには、ポータルの **myResourceGroup** リソース グループに移動します。 リソース グループが読み込まれたら、**[リソース グループの削除]** をクリックして、リソース グループ、Azure Container Registry、およびすべての Azure Container Instances を削除します。
 
-![Azure Portal でコンテナー レジストリを作成する][qs-portal-08]
+![Azure portal でリソース グループを削除する][qs-portal-08]
 
 ## <a name="next-steps"></a>次の手順
 

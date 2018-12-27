@@ -1,7 +1,20 @@
+---
+author: cephalin
+ms.service: app-service-web
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: cephalin
+ms.openlocfilehash: 67b9c0ba2566206b0e70db51844b21e5d5d3c261
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344592"
+---
 ドメイン名のレコードが反映されると、カスタム ドメイン名を使用して対象の Azure App Services の Web アプリにアクセスできることをブラウザーで確認できます。
 
 > [!NOTE]
-> CNAME が DNS に反映されるまで多少の時間がかかります。 <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> などのサービスを使用すると、CNAME を利用できるかどうかを確認できます。
+> CNAME が DNS に反映されるまで多少の時間がかかります。 <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> などのサービスを使用して、CNAME を利用できるかどうかを確認できます。
 > 
 > 
 

@@ -3,16 +3,18 @@ title: Azure Automation の証明書資産
 description: 証明書を Azure Automation に安全に保存し、Runbook または DSC 構成でアクセスして Azure およびサードパーティのリソースで認証できます。  この記事では、証明書の詳細およびテキスト作成とグラフィカル作成の両方で証明書を使用する方法について説明します。
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d314b7e56b769cf4a6488b769edadf5f5795fefe
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7aeb9a9557694f8773af4fe67f47950bf82afe87
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621413"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure Automation の証明書資産
 
@@ -24,7 +26,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell コマンドレット
 AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [AzureRM.Automation モジュール](/powershell/azure/overview) に付属しています。
 
-|コマンドレット|[説明]|
+|コマンドレット|説明|
 |:---|:---|
 |[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|Runbook または DSC 構成で使用する証明書についての情報を取得します。 Get-AutomationCertificate アクティビティから取得できるのは、証明書自体のみです。|
 |[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|新しい証明書を Azure Automation に作成します。|
@@ -35,7 +37,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 ## <a name="activities"></a>アクティビティ
 Runbook および DSC 構成で証明書にアクセスするために、次の表のアクティビティが使用されます。
 
-| アクティビティ | [説明] |
+| アクティビティ | 説明 |
 |:---|:---|
 |Get-AutomationCertificate|Runbook または DSC 構成で使用する証明書を取得します。 [System.Security.Cryptography.X509Certificates.X509Certificate2](https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509certificate2.aspx) オブジェクトを返します。|
 
@@ -46,7 +48,7 @@ Runbook および DSC 構成で証明書にアクセスするために、次の�
 
 次の表の関数を使用して、Python2 Runbook の証明書にアクセスします。
 
-| 関数 | [説明] |
+| 関数 | 説明 |
 |:---|:---|
 | automationassets.get_automation_certificate | 証明書の資産に関する情報を取得します。 |
 
@@ -81,7 +83,7 @@ New-AzureRmAutomationCertificate -AutomationAccountName "MyAutomationAccount" -N
 
 ## <a name="using-a-certificate"></a>証明書の使用
 
-証明書を使用するには、**Get-AutomationCertificate** アクティビティを使用する必要があります。 [Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx) コマンドレットは、証明書資産に関する情報は返しますが証明書自体を返さないので使用できません。
+証明書を使用するには、**Get-AutomationCertificate** アクティビティを使用する必要があります。 [Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate?view=azurermps-6.6.0) コマンドレットは、証明書資産に関する情報は返しますが証明書自体を返さないので使用できません。
 
 ### <a name="textual-runbook-sample"></a>テキストの Runbook のサンプル
 
@@ -90,7 +92,7 @@ New-AzureRmAutomationCertificate -AutomationAccountName "MyAutomationAccount" -N
 ```powershell-interactive
 $serviceName = 'MyCloudService'
 $cert = Get-AutomationCertificate -Name 'MyCertificate'
-$certPwd = Get-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" `
+$certPwd = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyCertPassword'
 Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 ```

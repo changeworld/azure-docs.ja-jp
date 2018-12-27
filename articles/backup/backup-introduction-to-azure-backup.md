@@ -1,26 +1,21 @@
 ---
-title: Azure Backup とは | Microsoft Docs
+title: Azure Backup とは
 description: Azure Backup を使用して、Windows Server、Windows ワークステーション、System Center DPM サーバー、Azure 仮想マシンのデータとワークロードをバックアップおよび復元します。
 services: backup
-documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
-editor: ''
 keywords: バックアップと復元, 復元サービス, バックアップ ソリューション
-ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 3/1/2018
-ms.author: markgal;trinadhk;anuragm
+ms.date: 8/2/2018
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 00ed2a64c672e1d2ae9a0037905a544b6c4424b7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b0d920c1a41ff679c3dedcb6745e250b77cb769a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878330"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
 Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
@@ -106,23 +101,23 @@ Premium Storage VM をバックアップすると、Backup サービスによっ
 ### <a name="restore-premium-storage-vms"></a>Premium Storage VM の復元
 Premium Storage VM は、Premium Storage と Standard Storage のどちらかに復元することができます。 Premium Storage VM の復旧ポイントを Premium Storage に復元する方法が、一般的なプロセスです。 ただし、VM のファイルのサブセットが必要な場合は、Premium Storage VM の復旧ポイントを Standard Storage に復元する方がコスト効率が良いことがあります。
 
-## <a name="using-managed-disk-vms-with-azure-backup"></a>Azure Backup による管理ディスク VM の使用
-Azure Backup は、管理ディスク VM を保護します。 管理ディスクにより、仮想マシンのストレージ アカウントの管理から解放され、VM プロビジョニングが大幅に簡略化されます。
+## <a name="using-managed-disk-vms-with-azure-backup"></a>Azure Backup によるマネージド ディスク VM の使用
+Azure Backup は、マネージド ディスク VM を保護します。 マネージド ディスクにより、仮想マシンのストレージ アカウントの管理から解放され、VM プロビジョニングが大幅に簡略化されます。
 
-### <a name="back-up-managed-disk-vms"></a>管理ディスク VM のバックアップ
-管理ディスク上の VM のバックアップは、Resource Manager VM のバックアップと同じです。 Azure Portal では、仮想マシン ビューまたは Recovery Services コンテナー ビューから直接バックアップ ジョブを構成できます。 管理ディスクに VM をバックアップするには、管理ディスク上に構築された RestorePoint コレクションを使用します。 Azure Backup は、Azure Disk Encryption (ADE) を使用して暗号化された管理ディスク VM のバックアップにも対応しています。
+### <a name="back-up-managed-disk-vms"></a>マネージド ディスク VM のバックアップ
+マネージド ディスク上の VM のバックアップは、Resource Manager VM のバックアップと同じです。 Azure Portal では、仮想マシン ビューまたは Recovery Services コンテナー ビューから直接バックアップ ジョブを構成できます。 マネージド ディスクに VM をバックアップするには、マネージド ディスク上に構築された RestorePoint コレクションを使用します。 Azure Backup は、Azure Disk Encryption (ADE) を使用して暗号化されたマネージド ディスク VM のバックアップにも対応しています。
 
-### <a name="restore-managed-disk-vms"></a>管理ディスク VM の復元
-Azure Backup では、完全な管理ディスク VM を復元するか、管理ディスクをストレージ アカウントに復元することができます。 管理ディスクは、復元処理中に Azure によって管理されます。 復元プロセスの一環として作成されたストレージ アカウントは、ご自身 (または顧客) が管理します。 管理対象の暗号化された VM を復元する場合は、復元操作を開始する前に VM のキーとシークレットが Key Vault に存在している必要があります。
+### <a name="restore-managed-disk-vms"></a>マネージド ディスク VM の復元
+Azure Backup では、完全なマネージド ディスク VM を復元するか、マネージド ディスクをストレージ アカウントに復元することができます。 マネージド ディスクは、復元処理中に Azure によって管理されます。 復元プロセスの一環として作成されたストレージ アカウントは、ご自身 (または顧客) が管理します。 管理対象の暗号化された VM を復元する場合は、復元操作を開始する前に VM のキーとシークレットが Key Vault に存在している必要があります。
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>各 Backup コンポーネントの機能
 次のセクションの各表は、各 Azure Backup コンポーネントのさまざまな機能の可用性とサポートを簡単にまとめたものです。 追加のサポートや詳細情報については、それぞれの表に続く説明を参照してください。
 
 ### <a name="storage"></a>Storage
-| Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
+| 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | Recovery Services コンテナー |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
-| ディスク ストレージ | |![[はい]][green] |![[はい]][green] | |
+| Disk Storage | |![[はい]][green] |![[はい]][green] | |
 | テープ ストレージ | |![[はい]][green] | | |
 | 圧縮 <br/>(Recovery Services コンテナー内) |![[はい]][green] |![はい][green] |![[はい]][green] | |
 | 増分バックアップ |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
@@ -160,10 +155,10 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 **増分バックアップ**では、前回のバックアップ以降に変更されたデータ ブロックのみが格納されるため、記憶域とネットワークで高い効率性が実現します。 増分バックアップでは、完全バックアップを定期的に実行する必要はありません。 この例では、最初の月に完全バックアップが行われた後、A2、A3、A4、および A9 が変更済みとしてマークされ、2 か月目に転送されます。 3 か月目は、変更された A5 のみがマークされ、転送されます。 データ移動が少ないためストレージおよびネットワーク リソースを節約でき、TCO が削減されます。
 
 ### <a name="security"></a>セキュリティ
-| Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
+| 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
-| ネットワークのセキュリティ<br/> (対 Azure) |![[はい]][green] |![はい][green] |![[はい]][green] |![部分的][yellow] |
-| データのセキュリティ<br/> (Azure 内) |![[はい]][green] |![はい][green] |![[はい]][green] |![部分的][yellow] |
+| ネットワークのセキュリティ<br/> (対 Azure) |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
+| データのセキュリティ<br/> (Azure 内) |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -176,10 +171,10 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 >
 
 #### <a name="data-security"></a>データのセキュリティ
-Azure VM のバックアップの場合は、仮想マシン " *内* " で暗号化を設定する必要があります。 Windows 仮想マシンでは BitLocker を使用し、Linux 仮想マシンでは **dm-crypt** を使用します。 Azure Backup では、この経路で受け取るバックアップ データは自動的に暗号化されません。
+Azure VM のバックアップの場合は、仮想マシン " *内* " で暗号化を設定する必要があります。 Azure Backup は Azure Disk Encryption をサポートしており、Windows 仮想マシンでは BitLocker が、Linux 仮想マシンでは **dm-crypt** が使用されます。 Azure Backup のバックエンドでは [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) が使用されており、これによって保存データが保護されます。
 
 ### <a name="network"></a>ネットワーク
-| Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
+| 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | ネットワーク圧縮 <br/>(対**バックアップ サーバー**) | |![[はい]][green] |![[はい]][green] | |
 | ネットワーク圧縮 <br/>(対 **Recovery Services コンテナー**) |![[はい]][green] |![はい][green] |![[はい]][green] | |
@@ -219,7 +214,7 @@ Azure Backup には、*保護されているインスタンス*につき復旧�
 
 
 ## <a name="what-is-a-recovery-services-vault"></a>Recovery Services コンテナーとは
-Recovery Services コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure のオンライン ストレージ エンティティです。 Recovery Services コンテナーを使用して、Azure サービスとオンプレミス サーバーおよびワークステーションのバックアップ データを保持することができます。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 各 Azure サブスクリプション内に、Azure リージョンあたり最大 25 個の Recovery Services コンテナーを作成できます。 データの格納先を検討する場合、すべてのリージョンが同じではありません。 リージョンの組み合わせと追加のストレージに関する考慮事項については、「[geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md)」を参照してください。
+Recovery Services コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure のオンライン ストレージ エンティティです。 Recovery Services コンテナーを使用して、Azure サービスとオンプレミス サーバーおよびワークステーションのバックアップ データを保持することができます。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 各 Azure サブスクリプション内に、Azure リージョンあたり最大 500 個の Recovery Services コンテナーを作成できます。 データの格納先を検討する場合、すべてのリージョンが同じではありません。 リージョンの組み合わせと追加のストレージに関する考慮事項については、「[geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md)」を参照してください。
 
 Azure Service Manager に基づく Backup コンテナーは、コンテナーの最初のバージョンでした。 Azure Resource Manager モデル機能が追加された Recovery Services コンテナーは、コンテナーの 2 番目のバージョンです。 機能の違いの完全な説明については、「[Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)」の記事を参照してください。 Backup コンテナーを作成することはできなくなり、既存のすべての Backup コンテナーが Recovery Services コンテナーにアップグレードされました。 Azure Portal を使用して、Recovery Services コンテナーにアップグレードされたコンテナーを管理することができます。
 

@@ -1,5 +1,18 @@
-サービスとサブスクリプションの種類によって、1 秒あたりの要求数 (QPS) または 1 か月あたりの要求数 (QPM) が決まります。 アプリケーションがクォータを超えないために必要なロジックを含んでいることを確認してください。 QPM を超過した場合、要求は HTTP 状態コード 403 で失敗します。 QPS を超過した場合、要求は HTTP 状態コード 429 で失敗します。 また、応答には Retry-After ヘッダーも含まれています。これには、別の要求を送信するまでに待つ必要がある秒数が格納されます。  
-  
-### <a name="denial-of-service-dos-versus-throttling"></a>サービス拒否 (DOS) と調整
+---
+author: nitinme
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: nitinme
+ms.openlocfilehash: 1d8340054ace25a0cdc36eef9c3d5b4238a6f99b
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572377"
+---
+サービスとサブスクリプションの種類によって、1 秒あたりのクエリ数 (QPS) が決まります。 アプリケーションに、クォータ内に収めるロジックを含めるようにしてください。 QPS の上限に達するか超えた場合、要求は失敗し、HTTP 429 状態コードが返されます。 応答には、`Retry-After` ヘッダーが含まれています。これは、別の要求を送信できるようになるまでに待機する必要がある時間を示します。
 
-サービスは、DOS 攻撃と QPS 違反を区別します。 サービスがサービス拒否攻撃を疑っている場合、要求は成功します (HTTP 状態コードは 200 OK) が、応答の本文は空です。
+## <a name="denial-of-service-versus-throttling"></a>サービス拒否とスロットリング
+
+このサービスは、サービス拒否 (DoS) 攻撃と QPS 違反を区別しています。 サービスが DoS 攻撃を疑っている場合、要求は成功します (HTTP 状態コードは 200 OK)。 しかし、応答の本文は空になります。

@@ -1,38 +1,33 @@
 ---
-title: "Azure IoT Hub 操作の監視 | Microsoft Docs"
-description: "Azure IoT Hub 操作の監視を使用して、IoT Hub に対する操作の状態をリアルタイムで監視する方法。"
-services: iot-hub
-documentationcenter: 
+title: Azure IoT Hub 操作の監視 | Microsoft Docs
+description: Azure IoT Hub 操作の監視を使用して、IoT Hub に対する操作の状態をリアルタイムで監視する方法。
 author: nberdy
-manager: timlt
-editor: 
-ms.assetid: a299f3a5-b14d-4586-9c3b-44aea14ed013
+manager: briz
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: nberdy
-ms.openlocfilehash: 94cbef9d01299547a48923876cf134d5f3dafa6b
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160050"
 ---
 # <a name="iot-hub-operations-monitoring"></a>IoT Hub 操作の監視
 
 IoT Hub の操作の監視では、IoT Hub に対する操作の状態をリアルタイムで監視することができます。 IoT Hub は、複数のカテゴリにまたがる操作のイベントを追跡します。 1 つ以上のカテゴリから IoT ハブのエンドポイントにイベントを送信して処理するように選択することができます。 データを監視してエラーがないか確認したり、データ パターンに基づいてより複雑な処理をセットアップしたりできます。
 
 >[!NOTE]
->IoT Hub の操作の監視は非推奨になっており、2018 年 10 月 10 日をもって IoT Hub から削除される予定です。 IoT Hub の操作と正常性を監視する方法については、「[Azure IoT Hub の正常性を監視し、問題をすばやく診断する][lnk-monitor]」をご覧ください。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health][lnk-blog-announcement]」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
+>IoT Hub の操作の監視は非推奨になっており、2019 年 3 月 10 日をもって IoT Hub から削除される予定です。 IoT Hub の操作と正常性を監視する方法については、「[Azure IoT Hub の正常性を監視し、問題をすばやく診断する][lnk-monitor]」をご覧ください。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health][lnk-blog-announcement]」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
 
 IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 
 * デバイス ID の操作
 * デバイス テレメトリ
 * クラウドからデバイスへのメッセージ
-* 接続
+* Connections
 * ファイルのアップロード
 * メッセージ ルーティング
 
@@ -43,11 +38,11 @@ IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 
 1. IoT Hub を作成します。 IoT ハブの作成方法の手順については、[使用開始][lnk-get-started]に関するガイドを参照してください。
 
-1. IoT Hub のブレードを開きます。 このブレードで、 **[操作の監視]**をクリックします。
+1. IoT Hub のブレードを開きます。 このブレードで、 **[操作の監視]** をクリックします。
 
     ![ポータルでのアクセス操作監視の設定][1]
 
-1. 監視する監視カテゴリを選択し、**[保存]**をクリックします。 イベントは、 **[監視の設定]**に一覧表示された Event Hub 対応のエンドポイントから読み取ることができます。 IoT Hub エンドポイントの名前は `messages/operationsmonitoringevents`です。
+1. 監視する監視カテゴリを選択し、**[保存]** をクリックします。 イベントは、 **[監視の設定]** に一覧表示された Event Hub 対応のエンドポイントから読み取ることができます。 IoT Hub エンドポイントの名前は `messages/operationsmonitoringevents`です。
 
     ![IoT Hub での操作監視の設定][2]
 
@@ -125,7 +120,7 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 }
 ```
 
-### <a name="connections"></a>接続
+### <a name="connections"></a>Connections
 
 接続のカテゴリでは、デバイスが IoT Hub に接続したときに発生する、または IoT Hub から切断したときのエラーを追跡します。 このカテゴリの追跡は、許可されていない接続の試行を識別する場合、および接続状態が悪い領域内で接続が失われたタイミングを突き止める場合に便利です
 
@@ -190,26 +185,6 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
     "details": "ExternalEndpointDisabled"
 }
 ```
-
-## <a name="view-events"></a>イベントの表示
-
-*iothub-explorer* ツールを使用すると、IoT Hub が監視イベントを生成していることを簡単にテストできます。 このツールをインストールする方法については、[iothub-explorer][lnk-iothub-explorer] GitHub リポジトリにある手順をご覧ください。
-
-1. **[接続]** 監視カテゴリがポータルで **[詳細]** に設定されていることを確認します。
-
-1. コマンド プロンプトで次のコマンドを実行して、監視エンドポイントから読み取ります。
-
-    ```
-    iothub-explorer monitor-ops --login {your iothubowner connection string}
-    ```
-
-1. 別のコマンド プロンプトで次のコマンドを実行して、デバイスからクラウドへのメッセージをデバイスが送信するようにシミュレートします。
-
-    ```
-    iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
-    ```
-
-1. シミュレートされたデバイスが IoT Hub に接続すると、監視イベントが最初のコマンド プロンプトに表示されます。
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>監視エンドポイントへの接続
 
@@ -301,12 +276,11 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 [lnk-blog-announcement]: https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health
 [lnk-monitor]: iot-hub-monitor-resource-health.md
-[lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
+[lnk-get-started]: quickstart-send-telemetry-dotnet.md
 [lnk-diagnostic-metrics]: iot-hub-metrics.md
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md

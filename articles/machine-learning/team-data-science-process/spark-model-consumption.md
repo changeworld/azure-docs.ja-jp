@@ -3,25 +3,26 @@ title: Spark で構築した機械学習モデルの操作 | Microsoft Docs
 description: Python を使用して、Azure Blob Storage (WASB) に保存されている学習モデルを読み込み、スコア付けする方法を説明します。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
-manager: jhubbard
+author: deguhath
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 626305a2-0abf-4642-afb0-dad0f6bd24e9
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: bradsev
-ms.openlocfilehash: 3a586d40a9d195fe5ec3fa456d450cb3d86f2e9d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 76b67112ade2d160f281533c4be7d41c98087398
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345540"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルの操作
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 このトピックでは、HDInsight Spark クラスターで Python 使用して、保存済みの機械学習 (ML) モデルを操作する方法を説明します。 Spark MLlib を使用して構築され、Azure Blob Storage (WASB) に保存された機械学習 (ML) モデルを読み込む方法と、WASB に保存されているデータセットを使用して、それらの機械学習モデルをスコア付けする方法を説明します。 入力データを前処理し、MLlib ツールキットのインデックス機能とエンコード機能を使用して特徴を変換する方法と、ML モデルをスコア付けする際に入力として使用できるラベル付けされたポイント データ オブジェクトの作成方法を示します。 スコア付けに使用するモデルには、線形回帰、ロジスティック回帰、ランダム フォレスト モデル、勾配ブースティング ツリー モデルなどがあります。
 

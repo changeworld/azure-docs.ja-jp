@@ -1,72 +1,104 @@
 ---
-title: "Azure から Marketplace の項目をダウンロードする | Microsoft Docs"
-description: "Azure から Azure Stack のデプロイに Marketplace の項目をダウンロードすることができます。"
+title: Azure から Marketplace の項目をダウンロードする | Microsoft Docs
+description: クラウド オペレーターは、Marketplace 項目を Azure から Azure Stack デプロイにダウンロードできます。
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: sethmanheim
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/27/2018
-ms.author: brenduns
-ms.reviewer: jeffgo
-ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 11/08/2018
+ms.author: sethm
+ms.reviewer: ''
+ms.openlocfilehash: ec73083d1bb66e7c7735a2bee8e89eeb56cf7620
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282500"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
+クラウド オペレーターとして、Azure Marketplace から項目をダウンロードし、Azure Stack で使用できるようにします。 選択できる項目は、Azure Marketplace の精選された一覧にある項目です。これらの項目は、Azure Stack で動作するように、事前にテストされ、サポートされています。 一覧には新しいアイテムが頻繁に追加されるので、定期的に新しいコンテンツを確認してください。 
+
+Azure Marketplace に接続するには、次の 2 つのシナリオがあります。 
+
+- **接続されているシナリオ** - Azure Stack 環境がインターネットに接続している必要があります。 Azure Stack ポータルを使用して、項目を検索し、ダウンロードします。 
+- **接続されていないか、部分的に接続されているシナリオ** - Marketplace 項目をダウンロードするために、マーケットプレース シンジケーション ツールを使用してインターネットにアクセスする必要があります。 その後、ダウンロードしたファイルを、接続されていない Azure Stack インストールに転送します。 このシナリオでは、PowerShell を使用します。
+
+ダウンロードできる Marketplace 項目の一覧については、[Azure Stack 用の Azure Marketplace 項目](azure-stack-marketplace-azure-items.md)に関するページを参照してください。
 
 
-Azure Stack Marketplace に含めるコンテンツを決定するときは、Azure Marketplace から利用可能なコンテンツを検討する必要があります。 Azure Stack 上で動くことがテスト済みの Azure Marketplace の項目の精選された一覧からダウンロードすることができます。 一覧には新しいアイテムが頻繁に追加されるので、ときどき新しいコンテンツを確認してください。
-
-## <a name="download-marketplace-items-in-a-connected-scenario-with-internet-connectivity"></a>接続されているシナリオでの Marketplace アイテムのダウンロード (インターネット接続を使用)
-
-1. Marketplace の項目をダウンロードするには、最初に [Azure Stack を Azure に登録](azure-stack-register.md)します。
-2. Azure Stack 管理ポータル (https://portal.local.azurestack.external) にサインインします。
-3. Marketplace アイテムの中には大きいものがあります。 **[リソース プロバイダー]** > **[ストレージ]** をクリックして、システムに十分な領域があることを確認してください。
-
-    ![](media/azure-stack-download-azure-marketplace-item/image01.png)
-
-4. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** をクリックします。
-
-    ![](media/azure-stack-download-azure-marketplace-item/image02.png)
-
-4. **[Add from Azure]\(Azure から追加\)** をクリックして、ダウンロードできる項目の一覧を表示します。 一覧の各項目をクリックして、説明とダウンロード サイズを見ることができます。
-
-    ![](media/azure-stack-download-azure-marketplace-item/image03.png)
-
-5. 一覧で必要な項目を選び、**[ダウンロード]** をクリックします。 選んだ項目の VM イメージのダウンロードが始まります。 ダウンロードの時間は項目によって異なります。
-
-    ![](media/azure-stack-download-azure-marketplace-item/image04.png)
-
-6. ダウンロードが完了したら、Azure Stack オペレーターまたはユーザーとして、新しい Marketplace の項目をデプロイできます。 **[+ 新規]** をクリックして、カテゴリの中から新しい Marketplace の項目を探し、選択します。
-7. **[作成]** をクリックして、新しくダウンロードした項目の作成エクスペリエンスを開きます。 表示される手順に従って項目をデプロイします。
-
-## <a name="download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>接続が切断されたシナリオまたは部分的に接続されているシナリオでの Marketplace アイテムのダウンロード (制限付きのインターネット接続を使用)
-
-Azure Stack を非接続モード (インターネット接続なし) でデプロイする場合、Azure Stack ポータルを使用して Marketplace アイテムをダウンロードすることはできません。 ただし、マーケットプレース シンジケーション ツールを使用して、インターネットに接続されたマシンに Marketplace アイテムをダウンロードしてから、Azure Stack 環境に転送することができます。
+## <a name="connected-scenario"></a>接続されているシナリオ
+Azure Stack がインターネットに接続している場合は、管理ポータルを使用して Marketplace 項目をダウンロードすることができます。
 
 ### <a name="prerequisites"></a>前提条件
-マーケットプレース シンジケーション ツールを使用する前に、[自分の Azure サブスクリプションで登録済みの Azure Stack](azure-stack-register.md) があることを確認してください。  
+Azure Stack デプロイは、インターネットに接続し、[Azure に登録](azure-stack-register.md)されている必要があります。
 
-インターネットに接続されているマシンから、次の手順に従って必要な Marketplace アイテムをダウンロードします。
+### <a name="use-the-portal-to-download-marketplace-items"></a>ポータルを使用して Marketplace 項目をダウンロードする  
+1. Azure Stack 管理者ポータルにサインインします。
 
-1. PowerShell コンソールを管理者として開き、[Azure Stack 固有の PowerShell モジュールをインストール](azure-stack-powershell-install.md)します。 必ず、**PowerShell バージョン 1.2.11 以上**をインストールしてください。  
+2.  Marketplace 項目をダウンロードする前に、使用可能なストレージ領域を確認してください。 後で、ダウンロードする項目を選択するときに、ダウンロード サイズと使用可能なストレージ容量を比較することができます。 容量が限られている場合は、[空き領域の管理](azure-stack-manage-storage-shares.md#manage-available-space)のためのオプションを検討してください。 
 
-2. Azure Stack の登録に使用した Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRmAccount** コマンドレットをパラメーターなしで実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。  
+    空き領域を確認するには、**[リージョンの管理]** で対象リージョンを選択し、**[リソース プロバイダー]** > **[ストレージ]** の順に移動します。
+
+    [ ![ストレージ領域を確認する](media/azure-stack-download-azure-marketplace-item/storagesm.png "ストレージ領域を確認する") ](media/azure-stack-download-azure-marketplace-item/storage.png#lightbox)
+
+    
+3. Azure Stack Marketplace を開き、Azure に接続します。 そのためには、**[Marketplace management]\(Marketplace 管理\)** を選択し、**[Add from Azure]\(Azure から追加\)** を選択します。
+
+    [ ![[Add from Azure]\(Azure から追加\)](media/azure-stack-download-azure-marketplace-item/marketplacesm.png "[Add from Azure]\(Azure から追加\)") ](media/azure-stack-download-azure-marketplace-item/marketplace.png#lightbox)
+
+    Azure Marketplace からダウンロードできる項目の一覧がポータルに表示されます。 各項目をクリックすると、項目の説明と、ダウンロード サイズなどの追加情報が表示されます。 
+
+    [ ![Marketplace の一覧](media/azure-stack-download-azure-marketplace-item/image03sm.png "Marketplace の一覧") ](media/azure-stack-download-azure-marketplace-item/image03.png#lightbox)
+
+4. 項目を選択し、**[ダウンロード]** を選択します。 ダウンロードの時間は項目によって異なります。
+
+    [ ![ダウンロードのメッセージ](media/azure-stack-download-azure-marketplace-item/image04.png "ダウンロードのメッセージ") ](media/azure-stack-download-azure-marketplace-item/image04.png#lightbox)
+
+    ダウンロードが完了したら、Azure Stack オペレーターまたはユーザーとして、新しい Marketplace 項目をデプロイできます。
+
+5. ダウンロードした項目をデプロイするには、**[+ リソースの作成]** を選択し、カテゴリで新しいマーケットプレース項目を検索します。 次に、デプロイ処理を開始する項目を選択します。 処理は、Marketplace 項目ごとに異なります。 
+
+## <a name="disconnected-or-a-partially-connected-scenario"></a>接続されていないか、部分的に接続されているシナリオ
+
+Azure Stack が切断モードでインターネットに接続されていない場合は、PowerShell と*マーケットプレース シンジケーション ツール*を使用して、インターネットに接続しているマシンに Marketplace 項目をダウンロードします。 その後、Azure Stack 環境に項目を転送します。 接続されていない環境では、Azure Stack ポータルを使用して Marketplace 項目をダウンロードすることはできません。 
+
+マーケットプレース シンジケーション ツールは、接続されているシナリオでも使用することができます。 
+
+このシナリオは次の 2 つに分けられます。
+- **パート 1:** Azure Marketplace からダウンロードする。 インターネットにアクセスできるコンピューターで PowerShell を構成し、シンジケーション ツールをダウンロードして、Azure Marketplace から項目をダウンロードします。  
+- **パート 2:** Azure Stack Marketplace にアップロードし、発行する。 ダウンロードしたファイルを Azure Stack 環境に移動し、Azure Stack にインポートして、Azure Stack Marketplace に発行します。  
+
+
+### <a name="prerequisites"></a>前提条件
+- Azure Stack のデプロイは、[Azure に登録されている](azure-stack-register.md)必要があります。  
+
+- インターネットに接続できるコンピューターには、**Azure Stack PowerShell モジュール バージョン 1.2.11** 以降が存在する必要があります。 まだ存在しない場合は、[Azure Stack 固有の PowerShell モジュールをインストール](azure-stack-powershell-install.md)してください。  
+
+- ダウンロードした Marketplace 項目のインポートを有効にするには、[Azure Stack オペレーター用の PowerShell 環境](azure-stack-powershell-configure-admin.md)を構成する必要があります。  
+
+- パブリックにアクセスできるコンテナー (ストレージ BLOB) がある Azure Stack の[ストレージ アカウント](azure-stack-manage-storage-accounts.md)を持っている必要があります。 コンテナーは、Marketplace 項目のギャラリー ファイルのための一時的なストレージとして使用します。 ストレージ アカウントとコンテナーに慣れていない場合は、Azure ドキュメントの [Azure portal での BLOB の操作](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)に関するページを参照してください。
+
+- マーケットプレース シンジケーション ツールは、最初の手順でダウンロードされます。 
+
+### <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>マーケットプレース シンジケーション ツールを使用して Marketplace 項目をダウンロードする
+
+1. インターネットに接続されているコンピューターで、PowerShell コンソールを管理者として開きます。
+
+2. Azure Stack の登録に使用した Azure アカウントを追加します。 アカウントを追加するには、PowerShell でパラメーターなしで `Add-AzureRmAccount` を実行します。 Azure アカウントの資格情報の入力を求めるメッセージが表示されます。アカウントの構成によっては、2 要素認証を使用する必要があります。
 
 3. 複数のサブスクリプションがある場合は、次のコマンドを実行して、登録に使用したサブスクリプションを選択します。  
 
-   ```powershell
+   ```PowerShell  
    Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    $AzureContext = Get-AzureRmContext
    ```
@@ -85,74 +117,97 @@ Azure Stack を非接続モード (インターネット接続なし) でデプ�
      -Force
 
    # Change to the tools directory.
-   cd \AzureStack-Tools-master
+   cd .\AzureStack-Tools-master
 
    ```
 
-5. 次のコマンドを実行して、シンジケーション モジュールをインポートし、ツールを起動します。  
+5. 次のコマンドを実行して、シンジケーション モジュールをインポートし、ツールを起動します。 `Destination folder path` を、Azure Marketplace からダウンロードしたファイルを保存する場所に置き換えます。   
 
-   ```powershell
-   Import-Module .\ Syndication\AzureStack.MarketplaceSyndication.psm1
+   ```PowerShell  
+   Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
-   Sync-AzSOfflineMarketplaceItem `
-     -destination "<Destination folder path>" `
-     -AzureTenantID $AzureContext.Tenant.TenantId `
-     -AzureSubscriptionId $AzureContext.Subscription.Id  
+   Sync-AzSOfflineMarketplaceItem 
+      -Destination "Destination folder path in quotes" `
+      -AzureTenantID $AzureContext.Tenant.TenantId ` 
+      -AzureSubscriptionId $AzureContext.Subscription.Id 
    ```
 
-6. ツールが実行されると、Azure アカウント資格情報の入力を求められます。 Azure Stack の登録に使用した Azure アカウントにサインインします。 ログインが成功すると、使用可能な Marketplace アイテムの一覧がある、次の画面が表示されます。  
+6. ツールを実行すると、次の図のような画面が表示され、使用可能なマーケットプレース項目の一覧が示されます。
 
-   ![Azure Marketplace アイテムのポップアップ](./media/azure-stack-download-azure-marketplace-item/image05.png)
+   [ ![Azure Marketplace 項目のポップアップ](media/azure-stack-download-azure-marketplace-item/image05.png "Azure Marketplace 項目") ](media/azure-stack-download-azure-marketplace-item/image05.png#lightbox)
 
-7. ダウンロードするイメージを選択し、イメージのバージョンを書き留めます。 Ctrl キーを押しながら複数のイメージを選択することができます。 次のセクションでは、このイメージ バージョンを使用してイメージをインポートします。  次に、**[OK]** をクリックし、法的条項に **[はい]** をクリックして同意します。 また、**[Add criteria]\(条件の追加\)** オプションを使用して、イメージの一覧をフィルター処理することもできます。 
+7. ダウンロードする項目を選択し、"*バージョン*" を書き留めておきます  (*Ctrl* キーを押しながら、複数のイメージを選択することができます)。 次の手順で項目をインポートするときに、"*バージョン*" を参照します。 
+   
+   また、**[Add criteria]\(条件の追加\)** オプションを使用して、イメージの一覧をフィルター処理することもできます。
 
-   ダウンロードには、イメージのサイズに応じて時間がかかります。 イメージがダウンロードされたら、前に指定したダウンロード先のパスで使用できます。 ダウンロードには、Azpkg 形式で VHD ファイルとギャラリー アイテムが含まれています。
+8. **[OK]** を選択し、法律条項を確認して同意します。 
 
-### <a name="import-the-image-and-publish-it-to-azure-stack-marketplace"></a>イメージのインポートと Azure Stack Marketplace への発行
+9. ダウンロードにかかる時間は、項目のサイズによって異なります。 ダウンロードが完了したら、その項目をスクリプトで指定したフォルダーで使用できます。 ダウンロードには、VHD ファイル (仮想マシンの場合)、または .zip ファイル (仮想マシン拡張機能の場合) が含まれています。 また、*.azpkg* 形式 (実体は .zip ファイル) のギャラリー パッケージが含まれていることもあります。
 
-1. イメージとギャラリーのパッケージをダウンロードした後、それらと AzureStack-Tools-master フォルダーの内容をリムーバブル ディスク ドライブに保存して、Azure Stack 環境にコピーします (C:\MarketplaceImages など、ローカルの任意の場所にコピーできます)。     
+### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>ダウンロードのインポートと Azure Stack Marketplace への発行
 
-2. イメージをインポートする前に、「[Azure Stack オペレーターの PowerShell 環境の構成](azure-stack-powershell-configure-admin.md)」で説明されている手順に従って、Azure Stack オペレーターの環境に接続する必要があります。  
+1. [以前にダウンロードした](#use-the-marketplace-syndication-tool-to-download-marketplace-items)仮想マシン イメージまたはソリューション テンプレートのファイルは、Azure Stack 環境でローカルに使用できるようにする必要があります。  
 
-3. Add-AzsVMImage コマンドレットを使用して、Azure Stack にイメージをインポートします。 このコマンドレットを使用する場合は、*publisher*、*offer* などのパラメーター値を、インポートするイメージの値で置き換えてください。 イメージの *publisher*、*offer*、および *sku* の値は、前にダウンロードした Azpkg ファイルの imageReference オブジェクトから取得できます。また、*version* の値は、前のセクションの手順 6. で取得できます。
+2. 管理ポータルを使用して、マーケットプレース項目パッケージ (.azpkg ファイル) と仮想ハード ディスク イメージ (.vhd ファイル) を Azure Stack BLOB ストレージにアップロードします。 パッケージとディスク ファイルをアップロードすると、Azure Stack で利用できるようになるため、後で Azure Stack Marketplace に項目を発行することができます。
 
-   ```json
-   "imageReference": {
-      "publisher": "MicrosoftWindowsServer",
-      "offer": "WindowsServer",
-      "sku": "2016-Datacenter-Server-Core"
-    }
-   ```
+   アップロードするには、パブリックにアクセス可能なコンテナーを持つストレージ アカウントが必要です (このシナリオの前提条件を参照)。  
+   1. Azure Stack 管理ポータルで、**[すべてのサービス]** に移動します。次に、**[データ + ストレージ]** カテゴリで **[ストレージ アカウント]** を選択します。  
+   
+   2. サブスクリプションからストレージ アカウントを選択し、**[BLOB サービス]** で **[コンテナー]** を選択します。  
+      [ ![Blob service](media/azure-stack-download-azure-marketplace-item/blob-service.png "Blob service") ](media/azure-stack-download-azure-marketplace-item/blob-service.png#lightbox)  
+   
+   3. 使用するコンテナーを選択し、**[アップロード]** を選択して **[BLOB のアップロード]** ペインを開きます。  
+      [ ![コンテナー](media/azure-stack-download-azure-marketplace-item/container.png "コンテナー") ](media/azure-stack-download-azure-marketplace-item/container.png#lightbox)  
+   
+   4. [BLOB のアップロード] ウィンドウで、ストレージに読み込むパッケージとディスク ファイルを参照し、**[アップロード]** を選択します。[ ![アップロード](media/azure-stack-download-azure-marketplace-item/uploadsm.png "アップロード") ](media/azure-stack-download-azure-marketplace-item/upload.png#lightbox)  
 
-   パラメーター値を置き換えて、次のコマンドを実行します。
+   5. アップロードしたファイルは、コンテナー ペインに表示されます。 ファイルを選択し、**[BLOB のプロパティ]** ペインで URL をコピーします。 次の手順で Marketplace 項目を Azure Stack にインポートするときに、この URL を使用します。  次の図では、コンテナーは *blob-test-storage* で、ファイルは *Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg* です。  ファイル URL は *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg* です。  
+      [ ![BLOB のプロパティ](media/azure-stack-download-azure-marketplace-item/blob-storagesm.png "BLOB のプロパティ") ](media/azure-stack-download-azure-marketplace-item/blob-storage.png#lightbox)  
 
-   ```powershell
-   Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
+3. **Add-AzsPlatformimage** コマンドレットを使用して、Azure Stack に VHD イメージをインポートします。 このコマンドレットを使用する場合は、*publisher*、*offer* などのパラメーター値を、インポートするイメージの値で置き換えてください。 
 
-   Add-AzsVMImage `
+   AZPKG ファイルと共にダウンロードされたテキスト ファイルから、イメージの "*パブリッシャー*"、"*オファー*"、および *SKU* の値を取得できます。 テキスト ファイルは、指定の場所に保存されています。 *version* の値は、前の手順で Azure から項目をダウンロードするときに書き留めておいたバージョンです。 
+ 
+   次のスクリプト例では、Windows Server 2016 Datacenter - Server Core 仮想マシンの値が使用されています。 *-Osuri* の値は、項目の BLOB 保存場所のパスの例です。 
+
+   このスクリプトに代わる方法として、[こちらの記事で説明されている手順](azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal)に従い、Azure portal を使って .VHD イメージをインポートすることもできます。
+ 
+   ```PowerShell  
+   Add-AzsPlatformimage `
     -publisher "MicrosoftWindowsServer" `
     -offer "WindowsServer" `
     -sku "2016-Datacenter-Server-Core" `
     -osType Windows `
     -Version "2016.127.20171215" `
-    -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Windows-Server-2016-DatacenterCore-20171215-en.us-127GB.vhd" `
-    -CreateGalleryItem $False `
-    -Location Local
+    -OsUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.vhd"  
    ```
+   
+   **ソリューション テンプレートについて:** いくつかのテンプレートには、名前が **fixed3.vhd** の小さな 3 MB .VHD ファイルを含めることができます。 Azure Stack にそのファイルをインポートする必要はありません。 Fixed3.vhd。  このファイルは、Azure Marketplace の発行要件を満たすために、いくつかのソリューション テンプレートに含まれています。
 
-4. ポータルを使用して Marketplace アイテム (.Azpkg) を Azure Stack BLOB ストレージにアップロードします。 ローカルの Azure Stack ストレージへのアップロード、または Azure Storage へのアップロードができます。 (パッケージの一時的な場所です。)BLOB がパブリックにアクセスできることを確認し、URI を書き留めておきます。  
+   テンプレートの説明を確認してダウンロードし、ソリューション テンプレートを操作するために必要な VHD などの追加要件をインポートします。  
+   
+   **拡張機能について:** 仮想マシン イメージの拡張機能を扱うときは、次のパラメーターを使用してください。
+   - *発行元*
+   - *種類*
+   - *バージョン*  
 
-5. **Add-AzsGalleryItem** を使用して、Marketplace アイテムを Azure Stack に発行します。 例: 
+   拡張機能に *Offer* は使用しません。   
 
-   ```powershell
-   Add-AzsGalleryItem `
-     -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.2.azpkg" `
+
+4.  PowerShell で **Add-AzsGalleryItem** コマンドレットを使用して、Marketplace 項目を Azure Stack に発行します。 例:   
+    ```PowerShell  
+    Add-AzsGalleryItem `
+     -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
      –Verbose
-   ```
+    ```
+5. ギャラリー項目は、発行すると、使用できるようになります。 ギャラリー項目が発行されたことを確認するには、**[すべてのサービス]** に移動し、**[全般]** カテゴリで **[Marketplace]** を選択します。  ソリューション テンプレートをダウンロードする場合は、そのソリューション テンプレートのすべての依存 VHD イメージを追加します。  
+  [ ![マーケットプレースの表示](media/azure-stack-download-azure-marketplace-item/view-marketplacesm.png "マーケットプレースの表示") ](media/azure-stack-download-azure-marketplace-item/view-marketplace.png#lightbox)  
 
-6. ギャラリー アイテムが発行されると、**[新規]** > **[Marketplace]** ウィンドウに表示されます。  
+Azure Stack PowerShell 1.3.0 のリリースにより、仮想マシン拡張機能を追加できるようになりました。 例: 
 
-   ![マーケットプレース](./media/azure-stack-download-azure-marketplace-item/image06.png)
+````PowerShell
+Add-AzsVMExtension -Publisher "Microsoft" -Type "MicroExtension" -Version "0.1.0" -ComputeRole "IaaS" -SourceBlob "https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip" -SupportMultipleExtensions -VmOsType "Linux"
+````
 
 ## <a name="next-steps"></a>次の手順
 

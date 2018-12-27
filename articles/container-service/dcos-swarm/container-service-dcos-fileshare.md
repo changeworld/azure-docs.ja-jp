@@ -1,6 +1,6 @@
 ---
-title: "Azure DC/OS クラスターのファイル共有"
-description: "Azure Container Service でファイル共有を作成し、DC/OS クラスターにマウントします"
+title: (非推奨) Azure DC/OS クラスターのファイル共有
+description: Azure Container Service でファイル共有を作成し、DC/OS クラスターにマウントします
 services: container-service
 author: julienstroheker
 manager: dcaro
@@ -9,13 +9,16 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: c1c318f4204efd24a2d9d3d83bb1cb71f5775bdb
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 728f8ddbda35f27c0f89e1d72e98fd2d7669320e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999854"
 ---
-# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>ファイル共有を作成し、DC/OS クラスターにマウントする
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(非推奨) ファイル共有を作成して DC/OS クラスターにマウントする
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 このチュートリアルでは、Azure でファイル共有を作成し、DC/OS クラスターの各エージェントとマスターにマウントする方法について説明します。 ファイル共有を設定すると、クラスター間で構成、アクセス、ログなどのファイルが共有しやすくなります。 このチュートリアルでは、次のタスクを実行します。
 
@@ -26,7 +29,7 @@ ms.lasthandoff: 12/06/2017
 
 このチュートリアルの手順を実行するには、ACS DC/OS クラスターが必要です。 必要に応じて、[このサンプル スクリプト](./../kubernetes/scripts/container-service-cli-deploy-dcos.md)で作成できます。
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -139,7 +142,7 @@ sh ./getNodesRunScript.sh
 
 これで、クラスターの各ノードにある `/mnt/share/dcosshare` にアクセスできるようになりました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルは、次の手順を使用して、Azure ファイル共有を DC/OS クラスターで利用できるようにしました。
 

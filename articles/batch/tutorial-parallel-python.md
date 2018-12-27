@@ -2,19 +2,20 @@
 title: 並列ワークロードの実行 - Azure Batch Python
 description: チュートリアル - Batch Python クライアント ライブラリを使用して、Azure Batch で ffmpeg を使ってメディア ファイルを並列処理します。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 01/23/2018
-ms.author: danlep
+ms.date: 11/29/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a04cd63944d0ed75ff90f211134cd93c77abe1e3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 6ece4d7d0a39f5ea9dd4d9503d3bdd11a4bffd89
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678578"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>チュートリアル: Python API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -38,7 +39,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 * [pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャー
 
-* Azure Batch アカウントおよびリンクされている汎用 Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
+* Azure Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -75,6 +76,8 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
+[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
+
 ### <a name="run-the-app"></a>アプリの実行
 
 スクリプトを実行するには、次の手順を実行します。
@@ -86,7 +89,7 @@ python batch_python_tutorial_ffmpeg.py
 サンプル アプリケーションを実行すると、コンソールの出力は次のようになります。 実行中、プールのコンピューティング ノードを開始する際に、`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` で一時停止が発生します。 
    
 ```
-Sample start: 12/12/2017 3:20:21 PM
+Sample start: 11/28/2018 3:20:21 PM
 
 Container [input] created.
 Container [output] created.
@@ -102,7 +105,7 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 Success! All tasks completed successfully within the specified timeout period.
 Deleting container [input]....
 
-Sample end: 12/12/2017 3:29:36 PM
+Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
@@ -126,8 +129,8 @@ Elapsed time: 00:09:14.3418742
 
 ```python
 blob_client = azureblob.BlockBlobService(
-    account_name=STORAGE_ACCOUNT_NAME,
-    account_key=STORAGE_ACCOUNT_KEY)
+    account_name=_STORAGE_ACCOUNT_NAME,
+    account_key=_STORAGE_ACCOUNT_KEY)
 ```
 
 このアプリは [BatchServiceClient](/python/api/azure.batch.batchserviceclient) オブジェクトを作成して、Batch サービスでプール、ジョブ、タスクを作成および管理します。 このサンプルの Batch クライアントでは共有キー認証を使用します。 Batch は、個々のユーザーまたは自動アプリケーションを認証するために、[Azure Active Directory](batch-aad-auth.md) による認証もサポートしています。
@@ -150,7 +153,7 @@ blob_client.create_container(input_container_name, fail_on_exist=False)
 blob_client.create_container(output_container_name, fail_on_exist=False)
 input_file_paths = []
     
-for folder, subs, files in os.walk('./InputFiles/'):
+for folder, subs, files in os.walk(os.path.join(sys.path[0],'./InputFiles/')):
     for filename in files:
         if filename.endswith(".mp4"):
             input_file_paths.append(os.path.abspath(os.path.join(folder, filename)))
@@ -163,7 +166,7 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>コンピューティング ノードのプールの作成
 
-次に、`create_pool` が呼び出されて、コンピューティング ノードのプールが Batch アカウントに作成されます。 この定義済みの関数は、Batch の [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) クラスを使用して、ノードの数、VM のサイズ、プールの構成を設定します。 ここでは、[VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) オブジェクトで [ImageReference](/python/api/azure.batch.models.imagereference) に、Azure Marketplace で公開されている Ubuntu Server 16.04 LTS イメージを指定します。 Batch は、Azure Marketplace のさまざまな VM イメージだけでなく、カスタム VM イメージもサポートしています。
+次に、`create_pool` が呼び出されて、コンピューティング ノードのプールが Batch アカウントに作成されます。 この定義済みの関数は、Batch の [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) クラスを使用して、ノードの数、VM のサイズ、プールの構成を設定します。 ここでは、[VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) オブジェクトで [ImageReference](/python/api/azure.batch.models.imagereference) に、Azure Marketplace で公開されている Ubuntu Server 18.04 LTS イメージを指定します。 Batch は、Azure Marketplace のさまざまな VM イメージだけでなく、カスタム VM イメージもサポートしています。
 
 ノードの数と VM のサイズは、定義済みの定数を使用して設定されます。 Batch では専用ノードと[低優先度ノード](batch-low-pri-vms.md)がサポートされているため、ご利用のプールではそのいずれかまたは両方を使用できます。 専用ノードは、プール用に予約されています。 低優先度ノードは、Azure の VM の余剰容量から割引価格で提供されます。 低優先度ノードは、Azure に十分な容量がない場合に使用できなくなります。 このサンプルは、既定で、サイズ *Standard_A1_v2* の低優先度ノードが 5 つだけ含まれているプールを作成します。 
 
@@ -178,10 +181,10 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04.0-LTS",
+            sku="18.04-LTS",
             version="latest"
             ),
-        node_agent_sku_id="batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_DEDICATED_POOL_NODE_COUNT,
     target_low_priority_nodes=_LOW_PRIORITY_POOL_NODE_COUNT,
@@ -203,8 +206,8 @@ Batch ジョブでは、タスクの実行対象となるプールと、作業�
 
 ```python
 job = batch.models.JobAddParameter(
-    job_id,
-    batch.models.PoolInformation(pool_id=pool_id))
+    id=job_id,
+    pool_info=batch.models.PoolInformation(pool_id=pool_id))
 
 batch_service_client.job.add(job)
 ```
@@ -228,13 +231,15 @@ for idx, input_file in enumerate(input_files):
         id='Task{}'.format(idx),
         command_line=command,
         resource_files=[input_file],
-        output_files=[batchmodels.OutputFile(output_file_path,
-              destination=batchmodels.OutputFileDestination(
-                container=batchmodels.OutputFileBlobContainerDestination(output_container_sas_url)),
-              upload_options=batchmodels.OutputFileUploadOptions(
-                batchmodels.OutputFileUploadCondition.task_success))]
-            )
-     )
+        output_files=[batchmodels.OutputFile(
+            file_pattern=output_file_path,
+            destination=batchmodels.OutputFileDestination(
+                container=batchmodels.OutputFileBlobContainerDestination(
+                    container_url=output_container_sas_url)),
+            upload_options=batchmodels.OutputFileUploadOptions(
+                upload_condition=batchmodels.OutputFileUploadCondition.task_success))]
+        )
+    )
 batch_service_client.task.add_collection(job_id, tasks)
 ```    
 
@@ -250,7 +255,7 @@ while datetime.datetime.now() < timeout_expiration:
     sys.stdout.flush()
     tasks = batch_service_client.task.list(job_id)
 
-     incomplete_tasks = [task for task in tasks if
+    incomplete_tasks = [task for task in tasks if
                          task.state != batchmodels.TaskState.completed]
     if not incomplete_tasks:
         print()

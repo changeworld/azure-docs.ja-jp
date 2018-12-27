@@ -1,28 +1,22 @@
 ---
-title: "Azure REST API を使用して Hadoop クラスターを作成する - Azure | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを Azure REST API に送信して HDInsight クラスターを作成する方法について説明します。"
+title: Azure REST API を使用して Apache Hadoop クラスターを作成する - Azure
+description: Azure Resource Manager テンプレートを Azure REST API に送信して HDInsight クラスターを作成する方法について説明します。
 services: hdinsight
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 98be5893-2c6f-4dfa-95ec-d4d8b5b7dcb5
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/31/2018
-ms.author: larryfr
-ms.openlocfilehash: 4fcdde200fa9d54c7eb5b0ffe151aff3fbd0ed85
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.topic: conceptual
+ms.date: 05/02/2018
+ms.author: hrasheed
+ms.openlocfilehash: b6ec48085d5dd2ea31543e208e8d32b954cb0bca
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872852"
 ---
-# <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Hadoop クラスターを作成する
+# <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Apache Hadoop クラスターを作成する
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
@@ -40,7 +34,7 @@ Azure REST API を使用すると、Azure プラットフォームでホスト�
 
 Azure Resource Manager テンプレートは、**リソース グループ**とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。このテンプレート ベースのアプローチでは、HDInsight で必要なリソースを 1 つのテンプレートで定義することができます。
 
-次の JSON ドキュメントは [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) からのテンプレートとパラメーター ファイルを併せたもので、ここでは、SSH ユーザー アカウントをセキュリティ保護するためにパスワードを使用して Linux ベースのクラスターを作成します。
+次の JSON ドキュメントは、[https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) からのテンプレートとパラメーター ファイルを併せたもので、ここでは、SSH ユーザー アカウントをセキュリティ保護するためにパスワードを使用して Linux ベースのクラスターを作成します。
 
    ```json
    {
@@ -224,7 +218,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 ## <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションにログイン
 
-「[Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」 (Azure CLI 2.0 の使用を開始する) に記載されている手順に従って、自分のサブスクリプションに `az login` コマンドを使用して接続します。
+「[Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」に記載されている手順に従って、`az login` コマンドを使用して自分のサブスクリプションに接続します。
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
@@ -250,7 +244,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
    > [!NOTE]
    > `--home-page` と `--identifier-uris` の値は、インターネット上にホストされている実際の Web ページを参照する必要はありませんが、 一意の URI である必要があります。
 
-   このコマンドから返される値は、新しいアプリケーションの__アプリ ID__ です。 この値を保存します。
+   このコマンドから返される値は、新しいアプリケーションの __アプリ ID__ です。 この値を保存します。
 
 3. 次のコマンドを使用して、**アプリ ID** を使用するサービス プリンシパルを作成します。
 
@@ -359,19 +353,19 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 
 HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックを参照してください。
 
-### <a name="hadoop-clusters"></a>Hadoop クラスター
+### <a name="apache-hadoop-clusters"></a>Apache Hadoop クラスター
 
-* [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hadoop/hdinsight-use-pig.md)
-* [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
+* [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
+* [HDInsight での Apache Hadoop MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a>HBase クラスター
+### <a name="apache-hbase-clusters"></a>Apache HBase クラスター
 
-* [HDInsight での HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [HDInsight での HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
+* [HDInsight での Apache HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [HDInsight での Apache HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="storm-clusters"></a>Storm クラスター
+### <a name="apache-storm-clusters"></a>Apache Storm クラスター
 
-* [HDInsight での Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
-* [HDInsight の Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
-* [HDInsight の Storm を使用したトポロジのデプロイと監視](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [HDInsight での Apache Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
+* [HDInsight の Apache Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
+* [Deploy and monitor topologies with Apache Storm on HDInsight (HDInsight の Storm を使用したトポロジのデプロイと監視)](storm/apache-storm-deploy-monitor-topology-linux.md)

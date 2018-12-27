@@ -10,19 +10,23 @@ tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 10/9/2017
-ms.author: mobandyo;bryanla
-ms.openlocfilehash: f0e546095ca1079ccc59c51b9b5230be04415eb5
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.date: 5/10/2018
+ms.author: erikre
+ms.openlocfilehash: 79cc543e2a106fa8cbff31bdd0e6bb35afe68e4b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392042"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure Billing API を使用して、Azure の使用状況に関する詳細なデータをプログラムによって取得する
 Azure Billing API を使用すると、使用状況やリソースに関するデータを、お使いのデータ分析ツールで取得できます。 Azure Resource Usage API と Azure Resource RateCard API は、コストを正確に予測して管理するうえで役立ちます。 これらの API は、Azure Resource Manager が公開している API ファミリに含まれ、リソース プロバイダーとして実装されています。  
+
+> [!div class="nextstepaction"]
+> [Azure の課金に関するドキュメントの改善にご協力ください](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="azure-invoice-download-api-preview"></a>Azure Invoice Download API (プレビュー)
 [オプトインが完了したら](billing-manage-access.md#opt-in)、プレビュー版の [Invoice API](/rest/api/billing) を使用して請求書をダウンロードします。 機能は、次のとおりです。
@@ -31,7 +35,7 @@ Azure Billing API を使用すると、使用状況やリソースに関する�
 * **日付のフィルタリング** - `$filter` パラメーターを使用して、新しい日付から順に請求期間終了日まですべての請求書を取得します。 
 
 > [!NOTE]
-> この機能は最初のプレビュー版です。下位互換性を保つために変更される可能性があります。 現在、特定のサブスクリプション プラン (EA、CSP、AIO ではサポートされない) と Azure Germany では使用できません。
+> この機能は最初のプレビュー版です。下位互換性を保つために変更される可能性があります。 現在、特定のサブスクリプション オファー (EA、CSP、AIO ではサポートされない) と Azure Germany では使用できません。
 
 ## <a name="azure-resource-usage-api-preview"></a>Azure Resource Usage API (プレビュー)
 [Azure Resource Usage API](https://msdn.microsoft.com/library/azure/mt219003) を使用すると、Azure の推定消費量データを取得できます。 この API には次の要素が含まれています。
@@ -73,5 +77,5 @@ Usage API と RateCard API を組み合わせて実現できるシナリオ例�
 
 * Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
 
-* クラウドの使用量を把握するために必要なツール群の詳細については、Gartner の記事「[Market Guide for IT Financial Management (ITFM) Tools (IT 財務管理 (ITFM) ツールの市場ガイド)](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb)」をご覧ください。
+
 

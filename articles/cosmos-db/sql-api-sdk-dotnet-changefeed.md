@@ -2,48 +2,127 @@
 title: Azure Cosmos DB .NET Change Feed Processor API、SDK およびリソース | Microsoft Docs
 description: リリース日、提供終了日、.NET Change Feed Processor SDK の各バージョン間の変更など、Change Feed Processor API と SDK に関するあらゆる詳細を提供します。
 services: cosmos-db
-documentationcenter: .net
 author: ealsur
-manager: kirillg
-editor: mimig1
-ms.assetid: f2dd9438-8879-4f74-bb6c-e1efc2cd0157
+manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 03/16/2018
+ms.topic: reference
+ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 43ba189332cf012a80c309a0dc0f383e38a0915c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 327873d228fe92a9da495f802c97eb73612caef9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632485"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.JS](sql-api-sdk-node.md)
+> * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
 |**SDK のダウンロード**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API ドキュメント**|[Change Feed Processor ライブラリ API リファレンス ドキュメント](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**概要**|[DocumentDB Change Feed Processor .NET SDK の概要](change-feed.md)|
+|**作業開始**|[DocumentDB Change Feed Processor .NET SDK の概要](change-feed.md)|
 |**現在サポートされているフレームワーク**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="v2-builds"></a>v2 のビルド
+
+### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
+* 要求の継続トークンからの変更フィードの開始をサポートするための新しいプロパティ ChangeFeedProcessorOptions.StartContinuation が追加されました。 これは、リース コレクションが空であるか、リースに ContinuationToken セットがない場合にのみ使用されます。 ContinuationToken セットがあるリース コレクション内のリースの場合は、ContinuationToken が使用され、ChangeFeedProcessorOptions.StartContinuation は無視されます。
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+* カスタム ストアを使用した、パーティションごとの継続トークンの保持のサポートが追加されました。
+  * たとえば、カスタム リース ストアには、独自の方法でパーティション分割された Azure Cosmos DB リース コレクションを使用できます。
+  * カスタム リース ストアでは、新しい機能拡張ポイント ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) と ILeaseStoreManager パブリック インターフェイスを使用できます。
+  * ILeaseManager インターフェイスは複数のロール インターフェイスにリファクタリングされました。
+* 小さな破壊的変更: 機能拡張ポイント ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager) は削除されました。代わりに ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) を使用してください。
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+* このリリースでは、監視対象コレクション内の分割の処理中とパーティション リース コレクションの使用中に発生する問題が解決されます。 分割パーティションのリースの処理時に、そのパーティションに対応するリースを削除できません。 この問題は今回のリリースで修正されました。
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+* マルチ マスター アカウントと新しいセッション トークン形式の固定見積もり計算。
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* パーティション分割されたリース コレクションのサポートが追加されました。 パーティション キーは /id として定義する必要があります。
+* マイナーな破壊的変更: IChangeFeedDocumentClient インターフェイスと ChangeFeedDocumentClient クラスのメソッドが RequestOptions パラメーターと CancellationToken パラメーターを含むように変更されました。 IChangeFeedDocumentClient は、ドキュメント クライアントのカスタム実装を提供して Change Feed Processor で使用できるようにする高度な拡張ポイントです。DocumentClient を修飾し、それに対するすべての呼び出しをインターセプトして、追加のトレースやエラー処理などを行います。この更新プログラムでは、IChangeFeedDocumentClient を実装するコードを変更して、新しいパラメーターを実装に含める必要があります。
+* マイナーな診断機能の向上。
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* 新しい API、Task&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync() が追加されました。 これを使用して、パーティションごとの見積作業を取得できます。
+* Microsoft.Azure.DocumentDB SDK 2.0 をサポートします。 Microsoft.Azure.DocumentDB 2.0 以降が必要です。
+
+### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
+* v1 との互換性を保つために、ChangeFeedEventHost.HostName パブリック プロパティが追加されました。
+
+### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
+* パーティション分割中に発生する競合状態を修正しました。 競合状態は、リースを取得し、パーティション分割中にすぐにそれを失うことで、競合の発生につながる可能性があります。 この競合状態に関する問題がこのリリースで修正されました。
+
+### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
+* GA SDK
+
+### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-prerelease
+* 次の問題が修正されました。
+  * パーティション分割が発生すると、分割前に修正されたドキュメントの処理が重複する可能性があります。
+  * リース コレクションにリースが存在しない場合、GetEstimatedRemainingWork API は 0 を返しました。
+
+* 次の例外が公開されました。 IPartitionProcessor を実装する拡張機能では、次の例外をスローすることができます。
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException。 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException。 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException。
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException。 
+
+### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-prerelease
+* マイナーな API の変更:
+  * 古いとマークされた ChangeFeedProcessorOptions.IsAutoCheckpointEnabled を削除しました。
+
+### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
+* 安定性の向上:
+  * リース ストアの初期化の処理が改善しました。 リース ストアが空の場合、プロセッサの 1 つのインスタンスだけがそれを初期化でき、他は待機します。
+  * リースの更新または解放の安定性と効率が向上しました。 1 つのパーティションのリースの更新と解放は、他のパーティションの更新から独立しています。 v1 では、すべてのパーティションに対して順番に行われていました。
+* 新しい v2 API:
+  * プロセッサーの柔軟な構築に対応したビルダー パターン: ChangeFeedProcessorBuilder クラス。
+    * 任意の組み合わせのパラメーターを取得できます。
+    * 監視用の DocumentClient インスタンスとリース コレクションの両方またはいずれかを取得できます (v1 では利用できません)。
+  * IChangeFeedObserver.ProcessChangesAsync で CancellationToken を取得できるようになりました。
+  * IRemainingWorkEstimator - 残存する作業見積もりツールは、プロセッサとは個別に使用できます。
+  * 新しい拡張性ポイント:
+    * IParitionLoadBalancingStrategy - プロセッサのインスタンス間でパーティションのカスタム負荷分散に使用します。
+    * ILease、ILeaseManager - カスタムのリース管理に使用します。
+    * IPartitionProcessor - パーティション上にあるカスタム処理の変更に使用します。
+* ログの記録 - [LibLog](https://github.com/damianh/LibLog) ライブラリを使用します。
+* v1 API との 100% の下位互換性
+* 新しいコード ベース。
+* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.21.1 以降と互換性があります。
+
+### <a name="v1-builds"></a>v1 のビルド
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* ログが追加されました。
+* 保留中の作業見積もりを複数回呼び出すときの DocumentClient のリークを修正しました。
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+* 保留中の作業見積もりを修正しました。
+
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 * 安定性が向上しました。
+  * 一部のパーティションでオブザーバーの停止につながる可能性がある取り消されたタスクの問題を処理するために修正しました。
 * 手動チェックポイント処理をサポートします。
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.21 以降と互換性があります。
 
@@ -64,6 +143,7 @@ ms.lasthandoff: 03/30/2018
 * GA SDK
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.14.1 以降と互換性があります。
 
+
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
 
@@ -73,8 +153,11 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |2018 年 10 月 24 日 |--- |
+| [1.3.3](#1.3.3) |2018 年 5 月 8 日 |--- |
+| [1.3.2](#1.3.2) |2018 年 4 月 18 日 |--- |
 | [1.3.1](#1.3.1) |2018 年 3 月 13 日 |--- |
 | [1.2.0](#1.2.0) |2017 年 10 月 31 日 |--- |
 | [1.1.1](#1.1.1) |2017 年 8 月 29 日 |--- |

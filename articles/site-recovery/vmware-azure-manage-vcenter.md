@@ -1,21 +1,19 @@
 ---
-title: " Azure Site Recovery で VMware vCenter サーバーを管理する | Microsoft Docs"
-description: この記事では、Azure Site Recovery でVMware vCenter を追加して管理する方法について説明します。
-services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+title: Azure Site Recovery を使用した VMware VM の Azure へのディザスター リカバリーのために VMware vCenter サーバーを管理する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用した VMware VM の Azure へのディザスター リカバリーのために VMware vCenter を追加して管理する方法について説明します。
+author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: be415340da09043eccd361b0168bb304d8904bef
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.topic: conceptual
+ms.date: 11/27/2018
+ms.author: ramamill
+ms.openlocfilehash: 6c00ed6f3bec1e16b2a3cb8588335c1741a92883
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849039"
 ---
-# <a name="manage-vmware-vcenter-servers"></a>VMware vCenter サーバーを管理する 
+# <a name="manage-vmware-vcenter-server"></a>VMware vCenter サーバーを管理する
 
 この記事では、VMware vCenter で実行できるさまざまな Site Recovery 操作について説明します。 開始する前に、[前提条件](vmware-physical-azure-support-matrix.md#replicated-machines)を確認してください。
 

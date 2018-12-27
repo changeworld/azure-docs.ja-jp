@@ -2,23 +2,22 @@
 title: Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET) | Microsoft Docs
 description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET プロジェクトで Azure Blob Storage の使用を開始する方法について説明します
 services: storage
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: b3497055-bef8-4c95-8567-181556b50d95
-ms.service: storage
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.custom: vs-azure
+ms.workload: azure-vs
+ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: 657eff077f9a72bad97e8bea3ad3efc0da1420d5
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: b8c0891d8528e0622682788e5b10d5a76ad92ec8
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42141189"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
 
@@ -137,11 +136,11 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 1. **ソリューション エクスプローラー**で、**[ビュー]** フォルダーを右クリックします。
 
-2. コンテキスト メニューから、**[追加]** > **[新しいフォルダー]** の順に選択します。 新しいフォルダーに *Blobs* という名前を付けます。 
+1. **Blobs** フォルダーがない場合は作成します。 コンテキスト メニューから、**[追加]** > **[新しいフォルダー]** の順に選択します。 新しいフォルダーに *Blobs* という名前を付けます。 
  
 1. **ソリューション エクスプローラー**で、**[ビュー]** フォルダーを展開し、**[BLOB]** を右クリックします。
 
-4. コンテキスト メニューから、**[追加]** > **[ビュー]** の順に選択します。
+1. コンテキスト メニューから、**[追加]** > **[ビュー]** の順に選択します。
 
 1. **[ビューの追加]**  ダイアログ ボックスで、ビューの名前として「**CreateBlobContainer**」と入力し、**[追加]** を選択します。
 

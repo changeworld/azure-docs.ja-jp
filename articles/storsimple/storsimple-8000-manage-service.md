@@ -1,24 +1,25 @@
 ---
-title: "Azure で StorSimple デバイス マネージャー サービスをデプロイする | Microsoft Docs"
-description: "Azure Portal で StorSimple デバイス マネージャー サービスを作成および削除する方法と、サービス登録キーを管理する方法について説明します。"
+title: Azure で StorSimple デバイス マネージャー サービスをデプロイする | Microsoft Docs
+description: Azure Portal で StorSimple デバイス マネージャー サービスを作成および削除する方法と、サービス登録キーを管理する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
+ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 96dcda25cde2473387842fd01421b6bb619e4ece
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38701922"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 シリーズ デバイスの StorSimple デバイス マネージャー サービスをデプロイする
 
@@ -29,7 +30,9 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 このチュートリアルでは、サービスの作成、削除、および移行と、サービス登録キーの管理のために必要な手順について説明します。 この記事に記載されている内容は、StorSimple 8000 デバイスにのみ適用されます。 StorSimple Virtual Array の詳細については、「[StorSimple Virtual Array の StorSimple デバイス マネージャー サービスをデプロイする](storsimple-virtual-array-manage-service.md)」を参照してください。
 
 > [!NOTE]
-> 従来の StorSimple デバイス マネージャーはすべて、自動的に新しい Azure Portal に移行されました。 ご質問があれば、「[FAQ - Azure ポータルに移行する](storsimple-8000-move-azure-portal-faq.md)」をご覧ください。 新しい Azure Portal に移行した後、Azure サービス管理 (ASM) の PowerShell コマンドレットはサポートされません。 デバイスを管理するためのスクリプトを更新する必要があります。詳しくは、「[Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple デバイスを管理する](storsimple-8000-automation-azurerm-scripts.md)」をご覧ください。 新しい Azure Portal では、Update 5.0 以降を実行しているデバイスがサポートされます。 デバイスが最新の状態でない場合は、すぐに Update 5 をインストールしてください。 詳細については、「[Update 5 のインストール](storsimple-8000-install-update-5.md)」をご覧ください。 StorSimple Cloud Appliance (8010/8020) を使っている場合は、クラウド アプライアンスを更新できません。 最新バージョンのソフトウェアを使って、Update 5.0 で新しいクラウド アプライアンスを作成してから、作成した新しいクラウド アプライアンスにフェールオーバーします。 Update 4.0 以前を実行しているすべてのデバイスでは、[管理機能が制限](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0)されます。 
+> -  Azure portal では、Update 5.0 以降を実行しているデバイスがサポートされます。 デバイスが最新の状態でない場合は、すぐに Update 5 をインストールしてください。 詳細については、「[Update 5 のインストール](storsimple-8000-install-update-5.md)」をご覧ください。 
+> - StorSimple Cloud Appliance (8010/8020) を使っている場合は、クラウド アプライアンスを更新できません。 最新バージョンのソフトウェアを使って、Update 5.0 で新しいクラウド アプライアンスを作成してから、作成した新しいクラウド アプライアンスにフェールオーバーします。 
+> - Update 4.0 以前を実行しているすべてのデバイスでは、[管理機能が制限](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0)されます。 
 
 ## <a name="create-a-service"></a>サービスの作成
 StorSimple デバイス マネージャー サービスを作成するには、以下が必要です。
@@ -38,11 +41,7 @@ StorSimple デバイス マネージャー サービスを作成するには、�
 * アクティブな Microsoft Azure ストレージ アカウント
 * アクセス管理で使用する課金情報
 
-使用できるのはエンタープライズ契約によるサブスクリプションのみです。 Azure クラシック ポータルで使用できた Microsoft スポンサー プランのサブスクリプションは、Azure Portal ではサポートされません。 サポートされていないサブスクリプションを使用すると次のメッセージが表示されます。
-
-![Subscription not valid (サブスクリプションが無効です)](./media/storsimple-8000-manage-service/subscription-not-valid.jpg)
-
-サービスの作成時に既定のストレージ アカウントを生成することもできます。
+使用できるのはエンタープライズ契約によるサブスクリプションのみです。 サービスの作成時に既定のストレージ アカウントを生成することもできます。
 
 単一のサービスで複数のデバイスを管理できます。 ただし、1 つのデバイスを複数のサービスに割り当てることはできません。 大企業は、そのようなサービス インスタンスを複数持つことで、さまざまなサブスクリプション、組織、デプロイの場所に対応することができます。 
 
@@ -149,8 +148,7 @@ StorSimple デバイス マネージャー サービスを作成するには、�
 
 > [!NOTE]
 > キーのロールオーバーが完了するまで、StorSimple Manager サービスの Azure Portal では操作を行うことができません。
-> 
-> 
+
 
 デバイスのシリアル コンソールを使用して Windows PowerShell インターフェイスに接続している場合は、次の手順を実行します。
 
@@ -189,7 +187,7 @@ StorSimple Manager サービスに登録されているデバイスが複数あ�
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Update 5.0 より前のバージョンを実行しているデバイスでサポートされる操作
 Azure Portal では、Update 5.0 以降を実行している StorSimple デバイスのみがサポートされます。 古いバージョンを実行しているデバイスのサポートは限定的です。 Azure Portal に移行した後は、次の表を使用して、Update 5.0 以前のバージョンを実行しているデバイス上でどの操作がサポートされているかを把握してください。
 
-| 操作                                                                                                                       | サポートされています      |
+| Operation                                                                                                                       | サポートされています      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
 | デバイスの登録                                                                                                               | [はい]            |
 | 全般、ネットワーク、セキュリティなどのデバイス設定の指定                                                                | [はい]            |

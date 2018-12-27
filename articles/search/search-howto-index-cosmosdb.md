@@ -1,25 +1,21 @@
 ---
 title: Azure Search 用の Azure Cosmos DB データ ソースのインデックス作成 | Microsoft Docs
 description: この記事では、Azure Cosmos DB をデータ ソースとする Azure Search インデクサーの作成方法について説明します。
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
-documentationcenter: ''
-author: chaosrealm
-manager: pablocas
-editor: ''
-ms.assetid: ''
 ms.service: search
 ms.devlang: rest-api
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: search
-ms.date: 03/23/2018
-ms.author: eugenesh
+ms.topic: conceptual
 robot: noindex
-ms.openlocfilehash: 165402f5147224cd355f0ae14642069a3de58f19
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 07768ee1590fa087a1eb1486cb59ab0f57d02b64
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747543"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>インデクサーを使用した Cosmos DB と Azure Search の接続
 
@@ -53,6 +49,8 @@ Azure Cosmos DB ではさまざまなデータ モデルと API がサポート�
 
 Cosmos DB アカウントのほかに、[Azure Search サービス](search-create-service-portal.md)が必要です。 
 
+ご自分の Cosmos DB アカウントで、コレクションですべてのドキュメントのインデックスを自動的に作成するかどうかを選択できます。 既定では、すべてのドキュメントのインデックスが自動的に作成されますが、自動インデックス作成を無効にすることができます。 自動インデックス作成が無効になっている場合、自己リンクまたはドキュメント ID を使用したクエリでのみドキュメントにアクセスできます。 Azure Search では、Azure Search によってインデックスが作成されるコレクションで、Cosmos DB の自動インデックス作成が有効化される必要があります。 
+
 <a name="Concepts"></a>
 ## <a name="azure-search-indexer-concepts"></a>Azure Search インデクサーの概念
 
@@ -78,7 +76,7 @@ Azure Cosmos DB のインデクサーをセットアップするには、イン�
 ## <a name="step-1-create-a-data-source"></a>手順 1: データ ソースを作成する
 データ ソースを作成するには、POST 要求を発行します。
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -101,7 +99,8 @@ Azure Cosmos DB のインデクサーをセットアップするには、イン�
 * **type**: は `documentdb` である必要があります。
 * **credentials**:
   
-  * **connectionString**: 必須。 次の形式で接続情報をご自身の Azure Cosmos DB データベースに指定します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`。MongoDB コレクションについては、次のように **ApiKind MongoDB** を接続文字列に追加します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDB` 
+  * **connectionString**: 必須。 次の形式で接続情報をご自身の Azure Cosmos DB データベースに指定します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`。MongoDB コレクションについては、次のように **ApiKind=MongoDb** を接続文字列に追加します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
+  エンドポイント URL では、ポート番号の使用を避けてください。 ポート番号を含めると、Azure Search では、Azure Cosmos DB データベースのインデックスを作成できなくなります。
 * **container**:
   
   * **name**: 必須。 インデックスを作成するデータベース コレクションの ID を指定します。
@@ -151,7 +150,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 
 次の例では、ID と説明のフィールドを持つインデックスを作成します。
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -197,7 +196,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 
 インデックスとデータ ソースを作成したら、インデクサーを作成できます。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -216,7 +215,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 ### <a name="running-indexer-on-demand"></a>オンデマンドでインデクサーを実行する
 スケジュールに従って定期的に実行されるだけでなく、オンデマンドでインデクサーを呼び出すこともできます。
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2017-11-11
     api-key: [Search service admin key]
 
 > [!NOTE]
@@ -228,7 +227,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 ### <a name="getting-indexer-status"></a>インデクサーの状態を取得する
 インデクサーの現在の状態と実行履歴を取得できます。
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2016-09-01
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2017-11-11
     api-key: [Search service admin key]
 
 応答には、全体的なインデクサーの状態、最後の (または実行中の) インデクサー呼び出し、およびインデクサー呼び出しの最近の履歴が含まれています。
@@ -302,7 +301,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 
 次の例では、ソフト削除ポリシーとともにデータ ソースを作成します。
 
-    POST https://[Search service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [Search service admin key]
 

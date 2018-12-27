@@ -1,45 +1,101 @@
 ---
-title: Azure Site Recovery を使用した VMware VM および物理サーバーのフェールバックのために Azure でプロセス サーバーを設定する | Microsoft Docs
-description: この記事では、Azure VM を VMware にフェールバックするために Azure でプロセス サーバーを設定する方法について説明します。
-services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+title: Azure Site Recovery を使用した VMware VM および物理サーバーのディザスター リカバリー時にフェールバックするプロセス サーバーを Azure で設定する | Microsoft Docs
+description: この記事では、VMware VM と物理サーバーのディザスター リカバリー時に Azure からオンプレミスにフェールバックするプロセス サーバーを Azure で設定する方法について説明します。
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 9d9270d8c6d2ffc5e42dfc6f94818fdace89bfb5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: 330f0197b8a7735043e93f00dc4baa5578f50228
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212235"
 ---
-# <a name="set-up-a-process-server-in-azure-for-failback"></a>フェールバックのために Azure でプロセス サーバーを設定する
+# <a name="scale-for-failback-with-additional-process-servers"></a>追加のプロセス サーバーによるフェールバックのスケール
 
-[Site Recovery](site-recovery-overview.md) を使用して VMware VM または物理サーバーを Azure にフェールオーバーした後、再度起動して実行されたオンプレミス サイトにそれらをフェールバックできます。 フェールバックするには、Azure からオンプレミスへのレプリケーションを処理するために Azure で一時的なプロセス サーバーを設定する必要があります。 この VM は、フェールバックが完了したら削除できます。
+既定では、[Site Recovery](site-recovery-overview.md) を使用して VMware VM または物理サーバーを Azure にレプリケートするときに、構成サーバー マシン上にプロセス サーバーがインストールされ、Site Recovery とオンプレミスのインフラストラクチャ間のデータ転送を調整するために使用されます。 容量を増加させ、レプリケーションのデプロイをスケールアウトするために、別のスタンドアロン プロセス サーバーを追加できます。 この記事では、その方法について説明します。
 
 ## <a name="before-you-start"></a>開始する前に
 
-[再保護](vmware-azure-reprotect.md)と[フェールバック](vmware-azure-failback.md) プロセスの詳細について学習します。
+### <a name="capacity-planning"></a>容量計画
 
-[!INCLUDE [site-recovery-vmware-process-server-prerequ](../../includes/site-recovery-vmware-azure-process-server-prereq.md)]
+VMware レプリケーションのために[容量計画](site-recovery-plan-capacity-vmware.md)を実行したことを確認してください。 これは、追加のプロセス サーバーをどのように、いつデプロイする必要があるかを識別する助けとなります。
 
-## <a name="deploy-a-process-server-in-azure"></a>Azure でプロセス サーバーをデプロイする
+### <a name="sizing-requirements"></a>サイズ変更の要件 
 
-1. コンテナー > **[Site Recovery インフラストラクチャ]**> **[Mnaage] (管理)** > **[Configuration Servers] (構成サーバー)** で、構成サーバーを選択します。
-2. サーバー ページで、**[+ Process server] (+ プロセス サーバー)** をクリックします。
-3. **[Add process server] (プロセス サーバーの追加)** ページで、Azure でプロセス サーバーをデプロイすることを選択します。
-4. Azure の設定を指定します。これには、フェールオーバーに使用されるサブスクリプション、リソース グループ、フェールオーバーに使用される Azure リージョン、および Azure VM が配置される仮想ネットワークが含まれます。 複数の Azure ネットワークを使用している場合は、それぞれにプロセス サーバーが必要です。
-5. **[サーバー名]**、**[ユーザー名]**、および **[パスワード]** で、プロセス サーバーの名前と、サーバー上で管理者のアクセス許可が割り当てられる資格情報を指定します。
-6. サーバー VM ディスクに使用されるストレージ アカウント、プロセス サーバー VM が配置されるサブネット、および VM の起動時に割り当てられるサーバー IP アドレスを指定します。
-7. **[OK]** ボタンをクリックして、プロセス サーバー VM のデプロイを開始します。
+表にまとめられているサイズ変更の要件を確認します。 一般に、ソース マシンが 200 台を超えるまでデプロイメントをスケールする必要がある場合や、合計日次変更率が 2 TB を超える場合は、トラフィック ボリュームの処理のために追加のプロセス サーバーが必要です。
 
->
+| **追加のプロセス サーバー** | **キャッシュ ディスク サイズ** | **データの変更率** | **保護されたマシン** |
+| --- | --- | --- | --- |
+|4 vCPU (2 ソケット * 2 コア \@ 2.5 GHz)、8 GB メモリ |300 GB |250 GB 以下 |85 台以下のマシンをレプリケートします。 |
+|8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz)、12 GB メモリ |600 GB |250 GB ～ 1 TB |85 ～ 150 台のマシンをレプリケートします。 |
+|12 vCPU (2 ソケット * 6 コア \@ 2.5 GHz)、24 GB メモリ |1 TB (テラバイト) |1 TB ～ 2 TB |150 ～ 225 台のマシンをレプリケートします。 |
 
-## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>(Azure で実行されている) プロセス サーバーを (オンプレミスで実行されている) 構成サーバーに登録する
+保護された各ソース マシンには、それぞれ 100 GB の 3 つのディスクが構成されています。
 
-プロセス サーバー VM が起動して実行されたら、それをオンプレミスの構成サーバーに次のように登録する必要があります。
+### <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
+次の表に、追加のプロセス サーバーの前提条件をまとめます。
+
+[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 
+## <a name="download-installation-file"></a>インストール ファイルをダウンロードする
+
+次のように、プロセス サーバーのインストール ファイルをダウンロードします。
+
+1. Azure Portal にログオンし、Recovery Services コンテナーを参照します。
+2. **[Site Recovery インフラストラクチャ]** > **[VMware and Physical Machines] (VMware と物理マシン)** > **[構成サーバー]** ([For VMware & Physical Machines] \(VMware および物理マシン) の下) に移動します。
+3. 構成サーバーを選択して、サーバーの詳細に移動します。 次に、**[+ プロセス サーバー]** をクリックします。
+4. **[プロセス サーバーの追加]** >  **[プロセス サーバーのデプロイ先を選択してください]** で、**[スケールアウト プロセス サーバーをオンプレミスにデプロイします]** を選択します。
+
+  ![[サーバーの追加] ページ](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+1. **[Download the Microsoft Azure Site Recovery Unified Setup]** (Microsoft Azure Site Recovery 統合セットアップのダウンロード) をクリックします。 これで最新バージョンのインストール ファイルがダウンロードされます。
+
+  > [!WARNING]
+  プロセス サーバーのインストール バージョンは、実行している構成サーバーのバージョンと同じ、またはそれより前である必要があります。 バージョンの互換性を確保する簡単な方法は、構成サーバーをインストールまたは更新するために最近使用したものと同じインストーラーを使用することです。
+
+## <a name="install-from-the-ui"></a>UI からインストールする
+
+次のようにインストールします。 サーバーをセットアップしたら、サーバーを使用するソース マシンを移行します。
+
+[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-add-process-server.md)]
+
+
+## <a name="install-from-the-command-line"></a>コマンドラインからインストールする
+
+次のコマンドを実行してインストールします。
+
+```
+UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
+```
+
+ここで、コマンドライン パラメーターは次のとおりです。
+
+[!INCLUDE [site-recovery-unified-setup-parameters](../../includes/site-recovery-unified-installer-command-parameters.md)]
+
+例: 
+
+```
+MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
+cd C:\Temp\Extracted
+UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /EnvType "VMWare" /CSIP "10.150.24.119" /PassphraseFilePath "C:\Users\Administrator\Desktop\Passphrase.txt" /DataTransferSecurePort 443
+```
+### <a name="create-a-proxy-settings-file"></a>プロキシ設定ファイルを作成する
+
+プロキシを設定する必要がある場合、ProxySettingsFilePath パラメーターは、入力としてファイルを受け取ります。 ファイルは次のように作成し、それを ProxySettingsFilePath の入力パラメーターとして渡します。
+
+```
+* [ProxySettings]
+* ProxyAuthentication = "Yes/No"
+* Proxy IP = "IP Address"
+* ProxyPort = "Port"
+* ProxyUserName="UserName"
+* ProxyPassword="Password"
+```
+
+## <a name="next-steps"></a>次の手順
+[プロセス サーバー設定の管理](vmware-azure-manage-process-server.md)について学習します

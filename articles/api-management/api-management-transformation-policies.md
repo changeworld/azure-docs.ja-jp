@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 3eb9d6851c30f11980d47d4e48b158217e41995d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6796ecd272c7a1ed1d29c89fbe06c87dc2d4601b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242808"
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
-このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
+このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
 
 ##  <a name="TransformationPolicies"></a> 変換ポリシー
 
@@ -69,20 +70,20 @@ ms.lasthandoff: 03/28/2018
 
 ### <a name="elements"></a>要素
 
-|Name|[説明]|必須|
+|Name|説明|必須|
 |----------|-----------------|--------------|
 |json-to-xml|ルート要素。|[はい]|
 
 ### <a name="attributes"></a>属性
 
-|Name|[説明]|必須|既定値|
+|Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換を適用します。<br />-   content-type-json - 応答の Content-Type ヘッダーに JSON の存在が示されている場合のみ変換を行います。|[はい]|該当なし|
 |consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで JSON が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ |true|
 |parse-date|`false` に設定すると、変換中、日付値がコピーされます。|いいえ |true|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、on-error
 
@@ -113,20 +114,20 @@ ms.lasthandoff: 03/28/2018
 
 ### <a name="elements"></a>要素
 
-|Name|[説明]|必須|
+|Name|説明|必須|
 |----------|-----------------|--------------|
 |xml-to-json|ルート要素。|[はい]|
 
 ### <a name="attributes"></a>属性
 
-|Name|[説明]|必須|既定値|
+|Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |kind|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   javascript-friendly - 変換後の JSON が JavaScript 開発者にとってわかりやすい形になります。<br />-   direct - 変換後の JSON に元の XML ドキュメントの構造が反映されます。|[はい]|該当なし|
 |apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換します。<br />-   content-type-xml - 応答の Content-Type ヘッダーに XML の存在が示されている場合のみ変換を行います。|[はい]|該当なし|
 |consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで XML が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ |true|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、on-error
 
@@ -149,19 +150,19 @@ ms.lasthandoff: 03/28/2018
 
 ### <a name="elements"></a>要素
 
-|Name|[説明]|必須|
+|Name|説明|必須|
 |----------|-----------------|--------------|
 |find-and-replace|ルート要素。|[はい]|
 
 ### <a name="attributes"></a>属性
 
-|Name|[説明]|必須|既定値|
+|Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |from|検索する文字列。|[はい]|該当なし|
 |to|置換する文字列。 長さゼロの置換文字列を指定すると、検索文字列を削除できます。|[はい]|該当なし|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -187,12 +188,12 @@ ms.lasthandoff: 03/28/2018
 
 ### <a name="elements"></a>要素
 
-|Name|[説明]|必須|
+|Name|説明|必須|
 |----------|-----------------|--------------|
 |redirect-content-urls|ルート要素。|[はい]|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound
 
@@ -251,13 +252,13 @@ ms.lasthandoff: 03/28/2018
 
 ### <a name="elements"></a>要素
 
-|Name|[説明]|必須|
+|Name|説明|必須|
 |----------|-----------------|--------------|
 |set-backend-service|ルート要素。|[はい]|
 
 ### <a name="attributes"></a>属性
 
-|Name|[説明]|必須|既定値|
+|Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |base-url|バックエンド サービスの新しいベース URL。|いいえ |該当なし|
 |backend-id|ルーティング先のバックエンドの識別子。|いいえ |該当なし|
@@ -268,7 +269,7 @@ ms.lasthandoff: 03/28/2018
 |sf-listener-name|バックエンドが Service Fabric サービスで、"backend-id" を使って指定されている場合にのみ適用されます。 Service Fabric Reliable Services では、サービス内に複数のリスナーを作成できます。 この属性は、バックエンドのリライアブル サービスに複数のリスナーがある場合に、特定のリスナーを選択するために使用されます。 この属性が指定されていない場合、API Management によって名前のないリスナーの使用が試行されます。 リスナーが 1 つのみのリライアブル サービスでは、通常、リスナーに名前がありません。 |いいえ |該当なし|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、backend
 
@@ -307,12 +308,12 @@ ms.lasthandoff: 03/28/2018
 
 ```xml
 <set-body>
-@{ 
-    string inBody = context.Request.Body.As<string>(preserveContent: true); 
-    if (inBody[0] =='c') { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody; 
+@{ 
+    string inBody = context.Request.Body.As<string>(preserveContent: true); 
+    if (inBody[0] =='c') { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody; 
 }
 </set-body>
 ```
@@ -320,14 +321,14 @@ ms.lasthandoff: 03/28/2018
 #### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>JObject である本文にアクセスする例。 元の要求本文を予約していないため、後からパイプラインでアクセスすると例外が発生することに注意してください。
 
 ```xml
-<set-body> 
-@{ 
-    JObject inBody = context.Request.Body.As<JObject>(); 
-    if (inBody.attribute == <tag>) { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody.ToString(); 
-} 
+<set-body> 
+@{ 
+    JObject inBody = context.Request.Body.As<JObject>(); 
+    if (inBody.attribute == <tag>) { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody.ToString(); 
+} 
 </set-body>
 
 ```
@@ -387,13 +388,13 @@ ms.lasthandoff: 03/28/2018
 
 ### <a name="elements"></a>要素
 
-|Name|[説明]|必須|
+|Name|説明|必須|
 |----------|-----------------|--------------|
 |set-body|ルート要素。 本文のテキストか、または本文を返す式を記載します。|[はい]|
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 
-|Name|[説明]|必須|既定値|
+|Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |template|本文の設定ポリシーが実行されるテンプレート作成モードの変更に使用されます。 現在サポートされている値:<br /><br />- liquid - 本文の設定ポリシーでは、liquid テンプレート作成エンジンが使用されます |いいえ |liquid|
 
@@ -438,7 +439,7 @@ OriginalUrl.
 
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend
 
@@ -480,22 +481,36 @@ OriginalUrl.
 
  詳細については、[ポリシー式](api-management-policy-expressions.md)および[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)に関する各ページを参照してください。
 
+> [!NOTE]
+> ヘッダーの複数の値が次のように CSV 文字列に連結されます。  
+> `headerName: value1,value2,value3`
+>
+> 値が次の性質を持つ標準化されたヘッダーは例外です。
+> - コンマを含む可能性がある (`User-Agent`、`WWW-Authenticate`、`Proxy-Authenticate`)。
+> - 日付を含む可能性がある (`Cookie`、`Set-Cookie`、`Warning`)。
+> - 日付を含む (`Date`、`Expires`、`If-Modified-Since`、`If-Unmodified-Since`、`Last-Modified`、`Retry-After`)。
+>
+> これらの例外の場合は、複数のヘッダー値が 1 つの文字列に連結されることはなく、次のように個別のヘッダーとして渡されます。  
+>`User-Agent: value1`  
+>`User-Agent: value2`  
+>`User-Agent: value3`
+
 ### <a name="elements"></a>要素
 
-|Name|[説明]|必須|
+|Name|説明|必須|
 |----------|-----------------|--------------|
 |set-header|ルート要素。|[はい]|
 |value|設定するヘッダーの値を指定します。 同じ名前のヘッダーが複数ある場合は、`value` 要素をさらに追加します。|[はい]|
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 
-|Name|[説明]|必須|既定値|
+|Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ |override|
 |name|設定するヘッダーの名前を指定します。|[はい]|該当なし|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -542,20 +557,20 @@ OriginalUrl.
 
 ### <a name="elements"></a>要素
 
-|Name|[説明]|必須|
+|Name|説明|必須|
 |----------|-----------------|--------------|
 |set-query-parameter|ルート要素。|[はい]|
 |value|設定するクエリ パラメーターの値を指定します。 同じ名前のクエリ パラメーターが複数ある場合は、`value` 要素をさらに追加します。|[はい]|
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 
-|Name|[説明]|必須|既定値|
+|Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |exists-action|対象のクエリ パラメーターが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のパラメーターの値を置き換えます。<br />-   skip - 既存のクエリ パラメーターの値を置き換えません。<br />-   append - 既存のクエリ パラメーターの値に値を追加します。<br />-   delete - 要求からクエリ パラメーターを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってクエリ パラメーターが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ |override|
 |name|設定するクエリ パラメーターの名前を指定します。|[はい]|該当なし|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、backend
 
@@ -621,23 +636,23 @@ OriginalUrl.
 
 ### <a name="elements"></a>要素
 
-|Name|[説明]|必須|
+|Name|説明|必須|
 |----------|-----------------|--------------|
 |rewrite-uri|ルート要素。|[はい]|
 
 ### <a name="attributes"></a>属性
 
-|属性|[説明]|必須|既定値|
+|Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|-------------|
 |template|クエリ文字列パラメーターを設定した実際の Web サービス URL。 式を使用する場合は、値の全体が式である必要があります。|[はい]|該当なし|
 |copy-unmatched-params|元の URL テンプレートに存在しない着信要求のクエリ パラメーターを、書き換えテンプレートで定義されている URL に追加するかどうかを指定します。|いいえ |true|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound
 
--   **ポリシー スコープ:** 製品、API、操作
+-   **ポリシー スコープ:** グローバル、製品、API、操作
 
 ##  <a name="XSLTransform"></a> XSLT を使用した XML の変換
  `Transform XML using an XSLT` ポリシーは、要求本文または応答本文に含まれる XML に XSL 変換を適用します。
@@ -690,14 +705,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>要素
 
-|Name|[説明]|必須|
+|Name|説明|必須|
 |----------|-----------------|--------------|
 |xsl-transform|ルート要素。|[はい]|
 |パラメーター|変換で使用する変数の定義に使用します。|いいえ |
 |xsl:stylesheet|ルート スタイルシート要素。 この中で定義する要素と属性はすべて、標準的な [XSLT の仕様](http://www.w3.org/TR/xslt)に従う必要があります。|[はい]|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound
 

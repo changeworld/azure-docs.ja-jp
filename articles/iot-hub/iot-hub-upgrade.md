@@ -1,23 +1,19 @@
 ---
 title: Azure IoT Hub をアップグレードする | Microsoft Docs
 description: IoT Hub の価格とスケール レベルを変更して、メッセージング機能とデバイス管理機能を強化します。
-services: iot-hub
-documentationcenter: ''
 author: kgremban
 manager: timlt
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: d383d26b406c012b6b76225faf89f4b5dbd6bb9c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e1342ed574d84ed5b4edd5060c2d6d3ec8bca1a8
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003113"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>IoT Hub のアップグレード方法
 
@@ -31,7 +27,7 @@ IoT ソリューションの成長と共に、Azure IoT Hub をスケールア�
 
 これらの変更は、すべてが既存の操作を中断せずに実行できます。
 
-IoT Hub をダウングレードする場合は、ユニットを削除し、IoT hub のサイズを縮小できます。 ただし、下位レベルにダウングレードすることはできません。 たとえば、S2 レベルから S1 レベルに移動できますが、S2 レベルから B1 レベルに移動することはできません。 
+IoT Hub をダウングレードする場合は、ユニットを削除し、IoT hub のサイズを縮小できます。 ただし、下位レベルにダウングレードすることはできません。 たとえば、S2 レベルから S1 レベルに移動できますが、S2 レベルから B1 レベルに移動することはできません。 1 つのレベル内の[エディション](https://azure.microsoft.com/pricing/details/iot-hub/)は IoT Hub あたり 1 種類だけ選択できます。 たとえば、S1 と B3 や S1 と S2 などの異なるエディションのユニットの組み合わせではなく、S1 のユニットを複数持つ IoT Hub を作成できます。
 
 これらの例は、ソリューションが変化したときに IoT Hub をどのように調整するかを理解するためものです。 各レベルの機能の詳細については、常に「[IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。 
 
@@ -49,7 +45,7 @@ IoT Hub をダウングレードする場合は、ユニットを削除し、IoT
 4. Hub のユニット数を変更するには、**[IoT Hub ユニット]** の下に新しい値を入力します。 
 5. **[保存]** を選択して変更を保存します。 
 
-IoT Hub が調整されますが、構成は変更されません。 
+IoT Hub が調整されますが、構成は変更されません。 Basic レベルの IoT Hub のパーティションの最大制限は 8 で、Standard レベルの場合は 32 であることにご注意ください。 ほとんどの IoT Hub では、4 つのパーティションのみ必要です。 IoT Hub の作成時にパーティション制限が選択され、device-to-cloud メッセージがこれらのメッセージの同時閲覧者数に関連付けられます。 Basic レベルから Standard レベルに移行してもこの値は変わりません。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,26 +1,29 @@
 ---
 title: Azure SQL Database を使用するマルチテナント アプリで新しいテナントをプロビジョニングする | Microsoft Docs
 description: Azure SQL Database のマルチテナント SaaS アプリで新しいテナントをプロビジョニングしてカタログ化する方法について説明します
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.topic: article
-ms.date: 04/01/2018
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 4ddb870d0513d6834aacf0964c240260f18df0fd
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 1f2539ed7ea407e2a1931ab2eb5951e61e4c7b03
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056269"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログに登録する方法の詳細
 
 このチュートリアルでは、SaaS のパターンをプロビジョニングしてカタログ化する方法について説明します。 また、Wingtip Tickets SaaS テナント単位データベース アプリケーションへの実装方法についても説明します。 新規のテナント データベースを作成して初期化し、アプリケーションのテナント カタログに登録します。 カタログ とは、SaaS アプリケーションの多数のテナントとそのデータの間のマッピング情報を保持するためのデータベースを指します。 カタログは、アプリケーションと管理の要求を正しいデータベースに転送するうえで重要な役割を果たします。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 
@@ -63,7 +66,7 @@ Wingtip Tickets SaaS サンプルでは、[Elastic Database クライアント �
 
 Wingtip Tickets テナント単位データベース アプリは、カタログ サーバーにデプロイされている、_basetenantdb_ という名前のテンプレート データベースをコピーすることで、新しいテナントをプロビジョニングします。 プロビジョニングは、サインアップ エクスペリエンスの一部としてアプリケーションに統合できます。 また、スクリプトを使用することでオフラインでも実行できます。 このチュートリアルでは、PowerShell を使用したプロビジョニングについて説明します。 
 
-プロビジョニング用のスクリプトは、_basetenantdb_ データベースをコピーし、新しいテナント データベースをエラスティック プールに作成します。 その後、そのスクリプトはテナント固有の情報を使用してデータベースを初期化し、それをカタログのシャード マップに登録します。 テナント データベースはテナント名に基づいて名前が付けられます。 この名前付けスキームはパターンの重要な部分ではありません。 カタログはテナント キーをデータベース名にマッピングするため、どのような名前付け規則でも使用できます。 
+プロビジョニング用のスクリプトは、_basetenantdb_ データベースをコピーし、新しいテナント データベースをエラスティック プールに作成します。 テナント データベースは、_newtenant_ DNS エイリアスにマップされているテナント サーバーに作成されます。 このエイリアスは、新しいテナントのプロビジョニングに使用されるサーバーへの参照を保持し、災害復旧チュートリアルで復旧テナント サーバーを指定するように更新されます ([georestore を使用した DR](saas-dbpertenant-dr-geo-restore.md)、 [georeplication を使用した DR](saas-dbpertenant-dr-geo-replication.md))。 その後、そのスクリプトはテナント固有の情報を使用してデータベースを初期化し、それをカタログのシャード マップに登録します。 テナント データベースはテナント名に基づいて名前が付けられます。 この名前付けスキームはパターンの重要な部分ではありません。 カタログはテナント キーをデータベース名にマッピングするため、どのような名前付け規則でも使用できます。 
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS テナント単位データベース アプリケーションのスクリプトを入手する
