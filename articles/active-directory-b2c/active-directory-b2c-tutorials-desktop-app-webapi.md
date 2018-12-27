@@ -39,7 +39,7 @@ ms.locfileid: "53322007"
 
 ## <a name="register-web-api"></a>Web API の登録
 
-Web API リソースは、Azure Active Directory からの[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を表す[クライアント アプリケーション](../active-directory/develop/developer-glossary.md#client-application)で[保護されたリソース要求](../active-directory/develop/developer-glossary.md#resource-server)を受け取って処理できるように、テナントに登録しておく必要があります。 登録により、テナント内に[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/developer-glossary.md#application-object)が確立されます。 
+Web API リソースは、Azure Active Directory からの[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を表す[クライアント アプリケーション](../active-directory/develop/developer-glossary.md#client-application)で[保護されたリソース要求](../active-directory/develop/developer-glossary.md#resource-server)を受け取って処理できるように、テナントに登録しておく必要があります。 登録により、テナント内に[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/developer-glossary.md#application-object)が確立されます。
 
 Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -56,11 +56,11 @@ Azure AD B2C テナントの全体管理者として [Azure Portal](https://port
     | Setting      | 推奨値  | Description                                        |
     | ------------ | ------- | -------------------------------------------------- |
     | **名前** | My sample Node.js web API | 開発者が Web API を把握できる**名前**を入力します。 |
-    | **Web アプリ/Web API を含める** | [はい] | Web API の場合は **[はい]** を選択します。 |
-    | **暗黙的フローを許可する** | [はい] | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
+    | **Web アプリ/Web API を含める** | はい | Web API の場合は **はい** を選択します。 |
+    | **暗黙的フローを許可する** | はい | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**はい** を選択します。 |
     | **応答 URL** | `http://localhost:5000` | 応答 URL は、API が要求したトークンを Azure AD B2C が返すエンドポイントです。 このチュートリアルでは、サンプル Web API はローカル (localhost) で実行され、ポート 5000 でリッスンします。 |
     | **アプリケーション ID/URI** | demoapi | この URI は、テナント内の API を一意に識別します。 これにより、テナントごとに複数の API を登録することができます。 [スコープ](../active-directory/develop/developer-glossary.md#scopes)は、保護された API リソースへのアクセスを統制し、App ID URI ごとに定義されます。 |
-    | **ネイティブ クライアント** | いいえ  | これはネイティブ クライアントではなく Web API のため、[いいえ] を選択します。 |
+    | **ネイティブ クライアント** | いいえ  | これはネイティブ クライアントではなく Web API のため、いいえ を選択します。 |
     
 3. **[作成]** をクリックして API を登録します。
 
@@ -82,7 +82,7 @@ Azure AD B2C に Web API を登録すると、信頼関係が定義されます�
 
 **[公開済みスコープ (プレビュー)]** をクリックします。
 
-API のスコープを構成するには、次のエントリを追加します。 
+API のスコープを構成するには、次のエントリを追加します。
 
 ![Web API で定義されているスコープ](media/active-directory-b2c-tutorials-web-api/scopes-defined-in-web-api.png)
 
@@ -114,14 +114,14 @@ API のスコープを構成するには、次のエントリを追加します�
 
 ## <a name="update-web-api-code"></a>Web API コードの更新
 
-Web API が登録され、スコープを定義したら、Azure AD B2C テナントを使用するように Web API コードを構成する必要があります。 このチュートリアルでは、GitHub からダウンロードできるサンプル Node.js Web アプリを構成します。 
+Web API が登録され、スコープを定義したら、Azure AD B2C テナントを使用するように Web API コードを構成する必要があります。 このチュートリアルでは、GitHub からダウンロードできるサンプル Node.js Web アプリを構成します。
 
 [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
-Node.js Web API サンプルでは、Passport.js ライブラリを使用して、Azure AD B2C で API 呼び出しを保護できるようにします。 
+Node.js Web API サンプルでは、Passport.js ライブラリを使用して、Azure AD B2C で API 呼び出しを保護できるようにします。
 
 ### <a name="configure-the-web-api"></a>Web API を構成する
 
@@ -155,7 +155,7 @@ Node.js Web API を実行します。
 
 1. **F5** キーを押してデスクトップ アプリを実行します。
 2. [デスクトップ アプリにおける Azure Active Directory B2C を使用したユーザーの認証に関するチュートリアル](active-directory-b2c-tutorials-desktop-app.md)で使用したメール アドレスとパスワードでサインインします。
-3. **[Call API]** ボタンをクリックします。 
+3. **[Call API]** ボタンをクリックします。
 
 デスクトップ アプリでは、Web API に要求を送信し、ログインしたユーザーの表示名を含む応答を取得します。 保護されているデスクトップ アプリは、Azure AD B2C テナント内の保護された Web API を呼び出しています。
 
