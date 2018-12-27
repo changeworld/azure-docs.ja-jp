@@ -40,8 +40,8 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |[はい] |ブール値 |true かどうかを確認する最初の値。 |
-| arg2 |[はい] |ブール値 |true かどうかを確認する 2 番目の値。 |
+| arg1 |はい |ブール値 |true かどうかを確認する最初の値。 |
+| arg2 |はい |ブール値 |true かどうかを確認する 2 番目の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -102,7 +102,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |[はい] |文字列または整数 |ブール値に変換する値。 |
+| arg1 |はい |文字列または整数 |ブール値に変換する値。 |
 
 ### <a name="return-value"></a>戻り値
 変換後の値のブール値。
@@ -167,9 +167,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| condition |[はい] |ブール値 |true かどうかを確認する値。 |
-| trueValue |[はい] | string、int、object、または array |条件が true の場合に返される値。 |
-| falseValue |[はい] | string、int、object、または array |条件が false の場合に返される値。 |
+| condition |はい |ブール値 |true かどうかを確認する値。 |
+| trueValue |はい | string、int、object、または array |条件が true の場合に返される値。 |
+| falseValue |はい | string、int、object、または array |条件が false の場合に返される値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -253,7 +253,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 | Name | type | 値 |
 | ---- | ---- | ----- |
 | yesOutput | String | はい |
-| noOutput | String | × |
+| noOutput | String | いいえ |
 | objectOutput | オブジェクト | { "test": "value1" } |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
@@ -277,7 +277,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |[はい] |ブール値 |変換する値。 |
+| arg1 |はい |ブール値 |変換する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -372,8 +372,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |[はい] |ブール値 |true かどうかを確認する最初の値。 |
-| arg2 |[はい] |ブール値 |true かどうかを確認する 2 番目の値。 |
+| arg1 |はい |ブール値 |true かどうかを確認する最初の値。 |
+| arg2 |はい |ブール値 |true かどうかを確認する 2 番目の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -430,4 +430,3 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
-
