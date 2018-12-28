@@ -87,9 +87,9 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 
 | 引数: | 説明 | 必須 |
 |---|---|:---:|
-| `--connector-name` | ACI コネクタの名前。| [はい] |
-| `--name` `-n` | マネージド クラスターの名前。 | [はい] |
-| `--resource-group` `-g` | リソース グループの名前。 | [はい] |
+| `--connector-name` | ACI コネクタの名前。| はい |
+| `--name` `-n` | マネージド クラスターの名前。 | はい |
+| `--resource-group` `-g` | リソース グループの名前。 | はい |
 | `--os-type` | コンテナー インスタンスのオペレーティング システムのタイプ。 使用できる値: Both、Linux、Windows。 既定値: Linux。 | いいえ  |
 | `--aci-resource-group` | ACI コンテナー グループを作成するリソース グループ。 | いいえ  |
 | `--location` `-l` | ACI コンテナー グループを作成する場所。 | いいえ  |
