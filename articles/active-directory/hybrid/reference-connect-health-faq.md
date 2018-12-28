@@ -62,12 +62,12 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 
 **Q: Azure AD Connect Health は、Azure Germany Cloud をサポートしていますか。**
 
-[同期エラー レポート機能](how-to-connect-health-sync.md#object-level-synchronization-error-report-preview)を除いて、Azure AD Connect Health は、Germany Cloud ではサポートされていません。 
+[同期エラー レポート機能](how-to-connect-health-sync.md#object-level-synchronization-error-report-preview)を除いて、Azure AD Connect Health は、Germany Cloud ではサポートされていません。
 
 | ロール | 機能 | German Cloud でサポートされている |
 | ------ | --------------- | --- |
 | Connect Health for Sync | 監視/分析情報/アラート/分析 | いいえ  |
-|  | 同期エラー レポート | [はい] |
+|  | 同期エラー レポート | はい |
 | Connect Health for ADFS | 監視/分析情報/アラート/分析 | いいえ  |
 | Connect Health for ADDS | 監視/分析情報/アラート/分析 | いいえ  |
 
@@ -190,7 +190,7 @@ CheckForMS17-010
 
 **Q: ADFS 監査が生成されていないのはなぜですか。**
 
-<i>Get-AdfsProperties -AuditLevel</i> PowerShell コマンドレットを使用して、監査ログが無効な状態になっていないことを確認してください。 詳しくは、[ADFS 監査ログ](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)に関する記事をご覧ください。 高度な監査設定が ADFS サーバーにプッシュされた場合、auditpol.exe でのすべての変更が上書きされることに注意してくださいます ("生成されたアプリケーション" が構成されていない場合のイベント)。 その場合は、ローカル セキュリティ ポリシーを "生成されたアプリケーション" の失敗と成功を記録するように設定してください。 
+<i>Get-AdfsProperties -AuditLevel</i> PowerShell コマンドレットを使用して、監査ログが無効な状態になっていないことを確認してください。 詳しくは、[ADFS 監査ログ](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)に関する記事をご覧ください。 高度な監査設定が ADFS サーバーにプッシュされた場合、auditpol.exe でのすべての変更が上書きされることに注意してくださいます ("生成されたアプリケーション" が構成されていない場合のイベント)。 その場合は、ローカル セキュリティ ポリシーを "生成されたアプリケーション" の失敗と成功を記録するように設定してください。
 
 
 ## <a name="related-links"></a>関連リンク
