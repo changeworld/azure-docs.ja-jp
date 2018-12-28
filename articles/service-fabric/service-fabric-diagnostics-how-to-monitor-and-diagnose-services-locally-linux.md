@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5aeb87538968304d3eaf73873d4c4c762c07329c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 9f0c4789e73659e5965440989c23a8cf673f7cd2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051376"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309163"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
 
@@ -35,7 +35,7 @@ ms.locfileid: "44051376"
 
 ## <a name="debugging-service-fabric-java-applications"></a>Service Fabric の Java アプリケーションのデバッグ
 
-Java アプリケーションの場合は、 [複数のログ記録フレームワーク](http://en.wikipedia.org/wiki/Java_logging_framework) を利用できます。 `java.util.logging` は JRE の既定のオプションであるため、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)にも使用されています。  以降では、 `java.util.logging` フレームワークを構成する方法について説明します。
+Java アプリケーションの場合は、 [複数のログ記録フレームワーク](http://en.wikipedia.org/wiki/Java_logging_framework) を利用できます。 `java.util.logging` は JRE の既定のオプションであるため、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)にも使用されています。 以降では、 `java.util.logging` フレームワークを構成する方法について説明します。
 
 java.util.logging を使用すると、アプリケーションのログを、メモリ、出力ストリーム、コンソール、ファイル、またはソケットにリダイレクトできます。 これらのそれぞれのオプションに対して、フレームワークで既定のハンドラーが既に提供されています。 `app.properties` ファイルを作成すると、すべてのログをローカル ファイルにリダイレクトするようにアプリケーションのファイル ハンドラーを構成できます。
 
@@ -48,7 +48,7 @@ java.util.logging.FileHandler.level = ALL
 java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 java.util.logging.FileHandler.limit = 1024000
 java.util.logging.FileHandler.count = 10
-java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log             
+java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
 `app.properties` ファイルが指しているフォルダーが存在する必要があります。 `app.properties` ファイルを作成した後は、エントリ ポイントのスクリプトである `<applicationfolder>/<servicePkg>/Code/` フォルダー内の `entrypoint.sh` を修正して、`java.util.logging.config.file` プロパティを `app.propertes` ファイルに設定する必要があります。 エントリは、次のスニペットのようになります。
@@ -64,7 +64,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 
 ハンドラーが明示的に構成されていない場合、既定でコンソール ハンドラーが登録されます。 /var/log/syslog の syslog のログを表示できます。
 
-詳細については、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)を参照してください。  
+詳細については、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)を参照してください。
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Service Fabric の C# アプリケーションのデバッグ
@@ -83,8 +83,8 @@ Linux で CoreCLR アプリケーションをトレースするときには、�
 
 ```csharp
 
- public class ServiceEventSource : EventSource
- {
+public class ServiceEventSource : EventSource
+{
         public static ServiceEventSource Current = new ServiceEventSource();
 
         [NonEvent]
@@ -105,8 +105,8 @@ Linux で CoreCLR アプリケーションをトレースするときには、�
 
 
 ```csharp
-   internal class ServiceEventListener : EventListener
-   {
+internal class ServiceEventListener : EventListener
+{
 
         protected override void OnEventSourceCreated(EventSource eventSource)
         {
@@ -114,20 +114,20 @@ Linux で CoreCLR アプリケーションをトレースするときには、�
         }
         protected override void OnEventWritten(EventWrittenEventArgs eventData)
         {
-            using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))           
-        { 
-                 // report all event information               
-         Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
-                if (eventData.Message != null)              
-            Out.WriteLine(eventData.Message, eventData.Payload.ToArray());              
-            else             
-        { 
-                    string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
-                    Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");             
+                using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))
+                {
+                        // report all event information
+                        Out.Write(" {0} ", Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
+                        if (eventData.Message != null)
+                                Out.WriteLine(eventData.Message, eventData.Payload.ToArray());
+                        else
+                        {
+                                string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
+                                Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");
+                        }
+                }
         }
-           }
-        }
-    }
+}
 ```
 
 

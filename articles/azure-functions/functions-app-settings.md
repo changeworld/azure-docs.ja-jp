@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 2eb736891b12c07441bc8828ca07dd0b9fa13d98
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: e8d880534a39651024b60ef10a9fbadb9e109a4e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458124"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138247"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -82,7 +82,7 @@ Application Insights を使用している場合の Application Insights イン�
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-キーの保存に使用するリポジトリまたはプロバイダーを指定します。 現時点でサポートされているリポジトリは、BLOB ストレージ ("Blob") およびローカル ファイル システム ("Files") です。 既定では、バージョン 1 では BLOB、バージョン 2 ではファイル システムが使用されます。 バージョン 1 では、ファイル システムは App Service プラン内で実行される関数にのみ有効であることに注意してください。
+キーの保存に使用するリポジトリまたはプロバイダーを指定します。 現時点でサポートされているリポジトリは、BLOB ストレージ ("Blob") およびローカル ファイル システム ("Files") です。 既定では、バージョン 2 では BLOB、バージョン 1 ではファイル システムが使用されます。
 
 |キー|値の例|
 |---|------------|
@@ -172,6 +172,48 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 |WEBSITE\_RUN\_FROM\_PACKAGE|1|
 
 有効な値は、展開パッケージ ファイルの場所に解決される URL、または `1` です。 `1` に設定した場合、パッケージは `d:\home\data\SitePackages` フォルダーに存在する必要があります。 この設定で zip デプロイを使用すると、パッケージは自動的にこの場所にアップロードされます。 プレビューでは、この設定は `WEBSITE_RUN_FROM_ZIP` という名前でした。 詳細については、[パッケージ ファイルからの関数の実行](run-functions-from-deployment-package.md)に関するページを参照してください。
+
+## <a name="azurefunctionproxydisablelocalcall"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+既定では、Functions プロキシは新しい HTTP 要求を作成するのではなく、同じ Function App 内の関数にプロキシから直接 API 呼び出しを送信するためのショートカットを使用します。 この設定を使用すると、その動作を無効にすることができます。
+
+|キー|値|説明|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル関数内の関数を指すバックエンド URL を使用した呼び出しは、関数に直接送信されるのではなく、Function App の HTTP フロント エンドに戻されるようになります|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|これが既定値です。 ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されるようになります|
+
+
+## <a name="azurefunctionproxybackendurldecodeslashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+この設定は、スラッシュがバックエンド URL に挿入されたときに、%2F をルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
+
+|キー|値|説明|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|エンコードされたスラッシュがルート パラメーターに含まれている場合、それらがデコードされます。 `example.com/api%2ftest` は `example.com/api/test` になります。|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|これは既定の動作です。 すべてのルート パラメーターが、変更されることなく渡されます|
+
+### <a name="example"></a>例
+
+次に示すのは、URL myfunction.com にある関数アプリ内の proxies.json の例です
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+|URL のデコード|入力|出力|
+|-|-|-|
+|true|myfunction.com/test%2fapi|example.com/test/api
+|false|myfunction.com/test%2fapi|example.com/test%2fapi|
+
 
 ## <a name="next-steps"></a>次の手順
 

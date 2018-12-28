@@ -1,37 +1,32 @@
 ---
-title: Azure Cosmos DB を Azure Storage Explorer で管理する
-description: Azure Cosmos DB を Azure Storage Explorer で管理する方法を説明します。
-Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
-services: cosmos-db
+title: Azure Storage Explorer を使用した Azure Cosmos DB リソースの管理
+description: Azure Cosmos DB に接続し、Azure Storage Explorer を使用してそのリソースを管理する方法について説明します。
 author: Jejiang
-manager: kfile
-editor: ''
 tags: Azure Cosmos DB
 ms.service: cosmos-db
-ms.custom: Azure Cosmos DB active
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 12/07/2018
 ms.author: jejiang
-ms.openlocfilehash: 1e18db960b9e07ae412d0c41c4544ef6bb35977c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 1ce483a88c1f57912dfe30efa98f46335e97c01c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261162"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138128"
 ---
-# <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Azure Cosmos DB を Azure Storage Explorer で管理する
+# <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Azure Storage Explorer を使用した Azure Cosmos DB リソースの管理
 
 Azure Cosmos DB を Azure Storage Explorer で使用することで、ストレージ BLOB やキューなどの他の Azure エンティティと一緒に Azure Cosmos DB エンティティの管理、データの操作、ストアド プロシージャとトリガーの更新を実行できます。 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理できるようになりました。 Azure Storage Explorer では現在、SQL、MongoDB、Graph、Table のアカウントがサポートされます。
 
 
 ## <a name="prerequisites"></a>前提条件
 
-SQL API 用の Azure Cosmos DB アカウント<!--or MongoDB API-->。 アカウントを持っていない場合は、Azure Portal で作成できます。「[Azure Cosmos DB: .NET と Azure Portal による SQL API Web アプリのビルド](create-sql-api-dotnet.md)」を参照してください。
+SQL API 用の Azure Cosmos DB アカウント<!--or MongoDB API-->。 アカウントを持っていない場合は、Azure Portal で作成できます。「[Azure Cosmos DB:.NET と Azure Portal による SQL API Web アプリのビルド](create-sql-api-dotnet.md)」を参照してください。
 
 ## <a name="installation"></a>インストール
 
-最新の Azure Storage Explorer を「[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)」ページからインストールします。Windows、Linux、および MAC バージョンがサポートされています。
+最新の Azure Storage Explorer を「[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)」ページからインストールします。現在、Windows、Linux、Mac バージョンがサポートされています。
 
 ## <a name="connect-to-an-azure-subscription"></a>Azure サブスクリプションに接続する
 
@@ -152,7 +147,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 - 選択したドキュメントを削除するには、**[削除]** ボタンをクリックします。
 
 #### <a name="query-for-documents"></a>ドキュメントのクエリ
-- [SQL クエリ](sql-api-sql-query.md)を入力してドキュメントをフィルターし、**[適用]** をクリックします。
+- [SQL クエリ](how-to-sql-query.md)を入力してドキュメントをフィルターし、**[適用]** をクリックします。
 
     ![ドキュメント フィルター](./media/storage-explorer/document-filter.png)
 
@@ -227,9 +222,9 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 1. Open SSL をインストールします。
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (簡易バージョンでかまいません)
-     - Mac と Linux: オペレーティング システムに付属
+     - Mac と Linux:オペレーティング システムに付属
 2. Open SSL を実行します。
-    - Windows: インストール ディレクトリ、**/bin/** の順に移動して、**openssl.exe** をダブルクリックします。
+    - Windows:インストール ディレクトリ、**/bin/** の順に移動して、**openssl.exe** をダブルクリックします。
     - Mac と Linux: ターミナルで **openssl** を実行します。
 3. `s_client -showcerts -connect microsoft.com:443` を実行します
 4. 自己署名証明書を検索します。 どれが自己署名かわからない場合は、証明書の発行先 ("s:") と証明書の発行者 ("i:") が同じものを検索します。
@@ -242,11 +237,11 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 正常にサインインした後にサブスクリプションを取得できない場合:
 
-- [Azure Portal](http://portal.azure.com/) にサインインして、お使いのアカウントにサブスクリプションへのアクセス権があることを確認します
-- 適切な環境 ([Azure](http://portal.azure.com/)、[Azure China](https://portal.azure.cn/)、[Azure Germany](https://portal.microsoftazure.de/)、[Azure US Government](http://portal.azure.us/)、またはカスタム環境/Azure Stack) を使用してサインインしていることを確認します
+- [Azure Portal](https://portal.azure.com/) にサインインして、お使いのアカウントにサブスクリプションへのアクセス権があることを確認します
+- 適切な環境 ([Azure](https://portal.azure.com/)、[Azure China](https://portal.azure.cn/)、[Azure Germany](https://portal.microsoftazure.de/)、[Azure US Government](https://portal.azure.us/)、またはカスタム環境/Azure Stack) を使用してサインインしていることを確認します
 - プロキシの内側にいる場合は、Storage Explorer のプロキシが適切に構成されていることを確認します
 - アカウントを削除してから再度追加します
-- ホーム ディレクトリ (C:\Users\ContosoUser など) から次のファイルを削除して、アカウントを再度追加します。
+- ホーム ディレクトリ (たとえば、C:\Users\ContosoUser) から次のファイルを削除して、アカウントを再度追加します。
   - .adalcache
   - .devaccounts
   - .extaccounts
@@ -310,6 +305,6 @@ ASE で HTTP/HTTPS プロキシを構成する際に、左側のツリーで Azu
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure Cosmos DB を Azure Storage Explorer で使用する方法については、次のビデオをご覧ください。[Use Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) (Azure Cosmos DB を Azure Storage Explorer で使用する)
+* 次のビデオを見て、Azure Storage Explorer を使用して Azure Cosmos DB を利用する方法を確認します。[Use Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) (Azure Storage Explorer で Azure Cosmos DB を使用する)。
 * Storage Explorer と他のサービスへの接続の詳細については、[Storage Explorer の概要](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)に関するページをご覧ください。
 
