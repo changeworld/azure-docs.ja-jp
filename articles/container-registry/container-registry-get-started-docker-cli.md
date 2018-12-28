@@ -1,5 +1,5 @@
 ---
-title: Docker イメージをプライベート Azure レジストリにプッシュする
+title: Docker イメージをプライベート Azure コンテナー レジストリにプッシュする
 description: Docker CLI を使用した、Azure のプライベート コンテナー レジストリに対する Docker イメージのプッシュとプル
 services: container-registry
 author: stevelas
@@ -8,13 +8,13 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24cccd4745d611196046168f0125e7ef2a184e15
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.custom: seodec18, H1Hack27Feb2017
+ms.openlocfilehash: 3cbc9f30f180913fefa79f24612e50db75f5c9cd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576493"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260584"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする
 

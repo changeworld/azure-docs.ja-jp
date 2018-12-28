@@ -37,7 +37,7 @@ items:
         href: quickstart-java-jre.md
       - name: JavaScript (ブラウザー)
         href: quickstart-js-browser.md
-      - name: JavaScript (Node.js)
+      - name: JavaScript (Node.js)JavaScript (Node.js)
         displayName: recognize speech, speech recognition, speech to text, stt
         href: quickstart-js-node.md
       - name: Objective-C (iOS)
@@ -111,7 +111,7 @@ items:
   - name: Speech Devices SDK を取得する
     displayName: roobo, speech devices sdk, download
     href: get-speech-devices-sdk.md
-  - name: '[カスタマイズ]'
+  - name: カスタマイズ
     items:
     - name: 音響モデルをカスタマイズする
       href: how-to-customize-acoustic-models.md

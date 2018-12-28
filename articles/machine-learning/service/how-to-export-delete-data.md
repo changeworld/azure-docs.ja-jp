@@ -1,6 +1,7 @@
 ---
-title: ワークスペース データをエクスポートまたは削除する - Azure Machine Learning | Microsoft Docs
-description: Azure Machine Learning では、Azure portal、CLI、SDK、および認証済み REST API を使用してワークスペースをエクスポートまたは削除することができます。 この記事では、その方法について説明します。
+title: ワークスペース データのエクスポートまたは削除
+titleSuffix: Azure Machine Learning service
+description: Azure portal、CLI、SDK、および認証済み REST API を使用してワークスペースをエクスポートまたは削除する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
 ms.date: 09/24/2018
-ms.openlocfilehash: 20c75b55e9b02f30e90ad40ea11383b91ae0a247
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.custom: seodec18
+ms.openlocfilehash: 81215058095acfeedd320025457feec73d3b0d23
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267314"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192347"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する 
 

@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1c2294004245e0ef64b9b708a5b57ec0d34cc45f
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 1cef5f8f77a11dad605d9758296c9632f5d30ab8
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321990"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409022"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント:UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Azure のセキュリティとコンプライアンスのブループリント
 
@@ -39,7 +39,7 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 このブループリントは基盤のアーキテクチャです。 お客様は、OFFICIAL 分類の Web ベースの ワークロードの基礎としてこのブループリントを使用し、それぞれの要件に合わせてテンプレートとリソースを拡張することができます。 このブループリントは、Web ベースのワークロードをホスティングする [IaaS (サービスとしてのインフラストラクチャ)](https://azure.microsoft.com/overview/what-is-iaas/) と PaaS 両方の実装の選択肢をお客様に提供するために、[UK-OFFICAL Three-Tier IaaS Web Applications ブループリント](https://aka.ms/ukofficial-iaaswa)の原則に基づいて構築されています。
 
-このブループリントをデプロイするには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、「Azure を使ってみる」で無料ですばやく簡単にサインアップできます。 デプロイ手順については、[ここ](https://aka.ms/ukofficial-paaswa-repo/)をクリックしてください。
+このブループリントをデプロイするには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、無料ですばやく簡単にサインアップできます:Azure を使ってみる。 デプロイ手順については、[ここ](https://aka.ms/ukofficial-paaswa-repo/)をクリックしてください。
 
 ## <a name="architecture-and-components"></a>アーキテクチャとコンポーネント
 
@@ -79,7 +79,7 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) は、マイクロソフトが提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 ソリューションのすべてのユーザー (SQL Database にアクセスするユーザーを含む) は、Azure Active Directory で作成されています。
 - Web アプリケーションを使用するオペレーターと Azure リソースの管理機能へのアクセスに対する認証には Azure AD が使用されます。 詳細については、「[Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)」をご覧ください。
-- データベース列の暗号化では、アプリケーションを Azure SQL Database に対して認証するために Azure AD が使用されます。 詳細については、「[Always Encrypted: Protect sensitive data in SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)」(Always Encrypted: SQL Database で機密データを保護する) をご覧ください。
+- データベース列の暗号化では、アプリケーションを Azure SQL Database に対して認証するために Azure AD が使用されます。 詳細については、[Always Encrypted:SQL データベースの機密データの保護](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)に関するページを参照してください。
 - パブリック アクセス用に、Web アプリケーションを使用する一般市民が構成されています。 Active Directory またはソーシャル ネットワーク ID プロバイダーを介してアカウントの作成と認証を実行する場合、必要に応じて [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) を統合できます。
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) は、脆弱性と危険なアカウントを検出し、組織の ID のセキュリティ体制を強化する推奨事項を提供し、組織の ID に関連する疑わしいアクションに対する自動応答を構成します。さらに、疑わしいインシデントを調査し、適切なアクションを実行してそれらを解決します。
 - [Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) は、Azure の厳密に対象を絞ったアクセス管理を実現します。 サブスクリプションへのアクセスはサブスクリプション管理者に制限され、Azure Key Vault へのアクセスは、重要な管理アクセス権が必要なユーザーのみに制限されます。
@@ -104,14 +104,14 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 Azure Web Apps は、Java、PHP、Node.js Python、HTML、および C# で開発された Web アプリケーション向けにフル マネージド Web ホスティング環境を用意しています。インフラストラクチャを管理する必要はありません。 自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、[Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/)または任意の Git ベースのリポジトリからの自動デプロイが可能になります。
 
-App Service は [ISO、SOC、および PCI](https://www.microsoft.com/TrustCenter/) に準拠しています。また、ユーザー認証には、[Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) またはソーシャル ログイン ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication)、[Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication)、[Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication)、および [Microsoft 認証](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication)) を使用できます。
+App Service は [ISO、SOC、および PCI](https://www.microsoft.com/TrustCenter/) に準拠しています。また、ユーザー認証には、[Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) またはソーシャル ログイン ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)、[Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)、[Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)、および [Microsoft 認証](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)) を使用できます。
 
 Basic、Standard、および Premium プランは運用ワークロード向けで、専用の仮想マシン インスタンスで稼働します。 各インスタンスでは、複数のアプリケーションとドメインがサポートされます。 App Service は、必要に応じて信頼できる IP アドレスへのトラフィックをセキュリティで保護するために、[IP アドレス制限](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)もサポートしています。また、[Key Vault](https://azure.microsoft.com/services/key-vault/) や [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) などの PaaS サービスに安全に接続するために、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) もサポートしています。 さらに高度なセキュリティが必要な場合は Isolated プランをご利用ください。このプランは、プライベートな専用の Azure 環境内のアプリをホストするため、オンプレミスのネットワークとのセキュリティ保護された接続や、追加のパフォーマンスおよびスケールが必要なアプリに最適です。
 
 このテンプレートは、次の App Service 機能をデプロイします。
 
 - [Standard](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) App Service プラン レベル
-- 複数の Web アプリケーション [デプロイ スロット](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): 開発、プレビュー、QA、UAT、そして当然ながら運用 (既定スロット)。
+- 複数の Web アプリケーション [デプロイ スロット](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing):開発、プレビュー、QA、UAT、そして当然ながら運用 (既定スロット)。
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に接続するための [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) ([Azure SQL Database](https://azure.microsoft.com/services/sql-database/) へのアクセスを提供する場合にも使用できます) 
 - パフォーマンスを監視する [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) との統合
 - [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
@@ -230,9 +230,9 @@ Crown Commercial Service (政府による商業および調達アクティビテ
 デプロイには 3 つのアプローチが用意されています。シンプルな "express (高速)" バージョンの [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) は、迅速にテスト環境を構築するために適しています。パラメーター化された [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) は、ワークロード環境に合わせてより大規模な構成を提供するアプローチです。Azure portal ベースのデプロイでは、オペレーターが Azure portal を使用してデプロイ パラメーターを指定できます。 
 
 1.  [この](https://aka.ms/ukofficial-paaswa-repo) GitHub リポジトリをローカル ワークステーションに複製するかダウンロードします。
-2.  [方法 1: Azure CLI 2 (Express バージョン)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) に関するページを確認し、用意されているコマンドを実行します。
-3.  [方法 1a: Azure CLI 2 (スクリプト引数を使用したデプロイの構成)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) に関するページを確認し、用意されているコマンドを実行します。
-4.  [方法 2: Azure portal のデプロイ プロセス](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process)に関するページを確認し、記載されているコマンドを実行します。
+2.  [方法 1:Azure CLI 2 (Express バージョン)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) に関するページを確認し、用意されているコマンドを実行します。
+3.  [方法 1a:Azure CLI 2 (スクリプト引数を使用したデプロイの構成)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) に関するページを確認し、用意されているコマンドを実行します
+4.  [方法 2:Azure portal のデプロイ プロセス](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process)に関するページを確認し、記載されているコマンドを実行します
 
 ## <a name="guidance-and-recommendations"></a>ガイダンスと推奨事項
 

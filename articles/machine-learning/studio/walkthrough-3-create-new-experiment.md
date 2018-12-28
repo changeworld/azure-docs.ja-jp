@@ -1,11 +1,11 @@
 ---
-title: '手順 3: Machine Learning の新しい実験を作成する | Microsoft Docs'
-description: 予測ソリューションの開発に関するチュートリアルの中の、Azure Machine Learning Studio で新しいトレーニング実験を作成するステップの 3 番目の手順です。
+title: 手順 3:新しい Machine Learning Studio の実験を作成する - Azure | Microsoft Docs
+description: 予測ソリューションの開発チュートリアルの手順 3:Azure Machine Learning Studio での新しいトレーニング実験を作成します。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 95000f9fb57b95bf1edcda9abfba3668b5f5b523
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5f3f73e2c2cb281887e795d974403a17cffd5978
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835741"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260788"
 ---
-# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>チュートリアル手順 3: Azure Machine Learning の新しい実験を作成する
+# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>チュートリアル手順 3:新しい Azure Machine Learning Studio の実験を作成する
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning ワークスペースの作成](walkthrough-1-create-ml-workspace.md)
@@ -163,7 +163,7 @@ ms.locfileid: "34835741"
 
 実験での R スクリプトの使用に関する詳細については、「[R を使用した実験の拡張](extend-your-experiment-with-r.md)」をご覧ください。
 
-**次: [モデルをトレーニングして評価する](walkthrough-4-train-and-evaluate-models.md)**
+**次:[モデルをトレーニングして評価する](walkthrough-4-train-and-evaluate-models.md)**
 
 [0]: ./media/walkthrough-3-create-new-experiment/create-new-experiment.png
 [5]: ./media/walkthrough-3-create-new-experiment/rename-experiment.png

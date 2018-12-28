@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 6d752eb5d638171aa510bbbf17a197eddd2b6f60
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9abd567f629cf405a5e7414a23f43ea2fc613b72
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127209"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088080"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>Azure Data Factory を使用して PayPal からデータをコピーする (プレビュー)
 
@@ -45,7 +45,7 @@ PayPal のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **PayPal** に設定する必要があります。 | [はい] |
+| type | type プロパティは **PayPal** に設定する必要があります | [はい] |
 | host | PayPal インスタンスの URL。 (つまり、api.sandbox.paypal.com)  | [はい] |
 | clientId | PayPal アプリケーションに関連付けられているクライアント ID。  | [はい] |
 | clientSecret | PayPal アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
@@ -76,7 +76,12 @@ PayPal のリンクされたサービスでは、次のプロパティがサポ�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、PayPal データセットでサポートされるプロパティの一覧を示します。
 
-PayPal からデータをコピーするには、データセットの type プロパティを **PayPalObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+PayPal からデータをコピーするには、データセットの type プロパティを **PayPalObject** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、**PayPalObject** に設定する必要があります | [はい] |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -88,7 +93,8 @@ PayPal からデータをコピーするには、データセットの type プ�
         "linkedServiceName": {
             "referenceName": "<PayPal linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -97,14 +103,14 @@ PayPal からデータをコピーするには、データセットの type プ�
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、PayPal ソースでサポートされるプロパティの一覧を示します。
 
-### <a name="paypalsource-as-source"></a>ソースとしての PayPalSource
+### <a name="paypal-as-source"></a>ソースとしての PayPal
 
 PayPal からデータをコピーするには、コピー アクティビティのソースの種類を **PayPalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **PayPalSource** に設定する必要があります。 | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Payment_Experience"`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは **PayPalSource** に設定する必要があります | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Payment_Experience"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

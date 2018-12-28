@@ -4,14 +4,14 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 0b2954ddfda0ab4c94ddf6176d76d8bcd937fa42
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4ebd6eb860a6b102d1a3b12642510c429c18baa7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413335"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259156"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -19,15 +19,15 @@ ms.locfileid: "50413335"
 
 [Azure Migrate](migrate-overview.md) は、オンプレミスのワークロードを評価することによって、Azure への移行を支援します。 この記事では、Azure Migrate をデプロイして使用する際に発生する問題のトラブルシューティングを説明します。
 
-### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>継続的検出 OVA を使用していますが、オンプレミスの環境で削除された VM がまだポータルに表示されます。
+### <a name="i-am-using-the-ova-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>オンプレミスの環境を継続的に検出する OVA を使用していますが、オンプレミスの環境で削除された VM がまだポータルに表示されます。
 
 継続的検出のアプライアンスでは、パフォーマンス データのみが継続的に収集され、オンプレミス環境での構成の変更 (VM の追加、削除、ディスクの追加など) は検出されません。 オンプレミス環境で構成の変更がある場合は、次の操作を行って、変更をポータルに反映することができます。
 
-- 項目 (VM、ディスク、コアなど) の追加: これらの変更を Azure portal に反映するには、アプライアンスで検出を停止してから、再開します。 これにより、Azure Migrate プロジェクトで変更が確実に更新されます。
+- 項目 (VM、ディスク、コアなど) の追加:これらの変更を Azure portal に反映するには、アプライアンスで検出を停止してから、再開します。 これにより、Azure Migrate プロジェクトで変更が確実に更新されます。
 
    ![検出の停止](./media/troubleshooting-general/stop-discovery.png)
 
-- VM の削除: アプライアンスの設計方法のために、検出を停止して開始しても VM の削除は反映されません。 これは、後続の検出のデータが古い検出に追加され、上書きされないためです。 この場合、VM をグループから削除し、評価を再計算して、ポータルの VM は単に無視することができます。
+- VM の削除:アプライアンスの設計方法のため、検出を停止して開始しても VM の削除は反映されません。 これは、後続の検出のデータが古い検出に追加され、上書きされないためです。 この場合、VM をグループから削除し、評価を再計算して、ポータルの VM は単に無視することができます。
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>"*要求にはユーザー ID ヘッダーが含まれていなければなりません*" というエラーが表示されて、移行プロジェクトの作成が失敗しました
 
@@ -35,15 +35,44 @@ ms.locfileid: "50413335"
 
 招待メールを受信したら開き、メール内のリンクをクリックして招待を承諾する必要があります。 これを行ったら、Azure portal からサインアウトし、再度サインインする必要があります。ブラウザーの更新は機能しません。 これで、移行プロジェクトの作成を試行できます。
 
+### <a name="i-am-unable-to-export-the-assessment-report"></a>評価レポートをエクスポートできません
+
+評価レポートをポータルからエクスポートできない場合は、下の REST API を使用して評価レポートのダウンロード URL を取得してみてください。
+
+1. コンピューターに *armclient* をインストールします (まだインストールしていない場合)。
+
+  a. 管理者のコマンド プロンプト ウィンドウで、```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"``` のコマンドを実行します。
+
+  b. 管理者の Windows PowerShell ウィンドウで、```choco install armclient``` のコマンドを実行します。
+
+2.  Azure Migrate REST API を使用して評価レポートのダウンロード URL を取得します。
+
+  a.    管理者の Windows PowerShell ウィンドウで、```armclient login``` のコマンドを実行します。
+
+  これにより Azure ポップアップが表示されます。ここでは、Azure にログオンする必要があります。
+
+  b.    同じ PowerShell ウィンドウで、次のコマンドを実行して、評価レポートのダウンロード URL を取得します (下のサンプル API 要求で URI パラメーターを適切な値に置き換えます)。
+
+       ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+
+       サンプルの要求と出力:
+
+       ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
+esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
+018_12_16_21/downloadUrl?api-version=2018-02-02
+{
+  "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
+  "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
+
+3. 応答から URL をコピーし、それをブラウザーで開いて評価レポートをダウンロードします。
+
+4. レポートをダウンロードしたら、Excel を使用して、ダウンロードしたフォルダーを参照し、Excel でファイルを開いて表示します。
+
 ### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>ディスクとネットワーク アダプターのパフォーマンス データが 0 と表示されています
 
 これは、vCenter サーバーの統計設定レベルを 3 よりも低いレベルに設定した場合に発生することがあります。 レベルが 3 以上の場合、vCenter はコンピューティング、ストレージ、ネットワークの VM パフォーマンス履歴を保存します。 レベルが 3 よりも小さい場合、vCenter はストレージとネットワーク データは保存せずに、CPU とメモリのデータのみを保存します。 このシナリオでは、Azure Migrate でパフォーマンス データが 0 と表示され、Azure Migrate はオンプレミスのマシンから収集したメタデータに基づいて、ディスクとネットワークの推奨サイズを提供します。
 
 ディスクおよびネットワーク パフォーマンス データの収集を有効にするには、統計レベルの設定を 3 に変更します。 その後、ご利用の環境が検出され評価されるまで、少なくとも 1 日待ちます。
-
-### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>エージェントをインストールし、依存関係の視覚エフェクトを使用してグループを作成しました。 現在、フェールオーバー後にマシンで [依存関係の表示] ではなく [エージェントのインストール] アクションが表示されます
-* 計画的なフェールオーバー、または計画外のフェールオーバーの後、オンプレミスのマシンはオフになり、同等のマシンが Azure にスピン アップされます。 これらのマシンは、別々の MAC アドレスを取得します。 ユーザーがオンプレミスの IP アドレスを保持するか保持しないかによって、異なる IP アドレスを取得する場合があります。 MAC と IP アドレスの両方が異なる場合、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
-* テスト フェールオーバー後、オンプレミスのマシンは想定どおりにオンの状態を維持します。 Azure にスピン アップされる同等のマシンは、異なる MAC アドレスを取得して、異なる IP アドレスを取得することがあります。 これらのマシンから送信される Log Analytics トラフィックをユーザーがブロックしない限り、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>移行プロジェクトの作成時に Azure の地理を指定しましたが、検出されたメタデータが格納される Azure リージョンをどうやって探せばいいでしょうか？
 
@@ -128,7 +157,11 @@ vCenter Server "Servername.com:9443" に接続できません。原因となっ�
 3. 正しいポート番号を識別して vCenter に接続します。
 4. 最後に、vCenter サーバーが起動されていて実行中かどうかを確認します。
 
-## <a name="troubleshoot-dependency-visualization-issues"></a>依存関係の視覚化の問題のトラブルシューティング
+## <a name="dependency-visualization-issues"></a>依存関係の視覚化の問題
+
+### <a name="i-am-unable-to-find-the-dependency-visualization-functionality-for-azure-government-projects"></a>Azure Government プロジェクトの依存関係の視覚化機能が見つかりません。
+
+Azure Migrate は依存関係の視覚化機能を Service Map に依存していますが、Service Map は Azure Government で現在使用できないため、この機能は Azure Government で使用できません。
 
 ### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>オンプレミスのVM へMicrosoft Monitoring Agent（MMA） と依存関係エージェントをインストールしましたが、依存関係が Azure Migrate ポータルに表示されています。
 
@@ -159,7 +192,11 @@ Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間で
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>10 個を超える VM を持つグループの依存関係の視覚化ができません。
 最大 10 個 の VM を含むグループについて[依存関係を視覚化](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)できます。グループに含まれる VM が 10 個 を超える場合は、そのグループを小さなグループに分割して、依存関係を視覚化することをお勧めします。
 
-## <a name="troubleshoot-readiness-issues"></a>準備に関する問題のトラブルシューティング
+### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>エージェントをインストールし、依存関係の視覚エフェクトを使用してグループを作成しました。 現在、フェールオーバー後にマシンで [依存関係の表示] ではなく [エージェントのインストール] アクションが表示されます
+* 計画的なフェールオーバー、または計画外のフェールオーバーの後、オンプレミスのマシンはオフになり、同等のマシンが Azure にスピン アップされます。 これらのマシンは、別々の MAC アドレスを取得します。 ユーザーがオンプレミスの IP アドレスを保持するか保持しないかによって、異なる IP アドレスを取得する場合があります。 MAC と IP アドレスの両方が異なる場合、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
+* テスト フェールオーバー後、オンプレミスのマシンは想定どおりにオンの状態を維持します。 Azure にスピン アップされる同等のマシンは、異なる MAC アドレスを取得して、異なる IP アドレスを取得することがあります。 これらのマシンから送信される Log Analytics トラフィックをユーザーがブロックしない限り、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
+
+## <a name="troubleshoot-azure-readiness-issues"></a>Azure の対応性に関する問題のトラブルシューティング
 
 **問題** | **解決策**
 --- | ---
@@ -173,7 +210,6 @@ Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間で
 Visual Studio サブスクリプションが必要です。 | マシン内で、Visual Studio サブスクリプションでのみサポートされている Windows クライアント OS が実行されています。
 必要なストレージ パフォーマンスの VM が見つかりませんでした。 | そのマシンに必要なストレージ パフォーマンス (IOPS/スループット) が Azure VM のサポート範囲を超えています。 移行前に、そのマシンのストレージ要件を緩和します。
 必要なネットワーク パフォーマンスの VM が見つかりませんでした。 | そのマシンに必要なネットワーク パフォーマンス (入力/出力) が Azure VM のサポート範囲を超えています。 そのマシンのネットワーク要件を緩和します。
-指定された価格レベルの VM が見つかりません。 | 価格レベルが Standard に設定されている場合、Azure に移行する前に VM のサイズを小さくすることを検討してください。 サイズのレベルが Basic の場合、アセスメントの価格レベルを Standard に変更することを検討してください。
 指定した場所で VM が見つかりませんでした。 | 移行前に、別のターゲットの場所を指定します。
 不適切なディスクが 1 つ以上あります。 | 仮想マシンに接続されている 1 つ以上のディスクが Azure の要件を満たしていません。 仮想マシンに接続されている各ディスクのサイズが 4 TB を超えていないことを確認し、超えている場合は Azure に移行する前にディスク サイズを縮小してください。 各ディスクで必要とされるパフォーマンス (IOPS/スループット) が Azure の[仮想マシンの管理ディスク](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)でサポートされていることを確認してください。   
 不適切なネットワーク アダプターが 1 つ以上あります。 | 移行前に、マシンから未使用のネットワーク アダプターを削除します。

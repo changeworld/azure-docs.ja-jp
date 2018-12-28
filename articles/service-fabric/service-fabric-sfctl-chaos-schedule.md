@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 176b04b9bb16b5f183298c75f16bceb5e885e293
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 665fbbc8668e465c78d93b134f6a314d58791490
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492242"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276453"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 chaos のスケジュールを取得および設定します。
@@ -29,7 +29,7 @@ chaos のスケジュールを取得および設定します。
 |コマンド|説明|
 | --- | --- |
 | get | Chaos をいつどのようにして実行するかを定義する Chaos Schedule を取得します。 |
-| set | Chaos が使用するように Chaos Schedule を設定します。 |
+| set | Chaos によって使用されるスケジュールを設定します。 |
 
 ## <a name="sfctl-chaos-schedule-get"></a>sfctl chaos schedule get
 Chaos をいつどのようにして実行するかを定義する Chaos Schedule を取得します。
@@ -53,9 +53,9 @@ Chaos をいつどのようにして実行するかを定義する Chaos Schedul
 | --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
-Chaos が使用するように Chaos Schedule を設定します。
+Chaos によって使用されるスケジュールを設定します。
 
-Chaos が現在使用中の Chaos Schedule を設定します。 Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュールします。 指定された入力スケジュールのバージョンは、サーバー上の Chaos Schedule のバージョンと一致している必要があります。 指定されたバージョンがサーバー上のバージョンと一致しない場合、Chaos Schedule は更新されません。 指定されたバージョンがサーバー上のバージョンと一致する場合、Chaos Schedule は更新され、サーバー上の Chaos Schedule のバージョンは 1 だけインクリメントされて、2,147,483,647 を超えると 0 に戻ります。 この呼び出しが行われたときに Chaos が実行されていると、呼び出しは失敗します。
+Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュールします。 指定された入力スケジュールのバージョンは、サーバー上の Chaos Schedule のバージョンと一致している必要があります。 指定されたバージョンがサーバー上のバージョンと一致しない場合、Chaos Schedule は更新されません。 指定されたバージョンがサーバー上のバージョンと一致する場合、Chaos Schedule は更新され、サーバー上の Chaos Schedule のバージョンは 1 だけインクリメントされて、2,147,483,647 を超えると 0 に戻ります。 この呼び出しが行われたときに Chaos が実行されていると、呼び出しは失敗します。
 
 ### <a name="arguments"></a>引数
 
@@ -143,6 +143,7 @@ Chaos が現在使用中の Chaos Schedule を設定します。 Chaos は、Cha
         ]
     }
     ]
+
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

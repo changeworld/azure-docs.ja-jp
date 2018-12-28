@@ -1,23 +1,22 @@
 ---
-title: 'Azure Cosmos DB: SQL Async Java API、SDK、およびリソース | Microsoft Docs'
+title: Azure Cosmos DB は:SQL Async Java API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB SQL Async Java SDK の各バージョン間の変更など、SQL Async Java API と SDK に関するあらゆる詳細を提供します。
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/02/2018
+ms.date: 11/29/2018
 ms.author: moderakh
-ms.openlocfilehash: c8b8397e5d51b67895a6a95ed6d1611813a9aaf6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 5284de9a5b0f4f78b3b8b68e3848c2cb2783b839
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300848"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338619"
 ---
-# <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK: リリース ノートとリソース
+# <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
@@ -28,11 +27,11 @@ ms.locfileid: "51300848"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
-SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポートした非同期操作が可能であるという点で、SQL API Java SDK とは異なります。 既存の [SQL API Java SDK](sql-api-sdk-java.md) では、非同期操作はサポートされません。 
+SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポートした非同期操作が可能であるという点で、SQL API Java SDK とは異なります。 既存の [SQL API Java SDK](sql-api-sdk-java.md) では、非同期操作はサポートされません。 
 
 <table>
 
@@ -52,6 +51,11 @@ SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポ�
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+* リソース リークのバグを修正しました。
+* MultiPolygon のサポートを追加しました
+* RequestOptions でのカスタム ヘッダーのサポートを追加しました。
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
 * パッケージのバグを修正しました。
@@ -109,7 +113,7 @@ SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポ�
 * 適切な java doc 生成のために Java ヘッダー ファイルを修正しました。
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* [Netty ライブラリ](http://netty.io/)をゲートウェイ モードで使用し、非ブロッキング IO をエンド ツー エンドでサポートする GA SDK。 
+* [Netty ライブラリ](https://netty.io/)をゲートウェイ モードで使用し、非ブロッキング IO をエンド ツー エンドでサポートする GA SDK。 
 
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
@@ -122,6 +126,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.3.0](#2.3.0) |2018 年 11 月 29 日|--- |
 | [2.2.2](#2.2.2) |2018 年 11 月 8 日|--- |
 | [2.2.1](#2.2.1) |2018 年 11 月 2 日|--- |
 | [2.2.0](#2.2.0) |2018 年 9 月 22 日|--- |

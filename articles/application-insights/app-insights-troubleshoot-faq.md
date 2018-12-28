@@ -9,25 +9,24 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 60195f135b8b0e102a36c3573a341432f2e0c784
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 815388db673673a3802f8e5e515b7e16cb180a29
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959309"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323356"
 ---
-# <a name="application-insights-frequently-asked-questions"></a>Application Insights: よく寄せられる質問
+# <a name="application-insights-frequently-asked-questions"></a>Application Insights:よく寄せられる質問
 
 ## <a name="configuration-problems"></a>構成の問題
 *次のセットアップで問題が発生しています。*
 
 * [.NET アプリ](app-insights-asp-net-troubleshoot-no-data.md)
 * [既に実行中のアプリの監視](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
-* [Azure 診断](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Azure 診断](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Java Web アプリ](app-insights-java-troubleshoot.md)
 
 *サーバーからデータを取得できません。*
@@ -119,7 +118,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 
 その他のソースから (構成する場合):
 
-* [Azure 診断](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Azure 診断](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Docker コンテナー](app-insights-docker.md)
 * [Analytics へのインポート テーブル](app-insights-analytics-import.md)
 * [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
@@ -138,10 +137,10 @@ ASP.NET の場合は[こちら](app-insights-api-filtering-sampling.md)、Java �
 
 Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/) を使用しています。
 
-* ブラウザー テレメトリ: 送信者の IP アドレスを収集します。
-* サーバー テレメトリ: Application Insights モジュールでクライアントの IP アドレスが収集されます。 `X-Forwarded-For` が設定されている場合は収集されません。
+* ブラウザー テレメトリ:送信者の IP アドレスを収集します。
+* サーバー テレメトリ:Application Insights モジュールでクライアントの IP アドレスが収集されます。 `X-Forwarded-For` が設定されている場合は収集されません。
 
-別のヘッダーから IP アドレスを取得するように `ClientIpHeaderTelemetryInitializer` を構成できます。 たとえば一部のシステムでは、プロキシ、ロード バランサー、または CDN によって IP アドレスが `X-Originating-IP` に移動されます。 [詳細情報](http://apmtips.com/blog/2016/07/05/client-ip-address/)。
+別のヘッダーから IP アドレスを取得するように `ClientIpHeaderTelemetryInitializer` を構成できます。 たとえば一部のシステムでは、プロキシ、ロード バランサー、または CDN によって IP アドレスが `X-Originating-IP` に移動されます。 [詳細情報](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
 
 [Power BI を使用する](app-insights-export-power-bi.md)と、要求テレメトリを地図上に表示できます。
 
@@ -185,7 +184,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 ## <a name="what-are-the-user-and-session-counts"></a>ユーザー数とセッション数とは何ですか?
 
 * JavaScript SDK では、Web クライアントにユーザー Cookie を設定することで戻ってきたユーザーを識別し、セッション Cookie を設定することでグループ アクティビティを識別します。
-* クライアント側のスクリプトがない場合は、[サーバーで Cookie を設定](http://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)できます。
+* クライアント側のスクリプトがない場合は、[サーバーで Cookie を設定](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)できます。
 * 1 人の実在するユーザーが、複数の異なるブラウザーや、プライベート/シークレット ブラウズ、または複数のコンピューターでサイトを利用した場合、それらは複数のユーザーとしてカウントされます。
 * 複数のコンピューターやブラウザー間でログイン済みのユーザーを識別するには、[setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users) の呼び出しを追加します。
 

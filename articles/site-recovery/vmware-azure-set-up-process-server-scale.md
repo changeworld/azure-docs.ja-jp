@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用した VMware VM および物理サーバーのディザスター リカバリー時にフェールバックするプロセス サーバーを Azure で設定する | Microsoft Docs
 description: この記事では、VMware VM と物理サーバーのディザスター リカバリー時に Azure からオンプレミスにフェールバックするプロセス サーバーを Azure で設定する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
-ms.author: raynew
-ms.openlocfilehash: 330f0197b8a7735043e93f00dc4baa5578f50228
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 12/11/2018
+ms.author: mayg
+ms.openlocfilehash: f2d8d070a8adbe7992795b06722427da2830cb50
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212235"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253682"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>追加のプロセス サーバーによるフェールバックのスケール
 
@@ -23,6 +23,9 @@ ms.locfileid: "50212235"
 ### <a name="capacity-planning"></a>容量計画
 
 VMware レプリケーションのために[容量計画](site-recovery-plan-capacity-vmware.md)を実行したことを確認してください。 これは、追加のプロセス サーバーをどのように、いつデプロイする必要があるかを識別する助けとなります。
+
+>[!NOTE]
+複製された Process Server コンポーネントの使用はサポートされていません。 PS スケールアウトごとに、この記事の手順に従います。
 
 ### <a name="sizing-requirements"></a>サイズ変更の要件 
 
@@ -41,6 +44,7 @@ VMware レプリケーションのために[容量計画](site-recovery-plan-cap
 次の表に、追加のプロセス サーバーの前提条件をまとめます。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
+
 
 
 ## <a name="download-installation-file"></a>インストール ファイルをダウンロードする

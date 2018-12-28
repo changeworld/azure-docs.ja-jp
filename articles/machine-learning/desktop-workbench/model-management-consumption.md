@@ -2,8 +2,8 @@
 title: Azure Machine Learning モデル管理 Web サービスの使用 | Microsoft Docs
 description: このドキュメントでは、Azure Machine Learning でモデル管理を使用してデプロイされた Web サービスの使用に関連する手順および概念について説明します。
 services: machine-learning
-author: raymondlaghaeian
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: c01198a78a32c460bd147e1e160358271b80eef5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bbd36e5389208b21704f1749beee016e30cc4ec5
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950631"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253852"
 ---
 # <a name="consuming-web-services"></a>Web サービスの使用
 
@@ -60,7 +60,7 @@ Web サービス キーを取得するには、次のコマンドを使用しま
 ```
 az ml service keys realtime -i <web service id>
 ```
-HTTP 要求を作成するときは、Authorization ヘッダーにキーを使用します: "Authorization": "Bearer <key>"
+HTTP 要求を作成するときは、Authorization ヘッダーにキーを使用します:"Authorization":"Bearer <key>"
 
 ## <a name="get-the-service-swagger-description"></a>サービスの Swagger 説明の取得
 サービス API のスキーマを指定した場合、サービス エンドポイントにより ```http://<ip>/api/v1/service/<service name>/swagger.json``` に Swagger ドキュメントが公開されます。 Swagger ドキュメントを使用して、サービス クライアントを自動的に生成したり、予測される入力データやサービスに関するその他の詳細を調査したりできます。

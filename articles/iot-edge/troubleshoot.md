@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Edge のトラブルシューティング | Microsoft Docs
-description: Azure IoT Edge での一般的な問題を解決し、トラブルシューティング スキルについて説明します
+description: この記事を使用して、コンポーネントの状態およびログの取得など、Azure IoT Edge 用の標準的な診断スキルについて学習し、一般的な問題を解決します
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a553798a3ac15340805984a0e87312875f82c46c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: cd9ff1a1a7730ae870ef4e80fbca2d934aa5c8e2
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567657"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342665"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -146,7 +147,7 @@ Windows の場合:
 
 ファイルを保存し、IoT Edge Security Manager を再起動します。
 
-IoT Hub デバイスと IoT Edge デバイスの間で送信されたメッセージを確認することもできます。 Visual Studio Code 用の [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) 拡張機能を使ってメッセージを表示します。 詳細については、[Azure IoT で開発するときの便利なツール](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)に関するページを参照してください。
+IoT Hub デバイスと IoT Edge デバイスの間で送信されたメッセージを確認することもできます。 Visual Studio Code 用の [Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) 拡張機能 (旧称 Azure IoT Toolkit 拡張機能) を使用して、これらのメッセージを表示します。 詳細については、[Azure IoT で開発するときの便利なツール](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)に関するページを参照してください。
 
 ### <a name="restart-containers"></a>コンテナーを再起動する
 ログとメッセージの情報を調べた後は、コンテナーの再起動を試みることもできます。
@@ -243,7 +244,7 @@ IoT Edge ランタイムは、64 文字未満のホスト名のみをサポー�
 1. Azure Portal で、目的の仮想マシンの概要ページに移動します。 
 2. DNS 名の下の **[構成]** を選択します。 仮想マシンに既に構成済みの DNS 名がある場合は、新しいものを構成する必要はありません。 
 
-   ![DNS 名を構成する](./media/troubleshoot/configure-dns.png)
+   ![仮想マシンの DNS 名を構成する](./media/troubleshoot/configure-dns.png)
 
 3. **[DNS 名ラベル]** に値を指定し、**[保存]** を選択します。
 4. 新しい DNS 名をコピーします。名前は **\<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com** の形式である必要があります。
@@ -274,7 +275,7 @@ UI で:
 
 ポータルで、*[デバイスの詳細]*->*[モジュールの設定]*->*[Edge ランタイムの詳細設定を構成する]* に移動し、*Edge ハブ* に対して *false* が設定された *OptimizeForPerformance* という名前の環境変数を作成します。
 
-![optimizeforperformance](./media/troubleshoot/OptimizeForPerformanceFalse.png)
+![false に設定された OptimizeForPerformance](./media/troubleshoot/optimizeforperformance-false.png)
 
 **OR**
 

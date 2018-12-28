@@ -5,9 +5,8 @@ metakeywords: ''
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: d7ff9e157f776ebf683846652fe4788fc35e19af
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c449e86e1ba33425212313103715b8fe48278496
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311060"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276681"
 ---
 # <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での線形回帰の使用
 > *Kate Baroni* 氏と *Ben Boatman* 氏は、マイクロソフトの Data Insights Center of Excellence のエンタープライズ ソリューション設計者です。 この記事では、Azure Machine Learning を使用して、クラウド ベースのソリューションに既存の回帰分析スイートを移行する彼らの実験について説明します。 
@@ -31,7 +30,7 @@ ms.locfileid: "52311060"
 
 &nbsp; 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="goal"></a>目標
 次の 2 つの目標を念頭においてプロジェクトを開始しました。 
@@ -73,8 +72,8 @@ Excel 回帰は、Excel Analysis ToolPak で見つかった標準的な線形回
 Machine Learning チームの開発者とデータ サイエンティストによってプロセスと結果が実行されると、有益な情報がすぐに提供されました。 
 
 * Machine Learning Studio で[線形回帰][linear-regression]モジュールを使用する場合は、次の 2 つ方法が用意されています。
-  * オンライン勾配降下: 大規模な問題に適しています。
-  * 通常の最小二乗法: これは、線形回帰と聞くと多くの人が考える方法です。 小さなデータセットの場合は、通常の最小二乗法が最適な選択肢です。
+  * オンライン勾配降下:大規模な問題に適しています。
+  * 通常の最小二乗法:これは、線形回帰と聞くと多くの人が考える方法です。 小さなデータセットの場合は、通常の最小二乗法が最適な選択肢です。
 * パフォーマンスを向上させるために、L2 正則化重みパラメーターを調整することを検討します。 既定では 0.001 に設定されていますが、小さなデータ セットでは、パフォーマンスを向上させるために 0.005 に設定しました。 
 
 ### <a name="mystery-solved"></a>問題の解決
@@ -86,8 +85,8 @@ Recommendations を適用した結果、Machine Learning Studio で Excel と同
 | 学習者 |Excel -> データ分析 -> 回帰 |線形回帰。 |線形回帰 |
 | 学習者のオプション |該当なし |既定値 |最小二乗法<br />L2 = 0.005 |
 | データ セット |26 行、3 特徴、1 ラベル。 すべて数値。 |同じ |同じ |
-| 分割: トレーニング |Excel は最初の 18 行でトレーニングを行い、最後の 8 行でテストしました。 |同じ |同じ |
-| Split: テスト |最後の 8 行に Excel の回帰式を適用しました |同じ |同じ |
+| Split:トレーニング |Excel は最初の 18 行でトレーニングを行い、最後の 8 行でテストしました。 |同じ |同じ |
+| Split:テスト |最後の 8 行に Excel の回帰式を適用しました |同じ |同じ |
 | **パフォーマンス** | | | |
 | 自由度調整済み決定係数 |0.96 |該当なし | |
 | 決定係数 |該当なし |0.78 |0.952049 |
@@ -145,7 +144,7 @@ Excel の回帰と Azure Machine Learning の実験を並行して実行する�
 
 * Excel での回帰。 Excel で回帰を試したことがない場合は、このチュートリアル ([http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)) を利用すれば、簡単にできます。
 * 回帰と予測。 Tyler Chessman 氏による、初心者向けの優れた線形回帰の説明が書かれた、Excel で時系列予測を実行する方法を説明するブログ記事。 [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* 通常の最小二乗法の線形回帰: 欠点、問題、注意点 回帰の概要とディスカッションについては、[http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/) を参照してください。
+* 通常の最小二乗法の線形回帰:欠点、問題、注意点。 回帰の概要とディスカッションについては、[http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/) を参照してください。
 
 [1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
 [2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png

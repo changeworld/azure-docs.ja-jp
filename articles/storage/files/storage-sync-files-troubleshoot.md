@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 507bbc9013d8b02084b639f8d9fac0c7d97503f4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f6075bcbaae14fc60df6f33f4e65cd4abcec731
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014280"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409464"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -38,9 +38,9 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 installer.log をレビューして、インストールが失敗した原因を特定します。
 
 <a id="agent-installation-on-DC"></a>**Active Directory ドメイン コントローラーにエージェントをインストールできない**  
-同期エージェントを Active Directory ドメイン コントローラーにインストールしようとしたが、PDC ロール所有者が Windows Server 2008R2 (またはそれより前のバージョン) に存在する場合は、同期エージェントのインストールが失敗するという問題が発生することがあります。
+同期エージェントを Active Directory ドメイン コントローラーにインストールしようとしたが、PDC ロール所有者が Windows Server 2008 R2 (またはそれより前のバージョン) に存在する場合は、同期エージェントのインストールが失敗するという問題が発生することがあります。
 
-この問題を解決するには、Windows Server 2012R2 以降を実行している別のドメイン コントローラーに PDC ロールを転送してから、同期エージェントをインストールします。
+この問題を解決するには、Windows Server 2012 R2 以降を実行している別のドメイン コントローラーに PDC ロールを転送してから、同期エージェントをインストールします。
 
 <a id="server-registration-missing"></a>**Azure Portal の [登録済みサーバー] にサーバーが表示されない**  
 サーバーがストレージ同期サービスの **[登録済みサーバー]** に表示されない場合:
@@ -84,20 +84,21 @@ Reset-StorageSyncServer
 この問題は、ユーザー アカウントがクラウド エンドポイントを作成するための十分な権限を持っていない場合に発生します。 
 
 クラウド エンドポイントを作成するには、次の Microsoft 承認アクセス許可を持つユーザー アカウントが必要です。  
-* 読み取り: ロール定義の取得
-* 書き込み: カスタムのロール定義の作成または更新
-* 読み取り: ロール割り当ての取得
-* 書き込み: ロール割り当ての作成
+* 読み取り:ロール定義の取得
+* 書き込み:カスタムのロール定義の作成または更新
+* 読み取り:Get role assignment
+* 書き込み:ロール割り当ての作成
 
 次の組み込みロールには、必要な Microsoft 承認アクセス許可が付与されています。  
 * Owner
 * User Access Administrator
 
 現在のユーザー アカウントのロールに必要なアクセス許可が付与されているかどうかを確認するには:  
-1. Azure ポータルで、**[リソース グループ]** を選択します。
+1. Azure portal で、**[リソース グループ]** を選択します。
 2. ストレージ アカウントのあるリソース グループを選択し、**[アクセス制御 (IAM)]** を選択します。
-3. ユーザー アカウントに割り当てる **[ロール]** (所有者や共同作成者など) を選択します。
-4. **[リソース プロバイダー]** 一覧で、**[Microsoft 承認]** を選択します。 
+3. **[ロールの割り当て]** タブを選択します。
+4. ユーザー アカウントに割り当てる **[ロール]** (所有者や共同作成者など) を選択します。
+5. **[リソース プロバイダー]** 一覧で、**[Microsoft 承認]** を選択します。 
     * **[ロールの割り当て]** のアクセス許可が **[読み取り]** と **[書き込み]** になっている必要があります。
     * **[ロール定義]** のアクセス許可が **[読み取り]** と **[書き込み]** になっている必要があります。
 
@@ -131,7 +132,7 @@ Set-AzureRmStorageSyncServerEndpoint `
 
 この問題を解決するには、次の手順を実行します。
 
-1. サーバーでタスク マネージャーを開き、ストレージ同期モニター (AzureStorageSyncMonitor.exe) プロセスが実行されていることを確認します。 プロセスが実行されていない場合は、最初にサーバーの再起動を試みます。 サーバーを再起動しても問題が解決しない場合は、Azure File Sync エージェントをバージョン [3.3.0.0]( https://support.microsoft.com/help/4457484/update-rollup-for-azure-file-sync-agent-september-2018) にアップグレードします (現在インストールされていない場合)。
+1. サーバーでタスク マネージャーを開き、ストレージ同期モニター (AzureStorageSyncMonitor.exe) プロセスが実行されていることを確認します。 プロセスが実行されていない場合は、最初にサーバーの再起動を試みます。 サーバーを再起動しても問題が解決しない場合は、Azure File Sync [エージェントのバージョン](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes)を最新のものにアップグレードします。
 2. ファイアウォールとプロキシの設定が正しく構成されていることを確認します。
     - サーバーがファイアウォールの背後にある場合は、送信ポート 443 が許可されていることを確認します。 ファイアウォールで特定のドメインへのトラフィックが制限されている場合は、ファイアウォールの[ドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall)に記載されているドメインにアクセスできることを確認します。
     - サーバーがプロキシの背後にある場合は、プロキシの[ドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)に記載されている手順に従って、コンピューター全体またはアプリ固有のプロキシ設定を構成します。
@@ -467,20 +468,17 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **エラー文字列** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **修復が必要か** | [はい] |
 
-このエラーは一般に、サーバーの時刻が正しくないか、認証に使用される証明書が期限切れであるとことが原因で発生します。 サーバーの時刻が正しい場合は、次の手順を実行して期限切れの証明書を削除し (期限切れである場合)、サーバーの登録状態をリセットします。
+このエラーは一般に、サーバーの時刻が正しくないか、認証に使用される証明書が期限切れであるとことが原因で発生します。 サーバーの時刻が正しい場合は、次の手順を実行して期限切れの証明書を更新します。
 
 1. [証明書] MMC スナップインを開き、[コンピューター アカウント] を選択して、[証明書 (ローカル コンピューター)]\[個人]\[証明書] に移動します。
-2. 期限切れの場合はクライアント認証証明書を削除し、[証明書] MMC スナップインを閉じます。
-3. Regedit を開き、レジストリ内の ServerSetting キー (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync\ServerSetting) を削除します。
-4. Azure Portal で、ストレージ同期サービスの [登録済みサーバー] セクションに移動します。 証明書が期限切れになったサーバーを右クリックして、[サーバーの登録解除] をクリックします。
-5. サーバーで、次の PowerShell コマンドを実行します。
+2. クライアント認証証明書の有効期限が切れていないか確認します。 証明書が期限切れの場合は、証明書 MMC スナップインを閉じて、残りの手順を続けます。 
+3. Azure File Sync エージェント バージョン 4.0.1.0 以降がインストールされていることを確認します。
+4. サーバーで、次の PowerShell コマンドを実行します。
 
     ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Reset-StorageSyncServer
+    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+    Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-6. ServerRegistration.exe (既定の場所は C:\Program Files\Azure\StorageSyncAgent) を実行して、サーバーを再登録します。
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**サーバー エンドポイントが配置されているボリュームのディスク領域が少なくなっています。**  
 | | |
@@ -705,8 +703,9 @@ if ($fileShare -eq $null) {
 
 <a id="troubleshoot-rbac"></a>**Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します。**  
 # <a name="portaltabportal"></a>[ポータル](#tab/portal)
-1. 左側の目次で **[アクセス制御 (IAM)]** をクリックして、ストレージ アカウントへのアクセス権を持つユーザーとアプリケーション (*サービス プリンシパル*) の一覧に移動します。
-2. 一覧に、**[Hybrid File Sync Service]\(ハイブリッド ファイル同期サービス\)** が **[Reader and Data Access]\(閲覧者とデータ アクセス\)** ロールで表示されていることを確認します。 
+1. 左側の目次で **[アクセス制御 (IAM)]** をクリックします。
+1. **[ロールの割り当て]** タブをクリックして、ストレージ アカウントにアクセスできるユーザーとアプリケーション (*サービス プリンシパル*) を一覧表示します。
+1. 一覧に、**[Hybrid File Sync Service]\(ハイブリッド ファイル同期サービス\)** が **[Reader and Data Access]\(閲覧者とデータ アクセス\)** ロールで表示されていることを確認します。 
 
     ![ストレージ アカウントのアクセス制御タブに表示された Hybrid File Sync Service サービス プリンシパルのスクリーンショット](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 

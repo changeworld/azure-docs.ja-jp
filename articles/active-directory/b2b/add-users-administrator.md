@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: fef4615517da08262cc5845aaa076472c3874b34
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.reviewer: mal
+ms.openlocfilehash: 3da427974c4a270a7a743bb81d2376cf61b77390
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984290"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436910"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する
 
@@ -24,7 +24,7 @@ ms.locfileid: "45984290"
 ゲスト ユーザーをディレクトリに追加すると、共有アプリへの直接リンクをゲスト ユーザーに送信するか、ゲスト ユーザーが招待メール内の引き換えの URL をクリックできます。 引き換えプロセスの詳細については、[B2B コラボレーションの招待の利用](redemption-experience.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> 組織のプライバシーに関する声明の URL を追加するには、「[How-to: Add your organization's privacy info in Azure Active Directory](https://aka.ms/adprivacystatement)」 (操作方法: Azure Active Directory で、組織のプライバシーに関する情報を追加する) の手順に従う必要があります。 最初の招待の利用プロセスの一環として、招待したユーザーは続行するために、プライバシー条項に同意する必要があります。 
+> 組織のプライバシーに関する声明の URL を追加するには、「[How-to:Add your organization's privacy info in Azure Active Directory](https://aka.ms/adprivacystatement)」(操作方法: Azure Active Directory で、組織のプライバシーに関する情報を追加する) の手順に従う必要があります。 最初の招待の利用プロセスの一環として、招待したユーザーは続行するために、プライバシー条項に同意する必要があります。 
 
 ## <a name="add-guest-users-to-the-directory"></a>ゲスト ユーザーをディレクトリに追加する
 
@@ -32,11 +32,14 @@ B2B コラボレーション ユーザーをディレクトリに追加するに
 
 1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
 2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
-3. **[管理]** にある **[Users]** を選択します。
+3. **[管理]** にある **[ユーザー]** を選択します。
 4. **[新しいゲスト ユーザー]** を選択します。
 
    ![UI 内の新しいゲスト ユーザーの場所を示す](./media/add-users-administrator/NewGuestUser-Directory.png) 
  
+   > [!NOTE]
+   > **[新しいゲスト ユーザー]** オプションは **[組織の関係]** ページでも使用できます。 **Azure Active Directory** で、**[管理]** にある **[組織の関係]** を選択します。
+
 5. **[ユーザー名]** に外部ユーザーの電子メール アドレスを入力します。 必要に応じて、ようこそメッセージを含めます。 例: 
 
    ![UI 内の新しいゲスト ユーザーの場所を示す](./media/add-users-administrator/InviteGuest.png) 
@@ -83,11 +86,11 @@ Azure AD 管理者として B2B コラボレーション ユーザーをアプ�
 7. **[割り当ての追加]** で **[ユーザーとグループ]** を選択します。
 8. 次のいずれかを実行します。
    - ゲスト ユーザーがディレクトリに既に存在する場合は、B2B ユーザーを探します。 ユーザーを選択し、**[選択]** をクリックし、**[割り当て]** をクリックしてユーザーをアプリに追加します。
-   - ゲスト ユーザーがディレクトリに存在しない場合は、**[招待]** を選択します。
+   - ディレクトリにゲスト ユーザーがまだ存在しない場合、**[Select member or invite an external user]** \(メンバーの選択または外部ユーザーの招待\) にユーザーの電子メール アドレスを入力します。 メッセージ ボックスに、必要に応じて個人メッセージを入力します。 メッセージ ボックスで、**[招待]** をクリックします。
            
        ![[招待] ボタンを追加してゲスト メンバーを追加する](./media/add-users-administrator/AppInviteUsers.png)
    
-      **[ゲストを招待する]** で、メール アドレスを入力し、必要に応じて個人のメッセージを入力して、**[招待]** を選択します。 **[選択]** をクリックし、**[割り当て]** をクリックしてユーザーをアプリに追加します。 招待されたユーザーに招待が自動的に送信されます。
+      **[選択]** をクリックし、**[割り当て]** をクリックしてユーザーをアプリに追加します。 招待されたユーザーに招待が自動的に送信されます。
 
 9. ゲスト ユーザーには **[既定アクセス]** ロールが割り当てられ、アプリケーションの **[ユーザーとグループ]** リストに表示されます。 ロールを変更する場合は、次の手順を実行します。
    - ゲスト ユーザーを選択し、**[編集]** を選択します。 
@@ -101,7 +104,7 @@ Azure AD 管理者として B2B コラボレーション ユーザーをアプ�
 
 1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
 2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
-3. **[管理]** にある **[Users]** を選択します。
+3. **[管理]** にある **[ユーザー]** を選択します。
 5. ユーザー アカウントを選択します。
 6. **[管理]** で、**[プロファイル]** を選択します。
 7. ユーザーがまだ招待に応じていない場合は、**[招待の再送信]** オプションを使用できます。 このボタンを選択して再送信します。

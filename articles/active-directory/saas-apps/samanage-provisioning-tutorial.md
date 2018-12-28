@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Samanage を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Samanage を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Samanage に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: e5a69fa2ee9a8c4baaeb6586627c7a9a3c9ba4a8
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d3442710e1e1327dcafc1b4ed6617aeb7ff1bf0f
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347955"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322432"
 ---
-# <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>チュートリアル: Samanage を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>チュートリアル:Samanage を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Samanage にプロビジョニングまたは Samanage からプロビジョニング解除するように構成するために、Samanage と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
@@ -76,7 +76,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="important-tips-for-assigning-users-to-samanage"></a>ユーザーを Samanage に割り当てる際の重要なヒント
 
-*   単一の Azure AD ユーザーを Samanage に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+*    Samanage のロールは、Azure portal UI で今すぐ、自動的かつ動的に設定されます。 Samanage のロールをユーザーに割り当てる前に、必ず Samanage との初期同期を完了して、お使いの Samanage テナントの最新ロールを取得してください。
+
+*    単一の Azure AD ユーザーを Samanage に割り当てて、初期自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 テストが成功すれば、後でユーザーやグループを追加で割り当てられます。
 
 *   Samanage にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
 
@@ -141,7 +143,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Samanage のプロビジョニング](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
 
-15. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Samanage にプロビジョニングするユーザーやグループを定義します。
+15. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Samanage にプロビジョニングするユーザーやグループを定義します。 **[すべてのユーザーとグループを同期する]** オプションを選択するときに、以下の「**コネクタの制限事項**」セクションの説明に従って制限事項を検討します。
 
     ![Samanage のプロビジョニング](./media/samanage-provisioning-tutorial/ScopeSync.png)
 
@@ -153,6 +155,10 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Samanage に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+
+## <a name="connector-limitations"></a>コネクタの制限事項
+
+* **[すべてのユーザーとグループを同期する]** オプションが選択されていて、Samanage の**ロール**属性の既定値が構成されている場合、**[null の場合の既定値 (オプション)]** フィールドの必要な値が、ロールが必要な既定値である **{"displayName":"role"}** の形式で表されていることを確認します。
 
 ## <a name="additional-resources"></a>その他のリソース
 

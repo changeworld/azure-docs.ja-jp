@@ -9,16 +9,15 @@ editor: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 14e89d5eab058b9fa42c20811df9c5ac0ceca44a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 54fda4852e986749499b7fc8717308edf81915b2
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633199"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338495"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -30,7 +29,7 @@ Office 365 管理ソリューションでは、Log Analytics で Office 365 環�
 - 管理者のアクティビティを監視し、構成変更や高権限操作を追跡します。
 - 不必要なユーザーの行動を検出および調査します。これは、組織のニーズに合わせてカスタマイズできます。
 - 監査とコンプライアンスを実証します。 たとえば、機密ファイルに対するファイル アクセス操作を監視でき、これは監査とコンプライアンスのプロセスに役立ちます。
-- 組織の Office 365 アクティビティ データに対して[ログ検索](../../log-analytics/log-analytics-queries.md)を使用し、運用上のトラブルシューティングを実行します。
+- 組織の Office 365 アクティビティ データに対して[ログ検索](../../azure-monitor/log-query/log-query-overview.md)を使用し、運用上のトラブルシューティングを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションをインストールして構成する前に、次のものが必要です。
@@ -41,7 +40,7 @@ Office 365 管理ソリューションでは、Log Analytics で Office 365 環�
  
 
 ## <a name="management-packs"></a>管理パック
-このソリューションでは、[接続されている管理グループ](../../log-analytics/log-analytics-om-agents.md)に管理パックがインストールされることはありません。
+このソリューションでは、[接続されている管理グループ](../../azure-monitor/platform/om-agents.md)に管理パックがインストールされることはありません。
   
 ## <a name="install-and-configure"></a>インストールと構成
 [サブスクリプションに Office 365 ソリューション](solutions.md#install-a-management-solution)を追加することで開始します。 追加されたら、Office 365 サブスクリプションへのアクセス権を付与するため、このセクションの構成手順を実行する必要があります。
@@ -51,15 +50,15 @@ Office 365 管理ソリューションでは、Log Analytics で Office 365 環�
 
 Log Analytics ワークスペースから:
 
-- ワークスペース名: Office 365 のデータの収集場所であるワークスペース。
-- リソース グループ名: プロファイルが含まれるリソース グループ。
-- Azure サブスクリプション ID: ワークスペースを含むサブスクリプション。
+- ワークスペース名: Office 365 データが収集されるワークスペース。
+- リソース グループ名: そのワークスペースを含むリソース グループ。
+- Azure サブスクリプション ID: そのワークスペースを含むサブスクリプション。
 
 Office 365 サブスクリプションから:
 
-- ユーザー名: 管理者アカウントのメールアドレス。
+- ユーザー名:管理者アカウントの電子メール アドレス。
 - テナント ID: Office 365 サブスクリプションの一意の ID。
-- クライアント ID: Office 365 のクライアントを表す 16 文字の文字列。
+- クライアント ID: Office 365 クライアントを表す 16 文字の文字列。
 - クライアント シークレット: 認証に必要な暗号化された文字列。
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Azure Active Directory に Office 365 アプリケーションを作成する
@@ -709,6 +708,6 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics](../../log-analytics/log-analytics-queries.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
+* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
 * [独自のダッシュボードを作成](../../azure-monitor/platform/dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
-* [アラートを作成](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  
+* [アラートを作成](../../azure-monitor/platform/alerts-overview.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  

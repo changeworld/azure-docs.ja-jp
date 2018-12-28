@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Zendesk を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Zendesk を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Zendesk に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 2dc965547511d27ed43a88c1f45b50593b30a937
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d8d6df221a8c520cea5e6e938447ffd881e7374c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347938"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322774"
 ---
-# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル: Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル:Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Zendesk にプロビジョニングまたは Zendesk からプロビジョニング解除するように構成するために、Replicon と Azure Active Directory (Azure AD) で実行される手順を示すことです。 
 
@@ -77,6 +77,10 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="important-tips-for-assigning-users-to-zendesk"></a>ユーザーを Zendesk に割り当てる際の重要なヒント
 
+*    Zendesk のロールは、Azure portal UI で今すぐ、自動的かつ動的に設定されます。 Zendesk のロールをユーザーに割り当てる前に、必ず Zendesk との初期同期を完了して、お使いの Zendesk テナントの最新ロールを取得してください。
+
+*    単一の Azure AD ユーザーを Zendesk に割り当てて、初期自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 テストが成功すれば、後でユーザーやグループを追加で割り当てられます。
+  
 *   単一の Azure AD ユーザーを Zendesk に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
 *   Zendesk にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
@@ -111,7 +115,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
     *   **[シークレット トークン]** フィールドに、手順 6 で説明されているシークレット トークンを設定します。
 
     *   **[ドメイン]** フィールドに、Zendesk テナントのサブドメインを設定します。
-    例: https://my-tenant.zendesk.com のテナント URL があるアカウントの場合、サブドメインは **my-tenant** になります。
+    例:https://my-tenant.zendesk.com のテナント URL があるアカウントの場合、サブドメインは **my-tenant** になります。
 
 6. Zendesk アカウントの**シークレット トークン** は、**[管理者] > [API] > [設定]** に配置されています。 
 

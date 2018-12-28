@@ -1,5 +1,5 @@
 ---
-title: 'Saas アプリ: 多くの Azure SQL データベースのパフォーマンスを監視する | Microsoft Docs'
+title: Saas アプリ:多くの Azure SQL データベースのパフォーマンスを監視する | Microsoft Docs
 description: マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 86fdd7b0bd8ac76ddb2ac30ff324b80101c177e8
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 1ba98598a88973c5d5ae09cffda931a54d521b74
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353902"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259139"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 
@@ -75,7 +75,7 @@ S3 データベースが 2 つだけでもプールはコスト効率よく動�
 
 スクリプトによって、17 のテナントが 5 分以内でデプロイされます。
 
-*New-TenantBatch* スクリプトでは、入れ子になった、またはリンクされている [Resource Manager](../azure-resource-manager/index.md) テンプレート セットを使用して、テナントのバッチが作成されます。これにより、既定では、**basetenantdb** データベースがカタログ サーバーにコピーされ、新しいテナント データベースが作成されます。その後、そのデータベースがカタログに登録され、最後にテナント名と会場の種類で初期化されます。 これは、アプリが新しいテナントをプロビジョニングする方法と一致します。 *basetenantdb* に対するすべての変更が、その後プロビジョニングされた新しいテナントすべてに適用されます。 *既存*のテナント データベース (*basetenantdb* データベースを含む) に対してスキーマの変更を行う方法については、[スキーマ管理のチュートリアル](saas-tenancy-schema-management.md)をご覧ください。
+*New-TenantBatch* スクリプトでは、入れ子になった、またはリンクされている [Resource Manager](../azure-resource-manager/index.yml) テンプレート セットを使用して、テナントのバッチが作成されます。これにより、既定では、**basetenantdb** データベースがカタログ サーバーにコピーされ、新しいテナント データベースが作成されます。その後、そのデータベースがカタログに登録され、最後にテナント名と会場の種類で初期化されます。 これは、アプリが新しいテナントをプロビジョニングする方法と一致します。 *basetenantdb* に対するすべての変更が、その後プロビジョニングされた新しいテナントすべてに適用されます。 *既存*のテナント データベース (*basetenantdb* データベースを含む) に対してスキーマの変更を行う方法については、[スキーマ管理のチュートリアル](saas-tenancy-schema-management.md)をご覧ください。
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>すべてのテナント データベースの使用をシミュレート
 

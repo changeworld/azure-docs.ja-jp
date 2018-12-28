@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2c4730b3ec84ca14bcc3e93ed82faf37b15970d7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0d27b16690516becc586678f8cf3edea234feeea
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010373"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383400"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight で WebHCat から受信したエラーの説明と解決策
 
@@ -22,18 +22,18 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 ## <a name="what-is-webhcat"></a>WebHCat とは
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) は、Hadoop のテーブルおよびストレージ管理層である [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) 用の REST API です。 WebHCat は、HDInsight クラスターで既定で有効になっており、ジョブの送信、ジョブの状態の取得などの操作をクラスターにログインすることなく行うために、さまざまなツールで使用されます。
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) は、Apache Hadoop のテーブルおよびストレージ管理層である [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) 用の REST API です。 WebHCat は、HDInsight クラスターで既定で有効になっており、ジョブの送信、ジョブの状態の取得などの操作をクラスターにログインすることなく行うために、さまざまなツールで使用されます。
 
 ## <a name="modifying-configuration"></a>構成の変更
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントに示すエラーのいくつかは、構成されている最大値が超過したことが原因で発生します。 解決策に値が変更可能であることが示されている場合は、次のどちらかの方法で値を変更する必要があります。
 
-* **Windows** クラスターの場合: スクリプト アクションを使用して、クラスターの作成時に値を構成します。 詳細については、 [スクリプト アクションの開発](hdinsight-hadoop-script-actions.md)に関するページを参照してください。
+* **Windows** クラスターの場合:スクリプト アクションを使用して、クラスターの作成時に値を構成します。 詳細については、 [スクリプト アクションの開発](hdinsight-hadoop-script-actions.md)に関するページを参照してください。
 
-* **Linux** クラスターの場合: Ambari (Web または REST API) を使用して値を変更します。 詳細については、 [Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)
+* **Linux** クラスターの場合:Apache Ambari (Web または REST API) を使用して値を変更します。 詳細については、「[Apache Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)」を参照してください
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ### <a name="default-configuration"></a>既定の構成
@@ -48,7 +48,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 ## <a name="too-many-requests"></a>要求が多すぎます
 
-**HTTP 状態コード**: 429
+**HTTP 状態コード**:429
 
 | 原因 | 解決策 |
 | --- | --- |
@@ -56,15 +56,15 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 ## <a name="server-unavailable"></a>Server unavailable
 
-**HTTP 状態コード**: 503
+**HTTP 状態コード**:503
 
 | 原因 | 解決策 |
 | --- | --- |
 | この状態コードは、通常、クラスターのプライマリ ヘッドノードとセカンダリ ヘッドノードの間のフェールオーバー時に発生します。 |2 分待ってから操作をやり直してください。 |
 
-## <a name="bad-request-content-could-not-find-job"></a>Bad request Content: Could not find job
+## <a name="bad-request-content-could-not-find-job"></a>Bad request Content:Could not find job
 
-**HTTP 状態コード**: 400
+**HTTP 状態コード**:400
 
 | 原因 | 解決策 |
 | --- | --- |
@@ -74,7 +74,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 ## <a name="bad-gateway"></a>Bad gateway
 
-**HTTP 状態コード**: 502
+**HTTP 状態コード**:502
 
 | 原因 | 解決策 |
 | --- | --- |

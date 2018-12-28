@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1fd8f7c8499b7f9223939b8d426f274e79fd190e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: c20f2cc03565ce861dfc6317be8459fdafeef0bf
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025347"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384107"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 AKS クラスターを作成および管理するとき、場合によっては問題が発生することがあります。 この記事では、お問い合わせの多い問題とトラブルシューティングの手順について詳しく説明します。
@@ -59,8 +59,31 @@ Kubernetes ダッシュボードが表示されない場合は、kube-proxy ポ�
 
 既定の NSG が変更されていないこと、および API サーバーへの接続に対してポート 22 が開いていることを確認します。 kube-system 名前空間で tunnelfront ポッドが実行されているかどうかを確認します。 実行されていない場合は、強制的に削除します。これにより再起動されます。
 
-### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>アップグレードまたはスケーリングを行おうとしていますが、"プロパティ "imageReference" の変更は許可されていません" という エラーが発生します。  この問題を解決するにはどうすればよいですか?
+### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>アップグレードまたはスケーリングを行おうとしていますが、"プロパティ "imageReference" の変更は許可されていません" という  エラーが発生します。  この問題を解決するにはどうすればよいですか?
 
 AKS クラスター内のエージェント ノードのタグを変更したことが原因で、このエラーが発生している可能性があります。 MC_* リソース グループのリソースのタグやその他のプロパティを変更または削除すると、予期しない結果につながる可能性があります。 AKS クラスターの MC_* でリソースを変更すると、SLO が中断されます。
 
+### <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>AKS クラスターでサービス プリンシパルのシークレットを更新するにはどうすればよいですか?
 
+既定では、有効期限が 1 年のサービス プリンシパルと共に AKS クラスターが作成されます。 1 年の期限が近づいたら、資格情報をリセットしてサービス プリンシパルの期限を延長することができます。
+
+次の手順を実行する例を示します:
+
+1. [az aks show](/cli/azure/aks#az-aks-show) コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。
+1. [az ad sp credential list](/cli/azure/ad/sp/credential#az-ad-sp-credential-list) を使用して、サービス プリンシパルのクライアント シークレットを一覧表示します
+1. [az ad sp credential-reset](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) コマンドを使用して、サービス プリンシパルの期限を 1 年間延長します。 AKS クラスターが正しく動作するためには、サービス プリンシパルのクライアント シークレットが同じままである必要があります。
+
+```azurecli
+# Get the service principal ID of your AKS cluster
+sp_id=$(az aks show -g myResourceGroup -n myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
+
+# Get the existing service principal client secret
+key_secret=$(az ad sp credential list --id $sp_id --query [].keyId -o tsv)
+
+# Reset the credentials for your AKS service principal and extend for 1 year
+az ad sp credential reset \
+    --name $sp_id \
+    --password $key_secret \
+    --years 1
+```

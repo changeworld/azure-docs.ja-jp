@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: df69406bd0a6e09f66262ce66f8eeb7cada2422a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: eb4057b4cfc6a68fb3489a7ab6fb1ee6b5f41d7d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393986"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338464"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -76,7 +76,7 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 
 メッセージは、次の条件に該当するときに転送不能キューに送信されます。
 
-- メッセージが、[連結](service-bus-auto-forwarding.md)されている 3 つのキューまたはトピックを通過する。
+- メッセージが、[連結](service-bus-auto-forwarding.md)されている 5 つ以上のキューまたはトピックを通過する。
 - 送信先キューまたはトピックが無効または削除されている。
 - 送信先キューまたはトピックがエンティティの最大サイズを超えている。
 

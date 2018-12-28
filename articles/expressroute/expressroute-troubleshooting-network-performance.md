@@ -1,25 +1,19 @@
 ---
-title: Azure 仮想ネットワークのパフォーマンスのトラブルシューティング | Microsoft Docs
+title: '仮想ネットワークのパフォーマンスのトラブルシューティング: Azure | Microsoft Docs'
 description: このページでは、Azure ネットワーク リンクのパフォーマンスをテストする標準化された方法について説明します。
 services: expressroute
-documentationcenter: na
 author: tracsman
-manager: rossort
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 12/20/2017
 ms.author: jonor
-ms.openlocfilehash: 56f011632a2aa3ef0632efd5ace472c0fc79a329
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.custom: seodec18
+ms.openlocfilehash: 2572ff3711fb86cda88a86744192980a5b2d5361
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27318771"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277626"
 ---
 # <a name="troubleshooting-network-performance"></a>ネットワーク パフォーマンスのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -136,7 +130,7 @@ AzureCT の PowerShell モジュールには、[可用性テスト][Availability
 ### <a name="test-plan"></a>テスト計画
 1. VM1 と VM2 の間で Get-LinkPerformance テストを実行します。 このテストは、問題がローカルかそうでないかについての分析情報を提供します。 このテストで待機時間と帯域幅について許容できる結果が得られた場合、ローカルの VNet ネットワークの状態は良好だと見なすことができます。
 2. ローカルの VNet トラフィックの状態は良好だと想定し、VM1 と VM3 の間で Get-LinkPerformance テストを実行します。 このテストでは、Microsoft ネットワークから MSEE を経由し Azure に戻るまでの接続が実行されます。 このテストで待機時間と帯域幅について許容できる結果が得られた場合、Azure ネットワークの状態は良好だと見なすことができます。
-3. Azure に問題がないことが明らかになったら、企業ネットワークでも同様の一連のテストを実行できます。 このテストでも問題がない場合には、サービス プロバイダーや ISP と連携して WAN の接続を診断します。 例: 2 つのブランチ オフィス間、またはデスクとデータ センター サーバーの間でこのテストを実行します。 何をテストするかに応じて、そのパスを実行できるエンドポイント (サーバー、PC など) を見つけます。
+3. Azure に問題がないことが明らかになったら、企業ネットワークでも同様の一連のテストを実行できます。 このテストでも問題がない場合には、サービス プロバイダーや ISP と連携して WAN の接続を診断します。 例:2 つのブランチ オフィス間、またはデスクとデータ センター サーバーの間でこのテストを実行します。 何をテストするかに応じて、そのパスを実行できるエンドポイント (サーバー、PC など) を見つけます。
 
 >[!IMPORTANT]
 > テストごとにそのテストを実行した日時を記録し、結果を共通の場所 (OneNote や Excel がお勧めです) に保存しておくことが重要です。 各テストの実行の出力形式を統一することで、テストの実行間の結果データを比較でき、データに "漏れ" がないようにする必要があります。 複数のテスト間で一貫性を維持できることが、トラブルシューティングに AzureCT を使用する主な理由です。 実行する負荷シナリオそのものにマジックがあるわけではありませんが、どのテストからも*一貫したテストおよびデータの出力*が得られるという事実こそが*マジック*なのです。 毎回日時が記録されて一貫したデータが得られることは、後になって問題が散発的であることが明らかになった場合に特に役立ちます。 前もってきちんとデータを収集しておくと、何時間もかけて同じシナリオをテストし直す手間を省けます (筆者は何年も前にこの苦労を味わいました)。

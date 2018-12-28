@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3caa4f2dbe36f86c9b15a83303e90b16d06c56fd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 14b108a836424e92a251f50b42ed93963038a333
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419403"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192058"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>オフライン モードでの Azure 仮想マシン エージェントのインストール 
 
@@ -44,7 +44,7 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
 3.  トラブルシューティング ツール VM に接続します。 **[コンピューターの管理]** > **[ディスクの管理]** の順に開きます。 OS ディスクがオンラインであることと、ドライブ文字がディスク パーティションに割り当てられていることを確認します。
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>手順 2: OS ディスクを変更して Azure VM エージェントをインストールする
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>手順 2: Azure VM エージェントをインストールするように OS ディスクを変更する
 
 1.  トラブルシューティング ツール VM へのリモート デスクトップ接続を作成します。
 
@@ -76,7 +76,7 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\RdAgent
 
-        ![レジストリ サブキーをエクスポートする](./media/install-vm-agent-offline/backup-reg.png)
+          ![レジストリ サブキーをエクスポートする](./media/install-vm-agent-offline/backup-reg.png)
 
     2. レジストリ ファイルを編集します。 各ファイルで、(次の図に示すように) エントリ値 **SYSTEM** を **BROKENSYSTEM** に変更し、ファイルを保存します。 現在の VM エージェントの **ImagePath** を思い出してください。 該当するフォルダーを、接続された OS ディスクにコピーする必要があります。 
 

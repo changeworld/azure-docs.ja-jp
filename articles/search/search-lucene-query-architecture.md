@@ -1,5 +1,5 @@
 ---
-title: Azure Search のフルテキスト検索エンジン (Lucene) アーキテクチャ | Microsoft Docs
+title: フルテキスト検索エンジン (Lucene) アーキテクチャ - Azure Search
 description: Azure Search に関して Lucene のフルテキスト検索に使用されるクエリ処理と文書検索の概念について説明します。
 manager: jlembicz
 author: yahnoosh
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 55d361e90dbc5fe48bc118088a6f859d096048ff
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.custom: seodec2018
+ms.openlocfilehash: 8ca9fe72e4bd5272a5303b3bacd8c0960504789d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036872"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315809"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
 
@@ -73,7 +74,7 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 この記事では主に、"*検索クエリ*" (`"Spacious, air-condition* +\"Ocean view\""`) の処理について取り上げています。 フィルター処理と並べ替えについては取り上げません。 詳細については、[Search API のリファレンス ドキュメント](https://docs.microsoft.com/rest/api/searchservice/search-documents)を参照してください。
 
 <a name="stage1"></a>
-## <a name="stage-1-query-parsing"></a>第 1 段階: クエリ解析 
+## <a name="stage-1-query-parsing"></a>ステージ 1:クエリ解析 
 
 前出のとおり、検索要求の最初の行がクエリ文字列です。 
 
@@ -95,7 +96,7 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
  ![ブール クエリの searchMode は any][2]
 
-### <a name="supported-parsers-simple-and-full-lucene"></a>サポートされるパーサー: Simple と Full Lucene 
+### <a name="supported-parsers-simple-and-full-lucene"></a>サポートされるパーサー:シンプルかつ完全な Lucene 
 
  Azure Search では、`simple` (既定) と `full` の 2 種類のクエリ言語が使用されます。 どちらのクエリ言語を使うかは、検索要求で `queryType` パラメーターの設定で指定します。その指定に基づいて、クエリ パーサーが演算子と構文を解釈します。 [Simple クエリ言語](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)は直感的で安定しており、多くの場合、クライアント側の処理を行わなくてもユーザー入力をそのまま解釈するのに適しています。 Web 検索エンジンで多く使われているクエリ演算子がサポートされます。 [Full Lucene クエリ言語](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)は、`queryType=full` を設定することによって利用できます。より多くの演算子やクエリの種類 (ワイルドカード、あいまい一致、正規表現、フィールド指定検索など) がサポートされることで、既定の Simple クエリ言語が拡張されます。 たとえば、Simple クエリ構文で送信された正規表現は、式としてではなくクエリ文字列と解釈されます。 この記事で紹介している要求の例では、Full Lucene クエリ言語を使用しています。
 
@@ -127,7 +128,7 @@ Spacious,||air-condition*+"Ocean view"
 > `searchMode=all` より `searchMode=any` を選ぶ場合は、代表的なクエリを実行したうえで判断することをお勧めします。 普段から演算子を指定するユーザー (ドキュメント ストアを検索するときなど) は、`searchMode=all` で得られるブール クエリの構造の方が直感的にわかりやすいかもしれません。 `searchMode` と演算子の相互作用について詳しくは、[Simple クエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)に関するページをご覧ください。
 
 <a name="stage2"></a>
-## <a name="stage-2-lexical-analysis"></a>第 2 段階: 字句解析 
+## <a name="stage-2-lexical-analysis"></a>ステージ 2:字句解析 
 
 クエリ ツリーが構築された後、"*単語検索*" と "*フレーズ検索*" のクエリがアナライザーによって加工されます。 アナライザーは、パーサーから渡されたテキスト入力を受け取ってそのテキストを加工してから、トークン化した語句をクエリ ツリーに組み入れます。 
 
@@ -189,7 +190,7 @@ Spacious,||air-condition*+"Ocean view"
 
 <a name="stage3"></a>
 
-## <a name="stage-3-document-retrieval"></a>第 3 段階: 文書検索 
+## <a name="stage-3-document-retrieval"></a>ステージ 3:文書検索 
 
 ここでいう文書検索とは、一致する語句がインデックスに存在する文書を見つけることです。 この段階は、例を使用するとよくわかります。 まず、次のような単純なスキーマを使用した hotels というインデックスを考えてみましょう。 
 
@@ -314,7 +315,7 @@ title フィールドの場合、*hotel* だけが 2 つの文書 (1 と 3) に�
 
 全体として、この例のクエリの場合、一致する文書は 1、2、3 です。 
 
-## <a name="stage-4-scoring"></a>第 4 段階: スコア付け  
+## <a name="stage-4-scoring"></a>ステージ 4:スコア付け  
 
 検索結果セット内のすべての文書には、関連度スコアが割り当てられます。 関連度スコアの機能は、ユーザーからの問い合わせ (検索クエリ) に対して最適解となる文書に対し、相対的に高いランクを与えることです。 このスコアは、一致した語句の統計学的な特性に基づいて計算されます。 スコア付けの式の核となるのは [TF/IDF (Term Frequency-Inverse Document Frequency)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) です。 TF/IDF は、出現頻度の低い語句と高い語句を含んだ検索において、出現頻度の低い語句を含んだ結果に、より高いランクを与えます。 たとえば、Wikipedia の記事をすべて含んだ架空のインデックスでは、*the president* というクエリに一致した文書のうち、*president* で一致した文書の方が *the* で一致した文書よりも関連性が高いと見なされます。
 

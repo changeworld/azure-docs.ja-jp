@@ -1,19 +1,20 @@
 ---
-title: Azure Blueprints でエラーを解決する
+title: 一般的なエラーのトラブルシューティング
 description: ブループリントの作成や割り当てで発生する問題を解決する方法について説明します
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 10/25/2018
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b910f90e70af4ce6d4243c06bfe5bd03d25d74d6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 40668fed2fcc2a04e39fa3a4d7e8e8923c75ae05
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092936"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315528"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 
@@ -35,7 +36,7 @@ ms.locfileid: "50092936"
 
 ## <a name="general-errors"></a>一般エラー
 
-### <a name="policy-violation"></a>シナリオ: ポリシー違反
+### <a name="policy-violation"></a>シナリオ:ポリシー違反
 
 #### <a name="issue"></a>問題
 

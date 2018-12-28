@@ -1,5 +1,5 @@
 ---
-title: Azure Search の検索トラフィックの分析 |Microsoft Docs
+title: 検索トラフィックの分析 - Azure Search
 description: Azure Search の検索トラフィックの分析 (Microsoft Azure 上のクラウド ホスト検索サービス) を有効にして、ユーザーとデータに関する洞察のロックを解除します。
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/05/2017
 ms.author: heidist
-ms.openlocfilehash: 4b40e8c9f681b7489c0ab2ffe7b369cc869c73e2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.custom: seodec2018
+ms.openlocfilehash: 4cc7434508e49715e95c87421db2bbed7e20de05
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777261"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310287"
 ---
 # <a name="what-is-search-traffic-analytics"></a>検索トラフィックの分析とは
 検索トラフィックの分析は、検索サービスのフィードバック ループの実装パターンです。 このパターンでは、必要なデータと、Application Insights を使用してデータを収集する方法を示します。Application Insights は、複数のプラットフォームでサービスを監視する業界最先端のサービスです。
@@ -30,7 +31,7 @@ Azure Search は、Azure Application Insights と Power BI を統合して詳細
 
 1. ユーザーによって生成された検索イベント: ユーザーによって開始された検索クエリだけが対象となります。 ファセット、追加コンテンツ、または内部情報の設定に使用される検索要求は重要ではありません。これらの要求は結果を歪曲し、偏った結果を招きます。
 
-2. ユーザーによって生成されたクリック イベント: このドキュメントでの "クリック" は、検索クエリから返された特定の検索結果を選択するユーザーを指します。 一般に、クリックは、ドキュメントが特定の検索クエリの適切な結果であることを意味します。
+2. ユーザーによって生成されたクリック イベント:このドキュメントでの "クリック" は、検索クエリから返された特定の検索結果を選択するユーザーを指します。 一般に、クリックは、ドキュメントが特定の検索クエリの適切な結果であることを意味します。
 
 検索イベントとクリック イベントを関連付け ID と結び付けることで、アプリケーションでのユーザーの行動を分析できます。 検索に関するこれらの洞察は、検索トラフィックのログだけでは得られません。
 

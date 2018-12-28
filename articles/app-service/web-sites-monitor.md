@@ -1,5 +1,5 @@
 ---
-title: Azure App Service でアプリを監視する | Microsoft Docs
+title: アプリを監視する - Azure App Service | Microsoft Docs
 description: Azure Portal を使用して Azure App Service のアプリを監視する方法を説明します。
 services: app-service
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 9c58e5c64ea3689634d7afb4c5fef08c9b21798c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 103b5c1d2bc70f187b6e65a9fa9d80a35ad8e0c1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244374"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321581"
 ---
-# <a name="how-to-monitor-apps-in-azure-app-service"></a>Azure App Service でアプリを監視する方法
+# <a name="how-to-monitor-apps-in-azure-app-service"></a>方法:Azure App Service のアプリの監視
 [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、組み込みの監視機能が [Azure Portal](https://portal.azure.com) に用意されています。
 この Azure ポータルには、アプリと App Service プランの**クォータ**と**メトリック**を確認する機能、**アラート**のセットアップ、さらにこれらのメトリックに基づいた自動**スケール**が含まれています。
 
@@ -53,7 +54,7 @@ App Service でホストされているアプリケーションは、使用で�
 
 **Basic** プラン、**Standard** プラン、**Premium** プランでホストされているアプリに適用できるクォータは、**ファイルシステム**のみです。
 
-異なる App Service SKU で利用できる特定のクォータ、制限、機能について詳しくは、こちらの [Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md#app-service-limits)に関するページをご覧ください
+異なる App Service SKU で利用できる特定のクォータ、制限、機能について詳しくは、次のページをご覧ください。[Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md#app-service-limits)
 
 #### <a name="quota-enforcement"></a>クォータの適用
 アプリケーションが **CPU (ショート)**、**CPU (1 日)**、**帯域幅**のクォータを超過すると、クォータがリセットされるまでアプリケーションは停止されます。 この停止期間中は、すべての受信要求の結果が **HTTP 403**になります。
@@ -152,15 +153,15 @@ CPU の使用状況を反映するメトリックには、 **CPU 時間**と **C
 ## <a name="alerts-and-autoscale"></a>アラートと自動スケール
 アプリまたは App Service プランのメトリックは、アラートに関連付けることができます。 詳しくは、[アラート通知の受信](../monitoring-and-diagnostics/insights-alerts-portal.md)に関するページをご覧ください。
 
-Basic、Standard、Premium の App Service プランでホストされている App Service アプリでは、**自動スケール**がサポートされています。 自動スケールでは、App Service プランのメトリックスを監視するルールを構成することができます。 ルールを使用することによって、必要に応じて追加リソースを提供するインスタンス数を増減できます。 また、アプリケーションがオーバー プロビジョニングされたときのコスト削減にも役立ちます。 自動スケールの詳細については、[スケールの方法](../monitoring-and-diagnostics/insights-how-to-scale.md)に関するページと「[Azure Insights の自動スケールのベスト プラクティス](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)」をご覧ください。
+Basic、Standard、Premium の App Service プランでホストされている App Service アプリでは、**自動スケール**がサポートされています。 自動スケールでは、App Service プランのメトリックスを監視するルールを構成することができます。 ルールを使用することによって、必要に応じて追加リソースを提供するインスタンス数を増減できます。 また、アプリケーションがオーバー プロビジョニングされたときのコスト削減にも役立ちます。 自動スケールの詳細については、[スケールの方法](../monitoring-and-diagnostics/insights-how-to-scale.md)に関するページと「[Azure Monitor の自動スケールのベスト プラクティス](../azure-monitor/platform/autoscale-best-practices.md)」をご覧ください
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
-[fzilla]:http://go.microsoft.com/fwlink/?LinkId=247914
-[vmsizes]:http://go.microsoft.com/fwlink/?LinkID=309169
+[fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
+[vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
 
 
 

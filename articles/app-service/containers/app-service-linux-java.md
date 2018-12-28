@@ -1,6 +1,6 @@
 ---
-title: Azure App Service on Linux での Java 言語のサポート | Microsoft Docs
-description: Azure App Service on Linux で Java アプリをデプロイするための開発者ガイド。
+title: App Service on Linux 用の Java 開発者ガイド - Azure | Microsoft Docs
+description: Azure App Service on Linux で実行される Java アプリを構成するについて説明します。
 keywords: Azure App Service, Web アプリ, Linux, OSS, Java
 services: app-service
 author: rloutlaw
@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 12/10/2018
 ms.author: routlaw
-ms.openlocfilehash: a6752f9127a176eef9fd03e7ffddfa7450772def
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.custom: seodec18
+ms.openlocfilehash: 6a9f3fcb372606e7f608b5137fb1ed15376d72d9
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037682"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407339"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>App Service on Linux の Java 開発者ガイド
 
@@ -28,6 +29,10 @@ Azure App Service on Linux を使用すると、Java 開発者は、完全に管
 ## <a name="logging-and-debugging-apps"></a>アプリのログ記録とデバッグ
 
 パフォーマンス レポート、トラフィックの視覚エフェクト、および正常性検査は、Azure portal を介して各アプリに対して使用できます。 これらの診断ツールにアクセスして使用する方法の詳細については、「[Azure App Service 診断の概要](/azure/app-service/app-service-diagnostics)」を参照してください。
+
+## <a name="application-performance-monitoring"></a>アプリケーション パフォーマンス監視
+
+Linux 上の App Service で実行されている Java アプリで New Relic および AppDynamics を構成する手順については、[Linux 上での Azure App Service の Java アプリを使用したアプリケーション パフォーマンス監視ツール](how-to-java-apm-monitoring.md)に関する記事を参照してください。
 
 ### <a name="ssh-console-access"></a>SSH コンソール アクセス 
 
@@ -49,7 +54,7 @@ az webapp log config --name ${WEBAPP_NAME} \
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
 
-詳細については、[Azure CLI を使用したログのストリーミング](/azure/app-service/web-sites-enable-diagnostic-log#streaming-with-azure-command-line-interface)に関する記事を参照してください。
+詳細については、[Azure CLI を使用したログのストリーミング](../web-sites-enable-diagnostic-log.md#streaming-with-azure-cli)に関する記事を参照してください。
 
 ### <a name="app-logging"></a>アプリのログ記録
 
@@ -124,13 +129,13 @@ Azure portal の Web アプリ用の **[アプリケーション設定]** で、
 </appSettings> 
 ```
 
-## <a name="secure-application"></a>セキュリティで保護されたアプリケーション
+## <a name="secure-applications"></a>セキュリティで保護されたアプリケーション
 
 App Service for Linux で実行される Java アプリケーションは、他のアプリケーションと同じ一連の[セキュリティのベスト プラクティス](/azure/security/security-paas-applications-using-app-services)を備えています。 
 
 ### <a name="authenticate-users"></a>ユーザーを認証する
 
-**[認証/承認]** オプションを使用して、Azure portal でアプリ認証を設定します。 そこから、Azure Active Directory、または Facebook、Google、GitHub などのソーシャル ログインを使用して、認証を有効にすることができます。 Azure portal の構成は、1 つの認証プロバイダーを構成するときにのみ機能します。  詳細については、「[Azure Active Directory ログインを使用するよう App Service アプリを構成する](/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)」と、他の ID プロバイダーの関連記事を参照してください。
+**[認証/承認]** オプションを使用して、Azure portal でアプリ認証を設定します。 そこから、Azure Active Directory、または Facebook、Google、GitHub などのソーシャル ログインを使用して、認証を有効にすることができます。 Azure portal の構成は、1 つの認証プロバイダーを構成するときにのみ機能します。  詳細については、「[Azure Active Directory ログインを使用するよう App Service アプリを構成する](/azure/app-service/configure-authentication-provider-aad)」と、他の ID プロバイダーの関連記事を参照してください。
 
 複数のサインイン プロバイダーを有効にする必要がある場合は、[App Service 認証のカスタマイズ](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)に関する記事の手順に従います。
 
@@ -147,36 +152,47 @@ App Service for Linux で実行される Java アプリケーションは、他�
 >[!NOTE]
 > アプリケーションで Spring Boot または Spring Framework を使用している場合は、Spring データ JPA のデータベース接続情報を環境変数として設定できます [アプリケーションのプロパティ ファイル内]。 その後、Azure portal または CLI で、[アプリ設定](/azure/app-service/web-sites-configure#app-settings)を使用してアプリケーションに対してこれらの値を定義することができます。
 
-このセクションの構成スニペットの例では、MySQL データベースを使用します。 詳細については、[MySQL](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-tomcat.html)、[SQL Server JDBC](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017)、および [PostgreSQL](https://jdbc.postgresql.org/documentation/head/index.html) の構成ドキュメントを参照してください。
+これらの説明は、すべてのデータベース接続に適用されます。 プレースホルダーを、選択したデータベースのドライバーのクラス名と JAR ファイルに置き換える必要があります。 一般的なデータベースのクラス名とドライバーのダウンロードを含む表を次に示します。
 
-Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用して、データベースへのマネージド接続を使用するよう Tomcat を構成するには、まず起動時に Tomcat によって読み取られる CATALINA_OPTS 環境変数をカスタマイズします。 App Service Maven プラグインで、アプリ設定を使用してこれらの値を設定します。
+| Database   | ドライバーのクラス名                             | JDBC ドライバー                                                                      |
+|------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
+| PostgreSQL | `org.postgresql.Drvier`                        | [ダウンロード](https://jdbc.postgresql.org/download.html)                                    |
+| MySQL      | `com.mysql.jdbc.Driver`                        | [ダウンロード](https://dev.mysql.com/downloads/connector/j/) ("プラットフォームに依存しない" を選択) |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+
+Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用するように Tomcat を構成するには、最初に、起動時に Tomcat によって読み込まれる `CATALINA_OPTS` 環境変数をカスタマイズします。 [App Service Maven プラグイン](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)のアプリ設定を使用して、次の値を設定します。
 
 ```xml
 <appSettings> 
     <property> 
         <name>CATALINA_OPTS</name> 
-        <value>"$CATALINA_OPTS -Dmysqluser=${mysqluser} -Dmysqlpass=${mysqlpass} -DmysqlURL=${mysqlURL}"</value> 
+        <value>"$CATALINA_OPTS -Ddbuser=${DBUSER} -Ddbpassword=${DBPASSWORD} -DconnURL=${CONNURL}"</value> 
     </property> 
 </appSettings> 
 ```
 
-または、Azure portal の同等の App Service 設定を使用します。
+または、Azure Portal の [アプリケーションの設定] ブレードで環境変数を設定します。
 
-次に、1 つのアプリケーションのみに対して、または App Service プランで実行されているすべてのアプリケーションに対して、データ ソースを使用可能にする必要があるかを判断します。
+>[!NOTE]
+> Azure Database for Postgres を使用している場合は、JDBC 接続文字列の `ssl=true` を `sslmode=require` に置き換えてください。
 
-アプリケーション レベル データ ソースの場合は、次の手順に従います。 
+次に、データ ソースを Tomcat サーブレットで実行されている 1 つのアプリケーション、またはすべてのアプリケーションのどちらに対して使用可能にする必要があるかを判定します。
 
-1. Web アプリケーションに `context.xml` ファイルが存在しない場合は追加し、プロジェクトがビルドされたら WAR ファイルの `META-INF` ディレクトリにこのファイルを追加します。
+#### <a name="for-application-level-data-sources"></a>アプリケーション レベル データ ソースの場合は、次の手順に従います。 
 
-2. このファイルで、`Context` パス エントリを追加して、データ ソースを JNDI アドレスにリンクします。 その
+1. プロジェクトの `META-INF/` ディレクトリ内に `context.xml` ファイルを作成します。 `META-INF/` ディレクトリが存在しない場合は作成します。
+
+2. `context.xml` で、`Context` 要素を追加してデータ ソースを JNDI アドレスにリンクします。 `driverClassName` プレースホルダーを、上の表にあるドライバーのクラス名に置き換えます。
 
     ```xml
     <Context>
         <Resource
-            name="jdbc/mysqldb" type="javax.sql.DataSource"
-            url="${mysqlURL}"
-            driverClassName="com.mysql.jdbc.Driver"
-            username="${mysqluser}" password="${mysqlpass}"
+            name="jdbc/dbconnection" 
+            type="javax.sql.DataSource"
+            url="${dbuser}"
+            driverClassName="<insert your driver class name>"
+            username="${dbpassword}" 
+            password="${connURL}"
         />
     </Context>
     ```
@@ -185,38 +201,50 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
     ```xml
     <resource-env-ref>
-        <resource-env-ref-name>jdbc/mysqldb</resource-env-ref-name>
+        <resource-env-ref-name>jdbc/dbconnection</resource-env-ref-name>
         <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
     </resource-env-ref>
     ```
 
-共有サーバー レベル リソースの場合は、次の手順に従います。
+#### <a name="for-shared-server-level-resources"></a>共有サーバー レベル リソースの場合は、次の手順に従います。
 
-1. 構成がまだ存在しない場合は、SSH を使用して、App Service Linux インスタンス上で `/usr/local/tomcat/conf` の内容を `/home/tomcat` にコピーします。
+1. 構成がまだ存在しない場合は、SSH を使用して、App Service Linux インスタンス上で `/usr/local/tomcat/conf` の内容を `/home/tomcat/conf` にコピーします。
+    ```
+    mkdir -p /home/tomcat
+    cp -a /usr/local/tomcat/conf /home/tomcat/conf
+    ```
 
-2. `server.xml` にコンテキストを追加する
+2. `server.xml` の `<Server>` 要素内に Context 要素を追加します。
 
     ```xml
+    <Server>
+    ...
     <Context>
         <Resource
-            name="jdbc/mysqldb" type="javax.sql.DataSource"
-            url="${mysqlURL}"
-            driverClassName="com.mysql.jdbc.Driver"
-            username="${mysqluser}" password="${mysqlpass}"
+            name="jdbc/dbconnection" 
+            type="javax.sql.DataSource"
+            url="${dbuser}"
+            driverClassName="<insert your driver class name>"
+            username="${dbpassword}" 
+            password="${connURL}"
         />
     </Context>
+    ...
+    </Server>
     ```
 
 3. アプリケーションでこのデータ ソースを使用するよう、アプリケーションの `web.xml` を更新します。
 
     ```xml
     <resource-env-ref>
-        <resource-env-ref-name>jdbc/mysqldb</resource-env-ref-name>
+        <resource-env-ref-name>jdbc/dbconnection</resource-env-ref-name>
         <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
     </resource-env-ref>
     ```
 
-4. JDBC ドライバー ファイルが Tomcat クラスローダーで確実に使用できるように、これらのファイルを `/home/tomcat/lib` ディレクトリに配置します。 これらのファイルを App Service インスタンスにアップロードするには、次の手順を行います。  
+#### <a name="finally-place-the-driver-jars-in-the-tomcat-classpath-and-restart-your-app-service"></a>最後に、ドライバーの JAR を Tomcat クラスパス内に配置し、App Service を再起動します。 
+
+1. JDBC ドライバー ファイルが Tomcat クラスローダーで確実に使用できるように、これらのファイルを `/home/tomcat/lib` ディレクトリに配置します。 (このディレクトリがまだ存在しない場合は作成します。)これらのファイルを App Service インスタンスにアップロードするには、次の手順を行います。  
     1. Azure App Service webpp 拡張機能をインストールします。
 
       ```azurecli-interactive
@@ -231,7 +259,9 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
     3. SFTP クライアントを使用してローカルのトンネル ポートに接続し、ファイルを `/home/tomcat/lib` フォルダーにアップロードします。
 
-5. App Service Linux アプリケーションを再起動します。 Tomcat によって `CATALINA_HOME` が `/home/tomcat` にリセットされ、更新された構成およびクラスが使用されます。
+    あるいは、FTP クライアントを使用して JDBC ドライバーをアップロードできます。 [FTP 資格情報を取得するための手順](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials)に従ってください。
+
+2. サーバー レベルのデータ ソースを作成した場合は、App Service Linux アプリケーションを再起動します。 Tomcat が `CATALINA_HOME` を `/home/tomcat/conf` にリセットし、更新された構成を使用します。
 
 ## <a name="docker-containers"></a>Docker コンテナー
 
@@ -241,7 +271,7 @@ Azure がサポートしている Zulu JDK をコンテナーで使用するに�
 
 App Service for Linux では、Java Web アプリケーションのマネージド ホスティング用に次の 2 つのランタイムがサポートされています。
 
-- Web アーカイブ (WAR) ファイルとしてパッケージ化されたアプリケーションを実行するための [Tomcat サーブレット コンテナー](http://tomcat.apache.org/)。 サポートされているバージョンは 8.5 と 9.0 です。
+- Web アーカイブ (WAR) ファイルとしてパッケージ化されたアプリケーションを実行するための [Tomcat サーブレット コンテナー](https://tomcat.apache.org/)。 サポートされているバージョンは 8.5 と 9.0 です。
 - Java アーカイブ (JAR) ファイルとしてパッケージ化されたアプリケーションを実行するための Java SE ランタイム環境。 サポートされているメジャー バージョンは Java 8 だけです。
 
 ## <a name="java-runtime-statement-of-support"></a>Java ランタイムのサポート ステートメント 

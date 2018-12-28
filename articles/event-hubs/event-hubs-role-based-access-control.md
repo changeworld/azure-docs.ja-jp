@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs のロールベースのアクセス制御 (RBAC) (プレビュー) | Microsoft Docs
-description: Azure Event Hubs のロールベースのアクセス制御
+title: ロールベースのアクセス制御のプレビュー - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs のロールベースのアクセス制御について説明します。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -8,14 +8,15 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ef74600fdf5051394f8b7bfbdd71e144b3f26d8a
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 1324700445aebe672b2c5ae2b55ad9bc0bab13b2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005740"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384260"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory のロールベースのアクセス制御 (プレビュー)
 
@@ -33,7 +34,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 次のセクションでは、対話型の Azure AD ユーザーにサインオンを求めるサンプル アプリケーションを作成して実行するために必要な手順、そのユーザー アカウントに Event Hubs のアクセス権を付与する方法、およびその ID を使って Event Hubs にアクセスする方法について説明します。 
 
-この概要では、簡単なコンソール アプリケーションについて説明します。[そのコードは GitHub にあります](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)。
+この概要では、簡単なコンソール アプリケーションについて説明します。[そのコードは GitHub にあります](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)
 
 ### <a name="create-an-active-directory-user-account"></a>Active Directory のユーザー アカウントを作成する
 
@@ -45,11 +46,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 次に、RBAC の Event Hubs プレビューをサポートする Azure リージョンのいずれか (**米国東部**、**米国東部 2**、または**西ヨーロッパ**) で、[Event Hubs 名前空間を作成](event-hubs-create.md)します。 
 
-名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、**[追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
- 
-![](./media/event-hubs-role-based-access-control/rbac1.PNG)
-
-これで、そのユーザー アカウントは、Event Hubs 名前空間と以前に作成したイベント ハブにアクセスできるようになります。
+名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、**[ロールの割り当ての追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。 これで、そのユーザー アカウントは、Event Hubs 名前空間と以前に作成したイベント ハブにアクセスできるようになります。
  
 ### <a name="register-the-application"></a>アプリケーションを登録する
 
@@ -63,14 +60,16 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 サンプルを実行する前に、App.config ファイルを編集し、シナリオに応じて、次の値を設定します。
 
-- `tenantId`: **TenantId** の値に設定します。
-- `clientId`: **ApplicationId** の値に設定します。 
-- `clientSecret`: クライアント シークレットを使ってサインオンする場合は、Azure AD で作成します。 また、ネイティブ アプリの代わりに Web アプリまたは API を使います。 また、前に作成した名前空間の **[アクセス制御 (IAM)]** にアプリを追加します。
-- `eventHubNamespaceFQDN`: 新しく作成した Event Hubs 名前空間の完全修飾 DNS 名に設定します (例: `example.servicebus.windows.net`)。
-- `eventHubName`: 作成したイベント ハブの名前に設定します。
+- `tenantId`:**TenantId** の値に設定します。
+- `clientId`:**ApplicationId** の値に設定します。 
+- `clientSecret`:クライアント シークレットを使ってサインオンする場合は、Azure AD で作成します。 また、ネイティブ アプリの代わりに Web アプリまたは API を使います。 また、前に作成した名前空間の **[アクセス制御 (IAM)]** にアプリを追加します。
+- `eventHubNamespaceFQDN`:新しく作成した Event Hubs 名前空間の完全修飾 DNS 名に設定します (例: `example.servicebus.windows.net`)。
+- `eventHubName`:作成したイベント ハブの名前に設定します。
 - 前の手順においてアプリで指定したリダイレクト URI です。
  
 コンソール アプリケーションを実行すると、シナリオの選択を求められます。**[Interactive User Login]\(対話型のユーザー ログイン\)** をクリックし、その番号を入力して Enter キーを押します。 アプリケーションはサインイン ウィンドウを表示し、Event Hubs へのアクセスの同意を求めた後、サービスを使ってサインイン ID を用いた送信/受信シナリオを実行します。
+
+アプリは `ServiceAudience.EventHubsAudience` をトークン対象ユーザーとして使用します。 対象ユーザーを定数として使用できない他の言語や SDK を使用する場合、使用する適切な値は `https://eventhubs.azure.net/` になります。
 
 ## <a name="next-steps"></a>次の手順
 

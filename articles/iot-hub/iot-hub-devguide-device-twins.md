@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: 558bf0eb6ab4abb4ad16910ebe36fdb7c1e19374
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 7f66c87322aadafaa7167dff4190de6d08e5d18d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310931"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338415"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 
@@ -382,4 +382,4 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 * [デバイス ツインの使用方法](iot-hub-node-node-twin-getstarted.md)
 * [デバイス ツインのプロパティの使用方法](tutorial-device-twins.md)
-* [Azure IoT Toolkit for VS Code を使用したデバイス管理](iot-hub-device-management-iot-toolkit.md)
+* [VS Code 用 Azure IoT Hub Toolkit を使用したデバイス管理](iot-hub-device-management-iot-toolkit.md)

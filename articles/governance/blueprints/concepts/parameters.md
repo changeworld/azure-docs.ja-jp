@@ -1,5 +1,5 @@
 ---
-title: Azure Blueprint でパラメーターを使用して動的ブループリントを作成する
+title: パラメーターを使用して動的ブループリントを作成する
 description: 静的パラメーターと動的パラメーターについて、およびこれらを使用して動的ブループリントを作成する方法について説明します。
 services: blueprints
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f6485b01c391ba336799ceb35ee67402b3603585
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 0eef85fe92682eb3a6fd1dbc036cf547b163db97
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093753"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310319"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>パラメーターを使用して動的ブループリントを作成する
 
@@ -57,7 +58,7 @@ Resource Manager テンプレート _アーティファクト_ は **secureStrin
 
 1. 既存のブループリントをクリックし、**[ブループリントを編集する]** をクリックするか、**[+ ブループリントを作成する]** をクリックして、**[基本]** タブに情報を入力します。
 
-1. **[次へ: アーティファクト]** をクリックするか、**[アーティファクト]** タブをクリックします。
+1. **[次へ:アーティファクト]** をクリックするか、**[アーティファクト]** タブをクリックします。
 
 1. パラメーター オプションを持つブループリントに追加されたアーティファクトの **[パラメーター]** 列に、**[X of Y parameters populated]\(X/Y のパラメーターが設定されました\)** が表示されます。 パラメーターを編集するには、そのアーティファクト行をクリックします。
 

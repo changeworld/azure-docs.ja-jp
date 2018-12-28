@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: edddc40b17adde685f875dfaa6b20879c6e61b15
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0956d9bdbf6390f2d64f15ca267545ca15289a46
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259158"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339401"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
@@ -73,14 +73,46 @@ ms.locfileid: "51259158"
 
    2 つの方法があります。 [ライセンスをサポートする仮想マシン イメージ](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)の 1 つをプロビジョニングできます。これは、ライセンス持ち込み (BYOL) とも呼ばれます。 SQL Server インストール メディアを Windows Server VM にコピーしてから、SQL Server を VM にインストールするオプションもあります。 ただし、SQL Server を手動でインストールする場合、ポータルは統合されず、SQL Server IaaS Agent 拡張機能はサポートされません。そのため、このシナリオでは、自動バックアップや自動修正などの機能は動作しません。 こうした理由から、BYOL ギャラリー イメージのいずれかを使用することをお勧めします。 Azure VM 上で BYOL または独自の SQL Server メディアを使用するには、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)が必要です。 詳細については、「[Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md)」(SQL Server Azure VM の料金ガイダンス) を参照してください。
 
-1. **従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
-
-   いいえ。 秒単位のライセンスから独自のライセンスの使用に切り替えることはできません。 いずれかの [BYOL イメージ](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)を使用して新しい Azure 仮想マシンを作成し、標準の[データ移行方法](virtual-machines-windows-migrate-sql.md)を使用して、データベースを新しいサーバーに移行します。
 
 1. **スタンバイ/フェールオーバーのみ使用するために作成した Azure VM 上の SQL Server のライセンスに料金を支払う必要がありますか。**
 
-   「[Virtual Machines のライセンス FAQ](https://azure.microsoft.com/pricing/licensing-faq/)」に説明されているように、ソフトウェア アシュアランスのライセンス モビリティを使用している場合は、HA デプロイにパッシブなセカンダリ レプリカとして参加している SQL Server のライセンスに料金を支払う必要はありません。 それ以外の場合は、ライセンスの料金を支払う必要があります。
+   「Virtual Machines のライセンス FAQ」 (https://azure.microsoft.com/pricing/licensing-faq/)) に説明されているように、ソフトウェア アシュアランスのライセンス モビリティを使用している場合は、HA デプロイにパッシブなセカンダリ レプリカとして参加している SQL Server のライセンスに料金を支払う必要はありません。 それ以外の場合は、ライセンスの料金を支払う必要があります。
 
+1. **従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
+
+   はい。 最初にデプロイされたイメージに関係なく、2 つのライセンス モデル間を簡単に移動することができます。 詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。
+
+1. **新しい SQL VM を作成するには、BYOL イメージまたは SQL VM RP を使用する必要がありますか。**
+
+   ライセンス持ち込み (BYOL) イメージを使用できるのは、EA のお客様だけです。 ソフトウェア アシュアランスをお持ちのその他のお客様は、SQL VM リソース プロバイダーを使用して [Azure ハイブリッド特典 (AHB)](https://azure.microsoft.com/pricing/licensing-faq/) を利用した SQL VM を作成する必要があります。 
+
+1. **ライセンス モデルの切り替えには、SQL Server のダウンタイムが必要ですか。**
+
+   いいえ。 [ライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 
+
+1. **CSP サブスクリプションで Azure ハイブリッド特典をアクティブ化できますか。**
+
+   はい。 [ライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)は、CSP サブスクリプションで使用できます。 
+
+1. **新しい SQL VM リソース プロバイダーへの VM の登録には、追加のコストがかかりますか。**
+
+   いいえ。 SQL VM リソース プロバイダーは、Azure VM 上で SQL Server に追加の管理機能を有効にするだけなので、追加料金は発生しません。 
+
+1. **SQL VM リソース プロバイダーは、すべての顧客が使用できますか。**
+ 
+   はい。 すべてのお客様は、新しい SQL VM リソース プロバイダーに登録できます。 ただし、SQL Server VM で [Azure ハイブリッド特典 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) (または BYOL) をアクティブ化できるのは、ソフトウェア アシュアランスの特典をお持ちのお客様だけです。 
+
+1. **VM リソースが移動または破棄されると、_* Microsoft.SqlVirtualMachine_* リソースはどうなりますか。** 
+
+   Microsoft.Compute/VirtualMachine リソースが破棄または移動されると、関連付けられた Microsoft.SqlVirtualMachine リソースに、操作が非同期的にレプリケートされることが通知されます。
+
+1. **_* Microsoft.SqlVirtualMachine_* リソースが破棄されると、VM はどうなりますか。**
+
+   Microsoft.SqlVirtualMachine リソースが破棄されても、Microsoft.Compute/VirtualMachine リソースには影響しません。 ただし、ライセンスの変更により、元の既定のイメージ ソースに戻ります。 
+
+1. **SQL VM リソース プロバイダーに自己デプロイ済みの SQL Server VM を登録することはできますか。**
+
+   はい。 独自のメディアから SQL Server をデプロイし、SQL IaaS 拡張機能をインストールした場合は、SQL IaaS 拡張機能によって提供される管理の容易性の利点を得るため、リソース プロバイダーに SQL Server VM を登録できます。 ただし、自己デプロイ済みの SQL VM を従量課金に変換することはできません。  
 
 ## <a name="administration"></a>管理
 
@@ -121,7 +153,7 @@ ms.locfileid: "51259158"
 
 1. **SQL VM と SQL Database サービスの違いは何ですか?**
 
-   概念上、Azure 仮想マシンで SQL Server を実行することは、リモート データ センターで SQL Server を実行することと違いません。 これに対し、 [SQL Database](../../../sql-database/sql-database-technical-overview.md) はサービスとしてデータベースを提供します。 SQL Database では、データベースをホストするマシンにアクセスできません。 完全な比較については、「 [クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)」をご覧ください。
+   概念上、Azure 仮想マシンで SQL Server を実行することは、リモート データ センターで SQL Server を実行することと違いません。 これに対し、 [SQL Database](../../../sql-database/sql-database-technical-overview.md) はサービスとしてデータベースを提供します。 SQL Database では、データベースをホストするマシンにアクセスできません。 完全な比較については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)」をご覧ください。
 
 1. **Azure VM に SQL データ ツールをインストールするにはどうすればよいですか?**
 

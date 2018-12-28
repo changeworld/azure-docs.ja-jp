@@ -9,44 +9,44 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1324980e173d31803026f9ec93565d4aabd30c85
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: b00982cbc30b2345d9eacea376e3c5164ce1b078
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687250"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408682"
 ---
-# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行
+# <a name="run-apache-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Windows ベースの HDInsight での Apache Hadoop MapReduce サンプルの実行
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブの実行を始めるときに役立つサンプルが用意されています。 これらのサンプルは、HDInsight によって管理されるクラスターを作成して、それぞれのクラスターで利用できます。 これらのサンプルを実行すると、Hadoop クラスターで Azure PowerShell コマンドレットを使用してジョブを実行するのに慣れることができます。
+Azure HDInsight を使用して、Apache Hadoop クラスターで MapReduce ジョブの実行を始めるときに役立つサンプルが用意されています。 これらのサンプルは、HDInsight によって管理されるクラスターを作成して、それぞれのクラスターで利用できます。 これらのサンプルを実行すると、Hadoop クラスターで Azure PowerShell コマンドレットを使用してジョブを実行するのに慣れることができます。
 
-* [**ワード カウント**][hdinsight-sample-wordcount]: テキスト ファイル内の単語出現回数をカウントします。
-* [**C# ストリーミング ワード カウント**][hdinsight-sample-csharp-streaming]: Hadoop ストリーミング インターフェイスを使用して、テキスト ファイル内の単語出現回数をカウントします。
-* [**Pi 推定**][hdinsight-sample-pi-estimator]: 統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。
-* [**10 GB GraySort**][hdinsight-sample-10gb-graysort]: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。 実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
+* [**ワード カウント**][hdinsight-sample-wordcount]:テキスト ファイル内の単語出現回数をカウントします。
+* [**C# ストリーミング ワード カウント**][hdinsight-sample-csharp-streaming]:Hadoop ストリーミング インターフェイスを使用して、テキスト ファイル内の単語出現回数をカウントします。
+* [**Pi 推定**][hdinsight-sample-pi-estimator]:統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。
+* [**10 GB GraySort**][hdinsight-sample-10gb-graysort]:HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。 実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
 
-> [!NOTE]
+> [!NOTE]  
 > ソース コードは「付録」にあります。
 
 Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラミングやストリーミング、Windows PowerShell スクリプトで使用するコマンドレットのドキュメントなど、Web 上に多数存在しています。 これらのリソースの詳細については、以下を参照してください。
 
-* [HDInsight での Hadoop 用 Java MapReduce プログラムの開発](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-* [HDInsight での Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [HDInsight で Apache Hadoop 用の Java MapReduce プログラムを開発する](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [HDInsight で Apache Hadoop ジョブを送信する](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Azure HDInsight 入門][hdinsight-introduction]
 
-今日では、多くの人が MapReduce より Hive と Pig を選びます。  詳細については、次を参照してください。
+今日では、多くの人が MapReduce より Apache Hive と Apache Pig を選びます。  詳細については、次を参照してください。
 
-* [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight での Pig の使用](hadoop/hdinsight-use-pig.md)
+* [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight 上で Apache Pig を使用する](hadoop/hdinsight-use-pig.md)
 
 **前提条件**:
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **HDInsight クラスター**。 クラスターを作成できるさまざまな方法については、「 [HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+* **HDInsight クラスター**。 クラスターを作成できるさまざまな方法については、「[HDInsight で Apache Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 * **Azure PowerShell を実行できるワークステーション**。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Azure サービス マネージャーを使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは、2017 年 1 月 1 日までに**非推奨**となる予定です。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
     >
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳しくは、「[HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する](hdinsight-hadoop-development-using-azure-resource-manager.md)」をご覧ください。
@@ -56,7 +56,7 @@ MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ
 
 ソース コードは「 [付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
 
-Java MapReduce プログラムの開発手順については、「 [HDInsight での Hadoop 用 Java MapReduce プログラムの開発](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+Java MapReduce プログラムの開発手順については、「[HDInsight で Apache Hadoop 用の Java MapReduce プログラムを開発する](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)」を参照してください。
 
 **ワード カウント MapReduce ジョブを送信するには**
 
@@ -120,7 +120,7 @@ Java MapReduce プログラムの開発手順については、「 [HDInsight �
 ## <a name="hdinsight-sample-csharp-streaming"></a>ワード カウント - C# ストリーミング
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述できます。
 
-> [!NOTE]
+> [!NOTE]  
 > このチュートリアルの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Linux ベースの HDInsight クラスターのストリーミング例は、「 [HDInsight 用 Python ストリーミング プログラムの開発](hadoop/apache-hadoop-streaming-python.md)」をご覧ください。
 
 この例では、mapper と reducer は [stdin][stdin-stdout-stderr] から入力を (1 行ずつ) 読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。 プログラムはテキスト内の単語すべての出現数を計算します。
@@ -207,10 +207,10 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 ## <a name="next-steps"></a>次の手順
 この記事および各サンプルの記事では、Azure PowerShell を使用して HDInsight クラスターに付属するサンプルを実行する方法を説明しました。 HDInsight で Pig、Hive、および MapReduce を使用する方法のチュートリアルについては、次のトピックをご覧ください。
 
-* [HDInsight で Hive と Hadoop を使用し、モバイル ハンドセットの使用状況を分析する][hdinsight-get-started]
-* [HDInsight での Pig と Hadoop の使用][hdinsight-use-pig]
-* [HDInsight での Hive と Hadoop の使用][hdinsight-use-hive]
-* [HDInsight での Hadoop Job の送信][hdinsight-submit-jobs]
+* [HDInsight で Apache Hive と Apache Hadoop を使用し、モバイル ハンドセットの使用状況を分析する][hdinsight-get-started]
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する][hdinsight-use-pig]
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する][hdinsight-use-hive]
+* [HDInsight で Apache Hadoop ジョブを送信する][hdinsight-submit-jobs]
 
 ## <a name="appendix-a---the-word-count-source-code"></a>付録 A - ワード カウントのソース コード
 
@@ -993,6 +993,6 @@ public class TeraSort extends Configured implements Tool {
 [hdinsight-use-hive]: hadoop/hdinsight-use-hive.md
 [hdinsight-use-pig]: hadoop/hdinsight-use-pig.md
 
-[streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
-[console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
+[streamreader]: https://msdn.microsoft.com/library/system.io.streamreader.aspx
+[console-writeline]: https://msdn.microsoft.com/library/system.console.writeline
 [stdin-stdout-stderr]: https://msdn.microsoft.com/library/3x292kth.aspx

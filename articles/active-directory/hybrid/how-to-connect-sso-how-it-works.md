@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: シームレス シングル サインオン - しくみ | Microsoft Docs'
+title: Azure AD Connect:シームレス シングル サインオン - しくみ | Microsoft Docs
 description: この記事では、Azure Active Directory シームレス シングル サインオン機能のしくみについて説明します。
 services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -15,20 +15,21 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 54b614e49bc7c03325ebeada60232fca861874e0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687403"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193078"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン: 技術的な詳細
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン:技術的な詳細情報
 
 この記事では、Azure Active Directory シームレス シングル サインオン (シームレス SSO) 機能の技術的なしくみについて説明します。
 
 ## <a name="how-does-seamless-sso-work"></a>シームレス SSO のしくみ
 
 このセクションは、3 つの部分に分かれています。
+
 1. シームレス SSO 機能の設定。
 2. Web ブラウザーでの 1 人のユーザーのシングル サインイン トランザクションのシームレス SSO での動作。
 3. ネイティブ クライアントでの 1 人のユーザーのシングル サインイン トランザクションのシームレス SSO での動作。
@@ -36,6 +37,7 @@ ms.locfileid: "51687403"
 ### <a name="how-does-set-up-work"></a>設定のしくみ
 
 シームレス SSO は、[こちら](how-to-connect-sso-quick-start.md)で示す通り、Azure AD Connect を使用して有効にできます。 この機能を有効にすると、次の手順が発生します。
+
 - 各 Active Directory (AD) フォレスト内のオンプレミスの AD に (Azure AD を表す) `AZUREADSSOACC` という名前のコンピューター アカウントが作成されます。
 - コンピューター アカウントの Kerberos の復号化キーは、Azure AD と安全に共有されます。 複数の AD フォレストがある場合は、それぞれに専用の Kerberos 復号化キーが作成されます。
 - また、Azure AD のサインイン時に使用される 2 つの URL を表す、2 つの Kerberos サービス プリンシパル名 (SPN) も作成されます。
@@ -56,8 +58,8 @@ Web ブラウザーでのサインインのフローは次のとおりです。
 2. まだサインインしていない場合、ユーザーは、Azure AD のサインイン ページにリダイレクトされます。
 3. ユーザーが、Azure AD サインイン ページにユーザー名を入力します。
 
-  >[!NOTE]
-  >[特定のアプリケーション](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso)では、手順 2. と 3. をスキップします。
+   >[!NOTE]
+   >[特定のアプリケーション](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso)では、手順 2. と 3. をスキップします。
 
 4. Azure AD が JavaScript をバックグラウンドで使用して、Kerberos チケットを提供するよう、401 認証エラーを通じてクライアントに要求します。
 5. ブラウザーは、代わりに Active Directory から (Azure AD を表す) `AZUREADSSOACC` コンピューター アカウント用にチケットを要求します。

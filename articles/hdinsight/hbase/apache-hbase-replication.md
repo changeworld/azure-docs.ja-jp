@@ -1,5 +1,5 @@
 ---
-title: Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する
+title: Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する - Azure HDInsight
 description: 負荷分散、高可用性、ダウンタイムなしの移行と更新、およびディザスター リカバリーを実現するために、ある HDInsight バージョンから別のバージョンへの HBase レプリケーションを設定する方法について説明します。
 services: hdinsight,virtual-network
 author: hrasheed-msft
@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: b978adcdcc025c24746167ef5ab92aebe94aca8b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016235"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163838"
 ---
-# <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する
+# <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
 
-Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で HBase レプリケーションを設定する方法について説明します。
+Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で [Apache HBase](http://hbase.apache.org/) レプリケーションを設定する方法について説明します。
 
 クラスターのレプリケーションでは、ソース プッシュの手法が使用されます。 HBase クラスターは、ソースまたはターゲットになることも、両方のロールを同時に満たすこともできます。 レプリケーションは非同期です。 レプリケーションの目的は、最終的な一貫性です。 レプリケーションが有効になった列ファミリに対する編集をソースが受け取ると、その編集はすべてのターゲット クラスターに伝達されます。 クラスター間でデータがレプリケートされるときは、ソース クラスターとそのデータを既に消費しているすべてのクラスターが追跡されて、レプリケーション ループが防止されます。
 
@@ -46,16 +46,16 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 3 つの構成オプションがあります。
 
-- 1 つの Azure 仮想ネットワーク内の 2 つの HBase クラスター。
-- 同じリージョンの 2 つの異なる仮想ネットワーク内の 2 つの HBase クラスター。
-- 2 つの異なるリージョンの 2 つの異なる仮想ネットワーク内の 2 つの HBase クラスター (geo レプリケーション)。
+- 1 つの Azure 仮想ネットワーク内の 2 つの Apache HBase クラスター。
+- 同じリージョンの 2 つの異なる仮想ネットワーク内の 2 つの Apache HBase クラスター。
+- 2 つの異なるリージョンの 2 つの異なる仮想ネットワーク内の 2 つの Apache HBase クラスター (geo レプリケーション)。
 
 この記事では、geo レプリケーション シナリオについて説明します。
 
 環境を設定しやすくするために、複数の [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-overview.md)が用意されています。 他の方法で環境を設定する場合は、次の記事を参照してください。
 
-- [HDInsight で Hadoop クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)
-- [Azure Virtual Network での HBase クラスターの作成](apache-hbase-provision-vnet.md)
+- [HDInsight で Apache Hadoop クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)
+- [Azure Virtual Network での Apache HBase クラスターの作成](apache-hbase-provision-vnet.md)
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>2 つの異なるリージョンに 2 つの仮想ネットワークを設定する
 
@@ -69,7 +69,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 | プロパティ | 値 |
 |----------|-------|
-| Location | 米国西部 |
+| 場所 | 米国西部 |
 | VNet の名前 | &lt;クラスター名のプレフィックス>-vnet1 |
 | アドレス空間プレフィックス | 10.1.0.0/16 |
 | サブネット名 | subnet 1 |
@@ -86,7 +86,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 | プロパティ | 値 |
 |----------|-------|
-| Location | 米国東部 |
+| 場所 | 米国東部 |
 | VNet の名前 | &lt;クラスター名のプレフィックス>-vnet2 |
 | アドレス空間プレフィックス | 10.2.0.0/16 |
 | サブネット名 | subnet 1 |
@@ -183,7 +183,7 @@ Bind をインストールするには、次の手順に従います。
 
         vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` テキストは、この仮想ネットワークの __DNS サフィックス__ です。 この値を保存します。これは後で使用します。
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` テキストは、この仮想ネットワークの __DNS サフィックス__です。 この値を保存します。これは後で使用します。
 
     他の DNS サーバーの DNS サフィックスも見つけておく必要があります。 次の手順で必要になります。
 
@@ -245,7 +245,7 @@ Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用
 
 1. [Azure Portal](https://portal.azure.com) で、仮想ネットワークを選択し、__[DNS サーバー]__ を選択します。
 
-2. __[カスタム]__ を選択し、カスタム DNS サーバーの __内部 IP アドレス__ を入力します。 最後に、__[保存]__ を選択します。
+2. __[カスタム]__ を選択し、カスタム DNS サーバーの__内部 IP アドレス__を入力します。 最後に、__[保存]__ を選択します。
 
 6. vnet1 の DNS サーバー仮想マシンを開き、**[再起動]** をクリックします。  DNS 構成が有効であることを確認するには、仮想ネットワーク内のすべての仮想マシンを再起動する必要があります。
 7. 手順を繰り返して、vnet2 のカスタムの DNS サーバーを構成します。
@@ -256,17 +256,17 @@ DNS 構成をテストするには、SSH を使用して 2 つの DNS 仮想マ�
 sudo service bind9 status
 ```
 
-## <a name="create-hbase-clusters"></a>HBase クラスターを作成する
+## <a name="create-apache-hbase-clusters"></a>Apache HBase クラスターを作成する
 
-2 つの仮想ネットワークのそれぞれに、次の構成の HBase クラスターを作成します。
+2 つの仮想ネットワークのそれぞれに、次の構成の [Apache HBase](http://hbase.apache.org/) クラスターを作成します。
 
 - **リソース グループ名**: 仮想ネットワークの作成時と同じリソース グループ名を使用します。
-- **クラスターの種類**: HBase
-- **バージョン**: HBase 1.1.2 (HDI 3.6)
-- **場所**: 仮想ネットワークと同じ場所を使用します。  既定では、vnet1 は *[米国西部]*、vnet2 は *[米国東部]* です。
-- **ストレージ**: クラスター用の新しいストレージ アカウントを作成します。
-- **仮想ネットワーク**(ポータルの [詳細設定]): 最後の手順で作成した vnet1 を選択します。
-- **サブネット**: テンプレートで使われる既定の名前は **subnet1** です。
+- **クラスターの種類**:hbase
+- **バージョン**:HBase 1.1.2 (HDI 3.6)
+- **場所**:仮想ネットワークと同じ場所を使います。  既定では、vnet1 は *[米国西部]*、vnet2 は *[米国東部]* です。
+- **ストレージ**:クラスター用の新しいストレージ アカウントを作成します。
+- **仮想ネットワーク**(ポータルの [詳細設定]):最後の手順で作成した vnet1 を選択します。
+- **サブネット**:テンプレートで使われる既定の名前は **subnet1** です。
 
 環境が正しく構成されていることを確認するには、2 つのクラスター間でヘッド ノードの FQDN に ping できる必要があります。
 
@@ -274,7 +274,7 @@ sudo service bind9 status
 
 クラスターをレプリケートする場合は、レプリケートするテーブルを指定する必要があります。 このセクションでは、ソース クラスターにデータを読み込みます。 次のセクションで、2 つのクラスター間のレプリケーションを有効にします。
 
-**Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、[HDInsight の Apache HBase を使用する方法に関する HBase チュートリアル](apache-hbase-tutorial-get-started-linux.md)の指示に従います。
+**Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、[HDInsight の Apache HBase を使用する方法に関する Apache HBase チュートリアル](apache-hbase-tutorial-get-started-linux.md)の指示に従います。
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 
@@ -288,12 +288,12 @@ sudo service bind9 status
 4. ページの上部にある **[新規で送信]** を選択します。
 5. 次の情報を選択するか入力します。
 
-  1. **名前**: 「**Enable replication**」と入力します。
-  2. **バッシュ スクリプト URI**: 「**https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**」と入力します。
-  3.  **ヘッド**: これが選択されていることを確認します。 他のノード タイプをオフにします。
-  4. **パラメーター**: 次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
+  1. **名前**:「**Enable replication**」と入力します。
+  2. **バッシュ スクリプト URI**:「**https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**」を入力します。
+  3.  **ヘッド**:これが選択されていることを確認します。 他のノード タイプをオフにします。
+  4. **パラメーター**:次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
 
-          -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+          -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
     >[!note]
     >
@@ -317,7 +317,7 @@ sudo service bind9 status
 |-su, --src-ambari-user | ソース HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-du, --dst-ambari-user | デスティネーション HBase クラスターでの Ambari の管理者ユーザー名を指定します。 既定値は **admin** です。 |
 |-t, --table-list | レプリケートされるテーブルを指定します。 例: --table-list="table1;table2;table3"。 テーブルを指定しない場合は、すべての既存の HBase テーブルがレプリケートされます。|
-|-m, --machine | スクリプト アクションを実行するヘッド ノードを指定します。 値は、**hn1** または **hn0** のいずれかです。 通常、**hn0** ヘッド ノードはビジー状態であるため、**hn1** の使用をお勧めします。 このオプションは、HDInsight ポータルまたは Azure PowerShell からスクリプト アクションとして $0 スクリプトを実行する場合に使用します。|
+|-m, --machine | スクリプト アクションを実行するヘッド ノードを指定します。 値は**hn0**または**hn1** のいずれかであり、アクティブなヘッド ノードがどちらであるかに基づいて選択される必要があります。 このオプションは、HDInsight ポータルまたは Azure PowerShell からスクリプト アクションとして $0 スクリプトを実行する場合に使用します。|
 |-cp, -copydata | レプリケーションが有効になっているテーブルの既存のデータの移行を有効にします。 |
 |-rpm, -replicate-phoenix-meta | Phoenix システム テーブルのレプリケーションを有効にします。 <br><br>*このオプションは慎重に使用してください。* このスクリプトを使用する前に、レプリカ クラスターで Phoenix テーブルを再作成しておくことをお勧めします。 |
 |-h, --help | 使用方法に関する情報を表示します。 |
@@ -332,19 +332,19 @@ sudo service bind9 status
 
 - **2 つのクラスター間ですべてのテーブルのレプリケーションを有効にする**。 このシナリオでは、テーブルの既存のデータのコピー/移行は不要であり、Phoenix テーブルは使用しません。 次のパラメーターを使用します。
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
 
 - **特定のテーブルのレプリケーションを有効にする**。 table1、table2、および table3 のレプリケーションを有効にするには、次のパラメーターを使用します。
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
 
 - **特定のテーブルのレプリケーションを有効にし、既存のデータをコピーする**。 table1、table2、および table3 のレプリケーションを有効にするには、次のパラメーターを使用します。
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
 
 - **ソースからデスティネーションに Phoenix メタデータをレプリケートして、すべてのテーブルのレプリケーションを有効にする**。 Phoenix メタデータのレプリケーションは完璧ではありません。 慎重に使用してください。 次のパラメーターを使用します。
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
 
 ## <a name="copy-and-migrate-data"></a>データのコピーと移行
 
@@ -379,7 +379,7 @@ sudo service bind9 status
 
 レプリケーションを無効にするには、[GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) にある別のスクリプト アクションのスクリプトを使用します。 「[レプリケーションを有効にする](#enable-replication)」と同じ手順でスクリプト アクションを呼び出すことができます。 次のパラメーターを使用します。
 
-    -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
+    -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
 [スクリプト](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) の `print_usage()` セクションに、パラメーターの詳細な説明が用意されています。
 
@@ -387,20 +387,20 @@ sudo service bind9 status
 
 - **すべてのテーブルのレプリケーションを無効にする**:
 
-        -m hn1 -s <source cluster DNS name> -sp Mypassword\!789 -all
+        -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
   or
 
-        --src-cluster=<source cluster DNS name> --dst-cluster=<destination cluster DNS name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
+        --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
 - **指定したテーブル (table1、table2、および table3) のレプリケーションを無効にする**:
 
-        -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+        -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で HBase レプリケーションを設定する方法を説明しました。 HDInsight と HBase の詳細については、以下の記事を参照してください。
+このチュートリアルでは、1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で Apache HBase レプリケーションを設定する方法を説明しました。 HDInsight と Apache HBase の詳細については、以下の記事を参照してください。
 
 * [HDInsight での Apache HBase の使用](./apache-hbase-tutorial-get-started-linux.md)
-* [HDInsight HBase の概要](./apache-hbase-overview.md)
-* [Azure Virtual Network での HBase クラスターの作成](./apache-hbase-provision-vnet.md)
+* [HDInsight Apache HBase の概要](./apache-hbase-overview.md)
+* [Azure Virtual Network での Apache HBase クラスターの作成](./apache-hbase-provision-vnet.md)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Notification Hubs: よく寄せられる質問 (FAQ) | Microsoft Docs'
+title: Azure Notification Hubs:よく寄せられる質問 (FAQ) | Microsoft Docs
 description: Notification Hubs におけるソリューションの設計と実装についての FAQ
 services: notification-hubs
 documentationcenter: mobile
@@ -15,14 +15,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: cec57f2dafaddfa2ebc492f0cb92755b1f65607f
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 140994de4b1be61f16593e450d156b81727a9f52
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251024"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437845"
 ---
-# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs のプッシュ通知: よく寄せられる質問
+# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs によるプッシュ通知:よく寄せられる質問
 ## <a name="general"></a>全般
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Notification Hubs のリソース構造について教えてください。
 
@@ -33,14 +33,14 @@ Azure Notification Hubs には、2 つのリソース レベルとして、ハ�
 ### <a name="what-is-the-price-model-for-notification-hubs"></a>Notification Hubs の価格モデルを教えてください。
 最新の価格情報については、「[Notification Hubs の価格]」ページを参照してください。 Notification Hubs は、名前空間レベルで課金されます  (名前空間の定義については、「Notification Hubs のリソース構造について教えてください」を参照してください)。Notification Hubs には、次の 3 つのレベルがあります。
 
-* **Free**: プッシュ機能を試してみるには、このレベルで始めるのが適しています。 運用環境のアプリにはお勧めしません。 名前空間ごとに 1 か月あたり 500 デバイスと 100 万プッシュが提供されますが、サービス レベル アグリーメント (SLA) の保証はありません。
-* **Basic**: このレベル (または Standard レベル) は、小規模な運用アプリにお勧めです。 名前空間ごとに 1 か月あたり 200,000 デバイスと 1,000 万プッシュがベースラインとして提供されます。 クォータを増やすオプションが含まれています。
-* **Standard**: このレベルは、中規模から大規模な運用アプリにお勧めです。 名前空間ごとに 1 か月あたり 1,000 万デバイスと 1,000 万プッシュがベースラインとして提供されます。 クォータを増やすオプションと豊富なテレメトリ機能が含まれています。
+* **Free**:プッシュ機能を試してみるには、このレベルで始めるのが適しています。 運用環境のアプリにはお勧めしません。 名前空間ごとに 1 か月あたり 500 デバイスと 100 万プッシュが提供されますが、サービス レベル アグリーメント (SLA) の保証はありません。
+* **Basic**:このレベル (または Standard レベル) は、小規模な運用アプリにお勧めです。 名前空間ごとに 1 か月あたり 200,000 デバイスと 1,000 万プッシュがベースラインとして提供されます。 クォータを増やすオプションが含まれています。
+* **Standard**:このレベルは、中規模から大規模な運用アプリにお勧めです。 名前空間ごとに 1 か月あたり 1,000 万デバイスと 1,000 万プッシュがベースラインとして提供されます。 クォータを増やすオプションと豊富なテレメトリ機能が含まれています。
 
 Standard レベルの機能:
-* **豊富なテレメトリ**: Notification Hubs のメッセージごとのテレメトリを使用して、デバッグのためにすべてのプッシュ要求とプラットフォーム通知システムのフィードバックを追跡できます。
-* **マルチテナント**: プラットフォーム通知システムの資格情報を名前空間レベルで使用することができます。 このオプションにより、テナントを同じ名前空間内のハブに簡単に分割することができます。
-* **プッシュのスケジュール**: 通知をいつ送信するかをスケジュールすることができます。
+* **豊富なテレメトリ**:Notification Hubs のメッセージごとのテレメトリを使用して、デバッグのためにすべてのプッシュ要求とプラットフォーム通知システムのフィードバックを追跡できます。
+* **マルチテナント**:プラットフォーム通知システムの資格情報を名前空間レベルで使用することができます。 このオプションにより、テナントを同じ名前空間内のハブに簡単に分割することができます。
+* **プッシュのスケジュール**:通知をいつ送信するかをスケジュールすることができます。
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Notification Hubs の SLA について教えてください。
 Basic と Standard の Notification Hubs レベルでは、適切に構成されたアプリケーションは、少なくとも 99.9% の時間、プッシュ通知を送信したり、登録管理操作を行ったりすることができます。 SLA の詳細については、「[Notification Hubs の SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/)」ページを参照してください。
@@ -51,12 +51,12 @@ Basic と Standard の Notification Hubs レベルでは、適切に構成され
 ### <a name="which-customers-are-using-notification-hubs"></a>Notification Hubs を使用している顧客を教えてください。
 多くのお客様が Notification Hubs を使用しています。 たとえば、次のようなお客様です。
 
-* ソチ 2014 冬季オリンピック: 数百におよぶ利益団体、300 万台以上のデバイス、2 週間でディスパッチした通知 1 億 5,000 万件以上。 [ケース スタディ: ソチ]
-* Skanska: [ケース スタディ: Skanska]
-* シアトル タイムズ: [ケース スタディ: シアトル タイムズ]
-* Mural.ly: [ケース スタディ: Mural.ly]
-* 7Digital: [ケース スタディ: 7Digital]
-* Bing アプリ: 数千万台のデバイスが、1 日あたり 300 万件の通知を送信。
+* ソチ 2014 冬季オリンピック: 数百におよぶ利益団体、300 万台以上のデバイス、2 週間でディスパッチした通知 1 億 5,000 万件以上。 [ケース スタディ:ソチ]
+* Skanska:[ケース スタディ:Skanska]
+* シアトル タイムズ:[ケース スタディ:シアトル タイムズ]
+* Mural.ly:[ケース スタディ:Mural.ly]
+* 7Digital:[ケース スタディ:7Digital]
+* Bing アプリ:数千万台のデバイスが、1 日あたり 300 万件の通知を送信。
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>ハブまたは名前空間を別のレベルにアップグレードまたはダウングレードする方法を教えてください。
 **[Azure Portal]** > **[Notification Hubs の名前空間]** または **[Notification Hubs]** の順に移動します。 更新するリソースを選択して、**[価格レベル]** に移動します。 以下の要件に注意してください。
@@ -199,11 +199,11 @@ Microsoft では、プログラムによってテレメトリ データをエク
 [Azure Portal]: https://portal.azure.com
 [Notification Hubs の価格]: http://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
-[ケース スタディ: ソチ]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
-[ケース スタディ: Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
-[ケース スタディ: シアトル タイムズ]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
-[ケース スタディ: Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
-[ケース スタディ: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
+[ケース スタディ:ソチ]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
+[ケース スタディ:Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
+[ケース スタディ:シアトル タイムズ]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
+[ケース スタディ:Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
+[ケース スタディ:7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [Notification Hubs REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [Notification Hubs の使用チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Chrome アプリのチュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
@@ -213,7 +213,7 @@ Microsoft では、プログラムによってテレメトリ データをエク
 [Notification Hubs のセキュリティ モデル]: https://msdn.microsoft.com/library/azure/dn495373.aspx
 [Notification Hubs の安全なプッシュのチュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [Notification Hubs のトラブルシューティング]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
-[Notification Hubs のメトリック]: ../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs のメトリック]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Notification Hubs のメトリックのサンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [登録の一括エクスポートと変更]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com

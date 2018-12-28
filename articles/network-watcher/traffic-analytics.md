@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 2b057a94022077aa210b1e4ebb6122eaf350a40b
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 120b97f69c8fad2daf3090441e8d0326e80115c3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457410"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338585"
 ---
 # <a name="traffic-analytics"></a>トラフィック分析
 
@@ -39,11 +39,11 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 
 ## <a name="key-components"></a>主なコンポーネント
 
-- **ネットワーク セキュリティ グループ (NSG)**: Azure Virtual Network に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG はサブネットに関連付けることができるほか、クラシック モデルについては個々の VM に、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
-- **ネットワーク セキュリティ グループ (NSG) フロー ログ**: ネットワーク セキュリティ グループを使用して、イングレス/エグレス IP トラフィックの情報を確認できます。 NSG フロー ログは JSON 形式で記述され、規則ごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP アドレス、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。 NSG フロー ログの詳細については、[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
-- **Log Analytics**: 監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor やトラフィック分析などの監視アプリケーションは、Log Analytics を基盤として構築されています。 詳細については、[Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) に関する記事をご覧ください。
-- **ログ分析ワークスペース**: Azure アカウントに関するデータが格納される、ログ分析のインスタンス。 ログ分析ワークスペースの詳細については、[Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
-- **Network Watcher**: ネットワーク シナリオ レベルで Azure の状態を監視および診断できるリージョン サービス。 Network Watcher で NSG フロー ログを有効または無効にすることができます。 詳細については、「[Network Watcher](network-watcher-monitoring-overview.md)」をご覧ください。
+- **ネットワーク セキュリティ グループ (NSG)**:Azure Virtual Network に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG はサブネットに関連付けることができるほか、クラシック モデルについては個々の VM に、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
+- **ネットワーク セキュリティ グループ (NSG) フロー ログ**:ネットワーク セキュリティ グループを使用して、イングレス/エグレス IP トラフィックの情報を確認できます。 NSG フロー ログは JSON 形式で記述され、規則ごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP アドレス、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。 NSG フロー ログの詳細については、[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
+- **Log Analytics**:監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor やトラフィック分析などの監視アプリケーションは、Log Analytics を基盤として構築されています。 詳細については、[Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) に関する記事をご覧ください。
+- **ログ分析ワークスペース**:Azure アカウントに関するデータが格納される、ログ分析のインスタンス。 ログ分析ワークスペースの詳細については、[Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
+- **Network Watcher**:ネットワーク シナリオ レベルで Azure の状態を監視および診断できるリージョン サービス。 Network Watcher で NSG フロー ログを有効または無効にすることができます。 詳細については、「[Network Watcher](network-watcher-monitoring-overview.md)」をご覧ください。
 
 ## <a name="how-traffic-analytics-works"></a>トラフィック分析のしくみ
 
@@ -53,9 +53,39 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-米国中西部、米国東部、米国東部 2、米国中北部、米国中南部、米国中部、米国西部、米国西部 2、カナダ中部、西ヨーロッパ、北ヨーロッパ、英国西部、英国南部、東日本、インド中部、オーストラリア東部、オーストラリア南東部、および東南アジアのいずれかのリージョンの NSG でトラフィック分析をご利用いただけます。 
+NSG のトラフィック分析は、次のサポートされているどのリージョンでも使用できます。
 
-Log Analytics ワークスペースは、米国中西部、米国東部、西ヨーロッパ、英国南部、カナダ中部、東日本、インド中部、オーストラリア南東部、または東南アジア リージョンに存在する必要があります。
+* カナダ中部
+* 米国中西部
+* 米国東部
+* 米国東部 2
+* 米国中北部
+* 米国中南部
+* 米国中央部
+* 米国西部
+* 米国西部 2
+* 西ヨーロッパ
+* 北ヨーロッパ
+* ブラジル南部
+* 英国西部
+* 英国南部
+* オーストラリア東部
+* オーストラリア南東部
+* 東南アジア
+* インド中部
+* インド南部
+* 東日本 
+
+Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
+* カナダ中部
+* 米国中西部
+* 米国東部
+* 西ヨーロッパ
+* 英国南部
+* オーストラリア南東部
+* 東南アジア
+* インド中部
+* 東日本
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -261,9 +291,12 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
     ![仮想ネットワークの分布を示すダッシュボード](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - 仮想ネットワーク トポロジの上部には、仮想ネットワーク (仮想ネットワーク間接続/アクティブ/非アクティブ)、仮想ネットワークの外部接続、アクティブなフロー、悪意のあるフローなどのパラメーターを選択できるリボンが表示されます。
+- サブスクリプション、ワークスペース、リソース グループ、および時間間隔に基づいて、仮想ネットワーク トポロジをフィルター処理することができます。 フローの理解に役立つ追加フィルターは次のとおりです。フローの種類 (InterVNet、IntraVNET など)、フローの方向 (受信、送信)、フローの状態 (許可、ブロック)、VNet (対象および接続)、接続の種類 (ピアリングまたはゲートウェイ - P2S および S2S)、および NSG。 これらのフィルターを使用して、詳細に調べる VNet に照準を絞ります。
 - 仮想ネットワーク トポロジには、フロー (許可された/ブロックされた/受信/送信/問題のない/悪意のあるフロー)、アプリケーション プロトコル、ネットワーク セキュリティ グループなどについて、仮想ネットワークへのトラフィック分布が表示されます。
 
     ![トラフィック分布とフローの詳細を示す仮想ネットワーク トポロジ](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
+    
+    ![最上位ほかのフィルターを例示した仮想ネットワーク トポロジ](./media/traffic-analytics/virtual-network-filters.png)
 
     ![ログ検索における仮想ネットワークのトラフィック分布のフローの詳細](./media/traffic-analytics/flow-details-for-virtual-network-traffic-distribution-in-log-search.png)
 

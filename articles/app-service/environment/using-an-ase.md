@@ -1,5 +1,5 @@
 ---
-title: Azure App Service Environment の使用
+title: Azure App Service Environment の使用 - Azure
 description: Azure App Service Environment でアプリを作成、発行、スケールする方法
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 80abe29c80898b691aa6e5e47bf068a9e69e50e4
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.custom: seodec18
+ms.openlocfilehash: eca6f7996b05e58614c8f15067dacabb13730396
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303372"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274719"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Environment の使用 #
 
@@ -26,10 +27,10 @@ ms.locfileid: "44303372"
 
 Azure App Service Environment は、ユーザーの Azure 仮想ネットワーク内のサブネットに Azure App Service をデプロイしたものです。 構成は次のとおりです。
 
-- **フロント エンド**: App Service Environment (ASE) で HTTP または HTTPS が終了する場所です。
-- **ワーカー**: アプリのホストとなるリソースです。
-- **データベース**: 環境を定義する情報が格納されます。
-- **ストレージ**: ユーザーによって発行されたアプリのホストとして使用されます。
+- **フロントエンド:** App Service Environment (ASE) で HTTP または HTTPS が終了する場所です。
+- **ワーカー**:アプリのホストとなるリソースです。
+- **データベース**:環境を定義する情報が格納されます。
+- **ストレージ**:ユーザーによって発行されたアプリのホストとして使用されます。
 
 > [!NOTE]
 > App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 ASEv1 では、使用するリソースを事前に管理する必要があります。 ASEv1 の構成と管理の方法については、[App Service Environment v1 の構成][ConfigureASEv1]に関するページを参照してください。 この記事の残りの部分では、ASEv2 について説明します。
@@ -51,7 +52,7 @@ ASE で Web アプリを作成するには、次の手順に従います。
 
 1. **[リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** を選択します。
 
-1. Web アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
+2. Web アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
 
     ![Web アプリ名の選択][1]
 
@@ -182,10 +183,10 @@ ASE を削除するには、次の手順に従います。
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../app-service-deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
