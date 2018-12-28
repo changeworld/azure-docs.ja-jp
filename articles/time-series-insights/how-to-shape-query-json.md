@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights クエリで JSON を調整するためのベスト プラクティス
+title: Azure Time Series Insights JSON - Azure Time Series Insights クエリでの JSON の調整に関するベスト プラクティス | Microsoft Docs
 description: Azure Time Series Insights クエリの効率を改善する方法について説明します。
 services: time-series-insights
 author: ashannon7
@@ -8,12 +8,13 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
-ms.openlocfilehash: b9d5e922a9a0a5f50e2ced896f5957fbc90d7eb4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 284bbf435c7940658753e7bbf1daff00a79d57a1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364369"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273852"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>クエリのパフォーマンスを最大化するための JSON の調整方法 
 

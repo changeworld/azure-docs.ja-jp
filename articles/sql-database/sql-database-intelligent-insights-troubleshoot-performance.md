@@ -8,20 +8,20 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 6dff1b2fe40acdef1fde95444d70f0bcfc120a64
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ae6ddea3860c7fc636e071b3c39c418ff4a10272
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230038"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273937"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 
-このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) のデータベース パフォーマンス診断ログによって検出された、Azure SQL Database と Managed Instance のパフォーマンスに関する問題について説明します。 この診断ログ テレメトリを、[Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)、[Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションにストリーミングできます。
+このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) のデータベース パフォーマンス診断ログによって検出された、Azure SQL Database と Managed Instance のパフォーマンスに関する問題について説明します。 この診断ログ テレメトリを、[Azure Log Analytics](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションにストリーミングできます。
 
 > [!NOTE]
 > Intelligent Insights を使った SQL Database のパフォーマンスのトラブルシューティングに関するクイック ガイドについては、このドキュメントの「[推奨されるトラブルシューティングのフロー](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)」のフローチャートをご覧ください。
@@ -109,7 +109,7 @@ SQL Database 上のリソースは、通常、[DTU](https://docs.microsoft.com/a
 
 最適化したり、複数のデータベースに分散させたりすることで、ワークロードを減らすこともできます。 または、ワークロードを複数のデータベースに分散させることができます。 これらの解決策が不可能な場合は、SQL データベース サブスクリプションの価格レベルを上げて、データベースで使用可能なメモリ リソースの量を増やすことを検討します。
 
-トラブルシューティングのその他の提案については、「[Memory grants meditation: The mysterious SQL Server memory consumer with many names](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/)」(メモリ許可に関する考察: さまざまな名前を持つ、SQL Server の不可解なメモリ コンシューマー) をご覧ください。
+トラブルシューティングのその他の提案については、[Memory grants meditation:The mysterious SQL Server memory consumer with many names](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/)」(メモリ許可に関する考察: さまざまな名前を持つ、SQL Server の不可解なメモリ コンシューマー) をご覧ください。
 
 ## <a name="locking"></a>ロック
 
@@ -227,7 +227,7 @@ SQL データベースではさまざまな種類のラッチを使うことが�
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
-診断ログには、tempDB の競合の詳細が出力されます。 トラブルシューティングの出発点としてこの情報を使うことができます。 この種の競合を軽減し、ワークロード全体のスループットを増やすためにできることが 2 つあります。まず、一時テーブルの使用を停止することができます。 また、メモリ最適化テーブルを使うこともできます。 
+診断ログには、tempDB の競合の詳細が出力されます。 トラブルシューティングの出発点としてこの情報を使うことができます。 この種の競合を軽減し、ワークロード全体のスループットを増やすためにできることが 2 つあります。まず、一時テーブルの使用をやめることができます。 また、メモリ最適化テーブルを使うこともできます。 
 
 詳しくは、「[メモリ最適化テーブルの概要](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)」をご覧ください。 
 

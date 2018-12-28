@@ -1,12 +1,12 @@
 ---
-title: Web アプリ テンプレートによる Azure Machine Learning Web サービスの使用 | Microsoft Docs
+title: Web アプリ テンプレートによる Studio Web サービスの使用 - Azure Machine Learning Studio | Microsoft Docs
 description: Azure Marketplace の Web アプリ テンプレートを利用して、Azure Machine Learning で予測 Web サービスを使用します。
 keywords: Web サービス,運用,REST API,Machine Learning
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 03729a5b94b355869367e7f356e299f9afe38f75
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6a6da1af937338637cd875abe4e9d539b2e2b6e2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835000"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273886"
 ---
-# <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Web アプリ テンプレートによる Azure Machine Learning Web サービスの使用
+# <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>Web アプリ テンプレートによる Azure Machine Learning Studio Web サービスの使用
 
 次のものを使って予測モデルを開発し、Azure Web サービスとしてデプロイできます。
 - Azure Machine Learning Studio。
@@ -35,7 +35,7 @@ REST API を使用して Web サービスにアクセスする方法は、いろ
 
 ただし、Web サービスにアクセスする最も速くて簡単な方法は、[Azure Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/) で入手できる Web アプリ テンプレートを利用する方法です。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="azure-machine-learning-web-app-templates"></a>Azure Machine Learning Web アプリ テンプレート
 Azure Marketplace で入手できる Web アプリ テンプレートを使用すると、Web サービスの入力データと予想される結果を認識するカスタム Web アプリを構築できます。 必要な操作は、Web アプリに Web サービスおよびデータへのアクセスを許可することだけで、後の処理はテンプレートによって行われます。
@@ -81,7 +81,7 @@ Web サービスの API キーと要求 URI を取得する手順は次のとお
    
    * Web アプリケーションに一意の名前を付けます。 Web アプリの URL は、この名前の後に **.azurewebsites.net** を付けたものです。 例: **http://carprediction.azurewebsites.net**
    * 実行している Web サービスの Azure サブスクリプションとサービスを選択します。
-   * **[作成]** を選択します。
+   * **作成**を選択します。
      
    ![Web アプリの作成][image5]
 

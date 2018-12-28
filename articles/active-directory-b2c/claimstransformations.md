@@ -51,7 +51,7 @@ ms.locfileid: "47432809"
   </InputClaims>
   <InputParameters>
     ...
-  </InputParameters>
+  </InputParameters>                
   <OutputClaims>
     ...
   </OutputClaims>
@@ -62,7 +62,7 @@ ms.locfileid: "47432809"
 | 要素 | 発生回数 | 説明 |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | 要求変換への入力として取得される要求の種類を指定する **InputClaim** 要素のリスト。 これらの各要素には、ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照が含まれています。 |
-| InputParameters | 0:1 | 要求変換への入力として提供される **InputParameter** 要素のリスト。 |
+| InputParameters | 0:1 | 要求変換への入力として提供される **InputParameter** 要素のリスト。  
 | OutputClaims | 0:1 | ClaimsTransformation が呼び出された後に生成される要求の種類を指定する **OutputClaim** 要素のリスト。 これらの各要素には、ClaimsSchema セクションに既に定義されている ClaimType への参照が含まれています。 |
 
 ### <a name="inputclaims"></a>InputClaims
@@ -106,7 +106,7 @@ ms.locfileid: "47432809"
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | 想定される出力要求の種類。 |
 
-#### <a name="outputclaim"></a>OutputClaim
+#### <a name="outputclaim"></a>OutputClaim 
 
 **OutputClaim** 要素には、次の属性が含まれています。
 
@@ -114,7 +114,7 @@ ms.locfileid: "47432809"
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | はい | ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照。
 | TransformationClaimType | はい | 変換要求の種類を参照する識別子。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#Claims-transformations-reference)を確認してください。 |
-
+ 
 入力要求と出力要求が同じ型 (文字列またはブール値) である場合、出力要求と同じ入力要求を使用できます。 この場合、要求変換によって、入力要求が出力要求に取り換えられます。
 
 ## <a name="example"></a>例

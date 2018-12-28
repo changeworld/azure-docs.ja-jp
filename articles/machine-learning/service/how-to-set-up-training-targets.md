@@ -1,6 +1,7 @@
 ---
-title: Azure Machine Learning サービスでモデルのトレーニング用のコンピューティング ターゲットを設定する |Microsoft Docs
-description: 機械学習モデルのトレーニングに使用するトレーニング環境 (コンピューティング ターゲット) を選択し、構成する方法について説明します。 Azure Machine Learning サービスを使用すると、トレーニング環境を簡単に切り替えることができます。 ローカルでトレーニングを開始し、スケール アウトする必要がある場合は、クラウド ベースのコンピューティング ターゲットに切り替えます。
+title: モデル トレーニング用のコンピューティング ターゲット
+titleSuffix: Azure Machine Learning service
+description: 機械学習モデル トレーニング用のトレーニング環境 (コンピューティング ターゲット) を構成します。 トレーニング環境を簡単に切り替えることができます。 ローカルでトレーニングを開始し、スケール アウトする必要がある場合は、クラウド ベースのコンピューティング ターゲットに切り替えます。 Databricks
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -9,55 +10,57 @@ manager: cgronlun
 ms.service: machine-learning
 ms.component: core
 ms.topic: article
-ms.date: 09/24/2018
-ms.openlocfilehash: 7eacc475145dac61db1717f1860e22cedd022262
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 664d56daf3e70e2e5699d0c07331c466c60e06c5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231449"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338864"
 ---
-# <a name="select-and-use-a-compute-target-to-train-your-model"></a>コンピューティング ターゲットを選択して使用し、モデルをトレーニングする
+# <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する
 
-Azure Machine Learning サービスでは、さまざまな環境でモデルをトレーニングできます。 __コンピューティング ターゲット__ と呼ばれるこれらの環境はローカルまたはクラウドにできます。 このドキュメントでは、サポートされているコンピューティング ターゲットとその使用方法について学びます。
+Azure Machine Learning service では、さまざまなコンピューティング リソースでモデルをトレーニングできます。 __コンピューティング ターゲット__と呼ばれるこれらのコンピューティング リソースはローカルまたはクラウドに存在させることができます。 このドキュメントでは、サポートされているコンピューティング ターゲットとその使用方法について学びます。
 
-コンピューティング ターゲットは、トレーニング スクリプトを実行または Web サービスとしてモデルがデプロイされたときにモデルをホストするリソースです。 コンピューティング ターゲットは、Azure Machine Learning SDK または CLI を使用して作成および管理できます。 別のプロセス (たとえば、Azure Portal または Azure CLI) で作成されたコンピューティング ターゲットがある場合、これを Azure Machine Learning サービス ワークスペースに接続して使用できます。
+コンピューティング ターゲットは、トレーニング スクリプトが実行される場所、または、モデルが Web サービスとしてデプロイされるときにホストされる場所であるリソースです。 Azure Machine Learning SDK、Azure portal、または Azure CLI を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング ターゲットがある場合、それらを Azure Machine Learning service ワークスペースに接続して使用できます。
 
-マシン上でのローカル実行から始め、GPU や Azure Batch AI を備えたリモート データ サイエンス仮想マシンなどの別の環境にスケールアップおよびスケールアウトできます。 
+Azure Machine Learning がサポートするコンピューティング ターゲットは 3 つのカテゴリに大別されます:
 
->[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 0.168 を使用してテストされました 
+* __ローカル__:開発/実験環境として使用するローカル コンピューター、またはクラウドベースの VM。 
+
+* __マネージド コンピューティング__:Azure Machine Learning コンピューティングは、Azure Machine Learning service によって管理されるコンピューティング製品です。 トレーニング、テスト、バッチ推論用のシングルノードまたはマルチノードのコンピューティングを簡単に作成できます。
+
+* __接続型コンピューティング__:独自の Azure クラウド コンピューティングを用意して、それを Azure Machine Learning に接続することもできます。 サポートされているコンピューティングの種類とそれらの使用方法については、以下で説明します。
+
 
 ## <a name="supported-compute-targets"></a>サポートされているコンピューティング ターゲット
 
-Azure Machine Learning サービスは、次のコンピューティング ターゲットをサポートしています。
+Azure Machine Learning service では、さまざまなコンピューティング ターゲットをさまざまな形でサポートします。 典型的なモデル開発ライフサイクルは、少量のデータを用いた開発と実験から始まります。 この段階では、ローカル環境を使用することをお勧めします。 たとえば、ローカル コンピューターやクラウドベースの VM などです。 より大規模なデータ セットにトレーニングをスケールアップする、または分散トレーニングを実行する段階で、Azure Machine Learning コンピューティングを使用して、実行を送信するたびに自動スケーリングするシングルノードまたはマルチノード クラスターを作成することをお勧めします。 独自のコンピューティング リソースを接続することもできますが、以下で説明するように、シナリオによってサポートが異なる場合があります:
 
-|コンピューティング ターゲット| GPU アクセラレーション | 自動化されたハイパーパラメーターのチューニング | 自動化されたモデル選択 | パイプラインで使用できます|
+|コンピューティング ターゲット| GPU アクセラレーション | 自動化されたハイパーパラメーターのチューニング | 自動化された機械学習 | パイプライン親和性|
 |----|:----:|:----:|:----:|:----:|
-|[ローカル コンピューター](#local)| その可能性はあります | &nbsp; | ✓ | &nbsp; |
-|[データ サイエンス仮想マシン (DSVM)](#dsvm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Batch AI](#batch)| ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](#databricks)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
+|[ローカル コンピューター](#local)| 可能性あり | &nbsp; | ✓ | &nbsp; |
+|[Azure Machine Learning コンピューティング](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
+|[リモート VM](#vm) | ✓ | ✓ | ✓ | ✓ |
+|[Azure Databricks](#databricks)| &nbsp; | &nbsp; | ✓ | ✓[*](#pipeline-only) |
 |[Azure Data Lake Analytics](#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 > [!IMPORTANT]
-> <a id="pipeline-only"></a>* パイプラインで使用できるのは、Azure Databricks と Azure Data Lake Analytics __のみ__ です。 パイプラインの詳細については、「[パイプラインと Azure Machine Learning](concept-ml-pipelines.md)」のドキュメントを参照してください。
-
-__[Azure Container Instances (ACI)](#aci)__ はモデルのトレーニングにも使用できます。 安価で簡単に作成および操作できるサーバーレス クラウド サービスです。 ACI は、GPU アクセラレーション、自動化されたハイパーパラメーターのチューニング、自動化されたモデル選択をサポートしません。 また、パイプラインでは使用できません。
-
-コンピューティング ターゲット間の主な違いは次のとおりです。
-* __GPU アクセラレーション__: Data Science Virtual Machine と Azure Batch AI で GPU を利用できます。 インストールされているハードウェア、ドライバー、およびフレームワークに応じてローカル コンピューターの GPU にアクセスできます。
-* __自動化されたハイパーパラメーターのチューニング__: Azure Machine Learning の自動化されたハイパーパラメーターの最適化を使用すると、お使いのモデルに最適なハイパーパラメーターを検出できます。
-* __自動化されたモデル選択__: Azure Machine Learning サービスは、モデルを構築する際にアルゴリズムとハイパーパラメーターの選択をインテリジェントに推奨できます。 自動化されたモデル選択を使用すると、高品質なモデルに到達する際、手動でさまざまな組み合わせを試みるよりも速く到達できます。 詳細については、「[チュートリアル: Azure Automated Machine Learning によるの分類モデルの自動トレーニング](tutorial-auto-train-models.md)」のドキュメントを参照してください。
-* __パイプライン__: Azure Machine Learning サービスでは、トレーニングやパイプラインへのデプロイなどのさまざまなタスクを組み合わせることができます。 パイプラインは並列または連続で実行できます。また、信頼できる自動化メカニズムを提供します。 詳細については、「[Azure Machine Learning サービスによる機械学習パイプラインの構築](concept-ml-pipelines.md)」のドキュメントを参照してください。
-
-Azure Machine Learning SDK、Azure CLI、または Azure Portal を使用してコンピューティング ターゲットを作成できます。 既存のコンピューティング ターゲットをワークスペースに追加 (接続) することによって既存のコンピューティング ターゲットを使用することもできます。
+> <a id="pipeline-only"></a>__*__ パイプラインで使用できるのは、Azure Databricks と Azure Data Lake Analytics __のみ__です。 パイプラインの詳細については、「[パイプラインと Azure Machine Learning](concept-ml-pipelines.md)」のドキュメントを参照してください。
 
 > [!IMPORTANT]
-> 既存の Azure コンテナー インスタンスはワークスペースに接続できません。 代わりに、新しいインスタンスを作成する必要があります。
+> Azure Machine Learning コンピューティングは、ワークスペース内から作成する必要があります。 既存のインスタンスをワークスペースに接続することはできません。
 >
-> ワークスペース内に Azure HDInsight、Azure Databricks、または Azure Data Lake Store を作成することはできません。 代わりに、リソースを作成してから、それをワークスペースに接続する必要があります。
+> その他のコンピューティング ターゲットは、Azure Machine Learning の外部で作成してからワークスペースに接続する必要があります。
+
+> [!NOTE]
+> モデルをトレーニングするとき、一部のコンピューティング ターゲットは Docker コンテナー イメージに依存します。 GPU ベース イメージは Microsoft Azure サービスのみで使用する必要があります。 モデル トレーニングの場合、これらのサービスは次のとおりです:
+>
+> * Azure Machine Learning コンピューティング
+> * Azure Kubernetes Service
+> * Data Science Virtual Machine。
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -73,19 +76,22 @@ Azure Machine Learning でモデルを開発およびデプロイするワーク
 > [!IMPORTANT]
 > トレーニング スクリプトは特定のコンピューティング ターゲットに関連付けられていません。 最初ローカル コンピューターでトレーニングし、トレーニング スクリプトを書き直すことなくコンピューティング ターゲットを切り替えることができます。
 
+> [!TIP]
+> コンピューティング ターゲットをワークスペースに関連付けるたびに、マネージド コンピューティングを作成するか、または既存のコンピューティングを接続することによって、コンピューティングに名前を付ける必要があります。 これは 2 ～ 16 文字の長さである必要があります。
+
 あるコンピューティング ターゲットを別のコンピューティング ターゲットに切り替えるには、[実行構成](concept-azure-machine-learning-architecture.md#run-configuration)を作成する必要があります。 実行構成は、コンピューティング ターゲットでスクリプトを実行する方法を定義します。
 
 ## <a name="training-scripts"></a>トレーニング スクリプト
 
-トレーニングの実行を開始すると、トレーニング スクリプトを含むディレクトリ全体が送信されます。 スナップショットが作成され、コンピューティング ターゲットに送信されます。 詳細については、[スナップショット](concept-azure-machine-learning-architecture.md#snapshot)を参照してください。
+トレーニング実行を開始すると、トレーニング スクリプトを含むディレクトリのスナップショットが作成され、コンピューティング ターゲットに送信されます。 詳細については、[スナップショット](concept-azure-machine-learning-architecture.md#snapshot)を参照してください。
 
 ## <a id="local"></a>ローカル コンピューター
 
-ローカルでのトレーニングするとき、SDK を使用してトレーニング操作を送信します。 ユーザー管理環境またはシステム管理環境を使用してトレーニングできます。
+ローカルでトレーニングするときは、SDK を使用してトレーニング操作を送信します。 ユーザー管理環境またはシステム管理環境を使用してトレーニングできます。
 
 ### <a name="user-managed-environment"></a>ユーザー管理環境
 
-ユーザー管理環境では、スクリプトを実行する Python 環境で必要なすべてのパッケージが使用できることを確認する必要があります。 次のコード スニペットは、ユーザー管理環境でのトレーニング構成例です。
+ユーザー管理環境では、スクリプトを実行する Python 環境で必要なすべてのパッケージが使用できることをユーザー自身が確認する必要があります。 次のコード スニペットは、ユーザー管理環境でのトレーニング構成例です。
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -99,13 +105,12 @@ run_config_user_managed.environment.python.user_managed_dependencies = True
 #run_config.environment.python.interpreter_path = '/home/ninghai/miniconda3/envs/sdk2/bin/python'
 ```
 
-ユーザーが管理する環境でのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb) を参照してください。
   
 ### <a name="system-managed-environment"></a>システム管理環境
 
-システム管理環境は、conda を使用して依存関係を管理します。 conda は、依存関係のリストを含む `conda_dependencies.yml` という名前のファイルを作成します。 その後、新しい conda 環境の構築をシステムに指示し、そこでスクリプトを実行できます。 システム管理環境は、`conda_dependencies.yml` ファイルが変更されていない限り、後で再利用できます。 
+システム管理環境では、conda を使用して依存関係を管理します。 conda によって、依存関係のリストを含む`conda_dependencies.yml` という名前のファイルが作成されます。 その後、ユーザーは新しい conda 環境の構築をシステムに指示し、そこでスクリプトを実行できます。 システム管理環境は、`conda_dependencies.yml` ファイルが変更されていない限り、後で再利用できます。 
 
-新しい環境の初期セットアップは、必要な依存関係のサイズに応じて完了までに数分かかります。 次のコード スニペットは、scikit に依存するシステム管理環境を作成します。
+新しい環境の初期セットアップは、必要な依存関係のサイズに応じて完了までに数分かかります。 次のコード スニペットでは、scikit-learn に依存するシステム管理環境が作成されます。
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -121,53 +126,152 @@ run_config_system_managed.auto_prepare_environment = True
 run_config_system_managed.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 ```
 
-システムが管理する環境でのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb) を参照してください。
+## <a id="amlcompute"></a>Azure Machine Learning コンピューティング
 
-## <a id="dsvm"></a>Data Science Virtual Machine
+Azure Machine Learning コンピューティングは、ユーザーがシングルノードからマルチノードのコンピューティングを簡単に作成できる、マネージド コンピューティング インフラストラクチャです。 __ワークスペース リージョン内__に作成され、ワークスペース内の他のユーザーと共有できるリソースです。 ジョブが送信されると自動的にスケールアップし、Azure Virtual Network に配置できます。 モデルの依存関係を Docker コンテナーにパッケージ化する__コンテナー化環境__で実行されます。
 
-モデルのトレーニングに必要な計算リソースまたは GPU リソースがローカル コンピューターにない場合があります。 このような状況では、トレーニング プロセスをスケール アップまたはスケール アウトできます。そのためには。Data Science Virtual Machine (DSVM) などコンピューティング ターゲットを追加します。
+Azure Machine Learning コンピューティングを使用して、クラウド内の CPU または GPU コンピューティング ノードのクラスター全体にトレーニング プロセスを分散させることができます。 GPU を含む VM サイズの詳細については、「[GPU 最適化済み仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)」ドキュメントを参照してください。
+
+> [!NOTE]
+> Azure Machine Learning コンピューティングには、割り当て可能なコア数などの既定の制限があります。 詳細については、「[Azure リソースのクォータの管理と要求](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas)」ドキュメントを参照してください。
+
+Azure Machine Learning コンピューティングは、実行をスケジュールするときにオンデマンドで、または永続的なリソースとして作成できます。
+
+### <a name="run-based-creation"></a>実行ベースの作成
+
+Azure Machine Learning コンピューティングを実行時にコンピューティング ターゲットとして作成できます。 この場合、コンピューティングは実行用に自動的に作成され、実行構成で指定する max_node を上限にスケールアップし、実行完了後は__自動的に削除__されます。
+
+> [!IMPORTANT]
+> Azure Machine Learning コンピューティングの実行ベースの作成は現在、プレビュー状態です。 ハイパーパラメーター チューニングまたは自動化された機械学習を使用している場合は、実行ベースの作成を使用しないでください。 ハイパーパラメーター チューニングまたは自動化された機械学習を使用する必要がある場合は、実行を送信する前に Azure Machine Learning コンピューティングを作成します。
+
+```python
+from azureml.core.compute import ComputeTarget, AmlCompute
+
+#Let us first list the supported VM families for Azure Machine Learning Compute
+AmlCompute.supported_vmsizes()
+
+from azureml.core.runconfig import RunConfiguration
+
+# create a new runconfig object
+run_config = RunConfiguration()
+
+# signal that you want to use AmlCompute to execute script.
+run_config.target = "amlcompute"
+
+# AmlCompute will be created in the same region as workspace. Set vm size for AmlCompute from the list returned above
+run_config.amlcompute.vm_size = 'STANDARD_D2_V2'
+
+```
+
+### <a name="persistent-compute-basic"></a>永続的なコンピューティング (基本)
+
+永続的な Azure Machine Learning コンピューティングは、複数のジョブにわたって再利用できます。 ワークスペース内の他のユーザーと共有でき、ジョブ間で保持されます。
+
+永続的な Azure Machine Learning コンピューティング リソースを作成するには、`vm_size` および `max_nodes` パラメーターを指定します。 以後、Azure Machine Learning は残りのパラメーターにスマート既定値を使用します。  たとえば、未使用時は 0 ノードまで自動的にスケールダウンしたり、ジョブを実行するために必要に応じて専用 VM を作成したりするように、コンピューティングが設定されます。 
+
+* **vm_size**:Azure Machine Learning コンピューティングによって作成されるノードの VM ファミリ。
+* **max_nodes**:Azure Machine Learning コンピューティングでジョブを実行中に自動スケーリングする最大ノード数。
+
+```python
+from azureml.core.compute import ComputeTarget, AmlCompute
+from azureml.core.compute_target import ComputeTargetException
+
+# Choose a name for your CPU cluster
+cpu_cluster_name = "cpucluster"
+
+# Verify that cluster does not exist already
+try:
+    cpu_cluster = ComputeTarget(workspace=ws, name=cpu_cluster_name)
+    print('Found existing cluster, use it.')
+except ComputeTargetException:
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                           max_nodes=4)
+    cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
+
+cpu_cluster.wait_for_completion(show_output=True)
+
+```
+
+### <a name="persistent-compute-advanced"></a>永続的なコンピューティング (詳細)
+
+Azure Machine Learning コンピューティングの作成時には、いくつかの詳細プロパティも設定できます。  これらのプロパティを使用すると、永続的なクラスターを固定サイズで、またはサブスクリプションの既存の Azure Virtual Network 内に作成できます。
+
+`vm_size` と `max_nodes` に加えて、次のプロパティを使用できます:
+
+* **min_nodes**:Azure Machine Learning コンピューティングでジョブを実行中にダウンスケールする最小ノード数 (既定値は 0 ノード)。
+* **vm_priority**:Azure Machine Learning コンピューティングの作成時に、"dedicated" (専用) VM (既定) と "lowpriority" (低優先度) VM のどちらかを選択します。 低優先度 VM は Azure の余剰容量を使用するため低コストですが、実行が割り込まれるリスクがあります。
+* **idle_seconds_before_scaledown**:実行が完了してから min_node までの自動スケーリングを待機するアイドル時間 (既定値は 120 秒)。
+* **vnet_resourcegroup_name**:__既存__の仮想ネットワークのリソース グループ。 Azure Machine Learning コンピューティングはこの仮想ネットワーク内に作成されます。
+* **vnet_name**:仮想ネットワークの名前。 仮想ネットワークは Azure Machine Learning ワークスペースと同じリージョンになければなりません。
+* **subnet_name**:仮想ネットワーク内のサブネットの名前。 Azure Machine Learning コンピューティング リソースには、このサブネット範囲の IP アドレスが割り当てられます。
+
+> [!TIP]
+> 永続的な Azure Machine Learning コンピューティング リソースを作成するときに、min_nodes や max_nodes など、そのプロパティを更新することもできます。 その `update()` 関数を呼び出すだけです。
+
+```python
+from azureml.core.compute import ComputeTarget, AmlCompute
+from azureml.core.compute_target import ComputeTargetException
+
+# Choose a name for your CPU cluster
+cpu_cluster_name = "cpucluster"
+
+# Verify that cluster does not exist already
+try:
+    cpu_cluster = ComputeTarget(workspace=ws, name=cpu_cluster_name)
+    print('Found existing cluster, use it.')
+except ComputeTargetException:
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                           vm_priority='lowpriority',
+                                                           min_nodes=2,
+                                                           max_nodes=4,
+                                                           idle_seconds_before_scaledown='300',
+                                                           vnet_resourcegroup_name='<my-resource-group>',
+                                                           vnet_name='<my-vnet-name>',
+                                                           subnet_name='<my-subnet-name>')
+    cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
+
+cpu_cluster.wait_for_completion(show_output=True)
+
+```
+
+
+## <a id="vm"></a>リモート VM
+
+Azure Machine Learning では、独自のコンピューティング リソースを用意してワークスペースに接続することもサポートされています。 任意のリモート VM もそのようなリソースの一種ですが、Azure Machine Learning service からアクセスできることが条件です。 Azure VM でも、組織内またはオンプレミスのリモート サーバーでもかまいません。 具体的には、IP アドレスと資格情報 (ユーザー名/パスワードまたは SSH キー) があれば、任意のアクセス可能な VM をリモート実行に使用できます。
+システムで構築済みの conda 環境、既存の Python 環境、または Docker コンテナーを使用できます。 Docker コンテナーを使用した実行には、VM で Docker Engine が動作していることが必要です。 この機能は、ローカル コンピューターよりも柔軟性がある、クラウドベースの開発/実験環境が必要な場合に特に役立ちます。
+
+> [!TIP]
+> このシナリオ向けに選択する Azure VM としては、Data Science Virtual Machine の使用をお勧めします。 これは Azure における事前構成済みのデータ サイエンスおよび AI 開発環境であり、ML 開発のライフサイクル全体に対応したツールとフレームワークが厳選されています。 Azure Machine Learning で Data Science Virtual Machine を使用する方法については、[開発環境の構成](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm)に関するドキュメントを参照してください。
 
 > [!WARNING]
-> Azure Machine Learning は、Ubuntu を実行する仮想マシンのみサポートします。 仮想マシンを作成または既存の仮想マシンを選択するとき、Ubuntu を使用するマシンを選択する必要があります。
+> Azure Machine Learning は、Ubuntu を実行する仮想マシンのみサポートします。 仮想マシンを作成したり、既存の仮想マシンを選択するときは、Ubuntu を使用するマシンを選択する必要があります。
 
-次の手順では、SDK を使用してトレーニング ターゲットとしてデータ サイエンス仮想マシン (DSVM) を構成します。
+次の手順では、SDK を使用してトレーニング ターゲットとして Data Science Virtual Machine (DSVM) を構成します。
 
-1. 仮想マシンの作成または接続
+1. コンピューティング ターゲットとして既存の仮想マシンを接続するには、仮想マシンの完全修飾ドメイン名、ログイン名、およびパスワードを入力する必要があります。  例では、```<fqdn>``` を VM のパブリックの完全修飾ドメイン名、またはパブリック IP アドレスに置き換えます。 ```<username>``` と ```<password>``` を VM の SSH ユーザーとパスワードに置き換えます。
+
+    ```python
+    from azureml.core.compute import RemoteCompute, ComputeTarget
     
-    * 新しい DSVM を作成するには、まず同じ名前の DSVM があるかどうかを確認し、ない場合には新しい VM を作成します。
-    
-        ```python
-        from azureml.core.compute import DsvmCompute
-        from azureml.core.compute_target import ComputeTargetException
+    # Create compute config.
+    attach_config = RemoteCompute.attach_configuration(address = "ipaddress",
+                                                       ssh_port=22,
+                                                       username='<username>',
+                                                       password="<password>")
+    # If using SSH instead of a password, use this:
+    #                                                  ssh_port=22,
+    #                                                   username='<username>',
+    #                                                   password=None,
+    #                                                   private_key_file="path-to-file",
+    #                                                   private_key_passphrase="passphrase")
 
-        compute_target_name = 'mydsvm'
+    # Attach the compute
+    compute = ComputeTarget.attach(ws, "attach-dsvm", attach_config)
 
-        try:
-            dsvm_compute = DsvmCompute(workspace = ws, name = compute_target_name)
-            print('found existing:', dsvm_compute.name)
-        except ComputeTargetException:
-            print('creating new.')
-            dsvm_config = DsvmCompute.provisioning_configuration(vm_size = "Standard_D2_v2")
-            dsvm_compute = DsvmCompute.create(ws, name = compute_target_name, provisioning_configuration = dsvm_config)
-            dsvm_compute.wait_for_completion(show_output = True)
-        ```
-    * コンピューティング ターゲットとして既存の仮想マシンを接続するには、仮想マシンの完全修飾ドメイン名、ログイン名、およびパスワードを入力する必要があります。  例では、```<fqdn>``` を VM のパブリックの完全修飾ドメイン名、つまりパブリック IP アドレスに置き換えます。 ```<username>``` と ```<password>``` を SSH ユーザーと VM のパスワードに置き換えます。
+    compute.wait_for_completion(show_output=True)
+    ```
 
-        ```python
-        from azureml.core.compute import RemoteCompute
-
-        dsvm_compute = RemoteCompute.attach(ws,
-                                        name="attach-dsvm",
-                                        username='<username>',
-                                        address="<fqdn>",
-                                        ssh_port=22,
-                                        password="<password>")
-
-        dsvm_compute.wait_for_completion(show_output=True)
-    
-   It takes around 5 minutes to create the DSVM instance.
-
-1. Create a configuration for the DSVM compute target. Docker and conda are used to create and configure the training environment on DSVM:
+1. DSVM コンピューティング ターゲット用の構成を作成します。 Docker と conda は、DSVM でトレーニング環境を作成および構成するために使用されます:
 
     ```python
     from azureml.core.runconfig import RunConfiguration
@@ -198,124 +302,6 @@ run_config_system_managed.environment.python.conda_dependencies = CondaDependenc
 
     ```
 
-1. 完了したときに計算リソースを削除するには、次のコードを使用します。
-
-    ```python
-    dsvm_compute.delete()
-    ```
-
-Data Science Virtual Machine でのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb) を参照してください。
-
-## <a id="batch"></a>Azure Batch AI
-
-モデルのトレーニングに時間がかかる場合は、Azure Batch AI を使用して、クラウドの計算リソースのクラスター間にトレーニングを分散できます。 Batch AI を構成して GPU リソースを有効にすることも可能です。
-
-次の例では名前で既存の Batch AI クラスターを検索します。 クラスターは、見つからない場合には作成されます。
-
-```python
-from azureml.core.compute import BatchAiCompute
-from azureml.core.compute import ComputeTarget
-import os
-
-# choose a name for your cluster
-batchai_cluster_name = os.environ.get("BATCHAI_CLUSTER_NAME", ws.name + "gpu")
-cluster_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 1)
-cluster_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 3)
-vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_NC6")
-autoscale_enabled = os.environ.get("BATCHAI_CLUSTER_AUTOSCALE_ENABLED", True)
-
-
-if batchai_cluster_name in ws.compute_targets():
-    compute_target = ws.compute_targets()[batchai_cluster_name]
-    if compute_target and type(compute_target) is BatchAiCompute:
-        print('found compute target. just use it. ' + batchai_cluster_name)
-else:
-    print('creating a new compute target...')
-    provisioning_config = BatchAiCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
-                                                                vm_priority = 'lowpriority', # optional
-                                                                autoscale_enabled = autoscale_enabled,
-                                                                cluster_min_nodes = cluster_min_nodes, 
-                                                                cluster_max_nodes = cluster_max_nodes)
-
-    # create the cluster
-    compute_target = ComputeTarget.create(ws, batchai_cluster_name, provisioning_config)
-    
-    # can poll for a minimum number of nodes and for a specific timeout. 
-    # if no min node count is provided it will use the scale settings for the cluster
-    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
-    
-     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
-    print(compute_target.status.serialize())
-```
-
-コンピューティング ターゲットとして既存の Batch AI クラスターに接続するには、Azure のリソース ID を入力する必要があります。 Azure portal からリソース ID を取得するには、次の手順を使用します。
-1. **[すべてのサービス]** で `Batch AI` サービスを検索します
-1. クラスターが属しているワークスペース名をクリックします
-1. クラスターを選択します
-1. **[プロパティ]** をクリックします
-1. **ID** をコピーします
-
-次の例では、SDK を使用してクラスターをワークスペースに接続します。 この例では、`<name>` を計算の名前に置き換えます。 この名前は、クラスターの名前と一致させる必要はありません。 `<resource-id>` を上述の Azure リソース ID に置き換えます。
-
-```python
-from azureml.core.compute import BatchAiCompute
-BatchAiCompute.attach(workspace=ws,
-                      name=<name>,
-                      resource_id=<resource-id>)
-```
-
-次の Azure CLI コマンドを使用して Batch AI クラスターとジョブの状態をチェックすることもできます。
-
-- クラスターの状態を確認します。 `az batchai cluster list` を使用して実行しているノードの数を確認できます。
-- ジョブの状態を確認します。 `az batchai job list` を使用して実行しているジョブの数を確認できます。
-
-Batch AI クラスターの作成には約 5 分かかります。
-
-Batch AI クラスターでのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb) を参照してください。
-
-## <a name='aci'></a>Azure コンテナー インスタンス (ACI)
-
-Azure Container Instances は、高速起動し、仮想マシンの管理をユーザーが行う必要がない分離されたコンテナーです。 Azure Machine Learning サービスは、westus、eastus、westeurope、northeurope、westus2、および southeastasia リージョンで使用可能な Linux コンテナーを使用します。 詳細については、「[利用可能なリージョン](https://docs.microsoft.com/azure/container-instances/container-instances-quotas#region-availability)」をご覧ください。 
-
-次の例では、SDK を使用して ACI のコンピューティング ターゲットを作成し、モデルのトレーニングに使用する方法を示します。 
-
-```python
-from azureml.core.runconfig import RunConfiguration
-from azureml.core.conda_dependencies import CondaDependencies
-
-# create a new runconfig object
-run_config = RunConfiguration()
-
-# signal that you want to use ACI to run script.
-run_config.target = "containerinstance"
-
-# ACI container group is only supported in certain regions, which can be different than the region the Workspace is in.
-run_config.container_instance.region = 'eastus'
-
-# set the ACI CPU and Memory 
-run_config.container_instance.cpu_cores = 1
-run_config.container_instance.memory_gb = 2
-
-# enable Docker 
-run_config.environment.docker.enabled = True
-
-# set Docker base image to the default CPU-based image
-run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
-
-# use conda_dependencies.yml to create a conda environment in the Docker image
-run_config.environment.python.user_managed_dependencies = False
-
-# auto-prepare the Docker image when used for the first time (if it is not already prepared)
-run_config.auto_prepare_environment = True
-
-# specify CondaDependencies obj
-run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
-```
-
-ACI のコンピューティング ターゲットの作成には、数秒から数分 かかります。
-
-Azure コンテナー インスタンスでのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb) を参照してください。
-
 ## <a id="databricks"></a>Azure Databricks
 
 Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境です。 これは、Azure Machine Learning パイプラインでモデルをトレーニングする際に、コンピューティング ターゲットとして使用できます。
@@ -327,26 +313,16 @@ Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境�
 
 コンピューティング ターゲットとして Azure Databricks に接続するには、Azure Machine Learning SDK を使用し、次の情報を提供する必要があります。
 
-* __コンピューティング名__: このコンピューティング リソースに割り当てる名前。
-* __リソース ID__: Azure Databricks ワークスペースのリソース ID。 次のテキストは、この値の形式の例です。
-
-    ```text
-    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.Databricks/workspaces/<databricks-workspace-name>
-    ```
-
-    > [!TIP]
-    > リソース ID を取得するには、次の Azure CLI コマンドを使います。 `<databricks-ws>` を Databricks ワークスペースの名前に置き換えます。
-    > ```azurecli-interactive
-    > az resource list --name <databricks-ws> --query [].id
-    > ```
-
-* __アクセス トークン__: Azure Databricks に対する認証に使用するアクセス トークン。 アクセス トークンを生成するには、[認証](https://docs.azuredatabricks.net/api/latest/authentication.html)に関するドキュメントを参照してください。
+* __コンピューティング名__:このコンピューティング リソースに割り当てる名前。
+* __Databricks ワークスペース名__:Azure Databricks ワークスペースの名前。
+* __アクセス トークン__:Azure Databricks に対する認証に使用するアクセス トークン。 アクセス トークンを生成するには、[認証](https://docs.azuredatabricks.net/api/latest/authentication.html)に関するドキュメントを参照してください。
 
 次のコードは、コンピューティング ターゲットとして Azure Databricks に接続する方法を示しています。
 
 ```python
 databricks_compute_name = os.environ.get("AML_DATABRICKS_COMPUTE_NAME", "<databricks_compute_name>")
-databricks_resource_id = os.environ.get("AML_DATABRICKS_RESOURCE_ID", "<databricks_resource_id>")
+databricks_workspace_name = os.environ.get("AML_DATABRICKS_WORKSPACE", "<databricks_workspace_name>")
+databricks_resource_group = os.environ.get("AML_DATABRICKS_RESOURCE_GROUP", "<databricks_resource_group>")
 databricks_access_token = os.environ.get("AML_DATABRICKS_ACCESS_TOKEN", "<databricks_access_token>")
 
 try:
@@ -355,13 +331,17 @@ try:
 except ComputeTargetException:
     print('compute not found')
     print('databricks_compute_name {}'.format(databricks_compute_name))
-    print('databricks_resource_id {}'.format(databricks_resource_id))
+    print('databricks_workspace_name {}'.format(databricks_workspace_name))
     print('databricks_access_token {}'.format(databricks_access_token))
-    databricks_compute = DatabricksCompute.attach(
-             workspace=ws,
-             name=databricks_compute_name,
-             resource_id=databricks_resource_id,
-             access_token=databricks_access_token
+
+    # Create attach config
+    attach_config = DatabricksCompute.attach_configuration(resource_group = databricks_resource_group,
+                                                           workspace_name = databricks_workspace_name,
+                                                           access_token = databricks_access_token)
+    databricks_compute = ComputeTarget.attach(
+             ws,
+             databricks_compute_name,
+             attach_config
          )
     
     databricks_compute.wait_for_completion(True)
@@ -378,24 +358,16 @@ Azure Data Lake Analytics は、Azure クラウド内のビッグ データ分�
 
 コンピューティング ターゲットとして Data Lake Analytics に接続するには、Azure Machine Learning SDK を使用し、次の情報を提供する必要があります。
 
-* __コンピューティング名__: このコンピューティング リソースに割り当てる名前。
-* __リソース ID__: Data Lake Analytics アカウントのリソース ID。 次のテキストは、この値の形式の例です。
-
-    ```text
-    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.DataLakeAnalytics/accounts/<datalakeanalytics-name>
-    ```
-
-    > [!TIP]
-    > リソース ID を取得するには、次の Azure CLI コマンドを使います。 `<datalakeanalytics>` を Data Lake Analytics アカウントの名前に置き換えます。
-    > ```azurecli-interactive
-    > az resource list --name <datalakeanalytics> --query [].id
-    > ```
+* __コンピューティング名__:このコンピューティング リソースに割り当てる名前。
+* __リソース グループ__:Data Lake Analytics アカウントを含むリソース グループ。
+* __アカウント名__:Data Lake Analytics アカウント名です。
 
 次のコードは、コンピューティング ターゲットとして Data Lake Analytics に接続する方法を示しています。
 
 ```python
 adla_compute_name = os.environ.get("AML_ADLA_COMPUTE_NAME", "<adla_compute_name>")
-adla_resource_id = os.environ.get("AML_ADLA_RESOURCE_ID", "<adla_resource_id>")
+adla_resource_group = os.environ.get("AML_ADLA_RESOURCE_GROUP", "<adla_resource_group>")
+adla_account_name = os.environ.get("AML_ADLA_ACCOUNT_NAME", "<adla_account_name>")
 
 try:
     adla_compute = ComputeTarget(workspace=ws, name=adla_compute_name)
@@ -403,11 +375,16 @@ try:
 except ComputeTargetException:
     print('compute not found')
     print('adla_compute_name {}'.format(adla_compute_name))
-    print('adla_resource_id {}'.format(adla_resource_id))
-    adla_compute = AdlaCompute.attach(
-             workspace=ws,
-             name=adla_compute_name,
-             resource_id=adla_resource_id
+    print('adla_resource_id {}'.format(adla_resource_group))
+    print('adla_account_name {}'.format(adla_account_name))
+    # create attach config
+    attach_config = AdlaCompute.attach_configuration(resource_group = adla_resource_group,
+                                                     account_name = adla_account_name)
+    # Attach ADLA
+    adla_compute = ComputeTarget.attach(
+             ws,
+             adla_compute_name,
+             attach_config
          )
     
     adla_compute.wait_for_completion(True)
@@ -416,7 +393,7 @@ except ComputeTargetException:
 > [!TIP]
 > Azure Machine Learning パイプラインは、Data Lake Analytics アカウントの既定のデータ ストアに格納されたデータのみ使用できます。 使用する必要があるデータが既定以外のストアにある場合は、[`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) を使用して、トレーニングの前にデータをコピーできます。
 
-## <a id="hdinsight"></a>HDInsight クラスターの接続 
+## <a id="hdinsight"></a>Azure HDInsight 
 
 HDInsight は、ビッグ データ分析のための一般的なプラットフォームです。 モデルのトレーニングに使用できる Apache Spark を提供します。
 
@@ -435,14 +412,17 @@ HDInsight は、ビッグ データ分析のための一般的なプラットフ
 > ![URL エントリが強調表示されている HDInsight クラスターの概要のスクリーン ショット](./media/how-to-set-up-training-targets/hdinsight-overview.png)
 
 ```python
-from azureml.core.compute import HDInsightCompute
+from azureml.core.compute import HDInsightCompute, ComputeTarget
 
 try:
     # Attaches a HDInsight cluster as a compute target.
-    HDInsightCompute.attach(ws,name = "myhdi",
-                            address = "<fqdn>",
-                            username = "<username>",
-                            password = "<password>")
+    attach_config = HDInsightCompute.attach_configuration(address = "fqdn-or-ipaddress",
+                                                          ssh_port = 22,
+                                                          username = "username",
+                                                          password = None, #if using ssh key
+                                                          private_key_file = "path-to-key-file",
+                                                          private_key_phrase = "key-phrase")
+    compute = ComputeTarget.attach(ws, "myhdi", attach_config)
 except UserErrorException as e:
     print("Caught = {}".format(e.message))
     print("Compute config already attached.")
@@ -482,7 +462,6 @@ run = exp.submit(src)
 run.wait_for_completion(show_output = True)
 ```
 
-Spark on HDInsight でのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb) を参照してください。
 
 ### <a name="submit-using-a-pipeline"></a>パイプラインを使用して送信する
 
@@ -534,41 +513,43 @@ Azure Portal からワークスペースに関連付けられたコンピュー�
 
     ![計算の追加 ](./media/how-to-set-up-training-targets/add-compute-target.png)
 
-1. コンピューティング ターゲットの名前を入力します。
-1. __トレーニング__ に接続する計算の種類を選択します。 
+1. コンピューティング ターゲットの名前を入力する
+1. __[トレーニング]__ に使用するコンピューティングの種類として **[Machine Learning コンピューティング]** を選択します
 
     > [!IMPORTANT]
-    > Azure portal を使用してすべてのコンピューティングの種類を作成できるわけではありません。 現在トレーニング用に作成できる種類は次のとおりです。
-    > 
-    > * 仮想マシン
-    > * Batch AI
+    > トレーニング用の Azure Machine Learning コンピューティングはマネージド コンピューティングとして作成することしかできません
 
-1. __[新規作成]__ を選択し、必要なフォームに入力します。 
+1. 必須フォーム、特に、VM ファミリや、コンピューティングのスピンアップに使用する最大ノード数を入力します 
 1. __[作成]__
-1. 一覧からコンピューティング ターゲットを選択することによって、状態作成操作を表示できます。
+1. 一覧からコンピューティング ターゲットを選択することによって、作成操作の状態を表示できます
 
-    ![計算一覧の表示](./media/how-to-set-up-training-targets/View_list.png) コンピューティング ターゲットの詳細が表示されます。
-    ![詳細の表示](./media/how-to-set-up-training-targets/vm_view.PNG)
-1. 上述のように、これらのターゲットに対して実行を送信できるようになりました。
+    ![コンピューティングの一覧を表示する](./media/how-to-set-up-training-targets/View_list.png)
+
+1. コンピューティング ターゲットの詳細が表示されます。
+
+    ![詳細を表示する](./media/how-to-set-up-training-targets/compute-target-details.png)
+
+1. 上述のように、これらのターゲットに対して実行を送信できるようになりました
+
 
 ### <a name="reuse-existing-compute-in-your-workspace"></a>ワークスペース内の既存の計算の再利用
 
 上記の手順に従ってコンピューティング ターゲットの一覧を表示し、次の手順に従ってコンピューティング ターゲットを再利用します。
 
-1. **+** 記号をクリックし、コンピューティング ターゲットを追加します。
-2. コンピューティング ターゲットの名前を入力します。
-3. トレーニング用に接続する計算の種類を選択します。
+1. **+** 記号をクリックし、コンピューティング ターゲットを追加します
+2. コンピューティング ターゲットの名前を入力する
+3. __トレーニング__に接続する計算の種類を選択します
 
     > [!IMPORTANT]
     > ポータルを使用してすべてのコンピューティングの種類を接続できるわけではありません。
     > 現在トレーニング用に接続できる種類は次のとおりです。
     > 
-    > * 仮想マシン
-    > * Batch AI
+    > * リモート VM
+    > * Databricks
+    > * Data Lake Analytics
+    > * HDInsight
 
-1. [既存を使用] を選択します。
-    - Batch AI クラスターに接続するときにドロップダウン リストからコンピューティング ターゲットを選択し、Batch AI ワークスペースおよび Batch AI クラスターを選択し、**[作成]** をクリックします。
-    - 仮想マシンに接続するときに IP アドレス、ユーザー名/パスワードの組み合わせ、秘密/公開キー、およびポートを入力し、[作成] をクリックします。
+1. 必須フォームに入力する
 
     > [!NOTE]
     > パスワードよりも安全な SSH キーを使用することをお勧めします。 パスワードはブルート フォース攻撃に対して脆弱ですが、SSH キーは暗号署名を使用しています。 Azure Virtual Machines で使用するための SSH キーを作成する方法の詳細については、次のドキュメントを参照してください。
@@ -576,22 +557,21 @@ Azure Portal からワークスペースに関連付けられたコンピュー�
     > * [Linux または macOS で SSH キーを作成して使用する]( https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
     > * [Windows で SSH キーを作成して使用する]( https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
-5. プロビジョニング状態のステータスを表示するには、一覧からコンピューティング ターゲットを選択します。
-6. これらのターゲットに対して実行を送信できるようになりました。
+1. 接続を選択する
+1. 一覧からコンピューティング ターゲットを選択することによって、接続操作の状態を表示できます
+1. 上述のように、これらのターゲットに対して実行を送信できるようになりました
 
 ## <a name="examples"></a>例
-次の Notebook は、この記事の概念を示しています。
-* [01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
-* [01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm)
-* [01.getting-started/03.train-on-aci/03.train-on-aci.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci)
-* [01.getting-started/05.train-in-spark/05.train-in-spark.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark)
-* [tutorials/01.train-models.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)
+次の場所にあるノートブックを参照してください:
+* [how-to-use-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
 
-これらの Notebook を取得するには: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+* [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Machine Learning SDK リファレンス](https://aka.ms/aml-sdk)
-* [チュートリアル: モデルのトレーニング](tutorial-train-models-with-aml.md)
+* [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)
 * [モデルをデプロイする場所](how-to-deploy-and-where.md)
 * [Azure Machine Learning サービスで機械学習パイプラインの構築](concept-ml-pipelines.md)

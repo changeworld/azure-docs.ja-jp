@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ce1e82971f10541bf3a67d46b48c5fc93b5432b4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 4285c633062386657cbea478f327c9a1b088f16a
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687080"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383818"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Presto をインストールして使用する
 
@@ -22,13 +22,13 @@ ms.locfileid: "51687080"
 
 HDInsight では、Apache Hadoop クラスター向けの Starburst Presto アプリケーションも提供しています。 詳細については、「[Azure HDInsight へのサード パーティ製アプリケーションのインストール](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-install-applications)」を参照してください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、Linux を使用する **HDInsight 3.5 Hadoop クラスター**が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン](hdinsight-component-versioning.md)に関するページを参照してください。
 
 ## <a name="what-is-presto"></a>Presto とは
 [Presto](https://prestodb.io/overview.html) は、ビッグ データ用の高速な分散 SQL クエリ エンジンです。 Presto は、ペタバイト級のデータに対して対話型クエリを実行するのに適しています。 Presto のコンポーネントと、それらのコンポーネントがどのように連携するかについては、「[Presto concepts (Presto の概念)](https://github.com/prestodb/presto/blob/master/presto-docs/src/main/sphinx/overview/concepts.rst)」を参照してください。
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 > 
 > Presto といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
@@ -50,19 +50,19 @@ HDInsight では、Apache Hadoop クラスター向けの Starburst Presto ア�
 
 2. **[詳細設定]** 領域で **[スクリプト アクション]** を選択し、以下の情報を指定します。 スクリプトの種類に [Presto のインストール] オプションを選択することもできます。
    
-   * **[名前]**: スクリプト アクションの表示名を入力します。
+   * **[名前]**:スクリプト アクションの表示名を入力します。
    * **[バッシュ スクリプト URI]**: `https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
-   * **[ヘッド]**: このオプションをオンにします。
-   * **[ワーカー]**: このオプションをオンにします
-   * **[ZOOKEEPER]**: このチェック ボックスはオフのままにします。
-   * **[パラメーター]**: このフィールドは空のままにします。
+   * **[ヘッド]**:このオプションをオンにします。
+   * **[ワーカー]**:このオプションをオンにします。
+   * **[ZOOKEEPER]**:このチェック ボックスはオフのままにします。
+   * **[パラメーター]**:このフィールドは空のままにします。
 
 
 3. **[スクリプト アクション]** 領域の下部で、**[選択]** をクリックして構成を保存します。 最後に、**[詳細設定]** 領域の下部にある **[選択]** をクリックして構成情報を保存します。
 
 4. 「 [Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-hadoop-create-linux-clusters-portal.md)」の説明に従って、クラスターのプロビジョニングを続行します。
 
-    > [!NOTE]
+    > [!NOTE]  
     > スクリプト アクションは、Azure PowerShell、Azure クラシック CLI、HDInsight .NET SDK、または Azure Resource Manager テンプレートを使用して適用することもできます。 既に実行しているクラスターにスクリプト アクションを適用することもできます。 詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関する記事を参照してください。
     > 
     > 
@@ -86,7 +86,7 @@ HDInsight クラスターで Presto を使用するには、次の手順を実�
    
         select count (*) from hivesampletable;
    
-    既定では、Presto 用に [Hive](https://prestodb.io/docs/current/connector/hive.html) コネクタと [TPCH](https://prestodb.io/docs/current/connector/tpch.html) コネクタが既に構成されています。 Hive コネクタは既定のインストール済みの Hive を使用するように構成されているため、Hive からのすべてのテーブルが Presto に自動的に表示されます。
+    既定では、Presto 用に [Apache Hive](https://prestodb.io/docs/current/connector/hive.html) コネクタと [TPCH](https://prestodb.io/docs/current/connector/tpch.html) コネクタが既に構成されています。 Hive コネクタは既定のインストール済みの Hive を使用するように構成されているため、Hive からのすべてのテーブルが Presto に自動的に表示されます。
 
     詳細については、[Presto のドキュメンテーション](https://prestodb.io/docs/current/index.html)を参照してください。
 
@@ -168,11 +168,11 @@ TPC-DS は、ビッグ データ システムを含む多くの意思決定支�
 
 
 ## <a name="see-also"></a>関連項目
-* [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。 色合いは、Pig ジョブと Hive ジョブを作成、実行、保存し易くする Web の UI です。
+* [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。 色合いは、Apache Pig ジョブと Hive ジョブを作成、実行、保存しやすくする Web の UI です。
 
-* [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install-linux.md) クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。 Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
+* [HDInsight クラスターに Apache Giraph をインストールする](hdinsight-hadoop-giraph-install-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。 Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
 
-* [HDInsight クラスターに Solr をインストールする](hdinsight-hadoop-solr-install-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。 Solr は、格納されたデータに対して強力な検索操作を実行することができます。
+* [HDInsight クラスターに Apache Solr をインストールする](hdinsight-hadoop-solr-install-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。 Solr は、格納されたデータに対して強力な検索操作を実行することができます。
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

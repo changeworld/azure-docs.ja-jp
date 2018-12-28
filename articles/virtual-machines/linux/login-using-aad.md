@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 8bf87f9d1d1ab6da4b034890f1fbe058199eca41
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007142"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850977"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure の Linux 仮想マシンにログインする
 
@@ -37,9 +37,9 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
   - Azure 仮想マシンへのログイン セキュリティをさらに強化するために、多要素認証を設定することができます。
   - Azure Active Directory を使用して Linux VM にログインする機能は、[フェデレーション サービス](../../active-directory/hybrid/how-to-connect-fed-whatis.md)を使用するお客様も使用できます。
 
-- **シームレスなコラボレーション:** ロールベースのアクセス制御 (RBAC) を使用することで、どのユーザーが、正規のユーザーまたは管理者権限を持つユーザーとして特定の VM にサインインできるかを指定できます。 ユーザーがチームに参加またはチームから脱退する場合は、適切なアクセス権が付与されるよう VM の RBAC ポリシーを更新できます。 この操作は、不要な SSH 公開キーを削除して VM をスクラブするよりも簡単です。 従業員が退職し、そのユーザー アカウントが無効化または Azure AD から削除されると、リソースにアクセスできなくなります。
+- **シームレスな コラボレーション:** ロールベースのアクセス制御 (RBAC) を使用することで、どのユーザーが、正規のユーザーまたは管理者権限を持つユーザーとして特定の VM にサインインできるかを指定できます。 ユーザーがチームに参加またはチームから脱退する場合は、適切なアクセス権が付与されるよう VM の RBAC ポリシーを更新できます。 この操作は、不要な SSH 公開キーを削除して VM をスクラブするよりも簡単です。 従業員が退職し、そのユーザー アカウントが無効化または Azure AD から削除されると、リソースにアクセスできなくなります。
 
-### <a name="supported-azure-regions-and-linux-distributions"></a>サポートされている Azure リージョンと Linux ディストリビューション
+## <a name="supported-azure-regions-and-linux-distributions"></a>サポートされている Azure リージョンと Linux ディストリビューション
 
 この機能のプレビュー期間中は、次の Linux ディストリビューションがサポートされます。
 
@@ -96,8 +96,8 @@ VM に拡張機能がインストールされると、*provisioningState* に *S
 
 Azure のロールベース アクセス制御 (RBAC) ポリシーは、VM にログオンできるユーザーを規定します。 VM へのログインを承認するには、次の 2 つの RBAC ロールが使用されます。
 
-- **仮想マシンの管理者ログイン**: このロールが割り当てられてたユーザーは Windows 管理者または Linux のルート ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
-- **仮想マシンのユーザー ログイン**: このロールが割り当てられてたユーザーは 正規ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
+- **仮想マシンの管理者ログイン**:このロールが割り当てられたユーザーは Windows 管理者または Linux のルート ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
+- **仮想マシンのユーザー ログイン**:このロールが割り当てられたユーザーは正規ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
 
 > [!NOTE]
 > SSH 経由でユーザーが VM にログインできるようにするには、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかを割り当てる必要があります。 VM の*所有者*または*共同作成者*ロールが割り当てられた Azure ユーザーに、SSH 経由で VM にログインする権限は自動的には付与されません。
@@ -129,7 +129,7 @@ Linux 仮想マシンにサインインする特定のユーザーに対して�
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Azure AD 資格情報を使用して Azure Linux 仮想マシンにログインします。 `-l` パラメーターを使用して、独自の Azure AD アカウントのアドレスを指定できます。 前述のコマンドで出力された VM のパブリック IP アドレスを指定します。
+Azure AD 資格情報を使用して Azure Linux 仮想マシンにログインします。 `-l` パラメーターを使用して、独自の Azure AD アカウントのアドレスを指定できます。 アカウントのアドレスは、すべて小文字で入力する必要があります。 前述のコマンドからお使いの VM のパブリック IP アドレスを使用します。
 
 ```azurecli-interactive
 ssh -l azureuser@contoso.onmicrosoft.com publicIps
@@ -166,7 +166,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 
 Azure AD の資格情報を使用して SSH 経由でログインしようとしたときによく発生する問題は、RBAC ロールが割り当てられていないために、サインインを求める画面が繰り返し表示されることです。 次のセクションを使用してこの問題を解決してください。
 
-### <a name="access-denied-rbac-role-not-assigned"></a>アクセスが拒否されました: RBAC の役割が割り当てられていません
+### <a name="access-denied-rbac-role-not-assigned"></a>アクセスが拒否されました:RBAC の役割が割り当てられていません
 
 SSH プロンプトで次のエラーが表示された場合は、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかをユーザーに付与する [RBAC ポリシーが VM に設定されている](#configure-rbac-policy-for-the-virtual-machine)ことを確認してください。
 

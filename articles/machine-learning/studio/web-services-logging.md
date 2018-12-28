@@ -1,12 +1,11 @@
 ---
-title: Machine Learning Studio Web サービスのログ記録 | Microsoft Docs
+title: Web サービスのログ記録 - Azure Machine Learning Studio | Microsoft Docs
 description: Machine Learning Web サービスのログ記録を有効にする方法について説明します。 ログ記録では、API のトラブルシューティングに役立つ追加情報を提供します。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 5ac8712b1f5dbea4ed3225e87b1a6f51312c3529
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8e9d6d006589e443329059c3f153e7925a88cd1f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310414"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249789"
 ---
-# <a name="enable-logging-for-machine-learning-studio-web-services"></a>Machine Learning Studio Web サービスのログ記録を有効にする
+# <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Azure Machine Learning Studio Web サービスのログ記録を有効にする
 このドキュメントは、Machine Learning Web サービスのログ記録機能について説明します。 ログ機能を使用すると、エラー番号とメッセージの他に追加の情報を得ることができ、Machine Learning API の呼び出しをトラブルシューティングするときに役立ちます。  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Web サービスでのログ記録を有効にする方法
@@ -83,7 +82,7 @@ Azure のストレージ アカウントを探索できる複数のツールを�
 `{Workspace Id}-{Web service Id}-{Endpoint Id}/{Log type}`
 
 
-_ログの種類_ は次のいずれかの値です。  
+_ログの種類_は次のいずれかの値です。  
 
 * batch (バッチ)  
 * score/requests (スコア/要求)  

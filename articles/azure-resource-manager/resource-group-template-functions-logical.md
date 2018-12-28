@@ -253,7 +253,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 | Name | type | 値 |
 | ---- | ---- | ----- |
 | yesOutput | String | はい |
-| noOutput | String | いいえ |
+| noOutput | String | × |
 | objectOutput | オブジェクト | { "test": "value1" } |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
@@ -430,3 +430,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
+

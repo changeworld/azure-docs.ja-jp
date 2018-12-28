@@ -1,5 +1,5 @@
 ---
-title: Powershell スクリプトによる Azure Search の管理 | Microsoft Azure | Microsoft Docs
+title: PowerShell スクリプトによる Azure Search サービスの管理 - Azure Search
 description: PowerShell スクリプトを使用して Azure Search サービスを管理します。 Azure Search サービスの作成または更新と、Azure Search 管理者キーの管理
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: bae9e2dcb4320c1da4f1d8e3c6ad50ce90195544
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.custom: seodec2018
+ms.openlocfilehash: c05a2ceb7cc515691af91652c968b73c72029db4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958569"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313464"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>PowerShell を使用して Azure Search サービスを管理する
 > [!div class="op_single_selector"]

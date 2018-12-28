@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 06a7e23eb16cf6296a8997273ea8d554851600c3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 275dd48e08aa74d84b0e1b91d5df9599ce524489
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456492"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957693"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -66,11 +66,11 @@ Site Recovery による更新の管理は次の方法で選択できます。
 
 1. Azure VM にインストールされているモビリティ サービスに使用可能な新しい更新プログラムがある場合は、"Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。 クリックしてインストールしてください" という通知が表示されます。
 
-     ![[レプリケートされたアイテム] ウィンドウ](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![[レプリケートされたアイテム] ウィンドウ](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 3. この通知を選択して、仮想マシンの選択ページを開きます。
 4. モビリティ サービスをアップグレードする仮想マシンを選択し、**[OK]** を選択します。
 
-     ![[レプリケートされたアイテム] VM リスト](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![[レプリケートされたアイテム] VM リスト](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 選択した各仮想マシンで、モビリティ サービスの更新ジョブが開始されます。
 
@@ -82,7 +82,7 @@ Site Recovery による更新の管理は次の方法で選択できます。
 自動更新を有効にしようとして失敗した場合は、以下を参照してトラブルシューティングを行ってください。
 
 **エラー**: Azure 実行アカウント (サービス プリンシパル) を作成し、サービス プリンシパルに共同作成者ロールを付与するためのアクセス許可がありません。 
-- 推奨される操作: ログインしたアカウントに "共同作成者" が割り当てられていることを確認してから、操作を再試行します。 適切なアクセス許可の割り当ての詳細については、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)のドキュメントをご覧ください。
+- 推奨される操作:ログインしているアカウントに "共同作成者" が割り当てられていることを確認してから、操作を再試行します。 適切なアクセス許可の割り当ての詳細については、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)のドキュメントをご覧ください。
  
 自動更新をオンにすると、Site Recovery サービスによってほとんどの問題を修正できます。それには、**[修復]** ボタンをクリックする必要があります。
 

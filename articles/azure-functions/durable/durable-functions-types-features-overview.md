@@ -8,18 +8,18 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/04/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 265314ebf2568bd586934d371e1e6c1d74e0b9bb
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 359594ab91b903033ecc303eccd270988be19810
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637017"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336529"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Durable Functions の関数の種類と機能の概要 (Azure Functions)
 
-Azure Durable Functions は、関数実行のステートフル オーケストレーションを提供します。 Durable Functions はさまざまな Azure Functions から構成されるソリューションです。 それぞれの関数がオーケストレーションの一部として異なる役割を果たすことができます。 次のドキュメントでは、Durable Functions オーケストレーションに含まれる関数の種類の概要を示します。 関数を組み合わせるときの一般的なパターンもいくつか含まれています。  今すぐ開始するには、[C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md) で最初の永続関数を作成してください。
+Durable Functions は、関数実行のステートフル オーケストレーションを提供します。 Durable Functions はさまざまな Azure Functions から構成されるソリューションです。 それぞれの関数がオーケストレーションの一部として異なる役割を果たすことができます。 次のドキュメントでは、Durable Functions オーケストレーションに含まれる関数の種類の概要を示します。 関数を組み合わせるときの一般的なパターンもいくつか含まれています。  今すぐ開始するには、[C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md) で最初の永続関数を作成してください。
 
 ![Durable Functions の種類][1]  
 
@@ -27,9 +27,11 @@ Azure Durable Functions は、関数実行のステートフル オーケスト�
 
 ### <a name="activity-functions"></a>アクティビティ関数
 
-アクティビティ関数は、Durable Functions オーケストレーションの基本作業単位です。  アクティビティ関数は、プロセスでオーケストレーションされる関数とタスクです。  たとえば、注文を処理する、つまり、在庫を確認し、顧客に代金を請求し、出荷を手配する Durable Functions を作成できます。  そのようなタスクはいずれもアクティビティ関数です。  アクティビティ関数には、その中でできる作業の種類について制限がありません。  Azure Functions でサポートされているあらゆる言語で記述できます。  持続的タスク フレームワークによって、呼び出された各アクティビティ関数が、オーケストレーションの間、少なくとも 1 回実行されます。
+アクティビティ関数は、Durable Functions オーケストレーションの基本作業単位です。  アクティビティ関数は、プロセスでオーケストレーションされる関数とタスクです。  たとえば、注文を処理する、つまり、在庫を確認し、顧客に代金を請求し、出荷を手配する Durable Functions を作成できます。  そのようなタスクはいずれもアクティビティ関数です。  アクティビティ関数には、その中でできる作業の種類について制限がありません。  [Durable Functions でサポートされているあらゆる言語](durable-functions-overview.md#language-support)で記述できます。 Durable Task Framework によって、呼び出された各アクティビティ関数が、オーケストレーションの間、少なくとも 1 回実行されます。
 
-アクティビティ関数は[アクティビティ トリガー](durable-functions-bindings.md#activity-triggers)によって始動させる必要があります。  この関数はパラメーターとして [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) を受け取ります。 トリガーを他のオブジェクトにバインドし、入力を関数に渡すこともできます。  アクティビティ関数はオーケストレーターに値を返すこともできます。  アクティビティ関数からたくさんの値を送信したり、返したりする場合、[タプルや配列](durable-functions-bindings.md#passing-multiple-parameters)を活用できます。  アクティビティ関数は、オーケストレーション インスタンスからのみトリガーさせることができます。  一部のコードはアクティビティ関数と別の関数 (HTTP でトリガーした関数など) の間で共有できますが、各関数に与えられるトリガーは 1 つに限られます。
+アクティビティ関数は[アクティビティ トリガー](durable-functions-bindings.md#activity-triggers)によって始動させる必要があります。  .NET 関数はパラメーターとして [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) を受け取ります。 トリガーを他のオブジェクトにバインドし、入力を関数に渡すこともできます。 JavaScript では、[`context.bindings` オブジェクト](../functions-reference-node.md#bindings)の `<activity trigger binding name>` プロパティを介して入力にアクセスできます。
+
+アクティビティ関数はオーケストレーターに値を返すこともできます。  アクティビティ関数からたくさんの値を送信したり、返したりする場合、[タプルや配列](durable-functions-bindings.md#passing-multiple-parameters)を活用できます。  アクティビティ関数は、オーケストレーション インスタンスからのみトリガーさせることができます。  一部のコードはアクティビティ関数と別の関数 (HTTP でトリガーした関数など) の間で共有できますが、各関数に与えられるトリガーは 1 つに限られます。
 
 詳細とサンプルは、[Durable Functions のバインディングに関するこちらの記事](durable-functions-bindings.md#activity-triggers)にあります。
 
@@ -79,7 +81,9 @@ Durable Function のオーケストレーションはコードで実装され、
 
 持続的オーケストレーションは一般的に 1 つの関数アプリ内で存続しますが、さまざまな関数アプリ間でオーケストレーションを調整できるパターンがあります。  アプリ間通信は HTTP で行われることがありますが、各アクティビティに持続的フレームワークを使用するということは、2 つのアプリ間で持続的プロセスを維持できることを意味します。
 
-C# の関数アプリ間オーケストレーションの例を下に示します。  1 つのアクティビティが外部オーケストレーションを開始します。 別のアクティビティが状態を取得して返します。  オーケストレーターは状態の完了を待ってから続行します。
+C# と JavaScript の関数アプリ間オーケストレーションの例を下に示します。  1 つのアクティビティが外部オーケストレーションを開始します。 別のアクティビティが状態を取得して返します。  オーケストレーターは状態の完了を待ってから続行します。
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("OrchestratorA")]
@@ -128,6 +132,64 @@ public static async Task<bool> CheckIsComplete([ActivityTrigger] string statusUr
         return response.StatusCode == HttpStatusCode.OK;
     }
 }
+```
+
+#### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+
+```javascript
+const df = require("durable-functions");
+const moment = require("moment");
+
+module.exports = df.orchestrator(function*(context) {
+    // Do some work...
+
+    // Call a remote orchestration
+    const statusUrl = yield context.df.callActivity("StartRemoteOrchestration", "OrchestratorB");
+
+    // Wait for the remote orchestration to complete
+    while (true) {
+        const isComplete = yield context.df.callActivity("CheckIsComplete", statusUrl);
+        if (isComplete) {
+            break;
+        }
+
+        const waitTime = moment(context.df.currentUtcDateTime).add(1, "m").toDate();
+        yield context.df.createTimer(waitTime);
+    }
+
+    // B is done. Now go do more work...
+});
+```
+
+```javascript
+const request = require("request-promise-native");
+
+module.exports = async function(context, orchestratorName) {
+    const options = {
+        method: "POST",
+        uri: `https://appB.azurewebsites.net/orchestrations/${orchestratorName}`,
+        body: ""
+    };
+
+    const statusUrl = await request(options);
+    return statusUrl;
+};
+```
+
+```javascript
+const request = require("request-promise-native");
+
+module.exports = async function(context, statusUrl) {
+    const options = {
+        method: "GET",
+        uri: statusUrl,
+        resolveWithFullResponse: true,
+    };
+
+    const response = await request(options);
+    // 200 = Complete, 202 = Running
+    return response.statusCode === 200;
+};
 ```
 
 ## <a name="next-steps"></a>次の手順

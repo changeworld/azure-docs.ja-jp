@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 18041c95405614768845399f92efac229db53b20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ff8f5c51f17375208fdb32e521bfc85ee3f0c77
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250732"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880218"
 ---
-# <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso の移行: オンプレミス アプリを Azure VM および SQL Server AlwaysOn 可用性グループにリホストする
+# <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso の移行: Azure VM および SQL Server AlwaysOn 可用性グループでオンプレミス アプリをリホストする
 
 この記事では、Contoso が SmartHotel360 アプリを Azure で再ホストする方法について説明します。 アプリのフロントエンド VM を Azure VM、アプリのデータベースを Azure SQL Server VM に移行し、SQL Server AlwaysOn 可能性グループを含む Windows Server フェールオーバー クラスターで実行するようにします。
 
@@ -29,12 +29,12 @@ ms.locfileid: "51250732"
 [記事 4: Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行します。 アプリ データベースの Azure SQL Database Managed Instance への移行には、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用します。 | 使用可能   
 [記事 5: Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
 記事 6: Azure VM および SQL Server AlwaysOn 可用性グループでのアプリのリホスト | Contoso が SmartHotel360 アプリを移行します。 Contoso は、Site Recovery を使用してアプリの VM を移行します。 Contoso は、Database Migration Service を使用して、AlwaysOn 可用性グループで保護されている SQL Server クラスターにアプリのデータベースを移行します。 | この記事の内容は次のとおりです。
-[記事 7: Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Azure Site Recovery を使用して Azure VM への Linux osTicket アプリのリフトアンドシフト移行を行います | 使用可能
+[記事 7: Azure VM での Linux アプリのリホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Azure Site Recovery を使用して Azure VM への Linux osTicket アプリのリフトアンドシフト移行を行います | 使用可能
 [記事 8: Azure VM および Azure MySQL Server での Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Azure Site Recovery を使用して Linux osTicket アプリを Azure VM に移行する方法、および MySQL Workbench を使用してアプリのデータベースを Azure MySQL Server インスタンスに移行します。 | 使用可能
 [記事 9: Azure Web Apps および Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能
-[記事 10: Azure Web Apps と Azure MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Azure Traffic Manager を使用し、その Linux osTicket アプリを、複数の Azure リージョンの Azure Web アプリに移行します。この Azure Web アプリは、継続的デリバリーを目的として GitHub と統合されます。 Contoso は、アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | 使用可能 
+[記事 10: Azure Web Apps および Azure MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Azure Traffic Manager を使用し、その Linux osTicket アプリを、複数の Azure リージョンの Azure Web アプリに移行します。この Azure Web アプリは、継続的デリバリーを目的として GitHub と統合されます。 Contoso は、アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | 使用可能 
 [記事 11: Azure DevOps Services での TFS のリファクター](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
-[記事 12: Azure コンテナーと Azure SQL データベースでのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | 使用可能
+[記事 12: Azure コンテナーおよび Azure SQL Database でのアプリのリアーキテクト](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | 使用可能
 [記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。 | 使用可能
 [記事 14: Azure への移行のスケーリング](contoso-migration-scale.md) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | 使用可能
 
@@ -45,10 +45,10 @@ ms.locfileid: "51250732"
 
 IT リーダーシップ チームは、ビジネス パートナーと密接に連絡を取り合い、彼らがこの移行で何を達成しようとしているのかを理解しました。
 
-- **ビジネスの成長への対応**: Contoso は成長を続けています。そのため、オンプレミス システムとインフラストラクチャに対する負荷が高まっています。
-- **効率化**: Contoso は不要な手順を取り除き、開発者とユーザーのプロセスを効率化する必要があります。  ビジネス部門は IT に対して、時間やコストを無駄にせず、迅速に作業を行ってもらう必要があります。たとえば、顧客の要求に対して、素早く対応する必要があります。
-- **敏捷性の強化**: Contoso IT は、ビジネス部門の要求に対して、対応力を向上させる必要があります。 また、グローバル経済で成功を収めるために、市場の変化に対して、より迅速な対応ができる必要があります。  ビジネスの妨げになったり、ビジネスの機会を壊すようなことがあってはなりません。
-- **拡張性**: ビジネスが順調に成長していく中で、Contoso IT は、同じペースで拡張可能なシステムを提供する必要があります。
+- **ビジネスの成長への対応**: Contoso は成長を続けています。そのため、オンプレミスのシステムとインフラストラクチャに負荷がかかっています。
+- **効率化**: Contoso では、不要な手順を取り除き、開発者とユーザーのプロセスを効率化する必要があります。  ビジネス部門は IT に対して、時間やコストを無駄にせず、迅速に作業を行ってもらう必要があります。これは、例えば、顧客の要求に素早く対応するためです。
+- **俊敏性の向上**: Contoso IT は、ビジネス部門のニーズに対する対応力を高める必要があります。 また、グローバル経済で成功を収めるために、市場の変化に対して、より迅速な対応ができる必要があります。  ビジネスの妨げになったり、ビジネスの機会を壊すようなことがあってはなりません。
+- **スケール**:ビジネスが順調に成長していく中で、Contoso IT は、同じペースで拡張できるシステムを提供する必要があります。
 
 ## <a name="migration-goals"></a>移行の目標
 
@@ -155,13 +155,13 @@ Contoso が移行を実行する方法を次に示します。
 > * **ステップ 1: クラスターを準備する**: 2 つの SQL Server VM ノードを Azure にデプロイするためのクラスターを作成します。
 > * **ステップ 2: クラスターをデプロイして設定する**: Azure SQL Server クラスターを準備します。  データベースは、ここで事前に作成しておいたクラスターに移行されます。
 > * **ステップ 3: ロード バランサーをデプロイする**: 複数の SQL Server ノードにトラフィックの負荷を分散するロード バランサーをデプロイします。
-> * **ステップ 4: Site Recovery 用に Azure を準備する**: レプリケートされたデータを保持するための Azure ストレージ アカウントと Recovery Services コンテナーを作成します。 
-> * **ステップ 5: Site Recovery 用にオンプレミス VMware を準備する**: VM を検出し、エージェントをインストールするためのアカウントを準備します。 移行後にユーザーが Azure VM に接続できるように、オンプレミスの VM を準備します。
-> * **ステップ 6: VM をレプリケートする**: Azure への VM のレプリケーションを有効にします。
+> * **ステップ 4: Site Recovery 用に Azure を準備する**: レプリケートされたデータを保持するための Azure ストレージ アカウントと、Recovery Services コンテナーを作成します。 
+> * **ステップ 5: Site Recovery 用にオンプレミスの VMware を準備する**: VM を検出し、エージェントをインストールするためのアカウントを準備します。 移行後にユーザーが Azure VM に接続できるように、オンプレミスの VM を準備します。
+> * **ステップ 6: VM をレプリケートする**: Azure への VM レプリケーションを有効にします。
 > * **ステップ 7: DMA をインストールする**: Database Migration Assistant をダウンロードしてインストールします。
-> * **ステップ 7: DMA でデータベースを移行する**: Azure にデータベースを移行します。
-> * **ステップ 9: データベースを保護する**: クラスターの Always On 可用性グループを作成します。
-> * **ステップ 10: Web アプリの VM を移行する**: テスト フェールオーバーを実行して、すべて想定どおりに動作していることを確認します。 その後、Azure への完全なフェールオーバーを実行します。 
+> * **ステップ 7: DMA を使用してデータベースを移行する**: データベースを Azure に移行します。
+> * **ステップ 9: データベースを保護する**: クラスターの AlwaysOn 可用性グループを作成します。
+> * **ステップ 10: Web アプリ VM を移行する**: テスト フェールオーバーを実行して、すべて想定どおりに動作していることを確認します。 その後、Azure への完全なフェールオーバーを実行します。 
 
 
 ## <a name="step-1-prepare-a-sql-server-alwayson-availability-group-cluster"></a>ステップ 1: SQL Server AlwaysOn 可用性グループ クラスターを準備する
@@ -174,7 +174,7 @@ Contoso の管理者は、クラスターを以下のように設定します。
 
 2. **仮想マシンの作成ウィザード** > **[基本]** で、次のように構成します。
 
-    - VM の名前: **SQLAOG1** および **SQLAOG2**
+    - VM の名前: **SQLAOG1** および **SQLAOG2**。
     - マシンは Bus Critical であるため、VM ディスクの種類について SSD を有効にします。
     - コンピューターの資格情報を指定します。
     - VM を、米国東部 2 プライマリ リージョンおよび ContosoRG リソース グループにデプロイします。
@@ -186,7 +186,7 @@ Contoso の管理者は、クラスターを以下のように設定します。
     - 米国東部 2 プライマリ リージョン (**VNET-PROD-EUS2**) の運用ネットワーク、データベース サブネット (**PROD-DB-EUS2**) にマシンを配置します。
     - 2 つの障害ドメインと 5 つの更新ドメインを含む新しい可用性セット **SQLAOGAVSET** を作成します。
 
-    ![SQL VM](media/contoso-migration-rehost-vm-sql-ag/sql-vm-settings.png)
+      ![SQL VM](media/contoso-migration-rehost-vm-sql-ag/sql-vm-settings.png)
 
 4. **[SQL Server の設定]** で、SQL 接続をデフォルト ポート 1433 上の仮想ネットワーク (プライベート) に制限します。 認証については、オンサイトで使用するのと同じ資格情報 (**contosoadmin**) を使用します。
 
@@ -235,11 +235,11 @@ Contoso の管理者は、次のようにストレージ アカウントを作�
 
 ![スナップショット](media/contoso-migration-rehost-vm-sql-ag/snapshot.png)
 
-2. 次に、Windows フェールオーバー クラスターを作成するためにまとめたスクリプトを実行します。
+1. 次に、Windows フェールオーバー クラスターを作成するためにまとめたスクリプトを実行します。
 
     ![クラスターの作成](media/contoso-migration-rehost-vm-sql-ag/create-cluster1.png)
 
-3. クラスターを作成したら、VM がクラスター ノードとして表示されることを確認します。
+2. クラスターを作成したら、VM がクラスター ノードとして表示されることを確認します。
 
      ![クラスターの作成](media/contoso-migration-rehost-vm-sql-ag/create-cluster2.png)
 
@@ -277,7 +277,7 @@ AlwaysOn を有効にすると、Contoso は SmartHotel360 データベースを
 
 次のようにロード バランサーを作成します。
 
-1. Azure Portal で **[ネットワーク]** > **[ロード バランサー]** の順に選択し、新しい内部ロード バランサー **ILB-PROD-DB-EUS2-SQLAOG** を設定します。
+1. Azure portal で **[ネットワーク]** > **[ロード バランサー]** に移動し、新しい内部ロード バランサー **ILB-PROD-DB-EUS2-SQLAOG** を設定します。
 2. 運用ネットワーク **VNET-PROD-EUS2**、データベース サブネット **PROD-DB-EUS2** にロード バランサーを配置します。
 3. 静的 IP アドレス 10.245.40.100 を割り当てます。
 4. ロード バランサーをネットワークの要素としてネットワーク リソース グループ **ContosoNetworkingRG** にデプロイします。
@@ -290,7 +290,7 @@ AlwaysOn を有効にすると、Contoso は SmartHotel360 データベースを
 
 Contoso の管理者は、クラスターの VM にトラフィックを分散させるために、ロード バランサーからネットワーク トラフィックを受け取る VM の NIC の IP アドレスを含むバックエンド アドレス プールを設定します。
 
-1. Contoso は、ポータルのロード バランサー設定にバックエンド プール **ILB-PROD-DB-EUS-SQLAOG-BEPOOL** を追加します。
+1. ポータルのロード バランサー設定で、バックエンド プール **ILB-PROD-DB-EUS-SQLAOG-BEPOOL** を追加します。
 2. このプールには可用性セット SQLAOGAVSET を関連付けます。 セット内の VM (**SQLAOG1** および **SQLAOG2**) がプールに追加されます。
 
     ![バックエンド プール](media/contoso-migration-rehost-vm-sql-ag/backend-pool.png)
@@ -301,7 +301,7 @@ Contoso の管理者は正常性プローブを作成して、ロード バラ�
 
 次のようにプローブを作成します。 
 
-1. Contoso は、ポータルのロード バランサー設定で正常性プローブ **SQLAlwaysOnEndPointProbe** を作成します。
+1. ポータルのロード バランサー設定で、正常性プローブ **SQLAlwaysOnEndPointProbe** を作成します。
 2. TCP ポート 59999 上で VM を監視するようにプローブを設定します。
 3. プローブの間隔は 5 秒、しきい値は 2 に設定します。 プローブが 2 回失敗すると、VM が異常と見なされます。
 
@@ -317,7 +317,7 @@ Contoso の管理者は正常性プローブを作成して、ロード バラ�
 
 次のように規則を作成します。
 
-1. ポータルのロード バランサー設定に、新しい負荷分散規則 **SQLAlwaysOnEndPointListener** を追加します。
+1. ポータルのロード バランサー設定で、新しい負荷分散規則 **SQLAlwaysOnEndPointListener** を追加します。
 2. フロントエンド リスナーが TCP 1433 に着信する SQL クライアント トラフィックを受信するように設定します。
 3. トラフィックのルーティング先のバックエンド プールと、VM がトラフィックをリッスンするポートを指定します。
 4. [フローティング IP (ダイレクト サーバー リターン)] を有効にします。 これは SQL AlwaysOn では常に必要です。
@@ -351,7 +351,7 @@ Contoso の管理者は、これらを次のように設定します。
     - 標準ストレージと LRS レプリケーション付きの汎用アカウントを使用します。
     - アカウントは、コンテナーと同じリージョンにある必要があります。
 
-    ![Site Recovery ストレージ](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
+      ![Site Recovery ストレージ](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
 
 3. ネットワークとストレージ アカウントが用意できたので、Recovery Services コンテナー (**ContosoMigrationVault**) を作成し、それを米国東部 2 プライマリ リージョンの **ContosoFailoverRG** リソース グループ内に配置します。
 
@@ -362,7 +362,7 @@ Contoso の管理者は、これらを次のように設定します。
 Site Recovery のために Azure を設定することについての[説明を参照します](https://docs.microsoft.com/azure/site-recovery/tutorial-prepare-azure)。
 
 
-## <a name="step-5-prepare-on-premises-vmware-for-site-recovery"></a>ステップ 5: Site Recovery のためにオンプレミスの VMware を準備する
+## <a name="step-5-prepare-on-premises-vmware-for-site-recovery"></a>ステップ 5: Site Recovery 用にオンプレミスの VMware を準備する
 
 Contoso の管理者は、オンプレミスで以下を準備します。
 
@@ -403,15 +403,15 @@ Contoso は、フェールオーバー後に Azure VM に接続することを�
 
 1. インターネットでアクセスする場合:
 
- - フェールオーバーの前に、オンプレミスの VM で RDP を有効にします。
- - **パブリック** プロファイルに TCP 規則と UDP 規則が追加されていることを確認します。
- - **[Windows ファイアウォール]** > **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。
+   - フェールオーバーの前に、オンプレミスの VM で RDP を有効にします。
+   - **パブリック** プロファイルに TCP 規則と UDP 規則が追加されていることを確認します。
+   - **[Windows ファイアウォール]** > **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。
  
 2. サイト間 VPN でアクセスする場合:
 
- - オンプレミスのマシンで RDP を有効にします。
- - **[Windows ファイアウォール]** -> **[Allowed apps and features]\(許可されたアプリと機能\)** で、**ドメイン ネットワークとプライベート ネットワーク**での RDP を許可します。
- - オンプレミスの VM 上のオペレーティング システムの SAN ポリシーを **[OnlineAll]** に設定します。
+   - オンプレミスのマシンで RDP を有効にします。
+   - **[Windows ファイアウォール]** -> **[Allowed apps and features]\(許可されたアプリと機能\)** で、**ドメイン ネットワークとプライベート ネットワーク**での RDP を許可します。
+   - オンプレミスの VM 上のオペレーティング システムの SAN ポリシーを **[OnlineAll]** に設定します。
 
 さらに、フェールオーバーを実行するときに、以下を確認する必要があります。
 
@@ -425,7 +425,7 @@ Contoso は、フェールオーバー後に Azure VM に接続することを�
 - モビリティ サービスのプッシュ インストールのためにアカウントを作成することについての[説明を参照します](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-mobility-service-installation)。
 
 
-## <a name="step-6-replicate-the-on-premises-vms-to-azure-with-site-recovery"></a>手順 6: Site Recovery を使用して、オンプレミス VM を Azure にレプリケートする
+## <a name="step-6-replicate-the-on-premises-vms-to-azure-with-site-recovery"></a>ステップ 6: Site Recovery を使用して、オンプレミス VM を Azure にレプリケートする
 
 Contoso の管理者は、Azure への移行を実行する前に、レプリケーションを設定して有効にする必要があります。
 
@@ -496,7 +496,7 @@ Contoso の管理者は、これらのステップを以下のように実行し
 
 1. **[インフラストラクチャの準備]** > **[レプリケーション設定]** > **[レプリケーション ポリシー]** >  **[作成と関連付け]** で、ポリシー **ContosoMigrationPolicy** を作成します。
 2. 以下の既定の設定を使用します。
-    - **[RPO しきい値]**: 既定値は 60 分です。 この値で、復旧ポイントの作成頻度を指定します。 継続的なレプリケーションがこの制限を超えると、アラートが生成されます。
+    - **[RPO しきい値]**。既定値は 60 分です。 この値で、復旧ポイントの作成頻度を指定します。 継続的なレプリケーションがこの制限を超えると、アラートが生成されます。
     - **[復旧ポイントのリテンション期間]**。 既定値は 24 時間です。 この値は、各復旧ポイントのリテンション期間の長さを指定します。 レプリケートされた VM は、期間内の任意の時点に復旧できます。
     - **[アプリ整合性スナップショットの頻度]**。 既定値は 1 時間です。 この値は、アプリケーション整合性スナップショットが作成される頻度を指定します。
  
@@ -546,7 +546,7 @@ Contoso の管理者は、DMA を使用して SmartHotel360 データベース�
 2. VM 上でセットアップ (DownloadMigrationAssistant.msi) を実行します。
 3. **[完了]** ページで、ウィザードを終了する前に **[Microsoft Data Migration Assistant の起動]** を選択します。
 
-## <a name="step-8-migrate-the-database-with-dma"></a>手順 8: DMA を使用してデータベースを移行する
+## <a name="step-8-migrate-the-database-with-dma"></a>ステップ 8: DMA を使用してデータベースを移行する
 
 1. DMA で、新しい移行 **SmartHotel** を実行します。
 2. **[Target server type]\(対象サーバーの種類\)** で **[Azure Virtual Machines 上の SQL Server]** を選択します。 
@@ -619,7 +619,7 @@ SQL デプロイを設定する最後のステップとして、Contoso の管�
 - SAS の作成および使用については、[こちら](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)をご覧ください。
 
 
-## <a name="step-8-migrate-the-vm-with-site-recovery"></a>ステップ 8: Site Recovery で VM を移行する
+## <a name="step-8-migrate-the-vm-with-site-recovery"></a>ステップ 8: Site Recovery を使用して VM を移行する
 
 Contoso の管理者は、簡単なテスト フェールオーバーを実行してから VM を移行します。
 
@@ -704,10 +704,10 @@ VM に関するセキュリティの実務の[詳細については、こちら]
 ## <a name="bcdr"></a>BCDR
 
  事業継続とディザスター リカバリー (BCDR) のために、Contoso は次のアクションを実施します。
- - データの安全性を確保する。Contoso は、Azure Backup サービスを使用して、WEBVM、SQLAOG1、SQLAOG2 の各 VM 上のデータをバックアップします。 [詳細情報]
+ - データの保護: Contoso は、Azure Backup サービスを使用して、WEBVM、SQLAOG1、SQLAOG2 の各 VM 上のデータをバックアップします。 [詳細情報]
 (https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 - また、Contoso は、Azure Storage を使用して SQL Server を直接 Blob Storage にバックアップする方法を把握する必要があります。 [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore)。
-- アプリの稼働状態を維持する。Contoso は、Site Recovery を使用して、Azure 内のアプリの VM をセカンダリ リージョンにレプリケートします。 [詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)。
+- アプリの稼働状態の維持: Contoso は、Site Recovery を使用して、Azure 内のアプリ VM をセカンダリ リージョンにレプリケートします。 [詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)。
 
 
 ### <a name="licensing-and-cost-optimization"></a>ライセンスとコストの最適化

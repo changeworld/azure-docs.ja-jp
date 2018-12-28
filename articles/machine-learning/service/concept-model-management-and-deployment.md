@@ -1,20 +1,22 @@
 ---
-title: Azure Machine Learning service でモデルを管理してデプロイする
+title: ML モデルを管理、登録、再デプロイ、および監視する
+titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning service を使用して、モデルをデプロイ、管理、および監視して、継続的に向上させる方法を説明します。 トレーニングしたモデルを、ローカル コンピューターまたは他のソースから Azure Machine Learning service を使用してデプロイできます。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: hjerez
-ms.author: hjerez
+author: chris-lauren
+ms.author: clauren
 ms.date: 09/24/2018
-ms.openlocfilehash: b09ef259d73744612c41adc4fc40ea0235da9bcb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.custom: seodec18
+ms.openlocfilehash: 25f149ad4df43a7e5b443d6abd72be91072cb47f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885069"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250207"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルを管理、デプロイ、および監視する
 
@@ -33,14 +35,14 @@ ms.locfileid: "48885069"
 [ !["Azure Machine Learning の継続的インテグレーション/継続的デプロイ (CI/CD) サイクル"](media/concept-model-management-and-deployment/model-ci-cd.png) ](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 
-## <a name="step-1-register-model"></a>手順 1: モデルを登録する
+## <a name="step-1-register-model"></a>手順 1:モデルの登録
 
 モデル レジストリにより、Azure Machine Learning service ワークスペース内のすべてのモデルが追跡されます。
 モデルは、名前とバージョンによって識別されます。 モデルを登録するたびに、既存のモデルと同じ名前で登録され、レジストリによってバージョンがインクリメントされます。 モデルの検索時に使用できる追加のメタデータ タグを、登録中に指定することもできます。
 
 イメージによって使用されているモデルを削除することはできません。
 
-## <a name="step-2-register-image"></a>手順 2: イメージを登録する
+## <a name="step-2-register-image"></a>手順 2:イメージを登録する
 
 イメージによって信頼性の高いモデル デプロイと、そのモデルの使用に必要なすべてのコンポーネントが準備されます。 イメージには次の項目が含まれます。
 
@@ -56,7 +58,7 @@ Azure Machine Learning では、最もよく使用されているフレームワ
 ワークスペースの作成時に、そのワークスペースで使用される他の Azure リソースもいくつか作成されています。
 イメージの作成に使用されるオブジェクトはすべて、お使いのワークスペースの Azure ストレージ アカウントに格納されています。 イメージは Azure Container Registry で作成され、格納されています。 イメージを作成するときに、追加のメタデータ タグを指定できます。このタグもイメージ レジストリによって格納されます。このタグにクエリを実行すると、ご自身のイメージを検索できます。
 
-## <a name="step-3-deploy-image"></a>手順 3: イメージをデプロイする
+## <a name="step-3-deploy-image"></a>手順 3:イメージをデプロイする
 
 登録済みのイメージを、クラウドまたはエッジ デバイスにデプロイできます。 デプロイ プロセスでは、お使いのモデルの監視、負荷分散、および自動スケーリングに必要なリソースがすべて作成されます。 デプロイされたサービスへのアクセスを証明書ベースの認証で保護するには、デプロイ中にセキュリティ アセットを指定します。 既存のデプロイをアップグレードして、新しいイメージを使用することもできます。
 
@@ -73,7 +75,7 @@ Web サービスのデプロイも検索可能です。 たとえば、特定の
 
 ご自身のサービスがデプロイされると、推論要求が自動的に負荷分散され、クラスターは、オンデマンドでスパイクに対応できるようにスケーリングされます。 お使いのワークスペースに関連付けられている Azure Application Insights サービスに、[お使いのサービスに関するテレメトリをキャプチャできます](how-to-enable-app-insights.md)。
 
-## <a name="step-4-monitor-models-and-collect-data"></a>手順 4: モデルを監視して、データを収集する
+## <a name="step-4-monitor-models-and-collect-data"></a>手順 4:モデルを監視して、データを収集する
 
 お使いのモデルからの入力、出力、およびその他の関連データを監視できるように、モデルのログ記録とデータ キャプチャ用の SDK を利用できます。 データは、ご自身のワークスペースの Azure Storage アカウントに BLOB として格納されています。
 

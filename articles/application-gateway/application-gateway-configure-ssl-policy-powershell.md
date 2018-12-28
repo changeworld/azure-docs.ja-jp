@@ -1,23 +1,19 @@
 ---
 title: Azure Application Gateway で SSL ポリシーを構成する - PowerShell
-description: このページでは、Azure Application Gateway で SSL ポリシーを構成する方法を説明します
-documentationcenter: na
+description: この記事では、Azure Application Gateway で SSL ポリシーを構成する方法を説明します
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/27/2018
+ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: 4c9ca5cee14603fb39115defc574aa7e956886ba
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7afa628ea455aa28f1717de8da66b631baeee4f1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30232138"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870455"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する
 
@@ -119,7 +115,8 @@ CipherSuites:
 
 > [!IMPORTANT]
 > カスタム SSL ポリシーを構成するときは、次の一覧から少なくとも 1 つの暗号スイートを選択する必要があります。 アプリケーション ゲートウェイでは、バックエンドの管理に RSA SHA256 暗号スイートを使用します。
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 > * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 > * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 > * TLS_RSA_WITH_AES_128_GCM_SHA256
@@ -142,7 +139,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>定義済み SSL ポリシーを使用したアプリケーション ゲートウェイの作成
 
-定義済みの SSL ポリシーを構成する場合は、パラメーター PolicyType、PolicyName、および ApplicationGateway を渡します。 他のパラメーターを渡そうとすると、アプリケーション ゲートウェイを作成または更新するときにエラーが発生します。
+定義済み SSL ポリシーを構成する場合は、パラメーター PolicyType、PolicyName、および ApplicationGateway を渡します。 他のパラメーターを渡そうとすると、アプリケーション ゲートウェイを作成または更新するときにエラーが発生します。
 
 次の例では、定義済み SSL ポリシーを使用して、新しいアプリケーション ゲートウェイを作成します。
 
@@ -199,7 +196,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName $rg.Re
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>定義済み SSL ポリシーを使用した既存のアプリケーション ゲートウェイの更新
 
-カスタム SSL ポリシーを設定するには、パラメーター **PolicyType**、**MinProtocolVersion**、**CipherSuite**、および **ApplicationGateway** を渡します。 定義済みの SSL ポリシーを設定するには、パラメーター **PolicyType**、**PolicyName**、および **ApplicationGateway** を渡します。 他のパラメーターを渡そうとすると、アプリケーション ゲートウェイを作成または更新するときにエラーが発生します。
+カスタム SSL ポリシーを設定するには、パラメーター**PolicyType**、**MinProtocolVersion**、**CipherSuite**、および **ApplicationGateway** を渡します。 定義済み SSL ポリシーを設定するには、パラメーター**PolicyType**、**PolicyName**、および **ApplicationGateway** を渡します。 他のパラメーターを渡そうとすると、アプリケーション ゲートウェイを作成または更新するときにエラーが発生します。
 
 次の例には、カスタム ポリシーと定義済みのポリシーの両方のコード サンプルが含まれます。 使用するポリシーのコメントを解除してください。
 

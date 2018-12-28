@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: c154b0124acb5bee93211adb611356555526d2c0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9c638ed9132612db7b82168d3a57057aba9b2d60
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996215"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870336"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>現実的なシナリオに対応した予測メンテナンス
 
@@ -98,13 +98,13 @@ az ml notebook start
 
 ## <a name="data-description"></a>データの説明
 
-[シミュレートされたデータ](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data)は、5 個のコンマ区切り値 (.csv) ファイルで構成されます。 データ セットに関する詳細な説明を取得するには、次のリンクを使用してください。
+[シミュレートされたデータ](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide)は、次の [5 個のコンマ区切り値 (.csv) ファイル](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data)で構成されます。
 
-* [マシン](https://pdmmodelingguide.blob.core.windows.net/pdmdata/machines.csv): 各コンピューターを区別するための特長 (経過時間やモデルなど)。
-* [エラー](https://pdmmodelingguide.blob.core.windows.net/pdmdata/errors.csv): エラー ログには、マシンが動作したままの状態でスローされる重要ではないエラーが含まれています。 これらのエラーは障害と見なされませんが、将来的な障害イベントの予測になる可能性があります。 テレメトリ データは、1 時間間隔で収集されるため、エラーの日時値は最も近い時刻に丸められます。
-* [メンテナンス](https://pdmmodelingguide.blob.core.windows.net/pdmdata/maint.csv): メンテナンス ログには、スケジュールされたメンテナンス レコードとスケジュールされていないメンテナンス レコードの両方が含まれています。 スケジュールされたメンテナンスは、コンポーネントの定期検査に対応します。 機械的な障害やその他のパフォーマンス低下によって、予定外のメンテナンスが発生することもあります。 テレメトリ データは、1 時間間隔で収集されるため、メンテナンスの日時値は最も近い時刻に丸められます。
-* [テレメトリ](https://pdmmodelingguide.blob.core.windows.net/pdmdata/telemetry.csv): テレメトリ データは、各マシン内の複数のセンサーからの時系列の測定で構成されます。 センサーの値の 1 時間の平均を計算して、このデータがログに記録されます。
-* [障害](https://pdmmodelingguide.blob.core.windows.net/pdmdata/failures.csv): 障害は、メンテナンス ログ内のコンポーネントの置き換えに対応します。 各レコードには、メンテナンス ID、コンポーネントの種類、置き換えの日時が含まれています。 これらのレコードは、モデルが予測しようとする機械学習ラベルを作成するために使用されます。
+* [マシン](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/machines.csv):各マシンを区別するための特長 (経過時間やモデルなど)。
+* [エラー](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/errors.csv):エラー ログには、マシンが動作したままの状態でスローされる重要ではないエラーが含まれています。 これらのエラーは障害と見なされませんが、将来的な障害イベントの予測になる可能性があります。 テレメトリ データは、1 時間間隔で収集されるため、エラーの日時値は最も近い時刻に丸められます。
+* [メンテナンス](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/maint.csv):メンテナンス ログには、スケジュールされたメンテナンス レコードとスケジュールされていないメンテナンス レコードの両方が含まれています。 スケジュールされたメンテナンスは、コンポーネントの定期検査に対応します。 機械的な障害やその他のパフォーマンス低下によって、予定外のメンテナンスが発生することもあります。 テレメトリ データは、1 時間間隔で収集されるため、メンテナンスの日時値は最も近い時刻に丸められます。
+* [テレメトリ](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/telemetry.csv):テレメトリ データは、各マシン内の複数のセンサーからの時系列の測定で構成されます。 センサーの値の 1 時間の平均を計算して、このデータがログに記録されます。
+* [障害](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/failures.csv):障害は、メンテナンス ログ内のコンポーネントの置き換えに対応します。 各レコードには、メンテナンス ID、コンポーネントの種類、置き換えの日時が含まれています。 これらのレコードは、モデルが予測しようとする機械学習ラベルを作成するために使用されます。
 
 GitHub リポジトリの生データ セットをダウンロードし、この分析のために PySpark データセットを作成するには、Code フォルダーにある[データ インジェスト](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb) Jupyter Notebook シナリオを参照してください。
 
@@ -113,16 +113,16 @@ GitHub リポジトリの生データ セットをダウンロードし、この
 
 [Readme](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/README.md) ファイルは、ワークフロー (データの準備、モデルの構築、運用環境用のソリューションのデプロイ) の概要を示します。 ワークフローの各手順は、リポジトリ内の [Code](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/tree/master/Code) フォルダーにある Jupyter Notebook にカプセル化されます。   
 
-[Code\1_data_ingestion.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb): このノートブックは 5 つの入力 .csv ファイルをダウンロードし、いくつかの事前データ クリーンアップと視覚化を実行します。 このノートブックは、各データ セットを PySpark 形式に変換し、特徴エンジニアリング ノートブックで使用できるように Azure BLOB コンテナーに保存します。
+[Code\1_data_ingestion.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb):このノートブックは 5 つの入力 .csv ファイルをダウンロードし、いくつかの事前データ クリーンアップと視覚化を実行します。 このノートブックは、各データ セットを PySpark 形式に変換し、特徴エンジニアリング ノートブックで使用できるように Azure BLOB コンテナーに保存します。
 
-[Code\2_feature_engineering.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/2_feature_engineering.ipynb): モデルの特徴は、テレメトリ、エラー、およびメンテナンス データに対する標準の時系列アプローチを使用して、Azure BLOB Storage の生データセットから構築されます。 障害に関連するコンポーネントの置き換えは、障害が発生したコンポーネントを記述するモデルのラベルを作成するために使用されます。 ラベル付きの特徴データは、モデル構築 Notebook のために Azure BLOB に保存されます。
+[Code\2_feature_engineering.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/2_feature_engineering.ipynb):モデルの特徴は、テレメトリ、エラー、およびメンテナンス データに対する標準の時系列アプローチを使用して、Azure Blob Storage の生データ セットから構築されます。 障害に関連するコンポーネントの置き換えは、障害が発生したコンポーネントを記述するモデルのラベルを作成するために使用されます。 ラベル付きの特徴データは、モデル構築 Notebook のために Azure BLOB に保存されます。
 
-[Code\3_model_building.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/3_model_building.ipynb): モデル構築 Notebook は、ラベル付きの特徴データ セットを使用し、データ セットを日時タイムスタンプと共にトレーニング データ セットと開発データ セットに分割します。 Notebook は pyspark.ml.classification モデルを使った実験として設定されます。 トレーニング データはベクター化されます。 ユーザーは、**DecisionTreeClassifier** または **RandomForestClassifier** のいずれかを使用して実験を行い、ハイパーパラ メーターを操作して、最もパフォーマンスの良いモデルを特定することができます。 パフォーマンスは、開発用のデータセットに対する測定統計情報を評価することによって判定されます。 これらの統計は、追跡のために Machine Learning Workbench の実行時画面に再び記録されます。 実行のたびに、ノートブックは、Jupyter Notebook カーネルを実行しているローカル ディスクに結果のモデルを保存します。 
+[Code\3_model_building.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/3_model_building.ipynb):モデル構築 Notebook は、ラベル付きの特徴データ セットを使用し、データ セットを日時タイムスタンプと共にトレーニング データ セットと開発データ セットに分割します。 Notebook は pyspark.ml.classification モデルを使った実験として設定されます。 トレーニング データはベクター化されます。 ユーザーは、**DecisionTreeClassifier** または **RandomForestClassifier** のいずれかを使用して実験を行い、ハイパーパラ メーターを操作して、最もパフォーマンスの良いモデルを特定することができます。 パフォーマンスは、開発用のデータセットに対する測定統計情報を評価することによって判定されます。 これらの統計は、追跡のために Machine Learning Workbench の実行時画面に再び記録されます。 実行のたびに、ノートブックは、Jupyter Notebook カーネルを実行しているローカル ディスクに結果のモデルを保存します。 
 
-[Code\4_operationalization.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/4_operationalization.ipynb): このノートブックは、ローカル (Jupyter Notebook カーネル) ディスクに保存された最後のモデルを使用して、モデルを Azure Web サービスにデプロイするためのコンポーネントを構築します。 完全な運用資産は、別の Azure BLOB コンテナーに格納されている o16n.zip ファイルに圧縮されています。 圧縮ファイルには、次のものが含まれます。
+[Code\4_operationalization.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/4_operationalization.ipynb):このノートブックは、ローカル (Jupyter Notebook カーネル) ディスクに保存された最後のモデルを使用して、モデルを Azure Web サービスにデプロイするためのコンポーネントを構築します。 完全な運用資産は、別の Azure BLOB コンテナーに格納されている o16n.zip ファイルに圧縮されています。 圧縮ファイルには、次のものが含まれます。
 
-* **service_schema.json**: デプロイ用のスキーマ定義ファイル。 
-* **pdmscore.py**: Azure Web サービスによって要求される **init()** 関数と **run()** 関数。
+* **service_schema.json**:デプロイ用のスキーマ定義ファイル。 
+* **pdmscore.py**:Azure Web サービスによって要求される **init()** 関数と **run()** 関数。
 * **pdmrfull.model**: モデル定義ディレクトリ。
     
 このノートブックは、デプロイのために運用資産をパッケージ化する前に、モデル定義を使用して関数をテストします。 デプロイの手順は、ノートブックの末尾に記載されています。

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: 前提条件とハードウェア |Microsoft Docs'
+title: Azure AD Connect:前提条件とハードウェア |Microsoft Docs
 description: このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 12/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5205d7797e7d45266a4f54b842ad56f353abc6d6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a36868e5bab64883036e0f93352bea5341ff7fe7
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252991"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384059"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -41,7 +41,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 
 ### <a name="on-premises-active-directory"></a>オンプレミスの Active Directory
 * AD スキーマのバージョンとフォレストの機能レベルは、Windows Server 2003 以降である必要があります。 ドメイン コントローラーは、スキーマとフォレスト レベルの要件を満たしていれば、任意のバージョンを実行できます。
-* **パスワード ライトバック**機能を使用する場合、ドメイン コントローラーが (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。 ドメイン コントローラーが 2008 (R2 より前のバージョン) にインストールされている場合は、[修正プログラム KB2386717](https://support.microsoft.com/kb/2386717) も適用する必要があります。
+* **パスワード ライトバック**機能を使用する場合、ドメイン コントローラーが Windows Server 2008 R2 以降にインストールされている必要があります。
 * Azure AD で使用されるドメイン コントローラーは、書き込み可能である必要があります。 RODC (読み取り専用ドメイン コントローラー) は**使用できません**。Azure AD Connect では、書き込みのリダイレクトを行いません。
 * "ドット形式" (名前にピリオド "." が含まれる) の NetBios 名を使用するオンプレミスのフォレスト/ドメインは**使用できません**。
 * [Active Directory のごみ箱を有効にする](how-to-connect-sync-recycle-bin.md)ことをお勧めします。
@@ -49,8 +49,8 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect サーバー
 * Small Business Server または 2019 より前の Windows Server Essentials には、Azure AD Connect をインストールできません (Windows Server Essentials 2019 はサポートされます)。 サーバーは Windows Server Standard 以上を使用する必要があります。
 * Azure AD Connect サーバーには、完全な GUI がインストールされている必要があります。 サーバー コアにインストールすることは**できません**。
-* Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。 このサーバーをドメイン コントローラーにすることができます。Express 設定を使用する場合はメンバー サーバーにすることもできます。 カスタム設定を使用する場合、サーバーはスタンドアロンにすることもでき、ドメインに参加する必要はありません。
-* Azure AD Connect を Windows Server 2008 または Windows Server 2008 R2 にインストールする場合は、Windows Update から最新の修正プログラムが適用されていることを確認してください。 修正プログラムが適用されていないサーバーでインストールを開始することはできません。
+* Azure AD Connect は、Windows Server 2008 R2 以降にインストールする必要があります。 このサーバーをドメイン コントローラーにすることができます。Express 設定を使用する場合はメンバー サーバーにすることもできます。 カスタム設定を使用する場合、サーバーはスタンドアロンにすることもでき、ドメインに参加する必要はありません。
+* Azure AD Connect を Windows Server 2008 R2 にインストールする場合は、Windows Update から最新の修正プログラムが適用されていることを確認してください。 修正プログラムが適用されていないサーバーでインストールを開始することはできません。
 * **パスワード同期**機能を使用する場合、Azure AD Connect サーバーが Windows Server 2008 R2 SP1 以降にインストールされている必要があります。
 * **グループ管理サービス アカウント**を使用する場合、Azure AD Connect サーバーが Windows Server 2012 以降にインストールされている必要があります。
 * Azure AD Connect サーバーには、[.NET Framework 4.5.1](#component-prerequisites) 以降と [Microsoft PowerShell 3.0](#component-prerequisites) 以降がインストールされている必要があります。
@@ -77,7 +77,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * お使いのイントラネット環境でファイアウォールを使用していて、Azure AD Connect サーバーとドメイン コントローラーの間でポートを開く必要がある場合の詳細については、[Azure AD Connect のポート](reference-connect-ports.md)に関する記事を参照してください。
 * アクセスできる URL をプロキシまたはファイアウォールが制限している場合は、「[Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL を開く必要があります。
   * ドイツで Microsoft Cloud を使用する場合、または Microsoft Azure Government クラウドを使用する場合は、 [Azure AD Connect 同期サービス インスタンスの考慮事項](reference-connect-instances.md) に関するページで URL を確認してください。
-* Azure AD Connect (バージョン 1.1.614.0 以降) では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.2 が使用されます。 基盤となるオペレーティング システムで TLS 1.2 が使用できない場合は、1 つ前のプロトコル (TLS 1.1 と TLS 1.0) に段階的にフォールバックされます。 たとえば Windows Server 2008 では TLS 1.1 も TLS 1.2 もサポートされないため、Windows Server 2008 上で動作する Azure AD Connect では TLS 1.0 が使用されます。
+* Azure AD Connect (バージョン 1.1.614.0 以降) では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.2 が使用されます。 基盤となるオペレーティング システムで TLS 1.2 が使用できない場合は、1 つ前のプロトコル (TLS 1.1 と TLS 1.0) に段階的にフォールバックされます。
 * バージョン 1.1.614.0 未満の Azure AD Connect では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.0 が使用されます。 TLS 1.2 に変更するには、「[Azure AD Connect 用に TLS 1.2 を有効にする](#enable-tls-12-for-azure-ad-connect)」の手順に従います。
 * 送信プロキシを使用してインターネットに接続する場合は、次の設定を **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** ファイルに追加して、インストール ウィザードと Azure AD Connect 同期がインターネットと Azure AD に接続できるようにする必要があります。 このテキストは、ファイルの末尾に入力する必要があります。 このコードの &lt;PROXYADRESS&gt; は実際のプロキシ IP アドレスまたはホスト名を表します。
 
@@ -113,7 +113,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 接続に問題が発生した場合は、[接続の問題に対するトラブルシューティング](tshoot-connect-connectivity.md)についてのページを参照してください。
 
 ### <a name="other"></a>その他
-* 省略可能: 同期を検証するテスト ユーザー アカウント。
+* 省略可能:同期を検証するテスト ユーザー アカウント。
 
 ## <a name="component-prerequisites"></a>コンポーネントの前提条件
 ### <a name="powershell-and-net-framework"></a>PowerShell と .NET Framework
@@ -122,17 +122,15 @@ Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存していま
 * Windows Server 2012R2
   * Microsoft PowerShell は既定でインストールされています。 操作は必要ありません。
   * .NET Framework 4.5.1 以降のリリースは、Windows Update によって提供されます。 コントロール パネルで、Windows Server に最新の更新プログラムがインストールされていることを確認します。
-* Windows Server 2008R2 と Windows Server 2012
+* Windows Server 2008 R2 および Windows Server 2012
   * Microsoft PowerShell の最新バージョンは、 **Microsoft ダウンロード センター**の [Windows Management Framework 4.0](https://www.microsoft.com/downloads)で入手できます。
   * .NET Framework 4.5.1 以降のリリースは、 [Microsoft ダウンロード センター](https://www.microsoft.com/downloads)で入手できます。
-* Windows Server 2008
-  * PowerShell の最新のサポート バージョンは、 **Microsoft ダウンロード センター**の [Windows Management Framework 3.0](https://www.microsoft.com/downloads)で入手できます。
-  * .NET Framework 4.5.1 以降のリリースは、 [Microsoft ダウンロード センター](https://www.microsoft.com/downloads)で入手できます。
+
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Azure AD Connect 用に TLS 1.2 を有効にする
 バージョン 1.1.614.0 未満の Azure AD Connect では、同期エンジン サーバーと Azure AD との間の通信の暗号化に既定で TLS 1.0 が使用されます。 これを変更するには、サーバーで TLS 1.2 を既定で使用するように .NET アプリケーションを構成します。 TLS 1.2 の詳細については、「[Microsoft セキュリティ アドバイザリ 2960358](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。
 
-1. Windows Server 2008 で TLS 1.2 を有効にすることはできません。 有効にするには、Windows Server 2008 R2 以降が必要です。 オペレーティング システムに .NET 4.5.1 修正プログラムがインストールされていることを確認してください。詳細については、「[Microsoft セキュリティ アドバイザリ 2960358](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。 既にこの修正プログラムやこれ以降のリリースをサーバーにインストールしている可能性があります。
+1. Windows Server 2008 R2 以降よりも前のバージョンでは TLS 1.2 を有効化できません。 オペレーティング システムに .NET 4.5.1 修正プログラムがインストールされていることを確認してください。詳細については、「[Microsoft セキュリティ アドバイザリ 2960358](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。 既にこの修正プログラムやこれ以降のリリースをサーバーにインストールしている可能性があります。
 2. Windows Server 2008 R2 を使用している場合は、TLS 1.2 が有効になっていることを確認してください。 Windows Server 2012 以降のバージョンのサーバーでは、TLS 1.2 が既に有効になっています。
    ```
    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
@@ -204,9 +202,9 @@ Azure AD Connect によって Azure AD Connect のインストール先にイン
 
 AD FS または Web アプリケーション サーバーを実行するコンピューターの最小要件を次に示します。
 
-* CPU: デュアル コア 1.6 GHz 以上
-* メモリ: 2 GB 以上
-* Azure VM: A2 構成またはそれ以上
+* CPU:デュアル コア 1.6 GHz 以上
+* メモリ:2 GB 以上
+* Azure VM:A2 構成またはそれ以上
 
 ## <a name="next-steps"></a>次の手順
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

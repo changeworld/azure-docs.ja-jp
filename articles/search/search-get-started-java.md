@@ -1,5 +1,5 @@
 ---
-title: Java での Azure Search の使用 | Microsoft Docs
+title: Java での Azure Search の使用 - Azure Search
 description: プログラミング言語として Java を使用して Azure でホスト型クラウド検索アプリケーションを作成する方法を説明します。
 services: search
 author: jj09
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
-ms.openlocfilehash: d1ca905d415eb8ab49c449a69707c56d5c717081
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec2018
+ms.openlocfilehash: d74c9c30932bd2db9059738c8dfbc21e4b1b046a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419301"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316972"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java での Azure Search の使用
 > [!div class="op_single_selector"]
@@ -51,7 +52,7 @@ ms.locfileid: "50419301"
 * SearchServiceHelper.java: 静的メソッドを提供するヘルパー クラスです
 * Document.java: データ モデルを提供します
 * config.properties: Search サービスの URL と API キーを設定します
-* pom.xml: Maven が依存します
+* pom.xml: Maven の依存関係です
 
 <a id="sub-2"></a>
 

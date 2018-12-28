@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory でユーザーのプロファイル情報を追加または更新する方法 | Microsoft Docs
-description: Azure Active Directory のユーザー プロファイルに、プロファイル画像、職種別情報、および一部の設定などの情報を追加する方法を学習します。
+title: ユーザーのプロファイル情報を追加または更新する - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory でのユーザーのプロファイルに画像やジョブの詳細などの情報を追加する手順。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: d4e2ebd88430cab1fe0734e342b1c9ba4a29af1b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 0e03d882df61755faf283aa67427beeec17c8c05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728948"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094731"
 ---
-# <a name="how-to-add-or-update-a-users-profile-information-using-azure-active-directory"></a>方法: Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する
+# <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する
 Azure Active Directory (Azure AD) を使用して、プロファイル画像、職種別情報、および一部の設定などのユーザー プロファイル情報を追加します。 新しいユーザーの追加方法については、[Azure Active Directory でユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページをご覧ください。
 
 ## <a name="add-or-change-profile-information"></a>ユーザー プロファイル情報の追加または変更

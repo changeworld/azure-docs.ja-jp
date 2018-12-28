@@ -1,11 +1,11 @@
 ---
-title: 従来の Web サービスの再トレーニング | Microsoft Docs
+title: 従来の Web サービスの再トレーニングを行う - Azure Machine Learning Studio | Microsoft Docs
 description: Azure Machine Learning でプログラムによるモデルの再トレーニングをしてWeb サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: e36e1961-9e8b-4801-80ef-46d80b140452
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 3de17375670d7697a298023dc79ffc2418cb7e42
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a012798f71b0e3c14ab9982fd41bce6f0fa098e5
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963770"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257609"
 ---
-# <a name="retrain-a-classic-web-service"></a>従来の Web サービスの再トレーニングを行う
+# <a name="retrain-a-classic-azure-machine-learning-studio-web-service"></a>従来の Azure Machine Learning Studio の Web サービスの再トレーニング
 デプロイした予測 Web サービスは、既定のスコア付けエンドポイントです。 既定のエンドポイントは、元のトレーニングおよびスコア付け実験との同期が維持されるため、既定のエンドポイントのトレーニング済みモデルは置き換えることができません。 Web サービスを再トレーニングするには、Web サービスに新しいエンドポイントを追加する必要があります。 
 
 ## <a name="prerequisites"></a>前提条件

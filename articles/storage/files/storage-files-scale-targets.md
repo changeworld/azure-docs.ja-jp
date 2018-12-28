@@ -8,16 +8,15 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 57929b23e437e17ceb90196e3cfa59c16d518f5a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: af738b655b4070da1cfe7555daff82c0e40ff91c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527439"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138587"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
-
-  [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、Azure Files と Azure File Sync のスケーラビリティとパフォーマンスのターゲットについて説明します。
+[Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、Azure Files と Azure File Sync のスケーラビリティとパフォーマンスのターゲットについて説明します。
 
 ここに掲載したスケーラビリティとパフォーマンスのターゲットはハイエンドのターゲットですが、ご利用のデプロイ内のその他の変数の影響を受ける可能性があります。 たとえば、ファイルのスループットは、Azure Files サービスをホストするサーバーだけではなく、使用可能なネットワーク帯域幅によっても制限されます。 Azure Files のパフォーマンスとスケーラビリティが要件を満たしているかどうかを判断するには、実際の使用パターンでテストすることを強くお勧めします。 弊社では、順次これらの制限値を上げることにも取り組んでいます。 ページ下端のコメント欄や、[Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) から、引き上げを希望する制限値について、フィードバックをお寄せください。
 
@@ -40,13 +39,14 @@ Azure File Sync では、できる限り使用量無制限を目指して設計�
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-file-sync-performance-metrics"></a>Azure File Sync のパフォーマンス メトリック
-Azure File Sync エージェントは Azure ファイル共有に接続している Windows Server コンピューター上で実行されているので、実質的な同期パフォーマンスはインフラストラクチャでのいくつかの要因に依存します。Windows Server と基になっているディスクの構成、サーバーと Azure Storage の間のネットワーク帯域幅、ファイルのサイズ、データセット全体のサイズ、データセットでのアクティビティなどです。 Azure File Sync はファイル レベルで動作するため、Azure File Sync ベースのソリューションのパフォーマンス特性の測定には、1 秒間に処理されたオブジェクト (ファイルとディレクトリ) の数が適しています。 
+Azure File Sync エージェントは Azure ファイル共有に接続している Windows Server マシンで実行されているため、実質的な同期パフォーマンスは、Windows Server と基になるディスクの構成、サーバーと Azure Storage の間のネットワーク帯域幅、ファイルのサイズ、データセット全体のサイズ、データセットでのアクティビティなど、お使いのインフラストラクチャの要因によって異なります。 Azure File Sync はファイル レベルで動作するため、Azure File Sync ベースのソリューションのパフォーマンス特性の測定には、1 秒間に処理されたオブジェクト (ファイルとディレクトリ) の数が適しています。 
  
 Azure File Sync の場合、2 つのステージで重要です。
-1. **最初の 1 回限りのプロビジョニング**: 最初のプロビジョニングのパフォーマンスを最適化するには、「[Azure File Sync でのオンボード](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync)」で最適な展開の詳細をご覧ください。
-2. **継続的な同期**: Azure ファイル共有に初期データがシードされた後、Azure File Sync は複数のエンドポイントの同期を維持します。
+1. **最初の 1 回限りのプロビジョニング**:最初のプロビジョニングのパフォーマンスを最適化するには、「[Azure File Sync でのオンボード](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync)」で最適な展開の詳細をご覧ください。
+2. **継続的な同期**:Azure ファイル共有に初期データがシードされた後、Azure File Sync は複数のエンドポイントの同期を維持します。
 
 各ステージでの展開の計画に役立つように、次の構成のシステムで行われた内部テストにおいて観察された結果を以下に示します。
+
 | システム構成 |  |
 |-|-|
 | CPU | 64 仮想コアと 64 MiB の L3 キャッシュ |
@@ -59,7 +59,7 @@ Azure File Sync の場合、2 つのステージで重要です。
 |-|-|
 | オブジェクトの数 | 1000 万オブジェクト | 
 | データセットのサイズ| 約 4 TiB |
-| 平均ファイル サイズ | 約 500 KiB (最大ファイル: 100 GiB) |
+| 平均ファイル サイズ | 約 500 KiB (最大ファイル:100 GiB) |
 | アップロードのスループット | 15 オブジェクト/秒 |
 | 名前空間ダウンロードのスループット* | 350 オブジェクト/秒 |
  

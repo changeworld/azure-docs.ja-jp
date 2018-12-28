@@ -21,7 +21,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 11/09/2018
 ms.locfileid: "51346628"
 ---
-# <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数
+# <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数 
 
 Resource Manager には、配列とオブジェクトを操作する関数がいくつか用意されています。
 
@@ -139,7 +139,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="return-value"></a>戻り値
 
-最初の null 以外のパラメーターの値。文字列、整数、配列、またはオブジェクトが返されます。 すべてのパラメーターが null の場合は null になります。
+最初の null 以外のパラメーターの値。文字列、整数、配列、またはオブジェクトが返されます。 すべてのパラメーターが null の場合は null になります。 
 
 ### <a name="example"></a>例
 
@@ -153,7 +153,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
         "objectToTest": {
             "type": "object",
             "defaultValue": {
-                "null1": null,
+                "null1": null, 
                 "null2": null,
                 "string": "default",
                 "int": 1,
@@ -216,7 +216,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="concat"></a>concat
 `concat(arg1, arg2, arg3, ...)`
 
-複数の配列を結合し、連結された配列を返します。または複数の文字列値を結合し、連結文字列を返します。
+複数の配列を結合し、連結された配列を返します。または複数の文字列値を結合し、連結文字列を返します。 
 
 ### <a name="parameters"></a>parameters
 
@@ -238,22 +238,22 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "firstArray": {
-            "type": "array",
-            "defaultValue": [
-                "1-1",
-                "1-2",
-                "1-3"
-            ]
+    "parameters": { 
+        "firstArray": { 
+            "type": "array", 
+            "defaultValue": [ 
+                "1-1", 
+                "1-2", 
+                "1-3" 
+            ] 
         },
         "secondArray": {
-            "type": "array",
-            "defaultValue": [
-                "2-1",
+            "type": "array", 
+            "defaultValue": [ 
+                "2-1", 
                 "2-2",
-                "2-3"
-            ]
+                "2-3" 
+            ] 
         }
     },
     "resources": [
@@ -875,7 +875,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="return-value"></a>戻り値
 
-整数。
+整数。 
 
 ### <a name="example"></a>例
 

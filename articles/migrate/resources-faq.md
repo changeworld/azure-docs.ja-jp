@@ -4,14 +4,14 @@ description: Azure Migrate についてよく寄せられる質問に対応し�
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/05/2018
 ms.author: snehaa
-ms.openlocfilehash: 2f04fe103d010a64a77b7d80730cf80007c3c126
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ebc4393341341b3b73165a166a650ae1a6f431ff
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256377"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257796"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -40,15 +40,20 @@ Azure Migrate は、オンプレミスのワークロードを検出し、Azure 
 
 Azure Migrate は移行計画ツールで、Azure Site Recovery Deployment Planner はディザスター リカバリー (DR) 計画ツールです。
 
-**VMware から Azure への移行**: オンプレミスのワークロードを Azure に移行する場合は、移行の計画に Azure Migrate を使用します。 Azure Migrate はオンプレミスのワークロードを評価し、ガイダンス、分析情報、メカニズムを提供して、Azure への移行を支援します。 移行計画の準備ができたら、Azure Site Recovery や Azure Database Migration Service などのサービスを使用して、Azure にマシンを移行できます。
+**VMware から Azure への移行**:オンプレミスのワークロードを Azure に移行する場合は、Azure Migrate を使用して移行を計画します。 Azure Migrate はオンプレミスのワークロードを評価し、ガイダンス、分析情報、メカニズムを提供して、Azure への移行を支援します。 移行計画の準備ができたら、Azure Site Recovery や Azure Database Migration Service などのサービスを使用して、Azure にマシンを移行できます。
 
-**Hyper-V から Azure への移行**: Azure Migrate は現在、Azure への移行のための VMware 仮想マシンのアセスメントのみをサポートしています。 Azure Migrate では現在、Hyper-V をサポートするよう進めております。 その間は Site Recovery Deployment Planner を利用できます。 Azure Migrate で Hyper-V のサポートが有効になったら、Azure Migrate を使用して Hyper-V のワークロードの移行を計画できます。
+**Hyper-V から Azure への移行**:Azure Migrate は現在、Azure への移行のための VMware 仮想マシンのアセスメントのみをサポートしています。 Azure Migrate では現在、Hyper-V をサポートするよう進めております。 その間は Site Recovery Deployment Planner を利用できます。 Azure Migrate で Hyper-V のサポートが有効になったら、Azure Migrate を使用して Hyper-V のワークロードの移行を計画できます。
 
-**VMware/Hyper-V から Azure への障害復旧**: Azure Site Recovery (Site Recovery) を使用して Azure のディザスター リカバリー (DR) を実行する場合は、DR の計画に Site Recovery Deployment Planner を使用します。 Site Recovery Deployment Planner はお使いのオンプレミス環境の ASR 固有の詳細なアセスメントを実行します。 仮想マシンのレプリケーション、フェールオーバーなど、DR 操作が適切に実行されるために Site Recovery によって要求されるレコメンデーションを提供します。  
+**VMware/Hyper-V から Azure へのディザスター リカバリー**:Azure Site Recovery (Site Recovery) を使用して Azure のディザスター リカバリー (DR) を実行する場合は、Site Recovery Deployment Planner を使用して DR を計画します。 Site Recovery Deployment Planner はお使いのオンプレミス環境の ASR 固有の詳細なアセスメントを実行します。 仮想マシンのレプリケーション、フェールオーバーなど、DR 操作が適切に実行されるために Site Recovery によって要求されるレコメンデーションを提供します。  
 
-### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Azure Migrate でサポートされる Azure リージョンを教えてください。
+### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Azure Migrate でサポートされている Azure の地域を教えてください。
 
-現在、Azure Migrate では、移行プロジェクトの場所として、米国東部、米国中西部がサポートされています。 移行プロジェクトの作成先は米国中西部と米国東部に限られていますが、評価するマシンは、[複数のターゲットの場所](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)に存在していてもかまいません。 プロジェクトの場所は、検出されたデータを格納するためにのみ使用されます。
+Azure Migrate では現在、プロジェクトの地域として米国と Azure Government がサポートされています。 移行プロジェクトの作成先はこれらの地域に限られていますが、評価するマシンは、[複数のターゲットの場所](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)に存在していてもかまいません。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
+
+**地理的な場所** | **メタデータ ストレージの場所**
+--- | ---
+米国 | 米国中西部または米国東部
+Azure Government | 米国政府バージニア州
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>オンプレミス サイトはどのようにして Azure Migrate に接続しますか。
 
@@ -137,9 +142,12 @@ Azure Migrate は、アプライアンスベースの検出とエージェント
 Azure Migrate は現在、[Enterprise Agreement プラン](https://azure.microsoft.com/offers/enterprise-agreement-support/)のコスト見積もりをサポートしていません。 これを回避するには、プランに従量課金制を指定し、評価のプロパティの [割引] フィールドに、(サブスクリプションに適用される) 割引率を手動で指定します。
 
   ![Discount](./media/resources-faq/discount.png)
-  
+
 
 ## <a name="dependency-visualization"></a>依存関係の視覚化
+
+> [!NOTE]
+> 依存関係可視化機能は、Azure Government では使用できません。
 
 ### <a name="what-is-dependency-visualization"></a>依存関係の視覚化とは何ですか。
 
@@ -151,7 +159,7 @@ Azure Migrate は現在、[Enterprise Agreement プラン](https://azure.microso
 
 ### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>依存関係の視覚化のために何をインストールする必要がありますか。
 
-依存関係の視覚化を使用するには、評価するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。 
+依存関係の視覚化を使用するには、評価するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。
 
 - 各マシンに [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) をインストールする必要があります。
 - 各マシンに [Dependency Agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) をインストールする必要があります。

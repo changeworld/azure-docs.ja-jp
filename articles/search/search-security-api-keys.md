@@ -1,5 +1,5 @@
 ---
-title: Azure Search の管理者 API キーとクエリ API キーの作成、管理、およびセキュリティ保護 |Microsoft Docs
+title: 管理者 API キーとクエリ API キーの作成、管理、およびセキュリティ保護 - Azure Search
 description: API キーは、サービス エンドポイントへのアクセスを制御します。 管理者キーは、書き込みアクセス権を付与します。 読み取り専用アクセスのために、クエリ キーを作成できます。
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: heidist
-ms.openlocfilehash: 2ec720f26cfbadb9963ff3991ad1795c9b30c136
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.custom: seodec2018
+ms.openlocfilehash: 6ba63fa776e92dd2f8035cfbbdb8cea2860d106f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284983"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316929"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Azure Search サービスの管理者 API キーを作成する
 
@@ -65,7 +66,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 ## <a name="secure-api-keys"></a>API キーをセキュリティ保護する
 キーのセキュリティは、ポータルまたはリソース マネージャーのインターフェイス (PowerShell またはコマンドライン インターフェイス) でアクセスを制限することによって確保されます。 前述のように、サブスクリプションの管理者はすべての API キーを表示および再生成できます。 用心のために、ロールの割り当てを調べて、管理キーへのアクセス権を持つユーザーを確認してください。
 
-+ サービス ダッシュボードで、**[アクセス制御 (IAM)]** をクリックしてサービスのロールの割り当てを表示します。
++ サービス ダッシュボードで、**[アクセス制御 (IAM)]** をクリックし、次に **[ロールの割り当て]** タブをクリックして、サービスのロールの割り当てを表示します。
 
 次のロールのメンバーは、キーの表示と再生成が可能です: 所有者、投稿者、[Search Service の共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
 

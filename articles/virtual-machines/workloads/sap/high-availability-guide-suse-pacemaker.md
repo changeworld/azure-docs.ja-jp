@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 9d3d1e5ba7ebc7e2afefb31df3be9f2a8f43e153
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: c6dee6fc26f540ad93f5a4b4e6e2f9432f757a6c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685397"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076357"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -436,7 +436,7 @@ o- / ...........................................................................
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   値が無いか、異なる場合は、次の太字の内容をファイルに追加します。 トークンを 30000 に変更してメモリ保持メンテナンスを可能にします。 詳しくは、[Linux の場合はこちらの記事][virtual-machines-linux-maintenance]、[Windows の場合はこちらの記事][virtual-machines-windows-maintenance]をご覧ください。
+   値が無いか、異なる場合は、次の太字の内容をファイルに追加します。 トークンを 30000 に変更してメモリ保持メンテナンスを可能にします。 詳しくは、[Linux の場合はこちらの記事][virtual-machines-linux-maintenance]、[Windows の場合はこちらの記事][virtual-machines-windows-maintenance]をご覧ください。 また、必ずパラメーター mcastaddr を削除してください。
 
    <pre><code>[...]
      <b>token:          30000
@@ -449,6 +449,8 @@ o- / ...........................................................................
         [...] 
      }
      <b>transport:      udpu</b>
+     # remove parameter mcastaddr
+     <b># mcastaddr: IP</b>
    } 
    <b>nodelist {
      node {
@@ -527,10 +529,10 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. [All resources] \(すべてのリソース) ブレードを開きます
 1. 1 つ目のクラスター ノードの仮想マシンを選択します
 1. [アクセス制御 (IAM)] を選択します
-1. [追加] をクリックします。
+1. [ロールの割り当ての追加] をクリックします
 1. "Linux Fence Agent Role" ロールを選択します
 1. 上記で作成したアプリケーションの名前を入力します
-1. [OK] をクリックします
+1. [保存] をクリックします。
 
 2 つ目のクラスター ノードについても上記の手順を繰り返します。
 
