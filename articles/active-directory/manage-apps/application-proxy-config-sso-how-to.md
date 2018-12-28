@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 91bbbf6cced8dc3ade4906961d68a99f810d9fd9
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: c27649bc92b9874c6a669911d2b86273cf7adf0f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956988"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136334"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションに対するシングル サインオンを構成する方法
 
@@ -29,7 +29,7 @@ ms.locfileid: "49956988"
 ## <a name="how-to-configure-single-sign-on"></a>シングル サインオンの構成方法
 SSO を構成するにはまず、Azure Active Directory で事前認証を行うようにアプリケーションを構成する必要があります。 この構成を行うには、**[Azure Active Directory]** -&gt; **[エンタープライズ アプリケーション]** -&gt; **[すべてのアプリケーション]** -&gt; <目的のアプリケーション> **-&gt; [アプリケーション プロキシ]** の順に移動します。 このページに [事前認証] フィールドがあるので、それを [Azure Active Directory] に設定してください。 
 
-個々の事前認証方法の詳細については、[アプリの発行に関するドキュメント](application-proxy-publish-azure-portal.md)の手順 4 を参照してください。
+個々の事前認証方法の詳細については、[アプリの発行に関するドキュメント](application-proxy-add-on-premises-application.md)の手順 4 を参照してください。
 
    ![Azure portal の事前認証方法](./media/application-proxy-config-sso-how-to/app-proxy.png)
 
@@ -44,7 +44,7 @@ SSO を構成するにはまず、Azure Active Directory で事前認証を行�
 
 上記の各オプションは、[エンタープライズ アプリケーション] で目的のアプリケーションに移動し、左側のメニューで **[シングル サインオン]** ページを開くと表示されます。 そのアプリケーションが以前のポータルで作成されたものである場合は一部のオプションが表示されない可能性があルことに注意してください。
 
-このページには、さらに [リンクされたサインオン] というオプションも表示されます。 このオプションもアプリケーション プロキシでサポートされています。 ただしこのオプションは、アプリケーションにシングル サインオンを追加するものではありません。 とは言うものの、アプリケーションには、Active Directory フェデレーション サービスなどの別のサービスを使って既にシングル サインオンが実装されている場合があります。 
+このページには、さらに別のサインオン オプションとして [リンクされたサインオン] も表示されます。 このオプションもアプリケーション プロキシでサポートされています。 ただしこのオプションは、アプリケーションにシングル サインオンを追加するものではありません。 とは言うものの、アプリケーションには、Active Directory フェデレーション サービスなどの別のサービスを使って既にシングル サインオンが実装されている場合があります。 
 
 管理者はこのオプションを選択することで、ユーザーがアプリケーションにアクセスしたときに最初に目にする、アプリケーションへのリンクを作成することができます。 たとえば、Active Directory Federation Services 2.0 を使用してユーザーを認証するように構成されたアプリケーションがある場合、管理者は、[リンクされたサインオン] オプションを使用して、アクセス パネルにそのアプリケーションへのリンクを作成することができます。
 

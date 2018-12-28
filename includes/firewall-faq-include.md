@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 10/20/2018
+ms.date: 12/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e33871f35613fbd5cdc5bf3162855b942056807f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7e547f49ec14bdb69a85dd916ef435c3f30f6ef2
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254694"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413729"
 ---
 ### <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -54,7 +54,7 @@ Azure Firewall は受信と送信のフィルター処理をサポートして�
 
 ### <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure Firewall では、どのログ記録および分析サービスがサポートされていますか?
 
-Azure Firewall は、ファイアウォール ログの表示と分析について Azure Monitor と統合されています。 Log Analytics、Azure Storage、または Event Hubs にログを送信できます。 Log Analytics や、Excel や Power BI などのさまざまなツールで分析できます。 詳細については、「[チュートリアル: Azure Firewall のログを監視する](../articles/firewall/tutorial-diagnostics.md)」を参照してください。
+Azure Firewall は、ファイアウォール ログの表示と分析について Azure Monitor と統合されています。 Log Analytics、Azure Storage、または Event Hubs にログを送信できます。 Log Analytics や、Excel や Power BI などのさまざまなツールで分析できます。 詳細については、[Azure Firewall のログを監視する方法に関するチュートリアル](../articles/firewall/tutorial-diagnostics.md)を参照してください。
 
 ### <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure Firewall の動作は、マーケットプレースの NVA などの既存のサービスとどのように異なりますか?
 
@@ -117,10 +117,14 @@ Azure Firewall サービスの制限については、「[Azure サブスクリ�
 
 はい。ハブ仮想ネットワークで Azure Firewall を使用して、2 つのスポーク仮想ネットワーク間のトラフィックをルーティングしたりフィルター処理したりできます。 各スポーク仮想ネットワークのサブネットを正常に動作させるためには、このシナリオで既定のゲートウェイとして Azure Firewall をポイントする UDR が必要です。
 
-### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network"></a>Azure Firewall では、同じ仮想ネットワークのサブネット間のネットワーク トラフィックを転送したりフィルター処理したりできますか?
+### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure Firewall では、同じ仮想ネットワーク (またはピアリングされた仮想ネットワーク) のサブネット間のネットワーク トラフィックを転送したりフィルター処理したりできますか?
 
 同じ仮想ネットワーク内または直接ピアリングされた仮想ネットワーク内のサブネット間のトラフィックは、UDR が既定のゲートウェイとして Azure Firewall をポイントする場合でも直接ルーティングされます。 内部ネットワークのセグメント化の推奨される方法は、ネットワーク セキュリティ グループを使用することです。 このシナリオでサブネット間トラフィックをファイアウォールに送信するには、UDR に両方のサブネットのターゲットのサブネット ネットワーク プレフィックスを明示的に含める必要があります。
 
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>ファイアウォール リソース グループの制限はありますか。
 
 はい。 ファイアウォール、サブネット、VNet、パブリック IP アドレスすべては同じリソース グループに属していなければなりません。
+
+### <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>インバウンド ネットワーク トラフィックの DNAT を構成する際、そのトラフィックを許可するための、対応するネットワーク ルールも構成しなければならないのでしょうか。
+
+いいえ。 NAT ルールは、変換されたトラフィックを許可するための対応するネットワーク ルールを暗黙的に追加します。 この動作は、変換されたトラフィックに一致する拒否ルールを使用してネットワーク ルール コレクションを明示的に追加することで、オーバーライドすることができます。 Azure Firewall ルール処理ロジックの詳細については、「[Azure Firewall ルール処理ロジック](../articles/firewall/rule-processing.md)」を参照してください。

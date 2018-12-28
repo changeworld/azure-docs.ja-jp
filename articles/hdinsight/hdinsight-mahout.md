@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c8e3b1186192d0d7c3fabb4e5a02cc4fcdf494d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 06181eaf4a44a00ddeeedcd9c40edeae9157abd9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009795"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438550"
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>HDInsight で Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する (PowerShell)
+# <a name="generate-movie-recommendations-by-using-apache-mahout-with-apache-hadoop-in-hdinsight-powershell"></a>HDInsight で Apache Mahout と Apache Hadoop を使用して映画のレコメンデーションを生成する (PowerShell)
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
@@ -26,27 +26,27 @@ ms.locfileid: "51009795"
 
 * Linux ベースの HDInsight クラスター。 作成の詳細については、「[Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する][getstarted]」を参照してください。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * [Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="recommendations"></a>Azure PowerShell を使用したリコメンデーションの生成
 
-> [!WARNING]
+> [!WARNING]  
 > このセクションのジョブは Azure PowerShell を使用することによって機能します。 Mahout で提供されるクラスの多くは Azure PowerShell では現在動作しません。 Azure PowerShell で動作しないクラスの一覧については、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
 >
-> SSH を使用した HDInsight への接続とクラスターでの Mahout サンプルの直接的な実行の例については、[Mahout と HDInsight を使用した映画のリコメンデーションの生成 (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md)に関するページを参照してください。
+> SSH を使用した HDInsight への接続とクラスターでの Mahout サンプルの直接的な実行の例については、[Apache Mahout と HDInsight を使用した映画のレコメンデーションの生成 (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md) に関するページを参照してください。
 
 Mahout で提供される機能の 1 つが、リコメンデーション エンジンです。 データは、`userID`、`itemId`、`prefValue` (項目に対するユーザーの嗜好) の形式で受け付けられます。 Mahout はデータを使用して、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
 
 次の例は、リコメンデーション処理のしくみを示す簡略化されたチュートリアルです。
 
-* **共起**: Joe、Alice、Bob は全員、好きな映画として「*Star Wars (スター ウォーズ)*」、「*The Empire Strikes Back (帝国の逆襲)*」、「*Return of the Jedi (ジェダイの帰還)*」を挙げました。 Mahout では、これらの映画のいずれかを好きなユーザーが他の 2 作品も好きであると判断します。
+* **共起**:Joe、Alice、Bob は全員、好きな映画として "*Star Wars (スター ウォーズ)*"、"*The Empire Strikes Back (帝国の逆襲)*"、"*Return of the Jedi (ジェダイの帰還)*" を挙げました。 Mahout では、これらの映画のいずれかを好きなユーザーが他の 2 作品も好きであると判断します。
 
-* **共起**: Bob と Alice は「*The Phantom Menace (ファントム メナス)*」、「*Attack of the Clones (クローンの攻撃)*」、「*Revenge of the Sith (シスの復讐)*」も好きな映画として選びました。 Mahout では、この例の最初の 3 作品を好きなユーザーがこれらの作品も好きであると判断します。
+* **共起**:Bob と Alice は "*The Phantom Menace (ファントム メナス)*"、"*Attack of the Clones (クローンの攻撃)*"、"*Revenge of the Sith (シスの復讐)*" も好きな映画として選びました。 Mahout では、この例の最初の 3 作品を好きなユーザーがこれらの作品も好きであると判断します。
 
-* **類似性のリコメンデーション**: Joe は、この例の最初の 3 作品を好きな映画として選びました。Mahout では、嗜好が似ている他のユーザーが好きな映画の中で、Joe がまだ観ていない映画を調べます (好み/順位)。 この場合、Mahout では、「*The Phantom Menace (ファントム メナス)*」、「*Attack of the Clones (クローンの攻撃)*」、「*Revenge of the Sith (シスの復讐)*」を推薦します。
+* **類似性のレコメンデーション**:Joe は、この例の最初の 3 作品を好きな映画として選びました。Mahout では、嗜好が似ている他のユーザーが好きな映画の中で、Joe がまだ観ていない映画を調べます (好み/順位)。 この場合、Mahout では、「*The Phantom Menace (ファントム メナス)*」、「*Attack of the Clones (クローンの攻撃)*」、「*Revenge of the Sith (シスの復讐)*」を推薦します。
 
 ### <a name="understanding-the-data"></a>データの説明
 
@@ -66,12 +66,12 @@ user-ratings.txt に含まれているデータの構造は `userID`、`movieID`
 
 次の Windows PowerShell スクリプトを使用して、映画データで Mahout リコメンデーション エンジンを使用するジョブを実行します。
 
-> [!NOTE]
+> [!NOTE]  
 > このファイルは、HDInsight クラスターに接続してジョブを実行するために使用される情報の入力を求めます。 ジョブが完了し、output.txt ファイルがダウンロードされるまで、数分かかる場合があります。
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
-> [!NOTE]
+> [!NOTE]  
 > Mahout ジョブは、ジョブの処理中に作成された一時データを削除しません。 このサンプル ジョブでは `--tempDir` パラメーターを指定し、一時ファイルを特定のディレクトリに分離します。
 
 Mahout ジョブは出力を STDOUT に返しません。 代わりに、指定された出力ディレクトリに **part-r-00000**として格納します。 このファイルは、ワークステーションの現在のディレクトリ内の **output.txt** にダウンロードされます。
@@ -202,14 +202,14 @@ foreach($blob in $blobs)
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-これらのクラスを使用するジョブを実行するには、SSH を使用して HDInsight クラスターに接続し、コマンド ラインからジョブを実行します。 SSH を使用した Mahout ジョブの実行例については、[Mahout と HDInsight を使用した映画のリコメンデーションの作成 (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md)に関するページを参照してください。
+これらのクラスを使用するジョブを実行するには、SSH を使用して HDInsight クラスターに接続し、コマンド ラインからジョブを実行します。 SSH を使用した Mahout ジョブの実行例については、[Apache Mahout と HDInsight を使用した映画のレコメンデーションの作成 (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-ここまで、Mahout の使用方法を学習し、HDInsight でデータを操作するその他の方法を確認してきました。
+ここまで、Apache Mahout の使用方法を学習し、HDInsight でデータを操作するその他の方法を確認してきました。
 
-* [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight での Pig の使用](hadoop/hdinsight-use-pig.md)
+* [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html
@@ -218,8 +218,8 @@ foreach($blob in $blobs)
 [100k]: http://files.grouplens.org/datasets/movielens/ml-100k.zip
 [getstarted]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [upload]: hdinsight-upload-data.md
-[ml]: http://en.wikipedia.org/wiki/Machine_learning
-[forest]: http://en.wikipedia.org/wiki/Random_forest
+[ml]: https://en.wikipedia.org/wiki/Machine_learning
+[forest]: https://en.wikipedia.org/wiki/Random_forest
 [enableremote]: ./media/hdinsight-mahout/enableremote.png
 [connect]: ./media/hdinsight-mahout/connect.png
 [hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png

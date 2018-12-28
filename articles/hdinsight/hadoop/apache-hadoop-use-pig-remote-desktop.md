@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9ab3c5399263e301760b7822488fe00145149d2a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 69eeadd8252d20dd25ac6d0abbbf0c6c158383d5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633344"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438627"
 ---
 # <a name="run-apache-pig-jobs-from-a-remote-desktop-connection"></a>リモート デスクトップ接続から Apache Pig ジョブを実行する
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
 このドキュメントでは、Apache Pig コマンドを使用して、Windows ベースの HDInsight クラスターへのリモート デスクトップ接続から Pig Latin ステートメントを実行するチュートリアルを提供します。 Pig Latin では、map 関数や reduce 関数ではなく、データ変換を記述することで MapReduce アプリケーションを作成できます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > リモート デスクトップは、オペレーティング システムとして Windows を使用する HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 >
-> HDInsight 3.4 以上でのクラスターでのコマンド ラインからの直接的な Pig ジョブの実行に関する情報については、[HDInsight と SSH での Pig の使用](apache-hadoop-use-pig-ssh.md)に関するページを参照してください。
+> HDInsight 3.4 以上でのクラスターでのコマンド ラインからの直接的な Pig ジョブの実行に関する情報については、[HDInsight と SSH での Apache Pig の使用](apache-hadoop-use-pig-ssh.md)に関するページを参照してください。
 
 ## <a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
@@ -78,7 +78,7 @@ ms.locfileid: "51633344"
 
         STORE RESULT into 'wasb:///example/data/pigout'
 
-   > [!NOTE]
+   > [!NOTE]  
    > データは、 **part-nnnnn**という名前のファイルの指定したディレクトリに保存されます。 ディレクトリが既に存在する場合は、エラー メッセージが表示します。
    >
    >
@@ -119,9 +119,9 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
 ## <a id="nextsteps"></a>次のステップ
 HDInsight での Pig に関する全般的な情報:
 
-* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
-* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
+* [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)

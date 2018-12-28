@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 81e41ce6818a6f56ba5e6e888480f8b25979fb81
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: ce171aa32e4f17e974a6d8a9752189ac78bf73fe
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979201"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386997"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題についてよくあるご質問 (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
 この記事では、[Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services) の構成と管理の問題についてよくあるご質問を紹介します。 サイズについては、 [Cloud Services VM サイズのページ](cloud-services-sizes-specs.md) を参照してください。
 
@@ -170,7 +170,7 @@ Windows Azure 診断 (WAD) ログ記録は、次のオプションを使用し�
     </Endpoints>
   </WorkerRole>
 ```
-詳細については、「[New: Configurable Idle Timeout for Azure Load Balancer](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) (Azure Load Balancer の構成可能なアイドル タイムアウト)」をご覧ください。
+詳細については、「[New: Configurable Idle Timeout for Azure Load Balancer](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) (Azure Load Balancer の構成可能なアイドル タイムアウト)」を参照してください。
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>私のクラウド サービスに静的 IP アドレスを関連付ける方法を教えてください。
 静的 IP アドレスを設定するには、予約済み IP を作成する必要があります。 この予約済み IP は、新しいクラウド サービスに、または既存のデプロイに関連付けることができます。 詳細については、次のドキュメントをご覧ください。
@@ -242,9 +242,9 @@ Cloud Services のメモリ メトリックに基づく自動スケールは、�
 
 この問題を回避するには、Application Insights を使うことができます。 自動スケールは、メトリック ソースとして Application Insights をサポートし、"Memory" のようなゲスト メトリックに基づいてロール インスタンスの数をスケーリングできます。  クラウド サービスのプロジェクト パッケージ ファイル (*.cspkg) で Application Insights を構成し、サービスで Azure 診断拡張機能を有効にしてこの機能を実装する必要があります。
 
-Application Insights でカスタム メトリックを利用してクラウド サービスに自動スケールを構成する方法について詳しくは、「[Azure でのカスタム メトリックによる自動スケールの概要](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)」をご覧ください
+Application Insights でカスタム メトリックを利用してクラウド サービスに自動スケールを構成する方法について詳しくは、「[Azure でのカスタム メトリックによる自動スケールの概要](../azure-monitor/platform/autoscale-custom-metric.md)」をご覧ください
 
-クラウド サービスの Application Insights に Azure 診断を統合する方法について詳しくは、「[Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)」をご覧ください
+クラウド サービスの Application Insights に Azure 診断を統合する方法について詳しくは、「[Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)」をご覧ください
 
 Cloud Services 用に Application Insights を有効にする方法について詳しくは、「[Azure Cloud Services 向けの Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)」をご覧ください
 

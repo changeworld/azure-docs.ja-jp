@@ -9,20 +9,20 @@ ms.topic: include
 ms.date: 08/29/2018
 ms.author: tdykstra
 ms.custom: include file
-ms.openlocfilehash: 9407ba43dc154bcfaf4d0a3894a99bc3a3d52e92
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f62d14477daa820cf2b862f5854b763f8eaff753
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47019726"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52886264"
 ---
-|Language                                 |1.x         |2.x|
+|言語                                 |1.x         |2.x|
 |-----------------------------------------|------------|---|
 |[C#](../articles/azure-functions/functions-reference-csharp.md)|GA (.NET Framework 4.7)|GA (.NET Core 2)|
 |[JavaScript](../articles/azure-functions/functions-reference-node.md)|GA (Node 6)|GA (Node 8、10)|
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET Framework 4.7)|GA (.NET Core 2)|
 |[Java](../articles/azure-functions/functions-reference-java.md)|該当なし|プレビュー (Java 8)|
-|Python              |試験段階|該当なし|
+|[Python](../articles/azure-functions/functions-reference-python.md)|試験段階|プレビュー (Python 3.6)|
 |TypeScript          |試験段階|JavaScript へのトランスパイリングによってサポートされます|
 |PHP                 |試験段階|該当なし|
 |バッチ (.cmd、.bat)  |試験段階|該当なし|

@@ -1,6 +1,6 @@
 ---
-title: Pandas を使用して Azure BLOB ストレージのデータを探索する | Microsoft Docs
-description: Pandas を使用して Azure BLOB コンテナーに格納されているデータを探索する方法について説明します。
+title: Pandas を使用して Azure BLOB ストレージのデータを探索する - Team Data Science Process
+description: Pandas Python パッケージを使用して Azure BLOB コンテナーに格納されているデータを探索する方法について説明します。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 12e277168d27786581d14adc4c32b94d0979df6d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 43dcb5d207b754938469abca9353b83687797335
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441587"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141392"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure BLOB ストレージのデータを探索する
 

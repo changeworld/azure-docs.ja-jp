@@ -1,22 +1,22 @@
 ---
-title: Azure Event Hubs のプログラミング ガイド |Microsoft Docs
-description: Azure .NET SDK を使用して、Azure Event Hubs 用のコードを記述します。
+title: プログラミング ガイド - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure .NET SDK を使用して Azure Event Hubs 用のコードを記述する方法について説明します。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
 ms.service: event-hubs
+ms.custom: seodec18
 ms.topic: article
-ms.date: 08/12/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bfb2db8a4a0091e26cc2b893e615ba831da30ac7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746326"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138077"
 ---
-# <a name="event-hubs-programming-guide"></a>Event Hubs のプログラミング ガイド
-
+# <a name="programming-guide-for-azure-event-hubs"></a>Azure Event Hubs のプログラミング ガイド
 この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](event-hubs-what-is-event-hubs.md)」を参照してください。
 
 ## <a name="event-publishers"></a>イベント発行元
@@ -55,7 +55,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="send-events-to-an-event-hub"></a>イベント ハブにイベントを送信する
 
-[EventHubClient][] インスタンスを作成し、それを [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) メソッドで送信することで、イベント ハブにイベントを非同期で送信します。 このメソッドは [EventData][] インスタンス パラメーターを 1 つ受け取り、それをイベント ハブに同期的に送信します。
+[EventHubClient][] インスタンスを作成し、それを [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) メソッドで送信することで、イベント ハブにイベントを非同期で送信します。 このメソッドは [EventData][] インスタンス パラメーターを 1 つ受け取り、それをイベント ハブに非同期的に送信します。
 
 ## <a name="event-serialization"></a>イベントのシリアル化
 
@@ -76,7 +76,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 ### <a name="availability-considerations"></a>可用性に関する考慮事項
 
-パーティション キーを使用するかどうかは任意であり、慎重に検討する必要があります。 多くの場合、イベントの順序設定が必要であればパーティション キーの使用をお勧めします。 パーティション キーを使用すると、これらのパーティションでは単一のノードに対する可用性が必要になるため、時間が経つにつれて、コンピューティング ノードの再起動時やパッチ適用時などに障害が発生する可能性があります。 そのため、パーティション ID を設定した場合にそのパーティションがなんらかの理由で使用不能になると、そのパーティション内のデータにアクセスできなくなります。 高可用性がもっとも重要な場合は、パーティション キーを指定しないでください。指定を行うと、以前に説明したラウンドロビン モデルを使用してイベントがパーティションに送信されるようになります。 このシナリオでは、可用性 (パーティション ID なし) と整合性 (イベントをパーティション ID に固定) のどちらを優先するかを明確に選択することになります。
+パーティション キーを使用するかどうかは任意であり、慎重に検討する必要があります。 イベントを発行するときにパーティション キーを指定しないと、ラウンド ロビン割り当てが使用されます。 多くの場合、イベントの順序設定が必要であればパーティション キーの使用をお勧めします。 パーティション キーを使用すると、これらのパーティションでは単一のノードに対する可用性が必要になるため、時間が経つにつれて、コンピューティング ノードの再起動時やパッチ適用時などに障害が発生する可能性があります。 そのため、パーティション ID を設定した場合にそのパーティションがなんらかの理由で使用不能になると、そのパーティション内のデータにアクセスできなくなります。 高可用性がもっとも重要な場合は、パーティション キーを指定しないでください。指定を行うと、以前に説明したラウンドロビン モデルを使用してイベントがパーティションに送信されるようになります。 このシナリオでは、可用性 (パーティション ID なし) と整合性 (イベントをパーティション ID に固定) のどちらを優先するかを明確に選択することになります。
 
 別の検討事項として、イベントの処理の遅れへの対処があります。 場合によっては、処理が遅れないようにするよりも、データを破棄して再試行した方が良いこともあります。前者では、ダウンストリームの処理がさらに遅れる可能性があります。 たとえば、株式相場表示機では最新のデータが揃うまで待つ方が適切ですが、ライブ チャットや VOIP のシナリオでは不完全でもデータを素早く用意する必要があります。
 

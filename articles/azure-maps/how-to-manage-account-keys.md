@@ -1,19 +1,19 @@
 ---
 title: Azure Maps のアカウントとキーを管理する方法 | Microsoft Docs
 description: Azure Portal を使用して、Azure Maps アカウントを管理し、アクセス キーを管理することができます。
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 29fd63139d31d146cfc67153f35bd57650b08cfa
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 351bc26d6c5b3dcfa9479138f2bd523f64a2912a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541621"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335814"
 ---
 # <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Azure Maps のアカウントとキーを管理する方法
 
@@ -23,7 +23,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-new-account"></a>新しいアカウントを作成する
 
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
+1. [Azure Portal](http://portal.azure.com) にサインインします。
 
 2. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 
@@ -53,5 +53,10 @@ Azure Portal からアカウントを削除できます。 [アカウントの�
 
 ## <a name="next-steps"></a>次の手順
 
-* [アドレスを検索](./how-to-search-for-address.md)するために Azure Maps の検索 API を使用する方法を学びます。
-* Azure Maps の [JavaScript マップ コントロール](./how-to-use-map-control.md)を使用する方法を学びます。
+Azure Maps アカウントの価格レベルを管理する方法について確認します。
+> [!div class="nextstepaction"]
+> [価格レベルを管理する](./how-to-manage-pricing-tier.md)
+
+Azure Maps アカウントにおける API 使用状況のメトリックを表示する方法について確認します。
+> [!div class="nextstepaction"]
+> [使用状況メトリックを表示する](./how-to-view-api-usage.md)

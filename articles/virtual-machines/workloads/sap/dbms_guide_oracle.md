@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/07/2018
+ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e2d0d5073ffbeaed1c0215386a0c2c9f22a67d9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8686130e3b10ece605a6e648badf9aa1dae5e071
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288647"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435686"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Oracle Azure Virtual Machines DBMS のデプロイ
 
@@ -428,7 +428,9 @@ SAP インストール マニュアルによると、Oracle 関連のファイ�
 
 ### <a name="storage-configuration"></a>ストレージの構成
 
-Azure 上の Oracle データベース ファイルがサポートされているのは、ext4、xfs、Oracle ASM のファイル システムのみです。 すべてのデータベース ファイルは、VHD または Managed Disks をベースとするこれらのファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、Azure ページ BLOB ストレージ (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) または [Azure マネージド ディスク](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)に基づいています。 
+Azure 上の Oracle データベース ファイルがサポートされているのは、ext4、xfs、Oracle ASM のファイル システムです。 すべてのデータベース ファイルは、VHD または Managed Disks をベースとするこれらのファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、Azure ページ BLOB ストレージ (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) または [Azure マネージド ディスク](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)に基づいています。 
+
+Oracle Linux UEK カーネルでは、[Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#premium-storage-for-linux-vms) をサポートするには少なくとも UEK バージョン 4 が必要です。
 
 [Azure マネージド ディスク](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) の使用も強くお勧めします。
 
@@ -470,7 +472,7 @@ Oracle のオンラインの再実行ログをホストするためのディス�
 | /oracle/<SID>/oraarch* | Premium | なし | 不要 |
 | Oracle ホーム、saptrace、... | OS ディスク | 不要 |
 
-*ストライプ化: RAID0 を使用した LVM ストライプ MDADM。*(n+1) - SYSTEM、TEMP、UNDO のテーブルスペースをホストします。 SYSTEM、UNDO テーブルスペースの I/O パターンは、アプリケーション データをホストする他のテーブルスペースとは異なります。 SYSTEM と UNDO テーブルスペースのパフォーマンスを考慮すると、キャッシュなしが最適なオプションです。
+*ストライプ化: RAID0 を使用した LVM ストライプまたは MDADM。*(n+1) - SYSTEM、TEMP、UNDO のテーブルスペースをホストします。 SYSTEM、UNDO テーブルスペースの I/O パターンは、アプリケーション データをホストする他のテーブルスペースとは異なります。 SYSTEM と UNDO テーブルスペースのパフォーマンスを考慮すると、キャッシュなしが最適なオプションです。
 * oraarch - パフォーマンスの観点からは記憶域プールは不要です。 より多くの領域を確保するために使用できます。
 
 
@@ -493,10 +495,10 @@ Azure Backup サービスと Azure Recovery サービスを使用して Oracle �
 Azure の Oracle データベースのディザスター リカバリーについては、記事「[Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)」を参照してください。
 
 ### <a name="accelerated-networking"></a>高速ネットワーク
-Oracle Linux での Azure Accelerated Networking のサポートは、Oracle Linux 7 Update 5 (Oracle Linux 7.5) で提供されています。 最新の Oracle Linux 7.5 リリースにアップグレードできない場合、Oracle UEK カーネルの代わりに RedHat 互換カーネル (RHCK) を使用することで回避できる可能性があります。 Oracle Linux 内で RHEL カーネルを使用することは、SAP Note [#1565179](https://launchpad.support.sap.com/#/notes/1565179) に従ってサポートされています。 Azure 高速ネットワークの場合、最小 RHCKL カーネル リリースは 3.10.0-862.13.1.el7 でなければなりません。
+Oracle Linux での Azure Accelerated Networking のサポートは、Oracle Linux 7 Update 5 (Oracle Linux 7.5) で提供されています。 最新の Oracle Linux 7.5 リリースにアップグレードできない場合、Oracle UEK カーネルの代わりに RedHat 互換カーネル (RHCK) を使用することで回避できる可能性があります。 Oracle Linux 内で RHEL カーネルを使用することは、SAP Note [#1565179](https://launchpad.support.sap.com/#/notes/1565179) に従ってサポートされています。 Azure 高速ネットワークの場合、最小 RHCKL カーネル リリースは 3.10.0-862.13.1.el7 でなければなりません。 [Azure 高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)と共に Oracle Linux で UEK カーネルを使用する場合、Oracle UEK カーネル バージョン 5 を使用する必要があります。
 
 Azure Marketplace に基づかないイメージから VM をデプロイするのでない場合は、以下を実行して VM にコピーする追加の構成ファイルが必要になります。 
-<pre><code># Copy settings from GitHub to correct place in VM
+<pre><code># Copy settings from github to correct place in VM
 sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.githubusercontent.com/LIS/lis-next/master/hv-rhel7.x/hv/tools/68-azure-sriov-nm-unmanaged.rules 
 </code></pre>
 

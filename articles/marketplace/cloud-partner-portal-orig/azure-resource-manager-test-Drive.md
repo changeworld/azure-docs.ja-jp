@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 90c434a37d3209e0c11a04425c337ec6930cfd00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 87e57a1ee417a4cc69308e8af80dd9b781d60aaf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025261"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139267"
 ---
 <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 =================================
@@ -177,7 +177,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 ストレージ アカウントや DNS 名などの一部の Azure リソースには、グローバルに一意の名前が必要です。
 
-つまり、体験版で Resource Manager テンプレートをデプロイするたびに、そのすべてのリソースに対して**一意の名前を持つ新しいリソース グループ**が作成されます **。** したがって、リソース グループ ID では [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) 関数と変数名を連結して、ランダムな一意の値を生成する必要があります。
+つまり、体験版で Resource Manager テンプレートをデプロイするたびに、そのすべてのリソースに対して**一意の名前を持つ新しいリソース グループ**が作成されます。 したがって、リソース グループ ID では [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) 関数と変数名を連結して、ランダムな一意の値を生成する必要があります。
 
       "variables": {
       ...
@@ -298,7 +298,7 @@ main-template.json                | [https://\<\...\>.blob.core.windows.net/\<\.
 
 最初の最も重要なフィールドは、オファーで体験版を有効にするかどうかの切り替えです。 **[はい]** を選択すると、必要なフィールドを含むフォームの残りの部分を設定できるようになります。**[いいえ]** を選択するとフォームは無効になり、体験版を無効にして再発行した場合、運用環境から体験版が削除されます。
 
-注: ユーザーがアクティブに使用している体験場がある場合、それらの体験版はセッションの有効期限が切れるまで引き続き実行します。
+注:ユーザーによってアクティブに使用されている体験版が存在する場合は、そのセッションの期限が切れるまで、それらの体験版は引き続き実行されます。
 
 ### <a name="details"></a>詳細
 
@@ -382,15 +382,13 @@ main-template.json                | [https://\<\...\>.blob.core.windows.net/\<\.
 アプリケーションを使用してサブスクリプションにデプロイするので、サブスクリプションで共同作成者としてアプリケーションを追加する必要があります。 その手順は以下のとおりです。
 
 1. [サブスクリプション] ブレードに移動し、体験版のみに使用している適切なサブスクリプションを選択します。
-2. [アクセス制御 (IAM)] をクリックします。
-3. 新しいブレードで [+ 追加] を選択します。
-4. 共同作成者としてロールを設定します
-5. AAD アプリケーションの名前を入力し、ロールを割り当てる AAD アプリケーションを選択します。
-6. [保存] をクリックします。
-
-![新しいアクセス制御プリンシパルを追加する](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-
-![アクセス許可を追加する](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. **[アクセス制御 (IAM)]** をクリックします。
+1. **[ロールの割り当て]** タブをクリックします。![新しいアクセス制御プリンシパルを追加する](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. **[ロールの割り当ての追加]** をクリックします。
+1. **共同作成者**としてロールを設定します。
+1. Azure AD アプリケーションの名前を入力し、ロールを割り当てるアプリケーションを選択します。
+    ![アクセス許可を追加する](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. **[Save]** をクリックします。
 
 **[Azure AD App Key]\(Azure AD アプリ キー\) -** "*必須*" 最後のフィールドでは、認証キーを生成します。 キーの下で、キーの説明を追加し、期間を無期限に設定して、[保存] を選択します。 キーの有効期限が切れないようにすることが**重要**です。切れると、運用環境の体験版が中断されます。 この値をコピーし、必要な体験版のフィールドに貼り付けます。
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 4709d3afce890941689396200347b3212d85159d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 30eb458b9d0584b467479163d8312d7bd5456be1
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280862"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409736"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "51280862"
 このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。 Mobile Apps を初めて使用する場合は、まず、[Azure Mobile Apps のクイックスタート チュートリアル][1]を完了することを検討してください。 このガイドでは、クライアント側の管理された SDK に重点を置いています。 Mobile Apps 用のサーバー側 SDK の詳細については、[.NET Server SDK][2] または [Node.js Server SDK][3] に関するドキュメントを参照してください。
 
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
-クライアント SDK のリファレンス ドキュメントについては、「[Azure Mobile Apps .NET クライアント リファレンス][4]」を参照してください。
+クライアント SDK のリファレンス ドキュメントは、[Azure Mobile Apps .NET クライアントのリファレンス][4]に関するページにあります。
 GitHub リポジトリの「[Azure Samples (Azure サンプル)][5]」にも、いくつかのクライアント サンプルがあります。
 
 ## <a name="supported-platforms"></a>サポートされているプラットフォーム
@@ -64,7 +64,7 @@ public class TodoItem
 
 Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 **Azure ポータル** で [Azure Portal]設定を使用することもできます。
 
-### <a name="how-to-install-the-managed-client-sdk-package"></a>方法: 管理されたクライアント SDK パッケージをインストールする
+### <a name="how-to-install-the-managed-client-sdk-package"></a>方法:マネージド クライアント SDK パッケージをインストールする
 [NuGet][9] から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
 
 * **Visual Studio** でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、**[インストール]** をクリックします。
@@ -373,7 +373,7 @@ await table.DeleteAsync(jo);
 
 削除要求を行うときは、ID を指定する必要があります。 それ以外のプロパティは、サービスに渡されないか、またはサービスで無視されます。 通常、`DeleteAsync` の呼び出しの結果は `null` です。 渡す ID は、 `InsertAsync` の呼び出しの結果から取得できます。 `id` フィールドを指定せずに項目を削除しようとすると、`MobileServiceInvalidOperationException` がスローされます。
 
-### <a name="optimisticconcurrency"></a>方法: 競合の解決にオプティミスティック コンカレンシーを使用する
+### <a name="optimisticconcurrency"></a>方法: 競合の解決にオプティミスティック同時実行制御を使用する
 複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。 競合を検出しない場合、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。 **オプティミスティック コンカレンシー** では、それぞれのトランザクションがコミットでき、そのためリソース ロックが一切使用されないことを前提としています。  オプティミスティック コンカレンシーではトランザクションをコミットする前に、他のトランザクションがそのデータを変更していないことを確認します。 データが変更されている場合、トランザクションのコミットはロール バックされます。
 
 Mobile Apps はオプティミスティック コンカレンシーをサポートしており、モバイル アプリ バックエンドで各テーブルに定義されている `version` システム プロパティ列を使用して各項目の変更を追跡します。 レコードが更新されるたびに、Mobile Apps はそのレコードの `version` プロパティを新しい値に設定します。 各更新要求の際に、要求に含まれているレコードの `version` プロパティが、サーバー上のレコードの同じプロパティと比較されます。 要求で渡されたバージョンがバックエンドと一致しない場合、クライアント ライブラリは `MobileServicePreconditionFailedException<T>` 例外を生成します。 例外に含まれている型は、レコードのサーバー側のバージョンを含んでいるバックエンドのレコードです。 アプリケーションはこの情報を使用して、バックエンドからの正しい `version` 値で更新要求をもう一度実行して変更をコミットするかどうかを判断できます。
@@ -1031,26 +1031,26 @@ public class MyHandler : DelegatingHandler
 [3]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 [4]: https://msdn.microsoft.com/library/azure/mt419521(v=azure.10).aspx
 [5]: https://github.com/Azure-Samples
-[6]: http://www.newtonsoft.com/json/help/html/Properties_T_Newtonsoft_Json_JsonPropertyAttribute.htm
+[6]: https://www.newtonsoft.com/json/help/html/Properties_T_Newtonsoft_Json_JsonPropertyAttribute.htm
 [7]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller
 [8]: app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations
 [9]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/
-[10]: http://www.symbolsource.org/
+[10]: https://github.com/SymbolSource/SymbolSource
 [11]: http://www.symbolsource.org/Public/Wiki/Using
 [12]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
 [アプリケーションへの認証の追加]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [Azure Mobile Apps でのオフライン データ同期]: app-service-mobile-offline-data-sync.md
 [アプリにプッシュ通知を追加する]: app-service-mobile-windows-store-dotnet-get-started-push.md
-[Register your app to use a Microsoft account login]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Azure Active Directory ログインを使用するように App Service を構成する方法]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[Register your app to use a Microsoft account login]: ../app-service/configure-authentication-provider-microsoft.md
+[Azure Active Directory ログインを使用するように App Service を構成する方法]: ../app-service/configure-authentication-provider-aad.md
 
 <!-- Microsoft URLs. -->
 [MobileServiceCollection]: https://msdn.microsoft.com/library/azure/dn250636(v=azure.10).aspx
 [MobileServiceIncrementalLoadingCollection]: https://msdn.microsoft.com/library/azure/dn268408(v=azure.10).aspx
-[LoginAsync]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
-[MobileServiceUser]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser(v=azure.10).aspx
-[MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken(v=azure.10).aspx
+[LoginAsync]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
+[MobileServiceUser]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser(v=azure.10).aspx
+[MobileServiceAuthenticationToken]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken(v=azure.10).aspx
 [GetTable]: https://msdn.microsoft.com/library/azure/jj554275(v=azure.10).aspx
 [型指定されていないテーブルへの参照を作成]: https://msdn.microsoft.com/library/azure/jj554278(v=azure.10).aspx
 [DeleteAsync]: https://msdn.microsoft.com/library/azure/dn296407(v=azure.10).aspx
@@ -1066,24 +1066,24 @@ public class MyHandler : DelegatingHandler
 [Select]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
 [Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
-[UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
+[UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
-[ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
+[ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
 [Windows デベロッパー センター]: https://dev.windows.com/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
-[PasswordVault]: http://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
-[ProtectedData]: http://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
+[PasswordVault]: https://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
+[ProtectedData]: https://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
 [Notification Hubs API]: https://msdn.microsoft.com/library/azure/dn495101.aspx
 [Mobile Apps ファイル サンプル]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
 [LoggingHandler]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files/blob/master/src/client/MobileAppsFilesSample/Helpers/LoggingHandler.cs#L63
 
 <!-- External URLs -->
-[OData v3 のドキュメント]: http://www.odata.org/documentation/odata-version-3-0/
-[Fiddler]: http://www.telerik.com/fiddler
-[Json.NET]: http://www.newtonsoft.com/json
+[OData v3 のドキュメント]: https://www.odata.org/documentation/odata-version-3-0/
+[Fiddler]: https://www.telerik.com/fiddler
+[Json.NET]: https://www.newtonsoft.com/json
 [Xamarin.Auth]: https://components.xamarin.com/view/xamarin.auth/
 [AuthStore.cs]: https://github.com/azure-appservice-samples/ContosoMoments
 [ContosoMoments photo sharing sample]: https://github.com/azure-appservice-samples/ContosoMoments

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: a5f6f09ee6c8504b64cad7ef5313501a65907a90
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 02821abd8769a89fc1c7ad9d0dd5cf4e5a245e5f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632596"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435312"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する
 
@@ -29,7 +29,7 @@ Apache Hadoop ストリーミングは、スクリプトまたは実行可能フ
 
 __Linux ベースの HDInsight__ クラスターでは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](../hdinsight-component-versioning.md)」を参照してください。 特定のバージョンの Mono を使用する方法については、[Mono のインストールと更新](../hdinsight-hadoop-install-mono.md)に関するドキュメントを参照してください。
 
-.NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](http://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
+.NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
 
 ## <a name="how-hadoop-streaming-works"></a>Hadoop ストリーミングのしくみ
 
@@ -55,7 +55,7 @@ __Linux ベースの HDInsight__ クラスターでは、[Mono (https://mono-pro
 
 ## <a name="create-the-mapper"></a>マッパーの作成
 
-Visual Studio で、__マッパー__ と呼ばれる新しい __コンソール アプリケーション__ を作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、__マッパー__と呼ばれる新しい__コンソール アプリケーション__を作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -92,7 +92,7 @@ namespace mapper
 
 ## <a name="create-the-reducer"></a>レジューサの作成
 
-Visual Studio で、__レジューサ__ と呼ばれる新しい __コンソール アプリケーション__ を作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、__レジューサ__と呼ばれる新しい__コンソール アプリケーション__を作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -155,17 +155,17 @@ namespace reducer
 
     ![クラスターのストレージ アカウントを表示するサーバー エクスプローラー](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/storage.png)
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__ を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
+    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
 
-    * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Store__ を使用します。 クラスターの既定のストレージにファイルを表示するには、__(既定のストレージ アカウント)__ エントリをダブルクリックします。
+    * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Storage__ を使用します。 クラスターの既定のストレージにファイルを表示するには、__(既定のストレージ アカウント)__ エントリをダブルクリックします。
 
 5. .exe file をアップロードするには、次のいずれかの手順に従ってください。
 
-    * __Azure Storage アカウント__ を使用している場合は、アップロード アイコンをクリックし、**マッパー** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**mapper.exe** ファイルを選択し、**[OK]** をクリックします。
+    * __Azure Storage アカウント__を使用している場合は、アップロード アイコンをクリックし、**マッパー** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**mapper.exe** ファイルを選択し、**[OK]** をクリックします。
 
         ![アップロード アイコン](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     
-    * __Azure Data Lake Store__ を使用している場合は、ファイル一覧の空の領域を右クリックし、__[アップロード]__ を選択します。 最後に、**mapper.exe** ファイルを選択し、**[開く]** をクリックします。
+    * __Azure Data Lake Storage__ を使用している場合は、ファイルの一覧の空の領域を右クリックし、__[アップロード]__ を選択します。 最後に、**mapper.exe** ファイルを選択し、**[開く]** をクリックします。
 
     __mapper.exe__ のアップロードが完了したら、 __reducer.exe__ ファイルのアップロード プロセスを繰り返します。
 
@@ -175,7 +175,7 @@ namespace reducer
 
 2. MapReduce ジョブを開始するには、次のいずれかのコマンドを使用します。
 
-    * 既定のストレージとして __Data Lake Store__ を使用している場合:
+    * 既定のストレージとして __Data Lake Storage__ を使用している場合:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
@@ -189,12 +189,12 @@ namespace reducer
 
     次の一覧に、各パラメーターの動作を示します。
 
-    * `hadoop-streaming.jar`: ストリーミング MapReduce 機能を含む jar ファイル。
-    * `-files`: このジョブに `mapper.exe` および `reducer.exe` ファイルを追加します。 各ファイルの前の `adl:///` または `wasb:///` は、クラスターの既定のストレージのルートへのパスです。
-    * `-mapper`: マッパーを実装するファイルを指定します。
-    * `-reducer`: レジューサを実装するファイルを指定します。
-    * `-input`: 入力データ。
-    * `-output`: 出力ディレクトリ。
+    * `hadoop-streaming.jar`:ストリーミング MapReduce 機能を含む jar ファイル。
+    * `-files`:このジョブに `mapper.exe` および `reducer.exe` ファイルを追加します。 各ファイルの前の `adl:///` または `wasb:///` は、クラスターの既定のストレージのルートへのパスです。
+    * `-mapper`:マッパーを実装するファイルを指定します。
+    * `-reducer`:レジューサを実装するファイルを指定します。
+    * `-input`:入力データ。
+    * `-output`:出力ディレクトリ。
 
 3. MapReduce ジョブが完了したら、次のコマンドを使用して結果を表示します。
 
@@ -214,7 +214,7 @@ namespace reducer
         yourselves      3
         youth   17
 
-## <a name="run-a-job-using-powershell"></a>ジョブの実行: PowerShell を使用
+## <a name="run-a-job-using-powershell"></a>ジョブの実行: PowerShell の使用
 
 次の PowerShell スクリプトを使用して、MapReduce ジョブを実行し、結果をダウンロードします。
 
@@ -236,6 +236,6 @@ namespace reducer
 
 HDInsight での MapReduce の使用方法の詳細については、[HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)に関するページを参照してください。
 
-Hive および Pig での C# の使用方法の詳細については、[Hive および Pig での C# ユーザー定義関数](apache-hadoop-hive-pig-udf-dotnet-csharp.md)を参照してください。
+Hive および Pig での C# の使用については、[Apache Hive および Apache Pig での C# ユーザー定義関数の使用](apache-hadoop-hive-pig-udf-dotnet-csharp.md)に関するページを参照してください。
 
-HDInsight における Storm での C# の使用方法の詳細については、[HDInsight での Storm の C# トポロジ開発](../storm/apache-storm-develop-csharp-visual-studio-topology.md)を参照してください。
+HDInsight における Storm での C# の使用については、[HDInsight での Apache Storm の C# トポロジ開発](../storm/apache-storm-develop-csharp-visual-studio-topology.md)を参照してください。

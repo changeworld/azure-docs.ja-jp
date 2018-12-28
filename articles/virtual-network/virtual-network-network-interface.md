@@ -224,7 +224,7 @@ Azure Network Watcher の IP フロー検証機能も、セキュリティ規則
 **コマンド**
 
 - Azure CLI: [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
-- PowerShell: [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup)
+- PowerShell: [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup) 
 
 ### <a name="view-effective-routes"></a>有効なルートの表示
 
@@ -247,7 +247,7 @@ Azure Network Watcher の次ホップ機能も、ルートが仮想マシンと�
 
 ネットワーク インターフェイスに関するタスクを実行するには、使用するアカウントが[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表の適切なアクセス許可が割り当てられた[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに、割り当てられている必要があります。
 
-| アクションを表示します。                                                                     | Name                                                      |
+|  アクションを表示します。                                                                     | Name                                                      |
 | ---------                                                                  | -------------                                             |
 | Microsoft.Network/networkInterfaces/read                                   | ネットワーク インターフェイスを取得する                                     |
 | Microsoft.Network/networkInterfaces/write                                  | ネットワーク インターフェイスを作成または更新する                        |

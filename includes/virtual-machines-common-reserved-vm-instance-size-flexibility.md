@@ -1,15 +1,15 @@
 ---
 author: manish-shukla01
-ms.author: manshuk
+ms.author: cwatson
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 08-03-2018
-ms.openlocfilehash: 41216fe12e10f72f76043f1a8bc361b538259ac1
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.date: 11-20-2018
+ms.openlocfilehash: 044f735560eb7d57a90a16c1e3ce1255a9fe0d54
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39721194"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742505"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Reserved VM Instances での仮想マシン サイズの柔軟性
 
@@ -30,9 +30,9 @@ ms.locfileid: "39721194"
 
  予約仮想マシン インスタンスをサイズ Standard_DS4_v2 で購入するとします。ここで、比率、またはこのシリーズ内の他のサイズと比較した相対的なフットプリントは、8 です。
 
-- シナリオ 1: Standard_DS1_v2 サイズの VM を、比率 1 で 8 つ実行します。 これらの 8 つの VM すべてに、予約割引が適用されます。
-- シナリオ 2: Standard_DS2_v2 サイズの VM を、各比率 2 で2 つ実行します。 また、Standard_DS3_v2 サイズの VM を、比率 4 で実行します。 フットプリントの合計は 2 + 2 + 4 = 8 です。 したがって、これらの 3 つの VM すべてに、予約割引が適用されます。
-- シナリオ 3: Standard_DS5_v2 を、比率 16 で 1 つ実行します。 その VM のコンピューティング コストの半分に、予約割引が適用されます。
+- シナリオ 1:Standard_DS1_v2 サイズの VM を、比率 1 で 8 つ実行します。 これらの 8 つの VM すべてに、予約割引が適用されます。
+- シナリオ 2:Standard_DS2_v2 サイズの VM を、各比率 2 で2 つ実行します。 また、Standard_DS3_v2 サイズの VM を、比率 4 で実行します。 フットプリントの合計は 2 + 2 + 4 = 8 です。 したがって、これらの 3 つの VM すべてに、予約割引が適用されます。
+- シナリオ 3:Standard_DS5_v2 を、比率 16 で 1 つ実行します。 その VM のコンピューティング コストの半分に、予約割引が適用されます。
 
 次のセクションでは、インスタンス サイズの柔軟性に向けて最適化された予約 VM インスタンスを購入する際に、同じサイズ シリーズのグループ内にあるサイズを示します。
 
@@ -117,9 +117,16 @@ ms.locfileid: "39721194"
 | サイズ | 比率|
 |---|---|
 |Standard_DS11_v2|1|
+|Standard_DS11-1_v2|1|
 |Standard_DS12_v2|2|
+|Standard_DS12-1_v2|2|
+|Standard_DS12-2_v2|2|
 |Standard_DS13_v2|4|
+|Standard_DS13-2_v2|4|
+|Standard_DS13-4_v2|4|
 |Standard_DS14_v2|8|
+|Standard_DS14-4_v2|8|
+|Standard_DS14-8_v2|8|
 |Standard_DS15_v2|10|
 
 詳しくは、「[メモリ最適化済み仮想マシンのサイズ](../articles/virtual-machines/windows/sizes-memory.md#dsv2-series-11-15)」をご覧ください。
@@ -178,12 +185,21 @@ ms.locfileid: "39721194"
 
 | サイズ | 比率|
 |---|---|
-| Standard_E2s_v3|1|
+|Standard_E2s_v3|1|
 |Standard_E4s_v3|2|
+|Standard_E4-2s_v3|2|
 |Standard_E8s_v3|4|
+|Standard_E8-2s_v3|4|
+|Standard_E8-4s_v3|4|
 |Standard_E16s_v3|8|
+|Standard_E16-4s_v3|8|
+|Standard_E16-8s_v3|8|
 |Standard_E32s_v3|16|
+|Standard_E32-8s_v3|16|
+|Standard_E32-16s_v3|16|
 |Standard_E64s_v3|32|
+|Standard_E64-16s_v3|32|
+|Standard_E64-32s_v3|32|
 
 詳しくは、「[メモリ最適化済み仮想マシンのサイズ](../articles/virtual-machines/windows/sizes-memory.md#esv3-series)」をご覧ください。
 
@@ -289,9 +305,15 @@ Standard_F16|16|
 
 | サイズ | 比率|
 |---|---|
-| Standard_M8ms|1|
+|Standard_M8ms|1|
+|Standard_M8-2ms|1|
+|Standard_M8-4ms|1|
 |Standard_M16ms|2|
+|Standard_M16-4ms|2|
+|Standard_M16-8ms|2|
 |Standard_M32ms|4|
+|Standard_M32-8ms|4|
+|Standard_M32-16ms|4|
 
 詳しくは、「[メモリ最適化済み仮想マシンのサイズ](../articles/virtual-machines/windows/sizes-memory.md#m-series)」をご覧ください。
 
@@ -309,7 +331,11 @@ Standard_F16|16|
 | サイズ | 比率|
 |---|---|
 | Standard_M64ms|1|
+|Standard_M64-16ms|1|
+|Standard_M64-32ms|1|
 |Standard_M128ms|2|
+|Standard_M128-32ms|2|
+|Standard_M128-64ms|2|
 
 詳しくは、「[メモリ最適化済み仮想マシンのサイズ](../articles/virtual-machines/windows/sizes-memory.md#m-series)」をご覧ください。
 

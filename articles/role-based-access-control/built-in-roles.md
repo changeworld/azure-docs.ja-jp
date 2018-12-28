@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/26/2018
+ms.date: 12/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 58bec272733d0ad83665f4e06f37ae528eb2f8b9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d6696d9bdd69b085b9c9ac0804da68cd91612f35
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499656"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386963"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 [ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
@@ -92,13 +92,13 @@ ms.locfileid: "52499656"
 | [Managed Identity Operator](#managed-identity-operator) | ユーザー割り当て ID の読み取りと割り当てを行います |
 | [管理グループ共同作成者](#management-group-contributor) | 管理グループ共同作成者ロール |
 | [管理グループ閲覧者](#management-group-reader) | 管理グループ閲覧者ロール |
-| [Monitoring Contributor](#monitoring-contributor) | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
+| [Monitoring Contributor](#monitoring-contributor) | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
 | [監視メトリック パブリッシャー](#monitoring-metrics-publisher) | Azure リソースに対するメトリックの公開を有効にします |
-| [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
+| [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
 | [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [New Relic APM Account Contributor](#new-relic-apm-account-contributor) | New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 |
-| [Redis Cache Contributor](#redis-cache-contributor) | Redis Caches を管理できます。ただし、それらへのアクセスは含まれません。 |
+| [Azure Cache for Redis の共同作成者](#redis-cache-contributor) | Azure Cache for Redis を管理できます。ただし、それらへのアクセスは含まれません。 |
 | [リソース ポリシーの共同作成者 (プレビュー)](#resource-policy-contributor-preview) | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 |
 | [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) | スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 |
@@ -114,6 +114,7 @@ ms.locfileid: "52499656"
 | [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントを管理できますが、アクセスすることはできません。 |
 | [ストレージ アカウント キー オペレーターのサービス ロール](#storage-account-key-operator-service-role) | ストレージ アカウント キー オペレーターは、ストレージ アカウントでのキーの一覧表示と再生成を行うことができます |
 | [ストレージ BLOB データ共同作成者 (プレビュー)](#storage-blob-data-contributor-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
+| [ストレージ BLOB データ所有者 (プレビュー)](#storage-blob-data-owner-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセス、POSIX スーパーユーザー アクセスを許可します |
 | [ストレージ BLOB データ閲覧者 (プレビュー)](#storage-blob-data-reader-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセスを許可します |
 | [ストレージ キュー データ共同作成者 (プレビュー)](#storage-queue-data-contributor-preview) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
 | [ストレージ キュー データ閲覧者 (プレビュー)](#storage-queue-data-reader-preview) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセスを許可します |
@@ -1193,7 +1194,7 @@ ms.locfileid: "52499656"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
+> | **説明** | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
 > | **Id** | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
@@ -1237,7 +1238,7 @@ ms.locfileid: "52499656"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
+> | **説明** | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
 > | **Id** | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
@@ -1284,15 +1285,15 @@ ms.locfileid: "52499656"
 > | Microsoft.Storage/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 
-## <a name="redis-cache-contributor"></a>Redis Cache Contributor
+## <a name="azure-cache-for-redis-contributor"></a>Azure Cache for Redis の共同作成者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Redis Caches を管理できます。ただし、それらへのアクセスは含まれません。 |
+> | **説明** | Azure Cache for Redis を管理できます。ただし、それらへのアクセスは含まれません。 |
 > | **Id** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Cache/redis/* | Redis キャッシュの作成と管理 |
+> | Microsoft.Cache/redis/* | Azure Cache for Redis の作成と管理 |
 > | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
@@ -1687,6 +1688,21 @@ ms.locfileid: "52499656"
 > | --- | --- |
 > | **説明** | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
 > | **Id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | **アクション** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | コンテナーを削除した結果を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | BLOB コンテナーの設定またはリースの結果を返します。 |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | BLOB の書き込みの結果を返します。 |
+
+## <a name="storage-blob-data-owner-preview"></a>ストレージ BLOB データ所有者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセス、POSIX スーパーユーザー アクセスを許可します |
+> | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | コンテナーを削除した結果を返します。 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |

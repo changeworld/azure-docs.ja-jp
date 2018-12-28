@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2018
+ms.date: 12/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 445611338b0b2895d83626e8cf450dc8d1cb27a6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 46dfb96df7b16fe03bd5c2c69fd9e2e33b04bbd2
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406401"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408580"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -94,7 +94,7 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 - Windows Phone
 
-- Windows
+-  Windows
 
 - macOS
 
@@ -179,22 +179,29 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 |---|---|---|
 |Azure リモート アプリ|Azure Remote App サービス|Windows 10、Windows 8.1、Windows 7、iOS、Android、Mac OS X|
 |Dynamics CRM アプリ|Dynamics CRM|Windows 10、Windows 8.1、iOS、Android|
-|メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)|Office 365 Exchange Online|Windows 10|
+|メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 |Office 365 Exchange Online|Windows 10|
 |アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。 |任意のマイ アプリ アプリ サービス|Android および iOS|
 |Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する|Microsoft Teams|Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS |
-|Office 2016 アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)|Office 365 SharePoint Online|Windows 8.1、Windows 7|
-|Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定|Office 365 SharePoint Online|Windows 10|
+|Office 2016 アプリ、Office 2013、OneDrive 同期クライアント ([メモ](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)|Office 365 SharePoint Online|Windows 8.1、Windows 7|
+|Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013、OneDrive 同期クライアント ([メモ](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定|Office 365 SharePoint Online|Windows 10|
 |Office 2016 for macOS (Word、Excel、PowerPoint、OneNote のみ)。 OneDrive for Business は将来サポート予定|Office 365 SharePoint Online|Mac OS X|
 |Office モバイル アプリ|Office 365 SharePoint Online|Android、iOS|
 |Office Yammer アプリ|Office 365 Yammer|Windows 10、iOS、Android|
 |Outlook 2016 (Office for macOS)|Office 365 Exchange Online|Mac OS X|
-|Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)|Office 365 Exchange Online|Windows 8.1、Windows 7|
+|Outlook 2016、Outlook 2013、Skype for Business|Office 365 Exchange Online|Windows 8.1、Windows 7|
 |Outlook Mobile アプリ|Office 365 Exchange Online|Android、iOS|
 |PowerBI アプリ|PowerBI サービス|Windows 10、Windows 8.1、Windows 7、Android、iOS|
 |Skype for Business|Office 365 Exchange Online|Android、IOS |
 |Azure DevOps アプリ|Azure DevOps|Windows 10、Windows 8.1、Windows 7、iOS、Android|
 
 
+## <a name="support-for-legacy-authentication"></a>レガシ認証のサポート
+
+**[その他のクライアント]** を選択することで、基本認証とメール プロトコル (IMAP、MAPI、POP、SMTP など) を使用するアプリや、先進認証を使用しない以前の Office アプリに影響を及ぼすポリシーを指定できます。  
+
+![その他のクライアント](./media/technical-reference/11.png)
+
+詳しくは、[クライアント アプリ](conditions.md#client-apps)に関するページをご覧ください。
 
 ## <a name="approved-client-app-requirement"></a>承認されたクライアント アプリケーションの要件 
 

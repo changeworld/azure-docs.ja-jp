@@ -1,5 +1,5 @@
 ---
-title: Azure Search の複数言語インデックス | Microsoft Docs
+title: 英語以外の検索クエリの多言語インデックス作成 - Azure Search
 description: Azure Search では 56 の言語がサポートされており、Lucene の言語アナライザーや Microsoft の自然言語処理テクノロジが利用されています。
 author: yahnoosh
 manager: jlembicz
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 38f93f5415282d2f976d9f3acc2b0a7aeead6c3d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec2018
+ms.openlocfilehash: 3f88965e0d48a9ed3e9a91b4df42a79b83d2a79b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093356"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313328"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Azure Search でドキュメントのインデックスを複数の言語で作成する
 > [!div class="op_single_selector"]

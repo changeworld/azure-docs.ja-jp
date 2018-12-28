@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 396dbfcfd13f508c33d8a1bb7370d9170b8f8a56
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 22af5b4b757fed83e5c9b23426283d2fb4c4867f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499694"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410535"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
@@ -80,7 +80,7 @@ ms.locfileid: "52499694"
 > | Action | Microsoft.ADHybridHealthService/addsservices/features/userpreference/read | フォレストのユーザーの基本設定を取得します。<br>たとえば、ldapsuccessfulbinds、ntlmauthentications、kerberosauthentications、addsinsightsagentprivatebytes、ldapsearches などの MetricCounterName です。<br>UI グラフなどの設定。 |
 > | Action | Microsoft.ADHybridHealthService/addsservices/forestsummary/read | フォレスト名、このフォレスト以下にあるドメイン数、サイト数、サイトの詳細など、特定のフォレストの概要を取得します。 |
 > | Action | Microsoft.ADHybridHealthService/addsservices/metricmetadata/read | 特定のサービスでサポートされているメトリックの一覧を取得します。<br>たとえば、ADFS サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒など。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for ADSync サービスへのエクスポート。 |
-> | Action | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | サービスが指定されている場合、この API はメトリック情報を取得します。<br>たとえば、この API を使用して、ADFederation サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒などの情報を取得できます。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for Sync サービスへのエクスポート。 |
+> | Action | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | サービスが指定されている場合、この API はメトリック情報を取得します。<br>たとえば、この API を使用して、以下のものに関連する情報を取得できます。ADFederation サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒など。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for Sync サービスへのエクスポート。 |
 > | Action | Microsoft.ADHybridHealthService/addsservices/premiumcheck/read | この API は、Premium テナントのすべてのオンボード ADDomainServices の一覧を取得します。 |
 > | Action | Microsoft.ADHybridHealthService/addsservices/read | 指定されたサービス名のサービスの詳細を取得します。 |
 > | Action | Microsoft.ADHybridHealthService/addsservices/replicationdetails/read | 指定されたサービス名のすべてのサーバーについてレプリケーションの詳細を取得します。 |
@@ -115,9 +115,9 @@ ms.locfileid: "52499694"
 > | Action | Microsoft.ADHybridHealthService/services/exportstatus/read | 指定されたサービスのエクスポート状態を取得します。 |
 > | Action | Microsoft.ADHybridHealthService/services/feedbacktype/feedback/read | 指定されたサービスとサーバーに対するアラートのフィードバックを取得します。 |
 > | Action | Microsoft.ADHybridHealthService/services/metricmetadata/read | 特定のサービスでサポートされているメトリックの一覧を取得します。<br>たとえば、ADFS サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒など。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for ADSync サービスへのエクスポート。 |
-> | Action | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | サービスが指定されている場合、この API はそのサービスのメトリックの平均を取得します。<br>たとえば、この API を使用して、ADFederation サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒などの情報を取得できます。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for Sync サービスへのエクスポート。 |
-> | Action | Microsoft.ADHybridHealthService/services/metrics/groups/read | サービスが指定されている場合、この API はメトリック情報を取得します。<br>たとえば、この API を使用して、ADFederation サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒などの情報を取得できます。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for Sync サービスへのエクスポート。 |
-> | Action | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | サービスが指定されている場合、この API はそのサービスの集計ビューを取得します。<br>たとえば、この API を使用して、ADFederation サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒などの情報を取得できます。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for Sync サービスへのエクスポート。 |
+> | Action | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | サービスが指定されている場合、この API はそのサービスのメトリックの平均を取得します。<br>たとえば、この API を使用して、以下のものに関連する情報を取得できます。ADFederation サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒など。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for Sync サービスへのエクスポート。 |
+> | Action | Microsoft.ADHybridHealthService/services/metrics/groups/read | サービスが指定されている場合、この API はメトリック情報を取得します。<br>たとえば、この API を使用して、以下のものに関連する情報を取得できます。ADFederation サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒など。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for Sync サービスへのエクスポート。 |
+> | Action | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | サービスが指定されている場合、この API はそのサービスの集計ビューを取得します。<br>たとえば、この API を使用して、以下のものに関連する情報を取得できます。ADFederation サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒など。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for Sync サービスへのエクスポート。 |
 > | Action | Microsoft.ADHybridHealthService/services/monitoringconfiguration/write | サービスの監視構成を追加または更新します。 |
 > | Action | Microsoft.ADHybridHealthService/services/monitoringconfigurations/read | 指定されたサービスの監視構成を取得します。 |
 > | Action | Microsoft.ADHybridHealthService/services/monitoringconfigurations/write | サービスの監視構成を追加または更新します。 |
@@ -130,7 +130,7 @@ ms.locfileid: "52499694"
 > | Action | Microsoft.ADHybridHealthService/services/servicemembers/datafreshness/read | サーバーが指定されている場合、この API は、サーバーによってアップロードされているデータ型と各アップロードの最終時刻の一覧を取得します。 |
 > | Action | Microsoft.ADHybridHealthService/services/servicemembers/delete | サービスのサーバー インスタンスを削除します。 |
 > | Action | Microsoft.ADHybridHealthService/services/servicemembers/exportstatus/read | 指定された同期サービスの同期エクスポート エラーの詳細を取得します。 |
-> | Action | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | サービスが指定されている場合、この API はメトリック情報を取得します。<br>たとえば、この API を使用して、ADFederation サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒などの情報を取得できます。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for Sync サービスへのエクスポート。 |
+> | Action | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | サービスが指定されている場合、この API はメトリック情報を取得します。<br>たとえば、この API を使用して、以下のものに関連する情報を取得できます。ADFederation サービスのエクストラネット アカウント ロックアウト、失敗した要求の総数、未処理のトークン要求 (プロキシ)、トークン要求/秒など。<br>ADDomainService の NTLM 認証/秒、LDAP 成功バインド数/秒、LDAP バインド時間、LDAP アクティブ スレッド数、Kerberos 認証数/秒、ADQ スレッド総数など。<br>実行プロファイルの待機時間、確立された TCP 接続、Insights エージェントのプライベート バイト、統計情報の Azure AD for Sync サービスへのエクスポート。 |
 > | Action | Microsoft.ADHybridHealthService/services/servicemembers/read | サービスのサーバー インスタンスを読み取ります。 |
 > | Action | Microsoft.ADHybridHealthService/services/servicemembers/serviceconfiguration/read | 指定されたテナントのサービス構成を取得します。 |
 > | Action | Microsoft.ADHybridHealthService/services/tenantwhitelisting/read | 指定されたテナントの機能のホワイトリスト登録状態を取得します。 |
@@ -600,38 +600,6 @@ ms.locfileid: "52499694"
 > | Action | Microsoft.Batch/register/action | Batch リソース プロバイダーにサブスクリプションを登録し、Batch アカウントを作成できるようにします。 |
 > | Action | Microsoft.Batch/unregister/action | Batch リソース プロバイダーのサブスクリプションを登録解除し、Batch アカウントを作成できないようにします。 |
 
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-
-> [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
-> | --- | --- | --- |
-> | Action | Microsoft.BatchAI/clusters/read | Batch AI クラスターを一覧表示するか、Batch AI クラスターのプロパティを取得します。 |
-> | Action | Microsoft.BatchAI/fileservers/read | Batch AI ファイル サーバーを一覧表示するか、Batch AI ファイル サーバーのプロパティを取得します。 |
-> | Action | Microsoft.BatchAI/locations/operationresults/read | 指定された Azure リージョンにおける Batch AI 非同期操作の結果を取得します。 |
-> | Action | Microsoft.BatchAI/locations/operationstatuses/read | 指定された Azure リージョンにおける Batch AI 非同期操作の状態を取得します。 |
-> | Action | Microsoft.BatchAI/locations/usages/read | 指定された Azure リージョンの指定されたサブスクリプションの Batch AI の使用状況を取得します。 |
-> | Action | Microsoft.BatchAI/register/action | Batch AI リソース プロバイダーにサブスクリプションを登録し、Batch AI リソースを作成できるようにします。 |
-> | Action | Microsoft.BatchAI/unregister/action | Batch AI リソースの作成を妨げている Batch AI リソース プロバイダーのサブスクリプションの登録を解除します。 |
-> | Action | Microsoft.BatchAI/workspaces/clusters/delete | Batch AI クラスターを削除します。 |
-> | Action | Microsoft.BatchAI/workspaces/clusters/read | Batch AI クラスターを一覧表示するか、Batch AI クラスターのプロパティを取得します。 |
-> | Action | Microsoft.BatchAI/workspaces/clusters/remoteLoginInformation/action | Batch AI クラスターのリモート ログイン情報を一覧表示します。 |
-> | Action | Microsoft.BatchAI/workspaces/clusters/write | 新しい Batch AI クラスターを作成するか、既存の Batch AI クラスターを更新します。 |
-> | Action | Microsoft.BatchAI/workspaces/delete | Batch AI ワークスペースを削除します。 |
-> | Action | Microsoft.BatchAI/workspaces/experiments/delete | Batch AI 実験を削除します。 |
-> | Action | Microsoft.BatchAI/workspaces/experiments/jobs/delete | Batch AI ジョブを削除します。 |
-> | Action | Microsoft.BatchAI/workspaces/experiments/jobs/listoutputfiles/action | Batch AI ジョブの出力ファイルを一覧表示します。 |
-> | Action | Microsoft.BatchAI/workspaces/experiments/jobs/read | Batch AI ジョブを一覧表示するか、Batch AI ジョブのプロパティを取得します。 |
-> | Action | Microsoft.BatchAI/workspaces/experiments/jobs/remoteLoginInformation/action | Batch AI ジョブのリモート ログイン情報を一覧表示します。 |
-> | Action | Microsoft.BatchAI/workspaces/experiments/jobs/terminate/action | Batch AI ジョブを終了します。 |
-> | Action | Microsoft.BatchAI/workspaces/experiments/jobs/write | 新しい Batch AI ジョブを作成するか、既存の Batch AI ジョブを更新します。 |
-> | Action | Microsoft.BatchAI/workspaces/experiments/read | Batch AI 実験を一覧表示するか、Batch AI 実験のプロパティを取得します。 |
-> | Action | Microsoft.BatchAI/workspaces/experiments/write | 新しい Batch AI 実験を作成するか、既存の Batch AI 実験を更新します。 |
-> | Action | Microsoft.BatchAI/workspaces/fileservers/delete | Batch AI ファイル サーバーを削除します。 |
-> | Action | Microsoft.BatchAI/workspaces/fileservers/read | Batch AI ファイル サーバーを一覧表示するか、Batch AI ファイル サーバーのプロパティを取得します。 |
-> | Action | Microsoft.BatchAI/workspaces/fileservers/write | 新しい Batch AI ファイル サーバーを作成するか、既存の Batch AI ファイル サーバーを更新します。 |
-> | Action | Microsoft.BatchAI/workspaces/read | Batch AI ワークスペースを一覧表示するか、Batch AI ワークスペースのプロパティを取得します。 |
-> | Action | Microsoft.BatchAI/workspaces/write | 新しい Batch AI ワークスペースを作成するか、既存の Batch AI ワークスペースを更新します。 |
-
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
 > [!div class="mx-tdCol2BreakAll"]
@@ -695,31 +663,31 @@ ms.locfileid: "52499694"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
-> | Action | Microsoft.Cache/checknameavailability/action | 新しい Redis Cache で名前を使用できるかどうかを確認します。 |
+> | Action | Microsoft.Cache/checknameavailability/action | 新しい Azure Cache for Redis で名前を使用できるかどうかを確認します |
 > | Action | Microsoft.Cache/locations/operationresults/read | 前に "Location" ヘッダーがクライアントに返された、実行時間の長い操作の結果を取得します。 |
 > | Action | Microsoft.Cache/operations/read | "Microsoft.Cache" プロバイダーがサポートする操作を一覧表示します。 |
-> | Action | Microsoft.Cache/redis/delete | Redis Cache 全体を削除します。 |
+> | Action | Microsoft.Cache/redis/delete | Azure Cache for Redis 全体を削除します |
 > | Action | Microsoft.Cache/redis/export/action | 指定された形式のプレフィックス付きストレージ BLOB に Redis データをエクスポートします。 |
-> | Action | Microsoft.Cache/redis/firewallRules/delete | Redis Cache の IP ファイアウォール規則を削除します。 |
-> | Action | Microsoft.Cache/redis/firewallRules/read | Redis Cache の IP ファイアウォール規則を取得します。 |
-> | Action | Microsoft.Cache/redis/firewallRules/write | Redis Cache の IP ファイアウォール規則を編集します。 |
+> | Action | Microsoft.Cache/redis/firewallRules/delete | Azure Cache for Redis の IP ファイアウォール規則を削除します |
+> | Action | Microsoft.Cache/redis/firewallRules/read | Azure Cache for Redis の IP ファイアウォール規則を取得します |
+> | Action | Microsoft.Cache/redis/firewallRules/write | Azure Cache for Redis の IP ファイアウォール規則を編集します |
 > | Action | Microsoft.Cache/redis/forceReboot/action | キャッシュ インスタンスを強制的に再起動します。データが失われる可能性があります。 |
 > | Action | Microsoft.Cache/redis/import/action | 指定された形式のデータを複数の BLOB から Redis にインポートします。 |
-> | Action | Microsoft.Cache/redis/linkedservers/delete | Redis Cache からリンク サーバーを削除します。 |
-> | Action | Microsoft.Cache/redis/linkedservers/read | Redis Cache に関連付けられているリンク サーバーを取得します。 |
-> | Action | Microsoft.Cache/redis/linkedservers/write | Redis Cache にリンク サーバーを追加します。 |
-> | Action | Microsoft.Cache/redis/listKeys/action | 管理ポータルで Redis Cache のアクセス キーの値を表示します。 |
+> | Action | Microsoft.Cache/redis/linkedservers/delete | Azure Cache for Redis からリンク サーバーを削除します |
+> | Action | Microsoft.Cache/redis/linkedservers/read | Azure Cache for Redis に関連付けられているリンク サーバーを取得します。 |
+> | Action | Microsoft.Cache/redis/linkedservers/write | Azure Cache for Redis にリンク サーバーを追加します |
+> | Action | Microsoft.Cache/redis/listKeys/action | 管理ポータルで Azure Cache for Redis のアクセス キーの値を表示します |
 > | Action | Microsoft.Cache/redis/listUpgradeNotifications/read | キャッシュのテナントに対する最新のアップグレード通知を一覧表示します。 |
-> | Action | Microsoft.Cache/redis/metricDefinitions/read | Redis Cache の利用可能なメトリックを取得します。 |
-> | Action | Microsoft.Cache/redis/patchSchedules/delete | Redis Cache のパッチ スケジュールを削除します。 |
-> | Action | Microsoft.Cache/redis/patchSchedules/read | Redis Cache のパッチ スケジュールを取得します。 |
-> | Action | Microsoft.Cache/redis/patchSchedules/write | Redis Cache のパッチ スケジュールを変更します。 |
-> | Action | Microsoft.Cache/redis/read | 管理ポータルで Redis Cache の設定と構成を表示します。 |
-> | Action | Microsoft.Cache/redis/recommendations/read | Azure Redis Cache に関する推奨事項を読み取ります。 |
-> | Action | Microsoft.Cache/redis/regenerateKey/action | 管理ポータルで Redis Cache のアクセス キーの値を変更します。 |
+> | Action | Microsoft.Cache/redis/metricDefinitions/read | Azure Cache for Redis の利用可能なメトリックを取得します |
+> | Action | Microsoft.Cache/redis/patchSchedules/delete | Azure Cache for Redis のパッチ スケジュールを削除します |
+> | Action | Microsoft.Cache/redis/patchSchedules/read | Azure Cache for Redis のパッチ スケジュールを取得します |
+> | Action | Microsoft.Cache/redis/patchSchedules/write | Azure Cache for Redis のパッチ スケジュールを変更します |
+> | Action | Microsoft.Cache/redis/read | 管理ポータルで Azure Cache for Redis の設定と構成を表示します |
+> | Action | Microsoft.Cache/redis/recommendations/read | Azure Cache for Redis に関する推奨事項を確認します |
+> | Action | Microsoft.Cache/redis/regenerateKey/action | 管理ポータルで Azure Cache for Redis のアクセス キーの値を変更します |
 > | Action | Microsoft.Cache/redis/start/action | キャッシュ インスタンスを開始します。 |
 > | Action | Microsoft.Cache/redis/stop/action | キャッシュ インスタンスを停止します。 |
-> | Action | Microsoft.Cache/redis/write | 管理ポータルで Redis Cache の設定と構成を変更します。 |
+> | Action | Microsoft.Cache/redis/write | 管理ポータルで Azure Cache for Redis の設定と構成を変更します |
 > | Action | Microsoft.Cache/register/action | "Microsoft.Cache" リソース プロバイダーをサブスクリプションに登録します。 |
 > | Action | Microsoft.Cache/unregister/action | サブスクリプションへの "Microsoft.Cache" リソース プロバイダーの登録を解除します。 |
 
@@ -2680,24 +2648,24 @@ ms.locfileid: "52499694"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
-> | Action | Microsoft.LocationBasedServices/accounts/delete | (非推奨: /providers/Microsoft.Maps を使用してください) Location Based Services アカウントを削除します。 |
-> | Action | Microsoft.LocationBasedServices/accounts/listKeys/action | (非推奨: /providers/Microsoft.Maps を使用してください) Location Based Services アカウント キーの一覧を取得します。 |
-> | Action | Microsoft.LocationBasedServices/accounts/read | (非推奨: /providers/Microsoft.Maps を使用してください) Location Based Services アカウントを取得します。 |
-> | Action | Microsoft.LocationBasedServices/accounts/regenerateKey/action | (非推奨: /providers/Microsoft.Maps を使用してください) Location Based Services アカウントの新しい主キーまたは 2 次キーを生成します。 |
-> | Action | Microsoft.LocationBasedServices/accounts/write | (非推奨: /providers/Microsoft.Maps を使用してください) Location Based Services アカウントを作成または更新します。 |
-> | Action | Microsoft.LocationBasedServices/register/action | (非推奨: /providers/Microsoft.Maps を使用してください) プロバイダーを登録します。 |
+> | Action | Microsoft.LocationBasedServices/accounts/delete | (非推奨:/providers/Microsoft.Maps を使用してください) Location Based Services アカウントを削除します。 |
+> | Action | Microsoft.LocationBasedServices/accounts/listKeys/action | (非推奨:/providers/Microsoft.Maps を使用してください) Location Based Services アカウント キーの一覧を取得します |
+> | Action | Microsoft.LocationBasedServices/accounts/read | (非推奨:/providers/Microsoft.Maps を使用してください) Location Based Services アカウントを取得します。 |
+> | Action | Microsoft.LocationBasedServices/accounts/regenerateKey/action | (非推奨:/providers/Microsoft.Maps を使用してください) Location Based Services アカウントの新しいプライマリ キーまたはセカンダリ キーを生成します |
+> | Action | Microsoft.LocationBasedServices/accounts/write | (非推奨:/providers/Microsoft.Maps を使用してください) Location Based Services アカウントを作成または更新します。 |
+> | Action | Microsoft.LocationBasedServices/register/action | (非推奨:/providers/Microsoft.Maps を使用してください) プロバイダーを登録します |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
-> | Action | Microsoft.LocationServices/accounts/delete | (非推奨: /providers/Microsoft.Maps を使用してください) Location Services アカウントを削除します。 |
-> | Action | Microsoft.LocationServices/accounts/listKeys/action | (非推奨: /providers/Microsoft.Maps を使用してください) Location Based Services アカウント キーの一覧を取得します。 |
-> | Action | Microsoft.LocationServices/accounts/read | (非推奨: /providers/Microsoft.Maps を使用してください) Location Services アカウントを取得します。 |
-> | Action | Microsoft.LocationServices/accounts/regenerateKey/action | (非推奨: /providers/Microsoft.Maps を使用してください) Location Based Services アカウントの新しい主キーまたは 2 次キーを生成します。 |
-> | Action | Microsoft.LocationServices/accounts/write | (非推奨: /providers/Microsoft.Maps を使用してください) Location Services アカウントを作成または更新します。 |
-> | Action | Microsoft.LocationServices/register/action | (非推奨: /providers/Microsoft.Maps を使用してください) プロバイダーを登録します。 |
+> | Action | Microsoft.LocationServices/accounts/delete | (非推奨:/providers/Microsoft.Maps を使用してください) Location Services アカウントを削除します。 |
+> | Action | Microsoft.LocationServices/accounts/listKeys/action | (非推奨:/providers/Microsoft.Maps を使用してください) Location Based Services アカウント キーの一覧を取得します |
+> | Action | Microsoft.LocationServices/accounts/read | (非推奨:/providers/Microsoft.Maps を使用してください) Location Services アカウントを取得します。 |
+> | Action | Microsoft.LocationServices/accounts/regenerateKey/action | (非推奨:/providers/Microsoft.Maps を使用してください) Location Based Services アカウントの新しいプライマリ キーまたはセカンダリ キーを生成します |
+> | Action | Microsoft.LocationServices/accounts/write | (非推奨:/providers/Microsoft.Maps を使用してください) Location Services アカウントを作成または更新します。 |
+> | Action | Microsoft.LocationServices/register/action | (非推奨:/providers/Microsoft.Maps を使用してください) プロバイダーを登録します |
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 
