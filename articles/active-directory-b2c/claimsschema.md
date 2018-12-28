@@ -57,7 +57,7 @@ ms.locfileid: "51568644"
 | UserHelpText | 0:1 | 要求の目的を理解するのにユーザーに役立つ種類の説明。 値を[ローカライズ](localization.md)することができます。 |
 | UserInputType | 0:1 | 要求の種類の要求データを手動で入力するときに、ユーザーが利用できるような入力コントロールの種類。 このページの後半で定義されている、ユーザーにより入力された種類を参照してください。 |
 | 制限 | 0:1 | 正規表現 (Regex) または許容される値の一覧など、この要求に対する値の制限。 値を[ローカライズ](localization.md)することができます。 |
-PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参照。 **PredicateValidationReference**要素を使用すると、適切な形式のデータのみが入力されていることを確認する検証プロセスを実できます。 詳細については、[述語](predicates.md)を参照してください。 |
+| PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参照。 **PredicateValidationReference**要素を使用すると、適切な形式のデータのみが入力されていることを確認する検証プロセスを実できます。 詳細については、[述語](predicates.md)を参照してください。 |
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
