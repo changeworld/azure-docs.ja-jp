@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure Kubernetes Service (AKS) クラスターで Virtual Kubelet を実行する
 description: Azure Kubernetes Service (AKS) で Virtual Kubelet を使用して、Azure Container Instances 上で Linux および Windows コンテナーを実行する方法について説明します。
 services: container-service
@@ -87,9 +87,9 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 
 | 引数: | 説明 | 必須 |
 |---|---|:---:|
-| `--connector-name` | ACI コネクタの名前。| [はい] |
-| `--name` `-n` | マネージド クラスターの名前。 | [はい] |
-| `--resource-group` `-g` | リソース グループの名前。 | [はい] |
+| `--connector-name` | ACI コネクタの名前。| はい |
+| `--name` `-n` | マネージド クラスターの名前。 | はい |
+| `--resource-group` `-g` | リソース グループの名前。 | はい |
 | `--os-type` | コンテナー インスタンスのオペレーティング システムのタイプ。 使用できる値は以下の通りです。両方、Linux、Windows。 既定値はLinux。 | いいえ  |
 | `--aci-resource-group` | ACI コンテナー グループを作成するリソース グループ。 | いいえ  |
 | `--location` `-l` | ACI コンテナー グループを作成する場所。 | いいえ  |
