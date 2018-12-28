@@ -21,7 +21,7 @@ ms.lasthandoff: 08/27/2018
 ms.locfileid: "43109441"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
-> [!div class="op_single_selector" title1="使用しているData Factoryサービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-create-pipelines.md)
 > * [現在のバージョン](concepts-pipelines-activities.md)
 
