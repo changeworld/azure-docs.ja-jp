@@ -179,7 +179,7 @@ items:
               href: stringcollection-transformations.md
             - name: String
               href: string-transformations.md
-          - name: 述語
+          - name: Predicates
             href: predicates.md
           - name: ContentDefinitions
             href: contentdefinitions.md
