@@ -1,5 +1,5 @@
 ---
-title: ClaimsSchema  - Azure Active Directory B2C | Microsoft Docs
+title: ClaimsSchema - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの ClaimsSchema 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
@@ -21,7 +21,7 @@ ms.locfileid: "51568644"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**ClaimsSchema**要素は、ポリシーの一部として参照可能な要求の種類を定義します。 要求スキーマは、要求を宣言する場所です。 要求は、名、姓、表示名、電話番号などを指定できます。 ClaimsSchema 要素には**ClaimType**要素の一覧が含まれています。 **ClaimType**要素に **Id**属性が含まれており、 それは要求の名前であります。 
+**ClaimsSchema**要素は、ポリシーの一部として参照可能な要求の種類を定義します。 要求スキーマは、要求を宣言する場所です。 要求は、名、姓、表示名、電話番号などを指定できます。 ClaimsSchema 要素には**ClaimType**要素の一覧が含まれています。 **ClaimType**要素に **Id**属性が含まれており、 それは要求の名前であります。
 
 ```XML
 <BuildingBlocks>
@@ -44,7 +44,7 @@ ms.locfileid: "51568644"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ID | [はい] | 要求の種類に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
+| ID | はい | 要求の種類に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
 
 **ClaimType**要素には、次の要素が含まれています。
 
@@ -71,8 +71,8 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Name | [はい] | Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: OAuth1、OAuth2、SAML2、OpenIdConnect、WsFed、または WsTrust。 |
-| PartnerClaimType | [はい] | 使用する要求種類の名。 |
+| Name | はい | Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: OAuth1、OAuth2、SAML2、OpenIdConnect、WsFed、または WsTrust。 |
+| PartnerClaimType | はい | 使用する要求種類の名。 |
 
 次の例で、Identity Experience Framework は SAML2 id プロバイダーまたは証明書利用者アプリケーションと相互作用するときに、 **surname**要求が`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`にマップされ、OpenIdConnect と OAuth2 とともに、要求は、`family_name`にマップされます。
 
@@ -89,7 +89,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 ```
 
 その結果、Azure AD B2C によって発行された JWT トークンでは、ClaimType 名 **surname** ではなく `family_name` が出力されます。
- 
+
 ```JSON
 {
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
@@ -106,7 +106,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| type | [はい] | 要求マスクの種類です。 指定できる値: `Simple`および`Regex`。 `Simple`値では、要求の文字列の先頭部分に単純なテキスト マスクを適用することを示します。 `Regex`値が正規表現が全体として、要求の文字列に適用されることを示します。  `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
+| type | はい | 要求マスクの種類です。 指定できる値: `Simple`および`Regex`。 `Simple`値では、要求の文字列の先頭部分に単純なテキスト マスクを適用することを示します。 `Regex`値が正規表現が全体として、要求の文字列に適用されることを示します。 `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
 | 正規表現 | いいえ  | **種類**が`Regex`に設定されている場合、使用される正規表現を指定します。
 
 次の例では **PhoneNumber** 要求を `Simple` マスクで構成します。
@@ -115,7 +115,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 <ClaimType Id="PhoneNumber">
   <DisplayName>Phone Number</DisplayName>
   <DataType>string</DataType>
-  <Mask Type="Simple">XXX-XXX-</Mask>  
+  <Mask Type="Simple">XXX-XXX-</Mask>
   <UserHelpText>Your telephone number.</UserHelpText>
 </ClaimType>
 ```
@@ -161,8 +161,8 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Text | [はい] | このオプションのユーザー インターフェイスでユーザーに表示される表示文字列。 |
-|値 | [はい] | このオプションの選択に関連付けられている要求の値。 |
+| Text | はい | このオプションのユーザー インターフェイスでユーザーに表示される表示文字列。 |
+|値 | はい | このオプションの選択に関連付けられている要求の値。 |
 | SelectByDefault | いいえ  | このオプションが既定で UI で選択するかどうかを示します。 使用可能な値: True または False。 |
 
 次の例では、**市区町村**ドロップダウン リストの要求を設定し、既定値を`New York`に設定します。
@@ -190,7 +190,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| 正規表現 | [はい] | この種類の要求が有効になるのに一致する必要がある正規表現。 |
+| 正規表現 | はい | この種類の要求が有効になるのに一致する必要がある正規表現。 |
 | HelpText | いいえ  | この要求のパターンまたは正規表現。 |
 
 次の例では、**電子メール**要求を正規表現入力検証とヘルプ テキストとともに設定します。
@@ -297,7 +297,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
     <Enumeration Text="Green " Value="Green" SelectByDefault="false" />
     <Enumeration Text="Orange" Value="Orange" SelectByDefault="true" />
   </Restriction>
-</ClaimType>    
+</ClaimType>
 ```
 
 ### <a name="dropdownsingleselect"></a>DropdownSingleSelect
@@ -375,4 +375,4 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 </ClaimType>
 ```
 
-**列挙**値の一つを **responseMsg**要求に表示するには、`GetMappedValueFromLocalizedCollection`または`CreateStringClaim`要求の変換を使用します。 詳細については、[文字列要求の変換](string-transformations.md)をご覧ください。 
+**列挙**値の一つを **responseMsg**要求に表示するには、`GetMappedValueFromLocalizedCollection`または`CreateStringClaim`要求の変換を使用します。 詳細については、[文字列要求の変換](string-transformations.md)をご覧ください。
