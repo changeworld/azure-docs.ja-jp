@@ -21,7 +21,7 @@ ms.locfileid: "52842417"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) プロトコルの ID プロバイダーにサポートを提供しています。 OpenID Connect 1.0 は OAuth 2.0 の上に ID レイヤーを定義し、現在の認証プロトコルにおいて最先端のものとなっています。  OpenId Connect 技術プロファイルを使用すると、Azure AD などの OpenId Connect ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
+Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) プロトコルの ID プロバイダーにサポートを提供しています。 OpenID Connect 1.0 は OAuth 2.0 の上に ID レイヤーを定義し、現在の認証プロトコルにおいて最先端のものとなっています。 OpenId Connect 技術プロファイルを使用すると、Azure AD などの OpenId Connect ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
 
 ## <a name="protocol"></a>プロトコル
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.n
 <TechnicalProfile Id="MSA-OIDC">
   <DisplayName>Microsoft Account</DisplayName>
   <Protocol Name="OpenIdConnect" />
-  ...    
+  ...
 ```
 
 ## <a name="input-claims"></a>入力要求
@@ -75,9 +75,9 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.n
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_id | [はい] | ID プロバイダーのアプリケーション識別子。 |
+| client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | IdTokenAudience | いいえ  | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
-| METADATA | [はい] | OpenID Connect Discovery 仕様に従ってフォーマットされた JSON 構成ドキュメントをポイントする URL。既知の openid 構成エンドポイントとも呼ばれます。 |
+| METADATA | はい | OpenID Connect Discovery 仕様に従ってフォーマットされた JSON 構成ドキュメントをポイントする URL。既知の openid 構成エンドポイントとも呼ばれます。 |
 | ProviderName | いいえ  | ID プロバイダーの名前。 |
 | response_types | いいえ  | OpenID Connect Core 1.0 仕様に準拠した応答の種類。 指定できる値: `id_token`、`code`、または `token`。 |
 | response_mode | いいえ  | Azure AD B2C に結果を返信するために、ID プロバイダーが使用するメソッド。 指定できる値: `query`、`form_post` (既定)、または `fragment`。 |
@@ -94,10 +94,10 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.n
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | [はい] | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |  
+| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |
 
 ## <a name="redirect-uri"></a>リダイレクト URI
- 
+
 ID プロバイダーのリダイレクト URI を構成する場合は、`https://login.microsoftonline.com/te/tenant/oauth2/authresp` を入力します。 **tenant** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) またはテナントの ID に置き換える必要があります。リダイレクト URI は、すべて小文字である必要があります。
 
 **login.microsoftonline.com** の代わりに **b2clogin.com** ドメインを使用している場合は、login.microsoftonline.com の代わりに b2clogin.com を使用することを確認します。
@@ -107,19 +107,3 @@ ID プロバイダーのリダイレクト URI を構成する場合は、`https
 - [カスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する](active-directory-b2c-custom-setup-msa-idp.md)
 - [Azure AD アカウントを使用してサインインする](active-directory-b2c-setup-aad-custom.md)
 - [カスタム ポリシーを使用して、ユーザーがマルチテナント Azure AD ID プロバイダーにサインインできるようにする](active-directory-b2c-setup-commonaad-custom.md)
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
