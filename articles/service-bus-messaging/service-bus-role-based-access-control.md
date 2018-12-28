@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: spelluru
-ms.openlocfilehash: 0da4fdf5afc0cbe76e19260b486aa9112d0d74c8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c2a0fdd9fc006a9c849a71d6064959759886d920
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854322"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309469"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory のロールベースのアクセス制御 (プレビュー)
 
@@ -49,9 +49,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 次に、RBAC のプレビューをサポートする Azure リージョンのいずれか (**米国東部**、**米国東部 2**、または**西ヨーロッパ**) で、[Service Bus メッセージング名前空間を作成](service-bus-create-namespace-portal.md)します。
 
-名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、**[追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
-
-![](./media/service-bus-role-based-access-control/rbac1.PNG)
+名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、**[ロールの割り当ての追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
 
 これで、そのユーザー アカウントは、Service Bus 名前空間と以前に作成したキューにアクセスできるようになります。
 
@@ -67,11 +65,11 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 サンプルを実行する前に、App.config ファイルを編集し、シナリオに応じて、次の値を設定します。
 
-- `tenantId`: **TenantId** の値に設定します。
-- `clientId`: **ApplicationId** の値に設定します。
-- `clientSecret`: クライアント シークレットを使ってログオンする場合は、Azure AD で作成します。 また、ネイティブ アプリの代わりに Web アプリまたは API を使います。 また、前に作成した名前空間の **[アクセス制御 (IAM)]** にアプリを追加します。
-- `serviceBusNamespaceFQDN`: 新しく作成した Service Bus 名前空間の完全な DNS 名に設定します (例: `example.servicebus.windows.net`)。
-- `queueName`: 作成したキューの名前に設定します。
+- `tenantId`:**TenantId** の値に設定します。
+- `clientId`:**ApplicationId** の値に設定します。
+- `clientSecret`:クライアント シークレットを使ってログオンする場合は、Azure AD で作成します。 また、ネイティブ アプリの代わりに Web アプリまたは API を使います。 また、前に作成した名前空間の **[アクセス制御 (IAM)]** にアプリを追加します。
+- `serviceBusNamespaceFQDN`:新しく作成した Service Bus 名前空間の完全な DNS 名に設定します (例: `example.servicebus.windows.net`)。
+- `queueName`:作成したキューの名前に設定します。
 - 前の手順においてアプリで指定したリダイレクト URI です。
 
 コンソール アプリケーションを実行すると、シナリオの選択を求められます。**[Interactive User Login]\(対話型のユーザー ログイン\)** をクリックし、その番号を入力して Enter キーを押します。 アプリケーションはログイン ウィンドウを表示し、Service Bus へのアクセスの同意を求めた後、サービスを使ってログイン ID を用いた送信/受信シナリオを実行します。

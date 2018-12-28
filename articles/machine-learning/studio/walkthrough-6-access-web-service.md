@@ -1,11 +1,11 @@
 ---
-title: '手順 6: Machine Learning Web サービスにアクセスする | Microsoft Docs'
-description: 予測ソリューションの開発に関するチュートリアルの中の、アクティブな Azure Machine Learning Web サービスにアクセスするステップの 6 番目の手順です。
+title: 手順 6:Web サービスにアクセスする - Azure Machine Learning Studio | Microsoft Docs
+description: 予測ソリューションの開発チュートリアルの手順 6:アクティブな Azure Machine Learning Studio Web サービスにアクセスします。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cgronlun
 ms.assetid: 6a65c89a-40ab-4673-8dd8-8eee0a150e3b
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: be63a04d0fe71039b19eb6bc0678a319f622a811
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e0628f6ed39652f3168917e26383b5d3c4a4fa4b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836706"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260924"
 ---
-# <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>チュートリアル手順 6: Azure Machine Learning Web サービスにアクセスする
+# <a name="walkthrough-step-6-access-the-azure-machine-learning-studio-web-service"></a>チュートリアル手順 6:Azure Machine Learning Studio Web サービスにアクセスする
 
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)
 

@@ -12,12 +12,12 @@ ms.date: 08/20/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: a68b0465acdb416cd953e22d7f024eb399c94493
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 0ad58d4759d8532ab947043c20cc1060782c6d78
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246609"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138672"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory アプリケーション プロキシと Tableau 
 
@@ -29,7 +29,7 @@ Azure Active Directory アプリケーション プロキシと Tableau は連�
 
 - [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure)が構成されている 
 
-- [アプリケーション プロキシ コネクタ](application-proxy-enable.md)がインストールされている 
+- [アプリケーション プロキシ コネクタ](application-proxy-add-on-premises-application.md)がインストールされている 
 
  
 ## <a name="enabling-application-proxy-for-tableau"></a>アプリケーション プロキシを Tableau に有効化する 
@@ -43,7 +43,7 @@ Tableau を発行するには、Azure Portal でアプリケーションを発�
 
 お困りの場合:
 
-- ステップ 1 から 8 の詳細な手順については、[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)を参照してください。 
+- ステップ 1 から 8 の詳細な手順については、[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md)を参照してください。 
 - アプリケーション プロキシ フィールドの Tableau 値を検索する方法については、Tableau ドキュメントを参照してください。  
 
 **アプリケーションを発行する**: 
@@ -59,9 +59,9 @@ Tableau を発行するには、Azure Portal でアプリケーションを発�
 
 5. 新しいアプリに関する情報を必須フィールドに入力します。 次のガイダンスに従って設定してください。 
 
-    - **[内部 URL]**: このアプリケーションは、Tableau URL そのものである内部 URL を持っている必要があります。 たとえば、「 `https://adventure-works.tableau.com` 」のように入力します。 
+    - **内部 URL**:このアプリケーションは、Tableau URL そのものである内部 URL を持っている必要があります。 たとえば、「 `https://adventure-works.tableau.com` 」のように入力します。 
 
-    - **[事前認証方法]**: Azure Active Directory (推奨ですが必須ではありません) 
+    - **事前認証方法**:Azure Active Directory (推奨ですが必須ではありません)。 
 
 6. ブレード上部の **[追加]** を選択します。 アプリケーションが追加されて、クイック スタート メニューが表示されます。 
 

@@ -1,25 +1,21 @@
 ---
-title: Git を使用した共同コーディング- Azure Machine Learning | Microsoft Docs
+title: Git を使用した共同コーディング - Team Data Science Process
 description: アジャイル計画で Git を使用したデータ サイエンス プロジェクトの共同コード開発を行う方法です。
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: deguhath
-ms.openlocfilehash: 78bbdb244d9bd52a06623f7a6fa3bca123ef3828
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 95285bf82fbf1582abcb5d95424b472d392a7a59
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300071"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134490"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 

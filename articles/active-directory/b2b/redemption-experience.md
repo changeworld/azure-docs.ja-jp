@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7819ed3e18092e8b7bdf52225e7025b4b6d8146a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f580c78fa2114905a0ef28f51feee50361717a27
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981884"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435329"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2B コラボレーションを介してパー
 
 ## <a name="redemption-through-a-direct-link"></a>直接リンクによる利用
 
-ゲストの招待元は、共有アプリの直接リンクを送信してゲスト ユーザーを招待できます。 ゲスト ユーザーの場合、利用エクスペリエンスは共有されたアプリにサインインする場合と同じくらい簡単です。 アプリのリンクをクリックし、プライバシー条件を確認して同意すると、アプリにシームレスにアクセスすることができます。 ほとんどの場合、ゲスト ユーザーは招待メールの利用 URL をクリックする必要はなくなります。
+ゲストの招待元は、[共有アプリの直接リンク](../manage-apps/end-user-experiences.md#direct-sign-on-links)を送信してゲスト ユーザーを招待できます。 ゲスト ユーザーの場合、利用エクスペリエンスは共有されたアプリにサインインする場合と同じくらい簡単です。 アプリのリンクをクリックし、プライバシー条件を確認して同意すると、アプリにシームレスにアクセスすることができます。 ほとんどの場合、ゲスト ユーザーは招待メールの利用 URL をクリックする必要はなくなります。
 
 ゲスト ユーザーをユーザー インターフェイスを介して招待した場合、または PowerShell の招待エクスペリエンスの一環として招待メールを送信する場合、招待されたユーザーには引き続き招待メールが送信されます。 このメールは次のように特別な場合に便利です。
 
@@ -51,7 +51,13 @@ Azure Active Directory (Azure AD) B2B コラボレーションを介してパー
 
 ![アクセス パネルのユーザー設定のスクリーンショット](media/redemption-experience/ConsentScreen.png) 
 
-テナント管理者が組織のプライバシーに関する声明にリンクする方法については、「[How-to: Add your organization's privacy info in Azure Active Directory](https://aka.ms/adprivacystatement)」(方法: Azure Active Directory で組織のプライバシー情報を追加する) を参照してください。
+テナント管理者として組織のプライバシー ステートメントにリンクする方法については、[Azure Active Directory に組織のプライバシー情報を追加する方法](https://aka.ms/adprivacystatement)に関するページを参照してください。
+
+## <a name="terms-of-use"></a>使用条件
+
+ゲスト ユーザーには、初回利用プロセス中、Azure AD Terms of Use 機能を使用して利用規約を提示することができます。 この機能には、Azure Active Directory の **[管理]** > **[組織の関係]** > **[利用規約]** または **[セキュリティ]** > **[条件付きアクセス]** > **[利用規約]** からアクセスできます。 詳細については、[Azure AD Terms of Use 機能](../governance/active-directory-tou.md)に関するページを参照してください。
+
+![新しい利用規約を示すスクリーンショット](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 
 ## <a name="next-steps"></a>次の手順
 

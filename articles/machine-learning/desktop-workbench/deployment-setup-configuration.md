@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
 ms.topic: article
-ms.date: 12/6/2017
+ms.date: 12/06/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 84068376f35bc4df6672cffcc0ac3438b12edbb5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2d912f559af98045aaef8fe6fcaa1d83ab5f96bd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979677"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269364"
 ---
 # <a name="model-management-setup"></a>モデル管理のセットアップ
 
@@ -68,7 +68,7 @@ pip install -r https://aka.ms/az-ml-o16n-cli-requirements-file
 ```
 
 ### <a name="configuring-docker-on-linux"></a>Linux での Docker の構成
-root 以外のユーザーが使用する Linux 上の Docker を構成するには、「[Post-installation steps for Linux (Linux でのインストール後の手順)](https://docs.docker.com/engine/installation/linux/linux-postinstall/)」にある手順に従います。
+root 以外のユーザーが使用する Linux 上の Docker を構成するには、「[Post-installation steps for Linux](https://docs.docker.com/engine/installation/linux/linux-postinstall/)」(Linux でのインストール後の手順)にある手順に従います。
 
 >[!NOTE]
 > Linux DSVM では、下のスクリプトを実行して Docker を正しく構成できます。 **このスクリプトを実行した後、ログアウトしてログインし直すことを忘れないでください。**
@@ -85,7 +85,7 @@ root 以外のユーザーが使用する Linux 上の Docker を構成するに
 
 環境のセットアップを完了した場合:
 - Azure にサインインするよう求められます。 サインインするには、Web ブラウザーを使用して https://aka.ms/devicelogin ページを開き、認証するためのコードを入力します。
-- 認証プロセス中に、認証するためのアカウントを入力するよう求められます。 重要: 有効な Azure サブスクリプションと、アカウントにリソースを作成するための十分なアクセス許可を持つアカウントを選択してください。 ログインが完了したら、サブスクリプション情報が表示され、選択されたアカウントで続行するかどうかを確認するメッセージが表示されます。
+- 認証プロセス中に、認証するためのアカウントを入力するよう求められます。 重要:有効な Azure サブスクリプションと、アカウントにリソースを作成するための十分なアクセス許可を持つアカウントを選択してください。 ログインが完了したら、サブスクリプション情報が表示され、選択されたアカウントで続行するかどうかを確認するメッセージが表示されます。
 
 ### <a name="environment-setup"></a>環境のセットアップ
 セットアップ プロセスを開始するには、次のコマンドを入力していくつかの環境プロバイダーを登録する必要があります。

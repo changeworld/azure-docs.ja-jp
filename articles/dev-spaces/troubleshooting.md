@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 36516030741678ec66b4211f49ede35cfdb98605
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 9973635593f7a8143ac1f3980b6e09caba44710b
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706451"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413610"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -75,6 +75,7 @@ Visual Studio で次の操作を行います。
 
     ![ツール オプション ダイアログのスクリーンショット](media/common/VerbositySetting.PNG)
     
+### <a name="multi-stage-dockerfiles"></a>マルチステージの Dockerfile:
 このエラーは、マルチステージの Dockerfile を使おうとしたときに表示されることがあります。 詳細出力は次のようになります。
 
 ```cmd
@@ -91,6 +92,21 @@ Service cannot be started.
 ```
 
 これは、AKS ノードが、マルチステージ ビルドをサポートしていない旧バージョンの Docker を実行するからです。 Dockerfile を書き直してマルチステージ ビルドを回避する必要があります。
+
+### <a name="re-running-a-service-after-controller-re-creation"></a>コントローラーの再作成後にサービスを再実行
+このエラーは、このクラスターに関連付けられた Azure Dev Spaces を削除してから再作成した後、サービスを再実行しようとしたときに表示されることがあります。 詳細出力は次のようになります。
+
+```cmd
+Installing Helm chart...
+Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+```
+
+原因は、Dev Spaces コントローラーを削除しても、そのコントローラーによって以前にインストールされたサービスが削除されないことです。 コントローラーを再作成してから、新しいコントローラーを使用してサービスを実行しようとしても、古いサービスがまだ残っているため失敗します。
+
+これに対処するには、`kubectl delete` コマンドを使用して古いサービスをクラスターから手動で削除した後に、Dev Spaces を再実行して新しいサービスをインストールします。
 
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Dev Spaces サービスに関連付けられたパブリック URL で DNS の名前解決が失敗します。
 
@@ -121,6 +137,18 @@ kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-in
 ### <a name="try"></a>次の操作を試してください。
 
 PATH 環境変数が正しく設定されているコマンド プロンプトから VS Code を起動します。
+
+## <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>エラー "Required tools to build and debug 'projectname' are out of date." ('projectname' をビルドおよびデバッグするために必要なツールの期限が切れています。)
+
+Azure Dev Spaces 用の VS Code 拡張機能のバージョンが新しい一方で、Azure Dev Spaces CLI のバージョンが古い場合、Visual Studio Code でこのエラーが表示されます。
+
+### <a name="try"></a>試す
+
+最新バージョンの Azure Dev Spaces CLI をダウンロードしてインストールします:
+
+* [Windows](http://aka.ms/get-azds-windows)
+* [Mac](http://aka.ms/get-azds-mac)
+* [Linux](https://aka.ms/get-azds-linux)
 
 ## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>エラー 'azds' が、内部または外部コマンド、操作可能プログラム、またはバッチ ファイルとして認識されません
  
@@ -156,7 +184,7 @@ Azure Dev Spaces でネイティブにサポートされる言語でアプリケ
 ### <a name="try"></a>次の操作を試してください。
 1. コンテナーがビルド/デプロイ処理中の場合、2 ～ 3 秒待ってからサービスへのアクセスを再試行できます。 
 1. ポート 構成を確認します。 次のすべてのアセットで、指定されたポート番号が**同一**である必要があります:
-    * **Dockerfile:** `EXPOSE` 命令によって指定されます。
+    * **Dockerfile:**`EXPOSE` 命令によって指定されます。
     * **[Helm チャート](https://docs.helm.sh):** サービスの `externalPort` および `internalPort` 値 (多くの場合、`values.yml` ファイルにある) で指定されます。
     * Node.js などのアプリケーション コードで開かれているポートがあります: `var server = app.listen(80, function () {...}`
 
@@ -171,7 +199,7 @@ Azure Dev Spaces でネイティブにサポートされる言語でアプリケ
 1. サービス コードが含まれているルート フォルダーにカレント ディレクトリを変更します。 
 1. _azds.yaml_ ファイルがコード フォルダーにない場合、`azds prep` を実行して Docker、Kubernetes、および Azure Dev Spaces アセットを生成します。
 
-## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>エラー: 'The pipe program 'azds' exited unexpectedly with code 126.'
+## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>エラー:'The pipe program 'azds' exited unexpectedly with code 126.'
 VS Code デバッガーを起動すると、このエラーが発生する場合があります。
 
 ### <a name="try"></a>次の操作を試してください。
@@ -195,6 +223,15 @@ Azure Dev Spaces 用の VS Code 拡張機能が開発用コンピューターに
 
 ### <a name="try"></a>次の操作を試してください。
 [Azure Dev Spaces 用の VS Code 拡張機能](get-started-netcore.md)をインストールします。
+
+## <a name="debugging-error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>デバッグ エラー "Invalid 'cwd' value '/src'. The system cannot find the file specified." ('cwd' の値 '/src' が無効です。指定されたファイルがシステムに見つかりません。) または "launch: program '/src/[path to project binary]' does not exist" (launch: program '/src/[プロジェクト バイナリのパス]' が存在しません)
+VS Code デバッガーを実行すると、エラー `Invalid 'cwd' value '/src'. The system cannot find the file specified.` と `launch: program '/src/[path to project executable]' does not exist` のどちらかまたは両方が報告されます
+
+### <a name="reason"></a>理由
+既定では、VS Code 拡張機能はコンテナー上のプロジェクト用の作業ディレクトリとして `src` を使用します。 `Dockerfile` を更新して別の作業ディレクトリを指定した場合、このエラーが表示されることがあります。
+
+### <a name="try"></a>次の操作を試してください。
+プロジェクト フォルダーの `.vscode` サブディレクトリ下の `launch.json` ファイルを更新します。 プロジェクトの `Dockerfile` で定義されている `WORKDIR` と同じディレクトリを指すように、`configurations->cwd` ディレクティブを変更します。 `configurations->program` ディレクティブも更新することが必要な場合もあります。
 
 ## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>型または名前空間名 'MyLibrary' が見つかりませんでした
 
@@ -236,7 +273,7 @@ az provider register --namespace Microsoft.DevSpaces
 ### <a name="reason"></a>理由
 AKS クラスター内の名前空間で Dev Spaces を有効にすると、_mindaro-proxy_ と呼ばれる追加のコンテナーが、その名前空間内で実行される各ポッドにインストールされます。 このコンテナーは、ポッド内のサービスへの呼び出しをインターセプトしますが、これは Dev Spaces のチーム開発機能に不可欠です。
 
-残念ながら、これはこれらのポッドで実行されている特定のサービスに干渉することがあります。 具体的には、これは Redis Cache を実行するポッドと干渉し、マスター/スレーブ通信での接続エラーと障害の原因になります。
+残念ながら、これはこれらのポッドで実行されている特定のサービスに干渉することがあります。 具体的には、これは Azure Cache for Redis を実行するポッドと干渉し、マスター/スレーブ通信での接続エラーと障害の原因になります。
 
 ### <a name="try"></a>次の操作を試してください。
 影響を受けるポッドを、Dev Spaces が有効になって _いない_ クラスター内の名前空間に移動し、Dev Spaces が有効になっている名前空間内の内部で残りのアプリケーションの実行を継続できます。 Dev Spaces は、Dev Spaces に非対応の名前空間の内部に _mindaro-proxy_ コンテナーをインストールしません。

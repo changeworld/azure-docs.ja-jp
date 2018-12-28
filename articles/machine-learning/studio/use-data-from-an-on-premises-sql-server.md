@@ -1,11 +1,11 @@
 ---
-title: Azure Machine Learning でオンプレミスの SQL Server を使用する | Microsoft Docs
-description: オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning で高度な分析を実行します。
+title: オンプレミスの SQL Server - Azure Machine Learning Studio | Microsoft Docs
+description: オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning Studio で高度な分析を実行します。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 08e4610d-02b6-4071-aad7-a2340ad8e2ea
 ms.service: machine-learning
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.openlocfilehash: 4ea0a247116db521e03d7092be0bb86a6528f44d
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: dccea7c5d7967af2e81ab4728704a5a104a007b5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346390"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269291"
 ---
-# <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning で高度な分析を実行する
+# <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server データベースを使用して Azure Machine Learning Studio で分析を実行する
 
 多くの場合、オンプレミス データを操作する企業は、機械学習のワークロードのためにクラウドの拡張性と俊敏性という利点を活用しようと考えます。 しかし、オンプレミス データをクラウドに移動するために現在のビジネス プロセスおよびワークフローが中断されることは望みません。 Azure Machine Learning は、現在、オンプレミスの SQL Server データベースからのデータの読み取りと、そのデータによるモデルのトレーニングおよびスコア付けをサポートしています。 クラウドとオンプレミス サーバー間で、手動でデータをコピーして同期する必要がなくなりました。 代わりに、Azure Machine Learning Studio の **データのインポート** モジュールを使用すれば、トレーニングおよびスコア付けジョブのためにオンプレミス SQL Server データベースから直接読み取ることができます。
 
-この記事では、オンプレミスの SQL サーバー データを Azure Machine Learning で受け取る方法の概要について説明します。 ワークスペース、モジュール、データセット、実験 "*など*" の Azure Machine Learning の概念を理解していることが前提となっています。
+この記事では、オンプレミスの SQL サーバー データを Azure Machine Learning Studio で受け取る方法の概要について説明します。 ワークスペース、モジュール、データセット、実験 "*など*" の Azure Machine Learning の概念を理解していることが前提となっています。
 
 > [!NOTE]
 > この機能は、無料のワークスペースでは使用できません。 Machine Learning の価格とレベルの詳細については、 [Azure Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)に関するページを参照してください。
@@ -35,7 +35,7 @@ ms.locfileid: "51346390"
 
 <!-- -->
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Data Factory セルフホステッド統合ランタイムをインストールする
 Azure Machine Learning でオンプレミス SQL Server データベースにアクセスするには、Data Factory セルフホステッド統合ランタイム (旧称 Data Management Gateway) をダウンロードしてインストールする必要があります。 Machine Learning Studio で接続を構成するときに、後で説明する **[Download and register data gateway]\(データ ゲートウェイのダウンロードと登録\)** ダイアログを使用して、統合ランタイム (IR) をダウンロードおよびインストールできます。
@@ -78,7 +78,7 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 > [!NOTE]
 > Azure Data Factory セルフホステッド統合ランタイムは、以前は Data Management Gateway と呼ばれていました。 ステップ バイ ステップ チュートリアルでは、引き続きゲートウェイと呼ばれています。  
 
-### <a name="step-1-create-a-gateway"></a>手順 1: ゲートウェイを作成する
+### <a name="step-1-create-a-gateway"></a>手順 1:ゲートウェイを作成する
 最初の手順は、オンプレミス SQL データベースにアクセスするゲートウェイを作成し、セットアップすることです。
 
 1. [Azure Machine Learning Studio](https://studio.azureml.net/Home/) にログインし、作業するワークスペースを選択します。
@@ -125,7 +125,7 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 
 Studio で各ワークスペースに対して複数のゲートウェイを作成し、セットアップできます。 たとえば、開発中はテスト データ ソースに接続するゲートウェイを使用し、運用データ ソース用には別のゲートウェイを使う場合があります。 Azure Machine Learning では、企業の環境に応じて、複数のゲートウェイを柔軟にセットアップできます。 現在、複数のワークスペースでゲートウェイを共有することはできず、1 台のコンピューターには 1 つのゲートウェイだけをインストールできます。 詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/tutorial-hybrid-copy-portal.md)」を参照してください。
 
-### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>手順 2: ゲートウェイを使用してオンプレミス データ ソースからデータを読み取る
+### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>手順 2:ゲートウェイを使用してオンプレミス データ ソースからデータを読み取る
 ゲートウェイをセットアップした後は、オンプレミス SQL Server データベースからデータを入力する実験に **データのインポート** モジュールを追加できます。
 
 1. Machine Learning Studio で **[実験]** タブを選択し、左下隅の **[+ 新規]** をクリックして、**[Blank Experiment (空白の実験)]** を選択します (または使用可能ないくつかのサンプル実験のいずれかを選択します)。

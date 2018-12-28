@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 24f834c907fee6f2ddae766ae7494f73a31447c5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: d6180156e1a8f3fa053c7fbb247e38831f86e76a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33202808"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998396"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートを使用した Application Gateway の作成
 
@@ -26,7 +26,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 この記事では、GitHub から既存の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)をダウンロードして変更し、そのテンプレートを GitHub、PowerShell、Azure CLI からデプロイする方法を説明します。
 
-GitHub から直接テンプレートをデプロイするだけで、変更を加えない場合は、GitHub からのテンプレートのデプロイに進んでください。
+GitHub から直接テンプレートをデプロイするだけで、変更を加えない場合は、Github からのテンプレートのデプロイに進んでください。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -53,7 +53,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 1. 保存したファイルを開き、5 行目にある **parameters** の内容を確認します。
 1. Azure リソース マネージャー テンプレートのパラメーターでは、デプロイメント中に入力できる、値のプレース ホルダーが用意されています。
 
-  | パラメーター | [説明] |
+  | パラメーター | 説明 |
   | --- | --- |
   | **subnetPrefix** |Application Gateway サブネットの CIDR ブロック。 |
   | **applicationGatewaySize** | Application Gateway のサイズ。  WAF では、中および大だけを使用できます。 |
@@ -77,7 +77,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "addressPrefix": {
@@ -114,11 +114,11 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
     }
     ```
 
-1. ファイルを保存します。 [JSlint.com](http://www.jslint.com/)などのオンライン JSON 検証ツールを使用して、JSON テンプレートとパラメーター テンプレートをテストできます。
+1. ファイルを保存します。 [JSlint.com](https://www.jslint.com/)などのオンライン JSON 検証ツールを使用して、JSON テンプレートとパラメーター テンプレートをテストできます。
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>PowerShell を使用した Azure リソース マネージャー テンプレートのデプロイ
 
-Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関するページを参照してください。手順に従って Azure にサインインし、サブスクリプションを選択します。
+Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関するページを参照してください。手順に従って Azure にサインインし、ご自身のサブスクリプションを選択します。
 
 1. PowerShell にログイン
 
@@ -203,7 +203,7 @@ cert=$( base64 <certificate path and name>.pfx )
 echo $cert
 ```
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a> Windows
 ```powershell
 [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("<certificate path and name>.pfx"))
 ```
@@ -226,9 +226,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>次の手順
 
-SSL オフロードを構成する場合は、[SSL オフロード用のアプリケーション ゲートウェイの構成](tutorial-ssl-cli.md)に関するページを参照してください。
+SSL オフロードを構成する場合は、[SSL オフロード用のアプリケーション ゲートウェイの構成](tutorial-ssl-cli.md)に関するページをご覧ください。
 
-内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](redirect-internal-site-cli.md)」を参照してください。
+内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](redirect-internal-site-cli.md)に関するページをご覧ください。
 
 負荷分散オプション全般の詳細については、次の記事をご覧ください。
 

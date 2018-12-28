@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: cd41fba675a0814e6f2a1b17576add7811a803eb
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: e5d415593a510acb81eac65242010d1841044857
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233482"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162649"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Virtual Kubelet の使用
 
@@ -22,9 +22,9 @@ Azure Container Instances (ACI) には Azure 内でコンテナーを実行す�
 Azure Container Instances に Virtual Kubelet プロバイダーを使用する場合、標準の Kubernetes ノードであるかのように、コンテナー インスタンス上で Linux と Windows 両方のコンテナーをスケジュールすることができます。 この構成では、Kubernetes の機能と、コンテナー インスタンスの管理値とコスト上の利点の両方を活用できます。
 
 > [!NOTE]
+> AKS では、ACI でコンテナーをスケジュールするための "*仮想ノード*" と呼ばれる組み込みサポートを利用できるようになりました。 これらの仮想ノードでは、現在、Linux コンテナー インスタンスがサポートされています。 Windows コンテナー インスタンスをスケジュールする必要がある場合は、引き続き Virtual Kubelet を使用できます。 それ以外の場合は、この記事に記載されている手動の Virtual Kubelet の手順ではなく、仮想ノードを使用する必要があります。 仮想ノードを使い始めるには、[Azure CLI][virtual-nodes-cli] または [Azure portal][virtual-nodes-portal] を使用します。
+>
 > Virtual Kubelet は実験的なオープン ソース プロジェクトなので、その点を考慮して使用する必要があります。 Virtual Kubelet に関する投稿、問題の提起、詳細情報については、[Virtual Kubelet GitHub プロジェクト][vk-github]に関するページを参照してください。
-
-このドキュメントでは、AKS 上でコンテナー インスタンス用に Virtual Kubelet を構成する方法について詳しく説明します。
 
 ## <a name="prerequisite"></a>前提条件
 
@@ -90,7 +90,7 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 | `--connector-name` | ACI コネクタの名前。| [はい] |
 | `--name` `-n` | マネージド クラスターの名前。 | [はい] |
 | `--resource-group` `-g` | リソース グループの名前。 | [はい] |
-| `--os-type` | コンテナー インスタンスのオペレーティング システムのタイプ。 使用できる値: Both、Linux、Windows。 既定値: Linux。 | いいえ  |
+| `--os-type` | コンテナー インスタンスのオペレーティング システムのタイプ。 使用できる値は以下の通りです。両方、Linux、Windows。 既定値はLinux。 | いいえ  |
 | `--aci-resource-group` | ACI コンテナー グループを作成するリソース グループ。 | いいえ  |
 | `--location` `-l` | ACI コンテナー グループを作成する場所。 | いいえ  |
 | `--service-principal` | Azure API に対する認証に使用されるサービス プリンシパル。 | いいえ  |
@@ -235,6 +235,8 @@ Virtual Kubelet で考えられる問題については、[既知の問題と回
 [aks-remove-connector]: /cli/azure/aks#az-aks-remove-connector
 [az-container-list]: /cli/azure/aks#az-aks-list
 [aks-install-connector]: /cli/azure/aks#az-aks-install-connector
+[virtual-nodes-cli]: virtual-nodes-cli.md
+[virtual-nodes-portal]: virtual-nodes-portal.md
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

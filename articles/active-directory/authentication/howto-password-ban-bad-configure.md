@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 34011144d4f960413e78f13c999dfddf6d2660bf
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: c4a289d1aeefc35f07e7598adf3780620b11f0da
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50742947"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252203"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>カスタムの禁止パスワード リストを構成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "50742947"
    * カスタム禁止パスワード リストには、最大 1,000 語を含めることができます。
    * カスタム禁止パスワード リストでは、大文字と小文字は区別されません。
    * カスタム禁止パスワード リストでは、一般的な文字の代替が考慮されています。
-      * 例: "o" と "0"、"a" と "\@\"
+      * 例: "o" と "0"、"a" と "\@"
    * 最短文字数は 4 文字で、最長文字数は 16 文字です。
 1. すべての文字列を追加したら、**[保存]** をクリックします。
 

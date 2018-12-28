@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge のオフライン機能 |Microsoft Docs
-description: IoT Edge デバイスおよびモジュールがどのようにして長時間オフラインで動作できるか、さらに IoT Edge によって通常の IoT デバイスがどのようにしてオフラインで動作できるかを理解します。
+title: デバイスをオフラインで操作する - Azure IoT Edge | Microsoft Docs
+description: IoT Edge デバイスおよびモジュールがどのようにして長時間インターネット接続なしで動作できるか、さらに IoT Edge を使って通常の IoT デバイスがどのようにオフラインで動作できるかを理解します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eb44d6b0a4ea69d92f91af7ce1d6b19deff4e753
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 4c4713bade487ba46f1abdc6d0a76db3e81e38b1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567028"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096946"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する (プレビュー)
 
@@ -48,7 +49,7 @@ IoT Edge デバイスがオフライン モードになると、Edge ハブは 3
 
 この記事で説明されている拡張オフライン機能は、[IoT Edge バージョン 1.0.4 以上](https://github.com/Azure/azure-iotedge/releases)で利用できます。 それより前のバージョンには、オフライン機能のサブセットが備わっています。 拡張オフライン機能を備えていない既存の IoT Edge デバイスは、ランタイム バージョンを変更してアップグレードすることはできませんが、これらの機能を取得するために新しい IoT Edge デバイス ID を使用して再構成する必要があります。 
 
-拡張オフラインサポートは、米国東部と西ヨーロッパを除き、IoT Hub が使用可能なすべてのリージョンで利用できます。 
+拡張オフラインサポートは、米国東部を**除き**、IoT Hub が使用可能なすべてのリージョンで利用できます。
 
 Edge IoT 以外のデバイスのみを子デバイスとして追加できます。 
 
@@ -65,6 +66,19 @@ IoT Edge デバイスによってその拡張オフライン機能を子 IoT デ
    ![IoT Edge デバイスの詳細ページから子デバイスを管理する](./media/offline-capabilities/manage-child-devices.png)
 
 親デバイスには複数の子デバイスを含めることができますが、子デバイスの親は 1 つだけです。
+
+### <a name="specifying-dns-servers"></a>DNS サーバーの指定 
+
+堅牢性を向上させるため、環境内で使用する DNS サーバー アドレスを指定することをお勧めします。 たとえば、linux では、以下を含むように **/etc/docker/daemon.json** を更新します (ファイルの作成が必要な場合があります)。
+
+```
+{
+    "dns": [“1.1.1.1”]
+}
+```
+
+ローカル DNS サーバーを使用している場合は、1.1.1.1 をローカル DNS サーバーの IP アドレスに置き換えます。 Docker サービスを再起動して、変更を反映させます。
+
 
 ## <a name="optional-offline-settings"></a>オプションのオフライン設定
 

@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: ba6d79661a2c07ba3eef1f16a117992a858830b5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: e6dcbf9d185b45c18261e47e9d575adf40812611
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605931"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253818"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights とリモート監視の統合
 
@@ -62,7 +62,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
     | 環境名 | 次のスクリーン ショットでは、**contorosrmtsi** という名前を使用しています。 この手順を完了したら、独自の一意の名前を選択してください。 |
     | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
     | リソース グループ | **既存のものを使用します**。 既存のリモート監視リソース グループの名前を選択します。 |
-    | Location | **[米国東部]** を使用します。 可能な場合は、リモート監視ソリューションと同じリージョンに環境を作成します。 |
+    | 場所 | **[米国東部]** を使用します。 可能な場合は、リモート監視ソリューションと同じリージョンに環境を作成します。 |
     | SKU |**S1** |
     | 容量 | **1** |
 
@@ -292,6 +292,6 @@ Time Series Insights の統合を完了するには、更新されたマイク�
 
 ## <a name="next-steps"></a>次の手順
 
-* Time Series Insights エクスプローラーで、データを探索し、アラートを診断する方法については、[根本原因分析の実施](/tutorials)に関するチュートリアルを参照してください。
+* Time Series Insights エクスプローラーで、データを探索し、アラートを診断する方法については、[根本原因分析の実施](iot-accelerators-remote-monitoring-root-cause-analysis.md)に関するチュートリアルを参照してください。
 
 * Time Series Insights エクスプローラーでのデータの探索とクエリ方法については、ドキュメント「[Azure Time Series Insights エクスプローラー](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)」を参照してください。

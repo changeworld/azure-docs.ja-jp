@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/13/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: adb3127e45166d4743c182cbd21944dd86810596
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 30d0818b57057785784c1fbda1c67ca0be10d769
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584168"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384770"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 
@@ -29,7 +29,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 - Azure Storage アカウントが少なくとも 1 つある。 [Import/Export サービスでサポートしているストレージ アカウントとストレージの種類](storage-import-export-requirements.md)の一覧を参照してください。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-quickstart-create-account.md)」を参照してください。
 - 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。 
 - [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システムがある。
-- Windows システムで [WAImportExport バージョン 2 をダウンロード](https://www.microsoft.com/download/details.aspx?id=55280)してください。 既定のフォルダー `waimportexport` に解凍します。 たとえば、「 `C:\WaImportExport` 」のように入力します。
+- Windows システムで [WAImportExport バージョン 2 をダウンロード](https://aka.ms/waiev2)してください。 既定のフォルダー `waimportexport` に解凍します。 たとえば、「 `C:\WaImportExport` 」のように入力します。
 - FedEx または DHL のアカウントを用意します。 
     - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
     - エクスポート ジョブの追跡番号を生成します。
@@ -40,7 +40,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
  
 
 
-## <a name="step-1-prepare-the-drives"></a>手順 1: ドライブを準備する
+## <a name="step-1-prepare-the-drives"></a>手順 1:ドライブを準備する
 
 この手順では、ジャーナル ファイルを生成します。 ジャーナル ファイルには、ドライブのシリアル番号、暗号化キー、ストレージ アカウントの詳細などの基本情報が保存されます。
 
@@ -50,25 +50,25 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 2. 各ドライブに 1 つの NTFS ボリュームを作成します。 ボリュームにドライブ文字を割り当てます。 マウントポイントを使用しないでください。
 3. ツールが配置されているルート フォルダーにある *dataset.csv* ファイルを変更します。 インポート対象がファイルとフォルダーのどちらか一方か両方かに応じて、次の例のようなエントリを *dataset.csv* ファイルに追加します。  
 
-    - **ファイルをインポートするには**: 次の例では、コピーするデータは C: ドライブにあります。 ファイル *MyFile1.txt* は *MyAzureFileshare1* のルートにコピーされます。 *MyAzureFileshare1* は、存在しない場合、Azure Storage アカウントに作成されます。 フォルダー構造は維持されます。
+    - **ファイルをインポートするには**:次の例では、コピーするデータは C: ドライブにあります。 ファイル *MyFile1.txt* は *MyAzureFileshare1* のルートにコピーされます。 *MyAzureFileshare1* は、存在しない場合、Azure Storage アカウントに作成されます。 フォルダー構造は維持されます。
 
         ```
             BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
-            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
     
         ```
-    - **フォルダーをインポートするには**: *MyFolder2* の下にあるすべてのファイルとフォルダーがファイル共有に再帰的にコピーされます。 フォルダー構造は維持されます。
+    - **フォルダーをインポートするには**:*MyFolder2* の下にあるすべてのファイルとフォルダーがファイル共有に再帰的にコピーされます。 フォルダー構造は維持されます。
 
         ```
-            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-            
+            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
+            
         ```
     インポートするフォルダーまたはファイルに対応する複数のエントリを同じファイル内に作成できます。 
 
         ```
-            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
             "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-                        
+                        
         ```
     詳しくは、[データセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file)に関する記事をご覧ください。
     
@@ -77,14 +77,14 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 
     この例では、2 つのディスクが接続され、ベーシック NTFS ボリューム G:\ と H:\ が作成されていることを前提としています。 H:\ は暗号化されていませんが、G:\ は既に暗号化されています。 このツールでは、(G:\) ではなく) H:\ のみをホストしているディスクをフォーマットし、暗号化します。
 
-    - **暗号化されていないディスクの場合**: *Encrypt* を指定して、ディスクの BitLocker 暗号化を有効にします。
+    - **暗号化されていないディスクの場合**:*Encrypt* を指定して、ディスクの BitLocker 暗号化を有効にします。
 
         ```
         DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
         H,Format,SilentMode,Encrypt,
         ```
     
-    - **既に暗号化されているディスクの場合**: *AlreadyEncrypted* を指定し、BitLocker キーを指定します。
+    - **既に暗号化されているディスクの場合**:*AlreadyEncrypted* を指定し、BitLocker キーを指定します。
 
         ```
         DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -112,7 +112,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 
 その他のサンプルについては、「[ジャーナル ファイルのサンプル](#samples-for-journal-files)」を参照してください。
 
-## <a name="step-2-create-an-import-job"></a>手順 2: インポート ジョブを作成する 
+## <a name="step-2-create-an-import-job"></a>手順 2:インポート ジョブの作成 
 
 次の手順を実行して、Azure portal でインポート ジョブを作成します。
 1. https://portal.azure.com/ にログオンします。
@@ -137,7 +137,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 
 3. **[ジョブの詳細]** で次の操作を実行します。
     
-    - 上記の「[手順 1: ドライブを準備する](#step-1-prepare-the-drives)」で作成したジャーナル ファイルをアップロードします。 
+    - 上記の「[手順 1:ドライブを準備する](#step-1-prepare-the-drives)」で作成したジャーナル ファイルをアップロードします。 
     - データのインポート先となるストレージ アカウントを選択します。 
     - 配送場所は、選んだストレージ アカウントのリージョンに基づいて自動的に入力されます。
    
@@ -160,17 +160,17 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
     - Azure にディスクを送付するために使用する Azure データセンターの送付先住所を指定します。 ジョブの名前と完全な住所が出荷ラベルに示されていることを確認します。
     - **[OK]** をクリックして、インポート ジョブの作成を完了します。
 
-        ![インポート ジョブの作成 - ステップ 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+        ![インポート ジョブを作成する - 手順 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>手順 3: ドライブを Azure データセンターに送付する 
+## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>手順 3:ドライブを Azure データセンターに送付する 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>手順 4: 追跡情報を使用してジョブを更新する
+## <a name="step-4-update-the-job-with-tracking-information"></a>手順 4:追跡情報を使用してジョブを更新する
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>手順 5: Azure へのデータのアップロードを確認する
+## <a name="step-5-verify-data-upload-to-azure"></a>手順 5:Azure へのデータのアップロードを確認する
 
 完了するまでジョブを監視します。 ジョブが完了したら、データが Azure にアップロードされたことを確認します。 アップロードが成功したことを確認した後にのみ、オンプレミスのデータを削除します。
 

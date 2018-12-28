@@ -5,27 +5,27 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/04/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: efbbe048456c969f0045a0588bc5b64d1138ee15
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: e3967319cd41399209bd50886bce88efc8ba6ba6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976963"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956518"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
 [Azure Site Recovery](site-recovery-overview.md) を使用して VMware VM と物理サーバーのためのディザスター リカバリーを設定するとき、オンプレミスの VMware VM と物理サーバーごとに Site Recovery モビリティ サービスをインストールします。  このモビリティ サービスによって、マシン上のデータ書き込みがキャプチャされ、Site Recovery プロセス サーバーに転送されます。 次の方法でモビリティ サービスをデプロイできます。
 
-[プッシュ インストール](vmware-azure-install-mobility-service.md): モビリティ サービスをプッシュ インストールするように Site Recovery を構成する: これを行うには、ディザスター リカバリーを設定するとき、Site Recovery プロセス サーバーがサービスをインストールする目的で VM または物理サーバーにアクセスするために使用するアカウントも設定します。
-[手動インストール](vmware-physical-mobility-service-install-manual.md): UI またはコマンド プロンプトを使用し、各マシンでモビリティ サービスを手動インストールできます。
-[自動デプロイ](vmware-azure-mobility-install-configuration-mgr.md): System Center Configuration Manager など、ソフトウェア デプロイ ツールでインストールを自動化できます。
+[プッシュ インストール](vmware-azure-install-mobility-service.md):モビリティ サービスをプッシュ インストールするように Site Recovery を構成する:これを行うには、ディザスター リカバリーを設定するとき、Site Recovery プロセス サーバーがサービスをインストールする目的で VM または物理サーバーにアクセスするために使用するアカウントも設定します。
+[手動インストール](vmware-physical-mobility-service-install-manual.md):UI またはコマンド プロンプトを使用し、各マシンでモビリティ サービスを手動インストールできます。
+[自動デプロイ](vmware-azure-mobility-install-configuration-mgr.md):System Center Configuration Manager など、ソフトウェア デプロイ ツールでインストールを自動化できます。
 
 ## <a name="azure-virtual-machine-agent"></a>Azure 仮想マシン エージェント
 
-- **Windows VM**: モビリティ サービスのバージョン 9.7.0.0 以降、[Azure VM エージェント](../virtual-machines/extensions/features-windows.md#azure-vm-agent)がモビリティ サービス インストーラーによってインストールされます。 マシンが Azure にフェールオーバーするとき、VM 拡張を使用するためのエージェント インストール前提条件を Azure VM が満たすようにします。
-- **Linux VM**: フェールオーバー後、[WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) を Azure VM に手動インストールする必要があります。
+- **Windows VM**:モビリティ サービスのバージョン 9.7.0.0 以降、[Azure VM エージェント](../virtual-machines/extensions/features-windows.md#azure-vm-agent)がモビリティ サービス インストーラーによってインストールされます。 マシンが Azure にフェールオーバーするとき、VM 拡張を使用するためのエージェント インストール前提条件を Azure VM が満たすようにします。
+- **Linux VM**:フェールオーバー後、[WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) を Azure VM に手動インストールする必要があります。
 
 ## <a name="installer-files"></a>インストーラー ファイル
 
@@ -56,11 +56,11 @@ Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
 2. ポータルでコンテナーを開き、**[レプリケートされたアイテム]** を開きます。
 3. 構成サーバーが最新版の場合、"Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。 クリックしてインストールしてください" という通知が表示されます。
 
-     ![[レプリケートされたアイテム] ウィンドウ](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![[レプリケートされたアイテム] ウィンドウ](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
 4. 通知をクリックし、**[エージェントの更新]** でモビリティ サービスをアップグレードするマシンを選択します。 次に、 **[OK]** をクリックします
 
-     ![[レプリケートされたアイテム] VM リスト](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![[レプリケートされたアイテム] VM リスト](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 5. 選択したマシンごとに、モビリティ サービスの更新ジョブが開始されます。
 
@@ -74,8 +74,8 @@ Site Recovery をデプロイしたとき、モビリティ サービスのプ�
 
 UI またはコマンド プロンプトからアンインストールします。
 
-- **UI から**: マシンの [コントロール パネル] で **[プログラム]** を選択します。 **[Microsoft Azure Site Recovery Mobility Service/マスター ターゲット サーバー]**、**[アンインストール]** の順に選択します。
-- **コマンド プロンプトから**: マシンの管理者としてコマンド プロンプト ウィンドウを開きます。 次のコマンドを実行します。 
+- **UI から**:マシンの [コントロール パネル] で **[プログラム]** を選択します。 **[Microsoft Azure Site Recovery Mobility Service/マスター ターゲット サーバー]** > 、**[アンインストール]** の順に選択します。
+- **コマンド プロンプトから**:マシンの管理者としてコマンド プロンプト ウィンドウを開きます。 次のコマンドを実行します。 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```

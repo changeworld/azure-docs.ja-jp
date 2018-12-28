@@ -1,5 +1,5 @@
 ---
-title: Azure Search でのデータ抽出、自然言語 AI 処理のためのコグニティブ検索 | Microsoft Docs
+title: データ抽出、自然言語 AI 処理のためのコグニティブ検索 - Azure Search
 description: 認知スキルと AI アルゴリズムを使用したコンテンツ抽出、自然言語処理 (NLP) および画像処理を実行することにより、Azure Search インデックスで検索可能なコンテンツを作成します。
 manager: cgronlun
 author: HeidiSteen
@@ -9,14 +9,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
-ms.openlocfilehash: 68d546fc4c853f1a19230b8aee7e86519aaa7e4c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 62d2e7af40d6abf6f316789051dfe78f73208eb3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729053"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315609"
 ---
-# <a name="what-is-cognitive-search"></a>コグニティブ検索とは
+# <a name="what-is-cognitive-search-in-azure-search"></a>Azure Search での "コグニティブ検索" とは?
 
 コグニティブ検索では、インデックス パイプラインに AI アルゴリズムを追加することにより、検索不可能なコンテンツから検索可能な情報を作成します。 AI 統合は、検索インデックスへのルートにソース ドキュメントをエンリッチメントする*認知スキル*を使って実行されます。 
 
@@ -26,12 +27,14 @@ ms.locfileid: "45729053"
 
 ![コグニティブ検索パイプライン ダイアグラム](./media/cognitive-search-intro/cogsearch-architecture.png "コグニティブ検索パイプラインの概要")
 
-Azure Search における認知スキルは、[名前付きエンティティ認識 API](cognitive-search-skill-named-entity-recognition.md)、[キー フレーズ抽出 API](cognitive-search-skill-keyphrases.md)、[OCR API](cognitive-search-skill-ocr.md) などの、Cognitive Services APIs で使用されているものと同じ AI アルゴリズムに基づいています。 
+Azure Search のコグニティブ スキルは、Cognitive Services APIs で使用されているものと同じ AI アルゴリズムに基づいています:[Named Entity Recognition API](cognitive-search-skill-named-entity-recognition.md)、[Key Phrase Extraction API](cognitive-search-skill-keyphrases.md)、および [OCR API](cognitive-search-skill-ocr.md) はほんの一例です。 
 
 自然言語および画像処理はデータ インジェスト フェーズで適用され、結果は Azure Search における検索可能なインデックス内のドキュメントの構成の一部になります。 データは Azure データ セットとして調達され、必要な[組み込みのスキル](cognitive-search-predefined-skills.md)を使用してインデックス パイプライン経由でプッシュされます。 アーキテクチャは拡張可能なため、組み込みのスキルでは不十分な場合は、[カスタム スキル](cognitive-search-create-custom-skill-example.md)を作成して追加し、カスタム処理を統合できます。 例としては、金融、科学出版物、医療などの専門分野を対象としたカスタム エンティティ モジュールまたはドキュメント分類子が挙げられます。
 
 > [!NOTE]
-> コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行および画像の抽出と正規化は、現在無料で提供されています。 これらの機能の価格は、後日、発表される予定です。 
+> 2018 年 12 月 21 日から、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができるようになります。 これにより、スキルセットの実行への課金を開始できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
+>
+> 組み込みスキルの実行は、既存の [Cognitive Services の従来課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格はプレビュー価格で課金され、[Azure Search 価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
 
 ## <a name="components-of-cognitive-search"></a>コグニティブ検索のコンポーネント
 
@@ -45,7 +48,7 @@ Azure Search における認知スキルは、[名前付きエンティティ認
 
 ![ドキュメントの解読フェーズ](./media/cognitive-search-intro/document-cracking-phase-blowup.png "ドキュメントの解読")
 
- サポートされているソースには、Azure Table Storage、Azure Table Storage、Microsoft Azure SQL Database、および Microsoft Azure Cosmos DB などがあります。 テキスト ベースのコンテンツは、PDF、Word、PowerPoint、CSV のファイル タイプから抽出できます。 詳細な一覧については、[サポートされている形式](search-howto-indexing-azure-blob-storage.md#supported-document-formats)に関するページをご覧ください。
+ サポートされているソースには、Azure Table Storage、Azure Table Storage、Microsoft Azure SQL Database、および Microsoft Azure Cosmos DB などがあります。 テキスト ベースのコンテンツは、次のファイル タイプから抽出できます:PDF、Word、PowerPoint、CSV ファイル。 詳細な一覧については、[サポートされている形式](search-howto-indexing-azure-blob-storage.md#supported-document-formats)に関するページをご覧ください。
 
 ### <a name="cognitive-skills-and-enrichment-phase"></a>認知スキルとエンリッチメント フェーズ
 
@@ -88,18 +91,29 @@ Azure Search における認知スキルは、[名前付きエンティティ認
 
 ## <a name="where-do-i-start"></a>どこから始めるか
 
-**手順 1: API を提供するリージョンの検索サービスを作成する** 
+**手順 1:API を提供するリージョンの検索サービスを作成する** 
 
++ 米国中西部
 + 米国中南部
++ 米国東部
++ 米国東部 2
++ 米国西部 2
++ カナダ中部
 + 西ヨーロッパ
++ 英国南部
++ 北ヨーロッパ
++ ブラジル南部
++ 東南アジア
++ インド中部
++ オーストラリア東部
 
-**手順 2: 実際に体験してワークフローを習得する**
+**手順 2:実際に体験してワークフローを習得する**
 
 + [クイック スタート (ポータル)](cognitive-search-quickstart-blob.md)
 + [チュートリアル (HTTP 要求)](cognitive-search-tutorial-blob.md)
 + [カスタム スキルの例 (C#)](cognitive-search-create-custom-skill-example.md)
 
-**手順 3: API の確認 (REST のみ)**
+**手順 3:API の確認 (REST のみ)**
 
 現時点では、REST API のみが提供されています。 すべての要求で `api-version=2017-11-11-Preview` を使用します。 次の API を使用して、コグニティブ検索ソリューションを構築します。 コグニティブ検索用に追加または拡張された API は 2 つのみです。 その他の API では、一般的に使用可能なバージョンと同じ構文です。
 
@@ -110,7 +124,7 @@ Azure Search における認知スキルは、[名前付きエンティティ認
 | [インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Azure Search インデックスを表すスキーマです。 ソース データ内のフィールドやエンリッチメント フェーズで作成されたフィールドにマッピングされるインデックス内のフィールド (たとえば、エンティティ認識によって作成された組織名のためのフィールド)。 |
 | [インデクサーの作成 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | データ ソース、スキルセット、ソースからのフィールドの関連付け、ターゲット インデックスまでの中間データ構造、およびインデックス自体などの、インデックス作成時に使用されるコンポーネントを定義するリソースです。 インデクサーを実行すると、データの取り込みやエンリッチメントがトリガーされます。 出力は、インデックス スキーマを基に作成され、ソース データが入力され、スキルセットでエンリッチメントされた検索コーパスです。  |
 
-**一般的なワークフローのチェックリスト**
+**チェックリスト:一般的なワークフロー**
 
 1. 代表的なサンプルに Azure ソース データをサブセット化します。 インデックスの作成には時間がかかるため、代表的な少量のデータ セットから始め、ソリューションの成熟度に応じて段階的に構築します。
 
@@ -135,5 +149,5 @@ Azure Search における認知スキルは、[名前付きエンティティ認
 ## <a name="next-steps"></a>次の手順
 
 + [コグニティブ検索のドキュメント](cognitive-search-resources-documentation.md)
-+ [クイック スタート: ポータルでコグニティブ検索を使ってみる](cognitive-search-quickstart-blob.md)
-+ [チュートリアル: コグニティブ検索 API について学習する](cognitive-search-tutorial-blob.md)
++ [クイック スタート:ポータルでコグニティブ検索を使ってみる](cognitive-search-quickstart-blob.md)
++ [チュートリアル:コグニティブ検索 API について学習する](cognitive-search-tutorial-blob.md)

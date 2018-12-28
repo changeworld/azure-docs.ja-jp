@@ -8,18 +8,17 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 968c5fb093f3ebdb6ce7eb239f79573f19b89e0f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 2ccb4d2ff7beeeac53bafe726122c3b47682db03
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278635"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955431"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
@@ -29,15 +28,15 @@ ms.locfileid: "51278635"
 
 Application Insights をアプリのサーバー コードと Web ページの両方にインストールすることにより、最適な操作環境が得られます。 アプリのクライアントおよびサーバー コンポーネントから Azure Portal に分析用のテレメトリが送信されます。
 
-1. **サーバー コード:** [ASP.NET](app-insights-asp-net.md)、[Azure](app-insights-overview.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md)、または[その他](app-insights-platforms.md)のアプリ向けの適切なモジュールをインストールします。
+1. **サーバー コード:**[ASP.NET](app-insights-asp-net.md)、[Azure](app-insights-overview.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md)、または[その他](app-insights-platforms.md)のアプリ向けの適切なモジュールをインストールします。
 
     * "*サーバー コードをインストールしたくない場合は、[Azure Application Insights リソースの作成](app-insights-create-new-resource.md)のみを行ってください。*"
 
-2. **Web ページ コード:** [Azure Portal](https://portal.azure.com) でアプリの Application Insights リソースを開いてから、**[はじめに]、[クライアント側アプリケーションの監視と診断]** の順に開きます。 
+2. **Web ページ コード:**[Azure portal](https://portal.azure.com) でアプリの Application Insights リソースを開いてから、**[はじめに]、[クライアント側アプリケーションの監視と診断]** の順に開きます。 
 
     ![マスター Web ページの先頭にスクリプトをコピーします。](./media/app-insights-usage-overview/02-monitor-web-page.png)
 
-3. **モバイル アプリ コード:** [このガイド](app-insights-mobile-center-quickstart.md)に従い、App Center SDK を使ってアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
+3. **モバイル アプリ コード:**[このガイド](app-insights-mobile-center-quickstart.md)に従い、App Center SDK を使ってアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
 
 4. **テレメトリの取得:** プロジェクトをデバッグ モードで数分間実行し、Application Insights の [概要] ブレードで結果を確認します。
 
@@ -61,26 +60,6 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 * **[セッション]** レポートは、サイトにアクセスしたユーザー セッションの数をカウントします。 セッションとは、ユーザーによるアクティビティの期間で、30 分以上の非アクティブ状態で終了します。
 
 [ユーザー、セッション、およびイベント ツールに関する詳細](app-insights-usage-segmentation.md)  
-
-## <a name="page-views"></a>ページ ビュー
-
-[使用状況] ブレードで、[ページ ビュー] タイルをクリックすると、最も人気のあるページの内訳が表示されます。
-
-![概要ブレードで、[ページ ビュー] グラフをクリックします](./media/app-insights-usage-overview/05-games.png)
-
-上の例はゲーム関連の Web サイトの情報を示したグラフです。 このグラフから、すぐに以下のような情報を読み取ることができます。
-
-* 利用状況はこの 1 週間改善されていません。 おそらく、検索エンジンの最適化について検討する必要があります。
-* テニスが最も人気のあるゲーム ページです。 このページを重点的に改善しましょう。
-* 平均すると、ユーザーは 1 週間に約 3 回テニス ページにアクセスしています。 (セッション数がユーザー数の約 3 倍になっています)。
-* ほとんどのユーザーは、米国の就業日かつ就業時間内にこのサイトにアクセスしています。 Web ページ上に "すばやく隠す" ボタンを用意する必要があるかもしれません。
-* グラフ上の[注釈](app-insights-annotations.md)は、Web サイトの新しいバージョンがデプロイされた日時を示しています。 最近行われたデプロイのうち、利用状況に顕著な影響を与えたものはありません。
-
-ページ ビュー テレメトリで、サイトが送信したカスタム プロパティ別に分割するなど、サイトへのトラフィックをさらに詳しく調査するにはどうすればよいでしょうか。
-
-1. Application Insights リソース メニューで **[イベント]** ツールを開きます。 このツールでは、アプリから送信されたページ ビューとカスタム イベントの数を分析できます。ここでは、フィルター処理、コーホート、セグメンテーションなどさまざまなオプションを使用できます。
-2. "次を使用した" ドロップダウンで、"任意のページ ビュー" を選択します。
-3. "次で分割" ドロップダウンで、ページビュー テレメトリの分割に使用するプロパティを選択します。
 
 ## <a name="retention---how-many-users-come-back"></a>リテンション期間 - サービスの利用を再開したユーザーの数
 

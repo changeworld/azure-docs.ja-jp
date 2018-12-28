@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/07/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 3a42f09967ec42b47947823025f2f0dcd081d1b1
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 5f6908a80a467e1a8a12d61be2f67cbe70cce8a0
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "49352239"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275640"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 
@@ -26,7 +26,7 @@ WAImportExport ツールを使用してハード ドライブを準備するた�
 
 |プラットフォーム |Version |
 |---------|---------|
-|Windows     | Windows 7 Enterprise、Windows 7 Ultimate <br> Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise <br> Windows 10        |
+| Windows     | Windows 7 Enterprise、Windows 7 Ultimate <br> Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Windows クライアントに必要なその他のソフトウェア
@@ -41,8 +41,9 @@ WAImportExport ツールを使用してハード ドライブを準備するた�
 
 Azure Import/Export サービスでは、以下の種類のストレージ アカウントがサポートされます。
 
-- General Purpose v1 ストレージ アカウント (クラシックまたは Azure Resource Manager の両方のデプロイ)
+- General Purpose v2 ストレージ アカウント (ほとんどのシナリオで推奨)
 - BLOB ストレージ アカウント
+- General Purpose v1 ストレージ アカウント (クラシックまたは Azure Resource Manager の両方のデプロイ) 
 
 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](storage-account-overview.md)」をご覧ください。
 

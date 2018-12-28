@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Mobile Xpense の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Mobile Xpense の統合 | Microsoft Docs
 description: Azure Active Directory と Mobile Xpense の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: fd35cb67d0555919a1340c428bac042b67239469
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d51ced3f264a486288c951def7c23a0d95609ac0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427341"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850683"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>チュートリアル: Azure Active Directory と Mobile Xpense の統合
+# <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>チュートリアル:Azure Active Directory と Mobile Xpense の統合
 
 このチュートリアルでは、Mobile Xpense と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -121,7 +121,7 @@ Mobile Xpense で Azure AD のシングル サインオンを構成してテス�
     **[サインオン URL]** ボックスに、`https://<sub-domain>.mobilexpense.com/<customername>` のパターンを使用して URL を入力します。
      
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の応答 URL とサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Mobile Xpense クライアント サポート チーム](http://www.mobilexpense.net/contact)に問い合わせてください。 
+    > これらは実際の値ではありません。 実際の応答 URL とサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Mobile Xpense クライアント サポート チーム](https://www.mobilexpense.net/contact)に問い合わせてください。 
 
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -131,10 +131,10 @@ Mobile Xpense で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/mobilexpense-tutorial/tutorial_general_400.png)
 
-1. **Mobile Xpense** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Mobile Xpense サポート チーム](http://www.mobilexpense.net/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Mobile Xpense** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Mobile Xpense サポート チーム](https://www.mobilexpense.net/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -170,7 +170,7 @@ Mobile Xpense で Azure AD のシングル サインオンを構成してテス�
  
 ### <a name="create-a-mobile-xpense-test-user"></a>Mobile Xpense テスト ユーザーの作成
 
-このセクションでは、MobileXpense で Britta Simon というユーザーを作成します。 [MobileXpense サポート チーム](http://www.mobilexpense.net/contact)と連携し、MobileXpense プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、MobileXpense で Britta Simon というユーザーを作成します。  [MobileXpense サポート チーム](https://www.mobilexpense.net/contact) と連携し、MobileXpense プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -207,7 +207,7 @@ Mobile Xpense で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Mobile Xpense] タイルをクリックすると、Mobile Xpense アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

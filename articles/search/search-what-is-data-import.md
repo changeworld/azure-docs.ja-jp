@@ -1,6 +1,6 @@
 ---
-title: Azure Search におけるデータのインポート | Microsoft Docs
-description: Azure Search のインデックスにデータをアップロードする方法について説明します。
+title: 検索インデックスにデータを取り込むのためのデータのインポート - Azure Search
+description: 外部データソースから Azure Search のインデックスにデータを取り込んだりアップロードしたりする方法について説明します。
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: ab26adb330e69f71d94aa296ede558b44e47a187
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 731519b4e099bd696002af3aa08ada145e490260
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249780"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314858"
 ---
-# <a name="indexing-in-azure-search"></a>Azure Search でのインデックス作成
+# <a name="indexing-external-data-for-queries-in-azure-search"></a>Azure Search でのクエリの外部のデータのインデックス作成
 > [!div class="op_single_selector"]
 > * [概要](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
@@ -23,7 +24,7 @@ ms.locfileid: "51249780"
 > 
 > 
 
-Azure Search では、[検索インデックス](search-what-is-an-index.md)に読み込まれたコンテンツに対してクエリが実行されます。 この記事では、インデックスにコンテンツを読み込む 2 つの基本的な手法について詳しく見ていきます。1 つは、プログラムからデータをインデックスに "*プッシュ*" する方法、もう 1 つは、[Azure Search インデクサー](search-indexer-overview.md)からサポート対象データ ソースを参照してデータを "*プル*" する方法です。
+Azure Search では、[検索インデックス](search-what-is-an-index.md)に読み込まれて保存されたコンテンツに対してクエリが実行されます。 この記事では、インデックスを取り込む 2 つの基本的な手法について詳しく見ていきます。1 つは、プログラムからデータをインデックスに "*プッシュ*" する方法、もう 1 つは、[Azure Search インデクサー](search-indexer-overview.md)からサポート対象データ ソースを参照してデータを "*プル*" する方法です。
 
 ## <a name="pushing-data-to-an-index"></a>インデックスにデータをプッシュする
 プログラムから Azure Search にデータを送信するプッシュ モデルは、最も柔軟なアプローチです。 まず、データ ソースの種類に関して制限がありません。 JSON ドキュメントから成るすべてのデータセットは、そこに含まれる各ドキュメントのフィールドが、インデックスのスキーマに定義されているフィールドに対応していれば、Azure Search インデックスにプッシュすることができます。 実行の頻度にも制限はありません。 インデックスには、必要に応じて何度でも変更をプッシュすることができます。 待機時間の要件が非常に厳しいアプリケーションの場合 (たとえば、検索操作を動的な在庫データベースと同期する必要がある場合) は、プッシュ モデルしか利用できません。

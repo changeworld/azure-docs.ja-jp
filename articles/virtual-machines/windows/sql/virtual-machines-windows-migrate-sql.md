@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: jroth
-ms.openlocfilehash: 0677faa90c73ffe4c0c1c48600c2f1ef2d05eb50
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 298a8597ae111550dfbd44d1e7bd9efb212f08af
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628785"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323219"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Azure VM の SQL Server への SQL Server データベースの移行
 
@@ -36,7 +36,7 @@ ms.locfileid: "39628785"
 * データとログ ファイルをデタッチしてから、Azure BLOB ストレージにコピーし、その後、URL から Azure VM の SQL Server にアタッチする
 * オンプレミスの物理マシンを HYPER-V VHD に変換して Azure BLOB ストレージにアップロードし、アップロードしたその VHD を使用して、新しい VM としてデプロイする
 * Windows の Import/Export サービスを使用して、ハード ドライブを発送する
-* オンプレミスの AlwaysOn デプロイがある場合は、 [Azure のレプリカ追加ウィザード](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) を使用して Azure でレプリカを作成した後、フェールオーバーして、ユーザーに Azure データベース インスタンスを参照させる
+* オンプレミスの AlwaysOn 可用性グループのデプロイがある場合は、 [Azure のレプリカ追加ウィザード](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) を使用して Azure でレプリカを作成した後、フェールオーバーして、ユーザーに Azure データベース インスタンスを参照させる
 * SQL Server の [トランザクション レプリケーション](https://msdn.microsoft.com/library/ms151176.aspx) を使用して Azure SQL Server インスタンスをサブスクライバーとして構成した後、レプリケーションを無効にして、ユーザーに Azure データベース インスタンスを参照させる
 
 > [!TIP]

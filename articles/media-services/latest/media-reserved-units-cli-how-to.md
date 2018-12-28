@@ -1,6 +1,6 @@
 ---
-title: メディア占有ユニットのスケーリング - Azure |Microsoft Docs
-description: このトピックでは、Azure Media Services を使用したメディア処理のスケール設定の概要を示します。
+title: CLI を使用してメディア占有ユニットをスケーリングする - Azure | Microsoft Docs
+description: このトピックでは、CLI を使用して、Azure Media Services でのメディア処理をスケーリングする方法について説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -11,23 +11,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: db1915f23c33b5cc0d504f8fcc21b9533228247f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.custom: seodec18
+ms.openlocfilehash: 2b10de83e00b3668f70461f76634c560bcbea1a4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634398"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133793"
 ---
 # <a name="scaling-media-processing"></a>メディア処理のスケーリング
 
-Azure Media Services を使用してメディア占有ユニット (MRU) を管理することで、お使いのアカウントで実行されるメディア処理をスケーリングできます。 詳細については、「[メディア処理のスケール設定の概要](../previous/media-services-scale-media-processing-overview.md)」を参照してください。 この記事では、[Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) を使用して MRU をスケーリングする方法を示します。
+Azure Media Services を使用してメディア占有ユニット (MRU) を管理することで、お使いのアカウントで実行されるメディア処理をスケーリングできます。 詳細については、「[メディア処理のスケール設定の概要](../previous/media-services-scale-media-processing-overview.md)」を参照してください。 
 
-> [!IMPORTANT]
-> [このセクション](#considerations)で説明する考慮事項を確認してください。  
-> 
->
+この記事では、[Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) を使用して MRU をスケーリングする方法を示します。
+
+> [!NOTE]
+> Media Services v3 または Video Indexer によってトリガーされる音声分析と動画分析ジョブでは、お使いのアカウントを 10 個の S3 の MRU でプロビジョニングすることを強くお勧めします。 <br/>10 個を超える S3 の MRU が必要な場合は、[Azure portal](https://portal.azure.com/) を使用してサポート チケットを開いてください。
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -44,11 +45,6 @@ Azure Media Services を使用してメディア占有ユニット (MRU) を管�
 ```azurecli
 az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
 ```
-
-## <a name="considerations"></a>考慮事項
-
-- Media Services v3 または Video Indexer によってトリガーされる音声分析と動画分析ジョブでは、お使いのアカウントを 10 個の S3 の MRU でプロビジョニングすることを強くお勧めします。
-- 10 個を超える S3 の MRU が必要な場合は、[Azure portal](https://portal.azure.com/) を使用してサポート チケットを開いてください。
 
 ## <a name="billing"></a>課金
 

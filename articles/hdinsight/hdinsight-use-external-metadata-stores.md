@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 288ee46e9a5741a49ddcec1ef155c6f08b7b6cbc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9c35a4a811925abaf8dcb64d3e7060bbb1f91cce
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016179"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408325"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight での外部メタデータ ストアの使用
 
-HDInsight の Hive metastore は、Hadoop アーキテクチャの不可欠な部分です。 metastore は、Spark、Interactive Query (LLAP)、Presto、Pig などの他のビッグ データ アクセス ツールで使用できる主要スキーマ リポジトリです。 HDInsight は、Azure SQL Database を Hive metastore として使用します。
+HDInsight の Apache Hive metastore は、Apache Hadoop アーキテクチャの不可欠な部分です。 metastore は、Apache Spark、Interactive Query (LLAP)、Presto、Apache Pig などの他のビッグ データ アクセス ツールで使用できる主要スキーマ リポジトリです。 HDInsight は、Azure SQL Database を Hive metastore として使用します。
 
 ![HDInsight Hive メタデータ ストアのアーキテクチャ](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
@@ -72,12 +72,12 @@ Azure Portal または Ambari 構成 ([Hive] > [詳細設定]) から、他の�
 - 既存のカスタム metastore データベースに対して、より高いバージョンの Azure HDInsight が新しく作成された場合、システムは metastore のスキーマをアップグレードします。バックアップからデータベースを復元しないかぎり、これを元に戻すことはできません。
 - 複数のクラスター間で metastore を共有する場合は、すべてのクラスターの HDInsight を確実に同じバージョンにします。 異なるバージョンの Hive は、異なる metastore データベース スキーマを使用します。 たとえば、バージョン 1.2 の Hive クラスターと 2.1 の Hive クラスターで metastore を共有することはできません。 
 
-## <a name="oozie-metastore"></a>Oozie metastore
+##  <a name="apache-oozie-metastore"></a>Apache Oozie metastore
 
 Apache Oozie は、Hadoop ジョブを管理するワークフロー調整システムです。  Oozie は、Apache MapReduce、Pig、Hive、その他の Hadoop ジョブをサポートします。  Oozie では、metastore を使用して、現在のワークフローと完了したワークフローの詳細情報を格納します。 Oozie の使用時にパフォーマンスを向上させるために、カスタム metastore として Azure SQL Database を使用できます。 metastore は、クラスター削除後の Oozie ジョブ データへのアクセスを提供することもできます。
 
-Azure SQL Database を使用する Oozie metastore の作成手順については、[ワークフローでの Oozie の使用](hdinsight-use-oozie-linux-mac.md)に関する記事を参照してください。
+Azure SQL Database を使用する Oozie metastore の作成手順については、[ワークフローでの Apache Oozie の使用](hdinsight-use-oozie-linux-mac.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Hadoop、Spark、Kafka、その他で HDInsight にクラスターをセットアップする](./hdinsight-hadoop-provision-linux-clusters.md)
+- [Apache Hadoop、Apache Spark、Apache Kafka などを使用して HDInsight でクラスターを設定する](./hdinsight-hadoop-provision-linux-clusters.md)

@@ -62,12 +62,12 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 | OS\ブラウザー |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|はい\*|いいえ |[はい]|[はい]\*\*\*|該当なし
-|Windows 8.1|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
-|Windows 8|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
-|Windows 7|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
-|Windows Server 2012 R2 以降|はい\*\*|該当なし|[はい]|[はい]\*\*\*|該当なし
-|Mac OS X|該当なし|該当なし|[はい]\*\*\*|[はい]\*\*\*|[はい]\*\*\*
+|Windows 10|はい\*|いいえ |はい|はい\*\*\*|該当なし
+|Windows 8.1|はい\*|該当なし|はい|はい\*\*\*|該当なし
+|Windows 8|はい\*|該当なし|はい|はい\*\*\*|該当なし
+|Windows 7|はい\*|該当なし|はい|はい\*\*\*|該当なし
+|Windows Server 2012 R2 以降|はい\*\*|該当なし|はい|はい\*\*\*|該当なし
+|Mac OS X|該当なし|該当なし|はい\*\*\*|はい\*\*\*|はい\*\*\*
 
 
 \*Internet Explorer バージョン 10 以降が必要
@@ -87,4 +87,3 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 - [**よく寄せられる質問**](how-to-connect-sso-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](tshoot-connect-sso.md) - この機能に関する一般的な問題を解決する方法を確認します。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
-

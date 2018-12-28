@@ -40,7 +40,7 @@ ms.locfileid: "45605761"
 
 ## <a name="register-web-api"></a>Web API の登録
 
-Web API リソースは、Azure Active Directory からの[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を表す[クライアント アプリケーション](../active-directory/develop/developer-glossary.md#client-application)で[保護されたリソース要求](../active-directory/develop/developer-glossary.md#resource-server)を受け取って処理できるように、テナントに登録しておく必要があります。 登録により、テナント内に[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/developer-glossary.md#application-object)が確立されます。 
+Web API リソースは、Azure Active Directory からの[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を表す[クライアント アプリケーション](../active-directory/develop/developer-glossary.md#client-application)で[保護されたリソース要求](../active-directory/develop/developer-glossary.md#resource-server)を受け取って処理できるように、テナントに登録しておく必要があります。 登録により、テナント内に[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/developer-glossary.md#application-object)が確立されます。
 
 Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -57,8 +57,8 @@ Azure AD B2C テナントの全体管理者として [Azure Portal](https://port
     | Setting      | 推奨値  | Description                                        |
     | ------------ | ------- | -------------------------------------------------- |
     | **名前** | Hello Core API | 開発者が Web API を把握できる**名前**を入力します。 |
-    | **Web アプリ/Web API を含める** | [はい] | Web API の場合は **[はい]** を選択します。 |
-    | **暗黙的フローを許可する** | [はい] | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
+    | **Web アプリ/Web API を含める** | はい | Web API の場合は **はい** を選択します。 |
+    | **暗黙的フローを許可する** | はい | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**はい** を選択します。 |
     | **応答 URL** | `http://localhost:5000` | 応答 URL は、API が要求したトークンを Azure AD B2C が返すエンドポイントです。 このチュートリアルでは、サンプル Web API はローカル (localhost) で実行され、ポート 5000 (後でこのチュートリアルで使用するために、以前に構成した) でリッスンします。 |
     | **アプリケーション ID/URI** | HelloCoreAPI | この URI は、テナント内の API を一意に識別します。 これにより、テナントごとに複数の API を登録することができます。 [スコープ](../active-directory/develop/developer-glossary.md#scopes)は、保護された API リソースへのアクセスを統制し、App ID URI ごとに定義されます。 |
     | **ネイティブ クライアント** | いいえ  | これはネイティブ クライアントではなく Web API のため、[いいえ] を選択します。 |
@@ -83,7 +83,7 @@ Azure AD B2C に Web API を登録すると、信頼関係が定義されます�
 
 **[公開済みスコープ (プレビュー)]** をクリックします。
 
-API のスコープを構成するには、次のエントリを追加します。 
+API のスコープを構成するには、次のエントリを追加します。
 
 ![Web API で定義されているスコープ](media/active-directory-b2c-tutorials-spa-webapi/scopes-web-api.png)
 
@@ -115,7 +115,7 @@ API のスコープを構成するには、次のエントリを追加します�
 
 ## <a name="update-code"></a>コードの更新
 
-Web API が登録され、スコープを定義したら、Azure AD B2C テナントを使用するように Web API コードを構成する必要があります。 このチュートリアルでは、GitHub からダウンロードできるサンプル .NET Core Web アプリを構成します。 
+Web API が登録され、スコープを定義したら、Azure AD B2C テナントを使用するように Web API コードを構成する必要があります。 このチュートリアルでは、GitHub からダウンロードできるサンプル .NET Core Web アプリを構成します。
 
 [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
 
@@ -130,12 +130,12 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 2. **appsettings.json** ファイルを開きます。 テナントを使用するように Web API を構成するには、次の値を更新します。
 
     ```javascript
-    "AzureAdB2C": 
+    "AzureAdB2C":
       {
-        "Tenant": "<your tenant name>.onmicrosoft.com", 
+        "Tenant": "<your tenant name>.onmicrosoft.com",
         "ClientId": "<The Application ID for your web API obtained from the Azure portal>",
         "Policy": "<Your sign up sign in policy e.g. B2C_1_SiUpIn>",
-        "ScopeRead": "demo.read"  
+        "ScopeRead": "demo.read"
       },
     ```
 
@@ -182,7 +182,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 Node.js シングルページ アプリと .NET Core Web API の両方を実行する必要があります。
 
-### <a name="run-the-aspnet-core-web-api"></a>ASP.NET Core Web API を実行する 
+### <a name="run-the-aspnet-core-web-api"></a>ASP.NET Core Web API を実行する
 
 Visual Studio で **F5** キーを押して **B2C-WebAPI.sln** ソリューションをデバッグします。
 

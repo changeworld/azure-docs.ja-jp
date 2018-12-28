@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services を使用してコンテンツを保護する | Microsoft Docs
+title: Media Services を使用してコンテンツを保護する - Azure | Microsoft Docs
 description: この記事では、Media Services でのコンテンツ保護の概要について説明します。
 services: media-services
 documentationcenter: ''
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 1c7454aead07c728d55ff2c309cca83a792aac88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: cb7e867ea4304cf8b8741eac183e60d325c752c7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238351"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141851"
 ---
 # <a name="content-protection-overview"></a>コンテンツ保護の概要
 
@@ -52,14 +53,14 @@ Azure Media Services を使用すると、メディアがコンピューター�
 
 2. AES または DRM クライアントを使用するプレーヤー。 プレーヤー SDK (ネイティブまたはブラウザー ベース) に基づくビデオ プレーヤー アプリは、次の要件を満たす必要があります。
   * プレーヤー SDK は必要な DRM クライアントをサポートしている
-  * プレーヤ SDK は、Smooth、DASH、または HLS の必要なストリーミング プロトコルをサポートしている
+  * プレーヤー SDK は、必要なストリーミング プロトコル (Smooth、DASH、または HLS ) をサポートしている
   * プレーヤー SDK は、ライセンス取得要求で JWT トークンを渡す処理に対応できる必要がある
   
     [Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) を使ってプレーヤーを作成できます。 異なる DRM プラットフォームで使う DRM テクノロジを指定するには、[Azure Media Player の ProtectionInfo API](http://amp.azure.net/libs/amp/latest/docs/) を使います。
 
     AES または CENC (Widevine および PlayReady) で暗号化されたコンテンツをテストするには、[Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) を使用できます。 必ず [詳細オプション] をクリックし、暗号化オプションを確認します。
 
-    FairPlay で暗号化されたコンテンツをテストする場合は、[このテストプレイヤー](https://aka.ms/amtest)を使用してください。 プレーヤーは、Widevine、PlayReady、FairPlay DRM、および AES-128 クリア キー暗号化をサポートしています。 Chrome/Opera/Firefox for Widevine、MS Edge/IE11 for PlayReady、Safari for macOS for FairPlay などのさまざまな DRM をテストするには、適切なブラウザーを選択する必要があります。
+    FairPlay で暗号化されたコンテンツをテストする場合は、[このテストプレイヤー](https://aka.ms/amtest)を使用してください。 プレーヤーは、Widevine、PlayReady、FairPlay DRM、および AES-128 クリア キー暗号化をサポートしています。 さまざまな DRM (Chrome/Opera/Firefox for Widevine、MS Edge/IE11 for PlayReady、Safari for macOS for FairPlay) をテストするには、適切なブラウザーを選択する必要があります。
 
 3. バックエンド リソース アクセス用のアクセス トークンとして JSON Web トークン (JWT) を発行するセキュア トークン サービス (STS)。 バックエンド リソースとして AMS ライセンス配信サービスを使用することができます。 STS は以下を定義する必要があります。
 

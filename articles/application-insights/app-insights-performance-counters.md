@@ -9,41 +9,46 @@ ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/11/2016
+ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: e5915f18799386ae92019073fb50dac96da107ea
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: feb2e2f9f36ab20c0b96fab9432df41faf4f9569
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960108"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407934"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
-Windows には、CPU 占有率や、メモリ、ディスク、ネットワークの使用率など、広範な[パフォーマンス カウンター](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)が用意されています。 ユーザーが独自のパフォーマンス カウンターを定義することもできます。 アプリケーションを実行している IIS が存在するオンプレミスのホストまたは仮想マシンに対し、ユーザーが管理アクセス権を持っている場合、[Application Insights](app-insights-overview.md) を使ってこれらのパフォーマンス カウンターを表示することができます。 グラフにはライブ アプリケーションで使用できるリソースが示され、サーバー インスタンス間での負荷の不均衡を識別するのに役立ちます。
 
-パフォーマンス カウンターは [サーバー] ブレードに表示され、サーバー インスタンスごとに分かれた表が含まれます。
-
-![Application Insights で表示されるパフォーマンス カウンター](./media/app-insights-performance-counters/counters-by-server-instance.png)
-
-(パフォーマンス カウンターは Azure Web Apps には使用できません。 ただし、[Azure 診断を Application Insights に送信する](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)ことはできます。)
+Windows には、CPU 占有率や、メモリ、ディスク、ネットワークの使用率など、広範な[パフォーマンス カウンター](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters)が用意されています。 ユーザーが独自のパフォーマンス カウンターを定義することもできます。 アプリケーションが、オンプレミスのホスト、ユーザーが管理アクセス権を持っている仮想マシンの IIS で実行されている場合に限ります。
 
 ## <a name="view-counters"></a>カウンターを表示する
-[サーバー] ブレードには、既定のパフォーマンス カウンターのセットが表示されます。 
 
-他のカウンターを表示するには、[サーバー] ブレードでグラフを編集するか、または新しい [[メトリックス エクスプローラー](app-insights-metrics-explorer.md)] ブレードを開いて新しいグラフを追加します。 
+[メトリック] ウィンドウには、既定のパフォーマンス カウンターのセットが表示されます。
 
-グラフを編集するときに、使用可能なカウンターがメトリックとして一覧表示されます。
+![Application Insights で表示されるパフォーマンス カウンター](./media/app-insights-performance-counters/performance-counters.png)
 
-![Application Insights で表示されるパフォーマンス カウンター](./media/app-insights-performance-counters/choose-performance-counters.png)
+.NET Web アプリケーション用に収集された現在の既定のカウンターは、次のとおりです。
+
+         - % Process\\Processor Time
+         - % Process\\Processor Time Normalized
+         - Memory\\Available Bytes
+         - ASP.NET Requests/Sec
+         - .NET CLR Exceptions Thrown / sec
+         - ASP.NET ApplicationsRequest Execution Time
+         - Process\\Private Bytes
+         - Process\\IO Data Bytes/sec
+         - ASP.NET Applications\\Requests In Application Queue
+         - Processor(_Total)\\% Processor Time
 
 最も役に立つすべてのグラフをまとめて表示するには、[ダッシュボード](app-insights-dashboards.md)を作成してグラフを固定します。
 
 ## <a name="add-counters"></a>カウンターを追加する
-必要なパフォーマンス カウンターがメトリックの一覧に表示されない場合は、Application Insights SDK が Web サーバーでその情報を収集していないためです。 メトリックスが収集されるように構成できます。
 
-1. サーバーで使えるカウンターを確認するには、サーバーで次の PowerShell コマンドを実行します。
+目的のパフォーマンス カウンターがメトリックの一覧に含まれていない場合は、追加することができます。
+
+1. サーバーで使えるカウンターを確認するには、ローカル サーバーで次の PowerShell コマンドを実行します。
    
     `Get-Counter -ListSet *`
    
@@ -96,7 +101,7 @@ Windows には、CPU 占有率や、メモリ、ディスク、ネットワー�
 ## <a name="performance-counters-in-analytics"></a>Analytics のパフォーマンス カウンター
 [Analytics](app-insights-analytics.md) でパフォーマンス カウンター レポートを検索して表示できます。
 
-**performanceCounters** スキーマは、各パフォーマンス カウンターの `category`、`counter` 名、および `instance` 名を表示します。  各アプリケーションのテレメトリでは、そのアプリケーションのカウンターのみが表示されます。 たとえば、使用できるカウンターを表示するには次のようにします。 
+**performanceCounters** スキーマは、各パフォーマンス カウンターの `category`、`counter` 名、および `instance` 名を表示します。  各アプリケーションのテレメトリでは、そのアプリケーションのカウンターのみが確認できます。 たとえば、使用できるカウンターを表示するには次のようにします。 
 
 ![Application Insights Analytics のパフォーマンス カウンター](./media/app-insights-performance-counters/analytics-performance-counters.png)
 
@@ -114,13 +119,14 @@ Windows には、CPU 占有率や、メモリ、ディスク、ネットワー�
 *例外レートと例外のメトリックの違いは何ですか*
 
 * *例外レート* はシステム パフォーマンス カウンターです。 CLR ではスローされた処理済みおよび未処理の例外をすべてカウントし、特定のサンプリング時間間隔での合計をその時間間隔の長さで除算します。 Application Insights SDK では、この結果を収集し、ポータルに送信します。
+
 * *例外* は、グラフのサンプリング時間間隔中にポータルが受信した TrackException レポートの数です。 これには、コード内で TrackException 呼び出しが記述されている処理済みの例外のみが含まれ、 [未処理の例外](app-insights-asp-net-exceptions.md)はいずれも含められません。 
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>Asp.Net Core アプリケーションのパフォーマンス カウンター
+## <a name="performance-counters-in-aspnet-core-applications"></a>ASP.Net Core アプリケーションのパフォーマンス カウンター
 パフォーマンス カウンターは、アプリケーションが .NET Framework 全体を対象とする場合のみサポートされます。 .Net Core アプリケーションのパフォーマンス カウンターを収集する能力はありません。
 
 ## <a name="alerts"></a>アラート
-他のメトリックと同様に、パフォーマンス カウンターが指定した制限を超えた場合に警告する[アラートを設定](app-insights-alerts.md)できます。 [アラート] ブレードを開き、[アラートの追加] をクリックします。
+他のメトリックと同様に、パフォーマンス カウンターが指定した制限を超えた場合に警告する[アラートを設定](app-insights-alerts.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。
 
 ## <a name="next"></a>次のステップ
 * [依存関係の追跡](app-insights-asp-net-dependencies.md)

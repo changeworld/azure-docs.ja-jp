@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ebf5a23743d1fdd9553b391bb0518c2887ddb096
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959989"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274566"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>ハイブリッド Azure Active Directory Join の実装を計画する方法
 
@@ -112,7 +112,6 @@ Windows デスクトップ オペレーティング システムを実行する�
 
 ハイブリッド Azure AD 参加は、オンプレミスのドメインに参加しているデバイスを Azure AD に自動的に登録するプロセスです。 場合によっては、すべてのデバイスを自動的に登録したくないことがあります。 このような場合は、「[デバイスのハイブリッド Azure AD Join を制御する方法](hybrid-azuread-join-control.md)」を参照してください。
 
-
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>デバイスのハイブリッド Azure AD 参加を制御する方法を確認する
 
 ハイブリッド Azure AD 参加は、オンプレミスのドメインに参加しているデバイスを Azure AD に自動的に登録するプロセスです。 場合によっては、すべてのデバイスを自動的に登録したくないことがあります。 たとえば、すべてが期待どおりに機能することを確認するための最初のロールアウト中にこのような状況が発生します。
@@ -130,9 +129,9 @@ Windows デスクトップ オペレーティング システムを実行する�
 
 環境にマネージド ドメインがある場合、ハイブリッド Azure AD 参加は以下をサポートします:
 
-- シームレス シングル サインオン (SSO) によるパス スルー認証 (PTA) 
+- パススルー認証 (PTA)
 
-- シームレス シングル サインオン (SSO) によるパスワード ハッシュ同期 (PHS) 
+- パスワード ハッシュの同期 (PHS)
 
 バージョン 1.1.819.0 以降の Azure AD Connect には、ハイブリッド Azure AD 参加を構成するためのウィザードが用意されています。 このウィザードを使用すると、構成プロセスを大幅に簡略化できます。 詳細については、次を参照してください。
 
@@ -145,7 +144,22 @@ Windows デスクトップ オペレーティング システムを実行する�
  Azure AD Connect の必要なバージョンをインストールすることができない場合は、[デバイス登録を手動で構成する方法](../device-management-hybrid-azuread-joined-devices-setup.md)に関するページを参照してください。 
 
 
+## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加における代替ログイン ID のサポート
 
+Windows 10 のハイブリッド Azure AD 参加は、代替ログイン ID、[認証方法](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn)、ドメインの種類、および Windows 10 のバージョンに基づいて、[代替ログイン ID](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) の限定的なサポートを提供します。 環境内に存在できる代替ログイン ID は 2 種類あります。
+
+ - ルーティング可能な代替ログイン ID:ルーティング可能な代替ログイン ID は、ドメイン レジストラーに登録されている有効な確認済みドメインを持ちます。 たとえば、contoso.com がプライマリ ドメインの場合、contoso.org および contoso.co.uk は、Contoso 社によって所有され、[Azure AD で確認](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain)されている有効なドメインです
+ 
+ - ルーティング不可能な代替ログイン ID:ルーティング不可能な代替ログイン ID は、確認済みドメインを持ちません。 組織のプライベート ネットワーク内でのみ適用されます。 たとえば、contoso.com がプライマリ ドメインの場合、contoso.local はインターネットで確認済みのドメインではありませんが、Contoso 社のネットワーク内で使用されます。
+ 
+次の表は、Windows 10 のハイブリッド Azure AD 参加における、これらの代替ログイン ID のいずれかのサポートに関する詳細を示しています
+
+|代替ログイン ID の種類|ドメインの種類|Windows 10 のバージョン|説明|
+|-----|-----|-----|-----|
+|ルーティング可能|フェデレーション |1703 リリースから|一般公開|
+|ルーティング可能|管理者常駐型|1709 リリースから|現在はプライベート プレビューの段階です。 Azure AD SSPR はサポートされていません |
+|ルーティング不可能|フェデレーション|1803 リリースから|一般公開|
+|ルーティング不可能|管理者常駐型|サポートされていません||
 
 
 

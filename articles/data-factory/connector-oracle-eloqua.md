@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 56160b8db3bad5ebd04fc30442833d36f1633ed1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a8bb5e7ca71a24f36b102938668d57bdccd0b0b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123523"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101808"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Oracle Eloqua からデータをコピーする (プレビュー)
 
@@ -76,7 +76,12 @@ Oracle Eloqua のリンクされたサービスでは、次のプロパティが
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Oracle Eloqua データセットでサポートされるプロパティの一覧を示します。
 
-Oracle Eloqua からデータをコピーするには、データセットの type プロパティを **EloquaObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+Oracle Eloqua からデータをコピーするには、データセットの type プロパティを **EloquaObject** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、**EloquaObject** に設定する必要があります | [はい] |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -88,7 +93,8 @@ Oracle Eloqua からデータをコピーするには、データセットの ty
         "linkedServiceName": {
             "referenceName": "<Eloqua linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -97,14 +103,14 @@ Oracle Eloqua からデータをコピーするには、データセットの ty
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Oracle Eloqua ソースでサポートされるプロパティの一覧を示します。
 
-### <a name="eloquasource-as-source"></a>ソースとしての EloquaSource
+### <a name="eloqua-as-source"></a>ソースとしての Eloqua
 
 Oracle Eloqua からデータをコピーするは、コピー アクティビティのソースの種類を **EloquaSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティを **EloquaSource** に設定する必要があります | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Accounts"`」のように入力します。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Accounts"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

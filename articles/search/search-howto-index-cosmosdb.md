@@ -1,6 +1,6 @@
 ---
-title: Azure Search 用の Azure Cosmos DB データ ソースのインデックス作成 | Microsoft Docs
-description: この記事では、Azure Cosmos DB をデータ ソースとする Azure Search インデクサーの作成方法について説明します。
+title: Azure Cosmos DB データ ソースのインデックス作成 - Azure Search
+description: Azure Cosmos DB のデータ ソースをクロールし、Azure Search のフルテキスト検索可能なインデックスにデータを取り込みます。 インデクサーにより、選択したデータ ソース (Azure Cosmos DB など) のデータ インジェストが自動化されます。
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
-ms.openlocfilehash: 07768ee1590fa087a1eb1486cb59ab0f57d02b64
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec2018
+ms.openlocfilehash: 80759394ac920907c74f67cf9ee6dfcb52bfd9a8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747543"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311815"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>インデクサーを使用した Cosmos DB と Azure Search の接続
 
@@ -96,10 +97,10 @@ Azure Cosmos DB のインデクサーをセットアップするには、イン�
 要求の本文には、次のフィールドを含むデータ ソースの定義が含まれている必要があります。
 
 * **name**: データベースを表す名前を選択します。
-* **type**: は `documentdb` である必要があります。
+* **type**: `documentdb`である必要があります。
 * **credentials**:
   
-  * **connectionString**: 必須。 次の形式で接続情報をご自身の Azure Cosmos DB データベースに指定します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`。MongoDB コレクションについては、次のように **ApiKind=MongoDb** を接続文字列に追加します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
+  * **connectionString**: 必須。 次の形式で Azure Cosmos DB データベースへの接続情報を指定します。`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` MongoDB コレクションの場合は、**ApiKind=MongoDb** を接続文字列に追加します。 `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
   エンドポイント URL では、ポート番号の使用を避けてください。 ポート番号を含めると、Azure Search では、Azure Cosmos DB データベースのインデックスを作成できなくなります。
 * **container**:
   
@@ -187,12 +188,12 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 | String |Edm.String |
 | プリミティブ型の配列。例: ["a"、"b"、"c"] |Collection(Edm.String) |
 | 日付などの文字列 |Edm.DateTimeOffset、Edm.String |
-| GeoJSON オブジェクト。例: { "type": "Point", "coordinates": [ long, lat ] } |Edm.GeographyPoint |
+| GeoJSON オブジェクト。例: { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
 | その他の JSON オブジェクト |該当なし |
 
 <a name="CreateIndexer"></a>
 
-## <a name="step-3-create-an-indexer"></a>手順 3: インデクサーを作成する
+## <a name="step-3-create-an-indexer"></a>手順 3: インデクサーの作成
 
 インデックスとデータ ソースを作成したら、インデクサーを作成できます。
 

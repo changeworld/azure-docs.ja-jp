@@ -6,27 +6,25 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/17/2018
-ms.openlocfilehash: 973913e81157d2158074e50a61be0d73e5606ec3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 12/11/2018
+ms.openlocfilehash: f47c9ee85348cc96915a0fa637b06b0a73059351
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006143"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322296"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight で Grafana にアクセスする
 
 
-Grafana は、人気のあるオープン ソースのグラフとダッシュボードのビルダーです。 Grafana は豊富な機能を備えています。カスタマイズ可能で共有可能なダッシュボードを作成できるだけでなく、テンプレート化/スクリプト化されたダッシュボード、LDAP の統合、複数のデータ ソースなどの機能があります。
+[Grafana](https://grafana.com/) は、人気のあるオープン ソースのグラフとダッシュボードのビルダーです。 Grafana は豊富な機能を備えています。カスタマイズ可能で共有可能なダッシュボードを作成できるだけでなく、テンプレート化/スクリプト化されたダッシュボード、LDAP の統合、複数のデータ ソースなどの機能があります。
 
-現在、Grafana は、Azure HDInsight のクラスターの種類 "対話型クエリ" でのみサポートされています。
-
+現在、Azure HDInsight では、Grafana は Hbase と Interactive Query のクラスターの種類でサポートされています。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="create-a-hadoop-cluster"></a>Hadoop クラスターの作成
+## <a name="create-an-apache-hadoop-cluster"></a>Apache Hadoop クラスターを作成する
 
 このセクションでは、Azure Resource Manager テンプレートを利用して、HDInsight で対話型クエリ クラスターを作成します。 この記事に従うために、Resource Manager テンプレートの使用経験は必要ありません。 
 
@@ -51,11 +49,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |**[リソース グループ]**     | リソース グループを作成するか、既存のリソース グループを選択します。  リソース グループとは、Azure コンポーネントのコンテナーです。  この場合、リソース グループには、HDInsight クラスターおよび依存する Azure ストレージ アカウントが含まれています。 |
     |**場所**     | クラスターを作成する Azure の場所を選択します。  パフォーマンスを向上させるため、お近くの場所を選択してください。 |
     |**クラスターの種類**     | **[hadoop]** を選択します。 |
-    |**クラスター名**     | Hadoop クラスターの名前を入力します。 HDInsight のすべてのクラスターでは同じ DNS 名前空間が共有されるため、この名前は一意である必要があります。 この名前は、文字、数字、ハイフンを含む最大 59 文字で構成できます。 名前の先頭と末尾の文字をハイフンにすることはできません。 |
+    |**クラスター名**     | Apache Hadoop クラスターの名前を入力します。 HDInsight のすべてのクラスターでは同じ DNS 名前空間が共有されるため、この名前は一意である必要があります。 この名前は、文字、数字、ハイフンを含む最大 59 文字で構成できます。 名前の先頭と末尾の文字をハイフンにすることはできません。 |
     |**クラスター ログイン名とパスワード**     | 既定のログイン名は **admin** です。パスワードは 10 文字以上で、数字、大文字、小文字、英数字以外の文字 (' " ` を除く\) が少なくとも 1 つずつ含まれる必要があります。 "Pass@word1" などのよく使われるパスワードを**指定していない**ことを確認してください。|
     |**SSH ユーザー名とパスワード**     | 既定のユーザー名は **sshuser** です。  SSH ユーザー名は、変更が可能です。  SSH ユーザーのパスワードには、クラスターのログイン パスワードと同じ要件が適用されます。|
        
-    一部のプロパティは、テンプレートにハードコーディングされています。  これらの値はテンプレートから構成することができます。 これらのプロパティの詳細については、[HDInsight での Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+    一部のプロパティは、テンプレートにハードコーディングされています。  これらの値はテンプレートから構成することができます。 これらのプロパティについて詳しくは、[HDInsight での Apache Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。
 
 3. **[上記の使用条件に同意する]**、**[ダッシュボードにピン留めする]** の順に選択し、**[購入]** を選択します。 ポータルのダッシュボードに、**[デプロイを送信しています]** という新しいタイルが表示されます。 クラスターの作成には約 20 分かかります。
 
@@ -76,16 +74,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="access-the-grafana-dashboard"></a>Grafana ダッシュボードにアクセスする
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
+
 2. **[HDInsight クラスター]** を選択し、前のセクションで作成したクラスター名を選択します。
+
 3. **[クイック リンク]** で、**[クラスター ダッシュボード]** をクリックします。
 
     ![HDInsight クラスター ダッシュボード ポータル](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "ポータルの HDInsight クラスター ダッシュボード")
 
-4. ダッシュボードから **[Grafana]** タイルをクリックします。
+4. ダッシュボードから **[Grafana]** タイルをクリックします。 または、クラスター URL の `/grafana/` パスを参照します。 たとえば、「 `https://<clustername>.azurehdinsight.net/grafana/` 」のように入力します。
+
 5. Hadoop クラスター ユーザーの資格情報を入力します。
-6. Grafana ダッシュボードは次のようになります。
+
+6. Grafana ダッシュボードが表示され、次の例のようになります:
 
     ![HDInsight Grafana ダッシュボード](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana ダッシュボード")
+
+   
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 記事を完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 
@@ -106,7 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[リソース グループの削除]** を選択して、クラスターと既定のストレージ アカウントが含まれたリソース グループを削除します。 リソース グループを削除するとストレージ アカウントも削除されます。 ストレージ アカウントを残しておく場合は、クラスターのみを削除してください。
 
 ## <a name="next-steps"></a>次の手順
-この記事では、Resource Manager テンプレートを利用して Linux ベースの HDInsight クラスターを作成する方法と基本的な Hive クエリを実行する方法について説明しました。 次の記事では、HDInsight で Hadoop を使用して抽出、変換、読み込み (ETL) 操作を実行する方法を学習します。
+この記事では、Resource Manager テンプレートを利用して Linux ベースの HDInsight クラスターを作成する方法と基本的な Apache Hive クエリを実行する方法について説明しました。 次の記事では、HDInsight で Hadoop を使用して抽出、変換、読み込み (ETL) 操作を実行する方法を学習します。
 
 > [!div class="nextstepaction"]
 >[HDInsight での Apache Hive を使用したデータの抽出、変換、読み込み](../hdinsight-analyze-flight-delay-data-linux.md)
@@ -118,9 +122,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 HDInsight でデータを分析する方法の詳細については、次の記事を参照してください。
 
-* Visual Studio から Hive クエリを実行する方法など、HDInsight で Hive を使用する方法の詳細については、[HDInsight での Hive の使用](../hdinsight-use-hive.md)に関する記事を参照してください。
-* データの変換に使用される言語 Pig の詳細については、[HDInsight での Pig の使用](../hdinsight-use-pig.md)に関する記事を参照してください。
-* Hadoop 上のデータを処理するプログラムを作成する方法の 1 つである MapReduce の詳細については、[HDInsight での MapReduce の使用](../hdinsight-use-mapreduce.md)に関する記事を参照してください。
+* Visual Studio から Hive クエリを実行する方法など、HDInsight で Hive を使用する方法の詳細については、[HDInsight での Apache Hive の使用](../hdinsight-use-hive.md)に関する記事を参照してください。
+* データの変換に使用される言語 Pig の詳細については、[HDInsight での Apache Pig の使用](../hdinsight-use-pig.md)に関する記事を参照してください。
+* Hadoop 上のデータを処理するプログラムを作成する方法の 1 つである Apache Hadoop MapReduce の詳細については、[HDInsight での Apache Hadoop MapReduce の使用](../hdinsight-use-mapreduce.md)に関する記事を参照してください。
 * HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、 [HDInsight Hadoop Tools for Visual Studio の使用開始](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
 
 
@@ -137,5 +141,3 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-
-

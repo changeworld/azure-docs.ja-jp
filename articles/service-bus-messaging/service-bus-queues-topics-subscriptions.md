@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: spelluru
-ms.openlocfilehash: 047c4c37090db77f7a7a692604dd63c5effff9fa
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c4899db41f9c60bf6efb40c4d53aaa35f22ad275
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409763"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312886"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus のキュー、トピック、サブスクリプション
 
@@ -73,7 +73,7 @@ Service Bus がメッセージを受信する 2 つの異なるモードを指�
 Service Bus のメッセージングの詳細と使用例については、次の詳細トピックをご覧ください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [クイック スタート: Azure Portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
-* [チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-portal.md)
+* [クイック スタート:Microsoft Azure portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
+* [チュートリアル:Microsoft Azure portal とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-portal.md)
 
 

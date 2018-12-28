@@ -10,12 +10,12 @@ ms.date: 10/12/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167003"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408920"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -167,10 +167,21 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 | Windows レジストリ | 50 分 |
 | Windows ファイル | 30 分 |
 | Linux ファイル | 約 15 分 |
-| Windows サービス | 10 秒から 30 分</br> 既定値: 30 分 |
+| Windows サービス | 10 秒から 30 分</br> 既定値は30 分 |
 | Linux デーモン | 5 分 |
 | Windows ソフトウェア | 30 分 |
 | Linux ソフトウェア | 5 分 |
+
+次の表は、Change Tracking でのマシンごとの追跡項目制限を示します。
+
+| **リソース** | **制限**| **メモ** |
+|---|---|---|
+|ファイル|500||
+|レジストリ|250||
+|Windows ソフトウェア|250|ソフトウェア更新プログラムは含まれません|
+|Linux パッケージ|1250||
+|サービス|250||
+|デーモン|250||
 
 ### <a name="windows-service-tracking"></a>Windows サービスの追跡
 

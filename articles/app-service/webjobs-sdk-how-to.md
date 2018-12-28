@@ -1,5 +1,5 @@
 ---
-title: Azure WebJobs SDK の使用方法
+title: WebJobs SDK の使用方法 - Azure
 description: WebJobs SDK 用のコードを書く方法を学びます。 Azure サービスやサード パーティのデータにアクセスするイベント ドリブンのバックグラウンド処理ジョブを作成します。
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 3e06dc82baed4043ce490769aa0ec84ab3de8c24
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: f6d343d42bf9d918bf23c9f5f442d977a5caca96
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577013"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343719"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -92,7 +92,7 @@ static void Main()
 
 ### <a name="jobhost-servicepointmanager-settings"></a>JobHost ServicePointManager 設定
 
-.NET Framework には、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) と呼ばれる API が含まれています。これは、ホストへの同時接続の数を制御します。 WebJobs ホストを開始する前に、既定値である 2 からこの値を増やすことをお勧めします。
+.NET Framework には、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) と呼ばれる API が含まれています。これは、ホストへのコンカレント接続の数を制御します。 WebJobs ホストを開始する前に、既定値である 2 からこの値を増やすことをお勧めします。
 
 `HttpClient` を使用することで関数から送信するすべての HTTP 要求は、`ServicePointManager` を通過します。 `DefaultConnectionLimit` に到達すると、`ServicePointManager` は送信する前にキュー処理要求を開始します。 たとえば、`DefaultConnectionLimit` が 2 に設定されていて、コードが 1,000 個の HTTP 要求を行ったとします。 まずは、2 個の要求のみが実際に OS に許可されます。 その他の 998 個は、余裕ができるまでキューされたままになります。 つまり、要求を行ったと*思っている*ものの、OS によって宛先サーバーに要求が送信されなかったため、`HttpClient` がタイムアウトする可能性があるということです。 従って、ローカルの `HttpClient` は、要求を完了するのに 10 秒間かかっているのに、サービスはどの要求も 200 ミリ秒で返しているというような、あまり意味をなさないように見える動作が目撃されることがあります。 
 
@@ -156,7 +156,7 @@ public static void CreateQueueMessage(
 次のトリガーとバインドの種類は、`Microsoft.Azure.WebJobs` パッケージに含まれています。
 
 * BLOB ストレージ
-* Queue Storage
+* ストレージ
 * テーブル ストレージ
 
 その他の種類のトリガーやバインドを使用するには、それらを含む NuGet パッケージをインストールして、`JobHostConfiguration` オブジェクトの `Use<binding>` メソッドを呼び出します。 たとえば、Timer トリガーを使用する場合は、次の例のように、`Microsoft.Azure.WebJobs.Extensions` をインストールして、`Main` メソッドの `UseTimers` を呼び出します。
@@ -384,7 +384,7 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 
 ### <a name="singletonmodelistener"></a>SingletonMode.Listener
 
-一部のトリガーには、同時実行管理の組み込みサポートがあります。
+一部のトリガーには、コンカレンシー管理の組み込みサポートがあります。
 
 * **QueueTrigger** - `JobHostConfiguration.Queues.BatchSize` を 1 に設定します。
 * **ServiceBusTrigger** - `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` を 1 に設定します。
@@ -450,7 +450,7 @@ Web アプリが複数のインスタンス上で稼働している場合、継�
 
 タイマー トリガーは、指定された時刻に常に 1 つを超える関数のインスタンスが実行しないように、自動的に タイマーの1 つのインスタンスのみが実行するようにします。
 
-ホスト Web アプリの複数のインスタンスがある場合でも、関数の 1 つのインスタンスのみを実行するには [Singleton](#singleton) 属性を使用できます。
+ホスト Web アプリの複数のインスタンスがある場合でも、関数の 1 つのインスタンスのみを実行するには [Singleton 属性](#singleton-attribute)を使用できます。
     
 ## <a name="filters"></a>フィルター 
 
@@ -462,7 +462,7 @@ ASP.NET 用に開発されたログ記録フレームワークをお勧めしま
 
 ### <a name="log-filtering"></a>ログのフィルタリング
 
-`ILogger` インスタンスによって作成されたすべてのログには、関連付けられた `Category` と `Level` があります。 [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel#Microsoft_Extensions_Logging_LogLevel) は列挙型で、整数コードは次のような相対的な重要度を示します。
+`ILogger` インスタンスによって作成されたすべてのログには、関連付けられた `Category` と `Level` があります。 [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) は列挙型で、整数コードは次のような相対的な重要度を示します。
 
 |LogLevel    |コード|
 |------------|---|
@@ -474,7 +474,7 @@ ASP.NET 用に開発されたログ記録フレームワークをお勧めしま
 |重大    | 5 |
 |なし        | 6 |
 
-各カテゴリは個別に特定の [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel) でフィルターをかけることができます。 たとえば、BLOB トリガー処理のすべてのログを表示するが、それ以外に関しては `Error` 以降のみを表示するなどが可能です。
+各カテゴリは個別に特定の [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) でフィルターをかけることができます。 たとえば、BLOB トリガー処理のすべてのログを表示するが、それ以外に関しては `Error` 以降のみを表示するなどが可能です。
 
 フィルタリング規則の指定を容易にできるように、WebJobs SDK は、Application Insights や Console を含む多くの既存のログ プロバイダーに渡すことができる `LogCategoryFilter` を提供します。
 
@@ -498,7 +498,7 @@ config.LoggerFactory = new LoggerFactory()
 
 ### <a name="custom-telemetry-for-application-insights"></a>Application Insights のカスタム テレメトリ
 
-内部的には、WebJobs SDK 用の Application Insights プロバイダーに作成された `TelemetryClient` は、[ServerTelemetryChannel](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs) を使用します。 Application Insights のエンドポイントが使用できない、または着信要求のスロットリングが行われている場合、このチャンネルが [Web アプリのファイル システムで要求を保存して、後でこれらを再送信](http://apmtips.com/blog/2015/09/03/more-telemetry-channels)します。
+内部的には、WebJobs SDK 用の Application Insights プロバイダーに作成された `TelemetryClient` は、[ServerTelemetryChannel](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs) を使用します。 Application Insights のエンドポイントが使用できない、または着信要求のスロットリングが行われている場合、このチャンネルが [Web アプリのファイル システムで要求を保存して、後でこれらを再送信](https://apmtips.com/blog/2015/09/03/more-telemetry-channels)します。
 
 `TelemetryClient` は、`ITelemetryClientFactory` を実装するクラスにより作成されます。 既定値で、これは [DefaultTelemetryClientFactory](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs) です。
 

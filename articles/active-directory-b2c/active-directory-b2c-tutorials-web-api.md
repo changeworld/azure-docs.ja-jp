@@ -38,7 +38,7 @@ ms.locfileid: "52726408"
 
 ## <a name="register-web-api"></a>Web API の登録
 
-Web API リソースは、Azure Active Directory からの[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を表す[クライアント アプリケーション](../active-directory/develop/developer-glossary.md#client-application)で[保護されたリソース要求](../active-directory/develop/developer-glossary.md#resource-server)を受け取って処理できるように、テナントに登録しておく必要があります。 登録により、テナント内に[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/developer-glossary.md#application-object)が確立されます。 
+Web API リソースは、Azure Active Directory からの[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を表す[クライアント アプリケーション](../active-directory/develop/developer-glossary.md#client-application)で[保護されたリソース要求](../active-directory/develop/developer-glossary.md#resource-server)を受け取って処理できるように、テナントに登録しておく必要があります。 登録により、テナント内に[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/developer-glossary.md#application-object)が確立されます。
 
 Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -55,8 +55,8 @@ Azure AD B2C テナントの全体管理者として [Azure Portal](https://port
     | Setting      | 推奨値  | Description                                        |
     | ------------ | ------- | -------------------------------------------------- |
     | **名前** | My Sample Web API | 開発者が Web API を把握できる**名前**を入力します。 |
-    | **Web アプリ/Web API を含める** | [はい] | Web API の場合は **[はい]** を選択します。 |
-    | **暗黙的フローを許可する** | [はい] | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
+    | **Web アプリ/Web API を含める** | はい | Web API の場合は **はい** を選択します。 |
+    | **暗黙的フローを許可する** | はい | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**はい** を選択します。 |
     | **応答 URL** | `https://localhost:44332` | 応答 URL は、API が要求したトークンを Azure AD B2C が返すエンドポイントです。 このチュートリアルでは、サンプル Web API はローカル (localhost) で実行され、ポート 44332 でリッスンします。 |
     | **アプリケーション ID/URI** | myAPISample | この URI は、テナント内の API を一意に識別します。 これにより、テナントごとに複数の API を登録することができます。 [スコープ](../active-directory/develop/developer-glossary.md#scopes)は、保護された API リソースへのアクセスを統制し、App ID URI ごとに定義されます。 |
     | **ネイティブ クライアント** | いいえ  | これはネイティブ クライアントではなく Web API のため、[いいえ] を選択します。 |
@@ -81,7 +81,7 @@ Azure AD B2C に Web API を登録すると、信頼関係が定義されます�
 
 **[公開済みスコープ (プレビュー)]** をクリックします。
 
-API のスコープを構成するには、次のエントリを追加します。 
+API のスコープを構成するには、次のエントリを追加します。
 
 ![Web API で定義されているスコープ](media/active-directory-b2c-tutorials-web-api/scopes-defined-in-web-api.png)
 
@@ -96,7 +96,7 @@ API のスコープを構成するには、次のエントリを追加します�
 
 ### <a name="grant-app-permissions-to-web-api"></a>Web API へのアクセス許可をアプリに付与する
 
-保護された Web API をアプリから呼び出すには、その API へのアクセス許可をアプリに付与する必要があります。 このチュートリアルでは、[ASP.NET Web アプリでユーザー認証に Azure Active Directory B2C を使用するチュートリアル](active-directory-b2c-tutorials-web-app.md)で作成した Web アプリを使用します。 
+保護された Web API をアプリから呼び出すには、その API へのアクセス許可をアプリに付与する必要があります。 このチュートリアルでは、[ASP.NET Web アプリでユーザー認証に Azure Active Directory B2C を使用するチュートリアル](active-directory-b2c-tutorials-web-app.md)で作成した Web アプリを使用します。
 
 1. Azure Portal で、サービスの一覧から **[Azure AD B2C]** を選択し、**[アプリケーション]** をクリックして登録済みアプリの一覧を表示します。
 
@@ -114,7 +114,7 @@ API のスコープを構成するには、次のエントリを追加します�
 
 ## <a name="update-code"></a>コードの更新
 
-Web API が登録され、スコープを定義したら、Azure AD B2C テナントを使用するように Web API コードを構成する必要があります。 このチュートリアルでは、サンプル Web API を構成します。 
+Web API が登録され、スコープを定義したら、Azure AD B2C テナントを使用するように Web API コードを構成する必要があります。 このチュートリアルでは、サンプル Web API を構成します。
 
 サンプル Web API は、前提条件のチュートリアルである [ASP.NET Web アプリでユーザー認証に Azure Active Directory B2C を使用するチュートリアル](active-directory-b2c-tutorials-web-app.md)でダウンロードしたプロジェクトに含まれています。 前提条件のチュートリアルを完了していない場合は、先に進む前にこれを完了してください。
 
@@ -132,7 +132,7 @@ Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
 
 1. **TaskWebApp** プロジェクトの **Web.config** を開きます。
 
-2. API をローカルで実行するには、**api:TaskServiceUrl** に localhost の設定を使用します。 次のように Web.config を変更します。 
+2. API をローカルで実行するには、**api:TaskServiceUrl** に localhost の設定を使用します。 次のように Web.config を変更します。
 
     ```C#
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
@@ -177,16 +177,16 @@ Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
-**TaskWebApp** プロジェクトと **TaskService** プロジェクトの両方を実行する必要があります。 
+**TaskWebApp** プロジェクトと **TaskService** プロジェクトの両方を実行する必要があります。
 
-1. ソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** を選択します。 
+1. ソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** を選択します。
 2. **[マルチ スタートアップ プロジェクト]** を選択します。
 3. 両方のプロジェクトの **[アクション]** を **[開始]** に変更します。
 4. [OK] をクリックして構成を保存します。
 5. **F5** キーを押して両方のアプリを実行します。 各アプリケーションは、それぞれ別のブラウザー タブで開かれます。`https://localhost:44316/` は Web アプリです。
     `https://localhost:44332/` は Web API です。
 
-6. Web アプリで、メニュー バーナーのサインアップ/サインイン リンクをクリックして、Web アプリケーションにサインアップします。 [Web アプリのチュートリアル](active-directory-b2c-tutorials-web-app.md)で作成したアカウントを使用します。 
+6. Web アプリで、メニュー バーナーのサインアップ/サインイン リンクをクリックして、Web アプリケーションにサインアップします。 [Web アプリのチュートリアル](active-directory-b2c-tutorials-web-app.md)で作成したアカウントを使用します。
 7. サインインしたら、**To Do リスト**のリンクをクリックして To Do リスト アイテムを作成します。
 
 To Do リスト アイテムを作成すると、Web アプリは To Do リスト アイテムを生成するよう Web API に要求します。 保護されている Web アプリは、Azure AD B2C テナントで保護された Web API を呼び出しています。

@@ -1,6 +1,6 @@
 ---
-title: Azure Search のファセット フィルター | Microsoft Docs
-description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値で条件をフィルター処理してクエリの検索結果を減らします。
+title: アプリ内の検索ナビゲーション用ファセット フィルター - Azure Search
+description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、地理的な場所、または数値で条件をフィルター処理してクエリの検索結果を減らします。
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 3f2cfea52d3c3f4bfc75364d0662a4218219152d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 94a0d3f19e595ac040d908ea47d6332ceae0943c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792411"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314807"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Azure Search でファセット フィルターを作成する方法 
 
@@ -44,7 +45,7 @@ ms.locfileid: "31792411"
 + Edm.DateTimeOffset
 + Edm.Boolean
 + Edm.Collections
-+ 数値フィールド タイプ: Edm.Int32、Edm.Int64、Edm.Double
++ 数値フィールド タイプ:Edm.Int32、Edm.Int64、Edm.Double
 
 ファセット ナビゲーションで Edm.GeographyPoint を使用することはできません。 ファセットは、人間が判読できるテキストまたは数字で構成されます。 そのため、ファセットは地理座標ではサポートされていません。 場所でファセットするには、都市フィールドまたは地域フィールドが必要です。
 

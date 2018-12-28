@@ -1,5 +1,5 @@
 ---
-title: コグニティブ検索の強化された入力フィールドを Azure Search インデックスの出力フィールドにマップする | Microsoft Docs
+title: コグニティブ検索の強化された入力フィールドを出力フィールドにマップする - Azure Search
 description: ソース データ フィールドを抽出して強化し、Azure Search インデックスの出力フィールドにマップします。
 manager: pablocas
 author: luiscabrer
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 77e7a1cc725dc56ee20d3c1999cfb7cf0039d67f
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec2018
+ms.openlocfilehash: a662558deeeb09849a23a361aabea962eb633cd7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094473"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314671"
 ---
 # <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>強化されたフィールドを検索可能なインデックスにマップする方法
 

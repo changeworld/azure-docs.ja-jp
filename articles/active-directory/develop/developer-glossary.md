@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: dc3bbab2242321ae736f3f2cefb1eed5e96e834e
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b74c3d355a720948c22e90b1792dcd6139c101ea
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288732"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338211"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 開発者向け用語集
 
@@ -41,7 +41,7 @@ ms.locfileid: "51288732"
 
 ## <a name="application-id-client-id"></a>アプリケーション ID (クライアント ID)
 
-特定のアプリケーションと関連付けられた構成を識別する、Azure AD がアプリケーションの登録に発行する一意識別子。 このアプリケーション ID ([クライアント ID](https://tools.ietf.org/html/rfc6749#page-15)) は、認証要求の実行時に使用され、開発時に認証ライブラリに提供されます。 アプリケーション ID (クライアント ID) はシークレットではありません。 
+特定のアプリケーションと関連付けられた構成を識別する、Azure AD がアプリケーションの登録に発行する一意識別子。 このアプリケーション ID ([クライアント ID](https://tools.ietf.org/html/rfc6749#page-15)) は、認証要求の実行時に使用され、開発時に認証ライブラリに提供されます。 アプリケーション ID (クライアント ID) はシークレットではありません。
 
 ## <a name="application-manifest"></a>アプリケーション マニフェスト
 
@@ -102,7 +102,7 @@ Azure AD アプリケーション統合の場合、Azure AD アプリケーシ�
 
 ## <a name="client-application"></a>クライアント アプリケーション
 
-[OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、[リソース所有者](#resource-owner)に代わって、保護されたリソースを要求するアプリケーションをいいます。 "クライアント" という言葉の意味には、特定のハードウェア実装上の特性 (アプリケーションがサーバーで実行されるのか、デスクトップで実行されるのか、またはそれ以外のデバイスで実行されるのか、など) は含まれません。 
+[OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、[リソース所有者](#resource-owner)に代わって、保護されたリソースを要求するアプリケーションをいいます。 "クライアント" という言葉の意味には、特定のハードウェア実装上の特性 (アプリケーションがサーバーで実行されるのか、デスクトップで実行されるのか、またはそれ以外のデバイスで実行されるのか、など) は含まれません。
 
 クライアント アプリケーションは、リソース所有者に[承認](#authorization)を要求することによって、[OAuth2 承認付与](#authorization-grant)フローに参加し、リソース所有者に代わって API やデータにアクセスすることができます。 OAuth2 Authorization Framework では、資格情報の機密維持に対するクライアントの能力に基づき、"confidential" と "public" という [2 種類のクライアントを定義][OAuth2-Client-Types]しています。 アプリケーションは、Web サーバー上で実行される [Web クライアント (confidential)](#web-client)、デバイス上にインストールされる[ネイティブ クライアント (public)](#native-client)、またはデバイスのブラウザーで実行される[ユーザーエージェントベース クライアント (public)](#user-agent-based-client) を実装できます。
 
@@ -151,7 +151,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 [OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、保護されたリソースのホストとして、[アクセス トークン](#access-token)を提示する[クライアント アプリケーション](#client-application)からのリソース要求 (保護されたリソースに対する要求) を受理し、応答する機能を備えたサーバーをいいます。 保護されたリソース サーバーまたはリソース アプリケーションと呼ばれることもあります。
 
-リソース サーバーは API を公開しており、そこで保護されているリソースに対しては、OAuth 2.0 Authorization Framework を使用して、[スコープ](#scopes)と[ロール](#roles)を介したアクセスが強制的に適用されます。 たとえば、Azure AD テナント データへのアクセスを提供する Azure AD Graph API や、メール、カレンダーなどのデータへのアクセスを提供する Office 365 API があります。 これらの API はどちらも [Microsoft Graph API][Microsoft-Graph] から利用することができます。 
+リソース サーバーは API を公開しており、そこで保護されているリソースに対しては、OAuth 2.0 Authorization Framework を使用して、[スコープ](#scopes)と[ロール](#roles)を介したアクセスが強制的に適用されます。 たとえば、Azure AD テナント データへのアクセスを提供する Azure AD Graph API や、メール、カレンダーなどのデータへのアクセスを提供する Office 365 API があります。 これらの API はどちらも [Microsoft Graph API][Microsoft-Graph] から利用することができます。
 
 リソース アプリケーションの ID 構成は、クライアント アプリケーションと同様、Azure AD テナントへの [登録](#application-registration) を通じて確立され、アプリケーション オブジェクトとサービス プリンシパル オブジェクトの両方が得られます。 Azure AD Graph API など、Microsoft が提供している一部の API には、あらかじめ登録されているサービス プリンシパルが存在し、プロビジョニング時にすべてのテナントで利用できるようになっています。
 
@@ -173,7 +173,7 @@ Azure AD の Graph API によって公開されているアプリケーション
 
 ## <a name="security-token"></a>セキュリティ トークン
 
-要求を含んだ署名付きのドキュメント (OAuth2 トークン、SAML 2.0 アサーションなど)。 OAuth2 [承認付与](#authorization-grant)の場合、[アクセス トークン](#access-token) (OAuth2) と [ID トークン](http://openid.net/specs/openid-connect-core-1_0.html#IDToken)がセキュリティ トークンの種類になります。どちらも [JSON Web トークン (JWT)][JWT] として実装されます。
+要求を含んだ署名付きのドキュメント (OAuth2 トークン、SAML 2.0 アサーションなど)。 OAuth2 [承認付与](#authorization-grant)の場合、[アクセス トークン](#access-token) (OAuth2) と [ID トークン](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)がセキュリティ トークンの種類になります。どちらも [JSON Web トークン (JWT)][JWT] として実装されます。
 
 ## <a name="service-principal-object"></a>サービス プリンシパル オブジェクト
 
@@ -251,6 +251,6 @@ Microsoft のコンテンツ改善のため、以下のコメント セクショ
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
-[OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
-[OpenIDConnect-AuthZ-Endpoint]: http://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
-[OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
+[OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html
+[OpenIDConnect-AuthZ-Endpoint]: https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
+[OpenIDConnect-ID-Token]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken

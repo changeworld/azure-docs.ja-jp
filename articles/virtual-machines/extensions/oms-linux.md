@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 11/30/2018
 ms.author: roiyz
-ms.openlocfilehash: dc0d7857dbbbdc862878201ba9d47632d2b5affd
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6ca39d13fa54d772de17d519be5977e1a437c033
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404853"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337565"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
@@ -39,13 +39,13 @@ Log Analytics Agent 拡張機能は、次の Linux ディストリビューシ�
 
 | ディストリビューション | Version |
 |---|---|
-| CentOS Linux | 6 および 7 (x86/x64) |
-| Amazon Linux | 2017.09 | 
+| CentOS Linux | 6 (x86/x64) および 7 (x64) |
+| Amazon Linux | 2017.09 (x64) | 
 | Oracle Linux | 6 および 7 (x86/x64) |
-| Red Hat Enterprise Linux Server | 6 および 7 (x86/x64) |
+| Red Hat Enterprise Linux Server | 6 (x86/x64) および 7 (x64) |
 | Debian GNU/Linux | 8 および 9 (x86/x64) |
-| Ubuntu | 14.04 LTS、16.04 LTS、および 18.04 LTS (x86/x64) |
-| SUSE Linux Enterprise Server | 12 (x86/x64) |
+| Ubuntu | 14.04 LTS (x86/x64)、16.04 LTS (x86/x64)、および 18.04 LTS (x64) |
+| SUSE Linux Enterprise Server | 12 (x64) |
 
 >[!NOTE]
 >1.x より前のバージョンの OpenSSL はどのプラットフォームでもサポートされていません。x86_64 プラットフォーム (64 ビット) でサポートされているバージョンは 1.10 のみです。  
@@ -56,6 +56,8 @@ Log Analytics Agent 拡張機能は、次の Linux ディストリビューシ�
 
 | Log Analytics Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
 |--------------------------------|--------------------------|
+| 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
+| 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 
 | 1.7.9 | [1.6.1-3](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.1.3)| 
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
@@ -79,7 +81,7 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、Log Analytics Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット Log Analytics ワークスペースのワークスペース ID とワークスペース キーが必要です (これらの値は Azure Portal の [Log Analytics ワークスペース](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key)で確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
+次の JSON は、Log Analytics Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット Log Analytics ワークスペースのワークスペース ID とワークスペース キーが必要です (これらの値は Azure Portal の [Log Analytics ワークスペース](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)で確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
 
 ```json
 {
@@ -94,6 +96,7 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
     "typeHandlerVersion": "1.7",
+    "autoUpgradeMinorVersion": true,
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -219,7 +222,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 51 | VM のオペレーティング システムでは、この拡張機能はサポートされていません | |
 | 55 | Log Analytics サービスに接続できない、必要なパッケージが見つからない、または dpkg パッケージ マネージャーがロックされています| システムがインターネットにアクセスしていること、または有効な HTTP プロキシが指定されていることを確認します。 さらに、ワークスペース ID が正しいこと、および curl ユーティリティと tar ユーティリティがインストールされていることを確認します。 |
 
-その他のトラブルシューティング情報については、[Log Analytics エージェントのトラブルシューティング](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md)に関する記事を参照してください。
+その他のトラブルシューティング情報については、[Log Analytics エージェントのトラブルシューティング](../../azure-monitor/platform/vmext-troubleshoot.md)に関する記事を参照してください。
 
 ### <a name="support"></a>サポート
 

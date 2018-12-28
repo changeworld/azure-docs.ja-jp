@@ -1,22 +1,24 @@
 ---
-title: Azure の送信接続 | Microsoft Docs
+title: Azure の送信接続
+titlesuffix: Azure Load Balancer
 description: この記事では、Azure によって、パブリック インターネット サービスと VM がどのように通信するかを説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: fdcc039eb71eaeea03aaae856a6d031d4c528669
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 09de0a3aa0303e169d0b90690016909b29dc4a9b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687573"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190970"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の送信接続
 
@@ -46,7 +48,7 @@ Azure は送信元ネットワーク アドレス変換 (SNAT) を使用して�
 
 VM がパブリック IP アドレス空間で Azure の外部のエンドポイントと通信しないようにする場合、必要に応じてネットワーク セキュリティ グループ (NSG) を使用してアクセスをブロックできます。 NSG の使用の詳細については、「[送信接続の防止](#preventoutbound)」で説明します。 送信アクセスがない仮想ネットワークの設計、実装、および管理のガイダンスについては、この記事の範囲外です。
 
-### <a name="ilpip"></a>シナリオ 1: インスタンス レベルのパブリック IP アドレスがある VM
+### <a name="ilpip"></a>シナリオ 1:インスタンス レベルのパブリック IP アドレスがある VM
 
 このシナリオでは、VM にはインスタンス レベルのパブリック IP (ILPIP) が割り当てられています。 送信接続に関する限り、VM が負荷分散されているかどうかは関係ありません。 このシナリオは他のシナリオよりも優先されます。 ILPIP が使用される場合、すべての送信フローで VM によって ILPIP が使用されます。  
 
@@ -54,7 +56,7 @@ VM に割り当てられたパブリック IP は (1 対多ではなく) 1 対 1
 
 アプリケーションが多数の送信フローを開始したために SNAT ポート不足が発生した場合は、[SNAT の制約を軽減するために ILPIP](#assignilpip) を割り当てることを検討してください。 その全体像については、[SNAT 不足の管理](#snatexhaust)に関するセクションを確認してください。
 
-### <a name="lb"></a>シナリオ 2: インスタンス レベルのパブリック IP アドレスがない負荷分散 VM
+### <a name="lb"></a>シナリオ 2:インスタンス レベルのパブリック IP アドレスがない負荷分散 VM
 
 このシナリオでは、VM はパブリック Load Balancer バックエンド プールに含まれます。 VM にパブリック IP アドレスは割り当てられていません。 パブリック IP フロントエンドとバックエンド プール間にリンクを作成するには、ロード バランサー リソースをロード バランサー規則で構成する必要があります。
 
@@ -70,7 +72,7 @@ SNAT ポートは、「[SNAT と PAT の理解](#snat)」の説明のとおり�
 
 Load Balancer Basic で送信接続の正常性を監視するために、[Load Balancer の Log Analytics](load-balancer-monitor-log.md) と、[SNAT ポート不足メッセージを監視するためのアラート イベント ログ](load-balancer-monitor-log.md#alert-event-log)を使用できます。
 
-### <a name="defaultsnat"></a>シナリオ 3: インスタンス レベルのパブリック IP アドレスがないスタンドアロン VM
+### <a name="defaultsnat"></a>シナリオ 3:インスタンス レベルのパブリック IP アドレスがないスタンドアロン VM
 
 このシナリオでは、VM はパブリック Load Balancer プールの一部ではなく (また、内部 Standard Load Balancer プールの一部ではなく)、ILPIP アドレスが割り当てられていません。 VM が送信フローを作成すると、Azure が、送信フローのプライベート ソース IP アドレスをパブリック ソース IP アドレスに変換します。 この送信フローで使用されるパブリック IP アドレスは構成不可能であり、サブスクリプションのパブリック IP リソースの制限に対してカウントされません。 このパブリック IP アドレスはユーザーのものではなく、予約することはできません。 VM、可用性セット、または仮想マシン スケール セットを再デプロイすると、このパブリック IP アドレスは解放され、新しいパブリック IP アドレスが要求されます。 IP アドレスをホワイトリストに登録する場合は、このシナリオを使用しないでください。 代わりに、送信シナリオと、送信接続で使用されるパブリック IP アドレスを明示的に宣言する他の 2 つのシナリオのいずれかを使用します。
 

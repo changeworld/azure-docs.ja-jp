@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: a7f21d0ebebbe2c811470de384cc5ee9a34ab060
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3bb8d4796d23b84f815d28efa45af619efe19af3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006160"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338235"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Azure Security Center 上のネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -72,9 +72,9 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 マップは対話型かつ動的なので、すべてのノードがクリック可能で、ビューはフィルターに基づいて変化することがあります。
 
 1. 上部にあるフィルターを使用して、ネットワーク マップに表示される内容を変更できます。 次の項目に基づいてマップのフォーカスを設定できます。
-   -  **セキュリティ正常性**: Azure リソースの重大度 (高、中、低) に基づいてマップをフィルター処理できます。
-   - **推奨事項**: リソースに対してアクティブになっている推奨事項に基づいて、表示されるリソースを選択できます。 たとえば、Security Center によってネットワーク セキュリティ グループの有効化が推奨されているリソースのみを表示できます。
-   - **ネットワーク ゾーン**: 既定では、マップにはインターネットに接続しているリソースのみが表示され、内部 VM も選択できます。
+   -  **セキュリティ正常性**:Azure リソースの重大度 (高、中、低) に基づいてマップをフィルター処理できます。
+   - **推奨事項**:リソースに対してアクティブになっている推奨事項に基づいて、表示されるリソースを選択できます。 たとえば、Security Center によってネットワーク セキュリティ グループの有効化が推奨されているリソースのみを表示できます。
+   - **ネットワーク ゾーン**:既定では、マップにはインターネットに接続しているリソースのみが表示され、内部 VM も選択できます。
  
 2. いつでも左上隅の **[リセット]** をクリックして、マップを既定の状態に戻すことができます。
 
@@ -149,6 +149,6 @@ VNet|5|DDoS Protection Standard を有効にする|これらの仮想ネット�
 
 セキュリティ センターの詳細については、次を参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。

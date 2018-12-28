@@ -1,5 +1,5 @@
 ---
-title: Azure Search のフィルター | Microsoft Docs
+title: インデックスでの検索結果の範囲指定用フィルター - Azure Search
 description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値でフィルター処理してクエリの検索結果を減らします。
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 9f891dbe3f051f2fb5bfd242830f3c30abede487
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: d99196e231d122fcb0e707d30aed4d3b3eb2b89d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32191368"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310353"
 ---
 # <a name="filters-in-azure-search"></a>Azure Search のフィルター 
 
@@ -154,7 +155,7 @@ REST API では、フィルター可能の設定は既定で*オン*です。 �
 テキスト文字列は大文字と小文字が区別されます。 大文字の単語の小文字化処理はないため、`$filter=f eq 'Sunny day'` で "sunny day" は検索されません。
 
 
-| アプローチ | [説明] | 
+| アプローチ | 説明 | 
 |----------|-------------|
 | [search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | 指定されたフィールドに文字列のコンマ区切りの一覧を提供する関数。 この文字列はフィルター条件で構成され、クエリのスコープ内にある各フィールドに適用されます。 <br/><br/>`search.in(f, ‘a, b, c’)` は意味的には `f eq ‘a’ or f eq ‘b’ or f eq ‘c’` と同じですが、値の一覧が大きい場合、実行ははるかに速くなります。<br/><br/>[セキュリティ フィルター](search-security-trimming-for-azure-search.md)や、指定されたフィールドの値に対してマッチング処理を行う未加工のテキストで構成されたるフィルターには、**search.in** 関数を使用することをお勧めします。 このアプローチは、速度を目的に設計されています。 数百から数千単位の値であれば、1 秒未満の応答時間を期待できます。 関数に渡すことができる項目数に明示的な制限はありませんが、指定する文字列数に比例して待機時間は長くなります。 | 
 | [search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | フルテキスト検索操作と、厳格なブール型フィルター操作を同じフィルター式に混在させることができる関数です。 1 つの要求で複数のクエリとフィルターを組み合わせることができます。 また、*contains* フィルターに使用して、大きな文字列内の一部の文字列をフィルターすることができます。 |  

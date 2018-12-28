@@ -1,18 +1,18 @@
 ---
-title: Azure Container Instances で再起動ポリシーを使ってコンテナー化タスクを実行する
+title: Azure Container Instances でコンテナー化タスクに再起動ポリシーを使用する
 description: Azure Container Instances を使用して、ビルド、テスト、イメージ レンダリングのジョブなど、完了まで実行するタスクを実行する方法を説明します。
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 12/10/2018
 ms.author: danlep
-ms.openlocfilehash: c9e3fadd5164ca0d770f36ba95c30db933efcd39
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b254adb050aa9826170c0849c3811380db6d9b38
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853894"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321035"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>再起動ポリシーによるコンテナー化タスクの実行
 
@@ -24,7 +24,7 @@ Azure Container Instances ではコンテナー デプロイを簡単にすば�
 
 ## <a name="container-restart-policy"></a>コンテナー再起動ポリシー
 
-Azure Container Instances でコンテナーを作成する場合、3 つの再起動ポリシー設定のいずれかを指定できます。
+Azure Container Instances で[コンテナー グループ](container-instances-container-groups.md)を作成する場合、3 つの再起動ポリシー設定のいずれかを指定できます。
 
 | 再起動ポリシー   | 説明 |
 | ---------------- | :---------- |
@@ -93,6 +93,24 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 この例は、スクリプトが STDOUT に送信した出力を示しています。 ただし、コンテナー化されたタスクでは、後で取得できるように、その出力を永続的ストレージに書き込む場合があります。 たとえば、[Azure ファイル共有](container-instances-mounting-azure-files-volume.md)に書き込むなどです。
 
+## <a name="manually-stop-and-start-a-container-group"></a>コンテナー グループを手動で停止および起動する
+
+[コンテナー グループ](container-instances-container-groups.md)用に構成された再起動ポリシーとは関係なく、コンテナー グループを手動で停止したり起動したりできます。
+
+* **停止** - たとえば、[az container stop][az-container-stop] コマンドを使用して、いつでも手動で実行中のコンテナー グループを停止できます。 特定のコンテナー ワークロードでは、一定期間の経過後にコンテナー グループを停止してコストを節約できます。 
+
+  コンテナー グループを停止すると、グループ内のコンテナーが終了し再利用されます。コンテナーの状態は保持されません。 
+
+* **起動**- コンテナー グループが独自に終了したか、手動でグループを停止させたためにコンテナー グループが停止しているときに、[container start API](/rest/api/container-instances/containergroups/start) または Azure portal を使用して、グループ内のコンテナーを手動で起動できます。 いずれかのコンテナーのコンテナー イメージが更新されると、新しいイメージがプルされます。 
+
+  コンテナー グループを開始すると、同じコンテナー構成で新しいデプロイが開始されます。 このアクションにより、期待どおりに動作する既知のコンテナー グループ構成を簡単に再利用できます。 同じワークロードを実行するために新しいコンテナー グループを作成する必要はありません。
+
+* **再起動** - コンテナー グループの実行中に、[az container restart][az-container-restart] コマンドなどを使用してコンテナーグループを再起動できます。 このアクションでは、コンテナー グループ内のすべてのコンテナーが起動します。 いずれかのコンテナーのコンテナー イメージが更新されると、新しいイメージがプルされます。 
+
+  コンテナー グループの再起動は、デプロイの問題のトラブルシューティングを行うときに役立ちます。 たとえば、一時的なリソース制限により、コンテナーが正しく実行できない場合、グループの再起動で問題が解決することがあります。
+
+コンテナー グループを手動で起動または再起動した後、コンテナー グループは、構成された再起動ポリシーに従って実行します。
+
 ## <a name="configure-containers-at-runtime"></a>実行時にコンテナーを構成する
 
 コンテナー インスタンスを作成すると、その**環境変数**を設定できるだけでなく、コンテナーが開始されたときに実行するカスタム **コマンド ライン**を指定することもできます。 これらの設定をバッチ ジョブで使用して、タスク固有の構成で各コンテナーを準備できます。
@@ -103,9 +121,9 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 たとえば、コンテナー インスタンスを作成するときに次の環境変数を指定することで、コンテナー例のスクリプトの動作を変更できます。
 
-*NumWords*: STDOUT に送信された単語の数。
+*NumWords*:STDOUT に送信された単語の数。
 
-*MinLength*: 単語内のカウントする文字の最小数。 数値を大きくすると、"of" や "the" のようなよく使用される単語は無視されます。
+*MinLength*:単語内のカウントする文字の最小数。 数値を大きくすると、"of" や "the" のようなよく使用される単語は無視されます。
 
 ```azurecli-interactive
 az container create \
@@ -131,6 +149,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
  ('ROSENCRANTZ', 69),
  ('GUILDENSTERN', 54)]
 ```
+
+
 
 ## <a name="command-line-override"></a>コマンド ラインのオーバーライド
 
@@ -174,5 +194,7 @@ az container logs --resource-group myResourceGroup --name mycontainer3
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
+[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
+[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
 [azure-cli-install]: /cli/azure/install-azure-cli

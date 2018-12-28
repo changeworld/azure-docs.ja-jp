@@ -1,6 +1,6 @@
 ---
-title: Azure Web Apps でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド
-description: Azure Web Apps でのノード アプリケーションのベスト プラクティスとトラブルシューティング手順について説明します。
+title: Node.js のベスト プラクティスとトラブルシューティング - Azure App Service
+description: Azure App Service でのノード アプリケーションのベスト プラクティスとトラブルシューティング手順について説明します。
 services: app-service\web
 documentationcenter: nodejs
 author: ranjithr
@@ -14,14 +14,15 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
-ms.openlocfilehash: 860874ed49056e6b4695c060b06bf061820c390e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec18
+ms.openlocfilehash: 5a8760bc67125f857998f23ca33733a62a0d8fb5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31789675"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315725"
 ---
-# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Azure Web Apps でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド
+# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
 この記事では、Azure Web Apps で実行されている[ノード アプリケーション](app-service-web-get-started-nodejs.md) ([iisnode](https://github.com/azure/iisnode) を使用) のベスト プラクティスとトラブルシューティングの手順について説明します。
 
@@ -62,11 +63,11 @@ ms.locfileid: "31789675"
 
 ### <a name="debuggerextensiondll"></a>debuggerExtensionDll
 
-この設定は、ノード アプリケーションのデバッグ時に iisnode が node-inspector のどのバージョンを使用するかを制御します。 現在、この設定に有効な値は、iisnode-inspector-0.7.3.dll と iisnode-inspector.dll の 2 つだけです。 既定値は、iisnode-inspector-0.7.3.dll です。 iisnode-inspector-0.7.3.dll バージョンでは node-inspector-0.7.3 と Web ソケットを使用します。 このバージョンを使用するには、Azure WebApp で Web ソケットを有効にする必要があります。 新しい node-inspector を使用するよう iisnode を構成する方法の詳細については、<http://ranjithblogs.azurewebsites.net/?p=98> を参照してください。
+この設定は、ノード アプリケーションのデバッグ時に iisnode が node-inspector のどのバージョンを使用するかを制御します。 現在、この設定に有効な値は、iisnode-inspector-0.7.3.dll と iisnode-inspector.dll の 2 つだけです。 既定値は、iisnode-inspector-0.7.3.dll です。 iisnode-inspector-0.7.3.dll バージョンでは node-inspector-0.7.3 と Web ソケットを使用します。 このバージョンを使用するには、Azure WebApp で Web ソケットを有効にする必要があります。 新しい node-inspector を使用するよう iisnode を構成する方法の詳細については、<https://ranjithblogs.azurewebsites.net/?p=98> を参照してください。
 
 ### <a name="flushresponse"></a>flushResponse
 
-IIS の既定の動作として、応答データは、フラッシュするまでか、応答が終了するまでのどちらか早い方のタイミングで、最大 4 MB がバッファーに格納されます。 iisnode には、この動作より優先される構成設定があります。iisnode が node.exe から応答エンティティを受け取ったらすぐに応答エンティティ本体のフラグメントをフラッシュするには、web.config で iisnode/@flushResponse 属性を true に設定する必要があります。
+IIS の既定の動作として、応答データは、フラッシュするまでか、応答が終了するまでのどちらか早い方のタイミングで、最大 4 MB がバッファーに格納されます。 iisnode には、この動作をオーバーライドする構成設定があります。iisnode が node.exe から応答エンティティを受け取ったらすぐに応答エンティティ本体のフラグメントをフラッシュするには、web.config で iisnode/@flushResponse 属性を true に設定する必要があります。
 
 ```xml
 <configuration>
@@ -282,6 +283,6 @@ Azure App Service での node.js アプリケーションの詳細について�
 * [Azure で Node.js Web アプリを作成する](app-service-web-get-started-nodejs.md)
 * [Azure App Service で Node.js Web アプリをデバッグする方法](app-service-web-tutorial-nodejs-mongodb-app.md)
 * [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure App Service Web Apps:Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js デベロッパー センター](../nodejs-use-node-modules-azure-apps.md)
 * [優れた Kudu デバッグ コンソールの詳細](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 43b3e293bf2990c953aeb2947b1113ee30175dee
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 51e9d12d9f8801102997266cfd6699a367b11126
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632817"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435517"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
 Apache Hive 用 Apache Ranger ポリシーを構成する方法について説明します。 この記事では、hivesampletable へのアクセスを制限する 2 つの Ranger ポリシーを作成します。 hivesampletable は HDInsight クラスターに付属しています。 ポリシーを構成したら、Excel と ODBC ドライバーを使用して HDInsight の Hive テーブルに接続します。
@@ -28,10 +28,9 @@ Apache Hive 用 Apache Ranger ポリシーを構成する方法について説�
 
 1. ブラウザーから Ranger 管理 UI に接続します。 URL は https://&lt;ClusterName >.azurehdinsight.net/Ranger/ です。
 
-   > [!NOTE]
-   > Ranger では、Hadoop クラスターとは異なる資格情報を使用します。 ブラウザーで Hadoop のキャッシュされた資格情報が使用されないように、新しい InPrivate ブラウザー ウィンドウを使用して Ranger 管理 UI に接続してください。
-   >
-   >
+   > [!NOTE]  
+   > Ranger では、Apache Hadoop クラスターとは異なる資格情報を使用します。 ブラウザーで Hadoop のキャッシュされた資格情報が使用されないように、新しい InPrivate ブラウザー ウィンドウを使用して Ranger 管理 UI に接続してください。
+
 2. クラスター管理者のドメイン ユーザー名とパスワードを使用してログインします。
 
     ![HDInsight ESP Ranger のホーム ページ](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
@@ -59,7 +58,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
      ![HDInsight ESP Ranger での Hive ポリシーの構成](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)。
 
-     > [!NOTE]
+     > [!NOTE]  
      > [Select User] にドメイン ユーザーが設定されていない場合は、Ranger が AAD と同期するまでしばらく待ってください。
      >
      >
@@ -79,9 +78,9 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
  | プロパティ  |説明 |
  | --- | --- |
  | データ ソース名 | データ ソースに名前を付けます。 |
- | ホスト | 「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
+ | Host | 「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
  | ポート | **443** を使用します。 (このポートは 563 から 443 に変更されました)。 |
- | データベース | **既定値**を使用します。 |
+ | Database | **既定値**を使用します。 |
  | Hive サーバーの種類 | **Hive Server 2** を選択します。 |
  | メカニズム | **Azure HDInsight サービス**を選択します。 |
  | HTTP パス | 空白のままにします。 |
@@ -134,6 +133,6 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 * Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
 * ESP での HDInsight クラスターの管理については、「[Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する](apache-domain-joined-manage.md)」をご覧ください。
 * SSH を使用して ESP を含む HDInsight クラスターで Hive クエリを実行する方法については、「[HDInsight で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)」をご覧ください。
-* Hive JDBC を使用して Hive に接続する方法については、「[Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続する](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)」をご覧ください。
-* Hive ODBC を使用して Excel を Hadoop に接続する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)」をご覧ください。
-* Power Query を使用して Excel を Hadoop に接続する方法については、「[Power Query を使用した Excel から Hadoop への接続](../hadoop/apache-hadoop-connect-excel-power-query.md)」をご覧ください。
+* Hive JDBC を使用して Hive に接続する方法については、[Hive の JDBC ドライバーを使用して Azure HDInsight の Apache Hive に接続する方法](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)に関するページを参照してください。
+* Hive ODBC を使用して Excel を Hadoop に接続する方法については、[Microsoft Hive ODBC ドライバーを使用した Excel から Apache Hadoop への接続](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)に関するページを参照してください。
+* Power Query を使用して Excel を Hadoop に接続する方法については、「[Power Query を使用して Excel を Apache Hadoop に接続する](../hadoop/apache-hadoop-connect-excel-power-query.md)」を参照してください。

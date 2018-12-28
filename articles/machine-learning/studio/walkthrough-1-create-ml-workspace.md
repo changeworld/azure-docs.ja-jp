@@ -1,11 +1,11 @@
 ---
-title: '手順 1: Machine Learning ワークスペースの作成 | Microsoft Docs'
-description: 予測ソリューションの開発に関するチュートリアルの中の、保存されているパブリック データを Azure Machine Learning Studio ワークスペースを設定する方法の 1 番目の手順です。
+title: 手順 1:ワークスペースの作成 - Azure Machine Learning Studio | Microsoft Docs
+description: 予測ソリューションの開発チュートリアルの手順 1:新しい Azure Machine Learning Studio ワークスペースを設定する方法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cgronlun
 ms.assetid: b3c97e3d-16ba-4e42-9657-2562854a1e04
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: f6f6ed67a1ddde3d8f3102a8f7032dc03b0e91b9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: bc83fa6e3fa7d5ef31515309f5c1cd0b025c8906
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835816"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256368"
 ---
-# <a name="walkthrough-step-1-create-a-machine-learning-workspace"></a>チュートリアル手順 1: Machine Learning ワークスペースの作成
+# <a name="walkthrough-step-1-create-an-azure-machine-learning-studio-workspace"></a>チュートリアル手順 1:Azure Machine Learning Studio ワークスペースの作成
 これは、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)」の最初の手順です。
 
 1. **Machine Learning ワークスペースの作成**
@@ -51,7 +51,7 @@ Machine Learning Studio を使用するには、Microsoft Azure Machine Learning
 > 
 
 - - -
-**次: [既存のデータをアップロードする](walkthrough-2-upload-data.md)**
+**次:[既存のデータをアップロードする](walkthrough-2-upload-data.md)**
 
 [1]: ./media/walkthrough-1-create-ml-workspace/create1.png
 [2]: ./media/walkthrough-1-create-ml-workspace/open-workspace.png

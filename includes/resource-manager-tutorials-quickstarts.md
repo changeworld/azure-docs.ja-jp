@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 936c9198eebfa229db6ac34426e435c9e6ed96e8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 46618b76f43247199e85c2023a5391c5566f3394
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254564"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978672"
 ---
 ## <a name="quickstarts-and-tutorials"></a>クイック スタートとチュートリアル
 
@@ -45,6 +45,7 @@ ms.locfileid: "50254564"
     |[リンク済みテンプレートを作成する](../articles/azure-resource-manager/resource-manager-tutorial-create-linked-templates.md)|テンプレートをモジュール化し、テンプレートから他のテンプレートを呼び出します。 このチュートリアルでは、仮想ネットワーク、仮想マシン、および依存するリソースを作成します。  依存するストレージ アカウントは、リンクされたテンプレートで定義されます。 |
     |[仮想マシン拡張機能のデプロイ](../articles/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)|拡張機能を使用して、デプロイ後タスクを実行します。 このチュートリアルでは、仮想マシンに Web サーバーをインストールするために、カスタム スクリプト拡張機能をデプロイします。 |
     |[SQL 拡張機能のデプロイ](../articles/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac.md)|拡張機能を使用して、デプロイ後タスクを実行します。 このチュートリアルでは、仮想マシンに Web サーバーをインストールするために、カスタム スクリプト拡張機能をデプロイします。 |
+    |[成果物のセキュリティ保護](../articles/azure-resource-manager/resource-manager-tutorial-secure-artifacts.md)|デプロイを完了するために必要な成果物をセキュリティで保護します。 このチュートリアルでは、SQL 拡張機能のデプロイに関するチュートリアルで使用した成果物をセキュリティで保護する方法について説明します。 |
     |[安全なデプロイ プラクティスの使用](../articles/azure-resource-manager/deployment-manager-tutorial.md)|Azure Deployment Manager を使用します。 |
 
 これらのチュートリアルは、Resource Manager テンプレート開発の主要な概念について、個別にまたはシリーズとして使用できます。

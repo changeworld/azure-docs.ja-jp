@@ -6,15 +6,15 @@ author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 12/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 20db515e99f3e7535ba7b60bbd84f050e33b7acb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 39a938d45c8f15c21b44bb5b04b1429fb4733b5a
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033925"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323270"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Azure Storage の停止が発生した場合の対処方法
 Microsoft では、サービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス停止が 1 つまたは複数のリージョンで発生することがあります。 こうした状況はほとんど発生しませんが、発生した場合は、次のガイダンスに従って対応してください。
@@ -34,10 +34,10 @@ Azure サービスの状態は、 [Azure サービス正常性ダッシュボー
 ## <a name="what-to-do-if-a-storage-outage-occurs"></a>Storage の停止が発生した場合の対処方法
 1 つ以上のリージョンで 1 つ以上の Storage サービスが一時的に使用できない場合は、2 つのオプションがあります。 すぐにデータにアクセスする必要がある場合は、オプション 2 を検討してください。
 
-### <a name="option-1-wait-for-recovery"></a>オプション 1: 復旧を待つ
+### <a name="option-1-wait-for-recovery"></a>オプション 1:復旧を待つ
 この場合、ユーザーによる操作は必要ありません。 Azure サービスを利用できるようにするために鋭意取り組んでいます。 サービスの状態は [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)で監視できます。
 
-### <a name="option-2-copy-data-from-secondary"></a>オプション 2: セカンダリ リージョンからデータをコピーする
+### <a name="option-2-copy-data-from-secondary"></a>オプション 2:セカンダリ リージョンからデータをコピーする
 ストレージ アカウントに対して [読み取りアクセス geo 冗長ストレージ (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (推奨) を選択した場合は、セカンダリ リージョンからデータに読み取りアクセスできます。 [AzCopy](storage-use-azcopy.md)、[Azure PowerShell](storage-powershell-guide-full.md)、[Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) などのツールを使用して、セカンダリ リージョンから、影響を受けていないリージョンの別のストレージ アカウントにデータをコピーし、読み取りと書き込みの両方の可用性について、アプリケーションがそのストレージ アカウントを指すように指定します。
 
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Storage のフェールオーバーが発生した場合

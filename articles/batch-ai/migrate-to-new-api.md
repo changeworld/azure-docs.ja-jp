@@ -15,14 +15,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: c5e4c1569464d2e204edf13fe7534d80780524e8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ROBOTS: NOINDEX
+ms.openlocfilehash: 75a9a5e9bafd62b320397c00ef6574b7536d9e09
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294961"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407782"
 ---
 # <a name="migrate-to-the-updated-batch-ai-api"></a>更新された Batch AI API への移行
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Batch AI REST API バージョン 2018-05-01 および関連する Batch AI SDK とツールでは、重大な変更と新機能が導入されています。
 
@@ -183,4 +186,4 @@ _ = client.jobs.create(resource_group_name, workspace_name, experiment_name, job
 
 ## <a name="next-steps"></a>次の手順
 
-* Batch AI API リファレンス: [CLI](/cli/azure/batchai)、[.NET](/dotnet/api/overview/azure/batchai)、[Java](/java/api/overview/azure/batchai)、[Node.js](/javascript/api/overview/azure/batchai)、[Python](/python/api/overview/azure/batchai)、および [REST](/rest/api/batchai) を参照してください
+* Batch AI API リファレンスを参照してください:[CLI](/cli/azure/batchai)、[.NET](/dotnet/api/overview/azure/batchai)、[Java](/java/api/overview/azure/batchai)、[Node.js](/javascript/api/overview/azure/batchai)、[Python](/python/api/overview/azure/batchai)、[REST](/rest/api/batchai)

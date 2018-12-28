@@ -1,5 +1,5 @@
 ---
-title: Azure Search のアナライザー | Microsoft Docs
+title: 言語処理とテキスト処理のためのアナライザー - Azure Search
 description: インデックスの検索可能なテキスト フィールドにアナライザーを割り当てて、既定の標準 Lucene をカスタムの定義済みの代替または言語固有の代替と置換します。
 services: search
 ms.service: search
@@ -8,14 +8,15 @@ ms.date: 09/11/2017
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.openlocfilehash: 68ce4fa5536f21d6d66245a9383a4b58c42febff
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.custom: seodec2018
+ms.openlocfilehash: 1de3743d6ec37d263e16b168d32d2b56b0a28295
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116372"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310540"
 ---
-# <a name="analyzers-in-azure-search"></a>Azure Search のアナライザー
+# <a name="analyzers-for-text-processing-in-azure-search"></a>Azure Search でのテキスト処理のためのアナライザー
 
 *アナライザー*は、クエリ文字列内のテキストとインデックス付きドキュメントを処理する[フル テキスト検索](search-lucene-query-architecture.md)のコンポーネントです。 分析中は、次の変換が一般的です。
 
@@ -82,7 +83,7 @@ Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フ�
 いくつかの主なシナリオについて、アナライザーの定義例を示します。
 
 <a name="Example1"></a>
-### <a name="example-1-custom-options"></a>例 1: カスタム オプション
+### <a name="example-1-custom-options"></a>例 1:カスタム オプション
 
 この例では、カスタム オプションを使用してアナライザー定義を示しています。 文字フィルター、トークナイザー、トークン フィルターのオム オプションは、名前付きコンストラクトとは別に指定され、アナライザー定義で参照されます。 定義済みの要素はそのまま使用され、単純に名前で参照されます。
 
@@ -149,7 +150,7 @@ Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フ�
 ~~~~
 
 <a name="Example2"></a>
-### <a name="example-2-override-the-default-analyzer"></a>例 2: 既定のアナライザーをオーバーライドする
+### <a name="example-2-override-the-default-analyzer"></a>例 2:既定のアナライザーをオーバーライドする
 
 標準アナライザーが既定です。 たとえば、既定のアナライザーを、パターン アナライザーなど、別の定義済みアナライザーで置き換えるとします。 カスタム オプションを設定していない場合、フィールド定義で名前を使用して指定する必要があります。
 
@@ -181,7 +182,7 @@ Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フ�
 ~~~~
 
 <a name="Example3"></a>
-### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>例 3: インデックス作成と検索操作に別のアナライザーを指定する
+### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>例 3:インデックス作成と検索操作に別のアナライザーを指定する
 
 API には、インデックス作成と検索に別のアナライザーを指定するための追加のインデックス属性が含まれています。 ペアとして `searchAnalyzer` 属性と `indexAnalyzer` 属性を指定して、1 つの `analyzer` 属性を置き換える必要があります。
 
@@ -208,7 +209,7 @@ API には、インデックス作成と検索に別のアナライザーを指�
 ~~~~
 
 <a name="Example4"></a>
-### <a name="example-4-language-analyzer"></a>例 4: 言語アナライザー
+### <a name="example-4-language-analyzer"></a>例 4:言語アナライザー
 
 複数言語の文字列を含むフィールドでは、言語アナライザーを使用できますが、他のフィールドは既定値のままです (または、他の定義済みまたはカスタム アナライザーを使用します)。 言語アナライザーを使用する場合、インデックス作成と検索操作の両方に使用する必要があります。 言語アナライザーを使用するフィールドでは、インデックス作成と検索に別のアナライザーを使用することはできません。
 

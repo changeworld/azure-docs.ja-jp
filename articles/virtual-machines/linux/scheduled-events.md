@@ -15,25 +15,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: f18892d32a385b41f3325623e21da1dd25af7253
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: fc9ceb06eb51d1e88306f0971ad055facd05f9fb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744709"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437267"
 ---
-# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM のスケジュールされたイベント
+# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
-スケジュールされたイベントとは、仮想マシン (VM) のメンテナンスに備えるための時間をアプリケーションに与える Azure Metadata Service です。 今後のメンテナンス イベント (再起動など) に関する情報を提供することで、アプリケーションがイベントの準備を行い、中断を制限できるようにします。 このサービスは、Windows および Linux の、PaaS と IaaS を含むすべての Azure Virtual Machine の種類で利用できます。
+スケジュールされたイベントとは、仮想マシン (VM) のメンテナンスに備えるための時間をアプリケーションに与える Azure Metadata Service です。 今後のメンテナンス イベント (再起動など) に関する情報を提供することで、アプリケーションがイベントの準備を行い、中断を制限できるようにします。 このサービスは、Windows および Linux の、PaaS と IaaS を含むすべての Azure Virtual Machine の種類で利用できます。 
 
 Windows のスケジュールされたイベントの詳細については、[Windows VM のスケジュールされたイベント](../windows/scheduled-events.md)に関する記事をご覧ください。
 
-> [!Note]
+> [!Note] 
 > スケジュールされたイベントは、すべての Azure リージョンで一般公開されています。 最新リリースについては、「[利用可能なバージョンとリージョン](#version-and-region-availability)」をご覧ください。
 
 ## <a name="why-use-scheduled-events"></a>スケジュールされたイベントを使用する理由
 
-多くのアプリケーションに、VM のメンテナンスに備える時間が得られるメリットがあります。 この時間を使用して、可用性、信頼性、およびサービスを向上させる、次のようなアプリケーション固有のタスクを実行できます。
+多くのアプリケーションに、VM のメンテナンスに備える時間が得られるメリットがあります。 この時間を使用して、可用性、信頼性、およびサービスを向上させる、次のようなアプリケーション固有のタスクを実行できます。 
 
 - チェックポイントと復元
 - 接続のドレイン
@@ -42,28 +42,28 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 - イベント ログ
 - グレースフル シャットダウン
 
-スケジュールされたイベントを使用すると、アプリケーションはメンテナンスが行われる時期を検出し、その影響を制限するタスクをトリガーできます。
+スケジュールされたイベントを使用すると、アプリケーションはメンテナンスが行われる時期を検出し、その影響を制限するタスクをトリガーできます。  
 
 スケジュールされたイベントは、次のユース ケースでイベントを提供します。
 
 - プラットフォームによって開始されたメンテナンス (たとえば、ホスト OS の更新など)
 - ユーザーが開始するメンテナンス (たとえば、ユーザーによる再起動や VM の再デプロイ)
 
-## <a name="the-basics"></a>基本操作
+## <a name="the-basics"></a>基本操作  
 
-Metadata Service では、VM 内部からアクセスできる REST エンドポイントを使用した VM の実行に関する情報が公開されます。 情報は、VM の外部に公開されないように、ルーティング不可能な IP 経由で提供されます。
+  Metadata Service では、VM 内部からアクセスできる REST エンドポイントを使用した VM の実行に関する情報が公開されます。 情報は、VM の外部に公開されないように、ルーティング不可能な IP 経由で提供されます。
 
 ### <a name="scope"></a>Scope (スコープ)
 スケジュールされたイベントの配信先は次のとおりです。
 
 - クラウド サービス内のすべての VM。
 - 可用性セット内のすべての VM。
-- スケール セットの配置グループすべての VM。
+- スケール セットの配置グループすべての VM。 
 
 そのため、イベント内の `Resources` フィールドをチェックして、影響を受ける VM を特定する必要があります。
 
 ### <a name="endpoint-discovery"></a>エンドポイントの検出
-VNET が有効な VM の場合は、静的でルーティング不可能な IP アドレス `169.254.169.254` から Metadata Service を利用できます。 スケジュールされたイベントの最新バージョンのフル エンドポイントは次のとおりです。
+VNET が有効な VM の場合は、静的でルーティング不可能な IP アドレス `169.254.169.254` から Metadata Service を利用できます。 スケジュールされたイベントの最新バージョンのフル エンドポイントは次のとおりです。 
 
  > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
 
@@ -72,13 +72,13 @@ VM が仮想ネットワーク内で作成されていない場合 (クラウド
 ### <a name="version-and-region-availability"></a>利用可能なバージョンとリージョン
 スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2017-08-01` です。
 
-| Version | リリースの種類 | リージョン | リリース ノート |
-| - | - | - | - |
-| 2017-08-01 | 一般公開 | All | <li> Iaas VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 |
+| Version | リリースの種類 | リージョン | リリース ノート | 
+| - | - | - | - | 
+| 2017-08-01 | 一般公開 | All | <li> Iaas VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 | 
 | 2017-03-01 | プレビュー | All | <li>最初のリリース
 
 
-> [!NOTE]
+> [!NOTE] 
 > スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後非推奨となる予定です。
 
 ### <a name="enabling-and-disabling-scheduled-events"></a>スケジュールされたイベントの有効化と無効化
@@ -105,7 +105,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 ```
 
 応答には、スケジュールされたイベントの配列が含まれています。 空の配列は、現在スケジュールされているイベントがないことを意味します。
-スケジュールされたイベントがある場合は、応答にイベントの配列が含まれます。
+スケジュールされたイベントがある場合は、応答にイベントの配列が含まれます。 
 ```
 {
     "DocumentIncarnation": {IncarnationID},
@@ -116,7 +116,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
-            "NotBefore": {timeInUTC},
+            "NotBefore": {timeInUTC},              
         }
     ]
 }
@@ -126,24 +126,24 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 |プロパティ  |  説明 |
 | - | - |
 | EventId | このイベントのグローバル一意識別子。 <br><br> 例: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`: VM は数秒一時停止するようスケジュールされています。 CPU は中断しますが、メモリ、開いているファイル、ネットワーク接続への影響はありません。 <li>`Reboot`: VM には再起動がスケジュールされています。 (非永続的なメモリは失われます。) <li>`Redeploy`: VM は別のノードに移動するようスケジュールされています。 (一時ディスクは失われます)。 |
+| EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`:VM は数秒一時停止するようスケジュールされています。 CPU は中断しますが、メモリ、開いているファイル、ネットワーク接続への影響はありません。 <li>`Reboot`:VM には再起動がスケジュールされています。 (非永続的なメモリは失われます。) <li>`Redeploy`:VM は別のノードに移動するようスケジュールされています。 (一時ディスクは失われます)。 |
 | ResourceType | このイベントが影響を与えるリソースの種類。 <br><br> 値: <ul><li>`VirtualMachine`|
 | リソース| このイベントが影響を与えるリソースの一覧。 これには最大 1 つの[更新ドメイン](manage-availability.md)のマシンが含まれることが保証されますが、更新ドメインの一部のマシンは含まれない場合があります。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| EventStatus | このイベントの状態。 <br><br> 値: <ul><li>`Scheduled`: このイベントは、`NotBefore` プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li>`Started`: このイベントは開始されています。</ul> `Completed` や類似の状態が提供されることはありません。 イベントが完了すると、イベントは返されなくなります。
+| EventStatus | このイベントの状態。 <br><br> 値: <ul><li>`Scheduled`:このイベントは、`NotBefore` プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li>`Started`:このイベントは開始されています。</ul> `Completed` や類似の状態が提供されることはありません。 イベントが完了すると、イベントは返されなくなります。
 | NotBefore| このイベントが開始される時間。 <br><br> 例: <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>イベントのスケジューリング
-各イベントは、スケジュールされているイベントの種類に基づいて、将来の最小値の時間でスケジュールされます。 この時間は、イベントの `NotBefore` プロパティに反映されます。
+各イベントは、スケジュールされているイベントの種類に基づいて、将来の最小値の時間でスケジュールされます。 この時間は、イベントの `NotBefore` プロパティに反映されます。 
 
 |EventType  | 最小値の通知 |
 | - | - |
 | Freeze| 約 15 分 |
-| Reboot | 約 15 分 |
+| 再起動 | 約 15 分 |
 | Redeploy | 10 分 |
 
-### <a name="start-an-event"></a>イベントの開始
+### <a name="start-an-event"></a>イベントの開始 
 
-今後予定されているイベントを確認し、グレースフル シャットダウンのロジックを完了すると、`EventId` を使用してメタデータ サービスに `POST` 呼び出しを行うことにより、未処理のイベントを承認できます。 この呼び出しは、通知の最小時間を短縮できる (可能な場合) ことが Azure に示されます。
+今後予定されているイベントを確認し、グレースフル シャットダウンのロジックを完了すると、`EventId` を使用してメタデータ サービスに `POST` 呼び出しを行うことにより、未処理のイベントを承認できます。 この呼び出しは、通知の最小時間を短縮できる (可能な場合) ことが Azure に示されます。 
 
 次に示すのは、`POST` 要求本文で求められている JSON のサンプルです。 要求には、`StartRequests` の一覧を含める必要があります。 各 `StartRequest` には、迅速に進める必要があるイベントの `EventId` が含まれます。
 ```
@@ -161,10 +161,10 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
 ```
 
-> [!NOTE]
+> [!NOTE] 
 > イベントの受信確認により、イベントを受信確認した VM だけでなく、イベント内のすべての `Resources` でイベントが続行されます。 そのため、受信確認を調整するリーダーを選択できます。これは、`Resources` フィールド内の最初のマシンと同様に簡単です。
 
-## <a name="python-sample"></a>Python のサンプル
+## <a name="python-sample"></a>Python のサンプル 
 
 次のサンプルでは、スケジュールされたイベントのメタデータ サービスにクエリを実行し、未処理の各イベントを承認しています。
 
@@ -181,11 +181,11 @@ headers = "{Metadata:true}"
 this_host = socket.gethostname()
 
 def get_scheduled_events():
-    req = urllib2.Request(metadata_url)
-    req.add_header('Metadata', 'true')
-    resp = urllib2.urlopen(req)
-    data = json.loads(resp.read())
-    return data
+   req = urllib2.Request(metadata_url)
+   req.add_header('Metadata', 'true')
+   resp = urllib2.urlopen(req)
+   data = json.loads(resp.read())
+   return data
 
 def handle_scheduled_events(data):
     for evt in data['Events']:
@@ -201,16 +201,16 @@ def handle_scheduled_events(data):
 
 
 def main():
-    data = get_scheduled_events()
-    handle_scheduled_events(data)
+   data = get_scheduled_events()
+   handle_scheduled_events(data)
 
 if __name__ == '__main__':
-    main()
-    sys.exit(0)
+  main()
+  sys.exit(0)
 ```
 
-## <a name="next-steps"></a>次の手順
-- [Azure Friday でのスケジュールされたイベント](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)のデモをご覧ください。
-- スケジュールされたイベントのコード サンプルは、[Azure Instance Metadata スケジュールされたイベントの GitHub リポジトリ](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)をご覧ください。
+## <a name="next-steps"></a>次の手順 
+- [Azure Friday でのスケジュールされたイベント](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)のデモをご覧ください。 
+- スケジュールされたイベントのコード サンプルは、[Azure Instance Metadata Scheduled Events の GitHub リポジトリ](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)をご覧ください。
 - 「[インスタンス メタデータ サービス](instance-metadata-service.md)」で使用可能な API の詳細についてご覧ください。
 - [Azure での Linux 仮想マシンの計画的メンテナンス](planned-maintenance.md)に関するページをご覧ください。

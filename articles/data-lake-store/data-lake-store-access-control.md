@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 08991829c9c3d628b5028e04dbd4836647d94826
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: eaabb29a492ec6a0ef4c85afe839a9df5f588958
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567487"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087169"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Store Gen1 のアクセス制御
 
@@ -27,9 +27,9 @@ Azure Data Lake Store Gen1 は、POSIX アクセス制御モデルから派生�
 
 アクセス制御リスト (ACL) には、**アクセス ACL** と**既定の ACL** の 2 種類があります。
 
-* **アクセス ACL**: オブジェクトへのアクセスを制御します。 ファイルとフォルダーの両方にアクセス ACL があります。
+* **アクセス ACL**:オブジェクトへのアクセスを制御します。 ファイルとフォルダーの両方にアクセス ACL があります。
 
-* **既定の ACL**: フォルダーに関連付けられた ACL の "テンプレート" です。この ACL によって、そのフォルダーの下に作成されるすべての子項目のアクセス ACL が決まります。 ファイルには既定の ACL がありません。
+* **既定の ACL**:フォルダーに関連付けられた ACL の "テンプレート" です。この ACL によって、そのフォルダーの下に作成されるすべての子項目のアクセス ACL が決まります。 ファイルには既定の ACL がありません。
 
 
 アクセス ACL と既定の ACL は両方とも同じ構造です。
@@ -71,15 +71,15 @@ Data Lake Store Gen1 で使用されている POSIX 形式のモデルでは、�
 
 Data Lake Store Gen1 アカウントに対する特定の操作の実行に必要なアクセス許可について理解できるように、一般的なシナリオを次に示します。
 
-|    Operation             |    /    | Seattle/ | Portland/ | Data.txt     |
-|--------------------------|---------|----------|-----------|--------------|
-| Read Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Append to Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Delete Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Create Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| List /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| List /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| List /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| Operation | オブジェクト              |    /      | Seattle/   | Portland/   | Data.txt       |
+|-----------|---------------------|-----------|------------|-------------|----------------|
+| 読み取り      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| 追加 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| 削除    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Create    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| List      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| List      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| List      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -132,8 +132,8 @@ Data Lake Storage Gen1 でユーザーに "プライマリ グループ" が関�
 
 **新しいファイルまたはフォルダーに対する所有グループの割り当て**
 
-* **ケース 1**: ルート フォルダー "/"。 このフォルダーは、Data Lake Store Gen1 アカウントの作成時に作成されます。 この場合、所有グループはすべてゼロの GUID に設定されます。  この値では、どのようなアクセスも許可されません。  グループが割り当てられるまでのプレースホルダーです。
-* **ケース 2** (その他すべての場合): 新しい項目が作成されると、所有グループが親フォルダーからコピーされます。
+* **ケース 1**:ルート フォルダー "/"。 このフォルダーは、Data Lake Store Gen1 アカウントの作成時に作成されます。 この場合、所有グループはすべてゼロの GUID に設定されます。  この値では、どのようなアクセスも許可されません。  グループが割り当てられるまでのプレースホルダーです。
+* **ケース 2** (その他すべての場合):新しい項目が作成されると、所有グループが親フォルダーからコピーされます。
 
 **所有グループの変更**
 

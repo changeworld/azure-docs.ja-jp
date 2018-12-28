@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08ffc3a9eb4942cb21c0a800d493b87b016d7f87
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 100c9266718d618b8b00a3169c3d88ac7d501791
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016182"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409923"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
 HDInsight には、クラスターに関連付けられた Azure Storage アカウントのデータへのフル アクセス権があります。 BLOB コンテナーで Shared Access Signature を使って、データへのアクセスを制限できます。 Shared Access Signature (SAS) は、データへのアクセスを制限できる Azure Storage アカウントの機能です。 たとえば、データに読み取り専用のアクセス権を提供します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Apache Ranger を使うソリューションでは、ドメインに参加している HDInsight を使うことを検討してください。 詳しくは、「[ドメイン参加済み HDInsight クラスターの構成](./domain-joined/apache-domain-joined-configure.md)」をご覧ください。
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight には、クラスターの既定のストレージへのフル アクセス権が必要です。
 
 ## <a name="requirements"></a>必要条件
@@ -34,9 +34,9 @@ HDInsight には、クラスターに関連付けられた Azure Storage アカ�
   * Visual Studio は、バージョン 2013、2015、または 2017 である必要があります
   * Python は、バージョン 2.7 以上である必要があります
 
-* Linux ベースの HDInsight クラスターまたは [Azure PowerShell][powershell] - 既存の Linux ベースのクラスターがある場合は、Ambari を使用して、クラスターに Shared Access Signature を追加することができます。 ない場合は、Azure PowerShell を使用してクラスターを作成し、クラスターの作成時に Shared Access Signature を追加することができます。
+* Linux ベースの HDInsight クラスターまたは [Azure PowerShell][powershell] - 既存の Linux ベースのクラスターがある場合は、Apache Ambari を使用して、クラスターに Shared Access Signature を追加することができます。 ない場合は、Azure PowerShell を使用してクラスターを作成し、クラスターの作成時に Shared Access Signature を追加することができます。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * サンプル ファイルは、[https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature) にあります。 このリポジトリには、以下が含まれます。
@@ -66,7 +66,7 @@ Shared Access Signature には、次の 2 つのフォームがあります。
 
 4. SAS の作成に使用したアカウント キーが再度生成された。 キーを再生成すると、前のキーを使うすべてのアプリケーションが、認証に失敗します。 すべてのコンポーネントを新しいキーに更新してください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Shared Access Signature URI は、署名の作成に使用されたアカウント キーと、保存済みのアクセス ポリシー (存在する場合) に関連付けられます。 保存済みのアクセス ポリシーが指定されていない場合、Shared Access Signature を取り消すにはアカウント キーを変更する以外に方法はありません。
 
 保存済みのアクセス ポリシーを常に使用することをお勧めします。 保存済みのポリシーを使用している場合、必要に応じて署名を失効させるか、有効期限を延長することができます。 ドキュメント内のこれらの手順は、保存済みのアクセス ポリシーを使用して、SAS を生成します。
@@ -101,7 +101,7 @@ Shared Access Signature の詳細については、「 [SAS モデルについ�
 
    * policy\_name: 作成する保存済みのポリシーに使用する名前。
 
-   * storage\_account\_name: ストレージ アカウントの名前。
+   * storage\_account\_name: ご利用のストレージ アカウントの名前。
 
    * storage\_account\_key: ストレージ アカウントのキー。
 
@@ -177,7 +177,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
     Linux ベースのクラスターを作成している場合、SSH ユーザー アカウント名とパスワードを求めるメッセージが表示されます。 このアカウントは、クラスターへのリモート ログインに使用されます。
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > HTTP(S) または SSH のユーザー名とパスワードを求められると、次の条件を満たすパスワードを指定する必要があります。
    >
    > * 10 文字以上にする
@@ -208,7 +208,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
     変更が完了したら、 **[OK]** をクリックします。
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > 変更を有効にするには、複数のサービスを再起動する必要があります。
 
 6. Ambari Web UI で、左側の一覧から **[HDFS]** を選択して、右側の **[サービス アクション]** ドロップダウン リストから **[すべて再起動]** を選択します。 メッセージが表示されたら、__[Confirm Restart All]\(すべての再起動の確認\)__ を選択します。
@@ -288,7 +288,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
 **原因**: クラスターの管理者または HTTP ユーザー、または (Linux ベースのクラスターの場合) SSH ユーザーのパスワードを使用する場合に、このエラーが発生する可能性があります。
 
-**解決方法**: 次の条件を満たすパスワードを使用します。
+**解決策**: 次の条件を満たすパスワードを使用します。
 
 * 10 文字以上にする
 * 数字を 1 つ以上含める
@@ -299,8 +299,8 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
 HDInsight クラスターにアクセスが制限されたストレージを追加する方法を学習しました。クラスターのデータと連携するその他の方法を確認してください。
 
-* [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hadoop/hdinsight-use-pig.md)
+* [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
 [powershell]: /powershell/azureps-cmdlets-docs

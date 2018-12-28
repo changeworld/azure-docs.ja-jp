@@ -1,12 +1,12 @@
 ---
-title: 他のユーザーのデータ サイエンスの例をコピーする - Azure Machine Learning | Microsoft Docs
-description: 'データ サイエンスの企業秘密: 自分のために他のユーザーに作業してもらいます。 Azure AI ギャラリーから Machine Learning の例を取得します。'
+title: 他のユーザーのデータ サイエンスの例をコピーする - Azure Machine Learning Studio | Microsoft Docs
+description: データ サイエンスの企業秘密:自分のために他のユーザーに作業してもらいます。 Azure AI ギャラリーから Machine Learning の例を取得します。
 keywords: データ サイエンスの例,Machine Learning の例,クラスタリング アルゴリズム,クラスタリング アルゴリズムの例
 services: machine-learning
 documentationcenter: na
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cjgronlund
 ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
 ms.service: machine-learning
@@ -16,15 +16,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
-ms.openlocfilehash: 84c6f4a1cedc0a04ee820f1de60f51e653f28425
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: acd0899396ac5a47dade5fac16e451b2029ec0c2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833881"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260380"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
-## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5: 初心者向けデータ サイエンス シリーズ
+## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5:初心者向けデータ サイエンス シリーズ
 データ サイエンスの企業秘密の 1 つは、自分の代わりに他のユーザーに作業してもらうことです。 自分の Machine Learning の実験に使用するクラスタリング アルゴリズムの例を、Azure AI ギャラリーで検索します。
 
 > [!IMPORTANT]
@@ -41,13 +41,13 @@ ms.locfileid: "34833881"
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
 *"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
 
-* ビデオ 1: [データ サイエンスが回答する 5 つの質問](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
-* ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
-* ビデオ 3: [データで回答できる質問をする](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
-* ビデオ 4: [単純なモデルで回答を予測する](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
-* ビデオ 5: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
+* ビデオ 1:[データ サイエンスが回答する 5 つの質問](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
+* ビデオ 2:[データ サイエンス用のデータの準備はお済みですか?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
+* ビデオ 3:[データで回答できる質問をする](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+* ビデオ 4:[単純なモデルで回答を予測する](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
+* ビデオ 5:他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 
-## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>トランスクリプト: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
+## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>トランスクリプト:他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 "初心者向けデータ サイエンス" シリーズの 5 番目のビデオへようこそ。
 
 このビデオでは、作業の出発点として利用できるサンプルの場所について紹介しています。 このビデオを最大限に活用するためにまず、このシリーズのビデオを最初から視聴するようお勧めします。

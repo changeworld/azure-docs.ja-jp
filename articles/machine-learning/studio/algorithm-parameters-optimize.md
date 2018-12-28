@@ -1,11 +1,11 @@
 ---
-title: Azure Machine Learning でアルゴリズムを最適化する | Microsoft Docs
-description: Azure Machine Learning でアルゴリズムに最適なパラメーター セットを選択する方法について説明します。
+title: アルゴリズムの最適化 - Azure Machine Learning Studio | Microsoft Docs
+description: Azure Machine Learning Studio でアルゴリズムに最適なパラメーター セットを選択する方法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 6717e30e-b8d8-4cc1-ad0b-1d4727928d32
 ms.service: machine-learning
@@ -15,26 +15,27 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 64d725712dc8cf87deb150944a390c9cef87b56f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 57561c9841297b7ea2991bda1e94065a854597cd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833898"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269415"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning"></a>Azure Machine Learning でアルゴリズムを最適化するためにパラメーターを選ぶ
+# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でアルゴリズムを最適化するためにパラメーターを選ぶ
+
 このトピックでは、Azure Machine Learning でアルゴリズムの正しいハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、*モデルの選択*といいます。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 モデルの選択を行うにはさまざまな方法があります。 Machine Learning で最も広く使われているモデルの選択方法の 1 つはクロス検証です。これは、Azure Machine Learning の既定のモデル選択メカニズムになっています。 Azure Machine Learning は R と Python の両方をサポートしているため、R または Python を使って独自のモデル選択メカニズムをいつでも実装できます。
 
 最適なパラメーター セットを見つけるプロセスには、次の 4 つの手順があります。
 
-1. **パラメーター空間を定義する**: アルゴリズムについて、検討の対象にする正確なパラメーター値をまず決めます。
-2. **クロス検証の設定を定義する**: データセットのクロス検証のフォールドを選ぶ方法を決定します。
-3. **メトリックを定義する**: その後、パラメーターの最適なセットを判別するために使うメトリックを決めます。たとえば、確度、二乗平均平方根の誤差、精度、再現率、f スコアなどがあります。
-4. **トレーニング、評価、および比較を行う**: パラメーター値の一意の組み合わせごとに、ユーザーが定義した誤差メトリックを使い、それに基づいて、クロス検証を実行します。 評価と比較が済むと、最適なモデルを選ぶことができます。
+1. **パラメーター空間を定義する**:アルゴリズムについて、検討の対象にする正確なパラメーター値をまず決めます。
+2. **クロス検証の設定を定義する**:データセットのクロス検証のフォールドを選ぶ方法を決定します。
+3. **メトリックを定義する**:その後、パラメーターの最適なセットを判別するために使うメトリックを決めます。たとえば、確度、二乗平均平方根の誤差、精度、再現率、f スコアなどがあります。
+4. **トレーニング、評価、および比較を行う**:パラメーター値の一意の組み合わせごとに、ユーザーが定義した誤差メトリックを使い、そのメトリックに基づいて、クロス検証を実行します。 評価と比較が済むと、最適なモデルを選ぶことができます。
 
 次の図は、Azure Machine Learning でこのプロセスを実施する方法を示しています。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure App Service Environment の送信トラフィックをロックする
+title: App Service Environment の送信トラフィックのロックダウン - Azure
 description: Azure Firewall と統合して送信トラフィックをセキュリティで保護する方法について説明します
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: ccompy
-ms.openlocfilehash: ce0123528b3fb2454d8b83d59b5916363ae0e944
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 52051ea221a3d49d86cc6b95e020e1075ce8cba2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251578"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275552"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 

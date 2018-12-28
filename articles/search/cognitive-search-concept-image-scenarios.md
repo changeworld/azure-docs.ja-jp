@@ -1,5 +1,5 @@
 ---
-title: Azure Search 内の画像からテキストを処理して抽出する | Microsoft Docs
+title: コグニティブ検索内の画像からテキストを処理して抽出する - Azure Search
 description: Azure Search のコグニティブ検索パイプラインで、画像内のテキストやその他の情報を処理し、抽出する方法について説明します。
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 88e3658216f3eec545d4388ddf2d90cea60995c3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: b4829b0da656c648db732b2e7564de6db8fbf2eb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166952"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312614"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
 
@@ -90,7 +91,7 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
 
 ## <a name="image-related-skills"></a>画像関連のスキル
 
-画像を入力として取得するコグニティブ スキルは、組み込みで 2 つ用意されています。[OCR](cognitive-search-skill-ocr.md) と[画像分析](cognitive-search-skill-image-analysis.md)です。 
+画像を入力として取得するコグニティブ スキルは、組み込みで 2 つ用意されています:[OCR](cognitive-search-skill-ocr.md) と[画像分析](cognitive-search-skill-image-analysis.md)です。 
 
 現在のところ、これらのスキルは、ドキュメント クラッキング ステップから生成された画像に対してのみ機能します。 そのため、サポートされている入力は `"/document/normalized_images"` のみです。
 
@@ -121,7 +122,6 @@ OCR スキルでは、画像内のテキストの検出に使用するアルゴ�
   "skills":
   [
     {
-        "name": "OCR skill",
         "description": "Extract text (plain and structured) from image.",
         "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
         "context": "/document/normalized_images/*",

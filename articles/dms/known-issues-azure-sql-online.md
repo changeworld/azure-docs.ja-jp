@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: d228fbde230f89848d895bd1c004724b88de4431
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a8d91c0410d2a59e4b22866aa48d36c026f3ee8e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883824"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956297"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Azure SQL DB へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -28,9 +28,9 @@ ms.locfileid: "48883824"
 
 ソース データベースが 1 つ以上のテンポラル テーブルで構成されている場合、"全体のデータの読み込み" 操作中にデータベースの移行が失敗し、次のメッセージが表示されることがあります。
 
-{ "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"データベースの移行エラー", "errorEvents":"["Capture functionalities could not be set. (キャプチャ機能を設定できません。) RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table (レプリケーションの使用は、システムによってバージョン管理されるテンポラル テーブルでサポートされません) '[Application. Cities]' 行: 1 列: -1 "]" }
+{ "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"データベースの移行エラー", "errorEvents":"["Capture functionalities could not be set. (キャプチャ機能を設定できません。) RetCode:SQL_ERROR SqlState:42000 NativeError:13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line:1 Column: -1 "]" }
  
- ![テンポラル テーブルのエラーの例](media\known-issues-azure-sql-online\dms-temporal-tables-errors.png)
+ ![テンポラル テーブルのエラーの例](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
 **対処法**
 
@@ -52,7 +52,7 @@ ms.locfileid: "48883824"
 
 "全体のデータの読み込み" 操作中に、"ntext が hierarchyid と非互換である" ことを示す SQL 例外が表示されることがあります。
      
-![hierarchyid のエラーの例](media\known-issues-azure-sql-online\dms-hierarchyid-errors.png)
+![hierarchyid のエラーの例](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
 **対処法**
 
@@ -107,7 +107,7 @@ DMS でソース テーブルに格納されている正確なタイムスタン
 
 データベースの詳細状態ビューに移行エラーが表示された場合、上部のリボンの **[Data migration errors]\(データ移行エラー\)** リンクを選択しても移行エラーに関する詳細が表示されないことがあります。
 
-![データ移行エラー時に詳細が表示されない例](media\known-issues-azure-sql-online\dms-data-migration-errors-no-details.png)
+![データ移行エラー時に詳細が表示されない例](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
 **対処法**
 
@@ -115,6 +115,6 @@ DMS でソース テーブルに格納されている正確なタイムスタン
 
 1. データベースの詳細状態ブレードを閉じて、移行アクティビティ画面を表示します。
 
-     ![移行アクティビティ画面](media\known-issues-azure-sql-online\dms-migration-activity-screen.png)
+     ![移行アクティビティ画面](media/known-issues-azure-sql-online/dms-migration-activity-screen.png)
 
 2. **[エラー詳細の参照]** を選択して、移行エラーのトラブルシューティングに役立つ特定のエラー メッセージを表示します。

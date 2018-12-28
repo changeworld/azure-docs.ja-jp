@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: cbb81f62bcea43c3c30abff6b5f76e3a89347813
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8b6edcb70bca480ebe0d53c061c6461745f189e8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985398"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321291"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
@@ -26,11 +26,11 @@ ms.locfileid: "45985398"
 ## <a name="explaining-the-email"></a>電子メールの説明
 これらの機能の最適な使用方法がわかるように、電子メールの要素をいくつか見てみましょう。
 
-### <a name="subject"></a>件名
-電子メールの件名は、"&lt;テナント名&gt; 組織に招待されました" というパターンに従います。
+### <a name="subject"></a>Subject
+電子メールの件名は次のパターンに従います:You're invited to the &lt;テナント名&gt; organization (テナント名の組織に招待されています)
 
 ### <a name="from-address"></a>差出人アドレス
-差出人アドレスには、LinkedIn と同様のパターンが使用されています。  招待元がどの会社のだれであるかを明らかにし、電子メールが Microsoft の電子メール アドレスから送信されていることを明確に示す必要があります。 形式は &lt;テナント名&gt; の &lt;招待元の表示名&gt; (Microsoft 経由) <invites@microsoft.com> です
+差出人アドレスには、LinkedIn と同様のパターンが使用されています。  招待元がどの会社のだれであるかを明らかにし、電子メールが Microsoft の電子メール アドレスから送信されていることを明確に示す必要があります。 形式は次のようになります:&lt;テナント名&gt;の&lt;招待元の表示名&gt; (Microsoft 経由)<invites@microsoft.com>
 
 ### <a name="reply-to"></a>返信
 電子メールの返信先は招待元の電子メール アドレス (使用可能な場合) に設定されるので、電子メールに返信すると、招待元に送信されます。
@@ -40,7 +40,7 @@ ms.locfileid: "45985398"
 
 ### <a name="call-to-action"></a>行動への呼び掛け
 行動への呼び掛けは、受信者が電子メールを受け取った理由と、受信者に求める行動の 2 つの部分で構成されます。
-- "理由" セクションには、"&lt;テナント名&gt; 組織のアプリケーションにアクセスするよう招待されました" というパターンで対処できます。
+- "why"(理由) セクションは、次のパターンを使用して指定できます:You've been invited to access applications in the &lt;テナント名&gt; organization (テナント名の組織のアプリケーションにアクセスするよう招待を受けています)
 
 - また、"受信者に求める行動" セクションは、**[開始]** ボタンの存在によって示されます。 招待を必要とせずに受信者が追加された場合、このボタンは表示されません。
 
@@ -52,7 +52,7 @@ ms.locfileid: "45985398"
   ![招待元のイニシャルの表示](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>本文
-本文には、招待元が作成したメッセージまたは招待 API から渡されたメッセージが含まれます。 これはテキスト領域であるため、セキュリティ上の理由で HTML タグは処理されません。
+本文には、[ゲスト ユーザーをディレクトリ、グループ、またはアプリに招待](add-users-administrator.md)するときに、または [Invitation API を使用して](customize-invitation-api.md)招待元が作成するメッセージが含まれています。 これはテキスト領域であるため、セキュリティ上の理由で HTML タグは処理されません。
 
 ### <a name="footer-section"></a>フッター セクション
 フッターには Microsoft 社のブランドが含まれており、電子メールが監視されていないエイリアスから送信されたものかどうかを受信者に伝えます。 特殊なケースは次のとおりです。

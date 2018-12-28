@@ -1,5 +1,6 @@
 ---
-title: IPv6 でインターネットに接続するロード バランサーのデプロイ - Azure テンプレート | Microsoft Docs
+title: IPv6 でインターネットに接続するロード バランサーのデプロイ - Azure テンプレート
+titlesuffix: Azure Load Balancer
 description: Azure Load Balancer と負荷分散された VM に IPv6 サポートをデプロイする方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: ipv6, azure load balancer, デュアル スタック, パブリック 
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 14a28fb341692c309ff4f965628b38a767c56633
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 2374df3a457e0f4730dcaa6d69ea3f2e0fa6e9cc
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740750"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163210"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>テンプレートを使用して IPv6 でインターネットに接続するロード バランサー ソリューションをデプロイする
 

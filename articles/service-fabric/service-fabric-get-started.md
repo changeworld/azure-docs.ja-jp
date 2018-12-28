@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: f2795e2836dbb374d147b84d2ac91977659a1520
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 968c9f2455269cf41a701de685e4f47255b46847
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883517"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386430"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -66,10 +66,10 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 * [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
 
 現在のバージョンは次のとおりです。
-* Service Fabric SDK および Tools 3.2.187
-* Service Fabric ランタイム 6.3.187
-* Service Fabric Tools for Visual Studio 2015 2.3.10710.3
-* Visual Studio 2017 15.7 には、Service Fabric Tools for Visual Studio 2.3.10710.1 が含まれています 
+* Service Fabric SDK および Tools 3.3.617
+* Service Fabric ランタイム 6.4.617
+* Service Fabric Tools for Visual Studio 2015 2.4.11116.1
+* Visual Studio 2017 15.9 には、Service Fabric Tools for Visual Studio 2.4.11024.1 が含まれています 
 
 サポートされているバージョンの一覧については、[Service Fabric のサポート](service-fabric-support.md)に関するページを参照してください。
 
@@ -90,7 +90,7 @@ Service Fabric は、マシン クラスター全体にマイクロサービス�
 
 * [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
 * [ローカル クラスター上でアプリケーションをデプロイし管理する方法](service-fabric-get-started-with-a-local-cluster.md)
-* [サービスのフレームワークを選択する](service-fabric-choose-framework.md)
+* [プログラミング モデル Reliable Services と Reliable Actors について学びます](service-fabric-choose-framework.md)
 * [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
 * [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。

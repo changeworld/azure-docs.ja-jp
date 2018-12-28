@@ -1,11 +1,11 @@
 ---
-title: 既存の予測 Web サービスの再トレーニング | Microsoft Docs
-description: Azure Machine Learning でモデルの再トレーニングをして Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
+title: 既存の予測 Studio Web サービスを再トレーニングする - Azure Machine Learning Studio | Microsoft Docs
+description: Azure Machine Learning Studio でモデルの再トレーニングをして Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: cc4c26a2-5672-4255-a767-cfd971e46775
 ms.service: machine-learning
@@ -15,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 1a30f9166c81c4757267c95b13b08f3202748467
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: d24cfd8dce42ee920c87fa2c3593a860468a6160
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684649"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250554"
 ---
-# <a name="retrain-an-existing-predictive-web-service"></a>既存の予測 Web サービスを再トレーニングする
+# <a name="retrain-an-existing-predictive-azure-machine-learning-studio-web-service"></a>既存の予測 Azure Machine Learning Studio Web サービスを再トレーニングする
+
 このドキュメントでは、次のシナリオの再トレーニング プロセスについて説明します。
 
 * 運用可能な Web サービスとしてデプロイされているトレーニング実験と予測実験があります。
@@ -65,7 +66,7 @@ ms.locfileid: "51684649"
 
 再トレーニング API を呼び出すには:
 
-1. Visual Studio で C# コンソール アプリケーションを作成します (**[新規作成]** > **[プロジェクト]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]**)。
+1. Visual Studio で、C# コンソール アプリケーションを作成します:**[新規]** > **[プロジェクト]** > **[Visual C#]** > **[Windows Classic Desktop]** > **[コンソール アプリ (.NET Framework)]**
 2. Machine Learning Web サービス ポータルにサインインします。
 3. 使用する Web サービスをクリックします。
 4. **[Consume (使用)]** をクリックします。

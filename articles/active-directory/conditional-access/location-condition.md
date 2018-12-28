@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/11/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: eeb12500a5ddfb95317b3d20b41acf12e3978bad
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 80818a7264b35b703be217f07127ab7883da339a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626524"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271591"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの場所の条件の概要 
 
@@ -58,7 +58,7 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 
 - **名前** - 名前付きの場所の表示名。
 
-- **IP 範囲** - CIDR 形式の 1 つ以上の IP アドレス範囲。
+- **IP 範囲** - CIDR 形式の 1 つ以上の IPv4 アドレス範囲。 IPv6 アドレス範囲の指定はサポートされていません。
 
 - **信頼できる場所としてマークする** - 信頼できる場所を示すために名前付きの場所に設定できるフラグ。 通常、信頼できる場所は、IT 部門が管理するネットワーク領域です。 条件付きアクセスに加え、信頼できる名前付きの場所は、Azure Identity Protection および Azure AD セキュリティ レポートで[誤検出](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)を減らす場合にも使用されます。
 

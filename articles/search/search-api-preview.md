@@ -1,5 +1,5 @@
 ---
-title: Azure Search Service REST API バージョン 2017-11-11-Preview | Microsoft Docs
+title: Azure Search 2017-11-11-Preview 向けのプレビュー REST API - Azure Search
 description: Azure Search Service REST API バージョン 2017-11-11-Preview には、シノニムや moreLikeThis 検索などの試験的機能が含まれています。
 services: search
 author: HeidiSteen
@@ -11,12 +11,13 @@ ms.tgt_pltfrm: na
 ms.workload: search
 ms.date: 06/28/2018
 ms.author: HeidiSteen
-ms.openlocfilehash: b5cb60bf16a4c904c9a6060113eba8b4d3a671ef
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.custom: seodec2018
+ms.openlocfilehash: e496e4e2e7e2f66033d090a0534911bff4c53baa
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112604"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310284"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Azure Search Service REST api-version 2017-11-11-Preview
 この記事では、まだ一般公開されていない実験的機能を提供する Azure Search Service REST API の `api-version=2017-11-11-Preview` バージョンについて説明します。

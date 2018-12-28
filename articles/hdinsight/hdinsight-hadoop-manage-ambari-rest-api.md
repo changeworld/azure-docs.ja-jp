@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: cd999a5bfd9f5691c1e624f7a8226eefee5709eb
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b5083a2af335bd40dc55f7f325ac0a4ad125b682
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015811"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384233"
 ---
-# <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Ambari REST API を使用した HDInsight クラスターの管理
+# <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Ambari REST API を使用して Azure HDInsight の Hadoop クラスターを管理および監視する方法を説明します。
+Apache Ambari REST API を使用して Azure HDInsight の Apache Hadoop クラスターを管理および監視する方法を説明します。
 
 Apache Ambari には使いやすい Web UI と REST API が用意されているため、Hadoop クラスターを簡単に管理および監視できます。 Ambari は Linux オペレーティング システムを使用する HDInsight クラスターに含まれています。 Ambari を使用して、クラスターを監視し、構成を変更できます。
 
-## <a id="whatis"></a>Ambari とは
+## <a id="whatis"></a>Apache Ambari とは
 
 [Apache Ambari](http://ambari.apache.org) では、Hadoop クラスターの管理と監視に使用できる Web UI が提供されています。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
 
@@ -32,14 +32,14 @@ Ambari は既定で Linux ベースの HDInsight クラスターに付属して�
 
 ## <a name="how-to-use-the-ambari-rest-api"></a>Ambari REST API を使用する方法
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの情報と例は、Linux オペレーティング システムを使用する HDInsight クラスターが前提となっています。 詳細については、[HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関する記事を参照してください。
 
 このドキュメントでは、Bourne シェル (bash) と PowerShell の両方の例を提供しています。 bash の例は GNU Bash バージョン 4.3.11 でテストしましたが、他の Unix シェルでも動作するはずです。 PowerShell の例は PowerShell 5.0 でテストしましたが、PowerShell 3.0 以降で動作するはずです。
 
 __Bourne シェル__ (Bash) を使用する場合は、以下のものをインストールする必要があります。
 
-* [cURL](http://curl.haxx.se/): cURL は、コマンド ラインから REST API を操作するためのユーティリティです。 このドキュメントでは、Ambari REST API との通信にこれを使用しています。
+* [cURL](https://curl.haxx.se/): cURL は、コマンド ラインから REST API を操作するためのユーティリティです。 このドキュメントでは、Ambari REST API との通信にこれを使用しています。
 
 Bash を使用する場合でも PowerShell を使用する場合でも、[jq](https://stedolan.github.io/jq/) をインストールする必要があります。 Jq は、JSON ドキュメントを操作するためのユーティリティです。 このユーティリティは、**すべての** Bash の例と **1 つ**の PowerShell の例で使用されています。
 
@@ -47,7 +47,7 @@ Bash を使用する場合でも PowerShell を使用する場合でも、[jq](h
 
 HDInsight の Ambari REST API のベース URI は、 https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME です。ここで、**CLUSTERNAME** はクラスターの名前です。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > URI (CLUSTERNAME.azurehdinsight.net) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。 たとえば、クラスター名が `MyCluster` であれば、有効な URI は次のようになります。
 > 
 > `https://mycluster.azurehdinsight.net/api/v1/clusters/MyCluster`
@@ -64,7 +64,7 @@ HDInsight の Ambari REST API のベース URI は、 https://CLUSTERNAME.azureh
 
 HDInsight の Ambari に接続するには、HTTPS が必要です。 クラスターの作成中に入力した管理者アカウント名 (既定値は **admin**) とパスワードを使用します。
 
-## <a name="examples-authentication-and-parsing-json"></a>例: 認証と JSON の解析
+## <a name="examples-authentication-and-parsing-json"></a>次に例を示します。認証と JSON の解析
 
 次の例は、ベース Ambari REST API に対して GET 要求を行う方法を示しています。
 
@@ -72,7 +72,7 @@ HDInsight の Ambari に接続するには、HTTPS が必要です。 クラス�
 curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの Bash の例では、次のことが前提条件となっています。
 >
 > * クラスターのログイン名は、既定値の `admin` です。
@@ -85,7 +85,7 @@ $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/c
 $resp.Content
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの PowerShell の例では、次のことが前提条件となっています。
 >
 > * `$creds` は、クラスターの管理者ログインとパスワードが含まれている資格情報オブジェクトです。 この値を設定するには、`$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"` を使用し、入力を求めるメッセージが表示されたら資格情報を指定します。
@@ -131,12 +131,12 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > このドキュメントのほとんどの例では `ConvertFrom-Json` を使用して応答ドキュメントの要素を表示していますが、「[Ambari 構成の更新](#example-update-ambari-configuration)」の例では jq を使用しています。 この例では、jq を使用して、JSON 応答ドキュメントから新しいテンプレートを構築します。
 
-REST API の完全なリファレンスについては、「 [Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
+REST API の完全なリファレンスについては、「[Apache Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
 
-## <a name="example-get-the-fqdn-of-cluster-nodes"></a>例: クラスター ノードの FQDN を取得する
+## <a name="example-get-the-fqdn-of-cluster-nodes"></a>例:クラスター ノードの FQDN を取得する
 
 HDInsight を使用する際は、クラスター ノードの完全修飾ドメイン名 (FQDN) を知ることが必要になる場合があります。 次の例を使用して、クラスター内のさまざまなノードの FQDN を簡単に取得できます。
 
@@ -196,9 +196,9 @@ HDInsight を使用する際は、クラスター ノードの完全修飾ドメ
     $respObj.host_components.HostRoles.host_name
     ```
 
-## <a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>例: クラスター ノードの内部 IP アドレスの取得
+## <a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>例:クラスター ノードの内部 IP アドレスを取得する
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このセクションの例によって返される IP アドレスは、インターネット経由で直接アクセスすることはできません。 HDInsight クラスターが含まれている Azure Virtual Network 内からだけアクセスできます。
 >
 > HDInsight と仮想ネットワークの操作の詳細については、[カスタム Azure Virtual Network による HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するページを参照してください。
@@ -213,7 +213,7 @@ do
 done
 ```
 
-> [!TIP]
+> [!TIP]  
 > 前の例では、パスワードを求めるプロンプトが表示されます。 この例では、`curl` コマンドを複数回実行するため、プロンプトが何回も表示されないように、パスワードは `$PASSWORD` と指定します。
 
 ```powershell
@@ -230,7 +230,7 @@ foreach($item in $respObj.items) {
 }
 ```
 
-## <a name="example-get-the-default-storage"></a>例: 既定のストレージの取得
+## <a name="example-get-the-default-storage"></a>例:既定のストレージを取得する
 
 HDInsight クラスターを作成する場合は、クラスターの既定のストレージとして Azure Storage アカウントまたは Data Lake Store を使用する必要があります。 Ambari を使用すると、クラスターが作成された後にこの情報を取得できます。 たとえば、HDInsight の外部のコンテナーにデータの読み取り/書き込みをする場合です。
 
@@ -248,7 +248,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties.'fs.defaultFS'
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > これらの例は、サーバーに適用された最初の構成 (`service_config_version=1`) を返し、その中にこの情報が含まれています。 クラスターの作成後に変更された値を取得する場合は、構成のバージョンを一覧表示した後で最新の構成を取得することが必要になる場合があります。
 
 戻り値は、以下の例のいずれかと似ています。
@@ -289,11 +289,11 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
     戻り値は、`/clusters/CLUSTERNAME/` のようになります。 この値は、Data Lake Store アカウント内のパスです。 このパスは、クラスターの HDFS 互換ファイル システムのルートです。 
 
-> [!NOTE]
+> [!NOTE]  
 > [Azure PowerShell](/powershell/azure/overview) に用意されている `Get-AzureRmHDInsightCluster` コマンドレットも、クラスターのストレージ情報を返します。
 
 
-## <a name="example-get-configuration"></a>例: 構成の取得
+## <a name="example-get-configuration"></a>例:構成を取得する
 
 1. クラスターに使用できる構成を取得します。
 
@@ -341,7 +341,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
     この例では、`core-site` コンポーネントの現在の構成を含む JSON ドキュメントが返されます。
 
-## <a name="example-update-configuration"></a>例: 構成の更新
+## <a name="example-update-configuration"></a>例:構成を更新する
 
 1. Ambari で "desired configuration (望ましい構成)" として格納される現在の構成を取得します。
 
@@ -392,7 +392,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $resp.Content | jq --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > 構成を取得するコンポーネントとタグで **spark-thrift-sparkconf** と **INITIAL** を置換します。
    
     jq を使用して、HDInsight から取得したデータを新しい構成テンプレートに変換します。 具体的には、これらの例では以下の操作を実行します。
@@ -450,7 +450,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
    
     これらのコマンドは、**newconfig.json** ファイルの内容を新たな望ましい構成としてクラスターに送信します。 要求から、JSON ドキュメントが返されます。 このドキュメントの **versionTag** 要素は、送信したバージョンに一致する必要があります。**configs** オブジェクトには、要求した構成変更が含まれます。
 
-### <a name="example-restart-a-service-component"></a>例: サービス コンポーネントの再起動
+### <a name="example-restart-a-service-component"></a>例:サービス コンポーネントの再起動
 
 この時点で Ambari Web UI に、新しい構成を有効にするには Spark サービスを再起動する必要がある旨が表示されます。 次の手順でサービスを再起動します。
 
@@ -517,7 +517,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     }
     ```
     
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > この URI で返される `href` 値はクラスター ノードの内部 IP アドレスを利用します。 クラスターの外部からこれを利用するには、`10.0.0.18:8080' 部分をクラスターの FQDN に置換します。 
     
     以下のコマンドは、要求の状態を取得します。
@@ -572,5 +572,5 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 ## <a name="next-steps"></a>次の手順
 
-REST API の完全なリファレンスについては、「 [Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
+REST API の完全なリファレンスについては、「[Apache Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
 

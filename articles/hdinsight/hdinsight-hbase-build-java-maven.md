@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7df61cad250663d4b08c8c8d32257718e2f37db
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a88d4b09178ea32526cb8d035b47e1aef9c19dc3
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012850"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384243"
 ---
-# <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Windows ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する
-Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成し、ビルドする方法について説明します。 その後、このアプリケーションを Azure HDInsight (Hadoop) で使用します。
+# <a name="use-apache-maven-to-build-java-applications-that-use-apache-hbase-with-windows-based-hdinsight-apache-hadoop"></a>Apache Maven を使用して、Windows ベースの HDInsight (Apache Hadoop) で Apache HBase を使用する Java アプリケーションをビルドする
+Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成し、ビルドする方法について説明します。 その後、このアプリケーションを Azure HDInsight (Apache Hadoop) で使用します。
 
-[Maven](http://maven.apache.org/) は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。 この記事では、これを使用して、Azure HDInsight クラスターでの HBase テーブルの作成、クエリ、および削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
+[Apache Maven](http://maven.apache.org/) は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。 この記事では、これを使用して、Azure HDInsight クラスターでの HBase テーブルの作成、クエリ、および削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、Windows を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="requirements"></a>必要条件
 * [Java プラットフォーム JDK](https://aka.ms/azure-jdks) 7 以降
-* [Maven](http://maven.apache.org/)
+* [Apache Maven](http://maven.apache.org/)
 * Windows ベースの HDInsight クラスターと HBase
 
-    > [!NOTE]
+    > [!NOTE]  
     > このドキュメントの手順は、HDInsight クラスター バージョン 3.2、3.3、3.4 でテスト済みです。 例で指定される既定値は、HDInsight 3.3 クラスターに対応しています。
 
 ## <a name="create-the-project"></a>プロジェクトを作成する
@@ -40,8 +40,8 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
     このコマンドにより、**artifactID** パラメーターで指定した名前 (この例では **hbaseapp**) のディレクトリが現在の場所に作成されます。このディレクトリには、次の項目が含まれます。
 
-   * **pom.xml**: プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
-   * **src**: アプリケーションを作成する **main\java\com\microsoft\examples** ディレクトリに含まれるディレクトリです。
+   * **pom.xml**:プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
+   * **src**:アプリケーションを作成する **main\java\com\microsoft\examples** ディレクトリに含まれるディレクトリです。
 3. **src\test\java\com\microsoft\examples\apptest.java** ファイルはこの例では使用しないため、削除します。
 
 ## <a name="update-the-project-object-model"></a>プロジェクト オブジェクト モデルを更新する
@@ -53,9 +53,9 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
           <version>1.1.2</version>
         </dependency>
 
-    このセクションは Maven に対して、**hbase-client** のバージョン **1.1.2** がプロジェクトに必要であることを伝えます。 この依存関係は、コンパイル時に既定の Maven リポジトリからダウンロードされます。 [Maven セントラル リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) を使用して、この依存関係についての詳細を確認できます。
+    このセクションは Maven に対して、**hbase-client** のバージョン **1.1.2** がプロジェクトに必要であることを伝えます。 この依存関係は、コンパイル時に既定の Maven リポジトリからダウンロードされます。 [Apache Maven セントラル リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) を使用して、この依存関係についての詳細を確認できます。
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > バージョン番号は、HDInsight クラスターに付属の HBase のバージョンと一致する必要があります。 次の表を使用して、正しいバージョン番号を調べてください。
    >
    >
@@ -65,7 +65,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
    | 3.2 |0.98.4-hadoop2 |
    | 3.3 |1.1.2 |
 
-    HDInsight のバージョンとコンポーネントの詳細については、「 [HDInsight で使用できる Hadoop コンポーネントの種類を教えてください](hdinsight-component-versioning.md)」を参照してください。
+    HDInsight のバージョンとコンポーネントの詳細については、[HDInsight で使用できるさまざまな Apache Hadoop コンポーネント](hdinsight-component-versioning.md)に関するページを参照してください。
 2. HDInsight 3.3 クラスターを使用している場合は、 `<dependencies>` セクションに次のコードも追加する必要があります。
 
         <dependency>
@@ -122,12 +122,12 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
     `<resources>` セクションにより、HBase の構成情報が含まれたリソース (**conf\hbase-site.xml**) が構成されます。
 
-   > [!NOTE]
+   > [!NOTE]  
    > コードを介して構成値を設定することもできます。 その方法については、**CreateTable** サンプル内のコメントをご覧ください。
    >
    >
 
-    この `<plugins>` セクションによって、[Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) と [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。 トポロジのコンパイルにはコンパイラ プラグインが使用されます。 シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。 ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。 maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
+    この `<plugins>` セクションによって、[Apache Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) と [Apache Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。 トポロジのコンパイルにはコンパイラ プラグインが使用されます。 シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。 ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。 maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
 
     また、maven-shade-plugin は、アプリケーションで必要とされるすべての依存関係を含む uber jar (または fat jar) も生成します。
 4. **pom.xml** ファイルを保存します。
@@ -173,7 +173,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
     このファイルは、HDInsight クラスター用の HBase 構成の読み込みに使用されます。
 
-   > [!NOTE]
+   > [!NOTE]  
    > これは、HDInsight クラスター用の最小限の設定が含まれた最小限の hbase-site.xml ファイルです。
 
 6. **hbase-site.xml** ファイルを保存します。
@@ -357,11 +357,11 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
     これにより、前のビルド アーティファクトを整理し、まだインストールされていない依存関係をダウンロードして、アプリケーションをビルドしてパッケージ化します。
 3. コマンドが完了すると、**hbaseapp\target** ディレクトリに **hbaseapp-1.0-SNAPSHOT.jar** という名前のファイルが格納されます。
 
-   > [!NOTE]
+   > [!NOTE]  
    > **hbaseapp-1.0-SNAPSHOT.jar** ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uber jar (fat jar とも呼ばれる) です。
 
 ## <a name="upload-the-jar-file-and-start-a-job"></a>JAR ファイルをアップロードしてジョブを開始する
-「 [HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」で説明されているように、ファイルを HDInsight にアップロードするには多くの方法があります。 次の手順では、Azure PowerShell を使用します。
+「[HDInsight での Apache Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」で説明されているように、ファイルを HDInsight にアップロードするには多くの方法があります。 次の手順では、Azure PowerShell を使用します。
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 

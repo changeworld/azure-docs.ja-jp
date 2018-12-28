@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 74e963abe5d2798f72bce8212c9f761f8f3297d1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e0a3f5239e9d0f16312894dee598c0fc490f1e73
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256937"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270010"
 ---
 # <a name="the-azure-sql-database-service"></a>Azure SQL Database サービス
 
@@ -93,9 +93,9 @@ SQL Database には、[DTU ベースの購入モデル](sql-database-service-tie
 
 さらに、SQL Database では、監視を容易にするための[メトリックと診断ログを出力](sql-database-metrics-diag-logging.md)することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
 
-- **Azure Storage**: 大量のテレメトリを低価格でアーカイブします
-- **Azure Event Hub**: SQL Database のテレメトリを、カスタム監視ソリューションまたはホット パイプラインと統合します
-- **Azure Log Analytics**: レポート機能、アラート機能、および緩和機能を備えた組み込みの監視ソリューション用です。
+- **Azure Storage**:大量の利用統計情報を低価格でアーカイブします
+- **Azure Event Hub**:SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します
+- **Azure Log Analytics**:レポート機能、アラート機能、および緩和機能を備えた組み込みの監視ソリューション用です。
 
     ![アーキテクチャ](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -109,10 +109,10 @@ Microsoft が管理するデータセンターのグローバル ネットワー
 - **[ポイントインタイム リストア](sql-database-recovery-using-backups.md)**:
 
   SQL Database は、自動バックアップのリテンション期間内の任意の時点への回復をサポートします。
-- **[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)**:
+- **[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)**:
 
   SQL Database を使用すると、同じ Azure データ センターまたは世界各地に分散された Azure データ センター内に、最大 4 つの読み取り可能なセカンダリ データベースを構成することができます。  たとえば、カタログ データベースを使用する SaaS アプリケーションで大量の同時実行の読み取り専用トランザクションが行われる場合は、アクティブ geo レプリケーションを使用してグローバル スケールの読み取りを有効することで、読み取りワークロードによるプライマリ上のボトルネックを取り除くことができます。
-- **[フェールオーバー グループ](sql-database-geo-replication-overview.md)**:
+- **[自動フェールオーバー グループ](sql-database-auto-failover-group.md)**:
 
   SQL Database を使用すると、透過的な geo レプリケーションや大量のデータベースとエラスティック プールのフェールオーバーなどによって、高可用性と負荷分散をグローバル スケールで有効にすることができます。 フェールオーバー グループとアクティブ geo レプリケーションを使用すると、グローバルに分散された SaaS アプリケーションを最小限の管理オーバーヘッドで作成することができ、複雑な監視、ルーティング、およびフェールオーバーのオーケストレーションは、すべて SQL Database にまかせることができます。
 - **[ゾーン冗長データベース](sql-database-high-availability.md)**:
@@ -135,8 +135,8 @@ SQL Database は、監視する必要があるクエリの詳細な洞察を提�
 
 [SQL Database では](sql-database-automatic-tuning.md)、次の 2 つの自動チューニングを使用できます。
 
-- **自動インデックス管理**: データベースに追加するインデックスと削除するインデックスを識別します。
-- **プランの自動修正**: 問題のあるプランを識別し、SQL プランのパフォーマンスに関する問題を修正します (近日公開予定。SQL Server 2017 では既に利用可能)。
+- **インデックスの自動管理**:データベースに追加するインデックスと削除するインデックスを識別します。
+- **プランの自動修正**:問題のあるプランを識別し、SQL プランのパフォーマンスに関する問題を修正します (近日公開予定。SQL Server 2017 では既に利用可能)。
 
 ### <a name="adaptive-query-processing"></a>アダプティブ クエリ処理
 
@@ -197,11 +197,11 @@ SQL Database は、MacOS、Linux、および Windows での Python、Java、Node
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>SQL Server エンジニアリング チームとの交流
 
-- [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): データベースの管理に関するご質問はこちらへ
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): 開発に関する質問はこちらへ
-- [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): 技術的なご質問はこちらへ
-- [フィードバック](https://aka.ms/sqlfeedback): バグの報告や機能リクエスト
-- [Reddit](https://www.reddit.com/r/SQLServer/): SQL Server についての意見交換
+- [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server):データベースの管理に関するご質問はこちらへ
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server):開発に関する質問はこちらへ
+- [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?category=sqlserver):技術的なご質問はこちらへ
+- [フィードバック](https://aka.ms/sqlfeedback):バグの報告や機能要求
+- [Reddit](https://www.reddit.com/r/SQLServer/):SQL Server についての意見交換
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 6588d65a4f19c06e3ee4990aba226dbd11119c91
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a86902d772226be136778d200a37c451b7b7e9a5
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016252"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407254"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight での大規模なストリーミング
 
 リアルタイム ビッグ データ ソリューションは、動いているデータに作用します。 通常、このデータは到着時に最も高い価値があります。 受信データ ストリームがその瞬間で処理できるよりも大きくなった場合は、リソースを制限する必要がある可能性があります。 または、オンデマンドでノードを追加することによって、HDInsight クラスターをスケール アップし、ストリーミング ソリューションに対応することができます。
 
-ストリーミング アプリケーションでは、1 つまたは複数のデータ ソースが、有用な情報をすべて取りこぼすことなく速やかに取り込む必要があるイベント (場合により 1 秒あたり数百万個) を生成しています。 受信イベントは、[Kafka](kafka/apache-kafka-introduction.md) や [Event Hubs](https://azure.microsoft.com/services/event-hubs/) などのサービスによって、*ストリーム バッファリング* (*イベント キュー*とも呼ばれる) を使用して処理されます。 イベントを収集したら、[Storm](storm/apache-storm-overview.md) または [Spark ストリーミング](spark/apache-spark-streaming-overview.md)などの*ストリーム処理*レイヤー内でリアルタイム分析システムを使用して、データを分析できます。 処理済みのデータは、[Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) などの長期ストレージ システムに格納し、[Power BI](https://powerbi.microsoft.com)、Tableau、カスタム Web ページなどのビジネス インテリジェンス ダッシュ ボードにリアルタイムで表示できます。
+ストリーミング アプリケーションでは、1 つまたは複数のデータ ソースが、有用な情報をすべて取りこぼすことなく速やかに取り込む必要があるイベント (場合により 1 秒あたり数百万個) を生成しています。 受信イベントは、[Apache Kafka](kafka/apache-kafka-introduction.md) や [Event Hubs](https://azure.microsoft.com/services/event-hubs/) などのサービスによって、*ストリーム バッファリング* (*イベント キュー*とも呼ばれる) を使用して処理されます。 イベントを収集したら、[Apache Storm](storm/apache-storm-overview.md) または [Apache Spark ストリーミング](spark/apache-spark-streaming-overview.md)などの*ストリーム処理*レイヤー内でリアルタイム分析システムを使用して、データを分析できます。 処理済みのデータは、[Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) などの長期ストレージ システムに格納し、[Power BI](https://powerbi.microsoft.com)、Tableau、カスタム Web ページなどのビジネス インテリジェンス ダッシュ ボードにリアルタイムで表示できます。
 
 ![HDInsight ストリーミング パターン](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
@@ -39,7 +39,7 @@ Apache Storm は、Hadoop を使用して、リアルタイムでデータのス
 
 Spark Streaming は、Spark の拡張機能で、バッチ処理に使用する同じコードを再利用できます。 同じアプリケーションで、バッチと対話型の両方のクエリを組み合わせることができます。 Storm と異なり、Spark Streaming はステートフルな exactly-once 処理セマンティクスを提供します。 [Kafka Direct API](http://spark.apache.org/docs/latest/streaming-kafka-integration.html) と組み合わせて使用すると、すべての Kafka データが Spark Streaming によって正確に 1 回受信され、エンド ツー エンドの exactly-once 保証を実現できます。 Spark Streaming の長所の 1 つは、クラスター内で複数のノードが使用されている場合に、障害のあるノードを迅速に復旧するフォールト トレランス機能です。
 
-詳細については、「[Spark ストリーミングの概要](hdinsight-spark-streaming-overview.md)」を参照してください。
+詳細については、「[What is Apache Spark Streaming?](hdinsight-spark-streaming-overview.md)」(Apache Spark ストリーミングの概要) を参照してください。
 
 ## <a name="scaling-a-cluster"></a>クラスターのスケーリング
 
@@ -65,5 +65,5 @@ Apache Spark は、アプリケーションの要件に応じて、その環境�
 
 * [HDInsight での Apache Storm の使用](storm/apache-storm-tutorial-get-started-linux.md)
 * [HDInsight での Apache Storm のトポロジ例](storm/apache-storm-example-topology.md)
-* [HDInsight での Spark の概要](spark/apache-spark-overview.md)
+* [HDInsight での Apache Spark の概要](spark/apache-spark-overview.md)
 * [HDInsight での Apache Kafka の開始](kafka/apache-kafka-get-started.md)

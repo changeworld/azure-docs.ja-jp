@@ -1,5 +1,5 @@
 ---
-title: Azure App Service on Linux での SSH のサポート | Microsoft Docs
+title: App Service on Linux での SSH のサポート - Azure | Microsoft Docs
 description: Azure App Service on Linux で SSH を使用する方法について説明します。
 keywords: Azure App Service, Web アプリ, Linux, OSS
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 631933647e27428349fc1efeb17f62f4614f7f64
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.custom: seodec18
+ms.openlocfilehash: ff5c18b08a2921efe72a35b9bd982986c1867812
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423308"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251308"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Azure App Service on Linux での SSH のサポート
 
@@ -66,7 +67,7 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
         && echo "root:Docker!" | chpasswd
     ```
 
-1. [sshd_config](http://man.openbsd.org/sshd_config) ファイルを */etc/ssh/* ディレクトリにコピーする [`COPY` 命令](https://docs.docker.com/engine/reference/builder/#copy)を Dockerfile に 追加します。 構成ファイルは、GitHub レポジトリに格納されている Azure App Service の sshd_config ファイルに基づいている必要があります ([こちら](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config)を参照してください)。
+2. [sshd_config](https://man.openbsd.org/sshd_config) ファイルを */etc/ssh/* ディレクトリにコピーする [`COPY` 命令](https://docs.docker.com/engine/reference/builder/#copy)を Dockerfile に 追加します。 構成ファイルは、GitHub レポジトリに格納されている Azure App Service の sshd_config ファイルに基づいている必要があります ([こちら](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config)を参照してください)。
 
     > [!NOTE]
     > *sshd_config* ファイルには次の項目を指定する必要があります。指定がない場合、接続は失敗します。 
@@ -77,13 +78,13 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
     COPY sshd_config /etc/ssh/
     ```
 
-1. Dockerfile の [`EXPOSE` 命令](https://docs.docker.com/engine/reference/builder/#expose)に、ポート 2222 を含めます。 ルート パスワードはわかっていますが、ポート 2222 はインターネットからアクセスすることはできません。 それはプライベート仮想ネットワークのブリッジ ネットワーク内でコンテナーのみがアクセスできる内部専用ポートです。
+3. Dockerfile の [`EXPOSE` 命令](https://docs.docker.com/engine/reference/builder/#expose)に、ポート 2222 を含めます。 ルート パスワードはわかっていますが、ポート 2222 はインターネットからアクセスすることはできません。 それはプライベート仮想ネットワークのブリッジ ネットワーク内でコンテナーのみがアクセスできる内部専用ポートです。
 
     ```docker
     EXPOSE 2222 80
     ```
 
-1. シェル スクリプトを使って SSH サービスを開始します ([init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh) の例を参照)。
+4. シェル スクリプトを使って SSH サービスを開始します ([init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh) の例を参照)。
 
     ```bash
     #!/bin/bash

@@ -8,21 +8,20 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9aae08aa5906f341a890ac15e30d2863109d83a2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 4d957c26bd4e4ae278c0909c9df1476b02954b86
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140010"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138009"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Application Insights を使用してライブ Azure Web アプリをプロファイルする
 
-Profiler は現在、Web Apps 上で実行されている ASP.NET および ASP.NET Core Web アプリに対して機能します。 Profiler を使用するには、Basic 以上のサービス レベルが必要です。
+Profiler は現在、Web Apps 上で実行されている ASP.NET および ASP.NET Core Web アプリに対して機能します。 Profiler を使用するには、Basic 以上のサービス レベルが必要です。 現時点では、[この方法](app-insights-profiler-aspnetcore-linux.md)でのみ Linux で Profiler を有効にできます。
 
 ## <a id="installation"></a> Web Apps で Profiler を有効にする
 Web アプリで Profiler を有効にするには、次の手順に従います。 別の種類の Azure サービスを実行している場合、以下のサポートされている他のプラットフォームで Profiler を有効にする手順を参照してください。
@@ -30,19 +29,18 @@ Web アプリで Profiler を有効にするには、次の手順に従います
 * [Service Fabric アプリケーション](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtual Machines](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-
-Application Insights Profiler は、Application Insights サイト拡張機能と共にインストールされています。 サイト拡張機能をインストールし、Azure Web Apps のプロファイルを取得するように構成する必要があります。 ソース コードに App Insights SDK を含めている場合でも、Web アプリをデプロイした後にプロファイラーを有効にするには、次の手順に従います。
+Application Insights Profiler は App Services ランタイムの一部としてプレインストールされますが、Azure Web アプリのプロファイルを取得するには、有効にする必要があります。 ソース コードに App Insights SDK を含めている場合でも、Web アプリをデプロイした後にプロファイラーを有効にするには、次の手順に従います。
 
 1. Azure Portal の **[App Services]** ウィンドウに移動します。
-1. **[設定] > [監視]** ウィンドウに移動します。
+1. **[設定] > [Application Insights]** ウィンドウに移動します。
 
    ![App Service ポータルで App Insights を有効にする](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択して Web アプリを監視します。 すべての既定のオプションをそのまま使用します。 **[コード レベルの診断]** は既定でオンになっており、Profiler を有効にします。
+1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択して Web アプリを監視します。 また、Profiler が**オン**になっていることを確認します。
 
    ![App Insights のサイト拡張機能を追加する][Enablement UI]
 
-1. Profiler は App Insights のサイト拡張機能を使用してインストールされ、App Services のアプリ設定を使用して有効になります。
+1. App Services のアプリ設定を使用して Profiler を有効にできるようになりました。
 
     ![Profiler 用のアプリ設定][profiler-app-setting]
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: a4c4017d7fa798559817c281d159148ec675d158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 400ae8ffe86b5ba66a53835c720f911ddb889bd9
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281355"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386504"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics でクエリを実行して HDInsight クラスターを監視する
 
@@ -46,7 +46,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 5. 左側のウィンドウの **[種類]** の下で、詳しく調べたいメトリックを選択して **[適用]** を選択します。 次のスクリーンショットは `metrics_resourcemanager_queue_root_default_CL` 種類を選択した場合を示しています。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 目的のメトリックが表示されていない場合は、**[[+] 増やす]** ボタンを選択します。 また、**[適用]** ボタンはリストの一番下にあるので、このボタンを表示するには下までスクロールする必要があります。
 
     テキスト ボックスのクエリが、下記のスクリーンショットの赤枠で示された内容に変わっていることを確認してください。
@@ -115,7 +115,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 1. Azure Portal から Log Analytics ワークスペースを開きます。
 2. 左側のメニューで、**[アラート]** を選択します。
 3. 編集または削除するアラートを選択します。
-4. **[保存]**、**[破棄]**、**[無効化]**、および **[削除]** の各オプションがあります。
+4. 次のオプションがあります。**[保存]**、**[破棄]**、**[無効化]**、**[削除]** です。
 
     ![HDInsight の Log Analytics のアラートの削除/編集](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 

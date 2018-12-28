@@ -1,11 +1,12 @@
 ---
 title: Geo 人工知能データ サイエンス仮想マシンの使用 - Azure | Microsoft Docs
-description: Azure で Geo AI 仮想マシンを使用する方法。
+description: Geo AI Data Science Virtual Machine を使用し、地理空間データに基づいてデータを分析し、モデルを構築する方法について説明します。
 keywords: ディープ ラーニング、AI、データ サイエンス ツール、データ サイエンス仮想マシン、地理空間分析
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: f346b086a0269f247d64edf9346b01849ba3d0ee
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 872bfdfdef28dbb88861b723bd3186faea461cad
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408039"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410008"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Geo 人工知能データ サイエンス仮想マシンの使用
 
@@ -46,7 +47,7 @@ ArcGIS への R ブリッジは、[arcgisbinding](https://github.com/R-ArcGIS/r-
 
 2. [R を使用した地理空間分析](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): ArcGIS への R インターフェイス ([arcgisbinding](https://github.com/R-ArcGIS/r-bridge) ライブラリによって提供されます) を使用して地理空間データを操作する方法が、初歩的なサンプルによって示されています。 
 
-3. [ピクセル レベルの土地利用区分](https://github.com/Azure/pixel_level_land_classification): 航空写真の画像を入力として受け取り、土地被覆ラベルを返す、ディープ ニューラル ネットワーク モデルの作成方法を説明したチュートリアルです。 土地被覆ラベルの例としては、"forested" や "water" があります。 このモデルでは、画像内のすべてのピクセルに対してラベルが返されます。 モデルは Microsoft のオープン ソース [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) のディープ ラーニング フレームワークを使用して構築されます。 このサンプルでは、[Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) でのトレーニングをスケール アウトし、モデル予測を ArcGIS Pro ソフトウェアで使用する方法も示されています。 
+3. [ピクセル レベルの土地利用区分](https://github.com/Azure/pixel_level_land_classification): 航空写真の画像を入力として受け取り、土地被覆ラベルを返す、ディープ ニューラル ネットワーク モデルの作成方法を説明したチュートリアルです。 土地被覆ラベルの例としては、"forested" や "water" があります。 このモデルでは、画像内のすべてのピクセルに対してラベルが返されます。 モデルは Microsoft のオープン ソース [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) のディープ ラーニング フレームワークを使用して構築されます。 
 
 
 ## <a name="next-steps"></a>次の手順
