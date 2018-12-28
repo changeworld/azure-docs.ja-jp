@@ -23,88 +23,88 @@ ms.locfileid: "36265009"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API Management のポリシーにおけるエラー処理
 
-Azure API Management では、パブリッシャーは `ProxyError` オブジェクトを指定することにより、要求の処理中に発生するエラーに対応することができます。 `ProxyError` オブジェクトは [context.LastError](api-management-policy-expressions.md#ContextVariables) プロパティからアクセスでき、`on-error` ポリシー セクションのポリシーで使用できます。 この記事では、Azure API Management におけるエラー処理機能向けの参考資料を提供します。  
-  
+Azure API Management では、パブリッシャーは `ProxyError` オブジェクトを指定することにより、要求の処理中に発生するエラーに対応することができます。 `ProxyError` オブジェクトは [context.LastError](api-management-policy-expressions.md#ContextVariables) プロパティからアクセスでき、`on-error` ポリシー セクションのポリシーで使用できます。 この記事では、Azure API Management におけるエラー処理機能向けの参考資料を提供します。
+
 ## <a name="error-handling-in-api-management"></a>API Management でのエラー処理
 
- Azure API Management のポリシーは、次の例で示すとおり、`inbound`、`backend`、`outbound`、および `on-error` のセクションに分かれています。  
-  
-```xml  
-<policies>  
-  <inbound>  
-    <!-- statements to be applied to the request go here -->  
-  </inbound>  
-  <backend>  
-    <!-- statements to be applied before the request is   
-         forwarded to the backend service go here -->  
-    </backend>  
-    <outbound>  
-      <!-- statements to be applied to the response go here -->  
-    </outbound>  
-    <on-error>  
-        <!-- statements to be applied if there is an error   
-             condition go here -->  
-  </on-error>  
-</policies>  
-```  
-  
+Azure API Management のポリシーは、次の例で示すとおり、`inbound`、`backend`、`outbound`、および `on-error` のセクションに分かれています。
+
+```xml
+<policies>
+  <inbound>
+    <!-- statements to be applied to the request go here -->
+  </inbound>
+  <backend>
+    <!-- statements to be applied before the request is
+         forwarded to the backend service go here -->
+    </backend>
+    <outbound>
+      <!-- statements to be applied to the response go here -->
+    </outbound>
+    <on-error>
+        <!-- statements to be applied if there is an error 
+             condition go here -->
+  </on-error>
+</policies>
+```
+
 要求の処理中、要求のスコープ内にあるすべてのポリシーと共に組み込みの手順が実行されます。 エラーが発生すると、処理は直ちに `on-error` ポリシー セクションにジャンプします。  
-`on-error` ポリシー セクションは、任意のスコープで使用できます。 API パブリッシャーは、イベント ハブへのエラーの記録や、呼び出し元に戻るための新しい応答の作成などのカスタム動作を構成できます。  
-  
+`on-error` ポリシー セクションは、任意のスコープで使用できます。 API パブリッシャーは、イベント ハブへのエラーの記録や、呼び出し元に戻るための新しい応答の作成などのカスタム動作を構成できます。
+
 > [!NOTE]
->  `on-error` セクションは、既定ではポリシーに存在しません。 `on-error` セクションをポリシーに追加するには、ポリシー エディターで目的のポリシーを参照し、このセクションを追加します。 ポリシーを構成する方法の詳細については、「[Azure API Management のポリシー](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/)」を参照してください。  
->   
->  `on-error` セクションがない場合、エラーが発生すると、呼び出し元は 400 または 500 HTTP 応答メッセージを受信します。  
-  
+> `on-error` セクションは、既定ではポリシーに存在しません。 `on-error` セクションをポリシーに追加するには、ポリシー エディターで目的のポリシーを参照し、このセクションを追加します。 ポリシーを構成する方法の詳細については、「[Azure API Management のポリシー](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/)」を参照してください。
+> 
+> `on-error` セクションがない場合、エラーが発生すると、呼び出し元は 400 または 500 HTTP 応答メッセージを受信します。
+
 ### <a name="policies-allowed-in-on-error"></a>エラー状態で使用できるポリシー
 
- 次のポリシーは、`on-error` ポリシー セクションで使用できます。  
-  
--   [choose](api-management-advanced-policies.md#choose)  
--   [set-variable](api-management-advanced-policies.md#set-variable)  
--   [find-and-replace](api-management-transformation-policies.md#Findandreplacestringinbody)  
--   [return-response](api-management-advanced-policies.md#ReturnResponse)  
--   [set-header](api-management-transformation-policies.md#SetHTTPheader)  
--   [set-method](api-management-advanced-policies.md#SetRequestMethod)  
--   [set-status](api-management-advanced-policies.md#SetStatus)  
--   [send-request](api-management-advanced-policies.md#SendRequest)  
--   [send-one-way-request](api-management-advanced-policies.md#SendOneWayRequest)  
--   [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)  
--   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)  
--   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)  
-  
+次のポリシーは、`on-error` ポリシー セクションで使用できます。
+
+- [choose](api-management-advanced-policies.md#choose)
+- [set-variable](api-management-advanced-policies.md#set-variable)
+- [find-and-replace](api-management-transformation-policies.md#Findandreplacestringinbody)
+- [return-response](api-management-advanced-policies.md#ReturnResponse)
+- [set-header](api-management-transformation-policies.md#SetHTTPheader)
+- [set-method](api-management-advanced-policies.md#SetRequestMethod)
+- [set-status](api-management-advanced-policies.md#SetStatus)
+- [send-request](api-management-advanced-policies.md#SendRequest)
+- [send-one-way-request](api-management-advanced-policies.md#SendOneWayRequest)
+- [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)
+- [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)
+- [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)
+
 ## <a name="lasterror"></a>LastError
 
- エラーが発生し、コントロールが `on-error` ポリシー セクションにジャンプすると、エラーは [context.LastError](api-management-policy-expressions.md#ContextVariables) プロパティ内に格納されます。このプロパティには、`on-error` セクションにあるポリシーがアクセス可能です。 LastError のプロパティは次のとおりです。  
-  
+エラーが発生し、コントロールが `on-error` ポリシー セクションにジャンプすると、エラーは [context.LastError](api-management-policy-expressions.md#ContextVariables) プロパティ内に格納されます。このプロパティには、`on-error` セクションにあるポリシーがアクセス可能です。 LastError のプロパティは次のとおりです。
+
 | Name     | type   | 説明                                                                                               | 必須 |
 |----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| ソース   | 文字列 | エラーが発生した要素を指定します。 ポリシーまたは組み込みパイプライン ステップ名のいずれかになります。     | [はい]      |
+| ソース   | 文字列 | エラーが発生した要素を指定します。 ポリシーまたは組み込みパイプライン ステップ名のいずれかになります。     | はい      |
 | 理由   | 文字列 | エラー処理に使用できる、マシンに適したエラー コード。                                       | いいえ        |
-| メッセージ  | 文字列 | 人間が判読できるエラーの説明。                                                                         | [はい]      |
+| メッセージ  | 文字列 | 人間が判読できるエラーの説明。                                                                         | はい      |
 | スコープ    | 文字列 | エラーが発生したスコープの名前 ("global"、"product"、"api"、または "operation") | いいえ        |
 | セクション  | 文字列 | エラーが発生したセッション名。 設定される可能性がある値: "inbound"、"backend"、"outbound"、"on-error"。       | いいえ        |
 | パス     | 文字列 | 入れ子になったポリシー (例: "choose[3]/when[2]") を指定します。                                                        | いいえ        |
 | PolicyId | 文字列 | エラーが発生したポリシーの `id` 属性の値 (顧客が指定した場合)             | いいえ        |
 
 > [!TIP]
-> context.Response.StatusCode によって状態コードにアクセスできます。  
+> context.Response.StatusCode によって状態コードにアクセスできます。
 
 > [!NOTE]
 > すべてのポリシーには、ポリシーのルート要素に追加できる、省略可能な `id` 属性があります。 エラー条件が発生したときにこの属性がポリシーに存在する場合、`context.LastError.PolicyId` プロパティを使用して、この属性の値を取得できます。
 
-## <a name="predefined-errors-for-built-in-steps"></a>組み込みの手順向けの定義済みエラー  
- 次のエラーは、組み込みの処理手順の評価時に発生する可能性があるエラー条件用に定義されています。  
-  
+## <a name="predefined-errors-for-built-in-steps"></a>組み込みの手順向けの定義済みエラー
+次のエラーは、組み込みの処理手順の評価時に発生する可能性があるエラー条件用に定義されています。
+
 | ソース        | 条件                                 | 理由                  | メッセージ                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 構成 | API または操作に URI が一致しません | OperationNotFound       | 操作に受信要求を一致させることができません。                                                                      |
 | authorization | サブスクリプション キーが指定されていません             | SubscriptionKeyNotFound | サブスクリプション キーがないため、アクセスが拒否されました。 この API に要求を行うときは、サブスクリプション キーを指定してください。 |
 | authorization | サブスクリプション キー値が無効です         | SubscriptionKeyInvalid  | サブスクリプション キーが無効なため、アクセスが拒否されました。 アクティブなサブスクリプションへの有効なキーを指定してください。            |
-  
-## <a name="predefined-errors-for-policies"></a>ポリシーの定義済みのエラー  
- 次のエラーは、ポリシーの評価時に発生する可能性があるエラー条件用に定義されています。  
-  
+
+## <a name="predefined-errors-for-policies"></a>ポリシーの定義済みのエラー
+次のエラーは、ポリシーの評価時に発生する可能性があるエラー条件用に定義されています。
+
 | ソース       | 条件                                                       | 理由                    | メッセージ                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | rate-limit   | レート制限を超過                                             | RateLimitExceeded         | レート制限を超過しています。                                                                                                               |
@@ -181,4 +181,4 @@ API ポリシーを次のように設定します。
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
 + ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
-+ [ポリシーのサンプル](policy-samples.md)   
++ [ポリシーのサンプル](policy-samples.md)
