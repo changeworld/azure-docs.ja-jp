@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ca6eefa6ccba3fabebd125d88010817c66db52ab
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 14d50a17cf7816cb8e792128f8dd3965781657e5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637537"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339588"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions での関数チェーン - Hello シーケンス サンプル
 
@@ -25,17 +25,18 @@ ms.locfileid: "52637537"
 
 ## <a name="the-functions"></a>関数
 
-この記事では、サンプル アプリにおける次の関数について説明します。
+この記事では、サンプル アプリで使用されている次の関数について説明します。
 
-* `E1_HelloSequence`: 1 つのシーケンスで `E1_SayHello` を複数回呼び出す orchestrator 機能。 `E1_SayHello` 呼び出しからの出力を格納し、結果を記録します。
-* `E1_SayHello`: 文字列の先頭に「Hello」を付加するアクティビティ関数。
+* `E1_HelloSequence`:1 つのシーケンスで `E1_SayHello` を複数回呼び出す orchestrator 機能。 `E1_SayHello` 呼び出しからの出力を格納し、結果を記録します。
+* `E1_SayHello`:文字列の先頭に "Hello" を付加するアクティビティ関数。
 
 以下のセクションでは、C# スクリプトと JavaScript で使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
 
 > [!NOTE]
-> JavaScript の Durable Functions は、Functions v2 ランタイムでのみ使用できます。
+> JavaScript Durable Functions は、Functions 2.x ランタイムでのみ利用できます。
 
 ## <a name="e1hellosequence"></a>E1_HelloSequence
+
 ### <a name="functionjson-file"></a>function.json ファイル
 
 Visual Studio Code または Azure Portal を開発に使用する場合は、こちらのオーケストレーター関数の *function.json* ファイルの内容をご覧ください。 ほとんどの orchestrator *function.json* ファイルは、このような内容です。
@@ -47,7 +48,7 @@ Visual Studio Code または Azure Portal を開発に使用する場合は、�
 > [!WARNING]
 > Orchestrator 機能の "I/O なし" の規則に従うには、`orchestrationTrigger` トリガー バインドを使用する場合に、入力または出力バインドを使用しないでください。  他の入力または出力バインドが必要な場合は、`activityTrigger` 関数のコンテキストで使用する必要があります。それらがオーケストレーターによって呼び出されます。
 
-### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C# スクリプト (Visual Studio Code と Azure Portal のサンプル コード) 
+### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C# スクリプト (Visual Studio Code と Azure Portal のサンプル コード)
 
 以下がソース コードです。
 
@@ -63,15 +64,16 @@ Visual Studio Code または Azure Portal を開発に使用する場合は、�
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-すべての JavaScript オーケストレーション関数に、`durable-functions` モジュールが含まれている必要があります。 これは、アウト プロセス言語に対応するために、オーケストレーション関数のアクションを Durable の実行プロトコルに変換する JavaScript ライブラリです。 オーケストレーション関数と他の JavaScript 関数には、次の 3 つの大きな違いがあります。
+すべての JavaScript オーケストレーション関数に、[`durable-functions` module](https://www.npmjs.com/package/durable-functions) モジュールが含まれている必要があります。 これは、Durable Functions を JavaScript で記述することができるライブラリです。 オーケストレーション関数と他の JavaScript 関数には、次の 3 つの大きな違いがあります。
 
 1. この関数は[ジェネレーター関数](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)です。
-2. この関数は、`durable-functions` モジュールの呼び出しにラップされます (ここでは `df`)。
-3. この関数は、`context.done` ではなく、`return` を呼び出して終了します。
+2. この関数は、`durable-functions` モジュールの `orchestrator` メソッドの呼び出しにラップされます (ここでは `df`)。
+3. この関数は同期的であることが必要です。 "orchestrator" メソッドは呼び出し元の "context.done" を処理するため、この関数は単に "制御を戻す" 必要があります。
 
-`context` オブジェクトには、他の "*アクティビティ*" 関数を呼び出し、`callActivityAsync` メソッドを使用して入力パラメーターを渡すことができる、`df` オブジェクトが含まれています。 このコードでは、異なるパラメーター値で `E1_SayHello` を 3 回続けて呼び出しています。`yield` を使用して実行を示すと、非同期アクティビティ関数呼び出しが返されるのを待つ必要があります。 各呼び出しの戻り値が `outputs` 一覧に追加され、それが関数の末尾に返されます。
+`context` オブジェクトには、他の "*アクティビティ*" 関数を呼び出し、`callActivity` メソッドを使用して入力パラメーターを渡すことができる、`df` オブジェクトが含まれています。 このコードでは、異なるパラメーター値で `E1_SayHello` を 3 回続けて呼び出しています。`yield` を使用して実行を示すと、非同期アクティビティ関数呼び出しが返されるのを待つ必要があります。 各呼び出しの戻り値が `outputs` 一覧に追加され、それが関数の末尾に返されます。
 
 ## <a name="e1sayhello"></a>E1_SayHello
+
 ### <a name="functionjson-file"></a>function.json ファイル
 
 アクティビティ関数 `E1_SayHello` の *function.json* ファイルは、`E1_HelloSequence` のそれに似ていますが、バインドの種類 `orchestrationTrigger` の代わりにバインドの種類 `activityTrigger` を使用する点が違います。
@@ -93,7 +95,7 @@ Visual Studio Code または Azure Portal を開発に使用する場合は、�
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-JavaScript オーケストレーション関数とは異なり、JavaScript アクティビティ関数には特別な設定は不要です。 オーケストレーター関数によって渡される入力は、`activitytrigger` バインドという名前で `context.bindings` オブジェクト (この例では `context.bindings.name`) に配置されます。 サンプル コードに示すように、バインド名はエクスポートされた関数のパラメーターとして設定し、直接アクセスできます。
+JavaScript オーケストレーション関数とは異なり、アクティビティ関数には特別な設定は不要です。 オーケストレーター関数によって渡される入力は、`activityTrigger` バインドという名前で `context.bindings` オブジェクト (この例では `context.bindings.name`) に配置されます。 サンプル コードに示すように、バインド名はエクスポートされた関数のパラメーターとして設定し、直接アクセスできます。
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
@@ -150,7 +152,7 @@ Visual Studio プロジェクトの単一の C# ファイルとしてのオー�
 
 ## <a name="next-steps"></a>次の手順
 
-このサンプルでは、単純な関数チェーンのオーケストレーションについて説明しました。 次のサンプルでは、ファンアウト/ファンイン パターンの実装方法について説明します。 
+このサンプルでは、単純な関数チェーンのオーケストレーションについて説明しました。 次のサンプルでは、ファンアウト/ファンイン パターンの実装方法について説明します。
 
 > [!div class="nextstepaction"]
 > [ファンアウト/ファンイン サンプルの実行](durable-functions-cloud-backup.md)

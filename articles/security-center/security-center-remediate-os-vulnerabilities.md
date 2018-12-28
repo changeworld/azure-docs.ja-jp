@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d4523a9e2d5a5466c1617930d14a8a2d25a0e16f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5de0c975b21131b50155a6e86f5710f741a3c7f7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238779"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344144"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Azure Security Center でのセキュリティ構成の修復
 Azure Security Center では、仮想マシン (VM) とコンピューターのオペレーティング システム (OS) を日々分析して、VM とコンピューターの攻撃に対する脆弱性を高める可能性のある構成を特定します。 Security Center では、OS 構成が推奨されるセキュリティ構成規則に適合していない場合に脆弱性を解決するよう推奨し、これらの脆弱性に対処するための構成変更を推奨します。
@@ -42,7 +42,7 @@ Azure Security Center では、仮想マシン (VM) とコンピューターの�
 
   ダッシュボード上部には次の項目が表示されます。
 
-  - **[失敗した規則 (重要度別)]**: VM とコンピューターの OS 構成が失敗した規則の総数 (発生した重要度別)。
+  - **失敗した規則 (重要度別)**: VM とコンピューターの OS 構成が失敗した規則の総数 (発生した重要度別)。
   - **[失敗した規則 (種類別)]**: VM とコンピューターの OS 構成が失敗した規則の総数 (発生した種類別)。
   - **[失敗した Windows ルール]**: Windows OS 構成での失敗した規則の総数。
   - **[失敗した Linux ルール]**: Linux OS 構成での失敗した規則の総数。
@@ -101,7 +101,7 @@ Azure Security Center では、仮想マシン (VM) とコンピューターの�
 Security Center の詳細については、次のリソースを参照してください。
 
 * サポートされている Windows VM と Linux VM の一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」をご覧ください。
-* Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法については、「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」をご覧ください。
+* Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法については、「[Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md)」をご覧ください。
 * Azure リソースの保護に推奨事項がいかに役立つかについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。
 * Azure リソースの正常性を監視する方法については、「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」をご覧ください。
 * セキュリティの警告の管理と対応の方法については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」をご覧ください。

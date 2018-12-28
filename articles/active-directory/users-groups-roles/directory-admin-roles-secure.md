@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: f42e7c2e564f660df1e88c63c00a9f04db7c8116
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: da53fa7d20c66b09e06c70222f29f060fa5803c8
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240105"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387082"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -62,11 +62,11 @@ does the article really start here?-->
 
 ![ロードマップのステージとタイム ライン](./media/directory-admin-roles-secure/roadmap-timeline.png)
 
-* ステージ 1 (24 ～ 48 時間): すぐに実施することをお勧めする重要な項目
+* ステージ 1 (24-48 時間): すぐに実施することをお勧めする重要な項目
 
-* ステージ 2 (2 ～ 4 週間): 最もよく使用される攻撃手法の緩和
+* ステージ 2 (2-4 週間): 最もよく使用される攻撃手法の緩和
 
-* ステージ 3 (1 ～ 3 か月): 可視性の構築と管理者アクティビティのフル コントロールの構築
+* ステージ 3 (1-3 か月): 可視性の構築と管理者アクティビティのフル コントロールの構築
 
 * ステージ 4 (6 か月以降): セキュリティ プラットフォームをさらに強化するための防御の継続的な構築
 
@@ -82,7 +82,7 @@ does the article really start here?-->
 
 #### <a name="turn-on-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management を有効にする
 
-Azure AD Privileged Identity Management (PIM) をまだ有効にしていない場合は、運用環境のテナントで有効にします。 Privileged Identity Management を有効にすると、特権アクセス ロールが変更されたという電子メール通知を受け取ります。 これらの通知は、ディレクトリ内の高度な特権を持つロールに他のユーザーが追加された場合に早期警告を提供します。
+Azure AD Privileged Identity Management (PIM) をまだ有効にしていない場合は、運用環境のテナントで有効にします。 Privileged Identity Management を有効にすると、特権アクセス ロールが変更されたという電子メール通知を受け取ります。 これらの通知は、ディレクトリ内の高度な特権ロールに他のユーザーが追加された場合に早期警告を提供します。
 
 Azure AD Privileged Identity Management は、Azure AD Premium P2 または EMS E5 に含まれています。 これらのソリューションでは、オンプレミスの環境のアプリケーションとリソースやクラウドへのアクセスを保護できます。 Azure AD Premium P2 または EMS E5 がまだなく、このロードマップで参照されている機能をさらに評価したい場合は、[Enterprise Mobility + Security の 90 日間無料試用版](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)にサインアップしてください。 これらのライセンスの試用版を使用して、Azure AD Privileged Identity Management と Azure AD Identity Protection を試し、Azure AD の高度なセキュリティ レポート、監査、アラートを使用してアクティビティを監視してください。
 
@@ -102,7 +102,7 @@ Azure AD Privileged Identity Management を有効にした後で:
 
 Azure AD Privileged Identity Management を有効にした後、グローバル管理者、特権ロール管理者、Exchange Online 管理者、SharePoint Online 管理者のディレクトリ ロールに属するユーザーを表示します。 テナントに Azure AD PIM がない場合は、[PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0) を使用できます。 グローバル管理者ロールは汎用的であるため、このロールから開始します。Office 365 ポータルと Azure Portal のどちらで割り当てられたか、あるいは Microsoft PowerShell 用 Azure AD モジュールを使用して割り当てられたかに関係なく、この管理者ロールが割り当てられたユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持つことになります。 
 
-これらのロールで不要になったアカウントを削除し、管理者ロールに割り当てられている残りのアカウントを分類します。
+このようなロールの不要になったアカウントがあれば削除します。 次に、管理者ロールに割り当てられている残りのアカウントを分類します。
 
 * 管理ユーザーに個別に割り当てられ、管理以外の目的 (たとえば、個人用電子メール) にも使用できる
 * 管理ユーザーに個別に割り当てられ、管理目的にのみ指定されている
@@ -127,11 +127,11 @@ Azure AD Privileged Identity Management を有効にした後、グローバル�
 
 ![ステージ 2](./media/directory-admin-roles-secure/stage-two.png)
 
-ロードマップのステージ 2 は、資格情報の盗用や誤用に最もよく使われる攻撃手法の緩和に重点を置き、約 2 ～ 4 週間以内に実装するように設計されています。 セキュリティで保護された特権アクセスのロードマップのこのステージには、次のアクションが含まれます。
+ロードマップのステージ 2 は、資格情報の盗用や誤用に最もよく使われる攻撃手法の緩和に重点を置き、約 2 ～ 4 週間で実装することができます。 セキュリティで保護された特権アクセスのロードマップのこのステージには、次のアクションが含まれます。
 
 ### <a name="general-preparation"></a>一般的な準備
 
-#### <a name="conduct-a-inventory-of-services-owners-and-admins"></a>サービス、所有者、管理者のインベントリを実施する
+#### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>サービス、所有者、管理者のインベントリを実施する
 
 個人所有機器の持ち込み (BYOD) と自宅からの作業のポリシーの増加や、ビジネスにおけるワイヤレス接続の拡大に伴い、ネットワークに接続するユーザーを監視することが重要です。 多くの場合、効果的なセキュリティ監査は、IT でサポートされていないため安全ではない可能性のあるネットワーク上で実行されているデバイス、アプリケーション、プログラムを明らかにします。 詳しくは、「[Azure セキュリティの管理と監視の概要](../../security/security-management-and-monitoring-overview.md)」をご覧ください。 インベントリ プロセスには、次のすべてのタスクを含めてください。 
 
@@ -210,7 +210,7 @@ Xbox、Live、Outlook などの他のプログラムの Microsoft アカウン�
 
 #### <a name="monitor-azure-activity"></a>Azure のアクティビティを監視する
 
-Azure アクティビティ ログは、Azure でのサブスクリプション レベルのイベント履歴を提供します。 このログは、だれがどのリソースをいつ作成、更新、または削除したかについての情報を提供します。 詳しくは、「[Azure サブスクリプションの重要なアクションを監査して通知を受信する](../../monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription.md)」をご覧ください。
+Azure アクティビティ ログは、Azure でのサブスクリプション レベルのイベント履歴を提供します。 このログは、だれがどのリソースをいつ作成、更新、または削除したかについての情報を提供します。 詳しくは、「[Azure サブスクリプションの重要なアクションを監査して通知を受信する](../../azure-monitor/platform/quick-audit-notify-action-subscription.md)」をご覧ください。
 
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Azure AD を介して他のクラウド アプリへのアクセスを管理する組織における追加の手順 
@@ -247,7 +247,7 @@ Azure アクティビティ ログは、Azure でのサブスクリプション 
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>インシデントの処理に関する米国国立標準技術研究所の推奨事項を確認する 
 
-米国国立標準技術研究所 (NIST) は、特にインシデント関連のデータの分析と各インシデントへの適切な対応の決定について、インシデント処理のガイドラインを提供しています。 詳細については、「[The (NIST) Computer Security Incident Handling Guide (SP 800-61, Revision 2)](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)」((NIST) コンピューター セキュリティ インシデント対応ガイド (SP 800 61、リビジョン 2)) を参照してください。
+米国国立標準技術研究所 (NIST) は、特にインシデント関連のデータの分析と各インシデントへの適切な対応の決定について、インシデント処理のガイドラインを提供しています。 詳細については、「[The (NIST) Computer Security Incident Handling Guide (SP 800-61, Revision 2)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)」((NIST) コンピューター セキュリティ インシデント対応ガイド (SP 800 61、リビジョン 2)) を参照してください。
 
 #### <a name="implement-privileged-identity-management-pim-for-jit-to-additional-administrative-roles"></a>JIT に Privileged Identity Management (PIM) を実装して管理者ロールを追加する
 
@@ -337,7 +337,7 @@ Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サ�
 * 必要な場合にのみ特権アクセスを付与し、その後削除します (Just-In-Time)。
 * 特権アカウントに関連する監査アクティビティを保持および確認します。
 
-完全なセキュリティ ロードマップの構築について詳しくは、「[Microsoft クラウド IT アーキテクチャのリソース](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)」をご覧ください。 Microsoft サービスと連携して、これらのトピックについて支援を受ける方法について詳しくは、Microsoft の担当者にお問い合わせいただくか、「[Build critical cyber defenses to protect your enterprise (企業を保護するための重要なサイバー防御を構築する)](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx)」をご覧ください。
+完全なセキュリティ ロードマップの構築について詳しくは、「[Microsoft クラウド IT アーキテクチャのリソース](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)」をご覧ください。 Microsoft サービスと連携して、これらのトピックについて支援を受ける方法について詳しくは、Microsoft の担当者にお問い合わせいただくか、「[Build critical cyber defenses to protect your enterprise (企業を保護するための重要なサイバー防御を構築する)](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)」をご覧ください。
 
 セキュリティで保護された特権アクセスのロードマップのこの最終的な継続ステージには、次のコンポーネントが含まれます。
 

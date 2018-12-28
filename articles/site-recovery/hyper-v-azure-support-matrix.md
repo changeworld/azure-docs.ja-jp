@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: e389f37448211afc35fb98572161be4fcaea7556
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8c8ba338a7059d6d11f43bda6348aa6e645ab98c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210722"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410161"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -33,8 +33,8 @@ Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって�
 
 **サーバー** | **要件** | **詳細**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager なしで実行) | Windows Server 2016 (サーバー コアのインストールを含む)、Windows Server 2012 R2 と最新の更新プログラム | Site Recovery で Hyper-V サイトを構成する場合、Windows Server 2016 と 2012 R2 を実行するホストの混在はサポートされません。<br/><br/> Windows Server 2016 を実行しているホスト上にある VM の場合、別の場所への回復はサポートされていません。
-Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | Virtual Machine Manager を使用する場合は、Windows Server 2016 ホストは、Virtual Machine Manager 2016 で管理する必要があります。<br/><br/> Windows Server 2016 上および 2012 R2 上で実行されている Hyper-V ホストが混在する Virtual Machine Manager クラウドは、現在サポートされていません。<br/><br/> 既存の Virtual Machine Manager 2012 R2 サーバーから 2016 へのアップグレードを含む環境はサポートされていません。
+Hyper-V (Virtual Machine Manager なしで実行) | Windows Server 2016 (サーバー コアのインストールを含む)、Windows Server 2012 R2 と最新の更新プログラム | Windows Server 2016 を実行しているホスト上にある VM の場合、別の場所への回復はサポートされていません。<br/><br/> 既に Windows Server 2012 R2 と Azure Site Recovery または SCVMM 2012 R2 と Azure Site Recovery を構成済みで、OS のアップグレードを予定している場合は、ガイダンス [ドキュメント](upgrade-2012R2-to-2016.md)に従ってください。 
+Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | Virtual Machine Manager を使用する場合は、Windows Server 2016 ホストは、Virtual Machine Manager 2016 で管理する必要があります。<br/><br/>
 
 
 ## <a name="replicated-vms"></a>レプリケートされた VM
@@ -92,7 +92,7 @@ Azure Virtual Network サービス エンドポイント<br/> (Azure Storage フ
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | --- | ---
-NFS | 該当なし | 該当なし
+NFS | NA | NA
 SMB 3.0 | [はい] | [はい]
 SAN (ISCSI) | [はい] | [はい]
 マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM for CLARiiON | [はい] | [はい]
@@ -101,15 +101,15 @@ SAN (ISCSI) | [はい] | [はい]
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-VMDK | 該当なし | 該当なし
+VMDK | NA | NA
 VHD/VHDX | [はい] | [はい]
 Generation 2 VM | [はい] | [はい]
 EFI/UEFI| [はい] | [はい]
 共有クラスター ディスク | いいえ  | いいえ 
 暗号化されたディスク | いいえ  | いいえ 
-NFS | 該当なし | 該当なし
+NFS | NA | NA
 SMB 3.0 | いいえ  | いいえ 
-RDM | 該当なし | 該当なし
+RDM | NA | NA
 1 TB より大きいディスク | はい、最大 4,095 GB | はい、最大 4,095 GB
 ディスク: 4K 論理および物理セクター | サポートされない: Gen 1/Gen 2 | サポートされない: Gen 1/Gen 2
 ディスク: 4K 論理および 512 バイトの物理セクター | [はい] |  [はい]
@@ -159,7 +159,7 @@ Azure にレプリケートするオンプレミス VM は、この表にまと�
 ネットワーク アダプター | 複数のアダプターがサポートされます。 |
 共有 VHD | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
 FC ディスク | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
-ハード ディスク フォーマット | VHD  <br/><br/> VHDX | Azure にフェールオーバーすると、Site Recovery によって自動的に VHDX が VHD に変換されます。 オンプレミスにフェールバックした場合、仮想マシンは引き続き VHDX 形式を使用します。
+ハード ディスク フォーマット | VHD  <br/><br/>  VHDX | Azure にフェールオーバーすると、Site Recovery によって自動的に VHDX が VHD に変換されます。 オンプレミスにフェールバックした場合、仮想マシンは引き続き VHDX 形式を使用します。
 BitLocker | サポートされていません | VM のレプリケーションを有効にする前に、BitLocker を無効にする必要があります。
 VM 名 | 1 ～ 63 文字で指定します。 名前に使用できるのは、英文字、数字、およびハイフンのみです。 VM 名の最初と最後は、文字か数字とする必要があります。 | Site Recovery の VM プロパティ値を更新します。
 VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスクの種類が基本 (VHDX としてフォーマットされている 1 つまたは 2 つのデータ ボリュームが含まれる) でディスク容量が 300 GB 未満の第 2 世代の VM はサポートされています。<br></br>第 2 世代の Linux VM はサポートされていません。 [詳細情報](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。|
@@ -171,6 +171,9 @@ VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスク�
 リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ  | いいえ 
 リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ  | いいえ 
 
+> [!NOTE]
+> SCVMM で管理された Hyper-VM または SCVMM で管理されていない Hyper-VM をオンプレミスから Azure にレプリケートする際、ある特定の環境 (Hyper-V サイトまたは SCVMM のいずれか該当する方) からレプリケート先として使用できる AD テナントは 1 つだけです。
+
 
 ## <a name="provider-and-agent"></a>プロバイダーとエージェント
 
@@ -178,7 +181,7 @@ VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスク�
 
 **名前** | **説明** | **詳細**
 --- | --- | --- | --- | ---
-Azure Site Recovery プロバイダー | オンプレミスのサーバーと Azure の間の通信を調整します <br/><br/> Hyper-V (Virtual Machine Manager あり): Virtual Machine Manager サーバーにインストールします<br/><br/> Hyper-V (Virtual Machine Manager なし): Hyper-V ホストにインストールします| 最新バージョン: 5.1.2700.1 (Azure Portal から入手可能)<br/><br/> [最新の機能と修正](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
+Azure Site Recovery プロバイダー | オンプレミスのサーバーと Azure の間の通信を調整します <br/><br/> Hyper-V (Virtual Machine Manager あり): Virtual Machine Manager サーバーにインストールします<br/><br/> Hyper-V (Virtual Machine Manager なし): Hyper-V ホストにインストールします| 最新バージョン: 5.1.2700.1 (Azure portal から入手可能)<br/><br/> [最新の機能と修正](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure Recovery Services エージェント | Hyper-V VM と Azure の間のレプリケーションを調整します<br/><br/> オンプレミスの Hyper-V サーバーにインストールされます (Virtual Machine Manager の有無にかかわらず) | ポータルから入手可能な最新のエージェント
 
 

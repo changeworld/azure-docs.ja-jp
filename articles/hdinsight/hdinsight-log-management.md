@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 339d5d39c637369420e197acf65df802cefd5cb9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a76ad219e538874af04a72c9aa64e87a35bc53d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988494"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434887"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -51,7 +51,7 @@ HDInsight クラスターのログ管理戦略作成の最初のステップで�
 ```
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-また、PowerShell を使ってこの情報を表示できます。  詳しくは、「[Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-powershell.md)」をご覧ください。
+また、PowerShell を使ってこの情報を表示できます。  詳細については、「[Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-powershell.md)」を参照してください。
 
 ### <a name="understand-the-workloads-running-on-your-clusters"></a>クラスターで実行されているワークロードを理解する
 
@@ -69,7 +69,7 @@ HDInsight クラスターのログ管理戦略作成の最初のステップで�
 
 * 1 つまたは複数のクラスターからログを収集する方法を検討し、監査、監視、計画、アラートなどの目的と照合します。 カスタム ソリューションを使って定期的にログ ファイルにアクセスしてダウンロードし、それらを結合および分析してダッシュボードの表示を提供します。 また、セキュリティや障害検出の警告用に他の機能を追加することもできます。 PowerShell、HDInsight SDK、または Azure クラシック デプロイ モデルにアクセスするコードを使って、これらのユーティリティを作成できます。
 
-* ソリューションまたはサービスを監視することに有用なメリットがあるかどうかを検討します。 Microsoft System Center では、[HDInsight 管理パック](https://www.microsoft.com/download/details.aspx?id=42521)が提供されています。 また、Chukwa や Ganglia などのサードパーティ製ツールを使って、ログを収集および一元管理することもできます。 Centerity、Compuware APM、Sematext SPM、Zettaset Orchestrator など、多くの企業から Hadoop ベースのビッグ データ ソリューションを監視するサービスが提供されています。
+* ソリューションまたはサービスを監視することに有用なメリットがあるかどうかを検討します。 Microsoft System Center では、[HDInsight 管理パック](https://www.microsoft.com/download/details.aspx?id=42521)が提供されています。 また、Apache Chukwa や Ganglia などのサードパーティ製ツールを使って、ログを収集および一元管理することもできます。 多くの企業から Hadoop ベースのビッグ データ ソリューションを監視するサービスが提供されています (例: Centerity、Compuware APM、Sematext SPM、Zettaset Orchestrator)。
 
 ## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>ステップ 2: クラスター サービスのバージョンを管理し、スクリプト アクション ログを表示する
 
@@ -177,5 +177,5 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight の監視とログの方法](https://msdn.microsoft.com/library/dn749790.aspx)
-* [Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [さまざまな Hadoop コンポーネントのログ ファイルのサイズを制御する方法](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)
+* [Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [さまざまな Apache Hadoop コンポーネントのログ ファイルのサイズを制御する方法](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

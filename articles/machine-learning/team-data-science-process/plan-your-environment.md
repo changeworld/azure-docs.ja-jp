@@ -1,6 +1,6 @@
 ---
-title: シナリオを特定し分析プロセスを計画する - Azure | Microsoft Docs
-description: 一連の重要な確認事項を考慮することにより、高度な分析を計画します。
+title: シナリオを特定し分析プロセスを計画する - Team Data Science Process
+description: 一連の重要な確認事項を考慮することにより、高度な分析データ処理のためのシナリオとプランを特定します。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b61f6c12aaa94fc61063e8d3bd7e339f1548781c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 5faa7a58a252a5d3b8cc044f9e81a6d7cb2df7d5
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446423"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138043"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
 データセットに対する高度な分析プロセスを実行する環境をセットアップしている場合、どのようなリソースを含めるように計画するべきでしょうか? この記事では、シナリオに関連するタスクおよびリソースの特定に役立つ一連の確認事項について説明しています。 予測分析の大まかな手順は、「 [Team Data Science Process (TDSP) について](overview.md)」に記載されています。 それらの各手順で、特定のシナリオに関連するタスクのための固有のリソースが必要になります。 シナリオを特定するための主要な確認事項は、データ ロジスティック、特性、データセットの品質、分析で使用するツールや言語などに関連しています。
@@ -65,9 +65,9 @@ ms.locfileid: "52446423"
    * SQL Server テーブル
 3. **データのサイズはどの程度か?**
    
-   * 小さい: 2 GB 未満
-   * 中程度: 2 GB から 10 GB
-   * 大きい: 10 GB 超
+   * 小さい:2 GB 未満
+   * 中程度:2 GB から 10 GB
+   * 大きい:10 GB 超
 
 Azure Machine Learning 環境を例とします。
 

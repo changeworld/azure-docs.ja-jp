@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90bba26bf1fd941085568cacd4d005f10eaed1b8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 768dc4f555ade9483e11c3aec0f4622fe6b441c1
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005395"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384201"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
 Bash スクリプトを使用して、HDInsight クラスターをカスタマイズする方法について説明します。 スクリプト アクションは、クラスターの作成時または作成後に、HDInsight をカスタマイズする方法です。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="what-are-script-actions"></a>スクリプト アクションとは
@@ -43,7 +43,7 @@ Script Action は、Azure がクラスター ノードで実行して、構成�
 
 HDInsight クラスター向けのカスタム スクリプトを開発する際、留意すべきベスト プラクティスがあります。
 
-* [Hadoop のバージョンを対象にする](#bPS1)
+* [Apache Hadoop のバージョンを対象にする](#bPS1)
 * [ターゲット OS バージョン](#bps10)
 * [スクリプト リソースへの安定したリンクの提供](#bPS2)
 * [プリコンパイル済みリソースの使用](#bPS4)
@@ -54,10 +54,10 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 * [LF 行の終わりで、ファイルを ASCII として保存する](#bps8)
 * [再試行ロジックを使用して一時的なエラーから回復する](#bps9)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > スクリプト アクションは 60 分以内に完了する必要があります。そうでないと、プロセスは失敗します。 ノードのプロビジョニング中、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。 CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
 
-### <a name="bPS1"></a>Hadoop のバージョンを対象にする
+### <a name="bPS1"></a>Apache Hadoop のバージョンを対象にする
 
 HDInsight のバージョンが異なれば、異なるバージョンの Hadoop サービスとコンポーネントがインストールされます。 スクリプトに特定のバージョンのサービスまたはコンポーネントが期待される場合、必要なコンポーネントを含むバージョンの HDInsight スクリプトのみを使用する必要があります。 HDInsight に含まれているコンポーネントのバージョンの情報は、 [HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md) に関するドキュメントで確認できます。
 
@@ -110,7 +110,7 @@ Systemd と Upstart の違いを理解するには、「[Systemd for Upstart use
 
 ベスト プラクティスとして、すべてをダウンロードして、Azure Storage アカウントのサブスクリプションにアーカイブする方法があります。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 使用されるストレージ アカウントは、クラスターの既定のストレージ アカウントかその他のストレージ アカウントにおける読み取り専用のパブリック コンテナーのいずれかにする必要があります。
 
 たとえば、Microsoft から提供されるサンプルは、[https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) ストレージ アカウントに格納されています。 この場所は、HDInsight チームによって管理されている、読み取り専用のパブリック コンテナーです。
@@ -129,12 +129,12 @@ Systemd と Upstart の違いを理解するには、「[Systemd for Upstart use
 
 Linux ベースの HDInsight クラスターは、クラスター内でアクティブな 2 つのヘッド ノードを提供し、スクリプト アクションがその両方のノードで実行されます。 インストールするコンポーネントにヘッド ノードを 1 つのみ予定する場合は、両方のヘッド ノードにコンポーネントをインストールしないでください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight の一部として提供されるサービスは、必要に応じて 2 つのヘッド ノードの間でフェールオーバーするように設計されています。 この機能は、スクリプト アクションを使用してインストールするカスタム コンポーネントには拡張されません。 カスタム コンポーネントに高可用性が必要な場合は、独自のフェールオーバー メカニズムを実装する必要があります。
 
 ### <a name="bPS6"></a>Azure BLOB ストレージを使用するカスタム コンポーネントの構成
 
-クラスターにインストールするコンポーネントに、Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。 HDInsight は、既定のストレージとして Azure Storage または Data Lake Store のいずれかを使用します。 両方ともデータを保持する HDFS 互換ファイル システムを提供します (、クラスターが削除された場合でも)。 HDFS の代わりに WASB または ADL を使用するように、インストールするコンポーネントを構成しなければならない場合があります。
+クラスターにインストールするコンポーネントに、Apache Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。 HDInsight は、既定のストレージとして Azure Storage または Data Lake Store のいずれかを使用します。 両方ともデータを保持する HDFS 互換ファイル システムを提供します (、クラスターが削除された場合でも)。 HDFS の代わりに WASB または ADL を使用するように、インストールするコンポーネントを構成しなければならない場合があります。
 
 ほとんどの操作では、ファイル システムを指定する必要はありません。 たとえば、次の場合 giraph-examples.jar ファイルがローカル ファイル システムからクラスター ストレージにコピーされます。
 
@@ -148,8 +148,8 @@ hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 
 HDInsight のログは、STDOUT と STDERR に書き込まれた出力を記述します。 Ambari Web UI を使用して、この情報を表示できます。
 
-> [!NOTE]
-> Ambari は、クラスターが正常に作成された場合にのみ使用できます。 クラスターの作成時にスクリプト アクションを使用して作成に失敗した場合は、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) に関するトラブルシューティング セクションで、ログに記録された情報にアクセスする他の方法を確認してください。
+> [!NOTE]  
+> Apache Ambari は、クラスターが正常に作成された場合にのみ使用できます。 クラスターの作成時にスクリプト アクションを使用して作成に失敗した場合は、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) に関するトラブルシューティング セクションで、ログに記録された情報にアクセスする他の方法を確認してください。
 
 ほとんどのユーティリティとインストール パッケージは STDOUT および STDERR に情報を書き込みますが、ログ記録を追加したい場合もあります。 STDOUT にテキストを送信するには、`echo` を使用します。 例: 
 
@@ -274,20 +274,20 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * クラスターに関連付けられている __Azure Storage アカウント__。
 
-* クラスターに関連付けられている __追加のストレージ アカウント__。
+* クラスターに関連付けられている__追加のストレージ アカウント__。
 
 * __パブリックに読み取り可能な URI__。 たとえば、OneDrive、Dropbox、その他の ホスティング サービスに格納されたデータの URL。
 
-* HDInsight クラスターに関連付けられている __Azure Data Lake Store アカウント__。 HDInsight での Azure Data Lake Store の使用に関する詳細については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」を参照してください。
+* HDInsight クラスターに関連付けられている __Azure Data Lake Store アカウント__。 HDInsight での Azure Data Lake Store の使用の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
-    > [!NOTE]
+    > [!NOTE]  
     > HDInsight が Data Lake Store へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
 
 スクリプトによって使用されるリソースも公開されている必要があります。
 
 Azure Storage account または Azure Data Lake Store にファイルを格納すると、Azure ネットワーク内の両方で高速アクセスが可能になります。
 
-> [!NOTE]
+> [!NOTE]  
 > スクリプトの参照に使用する URI 形式は、使用されるサービスによって異なります。 HDInsight クラスターに関連付けられているストレージ アカウントの場合は、`wasb://` または `wasbs://` を使用します。 パブリックに読み取り可能な URI の場合は、`http://` または `https://` を使用します。 Data Lake Store の場合は、`adl://` を使用します。
 
 ### <a name="checking-the-operating-system-version"></a>オペレーティング システム バージョンの確認
@@ -332,8 +332,8 @@ fi
 Microsoft は、HDInsight クラスターにコンポーネントをインストールするサンプル スクリプトを提供しています。 その他のスクリプト アクションの例については、次のリンクを参照してください。
 
 * [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)
-* [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
-* [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
+* [HDInsight クラスターに Apache Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
+* [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
 * [HDInsight クラスターでの Mono のインストールまたはアップグレード](hdinsight-hadoop-install-mono.md)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -342,13 +342,13 @@ Microsoft は、HDInsight クラスターにコンポーネントをインスト
 
 **エラー**: `$'\r': command not found`. `syntax error: unexpected end of file`が続くこともあります。
 
-*原因*: このエラーはスクリプトの行が CRLF で終了する場合に発生します。 Unix システムでは、LF が行の終わりとしてのみ想定されます。
+*原因*:このエラーはスクリプトの行が CRLF で終了する場合に発生します。 Unix システムでは、LF が行の終わりとしてのみ想定されます。
 
 Windows の多くのテキスト エディターでは CRLF が一般的な行の終わりであるため、この問題は、Windows 環境でスクリプトが作成されたときに特に多く発生します。
 
-*解決*: これがテキスト エディターのオプションである場合は、行の終わりとして Unix 形式または LE を選択します。 Unix システムで次のコマンドを使用して CRLF を LF に変更することもできます。
+*解決方法*:これがテキスト エディターのオプションである場合は、行の終わりとして Unix 形式または LE を選択します。 Unix システムで次のコマンドを使用して CRLF を LF に変更することもできます。
 
-> [!NOTE]
+> [!NOTE]  
 > CRLF 行の終わりが LF に変更されるという点で、次のコマンドはほぼ同等です。 システムで使用できるユーティリティに基づいて、いずれかを選択します。
 
 | コマンド | メモ |
@@ -360,9 +360,9 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 
 **エラー**: `line 1: #!/usr/bin/env: No such file or directory`.
 
-*原因*: このエラーはスクリプトがバイト オーダー マーク (BOM) を含む UTF-8 として保存された場合に発生します。
+*原因*:このエラーはスクリプトがバイト オーダー マーク (BOM) を含む UTF-8 として保存された場合に発生します。
 
-*解決*: ファイルを ASCII として、または BOM なしの UTF-8 として保存します。 Linux または Unix システムで次のコマンドを使用して、BOM なしのファイルを作成することもできます。
+*解決方法*:ファイルを ASCII として、または BOM なしの UTF-8 として保存します。 Linux または Unix システムで次のコマンドを使用して、BOM なしのファイルを作成することもできます。
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
@@ -370,6 +370,6 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 
 ## <a name="seeAlso"></a>次のステップ
 
-* [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
+*  [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
 * [HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
 * [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。

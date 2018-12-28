@@ -10,14 +10,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 50e9162da5fda98d73ccfeea0776dc89ddd25dac
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0adc8ad651989d198fecabf00d38fbdeb7cf3cd1
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256920"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407096"
 ---
-# <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>HDInsight での Hadoop ジョブ用データのアップロード
+# <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
 Azure HDInsight には、Azure Storage と Azure Data lake Storage (Gen1 および Gen2) を経由した、フル機能を備えた Hadoop 分散ファイル システム (HDFS) が用意されています。 Azure Storage と Data lake Storage Gen1 および Gen2 は、顧客にシームレスなエクスペリエンスを提供する HDFS 拡張機能として設計されています。 Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure Storage、Data Lake Storage Gen1 および Gen2 は、そのデータに対する格納と計算のために最適化された個別のファイル システムです。 Azure Storage を使用するメリットについては、[HDInsight での Azure Storage の使用][hdinsight-storage]、[HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)、[HDInsight での Data Lake Storage Gen2 の使用](../storage/data-lake-storage/use-hdi-cluster.md)のそれぞれに関するページを参照してください。
 
@@ -37,14 +37,14 @@ Azure HDInsight には、Azure Storage と Azure Data lake Storage (Gen1 およ�
 ### <a name="command-line-utilities"></a>コマンド ライン ユーティリティ
 Microsoft では、Azure Storage を操作する次のユーティリティを提供しています。
 
-| ツール | Linux | OS X | Windows |
+| ツール |  Linux | OS X |  Windows |
 | --- |:---:|:---:|:---:|
 | [Azure クラシック CLI][azurecli] |✔ |✔ |✔ |
 | [Azure PowerShell][azure-powershell] | | |✔ |
 | [AzCopy][azure-azcopy] |✔ | |✔ |
 | [Hadoop コマンド](#commandline) |✔ |✔ |✔ |
 
-> [!NOTE]
+> [!NOTE]  
 > Azure クラシック CLI、Azure PowerShell、AzCopy はすべて Azure の外部から使用できますが、Hadoop コマンドは HDInsight クラスターでのみ使用できます。 また、このコマンドではデータをローカル ファイル システムから Azure Storage に読み込むことのみが可能です。
 >
 >
@@ -95,11 +95,11 @@ Azure クラシック CLI は、Azure サービスを管理できるクロスプ
         azure storage blob download -a <storage-account-name> -k <primary-key> <container-name> <blob-name> <destination-file>
         ```
     
-> [!NOTE]
+> [!NOTE]  
 > 常に同じストレージ アカウントで処理する場合は、各コマンドにアカウントとキーを指定する代わりに、次の環境変数を設定することができます。
 >
-> * **AZURE\_STORAGE\_ACCOUNT**: ストレージ アカウント名
-> * **AZURE\_STORAGE\_ACCESS\_KEY**: ストレージ アカウント キー
+> * **AZURE\_STORAGE\_ACCOUNT**:ストレージ アカウント名
+> * **AZURE\_STORAGE\_ACCESS\_KEY**:ストレージ アカウント キー。
 >
 >
 
@@ -152,8 +152,8 @@ Hadoop コマンド ラインは、クラスターのヘッド ノードに既�
 
 Hadoop コマンドを使用するためには、まず、次の方法のいずれかを使用してヘッドノードに接続する必要があります。
 
-* **Windows ベースの HDInsight**: [リモート デスクトップを使用して接続する](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **Linux ベースの HDInsight**: [SSH または PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md) を使って接続する
+* **Windows ベースの HDInsight**:[リモート デスクトップを使用して接続する](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
+* **Linux ベースの HDInsight**:[SSH または PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md) を使って接続する。
 
 接続したら、次の構文を使用してファイルをストレージにアップロードすることができます。
 
@@ -173,15 +173,15 @@ or
 
 ファイルに使用するその他の Hadoop コマンドの一覧は、[http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html) をご覧ください。
 
-> [!WARNING]
-> HBase クラスターでは、データ書き込み時に使われる既定のブロック サイズは 256 KB です。 HBase API または REST API を使うときは問題なく動きますが、`hadoop` または `hdfs dfs` コマンドを使って 12 GB より大きいデータを書き込むとエラーになります。 詳細については、この記事の「[BLOB への書き込みに関するストレージ例外](#storageexception)」セクションをご覧ください。
+> [!WARNING]  
+> Apache HBase クラスターでは、データ書き込み時に使われる既定のブロック サイズは 256 KB です。 HBase API または REST API を使うときは問題なく動きますが、`hadoop` または `hdfs dfs` コマンドを使って 12 GB より大きいデータを書き込むとエラーになります。 詳細については、この記事の「[BLOB への書き込みに関するストレージ例外](#storageexception)」セクションをご覧ください。
 >
 >
 
 ### <a name="graphical-clients"></a>グラフィカル クライアント
 Azure Storage を操作するためのグラフィカル インターフェイスを提供するアプリケーションもいくつかあります。 これらのアプリケーションの一部を次の一覧表に示します。
 
-| クライアント | Linux | OS X | Windows |
+| クライアント |  Linux | OS X |  Windows |
 | --- |:---:|:---:|:---:|
 | [Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
 | [Azure Storage Explorer](http://storageexplorer.com/) |✔ |✔ |✔ |
@@ -196,7 +196,7 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 #### <a id="storageexplorer"></a>Azure Storage Explorer
 *Azure Storage エクスプローラー* は、BLOB 内のデータを調べたり、変更したりするときに役立つツールです。 無料のオープン ソース ツールであり、[http://storageexplorer.com/](http://storageexplorer.com/) からダウンロードできます。 このリンクからソース コードも入手できます。
 
-Azure Storage エクスプローラーを使用するには、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。 この情報を取得する方法については、「[ストレージ アカウントの作成、管理、削除][azure-create-storage-account]」の「方法:ストレージ アクセス キーを表示、コピー、再生成する」セクションをご覧ください。
+Azure Storage エクスプローラーを使用するには、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。 この情報を取得する方法については、「[ストレージ アカウントの作成、管理、削除][azure-create-storage-account]」の「方法: ストレージ アクセス キーを表示、コピー、再生成する」セクションをご覧ください。
 
 1. Azure Storage エクスプローラーを実行します。 ストレージ エクスプローラーを初めて実行した場合は、**ストレージ アカウント名**と**ストレージ アカウント キー**の入力を求められます。 ストレージ エクスプローラーを以前に実行したことがある場合は、**[追加]** ボタンをクリックして、新しいストレージ アカウント名とストレージ アカウント キーを追加します。
 
@@ -243,7 +243,7 @@ Azure SDK のインストールの詳細については、 [Azure のダウン�
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 #### <a id="storageexception"></a>BLOB への書き込みに関するストレージ例外
-**現象**: `hadoop` または `hdfs dfs` コマンドを使って HBase クラスターで 12 GB 以上のファイルを書き込むと、次のエラーが発生する可能性があります。
+**現象**:`hadoop` または `hdfs dfs` コマンドを使って HBase クラスターで 12 GB 以上のファイルを書き込むと、次のエラーが発生する可能性があります。
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
     copyFromLocal: java.io.IOException
@@ -265,15 +265,15 @@ Azure SDK のインストールの詳細については、 [Azure のダウン�
             at com.microsoft.azure.storage.blob.BlobOutputStream$1.call(BlobOutputStream.java:354)
             ... 7 more
 
-**原因**: HDInsight クラスター上の HBase では、Azure Storage に書き込むときに既定のブロック サイズは 256 KB です。 HBase API または REST API では問題ありませんが、`hadoop` または `hdfs dfs` コマンドライン ユーティリティを使うとエラーになります。
+**原因**:HDInsight クラスター上の HBase では、Azure Storage に書き込むときに既定のブロック サイズは 256 KB です。 HBase API または REST API では問題ありませんが、`hadoop` または `hdfs dfs` コマンドライン ユーティリティを使うとエラーになります。
 
-**解決策**: `fs.azure.write.request.size` を使ってさらに大きいブロック サイズを指定します。 これは、`-D` パラメーターを使うことで、利用状況に応じて指定できます。 `hadoop` コマンドでこのパラメーターを使う例を次に示します。
+**解決方法**:`fs.azure.write.request.size` を使ってさらに大きいブロック サイズを指定します。 これは、`-D` パラメーターを使うことで、利用状況に応じて指定できます。 `hadoop` コマンドでこのパラメーターを使う例を次に示します。
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
 ```
 
-Ambari を使うことで、`fs.azure.write.request.size` の値をグローバルに増やすこともできます。 Ambari Web UI で値を変更するには、次の手順を使えます。
+Apache Ambari を使うことで、`fs.azure.write.request.size` の値をグローバルに増やすこともできます。 Ambari Web UI で値を変更するには、次の手順を使えます。
 
 1. ブラウザーで、クラスターの Ambari Web UI に移動します。 これは https://CLUSTERNAME.azurehdinsight.net です。**CLUSTERNAME** はクラスターの名前です。
 
@@ -284,18 +284,18 @@ Ambari を使うことで、`fs.azure.write.request.size` の値をグローバ�
 
 ![Ambari Web UI で値を変更する画像](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
 
-Ambari の使用について詳しくは、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
+Ambari の使用について詳しくは、「[Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 ここでは、HDInsight にデータを取り込む方法を説明しました。次の記事でデータの分析方法を学習してください。
 
 * [Azure HDInsight の概要][hdinsight-get-started]
-* [プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]
-* [HDInsight での Hive の使用][hdinsight-use-hive]
-* [HDInsight での Pig の使用][hdinsight-use-pig]
+* [プログラムによる Apache Hadoop ジョブの送信][hdinsight-submit-jobs]
+* [HDInsight での Apache Hive の使用][hdinsight-use-hive]
+* [HDInsight での Apache Pig の使用][hdinsight-use-pig]
 
 [azure-management-portal]: https://porta.azure.com
-[azure-powershell]: http://msdn.microsoft.com/library/windowsazure/jj152841.aspx
+[azure-powershell]: https://msdn.microsoft.com/library/windowsazure/jj152841.aspx
 
 [azure-storage-client-library]: /develop/net/how-to-guides/blob-storage/
 [azure-create-storage-account]:../storage/common/storage-create-storage-account.md

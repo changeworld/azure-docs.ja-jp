@@ -5,18 +5,18 @@ services: azure maps
 author: jinzh-azureiot
 ms.service: azure-maps
 ms.topic: include
-ms.date: 05/07/2018
+ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
-ms.openlocfilehash: fc96c66ce0cdda133d8776008874c5518cb80be6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1124e265b533b5f44c3b430746c48654883e524b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755781"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52857118"
 ---
-Azure Maps サービスの使用制約は次のようになります。 コストの詳細については、「[Azure Maps の価格](https://azure.microsoft.com/pricing/details/azure-maps/)」を参照してください。 サブスクリプションの最大要求率を増やす方法については[こちらに](https://azure.microsoft.com/overview/sales-number/)お問い合わせください。
+以下に示したのは、Azure Maps サービス **S0 価格レベル**の使用制限です。 使用制限は、価格レベルによって異なります。 Azure Maps 価格レベルの詳細については、[Azure Maps の価格の詳細](https://azure.microsoft.com/pricing/details/azure-maps/)に関するページを参照してください。
 
-| Resource                              | 制限 |
-|---------------------------------------|:-----:|
+| リソース                              | S0 価格レベルの上限 |
+|---------------------------------------|:---------------------:|
 | サブスクリプションあたりの最大要求率 |   1 秒あたり 50 要求  |

@@ -2,30 +2,29 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: backup
-author: markgalioto
+author: rayne-wiselman
 ms.service: backup
 ms.topic: include
-ms.date: 9/10/2018
-ms.author: trinadhk;sogup
+ms.date: 12/07/2018
+ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 64101ea5a3bbaac4a6b2e349a04d06ea84a87081
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 63922eb623576379058c9a8a367d6e52249115f2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381087"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53109095"
 ---
 次の制限は、Azure Backup に適用されます。
 
-| 制限の種類 | 既定の制限 |
+| **制限** | **既定値** |
 | --- | --- |
-| 各資格情報コンテナーに登録できるサーバーやマシンの数 |Windows Server/Client/SCDPM で 50  <br/> IaaS VM で 1,000 |
-| Azure 資格情報コンテナー ストレージに格納されるデータのデータ ソースのサイズ |最大 54400 GB<sup>1</sup> |
-| 各 Azure サブスクリプションで作成できるバックアップ資格情報コンテナー数 |500 の Recovery Services コンテナー (リージョンあたり) |
-| 1 日にバックアップをスケジュールできる回数 |Windows Server/Client で 1 日 3 回 <br/> SCDPM で 1 日 2 回 <br/> IaaS VM で 1 日 1 回 |
-| バックアップ用に Azure の仮想マシンに接続できるデータ ディスクの数 |16 |
-| バックアップ用に Azure の仮想マシンに接続される個々のデータ ディスクのサイズ| 4095 GB|
+| コンテナーに登録できるサーバー/マシン | Windows Server/Windows クライアント/System Center DPM: 50 <br/><br/> IaaS VM: 1,000  |
+| コンテナー ストレージ内のデータ ソースのサイズ |最大 54,400 GB。 この制限は、IaaS VM のバックアップには適用されません |
+| Azure サブスクリプションのバックアップ コンテナー |500 コンテナー (リージョンあたり) |
+| 毎日のバックアップのスケジュール |Windows Server/クライアント: 3 回 (1 日あたり)<br/> System Center DPM: 2 回 (1 日あたり) <br/> IaaS VM: 1 回 (1 日あたり)  |
+| Azure VM にアタッチするバックアップ用データ ディスク | 32 |
+| Azure VM にアタッチする個々のバックアップ用データ ディスク| 4095 GB|
 
-* <sup>1</sup> 54400 GB の制限は、IaaS VM のバックアップには適用されません。
- 
+
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 6c9e980e4f448f705743b2e6dce268c671ffe9b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f85d01b20466fd72b802b4daaf001a7928717c4
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950717"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410280"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
 
@@ -22,15 +22,15 @@ HDInsight クラスターの実行が遅い場合、または HDInsight クラ�
 
 クラスターの速度低下または失敗を診断するには、関連付けられている Azure サービス、クラスターの構成、ジョブの実行情報など、環境のあらゆる側面に関する情報を収集します。 別のクラスターでエラー状態を再現してみると診断に役立ちます。
 
-* ステップ 1: 問題に関するデータを収集する
-* ステップ 2: HDInsight クラスターの環境を検証する 
-* ステップ 3: クラスターの正常性を表示する
-* ステップ 4: 環境のスタックとバージョンを確認する
-* ステップ 5: クラスターのログ ファイルを調べる
-* ステップ 6: 構成設定を確認する
-* ステップ 7: 別のクラスターで障害を再現する 
+* ステップ 1:問題に関するデータを収集する
+* ステップ 2:HDInsight クラスターの環境を検証する 
+* ステップ 3:クラスターの正常性を表示する
+* ステップ 4:環境のスタックとバージョンを確認する
+* ステップ 5:クラスターのログ ファイルを調べる
+* ステップ 6:構成設定を確認する
+* ステップ 7:別のクラスターで障害を再現する 
 
-## <a name="step-1-gather-data-about-the-issue"></a>ステップ 1: 問題に関するデータを収集する
+## <a name="step-1-gather-data-about-the-issue"></a>ステップ 1:問題に関するデータを収集する
 
 HDInsight では、クラスターに関する問題の識別とトラブルシューティングに使うことができる多くのツールが提供されています。 以下の手順では、これらのツールについて説明し、問題の特定に関する推奨事項を示します。
 
@@ -65,9 +65,9 @@ Azure クラシック CLI を使うこともできます。
 ```
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-もう 1 つのオプションは、PowerShell を使うことです。 詳しくは、「[Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-powershell.md)」をご覧ください。
+もう 1 つのオプションは、PowerShell を使うことです。 詳細については、[Azure PowerShell を使用した HDInsight での Apache Hadoop クラスターの管理](hdinsight-administer-use-powershell.md)に関するページを参照してください。
 
-## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>ステップ 2: HDInsight クラスターの環境を検証する
+## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>ステップ 2:HDInsight クラスターの環境を検証する
 
 各 HDInsight クラスターは、さまざまな Azure サービスと、Apache HBase や Apache Spark などのオープン ソース ソフトウェアに依存しています。 また、HDInsight クラスターは、Azure Virtual Network などの他の Azure サービスを呼び出すこともできます。  クラスターの障害は、お使いのクラスターで実行しているいずれかのサービスまたは外部サービスが原因で発生している可能性があります。  クラスター サービスの構成の変更により、クラスターで障害が発生することもあります。
 
@@ -103,11 +103,11 @@ HDInsight は複数の Azure サービスに依存しています。 Azure HDIns
 
 クラスターのパフォーマンスが低下している場合は、Ambari UI または Azure クラシック CLI を使ってサービスを再起動することを検討します。 クラスターで一時的なエラーが発生している場合、再起動は環境を安定させる最も簡単な方法であり、パフォーマンスが向上する可能性があります。
 
-## <a name="step-3-view-your-clusters-health"></a>ステップ 3: クラスターの正常性を表示する
+## <a name="step-3-view-your-clusters-health"></a>ステップ 3:クラスターの正常性を表示する
 
 HDInsight クラスターは、仮想マシンのインスタンスで稼働するさまざまな種類のノードで構成されます。 各ノードで、リソースの枯渇、ネットワーク接続の問題、およびクラスターを遅くする他の問題を監視できます。 すべてのクラスターには 2 つのヘッド ノードが含まれ、ほとんどのクラスターの種類にはワーカー ノードとエッジ ノードの組み合わせが含まれます。 
 
-クラスターの種類ごとに使用される各種ノードの詳細については、「[Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+各クラスターの種類で使用されるさまざまなノードの説明については、[Apache Hadoop、Apache Spark、Apache Kafka などの HDInsight クラスターのセットアップ](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
 以下のセクションでは、各ノードおよびクラスター全体の正常性を確認する方法について説明します。
 
@@ -117,7 +117,7 @@ HDInsight クラスターは、仮想マシンのインスタンスで稼働す�
 
 ### <a name="check-your-webhcat-service"></a>WebHCat サービスを確認する
 
-Hive、Pig、または Sqoop ジョブが失敗する一般的なシナリオの 1 つは、[WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (または*Templeton*) サービスでの障害です。 WebHCat は、Hive、Pig、Scoop、MapReduce などのリモート ジョブ実行用の REST インターフェイスです。 WebHCat は、ジョブ送信要求を YARN アプリケーションに変換し、YARN アプリケーションの状態から抽出された状態を返します。  次のセクションでは、WebHCat HTTP の一般的な状態コードについて説明します。
+Apache Hive、Apache Pig、または Apache Sqoop ジョブが失敗する一般的なシナリオの 1 つは、[WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (または *Templeton*) サービスでの障害です。 WebHCat は、Hive、Pig、Scoop、MapReduce などのリモート ジョブ実行用の REST インターフェイスです。 WebHCat は、ジョブ送信要求を Apache Hadoop YARN アプリケーションに変換し、YARN アプリケーションの状態から抽出された状態を返します。  次のセクションでは、WebHCat HTTP の一般的な状態コードについて説明します。
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502 状態コード)
 
@@ -143,7 +143,7 @@ HDInsight ゲートウェイは、2 分より長くかかっている応答を�
 * **webhcat-console.log** は、起動時のサーバーの stdout です
 * **webhcat-console-error.log** は、サーバー プロセスの stderr です
 
-> [!NOTE]
+> [!NOTE]  
 > 各 `webhcat.log` は毎日ロールオーバーされて、`webhcat.log.YYYY-MM-DD` という名前のファイルが生成されます。 調査している時間範囲の適切なファイルを選択してください。
 
 次のセクションでは、WebHCat のタイムアウトに対して考えられる原因について説明します。
@@ -184,9 +184,9 @@ YARN レベルでは、2 種類のタイムアウトがあります。
 
 2. YARN の処理には長い時間がかかる場合があり、タイムアウトの原因になる可能性があります。
 
-    * すべてのジョブの一覧取得: これは時間のかかる呼び出しです。 この呼び出しでは、YARN ResourceManager からアプリケーションが列挙され、完了した各アプリケーションについて、YARN JobHistoryServer から状態が取得されます。 ジョブの数が多いと、この呼び出しがタイムアウトになる場合があります。
+    * すべてのジョブの一覧取得:これは時間のかかる呼び出しです。 この呼び出しでは、YARN ResourceManager からアプリケーションが列挙され、完了した各アプリケーションについて、YARN JobHistoryServer から状態が取得されます。 ジョブの数が多いと、この呼び出しがタイムアウトになる場合があります。
 
-    * 7 日より古いジョブの一覧取得: HDInsight YARN JobHistoryServer は、完了したジョブの情報を 7 日間保持するように構成されています (`mapreduce.jobhistory.max-age-ms` 値)。 消去されたジョブを列挙しようとすると、タイムアウトします。
+    * 7 日より古いジョブの一覧取得:HDInsight YARN JobHistoryServer は、完了したジョブの情報を 7 日間保持するように構成されています (`mapreduce.jobhistory.max-age-ms` 値)。 消去されたジョブを列挙しようとすると、タイムアウトします。
 
 これらの問題を診断するには:
 
@@ -206,13 +206,13 @@ YARN レベルでは、2 種類のタイムアウトがあります。
 
     Templeton はジョブ コンソールの出力を `statusdir` に `stderr` として収集しており、トラブルシューティングに役立つことがよくあります。 `stderr` には、実際のクエリの YARN アプリケーション識別子が含まれます。
 
-## <a name="step-4-review-the-environment-stack-and-versions"></a>ステップ 4: 環境のスタックとバージョンを確認する
+## <a name="step-4-review-the-environment-stack-and-versions"></a>ステップ 4:環境のスタックとバージョンを確認する
 
 Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ページには、クラスター サービスの構成とサービスのバージョン履歴に関する情報が表示されます。  Hadoop サービス ライブラリのバージョンが正しくないと、クラスターの障害の原因になる可能性があります。  Ambari UI で **[Admin]\(管理\)** メニューを選び、**[Stacks and Versions]\(スタックとバージョン\)** を選びます。  ページの上部で **[Versions]\(バージョン\)** タブを選び、サービスのバージョン情報を確認します。
 
 ![スタックとバージョン](./media/hdinsight-troubleshoot-failed-cluster/stack-versions.png)
 
-## <a name="step-5-examine-the-log-files"></a>ステップ 5: ログ ファイルを調べる
+## <a name="step-5-examine-the-log-files"></a>ステップ 5:ログ ファイルを調べる
 
 HDInsight クラスターを構成する多くのサービスとコンポーネントから、多くの種類のログが生成されます。 [WebHCat ログファイル](#check-your-webhcat-service)については既に説明しました。 以下のセクションでは、クラスターに関する問題の絞り込みの調査で他に役立つ可能性がある他のいくつかのログ ファイルについて説明します。
 
@@ -244,15 +244,15 @@ HDInsight クラスターは、Azure テーブルおよび Azure Blob Storage �
 
 ### <a name="review-heap-dumps"></a>ヒープ ダンプを確認する
 
-ヒープ ダンプにはアプリケーションのメモリのスナップショット (その時点での変数の値など) が含まれており、実行時に発生する問題の診断に役立ちます。 詳しくは、「[Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)」をご覧ください。
+ヒープ ダンプにはアプリケーションのメモリのスナップショット (その時点での変数の値など) が含まれており、実行時に発生する問題の診断に役立ちます。 詳細については、「[Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)」を参照してください。
 
-## <a name="step-6-check-configuration-settings"></a>ステップ 6: 構成設定を確認する
+## <a name="step-6-check-configuration-settings"></a>ステップ 6:構成設定を確認する
 
 HDInsight クラスターは、Hadoop、Hive、HBase などの関連サービスに対する既定の設定であらかじめ構成されています。 クラスターの種類、ハードウェアの構成、ノードの数、実行しているジョブの種類、使っているデータ (および、そのデータの処理方法) によっては、構成の最適化が必要になる場合があります。
 
-多くのシナリオを対象にパフォーマンスの構成を最適化することについての詳細な手順については、[Ambari を使用したクラスター構成の最適化](hdinsight-changing-configs-via-ambari.md)に関するページを参照してください。 Spark を使用している場合は、[Spark ジョブの最適化によるパフォーマンス向上](spark/apache-spark-perf.md)に関するページを参照してください。 
+多くのシナリオを対象にパフォーマンスの構成を最適化することについての詳細な手順については、[Apache Ambari を使用したクラスター構成の最適化](hdinsight-changing-configs-via-ambari.md)に関するページを参照してください。 Spark を使用している場合は、[Apache Spark ジョブの最適化によるパフォーマンス向上](spark/apache-spark-perf.md)に関するページを参照してください。 
 
-## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>ステップ 7: 別のクラスターで障害を再現する
+## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>ステップ 7:別のクラスターで障害を再現する
 
 クラスター エラーの原因の診断に役立てるため、同じ構成で新しいクラスターを起動し、失敗したジョブのステップを 1 つずつ再送信します。 先のステップの結果を確認してから、次のステップを処理します。 この方法では、障害が発生した 1 つのステップを修正して再実行できます。 また、この方法には、そのジョブの入力データだけを読み込むという利点もあります。
 
@@ -265,8 +265,8 @@ HDInsight クラスターは、Hadoop、Hive、HBase などの関連サービス
 
 ## <a name="next-steps"></a>次の手順
 
-* [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
+* [Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 * [HDInsight ログの分析](hdinsight-debug-jobs.md)
-* [Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [HDInsight における Apache Spark クラスターの既知の問題](hdinsight-apache-spark-known-issues.md)

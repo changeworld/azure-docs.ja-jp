@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 562320b49f92d9ebb0c74c06e27fab63681955be
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 6e31062e3965c9ed5a0b24e822f0ec14234cec1c
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634075"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435074"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>HDInsight 上の Apache Hive で Java UDF を使用する
 
@@ -29,9 +29,9 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
 
     このドキュメントのほとんどの手順は、Windows ベースと Linux ベースの両方のクラスターで実行できます。 ただし、コンパイル済みの UDF をクラスターにアップロードして実行するための手順は、Linux ベースのクラスター固有の内容です。 Windows ベースのクラスターで使用できる情報へのリンクが提供されます。
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 以降 (または同等の OpenJDK など)
+* [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/) 8 以降 (または同等の OpenJDK など)
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 * テキスト エディターまたは Java IDE
 
@@ -213,7 +213,7 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
     ```
 
     > [!NOTE]
-    > この例では、Azure ストレージが、クラスターの既定のストレージであることを前提としています。 クラスターが代わりに Data Lake Store を使用する場合は、`wasb:///` の値を `adl:///` に変更します。
+    > この例では、Azure ストレージが、クラスターの既定のストレージであることを前提としています。 クラスターが代わりに Data Lake Storage を使用する場合は、`wasb:///` の値を `adl:///` に変更します。
 
 3. UDF を使用して、テーブルから取得した値を小文字の文字列に変換します。
 
@@ -240,6 +240,6 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
 
 ## <a name="next-steps"></a>次の手順
 
-Hive の他の使用方法について [HDInsight での Hive の使用](hdinsight-use-hive.md)を参照します。
+Hive の他の使用方法については、[HDInsight での Apache Hive の使用](hdinsight-use-hive.md)に関するページを参照してください。
 
-Hive のユーザー定義関数の詳細について、apache.org で Hive wiki の [Hive 演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) のセクションを参照します。
+Hive のユーザー定義関数の詳細については、apache.org の Hive wiki で、[Apache Hive の演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)に関するセクションを参照してください。

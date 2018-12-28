@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e8cf8de25a35909cb2a0fc94237bfa517c72e685
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634024"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410348"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>HDInsight 用 Python ストリーミング MapReduce プログラムの開発
 
@@ -47,8 +47,8 @@ ms.locfileid: "51634024"
 
 Hadoop では、ジョブで使用される map および reduce のロジックを含むファイルを指定できます。 map および reduce ロジックに固有の要件は次のとおりです。
 
-* **Input**: map および reduce コンポーネントは STDIN から入力データを読み取る必要があります。
-* **Output**: map および reduce コンポーネントは STDOUT に出力データを書き込む必要があります。
+* **入力**:map および reduce コンポーネントは STDIN から入力データを読み取る必要があります。
+* **出力**:map および reduce コンポーネントは STDOUT に出力データを書き込む必要があります。
 * **Data format**:使用および生成されるデータは、タブ文字で区切られたキーと値のペアである必要があります。
 
 Python では、STDIN からの読み取りに `sys` モジュールを、STDOUT への印刷に `print` を使用して、これらの要件を簡単に処理できます。 その他、キーと値の間にタブ (`\t`) 文字を使用してデータを簡単に書式設定できます。
@@ -144,7 +144,7 @@ Python では、STDIN からの読み取りに `sys` モジュールを、STDOUT
 
     このコマンドにより、ファイルがローカル システムからヘッド ノードにコピーされます。
 
-    > [!NOTE]
+    > [!NOTE]  
     > SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。 SSH キーを使用している場合は、 `-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。 たとえば、「 `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:` 」のように入力します。
 
 2. SSH を使用したクラスターへの接続:
@@ -170,17 +170,17 @@ Python では、STDIN からの読み取りに `sys` モジュールを、STDOUT
 
     このコマンドには次のようなものがあります。
 
-   * **hadoop-streaming.jar**: MapReduce 操作のストリーミングを実行するときに使用します。 Hadoop と指定した外部 MapReduce コードとの橋渡しを務めます。
+   * **hadoop-streaming.jar**:MapReduce 操作のストリーミングを実行するときに使用します。 Hadoop と指定した外部 MapReduce コードとの橋渡しを務めます。
 
-   * **-files**: MapReduce ジョブに指定したファイルを追加します。
+   * **-files**:MapReduce ジョブに指定したファイルを追加します。
 
-   * **-mapper**: マッパーとして使用するファイルを Hadoop に伝えます。
+   * **-mapper**:マッパーとして使用するファイルを Hadoop に伝えます。
 
-   * **-reducer**: レジューサとして使用するファイルを Hadoop に伝えます。
+   * **-reducer**:レジューサーとして使用するファイルを Hadoop に伝えます。
 
-   * **-input**: 文字数をカウントする入力ファイル
+   * **-input**:文字数をカウントする入力ファイル。
 
-   * **-output**: 出力の書き込み先のディレクトリ
+   * **-output**:出力の書き込み先のディレクトリ。
 
     MapReduce ジョブの実行に応じて、プロセスがパーセンテージで表示されます。
 
@@ -199,6 +199,6 @@ Python では、STDIN からの読み取りに `sys` モジュールを、STDOUT
 
 これで、HDInsight でストリーミング MapRedcue ジョブを使用する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
-* [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での Apache Hive の使用](hdinsight-use-hive.md)
+* [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)

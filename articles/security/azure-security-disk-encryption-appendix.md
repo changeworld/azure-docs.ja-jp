@@ -1,20 +1,22 @@
 ---
-title: Windows および Linux IaaS VM の Azure Disk Encryption | Microsoft Docs
+title: 付録 - IaaS VM のための Azure Disk Encryption | Microsoft Docs
 description: この記事は、Windows および Linux IaaS VM 用の Microsoft Azure Disk Encryption に関する付録です。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 11/12/2018
-ms.openlocfilehash: e5c7d51428c66bf9e6c245f28fb13b8d4a316d18
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.date: 12/12/2018
+ms.custom: seodec18
+ms.openlocfilehash: f10a3c02e98db5777b5231aec04951a7ed1ad9ad
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614676"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310675"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Azure Disk Encryption に関する付録 
+
 この記事は、[IaaS VM 用 Azure Disk Encryption](azure-security-disk-encryption-overview.md) の付録です。 コンテキストを理解するために、まず、IaaS VM 用の Azure Disk Encryption に関する記事をお読みください。 この記事では、事前に暗号化された VHD を準備する方法とその他のタスクについて説明します。
 
 ## <a name="connect-to-your-subscription"></a>サブスクリプションへの接続
@@ -57,7 +59,7 @@ ms.locfileid: "51614676"
 
 ### <a name="bkmk_ConnectCLI"></a> Azure CLI を使用してサブスクリプションに接続する
 
-1. [az login](/cli/azure/authenticate-azure-cli#interactive-log-in) を使用して、Azure にサインインします。 
+1. [az login](/cli/azure/authenticate-azure-cli#sign-in-interactively) を使用して、Azure にサインインします。 
      
      ```azurecli
      az login
@@ -130,6 +132,20 @@ Azure Disk Encryption の前提条件に既に精通している場合は、[Azu
  -  [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。  
 
+### <a name="encrypt-or-decrypt-vm-scale-sets"></a>VM スケール セットを暗号化または暗号化解除する
+
+- [実行中の Linux 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+
+- [実行中の Windows 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+
+ - [ジャンプボックスで Linux VM の VM スケール セットをデプロイし、Linux VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+
+ - [ジャンプボックスで Windows VM の VM スケール セットをデプロイし、Windows VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+
+- [実行中の Linux 仮想マシン スケール セットでディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+
+- [実行中の Windows 仮想マシン スケール セットでディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+
 ### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Azure AD アプリを使用して VM を暗号化また暗号化解除する (以前のリリース) 
  
 - [既存または実行中の IaaS Windows VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)
@@ -160,17 +176,7 @@ Azure Disk Encryption の前提条件に既に精通している場合は、[Azu
 
 - [Azure AD クライアント証明書の拇印を使用して、実行中の Windows VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-aad-client-cert)
     
-- [実行中の Linux 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
-- [実行中の Windows 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
-
- - [ジャンプボックスで Linux VM の VM スケール セットをデプロイし、Linux VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
-
- - [ジャンプボックスで Windows VM の VM スケール セットをデプロイし、Windows VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
-
-- [実行中の Linux 仮想マシン スケール セットでディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
-
-- [実行中の Windows 仮想マシン スケール セットでディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
 ## <a name="bkmk_preWin"></a> 事前に暗号化された Windows VHD を準備する
 以下のセクションに示すのは、事前に暗号化された Windows VHD を準備し、それを Azure IaaS 内の暗号化された VHD としてデプロイするために必要な情報です。 Azure Site Recovery や Azure 上に新しい Windows VM (VHD) を準備し、それらを起動する際には、これらの情報を使用してください。 VHD を準備してアップロードする方法の詳細については、「[汎用化した VHD をアップロードして Azure で新しい VM を作成する](../virtual-machines/windows/upload-generalized-managed.md)」を参照してください。
@@ -189,7 +195,7 @@ Windows Server 2008 R2 の場合は、次のコマンドを使用します。
 
     ServerManagerCmd -install BitLockers
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>`bdehdcfg` を使用して BitLocker の OS ボリュームを準備する
-OS のパーティションを圧縮して、BitLocker 用にコンピューターを準備するには、必要に応じて、[bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment#using-bitlocker-to-encrypt-volumescommand) を実行します。
+OS のパーティションを圧縮して、BitLocker 用にコンピューターを準備するには、必要に応じて、[bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) を実行します。
 
     bdehdcfg -target c: shrink -quiet 
 
@@ -295,23 +301,23 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
 1. ディスクをパーティション分割するときに **[Configure encrypted volumes]** を選択します。
 
- ![Ubuntu 16.04 のセットアップ](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+ ![Ubuntu 16.04 のセットアップ - 暗号化するボリュームの構成](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
 2. 独立したブート ドライブを作成します。このドライブは暗号化しません。 ルート ドライブを暗号化します。
 
- ![Ubuntu 16.04 のセットアップ](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+ ![Ubuntu 16.04 のセットアップ - 暗号化するデバイスの選択](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
 
 3. パスフレーズを指定します。 これは、キー コンテナーにアップロードしたパスフレーズです。
 
- ![Ubuntu 16.04 のセットアップ](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+ ![Ubuntu 16.04 のセットアップ - パスフレーズの指定](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
 
 4. パーティション分割を終了します。
 
- ![Ubuntu 16.04 のセットアップ](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+ ![Ubuntu 16.04 のセットアップ - パーティション分割の終了](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
 
 5. VM を起動し、パスフレーズの入力を求められたら、手順 3 で指定したパスフレーズを入力します。
 
- ![Ubuntu 16.04 のセットアップ](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+ ![Ubuntu 16.04 のセットアップ - ブート時のパスフレーズ指定](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
 6. [こちらの手順](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
@@ -377,7 +383,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
 7. これで、VM をプロビジョニング解除できるようになります。
 
- ![Ubuntu 16.04 のセットアップ](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+ ![Ubuntu 16.04 のセットアップ - update-initramfs](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
 8. 次の手順に進み、Azure にご利用の VHD をアップロードします。
 
@@ -385,11 +391,11 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 ディストリビューションのインストール時に暗号化を構成するには、次の手順を行います。
 1. ディスクをパーティション分割するときに、**[ボリューム グループの暗号化]** を選択し、パスワードを入力します。 これは、キー コンテナーにアップロードするパスワードです。
 
- ![openSUSE 13.2 のセットアップ](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
+ ![openSUSE 13.2 のセットアップ - ボリューム グループの暗号化](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
 2. パスワードを使用して VM を起動します。
 
- ![openSUSE 13.2 のセットアップ](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
+ ![openSUSE 13.2 のセットアップ - ブート時のパスフレーズ指定](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
 3. 「[Azure 用の SLES または openSUSE 仮想マシンの準備](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
@@ -453,19 +459,19 @@ Azure で使用する暗号化を構成するには、次の手順を行いま�
 ディストリビューションのインストール時に暗号化を構成するには、次の手順を行います。
 1. ディスクをパーティション分割するときに **[Encrypt my data]** を選択します。
 
- ![CentOS 7 のセットアップ](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
+ ![CentOS 7 のセットアップ - インストール先](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
 
 2. ルート パーティションで **[Encrypt]** が選択されていることを確認します。
 
- ![CentOS 7 のセットアップ](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
+ ![CentOS 7 のセットアップ - ルート パーティションの暗号化の選択](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
 
 3. パスフレーズを指定します。 これは、キー コンテナーにアップロードするパスフレーズです。
 
- ![CentOS 7 のセットアップ](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
+ ![CentOS 7 のセットアップ - パスフレーズの指定](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
 
 4. VM を起動し、パスフレーズの入力を求められたら、手順 3 で指定したパスフレーズを入力します。
 
- ![CentOS 7 のセットアップ](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
+ ![CentOS 7 のセットアップ - 起動時のパスフレーズ入力](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
 5. 「[Azure 用の CentOS ベースの仮想マシンの準備](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)」の「CentOS 7.0+」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
@@ -526,7 +532,7 @@ to
     ```    
 5. “/usr/sbin/dracut -f -v” を実行して initrd を更新します。
 
-![CentOS 7 のセットアップ](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
+![CentOS 7 のセットアップ - /usr/sbin/dracut -f -v の実行](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
 
 ## <a name="bkmk_UploadVHD"></a> 暗号化された VHD を Azure ストレージ アカウントにアップロードする
 BitLocker 暗号化または DM-Crypt 暗号化を有効にしたら、ローカルで暗号化された VHD をストレージ アカウントにアップロードする必要があります。
@@ -577,7 +583,7 @@ $SecretUrl=$secret.Id
 $SecretUrl
 ```
 
-#### <a name="linux"></a>Linux
+#### <a name="linux"></a> Linux
 ```powershell
 
  # This is the passphrase that was provided for encryption during the distribution installation

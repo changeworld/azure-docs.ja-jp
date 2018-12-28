@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: fd00fb8da3cf36518f9e28e827e59fd7ff45d687
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8abbbba0cdac783dd315cd1f0965e03c4e5a1a05
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622212"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434547"
 ---
 # <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションの招待の委任
 
@@ -32,9 +32,12 @@ Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMembe
 
 ## <a name="control-who-can-invite"></a>招待できるユーザーの制御
 
-[Azure Active Directory] > [ユーザー設定] > [外部コラボレーションの設定を管理します] の順に移動します。
+Azure Active Directory で **[ユーザー設定]** を選択します。 **[外部ユーザー]** で、**[外部コラボレーションの設定を管理します]** を選択します。
 
-![外部ユーザー](https://user-images.githubusercontent.com/13383753/45905128-2c47f680-bda4-11e8-955d-6219c67935e0.PNG)
+> [!NOTE]
+> **[外部コラボレーションの設定]** は、**[組織の関係]** ページから利用することもできます。 Azure Active Directory の **[管理]** で、**[組織の関係]** > **[設定]** の順に移動します。
+
+![外部コラボレーションの設定](./media/delegate-invitations/control-who-to-invite.png)
 
 Azure AD B2B コラボレーションでは、テナント管理者が次の招待ポリシーを設定できます。
 

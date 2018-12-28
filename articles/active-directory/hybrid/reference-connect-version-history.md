@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: バージョンのリリース履歴 | Microsoft Docs'
+title: Azure AD Connect:バージョンのリリース履歴 | Microsoft Docs
 description: この記事では、Azure AD Connect と Azure AD Sync のすべてのリリースの一覧を示します
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2018
+ms.date: 12/11/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1f74538deab38db536bfcdc6d0f703d455039d51
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5e13f21971c7babaeaebc9714fe2a040229eebb2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235906"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278680"
 ---
-# <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
+# <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
 
 
@@ -36,6 +36,40 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](reference-connect-accounts-permissions.md#upgrade)に関するページを参照してください。
 
 ダウンロード | [Azure AD Connect をダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)します。
+
+## <a name="12690"></a>1.2.69.0
+
+### <a name="release-status"></a>リリースの状態
+2018 年 12 月 11 日:ダウンロード対象としてリリース済み
+
+### <a name="fixed-issues"></a>修正された問題
+この修正プログラムのビルドでは、デバイス ライトバックを有効にするときに、RegisteredDevices コンテナーに対して、指定されたフォレスト内でターゲット ドメインを選択できます。  新しいデバイス オプション機能が含まれる、以前のバージョン (1.1.819.0 から 1.2.68.0) で、RegisteredDevices コンテナーの場所はフォレストのルートに制限されており、子ドメインが許可されていませんでした。  この制限は、新しいデプロイのみで表面化し、配置済みのアップグレードは影響を受けませんでした。  
+
+更新されたデバイスのオプション機能を含む任意のビルドを新しいサーバーにデプロイして、デバイス ライトバックを有効にする場合、フォレスト ルート内に配置しないためには、コンテナーの場所を手動で指定する必要があります。  これを行うには、[ライトバック フォレスト] ページで、デバイス ライトバックを無効にして、コンテナーの場所を指定できるように再度有効にする必要があります。
+
+
+
+## <a name="12680"></a>1.2.68.0
+
+### <a name="release-status"></a>リリースの状態 
+
+2018 年 11 月 30 日:ダウンロード対象としてリリース済み
+
+### <a name="fixed-issues"></a>修正された問題
+
+この修正プログラムのビルドでは、同期サーバー上の MSOnline PowerShell ギャラリー モジュールが独立して存在するため、認証エラーが発生する競合が修正されます。
+
+
+
+## <a name="12670"></a>1.2.67.0
+
+### <a name="release-status"></a>リリースの状態 
+
+2018 年 11 月 19 日:ダウンロード対象としてリリース済み
+
+### <a name="fixed-issues"></a>修正された問題
+
+この修正プログラムのビルドでは、Windows Server 2008/R2 で ADDS ドメイン コントローラーを使用するとパスワード ライトバックが失敗する前回のビルドでの回帰が修正されます。
 
 ## <a name="12650"></a>1.2.65.0 
 
@@ -81,7 +115,7 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 
 ### <a name="release-status"></a>リリースの状態
 
-8/21/2018: ダウンロードと自動アップグレード向けにリリース済み。 
+2018 年 8 月 21 日:ダウンロードと自動アップグレード向けにリリース済み。 
 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 
@@ -120,7 +154,7 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 
 ### <a name="release-status"></a>リリースの状態
 
-5/14/2018: 自動アップグレードとダウンロード向けにリリース済み。
+2018 年 5 月 14 日:自動アップグレードとダウンロード向けにリリース済み。
 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 
@@ -131,8 +165,8 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 - デバイスの書き戻しの構成は、Azure AD Connect ウィザード内でのみ管理されるようになりました。
 - SQL 接続の問題とその他のさまざまなトラブルシューティング ユーティリティをトラブルシューティングするために使用できる ADSyncTools.psm1 という名前の新しい PowerShell モジュールが追加されました。 ADSyncTools モジュールの詳細については、[こちら](tshoot-connect-tshoot-sql-connectivity.md)を参照してください。 
 - 新しいタスクである "デバイス オプションの構成" が追加されました。 このタスクを使用して、次の 2 つの操作を構成できます。 
-    -   **ハイブリッド Azure AD の参加**: 環境にオンプレミスの AD フットプリントがあるときに、Azure Active Directory が提供する機能も活用したい場合は、ハイブリッド Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory と Azure Active Directory の両方に参加しているデバイスです。
-    -   **デバイス ライトバック**: デバイス ライトバックを使うと、AD FS (2012 R2 以降) で保護されているデバイスへの、デバイスに基づく条件付きアクセスを有効にできます。
+    -   **Hybrid Azure AD 参加**:環境にオンプレミスの AD フットプリントがあるときに、Azure Active Directory が提供する機能も活用したい場合は、ハイブリッド Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory と Azure Active Directory の両方に参加しているデバイスです。
+    -   **デバイス ライトバック**:デバイス ライトバックを使うと、AD FS (2012 R2 以降) で保護されているデバイスへの、デバイスに基づく条件付きアクセスを有効にできます。
 
    >[!NOTE] 
    > - 同期カスタマイズ オプションからデバイスの書き戻しを有効にするオプションはグレー表示されます。 
@@ -145,37 +179,37 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 - このリリースでは、SQL Server 2012 SP4 への SQL Server Express のインストールを更新します。とりわけ、複数のセキュリティの脆弱性の修正プログラムを提供します。  SQL Server 2012 SP4 の詳細については、[こちら](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information)を参照してください。
 - 同期ルールの処理: 親同期規則が適用可能でなくなった場合、結合条件のない送信結合同期規則は適用されない
 - 複数のアクセシビリティの修正が Synchronization Service Manager の UI と Sync Rules Editor に適用されている
-- Azure AD Connect ウィザード: Azure AD Connect がワークグループに含まれている場合の AD Connect アカウント作成エラー
-- Azure AD Connect ウィザード: AD ドメインと Azure AD の確認済みドメインが食い違う場合に常にAzure AD サインイン ページに検証チェックボックスが表示される
+- Azure AD Connect ウィザード:Azure AD Connect がワークグループに含まれている場合の AD Connect アカウント作成エラー
+- Azure AD Connect ウィザード:AD ドメインと Azure AD の確認済みドメインが食い違う場合に常にAzure AD サインイン ページに検証チェックボックスが表示される
 - 自動アップグレードの試行後、特定の状況で自動アップグレードの状態を正しく設定するように自動アップグレード PowerShell を修正
-- Azure AD Connect ウィザード: 前回見逃していた情報をキャプチャするようにテレメトリを更新
-- Azure AD Connect ウィザード: AD FS からパススルー認証に切り替えるために**ユーザー サインインの変更**タスクを使用する際に、次の変更が加えられています。
+- Azure AD Connect ウィザード:前回見逃していた情報を取り込むようにテレメトリを更新
+- Azure AD Connect ウィザード:AD FS からパススルー認証に切り替えるために**ユーザー サインインの変更**タスクを使用するときに、次の変更が加えられています。
     - ドメインをフェデレーションから管理対象に変換する前に、Azure AD Connect サーバーにパススルー認証エージェントがインストールされ、パススルー認証機能が有効になります。
     - ユーザーがフェデレーションから管理対象に変換されることはなくなります。 ドメインのみが変換されます。
-- Azure AD Connect ウィザード: ユーザーの UPN に特殊文字がある場合、AD FS マルチドメイン Regex が正確ではない。特殊文字をサポートするように Regex を更新
-- Azure AD Connect ウィザード: 変更がない場合の偽の "ソース アンカー属性を構成します" メッセージを削除 
-- Azure AD Connect ウィザード: AD FS でデュアル フェデレーション シナリオをサポート
-- Azure AD Connect ウィザード: マネージド ドメインのフェデレーションへの変換時に追加されたドメインでは AD FS 要求は更新されない
-- Azure AD Connect ウィザード: インストール済みのパッケージの検出中に古い Dirsync/Azure AD Sync/Azure AD Connect 関連製品が検出される。 今後、古い製品がアンインストールされるように修正
-- Azure AD Connect ウィザード: パススルー認証エージェントのインストールが失敗した場合のエラー メッセージのマッピングを修正
-- Azure AD Connect ウィザード: ドメイン OU フィルタリング ページから "構成" コンテナーを削除
+- Azure AD Connect ウィザード:ユーザーの UPN に特殊文字がある場合、AD FS マルチドメイン Regex が正確ではない。特殊文字をサポートするように Regex を更新
+- Azure AD Connect ウィザード:変更がない場合の偽の "ソース アンカー属性を構成します" メッセージを削除 
+- Azure AD Connect ウィザード:AD FS でデュアル フェデレーション シナリオをサポート
+- Azure AD Connect ウィザード:管理対象ドメインのフェデレーションへの変換時に追加されたドメインでは AD FS 要求は更新されない
+- Azure AD Connect ウィザード:インストール済みのパッケージの検出中に古い Dirsync/Azure AD Sync/Azure AD Connect 関連製品が検出される。 今後、古い製品がアンインストールされるように修正
+- Azure AD Connect ウィザード:パススルー認証エージェントのインストールが失敗した場合のエラー メッセージのマッピングを修正
+- Azure AD Connect ウィザード:[ドメインと OU のフィルタリング] ページから "構成" コンテナーを削除
 - 同期エンジンのインストール: 失敗することがある不要なレガシ ロジックを同期エンジンのインストール msi から削除
-- Azure AD Connect ウィザード: パスワード ハッシュ同期の [オプション機能] ページのポップアップ ヘルプ テキストを修正
-- 同期エンジン ランタイム: CS オブジェクトに削除がインポートされているときに同期規則がそのオブジェクトの再プロビジョニングを試行するシナリオを修正
-- 同期エンジンの実行時: インポート エラーのイベント ログにオンライン接続トラブルシューティング ガイドへのリンクを追加
-- 同期エンジン ランタイム: コネクタの列挙時に同期スケジューラが使用するメモリの量を削減
-- Azure AD Connect ウィザード: AD 読み取り特権がないカスタム同期サービス アカウントの解決問題を修正
-- Azure AD Connect ウィザード: ドメインと OU の選択内容のログ記録を改善
-- Azure AD Connect ウィザード: MFA シナリオ用に作成されたフェデレーションの信頼に AD FS の既定の要求を追加
-- Azure AD Connect ウィザード: AD FS デプロイ WAP: 新しい証明書を使用するサーバーの追加は失敗する
-- Azure AD Connect ウィザード: OnPremCredentials がドメインに対して初期化されていない場合は DSSO 例外 
+- Azure AD Connect ウィザード:パスワード ハッシュ同期の [オプション機能] ページのポップアップ ヘルプ テキストを修正
+- 同期エンジン ランタイム:CS オブジェクトに削除がインポートされているときに同期規則がそのオブジェクトの再プロビジョニングを試行するシナリオを修正
+- 同期エンジン ランタイム:インポート エラーのイベント ログにオンライン接続トラブルシューティング ガイドへのリンクを追加
+- 同期エンジン ランタイム:コネクタの列挙時に同期スケジューラが使用するメモリの量を削減
+- Azure AD Connect ウィザード:AD 読み取り特権がないカスタム同期サービス アカウントの解決問題を修正
+- Azure AD Connect ウィザード:ドメインと OU の選択内容のログ記録を改善
+- Azure AD Connect ウィザード:MFA シナリオ用に作成されたフェデレーションの信頼に AD FS の既定の要求を追加
+- Azure AD Connect ウィザード:AD FS デプロイ WAP:新しい証明書を使用するサーバーの追加が失敗する
+- Azure AD Connect ウィザード:onPremCredentials がドメインに対して初期化されていない場合に DSSO 例外が発生 
 - アクティブなユーザー オブジェクトから AD の distinguishedName属性を優先的にフロー
 - 最初の OOB の同期ルールの優先順位が 100 ではなく 99 に設定される表面的なバグを修正
 
 
 
 ## <a name="117510"></a>1.1.751.0
-状況 4/12/2018: ダウンロード用のみにリリース済み
+状態: 2018 年 4 月 12 日:ダウンロード用のみにリリース済み
 
 >[!NOTE]
 >このリリースは Azure AD Connect の修正プログラムです
@@ -190,12 +224,12 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 構成再試行ロジックに問題があり、"同一のキーを含む項目が既に追加されています" を示す ArgumentException が発生していました。  これにより、再試行操作がすべて失敗します。
 
 ## <a name="117500"></a>1.1.750.0
-状況 3/22/2018: 自動アップグレードとダウンロード向けにリリース済み。
+状態: 2018 年 3 月 22 日:自動アップグレードとダウンロード向けにリリース済み。
 >[!NOTE]
 >この新しいバージョンへのアップグレードが完了すると、Azure AD コネクタの完全同期とフル インポート、および AD コネクタの完全同期が自動的にトリガーされます。 Azure AD Connect 環境のサイズによっては、これには時間がかかる場合があるため、これに対応できるように必要な手順を確実に実施していることを確認してください。また、好都合なタイミングが見つかるまでアップグレードを見合わせるようにしてください。
 
 >[!NOTE]
->“1.1.524.0 より後にビルドをデプロイしたテナントの一部で、AutoUpgrade 機能が間違って無効化されました。 Azure AD Connect インスタンスで引き続き AutoUpgrade 機能が適用されるように、PowerShell コマンドレット “Set-ADSyncAutoUpgrade -AutoupGradeState Enabled を実行してください。”
+>“1.1.524.0 より後にビルドをデプロイしたテナントの一部で、AutoUpgrade 機能が間違って無効化されました。 Azure AD Connect インスタンスで引き続き AutoUpgrade 機能が適用されるように、PowerShell コマンドレット "Set-ADSyncAutoUpgrade -AutoupGradeState Enabled" を実行してください。
 
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
@@ -205,7 +239,7 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 * **ユーザー サインイン** ページの "パスワード同期" オプションが "パスワード ハッシュの同期" オプションに変更されました。  Azure AD Connect ではパスワードではなくパスワード ハッシュが同期されるため、この変更は実際の動作と一致しています。  詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](how-to-connect-password-hash-synchronization.md)」を参照してください。
 
 ## <a name="117490"></a>1.1.749.0
-状態: 一部のお客様にリリース
+状態:一部のお客様にリリース
 
 >[!NOTE]
 >この新しいバージョンへのアップグレードが完了すると、Azure AD コネクタの完全同期とフル インポート、および AD コネクタの完全同期が自動的にトリガーされます。 Azure AD Connect 環境のサイズによっては、これには時間がかかる場合があるため、これに対応できるように必要な手順を確実に実施していることを確認してください。また、好都合なタイミングが見つかるまでアップグレードを見合わせるようにしてください。
@@ -267,7 +301,7 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 
 
 ## <a name="116540"></a>1.1.654.0
-状態: 2017 年 12 月 12 日
+状態:2017 年 12 月 12 日
 
 >[!NOTE]
 >このリリースは、Azure AD Connect のセキュリティに関連する修正プログラムです
@@ -334,7 +368,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 詳しくは、[マイクロソフト セキュリティ アドバイザリ 4056318](https://technet.microsoft.com/library/security/4056318) をご覧ください
 
 ## <a name="116490"></a>1.1.649.0
-リリース: 2017 年 10 月 27 日
+状態:2017 年 10 月 27 日
 
 >[!NOTE]
 >このビルドは、Azure AD Connect の自動アップグレード機能では提供されません。
@@ -345,7 +379,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 
 ## <a name="116470"></a>1.1.647.0
-リリース: 2017 年 10 月 19 日
+状態:2017 年 10 月 19 日
 
 > [!IMPORTANT]
 > Azure AD Connect バージョン 1.1.647.0 と Azure AD Connect Health エージェント (同期用) バージョン 3.0.127.0 間で、互換性に関する既知の問題があります。 この問題によって、Health エージェントは、Azure AD Connect 同期サービスに関する正常性データ (オブジェクト同期エラーと実行履歴データを含む) を Azure AD Health サービスに送信できません。 Azure AD Connect のデプロイをバージョン 1.1.647.0 に手動でアップグレードする前に、Azure AD Connect サーバーにインストールされている Azure AD Connect Health エージェントの現在のバージョンを確認してください。 これを実行するには、*[コントロール パネル]→[プログラムの追加と削除]* の順に選択し、*[Microsoft Azure AD Connect Health Agent for Sync]\(同期用 Microsoft Azure AD Connect Health エージェント\)* のアプリケーションを探します。このバージョンが 3.0.127.0 の場合は、Azure AD Connect の次のバージョンが利用可能になってからアップグレードすることをお勧めします。 Health エージェントのバージョンが 3.0.127.0 でない場合は、手動でインプレース アップグレードを続行できます。 この問題は、スウィング アップデートや、Azure AD Connect の新しいインストールを実行しているお客様には影響しません。
@@ -388,7 +422,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect 同期
 >[!NOTE]
-> 注: 同期サービスには、独自のカスタム スケジューラを作成できる WMI インターフェイスがあります。 このインターフェイスは現在非推奨であり、2018 年 6 月 30 日以降にリリースされる Azure AD Connect の将来のバージョンから削除される予定です。 同期スケジュールをカスタマイズしようとする顧客は、組み込みスケジューラ (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) を使用する必要があります。
+> 注:同期サービスには、独自のカスタム スケジューラを作成できる WMI インターフェイスがあります。 このインターフェイスは現在非推奨であり、2018 年 6 月 30 日以降にリリースされる Azure AD Connect の将来のバージョンから削除される予定です。 同期スケジュールをカスタマイズしようとする顧客は、組み込みスケジューラ (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) を使用する必要があります。
 
 #### <a name="fixed-issues"></a>修正された問題
 * Azure AD Connect ウィザードで、オンプレミス Active Directory からの変更を同期するために必要な AD Connector アカウントを作成するときに、PublicFolder オブジェクトの読み取りに必要なアクセス許可がアカウントに正しく割り当てられません。 この問題は、高速インストールとカスタム インストールの両方に影響します。 今回の変更により、この問題が修正されました。
@@ -407,7 +441,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 
 ## <a name="116140"></a>1.1.614.0
-リリース: 2017 年 9 月 5 日
+状態:2017 年 9 月 5 日
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
@@ -457,7 +491,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 
 ## <a name="115610"></a>1.1.561.0
-リリース: 2017 年 7 月 23 日
+状態:2017 年 7 月 23 日
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
@@ -479,7 +513,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * Azure AD Connect ウィザード内の [[ドメインと OU のフィルター処理] 画面](how-to-connect-install-custom.md#domain-and-ou-filtering)で、OU ベースのフィルター処理が有効になっている場合でも、*[すべてのドメインと OU の同期]* オプションが選択済みとして表示される問題を修正しました。
 
-*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは *“An error was encountered while refreshing domains: Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
+*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは *“An error was encountered while refreshing domains:Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
 
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
 
@@ -494,10 +528,10 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
   * ユーザーの書き戻し機能を有効にしました。
   
   >[!NOTE]
-  >自動アップグレード機能の範囲の拡大は、Azure AD Connect ビルド 1.1.105.0 以降のお客様に影響します。 Azure AD Connect サーバーが自動的にアップグレードされないようにするには、Azure AD Connect サーバーで `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` コマンドレットを実行する必要があります。 自動アップグレードの有効化/無効化の詳細については、「[Azure AD Connect: 自動アップグレード](how-to-connect-install-automatic-upgrade.md)」を参照してください。
+  >自動アップグレード機能の範囲の拡大は、Azure AD Connect ビルド 1.1.105.0 以降のお客様に影響します。 Azure AD Connect サーバーが自動的にアップグレードされないようにするには、Azure AD Connect サーバーで `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` コマンドレットを実行する必要があります。 自動アップグレードの有効化/無効化の詳細については、「[Azure AD Connect:自動アップグレード](how-to-connect-install-automatic-upgrade.md)」を参照してください。
 
 ## <a name="115580"></a>1.1.558.0
-状態: リリース予定なし。 このビルドの変更は、バージョン 1.1.561.0 に組み込まれています。
+状態:リリース予定なし。 このビルドの変更は、バージョン 1.1.561.0 に組み込まれています。
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
@@ -507,7 +541,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * Azure AD Connect ウィザード内の [[ドメインと OU のフィルター処理] 画面](how-to-connect-install-custom.md#domain-and-ou-filtering)で、OU ベースのフィルター処理が有効になっている場合でも、*[すべてのドメインと OU の同期]* オプションが選択済みとして表示される問題を修正しました。
 
-*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは *“An error was encountered while refreshing domains: Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
+*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは *“An error was encountered while refreshing domains:Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
 
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
 
@@ -522,10 +556,10 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
   * ユーザーの書き戻し機能を有効にしました。
   
   >[!NOTE]
-  >自動アップグレード機能の範囲の拡大は、Azure AD Connect ビルド 1.1.105.0 以降のお客様に影響します。 Azure AD Connect サーバーが自動的にアップグレードされないようにするには、Azure AD Connect サーバーで `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` コマンドレットを実行する必要があります。 自動アップグレードの有効化/無効化の詳細については、「[Azure AD Connect: 自動アップグレード](how-to-connect-install-automatic-upgrade.md)」を参照してください。
+  >自動アップグレード機能の範囲の拡大は、Azure AD Connect ビルド 1.1.105.0 以降のお客様に影響します。 Azure AD Connect サーバーが自動的にアップグレードされないようにするには、Azure AD Connect サーバーで `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` コマンドレットを実行する必要があります。 自動アップグレードの有効化/無効化の詳細については、「[Azure AD Connect:自動アップグレード](how-to-connect-install-automatic-upgrade.md)」を参照してください。
 
 ## <a name="115570"></a>1.1.557.0
-リリース: 2017 年 7 月
+状態:2017 年 7 月
 
 >[!NOTE]
 >このビルドは、Azure AD Connect の自動アップグレード機能では提供されません。
@@ -536,7 +570,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 * Initialize-ADSyncDomainJoinedComputerSync コマンドレットによって、既存のサービス接続ポイント オブジェクトで構成されている確認済みドメインが、有効なドメインであるにもかかわらず、変更される問題を修正しました。 この問題は、サービス接続ポイントの構成に使用できる確認済みドメインが、Azure AD テナントに複数ある場合に発生します。
 
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
-* Microsoft Azure Government クラウドと Microsoft Cloud Germany のプレビューで、パスワード ライトバックを利用できるようになりました。 さまざまなサービス インスタンスの Azure AD Connect サポートの詳細については、「[Azure AD Connect: インスタンスに関する特別な考慮事項](reference-connect-instances.md)」を参照してください。
+* Microsoft Azure Government クラウドと Microsoft Cloud Germany のプレビューで、パスワード ライトバックを利用できるようになりました。 さまざまなサービス インスタンスの Azure AD Connect サポートの詳細については、「[Azure AD Connect:インスタンスに関する特別な考慮事項](reference-connect-instances.md)」を参照してください。
 
 * Initialize-ADSyncDomainJoinedComputerSync コマンドレットで、AzureADDomain という新しい省略可能なパラメーターを利用できるようになりました。 このパラメーターを使用すると、サービス接続ポイントの構成に使用する確認済みドメインを指定できます。
 
@@ -549,7 +583,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 
 ## <a name="115530"></a>1.1.553.0
-リリース: 2017 年 6 月
+状態:2017 年 6 月
 
 > [!IMPORTANT]
 > このビルドでは、スキーマと同期規則に変更が加えられています。 アップグレードの後、フル インポートの手順と完全同期の手順が Azure AD Connect 同期サービスによってトリガーされます。 変更の詳細は以下で説明しています。 アップグレード後、フル インポートと完全な同期の手順を一時的に保留にするには、「[How to defer full synchronization after upgrade (アップグレード後に完全な同期を保留にする方法)](how-to-upgrade-previous-version.md#how-to-defer-full-synchronization-after-upgrade)」を参照してください。
@@ -638,16 +672,16 @@ CBool(
 * 次のスキーマ変更が行われ、グループ オブジェクトについては sAMAccountName、domainNetBios、および domainFQDN を、ユーザー オブジェクトについては distinguishedName をフローするカスタム同期規則を、顧客が作成できます。
 
   * 次の属性が、MV スキーマに追加されました。
-    * グループ: AccountName
+    * グループ:AccountName
     * グループ: domainNetBios
     * グループ: domainFQDN
     * ユーザー: distinguishedName
 
   * 次の属性が、Azure AD コネクタ スキーマに追加されました。
-    * グループ: OnPremisesSamAccountName
-    * グループ: NetBiosName
-    * グループ: DnsDomainName
-    * ユーザー: OnPremisesDistinguishedName
+    * グループ:OnPremisesSamAccountName
+    * グループ:NetBiosName
+    * グループ:DnsDomainName
+    * ユーザー:OnPremisesDistinguishedName
 
 * ADSyncDomainJoinedComputerSync コマンドレット スクリプトで、AzureEnvironment という新しい省略可能なパラメーターを利用できるようになりました。 このパラメーターを使用して、対応する Azure Active Directory テナントがホストされているリージョンを指定します。 有効な値は、次のとおりです。
   * AzureCloud (既定)
@@ -673,7 +707,7 @@ CBool(
 * 以前は、Azure AD Connect が提供する ADFS 証明書の管理機能は、Azure AD Connect で管理されている ADFS ファームでのみ使用できました。 現在、この機能は、Azure AD Connect で管理されていない ADFS ファームでも使用できます。
 
 ## <a name="115240"></a>1.1.524.0
-リリース: 2017 年 5 月
+リリース日:2017 年 5 月
 
 > [!IMPORTANT]
 > このビルドでは、スキーマと同期規則に変更が加えられています。 アップグレードの後、フル インポートの手順と完全同期の手順が Azure AD Connect 同期サービスによってトリガーされます。 変更の詳細は以下で説明しています。
@@ -685,7 +719,7 @@ CBool(
 Azure AD Connect Sync
 
 * ユーザーが Set-ADSyncAutoUpgrade コマンドレットを使用して自動アップグレード機能を無効にしたにもかかわらず、Azure AD Connect サーバーで自動アップグレードが実行される問題を修正しました。 この修正の適用後も、サーバー上の自動アップグレード プロセスで引き続きアップグレードが定期的にチェックされますが、ダウンロードされたインストーラーは、自動アップグレードの構成を忠実に守ります。
-* DirSync のインプレース アップグレード中、Azure AD Connect は、Azure AD コネクタが Azure AD との同期に使用する Azure AD サービス アカウントを作成します。 アカウントの作成後、Azure AD Connect は、そのアカウントを使って Azure AD を認証します。 この認証が一時的な問題で失敗することがあり、それが原因で、DirSync のインプレース アップグレードも "*An error has occurred executing Configure AAD Sync task: AADSTS50034: To sign into this application, the account must be added to the xxx.onmicrosoft.com directory. (AAD 同期タスクの構成の実行中にエラーが発生しました: AADSTS50034: このアプリケーションにサインインするには、xxx.onmicrosoft.com ディレクトリにアカウントを追加する必要があります。)*" というエラーが発生して失敗することがあります。 DirSync アップグレードの回復性を高めるために、Azure AD Connect で認証ステップが再試行されるようになりました。
+* DirSync のインプレース アップグレード中、Azure AD Connect は、Azure AD コネクタが Azure AD との同期に使用する Azure AD サービス アカウントを作成します。 アカウントの作成後、Azure AD Connect は、そのアカウントを使って Azure AD を認証します。 この認証が一時的な問題で失敗することがあり、それが原因で、DirSync のインプレース アップグレードも "*An error has occurred executing Configure AAD Sync task: AADSTS50034: To sign into this application, the account must be added to the xxx.onmicrosoft.com directory. (AAD 同期タスクの構成の実行中にエラーが発生しました:AADSTS50034:このアプリケーションにサインインするには、xxx.onmicrosoft.com ディレクトリにアカウントを追加する必要があります。)*" というエラーが発生して失敗することがあります。 DirSync アップグレードの回復性を高めるために、Azure AD Connect で認証ステップが再試行されるようになりました。
 * ビルド 443 では、DirSync のインプレース アップグレードは成功するものの、ディレクトリの同期に必要な実行プロファイルが作成されない問題がありました。 このビルドの Azure AD Connect には、復旧ロジックが追加されています。 ユーザーがこのビルドにアップグレードするときに、不足している実行プロファイルが Azure AD Connect によって検出されて作成されます。
 * パスワード同期処理が、イベント ID 6900 および "*同一のキーを含む項目が既に追加されています*" というエラーで起動に失敗する問題を修正しました。 この問題は、AD 構成パーティションを含めるように OU のフィルタリング構成を更新した場合に発生します。 この問題を修正するため、AD ドメイン パーティションからのパスワード変更のみを同期するようにパスワード同期処理を変更しました。 非ドメイン パーティション (構成パーティションなど) はスキップされます。
 * AD コネクタでオンプレミス AD との通信に使用されるオンプレミス AD DS アカウントが、高速インストール中、Azure AD Connect によって作成されます。 以前のバージョンでは、このアカウントが、user-Account-Control 属性の PASSWD_NOTREQD フラグを設定した状態で作成され、アカウントにはランダムなパスワードが設定されます。 新しいバージョンでは、アカウントのパスワードが設定された後、PASSWD_NOTREQD フラグは Azure AD Connect によって明示的に削除されます。
@@ -694,7 +728,7 @@ Azure AD Connect Sync
 * OU のフィルタリングは、Azure AD Connect ウィザードを使用するか、または Synchronization Service Manager を使用して構成することができます。 以前のバージョンでは、Azure AD Connect ウィザードを使用して OU のフィルタリングを構成した場合、後で作成した新しい OU がディレクトリ同期の対象に含められます。 新しい OU を含めたくない場合は、Synchronization Service Manager を使って OU のフィルタリングを構成する必要があります。 新しいバージョンでは、同じ動作を Azure AD Connect ウィザードを使って実現できます。
 * Azure AD Connect で必要なストアド プロシージャが、dbo スキーマにではなく、インストールしている管理者のスキーマに作成される問題を修正しました。
 * Azure AD から返される TrackingId 属性が AAD Connect Server のイベント ログから抜け落ちる問題を修正しました。 この問題は、Azure AD Connect が Azure AD からリダイレクト メッセージを受信し、指定されたエンドポイントに Azure AD Connect が接続できない場合に発生します。 TrackingId は、トラブルシューティング時に、サービス側のログに関連付ける目的でサポート エンジニアが使用します。
-* Azure AD Connect は、Azure AD から LargeObject エラーを受け取ると、EventID 6941 のイベントと "*提供されたオブジェクトが大きすぎます。このオブジェクト上の属性値の数を調整してください*" というメッセージを生成します。 その際、誤解を招くおそれのある EventID 6900 イベントと、"*Microsoft.Online.Coexistence.ProvisionRetryException: Windows Azure Active Directory サービスと通信できません*" というメッセージも Azure AD Connect から生成されます。 今後は混乱を防ぐために、Azure AD Connect で LargeObject エラーが発生しても、後者のイベントは生成されません。
+* Azure AD Connect は、Azure AD から LargeObject エラーを受け取ると、EventID 6941 のイベントと "*提供されたオブジェクトが大きすぎます。このオブジェクト上の属性値の数を調整してください*" というメッセージを生成します。 その際、誤解を招くおそれのある EventID 6900 イベントと、"*Microsoft.Online.Coexistence.ProvisionRetryException:Windows Azure Active Directory サービスと通信できません*" というメッセージも Azure AD Connect から生成されます。 今後は混乱を防ぐために、Azure AD Connect で LargeObject エラーが発生しても、後者のイベントは生成されません。
 * Generic LDAP コネクタの構成を更新しようとしているときに Synchronization Service Manager が無応答になる問題を修正しました。
 
 **新機能/改善点:**
@@ -707,12 +741,12 @@ Azure AD Connect Sync
   * メタバースのスキーマと AAD コネクタのスキーマに **preferredDataLocation** を追加しました。 Azure AD でいずれかの属性を更新する必要のあるユーザーは、カスタム同期規則を実装してそのようにすることができます。 
   * メタバースのスキーマと AAD コネクタのスキーマに **userType** を追加しました。 Azure AD でいずれかの属性を更新する必要のあるユーザーは、カスタム同期規則を実装してそのようにすることができます。
 
-* 現在、Azure AD Connect では、ConsistencyGuid 属性の使用が、オンプレミスの AD オブジェクトのソース アンカー属性として自動的に有効になります。 また、ConsistencyGuid 属性が空の場合、この属性は、Azure AD Connect によって、objectGuid 属性の値で自動的に設定されます。 この機能は新しいデプロイにのみ適用されます。 この機能の詳細については、「[Azure AD Connect: 設計概念」の「sourceAnchor としての ms-DS-ConsistencyGuid の使用](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」を参照してください。
+* 現在、Azure AD Connect では、ConsistencyGuid 属性の使用が、オンプレミスの AD オブジェクトのソース アンカー属性として自動的に有効になります。 また、ConsistencyGuid 属性が空の場合、この属性は、Azure AD Connect によって、objectGuid 属性の値で自動的に設定されます。 この機能は新しいデプロイにのみ適用されます。 この機能の詳細については、「[Azure AD Connect:設計概念」の「sourceAnchor としての ms-DS-ConsistencyGuid の使用](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」を参照してください。
 * トラブルシューティングのための新しいコマンドレット Invoke-ADSyncDiagnostics を追加しました。パスワード ハッシュ同期に関する問題の診断に役立てることができます。 コマンドレットの使用について詳しくは、「[Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング](tshoot-connect-password-hash-synchronization.md)」を参照してください。
 * Azure AD Connect で新たに、オンプレミスの AD と Azure AD との間で "メールが有効なパブリック フォルダ" オブジェクトの同期がサポートされます。 この機能は、Azure AD Connect ウィザードのオプション機能から有効にできます。 この機能の詳細については、「[Office 365 Directory Based Edge Blocking support for on-premises Mail Enabled Public Folders (オンプレミスのメールが有効なパブリック フォルダーに対する Office 365 ディレクトリ ベース エッジ ブロック サポート)](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders)」を参照してください。
 * Azure AD Connect では、オンプレミスの AD から同期するために AD DS アカウントが必要となります。 以前は、簡易モードを使用して Azure AD Connect をインストールした場合、エンタープライズ管理者アカウントの資格情報を指定でき、必要な AD DS アカウントは Azure AD Connect によって作成されました。 しかし、カスタム インストールを行う場合や、既存のデプロイにフォレストを追加する場合は、AD DS アカウントを自分で指定する必要がありました。 今後は、カスタム インストールの際に、エンタープライズ管理者アカウントの資格情報を指定することで、必要な AD DS アカウントを Azure AD Connect で自動的に作成することもできます。
 * Azure AD Connect で新たに SQL AOA がサポートされます。 Azure AD Connect をインストールする前に SQL AOA を有効にする必要があります。 インストール中、指定された SQL インスタンスで SQL AOA が有効であるかどうかが Azure AD Connect によって検出されます。 SQL AOA が有効である場合、Azure AD Connect はさらに、SQL AOA が、同期レプリケーションまたは非同期レプリケーションを使用するように構成されているかどうかを調べます。 可用性グループ リスナーを設定するときは、RegisterAllProvidersIP プロパティを 0 に設定することをお勧めします。 Azure AD Connect は現在、SQL Native Client を使用して SQL に接続していますが、SQL Native Client は、MultiSubNetFailover プロパティの使用をサポートしていないためです。
-* Azure AD Connect サーバーのデータベースとして LocalDB を使用していて、サイズの上限である 10 GB に達した場合、それ以降、同期サービスは起動しません。 以前のバージョンでは、LocalDB で ShrinkDatabase 操作を実行し、同期サービスを起動できるだけの DB 空き領域を回収する必要があります。 その後は、Synchronization Service Manager を使用して実行履歴を削除し、DB 空き領域をさらに回収することができます。 新しいバージョンでは、Start-ADSyncPurgeRunHistory コマンドレットを使用して実行履歴データを LocalDB から消去し、DB 空き領域を回収することができます。 このコマンドレットは、同期サービスが実行されていないときに使用できるオフライン モードにも対応しています (-offline パラメーターを指定)。 注: オフライン モードは、同期サービスが実行されておらず、なおかつ使用されているデータベースが LocalDB である場合にのみ使用できます。
+* Azure AD Connect サーバーのデータベースとして LocalDB を使用していて、サイズの上限である 10 GB に達した場合、それ以降、同期サービスは起動しません。 以前のバージョンでは、LocalDB で ShrinkDatabase 操作を実行し、同期サービスを起動できるだけの DB 空き領域を回収する必要があります。 その後は、Synchronization Service Manager を使用して実行履歴を削除し、DB 空き領域をさらに回収することができます。 新しいバージョンでは、Start-ADSyncPurgeRunHistory コマンドレットを使用して実行履歴データを LocalDB から消去し、DB 空き領域を回収することができます。 このコマンドレットは、同期サービスが実行されていないときに使用できるオフライン モードにも対応しています (-offline パラメーターを指定)。 注:オフライン モードは、同期サービスが実行されておらず、なおかつ使用されているデータベースが LocalDB である場合にのみ使用できます。
 * 新しいバージョンの Azure AD Connect では、必要な記憶域スペースを小さくするために、同期エラーの詳細情報は、圧縮してから LocalDB/SQL データベースに格納されます。 以前のバージョンの Azure AD Connect からこのバージョンにアップグレードすると、既に存在している同期エラー情報に対して一回限りの圧縮が実行されます。
 * 以前のバージョンでは、OU のフィルタリング構成を更新した後、フル インポートを手動で実行して、ディレクトリ同期の対象に既存のオブジェクトを適切に含めたり、対象から除外したりする必要があります。 新しいバージョンの Azure AD Connect では、次の同期サイクルの間にフル インポートが自動的にトリガーされます。 また、フル インポートは、更新の影響を受けた AD コネクタにのみ適用されます。 注: この機能強化が適用されるのは、Azure AD Connect ウィザードを使用して行われた OU のフィルタリングの更新だけです。 Synchronization Service Manager を使って行われた OU のフィルタリングの更新には適用されません。
 * 以前のバージョンでは、グループベースのフィルターが、ユーザー オブジェクト、グループ オブジェクト、連絡先オブジェクトでしかサポートされていません。 新しいバージョンでは、グループベースのフィルターでコンピューター オブジェクトもサポートされます。
@@ -722,13 +756,13 @@ Azure AD Connect Sync
 
 
 ## <a name="114860"></a>1.1.486.0
-リリース: 2017 年 4 月
+リリース日:2017 年 4 月
 
 **修正された問題:**
 * Azure AD Connect がローカライズ版の Windows Server に正常にインストールされない問題を修正しました。
 
 ## <a name="114840"></a>1.1.484.0
-リリース: 2017 年 4 月
+リリース日:2017 年 4 月
 
 **既知の問題:**
 
@@ -777,7 +811,7 @@ Azure AD Connect Sync
 * Azure AD Connect ウィザードでは、パススルー認証およびデスクトップ SSO を構成する場合、ネットワーク上でポート 9090 を開く必要がなくなりました。 ポート 443 のみが必要です。 
 
 ## <a name="114430"></a>1.1.443.0
-リリース: 2017 年 3 月
+リリース日:2017 年 3 月
 
 **修正された問題:**
 
@@ -815,7 +849,7 @@ AD FS の管理
 * Azure Service Bus への接続信頼性が向上しました。
 
 ## <a name="113800"></a>1.1.380.0
-リリース: 2016 年 12 月
+リリース日:2016 年 12 月
 
 **修正された問題:**
 
@@ -825,7 +859,7 @@ AD FS の管理
 >このビルドは、Azure AD Connect の自動アップグレード機能では提供されません。
 
 ## <a name="113710"></a>1.1.371.0
-リリース: 2016 年 12 月
+リリース日:2016 年 12 月
 
 **既知の問題:**
 
@@ -839,7 +873,7 @@ AD FS の管理
 >このビルドは、Azure AD Connect の自動アップグレード機能では提供されません。
 
 ## <a name="113700"></a>1.1.370.0
-リリース: 2016 年 12 月
+リリース日:2016 年 12 月
 
 **既知の問題:**
 
@@ -854,7 +888,7 @@ AD FS の管理
 >このビルドは、Azure AD Connect の自動アップグレード機能では提供されません。
 
 ## <a name="113430"></a>1.1.343.0
-リリース: 2016 年 11 月
+リリース日:2016 年 11 月
 
 **既知の問題:**
 
@@ -872,7 +906,7 @@ AD FS の管理
 * Azure AD Connect のリモートのデータベースとしての SQL Server 2016 の使用がサポートされるようになりました。
 
 ## <a name="112810"></a>1.1.281.0
-リリース: 2016 年 8 月
+リリース日:2016 年 8 月
 
 **修正された問題:**
 
@@ -893,7 +927,7 @@ AD FS の管理
 * Azure AD Connect ウィザードで[ディレクトリ拡張機能](how-to-connect-sync-feature-directory-extensions.md)を構成するときに、"Teletex 文字列" 型の Azure AD 属性を選択できるようになりました。
 
 ## <a name="111890"></a>1.1.189.0
-リリース: 2016 年 6 月
+リリース日:2016 年 6 月
 
 **修正された問題と機能強化:**
 
@@ -902,7 +936,7 @@ AD FS の管理
 * Active Directory コネクタで、NetBIOS を FQDN に名前解決できないという問題が修正されました。
 
 ## <a name="111800"></a>1.1.180.0
-リリース: 2016 年 5 月
+リリース日:2016 年 5 月
 
 **新機能:**
 
@@ -918,7 +952,7 @@ AD FS の管理
 * 無効にした同期規則で、含まれるオブジェクトや属性が、アップグレードまたはディレクトリ スキーマの更新時に再び有効にされることがなくなりました。
 
 ## <a name="111300"></a>1.1.130.0
-リリース: 2016 年 4 月
+リリース日:2016 年 4 月
 
 **新機能:**
 
@@ -927,7 +961,7 @@ AD FS の管理
 * [カスタム スケジューラ](how-to-connect-sync-feature-scheduler.md#custom-scheduler)にコマンドレットがいくつか追加されました。
 
 ## <a name="111190"></a>1.1.119.0
-リリース: 2016 年 3 月
+リリース日:2016 年 3 月
 
 **修正された問題:**
 
@@ -936,7 +970,7 @@ AD FS の管理
 * 新しいリリースへのアップグレード時に構成に変更がない場合は、フル インポート/同期をスケジュールすることはできません。
 
 ## <a name="111100"></a>1.1.110.0
-リリース: 2016 年 2 月
+リリース日:2016 年 2 月
 
 **修正された問題:**
 
@@ -946,7 +980,7 @@ AD FS の管理
 * サインイン オプションおよびアップグレードとして AD FS を使用して以前のリリースの Azure AD Connect をインストールした場合、インストール ウィザードを再度実行することはできません。
 
 ## <a name="111050"></a>1.1.105.0
-リリース: 2016 年 2 月
+リリース日:2016 年 2 月
 
 **新機能:**
 
@@ -974,7 +1008,7 @@ AD FS の管理
 * オンプレミス AD アカウントが、ルート ドメインとは異なる DNS ツリーを持つドメイン内にある場合、インストール ウィザードがそのアカウントを認識できません。
 
 ## <a name="1091310"></a>1.0.9131.0
-リリース: 2015 年 12 月
+リリース日:2015 年 12 月
 
 **修正された問題:**
 
@@ -984,7 +1018,7 @@ AD FS の管理
 * リモートの SQL Server で以前のリリースの Azure AD Connect から更新すると、"ADSync SQL データベースにアクセスできません" というエラーが表示されます。
 
 ## <a name="1091250"></a>1.0.9125.0
-リリース: 2015 年 11 月
+リリース日:2015 年 11 月
 
 **新機能:**
 
@@ -1016,7 +1050,7 @@ AD FS の管理
 * 到達不能なドメイン コントローラーがある場合、[デバイスの書き戻し] チェック ボックスは無効なままです。
 
 ## <a name="1086670"></a>1.0.8667.0
-リリース: 2015 年 8 月
+リリース日:2015 年 8 月
 
 **新機能:**
 
@@ -1041,7 +1075,7 @@ AD FS の管理
 * [ユーザーの書き戻し](how-to-connect-preview.md#user-writeback) プレビュー機能は、プレビューを利用されているお客様からのフィードバックに基づいて一時的に削除されました。 このプレビュー機能は、提供されたフィードバックに対処した後で、再度追加されます。
 
 ## <a name="1086410"></a>1.0.8641.0
-リリース: 2015 年 6 月
+リリース日:2015 年 6 月
 
 **Azure AD Connect の最初のリリースです。**
 
@@ -1053,7 +1087,7 @@ AD FS の管理
 * [AD FS の構成](how-to-connect-install-custom.md#configuring-federation-with-ad-fs)
 * [DirSync からのアップグレード](how-to-dirsync-upgrade-get-started.md)
 * [誤って削除されないように保護する](how-to-connect-sync-feature-prevent-accidental-deletes.md)
-* [ステージング モード](how-to-connect-sync-operations.md#staging-mode)
+*  [ステージング モード](how-to-connect-sync-operations.md#staging-mode)
 
 **新しいプレビュー機能:**
 
@@ -1063,7 +1097,7 @@ AD FS の管理
 * [ディレクトリ拡張機能](how-to-connect-preview.md)
 
 ## <a name="104940501"></a>1.0.494.0501
-リリース: 2015 年 5 月
+リリース日:2015 年 5 月
 
 **新しい要件:**
 
@@ -1074,7 +1108,7 @@ AD FS の管理
 * Azure AD からのパスワード ライトバックが、Azure Service Bus 接続のエラーで失敗します。
 
 ## <a name="104910413"></a>1.0.491.0413
-リリース: 2015 年 4 月
+リリース日:2015 年 4 月
 
 **修正された問題と機能強化:**
 
@@ -1091,7 +1125,7 @@ AD FS の管理
 * 結合で、MV の "任意" のオブジェクト型に接続できるようになりました。
 
 ## <a name="104850222"></a>1.0.485.0222
-リリース: 2015 年 2 月
+リリース日:2015 年 2 月
 
 **機能強化:**
 
@@ -1105,7 +1139,7 @@ AD FS の管理
 * 同じフォレスト内の複数のドメインの外部セキュリティ プリンシパル (FSP) を結合すると、あいまい結合のエラーが発生します。
 
 ## <a name="104751202"></a>1.0.475.1202
-リリース: 2014 年 12 月
+リリース日:2014 年 12 月
 
 **新機能:**
 
@@ -1126,7 +1160,7 @@ AD FS の管理
 * パスワード同期の ETW トレースの問題が修正されました。
 
 ## <a name="104701023"></a>1.0.470.1023
-リリース: 2014 年 10 月
+リリース日:2014 年 10 月
 
 **新機能:**
 
@@ -1146,7 +1180,7 @@ Azure AD Sync が既にインストールされている場合、標準の同期
 Active Directory アカウントには、Active Directory からのパスワード ハッシュを読み取ることができるように、追加のアクセス許可を与える必要があります。 付与するアクセス許可の名前は、[ディレクトリの変更のレプリケート] と [ディレクトリの変更をすべてにレプリケート] です。 パスワード ハッシュを読み取るためには、両方のアクセス許可が必要です。
 
 ## <a name="104190911"></a>1.0.419.0911
-リリース: 2014 年 9 月
+リリース日:2014 年 9 月
 
 **Azure AD Sync の最初のリリースです。**
 

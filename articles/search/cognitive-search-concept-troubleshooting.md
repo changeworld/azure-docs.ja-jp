@@ -1,5 +1,5 @@
 ---
-title: Azure Search でのコグニティブ検索のトラブルシューティングのヒント | Microsoft Docs
+title: コグニティブ検索のトラブルシューティングのヒント - Azure Search
 description: Azure Search でコグニティブ検索パイプラインをセットアップするためのヒントとトラブルシューティング。
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 3d0d468674a2284e9925c1410f2bb8bcbde8f73f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec2018
+ms.openlocfilehash: 5f21fe3c65e37d3fee4043526762a7fafdea5cc4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575311"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316296"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>コグニティブ検索のトラブルシューティングのヒント
 
@@ -51,7 +52,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>ヒント 4: エンリッチされたドキュメントを内部を確認する 
+## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>ヒント 4: エンリッチされたドキュメントの内部を確認する 
 エンリッチされたドキュメントは、エンリッチメント中に作成され、プロセスが完了すると削除される、一時的な構造体です。
 
 インデックス作成時に作成されるエンリッチされたドキュメントのスナップショットをキャプチャするには、インデックスに ```enriched``` という名前のフィールドを追加します。 インデクサーは、そのドキュメントのすべてのエンリッチメントの文字列表現を、このフィールド内に自動的にダンプします。

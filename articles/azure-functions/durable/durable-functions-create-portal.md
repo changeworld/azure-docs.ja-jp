@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: acbba991e6dcce56fad7f27c45f85214cc8fc707
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: a79faa1dc5a28e5e2ac37ea164c341b855b3bb80
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637007"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339724"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal を使用して永続関数を作成する
 
@@ -24,17 +24,43 @@ Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機
 >[!NOTE]
 >
 >* C# で永続関数を開発している場合は、代わりに [Visual Studio 2017 での開発](durable-functions-create-first-csharp.md)を検討してください。
-* JavaScript で永続関数を開発している場合は、代わりに **Visual Studio Code での開発**を検討してください。
->
->JavaScript を使用した永続関数の作成は、まだポータルではサポートされていません。 代わりに Visual Studio Code を使用してください。
+* JavaScript で永続関数を開発している場合は、代わりに [Visual Studio Code での開発](./quickstart-js-vscode.md)を検討してください。
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-すべての関数の実行をホストするには関数アプリが必要です。 関数アプリを使用すると、リソースの管理、デプロイ、および共有を容易にするためのロジック ユニットとして関数をグループ化できます。 永続関数では JavaScript のテンプレートがまだサポートされていないため、C# の関数アプリを作成する必要があります。  
+すべての関数の実行をホストするには関数アプリが必要です。 関数アプリを使用すると、リソースの管理、デプロイ、および共有を容易にするためのロジック ユニットとして関数をグループ化できます。 .NET アプリまたは JavaScript アプリを作成することができます。
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-既定では、作成される関数アプリは、Azure Functions ランタイムのバージョン 2.x を使用します。 Durable Functions 拡張機能は、Azure Functions ランタイムのバージョン 1.x と 2.x の両方で機能します。 ただし、テンプレートはランタイムのバージョン 2.x をターゲットとしている場合にのみ使用できます。
+既定では、作成される関数アプリは、Azure Functions ランタイムのバージョン 2.x を使用します。 Durable Functions 拡張機能は、Azure Functions ランタイムのバージョン 1.x と 2.x の両方 (C# の場合) およびバージョン 2.x (JavaScript の場合) で機能します。 ただし、選択した言語に関係なく、テンプレートはランタイムのバージョン 2.x をターゲットとしている場合にのみ使用できます。
+
+## <a name="install-the-durable-functions-npm-package-javascript-only"></a>durable-functions npm パッケージをインストールする (JavaScript のみ)
+
+JavaScript Durable Functions を作成する場合、[`durable-functions` npm パッケージ](https://www.npmjs.com/package/durable-functions)をインストールする必要があります。
+
+1. 関数アプリの名前を選択し、**[プラットフォーム機能]** を選択して、**[高度なツール (Kudu)]** を選択します。
+
+   ![関数のプラットフォーム機能を選択して Kudu を選択する](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+
+2. Kudu コンソール内で、**[デバッグ コンソール]**、**[CMD]** を選択します。
+
+   ![Kudu デバッグ コンソール](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+3. 関数アプリのファイルのディレクトリ構造が表示されます。 `site/wwwroot` フォルダーに移動します。 そこから、`package.json` ファイルをファイル ディレクトリ ウィンドウにドラッグ アンド ドロップしてアップロードすることができます。 `package.json` のサンプルを次に示します。
+
+    ```json
+    {
+      "dependencies": {
+        "durable-functions": "^1.1.2"
+      }
+    }
+    ```
+
+   ![Kudu アップロード (package.json)](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+4. `package.json` がアップロードされたら、Kudu リモート実行コンソールから `npm install` コマンドを実行します。
+
+   ![Kudu の実行 (npm install)](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>オーケストレーター関数を作成する
 
@@ -92,7 +118,7 @@ Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機
         }
     ```
 
-1. 状態が **[完了]** に変わるまで `statusQueryGetUri` の呼び出しを続けます。次の例のような応答が表示されます。 
+1. 状態が **[完了]** に変わるまで `statusQueryGetUri` の呼び出しを続けます。次の例のような応答が表示されます。
 
     ```json
     {

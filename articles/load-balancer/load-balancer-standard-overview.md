@@ -1,12 +1,11 @@
 ---
-title: Azure Standard Load Balancer の概要 | Microsoft Docs
+title: Azure Standard Load Balancer とは
+titlesuffix: Azure Load Balancer
 description: Azure Standard Load Balancer の機能の概要
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-ms.assetid: ''
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 17b4bc68b2dc996134626b1822cfd17f0a9a7572
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: feaa0058aed566b40d3f2da548da1d961d5c82f3
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161643"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438763"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
 
@@ -120,7 +119,7 @@ NSG と、ネットワーク セキュリティ グループをシナリオに�
 
 ### <a name="outbound"></a> 送信接続
 
-Load Balancer は、受信と送信のシナリオをサポートしています。  Standard Load Balancer は、送信接続に関して Basic Load Balancer と大きく異なります。
+Load Balancer は、受信と送信のシナリオをサポートしています。  Standard Load Balancer は、アウトバウンド接続に関して Basic Load Balancer と大きく異なります。
 
 仮想ネットワーク上の内部プライベート IP アドレスを Load Balancer フロントエンドのパブリック IP アドレスにマッピングするには、送信元ネットワーク アドレス変換 (SNAT) が使われます。
 
@@ -138,7 +137,7 @@ Standard Load Balancer では、[より堅牢かつスケーラブルで予測�
 送信接続の需要が多くなると予想されるため、または既に多くなっているために、SNAT ポートを増やす必要がある場合は、同じ仮想マシン リソースに対してフロントエンド、ルール、およびバックエンド プールを追加構成することにより、増分 SNAT ポート インベントリを追加することもできます。
 
 #### <a name="control-which-frontend-is-used-for-outbound"></a>送信に使用されるフロントエンドを制御する
-送信接続を、特定のフロントエンド IP アドレスからの発信のみに制限したい場合は、必要に応じて、送信マッピングを表すルールで送信 SNAT を無効にすることができます。
+アウトバウンド接続を、特定のフロントエンド IP アドレスからの発信のみに制限したい場合は、必要に応じて、アウトバウンド マッピングを表すルールで送信 SNAT を無効にすることができます。
 
 #### <a name="control-outbound-connectivity"></a>送信接続を制御する
 Standard Load Balancer は、仮想ネットワークのコンテキスト内に存在します。  仮想ネットワークは、分離されたプライベート ネットワークです。  パブリック IP アドレスとの関連付けが存在しない場合、パブリック接続は許可されません。  [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、仮想ネットワークの内側にあり、仮想ネットワークに対してローカルであるため、VNET サービス エンドポイントには到達できます。  仮想ネットワークの外部にある宛先への送信接続を確立したい場合は、次の 2 つのオプションがあります。
@@ -154,7 +153,7 @@ Standard SKU に関連付けられていない仮想マシン リソースの送
 [送信接続の詳細な説明](load-balancer-outbound-connections.md)に関するページをご覧ください。
 
 ### <a name="multife"></a>複数のフロントエンド
-Load Balancer は、複数のフロントエンドで複数のルールをサポートします。  Standard Load Balancer は、これを送信シナリオまで広げます。  送信シナリオは基本的に、受信負荷分散ルールの逆です。  受信負荷分散ルールも、送信接続に対する関連付けを作成します。 Standard Load Balancer は、負荷分散ルールを介して、仮想マシン リソースに関連付けられているすべてのフロントエンドを使います。  さらに、負荷分散ルールのパラメーターにより、送信接続のために負荷分散ルールを抑制することができ、特定のフロントエンドを選ぶことが (何も選ばないことも) できます。
+Load Balancer は、複数のフロントエンドで複数のルールをサポートします。  Standard Load Balancer は、これを送信シナリオまで広げます。  アウトバウンド シナリオは基本的に、インバウンド負荷分散ルールの逆です。  インバウンド負荷分散ルールも、アウトバウンド接続に対する関連付けを作成します。 Standard Load Balancer は、負荷分散ルールを介して、仮想マシン リソースに関連付けられているすべてのフロントエンドを使います。  さらに、負荷分散ルールのパラメーターにより、アウトバウンド接続のために負荷分散ルールを抑制することができ、特定のフロントエンドを選ぶことが (何も選ばないことも) できます。
 
 これに対し、Basic Load Balancer は単一のフロントエンドをランダムに選び、選ばれるものを制御する機能はありません。
 
@@ -162,7 +161,7 @@ Load Balancer は、複数のフロントエンドで複数のルールをサポ
 
 ### <a name="operations"></a> 管理操作
 
-Standard Load Balancer リソースは、まったく新しいインフラストラクチャ プラットフォーム上に存在します。  これにより、Standard SKU の管理操作は大幅に高速化され、通常、操作が完了するまでの時間は Standard SKU リソースごとに 30 秒未満です。  バックエンド プールのサイズが大きくなると、バックエンド プールの変更に必要な時間も長くなることに注意してください。
+Standard Load Balancer リソースは、まったく新しいインフラストラクチャ プラットフォーム上に存在します。  これにより、Standard SKU の管理操作は高速化され、通常、操作が完了するまでの時間は Standard SKU リソースごとに 30 秒未満です。  バックエンド プールのサイズが大きくなると、バックエンド プールの変更に必要な時間も長くなります。
 
 Standard Load Balancer のリソースは変更することができ、ある仮想マシンから別の仮想マシンに Standard パブリック IP アドレスを非常に速く移動することができます。
 
@@ -211,7 +210,7 @@ Standard Load Balancer は、99.99% の SLA で利用できます。  詳しく�
 
 ## <a name="pricing"></a>価格
 
-Standard Load Balancer は、構成された負荷分散ルールの数と、処理されたすべての受信および送信データの数に基づいて課金される製品です。 Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://aka.ms/lbpricing)に関するページをご覧ください。
+Standard Load Balancer は、構成された負荷分散ルールの数と、処理されたすべてのインバウンドおよびアウトバウンド データの数に基づいて課金される製品です。 Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://aka.ms/lbpricing)に関するページをご覧ください。
 
 ## <a name="limitations"></a>制限事項
 
@@ -230,7 +229,7 @@ Standard Load Balancer は、構成された負荷分散ルールの数と、処
 - [正常性プローブ](load-balancer-custom-probe-overview.md)について学習する。
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を学習する。
 - [Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)について学習する。
-- [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) での診断で[サポートされる多次元メトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)について学習する。
+- [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) での診断で[サポートされる多次元メトリック](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers)について学習する。
 - [送信接続に対する Load Balancer](load-balancer-outbound-connections.md) の使用について学習する。
 - [アウトバウンド規則](load-balancer-outbound-rules-overview.md)について学習する。
 - [アイドル時の TCP リセット](load-balancer-tcp-reset.md)について学習する。

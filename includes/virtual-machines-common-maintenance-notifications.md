@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 609389460ab18ba947130e64dbe7b599574816a5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981567"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53216007"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>ポータルでメンテナンスがスケジュールされている VM を表示する
 
@@ -49,7 +49,7 @@ Azure Portal を使用して、VM のメンテナンス スケジュールを検
 
 ## <a name="notification-and-alerts-in-the-portal"></a>ポータルの通知とアラート
 
-Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画済みメンテナンスのスケジュールを伝えます。 Azure アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳細については、「[サービス通知のアクティビティ ログ アラートを作成する](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)」を参照してください。
+Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画済みメンテナンスのスケジュールを伝えます。 Azure アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳細については、「[サービス通知のアクティビティ ログ アラートを作成する](../articles/azure-monitor/platform/alerts-activity-log-service-notifications.md)」を参照してください。
 
 **[イベントの種類]** が **[計画済みメンテナンス]** に設定され、**[サービス]** が **[Virtual Machine Scale Sets]** または **[Virtual Machines]** に設定されていることを確認します
     

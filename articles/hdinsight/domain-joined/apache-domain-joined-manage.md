@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: a995f99f7baa8d6f9476f852aa47ce239c921a50
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 4df96d0c3d1ec9cb64f2394fb97d46178906d916
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634466"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434819"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
 HDInsight Enterprise セキュリティ パッケージ (ESP) でのユーザーとロール、および ESP クラスターを管理する方法について説明します。
@@ -22,7 +22,7 @@ HDInsight Enterprise セキュリティ パッケージ (ESP) でのユーザー
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>VSCode を使用してドメイン参加済みクラスターにリンクする
 
 Apache Ambari マネージド ユーザー名を使用して、通常のクラスターをリンクできます。また、ドメイン ユーザー名 (user1@contoso.com など) を使用して、セキュリティ保護された Apache Hadoop クラスターをリンクすることもできます。
-1. **Ctrl+Shift+P** を押してコマンド パレットを開き、「**HDInsight: Link a cluster**」と入力します。
+1. **Ctrl + Shift + P** キーを押してコマンド パレットを開き、「**HDInsight: Link a cluster**」と入力します。
 
    ![リンク クラスターのコマンド](./media/apache-domain-joined-manage/link-cluster-command.png)
 
@@ -30,7 +30,7 @@ Apache Ambari マネージド ユーザー名を使用して、通常のクラ�
    
    ![リンク クラスターのダイアログ](./media/apache-domain-joined-manage/link-cluster-process.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > リンクされたユーザー名とパスワードは、クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合に使用されます。 
    
 3. **List cluster** コマンドを使用すると、リンクされたクラスターを確認できます。 これでリンクされたクラスターにスクリプトを送信できるようになりました。
@@ -50,7 +50,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
    
    ![リンク クラスターのダイアログ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合、リンクされたストレージ キー、ユーザー名、パスワードを使用します。
    > ![IntelliJ のストレージ エクスプローラー](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
 
@@ -74,7 +74,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
    
    ![リンク クラスターのダイアログ](./media/apache-domain-joined-manage/link-cluster-dialog.png)
    
-   > [!NOTE]
+   > [!NOTE]  
    > クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合、リンクされたストレージ キー、ユーザー名、パスワードを使用します。
    > ![Eclipse のストレージ エクスプローラー](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
 
@@ -94,13 +94,13 @@ Enterprise セキュリティ パッケージ (旧称 HDInsight Premium) は、�
 
 |ワークロード|シナリオ|アクセス方法|
 |--------|--------|-------------|
-|Hadoop|Hive – 対話型ジョブ/クエリ |<ul><li>[Beeline](#beeline)</li><li>[Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Spark|対話型ジョブ/クエリ、PySpark 対話型|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin + Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Spark|バッチ シナリオ – spark-submit、PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
-|Interactive Query (LLAP)|対話型|<ul><li>[Beeline](#beeline)</li><li>[Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Hadoop|Hive – 対話型ジョブ/クエリ  |<ul><li>[Beeline](#beeline)</li><li>[Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Spark|対話型ジョブ/クエリ、PySpark 対話型|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin + Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Spark|バッチ シナリオ – spark-submit、PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
+|Interactive Query (LLAP)|Interactive|<ul><li>[Beeline](#beeline)</li><li>[Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |任意|カスタム アプリケーションのインストール|<ul><li>[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
-   > [!NOTE]
+   > [!NOTE]  
    > Jupyter は、Enterprise セキュリティ パッケージではインストールもサポートも行われません。
 
 標準 API の使用は、セキュリティの観点から有用です。 さらに、次の利点があります。
@@ -223,4 +223,4 @@ HDInsight Enterprise セキュリティ パッケージには次のロールが�
 
 ## <a name="next-steps"></a>次の手順
 * Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
-* Hive ポリシーの構成と Hive クエリの実行については、[ESP を使用する HDInsight クラスター用の Hive ポリシーの構成](apache-domain-joined-run-hive.md)に関するページをご覧ください。
+* Hive ポリシーの構成と Hive クエリの実行については、[ESP を使用する HDInsight クラスター用の Apache Hive ポリシーの構成](apache-domain-joined-run-hive.md)に関するページを参照してください。

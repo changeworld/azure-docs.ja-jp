@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: f18f52fc409df769d164607a128caaf02ead5e4b
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 1c159e5c86f713f1f7dbce5cd96cd2ce5d3c22fb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146505"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437981"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Azure Database for MySQL の Virtual Network のサービス エンドポイントと規則を使用する
 
@@ -31,13 +31,13 @@ ms.locfileid: "42146505"
 
 ## <a name="terminology-and-description"></a>用語と説明
 
-**仮想ネットワーク:** ユーザーは、お使いの Azure サブスクリプションに関連付けられた仮想ネットワークを保持できます。
+**仮想ネットワーク:** ご自分の Azure サブスクリプションに仮想ネットワークを関連付けることができます。
 
 **サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
-**Virtual Network サービス エンドポイント:** [Virtual Network サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for MySQL サービスと PostgreSQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL のすべてのサーバーに対してサービス エンドポイント トラフィックがサブネット上に構成されることに注意することが重要です。 
+**Virtual Network サービス エンドポイント:**[Virtual Network サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for MySQL サービスと PostgreSQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL のすべてのサーバーに対してサービス エンドポイント トラフィックがサブネット上に構成されることに注意することが重要です。 
 
-**仮想ネットワーク規則:** お使いの Azure Database for MySQL サーバーの仮想ネットワーク規則は、Azure Database for MySQL サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for MySQL サーバーの ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
+**仮想ネットワーク ルール:** お使いの Azure Database for MySQL サーバーの仮想ネットワーク ルールは、Azure Database for MySQL サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for MySQL サーバーの ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
 
 仮想ネットワーク規則は、サブネット上にあるどのノードからの通信も許可するように、お使いの Azure Database for MySQL サーバーに指示します。
 
@@ -91,8 +91,8 @@ Azure Database for MySQL のファイアウォールでは、Azure Database for 
 
 Virtual Network サービス エンドポイントの管理では、セキュリティ ロールが分離されています。 以下の各ロールでは、次の操作が必要です。
 
-- **ネットワーク管理:** &nbsp; エンドポイントをオンにする。
-- **データベース管理:** &nbsp; アクセス制御リスト (ACL) を更新して、指定されたサブネットを Azure Database for MySQL サーバーに追加する。
+- **ネットワーク管理者:**&nbsp; エンドポイントを有効にします。
+- **データベース管理者:**&nbsp; アクセス制御リスト (ACL) を更新して、指定されたサブネットを Azure Database for MySQL サーバーに追加します。
 
 *RBAC による代替:*
 
@@ -115,7 +115,7 @@ Azure Database for MySQL の場合、仮想ネットワーク規則機能には�
 
 - 仮想ネットワーク規則は[クラシック デプロイ モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
 
-- **Microsoft.Sql**  サービス タグを使用して Azure Database for MySQL への仮想ネットワーク サービス エンドポイントを ON にすると、次のすべての Azure Database サービスのエンドポイントも有効になります: Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、Azure SQL Data Warehouse。
+- **Microsoft.Sql**  サービス タグを使用して Azure Database for MySQL への仮想ネットワーク サービス エンドポイントをオンにすると、次のすべての Azure Database サービスのエンドポイントも有効になります: Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、Azure SQL Data Warehouse。
 
 - VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
 
@@ -144,7 +144,7 @@ VNet ルールの作成については、以下の記事を参照してくださ
 - [Azure Portal を使用した Azure Database for MySQL VNet 規則の作成と管理](howto-manage-vnet-using-portal.md)
 - [Azure CLI を使用した Azure Database for MySQL VNet 規則の作成と管理](howto-manage-vnet-using-cli.md)
 
-<!-- Link references, to text, Within this same Github repo. -->
+<!-- Link references, to text, Within this same GitHub repo. -->
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md

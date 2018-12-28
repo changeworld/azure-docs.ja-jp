@@ -1,5 +1,6 @@
 ---
-title: Azure Machine Learning による TensorFlow モデルのトレーニング
+title: TensorFlow を使用したモデルのトレーニング
+titleSuffix: Azure Machine Learning service
 description: TensorFlow エスティ メータを利用して TensorFlow モデルの単一ノードや分散トレーニングを実行する方法を説明します
 services: machine-learning
 ms.service: machine-learning
@@ -8,22 +9,23 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: c761d0ac5d2c52241eadd18b2d8b65e00ccb34ba
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: d15d3ed115009ad1395a85d36e833d85197d4d19
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114986"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094111"
 ---
-# <a name="how-to-train-tensorflow-models"></a>TensorFlow モデルのトレーニング方法
+# <a name="train-tensorflow-models-with-azure-machine-learning-service"></a>Azure Machine Learning サービスによる TensorFlow モデルのトレーニング
 
 TensorFlow を利用したディープ ニューラル ネットワーク (DNN) トレーニングの場合、Azure Machine Learning には `Estimator` のカスタム `TensorFlow` クラスが用意されています。 Azure SDK の `TensorFlow` エスティメータ ([`tf.estimator.Estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) クラスと融合されない) を利用することで､Azure コンピューティングでの単一ノード実行と分散実行の両方にで TensorFlow トレーニング ジョブを簡単に送信することができます。
 
 ## <a name="single-node-training"></a>単一ノードのトレーニング
 `TensorFlow` エスティメータによるトレーニングは、[基本 `Estimator`](how-to-train-ml-models.md) を使用する場合と似ているので、最初にハウツー記事を読み、そこで紹介されている概念を理解しておいてください。
   
-TensorFlow ジョブを実行するには､`TensorFlow` オブジェクトのインスタンスを作成します。 [コンピューティング ターゲット](how-to-set-up-training-targets.md#batch)オブジェクト`compute_target`は作成済みである必要があります｡
+TensorFlow ジョブを実行するには､`TensorFlow` オブジェクトのインスタンスを作成します。 [コンピューティング ターゲット](how-to-set-up-training-targets.md#amlcompute)オブジェクト`compute_target`は作成済みである必要があります｡
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -47,7 +49,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 --|--
 `source_directory` | トレーニング ジョブに必要なコードのすべてが含まれているローカル ディレクトリ。 このフォルダーは、ローカル コンピューターからリモート コンピューティングにコピーされています
 `script_params` | <コマンドライン引数, 値> ペアの形式で、トレーニング スクリプト `entry_script` にコマンドライン引数を指定するディクショナリ
-`compute_target` | トレーニング スクリプトの実行に使用するリモート コンピューティング (この例では [Batch AI](how-to-set-up-training-targets.md#batch) クラスター)
+`compute_target` | トレーニング スクリプトの実行に使用するリモートのコンピューティング先 (この例では Azure Machine Learning コンピューティング ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) クラスター)
 `entry_script` | リモート コンピューティングで実行するトレーニング スクリプトのファイルパス (`source_directory` を基準にした相対パス)。 このファイル、およびこのファイルと依存関係があるその他のファイルはすべて、このフォルダーに置かれている必要があります
 `conda_packages` | トレーニング スクリプトで必要な、conda を使用してインストールする Python パッケージのリスト。 この場合､トレーニング スクリプトはデータの読み込みに `sklearn` を使用しますから、インストールするこのパッケージを指定します｡  コンストラクターには `pip_packages` という名前のパラメーターもあり、必要な pip パッケージに対して使用できます
 `use_gpu` | トレーニングに GPU を使用するには、このフラグを `True` に設定します。 既定値は `False` です。
@@ -170,16 +172,9 @@ run = exp.submit(tf_est)
 ```
 
 ## <a name="examples"></a>例
-単一ノードの TensorFlow トレーニングについては､次のチュートリアルを参照してください。
-* [training/03.train-hyperparameter-tune-deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb)
 
-Horovod を使用した分散 TensorFlow については､次のチュートリアルを参照してください。
-* [training/04.distributed-tensorflow-with-horovod](https://github.com/Azure/MachineLearningNotebooks/tree/master/training/04.distributed-tensorflow-with-horovod)
-
-ネイティブの分散 TensorFlow については､次のチュートリアルを参照してください。
-* [training/05.distributed-tensorflow-with-parameter-server](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/05.distributed-tensorflow-with-parameter-server)
-
-これらの notebook を入手してください。
+分散型深層学習のノートブックについては、次のページを参照してください。
+* [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

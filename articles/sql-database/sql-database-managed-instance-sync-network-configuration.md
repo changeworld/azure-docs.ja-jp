@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 03/07/2018
-ms.openlocfilehash: d5de908166e8de1d45a36f97aee8934653e59623
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: e488fc7e568fc94f9a0744c12122b605f37f8152
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163171"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339673"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>ネットワーク構成を Azure App Service のホスティング プラン用に同期する
 
@@ -47,4 +47,4 @@ ms.locfileid: "47163171"
 
 ## <a name="next-steps"></a>次の手順
 
-- VNet をマネージド インスタンス用に構成する方法について詳しくは、[マネージド インスタンス VNet 構成](sql-database-managed-instance-vnet-configuration.md)に関する記事をご覧ください。
+- VNet をマネージド インスタンス用に構成する方法については、[マネージド インスタンス VNet アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)および[既存の VNet を構成する方法](sql-database-managed-instance-configure-vnet-subnet.md)に関する記事を参照してください。
