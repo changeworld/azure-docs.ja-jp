@@ -23,19 +23,19 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 
 |データソース  |メモリ内  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database     |   [はい]      |    [はい]      |
-|Azure SQL Data Warehouse     |   [はい]      |   [はい]       |
-|Azure Blob Storage*     |   [はい]       |    いいえ       |
-|Azure Table Storage*    |   [はい]       |    いいえ       |
-|Azure Cosmos DB*     |  [はい]        |  いいえ         |
-|Azure Data Lake Store*     |   [はい]       |    いいえ       |
-|Azure HDInsight HDFS*     |     [はい]     |   いいえ        |
-|Azure HDInsight Spark*     |   [はい]       |   いいえ        |
+|Azure SQL Database     |   はい      |    はい      |
+|Azure SQL Data Warehouse     |   はい      |   はい       |
+|Azure Blob Storage*     |   はい       |    いいえ       |
+|Azure Table Storage*    |   はい       |    いいえ       |
+|Azure Cosmos DB*     |  はい        |  いいえ         |
+|Azure Data Lake Store*     |   はい       |    いいえ       |
+|Azure HDInsight HDFS*     |     はい     |   いいえ        |
+|Azure HDInsight Spark*     |   はい       |   いいえ        |
 ||||
 
 \* 表形式 1400 モデルのみ。
 
-**プロバイダー**   
+**プロバイダー**  
 Azure データ ソースに接続するメモリ内モデルおよび DirectQuery モデルは、.NET Framework SQL Server 用データ プロバイダーを使います。
 
 ## <a name="on-premises-data-sources"></a>オンプレミス データ ソース
@@ -54,33 +54,33 @@ Azure AS サーバーからオンプレミスのデータ ソースに接続す�
 
 ### <a name="in-memory-only"></a>メモリ内のみ
 
-|データソース  |  
+|データソース  |
 |---------|---------|
-|Access データベース     |  
-|Active Directory*     |  
-|Analysis Services     |  
-|Analytics Platform System     |  
-|Dynamics CRM*     |  
-|Excel ブック     |  
-|Exchange*     |  
+|Access データベース     |
+|Active Directory*     |
+|Analysis Services     |
+|Analytics Platform System     |
+|Dynamics CRM*     |
+|Excel ブック     |
+|Exchange*     |
 |フォルダー*     |
 |IBM Informix* (ベータ) |
-|JSON ドキュメント*     |  
-|バイナリからの行*     | 
-|MySQL Database     | 
-|OData フィード*     |  
-|ODBC クエリ     | 
-|OLE DB     |   
-|Postgre SQL データベース*    | 
-|Salesforce オブジェクト* |  
+|JSON ドキュメント*     |
+|バイナリからの行*     |
+|MySQL Database     |
+|OData フィード*     |
+|ODBC クエリ     |
+|OLE DB     |
+|Postgre SQL データベース*    |
+|Salesforce オブジェクト* |
 |Salesforce レポート* |
-|SAP HANA*    |  
-|SAP Business Warehouse*    |  
-|SharePoint*     |   
-|Sybase データベース     |  
-|XML テーブル*    |  
+|SAP HANA*    |
+|SAP Business Warehouse*    |
+|SharePoint*     |
+|Sybase データベース     |
+|XML テーブル*    |
 |||
- 
+
 \* 表形式 1400 モデルのみ。
 
 ## <a name="specifying-a-different-provider"></a>別のプロバイダーを指定する
@@ -108,6 +108,5 @@ Azure Analysis Services のデータ モデルでは、特定のデータ ソー
 * SQL 認証を使っている場合、権限借用にはサービス アカウントを使う必要があります。
 
 ## <a name="next-steps"></a>次の手順
-[オンプレミス ゲートウェイ](analysis-services-gateway.md)   
-[サーバーの管理](analysis-services-manage.md)   
-
+[オンプレミス ゲートウェイ](analysis-services-gateway.md)  
+[サーバーの管理](analysis-services-manage.md)  
