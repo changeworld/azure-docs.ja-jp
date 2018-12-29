@@ -1,5 +1,5 @@
 ---
-title: ClaimsSchema - Azure Active Directory B2C | Microsoft Docs
+title: ClaimsSchema  - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの ClaimsSchema 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
@@ -21,7 +21,7 @@ ms.locfileid: "51568644"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**ClaimsSchema**要素は、ポリシーの一部として参照可能な要求の種類を定義します。 要求スキーマは、要求を宣言する場所です。 要求は、名、姓、表示名、電話番号などを指定できます。 ClaimsSchema 要素には**ClaimType**要素の一覧が含まれています。 **ClaimType**要素に **Id**属性が含まれており、 それは要求の名前であります。
+**ClaimsSchema**要素は、ポリシーの一部として参照可能な要求の種類を定義します。 要求スキーマは、要求を宣言する場所です。 要求は、名、姓、表示名、電話番号などを指定できます。 ClaimsSchema 要素には**ClaimType**要素の一覧が含まれています。 **ClaimType**要素に **Id**属性が含まれており、 それは要求の名前であります。 
 
 ```XML
 <BuildingBlocks>
@@ -56,8 +56,8 @@ ms.locfileid: "51568644"
 | Mask | 0:1 | 要求を表示するときに適用できる、文字をマスクするのに使用されるオプショナルな文字列。 たとえば、電話番号 324-232-4343 をXXX-XXX-4343 としてマスクすることができます。 |
 | UserHelpText | 0:1 | 要求の目的を理解するのにユーザーに役立つ種類の説明。 値を[ローカライズ](localization.md)することができます。 |
 | UserInputType | 0:1 | 要求の種類の要求データを手動で入力するときに、ユーザーが利用できるような入力コントロールの種類。 このページの後半で定義されている、ユーザーにより入力された種類を参照してください。 |
-| Restriction	 | 0:1 | 正規表現 (Regex) または許容される値の一覧など、この要求に対する値の制限。 値を[ローカライズ](localization.md)することができます。 |
-| PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参照。 **PredicateValidationReference**要素を使用すると、適切な形式のデータのみが入力されていることを確認する検証プロセスを実できます。 詳細については、[述語](predicates.md)を参照してください。 |
+| Restriction | 0:1 | 正規表現 (Regex) または許容される値の一覧など、この要求に対する値の制限。 値を[ローカライズ](localization.md)することができます。 |
+PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参照。 **PredicateValidationReference**要素を使用すると、適切な形式のデータのみが入力されていることを確認する検証プロセスを実できます。 詳細については、[述語](predicates.md)を参照してください。 |
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
@@ -89,7 +89,7 @@ ms.locfileid: "51568644"
 ```
 
 その結果、Azure AD B2C によって発行された JWT トークンでは、ClaimType 名 **surname** ではなく `family_name` が出力されます。
-
+ 
 ```JSON
 {
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
@@ -106,8 +106,8 @@ ms.locfileid: "51568644"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Type | はい | 要求マスクの種類です。 指定できる値: `Simple`および`Regex`。 `Simple`値では、要求の文字列の先頭部分に単純なテキスト マスクを適用することを示します。 `Regex`値が正規表現が全体として、要求の文字列に適用されることを示します。 `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
-| Regex | いいえ  | **種類**が`Regex`に設定されている場合、使用される正規表現を指定します。
+| type | はい | 要求マスクの種類です。 指定できる値: `Simple`および`Regex`。 `Simple`値では、要求の文字列の先頭部分に単純なテキスト マスクを適用することを示します。 `Regex`値が正規表現が全体として、要求の文字列に適用されることを示します。  `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
+| 正規表現 | いいえ  | **種類**が`Regex`に設定されている場合、使用される正規表現を指定します。
 
 次の例では **PhoneNumber** 要求を `Simple` マスクで構成します。
 
@@ -115,7 +115,7 @@ ms.locfileid: "51568644"
 <ClaimType Id="PhoneNumber">
   <DisplayName>Phone Number</DisplayName>
   <DataType>string</DataType>
-  <Mask Type="Simple">XXX-XXX-</Mask>
+  <Mask Type="Simple">XXX-XXX-</Mask>  
   <UserHelpText>Your telephone number.</UserHelpText>
 </ClaimType>
 ```
@@ -140,7 +140,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 ![マスクを使用する要求種類](./media/claimsschema/mask-regex.png)
 
 
-### <a name="restriction"></a>制限
+### <a name="restriction"></a>Restriction
 
 **制限**要素は、次の属性を含めることがあります。
 
@@ -155,7 +155,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 | Enumeration | 1:n | ドロップダウン リストの値など、要求に指定するオプションを選択するためにユーザーのユーザー インターフェイスで使用可能なオプションです。 |
 | Pattern | 1:1 | 使用できる正規表現。 |
 
-### <a name="enumeration"></a>列挙型
+### <a name="enumeration"></a>Enumeration
 
 **列挙型**要素には、次の属性が含まれています。
 
@@ -184,13 +184,13 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 ![市区町村ドロップダウン リスト](./media/claimsschema/dropdownsingleselect.png)
 
 
-### <a name="pattern"></a>パターン
+### <a name="pattern"></a>Pattern
 
 **パターン**要素には、次の属性が含まれることがあります。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| RegularExpression | はい | この種類の要求が有効になるのに一致する必要がある正規表現。 |
+| 正規表現 | はい | この種類の要求が有効になるのに一致する必要がある正規表現。 |
 | HelpText | いいえ  | この要求のパターンまたは正規表現。 |
 
 次の例では、**電子メール**要求を正規表現入力検証とヘルプ テキストとともに設定します。
@@ -297,7 +297,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
     <Enumeration Text="Green " Value="Green" SelectByDefault="false" />
     <Enumeration Text="Orange" Value="Orange" SelectByDefault="true" />
   </Restriction>
-</ClaimType>
+</ClaimType>    
 ```
 
 ### <a name="dropdownsingleselect"></a>DropdownSingleSelect
@@ -375,4 +375,4 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 </ClaimType>
 ```
 
-**列挙**値の一つを **responseMsg**要求に表示するには、`GetMappedValueFromLocalizedCollection`または`CreateStringClaim`要求の変換を使用します。 詳細については、[文字列要求の変換](string-transformations.md)をご覧ください。
+**列挙**値の一つを **responseMsg**要求に表示するには、`GetMappedValueFromLocalizedCollection`または`CreateStringClaim`要求の変換を使用します。 詳細については、[文字列要求の変換](string-transformations.md)をご覧ください。 
