@@ -223,7 +223,7 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 **暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されている非管理ディスクを持つ VM をマネージド ディスクに移行できますか?**
 
-[はい]
+はい。
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks と Storage Service Encryption
 
@@ -260,7 +260,7 @@ Azure Portal、Azure CLI、および PowerShell で、管理ディスクがい�
 
 **暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されている非管理ディスクを持つ VM をマネージド ディスクに変換できますか?**
 
-[はい]
+はい。
 
 **管理ディスクまたはスナップショットからエクスポートされた VHD も暗号化されますか?**
 

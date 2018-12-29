@@ -65,7 +65,7 @@ AD FS サーバーで PowerShell を開きます。 AutoCertificateRollover の�
 
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
->[!NOTE]
+>[!NOTE] 
 >AD FS 2.0 を使用している場合は、最初に Add-Pssnapin Microsoft.Adfs.Powershell を実行してください。
 
 ### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>手順 2: AD FS と Azure AD が同期されていることを確認する
@@ -74,7 +74,7 @@ AD FS Server で MSOnline PowerShell プロンプトを開き、Azure AD に接�
 > [!NOTE]
 > MSOL-Cmdlets は、MSOnline PowerShell モジュールの一部です。
 > PowerShell ギャラリーから MSOnline PowerShell モジュールを直接ダウンロードできます。
->
+> 
 >
 
     Install-Module MSOnline
@@ -113,11 +113,11 @@ Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"�
 
 **1.AD FS の AutoCertificateRollover プロパティが True に設定されている。** これは、有効期限が切れる前に、AD FS が新しいトークン署名証明書とトークン暗号化解除証明書を自動的に生成することを示します。
 
-**2.AD FS のフェデレーション メタデータへのパブリック アクセスが確保されている。** (社内ネットワークの外部の) パブリック インターネット上のコンピューターで次の URL に移動して、フェデレーション メタデータにパブリックにアクセスできることを確認します。
+**2.AD FS のフェデレーション メタデータへのパブリック アクセスが確保されている。**  (社内ネットワークの外部の) パブリック インターネット上のコンピューターで次の URL に移動して、フェデレーション メタデータにパブリックにアクセスできることを確認します。
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-この `(your_FS_name) `は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。 どちらの設定も適切であることを確認できた場合、他の作業は不要です。
+この `(your_FS_name) `は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。  どちらの設定も適切であることを確認できた場合、他の作業は不要です。  
 
 例: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 ## トークン署名証明書を手動で更新する <a name="manualrenew"></a>
@@ -173,7 +173,7 @@ Azure AD Connect を使用して AD FS ファームと Azure AD 信頼を構成�
 詳細については、「 [信頼の修復](how-to-connect-fed-management.md)」を参照してください。
 
 ## <a name="ad-fs-and-azure-ad-certificate-update-steps"></a>AD FS と Azure AD の証明書の更新手順
-トークン署名証明書は標準の X509 証明書であり、フェデレーション サーバーが発行するすべてのトークンに安全に署名するために使用されます。 トークン暗号化解除証明書は、標準の X509 証明書であり、受信トークンの暗号化解除に使用されます。
+トークン署名証明書は標準の X509 証明書であり、フェデレーション サーバーが発行するすべてのトークンに安全に署名するために使用されます。 トークン暗号化解除証明書は、標準の X509 証明書であり、受信トークンの暗号化解除に使用されます。 
 
 既定では、AD FS は、初期構成時にも、証明書の有効期限が近づいたときにも、トークン署名証明書とトークン暗号化解除証明書を自動的に生成するように構成されます。
 
