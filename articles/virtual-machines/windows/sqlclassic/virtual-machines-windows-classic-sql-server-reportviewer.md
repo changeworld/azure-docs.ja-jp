@@ -23,7 +23,7 @@ ms.lasthandoff: 11/07/2018
 ms.locfileid: "51250409"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Azure でホストされる Web サイトで ReportViewer を使用する
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 Microsoft Azure 仮想マシンに保存されたレポートを表示する Visual Studio ReportViewer コントロールを使用して、Microsoft Azure Web サイトを作成できます。 ReportViewer コントロールは、ASP.NET Web アプリケーション テンプレートを使用して作成する Web アプリケーション内にあります。
@@ -33,16 +33,16 @@ Microsoft Azure 仮想マシンに保存されたレポートを表示する Vis
 
 ReportViewer を Microsoft Azure Web サイトに組み込むには、次のタスクを完了する必要があります。
 
-* **追加する** 
-* **構成する** 
-* **発行する** 
+* **追加する**
+* **構成する**
+* **発行する**
 
 ## <a name="prerequisites"></a>前提条件
 「 [Azure Virtual Machines での SQL Server Business Intelligence](../classic/ps-sql-bi.md)」の「一般的な推奨事項とベスト プラクティス」セクションを参照してください。
 
 > [!NOTE]
 > ReportViewer コントロールは、Standard Edition 以上のエディションの Visual Studio に含まれています。 Web Developer Express Edition を使用している場合、ReportViewer ランタイム機能を使用するには、 [Microsoft Report Viewer 2012 Runtime](https://www.microsoft.com/download/details.aspx?id=35747) をインストールする必要があります。
-> 
+>
 > Microsoft Azure では、ローカル処理モードで構成された ReportViewer はサポートされません。
 
 ## <a name="adding-assemblies-to-the-deployment-package"></a>デプロイ パッケージにアセンブリを追加する
@@ -71,7 +71,7 @@ ASP.NET アプリケーションをオンプレミスでホストする場合、
 
 ### <a name="to-configure-for-localized-reportviewer-control"></a>ローカライズされた ReportViewer コントロール用に構成する
 1. 前の手順に従って、Microsoft Report Viewer 2012 Runtime 再頒布可能パッケージをダウンロードしてインストールします。
-2. プロジェクトに <language> フォルダーを作成し、関連付けられたリソース アセンブリ ファイルをそこにコピーします。 コピーするリソース アセンブリ ファイルは、**Microsoft.ReportViewer.Webforms.Resources.dll** と **Microsoft.ReportViewer.Common.Resources.dll** です。リソース アセンブリ ファイルを選択し、プロパティ ウィンドウで **[出力ディレクトリにコピー]** を **[常にコピーする]** に設定します。
+2. プロジェクトに \<language\> フォルダーを作成し、関連付けられたリソース アセンブリ ファイルをそこにコピーします。 コピーするリソース アセンブリ ファイルは、**Microsoft.ReportViewer.Webforms.Resources.dll** と **Microsoft.ReportViewer.Common.Resources.dll** です。リソース アセンブリ ファイルを選択し、プロパティ ウィンドウで **[出力ディレクトリにコピー]** を **[常にコピーする]** に設定します。
 3. Web プロジェクトのカルチャと UI カルチャを設定します。 ASP.NET Web ページのカルチャと UI カルチャを設定する方法の詳細については、「 [方法 : ASP.NET Web ページのグローバリゼーション用のカルチャおよび UI カルチャを設定する](https://go.microsoft.com/fwlink/?LinkId=237461)」を参照してください。
 
 ## <a name="configuring-authentication-and-authorization"></a>認証と承認を構成する
@@ -82,10 +82,10 @@ ASP.NET Web アプリケーションを Azure に発行する手順について�
 
 > [!IMPORTANT]
 > [Azure デプロイ プロジェクトの追加] または [Azure クラウド サービス プロジェクトの追加] コマンドがソリューション エクスプローラーのショートカット メニューに表示されない場合は、必要に応じてプロジェクトの [ターゲット フレームワーク] を .NET Framework 4 に変更してください。
-> 
+>
 > これら 2 つのコマンド機能は、実質的には同じです。 インストールされている Microsoft Azure SDK のバージョンに合わせて応じて、いずれか一方のコマンドがショートカット メニューに表示されます。
-> 
-> 
+>
+>
 
 ## <a name="resources"></a>リソース
 [Microsoft レポート](https://go.microsoft.com/fwlink/?LinkId=205399)
@@ -93,4 +93,3 @@ ASP.NET Web アプリケーションを Azure に発行する手順について�
 [Azure Virtual Machines での SQL Server Business Intelligence](../classic/ps-sql-bi.md)
 
 [ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](../classic/ps-sql-report.md)
-
