@@ -38,7 +38,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
 ## <a name="prerequisites"></a>前提条件
 
-+ ご使用の Azure アカウントと同じサインイン資格情報を使用するアクティブな [Microsoft Flow アカウント](https://flow.microsoft.com/documentation/sign-up-sign-in/)。 
++ ご使用の Azure アカウントと同じサインイン資格情報を使用するアクティブな [Microsoft Flow アカウント](https://flow.microsoft.com/documentation/sign-up-sign-in/)。
 + SharePoint。このフローのデータ ソースとして使用します。 SharePoint をまだお持ちでない場合、[Office 365 試用版](https://signup.microsoft.com/Signup?OfferId=467eab54-127b-42d3-b046-3844b860bebf&dl=O365_BUSINESS_PREMIUM&ali=1)へのサインアップ。
 + 「[関数の OpenAPI 定義の作成](functions-openapi-definition.md)」を完了している。
 
@@ -105,7 +105,6 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 > [!NOTE]
 > フローを他のユーザーと共有する場合は、そのフローを操作または使用する各ユーザーも API キーを入力して API に接続する必要があります。 この動作は将来変更される可能性があります。このトピックは、その変更に合わせて更新されます。
 
-
 ## <a name="create-a-flow"></a>フローを作成する
 
 これで、作成した SharePoint リストとカスタム コネクタを使用するフローを作成する準備ができました。
@@ -144,7 +143,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     ![条件で「true」を入力する](media/functions-flow-scenario/condition1-yes.png)
 
-    この値は、SharePoint リストでは `Yes` または `No` として表示されますが、`True` または `False` の*ブール値* として保存されます。 
+    この値は、SharePoint リストでは `Yes` または `No` として表示されますが、`True` または `False` の*ブール値* として保存されます。
 
 7. ページの上部にある **[フローの作成]** をクリックします。 定期的に **[フローの更新]** をクリックするようにしてください。
 
@@ -152,7 +151,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
 ### <a name="add-the-custom-connector"></a>カスタム コネクタを追加する
 
-次は、Azure 内の関数を呼び出すカスタム コネクタを追加します。 標準コネクタと同様に、フローにカスタム コネクタを追加します。 
+次は、Azure 内の関数を呼び出すカスタム コネクタを追加します。 標準コネクタと同様に、フローにカスタム コネクタを追加します。
 
 1. **[If yes] \(はいの場合\)** 分岐で、**[アクションの追加]** をクリックします。
 
@@ -182,7 +181,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     ![条件用のフィールドを選択する](media/functions-flow-scenario/condition2-field.png)
 
-6. 値 `Yes` を入力します。 関数から返されるメッセージが "はい" (修復する) か "いいえ" (修復しない) かに基づいて、次の **[If yes] \(はいの場合\)** 分岐または **[If no] \(いいえの場合\)** 分岐に進みます。 
+6. 値 `Yes` を入力します。 関数から返されるメッセージが "はい" (修復する) か "いいえ" (修復しない) かに基づいて、次の **[If yes] \(はいの場合\)** 分岐または **[If no] \(いいえの場合\)** 分岐に進みます。
 
     ![条件で「はい」を入力する](media/functions-flow-scenario/condition2-yes.png)
 
@@ -202,7 +201,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     ![Outlook で電子メールを送信する](media/functions-flow-scenario/outlook-send-email.png)
 
-3. **[電子メールの送信]** カードで、電子メールを作成します。 **"宛先"** フィールドに、ご自分の組織内の有効な名前を入力します。 次の図では、**[動的なコンテンツ]** ダイアログ ボックスのテキストとトークンの組み合わせからなるその他のフィールドを示します。 
+3. **[電子メールの送信]** カードで、電子メールを作成します。 **"宛先"** フィールドに、ご自分の組織内の有効な名前を入力します。 次の図では、**[動的なコンテンツ]** ダイアログ ボックスのテキストとトークンの組み合わせからなるその他のフィールドを示します。
 
     ![電子メールのフィールド](media/functions-flow-scenario/email-fields.png)
 
@@ -229,7 +228,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
     | **タイトル**           | Turbine 60 |
     | **LastServiceDate** | 08/04/2017 |
     | **MaxOutput**       | 2500 |
-    | **ServiceRequired** | [はい] |
+    | **ServiceRequired** | はい |
     | **EstimatedEffort** | 10 |
 
 3. **[Done]** をクリックします。
@@ -248,7 +247,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     実行が成功した場合は、次のページでフローの処理を確認できます。 何らかの理由で実行が失敗した場合は、次のページでトラブルシューティング情報が提供されます。
 
-6. フローの間に起こったことを確認するには、カードを展開します。 たとえば、関数への入力と関数からの出力を確認するには、**[Calculates costs]\(コストの計算\)** カードを展開します。 
+6. フローの間に起こったことを確認するには、カードを展開します。 たとえば、関数への入力と関数からの出力を確認するには、**[Calculates costs]\(コストの計算\)** カードを展開します。
 
     ![コストの計算の入力と出力](media/functions-flow-scenario/calculates-costs-outputs.png)
 
