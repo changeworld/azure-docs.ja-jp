@@ -97,7 +97,7 @@ linkedServices | エンドポイントに渡されるリンクされたサービ
 
 ```json
 "authentication":{
-   "type":"Basic,
+   "type":"Basic",
    "username":"****",
    "password":"****"
 }
