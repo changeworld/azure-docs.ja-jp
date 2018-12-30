@@ -520,8 +520,8 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
                         "properties": {
                             "subnet": {
                                 "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/virtualNetworks/', variables('vnetName'), '/subnets/subnet1')]"
-                            }
-                "loadBalancerInboundNatPools": [
+                            },
+                            "loadBalancerInboundNatPools": [
                                 {
                                     "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/loadBalancers/', variables('lbName'), '/inboundNatPools/natPool1')]"
                                 }
@@ -529,7 +529,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
                             "loadBalancerBackendAddressPools": [
                                 {
                                     "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/loadBalancers/', variables('lbName'), '/backendAddressPools/addressPool1')]"
-                                 }
+                                }
                             ]
                         }
                     }
@@ -567,18 +567,16 @@ IP アドレスは指定したサブネットから選択されます。
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
-    {
-        "name": "niconfig1",
-        "properties": {
-        "primary": true,
-        "enableAcceleratedNetworking" : true,
-        "ipConfigurations": [
+        {
+            "name": "niconfig1",
+            "properties": {
+                "primary": true,
+                "enableAcceleratedNetworking" : true,
+                "ipConfigurations": [
+                    ...
                 ]
             }
-            }
-        ]
         }
-    }
     ]
 }
 ```
@@ -717,7 +715,6 @@ Azure portal の Log Analytics ワークスペースに、必要な workspaceId 
   }
 ```
 
-
 ## <a name="virtual-machine-properties"></a>仮想マシン プロパティ
 
 ### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>複数の呼び出しを必要とせずに、各 VM のプロパティ情報を取得するにはどうすればよいですか。 たとえば、仮想マシン スケール セットに存在する 100 台の VM について、それぞれの障害ドメインを取得するにはどうすればよいですか。
@@ -744,4 +741,3 @@ Azure portal の Log Analytics ワークスペースに、必要な workspaceId 
 - 仮想マシン スケール セットをスケールアウトするよりも迅速に一連の VM を立ち上げたい。
   - このシナリオに関連して、独自の自動スケール エンジンを作成しており、エンドツーエンドのスケーリングを高速化したい。
 - 仮想マシン スケール セットが障害ドメインまたは更新ドメインに対して均等に分散されていない。 その原因として、VM を選択的に削除したか、過剰プロビジョニング後に VM を削除したことが考えられます。 仮想マシン スケール セットに対して `stop deallocate` の後に `start` を実行すると、障害ドメインまたは更新ドメインに VM が均等に分散されます。
-
