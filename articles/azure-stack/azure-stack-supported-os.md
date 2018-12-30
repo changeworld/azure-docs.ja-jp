@@ -58,18 +58,18 @@ Marketplace で入手可能として示されている Linux ディストリビ�
 
 | ディストリビューション | 説明 | 発行元 | マーケットプレース |
 | --- | --- | --- | --- | --- | --- |
-| CentOS-based 6.9 | 64 ビット | Rogue Wave | [はい] |
-| CentOS-based 7.4 | 64 ビット | Rogue Wave | [はい] |
-| ClearLinux | 64 ビット | ClearLinux.org | [はい] |
+| CentOS-based 6.9 | 64 ビット | Rogue Wave | はい |
+| CentOS-based 7.4 | 64 ビット | Rogue Wave | はい |
+| ClearLinux | 64 ビット | ClearLinux.org | はい |
 | Container Linux |  64 ビット | CoreOS | 安定版 |
-| Debian 8 "Jessie" | 64 ビット | credativ |  [はい] |
-| Debian 9 "Stretch" | 64 ビット | credativ | [はい] |
+| Debian 8 "Jessie" | 64 ビット | credativ |  はい |
+| Debian 9 "Stretch" | 64 ビット | credativ | はい |
 | Red Hat Enterprise Linux 7.x | 64 ビット | Red Hat |Bring your own image |
-| SLES 11SP4 | 64 ビット | SUSE | [はい] |
-| SLES 12SP3 | 64 ビット | SUSE | [はい] |
-| Ubuntu 14.04-LTS | 64 ビット | Canonical | [はい] |
-| Ubuntu 16.04-LTS | 64 ビット | Canonical | [はい] |
-| Ubuntu 18.04-LTS | 64 ビット | Canonical | [はい] |
+| SLES 11SP4 | 64 ビット | SUSE | はい |
+| SLES 12SP3 | 64 ビット | SUSE | はい |
+| Ubuntu 14.04-LTS | 64 ビット | Canonical | はい |
+| Ubuntu 16.04-LTS | 64 ビット | Canonical | はい |
+| Ubuntu 18.04-LTS | 64 ビット | Canonical | はい |
 
 Red Hat Enterprise Linux のサポート情報については、「[Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531)」(Red Hat と Azure Stack: よく寄せられる質問) を参照してください。
 
