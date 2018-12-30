@@ -1,6 +1,6 @@
 ---
 title: Azure Log Analytics の Alert Management ソリューション | Microsoft Docs
-description: 管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。  これは Log Analytics 内で生成されたアラートの統合に加えて、接続されている System Center Operations Manager 管理グループからのアラートを Log Analytics にインポートします。
+description: 管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。 これは Log Analytics 内で生成されたアラートの統合に加えて、接続されている System Center Operations Manager 管理グループからのアラートを Log Analytics にインポートします。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -24,20 +24,20 @@ ms.locfileid: "53341594"
 
 ![Alert Management icon](media/alert-management-solution/icon.png)
 
-Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があり、[Log Analytics によって作成された](../../azure-monitor/platform/alerts-overview.md)ものや、[Nagios や Zabbix からインポートされた](../../azure-monitor/learn/quick-collect-linux-computer.md)モノが含まれます。 アラートは、[接続された System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)からもインポートされます。
+Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。 アラートはさまざまなソースから取得されている可能性があり、[Log Analytics によって作成された](../../azure-monitor/platform/alerts-overview.md)ものや、[Nagios や Zabbix からインポートされた](../../azure-monitor/learn/quick-collect-linux-computer.md)モノが含まれます。 アラートは、[接続された System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)からもインポートされます。
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションでは、Log Analytics リポジトリ内の **Alert** タイプのすべてのレコードが分析されます。そのため、これらのレコードを収集するために必要な構成をすべて行う必要があります。
 
 - Log Analytics のアラートの場合は、[アラート ルールを作成](../../azure-monitor/platform/alerts-overview.md)して、リポジトリに直接アラート レコードを作成します。
 - Nagios と Zabbix のアラートの場合は、[これらのサーバーを構成](../../azure-monitor/learn/quick-collect-linux-computer.md)して、Log Analytics にアラートを送信します。
-- System Center Operations Manager のアラートの場合は、[Log Analytics ワークスペースに Operations Manager 管理グループを接続](../../azure-monitor/platform/om-agents.md)します。  System Center Operations Manager で作成されたすべてのアラートが Log Analytics にインポートされます。  
+- System Center Operations Manager のアラートの場合は、[Log Analytics ワークスペースに Operations Manager 管理グループを接続](../../azure-monitor/platform/om-agents.md)します。 System Center Operations Manager で作成されたすべてのアラートが Log Analytics にインポートされます。
 
 ## <a name="configuration"></a>構成
 [ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して、Log Analytics ワークスペースに Alert Management ソリューションを追加します。 さらに手動で構成する必要はありません。
 
 ## <a name="management-packs"></a>管理パック
-System Center Operations Manager 管理グループが Log Analytics ワークスペースに接続されている場合は、このソリューションを追加したときに次の管理パックが System Center Operations Manager にインストールされます。  これらの管理パックに伴う構成や保守は不要です。
+System Center Operations Manager 管理グループが Log Analytics ワークスペースに接続されている場合は、このソリューションを追加したときに次の管理パックが System Center Operations Manager にインストールされます。 これらの管理パックに伴う構成や保守は不要です。
 
 * Microsoft System Center Advisor Alert Management (Microsoft.IntelligencePacks.AlertManagement)
 
@@ -49,26 +49,25 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 
 | 接続先ソース | サポート | 説明 |
 |:--- |:--- |:--- |
-| [Windows エージェント](agent-windows.md) | いいえ  |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
-| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ  |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
-| [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md) |[はい] |Operations Manager エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから Log Analytics リポジトリに転送されます。 |
-
+| [Windows エージェント](agent-windows.md) | いいえ  |直接の Windows エージェントでは、アラートは生成されません。 Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
+| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ  |直接の Linux エージェントでは、アラートは生成されません。 Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
+| [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md) |はい |Operations Manager エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから Log Analytics リポジトリに転送されます。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
 - アラート レコードは、リポジトリに格納されるとすぐにソリューションで利用可能になります。
-- アラート データは 3 分おきに Operations Manager 管理グループから Log Analytics に送信されます。  
+- アラート データは 3 分おきに Operations Manager 管理グループから Log Analytics に送信されます。
 
 ## <a name="using-the-solution"></a>ソリューションの使用
-Log Analytics ワークスペースに Alert Management ソリューションを追加すると、ダッシュボードに **[Alert Management]** タイルが追加されます。  このタイルには、過去 24 時間に生成された現在アクティブなアラートの数とグラフが表示されます。  この時間範囲を変更することはできません。
+Log Analytics ワークスペースに Alert Management ソリューションを追加すると、ダッシュボードに **[Alert Management]** タイルが追加されます。 このタイルには、過去 24 時間に生成された現在アクティブなアラートの数とグラフが表示されます。 この時間範囲を変更することはできません。
 
 ![Alert Management tile](media/alert-management-solution/tile.png)
 
-**[Alert Management]** (アラート管理) タイルをクリックすると、**[Alert Management]** (アラート管理) ダッシュボードが表示されます。  ダッシュボードには、次の表に示した列が存在します。  それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。  ログ検索を実行してアラート全件を取得するには、列の一番下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
+**[Alert Management]** (アラート管理) タイルをクリックすると、**[Alert Management]** (アラート管理) ダッシュボードが表示されます。 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。 ログ検索を実行してアラート全件を取得するには、列の一番下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
 
 | 列 | 説明 |
 |:--- |:--- |
-| 重大なアラート |重大度が "重大" であるすべてのアラートがその名前別に表示されます。  アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
-| 警告アラート |重大度が "警告" であるすべてのアラートがその名前別に表示されます。  アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
+| 重大なアラート |重大度が "重大" であるすべてのアラートがその名前別に表示されます。 アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
+| 警告アラート |重大度が "警告" であるすべてのアラートがその名前別に表示されます。 アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
 | アクティブ SCOM アラート |Operations Manager によって収集された *[Closed]\(終了\)* 状態を除くすべてのアラートが、その生成元ごとにグループ化されて表示されます。 |
 | すべてのアクティブなアラート |重大度に関係なくすべてのアラートがその名前別に表示されます。 対象となるのは *[Closed]\(終了\)* 状態以外の Operations Manager アラートだけです。 |
 
@@ -76,11 +75,10 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 ![Alert Management dashboard](media/alert-management-solution/dashboard.png)
 
-
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
-アラート管理ソリューションでは、 **Alert**タイプのすべてのレコードが分析されます。  Log Analytics によって生成されたアラートや、Nagios または Zabbix から収集されたアラートが直接収集されるわけではありません。
+アラート管理ソリューションでは、 **Alert**タイプのすべてのレコードが分析されます。 Log Analytics によって生成されたアラートや、Nagios または Zabbix から収集されたアラートが直接収集されるわけではありません。
 
-アラートは System Center Operations Manager からインポートされ、タイプを **Alert**、SourceSystem を **OpsManager** として、それぞれ対応するレコードが作成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  
+アラートは System Center Operations Manager からインポートされ、タイプを **Alert**、SourceSystem を **OpsManager** として、それぞれ対応するレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
 | プロパティ | 説明 |
 |:--- |:--- |
@@ -106,7 +104,7 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 | TimeResolved |アラートが解決された日付と時刻。 アラートが未解決の場合は空になります。 |
 
 ## <a name="sample-log-searches"></a>サンプル ログ検索
-以下の表は、このソリューションによって収集されたアラート レコードを探すログ検索の例です。 
+以下の表は、このソリューションによって収集されたアラート レコードを探すログ検索の例です。
 
 | クエリ | 説明 |
 |:---|:---|
@@ -117,8 +115,6 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 | Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(24h) and AlertState == "Closed" |過去 24 時間以内に発生したものの、既に解決されている重大なアラート |
 | Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(1d) &#124; summarize Count = count() by AlertSeverity |過去 1 日以内に発生したアラートを重大度に基づいてグループ化 |
 | Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(1d) &#124; sort by RepeatCount desc |過去 1 日以内に発生したアラートを RepeatCount の値で並べ替え |
-
-
 
 ## <a name="next-steps"></a>次の手順
 * Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../../azure-monitor/platform/alerts-overview.md) に関するページを参照してください。
