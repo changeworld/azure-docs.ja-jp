@@ -32,7 +32,7 @@ ms.locfileid: "41954859"
 
 テンプレートを検証するには、最初にクラウド機能ファイルをビルドしてから検証ツールを実行します。 Azure Stack ツールから、次の PowerShell モジュールを使用します。
 
-- **CloudCapabilities** フォルダー内:<br>         AzureRM.CloudCapabilities.psm1 は、Azure Stack クラウド内のサービスとバージョンを表すクラウド機能 JSON ファイルを作成します。
+- **CloudCapabilities** フォルダー内:<br>AzureRM.CloudCapabilities.psm1 は、Azure Stack クラウド内のサービスとバージョンを表すクラウド機能 JSON ファイルを作成します。
 - **TemplateValidator** フォルダー内:<br>
 AzureRM.TemplateValidator.psm1 は、クラウド機能 JSON ファイルを使用して、Azure Stack へのデプロイ用テンプレートをテストします。
 
@@ -85,9 +85,9 @@ AzureRM.TemplateValidator.psm1 は、クラウド機能 JSON ファイルを使�
 
 | パラメーター | 説明 | 必須 |
 | ----- | -----| ----- |
-| TemplatePath | Azure Resource Manager テンプレートを再帰的に検索するパスを指定します | [はい] | 
+| TemplatePath | Azure Resource Manager テンプレートを再帰的に検索するパスを指定します | はい |
 | TemplatePattern | 照合するテンプレート ファイルの名前を指定します。 | いいえ  |
-| CapabilitiesPath | クラウド機能 JSON ファイルのパスを指定します | [はい] | 
+| CapabilitiesPath | クラウド機能 JSON ファイルのパスを指定します | はい |
 | IncludeComputeCapabilities | VM サイズや VM 拡張機能などの IaaS リソースの評価が含まれます | いいえ  |
 | IncludeStorageCapabilities | SKU の種類などのストレージ リソースの評価が含まれます | いいえ  |
 | レポート | 生成される HTML レポートの名前を指定します | いいえ  |
