@@ -84,9 +84,9 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | condition | いいえ  | このデプロイの間にリソースがプロビジョニングされるかどうかを示すブール値。 `true` の場合、デプロイ時にリソースが作成されます。 `false` の場合、このデプロイでは、リソースはスキップされます。 |
-| apiVersion |[はい] |リソースの作成に使用する REST API バージョン。 |
-| type |[はい] |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 |
-| name |[はい] |リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。 また、リソース名を外部に公開する Azure サービスでは、名前が別の ID になりすますことがないように、その名前を検証します。 |
+| apiVersion |はい |リソースの作成に使用する REST API バージョン。 |
+| type |はい |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 |
+| name |はい |リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。 また、リソース名を外部に公開する Azure サービスでは、名前が別の ID になりすますことがないように、その名前を検証します。 |
 | location |多様 |指定されたリソースのサポートされている地理的な場所。 利用可能な任意の場所を選択できますが、一般的に、ユーザーに近い場所を選択します。 また、通常、相互に対話するリソースを同じリージョンに配置します。 ほとんどのリソースの種類では場所が必要となりますが、場所を必要としない種類 (ロールの割り当てなど) もあります。 |
 | tags |いいえ  |リソースに関連付けられたタグ。 サブスクリプション間でリソースを論理的に編成するためのタグを適用します。 |
 | コメント |いいえ  |テンプレート内にドキュメント化するリソースについてのメモ。 |
@@ -95,7 +95,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | properties |いいえ  |リソース固有の構成設定。 properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値と同じです。 コピー配列を指定して、1 つのプロパティの複数のインスタンスを作成することもできます。 |
 | sku | いいえ  | 一部のリソースでは、デプロイする SKU を定義する値が許可されます。 たとえば、ストレージ アカウントの冗長性の種類を指定することができます。 |
 | kind | いいえ  | 一部のリソースでは、デプロイするリソースの種類を定義する値が許可されます。 たとえば、作成する Cosmos DB の種類を指定することができます。 |
-| プラン | いいえ  | 一部のリソースでは、デプロイするプランを定義する値が許可されます。 たとえば、仮想マシンのマーケットプレース イメージを指定することができます。 | 
+| プラン | いいえ  | 一部のリソースでは、デプロイするプランを定義する値が許可されます。 たとえば、仮想マシンのマーケットプレース イメージを指定することができます。 |
 | resources |いいえ  |定義されているリソースに依存する子リソース。 親リソースのスキーマで許可されているリソースの種類のみを指定します。 子リソースの完全修飾型には親リソースの種類が含まれます (例: **Microsoft.Web/sites/extensions**)。 親リソースへの依存関係は示されません。 この依存関係は明示的に定義する必要があります。 |
 
 ## <a name="condition"></a>条件
@@ -137,7 +137,7 @@ Resource Manager では、一般に、次の 3 種類のリソース名を使用
 
 データ アクセス エンドポイントを持つリソースの種類に対しては、一意のリソース名を指定します。 一意の名前にする必要がある一般的なリソースの種類には次のようなものがあります。
 
-* Azure Storage<sup>1</sup> 
+* Azure Storage<sup>1</sup>
 * Azure App Service の Web Apps の機能
 * SQL Server
 * Azure Key Vault
@@ -162,7 +162,7 @@ Resource Manager では、一般に、次の 3 種類のリソース名を使用
 
 ```json
 "parameters": {
-    "vmName": { 
+    "vmName": {
         "type": "string",
         "defaultValue": "demoLinuxVM",
         "metadata": {
@@ -184,7 +184,7 @@ Resource Manager では、一般に、次の 3 種類のリソース名を使用
 ```
 
 ## <a name="location"></a>場所
-テンプレートをデプロイするときに、各リソースの場所を指定する必要があります。 場所ごとに、異なるリソースの種類がサポートされます。 特定のリソースの種類について、サブスクリプションで利用できる場所の一覧を表示するには、Azure PowerShell または Azure CLI を使用します。 
+テンプレートをデプロイするときに、各リソースの場所を指定する必要があります。 場所ごとに、異なるリソースの種類がサポートされます。 特定のリソースの種類について、サブスクリプションで利用できる場所の一覧を表示するには、Azure PowerShell または Azure CLI を使用します。
 
 次の例では、PowerShell を使用して、`Microsoft.Web\sites` リソースの種類の場所を取得しています。
 
@@ -198,7 +198,7 @@ Resource Manager では、一般に、次の 3 種類のリソース名を使用
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-サポートされるリソースの場所を確認した後は、テンプレートにその場所を設定します。 この値を設定する最も簡単な方法は、リソースの種類をサポートしている場所にリソース グループを作成し、各場所を `[resourceGroup().location]` に設定することです。 テンプレートやパラメーターの値は変更せずに、別の場所のリソース グループにテンプレートを再デプロイすることができます。 
+サポートされるリソースの場所を確認した後は、テンプレートにその場所を設定します。 この値を設定する最も簡単な方法は、リソースの種類をサポートしている場所にリソース グループを作成し、各場所を `[resourceGroup().location]` に設定することです。 テンプレートやパラメーターの値は変更せずに、別の場所のリソース グループにテンプレートを再デプロイすることができます。
 
 次の例では、リソース グループと同じ場所にデプロイされたストレージ アカウントを示しています。
 
@@ -296,7 +296,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
   "name": "exampleserver",
   "type": "Microsoft.Sql/servers",
   "apiVersion": "2014-04-01",
-  "resources": [ 
+  "resources": [
   ],
   ...
 },
@@ -314,7 +314,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 {resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
 ```
 
-例: 
+例:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`は正しい`Microsoft.Compute/virtualMachines/extensions/myVM/myExt`は正しくない
 
@@ -373,7 +373,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
    ```json
    "osDisk": {
-       "name": "osdisk", 
+       "name": "osdisk",
        "vhd": {
            "uri":"[concat(reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts/', parameters('existingStorageAccountName')), '2016-01-01').primaryEndpoints.blob,  variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'),'.vhd')]"
        }
@@ -427,8 +427,8 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
    
    > [!NOTE]
    > シークレット情報を VM と拡張機能にパラメーターとして渡すときに暗号化されるように、関連する拡張機能の **protectedSettings** プロパティを使用する必要があります。
-   > 
-   > 
+   >
+   >
 
 
 ## <a name="next-steps"></a>次の手順
