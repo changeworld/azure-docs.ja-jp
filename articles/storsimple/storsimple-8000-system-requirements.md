@@ -47,7 +47,6 @@ Microsoft Azure StorSimple へようこそ。 この記事では、StorSimple �
 > [!NOTE]
 > 現在、IBM AIX は StorSimple ではサポートされていません。
 
-
 ## <a name="software-requirements-for-optional-components"></a>オプション コンポーネントのソフトウェア要件用のソフトウェア要件
 
 オプションの StorSimple コンポーネント (StorSimple Snapshot Manager および SharePoint 用 StorSimple アダプター) のソフトウェア要件を次に示します。
@@ -64,10 +63,10 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 | ポート番号<sup>1,2</sup> | インまたはアウト | ポート範囲 | 必須 | メモ |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |アウト |WAN |いいえ  |<ul><li>送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |アウト |WAN |[はい] |<ul><li>送信ポートは、クラウドのデータへのアクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li><li>このポートは、ガベージ コレクション用のコントローラーでも使用されます。</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |アウト |WAN |はい |<ul><li>送信ポートは、クラウドのデータへのアクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li><li>このポートは、ガベージ コレクション用のコントローラーでも使用されます。</li></ul> |
 | UDP 53 (DNS) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
 | UDP 123 (NTP) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
-| TCP 9354 |アウト |WAN |[はい] |送信ポートは、StorSimple デバイス マネージャー サービスと通信するために StorSimple デバイスによって使用されます。 |
+| TCP 9354 |アウト |WAN |はい |送信ポートは、StorSimple デバイス マネージャー サービスと通信するために StorSimple デバイスによって使用されます。 |
 | 3260 (iSCSI) |イン |LAN |いいえ  |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
 | 5985 |イン |LAN |いいえ  |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 | 5986 |イン |LAN |いいえ  |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
@@ -81,7 +80,6 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 > [!IMPORTANT]
 > StorSimple デバイスと Azure 間でファイアウォールが SSL トラフィックの変更や暗号化解除を行わないことを確認します。
 
-
 ### <a name="url-patterns-for-firewall-rules"></a>ファイアウォール ルールの URL パターン
 
 多くの場合、ネットワーク管理者は、受信トラフィックと送信トラフィックをフィルターする URL パターンに基づいて、高度なファイアウォール ルールを構成できます。 StorSimple デバイスと StorSimple デバイス マネージャー サービスは、Azure Service Bus、Azure Active Directory Access Control、ストレージ アカウント、Microsoft Update サーバーなど、他の Microsoft アプリケーションに依存しています。 その Microsoft アプリケーションと関連付けられた URL パターンを使用してファイアウォール ルールを構成できます。 Microsoft アプリケーションに関連付けられた URL パターンは変化する可能性がある点を理解することが重要です。 これにより、ネットワーク管理者は必要に応じて StorSimple のファイアウォール ルールを監視し更新する必要があります。
@@ -90,7 +88,6 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 
 > [!NOTE]
 > デバイスの (ソース) IP は、常にすべての有効なネットワーク インターフェイスに合わせて設定するようにします。 宛先 IP は、[Azure データセンターの IP 範囲](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)に合わせて設定するようにします。
-
 
 #### <a name="url-patterns-for-azure-portal"></a>Azure ポータルの URL パターン
 
@@ -135,7 +132,6 @@ Update 2 以降のバージョンに使用されるルーティング メトリ�
     | Data 3  | 4            | 40                       |
     | Data 4  | 5            | 50                       |
     | Data 5  | 6            | 60                       |
-
 
 * クラウド トラフィックがネットワーク インターフェイスを介してルーティングされる順序は、次のとおりです。
   
