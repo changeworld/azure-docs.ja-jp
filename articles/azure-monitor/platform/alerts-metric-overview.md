@@ -85,7 +85,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - サブスクリプション内の 1 つまたは複数のリソース グループ内の (1 つの Azure リージョン内の) すべての仮想マシン
 - 1 つのサブスクリプション内の (1 つの Azure リージョン内の) すべての仮想マシン
 
-Azure portal では現在、複数のリソースを監視するメトリック アラート ルールの作成はサポートされていません。 そのようなルールは [Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md#resource-manager-template-for-metric-alert-that-monitors-multiple-resources)を使って作成できます。 仮想マシンごとに個別の通知が届きます。 
+Azure portal では現在、複数のリソースを監視するメトリック アラート ルールの作成はサポートされていません。 そのようなルールは [Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md#resource-manager-template-for-metric-alert-that-monitors-multiple-resources)を使って作成できます。 仮想マシンごとに個別の通知が届きます。
 
 ## <a name="typical-latency"></a>一般的な待機時間
 
@@ -99,36 +99,36 @@ Azure portal では現在、複数のリソースを監視するメトリック 
 
 |クラシック メトリック アラートでサポートされているリソースの種類 | メトリック アラートでサポートされている |
 |-------------------------------------------------|----------------------------|
-| Microsoft.ApiManagement/service | [はい] |
-| Microsoft.Batch/batchAccounts| [はい]|
-|Microsoft.Cache/redis| [はい]
+| Microsoft.ApiManagement/service | はい |
+| Microsoft.Batch/batchAccounts| はい|
+|Microsoft.Cache/redis| はい
 |Microsoft.ClassicCompute/virtualMachines | いいえ  |
 |Microsoft.ClassicCompute/domainNames/slots/roles | いいえ |
 |Microsoft.CognitiveServices/accounts | いいえ  |
-|Microsoft.Compute/virtualMachines | [はい]|
-|Microsoft.Compute/virtualMachineScaleSets| [はい]|
+|Microsoft.Compute/virtualMachines | はい|
+|Microsoft.Compute/virtualMachineScaleSets| はい|
 |Microsoft.ClassicStorage/storageAccounts| いいえ  |
-|Microsoft.DataFactory/datafactories | [はい]|
-|Microsoft.DBforMySQL/servers| [はい]|
-|Microsoft.DBforPostgreSQL/servers| [はい]|
+|Microsoft.DataFactory/datafactories | はい|
+|Microsoft.DBforMySQL/servers| はい|
+|Microsoft.DBforPostgreSQL/servers| はい|
 |Microsoft.Devices/IotHubs | いいえ |
 |Microsoft.DocumentDB/databaseAccounts| いいえ |
-|Microsoft.EventHub/namespaces | [はい]|
-|Microsoft.Logic/workflows | [はい]|
-|Microsoft.Network/loadBalancers |[はい]|
-|Microsoft.Network/publicIPAddresses| [はい]|
-|Microsoft.Network/applicationGateways| [はい]|
-|Microsoft.Network/expressRouteCircuits| [はい]|
-|Microsoft.Network/trafficManagerProfiles | [はい]|
+|Microsoft.EventHub/namespaces | はい|
+|Microsoft.Logic/workflows | はい|
+|Microsoft.Network/loadBalancers |はい|
+|Microsoft.Network/publicIPAddresses| はい|
+|Microsoft.Network/applicationGateways| はい|
+|Microsoft.Network/expressRouteCircuits| はい|
+|Microsoft.Network/trafficManagerProfiles | はい|
 |Microsoft.Search/searchServices | いいえ |
 |Microsoft.ServiceBus/namespaces| いいえ |
-|Microsoft.Storage/storageAccounts | [はい]|
-|Microsoft.StreamAnalytics/streamingjobs| [はい]|
-|Microsoft.TimeSeriesInsights/environments | [はい]|
-|Microsoft. Web/serverfarms | [はい] |
-|Microsoft. Web/sites (関数を除く) | [はい]|
+|Microsoft.Storage/storageAccounts | はい|
+|Microsoft.StreamAnalytics/streamingjobs| はい|
+|Microsoft.TimeSeriesInsights/environments | はい|
+|Microsoft. Web/serverfarms | はい |
+|Microsoft. Web/sites (関数を除く) | はい|
 |Microsoft. Web/hostingEnvironments/multiRolePools | いいえ |
-|Microsoft. Web/hostingEnvironments/workerPools| いいえ 
+|Microsoft. Web/hostingEnvironments/workerPools| いいえ
 |Microsoft.SQL/Servers | いいえ |
 
 ## <a name="next-steps"></a>次の手順
