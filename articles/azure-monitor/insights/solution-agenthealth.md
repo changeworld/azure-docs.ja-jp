@@ -20,26 +20,25 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 12/13/2018
 ms.locfileid: "53335961"
 ---
-#  <a name="agent-health-solution-in-azure"></a>Azure での Agent Health ソリューション
-Azure の Agent Health ソリューションを使用すると、Log Analytics ワークスペースに対して、または Log Analytics に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、運用データを送信しているエージェントと応答していないエージェントを効率的に把握できます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
+# <a name="agent-health-solution-in-azure"></a>Azure での Agent Health ソリューション
+Azure の Agent Health ソリューションを使用すると、Log Analytics ワークスペースに対して、または Log Analytics に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、運用データを送信しているエージェントと応答していないエージェントを効率的に把握できます。 また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。
 
 ## <a name="prerequisites"></a>前提条件
-このソリューションをデプロイする前に、現在サポートされている [Windows エージェント](../../log-analytics/log-analytics-windows-agent.md)が、Log Analytics ワークスペースに対して、またはワークスペースに統合されている [Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)に対して報告を行っていることを確認してください。    
+このソリューションをデプロイする前に、現在サポートされている [Windows エージェント](../../log-analytics/log-analytics-windows-agent.md)が、Log Analytics ワークスペースに対して、またはワークスペースに統合されている [Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)に対して報告を行っていることを確認してください。
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 このソリューションは次のリソースで構成されています。これらのリソースは、ワークスペースに追加され、エージェントに直接接続されるか、Operations Manager に接続された管理グループに接続されます。
 
 ### <a name="management-packs"></a>管理パック
-System Center Operations Manager 管理グループが Log Analytics ワークスペースに接続されている場合は、以下の管理パックが Operations Manager にインストールされます。  これらの管理パックは、このソリューションを追加した後、直接接続された Windows コンピューターにもインストールされます。 管理パックに伴って構成や管理が必要となるものはありません。
+System Center Operations Manager 管理グループが Log Analytics ワークスペースに接続されている場合は、以下の管理パックが Operations Manager にインストールされます。 これらの管理パックは、このソリューションを追加した後、直接接続された Windows コンピューターにもインストールされます。 管理パックに伴って構成や管理が必要となるものはありません。
 
 * Microsoft System Center Advisor HealthAssessment Direct Channel インテリジェンス パック (Microsoft.IntelligencePacks.HealthAssessmentDirect)
-* Microsoft System Center Advisor HealthAssessment Server Channel インテリジェンス パック (Microsoft.IntelligencePacks.HealthAssessmentViaServer)  
+* Microsoft System Center Advisor HealthAssessment Server Channel インテリジェンス パック (Microsoft.IntelligencePacks.HealthAssessmentViaServer)
 
 ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」を参照してください。
 
 ## <a name="configuration"></a>構成
 [ソリューションの追加](solutions.md)に関するページの手順に従って、Agent Health ソリューションを Log Analytics ワークスペースに追加します。 さらに手動で構成する必要はありません。
-
 
 ## <a name="data-collection"></a>データ収集
 ### <a name="supported-agents"></a>サポートされているエージェント
@@ -47,13 +46,13 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| Windows エージェント | [はい] | ハートビート イベントは、直接の Windows エージェントから収集されます。|
-| System Center Operations Manager 管理グループ | [はい] | ハートビート イベントは、管理グループに対して報告を行うエージェントから 60 秒ごとに収集されて Log Analytics に転送されます。 Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 ハートビート イベント データは管理グループから Log Analytics リポジトリに転送されます。|
+| Windows エージェント | はい | ハートビート イベントは、直接の Windows エージェントから収集されます。|
+| System Center Operations Manager 管理グループ | はい | ハートビート イベントは、管理グループに対して報告を行うエージェントから 60 秒ごとに収集されて Log Analytics に転送されます。 Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 ハートビート イベント データは管理グループから Log Analytics リポジトリに転送されます。|
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 Log Analytics ワークスペースに Agent Health ソリューションを追加すると、ダッシュボードに **[Agent Health]** タイルが追加されます。 このタイルには、エージェントの総数と直近 24 時間応答していないエージェントの数が表示されます。<br><br> ![ダッシュボードの Agent Health ソリューション タイル](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
-**[Agent Health]** タイルをクリックすると、**[Agent Health]** ダッシュボードが開きます。  ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間の範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してイベント全件を取得するには、各列の右下にある **[すべて表示]** を選択するか、列ヘッダーをクリックします。
+**[Agent Health]** タイルをクリックすると、**[Agent Health]** ダッシュボードが開きます。 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間の範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してイベント全件を取得するには、各列の右下にある **[すべて表示]** を選択するか、列ヘッダーをクリックします。
 
 | 列 | 説明 |
 |--------|-------------|
@@ -66,13 +65,13 @@ Log Analytics ワークスペースに Agent Health ソリューションを追�
 | Geo-location of Agents (エージェントの地理的な位置) | エージェントが存在する国の区分と、それぞれの国でインストールされているエージェントの総数。|
 | Count of Gateways Installed (インストールされたゲートウェイの数) | Log Analytics ゲートウェイがインストールされているサーバーの数とその一覧。|
 
-![Agent Health ソリューション ダッシュボードの例](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  
+![Agent Health ソリューション ダッシュボードの例](./media/solution-agenthealth/agenthealth-solution-dashboard.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
-このソリューションによって Log Analytics ワークスペースに作成されるレコードの種類は 1 つです。  
+このソリューションによって Log Analytics ワークスペースに作成されるレコードの種類は 1 つです。
 
 ### <a name="heartbeat-records"></a>ハートビート レコード
-**Heartbeat** という種類のレコードが作成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  
+**Heartbeat** という種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
 | プロパティ | 説明 |
 | --- | --- |
@@ -92,7 +91,7 @@ Log Analytics ワークスペースに Agent Health ソリューションを追�
 | RemoteIPLongitude | コンピューターの地理的位置の経度。|
 | RemoteIPLatitude | コンピューターの地理的位置の緯度。|
 
-Operations Manager 管理サーバーに対して報告を行う各エージェントからは 2 つのハートビートが送信され、サブスクリプションで有効にした Log Analytics のデータ ソースとソリューションによっては、SCAgentChannel プロパティが **Direct** と **SCManagementServer** の両方の値を取ります。 ソリューションからのデータは、Operations Manager 管理サーバーから Log Analytics に直接送信される場合と、エージェントで収集されるデータのボリューム上、エージェントから Log Analytics に直接送信される場合とがあることを思い出してください。 この値が **SCManagementServer** であるハートビート イベントの場合、データは実質的に管理サーバーによってアップロードされるため、ComputerIP の値は、管理サーバーの IP アドレスになります。  SCAgentChannel が **Direct** に設定されているハートビートの場合は、エージェントのパブリック IP アドレスになります。  
+Operations Manager 管理サーバーに対して報告を行う各エージェントからは 2 つのハートビートが送信され、サブスクリプションで有効にした Log Analytics のデータ ソースとソリューションによっては、SCAgentChannel プロパティが **Direct** と **SCManagementServer** の両方の値を取ります。 ソリューションからのデータは、Operations Manager 管理サーバーから Log Analytics に直接送信される場合と、エージェントで収集されるデータのボリューム上、エージェントから Log Analytics に直接送信される場合とがあることを思い出してください。 この値が **SCManagementServer** であるハートビート イベントの場合、データは実質的に管理サーバーによってアップロードされるため、ComputerIP の値は、管理サーバーの IP アドレスになります。 SCAgentChannel が **Direct** に設定されているハートビートの場合は、エージェントのパブリック IP アドレスになります。
 
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 次の表は、このソリューションによって収集されたレコードを探すログ検索の例です。
@@ -112,9 +111,6 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |エージェントの地理的な位置 |
 | Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |インストールされている Log Analytics ゲートウェイの数 |
 
-
-
-
 ## <a name="next-steps"></a>次の手順
 
-* Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../../azure-monitor/platform/alerts-overview.md) に関するページを参照してください。 
+* Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../../azure-monitor/platform/alerts-overview.md) に関するページを参照してください。
