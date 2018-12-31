@@ -25,17 +25,17 @@ ms.locfileid: "53189202"
 ![キャパシティとパフォーマンスのシンボル](./media/capacity-performance/capacity-solution.png)
 
 > [!NOTE]
-> Capacity and Performance ソリューションは非推奨になりました。  このソリューションを既にインストール済みのユーザーは引き続き使用できますが、新しいワークスペースに Capacity and Performance を追加することはできません。
+> Capacity and Performance ソリューションは非推奨になりました。 このソリューションを既にインストール済みのユーザーは引き続き使用できますが、新しいワークスペースに Capacity and Performance を追加することはできません。
 
 Log Analytics の容量とパフォーマンス ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。 このソリューションでは、Hyper-V ホストとそのホストで実行中の VM に関して (CPU、メモリ、およびディスクの) 全体としての使用状況が表示されるため、Hyper-V 環境の状況を把握できます。 すべてのホストとそのホストで実行している VM について、CPU、メモリ、ディスクに関するメトリックが収集されます。
 
 このソリューションでは次のことが可能です。
 
--   CPU とメモリの使用率が上位のホストと下位のホストをそれぞれ表示する
--   CPU とメモリの使用率が上位の VM と下位の VM をそれぞれ表示する
--   IOPS とスループットの使用率が上位の VM と下位の VM をそれぞれ表示する
--   VM を実行しているホストを表示する
--   クラスター共有ボリュームに含まれるディスクをスループット、IOPS、待機時間の観点から評価し、上位のものを表示する
+- CPU とメモリの使用率が上位のホストと下位のホストをそれぞれ表示する
+- CPU とメモリの使用率が上位の VM と下位の VM をそれぞれ表示する
+- IOPS とスループットの使用率が上位の VM と下位の VM をそれぞれ表示する
+- VM を実行しているホストを表示する
+- クラスター共有ボリュームに含まれるディスクをスループット、IOPS、待機時間の観点から評価し、上位のものを表示する
 - グループに基づくカスタマイズとフィルタリング
 
 > [!NOTE]
@@ -48,15 +48,14 @@ Log Analytics の容量とパフォーマンス ソリューションは、Hyper
 
 | 接続先ソース | サポート | 説明 |
 |---|---|---|
-| [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | [はい] | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
+| [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
 | [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ     | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
-| [SCOM 管理グループ](../../azure-monitor/platform/om-agents.md) | [はい] |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから Log Analytics への直接接続は必要ありません。|
+| [SCOM 管理グループ](../../azure-monitor/platform/om-agents.md) | はい |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから Log Analytics への直接接続は必要ありません。|
 | [Azure Storage アカウント](../../azure-monitor/platform/collect-azure-metrics-logs.md) | いいえ  | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
 
 ## <a name="prerequisites"></a>前提条件
 
 - 仮想マシンではなく Windows Server 2012 以降の Hyper-V ホストに、Windows エージェントまたは Operations Manager エージェントをインストールする必要があります。
-
 
 ## <a name="configuration"></a>構成
 
@@ -72,7 +71,6 @@ SCOM 管理グループが Log Analytics ワークスペースに接続されて
 
 1201 イベントは、次のようになります。
 
-
 ```
 New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", version:"1.10.3190.0" received.
 ```
@@ -86,7 +84,6 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 容量とパフォーマンス ソリューションをワークスペースに追加すると、[概要] ダッシュボードに [キャパシティとパフォーマンス] が追加されます。 このタイルには、現時点でアクティブになっている Hyper-V ホストと仮想マシンのうち、選択した期間に監視対象となっていたものの数が表示されます。
 
 ![[キャパシティとパフォーマンス] タイル](./media/capacity-performance/capacity-tile.png)
-
 
 ### <a name="review-utilization"></a>使用率の確認
 
@@ -106,11 +103,9 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
     - **[合計待機時間]** クラスター化共有ボリュームでの待ち時間の合計が表示されます。
 - **[ホストの密度]** 最上部にあるタイルで、このソリューションで利用可能なホストと仮想マシンの合計数が表示されます。 ログ検索で追加の詳細を確認するには、最上部のタイルをクリックします。 このタイルにはほかにも、全ホストの一覧と、それぞれにホストされている仮想マシンの数が表示されます。 VM に関するログ検索の結果を確認するには、ホストをクリックします。
 
-
 ![ダッシュボードの [ホスト] ブレード](./media/capacity-performance/dashboard-hosts.png)
 
 ![ダッシュボードの [仮想マシン] ブレード](./media/capacity-performance/dashboard-vms.png)
-
 
 ### <a name="evaluate-performance"></a>パフォーマンスの評価
 
@@ -118,11 +113,9 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 このソリューションはつまるところ、パフォーマンス カウンターなどの多種多様な情報源から容量とパフォーマンスのデータを収集するものです。 収集した容量とパフォーマンスに関するデータは、このソリューションでさまざまな形で提示されます。このデータを、「[Measuring Performance on Hyper-V (Hyper-V のパフォーマンスを測定する)](https://msdn.microsoft.com/library/cc768535.aspx)」で紹介しているデータと比較してみてください。 同記事は少し前に書かれたものではありますが、メトリック、考慮事項、ガイドラインは依然として有効です。 また、この記事にはほかにも便利なリソースへのリンクが記載されています。
 
-
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 
 以下の表は、容量とパフォーマンスに関してこのソリューションで収集および計算されるデータを取得するためのログ検索のサンプルを示したものです。
-
 
 | クエリ | 説明 |
 |:--- |:--- |
@@ -133,7 +126,6 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 | 全 CSV の合計 IOPS の内訳 | Perf &#124; where ObjectName == "Capacity and Performance" and (CounterName == "CSV Reads/s" or CounterName == "CSV Writes/s") &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
 | 全 CSV の合計スループットの内訳 | Perf &#124; where ObjectName == "Capacity and Performance" and (CounterName == "CSV Reads/s" or CounterName == "CSV Writes/s") &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
 | 全 CSV の合計待機時間の内訳 | Perf &#124; where ObjectName == "Capacity and Performance" and (CounterName == "CSV Read Latency" or CounterName == "CSV Write Latency") &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
-
 
 ## <a name="next-steps"></a>次の手順
 * [Log Analytics のログ検索機能](../../azure-monitor/log-query/log-query-overview.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。
