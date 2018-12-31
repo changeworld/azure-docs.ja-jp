@@ -1,5 +1,5 @@
 ---
-title: Marathon REST API を使用した Azure DC/OS クラスターの管理
+title: (非推奨) Marathon REST API を使用した Azure DC/OS クラスターの管理
 description: Marathon REST API を使用して、Azure Container Service DC/OS クラスターにコンテナーをデプロイします。
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 34fc6f946d172f1431367e84f9d4d8a6855003ed
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 157d70b628ca3583cb8134ec1cccc185c6ff4c8d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901769"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52991739"
 ---
-# <a name="dcos-container-management-through-the-marathon-rest-api"></a>Marathon REST API を使用した DC/OS コンテナー管理
+# <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(非推奨) Marathon REST API を使用した DC/OS コンテナー管理
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS はクラスター化されたワークロードをデプロイし、スケールするための環境を提供すると共に、基礎となるハードウェアを抽象化します。 DC/OS に加え、コンピューティング ワークロードのスケジュールと実行を管理するフレームワークもあります。 一般的な各種ワークロードに対応したフレームワークはいくつかありますが、このドキュメントでは、Marathon REST API を使用してコンテナーのデプロイを作成し、スケールする方法について説明します。 
 
@@ -28,7 +30,7 @@ DC/OS はクラスター化されたワークロードをデプロイし、ス�
 * [Azure コンテナー サービス クラスターに接続する](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>DC/OS API にアクセスする
-Azure Container Service クラスターに接続したら、http://localhost:local-port を通じて DC/OS と関連の REST API にアクセスできます。 このドキュメントの例では、ポート 80 にトンネリングしていることを前提としています。 たとえば、Marathon エンドポイントには、`http://localhost/marathon/v2/` で始まる URI でアクセスできます。 
+Azure Container Service クラスターに接続したら、 http://localhost:local-port を通じて DC/OS と関連の REST API にアクセスできます。 このドキュメントの例では、ポート 80 にトンネリングしていることを前提としています。 たとえば、Marathon エンドポイントには、`http://localhost/marathon/v2/` で始まる URI でアクセスできます。 
 
 さまざまな API の詳細については、[Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) と [Chronos API](https://mesos.github.io/chronos/docs/api.html) に関する Mesosphere ドキュメントと [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) に関する Apache ドキュメントを参照してください。
 
@@ -121,7 +123,7 @@ Marathon API を利用して、アプリケーションのデプロイをスケ�
 トンネル接続から次のコマンドを実行して、アプリケーションをスケールアウトします。
 
 > [!NOTE]
-> URI は、http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
+> URI は、 http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
 > 
 > 
 
@@ -180,7 +182,7 @@ Marathon API を利用して、アプリケーションのデプロイをスケ�
 次のコマンドを実行してアプリケーションをスケールアウトします。
 
 > [!NOTE]
-> URI は、http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
+> URI は、 http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
 > 
 > 
 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 12/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8068c4a8f38cd33a1a0547f5db5079bc75c76ec1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: fcebada4ef10c3e0bb298e9308d66ecb37247832
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013413"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999245"
 ---
 # <a name="register-an-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C にアプリケーションを登録する
 
@@ -82,7 +82,4 @@ ms.locfileid: "51013413"
 
 ## <a name="next-steps"></a>次の手順
 
-アプリケーションを Azure AD B2C に登録したので、いずれかの[クイック スタート チュートリアル](active-directory-b2c-overview.md)を実行して使い始めることができます。
-
-> [!div class="nextstepaction"]
-> [サインアップ、サインイン、パスワード リセット機能を備えた ASP.NET Web アプリを作成する](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+アプリケーションでアクセス トークンを使用して API にアクセス許可を付与する方法の詳細について、[アクセス トークンの要求](active-directory-b2c-access-tokens.md)に関する記事で学習します。

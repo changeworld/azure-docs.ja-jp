@@ -12,27 +12,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: e92bcd412071d1a991a0bd3ec7b28df9f509c54c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 35b728793b81c41f0a81c5c7621b9e17edf1f22a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250888"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994672"
 ---
 # <a name="output-metadata"></a>出力メタデータ
 ## <a name="overview"></a>概要
 エンコード ジョブは、エンコーディング タスクを実行する入力資産に関連付けられています。 たとえば、MP4 ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードし、サムネイルを作成し、オーバーレイを作成します。 タスクが完了すると、出力資産が生成されます。  出力資産には、ビデオ、オーディオ、サムネイルなどが含まれます。出力資産には、出力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ XML ファイルの名前は、&lt;source_file_name&gt;_manifest.xml という形式になっています (たとえば、BigBuckBunny_manifest.xml)。  
 
+Media Services では、メタデータを生成するために入力資産を事前にスキャンできません。 入力メタデータは、入力資産がジョブで処理されるときに、成果物としてのみ生成されます。 そのため、この成果物は、出力資産に書き込まれます。 入力資産と出力資産のメタデータの生成には、異なるツールが使用されます。 したがって、入力メタデータには、出力メタデータとは若干異なるスキーマがあります。
+
 メタデータ ファイルを確認したい場合は、**SAS** ロケータ―を作成してファイルをローカル コンピューターにダウンロードできます。  
 
 この記事では、出力メタデータ (&lt;source_file_name&gt;_manifest.xml) が基づく XML スキーマの要素と種類について説明します。 入力資産に関するメタデータを含むファイルについては、「[Input Metadata (入力メタデータ)](media-services-input-metadata-schema.md)」を参照してください。  
 
-> [!NOTE]
-> 完全なスキーマ コードと XML の例は、この記事の最後で紹介します。  
->
->
+完全なスキーマ コードと XML の例は、この記事の最後で紹介します。  
 
 ## <a name="AssetFiles "></a> AssetFiles ルート要素
 エンコード ジョブの AssetFile エントリのコレクション。  

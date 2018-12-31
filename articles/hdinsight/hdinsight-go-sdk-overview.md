@@ -5,14 +5,15 @@ services: hdinsight
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 9/21/2018
+ms.date: 09/21/2018
 ms.author: tyfox
-ms.openlocfilehash: f018130ca94c7efb7a9c6c873c150dcc382dbc4c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18
+ms.openlocfilehash: 13bca67a48d1b9e73dc2f092979e455c72711316
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498287"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011337"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK プレビュー
 
@@ -36,7 +37,7 @@ GOPATH の場所から `go get github.com/Azure/azure-sdk-for-go/tree/master/ser
 SDK は最初に Azure サブスクリプションで認証する必要があります。  以下の例に従って、サービス プリンシパルを作成し、これを使用して認証します。 その後、`ClustersClient` のインスタンスが生成されます。これには、管理操作の実行に使用できる関数が多数含まれています (以下のセクションで説明します)。
 
 > [!NOTE]
-> 認証方法は以下の例の他にもあり、そちらの方がご自身のニーズに適している可能性もあります。 すべての関数の概要は「[Azure SDK for Go における認証方法](https://docs.microsoft.com/go/azure/azure-sdk-go-authorization)」にあります。
+> 認証方法は以下の例の他にもあり、そちらの方がご自身のニーズに適している可能性もあります。 すべての関数の概要については、[Azure SDK for Go における認証関数](https://docs.microsoft.com/go/azure/azure-sdk-go-authorization)に関する記事を参照してください
 
 ### <a name="authentication-example-using-a-service-principal"></a>サービス プリンシパルを使用した認証の例
 
@@ -350,7 +351,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ### <a name="enable-oms-monitoring"></a>OMS 監視の有効化
 
 > [!NOTE]
-> OMS の監視を有効にするには、既存の Log Analytics ワークスペースが必要です。 まだ作成していない場合、その方法については、「[Azure ポータルで Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)」を参照してください。
+> OMS の監視を有効にするには、既存の Log Analytics ワークスペースが必要です。 まだ作成していない場合、その方法については、「[Azure portal で Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)」を参照してください。
 
 ご自身のクラスターで OMS 監視を有効にするには:
 
@@ -378,7 +379,7 @@ extClient.DisableMonitoring(context.Background(), "<Resource Group Name", "Clust
 
 HDInsight には、クラスターをカスタマイズするためにカスタム スクリプトを呼び出すスクリプト アクションという構成関数があります。
 > [!NOTE]
-> スクリプト アクションを使用する方法の詳細については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)」を参照してください
+> スクリプト アクションの使用方法の詳細については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)」を参照してください
 
 ### <a name="execute-script-actions"></a>スクリプト アクションの実行
 

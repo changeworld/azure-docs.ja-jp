@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: c8bad3642f1e98cac3857d536f539554235e1a51
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 8e265f2bed480f7b40476e09ab8f442aedcc9dd4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578639"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999450"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
 
@@ -286,7 +286,7 @@ RESOURCE_GROUP=
 * サブネット名
 * Azure AD ランタイムのロール名 - 「[クラスター ノードのアクセス ロールを作成する](#create-the-cluster-node-access-role)」の例に従った場合は、``avere-cluster`` を使用します。 
 * ストレージ アカウント名 (新しい BLOB コンテナーを作成する場合)
-* クラスター名 - 同じリソース グループで同じ名前の 2 つの vFXT クラスターを使用することはできません。 
+* クラスター名 - 同じリソース グループで同じ名前の 2 つの vFXT クラスターを使用することはできません。 ベスト プラクティスとして、各クラスターに一意の名前を付けます。
 * 管理パスワード - クラスターを監視および管理するためのセキュリティで保護されたパスワードを選択します。 このパスワードは、``admin`` ユーザーに割り当てられます。 
 * ノード インスタンスの種類 - 詳細については、「[vFXT ノードのサイズ](avere-vfxt-deploy-plan.md#vfxt-node-sizes)」 を参照してください
 * ノードのキャッシュ サイズ - 詳細については、「[vFXT ノードのサイズ](avere-vfxt-deploy-plan.md#vfxt-node-sizes)」を参照してください
@@ -306,6 +306,15 @@ RESOURCE_GROUP=
 
 ![末尾付近に管理 IP アドレスが表示されているスクリプトのコマンド ライン出力](media/avere-vfxt-mgmt-ip.png)
 
+> [!IMPORTANT] 
+> 新しい BLOB コンテナーを作成した場合は、クラスターの外部で保存されていない既定のキーを使用して暗号化されている可能性があります。 データをコンテナーに格納する前に、キー回復ファイルをダウンロードするか独自の暗号化キーを作成して、その回復ファイルを永続的な場所に保存する必要があります。 
+> 
+> 回復ファイルをダウンロードせずに既定のキーを使用すると、vFXT クラスターが破棄されたり失われたりした場合に、BLOB コア ファイラー内の暗号化されたデータへのアクセスが失われる可能性があります。
+>
+> スクリプトによって、下のスクリーンショットで囲まれている部分のような `WARNING` メッセージが表示される場合は、[ストレージの構成](avere-vfxt-add-storage.md)に関する記事の手順に従って、キー ファイルをダウンロードするか BLOB コンテナー用の新しいキーを作成します。 クラスター構成ツールである Avere コントロール パネルを使用します。
+
+![新しい暗号化キーの作成に関する警告メッセージが表示されるスクリプトのコマンド ライン出力](media/avere-vfxt-key-warning.png)
+
 ## <a name="next-step"></a>次のステップ
 
-これでクラスターが実行され、その管理 IP アドレスがわかったので、[クラスター構成ツールに接続](avere-vfxt-cluster-gui.md)して、サポートを有効にし、必要に応じてストレージを追加できます。
+これでクラスターが実行され、その管理 IP アドレスがわかったので、[クラスター構成ツールに接続](avere-vfxt-cluster-gui.md)してサポートを有効にする、必要に応じてストレージを追加する、または新しい Blob Storage 上の既定の暗号化キーを指定することができます。

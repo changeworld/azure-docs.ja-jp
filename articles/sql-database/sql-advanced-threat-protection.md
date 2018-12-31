@@ -10,13 +10,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 05/17/2018
-ms.openlocfilehash: cb3d8629d5d72644e647da14e7c3b31a4914814d
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/05/2018
+ms.openlocfilehash: ea7b4def23f766e6cda1e1e8e1d4e8dc7be302fe
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159561"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997602"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL Database の Advanced Threat Protection
 
@@ -28,11 +28,11 @@ SQL Advanced Threat Protection (ATP) は、データの探索と分類、脆弱�
 
 - [データの検出と分類](sql-database-data-discovery-and-classification.md) (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの検出、分類、ラベル付と保護を行う機能が用意されています。 データベースの分類の状態を把握し、データベース内やその境界を越えて機密データへのアクセスを追跡するために使用できます。
 - [脆弱性評価](sql-vulnerability-assessment.md)では、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 セキュリティの状態を表示することができ、セキュリティの問題を解決して、データベースのセキュリティを強化するために実行可能な手順が含まれます。
-- [脅威検出](sql-database-threat-detection.md)では、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。 データベースでの不審なアクティビティを継続的に監視し、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンが見つかるとすぐにセキュリティ通知を提供します。 脅威の検出によるアラートは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法を提供します。
+- [脅威検出](sql-database-threat-detection-overview.md)では、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。 データベースでの不審なアクティビティを継続的に監視し、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンが見つかるとすぐにセキュリティ通知を提供します。 脅威の検出によるアラートは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法を提供します。
 
 SQL ATP を一度有効にすれば、含まれるすべての機能が有効になります。 1 回のクリックでデータベース サーバー全体に対して ATP を有効にし、サーバー上のすべてのデータベースに適用できます。 
 
-ATP の価格は Azure Security Center Standard レベルと同じであり、15 ドル/ノード/月です。ここで保護対象の各 SQL Database サーバーは 1 つのノードとしてカウントされます。 有効化した後の最初の 60 日間は無料の試用期間と見なされ、課金されません。 詳しくは、[Azure Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)をご覧ください。
+ATP の価格は Azure Security Center Standard レベルと同じです。ここで保護対象の各 SQL Database サーバーは 1 つのノードとしてカウントされます。 新しく保護されたリソースは、Security Center Standard レベルの無料試用版として使用できます。 詳しくは、[Azure Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)をご覧ください。
 
 
 ## <a name="getting-started-with-atp"></a>ATP の使用開始 
@@ -45,7 +45,7 @@ ATP の使用を始める手順は以下のとおりです。
 ![ATP を有効にする](./media/sql-advanced-protection/enable_atp.png) 
 
 > [!NOTE]
-> ATP のコストは 15 ドル/ノード/月です。ノードは SQL 論理サーバー全体です。 したがって、1 回支払えば、サーバー上のすべてのデータベースが ATP で保護されます。 最初の 60 日間は無料試用期間と見なされます。
+> ATP のコストは、ノード全体が SQL 論理サーバーである場合の、ノードあたりの Azure Security Center Standard レベルの料金に揃えられています。 したがって、1 回支払えば、サーバー上のすべてのデータベースが ATP で保護されます。 最初は無料試用版で ATP を試すことができます。
 
 ## <a name="2-configure-vulnerability-assessment"></a>2.脆弱性評価を構成する
 

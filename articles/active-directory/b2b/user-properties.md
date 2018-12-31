@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 05/25/2017
+ms.date: 12/5/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 5f999a17cd375a3338aa936e2f405c36f6021ebc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 01693f16b0af59881c22fefb6ec8abe0c4fb3874
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984813"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996622"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
@@ -23,33 +23,45 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユ�
 
 招待側の組織のニーズに応じて、Azure AD B2B コラボレーション ユーザーは、以下のいずれかのアカウント状態になります。
 
-- 状態 1: Azure AD の外部インスタンスに所属し、招待側組織のゲスト ユーザーとして表されます。 この場合、B2B ユーザーは招待されたテナントに属している Azure AD アカウントを使用してサインインします。 パートナー組織が Azure AD を使用しない場合でも、Azure AD にゲスト ユーザーが作成されます。 要件は、ゲスト ユーザーが招待に応じること、および Azure AD が彼らの電子メール アドレスを検証することです。 この状態は、Just-In-Time (JIT) テナント、または "バイラル テナント" とも呼ばれます。
+- 状態 1:Azure AD の外部インスタンスに所属し、招待側組織のゲスト ユーザーとして表されます。 この場合、B2B ユーザーは招待されたテナントに属している Azure AD アカウントを使用してサインインします。 パートナー組織が Azure AD を使用しない場合でも、Azure AD にゲスト ユーザーが作成されます。 要件は、ゲスト ユーザーが招待に応じること、および Azure AD が彼らの電子メール アドレスを検証することです。 この状態は、Just-In-Time (JIT) テナント、または "バイラル テナント" とも呼ばれます。
 
-- 状態 2: Microsoft アカウントに所属し、ホスト組織のゲスト ユーザーとして表されます。 この場合、ゲスト ユーザーは Microsoft アカウントでサインインします。 招待されたユーザーのソーシャル ID (google.com など、Microsoft アカウント以外のもの) は、招待に応じる際に Microsoft アカウントとして作成されます。
+- 状態 2:Microsoft アカウントまたは他のアカウントに所属し、ホスト組織のゲスト ユーザーとして表されます。 この場合、ゲスト ユーザーは Microsoft アカウントまたはソーシャル アカウント (google.com など) でサインインします。 招待されたユーザーの ID は、招待に応じる際に招待側組織のディレクトリ内に Microsoft アカウントとして作成されます。
 
-- 状態 3: ホスト組織のオンプレミス Active Directory に所属し、ホスト組織の Azure AD と同期されます。 このリリースでは、クラウドのこのようなユーザーの UserType を、PowerShell を使用して手動で変更する必要があります。
+- 状態 3:ホスト組織のオンプレミス Active Directory に所属し、ホスト組織の Azure AD と同期されます。 Azure AD Connect を使用し、UserType = Guest の Azure AD B2B ユーザーとして、パートナー アカウントをクラウドと同期することができます。 [ローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する方法](hybrid-on-premises-to-cloud.md)に関する記事を参照してください。
 
-- 状態 4: ホスト組織の Azure AD に所属し、UserType = Guest で、資格情報はホスト組織によって管理されています。
+- 状態 4:ホスト組織の Azure AD に所属し、UserType = Guest で、資格情報はホスト組織によって管理されています。
 
   ![招待元のイニシャルの表示](media/user-properties/redemption-diagram.png)
 
 
-ここで、状態 1 の Azure AD B2B コラボレーション ユーザーが Azure AD でどのように見えるかを見てみましょう。
+ここで、Azure AD B2B コラボレーション ユーザーが Azure AD でどのように見えるかを見てみましょう。
 
 ### <a name="before-invitation-redemption"></a>招待に応じる前
+
+状態 1 アカウントと状態 2 アカウントは、ゲスト ユーザー自身の資格情報を使用して共同作業するようにゲスト ユーザーを招待した結果です。 招待が最初にゲスト ユーザーに送信されると、アカウントがディレクトリに作成されます。 認証はゲスト ユーザーの ID プロバイダーによって実行されるため、このアカウントには関連付けられた資格情報はありません。 ディレクトリ内のゲスト ユーザー アカウントの **[ソース]** プロパティは **[ユーザーが招待されました]** に設定されています。 
 
 ![オファーに応じる前](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>招待に応じた後
 
-![オファーに応じた後](media/user-properties/after-redemption.png)
+ゲスト ユーザーが招待を受け入れると、**[ソース]** プロパティはゲスト ユーザーの ID プロバイダーに基づいて更新されます。
+
+状態 1 のゲスト ユーザーの場合、**[ソース]** は **[外部の Azure Active Directory]** です。
+
+![オファーに応じた後の状態 1 のゲスト ユーザー](media/user-properties/after-redemption-state1.png)
+
+状態 2 のゲスト ユーザーの場合、**[ソース]** は **[Microsoft アカウント]** です。
+
+![オファーに応じた後の状態 2 のゲスト ユーザー](media/user-properties/after-redemption-state2.png)
+
+状態 3 と状態 4 のゲスト ユーザーの場合、次のセクションで説明するように、**[ソース]** プロパティは **[Azure Active Directory]** または **[Windows Server Active Directory]** に設定されます。
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Azure AD B2B コラボレーション ユーザーの主要なプロパティ
 ### <a name="usertype"></a>UserType
 このプロパティは、ユーザーとホスト テナントとの関係を示します。 このプロパティは次の 2 つの値を取ります。
-- メンバー: この値は、ホスト組織の従業員、組織の給与支払い名簿にあるユーザーを示します。 たとえば、このユーザーは、内部専用のサイトにアクセスできることが想定されます。 このユーザーが外部コラボレーターと見なされることはありません。
+- メンバー:この値は、ホスト組織の従業員や組織の給与支払い名簿にあるユーザーを示します。 たとえば、このユーザーは、内部専用のサイトにアクセスできることが想定されます。 このユーザーは外部コラボレーターとは見なされません。
 
-- ゲスト: この値は、社内ユーザーとみなされないユーザー (外部コラボレーター、パートナー、顧客、または類似ユーザーなど) を示します。 このようなユーザーに、CEO の社内メモの送信や各種手当の給付が行われることは期待されません。
+- ゲスト:この値は、社内ユーザーと見なされないユーザー (外部コラボレーター、パートナー、顧客など) を示します。 このようなユーザーに、CEO の社内メモの送信や各種手当の給付が行われることは想定されません。
 
   > [!NOTE]
   > UserType は、ユーザーのサインイン方法、ユーザーのディレクトリ ロールなどとは関係ありません。 このプロパティは、単にユーザーとホスト組織との関係を示しており、組織はこのプロパティに基づくポリシーを強制できます。
@@ -57,15 +69,15 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユ�
 ### <a name="source"></a>ソース
 このプロパティは、ユーザーのサインイン方法を示します。
 
-- 招待されたユーザー: このユーザーは招待されましたが、まだ招待に応じていません。
+- ユーザーが招待されました:このユーザーは招待されましたが、まだ招待に応じていません。
 
-- 外部 Active Directory: このユーザーは外部組織に所属し、他の組織に属している Azure AD アカウントを使用して認証を行います。 この種類のサインインは、状態 1 に対応しています。
+- 外部 Active Directory:このユーザーは外部組織に所属し、他の組織に属している Azure AD アカウントを使用して認証を行います。 この種類のサインインは、状態 1 に対応しています。
 
-- Microsoft アカウント: このユーザーは Microsoft アカウントに所属し、Microsoft アカウントを使用して認証を行います。 この種類のサインインは、状態 2 に対応しています。
+- Microsoft アカウント:このユーザーは Microsoft アカウントに所属し、Microsoft アカウントを使用して認証を行います。 この種類のサインインは、状態 2 に対応しています。
 
-- Windows Server Active Directory: このユーザーは、この組織に属しているオンプレミス Active Directory からサインインされました。 この種類のサインインは、状態 3 に対応しています。
+- Windows Server Active Directory:このユーザーは、この組織に属しているオンプレミス Active Directory からサインインします。 この種類のサインインは、状態 3 に対応しています。
 
-- Azure Active Directory: このユーザーは、この組織に属している Azure AD アカウントを使用して認証されます。 この種類のサインインは、状態 4 に対応しています。
+- Azure Active Directory:このユーザーは、この組織に属している Azure AD アカウントを使用して認証されます。 この種類のサインインは、状態 4 に対応しています。
   > [!NOTE]
   > Source と UserType は、独立したプロパティです。 Source の値は、UserType の特定の値を意味しません。
 
@@ -77,12 +89,12 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユ�
 ![ゲスト ユーザーのフィルター処理](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>UserType の変換
-現時点では、ユーザーは PowerShell を使用して、UserType をメンバーからゲストまたはその逆に変換できます。 ただし、UserType プロパティはユーザーと組織の関係を表していると考えられます。 そのため、このプロパティの値は、ユーザーと組織の関係が変化した場合にのみ変更する必要があります。 ユーザーの関係が変化した場合に、ユーザー プリンシパル名 (UPN) を変更する必要があるかどうかというような問題に対処する必要がありますか。 また、同じリソースへのアクセス権を引き続きユーザーに持たせる必要がありますか。 メールボックスを割り当てる必要があるか、などの疑問です。 そのため、PowerShell を使用してアトミック アクティビティとして UserType を変更することはお勧めしません。 さらに、PowerShell を使用してこのプロパティを変更できなくなる場合に備えて、この値には依存しないことをお勧めします。
+PowerShell を使用して、UserType をメンバーからゲストに、またはその逆に変換できます。 ただし、UserType プロパティはユーザーと組織の関係を表しています。 そのため、このプロパティは、ユーザーと組織の関係が変化した場合にのみ変更するようにします。 ユーザーの関係が変化した場合に、ユーザー プリンシパル名 (UPN) を変更する必要はありますか。 また、同じリソースへのアクセス権を引き続きユーザーに持たせる必要がありますか。 メールボックスを割り当てる必要があるか、などの疑問です。 PowerShell を使用してアトミック アクティビティとして UserType を変更することはお勧めしません。 また、PowerShell を使用してこのプロパティを変更できなくなる場合に備えて、この値には依存しないことをお勧めします。
 
 ## <a name="remove-guest-user-limitations"></a>ゲスト ユーザー制限の削除
 ゲスト ユーザーに、より高い権限を付与したい場合があります。 ゲスト ユーザーを任意のロールに追加することができます。また、メンバーと同じ権限を付与するために、ディレクトリでの既定のゲスト ユーザー制限を削除することもできます。
 
-既定のゲスト ユーザー制限を無効にして、会社のディレクトリのゲスト ユーザーにメンバー ユーザーと同じアクセス許可を付与することができます。
+既定の制限を無効にして、会社のディレクトリのゲスト ユーザーにメンバー ユーザーと同じアクセス許可を持たせることができます。
 
 ![ゲスト ユーザー制限の削除](media/user-properties/remove-guest-limitations.png)
 

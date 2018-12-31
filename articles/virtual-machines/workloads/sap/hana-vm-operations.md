@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/06/2018
+ms.date: 12/04/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 45b6de7693325b5ccfcb01ad9babc61dd2f6e003
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: d716a27cc2b4879451a8d5edbca46ca1bbfeaf40
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289140"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968989"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -190,7 +190,11 @@ Azure 書き込みアクセラレータの詳細と制限事項についても�
 VPN または ExpressRoute を介して Azure に対するサイト対サイト接続がある場合は、最低 1 つの Azure 仮想ネットワークが仮想ゲートウェイ経由で VPN または ExpressRoute 回線に接続されている必要があります。 シンプルなデプロイでは、Virtual Gateway は、SAP HANA インスタンスもホストしている Azure 仮想ネットワーク (VNet) のサブネットにデプロイできます。 SAP HANA をインストールするには、Azure 仮想ネットワーク内に 2 つのサブネットを追加作成します。 1 つのサブネットは、SAP HANA インスタンスを実行する VM をホストします。 もう 1 つのサブネットは、ジャンプボックスまたは管理 VM を実行し、SAP HANA Studio、他の管理ソフトウェア、またはお使いのアプリケーション ソフトウェアをホストします。
 
 > [!IMPORTANT]
-> 機能やパフォーマンス上の理由から、SAP アプリケーションと、SAP NetWeaver、Hybris、または S/4HANA ベースの SAP システムの HANA データベース インスタンス間の通信パスで [Azure ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/)を構成することはサポートされていません。 NVA がサポートされないその他のシナリオが、Linux Pacemaker クラスター ノードを表す Azure VM と SBD デバイス間の通信パス内にあります (「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)」を参照)。 また、Azure VM と Windows Server SOFS セットアップ間の通信パス内にもあります (「[Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)」を参照)。 通信パスに NVA があると、2 つの通信パートナー間のネットワーク待ち時間が倍増し、SAP アプリケーション レイヤーと HANA データベース インスタンス間のクリティカル パスのスループットが制限される場合があります。 顧客に見られる一部のシナリオでは、Linux Pacemaker クラスター ノード間の通信で NVA を通じて SBD デバイスと通信する必要がある場合、NVA が原因で Pacemaker Linux クラスターが失敗することがあります。   
+> 機能やパフォーマンス上の理由から、SAP アプリケーションと、SAP NetWeaver、Hybris、または S/4HANA ベースの SAP システムの DBMS レイヤー間の通信パスで [Azure ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/) を構成することはサポートされていません。 SAP アプリケーション レイヤーと DBMS レイヤー間の通信は直接的な通信である必要があります。 Azure ASG および NSG の規則で直接通信が許可されている限り、この制限に[これらの ASG および NSG の規則](https://docs.microsoft.com/azure/virtual-network/security-overview)は含まれません。 NVA がサポートされないその他のシナリオが、Linux Pacemaker クラスター ノードを表す Azure VM と SBD デバイス間の通信パス内にあります (「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)」を参照)。 また、Azure VM と Windows Server SOFS セットアップ間の通信パス内にもあります (「[Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)」を参照)。 通信パスに NVA があると、2 つの通信パートナー間のネットワーク待ち時間が倍増し、SAP アプリケーション レイヤーと DBMS レイヤー間のクリティカル パスのスループットが制限される場合があります。 顧客に見られる一部のシナリオでは、Linux Pacemaker クラスター ノード間の通信で NVA を通じて SBD デバイスと通信する必要がある場合、NVA が原因で Pacemaker Linux クラスターが失敗することがあります。  
+> 
+
+> [!IMPORTANT]
+> サポートされて**いない**もう 1 つの設計は、SAP アプリケーション レイヤーと DBMS レイヤーを、相互に[ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)されていない異なる Azure 仮想ネットワークに分離することです。 異なる Azure 仮想ネットワークを使用するのではなく、Azure 仮想ネットワーク内のサブネットを使用して、SAP アプリケーション レイヤーと DBMS レイヤーを分離することをお勧めします。 推奨事項に従わず、代わりに 2 つのレイヤーを異なる仮想ネットワークに分離する場合は、2 つの仮想ネットワークを[ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)する必要があります。 2 つの[ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)された Azure 仮想ネットワーク間のネットワーク トラフィックは転送コストの影響を受ける点に注意してください。 SAP アプリケーション レイヤーと DBMS レイヤー間で交換されるデータが膨大でテラバイト規模であり、SAP アプリケーション レイヤーと DBMS レイヤーが 2 つのピアリングされた Azure 仮想ネットワーク間で分離されている場合、相当のコストが蓄積される可能性があります。 
 
 SAP HANA を実行するために VM をインストールするとき、VM には以下が必要です。
 
@@ -204,7 +208,7 @@ SAP HANA を実行するために VM をインストールするとき、VM に�
 
 ただし、永続的なデプロイの場合は、Azure に仮想データセンター ネットワークを作成する必要があります。 このアーキテクチャでは、オンプレミスを別個の Azure VNet に接続する Azure VNet Gateway を切り離すことが推奨されています。 この別個の VNet では、オンプレミスまたはイントラネットのどちらかに流れるすべてのトラフィックがホストされます。 この手法によって、この別個のハブの VNet で Azure の仮想データセンターに流入するトラフィックの監査とログ記録を行うソフトウェアをデプロイすることが可能になります。 そこで、Azure のデプロイに送受信されるトラフィックに関連するすべてのソフトウェアと構成をホストする VNet を 1 つ配置します。
 
-「[Azure 仮想データセンター: ネットワークの観点](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter)」および「[Azure 仮想データセンターとエンタープライズ コントロール プレーン](https://docs.microsoft.com/azure/architecture/vdc/)」の記事に、仮想データセンターの手法と関連する Azure VNet 設計に関する詳細な情報が示されています。
+「[Azure 仮想データセンター:ネットワークの観点](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter)」および「[Azure 仮想データセンターとエンタープライズ コントロール プレーン](https://docs.microsoft.com/azure/architecture/vdc/)」の記事に、仮想データセンターの手法と関連する Azure VNet 設計に関する詳細な情報が示されています。
 
 
 >[!NOTE]
@@ -400,7 +404,7 @@ Azure 高速ネットワークの詳細については、[こちら](https://doc
 DT 2.0 のベスト プラクティス ガイダンスに従い、ディスク IO スループットを物理コアあたり最小 50 MB/秒にする必要があります。 DT 2.0 でサポートされている 2 つの Azure VM の種類の仕様を見れば、VM の最大ディスク IO スループット制限がわかります。
 
 - E32sv3: 768 MB/秒 (キャッシュなし)。これは、物理コアあたり 48 MB/秒という比率を意味します
-- M64-32ms: 1000 MB/秒 (キャッシュなし)。これは、物理コアあたり 62.5 MB/秒という比率を意味します
+- M64-32ms:1000 MB/秒 (キャッシュなし)。これは、物理コアあたり 62.5 MB/秒という比率を意味します
 
 DT 2.0 VM に複数の Azure ディスクをアタッチし、OS レベルでソフトウェア RAID (ストライピング) を作成して、VM あたりのディスク スループットの上限に達するようにする必要があります。 この点に関しては、単一の Azure ディスクで VM の上限に達するスループットを提供することはできません。 DT 2.0 を実行するには、Azure Premium Storage が必須です。 
 

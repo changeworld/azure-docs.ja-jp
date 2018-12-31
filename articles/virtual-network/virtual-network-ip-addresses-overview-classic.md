@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 6a63099bf2a8bc818c88ccec1d5f44bb9ffc32de
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 81699764952e50cb18c1f299c9c4f7c524b0a332
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798208"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011695"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure における IP アドレスの種類と割り当て方法 (クラシック)
 Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
@@ -30,10 +30,10 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 プライベート IP アドレスは、Azure 仮想ネットワーク (VNet)、クラウド サービス、およびオンプレミス ネットワーク (VPN Gateway または ExpressRoute 回線を使用してネットワークを Azure に拡張する場合) 内での通信に使用します。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、Resource Manager を使用することをお勧めします。 Resource Manager の IP アドレスについて詳しくは、「[IP アドレス](virtual-network-ip-addresses-overview-arm.md)」の記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルが用意されています。[Resource Manager とクラシック](../resource-manager-deployment-model.md)です。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、Resource Manager を使用することをお勧めします。 Resource Manager の IP アドレスについて詳しくは、「[IP アドレス](virtual-network-ip-addresses-overview-arm.md)」の記事をご覧ください。
 
 ## <a name="public-ip-addresses"></a>パブリック IP アドレス
-パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[SQL Database](../sql-database/sql-database-technical-overview.md)、[Azure Storage](../storage/common/storage-introduction.md) など、Azure の公開されたサービスと通信できます。
+パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Cache for Redis](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[SQL Database](../sql-database/sql-database-technical-overview.md)、[Azure Storage](../storage/common/storage-introduction.md) など、Azure の公開されたサービスと通信できます。
 
 パブリック IP アドレスは、次の種類のリソースと関連付けられます。
 
@@ -160,7 +160,7 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 Azure における [ネットワークの制限](../azure-subscription-service-limits.md#networking-limits) に関する情報を必ずご確認ください。
 
 ## <a name="pricing"></a>価格
-ほとんどの場合、パブリック IP アドレスは無料です。 追加のパブリック IP アドレスまたは静的 IP アドレスを使用する場合は標準の料金が発生します。 [パブリック IP の料金体系](https://azure.microsoft.com/pricing/details/ip-addresses/)を必ずご確認ください。
+ほとんどの場合、パブリック IP アドレスは無料です。 追加のパブリック IP アドレスまたは静的な IP アドレスを使用する場合は標準の料金が発生します。 [パブリック IP の料金体系](https://azure.microsoft.com/pricing/details/ip-addresses/)を必ずご確認ください。
 
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>リソース マネージャーとクラシック デプロイの相違点
 リソース マネージャーの IP アドレス指定機能とクラシック デプロイ モデルとの比較を次に示します。
