@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 9057d9f5d63598ea249e8f3193b84fd715018829
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 787da07c5b8d8610e264963f81d858fce98d304f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109973"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436162"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 
@@ -30,13 +30,13 @@ ms.locfileid: "43109973"
 | 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
-この例のパイプラインは、新しい期間フライト データが到着するまで待ってから、その詳細なフライト情報を長期的な分析のために Hive データ ウェアハウスに格納します。 また、パイプラインは、毎日のフライト データだけを集計するはるかに小さいデータセットも作成します。 この毎日のフライト集計データは、Web サイトなどでレポートを提供するために SQL データベースに送られます。
+この例のパイプラインでは、新しい期間のフライト データが到着するまで待ってから、その詳細なフライト情報を長期的な分析のために Apache Hive データ ウェアハウスに格納します。 また、パイプラインは、毎日のフライト データだけを集計するはるかに小さいデータセットも作成します。 この毎日のフライト集計データは、Web サイトなどでレポートを提供するために SQL データベースに送られます。
 
 次の図はこの例のパイプラインを示したものです。
 
 ![フライト データ パイプライン](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
 
-## <a name="oozie-solution-overview"></a>Oozie ソリューションの概要
+## <a name="apache-oozie-solution-overview"></a>Apache Oozie ソリューションの概要
 
 このパイプラインでは、HDInsight Hadoop クラスターで実行されている Apache Oozie を使います。
 
@@ -139,7 +139,7 @@ Azure SQL Database の準備ができました。
 
 Oozie Web コンソールを使ってコーディネーター インスタンスとワークフロー インスタンスの状態を表示するには、HDInsight クラスターへの SSH トンネルを設定します。 詳しくは、「[SSH トンネル](hdinsight-linux-ambari-ssh-tunnel.md)」をご覧ください。
 
-> [!NOTE]
+> [!NOTE]  
 > Chrome と [Foxy Proxy](https://getfoxyproxy.org/) 拡張機能を使って、SSH トンネル経由でクラスターの Web リソースを参照することもできます。 トンネルのポート 9876 でホスト `localhost` を経由してすべての要求をプロキシするように構成します。 この方法は、Windows Subsystem for Linux (Bash on Windows 10 とも呼ばれます) と互換性があります。
 
 1. 次のコマンドを実行して、クラスターへの SSH トンネルを開きます。
@@ -156,7 +156,7 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
 ### <a name="configure-hive"></a>Hive を構成する
 
-1. 1 か月のフライト データを含むサンプル CSV ファイルをダウンロードします。 ZIP ファイル `2017-01-FlightData.zip` を [HDInsight GitHub リポジトリ](https://github.com/hdinsight/hdinsight-dev-guide)からダウンロードし、その CSV ファイル `2017-01-FlightData.csv` を解凍します。 
+1. 1 か月のフライト データを含むサンプル CSV ファイルをダウンロードします。 ZIP ファイル `2017-01-FlightData.zip` を [HDInsight GitHub リポジトリ](https://github.com/hdinsight/hdinsight-dev-guide)からダウンロードし、CSV ファイル `2017-01-FlightData.csv` に解凍します。 
 
 2. この CSV ファイルを、HDInsight クラスターに接続されている Azure Storage アカウントにコピーして、`/example/data/flights` フォルダーに配置します。
 
@@ -430,7 +430,7 @@ day=03
 | month | フライトの集計を計算する日付の月の部分です。 現状のままにします。 |
 | day | フライトの集計を計算する日付の日の部分です。 現状のままにします。 |
 
-> [!NOTE]
+> [!NOTE]  
 > Oozie ワークフローを展開して実行する前に、忘れずに、`job.properties` ファイルのコピーを、お使いの環境に固有の値で更新してください。
 
 ### <a name="deploy-and-run-the-oozie-workflow"></a>Oozie ワークフローを展開して実行する
@@ -566,7 +566,7 @@ bash セッションから SCP を使って、Oozie ワークフロー (`workflo
 
     空の `done-flag` 要素は、Oozie が指定された日時で入力データの存在をチェックするときに、Oozie がディレクトリまたはファイルの有無によってデータを利用できるかどうかを判断することを示します。 この例では、csv ファイルの存在です。 csv ファイルが存在する場合、Oozie はデータの準備が整っているものと見なし、ワークフロー インスタンスを開始してファイルを処理します。 csv ファイルが存在しない場合は、データの準備がまだできていないものと見なされ、ワークフローのその実行は待機状態になります。
 
-* ポイント 3:`data-in` 要素は、関連付けられているデータセットの `uri-template` の値を置き換えるときに標準時刻として使う特定のタイムスタンプを指定します。
+* ポイント 3: `data-in` 要素は、関連付けられているデータセットの `uri-template` の値を置き換えるときに標準時刻として使う特定のタイムスタンプを指定します。
 
     ```
     <data-in name="event_input1" dataset="ds_input1">

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4be14cd1804c27eedc49cc17e33298c6134f6a37
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 062925f7e072651f4b4189cec7ca73144c0cf994
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008744"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436332"
 ---
-# <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Ambari API を使用した HDInsight の Hadoop クラスターの監視
-Ambari API を使用して HDInsight クラスターを監視する方法について説明します。
+# <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Apache Ambari API を使用して HDInsight の Apache Hadoop クラスターを監視する
+Apache Ambari API を使用して HDInsight クラスターを監視する方法について説明します。
 
-> [!NOTE]
-> この記事の情報は、Ambari REST API の読み取り専用バージョンを提供する Windows ベースの HDInsight クラスターを主に対象としたものです。 Linux ベースのクラスターについては、 [Ambari を使用した Hadoop クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
+> [!NOTE]  
+> この記事の情報は、Ambari REST API の読み取り専用バージョンを提供する Windows ベースの HDInsight クラスターを主に対象としたものです。 Linux ベースのクラスターについては、[Apache Ambari を使用した Apache Hadoop クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
 > 
 > 
 
@@ -36,7 +36,7 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 * **Azure PowerShell を実行できるワークステーション**。
 * [cURL][curl] は省略可能です。 インストールするには、「[cURL のリリースとダウンロード][curl-download]」をご覧ください。
   
-  > [!NOTE]
+  > [!NOTE]  
   > Windows で cURL コマンドを使用する場合、オプション値には一重引用符の代わりに二重引用符を使用します。
   > 
   > 
@@ -120,7 +120,7 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host_name* フィールドがホスト名そのものではなくノードの完全修飾ドメイン名 (FQDN) を返します。 2014 年 10 月 8 日のリリースの前は、このサンプルは単純に "**headnode0**" を返していました。 2014 年 10 月 8 日のリリースの後は、上の例に示すように FQDN である "**headnode0.{ClusterDNS}.azurehdinsight.net**" が取得されます。 この変更は、1 つの仮想ネットワーク (VNET) に HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。 このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
 ## <a name="ambari-monitoring-apis"></a>Ambari での API の監視
-以下のテーブルに最も一般的な Ambari での API 呼び出しの監視の一部を示します。 API の詳細については、「[Ambari API リファレンス][ambari-api-reference]」をご覧ください。
+以下のテーブルに最も一般的な Ambari での API 呼び出しの監視の一部を示します。 API の詳細については、「[Ambari API Reference][ambari-api-reference]」(Ambari API リファレンス) をご覧ください。
 
 | API 呼び出しの監視 | URI | 説明 |
 | --- | --- | --- |
@@ -138,7 +138,7 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 | 構成情報の取得 |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>` |構成の種類: core-site、hdfs-site、mapred-site、hive-site |
 
 ## <a name="next-steps"></a>次の手順
-ここでは Ambari での API 呼び出しの監視の使用方法を説明しました。 詳細については、次を参照してください。
+ここでは Apache Ambari での API 呼び出しの監視の使用方法を説明しました。 詳細については、次を参照してください。
 
 * [Azure Portal を使用した HDInsight クラスターの管理][hdinsight-admin-portal]
 * [Azure PowerShell を使用した HDInsight クラスターの管理][hdinsight-admin-powershell]
@@ -150,12 +150,12 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 [ambari-api-reference]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
 [curl]: http://curl.haxx.se
-[curl-download]: http://curl.haxx.se/download.html
+[curl-download]: https://curl.haxx.se/download.html
 
 [microsoft-hadoop-SDK]: http://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
-[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md

@@ -1,5 +1,5 @@
 ---
-title: Azure AD-DS を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する
+title: Azure Active Directory Domain Services を使用した Enterprise セキュリティ パッケージの構成 - Azure HDInsight
 description: Azure Active Directory Domain Services を使って HDInsight Enterprise セキュリティ パッケージのクラスターをセットアップして構成する方法について説明する。
 services: hdinsight
 ms.service: hdinsight
@@ -7,13 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
-ms.date: 10/9/2018
-ms.openlocfilehash: 8b92191b60f8eb7e3c63f465926b434e205ef1b4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 10/09/2018
+ms.custom: seodec18
+ms.openlocfilehash: ced7964fc96138ad7b18ab72d6c479e8db7eab8a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684751"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436230"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する
 
@@ -21,13 +22,13 @@ Enterprise セキュリティ パッケージ (ESP) のクラスターでは、A
 
 この記事では、Azure Active Directory Domain Services (Azure AD-DS) を使って、ESP の HDInsight クラスターを構成する方法について説明します。
 
->[!NOTE]
->ESP は、Spark、Interactive、Apache Hadoop 用の HDI 3.6 で一般公開されています。 HBase および Kafka クラスター タイプの ESP はプレビュー段階です。
+>[!NOTE]  
+>ESP は、Apache Spark、Interactive、Apache Hadoop 用の HDI 3.6 で一般公開されています。 Apache HBase クラスターと Apache Kafka クラスター用の ESP はプレビュー段階です。
 
 ## <a name="enable-azure-ad-ds"></a>Azure AD-DS を有効にする
 
-> [!NOTE]
-> Azure AD-DS を有効にする特権が与えられているのはテナント管理者だけです。 クラスター ストレージが Azure Data Lake Store (ADLS) Gen1 または Gen2 の場合、クラスターにアクセスする必要があるユーザーに対してのみ多要素認証 (MFA) を無効にします。 クラスター ストレージが Azure Blob Storage (WASB) の場合は、MFA を無効にしないでください。
+> [!NOTE]  
+> Azure AD-DS を有効にする特権が与えられているのはテナント管理者だけです。 クラスター記憶域が Azure Data Lake Store (ADLS) Gen1 または Gen2 の場合、クラスターにアクセスする必要があるユーザーに対してのみ Multi-Factor Authentication (MFA) を無効にします。 クラスター ストレージが Azure Blob Storage (WASB) の場合は、MFA を無効にしないでください。
 
 前提条件として、ESP の HDInsight クラスターを作成する前に Azure AD-DS を有効にします。 詳細については、「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started.md)」を参照してください。 
 
@@ -65,7 +66,7 @@ ESP クラスターを設定するには、まだ作成していない場合は�
 
 ## <a name="networking-considerations"></a>ネットワークに関する考慮事項
 
-> [!NOTE]
+> [!NOTE]  
 > Azure AD DS は、Azure Resource Manager (ARM) ベースの vNET にデプロイする必要があります。 Azure AD-DS では、クラシック仮想ネットワークはサポートされません。 詳しくは、「[Azure portal を使用して Azure Active Directory Domain Services を有効にする](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-network)」をご覧ください。
 
 Azure AD-DS を有効にした後、ローカルのドメイン ネーム サービス (DNS) サーバーが AD Virtual Machines (VM) で実行されます。 Azure AD-DS 仮想ネットワーク (VNET) を、これらのカスタム DNS サーバーを使用するように構成します。 適切な IP アドレスを見つけるには、**[マネージド]** カテゴリで **[プロパティ]** を選択し、**[仮想ネットワーク上の IP アドレス]** の下に表示される IP アドレスを参照します。
@@ -113,5 +114,5 @@ ESP で HDInsight クラスターを作成するときは、次のパラメー�
 
 
 ## <a name="next-steps"></a>次の手順
-* Hive ポリシーの構成と Hive クエリの実行については、「[ESP の HDInsight クラスターの Hive ポリシーの構成](apache-domain-joined-run-hive.md)」を参照してください。
-* SSH を使用して ESP の HDInsight クラスターに接続する方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)」を参照してください。
+* Hive ポリシーの構成と Hive クエリの実行については、[ESP を使用した HDInsight クラスター用の Apache Hive ポリシーの構成](apache-domain-joined-run-hive.md)に関する記事を参照してください。
+* SSH と ESP を使用して HDInsight クラスターに接続する方法については、[Linux、Unix、または OS X からの HDInsight 上の Linux ベースの Hadoop での SSH キーの使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)に関する記事を参照してください。
