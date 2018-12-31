@@ -21,7 +21,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 12/14/2018
 ms.locfileid: "53407356"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのデプロイ関数 
+# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのデプロイ関数
 
 リソース マネージャーには、テンプレートのセクションから値を取得し、デプロイに関連する値を取得する次の関数が用意されています。
 
@@ -62,7 +62,7 @@ ms.locfileid: "53407356"
 }
 ```
 
-オブジェクトがリンクとして渡された場合 (**-TemplateUri** パラメーターを使用してリモート オブジェクトを参照する場合など)、オブジェクトは次の形式で返されます。 
+オブジェクトがリンクとして渡された場合 (**-TemplateUri** パラメーターを使用してリモート オブジェクトを参照する場合など)、オブジェクトは次の形式で返されます。
 
 ```json
 {
@@ -93,10 +93,10 @@ ms.locfileid: "53407356"
 deployment() を使い、親テンプレートの URI に基づいて、別のテンプレートにリンクできます。
 
 ```json
-"variables": {  
-    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
+"variables": {
+    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
 }
-```  
+```
 
 ### <a name="example"></a>例
 
@@ -176,7 +176,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 通常、パラメーターを使ってリソースの値を設定します。 次の例では、Web サイトの名前を、デプロイ時に渡されるパラメーターの値に設定します。
 
 ```json
-"parameters": { 
+"parameters": {
   "siteName": {
       "type": "string"
   }
@@ -281,7 +281,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| variableName |[はい] |String |返す変数の名前。 |
+| variableName |はい |String |返す変数の名前。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -377,4 +377,3 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
-
