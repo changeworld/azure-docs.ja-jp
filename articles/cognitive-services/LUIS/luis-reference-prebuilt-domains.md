@@ -23,7 +23,7 @@ ms.locfileid: "47040042"
 対照的に、[カスタム ドメイン](luis-how-to-start-new-app.md)は意図とモデルがない状態から始まります。 任意の事前構築済みのドメインの意図とエンティティをカスタム モデルに追加できます。
 
 ## <a name="list-of-prebuilt-domains"></a>事前構築済みのドメイン一覧
-LUIS には 20 個の事前構築済みのドメインが用意されています。 
+LUIS には 20 個の事前構築済みのドメインが用意されています。
 
 | 事前構築済みのドメイン | 説明 | サポートされている言語 |
 | ---------------- |-----------------------|:------:|
@@ -51,7 +51,7 @@ LUIS には 20 個の事前構築済みのドメインが用意されていま�
 
 各ドメインの詳細については、以下のセクションを参照してください。
 
-## <a name="calendar"></a>Calendar 
+## <a name="calendar"></a>Calendar
 
 Calendar ドメインには、カレンダー エントリに関する意図とエンティティが用意されています。 Calendar の意図には、予定の追加、削除、または編集、空き状況の確認、カレンダー エントリまたは予定に関する情報の検索などがあります。
 
@@ -70,7 +70,7 @@ Calendar ドメインには、カレンダー エントリに関する意図と�
 | Location | カレンダー項目、会議、予定の場所。 たとえば、住所、都市、地域などです。| 209 ナッシュビル ジム <br/><br/>897 パンケーキ ハウス<br/><br/>ガレージ|
 | Subject | 会議または予定のタイトル。| 歯科の予約 <br/><br/>Julia とランチ<br/><br/>医師の予約|
 
-## <a name="camera"></a>Camera 
+## <a name="camera"></a>Camera
 Camera ドメインには、カメラの使用に関する意図とエンティティが用意されています。 意図には、写真の撮影、自撮り、スクリーンショットの作成、ビデオの録画、ビデオのアプリケーションへのブロードキャストが含まれています。
 
 ### <a name="intents"></a>意図
@@ -89,8 +89,7 @@ Camera ドメインには、カメラの使用に関する意図とエンティ�
 | ---------------- |-----------------------|----|
 | AppName | ビデオをブロードキャストするアプリケーションの名前。| OneNote<br/><br/>Facebook<br/><br/>Skype|
 
-
-## <a name="communication"></a>Communication 
+## <a name="communication"></a>Communication
 Communication ドメインには、電子メール、メッセージ、電話の通話に関する意図とエンティティが用意されています。
 
 ### <a name="intents"></a>意図
@@ -102,7 +101,7 @@ Communication ドメインには、電子メール、メッセージ、電話の
 | AssignContactNickname| 連絡先にニックネームを割り当てます。|Isaac を父さんに変更して <br/>Jim のニックネームを編集して<br/>Patti Owens にニックネームを追加して|
 | CallVoiceMail| ユーザーのボイス メールに接続します。|ボイスメール ボックスに接続して。 <br/>ボイス メール<br/>ボイスメールに発信して|
 | CheckIMStatus| Skype で連絡先の状態を確認します。|Jim のオンライン状態は退席中? <br/>Carol は今チャットできる?|
-| Confirm| アクションを確認します。|[はい]<br/>OK<br/>大丈夫<br/>このメールの送信を確定します。<br/>|
+| Confirm| アクションを確認します。|はい<br/>OK<br/>大丈夫<br/>このメールの送信を確定します。<br/>|
 | Dial| 電話を発信します。|Jim に電話<br/>311 に電話をかけて<br/>|
 | FindContact| 連絡先情報を名前で検索します。|Carol の番号を検索して<br/>Carol の番号を表示して<br/>|
 | FindSpeedDial| 電話番号が設定されている短縮番号、またはその逆を検索します。|ダイヤル番号 5 は何?<br/>短縮番号は設定されている?<br/>941-5555-333 のダイヤル番号は何?|
@@ -140,7 +139,7 @@ Communication ドメインには、電子メール、メッセージ、電話の
 | OrderReference | 取得する項目を識別する、リスト内の順序または相対位置。 たとえば、"最後に送信したメッセージは何?" の "最後" や "最近" です。| Last (最後へ)<br/>最近|
 | SenderName | 送信者の名前。| Patti Owens|
 
-## <a name="entertainment"></a>Entertainment  
+## <a name="entertainment"></a>Entertainment
 Entertainment ドメインには、映画、音楽、ゲーム、テレビ番組の検索に関する意図やエンティティが用意されています。
 
 ### <a name="intents"></a>意図
@@ -165,14 +164,13 @@ Entertainment ドメインには、映画、音楽、ゲーム、テレビ番組
 | Type| 映画、アプリ、ゲーム、テレビ番組、または歌の種類またはメディア形式。|音楽<br/>MovieTV <br/>ショー|
 | UserRating| ユーザーの星評価。|5 つ星<br/>3 つ星<br/>4 つ星|
 
-## <a name="events"></a>Events 
+## <a name="events"></a>Events
 Events ドメインには、コンサート、フェスティバル、スポーツの試合、お笑いライブなどのイベントのチケット予約に関する意図とエンティティが用意されています。
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
 | ---------------- |-----------------------|----|
 | Book| イベントのチケットを購入します。|今週末のオーケストラのチケットを買いたい。|
-
 
 ### <a name="entities"></a>エンティティ
 | エンティティ名 | 説明 | 例 |
@@ -183,7 +181,7 @@ Events ドメインには、コンサート、フェスティバル、スポー�
 | PlaceType | イベントが開かれる場所の種類。|カフェ<br/>劇場<br/>ライブラリ|
 | type | イベントの種類。|コンサート<br/>スポーツの試合|
 
-## <a name="fitness"></a>Fitness 
+## <a name="fitness"></a>Fitness
 Fitness ドメインには、フィットネス アクティビティの追跡に関する意図およびエンティティが用意されています。 意図には、メモの保存、残りの時間や距離、アクティビティ結果の保存が含まれます。
 
 ### <a name="intents"></a>意図
@@ -204,7 +202,7 @@ Fitness ドメインには、フィットネス アクティビティの追跡�
 | Number | フィットネスまたは健康アプリで使用される数値。|19<br/>three<br/>200<br/>one|
 | StatType | フィットネスまたは健康アプリで使用される集計データに対する統計の種類。|合計<br/>平均<br/>最大値<br/>最小値|
 
-## <a name="gaming"></a>Gaming 
+## <a name="gaming"></a>Gaming
 Gaming ドメインには、マルチプレーヤー ゲーム内のゲーム パーティーの管理に関する意図とエンティティが用意されています。
 
 ### <a name="intents"></a>意図
@@ -219,8 +217,7 @@ Gaming ドメインには、マルチプレーヤー ゲーム内のゲーム �
 | ---------------- |-----------------------|----|
 | Contact| マルチプレーヤー ゲームで使用する連絡先の名前。|Carol<br/>Jim|
 
-
-## <a name="homeautomation"></a>HomeAutomation 
+## <a name="homeautomation"></a>HomeAutomation
 HomeAutomation ドメインには、照明や家電製品などのスマート ホーム デバイスの制御に関する意図とエンティティが用意されています。
 
 ### <a name="intents"></a>意図
@@ -237,7 +234,7 @@ HomeAutomation ドメインには、照明や家電製品などのスマート �
 | Operation | デバイスに設定する状態。|lock<br/>オープン<br/>on<br/>オフ|
 | ルーム | デバイスがある場所または部屋。|リビング Room<br/>寝室<br/>キッチン|
 
-## <a name="movietickets"></a>MovieTickets 
+## <a name="movietickets"></a>MovieTickets
 MovieTickets ドメインには、映画館の映画チケットの予約に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
@@ -253,7 +250,6 @@ When is Captain Omar showing?
 | Book | 映画チケットを購入します。|「オマール大佐と 2 人の銃士」のチケットを 2 枚予約して。<br/>明日の映画のチケットを買いたい<br/>来週水曜日の「オマール大佐と 2 人の銃士」のチケットがほしい|
 |GetShowTime| 映画の上映時間を取得します。|「オマール大佐」の上映時間はいつ?|
 
-
 ### <a name="entities"></a>エンティティ
 | エンティティ名 | 説明 | 例 |
 | ---------------- |-----------------------|----|
@@ -262,7 +258,7 @@ When is Captain Omar showing?
 | PlaceName | 劇場または映画館の名前。|シネマ アミール<br/>アレクサンドリア シアター<br/>ニューヨーク シアター|
 | PlaceType | 映画が上映されている場所の種類|cinema<br/>theater<br/>IMAX シネマ|
 
-## <a name="music"></a>Music 
+## <a name="music"></a>Music
 Music ドメインには、音楽プレーヤーでの音楽の再生に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
@@ -293,7 +289,7 @@ Skip to the next song
 | ArtistName | デバイスで再生するメディアに関連付けられた俳優、監督、プロデューサー、作家、ミュージシャン、またはアーティスト。|エルビス・プレスリー<br/>テイラー・スウィフト<br/>アデル<br/>モーツァルト|
 | Genre | 要求されている音楽のジャンル。|カントリー ミュージック<br/>ブロードウェイのクラシック<br/>バロック時代のクラシック音楽を再生して|
 
-## <a name="note"></a>Note 
+## <a name="note"></a>Note
 Note ドメインには、メモの作成、編集、および検索に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
@@ -326,7 +322,7 @@ Remove all items from my vacation list
 | Text | メモまたはリマインダーのテキスト。|散歩前にストレッチ<br/>明日は長距離走|
 | Title | メモのタイトル。|買い物メモ<br/>電話する相手<br/>To do|
 
-## <a name="ondevice"></a>OnDevice 
+## <a name="ondevice"></a>OnDevice
 OnDevice ドメインには、デバイスの制御に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
@@ -343,7 +339,7 @@ Can you make the screen brighter?
 |CloseApplication|デバイス アプリケーションを終了します。|ビデオ プレーヤーを終了して|
 |FileBug|デバイスのバグを提出します。|バグを提出してください<br/>バグを提出してもらえますか?<br/>このバグを報告させてください|
 |GoBack|1 ステップ前に戻るか、前のステップに戻ることを確認します。|戻ってください<br/>前の画面に移動<br/>戻ってリスニングを停止|
-|[Help]| ヘルプを要求します。|助けてください。<br/>こんにちは<br/>何ができますか?<br/>ヘルプが必要です| 
+|Help| ヘルプを要求します。|助けてください。<br/>こんにちは<br/>何ができますか?<br/>ヘルプが必要です|
 |LocateDevice|デバイスの場所を特定します。|電話の場所を特定できますか<br/>Tom の電話を探して<br/>私の電話を探して|
 |LogIn|デバイスを使用してサービスにログインします。|ログインしてください<br/>Facebook のログイン<br/>LinkedIn にログイン|
 |LogOut|デバイスを使用してサービスからログアウトします。|電話からログオフして<br/>Twitter にログオンして<br/>ログアウト|
@@ -355,7 +351,7 @@ Can you make the screen brighter?
 |QueryBattery|バッテリ残量に関する情報を取得します。|バッテリ残量を表示して。<br/>バッテリの状態を教えて<br/>今のバッテリ残量はどのくらい?<br/>バッテリを表示して|
 |QueryWifi|WiFi に関する情報を取得します。|WiFi 情報を取得して。|
 |Restart|デバイスを再起動します。|再起動してください。|
-|RingDevice| デバイスを紛失したときに見つけるために、着信音を鳴らすようにデバイスに指示します。|電話の着信音を鳴らして。| 
+|RingDevice| デバイスを紛失したときに見つけるために、着信音を鳴らすようにデバイスに指示します。|電話の着信音を鳴らして。|
 |SetBrightness|デバイスの明るさを設定します。|明るさを中に設定して<br/>明るさを高に設定して<br/>明るさを低に設定して|
 |SetupDevice|デバイスのセットアップを開始します。|OS のセットアップをインストールしたい<br/>セットアップして<br/>セットアップを実行して|
 |ShowAppBar|アプリ バーを表示します。|アプリケーション バーを表示して<br/>アプリケーション バーをお願い<br/>アプリケーション バーを表示してください|
@@ -377,7 +373,7 @@ Can you make the screen brighter?
 | MediaType | デバイスで処理されるメディアの種類|音楽<br/>映画<br/>テレビ番組|
 | SettingType | ユーザーが編集する設定または設定パネルの種類。|WiFi<br/>ワイヤレス ネットワーク<br/>配色<br/>通知センター|
 
-## <a name="places"></a>Places  
+## <a name="places"></a>Places
 Places ドメインには、会社、施設、レストラン、公共の場所、住所など、場所に関するクエリを処理する意図が用意されています。
 
 ### <a name="examples"></a>例
@@ -394,15 +390,15 @@ At what time does Safeway close?
 |CheckAccident|指定した道路で事故が発生しているかどうかを確認します。|880 号線で事故は起こってる?<br/>事故情報を表示して|
 |CheckAreaTraffic|指定されたルートではなく、一般的なエリアまたは高速道路の交通状況を確認します。|シアトルの交通状況トラフィック<br/>シアトルの交通状況はどうですか?|
 |CheckIntoPlace|ソーシャル メディアを使用して場所にチェックインします。|Foursquare にチェックインして<br/>ここにチェックインして|
-|CheckRouteTraffic| ユーザーが指定した特定のルートの交通状況を確認します。|マシコまでの交通状況はどうですか?<br/>カークランドまでの交通状況を表示して<br/>シアトルまでの交通状況はどうですか?| 
+|CheckRouteTraffic| ユーザーが指定した特定のルートの交通状況を確認します。|マシコまでの交通状況はどうですか?<br/>カークランドまでの交通状況を表示して<br/>シアトルまでの交通状況はどうですか?|
 |Confirm|場所に関するアクションを確認します。|レストランの予約を確認して。|
 |Exit|場所に関連するタスクを終了するアクション。|終了してください<br/>道案内を終了して|
 |FindPlace|場所 (会社、施設、レストラン、公共の場所、住所) を検索します。|最寄りの図書館はどこですか?<br/>マウンテン ビューでお勧めのイタリアン レストランを探して|
-|GetAddress| 場所の住所を確認します。|ロビンソン通の Guu の住所を表示して<br/>最寄りのスターバックスの住所を教えて| 
+|GetAddress| 場所の住所を確認します。|ロビンソン通の Guu の住所を表示して<br/>最寄りのスターバックスの住所を教えて|
 |GetDistance|特定の場所までの距離を確認します。|ホリデイ インまでの距離はどのくらい?<br/>ここからベルビュー スクエアまでの距離を教えて<br/>タホまでの距離は?|
 |GetHours|場所の営業時間を確認します。|セーフウェイの閉店時間はいつ?<br/>ホーム デポの営業時間はいつ?<br/>スターバックスはまだ開いてる?|
 |GetMenu|レストランのメニュー項目を確認します。|ズッカはビーガン料理を出している?<br/>シズラーのメニューの内容を教えて<br/>アップルビーのメニューを表示して|
-|GetPhoneNumber| 場所の電話番号を確認します。|最寄りのスターバックスの電話番号を教えて<br/>ホーム デポの番号を教えて| 
+|GetPhoneNumber| 場所の電話番号を確認します。|最寄りのスターバックスの電話番号を教えて<br/>ホーム デポの番号を教えて|
 |GetPriceRange| 場所の価格帯を確認します。|ズッカは安い?<br/>シネプレックスは水曜日に半額になる?<br/>シズラーのロブスター 1 尾付きのディナーはいくら?|
 |GetReviews|場所のレビューを確認します。|チーズケース ファクトリのレビューを表示して<br/>シネプレックスのレビューを Yelp で読む|
 |GetRoute|場所までの道案内を確認します。|徒歩でベルビュー スクエアまで行く方法<br/>ここから 8 番通と 59 番通までの最短距離を表示して<br/>カリフォルニア州マウンテン ビューまで道案内して|
@@ -438,7 +434,7 @@ restart|
 | PlaceName | 場所の名前。|チーズケーキ ファクトリ|
 | PlaceType | 場所の種類。|カフェ<br/>劇場<br/>ライブラリ|
 | PreferredRoute | ユーザーが指定した好みのルート。 | 101 <br/>202 <br/>ルート 401|
-| Product | 場所が提供している製品。 | 衣類<br/>デジタル ASR カメラ<br/>鮮魚 | 
+| Product | 場所が提供している製品。 | 衣類<br/>デジタル ASR カメラ<br/>鮮魚 |
 | PublicTransportationRoute | ユーザーが検索している公共交通機関のルートの名前。 | 最寄りの通廊列車<br/>バス ルート 3X |
 | Rating | 場所の評価。 | 5 つ星<br/>3 つ星<br/>4 つ星|
 | RouteAvoidanceCriteria | 事故、工事、通行料などの特定のルートを避けるための条件 | 通行料 <br/>工事<br/>ルート 11|
@@ -446,7 +442,7 @@ restart|
 | TransportationCompany | 輸送業者の名前。|アムトラック<br/>アセラ<br/>グレイハウンド|
 | TransportationType | 輸送の種類。|バス<br/>トレーニング<br/>Driving (車)|
 
-## <a name="reminder"></a>Reminder 
+## <a name="reminder"></a>Reminder
 Reminder ドメインには、リマインダーの作成、編集、および検索に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
@@ -469,7 +465,7 @@ Can you check if I have a reminder about Christine's birthday?
 | ---------------- |-----------------------|----|
 | Text | リマインダーのテキスト説明です。|クリーニングの受け取り<br/>サービス センターで下車|
 
-## <a name="restaurantreservation"></a>RestaurantReservation 
+## <a name="restaurantreservation"></a>RestaurantReservation
 RestaurantReservation ドメインには、レストラン予約の管理に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
@@ -497,8 +493,8 @@ Table for 3 in Palo Alto at 7
 | PlaceType | 会社、レストラン、観光地、または施設の種類。|restaurant<br/>opera<br/>cinema|
 | Rating | 場所またはレストランの評価。|5 つ星<br/>3 つ星<br/>4 つ星|
 
-## <a name="taxi"></a>Taxi 
- 
+## <a name="taxi"></a>Taxi
+
 Taxi ドメインには、タクシー予約の作成および管理に関するする意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
@@ -527,7 +523,7 @@ Cancel my Uber
 | TransportationCompany | 輸送業者の名前。|アムトラック<br/>アセラ<br/>グレイハウンド|
 | TransportationType | 輸送の種類。|バス<br/>トレーニング<br/>Driving (車)|
 
-## <a name="translate"></a>Translate 
+## <a name="translate"></a>Translate
 Translate ドメインには、テキストの対象言語への翻訳に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
@@ -549,8 +545,8 @@ Translate this sentence to English
 | TargetLanguage | 翻訳の対象言語。|フランス語<br/>ドイツ語<br/>韓国語|
 | Text | 翻訳するテキスト。|Hello World<br/>おはようございます<br/>こんばんは|
 
-## <a name="tv"></a>TV 
- 
+## <a name="tv"></a>TV
+
 TV ドメインには、テレビを制御するための意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
@@ -572,7 +568,7 @@ Watch National Geographic
 | ---------------- |-----------------------|----|
 | ChannelName | テレビ チャンネルの名前。|CNN<br/>BBC<br/>ムービー チャンネル|
 
-## <a name="utilities"></a>Utilities  
+## <a name="utilities"></a>Utilities
 Utilities ドメインには、あいさつ、キャンセル、確認、ヘルプ、繰り返し、ナビゲーション、開始、停止など、多くのタスクに共通するタスクの意図が用意されています。
 
 ### <a name="examples"></a>例
@@ -589,14 +585,14 @@ Repeat last question please
 | Confirm | アクションを確認します。|はい、確認します<br/>いいですね、確認します<br/>OK、確認します|
 | FinishTask | ユーザーが開始したタスクを完了します。|終わりました<br/>完了しました<br/>完了です|
 | GoBack | 1 ステップ前に戻るか、前のステップに戻ります。|Twitter に戻って<br/>1 ステップ戻って<br/>Go back|
-| [Help] | ヘルプを要求します。|助けてください<br/>ヘルプを開いて<br/>help|
+| Help | ヘルプを要求します。|助けてください<br/>ヘルプを開いて<br/>help|
 | Repeat | アクションを繰り返します。|最後の質問を繰り返して<br/>直前の歌を繰り返して|
 | ShowNext | 系列内の次の項目を表示します。 |次の項目を表示して<br/>次のページに進んで|
 | ShowPrevious | 系列内の前の項目を表示します。|前の項目を表示して|
 | StartOver | アプリを再起動するか、新しいセッションを開始します。|起動して<br/>新しいセッション<br/>restart|
 | Stop | アクションを停止します。| この読み上げを停止してください<br/>黙って<br/>停止してください。|
 
-## <a name="weather"></a>Weather 
+## <a name="weather"></a>Weather
 Weather ドメインには、天気のレポートと予測を取得するための意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
@@ -617,7 +613,7 @@ What's the average temperature in India in september?
 | ---------------- |-----------------------|----|
 | Location| 気象リクエストの絶対的な場所。|シアトル<br/>パリ<br/>パロ アルト|
 
-## <a name="web"></a>Web 
+## <a name="web"></a>Web
 Web ドメインには、Web サイトにナビゲートする意図が用意されています。
 
 ### <a name="examples"></a>例
@@ -631,4 +627,3 @@ Navigate to www.bing.com
 | 意図の名前 | 説明 | 例 |
 | ---------------- |-----------------------|----|
 | Navigate | 指定された Web サイトに移動する要求。 |facebook.com に移動して<br/>www.twitter.com にアクセスして|
-
