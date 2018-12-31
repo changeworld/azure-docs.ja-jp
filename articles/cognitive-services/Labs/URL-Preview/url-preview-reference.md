@@ -106,7 +106,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 |Name|値|type|
 |----------|-----------|----------|
 |_type|種類のヒント。|String|
-|<a name="errors" />errors|要求が失敗した理由を示すエラーの一覧。|[エラー](#error)[]|
+|<a name="errors" />errors|要求が失敗した理由を示すエラーの一覧。|[Error](#error)[]|
 
 ### <a name="webpage"></a>WebPage
 プレビューの Web ページに関する情報を定義します。
