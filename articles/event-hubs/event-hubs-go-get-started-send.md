@@ -1,20 +1,21 @@
 ---
-title: Go を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs
-description: Go を使用して Event Hubs へのイベントの送信を開始する
+title: Go を使用してイベントを送信する - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs からイベントを送信する Go アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 10/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: f5e30a103b09613caee8e9912a89a5bc2d390f65
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 44cbea8cc40f83ed5fdd2863da0cb0a01e8dc2b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458090"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091062"
 ---
 # <a name="send-events-to-event-hubs-using-go"></a>Go を使用して Event Hubs にイベントを送信する
 
@@ -30,10 +31,11 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
 * Go がローカルにインストールされていること。 必要に応じて、[こちらの手順](https://golang.org/doc/install)に従います。
-* 既存の Azure Event Hubs 名前空間とイベント ハブ。 これらのエンティティは、[こちらの記事](event-hubs-create.md)の手順に従って作成できます。
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
-最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順を実行した後、このチュートリアルに示されている手順に進みます。
+最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。
+
+このチュートリアルでは、以下の手順に進みます。
 
 ## <a name="install-go-package"></a>Go パッケージをインストールする
 

@@ -1,22 +1,24 @@
 ---
-title: Azure Portal を使用してゾーン パブリック IP アドレス フロントエンドでパブリック Load Balancer Standard を作成する | Microsoft Docs
+title: ゾーンのフロントエンド IP アドレスを使用して Standard Load Balancer を作成する - Azure portal
+titlesuffix: Azure Load Balancer
 description: Azure Portal でゾーンのパブリック IP アドレス フロントエンドを使用してパブリック Load Balancer Standard を作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: cc3d1e9f2d87da1ed7014674877212ea0be81bca
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e109504fe8657436d73870cc022ed4bc81c559f5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416768"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095338"
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zonal-public-ip-address-frontend-using-azure-portal"></a>Azure Portal を使用してゾーン パブリック IP アドレス フロントエンドでパブリック Load Balancer Standard を作成する
 

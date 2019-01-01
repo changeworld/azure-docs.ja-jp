@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory のサポートを受ける方法 | Microsoft Docs
-description: Azure Active Directory のサポートを受ける方法について説明します。
+title: ヘルプを検索してサポート チケットを開く - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory のヘルプを取得してサポート チケットを開く方法について説明します。
 services: active-directory
 documentationcenter: na
 author: eross-msft
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: d7d499ed43ee2eab03e46e408104eca4af6a2945
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: d67b53d80b74d0a6ad3c4264a55a5e277acffd20
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729393"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083905"
 ---
-# <a name="how-to-get-support-for-azure-active-directory"></a>方法: Azure Active Directory のサポートを受ける
+# <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Azure Active Directory のヘルプを検索してサポート チケットを開く
 Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前、課金、サブスクリプションの各サポートを幅広く提供しています。 サポートは、Microsoft Azure の有料版および試用版サブスクリプションについて、オンラインと電話の両方で利用できます。 また、電話サポートとオンライン課金サポートは追加の言語で利用できます。 
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>サポート チケットを開かずにヘルプを見つける

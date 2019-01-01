@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6d05323eb08a69ef4b76dbbf35217d80b9b2dc3c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0ad4fef9dd67ed0bf2bc9a3c66e26fc111526b90
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261073"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081542"
 ---
 # <a name="determine-your-publishing-option"></a>公開オプションを選定する
 オファーに対して選択する公開オプションは、適格性の要件とマーケットプレースの GTM 特典の両方に直接関係しています。 さらに重要なこととして、Cloud パートナー ポータルにおける公開オプションとオファーの種類の選択によって、ユーザーがマーケットプレースのオファーをどのように取り扱うかが定義されます。
 
 Cloud パートナー ポータルでオファーの種類を選択してからマーケットプレースのオファーを作成すると、公開オプションを有効にすることができます。 そのためには、マーケットプレースの主要な概念 (公開オプション、オファーの種類と構成、およびマーケットプレースのネットショップでオファーを提示する方法と場所を管理する行動喚起) について理解する必要があります。
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/options-table/articles/marketplace/media/marketplace-publishers-guide/storefronts_options_table.png?raw=true)
+![](./media/marketplace-publishers-guide/storefronts_options_table.png)
 
 >[!Note]
 >上記の表では、ソリューションまたはサービスをネットショップ、公開オプション、およびマーケットプレースでオファーを提示するために使用するオファーの種類にマップする方法について説明しています。
@@ -44,7 +44,7 @@ Cloud パートナー ポータルでオファーの種類を選択してから�
 
 **Azure Marketplace** のアプリケーションは、Azure 上または Azure 用に構築された技術的な "構成要素" ソリューションです。 Azure Marketplace コンサルティング サービスは、お客様が Azure の使用を開始または促進するために役立つプロフェッショナル サービスです。
 
-**AppSource** のアプリケーションは、Azure 上に構築可能な、または Dynamics 365、Office 365、PowerBI、PowerApps 用に構築可能な基幹業務ソリューションです。 AppSource コンサルティング サービスは、お客様が Dynamics 365 と Power BI の使用を開始または促進するために役立つプロフェッショナル サービスです。
+**AppSource** のアプリケーションは、Azure 上に構築可能な、または Dynamics 365、Office 365、PowerBI、または PowerApps 用に構築可能な基幹業務ソリューションです。 AppSource コンサルティング サービスは、お客様が Dynamics 365 と Power BI の使用を開始または促進するために役立つプロフェッショナル サービスです。
 
 パブリッシャーとしての登録が完了し、マーケットプレースのオファーを作成、構成、公開するための Cloud パートナー ポータルへのアクセス権を取得したら、次のことを行います。
 

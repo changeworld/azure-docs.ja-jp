@@ -1,20 +1,18 @@
 ---
-title: Azure Cosmos DB SQL API アカウントで地理空間データを扱う | Microsoft Docs
+title: Azure Cosmos DB SQL API アカウントで地理空間データを扱う
 description: Azure Cosmos DB と SQL API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 29bb495bbbd56ab39964b34db35fb4d222a60179
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961910"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074697"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API アカウントで地理空間データと GeoJSON 位置データを使用する
 
@@ -151,7 +149,7 @@ await client.CreateDocumentAsync(
 地理空間データの挿入方法がわかったら、SQL と LINQ で Azure Cosmos DB のデータを検索してみましょう。
 
 ### <a name="spatial-sql-built-in-functions"></a>空間 SQL 組み込み関数
-Azure Cosmos DB は、以下の Open Geospatial Consortium (OGC) 組み込み関数を使った地理空間検索をサポートしています。 SQL 言語の全組み込み関数の詳細については、[Azure Cosmos DB のクエリ](sql-api-sql-query.md)に関する記事をご覧ください。
+Azure Cosmos DB は、以下の Open Geospatial Consortium (OGC) 組み込み関数を使った地理空間検索をサポートしています。 SQL 言語の全組み込み関数の詳細については、[Azure Cosmos DB のクエリ](how-to-sql-query.md)に関する記事をご覧ください。
 
 <table>
 <tr>
@@ -307,7 +305,7 @@ SQL .NET SDK には、LINQ 式の中で使用するための、`Distance()` と 
 以上で、LINQ と SQL を使ってドキュメントを検索する方法を見てきました。今度は、Azure Cosmos DB に対して空間インデックスを構成する方法について見ていきましょう。
 
 ## <a name="indexing"></a>インデックス作成
-[Azure Cosmos DB のスキーマ非依存インデックス](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)に関するホワイト ペーパーで説明されているように、Azure Cosmos DB のデータベース エンジンはスキーマを一切必要とせず、JSON を高いレベルでサポートするように設計されています。 書き込みに最適化された Azure Cosmos DB のデータベース エンジンは、GeoJSON 標準で表された空間データ (Point、Polygon、Line) をネイティブに認識できます。
+[Azure Cosmos DB のスキーマ非依存インデックス](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)に関するホワイト ペーパーで説明されているように、Azure Cosmos DB のデータベース エンジンはスキーマを一切必要とせず、JSON を高いレベルでサポートするように設計されています。 書き込みに最適化された Azure Cosmos DB のデータベース エンジンは、GeoJSON 標準で表された空間データ (Point、Polygon、Line) をネイティブに認識できます。
 
 簡単に言えば、ジオメトリは、測地座標系から 2D 平面に投影された後、**4 分木**を使用して段階的にセルに分割されます。 これらのセルは、その位置に基づき、**ヒルベルト空間充填曲線**内で一次元にマッピングされ、ポイントの局所性が維持されます。 さらに、位置情報データのインデックスを作成するとき、そのデータに、**テセレーション**と呼ばれるプロセスが適用されます。つまり、特定の位置と交差するすべてのセルが特定され、キーとして Azure Cosmos DB のインデックスに保存されます。 クエリの実行時、ポイントや Polygon などの引数は、同様にテセレーションを経て関連するセル ID 範囲が抽出された後、インデックスからデータを取得するために使用されます。
 
@@ -391,7 +389,7 @@ SQL .NET SDK には、LINQ 式の中で使用するための、`Distance()` と 
 Azure Cosmos DB の地理空間機能の基本的な使い方を学んだら、次の段階に進みましょう。
 
 * [GitHub の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
-* [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial) で地理空間のクエリを実際に体験する
-* [Azure Cosmos DB のクエリ](sql-api-sql-query.md)の詳細を確認する
-* [Azure Cosmos DB のインデックス作成ポリシー](indexing-policies.md)の詳細を確認する
+* [Azure Cosmos DB Query Playground](https://www.documentdb.com/sql/demo#geospatial) で地理空間のクエリを実際に体験する
+* [Azure Cosmos DB のクエリ](how-to-sql-query.md)の詳細を確認する
+* [Azure Cosmos DB のインデックス作成ポリシー](index-policy.md)の詳細を確認する
 

@@ -1,11 +1,12 @@
 ---
 title: Data Science Virtual Machine の共通 ID を設定する - Azure | Microsoft Docs
-description: エンタープライズ チームの DSVM 環境で共通 ID を設定します。
+description: 複数の Data Science Virtual Machine 間で使用できる共通のユーザー アカウントを作成する方法について説明します。 Azure Active Directory またはオンプレミスの Active Directory を使用して、データ サイエンス仮想マシンに対してユーザーを認証できます。
 keywords: ディープ ラーニング, AI, データ サイエンス ツール, データ サイエンス仮想マシン, 地理空間分析, チーム データ サイエンス プロセス
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 25d40b6a72ab6da61feb1458f5930eb48ef1d900
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6be7c63d3879c7ed89cd97eaecd6d59b6b5aadd4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436303"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075473"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine で共通 ID を設定する
 
