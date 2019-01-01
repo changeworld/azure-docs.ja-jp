@@ -650,6 +650,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 | ------------- | -------------- | ------------ |
 | deviceservices | はい | はい |
 
+
 ## <a name="third-party-services"></a>サード パーティーのサービス
 
 サード パーティのサービスは現在、移動操作をサポートしていません。 これらのリソース プロバイダーは次のとおりです。
@@ -683,6 +684,7 @@ az resource list -g demogroup --query '[].{name:name, resourceType:type}' --outp
 * SuccessBricks.ClearDB
 * TrendMicro.DeepSecurity
 * U2uconsult.TheIdentityHub
+
 
 ## <a name="next-steps"></a>次の手順
 

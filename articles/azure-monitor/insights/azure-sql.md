@@ -63,7 +63,7 @@ Azure SQL Analytics ソリューションを Azure ダッシュボードに追�
 
 - Azure SQL データベースの Azure 診断を有効にして、[診断テレメトリを Azure SQL Analytics にストリーム配信](../../sql-database/sql-database-metrics-diag-logging.md)します。
 
-上記手順ではまた､1 つの Azure SQL Analytics ワークスペースから複数の Azure サブスクリプションを 1 つの窓で監視するためのサポート機能を有効にする手順も説明しています｡
+上記手順ではまた､1 つの Azure SQL Analytics ワークスペースから複数の Azure サブスクリプションを 1 つの窓で監視するためのサポート機能を有効にする手順も説明しています｡ 
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 
@@ -150,7 +150,7 @@ Azure SQL Analytics を使用するには､少なくとも Azure で閲覧者�
 
 次のスクリプトの “{SubscriptionId}" の部分をご自分の Azure サブスクリプション ID に置き換え､スクリプトを実行して､所有者または共同作成者として Azure にログインしてください｡
 
-    ```powershell
+   ```powershell
     Connect-AzureRmAccount
     Select-AzureRmSubscription {SubscriptionId}
     $role = Get-AzureRmRoleDefinition -Name Reader
@@ -173,7 +173,7 @@ Azure SQL Analytics を使用するには､少なくとも Azure で閲覧者�
     $role.Actions.Add("Microsoft.Resources/deployments/write");
     $role.AssignableScopes = "/subscriptions/{SubscriptionId}"
     New-AzureRmRoleDefinition $role
-    ```
+   ```
 
 新しいロールが作成されると､Azure SQL Analytics を使用する特別な許可を付与する必要があるユーザーそれぞれにそのロールを割り当てることができます｡
 

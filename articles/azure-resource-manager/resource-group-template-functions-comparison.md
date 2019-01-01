@@ -149,7 +149,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json 
 ```
 
 次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)では、[not](resource-group-template-functions-logical.md#not) と **equals** を使用します。
@@ -184,7 +184,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json 
 ```
 
 ## <a name="greater"></a>greater
@@ -260,7 +260,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json 
 ```
 
 ## <a name="greaterorequals"></a>greaterOrEquals
@@ -336,7 +336,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
 ```
 
 ## <a name="less"></a>less
@@ -412,7 +412,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json 
 ```
 
 ## <a name="lessorequals"></a>lessOrEquals
@@ -488,7 +488,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json 
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -496,3 +496,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
+

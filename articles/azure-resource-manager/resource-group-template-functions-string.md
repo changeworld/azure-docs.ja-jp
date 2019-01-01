@@ -355,22 +355,22 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "firstArray": {
-            "type": "array",
-            "defaultValue": [
-                "1-1",
-                "1-2",
-                "1-3"
-            ]
+    "parameters": { 
+        "firstArray": { 
+            "type": "array", 
+            "defaultValue": [ 
+                "1-1", 
+                "1-2", 
+                "1-3" 
+            ] 
         },
         "secondArray": {
-            "type": "array",
-            "defaultValue": [
-                "2-1",
+            "type": "array", 
+            "defaultValue": [ 
+                "2-1", 
                 "2-2",
-                "2-3"
-            ]
+                "2-3" 
+            ] 
         }
     },
     "resources": [
@@ -632,7 +632,7 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
 ```
 
-<a id="empty" />
+<a id="empty" /> 
 
 ## <a name="empty"></a>empty
 `empty(itemToTest)`
@@ -1165,7 +1165,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="return-value"></a>戻り値
 
-整数。
+整数。 
 
 ### <a name="examples"></a>例
 
@@ -1245,7 +1245,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json)では、文字の合計数に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値を埋め込む方法を示します。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json)では、文字の合計数に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値を埋め込む方法を示します。 
 
 ```json
 {
@@ -1694,7 +1694,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 "parameters": {
     "inputString": { "type": "string", "value": "1234567890" }
 },
-"variables": {
+"variables": { 
     "prefix": "[substring(parameters('inputString'), 0, 11)]"
 }
 ```
@@ -2014,7 +2014,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="uniquestring"></a>uniqueString
 `uniqueString (baseString, ...)`
 
-パラメーターとして渡された値に基づいて、決定論的ハッシュ文字列を作成します。
+パラメーターとして渡された値に基づいて、決定論的ハッシュ文字列を作成します。 
 
 ### <a name="parameters"></a>parameters
 
@@ -2025,7 +2025,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="remarks"></a>解説
 
-この関数は、リソースの一意の名前を作成する必要がある場合に便利です。 結果の一意性のスコープを制限するパラメーターの値を指定します。 サブスクリプション、リソース グループ、またはデプロイのレベルで名前が一意であるかどうかを指定できます。
+この関数は、リソースの一意の名前を作成する必要がある場合に便利です。 結果の一意性のスコープを制限するパラメーターの値を指定します。 サブスクリプション、リソース グループ、またはデプロイのレベルで名前が一意であるかどうかを指定できます。 
 
 返される値はランダムな文字列ではなく、ハッシュ関数の結果になります。 返される値は、13 文字です。 グローバルに一意ではありません。 命名規則にあるプレフィックスをこの値と組み合わせて、わかりやすい名前を作成することもできます。 次の例では、戻り値の形式を示します。 実際の値は、指定されたパラメーターによって異なります。
 
@@ -2054,9 +2054,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 次の例は、リソース グループに基づいてストレージ アカウントの一意の名前を作成する方法を示しています。 リソース グループ内で、同じ方法で名前が作成されると、名前は一意ではなくなります。
 
 ```json
-"resources": [{
-    "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-    "type": "Microsoft.Storage/storageAccounts",
+"resources": [{ 
+    "name": "[concat('storage', uniqueString(resourceGroup().id))]", 
+    "type": "Microsoft.Storage/storageAccounts", 
     ...
 ```
 
@@ -2134,7 +2134,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
     "contentVersion": "1.0.0.0",
     "variables": {
         "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-        "uriEncoded": "[uriComponent(variables('uriFormat'))]"
+        "uriEncoded": "[uriComponent(variables('uriFormat'))]" 
     },
     "resources": [
     ],
@@ -2202,7 +2202,7 @@ URI エンコードされた値の文字列。
     "contentVersion": "1.0.0.0",
     "variables": {
         "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-        "uriEncoded": "[uriComponent(variables('uriFormat'))]"
+        "uriEncoded": "[uriComponent(variables('uriFormat'))]" 
     },
     "resources": [
     ],
@@ -2270,7 +2270,7 @@ URI エンコードされた値のデコード済み文字列。
     "contentVersion": "1.0.0.0",
     "variables": {
         "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-        "uriEncoded": "[uriComponent(variables('uriFormat'))]"
+        "uriEncoded": "[uriComponent(variables('uriFormat'))]" 
     },
     "resources": [
     ],
@@ -2316,3 +2316,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
+

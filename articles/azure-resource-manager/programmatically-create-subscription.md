@@ -36,7 +36,7 @@ ms.locfileid: "44715892"
 
 ## <a name="find-accounts-you-have-access-to"></a>アクセスできるアカウントを検索します。
 
-アカウント所有者として Azure EA 登録に追加されると、アカウントと登録の関係を使用してサブスクリプション料金の請求先が決定されます。 このアカウント内で作成されたすべてのサブスクリプションは、アカウントが含まれる EA 登録に課金されます。 サブスクリプションを作成するには、サブスクリプションを所有するための登録アカウントおよびユーザー プリンシパルに関する値を受け渡す必要があります。
+アカウント所有者として Azure EA 登録に追加されると、アカウントと登録の関係を使用してサブスクリプション料金の請求先が決定されます。 このアカウント内で作成されたすべてのサブスクリプションは、アカウントが含まれる EA 登録に課金されます。 サブスクリプションを作成するには、サブスクリプションを所有するための登録アカウントおよびユーザー プリンシパルに関する値を受け渡す必要があります。 
 
 次のコマンドを実行するには、サブスクリプションが既定で作成されるディレクトリである、アカウント所有者の*ホーム ディレクトリ*にログインしている必要があります。
 
@@ -93,7 +93,7 @@ ObjectId                               | PrincipalName
 
 [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) コマンドを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。
 
-```azurecli-interactive
+```azurecli-interactive 
 az billing enrollment-account list
 ```
 
@@ -126,7 +126,7 @@ az billing enrollment-account list
 
 `principalName` プロパティを使用して、サブスクリプション料金の請求先アカウントを指定します。 次の手順で、`id` を `enrollmentAccount` 値として使用して、サブスクリプションを作成します。
 
-## <a name="create-subscriptions-under-a-specific-enrollment-account"></a>特定の登録アカウントの中にサブスクリプションを作成する
+## <a name="create-subscriptions-under-a-specific-enrollment-account"></a>特定の登録アカウントの中にサブスクリプションを作成する 
 
 次の例では、*開発チーム サブスクリプション*という名前で、サブスクリプション オファー *MS-AZR-0017P* (正規 EA) のサブスクリプションを作成する要求を作成します。 登録アカウントは `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (プレースホルダーの値、この値は GUID です) で、これは SignUpEngineering@contoso.com の登録アカウントです。 また、必要に応じて RBAC 所有者として 2 人のユーザーをサブスクリプションに追加することもできます。
 
@@ -163,7 +163,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 このプレビュー モジュールを使用するには、まず `Install-Module AzureRM.Subscription -AllowPrerelease` を実行してモジュールをインストールします。 `-AllowPrerelease` が正しく動作することを確認するには、[Get PowerShellGet Module](/powershell/gallery/installing-psget) から最新バージョンの PowerShellGet をインストールします。
 
-新しいサブスクリプションを作成するには、`enrollmentAccount` オブジェクト ID を パラメーター `EnrollmentAccountObjectId` に設定し、[New-AzureRmSubscription](/powershell/module/azurerm.subscription) を使用します。
+新しいサブスクリプションを作成するには、`enrollmentAccount` オブジェクト ID を パラメーター `EnrollmentAccountObjectId` に設定し、[New-AzureRmSubscription](/powershell/module/azurerm.subscription) を使用します。 
 
 ```azurepowershell-interactive
 New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
@@ -176,7 +176,7 @@ New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -E
 | `EnrollmentAccountObjectId`      | はい       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 この値は、`Get-AzureRmEnrollmentAccount` から取得する GUID です。 |
 | `OwnerObjectId`      | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーのオブジェクト ID。  |
 | `OwnerSignInName`    | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーの、メール アドレス。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。|
-| `OwnerApplicationId` | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)が必要です。|
+| `OwnerApplicationId` | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)が必要です。| 
 
 すべてのパラメーターの完全な一覧については、[New-AzureRmSubscription](/powershell/module/azurerm.subscription.preview) を参照してください。
 
@@ -186,7 +186,7 @@ New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -E
 
 新しいサブスクリプションを作成するには、`enrollmentAccount` オブジェクト ID をパラメーター `enrollment-account-object-id` に設定し、[az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) を使用します。
 
-```azurecli-interactive
+```azurecli-interactive 
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
@@ -197,7 +197,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `enrollment-account-object-id`      | はい       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 この値は、`az billing enrollment-account list` から取得する GUID です。 |
 | `owner-object-id`      | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーのオブジェクト ID。  |
 | `owner-upn`    | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーの、メール アドレス。 `owner-object-id` の代わりにこのパラメーターを使用することができます。|
-| `owner-spn` | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `owner-object-id` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)が必要です。|
+| `owner-spn` | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `owner-object-id` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)が必要です。| 
 
 すべてのパラメーターの完全な一覧については、[az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) を参照してください。
 

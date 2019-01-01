@@ -49,7 +49,7 @@ ms.locfileid: "53438413"
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion)`
 
-list 操作をサポートする任意の種類のリソースの値を返します。 最も一般的に使用されるのは、`listKeys` と `listSecrets` です。
+list 操作をサポートする任意の種類のリソースの値を返します。 最も一般的に使用されるのは、`listKeys` と `listSecrets` です。 
 
 ### <a name="parameters"></a>parameters
 
@@ -57,7 +57,7 @@ list 操作をサポートする任意の種類のリソースの値を返しま
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
 | apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
-| functionValues |いいえ  |オブジェクト | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 |
+| functionValues |いいえ  |オブジェクト | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 | 
 
 ### <a name="return-value"></a>戻り値
 
@@ -80,7 +80,7 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
 }
 ```
 
-他のリスト関数の戻り値の形式はさまざまです。 関数の形式を確認するには、テンプレートの例に示すように、outputs セクションにその関数を含めてください。
+他のリスト関数の戻り値の形式はさまざまです。 関数の形式を確認するには、テンプレートの例に示すように、outputs セクションにその関数を含めてください。 
 
 ### <a name="remarks"></a>解説
 
@@ -167,7 +167,7 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
         }
     }
 }
-```
+``` 
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -197,7 +197,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="return-value"></a>戻り値
 
-サポートされている各種類は、次の形式で返されます。
+サポートされている各種類は、次の形式で返されます。 
 
 ```json
 {
@@ -296,7 +296,7 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
 
 参照されているリソースを同じテンプレート内でプロビジョニングし、(リソース ID ではなく) 名前でリソースを参照する場合は、reference 関数を使用することにより、あるリソースが他のリソースに依存することを暗黙的に宣言します。 dependsOn プロパティを一緒に使用する必要はありません。 参照先のリソースがデプロイを完了するまで、関数は評価されません。
 
-ある種類のリソースによって返されるプロパティの名前と値を確認するには、outputs セクションでオブジェクトを返すテンプレートを作成します。 その種類のリソースが既にある場合、このテンプレートは新しいリソースはデプロイせずにオブジェクトを返します。
+ある種類のリソースによって返されるプロパティの名前と値を確認するには、outputs セクションでオブジェクトを返すテンプレートを作成します。 その種類のリソースが既にある場合、このテンプレートは新しいリソースはデプロイせずにオブジェクトを返します。 
 
 通常、**reference** 関数は、BLOB エンドポイント URI や完全修飾ドメイン名などのオブジェクトから特定の値を返すために使用します。
 
@@ -348,7 +348,7 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "storageAccountName": {
+      "storageAccountName": { 
           "type": "string"
       }
   },
@@ -378,7 +378,7 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
       }
     }
 }
-```
+``` 
 
 前の例では、2 つのオブジェクトが返されます。 properties オブジェクトの形式は次のとおりです。
 
@@ -488,7 +488,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="resourcegroup"></a>resourceGroup
 `resourceGroup()`
 
-現在のリソース グループを表すオブジェクトを返します。
+現在のリソース グループを表すオブジェクトを返します。 
 
 ### <a name="return-value"></a>戻り値
 
@@ -565,7 +565,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json 
 ```
 
 <a id="resourceid" />
@@ -573,7 +573,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="resourceid"></a>resourceId
 `resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
 
-リソースの一意の識別子を返します。 リソース名があいまいであるか、同じテンプレート内でプロビジョニングされていないときに、この関数を使用します。
+リソースの一意の識別子を返します。 リソース名があいまいであるか、同じテンプレート内でプロビジョニングされていないときに、この関数を使用します。 
 
 ### <a name="parameters"></a>parameters
 
@@ -720,7 +720,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json 
 ```
 
 <a id="subscription" />
@@ -728,7 +728,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="subscription"></a>サブスクリプション
 `subscription()`
 
-現在のデプロイのサブスクリプションの詳細を返します。
+現在のデプロイのサブスクリプションの詳細を返します。 
 
 ### <a name="return-value"></a>戻り値
 
@@ -745,7 +745,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json)は、outputs セクションで呼び出される subscription 関数を示しています。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json)は、outputs セクションで呼び出される subscription 関数を示しています。 
 
 ```json
 {
@@ -770,7 +770,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json 
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -778,3 +778,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
+
