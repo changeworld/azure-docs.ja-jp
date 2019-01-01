@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure における IP アドレスの種類 (クラシック) | Microsoft Docs
 description: Azure でのパブリック IP アドレスとプライベート IP アドレス (クラシック) について説明します。
 services: virtual-network
@@ -48,14 +48,14 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 
 > [!NOTE]
 > Azure リソースへのパブリック IP アドレスの割り当てに使用する IP アドレス範囲のリストは、「 [Azure データセンターの IP アドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)」で公開されています。
-> 
-> 
+>
+>
 
 ### <a name="dns-hostname-resolution"></a>DNS ホスト名の解決
 クラウド サービスまたは IaaS VM を作成する場合は、Azure 内のすべてのリソース間で一意のクラウド サービス DNS 名を指定する必要があります。 これにより、Azure で管理される DNS サーバー内で、リソースのパブリック IP アドレスへの *dnsname*.cloudapp.net のマッピングが作成されます。 たとえば、クラウド サービス DNS 名 **contoso** を持つクラウド サービスを作成すると、完全修飾ドメイン名 (FQDN) **contoso.cloudapp.net** がクラウド サービスのパブリック IP アドレス (VIP) に解決されます。 この FQDN を使用して、Azure 内のパブリック IP アドレスをポイントするカスタム ドメイン CNAME レコードを作成できます。
 
 ### <a name="cloud-services"></a>クラウド サービス
-クラウド サービスには、仮想 IP アドレス (VIP) と呼ばれるパブリック IP アドレスが必ずあります。 クラウド サービスのエンドポイントを作成して、VIP 内のさまざまなポートをクラウド サービス内の VM およびロール インスタンス上の内部ポートに関連付けることができます。 
+クラウド サービスには、仮想 IP アドレス (VIP) と呼ばれるパブリック IP アドレスが必ずあります。 クラウド サービスのエンドポイントを作成して、VIP 内のさまざまなポートをクラウド サービス内の VM およびロール インスタンス上の内部ポートに関連付けることができます。
 
 クラウド サービスには複数の IaaS VM または PaaS ロール インスタンスを含めることができます。すべて同じクラウド サービス VIP から公開されます。 [複数の VIP を 1 つのクラウド サービスに](../load-balancer/load-balancer-multivip.md)割り当てることもできます。これにより、SSL ベースの Web サイトを含むマルチ テナント環境のようなマルチ VIP シナリオが可能になります。
 
@@ -70,16 +70,16 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 
 > [!NOTE]
 > 従来の VM を作成するとき、コンテナー *クラウド サービス*が Azure により作成され、仮想 IP アドレス (VIP) が与えられます。 ポータル経由で作成すると、クラウド サービス VIP から VM に接続できるように、既定の RDP または SSH *エンドポイント*がポータルにより構成されます。 このクラウド サービス VIP は予約できます。VM に接続するために予約された IP アドレスが効率的に与えられます。 追加のエンドポイントを構成、追加のポートを開くことができます。
-> 
-> 
+>
+>
 
 ### <a name="iaas-vms-and-paas-role-instances"></a>IaaS VM と PaaS ロール インスタンス
 パブリック IP アドレスは、クラウド サービス内の IaaS [VM](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または PaaS ロール インスタンスに直接割り当てることができます。 これはインスタンス レベル パブリック IP アドレス ([ILPIP](virtual-networks-instance-level-public-ip.md)) と呼ばれます。 このパブリック IP アドレスは動的にのみ割り当てることができます。
 
 > [!NOTE]
 > これは、IaaS VM または PaaS ロール インスタンスのコンテナーである、クラウド サービスの VIP とは異なります。すべて同じクラウド サービス VIP から公開される、複数の IaaS VM または PaaS ロール インスタンスをクラウド サービスに含めることができるためです。
-> 
-> 
+>
+>
 
 ### <a name="vpn-gateways"></a>VPN ゲートウェイ
 [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) は、Azure VNet を他の Azure VNet またはオンプレミス ネットワークに接続するために使用できます。 VPN Gateway には、パブリック IP アドレスが *動的に*割り当てられ、リモート ネットワークとの通信が可能になります。
@@ -92,10 +92,10 @@ Azure [Application Gateway](../application-gateway/application-gateway-introduct
 
 | リソース | 動的 | 静的 | 複数の IP アドレス |
 | --- | --- | --- | --- |
-| クラウド サービス |[はい] |はい |[はい] |
-| IaaS VM または PaaS ロール インスタンス |[はい] |いいえ  |いいえ  |
-| VPN Gateway |[はい] |いいえ  |いいえ  |
-| Application gateway |[はい] |いいえ  |いいえ  |
+| クラウド サービス |はい |はい |はい |
+| IaaS VM または PaaS ロール インスタンス |はい |いいえ  |いいえ  |
+| VPN Gateway |はい |いいえ  |いいえ  |
+| Application gateway |はい |いいえ  |いいえ  |
 
 ## <a name="private-ip-addresses"></a>プライベート IP アドレス
 プライベート IP アドレスを使用すると、Azure リソースは、インターネットが到達可能な IP アドレスを使用せずに、クラウド サービス内の他のリソース、 [仮想ネットワーク](virtual-networks-overview.md)(VNet)、あるいはオンプレミス ネットワーク (VPN Gateway または ExpressRoute 回線経由) と通信することができます。
@@ -142,10 +142,10 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 
 | リソース | 動的 | 静的 | 複数の IP アドレス |
 | --- | --- | --- | --- |
-| VM (*スタンドアロン* クラウド サービスまたは VNet 内) |[はい] |はい |[はい] |
-| PaaS ロール インスタンス (*スタンドアロン* クラウド サービスまたは VNet 内) |[はい] |いいえ  |いいえ  |
-| 内部ロード バランサーのフロント エンド |[はい] |はい |[はい] |
-| Application Gateway のフロント エンド |[はい] |はい |[はい] |
+| VM (*スタンドアロン* クラウド サービスまたは VNet 内) |はい |はい |はい |
+| PaaS ロール インスタンス (*スタンドアロン* クラウド サービスまたは VNet 内) |はい |いいえ  |いいえ  |
+| 内部ロード バランサーのフロント エンド |はい |はい |はい |
+| Application Gateway のフロント エンド |はい |はい |はい |
 
 ## <a name="limits"></a>制限
 サブスクリプションごとに Azure で IP アドレスを指定する際に課せられる IP の制限を下表に示します。 ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、 [サポートにお問い合わせください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。
@@ -178,4 +178,3 @@ Azure における [ネットワークの制限](../azure-subscription-service-l
 
 ## <a name="next-steps"></a>次の手順
 * Azure Portal を使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-classic-pportal.md)します。
-
