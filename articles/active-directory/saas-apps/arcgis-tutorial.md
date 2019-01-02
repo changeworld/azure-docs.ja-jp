@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ArcGIS Online の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ArcGIS Online の統合 | Microsoft Docs
 description: Azure Active Directory と ArcGIS Online の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 12ab224481c519db36ae21dd11916649ff0bfbe3
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 3284202ffaa6767a8dd4a6a5050dbdc928075237
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269036"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846120"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>チュートリアル: Azure Active Directory と ArcGIS Online の統合
+# <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>チュートリアル:Azure Active Directory と ArcGIS Online の統合
 
 このチュートリアルでは、ArcGIS Online と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -119,14 +119,14 @@ ArcGIS Online で Azure AD のシングル サインオンを構成およびテ�
 
 5. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** テキスト ボックスに、`https://<companyname>.maps.arcgis.com` というパターンで URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.maps.arcgis.com` というパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに、`<companyname>.maps.arcgis.com` というパターンで URL を入力します。
+    b. **[識別子]** ボックスに、`<companyname>.maps.arcgis.com` の形式で URL を入力します。
 
     ![image](./media/arcgis-tutorial/b1-domains_and_urls.png)
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[ArcGIS Online クライアント サポート チーム](http://support.esri.com/en/)に問い合わせてください。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[ArcGIS Online クライアント サポート チーム](https://support.esri.com/en/)に問い合わせてください。
 
 6. **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータの XML** をダウンロードしてから、コンピューターに XML ファイルを保存します。
 
@@ -182,7 +182,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成およびテ�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
@@ -249,7 +249,7 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルの [ArcGIS Online] タイルをクリックすると、ArcGIS Online アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 4b008cc119951e50567218e332818585fb017e5a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c20f61788086806d3eebb62d35b7ac9fbcbd6fb9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229409"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846931"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して Azure に対する Hyper-V VM のディザスター リカバリーを設定する
 
@@ -43,11 +43,11 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 * 1 つ以上の VM を含む Windows Server 2012 R2 または Microsoft Hyper-V Server 2012 R2 を実行する Hyper-V ホスト。 Hyper-V サーバーは、直接、またはプロキシを経由して、インターネットに接続されている必要があります。
 * レプリケートする VM は、[こちらの前提条件](hyper-v-azure-support-matrix.md#replicated-vms)に従う必要があります。
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>手順 1. Azure アカウントにログインする
+## <a name="step-1-sign-in-to-your-azure-account"></a>ステップ 1:Azure アカウントへのサインイン
 
-1. PowerShell コンソールを開いて次のコマンドを実行し、Azure アカウントにログインします。 コマンドレットを実行すると Web ページが表示され、次のアカウントの資格情報 **Connect-AzureRmAccount** を入力するように求められます。
+1. PowerShell コンソールを開いて次のコマンドを実行し、Azure アカウントにログインします。 コマンドレットを実行すると、アカウントの資格情報を入力する Web ページが表示されます:**Connect-AzureRmAccount**。
     - または、**-Credential** パラメーターを使用して、**Connect-AzureRmAccount** コマンドレットのパラメーターとしてアカウントの資格情報を含められます。
-    - CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当するテナント ID またはテナントのプライマリ ドメイン名で指定してください。 たとえば、「**Connect-AzureRmAccount -Tenant "fabrikam.com"**」と入力します。
+    - CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当するテナント ID またはテナントのプライマリ ドメイン名で指定してください。 例: **Connect-AzureRmAccount -Tenant "fabrikam.com"**
 2. 1 つのアカウントが複数のサブスクリプションを持つことができるため、使用するサブスクリプションをアカウントに関連付けます。
 
     `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`
@@ -64,7 +64,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
     `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices` `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.SiteRecovery`
 
-## <a name="step-2-set-up-the-vault"></a>手順 2: コンテナーを設定する
+## <a name="step-2-set-up-the-vault"></a>ステップ 2:コンテナーを設定する
 
 1. 資格情報コンテナーの作成先となる Azure Resource Manager リソース グループを作成するか、既存のリソース グループを使用します。 次のように、新しいリソース グループを作成します。 $ResourceGroupName 変数には、作成するリソース グループの名前が格納され、$Geo 変数には、リソース グループの作成先となる Azure リージョン (例: "ブラジル南部") が格納されます。
 
@@ -78,13 +78,13 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
     既存のコンテナーの一覧を取得するには、**Get-AzureRmRecoveryServicesVault** コマンドレットを使用します。
 
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>手順 3. Recovery Services 資格情報コンテナーのコンテキストを設定する
+## <a name="step-3-set-the-recovery-services-vault-context"></a>ステップ 3:Recovery Services 資格情報コンテナーのコンテキストを設定する
 
 次のように、コンテナーのコンテキストを設定します。
 
 `Set-AsrVaultSettings -Vault $vault`
 
-## <a name="step-4-create-a-hyper-v-site"></a>手順 4: Hyper-V サイトを作成する
+## <a name="step-4-create-a-hyper-v-site"></a>ステップ 4:Hyper-V サイトを作成する
 
 1. 次のコマンドを使用して、新しい Hyper-V サイトを作成します。
 
@@ -102,7 +102,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 5. ダウンロードしたキーを Hyper-V ホストにコピーします。 このキーは、Hyper-V ホストをサイトに登録するときに必要になります。
 
-## <a name="step-5-install-the-provider-and-agent"></a>手順 5: プロバイダーとエージェントをインストールする
+## <a name="step-5-install-the-provider-and-agent"></a>ステップ 5:プロバイダーとエージェントのインストール
 
 1. 最新版のプロバイダーのインストーラーを[マイクロソフト](https://aka.ms/downloaddra)からダウンロードします。
 2. Hyper-V ホストでインストーラーを実行します。
@@ -112,7 +112,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
-## <a name="step-6-create-a-replication-policy"></a>手順 6: レプリケーション ポリシーを作成する
+## <a name="step-6-create-a-replication-policy"></a>ステップ 6:レプリケーション ポリシーを作成する
 
 開始する前に、指定されたストレージ アカウントが、コンテナーと同じ Azure リージョンに存在する必要があることに注意してください。また、geo レプリケーションが有効になっている必要もあります。
 
@@ -136,7 +136,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 4. 関連付けが正常に完了するのを待ちます。
 
-## <a name="step-7-enable-vm-protection"></a>手順 7: VM 保護を有効にする
+## <a name="step-7-enable-vm-protection"></a>ステップ 7:VM 保護を有効にする
 
 1. 次のように、保護する VM に対応する保護可能な項目を取得します。
 
@@ -175,7 +175,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 
 
-## <a name="step-8-run-a-test-failover"></a>ステップ 8: テスト フェールオーバーを実行する
+## <a name="step-8-run-a-test-failover"></a>ステップ 8:テスト フェールオーバーの実行
 1. 次のように、テスト フェールオーバーを実行します。
 
         $nw = Get-AzureRmVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group

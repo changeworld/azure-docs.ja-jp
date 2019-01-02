@@ -3,7 +3,7 @@ title: Azure SQL Database によるスケール アウト | Microsoft Docs
 description: これらのツールを使用すると、Software as a Service (SaaS) の開発者は柔軟で拡張性の高いデータベースを簡単に作成できます。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,21 +12,21 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: ab787e8f659d2f57f23bb87397608736e7f6848a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a36c5cfc977920f43b7f73e3e7cf9176de7c1f8a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164915"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867088"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Database によるスケール アウト
 **Elastic Database** ツールを使用すると、Azure SQL Database を簡単にスケールアウトできます。 これらのツールと機能では、**Azure SQL Database** のデータベースのリソースを使用して、トランザクションのワークロードに対するソリューション、特にサービスとしてのソフトウェア (SaaS) アプリケーションを作成できます。 Elastic Database は、次の機能で構成されています。
 
-* [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md): クライアント ライブラリ機能を使用すると、シャード化されたデータベースを作成および管理できます。  「 [エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」を参照してください。
+* [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md):クライアント ライブラリ機能を使用すると、シャード化されたデータベースを作成および管理できます。  「 [エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」を参照してください。
 * [Elastic Database 分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md): シャード化されたデータベース間でデータを移動します。 このツールは、マルチ テナント データベースからシングル テナント データベースに (またはその逆に) データを移動するのに便利です。 「 [エラスティック データベース Split-Merge ツールに関するチュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」を参照してください。
-* [Elastic Database ジョブ](sql-database-elastic-jobs-overview.md) (プレビュー): ジョブを使用して、多数の Azure SQL databases を管理します。 ジョブを使用して、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集などの管理操作を簡単に実行できます。
-* [Elastic Database クエリ](sql-database-elastic-query-overview.md) (プレビュー): 複数のデータベースにまたがる Transact-SQL クエリを実行することができます。 これにより、Excel、Power BI、Tableau などのレポート作成ツールに接続できます。
-* [エラスティック トランザクション](sql-database-elastic-transactions-overview.md): この機能を使用すると、Azure SQL Database 内の複数のデータベースにまたがるトランザクションを実行できます。 Elastic Database トランザクションは、ADO .NET を使用して .NET アプリケーションで利用できます。[System.Transaction クラス](https://msdn.microsoft.com/library/system.transactions.aspx)を使用することで、これまでに培ったプログラミングの経験を活かすことができます。
+* [Elastic Database ジョブ](sql-database-elastic-jobs-overview.md) (プレビュー):ジョブを使用して、多数の Azure SQL databases を管理します。 ジョブを使用して、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集などの管理操作を簡単に実行できます。
+* [Elastic Database クエリ](sql-database-elastic-query-overview.md) (プレビュー):複数のデータベースにまたがる Transact-SQL クエリを実行することができます。 これにより、Excel、Power BI、Tableau などのレポート作成ツールに接続できます。
+* [エラスティック トランザクション](sql-database-elastic-transactions-overview.md):この機能を使用すると、Azure SQL Database 内の複数のデータベースにまたがるトランザクションを実行できます。 Elastic Database トランザクションは、ADO .NET を使用して .NET アプリケーションで利用できます。[System.Transaction クラス](https://msdn.microsoft.com/library/system.transactions.aspx)を使用することで、これまでに培ったプログラミングの経験を活かすことができます。
 
 次の図は、データベースのコレクションに関連する **Elastic Database の機能**を含めたアーキテクチャを示しています。
 

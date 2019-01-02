@@ -4,7 +4,7 @@ description: SQL Database と SQL Data Warehouse のセキュリティ管理 (�
 keywords: SQL Database のセキュリティ,データベース セキュリティ管理,ログイン セキュリティ,データベース セキュリティ,データベース アクセス
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/07/2018
-ms.openlocfilehash: f2627aab2598a706e717e8e1d18fd2f8c944835c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/29/2018
+ms.openlocfilehash: c234ac95d0e02857fe87afe3a734d77f00954477
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161473"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864946"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>SQL Database と SQL Data Warehouse へのデータベース アクセスの制御と許可
 
@@ -28,7 +28,7 @@ ms.locfileid: "47161473"
 >  このトピックは、Azure SQL サーバーと、その Azure SQL サーバー上に作成される SQL Database と SQL Data Warehouse に適用されます。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 
 
 > [!TIP]
-> チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。
+> チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。 このチュートリアルは、**Azure SQL Database Managed Instance** には適用されません。
 
 ## <a name="unrestricted-administrative-accounts"></a>制限なしの管理者アカウント
 管理者の機能を果たす 2 つの管理者アカウント (**サーバー管理者**と **Active Directory 管理者**) があります。 SQL サーバー用にこれらの管理者アカウントを特定するには、Azure Portal を開き、SQL サーバーのプロパティに移動します。
@@ -68,13 +68,17 @@ Azure SQL サーバーを作成する際に、**サーバー管理者ログイ�
 
 
 ## <a name="additional-server-level-administrative-roles"></a>追加のサーバー レベルの管理者ロール
+
+>[!IMPORTANT]
+>これらのロールは **Azure SQL Database** に固有のものなので、このセクションは **Azure SQL Database Managed Instance** には適用されません。
+
 前に説明したサーバーレベルの管理者ロールのほかに、SQL Database には master データベースに 2 つの制限付き管理者ロールが用意されています。それにユーザー アカウントを追加して、データベースの作成またはログインの管理のためのアクセス許可を付与することができます。
 
 ### <a name="database-creators"></a>データベース作成者
 これらの管理者ロールの 1 つは、**dbmanager** ロールです。 このロールのメンバーは、新しいデータベースを作成できます。 このロールを使用するには、`master` データベースにユーザーを作成し、そのユーザーを **dbmanager** データベース ロールに追加します。 データベースを作成するユーザーは、master データベースの SQL Server ログインに基づくユーザーであるか、Azure Active Directory ユーザーに基づく包含データベース ユーザーである必要があります。
 
 1. 管理者アカウントを使用して、master データベースに接続します。
-2. 省略可能な手順: [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用して、SQL Server 認証ログインを作成します。 サンプル ステートメントは、次のとおりです。
+2. 省略可能な手順:[CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用して、SQL Server 認証ログインを作成します。 サンプル ステートメントは、次のとおりです。
    
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
@@ -180,7 +184,7 @@ SQL Database のログインとユーザーの管理では、以下の点を考�
 * `CREATE USER` ステートメントを `FOR/FROM LOGIN` オプションと共に実行する場合、これが Transact-SQL バッチ内の唯一のステートメントである必要があります。
 * `ALTER USER` ステートメントを `WITH LOGIN` オプションと共に実行する場合、これが Transact-SQL バッチ内の唯一のステートメントである必要があります。
 * ユーザーに対して `CREATE/ALTER/DROP` を実行するには、データベースに対する `ALTER ANY USER` 権限が必要です。
-* データベース ロールの所有者が、そのデータベース ロールに対して他のデータベース ユーザーの追加または削除を行おうとすると、「**User or role 'Name' does not exist in this database.**」というエラーが発生する場合があります。 このエラーは、所有者からはユーザーが見えないために発生します。 この問題を解決するには、そのユーザーに対する `VIEW DEFINITION` 権限をロールの所有者に許可します。 
+* データベース ロールの所有者が、そのデータベース ロールに対して他のデータベース ユーザーの追加または削除を行おうとすると、次のエラーが発生する場合があります:「**User or role 'Name' does not exist in this database.**」。 このエラーは、所有者からはユーザーが見えないために発生します。 この問題を解決するには、そのユーザーに対する `VIEW DEFINITION` 権限をロールの所有者に許可します。 
 
 
 ## <a name="next-steps"></a>次の手順

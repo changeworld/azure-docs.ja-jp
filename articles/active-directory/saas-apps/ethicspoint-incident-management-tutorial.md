@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と EthicsPoint Incident Management (EPIM) の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と EthicsPoint Incident Management (EPIM) の統合 | Microsoft Docs
 description: Azure Active Directory と EthicsPoint Incident Management (EPIM) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: c38c751701b323bf1c985a4127d0e9deac2c8eaa
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c72ed655166dc1fe8045f5b9fdc7221cdf24d567
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446023"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850996"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>チュートリアル: Azure Active Directory と EthicsPoint Incident Management (EPIM) の統合
+# <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>チュートリアル:Azure Active Directory と EthicsPoint Incident Management (EPIM) の統合
 
 このチュートリアルでは、EthicsPoint Incident Management (EPIM) と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ EthicsPoint Incident Management (EPIM) で、Azure AD の **[ユーザー名]** 
 
 EthicsPoint Incident Management (EPIM) で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[EthicsPoint Incident Management (EPIM) のテスト ユーザーの作成](#creating-a-ethicspoint-incident-management-epim-test-user)** - EthicsPoint Incident Management (EPIM) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -123,7 +123,7 @@ EthicsPoint Incident Management (EPIM) で Azure AD のシングル サインオ
     c. **[応答 URL]** ボックスに、`https://<servername>.navexglobal.com/adfs/ls/` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の応答 URL、識別子、サインオン URL でこれらの値を更新します。 値を取得するには、[EthicsPoint Incident Management (EPIM) クライアント サポート チーム](http://www.navexglobal.com/company/contact-us)にお問い合わせください。 
+    > これらは実際の値ではありません。 実際の応答 URL、識別子、サインオン URL でこれらの値を更新します。 値を取得するには、[EthicsPoint Incident Management (EPIM) クライアント サポート チーム](https://www.navexglobal.com/company/contact-us)にお問い合わせください。 
 
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -133,10 +133,10 @@ EthicsPoint Incident Management (EPIM) で Azure AD のシングル サインオ
 
     ![Configure single sign-on](./media/ethicspoint-incident-management-tutorial/tutorial_general_400.png)
     
-1. **EthicsPoint Incident Management (EPIM)** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [EthicsPoint Incident Management (EPIM) サポート チーム](http://www.navexglobal.com/company/contact-us)に送信する必要があります。
+1. **EthicsPoint Incident Management (EPIM)** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [EthicsPoint Incident Management (EPIM) サポート チーム](https://www.navexglobal.com/company/contact-us)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -172,7 +172,7 @@ EthicsPoint Incident Management (EPIM) で Azure AD のシングル サインオ
  
 ### <a name="creating-a-ethicspoint-incident-management-epim-test-user"></a>EthicsPoint Incident Management (EPIM) のテスト ユーザーの作成
 
-このセクションでは、EthicsPoint Incident Management (EPIM) で Britta Simon というユーザーを作成します。 [EthicsPoint Incident Management (EPIM)](http://www.navexglobal.com/company/contact-us) サポート チームと連携して、EthicsPoint Incident Management (EPIM) プラットフォームにユーザーを追加してください。
+このセクションでは、EthicsPoint Incident Management (EPIM) で Britta Simon というユーザーを作成します。 [EthicsPoint Incident Management (EPIM)](https://www.navexglobal.com/company/contact-us) サポート チームと連携して、EthicsPoint Incident Management (EPIM) プラットフォームにユーザーを追加してください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

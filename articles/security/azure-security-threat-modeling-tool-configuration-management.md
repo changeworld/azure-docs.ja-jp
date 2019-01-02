@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: fe6251f70ae62440bbbefc8c3aa5d92d934d8ba0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b24d32afed5acfd846f9a8e8316339665524ad2e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249355"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849770"
 ---
-# <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム: 構成管理 | 対応策 
+# <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム:構成管理 | 対応策 
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **Web アプリケーション** | <ul><li>[コンテンツ セキュリティ ポリシー (CSP) を実装し、インライン javascript を無効にする](#csp-js)</li><li>[ブラウザーの XSS フィルターを有効にする](#xss-filter)</li><li>[デプロイの前に ASP.NET アプリケーションでトレースおよびデバッグを無効にする](#trace-deploy)</li><li>[信頼できるソースのサード パーティ製 javascript にのみアクセスする](#js-trusted)</li><li>[認証された ASP.NET ページに、UI Redressing (クリックジャッキング) に対する防御が組み込まれていることを確認する](#ui-defenses)</li><li>[ASP.NET Web アプリケーションで CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する](#cors-aspnet)</li><li>[ASP.NET ページで ValidateRequest 属性を有効にする](#validate-aspnet)</li><li>[ローカルでホストされている最新の JavaScript ライブラリを使用する](#local-js)</li><li>[自動 MIME スニッフィングを無効にする](#mime-sniff)</li><li>[Windows Azure Web サイトで標準的なサーバー ヘッダーを削除して、フィンガープリントを残すことを回避する](#standard-finger)</li></ul> |
@@ -85,7 +85,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET デバッグの概要](http://msdn2.microsoft.com/library/ms227556.aspx)、[ASP.NET トレースの概要](http://msdn2.microsoft.com/library/bb386420.aspx)、[方法: ASP.NET アプリケーションのトレースを有効にする](http://msdn2.microsoft.com/library/0x5wc973.aspx)、[方法: .NET アプリケーションのデバッグを有効にする](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **参照**              | [ASP.NET デバッグの概要](http://msdn2.microsoft.com/library/ms227556.aspx)、[ASP.NET トレースの概要](http://msdn2.microsoft.com/library/bb386420.aspx)、[方法:ASP.NET アプリケーションのトレースを有効にする](http://msdn2.microsoft.com/library/0x5wc973.aspx)、[方法:ASP.NET アプリケーションのデバッグを有効にする](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **手順** | ページのトレースが有効になっていると、それを要求しているブラウザーも、内部サーバーの状態とワークフローのデータを含むトレース情報をそれぞれ取得します。 それが機密情報であることがあります。 ページでデバッグが有効になっている場合、サーバーでエラーが発生すると、ブラウザーに完全なスタック トレース データのサーバーが提供されます。 そのデータによって、サーバーのワークフローに関する機密情報が公開される場合があります。 |
 
 ## <a id="js-trusted"></a>信頼できるソースのサード パーティ製 javascript にのみアクセスする
@@ -210,7 +210,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [IE8 のセキュリティ パート V: 包括的な保護](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME タイプ](http://en.wikipedia.org/wiki/Mime_type) |
+| **参照**              | [IE8 のセキュリティ パート V:包括的な保護](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME タイプ](http://en.wikipedia.org/wiki/Mime_type) |
 | **手順** | X-Content-Type-Options ヘッダーは、コンテンツを MIME スニッフィングしないことを開発者が指定できる HTTP ヘッダーです。 このヘッダーは、MIME スニッフィング攻撃を軽減することを目的としています。 ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで、X-Content-Type-Options:nosniff HTTP ヘッダーを使用する必要があります。 この必須のヘッダーをアプリケーションのすべてのページでグローバルに有効にするには、次のいずれかを実行します|
 
 ### <a name="example"></a>例
@@ -396,7 +396,7 @@ public class ResourcesController : ApiController
 | **参照**              | [ASP.NET Core 1.0 でのクロス オリジン要求 (CORS) の有効化](https://docs.asp.net/en/latest/security/cors.html) |
 | **手順** | <p>ASP.NET Core 1.0 では、ミドルウェアまたは MVC を使用して CORS を有効にできます。 MVC を使用して CORS を有効にすると、同じ CORS サービスが使用されますが、CORS ミドルウェアは使用されません。</p>|
 
-**方法 1** ミドルウェアで CORS を有効化: アプリケーション全体で CORS を有効にするには、UseCors 拡張メソッドを使用して、CORS ミドルウェアを要求パイプラインに追加します。 クロス オリジン ポリシーを指定するには、CORS ミドルウェアを追加するときに CorsPolicyBuilder クラスを使用します。 この作業を実行する 2 つの方法があります。
+**方法 1** ミドルウェアで CORS を有効化:アプリケーション全体で CORS を有効にするには、UseCors 拡張メソッドを使用して、CORS ミドルウェアを要求パイプラインに追加します。 クロス オリジン ポリシーを指定するには、CORS ミドルウェアを追加するときに CorsPolicyBuilder クラスを使用します。 この作業を実行する 2 つの方法があります。
 
 ### <a name="example"></a>例
 1 つ目は、ラムダで UseCors を呼び出す方法です。 ラムダは CorsPolicyBuilder オブジェクトを受け取ります。 
@@ -431,10 +431,10 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-**方法 2** MVC で CORS を有効化: 開発者は MVC を使用して、特定の CORS を、アクションごと、コントローラーごと、またはすべてのコントローラーに対してグローバルに適用することもできます。
+**方法 2** MVC で CORS を有効化:開発者は MVC を使用して、特定の CORS を、アクションごと、コントローラーごと、またはすべてのコントローラーに対してグローバルに適用することもできます。
 
 ### <a name="example"></a>例
-アクションごと: 特定のアクションに対して CORS ポリシーを指定するには、EnableCors 属性をそのアクションに追加します。 ポリシー名を入力してください。 
+アクションごと:特定のアクションに対して CORS ポリシーを指定するには、EnableCors 属性をそのアクションに追加します。 ポリシー名を入力してください。 
 ```csharp
 public class HomeController : Controller
 {
@@ -485,7 +485,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **参照**              | [方法:DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
 | **手順** | Web.config、appsettings.json などの構成ファイルは、一般的に、ユーザー名、パスワード、データベース接続文字列、暗号化キーなどの機密情報の保持に使用されます。 この情報を保護しないと、アプリケーションは、アカウントのユーザー名とパスワード、データベース名、サーバー名などの機密情報を取得する、攻撃者や悪意のあるユーザーに対して脆弱になります。 構成ファイルの重要なセクションは、デプロイ タイプ (azure/on-prem) に基づいて、DPAPI または Azure Key Vault などのサービスを使用して暗号化してください。 |
 
 ## <a id="admin-strong"></a>強力な資格情報ですべての管理インターフェイスが保護されていることを確認する
@@ -507,7 +507,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Windows 10 IoT Core でのセキュア ブートと BitLocker デバイス暗号化の有効化](https://developer.microsoft.com/windows/iot/win10/sb_bl) |
+| **参照**              | [Windows 10 IoT Core でのセキュア ブートと BitLocker デバイス暗号化の有効化](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
 | **手順** | UEFI セキュア ブートでは、指定された機関によって署名されたバイナリの実行のみを許可するようにシステムを制限します。 この機能により、不明なコードがプラットフォームで実行できなくなり、コードによって、プラットフォームのセキュリティが低下する可能性を排除できます。 UEFI セキュア ブートを有効にして、コードに署名する信頼済み証明機関の一覧を制限し、 信頼された機関のいずれかを使用して、デバイスにデプロイされているすべてのコードに署名します。 |
 
 ## <a id="partition-iot"></a>BitLocker で OS と IoT デバイスの追加のパーティションを暗号化する
@@ -585,7 +585,7 @@ public void ConfigureServices(IServiceCollection services)
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Storage セキュリティ ガイド - ストレージ アカウント キーの管理](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
-| **手順** | <p>キー記憶域: Azure ストレージ アクセス キーはシークレットとして Azure Key Vault に格納し、アプリケーションで Key Vault からキーを取得することをお勧めします。 その理由は次のとおりです。</p><ul><li>アプリケーションではストレージ キーが構成ファイルでハードコーディングされないため、特定のアクセス許可を持たない誰かがキーへのアクセス権を取得する抜け道がなくなります</li><li>Azure Active Directory を使用して、キーへのアクセスを制御できます。 つまり、アカウント所有者が、Azure Key Vault からキーを取得する必要があるいくつかのアプリケーションに、アクセス権を付与できます。 アクセス許可が付与されていないアプリケーションが、キーにアクセスすることはできません</li><li>キーの再生成: セキュリティ上の理由から、Azure ストレージ アクセス キーを生成するプロセスを設定することをお勧めします。 キーの再生成を計画する理由と方法の詳細については、Azure Storage セキュリティ ガイドのリファレンス記事を参照してください</li></ul>|
+| **手順** | <p>キー記憶域:Azure Storage アクセス キーはシークレットとして Azure Key Vault に格納し、アプリケーションで Key Vault からキーを取得することをお勧めします。 その理由は次のとおりです。</p><ul><li>アプリケーションではストレージ キーが構成ファイルでハードコーディングされないため、特定のアクセス許可を持たない誰かがキーへのアクセス権を取得する抜け道がなくなります</li><li>Azure Active Directory を使用して、キーへのアクセスを制御できます。 つまり、アカウント所有者が、Azure Key Vault からキーを取得する必要があるいくつかのアプリケーションに、アクセス権を付与できます。 アクセス許可が付与されていないアプリケーションが、キーにアクセスすることはできません</li><li>キーの再生成:セキュリティ上の理由から、Azure ストレージ アクセス キーを再生成するプロセスを設定することをお勧めします。 キーの再生成を計画する理由と方法の詳細については、Azure Storage セキュリティ ガイドのリファレンス記事を参照してください</li></ul>|
 
 ## <a id="cors-storage"></a>Azure Storage で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する
 

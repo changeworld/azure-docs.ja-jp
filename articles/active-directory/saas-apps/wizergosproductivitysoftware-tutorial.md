@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Wizergos Productivity Software の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Wizergos Productivity Software の統合 | Microsoft Docs
 description: Azure Active Directory と Wizergos Productivity Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 696d0326530baadfffc6f757c2a25690422a12c7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e117b6e791bde3a8311b35ea5d651dad6bf88737
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441546"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845673"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>チュートリアル: Azure Active Directory と Wizergos Productivity Software の統合
+# <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>チュートリアル:Azure Active Directory と Wizergos Productivity Software の統合
 
 このチュートリアルでは、Wizergos Productivity Software と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -110,7 +110,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
 
     ![[Wizergos Productivity Software のドメインと URL] のシングル サインオン情報](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_url.png)
 
-    **[識別子]** ボックスに次の URL を入力します。`http://www.wizergos.net`
+    **[識別子]** ボックスに次の URL を入力します。`https://www.wizergos.net`
 
 1. **[SAML 署名証明書]** セクションで、**[証明書]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -149,7 +149,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
     e. **[保存]** ボタンをクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -223,7 +223,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Wizergos Productivity Software] タイルをクリックすると、自動的に Wizergos Productivity Software アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
