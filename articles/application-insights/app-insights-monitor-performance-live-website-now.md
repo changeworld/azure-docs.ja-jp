@@ -22,7 +22,7 @@ ms.locfileid: "51230922"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Application Insights を使用した実行時の Web アプリのインストルメント化
 
-Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 オンプレミスの IIS サーバーでアプリがホストされている場合は、Status Monitor をインストールします。 アプリが Azure Web アプリの場合や Azure VM で実行されている場合は、Azure コントロール パネルから Application Insights の監視を有効にすることができます  ([ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化については、個別の記事もあります)。[Microsoft Azure](http://azure.com) サブスクリプションが必要です。
+Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 オンプレミスの IIS サーバーでアプリがホストされている場合は、Status Monitor をインストールします。 アプリが Azure Web アプリの場合や Azure VM で実行されている場合は、Azure コントロール パネルから Application Insights の監視を有効にすることができます ([ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化については、個別の記事もあります)。[Microsoft Azure](http://azure.com) サブスクリプションが必要です。
 
 ![App Insights の概要グラフ (失敗した要求、サーバー応答時間、サーバー要求に関する情報) のスクリーンショット](./media/app-insights-monitor-performance-live-website-now/overview-graphs.png)
 
@@ -36,15 +36,14 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 
 |  | ビルド時 | 実行時 |
 | --- | --- | --- |
-| 要求と例外 |[はい] |[はい] |
-| [より詳細な例外](app-insights-asp-net-exceptions.md) | |[はい] |
+| 要求と例外 |はい |はい |
+| [より詳細な例外](app-insights-asp-net-exceptions.md) | |はい |
 | [依存関係の診断](app-insights-asp-net-dependencies.md) |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細: 結果コード、SQL コマンド テキスト、HTTP 動詞|
-| [システム パフォーマンス カウンター](app-insights-performance-counters.md) |[はい] |[はい] |
-| [カスタム テレメトリの API][api] |[はい] |いいえ  |
-| [トレース ログ統合](app-insights-asp-net-trace-logs.md) |[はい] |いいえ  |
-| [ページ ビューとユーザー データ](app-insights-javascript.md) |[はい] |いいえ  |
-| コードのリビルドが必要 |[はい] | いいえ  |
-
+| [システム パフォーマンス カウンター](app-insights-performance-counters.md) |はい |はい |
+| [カスタム テレメトリの API][api] |はい |いいえ  |
+| [トレース ログ統合](app-insights-asp-net-trace-logs.md) |はい |いいえ  |
+| [ページ ビューとユーザー データ](app-insights-javascript.md) |はい |いいえ  |
+| コードのリビルドが必要 |はい | いいえ  |
 
 ## <a name="monitor-a-live-azure-web-app"></a>ライブ Azure Web アプリの監視
 
@@ -64,9 +63,8 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 Azure で Application Insights を有効にしている場合は、ページ ビューとユーザー テレメトリを追加できます。
 
 1. [設定]、[アプリケーションの設定] の順に選択します
-2.  [アプリ設定] で、新しいキー値ペアを追加します。 
-   
-    キー: `APPINSIGHTS_JAVASCRIPT_ENABLED` 
+2. [アプリ設定] で、新しいキー値ペアを追加します。  
+    キー: `APPINSIGHTS_JAVASCRIPT_ENABLED`
     
     値: `true`
 3. 設定を **[保存]** し、アプリを **[再起動]** します。
@@ -81,7 +79,7 @@ Application Insights JavaScript SDK が各 Web ページに挿入されるよう
 2. Application Insights Status Monitor がまだインストールされていない場合は、[Status Monitor インストーラー](https://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードして実行します (または [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) を実行し、Application Insights Status Monitor を検索します)。
 3. Status Monitor で、監視するインストール済みの Web アプリケーションまたは Web サイトを選択します。 Azure の資格情報でサインインします。
 
-    Application Insights ポータルで結果を表示するときに使用するリソースを構成します。 (通常は、新しいリソースを作成するのが最良です。 このアプリに対して [Web テスト][availability]や [クライアントの監視][client]を既に設定している場合は、既存のリソースを選択します。) 
+    Application Insights ポータルで結果を表示するときに使用するリソースを構成します。 (通常は、新しいリソースを作成するのが最良です。 このアプリに対して [Web テスト][availability]や [クライアントの監視][client]を既に設定している場合は、既存のリソースを選択します。)
 
     ![アプリとリソースを選択します。](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
@@ -190,8 +188,8 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 * `-Name`: IIS に存在する Web アプリの名前。
 * `-InstrumentationKey` (省略可能)。アプリのテレメトリの送信先となるリソースを変更する場合に使用します。
 * このコマンドレットの機能を次に示します。
-  * 最近このマシンにダウンロードされた SDK バージョンに、指定されたアプリをアップグレードします  (`SdkState==EnabledAfterDeployment` の場合にのみ機能します)。
-  * インストルメンテーション キーが指定された場合、そのキーを持ったリソースにテレメトリを送信するよう、指定されたアプリを再構成します  (`SdkState != Disabled` の場合に機能します)。
+  * 最近このマシンにダウンロードされた SDK バージョンに、指定されたアプリをアップグレードします (`SdkState==EnabledAfterDeployment` の場合にのみ機能します)。
+  * インストルメンテーション キーが指定された場合、そのキーを持ったリソースにテレメトリを送信するよう、指定されたアプリを再構成します (`SdkState != Disabled` の場合に機能します)。
 
 `Update-ApplicationInsightsVersion`
 
@@ -201,12 +199,12 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 
 ### <a name="what-is-status-monitor"></a>Status Monitor とは何ですか?
 
-IIS Web サーバーにインストールするデスクトップ アプリケーションです。 Web アプリのインストルメント化と構成を支援します。 
+IIS Web サーバーにインストールするデスクトップ アプリケーションです。 Web アプリのインストルメント化と構成を支援します。
 
 ### <a name="when-do-i-use-status-monitor"></a>どのような場合に Status Monitor を使うのですか?
 
 * IIS サーバーで実行される任意の Web アプリをインストルメント化する場合。既に実行中の場合でも、インストルメント化が可能です。
-* コンパイル時に [Application Insights SDK でビルドされた](app-insights-asp-net.md) Web アプリ用の追加のテレメトリを有効にする場合。 
+* コンパイル時に [Application Insights SDK でビルドされた](app-insights-asp-net.md) Web アプリ用の追加のテレメトリを有効にする場合。
 
 ### <a name="can-i-close-it-after-it-runs"></a>実行後に閉じることはできますか?
 
@@ -224,7 +222,7 @@ Status Monitor でインストルメント化する Web アプリを選択する
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>アプリを更新するときは、毎回 Status Monitor を実行する必要がありますか?
 
-段階的に再デプロイする場合は必要ありません。 
+段階的に再デプロイする場合は必要ありません。
 
 発行プロセスで [既存のファイルの削除] オプションを選択した場合は、Status Monitor を再実行して Application Insights を構成する必要があります。
 
