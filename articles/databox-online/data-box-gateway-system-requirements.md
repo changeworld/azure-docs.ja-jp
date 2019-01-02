@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 6978360769ba350d85a06116bfee6db9f80b0607
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: da22c09a227069af0eeb42ab67a59189ae494185
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157362"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256674"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box Gateway のシステム要件 (プレビュー)
 
@@ -25,7 +25,20 @@ Data Box Gateway 仮想デバイスのシステム要件は次のとおりです
 - **デバイスのネットワーク要件** - 仮想デバイスの操作のためのネットワーク要件について説明します。
 
 > [!IMPORTANT]
-> Data Box Gateway はプレビュー段階にあります。 このソリューションをデプロイする前に、「[プレビューの使用条件に関するページ](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を確認してください。
+> Data Box Gateway はプレビュー段階にあります。 このソリューションをデプロイする前に、「[プレビューの使用条件に関するページ](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を確認してください。 
+
+## <a name="specifications-for-the-virtual-device"></a>仮想デバイスの仕様
+
+Data Box Gateway の基になっているホスト システムでは、仮想デバイスのプロビジョニング専用に次のリソースを使用できます。
+
+| 仕様                                          | 説明              |
+|---------------------------------------------------------|--------------------------|
+| 仮想プロセッサ (コア)   | 最低 4 |            
+| メモリ  | 8 GB 以上|
+| 可用性|単一ノード|
+| ディスク| OS ディスク:250 GB <br> データ ディスク:最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
+| ネットワーク インターフェイス|1 つ以上の仮想ネットワーク インターフェイス|
+
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>デバイスに接続されるクライアントでサポートされている OS
 
@@ -78,12 +91,13 @@ Data Box Gateway でサポートされるストレージの種類の一覧を次
 
 仮想デバイスのローカル Web UI 用にサポートされているブラウザーの一覧を次に示します。
 
-|ブラウザー |バージョン  |その他の要件/注意事項  |
+|[ブラウザー] ボタンを  |バージョン  |その他の要件/注意事項  |
 |---------|---------|---------|
-|Google Chrome     | 最新バージョン        |         |
+|Google Chrome   |最新バージョン         |         |
 |Microsoft Edge    | 最新バージョン        |         |
-|Internet Explorer | 最新バージョン        |         |
-|FireFox           | 最新バージョン        |         |
+|Internet Explorer     | 最新バージョン        |         |
+|FireFox    |最新バージョン         |         |
+
 
 ## <a name="networking-requirements"></a>ネットワーク要件
 
@@ -91,13 +105,13 @@ SMB、クラウド、または管理トラフィックを許可するために�
 
 | ポート番号| インまたはアウト | ポート範囲| 必須|   メモ                                                             |                                                                                     |
 |--------|---------|----------|--------------|----------------------|---------------|
-| TCP 80 (HTTP)|アウト|WAN |いいえ |送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。 <br>送信 Web プロキシは、ユーザーが構成できます。 |
-| TCP 443 (HTTPS)|アウト|WAN|はい|送信ポートは、クラウドのデータへのアクセスに使用します。<br>送信 Web プロキシは、ユーザーが構成できます。|
+| TCP 80 (HTTP)|アウト|WAN |いいえ |送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。 <br>送信 Web プロキシは、ユーザーが構成できます。 |                          
+| TCP 443 (HTTPS)|アウト|WAN|[はい]|送信ポートは、クラウドのデータへのアクセスに使用します。<br>送信 Web プロキシは、ユーザーが構成できます。|   
 | UDP 53 (DNS)|アウト|WAN|場合により必須<br>メモを参照|このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。<br>ローカル DNS サーバーを使用することをお勧めします。 |
 | UDP 123 (NTP)|アウト|WAN|場合により必須<br>メモを参照|このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。  |
 | UDP 67 (DHCP)|アウト|WAN|場合により必須<br>メモを参照|このポートは、DHCP サーバーを使用する場合にのみ必要です。  |
-| TCP 80 (HTTP)|場所|LAN|はい|これは、ローカル管理に使用するデバイスのローカル UI 用の受信ポートです。 <br>HTTP 経由でのローカル UI へのアクセスは、自動的に HTTPS にリダイレクトされます。  |
-| TCP 443 (HTTPS)|場所|LAN|はい|これは、ローカル管理に使用するデバイスのローカル UI 用の受信ポートです。 |
+| TCP 80 (HTTP)|イン|LAN|[はい]|これは、ローカル管理に使用するデバイスのローカル UI 用の受信ポートです。 <br>HTTP 経由でのローカル UI へのアクセスは、自動的に HTTPS にリダイレクトされます。  | 
+| TCP 443 (HTTPS)|イン|LAN|[はい]|これは、ローカル管理に使用するデバイスのローカル UI 用の受信ポートです。 | 
 
 ## <a name="url-patterns-for-firewall-rules"></a>ファイアウォール ルールの URL パターン
 
@@ -121,13 +135,16 @@ SMB、クラウド、または管理トラフィックを許可するために�
 |    http://*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                        |    Windows のテレメトリ サービス (「顧客満足度及び診断テレメトリのための更新プログラム」を参照)      |
 |                                                                                                                                                                                                                                                                                                                                                                                                                                                       |                                                                                                         |
 
+
+
 ## <a name="internet-bandwidth"></a>インターネット帯域幅
 
 次の要件は、Data Box Gateway デバイスで使用できるインターネットの最小帯域幅に適用されます。
 
-- Data Box Gateway で 20 Mbps 以上の専用インターネット帯域幅が常に利用できること。 この帯域幅はその他のアプリケーションと共有できません。
+- Data Box Gateway で 20 Mbps 以上の専用インターネット帯域幅が常に利用できること。 この帯域幅はその他のアプリケーションと共有できません。 
 - 帯域幅調整を使用した場合、Data Box Gateway で専用の 32 Mbps インターネット帯域幅 (またはそれ以上) が利用できること。
 
 ## <a name="next-step"></a>次のステップ
 
 * [Azure Data Box Gateway をデプロイする](data-box-gateway-deploy-prep.md)
+

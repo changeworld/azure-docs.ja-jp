@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: c0525cfba16fb61f8388ae4d6a693be3bb71674c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0333bc5e95b74fc97cfff3d79adbe28aefff5d40
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628531"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834640"
 ---
 # <a name="indexing-in-azure-cosmos-db"></a>Azure Cosmos DB のインデックス作成
 
@@ -29,7 +29,7 @@ Azure Cosmos DB では、コンテナーの項目を JSON ドキュメントと�
 
 Azure Cosmos DB では、項目が JSON ドキュメントとして、インデックスがツリーとして投影されます。 その後、ツリー内のパスのポリシーに合わせて調整できます。 パスはインデックス作成に含めるか、インデックス作成から除外することを選択できます。 これにより、クエリのパターンが事前にわかっている場合に、書き込みパフォーマンスの向上とインデックス ストレージの削減が可能になります。 詳細については、「[インデックスのパス](index-paths.md)」を参照してください。
 
-## <a name="indexing-under-the-hood"></a>インデックス作成: そのしくみ
+## <a name="indexing-under-the-hood"></a>インデックス作成:コネクタの性能
 
 Azure Cosmos データベースでは、自動インデックス作成がデータに適用されます。特定のパスを除外するように構成しない限り、ツリー内のすべてのパスにインデックスが作成されます。
 

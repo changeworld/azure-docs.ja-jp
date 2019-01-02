@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Azure Active Directory アプリケーション プロキシのデプロイ | Microsoft Docs'
+title: Azure Active Directory Domain Services:Azure Active Directory アプリケーション プロキシのデプロイ | Microsoft Docs
 description: Azure Active Directory Domain Services マネージド ドメインで Azure AD アプリケーション プロキシを使用します
 services: active-directory-ds
 documentationcenter: ''
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 96ef005f095e5ab774a88ec766080f647414a7ce
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4621122d805f37be1578aa7b7c9ae059f3141c77
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155543"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840301"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに Azure AD アプリケーション プロキシをデプロイします
 Azure Active Directory (AD) アプリケーション プロキシを使用して、オンプレミス アプリケーションを発行してインターネット経由でアクセスできるようにすることで、リモート ワーカーをサポートできます。 Azure AD Domain Services を使用して、オンプレミスで実行しているレガシ アプリケーションを Azure インフラストラクチャ サービスにリフトアンドシフトできるようになりました。 その後、Azure AD アプリケーション プロキシを使用してこれらのアプリケーションを発行し、組織内のユーザーに安全なリモート アクセスを提供することができます。
 
-Azure AD アプリケーション プロキシを初めて使用する場合は、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](../active-directory/manage-apps/application-proxy.md)」で、この機能の詳細を確認してください。
+Azure AD アプリケーション プロキシを初めて使用する場合は、次の記事でこの機能の詳細を確認してください:「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](../active-directory/manage-apps/application-proxy.md)」。
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
@@ -42,7 +42,7 @@ Azure AD アプリケーション プロキシを初めて使用する場合は�
 ## <a name="task-1---enable-azure-ad-application-proxy-for-your-azure-ad-directory"></a>タスク 1 - Azure AD ディレクトリの Azure AD アプリケーション プロキシを有効にする
 AD ディレクトリの Azure AD アプリケーション プロキシを有効にするには、次の手順を実行します。
 
-1. [Azure Portal](http://portal.azure.com) に管理者としてサインインします。
+1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
 
 2. **[Azure Active Directory]** をクリックして、ディレクトリの概要を表示します。 **[エンタープライズ アプリケーション]** をクリックします。
 

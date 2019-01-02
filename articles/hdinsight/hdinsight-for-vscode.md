@@ -10,16 +10,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: f8bd1f1181cbd592782ce1126d5d61b5f257ca08
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fe186966dbddb5aa743e465f897aa5a1a0e07db1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234750"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840216"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
-Azure HDInsight Tools for Visual Studio Code (VS Code) を使用して Apache Hive バッチ ジョブ、対話型 Apache Hive クエリ、および PySpark スクリプトを作成および送信する方法について説明します。 Azure HDInsight Tools は、VS Code でサポートされているプラットフォームにインストールできます。 これには、Windows、Linux、macOS が含まれます。 プラットフォームごとの前提条件については、以下を参照してください。
+Azure HDInsight Tools for Visual Studio Code (VS Code) を使用して Apache Hive バッチ ジョブ、対話型 Hive クエリ、および Apache Spark 用 PySpark スクリプトを作成および送信する方法について説明します。 最初に VS Code に HDInsight Tools をインストールする方法を説明した後、Hive および Spark にジョブを送信する方法を説明します。 
+
+Azure HDInsight Tools は、VSCode でサポートされている Windows、Linux、macOS などのプラットフォームにインストールできます。 以下では、さまざまなプラットフォームに対する前提条件について説明します。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -70,7 +72,7 @@ VS Code から HDInsight クラスターにスクリプトを送信するには�
 
 1. 新しい作業フォルダーと新しいスクリプト ファイルを作成します (まだない場合)。
 
-2. スクリプト エディターを右クリックし、コンテキスト メニューの **[HDInsight: Login]** を選択します。 また、**Ctrl + Shift + P** キーを押し、「**HDInsight: Login**」と入力することもできます。
+2. スクリプト エディターを右クリックし、コンテキスト メニューの **[HDInsight:Login]** を選択します。 また、**Ctrl + Shift + P** キーを押し、「**HDInsight:Login**」と入力することもできます。
 
     ![HDInsight Tools for Visual Studio Code のログイン](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
@@ -102,8 +104,8 @@ VS Code から HDInsight クラスターにスクリプトを送信するには�
 
 <h3 id="linkcluster">クラスターにリンクするには</h3>
 
-Apache Ambari マネージド ユーザー名を使用して通常のクラスターをリンクするか、またはドメイン ユーザー名 (user1@contoso.com など) を使用して Enterprise Security Pack のセキュリティ保護された Hadoop クラスターをリンクできます。
-1. **Ctrl+Shift+P** を押してコマンド パレットを開き、「**HDInsight: Link a Cluster**」と入力します。
+[Apache Ambari](https://ambari.apache.org/) マネージド ユーザー名を使用して通常のクラスターをリンクするか、またはドメイン ユーザー名 (user1@contoso.com など) を使用して Enterprise Security Pack のセキュリティ保護された Hadoop クラスターをリンクできます。
+1. **Ctrl + Shift + P** キーを押してコマンド パレットを開き、「**HDInsight:Link a cluster**」と入力します。
 
    ![リンク クラスターのコマンド](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -118,12 +120,12 @@ Apache Ambari マネージド ユーザー名を使用して通常のクラス�
 
    ![リンクされたクラスター](./media/hdinsight-for-vscode/linked-cluster.png)
 
-4. コマンド パレットに「**HDInsight: Unlink a Cluster**」と入力してクラスターのリンクを解除することもできます。
+4. コマンド パレットに「**HDInsight:Unlink a cluster**」と入力してクラスターのリンクを解除することもできます。
 
 
 ### <a name="to-link-a-generic-apache-livy-endpoint"></a>ジェネリック Apache Livy エンドポイントをリンクするには
 
-1. **Ctrl+Shift+P** を押してコマンド パレットを開き、「**HDInsight: Link a Cluster**」と入力します。
+1. **Ctrl + Shift + P** キーを押してコマンド パレットを開き、「**HDInsight:Link a cluster**」と入力します。
 2. **[Generic Livy Endpoint]\(ジェネリック Livy エンドポイント\)** を選択します。
 3. ジェネリック Livy エンドポイント (http://10.172.41.42:18080 など) を入力します。
 4. ジェネリック Livy エンドポイントの承認が必要な場合は、**[基本]** を選択します。それ以外の場合は、**[なし]** を選択します。
@@ -140,7 +142,7 @@ Apache Ambari マネージド ユーザー名を使用して通常のクラス�
 ### <a name="to-list-hdinsight-clusters-under-your-azure-subscription"></a>Azure サブスクリプションの HDInsight クラスターを一覧表示するには
 1. ワークスペースを開き、Azure に接続します。 詳細については、「[HDInsight ワークスペースを開設する](#open-hdinsight-workspace)」および「[Azure への接続](#connect-to-hdinsight-cluster)」をご覧ください。
 
-2. スクリプト エディターを右クリックして、コンテキスト メニューから **[HDInsight: List Cluster]** を選択します。 
+2. スクリプト エディターを右クリックして、**[HDInsight:List Cluster]** をコンテキスト メニューから選択します。 
 
 3. HDInsight クラスターが **[出力]** ウィンドウに表示されます。
 
@@ -149,7 +151,7 @@ Apache Ambari マネージド ユーザー名を使用して通常のクラス�
 ## <a name="set-a-default-cluster"></a>既定のクラスターを設定する
 1. ワークスペースを開いて、Azure に接続します。 「[HDInsight ワークスペースを開設する](#open-hdinsight-workspace)」および「[Azure への接続](#connect-to-hdinsight-cluster)」をご覧ください。
 
-2. スクリプト エディターを右クリックし、**[HDInsight: Set Default Cluster]** をクリックします。 
+2. スクリプト エディターを右クリックして、**[HDInsight:Set Default Cluster]** を選択します。 
 
 3. 現在のスクリプト ファイルの既定のクラスターとしてクラスターを選択します。 構成ファイル (**.VSCode\settings.json**) が自動的に更新されます。 
 
@@ -158,7 +160,7 @@ Apache Ambari マネージド ユーザー名を使用して通常のクラス�
 ## <a name="set-the-azure-environment"></a>Azure 環境を設定する
 1. **Ctrl + Shift + P** キーを押してコマンド パレットを開きます。
 
-2. 「**HDInsight: Set Azure Environment**」と入力します。
+2. 「**HDInsight:Set Azure Environment**」と入力します。
 
 3. 既定のログイン エントリとして環境 ("Azure" や "AzureChina" など) を選択します。
 
@@ -179,15 +181,15 @@ HDInsight Tools for VS Code を使用すると、対話型 Hive クエリ、Hive
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-4. スクリプト エディターを右クリックし、**[HDInsight: Hive Interactive]** を選択してクエリを送信するか、ショートカット **Ctrl + Alt + I** を使用します。**[HDInsight: Hive Batch]** を選択してスクリプトを送信するか、ショートカット**Ctrl + Alt + H** を使用します。 
+4. スクリプト エディターを右クリックし、**[HDInsight:Hive Interactive]** を選択してクエリを送信するか、ショートカット **Ctrl + Alt + I** を使用します。**[HDInsight:Hive Batch]** を選択してスクリプトを送信するか、ショートカット**Ctrl + Alt + H** を使用します。 
 
 5. 既定のクラスターを指定していない場合は、クラスターを選択します。 また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。 しばらくすると、新しいタブにクエリの結果が表示されます。
 
    ![対話型 Hive の結果](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
-    - **[結果]** パネル: 結果全体を CSV、JSON、または Excel ファイルとしてローカル パスに保存したり、複数の行だけを選択したりできます。
+    - **[結果]** パネル:結果全体を CSV、JSON、または Excel ファイルとしてローカル パスに保存したり、複数の行だけを選択したりできます。
 
-    - **[メッセージ]** パネル: **行**の番号を選択すると、実行中のスクリプトの最初の行にジャンプします。
+    - **[メッセージ]** パネル:**行**の番号を選択すると、実行中のスクリプトの最初の行にジャンプします。
 
 ## <a name="submit-interactive-pyspark-queries"></a>対話型 PySpark クエリの送信
 
@@ -211,7 +213,7 @@ HDInsight Tools for VS Code を使用すると、対話型 Hive クエリ、Hive
    for i in range(0, 5):
         print(sortedCollection[i])
    ```
-4. このスクリプトを強調表示します。 スクリプト エディターを右クリックして **[HDInsight: PySpark Interactive]** を選択するか、ショートカット **Ctrl + Alt + I** を使用します。
+4. このスクリプトを強調表示します。 次に、スクリプト エディターを右クリックして、**[HDInsight:PySpark Interactive]** を選択するか、ショートカット **Ctrl + Alt + I** を使用します。
 
 5. VS Code に **Python** 拡張機能がまだインストールされていない場合は、次の図に示す **[インストール]** ボタンをクリックします。
 
@@ -286,7 +288,7 @@ Python2.x を使用する手順に従います:
             print("%s: %i" % (word, count))
         spark.stop()
     ```
-4. スクリプト エディターを右クリックして **[HDInsight: PySpark Batch]** を選択するか、ショートカット **Ctrl + Alt + H** を使用します。 
+4. スクリプト エディターを右クリックして、**[HDInsight:PySpark Batch]** を選択するか、ショートカット **Ctrl + Alt + H** を使用します。 
 
 5. PySpark ジョブの送信先のクラスターを選択します。 
 
@@ -294,9 +296,9 @@ Python2.x を使用する手順に従います:
 
 Python ジョブを送信したら、VS Code の **[出力]** ウィンドウに送信ログが表示されます。 **Spark UI URL** と **Yarn UI URL** も表示されます。 URL を Web ブラウザーで開くと、ジョブの状態を追跡できます。
 
-## <a name="livy-configuration"></a>Livy の構成
+## <a name="apache-livy-configuration"></a>Apache Livy の構成
 
-Livy の構成がサポートされており、ワークスペース フォルダーの **.VSCode\settings.json** で設定できます。 現在、Livy の構成では Python スクリプトのみをサポートします。 詳しくは、[Livy の README](https://github.com/cloudera/livy/blob/master/README.rst ) をご覧ください。
+[Apache Livy](https://livy.incubator.apache.org/) の構成がサポートされており、ワークスペース フォルダーの **.VSCode\settings.json** で設定できます。 現在、Livy の構成では Python スクリプトのみをサポートします。 詳しくは、[Livy の README](https://github.com/cloudera/livy/blob/master/README.rst ) をご覧ください。
 
 <a id="triggerlivyconf"></a>**Livy の構成をトリガーする方法**
    
@@ -386,32 +388,32 @@ HDInsight for VS Code では、次の機能をサポートしています。
 ## <a name="next-steps"></a>次の手順
 
 ### <a name="demo"></a>デモ
-* HDInsight for VS Code: [ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight for VS Code:[ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 
-* [Azure Toolkit for IntelliJ を使用して VPN を介して Spark アプリケーションをリモートでデバッグする](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Azure Toolkit for IntelliJ を使用して SSH を介して Spark アプリケーションをリモートでデバッグする](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Azure Toolkit for IntelliJ を使用して VPN 経由で Apache Spark アプリケーションをリモートでデバッグする](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Azure Toolkit for IntelliJ を使用して SSH 経由で Apache Spark アプリケーションをリモートでデバッグする](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する](hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Azure Toolkit for Eclipse の HDInsight ツールを使用して Spark アプリケーションを作成する](spark/apache-spark-eclipse-tool-plugin.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](spark/apache-spark-zeppelin-notebook.md)
-* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](spark/apache-spark-jupyter-notebook-kernels.md)
+* [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](spark/apache-spark-eclipse-tool-plugin.md)
+* [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](spark/apache-spark-zeppelin-notebook.md)
+* [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](hadoop/apache-hadoop-connect-hive-power-bi.md)。
+* [Azure HDInsight の Microsoft Power BI で Apache Hive データを視覚化する](hadoop/apache-hadoop-connect-hive-power-bi.md)
 * [Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
 * [Visual Studio Code 用の PySpark 対話型環境を設定する](set-up-pyspark-interactive-environment.md)
-* [Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](./hdinsight-connect-hive-zeppelin.md)
+* [Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する](./hdinsight-connect-hive-zeppelin.md)
 
 ### <a name="scenarios"></a>シナリオ
-* [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](spark/apache-spark-use-bi-tools.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](spark/apache-spark-machine-learning-mllib-ipython.md)
-* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](spark/apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](spark/apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-running-applications"></a>アプリケーションの作成と実行
 * [Scala を使用してスタンドアロン アプリケーションを作成する](spark/apache-spark-create-standalone-application.md)
-* [Livy を使用して Spark クラスターでジョブをリモートで実行する](spark/apache-spark-livy-rest-interface.md)
+* [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](spark/apache-spark-livy-rest-interface.md)
 
 ### <a name="manage-resources"></a>リソースの管理
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](spark/apache-spark-resource-manager.md)

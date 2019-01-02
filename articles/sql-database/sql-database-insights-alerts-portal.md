@@ -3,7 +3,7 @@ title: Azure Portal での SQL Database アラートの作成 | Microsoft Docs
 description: Azure Portal を使用して SQL Database アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。
 services: sql-database
 ms.service: sql-database
-ms.subservice: performance
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 11777013eca0ba3a759635ef99c2cfa04104e24b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: a48bd66c335981a76a67206f840f4be69aaa8af1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978997"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273349"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Azure Portal を使用した SQL Database と Data Warehouse のアラートの作成
 
@@ -38,8 +38,8 @@ ms.locfileid: "50978997"
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します
 
 * [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [コマンド ライン インターフェイス (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [コマンド ライン インターフェイス (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure ポータルでメトリックにアラート ルールを作成する
@@ -48,7 +48,7 @@ ms.locfileid: "50978997"
    
      ![監視](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **SQL DW ONLY**: **[DWU 利用状況]** グラフをクリックします。 **[クラシック アラートの表示]** を選択します
+   - **SQL DW のみ**:**[DWU 利用状況]** グラフをクリックします。 **[クラシック アラートの表示]** を選択します
 
 3. **[メトリック アラートの追加 (クラシック)]** ボタンを選択して、フィールドに入力します。
    
@@ -116,6 +116,6 @@ ms.locfileid: "50978997"
 
 ## <a name="next-steps"></a>次の手順
 * [Azure での監視の概要](../monitoring-and-diagnostics/monitoring-overview.md) 情報を入手します。
-* [アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)に関する詳細情報を確認します。
+* [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
 * [診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 情報を入手し、サービスに関する詳細な頻度の高いメトリックを収集します。
 * [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

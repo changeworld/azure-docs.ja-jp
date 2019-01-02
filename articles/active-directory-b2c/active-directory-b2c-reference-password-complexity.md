@@ -7,17 +7,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b16ac10e10655bbc7e41d9336378228097ca19ff
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 88609f4daac176f082e7f4962d557267946ab98c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014722"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724436"
 ---
-# <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: パスワードの複雑さの要件を構成する
+# <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C:パスワードの複雑さの要件を構成する
 
 > [!NOTE]
 > **この機能はパブリック プレビュー段階にあります。**
@@ -26,22 +26,21 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 ## <a name="when-password-rules-are-enforced"></a>パスワードのルールが適用されるタイミング
 
-サインアップ時またはパスワードのリセット時に、エンド ユーザーは、複雑さのルールを満たすパスワードを指定する必要があります。  パスワードの複雑さのルールはポリシーごとに適用されます。  あるポリシーがサインアップ時に 4 桁の PIN を要求し、別のポリシーがサインアップ時に 8 文字の文字列を要求することができます。  たとえば、大人と子供とで異なるパスワードの複雑さを持つポリシーを使用できます。
+サインアップ時またはパスワードのリセット時に、エンド ユーザーは、複雑さのルールを満たすパスワードを指定する必要があります。  パスワードの複雑さのルールはユーザー フローごとに適用されます。  あるユーザー フローがサインアップ時に 4 桁の PIN を要求し、別のユーザー フローがサインアップ時に 8 文字の文字列を要求することができます。  たとえば、大人と子供とで異なるパスワードの複雑さを持つユーザー フローを使用できます。
 
 パスワードの複雑さは、サインイン時には適用されません。  ユーザーは、現在の複雑さの要件を満たしていないためにサインイン時にパスワードの変更を求められることはありません。
 
-パスワードの複雑さを構成できるポリシーの種類を次に示します。
+パスワードの複雑さを構成できるユーザー フローの種類を次に示します。
 
-* サインアップまたはサインイン ポリシー
-* パスワードのリセット ポリシー
+* サインアップまたはサインインのユーザー フロー
+* パスワード リセットのユーザー フロー
 * カスタム ポリシー (「[Configure password complexity in custom policy](active-directory-b2c-reference-password-complexity-custom.md)」(カスタム ポリシーでパスワードの複雑さを構成する))
 
 ## <a name="how-to-configure-password-complexity"></a>パスワードの複雑さを構成する方法
 
-1. **[サインアップまたはサインイン ポリシー]** を開きます。
-2. ポリシーを選び、**[編集]** をクリックします。
-3. **[パスワードの複雑さ]** を開きます。
-4. このポリシーのパスワードの複雑さを **[シンプル]**、**[強]**、**[カスタム]** のいずれかに変更します。
+1. **[ユーザー フロー]** を開きます。
+2. ユーザー フローを選択し、**[プロパティ]** をクリックします。
+3. **[パスワードの複雑さ]** で、このユーザー フローのパスワードの複雑さを **[シンプル]**、**[強]**、**[カスタム]** のいずれかに変更します。
 
 ### <a name="comparison-chart"></a>比較チャート
 
@@ -71,9 +70,9 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 パスワードで使われる異なる文字の種類を制御できます。
 
-* **[2 of 4: Lowercase character, Uppercase character, Number (0-9), Symbol]\(2/4: 小文字、大文字、数字 (0 ～ 9)、記号\)** では、パスワードに少なくとも 2 種類の文字が含まれることを保証します。 たとえば、数値と小文字です。
-* **[3 of 4: Lowercase character, Uppercase character, Number (0-9), Symbol]\(3/4: 小文字、大文字、数字 (0 ～ 9)、記号\)** では、パスワードに少なくとも 2 種類の文字が含まれることを保証します。 たとえば、数値、小文字、大文字です。
-* **[4 of 4: Lowercase character, Uppercase character, Number (0-9), Symbol]\(4/4: 小文字、大文字、数字 (0 ～ 9)、記号\)** では、パスワードにすべての文字種が含まれることを保証します。
+* **[2 of 4:Lowercase character, Uppercase character, Number (0-9), Symbol]\(2/4: 小文字、大文字、数字 (0 ～ 9)、記号\)** では、パスワードに少なくとも 2 種類の文字が含まれることを保証します。 たとえば、数値と小文字です。
+* **3 of 4:Lowercase character, Uppercase character, Number (0-9), Symbol\(3/4: 小文字、大文字、数字 (0 ～ 9)、記号\)** では、パスワードに少なくとも 3 種類の文字が含まれることを保証します。 たとえば、数値、小文字、大文字です。
+* **4 of 4:Lowercase character, Uppercase character, Number (0-9), Symbol\(4/4: 小文字、大文字、数字 (0 ～ 9)、記号\)** では、パスワードにすべての文字種が含まれることを保証します。
 
     > [!NOTE]
     > **4/4** を要求すると、エンドユーザーが不満を感じます。 いくつかの調査では、この要件にによってパスワードのエントロピは向上しないことが示されています。 [NIST パスワード ガイドライン](https://pages.nist.gov/800-63-3/sp800-63b.html#appA)をご覧ください

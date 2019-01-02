@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d3cc1a09963c5f7fee613af24c63fd15b1cfffee
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: bf7d639c682e443f29b31b3c6d7438e89c406fde
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807226"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838635"
 ---
 # <a name="how-to-publish-a-new-iot-edge-module-in-the-cloud-partner-portal"></a>Cloud パートナー ポータルで新規 IoT Edge モジュールを公開する方法
 
@@ -39,7 +39,7 @@ ms.locfileid: "48807226"
 
     -   説明 (基本的な HTML 形式)
 
-    -   png イメージ形式のロゴ (40 ピクセル x 40 ピクセル、90 ピクセル x 90 ピクセル、115 ピクセル x 115 ピクセル、255 ピクセル x 115 ピクセルのサイズ)。
+    -   png イメージ形式で次のサイズのロゴ:40 x 40 ピクセル、90 x 90 ピクセル、115 x 115 ピクセル、255 x 115 ピクセル。
 
     -   使用条件とプライバシー ポリシー
 
@@ -53,7 +53,7 @@ ms.locfileid: "48807226"
 -   [CPP アカウント](https://cloudpartner.azure.com/)にサインインします。
 
 >[!Note]
->Cloud パートナー ポータルの一般情報については、[ドキュメントの学習](https://cloudpartner.azure.com/#learn)を参照してください
+>Cloud パートナー ポータルの一般情報については、[ドキュメントの学習](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal)を参照してください
 
 -   **[新しいプラン]** を選択し、**[IoT Edge モジュール]** を選択します。
 
@@ -96,7 +96,7 @@ ms.locfileid: "48807226"
 
 #### <a name="iot-edge-module-metadata-and-the-container-registry"></a>IoT Edge モジュール メタデータとコンテナー レジストリ
 
-IoT Edge モジュールのメタデータには、Azure Container Registry (ACR) に格納されているイメージ参照情報が含まれています。 Azure Marketplace によってイメージがパブリック マーケットプレース レジストリにコピーされ、認定後に顧客向けに利用可能になります。 IoT Edge モジュール イメージを使用するためのすべてのユーザー要求は、Marketplace コンテナー レジストリで処理されます。
+IoT Edge モジュールのメタデータには、Azure コンテナー レジストリ (ACR) に格納されているイメージ参照情報が含まれています。 Azure Marketplace によってイメージがパブリック マーケットプレース レジストリにコピーされ、認定後に顧客向けに利用可能になります。 IoT Edge モジュール イメージを使用するためのすべてのユーザー要求は、Marketplace コンテナー レジストリで処理されます。
 
 ![コンテナー イメージ](./media/cloud-partner-portal-create-iot-edge-module-offer/container-images.png)
 
@@ -151,7 +151,7 @@ IoT Edge モジュール イメージを公開する際、1 つ以上のイメ�
 
 -   **[Suggested categories]\(推奨されるカテゴリ\)** - 最大 5 個までカテゴリを選択します。 これらは製品の詳細ページに表示されます。 現時点では、すべての IoT Edge モジュールは、参照ページの *[モノのインターネット] \> [IoT Edge モジュール]* カテゴリの下に表示されます。
 
--   **[ロゴ]** - IoT Edge モジュールのロゴ イメージを PNG 形式でアップロードします。 40 ピクセル x 40 ピクセル、90 ピクセル x 90 ピクセル、115 ピクセル x 115 ピクセル、255 ピクセル x 115 ピクセルのサイズを使用します。
+-   **[ロゴ]** - IoT Edge モジュールのロゴ イメージを PNG 形式でアップロードします。 厳密に次のサイズを使用します:40 x 40 ピクセル、90 x 90 ピクセル、115 x 115 ピクセル、255 x 115 ピクセル。
 
 -   **[スクリーンショット]** - スクリーンショットは製品の詳細ページに表示されます。 その IoT Edge モジュール自体について、またそのしくみについて視覚的に伝えるのに適した方法です。 たとえば、アーキテクチャ ダイアグラムやユース ケースの例を表示できます。
 

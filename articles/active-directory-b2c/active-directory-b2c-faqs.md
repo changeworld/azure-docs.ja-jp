@@ -7,17 +7,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8cec3d3695eaff8719757dd022951b969de99f6a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6957a18440dfc225c63a1b1843e2b47af8b841bf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010645"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842953"
 ---
-# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: よく寄せられる質問 (FAQ) 
+# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Azure Portal で Azure AD B2C の拡張機能にアクセスできないのはなぜですか。
@@ -34,12 +34,12 @@ Azure AD テナントでは、テナントに属するユーザーは、`<xyz>@<
 
 Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意のメール アドレス (joe@comcast.net、bob@gmail.com、sarah@contoso.com、jim@live.com など) を使用してサインインします。 この種類のアカウントはローカル アカウントです。  ローカル アカウントとして任意のユーザー名もサポートしています (joe、bob、sarah、jim など)。 Azure Portal で Azure AD B2C の ID プロバイダーを構成する場合、この 2 種類のローカル アカウントのいずれかを選択できます。 Azure AD B2C テナントで、**[ID プロバイダー]** をクリックし、[ローカル アカウント] の **[ユーザー名]** を選択します。 
 
-アプリケーションのユーザー アカウントは常に、サインアップ ポリシーによって、サインアップもしくはサインイン ポリシーによって、または Azure AD Graph API を使用して作成する必要があります。 Azure Portal で作成されたユーザー アカウントは、テナントを管理するためだけに使用されます。
+アプリケーションのユーザー アカウントは常に、サインアップ ユーザー フローによって、サインアップもしくはサインイン ユーザー フローによって、または Azure AD Graph API を使用して作成する必要があります。 Azure Portal で作成されたユーザー アカウントは、テナントを管理するためだけに使用されます。
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>現在サポートされているソーシャル ID プロバイダーはどれですか。 将来サポートする予定のプロバイダーはどれですか。
 現在、Facebook、Google+、LinkedIn、Amazon、Twitter (プレビュー)、WeChat (プレビュー)、Weibo (プレビュー)、および QQ (プレビュー) をサポートしています。 お客様のご要望に基づいて、他の人気のあるソーシャル ID プロバイダーのサポートを追加する予定です。
 
-Azure AD B2C でも[カスタム ポリシー](active-directory-b2c-overview-custom.md)のサポートがを追加されています。  開発者は、これらの[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して、[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) または SAML をサポートする任意の ID プロバイダーで独自のポリシーを作成できます。 
+Azure AD B2C でも[カスタム ポリシー](active-directory-b2c-overview-custom.md)のサポートがを追加されています。  開発者は、これらの[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して、[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) または SAML をサポートする任意の ID プロバイダーで独自のポリシーを作成できます。 
 
 [カスタム ポリシー スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)を使ってカスタム ポリシーの作成をお試しください。
 
@@ -61,8 +61,8 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツおよび "From:" フィールド)。
 検証電子メールの内容をカスタマイズするには、 [会社のブランド化機能](../active-directory/fundamentals/customize-branding.md) を使用します。 具体的には、電子メールの次の 2 つの要素をカスタマイズできます。
 
-* **バナー ロゴ**: 右下に表示されます。
-* **背景色**: 上部に表示されます。
+* **バナー ロゴ**:右下に表示されます。
+* **背景色**:上部に表示されます。
 
     ![カスタマイズされた検証電子メールのスクリーンショット](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
@@ -79,8 +79,8 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>既存のユーザー名、パスワード、およびプロファイルを自分のデータベースから Azure AD B2C に移行するにはどのようにすればいいですか。
 Azure AD Graph API を使用して、移行ツールを作成できます。 詳細については[ユーザーの移行ガイド](active-directory-b2c-user-migration.md)を参照してください。
 
-### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C のローカル アカウントに使用されるパスワード ポリシーはどのようなものですか。
-Azure AD B2C のローカル アカウントのパスワード ポリシーは Azure AD のポリシーに基づいています。 Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ポリシーでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。 詳細については、 [Azure AD のパスワード ポリシー](https://msdn.microsoft.com/library/azure/jj943764.aspx) に関するページを参照してください。 アカウントのロックアウトとパスワードについては、「[Azure Active Directory B2C: 脅威の管理](active-directory-b2c-reference-threat-management.md)」を参照してください。
+### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C のローカル アカウントに使用されるパスワード ユーザー フローはどのようなものですか。
+Azure AD B2C のローカル アカウントのパスワード ユーザー フローは Azure AD のポリシーに基づいています。 Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ユーザー フローでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。 詳細については、 [Azure AD のパスワード ポリシー](https://msdn.microsoft.com/library/azure/jj943764.aspx) に関するページを参照してください。 アカウントのロックアウトとパスワードについては、「[Azure Active Directory B2C: 脅威の管理](active-directory-b2c-reference-threat-management.md)」を参照してください。
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Azure AD Connect を使用して、自分のオンプレミス Active Directory に保存されているお客様の ID を Azure AD B2C に移行できますか。
 いいえ。Azure AD Connect は Azure AD B2C と連携するようには設計されていません。 ユーザーの移行には、[Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用することを検討してください。  詳細については[ユーザーの移行ガイド](active-directory-b2c-user-migration.md)を参照してください。

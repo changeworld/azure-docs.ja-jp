@@ -1,11 +1,11 @@
 ---
-title: Azure Machine Learning Web サービスでのデータのインポートとエクスポートの使用 | Microsoft Docs
+title: Web サービスでデータをインポート/エクスポートする - Azure Machine Learning Studio | Microsoft Docs
 description: データのインポート モジュールとデータのエクスポート モジュールを使用して、Web サービスとデータを送受信する方法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 27873930ebef75923088f8bf2170c8e6a383cfa8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0f438f59da079633fea54758261ce1bd93a8477b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837414"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251387"
 ---
-# <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>データのインポート モジュールとエクスポート モジュールを使用する Azure ML Web サービスのデプロイ
+# <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>データのインポート モジュールとエクスポート モジュールを使用する Azure Machine Learning Studio Web サービスをデプロイする
 
 予測実験を作成するときには通常、Web サービスの入力と出力を追加します。 実験を展開するときに、コンシューマーはこれらの入力と出力を介して Web サービスとのデータの送受信を行うことができます。 一部のアプリケーションでは、コンシューマーのデータはデータ フィードから利用できるか、または Azure BLOB ストレージなどの外部データ ソースに既に存在しています。 このような場合、Web サービスの入力と出力を使用してデータを読み書きする必要はありません。 代わりに、バッチ実行サービス (BES) を使用して、データのインポート モジュールを使用してデータ ソースからデータを読み取り、データのエクスポート モジュールを使用して、スコア付けの結果を他のデータの場所に書き込むことができます。
 
 データのインポート モジュールとエクスポート モジュールは、HTTP を使用する Web URL、Hive クエリ、Azure SQL データベース、Azure Table Storage、Azure Blob Storage、提供されているデータ フィード、またはオンプレミスの SQL データベースなどのさまざまなデータの場所に対してデータの読み取りと書き込みを行うことができます。
 
-このトピックでは "Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset" サンプルを使用しており、このデータセットは censusdata という名前の Azure SQL テーブルに既に読み込まれていることを前提としています。
+このトピックでは "Sample 5:Train, Test, Evaluate for Binary Classification: Adult Dataset" サンプルを使用しており、このデータセットは censusdata という名前の Azure SQL テーブルに既に読み込まれていることを前提としています。
 
 ## <a name="create-the-training-experiment"></a>トレーニング実験を作成する
-"Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset" サンプルを開くと、これはサンプル Adult Census Income Binary Classification データセットを使用しています。 キャンバスの実験は以下の図のようになります。
+"Sample 5:Train, Test, Evaluate for Binary Classification: Adult Dataset" サンプルを開くと、これはサンプル Adult Census Income Binary Classification データセットを使用しています。 キャンバスの実験は以下の図のようになります。
 
 ![実験の初期構成です。](./media/web-services-that-use-import-export-modules/initial-look-of-experiment.png)
 
@@ -103,7 +103,7 @@ Web サービスとして予測実験をデプロイできるようになりま�
 2. 実行が完了したら、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [Classic] \(Web サービスのデプロイ [従来])]** を選択します。
 3. Web サービス ダッシュボードで、API キーを見つけます。 この API キーをコピーして、後で使用できるように保存します。
 4. **[既定のエンドポイント]** テーブルで、**[バッチ実行]** リンクをクリックして API ヘルプ ページを開きます。
-5. Visual Studio で C# コンソール アプリケーションを作成します (**[新規作成]** > **[プロジェクト]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]**)。
+5. Visual Studio で、次のように選択して C# コンソール アプリケーションを作成します: **[新規]** > **[プロジェクト]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]**。
 6. API ヘルプ ページで、ページ下部にある **[サンプル コード]** セクションを見つけます。
 7. C# サンプル コードをコピーして Program.cs ファイルに貼り付け、BLOB ストレージへの参照をすべて削除します。
 8. *apiKey* 変数の値を、以前に保存した API キーで更新します。
@@ -132,7 +132,7 @@ Web サービスとして予測実験をデプロイできるようになりま�
 3. [実験のデプロイ] ページで、Web サービスの名前を入力し、料金プランを選択して **[デプロイ]** をクリックします。
 4. **[クイック スタート]** ページで **[使用]** をクリックします。
 5. **[サンプル コード]** セクションで、**[Batch]** をクリックします。
-6. Visual Studio で C# コンソール アプリケーションを作成します (**[新規作成]** > **[プロジェクト]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]**)。
+6. Visual Studio で、次のように選択して C# コンソール アプリケーションを作成します: **[新規]** > **[プロジェクト]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]**。
 7. C# サンプル コードをコピーして Program.cs ファイルに貼り付けます。
 8. *apiKey* 変数の値を、**[Basic consumption info (基本的な実行情報)]** セクションにある**プライマリ キー**を使用して更新します。
 9. *scoreRequest* 宣言を見つけて、*データのインポート* モジュールと*データのエクスポート* モジュールに渡される Web サービス パラメーターの値を更新します。 この場合は、元のクエリを使用しますが、新しいテーブル名を定義します。

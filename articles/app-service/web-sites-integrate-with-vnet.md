@@ -1,5 +1,5 @@
 ---
-title: アプリを Azure Virtual Network に統合する
+title: アプリと Azure 仮想ネットワークを統合する - Azure App Service
 description: Azure App Service のアプリを新規または既存の Azure 仮想ネットワークに接続する方法を説明します。
 services: app-service
 documentationcenter: ''
@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
-ms.openlocfilehash: 8a6d7fef902a3bd240b152cb15d6852a5fa0e7c6
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 265dcccf9202d7b0116bba05b016e8967b68c67a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687308"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273359"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークに統合する
-このドキュメントでは、Azure App Service の仮想ネットワーク統合機能について説明し、この機能を [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) でアプリと共にセットアップする方法を示します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネット以外のルーティング可能なネットワークに配置できます。 これらのネットワークはその後、VPN テクノロジを使用してオンプレミスのネットワークに接続できます。 
+このドキュメントでは、Azure App Service の仮想ネットワーク統合機能について説明し、この機能を [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でアプリと共にセットアップする方法を示します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネット以外のルーティング可能なネットワークに配置できます。 これらのネットワークはその後、VPN テクノロジを使用してオンプレミスのネットワークに接続できます。 
 
 Azure App Service には、2 つの形式があります。 
 
@@ -30,7 +31,7 @@ Azure App Service には、2 つの形式があります。
 
 このドキュメントでは、マルチ テナント App Service での使用に向けた VNet 統合機能について説明します。  アプリが [App Service Environment][ASEintro] 内にある場合は、既に VNet 内にアプリが存在しているので、同じ VNet 内のリソースに到達するために VNet 統合機能を使用する必要はありません。
 
-VNet 統合により、Web アプリから仮想ネットワーク内のリソースにアクセスできるようになりますが、仮想ネットワークからその Web アプリへのプライベート アクセスは付与されません。 プライベート サイト アクセスとは、Azure 仮想ネットワークなどプライベート ネットワークのみからアプリにアクセスできるようにすることです。 プライベート サイトには、内部ロード バランサー (ILB) を使用して ASE が構成されている場合のみアクセスできます。 ILB ASE の使用方法について詳しくは、最初にこちらの [ILB ASE の作成と使用][ILBASE]に関する記事を参照してください。 
+VNet 統合により、Web アプリから仮想ネットワーク内のリソースにアクセスできるようになりますが、仮想ネットワークからその Web アプリへのプライベート アクセスは付与されません。 プライベート サイト アクセスとは、Azure 仮想ネットワークなどプライベート ネットワークのみからアプリにアクセスできるようにすることです。 プライベート サイトには、内部ロード バランサー (ILB) を使用して ASE が構成されている場合のみアクセスできます。 ILB ASE の使用方法について詳しくは、最初にこちらの[ILB ASE の作成と使用][ILBASE]に関する記事を参照してください。 
 
 VNet 統合は、多くの場合、アプリから、VNet で実行されているデータベースや Web サービスにアクセスできるようにするために使用されます。 VNet 統合を使用すれば、VM 上のアプリケーション用にパブリック エンドポイントを公開せずに済み、インターネット以外のルーティング可能なプライベート アドレスを使用できます。 
 
@@ -307,17 +308,17 @@ VNet からアプリを切断するには、**[切断]** を選択します。 �
 [8]: ./media/web-sites-integrate-with-vnet/vnetint-selectvnet.png
 
 <!--Links-->
-[VNETOverview]: http://azure.microsoft.com/documentation/articles/virtual-networks-overview/ 
-[AzurePortal]: http://portal.azure.com/
-[ASPricing]: http://azure.microsoft.com/pricing/details/app-service/
-[VNETPricing]: http://azure.microsoft.com/pricing/details/vpn-gateway/
-[DataPricing]: http://azure.microsoft.com/pricing/details/data-transfers/
-[V2VNETP2S]: http://azure.microsoft.com/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/
+[VNETOverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-overview/ 
+[AzurePortal]: https://portal.azure.com/
+[ASPricing]: https://azure.microsoft.com/pricing/details/app-service/
+[VNETPricing]: https://azure.microsoft.com/pricing/details/vpn-gateway/
+[DataPricing]: https://azure.microsoft.com/pricing/details/data-transfers/
+[V2VNETP2S]: https://azure.microsoft.com/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/
 [ASEintro]: environment/intro.md
 [ILBASE]: environment/create-ilb-ase.md
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
-[creategatewaysubnet]: http://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
-[creategateway]: http://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
-[setp2saddresses]: http://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
+[creategatewaysubnet]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
+[creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
+[setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool

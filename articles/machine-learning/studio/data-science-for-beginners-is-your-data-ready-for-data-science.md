@@ -1,12 +1,12 @@
 ---
-title: データ サイエンス用のデータの準備はお済みですか? データの分析 - Azure Machine Learning | Microsoft Docs
+title: データの評価 - Azure Machine Learning Studio | Microsoft Docs
 description: データ サイエンスを準備するためにデータが満たす必要のある 4 つの条件。 このビデオでは、基本的なデータの評価を支援する具体的な例を説明しています。
 keywords: 関連性のあるデータ,データの評価,データの準備,データの条件,データの準備
 services: machine-learning
 documentationcenter: na
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cjgronlund
 ms.assetid: d502062c-da70-4b21-9054-0bfd9902612e
 ms.service: machine-learning
@@ -16,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 5ab3c7716485053432240cb74be8ebc60c9ad274
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2a9101ed510c617df81f422aea92ca1ef2b28cd8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834619"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261230"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>データ サイエンス用のデータの準備はお済みですか?
 ## <a name="video-2-data-science-for-beginners-series"></a>ビデオ 2: 初心者向けデータ サイエンス シリーズ

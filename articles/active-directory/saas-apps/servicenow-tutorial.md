@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ServiceNow の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ServiceNow の統合 | Microsoft Docs
 description: Azure Active Directory と ServiceNow の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: jeedes
-ms.openlocfilehash: 470805b2bb77e367887767b95e0f1e04d79c8f9d
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 5b7baffea8e718810a91ea9687a007d36c806aab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830737"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850008"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>チュートリアル: Azure Active Directory と ServiceNow の統合
+# <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>チュートリアル:Azure Active Directory と ServiceNow の統合
 
 このチュートリアルでは、ServiceNow と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -41,7 +41,7 @@ ServiceNow と Azure AD の統合を構成するには、次のものが必要�
 - Azure AD サブスクリプション
 - ServiceNow の場合は、Calgary バージョン以降の ServiceNow のインスタンスまたはテナント
 - ServiceNow Express の場合は、Helsinki バージョン以降の ServiceNow Express のインスタンス
-- ServiceNow のテナントで [Multiple Provider Single Sign On プラグイン](http://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0)が有効になっている必要があります。 このプラグインを有効にするには、[サービス要求を送信してください](https://hi.service-now.com)。
+- ServiceNow のテナントで [Multiple Provider Single Sign On プラグイン](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0)が有効になっている必要があります。 このプラグインを有効にするには、[サービス要求を送信してください](https://hi.service-now.com)。
 - 自動構成のために、ServiceNow の Multi-Provider プラグインを有効にします。
 
 > [!NOTE]
@@ -356,7 +356,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの構成](./media/servicenow-tutorial/ic7694975.png "Configure single sign-on")
 
-    a. **[Name]** ボックスに、構成の名前を入力します (例: **TestSAML2.0**)。
+    a. **[Name]\(名前\)** ボックスに、構成の名前を入力します (例:**TestSAML2.0**)。
 
     b. **[アクティブ]** を選択します。
 
@@ -376,7 +376,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの構成](./media/servicenow-tutorial/ic7694982ex.png "Configure single sign-on")
 
-    a. **[Name]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
+    a. **[Name]\(名前\)** ボックスに、構成の名前を入力します (例:**SAML 2.0**)。
 
     b. **[Identity Provider URL]\(ID プロバイダー URL\)** フィールドに、Azure Portal からコピーした **ID プロバイダー ID** の値を貼り付けます。
 
@@ -438,7 +438,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。

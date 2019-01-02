@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Workday を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Workday を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Workday に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 author: cmmdesai
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: chmutali
-ms.openlocfilehash: 30354ddb010c22dabe5cd69373ae59daaf4a8b46
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 754c3278cb01e010718fa4d3cb257acf6ffe99c9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346747"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849855"
 ---
-# <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる (プレビュー)
+# <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる (プレビュー)
 
 このチュートリアルでは、Workday から Active Directory と Azure Active Directory の両方に社員プロファイルをインポートするために必要な手順と、Workday にメール アドレスを書き戻すオプションについて説明します。
 
@@ -154,33 +154,33 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 * **Workday のユーザーをこの Active Directory フォレストにプロビジョニングする必要はありますか。**
 
-   * *例: Workday の "Company" 属性に値 "Contoso" が含まれ、"Worker_Type" 属性に "Regular" が含まれているユーザー*
+   * *例:Workday の "Company" 属性に値 "Contoso" が含まれ、"Worker_Type" 属性に "Regular" が含まれているユーザー*
 
 * **ユーザーはどのように組織単位 (OU) にルーティングされますか。**
 
-   * *例: Workday の "Municipality" 属性と "Country_Region_Reference" 属性の定義に従って、オフィスの位置に対応する OU にルーティングされるユーザー*
+   * *例:Workday の "Municipality" 属性と "Country_Region_Reference" 属性の定義に従って、オフィスの位置に対応する OU にルーティングされるユーザー*
 
 * **次の属性は Active Directory にどのように埋め込む必要がありますか。**
 
    * 共通名 (cn)
-      * *例: 人事によって設定された Workday の User_ID 値を使用します*
+      * *例:人事によって設定された Workday の User_ID 値を使用します*
       
    * 従業員 ID (employeeId)
-      * *例: Workday の Worker_ID 値を使用します*
+      * *例:Workday の Worker_ID 値を使用します*
       
    * SAM アカウント名 (sAMAccountName)
-      * *例: Azure AD プロビジョニング式でフィルター処理された Workday の User_ID 値を使用して、不正な文字を削除します*
+      * *例:Azure AD プロビジョニング式でフィルター処理された Workday の User_ID 値を使用して、不正な文字を削除します*
       
    * ユーザー プリンシパル名 (userPrincipalName)
-      * *例: Azure AD プロビジョニング式で Workday の User_ID 値を使用して、ドメイン名を付加します*
+      * *例:Azure AD プロビジョニング式で Workday の User_ID 値を使用して、ドメイン名を付加します*
 
 * **Workday と Active Directory の間でどのようにユーザーを対応付ける必要がありますか。**
 
-  * *例: 特定の Workday "Worker_ID" 値を持つユーザーは、"employeeID" が同じ値の Active Directory ユーザーと対応付けます。Active Directory で Worker_ID の値が見つからない場合は、新しいユーザーを作成します。*
+  * *例:特定の Workday "Worker_ID" 値を持つユーザーは、"employeeID" が同じ値の Active Directory ユーザーと対応付けます。Active Directory で Worker_ID の値が見つからない場合は、新しいユーザーを作成します。*
   
 * **Active Directory フォレストには、一致するロジックが動作するために必要なユーザー ID が既に含まれていますか。**
 
-  * *例: Workday を新規にデプロイする場合は、一致するロジックをできるだけ単純にするために、Active Directory に正しい Workday の Worker_ID 値 (または選択した一意の ID 値) をあらかじめ入力することを強く推奨します。*
+  * *例:Workday を新規にデプロイする場合は、一致するロジックをできるだけ単純にするために、Active Directory に正しい Workday の Worker_ID 値 (または選択した一意の ID 値) をあらかじめ入力することを強く推奨します。*
 
 
 
@@ -235,11 +235,11 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
     ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_06.png "ドメイン セキュリティ ポリシー")  
 2. **[Domain]\(ドメイン)** テキスト ボックスで以下のドメインを検索し、それらをフィルターに 1 つずつ追加します。  
    * *External Account Provisioning*
-   * *Worker Data: Public Worker Reports*
-   * *Person Data: Work Contact Information*
-   * *Worker Data: All Positions*
-   * *Worker Data: Current Staffing Information*
-   * *Worker Data: Business Title on Worker Profile*
+   * *Worker Data:Public Worker Reports*
+   * *Person Data:Work Contact Information*
+   * *Worker Data:All Positions*
+   * *Worker Data:Current Staffing Information*
+   * *Worker Data:Business Title on Worker Profile*
  
     ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_07.png "ドメイン セキュリティ ポリシー")  
 
@@ -251,7 +251,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
     ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_09.png "ドメイン セキュリティ ポリシー")  
 
-4. **[Edit Domain Security Policy Permissions]\(ドメイン セキュリティ ポリシー アクセス許可の編集)** ページで、**[Integration Permissions]\(統合アクセス許可)** セクションまで下へスクロールします。 [+] 記号をクリックし、**Get** および **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
+4. **[Edit Domain Security Policy Permissions]\(ドメイン セキュリティ ポリシー アクセス許可の編集)** ページで、**[Integration Permissions]\(統合アクセス許可)** セクションまで下へスクロールします。 [+] 記号をクリックし、**Get** と **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
 
     ![アクセス許可の編集](./media/workday-inbound-tutorial/wd_isu_10.png "アクセス許可の編集")  
 
@@ -263,11 +263,11 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
    | Operation | ドメイン セキュリティ ポリシー |
    | ---------- | ---------- | 
-   | Get と Put | Worker Data: Public Worker Reports |
-   | Get と Put | Person Data: Work Contact Information |
-   | 取得 | Worker Data: All Positions |
-   | 取得 | Worker Data: Current Staffing Information |
-   | 取得 | Worker Data: Business Title on Worker Profile |
+   | Get と Put | Worker Data:Public Worker Reports |
+   | Get と Put | Person Data:Work Contact Information |
+   | 取得 | Worker Data:All Positions |
+   | 取得 | Worker Data:Current Staffing Information |
+   | 取得 | Worker Data:Business Title on Worker Profile |
 
 ### <a name="configure-business-process-security-policy-permissions"></a>ビジネス プロセス セキュリティ ポリシーのアクセス許可の構成
 この手順では、セキュリティ グループに、社員データについての "ビジネス プロセス セキュリティ" ポリシーのアクセス許可を付与します。 これは、Workday Writeback アプリのコネクタを設定するために必要です。 
@@ -309,7 +309,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 次の手順に従って、Workday から、統合の範囲内にある各 Active Directory ドメインへのユーザー アカウントのプロビジョニングを構成します。
 
-### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>パート 1: オンプレミス プロビジョニング エージェントのインストールと構成
+### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>パート 1:オンプレミス プロビジョニング エージェントのインストールと構成
 
 オンプレミスの Active Directory にプロビジョニングするには、.NET 4.7+ Framework と目的の Active Directory ドメインへのネットワーク アクセスを備えたサーバーに、エージェントがインストールされている必要があります。
 
@@ -363,7 +363,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 4. エラーと警告をを確認します。
 
     
-### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 2: プロビジョニング コネクタ アプリの追加と Workday への接続の作成
+### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 2:プロビジョニング コネクタ アプリの追加と Workday への接続の作成
 
 **Workday を Active Directory プロビジョニングに構成するには、**
 
@@ -392,7 +392,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
    * **Active Directory フォレスト -** エージェントに登録されている、Active Directory ドメインの "名前"。 これは通常、*contoso.com* のような文字列です。
 
    * **Active Directory コンテナー -** エージェントが既定でユーザー アカウントを作成する必要のあるコンテナー DN を入力します。 
-        例: *OU=Standard Users,OU=Users,DC=contoso,DC=test*
+        例:*OU=Standard Users,OU=Users,DC=contoso,DC=test*
 > [!NOTE]
 > この設定が適用されるのは、属性のマッピングで *parentDistinguishedName* 属性が構成されていない場合のユーザー アカウント作成のみです。 この設定は、ユーザーの検索や更新の操作には使用されません。 ドメインのサブツリー全体が、検索操作の範囲内になります。
    * **メール通知 –** メール アドレスを入力し、[send email if failure occurs (失敗した場合にメールを送信する)] チェック ボックスをオンにします。
@@ -403,7 +403,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 ![Azure ポータル](./media/workday-inbound-tutorial/wd_1.png)
 
-### <a name="part-2-configure-attribute-mappings"></a>パート 2: 属性マッピングの構成 
+### <a name="part-2-configure-attribute-mappings"></a>パート 2:属性マッピングの構成 
 
 このセクションでは、ユーザー データが Workday から Active Directory に移動する方法を構成します。
 
@@ -411,19 +411,19 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 2.  **[ソース オブジェクト スコープ]** フィールドでは、属性ベースのフィルター セットを定義して、AD へのプロビジョニングの対象にする Workday のユーザー セットを選択できます。 既定のスコープは、"Workday のすべてのユーザー" です。 フィルターの例:
 
-   * 例: 1000000 から 2000000 までの Worker ID を持つユーザーにスコープを設定
+   * 例:1000000 から 2000000 までの Worker ID を持つユーザーにスコープを設定
 
-      * 属性: WorkerID
+      * 属性:WorkerID
 
-      * 演算子: REGEX Match
+      * 演算子:REGEX Match
 
-      * 値: (1[0-9][0-9][0-9][0-9][0-9][0-9])
+      * 値:(1[0-9][0-9][0-9][0-9][0-9][0-9])
 
-   * 例: 臨時社員ではなく、従業員のみ 
+   * 例:臨時社員ではなく、従業員のみ 
 
-      * 属性: EmployeeID
+      * 属性:EmployeeID
 
-      * 演算子: IS NOT NULL
+      * 演算子:IS NOT NULL
 
 3.  **[対象オブジェクトのアクション]** フィールドでは、Active Directory で実行可能なアクションをグローバルにフィルタリングできます。 **作成**と**更新**が最も一般的です。
 
@@ -498,7 +498,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
   
 
 
-### <a name="part-4-start-the-service"></a>パート 4: サービスの開始
+### <a name="part-4-start-the-service"></a>パート 4:サービスの開始
 パート 1 ～ 3 が完了したら、Azure Portal に戻ってプロビジョニング サービスを開始できます。
 
 1.  **[プロビジョニング]** タブで、**[プロビジョニングの状態]** を **[ON]** に設定します。
@@ -532,7 +532,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 > [!IMPORTANT]
 > Azure AD にプロビジョニングする必要があり、オンプレミスの Active Directory にはその必要がないクラウドのみのユーザーが存在する場合は、以下の手順にのみ従ってください。
 
-### <a name="part-1-adding-the-azure-ad-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 1: Azure AD プロビジョニング コネクタ アプリケーションの追加と Workday への接続の作成
+### <a name="part-1-adding-the-azure-ad-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 1:Azure AD プロビジョニング コネクタ アプリケーションの追加と Workday への接続の作成
 
 **Workday を構成して、クラウドのみのユーザーを Azure Active Directory にプロビジョニングするには、**
 
@@ -564,7 +564,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
    * 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗した場合は、Workday URL と資格情報が Workday で有効であることを再度確認します。
 
-### <a name="part-2-configure-attribute-mappings"></a>パート 2: 属性マッピングの構成 
+### <a name="part-2-configure-attribute-mappings"></a>パート 2:属性マッピングの構成 
 
 このセクションでは、クラウドのみのユーザー データが Workday から Azure Active Directory に移動する方法を構成します。
 
@@ -572,19 +572,19 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 2. **[ソース オブジェクト スコープ]** フィールドでは、属性ベースのフィルター セットを定義して、Azure AD へのプロビジョニングの対象にするWorkday のユーザー セットを選択できます。 既定のスコープは、"Workday のすべてのユーザー" です。 フィルターの例:
 
-   * 例: 1000000 から 2000000 までの Worker ID を持つユーザーにスコープを設定
+   * 例:1000000 から 2000000 までの Worker ID を持つユーザーにスコープを設定
 
-      * 属性: WorkerID
+      * 属性:WorkerID
 
-      * 演算子: REGEX Match
+      * 演算子:REGEX Match
 
-      * 値: (1[0-9][0-9][0-9][0-9][0-9][0-9])
+      * 値:(1[0-9][0-9][0-9][0-9][0-9][0-9])
 
-   * 例: 正規従業員ではなく、臨時社員のみ
+   * 例:正規従業員ではなく、臨時社員のみ
 
-      * 属性: ContingentID
+      * 属性:ContingentID
 
-      * 演算子: IS NOT NULL
+      * 演算子:IS NOT NULL
 
 3. **[対象オブジェクトのアクション]** フィールドでは、Azure AD で実行可能なアクションをグローバルにフィルタリングできます。 **作成**と**更新**が最も一般的です。
 
@@ -619,7 +619,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 6. マッピングを保存するには、[属性マッピング] セクションの上部にある **[保存]** をクリックします。
 
-### <a name="part-3-start-the-service"></a>パート 3: サービスの開始
+### <a name="part-3-start-the-service"></a>パート 3:サービスの開始
 パート 1 ～ 2 の部分が完了したら、プロビジョニング サービスを開始できます。
 
 1. **[プロビジョニング]** タブで、**[プロビジョニングの状態]** を **[ON]** に設定します。
@@ -635,7 +635,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 ## <a name="configuring-writeback-of-email-addresses-to-workday"></a>メール アドレスを Workday に書き戻す構成
 ユーザーのメールアドレスを Azure Active Directory から Workday に書き戻すように構成するには、次の手順に従ってください。
 
-### <a name="part-1-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 1：プロビジョニング コネクタ アプリの追加と Workday への接続の作成
+### <a name="part-1-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 1:プロビジョニング コネクタ アプリの追加と Workday への接続の作成
 
 **Workday Writeback コネクタを構成するには:**
 
@@ -665,7 +665,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
    * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗した場合は、Workday URL と資格情報が Workday で有効であることを再度確認します。
 
-### <a name="part-2-configure-attribute-mappings"></a>パート 2: 属性マッピングの構成 
+### <a name="part-2-configure-attribute-mappings"></a>パート 2:属性マッピングの構成 
 
 このセクションでは、ユーザー データが Workday から Active Directory に移動する方法を構成します。
 
@@ -677,7 +677,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 4. マッピングを保存するには、[属性マッピング] セクションの上部にある **[保存]** をクリックします。
 
-### <a name="part-3-start-the-service"></a>パート 3: サービスの開始
+### <a name="part-3-start-the-service"></a>パート 3:サービスの開始
 パート 1 ～ 2 の部分が完了したら、プロビジョニング サービスを開始できます。
 
 1. **[プロビジョニング]** タブで、**[プロビジョニングの状態]** を **[ON]** に設定します。
@@ -725,7 +725,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
     ```
     <?xml version="1.0" encoding="UTF-8"?>
-    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
       <env:Body>
         <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">

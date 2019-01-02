@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ca9f2fa249a3d9f4387d0fa45e3c5874eea26120
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2091fb75e07b9ed01394621af2d82c02f5598430
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625489"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721325"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して SAS 資格情報で Azure Storage にアクセスする
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -68,7 +68,7 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 
 1. 新たに作成したストレージ アカウントに戻ります。   
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  
-3. ページの上部にある **[+ 追加]** をクリックして、VM 用に新しいロールの割り当てを追加します。
+3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します
 4. ページの右側で、**[ロール]** を ［ストレージ アカウントの共同作業者］ に設定します。  
 5. 次のドロップダウンで、**[アクセスの割り当て先]** を ［仮想マシン］ リソースに設定します。  
 6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、**[リソース グループ]** を [すべてのリソース グループ] に設定します。  

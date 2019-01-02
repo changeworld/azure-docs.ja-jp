@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 42b0a2440fa459fa31a7d6e137d124883646c205
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 7ff69d3b79662cff1fc28b0b59777225d0cc439f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686012"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189032"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -28,7 +28,7 @@ Azure Portal は、Microsoft Azure クラウドでホストされるサービス
 * **最新の Web ブラウザー**。 Azure Portal では、HTML5 と Javascript が使用されています。Web ブラウザーのバージョンが低いと正しく機能しない場合があります。
 
 ## <a name="create-clusters"></a>クラスターの作成
-Azure Portal には、ほとんどのクラスターのプロパティが公開されます。 Azure Resource Manager テンプレートを使用すると、多くの詳細を非表示にできます。 詳細については、「 [Azure Resource Manager テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。
+Azure Portal には、ほとんどのクラスターのプロパティが公開されます。 Azure Resource Manager テンプレートを使用すると、多くの詳細を非表示にできます。 詳しくは、[Azure Resource Manager テンプレートを使用して HDInsight で Linux ベースの Apache Hadoop クラスターを作成する方法](hdinsight-hadoop-create-linux-clusters-arm-templates.md)に関する記事をご覧ください。
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
@@ -42,7 +42,7 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
     ![Azure Portal で新しいクラスターを作成する](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-basics.png "Azure Portal で新しいクラスターを作成する")
 
-    * **クラスター名**を入力します。この名前はグローバルに一意である必要があります。
+    * **[クラスター名]** を入力します。この名前はグローバルに一意である必要があります。
 
     * **[サブスクリプション]** ドロップダウンから、このクラスターに使用する Azure サブスクリプションを選択します。
 
@@ -57,7 +57,7 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
     * **[SSH ユーザー名]** を入力し、前に指定した管理者パスワードと SSH パスワードを同じにする場合、**[クラスター ログインと同じパスワードを使用します]** チェック ボックスをオンします。 同じにしない場合、SSH ユーザーを認証するために使用される **[パスワード]** または **[公開キー]** のどちらかを入力します。 公開キーを使用することをお勧めします。 下部にある **[選択]** をクリックして資格情報の構成を保存します。
    
-    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+        詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
     * **[リソース グループ]** で、新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。
 
@@ -69,18 +69,18 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
 5. **[ストレージ]** で、既定のストレージとして Azure Storage (WASB) と Data Lake Storage のどちらを使用するかを指定します。 詳細については、下の表をご覧ください。
 
-    ![Azure Portal で新しいクラスターを作成する](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "Azure Portal で新しいクラスターを作成する")
+     ![Azure Portal で新しいクラスターを作成する](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "Azure Portal で新しいクラスターを作成する")
 
-    | Storage                                      | 説明 |
-    |----------------------------------------------|-------------|
-    | **既定のストレージとしての Azure Storage BLOB**   | <ul><li>**[プライマリ ストレージの種類]** で、**[Azure Storage]** を選択します。 その後、**[メソッドの選択]** で、Azure サブスクリプションの一部であるストレージ アカウントを指定する場合は **[個人用サブスクリプション]** を選択して、ストレージ アカウントを選択することができます。 それ以外の場合、**[アクセス キー]** をクリックして、Azure サブスクリプションの外部から選択するストレージ アカウントの情報を提供します。</li><li>**[既定のコンテナー]** では、ポータルによって示された既定のコンテナー名を使用するか、独自の名前を指定することができます。</li><li>既定のストレージとして WASB を使用している場合、**[追加のストレージ アカウント]** をクリックして、クラスターに関連付ける追加のストレージ アカウントを指定することができます (オプション)。 **[Azure Storage キー]** で **[ストレージ キーの追加]** をクリックして、自分の Azure サブスクリプションまたはその他のサブスクリプションから (ストレージ アカウント アクセス キーを指定することで) ストレージ アカウントを指定することができます。</li><li>既定のストレージとして WASB を使用している場合、**[Data Lake Store アクセス]** をクリックし、追加のストレージとして Azure Data Lake Storage を指定できます (オプション)。 詳細については、「[Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」(クイック スタート: HDInsight のクラスターを設定する) をご覧ください。</li></ul> |
-    | **既定のストレージとしての Azure Data Lake Storage** | **[プライマリ ストレージの種類]** で、**[Azure Data Lake Storage Gen1]** または **[Azure Data Lake Storage Gen2 (Preview)]** を選択します。その後、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」の手順を参照してください。 |
-    | **外部メタストア**                      | 必要に応じて、クラスターに関連付けられた Hive と Oozie のメタデータを保存するための SQL データベースを指定します。 **[Hive 用の SQL データベースを選択する]** で、SQL データベースを選択し、データベースのユーザー名とパスワードを指定します。 以上の手順を Oozie メタデータについても行います。<br><br>メタストアに対して Azure SQL Database を使用する場合、いくつかの考慮事項があります。 <ul><li>メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。 Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。 これは、SQL Database インスタンスが実行されているサーバーです。 サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。</li><li>メタストアを作成するときは、データベース名にダッシュやハイフンを使用しないでください。使用すると、クラスター作成プロセスが失敗することがあります。</li></ul> |
+     | Storage                                      | 説明 |
+     |----------------------------------------------|-------------|
+     | **既定のストレージとしての Azure Storage BLOB**   | <ul><li>**[プライマリ ストレージの種類]** で、**[Azure Storage]** を選択します。 その後、**[メソッドの選択]** で、Azure サブスクリプションの一部であるストレージ アカウントを指定する場合は **[個人用サブスクリプション]** を選択して、ストレージ アカウントを選択することができます。 それ以外の場合、**[アクセス キー]** をクリックして、Azure サブスクリプションの外部から選択するストレージ アカウントの情報を提供します。</li><li>**[既定のコンテナー]** では、ポータルによって示された既定のコンテナー名を使用するか、独自の名前を指定することができます。</li><li>既定のストレージとして WASB を使用している場合、**[追加のストレージ アカウント]** をクリックして、クラスターに関連付ける追加のストレージ アカウントを指定することができます (オプション)。 **[Azure Storage キー]** で **[ストレージ キーの追加]** をクリックして、自分の Azure サブスクリプションまたはその他のサブスクリプションから (ストレージ アカウント アクセス キーを指定することで) ストレージ アカウントを指定することができます。</li><li>既定のストレージとして WASB を使用している場合、**[Data Lake Store アクセス]** をクリックし、追加のストレージとして Azure Data Lake Storage を指定できます (オプション)。 詳細については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。</li></ul> |
+     | **既定のストレージとしての Azure Data Lake Storage** | **[プライマリ ストレージの種類]** で、**[Azure Data Lake Storage Gen1]** または **[Azure Data Lake Storage Gen2 (Preview)]** を選択します。その後、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」の手順を参照してください。 |
+     | **外部メタストア**                      | 必要に応じて、クラスターに関連付けられた Hive と Oozie のメタデータを保存するための SQL データベースを指定します。 **[Hive 用の SQL データベースを選択する]** で、SQL データベースを選択し、データベースのユーザー名とパスワードを指定します。 以上の手順を Oozie メタデータについても行います。<br><br>メタストアに対して Azure SQL Database を使用する場合、いくつかの考慮事項があります。 <ul><li>メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。 Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。 これは、SQL Database インスタンスが実行されているサーバーです。 サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。</li><li>メタストアを作成するときは、データベース名にダッシュやハイフンを使用しないでください。使用すると、クラスター作成プロセスが失敗することがあります。</li></ul> |
 
-    **[次へ]** をクリックします。 
+     **[次へ]** をクリックします。 
 
-    > [!WARNING]
-    > HDInsight クラスター以外の場所で追加のストレージ アカウントを使用することはできません。
+     > [!WARNING]
+     > HDInsight クラスター以外の場所で追加のストレージ アカウントを使用することはできません。
 
 6. 必要に応じて、**[アプリケーション]** をクリックして、HDInsight クラスターで動作するアプリケーションをインストールします。 マイクロソフトや独立系ソフトウェア ベンダー (ISV) によって作成されるほか、ユーザーが独自に作成することもできます。 詳細については、[HDInsight アプリケーションのインストール](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation)に関する記事をご覧ください。
 
@@ -103,7 +103,7 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
 9. **[概要]** で、以前に入力した情報を確認し、**[作成]** をクリックします。
 
-    ![[ノード価格レベル]](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "クラスター ノード数の指定")
+     ![[ノード価格レベル]](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "クラスター ノード数の指定")
     
     > [!NOTE]
     > クラスターが作成されるまで、通常は約 15 分かかります。 プロビジョニング プロセスを確認するには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
@@ -117,9 +117,9 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
     
     * **[概要]** タブには、名前、属しているリソース グループ、場所、オペレーティング システム、クラスター ダッシュボードの URL などのクラスターに関するすべての基本情報が表示されます。
     * **[ダッシュ ボード]** から、クラスターに関連付けられている Ambari ポータルに移動します。
-    * **[Secure Shell]**: SSH を使用してクラスターにアクセスするために必要な情報です。
+    * **[Secure Shell]**:SSH を使用してクラスターにアクセスするために必要な情報です。
     * **[クラスターのスケール設定]** では、クラスターに関連付けられているワーカー ノードの数を増やすことができます。
-    * **削除**: HDInsight クラスターを削除します。
+      * **[削除]**:HDInsight クラスターを削除します。
     
 
 ## <a name="customize-clusters"></a>クラスターのカスタマイズ
@@ -136,23 +136,23 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 ## <a name="next-steps"></a>次の手順
 HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックを参照してください。
 
-### <a name="hadoop-clusters"></a>Hadoop クラスター
-* [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hadoop/hdinsight-use-pig.md)
-* [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
+### <a name="apache-hadoop-clusters"></a>Apache Hadoop クラスター
+* [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
+* [HDInsight での Apache Hadoop MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a>HBase クラスター
-* [HDInsight での HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [HDInsight での HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
+### <a name="apache-hbase-clusters"></a>Apache HBase クラスター
+* [HDInsight での Apache HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [HDInsight での Apache HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="storm-clusters"></a>Storm クラスター
-* [HDInsight での Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
-* [HDInsight の Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
-* [HDInsight の Storm を使用したトポロジのデプロイと監視](storm/apache-storm-deploy-monitor-topology-linux.md)
+### <a name="apache-storm-clusters"></a>Apache Storm クラスター
+* [HDInsight での Apache Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
+* [HDInsight の Apache Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
+* [Deploy and monitor topologies with Apache Storm on HDInsight (HDInsight の Storm を使用したトポロジのデプロイと監視)](storm/apache-storm-deploy-monitor-topology-linux.md)
 
-### <a name="spark-clusters"></a>Spark クラスター
+### <a name="apache-spark-clusters"></a>Apache Spark クラスター
 * [Scala を使用してスタンドアロン アプリケーションを作成する](spark/apache-spark-create-standalone-application.md)
-* [Livy を使用して Spark クラスターでジョブをリモートで実行する](spark/apache-spark-livy-rest-interface.md)
-* [Spark と BI: HDInsight で BI ツールと Spark を使用した対話型データ分析の実行](spark/apache-spark-use-bi-tools.md)
-* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](spark/apache-spark-livy-rest-interface.md)
+* [Apache Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](spark/apache-spark-machine-learning-mllib-ipython.md)
 

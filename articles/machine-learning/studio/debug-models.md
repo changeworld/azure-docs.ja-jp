@@ -1,11 +1,11 @@
 ---
-title: Azure Machine Learning でモデルをデバッグする | Microsoft Docs
-description: モデルのトレーニングとモデルのスコア付け モジュールによって生成されたエラーを Azure Machine Learning でデバッグする方法。
+title: モデルをデバッグする - Azure Machine Learning Studio | Microsoft Docs
+description: モデルのトレーニングとモデルのスコア付け モジュールによって生成されたエラーを Azure Machine Learning Studio でデバッグする方法。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 629dc45e-ac1e-4b7d-b120-08813dc448be
 ms.service: machine-learning
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.openlocfilehash: 144edca6d2e6fc8d0d8e59e6cff1d3f37eb233aa
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0464dec9e747e57e4b95a691aeb5a0992cf8d9cc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834313"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268888"
 ---
-# <a name="debug-your-model-in-azure-machine-learning"></a>Azure Machine Learning でモデルをデバッグする
+# <a name="debug-your-model-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でモデルをデバッグする
 
 この記事では、モデルを実行したときに次の 2 つの障害が発生する場合の潜在的な理由について説明します。
 
 * [[モデルのトレーニング]][train-model] モジュールがエラーを生成する 
 * [[モデルのスコア付け]][score-model] モジュールから生成される結果が間違っている 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="train-model-module-produces-an-error"></a>[モデルのトレーニング] モジュールがエラーを生成する
 

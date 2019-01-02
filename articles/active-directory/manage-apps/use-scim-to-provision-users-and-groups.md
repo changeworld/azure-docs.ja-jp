@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: d99996bb4177a11342f0897d2cf69f82a5b81bf7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 87f5153ef71f74a0fa1a6be3c527fba03b65bf83
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721230"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095569"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -29,7 +29,7 @@ ms.locfileid: "44721230"
 Azure Active Directory (Azure AD) では、[Cross-Domain Identity Management (SCIM) 2.0 プロトコル仕様](https://tools.ietf.org/html/draft-ietf-scim-api-19)のインターフェイスを持つ Web サービスによってアクセスされるアプリケーションや ID ストアにユーザーやグループを自動的にプロビジョニングできます。 Azure Active Directory は、割り当てられたユーザーとグループを Web サービスに対して作成、変更、または削除するための要求を送信できます。 Web サービスは、これらの要求を、ターゲット ID ストアに対する操作に変換できます。 
 
 ![][0]
-*図 1: Azure Active Directory から Web サービスを介して ID ストアにプロビジョニングする*
+*図 1:Azure Active Directory から Web サービスを介して ID ストアにプロビジョニングする*
 
 この機能は、Azure AD で、「独自のアプリを持ち込む」機能と組み合わせて使用できます。 この機能により、SCIM Web サービスによってアクセスされるアプリケーションでシングル サインオンと自動ユーザー プロビジョニングが可能になります。
 
@@ -61,14 +61,14 @@ Azure AD は、[System for Cross-domain Identity Management 2 (SCIM)](https://to
 2. **[Azure Active Directory] > [エンタープライズ アプリケーション]** を参照し、**[新しいアプリケーション] > [すべて] > [ギャラリー以外のアプリケーション]** を選択します。
 3. アプリケーションの名前を入力し、**[追加]** アイコンをクリックしてアプリ オブジェクトを作成します。
     
-  ![][1]
-  *図 2: Azure AD アプリケーション ギャラリーの使用*
+   ![][1]
+   *図 2:Azure AD アプリケーション ギャラリーの使用*
     
 4. 結果の画面で、左側の列の **[プロビジョニング]** タブを選択します。
 5. **[プロビジョニング モード]** メニューの **[自動]** を選択します。
     
-  ![][2]
-  *図 3: Azure ポータルでのプロビジョニングの構成*
+   ![][2]
+   *図 3:Azure portal でのプロビジョニングの構成*
     
 6. **[テナント URL]** フィールドに、アプリケーションの SCIM エンドポイントの URL を入力します。 例: https://api.contoso.com/scim/v2/
 7. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD は各要求に Azure AD から発行された OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリケーションは、この Azure AD が発行したトークンを検証できます。
@@ -86,8 +86,8 @@ Azure AD は、[System for Cross-domain Identity Management 2 (SCIM)](https://to
 
 初期同期が開始されたら、**[監査ログ]** タブを使用して進行状況を監視できます。このタブには、プロビジョニング サービスがアプリに対して実行しているすべてのアクションが表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](check-status-user-account-provisioning.md)」をご覧ください。
 
->[!NOTE]
->初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 
+> [!NOTE]
+> 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 
 
 
 ## <a name="building-your-own-provisioning-solution-for-any-application"></a>任意のアプリケーション用の独自のプロビジョニング ソリューションの構築
@@ -119,15 +119,19 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 2. パッケージを解凍し、Windows コンピューターの C:\AzureAD-BYOA-Provisioning-Samples\ などの場所に配置します。
 3. このフォルダーで、Visual Studio の FileProvisioning\Host\FileProvisioningService.csproj プロジェクトを起動します。
 4. **[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に選択し、FileProvisioningService プロジェクトに対して下記のコマンドを実行して、ソリューションの参照を解決します。
-  ```` 
-   Update-Package -Reinstall
-  ````
+
+   ```
+    Update-Package -Reinstall
+   ```
+
 5. FileProvisioningService プロジェクトをビルドします。
 6. Windows のコマンド プロンプト アプリケーションを (管理者として) 起動し、**cd** コマンドを使用してディレクトリを **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug** フォルダーに変更します。
 7. 次のコマンドを実行します。その際、<ip-address> を Windows コンピューターの IP アドレスまたはドメイン名に置き換えます。
-  ````   
-   FileSvc.exe http://<ip-address>:9000 TargetFile.csv
-  ````
+
+   ```
+    FileSvc.exe http://<ip-address>:9000 TargetFile.csv
+   ```
+
 8. **[Windows の設定] の [ネットワークとインターネット]** 設定で、**[Windows ファイアウォール]、[詳細設定]** の順に選択し、ポート 9000 への入力方向のアクセスを許可する**受信規則**を作成します。
 9. Windows コンピューターがルーターの内側にある場合は、インターネットに公開されているルーターのポート 9000 と Windows コンピューターのポート 9000 の間でネットワーク アクセス変換を実行するようにルーターを構成する必要があります。 この構成は、Azure AD がクラウド上にあるこのエンドポイントにアクセスするために必要です。
 
@@ -139,8 +143,8 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 4. 結果の画面で、左側の列の **[プロビジョニング]** タブを選択します。
 5. **[プロビジョニング モード]** メニューの **[自動]** を選択します。
     
-  ![][2]
-  *図 4: Azure ポータルでのプロビジョニングの構成*
+   ![][2]
+   *図 4:Azure portal でのプロビジョニングの構成*
     
 6. **[テナント URL]** フィールドに、インターネットに公開されている URL と SCIM エンドポイントのポートを入力します。 入力内容は、 http://testmachine.contoso.com:9000 または http://<IP アドレス>:9000/ のようになります。<IP アドレス> は、インターネットに公開されている IP アドレスです。  
 7. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD は各要求に Azure AD から発行された OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリケーションは、この Azure AD が発行したトークンを検証できます。
@@ -159,11 +163,11 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 ### <a name="development-libraries"></a>開発ライブラリ
 SCIM 仕様に準拠する独自の Web サービスを開発するにあたっては、開発プロセスの時間を短縮できるように、まずは Microsoft が提供する以下のライブラリについて理解してください。 
 
-1. 共通言語基盤 (CLI) ライブラリは、C# など、この基盤をベースにした言語で使用できます。 これらのライブラリの 1 つである [Microsoft.SystemForCrossDomainIdentityManagement.Service](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/) は、次の図に示すインターフェイス Microsoft.SystemForCrossDomainIdentityManagement.IProvider を宣言します。このライブラリを使用する開発者は、通常はプロバイダーとして参照できるクラスを使用してこのインターフェイスを実装します。 開発者は、これらのライブラリを使用して、SCIM 仕様に準拠する Web サービスをデプロイできます。 Web サービスは、インターネット インフォメーション サービス内でホストすることも、実行可能な共通言語基盤アセンブリ内でホストすることもできます。 要求は、プロバイダーのメソッドの呼び出しに変換されます。開発者は、これを任意の ID ストアに作用するようにプログラムできます。
+1. 共通言語基盤 (CLI) ライブラリは、C# など、この基盤をベースにした言語で使用できます。 これらのライブラリの 1 つ [Microsoft.SystemForCrossDomainIdentityManagement.Service](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/) では、次の図に示すように、Microsoft.SystemForCrossDomainIdentityManagement.IProvider インターフェイスが宣言されています。開発者は、このライブラリを使用して、プロバイダーと総称されるクラスにこのインターフェイスを実装できます。 開発者は、これらのライブラリを使用して、SCIM 仕様に準拠する Web サービスをデプロイできます。 Web サービスは、インターネット インフォメーション サービス内でホストすることも、実行可能な共通言語基盤アセンブリ内でホストすることもできます。 要求は、プロバイダーのメソッドの呼び出しに変換されます。開発者は、これを任意の ID ストアに作用するようにプログラムできます。
   
-  ![][3]
+   ![][3]
   
-2. [Express ルート ハンドラー](http://expressjs.com/guide/routing.html)は、node.js Web サービスに対する (SCIM 仕様で定義された) 呼び出しを表す node.js 要求オブジェクトの解析に使用できます。   
+2. [Express ルート ハンドラー](https://expressjs.com/guide/routing.html)は、node.js Web サービスに対する (SCIM 仕様で定義された) 呼び出しを表す node.js 要求オブジェクトの解析に使用できます。   
 
 ### <a name="building-a-custom-scim-endpoint"></a>カスタム SCIM エンドポイントの構築
 開発者は、CLI ライブラリを使用して、共通言語基盤の実行可能アセンブリ内、またはインターネット インフォメーション サービス内にサービスをホストできます。 アドレス http://localhost:9000: にある実行可能アセンブリ内にサービスをホストするためのサンプル コードを次に示します。 
@@ -292,54 +296,54 @@ Microsoft が提供する CLA ライブラリを使用して SCIM サービス�
 
 1. プロバイダーに、Microsoft.SystemForCrossDomainIdentityManagement.IProvider.StartupBehavior プロパティを実装します。そのために、サービスが開始されるたびに呼び出されるメソッドを返すように設定します。 
 
-  ````
-    public override Action\<Owin.IAppBuilder, System.Web.Http.HttpConfiguration.HttpConfiguration\> StartupBehavior
-    {
-      get
-      {
-        return this.OnServiceStartup;
-      }
-    }
+   ```
+     public override Action\<Owin.IAppBuilder, System.Web.Http.HttpConfiguration.HttpConfiguration\> StartupBehavior
+     {
+       get
+       {
+         return this.OnServiceStartup;
+       }
+     }
 
-    private void OnServiceStartup(
-      Owin.IAppBuilder applicationBuilder,  // Defined in Owin.dll.  
-      System.Web.Http.HttpConfiguration configuration)  // Defined in System.Web.Http.dll.  
-    {
-    }
-  ````
+     private void OnServiceStartup(
+       Owin.IAppBuilder applicationBuilder,  // Defined in Owin.dll.  
+       System.Web.Http.HttpConfiguration configuration)  // Defined in System.Web.Http.dll.  
+     {
+     }
+   ```
 
 2. そのメソッドに次のコードを追加します。このコードによって、Azure AD の Graph Web サービスにアクセスするために、指定されたテナントの代わりに Azure Active Directory によって発行されたトークンが、サービスのエンドポイントに対するすべての要求に含まれていると認証されます。 
 
-  ````
-    private void OnServiceStartup(
-      Owin.IAppBuilder applicationBuilder IAppBuilder applicationBuilder, 
-      System.Web.Http.HttpConfiguration HttpConfiguration configuration)
-    {
-      // IFilter is defined in System.Web.Http.dll.  
-      System.Web.Http.Filters.IFilter authorizationFilter = 
-        new System.Web.Http.AuthorizeAttribute(); // Defined in System.Web.Http.dll.configuration.Filters.Add(authorizationFilter);
+   ```
+     private void OnServiceStartup(
+       Owin.IAppBuilder applicationBuilder IAppBuilder applicationBuilder, 
+       System.Web.Http.HttpConfiguration HttpConfiguration configuration)
+     {
+       // IFilter is defined in System.Web.Http.dll.  
+       System.Web.Http.Filters.IFilter authorizationFilter = 
+         new System.Web.Http.AuthorizeAttribute(); // Defined in System.Web.Http.dll.configuration.Filters.Add(authorizationFilter);
 
-      // SystemIdentityModel.Tokens.TokenValidationParameters is defined in    
-      // System.IdentityModel.Token.Jwt.dll.
-      SystemIdentityModel.Tokens.TokenValidationParameters tokenValidationParameters =     
-        new TokenValidationParameters()
-        {
-          ValidAudience = "00000002-0000-0000-c000-000000000000"
-        };
+       // SystemIdentityModel.Tokens.TokenValidationParameters is defined in    
+       // System.IdentityModel.Token.Jwt.dll.
+       SystemIdentityModel.Tokens.TokenValidationParameters tokenValidationParameters =     
+         new TokenValidationParameters()
+         {
+           ValidAudience = "00000002-0000-0000-c000-000000000000"
+         };
 
-      // WindowsAzureActiveDirectoryBearerAuthenticationOptions is defined in 
-      // Microsoft.Owin.Security.ActiveDirectory.dll
-      Microsoft.Owin.Security.ActiveDirectory.
-      WindowsAzureActiveDirectoryBearerAuthenticationOptions authenticationOptions =
-        new WindowsAzureActiveDirectoryBearerAuthenticationOptions()    {
-        TokenValidationParameters = tokenValidationParameters,
-        Tenant = "03F9FCBC-EA7B-46C2-8466-F81917F3C15E" // Substitute the appropriate tenant’s 
-                                                      // identifier for this one.  
-      };
+       // WindowsAzureActiveDirectoryBearerAuthenticationOptions is defined in 
+       // Microsoft.Owin.Security.ActiveDirectory.dll
+       Microsoft.Owin.Security.ActiveDirectory.
+       WindowsAzureActiveDirectoryBearerAuthenticationOptions authenticationOptions =
+         new WindowsAzureActiveDirectoryBearerAuthenticationOptions()    {
+         TokenValidationParameters = tokenValidationParameters,
+         Tenant = "03F9FCBC-EA7B-46C2-8466-F81917F3C15E" // Substitute the appropriate tenant’s 
+                                                       // identifier for this one.  
+       };
 
-      applicationBuilder.UseWindowsAzureActiveDirectoryBearerAuthentication(authenticationOptions);
-    }
-  ````
+       applicationBuilder.UseWindowsAzureActiveDirectoryBearerAuthentication(authenticationOptions);
+     }
+   ```
 
 
 ## <a name="user-and-group-schema"></a>ユーザーとグループのスキーマ
@@ -349,7 +353,8 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
 
 グループ リソースは、スキーマ識別子 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group で識別されます。  Azure Active Directory 内のグループの属性を http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group リソースの属性に対応付ける既定のマッピングを下記の表 2 に示します。  
 
-### <a name="table-1-default-user-attribute-mapping"></a>表 1: 既定のユーザー属性マッピング
+### <a name="table-1-default-user-attribute-mapping"></a>表 1:既定のユーザー属性マッピング
+
 | Azure Active Directory ユーザー | "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
 | IsSoftDeleted |active |
@@ -370,7 +375,8 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
 | telephone-Number |phoneNumbers[type eq "work"].value |
 | user-PrincipalName |userName |
 
-### <a name="table-2-default-group-attribute-mapping"></a>表 2: 既定のグループ属性マッピング
+### <a name="table-2-default-group-attribute-mapping"></a>表 2:既定のグループ属性マッピング
+
 | Azure Active Directory グループ | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
 | --- | --- |
 | displayName |externalId |
@@ -384,301 +390,325 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
 次の図は、別の ID ストア内にあるユーザーのライフサイクルを管理するために Azure Active Directory から SCIM サービスに送信されるメッセージを示しています。 また、この図は、そのようなサービスの作成用に Microsoft が提供する CLI ライブラリを使用して実装された SCIM サービスが、要求をプロバイダーのメソッドの呼び出しに変換する方法も示しています。  
 
 ![][4]
-*図 5: ユーザーのプロビジョニングとプロビジョニング解除のシーケンス*
+*図 5:ユーザーのプロビジョニングとプロビジョニング解除のシーケンス*
 
 1. Azure Active Directory は、Azure AD 内のユーザーの mailNickname 属性値に一致する externalId 属性値を持つユーザーをサービスに照会します。 クエリは次の例のようなハイパーテキスト転送プロトコル (HTTP) 要求として表現されます。jyoung は Azure Active Directory 内のユーザーの mailNickname 例です。 
-  ````
-    GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
-    Authorization: Bearer ...
-  ````
-  サービスの作成時に SCIM サービスの実装用に Microsoft が提供する共通言語基盤ライブラリを使用した場合、要求はサービスのプロバイダーの Query メソッドの呼び出しに変換されます。  このメソッドのシグネチャを次に示します。 
-  ````
-    // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
-    // Microsoft.SystemForCrossDomainIdentityManagement.Resource is defined in 
-    // Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
-    // Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters is defined in 
-    // Microsoft.SystemForCrossDomainIdentityManagement.Protocol.  
 
-    System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource[]> Query(
-      Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters parameters, 
-      string correlationIdentifier);
-  ````
-  次に示すのは、Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters インターフェイスの定義です。 
-  ````
-    public interface IQueryParameters: 
-      Microsoft.SystemForCrossDomainIdentityManagement.IRetrievalParameters
-    {
-        System.Collections.Generic.IReadOnlyCollection <Microsoft.SystemForCrossDomainIdentityManagement.IFilter> AlternateFilters 
-        { get; }
-    }
+   ```
+     GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
+     Authorization: Bearer ...
+   ```
 
-    public interface Microsoft.SystemForCrossDomainIdentityManagement.IRetrievalParameters
-    {
-      system.Collections.Generic.IReadOnlyCollection<string> ExcludedAttributePaths 
-      { get; }
-      System.Collections.Generic.IReadOnlyCollection<string> RequestedAttributePaths 
-      { get; }
-      string SchemaIdentifier 
-      { get; }
-    }
+   サービスの作成時に SCIM サービスの実装用に Microsoft が提供する共通言語基盤ライブラリを使用した場合、要求はサービスのプロバイダーの Query メソッドの呼び出しに変換されます。  このメソッドのシグネチャを次に示します。 
 
-    public interface Microsoft.SystemForCrossDomainIdentityManagement.IFilter
-    {
-        Microsoft.SystemForCrossDomainIdentityManagement.IFilter AdditionalFilter 
-          { get; set; }
-        string AttributePath 
-          { get; } 
-        Microsoft.SystemForCrossDomainIdentityManagement.ComparisonOperator FilterOperator 
-          { get; }
-        string ComparisonValue 
-          { get; }
-    }
+   ```
+     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+     // Microsoft.SystemForCrossDomainIdentityManagement.Resource is defined in 
+     // Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
+     // Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters is defined in 
+     // Microsoft.SystemForCrossDomainIdentityManagement.Protocol.  
+ 
+     System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource[]>  Query(
+       Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters parameters, 
+       string correlationIdentifier);
+   ````
 
-    public enum Microsoft.SystemForCrossDomainIdentityManagement.ComparisonOperator
-    {
-        Equals
-    }
-  ````
-  externalId 属性に特定の値を持つユーザーを照会する次の例では、Query メソッドに渡される引数の値は次のようになります。 
-  * parameters.AlternateFilters.Count: 1
-  * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
-  * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
-  * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
-  * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
+   次に示すのは、Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters インターフェイスの定義です。 
+
+   ```
+     public interface IQueryParameters: 
+       Microsoft.SystemForCrossDomainIdentityManagement.IRetrievalParameters
+     {
+         System.Collections.Generic.IReadOnlyCollection  <Microsoft.SystemForCrossDomainIdentityManagement.IFilter> AlternateFilters 
+         { get; }
+     }
+
+     public interface Microsoft.SystemForCrossDomainIdentityManagement.IRetrievalParameters
+     {
+       system.Collections.Generic.IReadOnlyCollection<string> ExcludedAttributePaths 
+       { get; }
+       System.Collections.Generic.IReadOnlyCollection<string> RequestedAttributePaths 
+       { get; }
+       string SchemaIdentifier 
+       { get; }
+     }
+
+     public interface Microsoft.SystemForCrossDomainIdentityManagement.IFilter
+     {
+         Microsoft.SystemForCrossDomainIdentityManagement.IFilter AdditionalFilter 
+           { get; set; }
+         string AttributePath 
+           { get; } 
+         Microsoft.SystemForCrossDomainIdentityManagement.ComparisonOperator FilterOperator 
+           { get; }
+         string ComparisonValue 
+           { get; }
+     }
+
+     public enum Microsoft.SystemForCrossDomainIdentityManagement.ComparisonOperator
+     {
+         Equals
+     }
+   ```
+
+   externalId 属性に特定の値を持つユーザーを照会する次の例では、Query メソッドに渡される引数の値は次のようになります。 
+   * parameters.AlternateFilters.Count:1
+   * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
+   * parameters.AlternateFilters.ElementAt(0).ComparisonOperator:ComparisonOperator.Equals
+   * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
+   * correlationIdentifier:System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
 
 2. ユーザーの mailNickname 属性値に一致する externalId 属性値を持つユーザーを Web サービスに照会したときに、応答でユーザーが返されなかった場合、Azure Active Directory は、Azure Active Directory 内のユーザーに対応するユーザーをプロビジョニングするようにサービスに要求します。  このような要求の例を次に示します。 
-  ````
-    POST https://.../scim/Users HTTP/1.1
-    Authorization: Bearer ...
-    Content-type: application/scim+json
-    {
-      "schemas":
-      [
-        "urn:ietf:params:scim:schemas:core:2.0:User",
-        "urn:ietf:params:scim:schemas:extension:enterprise:2.0User"],
-      "externalId":"jyoung",
-      "userName":"jyoung",
-      "active":true,
-      "addresses":null,
-      "displayName":"Joy Young",
-      "emails": [
-        {
-          "type":"work",
-          "value":"jyoung@Contoso.com",
-          "primary":true}],
-      "meta": {
-        "resourceType":"User"},
-       "name":{
-        "familyName":"Young",
-        "givenName":"Joy"},
-      "phoneNumbers":null,
-      "preferredLanguage":null,
-      "title":null,
-      "department":null,
-      "manager":null}
-  ````
-  要求は、SCIM サービスの実装用に Microsoft が提供する共通言語基盤ライブラリによって、サービスのプロバイダーの Create メソッドの呼び出しに変換されます。  Create メソッドには、次のようなシグネチャがあります。 
-  ````
-    // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
-    // Microsoft.SystemForCrossDomainIdentityManagement.Resource is defined in 
-    // Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
 
-    System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource> Create(
-      Microsoft.SystemForCrossDomainIdentityManagement.Resource resource, 
-      string correlationIdentifier);
-  ````
-  ユーザーをプロビジョニングする要求では、resource 引数の値は、Microsoft.SystemForCrossDomainIdentityManagement. Core2EnterpriseUser クラスのインスタンスになります。これは Microsoft.SystemForCrossDomainIdentityManagement.Schemas ライブラリに定義されています。  ユーザーをプロビジョニングする要求が成功すると、メソッドの実装は、Microsoft.SystemForCrossDomainIdentityManagement. Core2EnterpriseUser クラスのインスタンスを返し、Identifier プロパティの値に新たにプロビジョニングされたユーザーの一意識別子を設定すると想定されています。  
+   ```
+     POST https://.../scim/Users HTTP/1.1
+     Authorization: Bearer ...
+     Content-type: application/scim+json
+     {
+       "schemas":
+       [
+         "urn:ietf:params:scim:schemas:core:2.0:User",
+         "urn:ietf:params:scim:schemas:extension:enterprise:2.0User"],
+       "externalId":"jyoung",
+       "userName":"jyoung",
+       "active":true,
+       "addresses":null,
+       "displayName":"Joy Young",
+       "emails": [
+         {
+           "type":"work",
+           "value":"jyoung@Contoso.com",
+           "primary":true}],
+       "meta": {
+         "resourceType":"User"},
+        "name":{
+         "familyName":"Young",
+         "givenName":"Joy"},
+       "phoneNumbers":null,
+       "preferredLanguage":null,
+       "title":null,
+       "department":null,
+       "manager":null}
+   ```
+
+   要求は、SCIM サービスの実装用に Microsoft が提供する共通言語基盤ライブラリによって、サービスのプロバイダーの Create メソッドの呼び出しに変換されます。  Create メソッドには、次のようなシグネチャがあります。 
+
+   ```
+     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+     // Microsoft.SystemForCrossDomainIdentityManagement.Resource is defined in 
+     // Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
+ 
+     System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource> Create (
+       Microsoft.SystemForCrossDomainIdentityManagement.Resource resource, 
+       string correlationIdentifier);
+   ```
+
+   ユーザーをプロビジョニングする要求では、resource 引数の値は、Microsoft.SystemForCrossDomainIdentityManagement. Core2EnterpriseUser クラスのインスタンスになります。これは Microsoft.SystemForCrossDomainIdentityManagement.Schemas ライブラリに定義されています。  ユーザーをプロビジョニングする要求が成功すると、メソッドの実装は、Microsoft.SystemForCrossDomainIdentityManagement. Core2EnterpriseUser クラスのインスタンスを返し、Identifier プロパティの値に新たにプロビジョニングされたユーザーの一意識別子を設定すると想定されています。  
 
 3. SCIM によってアクセスされる ID ストアに存在することがわかっているユーザーを更新するために、Azure Active Directory は、次のような要求を使用して、そのユーザーの現在の状態をサービスに要求して処理を続行します。 
-  ````
-    GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
-    Authorization: Bearer ...
-  ````
-  サービスの作成時に SCIM サービスの実装用に Microsoft が提供する共通言語基盤ライブラリを使用した場合、要求はサービスのプロバイダーの Retrieve メソッドの呼び出しに変換されます。  Retrieve メソッドのシグネチャを次に示します。 
-  ````
-    // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
-    // Microsoft.SystemForCrossDomainIdentityManagement.Resource and 
-    // Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters 
-    // are defined in Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
-    System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource> 
-       Retrieve(
-         Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters 
-           parameters, 
-           string correlationIdentifier);
 
-    public interface 
-      Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters:   
-        IRetrievalParameters
-        {
-          Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier 
-            ResourceIdentifier 
-              { get; }
-    }
-    public interface Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier
-    {
-        string Identifier 
-          { get; set; }
-        string Microsoft.SystemForCrossDomainIdentityManagement.SchemaIdentifier 
-          { get; set; }
-    }
-  ````
-  ユーザーの現在の状態を取得する要求の例では、parameters 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
+   ```
+     GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+     Authorization: Bearer ...
+   ```
+
+   サービスの作成時に SCIM サービスの実装用に Microsoft が提供する共通言語基盤ライブラリを使用した場合、要求はサービスのプロバイダーの Retrieve メソッドの呼び出しに変換されます。  Retrieve メソッドのシグネチャを次に示します。 
+
+    ```
+     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+     // Microsoft.SystemForCrossDomainIdentityManagement.Resource and 
+     // Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters 
+     // are defined in Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
+     System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource> 
+        Retrieve(
+          Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters 
+            parameters, 
+            string correlationIdentifier);
+ 
+     public interface 
+       Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters:   
+         IRetrievalParameters
+         {
+           Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier 
+             ResourceIdentifier 
+               { get; }
+     }
+     public interface Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier
+     {
+         string Identifier 
+           { get; set; }
+         string Microsoft.SystemForCrossDomainIdentityManagement.SchemaIdentifier 
+           { get; set; }
+     }
+   ```
+
+   ユーザーの現在の状態を取得する要求の例では、parameters 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
   
-  * Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
-  * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+   * Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+   * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 4. 参照属性を更新する場合、Azure Active Directory は、サービスによってアクセスされる ID ストア内の参照属性の現在の値が Azure Active Directory 内のその属性の値と既に一致しているかどうかを判別するために、サービスにクエリを実行します。 ユーザーの場合、この方法で現在の値を照会する属性は、manager 属性のみです。 特定のユーザー オブジェクトの manager 属性に特定の値があるかどうかを判別する要求の例を次に示します。 
-  ````
-    GET ~/scim/Users?filter=id eq 54D382A4-2050-4C03-94D1-E769F1D15682 and manager eq 2819c223-7f76-453a-919d-413861904646&attributes=id HTTP/1.1
-    Authorization: Bearer ...
-  ````
-  属性のクエリ パラメーター "ID" は、filter クエリ パラメーターの値として指定された式を満たすユーザー オブジェクトが存在する場合は、サービスが (そのリソースの "ID" 属性の値のみが含まれた) "urn:ietf:params:scim:schemas:core:2.0:User" リソースまたは "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" リソースで応答すると想定されていることを示しています。  **ID** 属性の値は要求元には既知です。 それは filter クエリ パラメーターの値に含まれています。これを要求する目的は、このようなオブジェクトが存在するかどうかを示す指標としてフィルター式を満たすリソースの最小表現を要求することにあります。   
 
-  サービスの作成時に SCIM サービスの実装用に Microsoft が提供する共通言語基盤ライブラリを使用した場合、要求はサービスのプロバイダーの Query メソッドの呼び出しに変換されます。 parameters 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
+   ```
+     GET ~/scim/Users?filter=id eq 54D382A4-2050-4C03-94D1-E769F1D15682 and manager eq  2819c223-7f76-453a-919d-413861904646&attributes=id HTTP/1.1
+     Authorization: Bearer ...
+   ```
+
+   属性のクエリ パラメーター "ID" は、filter クエリ パラメーターの値として指定された式を満たすユーザー オブジェクトが存在する場合は、サービスが (そのリソースの "ID" 属性の値のみが含まれた) "urn:ietf:params:scim:schemas:core:2.0:User" リソースまたは "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" リソースで応答すると想定されていることを示しています。  **ID** 属性の値は要求元には既知です。 それは filter クエリ パラメーターの値に含まれています。これを要求する目的は、このようなオブジェクトが存在するかどうかを示す指標としてフィルター式を満たすリソースの最小表現を要求することにあります。   
+
+   サービスの作成時に SCIM サービスの実装用に Microsoft が提供する共通言語基盤ライブラリを使用した場合、要求はサービスのプロバイダーの Query メソッドの呼び出しに変換されます。 parameters 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
   
-  * parameters.AlternateFilters.Count: 2
-  * parameters.AlternateFilters.ElementAt(x).AttributePath: "ID"
-  * parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
-  * parameters.AlternateFilter.ElementAt(x).ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
-  * parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
-  * parameters.AlternateFilters.ElementAt(y).ComparisonOperator: ComparisonOperator.Equals
-  * parameters.AlternateFilter.ElementAt(y).ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
-  * parameters.RequestedAttributePaths.ElementAt(0): "ID"
-  * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+   * parameters.AlternateFilters.Count:2
+   * parameters.AlternateFilters.ElementAt(x).AttributePath:"ID"
+   * parameters.AlternateFilters.ElementAt(x).ComparisonOperator:ComparisonOperator.Equals
+   * parameters.AlternateFilter.ElementAt(x).ComparisonValue:"54D382A4-2050-4C03-94D1-E769F1D15682"
+   * parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
+   * parameters.AlternateFilters.ElementAt(y).ComparisonOperator:ComparisonOperator.Equals
+   * parameters.AlternateFilter.ElementAt(y).ComparisonValue:"2819c223-7f76-453a-919d-413861904646"
+   * parameters.RequestedAttributePaths.ElementAt(0):"ID"
+   * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-  上記のインデックスの値は、filter クエリ パラメーターの式の順序に応じて、x の値が 0、y の値が 1 になるか、x の値が 1、y の値が 0 になります。   
+   上記のインデックスの値は、filter クエリ パラメーターの式の順序に応じて、x の値が 0、y の値が 1 になるか、x の値が 1、y の値が 0 になります。   
 
 5. Azure Active Directory から SCIM サービスに対するユーザーを更新する要求の例を次に示します。 
-  ````
-    PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
-    Authorization: Bearer ...
-    Content-type: application/scim+json
-    {
-      "schemas": 
-      [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"],
-      "Operations":
-      [
-        {
-          "op":"Add",
-          "path":"manager",
-          "value":
-            [
-              {
-                "$ref":"http://.../scim/Users/2819c223-7f76-453a-919d-413861904646",
-                "value":"2819c223-7f76-453a-919d-413861904646"}]}]}
-  ````
-  要求は、SCIM サービスの実装用に Microsoft 共通言語基盤ライブラリによって、サービスのプロバイダーの Update メソッドの呼び出しに変換されます。 Update メソッドのシグネチャを次に示します。 
-  ````
-    // System.Threading.Tasks.Tasks and 
-    // System.Collections.Generic.IReadOnlyCollection<T>
-    // are defined in mscorlib.dll.  
-    // Microsoft.SystemForCrossDomainIdentityManagement.IPatch, 
-    // Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase, 
-    // Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier, 
-    // Microsoft.SystemForCrossDomainIdentityManagement.PatchOperation, 
-    // Microsoft.SystemForCrossDomainIdentityManagement.OperationName, 
-    // Microsoft.SystemForCrossDomainIdentityManagement.IPath and 
-    // Microsoft.SystemForCrossDomainIdentityManagement.OperationValue 
-    // are all defined in Microsoft.SystemForCrossDomainIdentityManagement.Protocol. 
 
-    System.Threading.Tasks.Task Update(
-      Microsoft.SystemForCrossDomainIdentityManagement.IPatch patch, 
-      string correlationIdentifier);
+   ```
+     PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+     Authorization: Bearer ...
+     Content-type: application/scim+json
+     {
+       "schemas": 
+       [
+         "urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+       "Operations":
+       [
+         {
+           "op":"Add",
+           "path":"manager",
+           "value":
+             [
+               {
+                 "$ref":"http://.../scim/Users/2819c223-7f76-453a-919d-413861904646",
+                 "value":"2819c223-7f76-453a-919d-413861904646"}]}]}
+   ```
 
-    public interface Microsoft.SystemForCrossDomainIdentityManagement.IPatch
-    {
-    Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase 
-      PatchRequest 
-        { get; set; }
-    Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier 
-      ResourceIdentifier 
-        { get; set; }        
-    }
+   要求は、SCIM サービスの実装用に Microsoft 共通言語基盤ライブラリによって、サービスのプロバイダーの Update メソッドの呼び出しに変換されます。 Update メソッドのシグネチャを次に示します。 
 
-    public class PatchRequest2: 
-      Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase
-    {
-    public System.Collections.Generic.IReadOnlyCollection
-      <Microsoft.SystemForCrossDomainIdentityManagement.PatchOperation> 
-        Operations
-        { get;}
+   ```
+     // System.Threading.Tasks.Tasks and 
+     // System.Collections.Generic.IReadOnlyCollection<T>
+     // are defined in mscorlib.dll.  
+     // Microsoft.SystemForCrossDomainIdentityManagement.IPatch, 
+     // Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase, 
+     // Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier, 
+     // Microsoft.SystemForCrossDomainIdentityManagement.PatchOperation, 
+     // Microsoft.SystemForCrossDomainIdentityManagement.OperationName, 
+     // Microsoft.SystemForCrossDomainIdentityManagement.IPath and 
+     // Microsoft.SystemForCrossDomainIdentityManagement.OperationValue 
+     // are all defined in Microsoft.SystemForCrossDomainIdentityManagement.Protocol. 
 
-    public void AddOperation(
-      Microsoft.SystemForCrossDomainIdentityManagement.PatchOperation operation);
-    }
+     System.Threading.Tasks.Task Update(
+       Microsoft.SystemForCrossDomainIdentityManagement.IPatch patch, 
+       string correlationIdentifier);
 
-    public class PatchOperation
-    {
-    public Microsoft.SystemForCrossDomainIdentityManagement.OperationName 
-      Name
-      { get; set; }
+     public interface Microsoft.SystemForCrossDomainIdentityManagement.IPatch
+     {
+     Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase 
+       PatchRequest 
+         { get; set; }
+     Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier 
+       ResourceIdentifier 
+         { get; set; }        
+     }
 
-    public Microsoft.SystemForCrossDomainIdentityManagement.IPath 
-      Path
-      { get; set; }
+     public class PatchRequest2: 
+       Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase
+     {
+     public System.Collections.Generic.IReadOnlyCollection
+       <Microsoft.SystemForCrossDomainIdentityManagement.PatchOperation> 
+         Operations
+         { get;}
 
-    public System.Collections.Generic.IReadOnlyCollection
-      <Microsoft.SystemForCrossDomainIdentityManagement.OperationValue> Value
-      { get; }
+     public void AddOperation(
+       Microsoft.SystemForCrossDomainIdentityManagement.PatchOperation operation);
+     }
 
-    public void AddValue(
-      Microsoft.SystemForCrossDomainIdentityManagement.OperationValue value);
-    }
+     public class PatchOperation
+     {
+     public Microsoft.SystemForCrossDomainIdentityManagement.OperationName 
+       Name
+       { get; set; }
 
-    public enum OperationName
-    {
-      Add,
-      Remove,
-      Replace
-    }
+     public Microsoft.SystemForCrossDomainIdentityManagement.IPath 
+       Path
+       { get; set; }
 
-    public interface IPath
-    {
-      string AttributePath { get; }
-      System.Collections.Generic.IReadOnlyCollection<IFilter> SubAttributes { get; }
-      Microsoft.SystemForCrossDomainIdentityManagement.IPath ValuePath { get; }
-    }
+     public System.Collections.Generic.IReadOnlyCollection
+       <Microsoft.SystemForCrossDomainIdentityManagement.OperationValue> Value
+       { get; }
 
-    public class OperationValue
-    {
-      public string Reference
-      { get; set; }
+     public void AddValue(
+       Microsoft.SystemForCrossDomainIdentityManagement.OperationValue value);
+     }
 
-      public string Value
-      { get; set; }
-    }
-  ````
+     public enum OperationName
+     {
+       Add,
+       Remove,
+       Replace
+     }
+
+     public interface IPath
+     {
+       string AttributePath { get; }
+       System.Collections.Generic.IReadOnlyCollection<IFilter> SubAttributes { get; }
+       Microsoft.SystemForCrossDomainIdentityManagement.IPath ValuePath { get; }
+     }
+
+     public class OperationValue
+     {
+       public string Reference
+       { get; set; }
+
+       public string Value
+       { get; set; }
+     }
+   ```
+
     ユーザーを更新する要求の例では、patch 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
   
-  * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
-  * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
-  * (PatchRequest as PatchRequest2).Operations.Count: 1
-  * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName: OperationName.Add
-  * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Path.AttributePath: "manager"
-  * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count: 1
-  * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
-  * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value: 2819c223-7f76-453a-919d-413861904646
+   * ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+   * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+   * (PatchRequest as PatchRequest2).Operations.Count:1
+   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName:OperationName.Add
+   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Path.AttributePath: "manager"
+   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count:1
+   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
+   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value:2819c223-7f76-453a-919d-413861904646
 
 6. SCIM サービスによってアクセスされる ID ストアからユーザーのプロビジョニングを解除するために、Azure AD は次のような要求を送信します。 
-  ````
-    DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
-    Authorization: Bearer ...
-  ````
-  サービスの作成時に SCIM サービスの実装用に Microsoft が提供する共通言語基盤ライブラリを使用した場合、要求はサービスのプロバイダーの Delete メソッドの呼び出しに変換されます。   このメソッドのシグネチャを次に示します。 
-  ````
-    // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
-    // Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier, 
-    // is defined in Microsoft.SystemForCrossDomainIdentityManagement.Protocol. 
-    System.Threading.Tasks.Task Delete(
-      Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier  
-        resourceIdentifier, 
-      string correlationIdentifier);
-  ````
-  ユーザーのプロビジョニングを解除する要求の例では、resourceIdentifier 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
-  
-  * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
-  * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+
+   ```
+     DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+     Authorization: Bearer ...
+   ```
+
+   サービスの作成時に SCIM サービスの実装用に Microsoft が提供する共通言語基盤ライブラリを使用した場合、要求はサービスのプロバイダーの Delete メソッドの呼び出しに変換されます。   このメソッドのシグネチャを次に示します。 
+
+   ```
+     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+     // Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier, 
+     // is defined in Microsoft.SystemForCrossDomainIdentityManagement.Protocol. 
+     System.Threading.Tasks.Task Delete(
+       Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier  
+         resourceIdentifier, 
+       string correlationIdentifier);
+   ```
+
+   ユーザーのプロビジョニングを解除する要求の例では、resourceIdentifier 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
+
+   * ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+   * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="group-provisioning-and-de-provisioning"></a>グループのプロビジョニングとプロビジョニング解除
 次の図は、別の ID ストア内にあるグループのライフサイクルを管理するために Azure AD から SCIM サービスに送信されるメッセージを示しています。  これらのメッセージは、ユーザーの場合のメッセージと次の 3 つの点で異なっています。 
@@ -688,7 +718,7 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
 * 参照属性に特定の値があるかどうかを判別する要求は、members 属性に関する要求になります。  
 
 ![][5]
-*図 6: グループのプロビジョニングとプロビジョニング解除のシーケンス*
+*図 6:グループのプロビジョニングとプロビジョニング解除のシーケンス*
 
 ## <a name="related-articles"></a>関連記事
 * [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)

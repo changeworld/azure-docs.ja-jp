@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fe35f26fe73661901fa85da65e353fe66adf5d47
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 538208c39d6436c15b95760133e00c980e2e8277
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094219"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727904"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 
@@ -73,7 +73,7 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
 ### <a name="automation-operator"></a>Automation Operator
 
-Automation オペレーターは、ジョブの作成と管理、Automation アカウント内のすべての Runbook の名前とプロパティの読み取りを実行できます。  注: 個々の Runbook に対するオペレーターのアクセスを制御する場合は、このロールを設定しないでください。代わりに、"Automation ジョブ オペレーター" ロールと "Automation Runbook オペレーター" ロールを組み合わせて使用してください。 次の表は、このロールに付与されるアクセス許可を示しています。
+Automation オペレーターは、ジョブの作成と管理、Automation アカウント内のすべての Runbook の名前とプロパティの読み取りを実行できます。  注:個々の Runbook に対するオペレーターのアクセスを制御する場合は、このロールを設定しないでください。代わりに、"Automation ジョブ オペレーター" ロールと "Automation Runbook オペレーター" ロールを組み合わせて使用してください。 次の表は、このロールに付与されるアクセス許可を示しています。
 
 |**アクション**  |**説明**  |
 |---------|---------|
@@ -274,12 +274,13 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 1. [Azure Portal](https://portal.azure.com/) にログインし、[Automation アカウント] ページから、ご利用の Automation アカウントを開きます。
 2. 左上隅にある **[アクセス制御 (IAM)]** コントロールをクリックします。 表示された **[アクセス制御 (IAM)]** ページでは、ご利用の Automation アカウントを管理するための新しいユーザー、グループ、アプリケーションを追加できるほか、その Automation アカウント用に構成できる既存のロールを確認できます。
+3. **[ロールの割り当て]** タブをクリックします。
 
    ![Access button](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>新しいユーザーの追加とロールの割り当て
 
-1. **[アクセス制御 (IAM)]** ページの **[+ 追加]** をクリックして **[アクセス許可の追加]** ページを開きます。このページでは、ユーザー、グループ、アプリケーションを追加し、それらにロールを割り当てることができます。
+1. **[アクセス制御 (IAM)]** ページの **[+ ロールの割り当ての追加]** をクリックして **[ロールの割り当ての追加]** ページを開きます。このページでは、ユーザー、グループ、アプリケーションを追加し、それらにロールを割り当てることができます。
 
 2. 利用可能なロールの一覧からロールを選択します。 Automation アカウントでサポートされている任意の組み込みロールを選択してもかまいません。また、自分で定義したカスタム ロールを選択することもできます。
 

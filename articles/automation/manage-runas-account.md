@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 569efa7fbbd111937f00ba3b1e28219c163e2221
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7bd84b42cfa61d199d70e02345f9229a45fd7704
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958161"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726170"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -358,11 +358,11 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 Azure Automation でのリソースに対するオートメーションのターゲットを制御するため、実行アカウントには、既定でサブスクリプションの共同作成者権限が与えられます。 RunAs サービス プリンシパルが実行できることを制限する必要がある場合は、サブスクリプションに対する共同作成者ロールからアカウントを削除し、指定するリソース グループに共同作成者として追加します。
 
-Azure Portal で、**[サブスクリプション]** を選択し、Automation アカウントのサブスクリプションを選択します。 **[アクセス制御 (IAM)]** を選択し、Automation アカウント用のサービス プリンシパルを検索します (それは \<AutomationAccountName\>_unique identifier のようになっています)。 アカウントを選択し、**[削除]** をクリックして、サブスクリプションから削除します。
+Azure Portal で、**[サブスクリプション]** を選択し、Automation アカウントのサブスクリプションを選択します。 **[アクセス制御 (IAM)]** を選択した後、**[ロールの割り当て]** タブを選択します。自分の Automation アカウント用のサービス プリンシパルを検索します (それは \<AutomationAccountName\>_unique identifier のようになっています)。 アカウントを選択し、**[削除]** をクリックして、サブスクリプションから削除します。
 
 ![サブスクリプションの共同作成者](media/manage-runas-account/automation-account-remove-subscription.png)
 
-リソース グループにサービス プリンシパルを追加するには、Azure Portal でリソース グループを選択し、**[アクセス制御 (IAM)]** を選択します。 **[追加]** を選択します。**[アクセス許可の追加]** ページが開きます。 **[ロール]** で、**[共同作成者]** を選択します。 **[選択]** テキスト ボックスに、実行アカウント用のサービス プリンシパルの名前を入力した後、一覧から選択します。 **[保存]** をクリックして変更を保存します。 Azure Automation の実行サービス プリンシパルへのアクセスを付与するリソース グループに対して、これらの手順を実行します。
+リソース グループにサービス プリンシパルを追加するには、Azure Portal でリソース グループを選択し、**[アクセス制御 (IAM)]** を選択します。 **[ロールの割り当ての追加]** を選択すると、**[ロールの割り当ての追加]** ページが開きます。 **[ロール]** で、**[共同作成者]** を選択します。 **[選択]** テキスト ボックスに、実行アカウント用のサービス プリンシパルの名前を入力した後、一覧から選択します。 **[保存]** をクリックして変更を保存します。 Azure Automation の実行サービス プリンシパルへのアクセスを付与するリソース グループに対して、これらの手順を実行します。
 
 ## <a name="misconfiguration"></a>誤った構成
 

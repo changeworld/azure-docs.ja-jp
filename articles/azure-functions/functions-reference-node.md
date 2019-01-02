@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 506bbcf31833b20a6ee06e85fbad166d1f0b80e2
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 17e0cf170197b99037e2892d1b74a699a3a9eef5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567147"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275331"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -70,8 +70,6 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 ```
 
 ### <a name="exporting-an-async-function"></a>async function をエクスポートする
-JavaScript の [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 宣言または JavaScript の [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (関数 v1.x では使用できません) を返すときは、[`context.done`](#contextdone-method) コールバックを呼び出して関数が完了したことを明示的に通知する必要はありません。 エクスポートされた async function/Promise が完了すると、関数は完了します。
-
 [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 宣言またはバージョン 2.x の Functions ランタイムでプレーンな JavaScript の [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) を使用するときは、[`context.done`](#contextdone-method) コールバックを呼び出して関数が完了したことを明示的に通知する必要はありません。 エクスポートされた async function/Promise が完了すると、関数は完了します。 バージョン 1.x ランタイムを対象とする関数では、引き続きコードの実行が完了した際に [`context.done`](#contextdone-method) を呼び出す必要があります。
 
 次の例で示すのは、トリガーされてすぐに実行が完了したことを記録する簡単な関数です。
@@ -419,7 +417,7 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
 | Functions バージョン | Node.js バージョン | 
 |---|---|
 | 1.x | 6.11.2 (ランタイムによりロック) |
-| 2.x  | "_アクティブ LTS_" と偶数の "_現在の_" Node.js のバージョン (8.11.1 と 10.6.0 を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用してバージョンを設定します。|
+| 2.x  | "_アクティブ LTS_" と偶数の "_現在の_" Node.js のバージョン (8.11.1 と 10.14.1 を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用してバージョンを設定します。|
 
 ランタイムが使用している現在のバージョンを確認するには、上記のアプリ設定を調べるか、または任意の関数から `process.version` を出力します。
 

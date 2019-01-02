@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cc4e128cab3cad235462e29e65fa58002a103bcd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 393426678d9331837bdc3b73c4e491dbe7eae6fa
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855903"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834827"
 ---
 # <a name="register-in-dev-center"></a>デベロッパー センターに登録する  
 個人用アカウントにサインインしていないことを確認するには、新しい Internet Explorer InPrivate または Chrome Incognito のブラウズ セッションを開きます。  
@@ -143,7 +143,7 @@ ms.locfileid: "48855903"
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問: 
 
 *   **デベロッパー センター アカウントの登録が必要なのは、どの発行元ですか?** 
-> 登録リストの種類: VM、Azure アプリ: ソリューション テンプレートとマネージド アプリで発行している発行元です。  
+> 次の登録リストの種類で発行している発行元です:VM、Azure アプリ: ソリューション テンプレートとマネージド アプリ。  
 
 *   **デベロッパー センター アカウントが必要なのはなぜですか?**
 > デベロッパー センター アカウントは、登録リストの種類について Microsoft が発行元に代わって顧客に請求できるようにするために必要です。 デベロッパー センター アカウントの登録により、Microsoft は貴社の法律、税務および銀行に関する情報を検証することができます。 詳しくは、[こちら](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)をクリックしてください。
@@ -165,13 +165,13 @@ ms.locfileid: "48855903"
 > [[Marketplace の登録]](https://azuremarketplace.microsoft.com/en-us/sell/signup) フォームに入力して、デベロッパー センターのプロモーション コードを受け取ります。
  
 *   **登録完了後の手順はどのようになりますか?**
-> "Action needed: Verify your email account with Microsoft" (アクションが必要: Microsoft の電子メール アカウントをご確認ください) という件名の verify@microsoft.com からの電子メールを探します。 時間の制約がある認証リンクをクリックして登録を完了します。 *24 時間以内に電子メールが届かない場合は、迷惑メール フォルダーをご確認ください。*
+> 次の件名の verify@microsoft.com からの電子メールを探します。"Action needed:Verify your email account with Microsoft" (アクションが必要: Microsoft の電子メール アカウントをご確認ください)。 時間の制約がある認証リンクをクリックして登録を完了します。 *24 時間以内に電子メールが届かない場合は、迷惑メール フォルダーをご確認ください。*
 
 *   **デベロッパー センターの検証後の次の手順は何ですか?**
 > [Your programs]\(プログラム\) (https://developer.microsoft.com/dashboard/Account/Programs) に移動し、デベロッパー センター アカウントにログインします。 Azure が登録されているプログラムとして表示されない場合は、[Recommended programs for you]\(お勧めのプログラム\) の下で Azure を検索し、[Get Started]\(使用を開始する\) を選択します。
 
 *   **Cloud パートナー ポータルの発行元プロファイルに、デベロッパー センターのアカウントをリンクする方法**
-> 発行前の最後の手順は、ご自分のデベロッパー センターのアカウントを Cloud パートナー ポータルの[プロファイル](https://cloudpartner.azure.com/#profile)にリンクすることです。 デベロッパー センターのアカウントが [Cloud パートナー ポータル](https://cloudpartner.azure.com/#alloffers)のアカウントと異なる場合は、Cloud パートナー ポータルでデベロッパー センターのアカウントを新しい[ユーザー](https://cloudpartner.azure.com/#documentation/manage-users)として追加します。 ご自分のデベロッパー センターのアカウントを使用して [Cloud パートナー ポータル](https://cloudpartner.azure.com/#alloffers)にログインします。 Web ブラウザーの右上にあるメニューで、[発行元プロファイル] を選択します。 [Link Dev Center Account]\(デベロッパー センター アカウントをリンクする\) を選択します。
+> 発行前の最後の手順は、ご自分のデベロッパー センターのアカウントを Cloud パートナー ポータルの[プロファイル](https://cloudpartner.azure.com/#profile)にリンクすることです。 デベロッパー センターのアカウントが [Cloud パートナー ポータル](https://cloudpartner.azure.com/#alloffers)のアカウントと異なる場合は、Cloud パートナー ポータルでデベロッパー センターのアカウントを新しい[ユーザー](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users)として追加します。 ご自分のデベロッパー センターのアカウントを使用して [Cloud パートナー ポータル](https://cloudpartner.azure.com/#alloffers)にログインします。 Web ブラウザーの右上にあるメニューで、[発行元プロファイル] を選択します。 [Link Dev Center Account]\(デベロッパー センター アカウントをリンクする\) を選択します。
 
 *   **デベロッパー センター アプリケーションが拒否されるのはなぜですか?**
 > サード パーティの審査会社 (Duns & Bradstreet) が、お客様により指定された電話番号で連絡できませんでした。 審査プロセスを再開するには、[developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) でサポートにご連絡ください

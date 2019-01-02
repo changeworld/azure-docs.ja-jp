@@ -1,11 +1,11 @@
 ---
-title: '手順 2: Machine Learning の実験にデータをアップロードする | Microsoft Docs'
-description: 予測ソリューションの開発に関するチュートリアルの中の、保存されているパブリック データを Azure Machine Learning Studio にアップロードするステップの 2 番目の手順です。
+title: 手順 2:Machine Learning Studio の実験にデータをアップロードする - Azure | Microsoft Docs
+description: 予測ソリューションの開発チュートリアルの手順 2:格納されているパブリックデータを Azure Machine Learning Studio にアップロードします。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cgronlun
 ms.assetid: 9f4bc52e-9919-4dea-90ea-5cf7cc506d85
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: dfa6ae8011da0299c270035b8b781d70a8e80119
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 90a73de4177cec74187da852709137d77d60b4d4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835792"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261452"
 ---
-# <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-experiment"></a>チュートリアル手順 2: Azure Machine Learning の実験に既存のデータをアップロードする
+# <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-studio-experiment"></a>チュートリアル手順 2:Azure Machine Learning Studio の実験に既存のデータをアップロードする
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning ワークスペースの作成](walkthrough-1-create-ml-workspace.md)
@@ -100,7 +100,7 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 
 その他の種類のデータを実験にインポートする方法の詳細については、[Azure Machine Learning Studio へのトレーニング データのトレーニング データのインポート](import-data.md)に関するページを参照してください。
 
-**次: [新しい実験を作成する](walkthrough-3-create-new-experiment.md)**
+**次:[新しい実験を作成する](walkthrough-3-create-new-experiment.md)**
 
 [1]: media/walkthrough-2-upload-data/menu.png
 [2]: media/walkthrough-2-upload-data/add-dataset.png

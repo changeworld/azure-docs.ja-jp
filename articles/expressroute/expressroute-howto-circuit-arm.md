@@ -1,18 +1,19 @@
 ---
-title: 'ExpressRoute 回線の作成および変更: PowerShell: Azure Resource Manager | Microsoft Docs'
-description: この記事では、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。
+title: ExpressRoute 回線を作成および変更する - PowerShell:Azure | Microsoft Docs
+description: ExpressRoute 回線を作成、プロビジョニング、確認、更新、削除、プロビジョニング解除します。
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: f95bdfe9a61a271825ff9bbe5ca7f84330c98df5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: ff86c87690f5dd4a919929f0deef4af739cbe4d3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257454"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105004"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
@@ -23,7 +24,7 @@ ms.locfileid: "51257454"
 > * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
 >
 
-この記事では、PowerShell コマンドレットと Azure Resource Manager デプロイ モデルを使用して、Azure ExpressRoute 回線を作成する方法について説明します。 この記事では、回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
+この記事は、PowerShell コマンドレットと Azure Resource Manager デプロイ モデルを使用して、ExpressRoute 回線を作成するときに役立ちます。 状態の確認、および回線の更新、削除、プロビジョニング解除を行うこともできます。
 
 ## <a name="before-you-begin"></a>開始する前に
 

@@ -1,11 +1,11 @@
 ---
-title: Machine Learning バッチ実行サービス ジョブ専用の容量 | Microsoft Docs
-description: Machine Learning ジョブ用の Azure Batch サービスの概要。
+title: Machine Learning Studio ジョブ用の Azure Batch サービス | Microsoft Docs
+description: Machine Learning ジョブ用の Azure Batch サービスの概要。 Batch プール処理では、バッチ ジョブを送信できるプールを作成できます。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.service: machine-learning
 ms.component: studio
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 1e4cf34582e28e00108e280d928eea8a8134699a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 44b63a51049e663e55cc59a623837cf65cab9ccc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834527"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275195"
 ---
-# <a name="azure-batch-service-for-machine-learning-jobs"></a>Machine Learning ジョブ用の Azure Batch サービス
+# <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Azure Machine Learning Studio ジョブ用の Azure Batch サービス
 
 Machine Learning の Batch プール処理では、Azure Machine Learning バッチ実行サービスのスケールをユーザーが管理できるようにしています。 Machine Learning のクラシック バッチ処理はマルチ テナント環境で実行され、送信できる同時実行ジョブの数が制限されており、ジョブは先入れ先出しベースでキューに配置されます。 この不確定性により、ユーザーはジョブがいつ実行されるかを正確に予測することはできません。
 

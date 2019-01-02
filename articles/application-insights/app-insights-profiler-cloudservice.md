@@ -8,21 +8,20 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 445e607b6b0a21f840ab633b3a5a3779f49fdd98
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 5bb70bf56efac28029401b69ee4f87c2738c52e3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142790"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721852"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Application Insights でライブ Azure クラウド サービスをプロファイリングする
 
-次のサービスでも Application Insights Profiler をデプロイできます。
+Application Insights Profiler を次のサービスにデプロイすることもできます。
 * [Azure Web Apps](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric アプリケーション](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtual Machines](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
@@ -64,7 +63,7 @@ Application Insights Profiler は、Windows Azure 診断 (WAD) 拡張機能と�
       </WadCfg>
       ```
 
-    >   **注:** *diagnostics.wadcfgx* ファイルに `ApplicationInsights` タイプの別のシンクが含まれている場合、次の 3 つのインストルメンテーション キーがすべて一致する必要があります。  
+    >   **注:***diagnostics.wadcfgx* ファイルに `ApplicationInsights` タイプの別のシンクが含まれている場合、次の 3 つのインストルメンテーション キーがすべて一致する必要があります。  
     >  * アプリケーションによって使用されるキー。  
     >  * `ApplicationInsights` シンクによって使用されるキー。  
     >  * `ApplicationInsightsProfiler` シンクによって使用されるキー。  

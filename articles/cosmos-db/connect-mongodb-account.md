@@ -1,29 +1,27 @@
 ---
-title: Azure Cosmos DB アカウントの MongoDB 接続文字列 | Microsoft Docs
+title: Azure Cosmos DB アカウントの MongoDB 接続文字列
 description: MongoDB 接続文字列を使用して、MongoDB アプリを Azure Cosmos DB アカウントに接続する方法について説明します。
 keywords: mongodb 接続文字列
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/19/2017
 ms.author: sclyon
-ms.openlocfilehash: ad8d6fe36c289c4c9e37689e1c7d755dc3bf9048
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: a78a77e16e9a810c0be03656aa48b02cc8e6e5e6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038668"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849260"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Azure Cosmos DB への MongoDB アプリケーションの接続
 MongoDB 接続文字列を使用して、MongoDB アプリを Azure Cosmos DB アカウントに接続する方法について説明します。 MongoDB アプリのデータ ストアとして Azure Cosmos DB データベースを使用できるようになります。 
 
 このチュートリアルでは、接続文字列情報を取得する 2 とおりの方法を説明します。
 
-- [クイック スタートを使う方法](#QuickstartConnection)。\.NET、Node.js、MongoDB シェル、Java、Python のドライバー向けの方法です
+- [クイック スタートを使う方法](#QuickstartConnection)。.NET、Node.js、MongoDB シェル、Java、Python のドライバー向けの方法です
 - [カスタム接続文字列を使う方法](#GetCustomConnection)。その他のドライバー向けの方法です
 
 ## <a name="prerequisites"></a>前提条件
@@ -54,17 +52,17 @@ MongoDB 接続文字列を使用して、MongoDB アプリを Azure Cosmos DB �
 >
 >
 
-Azure Cosmos DB は、標準の MongoDB 接続文字列の URI 形式をサポートしていますが、固有の要件がいくつかあります。たとえば、Azure Cosmos DB アカウントでは、SSL による認証とセキュリティで保護された通信が要求されます。 そのため接続文字列は次の形式となります。
+Azure Cosmos DB は、標準の MongoDB 接続文字列の URI 形式をサポートしていますが、固有の要件がいくつかあります。Azure Cosmos DB アカウントには、認証と、SSL 経由のセキュリティで保護された通信が必要です。 そのため接続文字列は次の形式となります。
 
     mongodb://username:password@host:port/[database]?ssl=true
 
 この文字列の値は、先ほど示した **[接続文字列]** ブレードで確認できます。
 
-* ユーザー名 (必須) : Azure Cosmos DB アカウント名。
-* パスワード (必須) : Azure Cosmos DB アカウントのパスワード。
-* ホスト (必須) : Azure Cosmos DB アカウントの FQDN。
-* ポート (必須) : 10255。
-* データベース (省略可) : 接続で使用されるデータベース。 データベースを指定しない場合、既定のデータベースは "test" です。
+* ユーザー名 (必須):Azure Cosmos DB アカウント名。
+* パスワード (必須):Azure Cosmos DB アカウントのパスワード。
+* ホスト (必須):Azure Cosmos DB アカウントの FQDN。
+* ポート (必須):10255。
+* データベース (省略可):接続で使用されるデータベース。 データベースを指定しない場合、既定のデータベースは "test" です。
 * ssl=true (必須)
 
 たとえば、**[接続文字列]** ブレードに表示されているアカウントでは次のようになります。 有効な接続文字列は次のようになります。

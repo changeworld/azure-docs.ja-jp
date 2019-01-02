@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: d0d07e235c33877ede7f47a6095482b2acec18d0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 129f77ec9ea4d4e2633e1ea0b02795bc0df26433
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239842"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834708"
 ---
 # <a name="what-is-the-myapps-portal"></a>MyApps ポータルとは
 
@@ -41,11 +41,11 @@ MyApps ポータルは Azure portal とは別のものです。 Azure サブス�
 
 ## <a name="access-the-myapps-portal"></a>MyApps ポータルにアクセスする
 
-MyApps ポータルにアクセスするには、`http://myapps.microsoft.com` に移動します。
+MyApps ポータルにアクセスするには、`https://myapps.microsoft.com` に移動します。
 
-サインイン ページ用にカスタム ブランドを構成している場合は、URL に組織のドメインを追加することで、ブランドを読み込むことができます (例: `http://myapps.microsoft.com/<your domain>.com`)。
+サインイン ページ用にカスタム ブランドを構成している場合は、URL に組織のドメインを追加することで、ブランドを読み込むことができます (例: `https://myapps.microsoft.com/<your domain>.com`)。
 
-次に示すように、Azure portal で構成されている任意のアクティブなドメイン名または検証済みドメイン名を使用できます。![Wingtip Toys ドメイン名][2]  
+次に示すように、Azure Portal で構成されている任意のアクティブなドメイン名または検証済みドメイン名を使用できます。![Wingtip Toys のドメイン名][2]  
 
 URL は、Azure AD と統合されたアプリケーションにサインインするすべてのユーザーに配布します。
 
@@ -83,7 +83,7 @@ Azure または Office 365 のサブスクリプションを持っていて、Az
 >
 拡張は次のサイトから直接ダウンロードできます。
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 `https://myapps.microsoft.com` 以外のマイ アプリの URL を使用している場合は、次の手順に従って既定の URL を構成します。

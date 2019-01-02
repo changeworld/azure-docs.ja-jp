@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: e4d4c2115ddae592e9ca7bdf119b36d0ccee2da4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: benshy
+ms.custom: seodec18
+ms.openlocfilehash: 10a8d434df376749b76e2cf90212d872f705b209
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998714"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103423"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn コスト管理レポートの概要
 
@@ -25,7 +25,7 @@ ms.locfileid: "46998714"
 
 一定期間内のコスト レポートの例を次に示します。 Cloudyn レポートの大半が、同様のレイアウトになっています。
 
-![サンプル レポート](./media/understanding-cost-reports/sample-report.png)
+![説明に対応する番号が領域に表示されている一定期間内のコスト レポートの例](./media/understanding-cost-reports/sample-report.png)
 
 上の図で番号付けされている各エリアについては、以下で詳しく説明します。
 
@@ -47,11 +47,11 @@ ms.locfileid: "46998714"
 
     [タグ] を使用して、タグのカテゴリ別にグループ化します。 メニューには、Azure の部署やコスト センターのタグ、Cloudyn のコスト エンティティやサブスクリプションのタグが一覧表示されます。 結果をフィルター処理するタグを選択します。 または、結果をフィルター処理するタグ名 (キーワード) を入力することもできます。
 
-    ![オプションの選択](./media/understanding-cost-reports/select-options.png)
+    ![結果をフィルター処理するタグの一覧の例](./media/understanding-cost-reports/select-options.png)
 
     **[追加]** をクリックして新しいフィルターを追加します。
 
-    ![フィルターの追加](./media/understanding-cost-reports/add-filter.png)
+    ![フィルター処理のためのオプションと条件が示されているフィルター追加ボックス](./media/understanding-cost-reports/add-filter.png)
 
     タグによるグループ化やフィルター処理は、Azure のリソースやリソース グループのタグには関連付けられません。
 
@@ -61,9 +61,9 @@ ms.locfileid: "46998714"
 
     コスト分析レポートのグループを使用して、レポートの課金データから、標準の明細カテゴリを表示します。  一方、コスト配賦レポートのグループには、タグに基づくカテゴリが表示されます。 タグに基づくカテゴリは、コスト配賦モデルと、課金データからの標準の明細カテゴリで定義されます。
 
-    ![グループ タグ](./media/understanding-cost-reports/groups-tags01.png)
+    ![グループ化できるタグの一覧の 1 番目の例](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![グループ タグ](./media/understanding-cost-reports/groups-tags02.png)
+    ![グループ化できるタグの一覧の 2 番目の例](./media/understanding-cost-reports/groups-tags02.png)
 
     コスト配賦レポートでは、タグに基づくグループ カテゴリ内のグループには、以下が含まれます。
       - タグ
@@ -166,7 +166,7 @@ ms.locfileid: "46998714"
 
     表示形式を使用して、各種グラフやテーブルの表示を選択します。
 
-    ![表示形式](./media/understanding-cost-reports/display-formats.png)
+    ![選択できる表示形式のシンボル](./media/understanding-cost-reports/display-formats.png)
 
 13. **Multi-color (複数の色)**
 

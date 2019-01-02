@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 97bd2081df8c90f885996629862f25cbec8fd2c2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 2498fbef8d13fe9c61fd474dbbb678aa0b133e8a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860233"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728414"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,9 +53,9 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 ## <a name="get-started"></a>作業開始
 さまざまなツール/API を使用して、Azure Data Lake Store との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-データをコピーするためのパイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 コピー ウィザードを使ったパイプラインの作成に関するチュートリアルについては、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
+データをコピーするためのパイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 コピー ウィザードを使ったパイプラインの作成に関するチュートリアルについては、「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
 
-次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -98,7 +98,7 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 | **servicePrincipalKey** | アプリケーションのキーを取得します。 | [はい] |
 | **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい] |
 
-**例: サービス プリンシパル認証**
+**例:サービス プリンシパルの認証**
 ```json
 {
     "name": "AzureDataLakeStoreLinkedService",
@@ -130,7 +130,7 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 >- **Data Lake Store をシンクとして使用するには**、少なくともデータの**書き込み + 実行**アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーの権限を付与する (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、コピー アクティビティで Data Lake Store の場所を使用して [executionLocation を指定](data-factory-data-movement-activities.md#global)します。
 >- **コピー ウィザードを使用してパイプラインを作成する**場合は、アカウントのアクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 また、Data Lake Store ルート ("/") とその子に対する少なくとも**読み取り + 実行**アクセス許可を付与します。 付与しないと、"指定された資格情報が無効です" というメッセージが表示されることがあります。
 
-**例: ユーザー資格情報認証**
+**例:ユーザー資格情報認証**
 ```json
 {
     "name": "AzureDataLakeStoreLinkedService",
@@ -150,7 +150,7 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 #### <a name="token-expiration"></a>トークンの有効期限
 **[承認する]** ボタンを使って生成した承認コードは、一定の時間が経過すると有効期限が切れます。 次のメッセージは、認証トークンの有効期限が切れたことを意味します。
 
-資格情報の操作エラー: invalid_grant - AADSTS70002: Error validating credentials. (資格情報の検証中にエラーが発生しました。) AADSTS70008: 指定されたアクセス権の付与は期限が切れているか、失効しています。 トレース ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相関 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 タイムスタンプ: 2015-12-15 21-09-31Z
+資格情報の操作エラー: invalid_grant - AADSTS70002:Error validating credentials. (資格情報の検証中にエラーが発生しました。) AADSTS70008:指定されたアクセス権の付与は期限が切れているか、失効しています。 トレース ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相関 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 タイムスタンプ:2015-12-15 21-09-31Z。
 
 次の表では、さまざまな種類のユーザー アカウントの有効期限を示します。
 
@@ -207,14 +207,14 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 1. リンクされたサービス `typeProperties` で指定した `subscriptionId` と `resourceGroupName` が、 実際にデータ レイク アカウントが属しているものであることを確認します。
 
-2. データ レイク アカウントのユーザーまたはサービス プリンシパルに、少なくとも "**閲覧者**" ロールが付与されていることを確認します。 具体的な方法を次に示します。
+2. データ レイク アカウントのユーザーまたはサービス プリンシパルに、少なくとも**閲覧者**ロールが付与されていることを確認します。 具体的な方法を次に示します。
 
     1. Azure Portal にアクセスし、Data Lake Store アカウントに移動します
-    2. Data Lake Store のブレードで、[アクセス制御 (IAM)] をクリックします
-    3. [アクセス制御 (IAM)] のブレードで、[追加] をクリックします
-    4. [ロール] を [閲覧者] に設定し、コピーに使用するユーザーまたはサービス プリンシパルを選択して、アクセス権を付与します
+    2. Data Lake Store のブレードで、**[アクセス制御 (IAM)]** をクリックします
+    3. **[ロールの割り当ての追加]** をクリックします
+    4. **[ロール]** を **[閲覧者]** に設定し、コピーに使用するユーザーまたはサービス プリンシパルを選択して、アクセス権を付与します
 
-3. ユーザーやサービス プリンシパルに "閲覧者" ロールを付与しないようにする必要がある場合は、コピー アクティビティで[実行場所を明示的に指定](data-factory-data-movement-activities.md#global)して、Data Lake Store の場所を使用する方法もあります。 例:
+3. ユーザーやサービス プリンシパルに**閲覧者**ロールを付与しないようにする必要がある場合は、コピー アクティビティで[実行場所を明示的に指定](data-factory-data-movement-activities.md#global)して、Data Lake Store の場所を使用する方法もあります。 例:
 
     ```json
     {
@@ -243,7 +243,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 | **folderPath** |Data Lake Store のコンテナーとフォルダーのパスです。 |[はい] |
 | **fileName** |Azure Data Lake Store 内のファイルの名前です。 **fileName** プロパティは省略可能で、大文字と小文字を区別します。 <br/><br/>**fileName** を指定すると、アクティビティ (コピーを含む) は特定のファイルで動作します。<br/><br/>**fileName** が指定されていない場合、コピーには入力データセットの **folderPath** のすべてのファイルが含まれます。<br/><br/>出力データセットに **fileName** が指定されておらず、アクティビティ シンクで **preserveHierarchy** が指定されていない場合は、生成されるファイル名は "Data._Guid_.txt" という形式になります。 例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |いいえ  |
 | **partitionedBy** |**PartitionedBy** プロパティは省略可能です。 これを使用し、時系列データに動的なパスとファイル名を指定できます。 たとえば、1 時間ごとのデータに対して **folderPath** をパラメーター化できます。 詳細と例については、「[partitionedBy プロパティ](#using-partitionedby-property)」を参照してください。 |いいえ  |
-| **format** | 次の種類の形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、「[Azure Data Factory でサポートされるファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」の「[テキスト形式](data-factory-supported-file-and-compression-formats.md#text-format)」、「[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)」、「[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)」、「[ORC 形式](data-factory-supported-file-and-compression-formats.md#orc-format)」、「[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format)」の各セクションを参照してください。 <br><br> ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で `format` セクションをスキップします。 |いいえ  |
+| **format** | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、「[Azure Data Factory でサポートされるファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」の「[テキスト形式](data-factory-supported-file-and-compression-formats.md#text-format)」、「[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)」、「[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)」、「[ORC 形式](data-factory-supported-file-and-compression-formats.md#orc-format)」、「[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format)」の各セクションを参照してください。 <br><br> ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で `format` セクションをスキップします。 |いいえ  |
 | **compression** | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory でサポートされるファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ  |
 
 ### <a name="the-partitionedby-property"></a>partitionedBy プロパティ
@@ -291,7 +291,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| **copyBehavior** |コピー動作を指定します。 |<b>PreserveHierarchy</b>: ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><br/><b>FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの最上位レベルに作成されます。 ターゲット ファイルは、自動生成された名前で作成されます。<br/><br/><b>MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイルまたは BLOB の名前を指定した場合、マージされたファイル名は指定した名前になります。 指定しないと、ファイル名は自動生成されます。 |いいえ  |
+| **copyBehavior** |コピー動作を指定します。 |<b>PreserveHierarchy</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><br/><b>FlattenHierarchy</b>:ソース フォルダーのすべてのファイルがターゲット フォルダーの最上位レベルに作成されます。 ターゲット ファイルは、自動生成された名前で作成されます。<br/><br/><b>MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイルまたは BLOB の名前を指定した場合、マージされたファイル名は指定した名前になります。 指定しないと、ファイル名は自動生成されます。 |いいえ  |
 
 ### <a name="recursive-and-copybehavior-examples"></a>recursive と copyBehavior の例
 このセクションでは、recursive 値と copyBhavior 値の組み合わせごとに、Copy 操作で行われる動作について説明します。
@@ -311,7 +311,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Data Lake Store との間でのデータのコピーに関する JSON の例
 次の例では、JSON 定義のサンプルを示します。 これらのサンプル定義を使うと、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使ってパイプラインを作成できます。 以下の例では、Data Lake Store と Azure BLOB Storage との間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに _直接_ コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」セクションを参照してください。  
 
-### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>例: Azure Blob Storage から Azure Data Lake Store にデータをコピーする
+### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>例:Azure Blob Storage から Azure Data Lake Store にデータをコピーする
 このセクションのコード例では以下を示します。
 
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
@@ -322,7 +322,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 
 以下の例では、Azure Blob Storage ストレージから Data Lake Store に時系列データを 1 時間おきにコピーします。 
 
-**Azure ストレージのリンクされたサービス**
+**Azure Storage のリンクされたサービス**
 
 ```JSON
 {
@@ -496,7 +496,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 }
 ```
 
-### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>例: Azure Data Lake Store から Azure BLOB にデータをコピーする
+### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>例:Azure Data Lake Store から Azure BLOB にデータをコピーする
 このセクションのコード例では以下を示します。
 
 * [AzureDataLakeStore](#linked-service-properties)型のリンクされたサービス。
@@ -528,7 +528,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 > 構成の詳細については、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。
 >
 
-**Azure ストレージのリンクされたサービス**
+**Azure Storage のリンクされたサービス**
 
 ```JSON
 {

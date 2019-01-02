@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 86e60f339af3d6d467b68d5d3b27d77a9861add1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/03/2018
+ms.openlocfilehash: ff9011dda4a94f323b430a3860eadc8d970a23f7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244079"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838618"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Azure Active Directory 認証を使用して SQL を認証する
 
-Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して Azure [SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 
+Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して Azure [SQL Database](sql-database-technical-overview.md)、[Managed Instance](sql-database-managed-instance.md)、[SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 
 
 > [!NOTE]
 > このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
@@ -44,7 +44,7 @@ Azure AD 認証を使用すると、データベース ユーザーの ID や他
 構成の手順には、Azure Active Directory 認証を構成して使用する次の手順が含まれます。
 
 1. Azure AD を作成して設定します。
-2. 省略可能: Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更します。
+2. 省略可能:Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更します。
 3. Azure SQL Database サーバー、マネージド インスタンス、または [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/) の Azure Active Directory 管理者を作成します。
 4. クライアント コンピューターを構成します。
 5. Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成します。
@@ -79,20 +79,12 @@ Azure SQL Database、マネージド インスタンス、または SQL Data War
 
 Azure AD の次のメンバーを、Azure SQL Server または SQL Data Warehouse にプロビジョニングできます。
 
-- ネイティブ メンバー: マネージド ドメインまたは顧客のドメインの Azure AD で作成したメンバー。 詳細については、 [Azure AD への独自のドメイン名の追加](../active-directory/active-directory-domains-add-azure-portal.md)に関する記事をご覧ください。
-- フェデレーション ドメインのメンバー: フェデレーション ドメインを使用して Azure AD で作成されたメンバー。 詳細については、「 [Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure による Windows Server Active Directory とのフェデレーションのサポートの実現)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」をご覧ください。
+- ネイティブ メンバー:マネージド ドメインまたは顧客のドメインの Azure AD で作成したメンバー。 詳細については、 [Azure AD への独自のドメイン名の追加](../active-directory/active-directory-domains-add-azure-portal.md)に関する記事をご覧ください。
+- フェデレーション ドメインのメンバー:フェデレーション ドメインを使用して Azure AD で作成されたメンバー。 詳細については、「 [Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure による Windows Server Active Directory とのフェデレーションのサポートの実現)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」をご覧ください。
 - ネイティブ メンバーまたはフェデレーション ドメインのメンバーである別の Azure AD からインポートされたメンバー。
 - セキュリティ グループとして作成された Active Directory グループ。
 
-マネージド インスタンスに関連する Azure AD の制限事項:
-
-- Azure AD 管理者のみがデータベースを作成できます。Azure AD ユーザーのスコープは単一の DB のみに設定され、このアクセス許可は保持していません。
-- データベースの所有権
-  - Azure AD プリンシパルはデータベースの所有者を変更 (ALTER AUTHORIZATION ON DATABASE) できず、所有者として設定できません。
-  - Azure AD 管理者によって作成されたデータベースの場合、所有者は設定されません (sys.sysdatabases の owner_sid フィールドは 0x1 です)。
-- Azure AD プリンシパルを使用してログインした場合、SQL エージェントは管理できません。
-- Azure AD 管理者は、EXECUTE AS を使用して偽装できません。
-- Azure AD プリンシパルでは、DAC 接続はサポートされません。
+Azure AD のログインとユーザーは、[Managed Instance](sql-database-managed-instance.md) のプレビュー機能としてサポートされています
 
 Azure AD プリンシパル下で実行された場合、以下のシステム関数は NULL 値を返します。
 

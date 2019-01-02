@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aa543ad119716b25b7f3ab00d49efb9fe6fb6c3f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 88805f26869ad75830cef1aa074cd90cb947e76f
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244238"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681740"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Log Analytics への Azure Automation State Configuration レポート データの転送
 
@@ -127,7 +127,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 | NodeName_s |管理対象ノードの名前。 |
 | NodeComplianceStatus_s |ノードが準拠しているかどうか。 |
 | DscReportStatus |コンプライアンス チェックが正常に実行されたかどうか。 |
-| ConfigurationMode | ノードに構成が適用される方法。 指定できる値は、__"ApplyOnly"__、__"ApplyandMonitior"__、および __"ApplyandAutoCorrect"__ です。 <ul><li>__ApplyOnly__: DSC が構成を適用し、以降は新しい構成がターゲット ノードにプッシュない限り、または新しい構成がサーバーからプルされるまで何もしません。 新しい構成が最初に適用された後、DSC は以前の構成された状態からの誤差を確認しません。 DSC は __ApplyOnly__ が有効になる前に、構成の適用を成功するまで試行します。 </li><li> __ApplyAndMonitor__: これが既定値です。 LCM が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告します。 DSC は __ApplyAndMonitor__ が有効になる前に、構成の適用を成功するまで試行します。</li><li>__ApplyAndAutoCorrect__: DSC が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告し、現在の構成を再適用します。</li></ul> |
+| ConfigurationMode | ノードに構成が適用される方法。 指定できる値は、__"ApplyOnly"__、__"ApplyandMonitior"__、および __"ApplyandAutoCorrect"__ です。 <ul><li>__ApplyOnly__:DSC が構成を適用し、以降は新しい構成がターゲット ノードにプッシュない限り、または新しい構成がサーバーからプルされるまで何もしません。 新しい構成が最初に適用された後、DSC は以前の構成された状態からの誤差を確認しません。 DSC は __ApplyOnly__ が有効になる前に、構成の適用を成功するまで試行します。 </li><li> __ApplyAndMonitor__:これが既定値です。 LCM が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告します。 DSC は __ApplyAndMonitor__ が有効になる前に、構成の適用を成功するまで試行します。</li><li>__ApplyAndAutoCorrect__:DSC が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告し、現在の構成を再適用します。</li></ul> |
 | HostName_s | 管理対象ノードの名前。 |
 | IPAddress | 管理対象ノードの IPv4 アドレス。 |
 | Category | DscNodeStatus |
@@ -197,4 +197,4 @@ Log Analytics によって、Automation State Configuration のデータの状�
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
 - 継続的なデプロイ パイプラインで Azure Automation State Configuration を使う例については、「[Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ](automation-dsc-cd-chocolatey.md)」をご覧ください。
 - 各種検索クエリの作成方法と、Log Analytics での Automation State Configuration ログの確認方法の詳細については、[Log Analytics でのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
-- Log Analytics とデータ収集ソースの詳細については、「[Log Analytics における Azure Storage データの収集について](../log-analytics/log-analytics-azure-storage.md)」をご覧ください。
+- Log Analytics とデータ収集ソースの詳細については、「[Log Analytics における Azure Storage データの収集について](../azure-monitor/platform/collect-azure-metrics-logs.md)」をご覧ください。

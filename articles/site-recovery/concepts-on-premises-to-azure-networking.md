@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: c05a97dc5a5fe9a0e8a6f1a8598ff82fcf488ab2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7e682850d331770766a9b97c2b4b9102af143f2e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253280"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836272"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための IP アドレス指定を設定する
 
@@ -30,8 +30,8 @@ ms.locfileid: "51253280"
 
 レプリケーションとフェールオーバー戦略を計画する際の重要な問題の 1 つとして、フェールオーバー後の Azure VM への接続方法があります。 レプリカの Azure VM のネットワーク戦略を設計する場合は、いくつかの選択肢があります。
 
-- **異なる IP アドレスを使用する**: レプリケートされた Azure VM ネットワークに対して異なる IP アドレス範囲を使用することを選択できます。 このシナリオでは、VM はフェールオーバー後に新しい IP アドレスを取得するため、DNS の更新が必要になります。
-- **同じ IP アドレスを保持する**: フェールオーバー後、Azure ネットワークに対して、プライマリのオンプレミス サイトと同じ IP アドレス範囲を使用することができます。 同じ IP アドレスを維持することで、フェールオーバー後のネットワーク関連の問題が少なくなるため、復旧が簡単になります。 ただし、Azure にレプリケートする場合は、フェールオーバー後に IP アドレスの新しい場所でルートを更新する必要があります。
+- **異なる IP アドレスを使用する**:レプリケートされた Azure VM ネットワークに対して異なる IP アドレス範囲を使用することを選択できます。 このシナリオでは、VM はフェールオーバー後に新しい IP アドレスを取得するため、DNS の更新が必要になります。
+- **同じ IP アドレスを保持する**:フェールオーバー後、Azure ネットワークに対して、プライマリのオンプレミス サイトと同じ IP アドレス範囲を使用することができます。 同じ IP アドレスを維持することで、フェールオーバー後のネットワーク関連の問題が少なくなるため、復旧が簡単になります。 ただし、Azure にレプリケートする場合は、フェールオーバー後に IP アドレスの新しい場所でルートを更新する必要があります。
 
 ## <a name="retaining-ip-addresses"></a>IP アドレスの保持
 

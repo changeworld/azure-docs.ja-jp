@@ -8,13 +8,13 @@ keywords: バックアップと障害復旧; バックアップ サービス
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.author: saurse;trinadhk
-ms.openlocfilehash: cf27848b6ca63f06c7d452ac67908cb85dbafd47
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: trinadhk
+ms.openlocfilehash: 5262c99fae965201d4f9519495163d0e16836a7a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239843"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726544"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Azure Backup エージェントについての質問
 この記事では、Azure Backup エージェントの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -29,12 +29,12 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 ### <a name="what-types-of-drives-can-i-back-up-files-and-folders-from-br"></a>ファイルとフォルダーのバックアップ元として、どのような種類のドライブを使用できますか。 <br/>
 次のドライブやボリュームはバックアップできません。
 
-* リムーバブル メディア: バックアップ項目のソースはすべて、固定として認識される必要があります。
-* 読み取り専用ボリューム: ボリューム シャドウ コピー サービス (VSS) が機能するには、ボリュームが書き込み可能である必要があります。
-* オフライン ボリューム: VSS が機能するには、ボリュームがオンラインである必要があります。
-* ネットワーク共有: オンライン バックアップを使用してバックアップするボリュームは、サーバーに対してローカルである必要があります。
-* Bitlocker で保護されているボリューム: バックアップを行う前に、ボリュームのロックを解除する必要があります。
-* ファイル システムの識別: サポートされているファイル システムは NTFS だけです。
+* リムーバブル メディア:バックアップ項目のソースはすべて、固定として認識される必要があります。
+* 読み取り専用ボリューム:ボリューム シャドウ コピー サービス (VSS) が機能するには、ボリュームが書き込み可能である必要があります。
+* オフライン ボリューム:VSS が機能するには、ボリュームがオンラインである必要があります。
+* ネットワーク共有:オンライン バックアップを使用してバックアップするボリュームは、サーバーに対してローカルである必要があります。
+* Bitlocker で保護されているボリューム:バックアップを行う前に、ボリュームのロックを解除する必要があります。
+* ファイル システムの識別:サポートされているファイル システムは NTFS だけです。
 
 ### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>サーバーからバックアップできるのはどのような種類のファイルとフォルダーですか。<br/>
 次の種類がサポートされています。
@@ -43,11 +43,11 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 * 圧縮
 * スパース
 * 圧縮 + スパース
-* ハード リンク: サポートされていません。スキップされます。
-* 再解析ポイント: サポートされていません。スキップされます。
-* 暗号化 + スパース: サポートされていません。スキップされます。
-* 圧縮されたストリーム: サポートされていません。スキップされます。
-* スパース ストリーム: サポートされていません。スキップされます。
+* ハード リンク:サポートされていません。スキップされます。
+* 再解析ポイント:サポートされていません。スキップされます。
+* 暗号化 + スパース:サポートされていません。スキップされます。
+* 圧縮されたストリーム:サポートされていません。スキップされます。
+* スパース ストリーム:サポートされていません。スキップされます。
 
 ### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>VM 拡張機能を使用して Azure Backup サービスで既にバックアップされている Azure VM に Azure Backup エージェントをインストールすることはできますか。 <br/>
 そして、 Azure Backup では、VM 拡張機能を使用している Azure VM には VM レベルのバックアップを提供します。 ゲスト Windows OS 上のファイルとフォルダーを保護するには、ゲスト Windows OS に Azure Backup エージェントをインストールします。
@@ -94,8 +94,8 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 ### <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>適切に動作させるためには、Azure Backup エージェントのキャッシュ フォルダーをどこに設定すればよいですか。<br/>
 次の場所へのキャッシュ フォルダーの設定はお勧めしません。
 
-* ネットワーク共有またはリムーバブル メディア: キャッシュ フォルダーは、オンライン バックアップを使用したバックアップが必要なサーバーに対してローカルにする必要があります。 ネットワーク上の場所や USB ドライブなどのリムーバブル メディアはサポートされていません
-* オフライン ボリューム: キャッシュ フォルダーは、Azure Backup エージェントを使用したバックアップのために、オンラインにしておく必要があります
+* ネットワーク共有またはリムーバブル メディア:キャッシュ フォルダーは、オンライン バックアップを使用したバックアップが必要なサーバーに対してローカルにする必要があります。 ネットワーク上の場所や USB ドライブなどのリムーバブル メディアはサポートされていません
+* オフライン ボリューム:キャッシュ フォルダーは、Azure Backup エージェントを使用したバックアップのために、オンラインにしておく必要があります
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supportedbr"></a>キャッシュ フォルダーの属性としてサポートされていないものはありますか。<br/>
 キャッシュ フォルダーでは、次の各属性またはそれらの組み合わせはサポートされていません。

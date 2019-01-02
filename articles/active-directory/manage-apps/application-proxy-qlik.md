@@ -13,12 +13,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 55e262e1855eb6ab50c2d32e7e8cd4bb9175a593
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: d382a71de34e6c1527d810b0576e518b9101cf7d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962556"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132756"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>アプリケーション プロキシと Qlik Sense 
 Azure Active Directory アプリケーション プロキシと Qlik Sense は一緒に連携動作し、アプリケーション プロキシを使用して Qlik Sense 配置用のリモート アクセスを容易に提供できるようにします。  
@@ -27,13 +27,13 @@ Azure Active Directory アプリケーション プロキシと Qlik Sense は�
 このシナリオの残りは、以下を終えていることが前提となっています。
  
 - [Qlik Sense](https://community.qlik.com/docs/DOC-19822) を構成した。 
-- [アプリケーション プロキシ コネクタをインストールした](application-proxy-enable.md#install-and-register-a-connector)。 
+- [アプリケーション プロキシ コネクタをインストールした](application-proxy-add-on-premises-application.md#install-and-register-a-connector)。 
  
 ## <a name="publish-your-applications-in-azure"></a>アプリケーションを Azure に発行する 
 QlikSense を発行するには、Azure で 2 つのアプリケーションを発行する必要があります。  
 
 ### <a name="application-1"></a>アプリケーション 1: 
-アプリを公開するには、次の手順に従います。 手順 1 ～ 8 の詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)」を参照してください。 
+アプリを公開するには、次の手順に従います。 手順 1 ～ 8 の詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md)」を参照してください。 
 
 
 1. Azure Portal にグローバル管理者としてサインインします。 
@@ -41,8 +41,8 @@ QlikSense を発行するには、Azure で 2 つのアプリケーションを�
 3. ブレード上部の **[追加]** を選択します。 
 4. **[オンプレミスのアプリケーション]** を選択します。 
 5.       新しいアプリに関する情報を必須フィールドに入力します。 次のガイダンスに従って設定してください。 
-    - **[内部 URL]**: このアプリケーションは、QlikSense URL そのものである内部 URL を持っている必要があります。 たとえば、**https&#58;//demo.qlikemm.com:4244** です。 
-    - **[事前認証方法]**: Azure Active Directory (推奨ですが必須ではありません) 
+    - **[内部 URL]**:このアプリケーションは、QlikSense URL そのものである内部 URL を持っている必要があります。 たとえば、**https&#58;//demo.qlikemm.com:4244** です。 
+    - **[事前認証方法]**:Azure Active Directory (推奨ですが必須ではありません) 
 1.       ブレード下部の **[追加]** を選択します。 アプリケーションが追加されて、クイック スタート メニューが表示されます。 
 2.       クイック スタート メニューで **[テスト用のユーザーを割り当てる]** を選択し、少なくとも 1 ユーザーをアプリケーションに追加します。 このテスト アカウントでオンプレミスのアプリケーションにアクセスできることを確認します。 
 3.       **[割り当て]** を選択して、テスト ユーザーの割り当てを保存します。 
@@ -51,17 +51,18 @@ QlikSense を発行するには、Azure で 2 つのアプリケーションを�
 ### <a name="application-2"></a>アプリケーション 2: 
 次の例外を除き、アプリケーション 1 の場合と同じ手順に従います。 
 
-**手順 5.**: 内部 URL は、アプリケーションによって使用される認証ポートを持つ QlikSense URL になっているはずです。 既定値は、HTTPS の場合は **4244**、HTTP の場合は 4248 です。 例 **https&#58;//demo.qlik.com:4244**</br></br>**手順 10.:** SSO を設定しないで、**シングルサインオンを無効**のままにします。
+**手順 5**:内部 URL は、アプリケーションによって使用される認証ポートを持つ QlikSense URL になっているはずです。 既定値は、HTTPS の場合は **4244**、HTTP の場合は 4248 です。 例 **https&#58;//demo.qlik.com:4244**</br></br> 
+**手順 10:** SSO を設定しないで、**シングルサインオンを無効**のままにします。
  
  
 ## <a name="testing"></a>テスト 
 これでアプリケーションをテストする準備ができました。 アプリケーション 1 で QlikSense を発行するために使用した外部 URL にアクセスし、割り当てられているユーザーとして、両方のアプリケーションにログインします。  
 
 ## <a name="additional-references"></a>その他のリファレンス
-アプリケーション プロキシを使用した Qlik Sense の発行の詳細については、Qlik コミュニティの記事「[Azure AD with Integrated Windows Authentication using a Kerberos Constrained Delegation with Qlik Sense](https://community.qlik.com/docs/DOC-20183)」 (Kerberos の制約付き委任と Qlik Sense を使用した統合 Windows 認証での Azure AD) を参照してください。
+アプリケーション プロキシを使用した Qlik Sense の発行の詳細については、Qlik コミュニティの記事「[Azure AD with Integrated Windows Authentication using a Kerberos Constrained Delegation with Qlik Sense](https://community.qlik.com/docs/DOC-20183)」(Kerberos の制約付き委任と Qlik Sense を使用した統合 Windows 認証での Azure AD) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)
+- [アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md)
 - [アプリケーション プロキシ コネクタの使用方法](application-proxy-connector-groups.md)
 

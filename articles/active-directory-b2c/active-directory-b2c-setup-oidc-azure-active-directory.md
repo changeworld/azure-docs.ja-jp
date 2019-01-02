@@ -1,28 +1,28 @@
 ---
-title: Azure Active Directory B2C でサインイン Azure Active Directory アカウントの組み込みポリシーを設定する | Microsoft Docs
-description: Azure Active Directory B2C でサインイン Azure Active Directory アカウントの組み込みポリシーを設定します。
+title: Azure Active Directory B2C で Azure Active Directory 組織用のサインインを設定する | Microsoft Docs
+description: Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定します。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9b9754c9087f2d0064cc1aa75e76520731dfb3a9
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c48e4696d572b87a4e1553f9d4a2dc9921361388
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242860"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52719914"
 ---
-# <a name="set-up-sign-in-azure-active-directory-accounts-a-built-in-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインイン Azure Active Directory アカウントの組み込みポリシーを設定する
+# <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
 >[!NOTE]
 > この機能はパブリック プレビュー段階にあります。 運用環境で、この機能を使用しないでください。
 
-この記事では、Azure Active Directory (Azure AD) B2C の組み込みポリシーを使用して、特定の Azure Active Directory (Azure AD) 組織のユーザーがサインインを行えるようにする方法について説明します。
+この記事では、Azure Active Directory (Azure AD) B2C のユーザー フリーを使用して、特定の Azure Active Directory (Azure AD) 組織のユーザーがサインインできるようにする方法について説明します。
 
 ## <a name="create-an-azure-ad-app"></a>Azure AD アプリの作成
 

@@ -7,14 +7,15 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: danlep
-ms.openlocfilehash: 60248da2bbdac751845a40720f8967203c562b4a
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: 48fd64908a5cb2488d58f3c078e0ccb17419352f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085746"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260251"
 ---
-# <a name="quickstart-send-container-registry-events-to-event-grid"></a>クイック スタート - Event Grid へのコンテナー レジストリ イベントの送信
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>クイック スタート: プライベート コンテナー レジストリから Event Grid にイベントを送信する
 
 Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使用した画一的なイベント使用を提供する、完全に管理されたイベント ルーティング サービスです。 このクイック スタートでは、Azure CLI を使用してコンテナー レジストリを作成し、レジストリ イベントをサブスクライブして、イベントを受信するサンプル Web アプリケーションをデプロイします。 最後に、コンテナー イメージの `push` イベントおよび `delete` イベントをトリガーし、サンプル アプリケーションでイベント ペイロードを表示します。
 

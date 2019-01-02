@@ -5,22 +5,27 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c1714fd6ada45f2b4498a3f5972424200afa9aa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210824"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838142"
 ---
-# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>多層 Dynamics AX アプリケーションのディザスター リカバリーの設定
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>多層 Dynamics AX アプリケーションのディザスター リカバリーの設定 
 
-Dynamics AX は、複数の場所のプロセスの標準化、リソースの管理、およびコンプライアンスの簡素化を行うために企業によって使用されている最も一般的な ERP ソリューションです。 アプリケーションは組織にとってきわめて重要であるため、障害が発生した場合でも、最小の時間で再起動して稼働させる必要があります。
+
+
+
+ Dynamics AX は、複数の場所のプロセスの標準化、リソースの管理、およびコンプライアンスの簡素化を行うために企業によって使用されている最も一般的な ERP ソリューションです。 アプリケーションは組織にとってきわめて重要であるため、障害が発生した場合でも、最小の時間で再起動して稼働させる必要があります。
 
 現在、Dynamics AX には、既製のディザスター リカバリー機能は含まれていません。 Dynamics AX は、Windows Application Object Server、Azure Active Directory、Azure SQL Database、SharePoint Server、Reporting Services などの多くのサーバー コンポーネントで構成されています。 これらの各コンポーネントのディザスター リカバリーを手動で管理することは、時間がかかるだけでなく、エラーも起こりがちです。
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、Dynamics AX アプリケーションのディザスター リカバリー ソリューションを作成する方法について説明します。 ワンクリックの復旧計画を使用した計画された/計画されていない/テスト フェールオーバー、サポートされている構成、前提条件についても説明します。
+
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,9 +45,9 @@ Site Recovery を使用して Dynamics AX アプリケーションのディザ�
 
 **シナリオ** | **セカンダリ サイトへ** | **Azure へ**
 --- | --- | ---
-**Hyper-V** | はい | はい
-**VMware** | はい | はい
-**物理サーバー** | はい | はい
+**Hyper-V** | [はい] | [はい]
+**VMware** | [はい] | [はい]
+**物理サーバー** | [はい] | [はい]
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Site Recovery を使用して Dynamics AX アプリケーションのディザスター リカバリーを可能にする
 ### <a name="protect-your-dynamics-ax-application"></a>Dynamics AX アプリケーションを保護する
@@ -60,7 +65,7 @@ Dynamics AX アプリケーションが機能するには、ディザスター �
 
 多数のアプリケーションを使用し、Active Directory フォレストを実行中であり、一度にいくつかのアプリケーションをフェールオーバーすることを計画している。 追加のドメイン コントローラーをディザスター リカバリー サイト (セカンダリ サイトまたは Azure) に設定することをお勧めします。
 
-詳細については、[ディザスター リカバリー サイトでドメイン コントローラーを使用できるようにする](site-recovery-active-directory.md)ための記事を参照してください。 これ以降のドキュメントでは、ドメイン コントローラーがディザスター リカバリー サイトで使用可能になっていることを前提とします。
+ 詳細については、[ディザスター リカバリー サイトでドメイン コントローラーを使用できるようにする](site-recovery-active-directory.md)ための記事を参照してください。 これ以降のドキュメントでは、ドメイン コントローラーがディザスター リカバリー サイトで使用可能になっていることを前提とします。
 
 ### <a name="2-set-up-sql-server-replication"></a>2.SQL Server レプリケーションをセットアップする
 SQL 層を保護するための推奨されるオプションの技術的なガイダンスについては、[SQL Server と Azure Site Recovery を使用したアプリケーションのレプリケート](site-recovery-sql.md)に関する記事を参照してください。
@@ -89,6 +94,7 @@ Dynamics AX クライアントと Application Object Server VM 用に、Site Rec
 
     ![ネットワーク設定 ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
+
 ### <a name="5-create-a-recovery-plan"></a>5.復旧計画の作成
 
 Site Recovery で復旧計画を作成して、フェールオーバー プロセスを自動化できます。 復旧計画には、アプリ層と Web 層を追加します。 アプリ層の前にフロントエンドがシャットダウンするように、異なるグループに順序付けます。
@@ -112,15 +118,16 @@ Site Recovery で復旧計画を作成して、フェールオーバー プロ�
 Dynamics AX アプリケーションの復旧計画は、次の手順を追加することでカスタマイズできます。 先のスナップショットは、すべての手順を追加した後の完全な復旧計画を示しています。
 
 
-* **SQL Server のフェールオーバー手順**: SQL Server 固有のリカバリー手順については、[SQL Server と Azure Site Recovery を使用したアプリケーションのレプリケート](site-recovery-sql.md)に関する記事を参照してください。
+* **SQL Server のフェールオーバー手順**:SQL Server 固有のリカバリー手順については、[SQL Server と Azure Site Recovery を使用したアプリケーションのレプリケート](site-recovery-sql.md)に関する記事を参照してください。
 
-* **フェールオーバー グループ 1**: Application Object Server VM をフェールオーバーします。
+* **フェールオーバー グループ 1**:Application Object Server VM をフェールオーバーします。
 選択された復旧ポイントは、データベース PIT にできるだけ近いが、先ではないことを確認してください。
 
-* **スクリプト**: ロード バランサーを追加します (E-A のみ)。
+* **スクリプト**:ロード バランサーを追加します (E-A のみ)。
 Application Object Server VM グループが立ち上がった後、そのグループにロード バランサーを追加する (Azure Automation 経由の) スクリプトを追加します。 このタスクを実行するのにスクリプトを使用することができます。 詳細については、[多層アプリケーションのディザスター リカバリー用のロード バランサーの追加方法](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)に関する記事を参照してください。
 
-* **フェールオーバー グループ 2**: Dynamics AX クライアント VM をフェールオーバーします。 復旧計画の一部として、Web 層の VM をフェールオーバーします。
+* **フェールオーバー グループ 2**:Dynamics AX クライアント VM をフェールオーバーします。 復旧計画の一部として、Web 層の VM をフェールオーバーします。
+
 
 ### <a name="perform-a-test-failover"></a>テスト フェールオーバーの実行
 
@@ -169,6 +176,7 @@ Application Object Server VM グループが立ち上がった後、そのグル
 5. 適切なオプション (データ同期と VM 作成) を選択します。
 
 6. **[✓]** をクリックして、フェールバック プロセスを開始します。
+
 
 フェールバックの実行の詳細については、[VMware VM の Azure からオンプレミスへのフェールバック](site-recovery-failback-azure-to-vmware.md)に関する記事を参照してください。
 

@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 00e5a77bdf8554d473194b2e84947d7adb10df90
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5e24ec6124b6a5f7dea66e33018dffc753966075
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955260"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141970"
 ---
 # <a name="dtu-based-service-tiers"></a>DTU ベースのサービス レベル
 
@@ -31,6 +31,7 @@ DTU ベースのサービス レベルは、固定の付属ストレージ容量
 ## <a name="compare-the-dtu-based-service-tiers"></a>DTU ベースのサービス レベルを比較する
 
 サービス レベルの選択は、主に、ビジネス継続性、ストレージ、およびパフォーマンスの要件に依存します。
+
 ||Basic|標準|Premium|
 | :-- | --: |--:| --:| --:|
 |対象のワークロード|開発、運用|開発、運用|開発、運用||
@@ -71,7 +72,7 @@ DTU ベースのサービス レベルは、固定の付属ストレージ容量
 ||||||
 
 > [!IMPORTANT]
-> 現在、米国中西部、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、USGov アイオワ、ドイツ北東部、中国北部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+> 現在、1 TB を超える Premium レベルのストレージは、米国中西部、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、USGov アイオワ、ドイツ北東部、中国北部を除くすべてのリージョンで使用できます。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 

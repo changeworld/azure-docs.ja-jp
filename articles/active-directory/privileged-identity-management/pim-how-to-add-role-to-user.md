@@ -12,12 +12,12 @@ ms.workload: identity
 ms.component: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 5f0b5d1695603a7cd2a3c7ac1dbc484e44257d88
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 2b099e1377536b46229b75f25d04ab2c1beb5c11
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249613"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724946"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールを割り当てる
 
@@ -125,13 +125,15 @@ ms.locfileid: "50249613"
 
 1. サブスクリプションを選択します。
 
-1. **[アクセス制御 (IAM)]** を選択すると、サブスクリプションをスコープとするロールの割り当ての現在の一覧が表示されます。
+1. **[アクセス制御 (IAM)]** を選択します。
+
+1. **[ロールの割り当て]** を選択すると、サブスクリプションをスコープとするロールの割り当ての現在の一覧が表示されます。
 
    ![サブスクリプションの [アクセス制御 (IAM)] ブレード](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
 
 1. **MS PIM**サービス プリンシパルに**ユーザー アクセス管理者**ロールが割り当てられているかどうかを確認します。
 
-1. 割り当てられていない場合は、**[追加]** を選択して **[アクセス許可の追加]** ウィンドウを開きます。
+1. そうなっていない場合、**[ロールの割り当ての追加]** を選択して、**[ロールの割り当ての追加]** ウィンドウを開きます。
 
 1. **[ロール]** ドロップダウン リストで、**[ユーザー アクセス管理者]** ロールを選択します。
 

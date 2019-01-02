@@ -9,17 +9,16 @@ ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: 099e597982172bcea39fedd0fd1445f466eb2bc1
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b9428e4451ebef921907809b1250238bf084706d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960822"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864963"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -117,9 +116,9 @@ Web サイト ユーザーにとって最大の不満の 1 つは、自らの経
 ### <a name="improve-slow-pages"></a>表示が遅いページの改善
 サーバーの応答およびページ読み込み時間を短縮するためのアドバイスは Web に多数掲載されていますが、ここではその一部を取り上げます。 把握済みかもしれませんがいくつかのヒントを参考までに以下に示します。
 
-* ファイルのサイズが大きいため読み込みに時間がかかる: スクリプトとその他の部分を非同期に読み込みます。 スクリプトのバンドルを使用します。 メイン ページをウィジェットに分割し、データを別々に読み込みます。 長いテーブルに対して古いプレーンな HTML が送信されない: スクリプトを使用してデータを JSON またはその他のコンパクトな形式で要求し、所定のテーブルに入力します。 このようなすべてにおいて有効な優れたフレームワークがあります (これらはまた、当然ながら、大きなスクリプトを伴います)。
-* サーバーの依存関係が低速: コンポーネントの地理的な場所について検討してください。 たとえば、Azure を使用している場合、Web サーバーとデータベースが同じリージョンにあることを確認します。 クエリで必要以上の情報が取得されませんか。 キャッシュまたはバッチは役に立ちますか。
-* 容量の問題: 応答時間と要求数のサーバー メトリックを確認してください。 応答時間のピークと要求数のピークが合わない場合は、サーバーが拡大されている可能性があります。
+* ファイルのサイズが大きいため読み込みに時間がかかる:スクリプトとその他の部分を非同期に読み込みます。 スクリプトのバンドルを使用します。 メイン ページをウィジェットに分割し、データを別々に読み込みます。 長いテーブルに対して古いプレーンな HTML が送信されない: スクリプトを使用してデータを JSON またはその他のコンパクトな形式で要求し、所定のテーブルに入力します。 このようなすべてにおいて有効な優れたフレームワークがあります (これらはまた、当然ながら、大きなスクリプトを伴います)。
+* サーバーの依存関係が低速:コンポーネントの地理的な場所について検討してください。 たとえば、Azure を使用している場合、Web サーバーとデータベースが同じリージョンにあることを確認します。 クエリで必要以上の情報が取得されませんか。 キャッシュまたはバッチは役に立ちますか。
+* 容量の問題:応答時間と要求数のサーバー メトリックを確認してください。 応答時間のピークと要求数のピークが合わない場合は、サーバーが拡大されている可能性があります。
 
 
 ## <a name="server-response-time-degradation"></a>サーバーの応答時間の低下
@@ -185,7 +184,7 @@ Application Insights は、一部のユーザーにのみ影響する、また�
 
 * [プロファイラー](app-insights-profiler.md) 
 * [スナップショット デバッガー](app-insights-snapshot-debugger.md)
-* [Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Analytics](../azure-monitor/log-query/get-started-portal.md)
 * [Analytics Smart Diagnostics](app-insights-analytics.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。

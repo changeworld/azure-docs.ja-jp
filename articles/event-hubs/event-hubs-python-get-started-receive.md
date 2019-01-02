@@ -1,20 +1,20 @@
 ---
-title: Python を使用して Azure Event Hubs からイベントを受信する | Microsoft Docs
-description: Python を使用して Event Hubs からイベントの受信を開始する
+title: Python を使用してイベントを受信する - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs からイベントを受信する Python アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: db177c3356d378317c41e0c91c10865db5e05992
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: bc1cf07c5a74bc4d7182eea5281e75525fd04247
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286981"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103186"
 ---
 # <a name="receive-events-from-event-hubs-using-python"></a>Python を使用して Event Hubs からイベントを受信する
 
@@ -30,11 +30,9 @@ Event Hubs の詳細については、[Event Hubs の概要][Event Hubs overview
 
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
+- Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 - Python 3.4 以降。
 - 既存の Azure Event Hubs 名前空間とイベント ハブ。 これらのエンティティは、[こちらの記事](event-hubs-create.md)の手順に従って作成できます。 
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
 
 ## <a name="install-python-package"></a>Python パッケージのインストール
 
