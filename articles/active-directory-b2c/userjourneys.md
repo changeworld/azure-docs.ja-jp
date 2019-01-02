@@ -99,7 +99,7 @@ ms.locfileid: "51567062"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| 値 | 1:n | クエリされる ClaimTypeReferenceId。 別の値要素には、チェック対象の値が含まれています。</li></ul>|
+| Value | 1:n | クエリされる ClaimTypeReferenceId。 別の値要素には、チェック対象の値が含まれています。</li></ul>|
 | Action | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 `Action` の値を `SkipThisOrchestrationStep` に設定すると、関連付けられている `OrchestrationStep` は実行されません。 | 
 
 ### <a name="preconditions-examples"></a>前提条件の例

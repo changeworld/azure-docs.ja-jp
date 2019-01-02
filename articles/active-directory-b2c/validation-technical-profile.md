@@ -20,7 +20,7 @@ ms.locfileid: "51568678"
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーで検証技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
+ 
 検証技術プロファイルは、[Azure Active Directory](active-directory-technical-profile.md) や [REST API](restful-technical-profile.md) などの、あらゆるプロトコルの通常の技術プロファイルです。 検証技術プロファイルでは、出力要求を返すか、または次のデータによって HTTP 409 エラー メッセージ (競合応答状態コード) を返します。
 
 ```JSON
@@ -33,7 +33,7 @@ ms.locfileid: "51568678"
 
 検証技術プロファイルから返された要求は、要求バッグに追加されます。 これらの要求は、その次の検証技術プロファイルで使用できます。
 
-検証技術プロファイルは、**ValidationTechnicalProfiles** 要素内に出現する順序で実行されます。 検証技術プロファイルでは、検証技術プロファイルでエラーが発生したか、または成功した場合に、後続の検証技術プロファイルの実行を続行するかどうかを構成できます。
+検証技術プロファイルは、**ValidationTechnicalProfiles** 要素内に出現する順序で実行されます。 検証技術プロファイルでは、検証技術プロファイルでエラーが発生したか、または成功した場合に、後続の検証技術プロファイルの実行を続行するかどうかを構成できます。  
 
 検証技術プロファイルは、**ValidationTechnicalProfile** 要素で定義されている前提条件に基づいて、条件付きで実行できます。 たとえば、特定の要求が存在するかどうか、要求が特定の値と等しいかどうかなどを確認できます。
 
@@ -52,8 +52,8 @@ ms.locfileid: "51568678"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | はい | ポリシーまたは親ポリシーで既に定義されている技術プロファイルの識別子。 |
-|ContinueOnError|いいえ | この検証技術プロファイルでエラーが発生した場合に後続の検証技術プロファイルの検証を続行するかどうかを示します。 有効な値: `true` または `false` (既定値。以降の検証プロファイルの処理が停止され、エラーが返されます)。
+| ReferenceId | [はい] | ポリシーまたは親ポリシーで既に定義されている技術プロファイルの識別子。 |
+|ContinueOnError|いいえ | この検証技術プロファイルでエラーが発生した場合に後続の検証技術プロファイルの検証を続行するかどうかを示します。 有効な値: `true` または `false` (既定値。以降の検証プロファイルの処理が停止され、エラーが返されます)。 
 |ContinueOnSuccess | いいえ  | この検証技術プロファイルが成功した場合に後続の検証プロファイルの検証を続行するかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` で、以降の検証プロファイルの処理が続行されることを意味します。 |
 
 **ValidationTechnicalProfile** 要素には、次の要素が含まれています。
@@ -66,28 +66,28 @@ ms.locfileid: "51568678"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Type | はい | 前提条件に対して実行するチェックまたはクエリの種類。 指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されるようにするには、`ClaimsExist` を指定する必要があります。または、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されるようにするには、`ClaimEquals` を指定する必要があります。 |
-| ExecuteActionsIf | はい | テストが true または false の場合に前提条件のアクションを実行するかどうかを示します。 |
+| type | [はい] | 前提条件に対して実行するチェックまたはクエリの種類。 指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されるようにするには、`ClaimsExist` を指定する必要があります。または、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されるようにするには、`ClaimEquals` を指定する必要があります。 |
+| ExecuteActionsIf | [はい] | テストが true または false の場合に前提条件のアクションを実行するかどうかを示します。 | 
 
 **Precondition** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | Value | 1:n | チェックで使用されるデータ。 このチェックの種類が `ClaimsExist` の場合、このフィールドではクエリ対象の ClaimTypeReferenceId が指定されます。 チェックの種類が `ClaimEquals` の場合、このフィールドではクエリ対象の ClaimTypeReferenceId が指定されます。 一方、別の値要素には、チェック対象の値が含まれています。|
-| Action | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 **Action** の値は `SkipThisValidationTechnicalProfile` に設定されます。 関連付けられている検証技術プロファイルを実行しないことを指定します。 |
+| Action | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 **Action** の値は `SkipThisValidationTechnicalProfile` に設定されます。 関連付けられている検証技術プロファイルを実行しないことを指定します。 | 
 
 ### <a name="example"></a>例
 
-次の例では、これらの検証技術プロファイルを使用します。
+次の例では、これらの検証技術プロファイルを使用します。 
 
-1. 最初の検証技術プロファイルは、ユーザーの資格情報を確認し、無効なユーザー名や不正なパスワードなどのエラーが発生した場合は続行されません。
+1. 最初の検証技術プロファイルは、ユーザーの資格情報を確認し、無効なユーザー名や不正なパスワードなどのエラーが発生した場合は続行されません。 
 2. その次の検証技術プロファイルは、userType 要求が存在しないか、または userType の値が `Partner` の場合は実行されません。 この検証技術プロファイルは、内部顧客データベースからのユーザー プロファイルの読み取りを試行し、使用不可な REST API サービスや内部エラーなどのエラーが発生した場合も続行されます。
 3. 最後の検証技術プロファイルは、userType 要求が存在しないか、または userType の値が `Customer` の場合は実行されません。 この検証技術プロファイルは、内部パートナー データベースからのユーザー プロファイルの読み取りを試行し、使用不可な REST API サービスや内部エラーなどのエラーが発生した場合も続行されます。
 
 ```XML
 <ValidationTechnicalProfiles>
-  <ValidationTechnicalProfile ReferenceId="login-NonInteractive" ContinueOnError="false" />
-
+  <ValidationTechnicalProfile ReferenceId="login-NonInteractive" ContinueOnError="false"  />
+    
   <ValidationTechnicalProfile ReferenceId="REST-ReadProfileFromCustomertsDatabase" ContinueOnError="true" >
     <Preconditions>
        <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
@@ -99,7 +99,7 @@ ms.locfileid: "51568678"
          <Value>Partner</Value>
          <Action>SkipThisValidationTechnicalProfile</Action>
        </Precondition>
-    </Preconditions>
+    </Preconditions>          
   </ValidationTechnicalProfile>
 
   <ValidationTechnicalProfile ReferenceId="REST-ReadProfileFromPartnersDatabase" ContinueOnError="true" >
@@ -113,7 +113,21 @@ ms.locfileid: "51568678"
          <Value>Customer</Value>
          <Action>SkipThisValidationTechnicalProfile</Action>
        </Precondition>
-    </Preconditions>
+    </Preconditions>          
   </ValidationTechnicalProfile>
 </ValidationTechnicalProfiles>
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
