@@ -25,30 +25,31 @@ Azure Functions では、ILogger インターフェイス経由で使用でき�
 
 ## <a name="supported-features"></a>サポートされる機能
 
-| Azure Functions                       | V1                | V2 (Ignite 2018)  |
+| Azure Functions                       | V1                | V2 (Ignite 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
 | **Application Insights .NET SDK**   | **2.5.0**       | **2.7.2**         |
-| | | |
-| **自動収集の対象**        |                 |                   |
-| &bull; 要求                     | はい             | はい               |
-| &bull; 例外                   | はい             | はい               |
-| &bull; 依存関係                   |                   |                   |
-| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | はい               |
-| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | はい               |
-| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | はい               |
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | はい               |
-| | | |
-| **サポートされる機能**                |                   |                   |
-| &bull; QuickPulse/LiveMetrics       | はい             | はい               |
-| &bull; サンプリング                     | はい             | はい               |
-| &bull; ハートビート                   |                 | はい               |
-| | | |
-| **相関関係**                       |                   |                   |
-| &bull; ServiceBus                     |                   | はい               |
-| &bull; EventHub                       |                   | はい               |
-| | | |
-| **構成可否**                      |                   |                   |
-| &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | はい                   |
+| | | | 
+| **自動収集の対象**        |                 |                   |               
+| &bull; 要求                     | はい             | はい               | 
+| &bull; 例外                   | はい             | はい               | 
+| &bull; 依存関係                   |                   |                   |               
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | はい               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | はい               | 
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | はい               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | はい               | 
+| | | | 
+| **サポートされる機能**                |                   |                   |               
+| &bull; QuickPulse/LiveMetrics       | はい             | はい               | 
+| &bull; サンプリング                     | はい             | はい               | 
+| &bull; ハートビート                   |                 | はい               | 
+| | | | 
+| **相関関係**                       |                   |                   |               
+| &bull; ServiceBus                     |                   | はい               | 
+| &bull; EventHub                       |                   | はい               | 
+| | | | 
+| **構成可否**                      |                   |                   |           
+| &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | はい                   | 
+
 
 ## <a name="sampling"></a>サンプリング
 
