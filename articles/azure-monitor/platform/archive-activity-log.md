@@ -19,18 +19,18 @@ ms.locfileid: "53434921"
 この記事では、Azure Portal、PowerShell コマンドレット、またはクロス プラットフォーム CLI を使用して、ストレージ アカウントで [**Azure アクティビティ ログ**](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)をアーカイブする方法について説明します。 このオプションは、監査、静的分析、またはバックアップに対して (保持ポリシーを完全に制御して) 90 日よりも長いアクティビティ ログを保持する場合に便利です。 90 日以下でイベントを保持する必要があるだけの場合は、ストレージ アカウントにアーカイブを設定する必要はありません。アーカイブを有効にしなければ、アクティビティ ログのイベントは Azure プラットフォームに90 日間保持されるためです。
 
 > [!WARNING]
-> ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
+> ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
 >
->
+> 
 
 ## <a name="prerequisites"></a>前提条件
 開始する前に、アクティビティ ログのアーカイブ先の[ストレージ アカウントを作成](../../storage/common/storage-quickstart-create-account.md)する必要があります。 既存のストレージ アカウントを使用しないことを強くお勧めします。既存のストレージ アカウントには、監視データへのアクセスをさらに制御するために保存されている他の非監視データがあります。 ただし、診断ログとメトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、アクティビティ ログのそのストレージ アカウントも使用するのが適切であることがあります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントは、ログを出力するのと同じサブスクリプションに属している必要はありません。
 
 > [!NOTE]
-> 現在、セキュリティで保護された仮想ネットワークの背後で作成されたストレージ アカウントにデータをアーカイブすることはできません。
+>  現在、セキュリティで保護された仮想ネットワークの背後で作成されたストレージ アカウントにデータをアーカイブすることはできません。
 
 ## <a name="log-profile"></a>ログ プロファイル
-以下の方法のいずれかを使用して、アクティビティ ログをアーカイブするには、サブスクリプションに **ログ プロファイル** を設定します。 ログ プロファイルは、保存またはストリーミングされたイベントの種類と、ストレージ アカウントまたはイベント ハブの出力の種類を定義します。 また、ストレージ アカウントに格納されたイベントの保持ポリシー (保持する日数) も定義します。 保持ポリシーが 0 に設定されている場合は、イベントが無制限に保存されます。 それ以外の場合は、1 ～ 2,147, 483,647 の範囲の任意の値に設定できます。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。 [ログ プロファイルの詳細については、こちらを参照してください](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。
+以下の方法のいずれかを使用して、アクティビティ ログをアーカイブするには、サブスクリプションに **ログ プロファイル** を設定します。 ログ プロファイルは、保存またはストリーミングされたイベントの種類と、ストレージ アカウントまたはイベント ハブの出力の種類を定義します。 また、ストレージ アカウントに格納されたイベントの保持ポリシー (保持する日数) も定義します。 保持ポリシーが 0 に設定されている場合は、イベントが無制限に保存されます。 それ以外の場合は、1 ～ 2,147, 483,647 の範囲の任意の値に設定できます。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。 [ログ プロファイルの詳細については、こちらを参照してください](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>ポータルを使用したアクティビティ ログのアーカイブ
 1. ポータルで、左側のナビゲーションの **[アクティビティ ログ]** リンクをクリックします。 アクティビティ ログのリンクが表示されない場合は、最初に **[すべてのサービス]** リンクをクリックします。
@@ -72,7 +72,7 @@ ms.locfileid: "53434921"
 ## <a name="archive-the-activity-log-via-cli"></a>CLI を使用したアクティビティ ログのアーカイブ
 
    ```azurecli-interactive
-   az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action" --enabled false --days 0 --storage-account-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>"
+   az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --storage-account-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>"
    ```
 
 | プロパティ | 必須 | 説明 |
@@ -80,8 +80,8 @@ ms.locfileid: "53434921"
 | name |はい |ログ プロファイルの名前。 |
 | storage-account-id |はい |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
 | locations |はい |アクティビティ ログ イベントを収集するリージョンのスペース区切りリスト。 `az account list-locations --query [].name` を使って、サブスクリプションのすべてのリージョンの一覧を見ることができます。 |
-| days |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 0 の場合は、enabled パラメーターを true に設定する必要があります。 |
-|enabled | はい |True または False。 アイテム保持ポリシーを有効または無効にするために使います。 True の場合は、days パラメーターを 0 より大きい値にする必要があります。
+| days |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。  0 の場合は、enabled パラメーターを true に設定する必要があります。 |
+|enabled | はい |True または False。  アイテム保持ポリシーを有効または無効にするために使います。  True の場合は、days パラメーターを 0 より大きい値にする必要があります。
 | categories |はい |収集するイベント カテゴリのスペース区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
 ## <a name="storage-schema-of-the-activity-log"></a>アクティビティ ログのストレージ スキーマ
@@ -157,13 +157,14 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 }
 ```
 
+
 | 要素名 | 説明 |
 | --- | --- |
 | time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
 | ResourceId |影響を受けるリソースのリソース ID。 |
 | operationName |操作の名前。 |
-| category |アクションのカテゴリ。例: Write、Read、Action |
-| resultType |結果の種類。例: Success、Failure、Start |
+| category |アクションのカテゴリ。例:  Write、Read、Action |
+| resultType |結果の種類。例:  Success、Failure、Start |
 | resultSignature |リソースの種類によって異なります。 |
 | durationMs |操作時間 (ミリ秒) |
 | callerIpAddress |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの IP アドレス。 |
@@ -176,10 +177,11 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 
 > [!NOTE]
 > プロパティとそのプロパティの使用方法については、リソースによって異なることがあります。
->
->
+> 
+> 
 
 ## <a name="next-steps"></a>次の手順
 * [分析のための BLOB のダウンロード](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [アクティビティ ログの Event Hubs へのストリーム](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
 * [詳細については、アクティビティ ログに関するセクションをご覧ください](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+

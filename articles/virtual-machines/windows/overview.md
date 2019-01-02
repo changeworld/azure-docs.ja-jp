@@ -74,7 +74,7 @@ Azure では、VM のサイズおよびオペレーティング システムに�
 サブスクリプションにはそれぞれ既定の[クォータ制限](../../azure-subscription-service-limits.md)が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。 現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。 制限は、[サポート チケットで引き上げを依頼する](../../azure-supportability/resource-manager-core-quotas-request.md)ことによって引き上げることができます。
 
 ### <a name="operating-system-disks-and-images"></a>オペレーティング システム ディスクおよびイメージ
-仮想マシンは、[仮想ハード ディスク (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、オペレーティング システム (OS) およびデータを格納します。 VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。
+仮想マシンは、[仮想ハード ディスク (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、オペレーティング システム (OS) およびデータを格納します。 VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。 
 
 Azure には、Windows Server オペレーティング システムのさまざまなバージョンと種類で使用できる [Marketplace イメージ](https://azure.microsoft.com/marketplace/virtual-machines/)が多数用意されています。 Marketplace イメージは、イメージの発行元、プラン、SKU、およびバージョン (通常は最新バージョンとして指定) によって識別されます。 64 ビットのオペレーティング システムのみがサポートされています。 サポートされているゲストのオペレーティング システム、ロール、機能の詳細については、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)」を参照してください。
 
@@ -111,7 +111,7 @@ VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwi
 | [データ ディスク](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |いいえ  |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
 
 ## <a name="how-do-i-create-my-first-vm"></a>最初の VM の作成方法
-VM を作成する際、いくつかの選択肢があります。 どの選択肢を利用するかは、環境によって異なります。
+VM を作成する際、いくつかの選択肢があります。 どの選択肢を利用するかは、環境によって異なります。 
 
 次の表は、VM の作成を開始するうえでの情報を提供します。
 
@@ -149,7 +149,7 @@ Azure Portal の [接続] ボタンを使用して、[リモート デスクト�
 Microsoft が VM に設けている 99.95% というサービス レベル アグリーメントの要件をカスタム デプロイで満たすためには、複数の VM をデプロイし、[可用性セット](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)内でワークロードを実行する必要があります。 この構成により、複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
 
 ### <a name="back-up-the-vm"></a>VM のバックアップ
-[Recovery Services コンテナー](../../backup/backup-introduction-to-azure-backup.md)は、Azure Backup サービスと Azure Site Recovery サービスの両方でデータと資産を保護するために使用されます。 Recovery Services コンテナーを使用すれば、[Resource Manager でデプロイされた VM のバックアップを PowerShell を使用してデプロイおよび管理できます](../../backup/backup-azure-vms-automation.md)。
+[Recovery Services コンテナー](../../backup/backup-introduction-to-azure-backup.md)は、Azure Backup サービスと Azure Site Recovery サービスの両方でデータと資産を保護するために使用されます。 Recovery Services コンテナーを使用すれば、[Resource Manager でデプロイされた VM のバックアップを PowerShell を使用してデプロイおよび管理できます](../../backup/backup-azure-vms-automation.md)。 
 
 ## <a name="next-steps"></a>次の手順
 * Linux VM を使用する場合は、「[Azure と Linux](../linux/overview.md)」を参照してください。

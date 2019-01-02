@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 32ad02583f84a84c494dc8300834cd9ff2f0d771
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a0ae1f3fbf9189068cae4b18ac92f0bea0498f67
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094975"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427575"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>パブリック IP アドレス プレフィックスの作成、変更、削除
 
@@ -55,7 +55,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
    |リソース グループ|はい|所属する[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)は、パブリック IP アドレスを関連付けるリソースと同じであっても異なっていてもかまいません。|
    |Name|はい|選択したリソース グループ内で一意となる名前を使用してください。|
    |リージョン|はい|範囲からアドレスを割り当てるパブリック IP アドレスと同じ[リージョン](https://azure.microsoft.com/regions)に存在する必要があります。 プレフィックスは、現在、米国中西部、米国西部、米国西部 2、米国中部、北ヨーロッパ、西ヨーロッパ、および東南アジアでプレビュー段階です。|
-   |プレフィックス サイズ|はい| 必要なプレフィックスのサイズ。 /28 または 16 の IP アドレスが既定値です。
+   |プレフィックス サイズ|はい| 必要なプレフィックスのサイズ。 /28 または 16 の IP アドレスが既定値です。 
 
 **コマンド**
 
@@ -91,7 +91,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network public-ip prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) (パブリック IP アドレスの一覧表示)、[az network public-ip prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) (設定の表示)、[az network public-ip prefix update](/cli/azure/network/public-ip-prefix#az-network-public-ip-prefix-update) (更新)、[az network public-ip prefix delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) (削除)|
+|CLI|[az network public-ip prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) (パブリック IP アドレスの一覧表示)、[az network public-ip prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) (設定の表示)、[az network public-ip prefix update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) (更新)、[az network public-ip prefix delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) (削除)|
 |PowerShell|[Get-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/get-azurermpublicipprefix) (パブリック IP アドレス オブジェクトの取得とその設定の表示)、[Set-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/set-azurermpublicipprefix) (設定の更新)、[Remove-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/remove-azurermpublicipprefix) (削除)|
 
 ## <a name="permissions"></a>アクセス許可
