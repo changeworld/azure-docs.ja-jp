@@ -120,14 +120,16 @@ items:
     href: api-reference.md
   - name: SDK
     items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet
     - name: Java
-      href: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-cognitiveservices-contentmoderator%22
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable
     - name: Node.js
       href: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest
     - name: Python
       href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python
-    - name: .NET
-      href: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator
+    - name: Go
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator
 - name: リソース
   items:
   - name: サンプル
@@ -154,9 +156,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 7b2d77cd0cef0146fd5eefb0c43b3489aa0f1b2b
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fa356b96f4b7064c83f28624a678e41e6942d51b
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654055"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742322"

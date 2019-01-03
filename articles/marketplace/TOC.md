@@ -196,10 +196,6 @@
 #### [ネットショップの詳細タブ](./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md)
 ### [コンサルティング サービス オファーの発行](./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md) 
 
-## [公開元プロファイルの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
-## [ユーザーの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
-## [GDPR コンプライアンス](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
-
 ## 体験版
 ### [体験版とは](./cloud-partner-portal-orig/what-is-test-drive.md)
 ### [Azure Resource Manager の体験版](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)

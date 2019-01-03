@@ -203,7 +203,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     b. **[次へ]** をクリックします。
 
-1.  **[完了]** をクリックします。
+1. **[完了]** をクリックします。
 
     ![Configure single sign-on](./media/kantegassoforbamboo-tutorial/addon11.png)
 
