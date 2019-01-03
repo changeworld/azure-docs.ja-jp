@@ -186,7 +186,7 @@ public IDictionary<string, string> Execute(
 
    d. 右側にあるプロジェクトの種類の一覧から **[クラス ライブラリ]** を選択します。
 
-   e.  **MyDotNetActivity** for the **MyDotNetActivity**に関する記事を参照してください。
+   e. **[プロジェクト名]** に「**MyDotNetActivity**」と入力します。
 
    f. **[場所]** で [**C:\\ADF**] を選択します。 **ADF** フォルダーが存在しない場合は作成します。
 
