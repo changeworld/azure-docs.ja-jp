@@ -19,19 +19,21 @@ ms.locfileid: "49321293"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram メソッド
 
-**calchistogram** REST API を使用して、論文エンティティのセットの属性値の分布を計算します。
+**calchistogram** REST API を使用して、論文エンティティのセットの属性値の分布を計算します。          
+
 
 **REST エンドポイント:**
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
-```
-
+``` 
+<br>
+  
 ## <a name="request-parameters"></a>要求パラメーター
 
 Name  |値 | 必須  |説明
 -----------|----------|--------|----------
 **expr**    |テキスト文字列 | はい  |ヒストグラムの計算の対象となるエンティティを指定するクエリ式。
-**model** |テキスト文字列 | いいえ  |クエリを実行するモデルの名前を選択します。 現時点では、既定値は *latest* です。
+**model** |テキスト文字列 | いいえ  |クエリを実行するモデルの名前を選択します。  現時点では、既定値は *latest* です。
 **attributes** | テキスト文字列 | いいえ <br>既定値: | 応答に含まれている属性値を指定するコンマ区切りリスト。 属性名の大文字と小文字は区別されます。
 **count** |Number | いいえ <br>既定値: 10 |返す結果の数。
 **offset**  |Number | いいえ <br>既定: 0 |返す最初の結果のインデックス。
@@ -53,6 +55,7 @@ Name | 説明
 **histograms[x].histogram[y].count**  |この属性値を持つ一致エンティティの数。
 **aborted** | 要求がタイムアウトした場合は True です。
 
+
 #### <a name="example"></a>例:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4
@@ -67,9 +70,9 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4
 ```
-<br>この要求に対する応答では、まずクエリ式に一致する 37 の論文があることが示されます。 *Year* 属性については、クエリで指定された 2012 より後の各年 (つまり 2013、2014、2015) に 1 つずつ、合計 3 つの異なる値があります。 3 つの個別の値に対する合計論文数は 37 です。 各 "*年*" について、ヒストグラムは、値、自然対数確率の合計、一致エンティティの数を示しています。
+<br>この要求に対する応答では、まずクエリ式に一致する 37 の論文があることが示されます。  *Year* 属性については、クエリで指定された 2012 より後の各年 (つまり 2013、2014、2015) に 1 つずつ、合計 3 つの異なる値があります。  3 つの個別の値に対する合計論文数は 37 です。  各 "*年*" について、ヒストグラムは、値、自然対数確率の合計、一致エンティティの数を示しています。     
 
-"*研究分野*" のヒストグラムは、34 の異なる研究分野があることを示しています。 論文は複数の研究分野に関連付けられている可能性があるので、合計数 (53) は一致エンティティの数よりも大きくなることがあります。 34 の異なる値がありますが、*count=4* パラメーターが指定されているので、応答には上位 4 つのみが含まれます。
+"*研究分野*" のヒストグラムは、34 の異なる研究分野があることを示しています。 論文は複数の研究分野に関連付けられている可能性があるので、合計数 (53) は一致エンティティの数よりも大きくなることがあります。  34 の異なる値がありますが、*count=4* パラメーターが指定されているので、応答には上位 4 つのみが含まれます。
 
 ```JSON
 {

@@ -131,6 +131,7 @@ JSON の応答例:
 ]
 ```
 
+
 ### <a name="pos-tags-response-json"></a>POS タグ応答 (JSON)
 
 結果は文字列リストのリストになります。
