@@ -161,7 +161,7 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
 
         ![カスタム モジュールを追加する](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-9.png) 
  
-6.  **[Specify routes]\(ルートの指定\)** で、モジュール間のルートを設定します。 この場合、クラウド共有にデータをプッシュするローカル共有の名前を指定します。  **[次へ]** をクリックします。
+6.  **[Specify routes]\(ルートの指定\)** で、モジュール間のルートを設定します。 この場合、クラウド共有にデータをプッシュするローカル共有の名前を指定します。 **[次へ]** をクリックします。
 
     ルートは、次のルート文字列で置き換えることができます。       `"route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"`
 

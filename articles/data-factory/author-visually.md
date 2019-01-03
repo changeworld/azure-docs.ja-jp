@@ -166,11 +166,11 @@ GitHub リポジトリを構成するには、使用している Azure サブス
 
 **構成方法 1 (パブリック リポジトリ): [始めましょう] ページ**
 
-Azure Data Factory で  **[始めましょう]**  ページに移動します。  **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+Azure Data Factory で  **[始めましょう]**  ページに移動します。 [ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
 
 ![Data Factory の [始めましょう] ページ](media/author-visually/github-integration-image1.png)
 
- **[リポジトリ設定]**  構成ウィンドウが表示されます。
+[ **リポジトリ設定**] 構成ウィンドウが表示されます。
 
 ![GitHub リポジトリの設定](media/author-visually/github-integration-image2.png)
 
@@ -188,7 +188,7 @@ Azure Data Factory で  **[始めましょう]**  ページに移動します�
 
 #### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>構成方法 2 (パブリック リポジトリ): UX 作成キャンバス
 
-Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを見つけます。  **[Data Factory]**  ドロップダウン メニューを選択して、 **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを見つけます。 [ **Data Factory**] ドロップダウン メニューを選択して、[ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
 
 構成ウィンドウが表示されます。 構成設定について詳しくは、前述の「 *構成方法 1*」の説明をご覧ください。
 
@@ -198,11 +198,11 @@ Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを
 
  #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>構成方法 1 (Enterprise リポジトリ): [始めましょう] ページ
 
-Azure Data Factory で  **[始めましょう]**  ページに移動します。  **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+Azure Data Factory で  **[始めましょう]**  ページに移動します。 [ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
 
 ![Data Factory の [始めましょう] ページ](media/author-visually/github-integration-image1.png)
 
- **[リポジトリ設定]**  構成ウィンドウが表示されます。
+[ **リポジトリ設定**] 構成ウィンドウが表示されます。
 
 ![GitHub リポジトリの設定](media/author-visually/github-integration-image3.png)
 
@@ -222,7 +222,7 @@ Azure Data Factory で  **[始めましょう]**  ページに移動します�
 
 #### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>構成方法 2 (Enterprise リポジトリ): UX 作成キャンバス
 
-Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを見つけます。  **[Data Factory]**  ドロップダウン メニューを選択して、 **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを見つけます。 [ **Data Factory**] ドロップダウン メニューを選択して、[ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
 
 構成ウィンドウが表示されます。 構成設定について詳しくは、前述の「 *構成方法 1*」の説明をご覧ください。
 
