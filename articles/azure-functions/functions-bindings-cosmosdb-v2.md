@@ -20,7 +20,7 @@ ms.locfileid: "53344348"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Functions 2.x の Azure Cosmos DB バインド
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="使用している Azure Functions ランタイムのバージョンを選択してください: "]
 > * [Version 1](functions-bindings-cosmosdb.md)
 > * [Version 2](functions-bindings-cosmosdb-v2.md)
 
