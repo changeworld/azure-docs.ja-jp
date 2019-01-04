@@ -1,5 +1,5 @@
 ---
-title: ファイアウォールの内側にある Key Vault へのアクセス | Microsoft Docs
+title: ファイアウォールの内側から Key Vault へのアクセス | Microsoft Docs
 description: ファイアウォールの内側にあるアプリケーションから Azure Key Vault にアクセスする方法について説明します。
 services: key-vault
 documentationcenter: ''
@@ -21,7 +21,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/07/2018
 ms.locfileid: "44157903"
 ---
-# <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの内側にある Azure Key Vault へのアクセス
+# <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの内側から Azure Key Vault へのアクセス
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>Q: Key Vault クライアント アプリケーションをファイアウォールの内側に配置する必要があります。 キー コンテナーへのアクセスを有効にするために開く必要があるポート、ホスト、IP アドレスを教えてください。
 キー コンテナーにアクセスするには、Key Vault クライアント アプリケーションが、各種の機能のために複数のエンドポイントにアクセスする必要があります。
 
