@@ -1,5 +1,5 @@
 ---
-title: クイック スタート - Windows 用 Azure Kubernetes クラスター
+title: (非推奨) クイック スタート - Windows 用 Azure Kubernetes クラスター
 description: Azure CLI を使用して Azure Container Service で Windows コンテナー用 Kubernetes クラスターを作成する方法を簡単に説明します。
 services: container-service
 author: dlepow
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 24659f60e44dc306451528cc7bfb823ad14268a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dfc1d2128e1cf3b4d6b4d9e5141116a2b2ff9c0d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946155"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000601"
 ---
-# <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Windows コンテナー用の Kubernetes クラスターをデプロイする
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(非推奨) Windows コンテナー用の Kubernetes クラスターをデプロイする
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して、[Kubernetes](https://kubernetes.io/docs/home/) クラスターを [Azure Container Service](../container-service-intro.md) にデプロイする方法を詳しく説明します。 クラスターをデプロイしたら、Kubernetes `kubectl` コマンドライン ツールを使用してクラスターに接続し、最初の Windows コンテナーをデプロイします。
 

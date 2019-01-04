@@ -1,19 +1,19 @@
 ---
-title: 'ポイント対サイトの証明書の生成とエクスポート: PowerShell: Azure | Microsoft Docs'
+title: ポイント対サイトの証明書を生成してエクスポートするPowerShell:Azure | Microsoft Docs
 description: Windows 10 または Windows Server 2016 で PowerShell を使用して、自己署名ルート証明書の作成、公開キーのエクスポート、クライアント証明書の生成を行います。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 09/05/2018
+ms.topic: conceptual
+ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: 18d705f68ff06621e30c051dac9fb9607fd043ac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: e635eddabe239268829d3a907df10392c7e1b6a3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300938"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850960"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>PowerShell を使用したポイント対サイトの証明書の生成とエクスポート
 
@@ -27,7 +27,7 @@ Windows 10 または Windows Server 2016 コンピューターを使用できな
 
 New-SelfSignedCertificate コマンドレットを使用して、自己署名ルート証明書を作成します。 追加のパラメーターについては、「[New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)」を参照してください。
 
-1. Windows 10 または Windows Server 2016 を実行しているコンピューターから、昇格された特権を使用して Windows PowerShell コンソールを開きます。
+1. Windows 10 または Windows Server 2016 を実行しているコンピューターから、昇格された特権を使用して Windows PowerShell コンソールを開きます。 これらの例は、Azure Cloud Shell の [使ってみる] では動作しません。 これらの例は、ローカルで実行する必要があります。
 2. 次の例を使用して、自己署名ルート証明書を作成します。 次の例では、"P2SRootCert" という名前の自己署名ルート証明書が作成され、"Certificates-Current User\Personal\Certificates" に自動的にインストールされます。 *certmgr.msc*、または*ユーザー証明書の管理*を開くと、証明書を表示できます。
 
   ```powershell

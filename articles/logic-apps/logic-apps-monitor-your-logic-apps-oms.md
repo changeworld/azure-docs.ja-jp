@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: c65cc24f9b0083e9c873465008490bf00ea83852
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 70242de62e976b05e2708dfd4991915c854d4bb4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232378"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995638"
 ---
 # <a name="monitor-logic-apps-with-azure-log-analytics"></a>Azure Log Analytics でロジック アプリを監視する
 
@@ -23,11 +23,11 @@ ms.locfileid: "50232378"
 既存のロジック アプリに対して Azure Log Analytics を有効にするには、[診断ログを有効にしてロジック アプリのランタイム データを Log Analytics に送信する](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)手順に従います。
 
 > [!NOTE]
-> このページでは、以前、Microsoft Operations Management Suite (OMS) を使用してこれらのタスクを実行する手順を説明していましたが、OMS は [2019 年 1 月に廃止される](../log-analytics/log-analytics-oms-portal-transition.md)ため、代わりに Azure Log Analytics を使用する手順に置き換えられています。 
+> このページでは、以前、Microsoft Operations Management Suite (OMS) を使用してこれらのタスクを実行する手順を説明していましたが、OMS は [2019 年 1 月に廃止される](../azure-monitor/platform/oms-portal-transition.md)ため、代わりに Azure Log Analytics を使用する手順に置き換えられています。 
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、Log Analytics ワークスペースが必要です。 [Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。 
+開始する前に、Log Analytics ワークスペースが必要です。 [Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。 
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>ロジック アプリの作成時に診断ログの記録をオンにする
 
@@ -66,7 +66,7 @@ ms.locfileid: "50232378"
 
    ![Log Analytics ワークスペースを選択する](./media/logic-apps-monitor-your-logic-apps-oms/select-log-analytics-workspace.png)
 
-1. **[Log Analytics の起動と開始]** > **[監視ソリューションの構成]** の順に選択し、**[ソリューションの表示]** を選択します。
+1. **[Log Analytics の使用を開始する]** > **[監視ソリューションの構成]** の順に選択し、**[ソリューションの表示]** を選択します。
 
    ![[ソリューションの表示] を選択する](media/logic-apps-monitor-your-logic-apps-oms/log-analytics-workspace.png)
 
@@ -116,17 +116,17 @@ ms.locfileid: "50232378"
 
      追跡対象プロパティを新たに追加した場合、最初に表示されるまでに 10 - 15 分かかる場合があります。 [ロジック アプリに追跡対象プロパティを追加する方法](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)をご覧ください。
 
-   * **[再送信]** : 失敗、成功、または実行中の状態の、1 つ以上のロジック アプリの実行を再送信できます。 再送信する実行のチェックボックスをオンにして、**[再送信]** を選択します。 
+   * **[再送信]:** 失敗、成功、または実行中の状態の、1 つ以上のロジック アプリの実行を再送信できます。 再送信する実行のチェックボックスをオンにして、**[再送信]** を選択します。 
 
      ![ロジック アプリの実行を再送信する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
 1. これらの結果をフィルター処理するには、クライアント側およびサーバー側の両方でフィルター処理を実行します。
 
-   * **クライアント側のフィルター**: 各列で、必要なフィルターを選択します。
+   * **クライアント側のフィルター**:各列で、必要なフィルターを選択します。
 
      ![列フィルターの例](media/logic-apps-monitor-your-logic-apps-oms/filters.png)
 
-   * **サーバー側のフィルター**: 特定の時間枠を選択または表示される実行の数を制限するには、ページ上部のスコープ コントロールを使用します。 既定では、一度に 1000 件のレコードのみ表示されます。
+   * **サーバー側のフィルター**:特定の時間枠を選択または表示される実行の数を制限するには、ページ上部のスコープ コントロールを使用します。 既定では、一度に 1000 件のレコードのみ表示されます。
    
      ![時間枠を変更する](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
  

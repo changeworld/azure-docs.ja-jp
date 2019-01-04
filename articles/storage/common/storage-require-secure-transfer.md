@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 201bf1e5d3580902934f139b70ca5363e7cc5930
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 72e0937e91a7287d240bbdb25996865f934d432d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523017"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876504"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Azure Storage で安全な転送が必要
 
 [安全な転送が必須] オプションは、セキュリティで保護された接続からアカウントへの要求を許可するだけで、ストレージ アカウントのセキュリティを強化することができます。 たとえば、ストレージ アカウントにアクセスするために REST API を呼び出している場合、HTTPS を使用して接続する必要があります。 [安全な転送が必須] では、HTTP を使用する要求は拒否されます。
 
-Azure Files サービスを使用する場合、[安全な転送が必須] を有効にすると、暗号化をしない接続は失敗します。 これには、暗号化なしの SMB 2.1、SMB 3.0、および Linux SMB クライアントの一部のバージョンを使用するシナリオが含まれます。 
+Azure Files サービスを使用する場合、[安全な転送が必須] を有効にすると、暗号化をしない接続は失敗します。 これには、暗号化なしの SMB 2.1、SMB 3.0、および Linux SMB クライアントの一部のバージョンを使用するシナリオが含まれます。 
 
-既定では、[安全な転送が必須] オプションは無効になっています。
+SDK を使用してストレージ アカウントを作成した場合、既定で [安全な転送が必須] オプションは無効です。 また、Azure portal でストレージ アカウントを作成した場合は、既定で有効です。
 
 > [!NOTE]
 > Azure Storage ではカスタム ドメイン名の HTTPS はサポートされないため、カスタム ドメイン名を使用している場合、このオプションは適用されません。 また、クラシック ストレージ アカウントはサポートされていません。
@@ -49,13 +49,13 @@ Azure Files サービスを使用する場合、[安全な転送が必須] を�
 
 プログラムで安全な転送を必須にするには、以下の REST API、ツール、またはライブラリを利用して、ストレージ アカウント プロパティの _supportsHttpsTrafficOnly_ 設定を使用します。
 
-* [REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts) (バージョン: 2016-12-01)
-* [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0) (バージョン: 4.1.0)
-* [CLI](https://pypi.python.org/pypi/azure-cli-storage/2.0.11) (バージョン: 2.0.11)
-* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/) (バージョン: 1.1.0)
-* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (バージョン: 6.3.0)
-* [Python SDK](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0) (バージョン: 1.1.0)
-* [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage) (バージョン: 0.11.0)
+* [REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts) (バージョン:2016-12-01)
+* [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0) (バージョン:4.1.0)
+* [CLI](https://pypi.python.org/pypi/azure-cli-storage/2.0.11) (バージョン:2.0.11)
+* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/) (バージョン:1.1.0)
+* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (バージョン:6.3.0)
+* [Python SDK](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0) (バージョン:1.1.0)
+* [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage) (バージョン:0.11.0)
 
 ### <a name="enable-secure-transfer-required-setting-with-powershell"></a>PowerShell で [安全な転送が必須] の設定を有効にする
 

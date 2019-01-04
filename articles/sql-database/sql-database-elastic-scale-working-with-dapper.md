@@ -3,7 +3,7 @@ title: Dapper での Elastic Database クライアント ライブラリの使�
 description: Dapper でのエラスティック データベース クライアント ライブラリの使用。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3a25d68b0f0bdd97b204906af87fac8013ad3cff
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14eb92141a9d27d9f8978abb6d5c9a738c821ead
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253025"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866306"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Dapper でのエラスティック データベース クライアント ライブラリの使用
 このドキュメントは、Dapper を使用してアプリケーションを構築する開発者が、 [エラスティック データベース ツール](sql-database-elastic-scale-introduction.md) を導入し、シャーディングを実装してデータ層をスケール アウトするアプリケーションを作成する場合に使用します。  このドキュメントでは、エラスティック データベース ツールと統合するために Dapper ベースのアプリケーションに加える必要がある変更点を示します。 ここでは、Dapper を使用してエラスティック データベース シャード管理とデータ依存ルーティングを構成する方法を重点的に説明します。 
 
-**サンプル コード**: [エラスティック データベースツール for Azure SQL Database - Dapper integration (Azure SQL Database のエラスティック データベース ツール - Dapper の統合)](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
+**サンプル コード**:[Elastic database tools for Azure SQL Database - Dapper integration (Azure SQL Database 用エラスティック データベース ツール - Dapper の統合)](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
 
 **Dapper** と **DapperExtensions** を Azure SQL Database の Elastic Database クライアント ライブラリに統合することは容易です。 アプリケーションではデータ依存ルーティングを使用できます。そのためには、[クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn765902.aspx)の [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しを使用するように新しい [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) オブジェクトを作成する操作と開く操作を変更します。 これにより、アプリケーションの変更が、新しい接続を作成して開く場所だけに制限されます。 
 
@@ -49,9 +49,9 @@ Elastic Database ライブラリでは、*シャードレット*と呼ばれる�
 ### <a name="requirements-for-dapper-integration"></a>Dapper の統合の要件
 エラスティック データベース クライアント ライブラリと Dapper API の両方を使用する場合は、次のプロパティを維持することを想定します。
 
-* **スケール アウト**: アプリケーションの容量要求に合わせて必要に応じてシャード化されたアプリケーションのデータ層のデータベースを追加または削除します。 
-* **一貫性**: アプリケーションはシャーディングを使用してスケールアウトされるため、データ依存ルーティングを実行する必要があります。 そのためには、ライブラリのデータ依存ルーティング機能を使用します。 具体的には、破損や誤ったクエリ結果を回避するために、シャード マップ マネージャーを通じて仲介された接続を提供して、検証と一貫性を維持します。 これにより、たとえば、Split/Merge API を使用して特定のシャードレットを別のシャードに移動中の場合は、そのシャードレットに対する接続が拒否または停止されます。
-* **オブジェクト マッピング**: Dapper が提供するマッピングの利便性を保ち、アプリケーションと基になるデータベース構造でクラス間の変換を行います。 
+* **スケールアウト**:アプリケーションの容量要求に合わせて必要に応じてシャード化されたアプリケーションのデータ層のデータベースを追加または削除します。 
+* **整合性**:アプリケーションはシャーディングを使用してスケールアウトされるため、データ依存ルーティングを実行する必要があります。 そのためには、ライブラリのデータ依存ルーティング機能を使用します。 具体的には、破損や誤ったクエリ結果を回避するために、シャード マップ マネージャーを通じて仲介された接続を提供して、検証と一貫性を維持します。 これにより、たとえば、Split/Merge API を使用して特定のシャードレットを別のシャードに移動中の場合は、そのシャードレットに対する接続が拒否または停止されます。
+* **オブジェクト マッピング**:Dapper が提供するマッピングの利便性を保ち、アプリケーションと基になるデータベース構造でクラス間の変換を行います。 
 
 次のセクションでは、**Dapper** と **DapperExtensions** に基づくこれらのアプリケーションの要件のガイダンスを示します。
 
@@ -137,7 +137,7 @@ Dapper には、データベース アプリケーションの開発時にデー
     }
 
 ### <a name="handling-transient-faults"></a>一時的エラーの処理
-Microsoft Patterns & Practices チームでは、「[Transient Fault Handling Application Block (一時的な障害処理アプリケーション ブロック)](https://msdn.microsoft.com/library/hh680934.aspx)」を公開しています。これは、クラウドでの実行時によく発生する一時的なエラー状態をアプリケーション開発者が軽減する際に役立ちます。 詳細については、「[Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block (成功のための耐力と秘密: 一時的な障害処理アプリケーション ブロック)](https://msdn.microsoft.com/library/dn440719.aspx)」をご覧ください。
+Microsoft Patterns & Practices チームでは、「[Transient Fault Handling Application Block (一時的な障害処理アプリケーション ブロック)](https://msdn.microsoft.com/library/hh680934.aspx)」を公開しています。これは、クラウドでの実行時によく発生する一時的なエラー状態をアプリケーション開発者が軽減する際に役立ちます。 詳細については、「[Perseverance, Secret of All Triumphs:Using the Transient Fault Handling Application Block (成功のための耐力と秘密: 一時的な障害処理アプリケーション ブロック)](https://msdn.microsoft.com/library/dn440719.aspx)」を参照してください。
 
 次のコード サンプルでは、一時的エラーのライブラリを使用して一時的エラーを防ぎます。 
 

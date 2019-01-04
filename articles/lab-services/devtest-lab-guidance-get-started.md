@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 1d00dbe23fbd724893ba2b964fc54a3ea9066dcb
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 87baef8ddb5b5d8fc979ba5afb9f9b13cb4fc2ef
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250834"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876538"
 ---
 # <a name="get-started-with-using-azure-devtest-labs"></a>Azure DevTest Labs の使用を始める
 DevTest Labs の詳細を確認することにした場合、概念実証と規模拡大デプロイという 2 つの一般的な以後の方針があります。 
@@ -51,7 +51,7 @@ DevTest Labs 実装の主要なシナリオは 3 つあります。
 
 - テスト担当者は、再利用可能なテンプレートとアーティファクトを使って Windows と Linux の環境を迅速にプロビジョニングすることで、アプリケーションの最新バージョンをテストできます。
 - テスト担当者は、複数のテスト エージェントをプロビジョニングすることで、ロード テストをスケールアップできます
-- 管理者は、VSTS にラボを接続して、DevOps のシナリオを有効にできます
+- 管理者は、Azure DevOps にラボを接続して、DevOps のシナリオを有効にできます
 - 管理者は、次のことが確実に行われるようにしてコストを管理できます。
     - テスト担当者は、必要なものより多くの VM を取得できません
     - VM は、使われていないときはシャットダウンされます
@@ -62,4 +62,4 @@ Azure DevTest Labs のラボは、ワークショップ、ハンズオン ラボ
 
 
 ## <a name="next-steps"></a>次の手順
-このシリーズの次の記事「[DevTest Labs デプロイのスケールアップ](devtest-lab-guidance-scale.md)」をご覧ください
+このシリーズの次の記事をご覧ください。[DevTest Labs デプロイのスケールアップ](devtest-lab-guidance-scale.md)

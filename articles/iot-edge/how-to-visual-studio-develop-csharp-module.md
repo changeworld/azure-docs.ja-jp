@@ -1,20 +1,20 @@
 ---
-title: Visual Studio 2017 で Azure IoT Edge 用の C# モジュールを開発してデバッグする | Microsoft Docs
+title: Visual Studio で C# モジュールを開発してデバッグする - Azure IoT Edge | Microsoft Docs
 description: Visual Studio 2017 を使用して Azure IoT Edge 用の C# モジュールを開発してデバッグします
 services: iot-edge
-keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
 ms.date: 09/24/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 091eb6af871cc53dff3459c55c668e8ffb227984
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 547989152320678ec195c4e8a93965cfbbd0f341
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567470"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097847"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Visual Studio 2017 を使用して Azure IoT Edge 用の C# モジュールを開発してデバッグする (プレビュー)
 
@@ -53,7 +53,7 @@ Visual Studio 2017 の準備ができたら、以下も必要です。
 
 1. **[ツール]** メニューの **[拡張機能と更新プログラム]** を選択します。 **[インストール済み] > [ツール]** を展開すると、**Azure IoT Edge** と **Cloud Explorer** が表示されます。
 
-2. インストールされているバージョンを確認します。 このバージョンと、Visual Studio Marketplace での最新バージョンを比較できます ([Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS)、[Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.azureiotedgetools))
+2. インストールされているバージョンを確認します。 このバージョンと、Visual Studio Marketplace での最新バージョンを比較できます ([Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS)、[Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge))
 
 3. インストールされているバージョンが古い場合は、次のセクションの説明に従って Visual Studio でツールを更新します。
 

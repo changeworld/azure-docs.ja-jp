@@ -1,6 +1,6 @@
 ---
-title: VSTS 継続的インテグレーションと配信パイプラインへの Azure DevTest Labs の統合 | Microsoft Docs
-description: VSTS 継続的インテグレーションと配信パイプラインに Azure DevTest Labs を統合する方法を説明します
+title: Azure DevTest Labs を Azure Pipelines の継続的インテグレーションと配信パイプラインに統合する | Microsoft Docs
+description: Azure Pipelines の継続的インテグレーションと配信パイプラインに Azure DevTest Labs を統合する方法を説明します
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b7ce07547eccd52a8b10d4cffecaf1456778da4a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 459b06df954d9cc913b6d1503c9f876f93b494e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301210"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082953"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Azure DevOps 継続的インテグレーションと配信パイプラインへの Azure DevTest Labs の統合
 Azure DevOps にインストールされる *Azure DevTest Labs タスク*拡張機能を使用して、CI/CD のビルド・リリース パイプラインを Azure DevTest Labs に簡単に統合できます。 この拡張機能は、次の 3 つのタスクをインストールします。 
@@ -138,7 +138,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
 1. リリース パイプラインで **[タスクの追加]** を選択し、**[展開]** タブで *[Azure PowerShell]* タスクを追加します。 次に示すようにタスクを構成します。
 
    > [!NOTE]
-   > DevTest Labs VM の詳細情報を収集するには、[展開: Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell)に関する記事を参照してスクリプトを実行します。
+   > DevTest Labs VM の詳細情報を収集するには、「[Deploy:Azure PowerShell (展開: Azure PowerShell)](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3)」を参照してスクリプトを実行してください。
 
    a. **[Azure 接続の種類]** で、**[Azure Resource Manager]** を選択します。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 3c2b44455b417d1bc764337d91a5535d7ffa34a5
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ad6fe023c4e93328331140dc3552ae1afd7c83ef
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783374"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970644"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,8 +43,8 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
 この記事では、次の 2 つのデータ移動シナリオでセキュリティに関する考慮事項を確認します。 
 
-- **クラウド シナリオ**: このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure SQL Data Warehouse、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などの管理クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが該当します。 サポートされているデータ ソースの完全な一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
-- **ハイブリッド シナリオ**: このシナリオでは、ソースまたは移動先のどちらかが、ファイアウォールの内側またはオンプレミスの企業ネットワーク内にあります。 あるいは、データ ストアがプライベート ネットワークまたは仮想ネットワーク内 (ほとんどの場合はソース) にあり、パブリックにアクセスできません。 仮想マシンでホストされているデータベース サーバーもこのシナリオに該当します。
+- **クラウド シナリオ**:このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure SQL Data Warehouse、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などの管理クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが該当します。 サポートされているデータ ソースの完全な一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
+- **ハイブリッド シナリオ**:このシナリオでは、ソースまたは移動先のどちらかが、ファイアウォールの内側またはオンプレミスの企業ネットワーク内にあります。 あるいは、データ ストアがプライベート ネットワークまたは仮想ネットワーク内 (ほとんどの場合はソース) にあり、パブリックにアクセスできません。 仮想マシンでホストされているデータベース サーバーもこのシナリオに該当します。
 
 ## <a name="cloud-scenarios"></a>クラウド シナリオ
 
@@ -126,11 +126,11 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 次の表には、ハイブリッド データ移動のソースと移動先の場所の異なる組み合わせに基づいたネットワークとセルフホステッド統合ランタイムの構成の推奨事項がまとめてあります。
 
-| ソース      | 変換先                              | ネットワーク構成                    | 統合ランタイムのセットアップ                |
+| ソース      | 宛先                              | ネットワーク構成                    | 統合ランタイムのセットアップ                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| オンプレミスの | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | セルフホステッド統合ランタイムはオンプレミスまたは仮想ネットワークの Azure 仮想マシンにインストールできます。 |
-| オンプレミスの | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング)           | セルフホステッド統合ランタイムはオンプレミスまたは仮想ネットワークの Azure 仮想マシンにインストールできます。 |
-| オンプレミスの | パブリック エンドポイントが存在する Azure ベースのサービス | ExpressRoute (パブリック ピアリング)            | セルフホステッド統合ランタイムはオンプレミスにインストールする必要があります。 |
+| オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | セルフホステッド統合ランタイムはオンプレミスまたは仮想ネットワークの Azure 仮想マシンにインストールできます。 |
+| オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング)           | セルフホステッド統合ランタイムはオンプレミスまたは仮想ネットワークの Azure 仮想マシンにインストールできます。 |
+| オンプレミス | パブリック エンドポイントが存在する Azure ベースのサービス | ExpressRoute (パブリック ピアリング)            | セルフホステッド統合ランタイムはオンプレミスにインストールする必要があります。 |
 
 次の図は、オンプレミス データベースと Azure サービス間でのデータの移動に ExpressRoute および IPSec VPN (Azure Virtual Network を使用) を使用した場合のセルフホステッド統合ランタイムの使用方法を示しています。
 
@@ -167,7 +167,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 | ------------- | ---------------------------------------- |
 | 8050 (TCP)    | 「[Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する](encrypt-credentials-self-hosted-integration-runtime.md)」に説明されているように PowerShell 暗号化コマンドレットと、セルフホステッド統合ランタイムのオンプレミス データ ストアに安全に資格情報を設定するために資格情報マネージャー アプリケーションで必要です。 |
 
-![ゲートウェイのポートの要件](media\data-movement-security-considerations/gateway-port-requirements.png) 
+![ゲートウェイのポートの要件](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
 #### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>データ ストアの IP 構成とホワイトリスト登録
 クラウドの一部のデータ ストアでは、ストアにアクセスするコンピューターの IP アドレスをホワイトリストに登録する必要もあります。 セルフホステッド統合ランタイム コンピューターの IP アドレスがファイアウォールで適切にホワイトリストに登録または構成されていることを確認します。
