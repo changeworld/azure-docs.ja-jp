@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure Data Factory を使用して Amazon Redshift からのデータをコピーする | Microsoft Docs
 description: Azure Data Factory を使用して、Amazon Redshift からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 services: data-factory
@@ -21,7 +21,7 @@ ms.lasthandoff: 12/06/2018
 ms.locfileid: "52970163"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-amazon-redshift-connector.md)
 > * [現在のバージョン](connector-amazon-redshift.md)
 
