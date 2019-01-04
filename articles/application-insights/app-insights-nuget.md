@@ -7,16 +7,15 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: b6188bbf89d9aee842d7f8e232a820b59c4d9e31
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 76cdd4bd4d95c7c11906f9c02a0f5cfa2326390e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023255"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000772"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet パッケージ
 
@@ -24,7 +23,7 @@ Application Insights 用の安定版リリースの NuGet パッケージの最�
 
 ## <a name="common-packages-for-aspnet"></a>ASP.NET 用の一般的なパッケージ
 
-| パッケージ名 | 安定バージョン | 説明 | [ダウンロード] |
+| パッケージ名 | 安定バージョン | 説明 | ダウンロード |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights | 2.8.0 | すべての Application Insights Telemetry タイプの送信のためのコア機能を提供します。他のすべての Application Insights パッケージの依存パッケージです。 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
 |Microsoft.ApplicationInsights.Agent.Intercept | 2.4.0 | メソッド呼び出しのインターセプションを有効にします。 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
@@ -36,7 +35,7 @@ Application Insights 用の安定版リリースの NuGet パッケージの最�
 
 ## <a name="common-packages-for-aspnet-core"></a>ASP.NET Core 用の一般的なパッケージ
 
-| パッケージ名 | 安定バージョン | 説明 | [ダウンロード] |
+| パッケージ名 | 安定バージョン | 説明 | ダウンロード |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.AspNetCore | 2.5.0 | Application Insights for ASP.NET Core Web アプリケーション。 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
 | Microsoft.ApplicationInsights | 2.8.0 | このパッケージは、すべての Application Insights Telemetry タイプの送信のためのコア機能を提供します。他のすべての Application Insights パッケージの依存パッケージです。 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
@@ -47,7 +46,7 @@ Application Insights 用の安定版リリースの NuGet パッケージの最�
 
 ## <a name="listenerscollectorsappenders"></a>リスナー/コレクター/アペンダー
 
-| パッケージ名 | 安定バージョン | 説明 | [ダウンロード] |
+| パッケージ名 | 安定バージョン | 説明 | ダウンロード |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.DiagnosticSourceListener | 2.7.2 |  DiagnosticSource から Application Insights にイベントを転送できます。 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) |
 | Microsoft.ApplicationInsights.EventSourceListener | 2.7.2 | Application Insights EventSourceListener を使用すると、EventSource イベントのデータを Application Insights に送信できます。 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) |
@@ -59,23 +58,23 @@ Application Insights 用の安定版リリースの NuGet パッケージの最�
 
 ## <a name="service-fabric"></a>Service Fabric
 
-| パッケージ名 | 安定バージョン | 説明 | [ダウンロード] |
+| パッケージ名 | 安定バージョン | 説明 | ダウンロード |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.ServiceFabric | 2.2.0 | このパッケージは、アプリケーションが実行しているサービス ファブリック コンテキストでテレメトリを自動的に修飾します。 ネイティブの Service Fabric アプリケーションでは、この NuGet を使用しないでください。 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric/) |
 | Microsoft.ApplicationInsights.ServiceFabric.Native | 2.2.0 | Service Fabric アプリケーション用の Application Insights モジュール。 この NuGet はネイティブの Service Fabric アプリケーションのみで使用します。 コンテナーで実行しているアプリケーションの場合は、Microsoft.ApplicationInsights.ServiceFabric パッケージを使用します。 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric.Native/) |  
 
 ## <a name="status-monitor"></a>Status Monitor
 
-| パッケージ名 | 安定バージョン | 説明 | [ダウンロード] |
+| パッケージ名 | 安定バージョン | 説明 | ダウンロード |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  x64 アプリケーションの実行時データ収集を有効化 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  x86 アプリケーションの実行時データ収集を有効化。 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-これらのパッケージは、[Status Monitor](app-insights-monitor-performance-live-website-now.md) の実行時監視のコア機能を構成します。 これらのパッケージを直接ダウンロードする必要はありません。Status Monitor インストーラーを使用してください。 これらのパッケージの内部での動作について詳しく理解するには、開発者の 1 人によるこの[ブログ記事](http://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)をまずご覧ください。
+これらのパッケージは、[Status Monitor](app-insights-monitor-performance-live-website-now.md) の実行時監視のコア機能を構成します。 これらのパッケージを直接ダウンロードする必要はありません。Status Monitor インストーラーを使用してください。 これらのパッケージの内部での動作について詳しく理解するには、開発者の 1 人によるこの[ブログ記事](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)をまずご覧ください。
 
 ## <a name="additional-packages"></a>その他のパッケージ
 
-| パッケージ名 | 安定バージョン | 説明 | [ダウンロード] |
+| パッケージ名 | 安定バージョン | 説明 | ダウンロード |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.AzureWebSites | 2.6.5 | この拡張機能を使用すると、Azure App Service での Application Insights の監視が有効になります。 SDK バージョン 2.6.1。 手順: 'APPINSIGHTS_INSTRUMENTATIONKEY' アプリケーション設定を ikey に追加し、有効にするために webapp を再起動します。| [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
 | Microsoft.ApplicationInsights.Injector | 2.6.7 | このパッケージには、コード不要の Application Insights インジェクションのために必要なファイルが含まれています。 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |

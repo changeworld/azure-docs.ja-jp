@@ -1,11 +1,12 @@
 ---
-title: Azure Machine Learning に関してよく寄せられる質問 (FAQ) | Microsoft Docs
-description: 'Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。'
+title: Machine Learning Studio に関してよく寄せられる質問 (FAQ) - Azure | Microsoft Docs
+description: Azure Machine Learning Studio:効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。
 keywords: 機械の概要、予測モデリング、機械学習とは
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
 ms.component: studio
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 77ae05c240dbb099528d7224a936d90416366816
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 23de87bb566764540f1a7bf152d72bfdc0e3719f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247774"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091293"
 ---
-# <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning に関してよく寄せられる質問: 課金、機能、制限、サポート
+# <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Azure Machine Learning Studio FAQ:課金、機能、制限事項、およびサポート
 ここでは、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についてよく寄せられる質問とその回答をいくつか紹介します。 この FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
 
 **ここで見つからない質問がある場合**
@@ -29,15 +30,9 @@ ms.locfileid: "51247774"
 MSDN には、Azure Machine Learning に関するフォーラムがあり、データ サイエンス コミュニティのメンバーはここで、Azure Machine Learning に関する質問をすることができます。 このフォーラムは Azure Machine Learning チームが監視しています。 [Azure Machine Learning フォーラム](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)にアクセスして、既存の回答を検索するか、ご自身で新たに質問を投稿してください。
 
 ## <a name="general-questions"></a>一般的な質問
-**Azure Machine Learning とは**
-
-Azure Machine Learning は、クラウドで予測分析ソリューションを作成、テスト、操作、管理するための、フル マネージドのサービスです。 ブラウザーさえあれば、サインイン、データのアップロード、機械学習の実験をすぐに始めることができます。 ドラッグ アンド ドロップによる予測モデリング、モジュールの大きなパレット、開始用テンプレートのライブラリによって、一般的な機械学習のタスクがシンプルになり、作業時間が短縮されます。 詳細については、「 [Azure Machine Learning サービスの概要](https://azure.microsoft.com/services/machine-learning/)」に関するページをご覧ください。 機械学習の重要な用語と概念の説明については、[Azure Machine Learning の概要](what-is-machine-learning.md)に関するページをご覧ください。
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 **Machine Learning Studio とは**
 
-Machine Learning Studio は、Web ブラウザーを使用してアクセスするワークベンチ環境です。 Machine Learning Studio は、視覚的な構成インターフェイスにモジュールのパレットを備えており、実験の形式でエンド ツー エンドのデータサイエンス ワークフローを容易に構築できます。
+Machine Learning Studio は、Web ブラウザーを使用してアクセスするドラッグ アンド ドロップ キャンバス環境です。 Machine Learning Studio は、視覚的な構成インターフェイスにモジュールのパレットを備えており、実験の形式でエンド ツー エンドのデータサイエンス ワークフローを容易に構築できます。
 
 Machine Learning Studio の詳細については、「 [Machine Learning Studio とは](what-is-ml-studio.md)」をご覧ください。
 
@@ -60,8 +55,8 @@ Machine Learning Web サービスは、アプリケーションと Machine Learn
 
 Azure Machine Learning には、2 種類の Web サービスがあります。
 
-* 要求応答サービス (RRS) - 待ち時間が短くスケーラブルなサービス。Machine Learning Studio を使用して作成およびデプロイされたステートレスなモデルへのインターフェイスを提供します。
-* バッチ実行サービス (BES) - データ レコードのバッチをスコア付けする非同期のサービス。
+* 要求応答サービス (RRS):待ち時間が短くスケーラブルなサービス。Machine Learning Studio を使用して作成およびデプロイされたステートレスなモデルへのインターフェイスを提供します。
+* バッチ実行サービス (BES):データ レコードのバッチをスコア付けする非同期のサービス。
 
 REST API を使用して Web サービスにアクセスするには、いくつかの方法があります。 たとえば、Web サービスをデプロイしたときに生成されたサンプル コードを使用して、C#、R、または Python でアプリケーションを記述できます。
 
@@ -101,7 +96,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 * 推奨モジュール
 * Synthetic Minority Oversampling Technique (SMOTE) モジュール
-* スクリプト モジュール: R、Python、SQL
+* スクリプト モジュール:R、Python、SQL
 * 出力データ サイズが入力データ サイズを超えるモジュール ("結合"、"特徴ハッシュ" など)
 * イテレーションの数が非常に大きい場合のクロス検証、調整モデル ハイパーパラメーター、順序回帰、一対全多クラス
 
@@ -157,7 +152,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 
 **提供されているアルゴリズムから 1 つのアルゴリズムを選ぶ際のガイドラインはありますか。**
 
-[アルゴリズムの選択方法](algorithm-choice.md)」に関するページをご覧ください。
+ [アルゴリズムの選択方法](algorithm-choice.md)」に関するページをご覧ください。
 
 **提供されているアルゴリズムは、R または Python で記述されていますか。**
 
@@ -268,7 +263,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 * 推奨モジュール
 * Synthetic Minority Oversampling Technique (SMOTE) モジュール
-* スクリプト モジュール: R、Python、SQL
+* スクリプト モジュール:R、Python、SQL
 * 出力データ サイズが入力データ サイズを超えるモジュール ("結合"、"特徴ハッシュ" など)
 * イテレーションの数が非常に大きい場合のクロス検証、調整モデル ハイパーパラメーター、順序回帰、一対全多クラス
 
@@ -276,7 +271,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **ベクターのサイズに制限はありますか。**
 
-行と列は、それぞれ .NET 制限の相互作用数の上限 2,147,483,647 に制限されています。
+行と列は、それぞれ .NET 制限の相互作用数の上限2,147,483,647 に制限されています。
 
 **Web サービスを実行する仮想マシンのサイズは調整できますか?**
 
@@ -443,7 +438,7 @@ Standard S1 レベルから開始して、サービスの使用状況を監視�
 
 はい。 プランの価格設定はリージョンによって異なります。 Web サービスを別のリージョンにデプロイするときは、そのリージョンに固有のプランを割り当てる必要があります。 詳細については、「[リージョン別の利用可能な製品]( https://azure.microsoft.com/regions/services/)」を参照してください。
 
-### <a name="new-web-services-overages"></a>新しい Web サービス - 超過料金
+### <a name="new-web-services-overages"></a>新しい Web サービス:超過分
 **Web サービスの使用量が超過しているかどうかを確認するには、どうすればよいですか?**
 
 Azure Machine Learning Web サービス ポータルの [プラン] ページで、すべてのプランの使用状況を確認することができます。 ポータルにサインインして、**[プラン]** メニュー オプションをクリックします。
@@ -488,20 +483,20 @@ Azure Machine Learning API サービスの請求額は、クラシック Web サ
 
 以下の請求は、サブスクリプションのワークスペースごとに集計されます。
 
-* Machine Learning ワークスペース サブスクリプション - Machine Learning ワークスペース サブスクリプションは、Machine Learning Studio ワークスペースへのアクセスに必要な月額料金です。 スタジオで実験を実行する場合と実稼働 API を使用する場合にも、このサブスクリプションが必要です。
-* スタジオ実験時間 - Machine Learning Studio での実験の実行と、ステージング環境での実稼働 API 呼び出しの実行によって発生したすべてのコンピューティング料金が、このメーターに集計されます。
+* Machine Learning ワークスペース サブスクリプション:Machine Learning ワークスペース サブスクリプションは、Machine Learning Studio ワークスペースへのアクセスに必要な月額料金です。 スタジオで実験を実行する場合と実稼働 API を使用する場合にも、このサブスクリプションが必要です。
+* スタジオ実験時間:Machine Learning Studio での実験の実行と、ステージング環境での実稼働 API 呼び出しの実行によって発生したすべてのコンピューティング料金が、このメーターに集計されます。
 * トレーニングとスコア付けのためにモデル内で SQL Server を実行するオンプレミスのサーバーに接続することで発生するデータ アクセス。
 * クラシック Web サービスの場合:
-  * 実稼働 API のコンピューティング時間 - 運用環境で実行されている Web サービスにより発生するコンピューティング料金が、このメーターに含まれます。
-  * 実稼働 API トランザクション (1,000 件) - 実働 Web サービスの呼び出しごとに発生する料金が、このメーターに含まれます。
+  * 実稼働 API コンピューティング時間:運用環境で実行されている Web サービスにより発生するコンピューティング料金が、このメーターに含まれます。
+  * 実稼働 API トランザクション (1,000 件):実働 Web サービスの呼び出しごとに発生する料金が、このメーターに含まれます。
 
 上記の料金とは別に、Resource Manager ベースの Web サービスの場合は選択したプランに以下の各料金が集計されます。
 
-* Standard S1/S2/S3 API プラン (ユニット数) - このメーターは、Resource Manager ベースの Web サービス用に選択したインスタンスの種類を表します。
-* Standard S1/S2/S3 超過 API コンピューティング時間 - このメーターには、既存のインスタンスに含まれる数量を使い切った後、運用環境で実行されている Resource Manager ベースの Web サービスによって発生するコンピューティング料金が含まれます。 追加の使用量は、S1/S2/S3 プラン レベルに関連付けられている超過料金で請求されます。
-* Standard S1/S2/S3 超過 API トランザクション (1,000 件) - このメーターには、既存のインスタンスに含まれる数量を使い切った後、Resource Manager ベースの実稼働 Web サービスの呼び出しごとに発生する料金が含まれます。 追加の使用量は、S1/S2/S3 プラン レベルに関連付けられている超過料金で請求されます。
-* 含まれる API コンピューティング時間の数量 - Resource Manager ベースの Web サービスでは、このメーターは含まれる API コンピューティング時間の数量を表します。
-* 含まれる API トランザクションの数量 (1,000 件) - Resource Manager ベースの Web サービスでは、このメーターは含まれる API トランザクションの数量を表します。
+* Standard S1/S2/S3 API プラン (ユニット数):このメーターは、Resource Manager ベースの Web サービス用に選択したインスタンスの種類を表します。
+* Standard S1/S2/S3 超過 API コンピューティング時間:このメーターには、既存のインスタンスに含まれる数量を使い切った後、運用環境で実行されている Resource Manager ベースの Web サービスによって発生するコンピューティング料金が含まれます。 追加の使用量は、S1/S2/S3 プラン レベルに関連付けられている超過料金で請求されます。
+* Standard S1/S2/S3 超過 API トランザクション (1,000 件):このメーターには、既存のインスタンスに含まれる数量を使い切った後、Resource Manager ベースの実稼働 Web サービスの呼び出しごとに発生する料金が含まれます。 追加の使用量は、S1/S2/S3 プラン レベルに関連付けられている超過料金で請求されます。
+* 含まれる API コンピューティング時間の数量:Resource Manager ベースの Web サービスでは、このメーターは含まれる API コンピューティング時間の数量を表します。
+* 含まれる API トランザクションの数量 (1,000 件):Resource Manager ベースの Web サービスでは、このメーターは含まれる API トランザクションの数量を表します。
 
 **Azure Machine Learning Free レベルにサインアップするには、どうすればよいですか?**
 

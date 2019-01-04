@@ -1,5 +1,6 @@
 ---
-title: Azure Machine Learning サービスへの移行
+title: Workbench からの移行
+titleSuffix: Azure Machine Learning service
 description: 以前のバージョンから最新バージョンの Azure Machine Learning サービスにアップグレードまたは移行する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: e2b3545c020f41f25f19843eab158cfb1b419164
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 22e7e513c7ec015b070ae37c1dbdd168404ee768
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253450"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140753"
 ---
-# <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>最新バージョンの Azure Machine Learning サービスに移行する 
+# <a name="migrate-from-workbench-to-the-latest-version-of-azure-machine-learning-service"></a>Workbench から最新バージョンの Azure Machine Learning サービスに移行する 
 
-**ワークベンチ (プレビュー) アプリケーションがインストールされているかまたは実験とモデル管理のプレビュー アカウントがある (あるいはその両方の) 場合は、この記事を使用して、最新バージョンに移行します。**  プレビュー ワークベンチがインストールされていないか、実験とモデルのどちらの管理アカウントも持っていない場合は、何も移行する必要はありません。
+**ワークベンチ アプリケーションがインストールされているかまたは実験とモデル管理のプレビュー アカウントがある (あるいはその両方の) 場合は、この記事を使用して、最新バージョンに移行します。**  プレビュー ワークベンチがインストールされていないか、実験とモデルのどちらの管理アカウントも持っていない場合は、何も移行する必要はありません。
 
 ## <a name="what-can-i-migrate"></a>何を移行できるか
 Azure Machine Learning サービスの最初のプレビューで作成されたほとんどの成果物は、独自のローカル記憶域またはクラウド記憶域に格納されます。 これらの成果物は消失しません。 移行するには、成果物を、更新された Azure Machine Learning サービスに再登録します。 
@@ -75,12 +76,11 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 Web サービスを移行するには、新しい SDK または CLI を使用して、モデルを新しいデプロイ ターゲットに再デプロイします。 元のスコアリング ファイル、モデル ファイル依存関係ファイル、環境ファイル、およびスキーマ ファイルを変更する必要はありません。 
 
-最新バージョンでは、モデルは Web サービスとして [Azure Container Instances](how-to-deploy-to-aci.md) (ACI) または [Azure Kubernetes Service](how-to-deploy-to-aks.md) (AKS) クラスターにデプロイされます。 
+最新バージョンでは、モデルは Web サービスとして Azure Container Instances (ACI) または Azure Kubernetes Service (AKS) クラスターにデプロイされます。 
 
 詳細については、次の記事を参照してください。
-+ [ACI にデプロイする](how-to-deploy-to-aci.md)
-+ [AKS にデプロイする](how-to-deploy-to-aks.md)
-+ [チュートリアル: Azure Machine Learning サービスを使用してモデルをデプロイする](tutorial-deploy-models-with-aml.md)
++ [デプロイする方法とその場所](how-to-deploy-and-where.md)
++ [チュートリアル:Azure Machine Learning service を使用してモデルをデプロイする](tutorial-deploy-models-with-aml.md)
 
 [前の CLI のサポートが終了すると](overview-what-happened-to-workbench.md#timeline)、元はモデル管理アカウントを使用してデプロイされた Web サービスは管理できなくなります。 ただし、これらの Web サービスは Azure Container Service (ACS) がサポートされている限りは引き続き機能します。
 
@@ -108,7 +108,7 @@ az ml history download
 <a name="dataprep"></a>
 
 ## <a name="data-preparation-files"></a>データ準備ファイル
-データ準備ファイルは、ワークベンチを使用しないと移植できません。 新しい Azure Machine Learning Data Prep SDK または Azure Databricks をビッグ データ セットに使用すれば、モデリング用に任意のサイズのデータ セットを引き続き準備できます。  [データ準備 SDK を取得する方法をご覧ください](how-to-data-prep.md)。 
+データ準備ファイルは、ワークベンチを使用しないと移植できません。 新しい Azure Machine Learning Data Prep SDK または Azure Databricks をビッグ データ セットに使用すれば、モデリング用に任意のサイズのデータ セットを引き続き準備できます。 [データ準備 SDK を取得する方法をご覧ください](https://aka.ms/data-prep-sdk)。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -117,4 +117,4 @@ az ml history download
 このワークフローをさらに詳しく体験するには、Azure Machine Learning サービスを使用してモデルをトレーニングおよびデプロイするための詳細な手順が記載されている、記述の省略がないチュートリアルに従ってください。 
 
 > [!div class="nextstepaction"]
-> [チュートリアル: モデルのトレーニングとデプロイ](tutorial-train-models-with-aml.md)
+> [チュートリアル:モデルのトレーニングとデプロイ](tutorial-train-models-with-aml.md)

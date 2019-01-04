@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: cc86a18b0db67bf968006c42f5791e1ad7a093f0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0a78405dc6293a7debd599e0e44754dc59d8af7e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016698"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164647"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
@@ -44,7 +44,7 @@ Service Fabric コア クラスタリング テクノロジを使用すると、
 以下の点を考慮してください。 
 
 1. 現在、Azure での Service Fabric クラスター リソースは、クラスターが構築される仮想マシン スケール セットと同じように、地域に限定されています。 つまり、地域的な障害が発生したとき、Azure Resource Manager または Azure Portal を使用してクラスターを管理できなくなることがあります。 クラスターが実行し続けていて、直接やり取りできる場合にも、そのような状況になることがあります。 また、現在の Azure では、地域にまたがって使用できる単独の仮想ネットワークは提供されていません。 つまり、Azure における複数リージョン クラスターは、[VM Scale Sets の各 VM のための Public IP Addresses](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) か [Azure VPN Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) を必要とします。 これらのネットワーク オプションにより、コストやパフォーマンスがさまざまな影響を受けます。ある程度まではアプリケーション設計にも影響があります。このため、このような環境を立ち上げるには、事前に注意深い分析と計画が必要です。
-2. 特に、異なるクラウド プロバイダーやオンプレミス リソースと Azure など、複数の環境の _タイプ_ が混在する場合、これらのマシンのメンテナンス、管理、監視は複雑になります。 そのような環境で実稼働ワークロードを実行する前には、クラスターとアプリケーションの両方のアップグレード、監視、管理、診断についてよく理解する必要があります。 Azure または自身のデータセンターでこのような問題を解決した経験がある場合は、Service Fabric クラスターを構築または実行する際にも同じソリューションを適用できると考えられます。 
+2. 特に、異なるクラウド プロバイダーやオンプレミス リソースと Azure など、複数の環境の_タイプ_が混在する場合、これらのマシンのメンテナンス、管理、監視は複雑になります。 そのような環境で実稼働ワークロードを実行する前には、クラスターとアプリケーションの両方のアップグレード、監視、管理、診断についてよく理解する必要があります。 Azure または自身のデータセンターでこのような問題を解決した経験がある場合は、Service Fabric クラスターを構築または実行する際にも同じソリューションを適用できると考えられます。 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric ノードでは、OS の更新は自動的に受信されますか?
 

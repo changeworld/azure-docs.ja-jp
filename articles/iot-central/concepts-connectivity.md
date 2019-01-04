@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 7b2dd4e97d23f37c8261e51f3f65e78436493ddc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7e90fb6bcfa1bfab59177cbc6c717fefc163a67a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238736"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960098"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central のデバイス接続機能
 
@@ -44,12 +44,12 @@ SAS を使用して 1 つのデバイスを IoT Central に接続するのは簡
 1. Device Explorer から**実際のデバイス**を追加し、**[+ 新規] > [Real]\(リアル\)** をクリックして実際のデバイスを追加します。
     * デバイス ID **<span style="color:Red">(小文字のみ)</span>** を入力するか、推奨デバイス ID を使います。
     * デバイス名を入力するか、推奨名を使います   
-    ![デバイスの追加](media\concepts-connectivity\add-device.png)
+    ![デバイスの追加](media/concepts-connectivity/add-device.png)
 1. デバイス ページの **[接続]** をクリックして、追加したデバイスの **スコープ ID、デバイス ID、プライマリ キー**などの接続の詳細を取得します。
     * **[スコープ ID](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope)** は IoT Central アプリごとであり、DPS によって生成され、アプリ内でデバイス ID を確実に一意にするために使用されます。
     * **デバイス ID** はアプリごとに一意であり、デバイスは登録呼び出しの一部としてデバイス ID を送信する必要があります。   
     * **プライマリ キー**は SAS トークンであり、この特定のデバイスに対して IoT Central によって生成されます。 
-    ![接続の詳細情報](media\concepts-connectivity\device-connect.PNG)
+    ![接続の詳細情報](media/concepts-connectivity/device-connect.PNG)
 1. これらの接続の詳細 (**デバイス ID、デバイス名、デバイスのプライマリ キー**) をデバイス コードで使用して、デバイスをプロビジョニングして接続し、すぐに通過するデータの表示を始めます。 MxChip デバイスを使用している場合は、[こちら](howto-connect-devkit.md#add-a-real-device)の「**DevKit デバイスを準備する**」セクション以降の手順に従います。   
 
     他の言語を使用する場合の参照を以下に示します。
@@ -81,7 +81,7 @@ SAS を使用して IoT Central で大量のデバイスを接続するには、
 
 アプリケーションに多数のデバイスを接続するために、Azure IoT Central では、CSV ファイルを使用してデバイスを一括インポートする機能が提供されています。 
 
-CSV ファイルの要件: CSV ファイルには次の列 (とヘッダー) が必要です
+CSV ファイルの要件:CSV ファイルには次の列 (とヘッダー) が必要です
 1.  IOTC_DeviceID **<span style="color:Red">(小文字にする必要があります)</span>**
 1.  IOTC_DeviceName (省略可能)
 
@@ -102,7 +102,7 @@ CSV ファイルには次の列 (とヘッダー) が必要です
 1.  エクスポートするデバイスを選択して、**エクスポート** アクションをクリックします。
 1.  エクスポートが完了すると、生成されたファイルをダウンロードするリンクと共に成功メッセージが表示されます。
 1.  成功メッセージをクリックし、ディスク上のローカル フォルダーにファイルをダウンロードします。
-1.  エクスポートされた CSV ファイルには、**デバイス ID、デバイス名、デバイスの主キー/セカンダリ キー、プライマリ/セカンダリ証明書サムプリント**の列情報が含まれます
+1.  エクスポートされた CSV ファイルでは、次の列情報が得られます。**デバイス ID、デバイス名、デバイスのプライマリ/セカンダリ キー、およびプライマリ/セカンダリ証明書の拇印**
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY
@@ -137,13 +137,13 @@ X509 証明書を使用してデバイスを IoT Central に接続するには�
 
     *   リーフ デバイス証明書の生成に使用している **X509 ルートまたは中間証明書を追加**します。 [管理] > [デバイスの接続] > [証明書] に移動します。 
     
-        ![接続の設定](media\concepts-connectivity\connection-settings.PNG)
-    *   **証明書の検証:** 証明書の所有権を検証して、証明書のアップロード者が証明書の秘密キーを所有していることを確認します。 証明書を検証するには
+        ![接続の設定](media/concepts-connectivity/connection-settings.PNG)
+    *   **証明書の検定:** 証明書の所有権を検証して、証明書のアップロード者が証明書の秘密キーを所有していることを確認します。 証明書を検証するには
         *  確認コード フィールドの横にあるボタンをクリックして、確認コードを生成します。 
         *  確認コードで X.509 検証証明書を作成し、.cer ファイルとして証明書を保存します。 
         *  署名された検証証明書をアップロードして検証をクリックします。
 
-        ![接続の設定](media\concepts-connectivity\verify-cert.png)
+        ![接続の設定](media/concepts-connectivity/verify-cert.png)
     *   **セカンダリ証明書:** IoT ソリューションのライフサイクルの間に、証明書を展開する必要があります。 証明書を展開する主な理由としては、セキュリティ違反および証明書の期限切れの 2 つが挙げられます。 セカンダリ証明書は、プライマリ証明書を更新するときに、プロビジョニングを試行するデバイスのダウンタイムを短縮するために使用されます。
 
     **テスト目的のみ** 
@@ -160,7 +160,7 @@ X509 証明書を使用してデバイスを IoT Central に接続するには�
 
 1. CSV ファイルを介して IoT Central にインポートして**デバイスを登録**します。
 
-1. **デバイスのセットアップ**: アップロードしたルート証明書を使用してリーフ証明書を生成します。 リーフ証明書の CNAME として**デバイス ID** を使用していて**小文字**であることを確認します。 **テスト目的のみ**にリーフ/デバイス証明書を生成するにはこちらの[コマンド ライン ツール](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md )です。
+1. **デバイスのセットアップ**:アップロードしたルート証明書を使用してリーフ証明書を生成します。 リーフ証明書の CNAME として**デバイス ID** を使用していて**小文字**であることを確認します。 **テスト目的のみ**にリーフ/デバイス証明書を生成するにはこちらの[コマンド ライン ツール](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md )です。
 
     スイッチを入れたときに接続詳細と IoT Central アプリ割り当てを取得するようにプロビジョニング サービス情報でデバイスをプログラムします。    
 
@@ -180,7 +180,7 @@ IoT Central によって有効になる主要シナリオの 1 つは、OEM が�
 
 この機能でデバイスを接続するフローを次に示します
 
-![接続の設定](media\concepts-connectivity\device-connection-flow.PNG)
+![接続の設定](media/concepts-connectivity/device-connection-flow.PNG)
 
 
 デバイス認証方式 (X509/SAS) の選択に基づく手順に従います
@@ -188,7 +188,7 @@ IoT Central によって有効になる主要シナリオの 1 つは、OEM が�
 1. **接続の設定** 
     * **X509 証明書:** [ルート/中間証明書を追加および検証](#connect-devices-using-x509-certificates)し、次の手順でそれを使用してデバイス証明書を生成します。
     * **SAS:** プライマリ キー (このキーは、この IoT Central アプリケーションのグループ SAS キーです) をコピーし、次の手順でそれを使用してデバイス SAS キーを生成します。 
-![接続設定 SAS](media\concepts-connectivity\connection-settings-sas.png)
+![接続設定 SAS](media/concepts-connectivity/connection-settings-sas.png)
 
 1. **デバイスの資格情報を生成します** 
     *   **証明書 X509:** このアプリに追加したルート/中間証明書を使用して、デバイスのリーフ証明書を生成します。 リーフ証明書の CNAME として**デバイス ID** を使用していて**<span style="color:Red">小文字</span>** であることを確認します。 テスト用のリーフ/デバイス証明書を生成するにはこちらの[コマンド ライン ツール](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md )です。
@@ -212,7 +212,7 @@ IoT Central によって有効になる主要シナリオの 1 つは、OEM が�
 
 1. **IoT Central へのデバイスの接続:** オンになったデバイスは登録のために DPS/IoT Central に接続します。
 
-1. **デバイスをテンプレートに関連付け:** 接続されたデバイスは、**Device Explorer** の **[UnAssociated Devices]\(関連付けられていないデバイス\)** の下に表示されます。 デバイスのプロビジョニング状態は **[登録済み]** です。 デバイスを適切なデバイス テンプレートに**関連付け**て、デバイスが IoT Central アプリに接続するのを承認します。 デバイスは IoT Central アプリに対する接続の詳細を取得し、接続して、データの送信を開始します。 デバイスのプロビジョニングが完了し、*[プロビジョニング状態]* が **[プロビジョニング済み]** になります。
+1. **テンプレートをデバイスに関連付け:** 接続されたデバイスは、**Device Explorer** の **[UnAssociated Devices]\(関連付けられていないデバイス\)** の下に表示されます。 デバイスのプロビジョニング状態は **[登録済み]** です。 デバイスを適切なデバイス テンプレートに**関連付け**て、デバイスが IoT Central アプリに接続するのを承認します。 デバイスは IoT Central アプリに対する接続の詳細を取得し、接続して、データの送信を開始します。 デバイスのプロビジョニングが完了し、*[プロビジョニング状態]* が **[プロビジョニング済み]** になります。
 
 ## <a name="device-provisioning-status"></a>デバイスのプロビジョニング状態
 実際のデバイスが Azure IoT Central に接続するときは、一連の手順があります 
@@ -232,7 +232,7 @@ IoT Central によって有効になる主要シナリオの 1 つは、OEM が�
 次の手順を使用して、Azure IoT Hub への IoT Hub デバイスの接続文字列を取得できます 
 1. デバイス ページから、**スコープ ID、デバイス ID、デバイス プライマリ キー**などの接続の詳細を取得します (デバイス ページで [接続] をクリック) 
 
-    ![接続の詳細](media\concepts-connectivity\device-connect.PNG)
+    ![接続の詳細](media/concepts-connectivity/device-connect.PNG)
 
 1. 以下のコマンド ライン ツールを使用してデバイスの接続文字列を取得します。
     デバイスの接続文字列を取得するには次の命令を使用します  
@@ -271,7 +271,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
-| 測定: 利用統計情報 | デバイスからクラウドへのメッセージ |
+| 測定:テレメトリ | デバイスからクラウドへのメッセージ |
 | デバイスのプロパティ | デバイス ツインの報告されるプロパティ |
 | 設定 | デバイス ツインの目的および報告されるプロパティ |
 

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: cca5fe492032c74a9922780f197065e9c2b40ad3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035103"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966136"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>インフラストラクチャ バックアップ サービスのベスト プラクティス
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 自社のデータセンターに Azure Stack を展開して管理する際のベスト プラクティスに従って、致命的な障害が発生した場合のデータ損失を軽減できます。
 
@@ -46,7 +46,7 @@ ms.locfileid: "51035103"
 
 キーは、安全な場所 (パブリックの Azure Key Vault シークレット) に格納する必要があります。 このキーは、Azure Stack の再展開時に使用します。 
 
-![安全な場所にキーを格納する。](media\azure-stack-backup\azure-stack-backup-encryption2.png)
+![安全な場所にキーを格納する。](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
 ## <a name="operational-best-practices"></a>運用上のベスト プラクティス
 

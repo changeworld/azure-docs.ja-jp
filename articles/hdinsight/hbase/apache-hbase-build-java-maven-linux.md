@@ -1,26 +1,26 @@
 ---
-title: Java HBase クライアント - Azure HDInsight
+title: Apache Maven を使用した Java HBase クライアントの構築 - Azure HDInsight
 description: Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure HDInsight での HBase にデプロイする方法について説明します。
 services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
-ms.date: 04/30/2018
-ms.author: hrasheed
-ms.openlocfilehash: 677714487aac6e25a0505cce978792c76bb1cee4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/27/2018
+ms.openlocfilehash: dbcb031b49c529bc2b2524cd0984bbef1945d485
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016082"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164060"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
 Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成する方法を説明します。 その後、このアプリケーションを Azure HDInsight での HBase で使用します。
 
-このドキュメントの手順では、[Maven](http://maven.apache.org/) を使用して、プロジェクトを作成およびビルドします。 Maven は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。
+このドキュメントの手順では、[Apache Maven](https://maven.apache.org/) を使用して、プロジェクトを作成およびビルドします。 Maven は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。
 
 > [!NOTE]
 > このドキュメントの手順のテストは、HDInsight 3.6 で行われたものが最新です。
@@ -35,9 +35,9 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
     > [!NOTE]
     > HDInsight 3.5 以降では Java 8 が必要です。 以前のバージョンの HDInsight では、Java 7 が必要です。
 
-* [Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
-* [Linux ベースの Azure HDInsight クラスターと HBase](apache-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
+* [Linux ベースの Azure HDInsight クラスターと Apache HBase](apache-hbase-tutorial-get-started-linux.md#create-apache-hbase-cluster)
 
 ## <a name="create-the-project"></a>プロジェクトを作成する
 
@@ -57,9 +57,9 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
     このコマンドにより、**artifactID** パラメーターで指定した名前 (この例では **hbaseapp**) のディレクトリが作成されます。このディレクトリには、次の項目が含まれます。
 
    * **pom.xml**: プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
-   * **src**: アプリケーションを作成する **main/java/com/microsoft/examples** ディレクトリに含まれるディレクトリです。
+   * **src**:アプリケーションを作成する **main/java/com/microsoft/examples** ディレクトリに含まれるディレクトリです。
 
-3. `src/test/java/com/microsoft/examples/apptest.java` ファイルを削除します。 このファイルは、この例では使用しません。
+3. `src/test/java/com/microsoft/examples/apptest.java` ファイルを削除します。 この例では使用されません。
 
 ## <a name="update-the-project-object-model"></a>プロジェクト オブジェクト モデルを更新する
 
@@ -81,9 +81,9 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
     このセクションは、プロジェクトに **hbase-client** および **phoenix-core** コンポーネントが必要であることを示しています。 この依存関係は、コンパイル時に既定の Maven リポジトリからダウンロードされます。 [Maven セントラル リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) を使用して、この依存関係についての詳細を確認できます。
 
    > [!IMPORTANT]
-   > hbase-client のバージョン番号は、HDInsight クラスターに付属の HBase のバージョンと一致する必要があります。 次の表を使用して、正しいバージョン番号を調べてください。
+   > hbase-client のバージョン番号は、HDInsight クラスターに付属の Apache HBase のバージョンと一致する必要があります。 次の表を使用して、正しいバージョン番号を調べてください。
 
-   | HDInsight クラスターのバージョン | 使用する HBase のバージョン |
+   | HDInsight クラスターのバージョン | 使用する Apache HBase のバージョン |
    | --- | --- |
    | 3.2 |0.98.4-hadoop2 |
    | 3.3、3.4、3.5、3.6 |1.1.2 |
@@ -363,7 +363,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 
 ## <a name="upload-the-jar-and-run-jobs-ssh"></a>JAR をアップロードしてジョブを実行する (SSH)
 
-次の手順では、`scp` を使用して、HDInsight クラスターの HBase のプライマリ ヘッドノードに JAR をコピーします。 その後、`ssh` コマンドを使用してクラスターに接続し、ヘッド ノードで例を直接実行します。
+次の手順では、`scp` を使用して、HDInsight クラスターの Apache HBase のプライマリ ヘッドノードに JAR をコピーします。 その後、`ssh` コマンドを使用してクラスターに接続し、ヘッド ノードで例を直接実行します。
 
 1. jar をクラスターにアップロードするには、次のコマンドを使用します。
 
@@ -412,7 +412,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>JAR をアップロードしてジョブを実行する (PowerShell)
 
-次の手順では、Azure PowerShell を使用して、JAR を HBase クラスターの既定のストレージにアップロードします。 その後、HDInsight コマンドレットを使用して、例をリモートで実行します。
+次の手順では、Azure PowerShell を使用して、JAR を Apache HBase クラスターの既定のストレージにアップロードします。 その後、HDInsight コマンドレットを使用して、例をリモートで実行します。
 
 1. Azure PowerShell をインストールし、構成した後で、`hbase-runner.psm1` という名前のファイルを作成します。 このファイルの内容として、次のテキストを使用します。
 
@@ -683,4 +683,4 @@ __Azure PowerShell から__:
 
 ## <a name="next-steps"></a>次の手順
 
-[HBase で SQuirreL SQL を使用する方法を確認しましょう。](apache-hbase-phoenix-squirrel-linux.md)
+[Apache HBase と SQuirreL SQL を使用する方法を確認する](apache-hbase-phoenix-squirrel-linux.md)

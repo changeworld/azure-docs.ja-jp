@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 071d1acb592220f7da83a47fd7dffa757ef81a95
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3eb5b2300ea2af7bc778e0831d105f286eab247c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142864"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721410"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Application Insights を使用してライブ Azure Service Fabric アプリケーションをプロファイルする
 
@@ -30,7 +29,7 @@ Application Insights Profiler を次のサービスにデプロイすること�
 
 ## <a name="set-up-the-environment-deployment-definition"></a>環境デプロイ定義を設定する
 
-Application Insights Profiler は、Windows Azure 診断 (WAD) に付属しています。 WAD 拡張機能は、Service Fabric クラスターの Azure RM テンプレートを使用してインストールできます。 テンプレートの例は、[**WAD を Service Fabric クラスターにインストールするテンプレート**](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)に関するページにあります。
+Application Insights Profiler は、Windows Azure 診断 (WAD) に付属しています。 WAD 拡張機能は、Service Fabric クラスターの Azure RM テンプレートを使用してインストールできます。 次に示すのはテンプレートの例です。[**Service Fabric クラスターに WAD をインストールするテンプレート。**](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
 
 環境を設定するには、次の操作を実行します。
 1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降が使用されていることを確認するために、デプロイされている OS が `Windows Server 2012 R2` 以降であることを確認します。

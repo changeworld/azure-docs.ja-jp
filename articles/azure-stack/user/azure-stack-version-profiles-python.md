@@ -14,16 +14,16 @@ ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: 657eefcd5b7793f2f181d074084a272e65943681
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 17fb8a82709e7c0c7353b70f7731895889167a79
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246448"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873956"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Azure Stack での Python による API バージョンのプロファイルの使用
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 ## <a name="python-and-api-version-profiles"></a>Python と API バージョン プロファイル
 
@@ -153,5 +153,5 @@ os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 
 - [Azure Python 開発センター](https://azure.microsoft.com/develop/python/)
 - [Azure Virtual Machines 関係のドキュメント](https://azure.microsoft.com/services/virtual-machines/)
-- [Virtual Machines のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+- [Virtual Machines のラーニング パス](/learn/paths/deploy-a-website-with-azure-virtual-machines/)
 - Microsoft Azure のサブスクリプションをお持ちでない場合は､[ここ](https://go.microsoft.com/fwlink/?LinkId=330212)から無料の試用アカウントを入手できます｡

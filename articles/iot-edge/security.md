@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge のセキュリティ | Microsoft Docs
-description: IoT Edge デバイスのセキュリティ、認証、および承認
+title: セキュリティ フレームワーク - Azure IoT Edge | Microsoft Docs
+description: Azure IoT Edge を開発するために使用され、ソリューションを設計する際に考慮する必要がある、セキュリティ、認証、および承認基準について説明します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,14 +8,15 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4292dc3abf775d48ee33cc7a48793d080156efb1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 1042f53147122a7370b464f6bfc892dcee70fe70
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568939"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100142"
 ---
-# <a name="securing-azure-iot-edge"></a>Azure IoT Edge のセキュリティ保護
+# <a name="security-standards-for-azure-iot-edge"></a>Azure IoT Edge のセキュリティ標準
 
 インテリジェント エッジのセキュリティ保護は、エンド ツー エンドの IoT ソリューションの操作で信頼性を確保する上で必要です。 Azure IoT Edge は、さまざまなリスク プロファイル、配置シナリオに拡張できるセキュリティのために設計されており、すべての Azure サービスで期待されるセキュリティと同じレベルの保護を提供します。
 

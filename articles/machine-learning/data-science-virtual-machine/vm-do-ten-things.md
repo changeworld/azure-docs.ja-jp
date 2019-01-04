@@ -1,11 +1,13 @@
 ---
-title: Azure のデータ サイエンス仮想マシンでできる 10 のこと | Microsoft Docs
+title: データ探索とデータ サイエンス仮想マシンを使用したモデリング
+titleSuffix: Azure
 description: データの探索とモデリングに伴うさまざまな作業をデータ サイエンス仮想マシンで実行します。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
+ms.custom: seodec18
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: df9edfee9d8a6a0736a040924bac736cfcb3633c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52f0a298b1a9e9f3f209f51c1bc0362b8ddf2c4e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250919"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075686"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -62,7 +64,7 @@ Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能が�
 
 以下のスクリーンショットは、Visual Studio でカスタム環境のセットアップを行っているところです。
 
-![PTVS Setup](./media/vm-do-ten-things/PTVSSetup.png)
+![選択した Python Tools for Visual Studio を使用する Visual Studio のスクリーンショット](./media/vm-do-ten-things/PTVSSetup.png)
 
 Python 環境の作成方法の詳細については、 [PTVS のドキュメント](https://aka.ms/ptvsdocs) を参照してください。
 
@@ -249,7 +251,7 @@ GitHub リポジトリからコードをダウンロードするには、```git 
 
 Visual Studio から同じクローン操作を行うこともできます。 下のスクリーンショットでは、Visual Studio で Git と GitHub ツールにアクセスする方法を示しています。
 
-![Git in Visual Studio](./media/vm-do-ten-things/VSGit.PNG)
+![GitHub 接続が表示される Visual Studio のスクリーンショット](./media/vm-do-ten-things/VSGit.PNG)
 
 Git を使った GitHub リポジトリの操作の詳細については、github.com で公開されているさまざまなリソースをご覧ください。 [チート シート](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) を参照すると便利です。
 
@@ -261,14 +263,14 @@ Azure BLOB は、大規模データにも小規模データにも対応する信
 
 * **[Azure ポータル](https://portal.azure.com)から Azure BLOB ストレージ アカウントを作成します。**
 
-![Create_Azure_Blob](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![Azure portal でのストレージ アカウント作成プロセスのスクリーンショット](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * プレインストールされたコマンド ライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```にあることを確認します。 azcopy.exe を含むディレクトリが既に PATH 環境変数にあり、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、[AzCopy のドキュメント](../../storage/common/storage-use-azcopy.md)をご覧ください。
 * Azure ストレージ エクスプローラー ツールを起動します。 このツールは、 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のページからダウンロードできます。 
 
-![AzureStorageExplorer_v4](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
+![ストレージ アカウントにアクセスする Azure ストレージ エクスプローラーのスクリーンショット](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**VM から Azure BLOB にデータを移動する (AzCopy)**
+**VM から Azure BLOB にデータを移動する: AzCopy**
 
 ローカル ファイルと Blob Storage との間のデータ移動には、次のように、コマンド ラインまたは PowerShell から AzCopy を使用します。
 
@@ -276,7 +278,7 @@ Azure BLOB は、大規模データにも小規模データにも対応する信
 
 **C:\myfolder** は対象ファイルが保存されているパスに、**mystorageaccount** は BLOB ストレージ アカウント名に、**mycontainer** はコンテナー名に、**storage account key** は BLOB ストレージ アクセス キーにそれぞれ置き換えてください。 ストレージ アカウントの資格情報は、 [Azure ポータル](https://portal.azure.com)で確認できます。
 
-![StorageAccountCredential_v2](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
+![Azure portal でのストレージ アカウント キーとコンテナー情報のスクリーン ショット](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
 
 AzCopy コマンドは、PowerShell またはコマンド プロンプトから実行します。 以下、AzCopy コマンドの使用例をいくつか紹介します。
 
@@ -291,22 +293,22 @@ AzCopy コマンドは、PowerShell またはコマンド プロンプトから�
 
 AzCopy コマンドを実行して Azure BLOB にコピーするとすぐに、対象ファイルが Azure ストレージ エクスプローラーに表示されます。
 
-![AzCopy_run_finshed_Storage_Explorer_v3](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
+![アップロードされた CSV ファイルを表示する、ストレージ アカウントのスクリーン ショット](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**VM から Azure BLOB にデータを移動する (Azure ストレージ エクスプローラー)**
+**VM から Azure BLOB にデータを移動する: Azure Storage Explorer**
 
 Azure ストレージ エクスプローラーを使用して、VM 内のローカル ファイルからデータをアップロードすることもできます。
 
-* コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** ボタンをクリックします。![ストレージ エクスプローラーでのアップロード](./media/vm-do-ten-things/storage-accounts.png)
-* **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つまたは複数のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![ファイルを BLOB にアップロード](./media/vm-do-ten-things/upload-files-to-blob.png)
+* コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** ボタンをクリックします。![Azure Storage Explorer の [アップロード] ボタンのスクリーンショット](./media/vm-do-ten-things/storage-accounts.png)
+* **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つまたは複数のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![ファイルのアップロード ダイアログのスクリーンショット](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-**Azure BLOB からのデータの読み取り (Machine Learning のリーダー モジュール)**
+**Azure Blob からデータの読み取り: Machine Learning リーダー モジュール**
 
 Azure Machine Learning Studio では、 **データのインポート モジュール** を使用して BLOB からデータを読み取ることができます。
 
-![AML_ReaderBlob_Module_v3](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
+![Machine Learning Studio でのデータのインポート モジュールのスクリーンショット](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-**Azure BLOB からのデータの読み取り (Python ODBC)**
+**Azure Blob からデータの読み取り: Python ODBC**
 
 **BlobService** ライブラリを使用すると、Jupyter Notebook または Python プログラムで BLOB から直接データを読み取ることができます。
 
@@ -352,7 +354,7 @@ Azure Machine Learning Studio では、 **データのインポート モジュ�
 
 データはデータ フレームとして読み取られます。
 
-![IPNB_data_readin](./media/vm-do-ten-things/IPNB_data_readin.PNG)
+![データの最初の 10 行のスクリーンショット](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake Storage は、ビッグ データ分析ワークロード用のハイパースケール リポジトリであり、Hadoop 分散ファイルシステム (HDFS) と互換性があります。 Hadoop、Spark、および Azure Data Lake Analytics で動作します。 このセクションでは、データを Azure Data Lake Store に移動し、Azure Data Lake Analytics を使用して分析を実行する方法について説明します。
@@ -361,29 +363,29 @@ Azure Data Lake Storage は、ビッグ データ分析ワークロード用の�
 
 * [Azure ポータル](https://portal.azure.com)で Azure Data Lake Analytics を作成します。
 
-![Azure_Data_Lake_Create_v2](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
+![Azure portal から Data Lake Analytics の作成のスクリーンショット](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
 * こちらの[リンク](https://www.microsoft.com/download/details.aspx?id=49504)から入手できる **Azure Data Lake Tools** for **Visual Studio** は、仮想マシン上の Visual Studio Community Edition に既にインストールされています。 Visual Studio を起動して Azure サブスクリプションにログインすると、Visual Studio の左パネルに Azure Data Analytics のアカウントとストレージが表示されます。
 
-![Azure_Data_Lake_PlugIn_v2](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
+![Visual Studio での Data Lake Tools のスクリーンショット](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**VM から Data Lake にデータを移動する (Azure Data Lake エクスプローラー)**
+**VM から Data Lake へのデータの移動: Azure Data Lake エクスプローラー**
 
 **Azure Data Lake エクスプローラー** を使用して仮想マシン内のローカル ファイルから Data Lake Storage にデータをアップロードできます。
 
-![Azure_Data_Lake_UploadData](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
+![ファイルのアップロードに Data Lake エクスプローラーを使用しているスクリーンショット](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
 
 また、[Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/) を使用して、Azure Data Lake との間のデータ移動を運用可能にするデータ パイプラインを作成することもできます。 データ パイプラインを作成する手順については、こちらの[記事](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/)をご覧ください。
 
-**Azure BLOB から Data Lake にデータを読み取る (U-SQL)**
+**Azure BLOB から Data Lake にデータを読み取る: U-SQL**
 
 データが Azure Blob Storage に存在する場合、U-SQL クエリで Azure Storage BLOB から直接データを読み取ることができます。 U-SQL クエリを作成する前に、ご利用の BLOB ストレージ アカウントが Azure Data Lake にリンクされていることを確認します。 **Azure Portal** に移動して [Azure Data Lake Analytics] ダッシュボードを探し、**[データ ソースの追加]** をクリックします。ストレージの種類に **[Azure Storage]** を選択し、Azure ストレージ アカウントの名前とキーを追加します。 これで、ストレージ アカウントに保存されているデータを参照できます。
 
-![ストレージ アカウントとキーの入力](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
+![[データ ソースの追加] ダイアログのスクリーンショット](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。 BLOB ストレージ内のデータを参照するときは **wasb://** を使用し、Azure Data Lake 内のデータを参照するときは **swbhdfs://** を使用します。
 
-![データ フレーム](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
+![強調表示されている WASB エントリがあるクエリのスクリーンショット](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 Visual Studio で次の U-SQL クエリを使用することができます。
 
@@ -429,19 +431,19 @@ Visual Studio で次の U-SQL クエリを使用することができます。
 
 クエリがサーバーに送信されると、ジョブのステータスを示すダイアグラムが表示されます。
 
-![ジョブの状態の図](./media/vm-do-ten-things/USQL_Job_Status.PNG)
+![ジョブ ダイアログの状態のスクリーンショット](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
-**Data Lake 内のデータを照会する (U-SQL)**
+**Data Lake 内のデータを照会する: U-SQL**
 
 Azure Data Lake にデータセットを取り込んだ後、[U-SQL 言語](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md)を使用してデータを照会、探索することができます。 U-SQL 言語は T-SQL と似ていますが、C# の機能が一部組み合わされているため、独自のモジュールやユーザー定義関数を作成することが可能です。先ほどの手順で紹介したスクリプトを使用することができます。
 
 サーバーにクエリを送信するとすぐに、**Azure Data Lake エクスプローラー**に tripdata_summary.CSV が表示されるので、そのファイルを右クリックしてデータをプレビューすることができます。
 
-![Azure Data Lake エクスプ ローラー内のファイル](./media/vm-do-ten-things/USQL_create_summary.png)
+![Data Lake エクスプローラーでの csv ファイルのスクリーンショット](./media/vm-do-ten-things/USQL_create_summary.png)
 
 ファイルの情報が次のように表示されます。
 
-![ファイルの概要](./media/vm-do-ten-things/USQL_tripdata_summary.png)
+![ファイル概要情報のスクリーンショット](./media/vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスター
 Azure HDInsight は、クラウド上で管理されている Apache Hadoop、Spark、HBase、および Storm サービスです。 Azure HDInsight クラスターは、データ サイエンス仮想マシンから簡単に操作できます。
@@ -450,9 +452,9 @@ Azure HDInsight は、クラウド上で管理されている Apache Hadoop、Sp
 
 * [Azure ポータル](https://portal.azure.com)から Azure BLOB ストレージ アカウントを作成します。 HDInsight クラスターのデータは、このストレージ アカウントを使用して格納されます。
 
-![Azure Blob ストレージ アカウントを作成する](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![Azure portal からの HDInsight の作成のスクリーンショット](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
-* [Azure ポータル](../team-data-science-process/customize-hadoop-cluster.md)
+*  [Azure ポータル](../team-data-science-process/customize-hadoop-cluster.md)
   
   * 作成したストレージ アカウントは、この HDInsight クラスターに対して作成時にリンクします。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
 
@@ -460,7 +462,7 @@ Azure HDInsight は、クラウド上で管理されている Apache Hadoop、Sp
 
 * 作成したら、クラスターのヘッド ノードへの**リモート アクセス**を有効にします。 ここで指定するリモート アクセスの資格情報は、以降の手順で必要になるため、記憶しておいてください。
 
-![リモート アクセスの有効化](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
+![HDInsight クラスターへのリモート アクセスを有効にします。](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
 * Azure Machine Learning ワークスペースを作成します。 Machine Learning の実験は、この Machine Learning ワークスペースに保存されます。 下のスクリーンショットに示されるように、ポータルで強調表示されているオプションを選択します。
 
@@ -569,7 +571,7 @@ Azure HDInsight は、クラウド上で管理されている Apache Hadoop、Sp
 
 HDI クラスターにデータを読み込んだら、Azure Storage エクスプローラーでデータを確認することができます。 加えて、HDI クラスターには、nyctaxidb というデータベースが作成されます。
 
-**データの探索: Hive クエリ (Python)**
+**データデータ探索: Python での Hive クエリ**
 
 Hadoop クラスターにデータが存在するため、pyodbc パッケージを使用して Hadoop クラスターに接続し、Hive を使ってデータベースを照会することによって探索や特徴エンジニアリングを実行できます。 前提条件の手順で作成した既存のテーブルを表示できます。
 
@@ -638,7 +640,7 @@ Hadoop クラスターにデータが存在するため、pyodbc パッケージ
     results.head(5)
 
 
-![乗車と降車のテーブル](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
+![乗車と降車テーブルの上位の行](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
 
     results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
                        'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
@@ -782,7 +784,7 @@ Hadoop クラスターにデータが存在するため、pyodbc パッケージ
     pd.read_sql(queryString,connection)
 
 
-![データのテーブル](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
+![テーブルのデータの上位の行](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
 **Machine Learning のリーダー モジュール を使用して HDI からのデータを読み取る**
 

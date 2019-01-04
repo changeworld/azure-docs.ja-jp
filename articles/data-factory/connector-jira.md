@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f0bd0a57aff9767c78be63fc918b8689f7b06514
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 61b331c330da5e2083a7a029e3f3137e6d4a1aab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122707"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077836"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Jira からデータをコピーする (プレビュー)
 
@@ -45,7 +45,7 @@ Jira のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Jira** に設定する必要があります | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**Jira** | [はい] |
 | host | Jira サービスの IP アドレスまたはホスト名。 (たとえば、jira.example.com)  | [はい] |
 | port | Jira サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は、HTTPS 経由で接続する場合は 443、HTTP 経由で接続する場合は 8080 です。  | いいえ  |
 | username | Jira サービスへのアクセスに使用するユーザー名。  | [はい] |
@@ -78,7 +78,12 @@ Jira のリンクされたサービスでは、次のプロパティがサポー
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Jira データセットでサポートされるプロパティの一覧を示します。
 
-Jira からデータをコピーするには、データセットの type プロパティを **JiraObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+Jira からデータをコピーするには、データセットの type プロパティを **JiraObject** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります。**JiraObject** | [はい] |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -90,7 +95,8 @@ Jira からデータをコピーするには、データセットの type プロ
         "linkedServiceName": {
             "referenceName": "<Jira linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -105,8 +111,8 @@ Jira からデータをコピーするは、コピー アクティビティの�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **JiraSource** に設定する必要があります | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**JiraSource** | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

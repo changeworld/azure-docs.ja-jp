@@ -12,18 +12,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/04/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4453516626c39f73deea8fce0d744fcecbd5c3fc
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 58856875fa7d7bb3ba63c489fb17790e68f99aec
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085826"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872188"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Azure Stack の管理者ポータルの使用
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack には、管理者ポータルとユーザー ポータル (*テナント* ポータルとも呼ばれることもあります) の 2 つのポータルがあります。Azure Stack オペレーターは、管理者ポータルを使用して Azure Stack の日常的な管理と操作を行うことができます。
 
@@ -86,6 +86,10 @@ Azure Stack オペレーター向けドキュメントにアクセスするに�
 
 - 統合システムを使用している場合は、Microsoft カスタマー サポート サービス (CSS) のサポート チケットを直接開くことができるサイトが開きます。 Microsoft サポートと OEM (Original Equipment Manufacturer) ハードウェア ベンダーのサポートのどちらに連絡するかについては、「[サポートが受けられる場所](azure-stack-manage-basics.md#where-to-get-support)」を参照してください。
 - 開発キットを使用している場合は、Azure Stack フォーラムのサイトが直接開きます。 これらのフォーラムは定期的にチェックされています。 開発キットは評価環境であるため、Microsoft CSS を通した正式なサポートは提供されていません。
+
+### <a name="quick-access-to-the-azure-roadmap"></a>Azure ロードマップへのクイック アクセス
+
+管理者ポータルの右上隅にある**ヘルプとサポート** (疑問符) を選択し、**[Azure ロードマップ]** を選択すると、新しいブラウザー タブが開き、Azure ロードマップが表示されます。 **[製品]** 検索ボックスに **Azure Stack** と入力すると、すべての Azure Stack ロードマップの更新プログラムを確認できます。
 
 ## <a name="next-steps"></a>次の手順
 

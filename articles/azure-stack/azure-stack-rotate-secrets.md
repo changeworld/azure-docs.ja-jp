@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 5d2f4fc77d5849dc2be80ada9610098c9a381f92
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2b1dc0ad28a6608e3a46087d31a3d077e9291a3d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244102"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841678"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack でシークレットをローテーションする
 
@@ -44,7 +44,7 @@ Azure Stack オペレーターによって提供される、外部に接続さ�
 
    <sup>*</sup> 環境の ID プロバイダーが Active Directory フェデレーション サービス (AD FS) の場合にのみ適用されます。
 
-> [!NOTE]
+> [!NOTE]  
 > BMC やスイッチ パスワードなどの他のすべてのセキュリティで保護されたキーと文字列、ユーザーおよび管理者アカウントのパスワードは、まだ管理者が手動で更新します。 
 
 Azure Stack インフラストラクチャの整合性を維持するため、オペレーターは、組織のセキュリティ要件と一致する頻度でインフラストラクチャのシークレットを定期的にローテーションできる必要があります。
@@ -199,7 +199,7 @@ Remove-PSSession -Session $PEPSession
 
 1. OEM の指示に従って、Azure Stack の物理サーバー上で BMC を更新します。 環境内の各 BMC のパスワードは同じである必要があります。
 2. Azure Stack セッションで特権エンドポイントを開きます。 手順については、「[Azure Stack での特権エンドポイントの使用](azure-stack-privileged-endpoint.md)」を参照してください。
-3. PowerShell プロンプトが環境に応じて **[IP address or ERCS VM name]: PS>** または **[azs-ercs01]: PS>** に変化したら、`invoke-command` を実行することによって `Set-BmcPassword` を実行します。 パラメーターとして特権エンドポイントのセッション変数を渡します。 例: 
+3. PowerShell プロンプトが **[IP アドレスまたは ERCS VM 名]:PS>** または **[azs-ercs01]:PS>** に環境に応じて変更されたら、`Set-BmcPassword` を `invoke-command` によって実行します。 パラメーターとして特権エンドポイントのセッション変数を渡します。 例: 
 
     ```powershell
     # Interactive Version
@@ -220,7 +220,7 @@ Remove-PSSession -Session $PEPSession
     ```powershell
     # Static Version
     $PEip = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
-    $PEUser = "<Privileged Endpoint user for exmaple Domain\CloudAdmin>"
+    $PEUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"
     $PEpwd = ConvertTo-SecureString "<Privileged Endpoint Password>" -AsPlainText -Force
     $PECred = New-Object System.Management.Automation.PSCredential ($PEUser, $PEpwd) 
     $NewBMCpwd = ConvertTo-SecureString "<New BMC Password>" -AsPlainText -Force 

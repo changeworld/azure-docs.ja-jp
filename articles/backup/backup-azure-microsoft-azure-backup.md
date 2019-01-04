@@ -8,13 +8,13 @@ keywords: Azure Backup Server; ワークロードの保護; ワークロード�
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: adigan; kasinh
-ms.openlocfilehash: e1ed8b1f62eeb52d65ba178c8ca13f94b57da6f0
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.author: adigan
+ms.openlocfilehash: f6a6a1deb55bf16c65982c0d58cd6d92559596af
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616318"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728278"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Azure Backup Server には、Data Protection Manager (DPM) のワークロード
 Azure Backup Server を準備して実行するための最初の手順は、Windows Server のセットアップです。 サーバーの設置場所は Azure でもオンプレミスでもかまいません。
 
 ### <a name="using-a-server-in-azure"></a>Azure に設置されたサーバーを使用する場合
-Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2012 R2 Datacenter、Windows Server 2016 Datacenter または Windows Server 2019 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件は A2 Standard (2 コア、3.5 GB RAM) です。
+Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2012 R2 Datacenter、Windows Server 2016 Datacenter または Windows Server 2019 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件はA2 Standard で 2 つのコア、3.5 GB RAM です。
 
 Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://technet.microsoft.com/library/jj852163.aspx)」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
@@ -263,7 +263,7 @@ MABS は、System Center Data Protection Manager 保護エージェントを使�
 9. SQL から DPMDB を復元します。
 10. 新しいサーバーで、管理コマンド ラインから Microsoft Azure Backup のインストール場所と bin フォルダーに cd します。
 
-パスの例: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
+パスの例:C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
 to Azure backup
 
 10) DPMSYNC -SYNC を実行します。注: DPM 記憶域プールに古いディスクを移動するではなく、新しいディスクを追加している場合は、DPMSYNC -Reallocatereplica を実行します。

@@ -6,14 +6,14 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2b9a769abb1e704dce0bd6924372be62bb85d68d
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: cf0cc5290f0757723ee067ee8ea84e8d6e7ba845
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44376869"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323407"
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure Stack のトレーニングと認定
 
@@ -29,7 +29,7 @@ Azure Stack について学習し、Azure Stack に関するスキルをデモ�
 
 ## <a name="certification"></a>認定
 
-Azure Stack の認定は現在開発中です。 最新の更新を確認してください。
+*Microsoft Azure Stack を使用したハイブリッド クラウドの構成および操作*、[Exam 70-537](https://www.microsoft.com/learning/exam-70-537.aspx)
 
 ## <a name="next-steps"></a>次の手順
 

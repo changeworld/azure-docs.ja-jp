@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 35329468ee01d5b70d654c1eb4a908db9d3fcb5d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: cfebbdb9b88a1de6a05f06e6ed72ebc9cddddcf6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184404"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074453"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack"></a>Azure Stack での .NET による API バージョンのプロファイルの使用
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack Resource Manager 向けの .NET SDK には､インフラストラクチャの構築と管理に役立つツールが用意されています。 SDK のリソース プロバイダーには、コンピューティング、ネットワーク、ストレージ、アプリ サービス、および [KeyVault](../../key-vault/key-vault-whatis.md) が含まれます。 .NET SDK には 14 の NuGet パッケージが含まれていて、プロファイル情報を組み込むたびにプロジェクト ソリューションにダウンロードする必要があります。 ただし、アプリケーションのメモリを最適化するために、2018-03-01-hybrid または 2017-03-09-profile に使用するリソース プロバイダーを特別にダウンロードすることができます。 各パッケージは、リソース プロバイダー、それぞれの API バージョン、それが属する API プロファイルで構成されます。 .NET SDK に含まれている API プロファイルを使用すると、グローバルな Azure リソースと Azure Stack 上のリソース間を切り替えることで、ハイブリッド クラウド開発を行うことができます。
 
@@ -68,7 +68,7 @@ API プロファイルは、リソース プロバイダーと API バージョ�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Stack で .NET Azure SDK を使用するには、次の値を指定した後、環境変数に値を設定する必要があります。 環境変数を設定するには、使用しているオペレーティングシステムの表の後にある手順を参照してください。
+Azure Stack で .NET Azure SDK を使用するには、次の値を指定した後、環境変数に値を設定する必要があります。 環境変数を設定するには、使用しているオペレーティング システムの表の後にある手順を参照してください。
 
 | 値                     | 環境変数   | 説明                                                                                                             |
 |---------------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------|
@@ -78,7 +78,7 @@ Azure Stack で .NET Azure SDK を使用するには、次の値を指定した�
 | クライアント シークレット             | AZURE_CLIENT_SECRET   | サービス プリンシパルの作成時に保存した、サービス プリンシパル アプリケーション シークレット。                                      |
 | Resource Manager エンドポイント | ARM_ENDPOINT           | 「[*Azure Stack Resource Manager エンドポイント*][]」をご覧ください。                                                                    |
 
-Azure Stack のテナント ID を確認するには、[こちら](../azure-stack-csp-ref-operations.md)の手順に従ってください。 環境変数を設定するには、次の操作を実行します。
+Azure Stack のテナント ID を確認するには、[こちら](../azure-stack-csp-ref-operations.md)の手順に従ってください。 環境変数を設定するには、次の手順に従います。
 
 ### <a name="microsoft-windows"></a>Microsoft Windows
 
@@ -106,7 +106,7 @@ Microsoft Azure Resource Manager は、管理者が Azure リソースのデプ�
 
 - Azure Stack Development Kit (ASDK) の **ResourceManagerUrl** は https://management.local.azurestack.external/ になります。
 
-- 統合システムの **ResourceManagerUrl** は、次のようになります。`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` 必要なメタデータを取得するには、次のように指定します。`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+- 統合システムの **ResourceManagerUrl** は `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` になります。必要なメタデータを取得するには、`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` になります。
 
 サンプルの JSON ファイルは、次のようになります。
 
@@ -125,11 +125,11 @@ Microsoft Azure Resource Manager は、管理者が Azure リソースのデプ�
 
 ## <a name="existing-api-profiles"></a>既存の API プロファイル
 
-1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.*ResourceProvider*.0.9.0-preview.nupkg**: Azure Stack 用に作成された最新のプロファイル。 1808 以降のスタンプを使用している限り、Azure Stack との互換性に優れたサービスには、このプロファイルを使用します。
+1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.*ResourceProvider*.0.9.0-preview.nupkg**:Azure Stack 用に作成された最新のプロファイル。 1808 以降のスタンプを使用している限り、Azure Stack との互換性に優れたサービスには、このプロファイルを使用します。
 
-2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09.*ResourceProvider*.0.9.0-preview.nupkg**: スタンプが 1808 ビルドより小さい場合は、このプロファイルを使用します。
+2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09.*ResourceProvider*.0.9.0-preview.nupkg**:スタンプが 1808 ビルドよりも低い場合は、このプロファイルを使用します。
 
-3.  **Latest**: すべてのサービスの最新バージョンで構成されているプロンプトファイル。 すべてのサービスの最新バージョンを使用してください。 このプロファイルは、**Microsoft.Azure.Management** NuGet パッケージの一部です。
+3.  **Latest**:すべてのサービスの最新バージョンで構成されているプロンプトファイル。 すべてのサービスの最新バージョンを使用してください。 このプロファイルは、**Microsoft.Azure.Management** NuGet パッケージの一部です。
 
 Azure Stack および API プロファイルについて詳しくは、「[API プロファイルの概要][]」をご覧ください。
 
@@ -193,7 +193,9 @@ public override void InitializeServiceClient<T>(ServiceClient<T> client)
 
 1.  次のコマンドを使用して、リポジトリを複製します。
 
-    `git clone <https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject>`
+    ```shell
+    git clone https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm.git
+    ```
 
 2.  Azure サービス プリンシパルを作成し、サブスクリプションにアクセスするロールを割り当てます。 サービス プリンシパルの作成方法については、「[Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する][]」をご覧ください。
 

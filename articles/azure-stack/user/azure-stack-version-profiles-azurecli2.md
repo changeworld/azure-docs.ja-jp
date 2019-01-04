@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 2c862dcaf5f9267265879faa8ac927ddf7515419
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6251a0c7fd43a12dbe02a0013f1530557d142d25
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277275"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969959"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack での Azure CLI による API バージョンのプロファイルの使用
 
@@ -36,7 +36,7 @@ az --version
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack の CA ルート証明書を信頼する
 
-1. Azure Stack の CA ルート証明書を [Azure Stack オペレーター](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate)から取得して信頼します。 Azure Stack の CA ルート証明書を信頼するには、Python の既存の証明書に追加します。
+1. Azure Stack の CA ルート証明書を [Azure Stack オペレーター](../azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate)から取得して信頼します。 Azure Stack の CA ルート証明書を信頼するには、Python の既存の証明書に追加します。
 
 1. マシンで証明書の場所を探します。 この場所は、Python をインストールした場所に応じて異なる場合があります。 [pip](https://pip.pypa.io) と [certifi](https://pypi.org/project/certifi/) モジュールをインストールしておく必要があります。 Bash プロンプトから次の Python コマンドを使用できます。
 
@@ -64,7 +64,7 @@ Azure Stack 環境の**外部**のマシンから CLI を実行する場合:
 
 1. 開発ワークステーションの OS に応じて、次のコマンドを実行します。
 
-#### <a name="linux"></a>Linux
+#### <a name="linux"></a> Linux
 
 ```bash
 sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
@@ -76,7 +76,7 @@ sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 ```
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a> Windows
 
 ```powershell
 $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
@@ -181,7 +181,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 1. `az login` コマンドを使用して、Azure Stack 環境にサインインします。 Azure Stack 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)としてサインインできます。 
 
     * AAD 環境
-      * "*ユーザー*" としてサインインする場合: `az login` コマンド内で直接ユーザー名とパスワードを指定するか、ブラウザーを使用して認証できます。 多要素認証が有効になっているアカウントの場合は、後者を実行する必要があります。
+      * *ユーザー*としてサインインする場合: `az login` コマンド内で直接ユーザー名とパスワードを指定するか、ブラウザーを使用して認証できます。 多要素認証が有効になっているアカウントの場合は、後者を実行する必要があります。
 
       ```azurecli
       az login \
@@ -192,7 +192,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
       > [!NOTE]
       > お使いのユーザー アカウントで多要素認証が有効になっている場合は、`-u` パラメーターを入力せずに、`az login command` コマンドを使用できます。 コマンドを実行すると、認証で使用する必要がある URL とコードを取得できます。
    
-      * "*サービス プリンシパル*" としてサインインする場合: サインインする前に、CLI または [Azure Portal でサービス プリンシパルを作成](azure-stack-create-service-principals.md)してロールに割り当てます。 次のコマンドを使用してサインインします。
+      * *サービス プリンシパル*を使ってサインインする｡サインインする前に、CLI または [Azure Portal でサービス プリンシパルを作成](azure-stack-create-service-principals.md)してロールに割り当てます。 次のコマンドを使用してサインインします。
 
       ```azurecli
       az login \
@@ -242,6 +242,6 @@ Azure Stack で CLI を使うときに注意する必要がある既知の問題
 
 [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
 
-[Azure Stack ユーザー (オペレーター) に対する Azure CLI の有効化](..\azure-stack-cli-admin.md)
+[Azure Stack ユーザー (オペレーター) に対する Azure CLI の有効化](../azure-stack-cli-admin.md)
 
 [ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)

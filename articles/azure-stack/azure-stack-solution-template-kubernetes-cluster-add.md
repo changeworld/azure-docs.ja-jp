@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 5a3d63637d7b680a012057b92546ccde87ac73de
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 0cac5658d5f6f32795b5988008b3b895024ecc06
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233363"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960536"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Kubernetes を Azure Stack Marketplace に追加する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!note]  
 > Azure Stack 上の Kubernetes はプレビュー段階にあります。
@@ -73,10 +73,10 @@ Kubernetes の Marketplace 項目のプラン、オファー、サブスクリ�
 1. 「 `UbuntuServer` 」を入力します。
 
 1. サーバーの最新バージョンを選択します。 通常版を確認して、最新バージョンがインストールされていることを確認してください。
-    - **[発行元]**: Canonical
-    - **[オファー]**: UbuntuServer
-    - **[バージョン]**: 16.04.201806120
-    - **[SKU]**: 16.04-LTS
+    - **発行元**: Canonical
+    - **プラン**: UbuntuServer
+    - **バージョン**: 16.04.201806120
+    - **SKU**:16.04 LTS
 
 1. **[ダウンロード]** を選択します。
 
@@ -93,9 +93,9 @@ Marketplace から Kubernetes を追加します。
 1. 「 `Custom Script for Linux` 」を入力します。
 
 1. 次のプロファイルを持つスクリプトを選択します。
-    - **[オファー]**: Custom Script for Linux 2.0 (Linux 2.0 用のカスタム スクリプト)
+    - **プラン**: Linux 2.0 用のカスタム スクリプト
     - **バージョン**: 2.0.6
-    - **[発行元]**: Microsoft Corp
+    - **発行元**: Microsoft Corp
 
     > [!Note]  
     > 複数バージョンの Linux 用カスタム スクリプトが表示されることがあります。 一致するバージョンを追加する必要があります。 Kubernetes には、正確なバージョンの項目が必要です。
@@ -120,7 +120,7 @@ Marketplace から Kubernetes を追加します。
     > [!note]  
     > マーケットプレース項目が Marketplace に表示されるまで 5 分かかる場合があります。
 
-    ![Kubernetes](user\media\azure-stack-solution-template-kubernetes-deploy\marketplaceitem.png)
+    ![Kubernetes](user/media/azure-stack-solution-template-kubernetes-deploy/marketplaceitem.png)
 
 ## <a name="update-or-remove-the-kubernetes"></a>Kubernetes を更新または削除する 
 
@@ -136,7 +136,7 @@ Kubernetes を削除するには:
     Get-AzsGalleryItem | Select Name
     ```
     
-3. 現在の項目の名前に注意してください。例: `Microsoft.AzureStackKubernetesCluster.0.2.0`
+3. 現在の項目の名前に注意してください。例: `Microsoft.AzureStackKubernetesCluster.0.3.0`
 
 4. 次の PowerShell コマンドレットを使用して項目を削除します。
 

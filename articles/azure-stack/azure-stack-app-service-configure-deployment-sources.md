@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: b81b9b34843974ceacf41b08a40a52418ea46d22
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 66688ae762aa646fc72045836c4ec4671bf4b7b4
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547551"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888513"
 ---
 # <a name="configure-deployment-sources"></a>デプロイ ソースを構成する
 
@@ -138,7 +138,7 @@ App Service on Azure Stack では、複数のソース管理プロバイダー�
 
 ## <a name="next-steps"></a>次の手順
 
-[継続的配置](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)、[ローカルの Git デプロイ](https://docs.microsoft.com/azure/app-service/deploy-local-git)、[クラウド フォルダーの同期](https://docs.microsoft.com/azure/app-service-web/deploy-content-sync)などでデプロイ ソースを使用できるようになりました。
+[継続的配置](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)、[ローカルの Git デプロイ](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-local-git)、[クラウド フォルダーの同期](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-content-sync)などでデプロイ ソースを使用できるようになりました。
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png

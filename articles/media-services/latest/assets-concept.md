@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services のアセット | Microsoft Docs
+title: Media Services のアセット - Azure | Microsoft Docs
 description: この記事では、アセットとは何かについて説明し、Azure Media Services によるそれらの使用方法についても説明します。
 services: media-services
 documentationcenter: ''
@@ -9,14 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: e7abdb568b11870fb467ee6d3759881ca337d3cc
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: f9a6f0963ce8f45da567bb4f6326e9fcc8f435ef
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085812"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140134"
 ---
 # <a name="assets"></a>アセット
 
@@ -75,11 +76,11 @@ Media Services は、アセットに対して次の OData クエリ オプショ
 |Name|filter|順序|
 |---|---|---|
 |id|||
-|name|サポート: Eq、Gt、Lt|サポート: 昇順および降順|
-|properties.alternateId |サポート: Eq||
-|properties.assetId |サポート: Eq||
+|name|サポート:Eq、Gt、Lt|サポート: 昇順および降順|
+|properties.alternateId |サポート:Eq||
+|properties.assetId |サポート:Eq||
 |properties.container |||
-|properties.created|サポート: Eq、Gt、Lt| サポート: 昇順および降順|
+|properties.created|サポート:Eq、Gt、Lt| サポート:昇順および降順|
 |properties.description |||
 |properties.lastModified |||
 |properties.storageAccountName |||

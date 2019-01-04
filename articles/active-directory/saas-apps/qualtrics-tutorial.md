@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Qualtrics の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Qualtrics の統合 | Microsoft Docs
 description: Azure Active Directory と Qualtrics の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 27f972ce789ae5bccf173138fe93de33de0d3932
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b7dedef2075ea9877a55a52a3f9a392f79c52300
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446465"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016761"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>チュートリアル: Azure Active Directory と Qualtrics の統合
+# <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>チュートリアル:Azure Active Directory と Qualtrics の統合
 
 このチュートリアルでは、Qualtrics と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -113,6 +113,7 @@ Qualtrics で Azure AD シングル サインオンを構成してテストす�
     a. **[サインオン URL]** ボックスに、`https://<companyname>.qualtrics.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|
     | `https://<companyname>.qualtrics.com/WRSAML/simplesaml/www/module.php/saml/sp/metadata.php/default-sp`|
@@ -208,7 +209,7 @@ Qualtrics へのユーザー プロビジョニングの構成にあたって必
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Qualtrics のタイルをクリックすると、自動的に Qualtrics アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

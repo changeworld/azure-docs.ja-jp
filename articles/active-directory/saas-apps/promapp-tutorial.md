@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 6bcd1add3985112fe60aab22f1799e40ad8889b2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6ed07ea3cc625c518d6733f7a86f4542f91f425c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421864"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017118"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>チュートリアル: Azure Active Directory と Promapp の統合
 
@@ -88,7 +88,7 @@ Promapp で、Azure AD の **[ユーザー名]** の値を **[Username]** の値
 
 Promapp で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Promapp のテスト ユーザーの作成](#creating-a-promapp-test-user)** - Promapp で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -113,6 +113,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
     ![Configure single sign-on](./media/promapp-tutorial/tutorial_promapp_url.png)
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|
     | `https://go.promapp.com/TENANTNAME/`|

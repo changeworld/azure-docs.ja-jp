@@ -1,5 +1,5 @@
 ---
-title: 航空宇宙業界における Azure による予測メンテナンス - Cortana Intelligence Solution テクニカル ガイド | Microsoft Docs
+title: 航空宇宙業界の予測メンテナンス ガイド - Team Data Science Process
 description: 航空宇宙、公益事業、および輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence によるソリューション テンプレートに関する技術ガイドです。
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
-ms.custom: (previous author=fboylu, ms.author=fboylu)
-ms.openlocfilehash: 904e9c22f23255f1bee7f532d7f577c7cd457778
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
+ms.openlocfilehash: d7acb24a6fef0435d59e5a07f5312f1e6368fe52
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443748"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140185"
 ---
-# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
+# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙の業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
 
 >[!Important]
 これは非推奨の記事です。 航空宇宙業界の予測メンテナンスに関する議論には今でも意義がありますが、最新情報については、[ビジネス ユーザー向けのソリューションの概要](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace)に関するページをご覧ください。
@@ -143,7 +143,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 このソリューション テンプレートで使用されている [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験は、航空機のエンジンの残存耐用年数 (RUL) を提供します。 実験は使用されるデータセットに固有であり、取り込まれるデータに固有の変更や置換が必要になります。
 
-Azure Machine Learning の実験の作成方法については、「 [Predictive Maintenance: Step 1 of 3, data preparation and feature engineering (予測メンテナンス: ステップ 1/3、データの準備と特徴エンジニアリング)](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)」を参照してください。
+Azure Machine Learning の実験の作成方法については、「[Predictive Maintenance: Step 1 of 3, data preparation and feature engineering (予測メンテナンス: ステップ 1/3、データの準備と特徴エンジニアリング)](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)」を参照してください。
 
 ## <a name="monitor-progress"></a>進行状況の監視
 データ ジェネレーターを起動すると、データを取り込むパイプラインのデハイドレートが開始され、データ ファクトリによって発行されたコマンドに従ってソリューションのさまざまなコンポーネントがアクションを開始します。 パイプラインを監視する方法は 2 つあります。
@@ -162,7 +162,7 @@ Power BI ダッシュボードを設定して、Azure Stream Analytics データ
 ### <a name="set-up-the-cold-path-dashboard"></a>コールド パス ダッシュボードの設定
 コールド パス データ パイプラインでの目標は、フライト (サイクル) の終了時に、各航空機エンジンの予測 RUL (残存耐用年数) を取得することです。 過去 3 時間以内にフライトを終了した航空機のエンジンを予測するために、予測結果は 3 時間ごとに更新されます。
 
-Power BI は、そのデータ ソースとして、予測結果が格納されている Azure SQL データベースに接続します。 注: 1) ソリューションをデプロイすると、3 時間以内に予測がデータベース内に現れます。
+Power BI は、そのデータ ソースとして、予測結果が格納されている Azure SQL データベースに接続します。 注:ソリューションをデプロイすると、3 時間以内に予測がデータベース内に現れます。
 ジェネレーターのダウンロードに付属する pbix ファイルには、Power BI ダッシュボードをすぐに作成できるようにシード データが含まれています。 2) この手順の前提条件は、無料のソフトウェア [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)をダウンロードしてインストールしていることです。
 
 次の手順は、視覚化するデータ (予測結果など) を含むソリューションのデプロイ時にスピンアップされた SQL Database に、pbix ファイルを接続する方法を示しています。
@@ -218,7 +218,7 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
    *  ***[処理済み]*** ウィンドウが開き、画面の右側に表示されることを確認します。
 3. Power BI にデータが送信されていれば、ストリーミング データの視覚化を開始できます。 いくつかのホット パス視覚エフェクトがピン留めされているサンプル ダッシュボードを次に示します。 適切なデータセットに基づいて他のダッシュボード タイルを作成できます。 データ ジェネレーターの実行時間に応じて、視覚エフェクトの番号が異なる場合があります。
 
-    ![ダッシュボード ビュー](media\cortana-analytics-technical-guide-predictive-maintenance\dashboard-view.png)
+    ![ダッシュボード ビュー](media/cortana-analytics-technical-guide-predictive-maintenance/dashboard-view.png)
 
 1. 上記のタイルを作成する手順を以下に示します。"Fleet View of Sensor 11 vs. Threshold 48.26" タイルを作成します。
    

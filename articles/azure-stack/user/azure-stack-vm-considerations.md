@@ -6,28 +6,28 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
-ms.openlocfilehash: cb02ecb06728f5f36a0d51a3ec22cc8ba5cb44e7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.reviewer: kivenkat
+ms.openlocfilehash: 9d6bb8d4327b428bb47d1d44422d816e7b20ed87
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094757"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847526"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Azure Stack で仮想マシンを操作する際の考慮事項
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack 仮想マシンは、オンデマンドのスケーラブルなコンピューティング リソースを提供します。 仮想マシン (Vm) を展開する前に、Azure スタックと Microsoft Azure で使用できる仮想マシンの機能の違いを理解する必要があります。 この記事では、これらの相違点について説明し、仮想マシンの展開を計画するための重要な考慮事項を特定します。 Azure Stack と Azure の違いの概要については、「[主な考慮事項](azure-stack-considerations.md)」をご覧ください。
 
-## <a name="cheat-sheet-virtual-machine-differences"></a>チート シート: 仮想マシンの相違点
+## <a name="cheat-sheet-virtual-machine-differences"></a>チート シート:仮想マシンの相違点
 
 | 機能 | Azure (グローバル) | Azure Stack |
 | --- | --- | --- |
@@ -40,7 +40,7 @@ Azure Stack 仮想マシンは、オンデマンドのスケーラブルなコ�
 | 仮想マシン ディスクのパフォーマンス | ディスクの種類とサイズによって異なります。 | ディスクが接続されている VM のサイズによって異なります。「[Azure Stack でサポートされている仮想マシンのサイズ](azure-stack-vm-sizes.md)」を参照してください。
 | API のバージョン | Azure では常に、すべての仮想マシン機能について最新の API のバージョンが用意されます。 | Azure Stack では特定の Azure サービスがサポートされ、それらのサービスについて特定の API バージョンがサポートされます。 サポートされている API バージョンの一覧を参照するには、この記事の [API バージョン](#api-versions)についてのセクションを参照してください。 |
 |仮想マシン可用性セット|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン<br>マネージド ディスクのサポート|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン (最大 20)<br>マネージド ディスクのサポートなし|
-|仮想マシン スケール セット|自動スケールがサポートされる|自動スケールはサポートされない。<br>ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにより多くのインスタンスを追加します。
+|仮想マシン スケール セット|自動スケール サポート|自動スケールはサポートされていません。<br>ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにより多くのインスタンスを追加します。
 
 ## <a name="virtual-machine-sizes"></a>仮想マシン サイズ
 

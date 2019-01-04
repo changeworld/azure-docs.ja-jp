@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 12/06/2018
 ms.author: patricka
 ms.reviewer: ''
-ms.openlocfilehash: 2e36f52568d349aeecd47f90bf9431f096cc4fdc
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 70641084d2213b50803800a64000611d139facec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41954625"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075777"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Azure Stack のロールベースのアクセス制御でリソースへのアクセスを管理する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack はロールベースのアクセス制御 (RBAC) をサポートしますが、これは[アクセス管理のためのセキュリティ モデル](https://docs.microsoft.com/azure/role-based-access-control/overview)であり、Microsoft Azure が使用するものと同じです。 RBAC を使用して、ユーザー、グループ、またはアプリケーションによるサブスクリプション、リソース、およびサービスへのアクセスを管理することができます。
 
@@ -91,9 +91,9 @@ Azure の[ロールの割り当て](https://docs.microsoft.com/azure/role-based-
 1. 管理するリソースへの所有者アクセス許可があるアカウントでサインインします。
 2. 左側のナビゲーション ペインで、**[リソース グループ]** を選択します。
 3. アクセス許可を設定するリソース グループの名前を選択します。
-4. リソース グループのナビゲーション ペインで、**[アクセス制御 (IAM)]** を選択します。 **[Access control]**(アクセス制御) ビューに、リソース グループへのアクセス権を持つ項目が一覧表示されます。 これらの結果をフィルター処理したり、メニュー バーを使用してアクセス許可を追加または削除したりできます。
-5. **[アクセス制御]** メニュー バーで、**[+ Add]**(+ 追加) を選択します。
-6. **[アクセス許可の追加]** で:
+4. リソース グループのナビゲーション ペインで、**[アクセス制御 (IAM)]** を選択します。 **[ロールの割り当て]** ビューに、リソース グループへのアクセス権を持つ項目が一覧表示されます。 結果はフィルター処理してグループ化できます。
+5. **[アクセス制御]** メニュー バーで、**[ロールの割り当ての追加]** を選択します。
+6. **[ロールの割り当ての追加]** ウィンドウ:
 
    * 割り当てるロールを **[ロール]** ドロップダウン リストから選択します。
    * 割り当てるリソースを **[アクセスの割り当て先]** ドロップダウン リストから選択します。
