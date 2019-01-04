@@ -1,20 +1,17 @@
 ---
 title: Azure Database for MySQL のサーバーの概念
 description: このトピックでは、Azure Database for MySQL サーバーを操作するための考慮事項とガイドラインを示します。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 0ddab6a982f54f0309e87d3b74a7f21c0bb67ced
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e4bba685ed49e72d00255f386061a0a8f9ec9078
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955515"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535501"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバーの概念
 

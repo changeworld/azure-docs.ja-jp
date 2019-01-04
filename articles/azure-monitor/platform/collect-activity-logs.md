@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 1556c228aa2e00cf18f16cc26eefab4691f6de23
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 20246cfa5904c3c89ab9a14d11f2e61883b27344
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184952"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540257"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Log Analytics での Azure アクティビティ ログの収集と分析
 
 ![Azure アクティビティ ログのシンボル](./media/collect-activity-logs/activity-log-analytics.png)
 
-Activity Log Analytics ソリューションは、すべての Azure サブスクリプションにわたる [Azure アクティビティ ログ](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)の分析や検索に役立ちます。 Azure アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作に関する洞察が得られます。 アクティビティ ログではサブスクリプションのイベントが報告されるため、以前は*監査ログ*または*操作ログ*と呼ばれていました。
+Activity Log Analytics ソリューションは、すべての Azure サブスクリプションにわたる [Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)の分析や検索に役立ちます。 Azure アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作に関する洞察が得られます。 アクティビティ ログではサブスクリプションのイベントが報告されるため、以前は*監査ログ*または*操作ログ*と呼ばれていました。
 
 アクティビティ ログを使用すると、サブスクリプションのリソースに対して行われた書き込み操作 (PUT、POST、DELETE) すべてについて、*いつ*、*誰が*、*何を*行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック デプロイ モデルを使用するリソースに対する操作は含まれません。
 
