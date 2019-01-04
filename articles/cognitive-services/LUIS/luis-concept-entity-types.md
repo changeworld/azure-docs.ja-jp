@@ -1,23 +1,24 @@
 ---
-title: LUIS アプリでのエンティティ型 - Language Understanding
-titleSuffix: Azure Cognitive Services
+title: エンティティの種類
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding Intelligent Service (LUIS) アプリにエンティティ (アプリケーションのドメイン内のキー データ) を追加します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: fdf81943a7bdbae80f4474915a72bb61f1123a30
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: f0e543263c7a9890abc485d0f0cd6bec88f16dd4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085865"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135204"
 ---
-# <a name="entities-in-luis"></a>LUIS のエンティティ
+# <a name="entity-types-and-their-purposes-in-luis"></a>LUIS におけるエンティティの種類とその目的
 
 エンティティとは、発話に含まれる単語またはフレーズのことで、アプリケーションのドメイン内のキー データです。
 
@@ -71,7 +72,7 @@ LUIS には、事前構築済みのエンティティ、機械学習済みのカ
 | Name | ラベル付けできる | 説明 |
 | -- |--|--|
 | **事前構築済み** <br/>[カスタム](#prebuilt)| |  **定義**<br>一般的な概念を表す組み込みの種類です。 <br><br>**リスト**<br/>キー フレーズの数、序数、温度、寸法、お金、年齢、パーセンテージ、電子メール アドレス、URL、電話番号、およびキー フレーズです。 <br><br>事前構築済みのエンティティ名は予約されています。 <br><br>アプリケーションに追加されるすべての事前構築済みエンティティが、[エンドポイント](luis-glossary.md#endpoint) クエリに返されます。 詳細については、「[事前構築済みのエンティティ](./luis-prebuilt-entities.md)」を参照してください。 <br/><br/>[エンティティの応答例](luis-concept-data-extraction.md#prebuilt-entity-data)|
-|<!-- added week of 3/21/08 --> **正規表現**<br/>[正規表現](#regex)||**定義**<br>書式設定された生の発話テキストのカスタム正規表現。 大文字小文字とカルチャのバリアントは無視されます。  <br><br>このエンティティは、バリエーションにも一貫性のある、一貫して書式設定されている単語またはフレーズに適しています。<br><br>正規表現の照合は、スペルチェックによる変更後に適用されます。 <br><br>角かっこが多用されているなど、正規表現が複雑すぎる場合は、このモデルに式を追加できません。 <br><br>**例**<br>`kb[0-9]{6,}` は kb123456 と一致します。<br/><br/>[クイックスタート](luis-quickstart-intents-regex-entity.md)<br>[エンティティの応答例](luis-concept-data-extraction.md)|
+|<!-- added week of 3/21/08 --> **正規表現**<br/>[正規表現](#regex)||**定義**<br>書式設定された生の発話テキストのカスタム正規表現。 大文字小文字とカルチャのバリアントは無視されます。  <br><br>このエンティティは、バリエーションにも一貫性のある、一貫して書式設定されている単語またはフレーズに適しています。<br><br>正規表現の照合は、スペルチェックによる変更後に、トークン レベルではなく文字レベルで適用されます。 [.Net Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) ライブラリの全体ではなく一部が使用されます。<br><br>角かっこが多用されているなど、正規表現が複雑すぎる場合は、このモデルに式を追加できません。 <br><br>**例**<br>`kb[0-9]{6,}` は kb123456 と一致します。<br/><br/>[クイックスタート](luis-quickstart-intents-regex-entity.md)<br>[エンティティの応答例](luis-concept-data-extraction.md)|
 | **シンプル** <br/>[機械学習済み](#machine-learned) | ✔ | **定義**<br>シンプルなエンティティとは、1 つの概念について説明し、機械学習コンテキストから学習した汎用的エンティティです。 コンテキストには、単語の選択、単語の配置、および発話の長さが含まれます。<br/><br/>これは、形式に一貫性がないが同じものを示す単語またはフレーズに適したエンティティです。 <br/><br/>[クイックスタート](luis-quickstart-primary-and-secondary-data.md)<br/>[エンティティの応答例](luis-concept-data-extraction.md#simple-entity-data)|  
 | **リスト** <br/>[完全一致](#exact-match)|| **定義**<br>リスト エンティティは、システム内の、固定かつ限定された関連単語セットとそのシノニムを表します。 <br><br>各リスト エンティティでは、1 つ以上の形式を持つことができます。 同じ概念を表現する方法のバリエーションに関する既知のセットとして使用されます。<br/><br/>LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、**[Recommend] (推奨)** 機能を使用します。<br/><br>同じ値を持つリスト エンティティが複数存在する場合は、エンドポイント クエリに各エンティティが返されます。 <br/><br/>[クイックスタート](luis-quickstart-intent-and-list-entity.md)<br>[エンティティの応答例](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[混合](#mixed) | ✔|**定義**<br>patterns.any は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレース ホルダーです。  <br><br>**例**<br>タイトルに基づく書籍の発話検索では、pattern.any によって完全なタイトルが抽出されます。 pattern.any を使用するテンプレート発話は `Who wrote {BookTitle}[?]` です。<br/><br/>[チュートリアル](luis-tutorial-pattern.md)<br>[エンティティの応答例](luis-concept-data-extraction.md#composite-entity-data)|  

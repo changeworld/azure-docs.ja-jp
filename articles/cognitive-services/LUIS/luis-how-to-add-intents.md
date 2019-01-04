@@ -1,21 +1,22 @@
 ---
-title: LUIS アプリケーションでの意図の追加
-titleSuffix: Azure Cognitive Services
+title: 意図の追加
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 意図を LUIS アプリに追加して、同じ意図を持つ質問またはコマンドのグループを特定します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.component: language-understanding
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 495b7e99319126b3ee9e655b2d9aa4af940e1d56
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3e6064b4c202c36e4b63d6e06edfbf3149f6665f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139923"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139872"
 ---
 # <a name="add-intents"></a>意図の追加 
 
@@ -57,7 +58,7 @@ ms.locfileid: "50139923"
 
 意図の発話では、選択した意図と予測スコアの間に意図予測の不一致が存在する場合があります。 このような不一致がある場合、LUIS では、サンプル発話の行の**ラベル付き意図**の周囲に、赤いボックスが表示されます。 
 
-![意図の詳細ページのスクリーンショット、発話が強調表示されています](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+![意図の詳細ページのスクリーンショット、発話予測の不一致エラー](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
 
 上部のナビゲーションで、**[トレーニング]** を選択します。 これで、予測の不一致がなくなります。
 

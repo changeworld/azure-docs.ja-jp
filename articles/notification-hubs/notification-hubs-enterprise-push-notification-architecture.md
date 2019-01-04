@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 962bc996a86340bb10a28b90ef6340a98c5d9275
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1c9161f6d31a3fcff8f8926c8bf188f1bdc14799
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430608"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725863"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
 今日の企業における重要事項は、外部のエンド ユーザーや社内の従業員向けのモバイル アプリケーションを作成することへと徐々に変化してきました。 そこには、メインフレームや一部の LOB アプリケーションなどの既存のバックエンド システムが存在しますが、これらをモバイル アプリケーション アーキテクチャに統合する必要があります。 このガイドでは、一般的なシナリオに対する可能性のあるソリューションを推奨しながら、この統合を実行するための最適な方法について説明します。
@@ -264,6 +264,6 @@ ms.locfileid: "39430608"
 [Azure Mobile Service]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
 [Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[Azure WebJob]: ../app-service/web-sites-create-web-jobs.md
+[Azure WebJob]: ../app-service/webjobs-create.md
 [Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure Portal]: https://portal.azure.com/

@@ -1,23 +1,24 @@
 ---
-title: Language Understanding (LUIS) での反復型アプリ設計
-titleSuffix: Azure Cognitive Services
-description: LUIS は、モデル変更、発話の例、公開、エンドポイント クエリからのデータ収集という反復サイクルの中で最も適切に学習します。  LUIS アプリでは、最適なデータ抽出を実現できるように、LUIS をトレーニングする反復処理を設計する必要があります。
+title: 反復的アプリ設計
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: LUIS は、モデル変更、発話の例、公開、エンドポイント クエリからのデータ収集という反復サイクルの中で最も適切に学習します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 2bd30aad995e9d1f334988652477f8b017c187b9
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: c86805527d6ac79fa31496fe06695d448a8b835b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638292"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134084"
 ---
-# <a name="authoring-cycle"></a>作成サイクル
+# <a name="authoring-cycle-for-your-luis-app"></a>LUIS アプリの作成サイクル
 LUIS は、モデル変更、発話の例、公開、エンドポイント クエリからのデータ収集という反復サイクルの中で最も適切に学習します。 
 
 ![作成サイクル](./media/luis-concept-app-iteration/iteration.png)

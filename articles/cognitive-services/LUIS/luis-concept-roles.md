@@ -1,21 +1,22 @@
 ---
-title: パターン ベースのエンティティでのロールの使用方法について
+title: エンティティのロール
 titleSuffix: Azure Cognitive Services
-description: ロールは、パターンでのみ使用されるエンティティの名前付きコンテキスト サブタイプです。 たとえば、発話「ニューヨーク発ロンドン着の切符を買う」では、ロンドンとニューヨークは両方とも都市ですが、文章内での意味はそれぞれ異なります。 ニューヨークは出発地、ロンドンは目的地です。
+description: ロールは、パターンでのみ使用されるエンティティの名前付きコンテキスト サブタイプです。 たとえば、発話 `buy a ticket from New York to London` では、ロンドンとニューヨークは両方とも都市ですが、文章内での意味はそれぞれ異なります。 ニューヨークは出発地、ロンドンは目的地です。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8a92852a2721bd391ddf7c3cf3489b820c4a1400
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: dd11c2c7062d09c522c46770e8dba6d6eb0ac1e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277617"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105566"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>パターンのエンティティ ロールはコンテキスト サブタイプです
 ロールは、[パターン](luis-concept-patterns.md)でのみ使用されるエンティティの名前付きコンテキスト サブタイプです。
@@ -26,8 +27,8 @@ ms.locfileid: "51277617"
 
 |エンティティ|Role|目的|
 |--|--|--|
-|Location|origin|飛行機が離陸する場所|
-|Location|destination|飛行機が着陸する場所|
+|場所|origin|飛行機が離陸する場所|
+|場所|destination|飛行機が着陸する場所|
 |事前構築済みの datetimeV2|to|終了日|
 |事前構築済みの datetimeV2|from|開始日|
 
@@ -43,7 +44,7 @@ ms.locfileid: "51277617"
 エンティティとロールは、かっこ `{}` で囲まれています。 エンティティとロールは、コロンで区切られています。 
 
 
-[!INCLUDE[H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
+[!INCLUDE [H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
 
 ## <a name="roles-with-prebuilt-entities"></a>ロールと事前構築済みエンティティ
 

@@ -11,14 +11,14 @@ ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 39995ca44573fe50bf0c2a2510c2c19fb227ff1d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3c7f9e4cc4cf023aa93bd80ad1165ba9595e9034
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241125"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807439"
 ---
-# <a name="what-is-the-web-language-model-api-preview"></a>Web Language Model API とは (プレビュー)
+# <a name="what-is-the-web-language-model-api-preview"></a>Web Language Model API とは  (プレビュー)
 
 > [!IMPORTANT]
 > Web Language Model プレビューは、2018 年 8 月 9 日に使用停止になりました。 テキスト処理と分析には、[Azure Machine Learning テキスト解析モジュール](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)の使用をお勧めします。
@@ -44,7 +44,7 @@ Web Language Model API では、次の 4 つの検索操作がサポートされ
 1. サービスをサブスクライブします。
 2. [SDK](https://www.github.com/microsoft/cognitive-weblm-windows) をダウンロードします。
 3. SDK のサンプル コードを実行します。
-4. エンドポイントの完全な説明は、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104)を参照してください。さまざまな言語のコード スニペットも含まれています。
+4. エンドポイントの完全な説明は、[API リファレンス](http://web.archive.org/web/20170503191852/westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51)を参照してください。さまざまな言語のコード スニペットも含まれています。
 
 ## <a name="underlying-technology"></a>基礎となるテクノロジ
 

@@ -1,21 +1,22 @@
 ---
-title: LUIS アプリで発話の例を追加する
-titleSuffix: Azure Cognitive Services
-description: Language Understanding (LUIS) アプリケーションで発話を追加する方法を学習します。
+title: 発話の例を追加する
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 発話の例とは、ユーザーの質問や命令のサンプル テキストです。 Language Understanding (LUIS) に学習させるには、意図に発話の例を追加する必要があります。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: caf8628569481149ee41e8253f4759e15e49150f
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 33c941f84952faca1961bb65687b4098b837a2fd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139125"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139172"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>発話の例にエンティティを追加する 
 
@@ -89,7 +90,7 @@ Does John Smith work in Seattle?
 
 1. ドロップダウン リストで複合エンティティ名を入力します。
 
-    ![エンティティ名を入力したスクリーンショット](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
+    ![ドロップダウン リストで複合エンティティ名を入力する画面のスクリーンショット](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
 
     エンティティが正しくラップされていると、語句全体に緑の下線が付きます。
 
@@ -117,7 +118,7 @@ Does John Smith work in Seattle?
 
 1. 発話の中の単語に親階層構造エンティティのラベルが付けられました。 その単語を子エンティティに割り当てる必要があります。 意図の詳細ページの発話に戻ります。 単語を選択し、選択したエンティティ名をドロップダウン リストから選択し、メニューを右にたどり、正しい子エンティティを選択します。
 
-    ![意図の詳細ページのスクリーンショット、到着地エンティティが強調表示されています](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
+    ![意図の詳細ページのスクリーンショット (ここで単語を子エンティティに割り当てる)](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
 
     >[!CAUTION]
     >子エンティティ名は、1 つのアプリのエンティティ全体で一意となる必要があります。 2 つの異なる階層構造エンティティには、同じ名前の子エンティティを含めることができません。 
@@ -134,7 +135,7 @@ LUIS ポータルで新しい発話を入力するとき、発話にエンティ
 
 予測に相違がある場合、エンティティ ボックスに赤い感嘆符の付いた **[Entity status]\(エンティティの状態\)** が表示されます。 エンティティの状態と、ラベル付けされたエンティティと予測されたエンティティの間の相違に関する情報を表示するには、**[Entity status]\(エンティティの状態\)** を選択した後、右側の項目を選択します。
 
-![エンティティ状態予測不一致のスクリーンショット](./media/luis-how-to-add-example-utterances/entity-status.png)
+![予測の不一致を修正するために正しい項目を選択する画面のスクリーンショット](./media/luis-how-to-add-example-utterances/entity-status.png)
 
 赤い線は、次のいずれかのときに表示される可能性があります。
 

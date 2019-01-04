@@ -1,6 +1,6 @@
 ---
-title: Language Understanding (LUIS) の境界と制限
-titleSuffix: Azure Cognitive Services
+title: 制限
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: この記事では、Azure Cognitive Services Language Understanding (LUIS) の既知の制限を示します。 LUIS には、複数の境界領域があります。 モデル境界は LUIS で意図、エンティティ、および機能を制御します。 キーの種類に基づくクォータ制限。 キーボードの組み合わせは LUIS Web サイトを制御します。
 services: cognitive-services
 author: diberry
@@ -8,16 +8,17 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: b7a2d1554d668b4000b87b210a69b290def9b19e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 716c6b67676bb3421fd5dbd0274ed41c7705c676
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035438"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133521"
 ---
-# <a name="luis-boundaries"></a>LUIS 境界
+# <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS モデルとキーの境界
 LUIS には、複数の境界領域があります。 1 つは[モデル境界](#model-boundaries)で、これにより LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の境界領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。 
 
 

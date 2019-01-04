@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: aahi
-ms.openlocfilehash: 81513819fd60dc088c2ed4a781562684c84e803a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: dec903d8557145701e06ddd588a58eb11fef96f5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415476"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879311"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Translator Speech API から Speech Service に移行する
 
@@ -45,13 +45,13 @@ ms.locfileid: "50415476"
 | タイミング情報                                       | :heavy_check_mark:                                              | :heavy_minus_sign:                 |                                                                                                                                                                 |
 | 関連付け ID                                    | :heavy_check_mark:                                              | :heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
 | カスタム音声モデル                              | :heavy_minus_sign:                                              | :heavy_check_mark:                 | Speech Service には、音声認識を組織の一意のボキャブラリにカスタマイズできるカスタム音声モデルが用意されています。                                                                                                                                           |
-| カスタム変換モデル                         | :heavy_minus_sign:                                              | :heavy_check_mark:                 | Microsoft Text Translation API に登録すると、[Custom Translator](https://www.microsoft.com/translator/business/customization/) (現在プレビュー) により、独自のデータを使ってより正確な翻訳ができます。                                                 |
+| カスタム変換モデル                         | :heavy_minus_sign:                                              | :heavy_check_mark:                 | Microsoft Text Translation API に登録すると、[カスタム トランスレーター](https://www.microsoft.com/translator/business/customization/)により、独自のデータを使ってより正確な翻訳ができます。                                                 |
 
 ## <a name="migration-strategies"></a>移行方法
 
 Translator Speech API を使用しているアプリケーションを開発中の場合､あるいはそうしたアプリケーションを運用している場合は､Speech Service を使用するように更新することをお勧めします。 使用できる SDK やサンプル コード､チュートリアルについては､[Speech Service](index.yml) のドキュメントをご覧ください。 移行する際は、次を考慮してください。
 
-* 現在､Speech Service はグローバル エンドポイントを提供していません｡ アプリケーションの全トラフィックに同じ地域エンドポイントを使用しているときにアプリケーションが効率的に機能するかどうかを判断してください。 効率的に機能しない場合は､geolocation を使って最も効率的なエンドポイントを探してください｡
+* 現在､Speech Service はグローバル エンドポイントを提供していません｡ アプリケーションのすべてのトラフィックに単一のリージョン エンドポイントを使用しているときにアプリケーションが効率的に機能するかどうかを判断します。 効率的に機能しない場合は､geolocation を使って最も効率的なエンドポイントを探してください｡
 
 * アプリケーションが長時間維持される接続を使用していて、利用可能な SDK を使用できない場合は、WebSocket 接続を使用できます。 適切なタイミングで再接続して、10 分のタイムアウト制限を管理してください。
 

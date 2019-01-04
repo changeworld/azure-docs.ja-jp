@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: d784bf3637c83c724c3616a1a42b66c4914b4ff7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f4c687ff0d02c78b88b24834f6c3acfc563ecbfc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987241"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963574"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -134,8 +134,8 @@ Traffic Manager は、クエリの送信元 IP (ほとんどの場合、ユー�
 ## <a name="traffic-manager-subnet-traffic-routing-method"></a>Traffic Manager のサブネット トラフィック ルーティング方法
 
 ### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>サブネット ルーティングが役立つユース ケースを教えてください。
-サブネット ルーティングを使用すると、DNS 要求 IP アドレスの送信元 IP によって識別される特定のユーザーのセットに対して提供するエクスペリエンスを区別することができます。 たとえば、ユーザーが企業の本社から Web サイトに接続している場合に別のコンテンツを表示することができます。 また、特定の ISP のパフォーマンスが IPv6 の使用時に平均を下回る場合は、その ISP のユーザーによるアクセスを、IPv4 接続だけがサポートされているエンドポイントだけに制限することもできます。
-サブネット ルーティング方法を使用すべき理由はもう 1 つありますが、それは、入れ子になったプロファイル セット内の他のプロファイルと関連したものです。 たとえば、ユーザーのジオフェンスのために地理的なルーティング方法を使用する一方で、特定の ISP には別のルーティング方法を使用する場合は、プロファイルでサブネット ルーティング方法を親プロファイルにし、その ISP には特定の子プロファイルが使用されるようにオーバーライドします。そうすることで、その ISP 以外では、標準の地理的プロファイルが使用されます。
+サブネット ルーティングを使用すると、DNS 要求 IP アドレスの送信元 IP によって識別される特定のユーザーのセットに対して提供するエクスペリエンスを区別することができます。 たとえば、ユーザーが企業の本社から Web サイトに接続している場合に別のコンテンツを表示することができます。 また、IPv6 の使用時に特定の ISP のパフォーマンスが平均を下回る場合は、その ISP のユーザーによるアクセスを、IPv4 接続だけがサポートされているエンドポイントのみに制限することもできます。
+サブネット ルーティング方法を使用すべきもう 1 つの理由は、入れ子になったプロファイル セット内にある、他のプロファイルに関連しています。 たとえば、ユーザーのジオフェンスのために地理的なルーティング方法を使用する一方で、特定の ISP には別のルーティング方法を使用したい場合は、サブネット ルーティング方法を使用するプロファイルを親プロファイルにし、その ISP をオーバーライドして特定の子プロファイルが使用されるようにします。そうすることで、これ以外ではすべて標準の地理的プロファイルとなります。
 
 ### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Traffic Manager はどのような方法でエンド ユーザーの IP アドレスを把握するのですか。
 エンド ユーザーのデバイスでは、通常、DNS 参照が DNS リゾルバーによって代行されます。 このようなリゾルバーの発信 IP が、Traffic Manager によって送信元 IP と見なされます。 また、サブネット ルーティング方法でも、要求と共に渡された EDNS0 Extended Client Subnet (ECS) 情報があるかどうかが検索されます。 ECS 情報が存在する場合は、それがルーティングの決定に使用されるアドレスになります。 ECS 情報がない場合は、クエリの送信元 IP がルーティングの目的で使用されます。
@@ -149,7 +149,7 @@ Traffic Manager は、クエリの送信元 IP (ほとんどの場合、ユー�
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>サブネット ルーティングを使用する場合にフォールバック エンドポイントを指定するにはどうすればよいですか。
 サブネット ルーティングのプロファイルで、サブネットがマップされていないエンドポイントがある場合、他のエンドポイントと一致しないすべての要求は、このエンドポイントに送られます。 プロファイルにそのようなフォールバック エンドポイントを指定することを強くお勧めします。要求が到着し、どのエンドポイントにもマップされない場合、またはエンドポイントにマップされてもそのエンドポイントに異常がある場合、Traffic Manager からは NXDOMAIN 応答が返されるためです。
 
-### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>サブネット ルーティングの種類のプロファイルでエンドポイントが無効になっている場合はどうなりますか。
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>サブネット ルーティング型のプロファイルでエンドポイントが無効になっている場合はどうなりますか。
 サブネット ルーティングを使用するプロファイルで、そのエンドポイントが無効になっている場合、Traffic Manager はそのエンドポイントとそれのサブネット マッピングが存在しないかのように動作します。 IP アドレス マッピングと一致するクエリが受信され、エンドポイントが無効になっている場合、Traffic Manager はフォールバック エンドポイント (マッピングを持たないエンドポイント) を返します。そのようなエンドポイントがない場合は、NXDOMAIN 応答を返します
 
 ## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Traffic Manager の複数値トラフィック ルーティング方法

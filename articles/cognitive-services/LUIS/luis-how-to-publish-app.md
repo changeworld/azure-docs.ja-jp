@@ -1,21 +1,22 @@
 ---
-title: 予測エンドポイントに LUIS アプリを発行する
+title: アプリの発行
 titleSuffix: Azure Cognitive Services
 description: アクティブな LUIS アプリの構築とテストが終了したら、それをエンドポイントに発行して、クライアント アプリケーションが使用できるようにします。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6eb48fd0f3290fbc3a249bc3880c809ace9f9ddb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 73788b05cad3abac19b1ef509f1250542d10dba2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886491"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136649"
 ---
 # <a name="publish-your-trained-app"></a>トレーニング済みのアプリを発行する
 
@@ -37,7 +38,7 @@ ms.locfileid: "48886491"
 
 アプリが正常に発行されると、ブラウザーの上部に緑色の成功通知が表示されます。 緑色の通知バーには、エンドポイントへのリンクも含まれています。 
 
-![発行のポップアップ ウィンドウ](./media/luis-how-to-publish-app/publish-success.png)
+![発行のポップアップ ウィンドウとエンドポイントへのリンク](./media/luis-how-to-publish-app/publish-success.png)
 
 エンドポイント URL が必要な場合は、リンクを選択します。 エンドポイント URL には、上部のメニューの **[管理]** を選択し、左側のメニューの **[Keys and endpoints]\(キーとエンドポイント)** を選択してもアクセスできます。 
 

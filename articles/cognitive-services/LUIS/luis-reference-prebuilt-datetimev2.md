@@ -1,23 +1,24 @@
 ---
-title: LUIS 作成済みエンティティ datetimeV2 リファレンス - Azure | Microsoft Docs
+title: datetimeV2 作成済みエンティティ
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での datetimeV2 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: b7d5b14121f533c49f29759293c0e5379ea2555e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0e2353107d6554a8ecbbd2e4d9850f8d8b5fda5c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036696"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165182"
 ---
-# <a name="datetimev2-entity"></a>datetimeV2 エンティティ
+# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの datetimeV2 作成済みエンティティ
 
 **datetimeV2** 作成済みエンティティは、日付と時刻の値を抽出します。 これらの値は、クライアント プログラムで使用できるように標準化された形式に解決されます。 発話に完全ではない日付または時刻が含まれる場合、LUIS は "_過去と未来両方の値_" をエンドポイントの応答に含めます。 このエンティティは既にトレーニングされているので、datetimeV2 を含む発話の例をアプリケーション意図に追加する必要はありません。 
 
@@ -27,7 +28,7 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 ## <a name="example-json"></a>JSON の例 
 次の例の JSON 応答には、`datetimeV2` エンティティとサブタイプ `datetime` が含まれます。 他のタイプの datetimeV2 エンティティの例については、「[datetimeV2 のサブタイプ](#subtypes-of-datetimev2)</a>」をご覧ください。
 
-```JSON
+```json
 "entities": [
   {
     "entity": "8am on may 2nd 2017",
@@ -103,7 +104,7 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 次の例では、エンティティ "5 月 2 日" の解決を示します。 この解決では、今日の日付が 2017 年 5 月 2 日から 2018 年 5 月 1 日の間の日付であるものと仮定します。
 `timex` フィールド内の `X` が付いたフィールドは、発話で明示的に指定されていない日付の部分です。
 
-```JSON
+```json
   "entities": [
     {
       "entity": "may 2nd",
@@ -132,7 +133,7 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 
 `datetimeV2` エンティティは、日付と時刻の範囲を抽出します。 `start` および `end` フィールドは、範囲の開始と終了を指定します。 発話が "5 月 2 日から 5 月 5 日" の場合、LUIS は今年と翌年の両方に対して **daterange** 値を提供します。 `timex` フィールドで、`XXXX` の値は年のあいまいさを示します。 `P3D` は、時刻の期間が 3 日の長さであることを示します。
 
-```JSON
+```json
 "entities": [
     {
       "entity": "may 2nd to may 5th",
@@ -163,7 +164,7 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 
 次の例では、"火曜日から木曜日" という発話の解決に LUIS が **datetimeV2** を使用する方法を示します。 この例では、現在の日付は 6 月 19 日です。 LUIS は、現在の日付より前と後の両方の日付範囲に対する **daterange** 値を含めます。
 
-```JSON
+```json
   "entities": [
     {
       "entity": "tuesday to thursday",
@@ -196,7 +197,7 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 
 次の例では、時刻の範囲を含む発話の解決に LUIS が **datetimeV2** を使用する方法を示します。
 
-```
+```json
   "entities": [
     {
       "entity": "6pm to 7pm",

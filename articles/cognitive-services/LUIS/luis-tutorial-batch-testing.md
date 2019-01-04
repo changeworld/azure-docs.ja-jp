@@ -1,23 +1,24 @@
 ---
-title: 'チュートリアル 2: 1000 個の発話のセットを使用したバッチ テスト '
+title: バッチ テスト
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、バッチ テストを使用してアプリでの発話予測の問題を検出し、修正する方法を説明します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: e5155caa26669cd98b679eec611334ee5c048fca
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 06981972dbdb95b8597bab5028c2d86e0594caf3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162543"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106041"
 ---
-# <a name="tutorial-2-batch-test-data-sets"></a>チュートリアル 2: バッチ テストのデータ セット
+# <a name="tutorial-2-batch-test-data-sets"></a>チュートリアル 2:バッチ テスト用のデータセット
 
 このチュートリアルでは、バッチ テストを使用してアプリでの発話予測の問題を検出し、修正する方法を説明します。  
 

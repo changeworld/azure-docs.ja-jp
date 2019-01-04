@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 309da6f7753d95bc6830d61ecca7d86e002ddedf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d105968d13960409a60e2fde9c811a042f444d8f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214838"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848631"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック
 
@@ -24,7 +24,7 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 
 フェールオーバーとフェールバックには 4 つの段階があります。
 
-1. **Azure にフェールオーバーする**: オンプレミス サイトのコンピューターを Azure にフェールオーバーします。
+1. **Azure にフェールオーバーする**: オンプレミス サイトのマシンを Azure にフェールオーバーします。
 2. **Azure VM を再保護する**: Azure VM がオンプレミスの VMware VM へのレプリケートが開始されるように、Azure VM を再保護します。
 3. **オンプレミスにフェールオーバーする**: フェールオーバーを実行して、Azure からフェールバックします。
 4. **オンプレミス VM を再保護する**: データがフェールバックされたら、フェールバック先のオンプレミスの VMware VM を再保護します。これにより、オンプレミスの VMware VM は Azure へのレプリケートを開始できるようになります。

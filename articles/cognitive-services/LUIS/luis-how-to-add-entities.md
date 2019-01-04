@@ -1,21 +1,22 @@
 ---
-title: LUIS アプリにエンティティを追加する
-titleSuffix: Azure Cognitive Services
+title: 複数エンティティの追加
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) アプリにエンティティ (アプリケーションのドメイン内のキー データ) を追加します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 5beb952c2330d44ffe090fc422afa6da67376b0d
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: f95d7851241dfd5b077c215e2df893c6ba8ef36c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288052"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139488"
 ---
 # <a name="create-entities-without-utterances"></a>発話なしでエンティティを作成する
 
@@ -156,13 +157,13 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
 1. リストの正規化された項目がさらに必要な場合、**[Recommend]\(推奨\)** を選択して、[セマンティック辞書](luis-glossary.md#semantic-dictionary)からのオプションを表示します。
 
-    ![Location エンティティに Origin ロールを追加するスクリーンショット](./media/add-entities/hr-list-2.png)
+    ![[Recommend]\(推奨\) 機能を選択してオプションを表示する画面のスクリーンショット](./media/add-entities/hr-list-2.png)
 
 
 1. 推奨リストの項目を選択して、その項目を正規化された値として追加するか、または **[すべて追加]** を選択してすべての項目を追加します。 
     次の JSON 形式を使用して、既存のリスト エンティティに値をインポートできます。
 
-    ```
+    ```JSON
     [
         {
             "canonicalForm": "Blue",

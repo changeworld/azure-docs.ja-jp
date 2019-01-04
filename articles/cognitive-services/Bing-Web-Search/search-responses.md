@@ -1,21 +1,22 @@
 ---
-title: 検索の応答 - Bing Web Search API
+title: Bing Web Search API の応答の構造と答えの種類
 titleSuffix: Azure Cognitive Services
-description: Bing Web Search API の答えの種類と応答について説明します。
+description: Bing Web Search API で使用される回答の種類と応答について説明します。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 8/13/2018
-ms.author: erhopf
-ms.openlocfilehash: f3a4c8bb024aa5e92365b72b8cc2180cc6f4d6d4
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.custom: seodec2018
+ms.openlocfilehash: 1d47d8e35a1be28b5610961c1b1c7b5d1492e871
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123778"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250503"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
 
@@ -295,7 +296,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |*|乗算|
 |^|累乗|
 |!|階乗|
-|.|Decimal|
+|。|Decimal|
 |()|優先順位のグループ化|
 |[]|関数|
 
@@ -304,8 +305,8 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |シンボル|説明|
 |------------|-----------------|
 |Pi|3.14159...|
-|Degree|度|
-|i|虚数|
+|Degree|i|
+|度|虚数|
 |e|自然対数の底 (2.71828...)|
 |GoldenRatio|黄金比 (1.61803...)|
 

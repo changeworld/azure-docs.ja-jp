@@ -1,23 +1,24 @@
 ---
-title: LUIS 作成済みエンティティ number リファレンス - Azure | Microsoft Docs
+title: number 作成済みエンティティ
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での number 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 4d14a3490d87693a4785111035b62e7ae59ee669
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd42fbb85468ab652741573731515e499fe453da
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041848"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165675"
 ---
-# <a name="number-entity"></a>number エンティティ
+# <a name="number-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの number 作成済みエンティティ
 情報の定量化、表現、説明に数値を使用する方法はたくさんあります。 この記事では、可能な例の一部についてのみ説明します。 LUIS はユーザーの発話のバリエーションを解釈し、一貫性のある数値を返します。 このエンティティは既にトレーニングされているので、数値を含む発話の例をアプリケーション意図に追加する必要はありません。 
 
 ## <a name="types-of-number"></a>number の種類
@@ -42,7 +43,7 @@ LUIS が返す JSON 応答の `resolution` フィールドには、**`builtin.nu
 ## <a name="resolution-for-prebuilt-number"></a>作成済みの number の解決
 次の例では、"two dozen" (2 ダース) という発話に対する解決である 24 という値を含む LUIS からの JSON 応答を示します。
 
-```JSON
+```json
 {
   "query": "order two dozen eggs",
   "topScoringIntent": {

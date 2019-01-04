@@ -1,24 +1,25 @@
 ---
-title: V1 から v2 への API 移行ガイド
+title: v1 から v2 への API の移行
 titleSuffix: Azure Cognitive Services
-description: 最新の API セットに移行する方法を説明します。
+description: バージョン 1 のエンドポイントとオーサリング API は非推奨となりました。 このガイドでは、バージョン 2 のエンドポイントとオーサリング API に移行する方法について説明します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 57742d72c8be0dcd999bc8b73f6d598263429c12
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 980470c0f1d24bde52f29c4cd3579e2337898f88
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646577"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138825"
 ---
-# <a name="api-v2-migration-guide"></a>API v2 移行ガイド
-バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となる予定です。 このガイドでは、バージョン 2 の[エンドポイント](https://aka.ms/luis-endpoint-apis)と[オーサリング](https://aka.ms/luis-authoring-apis) API に移行する方法について説明します。 
+# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
+バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://aka.ms/luis-endpoint-apis)と[オーサリング](https://aka.ms/luis-authoring-apis) API に移行する方法について説明します。 
 
 ## <a name="new-azure-regions"></a>新しい Azure リージョン
 LUIS では、LUIS API 用の新しい[リージョン](https://aka.ms/LUIS-regions)が用意されています。 LUIS はリージョン グループごとに異なる Web サイトを提供します。 アプリケーションは、クエリを実行するリージョンと同じリージョンに作成する必要があります。 アプリケーションによって、リージョンが自動的に移行されることはありません。 アプリはリージョンからエクスポートして、新しいリージョンで使用できるようにインポートします。
@@ -43,7 +44,7 @@ LUIS では、LUIS API 用の新しい[リージョン](https://aka.ms/LUIS-regi
 
 
 v1 エンドポイントの成功応答:
-```JSON
+```json
 {
   "odata.metadata":"https://dialogice.cloudapp.net/odata/$metadata#domain","value":[
     {
@@ -54,7 +55,7 @@ v1 エンドポイントの成功応答:
 ```
 
 v2 エンドポイントの成功応答:
-```JSON
+```json
 {
   "query": "forward to frank 30 dollars through HSBC",
   "topScoringIntent": {

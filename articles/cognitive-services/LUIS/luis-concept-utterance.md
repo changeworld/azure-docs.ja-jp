@@ -1,21 +1,22 @@
 ---
-title: LUIS アプリでの発話
-titleSuffix: Azure Cognitive Services
+title: 発話の良い例
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 発話は、アプリが解釈する必要のあるユーザーからの入力です。 ユーザーが入力すると思われる語句を収集します。 同じことを意味しますが、異なる単語の長さと単語の配置で構成されている発話を含めるようにします。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2b21102a5416c1fd7e2abb35be677c48ffc63263
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 4f6bb367e706771707b65445c91619d439257207
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638077"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014839"
 ---
 # <a name="utterances-in-luis"></a>LUIS での発話
 
@@ -55,6 +56,10 @@ LUIS モデルに[発話の例を追加する](luis-how-to-add-example-utterance
 LUIS は、慎重に選択された発話で有効なモデルを構築します。 追加する発話が多すぎると、混乱が発生するので役に立ちません。  
 
 少数の発話で開始し、[エンドポイント発話を確認](luis-how-to-review-endoint-utt.md)して意図の予測とエンティティの抽出が正しいことを確認することをお勧めします。
+
+## <a name="punctuation-marks"></a>句読点
+
+LUIS は、既定では句読点を無視しません。句読点が重要視されるクライアント アプリケーションもあるためです。 どちらの形式でも同じ相対スコアが返されるように、発話の例では必ず、句読点があるケースとないケースの両方を使用してください。 ご利用のクライアント アプリケーションで句読点に特別な意味がない場合は、パターンを使用して[句読点を無視](#ignoring-words-and-punctuation)することを検討してください。 
 
 ## <a name="ignoring-words-and-punctuation"></a>単語と句読点を無視する
 発話の例にある特定の単語や句読点を無視する場合、[パターン](luis-concept-patterns.md#pattern-syntax)と _ignore_ 構文を使用します。 

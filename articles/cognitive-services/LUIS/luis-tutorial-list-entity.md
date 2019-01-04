@@ -1,5 +1,5 @@
 ---
-title: Nodejs でリスト エンティティを使用してエンティティに自動的にラベルを付ける | Microsoft Docs
+title: 完全なテキスト一致のエンティティ
 description: リスト エンティティを追加して、単語や語句の変化形に LUIS でラベルを付けやすくする方法について説明します。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: 42fde2b24f851129e24257bbfe6d65a96e235485
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: be2c7aea356f6d7b73438499b7e4d680ed4bad7c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036781"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259241"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>リスト エンティティを使用してエンティティの検出を向上する 
 このチュートリアルでは、[リスト エンティティ](luis-concept-entity-types.md)を使用してエンティティの検出を向上する方法について説明します。 リスト エンティティは、用語の完全一致なので、ラベルを付ける必要はありません。  
@@ -81,15 +81,16 @@ Node.js ファイルを作成し、次のコードをそのファイルにコピ
 
 次のコマンドを使用して NPM の依存関係をインストールし、コードを実行してリスト エンティティを作成します。
 
-```Javascript
+```console
 npm install && node add-entity-list.js
 ```
 
 実行の出力は、リスト エンティティの ID です。
 
-```Javascript
+```console
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
+
 ## <a name="train-the-model"></a>モデルをトレーニングする
 新しいリストがクエリ結果に反映されるように LUIS をトレーニングします。 トレーニングは、トレーニングと、トレーニング完了後の状態の確認という 2 つのプロセスから構成されます。 多くのモデルを持つアプリでは、トレーニングに数分かかる場合があります。 次のコードでは、トレーニングが成功するまでアプリを訓練します。 このコードでは、429 "Too many requests" (要求が多すぎます) エラーを回避するために、待機して再試行する戦略を使用しています。 
 
@@ -99,13 +100,13 @@ Node.js ファイルを作成し、次のコードをそのファイルにコピ
 
 次のコマンドを使用して、アプリをトレーニングするコードを実行します。
 
-```Javascript
+```console
 node train.js
 ```
 
 実行の出力は、LUIS モデルのトレーニングの各繰り返しの状態です。 次の実行では、トレーニングの確認が 1 回のみ必要でした。
 
-```Javascript
+```console
 1 trained = true
 [ { modelId: '2c549f95-867a-4189-9c35-44b95c78b70f',
     details: { statusId: 2, status: 'UpToDate', exampleCount: 45 } },
@@ -130,13 +131,13 @@ Node.js ファイルを作成し、次のコードをそのファイルにコピ
 
 次のコマンドを使用して、アプリのクエリを実行するコードを実行します。
 
-```Javascript
+```console
 node publish.js
 ```
 
 次の出力には、すべてのクエリのエンドポイント URL が含まれています。 実際の JSON 結果には、実際の appID が含まれます。 
 
-```JSON
+```json
 { 
   versionId: null,
   isStaging: false,
@@ -157,13 +158,13 @@ Node.js ファイルを作成し、次のコードをそのファイルにコピ
 
 次のコマンドを使用してコードを実行し、アプリのクエリを実行します。
 
-```Javascript
+```console
 node train.js
 ```
 
 出力はクエリ結果です。 コードによって**詳細な**名前/値のペアがクエリ文字列に追加されたため、出力にはすべての意図とそのスコアが含まれます。
 
-```JSON
+```json
 {
   "query": "turn up the heat",
   "topScoringIntent": {

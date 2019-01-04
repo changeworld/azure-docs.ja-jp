@@ -1,23 +1,24 @@
 ---
-title: LUIS でのデータ抽出の概念 - Language Understanding
-titleSuffix: Azure Cognitive Services
+title: データの抽出
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) から抽出できるデータの種類について説明します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 284cc8ec6c2325df069d06039a6a22169c3107e7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d8d12662552eaf2d566eebd773c69dfb9817d874
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638343"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098653"
 ---
-# <a name="data-extraction"></a>データの抽出
+# <a name="data-extraction-from-intents-and-entities"></a>意図とエンティティからのデータ抽出
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
 
 抽出するのが最も困難なデータは機械学習データです。その理由は、テキストが完全一致ではないためです。 機械学習[エンティティ](luis-concept-entity-types.md)のデータ抽出は、期待どおりのデータを受け取っていると確信できるまでは、[作成サイクル](luis-concept-app-iteration.md)の一環とする必要があります。
@@ -195,7 +196,7 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 |データ オブジェクト|親|子|値|
 |--|--|--|--|--|
-|階層構造エンティティ|Location|ToLocation|"paris"|
+|階層構造エンティティ|場所|ToLocation|"paris"|
 
 ## <a name="composite-entity-data"></a>複合エンティティ データ
 [複合](luis-concept-entity-types.md)エンティティは、機械学習され、単語またはフレーズを含めることができます。 たとえば、次の発話で、事前構築済みの `number` と `Location::ToLocation` の複合エンティティを考えてみましょう。

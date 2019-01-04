@@ -1,21 +1,22 @@
 ---
-title: LUIS アプリで他の共同作成者と共同作業を行う
-titleSuffix: Azure Cognitive Services
+title: 他の人と共同作業を行う
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: アプリの所有者は、コラボレーターをアプリに追加できます。 これらの共同作業者は、アプリのモデル作成、トレーニング、および発行が可能です。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b7d108bfc0c4283e7856b93daba3f4f92af4cc5b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d1db8974ce134b50340db500c9ea1b00126fe10a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042195"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086421"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>作成者とコラボレーターを管理する方法 
 
@@ -31,7 +32,7 @@ ms.locfileid: "47042195"
 
 2. ツールバーから **[Add Collaborator]\(コラボレーターの追加)** を選択します。
 
-    [![](./media/luis-how-to-collaborate/add-collaborator.png "コラボレーターを追加する")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
+    [![コラボレーターの追加](./media/luis-how-to-collaborate/add-collaborator.png "コラボレーターの追加")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
 
 3. コラボレーターが LUIS ポータルにサインインするために使用するメール アドレスを入力します。
 

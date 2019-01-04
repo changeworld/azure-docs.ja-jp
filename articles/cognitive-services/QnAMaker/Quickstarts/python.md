@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 1eff6ab146bb3a7ee053b8ac7fe3137d7c58c93a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.custom: seodec18
+ms.openlocfilehash: 6eb8e265dc415e39f9c8728d32f3deecc2d4e646
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212473"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163805"
 ---
-# <a name="qna-maker-rest-api-with-python"></a>Python での QnA Maker REST API
+# <a name="how-to-use-the-qna-maker-rest-api-with-python"></a>Python で QnA Maker REST API を使用する方法
 <a name="HOLTop"></a>
 
 この記事では、Python で [Microsoft QnA Maker API](../Overview/overview.md)  を使用し、次を行う方法について説明します。
@@ -149,7 +150,7 @@ while False == done:
 
 **ナレッジ ベースの応答を作成する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -289,7 +290,7 @@ while False == done:
 
 **ナレッジ ベースの応答を更新する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -378,7 +379,7 @@ print (pretty_print(result))
 
 **ナレッジ ベースの応答を公開する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -466,7 +467,7 @@ print (pretty_print(result))
 
 **ナレッジ ベースの応答を置換する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -530,7 +531,7 @@ print (pretty_print(result))
 
 **ナレッジ ベースの応答をダウンロードする**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -631,7 +632,7 @@ print (pretty_print(result))
 
 **回答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -704,7 +705,7 @@ print (pretty_print(result))
 
 **ナレッジ ベースの詳細応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -774,7 +775,7 @@ print (pretty_print(result))
 
 **ユーザー応答のナレッジ ベースを取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -869,7 +870,7 @@ print (pretty_print(result))
 
 **ナレッジ ベースの応答を削除する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -927,7 +928,7 @@ print (pretty_print(result))
 
 **エンドポイント キーの応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -995,7 +996,7 @@ print (pretty_print(result))
 
 **エンドポイント キーの応答を更新する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -1054,7 +1055,7 @@ print (pretty_print(result))
 
 **単語変更の応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -1138,7 +1139,7 @@ print (pretty_print(result))
 
 **単語変更の応答を置換する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -1153,6 +1154,6 @@ print (pretty_print(result))
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>関連項目 
 
 [QnA Maker の概要](../Overview/overview.md)

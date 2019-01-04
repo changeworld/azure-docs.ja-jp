@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: e6c654b00ee6be0ed87feb0fb2a5ccba38e5cbe4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 71b0739bacd8df586267b61a9135f448aa76479d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624879"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082239"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker コンテンツのデータ ソース
 
@@ -30,6 +30,10 @@ QnA Maker は、Web ページ、PDF ファイル、または MS Word doc ファ�
 |Excel|構造化 QnA ファイル (RTF、HTML サポートを含む)|[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|構造化 QnA ファイル|[Sample chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
+## <a name="data-source-locations"></a>データ ソースの場所
+
+どのデータ ソースに対しても、パブリック URL のみが有効です。 認証が必要なデータ ソースは送信しないでください。 認証済みのサイトからファイルをダウンロードし、ファイルのアップロード オプションを使用して質問と回答を抽出することができます。
+
 ## <a name="faq-urls"></a>FAQ URL
 
 QnA Maker がサポートできる FAQ ページの形式は、基本的な FAQ ページ、リンク付き FAQ ページ、トピックのホーム ページ付き FAQ ページの 3 種類です。
@@ -40,7 +44,7 @@ QnA Maker がサポートできる FAQ ページの形式は、基本的な FAQ 
 
 次に示すのは、基本的な FAQ ページの例です。
 
-![基本的な FAQ ページ](../media/qnamaker-concepts-datasources/plain-faq.png) 
+![基本的な FAQ ページの例 (ナレッジ ベース)](../media/qnamaker-concepts-datasources/plain-faq.png) 
 
  
 ### <a name="faq-pages-with-links"></a>リンク付き FAQ ページ 
@@ -49,7 +53,7 @@ QnA Maker がサポートできる FAQ ページの形式は、基本的な FAQ 
 
 次に示すのは、同じページ上のセクションへのリンクがある FAQ ページの例です。
 
- ![セクション リンク FAQ ページ](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
+ ![セクションへのリンクがある FAQ ページの例 (ナレッジ ベース)](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
 
 
 ### <a name="faq-pages-with-a-topics-homepage"></a>トピックのホーム ページ付き FAQ ページ
@@ -58,7 +62,7 @@ QnA Maker がサポートできる FAQ ページの形式は、基本的な FAQ 
 
 次に示すのは、別のページ内の FAQ セクションへのリンクがトピックのホーム ページにある FAQ ページの例です。 
 
- ![ディープ リンク FAQ ページ](../media/qnamaker-concepts-datasources/topics-faq.png) 
+ ![ディープ リンクがある FAQ ページの例 (ナレッジ ベース)](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
 ## <a name="pdf-doc-files"></a>PDF/ DOC ファイル
@@ -73,14 +77,14 @@ QnA Maker は、フォント サイズ、フォント スタイル、ナンバ�
 
 次に示すのは、索引ページと階層的なコンテンツを持ったマニュアルの例です
 
- ![製品マニュアルの例](../media/qnamaker-concepts-datasources/product-manual.png) 
+ ![製品マニュアルの例 (ナレッジ ベース)](../media/qnamaker-concepts-datasources/product-manual.png) 
 
 > [!NOTE]
 > 抽出の対象として最も適しているのは、目次やインデックス ページがあり、階層化された見出しから成る明確な構造を持ったマニュアルです。
 
 ### <a name="brochures-guidelines-papers-and-other-files"></a>パンフレット、ガイドライン、論文、およびその他のファイル
 
-明確な構造とレイアウトがあれば、他の多くの種類のドキュメントも処理して QA ペアを生成することができます。 これには、パンフレット、ガイドライン、レポート、ホワイト ペーパー、科学論文、ポリシー、書籍などが含まれます。[こちら](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)の例を参照してください。
+明確な構造とレイアウトがあれば、他の多くの種類のドキュメントも処理して QA ペアを生成することができます。 チェックの内容は次のとおりですパンフレット、ガイドライン、レポート、ホワイト ペーパー、科学論文、ポリシー、書籍などが含まれます。[こちら](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)の例を参照してください。
 
 次に示すのは、索引のない半構造化ドキュメントの例です。
 
@@ -102,7 +106,7 @@ Answer2
 
 次に示すのは、構造化 QnA Word 文書の例です。
 
- ![構造化 QnA ドキュメント](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
+ ![構造化 QnA ドキュメントの例 (ナレッジ ベース)](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
 
 ## <a name="structured-txt-tsv-and-xls-files"></a>構造化 *TXT*、*TSV*、および *XLS* ファイル
 
@@ -117,7 +121,7 @@ Answer2
 
 次に示すのは、HTML コンテンツを含む構造化 QnA *.xls* ファイルの例です。
 
- ![構造化 QnA Excel](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+ ![構造化 QnA Excel の例 (ナレッジ ベース)](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
 ## <a name="structured-data-format-through-import"></a>インポートでの構造化データ形式
 

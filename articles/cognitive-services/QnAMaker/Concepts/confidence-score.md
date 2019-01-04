@@ -1,7 +1,7 @@
 ---
 title: 信頼度スコア - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: 信頼スコアの説明
+description: 信頼度スコアは、回答が特定のユーザー クエリに最適である信頼度を示します。
 services: cognitive-services
 author: tulasim88
 manager: pchoudh
@@ -10,14 +10,15 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: tulasim
-ms.openlocfilehash: b1126b2cdb7a5cd7451a916558bc928653bc0027
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: 8fe4ecfe241422c03a2de8d0634ef1e1395aa050
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577925"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081321"
 ---
-# <a name="confidence-score"></a>信頼度スコア
+# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。 
 
 信頼スコアは 0 から 100 の範囲の数値です。 100 点は完全一致であるの可能性が高いのに対して、0 点は一致する回答が見つからなかったことを意味します｡ スコアが高得点であるほど、回答の信頼度は高くなります。 与えられた 1 つのクエリに対して、複数の回答が返されることがあります｡ その場合、回答は信頼度スコアが高い順に返されます。
@@ -78,15 +79,15 @@ ms.locfileid: "51577925"
 
 2. **[App Service]** をクリックして開きます。
 
-    ![App Service にアクセスする](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+    ![Azure portal で QnA Maker の App Service にアクセスする](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
 3. **[アプリケーション設定]** をクリックし、**DefaultAnswer** フィールドを目的の既定の応答に編集します。 **[Save]** をクリックします。
 
-    ![既定の応答を変更する](../media/qnamaker-concepts-confidencescore/change-response.png)
+    ![[アプリケーション設定] を選択し、QnA Maker の DefaultAnswer を編集します。](../media/qnamaker-concepts-confidencescore/change-response.png)
 
 4. App Service を再起動します。
 
-    ![QnA Maker App Service の再起動](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+    ![DefaultAnswer の変更後、QnA Maker の App Service を再起動する](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 
 ## <a name="next-steps"></a>次の手順

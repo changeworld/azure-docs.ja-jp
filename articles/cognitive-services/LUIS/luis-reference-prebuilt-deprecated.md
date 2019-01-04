@@ -1,23 +1,24 @@
 ---
-title: 非推奨の LUIS 作成済みエンティティ リファレンス - Azure | Microsoft Docs
+title: 非推奨の作成済みエンティティ
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での非推奨の作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: ae23e6b8fd1d2f6d63293a9626880ae3823afc61
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7b294b9c528d0b7a93a3e287b37124a26d0851dd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033279"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138060"
 ---
-# <a name="deprecated-entities"></a>非推奨のエンティティ
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS アプリにおける非推奨の作成済みエンティティ
 以下の作成済みエンティティは非推奨であり、新しい LUIS アプリに追加することはできません。
 
 * **datetime**: **datetime** を使用する既存の LUIS アプリは **datetimeV2** に移行する必要がありますが、datetime エンティティはそれを使用する既存のアプリで機能し続けます。
@@ -44,7 +45,7 @@ ms.locfileid: "47033279"
 #### <a name="encyclopedia-subtypes"></a>encyclopedia のサブタイプ
 encyclopedia 組み込みエンティティには、次の表に示す 100 を超えるサブタイプが含まれます。さらに、多くの場合、encyclopedia エンティティは複数のタイプにマップします。 たとえば、Ronald Reagan をクエリすると次のようになります。 
 
-```JSON
+```json
 {
       "entity": "ronald reagan",
       "type": "builtin.encyclopedia.people.person"

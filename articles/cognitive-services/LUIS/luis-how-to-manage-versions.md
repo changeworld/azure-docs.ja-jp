@@ -1,21 +1,22 @@
 ---
-title: LUIS アプリでバージョンを管理する
-titleSuffix: Azure Cognitive Services
+title: バージョンの管理
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: バージョンを使用して、さまざまなモデルを構築および公開できます。 モデルに変更を加える前に、現在のアクティブなモデルをアプリの別のバージョンに複製することをお勧めします。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: db461191b70aabc322e570ecc814a076c21206f2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a1594d3dfe449049258e5ee12bc173c413459f8a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033789"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132876"
 ---
 # <a name="manage-versions"></a>バージョンの管理
 
@@ -25,7 +26,7 @@ ms.locfileid: "47033789"
 
 バージョンの一覧には、公開されているバージョン、公開されている場所、現在アクティブであるバージョンが表示されます。 
 
-[![](./media/luis-how-to-manage-versions/versions-import.png "[管理] セクションの [バージョン] ページ")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+[![[管理] セクションの [バージョン] ページ](./media/luis-how-to-manage-versions/versions-import.png "[管理] セクションの [バージョン] ページ")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>バージョンを複製する
 
@@ -44,7 +45,7 @@ ms.locfileid: "47033789"
 
 一覧からバージョンを選択し、ツール バーから **[Make Active]\(アクティブにする\)** を選択します。 
 
-[![](./media/luis-how-to-manage-versions/versions-other.png "[管理] セクションの [バージョン] ページ")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![[管理] セクションの [バージョン] ページ、バージョンの作成アクション](./media/luis-how-to-manage-versions/versions-other.png "[管理] セクションの [バージョン] ページ、バージョンの作成アクション")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>バージョンをインポートする
 
@@ -52,7 +53,7 @@ ms.locfileid: "47033789"
 
 2. **[Import new version]\(新しいバージョンのインポート\)** ポップアップ ウィンドウで、新しい 10 文字のバージョン名を入力します。 JSON ファイルのバージョンが既にアプリに存在する場合、設定する必要があるのはバージョン ID のみです。
 
-    ![[管理] セクションの [バージョン] ページ](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
+    ![[管理] セクションの [バージョン] ページ、新しいバージョンのインポート](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
     バージョンをインポートすると、新しいバージョンがアクティブなバージョンになります。
 

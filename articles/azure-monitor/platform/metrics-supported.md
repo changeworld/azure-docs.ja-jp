@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 19582c59460644d8599034afeaafde8735c04ec3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1e81f165c3ab38fffae7523efc6cb2ae307a1a25
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440259"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549634"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。 以下の一覧には、統合された Azure Monitor メトリック パイプラインで使うことができるメトリックのみが含まれます。 これらのメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使ってください。
@@ -986,7 +986,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |AverageBandwidth|ゲートウェイの S2S 帯域幅|BytesPerSecond|平均|1 秒あたりのゲートウェイのサイト対サイト帯域幅の平均 (バイト単位)|ディメンションなし|
 |P2SBandwidth|ゲートウェイの P2S 帯域幅|BytesPerSecond|平均|1 秒あたりのゲートウェイのポイント対サイト帯域幅の平均 (バイト単位)|ディメンションなし|
-|P2SConnectionCount|P2S 接続数|Count|最大値|ゲートウェイのポイント対サイト接続の数|プロトコル|
+|P2SConnectionCount|P2S 接続数|Count|最大値|ゲートウェイのポイント対サイト接続の数|Protocol|
 |TunnelAverageBandwidth|Tunnel Bandwidth (トンネル帯域幅)|BytesPerSecond|平均|1 秒あたりの平均トンネル帯域幅バイト数|ConnectionName、RemoteIP|
 |TunnelEgressBytes|Tunnel Egress Bytes (トンネル エグレス バイト数)|Bytes|合計|トンネルの送信バイト数|ConnectionName、RemoteIP|
 |TunnelIngressBytes|Tunnel Ingress Bytes (トンネル イングレス バイト数)|Bytes|合計|トンネルの受信バイト数|ConnectionName、RemoteIP|
@@ -1572,4 +1572,4 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 ## <a name="next-steps"></a>次の手順
 * [Azure Monitor のメトリックを確認します](../../azure-monitor/platform/data-collection.md)
 * [メトリックでアラートを作成します](../../azure-monitor/platform/alerts-overview.md)
-* [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](../../azure-monitor/platform/diagnostic-logs-overview.md)

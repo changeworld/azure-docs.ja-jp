@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 847794d46addc7f3cba09437c2d2c6e8a3a04e89
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: bf13ca603927c85784e446157a79cd96fb70ca05
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165426"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956986"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>from</td>
-    <td>"*省略可能なパラメーター*"。<br/>入力テキストの言語を指定します。 `translation` スコープを使用して[サポートされている言語](.\v3-0-languages.md)を検索することにより、翻訳することができるソース言語を確認します。 `from` パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。</td>
+    <td>"*省略可能なパラメーター*"。<br/>入力テキストの言語を指定します。 `translation` スコープを使用して[サポートされている言語](./v3-0-languages.md)を検索することにより、翻訳することができるソース言語を確認します。 `from` パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。</td>
   </tr>
   <tr>
     <td>to</td>
-    <td>"*必須のパラメーター*"。<br/>出力テキストの言語を指定します。 ターゲット言語は、`translation` スコープに含まれている[サポートされている言語](.\v3-0-languages.md)のいずれかとする必要があります。 たとえば、ドイツ語に翻訳するには `to=de` を使用します。<br/>クエリ文字列内でパラメーターを繰り返すことにより、同時に複数の言語に翻訳することができます。 たとえば、ドイツ語とイタリア語に翻訳するには、`to=de&to=it` を使用します。</td>
+    <td>"*必須のパラメーター*"。<br/>出力テキストの言語を指定します。 ターゲット言語は、`translation` スコープに含まれている[サポートされている言語](./v3-0-languages.md)のいずれかとする必要があります。 たとえば、ドイツ語に翻訳するには `to=de` を使用します。<br/>クエリ文字列内でパラメーターを繰り返すことにより、同時に複数の言語に翻訳することができます。 たとえば、ドイツ語とイタリア語に翻訳するには、`to=de&to=it` を使用します。</td>
   </tr>
   <tr>
     <td>textType</td>
@@ -94,7 +94,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 要求ヘッダーには次のものがあります。
 
 <table width="100%">
-  <th width="20%">ヘッダー</th>
+  <th width="20%">headers</th>
   <th>説明</th>
   <tr>
     <td>_One authorization_<br/>_header_</td>
@@ -133,46 +133,46 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 正常な応答は、入力配列内の文字列ごとに 1 つの結果が含まれる JSON 配列となります。 結果オブジェクトには次のプロパティが含まれています。
 
-  * `detectedLanguage`: 次のプロパティによって、検出された言語を説明するオブジェクトです。
+  * `detectedLanguage`:次のプロパティによって、検出された言語を説明するオブジェクトです。
 
-      * `language`: 検出された言語のコードを表す文字列です。
+      * `language`:検出された言語のコードを表す文字列です。
 
-      * `score`: 結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
+      * `score`:結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
 
     `detectedLanguage` プロパティは、言語自動検出が要求された場合に限り、結果オブジェクト内に存在します。
 
-  * `translations`: 翻訳結果の配列です。 配列のサイズは、`to` クエリ パラメーターを通して指定されたターゲット言語の数に一致します。 配列内の各要素は次のとおりです。
+  * `translations`:翻訳結果の配列です。 配列のサイズは、`to` クエリ パラメーターを通して指定されたターゲット言語の数に一致します。 配列内の各要素は次のとおりです。
 
-    * `to`: ターゲット言語の言語コードを表す文字列です。
+    * `to`:ターゲット言語の言語コードを表す文字列です。
 
-    * `text`: 翻訳済みテキストを提供する文字列です。
+    * `text`:翻訳済みテキストを提供する文字列です。
 
-    * `transliteration`: `toScript` パラメーターによって指定されたスクリプトで、翻訳済みテキストを提供するオブジェクトです。
+    * `transliteration`:`toScript` パラメーターによって指定されたスクリプトで、翻訳済みテキストを提供するオブジェクトです。
 
-      * `script`: ターゲット スクリプトを指定する文字列です。   
+      * `script`:ターゲット スクリプトを指定する文字列です。   
 
-      * `text`: ターゲット スクリプトで翻訳済みテキストを提供する文字列です。
+      * `text`:ターゲット スクリプトで翻訳済みテキストを提供する文字列です。
 
     翻訳が実行されない場合、`transliteration` オブジェクトは含められません。
 
-    * `alignment`: `proj` という名前の 1 つの文字列プロパティを持つオブジェクトです。これにより、入力テキストが翻訳済みテキストにマッピングされます。 アライメント情報は、要求パラメーター `includeAlignment` が `true` である場合に提供されるだけとなります。 アライメントは、次の形式の文字列値として返されます: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`。  コロンによって開始および終了インデックスが区切られ、ダッシュによって言語が区切られ、スペースによって単語が区切られます。 1 個の単語が他の言語の 0 個、1 個、または複数個の単語にアライメントされる場合があります。さらに、アライメントされる単語が連続していない場合もあります。 アライメント情報が使用できない場合、アライメント要素は空になります。 例と制限事項については、「[アライメント情報を取得する](#obtain-alignment-information)」を参照してください。
+    * `alignment`:`proj` という名前の 1 つの文字列プロパティを持つオブジェクトです。これにより、入力テキストが翻訳済みテキストにマッピングされます。 アライメント情報は、要求パラメーター `includeAlignment` が `true` である場合に提供されるだけとなります。 アライメントは、次の形式の文字列値として返されます: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`。  コロンによって開始および終了インデックスが区切られ、ダッシュによって言語が区切られ、スペースによって単語が区切られます。 1 個の単語が他の言語の 0 個、1 個、または複数個の単語にアライメントされる場合があります。さらに、アライメントされる単語が連続していない場合もあります。 アライメント情報が使用できない場合、アライメント要素は空になります。 例と制限事項については、「[アライメント情報を取得する](#obtain-alignment-information)」を参照してください。
 
-    * `sentLen`: 入力テキストと出力テキスト内で文の境界を返すオブジェクトです。
+    * `sentLen`:入力テキストと出力テキスト内で文の境界を返すオブジェクトです。
 
-      * `srcSentLen`: 入力テキスト内の文の長さを表す整数配列です。 配列の長さは文の数であり、値は各文の長さです。
+      * `srcSentLen`:入力テキスト内の文の長さを表す整数配列です。 配列の長さは文の数であり、値は各文の長さです。
 
-      * `transSentLen`: 翻訳済みテキスト内の文の長さを表す整数配列です。 配列の長さは文の数であり、値は各文の長さです。
+      * `transSentLen`:翻訳済みテキスト内の文の長さを表す整数配列です。 配列の長さは文の数であり、値は各文の長さです。
 
     文の境界は、要求パラメーター `includeSentenceLength` が `true` の場合にのみ含められます。
 
-  * `sourceText`: `text` という名前の 1 つの文字列プロパティを持つオブジェクトです。これにより、ソース言語の既定のスクリプトで入力テキストが提供されます。 `sourceText` プロパティは、言語の通常のスクリプトではないスクリプトで入力が表されている場合にのみ存在します。 たとえば、入力がラテン文字で記述されたアラビア語であるならば、`sourceText.text` は同じアラビア語のテキストをアラビア文字に変換したものとなります。
+  * `sourceText`:`text` という名前の 1 つの文字列プロパティを持つオブジェクトです。これにより、ソース言語の既定のスクリプトで入力テキストが提供されます。 `sourceText` プロパティは、言語の通常のスクリプトではないスクリプトで入力が表されている場合にのみ存在します。 たとえば、入力がラテン文字で記述されたアラビア語であるならば、`sourceText.text` は同じアラビア語のテキストをアラビア文字に変換したものとなります。
 
 JSON 応答の例については、「[例](#examples)」セクションを参照してください。
 
 ## <a name="response-headers"></a>応答ヘッダー
 
 <table width="100%">
-  <th width="20%">ヘッダー</th>
+  <th width="20%">headers</th>
   <th>説明</th>
     <tr>
     <td>X-RequestId</td>
@@ -372,7 +372,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>アクション</th>
+  <th>Action</th>
   <tr>
     <td>`NoAction`</td>
     <td>これは既定の動作です。 不適切な表現はソースからターゲットに渡されます。<br/><br/>
@@ -382,7 +382,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
   </tr>
   <tr>
     <td>`Deleted`</td>
-    <td>不適切な単語は、置換なしで出力から削除されます。<br/><br/>
+    <td>不適切な単語は、置換されずに出力から削除されます。<br/><br/>
     **ソースの例 (日本語)**: 彼はジャッカスです。<br/>
     **翻訳の例 (英語)**: He is a.
     </td>

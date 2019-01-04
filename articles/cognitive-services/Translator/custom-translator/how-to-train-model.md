@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 9ec8cbe3d2467714a4b2586db79566aaef30d6d7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 60e0485c28d90050a6ff775db41f8696a09fe033
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626898"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165760"
 ---
 # <a name="train-a-model"></a>モデルをトレーニングする
 
@@ -28,19 +28,15 @@ ms.locfileid: "51626898"
 
     -  Document name (ドキュメント名): ドキュメントの名前。
 
-    -  Pairing (ペアリング): このドキュメントが並列またはモノリンガル ドキュメントの場合。
+    -  Pairing (ペアリング): このドキュメントが並列またはモノリンガル ドキュメントの場合。 モノリンガル ドキュメントは、現在、トレーニングではサポートされていません。
 
-    - モノリンガル ドキュメントは、現在、トレーニングではサポートされていません。
-
-    -  Document type (ドキュメントの種類): トレーニング、チューニング、テスト、または辞書があります。
+    -  ドキュメントの種類:トレーニング、チューニング、テスト、または辞書があります。
 
     -  Language pair (言語ペア): プロジェクトのソース言語とターゲット言語が表示されます。
 
-    -  Source sentences (ソース文): ソース ファイルから抽出された文の数が表示されます
-    - 。
+    -  Source sentences (ソース文): ソース ファイルから抽出された文の数が表示されます。
 
-    -  Target sentences (ターゲット文): ソース ファイルから抽出された文の数が表示されます
-    - 。
+    -  Target sentences (ターゲット文): ターゲット ファイルから抽出された文の数が表示されます。
 
     ![モデルをトレーニングする](media/how-to/how-to-train-model.png)
 

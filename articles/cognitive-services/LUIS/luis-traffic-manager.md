@@ -1,21 +1,22 @@
 ---
-title: Microsoft Azure Traffic Manager を使用して Language Understanding (LUIS) でエンドポイント クォータを増やす
+title: エンドポイント クォータを増やす
 titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、 **公開** ページの **リソースとキー** セクションで LUIS アプリケーションに追加します。
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 28fc0d0061d1826f0e17c26325ea227e001dccda
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3f3dddca7944403ace6a9779be07b0d458fb3cd1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042178"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076765"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager を使用した複数のキーにわたるエンドポイント クォータの管理
 Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、**[Publish]\(公開\)** ページの **[Resources and Keys]\(リソースとキー\)** セクションで LUIS アプリケーションに追加します。 
@@ -36,7 +37,7 @@ Azure リソースを作成する前に、すべてのリソースを含むリ�
 
 **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.2.0)** コマンドレットを使用してリソース グループを作成します。
 
-```PowerShell
+```powerShell
 New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 ```
 
@@ -69,7 +70,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 
     次のコマンドレットを使用してプロファイルを作成します。 `appIdLuis` と `subscriptionKeyLuis` を必ず変更してください。 subscriptionKey は米国東部の LUIS キーに対応します。 LUIS アプリ ID とエンドポイント キーを含むパスが正しくない場合は、Traffic Manager が LUIS エンドポイントを正常に要求できないため、Traffic Manager のポーリングは `degraded` の状態になります。 LUIS エンドポイント ログで `q` の値を確認できるように、この値が `traffic-manager-east` であることを確認します。
 
-    ```PowerShell
+    ```powerShell
     $eastprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-eastus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-eastus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appID>?subscription-key=<subscriptionKey>&q=traffic-manager-east"
     ```
     
@@ -89,7 +90,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 
 2. **[Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/add-azurermtrafficmanagerendpointconfig?view=azurermps-6.2.0)** コマンドレットを使用して、米国東部エンドポイントを追加する
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName luis-east-endpoint -TrafficManagerProfile $eastprofile -Type ExternalEndpoints -Target eastus.api.cognitive.microsoft.com -EndpointLocation "eastus" -EndpointStatus Enabled
     ```
     次の表に、このコマンドレットの各変数を示します。
@@ -105,7 +106,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 
     正常な応答は次のようになります。
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-eastus
     Name                             : luis-profile-eastus
     ResourceGroupName                : luis-traffic-manager
@@ -124,7 +125,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 
 3. **[Set-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/set-azurermtrafficmanagerprofile?view=azurermps-6.2.0)** コマンドレットを使用して米国東部エンドポイントを設定する
 
-    ```PowerShell
+    ```powerShell
     Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $eastprofile
     ```
 
@@ -137,7 +138,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 
     次のコマンドレットを使用してプロファイルを作成します。 `appIdLuis` と `subscriptionKeyLuis` を必ず変更してください。 subscriptionKey は米国東部の LUIS キーに対応します。 LUIS アプリ ID とエンドポイント キーを含むパスが正しくない場合は、Traffic Manager が LUIS エンドポイントを正常に要求できないため、Traffic Manager のポーリングは `degraded` の状態になります。 LUIS エンドポイント ログで `q` の値を確認できるように、この値が `traffic-manager-west` であることを確認します。
 
-    ```PowerShell
+    ```powerShell
     $westprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-westus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-westus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west"
     ```
     
@@ -157,7 +158,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 
 2. **[Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0)** コマンドレットを使用して、米国西部エンドポイントを追加する
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName luis-west-endpoint -TrafficManagerProfile $westprofile -Type ExternalEndpoints -Target westus.api.cognitive.microsoft.com -EndpointLocation "westus" -EndpointStatus Enabled
     ```
 
@@ -174,7 +175,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 
     正常な応答は次のようになります。
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-westus
     Name                             : luis-profile-westus
     ResourceGroupName                : luis-traffic-manager
@@ -193,7 +194,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 
 3. **[Set-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Set-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** コマンドレットを使用して、米国西部エンドポイントを設定する
 
-    ```PowerShell
+    ```powerShell
     Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $westprofile
     ```
 
@@ -204,7 +205,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
 
 1. **[New-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/New-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** コマンドレットを使用して、親プロファイルを作成する
 
-    ```PowerShell
+    ```powerShell
     $parentprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-parent -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-parent -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/"
     ```
 
@@ -224,7 +225,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
 
 2. **[Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0)** と **NestedEndpoints** 型を使用して、米国東部子プロファイルを親に追加する
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName child-endpoint-useast -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $eastprofile.Id -EndpointStatus Enabled -EndpointLocation "eastus" -MinChildEndpoints 1
     ```
 
@@ -242,7 +243,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
 
     正常な応答は次のようになります。応答には、新しい `child-endpoint-useast` エンドポイントが含まれています。    
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-parent
     Name                             : luis-profile-parent
     ResourceGroupName                : luis-traffic-manager
@@ -261,7 +262,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
 
 3. **[Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0)** コマンドレットと **NestedEndpoints** 型を使用して、米国西部子プロファイルを親に追加する
 
-    ```PowerShell
+    ```powerShell
     Add-AzureRmTrafficManagerEndpointConfig -EndpointName child-endpoint-uswest -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $westprofile.Id -EndpointStatus Enabled -EndpointLocation "westus" -MinChildEndpoints 1
     ```
 
@@ -279,7 +280,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
 
     正常な応答は次のようになります。応答には、以前の `child-endpoint-useast` エンドポイントと新しい `child-endpoint-uswest` エンドポイントの両方が含まれています。
 
-    ```cmd
+    ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-parent
     Name                             : luis-profile-parent
     ResourceGroupName                : luis-traffic-manager
@@ -298,7 +299,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
 
 4. **[Set-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Set-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** コマンドレットを使用してエンドポイントを設定する 
 
-    ```PowerShell
+    ```powerShell
     Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $parentprofile
     ```
 
@@ -309,7 +310,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
 
 山かっこ (`<>`) で囲まれた項目を、必要な 3 つの各プロファイルの正しい値に置き換えます。 
 
-```PowerShell
+```powerShell
 $<variable-name> = Get-AzureRmTrafficManagerProfile -Name <profile-name> -ResourceGroupName luis-traffic-manager
 ```
 
@@ -329,7 +330,7 @@ Traffic Manager では、各エンドポイントのパスをポーリングし�
 ### <a name="validate-traffic-manager-polling-works"></a>Traffic Manager のポーリングが機能していることを確認する
 Traffic Manager のポーリングが機能していることを確認するもう 1 つの方法は、LUIS エンドポイント ログを使用することです。 [LUIS][LUIS] Web サイトのアプリの一覧ページで、アプリケーションのエンドポイント ログをエクスポートします。 Traffic Manager では、2 つのエンドポイントのポーリングが頻繁に実行されるため、数分しか経過していなくても、ログにエントリが存在します。 クエリが `traffic-manager-` で始まるエントリを探してください。
 
-```text
+```console
 traffic-manager-west    6/7/2018 19:19  {"query":"traffic-manager-west","intents":[{"intent":"None","score":0.944767}],"entities":[]}
 traffic-manager-east    6/7/2018 19:20  {"query":"traffic-manager-east","intents":[{"intent":"None","score":0.944767}],"entities":[]}
 ```
@@ -339,7 +340,7 @@ DNS 応答で LUIS エンドポイントが返されることを確認するに�
 
 次の Node.js コードでは、親プロファイルを要求し、LUIS エンドポイントを返します。
 
-```javascript
+```nodejs
 const dns = require('dns');
 
 dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {

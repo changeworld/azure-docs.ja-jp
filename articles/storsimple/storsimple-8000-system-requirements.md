@@ -42,10 +42,11 @@ Microsoft Azure StorSimple へようこそ。 この記事では、StorSimple �
 | Windows Server |2008 R2 SP1、2012、2012 R2、2016 |StorSimple iSCSI ボリュームの使用は以下の Windows ディスク タイプのみでサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のシンプルおよびミラー ボリューム</li></ul>サポートされるのは、オペレーティング システムにネイティブで存在するソフトウェア iSCSI イニシエーターだけです。 ハードウェア iSCSI イニシエーターはサポートされません。<br></br>Windows Server 2012 および 2016 のシン プロビジョニングおよび ODX 機能は StorSimple iSCSI ボリュームを使用している場合にサポートされます。<br><br>StorSimple は、シン プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームを作成できます。 部分的にプロビジョニングされたボリュームは作成できません。<br><br>シン プロビジョニングされたボリュームを再フォーマットすると長い時間がかかる場合があります。 再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。 それでもボリュームを再フォーマットする場合は以下を実行します。<ul><li>領域の再利用による遅延を避けるために、再フォーマットする前に次のコマンドを実行します。 <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の再利用を再び有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) の説明に従って、Windows Server 2012 の修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。 |
 | VMware ESX |5.5 および 6.0 |iSCSI クライアントとして VMware vSphere でサポートされます。 VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。 |
 | Linux RHEL/CentOS |5、6 および 7 |Open-iSCSI イニシエーター バージョン 5、6 および 7 での Linux iSCSI クライアントのサポート。 |
-| Linux |SUSE Linux 11 | |
+|  Linux |SUSE Linux 11 | |
 
 > [!NOTE]
 > 現在、IBM AIX は StorSimple ではサポートされていません。
+
 
 ## <a name="software-requirements-for-optional-components"></a>オプション コンポーネントのソフトウェア要件用のソフトウェア要件
 
@@ -80,6 +81,7 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 > [!IMPORTANT]
 > StorSimple デバイスと Azure 間でファイアウォールが SSL トラフィックの変更や暗号化解除を行わないことを確認します。
 
+
 ### <a name="url-patterns-for-firewall-rules"></a>ファイアウォール ルールの URL パターン
 
 多くの場合、ネットワーク管理者は、受信トラフィックと送信トラフィックをフィルターする URL パターンに基づいて、高度なファイアウォール ルールを構成できます。 StorSimple デバイスと StorSimple デバイス マネージャー サービスは、Azure Service Bus、Azure Active Directory Access Control、ストレージ アカウント、Microsoft Update サーバーなど、他の Microsoft アプリケーションに依存しています。 その Microsoft アプリケーションと関連付けられた URL パターンを使用してファイアウォール ルールを構成できます。 Microsoft アプリケーションに関連付けられた URL パターンは変化する可能性がある点を理解することが重要です。 これにより、ネットワーク管理者は必要に応じて StorSimple のファイアウォール ルールを監視し更新する必要があります。
@@ -88,6 +90,7 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 
 > [!NOTE]
 > デバイスの (ソース) IP は、常にすべての有効なネットワーク インターフェイスに合わせて設定するようにします。 宛先 IP は、[Azure データセンターの IP 範囲](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)に合わせて設定するようにします。
+
 
 #### <a name="url-patterns-for-azure-portal"></a>Azure ポータルの URL パターン
 
@@ -132,6 +135,7 @@ Update 2 以降のバージョンに使用されるルーティング メトリ�
     | Data 3  | 4            | 40                       |
     | Data 4  | 5            | 50                       |
     | Data 5  | 6            | 60                       |
+
 
 * クラウド トラフィックがネットワーク インターフェイスを介してルーティングされる順序は、次のとおりです。
   

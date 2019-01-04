@@ -1,21 +1,22 @@
 ---
-title: LUIS のアカウント設定を管理する | Microsoft Docs
-description: LUIS Web サイトを使用して、アカウント設定を管理します。
-titleSuffix: Azure
+title: 設定の管理
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: すべてのアプリで使用するオーサリング キーやユーザー アカウントの設定を管理するには、LUIS の Web サイトを使用します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/08/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: f3086f09e29664b816ba709fc5cda75d7b11d1b4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd6ae88834b45e9e154eb1e5e3ba921f403c7eaa
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035251"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138757"
 ---
 # <a name="manage-account-and-authoring-key"></a>アカウントとオーサリング キーを管理する
 LUIS アカウントの 2 つの重要な情報は、ユーザー アカウントとオーサリング キーです。 ログイン情報は [account.microsoft.com](https://account.microsoft.com) で管理されます。 オーサリング キーは、[LUIS](luis-reference-regions.md) Web サイトの **[設定]** ページから管理されます。 
@@ -24,7 +25,7 @@ LUIS アカウントの 2 つの重要な情報は、ユーザー アカウン�
 
 この (**[設定]** ページ上の) リージョン固有の 1 つのオーサリング キーを使用すると、[LUIS](luis-reference-regions.md) Web サイトだけでなく、[オーサリング API](https://aka.ms/luis-authoring-api) からすべてのアプリを作成できます。 必要に応じて、オーサリング キーは、各月のエンドポイントのクエリ数を[制限](luis-boundaries.md)できます。 
 
-![LUIS の [設定] ページ](./media/luis-how-to-account-settings/account-settings.png)
+[![LUIS の [設定] ページ](./media/luis-how-to-account-settings/account-settings.png)](./media/luis-how-to-account-settings/account-settings.png#lightbox)
 
 オーサリング キーは、自分が所有しているすべてのアプリの他に、コラボレーターとして一覧に表示されるすべてのアプリで使用されます。
 

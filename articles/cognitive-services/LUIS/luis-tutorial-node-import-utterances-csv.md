@@ -1,21 +1,22 @@
 ---
-title: Node.js を使用してプログラムで LUIS アプリを作成する | Microsoft Docs
+title: Node.js を使用して発話をインポートする
 titleSuffix: Azure
 description: LUIS Authoring API を使用して、CSV 形式の既存のデータからプログラムで LUIS アプリを作成する方法を説明します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: 729e19deb5efc91fb874214299f34fbb46d9bbdc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: da638064b2ead1cd860f3b4f96ffa88026aab4ff
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034044"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101193"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js を使用したプログラムによる LUIS アプリの作成
 
@@ -34,7 +35,7 @@ LUIS を念頭に置いて作成されていないシステムがあっても、
 
 `IoT.csv` ファイルを開きます。 このファイルには、架空のホーム オートメーション サービスに対するユーザー クエリのログが含まれています。ログには、クエリの分類方法、ユーザーの発話、クエリから引き出された有用な情報を含む列が含まれています。 
 
-![CSV ファイル](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![既存のデータの CSV ファイル](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
 **RequestType** 列は意図として使用でき、**Request** 列は発話の例を示していることがわかります。 その他のフィールドは、発話に出現した場合にエンティティとして使用できます。 意図、エンティティ、発話の例があるため、単純なサンプル アプリの要件が揃っています。
 
@@ -106,9 +107,9 @@ LUIS アプリでエンティティと意図が定義されたら、発話を追
 ### <a name="install-nodejs-dependencies"></a>Node.js の依存関係をインストールする
 ターミナル/コマンド ラインで、NPM から Node.js の依存関係をインストールします。
 
-````
+```console
 > npm install
-````
+```
 
 ### <a name="change-configuration-settings"></a>構成設定を変更する
 このアプリケーションを使用するには、index.js ファイル内の値を独自のエンドポイント キーに変更し、アプリに付ける名前を指定する必要があります。 また、アプリのカルチャを設定したり、バージョン番号を変更したりすることもできます。
@@ -116,28 +117,31 @@ LUIS アプリでエンティティと意図が定義されたら、発話を追
 index.js ファイルを開き、ファイルの先頭にあるこれらの値を変更します。
 
 
-````JavaScript
+```nodejs
 // Change these values
 const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
 const LUIS_appName = "Sample App";
 const LUIS_appCulture = "en-us"; 
 const LUIS_versionId = "0.1";
-````
+```
+
 ### <a name="run-the-script"></a>スクリプトを実行する
 Node.js を使用して、ターミナル/コマンド ラインからスクリプトを実行します。
 
-````
+```console
 > node index.js
-````
+```
+
 or
-````
+
+```console
 > npm start
-````
+```
 
 ### <a name="application-progress"></a>アプリケーションの進行状況
 アプリケーションの実行中は、コマンド ラインに進行状況が表示されます。 コマンド ライン出力には、LUIS からの応答の形式が含まれています。
 
-````
+```console
 > node index.js
 intents: ["TurnOn","TurnOff","Dim","Other"]
 entities: ["Operation","Device","Room"]
@@ -157,7 +161,7 @@ retrying add examples...
 
 Results of add utterances = [{"response":[{"value":{"UtteranceText":"turn on the lights","ExampleId":-67649},"hasError":false},{"value":{"UtteranceText":"turn the heat on","ExampleId":-69067},"hasError":false},{"value":{"UtteranceText":"switch on the kitchen fan","ExampleId":-3395901},"hasError":false},{"value":{"UtteranceText":"turn off bedroom lights","ExampleId":-85402},"hasError":false},{"value":{"UtteranceText":"turn off air conditioning","ExampleId":-8991572},"hasError":false},{"value":{"UtteranceText":"kill the lights","ExampleId":-70124},"hasError":false},{"value":{"UtteranceText":"dim the lights","ExampleId":-174358},"hasError":false},{"value":{"UtteranceText":"hi how are you","ExampleId":-143722},"hasError":false},{"value":{"UtteranceText":"answer the phone","ExampleId":-69939},"hasError":false},{"value":{"UtteranceText":"are you there","ExampleId":-149588},"hasError":false},{"value":{"UtteranceText":"help","ExampleId":-81949},"hasError":false},{"value":{"UtteranceText":"testing the circuit","ExampleId":-11548708},"hasError":false}]}]
 upload done
-````
+```
 
 
 
