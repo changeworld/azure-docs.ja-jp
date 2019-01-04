@@ -10,19 +10,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: f92100e6e4dd7569a109aa01f3c998777568cce3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6b835dc300808453240dd3b9fe47957bd5feab9b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004594"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435227"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントで複数の HDInsight クラスターを使用する
 
 HDInsight バージョン 3.5 からは、Azure Data Lake Store アカウントを既定のファイル システムとして使用して HDInsight クラスターを作成できます。
-Data Lake Store は、無制限のストレージをサポートしているため、大量のデータのホスティングだけでなく、1 つの Data Lake Store アカウントを共有する複数の HDInsight クラスターのホスティングにも最適です。 Data Lake Store で HDInsight クラスターを作成する方法の手順については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+Data Lake Store は、無制限のストレージをサポートしているため、大量のデータのホスティングだけでなく、1 つの Data Lake Store アカウントを共有する複数の HDInsight クラスターのホスティングにも最適です。 Data Lake Store で HDInsight クラスターを作成する方法の手順については、「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
-この記事では、複数の**アクティブな** HDInsight クラスターにわたって使用できる 1 つの、および共有された Data Lake Store アカウントを設定するための Data Lake Store 管理者への推奨事項を示します。 これらの推奨事項は、共有された Data Lake Store アカウント上の複数のセキュリティ保護された、およびセキュリティ保護されていない Hadoop クラスターのホスティングに適用されます。
+この記事では、複数の**アクティブな** HDInsight クラスターにわたって使用できる 1 つの、および共有された Data Lake Store アカウントを設定するための Data Lake Store 管理者への推奨事項を示します。 これらの推奨事項は、共有された Data Lake Store アカウント上の複数のセキュリティ保護された、およびセキュリティ保護されていない Apache Hadoop クラスターのホスティングに適用されます。
 
 
 ## <a name="data-lake-store-file-and-folder-level-acls"></a>Data Lake Store のファイルおよびフォルダー レベルの ACL
@@ -78,7 +78,7 @@ AAD アプリケーション (これはサービス プリンシパルも作成�
 
 このセクションでは、Data Lake Store で HDInsight を使用するための既知の問題とそれらの対処法を一覧表示します。
 
-### <a name="publicly-visible-localized-yarn-resources"></a>公開されているローカライズされた YARN リソース
+### <a name="publicly-visible-localized-apache-hadoop-yarn-resources"></a>公開されているローカライズされた Apache Hadoop YARN リソース
 
 新しい Azure Data Lake Store アカウントが作成されると、ルート ディレクトリは、アクセス ACL のアクセス許可ビットが 770 に設定されて自動的にプロビジョニングされます。 ルート フォルダーの所有ユーザーは、アカウントを作成したユーザー (Data Lake Store 管理者) に設定され、所有グループは、アカウントを作成したユーザーのプライマリ グループに設定されます。 "その他" にアクセス権は提供されません。
 
@@ -93,6 +93,6 @@ AAD アプリケーション (これはサービス プリンシパルも作成�
 
 ## <a name="see-also"></a>関連項目
 
-* [クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 
 

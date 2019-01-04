@@ -1,20 +1,18 @@
 ---
-title: Azure Cosmos DB のデータへのアクセスをセキュリティで保護する方法 | Microsoft Docs
+title: Azure Cosmos DB のデータへのアクセスをセキュリティで保護する方法
 description: マスター キー、読み取り専用キー、ユーザー、アクセス許可など、Azure Cosmos DB のアクセス制御の概念について説明します。
 services: cosmos-db
 author: rafats
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: ed97a2c31897d1e5e61421ea489a35af377f4f37
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1d1bc011de579588567fac3debe9d0b4af5d29f7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621447"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878349"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB データへのアクセスのセキュリティ保護
 この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
@@ -130,8 +128,8 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 Cosmos DB アクセス許可リソースは Cosmos DB ユーザーに関連付けられています。  各ユーザーは、0 個以上の Cosmos DB アクセス許可を持つ可能性があります。  アクセス許可リソースは、特定のアプリケーション リソースにアクセスするときに必要なセキュリティ トークンへのアクセスを提供します。
 アクセス許可リソースによって提供できるアクセス レベルは 2 つあります。
 
-* All: ユーザーはリソースに対して完全なアクセス許可を持ちます。
-* Read: ユーザーは、リソースの内容を読み取りのみができますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
+* All:ユーザーはリソースに対して完全なアクセス許可を持ちます。
+* Read:ユーザーは、リソースの内容の読み取りのみを行えますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
 
 > [!NOTE]
 > Cosmos DB ストアド プロシージャを実行するには、ストアド プロシージャを実行するコンテナーの All 権限を持つ必要があります。
@@ -180,8 +178,8 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ユーザー アカウントに Azure Cosmos DB アカウントの閲覧者アクセス権を追加するには、サブスクリプションの所有者が Azure Portal で以下の手順を実行します。
 
 1. Azure Portal を開き、Azure Cosmos DB アカウントを選択します。
-2. **[アクセス制御 (IAM)]** をクリックし、**[+ 追加]** をクリックします。
-3. **[アクセス許可の追加]** ウィンドウの **[ロール]** ボックスで、**[Cosmos DB アカウントの閲覧者ロール]** を選択します。
+2. **[アクセス制御 (IAM)]** タブをクリックし、**[+ ロール割り当ての追加]** をクリックします。
+3. **[ロール割り当ての追加]** ウィンドウの **[ロール]** ボックスで、**[Cosmos DB アカウントの閲覧者ロール]** を選択します。
 4. **[アクセスの割り当て先]** ボックスで、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。
 5. ディレクトリで、アクセス権を付与するユーザー、グループ、またはアプリケーションを選択します。  ディレクトリは、表示名、電子メール アドレス、およびオブジェクト識別子を使用して検索できます。
     選択したメンバー、グループ、またはアプリケーションが、選択したメンバー一覧に表示されます。
@@ -195,5 +193,5 @@ Azure Cosmos DB では、データベースまたはコレクションにある�
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>次の手順
-* Cosmos DB データベースのセキュリティの詳細については、[Cosmos DB: データベースのセキュリティ](database-security.md)に関するページをご覧ください。
+* Cosmos DB データベースのセキュリティの詳細については、[Cosmos DB:データベースのセキュリティ](database-security.md)に関するページを参照してください。
 * Azure Cosmos DB 認証トークンを作成する方法については、[Azure Cosmos DB リソースのアクセス制御](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページをご覧ください。

@@ -92,7 +92,7 @@ items:
         href: concepts-query-store-scenarios.md
       - name: クエリ ストアのベスト プラクティス
         href: concepts-query-store-best-practices.md
-    - name: '[Query Performance Insight]'
+    - name: Query Performance Insight
       href: concepts-query-performance-insight.md
     - name: パフォーマンスに関する推奨事項
       href: concepts-performance-recommendations.md

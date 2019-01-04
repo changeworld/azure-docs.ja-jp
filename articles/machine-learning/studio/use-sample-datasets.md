@@ -1,11 +1,11 @@
 ---
-title: Machine Learning Studio におけるサンプル データセットの使用 | Microsoft Docs
+title: サンプル データセットを使用する - Azure Machine Learning Studio | Microsoft Docs
 description: Machine Learning Studio に含まれるサンプル モデルで使用されるデータセットの説明です。 実験には、これらのサンプル データセットを使用できます。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 7a90a8f05082e2c0731f9f112d3e56ecaf4ea55b
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2fde43417ffc907a93b4e568b90ebbda228c4cfe
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398803"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270486"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets
@@ -33,7 +33,7 @@ Azure Machine Learning で新しいワークスペースを作成する場合、
 実験キャンバスにこれらのデータセットのいずれかをドラッグすると、独自の実験で使用できます。
 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 <table>
 
@@ -47,9 +47,9 @@ Azure Machine Learning で新しいワークスペースを作成する場合、
   <td>
 調整後の所得指数が 100 を超える就労成人男性 (16 歳以上) を対象とした、米国国勢調査局のデータベース (1994 年) のサブセットです。
 <p></p>
-<b>使用法:</b> 人口統計データを使用して対象の人々を分類し、個人が 1 年間に 50,000 ドル以上の年収を得られるかどうかを予測します。
+<b>使用法:</b>人口統計データを使用して対象の人々を分類し、個人が 1 年間に 50,000 ドル以上の年収を得られるかどうかを予測します。
 <p></p>
-<b>関連の研究:</b> Kohavi, R.、Becker, B. (1996 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
+<b>関連の研究:</b>Kohavi, R.、Becker, B. (1996 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
 </tr>
 
 <tr>
@@ -68,9 +68,9 @@ Azure Machine Learning で新しいワークスペースを作成する場合、
 <p></p>
 リスク スコアはまず車体価格に関連付けられます。 その後、アクチュアリー (保険数理士) の間でシンボリングと呼ばれるプロセスによって、実際のリスクに対して調整されます。 +3 は自動車のリスクが高く、-3 は高い安全性が見込まれることを示しています。
 <p></p>
-<b>使用法:</b> 回帰または多変量分類を使用して、機能別のリスク スコアを予測します。 
+<b>使用法:</b>回帰または多変量分類を使用して、機能別のリスク スコアを予測します。 
 <p></p>
-<b>関連の研究:</b> Schlimmer, J.C. (1987 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
+<b>関連の研究:</b>Schlimmer, J.C. (1987 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
 </tr>
 
 <tr>
@@ -99,9 +99,9 @@ CSV データに変換された、公開の画像ファイル。
 <p></p>
 献血データには、最後の献血からの経過月数、頻度、献血の合計回数、最後の献血からの経過期間、献血量が含まれます。
 <p></p>
-<b>使用法:</b> 目標は、2007 年 3 月に献血者が献血を実施したかどうかの分類に基づいて予測を実行することです。1 は対象期間に献血をした人、0 はしなかった人を示しています。 
+<b>使用法:</b>目標は、2007 年 3 月に献血者が献血を実施したかどうかの分類に基づいて予測を実行することです。1 は対象期間に献血をした人、0 はしなかった人を示しています。 
 <p></p>
-<b>関連の研究:</b> Yeh, I.C. (2008 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部
+<b>関連の研究:</b>Yeh, I. (2008 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部
 <p></p>
 Yeh, I-Cheng、Yang, King-Jang、Ting, Tao-Ming、「Knowledge discovery on RFM model using Bernoulli sequence」、Expert Systems with Applications、2008 年、<a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
@@ -112,9 +112,9 @@ Yeh, I-Cheng、Yang, King-Jang、Ting, Tao-Ming、「Knowledge discovery on RFM 
   <td>
 機械学習に関する文献で頻繁に登場する腫瘍学研究所が提供した、3 つのがん関連データセットの 1 つです。 診断情報と、研究所が分析した 300 個の細胞組織サンプルの特徴が組み合わせられています。
 <p></p>
-<b>使用法:</b> がんの種類を 9 つの属性 (線形、カテゴリなど) に基づいて分類します。 
+<b>使用法:</b>がんの種類を 9 つの属性 (線形、カテゴリなど) に基づいて分類します。 
 <p></p>
-<b>関連の研究:</b> Wohlberg, W.H.、Street, W.N.、Mangasarian, O.L. (1995 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
+<b>関連の研究:</b>Wohlberg, W.H.、Street, W.N.、Mangasarian, O.L. (1995 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
 </tr>
 
 <tr>
@@ -165,9 +165,9 @@ KDD Cup 2009 顧客間関係の予測に関する課題のラベル (<a href="ht
   <td>
 12 種類の建物形状に基づいてシミュレーションされたエネルギー プロファイルのコレクションです。 建物は 8 種類の特徴によって区別されています。 これには、ガラス部分、ガラス部分の配置、方向が含まれます。
 <p></p>
-<b>使用法:</b> 回帰または分類を使用して、2 つの実数値のうち 1 つを応答としてエネルギー効率を評価します。 マルチクラス分類の場合、応答変数が最も近い整数に丸められます。 
+<b>使用法:</b>回帰または分類を使用して、2 つの実数値のうち 1 つを応答としてエネルギー効率を評価します。 マルチクラス分類の場合、応答変数が最も近い整数に丸められます。 
 <p></p>
-<b>関連の研究:</b> Xifara, A.、Tsanas, A.(2012 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
+<b>関連の研究:</b>Xifara, A、Tsanas, A.(2012 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
 </tr>
 
 <tr>
@@ -190,9 +190,9 @@ KDD Cup 2009 顧客間関係の予測に関する課題のラベル (<a href="ht
   <td>
 2011 年 10 月の米国における航空機のフライトの発着記録です。
 <p></p>
-<b>使用法:</b> フライトの遅延を予測します。 
+<b>使用法:</b>フライトの遅延を予測します。 
 <p></p>
-<b>関連の研究:</b> 米国運輸省 <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a> より。
+<b>関連の研究:</b>米国運輸省 <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a> より。
   </td>
 </tr>
 
@@ -201,9 +201,9 @@ KDD Cup 2009 顧客間関係の予測に関する課題のラベル (<a href="ht
   <td>
 不快指数や風速などの気象データが含まれます。 データはポルトガル北東地域から取得され、森林火災の記録と結合されます。
 <p></p>
-<b>使用法:</b> 森林火災の被害地域を予測する回帰を実行するという、難しい作業となります。 
+<b>使用法:</b>森林火災の被害地域を予測する回帰を実行するという、難しい作業となります。 
 <p></p>
-<b>関連の研究:</b> Cortez, P.、Morais, A.(2008 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部
+<b>関連の研究:</b>Cortez, P.、Morais, A.(2008 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部
 <p></p>
 [Cortez and Morais、2007 年] P. Cortez、A. Morais. 「A Data Mining Approach to Predict Forest Fires using Meteorological Data」 J. Neves、M. F. Santos and J. Machado Eds.、「New Trends in Artificial Intelligence」(第 13 回 EPIA 2007 - Portuguese Conference on Artificial Intelligence 議事録、512 から 523 ページ) 開催地: ギマランエス (ポルトガル)。2007 年。 APPIA,、SBN-13 978-989-95618-0-9。 <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a> で入手可能。
   </td>
@@ -230,9 +230,9 @@ Twitter のツイートで評価された映画に関する情報として、IMD
   <td>
 パターン認識の文献でおそらく最も多く使用されているデータベースです。 3 種類のあやめの品種について 50 例の花弁を測定した、比較的小さなデータセットです。
 <p></p>
-<b>使用法:</b> あやめの品種を測定値から予測します。  
+<b>使用法:</b>あやめの品種を測定値から予測します。  
 <p></p>
-<b>関連の研究:</b> Fisher, R.A. (1988 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
+<b>関連の研究:</b>Fisher, R.A. (1988 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
 </tr>
 
 <tr>
@@ -249,9 +249,9 @@ Twitter のツイートで評価された映画に関する情報として、IMD
 <p></p>
 データには、さまざまな車体の燃料消費量がガロンあたりのマイル数で一覧表示されます。 これには、シリンダー数、エンジン排気量、馬力、総重量、加速度などの情報が含まれます。
 <p></p>
-<b>使用法:</b> 3 つの多値離散属性と 5 つの連続属性に基づいて燃費効率を予測します。 
+<b>使用法:</b>3 つの多値離散属性と 5 つの連続属性に基づいて燃費効率を予測します。 
 <p></p>
-<b>関連の研究:</b> カーネギーメロン大学 StatLib (1993 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
+<b>関連の研究:</b>カーネギーメロン大学 StatLib (1993 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
 </tr>
 
 <tr>
@@ -259,9 +259,9 @@ Twitter のツイートで評価された映画に関する情報として、IMD
   <td>
 国立糖尿病・消化器・腎疾病研究所のデータベースから提供されたデータのサブセットです。 データセットはフィルタリングされ、ピマ族の女性患者だけが対象とされています。 データには、血糖値やインスリン値などの医療データと、生活習慣要因が含まれています。
 <p></p>
-<b>使用法:</b> 対象者が糖尿病にかかっているかどうかを予測します (二項分類)。 
+<b>使用法:</b>対象者が糖尿病にかかっているかどうかを予測します (二項分類)。 
 <p></p>
-<b>関連の研究:</b> Sigillito, V.(1990 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml"</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
+<b>関連の研究:</b>Sigillito, V.(1990 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml"</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
 </tr>
 
 <tr>
@@ -269,9 +269,9 @@ Twitter のツイートで評価された映画に関する情報として、IMD
   <td>
 人口統計データや嗜好など、顧客に関するメタデータのセットです。
 <p></p>
-<b>使用法:</b> このデータセットを、レストランに関する他の 2 つのデータセットと組み合わせて使用して、レコメンダー システムの調整とテストを実施します。 
+<b>使用法:</b>このデータセットを、レストランに関する他の 2 つのデータセットと組み合わせて使用して、レコメンダー システムの調整とテストを実施します。 
 <p></p>
-<b>関連の研究:</b> Bache, K.、Lichman, M.(2013 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部
+<b>関連の研究:</b>Bache, K.、Lichman, M.(2013 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部。
   </td>
 </tr>
 
@@ -280,9 +280,9 @@ Twitter のツイートで評価された映画に関する情報として、IMD
   <td>
 料理の種類、食事スタイル、場所など、レストランとその特徴に関するメタデータのセットです。
 <p></p>
-<b>使用法:</b> このデータセットを、レストランに関する他の 2 つのデータセットと組み合わせて使用して、レコメンダー システムの調整とテストを実施します。 
+<b>使用法:</b>このデータセットを、レストランに関する他の 2 つのデータセットと組み合わせて使用して、レコメンダー システムの調整とテストを実施します。 
 <p></p>
-<b>関連の研究:</b> Bache, K.、Lichman, M.(2013 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部
+<b>関連の研究:</b>Bache, K.、Lichman, M.(2013 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部。
   </td>
 </tr>
 
@@ -291,9 +291,9 @@ Twitter のツイートで評価された映画に関する情報として、IMD
   <td>
 ユーザーによるレストランの評価 (0 ～ 2) が含まれます。
 <p></p>
-<b>使用法:</b> このデータセットを、レストランに関する他の 2 つのデータセットと組み合わせて使用して、レコメンダー システムの調整とテストを実施します。 
+<b>使用法:</b>このデータセットを、レストランに関する他の 2 つのデータセットと組み合わせて使用して、レコメンダー システムの調整とテストを実施します。 
 <p></p>
-<b>関連の研究:</b> Bache, K.、Lichman, M.(2013 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部
+<b>関連の研究:</b>Bache, K.、Lichman, M.(2013 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部。
   </td>
 </tr>
 
@@ -302,11 +302,11 @@ Twitter のツイートで評価された映画に関する情報として、IMD
   <td>
 このデータセットには、鉄鋼のアニール処理試験に関する一連の記録が含まれています。 幅、厚み、種類 (コイル、シートなど) など、処理後のさまざまな物理的属性も含まれます。
 <p></p>
-<b>使用法:</b> 2 つの数値クラス属性 (硬度と強度) のいずれかを予測します。 属性間の相関関係を分析することも可能です。
+<b>使用法:</b>2 つの数値クラス属性 (硬度と強度) のいずれかを予測します。 属性間の相関関係を分析することも可能です。
 <p></p>
 鉄鋼のグレードは、SAE その他の機関が定義した標準に準拠します。 特定の "グレード"(クラス変数) を検索して、必要な値を把握する必要があります。 
 <p></p>
-<b>関連の研究:</b> Sterling, D.、Buntine, W. (年度不明)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部
+<b>関連の研究:</b>Sterling, D.、Buntine, W.(年度不明)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部
 <p></p>
 鉄鋼グレードの有用なガイドは、<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
    にあります。</td>
@@ -321,13 +321,13 @@ Twitter のツイートで評価された映画に関する情報として、IMD
 <p></p>
 データを前処理することによって、長軸がカメラの中心を向く伸長クラスターが作成されています。 この楕円のさまざまな特性は通常 Hillas パラメーターと呼ばれ、これらが画像のパラメーターに表れることによって区別が可能になります。
 <p></p>
-<b>使用法:</b> 放射の画像が信号とバックグラウンド ノイズのどちらを表しているかを予測します。
+<b>使用法:</b>放射の画像が信号とバックグラウンド ノイズのどちらを表しているかを予測します。
 <p></p>
-<b>注:</b> バックグラウンド イベントを信号に分類することは、シグナル イベントをバックグラウンドに分類することよりも大きな悪影響を及ぼすため、シンプルな分類の正確度は、このデータでは意味を持ちません。 異なる分類子の比較には ROC グラフを使用する必要があります。 バックグラウンド イベントを信号として受信する可能性は、次のしきい値のいずれかを下回る必要があります: 0.01、0.02、0.05、0.1、0.2。
+<b>注:</b>バックグラウンド イベントを信号に分類することは、シグナル イベントをバックグラウンドに分類することよりも大きな悪影響を及ぼすため、シンプルな分類の正確度は、このデータでは意味を持ちません。 異なる分類子の比較には ROC グラフを使用する必要があります。 バックグラウンド イベントを信号として受信する可能性は、次のしきい値のいずれかを下回る必要があります: 0.01、0.02、0.05、0.1、0.2。
 <p></p>
 また、バックグラウンド イベントの数 (ハドロン放射の場合 h) は過小評価されます。 実際の測定では、h またはノイズ クラスがイベントの大部分を占めています。 
 <p></p>
-<b>関連の研究:</b> Bock, R.K. (1995 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報学部 </td>
+<b>関連の研究:</b>Bock, R.K. (1995 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報学部 </td>
 </tr>
 
 <tr>

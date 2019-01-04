@@ -9,17 +9,16 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2017
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: 8394584b2b4f8cbc47a6fdaadd754e8649c3f794
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0895d31475de5d78c82f3bfedc0765e5a9549339
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960924"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877600"
 ---
 # <a name="smart-detection---failure-anomalies"></a>スマート検出 - 失敗の異常
 [Application Insights](app-insights-overview.md) では、Web アプリで要求失敗率が異常に増加すると、ほぼリアルタイムで自動的にユーザーに通知します。 具体的には、失敗として報告された HTTP 要求または依存関係の呼び出しの割合が異常に上昇すると、それが検出されます。 要求の場合、失敗した要求の応答コードは、通常、400 以上です。 通知には、問題のトリアージと診断に役立つよう、失敗の特性および関連するテレメトリの分析結果が記載されています。 また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。 この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
@@ -92,7 +91,7 @@ ms.locfileid: "50960924"
 
 さらに詳しく調査する場合は、関連する要求、例外、依存関係、トレースで絞り込まれた [検索ページ](app-insights-diagnostic-search.md) に、各セクションのリンクから直接移動できます。 また、 [Azure ポータル](https://portal.azure.com)を開き、アプリケーションの Application Insights リソースに移動して、[エラー] ブレードを開くという方法もあります。
 
-この例では、"依存関係エラーの詳細を表示する" リンクをクリックすると、Application Insights の検索ブレードが開き、 SQL ステートメントについての、根本原因の例 (必須フィールドに NULL が指定されており、保存操作時に検証に合格しなかった) が表示されます。
+この例では、"依存関係エラーの詳細を表示する" リンクをクリックすると、Application Insights の検索ブレードが開き、 SQL ステートメントについての、根本原因の例 (必須フィールドにNULL が指定されており、保存操作時に検証に合格しなかった) が表示されます。
 
 ![診断検索](./media/app-insights-proactive-failure-diagnostics/051.png)
 
@@ -147,7 +146,7 @@ ms.locfileid: "50960924"
 
 * [メトリックス エクスプローラー](app-insights-metrics-explorer.md)
 * [Search エクスプローラー](app-insights-diagnostic-search.md)
-* [Analytics - 強力なクエリ言語](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Analytics - 強力なクエリ言語](../azure-monitor/log-query/get-started-portal.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 

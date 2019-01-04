@@ -1,5 +1,5 @@
 ---
-title: Azure Search でクエリおよびインデックス作成のためのパーティションとレプリカを割り当てる | Microsoft Docs
+title: クエリとインデックス作成のためのパーティションとレプリカを割り当てる - Azure Search
 description: Azure Search のパーティションとレプリカのコンピューティング リソースを調整します。各リソースは課金対象の検索単位で価格設定されます。
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: fa1a13c5c786867f6e92a678c40a491e0a226076
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: e2eff6c854dae48961700341a6db19dc7113901c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238738"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316116"
 ---
 # <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Azure Search でクエリとインデックス作成のワークロードに応じてパーティションとレプリカを割り当てる
 [価格レベルを選択](search-sku-tier.md)して [Search サービスをプロビジョニング](search-create-service-portal.md)したら、サービスで使用するレプリカまたはパーティションの数を必要に応じて増やします。 各レベルには固定された請求単位数が用意されています。 この記事では、こうした請求単位を、クエリの実行、インデックス作成、およびストレージの要件のバランスを考慮しながら割り当てて、最適な構成を実現する方法について説明します。
@@ -92,12 +93,12 @@ Azure Search の高可用性は、クエリのほか、インデックスの再�
 
 インデックスが大きくなると、クエリの実行に時間がかかります。 そのため、パーティションで段階的な増加が発生するたびに、レプリカでは小規模であるが比例的な増加が必要となる場合があります。 クエリの複雑さとボリュームは、クエリの実行が完了するまでの速度の要因となります。
 
-## <a name="basic-tier-partition-and-replica-combinations"></a>Basic レベル: パーティションとレプリカの組み合わせ
+## <a name="basic-tier-partition-and-replica-combinations"></a>Basic レベル:パーティションとレプリカの組み合わせ
 Basic サービスは、3 SU の上限に対して厳密に 1 個のパーティションと最大 3 個のレプリカを持つことができます。 調整可能なリソースはレプリカだけです。 クエリの高可用性のためには、少なくとも 2 個のレプリカが必要です。
 
 <a id="chart"></a>
 
-## <a name="standard-tiers-partition-and-replica-combinations"></a>Standard レベル: パーティションとレプリカの組み合わせ
+## <a name="standard-tiers-partition-and-replica-combinations"></a>Standard レベル:パーティションとレプリカの組み合わせ
 次の表は、すべての Standard レベルについて、36 SU の制限のもとで、レプリカとパーティションの組み合わせをサポートするために必要な SU を示しています。
 
 |   | **1 個のパーティション** | **2 個のパーティション** | **3 個のパーティション** | **4 個のパーティション** | **6 個のパーティション** | **12 個のパーティション** |

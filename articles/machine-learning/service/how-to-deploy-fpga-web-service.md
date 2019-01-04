@@ -1,6 +1,7 @@
 ---
-title: Azure Machine Learning でモデルを Web サービスとして FPGA 上に配置する
-description: FPGA 上で実行されるモデルを含む Web サービスを Azure Machine Learning で配置する方法を説明します。
+title: モデルの FPGA でのデプロイ
+titleSuffix: Azure Machine Learning service
+description: 待機時間が極端に短い推論のために、FPGA 上で実行されるモデルを含む Web サービスを Azure Machine Learning service でデプロイする方法を説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,21 +9,22 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 10/29/2018
-ms.openlocfilehash: 35b24dc2f21e2504432521c53e2d0f41caa0eeb7
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 3148d4d63ad1464dbd45c361237ac9cd4ffd485a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344061"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268242"
 ---
-# <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Azure Machine Learning でモデルを Web サービスとして FPGA 上に配置する
+# <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルを Web サービスとして FPGA 上に配置する
 
 モデルを [FPGA (field programmable gate arrays)](concept-accelerate-with-fpgas.md) 上の Web サービスとしてデプロイできます。  FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。   
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
 
 - Azure Machine Learning サービス ワークスペースと、Azure Machine Learning SDK for Python がインストール済み。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
  
@@ -165,14 +167,6 @@ registered_model.delete()
 
 FPGA 上で実行されている Azure Machine Learning モデルでは、SSL のサポートとキー ベースの認証を提供します。 これにより、サービスへのアクセスを制限し、クライアントによって送信されるデータをセキュリティで保護できます。 [Web サービスをセキュリティで保護する方法についてはこちら](how-to-secure-web-service.md)を参照してください。
 
-
-## <a name="sample-notebook"></a>サンプル ノートブック
-
-この記事の概念については、[project-brainwave/project-brainwave-quickstart.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/project-brainwave/project-brainwave-quickstart.ipynb) ノートブックを参照してください。
-
-このノートブックの入手:
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>次の手順
 

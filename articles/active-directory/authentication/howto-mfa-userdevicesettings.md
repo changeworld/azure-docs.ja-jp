@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: cf470ad14c27fd36cf60bb540e823b15fc58eded
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 8d3ffa2664c747f5fbbd4269b23ae54850e0d750
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496893"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321001"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
 
@@ -30,8 +30,8 @@ ms.locfileid: "52496893"
 
 ### <a name="how-to-require-users-to-provide-contact-methods-again"></a>連絡方法をもう一度提供するようユーザーに要求する方法
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側で、**[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのユーザー]** を選択します。
-3. **[Multi-Factor Authentication]** を選択します。 多要素認証ページが開きます。 
+2. 左側の **[Azure Active Directory]** > **[ユーザー]** > **[すべてのユーザー]** を選択します。
+3. 右側のツール バーで **[Multi-Factor Authentication]** を選択します。 多要素認証ページが開きます。 
 4. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック手順オプションの一覧が右側に表示されます。 
 5. **[Manage user settings]** (ユーザー設定の管理) を選択します。
 6. **[選択したユーザーについて連絡方法の再指定を必須にする]** チェック ボックスをオンにします。
@@ -44,8 +44,8 @@ ms.locfileid: "52496893"
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>ユーザーの既存のアプリ パスワードを削除する方法
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側で、**[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのユーザー]** を選択します。
-3. **[Multi-Factor Authentication]** を選択します。 多要素認証ページが開きます。 
+2. 左側の **[Azure Active Directory]** > **[ユーザー]** > **[すべてのユーザー]** を選択します。
+3. 右側のツール バーで **[Multi-Factor Authentication]** を選択します。 多要素認証ページが開きます。 
 6. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック手順オプションの一覧が右側に表示されます。 
 7. **[Manage user settings]** (ユーザー設定の管理) を選択します。
 8. **[選択したユーザーが生成したすべての既存のアプリ パスワードを削除する]** チェック ボックスをオンにします。
@@ -60,10 +60,10 @@ Azure Multi-Factor Authentication の構成可能な機能の 1 つに、デバ�
 
 **[記憶されているすべてのデバイスに多要素認証を復元]** 設定は、ユーザーがデバイスを信頼済みとしてマークしているかどうかに関係なく、次回のサインイン時に 2 段階認証の実行を要求することを意味します。 
 
-### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>ユーザーの中断されたすべてのデバイスで MFA を復元する方法
+### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>ユーザーの除外されたデバイスすべてに MFA を復元する方法
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側で、**[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのユーザー]** を選択します。
-3. **[Multi-Factor Authentication]** を選択します。 多要素認証ページが開きます。 
+2. 左側の **[Azure Active Directory]** > **[ユーザー]** > **[すべてのユーザー]** を選択します。
+3. 右側のツール バーで **[Multi-Factor Authentication]** を選択します。 多要素認証ページが開きます。 
 6. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック手順オプションの一覧が右側に表示されます。 
 7. **[Manage user settings]** (ユーザー設定の管理) を選択します。
 8. **[記憶されているすべてのデバイスに多要素認証を復元]** チェック ボックスをオンにします。

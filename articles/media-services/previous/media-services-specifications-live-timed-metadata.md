@@ -3,7 +3,7 @@ title: Azure Media Services - ライブ ストリーミングでの時間指定�
 description: この仕様では、ライブ ストリーミング内での時間指定メタデータのシグナル通知に対して Media Services がサポートする 2 つのモードについて説明します。 これには、汎用時間指定メタデータ シグナルと、広告スプライス挿入に対する SCTE-35 シグナル通知が含まれます。
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: johndeu
 manager: cfowler
 editor: johndeu
 ms.assetid: 265b94b1-0fb8-493a-90ec-a4244f51ce85
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2018
+ms.date: 12/13/2018
 ms.author: johndeu;
-ms.openlocfilehash: 827153300b9cab4ea805689b1e103bea1b334ec9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b4dec5430d93cd2634fc541ae688a6bc425f5491
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249576"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384685"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>ライブ ストリーミングでの時間指定メタデータのシグナル通知
 
@@ -81,7 +81,7 @@ RTMP のシンプル モードでは、Media Services は次の形式の "onAdCu
 | フィールド名 | フィールドの型 | 必須 | 説明                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
 | cue        | String     | 必須 | イベント メッセージ。  [SCTE-35] メッセージの場合、[SCTE-67] に準拠する HLS、Smooth、Dash クライアントにメッセージが送信されるためには、このフィールドは base64 (IETF RFC 4648) でバイナリ エンコードされた splice_info_section() でなければなりません。                                              |
-| type       | String     | 必須 | メッセージのスキームを示す URN または URL (例: "urn:example:signaling:1.0")。  [SCTE-35] メッセージの場合、[SCTE-67] に準拠する HLS、Smooth、Dash クライアントにメッセージが送信されるためには、このフィールドは "urn:scte:scte35:2013a:bin" でなければなりません。  |
+| type       | String     | 必須 | メッセージのスキームを示す URN または URL。 [SCTE-35] メッセージの場合、[SCTE-67] に準拠する HLS、Smooth、Dash クライアントにメッセージが送信されるためには、このフィールドは "urn:scte:scte35:2013a:bin" でなければなりません。  |
 | id         | String     | 必須 | スプライスまたはセグメントを記述する一意識別子。 メッセージのこのインスタンスを示します。  同じセマンティクスを持つメッセージには、同じ値が設定されている必要があります。|
 | duration   | Number     | 必須 | イベントまたは広告スプライス セグメントの継続時間 (わかっている場合)。 わからない場合は、0 にする必要があります。                                                                 |
 | elapsed    | Number     | 省略可能 | チューニングのために [SCTE-35] 広告シグナルを繰り返す場合は、スプライスが開始してから経過したプレゼンテーション時間の長さをこのフィールドに設定する必要があります。 単位は秒の小数部です。 [SCTE-35] モードでは、この値はスプライスまたはセグメントで指定されている元の継続時間を超えてもかまいません。                                                  |
@@ -105,7 +105,7 @@ RTMP のシンプル モードでは、Media Services は次の形式の "onAdCu
 | parentTrackName    | String         | 必須      | 親トラックの名前でなければなりません。スパース トラックの時間コードは親トラックのタイムスケールに揃えられます。 スパース トラックを親トラックにすることはできません。                                                                                                                    |
 | manifestOutput     | Boolean        | 必須      | "true" でなければなりません。スパース トラックが Smooth クライアント マニフェストに埋め込まれることを示します。                                                                                                                                                               |
 | Subtype            | String         | 必須      | 4 文字のコード "DATA" でなければなりません。                                                                                                                                                                                                                         |
-| Scheme             | String         | 必須      | メッセージのスキームを示す URN または URL でなければなりません (例: "urn:example:signaling:1.0")。 [SCTE-35] メッセージの場合、[SCTE-67] に準拠する HLS、Smooth、Dash クライアントにメッセージが送信されるためには、このフィールドは "urn:scte:scte35:2013a:bin" でなければなりません。 |
+| Scheme             | String         | 必須      | メッセージのスキームを示す URN または URL でなければなりません。 [SCTE-35] メッセージの場合、[SCTE-67] に準拠する HLS、Smooth、Dash クライアントにメッセージが送信されるためには、このフィールドは "urn:scte:scte35:2013a:bin" でなければなりません。 |
 | trackName          | String         | 必須      | スパース トラックの名前でなければなりません。trackName を使って、同じスキームの複数のイベント ストリームを区別できます。 各一意のイベント ストリームは、一意のトラック名を持っている必要があります。                                                                           |
 | timescale          | Number         | 省略可能      | 親のトラックのタイムスケールでなければなりません。                                                                                                                                                                                                                      |
 
@@ -226,7 +226,7 @@ Apple HTTP ライブ ストリーミング (HLS) の時間指定メタデータ�
 | **属性名** | **種類**                      | **必須**                             | **説明**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | CUE                | 引用符で囲まれた文字列                 | 必須                                  | [IETF RFC 4648](http://tools.ietf.org/html/rfc4648) で説明されているように、base64 文字列としてエンコードされたメッセージ。 [SCTE-35] メッセージの場合、これは base64 でエンコードされた splice_info_section() です。                                                                                                |
-| TYPE               | 引用符で囲まれた文字列                 | 必須                                  | メッセージのスキームを示す URN または URL (例: "urn:example:signaling:1.0")。 [SCTE-35] メッセージの場合、タイプは特別な値 "scte35" です。                                                                                                                                |
+| TYPE               | 引用符で囲まれた文字列                 | 必須                                  | メッセージのスキームを示す URN または URL。 [SCTE-35] メッセージの場合、タイプは特別な値 "scte35" です。                                                                                                                                |
 | ID                 | 引用符で囲まれた文字列                 | 必須                                  | イベントの一意識別子。 メッセージが取り込まれときに ID が指定されていない場合は、Azure Media Services が一意 ID を生成します。                                                                                                                                          |
 | DURATION           | 10 進浮動小数点数 | 必須                                  | イベントの継続時間。 わからない場合は、0 にする必要があります。 単位は秒の小数部です。                                                                                                                                                                                           |
 | ELAPSED            | 10 進浮動小数点数 | オプション、ただしスライディング ウィンドウの場合は必須。 | スライディング プレゼンテーション ウィンドウをサポートするためにシグナルを繰り返す場合、このフィールドは、イベントが開始してから経過したプレゼンテーション時間の長さでなければなりません。 単位は秒の小数部です。 この値はスプライスまたはセグメントで指定されている元の継続時間を超えてもかまいません。 |
@@ -240,30 +240,17 @@ HLS プレーヤーのアプリケーション レイヤーは、TYPE を使っ�
 #EXTM3U
 #EXT-X-VERSION:4
 #EXT-X-ALLOW-CACHE:NO
-#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-MEDIA-SEQUENCE:346
 #EXT-X-TARGETDURATION:6
-#EXT-X-PROGRAM-DATE-TIME:1970-01-01T00:00:00.000+00:00
+#EXT-X-I-FRAMES-ONLY
+#EXT-X-PROGRAM-DATE-TIME:2018-12-13T15:54:19.462Z
+#EXTINF:4.000000,no-desc
+KeyFrames(video_track=15447164594627600,format=m3u8-aapl)
 #EXTINF:6.000000,no-desc
-Fragments(video=0,format=m3u8-aapl)
+KeyFrames(video_track=15447164634627600,format=m3u8-aapl)
+#EXT-X-CUE:ID="1026",TYPE="scte35",DURATION=30.000000,TIME=1544716520.022760,CUE="/DAlAAAAAAAAAP/wFAUAAAQCf+//KRjAfP4AKTLgAAAAAAAAVYsh2w=="
 #EXTINF:6.000000,no-desc
-Fragments(video=60000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-#EXT-X-CUE: ID=”metadata-12.000000”,TYPE=”urn:example:signaling:1.0”,TIME=”12.000000”, DURATION=”18.000000”,CUE=”HrwOi8vYmWVkaWEvhhaWFRlRDa=”
-Fragments(video=120000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=180000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=240000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=300000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=360000000,format=m3u8-aapl)
-#EXT-X-CUE: ID=”metadata-42.000000”,TYPE=”urn:example:signaling:1.0”,TIME=”42.000000”, DURATION=”60.000000”,CUE=”PD94bWwgdm0iMS4wIiBlbmNvpD4=”
-#EXTINF:6.000000,no-desc
-Fragments(video=420000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=480000000,format=m3u8-aapl)
-…
+KeyFrames(video_track=15447165474627600,format=m3u8-aapl)
 ~~~
 
 #### <a name="hls-message-handling"></a>HLS メッセージの処理
@@ -293,7 +280,7 @@ EventStream 要素には次の属性があります。
 
 | **属性名** | **種類**                | **必須** | **説明**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri      | string                  | 必須      | メッセージのスキームを示します。 スキームは、Live Server Manifest Box の Scheme 属性の値に設定されます。 値は、メッセージのスキームを示す URN または URL である必要があります (例: "urn:example:signaling:1.0")。                                                                |
+| scheme_id_uri      | string                  | 必須      | メッセージのスキームを示します。 スキームは、Live Server Manifest Box の Scheme 属性の値に設定されます。 値は、メッセージのスキームを示す URN または URL である必要があります (例: "urn:scte:scte35:2013a:bin")。                                                                |
 | value              | string                  | 省略可能      | メッセージのセマンティクスをカスタマイズするためにスキームの所有者によって使われる追加の文字列値。 スキームが同じ複数のイベント ストリームを区別するため、値はイベント ストリームの名前に設定しなければなりません (Smooth の取り込みの場合は trackName、RTMP の取り込みの場合は AMF メッセージ名)。 |
 | タイムスケール          | 32 ビット符号なし整数 | 必須      | "emsg" ボックス内の時間フィールドと継続時間フィールドのタイムスケール (1 秒間のティック数)。                                                                                                                                                                                                       |
 
@@ -335,11 +322,14 @@ EventStream 要素には 0 個以上の Event 要素が含まれており、次�
 
 
 <!-- Example Section in MPD -->
-
-<EventStream schemeIdUri=”urn:example:signaling:1.0” timescale=”1000” value=”player-statistics”>
-  <Event presentationTime=”0” duration=”10000” id=”0”> PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTUwMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</Event>
-  <Event presentationTime=”20000” duration=”10000” id=”1”> PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTYyMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</Event>
-</EventStream>
+  <EventStream schemeIdUri="urn:scte:scte35:2013a:bin" value="scte35_track_001_000" timescale="10000000">
+        <Event presentationTime="15447165200227600" duration="300000000" id="1026">/DAlAAAAAAAAAP/wFAUAAAQCf+//KRjAfP4AKTLgAAAAAAAAVYsh2w==</Event>
+        <Event presentationTime="15447166250227600" duration="300000000" id="1027">/DAlAAAAAAAAAP/wFAUAAAQDf+//KaeGwP4AKTLgAAAAAAAAn75a3g==</Event>
+        <Event presentationTime="15447167300227600" duration="600000000" id="1028">/DAlAAAAAAAAAP/wFAUAAAQEf+//KjkknP4AUmXAAAAAAAAAWcEldA==</Event>
+        <Event presentationTime="15447168350227600" duration="600000000" id="1029">/DAlAAAAAAAAAP/wFAUAAAQFf+//KslyqP4AUmXAAAAAAAAAvKNt0w==</Event>
+        <Event presentationTime="15447169400227600" duration="300000000" id="1030">/DAlAAAAAAAAAP/wFAUAAAQGf+//K1mIvP4AKTLgAAAAAAAAt2zEbw==</Event>
+        <Event presentationTime="15447170450227600" duration="600000000" id="1031">/DAlAAAAAAAAAP/wFAUAAAQHf+//K+hc/v4AUmXAAAAAAAAANNRzVw==</Event>
+    </EventStream>
 ~~~
 
 >[!NOTE]
@@ -375,7 +365,7 @@ DASHEventMessageBox のフィールドの定義は以下のとおりです。
 
 | **フィールド名**          | **フィールドの型**          | **必須** | **説明**                                                                                                                                                                                                                                                                                                                                                    |
 |-------------------------|-------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri           | string                  | 必須      | メッセージのスキームを示します。 スキームは、Live Server Manifest Box の Scheme 属性の値に設定されます。 値は、メッセージのスキームを示す URN または URL である必要があります (例: "urn:example:signaling:1.0")。 [SCTE-35] メッセージのこのフィールドは特別な値 "urn:scte:scte35:2013a:bin" ですが、[SCTE-67] では別の値が推奨されます。 |
+| scheme_id_uri           | string                  | 必須      | メッセージのスキームを示します。 スキームは、Live Server Manifest Box の Scheme 属性の値に設定されます。 値は、メッセージのスキームを示す URN または URL である必要があります。 [SCTE-35] メッセージのこのフィールドは特別な値 "urn:scte:scte35:2013a:bin" ですが、[SCTE-67] では別の値が推奨されます。 |
 | 値                   | string                  | 必須      | メッセージのセマンティクスをカスタマイズするためにスキームの所有者によって使われる追加の文字列値。 スキームが同じ複数のイベント ストリームを区別するため、値はイベント ストリームの名前に設定されます (Smooth の取り込みの場合は trackName、RTMP の取り込みの場合は AMF メッセージ名)。                                                                  |
 | タイムスケール               | 32 ビット符号なし整数 | 必須      | "emsg" ボックス内の時間フィールドと継続時間フィールドのタイムスケール (1 秒間のティック数)。                                                                                                                                                                                                                                                                        |
 | Presentation_time_delta | 32 ビット符号なし整数 | 必須      | イベントのプレゼンテーション時間と、このセグメントでの最も早いプレゼンテーション時刻の間を表す、メディア プレゼンテーション時間の差分。 プレゼンテーション時間と継続時間は、[ISO-14496-12] Annex I で定義されているように、タイプ 1 または 2 のストリーム アクセス ポイント (SAP) と一致している必要があります。                                                                                            |
@@ -398,9 +388,9 @@ Smooth Streaming の取り込みでは、[SCTE-35] の表 8-1 で定義されて
 
 **[SCTE-35]** ANSI/SCTE 35 2013a – ケーブル接続のデジタル プログラム挿入キューイング メッセージ、2013a
 
-**[SCTE-67]** ANSI/SCTE 67 2014 –SCTE 35 の推奨される方法: ケーブル接続のデジタル プログラム挿入キューイング メッセージ
+**[SCTE-67]** ANSI/SCTE 67 2014 – SCTE 35 で推奨される方法:ケーブル接続のデジタル プログラム挿入キューイング メッセージ
 
-**[DASH]** ISO/IEC 23009-1 2014 – 情報技術 – Dynamic adaptive streaming over HTTP (DASH) – パート 1: メディア プレゼンテーションの説明とセグメントの形式、第 2 版
+**[DASH]** ISO/IEC 23009-1 2014 – 情報技術 – HTTP 経由のダイナミック アダプティブ ストリーミング (DASH) – パート 1:メディア プレゼンテーションの説明とセグメント形式、第 2 版
 
 **[HLS]** ["HTTP ライブ ストリーミング"、draft-pantos-http-live-streaming-14、2014 年 10 月 14 日](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
 
@@ -410,7 +400,7 @@ Smooth Streaming の取り込みでは、[SCTE-35] の表 8-1 で定義されて
 
 **[LIVE-FMP4]** [Azure Media Services の Fragmented MP4 ライブ取り込み仕様](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
-**[ISO-14496-12]** ISO/IEC 14496-12: パート 12 ISO ベースのメディア ファイル形式、第 4 版、2012 年 7 月 15 日。
+**[ISO-14496-12]** ISO/IEC 14496-12:パート 12 ISO ベースのメディア ファイル形式、第 4 版、2012 年 7 月 15 日。
 
 **[RTMP]** ["Adobe の Real-Time Messaging Protocol"、2012 年 12 月 21 日](https://www.adobe.com/devnet/rtmp.html) 
 

@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 10/24/2018
-ms.openlocfilehash: c51df7aeef136fee42b061cd422cc62d67f33e96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/03/2018
+ms.openlocfilehash: 489eccf1b73e7f5df76a3ce681b4479893a9e0ac
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258920"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843208"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
 
@@ -145,7 +145,7 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 
 ### <a name="collation"></a>Collation
 
-サーバーの照合順序は `SQL_Latin1_General_CP1_CI_AS` であり、変更することはできません。 「[照合順序](https://docs.microsoft.com/sql/t-sql/statements/collations)」をご覧ください。
+既定のインスタンスの照合順序は `SQL_Latin1_General_CP1_CI_AS` であり、作成パラメーターとして指定できます。 「[照合順序](https://docs.microsoft.com/sql/t-sql/statements/collations)」をご覧ください。
 
 ### <a name="database-options"></a>データベース オプション
 
@@ -264,7 +264,7 @@ In-Database R および In-Database Python 外部ライブラリはまだサポ�
 
 Managed Instance のリンク サーバーがサポートするターゲットの数は限られています。
 
-- サポートされるターゲット: SQL Server と SQL Database
+- サポートされているターゲット:SQL Server、SQL Database
 - サポートされていないターゲット: Analysis Services、他の RDBMS
 
 [操作]
@@ -277,7 +277,8 @@ Managed Instance のリンク サーバーがサポートするターゲット�
 ### <a name="logins--users"></a>ログイン/ユーザー
 
 - `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY`、`FROM SID` を使用して作成された SQL ログインはサポートされています。 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql) に関する記事をご覧ください。
-- `CREATE LOGIN ... FROM WINDOWS` 構文を使用して作成された Windows ログインはサポートされていません。
+- [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 構文または [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 構文で作成された Azure Active Directory (AAD) ログインがサポートされます (**パブリック プレビュー**)。
+- `CREATE LOGIN ... FROM WINDOWS` 構文を使用して作成された Windows ログインはサポートされていません。 Azure Active Directory のログインとユーザーを使用します。
 - インスタンスを作成した Azure Active Directory (Azure AD) ユーザーは、[制限のない管理特権](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#unrestricted-administrative-accounts)を持ちます。
 - 管理者以外の、データベース レベルの Azure Active Directory (Azure AD) ユーザーは、`CREATE USER ... FROM EXTERNAL PROVIDER` 構文を使用して作成できます。 [CREATE USER ...FROM EXTERNAL PROVIDER](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users) に関するセクションをご覧ください。
 
@@ -333,7 +334,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 クロス インスタンス Service Broker はサポートされていません。
 
 - `sys.routes` - 前提条件: sys.routes からアドレスを選択します。 アドレスは、各ルートで LOCAL である必要があります。 [sys.routes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-routes-transact-sql) に関する記事をご覧ください。
-- `CREATE ROUTE` - `LOCAL` 以外の `ADDRESS` を使用して、`CREATE ROUTE` を実行することはできません。 [CREATE ROUTE](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql) に関する記事をご覧ください。
+- `CREATE ROUTE` - `LOCAL` 以外の `ADDRESS` で `CREATE ROUTE` を使用することはできません。 [CREATE ROUTE](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql) に関する記事をご覧ください。
 - `ALTER ROUTE` - `LOCAL` 以外の `ADDRESS` を使用して、`ALTER ROUTE` を実行することはできません。 [ALTER ROUTE](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql) に関する記事をご覧ください。  
 
 ### <a name="service-key-and-service-master-key"></a>サービス キーとサービス マスター キー
@@ -427,12 +428,12 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 それぞれのマネージド インスタンスが、Azure Premium ディスク領域用に予約された最大 35 TB の記憶域を持ち、各データベース ファイルは別個の物理ディスク上に配置されます。 ディスク サイズとして、128 GB、256 GB、512 GB、1 TB、4 TB のいずれかを指定できます。 ディスク上の未使用領域については請求されませんが、Azure Premium ディスクのサイズ合計が 35 TB を超えることはできません。 場合によっては、内部の断片化のために、合計で 8 TB を必要としないマネージド インスタンスが、記憶域のサイズに関する 35 TB の Azure での制限を超える場合があります。
 
-たとえば、マネージド インスタンスは 4 TB のディスクに配置されている 1.2 TB のサイズのファイルを 1 つと、個別の 128 GB のディスクに配置されているそれぞれ 1 GB のサイズのファイルを 248 個持つことができます。 次の点に注意してください。
+たとえば、マネージド インスタンスは 4 TB のディスクに配置されている 1.2 TB のサイズのファイルを 1 つと、個別の 128 GB のディスクに配置されている 248 個のファイル (各 1 GB のサイズ) を保持できます。 次の点に注意してください。
 
-- ディスク記憶域の合計サイズは、1 x 4 TB + 248 x 128 GB = 35 TB となります。
-- インスタンス上のデータベースの予約済み領域の合計は 1 x 1.2 TB + 248 x 1 GB = 1.4 TB となります。
+- 割り当てられるディスク ストレージの合計サイズは、1 x 4 TB + 248 x 128 GB = 35 TB となります。
+- インスタンス上のデータベースの予約済み領域の合計は、1 x 1.2 TB + 248 x 1 GB = 1.4 TB となります。
 
-これは、特定の状況下では、非常に特殊なファイルの配分のために、マネージド インスタンスが、想定していなかったアタッチ済み Azure Premium ディスクに予約されている 35 TB に到達する可能性があることを示しています。
+これは、特定の状況下では、特殊なファイルの配分のために、マネージド インスタンスが、想定していなかったアタッチ済み Azure Premium ディスクに予約されている 35 TB に到達する可能性があることを示しています。
 
 この例では既存のデータベースは引き続き機能し、新しいファイルを追加しない限りは問題なく拡張できます。 ただし、すべてのデータベースの合計サイズがインスタンス サイズの上限に到達しない場合でも、新しいディスク ドライブ用の十分な領域がないため、新しいデータベースの作成や復元はできませんでした。 その場合に返されるエラーは明確ではありません。
 
@@ -443,7 +444,10 @@ Azure portal を使用して生成された SAS キーから、先頭の `?` を
 
 ### <a name="tooling"></a>ツール
 
-SQL Server Management Studio と SQL Server Data Tools には、マネージド インスタンスにアクセスする際に問題がある可能性があります。 一般公開の前に、ツールに関するすべての問題に対処する予定です。
+SQL Server Management Studio (SSMS) と SQL Server Data Tools (SSDT) には、マネージド インスタンスにアクセスするときに問題がある可能性があります。
+
+- 現在のところ、SSDT と共に Azure AD のログインとユーザー (**パブリック プレビュー**) を使用することはできません。
+- Azure AD のログインとユーザー (**パブリック プレビュー**) のスクリプトは、SSMS ではサポートされていません。
 
 ### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>一部のビュー、ログ、およびメッセージでの不正なデータベース名
 
@@ -451,7 +455,7 @@ SQL Server Management Studio と SQL Server Data Tools には、マネージド 
 
 ### <a name="database-mail-profile"></a>データベース メール プロファイル
 
-データベース メール プロファイルは 1 つしか存在できず、`AzureManagedInstance_dbmail_profile` という名前である必要があります。 これは間もなく削除される一時的な制限です。
+データベース メール プロファイルは 1 つしか存在できず、`AzureManagedInstance_dbmail_profile` という名前である必要があります。
 
 ### <a name="error-logs-are-not-persisted"></a>エラー ログが非永続的である
 
@@ -496,7 +500,7 @@ using (var scope = new TransactionScope())
 
 ### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR モジュールとリンク サーバーでローカル IP アドレスを参照できないことがある
 
-マネージド インスタンスに配置された CLR モジュールと、現在のインスタンスを参照しているリンク サーバー/分散クエリでは、ローカル インスタンスの IP を解決できないことがあります。 これは一時的なエラーです。
+マネージド インスタンスに配置された CLR モジュールと、現在のインスタンスを参照しているリンク サーバー/分散クエリでは、ローカル インスタンスの IP を解決できないことがあります。 このエラーは一時的な問題です。
 
 **対処法**: 可能であれば、CLR モジュールでコンテキスト接続を使用します。
 

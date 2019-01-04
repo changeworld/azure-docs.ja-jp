@@ -85,9 +85,9 @@ AzureRM.TemplateValidator.psm1 は、クラウド機能 JSON ファイルを使�
 
 | パラメーター | 説明 | 必須 |
 | ----- | -----| ----- |
-| TemplatePath | Azure Resource Manager テンプレートを再帰的に検索するパスを指定します | [はい] | 
+| TemplatePath | Azure Resource Manager テンプレートを再帰的に検索するパスを指定します | はい | 
 | TemplatePattern | 照合するテンプレート ファイルの名前を指定します。 | いいえ  |
-| CapabilitiesPath | クラウド機能 JSON ファイルのパスを指定します | [はい] | 
+| CapabilitiesPath | クラウド機能 JSON ファイルのパスを指定します | はい | 
 | IncludeComputeCapabilities | VM サイズや VM 拡張機能などの IaaS リソースの評価が含まれます | いいえ  |
 | IncludeStorageCapabilities | SKU の種類などのストレージ リソースの評価が含まれます | いいえ  |
 | レポート | 生成される HTML レポートの名前を指定します | いいえ  |

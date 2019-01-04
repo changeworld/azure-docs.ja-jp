@@ -48,8 +48,8 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 
 | パラメーター  | 説明 | 必須 |
 |---------|---------|----|
-| SubscriptionID | すべてのリソースを作成または特定する サブスクリプション ID。 | [はい] |
-| ResourceGroupName | Blockchain Workbench がデプロイされている Azure リソース グループの名前。 | [はい] |
+| SubscriptionID | すべてのリソースを作成または特定する サブスクリプション ID。 | はい |
+| ResourceGroupName | Blockchain Workbench がデプロイされている Azure リソース グループの名前。 | はい |
 | OutputDirectory | 出力 .ZIP ファイルを作成するパス。 指定しない場合、既定は現在のディレクトリになります。 | いいえ  |
 | LookbackHours | 利用統計情報を取得する際に使用する時間数。 既定値は 24 時間です。 最大値は 90 時間です | いいえ  |
 | OmsSubscriptionId | Log Analytics がデプロイされているサブスクリプション ID。 ブロックチェーン ネットワークの Log Analytics が Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ  |

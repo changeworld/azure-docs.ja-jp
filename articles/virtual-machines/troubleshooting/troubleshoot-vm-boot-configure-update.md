@@ -1,6 +1,6 @@
 ---
 title: VM の起動が停止し、"Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される (Azure 内) | Microsoft Docs
-description: VM の起動が停止し、"Windows の準備をしています。 コンピューターの電源を切らないでください" が表示される問題をトラブルシューティングするステップを紹介します。
+description: 次のメッセージで停止する問題をトラブルシューティングするためのステップを紹介します。VM の起動が停止し、"Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 2bcdb2b458327a5e87dc36e4a5f50f0ac46bf96a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: eb27b4e6c60f23a55a58cd2aae3cff927ffeaf03
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621037"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316099"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM の起動が停止し、"Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される (Azure 内)
 
-この記事は、仮想マシン (VM) が起動中の "Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される 段階で停止する場合の問題を解決する際に役立ちます。
+この記事は、仮想マシン (VM) が起動中に次のメッセージで停止している問題の解決に役立ちます。"Windows の準備をしています。 コンピューターの電源を切らないでください。"
 
 ## <a name="symptoms"></a>現象
 
-**ブート診断**を使用して VM のスクリーンショットを取得するときに、オペレーティング システムの起動が完了しません。 さらに、VM で **"Windows の準備をしています。コンピューターの電源を切らないでください。"** という メッセージが表示されます。
+**ブート診断**を使用して VM のスクリーンショットを取得するときに、オペレーティング システムが完全に起動されません。 VM は、次のメッセージを表示します。"Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される
 
-![メッセージの例](./media/troubleshoot-vm-configure-update-boot/message1.png)
+![Windows Server 2012 R2 でのメッセージの例](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
 ![メッセージの例](./media/troubleshoot-vm-configure-update-boot/message2.png)
 
 ## <a name="cause"></a>原因
 
-この問題は通常、構成の変更後にサーバーが最終リブートを行っている場合に発生します。 構成の変更は、Windows の更新プログラムまたはサーバーのロール/機能の変更によって初期化されることがあります。 Windows Update の場合、更新のサイズが大きいと、オペレーティング システムが変更を再構成するまでに時間がかかります。
+この問題は通常、構成の変更後にサーバーが最終リブートを行っている場合に発生します。 構成の変更は、Windows Update またはサーバーのロール/機能に関する変更によって初期化される可能性があります。 Windows Update では、更新のサイズが大きかった場合、オペレーティング システムが変更を再構成するまでに必要な時間が長くなります。
 
 ## <a name="back-up-the-os-disk"></a>OS ディスクのバックアップ
 
-この問題の修正を試みる前に、OS ディスクのバックアップを取ってください。
+この問題を修正しようとする前に、OS ディスクをバックアップしてください。
 
 ### <a name="for-vms-with-an-encrypted-disk-you-must-unlock-the-disks-first"></a>暗号化されたディスクがある VM の場合は、最初にディスクのロックを解除する必要があります
 
-VM が暗号化された VM であるかどうかを確認します。 そのためには、次の手順に従います。
+次の手順に従って、その VM が暗号化された VM であるかどうかを判定します。
 
 1. Azure portal で VM を開き、ディスクを参照します。
 
-2. [暗号化] という列があり、この列によって、暗号化が有効にされているかどうかがわかります。
+2. **[暗号化]** 列を見て、暗号化が有効になっているかどうかを確認します。
 
-OS ディスクが暗号化されている場合は、暗号化されたディスクのロックを解除します。 そのためには、次の手順に従います。
+OS ディスクが暗号化されている場合は、暗号化されたディスクのロックを解除します。 ディスクのロックを解除するには、次の手順に従います。
 
 1. 影響を受ける VM と同じリソース グループ、ストレージ アカウント、場所に復旧 VM を作成します。
 
-2. Azure portal で、影響を受ける VM を削除し、ディスクは保持します。
+2. Azure Portal で、影響を受ける VM を削除し、そのディスクを保持します。
 
 3. PowerShell を管理者として実行します。
 
@@ -72,7 +72,7 @@ OS ディスクが暗号化されている場合は、暗号化されたディ�
     Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq   $vmName) -and ($_.ContentType -eq ‘BEK’)}
     ```
 
-5. シークレット名を取得した後、PowerShell で次のコマンドを実行します。
+5. シークレット名を取得したら、PowerShell で次のコマンドを実行します。
 
     ```Powershell
     $secretName = 'SecretName'
@@ -80,10 +80,10 @@ OS ディスクが暗号化されている場合は、暗号化されたディ�
     $bekSecretBase64 = $keyVaultSecret.SecretValueText
     ```
 
-6. Base64 でエンコードされた値をバイトに変換し、出力をファイルに書き込みます。 
+6. Base64 でエンコードされた値をバイトに変換し、その出力をファイルに書き込みます。 
 
     > [!Note]
-    > USB ロック解除オプションを使用する場合、BEK ファイル名は元の BEK GUID と一致する必要があります。 また、次の手順を実行する前に、C ドライブに "BEK" という名前のフォルダーを作成する必要もあります。
+    > USB のロック解除オプションを使用する場合は、BEK ファイル名が元の BEK GUID に一致している必要があります。 これらの手順に従う前に、C ドライブ上に "BEK" という名前のフォルダーを作成してください。
     
     ```Powershell
     New-Item -ItemType directory -Path C:\BEK
@@ -98,40 +98,40 @@ OS ディスクが暗号化されている場合は、暗号化されたディ�
     manage-bde -status F:
     manage-bde -unlock F: -rk C:\BEKFILENAME.BEK
     ```
-    **オプション**: シナリオによっては、次のコマンドを使用してディスクの暗号化解除が必要になる場合があります。
+    **省略可能**: シナリオによっては、次のコマンドを使用してディスクを復号化することが必要になる場合があります。
    
     ```Powershell
     manage-bde -off F:
     ```
 
     > [!Note]
-    > ここでは、暗号化するディスクが F：であることを前提としています。
+    > 前のコマンドでは、暗号化するディスクが文字 F 上にあることを前提にしています。
 
-8. ログを収集する必要がある場合、パス **DRIVE LETTER:\Windows\System32\winevt\Logs** に移動します。
+8. ログを収集する必要がある場合は、**ドライブ文字:\Windows\System32\winevt\Logs** のパスに移動します。
 
 9. 復旧マシンからドライブをデタッチします。
 
 ### <a name="create-a-snapshot"></a>スナップショットの作成
 
-スナップショットを作成するには、「[ディスクのスナップショットの作成](..\windows\snapshot-copy-managed-disk.md)」の手順に従います。
+スナップショットを作成するには、「[ディスクのスナップショットの作成](../windows/snapshot-copy-managed-disk.md)」の手順に従います。
 
 ## <a name="collect-an-os-memory-dump"></a>OS のメモリ ダンプの収集
 
-VM の構成時に停止したときに OS ダンプを収集するには、「[OS ダンプ ファイルを収集する](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file)」セクションの手順を使用します。
+構成時に VM が停止したときに OS ダンプを収集するには、[OS ダンプの収集](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file)に関するセクションにある手順を使用します。
 
 ## <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 
-ダンプ ファイルを収集した後、根本原因の分析を [Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にご依頼ください。
+ダンプ ファイルを収集した後、根本原因を分析するために [Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に問い合わせてください。
 
 
-## <a name="rebuild-the-vm-using-powershell"></a>PowerShell の使用による VM の再構築
+## <a name="rebuild-the-vm-by-using-powershell"></a>PowerShell を使用して VM を再構築する
 
 メモリ ダンプ ファイルを収集した後、次の手順に従って VM を再構築します。
 
 **非マネージド ディスクの場合**
 
 ```PowerShell
-# To login to Azure Resource Manager
+# To log in to Azure Resource Manager
 Login-AzureRmAccount
 
 # To view all subscriptions for your account
@@ -162,7 +162,7 @@ New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $vm -Verbose
 **マネージド ディスクの場合**
 
 ```PowerShell
-# To login to Azure Resource Manager
+# To log in to Azure Resource Manager
 Login-AzureRmAccount
 
 # To view all subscriptions for your account
@@ -183,7 +183,7 @@ $avName = "AvailabilitySetName";
 $osDiskName = "OsDiskName";
 $DataDiskName = "DataDiskName"
 
-#This can be found by selecting the Managed Disks you wish you use in the Azure Portal if the format below doesn't match
+#This can be found by selecting the Managed Disks you wish you use in the Azure portal if the format below doesn't match
 $osDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
 $dataDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$DataDiskName";
 

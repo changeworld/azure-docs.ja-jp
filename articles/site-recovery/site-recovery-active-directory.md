@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: f96ed8659fc2f49b89199a813f9fab9d5f4af5a1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 84cc99bac9ae5fa1743ed151e5bf8c3043cf5869
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232173"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851020"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 
@@ -165,7 +165,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 1. ドメイン コントローラーの Authoritative Restore を実行します。 次の情報を考慮してください。
     * [FRS レプリケーション](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)は推奨されませんが、FRS レプリケーションを使用している場合は、次の手順に従って Authoritative Restore を行います。 プロセスについては、「[BurFlags レジストリ キーを使用してファイル レプリケーション サービスのレプリカ セットを再初期化する](https://support.microsoft.com/kb/290762)」をご覧ください。
 
-        BurFlags の詳細については、ブログ記事「[D2 and D4: What is it for?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)」(D2 と D4: 何のために使用するか?) をご覧ください。
+        BurFlags の詳細については、ブログ記事「[D2 and D4:What is it for? (D2 と D4: 何のために使用するか?)](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)」をご覧ください。
     * DFSR レプリケーションを使用している場合は、次の手順で Authoritative Restore を行います。 プロセスについては、「[Force an authoritative and non-authoritative sync for DFSR-replicated SYSVOL (like "D4/D2" for FRS)](https://support.microsoft.com/kb/2218556)」(DFSR でレプリケートされた SYSVOL (FRS の "D4/D2" など) の権限のある/権限のない同期を強制実行する) をご覧ください。
 
         PowerShell 関数を使用することもできます。 詳細については、「[DFSR-SYSVOL authoritative/non-authoritative restore PowerShell functions](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/)」(DFSR-SYSVOL の権限のある/権限のない復元の PowerShell 関数) をご覧ください。
@@ -174,7 +174,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    詳細については、「[Troubleshoot DNS Event ID 4013: The DNS server was unable to load AD integrated DNS zones](https://support.microsoft.com/kb/2001093)」(DNS イベント ID 4013: DNS サーバーは AD 統合された DNS ゾーンを読み込めませんでした) をご覧ください。
+    詳しくは、「[DNS イベント ID 4013 のトラブルシューティング:DNS サーバーは、AD と統合した DNS ゾーンをロードすることができませんでした。](https://support.microsoft.com/kb/2001093)」をご覧ください。
 
 3. ユーザーのログインを検証するためにグローバル カタログ サーバーを利用可能にする要件を無効にします。 これを行うには、オンプレミス ドメイン コントローラーで、次のレジストリ キーを **1** に設定します。 この DWORD 値が存在しない場合は、**Lsa** ノードの下に作成できます。
 

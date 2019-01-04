@@ -1,22 +1,24 @@
 ---
-title: Azure の送信接続 (クラシック) | Microsoft Docs
+title: Azure の送信接続 (クラシック)
+titlesuffix: Azure Load Balancer
 description: この記事では、Azure によって、パブリック インターネット サービスとクラウド サービスがどのように通信するかを説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 5cb0647148d2cd90ad4cce6e16de30b72fff8429
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 006d8e28413e0893cafe351577f8a018d13fd268
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219666"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190001"
 ---
 # <a name="outbound-connections-classic"></a>送信接続 (クラシック)
 
@@ -54,7 +56,7 @@ Azure では、送信接続のクラシック デプロイを実現するため�
 
 クラシック デプロイで PAT の[エフェメラル ポートの事前割り当て](#ephemeralports)に使用されるアルゴリズムは、Azure Resource Manager リソース デプロイの場合と同じです。
 
-### <a name="ilpip"></a>シナリオ 1: インスタンス レベルのパブリック IP アドレスがある VM
+### <a name="ilpip"></a>シナリオ 1:インスタンス レベルのパブリック IP アドレスがある VM
 
 このシナリオでは、VM にはインスタンス レベルのパブリック IP (ILPIP) が割り当てられています。 送信接続に関する限り、VM に負荷分散されたエンドポイントがあるかどうかは関係ありません。 このシナリオは他のシナリオよりも優先されます。 ILPIP が使用される場合、すべての送信フローで VM によって ILPIP が使用されます。  
 
@@ -62,7 +64,7 @@ VM に割り当てられたパブリック IP は、(1 対多ではなく) 1 対
 
 アプリケーションが多数の送信フローを開始したために SNAT ポート不足が発生した場合は、[SNAT の制約を軽減するために ILPIP](#assignilpip) を割り当てることを検討してください。 その全体像については、[SNAT 不足の管理](#snatexhaust)に関するセクションを確認してください。
 
-### <a name="publiclbendpoint"></a>シナリオ 2: パブリックに負荷分散されたエンドポイント
+### <a name="publiclbendpoint"></a>シナリオ 2:パブリックに負荷分散されたエンドポイント
 
 このシナリオでは、VM または Web worker ロールは、負荷分散されたエンドポイントを通してパブリック IP アドレスに関連付けられます。 VM にパブリック IP アドレスは割り当てられていません。 
 
@@ -74,7 +76,7 @@ SNAT ポートは、「[SNAT と PAT の理解](#snat)」の説明のとおり�
 
 [複数のパブリックに負荷分散されたエンドポイント](load-balancer-multivip.md)が存在する場合、それらのパブリック IP アドレスはどれも[送信フローの候補](#multivipsnat)になり、その 1 つがランダムに選択されます。  
 
-### <a name="defaultsnat"></a>シナリオ 3: パブリック IP アドレスが関連付けられていない
+### <a name="defaultsnat"></a>シナリオ 3:パブリック IP アドレスが関連付けられていない
 
 このシナリオでは、VM または Web worker ロールはパブリックに負荷分散されたエンドポイントの一部ではありません。  そして、VM の場合は、ILPIP アドレスは割り当てられていません。 VM が送信フローを作成すると、Azure が、送信フローのプライベート ソース IP アドレスをパブリック ソース IP アドレスに変換します。 この送信フローで使用されるパブリック IP アドレスは構成不可能であり、サブスクリプションのパブリック IP リソースの制限に対してカウントされません。  Azure は、このアドレスを自動的に割り当てます。
 

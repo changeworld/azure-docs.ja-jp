@@ -1,11 +1,11 @@
 ---
-title: '手順 5: Machine Learning Web サービスをデプロイする | Microsoft Docs'
-description: '予測ソリューションの開発チュートリアルの 5 番目の手順: Machine Learning Studio で予測実験を Web サービスとしてデプロイする。'
+title: 手順 5:Web サービスをデプロイする - Azure Machine Learning Studio | Microsoft Docs
+description: 予測ソリューションの開発チュートリアルの手順 5:Machine Learning Studio で予測実験を Web サービスとしてデプロイします。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cgronlun
 ms.assetid: 3fca74a3-c44b-4583-a218-c14c46ee5338
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 436656195e00311dd350a5526b01fffa56ac02ca
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ab23636aa0480532606268efedcc76ea1ddd339a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246746"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253733"
 ---
-# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする
+# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-studio-web-service"></a>チュートリアル手順 5:Azure Machine Learning Studio Web サービスをデプロイする
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning ワークスペースの作成](walkthrough-1-create-ml-workspace.md)
@@ -204,7 +204,7 @@ Web サービスのパフォーマンスを監視するには:
 4. **[ダッシュボード]** をクリックします。
 
 - - -
-**次:[ Web サービスにアクセスする](walkthrough-6-access-web-service.md)**
+**次:[Web サービスにアクセスする](walkthrough-6-access-web-service.md)**
 
 [3]: ./media/walkthrough-5-publish-web-service/publish3.png
 [3a]: ./media/walkthrough-5-publish-web-service/publish3a.png

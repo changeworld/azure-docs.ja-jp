@@ -4,16 +4,16 @@ description: Update Management の問題をトラブルシューティングす�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: d0d6ed03b6e28df9767e24170ebf5ec92bb9fe9a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092629"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434734"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -23,7 +23,7 @@ ms.locfileid: "50092629"
 
 ## <a name="general"></a>全般
 
-### <a name="components-enabled-not-working"></a>シナリオ: 'Update Management' ソリューションのコンポーネントは有効であり、この仮想マシンの構成を行っている
+### <a name="components-enabled-not-working"></a>シナリオ: "Update Management" ソリューションのコンポーネントは有効であり、この仮想マシンの構成を行っている
 
 #### <a name="issue"></a>問題
 
@@ -45,7 +45,50 @@ The components for the 'Update Management' solution have been enabled, and now t
 1. 「[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)」で、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
 2. 複製イメージを使用する場合は、そのイメージを先に sysprep してから、MMA エージェントをインストールします。
 
-## <a name="windows"></a>Windows
+### <a name="multi-tenant"></a>シナリオ: 別の Azure テナントのマシンを対象とした更新プログラムのデプロイを作成しているときに、リンクされているサブスクリプションのエラーが発生する。
+
+#### <a name="issue"></a>問題
+
+別の Azure テナントのマシンを対象とした更新プログラムのデプロイを作成しようとすると次のエラーが発生します。
+
+```
+The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは、別のテナントの Azure 仮想マシンを含んだ更新プログラムのデプロイを作成するときに発生します。
+
+#### <a name="resolution"></a>解決策
+
+次の回避策を使用してそれらをスケジュールする必要があります。 スケジュールは、[New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) コマンドレットと `-ForUpdate` スイッチを使用して作成できます。[New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+) コマンドレットを使用する際、`-NonAzureComputer` パラメーターに他のテナントのマシンを渡すことができます。 以下の例は、その方法を示しています。
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
+
+### <a name="nologs"></a>シナリオ: マシンの Log Analytics に表示されない Update Management データ
+
+#### <a name="issue"></a>問題
+
+**[コンプライアンス]** の下に **[評価が行われていません]** と表示されるマシンがあるが、Hybrid Runbook Worker に対する Log Analytics 内にハートビート データが表示され、Update Management には表示されません。
+
+#### <a name="cause"></a>原因
+
+Hybrid Runbook Worker の再登録と再インストールが必要な可能性があります。
+
+#### <a name="resolution"></a>解決策
+
+「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」(Windows の場合) または「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」(Linux の場合) の手順に従ってハイブリッド worker を再インストールしてください。
+
+## <a name="windows"></a> Windows
 
 ソリューションまたは仮想マシンをオンボードしようとして問題が発生した場合は、ローカル コンピューター上の **[アプリケーションとサービス ログ]** にある **Operations Manager** イベント ログで、イベント ID **4502** のイベントと **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** を含むイベント メッセージを確認してください。
 
@@ -113,20 +156,6 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 
 フォルダー **C:\ProgramData\Microsoft\Crypto\RSA** への読み取りアクセスがシステム アカウントにあることを確認してから、再試行します。
 
-### <a name="nologs"></a>シナリオ: マシンの Log Analytics に表示されない Update Management データ
-
-#### <a name="issue"></a>問題
-
-**[コンプライアンス]** の下に **[評価が行われていません]** と表示されるマシンがあるが、Hybrid Runbook Worker に対する Log Analytics 内にハートビート データが表示され、Update Management には表示されません。
-
-#### <a name="cause"></a>原因
-
-Hybrid Runbook Worker の再登録と再インストールが必要な可能性があります。
-
-#### <a name="resolution"></a>解決策
-
-「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」の手順に従って、Hybrid Worker を再インストールします。
-
 ### <a name="hresult"></a>シナリオ: マシンが未評価として表示され、HResult 例外が表示される
 
 #### <a name="issue"></a>問題
@@ -135,7 +164,7 @@ Hybrid Runbook Worker の再登録と再インストールが必要な可能性�
 
 #### <a name="cause"></a>原因
 
-マシンで Windows Update が正しく構成されていません。
+マシンで Windows Update または WSUS が正しく構成されていません。 Update Management は、必要な更新プログラム、パッチの状態、デプロイされたパッチの結果を提供するために、Windows Update または WSUS を利用しています。 この情報がないと、必要なパッチやインストール済みのパッチを適切にレポートすることができません。
 
 #### <a name="resolution"></a>解決策
 
@@ -149,7 +178,7 @@ Hybrid Runbook Worker の再登録と再インストールが必要な可能性�
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Windows Update サービス (wuauserv) が実行されており、無効になっていないことを確認します。        |
 |その他の一般的な例外     | 考えられる解決策をインターネットで検索し、最寄りの IT サポートと連携してください。         |
 
-## <a name="linux"></a>Linux
+## <a name="linux"></a> Linux
 
 ### <a name="scenario-update-run-fails-to-start"></a>シナリオ: 更新プログラムの実行を開始できない
 

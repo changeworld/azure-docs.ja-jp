@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a5e3bd655e0780861f4bf70c247df72e6acedd09
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 577147ad91c6a35a45fd40ca9e6424863ea196d6
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637087"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340782"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
 
@@ -24,7 +24,6 @@ Durable Task 拡張機能は、次のタスクの実行で使用できる一連�
 * オーケストレーション インスタンスの状態を取得します。
 * 待機中のオーケストレーション インスタンスにイベントを送信します。
 * 実行中のオーケストレーション インスタンスを終了します。
-
 
 これらの各 HTTP API は、Durable Task 拡張機能によって直接処理される webhook 操作です。 関数アプリの関数に固有のものではありません。
 
@@ -35,9 +34,15 @@ Durable Task 拡張機能は、次のタスクの実行で使用できる一連�
 
 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) クラスでは、[CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_) API を公開します。これは、サポートされるすべての操作へのリンクを含む HTTP 応答ペイロードを生成するのに使用できます。 この API の使用方法を示す HTTP トリガー関数の例を次に示します。
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
 
-この例の関数では、次の JSON 応答データが生成されます。 すべてのフィールドのデータ型は `string` です。
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
+
+これらの関数例では、次の JSON 応答データが生成されます。 すべてのフィールドのデータ型は `string` です。
 
 | フィールド             |説明                           |
 |-------------------|--------------------------------------|
@@ -63,8 +68,9 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
     "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
+
 > [!NOTE]
-> webhook URL の形式は、実行している Azure Functions ホストのバージョンによって異なる場合があります。 上記の例は、Azure Functions 2.0 ホスト用の形式です。
+> webhook URL の形式は、実行している Azure Functions ホストのバージョンによって異なる場合があります。 上記の例は、Azure Functions 2.x ホスト用の形式です。
 
 ## <a name="async-operation-tracking"></a>非同期操作の追跡
 
@@ -91,8 +97,8 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
 | connection | クエリ文字列    | ストレージ アカウントの接続文字列の**名前**。 指定しない場合は、関数アプリの既定の接続文字列が想定されます。 |
 | systemKey  | クエリ文字列    | API の呼び出しに必要な承認キー。 |
 | showInput  | クエリ文字列    | 省略可能なパラメーター。 `false` に設定した場合、その実行入力が応答ペイロードに含まれなくなります。|
-| showHistory| クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、オーケストレーションの実行履歴が応答ペイロードに含まれます。| 
-| showHistoryOutput| クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、アクティビティの出力がオーケストレーションの実行履歴に含まれます。| 
+| showHistory| クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、オーケストレーションの実行履歴が応答ペイロードに含まれます。|
+| showHistoryOutput| クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、アクティビティの出力がオーケストレーションの実行履歴に含まれます。|
 | createdTimeFrom  | クエリ文字列    | 省略可能なパラメーター。 指定した場合、特定の ISO8601 タイムスタンプの時刻またはそれより後に作成された、返されるインスタンスの一覧がフィルター処理されます。|
 | createdTimeTo    | クエリ文字列    | 省略可能なパラメーター。 指定した場合、特定の ISO8601 タイムスタンプの時刻またはそれより前に作成された、返されるインスタンスの一覧がフィルター処理されます。|
 | runtimeStatus    | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を参照するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関するトピックをご覧ください。 |
@@ -124,11 +130,11 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&conne
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 200 (OK)**: 指定されたインスタンスが完了状態。
-* **HTTP 202 (Accepted)**: 指定されたインスタンスが処理中。
-* **HTTP 400 (Bad Request)**: 指定されたインスタンスが失敗したか終了した。
-* **HTTP 404 (Not Found)**: 指定されたインスタンスが存在しないか実行開始されていない。
-* **HTTP 500 (Internal Server Error)**: 指定されたインスタンスがハンドルされない例外で失敗した。
+* **HTTP 200 (OK)**:指定されたインスタンスが完了状態。
+* **HTTP 202 (Accepted)**:指定されたインスタンスが処理中。
+* **HTTP 400 (Bad Request)**:指定されたインスタンスが失敗したか終了した。
+* **HTTP 404 (Not Found)**:指定されたインスタンスが存在しないか実行開始されていない。
+* **HTTP 500 (Internal Server Error)**:指定されたインスタンスがハンドルされない例外で失敗した。
 
 **HTTP 200** と **HTTP 202** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
@@ -140,7 +146,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&conne
 | output          | JSON      | インスタンスの JSON の出力。 インスタンスが完了状態でない場合、このフィールドは `null` です。 |
 | createdTime     | string    | インスタンスが作成された時刻。 ISO 8601 の拡張された表記を使用します。 |
 | lastUpdatedTime | string    | インスタンスが最後に保持されていた時刻。 ISO 8601 の拡張された表記を使用します。 |
-| historyEvents   | JSON      | オーケストレーションの実行履歴を含む JSON 配列。 このフィールドは、`showHistory` クエリ文字列パラメーターが `true`に設定されていない限り、`null` です。  | 
+| historyEvents   | JSON      | オーケストレーションの実行履歴を含む JSON 配列。 このフィールドは、`showHistory` クエリ文字列パラメーターが `true`に設定されていない限り、`null` です。  |
 
 オーケストレーションの実行履歴とアクティビティの出力を含む応答ペイロードの例を次に示します (読みやすい形式になっています)。
 
@@ -199,10 +205,9 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&conne
 
 **HTTP 202** の応答には、前述の `statusQueryGetUri` フィールドと同じ URL を参照する **Location** 応答ヘッダーも含まれています。
 
-
 ### <a name="get-all-instances-status"></a>すべてのインスタンス ステータスを取得する
 
-すべてのインスタンス ステータスを照会することも可能です。 'Get instance status' 要求から `instanceId` を削除します。 パラメーターは、'Get instance status' と同じです。 
+すべてのインスタンス ステータスを照会することも可能です。 'Get instance status' 要求から `instanceId` を削除します。 パラメーターは、'Get instance status' と同じです。
 
 覚えておくべきことの 1 つは、`connection` と `code` が省略可能であることです。 関数に対する匿名認証がある場合、コードは必要ありません。
 AzureWebJobsStorage アプリ設定で定義されているのとは異なる BLOB ストレージの接続文字列を使用しない場合は、接続クエリ文字列パラメーターを無視してかまいません。
@@ -215,7 +220,7 @@ Functions 1.0 の場合、要求形式は次のようになります。
 GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
-Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。 
+Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。
 
 ```http
 GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
@@ -231,7 +236,7 @@ Functions 1.0 の場合、要求形式は次のようになります。
 GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}&showInput={showInput}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
-Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。 
+Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。
 
 ```http
 GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}&showInput={showInput}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
@@ -291,8 +296,8 @@ GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={conne
 ```
 
 > [!NOTE]
-> この操作は、インスタンスのテーブルに多数の行がある場合、Azure Storage の I/O の観点から非常にコスト効率が悪くなることがあります。 インスタンス テーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table)」のドキュメントを参照してください。
-> 
+> この操作は、インスタンスのテーブルに多数の行がある場合、Azure Storage の I/O の観点から非常にコスト効率が悪くなることがあります。 インスタンス テーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](durable-functions-perf-and-scale.md#instances-table)」のドキュメントを参照してください。
+>
 
 #### <a name="request-with-paging"></a>ページングを使用した要求
 
@@ -304,7 +309,7 @@ Functions 1.0 の場合、要求形式は次のようになります。
 GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
 ```
 
-Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。 
+Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。
 
 ```http
 GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
@@ -313,7 +318,6 @@ GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={conne
 次のページが存在する場合、継続トークンが応答ヘッダーに返されます。  ヘッダーの名前は `x-ms-continuation-token` です。
 
 次の要求ヘッダーで継続トークンの値を設定すると、次のページを取得できます。  要求ヘッダー内のこのキーは `x-ms-continuation-token` です。
-
 
 ### <a name="raise-event"></a>イベントを発生させる
 
@@ -344,10 +348,10 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 202 (Accepted)**: 発生したイベントが受け入れられて処理された。
-* **HTTP 400 (Bad request)**: 要求内容が `application/json` タイプまたは有効な JSON でなかった。
-* **HTTP 404 (Not Found)**: 指定されたインスタンスが見つからなかった。
-* **HTTP 410 (Gone)**: 指定されたインスタンスが完了または失敗し、発生したイベントを処理できない。
+* **HTTP 202 (Accepted)**:発生したイベントが受け入れられて処理された。
+* **HTTP 400 (Bad request)**:要求内容が `application/json` タイプまたは有効な JSON でなかった。
+* **HTTP 404 (Not Found)**:指定されたインスタンスが見つからなかった。
+* **HTTP 410 (Gone)**:指定されたインスタンスが完了または失敗し、発生したイベントを処理できない。
 
 **operation** という名前のイベントを待機するインスタンスに JSON 文字列 `"incr"` を送信する要求の例を次に示します。
 
@@ -389,9 +393,9 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate?reason={reas
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 202 (Accepted)**: 終了要求が受け入れられて処理された。
-* **HTTP 404 (Not Found)**: 指定されたインスタンスが見つからなかった。
-* **HTTP 410 (Gone)**: 指定されたインスタンスが完了したか失敗した。
+* **HTTP 202 (Accepted)**:終了要求が受け入れられて処理された。
+* **HTTP 404 (Not Found)**:指定されたインスタンスが見つからなかった。
+* **HTTP 410 (Gone)**:指定されたインスタンスが完了したか失敗した。
 
 実行中のインスタンスを終了させ、**バグ**の理由を示す要求の例を次に示します。
 
@@ -405,7 +409,7 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 最後に失敗した操作を再実行することにより、失敗したオーケストレーション インスタンスを実行状態に復元します。
 
-#### <a name="request"></a>Request
+### <a name="request"></a>Request
 
 Functions 1.0 の場合、要求形式は次のようになります。
 
@@ -425,13 +429,13 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}
 |-------------|-----------------|-----------|-------------|
 | reason      | クエリ文字列    | string    | 省略可能。 オーケストレーション インスタンスを rewind する理由。 |
 
-#### <a name="response"></a>Response
+### <a name="response"></a>Response
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 202 (Accepted)**: 巻き戻し要求が受け入れられて処理された。
-* **HTTP 404 (Not Found)**: 指定されたインスタンスが見つからなかった。
-* **HTTP 410 (Gone)**: 指定されたインスタンスが完了したか終了した。
+* **HTTP 202 (Accepted)**:巻き戻し要求が受け入れられて処理された。
+* **HTTP 404 (Not Found)**:指定されたインスタンスが見つからなかった。
+* **HTTP 410 (Gone)**:指定されたインスタンスが完了したか終了した。
 
 失敗したインスタンスを rewind し、**修正**の理由を指定する要求の例を次に示します。
 

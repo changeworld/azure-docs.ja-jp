@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6204933d6b9a4a6b296a141520fc8887c9181f1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 22e15f58f3d4e7f4db3ac3bd519dbb286a36ef95
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279715"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384141"
 ---
-# <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight 上の Hadoop サービスで使用されるポート
+# <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上の Apache Hadoop サービスで使用されるポート
 
-このドキュメントでは、Linux ベースの HDInsight クラスターで実行されている Hadoop サービスで使用されるポートの一覧を示します。 また、SSH を使用したクラスターへの接続に使用されるポートの情報も提供します。
+このドキュメントでは、Linux ベースの HDInsight クラスターで実行されている Apache Hadoop サービスで使用されるポートの一覧を示します。 また、SSH を使用したクラスターへの接続に使用されるポートの情報も提供します。
 
 ## <a name="public-ports-vs-non-public-ports"></a>パブリック ポートと非パブリック ポート
 
@@ -26,7 +26,7 @@ Linux ベースの HDInsight クラスターでは、22、23、443 の 3 つの�
 
 内部的には、HDInsight は Azure Virtual Network 上で実行される複数の Azure Virtual Network (クラスター内のノード) によって実装されます。 仮想ネットワーク内から、インターネット経由で公開されていないポートにアクセスできます。 たとえば、SSH を使用してヘッド ノードのいずれかに接続すると、そのヘッド ノードから、クラスター ノードで実行されているサービスに直接アクセスできます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight の構成オプションとして Azure Virtual Network を指定しないと、Azure Virtual Network が自動的に作成されます。 ただし、この仮想ネットワークに他のマシン (他の Azure Virtual Machine やクライアント開発用コンピューターなど) を参加させることはできません。
 
 
@@ -41,20 +41,20 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | sshd |22 |SSH |プライマリ ヘッドノードの sshd にクライアントを接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 |
 | sshd |22 |SSH |エッジ ノードの sshd にクライアントを接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 |
 | sshd |23 |SSH |セカンダリ ヘッドノードの sshd にクライアントを接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 |
-| Ambari |443 |HTTPS |Ambari Web UI。 [Ambari Web UI を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md) |
-| Ambari |443 |HTTPS |Ambari REST API。 [Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog REST API。 [Curl での Hive の使用](hadoop/apache-hadoop-use-pig-curl.md)、[Curl での Pig の使用](hadoop/apache-hadoop-use-pig-curl.md)、[Curl での MapReduce の使用](hadoop/apache-hadoop-use-mapreduce-curl.md)に関する記事をご覧ください。 |
+| Ambari |443 |HTTPS |Ambari Web UI。 [Apache Ambari Web UI を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)に関するページをご覧ください |
+| Ambari |443 |HTTPS |Ambari REST API。 「[Apache Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md)」をご覧ください |
+| WebHCat |443 |HTTPS |HCatalog REST API。 [Curl での Apache Hive の使用](hadoop/apache-hadoop-use-pig-curl.md)、[Curl での Apache Pig の使用](hadoop/apache-hadoop-use-pig-curl.md)、[Curl での MapReduce の使用](hadoop/apache-hadoop-use-mapreduce-curl.md)に関する記事をご覧ください |
 | HiveServer2 |443 |ODBC |ODBC を使用して Hive に接続します。 [Microsoft ODBC ドライバーを使用した Excel から HDInsight への接続](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)に関する記事をご覧ください。 |
-| HiveServer2 |443 |JDBC |JDBC を使用して Hive に接続します。 [Hive JDBC ドライバーを使用した HDInsight の Hive への接続](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
+| HiveServer2 |443 |JDBC |JDBC を使用して Apache Hive に接続します。 [Hive JDBC ドライバーを使用した HDInsight の Apache Hive への接続](hadoop/apache-hadoop-connect-hive-jdbc-driver.md)に関するページをご覧ください |
 
 次のポートは、特定のクラスターの種類で使用できます。
 
 | Service | ポート | プロトコル | クラスターの種類 | 説明 |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |hbase |HBase REST API。 [HBase の使用開始](hbase/apache-hbase-tutorial-get-started-linux.md) |
-| Livy |443 |HTTPS |Spark |Spark REST API。 [Livy を使用した Spark ジョブのリモートでの送信](spark/apache-spark-livy-rest-interface.md) |
-| Spark Thrift サーバー |443 |HTTPS |Spark |Hive クエリを送信するために使用される Spark Thrift サーバー。 [HDInsight での Beeline と Hive の使用](hadoop/apache-hadoop-use-hive-beeline.md)に関する記事を参照してください。 |
-| Storm |443 |HTTPS |Storm |Storm Web UI。 [HDInsight での Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md) |
+| Stargate |443 |HTTPS |hbase |HBase REST API。 [Apache HBase の使用開始](hbase/apache-hbase-tutorial-get-started-linux.md)に関するページをご覧ください |
+| Livy |443 |HTTPS |Spark |Spark REST API。 [Apache Livy を使用したリモートからの Apache Spark ジョブの送信](spark/apache-spark-livy-rest-interface.md)に関するページをご覧ください |
+| Spark Thrift サーバー |443 |HTTPS |Spark |Hive クエリを送信するために使用される Spark Thrift サーバー。 [HDInsight での Beeline と Apache Hive の使用](hadoop/apache-hadoop-use-hive-beeline.md)に関する記事をご覧ください |
+| Storm |443 |HTTPS |Storm |Storm Web UI。 「[HDInsight での Apache Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md)」をご覧ください |
 
 ### <a name="authentication"></a>Authentication
 
@@ -67,10 +67,10 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 ## <a name="non-public-ports"></a>非パブリック ポート
 
-> [!NOTE]
+> [!NOTE]  
 > 一部のサービスは、特定のクラスターの種類でのみ利用できます。 たとえば、HBase を利用できるのは、クラスターの種類が HBase の場合のみです。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 一部のサービスは、一度に 1 つのヘッド ノード上でしか実行されません。 プライマリのヘッド ノード上のサービスに接続しようとしてエラーが発生した場合は、セカンダリのヘッド ノードを使用して再試行してください。
 
 ### <a name="ambari"></a>Ambari

@@ -9,12 +9,12 @@ ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: fa77e117b8045be4ef0566e388c4e8df08c95fe2
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 4016471be05c1062eb389ab4851330f3a80dbcb2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42141958"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969028"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Node.js バックエンドおよび Node.js デバイスを使用した IoT Hub モジュール ID とモジュール ツインの概要
 
@@ -35,18 +35,17 @@ ms.locfileid: "42141958"
 * IoT Hub。
 * 最新の [Node.js SDK](https://github.com/Azure/azure-iot-sdk-node) をインストールします。
 
-
 IoT Hub の作成は以上です。以降の作業に必要なホスト名と IoT Hub 接続文字列が得られました。
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>IoT Hub でデバイス ID とモジュール ID を作成する
 
 このセクションでは、IoT ハブの ID レジストリにデバイス ID とモジュール ID を作成する Node.js アプリを作成します。 IoT ハブに接続するデバイスまたはモジュールは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の ID レジストリに関するセクションをご覧ください。 このコンソール アプリを実行すると、デバイスとモジュール両方に対して一意のデバイス ID とキーが生成されます。 デバイスとモジュールは、IoT ハブに device-to-cloud メッセージを送信するときにこれらの値を使用して自分自身を識別します。 ID には大文字と小文字の区別があります。
 
-1.  コードを保持するためのディレクトリを作成します。
-2. そのディレクトリ内で最初に **npm init -y** を実行して、既定値で空の package.json を作成します。 これは、コードのプロジェクト ファイルです。
-3. **npm install -S azure-iothub@modules-preview** を実行して、**node_modules** サブディレクトリ内にサービス SDK をインストールします。 
+1. コードを保持するためのディレクトリを作成します。
+2. そのディレクトリ内で、まず  **npm init -y**  を実行して、既定値で空の package.json を作成します。 これは、コードのプロジェクト ファイルです。
+3.  **npm install -S azure-iothub@modules-preview** を実行して、 **node_modules**  サブディレクトリ内にサービス SDK をインストールします。
 
-    > [!NOTE] 
+    > [!NOTE]
     > サブディレクトリ名 node_modules では、"ノード ライブラリ" を意味する用語モジュールを使用します。 ここで言う用語は IoT Hub モジュールとは関係ありません。
 
 4. ディレクトリ内に次の .js ファイルを作成します。 これを **add.js** と呼びます。 ハブの接続文字列とハブ名をコピーして貼り付けます。
@@ -126,7 +125,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
     > [!NOTE]
     > npm install コマンドが遅くなったように感じる場合があります。 パッケージ リポジトリから多数のコードがプルダウンされます。
 
-    > [!NOTE] 
+    > [!NOTE]
     > json の解析中に npm ERR! レジストリ エラーが発生したというエラーが表示されたら、 そのエラーは無視できます。 json の解析中に npm ERR! レジストリ エラーが発生したというエラーが表示されたら、 そのエラーは無視できます。
 
 3. twin.js という名前でファイルを作成します。 モジュールの ID 文字列をコピーして貼り付けます。
@@ -180,7 +179,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
     });
     ```
 
-2. 次に、コマンド **node twin.js** を使用してこれを実行します。
+2. 次に、コマンド  **node twin.js** を使用してこれを実行します。
 
     ```
     F:\temp\module_twin>node twin.js
@@ -200,9 +199,8 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 * [デバイス管理の概要][lnk-device-management]
 * [IoT Edge の概要][lnk-iot-edge]
 
-
 <!-- Images. -->
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
+[15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

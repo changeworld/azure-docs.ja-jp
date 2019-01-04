@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d7f33bf0657ca2a6888387b7651706f9de537bb4
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: ce10e2c24e89140357df3fa6b724a1f89f389a50
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494358"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275484"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 スタンドアロンの Service Fabric クラスターを管理します。
@@ -63,18 +63,18 @@ Service Fabric スタンドアロン クラスターの構成のアップグレ�
 
 |引数|説明|
 | --- | --- |
-| --cluster-config            [必須] | クラスターに適用されるクラスターの構成。 |
+| --cluster-config            [必須] | クラスター構成。 |
 | --application-health-policies | アプリケーションの種類名と異常の最大パーセンテージのペアの JSON でエンコードされたディクショナリ。このパーセンテージを超えるとエラーが発生します。 |
 | --delta-unhealthy-nodes | アップグレードの間のデルタ正常性低下の最大許容パーセンテージ。 使用可能な値は 0 から 100 までの整数値です。 |
 | --health-check-retry | アプリケーションまたはクラスターが正常ではない場合に正常性チェックを実行する間隔。  既定値\: PT0H0M0S。 |
-| --health-check-stable | アプリケーションまたはクラスターが正常性を維持する必要がある時間の長さ。  既定値\: PT0H0M0S。 |
+| --health-check-stable | アプリケーションまたはクラスターが正常な状態である必要がある時間。この時間を超えると、アップグレードが次のアップグレード ドメインに進みます。  既定値\: PT0H0M0S。 <br><br> 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 |
 | --health-check-wait | アップグレード ドメインの完了後、正常性チェック プロセスを開始するまでの、待機時間の長さ。  既定値\: PT0H0M0S。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 | --unhealthy-applications | アップグレードの間の異常なアプリケーションの最大許容パーセンテージ。 使用可能な値は 0 から 100 までの整数値です。 |
 | --unhealthy-nodes | アップグレードの間の異常なノードの最大許容パーセンテージ。 使用可能な値は 0 から 100 までの整数値です。 |
 | --upgrade-domain-delta-unhealthy-nodes | アップグレードの間のアップグレード ドメイン デルタ正常性低下の最大許容パーセンテージ。 使用可能な値は 0 から 100 までの整数値です。 |
-| --upgrade-domain-timeout | アップグレード ドメインのタイムアウト。  既定値\: PT0H0M0S。 |
-| --upgrade-timeout | アップグレードのタイムアウト。  既定値\: PT0H0M0S。 |
+| --upgrade-domain-timeout | 各ドメインがアップグレードを完了する必要がある時間。この時間を超えると、FailureAction が実行されます。  既定値\: PT0H0M0S。 <br><br> 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 |
+| --upgrade-timeout | アップグレード全体を完了する必要がある時間。この時間を超えると、FailureAction が実行されます。  既定値\: PT0H0M0S。 <br><br> 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -88,7 +88,12 @@ Service Fabric スタンドアロン クラスターの構成のアップグレ�
 
 ### <a name="examples"></a>例
 
-クラスター構成の更新を開始します。sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
+クラスター構成の更新を開始します
+
+```
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
+```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa-cluster upgrade-status
 Service Fabric スタンドアロン クラスターのクラスター構成アップグレードの状態を取得します。

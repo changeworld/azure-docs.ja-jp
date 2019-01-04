@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 2a0f6b75c540f319848805e8a9bda7b166d5d709
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 13cec39278577a818ef43f1215fd2e6653f15ed2
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138661"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678442"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Azure でのネットワーク仮想アプライアンスの問題
 
 Microsoft Azure でサードパーティのネットワーク仮想アプライアンス (NVA) を使用しているときに、VM または VPN の接続の問題が発生する可能性があります。 この記事では、NVA 構成に対する基本の Azure Platform の要件を確認するのに役立つ基本的な手順を示します。
 
-サードパーティの NVA および Azure プラットフォームとの統合向けのテクニカル サポートは、NVA のベンダーによって提供されます。 NVA に関する接続性やルーティングの問題がある場合は、直接 [NVA のベンダーにお問い合わせ](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)いただく必要があります。
+サードパーティの NVA および Azure プラットフォームとの統合向けのテクニカル サポートは、NVA のベンダーによって提供されます。 
+
+> [!NOTE]
+> NVA に関する接続性やルーティングの問題がある場合は、直接 [NVA のベンダーにお問い合わせ](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)いただく必要があります。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -37,6 +40,7 @@ Microsoft Azure でサードパーティのネットワーク仮想アプライ�
 - NVA から直接通信する仮想ネットワークのサブネット上の UDR
 - NVA 内のテーブルとルールのルーティング (例: NIC1 から NIC2)
 - ネットワーク トラフィックの送受信を確認するための NVA NIC のトレース
+- Standard SKU と Public IP の使用時には、NSG が作成済みで、明示的なルールでトラフィックの NVA へのルーティングが許可されている必要があります。
 
 ## <a name="basic-troubleshooting-steps"></a>基本的なトラブルシューティングの手順
 
@@ -73,6 +77,8 @@ PowerShell の使用
           Execute: $nic2 #and check for an expected output:
           EnableIPForwarding   : True
           NetworkSecurityGroup : null
+
+**Standard SKU と Pubilc IP の使用時に NVA を確認する** Standard SKU と Public IP の使用時には、NSG が作成済みで、明示的なルールでトラフィックの NVA へのルーティングが許可されている必要があります。
 
 **トラフィックを NVA にルーティングできるかどうかを確認する**
 

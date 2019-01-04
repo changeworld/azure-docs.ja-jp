@@ -1,5 +1,5 @@
 ---
-title: Azure App Service Environment の管理アドレス
+title: App Service Environment の管理アドレス - Azure
 description: App Service Environment を管理するために使用される管理アドレスを一覧表示します。
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 590679daff20f9c469fb8fcfcc0fbbad77f91b5b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: 7fb39886b19a2229188821eb39d4fb8a5928bb43
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162856"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276691"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service Environment の管理アドレス
 
@@ -46,7 +47,7 @@ App Service Environment (ASE) は、ユーザーの Azure Virtual Network (VNet)
 
 API によって、ご自身の ASE に対するすべての受信アドレスが含まれる JSON ドキュメントが返されます。 アドレスの一覧には、管理アドレス、ご自身の ASE によって使用される VIP、および ASE サブネットのアドレス範囲自体が含まれています。  
 
-[armclient](http://github.com/projectkudu/ARMClient) を使用して API を呼び出すには、次のコマンドを、サブスクリプション ID、リソース グループ、および ASE 名を置き換えて使用します。  
+[armclient](https://github.com/projectkudu/ARMClient) を使用して API を呼び出すには、次のコマンドを、サブスクリプション ID、リソース グループ、および ASE 名を置き換えて使用します。  
 
     armclient login
     armclient get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01

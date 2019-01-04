@@ -59,7 +59,7 @@ items:
       href: security-center-policy-definitions.md
     - name: 電子メール通知
       href: security-center-provide-security-contact-details.md
-    - name: '[価格レベル] '
+    - name: '価格レベル '
       href: security-center-pricing.md
     - name: セキュリティ構成
       href: security-center-customize-os-security-config.md

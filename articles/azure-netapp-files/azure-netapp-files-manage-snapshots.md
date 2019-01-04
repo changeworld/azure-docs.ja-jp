@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 48cb88b9815ba723d93c18caf63f33b50eea850c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e3ae11adf84e858429cba4643802300f7915a166
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011980"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412938"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 Azure NetApp Files を使用すると、ボリュームのオンデマンド スナップショットを作成したり、スナップショットから新しいボリュームを復元したりできます。
@@ -60,12 +60,16 @@ Azure NetApp Files を使用すると、ボリュームのオンデマンド ス
         **[使用可能なクォータ]** フィールドには、選択した容量プール内の未使用の領域のうち、新しいボリュームの作成に使用できる領域の量が示されます。 新しいボリュームのサイズが、使用可能なクォータを超えてはいけません。
 
     *   **Virtual Network**  
-        ボリュームへのアクセス元となる Azure Virtual Network (Vnet) を指定します。 
-        
-        指定する Vnet には、Azure NetApp Files が構成されている必要があります。 Azure NetApp Files サービスには、ボリュームと同じ場所にある Vnet からのみアクセスできます。  
+        ボリュームへのアクセス元となる Azure Virtual Network (Vnet) を指定します。  
+        指定する Vnet には、Azure NetApp Files に委任されているサブネットがある必要があります。 Azure NetApp Files サービスにアクセスできるのは、同じ Vnet から、またはボリュームと同じリージョンにある Vnet から Vnet ピアリングを経由する場合のみです。 ボリュームには、オンプレミス ネットワークから Express Route 経由でアクセスすることもできます。 
 
-    ![復元された新しいボリューム](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
-    
+    * **サブネット**  
+        ボリュームで使用するサブネットを指定します。  
+        指定するサブネットは Azure NetApp Files サービスに委任されている必要があります。 [サブネット] フィールドにある **[新規作成]** を選択することで、新しいサブネットを作成できます。  
+<!--
+    ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
+-->
+
 5. Click **OK**.   
     スナップショットから復元された新しいボリュームが [ボリューム] ブレードに表示されます。
 

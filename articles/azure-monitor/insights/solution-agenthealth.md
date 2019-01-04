@@ -47,8 +47,8 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| Windows エージェント | [はい] | ハートビート イベントは、直接の Windows エージェントから収集されます。|
-| System Center Operations Manager 管理グループ | [はい] | ハートビート イベントは、管理グループに対して報告を行うエージェントから 60 秒ごとに収集されて Log Analytics に転送されます。 Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 ハートビート イベント データは管理グループから Log Analytics リポジトリに転送されます。|
+| Windows エージェント | はい | ハートビート イベントは、直接の Windows エージェントから収集されます。|
+| System Center Operations Manager 管理グループ | はい | ハートビート イベントは、管理グループに対して報告を行うエージェントから 60 秒ごとに収集されて Log Analytics に転送されます。 Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 ハートビート イベント データは管理グループから Log Analytics リポジトリに転送されます。|
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 Log Analytics ワークスペースに Agent Health ソリューションを追加すると、ダッシュボードに **[Agent Health]** タイルが追加されます。 このタイルには、エージェントの総数と直近 24 時間応答していないエージェントの数が表示されます。<br><br> ![ダッシュボードの Agent Health ソリューション タイル](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)

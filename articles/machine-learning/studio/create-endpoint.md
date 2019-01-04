@@ -1,11 +1,11 @@
 ---
-title: Machine Learning で Web サービス エンドポイントを作成する | Microsoft Docs
-description: Azure Machine Learning で Web サービス エンドポイントを作成する
+title: Web サービス エンドポイントを作成する - Azure Machine Learning Studio | Microsoft Docs
+description: Azure Machine Learning で Web サービス エンドポイントを作成する。 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 4657fc1b-5228-4950-a29e-bc709259f728
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.openlocfilehash: 8cdf8c5ac3676d8abc9084fc842484aca5b6d1c7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 58418357d6e96204485887cca5d7724c42183db7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833548"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275892"
 ---
-# <a name="creating-endpoints"></a>エンドポイントを作成する
+# <a name="creating-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>デプロイされた Azure Machine Learning Studio Web サービスのエンドポイントを作成する
 > [!NOTE]
 >  このトピックでは、**従来**の Machine Learning Web サービスに適用できる手法について説明します。
 > 
@@ -30,9 +30,9 @@ ms.locfileid: "34833548"
 
 お客様に先行して販売する Web サービスを作成するときは、それぞれのお客様に対して、Web サービスを作成した実験へのリンクが維持されているトレーニング済みのモデルを提供する必要があります。 さらに、実験に対する更新を、カスタマイズを上書きすることなく選択的にエンドポイントに適用する必要があります。
 
-そのために、Azure Machine Learning では、デプロイした Web サービスに対して複数のエンドポイントを作成できます。 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。 各エンドポイントは一意の URL と承認キーであり、お客様に配布することができます。
+そのために、Azure Machine Learning Studio では、デプロイした Web サービスに対して複数のエンドポイントを作成できます。 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。 各エンドポイントは一意の URL と承認キーであり、お客様に配布することができます。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="adding-endpoints-to-a-web-service"></a>Web サービスにエンドポイントを追加する
 エンドポイントを Web サービスに追加する方法は 2 つあります。

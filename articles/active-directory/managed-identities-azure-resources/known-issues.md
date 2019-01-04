@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: fa872c184429e69eb46fb4da112c08ee9432f1c4
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: b535939e200b533c06c97686897e283fb6cf57bc
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913990"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720186"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -43,18 +43,33 @@ ms.locfileid: "50913990"
 
 ID のセキュリティ境界は、ID のアタッチ先リソースです。 たとえば、Azure リソースのマネージド ID が有効な仮想マシンのセキュリティ境界は、仮想マシンです。 その VM 上で実行されているすべてのコードは、Azure リソース エンドポイントと要求トークンのマネージド ID を呼び出すことができます。 これは Azure リソースのマネージド ID をサポートする他のリソースと同様のエクスペリエンスです。
 
+### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>要求内で ID を指定しない場合、IMDS はどの ID を規定値としますか?
+
+- システム割り当てマネージド ID が有効で、要求内で ID が指定されない場合、IMDS はシステム割り当てマネージド ID を規定値とします。
+- システム割り当てマネージド ID が有効でなく、ユーザー割り当てマネージド ID が 1 つのみの場合、IMDS はその単一のユーザー割り当てマネージド ID を規定値とします。 
+- システム割り当てマネージド ID が有効でなく、複数のユーザー割り当てマネージド ID が存在する場合、要求内でのマネージド ID の指定が必要です。
+
 ### <a name="should-i-use-the-managed-identities-for-azure-resources-vm-imds-endpoint-or-the-vm-extension-endpoint"></a>Azure リソース VM IMDS エンドポイントまたは VM 拡張エンドポイントにマネージド ID を使用する必要はありますか?
 
 VM で Azure リソースのマネージド ID を使用する場合は、Azure リソース IMDS エンドポイントのマネージド ID を使用することをお勧めします。 Azure Instance Metadata Service は、Azure Resource Manager を使用して作成されたすべての IaaS VM にアクセスできる REST エンドポイントです。 Azure リソースのマネージド ID を IMDS 上で使用する場合、次のような利点があります:
-
-1. すべての Azure IaaS でサポートされているオペレーティング システムは、IMDS 上で Azure リソースのマネージド ID を使用できます。 
-2. Azure リソースのマネージド ID を有効にするために、VM に拡張機能をインストールする必要はなくなりました。 
-3. Azure リソースのマネージド ID によって使用される証明書は、VM に存在しなくなりました。 
-4. IMDS エンドポイントは、既知のルーティング不可能な IP アドレスです。VM 内でのみ使用できます。 
+    - すべての Azure IaaS でサポートされているオペレーティング システムは、IMDS 上で Azure リソースのマネージド ID を使用できます。
+    - Azure リソースのマネージド ID を有効にするために、VM に拡張機能をインストールする必要はなくなりました。 
+    - Azure リソースのマネージド ID によって使用される証明書は、VM に存在しなくなりました。
+    - IMDS エンドポイントは、既知のルーティング不可能な IP アドレスです。VM 内でのみ使用できます。
 
 Azure リソース VM 拡張機能のマネージド ID は、現在でも使用可能です。ただし、今後は IMDS エンドポイントの使用が既定になります。 Azure リソース VM 拡張機能のマネージド ID は、2019 年 1 月に非推奨になります。 
 
 Azure Instance Metadata Service の詳細については、[IMDS のドキュメント](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)を参照してください
+
+### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>サブスクリプションを別のディレクトリに移動する場合、マネージド ID は自動的に再作成されますか?
+
+いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure RBAC ロールの割り当てを許可する必要があります。
+    - システム割り当てマネージドID の場合、無効にしてから最有効化します。
+    - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
+
+### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>マネージド ID を使って違うディレクトリやテナント内のリソースへアクセスできますか?
+
+いいえ。 マネージド ID は現在、クロスディレクトリ シナリオをサポートしていません。 
 
 ### <a name="what-are-the-supported-linux-distributions"></a>どのような Linux ディストリビューションがサポートされていますか。
 
@@ -79,8 +94,8 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 ```
 
 各値の説明: 
-- Windows の拡張機能の名前と種類: ManagedIdentityExtensionForWindows
-- Linux の拡張機能の名前と種類: ManagedIdentityExtensionForLinux
+- Windows の拡張機能の名前と種類:ManagedIdentityExtensionForWindows
+- Linux の拡張機能の名前と種類:ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -100,7 +115,7 @@ VM 構成ブレードが VM に表示されない場合、Azure リソースの�
 
 ### <a name="cannot-assign-access-to-virtual-machines-in-the-access-control-iam-blade"></a>Access Control (IAM) ブレードで、仮想マシンにアクセスを割り当てることができない
 
-**仮想マシン**が Azure portal に **アクセス コントロール (IAM)** > **アクセス許可の追加** で **アクセスの割り当て先** の選択肢として表示されない場合、Azure リソースのマネージド ID がご利用のリージョンのポータルでまだ有効になっていません。 後でもう一度確認してください。  Azure リソース サービス プリンシパルのマネージド ID を検索することで、ロールの割り当ての VM の ID を選択することもできます。  **[選択]** フィールドに VM の名前を入力すると、サービス プリンシパルが検索結果に表示されます。
+**[仮想マシン]** が Azure portal に **[アクセス コントロール (IAM)]** > **[ロールの割り当ての追加]** で **[アクセスの割り当て先]** の選択肢として表示されない場合、Azure リソースのマネージド ID がご利用のリージョンのポータルでまだ有効になっていません。 後でもう一度確認してください。  Azure リソース サービス プリンシパルのマネージド ID を検索することで、ロールの割り当ての VM の ID を選択することもできます。  **[選択]** フィールドに VM の名前を入力すると、サービス プリンシパルが検索結果に表示されます。
 
 ### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>リソース グループまたはサブスクリプションから移動した後に VM を開始できない
 

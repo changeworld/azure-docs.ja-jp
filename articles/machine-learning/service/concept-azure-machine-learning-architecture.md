@@ -1,5 +1,6 @@
 ---
-title: Azure Machine Learning サービスのしくみ
+title: 'クラウドの ML: 用語とアーキテクチャ'
+titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning サービスを構成するアーキテクチャ、用語、概念について説明します。 サービスを使用する一般的なワークフローと、Azure Machine Learning サービスによって使用される Azure サービスについても説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -8,13 +9,14 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 10/24/2018
-ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 3966d4b27f0e3d42f47d84fb5c9f5c8519a27b6c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706808"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184731"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning サービスのしくみ: アーキテクチャと概念
 
@@ -33,8 +35,6 @@ ms.locfileid: "51706808"
 1. __イメージを作成__ し、それを __イメージ レジストリ__ に登録します。 
 1. Azure に __Web サービス__ として __イメージをデプロイ__ します。
 
-
-[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
 
 > [!NOTE]
 > このドキュメントでは、Azure Machine Learning で使用される用語と概念を定義しますが、Azure プラットフォームに関する用語と概念は定義しません。 Azure プラットフォームの用語について詳しくは、「[Microsoft Azure 用語集](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)」をご覧ください。
@@ -65,7 +65,7 @@ ms.locfileid: "51706808"
 
 次の図は、ワークスペースの分類です。
 
-[![ワークスペースの分類](./media/concept-azure-machine-learning-architecture/taxonomy.png)](./media/concept-azure-machine-learning-architecture/taxonomy.png#lightbox)
+[![ワークスペースの分類](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="model"></a>モデル
 
@@ -75,7 +75,7 @@ ms.locfileid: "51706808"
 
 Azure Machine Learning Services は、フレームワークに依存しません。 モデルを作成するときは、scikit-learn、xgboost、PyTorch、TensorFlow、Chainer、CNTK などの人気のある機械学習フレームワークを使用できます。
 
-モデルのトレーニングの例については、[クイック スタート: Machine Learning Services ワークスペースの作成](quickstart-get-started.md)に関するページをご覧ください。
+モデルのトレーニングの例については、[クイック スタート:Machine Learning Service ワークスペースの作成](quickstart-get-started.md)に関するドキュメントをご覧ください。
 
 ### <a name="model-registry"></a>モデル レジストリ
 
@@ -99,8 +99,8 @@ Azure Machine Learning Services は、フレームワークに依存しません
 
 Azure Machine Learning で作成できるイメージには次の 2 種類があります。
 
-* FPGA イメージ: Azure クラウドのフィールド プログラマブル ゲート アレイにデプロイするときに使用されます。
-* Docker イメージ: FPGA 以外のコンピューティング ターゲットにデプロイするときに使用されます。 たとえば、Azure Container Instances や Azure Kubernetes Service などです。
+* FPGA イメージ:Azure クラウドのフィールド プログラマブル ゲート アレイにデプロイするときに使用されます。
+* Docker イメージ:FPGA 以外のコンピューティング ターゲットにデプロイするときに使用されます。 たとえば、Azure Container Instances や Azure Kubernetes Service などです。
 
 イメージの作成の例については、「[Azure Container Instances (ACI) に画像分類モデルをデプロイする](tutorial-deploy-models-with-aml.md)」をご覧ください。
 
@@ -148,13 +148,13 @@ Azure IoT Edge はモジュールが実行されるのを保証し、モジュ�
 
 モデルをトレーニングするためにスクリプトを送信すると、実行が生成されます。 実行は、0 個以上の子実行を持つことができます。 最上位レベルの実行は2 つの子実行を持つ可能性があり、それぞれが独自の子実行を持つことができます。
 
-モデルのトレーニングによって生成された実行を表示する例については、「[クイック スタート: Azure Machine Learning サービスの基本操作](quickstart-get-started.md)」をご覧ください。
+モデルのトレーニングによって生成された実行を表示する例については、[クイック スタート:Azure Machine Learning service の基本操作](quickstart-get-started.md)に関するドキュメントをご覧ください。
 
 ## <a name="experiment"></a>実験
 
 実験は、特定のスクリプトからの多数の実行のグループ化です。 実験は、常に 1 つのワークスペースに属します。 実行を送信するときは、実験名を指定します。 実行に関する情報は、その実験に格納されます。 実行を送信するときに、存在しない実験名を指定すると、その名前を持つ新しい実験が自動的に作成されます。
 
-実験の使用の例については、「[クイック スタート: Azure Machine Learning サービスの基本操作](quickstart-get-started.md)」をご覧ください。
+実験の使用の例については、[クイック スタート:Azure Machine Learning service の基本操作](quickstart-get-started.md)に関するドキュメントをご覧ください。
 
 ## <a name="pipeline"></a>パイプライン
 
@@ -169,19 +169,23 @@ Azure IoT Edge はモジュールが実行されるのを保証し、モジュ�
 | コンピューティング ターゲット | トレーニング | Deployment |
 | ---- |:----:|:----:|
 | ユーザーのローカル コンピューター | ✓ | &nbsp; |
+| Azure Machine Learning コンピューティング | ✓ | &nbsp; |
 | Azure の Linux VM</br>(Data Science Virtual Machine など) | ✓ | &nbsp; |
-| Azure Batch AI クラスター | ✓ | &nbsp; |
 | Azure Databricks | ✓ | &nbsp; | &nbsp; |
 | Azure Data Lake Analytics | ✓ | &nbsp; |
 | Apache Spark for HDInsight | ✓ | &nbsp; |
-| Azure Container Instances | ✓ | ✓ |
+| Azure Container Instances | &nbsp; | ✓ |
 | Azure Kubernetes Service | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
 | Project Brainwave</br>(フィールド プログラマブル ゲート アレイ) | &nbsp; | ✓ |
 
 コンピューティング ターゲットはワークスペースに接続されています。 ローカル コンピューター以外のコンピューティング ターゲットは、ワークスペースのユーザーによって共有されます。
 
-ほとんどのコンピューティング ターゲットは、Azure portal、Azure Machine Learning SDK、または Azure CLI を使用して、ワークスペースから直接作成できます。 別のプロセス (たとえば、Azure portal や Azure CLI) で作成されたコンピューティング ターゲットがある場合、それをワークスペースに追加 (接続) できます。 一部のコンピューティング ターゲットは、ワークスペースの外部で作成してから、接続する必要があります。
+### <a name="managed-and-unmanaged-compute-targets"></a>マネージドおよびアンマネージド コンピューティング先
+
+**マネージド** コンピューティング先は、Azure Machine Learning service によって作成および管理されます。 これらのコンピューティング先は、ML ワークロード向けに最適化されています。 現時点 (2018 年 12 月 4 日) では、__Azure Machine Learning コンピューティング__が、唯一のマネージド コンピューティング先です。 今後、他のマネージド コンピューティング先が追加される予定です。 ML コンピューティング インスタンスは、Azure portal、Azure Machine Learning SDK、または Azure CLI を使用して、ワークスペースから直接作成できます。 他のコンピューティング先はすべて、ワークスペースの外部で作成してから、そのワークスペースに接続する必要があります。
+
+**アンマネージド** コンピューティング先は、Azure Machine Learning service では管理されません。 Azure Machine Learning の外部で作成してから、使用する前に、お使いのワークスペースに接続する必要があります。 これらのコンピューティング先では、ML ワークロードに対するパフォーマンスを維持または向上するために、追加の手順を必要とすることがあります。
 
 トレーニング用のコンピューティング ターゲットの選択については、「[コンピューティング ターゲットを選択して使用し、モデルをトレーニングする](how-to-set-up-training-targets.md)」をご覧ください。
 
@@ -223,5 +227,5 @@ Azure IoT Edge はモジュールが実行されるのを保証し、モジュ�
 Azure Machine Learning の使用を開始するには、次のリンクを使用してください。
 
 * [Azure Machine Learning サービスの概要](overview-what-is-azure-ml.md)
-* [クイック スタート: Python でワークスペースを作成する](quickstart-get-started.md)
-* [チュートリアル: モデルのトレーニング](tutorial-train-models-with-aml.md)
+* [クイック スタート:Python でワークスペースを作成する](quickstart-get-started.md)
+* [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)

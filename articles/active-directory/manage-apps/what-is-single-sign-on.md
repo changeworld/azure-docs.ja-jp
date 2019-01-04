@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 3012f07d8c56f2581a087bc8e43aa4a089bf9589
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 627bd114504de20517abcd05f45dc6c58fe80117
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633514"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322706"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションへのシングル サインオン
 Azure Active Directory (Azure AD) でアプリケーションを構成するときに、最も適切なシングル サインオンの方法を選択する方法について説明します。 
@@ -61,14 +61,13 @@ SAML ベースのシングル サインオンは、以下のいずれかのプ�
 
 - SAML 2.0
 - WS-Federation
-- OpenID Connect
 
 SAML ベースのシングル サインオンのためにアプリケーションを構成するには、[SAML ベースのシングル サインオンを構成する](configure-single-sign-on-portal.md)ことに関するページを参照してください。 また、多くのアプリケーションに、特定のアプリケーションに対して SAML ベースのシングル サインオンを構成する手順を示す、[アプリケーション固有のチュートリアル](../saas-apps/tutorial-list.md)が用意されています。 
 
 SAML プロトコルの動作方法の詳細については、「[シングル サインオンの SAML プロトコル](../develop/single-sign-on-saml-protocol.md)」を参照してください。
 
 ## <a name="password-based-sso"></a>パスワードベースの SSO
-パスワード ベースのサインオンでは、アプリケーションはユーザー名とパスワードを使用してアプリケーションに対する認証を行います。 エンド ユーザーは、初回のアクセス時にアプリケーションにサインインします。 最初のサインイン後は、Azure Active Directory がユーザー名とパスワードをアプリケーションに提供します。 
+パスワード ベースのサインオンでは、エンド ユーザーは初回アクセス時にユーザー名とパスワードを使用してアプリケーションにサインインします。 最初のサインイン後は、Azure Active Directory がユーザー名とパスワードをアプリケーションに提供します。 
 
 パスワード ベースのシングル サインオンでは、アプリケーションによって提供される既存の認証プロセスが使用されます。 アプリケーションでパスワードによるシングル サインオンを有効にすると、Azure AD がそのアプリケーション用のユーザー名とパスワードを収集し、安全に保存します。 ユーザーの資格情報は、暗号化された状態でディレクトリ内に保存されます。 
 
@@ -178,6 +177,6 @@ IWA のためのオンプレミス アプリの構成については、[アプ�
 * [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](../saas-apps/tutorial-list.md)
 * [シングル サインオンの構成に関するチュートリアル](configure-single-sign-on-portal.md)
 * [アプリケーションへのアクセスの管理の概要](what-is-access-management.md)
-* ダウンロード リンク: [シングル サインオンの展開計画](http://aka.ms/SSODeploymentPlan)。
+* ダウンロード リンク:[シングル サインオンのデプロイ計画](https://aka.ms/SSODeploymentPlan)。
 
 

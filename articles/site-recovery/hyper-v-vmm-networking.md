@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: rayne
-ms.openlocfilehash: 1a9a89138dc71f7a0255b8ab4084182848d6e994
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 50ef6ff452713ec8a8023c5d5e3d58a4b91ea323
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211742"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849804"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>フェールオーバー後にセカンダリ オンプレミス サイトに接続するように IP アドレス指定を設定する
 
@@ -23,8 +23,8 @@ System Center Virtual Machine Manager (VMM) クラウドの Hyper-V VM をセカ
 
 フェールオーバー後、レプリカ VM の IP アドレス指定を処理するには、いくつかの方法があります。 
 
-- **フェールオーバー後に同じ IP アドレスを保持する**: このシナリオでは、レプリケートされた VM はプライマリ VM と同じ IP アドレスを持ちます。 これにより、フェールオーバー後のネットワーク関連の問題は単純になりますが、いくつかのインフラストラクチャの作業が必要になります。
-- **フェールオーバー後に異なる IP アドレスを使用する**: このシナリオでは、VM はフェールオーバー後に新しい IP アドレスを取得します。 
+- **フェールオーバー後に同じ IP アドレスを保持する**:このシナリオでは、レプリケートされた VM はプライマリ VM と同じ IP アドレスを持ちます。 これにより、フェールオーバー後のネットワーク関連の問題は単純になりますが、いくつかのインフラストラクチャの作業が必要になります。
+- **フェールオーバー後に異なる IP アドレスを使用する**:このシナリオでは、VM はフェールオーバー後に新しい IP アドレスを取得します。 
  
 
 ## <a name="retain-the-ip-address"></a>IP アドレスを保持する

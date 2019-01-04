@@ -4,15 +4,15 @@ description: この記事では、Azure Site Recovery を使用してオンプ�
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/29/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: c261dd083fed8b9c4a0f3846157c666cbb52083c
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.author: mayg
+ms.openlocfilehash: d7b3919d0f970190238dbc5899a20f2d9e7d8cd4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636817"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256514"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -27,8 +27,8 @@ ms.locfileid: "51636817"
 レプリケーションの間に、データは Azure ストレージにレプリケートされ、VM 変更の料金は発生しません。 Azure へのフェールオーバーを実行すると、Site Recovery は Azure IaaS 仮想マシンを自動的に作成します。 その後は、Azure で消費するコンピューティング リソースに対して課金されます。
 
 ### <a name="what-can-i-do-with-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションによってできること
-- **ディザスター リカバリー**: 完全なディザスター リカバリーを設定することができます。 このシナリオでは、オンプレミスの VMware VM を Azure ストレージにレプリケートします。 その後、オンプレミスのインフラストラクチャが使用できなくなった場合は、Azure にフェールオーバーできます。 フェールオーバーの際は、レプリケートされたデータを使って Azure VM が作成されます。 オンプレミスのデータ センターが再び使用可能になるまでは、Azure VM のアプリとワークロードにアクセスできます。 その後、Azure からオンプレミスのサイトにフェールバックできます。
-- **移行**: Site Recovery を使って、オンプレミスの VMware VM を Azure に移行できます。 このシナリオでは、オンプレミスの VMware VM を Azure ストレージにレプリケートします。 その後、オンプレミスから Azure にフェールオーバーします。 フェールオーバーの後は、Azure VM で実行しているアプリとワークロードを利用できます。
+- **ディザスター リカバリー** :完全なディザスター リカバリーを設定することができます。 このシナリオでは、オンプレミスの VMware VM を Azure ストレージにレプリケートします。 その後、オンプレミスのインフラストラクチャが使用できなくなった場合は、Azure にフェールオーバーできます。 フェールオーバーの際は、レプリケートされたデータを使って Azure VM が作成されます。 オンプレミスのデータ センターが再び使用可能になるまでは、Azure VM のアプリとワークロードにアクセスできます。 その後、Azure からオンプレミスのサイトにフェールバックできます。
+- **移行**:Site Recovery を使って、オンプレミスの VMware VM を Azure に移行できます。 このシナリオでは、オンプレミスの VMware VM を Azure ストレージにレプリケートします。 その後、オンプレミスから Azure にフェールオーバーします。 フェールオーバーの後は、Azure VM で実行しているアプリとワークロードを利用できます。
 
 
 
@@ -47,14 +47,20 @@ LRS または GRS ストレージ アカウントが必要です。 地域的障
 ## <a name="on-premises"></a>オンプレミス
 
 ### <a name="what-do-i-need-on-premises"></a>オンプレミスには何が必要ですか?
-オンプレミスでは、Site Recovery のコンポーネントが 1 つの VMware VM にインストールされている必要があります。 また、少なくとも 1 つの ESXi ホストを含む VMware インフラストラクチャも必要であり、vCenter サーバーをお勧めします。 さらに、レプリケートする 1 つ以上の VMware VM が必要です。 VMware から Azure へのアーキテクチャについて詳しくは、[こちら](vmware-azure-architecture.md)をご覧ください。
 
-次の 2 つの方法のいずれかで、オンプレミスの構成サーバーをデプロイすることができます。
+オンプレミスには、次のものが必要です。
+- 1 つの VMware VM にインストールされた Site Recovery のコンポーネント。
+- 少なくとも 1 つの ESXi ホストを含む VMware インフラストラクチャ。vCenter サーバーをお勧めします。
+- レプリケートする 1 つ以上の VMware VM。
 
-1. 構成サーバーが事前にインストールされている VM テンプレートを使用してデプロイする。 詳細については、[こちら](vmware-azure-tutorial.md#download-the-vm-template)を参照してください。
-2. 任意の Windows Server 2016 コンピューターでセットアップを使用してデプロイする。 詳細については、[こちら](physical-azure-disaster-recovery.md#set-up-the-source-environment)を参照してください。
+VMware から Azure へのアーキテクチャについて詳しくは、[こちら](vmware-azure-architecture.md)をご覧ください。
 
-独自の Windows Server コンピューターで構成サーバーをデプロイする手順の概要を見つけるには、保護の有効化の [Protection goal]\(保護の目標\) で、**[To Azure]\(Azure へ\)、[Not virtualized/Other]\(非仮想化/その他\)** の順に選択します。
+オンプレミスの構成サーバーは次のように展開できます。
+
+- 構成サーバーが事前インストールされている OVA テンプレートを使用し、VMware VM として構成サーバーを展開することをお勧めします。
+- 何らかの理由でテンプレートを使用できない場合は、構成サーバーを手動で設定できます。 [詳細情報](physical-azure-disaster-recovery.md#set-up-the-source-environment)。
+
+
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>オンプレミスの VM のレプリケート先はどこですか?
 Azure ストレージにデータがレプリケートされます。 フェールオーバーを実行すると、Site Recovery はストレージ アカウントから Azure VM を自動的に作成します。
@@ -68,7 +74,7 @@ Azure ストレージにデータがレプリケートされます。 フェー�
 Site Recovery は、パブリック エンドポイントまたは ExpressRoute のパブリック ピアリングを使って、オンプレミスから Azure ストレージにデータをレプリケートします。 サイト間 VPN ネットワーク経由のレプリケーションはサポートされていません。
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>ExpressRoute で Azure にレプリケートできますか?
-はい。ExpressRoute を使って Azure に VM をレプリケートできます。 Site Recovery はパブリック エンドポイントを使って Azure ストレージ アカウントにデータをレプリケートするので、Site Recovery のレプリケーション用に[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)を設定する必要があります。 VM が Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)を使ってアクセスできます。
+はい。ExpressRoute を使って Azure に VM をレプリケートできます。 Site Recovery はパブリック エンドポイントを使って Azure ストレージ アカウントにデータをレプリケートするので、Site Recovery のレプリケーション用に[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering)を設定する必要があります。 VM が Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>VPN 経由でレプリケートできないのはなぜですか?
@@ -110,7 +116,7 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 - プロセス サーバー: レプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。また、プロセス サーバーは、レプリケートする VM へのモビリティ サービスのインストールや、オンプレミスの VMware VM の自動検出も行います。
 - マスター ターゲット サーバー: Azure からのフェールバック中にレプリケーション データを処理します。
 
-構成サーバー コンポーネントとプロセスの[詳細](vmware-azure-architecture.md)をご覧ください。
+構成サーバーのコンポーネントとプロセスの[詳細をご確認ください](vmware-azure-architecture.md)。
 
 ### <a name="where-do-i-set-up-the-configuration-server"></a>構成サーバーはどこに設定しますか?
 構成サーバーには、高可用性のオンプレミス VMware VM が 1 つ必要です。
@@ -140,11 +146,14 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>MySQL をダウンロードせず、Site Recovery によってインストールすることはできますか?
 はい。 MySQL インストーラーをダウンロードし、**C:\Temp\ASRSetup** フォルダーに配置します。  構成サーバーの VM を設定する際に、ご契約条件に同意し、**[Download and install]\(ダウンロードとインストール\)** をクリックすると、ポータルでは追加したインストーラーが MySQL のインストールに使用されます。
  
-### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>構成サーバー VM を他の目的で使用することはできますか?
+### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>構成サーバー VM を他の目的で使用することはできますか?
 いいえ、VM は構成サーバーにのみ使用する必要があります。 
 
+### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>構成サーバーを複製してオーケストレーションに使用することはできますか?
+いいえ、登録に関する問題を避けるために、新しい構成サーバーを設定する必要があります。
+
 ### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>構成サーバーに登録されている資格情報コンテナーを変更することはできますか?
-いいえ。 コンテナーは、構成サーバーに登録した後に変更することはできません。
+いいえ。 コンテナーは、構成サーバーに登録した後に変更することはできません。 再登録の手順については、[この記事](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)を確認してください。
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーの両方のディザスター リカバリーに同じ構成サーバーを使用できますか?
 はい。ただし、物理マシンは VMware VM にのみフェールバックできることにご注意ください。

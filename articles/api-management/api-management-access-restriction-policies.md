@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 4dd54a4a4985a33bc14022d7f722bdf83224c4aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10023d34a245f9493cfe244882dbdc1351a78513
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240853"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447216"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -58,17 +58,17 @@ ms.locfileid: "51240853"
   
 |Name|説明|必須|  
 |----------|-----------------|--------------|  
-|check-header|ルート要素。|[はい]|  
+|check-header|ルート要素。|はい|  
 |value|許可される HTTP ヘッダーの値。 複数の要素を指定した場合、いずれかの値に一致すればチェックは成功とみなされます。|いいえ |  
   
 ### <a name="attributes"></a>属性  
   
 |Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|failed-check-error-message|ヘッダーが存在しないかヘッダーが無効な値である場合に HTTP 応答本文で返されるエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。|[はい]|該当なし|  
-|failed-check-httpcode|ヘッダーが存在しないかヘッダーが無効な値である場合に返される HTTP 状態コード。|[はい]|該当なし|  
-|header-name|チェックする HTTP ヘッダーの名前。|[はい]|該当なし|  
-|ignore-case|True または False に設定できます。 True に設定した場合、ヘッダー値と許容される値セットとの比較時に大文字と小文字は区別されません。|[はい]|該当なし|  
+|failed-check-error-message|ヘッダーが存在しないかヘッダーが無効な値である場合に HTTP 応答本文で返されるエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。|はい|該当なし|  
+|failed-check-httpcode|ヘッダーが存在しないかヘッダーが無効な値である場合に返される HTTP 状態コード。|はい|該当なし|  
+|header-name|チェックする HTTP ヘッダーの名前。|はい|該当なし|  
+|ignore-case|True または False に設定できます。 True に設定した場合、ヘッダー値と許容される値セットとの比較時に大文字と小文字は区別されません。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -113,7 +113,7 @@ ms.locfileid: "51240853"
   
 |Name|説明|必須|  
 |----------|-----------------|--------------|  
-|set-limit|ルート要素。|[はい]|  
+|set-limit|ルート要素。|はい|  
 |api|製品内の API に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しレート制限は別々に適用されます。 API は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。|いいえ |  
 |operation|API 内の操作に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品、API、および操作の呼び出しレート制限は別々に適用されます。 操作は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。|いいえ |  
   
@@ -121,9 +121,9 @@ ms.locfileid: "51240853"
   
 |Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|name|レート制限の適用対象になる API の名前。|[はい]|該当なし|  
-|calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|[はい]|該当なし|  
-|renewal-period|クォータのリセット間隔 (秒単位)。|[はい]|該当なし|  
+|name|レート制限の適用対象になる API の名前。|はい|該当なし|  
+|calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|はい|該当なし|  
+|renewal-period|クォータのリセット間隔 (秒単位)。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -133,6 +133,10 @@ ms.locfileid: "51240853"
 -   **ポリシー スコープ:** 製品  
   
 ##  <a name="LimitCallRateByKey"></a> 呼び出しレートをキー別に制限する  
+
+> [!IMPORTANT]
+> この機能は、API Management の**従量課金**レベルでは使用できません。
+
  `rate-limit-by-key` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、キーごとに API 使用量の急増を防ぎます。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、制限に対してカウントする要求を指定することもできます。 このポリシーがトリガーされると、呼び出し元は `429 Too Many Requests` 応答状態コードを受け取ります。  
   
  このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)」を参照してください。  
@@ -169,16 +173,16 @@ ms.locfileid: "51240853"
   
 |Name|説明|必須|  
 |----------|-----------------|--------------|  
-|set-limit|ルート要素。|[はい]|  
+|set-limit|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
 |Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|[はい]|該当なし|  
-|counter-key|レート制限ポリシーに使用するキー。|[はい]|該当なし|  
+|calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|はい|該当なし|  
+|counter-key|レート制限ポリシーに使用するキー。|はい|該当なし|  
 |increment-condition|クォータに対して要求の件数をカウントするかどうかを指定するブール式です (`true`)。|いいえ |該当なし|  
-|renewal-period|クォータのリセット間隔 (秒単位)。|[はい]|該当なし|  
+|renewal-period|クォータのリセット間隔 (秒単位)。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -212,7 +216,7 @@ ms.locfileid: "51240853"
   
 |Name|説明|必須|  
 |----------|-----------------|--------------|  
-|ip-filter|ルート要素。|[はい]|  
+|ip-filter|ルート要素。|はい|  
 |address|フィルターを適用する単一の IP アドレスを指定します。|`address` 要素または `address-range` 要素は少なくとも 1 つ必要です。|  
 |address-range from="address" to="address"|フィルターを適用する IP アドレスの範囲を指定します。|`address` 要素または `address-range` 要素は少なくとも 1 つ必要です。|  
   
@@ -221,7 +225,7 @@ ms.locfileid: "51240853"
 |Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |address-range from="address" to="address"|アクセスを許可または拒否する IP アドレスの範囲。|`address-range` 要素を使用する場合は必須です。|該当なし|  
-|ip-filter action="allow &#124; forbid"|指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。|[はい]|該当なし|  
+|ip-filter action="allow &#124; forbid"|指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -265,7 +269,7 @@ ms.locfileid: "51240853"
   
 |Name|説明|必須|  
 |----------|-----------------|--------------|  
-|quota|ルート要素。|[はい]|  
+|quota|ルート要素。|はい|  
 |api|製品内の API に対して呼び出しクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しクォータは別々に適用されます。 API は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。|いいえ |  
 |operation|API 内の操作に対して呼び出しクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品、API、および操作の呼び出しクォータは別々に適用されます。 操作は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。|いいえ |  
   
@@ -273,10 +277,10 @@ ms.locfileid: "51240853"
   
 |Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|name|クォータを適用する API または操作の名前。|[はい]|該当なし|  
+|name|クォータを適用する API または操作の名前。|はい|該当なし|  
 |bandwidth|`renewal-period` で指定した期間中に許可する最大合計キロバイト数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
 |calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
-|renewal-period|クォータのリセット間隔 (秒単位)。|[はい]|該当なし|  
+|renewal-period|クォータのリセット間隔 (秒単位)。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -285,6 +289,10 @@ ms.locfileid: "51240853"
 -   **ポリシー スコープ:** 製品  
   
 ##  <a name="SetUsageQuotaByKey"></a> 使用量のクォータをキー別に設定する  
+
+> [!IMPORTANT]
+> この機能は、API Management の**従量課金**レベルでは使用できません。
+
  `quota-by-key` ポリシーは、更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、クォータに対してカウントする要求を指定することもできます。 複数のポリシーによって同じキー値が増分される場合は、要求ごとに 1 回だけ増分されます。 この呼び出し制限に達すると、呼び出し元は `403 Forbidden` 応答状態コードを受信します。
   
  このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)」を参照してください。  
@@ -323,7 +331,7 @@ ms.locfileid: "51240853"
   
 |Name|説明|必須|  
 |----------|-----------------|--------------|  
-|quota|ルート要素。|[はい]|  
+|quota|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
@@ -331,9 +339,9 @@ ms.locfileid: "51240853"
 |----------|-----------------|--------------|-------------|  
 |bandwidth|`renewal-period` で指定した期間中に許可する最大合計キロバイト数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
 |calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
-|counter-key|クォータ ポリシーに使用するキー。|[はい]|該当なし|  
+|counter-key|クォータ ポリシーに使用するキー。|はい|該当なし|  
 |increment-condition|クォータに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)|いいえ |該当なし|  
-|renewal-period|クォータのリセット間隔 (秒単位)。|[はい]|該当なし|  
+|renewal-period|クォータのリセット間隔 (秒単位)。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -480,7 +488,7 @@ ms.locfileid: "51240853"
   
 |要素|説明|必須|  
 |-------------|-----------------|--------------|  
-|validate-jwt|ルート要素。|[はい]|  
+|validate-jwt|ルート要素。|はい|  
 |audiences|トークン上に存在する可能性がある、許容される対象ユーザー クレームの一覧を記載します。 対象ユーザー値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。 少なくとも 1 つの対象ユーザーを指定する必要があります。|いいえ |  
 |issuer-signing-keys|署名付きトークンの検証に使用する base64 でエンコードされたセキュリティ キーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが消費される (この場合検証は失敗します) かいずれかのキーの検証が成功する (トークンのロールオーバーに使用されます) まで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。|いいえ |  
 |issuers|トークンを発行した、許容されるプリンシパルの一覧。 発行者の値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。|いいえ |  
@@ -503,7 +511,7 @@ ms.locfileid: "51240853"
 |require-scheme|トークンの名前。例: "Bearer"。 この属性が設定されている場合、ポリシーは指定したスキームが承認ヘッダーの値に存在していることを確認します。|いいえ |該当なし|
 |require-signed-tokens|ブール値。 トークンに署名が必要かどうかを指定します。|いいえ |true|  
 |separator|文字列 をオンにします。 複数値を含む要求から一連の値を抽出するために使用する区切り記号を指定します (例: ",")。|いいえ |該当なし| 
-|url|Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 応答は、URL で定義されている仕様に従っている必要があります:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。  Azure Active Directory の場合は、`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。|[はい]|該当なし|  
+|url|Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 応答は、URL で定義されている仕様に従っている必要があります:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。  Azure Active Directory の場合は、`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  

@@ -7,19 +7,19 @@ editor: jasonwhowell
 services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: ac05a2dcee3adaa93d31e28e5597a788c0159ddd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/03/2018
+ms.openlocfilehash: 4fb774341b19034d3905341a99be2114a0d1e18b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955437"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835711"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の制限事項
-Azure Database for MariaDB サービスはパブリック プレビューの段階です。 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。
+以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。
 
 ## <a name="maximum-connections"></a>最大接続数
-プレビュー期間中の価格レベルと仮想コアごとの最大接続数は、次のとおりです。
+価格レベルと仮想コアごとの最大接続数は次のとおりです。
 
 |**価格レベル**|**仮想コア数**| **最大接続数**|
 |---|---|---|
@@ -36,7 +36,7 @@ Azure Database for MariaDB サービスはパブリック プレビューの段�
 |メモリ最適化| 16| 5000|
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
-> ERROR 1040 (08004): Too many connections
+> ERROR 1040 (08004):Too many connections (接続が多すぎます)
 
 ## <a name="storage-engine-support"></a>ストレージ エンジンのサポート
 
@@ -52,8 +52,8 @@ Azure Database for MariaDB サービスはパブリック プレビューの段�
 ## <a name="privilege-support"></a>権限のサポート
 
 ### <a name="unsupported"></a>サポートされていません
-- DBA ロール: DBA ロールでは、多くのサーバー パラメーターおよび設定によって、誤ってサーバー パフォーマンスを低下させたり、DBMS の ACID プロパティを負数にしてしまったりする恐れがあります。 そのため、製品レベルのサービス整合性と SLA を維持するために、このサービスでは、DBA ロールを公開していません。 新しいデータベース インスタンスの作成時に構成される既定のユーザー アカウントによって、ユーザーは管理データベース インスタンスでほとんどの DDL および DML ステートメントを実行できます。
-- SUPER 権限: 同様に、SUPER 権限 ([SUPER 権限について](https://mariadb.com/kb/en/library/grant/#global-privileges)の記述を参照) も制限されています。
+- DBA ロール:多くのサーバー パラメーターおよび設定によって、誤ってサーバー パフォーマンスを低下させたり、DBMS の ACID プロパティを負数にしてしまったりする恐れがあります。 そのため、製品レベルのサービス整合性と SLA を維持するために、このサービスでは、DBA ロールを公開していません。 新しいデータベース インスタンスの作成時に構成される既定のユーザー アカウントによって、ユーザーは管理データベース インスタンスでほとんどの DDL および DML ステートメントを実行できます。
+- SUPER 権限:同様に、[SUPER 権限](https://mariadb.com/kb/en/library/grant/#global-privileges)も制限されています。
 
 ## <a name="data-manipulation-statement-support"></a>データ操作ステートメントのサポート
 

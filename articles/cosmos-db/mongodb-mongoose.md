@@ -1,25 +1,24 @@
 ---
-title: Azure Cosmos DB で Mongoose フレームワークを使用する | Microsoft Docs
-description: Node.js Mongoose アプリを Azure Cosmos DB に接続する方法について説明します。
-services: cosmos-db
-author: slyons
-manager: kfile
+title: Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
+description: Mongoose フレームワークを使用して Azure Cosmos DB のデータを格納および管理する方法について説明します。
+author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 01/08/2018
-ms.author: sclyon
-ms.openlocfilehash: 8cfa53a1792d8e01c05aad8e4a1a0b5239a092c1
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 12/06/2018
+ms.author: sngun
+ms.custom: seodec18
+ms.openlocfilehash: ec47c265c3d6f826bc1b7e7d8038e284c6981b7a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857397"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134932"
 ---
-# <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: Azure Cosmos DB で Mongoose フレームワークを使用する
+# <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
 
-このチュートリアルでは、Azure Cosmos DB にデータを格納するときに [Mongoose フレームワーク](http://mongoosejs.com/)を使用する方法について説明します。 このチュートリアルでは MongoDB API for Azure Cosmos DB を使用します。 知らない場合に備えて説明すると、Mongoose は、Node.js での MongoDB 用のオブジェクト モデル化フレームワークです。アプリケーション データをモデル化するための単純なスキーマベース ソリューションが提供されます。
+このチュートリアルでは、Azure Cosmos DB にデータを格納するときに [Mongoose フレームワーク](https://mongoosejs.com/)を使用する方法について説明します。 このチュートリアルでは MongoDB API for Azure Cosmos DB を使用します。 知らない場合に備えて説明すると、Mongoose は、Node.js での MongoDB 用のオブジェクト モデル化フレームワークです。アプリケーション データをモデル化するための単純なスキーマベース ソリューションが提供されます。
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
@@ -96,7 +95,7 @@ Mongoose では、ユーザーが作成するモデルごとに、新しい Mong
 
 このチュートリアルでは 2 つのモデルを扱います。 最初は、コレクションごとに 1 種類のデータを格納するモデルについて説明します。 これは、Mongoose の標準の動作です。
 
-Mongoose には、[ディスクリミネーター](http://mongoosejs.com/docs/discriminators.html)という概念もあります。 ディスクリミネーターはスキーマ継承メカニズムです。 これにより、基礎となる同一の MongoDB コレクション上で、スキーマが重複する複数のモデルを持つことが可能になります。
+Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/discriminators.html)という概念もあります。 ディスクリミネーターはスキーマ継承メカニズムです。 これにより、基礎となる同一の MongoDB コレクション上で、スキーマが重複する複数のモデルを持つことが可能になります。
 
 同一コレクション内にさまざまなデータ モデルを格納でき、クエリの際にはフィルター句を使用して必要なデータのみをプルダウンできます。
 
@@ -196,7 +195,7 @@ Mongoose には、[ディスクリミネーター](http://mongoosejs.com/docs/di
 
 ### <a name="using-mongoose-discriminators-to-store-data-in-a-single-collection"></a>Mongoose ディスクリミネーターを使用して 1 つのコレクションにデータを格納する
 
-この方法では、各 Azure Cosmos DB コレクションのコストを最適化するために [Mongoose ディスクリミネーター](http://mongoosejs.com/docs/discriminators.html)を使用します。 ディスクリミネーターによって、識別するための "キー" を定義することができ、このキーを使用して、さまざまなオブジェクト モデルでの格納、識別、フィルター処理が可能になります。
+この方法では、各 Azure Cosmos DB コレクションのコストを最適化するために [Mongoose ディスクリミネーター](https://mongoosejs.com/docs/discriminators.html)を使用します。 ディスクリミネーターによって、識別するための "キー" を定義することができ、このキーを使用して、さまざまなオブジェクト モデルでの格納、識別、フィルター処理が可能になります。
 
 ここでは、ベース オブジェクト モデルを作成し、識別キーを定義し、ベース モデルに拡張子として 'Family' と 'VacationDestinations' を追加します。
 

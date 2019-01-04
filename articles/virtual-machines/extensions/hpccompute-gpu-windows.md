@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/15/2018
+ms.date: 12/5/2018
 ms.author: roiyz
-ms.openlocfilehash: ee74d4520e867604f50c70f2b6449f12ff3bd8b9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2a29cae6e7f391dfee75e89ea91525268db3fa62
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495965"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971965"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows 用の NVIDIA GPU ドライバー拡張機能
 
@@ -78,17 +78,8 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 | type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
-### <a name="settings"></a>設定
-
-すべての設定は省略可能です。 既定の動作では、サポートされている最新のドライバーが必要に応じてインストールされます。
-
-| Name | 説明 | 既定値 | 有効な値 | データ型 |
-| ---- | ---- | ---- | ---- | ---- |
-| driverVersion | NV: GRID ドライバーのバージョン<br> NC/ND: CUDA ドライバーのバージョン | latest | GRID: "411.81"、"391.81"、"391.58"、"391.03"<br> CUDA: "398.75"、"397.44"、"390.85" | string |
-| installGridND | ND シリーズ VM への GRID ドライバーのインストール | false | true、false | ブール値 |
 
 ## <a name="deployment"></a>Deployment
-
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート 
 
@@ -135,8 +126,6 @@ Set-AzureRmVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
-次の例では、上記の ARM と PowerShell の例を反映し、既定以外のドライバーのインストールの例としてカスタム設定も追加します。 具体的には、ND シリーズ VM がプロビジョニングされる場合でも、特定の GRID ドライバーがインストールされます。
-
 ```azurecli
 az vm extension set `
   --resource-group myResourceGroup `
@@ -145,8 +134,6 @@ az vm extension set `
   --publisher Microsoft.HpcCompute `
   --version 1.2 `
   --settings '{ `
-    "driverVersion": "391.03",
-    "installGridND": true
   }'
 ```
 
@@ -176,7 +163,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | :---: | --- | --- |
 | 0 | 操作に成功しました |
 | 1 | 操作に成功しました。 再起動が必要です。 |
-| 100 | 操作はサポートされていないか、完了できませんでした。 | 考えられる原因: PowerShell のバージョンがサポートされていない、VM のサイズが N シリーズの VM ではない、またはデータのダウンロードに失敗しています。 ログ ファイルをチェックして、エラーの原因を特定します。 |
+| 100 | 操作はサポートされていないか、完了できませんでした。 | 考えられる原因:PowerShell のバージョンがサポートされていない、VM のサイズが N シリーズの VM ではない、またはデータのダウンロードに失敗しています。 ログ ファイルをチェックして、エラーの原因を特定します。 |
 | 240、840 | 操作がタイムアウトしました。 | 操作を再試行します。 |
 | -1 | 例外が発生しました。 | ログ ファイルを確認して例外の原因を特定します。 |
 | -5x | 保留中の再起動により操作が中断されました。 | VM を再起動します。 インストールは再起動後に続行されます。 アンインストールは手動で行う必要があります。 |

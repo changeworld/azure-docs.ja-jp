@@ -10,21 +10,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: f6b362b260c913faaad57d19c92fe6d6583093f0
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 422ae24357290a782b05ab7e5580c09e8472ddf8
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685873"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408665"
 ---
-# <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>HDInsight の Hadoop での時間ベースの Oozie コーディネーターを使用したワークフローの定義とジョブの調整
-この記事では、ワークフローとコーディネーターを定義する方法と、時間に基づいてコーディネーター ジョブを起動する方法について説明します。 この記事を読む前に、「[HDInsight での Oozie の使用][hdinsight-use-oozie]」を読むと役に立ちます。 ジョブのスケジューリングには、Oozie に加え、Azure Data Factory を使用することもできます。 Azure Data Factory については、「 [Data Factory で Pig および Hive を使用する](../data-factory/transform-data.md)」を参照してください。
+# <a name="use-time-based-apache-oozie-coordinator-with-apache-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>HDInsight の Apache Hadoop での時間ベースの Apache Oozie コーディネーターを使用したワークフローの定義とジョブの調整
+この記事では、ワークフローとコーディネーターを定義する方法と、時間に基づいてコーディネーター ジョブを起動する方法について説明します。 この記事を読む前に、「[HDInsight での Apache Oozie の使用][hdinsight-use-oozie]」を読むと役に立ちます。 ジョブのスケジューリングには、Oozie に加え、Azure Data Factory を使用することもできます。 Azure Data Factory については、[Data Factory での Apache Pig と Apache Hive の使用](../data-factory/transform-data.md)に関するページを参照してください。
 
-> [!NOTE]
+> [!NOTE]  
 > この記事では、Windows ベースの HDInsight クラスターが必要です。 Linux ベースのクラスターで Oozie を使用する方法 (時間ベースのジョブを含む) の詳細については、「 [Linux ベースの HDInsight での Hadoop と Oozie を使用したワークフローの実行](hdinsight-use-oozie-linux-mac.md)
 
 ## <a name="what-is-oozie"></a>Oozie とは
-Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Hadoop スタックと統合されていて、Apache MapReduce、Apache Pig、Apache Hive、Apache Sqoop の Hadoop ジョブをサポートしています。 Java プログラムやシェル スクリプトのような、システム特有のジョブのスケジュールを設定するのに使用することもできます。
+Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Hadoop スタックと統合されていて、Apache Hadoop MapReduce、Apache Pig、Apache Hive、Apache Sqoop の Hadoop ジョブをサポートしています。 Java プログラムやシェル スクリプトのような、システム特有のジョブのスケジュールを設定するのに使用することもできます。
 
 次の図は、実装するワークフローを示しています。
 
@@ -32,7 +32,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 ワークフローには、次の 2 つのアクションが含まれています。
 
-1. Hive アクションは、HiveQL スクリプトを実行して、log4j ログ ファイルのログ レベル タイプごとの出現回数をカウントします。 各 log4j ログは、タイプと重要度を表す [LOG LEVEL] フィールドを含むフィールド行で構成されています。以下に例を示します。
+1. Hive アクションは、HiveQL スクリプトを実行して、Apache log4j ログ ファイルのログ レベル タイプごとの出現回数をカウントします。 各 log4j ログは、タイプと重要度を表す [LOG LEVEL] フィールドを含むフィールド行で構成されています。以下に例を示します。
 
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
@@ -48,10 +48,10 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
         [TRACE] 816
         [WARN]  4
 
-    Hive の詳細については、[HDInsight での Hive の使用][hdinsight-use-hive]に関するページを参照してください。
-2. Sqoop アクションは、Azure SQL データベースのテーブルに HiveQL アクションの出力をエクスポートします。 Sqoop の詳細については、「[HDInsight での Sqoop の使用][hdinsight-use-sqoop]」を参照してください。
+    Hive の詳細については、[HDInsight での Apache Hive の使用][hdinsight-use-hive]に関するページを参照してください。
+2. Sqoop アクションは、Azure SQL データベースのテーブルに HiveQL アクションの出力をエクスポートします。 Sqoop の詳細については、[HDInsight での Apache Sqoop の使用][hdinsight-use-sqoop]に関するページを参照してください。
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight クラスターでサポートされている Oozie のバージョンについては、「[HDInsight で提供されるクラスター バージョンの新機能][hdinsight-versions]」を参照してください。
 >
 >
@@ -61,7 +61,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 * **Azure PowerShell を実行できるワークステーション**。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Azure サービス マネージャーを使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは、2017 年 1 月 1 日までに**非推奨**となる予定です。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
     >
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
@@ -87,10 +87,10 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
     <tr><td>SQL データベース名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先となる Azure SQL データベース。 </td></tr>
     </table>
 
-  > [!NOTE]
+  > [!NOTE]   
   > 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。 このファイアウォール設定が無効になっている場合は、Azure Portal から有効にする必要があります。 SQL データベースの作成とファイアウォール ルールの構成手順については、[SQL Database の作成と構成][sqldatabase-get-started]に関する記事を参照してください。
 
-> [!NOTE]
+> [!NOTE]  
 > テーブルに値を入力します。 そうしておくと、このチュートリアルを読み進める際に役に立ちます。
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Oozie ワークフローと関連 HiveQL スクリプトを定義する
@@ -103,8 +103,8 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 3. **log4j ログ ファイルの場所**。 フィールド区切り記号はコンマ (,) です。 既定の行区切り記号は "\n" です。 Hive 外部テーブルは、Oozie ワークフローを複数回実行する場合に、データ ファイルが元の場所から削除されないようにするために使用されています。
 4. **INSERT OVERWRITE ステートメント** は、log4j Hive テーブルの各ログ レベル タイプの出現回数をカウントし、その出力を Azure BLOB ストレージの場所に保存します。
 
-> [!NOTE]
-> Hive パスには既知の問題があります。 この問題に見舞われるのは、Oozie ジョブを送信するときです。 問題の修正手順については、TechNet Wiki の「[HDInsight Hive エラー: 名前を変更できません][technetwiki-hive-error]」を参照してください。
+> [!NOTE]  
+> Hive パスには既知の問題があります。 この問題に見舞われるのは、Oozie ジョブを送信するときです。 問題の修正手順については、TechNet Wiki の「[HDInsight Hive エラー:名前を変更できません][technetwiki-hive-error]」を参照してください。
 
 **ワークフローによって呼び出される HiveQL スクリプト ファイルを定義するには**
 
@@ -262,7 +262,7 @@ HDInsight クラスターをプロビジョニングするときに、HDFS と�
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight クラスター バージョン 3.0 では、*wasb://* 構文のみがサポートされます。 旧バージョンの *asv://* 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.0 クラスターではサポートされません。
 >
 > wasb:// パスは仮想パスです。 詳細については、[HDInsight での Azure Blob Storage の使用][hdinsight-storage]に関する記事を参照してください。
@@ -287,7 +287,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 * CREATE EXTERNAL TABLE コマンドはデータ ファイルを移動しません。
 * CREATE EXTERNAL TABLE コマンドでは、LOCATION 句で指定されたフォルダーにサブフォルダーがあることが許されていません。 チュートリアルで sample.log ファイルのコピーを作成しているのは、これが理由です。
 
-詳細については、「[HDInsight: Hive Internal and External Tables Intro (HDInsight: Hive の内部テーブルと外部テーブルの概要)][cindygross-hive-tables]」を参照してください。
+詳細については、[HDInsight のApache Hiveの内部テーブルと外部テーブルの概要][cindygross-hive-tables]に関するページを参照してください。
 
 **チュートリアルを準備するには**
 
@@ -300,7 +300,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
     Azure アカウント資格情報の入力を求められます。 サブスクリプション接続を追加するこの方法はタイム アウトし、12 時間後には、このコマンドレットを再度実行する必要があります。
 
-   > [!NOTE]
+   > [!NOTE]  
    > Azure サブスクリプションが複数あり、使用するサブスクリプションが既定のサブスクリプションではない場合は、<strong>Select-AzureSubscription</strong> コマンドレットを使用してサブスクリプションを選択します。
 
 3. 次のスクリプトをスクリプト ウィンドウにコピーしてから、最初の 6 個の変数を設定します。
@@ -536,7 +536,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
     "@
     ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > ワークフロー送信ペイロード ファイルと比較した場合の主な相違点は、 **oozie.coord.application.path**変数です。 ワークフロー ジョブを送信する場合は、代わりに **oozie.wf.application.path** を使用します。
 
 4. スクリプトの末尾に次のコードを追加します。 この部分は、Oozie Web サービスの状態をチェックします。
@@ -578,7 +578,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
     }
     ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > ワークフロー ジョブを送信するときに別の Web サービスを呼び出して、ジョブが作成された後にそのジョブを開始する必要があります。 この場合は、コーディネーター ジョブは、時間によってトリガーされます。 このジョブは自動的に開始されます。
 
 6. スクリプトの末尾に次のコードを追加します。 この部分は、Oozie ジョブの状態をチェックします。
@@ -713,9 +713,9 @@ $conn.close()
 * [HDInsight での Azure Blob Storage の使用][hdinsight-storage]
 * [Azure PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
-* [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
-* [HDInsight での Hive の使用][hdinsight-use-hive]
-* [HDInsight での Pig の使用][hdinsight-use-pig]
+* [HDInsight での Apache Sqoop の使用][hdinsight-use-sqoop]
+* [HDInsight での Apache Hive の使用][hdinsight-use-hive]
+* [HDInsight での Apache Pig の使用][hdinsight-use-pig]
 * [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-java-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
@@ -744,13 +744,13 @@ $conn.close()
 [apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/
 [apache-oozie-332]: http://oozie.apache.org/docs/3.3.2/
 
-[powershell-download]: http://azure.microsoft.com/downloads/
+[powershell-download]: https://azure.microsoft.com/downloads/
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell?view=powershell-6
-[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
-[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [img-workflow-diagram]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Workflow.Diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Preparation.Output1.png

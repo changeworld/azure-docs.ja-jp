@@ -7,17 +7,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/06/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 716cf9e47cd71d003513066d390f9dccb5c83dcb
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: a5bf15289e91cc568524e8110702b5608118bc2d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344128"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833926"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C: Android アプリケーションを使用してサインインする
+# <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C:Android アプリケーションを使用してサインインする
 
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 これらの標準により、Azure Active Directory B2C と統合する任意のライブラリを活用できます。 他のライブラリを使用できるように、このようなチュートリアルを使用して、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を示すことができます。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
 
@@ -40,21 +40,21 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この情報は後で必要になります。
 * ネイティブ クライアントの**リダイレクト URI** (例: com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect) を設定します。 この情報も後で必要になります。
 
-## <a name="create-your-policies"></a>ポリシーの作成
+## <a name="create-your-user-flows"></a>ユーザー フローを作成する
 
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、このポリシーを作成する必要があります。 ポリシーを作成するときは、以下の操作を必ず実行してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ユーザー フロー](active-directory-b2c-reference-policies.md)によって定義されます。これは、Azure AD の動作を制御するポリシーのセットです。 このアプリには、サインインとサインアップのユーザー フローを組み合わせた 1 つの ID エクスペリエンスが含まれています。 [ユーザー フローについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)で説明されているように、このユーザー フローを作成する必要があります。 ユーザー フローを作成するときは、必ず次のようにします。
 
-* ポリシーのサインアップ属性として **[表示名]** を選択します。
-* すべてのポリシーで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。 その他のクレームも選択できます。
-* ポリシーの作成後、各ポリシーの **名前** をコピーしておきます。 名前には、 `b2c_1_`というプレフィックスが付加されています。  このポリシー名は後で必要になります。
+* ユーザー フローのサインアップ属性として **[表示名]** を選択します。
+* すべてのユーザー フローで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。 その他のクレームも選択できます。
+* ユーザー フローの作成後、各ユーザー フローの **[名前]** をコピーしておきます。 名前には、 `b2c_1_`というプレフィックスが付加されています。  このユーザー フロー名は後で必要になります。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-ポリシーを作成したら、アプリを構築できます。
+ユーザー フローを作成したら、アプリを構築できます。
 
 ## <a name="download-the-sample-code"></a>サンプル コードのダウンロード
 
-AppAuth と Azure AD B2C を使用する実稼働するサンプルが [GitHub](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c) に用意されています。 そのコードをダウンロードして実行できます。 [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) の説明に従って、独自の Azure AD B2C 構成を使用してアプリを開始できます。
+AppAuth と Azure AD B2C を使用する実稼働するサンプルが [github](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c) に用意されています。 そのコードをダウンロードして実行できます。 [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) の説明に従って、独自の Azure AD B2C 構成を使用してアプリを開始できます。
 
 サンプルは、[AppAuth](https://openid.github.io/AppAuth-Android/) によって提供されたサンプルを変更したものです。 AppAuth とその機能の詳細については、AppAuth のページを参照してください。
 
@@ -69,7 +69,7 @@ AppAuth と Azure AD B2C を使用する実稼働するサンプルが [GitHub](
 Azure AD B2C との通信は、探索 URI を指定するか、承認エンドポイント URI とトークン エンドポイント URI の両方を指定することで構成できます。 どちらの場合でも、次の情報を指定する必要があります。
 
 * テナント ID (例: contoso.onmicrosoft.com)
-* ポリシー名 (例: B2C\_1\_SignUpIn)
+* ユーザー フロー名 (例: B2C\_1\_SignUpIn)
 
 承認 URI とトークン エンドポイント URI を自動的に検出することを選択した場合は、探索 URI から情報を取得する必要があります。 探索 URI は、次の URL の Tenant\_ID と Policy\_Name を置き換えることで生成できます。
 

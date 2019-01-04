@@ -36,7 +36,7 @@ ms.locfileid: "45605761"
 * [シングルページ アプリにおける Azure Active Directory B2C を使用したユーザーの認証に関するチュートリアル](active-directory-b2c-tutorials-spa.md)を完了する。
 * **ASP.NET および Web 開発**のワークロードと共に、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールする。
 * [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 以降
-* [Node.js](https://nodejs.org/en/download/)
+*  [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="register-web-api"></a>Web API の登録
 
@@ -57,8 +57,8 @@ Azure AD B2C テナントの全体管理者として [Azure Portal](https://port
     | Setting      | 推奨値  | Description                                        |
     | ------------ | ------- | -------------------------------------------------- |
     | **名前** | Hello Core API | 開発者が Web API を把握できる**名前**を入力します。 |
-    | **Web アプリ/Web API を含める** | [はい] | Web API の場合は **[はい]** を選択します。 |
-    | **暗黙的フローを許可する** | [はい] | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
+    | **Web アプリ/Web API を含める** | はい | Web API の場合は **はい** を選択します。 |
+    | **暗黙的フローを許可する** | はい | API では [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
     | **応答 URL** | `http://localhost:5000` | 応答 URL は、API が要求したトークンを Azure AD B2C が返すエンドポイントです。 このチュートリアルでは、サンプル Web API はローカル (localhost) で実行され、ポート 5000 (後でこのチュートリアルで使用するために、以前に構成した) でリッスンします。 |
     | **アプリケーション ID/URI** | HelloCoreAPI | この URI は、テナント内の API を一意に識別します。 これにより、テナントごとに複数の API を登録することができます。 [スコープ](../active-directory/develop/developer-glossary.md#scopes)は、保護された API リソースへのアクセスを統制し、App ID URI ごとに定義されます。 |
     | **ネイティブ クライアント** | いいえ  | これはネイティブ クライアントではなく Web API のため、[いいえ] を選択します。 |

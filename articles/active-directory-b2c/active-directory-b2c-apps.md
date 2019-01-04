@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7671a0a99e12463fcce5ff33fbcba7e8677dde05
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 91102b9fe57b2291ce1d1678b71b3a8b0b834864
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006196"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721971"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Azure Active Directory B2C で使用できるアプリケーションの種類
 
@@ -26,7 +26,7 @@ Azure AD B2C を使用しているすべてのアプリケーションは、[Azu
 * アプリケーションを一意に識別する **アプリケーション ID**。
 * 応答をアプリケーションにリダイレクトして戻すために使用できる**応答 URL**。
 
-Azure AD B2C に送信される各要求は、 **ポリシー**を指定します。 ポリシーは、Azure AD の動作を制御します。 これらのエンドポイントを使用して、高度にカスタマイズ可能なユーザー エクスペリエンスのセットを作成することもできます。 一般的なポリシーとしては、サインアップ ポリシー、サインイン ポリシー、プロファイル編集ポリシーなどがあります。 これらのポリシーを詳しく理解していない場合は、先に進む前に Azure AD B2C の「 [拡張可能ポリシー フレームワーク](active-directory-b2c-reference-policies.md) 」を参照する必要があります。
+Azure AD B2C に送信される各要求で**ユーザー フロー**が指定されます。これは、Azure AD の動作を制御するポリシーです。 これらのエンドポイントを使用して、高度にカスタマイズ可能なユーザー エクスペリエンスのセットを作成することもできます。 サインアップ、サインイン、プロファイル編集のポリシーなど、一般的なポリシーの設定に役立つユーザー フローのセットが提供されています。 ただし、独自のカスタム ポリシーを作成することもできます。 これらのポリシーを詳しく理解していない場合は、先に進む前に Azure AD B2C の「 [拡張可能ポリシー フレームワーク](active-directory-b2c-reference-policies.md) 」を参照する必要があります。
 
 すべてのアプリケーションによるやり取りは、次のような大まかなパターンに従って行われます。
 
@@ -165,8 +165,8 @@ Azure AD B2C を使用して Web API をセキュリティ保護する方法の�
 
 モバイル/ネイティブ アプリケーションを作成するときに、**応答 URL** の代わりに**リダイレクト URI** を定義します。 リダイレクト URI を選択する際には、2 つの重要な考慮事項があります。
 
-- **一意**: リダイレクト URI のスキームは、すべてのアプリケーションで一意である必要があります。 `com.onmicrosoft.contoso.appname://redirect/path` の例では、`com.onmicrosoft.contoso.appname` はスキームです。 このパターンに従う必要があります。 2 つのアプリケーションで同じスキームを共有している場合、ユーザーには **[アプリの選択]** ダイアログが表示されます。 ユーザーが不適切な選択を行った場合、ログインは失敗します。
-- **完全**: リダイレクト URI には、スキームとパスが必要です。 パスには、ドメインの後に少なくとも 1 つのスラッシュを含める必要があります。 たとえば、`//contoso/` は機能しますが、`//contoso` は失敗します。 リダイレクト URI にアンダースコアなどの特殊文字がないことを確認します。
+- **一意**:リダイレクト URI のスキームは、すべてのアプリケーションで一意である必要があります。 `com.onmicrosoft.contoso.appname://redirect/path` の例では、`com.onmicrosoft.contoso.appname` はスキームです。 このパターンに従う必要があります。 2 つのアプリケーションで同じスキームを共有している場合、ユーザーには **[アプリの選択]** ダイアログが表示されます。 ユーザーが不適切な選択を行った場合、ログインは失敗します。
+- **完全**:リダイレクト URI には、スキームとパスが必要です。 パスには、ドメインの後に少なくとも 1 つのスラッシュを含める必要があります。 たとえば、`//contoso/` は機能しますが、`//contoso` は失敗します。 リダイレクト URI にアンダースコアなどの特殊文字がないことを確認します。
 
 ### <a name="faulted-apps"></a>アプリの障害
 

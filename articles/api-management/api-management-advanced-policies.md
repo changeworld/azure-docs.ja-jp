@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 803fa89145d3a38b2df34666754fe8949a74eb53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a36ad31531e41782f5be457450737a74f476c543
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262337"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584878"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -125,15 +125,15 @@ ms.locfileid: "51262337"
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|choose|ルート要素。|[はい]|
-|when|`choose` ポリシーの `if` または `ifelse` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。|[はい]|
+|choose|ルート要素。|はい|
+|when|`choose` ポリシーの `if` または `ifelse` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。|はい|
 |otherwise|`when` 条件のいずれも `true` に評価されない場合に使用されるポリシー スニペットが含まれます。|いいえ |
 
 ### <a name="attributes"></a>属性
 
 |Attribute|説明|必須|
 |---------------|-----------------|--------------|
-|condition="ブール式 &#124; ブール型定数"|含んでいる `when` ポリシー ステートメントが評価されるときに評価されるブール式または定数。|[はい]|
+|condition="ブール式 &#124; ブール型定数"|含んでいる `when` ポリシー ステートメントが評価されるときに評価されるブール式または定数。|はい|
 
 ###  <a name="ChooseUsage"></a> 使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -237,7 +237,7 @@ ms.locfileid: "51262337"
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|forward-request|ルート要素。|[はい]|
+|forward-request|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
@@ -253,7 +253,7 @@ ms.locfileid: "51262337"
 -   **ポリシー スコープ:** すべてのスコープ
 
 ##  <a name="LimitConcurrency"></a>コンカレンシーを制限する
- `limit-concurrency` ポリシーは、含まれているポリシーが特定の時点で指定された数を超える要求によって実行されないようにします。 その数を超えた場合は、新しい要求は 429 Too Many Requests (要求が多すぎます) のステータス コードですぐに失敗します。
+ `limit-concurrency` ポリシーは、含まれているポリシーがいずれかの時点で指定された数を超える要求によって実行されないようにします。 その数を超えた場合は、新しい要求は 429 Too Many Requests (要求が多すぎます) のステータス コードですぐに失敗します。
 
 ###  <a name="LimitConcurrencyStatement"></a> ポリシー ステートメント
 
@@ -284,14 +284,14 @@ ms.locfileid: "51262337"
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|limit-concurrency|ルート要素。|[はい]|
+|limit-concurrency|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
 |Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|--------------|
-|key|文字列。 式を使用できます。 コンカレンシー スコープを指定します。 複数のポリシーで共有できます。|[はい]|該当なし|
-|max-count|整数。 ポリシーに入力できる要求の最大数を指定します。|[はい]|該当なし|
+|key|文字列。 式を使用できます。 コンカレンシー スコープを指定します。 複数のポリシーで共有できます。|はい|該当なし|
+|max-count|整数。 ポリシーに入力できる要求の最大数を指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -334,13 +334,13 @@ ms.locfileid: "51262337"
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|log-to-eventhub|ルート要素。 この要素の値は、イベント ハブに記録する文字列です。|[はい]|
+|log-to-eventhub|ルート要素。 この要素の値は、イベント ハブに記録する文字列です。|はい|
 
 ### <a name="attributes"></a>属性
 
 |Attribute|説明|必須|
 |---------------|-----------------|--------------|
-|logger-id|API Management サービスに登録されているロガーの ID。|[はい]|
+|logger-id|API Management サービスに登録されているロガーの ID。|はい|
 |partition-id|メッセージが送信されるパーティションのインデックスを指定します。|省略可能。 `partition-key` を使用する場合はこの属性を使用できません。|
 |partition-key|メッセージの送信時にパーティション割り当てに使用される値を指定します。|省略可能。 `partition-id` を使用する場合はこの属性を使用できません。|
 
@@ -377,7 +377,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|mock-response|ルート要素。|[はい]|
+|mock-response|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
@@ -433,15 +433,15 @@ status code and media type. If no example or schema found, the content is empty.
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|retry|ルート要素。 他のポリシーを子要素として含めることができます。|[はい]|
+|retry|ルート要素。 他のポリシーを子要素として含めることができます。|はい|
 
 ### <a name="attributes"></a>属性
 
 |Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|-------------|
-|condition|再試行を停止する (`false`) か続行する (`true`) かを指定するブール型リテラルまたは[式](api-management-policy-expressions.md)。|[はい]|該当なし|
-|count|最大再試行回数を指定する正の数。|[はい]|該当なし|
-|interval|再試行の間の待機間隔を指定する正の数 (秒単位)。|[はい]|該当なし|
+|condition|再試行を停止する (`false`) か続行する (`true`) かを指定するブール型リテラルまたは[式](api-management-policy-expressions.md)。|はい|該当なし|
+|count|最大再試行回数を指定する正の数。|はい|該当なし|
+|interval|再試行の間の待機間隔を指定する正の数 (秒単位)。|はい|該当なし|
 |max-interval|再試行の間の最大待機間隔を指定する正の数 (秒単位)。 指数再試行アルゴリズムを実装するために使用されます。|いいえ |該当なし|
 |delta|待機間隔の増分値を指定する正の数 (秒単位)。 線形再試行アルゴリズムと指数再試行アルゴリズムを実装するために使用されます。|いいえ |該当なし|
 |first-fast-retry|`true` に設定した場合、最初の再試行がすぐに実行されます。|いいえ |`false`|
@@ -488,7 +488,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|return-response|ルート要素。|[はい]|
+|return-response|ルート要素。|はい|
 |set-header|[set-header](api-management-transformation-policies.md#SetHTTPheader) ポリシー ステートメント。|いいえ |
 |set-body|[set-body](api-management-transformation-policies.md#SetBody) ポリシー ステートメント。|いいえ |
 |set-status|[set-status](api-management-advanced-policies.md#SetStatus) ポリシー ステートメント。|いいえ |
@@ -555,7 +555,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|send-one-way-request|ルート要素。|[はい]|
+|send-one-way-request|ルート要素。|はい|
 |url|要求の URL。|いいえ (mode=copy の場合)。はい (それ以外の場合)。|
 |method|要求の HTTP メソッド。|いいえ (mode=copy の場合)。はい (それ以外の場合)。|
 |ヘッダー|要求ヘッダー。 複数の要求ヘッダーには複数のヘッダー要素を使用します。|いいえ |
@@ -568,7 +568,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|-------------|
 |mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|いいえ |新規|
-|name|設定するヘッダーの名前を指定します。|[はい]|該当なし|
+|name|設定するヘッダーの名前を指定します。|はい|該当なし|
 |exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ |override|
 
 ### <a name="usage"></a>使用法
@@ -637,7 +637,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|send-request|ルート要素。|[はい]|
+|send-request|ルート要素。|はい|
 |url|要求の URL。|いいえ (mode=copy の場合)。はい (それ以外の場合)。|
 |method|要求の HTTP メソッド。|いいえ (mode=copy の場合)。はい (それ以外の場合)。|
 |ヘッダー|要求ヘッダー。 複数の要求ヘッダーには複数のヘッダー要素を使用します。|いいえ |
@@ -649,10 +649,10 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|-------------|
 |mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|いいえ |新規|
-|response-variable-name="文字列"|応答オブジェクトを受信するコンテキスト変数の名前。 この変数が存在しない場合は、ポリシーの正常な実行時に作成され、[`context.Variable`](api-management-policy-expressions.md#ContextVariables) コレクション経由でアクセス可能になります。|[はい]|該当なし|
+|response-variable-name="文字列"|応答オブジェクトを受信するコンテキスト変数の名前。 この変数が存在しない場合は、ポリシーの正常な実行時に作成され、[`context.Variable`](api-management-policy-expressions.md#ContextVariables) コレクション経由でアクセス可能になります。|はい|該当なし|
 |timeout="整数"|URL の呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。|いいえ |60|
 |ignore-error|true に設定され、要求の結果がエラーになった場合:<br /><br /> - response-variable-name が指定されている場合、null 値を格納します。<br />- response-variable-name が指定されていない場合、context.Request は更新されません。|いいえ |false|
-|name|設定するヘッダーの名前を指定します。|[はい]|該当なし|
+|name|設定するヘッダーの名前を指定します。|はい|該当なし|
 |exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ |override|
 
 ### <a name="usage"></a>使用法
@@ -684,13 +684,13 @@ status code and media type. If no example or schema found, the content is empty.
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|proxy|ルート要素|[はい]|
+|proxy|ルート要素|はい|
 
 ### <a name="attributes"></a>属性
 
 |Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|-------------|
-|url="string"|http://host:port の形式のプロキシ URL。|[はい]|該当なし|
+|url="string"|http://host:port の形式のプロキシ URL。|はい|該当なし|
 |username="string"|プロキシで認証に使用するユーザー名。|いいえ |該当なし|
 |password="string"|プロキシで認証に使用するパスワード。|いいえ |該当なし|
 
@@ -744,7 +744,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|set-method|ルート要素。 要素の値は、HTTP メソッドを指定します。|[はい]|
+|set-method|ルート要素。 要素の値は、HTTP メソッドを指定します。|はい|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -784,14 +784,14 @@ status code and media type. If no example or schema found, the content is empty.
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|set-status|ルート要素。|[はい]|
+|set-status|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
 |Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|-------------|
-|code="整数"|返される HTTP 状態コード。|[はい]|該当なし|
-|reason="文字列"|状態コードを返す理由の説明。|[はい]|該当なし|
+|code="整数"|返される HTTP 状態コード。|はい|該当なし|
+|reason="文字列"|状態コードを返す理由の説明。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -819,14 +819,14 @@ status code and media type. If no example or schema found, the content is empty.
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|set-variable|ルート要素。|[はい]|
+|set-variable|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
 |Attribute|説明|必須|
 |---------------|-----------------|--------------|
-|name|変数の名前。|[はい]|
-|値|変数の値。 式またはリテラル値を指定できます。|[はい]|
+|name|変数の名前。|はい|
+|値|変数の値。 式またはリテラル値を指定できます。|はい|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -876,7 +876,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ```xml
 
-<trace source="arbitrary string literal"/>
+<trace source="arbitrary string literal">
     <!-- string expression or literal -->
 </trace>
 
@@ -886,13 +886,13 @@ status code and media type. If no example or schema found, the content is empty.
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|trace|ルート要素。|[はい]|
+|trace|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
 |Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|-------------|
-|source|メッセージのソースを指定する、トレース ビューアーにとって意味のある文字列リテラル。|[はい]|該当なし|
+|source|メッセージのソースを指定する、トレース ビューアーにとって意味のある文字列リテラル。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -953,7 +953,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 |要素|説明|必須|
 |-------------|-----------------|--------------|
-|wait|ルート要素。 `send-request` ポリシー、`cache-lookup-value` ポリシー、および `choose` ポリシーのみを子要素として含めることができます。|[はい]|
+|wait|ルート要素。 `send-request` ポリシー、`cache-lookup-value` ポリシー、および `choose` ポリシーのみを子要素として含めることができます。|はい|
 
 ### <a name="attributes"></a>属性
 

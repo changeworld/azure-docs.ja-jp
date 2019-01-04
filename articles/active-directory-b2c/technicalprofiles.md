@@ -76,13 +76,13 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 |---------|---------|---------|
-| ID | [はい] | 技術プロファイルの一意の識別子。 ポリシー ファイル内の他の要素からこの識別子を使用して、技術プロファイルを参照することができます。 例として、**OrchestrationSteps** や **ValidationTechnicalProfile** が挙げられます。 |
+| Id | はい | 技術プロファイルの一意の識別子。 ポリシー ファイル内の他の要素からこの識別子を使用して、技術プロファイルを参照することができます。 例として、**OrchestrationSteps** や **ValidationTechnicalProfile** が挙げられます。 |
 
 **TechnicalProfile** には、次の属性が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| ドメイン | 0:1 | 技術プロファイルのドメイン名。 たとえば、技術プロファイルで Facebook ID プロバイダーが指定されている場合、ドメイン名は Facebook.com です。 |
+| Domain | 0:1 | 技術プロファイルのドメイン名。 たとえば、技術プロファイルで Facebook ID プロバイダーが指定されている場合、ドメイン名は Facebook.com です。 |
 | DisplayName | 0:1 | ユーザーに表示できる技術プロファイルの名前。 |
 | 説明 | 0:1 | ユーザーに表示できる技術プロファイルの説明。 |
 | プロトコル | 0:1 | 他の利用者との通信に使用されるプロトコル。 |
@@ -108,7 +108,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Name | [はい] | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`WsFed`、`WsTrust`、`Proprietary`、`session management`、`self-asserted`、または `None`。 |
+| Name | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`WsFed`、`WsTrust`、`Proprietary`、`session management`、`self-asserted`、または `None`。 |
 | Handler | いいえ  | プロトコル名が `Proprietary` に設定されている場合は、Azure AD B2C がプロトコル ハンドラーを決定するために使用するアセンブリの完全修飾名を指定します。 |
 
 ### <a name="metadata"></a>Metadata
@@ -125,7 +125,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| キー | [はい] | メタデータ キー。 メタデータ項目の一覧については、各技術プロファイルの種類を参照してください。 |
+| Key | はい | メタデータ キー。 メタデータ項目の一覧については、各技術プロファイルの種類を参照してください。 |
 
 ### <a name="cryptographickeys"></a>CryptographicKeys
 
@@ -133,16 +133,16 @@ ms.locfileid: "51566535"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| キー | 1:n | この技術プロファイルで使用される暗号化キー。 |
+| Key | 1:n | この技術プロファイルで使用される暗号化キー。 |
 
-#### <a name="key"></a>キー
+#### <a name="key"></a>Key
 
 **Key** 要素には、次の属性が含まれています。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ID | いいえ  | ポリシー ファイル内の他の要素から参照される特定のキー ペアの一意の識別子。 |
-| StorageReferenceId | [はい] | ポリシー ファイル内の他の要素から参照されるストレージ キー コンテナーの識別子。 |
+| Id | いいえ  | ポリシー ファイル内の他の要素から参照される特定のキー ペアの一意の識別子。 |
+| StorageReferenceId | はい | ポリシー ファイル内の他の要素から参照されるストレージ キー コンテナーの識別子。 |
 
 ### <a name="inputclaimstransformations"></a>InputClaimsTransformations
 
@@ -158,7 +158,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | [はい] | ポリシー ファイルまたは親ポリシー ファイルで定義済みの要求変換の識別子。 |
+| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの要求変換の識別子。 |
 
 ### <a name="inputclaims"></a>InputClaims
 
@@ -174,9 +174,9 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | [はい] | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
+| ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 | DefaultValue | いいえ  | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
-| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name'  という要求を使用する場合です。 |
+| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 ### <a name="persistedclaims"></a>PersistedClaims
 
@@ -192,9 +192,9 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | [はい] | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
+| ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 | DefaultValue | いいえ  | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
-| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name'  という要求を使用する場合です。 |
+| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 ### <a name="outputclaims"></a>OutputClaims
 
@@ -210,10 +210,10 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | [はい] | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
+| ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 | DefaultValue | いいえ  | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
 |AlwaysUseDefaultValue |いいえ  |既定値の使用を強制します。  |
-| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name'  という要求を使用する場合です。 |
+| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 ### <a name="outputclaimstransformations"></a>OutputClaimsTransformations
 
@@ -229,7 +229,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | [はい] | ポリシー ファイルまたは親ポリシー ファイルで定義済みの要求変換の識別子。 |
+| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの要求変換の識別子。 |
 
 ### <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
@@ -245,7 +245,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | [はい] | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
+| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
 
 ###  <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
@@ -253,7 +253,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClaimType | [はい] | ポリシー ファイルの ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
+| ClaimType | はい | ポリシー ファイルの ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 
 ### <a name="includetechnicalprofile"></a>IncludeTechnicalProfile
 
@@ -261,7 +261,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | [はい] | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
+| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
 
 ### <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 
@@ -269,7 +269,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | [はい] | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
+| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
 
 ### <a name="enabledforuserjourneys"></a>EnabledForUserJourneys
 ユーザー体験の **ClaimsProviderSelections** は、クレーム プロバイダー選択オプションの一覧とその順序を定義します。 **EnabledForUserJourneys** 要素を使用して、ユーザーが利用できるクレーム プロバイダーをフィルタリングします。 **EnabledForUserJourneys** 要素には、次の値のいずれかが含まれています。

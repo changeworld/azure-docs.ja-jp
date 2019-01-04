@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 93eb6fb0da86909dfc880db2a9bb2331abe4418a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3e664fc83fde937b26a4726f997da4c0cb4d8f8a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948129"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407883"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight クラスターのスケーリング
 
 HDInsight では、クラスター内のワーカー ノードの数をスケールアップおよびスケールダウンできるようにすることで、柔軟性が提供されます。 これにより、クラスターを数時間後または週末に縮小したり、ビジネスの需要のピーク時に拡張したりできます。
 
-たとえば、1 日 1 回または月 1 回に発生するバッチ処理がある場合、そのスケジュールされたイベントの数分前に HDInsight クラスターをスケールアップして、十分な量のメモリと CPU のコンピューティング能力を確保できます。 スケーリングは PowerShell コマンドレットの [`Set–AzureRmHDInsightClusterSize`](hdinsight-administer-use-powershell.md#scale-clusters) で自動化できます。  その後、処理が完了し、使用量が再び減少したら、HDInsight クラスターをスケールダウンしてワーカー ノードの数を減らすことができます。
+たとえば、1 日 1 回または月 1 回に発生するバッチ処理がある場合、そのスケジュールされたイベントの数分前に HDInsight クラスターをスケールアップして、十分な量のメモリと CPU のコンピューティング能力を確保できます。 スケーリングは PowerShell コマンドレットの [`Set–AzureRmHDInsightClusterSize`](hdinsight-administer-use-powershell.md#scale-clusters) で自動化できます。  その後、処理が完了し、使用量が再び減少したら、HDInsight クラスターをスケールダウンしてワーカー ノードの数を減らすことができます。
 
 * [PowerShell](hdinsight-administer-use-powershell.md) でクラスターをスケーリングするには:
 
@@ -77,7 +77,7 @@ yarn application -kill <application_id>
 yarn application -kill "application_1499348398273_0003"
 ```
 
-## <a name="rebalancing-an-hbase-cluster"></a>HBase クラスターの再調整
+## <a name="rebalancing-an-apache-hbase-cluster"></a>Apache HBase クラスターの再調整
 
 リージョン サーバーは、スケーリング操作の完了から数分以内に自動的に調整されます。 リージョン サーバーを手動で調整するには、次の手順を使用します。
 
@@ -99,11 +99,11 @@ yarn application -kill "application_1499348398273_0003"
 
 ![クラスターのスケーリング](./media/hdinsight-scaling-best-practices/scale-cluster.png)
 
-前の画像に示すように、ワーカー ノードが最低限の 1 つになるようにクラスターを縮小した場合、パッチの適用によってワーカー ノードが再起動されたときまたはスケーリング操作の直後に、HDFS がセーフ モードのままになることがあります。
+前の画像に示すように、ワーカー ノードが最低限の 1 つになるようにクラスターを縮小した場合、パッチの適用によってワーカー ノードが再起動されたときまたはスケーリング操作の直後に、Apache HDFS がセーフ モードのままになることがあります。
 
 この主な原因は、Hive がいくつかの `scratchdir` ファイルを使用していて、既定で各ブロックの 3 つのレプリカを必要としていることです。ただし、ワーカー ノードが最低限の 1 つになるようにスケールダウンした場合は、1 つのレプリカしか作成できません。 結果として、`scratchdir` 内のファイルは "*レプリケーション数が不足*" します。 これが原因で、スケール操作後にサービスが再起動したときに HDFS はセーフ モードのままになります。
 
-スケールダウンが試行されると、HDInsight は Ambari 管理インターフェイスを使用してまず不要なワーカー ノードを削除します。これにより、それらの HDFS ブロックが他のオンライン ワーカー ノードにレプリケートされます。その後、クラスターを安全にスケールダウンします。 HDFS は、メンテナンス期間中はセーフ モードになり、スケーリングが終了すると元の状態に戻ります。 このときに、HDFS がセーフ モードのままになる場合があります。
+スケールダウンが試行されると、HDInsight は Apache Ambari 管理インターフェイスを使用してまず不要なワーカー ノードを削除します。これにより、それらの HDFS ブロックが他のオンライン ワーカー ノードにレプリケートされます。その後、クラスターを安全にスケールダウンします。 HDFS は、メンテナンス期間中はセーフ モードになり、スケーリングが終了すると元の状態に戻ります。 このときに、HDFS がセーフ モードのままになる場合があります。
 
 HDFS では、`dfs.replication` が 3 に設定されています。 したがって、オンラインのワーカー ノードが 3 つ未満の場合は常にスクラッチ ファイルのブロックのレプリケーション数が不足します。これは、各ファイル ブロックの予想される 3 つのコピーを利用できないためです。
 
@@ -117,13 +117,13 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 
 ### <a name="example-errors-when-safe-mode-is-turned-on"></a>セーフ モードがオンになっている場合のエラーの例
 
-* H070 Unable to open Hive session. org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Cannot create directory** /tmp/hive/hive/819c215c-6d87-4311-97c8-4f0b9d2adcf0. **Name node is in safe mode**. The reported blocks 75 needs additional 12 blocks to reach the threshold 0.9900 of total blocks 87. The number of live datanodes 10 has reached the minimum number 0. Safe mode will be turned off automatically once the thresholds have been reached.
+* H070 Unable to open Hive session. org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException:**Cannot create directory** /tmp/hive/hive/819c215c-6d87-4311-97c8-4f0b9d2adcf0. **Name node is in safe mode**. The reported blocks 75 needs additional 12 blocks to reach the threshold 0.9900 of total blocks 87. The number of live datanodes 10 has reached the minimum number 0. Safe mode will be turned off automatically once the thresholds have been reached.
 
-* H100 Unable to submit statement show databases: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] failed: **Connection refused**
+* H100 Unable to submit statement show databases: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException:Connect to hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] failed:**Connection refused**
 
-* H020 Could not establish connection to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001: org.apache.thrift.transport.TTransportException: Could not create http connection to http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Connect to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] failed: Connection refused: org.apache.thrift.transport.TTransportException: Could not create http connection to http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Connect to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] failed: **Connection refused**
+* H020 Could not establish connection to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001: org.apache.thrift.transport.TTransportException:Could not create http connection to http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException:Connect to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] failed:Connection refused: org.apache.thrift.transport.TTransportException:Could not create http connection to http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException:Connect to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] failed:**Connection refused**
 
-* From the Hive logs: WARN [main]: server.HiveServer2 (HiveServer2.java:startHiveServer2(442)) – Error starting HiveServer2 on attempt 21, will retry in 60 seconds java.lang.RuntimeException: Error applying authorization policy on hive configuration: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Cannot create directory** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Name node is in safe mode**.
+* From the Hive logs:WARN [main]: server.HiveServer2 (HiveServer2.java:startHiveServer2(442)) – Error starting HiveServer2 on attempt 21, will retry in 60 seconds java.lang.RuntimeException:Error applying authorization policy on hive configuration: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException:**Cannot create directory** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Name node is in safe mode**.
     The reported blocks 0 needs additional 9 blocks to reach the threshold 0.9900 of total blocks 9.
     The number of live datanodes 10 has reached the minimum number 0. **Safe mode will be turned off automatically once the thresholds have been reached**.
     at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1324)
@@ -151,7 +151,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
 
 ![セーフ モード オフ](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight の既定のファイル システムは Azure Storage または Azure Data Lake Store のいずれかのため、`-D` スイッチが必要です。 `-D` は、ローカルの HDFS ファイル システムに対してコマンドが実行されるように指定します。
 
 次に、HDFS の状態の詳細を示すレポートを表示できます。
@@ -251,7 +251,7 @@ HDFS の状態は Ambari UI 上でも確認できます。左側の **[HDFS]** �
 hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > このコマンドにより、一部のジョブがまだ実行中であっても、Hive が中断される場合があります。
 
 ### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode-due-to-under-replicated-blocks"></a>レプリケーション数が足りないブロックが原因で HDInsight がセーフ モードのままにならないようにする方法

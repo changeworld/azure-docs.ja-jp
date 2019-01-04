@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: 4d9e47d6da45eaba19cbe089de3fdf053c36046a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 2b9702dbae0414ba597b6e1f6080d9de86f624fc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030679"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077079"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル: 推奨事項に従ってコストを最適化する
 
@@ -43,7 +43,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサイ�
 
 Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。 **[コスト管理]** の一覧で、**[Advisor の推奨事項]** を選択します。 Advisor のコストに関する推奨事項が表示されます。
 
-![Advisor の推奨事項](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
+![Azure portal に表示される Cost Management の Advisor の推奨事項](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
 推奨事項の一覧には、使用の非効率性が表示されます。また、さらに費用を節約するために役立つ購入に関する推奨事項が表示されます。 合計の **[年間の潜在的な削減額]** には、推奨事項ルールに一致するすべての VM をシャットダウンするか割り当てを解除した場合に節約できる合計額が表示されます。 シャットダウンしたくない場合は、より安価な VM SKU へとサイズを変更することを検討する必要があります。
 
@@ -59,20 +59,20 @@ Azure Advisor は、仮想マシンの使用状況を 14 日間にわたって�
 
 推奨事項の一覧から **[使用率が低い仮想マシンを適切なサイズに変更するかシャットダウンしてください]** の推奨事項をクリックします。 仮想マシンの候補一覧からサイズを変更する仮想マシンを選択してから、仮想マシンをクリックします。 仮想マシンの詳細が表示されるので、使用率のメトリックを確認できます。 **[年間の潜在的な削減額]** 値は、その VM をシャットダウンまたは削除した場合に節約できる額です。 VM のサイズを変更するとコストを節約できる可能性がありますが、年間の潜在的な削減額の全額は節約されません。
 
-![推奨事項の詳細](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
+![推奨事項の詳細の例](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
 VM の詳細で、仮想マシンの使用率を確認して、適切なサイズ変更の候補であることを確認します。
 
-![VM の詳細](./media/tutorial-acm-opt-recommendations/vm-details.png)
+![履歴の使用率を示す VM の詳細の例](./media/tutorial-acm-opt-recommendations/vm-details.png)
 
 現在の仮想マシンのサイズをメモします。 仮想マシンのサイズを変更する必要があることを確認したら、仮想マシンの詳細を閉じて仮想マシンの一覧を表示します。
 
 シャットダウンまたはサイズを変更する候補の一覧から **[仮想マシンのサイズ変更]** を選択します。
-![仮想マシンのサイズ変更](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+![仮想マシンのサイズを変更するオプションを伴う推奨事項の例](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 次に、使用できるサイズ変更オプションの一覧が表示されます。 実際にシナリオに対応するベスト プラクティスと費用対効果を実現するものを選択します。 次の例で、選択されているオプションは **DS14\_V2** から **DS13\_V2** へのサイズ変更です。 この推奨事項に従うと、551.30 ドル/月または 6,615.60 ドル/年を節約できます。
 
-![サイズを選択する](./media/tutorial-acm-opt-recommendations/choose-size.png)
+![サイズを選択できる使用可能な VM サイズの一覧の例](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
 適切なサイズを選択したら、**[選択]** をクリックしてサイズ変更アクションを開始します。
 
@@ -82,7 +82,7 @@ VM の詳細で、仮想マシンの使用率を確認して、適切なサイ�
 
 VM のサイズ変更が正常に完了したら、Azure の通知が表示されます。
 
-![サイズ変更の通知](./media/tutorial-acm-opt-recommendations/resized-notification.png)
+![正常にサイズ変更された仮想マシンの通知](./media/tutorial-acm-opt-recommendations/resized-notification.png)
 
 ## <a name="next-steps"></a>次の手順
 

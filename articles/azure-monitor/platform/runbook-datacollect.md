@@ -68,7 +68,7 @@ ms.locfileid: "53186720"
 | Name | WorkspaceId | WorkspaceKey |
 | type | String | String |
 | 値 | Log Analytics ワークスペースのワークスペース ID を貼り付けます。 | Log Analytics ワークスペースのプライマリ キーまたはセカンダリ キーを貼り付けます。 |
-| 暗号化 | いいえ  | [はい] |
+| 暗号化 | いいえ  | はい |
 
 
 
@@ -162,7 +162,7 @@ Runbook が正しく動作していることを確認した後、運用環境で
 1. Automation アカウントに戻ります。
 2. **[Runbook]** をクリックし、**Collect-Automation-jobs** を選びます。
 3. **[編集]**、**[発行]** の順にクリックします。
-4. 以前に発行したバージョンの上書きの確認を求められたら、**[はい]** をクリックします。
+4. 以前に発行したバージョンの上書きの確認を求められたら、**はい** をクリックします。
 
 ## <a name="7-set-logging-options"></a>7.ログ オプションを設定する 
 テストでは、スクリプトで $VerbosePreference 変数を設定してあったため、[詳細な出力](../../automation/automation-runbook-output-and-messages.md#message-streams)を見ることができました。  運用環境で詳細な出力を表示する場合は、Runbook のログ プロパティを設定する必要があります。  このチュートリアルで使われている Runbook では、Log Analytics に送信されている Json データが表示されます。

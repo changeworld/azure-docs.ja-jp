@@ -5,34 +5,38 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/03/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 10b2b6e67c22efaf1dcab2cfe8abdd42b7576dbc
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 013b63d0eb2cc69893dcb4075c1ca26a31ef2474
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426069"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277983"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>ネットワーク ポリシー サーバー (NPS) 拡張機能と Azure AD を使用したリモート デスクトップ ゲートウェイ インフラストラクチャの統合
 
-この記事では、Microsoft Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使用して、リモート デスクトップ ゲートウェイ インフラストラクチャを Azure Multi-Factor Authentication (MFA) と統合する方法について詳しく説明します。 
+この記事では、Microsoft Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使用して、リモート デスクトップ ゲートウェイ インフラストラクチャを Azure Multi-Factor Authentication (MFA) と統合する方法について詳しく説明します。
 
 Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使用すると、Azure のクラウドベースの [Multi-Factor Authentication (MFA)](multi-factor-authentication.md) を使用して、リモート認証ダイヤルイン ユーザー サービス (RADIUS) クライアント認証を保護することができます。 このソリューションは、ユーザーのサインインとトランザクションにセキュリティの第 2 レイヤーを追加するための 2 段階認証を提供します。
 
-この記事では、Azure の NPS 拡張機能を使用して、NPS インフラストラクチャを Azure MFA と統合する手順について順を追って説明します。 これにより、リモート デスクトップ ゲートウェイにサインインしようとするユーザーを確実に検証できるようになります。 
+この記事では、Azure の NPS 拡張機能を使用して、NPS インフラストラクチャを Azure MFA と統合する手順について順を追って説明します。 これにより、リモート デスクトップ ゲートウェイにサインインしようとするユーザーを確実に検証できるようになります。
+
+> [!NOTE]
+> この記事は Azure MFA (クラウドベース) のみを使用する MFA サーバーのデプロイでは使用しないでください。
 
 ネットワーク ポリシーとアクセス サービス (NPS) により、組織は次のことができるようになります。
+
 * 接続できるユーザー、接続が許可される時間帯、接続の期間、クライアントが接続に使用する必要があるセキュリティのレベルなどを指定して、ネットワーク要求を管理および制御するための集約された場所をそれぞれ定義できます。 これらのポリシーは、VPN またはリモート デスクトップ (RD) ゲートウェイ サーバーごとに指定するのではなく、集約された場所で一度に指定できます。 RADIUS プロトコルは、一元化された認証、承認、アカウンティング (AAA) を提供します。 
 * デバイスにネットワーク リソースへの無制限のアクセスを許可するか制限付きアクセスを許可するかを決定する、ネットワーク アクセス保護 (NAP) クライアント正常性ポリシーを制定し、強制できます。
-* 802.1x 対応ワイヤレス アクセス ポイントとイーサネット スイッチへのアクセスに認証と承認を強制する手段を提供できます。    
+* 802.1x 対応ワイヤレス アクセス ポイントとイーサネット スイッチへのアクセスに認証と承認を強制する手段を提供できます。
 
-一般に、組織では NPS (RADIUS) を使用して VPN ポリシーの管理を簡素化し、一元化しています。 にもかかわらず、多くの組織が、NPS を使用してリモート デスクトップの接続承認ポリシー (RD CAP) の管理も簡素化し、一元化しています。 
+一般に、組織では NPS (RADIUS) を使用して VPN ポリシーの管理を簡素化し、一元化しています。 にもかかわらず、多くの組織が、NPS を使用してリモート デスクトップの接続承認ポリシー (RD CAP) の管理も簡素化し、一元化しています。
 
-組織において NPS を Azure MFA とも統合することで、セキュリティを強化し、高水準のコンプライアンスを提供することができます。 このことは、リモート デスクトップ ゲートウェイにサインインする際の 2 段階認証をユーザーが確実に制定するための助けとなります。 ユーザーはアクセスの許可を得るために、ユーザー名/パスワードの組み合わせをユーザーが独自に管理している情報と共に提供する必要があります。 この情報は、信頼性があり、簡単に複製できないもの (携帯電話番号、固定電話番号、モバイル デバイス上のアプリケーションなど) である必要があります。
+組織において NPS を Azure MFA とも統合することで、セキュリティを強化し、高水準のコンプライアンスを提供することができます。 このことは、リモート デスクトップ ゲートウェイにサインインする際の 2 段階認証をユーザーが確実に制定するための助けとなります。 ユーザーはアクセスの許可を得るために、ユーザー名/パスワードの組み合わせをユーザーが独自に管理している情報と共に提供する必要があります。 この情報は、信頼性があり、簡単に複製できないもの (携帯電話番号、固定電話番号、モバイル デバイス上のアプリケーションなど) である必要があります。 サポートされている認証方法の詳細については、[ユーザーが使用できる認証方法の決定](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)に関するセクションを参照してください。
 
 Azure の NPS 拡張機能を利用できるようになる前は、NPS と Azure MFA の統合環境の 2 段階認証の実装を希望するお客様は、「[RADIUS を使用したリモート デスクトップ ゲートウェイと Azure Multi-Factor Authentication Server](howto-mfaserver-nps-rdg.md)」に記載されているように、オンプレミス環境に別の MFA サーバーを構成し、管理する必要がありました。
 
@@ -46,15 +50,16 @@ RD ゲートウェイは、RD CAP に集約型ポリシー ストアを使用す
 
 Azure の NPS 拡張機能を NPS およびリモート デスクトップ ゲートウェイと統合した場合、正常な認証フローは次のようになります。
 
-1. リモート デスクトップ ゲートウェイ サーバーが、リソース (リモート デスクトップ セッションなど) に接続するための認証要求をリモート デスクトップ ユーザーから受信します。 RADIUS クライアントとして機能するリモート デスクトップ ゲートウェイ サーバーは、要求を RADIUS Access-Request メッセージに変換し、NPS 拡張機能がインストールされている RADIUS (NPS) サーバーにメッセージを送信します。 
+1. リモート デスクトップ ゲートウェイ サーバーが、リソース (リモート デスクトップ セッションなど) に接続するための認証要求をリモート デスクトップ ユーザーから受信します。 RADIUS クライアントとして機能するリモート デスクトップ ゲートウェイ サーバーは、要求を RADIUS Access-Request メッセージに変換し、NPS 拡張機能がインストールされている RADIUS (NPS) サーバーにメッセージを送信します。
 1. Active Directory でユーザー名とパスワードの組み合わせが検証され、ユーザーが認証されます。
-1. NPS 接続要求とネットワーク ポリシーで指定されているすべての条件が満たされていれば (時刻やグループ メンバーシップの制約など)、NPS 拡張機能によって、Azure MFA を使用したセカンダリ認証の要求がトリガーされます。 
-1. Azure MFA は Azure AD と通信してユーザーの詳細を取得し、ユーザーが構成した方法 (テキスト メッセージ、モバイル アプリなど) を使用してセカンダリ認証を実行します。 
+1. NPS 接続要求とネットワーク ポリシーで指定されているすべての条件が満たされていれば (時刻やグループ メンバーシップの制約など)、NPS 拡張機能によって、Azure MFA を使用したセカンダリ認証の要求がトリガーされます。
+1. Azure MFA は Azure AD と通信してユーザーの詳細を取得し、サポートされている方法を使用してセカンダリ認証を実行します。
 1. MFA チャレンジが成功すると、Azure MFA は NPS 拡張機能に結果を伝えます。
 1. 拡張機能がインストールされている NPS サーバーは、RD CAP ポリシーの RADIUS Access-Accept メッセージをリモート デスクトップ ゲートウェイ サーバーに送信します。
 1. ユーザーは、要求したネットワーク リソースへの RD ゲートウェイ経由でのアクセスを許可されます。
 
 ## <a name="prerequisites"></a>前提条件
+
 このセクションでは、Azure MFA をリモート デスクトップ ゲートウェイと統合する前に必要な前提条件について詳しく説明します。 作業を開始する前に、次の前提条件を満たしておく必要があります。  
 
 * リモート デスクトップ サービス (RDS) インフラストラクチャ
@@ -65,39 +70,48 @@ Azure の NPS 拡張機能を NPS およびリモート デスクトップ ゲ�
 * Azure Active Directory の GUID ID
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>リモート デスクトップ サービス (RDS) インフラストラクチャ
-正常に稼働しているリモート デスクトップ サービス (RDS) インフラストラクチャが必要です。 このインフラストラクチャがない場合は、"[Create Remote Desktop Session Collection deployment (リモート デスクトップ セッション コレクション デプロイの作成)](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment)" クイック スタート テンプレートを使用して、Azure で簡単に作成できます。 
+
+正常に稼働しているリモート デスクトップ サービス (RDS) インフラストラクチャが必要です。 このインフラストラクチャがない場合は、次のクイック スタート テンプレートを使用して、Azure 上に簡単に作成できます。[Create Remote Desktop Session Collection deployment ](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment)(リモート デスクトップ セッション コレクション デプロイの作成)。 
 
 テストのためにオンプレミスの RDS インフラストラクチャを手動ですばやく作成したい場合は、これをデプロイする手順に従います。 
-**詳細**: [Azure クイック スタートを使用した RDS のデプロイ](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure)に関する記事および[基本的な RDS インフラストラクチャのデプロイ](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)に関する記事をご覧ください。 
+**詳細情報**: [Azure クイック スタートを使用した RDS のデプロイ](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure)に関する記事と[基本的な RDS インフラストラクチャのデプロイ](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)に関する記事。 
 
 ### <a name="azure-mfa-license"></a>Azure MFA のライセンス
-Azure MFA のライセンスが必要です。ライセンスは、Azure AD Premium、Enterprise Mobility + Security (EMS)、または MFA サブスクリプションを通じて入手できます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 詳細については、「[Azure Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)」をご覧ください。 テスト目的で。試用版サブスクリプションをご利用いただけます。 
+
+Azure MFA のライセンスが必要です。Azure AD Premium、またはそれが含まれているバンドルを通して入手できます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 詳細については、「[Azure Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)」をご覧ください。 テスト目的で。試用版サブスクリプションをご利用いただけます。
 
 ### <a name="windows-server-software"></a>Windows Server ソフトウェア
+
 NPS 拡張機能を使用するには、NPS 役割サービスがインストールされた Windows Server 2008 R2 SP1 以上が必要です。 このセクションの手順はすべて Windows Server 2016 を使用して実行されました。
 
 ### <a name="network-policy-and-access-services-nps-role"></a>ネットワーク ポリシーとアクセス サービス (NPS) のロール
-NPS 役割サービスは、RADIUS サーバー/クライアントの機能とネットワーク アクセス ポリシー正常性サービスを提供します。 この役割は、インフラストラクチャ内の少なくとも 2 台のコンピューター (リモート デスクトップ ゲートウェイと別のメンバー サーバーまたはドメイン コント ローラー) にインストールする必要があります。 既定では、この役割はリモート デスクトップ ゲートウェイとして構成されているコンピューターに既に存在します。  また、ドメイン コントローラーやメンバー サーバーなど、別のコンピューターにも NPS の役割をインストールする必要があります。
+
+NPS 役割サービスは、RADIUS サーバー/クライアントの機能とネットワーク アクセス ポリシー正常性サービスを提供します。 この役割は、インフラストラクチャ内の少なくとも 2 台のコンピューター (リモート デスクトップ ゲートウェイと別のメンバー サーバーまたはドメイン コントローラー) にインストールする必要があります。 既定では、この役割はリモート デスクトップ ゲートウェイとして構成されているコンピューターに既に存在します。  また、ドメイン コントローラーやメンバー サーバーなど、別のコンピューターにも NPS の役割をインストールする必要があります。
 
 Windows Server 2012 以前に NPS 役割サービスをインストールする方法については、「[Install a NAP Health Policy Server (NAP 正常性ポリシー サーバーのインストール)](https://technet.microsoft.com/library/dd296890.aspx)」をご覧ください。 NPS をドメイン コントローラーにインストールする際の推奨事項など、NPS のベスト プラクティスについては、「[Best Practices for NPS (NPS のベスト プラクティス)](https://technet.microsoft.com/library/cc771746)」をご覧ください。
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>オンプレミスの Active Directory と同期された Azure Active Directory
-NPS 拡張機能を使用するには、オンプレミスのユーザーを Azure AD と同期し、ユーザーの MFA を有効する必要があります。 このセクションでは、AD Connect を使用してオンプレミスのユーザーが Azure AD と同期されていることを前提としています。 Azure AD Connect については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)」をご覧ください。 
+
+NPS 拡張機能を使用するには、オンプレミスのユーザーを Azure AD と同期し、ユーザーの MFA を有効する必要があります。 このセクションでは、AD Connect を使用してオンプレミスのユーザーが Azure AD と同期されていることを前提としています。 Azure AD Connect については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)」をご覧ください。
 
 ### <a name="azure-active-directory-guid-id"></a>Azure Active Directory の GUID ID
+
 NPS 拡張機能をインストールするには、Azure AD の GUID が必要です。 Azure AD の GUID を確認する手順については後述します。
 
 ## <a name="configure-multi-factor-authentication"></a>Multi-Factor Authentication の構成 
+
 このセクションでは、Azure MFA をリモート デスクトップ ゲートウェイと統合する手順について説明します。 ユーザーが多要素デバイスまたはアプリケーションを自己登録するには、管理者が Azure MFA サービスを構成しておく必要があります。
 
-[クラウドでの Azure Multi-Factor Authentication の概要](howto-mfa-getstarted.md)に関する記事に記載されている手順に従って、Azure AD ユーザーの MFA を有効にします。 
+[クラウドでの Azure Multi-Factor Authentication の概要](howto-mfa-getstarted.md)に関する記事に記載されている手順に従って、Azure AD ユーザーの MFA を有効にします。
 
 ### <a name="configure-accounts-for-two-step-verification"></a>2 段階認証用にアカウントを構成する
+
 アカウントの MFA を有効にすると、2 段階認証を使用して認証される 2 つ目の認証要素に使用する信頼済みデバイスの構成を正常に完了するまで、MFA ポリシーによって管理されたリソースにはサインインできません。
 
 「[Azure Multi-Factor Authentication とは何ですか](../user-help/multi-factor-authentication-end-user.md)」に記載されている手順に従って、ユーザー アカウントで MFA 用のデバイスを正しく構成します。
 
 ## <a name="install-and-configure-nps-extension"></a>NPS 拡張機能のインストールと構成
+
 このセクションでは、リモート デスクトップ ゲートウェイでのクライアント認証に Azure MFA を使用するように RDS インフラストラクチャを構成する手順について説明します。
 
 ### <a name="acquire-azure-active-directory-guid-id"></a>Azure Active Directory の GUID ID を取得する
@@ -112,25 +126,27 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
  ![Properties](./media/howto-mfa-nps-extension-rdg/image1.png)
 
 ### <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
-ネットワーク ポリシーとアクセス サービス (NPS) の役割がインストールされているサーバーに NPS 拡張機能をインストールします。 これが、設計で RADIUS サーバーとして機能します。 
+
+ネットワーク ポリシーとアクセス サービス (NPS) の役割がインストールされているサーバーに NPS 拡張機能をインストールします。 これが、設計で RADIUS サーバーとして機能します。
 
 >[!Important]
 > リモート デスクトップ ゲートウェイ サーバーには NPS 拡張機能をインストールしないでください。
-> 
+>
 
 1. [NPS 拡張機能](https://aka.ms/npsmfa)をダウンロードします。 
 1. セットアップ実行可能ファイル (NpsExtnForAzureMfaInstaller.exe) を NPS サーバーにコピーします。
 1. NPS サーバーで **NpsExtnForAzureMfaInstaller.exe** をダブルクリックします。 メッセージが表示されたら、**[実行]** をクリックします。
 1. [NPS Extension For Azure MFA Setup]\(Azure MFA セットアップの NPS 拡張機能\) ダイアログ ボックスで、**[ライセンス条項と条件に同意します。]** チェック ボックスをオンにして、**[インストール]** をクリックします。
- 
+
   ![Azure MFA のセットアップ](./media/howto-mfa-nps-extension-rdg/image2.png)
 
-1. [NPS Extension For Azure MFA Setup]\(Azure MFA セットアップの NPS 拡張機能\) ダイアログ ボックスで、**[閉じる]** をクリックします。 
+1. [NPS Extension For Azure MFA Setup]\(Azure MFA セットアップの NPS 拡張機能\) ダイアログ ボックスで、**[閉じる]** をクリックします。
 
   ![Azure MFA の NPS 拡張機能](./media/howto-mfa-nps-extension-rdg/image3.png)
 
 ### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>PowerShell スクリプトを使用して NPS 拡張機能で使用する証明書を構成する
-次に、セキュリティで保護された通信と保証を確保するために、NPS 拡張機能で使用する証明書を構成する必要があります。 NPS コンポーネントには、NPS で使用する自己署名証明書を構成する Windows PowerShell スクリプトが含まれています。 
+
+次に、セキュリティで保護された通信と保証を確保するために、NPS 拡張機能で使用する証明書を構成する必要があります。 NPS コンポーネントには、NPS で使用する自己署名証明書を構成する Windows PowerShell スクリプトが含まれています。
 
 このスクリプトは、次のアクションを実行します。
 
@@ -163,14 +179,16 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
   ![自己署名証明書](./media/howto-mfa-nps-extension-rdg/image7.png)
 
 ## <a name="configure-nps-components-on-remote-desktop-gateway"></a>リモート デスクトップ ゲートウェイでの NPS コンポーネントの構成
+
 このセクションでは、リモート デスクトップ ゲートウェイの接続承認ポリシーと他の RADIUS 設定を構成します。
 
-認証フローでは、リモート デスクトップ ゲートウェイと NPS 拡張機能がインストールされている NPS サーバー間で RADIUS メッセージを交換する必要があります。 つまり、リモート デスクトップ ゲートウェイと NPS 拡張機能がインストールされている NPS サーバーの両方で RADIUS クライアント設定を構成する必要があります。 
+認証フローでは、リモート デスクトップ ゲートウェイと NPS 拡張機能がインストールされている NPS サーバー間で RADIUS メッセージを交換する必要があります。 つまり、リモート デスクトップ ゲートウェイと NPS 拡張機能がインストールされている NPS サーバーの両方で RADIUS クライアント設定を構成する必要があります。
 
 ### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>セントラル ストアを使用するようにリモート デスクトップ ゲートウェイの接続承認ポリシーを構成する
+
 リモート デスクトップの接続承認ポリシー (RD CAP) では、リモート デスクトップ ゲートウェイ サーバーに接続するための要件を指定します。 RD CAP は、ローカルに保存することも (既定)、NPS を実行している RD CAP のセントラル ストアに保存することもできます。 RDS で Azure MFA の統合を構成するには、セントラル ストアの使用を指定する必要があります。
 
-1. RD ゲートウェイ サーバーで**サーバー マネージャー**を開きます。 
+1. RD ゲートウェイ サーバーで**サーバー マネージャー**を開きます。
 1. メニューの **[ツール]** をクリックし、**[リモート デスクトップ サービス]** をポイントして、**[リモート デスクトップ ゲートウェイ マネージャー]** をクリックします。
 
   ![リモート デスクトップ サービス](./media/howto-mfa-nps-extension-rdg/image8.png)
@@ -197,6 +215,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 1. **[OK]** をクリックしてダイアログ ボックスを閉じます。
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>リモート デスクトップ ゲートウェイの NPS で RADIUS のタイムアウト値を構成する
+
 ユーザーの資格情報の検証から、2 段階認証の実行、応答の受信、RADIUS メッセージへの応答までの時間を確保するために、RADIUS のタイムアウト値を調整する必要があります。
 
 1. RD ゲートウェイ サーバーで、サーバー マネージャーを開きます。 メニューで **[ツール]** をクリックし、**[ネットワーク ポリシー サーバー]** をクリックします。 
@@ -220,10 +239,11 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
  ![Radius サーバーの編集](./media/howto-mfa-nps-extension-rdg/image14.png)
 
-1.  **[OK]** を 2 回クリックして、ダイアログ ボックスを閉じます。
+1. **[OK]** を 2 回クリックして、ダイアログ ボックスを閉じます。
 
-### <a name="verify-connection-request-policies"></a>接続要求ポリシーを確認する 
-既定では、接続承認ポリシーに集約型ポリシー ストアを使用するように RD ゲートウェイを構成すると、CAP 要求を NPS サーバーに転送するように RD ゲートウェイが構成されます。 Azure MFA 拡張機能がインストールされている NPS サーバーが、RADIUS アクセス要求を処理します。 次の手順は、既定の接続要求ポリシーを確認する方法を示しています。 
+### <a name="verify-connection-request-policies"></a>接続要求ポリシーを確認する
+
+既定では、接続承認ポリシーに集約型ポリシー ストアを使用するように RD ゲートウェイを構成すると、CAP 要求を NPS サーバーに転送するように RD ゲートウェイが構成されます。 Azure MFA 拡張機能がインストールされている NPS サーバーが、RADIUS アクセス要求を処理します。 次の手順は、既定の接続要求ポリシーを確認する方法を示しています。
 
 1. RD ゲートウェイの [NPS (ローカル)] コンソールで、**[ポリシー]** を展開し、**[接続要求ポリシー]** を選択します。
 1. **[TS GATEWAY AUTHORIZATION POLICY]** をダブルクリックします。
@@ -231,26 +251,29 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 1. **[設定]** タブで、[接続要求の転送] の **[認証]** をクリックします。 認証のために要求を転送するように RADIUS クライアントが構成されています。
 
  ![認証設定](./media/howto-mfa-nps-extension-rdg/image15.png)
- 
-1. **[キャンセル]** をクリックします。 
+
+1. **[キャンセル]** をクリックします。
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>NPS 拡張機能がインストールされているサーバーでの NPS の構成
-NPS 拡張機能がインストールされている NPS サーバーは、リモート デスクトップ ゲートウェイの NPS サーバーと RADIUS メッセージを交換できる必要があります。 このメッセージ交換を可能にするには、NPS 拡張サービスがインストールされているサーバーで NPS コンポーネントを構成する必要があります。 
+
+NPS 拡張機能がインストールされている NPS サーバーは、リモート デスクトップ ゲートウェイの NPS サーバーと RADIUS メッセージを交換できる必要があります。 このメッセージ交換を可能にするには、NPS 拡張サービスがインストールされているサーバーで NPS コンポーネントを構成する必要があります。
 
 ### <a name="register-server-in-active-directory"></a>Active Directory にサーバーを登録する
+
 このシナリオで正常に機能させるには、NPS サーバーを Active Directory に登録する必要があります。
 
 1. NPS サーバーで、**サーバー マネージャー**を開きます。
-1. サーバー マネージャーで **[ツール]** をクリックし、**[ネットワーク ポリシー サーバー]** をクリックします。 
-1. [ネットワーク ポリシー サーバー] コンソールで、**[NPS (ローカル)]** を右クリックし、**[Active Directory にサーバーを登録]** をクリックします。 
+1. サーバー マネージャーで **[ツール]** をクリックし、**[ネットワーク ポリシー サーバー]** をクリックします。
+1. [ネットワーク ポリシー サーバー] コンソールで、**[NPS (ローカル)]** を右クリックし、**[Active Directory にサーバーを登録]** をクリックします。
 1. **[OK]** を 2 回クリックします。
 
  ![AD へのサーバーの登録](./media/howto-mfa-nps-extension-rdg/image16.png)
 
 1. 次の手順で使用するため、コンソールは開いたままにしておきます。
 
-### <a name="create-and-configure-radius-client"></a>RADIUS クライアントを作成して構成する 
-リモート デスクトップ ゲートウェイは、NPS サーバーの RADIUS クライアントとして構成する必要があります。 
+### <a name="create-and-configure-radius-client"></a>RADIUS クライアントを作成して構成する
+
+リモート デスクトップ ゲートウェイは、NPS サーバーの RADIUS クライアントとして構成する必要があります。
 
 1. NPS 拡張機能がインストールされている NPS サーバーで、**[NPS (ローカル)]** コンソールの **[RADIUS クライアント]** を右クリックし、**[新規]** をクリックします。
 
@@ -264,10 +287,11 @@ NPS 拡張機能がインストールされている NPS サーバーは、リ�
 1. **[OK]** をクリックして、[新しい RADIUS クライアント] ダイアログ ボックスを閉じます。
 
 ### <a name="configure-network-policy"></a>ネットワーク ポリシーを構成する
+
 Azure MFA 拡張機能がインストールされている NPS サーバーは、接続承認ポリシー (CAP) の指定された集約型ポリシー ストアであることをここで思い出してください。 そのため、有効な接続要求を承認するために、NPS サーバーに CAP を実装する必要があります。  
 
 1. NPS サーバーで [NPS (ローカル)] コンソールを開き、**[ポリシー]** を展開し、**[ネットワーク ポリシー]** をクリックします。
-1. **[他のアクセス サーバーへの接続]** を右クリックし、**[ポリシーの複製]** をクリックします。 
+1. **[他のアクセス サーバーへの接続]** を右クリックし、**[ポリシーの複製]** をクリックします。
 
  ![ポリシーの複製](./media/howto-mfa-nps-extension-rdg/image19.png)
 
@@ -279,7 +303,7 @@ Azure MFA 拡張機能がインストールされている NPS サーバーは�
 
  ![接続のコピー](./media/howto-mfa-nps-extension-rdg/image21.png)
 
-1.  **[制約]** タブで、**[認証方法をネゴシエートせずにクライアントに接続を許可する]** をオンにします。
+1. **[制約]** タブで、**[認証方法をネゴシエートせずにクライアントに接続を許可する]** をオンにします。
 
  ![クライアントに接続を許可する](./media/howto-mfa-nps-extension-rdg/image22.png)
 
@@ -293,7 +317,8 @@ Azure MFA 拡張機能がインストールされている NPS サーバーは�
  ![ネットワーク ポリシー](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>構成の確認
-構成を確認するには、適切な RDP クライアントでリモート デスクトップ ゲートウェイにサインインする必要があります。 接続承認ポリシーで許可され、Azure MFA が有効になっているアカウントを使用してください。 
+
+構成を確認するには、適切な RDP クライアントでリモート デスクトップ ゲートウェイにサインインする必要があります。 接続承認ポリシーで許可され、Azure MFA が有効になっているアカウントを使用してください。
 
 次の画像に示すように、**リモート デスクトップ Web アクセス** ページを使用できます。
 
@@ -312,6 +337,7 @@ Azure MFA で以前に構成したセカンダリ認証方法で認証に成功�
 セカンダリ認証方法を使用した認証に成功すると、リモート デスクトップ ゲートウェイに通常どおりログインします。 ただし、信頼済みデバイスでモバイル アプリを使用したセカンダリ認証方法を使用する必要があるため、他の方法よりもログイン プロセスの安全性が高まります。
 
 ### <a name="view-event-viewer-logs-for-successful-logon-events"></a>成功したログオン イベントのイベント ビューアーのログを表示する
+
 Windows イベント ビューアーのログで成功したサインイン イベントを表示するには、次の Windows PowerShell コマンドを発行して、Windows ターミナル サービスのログと Windows のセキュリティ ログを照会します。
 
 ゲートウェイの操作ログ _(Event Viewer\Applications and Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ の成功したサインイン イベントを照会するには、次の PowerShell コマンドを使用します。
@@ -365,11 +391,12 @@ Azure MFA ログの関連イベントを次に示します。
 
 最後に、その他のトラブルシューティング オプションとして、[Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) などのプロトコル アナライザーを使用できます。 
 
-Microsoft Message Analyzer の次の画像は、RADIUS プロトコルでフィルター処理された、ユーザー名 **Contoso\AliceC** を含むネットワーク トラフィックを示しています。
+次の Microsoft Message Analyzer の画像は RADIUS プロトコルでフィルター処理された、ユーザー名 **CONTOSO\AliceC** を含むネットワーク トラフィックを示しています。
 
 ![Microsoft Message Analyzer](./media/howto-mfa-nps-extension-rdg/image36.png)
 
 ## <a name="next-steps"></a>次の手順
+
 [Azure Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)
 
 [RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server](howto-mfaserver-nps-rdg.md)

@@ -2,18 +2,18 @@
 title: Azure Backup Server V2 のサイレント インストール
 description: PowerShell スクリプトを使用して、Azure Backup Server V2 をサイレント モードでインストールします。 この種類のインストールは無人インストールとも呼ばれます。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: markgal
-ms.openlocfilehash: 8f7bda070e613e5495d3733dd1610cb291e12c36
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.author: raynew
+ms.openlocfilehash: dd66710a24ca28b78c6b3e0a8197a078f17524db
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612697"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868142"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Azure Backup Server の無人インストールの実行
 
@@ -56,9 +56,9 @@ Azure Backup Server の無人インストールの実行について説明しま
 
 インストールするためにこれらのフラグを使用できます。</br>
 **/f**: .ini ファイル パス</br>
-**/l**: ログのパス</br>
-**/i**: インストール パス</br>
-**/x**: アンインストール パス</br>
+**/l**:ログのパス</br>
+**/i**:インストール パス</br>
+**/x**:アンインストール パス</br>
 
 ## <a name="next-steps"></a>次の手順
 Backup Server をインストールしたら、サーバーを準備する方法、またはワークロードの保護を開始する方法について見ていきましょう。

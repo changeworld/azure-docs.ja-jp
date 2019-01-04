@@ -1,40 +1,40 @@
 ---
-title: Azure ExpressRoute Global Reach の構成 | Microsoft Docs
+title: 'Global Reach を構成する - ExpressRoute: Azure | Microsoft Docs'
 description: この記事では、ExpressRoute 回線を相互にリンクして、オンプレミス ネットワーク間にプライベート ネットワークを構築し、Global Reach を有効にする方法について説明します。
-documentationcenter: na
 services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 12/13/2018
 ms.author: mialdrid
-ms.openlocfilehash: 67fbf9dc430d615efe3ef894add1a26bbce792bc
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: 3df107f8854469b50c5e8483515388b5c93fb244
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50237980"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383274"
 ---
-# <a name="configure-expressroute-global-reach-preview"></a>ExpressRoute Global Reach の構成 (プレビュー)
+# <a name="configure-expressroute-global-reach-preview"></a>ExpressRoute Global Reach を構成する (プレビュー)
 この記事は、PowerShell を使用して ExpressRoute Global Reach を構成する際に役立ちます。 詳細については、[ExpressRouteRoute Global Reach](expressroute-global-reach.md) に関するページを参照してください。
  
 ## <a name="before-you-begin"></a>開始する前に
 > [!IMPORTANT]
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 > 
 
 
-構成を開始する前に、次の要件を確認する必要があります。
+構成を開始する前に、次のことを確認してください。
 
-* 最新バージョンの Azure PowerShell をインストールします。 「[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)」を参照してください。
-* ExpressRoute 回線のプロビジョニング [ワークフロー](expressroute-workflows.md)を理解します。
-* ExpressRoute 回線がプロビジョニング済み状態であることを確認します。
-* Azure プライベート ピアリングが ExpressRoute 回線に構成されていることを確認します。  
+* 最新バージョンの Azure PowerShell がインストールされていること。 詳細については、[Azure PowerShell のインストールおよび構成](/powershell/azure/install-azurerm-ps)をご覧ください。
+* ExpressRoute 回線のプロビジョニング [ワークフロー](expressroute-workflows.md)を理解していること。
+* ExpressRoute 回線がプロビジョニングされた状態にあること。
+* ExpressRoute 回線上に Azure プライベート ピアリングが構成されていること。  
 
-### <a name="log-into-your-azure-account"></a>Azure アカウントにログインする
-構成を開始するには、Azure アカウントにログインする必要があります。 
+### <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
+構成を開始するには、Azure アカウントにサインインします。 
 
-昇格された特権で PowerShell コンソールを開き、アカウントに接続します。 Azure アカウントのログイン資格情報の入力が求められます。  
+昇格された特権で PowerShell コンソールを開き、アカウントに接続します。 このコマンドでは、Azure アカウントのサインイン資格情報を入力するよう求められます。  
 
 ```powershell
 Connect-AzureRmAccount
@@ -53,7 +53,9 @@ Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_nam
 ```
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>構成のために ExpressRoute 回線を特定する
-2 つの ExpressRoute 回線がサポートされている国にあり、異なるピアリング拠点で作成されている場合に限り、その回線間で ExpressRoute Global Reach を有効にすることができます。 サブスクリプションが両方の回線を所有している場合は、以下のセクションで説明するように、いずれかの回線を選択して構成を実行することができます。 2 つの回線が異なる Azure サブスクリプションにある場合、一方の Azure サブスクリプションで構成コマンドを実行するときに、もう一方の Azure サブスクリプションからの承認が必要であり、承認キーを渡すことになります。
+任意の 2 つの ExpressRoute 回線間で ExpressRoute Global Reach を有効にすることができるのは、それらがサポートされている国に配置され、かつ異なるピアリングの場所で作成されている場合だけです。 サブスクリプションが両方の回線を所有している場合は、以降のセクションで構成を実行するために、どちらかの回線を選択できます。 
+
+2 つの回線が異なる Azure サブスクリプションに含まれている場合は、1 つの Azure サブスクリプションからの承認が必要です。 その後、もう一方の Azure サブスクリプションで構成コマンドを実行するときに承認キーを渡します。
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>オンプレミス ネットワーク間の接続を有効にする
 
@@ -64,33 +66,29 @@ $ckt_1 = Get-AzureRmExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGro
 $ckt_2 = Get-AzureRmExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
 ```
 
-回線 1 に対して次のコマンドを実行し、回線 2 のプライベート ピアリングの ID を渡します。
+回線 1 に対して次のコマンドを実行し、回線 2 のプライベート ピアリング ID を渡します。 このコマンドを実行するときは、次のことに注意してください。
 
-> [!NOTE]
-> プライベート ピアリングの ID は、*/subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering* のようになります
-> 
->
+* プライベート ピアリング ID は、次の例のようになります。 
+
+  ```
+  /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
+  ```
+* *-AddressPrefix* は、/29 IPv4 サブネット ("10.0.0.0/29" など) である必要があります。 このサブネット内の IP アドレスを使用して、2 つの ExpressRoute 回線間の接続を確立します。 このサブネット内のアドレスを Azure 仮想ネットワークやオンプレミス ネットワークでは使用しないでください。
 
 ```powershell
 Add-AzureRmExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering $ckt_2.Peerings[0].Id -AddressPrefix '__.__.__.__/29'
 ```
 
-> [!IMPORTANT]
-> *-AddressPrefix* は /29 IPv4 サブネットにする必要があります (例:"10.0.0.0/29")。 このサブネット内の IP アドレスを使用して 2 つの ExpressRoute 回線間に接続を確立します。 Azure VNet またはオンプレミス ネットワークでは、このサブネット内のアドレスを使用しないでください。
-> 
-
-
-
-この構成は回線 1 に保存します。
+回線 1 上の構成を次のように保存します。
 ```powershell
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```
 
-上記の操作が完了したら、2 つの ExpressRoute 回線を介して、オンプレミス ネットワーク間の接続を両側で行う必要があります。
+前の操作が完了したら、2 つの ExpressRoute 回線を介して、オンプレミス ネットワーク間の接続を両側で行う必要があります。
 
 ### <a name="expressroute-circuits-in-different-azure-subscriptions"></a>異なる Azure サブスクリプションの ExpressRoute 回線
 
-2 つの回線が同じ Azure サブスクリプション内にない場合は、承認が必要です。 次の構成では、回線 2 のサブスクリプションで承認が生成され、承認キーが回線 1 に渡されます。
+2 つの回線が同じ Azure サブスクリプション内にない場合は、承認が必要です。 次の構成では、回線 2 のサブスクリプション内に承認が生成され、その承認キーが回線 1 に渡されます。
 
 承認キーを生成します。 
 ```powershell
@@ -98,9 +96,9 @@ $ckt_2 = Get-AzureRmExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGro
 Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $ckt_2 -Name "Name_for_auth_key"
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt_2
 ```
-回線 2 のプライベート ピアリング ID と承認キーをメモします。
+回線 2 のプライベート ピアリング ID と承認キーを書きとめます。
 
-回線 1 に対して次のコマンドを実行します。 回線 2 のプライベート ピアリング ID と承認キーを渡します 
+回線 1 に対して次のコマンドを実行します。 回線 2 のプライベート ピアリング ID と承認キーを渡します。
 ```powershell
 Add-AzureRmExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'
 ```
@@ -110,21 +108,21 @@ Add-AzureRmExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -Exp
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```
 
-上記の操作が完了したら、2 つの ExpressRoute 回線を介して、オンプレミス ネットワーク間の接続を両側で行う必要があります。
+前の操作が完了したら、2 つの ExpressRoute 回線を介して、オンプレミス ネットワーク間の接続を両側で行う必要があります。
 
 ## <a name="get-and-verify-the-configuration"></a>構成を取得して確認する
 
-構成が行われた回線 (つまり、上記の例の回線 1) で構成を確認するには、次のコマンドを使用します。
+構成が作成された回線 (たとえば、前の例では回線 1) 上の構成を確認するには、次のコマンドを使用します。
 
 ```powershell
 $ckt1 = Get-AzureRmExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 ```
 
-PowerShell で単に *$ckt1* を実行すると、出力に *CircuitConnectionStatus* が表示されます。 接続が確立されている場合は "Connected"、確立していない場合は "Disconnected" と表示されます。 
+単純に PowerShell で *$ckt1* を実行すると、出力に *CircuitConnectionStatus* が表示されます。 これは、接続が確立されているかどうか、つまり "Connected" または "Disconnected" を通知します。 
 
 ## <a name="disable-connectivity-between-your-on-premises-networks"></a>オンプレミス ネットワーク間の接続を無効にする
 
-無効にするには、構成が行われた回線 (つまり、上記の例の回線 1) に対してコマンドを実行します。
+接続を無効にするには、構成が作成された回線 (たとえば、前の例では回線 1) に対してコマンドを実行します。
 
 ```powershell
 $ckt1 = Get-AzureRmExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
@@ -134,7 +132,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 
 Get 操作を実行して状態を確認できます。 
 
-上記の操作が完了すると、ExpressRoute 回線を介したオンプレミス ネットワーク間の接続は解除されます。 
+前の操作が完了すると、ExpressRoute 回線を経由したオンプレミス ネットワーク間の接続は存在しなくなります。 
 
 
 ## <a name="next-steps"></a>次の手順

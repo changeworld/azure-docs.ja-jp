@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: b2adb2e69475b79324cad2d11a420cbefdf8b059
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: a938e5d872d2c1602f7ce898f0d14e3e04feb759
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514487"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312568"
 ---
 # <a name="get-started-with-device-twins-java"></a>デバイス ツインの概要 (Java)
 
@@ -228,7 +228,7 @@ ms.locfileid: "51514487"
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.3.32</version>
+      <version>1.14.2</version>
     </dependency>
     ```
 
@@ -278,6 +278,17 @@ ms.locfileid: "51514487"
 
     このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。 
 
+1. デバイス ツインの更新に関する情報を出力するには、次のメソッドを **App** クラスに追加します。
+
+    ```java
+    protected static class DeviceTwinStatusCallBack implements IotHubEventCallback {
+        @Override
+        public void execute(IotHubStatusCode status, Object context) {
+          System.out.println("IoT Hub responded to device twin operation with status " + status.name());
+        }
+      }
+    ```
+
 9. 次の操作を行うコードを **main** メソッドに追加します。
     * IoT Hub と通信するデバイス クライアントを作成します。
     * デバイス ツインのプロパティを格納する **Device** オブジェクトを作成します。
@@ -310,7 +321,7 @@ ms.locfileid: "51514487"
     catch (Exception e) {
       System.out.println("On exception, shutting down \n" + " Cause: " + e.getCause() + " \n" + e.getMessage());
       dataCollector.clean();
-      client.close();
+      client.closeNow();
       System.out.println("Shutting down...");
     }
     ```
@@ -327,7 +338,13 @@ ms.locfileid: "51514487"
     client.close();
     ```
 
-12. `simulated-device\src\main\java\com\mycompany\app\App.java` ファイルを保存して閉じます。
+1. **main** メソッドのシグネチャを変更し、下の例外を追加します。
+
+    ```java
+    public static void main(String[] args) throws URISyntaxException, IOException
+    ```
+
+1. `simulated-device\src\main\java\com\mycompany\app\App.java` ファイルを保存して閉じます。
 
 13. **simulated-device** アプリをビルドし、エラーを修正します。 コマンド プロンプトで `simulated-device` フォルダーに移動し、次のコマンドを実行します。
 

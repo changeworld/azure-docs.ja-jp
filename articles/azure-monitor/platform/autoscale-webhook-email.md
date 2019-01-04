@@ -108,15 +108,15 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | operation |はい |インスタンスの増加の場合は "Scale Out"、インスタンスの減少の場合は "Scale In" になります。 |
 | context |はい |自動スケール操作のコンテキスト。 |
 | timestamp |はい |自動スケール操作がトリガーされたときのタイム スタンプ。 |
-| id |[はい] |自動スケール設定の Resource Manager ID |
-| name |[はい] |自動スケール設定の名前。 |
-| 詳細 |[はい] |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
-| subscriptionId |[はい] |スケールされるターゲット リソースのサブスクリプション ID。 |
-| resourceGroupName |[はい] |スケールされるターゲット リソースのリソース グループ名。 |
-| resourceName |[はい] |スケールされるターゲット リソースの名前。 |
-| resourceType |[はい] |"microsoft.classiccompute/domainnames/slots/roles" (クラウド サービス ロール)、"microsoft.compute/virtualmachinescalesets" (仮想マシン スケール セット)、"Microsoft.Web/serverfarms" (Web アプリ) の 3 つの値がサポートされています。 |
-| resourceId |[はい] |スケールされるターゲット リソースの Resource Manager ID。 |
-| portalLink |[はい] |ターゲット リソースの概要ページへの Azure ポータルのリンク。 |
-| oldCapacity |[はい] |自動スケールによってスケール操作が実行された時点の (以前の) インスタンス数。 |
-| newCapacity |[はい] |自動スケールによってリソースがスケールされた後の新しいインスタンス数。 |
+| id |はい |自動スケール設定の Resource Manager ID |
+| name |はい |自動スケール設定の名前。 |
+| 詳細 |はい |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
+| subscriptionId |はい |スケールされるターゲット リソースのサブスクリプション ID。 |
+| resourceGroupName |はい |スケールされるターゲット リソースのリソース グループ名。 |
+| resourceName |はい |スケールされるターゲット リソースの名前。 |
+| resourceType |はい |"microsoft.classiccompute/domainnames/slots/roles" (クラウド サービス ロール)、"microsoft.compute/virtualmachinescalesets" (仮想マシン スケール セット)、"Microsoft.Web/serverfarms" (Web アプリ) の 3 つの値がサポートされています。 |
+| resourceId |はい |スケールされるターゲット リソースの Resource Manager ID。 |
+| portalLink |はい |ターゲット リソースの概要ページへの Azure ポータルのリンク。 |
+| oldCapacity |はい |自動スケールによってスケール操作が実行された時点の (以前の) インスタンス数。 |
+| newCapacity |はい |自動スケールによってリソースがスケールされた後の新しいインスタンス数。 |
 | Properties |いいえ  |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |

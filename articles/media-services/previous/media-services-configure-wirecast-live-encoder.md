@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 6cc4c0b01511309766e48c3d671ee897e5d6f326
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e0e41714f6979a9cd699df70498b9c89a44d5ee1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669115"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138958"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.locfileid: "43669115"
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="create-a-channel"></a>チャネルの作成
-1. AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
+1. AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]**  を選択します。
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
@@ -69,22 +69,22 @@ ms.locfileid: "43669115"
 >
 >
 
-## <a name="a-idconfigurewirecastrtmp-aconfigure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" /a>Telestream Wirecast エンコーダーを構成する
+## <a name="a-idconfigurewirecastrtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Telestream Wirecast エンコーダーを構成する
 このチュートリアルでは、次の出力設定が使用されます。 このセクションの残りの部分では、構成の手順の詳細について説明します。
 
 **ビデオ**:
 
-* コーデック: H.264
-* プロファイル: 高 (レベル 4.0)
-* ビットレート: 5000 kbps
-* キーフレーム: 2 秒 (60 秒)
-* フレーム レート: 30
+* コーデック:H.264
+* プロファイル:高 (レベル 4.0)
+* ビットレート:5000 kbps
+* キーフレーム:2 秒 (60 秒)
+* フレーム レート:30
 
 **オーディオ**:
 
-* コーデック: AAC (LC)
-* ビットレート: 192 kbps
-* サンプル レート: 44.1 kHz
+* コーデック:AAC (LC)
+* ビットレート:192 kbps
+* サンプル レート:44.1 kHz
 
 ### <a name="configuration-steps"></a>構成の手順
 1. 使用中のコンピューターで、Telestream Wirecast アプリケーションを開き、RTMP ストリーミング用の設定を行います。
@@ -103,16 +103,16 @@ ms.locfileid: "43669115"
 
     **ビデオ**
 
-   * エンコーダー: MainConcept H.264
-   * 1 秒あたりのフレーム数: 30
-   * 平均ビットレート: 5000 kbps (ネットワークの制限に基づいて調整可能)
-   * プロファイル: メイン
-   * キーフレームの距離: 60 フレーム
+   * エンコーダー:MainConcept H.264
+   * 1 秒あたりのフレーム数:30
+   * 平均ビットレート:5000 kbps (ネットワークの制限に基づいて調整可能)
+   * プロファイル:メイン
+   * キー フレームの距離:60 フレーム
 
     **オーディオ**
 
-   * ターゲットのビットレート: 192 kbps
-   * サンプル レート: 44.100 kHz
+   * ターゲットのビットレート:192 kbps
+   * サンプル レート:44.100 kHz
 
      ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. **[保存]** をクリックします。

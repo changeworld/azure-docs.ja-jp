@@ -44,11 +44,11 @@ ms.locfileid: "49426333"
 
     | 表 1           | 列       | フィルターの方向   | テーブル 2     | 列      | アクティブ |
     |-------------------|--------------|--------------------|-------------|-------------|--------|
-    | FactResellerSales | OrderDateKey | 既定値            | DimDate     | 日付        | [はい]    |
+    | FactResellerSales | OrderDateKey | 既定値            | DimDate     | 日付        | はい    |
     | FactResellerSales | DueDate      | 既定値            | DimDate     | 日付        | いいえ      |
     | FactResellerSales | ShipDateKey  | 既定値            | DimDate     | 日付        | いいえ      |
-    | FactResellerSales | ProductKey   | 既定値            | DimProduct  | ProductKey  | [はい]    |
-    | FactResellerSales | EmployeeKey  | 両方のテーブル | DimEmployee | EmployeeKey | [はい]    |
+    | FactResellerSales | ProductKey   | 既定値            | DimProduct  | ProductKey  | はい    |
+    | FactResellerSales | EmployeeKey  | 両方のテーブル | DimEmployee | EmployeeKey | はい    |
 
 5. **DimEmployee** テーブルで、次の[集計列](../tutorials/aas-lesson-5-create-calculated-columns.md)を作成します。 
 

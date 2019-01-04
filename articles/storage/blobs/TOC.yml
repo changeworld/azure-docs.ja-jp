@@ -591,7 +591,7 @@ items:
         href: ../blobs/data-lake-storage-use-distcp.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Azure Data Factory を使用して Data Lake Storage Gen2 にデータをコピーする
         href: ../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: '[パフォーマンス]'
+    - name: パフォーマンス
       items:
       - name: 概要
         href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

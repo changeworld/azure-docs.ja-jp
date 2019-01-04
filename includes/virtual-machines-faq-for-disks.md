@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dadff0dc501c20ef525fdfb7578cb391f29b3302
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a5f1e728f7a13f763367abc3f380fb9fbdb67b5c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264121"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53326578"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium 管理ディスクおよび非管理ディスクについてよく寄せられる質問
 
@@ -85,9 +85,9 @@ VM 診断用にプライベート ストレージ アカウントを設定しま
 
 Managed Disks では 3 つの重要な既定のロールがサポートされます。
 
-* 所有者: アクセス権を含めて、すべてを管理できます
-* 共同作成者: アクセス権以外のすべてを管理できます
-* 閲覧者: すべてを閲覧できますが、変更することはできません
+* 所有者: アクセス権を含めすべてを管理できます
+* 共同作成者: アクセス権以外のすべてを管理できます。
+* 閲覧者: すべてを閲覧できますが、変更を加えることはできません
 
 **マネージド ディスクをプライベート ストレージ アカウントにコピーまたはエクスポートする方法はありますか?**
 
@@ -137,6 +137,10 @@ Azure Managed Disks では、現在、ローカル冗長ストレージ管理デ
 
 マネージド ディスクの名前は変更できません。 ただし、アンマネージド ディスクの場合は、現在 VHD または VM にアタッチされていなければ、名前を変更できます。
 
+**Azure ディスクで GPT パーティション分割を使用できますか?**
+
+GPT パーティション分割は OS ディスクではなく、データ ディスクでのみ使用できます。 OS ディスクは、MBR パーティション分割のスタイルを使用する必要があります。
+
 ## <a name="standard-ssd-disks"></a>Standard SSD ディスク
 
 **Azure Standard SSD ディスクとは何ですか?**
@@ -171,7 +175,7 @@ Azure Resource Manager テンプレート、SDK、PowerShell、または CLI を
 テンプレートを使用して Standard SSD ディスクを作成する方法における完全なテンプレート例については、[Standard SSD データ ディスクを含む Windows イメージから VM を作成](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)に関するページを参照してください。
 
 **既存のディスクを Standard SSD に変換できますか?**
-はい、できます。 管理ディスクの変換に関する一般的なガイドラインについては、「[Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)」を参照してください。 また、次の値を使用してディスクの種類を Standard SSD に更新します。
+ はい、できます。 管理ディスクの変換に関する一般的なガイドラインについては、「[Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)」を参照してください。 また、次の値を使用してディスクの種類を Standard SSD に更新します。
 -AccountType StandardSSD_LRS
 
 **HDD ではなく Standard SSD ディスクを使用する利点は何ですか?**
@@ -184,6 +188,10 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 いいえ、Standard SSD には単一インスタンス VM SLA はありません。 単一インスタンス VM SLA が必要な場合、Premium SSD ディスクを使用します。
 
 ## <a name="migrate-to-managed-disks"></a>マネージド ディスクに移行する
+
+**Managed Disks のパフォーマンスに移行の影響はありますか?
+
+移行には、保存場所間のディスクの移動が伴います。 これはデータのバックグラウンド コピーによって調整されますが、バックグラウンド コピーは完了までに数時間かかることがあります (ディスク内のデータの量にもよりますが、通常は 24 時間以内)。 この間、お使いのアプリケーションで読み取り時の待ち時間が通常よりも長くなる可能性があります。一部の読み取りが元の場所にリダイレクトされ、完了までに通常よりも時間がかかる場合があるためです。 この期間中、書き込みの待ち時間への影響はありません。  
 
 **Managed Disks への移行前後に、既存の Azure Backup サービス構成にどのような変更が必要でしょうか?**
 
@@ -215,7 +223,7 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 **暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されている非管理ディスクを持つ VM をマネージド ディスクに移行できますか?**
 
-[はい]
+はい。
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks と Storage Service Encryption
 
@@ -252,13 +260,13 @@ Azure Portal、Azure CLI、および PowerShell で、管理ディスクがい�
 
 **暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されている非管理ディスクを持つ VM をマネージド ディスクに変換できますか?**
 
-[はい]
+はい。
 
 **管理ディスクまたはスナップショットからエクスポートされた VHD も暗号化されますか?**
 
 いいえ。 ただし、暗号化された管理ディスクまたはスナップショットから暗号化されたストレージ アカウントに VHD をエクスポートした場合は、暗号化されます。 
 
-## <a name="premium-disks-managed-and-unmanaged"></a>Premium ディスク: 管理と非管理
+## <a name="premium-disks-managed-and-unmanaged"></a>Premium ディスク: マネージドとアンマネージド
 
 **VM が使用するサイズ シリーズが Premium SSD ディスク (DSv2 など) をサポートしている場合、Premium データ ディスクと Standard データ ディスクの両方をアタッチできますか?** 
 
@@ -288,7 +296,7 @@ DS シリーズの場合、制限はキャッシュとローカル SSD の合計
 
 Premium ディスクと Standard ディスクのどちらの場合も、Azure ディスクで TRIM を使用することに不都合な点はありません。
 
-## <a name="new-disk-sizes-managed-and-unmanaged"></a>新しいディスク サイズ: 管理と非管理
+## <a name="new-disk-sizes-managed-and-unmanaged"></a>新しいディスク サイズ: マネージドとアンマネージド
 
 **オペレーティング システムとデータ ディスクでサポートされている最大マネージド ディスク サイズはどれくらいですか?**
 
@@ -335,7 +343,7 @@ Azure Backup と Azure Site Recovery サービスでサポートされている�
 
 **Standard SSD と Standard HDD ディスクの最適化されたディスク IOPS と帯域幅を実現するために、大規模ディスク サイズ (> 4TiB) に推奨される VM サイズはどれくらいですか?**
 
-Standard SSD と Standard HDD の、 500 IOPS および 60 MiB/秒を超える大規模ディスク サイズ (> 4 TB) のディスク スループットを実現するためには、パフォーマンスを最適化するために以下の VM シリーズのいずれかを使用する必要があります: B シリーズ、DSv2 シリーズ、Dsv3 シリーズ、ESv3 シリーズ、Fs シリーズ、Fsv2 シリーズ、M シリーズ、GS シリーズ、NCv2 シリーズ、NCv3 シリーズ、または Ls シリーズの VM。
+Standard SSD と Standard HDD の、500 IOPS および 60 MiB/秒を超える大規模ディスク サイズ (> 4 TB) のディスク スループットを実現するためには、パフォーマンスを最適化するために以下の VM シリーズのいずれかを使用する必要があります: B シリーズ、DSv2 シリーズ、Dsv3 シリーズ、ESv3 シリーズ、Fs シリーズ、Fsv2 シリーズ、M シリーズ、GS シリーズ、NCv2 シリーズ、NCv3 シリーズ、または Ls シリーズの VM。
 
 **どのリージョンで、 4 TiB よりも大きいマネージド ディスクのサイズがサポートされていますか?**
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Sansan の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Sansan の統合 | Microsoft Docs
 description: Azure Active Directory と Sansan の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: cc070f7c4cb201e68c93b0b1337982325df74663
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9e14f923b1e25f5fbc522cd39763ac53ddf37617
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051263"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872256"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sansan"></a>チュートリアル: Azure Active Directory と Sansan の統合
+# <a name="tutorial-azure-active-directory-integration-with-sansan"></a>チュートリアル:Azure Active Directory と Sansan の統合
 
 このチュートリアルでは、Sansan と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Sansan で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 
 Sansan で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Sansan のテスト ユーザーの作成](#creating-a-sansan-test-user)** - Sansan で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -186,7 +186,7 @@ Sansan で Azure AD のシングル サインオンを構成してテストす�
     }
     ```
 
-8. PowerShell スクリプトが正常に完了した後、スクリプトの結果は、下記に示すようになります。URL の値は更新されますが、　それらは、Azure Portal には反映されません。 
+8. PowerShell スクリプトが正常に完了した後、スクリプトの結果は、下記のようになります。URL の値は更新されますが、それらは、Azure portal には反映されません。 
 
     ![シングル サインオン スクリプトの構成](./media/sansan-tutorial/tutorial_sansan_powershell.png)
 

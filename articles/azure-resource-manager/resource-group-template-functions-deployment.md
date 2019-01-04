@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 12/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 725bc41f96359d4bf0d9d570f73f91dba5da2cab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d802af1d48405518f26f4b52ecc3023cbb15caff
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358236"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407356"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのデプロイ関数 
 
@@ -86,6 +86,8 @@ ms.locfileid: "34358236"
 }
 ```
 
+[Azure のサブスクリプションにデプロイする](deploy-to-subscription.md)場合は、リソース グループの代わりに、返されるオブジェクトに `location` プロパティが含まれています。 ローカル テンプレートまたは外部テンプレートのいずれかをデプロイする場合は、場所プロパティが含まれています。
+
 ### <a name="remarks"></a>解説
 
 deployment() を使い、親テンプレートの URI に基づいて、別のテンプレートにリンクできます。
@@ -150,6 +152,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
 ```
 
+デプロイ関数を使用するサブスクリプションレベルのテンプレートについては、[サブスクリプション デプロイ関数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)に関するページを参照してください。 これは `az deployment create` コマンドまたは `New-AzureRmDeployment` コマンドのいずれかでデプロイされます。
+
 <a id="parameters" />
 
 ## <a name="parameters"></a>parameters
@@ -159,9 +163,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |あり |文字列 |返されるパラメーターの名前。 |
+| parameterName |あり |string |返されるパラメーターの名前。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -251,7 +255,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 | stringOutput | String | 方法 1 |
 | intOutput | int | 1 |
 | objectOutput | オブジェクト | {"one": "a", "two": "b"} |
-| arrayOutput | array | [1, 2, 3] |
+| arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | 方法 1 |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
@@ -275,9 +279,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| variableName |[はい] |String |返す変数の名前。 |
+| variableName |はい |String |返す変数の名前。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -352,7 +356,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 | Name | type | 値 |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
-| exampleOutput2 | array | [1, 2, 3, 4] |
+| exampleOutput2 | Array | [1, 2, 3, 4] |
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  オブジェクト | {"property1": "value1", "property2": "value2"} |
 
@@ -372,5 +376,5 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
-* 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
+* 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
 

@@ -1,21 +1,19 @@
 ---
-title: Azure Cosmos DB PDF クエリ チート シート | Microsoft Docs
+title: Azure Cosmos DB PDF クエリ チート シート
 description: Azure Cosmos DB の SQL、MongoDB、グラフ、およびテーブル API を使用してデータをクエリするのに役立つ印刷可能な PDF チート シート
 keywords: sql チート シート, sql チート シート pdf, sql クエリ チート シート
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 22f8384105ed31ac2b11e0c6094b01549a270144
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 21b2ee99fa8f9b22b4dfccadfaadf1d4a10980cf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230871"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138145"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB クエリのチート シート
 
@@ -36,7 +34,7 @@ ms.locfileid: "51230871"
 
 ## <a name="next-steps"></a>次の手順
 クエリの記述の詳細については、以下の記事を参照してください。
-* SQL API クエリについては、[SQL API を使用したクエリ](tutorial-query-sql-api.md)、[Azure Cosmos DB のための SQL クエリ](sql-api-sql-query.md)、および[SQL 構文のリファレンス](sql-api-sql-query-reference.md)を参照してください
+* SQL API クエリについては、[SQL API を使用したクエリ](tutorial-query-sql-api.md)、[Azure Cosmos DB のための SQL クエリ](how-to-sql-query.md)、および[SQL 構文のリファレンス](sql-api-query-reference.md)を参照してください
 * MongoDB クエリについては、[MongoDB API を使用したクエリ](tutorial-query-mongodb.md)、[MongoDB の機能と構文のための MongoDB API のサポート](mongodb-feature-support.md)を参照してください
 * Gremlin API クエリについては、[Gremlin API を使用したクエリ](tutorial-query-graph.md)、[Azure Cosmos DB での Gremlin グラフのサポート](gremlin-support.md)を参照してください
 * テーブル API クエリについては、[テーブル API を使用したクエリ](tutorial-query-table.md)を参照してください

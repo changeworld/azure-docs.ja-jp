@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b28830ac2634ad2238d834238de83c9184bcd6f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ec8fa6c06dff0091627a800c895d45fd3b0e778e
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47010393"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53381561"
 ---
 # <a name="enabling-azure-ultra-ssds"></a>Azure Ultra SSD の有効化
 
@@ -29,9 +29,9 @@ CLI: `az vm list-skus --resource-type disks --query “[?name==’UltraSSD_LRS�
 
 応答は下のフォームのようになります。X は、米国東部 2 でのデプロイに使用するゾーンです。 X は 1、2、3 のいずれかになります。
 
-|ResourceType  |Name  |Location  |ゾーン  |制限  |機能  |値  |
+|ResourceType  |Name  |場所  |ゾーン  |制限  |機能  |値  |
 |---------|---------|---------|---------|---------|---------|---------|
-|ディスク     |UltraSSD_LRS         |eastus2         |○         |         |         |         |
+|ディスク     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 コマンドから応答がなかった場合は、機能に対する登録がまだ保留中か、まだ承認されていないことを意味します。
 
@@ -84,6 +84,6 @@ VM がプロビジョニングされたら、データ ディスクをパーテ�
 - Ultra SSD では、実行時に、ディスクをデタッチすることなく、仮想マシンから、ディスク パフォーマンス属性 (IOPS とスループット) を調整できます。 ディスクでディスク パフォーマンス サイズ変更操作を実行した場合、変更が実際に有効になるまでに最大で 1 時間かかることがあります。
 - ディスク容量を拡大するときは、仮想マシンの割り当てを解除する必要があります。
 
-# <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 
 新しいディスクの種類を試してみたい場合で、まだプレビューにサインアップしていないときは、[この調査からアクセスを要求](https://aka.ms/UltraSSDPreviewSignUp)してください。

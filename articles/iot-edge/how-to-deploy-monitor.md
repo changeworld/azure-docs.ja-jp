@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge のモジュールを展開および監視する | Microsoft Docs
-description: エッジ デバイスで実行するモジュールの管理
+title: Azure portal から自動展開を作成する - Azure IoT Edge | Microsoft Docs
+description: Azure portal を使用して、一連の IoT Edge デバイスの自動展開を作成します
 keywords: ''
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6ebd2a4e24a5f0bd9a9adad97bf26ae61219c8e0
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 20f50e286e30e32f066fe3d214bfc4c1a155776e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566247"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083922"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Azure Portal を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -49,13 +50,13 @@ Azure IoT Edge を使用することにより、分析をエッジに移動し�
 
 デプロイを作成するには、5 つの手順があります。 次のセクションで、手順ごとに説明します。 
 
-### <a name="step-1-name-and-label"></a>手順 1: 名前とラベル
+### <a name="step-1-name-and-label"></a>手順 1:名前とラベル
 
 1. デプロイに一意の名前を付けます。名前は最大 128 文字の英小文字で指定します。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /`
 1. デプロイを追跡するためのラベルを追加します。 ラベルは、デプロイを説明する、**[名前]** と **[値]** で一組になっています。 たとえば、`HostPlatform, Linux` または `Version, 3.0.1` です。
 1. **[次へ]** を選択して手順 2 に進みます。 
 
-### <a name="step-2-add-modules-optional"></a>手順 2: モジュールの追加 (省略可能)
+### <a name="step-2-add-modules-optional"></a>手順 2:モジュールの追加 (省略可能)
 
 デプロイに追加できるモジュールは 2 種類あります。 1 つめは、ストレージ アカウントや Stream Analytics などの Azure サービスを使用するモジュールです。 2 つめは、ユーザー独自のコードを使用するモジュールです。 各種類の複数のモジュールをデプロイに追加できます。 
 
@@ -92,14 +93,14 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 
 展開するすべてのモジュールを構成したら、**[次へ]** を選択して手順 3 に進みます。
 
-### <a name="step-3-specify-routes-optional"></a>手順 3: ルートの指定 (省略可能)
+### <a name="step-3-specify-routes-optional"></a>手順 3:ルートの指定 (省略可能)
 
 ルートは、デプロイ内のモジュール間の通信方法を定義します。 既定では、**FROM /\* INTO $upstream** として定義済みの **route** という名前のルートがウィザードから提供されます。つまり、モジュールによるメッセージ出力は IoT Hub に送信されます。  
 
 [ルートの宣言](module-composition.md#declare-routes)の情報を使用してルートを追加または更新し、**[次へ]** を選択して確認のセクションに進みます。
 
 
-### <a name="step-4-target-devices"></a>手順 4: 対象デバイス
+### <a name="step-4-target-devices"></a>手順 4:対象デバイス
 
 このデプロイの対象となるデバイスを、デバイスからのタグ プロパティを使用して指定します。 
 
@@ -109,7 +110,7 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 1. どのデバイスがこのデプロイの対象となるかを指定する **[Target condition]\(対象の条件\)** を入力します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.reported.devicemodel='4000x'` です。 
 1. **[次へ]** を選択して最後の手順に進みます。
 
-### <a name="step-5-review-template"></a>手順 5: テンプレートのレビュー
+### <a name="step-5-review-template"></a>手順 5:テンプレートの確認
 
 デプロイ情報を確認し、**[送信]** を選択します。
 

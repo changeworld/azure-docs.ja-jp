@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/30/2018
-ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.date: 12/6/2018
+ms.openlocfilehash: 89451122ff8cae33f1710fc1458fcd4277964e1f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982880"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090994"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL の制限事項
 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。 MySQL データベース エンジンに適用できる[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)も確認してください。
@@ -31,13 +31,15 @@ ms.locfileid: "45982880"
 |汎用| 8| 1250|
 |汎用| 16| 2500|
 |汎用| 32| 5000|
+|汎用| 64| 10000|
 |メモリ最適化| 2| 600|
 |メモリ最適化| 4| 1250|
 |メモリ最適化| 8| 2500|
 |メモリ最適化| 16| 5000|
+|メモリ最適化| 32| 10000|
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
-> ERROR 1040 (08004): Too many connections
+> ERROR 1040 (08004): Too many connections (接続が多すぎます)
 
 ## <a name="storage-engine-support"></a>ストレージ エンジンのサポート
 
@@ -55,7 +57,7 @@ ms.locfileid: "45982880"
 
 ### <a name="unsupported"></a>サポートされていません
 - DBA ロール: DBA ロールでは、多くのサーバー パラメーターおよび設定によって、誤ってサーバー パフォーマンスを低下させたり、DBMS の ACID プロパティを負数にしてしまったりする恐れがあります。 そのため、製品レベルのサービス整合性と SLA を維持するために、このサービスでは、DBA ロールを公開していません。 新しいデータベース インスタンスの作成時に構成される既定のユーザー アカウントによって、ユーザーは管理データベース インスタンスでほとんどの DDL および DML ステートメントを実行できます。 
-- SUPER 権限: 同様に、SUPER 権限 ([SUPER 権限について](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)の記述を参照) も制限されています。
+- SUPER 権限: 同様に、[SUPER 権限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)も制限されています。
 
 ## <a name="data-manipulation-statement-support"></a>データ操作ステートメントのサポート
 

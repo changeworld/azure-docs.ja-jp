@@ -104,7 +104,7 @@ ms.locfileid: "52835099"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | [はい] | ポリシーのユーザー体験の識別子です。 詳細については、「[ユーザー体験](userjourneys.md)」を参照してください |
+| ReferenceId | はい | ポリシーのユーザー体験の識別子です。 詳細については、「[ユーザー体験](userjourneys.md)」を参照してください |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
@@ -124,7 +124,7 @@ ms.locfileid: "52835099"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Scope (スコープ) | [はい] | シングル サインオン動作の範囲です。 可能な値: `Suppressed`、`Tenant`、`Application`、または`Policy`。 `Suppressed` の値は、動作が抑制されることを示します。 たとえば、シングル サインオン セッションの場合、ユーザーのセッションは維持されず、ユーザーは常に ID プロバイダーを選択するように求められます。 `TrustFramework` 値では、信頼フレームワークのすべてのポリシーに動作が適用されることを示します。 たとえば、信頼フレームワークの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Tenant` 値では、テナントのすべてのポリシーに動作が適用されることを示します。 たとえば、テナントの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Application` 値では、要求を行うアプリケーションのすべてのポリシーに動作が適用されることを示します。 たとえば、アプリケーションの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Policy` の値は、動作がポリシーに適用されるだけであることを示します。 たとえば、信頼フレームワークの 2 つのポリシー体験間を移動するユーザーは、ポリシー間を切り替える場合に ID プロバイダーの選択を求められます。 |
+| Scope (スコープ) | はい | シングル サインオン動作の範囲です。 可能な値: `Suppressed`、`Tenant`、`Application`、または`Policy`。 `Suppressed` の値は、動作が抑制されることを示します。 たとえば、シングル サインオン セッションの場合、ユーザーのセッションは維持されず、ユーザーは常に ID プロバイダーを選択するように求められます。 `TrustFramework` 値では、信頼フレームワークのすべてのポリシーに動作が適用されることを示します。 たとえば、信頼フレームワークの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Tenant` 値では、テナントのすべてのポリシーに動作が適用されることを示します。 たとえば、テナントの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Application` 値では、要求を行うアプリケーションのすべてのポリシーに動作が適用されることを示します。 たとえば、アプリケーションの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Policy` の値は、動作がポリシーに適用されるだけであることを示します。 たとえば、信頼フレームワークの 2 つのポリシー体験間を移動するユーザーは、ポリシー間を切り替える場合に ID プロバイダーの選択を求められます。 |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -132,12 +132,12 @@ ms.locfileid: "52835099"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| TelemetryEngine | [はい] | 値は `ApplicationInsights` である必要があります。 | 
-| InstrumentationKey | [はい] | Application Insights 要素のインストルメンテーション キーを含む文字列。 |
-| DeveloperMode | [はい] | 指定できる値: `true` または `false`。 `true` であれば、Application Insights はパイプラインの処理を通じてテレメトリを迅速化します。 この設定は、開発に適していますが、大量に制約されています。詳細なアクティビティ ログは、カスタム ポリシーの開発のみを支援するように設計されています。 実稼働環境では開発モードを使わないでください。 ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。 実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに PII (個人を特定できる情報) が収集されることに対して責任を追うことになります。 これらの詳細なログは、この値が `true` に設定されている場合のみ収集されます。|
-| ClientEnabled | [はい] | 指定できる値: `true` または `false`。 `true` とした場合、ページ ビューとクライアント側エラーを追跡するためのクライアント側スクリプトを Application Insights に送信します。 | 
-| ServerEnabled | [はい] | 指定できる値: `true` または `false`。 `true` では、既存の UserJourneyRecorder JSON をカスタム イベントとして Application Insights に送信します。 | 
-| TelemetryVersion | [はい] | 値は `1.0.0` である必要があります。 | 
+| TelemetryEngine | はい | 値は `ApplicationInsights` である必要があります。 | 
+| InstrumentationKey | はい | Application Insights 要素のインストルメンテーション キーを含む文字列。 |
+| DeveloperMode | はい | 指定できる値: `true` または `false`。 `true` であれば、Application Insights はパイプラインの処理を通じてテレメトリを迅速化します。 この設定は、開発に適していますが、大量に制約されています。詳細なアクティビティ ログは、カスタム ポリシーの開発のみを支援するように設計されています。 実稼働環境では開発モードを使わないでください。 ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。 実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに PII (個人を特定できる情報) が収集されることに対して責任を追うことになります。 これらの詳細なログは、この値が `true` に設定されている場合のみ収集されます。|
+| ClientEnabled | はい | 指定できる値: `true` または `false`。 `true` とした場合、ページ ビューとクライアント側エラーを追跡するためのクライアント側スクリプトを Application Insights に送信します。 | 
+| ServerEnabled | はい | 指定できる値: `true` または `false`。 `true` では、既存の UserJourneyRecorder JSON をカスタム イベントとして Application Insights に送信します。 | 
+| TelemetryVersion | はい | 値は `1.0.0` である必要があります。 | 
 
 詳細については、「[ログの収集](active-directory-b2c-troubleshoot-custom.md)」をご覧ください。
 
@@ -159,7 +159,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Name | [はい] | キーと値のペアの名前。 |
+| Name | はい | キーと値のペアの名前。 |
 
 詳しくは、[カスタム ポリシーを使用して動的コンテンツを含む UI を構成する](active-directory-b2c-ui-customization-custom-dynamic.md)を参照してください
 
@@ -169,7 +169,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- | 
-| ID | [はい] | 値は `PolicyProfile` である必要があります。 |
+| ID | はい | 値は `PolicyProfile` である必要があります。 |
 
 **TechnicalProfile** には、次の属性が含まれています。
 
@@ -186,7 +186,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Name | [はい] | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OpenIdConnect` および`SAML2`。 `OpenIdConnect` 値は、OpenID 基盤の仕様に従って、OpenID Connect 1.0 プロトコルの標準を表します。 `SAML2` 値は、OASIS 仕様に従って、SAML 2.0 プロトコルの標準を表します。 運用環境では、SAML トークンを使用しないでください。 |
+| Name | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OpenIdConnect` および`SAML2`。 `OpenIdConnect` 値は、OpenID 基盤の仕様に従って、OpenID Connect 1.0 プロトコルの標準を表します。 `SAML2` 値は、OASIS 仕様に従って、SAML 2.0 プロトコルの標準を表します。 運用環境では、SAML トークンを使用しないでください。 |
 
 ## <a name="outputclaims"></a>OutputClaims
 
@@ -200,7 +200,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | [はい] | ポリシー ファイル内の **ClaimsSchema** セクションに既に定義されている **ClaimType** への参照。 |
+| ClaimTypeReferenceId | はい | ポリシー ファイル内の **ClaimsSchema** セクションに既に定義されている **ClaimType** への参照。 |
 | DefaultValue | いいえ  | 既定値が空の場合に使用できる既定値。 |
 | PartnerClaimType | いいえ  | ClaimType 定義で構成されている別の名前で、要求を送信します。 |
 
@@ -214,7 +214,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClaimType | [はい] | 出力要求の **PartnerClaimType** への参照。 証明書利用者ポリシー **OutputClaims**コレクションに出力要求を定義する必要があります。 |
+| ClaimType | はい | 出力要求の **PartnerClaimType** への参照。 証明書利用者ポリシー **OutputClaims**コレクションに出力要求を定義する必要があります。 |
 
 次の例では、OpenId Connect の証明書利用者を定義する方法を示します。 サブジェクト名情報は、`objectId` として構成されます。
 

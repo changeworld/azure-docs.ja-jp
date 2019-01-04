@@ -8,12 +8,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 2a6744bdec48e59b820605bb4d1cc01d32702bcf
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2ee9f750ff52b8afe4be54233f1374f523a789f4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867767"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845171"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のサーバー ログ 
 Azure Database for PostgreSQL ではクエリ ログとエラー ログが生成されます。 クエリとエラー ログを使用して、構成エラーと十分に最適化されていないパフォーマンスの特定、トラブルシューティング、修復を行えます。 トランザクション ログへのアクセスは含まれていません。 
@@ -26,11 +26,11 @@ Azure Database for PostgreSQL ではクエリ ログとエラー ログが生成
 これらのパラメーターの詳細については、PostgreSQL の「[Error Reporting and Logging](https://www.postgresql.org/docs/current/static/runtime-config-logging.html)」(エラー レポートとログ記録) のドキュメントを参照してください。 Azure Database for PostgreSQL パラメーターを構成する方法については、[portal のドキュメント](howto-configure-server-parameters-using-portal.md)または　[CLI のドキュメント](howto-configure-server-parameters-using-cli.md)を参照してください。
 
 ## <a name="access-server-logs-through-portal-or-cli"></a>portal または CLI によるサーバー ログへのアクセス
-ログを有効にしている場合、[Azure portal](howto-configure-server-logs-in-portal.md)、[Azure CLI](howto-configure-server-logs-using-cli.md)、および Azure REST API を使用して、Azure Database for PostgreSQL ログ ストレージからそれらにアクセスできます。 ログ ファイルのローテーションは、1 時間ごとか 100 MB ごとのどちらか早い方のタイミングで行われます。 このログ ストレージのリテンション期間を設定するには、サーバーに関連付けられている **log\_retention\_period** パラメーターを使用します。 既定値は 3 日間です。最大値は 7 日間です。 サーバーには、ログ ファイルを保持するために、十分なストレージが割り当てられている必要があります (このリテンション期間パラメーターは、Azure 診断ログに影響しません)。
+ログを有効にしている場合、[Azure portal](howto-configure-server-logs-in-portal.md)、[Azure CLI](howto-configure-server-logs-using-cli.md)、および Azure REST API を使用して、Azure Database for PostgreSQL ログ ストレージからそれらにアクセスできます。 ログ ファイルのローテーションは、1 時間ごとか 100 MB ごとのどちらか早い方のタイミングで行われます。 このログ ストレージのリテンション期間を設定するには、サーバーに関連付けられている **log\_retention\_period** パラメーターを使用します。 既定値は 3 日間です。最大値は 7 日間です。 サーバーには、ログ ファイルを保持するために、十分なストレージが割り当てられている必要があります (このリテンション期間パラメーターは、Azure 診断ログに影響しません)。
 
 
 ## <a name="diagnostic-logs"></a>診断ログ
-Azure Database for PostgreSQL は、Azure Monitor の診断ログと統合されます。 PostgreSQL サーバーでログを有効にしたら、[Log Analytics](../log-analytics/log-analytics-queries.md)、Event Hubs、または Azure Storage に対して、それらが出力されるように選択できます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)の操作方法のセクションを参照してください。 
+Azure Database for PostgreSQL は、Azure Monitor の診断ログと統合されます。 PostgreSQL サーバーでログを有効にしたら、[Log Analytics](../azure-monitor/log-query/log-query-overview.md)、Event Hubs、または Azure Storage に対して、それらが出力されるように選択できます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)の操作方法のセクションを参照してください。 
 
 
 次の表は、各ログの内容を説明しています。 選択した出力エンドポイントに応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。 
@@ -49,7 +49,7 @@ Azure Database for PostgreSQL は、Azure Monitor の診断ログと統合され
 | リソース | サーバーの名前 |
 | Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| errorLevel | ログ レベル (LOG、ERROR、NOTICE など) |
+| errorLevel | ログ レベル、例:LOG、ERROR、NOTICE |
 | Message | プライマリ ログ メッセージ | 
 | ドメイン | サーバーのバージョン (postgres 10 など) |
 | 詳細 | セカンダリ ログ メッセージ (該当する場合) |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7657ac2e2d5a169607c73b8934328ce41ecea78e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959062"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141936"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>アプリケーションを AD FS から Azure AD に移動する 
 
@@ -82,7 +82,7 @@ ms.locfileid: "49959062"
 
 ### <a name="non-federated-apps"></a>非フェデレーション アプリ
 非フェデレーション アプリは、Azure AD アプリケーション プロキシと関連機能を使用して、Azure AD と統合することができます。 非フェデレーション アプリには次のものがあります。
-- Active Directory で直接 Windows 統合認証を使用するアプリ。 これらのアプリは、[Azure AD アプリケーション プロキシ](application-proxy-publish-azure-portal.md)を通じて Azure AD に統合できます。
+- Active Directory で直接 Windows 統合認証を使用するアプリ。 これらのアプリは、[Azure AD アプリケーション プロキシ](application-proxy-add-on-premises-application.md)を通じて Azure AD に統合できます。
 - エージェントを通じてシングル サインオン プロバイダーと統合し、承認のためにヘッダーを使用するアプリ。 サインオンおよびヘッダーベースの承認のために、インストールされたエージェントを使用するオンプレミス アプリは、Azure AD アプリケーション プロキシと [Ping Access for Azure AD](https://blogs.technet.microsoft.com/enterprisemobility/2017/06/15/ping-access-for-azure-ad-is-now-generally-available-ga/) を使用して、Azure AD ベースのサインオン用に構成できます。
 
 ## <a name="translating-on-premises-federated-apps-to-azure-ad"></a>オンプレミスのフェデレーション アプリから Azure AD への変換 
@@ -92,8 +92,8 @@ AD FS と Azure AD は動作が似ているため、信頼関係の構成、サ�
 
 ### <a name="representing-the-app-in-azure-ad-or-ad-fs"></a>Azure AD または AD FS でのアプリの表現
 移行を開始するには、まず、アプリケーションがオンプレミスでどのように構成されているかを評価し、その構成を Azure AD にマッピングします。 AD FS での証明書利用者の構成要素と、Azure AD での対応する要素とのマッピングを次の表に示します。  
-- AD FS の用語: 証明書利用者または証明書利用者信頼。
-- Azure AD の用語: エンタープライズ アプリケーションまたはアプリの登録 (アプリの種類によって異なります)。
+- AD FS の用語:証明書利用者または証明書利用者信頼。
+- Azure AD の用語:エンタープライズ アプリケーションまたはアプリの登録 (アプリの種類によって異なります)。
 
 |アプリの構成要素|説明|AD FS 構成内の場所|Azure AD 構成内の対応する場所|SAML トークン要素|
 |-----|-----|-----|-----|-----|
@@ -124,7 +124,7 @@ AD FS と Azure AD は動作が似ているため、信頼関係の構成、サ�
 |IdP </br>サインアウト </br>URL|アプリの観点からの IdP のサインアウト URL (ユーザーがアプリのサインアウトを選択したときにリダイレクトされる場所)。|AD FS の場合、サインアウト URL はサインオン URL と同じであるか、同じ URL に "wa=wsignout1.0" を付加したものです。 例: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD での対応する値は、アプリが SAML 2.0 サインアウトをサポートしているかどうかによって異なります。</br></br>アプリが SAML サインアウトをサポートしている場合、値は、以下のパターンに従います。{tenant-id} はテナント ID に置き換えます。 これは、Azure Portal の **[Azure Active Directory]** > **[プロパティ]** で **[ディレクトリ ID]** として確認できます (https&#58;//login.microsoftonline.com/{tenant-id}/saml2)。</br></br>アプリが SAML サインアウトをサポートしていない場合: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
 |トークン </br>署名 </br>証明書|発行されたトークンに署名するために IdP が使用する秘密キーを持つ証明書。 アプリが信頼するように構成されているのと同じ IdP からトークンが来ていることを確認します。|AD FS トークン署名証明書は、[AD FS の管理] の **[証明書]** の下にあります。|Azure AD では、トークン署名証明書は Azure Portal のアプリケーションの **[シングル サインオン]** プロパティの **[SAML 署名証明書]** ヘッダーで確認できます。 ここで、アプリにアップロードするための証明書をダウンロードすることができます。</br></br> アプリケーションに複数の証明書がある場合は、フェデレーション メタデータ XML ファイルですべての証明書を確認することができます。|
 |識別子/</br>"発行者"|アプリの観点からの IdP の識別子 ("発行者 ID" と呼ばれる場合もあります)。</br></br>SAML トークンでは、値は **Issuer** 要素として表示されます。|AD FS の識別子は、通常、[AD FS の管理] の **[サービス]** > **[フェデレーション サービスのプロパティの編集]** の下にあるフェデレーション サービス識別子です。 例: http&#58;//fs.contoso.com/adfs/services/trust|Azure AD での対応する値は、以下のパターンに従います。{tenant-id} は、テナント ID に置き換えます。 これは、Azure Portal の **[Azure Active Directory]** > **[プロパティ]** で **[ディレクトリ ID]** として確認できます (https&#58;//sts.windows.net/{tenant-id}/)。|
-|IdP </br>フェデレーション </br>metadata|IdP の一般公開されているフェデレーション メタデータの場所 (一部のアプリでは、管理者によって個別に構成される URL、識別子、およびトークン署名証明書の代わりに、フェデレーション メタデータを使用します)。|AD FS フェデレーション メタデータ URL は、[AD FS の管理] の **[サービス]** > **[エンドポイント]** > **[メタデータ]** > **[種類: フェデレーション メタデータ]** の下で確認できます。 例: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD での対応する値は、次のパターンに従います: https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml。 {TenantDomainName} は、"contoso.onmicrosoft.com" という形式のテナントの名前に置き換えます。 </br></br>詳細については、「[フェデレーション メタデータ](../develop/azure-ad-federation-metadata.md)」を参照してください。
+|IdP </br>フェデレーション </br>metadata|IdP の一般公開されているフェデレーション メタデータの場所 (一部のアプリでは、管理者によって個別に構成される URL、識別子、およびトークン署名証明書の代わりに、フェデレーション メタデータを使用します)。|AD FS フェデレーション メタデータ URL は、[AD FS の管理] の **[サービス]** > **[エンドポイント]** > **[メタデータ]** > **[種類:フェデレーション メタデータ]** の下で確認できます。 例: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD での対応する値は、次のパターンに従います: https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml。 {TenantDomainName} は、"contoso.onmicrosoft.com" という形式のテナントの名前に置き換えます。 </br></br>詳細については、「[フェデレーション メタデータ](../develop/azure-ad-federation-metadata.md)」を参照してください。
 
 ## <a name="moving-saas-apps"></a>SaaS アプリの移動
 AD FS や他の ID プロバイダーから Azure AD への SaaS アプリの移動は、現時点では手作業で行います。 アプリ固有のガイダンスについては、[Marketplace にある SaaS アプリの統合に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)を参照してください。
@@ -203,26 +203,26 @@ Azure AD ポータルでユーザーを割り当てるには、SaaS アプリの
 
 ![[割り当ての追加] ウィンドウ](media/migrate-adfs-apps-to-azure/migrate7.png)
 
-アクセス権を確認するには、ユーザーがサインインしているときに[アクセス パネル](../user-help/active-directory-saas-access-panel-introduction.md)に SaaS アプリが表示されるかどうかを調べます。 アクセス パネルは http://myapps.microsoft.com にあります。 この例では、ユーザーに Salesforce と ServiceNow の両方へのアクセス権が正常に割り当てられています。
+アクセス権を確認するには、ユーザーがサインインしているときに[アクセス パネル](../user-help/active-directory-saas-access-panel-introduction.md)に SaaS アプリが表示されるかどうかを調べます。 アクセス パネルは https://myapps.microsoft.com にあります。 この例では、ユーザーに Salesforce と ServiceNow の両方へのアクセス権が正常に割り当てられています。
 
 ![Salesforce と ServiceNow アプリが表示されているアクセス パネルの例](media/migrate-adfs-apps-to-azure/migrate8.png)
 
 ### <a name="configure-the-saas-app"></a>SaaS アプリの構成
 オンプレミス フェデレーションから Azure AD への切り替えプロセスは、使用している SaaS アプリが複数の ID プロバイダーをサポートしているかどうかによって異なります。 複数の IdP のサポートに関してよくある質問は、次のとおりです。
 
-   **Q: アプリにとって複数の IdP をサポートすることにはどういう意味がありますか**
+   **Q:アプリにとって複数の IdP をサポートすることにはどういう意味がありますか?**
     
-   A: 複数の IdP をサポートする SaaS アプリでは、サインオンのエクスペリエンスを変更する前に、新しい IdP (ここでは Azure AD) に関するすべての情報を入力することができます。 構成を完了したら、アプリの認証の構成を、Azure AD を使用するように切り替えることができます。
+   A:複数の IdP をサポートする SaaS アプリでは、サインオンのエクスペリエンスを変更する前に、新しい IdP (ここでは Azure AD) に関するすべての情報を入力することができます。 構成を完了したら、アプリの認証の構成を、Azure AD を使用するように切り替えることができます。
 
-   **Q: SaaS アプリが複数の IdP をサポートしているかどうかが、どうして重要なのですか?**
+   **Q:SaaS アプリが複数の IdP をサポートしているかどうかが、どうして重要なのですか?**
 
-   A: 複数の IdP がサポートされていない場合、管理者はサービスまたはメンテナンスを停止する短い時間枠を確保して、その間に Azure AD をアプリの新しい IdP として構成する必要があります。 この停止中はユーザーが自分のアカウントにサインインできなくなることを、ユーザーに通知する必要があります。
+   A:複数の IdP がサポートされていない場合、管理者はサービスまたはメンテナンスを停止する短い時間枠を確保して、その間に Azure AD をアプリの新しい IdP として構成する必要があります。 この停止中はユーザーが自分のアカウントにサインインできなくなることを、ユーザーに通知する必要があります。
 
    アプリが複数の IdP をサポートしている場合は、追加の IdP の構成を事前に済ませることができます。 そうすると、管理者が Azure への切り替え時に IdP を変更できます。
 
    アプリが複数の IdP をサポートしていて、複数の IdP にサインインの認証を同時に処理させるようにした場合、ユーザーは認証を行う IdP をサインイン ページで選択することができます。
 
-#### <a name="example-support-for-multiple-idps"></a>例: 複数の IdP のサポート
+#### <a name="example-support-for-multiple-idps"></a>例:複数の IdP のサポート
 たとえば、Salesforce では、IDP 構成が **[Settings]\(設定\)** > **[Company Settings]\(会社の設定\)** > **[My Domain]\(マイ ドメイン\)** > **[Authentication Configuration]\(認証の構成\)** にあります。
 
 ![Salesforce アプリの [Authentication Configuration]\(認証の構成\) セクション](media/migrate-adfs-apps-to-azure/migrate9.png)
@@ -231,7 +231,7 @@ Azure AD ポータルでユーザーを割り当てるには、SaaS アプリの
 
 ![認証サービスとしての Azure AD の選択](media/migrate-adfs-apps-to-azure/migrate10.png)
 
-### <a name="optional-configure-user-provisioning-in-azure-ad"></a>オプション: Azure AD でユーザー プロビジョニングを構成する
+### <a name="optional-configure-user-provisioning-in-azure-ad"></a>省略可能:Azure AD でユーザー プロビジョニングを構成する
 Azure AD で SaaS アプリのユーザー プロビジョニングを直接処理するようにする場合は、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順

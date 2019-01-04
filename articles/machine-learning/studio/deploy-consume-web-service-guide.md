@@ -1,11 +1,11 @@
 ---
-title: 'Azure Machine Learning Web サービス: デプロイと使用 | Microsoft Docs'
-description: Web サービスをデプロイおよび使用するためのリソース。
+title: デプロイと使用 - Azure Machine Learning Studio | Microsoft Docs
+description: Azure Machine Learning を使用すると、機械学習のワークフローとモデルを Web サービスとしてデプロイできます。 次に、リアルタイムまたはバッチ モードで予測を行うために、インターネット経由で機械学習モデルをアプリケーションから呼び出すのに、これらの Web サービスを使用できます。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 47635376-d1f4-4ea4-a6af-bd1f99f69a69
 ms.service: machine-learning
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 321edd134fd2ac6b03ad6d3117944f0f59c24669
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: ed57f80a210cdb9c7ff8e77da2269d8494892fcc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42142151"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268429"
 ---
-# <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Azure Machine Learning Web サービス: デプロイと使用
-Azure Machine Learning により、Machine Learning のワークフローとモデルを Web サービスとしてデプロイできます。 この Web サービスを使用すると、インターネット経由で機械学習モデルをアプリケーションから呼び出して、リアルタイムまたはバッチ モードで予測することができます。 RESTfull であるため、Web サービスは、さまざまなプログラミング言語やプラットフォーム (.NET、Java など)、およびアプリケーション (Excel など) から呼び出すことができます。
+# <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio Web サービス:デプロイと使用
+Azure Machine Learning を使用すると、機械学習のワークフローとモデルを Web サービスとしてデプロイできます。 次に、リアルタイムまたはバッチ モードで予測を行うために、インターネット経由で機械学習モデルをアプリケーションから呼び出すのに、これらの Web サービスを使用できます。 RESTfull であるため、Web サービスは、さまざまなプログラミング言語やプラットフォーム (.NET、Java など)、およびアプリケーション (Excel など) から呼び出すことができます。
 
 次のセクションでは、作業を開始するために役立つチュートリアル、コード、ドキュメントへのリンクを示します。
 
@@ -36,10 +36,10 @@ Machine Learning Studio と Microsoft Azure Machine Learning Web サービス �
 
 * Azure Resource Manager に基づいた新しい Web サービスのデプロイの概要については、「 [新しい Web サービスのデプロイ](publish-a-machine-learning-web-service.md)」をご覧ください。
 * Web サービスのデプロイのチュートリアルについては、「 [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)」をご覧ください。
-* Web サービスを作成してデプロイする方法の詳細なチュートリアルについては、「 [チュートリアル手順 1: Machine Learning ワークスペースの作成](walkthrough-1-create-ml-workspace.md)」をご覧ください。
+* Web サービスを作成してデプロイする方法の詳細なチュートリアルについては、「[チュートリアル手順 1:Machine Learning ワークスペースの作成](walkthrough-1-create-ml-workspace.md)」をご覧ください。
 * Web サービス デプロイの具体的な例については、次をご覧ください。
 
-  * [チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)
+  * 「[チュートリアル手順 5:Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」
   * [複数のリージョンに Web サービスをデプロイする方法](how-to-deploy-to-multiple-regions.md)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Web サービス リソースプロバイダー API を使う (Azure Resource Manager API)
@@ -89,7 +89,7 @@ Azure Machine Learning Web サービス ポータルから Web サービスを�
 
 * [新しい Web サービスのデプロイ](publish-a-machine-learning-web-service.md)
 * [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)
-* [チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)
+* 「[チュートリアル手順 5:Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」
 
 ### <a name="from-excel"></a>Excel から
 Excel テンプレートをダウンロードできます。このテンプレートにより Web サービスを使用できます。

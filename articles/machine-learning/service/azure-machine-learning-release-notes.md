@@ -1,6 +1,7 @@
 ---
-title: Azure Machine Learning の新機能
-description: このドキュメントでは、Azure Machine Learning の更新について詳しく説明します。
+title: このリリースの新機能
+titleSuffix: Azure Machine Learning service
+description: Azure Machine Learning service の最新情報について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,17 +9,85 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 10/24/2018
-ms.openlocfilehash: 6007a7e32e168ada529feb6aa24b8d572671d835
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 34d084bc4115d0abf8f57c576c16330611f3a21b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291342"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409872"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
 この記事では、Azure Machine Learning service の各リリースについて説明します。 
+
+## <a name="2018-12-04-general-availability"></a>2018-12-04: 一般公開
+
+Azure Machine Learning service の一般提供が開始されました。
+
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning コンピューティング
+このリリースでは、[Azure Machine Learning コンピューティング](how-to-set-up-training-targets.md#amlcompute)を通じて、新しいマネージド コンピューティング エクスペリエンスを発表します。 このコンピューティングは、トレーニングとバッチの推論に使用できます。単一ノードからマルチノードのコンピューティングであり、クラスター管理とジョブ スケジューリングをユーザーに代わって実行します。 既定で自動スケーリングを実行し、CPU と GPU の両方のリソースをサポートしています。また、コストを抑えるために低優先度の VM を使用することができます。 Azure Machine Learning の Batch AI コンピューティングの後継となります。
+  
+Azure Machine Learning コンピューティングは、Python、Azure portal、または CLI を使用して作成できます。 お客様のワークスペースのリージョンに作成する必要があり、他のワークスペースにアタッチすることはできません。 このコンピューティングでは、お客様の実行に Docker コンテナーを使用しており、お客様の依存関係をパッケージ化することですべてのノードで同じ環境を再現します。
+
+> [!Warning]
+> Azure Machine Learning コンピューティングを使用するには、新しいワークスペースを作成することをお勧めします。 ユーザーが Azure Machine Learning コンピューティングを既存のワークスペースで作成しようとしてエラーが発生することはまずありません。 お客様のワークスペースにある既存のコンピューティングは、引き続き支障なく動作します。
+
+### <a name="azure-machine-learning-sdk-for-python-v102"></a>Azure Machine Learning SDK for Python v1.0.2
++ **重大な変更**
+  + このリリースでは、Azure Machine Learning で VM の作成のサポートが廃止されます。 引き続き、既存のクラウド VM またはリモートのオンプレミス サーバーをアタッチすることができます。 
+  + また、Batch AI のサポートも廃止となります。そのすべては今後、Azure Machine Learning コンピューティングを通じてサポートされます。
+
++ **[新規]**
+  + 機械学習パイプライン:
+    + [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimator_step.estimatorstep?view=azure-ml-py)
+    + [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyper_drive_step.hyperdrivestep?view=azure-ml-py)
+    + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
+
+
++ **更新**
+  + 機械学習パイプライン:
+    + [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) で runconfig が使用可能になりました
+    + [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) で SQL データソースとの間のコピーが可能になりました
+    + パブリッシュ済みのパイプラインの実行に関するスケジュールを作成および更新できる SDK のスケジュール機能
+
+<!--+ **Bugs fixed**-->
+
+### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Azure Machine Learning Data Prep SDK v0.5.2
++ **重大な変更** 
+  * `SummaryFunction.N` の名前が `SummaryFunction.Count` に変更されました。
+  
++ **バグの修正**
+  * リモート実行でデータストアに対する読み書きを行う際、最新の AML Run Token を使用します。 以前は、AML Run Token が Python で更新された場合、Data Prep ランタイムが最新の AML Run Token によって更新されませんでした。
+  * より明確なエラー メッセージの追加
+  * Spark によって Kryo シリアル化が使用される際に to_spark_dataframe() がクラッシュすることがなくなりました
+  * 値のカウント インスペクターで表示できる一意の値が 1,000 件を超えました
+  * ランダム分割が、元の Dataflow に名前がない場合に失敗しなくなりました  
+
++ **詳細情報**
+  * [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk)
+
+### <a name="docs-and-notebooks"></a>ドキュメントとノートブック
++ ML パイプライン
+  + パイプラインの概要、バッチ スコーピング、スタイル転送の例についての新しいノートブックと更新されたノートブック: https://aka.ms/aml-pipeline-notebooks
+  + [最初のパイプラインを作成する](how-to-create-your-first-pipeline.md)方法について
+  + [パイプラインを使用してバッチ予測を実行](how-to-run-batch-predictions.md)する方法について
++ Azure Machine Learning コンピューティング
+  + この新しいマネージド コンピューティングを使用するように[サンプル ノートブック](https://aka.ms/aml-notebooks)が更新されました。
+  + [このコンピューティングについて](how-to-set-up-training-targets.md#amlcompute)
+
+### <a name="azure-portal-new-features"></a>Azure portal: 新機能
++ ポータルで [Azure Machine Learning コンピューティング](how-to-set-up-training-targets.md#amlcompute) タイプを作成して管理します。
++ Azure Machine Learning コンピューティングのクォータ使用率を監視し、[クォータを要求](how-to-manage-quotas.md)します。
++ Azure Machine Learning コンピューティング クラスターの状態をリアルタイムで表示します。
++ Azure Machine Learning コンピューティングと Azure Kubernetes Service の作成用に仮想ネットワークのサポートが追加されました。
++ 既存のパラメーターを使用してお客様のパブリッシュ済みのパイプラインを再実行します。
++ 分類モデル (リフト、ゲイン、キャリブレーション、モデルの説明可能性を備えた特徴重要度グラフ) と回帰モデル (残差、およびモデルの説明可能性を備えた特徴重要度グラフ) のための新しい[自動化された機械学習グラフ](how-to-track-experiments.md#auto)。 
++ パイプラインを Azure portal で表示できます
+
+
+
 
 ## <a name="2018-11-20"></a>2018-11-20
 
@@ -169,7 +238,7 @@ Azure Machine Learning サービスの Azure portal では、次の更新が加�
 
 Azure Machine Learning が全面的に更新されてリリースされました。このリリースの詳細については、 https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/ を参照してください。
 
-## <a name="older-notes-sept-2017---jun-2018"></a>上記より前のリリースの記録: 2017 年 9 月～ 2018 年 6 月
+## <a name="older-notes-sept-2017---jun-2018"></a>以前のリリース ノート: 2017 年 9 月から 2018 年 6 月
 ### <a name="2018-05-sprint-5"></a>2018-05 (スプリント 5)
 
 このリリースの Azure Machine Learning では、次のことができます。
@@ -270,7 +339,7 @@ Azure Machine Learning が全面的に更新されてリリースされました
   - Free サブスクリプションでローカル環境のセットアップが有効になりました。 
 
 ### <a name="2017-12-sprint-2-qfe"></a>2017-12 (スプリント 2 QFE) 
-**バージョン番号**:  0.1.1711.15323  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
+**バージョン番号**: 0.1.1711.15323  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 これは、マイナー リリースである QFE (Quick Fix Engineering) リリースです。 テレメトリに関するいくつかの問題に対処しているため、製品チームは製品の使用状況をより詳しく把握できます。 そのナレッジは、製品のエクスペリエンスを向上させる取り組みにおいて将来的に役立てられます。 
 
@@ -384,7 +453,7 @@ Azure Machine Learning の 3 回目の更新へようこそ。 この更新に�
 このリリースで当社は、Workbench アプリ、CLI、およびバックエンド サービス レイヤーにおけるセキュリティ、安定性、保守容易性に関して機能強化を行っています。 当社に長所と欠点を送信していただき誠にありがとうございます。 以下の更新の多くは、お客様のフィードバックの直接の結果として行われました。 引き続きフィードバックをお寄せください。
 
 #### <a name="notable-new-features"></a>注目すべき新機能
-- Azure ML は現在、**西ヨーロッパ**と**東南アジア**の 2 つの新しい Azure リージョンで使用できます。 これらは**米国東部 2**、**米国西中部**、および**オーストラリア東部**の以前のリージョンに追加され、デプロイされたリージョンの総数は 5 になります。
+- Azure ML が、2 つの新しい Azure リージョンで利用できるようになりました。**西ヨーロッパ**と**東南アジア**です。 これらは**米国東部 2**、**米国西中部**、および**オーストラリア東部**の以前のリージョンに追加され、デプロイされたリージョンの総数は 5 になります。
 - Python ソース コードの読み取りおよび編集を簡単にするために、Workbench アプリでの Python コード構文の強調表示を有効にしました。 
 - お気に入りの IDE をプロジェクト全体からではなく、ファイルから直接起動できるようになりました。  Workbench でファイルを開いてから [編集] をクリックすると、現在のファイルとプロジェクトに IDE (現在 VS Code と PyCharm がサポートされています) が起動されます。  [編集] ボタンの横にある矢印をクリックして、Workbench テキスト エディターでファイルを編集することもできます。  [編集] をクリックするまでファイルは読み取り専用であるため、不注意による変更が防止されます。
 - Workbench アプリには、人気のあるプロット ライブラリ `matplotlib` バージョン 2.1.0 が付属するようになりました。
@@ -474,7 +543,7 @@ Azure Machine Learning の 3 回目の更新へようこそ。 この更新に�
 - ユーザーがアプリからログアウトしたとき、Jupyter サーバーが正しくシャットダウンするようになりました。
 
 ##### <a name="azure-portal"></a>Azure ポータル
-- 西ヨーロッパと東南アジアの 2 つの新しい Azure リージョンで実験アカウントとモデル管理アカウントを作成できるようになりました。
+- 2 つの新しい Azure リージョンで実験アカウントとモデル管理アカウントを作成できるようになりました (西ヨーロッパと東南アジア)。
 - モデル管理アカウントの DevTest プランは、それがこのサブスクリプションで作成される最初のものである場合にのみ使用可能になりました。 
 - Azure Portal のヘルプ リンクが正しいドキュメント ページを指すように更新されました。
 - [説明] フィールドは、適用できないために Docker イメージの詳細ページから削除されました。

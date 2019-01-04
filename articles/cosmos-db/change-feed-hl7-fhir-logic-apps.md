@@ -1,21 +1,19 @@
 ---
-title: HL7 FHIR リソースの Change Feed - Azure Cosmos DB | Microsoft Docs
+title: HL7 FHIR リソースの変更フィード - Azure Cosmos DB
 description: Azure Logic Apps、Azure Cosmos DB、Service Bus を使用して、HL7 FHIR 患者医療記録の変更通知を設定する方法について説明します。
 keywords: hl7 fhir
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: aab6e5247830ee444bcab0b15bda34e4464aaad1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 5cc6bdfa9c16a6dfbdd0f6c87873a90b2a203169
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565481"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089226"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Logic Apps と Azure Cosmos DB を使用して HL7 FHIR 医療記録の変更を患者に通知する
 
@@ -25,7 +23,7 @@ Azure MVP の Howard Edidin は、最近、患者向けポータルに新しい�
 
 ## <a name="project-requirements"></a>プロジェクトの要件
 - プロバイダーは、HL7 C-CDA (Consolidated-Clinical Document Architecture) ドキュメントを XML 形式で送信します。 C-CDA ドキュメントには、家族歴や予防接種記録などの医療文書や、管理、ワークフロー、財務に関する各種の医療文書が含まれます。 
-- C-CDA ドキュメントは、JSON 形式の [HL7 FHIR リソース](http://hl7.org/fhir/2017Jan/resourcelist.html)に変換されます。
+- C-CDA ドキュメントは、JSON 形式の [HL7 FHIR リソース](https://hl7.org/fhir/2017Jan/resourcelist.html)に変換されます。
 - 変更された FHIR リソース ドキュメントは、JSON 形式で電子メールで送信されます。
 
 ## <a name="solution-workflow"></a>ソリューション ワークフロー 
@@ -41,7 +39,7 @@ Azure MVP の Howard Edidin は、最近、患者向けポータルに新しい�
 ## <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 このソリューションでは、上記の要件を満たし、ソリューションのワークフローを完了するために、3 つのロジック アプリが必要です。 3 つのロジック アプリは、次のとおりです。
 1. **HL7-FHIR-Mapping アプリ**: HL7 C-CDA ドキュメントを受け取り、FHIR リソースに変換して、Azure Cosmos DB に保存します。
-2. **EHR アプリ**: Azure Cosmos DB FHIR レポジトリを照会し、応答を Service Bus キューに保存します。 このロジック アプリは、[API アプリ](#api-app)を使用して、新しいドキュメントと変更されたドキュメントを取得します。
+2. **EHR アプリ**: Azure Cosmos DB FHIR リポジトリを照会し、応答を Service Bus キューに保存します。 このロジック アプリは、[API アプリ](#api-app)を使用して、新しいドキュメントと変更されたドキュメントを取得します。
 3. **通知処理アプリ**: FHIR リソース ドキュメントを本文とした電子メール通知を送信します。
 
 ![この HL7 FHIR 医療ソリューションで使用される 3 つのロジック アプリ](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
@@ -64,7 +62,7 @@ Azure Cosmos DB は、次の図に示すように FHIR リソースのレポジ�
     ![HL7 FHIR 医療記録の受信に使用されるロジック アプリ](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
 
 
-2. **EHR アプリ**: Azure Cosmos DB FHIR レポジトリを照会し、応答を Service Bus キューに保存します。 GetNewOrModifiedFHIRDocuments アプリのコードは、次のとおりです。
+2. **EHR アプリ**: Azure Cosmos DB FHIR リポジトリを照会し、応答を Service Bus キューに保存します。 GetNewOrModifiedFHIRDocuments アプリのコードは、次のとおりです。
 
     ![Azure Cosmos DB の照会に使用されるロジック アプリ](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
 
@@ -95,7 +93,7 @@ Azure Cosmos DB SQL .NET API の [`CreateDocumentChangeFeedQuery`](https://msdn.
 
 **Outputs**
 - 成功: 状態コード: 200、応答: ドキュメントの一覧 (JSON 配列)
-- 失敗: 状態コード: 404、応答: "No Documents found for "*リソース名*" Resource"
+- 失敗: 状態コード: 404、応答: "No Documents found for "*リソース名*" Resource Type"
 
 <a id="api-app-source"></a>
 

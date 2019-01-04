@@ -105,7 +105,7 @@ items:
       href: azure-production-network.md
     - name: SQL Database
       href: azure-infrastructure-sql.md
-    - name: '[操作]'
+    - name: 操作
       href: azure-infrastructure-operations.md
     - name: 監視
       href: azure-infrastructure-monitoring.md

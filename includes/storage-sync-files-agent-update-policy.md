@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: 80bb07d850628f07ebc37a39da1294399804d8f5
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b099f5ff7e43f2deeb3b8c41adcb802cd431a65a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165935"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53286055"
 ---
 Azure File Sync エージェントは、新機能の追加や問題の解決を目的として定期的に更新されます。 Azure File Sync エージェントの更新プログラムを公開されしだい入手できるように Microsoft Update を構成しておくことをお勧めします。
 
@@ -18,12 +18,14 @@ Azure File Sync エージェントは、新機能の追加や問題の解決を�
 * エージェントのマイナー バージョンは "修正プログラム" とも呼ばれ、メジャー バージョンよりも頻繁にリリースされます。 多くの場合、バグの修正と軽微な機能強化が含まれ、新しい機能は含まれません。 例: *\*.3.\**
 
 #### <a name="upgrade-paths"></a>アップグレード パス
-Azure File Sync エージェントの更新プログラムのインストールを承認してテストする方法は 3 つあります。 これらの更新パスは、メジャー バージョンとマイナー バージョンの両方で有効です。
+Azure File Sync エージェントの更新プログラムのインストールを承認してテストする方法は 4 つあります。 
 1. **(推奨) エージェントの更新プログラムを自動的にダウンロードしてインストールするように Microsoft Update を構成する。**  
     すべての Azure File Sync の更新プログラムを実行して、サーバー エージェントの最新の修正を確実に適用することを常にお勧めします。 Microsoft Update では、更新プログラムのダウンロードとインストールを自動的に実行することで、このプロセスをシームレスにしています。
-2. **Microsoft Update 修正プログラム ファイル (.msp 実行可能ファイル) を使用して、既存の Azure File Sync エージェントを修正する。最新の Azure File Sync 更新プログラム パッケージは、[Microsoft Update カタログ](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync)からダウンロードできます。**  
+2. **AfsUpdater.exe を使用してエージェントの更新プログラムをダウンロードし、インストールする。**  
+    AfsUpdater.exe は、エージェントのインストール ディレクトリにあります。 実行可能ファイルをダブルクリックすると、エージェントの更新プログラムがダウンロードされてインストールされます。 
+3. **Microsoft Update 修正プログラム ファイル (.msp 実行可能ファイル) を使用して、既存の Azure File Sync エージェントを修正する。最新の Azure File Sync 更新プログラム パッケージは、[Microsoft Update カタログ](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync)からダウンロードできます。**  
     .msp 実行可能ファイルを実行すると、前回の更新パスで Microsoft Update によって自動的に使用されたのと同じ方法を使用して、Azure File Sync のインストールがアップグレードされます。 Microsoft Update 修正プログラムを適用すると、Azure File Sync のインストールのインプレース アップグレードが実行されます。
-3. [Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?linkid=858257)から**最新の Azure File Sync エージェント インストーラーをダウンロードする。ダウンロードされるインストーラーは、Microsoft Installer パッケージ (.msi 実行可能ファイル) です。**  
+4. [Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?linkid=858257)から**最新の Azure File Sync エージェント インストーラーをダウンロードする。ダウンロードされるインストーラーは、Microsoft Installer パッケージ (.msi 実行可能ファイル) です。**  
     既存の Azure File Sync エージェントのインストールをアップグレードするには、古いバージョンをアンインストールした後、ダウンロードしたインストーラーから最新バージョンをインストールします。 サーバーの登録、同期グループ、およびその他の設定は、Azure File Sync インストーラーによって管理されます。
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>エージェントのライフサイクルと変更管理の保証

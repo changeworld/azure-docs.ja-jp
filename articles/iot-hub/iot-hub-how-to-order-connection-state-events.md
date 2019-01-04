@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: df680469541885ab6413800ee3b9806975e34dba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: daf4a6142c0e30fa7b8534e5598cec39c69079c0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258665"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184051"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -200,11 +200,11 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 2. デバイス接続イベントとデバイス切断イベントに対してのみ実行されるようにするために、次のように条件を入力します。
 
-  * 次の値を選択します: **eventType**
-  * [次の値に等しい] を **[次の文字で終了する]** に変更します
-  * 次の値を選択します: **nected**
+   * 次の値を選択します: **eventType**
+   * [次の値に等しい] を **[次の文字で終了する]** に変更します
+   * 次の値を選択します: **nected**
 
-   ![条件を入力する](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
+     ![条件を入力する](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
 
 3. 条件が true の場合に対して、**[アクションの追加]** をクリックします。
   
@@ -248,13 +248,13 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
 4. 次の値でイベント サブスクリプションを作成します。 
 
-   * **[イベントの種類]**: [すべてのイベントの種類を購読します] をオフにして、メニューから **[Device Connected]\(デバイスの接続\)** と **[Device Disconnected]\(デバイスの切断\)** を選択します。
+   * **イベントの種類**:[すべてのイベントの種類を購読します] をオフにして、メニューから **[Device Connected]\(デバイスの接続\)** と **[Device Disconnected]\(デバイスの切断\)** を選択します。
 
-   * **[エンドポイントの詳細]**: [エンドポイントのタイプ] として **[web hook]** を選択し、[エンドポイントの選択] をクリックして、ロジック アプリからコピーした URL を貼り付けて選択を確認します。
+   * **エンドポイントの詳細**:[エンドポイントのタイプ] として **[Web Hook]** を選択し、[エンドポイントの選択] をクリックして、ロジック アプリからコピーした URL を貼り付けて選択を確認します。
 
        ![エンドポイントの URL を選択する](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
 
-   * **[イベント サブスクリプションの詳細]**: わかりやすい名前を指定し、**[イベント グリッド スキーマ]** を選択します。
+   * **イベント サブスクリプションの詳細**:わかりやすい名前を指定し、**[イベント グリッド スキーマ]** を選択します。
    フォームは次の例のようになります。 
 
        ![サンプルのイベント サブスクリプション フォーム](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)
@@ -315,7 +315,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
-[Azure portal](http://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](https://docs.microsoft.com/cli/azure/iot/device)に関する Azure CLI のページを参照してください。
+[Azure portal](http://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create)に関する Azure CLI のページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

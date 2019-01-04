@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ScaleX Enterprise の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ScaleX Enterprise の統合 | Microsoft Docs
 description: Azure Active Directory と ScaleX Enterprise の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 04708806b9e1ba224e7b438f11c68dca82d6320e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 60beecc0895fbfb5d3af7817e8b76e0819c89a99
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448820"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835388"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>チュートリアル: Azure Active Directory と ScaleX Enterprise の統合
+# <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>チュートリアル:Azure Active Directory と ScaleX Enterprise の統合
 
 このチュートリアルでは、ScaleX Enterprise と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Azure AD への ScaleX Enterprise の統合を構成するには、ギャラリ�
 
 ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[ScaleX Enterprise のテスト ユーザーの作成](#creating-a-scalex-enterprise-test-user)** - ScaleX Enterprise で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -123,7 +123,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
     **[サインオン URL]** ボックスに、`https://platform.rescale.com/saml2/<company id>/sso/` のパターンを使用して値を入力します。
      
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[ScaleX Enterprise クライアント サポート チーム](http://info.rescale.com/contact_sales)に問い合わせてください。 
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[ScaleX Enterprise クライアント サポート チーム](https://info.rescale.com/contact_sales)に問い合わせてください。 
 
 1. ScaleX アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に変更する必要があります。 **[その他のすべてのユーザー属性を表示および編集する]** チェックボックスをオンにして、カスタム属性設定を開きます。
 
@@ -168,22 +168,22 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
     
     a. **[Create any user who can authenticate with SSO (SSO で認証できるユーザーを作成する)]** を選択します。
 
-    b. **[Service Provider saml (サービス プロバイダー SAML)]**: 値 ***urn:oasis:names:tc:SAML:2.0:nameid-format:persistent*** を貼り付けます。
+    b. **[Service Provider saml]\(サービス プロバイダー SAML\)**:値 ***urn:oasis:names:tc:SAML:2.0:nameid-format:persistent*** を貼り付けます
 
-    c. **[Name of Identity Provider email field in ACS response (ACS 応答での ID プロバイダーの電子メール フィールドの名前)]**: 値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を貼り付けます。
+    c. **[Name of Identity Provider email field in ACS response]\(ACS 応答での ID プロバイダーの電子メール フィールドの名前\)**:値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を貼り付けます
 
-    d. **[Identity Provider EntityDescriptor Entity ID (ID プロバイダーの EntityDescriptor エンティティ ID)]:** Azure ポータルからコピーした **SAML エンティティ ID** 値を貼り付けます。
+    d. **[Identity Provider EntityDescriptor Entity ID]\(ID プロバイダーの EntityDescriptor エンティティ ID\):** Azure portal からコピーした **SAML エンティティ ID** 値を貼り付けます。
 
-    e. **[Identity Provider SingleSignOnService URL (ID プロバイダーの SingleSignOnService URL)]:** Azure ポータルからコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
+    e. **Identity Provider SingleSignOnService URL\(ID プロバイダーの SingleSignOnService URL\):** Azure portal からの **SAML シングル サインオン サービス URL** を貼り付けます。
 
-    f. **[Identity Provider public X509 certificate (ID プロバイダーのパブリック X509 証明書)]:** Azure からダウンロードした X509 証明書をメモ帳で開いて、このボックスに貼り付けます。 証明書の内容の途中に改行が含まれていないことを確認します。
+    f. **[Identity Provider public X509 certificate]\(ID プロバイダーのパブリック X509 証明書\):** Azure からダウンロードした X509 証明書をメモ帳で開いて、このボックスに貼り付けます。 証明書の内容の途中に改行が含まれていないことを確認します。
     
-    g. 次のチェックボックスをオンにします。**[Enabled (有効化)]、[Encrypt NameID (暗号 NameID)]、および [Sign AuthnRequests (AuthnRequests に署名する)]**。
+    g. 次のチェックボックスをオンにします:**[Enabled]\(有効化\)、[Encrypt NameID]\(暗号 NameID\)、[Sign AuthnRequests]\(AuthnRequests に署名する\)**。
 
     h. **[Update SSO Settings (SSO 設定を更新する)]** をクリックして設定を保存します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

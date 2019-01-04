@@ -12,22 +12,26 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/6/2017
+ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 46f9c6129ccf99fb72a285fa4089b7b3f01f7d7b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42aaafd346c6db9d4a8780628319720aa3f28134
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643034"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727717"
 ---
-# <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services と Reliable Actors のバックアップよび復元
+# <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services と Reliable Actors をバックアップおよび復元する
 Azure Service Fabric は高可用性プラットフォームであり、複数のノードに状態を複製し、その高可用性を維持します。  つまり、クラスター内の 1 つのノードに障害が発生した場合でも、サービスは引き続き利用できます。 このプラットフォームに組み込まれている冗長性で十分と考えられますが、(外部ストアに) サービスのデータをバックアップすることが望ましい場合もあります。
 
 > [!NOTE]
 > データ損失シナリオから回復できるように、データのバックアップと復元 (および期待どおりに動作することのテスト) は重要です。
 > 
+
+> [!NOTE]
+> Reliable Stateful サービスと Reliable Actors のデータのバックアップを構成するには、[定期的なバックアップと復元](service-fabric-backuprestoreservice-quickstart-azurecluster.md)を使用することをお勧めします。 
 > 
+
 
 たとえば、次のような状況を防ぐために、サービスのデータをバックアップすることが望まれます。
 
@@ -40,7 +44,7 @@ Azure Service Fabric は高可用性プラットフォームであり、複数�
 バックアップ/復元機能では、 Reliable Services API を基盤とするサービスでバックアップを作成し、復元できます。 このプラットフォームで提供されるバックアップ API では、読み書き操作をブロックせずに、サービス パーティションの状態をバックアップできます。 復元 API では、選択したバックアップからサービス パーティションの状態を復元できます。
 
 ## <a name="types-of-backup"></a>バックアップの種類
-バックアップには、完全と増分の 2 つの選択肢があります。
+バックアップには、2 つの選択肢があります: 完全と増分です。
 完全バックアップは、レプリカの状態を再作成するために必要なすべてのデータ (チェックポイントとすべてのログ レコード) を含むバックアップです。
 チェックポイントとログが含まれるため、完全バックアップはそれだけで復元できます。
 
@@ -176,7 +180,7 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
   - 復元の際、復元されるバックアップがデータ損失前のパーティションの状態よりも古くなっている可能性があります。 そのため、復元は、可能な限り多くのデータを回復するための最後の手段としてのみ実行すべきです。
   - バックアップ フォルダー パスとバックアップ フォルダー内のファイルのパスを表す文字列は、FabricDataRoot パスや Application Type 名の長さによっては 255 文字を超える可能性があります。 これにより、`Directory.Move` などの一部の .NET メソッドで `PathTooLongException` 例外がスローされることがあります。 回避策の 1 つは、`CopyFile` などの kernel32 API を直接呼び出すことです。
 
-## <a name="backup-and-restore-reliable-actors"></a>Reliable Actors のバックアップと復元
+## <a name="back-up-and-restore-reliable-actors"></a>Reliable Actors のバックアップと復元
 
 
 Reliable Actors フレームワークは、Reliable Services 上に構築されています。 アクターをホストする ActorService は、ステートフル Reliable Service です。 そのため、Reliable Services で使用できるバックアップ機能と復元機能はすべて、Reliable Actors でも使用可能です (状態プロバイダーに固有の動作を除く)。 バックアップはパーティションごとに実行されるため、そのパーティション内のすべてのアクターがバックアップされます (復元も同様にパーティションごとに実行されます)。 バックアップ/復元を実行するには、サービスの所有者が、 ActorService クラスから派生するカスタム アクター サービス クラスを作成してから、前のセクションでの説明に従って Reliable Services と同様のバックアップ/復元を実行する必要があります。
@@ -231,7 +235,7 @@ class MyCustomActorService : ActorService
 > `KvsActorStateProvider` では現在、RestorePolicy.Safe オプションが無視されます。 この機能は、今後のリリースでサポートされる予定です。
 > 
 
-## <a name="testing-backup-and-restore"></a>バックアップと復元のテスト
+## <a name="testing-back-up-and-restore"></a>バックアップと復元のテスト
 これは、重要なデータがバックアップされて復元できることを確認することは重要です。 そのためには、PowerShell で `Start-ServiceFabricPartitionDataLoss` コマンドレットを呼び出します。このコマンドレットは、サービスのデータのバックアップと復元の機能が予想どおりに動作するかどうかをテストするために、特定のパーティションでデータ損失を発生させることができます。  プログラムを使用してデータ損失を発生させし、そのイベントから復元することもできます。
 
 > [!NOTE]
@@ -242,13 +246,12 @@ class MyCustomActorService : ActorService
 ## <a name="under-the-hood-more-details-on-backup-and-restore"></a>具体的な内容: バックアップと復元の詳細
 バックアップと復元の詳細を以下に示します。
 
-### <a name="backup"></a>Backup
-
+### <a name="backup"></a>バックアップ
 Reliable State Manager には、読み書き操作を中断することなく、一貫性のあるバックアップを作成する機能があります。 そのために、チェックポイントとログ永続化のメカニズムが活用されます。  Reliable State Manager は特定の時点でファジー (簡易) チェックポイントを作成し、トランザクション ログからの負荷を軽減し、復元時間を早めます。  `BackupAsync` が呼び出されると、最新のチェックポイント ファイルをローカル バックアップ フォルダーにコピーするように、Reliable State Manager がすべての Reliable Object に指示します。  次に、Reliable State Manager は "開始ポインター" から最新のログ レコードまですべてのログ レコードをバックアップ フォルダーにコピーします。  最新のログ レコードまでのすべてログ レコードがバックアップに含まれており、Reliable State Manager が先書きログを維持するため、コミットされた (`CommitAsync` が正常に制御を返した) すべてのトランザクションがバックアップに含まれていることが Reliable State Manager によって保証されます。
 
 `BackupAsync` が呼び出された後にコミットするトランザクションは、バックアップに含まれていることもあれば、含まれていないこともあります。  プラットフォームによりローカルのバックアップ フォルダーにデータが入力されると (すなわち、ローカルのバックアップがランタイムにより完了すると)、サービスのバックアップ コールバックが呼び出されます。  このコールバックは、Azure Storage などの外部の場所にバックアップ フォルダーを移動する役割を担います。
 
-### <a name="restore"></a>Restore
+### <a name="restore"></a>復元
 Reliable State Manager には、`RestoreAsync` API を使用してバックアップから復元する機能があります。  
 `RestoreContext` での `RestoreAsync` メソッドは、`OnDataLossAsync` メソッド内のみで呼び出すことができます。
 `OnDataLossAsync` により返されるブール値は、サービスの状態が外部ソースから復元されたかどうかを示すものです。
@@ -261,7 +264,7 @@ Reliable State Manager には、`RestoreAsync` API を使用してバックア�
 
 ## <a name="next-steps"></a>次の手順
   - [Reliable Collection](service-fabric-work-with-reliable-collections.md)
-  - [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
+  - [Reliable Services の概要](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
   - [Reliable Services の構成](service-fabric-reliable-services-configuration.md)
   - [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

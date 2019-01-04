@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: a28bf1dc23d678c710d7bd6b13f067427e76ef41
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb4ef826ed29187209b28c349445ca0eb5ffe9bb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238401"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864904"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Azure Key Vault の概要
 この記事では、PowerShell を使用した Azure Key Vault の操作について取り上げると共に、次のアクティビティの手順を紹介します。
@@ -111,7 +111,7 @@ New-AzureRmKeyVault -Name 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceG
 
 このコマンドレットの出力では、作成したキー コンテナーのプロパティが示されます。 最も重要な 2 つのプロパティは、次のとおりです。
 
-* **Vault Name**: この例では **ContosoKeyVault**。 この名前を他の Key Vault コマンドレットに使用できます。
+* **Vault Name**:この例では **ContosoKeyVault**。 この名前を他の Key Vault コマンドレットに使用できます。
 * **Vault URI**: この例では https://contosokeyvault.vault.azure.net/。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 Azure アカウントは、この Key Vault ですべての操作の実行が許可されるようになりました。 まだ、どのユーザーも許可されていません。
@@ -193,7 +193,7 @@ Azure Key Vault に追加したパスワードは、その URI を使用する�
 ```powershell
 $secret.Id
 ```
-自分のシークレットを表示するには、「`Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`」と入力します。または、ポータルでシークレットを表示することもできます。
+シークレットを表示するには、次のように入力します。「`Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`」。または、ポータルでシークレットを表示することもできます。
 
 ![secret](./media/key-vault-get-started/secret-value.png)
 
@@ -222,14 +222,14 @@ Azure Active Directory にアプリケーションを登録するには:
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側にある **[アプリの登録]** をクリックします。 [アプリの登録] が表示されない場合は、**[その他のサービス]** をクリックします。  
->[!NOTE]
-キー コンテナーを作成した Azure サブスクリプションが含まれている、同じディレクトリを選択する必要があります。 
+    > [!NOTE]
+    > キー コンテナーを作成した Azure サブスクリプションが含まれている、同じディレクトリを選択する必要があります。 
 3. **[新しいアプリケーションの登録]** をクリックします。
 4. **[作成]** ブレードでアプリケーションの名前を入力し、**[Web アプリケーションや Web API]** (既定値) を選択して、Web アプリケーションの**サインオン URL** を指定します。 この時点でこの情報がない場合は、この手順で構成できます (たとえば、 http://test1.contoso.com と指定できます)。 これらのサイトが存在するかどうかは関係ありません。 
 
     ![[新しいアプリケーションの登録]](./media/key-vault-get-started/new-application-registration.png)
-    >[!WARNING]
-    必ず **[Web アプリケーションや Web API]** を選択してください。そうしないと、設定に **[キー]** オプションが表示されません。
+    > [!WARNING]
+    > 必ず **[Web アプリケーションや Web API]** を選択してください。そうしないと、設定に **[キー]** オプションが表示されません。
 
 5. **[作成]** ボタンをクリックします。
 6. アプリの登録が完了すると、登録済みのアプリの一覧が表示されます。 登録したアプリを探してクリックします。
@@ -312,11 +312,11 @@ Remove-AzureRmResourceGroup -ResourceGroupName 'ContosoResourceGroup'
 ## <a id="other"></a>その他の Azure PowerShell コマンドレット
 Azure Key Vault の管理に役立つその他のコマンドは次のとおりです。
 
-- `$Keys = Get-AzureKeyVaultKey -VaultName 'ContosoKeyVault'`: このコマンドは、すべてのキーと選択したプロパティを表形式で取得します。
-- `$Keys[0]`: このコマンドは、指定されたキーのプロパティの完全な一覧を表示します。
-- `Get-AzureKeyVaultSecret`: このコマンドは、すべてのシークレットの名前と選択したプロパティを表形式で一覧します。
-- `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: 特定のキーを削除する方法の例です。
-- `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: 特定のシークレットを削除する方法の例です。
+- `$Keys = Get-AzureKeyVaultKey -VaultName 'ContosoKeyVault'`:このコマンドは、すべてのキーと選択したプロパティを表形式で取得します。
+- `$Keys[0]`:このコマンドは、指定されたキーのプロパティの完全な一覧を表示します
+- `Get-AzureKeyVaultSecret`:このコマンドは、すべてのシークレットの名前と選択したプロパティを表形式で一覧します。
+- `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`:特定のキーを削除する方法の例です。
+- `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`:特定のシークレットを削除する方法の例です。
 
 ## <a name="next-steps"></a>次の手順
 

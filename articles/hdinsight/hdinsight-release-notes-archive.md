@@ -9,18 +9,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5e70a92b4a0de633f88012d756276cef07226c82
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 43acf5f59667f45e67156b33e31d28160ba47c13
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037702"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408810"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート (アーカイブ)
 
 **最新**の Azure HDInsight リリース更新プログラムについては、[HDInsight リリース ノート](hdinsight-release-notes.md)のページをご覧ください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン管理に関する記事](hdinsight-component-versioning.md)に関するページを参照してください。
 
 ## <a name="notes-for-06272018---release-of-new-open-source-versions-adls-gen2-etc-on-hdinsight-36"></a>2018 年 6 月 27 日のメモ: HDInsight 3.6 上の新しいオープン ソース バージョン (ADLS Gen2 など) のリリース
@@ -28,7 +28,7 @@ HDInsight の 2018 年 6 月のリリースは、ユーザーに役立つ多数�
 
 主な特長は次のとおりです。 詳細なリリース ノート、バグの修正、既知の問題については、「[Azure HDInsight の Hadoop コンポーネントのリリース ノート](hdinsight-release-notes.md)」をご覧ください。
 
-- **Hadoop と他のオープン ソース プロジェクトの更新**: この更新では、20 以上のオープン ソース プロジェクト全体で 1,000 個以上のバグが修正され、さらに新しいバージョンの Spark (2.3) と Kafka (1.0) も追加されました。
+- **Apache Hadoop と他のオープン ソース プロジェクトの更新**: この更新では、20 以上のオープン ソース プロジェクト全体で 1,000 個以上のバグが修正され、さらに新しいバージョンの Apache Spark (2.3) と Apache Kafka (1.0) も追加されました。
 - **Microsoft R Server 9.1 から Machine Learning Services 9.3 への更新**: このリリースでは、データ サイエンティストとエンジニア向けに先進的なアルゴリズムと使いやすさで強化したオープン ソースを提供しています。すべての機能を Apache Spark の速度で、好みの言語で利用できます。 このリリースでは、Microsoft R Server で提供されている機能に基づいて拡張し、Python のサポートを追加したため、クラスター名を Microsoft R Server から ML Services に変更しました。 
 - **Azure Data Lake Storage Gen2 のサポート**: HDInsight は、Azure Data Lake Storage Gen2 のプレビュー リリースをサポートします。 利用可能なリージョンのお客様は、HDInsight クラスターのストアとして ADLS Gen2 アカウントを選択できるようになります。
 - **HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)**: (プレビュー) Virtual Network サービス エンドポイントは、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。 
@@ -43,11 +43,11 @@ HDInsight の 2018 年 6 月のリリースは、ユーザーに役立つ多数�
 | タイトル | 説明 | 影響を受ける領域  | クラスターの種類  | 
 | --- | --- | --- | --- | --- |
 | HDInsight での Microsoft R Server 9.1 の リリース |HDInsight では、HDInsight での Microsoft R Server 9.1 クラスターのプロビジョニングをサポートするようになりました。 Microsoft R Server 9.1 リリースの詳細については、[このブログ](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/)をご覧ください。 |Service |R Server |
-| HDInsight 3.6 に Hadoop スタックの新バージョンを搭載|<ul><li>更新されたバージョンの詳細な一覧については、[HDInsight で使用可能な Hadoop コンポーネント バージョン](hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)に関するページをご覧ください。</li><li>Hadoop スタックの最新バージョンで修正されたバグの一覧については、「[Apache Patch Information (Apache パッチ情報)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html)」をご覧ください。</li><li>HDP 2.6.1 (現在 HDInsight 3.6 で利用可能) の間での破壊的変更の一覧については、[https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html) を参照してください。</li><li>HDP 2.6.1 の既知の問題の一覧については、「[Known issues (既知の問題)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html)」をご覧ください。</li></ul> |Service |All |該当なし |
-| インタラクティブ Hive (プレビュー) クラスターの更新 |<ul><li><b>機能改善。</b> メタデータをキャッシュすることによってバックエンド SQL への負荷を削減し、すべてのメタデータ操作のパフォーマンスを向上させるキャッシュ metastore を実装。  この改善は、すべてのインタラクティブ Hive クラスターに適用されています。 詳細については、[https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520) を参照してください。</li><li><b>機能改善。</b> パーティションの動的読み込みを最適化。 詳細については、[https://issues.apache.org/jira/browse/HIVE-14204](https://issues.apache.org/jira/browse/HIVE-14204) を参照してください。</li><li><b>機能改善。</b> Linux 上の HDInsight の構成を最適化。</li><li><b>バグ修正。</b> `CredentialProviderFactory$getProviders` がスレッドセーフではない。 この問題は解決されました。 詳細については、[https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195) を参照してください。</li><li><b>バグ修正。</b> WASB ドライバーの `liststatus` API の CPU 使用率が高いため、ATS のパフォーマンスが悪化する。 この問題は解決されました。 詳細については、[https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154) を参照してください。</li></ul> |Service |対話型 Hive (プレビュー) |
+| HDInsight 3.6 に Hadoop スタックの新バージョンを搭載|<ul><li>更新されたバージョンの詳細な一覧については、[HDInsight で使用可能な Apache Hadoop コンポーネント バージョン](hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)に関するページをご覧ください。</li><li>Hadoop スタックの最新バージョンで修正されたバグの一覧については、「[Apache Patch Information (Apache パッチ情報)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html)」をご覧ください。</li><li>HDP 2.6.1 (現在 HDInsight 3.6 で利用可能) の間での破壊的変更の一覧については、[https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html) を参照してください。</li><li>HDP 2.6.1 の既知の問題の一覧については、「[Known issues (既知の問題)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html)」をご覧ください。</li></ul> |Service |All |該当なし |
+| インタラクティブ Hive (プレビュー) クラスターの更新 |<ul><li><b>機能改善。</b> メタデータをキャッシュすることによってバックエンド SQL への負荷を削減し、すべてのメタデータ操作のパフォーマンスを向上させるキャッシュ metastore を実装。  この改善は、すべてのインタラクティブ Apache Hive クラスターに適用されています。 詳細については、[https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520) を参照してください。</li><li><b>機能改善。</b> パーティションの動的読み込みを最適化。 詳細については、[https://issues.apache.org/jira/browse/HIVE-14204](https://issues.apache.org/jira/browse/HIVE-14204) を参照してください。</li><li><b>機能改善。</b> Linux 上の HDInsight の構成を最適化。</li><li><b>バグ修正。</b> `CredentialProviderFactory$getProviders` がスレッドセーフではない。 この問題は解決されました。 詳細については、[https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195) を参照してください。</li><li><b>バグ修正。</b> WASB ドライバーの `liststatus` API の CPU 使用率が高いため、ATS のパフォーマンスが悪化する。 この問題は解決されました。 詳細については、[https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154) を参照してください。</li></ul> |Service |対話型 Hive (プレビュー) |
 | Hadoop クラスターの更新 |Templeton ジョブ操作の信頼性が向上。 詳細については、[https://issues.apache.org/jira/browse/HIVE-15947](https://issues.apache.org/jira/browse/HIVE-15947) を参照してください |Service |Hadoop |
 | YARN の更新 | HDInsight で (コストを増やすことなく) 250 GB の Ambari データベースが作成されるようになり、カスタマー エクスペリエンスが向上。 この変更により、ATS がいっぱいになる状態が回避されるため、パフォーマンスの改善が見込めます。 |Service |All |
-| Spark の更新 | Spark 2.1.1 のリリース。 詳細については、「[Spark Release 2.1.1 (Spark リリース 2.1.1)](https://spark.apache.org/releases/spark-release-2-1-1.html)」をご覧ください。 | Service | Spark |
+| Spark の更新 | Spark 2.1.1 のリリース。 詳細については、[Apache Spark Release 2.1.1](https://spark.apache.org/releases/spark-release-2-1-1.html) に関するページをご覧ください。 | Service | Spark |
 
   
 
@@ -69,15 +69,15 @@ HDInsight の 2018 年 6 月のリリースは、ユーザーに役立つ多数�
 
 * **Hive の新機能**。 [Hortonworks のドキュメント](https://hortonworks.com/apache/hive/#section_4)をご覧ください。
 
-* **Hive CLI の廃止**: Hive CLI は非推奨になる予定です。お客様には代わりに Beeline を使用することをお勧めします。 詳細については、[Apache のドキュメント](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline)を参照してください。 HDInsight で Beeline を使用する方法については、[「HDInsight Hadoop クラスターで Beeline を使用する」](hadoop/apache-hadoop-use-hive-beeline.md)を参照してください。
+* **Hive CLI の廃止**:Hive CLI は非推奨になる予定です。お客様には代わりに Beeline を使用することをお勧めします。 詳細については、[Apache のドキュメント](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline)を参照してください。 HDInsight で Beeline を使用する方法については、[「HDInsight Hadoop クラスターで Beeline を使用する」](hadoop/apache-hadoop-use-hive-beeline.md)を参照してください。
 
 * **Apache Phoenix および HBase の新機能**。
-    * ストレージ クォータのサポート: マルチ テナント環境でよく使用され、テーブルごとと名前空間レベルごとに限られたストレージ スペースを許可します。
-    * Phoenix のインデックス作成機能の向上: インクリメンタル インデックス作成と以前の障害からのインデックス作成の再構築/再開。
-    * Phoenix データ整合性ツール: スキーマ、インデックス、およびその他のメタデータの検証をサポートします。
+    * ストレージ クォータのサポート:マルチ テナント環境でよく使用され、テーブルごとと名前空間レベルごとに限られたストレージ スペースを許可します。
+    * Phoenix のインデックス作成機能の向上:インクリメンタル インデックス作成と以前の障害からのインデックス作成の再構築/再開。
+    * Phoenix データ整合性ツール:スキーマ、インデックス、およびその他のメタデータの検証をサポートします。
 
 
-* **HBase での問題**: CSV 一括アップロード MapReduce ジョブの実行時、次の構文がエラーになることがあります。
+* **HBase での問題**:CSV 一括アップロード MapReduce ジョブの実行時、次の構文がエラーになることがあります。
 
         HADOOP_CLASSPATH=$(hbase mapredcp):/path/to/hbase/conf hadoop jar phoenix-<version>-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table EXAMPLE --input /data/example.csv
 
@@ -98,7 +98,7 @@ HDInsight の 2018 年 6 月のリリースは、ユーザーに役立つ多数�
 Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) で公開されています。
 
 ## <a name="11162016---release-of-r-server-90-on-hdinsight-35-spark-20"></a>2016 年 11 月 16 日 - HDinsight 3.5 (Spark 2.0) での R Server 9.0 の リリース
-*   R Server クラスターのバージョン オプションに、HDI 3.5 (Spark 2.0) の R Server 9.0 と HDI 3.4 (Spark 1.6) の R Server 8.0 の 2 つが追加されました。
+*   Microsoft R Server クラスターのバージョン オプションに、HDI 3.5 (Spark 2.0) の Microsoft R Server 9.0 と HDI 3.4 (Spark 1.6) の Microsoft R Server 8.0 の 2 つが追加されました。
 *   HDI 3.5 (Spark 2.0) の R Server 9.0 は R 3.3.2 上に構築され、Hive および Parquet から直接 Spark DataFrames にデータを読み込み ScaleR で分析するための、RxHiveData と RxParquetData という新しい ScaleR データ ソース関数が追加されています。 詳細については、R の **?RxHiveData** コマンドおよび **?RxParquetData** コマンドを使用して表示されるこれらの関数のインライン ヘルプを参照してください。
 *   RStudio コミュニティ エディションが、プロビジョニング フローの一環として、[クラスターの構成] ブレードにおいて既定で (オプトアウト オプションで) インストールされるようになりました。
 

@@ -1,11 +1,11 @@
 ---
-title: Azure AI ギャラリー カスタム モジュール | Microsoft Docs
-description: Azure AI ギャラリーでカスタム機械学習モジュールを発見します。
+title: Azure AI Gallery のカスタム モジュール - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI ギャラリーでカスタム機械学習モジュールを発見します。 カスタム モジュールにより、Azure Machine Learning Studio の機能が拡張されます。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 16037a84-dad0-4a8c-9874-a1d3bd551cf0
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.openlocfilehash: fe58b335a029e558ce29871483589908f17c03cd
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 92067a93a1f67711df0312f4daf484a577ff14d1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345693"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273199"
 ---
-# <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Azure AI ギャラリーでカスタム機械学習モジュールを発見する
+# <a name="machine-learning-studio-discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Machine Learning Studio:Azure AI ギャラリーでカスタム機械学習モジュールを発見する
 
 [Azure AI ギャラリー](http://gallery.cortanaintelligence.com)には、Azure Machine Learning Studio の機能を拡張するいくつかの[カスタム モジュール](https://gallery.cortanaintelligence.com/customModules)が用意されています。 これらのモジュールをインポートして実験で使用し、さらに高度な予測分析ソリューションを開発することができます。
 
@@ -93,5 +93,5 @@ Azure AI ギャラリーには、モジュールのコピーをインポート�
 
 **[ギャラリーに移動する](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

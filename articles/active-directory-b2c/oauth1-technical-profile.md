@@ -69,11 +69,11 @@ Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](https
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_id | [はい] | ID プロバイダーのアプリケーション識別子。 |
+| client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | ProviderName | いいえ  | ID プロバイダーの名前。 |
-| request_token_endpoint | [はい] | RFC 5849 に準拠した要求トークン エンドポイントの URL。 |
-| authorization_endpoint | [はい] | RFC 5849 に準拠した承認エンドポイントの URL。 |
-| access_token_endpoint | [はい] | RFC 5849 に準拠したトークン エンドポイントの URL。 |
+| request_token_endpoint | はい | RFC 5849 に準拠した要求トークン エンドポイントの URL。 |
+| authorization_endpoint | はい | RFC 5849 に準拠した承認エンドポイントの URL。 |
+| access_token_endpoint | はい | RFC 5849 に準拠したトークン エンドポイントの URL。 |
 | ClaimsEndpoint | いいえ  | ユーザー情報エンドポイントの URL。 | 
 | ClaimsResponseFormat | いいえ  | 要求応答の形式。|
 
@@ -83,7 +83,7 @@ Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](https
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | [はい] | ID プロバイダー アプリケーションのクライアント シークレット。   | 
+| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。   | 
 
 ## <a name="redirect-uri"></a>リダイレクト URI
 

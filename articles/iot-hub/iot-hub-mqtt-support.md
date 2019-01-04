@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 6e2ab773f865a8e52c7b04b94a188dd244540e0d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 9df2e8762d546e6115dc1205548e927cfee7bb60
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344967"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341882"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -43,7 +43,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
 次の表では、サポートされている各言語のコード サンプルへのリンクを提供すると共に、MQTT プロトコルを使用して IoT Hub への接続を確立するために使用するパラメーターを示します。
 
-| Language | プロトコル パラメーター |
+| 言語 | プロトコル パラメーター |
 | --- | --- |
 | [Node.js][lnk-sample-node] |azure-iot-device-mqtt |
 | [Java][lnk-sample-java] |IotHubClientProtocol.MQTT |
@@ -66,11 +66,11 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
 * **ClientId** フィールドには、**deviceId** を使用します。
 
-* **[Usename]** フィールドには、`{iothubhostname}/{device_id}/api-version=2016-11-14` を使用します。`{iothubhostname}` は IoT Hub の完全な CName です。
+* **[Usename]** フィールドには、`{iothubhostname}/{device_id}/api-version=2018-06-30` を使用します。`{iothubhostname}` は IoT Hub の完全な CName です。
 
     たとえば、IoT Hub の名前が **contoso.azure-devices.net** であり、デバイスの名前が **MyDevice01** であるとすると、**Username** フィールドの内容は 次のようになります。
 
-    `contoso.azure-devices.net/MyDevice01/api-version=2016-11-14`
+    `contoso.azure-devices.net/MyDevice01/api-version=2018-06-30`
 
 * **[Password]** フィールドには、SAS トークンを使用します。 SAS トークンの形式は、HTTPS プロトコルや AMQP プロトコルの場合と同じです。
 
@@ -81,9 +81,9 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
   SAS トークンの生成方法の詳細については、[IoT Hub のセキュリティ トークンの使用][lnk-sas-tokens]に関するページのデバイス セクションを参照してください。
 
-  テストするときは、複数のプラットフォームに対応する [Visual Studio Code 用 Azure IoT Toolkit 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)か、[デバイス エクスプローラー][lnk-device-explorer] ツールを使用して、SAS トークンをすばやく生成し、それをコピーして独自のコードに貼り付けることもできます。
+  テストするときは、複数のプラットフォームに対応する [Visual Studio Code 用 Azure IoT Hub Toolkit 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (旧称 Azure IoT Toolkit 拡張機能) か、[Device Explorer][lnk-device-explorer] ツールを使用して、SAS トークンをすばやく生成し、それをコピーして独自のコードに貼り付けることもできます。
 
-Azure IoT Toolkit の場合:
+Azure IoT Hub Toolkit の場合:
 
   1. Visual Studio Code の左下隅にある **[Azure IoT ハブ デバイス]** タブを展開します。
   2. デバイスを右クリックし、**[Generate SAS Token for Device]\(デバイスの SAS トークンの生成\)** を選択します。

@@ -1,5 +1,5 @@
 ---
-title: Azure Search サービスの価格レベルまたは SKU の選択 | Microsoft Docs
+title: Azure Search サービスの価格レベルまたは SKU の選択 - Azure Search
 description: Azure Search は無料、Basic、Standard の各 SKU にプロビジョニングできます。Standard は、複数のリソース構成および容量レベルで使用できます。
 services: search
 author: HeidiSteen
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: 0e1a0d299fb794c3aa937cb62dba9a6ce12c0570
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.custom: seodec2018
+ms.openlocfilehash: 3c5e4d568e7118d50ce8779402526fca77ccdda7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785309"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315555"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search の価格レベルの選択
 
@@ -109,7 +110,7 @@ Azure Search では、容量は*レプリカ*と*パーティション*で構成
 > インデックスとストレージの将来のニーズの予測は当て推量のように感じるかもしれませんが、行う価値があります。 ある価格レベルの容量が少なすぎることがわかった場合は、それより上の価格レベルで新しいサービスをプロビジョニングしたうえで、[インデックスを再読み込み](search-howto-reindex.md)する必要があります。 同じサービスで、特定の SKU から別の SKU へのインプレース アップグレードを実行することはできません。
 >
 
-### <a name="step-1-develop-rough-estimates-using-the-free-tier"></a>手順 1: Free レベルを使用して大まかな見積もりを作成する
+### <a name="step-1-develop-rough-estimates-using-the-free-tier"></a>手順 1:Free レベルを使用して大まかな見積もりを作成する
 
 容量を見積もる方法の一つは、まず **Free** レベルを使用することです。 **Free** サービスでは、50 MB のストレージ、最大 3 つのインデックス、2 分間のインデックス作成時間が提供されます。 これらの制約の中で予想インデックス サイズを見積もることは簡単ではありませんが、次の例で一つの方法を示します。
 
@@ -119,7 +120,7 @@ Azure Search では、容量は*レプリカ*と*パーティション*で構成
 
 サンプルが代表的でデータ ソース全体の 10% だったとすると、すべてのドキュメントにインデックスが付けられた場合、30 MB のインデックスは約 300 MB になります。 2 つのインデックス (開発用と運用用) に割り当てるためにこの予測値を 2 倍にし、合計 600 MB のストレージ要件を割り出せます。 この要件は **Basic** レベルで簡単に満たせるため、このレベルから利用を開始します。
 
-### <a name="step-2-develop-refined-estimates-using-a-billable-tier"></a>手順 2: 課金対象レベルを使用して詳細な見積もりを作成する
+### <a name="step-2-develop-refined-estimates-using-a-billable-tier"></a>手順 2:課金対象レベルを使用して詳細な見積もりを作成する
 
 お客様によっては、大量のサンプリングと処理時間に対応できる専用リソースからまず始め、開発段階でインデックスの量、サイズ、クエリ量の現実的な予想を立てることを選択することもできます。 当初は、サービスは最善の推測による見積もりを基にプロビジョニングされ、その後、開発プロジェクトが成熟するに伴って、通常は、既存のサービスの容量が予想される運用ワークロードを上回るか下回るかを予想することができます。 
 

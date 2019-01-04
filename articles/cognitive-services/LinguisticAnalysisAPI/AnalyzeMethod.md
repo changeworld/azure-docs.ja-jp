@@ -40,9 +40,9 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 Name | type | 必須 | 説明
 -----|-------|----------|------------
-**language**    | string | [はい] | 分析に使用する 2 文字の ISO 言語コード。 たとえば、英語は "en" です。
-**analyzerIds** | string のリスト | [はい] | 適用するアナライザーの GUID リスト。 詳細については、Analyzers に関するドキュメントを参照してください。
-**text**        | string | [はい] | 分析対象の未処理の入力。 単語や語句などの短い文字列、完全な文章、完全な段落や会話の場合があります。
+**language**    | string | はい | 分析に使用する 2 文字の ISO 言語コード。 たとえば、英語は "en" です。
+**analyzerIds** | string のリスト | はい | 適用するアナライザーの GUID リスト。 詳細については、Analyzers に関するドキュメントを参照してください。
+**text**        | string | はい | 分析対象の未処理の入力。 単語や語句などの短い文字列、完全な文章、完全な段落や会話の場合があります。
 
 ## <a name="response-json"></a>応答 (JSON)
 

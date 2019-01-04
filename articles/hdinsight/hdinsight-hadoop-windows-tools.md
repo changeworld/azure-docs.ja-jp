@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/17/2017
-ms.openlocfilehash: c80c7a075b8a7735a4e9d2438c94eaac89f2b50e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a522d436328a3aeb1ed365baa2ec1e3b9d3387ed
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006969"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385025"
 ---
-# <a name="work-in-the-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Windows PC から HDInsight の Hadoop エコシステムで作業する
+# <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Windows PC から HDInsight の Apache Hadoop エコシステムで作業する
 
-HDInsight の Hadoop エコシステムで作業するための Windows PC での開発および管理オプションについて説明します。 
+HDInsight の Apache Hadoop エコシステムで作業するための Windows PC での開発および管理オプションについて説明します。 
 
 HDInsight は、Linux 上で開発されたオープンソース テクノロジである Apache Hadoop と Hadoop コンポーネントに基づいています。 HDInsight Version 3.4 以降では、クラスターを作成する OS として、Ubuntu Linux ディストリビューションを使用します。 ただし、HDInsight は、Windows クライアントまたは Windows 開発環境から操作することができます。
 
@@ -27,7 +27,7 @@ Azure PowerShell は、HDInsight のデプロイおよび管理タスクを Wind
 PowerShell で実行できるタスクの例を次に示します。
 
 * [PowerShell を使用したクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-* [PowerShell を使用して Hive クエリを実行](hadoop/apache-hadoop-use-hive-powershell.md)
+* [PowerShell を使用した Apache Hive クエリの実行](hadoop/apache-hadoop-use-hive-powershell.md)
 * [PowerShell を使用したクラスターの管理](hdinsight-administer-use-powershell.md)
 
 [Azure PowerShell のインストールと構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページの手順に従い、最新バージョンを入手してください。 Azure Resource Manager 用の新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合は、「[HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する](hdinsight-hadoop-development-using-azure-resource-manager.md)」を参照してください。
@@ -35,10 +35,10 @@ PowerShell で実行できるタスクの例を次に示します。
 ## <a name="utilities-you-can-run-in-a-browser"></a>ブラウザーで実行できるユーティリティ
 次のユーティリティは、ブラウザーで動作する Web UI を備えています。
 * **[Azure Cloud Shell (プレビュー)](https://docs.microsoft.com/azure/cloud-shell/quickstart)** は、ブラウザーおよび Azure Portal で動作する対話型のコマンドライン シェルです。
-* **[Ambari Web UI](hdinsight-hadoop-manage-ambari.md)** は、Azure Portal に用意されている管理および監視ユーティリティで、次のようなさまざまな種類のジョブを管理するために使用できます。
-    * [Ambari で REST API を使用する](hdinsight-hadoop-manage-ambari-rest-api.md)
-    * [Ambari の Hive ビュー](hadoop/apache-hadoop-use-hive-ambari-view.md)
-    * [Ambari の Tez ビュー](hdinsight-debug-ambari-tez-view.md)
+* **[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md)** は、Azure portal に用意されている管理および監視ユーティリティで、次のようなさまざまな種類のジョブを管理するために使用できます。
+    * [Apache Ambari で REST API を使用する](hdinsight-hadoop-manage-ambari-rest-api.md)
+    * [Apache Ambari の Apache Hive ビュー](hadoop/apache-hadoop-use-hive-ambari-view.md)
+    * [Apache Ambari の Apache Tez ビュー](hdinsight-debug-ambari-tez-view.md)
 
 ## <a name="data-lake-hadoop-tools-for-visual-studio"></a>Data Lake (Hadoop) Tools for Visual Studio
 Storm トポロジをデプロイおよび管理するには、Data Lake Tools for Visual Studio を使用します。 Data Lake Tools をインストールすると SCP.NET SDK もインストールされるため、Visual Studio を使用して C# Storm トポロジを開発できます。
@@ -55,10 +55,11 @@ Visual Studio と Data Lake Tools for Visual Studio を使用して実行でき�
 
 Visual Studio で .NET SDK を使用して実行できるタスクの例:
 * [.NET Framework アプリケーションから HDInsight でクラスターを作成し、操作する](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
-* [.NET SDK を使用して Hive クエリを実行する](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
-* [Hadoop の Hive と Pig ストリーミングで C# ユーザー定義関数を使用する](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [.NET SDK を使用して Apache Hive クエリを実行する](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
+* [Apache Hadoop の Apache Hive と Apache Pig ストリーミングで C# のユーザー定義関数を使用する](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-> ヒント: .NET ソリューションを Windows ベースの HDInsight クラスターで実行している場合は、Linux ベースのクラスターへの移行を計画することをお勧めします。 詳細については、「[Windows ベースの HDInsight から Linux ベースの HDInsight への .NET ソリューションの移行](hdinsight-hadoop-migrate-dotnet-to-linux.md)」を参照してください。
+> ヒント   
+> .NET ソリューションを Windows ベースの HDInsight クラスターで実行している場合は、Linux ベースのクラスターへの移行を計画することをお勧めします。 詳細については、「[Windows ベースの HDInsight から Linux ベースの HDInsight への .NET ソリューションの移行](hdinsight-hadoop-migrate-dotnet-to-linux.md)」を参照してください。
 
 ## <a name="intellij-idea-and-eclipse-ide-for-spark-clusters"></a>Spark クラスター用 Intellij IDEA および Eclipse IDE
 [Intellij IDEA](https://www.jetbrains.com/idea/download) と [Eclipse IDE](https://www.eclipse.org/downloads/) のどちらも次の操作に使用できます。
@@ -67,15 +68,15 @@ Visual Studio で .NET SDK を使用して実行できるタスクの例:
 * Scala Spark アプリケーションをローカルで開発して実行する。
 
 方法については、次の記事を参照してください。 
-* Intellij IDEA: [Azure Toolkit for Intellij プラグインと Scala SDK を使用して Spark アプリケーションを作成する](spark/apache-spark-intellij-tool-plugin.md)
-* Eclipse 用 Eclipse IDE または Scala IDE:[ Azure Toolkit for Eclipse を使用して Spark アプリケーションを作成する](spark/apache-spark-eclipse-tool-plugin.md) 
+* Intellij IDEA:[Azure Toolkit for Intellij プラグインと Scala SDK を使用して Apache Spark アプリケーションを作成する](spark/apache-spark-intellij-tool-plugin.md)。
+* Eclipse IDE または Eclipse 用 Scala IDE:[Apache Spark アプリケーションおよび Azure Toolkit for Eclipse を作成する](spark/apache-spark-eclipse-tool-plugin.md) 
 
 
 ## <a name="notebooks-on-spark-for-data-scientists"></a>データ サイエンティスト向けの Spark のノートブック 
-HDInsight の Apache Spark クラスターには、Jupyter ノートブックと共に使用できる Zeppelin ノートブックおよびカーネルが含まれています。 
+HDInsight の Apache Spark クラスターには、Jupyter ノートブックと共に使用できる Apache Zeppelin ノートブックおよびカーネルが含まれています。 
 
-* [Spark クラスターでカーネルを Jupyter ノートブックと共に使用して Spark アプリケーションをテストする方法について学ぶ](spark/apache-spark-zeppelin-notebook.md)
-* [Spark クラスターで Zeppelin ノートブックを使用して Spark ジョブを実行する方法について学ぶ](spark/apache-spark-jupyter-notebook-kernels.md) 
+* [Apache Spark クラスターでカーネルを Jupyter ノートブックと共に使用して Spark アプリケーションをテストする方法について学ぶ](spark/apache-spark-zeppelin-notebook.md)
+* [Apache Spark クラスターで Apache Zeppelin ノートブックを使用して Spark ジョブを実行する方法について学ぶ](spark/apache-spark-jupyter-notebook-kernels.md) 
 
 
 ## <a name="run-linux-based-tools-and-technologies-on-windows"></a>Windows での Linux ベースのツールおよびテクノロジの実行
@@ -88,5 +89,5 @@ Linux のみで提供されているツールまたはテクノロジを使用�
 
 ## <a name="next-steps"></a>次の手順
 Linux ベースのクラスターで作業するのが初めての方は、次の記事を参照してください。
-* [Hadoop、Kafka、Spark、その他のクラスターを設定する](hdinsight-hadoop-provision-linux-clusters.md)
+* [Apache Hadoop、Apache Spark、Apache Kafka、またはその他のクラスターを設定する](hdinsight-hadoop-provision-linux-clusters.md)
 * [Linux 上の HDInsight クラスターに関するヒント](hdinsight-hadoop-linux-information.md)

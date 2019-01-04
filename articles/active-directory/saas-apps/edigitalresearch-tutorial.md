@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と eDigitalResearch の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と eDigitalResearch の統合 | Microsoft Docs
 description: Azure Active Directory と eDigitalResearch の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ca42d6c8ca1333f2ffba77b79584b7092b26f03e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d5c86186cd6ee02d83800c6483a2e35d8f1fb3c7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438598"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848716"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>チュートリアル: Azure Active Directory と eDigitalResearch の統合
+# <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>チュートリアル:Azure Active Directory と eDigitalResearch の統合
 
 このチュートリアルでは、eDigitalResearch と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -115,7 +115,7 @@ eDigitalResearch で Azure AD のシングル サインオンを構成してテ�
     b. **[応答 URL]** ボックスに、`https://<company-name>.edigitalresearch.com/login/consume` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[eDigitalResearch サポート チーム](http://www.maruedr.com/contact)に連絡してください。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[eDigitalResearch サポート チーム](https://www.maruedr.com/contact)に連絡してください。
  
 
 
@@ -131,10 +131,10 @@ eDigitalResearch で Azure AD のシングル サインオンを構成してテ�
 
     ![eDigitalResearch 構成](./media/edigitalresearch-tutorial/tutorial_edigitalresearch_configure.png) 
 
-1. **eDigitalResearch** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64) ファイル**、**SAML エンティティ ID**、**サインアウト URL** を [eDigitalResearch サポートチーム](http://www.maruedr.com/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **eDigitalResearch** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64) ファイル**、**SAML エンティティ ID**、**サインアウト URL** を [eDigitalResearch サポートチーム](https://www.maruedr.com/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -172,7 +172,7 @@ eDigitalResearch で Azure AD のシングル サインオンを構成してテ�
 
 このセクションの目的は、eDigitalResearch で Britta Simon というユーザーを作成することです。 
 
-[eDigitalResearch サポート チーム](http://www.maruedr.com/contact)と連携し、ユーザーを作成してください。     
+[eDigitalResearch サポート チーム](https://www.maruedr.com/contact)と連携し、ユーザーを作成してください。        
     
  > [!NOTE]
  > Azure Active Directory アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認すると、そのアカウントがアクティブになります。
@@ -212,7 +212,7 @@ eDigitalResearch で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [eDigitalResearch] タイルをクリックすると、自動的に eDigitalResearch アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

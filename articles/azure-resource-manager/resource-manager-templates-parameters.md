@@ -85,8 +85,8 @@ ms.locfileid: "50417771"
 
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
-| parameterName |[はい] |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| type |[はい] |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 |
+| parameterName |はい |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
+| type |はい |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 |
 | defaultValue |いいえ  |パラメーターに値が指定されない場合のパラメーターの既定値。 |
 | allowedValues |いいえ  |適切な値が確実に指定されるように、パラメーターに使用できる値の配列。 |
 | minValue |いいえ  |int 型パラメーターの最小値。 |

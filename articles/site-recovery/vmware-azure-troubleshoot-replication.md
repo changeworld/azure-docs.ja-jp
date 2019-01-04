@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 915f7d7d2d6be02dfef0cd6bb9a2fa156ed565bc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ae2f32a02005bc015d2521e576ea5625bef2d377
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214734"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846013"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
@@ -43,7 +43,7 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 
 送信していない場合は、次の手順に従います。
 
-* **プロセス サーバーが Azure BLOB に接続できることを確認する**: cbengine.exe を選択し、[TCP 接続] を表示して、プロセス サーバーから Azure Storage の BLOB URL に接続されているかどうかを確認します。
+* **プロセス サーバーが Azure BLOB に接続できることを確認する**:cbengine.exe を選択し、[TCP 接続] を表示して、プロセス サーバーから Azure Storage の BLOB URL に接続されているかどうかを確認します。
 
 ![レプリケーションを有効にする](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
 
@@ -59,7 +59,7 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 
 * **プロセス サーバーがポート 443 を使用して Azure のパブリック IP アドレスに接続できることを確認する**
 
-`%programfiles%\Microsoft Azure Recovery Services Agent\Temp` から最新の CBEngineCurr.errlog を開き、443 と connection attempt failed を探します。
+`%programfiles%\Microsoft Azure Recovery Services Agent\Temp` から最新の CBEngineCurr.errlog を開き、443 と失敗した接続試行を探します。
 
 ![レプリケーションを有効にする](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
 
@@ -69,9 +69,9 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 接続できない場合は、次の手順に従って、アクセスの問題がファイアウォールまたはプロキシによるものであるかを確認します。
 
 
-* **プロセス サーバーの IP アドレスベースのファイアウォールがアクセスをブロックしていないかどうかを確認する**: サーバーで IP アドレスベースのファイアウォール ルールを使用している場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=41653)から Microsoft Azure データセンターの IP 範囲の完全なリストをダウンロードしてファイアウォール構成に追加し、Azure (および HTTPS (443) ポート) との通信が許可されていることを確認します。  ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します (Access Control と ID 管理に使用されます)。
+* **プロセス サーバーの IP アドレスベースのファイアウォールがアクセスをブロックしていないかどうかを確認する**:サーバーで IP アドレスベースのファイアウォール ルールを使用している場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=41653)から Microsoft Azure データセンターの IP 範囲の完全なリストをダウンロードしてファイアウォール構成に追加し、Azure (および HTTPS (443) ポート) との通信が許可されていることを確認します。  ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します (Access Control と ID 管理に使用されます)。
 
-* **プロセス サーバーの URL ベースのファイアウォールがアクセスをブロックしていないかどうかを確認**: サーバーで URL ベースのファイアウォール ルールを使用している場合は、以下の URL がファイアウォール構成に追加されていることを確認します。
+* **プロセス サーバーの URL ベースのファイアウォールがアクセスをブロックしていないかどうかを確認する**:サーバーで URL ベースのファイアウォール ルールを使用する場合は、以下の URL がファイアウォール構成に追加されていることを確認します。
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
@@ -86,7 +86,7 @@ Microsoft Azure Backup を検索します。
 これを開き、[アクション]、[プロパティの変更] の順にクリックします。 [プロキシの構成] タブに、プロキシ アドレスが表示されます。これは、レジストリ設定で表示されるものと同じです。 同じでない場合は、同じアドレスに変更します。
 
 
-* **プロセス サーバーでスロットルの帯域幅が制限されていないかどうかを確認**: 帯域幅を増やし、問題がまだ発生するかどうかを確認します。
+* **プロセス サーバーでスロットルの帯域幅が制限されていないかどうかを確認する**:帯域幅を増やし、問題がまだ発生するかどうかを確認します。
 
 ## <a name="next-steps"></a>次の手順
 さらに支援が必要な場合は、[Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)にクエリを投稿してください。 弊社のアクティブなコミュニティを通じて、エンジニアがサポートいたします。

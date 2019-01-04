@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 93478e5d13ef649b86ebc047f4e53f1486e2ff68
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: c2bb1c0147d38b4286e2cdfb2d161eaa0704e393
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493955"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271489"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 任意のサービスで、クエリを実行し、パーティションを管理します。
@@ -47,8 +47,9 @@ ms.locfileid: "39493955"
 ## <a name="sfctl-partition-data-loss"></a>sfctl partition data-loss
 この API は、指定されたパーティションのデータ損失を誘発します。
 
-これにより、パーティションの OnDataLossAsync API の呼び出しがトリガーされます。  この API は、指定されたパーティションのデータ損失を誘発します。 これにより、パーティションの OnDataLoss API の呼び出しがトリガーされます。 実際のデータ損失は、指定された DataLossMode によって異なります。 <br> PartialDataLoss - レプリカのクォーラムのみが削除され、パーティションに対して OnDataLoss がトリガーされますが、実際のデータ損失は、実行中のレプリケーションの有無によって異なります。 <br>FullDataLoss - すべてのレプリカが削除されるため、すべてのデータが失われ、OnDataLoss がトリガーされます。 <br>この API の呼び出しでは、ターゲットにステートフル サービスのみを指定してください。 ターゲットにシステム サービスを指定してこの API を呼び出すことは推奨されていません。 
-> [!NOTE]
+これにより、パーティションの OnDataLossAsync API の呼び出しがトリガーされます。  この API は、指定されたパーティションのデータ損失を誘発します。 これにより、パーティションの OnDataLoss API の呼び出しがトリガーされます。 実際のデータ損失は、指定された DataLossMode によって異なります。  <br> - PartialDataLoss - レプリカのクォーラムのみが削除され、パーティションに対して OnDataLoss がトリガーされますが、実際のデータ損失は、実行中のレプリケーションの有無によって異なります。  <br> - FullDataLoss - すべてのレプリカが削除されるため、すべてのデータが失われ、OnDataLoss がトリガーされます。 この API の呼び出しでは、ターゲットにステートフル サービスのみを指定してください。 ターゲットにシステム サービスを指定してこの API を呼び出すことは推奨されていません。
+
+> [!NOTE] 
 > この API は、呼び出した後に元に戻すことはできません。 CancelOperation を呼び出すと、実行が停止され、内部システム状態がクリーンアップされるだけです。 データ損失を引き起こすほどコマンドが進行した場合、データは復元されません。 この API で開始された操作に関する情報を返すには、同じ OperationId を使用して GetDataLossProgress API を呼び出してください。
 
 ### <a name="arguments"></a>引数
@@ -320,7 +321,7 @@ Service Fabric パーティションの正常性レポートを送信します�
 | --remove-when-expired | 有効期限が切れたときにレポートを正常性ストアから削除するかどうかを示す値。 <br><br> true に設定した場合、レポートは、有効期限が切れると正常性ストアから削除されます。 false に設定した場合、レポートは、有効期限が切れるとエラーとして処理されます。 既定では、このプロパティの値は false です。 クライアントは、定期的にレポートする場合、RemoveWhenExpired を false (既定値) に設定する必要があります。 こうすることで、レポーターで問題 (デッドロックなど) が発生していてレポートできない場合に、正常性レポートの有効期限が切れると、エンティティはエラーと評価されます。 これにより、このエンティティの正常性はエラー状態と見なされます。 |
 | --sequence-number | 数値文字列で表された、この正常性レポートのシーケンス番号。 <br><br> レポートのシーケンス番号は、古いレポートを検出するために正常性ストアによって使用されます。 指定しない場合、シーケンス番号は、レポートが追加されたときに正常性クライアントによって自動的に生成されます。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
-| --ttl | この正常性レポートの有効期間。 このフィールドでは、この期間の指定に ISO8601 形式を使用しています。 <br><br> クライアントは、定期的にレポートする場合、レポートの送信頻度を有効期間よりも高くする必要があります。 クライアントは、遷移時にレポートする場合、有効期間を無限に設定できます。 有効期間が期限切れになると、正常性に関する情報を含む正常性イベントは、正常性ストアから削除される (RemoveWhenExpired が true の場合) か、エラーと評価されます (RemoveWhenExpired が false の場合)。 指定しない場合、有効期間の既定値は無限になります。 |
+| --ttl | この正常性レポートの有効期間。 このフィールドでは、この期間の指定に ISO8601 形式を使用します。 <br><br> クライアントは、定期的にレポートする場合、レポートの送信頻度を有効期間よりも高くする必要があります。 クライアントは、遷移時にレポートする場合、有効期間を無限に設定できます。 有効期間が期限切れになると、正常性に関する情報を含む正常性イベントは、正常性ストアから削除される (RemoveWhenExpired が true の場合) か、エラーと評価されます (RemoveWhenExpired が false の場合)。 指定しない場合、有効期間の既定値は無限になります。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 

@@ -1,5 +1,5 @@
 ---
-title: Azure の予約を表示する | Microsoft Docs
+title: Azure リソースの予約を表示する | Microsoft Docs
 description: Azure portal で Azure の予約を表示する方法について説明します。
 services: billing
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: cwatson
-ms.openlocfilehash: 2ae30ca55f3ca03a64438025960ddd807e288216
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: c7522076987aacacc6fde6a0c9d2fa867a3f14aa
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48272618"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314042"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portal で Azure の予約を表示する
+# <a name="view-reservations-for-azure-in-the-azure-portal"></a>Azure portal で Azure の予約を表示する
 
-ご利用のサブスクリプションの種類とアクセス許可に応じて、Azure の予約を表示する方法がいくつかあります。
+Azure リソースの予約を表示する方法は、ご利用のサブスクリプションの種類とアクセス許可に応じて 2 つあります。
 
 ## <a name="view-reservations-as-owner-or-reader"></a>所有者または閲覧者として予約を表示する
 
@@ -30,7 +30,7 @@ ms.locfileid: "48272618"
  
 所有者または閲覧者として予約を表示するには
 
-1. [Azure Portal]( http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[予約]** で検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/billing-view-reservation/portal-reservation-search.png)
@@ -45,7 +45,7 @@ ms.locfileid: "48272618"
 
 Azure portal で予約トランザクションを表示するには
 
-1. [Azure Portal]( http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[コストの管理と請求]** で検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/billing-view-reservation/portal-cm-billing-search.png)
@@ -71,6 +71,6 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [CSP サブスクリプションの予約の使用状況について](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。

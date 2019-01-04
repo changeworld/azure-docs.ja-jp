@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6868b842f22a6d107936fcb1e49c46b0c1f58469
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3808511e588ba4284dee16cf7ca88bfd5a382c3a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345307"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337480"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance への SQL Server インスタンスの移行
 
@@ -60,7 +60,7 @@ ms.locfileid: "49345307"
 VNet インフラストラクチャとマネージド インスタンスを作成する方法については、[マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関する記事をご覧ください。
 
 > [!IMPORTANT]
-> 移行先の VNet とサブネットが常に[マネージド インスタンス VNet 要件](sql-database-managed-instance-vnet-configuration.md#requirements)に従っているようにすることが重要です。 非互換性があると、新しいインスタンスの作成や、既に作成したインスタンスの使用ができなくなることがあります。
+> 移行先の VNet とサブネットが常に[マネージド インスタンス VNet 要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)に従っているようにすることが重要です。 非互換性があると、新しいインスタンスの作成や、既に作成したインスタンスの使用ができなくなることがあります。 詳しくは、[ネットワークの新規作成](sql-database-managed-instance-create-vnet-subnet.md)と[既存のネットワークの構成](sql-database-managed-instance-configure-vnet-subnet.md)に関する記事をご覧ください。
 
 ## <a name="select-migration-method-and-migrate"></a>移行方法の選択と移行
 
@@ -117,8 +117,7 @@ SAS 資格情報を使用したマネージド インスタンスへのデータ
 
 移行に伴うリスクを軽減するには、パフォーマンスの監視後にのみ、データベース互換性レベルを変更します。 「[新しい SQL Server にアップグレードするときにパフォーマンスの安定性を維持する](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)」の説明に従って、データベースの互換性レベルの変更前と変更後のワークロードのパフォーマンスに関する情報を取得するための最適なツールとしてクエリ ストアを使用します。
 
-フル マネージドのプラットフォームで、SQL Database サービスの一部として自動的に提供される利点を享受できます。 たとえば、マネージド インスタンスでバックアップを作成する必要はありません。サービスによってバックアップが自動的に実行されます。 バックアップのスケジュール設定、取得、管理について心配する必要はなくなります。 マネージド インスタンスでは、[特定の時点への復旧 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) を使って、このリテンション期間内の任意の時点に復元することができます。 パブリック プレビューでは、リテンション期間は 7 日間に固定されています。
-さらに、[高可用性](sql-database-high-availability.md)が組み込まれているため、高可用性の設定について心配する必要はありません。
+フル マネージドのプラットフォームで、SQL Database サービスの一部として自動的に提供される利点を享受できます。 たとえば、マネージド インスタンスでバックアップを作成する必要はありません。サービスによってバックアップが自動的に実行されます。 バックアップのスケジュール設定、取得、管理について心配する必要はなくなります。 マネージド インスタンスでは、[特定の時点への復旧 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) を使って、このリテンション期間内の任意の時点に復元することができます。 さらに、[高可用性](sql-database-high-availability.md)が組み込まれているため、高可用性の設定について心配する必要はありません。
 
 セキュリティを強化するために、利用可能ないくつかの機能の使用を検討してください。
 

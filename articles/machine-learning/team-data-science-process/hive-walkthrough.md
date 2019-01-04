@@ -1,28 +1,24 @@
 ---
-title: Hadoop クラスターでデータを探索して Azure Machine Learning でモデルを作成する | Microsoft Docs
+title: Hadoop クラスターでのデータの探索 - Team Data Science Process
 description: HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、モデルを構築してデプロイします。
-services: machine-learning,hdinsight
-documentationcenter: ''
-author: deguhath
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: e9e76c91-d0f6-483d-bae7-2d3157b86aa0
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: deguhath
-ms.openlocfilehash: 09ca6fdc40aec84bcc7523bae0dee348d00f6d9f
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: e6adbe5a0e5ce88db12637889e201b5a15a0556f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586123"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139624"
 ---
-# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の活用: Azure HDInsight Hadoop クラスターの使用
+# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の実行:Azure HDInsight Hadoop クラスターの使用
 このチュートリアルでは、[Team Data Science Process (TDSP)](overview.md) をエンド ツー エンドのシナリオで使用します。 [Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行します。 二項分類、多クラス分類、回帰予測タスクを処理するために、ここでは Azure Machine Learning を使用してデータのモデルを構築します。 
 
 大規模なデータ セットの処理方法を説明したチュートリアルについては、「[Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](hive-criteo-walkthrough.md)」を参照してください。
@@ -54,18 +50,18 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 ## <a name="mltasks"></a>予測タスクの例
 データ分析に基づいて予測の種類を決定します。 これは、プロセスに含める必要があるタスクを明確にするために役立ちます。 このチュートリアルで扱う予測問題の 3 つの例を以下に示します。 これらの例は、*tip\_amount* に基づいています。
 
-- **二項分類**: 乗車に対してチップが支払われたかどうかを予測します。 つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
+- **二項分類**:乗車に対してチップが支払われたかどうかを予測します。 つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
-- **多クラス分類**: 乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つのクラスに分割します。
+- **多クラス分類**:乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つのクラスに分割します。
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0 and tip_amount <= $5
         Class 2: tip_amount > $5 and tip_amount <= $10
         Class 3: tip_amount > $10 and tip_amount <= $20
         Class 4: tip_amount > $20
-- **回帰タスク**: 乗車で支払われたチップの金額を予測します。  
+- **回帰タスク**:乗車で支払われたチップの金額を予測します。  
 
 ## <a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
 > [!NOTE]
@@ -75,12 +71,12 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 HDInsight クラスターを使用する高度な分析用の Azure 環境は、次の 3 つの手順でセットアップできます。
 
-1. [ストレージ アカウントを作成する](../../storage/common/storage-quickstart-create-account.md): このストレージ アカウントは、Azure BLOB ストレージにデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータも格納されます。
+1. [ストレージ アカウントを作成する](../../storage/common/storage-quickstart-create-account.md):このストレージ アカウントは、Azure Blob Storage にデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータも格納されます。
 2. [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](customize-hadoop-cluster.md):  この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた HDInsight Hadoop クラスターを作成します。 HDInsight クラスターをカスタマイズする際、注意する必要のある 2 つの重要な手順があります。
    
    * 作成時に、手順 1. で作成したストレージ アカウントを HDInsight クラスターにリンクする必要があります。 このストレージ アカウントは、クラスター内で処理されるデータにアクセスします。
    * クラスターを作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。 **[構成]** タブに移動して、**[リモートを有効にする]** を選択します。 この手順で、リモート ログインに使用するユーザーの資格情報を指定します。
-3. [Azure Machine Learning ワークスペースを作成する](../studio/create-workspace.md): このワークスペースを使用して、Machine Learning モデルを作成します。 このタスクは、HDInsight クラスターを使用した初期データの探索とダウンサンプリングの完了後に対処されます。
+3. [Azure Machine Learning ワークスペースを作成する](../studio/create-workspace.md):このワークスペースを使用して、機械学習モデルを構築します。 このタスクは、HDInsight クラスターを使用した初期データの探索とダウンサンプリングの完了後に対処されます。
 
 ## <a name="getdata"></a>公開されているソースからデータを取得する
 > [!NOTE]
@@ -290,7 +286,7 @@ Hive クエリを使用すると、Hive テーブルに読み込まれるデー�
 * チップの金額に基づいて、二項分類および多クラス分類のラベルを生成する。
 * 直線乗車距離を計算して、特徴を生成する。
 
-### <a name="exploration-view-the-top-10-records-in-table-trip"></a>探索: trip テーブルの上位 10 個のレコードを表示する
+### <a name="exploration-view-the-top-10-records-in-table-trip"></a>探索:trip テーブルの上位 10 個のレコードを表示する
 > [!NOTE]
 > 通常、これはデータ サイエンティスト タスクです。
 > 
@@ -310,7 +306,7 @@ Hive クエリを使用すると、Hive テーブルに読み込まれるデー�
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
-### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>探索: 12 個のそれぞれのパーティションのレコードの数を表示する
+### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>探索:12 個のそれぞれのパーティションのレコードの数を表示する
 > [!NOTE]
 > 通常、これはデータ サイエンティスト タスクです。
 > 
@@ -380,7 +376,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行して、�
 
 2 つのテーブルの合計レコード数も同じです。 これで、データが正しく読み込まれていることが再度検証されました。
 
-### <a name="exploration-trip-distribution-by-medallion"></a>探索: medallion (タクシー番号) ごとの乗車回数の分布
+### <a name="exploration-trip-distribution-by-medallion"></a>探索:medallion (タクシー番号) ごとの乗車回数の分布
 > [!NOTE]
 > 通常、これはデータ サイエンティスト タスクです。
 > 
@@ -414,7 +410,7 @@ Hive ディレクトリ プロンプトから次のコマンドを実行しま�
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>探索: medallion および hack_license ごとの乗車回数の分布
+### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>探索:medallion および hack_license ごとの乗車回数の分布
 > [!NOTE]
 > 通常、これはデータ サイエンティスト タスクです。
 > 
@@ -439,7 +435,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 クエリ結果は、ローカル ファイル **C:\temp\queryoutput.tsv** に書き込まれます。
 
-### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>探索: 無効な経度または緯度のレコードをチェックしてデータの品質を評価する
+### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>探索:無効な経度または緯度のレコードをチェックしてデータの品質を評価する
 > [!NOTE]
 > 通常、これはデータ サイエンティスト タスクです。
 > 
@@ -463,7 +459,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 このコマンドに含まれている引数 *-S* は、Hive の Map/Reduce ジョブの状態の画面出力を抑制します。 このコマンドは、Hive クエリの画面出力を読みやすくするので役立ちます。
 
-### <a name="exploration-binary-class-distributions-of-trip-tips"></a>探索: チップの二項分類の分布
+### <a name="exploration-binary-class-distributions-of-trip-tips"></a>探索:チップの二項分類の分布
 > [!NOTE]
 > 通常、これはデータ サイエンティスト タスクです。
 > 
@@ -489,7 +485,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
     hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
 
 
-### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>探索: 多クラス設定での分類分布
+### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>探索:多クラス設定での分類分布
 > [!NOTE]
 > 通常、これはデータ サイエンティスト タスクです。
 > 
@@ -512,7 +508,7 @@ Hadoop コマンド ライン コンソールから、次のコマンドを実�
 
     hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
 
-### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>探索: 経度緯度の 2 つの場所の直線距離を計算する
+### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>探索:経度緯度の 2 つの場所の直線距離を計算する
 > [!NOTE]
 > 通常、これはデータ サイエンティスト タスクです。
 > 
@@ -725,17 +721,17 @@ Machine Learning の[データのインポート][import-data] モジュール�
 
 [データのインポート][import-data] モジュールと入力するパラメーターの詳細は次のとおりです。
 
-**HCatalog サーバー URI**: クラスター名が **abc123** である場合、これは単純に https://abc123.azurehdinsight.net です。
+**HCatalog サーバー URI**:クラスター名が **abc123** である場合、これは単純に https://abc123.azurehdinsight.net です。
 
-**Hadoop ユーザー アカウント名**: クラスターに選択したユーザー名 (リモート アクセスのユーザー名ではありません)。
+**Hadoop ユーザー アカウント名**:クラスターに選択したユーザー名 (リモート アクセスのユーザー名ではありません)。
 
-**Hadoop ユーザー アカウントのパスワード**: クラスターに選択したパスワード (リモート アクセスのパスワードではありません)。
+**Hadoop ユーザー アカウントのパスワード**:クラスターに選択したパスワード (リモート アクセスのパスワードではありません)。
 
-**出力データの場所** : Azure になるよう選択されます。
+**出力データの場所**:これは、Azure になるように選択されます。
 
-**Azure ストレージ アカウント名** : クラスターに関連付けられている既定のストレージ アカウント名。
+**Azure ストレージ アカウント名**:クラスターに関連付けられている既定のストレージ アカウント名。
 
-**Azure コンテナー名**: クラスターの既定のコンテナー名。通常はクラスター名と同じです。 **abc123** というクラスターの場合、これは abc123 になります。
+**Azure コンテナー名**:クラスターの既定のコンテナー名。通常はクラスター名と同じです。 **abc123** というクラスターの場合、これは abc123 になります。
 
 > [!IMPORTANT]
 > Machine Learning で[データのインポート][import-data] モジュールを使ってクエリするすべてのテーブルは、内部テーブルである必要があります。
@@ -761,7 +757,7 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 ### <a name="mlmodel"></a>Machine Learning でモデルを作成する
 これで、[Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイに進む準備が整いました。 データも、以前に特定した予測問題への対応に使用できる状態になりました。
 
-- **二項分類**: 乗車に対してチップが支払われたかどうかを予測します。
+- **二項分類**:乗車に対してチップが支払われたかどうかを予測します。
 
   **使用する学習者:** 2 クラスのロジスティック回帰
 
@@ -769,7 +765,7 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 
   次のダイアグラムは、特定の乗車でチップが支払われたかどうかを予測するための実験を示しています。
 
-  ![実験のダイアグラム](./media/hive-walkthrough/QGxRz5A.png)
+  ![チップが支払われたかどうかを予測する実験のダイアグラム](./media/hive-walkthrough/QGxRz5A.png)
 
   b. この実験では、ターゲット ラベルの分布がほぼ 1:1 です。
 
@@ -781,15 +777,15 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 
   ![ACU 値のグラフ](./media/hive-walkthrough/8JDT0F8.png)
 
-- **多クラス分類**: 以前に定義したクラスを使用して、乗車で支払われたチップの金額の範囲を予測します。
+- **多クラス分類**:以前に定義したクラスを使用して、乗車で支払われたチップの金額の範囲を予測します。
 
   **使用する学習者:** 多クラスのロジスティック回帰
 
   a. この問題では、ターゲット (またはクラス) ラベルは、5 つの値 (0,1,2,3,4) のいずれかを取ることができる **tip\_class** になります。 二項分類の場合と同様に、この実験用のターゲット リークであるいくつかの列があります。 具体的には、**tipped**、**tip\_amount**、**total\_amount** では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を削除します。
 
-  次のダイアグラムは、チップが分類される可能性が高い箱を予測する実験を示しています。 箱は、クラス 0: チップ = $0、クラス 1: チップ > $0 および チップ <= $5、クラス 2: チップ > $5 および チップ <= $10、クラス 3: チップ > $10 および チップ <= $20、クラス 4: チップ > $20 です。
+  次のダイアグラムは、チップが分類される可能性が高い箱を予測する実験を示しています。 ビンは、クラス 0: チップ = $0、クラス 1: チップ > $0 および チップ <= $5、クラス 2: チップ > $5 および チップ <= $10、クラス 3: チップ > $10 および チップ <= $20、クラス 4: チップ > $20 です。
 
-  ![実験のダイアグラム](./media/hive-walkthrough/5ztv0n0.png)
+  ![チップのビンを予測する実験のダイアグラム](./media/hive-walkthrough/5ztv0n0.png)
 
   実際のテスト クラスの分布がどのようになるかを次に示します。 クラス 0 とクラス 1 は一般的ですが、他のクラスはまれであることがわかります。
 
@@ -801,7 +797,7 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 
   一般的なクラスのクラス精度がかなり良い一方で、そのモデルはまれなクラスでは "学習" がうまくいっていないことに注意してください。
 
-- **回帰タスク**: 乗車で支払われたチップの金額を予測します。
+- **回帰タスク**:乗車で支払われたチップの金額を予測します。
 
   **使用する学習者:** ブースト デシジョン ツリー
 
@@ -809,7 +805,7 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 
   次のダイアグラムは、支払われるチップの金額を予測する実験を示しています。
 
-  ![実験のダイアグラム](./media/hive-walkthrough/11TZWgV.png)
+  ![チップの金額を予測する実験のダイアグラム](./media/hive-walkthrough/11TZWgV.png)
 
   b. 回帰の問題については、予測の二乗誤差や決定係数を確認することで、予測の精度を測定します。
 

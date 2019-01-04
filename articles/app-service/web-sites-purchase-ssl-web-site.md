@@ -1,5 +1,5 @@
 ---
-title: Azure App Service の SSL 証明書を購入して構成する | Microsoft Docs
+title: Azure から SSL 証明書を購入して構成する - App Service | Microsoft Docs
 description: App Service 証明書を購入して App Service アプリにバインドする方法を説明します。
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: c775798591a3063fdfe6d399c8337aac2e2f207e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: ff2fd2c9b66cc9c80087ab5009ee65c0ba73714b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351356"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268718"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -59,7 +60,7 @@ ms.locfileid: "49351356"
 
 証明書の購入プロセスの完了後、この証明書の使用を開始する前に完了する必要のある手順がまだいくつかあります。 
 
-[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、**[証明書の構成]** > **[手順 1: 格納]** をクリックします。
+[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、**[証明書の構成]** > **[手順 1:格納]** をクリックします。
 
 ![KV に格納する準備完了のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
@@ -71,7 +72,7 @@ ms.locfileid: "49351356"
 |-|-|
 | Name | 英数字とダッシュで構成される一意の名前。 |
 | リソース グループ | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
-| Location | App Service アプリと同じ場所を選択します。 |
+| 場所 | App Service アプリと同じ場所を選択します。 |
 | [価格レベル]  | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
 | アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/key-vault-group-permissions-for-apps.md)」の手順に従って構成できます。 |
 | 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/key-vault-network-security.md)」の手順に従って構成できます |
@@ -80,7 +81,7 @@ ms.locfileid: "49351356"
 
 ## <a name="verify-domain-ownership"></a>ドメインの所有権を検証する
 
-最後の手順で使用した **[証明書の構成]** ページで、**[手順 2: 確認]** をクリックします。
+最後の手順で使用した **[証明書の構成]** ページで、**[手順 2:確認]** をクリックします。
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
@@ -114,7 +115,7 @@ ms.locfileid: "49351356"
 |-|-|
 | ホスト名 | SSL バインディングを追加するドメイン名。 |
 | プライベート証明書のサムプリント | バインドする証明書。 |
-| SSL の種類 | <ul><li>**SNI SSL** - 複数の SNI ベースの SSL バインディングを追加できます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](http://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後、「[IP SSL の A レコードの再マップ](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)」の手順に従います。 </li></ul> |
+| SSL の種類 | <ul><li>**SNI SSL** - 複数の SNI ベースの SSL バインディングを追加できます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後、「[IP SSL の A レコードの再マップ](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)」の手順に従います。 </li></ul> |
 
 ## <a name="verify-https-access"></a>HTTPS アクセスを確認する
 
@@ -147,15 +148,15 @@ ms.locfileid: "49351356"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>その他のリソース
 
 * [HTTPS の適用](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [TLS 1.1/1.2 の適用](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Azure App Service のアプリケーション コードに SSL 証明書を使用する](app-service-web-ssl-cert-load.md)
-* [FAQ: App Service 証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [FAQ:App Service 証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

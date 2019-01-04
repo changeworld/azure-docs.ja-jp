@@ -1,19 +1,20 @@
 ---
-title: Azure Search の結果をトリミングするためのセキュリティ フィルター | Microsoft Docs
+title: 結果をトリミングするためのセキュリティ フィルター - Azure Search
 description: セキュリティ フィルターとユーザー ID を使用した Azure Search コンテンツに対するアクセス制御。
 ms.service: search
 ms.topic: conceptual
 services: search
 ms.date: 08/07/2017
-author: revitalbarletz
-ms.author: revitalb
+author: brjohnstmsft
+ms.author: brjohnst
 manager: jlembicz
-ms.openlocfilehash: dd26676b74431566b3631b8a79cd06bcf3022518
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 84147b250ea17df9af67cc8a9025cdf6ec59a705
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792802"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314229"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>Azure Search の結果をトリミングするためのセキュリティ フィルター
 

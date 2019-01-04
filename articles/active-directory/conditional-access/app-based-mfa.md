@@ -13,17 +13,17 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f27ced5c67c5124d0792c5ce3884c88473fba056
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 1c61286a24c3562e32cb4c734ea081526d38837a
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604197"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413154"
 ---
-# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>クイック スタート - Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする 
+# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする 
 
 ユーザーのサインイン エクスペリエンスを簡易化するために、ユーザー名とパスワードを使用してクラウド アプリにサインインできるようにすることができます。 ただし、多くの環境には、多要素認証 (MFA) など、より強力な形式のアカウント確認を必要にすることが勧められるアプリが少なくともいくつかあります。 たとえば、組織のメール システムや HR アプリにアクセスする場合などがあります。 Azure Active Directory (Azure AD) では、条件付きアクセス ポリシーを使用してこの目標を達成できます。    
 
@@ -85,11 +85,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure Active Directory](./media/app-based-mfa/02.png)
 
-3. **[Azure Active Directory]** ページの **[管理]** セクションで、**[条件付きアクセス]** をクリックします。
+3. **[Azure Active Directory]** ページの **[セキュリティ]** セクションで、**[条件付きアクセス]** をクリックします。
 
     ![条件付きアクセス](./media/app-based-mfa/03.png)
  
-4. **[条件付きアクセス]** ページで、ツール バーの上部の **[追加]** をクリックします。
+4. **[条件付きアクセス]** ページで、上部のツール バーの **[新しいポリシー]** をクリックします。
 
     ![Add](./media/app-based-mfa/04.png)
 

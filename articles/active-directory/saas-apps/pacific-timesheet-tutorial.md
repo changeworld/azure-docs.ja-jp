@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Pacific Timesheet の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Pacific Timesheet の統合 | Microsoft Docs
 description: Azure Active Directory と Pacific Timesheet の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 051e39d0e7a58c79eb00bc3dfb73eaf5389617c8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b821da194ce41fc419e769336eeeb5927306684
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448365"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843650"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>チュートリアル: Azure Active Directory と Pacific Timesheet の統合
+# <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>チュートリアル:Azure Active Directory と Pacific Timesheet の統合
 
 このチュートリアルでは、Pacific Timesheet と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Pacific Timesheet で、Azure AD の **[ユーザー名]** の値を **[Username
 
 Pacific Timesheet で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Pacific Timesheet テスト ユーザーの作成](#creating-a-pacific-timesheet-test-user)** - Pacific Timesheet で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -117,7 +117,7 @@ Pacific Timesheet で Azure AD のシングル サインオンを構成してテ
     b. **[応答 URL]** ボックスに、`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Pacific Timesheet サポート チーム](http://www.pacifictimesheet.com/support)に連絡してください。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Pacific Timesheet サポート チーム](https://www.pacifictimesheet.com/support)に連絡してください。
  
 1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -131,10 +131,10 @@ Pacific Timesheet で Azure AD のシングル サインオンを構成してテ
 
     ![Configure single sign-on](./media/pacific-timesheet-tutorial/tutorial_pacifictimesheet_configure.png) 
 
-1. **Pacific Timesheet** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**SAML シングル サインオン サービス URL**、および **SAML エンティティ ID** を [Pacific Timesheet サポート チーム](http://www.pacifictimesheet.com/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Pacific Timesheet** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**SAML シングル サインオン サービス URL**、および **SAML エンティティ ID** を [Pacific Timesheet サポート チーム](https://www.pacifictimesheet.com/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -170,7 +170,7 @@ Pacific Timesheet で Azure AD のシングル サインオンを構成してテ
  
 ### <a name="creating-a-pacific-timesheet-test-user"></a>Pacific Timesheet テスト ユーザーの作成
 
-このセクションでは、Pacific Timesheet で Britta Simon というユーザーを作成します。 [Pacific Timesheet サポート チーム](http://www.pacifictimesheet.com/support)と協力して、このアプリケーションでユーザーを作成してください。
+このセクションでは、Pacific Timesheet で Britta Simon というユーザーを作成します。 [Pacific Timesheet サポート チーム](https://www.pacifictimesheet.com/support)と協力して、このアプリケーションでユーザーを作成してください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

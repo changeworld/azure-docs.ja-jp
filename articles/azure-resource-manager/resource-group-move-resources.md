@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 12/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: c65f5364ccd4943d1d3e703ed27099408d3a2a27
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: c589d1a11903f761fa791f36014fe235c1973514
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346594"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386912"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -35,7 +35,7 @@ ms.locfileid: "51346594"
 
 ## <a name="checklist-before-moving-resources"></a>リソースの移動前のチェック リスト
 
-リソースを移動する前に実行すべき重要な手順がいくつかあります。 これらの条件を確認することにより、エラーの発生を回避できます。
+リソースを移動する前に行うべき重要な手順がいくつかあります。 これらの条件を確認することにより、エラーの発生を回避できます。
 
 1. 移動元と移動先のサブスクリプションが同じ [Azure Active Directory テナント](../active-directory/develop/quickstart-create-new-tenant.md)内に存在している必要があります。 両方のサブスクリプションに同じテナント ID があることを確認するには、Azure PowerShell または Azure CLI を使用します。
 
@@ -58,7 +58,7 @@ ms.locfileid: "51346594"
   * [Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)
   * [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。 この問題は、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。
+1. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。 このエラーは、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。
 
   PowerShell で登録状態を取得するには、次のコマンドを使用します。
 
@@ -93,7 +93,7 @@ ms.locfileid: "51346594"
 
 1. リソースを移動する前に、リソースの移動先となるサブスクリプションのサブスクリプション クォータをチェックします。 リソースを移動することでサブスクリプションが制限を上回る場合、クォータの引き上げを要求できるかどうかを確認する必要があります。 制限の一覧と引き上げを要求する方法については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
 
-1. 可能であれば、大規模な移動は個別の移動操作に分けます。 Resource Manager で単一の操作で 800 を超えるリソースを移動しようとすると、すぐに失敗します。 ただし、800 未満のリソースの移動でも、タイムアウトで失敗になることがあります。
+1. 可能であれば、大規模な移動は個別の移動操作に分けます。 1 回の操作に含まれるリソースが 800 を超えると、Resource Manager から直ちにエラーが返されます。 ただし、800 未満のリソースの移動でも、タイムアウトで失敗になることがあります。
 
 1. サービスでリソースの移動機能を有効にする必要があります。 移動に成功したかどうかを確認するために、[移動要求を検証](#validate-move)します。 [リソースの移動が可能なサービス](#services-that-can-be-moved)と[リソースの移動が不可能なサービス](#services-that-cannot-be-moved)については、この記事の後出のセクションを参照してください。
 
@@ -130,7 +130,7 @@ Content-type: application/json
 
 ```json
 {
- "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "resources": ["<resource-id-1>", "<resource-id-2>"],
  "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
 }
 ```
@@ -169,7 +169,7 @@ Authorization: Bearer <access-token>
 * Analysis Services
 * API Management
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
-* App Service 証明書
+* App Service 証明書 - 「[App Service 証明書の制限事項](#app-service-certificate-limitations)」
 * Application Insights
 * Automation
 * Azure Active Directory B2C
@@ -186,7 +186,7 @@ Authorization: Bearer <access-token>
 * CDN
 * Cloud Services - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Cognitive Services
-* Container Registry
+* Container Registry の geo レプリケーションが有効になっているときに、コンテナー レジストリを移動させることはできません。
 * Content Moderator
 * Cost Management
 * Customer Insights
@@ -215,7 +215,8 @@ Authorization: Bearer <access-token>
 * ポータルのダッシュボード
 * Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
-* Redis Cache - Redis Cache インスタンスが仮想ネットワークで構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks の制限事項](#virtual-networks-limitations)を参照してください。
+* Recovery Services コンテナー - プライベート プレビューへの登録が必要となります。 「[Recovery Services の制限事項](#recovery-services-limitations)」を参照してください。
+* Azure Cache for Redis - 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks の制限事項](#virtual-networks-limitations)を参照してください。
 * Scheduler
 * Search
 * Service Bus
@@ -244,7 +245,6 @@ Authorization: Bearer <access-token>
 * Azure Database Migration
 * Azure Databricks
 * Azure Migrate
-* Batch AI
 * 証明書 - App Service 証明書は移動できますが、アップロードした証明書には[制限](#app-service-limitations)があります。
 * Container Instances
 * Container Service
@@ -259,7 +259,6 @@ Authorization: Bearer <access-token>
 * Microsoft Genomics
 * NetApp
 * パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
-* Recovery Services コンテナー - Recovery Services コンテナーに関連付けられているコンピューティング リソース、ネットワーク リソース、ストレージ リソースも移動できません。「[Recovery Services の制限事項](#recovery-services-limitations)」をご覧ください。
 * SAP HANA on Azure
 * セキュリティ
 * Site Recovery
@@ -309,19 +308,11 @@ Authorization: Bearer <access-token>
 * マネージドスナップショット
 * マネージド ディスクを使用する仮想マシンの可用性セット
 
-サポートされていない制約を次に示します。
+まだサポートされていない制約を次に示します。
 
 * 証明書が Key Vault に格納されている Virtual Machines は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
-* Azure Backup で構成された Virtual Machines。 これらの Virtual Machines を移動させるには以下の回避策を使用します
-  * Virtual Machines の場所を特定します
-  * 例えば、`AzureBackupRG_<location of your VM>_1` AzureBackupRG_westus2_1などのような名前付けパターンを持つリソース グループを特定します
-  * Azure portal の場合、「非表示の型」を確認します
-  * PowerShell の場合、`Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`コマンドレットを使用します
-  * CLI の場合、`az resource list -g AzureBackupRG_<location of your VM>_1`を使用します
-  * `Microsoft.Compute/restorePointCollections`名前付けパターンを持つ `AzureBackup_<name of your VM that you're trying to move>_###########`タイプのリソースを特定します
-  * このリソースを削除します
-  * 削除が完了した後は、Virtual Machines を移動させることができます
-* Standard SKU Load Balancer、または、Standard SKU パブリック IP を使用した Virtual Machine Scale Sets を移動することはできません
+* お客様の仮想マシンでバックアップを構成する場合は、「[Recovery Services の制限事項](#recovery-services-limitations)」を参照してください。
+* Standard SKU Load Balancer または Standard SKU パブリック IP を使用した仮想マシン スケール セットを移動することはできません
 * プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
 
 ## <a name="virtual-networks-limitations"></a>Virtual Networks の制限事項
@@ -330,23 +321,21 @@ Authorization: Bearer <access-token>
 
 ピアリングされた仮想ネットワークを移動するには、最初に仮想ネットワークのピアリングを無効にする必要があります。 無効にすると、仮想ネットワークを移動できます。 移動後に、仮想ネットワークのピアリングを再度有効にします。
 
-仮想ネットワークにリソース ナビゲーション リンクのあるサブネットが含まれる場合、仮想ネットワークを別のサブスクリプションに移動することはできません。 たとえば、Redis Cache リソースがサブネットにデプロイされている場合、そのサブネットにはリソース ナビゲーション リンクがあります。
+仮想ネットワークにリソース ナビゲーション リンクのあるサブネットが含まれる場合、仮想ネットワークを別のサブスクリプションに移動することはできません。 たとえば、Azure Cache for Redis リソースがサブネットにデプロイされている場合、そのサブネットにはリソース ナビゲーション リンクがあります。
 
 ## <a name="app-service-limitations"></a>App Service の制限事項
 
-App Service のリソースを移動することに関しての制限事項は、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。
-
-以上のセクションで説明した制限は、App Service 証明書ではなく、アップロードされた証明書に適用されます。 App Service 証明書は、新しいリソース グループまたはサブスクリプションに制限なく移動できます。 複数の Web アプリで同じ App Service 証明書が使用される場合、最初にすべての Web アプリを移動し、次に証明書を移動します。
+App Service のリソースを移動することに関しての制限事項は、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。 お客様の Web アプリで App Service 証明書を使用する場合は、「[App Service 証明書の制限事項](#app-service-certificate-limitations)」を参照してください。
 
 ### <a name="moving-within-the-same-subscription"></a>同じサブスクリプション内で移動する場合
 
-Web アプリを "_同じサブスクリプション内_" で移動する場合には、アップロードした SSL 証明書は移動できません。 ただし、アップロードした SSL 証明書を移動せずに Web アプリを新しいリソース グループに移動することはできます。その場合でも、アプリの SSL 機能は引き続き機能します。
+Web アプリを "_同じサブスクリプション内_" で移動する場合には、サードパーティの SSL 証明書は移動できません。 ただし、サードパーティの証明書を移動せずに Web アプリを新しいリソース グループに移動することはできます。その場合でも、お客様のアプリの SSL 機能は引き続き機能します。
 
 SSL 証明書を Web アプリと共に移動したい場合は、次の手順に従います。
 
-1. アップロードした証明書を Web アプリから削除します。
+1. サードパーティの証明書を Web アプリから削除します。ただし、お客様の証明書のコピーは維持してください。
 2. Web アプリを移動します。
-3. 移動した Web アプリに証明書をアップロードします。
+3. 移動した Web アプリにサードパーティの証明書をアップロードします。
 
 ### <a name="moving-across-subscriptions"></a>サブスクリプション間で移動する場合
 
@@ -359,6 +348,10 @@ Web App を _サブスクリプション間_ で移動する場合には、次�
     - App Service Environment
 - リソース グループ内のすべての App Service リソースを一緒に移動する必要があります。
 - App Service リソースは、最初に作成されたときのリソース グループからのみ移動できます。 App Service リソースが元のリソース グループから移動されている場合は、まず元のリソース グループに戻してから、サブスクリプション間の移動を行うことができます。
+
+## <a name="app-service-certificate-limitations"></a>App Service 証明書の制限事項
+
+お客様の App Service 証明書は、新しいリソース グループまたはサブスクリプションに移動できます。 お客様の App Service 証明書が Web アプリにバインドされている場合は、新しいサブスクリプションにリソースを移動する前に、いくつかの手順に従う必要があります。 リソースを移動する前に、SSL バインディングとプライベート証明書を Web アプリから削除してください。 App Service 証明書を削除する必要はありません。Web アプリのプライベート証明書だけ削除してください。
 
 ## <a name="classic-deployment-limitations"></a>クラシック デプロイメントの制限事項
 
@@ -382,7 +375,7 @@ Web App を _サブスクリプション間_ で移動する場合には、次�
 リソースを新しいサブスクリプションに移動する場合は、次の制限が適用されます。
 
 * サブスクリプション内のすべてのクラシック リソースは、同じ操作で移動する必要があります。
-* 対象のサブスクリプションには、他のクラシック リソースは含めないでください。
+* ターゲット サブスクリプションには、他のクラシック リソースを含めないでください。
 * クラシック リソースの場合、移動は、別の REST API を通じてのみ要求できます。 標準の Resource Manager の移動コマンドは、クラシック リソースを新しいサブスクリプションに移動する場合は機能しません。
 
 クラシック リソースを新しいサブスクリプションに移動する場合は、クラシック リソース固有の REST 操作を使用してください。 REST を使用するには、次の手順を実行します。
@@ -446,15 +439,23 @@ Web App を _サブスクリプション間_ で移動する場合には、次�
 
 ## <a name="recovery-services-limitations"></a>Recovery Services の制限事項
 
-Azure Site Recovery では、ディザスター リカバリーの設定に使用されるストレージ リソース、ネットワーク リソース、またはコンピューティング リソースは移動できません。
+Recovery Services コンテナーを移動するには、プライベート プレビューへの登録が必要となります。 お試しになる場合は、AskAzureBackupTeam@microsoft.com までメールでご連絡ください。
 
-たとえば、ストレージ アカウント (Storage1) へのオンプレミス コンピューターのレプリケーションが設定済みで、Azure へのフェールオーバー後、保護されたコンピューターを、Azure 仮想ネットワーク (Network1) に接続された仮想マシン (VM1) として使用する必要があるとします。 こうした Azure リソース、つまり Storage1、VM1、および Network1 はどれも、同じサブスクリプション内のリソース グループ間、またはサブスクリプション間で移動することはできません。
+現在、一度に移動できる Recovery Services コンテナーはリージョンごとに 1 つです。 Azure Files、Azure File Sync、SQL を IaaS 仮想マシンにバックアップするコンテナーは移動できません。 
 
-**Azure Backup** に登録された VM をリソース グループ間で移動するには:
- 1. バックアップを一時的に停止し、バックアップ データを保持します
- 2. VM をターゲット リソース グループに移動します
- 3. 同じコンテナーまたは新しいコンテナーで VM を再び保護します。ユーザーは、移動操作の前に作成された使用可能な復元ポイントから復元できます。
-バックアップした VM をサブスクリプション間で移動する場合、手順 1 と手順 2 は同じです。 手順 3 では、ターゲット サブスクリプションに存在する、または作成した新しいコンテナーで、VM を保護する必要があります。 Recovery Services コンテナーでは、異なるサブスクリプション間のバックアップはサポートされていません。
+仮想マシンをコンテナーと共に移動しなかった場合、現在の仮想マシンの復旧ポイントは、その有効期限が切れるまでコンテナーに維持されます。 仮想マシンをコンテナーと共に移動するかどうかに関係なく、仮想マシンはコンテナー内のバックアップ履歴から復元できます。
+
+Recovery Services コンテナーでは、異なるサブスクリプション間のバックアップはサポートされていません。 仮想マシンのバックアップ データがあるコンテナーをサブスクリプション全体で移動する場合、バックアップを継続するためには、お客様の仮想マシンを同じサブスクリプションに移動し、同じターゲット リソース グループを使用する必要があります。
+
+そのコンテナーに対して定義されたバックアップ ポリシーは、コンテナーの移動後も維持されます。 レポートと監視については、コンテナーの移動後に設定し直す必要があります。
+
+Recovery Services コンテナーを移動せずに仮想マシンを新しいサブスクリプションに移動するには:
+
+ 1. 一時的にバックアップを停止する
+ 2. 仮想マシンを新しいサブスクリプションに移動する
+ 3. そのサブスクリプションの新しいコンテナーの下で再保護する
+
+Azure Site Recovery では、ディザスター リカバリーの設定に使用されるストレージ リソース、ネットワーク リソース、またはコンピューティング リソースは移動できません。 たとえば、ストレージ アカウント (Storage1) へのオンプレミス コンピューターのレプリケーションが設定済みで、Azure へのフェールオーバー後、保護されたコンピューターを、Azure 仮想ネットワーク (Network1) に接続された仮想マシン (VM1) として使用する必要があるとします。 こうした Azure リソース、つまり Storage1、VM1、および Network1 はどれも、同じサブスクリプション内のリソース グループ間、またはサブスクリプション間で移動することはできません。
 
 ## <a name="hdinsight-limitations"></a>HDInsight の制限事項
 
@@ -464,7 +465,7 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
 
 ## <a name="search-limitations"></a>Search の制限事項
 
-異なるリージョンにデプロイされている複数の Search リソースを一度に移動することはできません。
+異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。
 そのような場合は、それらを個別に移動する必要があります。
 
 ## <a name="lb-limitations"></a> Load Balancer の制限事項
@@ -479,7 +480,7 @@ Standard SKU のパブリック IP は移動できません。
 
 ## <a name="use-portal"></a>ポータルの使用
 
-リソースを移動するには、そのリソースが含まれるリソース グループを選択し、**[移動]** を選択します。
+リソースを移動するには、それらのリソースがあるリソース グループを選択し、**[移動]** ボタンを選択します。
 
 ![リソースの移動](./media/resource-group-move-resources/select-move.png)
 
@@ -499,7 +500,7 @@ Standard SKU のパブリック IP は移動できません。
 
 ## <a name="use-powershell"></a>PowerShell の使用
 
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、 [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) コマンドを使用します。 次の例では、複数のリソースを新しいリソース グループに移動する方法を示します。
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、 [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) コマンドを使用します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。
 
 ```azurepowershell-interactive
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
@@ -511,7 +512,7 @@ Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Res
 
 ## <a name="use-azure-cli"></a>Azure CLI の使用
 
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[az resource move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) コマンドを使用します。 移動するリソースのリソース ID を指定します。 次の例では、複数のリソースを新しいリソース グループに移動する方法を示します。 `--ids` パラメーターには、移動するリソース ID のスペース区切りリストを指定します。
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[az resource move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) コマンドを使用します。 移動するリソースのリソース ID を指定します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。 `--ids` パラメーターには、移動するリソース ID のスペース区切りリストを指定します。
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)

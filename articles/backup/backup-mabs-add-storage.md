@@ -2,22 +2,22 @@
 title: Azure Backup Server で Modern Backup Storage を使用する
 description: Azure Backup Server の新機能について説明します。 この記事では、Backup Server インストールをアップグレードする方法について説明します。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: markgal; adigan; kasinh
-ms.openlocfilehash: da9b3d22dce3f92ff6d1a588d283d47f22fca736
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.author: adigan
+ms.openlocfilehash: cc76b15c3cb108b5181e22330954dfee789b01ba
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612969"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251115"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Server へのストレージの追加
 
-Azure Backup Server V2 以降には、System Center 2016 Data Protection Manager Modern Backup Storage が付属しています。 Modern Backup Storage を使用すると、ストレージを 50% 削減でき、バックアップ速度が 3 倍に高速化され、より効率的なストレージを利用できます。 また、ワークロード対応型ストレージも提供されます。
+Azure Backup Server V2 以降では、ストレージを 50% 削減でき、バックアップ速度が 3 倍に高速化され、より効率的なストレージを利用できる、Modern Backup Storage をサポートしています。 また、ワークロード対応型ストレージも提供されます。
 
 > [!NOTE]
 > Modern Backup Storage を使用するには、Backup Server V2 または V3 を Windows Server 2016 上で実行するか、または V3 を Windows Server 2019 上で実行する必要があります。
@@ -75,7 +75,7 @@ Backup Server にボリュームを追加するには、**[管理]** ウィン�
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-PowerShell コマンドレットの Update-DPMDiskStorage を使用して、ワークロード対応型ストレージを設定できます。これにより、Data Protection Manager サーバー上の記憶域プールのボリュームのプロパティが更新されます。
+PowerShell コマンドレットの Update-DPMDiskStorage を使用して、ワークロード対応型ストレージを設定できます。これにより、Azure Backup Server 上の記憶域プールのボリュームのプロパティが更新されます。 
 
 構文:
 

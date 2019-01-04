@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: d53e8fe6588b7e1b068431a4cd530d0a80a603e6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d8ba4fa1b5f5efd671c13ad2201b0cd34642d346
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261878"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844942"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM のディザスター リカバリーの容量を計画する 
 
@@ -33,8 +33,8 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 このツールは 2 つのモードで実行できます。
 
-* **クイック プランニング**: VM、ディスク、ストレージ、変更率の平均値に基づいてネットワークとサーバーを予測します。
-* **詳細なプランニング**: VM レベルで各ワークロードの詳細を提供します。 VM の互換性が分析され、ネットワークおよびサーバーが予測されます。
+* **クイック プランニング**:VM、ディスク、ストレージ、変更率の平均値に基づいてネットワークとサーバーを予測します。
+* **詳細なプランニング**:VM レベルで各ワークロードの詳細を提供します。 VM の互換性が分析され、ネットワークおよびサーバーが予測されます。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -65,17 +65,17 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 4. ソース環境の値を入力した後には、以下などが出力されます。
 
-   * **[Bandwidth required for delta replication (in Megabits/sec)]\(差分レプリケーションに必要な帯域幅 (メガビット/秒)\)**: 1 日の平均データ変更率に基づいて差分レプリケーションのネットワーク帯域幅が計算されます。
-   * **[Bandwidth required for initial replication (in Megabits/sec)]\(初回レプリケーションに必要な帯域幅 (メガビット/秒)\)**: 入力した初回レプリケーションの値に基づいて初回レプリケーションのネットワーク帯域幅が計算されます。
-   * **[Storage required (in GBs)]\(必要なストレージ (GB)\)**: Azure で必要なストレージの合計です。
-   * **[Total IOPS on Standard Storage]\(Standard Storage の IOPS 合計\)**: Standard ストレージ アカウントの合計での IOPS が 8K の単位サイズで計算されます。 Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Standard の Azure VM にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
-   * **[Number of Standard storage accounts required]\(必要な Standard Storage アカウントの数\)**: VM の保護に必要な Standard ストレージ アカウントの総数です。 Standard Storage アカウントの場合は、Standard Storage のすべての VM で最大 20,000 IOPS まで対応できます。 また、ディスクごとでは最大 500 IOPS まで対応できます。
-   * **[Number of Blob disks required]\(必要な BLOB ディスク数\)**: Azure ストレージに作成されるディスクの数です。
-   * **[Number of premium accounts required]\(必要な Premium Storage アカウントの数\)**: VM の保護に必要な Premium Storage アカウントの総数です。 IOPS が多い (20,000 を超える) ソース VM には、Premium Storage アカウントが必要です。 Premium Storage アカウントでは、最大 80,000 IOPS に対応できます。
-   * **[Total IOPS on Premium Storage]\(Premium Storage の IOPS 合計\)**: Premium Storage アカウントの合計での IOPS が 256K の単位サイズで計算されます。 Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Premium の Azure VM (DS および GS シリーズ) にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
-   * **[Number of Configuration Servers required]\(必要な構成サーバーの数\)**: デプロイに必要な構成サーバーの数を示します。
-   * **[Number of additional Process Servers required]\(必要なその他のプロセス サーバーの数\)**: 既定で構成サーバーで実行しているプロセス サーバーの他に追加のプロセス サーバーが必要かどうかを示しています。
-   * **[100% additional storage on the Source]\(ソースに 100% の追加ストレージ\)**: ソースの場所に追加ストレージが必要かどうかを示しています。
+   * **[Bandwidth required for delta replication (in Megabits/sec)]\(差分レプリケーションに必要な帯域幅 (MB/秒)\)**:1 日の平均データ変更率に基づいてデルタ レプリケーションのネットワーク帯域幅が計算されます。
+   * **[Bandwidth required for initial replication (in Megabits/sec)]\(初期レプリケーションに必要な帯域幅 (MB/秒)\)**:入力した初回レプリケーションの値に基づいて初回レプリケーションのネットワーク帯域幅が計算されます。
+   * **[Storage required (in GBs)]\(必要なストレージ (GB)\)**:Azure で必要なストレージの合計です。
+   * **[Total IOPS on Standard Storage]\(Standard Storage の IOPS 合計\)**:Standard ストレージ アカウントの合計での IOPS が 8K の単位サイズで計算されます。 Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Standard の Azure VM にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
+   * **[Number of Standard storage accounts required]\(必要な Standard Storage アカウントの数\)**:VM を保護するために必要な Standard Storage アカウントの合計数。 Standard Storage アカウントの場合は、Standard Storage のすべての VM で最大 20,000 IOPS まで対応できます。 また、ディスクごとでは最大 500 IOPS まで対応できます。
+   * **[Number of Blob disks required]\(必要な BLOB ディスクの数\)**:Azure ストレージに作成されるディスクの数。
+   * **[Number of premium accounts required]\(必要な Premium Storage アカウントの数\)**:VM を保護するために必要な Premium Storage アカウントの合計数。 IOPS が多い (20,000 を超える) ソース VM には、Premium Storage アカウントが必要です。 Premium Storage アカウントでは、最大 80,000 IOPS に対応できます。
+   * **[Total IOPS on Premium Storage]\(Premium Storage の IOPS 合計\)**:Premium Storage アカウントの合計での IOPS が 256K の単位サイズで計算されます。 Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Premium の Azure VM (DS および GS シリーズ) にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
+   * **[Number of Configuration Servers required]\(必要な構成サーバーの数\)**:デプロイに必要な構成サーバーの数を示します。
+   * **[Number of additional Process Servers required]\(必要なその他のプロセス サーバーの数\)**:既定で構成サーバーで実行しているプロセス サーバーの他に、追加のプロセス サーバーが必要かどうかを示します。
+   * **[100% additional storage on the Source]\(ソースでの 100% 追加ストレージ\)**:ソースの場所に追加ストレージが必要かどうかを示します。
 
       ![出力](./media/site-recovery-capacity-planner/output.png)
 

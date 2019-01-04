@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Predictix Ordering の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Predictix Ordering の統合 | Microsoft Docs
 description: Azure Active Directory と Predictix Ordering の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 83a7f50120b5f34c4e4d74d8233fc51be9c0e579
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f805fde861413fe84f1ad15ade1ce2923a9531ce
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448382"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011732"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>チュートリアル: Azure Active Directory と Predictix Ordering の統合
+# <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>チュートリアル:Azure Active Directory と Predictix Ordering の統合
 
 このチュートリアルでは、Predictix Ordering と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -113,6 +113,7 @@ Predictix Ordering で Azure AD のシングル サインオンを構成して�
     a. **[サインオン URL]** ボックスに、`https://<companyname-pricing>.ordering.predictix.com/sso/request` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。 
+    
     | |
     |--|
     | `https://<companyname-pricing>.dev.ordering.predictix.com` |

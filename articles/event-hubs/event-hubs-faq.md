@@ -1,20 +1,21 @@
 ---
-title: Azure Event Hubs の FAQ | Microsoft Docs
-description: Azure Event Hubs のよく寄せられる質問 (FAQ)
+title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 10/07/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9bd1649c0ec89abf660865971314becb6580852f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 7308b122d878c225aa98a19a303bc9520f3201ef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300677"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088234"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -64,7 +65,7 @@ bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.p
 
 bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
 
-注: sasl.jaas.config がフレームワークでサポートされる構成でない場合は、SASL のユーザー名とパスワードを設定するために使用される構成を見つけ、代わりにそれらを使用します。 ユーザー名を $ConnectionString に、パスワードを Event Hubs の接続文字列に設定します。
+注:sasl.jaas.config がフレームワークでサポートされる構成でない場合は、SASL のユーザー名とパスワードを設定するために使用される構成を見つけ、代わりにそれらを使用します。 ユーザー名を $ConnectionString に、パスワードを Event Hubs の接続文字列に設定します。
 
 ### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Kafka 対応 Event Hubs のメッセージ/イベント サイズはどれくらいですか。
 Kafka 対応 Event Hubs に許可されている最大メッセージ サイズは 1MB です。

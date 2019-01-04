@@ -1,11 +1,11 @@
 ---
-title: Azure AI ギャラリー実験 | Microsoft Docs
-description: Azure AI ギャラリーで実験を発見および共有します。
+title: Azure AI Gallery の実験 - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI ギャラリーで実験を発見および共有します。 実験は、予測分析モデルの構築に使用できる Machine Learning Studio 内のキャンバスです。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: f4248922-c961-4d3a-9e1b-aec743210166
 ms.service: machine-learning
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: 22432a98a7ac5ecba46201d0166940e069f6031b
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 12fb45b00848e5e34760ccb0691998c1f72237b8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346441"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269303"
 ---
-# <a name="discover-experiments-in-azure-ai-gallery"></a>Azure AI ギャラリーで実験を発見する
+# <a name="discover-azure-machine-learning-studio-experiments-in-azure-ai-gallery"></a>Azure AI Gallery での Azure Machine Learning Studio の実験の探索
 
-[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)には、[Azure Machine Learning Studio](https://studio.azureml.net) で開発されたさまざまな[実験](https://gallery.cortanaintelligence.com/experiments)があります。 実験の範囲は、特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまでに及びます。
+[Azure AI Gallery](http://gallery.cortanaintelligence.com) には、[Azure Machine Learning Studio](https://studio.azureml.net) で開発されたさまざまな[実験](https://gallery.cortanaintelligence.com/experiments)があります。 実験の範囲は、特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまでに及びます。
 
 > [!NOTE]
-> ***実験***は、予測分析モデルの構築に使用できる Machine Learning Studio 内のキャンバスです。 さまざまな分析モジュールを使用してデータを接続することで、モデルを作成します。 さまざまなアイデアを取り入れ、試行して、最終的には Azure の Web サービスとしてモデルをデプロイできます。 基本的な実験を作成する方法の例については、「[Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する](create-experiment.md)」を参照してください。 予測分析ソリューションを作成する方法のより包括的なチュートリアルについては、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)」を参照してください。
+> ***実験***は、予測分析モデルの構築に使用できる Machine Learning Studio 内のキャンバスです。 さまざまな分析モジュールを使用してデータを接続することで、モデルを作成します。 さまざまなアイデアを取り入れ、試行して、最終的には Azure の Web サービスとしてモデルをデプロイできます。 基本的な実験を作成する方法の例については、「[Machine Learning のチュートリアル:Azure Machine Learning Studio で初めての実験を作成する](create-experiment.md)」を参照してください。 予測分析ソリューションを作成する方法のより包括的なチュートリアルについては、「[チュートリアル:信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)」を参照してください。
 >
 >
 
@@ -42,7 +42,7 @@ ms.locfileid: "51346441"
 
 ![独自のコメントを追加する](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="download"></a>[ダウンロード]
+## <a name="download"></a>ダウンロード
 Machine Learning Studio ワークスペースに、ギャラリーにある任意の実験のコピーをダウンロードできます。 その後、コピーに変更を加えて独自のソリューションを作成できます。
 
 Azure AI ギャラリーには、実験のコピーをインポートする方法が 2 つ用意されています。
@@ -81,7 +81,7 @@ Machine Learning Studio で作成した他のすべての実験のように、�
 3. 実験をギャラリーで発行する準備ができたら、実験キャンバスの下にあるアクションの一覧で、**[ギャラリーに発行する]** を選択します。
 
     ![[ギャラリーに発行する] を選択する](./media/gallery-experiments/publish-experiment-to-gallery.png)
-4. **[実験の説明]** ページで、タイトルとタグを入力します。 タイトルとタグはわかりやすいものにしてください。 使用した手法や、解決する実際の問題がわかるようにしてください。 わかりやすい実験のタイトルの例としては、「二項分類: Twitter のセンチメント分析」などが挙げられます。
+4. **[実験の説明]** ページで、タイトルとタグを入力します。 タイトルとタグはわかりやすいものにしてください。 使用した手法や、解決する実際の問題がわかるようにしてください。 わかりやすい実験のタイトルの例としては、「二項分類:Twitter のセンチメント分析」などが挙げられます。
 
     ![発行用のタイトルとタグを入力する](./media/gallery-experiments/experiment-description.png)
 5. **[概要]** ボックスに実験の概要を入力します。 実験で解決する問題と、対処の方法について簡単に説明します。
@@ -188,4 +188,4 @@ Machine Learning Studio で作成した他のすべての実験のように、�
 
 **[ギャラリーに移動する](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+

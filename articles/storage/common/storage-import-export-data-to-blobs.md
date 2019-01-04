@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/11/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 3a647d9f821007dc0f2b48864b937aee84924d8f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ea81cb52b8492e429903de15a9ff0156c91abae2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353173"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309588"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -30,7 +30,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 - 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。 
 - [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システムがある。 
 - Windows システムで BitLocker を有効にする。 [BitLocker を有効にする方法](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)に関するページを参照してください。
-- Windows システムに [WAImportExport バージョン 1 をダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=42659)します。 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
+- Windows システムに [WAImportExport バージョン 1 をダウンロード](https://aka.ms/waiev1)します。 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
 - FedEx または DHL のアカウントを用意します。  
     - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
     - エクスポート ジョブの追跡番号を生成します。
@@ -39,7 +39,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
         - [FedEX アカウントを作成するか](https://www.fedex.com/en-us/create-account.html)、または 
         - [DHL アカウントを作成します](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
 
-## <a name="step-1-prepare-the-drives"></a>手順 1: ドライブを準備する
+## <a name="step-1-prepare-the-drives"></a>手順 1:ドライブを準備する
 
 この手順では、ジャーナル ファイルを生成します。 ジャーナル ファイルには、ドライブのシリアル番号、暗号化キー、ストレージ アカウントの詳細などの基本情報が保存されます。 
 
@@ -79,7 +79,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     > [!IMPORTANT]
     > - ツールが存在するフォルダーと同じフォルダーに、ジャーナル ファイルと共に `<Journal file name>_DriveInfo_<Drive serial ID>.xml` ファイルも作成されます。 ジャーナル ファイルが大きすぎる場合、ジョブの作成時にジャーナル ファイルではなく .xml ファイルが使用されます。 
 
-## <a name="step-2-create-an-import-job"></a>手順 2: インポート ジョブを作成する
+## <a name="step-2-create-an-import-job"></a>手順 2:インポート ジョブの作成
 
 次の手順を実行して、Azure portal でインポート ジョブを作成します。
 
@@ -129,16 +129,16 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
     ![インポート ジョブを作成する - 手順 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives"></a>手順 3: ドライブを送付する 
+## <a name="step-3-ship-the-drives"></a>手順 3:ドライブを送付する 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>手順 4: 追跡情報を使用してジョブを更新する
+## <a name="step-4-update-the-job-with-tracking-information"></a>手順 4:追跡情報を使用してジョブを更新する
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>手順 5: Azure へのデータのアップロードを確認する
+## <a name="step-5-verify-data-upload-to-azure"></a>手順 5:Azure へのデータのアップロードを確認する
 
 完了するまでジョブを監視します。 ジョブが完了したら、データが Azure にアップロードされたことを確認します。 アップロードが成功したことを確認した後にのみ、オンプレミスのデータを削除します。
 

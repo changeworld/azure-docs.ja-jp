@@ -1,6 +1,7 @@
 ---
-title: 運用環境で Azure Machine Learning サービスのために Application Insights を有効にする
-description: Azure Kubernetes Service へのデプロイ用の Azure Machine Learning サービスに対して Application Insights を設定する方法について説明します
+title: Application Insights を使用してモデルを監視する
+titleSuffix: Azure Machine Learning service
+description: Application Insights を使用して、Azure Machine Learning サービス経由でデプロイされた Web サービスを監視する
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,14 +10,15 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 285486d5fe641d49ee21d7340b62f83d75862553
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: 176d0f00774106bbf9ae8dade0fe3fd4062530bb
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578300"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277184"
 ---
-# <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Application Insights を使用して運用環境の Azure Machine Learning モデルを監視する
+# <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Application Insights を使用して Azure Machine Learning のモデルを監視する
 
 この記事では、Azure Machine Learning サービスのために Azure Application Insights を設定する方法について説明します。 Application Insights を使用して、以下を監視できます。
 * 要求率、応答時間、および失敗率。
@@ -25,21 +27,59 @@ ms.locfileid: "51578300"
 
 [Application Insights](../../application-insights/app-insights-overview.md) の詳細 
 
->[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 0.1.74 を使用してテストされました
-
 
 ## <a name="prerequisites"></a>前提条件
-* Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-* Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、および Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関する記事を参照してください。
-* Azure Kubernetes Service (AKS) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[イメージ分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
-* [AKS クラスター](how-to-deploy-to-aks.md)。
 
+* Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning サービス](http://aka.ms/AMLFree)を今日からお試しいただけます。
+
+* Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、および Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関する記事を参照してください。
+* Azure Kubernetes Service (AKS) または Azure コンテナー インスタンス (ACI) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[イメージ分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
+
+
+## <a name="enable-and-disable-from-the-sdk"></a>SDK からの有効化と無効化
+
+### <a name="update-a-deployed-service"></a>デプロイされたサービスを更新する
+1. ワークスペースで、サービスを特定します。 `ws` の値は、ワークスペースの名前です。
+
+    ```python
+    from azureml.core.webservice import Webservice
+    aks_service= Webservice(ws, "my-service-name")
+    ```
+2. サービスを更新し、Application Insights を有効にします。 
+
+    ```python
+    aks_service.update(enable_app_insights=True)
+    ```
+
+### <a name="log-custom-traces-in-your-service"></a>サービスのカスタム トレースをログに記録する
+カスタム トレースをログに記録する場合は、[デプロイする方法と場所](how-to-deploy-and-where.md)のドキュメントにある AKS または ACI のための標準のデプロイ プロセスに従います。 次に、次の手順を使用します。
+
+1. print ステートメントを追加してスコアリング ファイルを更新します。
+    
+    ```python
+    print ("model initialized" + time.strftime("%H:%M:%S"))
+    ```
+
+2. サービスの構成を更新します。
+    
+    ```python
+    config = Webservice.deploy_configuration(enable_app_insights=True)
+    ```
+
+3. イメージをビルドし、[AKS](how-to-deploy-to-aks.md) または [ACI](how-to-deploy-to-aci.md) にデプロイします。  
+
+### <a name="disable-tracking-in-python"></a>Python で追跡を無効にする
+
+Application Insights を無効にするには、次のコードを使用します。
+
+```python 
+## replace <service_name> with the name of the web service
+<service_name>.update(enable_app_insights=False)
+```
+    
 ## <a name="enable-and-disable-in-the-portal"></a>ポータルでの有効化と無効化
 
 Azure portal で Application Insights を有効または無効にすることができます。
-
-### <a name="enable"></a>有効化
 
 1. [Azure portal](https://portal.azure.com) でワークスペースを開きます。
 
@@ -61,54 +101,14 @@ Azure portal で Application Insights を有効または無効にすることが
 1. [Azure portal](https://portal.azure.com) でワークスペースを開きます。
 1. **[デプロイ]** を選択し、サービスを選択し、**[編集]** を選択します。
 
-   [![[編集] ボタン](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![[編集] ボタンを使用する](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. **[詳細設定]** で、**[AppInsights 診断を有効にする]** チェック ボックスをオフにします。 
 
    [![診断を有効にするためのチェック ボックスをオフ](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. 画面下部の **[更新]** を選択して変更を適用します。 
-
-## <a name="enable-and-disable-from-the-sdk"></a>SDK からの有効化と無効化
-
-### <a name="update-a-deployed-service"></a>デプロイされたサービスを更新する
-1. ワークスペースで、サービスを特定します。 `ws` の値は、ワークスペースの名前です。
-
-    ```python
-    aks_service= Webservice(ws, "my-service-name")
-    ```
-2. サービスを更新し、Application Insights を有効にします。 
-
-    ```python
-    aks_service.update(enable_app_insights=True)
-    ```
-
-### <a name="log-custom-traces-in-your-service"></a>サービスのカスタム トレースをログに記録する
-カスタム トレースをログに記録する場合は、[AKS の標準的なデプロイ プロセス](how-to-deploy-to-aks.md)の手順に従います。 その後、以下を実行します。
-
-1. print ステートメントを追加してスコアリング ファイルを更新します。
-    
-    ```python
-    print ("model initialized" + time.strftime("%H:%M:%S"))
-    ```
-
-2. AKS の構成を更新します。
-    
-    ```python
-    aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
-    ```
-
-3. [イメージをビルドしてデプロイします。](how-to-deploy-to-aks.md)  
-
-### <a name="disable-tracking-in-python"></a>Python で追跡を無効にする
-
-Application Insights を無効にするには、次のコードを使用します。
-
-```python 
-## replace <service_name> with the name of the web service
-<service_name>.update(enable_app_insights=False)
-```
-    
+ 
 
 ## <a name="evaluate-data"></a>データを評価する
 サービスのデータは、Azure Machine Learning サービスと同じリソース グループ内の Application Insights アカウントに保存されます。
@@ -131,7 +131,7 @@ Application Insights の使用方法の詳細については、「[Application I
 
 ## <a name="example-notebook"></a>ノートブックの例
 
-[00.Getting Started/13.enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/13.enable-app-insights) ノートブックは、この記事の概念を示しています。  このノートブックの入手:
+[how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) ノートブックは、この記事にある概念を示しています。 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

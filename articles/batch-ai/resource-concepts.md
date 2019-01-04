@@ -15,14 +15,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 4a9e3529f9d68ecdc614ea69cffc6897891f4548
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4454448809411c6390bc1f65c33b4abe76094ded
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056959"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407747"
 ---
 # <a name="overview-of-resources-in-batch-ai"></a>Batch AI でのリソースの概要
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 最初に Batch AI サービスの使用を開始する際は、使用可能な Batch AI リソースを理解しましょう。 その他の Azure サービスと同様に、1 つまたは複数の Azure *リソース グループ*内で Batch AI リソースを作成します。 1 つまたは複数の Batch AI の*ワークスペース*をリソース グループに作成します。 各ワークスペースには、Batch AI の*クラスター*、*ファイル サーバー*、および*実験*が混在しています。 Batch AI の実験には、*ジョブ*のグループを含みます。
 
@@ -50,7 +53,7 @@ Batch AI でのクラスターには、ジョブを実行するためのコン�
 
 ## <a name="job"></a>ジョブ
 
-ジョブは、たとえばディープ ラーニング モデルをトレーニングするために実行する必要のある1 つのタスクやスクリプトです。 各ジョブは、ワークスペース内の 1 つのクラスターで特定のスクリプトを実行します。 (スクリプトは、Batch AI ファイル サーバーまたは他のストレージ ソリューションに格納される可能性があります。)各 Batch AI ジョブには、それぞれに関連付けられているフレームワーク型があります: TensorFlow、Horovod、CNTK、Caffe、Caffe2、pyTorch、Chainer、カスタムの MPI、またはカスタム。 各フレームワークについて、Batch AI サービスは、必要なインフラストラクチャを設定し、ジョブ プロセスを管理します。 各実験には、異なるパラメーターに多少の変更がある以外は類似している複数のジョブがあります。
+ジョブは、たとえばディープ ラーニング モデルをトレーニングするために実行する必要のある1 つのタスクやスクリプトです。 各ジョブは、ワークスペース内の 1 つのクラスターで特定のスクリプトを実行します。 (スクリプトは、Batch AI ファイル サーバーまたは他のストレージ ソリューションに格納される可能性があります。)各 Batch AI ジョブには、それぞれに関連付けられているフレームワーク型があります:TensorFlow、Horovod、CNTK、Caffe、Caffe2、pyTorch、Chainer、カスタム MPI、またはカスタム。 各フレームワークについて、Batch AI サービスは、必要なインフラストラクチャを設定し、ジョブ プロセスを管理します。 各実験には、異なるパラメーターに多少の変更がある以外は類似している複数のジョブがあります。
 
 ## <a name="next-steps"></a>次の手順
 

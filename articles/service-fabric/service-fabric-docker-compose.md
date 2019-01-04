@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: 743fedd35bc45618f728ba71056f5dabc2fc1ed9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e4eb26ab91261d1888d3c756d611db1b31801e8f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300644"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720236"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric での Docker Compose のデプロイメントのサポート (プレビュー)
 
@@ -64,6 +64,12 @@ PowerShell を使用して Compose デプロイメントをアップグレード
 Start-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp -Compose docker-compose-v2.yml -Monitored -FailureAction Rollback
 ```
 
+PowerShell を使用して Compose デプロイのアップグレードをロールバックするには、次のコマンドを使用します。
+
+```powershell
+Start-ServiceFabricComposeDeploymentRollback -DeploymentName TestContainerApp
+```
+
 アップグレードを承諾すると、次のコマンドを使用して、アップグレードの進行状況を追跡できます。
 
 ```powershell
@@ -84,7 +90,7 @@ sfctl compose create --deployment-name TestContainerApp --file-path docker-compo
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Compose デプロイメントを削除するには、次のコマンドを使用します。
+Compose デプロイを削除するには、次のコマンドを使用します。
 
 ```azurecli
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
@@ -94,6 +100,12 @@ Compose デプロイメントをアップグレードするには、次のコマ
 
 ```azurecli
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
+```
+
+Compose デプロイのアップグレードをロールバックするには、次のコマンドを使用します。
+
+```azurecli
+sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 アップグレードを承諾すると、次のコマンドを使用して、アップグレードの進行状況を追跡できます。

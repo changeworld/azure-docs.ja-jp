@@ -1,11 +1,11 @@
 ---
-title: Azure AI ギャラリー チュートリアル| Microsoft Docs
-description: Azure AI ギャラリーでチュートリアルを発見し、共有します。
+title: Azure AI Gallery のチュートリアル - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI ギャラリーでチュートリアルを発見し、共有します。 最近追加された人気のあるチュートリアルの一覧が表示されます。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 70f0eb31-7dca-4907-a5d7-504357dcd889
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 4ef653a603bccc001a5bbbb4c2af97e5ca0b20a8
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 5dcc8f497a8498b41e6ff7e802fc6e3d80935505
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344435"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274872"
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Azure AI ギャラリーでチュートリアルを発見し、共有する
 
@@ -76,5 +76,5 @@ ms.locfileid: "51344435"
 
 **[ギャラリーに移動する](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

@@ -291,7 +291,7 @@ items:
       href: sql-database-monitor-tune-overview.md
     - name: パフォーマンスの監視
       items:
-      - name: '[Query Performance Insight]'
+      - name: Query Performance Insight
         href: sql-database-query-performance.md
       - name: Azure SQL Analytics の監視
         href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql

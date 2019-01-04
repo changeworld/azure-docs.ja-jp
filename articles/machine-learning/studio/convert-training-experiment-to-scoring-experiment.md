@@ -1,12 +1,11 @@
 ---
-title: Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法 | Microsoft Docs
+title: デプロイのためにモデルを準備する - Azure Machine Learning Studio | Microsoft Docs
 description: Machine Learning Studio のトレーニング実験を予測実験に変換することで、トレーニング済みのモデルを Web サービスとしてデプロイするための準備方法。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: eb943c45-541a-401d-844a-c3337de82da6
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 7849a21e2d005584030375e2193f74a99b3977bd
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ef54281b91147060e9c00bcc6e45e0db0fb8933a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265238"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273104"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法
 
@@ -29,11 +28,11 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 
 これを実行するには、Studio を使用して*トレーニング実験*と呼ばれる実験を作成します。トレーニング実験では、モデルのトレーニング、スコア付け、編集を行います。 満足したら、トレーニング実験をユーザー データがスコア付けされるように構成した*予測実験*に変換することによって、モデルをデプロイする準備を行います。
 
-このプロセスの例については、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)」をご覧ください。
+このプロセスの例については、「[チュートリアル:信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)」を参照してください。
 
 この記事では、トレーニング実験を予測実験に変換する方法と、予測実験をデプロイする方法について詳しく解説します。 これらの詳細を理解することで、デプロイしたモデルをより効果的にするための構成方法を学ぶことができます。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="overview"></a>概要 
 
@@ -53,7 +52,7 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 
 1. トレーニング済みのモデルを、(実験キャンバスの左側にある) モジュール パレットの **[トレーニング済みのモデル]** セクションに保存します。 次に、機械学習アルゴリズムと[モデルのトレーニング][train-model] モジュールを、保存したトレーニング済みのモデルに置き換えます。
 2. 実験が分析され、明らかにトレーニングのためにのみ使用されて不要になったモジュールが削除されます。
-3. _Web サービスの入力_ および _出力_ モジュールを、実験の既定の場所に挿入します (これらのモジュールはユーザー データを受け入れて返します)。
+3. _Web サービスの入力_および_出力_モジュールを、実験の既定の場所に挿入します (これらのモジュールはユーザー データを受け入れて返します)。
 
 たとえば、次の実験では、サンプルの国勢調査のデータを使用した 2 クラスのブースト デシジョン ツリー モデルをトレーニングします。
 

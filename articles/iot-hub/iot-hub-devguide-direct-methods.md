@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: f9476d42bbdb9d2a499c08d83eed6696fbbed469
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 17402911fee5363d707547e73df7da30be6dcd0e
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586004"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343804"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 
@@ -203,3 +203,4 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご利用ください。
 
 * [ダイレクト メソッドの使用](quickstart-control-device-node.md)
+* [VS Code 用 Azure IoT Hub Toolkit を使用したデバイス管理](iot-hub-device-management-iot-toolkit.md)

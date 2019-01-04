@@ -1,26 +1,22 @@
 ---
-title: Team Data Science Process とは | Microsoft Docs
+title: Team Data Science Process とは
 description: 予測分析ソリューションとインテリジェント アプリケーションを実現するデータ サイエンス手法について説明します。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: b1f677bb-eef5-4acb-9b3b-8a5819fb0e78
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: deguhath
-ms.openlocfilehash: e6e6b8e03102825a15035adbea80ac5e9f3fa404
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 94728bbc74d1864c76aa801628fcbfb133b97abd
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996453"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435992"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 
@@ -108,4 +104,4 @@ TDSP には、共有の分析およびストレージ インフラストラク�
 
 ## <a name="next-steps"></a>次の手順
 
-「[Team Data Science Process: Roles and tasks (Team Data Science Process: 役割とタスク)](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md)」に、このプロセスを標準化するデータ サイエンス チームの主な人員の役割とそれに関連したタスクが概説されています。 
+「[Team Data Science Process:Roles and tasks (Team Data Science Process: 役割とタスク)](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md)」に、このプロセスを標準化するデータ サイエンス チームの主な人員の役割とそれに関連したタスクが概説されています。 

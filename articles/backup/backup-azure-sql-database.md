@@ -3,7 +3,7 @@ title: Azure への SQL Server データベースのバックアップ | Microso
 description: このチュートリアルでは、SQL Server を Azure に バックアップする方法について説明します。 また、SQL Server の復旧についても説明します。
 services: backup
 documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 editor: ''
 keywords: ''
@@ -11,17 +11,16 @@ ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2018
-ms.author: markgal;anuragm
+ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 72d48bd1716e1b62ae92f8317f3f9611ac463453
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e2e6742fb3eda0523c7333451e836beb069e57ca
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211504"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410365"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Azure への SQL Server データベースのバックアップ
 
@@ -47,6 +46,8 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 - [分散型の可用性グループのバックアップ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017)には、制限があります。
 - SQL Server Always On フェールオーバー クラスター インスタンス (FCI) はサポートされていません。
 - Azure Portal を使用して Azure Backup を構成し、SQL Server データベースを保護します。 Azure PowerShell、Azure CLI、および REST API は現在サポートされていません。
+- ミラー データベース、データベース スナップショット、および FCI 下のデータベースのバックアップ/復元操作はサポートされていません。
+- 多数のファイルがあるデータベースは保護できません。 サポートされる最大のファイル数は、ファイル数だけでなくファイルのパスの長さによっても変動するため、明確な数値はありません。 ただし、そのようなケースはあまり見られません。 この件に対処するためのソリューションは構築中です。
 
 サポート/サポート対象外のシナリオの詳細については、[「FAQ」セクション](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq)を参照してください。
 
@@ -54,31 +55,31 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 
 Azure Backup は次の geo でサポートされています。
 
-- オーストラリア南東部 (ASE) 
+- オーストラリア南東部 (ASE)
 - ブラジル南部 (BRS)
 - カナダ中部 (CNC)
 - カナダ東部 (CE)
 - 米国中部 (CUS)
 - 東アジア (EA)
-- オーストラリア東部 (AE) 
+- オーストラリア東部 (AE)
 - 米国東部 (EUS)
 - 米国東部 2 (EUS2)
-- インド中部 (INC) 
+- インド中部 (INC)
 - インド南部 (INS)
 - 東日本 (JPE)
 - 西日本 (JPW)
 - 韓国中部 (KRC)
 - 韓国南部 (KRS)
-- 米国中北部 (NCUS) 
-- 北ヨーロッパ (NE) 
-- 米国中南部 (SCUS) 
+- 米国中北部 (NCUS)
+- 北ヨーロッパ (NE)
+- 米国中南部 (SCUS)
 - 東南アジア (SEA)
-- 英国南部 (UKS) 
-- 英国西部 (UKW) 
+- 英国南部 (UKS)
+- 英国西部 (UKW)
 - 米国中西部 (WCUS)
-- 西ヨーロッパ (WE) 
+- 西ヨーロッパ (WE)
 - 米国西部 (WUS)
-- 米国西部 2 (WUS 2) 
+- 米国西部 2 (WUS 2)
 
 ## <a name="support-for-operating-systems-and-sql-server-versions"></a>オペレーティング システムと SQL Server のバージョンのサポート
 
@@ -106,6 +107,7 @@ SQL Server データベースをバックアップする前に、次の条件を
 - SQL Server インスタンスをホストする仮想マシンとして、同じリージョンまたはロケールの [Recovery Services コンテナーを作成](backup-azure-sql-database.md#create-a-recovery-services-vault)または特定する。
 - SQL データベースのバックアップに必要な[仮想マシンの権限を確認](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms)する。
 - [SQL 仮想マシンがネットワーク接続を備えている](backup-azure-sql-database.md#establish-network-connectivity)ことを確認する。
+- Azure Backup でバックアップを成功させるには、[命名に関するガイドライン](backup-azure-sql-database.md#sql-database-naming-guidelines-for-azure-backup)に従って SQL データベースに名前が付けられているかどうか確認します。
 
 > [!NOTE]
 > SQL Server データベースをバックアップするために一度に保持できるバックアップ ソリューションは、1 つだけです。 この機能を使用する前に他の SQL バックアップをすべて無効にしてください。そうしないと、バックアップは妨害されて失敗します。 IaaS VM 向けの Azure Backup は、競合することなく SQL バックアップと共に有効化できます。
@@ -118,8 +120,8 @@ SQL Server データベースをバックアップする前に、次の条件を
 
 すべての操作において、SQL 仮想マシンでは、Azure パブリック IP アドレスへの接続を必要とします。 パブリック IP アドレスへの接続がないと、(データベースの検出、バックアップの構成、バックアップのスケジュール、復旧ポイントの復元などの) SQL 仮想マシンの操作が失敗します。 次のいずれかの方法を使用して、バックアップ トラフィックへの明確なパスを指定します。
 
-- Azure データ センターの IP 範囲をホワイトリストに登録する: Azure データ センターの IP 範囲をホワイトリストに登録するには、[IP 範囲と手順の詳細に関するダウンロード センターのページ](https://www.microsoft.com/download/details.aspx?id=41653)を活用してください。 
-- トラフィックをルーティングするために HTTP プロキシ サーバーをデプロイする: SQL データベースを VM でバックアップする場合、VM 上のバックアップ拡張機能では HTTPS API を使用して Azure Backup に管理コマンドを送信し、Azure Storage にデータを送信します。 また、バックアップ拡張機能では、認証に Azure Active Directory (Azure AD) を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 パブリック インターネットにアクセスできるように構成されたコンポーネントはバックアップ拡張機能のみです。
+- Azure データ センターの IP の範囲をホワイトリストに登録する:Azure データ センターの IP 範囲をホワイトリストに登録するには、[IP 範囲と手順の詳細に関するダウンロード センターのページ](https://www.microsoft.com/download/details.aspx?id=41653)を活用してください。
+- トラフィックをルーティングするために HTTP プロキシ サーバーをデプロイする:SQL データベースを VM でバックアップする場合、VM 上のバックアップ拡張機能では HTTPS API を使用して Azure Backup に管理コマンドを送信し、Azure Storage にデータを送信します。 また、バックアップ拡張機能では、認証に Azure Active Directory (Azure AD) を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 パブリック インターネットにアクセスできるように構成されたコンポーネントはバックアップ拡張機能のみです。
 
 トレードオフの関係にあるのは、管理容易性、詳細な制御、およびコストです。
 
@@ -134,7 +136,7 @@ SQL Server データベースをバックアップする前に、次の条件を
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>Marketplace 以外の SQL VM に権限を設定する
 
-仮想マシンをバックアップするために、Azure Backup には **AzureBackupWindowsWorkload** 拡張機能がインストールされている必要があります。 Microsoft Azure Marketplace の仮想マシンを使用する場合は、「[SQL Server データベースを検出する](backup-azure-sql-database.md#discover-sql-server-databases)」に進んでください。 SQL データベースをホストする仮想マシンが Microsoft Azure Marketplace から作成されない場合は、以下の手順を完了して拡張機能をインストールし、適切な権限を設定します。 **AzureBackupWindowsWorkload** 拡張機能に加えて、Azure Backup では、SQL データベースを保護するために SQL sysadmin 特権が必要になります。 仮想マシン上のデータベースを検出するために、Azure Backup は **NT Service\AzureWLBackupPluginSvc** というアカウントを作成します。 Azure Backup が SQL データベースを検出するには、**NT Service\AzureWLBackupPluginSvc** アカウントに SQL および SQL sysadmin 権限が必要です。 次の手順では、これらの権限を指定する方法について説明します。
+仮想マシンをバックアップするために、Azure Backup には **AzureBackupWindowsWorkload** 拡張機能がインストールされている必要があります。 Microsoft Azure Marketplace の仮想マシンを使用する場合は、「[SQL Server データベースを検出する](backup-azure-sql-database.md#discover-sql-server-databases)」に進んでください。 SQL データベースをホストする仮想マシンが Microsoft Azure Marketplace から作成されない場合は、以下の手順を完了して拡張機能をインストールし、適切な権限を設定します。 **AzureBackupWindowsWorkload** 拡張機能に加えて、Azure Backup では、SQL データベースを保護するために SQL sysadmin 特権が必要になります。 仮想マシン上のデータベースを検出するために、Azure Backup は **NT Service\AzureWLBackupPluginSvc** というアカウントを作成します。 このアカウントはバックアップと復元に使用され、SQL sysadmin のアクセス許可を持っている必要があります。 さらに、Azure Backup は **NT AUTHORITY\SYSTEM** アカウントを DB 検出/照会に利用するため、このアカウントが SQL でパブリック ログインである必要があります。
 
 権限を構成するには、次の手順に従います。
 
@@ -150,17 +152,15 @@ SQL Server データベースをバックアップする前に、次の条件を
 
     ![バックアップ対象として [Azure VM 内の SQL Server] を選択する](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    **[バックアップの目標]** メニューには、**[VM 内のデータベースを検出]** と **[バックアップの構成]** という 2 つの手順が表示されます。 **[VM 内のデータベースを検出]** の手順では、Azure 仮想マシンの検索を開始します。
+    **[バックアップの目標]** メニューに 2 つの手順が表示されます:**[VM 内のデータベースを検出]** と **[バックアップの構成]** です。 **[VM 内のデータベースを検出]** の手順では、Azure 仮想マシンの検索を開始します。
 
     ![[バックアップの目標] の 2 つの手順を確認する](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
 5. **[VM 内のデータベースを検出]** で、**[検出の開始]** を選択して、サブスクリプション内にある保護されていない仮想マシンを検索します。 すべての仮想マシンの検索には少し時間がかかる場合があります。 検索時間は、サブスクリプション内にある保護されていない仮想マシンの数によって異なります。
 
     ![VM 内にある DB の検索中はバックアップが保留される](./media/backup-azure-sql-database/discovering-sql-databases.png)
- 
-    保護されていない仮想マシンが検出されると、一覧に表示されます。 保護されていない仮想マシンは、仮想マシン名とリソース グループごとに一覧に表示されます。 複数の仮想マシンが同じ名前になっている可能性もあります。 ただし、同じ名前の仮想マシンは、別のリソース グループに属します。 目的の仮想マシンが一覧に表示されていない場合は、その仮想マシンがコンテナーに対して既に保護されているかどうかを確認します。
 
-6. 仮想マシンの一覧で、バックアップする SQL データベースが含まれる VM を選択して、**[Discover DBs]\(DB の検出\)** を選択します。 
+6. 仮想マシンの一覧で、バックアップする SQL データベースが含まれる VM を選択して、**[Discover DBs]\(DB の検出\)** を選択します。
 
     検出プロセスによって、仮想マシン上に **AzureBackupWindowsWorkload** 拡張機能がインストールされます。 拡張機能によって Azure Backup サービスは仮想マシンと通信できるので、SQL データベースをバックアップできます。 拡張機能がインストールされると、Azure Backup は Windows 仮想サービス アカウント **NT Service\AzureWLBackupPluginSvc** を仮想マシン上に作成します。 仮想サービス アカウントには、SQL sysadmin 権限が必要です。 仮想サービス アカウントのインストール プロセス中にエラー `UserErrorSQLNoSysadminMembership` が表示された場合は、「[SQL sysadmin 権限を修正する](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)」を参照してください。
 
@@ -182,7 +182,7 @@ Recovery Services コンテナーとデータベースを関連付けたら、�
 
     ![[ログイン - 新規作成] ダイアログ ボックスで [検索] を選択する](./media/backup-azure-sql-database/new-login-search.png)
 
-3. Windows 仮想サービス アカウント **NT Service\AzureWLBackupPluginSvc** は、仮想マシンの登録と SQL 検出フェーズ中に作成済みです。 **[選択するオブジェクト名を入力してください]** ボックスにアカウント名を入力します。 **[名前の確認]** を選択して名前解決を行います。 
+3. Windows 仮想サービス アカウント **NT Service\AzureWLBackupPluginSvc** は、仮想マシンの登録と SQL 検出フェーズ中に作成済みです。 **[選択するオブジェクト名を入力してください]** ボックスにアカウント名を入力します。 **[名前の確認]** を選択して名前解決を行います。
 
     ![[名前の確認] を選択して不明なサービス名を解決する](./media/backup-azure-sql-database/check-name.png)
 
@@ -204,6 +204,14 @@ Recovery Services コンテナーとデータベースを関連付けたら、�
 
 Recovery Services コンテナーとデータベースを関連付けたら、次の手順として[バックアップ ジョブを構成](backup-azure-sql-database.md#configure-backup-for-sql-server-databases)します。
 
+## <a name="sql-database-naming-guidelines-for-azure-backup"></a>Azure Backup のための SQL データベースの命名に関するガイドライン
+IaaS VM で Azure Backup for SQL Server を使用してスムーズにバックアップを行うには、データベースに名前を付ける際に次のことを避けてください:
+
+  * 末尾/先頭のスペース
+  * 末尾の "!"
+
+Azure テーブルでサポートされていない文字のエイリアス処理は用意されていますが、それでも避けることをお勧めします。 詳細については、[こちらの記事](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)を参照してください。
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-sql-server-databases"></a>SQL Server データベースを検出する
@@ -218,9 +226,9 @@ Azure Backup では、SQL Server インスタンス上にあるすべてのデ�
 
 3. **[すべてのサービス]** ダイアログ ボックスに、「**Recovery Services**」と入力します。 入力を完了すると、リソースのリストが絞り込まれます。 一覧で **[Recovery Services コンテナー]** を選択します。
 
-    ![[Recovery Services コンテナー] と入力して選択する](./media/backup-azure-sql-database/all-services.png) <br/>
+  ![[Recovery Services コンテナー] と入力して選択する](./media/backup-azure-sql-database/all-services.png) <br/>
 
-    サブスクリプションに Recovery Services コンテナーの一覧が表示されます。 
+    サブスクリプションに Recovery Services コンテナーの一覧が表示されます。
 
 4. Recovery Services コンテナーの一覧で、SQL データベースの保護に使用するコンテナーを選択します。
 
@@ -234,14 +242,14 @@ Azure Backup では、SQL Server インスタンス上にあるすべてのデ�
 
     ![バックアップ対象として [Azure VM 内の SQL Server] を選択する](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    **[バックアップの目標]** メニューには、**[VM 内のデータベースを検出]** と **[バックアップの構成]** という 2 つの手順が表示されます。
-    
+    **[バックアップの目標]** メニューに 2 つの手順が表示されます:**[VM 内のデータベースを検出]** と **[バックアップの構成]** です。
+
     ![[バックアップの目標] の 2 つの手順を確認する](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
 8. **[VM 内のデータベースを検出]** で、**[検出の開始]** を選択して、サブスクリプション内にある保護されていない仮想マシンを検索します。 すべての仮想マシンの検索には少し時間がかかる場合があります。 検索時間は、サブスクリプション内にある保護されていない仮想マシンの数によって異なります。
 
     ![VM 内にある DB の検索中はバックアップが保留される](./media/backup-azure-sql-database/discovering-sql-databases.png)
- 
+
     保護されていない仮想マシンが検出されると、一覧に表示されます。 複数の仮想マシンを同じ名前にすることができます。 ただし、同じ名前の仮想マシンは、別のリソース グループに属します。 保護されていない仮想マシンは、仮想マシン名とリソース グループごとに一覧に表示されます。 目的の仮想マシンが一覧に表示されていない場合は、その仮想マシンがコンテナーに対して既に保護されているかどうかを確認します。
 
 9. 仮想マシンの一覧で、バックアップする SQL データベースが含まれる VM を選択して、**[Discover DBs]\(DB の検出\)** を選択します。
@@ -252,7 +260,7 @@ Azure Backup では、SQL Server インスタンス上にあるすべてのデ�
 
 **[Discover DBs]\(DB の検出\)** ツールを使用すると、Azure Backup はバックグラウンドで次の操作を実行します。
 
-- ワークロード バックアップ用の Recovery Services コンテナーを使って仮想マシンを登録する。 登録されている仮想マシン上のすべてのデータベースを、この Recovery Services コンテナーに対してのみバックアップできます。 
+- ワークロード バックアップ用の Recovery Services コンテナーを使って仮想マシンを登録する。 登録されている仮想マシン上のすべてのデータベースを、この Recovery Services コンテナーに対してのみバックアップできます。
 
 - 仮想マシン上に **AzureBackupWindowsWorkload** 拡張機能をインストールする。 SQL データベースのバックアップは、エージェントレス ソリューションです。 仮想マシン上に拡張機能がインストールされた状態で、エージェントが SQL データベースにインストールされることはありません。
 
@@ -262,7 +270,7 @@ Azure Backup では、SQL Server インスタンス上にあるすべてのデ�
 
 ## <a name="configure-backup-for-sql-server-databases"></a>SQL Server データベースのバックアップを構成する
 
-Azure Backup は、SQL Server データベースを保護してバックアップ ジョブを管理するための管理サービスを提供しています。 管理と監視の機能は、お使いの Recovery Services コンテナーに応じて異なります。 
+Azure Backup は、SQL Server データベースを保護してバックアップ ジョブを管理するための管理サービスを提供しています。 管理と監視の機能は、お使いの Recovery Services コンテナーに応じて異なります。
 
 > [!NOTE]
 > SQL Server データベースをバックアップするために一度に保持できるバックアップ ソリューションは、1 つだけです。 この機能を使用する前に他の SQL バックアップをすべて無効にしてください。そうしないと、バックアップは妨害されて失敗します。 IaaS VM 向けの Azure Backup は、競合することなく SQL バックアップと共に有効化できます。
@@ -282,52 +290,47 @@ SQL データベースの保護を構成するには、次の手順に従いま�
 
     ![バックアップ対象として [Azure VM 内の SQL Server] を選択する](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    **[バックアップの目標]** メニューには、**[VM 内のデータベースを検出]** と **[バックアップの構成]** という 2 つの手順が表示されます。
-    
+    **[バックアップの目標]** メニューに 2 つの手順が表示されます:**[VM 内のデータベースを検出]** と **[バックアップの構成]** です。
+
     この記事の順序に沿って手順を終えたので、保護されていない仮想マシンが検出され、このコンテナーは仮想マシンと共に登録されています。 これで、SQL データベースの保護を構成する準備ができました。
-    
+
 5. **[バックアップの目標]** メニューで、**[バックアップの構成]** を選択します。
 
     ![[バックアップの構成] を選択する](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-    Azure Backup サービスでは、スタンドアロン データベースを備えたすべての SQL Server インスタンスと SQL Server Always On 可用性グループが表示されます。 SQL Server インスタンスのスタンドアロン データベースを表示するには、インスタンス名の左側にあるシェブロンを選択します。 次の図は、スタンドアロン インスタンスと Always On 可用性グループの例を示しています。
+    Azure Backup サービスでは、スタンドアロン データベースを備えたすべての SQL Server インスタンスと SQL Server Always On 可用性グループが表示されます。 SQL Server インスタンスのスタンドアロン データベースを表示するには、インスタンス名の左側にあるシェブロンを選択します。 同様に、データベースの一覧を表示する Always On 可用性グループの左側にあるシェブロンを選択します。 次の図は、スタンドアロン インスタンスと Always On 可用性グループの例です。
 
-    > [!NOTE]
-    > SQL Server Always On 可用性グループの場合は、SQL のバックアップ設定が使用されます。 ただし、SQL プラットフォームの制限のために、完全および差分バックアップはプライマリ ノードから実行する必要があります。 ログ バックアップは、バックアップの設定に従って行われます。 この制限のために、可用性グループにプライマリ ノードが常に登録されている必要があります。
-    >
+      ![スタンドアロン データベースであるすべての SQL Server インスタンスの表示](./media/backup-azure-sql-database/list-of-sql-databases.png)
 
-    ![SQL インスタンスのデータベースの一覧](./media/backup-azure-sql-database/discovered-databases.png)
+6. データベースの一覧で、保護したいデータベースをすべて選択して、**[OK]** をクリックします。
 
-    データベースの一覧を表示する Always On 可用性グループの左側にあるシェブロンを選択します。
-
-    ![Always On 可用性グループのデータベースの一覧](./media/backup-azure-sql-database/discovered-database-availability-group.png)
-
-6. データベースの一覧で、保護するデータベースをすべて選択して、**[OK]** を選択します。
-
-    ![保護する複数のデータベースを選択する](./media/backup-azure-sql-database/select-multiple-database-protection.png)
+    ![データベースの保護](./media/backup-azure-sql-database/select-database-to-protect.png)
 
     一度に最大 50 個のデータベースを選択できます。 50 を上回る数のデータベースを保護するには、過程を複数に分けます。 最初の 50 個のデータベースを保護した後に、この手順を繰り返して次のデータベース セットを保護します。
 
-    > [!Note] 
+    > [!Note]
     > バックアップの負荷を最適化するために、Azure Backup では大規模なバックアップ ジョブを複数のバッチに細分化します。 1 つのバックアップ ジョブにおけるデータベースの最大数は 50 です。
     >
-    >
+
+      または、**[AUTOPROTECT]\(自動保護\)** 列の対応するドロップダウン **[オン]** オプションを選択することにより、インスタンス全体または Always On 可用性グループで[自動保護](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)を有効にすることができます。 [自動保護](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)機能では、既存のすべてのデータベースの保護が一度に有効になるだけでなく、それ以降にそのインスタンスまたは可用性グループに追加されるすべての新しいデータベースも自動的に保護されます。  
+
+      ![Always On 可用性グループで自動保護を有効にする](./media/backup-azure-sql-database/enable-auto-protection.png)
 
 7. **[バックアップ]** メニューで、バックアップ ポリシーを作成または選択するには、**[バックアップ ポリシー]** を選択します。 **[バックアップ ポリシー]** メニューが開きます。
 
     ![[バックアップ ポリシー] を選択する](./media/backup-azure-sql-database/select-backup-policy.png)
 
-8. **[バックアップ ポリシーの選択]** ドロップダウン リスト ボックスで、バックアップ ポリシーを選択して、**[OK]** を選択します。 バックアップ ポリシーを作成する方法については、「[バックアップ ポリシーを定義する](backup-azure-sql-database.md#define-a-backup-policy)」を参照してください。
+8. **[バックアップ ポリシーの選択]** ドロップダウン リストでバックアップ ポリシーを選択して、**[OK]** を選択します。 バックアップ ポリシーを作成する方法については、「[バックアップ ポリシーを定義する](backup-azure-sql-database.md#define-a-backup-policy)」を参照してください。
 
    > [!NOTE]
    > プレビュー期間中は、バックアップ ポリシーを編集できません。 一覧で使用できるもの以外のポリシーが必要な場合は、そのポリシーを作成する必要があります。 新しいバックアップ ポリシーの作成については、「[バックアップ ポリシーを定義する](backup-azure-sql-database.md#define-a-backup-policy)」セクションを参照してください。
 
     ![一覧からバックアップ ポリシーを選択する](./media/backup-azure-sql-database/select-backup-policy-steptwo.png)
 
-    **[バックアップ ポリシー]** メニューで、**[バックアップ ポリシーの選択]** ドロップダウン リスト ボックスから次の操作を実行できます。 
-    - 既定のポリシー (**HourlyLogBackup**) を選択する。
+    **[バックアップ ポリシー]** メニューで、**[バックアップ ポリシーの選択]** ドロップダウン リスト ボックスから次の操作を実行できます。
+    - 既定のポリシーを選択します:**HourlyLogBackup**。
     - SQL 用に以前に作成された既存のバックアップ ポリシーを選択する。
-    - RPO とリテンション期間の範囲に基づいて[新しいポリシーを定義する](backup-azure-sql-database.md#define-a-backup-policy)。 
+    - RPO とリテンション期間の範囲に基づいて[新しいポリシーを定義する](backup-azure-sql-database.md#define-a-backup-policy)。
 
     > [!Note]
     > Azure Backup では、三世代バックアップ スキームに基づく長期のリテンション期間をサポートします。 このスキームでは、コンプライアンス要件を満たしたうえで、バックエンドのストレージ使用量を最適化します。
@@ -342,22 +345,36 @@ SQL データベースの保護を構成するには、次の手順に従いま�
     ![[通知] 領域](./media/backup-azure-sql-database/notifications-area.png)
 
 
+## <a name="auto-protect-sql-server-in-azure-vm"></a>Azure VM で SQL Server を自動保護する  
+
+自動保護を使用すると、すべての既存データベースと、スタンドアロン SQL Server インスタンスまたは SQL Server Always On 可用性グループに将来追加するデータベースを自動的に保護できます。 自動保護を **[オン]** にしてバックアップ ポリシーを選択すると、新しく保護されるデータベースに適用され、既存の保護されているデータベースは引き続き以前のポリシーを使用します。
+
+![Always On 可用性グループで自動保護を有効にする](./media/backup-azure-sql-database/enable-auto-protection.png)
+
+自動保護機能を使用するときに一度に選択できるデータベースの数に制限はありません。 構成のバックアップはすべてのデータベースに対して一括でトリガーされ、**[バックアップ ジョブ]** で追跡できます。
+
+何らかの理由でインスタンスの自動保護を無効にする必要がある場合、**[バックアップの構成]** でインスタンス名をクリックして右側の情報パネルを開くと、上部に **[自動保護を無効にする]** の項目があります。 **[自動保護を無効にする]** をクリックして、そのインスタンスの自動保護を無効にします。
+
+![そのインスタンスの自動保護を無効にする](./media/backup-azure-sql-database/disable-auto-protection.png)
+
+そのインスタンス内のすべてのデータベースは、引き続き保護されます。 ただし、この操作により、それ以降に追加されるすべてのデータベースの自動保護は無効になります。
+
 ### <a name="define-a-backup-policy"></a>バックアップ ポリシーを定義する
 
 バックアップ ポリシーは、バックアップをいつ取得し、そのバックアップをいつまで保持するかのマトリックスを定義します。 Azure Backup を使用して、SQL データベースの 3 種類のバックアップのスケジュールを設定します。
 
-* 完全バックアップ: 完全なデータベース バックアップでは、データベース全体をバックアップします。 完全バックアップには、特定のデータベースあるいは一連のファイル グループまたはファイル内のすべてのデータと、そのデータを復旧するための十分なログが含まれます。 最多で、1 日に 1 回の完全バックアップをトリガーできます。 日次または週次で完全バックアップを取得することを選択できます。 
-* 差分バックアップ: 差分バックアップは、直近の完全データ バックアップに基づきます。 差分バックアップでは、完全バックアップ以降に変更されたデータのみをキャプチャします。 最多で、1 日に 1 回の差分バックアップをトリガーできます。 完全バックアップと差分バックアップを同じ日に構成することはできません。
-* トランザクション ログ バックアップ: ログ バックアップでは、ある特定の時点への復元を、指定した秒に至るまで可能にします。 最多で、15 分ごとにトランザクション ログ バックアップを構成できます。
+* 完全バックアップ:完全なデータベース バックアップでは、データベース全体をバックアップします。 完全バックアップには、特定のデータベースあるいは一連のファイル グループまたはファイル内のすべてのデータと、そのデータを復旧するための十分なログが含まれます。 最多で、1 日に 1 回の完全バックアップをトリガーできます。 日次または週次で完全バックアップを取得することを選択できます。
+* 差分バックアップ:差分バックアップは、直近の完全データ バックアップに基づきます。 差分バックアップでは、完全バックアップ以降に変更されたデータのみをキャプチャします。 最多で、1 日に 1 回の差分バックアップをトリガーできます。 完全バックアップと差分バックアップを同じ日に構成することはできません。
+* トランザクション ログ バックアップ:ログ バックアップでは、ある特定の時点への復元を、指定した秒に至るまで可能にします。 最多で、15 分ごとにトランザクション ログ バックアップを構成できます。
 
-ポリシーは、Recovery Services コンテナー レベルで作成されます。 複数のコンテナーでは同じバックアップ ポリシーを使用できますが、各コンテナーにバックアップ ポリシーを適用する必要があります。 バックアップ ポリシーの作成時は、日次での完全バックアップが既定値です。 差分バックアップを追加することは可能ですが、週次で実行するように完全バックアップを構成する場合だけです。 次の手順では、Azure 仮想マシンで SQL Server インスタンスのバックアップ ポリシーを作成する方法を示します。 
+ポリシーは、Recovery Services コンテナー レベルで作成されます。 複数のコンテナーでは同じバックアップ ポリシーを使用できますが、各コンテナーにバックアップ ポリシーを適用する必要があります。 バックアップ ポリシーの作成時は、日次での完全バックアップが既定値です。 差分バックアップを追加することは可能ですが、週次で実行するように完全バックアップを構成する場合だけです。 次の手順では、Azure 仮想マシンで SQL Server インスタンスのバックアップ ポリシーを作成する方法を示します。
 
 > [!NOTE]
 > プレビューでは、バックアップ ポリシーを編集することはできません。 代わりに、必要な詳細で新しいポリシーを作成する必要があります。  
- 
+
 バックアップ ポリシーを作成するには:
 
-1. SQL データベースを保護する Recovery Services コンテナーで、**[バックアップ ポリシー]** をクリックし、**[追加]** をクリックします。 
+1. SQL データベースを保護する Recovery Services コンテナーで、**[バックアップ ポリシー]** をクリックし、**[追加]** をクリックします。
 
    ![バックアップ ポリシー新規作成ダイアログを開く](./media/backup-azure-sql-database/new-policy-workflow.png)
 
@@ -389,13 +406,13 @@ SQL データベースの保護を構成するには、次の手順に従いま�
 
     復旧ポイントは、そのリテンション期間の範囲に基づいて、リテンション期間に対してタグ付けされます。 たとえば、日次での完全バックアップを選択した場合、日ごとにトリガーされる完全バックアップは 1 回だけです。 特定の曜日のバックアップがタグ付けされ、週次でのリテンション期間の範囲と週次でのリテンション期間の設定に基づいて保持されます。 月次および年次のリテンション期間の範囲でも、同様の動作になります。
 
-6. 差分バックアップ ポリシーを追加するには、**[差分バックアップ]** を選択します。 **差分バックアップのポリシー** メニューが開きます。 
+6. 差分バックアップ ポリシーを追加するには、**[差分バックアップ]** を選択します。 **差分バックアップのポリシー** メニューが開きます。
 
    ![差分バックアップのポリシー メニューを開く](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
     **差分バックアップのポリシー** メニューで、**[有効]** を選択して頻度とリテンション期間の制御を開きます。 最多で、1 日に 1 回の差分バックアップをトリガーできます。
-    
-    > [!Important] 
+
+    > [!Important]
     > 差分バックアップは、最大 180 日間保持できます。 より長いリテンション期間が必要な場合は、完全バックアップを使用する必要があります。
     >
 
@@ -413,7 +430,7 @@ SQL データベースの保護を構成するには、次の手順に従いま�
 
     バックエンドでは、Azure Backup は SQL ネイティブ バックアップの圧縮を使用します。
 
-9. バックアップ ポリシーに対する編集が完了したら、**[OK]** を選択します。 
+9. バックアップ ポリシーに対する編集が完了したら、**[OK]** を選択します。
 
    ![新しいバックアップ ポリシーを確定する](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
@@ -436,11 +453,11 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 
     ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)。
 
-3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。 
+3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。
 
     ![[SQL in Azure VM]\(Azure VM 内の SQL\) を選択する](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
-    **[バックアップ項目]** メニューに、SQL データベースの一覧が表示されます。 
+    **[バックアップ項目]** メニューに、SQL データベースの一覧が表示されます。
 
 4. SQL データベースの一覧で、復元するデータベースを選択します。
 
@@ -456,8 +473,8 @@ Azure Backup は、トランザクション ログ バックアップを使用�
     ![[DB の復元] を選択する](./media/backup-azure-sql-database/restore-db-button.png)
 
     **[復元]** メニューが開くと、**[復元の構成]** メニューも開きます。 **[復元の構成]** メニューは、復元を構成するための最初の手順です。 このメニューを使用して、データを復元する場所を選択します。 オプションは次のとおりです。
-    - **別の場所**: 別の場所にデータベースを復元し、元のソース データベースを保持します。
-    - **DB の上書き**: 元のソースと同じ SQL Server インスタンスにデータを復元します。 このオプションでは、元のデータベースが上書きされます。
+    - **別の場所**:別の場所にデータベースを復元し、元のソース データベースを保持します。
+    - **DB の上書き**:元のソースと同じ SQL Server インスタンスにデータを復元します。 このオプションでは、元のデータベースが上書きされます。
 
     > [!Important]
     > 選択したデータベースが Always On 可用性グループに属している場合、SQL Server はデータベースの上書きを許可しません。 この場合は、**[別の場所]** オプションのみが有効です。
@@ -470,7 +487,7 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 この手順では、別の場所にデータを復元する方法を示します。 復元時にデータベースを上書きするには、「[データベースを復元して上書きする](backup-azure-sql-database.md#restore-and-overwrite-the-database)」に進んでください。 この段階では、Recovery Services コンテナーが開かれていて、**[復元の構成]** メニューが表示されています。 この段階になっていない場合は、「[SQL データベースを復元する](backup-azure-sql-database.md#restore-a-sql-database)」から開始してください。
 
 > [!NOTE]
-> このデータベースを同じ Azure リージョン内の SQL Server のインスタンスに復元することができます。 宛先サーバーが Recovery Services コンテナーに登録されている必要があります。 
+> このデータベースを同じ Azure リージョン内の SQL Server のインスタンスに復元することができます。 宛先サーバーが Recovery Services コンテナーに登録されている必要があります。
 >
 
 **[復元の構成]** メニューの **[サーバー]** ドロップダウン リスト ボックスには、Recovery Services コンテナーと共に登録された SQL Server インスタンスのみが表示されます。 目的のサーバーが一覧にない場合は、「[SQL Server データベースを検出する](backup-azure-sql-database.md#discover-sql-server-databases)」を参照してサーバーを見つけます。 検出プロセスの間に、Recovery Services コンテナーに新しいサーバーが登録されます。
@@ -503,7 +520,7 @@ Azure Backup は、トランザクション ログ バックアップを使用�
         日付を選択すると、タイムライン グラフに連続した範囲の使用可能な復旧ポイントが表示されます。
 
     3. タイムライン グラフまたは **[時刻]** ダイアログ ボックスを使用して、復旧ポイントの特定の時刻を指定します。 **[OK]** を選択して、復元ポイントの手順を完了します。
-    
+
        ![カレンダーを開く](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
         **[復元ポイントの選択]** メニューが閉じられ、**[詳細な構成]** メニューが開きます。
@@ -530,7 +547,7 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 
         使用可能な復旧ポイントの一覧がメニューに表示されます。
 
-    2. 一覧から復旧ポイントを選択し、**[OK]** を選択して復元ポイントの手順を完了します。 
+    2. 一覧から復旧ポイントを選択し、**[OK]** を選択して復元ポイントの手順を完了します。
 
         ![完全復旧ポイントを選択する](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
 
@@ -556,7 +573,7 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 
 **[復元の構成]** メニューの **[サーバー]** ドロップダウン リスト ボックスには、Recovery Services コンテナーと共に登録された SQL Server インスタンスのみが表示されます。 目的のサーバーが一覧にない場合は、「[SQL Server データベースを検出する](backup-azure-sql-database.md#discover-sql-server-databases)」を参照してサーバーを見つけます。 検出プロセスの間に、Recovery Services コンテナーに新しいサーバーが登録されます。
 
-1. **[復元の構成]** メニューで、**[DB の上書き]** を選択し、**[OK]** を選択して復元先の構成を完了します。 
+1. **[復元の構成]** メニューで、**[DB の上書き]** を選択し、**[OK]** を選択して復元先の構成を完了します。
 
    ![[DB の上書き] を選択する](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 
@@ -579,7 +596,7 @@ Azure Backup は、トランザクション ログ バックアップを使用�
         日付を選択すると、タイムライン グラフに使用可能な復旧ポイントが表示されます。
 
     3. タイムライン グラフまたは **[時刻]** ダイアログ ボックスを使用して、復旧ポイントの特定の時刻を指定します。 **[OK]** を選択して、復元ポイントの手順を完了します。
-    
+
        ![カレンダーを開く](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
         **[復元ポイントの選択]** メニューが閉じられ、**[詳細な構成]** メニューが開きます。
@@ -606,7 +623,7 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 
         使用可能な復旧ポイントの一覧がメニューに表示されます。
 
-    2. 一覧から復旧ポイントを選択し、**[OK]** を選択して復元ポイントの手順を完了します。 
+    2. 一覧から復旧ポイントを選択し、**[OK]** を選択して復元ポイントの手順を完了します。
 
         ![完全復旧ポイントを選択する](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
 
@@ -644,7 +661,7 @@ Azure Backup は、**[バックアップ ジョブ]** ポータルに、手動�
 - 手動でトリガーされたバックアップ操作
 - 復元操作
 - データベースの登録および検出操作
-- バックアップの停止操作 
+- バックアップの停止操作
 
 ![[バックアップ ジョブ] ポータル](./media/backup-azure-sql-database/jobs-list.png)
 
@@ -675,12 +692,12 @@ backup_finish_date,
 DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
 backup_size AS BackupSizeInBytes
   from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
- 
+
 ```
 
 ### <a name="view-backup-alerts"></a>バックアップ アラートを表示する
 
-ログ バックアップは 15 分ごとに行われるため、バックアップ ジョブを適宜監視することは面倒に感じられる場合があります。 Azure Backup では、このような状況に対応します。 すべてのバックアップ エラーに対して電子メール アラートがトリガーされます。 アラートは、エラー コードごとにデータベース レベルで統合されます。 電子メール アラートは、データベースの最初のバックアップ エラーに対してのみ送信されます。 データベースのすべてのエラーを監視するには、Azure Portal にサインインします。 
+ログ バックアップは 15 分ごとに行われるため、バックアップ ジョブを適宜監視することは面倒に感じられる場合があります。 Azure Backup では、このような状況に対応します。 すべてのバックアップ エラーに対して電子メール アラートがトリガーされます。 アラートは、エラー コードごとにデータベース レベルで統合されます。 電子メール アラートは、データベースの最初のバックアップ エラーに対してのみ送信されます。 データベースのすべてのエラーを監視するには、Azure Portal にサインインします。
 
 バックアップ アラートを監視するには、次の手順を実行します。
 
@@ -688,7 +705,7 @@ backup_size AS BackupSizeInBytes
 
 2. SQL 仮想マシンと共に登録された Recovery Services コンテナーを開きます。
 
-3. **[Recovery Services コンテナー]** ダッシュボードで、**[アラートとイベント]** を選択します。 
+3. **[Recovery Services コンテナー]** ダッシュボードで、**[アラートとイベント]** を選択します。
 
    ![[アラートとイベント] を選択する](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
@@ -703,7 +720,7 @@ SQL Server データベースの保護を停止する場合、Azure Backup は�
 * 今後のバックアップ ジョブすべてを停止し、すべての復旧ポイントを削除する。
 * 今後のバックアップ ジョブすべてを停止するが、復旧ポイントはそのままにする。
 
-データの保持についてバックアップの停止を選択した場合は、バックアップ ポリシーに従って復旧ポイントがクリーンアップされます。 すべての復旧ポイントがクリーンアップされるまでは、SQL で保護されたインスタンス価格が請求されるだけでなく、ストレージ容量も消費されます。 SQL に対する Azure Backup の価格設定の詳細情報については、[Azure Backup の価格のページ](https://azure.microsoft.com/pricing/details/backup/)を参照してください。 
+データの保持についてバックアップの停止を選択した場合は、バックアップ ポリシーに従って復旧ポイントがクリーンアップされます。 すべての復旧ポイントがクリーンアップされるまでは、SQL で保護されたインスタンス価格が請求されるだけでなく、ストレージ容量も消費されます。 SQL に対する Azure Backup の価格設定の詳細情報については、[Azure Backup の価格のページ](https://azure.microsoft.com/pricing/details/backup/)を参照してください。
 
 データベースの保護を停止するには、次の手順を実行します。
 
@@ -713,11 +730,11 @@ SQL Server データベースの保護を停止する場合、Azure Backup は�
 
     ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)。
 
-3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。 
+3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。
 
     ![[SQL in Azure VM]\(Azure VM 内の SQL\) を選択する](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
-    **[バックアップ項目]** メニューに、SQL データベースの一覧が表示されます。 
+    **[バックアップ項目]** メニューに、SQL データベースの一覧が表示されます。
 
 4. SQL データベースの一覧で、保護を停止するデータベースを選択します。
 
@@ -725,7 +742,7 @@ SQL Server データベースの保護を停止する場合、Azure Backup は�
 
     データベースを選択すると、そのデータベースのメニューが開きます。
 
-5. 選択したデータベースのメニューで、**[バックアップの停止]** を選択します。 
+5. 選択したデータベースのメニューで、**[バックアップの停止]** を選択します。
 
     ![[バックアップの停止] を選択する](./media/backup-azure-sql-database/stop-db-button.png)
 
@@ -735,11 +752,15 @@ SQL Server データベースの保護を停止する場合、Azure Backup は�
 
     ![[バックアップの停止] メニュー](./media/backup-azure-sql-database/stop-backup-button.png)
 
-7. **[バックアップの停止]** を選択して、データベースでの保護を停止します。 
+7. **[バックアップの停止]** を選択して、データベースでの保護を停止します。
+
+  **[バックアップの停止]** オプションは[自動保護](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)インスタンスのデータベースに対しては機能しないことに注意してください。 このデータベースの保護を停止する唯一の方法は、インスタンスでの[自動保護](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)をいったん無効にした後、そのデータベースの **[バックアップ項目]** で **[バックアップの停止]** オプションを選択します。<br>
+  自動保護を無効にした後は、**[バックアップ項目]** でデータベースの **[バックアップの停止]** を選択できます。 その後は、インスタンスの自動保護を再び有効にできます。
+
 
 ### <a name="resume-protection-for-a-sql-database"></a>SQL Database での保護の再開
 
-SQL データベースの保護を停止するときに **[バックアップ データの保持]** オプションを選択した場合は、保護を再開することができます。 バックアップ データが保持されていなかった場合、保護は再開できません。 
+SQL データベースの保護を停止するときに **[バックアップ データの保持]** オプションを選択した場合は、保護を再開することができます。 バックアップ データが保持されていなかった場合、保護は再開できません。
 
 1. SQL データベースの保護を再開するには、バックアップ項目を開き、**[バックアップの再開]** を選択します。
 
@@ -774,11 +795,11 @@ SQL データベースの保護を停止するときに **[バックアップ �
 
    ![[保護されたサーバー] を選択する](./media/backup-azure-sql-database/protected-servers.png)
 
-    **[保護されたサーバー]** メニューが開きます。 
+    **[保護されたサーバー]** メニューが開きます。
 
 4. **[保護されたサーバー]** メニューで、登録解除するサーバーを選択します。 コンテナーを削除するには、すべてのサーバーの登録を解除する必要があります。
 
-5. **[保護されたサーバー]** メニューで、保護されているサーバーを右クリックして、**[削除]** を選択します。 
+5. **[保護されたサーバー]** メニューで、保護されているサーバーを右クリックして、**[削除]** を選択します。
 
    ![[削除] を選択する](./media/backup-azure-sql-database/delete-protected-server.png)
 
@@ -789,19 +810,15 @@ SQL データベースの保護を停止するときに **[バックアップ �
 ### <a name="can-i-throttle-the-speed-of-the-sql-server-backup-policy"></a>SQL Server バックアップ ポリシーの速度を調整できますか?
 
 はい。 バックアップ ポリシーが実行される速度を調整して、SQL Server インスタンスへの影響を最小限に抑えることができます。
-
 設定を変更するには:
-
-1. SQL Server インスタンスで、C:\Program Files\Azure Workload Backup\bin フォルダー内の **TaskThrottlerSettings.json** ファイルを開きます。
-
-2. TaskThrottlerSettings.json ファイルで、**DefaultBackupTasksThreshold** の設定を小さな値 (たとえば、5) に変更します。
+1. SQL Server インスタンスで、*C:\Program Files\Azure Workload Backup\bin フォルダー*に **ExtensionSettingsOverrides.json** ファイルを作成します。
+2. **ExtensionSettingsOverrides.json** ファイルで、**DefaultBackupTasksThreshold** の設定を小さな値 (たとえば、5) に変更します。 <br>
+  ` {"DefaultBackupTasksThreshold": 5}`
 
 3. 変更を保存します。 ファイルを閉じます。
-
-4. SQL Server インスタンスで、**タスク マネージャー**を開きます。 **Azure Backup ワークロード コーディネーター サービス**を再開します。
+4. SQL Server インスタンスで、**タスク マネージャー**を開きます。 **AzureWLBackupCoordinatorSvc** サービスを再起動します。
 
 ### <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>セカンダリ レプリカから完全バックアップを実行できますか?
-
 いいえ。 この機能はサポートされていません。
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>成功したバックアップ ジョブでアラートが作成されますか?
@@ -824,8 +841,30 @@ SQL データベースの保護を停止するときに **[バックアップ �
 
 いいえ。 Azure Backup では、Azure で実行している SQL Server を保護します。 Azure とオンプレミスのマシンの間にまたがっている可用性グループ (AG) は、プライマリ レプリカが Azure で実行されている場合にのみ保護できます。 また、Azure Backup では、Recovery Services コンテナーと同じ Azure リージョンで実行されているノードのみ保護します。
 
-### <a name="can-i-protect-sql-always-on-availability-groups-which-are-spread-across-azure-regions"></a>Azure リージョンにわたって分散されているSQL Always On 可用性グループを保護できますか。
+### <a name="can-i-protect-sql-always-on-availability-groups-which-are-spread-across-azure-regions"></a>Azure リージョンにわたって分散されている SQL Always On 可用性グループを保護できますか?
+
 Azure Backup Recovery Services コンテナーは、Recovery Services コンテナーと同じリージョン内にあるすべてのノードを検出および保護できます。 複数の Azure リージョンにまたがる SQL Always On 可用性グループがある場合は、プライマリ ノードのあるリージョンからのバックアップを構成する必要があります。 Azure Backup によって、バックアップ設定に従って、可用性グループのすべてのデータベースを検出および保護することができるようになります。 バックアップの設定条件が満たされていない場合は、バックアップに失敗し、エラー通知が表示されます。
+
+### <a name="while-i-want-to-protect-most-of-the-databases-in-an-instance-i-would-like-to-exclude-a-few-is-it-possible-to-still-use-the-auto-protection-feature"></a>インスタンス内のほとんどのデータベースは保護して、一部だけを除外する必要があります。 自動保護機能を使用してそのようなことはできますか?
+
+いいえ、[自動保護](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)はインスタンス全体に適用されます。 自動保護を使用して、インスタンス内のデータベースを選択的に保護することはできません。
+
+### <a name="can-i-have-different-policies-for-different-databases-in-an-auto-protected-instance"></a>自動保護されたインスタンスで、データベースごとに異なるポリシーを適用することはできますか?
+
+インスタンス内の一部のデータベースが既に保護されている場合、[自動保護](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)オプションを**オン**にした後も、それらのデータベースは引き続きそれぞれのポリシーで保護されます。 ただし、その時点で保護されていないすべてのデータベースと、それ以降に追加されるデータベースには、データベースを選択した後に **[バックアップの構成]** で定義する 1 つのポリシーだけが適用されます。 実際、保護されている他のデータベースとは異なり、自動保護されたインスタンスに含まれるデータベースについてはポリシーを変更することもできません。
+それを行いたい場合、唯一の方法は、インスタンスの自動保護をいったん無効にして、そのデータベースのポリシーを変更することです。 その後は、このインスタンスの自動保護を再び有効にできます。
+
+### <a name="if-i-delete-a-database-from-an-auto-protected-instance-will-the-backups-for-that-database-also-stop"></a>自動保護されたインスタンスからデータベースを削除した場合、そのデータベースのバックアップも停止しますか?
+
+いいえ、自動保護されたインスタンスからデータベースを削除した場合でも、そのデータベースのバックアップは試行されます。 これは、削除されたデータベースは、**[バックアップ項目]** で非正常として表示されるようになり、まだ保護対象として扱われることを意味します。
+
+このデータベースの保護を停止する唯一の方法は、インスタンスでの[自動保護](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)をいったん無効にした後、そのデータベースの **[バックアップ項目]** で **[バックアップの停止]** オプションを選択します。 その後は、このインスタンスの自動保護を再び有効にできます。
+
+###  <a name="why-cant-i-see-the-newly-added-database-to-an-auto-protected-instance-under-the-protected-items"></a>自動保護されたインスタンスに新しく追加したデータベースが、保護された項目に表示されないのはなぜですか?
+
+[自動保護](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)されたインスタンスに新しく追加されたデータベースは、すぐに保護済みとして表示されない場合があります。 これは、検出が通常は 8 時間ごとに実行されるためです。 ただし、次の図のように、ユーザーは **[DB の再検出]** オプションを使用して手動検出を実行し、すぐに新しいデータベースを検出して保護することができます。
+
+  ![新しく追加されたデータベースの表示](./media/backup-azure-sql-database/view-newly-added-database.png)
 
 
 ## <a name="next-steps"></a>次の手順

@@ -1,5 +1,5 @@
 ---
-title: Azure Search の Lucene クエリ例 | Microsoft Docs
+title: Lucene クエリの例 - Azure Search
 description: Azure Search サービスでのあいまい検索、近接検索、用語ブースト、正規表現検索、およびワイルドカード検索の Lucene クエリ構文。
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: b5a3e2eac218ba2aa6958ffc56bd59f5b513cf48
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.custom: seodec2018
+ms.openlocfilehash: 0ce230bc6a926229ed383c828f83aafd60117471
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42142162"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317160"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Azure Search で高度なクエリを作成するための Lucene 構文のクエリの例
 Azure Search のクエリを構築するときは、既定の[単純なクエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)をより拡張性の高い [Azure Search の Lucene Query Parser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) に置き換えることにより、特殊化された高度なクエリ定義を作成することができます。 
@@ -77,7 +78,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 この記事のすべての例で、**queryType=full** 検索パラメーターを指定します。そうすることで、Lucene Query Parser によって完全な構文が処理されるように指示します。 
 
-## <a name="example-1-field-scoped-query"></a>例 1: フィールド スコープ クエリ
+## <a name="example-1-field-scoped-query"></a>例 1:フィールド スコープ クエリ
 
 この最初の例はパーサー固有ではありませんが、最初の基本的なクエリの概念である包含を紹介するために利用します。 この例では、クエリの実行とその応答の範囲をいくつかの特定のフィールドに制限しています。 ツールが Postman または Search エクスプローラーの場合、読みやすい JSON 応答を構成する方法を理解することが重要です。 
 
@@ -91,9 +92,9 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
   ![Postman の応答のサンプル](media/search-query-lucene-examples/postman-sample-results.png)
 
-応答の検索スコアに気付いたかもしれませんが、 検索がフルテキスト検索でなかった、または適用された基準がないという理由でランクがない場合は、1 の均一のスコアが発生します。 条件なしの null 検索では、任意の順序で行が返されます。 実際の基準を含めると、検索スコアは意味のある値に変化します。
+応答の検索スコアに気付いたかもしれません。 検索がフルテキスト検索でなかった、または適用された基準がないという理由でランクがない場合は、1 の均一のスコアが発生します。 条件なしの null 検索では、任意の順序で行が返されます。 実際の基準を含めると、検索スコアは意味のある値に変化します。
 
-## <a name="example-2-intra-field-filtering"></a>例 2: フィールド内フィルタリング
+## <a name="example-2-intra-field-filtering"></a>例 2:フィールド内フィルタリング
 
 完全な Lucene 構文では、フィールド内の式をサポートしています。 このクエリは、junior ではなく、senior という表現を含む肩書きを検索します。
 
@@ -112,7 +113,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 **fieldname:searchterm** に指定されたフィールドは検索可能フィールドである必要があります。 フィールド定義におけるインデックス属性の利用方法に関する詳細については、「 [Create Index (Azure Search Service REST API) (インデックスの作成 (Azure Search サービス REST API))](https://docs.microsoft.com/rest/api/searchservice/create-index) 」を参照してください。
 
-## <a name="example-3-fuzzy-search"></a>例 3: あいまい検索の例
+## <a name="example-3-fuzzy-search"></a>例 3:あいまい検索
 
 完全な Lucene 構文では、構造が似ている用語に一致するあいまい検索もサポートしています。 あいまい検索を実行するには、1 つの言葉の終わりにチルダ記号 `~` を付けます。任意で編集距離を指定するパラメーターとして 0 ～ 2 の値を指定します。 たとえば、`blue~` または `blue~1` は blue、blues、glue を返します。
 

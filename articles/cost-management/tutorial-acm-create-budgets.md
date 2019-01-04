@@ -5,21 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/28/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: bb8eb4eae192cf0dd3a3555a3b1209705dd83aaf
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: ab2ea762ac8cc289ff24136f3cafac2b80fa1a9f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583693"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268446"
 ---
-# <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル: Azure の予算を作成して管理する
+# <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
 Cost Management での予算は、組織のアカウンタビリティを計画および推進するのに役立ちます。 予算では、特定の期間中に消費またはサブスクライブする Azure サービスを考慮することができます。 コストを事前に管理するために支出を他のユーザーに通知したり、支出の時間変化を監視したりするのに役立ちます。 作成した予算のしきい値を超えた場合は、通知のみがトリガーされます。 どのリソースも影響を受けることはなく、消費が停止されることはありません。 予算を使用して、コストを分析するときに支出を比較および追跡できます。
+
+毎月の予算は、4 時間ごとに支出に対して評価されます。 ただし、使用されたリソースについてのデータと通知を利用できるのは 8 時間以内です。  
 
 将来の有効期限日を選択した場合、期間 (月、四半期、または年) の最後に、予算は自動的に同じ予算金額にリセットされます。 同じ予算金額でリセットされるため、予算を計上される通貨金額が将来の期間では異なる場合は、別の予算を作成する必要があります。
 
@@ -45,7 +47,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-- Azure Portal ( http://portal.azure.com ) にサインインします。
+- Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Azure portal で予算を作成する
 
@@ -57,23 +59,23 @@ Azure portal で **[コストの管理と請求]** &gt; **[サブスクリプシ
 
 **[追加]** をクリックします。
 
-![Cost Management の予算](./media/tutorial-acm-create-budgets/budgets01.png)
+![Azure portal に表示される Cost Management 予算](./media/tutorial-acm-create-budgets/budgets01.png)
 
 **[予算を作成する]** ウィンドウで、予算の名前と金額を入力します。 次に、期間を月、四半期、年から選択します。 次に、終了日を選択します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、8 時間以内に電子メールの通知が届きます。
 
 この例では、毎月の予算を 4,500 ドルで作成します。 予算の 90% に達すると、メール アラートが生成されます。
 
-![毎月の予算の例](./media/tutorial-acm-create-budgets/monthly-budget01.png)
+![[予算を作成する] ボックスに表示される情報の例](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
 四半期ごとの予算を作成するときは、毎月の予算と同様に動作します。 違いは、四半期の予算金額が四半期の 3 か月に均等に分割されることです。 ご想像のとおり、年間予算金額はカレンダー年の 12 か月すべてに均等に分割されます。
 
 予算に対する現在の支出は、Cost Management が更新された請求データを受け取るたびに更新されます。 通常は毎日です。
 
-![予算に対する現在の支出](./media/tutorial-acm-create-budgets/budgets-current-spending.png)
+![予算に対する現在の支出を示す情報の例](./media/tutorial-acm-create-budgets/budgets-current-spending.png)
 
 作成した予算は、コストの分析に表示されます。 支出の傾向に関連する予算を表示することは、[コストと支出の分析](quick-acm-cost-analysis.md)を始めるときの最初のステップの 1 つです。
 
-![コスト分析に表示された予算](./media/tutorial-acm-create-budgets/cost-analysis.png)
+![コスト分析に表示される予算と支出の例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
 前の例では、サブスクリプションの予算を作成しました。 しかし、リソース グループに対する予算を作成することもできます。 リソース グループに対する予算を作成する場合は、**[コストの管理と請求]** &gt; **[サブスクリプション]** を選択してサブスクリプションを選択し、**[リソース グループ]** を選択してリソース グループを選択し、**[予算]** &gt; **[追加]** を選択します。
 
@@ -81,7 +83,7 @@ Azure portal で **[コストの管理と請求]** &gt; **[サブスクリプシ
 
 割り当てられているアクセス権のレベルに応じて、予算を編集してそのプロパティを変更できます。 次の例では、ユーザーがサブスクリプションに対して共同作成者アクセス許可しか持っていないので、プロパティの一部は読み取り専用になっています。 現在、**[有効期限]** は無効になっており、設定した後は変更できません。
 
-![予算の編集 – 共同作成者アクセス許可](./media/tutorial-acm-create-budgets/edit-budget.png)
+![予算の編集によるさまざまなプロパティの変更の例](./media/tutorial-acm-create-budgets/edit-budget.png)
 
 
 ## <a name="next-steps"></a>次の手順

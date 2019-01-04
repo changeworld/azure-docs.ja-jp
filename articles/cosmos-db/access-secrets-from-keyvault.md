@@ -1,20 +1,19 @@
 ---
-title: Key Vault を使用し Azure Cosmos DB キーを格納してアクセスする | Microsoft Docs
+title: Key Vault を使用し Azure Cosmos DB キーを格納してアクセスする
 description: Azure Key Vault を使用し、Azure Cosmos DB の接続文字列、キー、URI を格納し、アクセスします。
 services: cosmos-db
 author: rafats
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
-ms.openlocfilehash: b090c1593b49bec4f51fea8d498860e8af8b2f4b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f5d494006ebafab37bd10591ad02671e192d73e8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053086"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837394"
 ---
 # <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>Key Vault を使用し Azure Cosmos DB キーを格納してアクセスする
 
@@ -34,7 +33,7 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 2. **[リソースの作成] > [セキュリティ] > [Key Vault]** を選択します。  
 3. **[キー コンテナーの作成]** セクションで、次の情報を入力します。  
    * **[名前]:** Key Vault の一意の名前を指定します。  
-   * **[サブスクリプション]**: 使用するサブスクリプションを選択します。  
+   * **[サブスクリプション]:** 使用するサブスクリプションを選択します。  
    * **[リソース グループ]** で、**[新規作成]** を選択し、リソース グループ名を入力します。  
    * [場所] プルダウン メニューで、場所を選択します。  
    * 他のオプションは既定値のままにしておきます。  

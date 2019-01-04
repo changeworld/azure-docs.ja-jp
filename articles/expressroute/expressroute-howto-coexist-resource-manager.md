@@ -1,19 +1,19 @@
 ---
-title: '共存する ExpressRoute とサイト間 VPN の接続の構成: PowerShell: Azure | Microsoft Docs'
-description: この記事では、Resource Manager モデルにおいて、共存できる ExpressRoute 接続とサイト間 VPN 接続を PowerShell を使用して構成する手順について説明します
+title: ExpressRoute とサイト間 VPN の接続を構成する - 共存:PowerShell:Azure | Microsoft Docs
+description: Resource Manager モデルにおいて、共存できる ExpressRoute とサイト間 VPN 接続を PowerShell を使用して構成します。
 services: expressroute
 author: charwen
-manager: rossort
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: charwen
-ms.openlocfilehash: 96e2eb85bc96075e0673359910522f8e35bf5a5c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 1aeb5ca447a3058962483b640f742e4a7ec4a414
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243813"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104035"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell を使用して ExpressRoute およびサイト間の共存接続を構成する
 > [!div class="op_single_selector"]
@@ -21,6 +21,9 @@ ms.locfileid: "51243813"
 > * [PowerShell - クラシック](expressroute-howto-coexist-classic.md)
 > 
 > 
+
+
+この記事は、共存する ExpressRoute とサイト間 VPN の接続を構成するのに役立ちます。 サイト間 VPN と ExpressRoute が構成可能な場合、いくつかの利点があります。 ExpressRoute 用にセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成したり、サイト間 VPN を使用して、ExpressRoute 経由で接続されていないサイトに接続したりできます。 この記事では、両方のシナリオを構成する手順について説明します。 この記事は、Resource Manager デプロイ モデルに適用されます。
 
 サイト間 VPN と ExpressRoute が共存する接続を構成することには、いくつかの利点があります。
 

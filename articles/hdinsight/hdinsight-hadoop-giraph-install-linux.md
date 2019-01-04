@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 202a68d219bec3a70e50afa68228cbc6bf453518
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6cedc269e279a9154e63bae241f02e766e06ec96
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011665"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383903"
 ---
-# <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop クラスターに Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
+# <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop クラスターに Apache Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
 
 HDInsight クラスターで Apache Giraph をインストールする方法について説明します。 HDInsight のスクリプト アクション機能では、bash スクリプトを実行してクラスターをカスタマイズできます。 スクリプトを使用して、クラスターの作成時および作成後にクラスターをカスタマイズできます。
 
@@ -33,10 +33,10 @@ HDInsight クラスターで Apache Giraph をインストールする方法に�
 
 * Web ページのページ順位を計算する
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> Giraph といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートで問題を解決できる場合があります。 解決できない場合は、その技術に関して豊富な専門知識のあるオープン ソース コミュニティを参照する必要があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> Giraph といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートで問題を解決できる場合があります。 解決できない場合は、その技術に関して豊富な専門知識のあるオープン ソース コミュニティを参照する必要があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に[Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 
 ## <a name="what-the-script-does"></a>スクリプトの機能
@@ -68,7 +68,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 2. **[オプションの構成]** セクションで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
-   * **[名前]**: スクリプト アクションの表示名を入力します。
+   * **[名前]**: スクリプト アクションのフレンドリ名を入力します。
 
    * **[スクリプト URI]**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
@@ -76,7 +76,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
    * **[ワーカー]**: このエントリはオフのままにします。
 
-   * **[ZOOKEEPER]**: このエントリはオフのままにします。
+   * **[ZooKeeper]**: このエントリはオフのままにします。
 
    * **[パラメーター]**: このフィールドは空のままにします。
 
@@ -172,4 +172,4 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 * [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。
 
-* [HDInsight クラスターに Solr をインストールする](hdinsight-hadoop-solr-install-linux.md)。
+* [HDInsight クラスターに Apache Solr をインストールする](hdinsight-hadoop-solr-install-linux.md)。

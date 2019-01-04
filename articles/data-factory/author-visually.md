@@ -110,9 +110,9 @@ Azure Repos を組織の Active Directoryに接続する方法について詳し
 
 ![同期または発行してコードを変更](media/author-visually/sync-publish.png)
 
-機能ブランチでの機能開発によって準備ができたら、**[プル要求の作成]** をクリックできます。 このアクションで Azure Repos Git に移動します。Azure Repos Git では、プル要求の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行うことができます。 (`master` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
+機能ブランチでの機能開発によって準備ができたら、**[pull request の作成]** をクリックできます。 このアクションで Azure Repos Git に移動します。Azure Repos Git では、pull request の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行うことができます。 (`master` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
 
-![新しいプル要求を作成する](media/author-visually/create-pull-request.png)
+![新しい pull request を作成する](media/author-visually/create-pull-request.png)
 
 ## <a name="configure-publishing-settings"></a>発行の設定を構成する
 
@@ -166,11 +166,11 @@ GitHub リポジトリを構成するには、使用している Azure サブス
 
 **構成方法 1 (パブリック リポジトリ): [始めましょう] ページ**
 
-Azure Data Factory で  **[始めましょう]**  ページに移動します。  **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+Azure Data Factory で  **[始めましょう]**  ページに移動します。 [ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
 
 ![Data Factory の [始めましょう] ページ](media/author-visually/github-integration-image1.png)
 
- **[リポジトリ設定]**  構成ウィンドウが表示されます。
+[ **リポジトリ設定**] 構成ウィンドウが表示されます。
 
 ![GitHub リポジトリの設定](media/author-visually/github-integration-image2.png)
 
@@ -188,7 +188,7 @@ Azure Data Factory で  **[始めましょう]**  ページに移動します�
 
 #### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>構成方法 2 (パブリック リポジトリ): UX 作成キャンバス
 
-Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを見つけます。  **[Data Factory]**  ドロップダウン メニューを選択して、 **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを見つけます。 [ **Data Factory**] ドロップダウン メニューを選択して、[ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
 
 構成ウィンドウが表示されます。 構成設定について詳しくは、前述の「 *構成方法 1*」の説明をご覧ください。
 
@@ -198,11 +198,11 @@ Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを
 
  #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>構成方法 1 (Enterprise リポジトリ): [始めましょう] ページ
 
-Azure Data Factory で  **[始めましょう]**  ページに移動します。  **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+Azure Data Factory で  **[始めましょう]**  ページに移動します。 [ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
 
 ![Data Factory の [始めましょう] ページ](media/author-visually/github-integration-image1.png)
 
- **[リポジトリ設定]**  構成ウィンドウが表示されます。
+[ **リポジトリ設定**] 構成ウィンドウが表示されます。
 
 ![GitHub リポジトリの設定](media/author-visually/github-integration-image3.png)
 
@@ -222,7 +222,7 @@ Azure Data Factory で  **[始めましょう]**  ページに移動します�
 
 #### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>構成方法 2 (Enterprise リポジトリ): UX 作成キャンバス
 
-Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを見つけます。  **[Data Factory]**  ドロップダウン メニューを選択して、 **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを見つけます。 [ **Data Factory**] ドロップダウン メニューを選択して、[ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
 
 構成ウィンドウが表示されます。 構成設定について詳しくは、前述の「 *構成方法 1*」の説明をご覧ください。
 

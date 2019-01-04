@@ -8,24 +8,23 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: d8bb7a975bd5bab8698d20e5d21514b79945eac6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 4a7b5cd925bd4b66e25754c30de5cbaf866dab0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564920"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970629"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights コーホート
 
 コーホートとは、共通点を持つユーザー セット、セッション セット、イベント セット、または操作セットのことです。 Azure Application Insights では、コーホートは分析クエリによって定義されます。 特定のユーザー セットまたはイベント セットを繰り返し分析する必要がある場合、コーホートを使用することで、より柔軟性の高い方法で目的のセットを正確に表現することができます。
 
-![[コーホート] ウィンドウ](.\media\app-insights-usage-cohorts\001.png)
+![[コーホート] ウィンドウ](./media/app-insights-usage-cohorts/001.png)
 
 ## <a name="cohorts-versus-basic-filters"></a>コーホート対基本的なフィルター
 
@@ -36,7 +35,7 @@ ms.locfileid: "51564920"
 > [!NOTE]
 > コーホートが作成されたら、ユーザー、セッション、イベント、ユーザー フローの各ツールからコーホートを利用できます。
 
-## <a name="example-engaged-users"></a>例: 関心度の高いユーザー
+## <a name="example-engaged-users"></a>例:関心度の高いユーザー
 
 チームでは、特定の月間に対象のアプリを 5 回以上使用したユーザーを関心度の高いユーザーとして定義しています。 このセクションでは、このような関心度の高いユーザーのコーホートを定義します。
 
@@ -53,14 +52,14 @@ ms.locfileid: "51564920"
 
 4. **UsedAtLeastCustom** を **5 日以上**に変更し、**[期間]** を既定値の 28 日のままとします。
 
-    ![関心度の高いユーザー](.\media\app-insights-usage-cohorts\003.png)
+    ![関心度の高いユーザー](./media/app-insights-usage-cohorts/003.png)
 
     これで、このコーホートは過去 28 日間の個別の 5 日間において、任意のカスタム イベントまたはページ ビューと共に送信されたすべてのユーザー ID を表すようになりました。
 
 5. **[保存]** を選択します。
 
    > [!TIP]
-   >  "関心度の高いユーザー (5 日以上)" のようなコーホートの名前を付けます。 "個人用レポート" または "共有レポート" に保存します。どちらにするかは、この Application Insights リソースへのアクセス権を有する他のユーザーにもこのコーホートを表示させるかどうかによって決まります。
+   > "関心度の高いユーザー (5 日以上)" のようなコーホートの名前を付けます。 "個人用レポート" または "共有レポート" に保存します。どちらにするかは、この Application Insights リソースへのアクセス権を有する他のユーザーにもこのコーホートを表示させるかどうかによって決まります。
 
 6. **[ギャラリーに戻る]** を選択します。
 
@@ -70,17 +69,18 @@ ms.locfileid: "51564920"
 
 これで、ユーザー ツールはフィルター処理され、ユーザーに関するこのコーホートだけが表示されます。
 
-![特定のコーホートを表示するようにフィルター処理された [ユーザー] ウィンドウ](.\media\app-insights-usage-cohorts\004.png)
+![特定のコーホートを表示するようにフィルター処理された [ユーザー] ウィンドウ](./media/app-insights-usage-cohorts/004.png)
 
 注意すべき重要な点をいくつか次に示します。
+
 * このセットは、通常のフィルターによって作成できません。 日付のロジックがより具体的になっています。
 * ユーザー ツールでは通常のフィルターを使用してこのコーホートをさらにフィルター処理することができます。 したがって、コーホートは 28 日の期間に定義されていますが、ユーザー ツール内で時間の範囲を 30 日、60 日、または 90 日に調整することができます。
 
 これらのフィルターは、クエリ ビルダーによって表現できないより高度な質問をサポートします。 たとえば、_過去 28 日間で関心が高かったユーザーがいるとします。それらの同じユーザーが過去 60 日間でどのような行動をしていたでしょうか。_
 
-## <a name="example-events-cohort"></a>例: イベントのコーホート
+## <a name="example-events-cohort"></a>例:イベントのコーホート
 
-イベントのコーホートを作成することもできます。 このセクションでは、イベントとページ ビューのコホートを定義します。 次に、他のツールからそれらを使用する方法を確認します。 このコホートは、チームによって _アクティブな使用_ と見なされるイベント セットや特定の新機能に関連するイベント セットを定義できます。
+イベントのコーホートを作成することもできます。 このセクションでは、イベントとページ ビューのコホートを定義します。 次に、他のツールからそれらを使用する方法を確認します。 このコホートは、チームによって_アクティブな使用_と見なされるイベント セットや特定の新機能に関連するイベント セットを定義できます。
 
 1. コーホート ツールを開きます。
 
@@ -88,21 +88,21 @@ ms.locfileid: "51564920"
 
 3. **[Events Picker] (イベントの選択)** を選択します。
 
-    ![イベントの選択のスクリーンショット](.\media\app-insights-usage-cohorts\006.png)
+    ![イベントの選択のスクリーンショット](./media/app-insights-usage-cohorts/006.png)
 
 4. **[アクティビティ]** ドロップダウン ボックスで、コーホート内に含めるイベントを選択します。
 
 5. コーホートを保存し、名前を付けます。
 
-## <a name="example-active-users-where-you-modify-a-query"></a>例: クエリを修正するアクティブ ユーザー
+## <a name="example-active-users-where-you-modify-a-query"></a>例:クエリを修正するアクティブ ユーザー
 
 前の 2 つのコーホートは、ドロップダウン ボックスを使用して定義されました。 ただし、全体的な柔軟性を高めるために分析クエリを使用してコーホートを定義することもできます。 方法を確認するために、英国のユーザーのコーホートを作成します。
 
-![コーホート ツールの使い方を順を追って示すアニメーション画像](.\media\app-insights-usage-cohorts\cohorts0001.gif)
+![コーホート ツールの使い方を順を追って示すアニメーション画像](./media/app-insights-usage-cohorts/cohorts0001.gif)
 
 1. コーホート ツールを開き、**[テンプレート ギャラリー]** タブを選択して、**[Blank Users cohort] (空のユーザーのコーホート)** を選択します。
 
-    ![空のユーザーのコーホート](.\media\app-insights-usage-cohorts\001.png)
+    ![空のユーザーのコーホート](./media/app-insights-usage-cohorts/001.png)
 
     次の 3 つのセクションがあります。
     * Markdown テキスト セクション: チームの他のユーザーのためにコーホートの詳細を記述します。
@@ -137,7 +137,8 @@ _特定の国からのユーザーのコーホートを定義しました。ユ�
 * フィルターの結果には、英国からのイベントのみが表示されます。 ただし、国または地域で分割した場合は、英国だけ表示されます。
 
 ## <a name="learn-more"></a>詳細情報
-- [Analytics クエリ言語](https://go.microsoft.com/fwlink/?linkid=856587)
-- [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
-- [ユーザー フロー](app-insights-usage-flows.md)
-- [利用状況の概要](app-insights-usage-overview.md)
+
+* [Analytics クエリ言語](https://go.microsoft.com/fwlink/?linkid=856587)
+* [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
+* [ユーザー フロー](app-insights-usage-flows.md)
+* [利用状況の概要](app-insights-usage-overview.md)

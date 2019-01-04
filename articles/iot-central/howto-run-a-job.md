@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 09/15/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 35db7bf87c7b72fc31d820c9058b1df8415bd553
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ac5accc72369d811c0d36c4ef64cd8d523a061f3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031307"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724504"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>作成し、Azure IoT Central アプリケーションでジョブの実行
 
@@ -56,8 +56,13 @@ Microsoft Azure IoT Central を使用して、ジョブを使用して大規模�
 
 現在実行中のジョブを停止したい場合は、停止するには実行中のジョブの名前をクリックします。 選択、**停止**パネルにボタンをクリックします。 ジョブが停止していることを反映するように変更されたジョブの状態が表示されます。
 
-> [!NOTE]
-> ジョブが停止された後は再開できません。 目的の操作およびデバイスと、別のジョブを作成する必要があります。
+   ![ジョブを停止する](./media/howto-run-a-job/stopjob.png)
+
+### <a name="run-a-stopped-job"></a>停止されたジョブを実行する
+
+現在停止中のジョブを開始する場合は、実行する停止中のジョブの名前をクリックします。 パネルの **[実行]** ボタンを選択します。 ジョブが再び実行していることを反映するようにジョブの状態が変化していることがわかります。
+
+   ![再開されたジョブ](./media/howto-run-a-job/resumejob.png)
 
 ## <a name="view-the-job-status"></a>ジョブの状態を表示します。
 

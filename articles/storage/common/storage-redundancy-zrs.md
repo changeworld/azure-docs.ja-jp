@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
 ms.component: common
-ms.openlocfilehash: b310c06f508395635976009005dd2c4db2917abc
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 1b39de45d5046ce5a59dcaf0648b87aca2a5c6f5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218742"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868346"
 ---
-# <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>ゾーン冗長化ストレージ (ZRS): 高可用 Azure Storage アプリケーション
+# <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>ゾーン冗長ストレージ (ZRS):高可用 Azure Storage アプリケーション
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 
 ## <a name="support-coverage-and-regional-availability"></a>サポート範囲とリージョンの可用性
@@ -41,7 +41,7 @@ Microsoft は、今後も ZRS が有効な Azure リージョンを増やす予�
 
 ゾーンが利用不可になると、Azure は DNS の再指定などのネットワークの更新を実行します。 このような更新は、更新が完了する前にデータにアクセスしている場合、アプリケーションに影響を与える可能性があります。
 
-ZRS は、複数のゾーンが永続的に影響を受けるリージョンの災害からデータを保護することはできませんが、 データが一時的に利用できなくなった場合は、そのデータの回復性を提供します。 リージョンの災害から保護するには、geo 冗長ストレージ (GRS) を使用することをお勧めします。 GRS の詳細については、「[geo 冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)」を参照してください。
+ZRS は、複数のゾーンが永続的に影響を受けるリージョンの災害からデータを保護することはできませんが、 データが一時的に利用できなくなった場合は、そのデータの回復性を提供します。 リージョンの災害から保護するには、geo 冗長ストレージ (GRS) を使用することをお勧めします。 GRS について詳しくは、「[geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)」をご覧ください。
 
 ## <a name="converting-to-zrs-replication"></a>ZRS レプリケーションへの変換
 LRS、GRS、および RA-GRS 間の移行は簡単です。 アカウントの冗長性の種類を変更するには、Azure portal またはストレージ リソース プロバイダー API を使用します。 その後 Azure は、データを適宜レプリケートします。 
@@ -77,18 +77,18 @@ ZRS との間の移行には、主に 2 つの選択肢があります。
 2. アカウント情報に基づき **[基本]** に入力します。 **[サービス]** セクションで、**[Storage Account Management]\(ストレージ アカウントの管理)** と ZRS に変換するリソースを選択します。 
 3. **[次へ]** を選択します。 
 4. **[Problem]\(問題)** セクションで以下の値を指定します。 
-    - **[Severity]\(重大度)**: 既定値をそのまま使用します。
-    - **[問題の種類]**: **[データ移行]** を選択します。
-    - **[カテゴリ]**: **[Migrate to ZRS within a region]\(リージョン内の ZRS への移行\)** を選択します。
-    - **[タイトル]**: **ZRS アカウント移行**などのわかりやすいタイトルを入力します。
-    - **[詳細]**: **[詳細]** ボックスには、たとえば、\_\_ リージョンで [LRS、GRS] から ZRS に移行するなどの詳細情報を入力します。 
+    - **[重大度]**:既定値をそのまま使用します。
+    - **[問題の種類]**:**[データ移行]** を選択します。
+    - **[カテゴリ]**:**[Migrate to ZRS within a region]\(リージョン内の ZRS への移行\)** を選択します。
+    - **[タイトル]**:**ZRS アカウント移行**などのわかりやすいタイトルを入力します。
+    - **[詳細]**:**[詳細]** ボックスには、たとえば、\_\_ リージョンで [LRS、GRS] から ZRS に移行するなどの詳細情報を入力します。 
 5. **[次へ]** を選択します。
 6. **[連絡先情報]** ブレードの連絡先情報が正しいことを確認します。
 7. **作成**を選択します。
 
 サポート担当者はお客様に連絡し、必要なサポートを提供します。 
 
-## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS クラシック: BLOB の冗長性をブロックするレガシー オプション
+## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS クラシック:BLOB の冗長性をブロックするレガシー オプション
 > [!NOTE]
 > Microsoft は、2021 年 3 月 31 日に ZRS クラシック アカウントを非推奨にして移行します。 ZRS クラシックのお客様には、非推奨になる前に詳細をご連絡します。 
 >
@@ -98,9 +98,9 @@ ZRS クラシックでは、1 つから 2 つのリージョン内の複数の�
 
 ZRS クラシックを利用できるのは、汎用 V1 (GPv1) ストレージ アカウントの**ブロック BLOB** に限られます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](storage-account-overview.md)」をご覧ください。
 
-LRS、ZRS クラシック、GRS、または RA-GRS アカウントとの間で ZRS アカウント データを手動で移行するには、AzCopy、Azure Storage Explorer、Azure PowerShell、または Azure CLI のいずれかのツールを使用します。 また、Azure Storage クライアント ライブラリのいずれかを使用して、独自の移行ソリューションを構築することもできます。
+LRS、ZRS クラシック、GRS、または RA-GRS アカウントとの間で ZRS アカウント データを手動で移行するには、次のいずれかのツールを使用します:AzCopy、Azure Storage Explorer、Azure PowerShell、または Azure CLI。 また、Azure Storage クライアント ライブラリのいずれかを使用して、独自の移行ソリューションを構築することもできます。
 
 ## <a name="see-also"></a>関連項目
 - [Azure Storage のレプリケーション](storage-redundancy.md)
-- [ローカル冗長ストレージ (LRS): Azure Storage の低コストのデータ冗長性](storage-redundancy-lrs.md)
-- [geo 冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)
+- [ローカル冗長ストレージ (LRS):Azure Storage の低コストのデータ冗長性](storage-redundancy-lrs.md)
+- [geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)

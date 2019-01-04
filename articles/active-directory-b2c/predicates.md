@@ -1,5 +1,5 @@
 ---
-title: 述語および PredicateValidations - Azure Active Directory B2C | Microsoft Docs
+title: Predicates および PredicateValidations - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C の Identity Experience Framework スキーマのソーシャル アカウント要求変換の例。
 services: active-directory-b2c
 author: davidmu1
@@ -17,32 +17,32 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/28/2018
 ms.locfileid: "47432173"
 ---
-# <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
+# <a name="predicates-and-predicatevalidations"></a>Predicates および PredicateValidations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**述語**と **PredicateValidations** 要素を使用して検証プロセスを実行し、適切に形式設定されたデータのみが Azure Active Directory (Azure AD) B2C テナントに入力されるようにすることができます。  
+**Predicates**と **PredicateValidations** 要素を使用して検証プロセスを実行し、適切に形式設定されたデータのみが Azure Active Directory (Azure AD) B2C テナントに入力されるようにすることができます。  
 
 次の図に、要素の関係を示します。  
 
-![述語](./media/predicates/predicates.png)
+![Predicates](./media/predicates/predicates.png)
 
-## <a name="predicates"></a>述語  
+## <a name="predicates"></a>Predicates  
 
-**述語**要素によって、要求タイプの値をチェックする基本的な検証が定義され、`true` または `false` が返されます。 検証は、指定された **Method** 要素と、そのメソッドに関連する **Parameter** 要素のセットを使用して行われます。 例えば、述語によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうか、または文字列要求の値に文字セットが含まれているかどうかをチェックできます。 **UserHelpText** 要素により、チェックが失敗した場合にユーザーに表示されるエラー メッセージが指定されます。 **UserHelpText** 要素の値を、[言語のカスタマイズ](localization.md)を使用してローカライズできます。
+**Predicate**要素によって、要求タイプの値をチェックする基本的な検証が定義され、`true` または `false` が返されます。 検証は、指定された **Method** 要素と、そのメソッドに関連する **Parameter** 要素のセットを使用して行われます。 例えば、述語によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうか、または文字列要求の値に文字セットが含まれているかどうかをチェックできます。 **UserHelpText** 要素により、チェックが失敗した場合にユーザーに表示されるエラー メッセージが指定されます。 **UserHelpText** 要素の値を、[言語のカスタマイズ](localization.md)を使用してローカライズできます。
 
 **Predicates** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| 述語 | 1:n | 述語の一覧。 | 
+| Predicate | 1:n | 述語の一覧。 | 
 
 **Predicate** 要素には、次の属性が含まれています。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ID | [はい] | 述語に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
-| 方法 | [はい] | 検証に使用するメソッドの型。 使用可能な値: **IsLengthRange**、**MatchesRegex**、**IncludesCharacters**、または **IsDateRange**。 **IsLengthRange** 値によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 **MatchesRegex** 値によって、文字列要求値が正規表現に一致するかどうかがチェックされます。 **IncludesCharacters** 値によって、文字列要求値に文字セットが含まれているかどうかがチェックされます。 **IsDateRange** 値によって、日付要求値が、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 |
+| 1Id | はい | 述語に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
+| 方法 | はい | 検証に使用するメソッドの型。 使用可能な値: **IsLengthRange**、**MatchesRegex**、**IncludesCharacters**、または **IsDateRange**。 **IsLengthRange** 値によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 **MatchesRegex** 値によって、文字列要求値が正規表現に一致するかどうかがチェックされます。 **IncludesCharacters** 値によって、文字列要求値に文字セットが含まれているかどうかがチェックされます。 **IsDateRange** 値によって、日付要求値が、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 |
 
 **Predicate** 要素には、次の要素が含まれています。
 
@@ -55,13 +55,13 @@ ms.locfileid: "47432173"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| パラメーター | 1:n | 文字列検証のメソッド タイプのパラメーター。 | 
+| Parameter | 1:n | 文字列検証のメソッド タイプのパラメーター。 | 
 
 **Parameters** 要素には、次の属性が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| ID | 1:1 | パラメーターの識別子。 |
+| Id | 1:1 | パラメーターの識別子。 |
 
 次の例は、文字列の長さ範囲を指定する `Minimum` および `Maximum` パラメーターを持つ `IsLengthRange` メソッドを示しています。
 
@@ -110,7 +110,7 @@ ms.locfileid: "47432173"
 
 ## <a name="predicatevalidations"></a>PredicateValidations 
 
-述語によって、要求タイプに対してチェックを行う検証が定義されますが、**PredicateValidations** は要求タイプに適用できるユーザー入力検証を形式設定する述語セットをグループ化します。 各 **PredicateValidation** 要素には、**Predicate** をポイントする **PredicateReference** 要素のセットを含む **PredicateGroup** 要素のセットが含まれています。 検証に合格するには、要求の値が、**PredicateReference** 要素のセットを持つすべての **PredicateGroup** に基づき、すべての述語のすべてのテストに合格する必要があります。
+predicates によって、要求タイプに対してチェックを行う検証が定義されますが、**PredicateValidations** は要求タイプに適用できるユーザー入力検証を形式設定する述語セットをグループ化します。 各 **PredicateValidation** 要素には、**Predicate** をポイントする **PredicateReference** 要素のセットを含む **PredicateGroup** 要素のセットが含まれています。 検証に合格するには、要求の値が、**PredicateReference** 要素のセットを持つすべての **PredicateGroup** に基づき、すべての述語のすべてのテストに合格する必要があります。
 
 ```XML
 <PredicateValidations>
@@ -140,7 +140,7 @@ ms.locfileid: "47432173"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ID | [はい] | 述語の検証に使用される識別子です。 **ClaimType** 要素は、ポリシーにこの識別子を使用できます。 |
+| Id | はい | 述語の検証に使用される識別子です。 **ClaimType** 要素は、ポリシーにこの識別子を使用できます。 |
 
 **PredicateValidation** 要素には、次の要素が含まれています。
 
@@ -158,7 +158,7 @@ ms.locfileid: "47432173"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ID | [はい] | 述語グループに使用される識別子です。  |
+| Id | はい | 述語グループに使用される識別子です。  |
 
 **PredicateGroups** 要素には、次の要素が含まれています。
 
@@ -183,7 +183,7 @@ ms.locfileid: "47432173"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ID | [はい] | 述語の検証に使用される識別子です。  |
+| Id | はい | 述語の検証に使用される識別子です。  |
 
 
 ## <a name="configure-password-complexity"></a>パスワードの複雑さの構成
@@ -352,7 +352,7 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 
  ## <a name="configure-a-date-range"></a>日付範囲の構成
 
-**Predicates** 要素と **PredicateValidations** 要素を使用して、**UserInputType** の最小および最大日付値を、`DateTimeDropdown` を使用して制御できます。 これを行うには、`IsDateRange` メソッドを使用して**述語**を作成し、最小および最大パラメーターを指定します。
+**Predicates** 要素と **PredicateValidations** 要素を使用して、**UserInputType** の最小および最大日付値を、`DateTimeDropdown` を使用して制御できます。 これを行うには、`IsDateRange` メソッドを使用して **Predicate** を作成し、最小および最大パラメーターを指定します。
 
 ```XML
 <Predicates>

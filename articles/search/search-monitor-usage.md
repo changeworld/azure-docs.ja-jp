@@ -1,5 +1,5 @@
 ---
-title: Azure Search サービスでの使用状況と統計の監視 | Microsoft Docs
+title: 検索サービスの使用状況と統計を監視する - Azure Search
 description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search のリソース使用量とインデックス サイズを追跡記録します。
 author: HeidiSteen
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 286569eef8e17909ecab017b67b0ffc044a4bfe4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795111"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314161"
 ---
-# <a name="monitoring-an-azure-search-service"></a>Azure Search サービスの監視
+# <a name="monitor-an-azure-search-service-in-azure-portal"></a>Azure portal で Azure Search サービスを監視する
 
 Azure Search には検索サービスの使用状況とパフォーマンスを追跡する各種リソースが用意されています。 メトリック、ログ、インデックスの統計、および Power BI の監視拡張機能にアクセスできます。 この記事では、異なる監視戦略を有効にする方法と、結果のデータを解釈する方法について説明します。
 
@@ -26,9 +27,9 @@ Azure Search には検索サービスの使用状況とパフォーマンスを�
 
 Azure Search は次の 3 つの異なるメトリックについてデータを収集します。
 
-* 検索の待ち時間: 検索サービスが検索クエリを処理するために必要とした時間。分単位で集計。
-* 1 秒あたりの検索クエリ数 (QPS): 1 秒間に受信した検索クエリの数。分単位で集計。
-* スロットルされた検索クエリの割合: スロットルされた検索クエリの割合。分単位で集計。
+* 検索の待ち時間: 検索サービスが検索クエリを処理するために必要とした時間。分単位で集計されます。
+* 1 秒あたりの検索クエリ数 (QPS): 1 秒間に受信した検索クエリの数。分単位で集計されます。
+* スロットルされた検索クエリの割合: スロットルされた検索クエリの割合。分単位で集計されます。
 
 ![QPS アクティビティのスクリーン ショット][1]
 
@@ -92,38 +93,40 @@ PowerShell または Azure CLI の使用を有効にする方法については�
 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
 各 BLOB には、同じ時間帯に行われたすべての操作に関するレコードが含まれます。
 
-| Name | type | 例 | メモ |
+| 名前 | 型 | 例 | メモ |
 | --- | --- | --- | --- |
 | time |Datetime |"2015-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
-| resourceId |文字列 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
-| operationName |文字列 |"Query.Search" |操作の名前 |
-| operationVersion |文字列 |"2015-02-28" |使用されている API バージョン |
-| category |文字列 |"OperationLogs" |定数 |
-| resultType |文字列 |"Success" |使用可能な値: Success または Failure |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
+| operationName |string |"Query.Search" |操作の名前 |
+| operationVersion |string |"2015-02-28" |使用されている API バージョン |
+| category |string |"OperationLogs" |定数 |
+| resultType |string |"Success" |指定できる値成功または失敗 |
 | resultSignature |int |200 |HTTP の結果コード |
 | durationMS |int |50 |操作時間 (ミリ秒) |
 | properties |オブジェクト |次の表を参照 |操作固有データを含むオブジェクト |
 
 **プロパティのスキーマ**
-| Name | type | 例 | メモ |
+
+| 名前 | 型 | 例 | メモ |
 | --- | --- | --- | --- |
-| Description |文字列 |"GET /indexes('content')/docs" |操作のエンドポイント |
-| Query |文字列 |"?search=AzureSearch&$count=true&api-version=2015-02-28" |クエリ パラメーター |
+| 説明 |string |"GET /indexes('content')/docs" |操作のエンドポイント |
+| クエリ |string |"?search=AzureSearch&$count=true&api-version=2015-02-28" |クエリ パラメーター |
 | Documents |int |42 |処理されたドキュメント数 |
-| IndexName |文字列 |"testindex" |操作に関連付けられているインデックスの名前 |
+| IndexName |string |"testindex" |操作に関連付けられているインデックスの名前 |
 
 #### <a name="metrics-schema"></a>メトリックのスキーマ
-| Name | type | 例 | メモ |
+
+| 名前 | 型 | 例 | メモ |
 | --- | --- | --- | --- |
-| resourceId |文字列 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
-| metricName |文字列 |"Latency" |メトリックの名前 |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
+| metricName |string |"Latency" |メトリックの名前 |
 | time |Datetime |"2015-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | average |int |64 |メトリックの時間間隔内の生のサンプルの平均値 |
 | minimum |int |37 |メトリックの時間間隔内の生のサンプルの最小値 |
 | maximum |int |78 |メトリックの時間間隔内の生のサンプルの最大値 |
 | total |int |258 |メトリックの時間間隔内の生のサンプルの合計値 |
 | count |int |4 |メトリックの生成に使用される生のサンプル数 |
-| timegrain |文字列 |"PT1M" |ISO 8601 でのメトリックの時間グレイン |
+| timegrain |string |"PT1M" |ISO 8601 でのメトリックの時間グレイン |
 
 すべてのメトリックは、1 分間隔で報告されます。 各メトリックは、1 分あたりの最小値、最大値、および平均値を公開します。
 

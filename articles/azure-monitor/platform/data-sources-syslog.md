@@ -1,6 +1,6 @@
 ---
-title: OMS Log Analytics の Syslog メッセージの収集と分析 | Microsoft Docs
-description: Syslog は、Linux に共通のイベント ログ プロトコルです。 この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。
+title: Azure Monitor の Syslog メッセージの収集と分析 | Microsoft Docs
+description: Syslog は、Linux に共通のイベント ログ プロトコルです。 この記事では、Azure Monitor の Syslog メッセージの収集を構成する方法と作成されるレコードの詳細について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -8,35 +8,33 @@ manager: carmonm
 editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 11/28/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: f2347601a775c0069c36d8ca453f677f6d0e1568
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 263f9dcd038bd9ec20036983e273f56191e9a300
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336659"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436723"
 ---
-# <a name="syslog-data-sources-in-log-analytics"></a>Log Analytics の Syslog データ ソース
-Syslog は、Linux に共通のイベント ログ プロトコルです。  アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。  OMS Agent for Linux がインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。  エージェントは Log Analytics にメッセージを送信し、そこで対応するレコードが OMS リポジトリに作成されます。  
+# <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor の Syslog データ ソース
+Syslog は、Linux に共通のイベント ログ プロトコルです。  アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。  Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。  エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。  
 
 > [!NOTE]
-> Log Analytics では、rsyslog または syslog-ng によって送信されたメッセージの収集がサポートされています。rsyslog は既定のデーモンです。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、 [rsyslog デーモン](http://rsyslog.com) をインストールし、sysklog を置き換えるように構成する必要があります。
+> Azure Monitor では、rsyslog または syslog-ng によって送信されたメッセージの収集がサポートされています。rsyslog は既定のデーモンです。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、 [rsyslog デーモン](http://rsyslog.com) をインストールし、sysklog を置き換えるように構成する必要があります。
 >
 >
 
 ![Syslog collection](media/data-sources-syslog/overview.png)
 
 ## <a name="configuring-syslog"></a>Syslog の構成
-OMS Agent for Linux は、構成で指定されているファシリティと重大度を持つイベントだけを収集します。  Azure Portal を通じて、または Linux エージェントで構成ファイルを管理することによって、Syslog を構成できます。
+Linux 用 Log Analytics エージェントは、構成で指定されているファシリティと重大度のイベントだけを収集します。  Azure Portal を通じて、または Linux エージェントで構成ファイルを管理することによって、Syslog を構成できます。
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Azure Portal での Syslog の構成
-[Log Analytics の [詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)で Syslog を構成します。  この構成は、各 Linux エージェントの構成ファイルに配信されます。
+[[詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)で Syslog を構成します。  この構成は、各 Linux エージェントの構成ファイルに配信されます。
 
 新しいファシリティを追加するには、その名前を入力して、 **+** で Syslog を構成します。  各ファシリティについて、選択した重大度のメッセージのみが収集されます。  各ファシリティで収集する重大度のチェック ボックスをオンにします。  メッセージをフィルター処理するための追加条件を指定することはできません。
 
@@ -45,7 +43,7 @@ OMS Agent for Linux は、構成で指定されているファシリティと重
 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  各 Linux エージェントで Syslog を手動で構成する場合は、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスをオフにします。
 
 ### <a name="configure-syslog-on-linux-agent"></a>Linux エージェントでの Syslog の構成
-[Linux クライアントに OMS エージェントがインストールされている](../../log-analytics/log-analytics-quick-collect-linux-computer.md)場合は、収集されるメッセージのファシリティと重大度を定義する既定の syslog 構成ファイルがインストールされます。  このファイルを修正して、構成を変更することができます。  クライアントにインストールされている Syslog デーモンによって、構成ファイルは異なります。
+[Linux クライアントに Log Analytics エージェントがインストールされている](../../azure-monitor/learn/quick-collect-linux-computer.md)場合は、収集されるメッセージのファシリティと重大度を定義する既定の syslog 構成ファイルがインストールされます。  このファイルを修正して、構成を変更することができます。  クライアントにインストールされている Syslog デーモンによって、構成ファイルは異なります。
 
 > [!NOTE]
 > syslog 構成を編集した場合、変更を有効にするには、syslog デーモンを再起動する必要があります。
@@ -138,7 +136,7 @@ syslog-ng の構成ファイルは、**/etc/syslog-ng/syslog-ng.conf** にあり
 
 
 ### <a name="collecting-data-from-additional-syslog-ports"></a>追加の Syslog ポートからデータを収集する
-OMS エージェントは、ポート 25224 でローカル クライアント上の Syslog メッセージを待ち受けます。  エージェントをインストールすると、既定の syslog 構成が適用され、次の場所で見つかります。
+Log Analytics エージェントは、ポート 25224 でローカル クライアント上の Syslog メッセージを待ち受けます。  エージェントをインストールすると、既定の syslog 構成が適用され、次の場所で見つかります。
 
 * Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
 * Syslog-ng: `/etc/syslog-ng/syslog-ng.conf`
@@ -180,7 +178,7 @@ OMS エージェントは、ポート 25224 でローカル クライアント�
         destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
         log { source(s_src); filter(f_custom_filter); destination(d_custom_dest); };
 
-変更の完了後、構成変更を適用するために Syslog と OMS エージェント サービスを再起動する必要があります。   
+変更の完了後、構成変更を適用するために Syslog と Log Analytics エージェント サービスを再起動する必要があります。   
 
 ## <a name="syslog-record-properties"></a>Syslog レコードのプロパティ
 Syslog レコードの型は **Syslog** になり、次の表に示すプロパティがあります。
@@ -207,6 +205,6 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 | Syslog &#124; summarize AggregatedValue = count() by Facility |ファシリティごとの Syslog レコードの数です。 |
 
 ## <a name="next-steps"></a>次の手順
-* [ログ検索](../../log-analytics/log-analytics-queries.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。
-* [カスタム フィールド](../../log-analytics/log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
-* [Linux エージェントを構成](../../log-analytics/log-analytics-quick-collect-linux-computer.md) して、他の種類のデータを収集します。
+* [ログ クエリ](../../azure-monitor/log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。
+* [カスタム フィールド](../../azure-monitor/platform/custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
+* [Linux エージェントを構成](../../azure-monitor/learn/quick-collect-linux-computer.md) して、他の種類のデータを収集します。

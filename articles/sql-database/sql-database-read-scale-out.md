@@ -11,19 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: deadbc8186d80b050fdb40879ecf29fd229c8709
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 12/05/2018
+ms.openlocfilehash: 16737ed525147968c97ca20a9f4e674a0dee34fc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465451"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955056"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する (プレビュー)
 
 **読み取りスケールアウト**では、1 つの読み取り専用レプリカの処理能力を使用して、Azure SQL Database の読み取り専用ワークロードを負荷分散できます。
-
-## <a name="overview-of-read-scale-out"></a>読み取りスケールアウトの概要
 
 Premium 階層 ([DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)) または Business Critical 階層 ([仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)) の各データベースは、可用性 SLA をサポートするために、複数の Always ON レプリカによって自動的にプロビジョニングされます。
 
@@ -47,7 +45,7 @@ Premium 階層 ([DTU ベースの購入モデル](sql-database-service-tiers-dtu
 > [!NOTE]
 > 領域内のレプリケーションの待機時間は短く、このような状況はまれです。
 
-## <a name="connecting-to-a-read-only-replica"></a>読み取り専用レプリカに接続する
+## <a name="connect-to-a-read-only-replica"></a>読み取り専用レプリカに接続する
 
 データベースの読み取りスケールアウトを有効にすると、クライアントによって提供された接続文字列の `ApplicationIntent` オプションにより、接続が書き込みレプリカと読み取り専用レプリカのどちらにルーティングされるかが指定されます。 具体的には、`ApplicationIntent` 値が `ReadWrite` (既定値) の場合、接続はデータベースの読み取り/書き込みレプリカにリダイレクトされます。 これは、既存の動作と同じです。 `ApplicationIntent` 値が `ReadOnly` の場合、接続は読み取り専用レプリカにルーティングされます。
 
@@ -65,6 +63,8 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
+## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>接続先が読み取り専用レプリカであることを確認する
+
 次のクエリを実行することにより、読み取り専用レプリカに接続しているかどうかを確認することができます。 読み取り専用レプリカに接続している場合は、READ_ONLY が返されます。
 
 ```SQL
@@ -76,9 +76,9 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 ## <a name="enable-and-disable-read-scale-out"></a>読み取りスケールアウトの有効化と無効化
 
-読み取りスケールアウトは、既定では[マネージド インスタンス](sql-database-managed-instance.md)の Business Critical 階層 (プレビュー) で有効になります。 [論理サーバーに配置されたデータベース](sql-database-logical-servers.md)の Premium および Business Critical 階層で明示的に有効にする必要があります。 ここでは、読み取りスケールアウトを有効または無効にする方法について説明します。
+読み取りスケールアウトは、既定では[マネージド インスタンス](sql-database-managed-instance.md)の Business Critical レベルで有効になります。 [論理サーバーに配置されたデータベース](sql-database-logical-servers.md)の Premium および Business Critical 階層で明示的に有効にする必要があります。 ここでは、読み取りスケールアウトを有効または無効にする方法について説明します。
 
-### <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Azure PowerShell を使用して読み取りスケールアウトを有効または無効にする
+### <a name="powershell-enable-and-disable-read-scale-out"></a>PowerShell:読み取りスケールアウトの有効化と無効化
 
 Azure PowerShell で読み取りスケールアウトを管理するには、2016 年 12 月以降のリリースの Azure PowerShell が必要です。 最新の PowerShell リリースについては、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) に関するページを参照してください。
 
@@ -102,7 +102,7 @@ Set-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserve
 New-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
 ```
 
-### <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Azure SQL Database REST API を使用して読み取りスケールアウトを有効または無効にする
+### <a name="rest-api-enable-and-disable-read-scale-out"></a>REST API:読み取りスケールアウトの有効化と無効化
 
 読み取りスケールアウトが有効になっているデータベースを作成したり、既存のデータベースの読み取りスケールアウトを有効または無効にしたりするには、次の要求のサンプルのように `readScale` プロパティを `Enabled` または `Disabled` に設定して、対応するデータベース エンティティを作成または更新します。
 

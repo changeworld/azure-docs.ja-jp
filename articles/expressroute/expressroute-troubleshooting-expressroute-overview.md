@@ -1,28 +1,22 @@
 ---
-title: '接続の検証: Azure ExpressRoute トラブルシューティング ガイド | Microsoft Docs'
+title: 接続の検証 - ExpressRoute トラブルシューティング ガイド:Azure | Microsoft Docs
 description: このページでは、ExpressRoute 回線のエンド ツー エンド接続のトラブルシューティングと検証の手順について説明します。
-documentationcenter: na
 services: expressroute
 author: rambk
-manager: tracsman
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/26/2017
-ms.author: cherylmc
-ms.openlocfilehash: 10d4779d05d95822ffd487db1ce8992d199c495f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.author: rambala
+ms.custom: seodec18
+ms.openlocfilehash: a64aa59b205e8986b80a575c50041f826606e16f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753450"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272815"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
-ExpressRoute は、接続プロバイダーが提供するプライベート接続を介してオンプレミスのネットワークを Microsoft クラウドに拡張するもので、次の 3 つの異なるネットワーク ゾーンが含まれています。
+この記事は、ExpressRoute 接続の検証とトラブルシューティングに役立ちます。 ExpressRoute は、接続プロバイダーが提供するプライベート接続を介してオンプレミスのネットワークを Microsoft クラウドに拡張するもので、次の 3 つの異なるネットワーク ゾーンが含まれています。
 
 -   顧客のネットワーク
 -   プロバイダーのネットワーク
@@ -44,10 +38,10 @@ ExpressRoute は、接続プロバイダーが提供するプライベート接�
 ExpressRoute 接続モデル (クラウド交換コロケーション、ポイント ツー ポイントのイーサネット接続、または任意の環境間 (IPVPN)) に応じて、ネットワーク ポイント 3 と 4 がスイッチになる場合があります (レイヤー 2 デバイス)。 図に示されている主なネットワーク ポイントは次のとおりです。
 
 1.  顧客のコンピューティング デバイス (例: サーバーや PC)
-2.  CE: 顧客のエッジ ルーター 
-3.  PE (CE に接続): 顧客のエッジ ルーターに接続している、プロバイダーのエッジ ルーターまたはスイッチ このドキュメントでは PE-CE と呼びます。
-4.  PE (MSEE に接続): MSEE に接続している、プロバイダーのエッジ ルーターまたはスイッチ このドキュメントでは PE-MSEE と呼びます。
-5.  MSEE: Microsoft エンタープライズ エッジ (MSEE) ExpressRoute ルーター
+2.  CE:顧客のエッジ ルーター 
+3.  PE (CE に接続):顧客のエッジ ルーターに接続している、プロバイダーのエッジ ルーターまたはスイッチ。 このドキュメントでは PE-CE と呼びます。
+4.  PE (MSEE に接続):MSEE に接続している、プロバイダーのエッジ ルーターまたはスイッチ。 このドキュメントでは PE-MSEE と呼びます。
+5.  MSEE:Microsoft エンタープライズ エッジ (MSEE) ExpressRoute ルーター
 6.  仮想ネットワーク (VNet) ゲートウェイ
 7.  Azure VNet 上のコンピューティング デバイス
 
@@ -161,7 +155,7 @@ ExpressRoute 回線が運用可能かどうかを確認するには、特に次�
     Sku                              : Standard
     Status                           : Enabled
 
-ExpressRoute 回線が運用可能かどうかを確認するには、特に次のフィールドに注目してください: ServiceProviderProvisioningState : Provisioned Status                           : Enabled
+ExpressRoute 回線が運用可能かどうかを確認するには、特に次のフィールドに注目してください。ServiceProviderProvisioningState:Provisioned Status                           :Enabled
 
 >[!NOTE]
 >*Status* が有効になっていない場合は、[Microsoft サポート][Support]にお問い合わせください。 *ServiceProviderProvisioningState* がプロビジョニング済みになっていない場合は、サービス プロバイダーにお問い合わせください。
@@ -169,7 +163,7 @@ ExpressRoute 回線が運用可能かどうかを確認するには、特に次�
 >
 
 ## <a name="validate-peering-configuration"></a>ピアリング構成を検証する
-サービス プロバイダーが ExpressRoute 回線のプロビジョニングを完了すると、MSEE-PR (4) と MSEE (5) の間の ExpressRoute 回線でルーティング構成を作成できます。 各 ExpressRoute 回線では、1 つ、2 つ、または 3 つのルーティング コンテキストを有効にしておくことができます。これらのルーティング コンテキストとは、Azure プライベート ピアリング (Azure 内のプライベート仮想ネットワークへのトラフィック)、Azure パブリック ピアリング (Azure 内のパブリック IP アドレスへのトラフィック)、Microsoft ピアリング (Office 365 と Dynamics 365 へのピアリング) です。 ルーティング構成の作成と変更方法の詳細については、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください。
+サービス プロバイダーが ExpressRoute 回線のプロビジョニングを完了すると、MSEE-PR (4) と MSEE (5) の間の ExpressRoute 回線でルーティング構成を作成できます。 各 ExpressRoute 回線では、1 つ、2 つ、または 3 つのルーティング コンテキストを有効にしておくことができます。これらのルーティング コンテキストとは、Azure プライベート ピアリング (Azure 内のプライベート仮想ネットワークへのトラフィック)、Azure パブリック ピアリング (Azure 内のパブリック IP アドレスへのトラフィック)、Microsoft ピアリング (Office 365 と Dynamics 365 へのトラフィック) です。 ルーティング構成の作成と変更方法の詳細については、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください。
 
 ### <a name="verification-via-the-azure-portal"></a>Azure Portal を使用した検証
 

@@ -1,20 +1,21 @@
 ---
-title: Azure Stream Analytics ジョブを認証するマネージド ID を Azure Data Lake Storage Gen1 出力で使用する (プレビュー)
-description: ''
+title: Azure Data Lake Storage Gen1 出力に対して Azure Stream Analytics ジョブを認証する
+description: この記事では、マネージド ID を使用して、Azure Data Lake Storage Gen1 出力に対してご自身の Azure Stream Analytics ジョブを認証する方法について説明します。
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/27/2018
-ms.openlocfilehash: 41b3dcc03f7cfbfee11798738a3b2daaf5e96741
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: bb25f237450a83a34645ad4dfd9a2839c5525c6f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365290"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090433"
 ---
-# <a name="use-managed-identities-to-authenticate-azure-stream-analytics-jobs-to-azure-data-lake-storage-gen1-output-preview"></a>Azure Stream Analytics ジョブを認証するマネージド ID を Azure Data Lake Storage Gen1 出力で使用する (プレビュー)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する (プレビュー)
 
 Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力でのマネージド ID 認証をサポートします。 ID は、特定の Stream Analytics ジョブを表す Azure Active Directory に登録済みのマネージド アプリケーションであり、対象のリソースを認証するために使用できます。 マネージド ID は、パスワードの変更や 90 日ごとに発生するユーザー トークンの有効期限切れによる再認証の必要性などのユーザー ベースの認証方法の制限を排除します。 さらに、マネージド ID は、Azure Data Lake Storage Gen1 に出力する Stream Analytics ジョブのデプロイの自動化で役に立ちます。
 
@@ -32,7 +33,7 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
    構成が保存されると、サービス プリンシパルのオブジェクト ID (OID) が、次に示すようにプリンシパル ID として表示されます。
 
-   ![Stream Analytics のプリンシパル ID](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
+   ![Stream Analytics サービス プリンシパル ID](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
  
    サービス プリンシパルは、Stream Analytics ジョブと同じ名前を持ちます。 たとえば、ジョブの名前が **MyASAJob** であれば、作成されるサービス プリンシパルの名前も **MyASAJob** になります。
 
@@ -56,11 +57,11 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
  
 8. **[アクセス許可]** ウィンドウで、**[書き込み]** と **[実行]** のアクセス許可をオンにし、割当先として **[このフォルダーとすべての子]** を選択します。 次に、**[OK]** をクリックします。
 
-   ![アクセス許可の選択](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
+   ![書き込みと実行のアクセス許可を選択](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
 9. 次のように、サービス プリンシパルが、**[アクセス]** ウィンドウの **[割り当てられたアクセス許可]** の下に表示されます。 これで、Stream Analytics ジョブに戻って、ジョブを開始できます。
 
-   ![アクセスの一覧](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
+   ![ポータルの Stream Analytics アクセス リスト](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
    Data Lake Storage Gen1 ファイル システムのアクセス許可の詳細については、「[Azure Data Lake Store Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md)」を参照してください。
 

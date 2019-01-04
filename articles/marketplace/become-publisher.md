@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 35feb1b2aa593d403b3b54781ddbba41964d15e5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: bc6e77643783e1e9f124bc98ea1eb910304a5f32
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394835"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846472"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>クラウド マーケットプレース パブリッシャーになる
 
@@ -78,9 +78,9 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 マーケットプレース オンボーディング チームは、手順 3 で提示されたマーケットプレース登録の詳細情報を検証します。 承認されると、[Cloud Partner Portal](https://cloudpartner.azure.com) へのサインイン時に、アカウント資格情報とガイダンスを記載したウェルカム メールを受信します。
 
 [Cloud Partner Portal](https://cloudpartner.azure.com) を使用して、マーケットプレースのオファーを作成、公開、および管理します。 承認のウェルカム メールを受信すると、お使いの Microsoft アカウントですぐに [Cloud Partner Portal](https://cloudpartner.azure.com) にログインして、マーケットプレースへの公開とオファーの作成に関する詳細な技術情報にアクセスできます。 
-*   Cloud Partner Portal の使用に関する詳細については、[学習のセクションにある概要に関する記事を確認してください](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal)。 これらの詳細情報にアクセスするには、Cloud Partner Portal にログインする必要があります。
+*   Cloud Partner Portal の使用に関する詳細については、[学習のセクションにある概要に関する記事を確認してください](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal)。 これらの詳細情報にアクセスするには、Cloud Partner Portal にログインする必要があります。
 *   質問がある場合やオンボーディング概要コールをスケジュール設定したい場合は、このパブリッシャー ガイドの他の記事を確認するか、または Cloud Partner Portal 内から [問題の種類] > [Marketplace Onboarding]\(マーケットプレースのオンボード\) でサポート要求を開いてください。
-*   ウェルカム メールを受信しなかった場合は、迷惑メール フォルダーで "Welcome to Microsoft Marketplace!" という件名の電子メールをチェックしてください。 迷惑メール フォルダーに電子メールがない場合は、[Microsoft サポートにお問い合わせ](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)ください。 [サポート] ページで、[問題の種類] > [Marketplace Onboarding]\(マーケットプレースのオンボード\) を選択してください。  Marketplace パブリッシャー オンボーディング チームが、快く問い合わせに対応します。 
+*   ウェルカム メールを受信しなかった場合は、迷惑メール フォルダーで "Welcome to Microsoft Marketplace!" という件名の電子メールをチェックしてください。 迷惑メール フォルダーに電子メールがない場合は、[Microsoft サポートにお問い合わせ](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)ください。 [サポート] ページで、次を選択してください。[問題の種類] > [Marketplace Onboarding]\(マーケットプレースのオンボード\)。  Marketplace パブリッシャー オンボーディング チームが、快く問い合わせに対応します。 
 
 
 ## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5.デベロッパー センターに登録する (トランザクション公開オプションのみ) 
@@ -104,7 +104,7 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 
 
 ## <a name="next-steps"></a>次の手順
-* マーケットプレースのストアフロントについて確認する: [AppSource と Azure Marketplace の比較](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)
+* マーケットプレースのネットショップについて確認する:[AppSource と Azure Marketplace の比較](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)
 *   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
 
  

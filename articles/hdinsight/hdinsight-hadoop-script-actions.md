@@ -9,31 +9,28 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 21c7b94f694e8a2cfe6abfd74bbc616ade5dad82
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f0d6c22d54de0486ad679f93343f0e7b208f21f4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008353"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384057"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>HDInsight の Windows ベースのクラスター用 Script Action スクリプトを開発する
 HDInsight 用の Script Action スクリプトを記述する方法について説明します。 Script Action スクリプトの使用方法については、「 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。 Linux ベースの HDInsight クラスターに関する同様の記事については、「 [HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
 
 
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースのクラスターでのスクリプト アクションの使用方法について詳しくは、[HDInsight でのスクリプト アクションの開発 (Linux) ](hdinsight-hadoop-script-actions-linux.md)に関するページをご覧ください。
->
->
 
 
+Script Action は、Apache Hadoop クラスターで実行される追加のソフトウェアのインストールや、クラスターにインストールされているアプリケーションの構成を変更するために使用することができます。 Script Action は、HDInsight クラスターがデプロイされる際にクラスター ノードで実行されるスクリプトであり、クラスター内のノードが HDInsight 構成を完了すると実行されます。 Script Action はシステム管理者アカウント権限で実行され、完全なアクセス権をクラスター ノードに提供します。 各クラスターには、指定された順序で実行される Script Action の一覧が提供されます。
 
-Script Action は、Hadoop クラスターで実行される追加のソフトウェアのインストールや、クラスターにインストールされているアプリケーションの構成を変更するために使用することができます。 Script Action は、HDInsight クラスターがデプロイされる際にクラスター ノードで実行されるスクリプトであり、クラスター内のノードが HDInsight 構成を完了すると実行されます。 Script Action はシステム管理者アカウント権限で実行され、完全なアクセス権をクラスター ノードに提供します。 各クラスターには、指定された順序で実行される Script Action の一覧が提供されます。
-
-> [!NOTE]
+> [!NOTE]  
 > 次のようなエラー メッセージが表示されることがあります。
 >
-> System.Management.Automation.CommandNotFoundException; ExceptionMessage : 用語 'Save-HDIFile' は、コマンドレット、関数、スクリプト ファイル、または操作可能なプログラムの名前として認識されません。 名前が正しく記述されていることを確認し、パスが含まれている場合はそのパスが正しいことを確認してから、再試行してください。
+> System.Management.Automation.CommandNotFoundException;ExceptionMessage:用語 'Save-HDIFile' は、コマンドレット、関数、スクリプト ファイル、または操作可能なプログラムの名前として認識されません。 名前が正しく記述されていることを確認し、パスが含まれている場合はそのパスが正しいことを確認してから、再試行してください。
+> 
 > これは、ヘルパー メソッドを含めていなかったためです。  「 [カスタム スクリプトのためのヘルパー メソッド](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts)」を参照してください。
 >
 >
@@ -98,16 +95,16 @@ HDInsight は、HDInsight クラスターで追加のコンポーネントをイ
 
 | Name | スクリプト |
 | --- | --- |
-| **Spark のインストール** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1` 「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。 |
+| **Spark のインストール** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1` 「[HDInsight クラスターで Apache Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。 |
 | **R のインストール** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1` [HDInsight クラスターでの R のインストールと使用](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster)に関する記事を参照してください。 |
-| **Solr のインストール** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1` [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md) をご覧ください。 |
-| **Giraph のインストール** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1` [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md) をご覧ください。 |
-| **Hive ライブラリの事前読み込み** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1` 「[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください。 |
+| **Solr のインストール** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1` 「[HDInsight クラスターで Apache Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)」を参照してください。 |
+| **Giraph のインストール** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1` 「[HDInsight クラスターで Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」を参照してください。 |
+| **Hive ライブラリの事前読み込み** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1` 「[HDInsight クラスター作成時の Apache Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください |
 
 
 Script Action は、Azure ポータル、Azure PowerShell から、または HDInsight .NET SDK を使用してデプロイできます。  詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]」をご覧ください。
 
-> [!NOTE]
+> [!NOTE]  
 > サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。 HDInsight クラスター バージョンの詳細については、「 [HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
 >
 >
@@ -157,25 +154,25 @@ Script Action ヘルパー メソッドは、カスタム スクリプトの記�
 ## <a name="best-practices-for-script-development"></a>スクリプトの開発におけるベスト プラクティス
 HDInsight クラスター向けのカスタム スクリプトを開発する際、留意すべきベスト プラクティスがあります。
 
-* Hadoop のバージョンのチェック
+* Hadoop のバージョンのチェック。
 
     HDInsight Version 3.1 (Hadoop 2.4) 以降のみが、Script Action を使用したクラスターでのカスタム コンポーネントのインストールをサポートします。 カスタム スクリプトでは、スクリプト内のその他のタスクの実行を続行する前に、バージョンをチェックするために、 **Get-HDIHadoopVersion** ヘルパー メソッドを使用する必要があります。
-* スクリプト リソースへの安定したリンクの提供
+* スクリプト リソースへの安定したリンクの提供。
 
     ユーザーは、クラスターのカスタマイズで使用されるすべてのスクリプトとその他のアーティファクトがクラスターの有効期間全体で使用できること、実行中これらのファイルのバージョンが変更されないことを確認する必要があります。 クラスター内のノードの再イメージ化が必要な場合、これらのリソースが必要になります。 ベスト プラクティスとして、すべてをダウンロードして、ユーザーを制御するストレージ アカウントにアーカイブします。 このアカウントは、既定のストレージ アカウントか、カスタマイズされたクラスターのデプロイ時に指定されている追加のストレージ アカウントのいずれかです。
     たとえば、ドキュメントに用意されている Spark と R のカスタマイズされたクラスターのサンプルでは、ストレージ アカウント https://hdiconfigactions.blob.core.windows.net/ にリソースのローカル コピーがあります。
-* クラスターのカスタマイズ スクリプトはべき等にする
+* クラスターのカスタマイズ スクリプトはべき等にする。
 
-    クラスターの有効期間中に HDInsight クラスターのノードが再イメージ化されることを前提にする必要があります。 クラスターのカスタマイズ スクリプトは、クラスターが再イメージ化されるたびに実行されます。 再イメージ化の際に、クラスターの最初の作成時に初めてスクリプトが実行された直後と同じカスタマイズ状態に戻ることを確認するという意味で、このスクリプトはべき等であるように設計する必要があります。 たとえば、カスタム スクリプトが最初の実行時にアプリケーションを D:\AppLocation にインストールする場合、その後スクリプトを実行するたびに、再イメージ化の際、スクリプトはアプリケーションが D:\AppLocation に存在するかどうかを確認した後で、スクリプト内の他のステップを続行する必要があります。
-* 最適な場所にカスタム コンポーネントをインストールする
+    HDInsight クラスターのノードはクラスターの有効期間中に再イメージ化されることを予測する必要があります。 クラスターのカスタマイズ スクリプトは、クラスターが再イメージ化されるたびに実行されます。 再イメージ化の際に、クラスターの最初の作成時に初めてスクリプトが実行された直後と同じカスタマイズ状態に戻ることを確認するという意味で、このスクリプトはべき等であるように設計する必要があります。 たとえば、カスタム スクリプトが最初の実行時にアプリケーションを D:\AppLocation にインストールする場合、その後スクリプトを実行するたびに、再イメージ化の際、スクリプトはアプリケーションが D:\AppLocation に存在するかどうかを確認した後で、スクリプト内の他のステップを続行する必要があります。
+* 最適な場所にカスタム コンポーネントをインストールする。
 
     クラスター ノードが再イメージ化されると、C:\ リソース ドライブと D:\ システム ドライブは再フォーマットされ、それらのドライブにインストールされたデータとアプリケーションが失われる可能性があります。 クラスターの一部である Azure 仮想マシン (VM) ノードが停止して、新しいノードに置き換えられた場合にも失われる可能性があります。 コンポーネントは D:\ ドライブやクラスタ上の C:\apps にインストールできます。 C:\ ドライブのその他の場所はすべて予約されています。 クラスターのカスタマイズのスクリプトに、アプリケーションやライブラリがインストールされる場所を指定します。
-* クラスターのアーキテクチャの高可用性を確保
+* クラスターのアーキテクチャの高可用性を確保。
 
     HDInsight は、高可用性を確保するために、アクティブ / パッシブ アーキテクチャを備えています。1 つのヘッドノードはアクティブ モード (HDInsight サービスが実行されている) であり、その他のヘッドノードはスタンバイ モード (HDInsight サービスが実行されていない) です。 HDInsight サービスが中断されると、ノードはアクティブ モードおよびパッシブ モードを切り替えます。 高可用性を確保する目的でスクリプト アクションを使用して両方のヘッド ノードにサービスをインストールする場合、HDInsight のフェールオーバー メカニズムが、このようなユーザーがインストールしたサービスを自動的にフェールオーバーできなくなるため、注意してください。 そのため、高可用性が期待される HDInsight ヘッド ノードにユーザーがインストールしたサービスは、アクティブ/パッシブ モードの場合に独自のフェールオーバーのメカニズムを持つか、アクティブ　 / アクティブ モードになる必要があります。
 
     *ClusterRoleCollection* パラメーターに値としてヘッドノードの役割を指定すると、両方のヘッドノードで HDInsight のスクリプト アクション コマンドが実行されます。 そのため、カスタム スクリプトの設計時には、スクリプトがこの設定を認識するようにしてください。 両方のヘッドノードで同じサービスがインストールし、開始され、互いに競合するという問題を回避する必要があります。 また、再イメージ化の際にデータが失われるので、スクリプト アクションを通じてインストールされるソフトウェアはそうした事象に対して回復可能である必要があります。 多数のノードに分散された高可用性のデータを操作するアプリケーションを設計する必要があります。 同時に再イメージ化できる、クラスター内のノードは最大で 1/5 です。
-* Azure BLOB ストレージを使用するカスタム コンポーネントの構成
+* Azure BLOB ストレージを使用するカスタム コンポーネントの構成。
 
     クラスター ノードにインストールするカスタム コンポーネントは、Hadoop 分散ファイル システム (HDFS) ストレージを使用するように既定で構成されている場合があります。 代わりに Azure BLOB ストレージを使用するには、構成を変更する必要があります。 クラスターの再イメージ化の際に、HDFS ファイル システムはフォーマットされ、保管されているすべてのデータが失われます。 代わりに Azure Blob Storage を使用すると、データは確実に保持されます。
 
@@ -297,9 +294,9 @@ or
 
 ## <a name="see-also"></a>関連項目
 * [Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]
-* [HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]
-* [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)
-* [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)
+* [HDInsight クラスターで Apache Spark をインストールして使用する][hdinsight-install-spark]
+* [HDInsight クラスターに Apache Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)。
+* [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)。
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

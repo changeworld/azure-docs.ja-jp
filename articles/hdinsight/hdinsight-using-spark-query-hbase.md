@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 1136d97ad1c1d02320331e6d2013b68526d5abb4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f76dfc8499d294c2c682c4d9c4cf2cd2f858432f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277904"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408866"
 ---
-# <a name="use-spark-to-read-and-write-hbase-data"></a>Spark を使用して HBase データを読み取る/書き込む
+# <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark を使用した Apache HBase データの読み取り/書き込み
 
-通常、Apache HBase は、低レベルの API (スキャン、取得、および配置) または Phoenix を使用した SQL 構文のいずれかでクエリされます。 Apache は Spark HBase コネクタも備えており、これは HBase に格納されたデータをクエリおよび変更するための便利で効率的な代替手段となります。
+通常、Apache HBase は、低レベルの API (スキャン、取得、および配置) または Apache Phoenix を使用した SQL 構文のいずれかでクエリされます。 Apache は Apache Spark HBase コネクタも備えており、これは HBase に格納されたデータをクエリおよび変更するための便利で効率的な代替手段となります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,9 +38,9 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 5. Spark のスキーマを HBase にマップするカタログを定義します。
 6. RDD または DataFrame API を使用して HBase データと対話します。
 
-## <a name="prepare-sample-data-in-hbase"></a>HBase でサンプル データを準備する
+## <a name="prepare-sample-data-in-apache-hbase"></a>Apache HBase でサンプル データを準備する
 
-この手順では、Spark を使用してクエリできる単純なテーブルを HBase に作成し、データを設定します。
+この手順では、Spark を使用してクエリできる単純なテーブルを Apache HBase に作成し、データを設定します。
 
 1. SSH を使用して、HBase クラスターのヘッド ノードに接続します。 詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 2. HBase シェルを実行します。
@@ -89,7 +89,7 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 
 9. [BLOB のプロパティ] パネルで [ダウンロード] を選択し、ローカル コンピューター上の場所に `hbase-site.xml` を保存します。
 
-    ![[ダウンロード]](./media/hdinsight-using-spark-query-hbase/download.png)
+    ![ダウンロード](./media/hdinsight-using-spark-query-hbase/download.png)
 
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Spark クラスターに hbase-site.xml を配置する
 
@@ -132,7 +132,7 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 
 ## <a name="define-a-catalog-and-query"></a>カタログとクエリを定義する
 
-この手順では、Spark のスキーマを HBase にマップするカタログ オブジェクトを定義します。 
+この手順では、Apache Spark のスキーマを Apache HBase にマップするカタログ オブジェクトを定義します。 
 
 1. 開いている Spark シェルで、次の `import` ステートメントを実行します。
 
@@ -244,4 +244,4 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 
 ## <a name="next-steps"></a>次の手順
 
-* [Spark HBase コネクタ](https://github.com/hortonworks-spark/shc)
+* [Apache Spark HBase コネクタ](https://github.com/hortonworks-spark/shc)

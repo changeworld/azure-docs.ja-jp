@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: 8124b399b859f812ec3bf9f7ea64b6643446a1b5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9de0d8bc389218d3102633b09073b3af323d2ceb
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249322"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011996"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services 用の Azure Event Grid スキーマ
 
@@ -112,9 +112,12 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | previousState | string | イベントの前のジョブの状態。 |
-| state | string | このイベントで通知されるジョブの新しい状態。 例: "Queued: Job はリソースを待っています" や "Scheduled: Job は開始する準備ができています"。|
+| state | string | このイベントで通知されるジョブの新しい状態。 例: "Scheduled:The job is ready to start" または "Finished:The job is finished"。|
 
-Job の状態は、次の値のいずれかが可能です。*Queued**Scheduled**Processing**Finished**Error**Canceled**Canceling*。
+ジョブの状態。値は次のいずれかです。*Queued*、*Scheduled*、*Processing*、*Finished*、*Error*、*Canceled*、*Canceling*
+
+> [!NOTE]
+> *Queued* は **previousState** プロパティでのみ示され、**state** プロパティでは示されません。
 
 ### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobScheduled、JobProcessing、JobCanceling
 
@@ -573,7 +576,7 @@ Job の状態は、次の値のいずれかが可能です。*Queued**Scheduled*
 | DiscontinuityCount | integer | 直近 20 秒に観察された途切れの数。 |
 | NonIncreasingCount | integer | 直近 20 秒に過去のタイムスタンプを受信したデータ チャンクの数。 |
 | UnexpectedBitrate | bool | 直近 20 秒における予想ビットレートと実ビットレートの差が、許容されている上限を超えているかどうか。 IncomingBitrate がビットレートの 2 倍以上または IncomingBitrate がビットレートの 1/2 以下または IncomingBitrate が 0 のとき、かつそのときに限り true。 |
-| State | string | ライブ イベントの状態。 |
+| 状態 | string | ライブ イベントの状態。 |
 | Healthy | bool | カウントとフラグに基づき、取り込みが正常であるかどうかを示します。 OverlapCount = 0 && DiscontinuityCount = 0 && NonIncreasingCount = 0 && UnexpectedBitrate = false の場合、Healthy は true になります。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected

@@ -78,11 +78,11 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_id | [はい] | ID プロバイダーのアプリケーション識別子。 |
+| client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | IdTokenAudience | いいえ  | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
-| authorization_endpoint | [はい] | RFC 6749 に準拠した承認エンドポイントの URL。 |
-| AccessTokenEndpoint | [はい] | RFC 6749 に準拠したトークン エンドポイントの URL。 |  
-| ClaimsEndpoint | [はい] | RFC 6749 に準拠したユーザー情報エンドポイントの URL。 | 
+| authorization_endpoint | はい | RFC 6749 に準拠した承認エンドポイントの URL。 |
+| AccessTokenEndpoint | はい | RFC 6749 に準拠したトークン エンドポイントの URL。 |  
+| ClaimsEndpoint | はい | RFC 6749 に準拠したユーザー情報エンドポイントの URL。 | 
 | AccessTokenResponseFormat | いいえ  | アクセス トークン エンドポイント呼び出しの形式。 たとえば、Facebook では HTTP GET メソッドが必要ですが、アクセス トークン応答は JSON 形式です。 |
 | AdditionalRequestQueryParameters | いいえ  | 追加要求クエリ パラメーター。 たとえば、追加のパラメーターを ID プロバイダーに送信する場合があります。 コンマ区切り記号を使用して、複数のパラメーターを列挙できます。 | 
 | ClaimsEndpointAccessTokenName | いいえ  | アクセス トークンのクエリ文字列パラメーターの名前。 一部の ID プロバイダーの要求エンドポイントでは、GET HTTP 要求をサポートしています。 この場合は、ベアラー トークンは、authorization ヘッダーの代わりに、クエリ文字列パラメーターを使用して送信されます。 |
@@ -102,7 +102,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | [はい] | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |  
+| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |  
 
 ## <a name="redirect-uri"></a>リダイレクト URI
 

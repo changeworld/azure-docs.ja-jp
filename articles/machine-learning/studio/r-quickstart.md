@@ -1,12 +1,12 @@
 ---
-title: Machine Learning 向け R 言語のクイック スタート チュートリアル | Microsoft Docs
+title: Machine Learning Studio 向け R 言語のクイック スタート チュートリアル - Azure | Microsoft Docs
 description: この R プログラミング チュートリアルは、Azure Machine Learning Studio と R 言語を使った予測ソリューションの作成に必要な基本的な事柄を短期間で習得できるように作成されています。
 keywords: クイック スタート、r 言語、r プログラミング言語、r プログラミングのチュートリアル
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 97107bb5ca1a598906cac9adbf508b2d15668e7d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ddd9c1fd8b51c6ae43878cf50ee16737511c82e9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227242"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278663"
 ---
-# <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル
+# <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 向け R プログラミング言語クイック スタート チュートリアル
 
 <!-- Stephen F Elston, Ph.D. -->
 
@@ -32,7 +32,7 @@ ms.locfileid: "36227242"
 
 Microsoft Azure Machine Learning には、多くの強力なマシン ラーニング モジュールとデータ操作モジュールが含まれています。 強力な R 言語は、分析の共通言語という特徴があります。 幸いにも Azure Machine Learning の分析とデータ操作は、R を使用して拡張できます。この組み合わせにより、R の柔軟性と深い分析を活用して、Azure Machine Learning のデプロイメントのスケーラビリティを容易に高めることができます。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ### <a name="forecasting-and-the-dataset"></a>予測とデータ セット
 予測は、広く採用されている非常に役に立つ分析方法です。 その用途は、一般的に季節商品の販売予測や最適な在庫レベルの決定から、マクロ経済変数の予測にまでわたります。 予測は通常、時系列モデルで行われます。
@@ -60,7 +60,7 @@ R コードの小規模な開発、テスト、デバッグを行うには、RSt
 ### <a name="the-execute-r-script-module"></a>R スクリプトの実行モジュール
 Machine Learning Studio では、R スクリプトは [R スクリプトの実行][execute-r-script]モジュール内で実行します。 Machine Learning Studio における [R スクリプトの実行][execute-r-script]モジュールの例を、図 1 に示します。
 
- ![R プログラミング言語: Machine Learning Studio で選択された Execute R Script モジュール][1]
+ ![R プログラミング言語:Machine Learning Studio で選択された Execute R Script モジュール][1]
 
 *図 1: 選択された R スクリプトの実行モジュールを表示する Machine Learning Studio 環境*
 
@@ -1210,7 +1210,7 @@ RMS 誤差を測定する関数を準備したので、ビルドを行い、RMS 
 
 これらの結果から、季節因子をモデルに追加すると、RMS 誤差が大幅に少なくなることがわかります。 それほど意外ではありませんが、トレーニング データの RMS 誤差は、予測よりもわずかに少なくなっています。
 
-## <a id="appendixa"></a>付録 A: RStudio ガイド
+## <a id="appendixa"></a>付録 A:RStudio ガイド
 RStudio はドキュメントが非常に整っているため、この付録では、使用を開始するための RStudio ドキュメントの重要なセクションに対するリンクをいくつか示します。
 
 1. プロジェクトの作成
@@ -1227,7 +1227,7 @@ RStudio はドキュメントが非常に整っているため、この付録で
    
    ブレークポイントのトラブルシューティング機能のドキュメントが https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting にあります。
 
-## <a id="appendixb"></a>付録 B: 参考資料
+## <a id="appendixb"></a>付録 B:参考資料
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio で、R 言語を使用するために必要な基本事項について説明します。 R に精通していない場合、CRAN に 2 つの入門書が用意されています。
 
 * Emmanuel Paradis による『R for Beginners』は入門書として適しています (http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf)。  
@@ -1235,11 +1235,11 @@ RStudio はドキュメントが非常に整っているため、この付録で
 
 R の使用を開始するのに役立つ書籍は、多数存在します。 役に立つものをいくつか紹介します。
 
-* Norman Matloff による『The Art of R Programming; A Tour of Statistical Software Design』は、R のプログラミングに関する優れた入門書です。  
+* Norman Matloff による『The Art of R Programming:A Tour of Statistical Software Design』は、R のプログラミングに関する優れた入門書です。  
 * Paul Teetor による『R Cookbook』は、R の使用に関する問題と解決のアプローチが記載されています。  
 * Robert Kabacoff による『R in Action』はもう 1 つの有用な入門書です。 手引書 Quick R Web サイトは有効なリソースです (http://www.statmethods.net/)。
-* Patrick Burns による『R Inferno』は、R でのプログラミングで発生する可能性のあるいくつかの厄介で困難なトピックに対処している、驚くほどユーモアにあふれた本です。この本は、http://www.burns-stat.com/documents/books/the-r-inferno/ で無料で入手できます。
-* R の高度なトピックを深く理解する場合は、Hadley Wickham による『Advanced R』をお読みください。 この本のオンライン版は、http://adv-r.had.co.nz/ で無料で入手できます。
+* Patrick Burns による『R Inferno』は、R でのプログラミングで発生する可能性のあるいくつかの厄介で困難なトピックに対処している、驚くほどユーモアにあふれた本です。この本は、 http://www.burns-stat.com/documents/books/the-r-inferno/ で無料で入手できます。
+* R の高度なトピックを深く理解する場合は、Hadley Wickham による『Advanced R』をお読みください。 この本のオンライン版は、 http://adv-r.had.co.nz/ で無料で入手できます。
 
 R 時系列パッケージのカタログが、時系列分析用の CRAN タスク ビューにあります (http://cran.r-project.org/web/views/TimeSeries.html)。 特定の時系列オブジェクト パッケージの情報については、そのパッケージのドキュメントを参照する必要があります。
 
@@ -1247,7 +1247,7 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 
 役に立つインターネット リソース:
 
-* DataCamp: DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。 最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。 無料の対話型 R チュートリアルの入手 (https://www.datacamp.com/courses/introduction-to-r)
+* DataCamp:DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。 最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。 無料の対話型 R チュートリアルの入手 (https://www.datacamp.com/courses/introduction-to-r)
 * Programiz からの『Getting started with R』に関するガイド (https://www.programiz.com/r-programming)
 * クラークソン大学の Kelly Black による R クイック チュートリアル (http://www.cyclismo.org/tutorial/R/)
 * http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html に一覧表示されている 60 を超える R リソース

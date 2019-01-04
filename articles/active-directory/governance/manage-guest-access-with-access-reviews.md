@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 06/21/2018
+ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 7d3361b44d47fd97c14f677e5e4bbc6c1ee5ad3f
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: d3cc5f5a7642ba827a46ab5cbc2b0da2cda38731
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607642"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385127"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「 [Azure Active Directory のエディション](../fundamentals/active-directory-whatis.md)」をご覧ください。 この機能 (レビューの作成、レビューへの入力、自分のアクセスの確認などを含む) を操作する各ユーザーにはライセンスが必要です。 
 
-ゲスト ユーザーに自身のアクセス権をレビューするよう依頼する場合は、ゲスト ユーザーのライセンスについて確認しておいてください。 詳細については、[Azure AD B2B コラボレーションのライセンス](../b2b/licensing-guidance.md)に関するページを参照してください。
+ゲスト ユーザーに各自のアクセスのレビューを求めることもできます。 自分自身の組織のユーザーの 1 人に割り当てる有料の Azure AD Premium P2 ライセンスごとに、B2B を使用して、外部ユーザー無料利用分に従って最大 5 人までのゲスト ユーザーを招待できます。 これらのゲスト ユーザーも Azure AD Premium P2 の機能を使用できます。 詳細については、[Azure AD B2B コラボレーションのライセンス](../b2b/licensing-guidance.md)に関するページを参照してください。
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>ゲストのアクセス レビューの作成と実行
 

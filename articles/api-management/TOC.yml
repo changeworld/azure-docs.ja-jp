@@ -168,13 +168,13 @@ items:
       href: api-management-developer-portal-templates-reference.md
     - name: API
       href: api-management-api-templates.md
-    - name: '[成果物]'
+    - name: 成果物
       href: api-management-product-templates.md
     - name: アプリケーション
       href: api-management-application-templates.md
     - name: 発行
       href: api-management-issue-templates.md
-    - name: '[User Profile]'
+    - name: User Profile
       href: api-management-user-profile-templates.md
     - name: ページ
       href: api-management-page-templates.md

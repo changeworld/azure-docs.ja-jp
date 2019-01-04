@@ -40,11 +40,11 @@ ms.locfileid: "52836731"
 
 | Attribute | 必須 | 説明 |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | [はい] | ポリシーを実行するために使用されるスキーマ バージョン。 値は `0.3.0.0` である必要があります |
+| PolicySchemaVersion | はい | ポリシーを実行するために使用されるスキーマ バージョン。 値は `0.3.0.0` である必要があります |
 | TenantObjectId | いいえ  | Azure Active Directory (Azure AD) B2C テナントの一意のオブジェクト識別子。 |
-| TenantId | [はい] | このポリシーが属するテナントの一意の識別子。 |
-| PolicyId | [はい] | ポリシーの一意識別子。 この識別子には、プレフィックスとして *B2C_1A_* を付ける必要があります。 |
-| PublicPolicyUri | [はい] | ポリシーの URI。テナント ID とポリシー ID の組み合わせです。 |
+| TenantId | はい | このポリシーが属するテナントの一意の識別子。 |
+| PolicyId | はい | ポリシーの一意識別子。 この識別子には、プレフィックスとして *B2C_1A_* を付ける必要があります。 |
+| PublicPolicyUri | はい | ポリシーの URI。テナント ID とポリシー ID の組み合わせです。 |
 | DeploymentMode | いいえ  | 指定できる値: `Production`、`Debugging`、または `Development`。 `Production` は既定値です。 このプロパティを使用して、ポリシーをデバッグします。 詳細については、「[ログの収集](active-directory-b2c-troubleshoot-custom.md)」を参照してください。 |
 | UserJourneyRecorderEndpoint | いいえ  | **DeploymentMode** が `Development` に設定されているときに使用されるエンドポイント。 値は `urn:journeyrecorder:applicationinsights` である必要があります 詳細については、「[ログの収集](active-directory-b2c-troubleshoot-custom.md)」を参照してください。 |
 

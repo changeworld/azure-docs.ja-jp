@@ -75,9 +75,9 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.n
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_id | [はい] | ID プロバイダーのアプリケーション識別子。 |
+| client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | IdTokenAudience | いいえ  | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
-| METADATA | [はい] | OpenID Connect Discovery 仕様に従ってフォーマットされた JSON 構成ドキュメントをポイントする URL。既知の openid 構成エンドポイントとも呼ばれます。 |
+| METADATA | はい | OpenID Connect Discovery 仕様に従ってフォーマットされた JSON 構成ドキュメントをポイントする URL。既知の openid 構成エンドポイントとも呼ばれます。 |
 | ProviderName | いいえ  | ID プロバイダーの名前。 |
 | response_types | いいえ  | OpenID Connect Core 1.0 仕様に準拠した応答の種類。 指定できる値: `id_token`、`code`、または `token`。 |
 | response_mode | いいえ  | Azure AD B2C に結果を返信するために、ID プロバイダーが使用するメソッド。 指定できる値: `query`、`form_post` (既定)、または `fragment`。 |
@@ -94,7 +94,7 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.n
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | [はい] | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |  
+| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |  
 
 ## <a name="redirect-uri"></a>リダイレクト URI
  

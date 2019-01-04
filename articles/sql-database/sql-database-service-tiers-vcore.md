@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: c74d71f0ca8faec587cb36a789ed0328f9b24711
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 11/27/2018
+ms.openlocfilehash: 4aaaf2e7a918ab91aebd1e1f1f6d166d6cadf19a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954699"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437070"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>仮想コア サービス層、Azure ハイブリッド特典、および移行
 
@@ -40,10 +40,10 @@ ms.locfileid: "49954699"
 ||**汎用**|**Business Critical**|**ハイパースケール (プレビュー)**|
 |---|---|---|---|
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視のスケーラブルでバランスの取れたコンピューティングおよびストレージ オプションを提供します。|IO 要件の高いビジネス アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|高度にスケーラブルなストレージと読み取りスケールの要件を持つほとんどのビジネス ワークロード|
-|コンピューティング|Gen4: 1 ～ 24 仮想コア<br/>Gen5: 1 ～ 80 仮想コア|Gen4: 1 ～ 24 仮想コア<br/>Gen5: 1 ～ 80 仮想コア|Gen4: 1 ～ 24 仮想コア<br/>Gen5: 1 ～ 80 仮想コア|
-|メモリ|Gen4: コアあたり 7 GB<br>Gen5: コアあたり 5.5 GB | Gen4: コアあたり 7 GB<br>Gen5: コアあたり 5.5 GB |Gen4: コアあたり 7 GB<br>Gen5: コアあたり 5.5 GB|
-|Storage|[Premium リモート ストレージ](../virtual-machines/windows/premium-storage.md)<br/>単一データベース: 5 GB から 4 TB<br/>Managed Instance: 32 GB ～ 8 TB |ローカル SSD ストレージ<br/>単一データベース: 5 GB から 4 TB<br/>Managed Instance: 32 GB ～ 4 TB |柔軟性が高く、必要に応じて自動拡張されるストレージ。 最大 100 TB のストレージなどをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージ用のローカル SSD ストレージ。 最終的な長期データ ストアとしての Azure リモート ストレージ。 |
-|IO スループット (概算)|単一データベース: 仮想コアあたり 500 IOPS (最大 7,000 IOPS)</br>Managed Instance: [ファイルのサイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存|コアあたり 5000 IOPS (最大 200,000 IOPS)|TBD|
+|Compute|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|
+|メモリ|Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB | Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB |Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB|
+|Storage|[Premium リモート ストレージ](../virtual-machines/windows/premium-storage.md)の使用:<br/>単一データベース:5 GB – 4 TB<br/>Managed Instance:32 GB ～ 8 TB |ローカル SSD ストレージの使用:<br/>単一データベース:5 GB ～ 1 TB<br/>Managed Instance:32 GB ～ 4 TB |柔軟性が高く、必要に応じて自動拡張されるストレージ。 最大 100 TB のストレージなどをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージ用のローカル SSD ストレージ。 最終的な長期データ ストアとしての Azure リモート ストレージ。 |
+|IO スループット (概算)|単一データベース:仮想コアあたり 500 IOPS (最大 7000 IOPS)</br>Managed Instance:[ファイル サイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存|コアあたり 5000 IOPS (最大 200,000 IOPS)|TBD|
 |可用性|1 レプリカ、読み取りスケールなし|3 レプリカ、1 [読み取りスケール レプリカ](sql-database-read-scale-out.md)、<br/>ゾーン冗長 HA|?|
 |バックアップ|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|Azure リモート ストレージおよび復元のスナップショットベースのバックアップは、高速復旧のためにこのようなスナップショットを使用します。 バックアップは瞬時に行われ、Compute の IO パフォーマンスには影響しません。 復元は非常に高速で、データ操作のサイズにはなりません (数時間 ～ 数日ではなく、分単位で行われます)。|
 |インメモリ|サポートされていません|サポートされています|サポートされていません|

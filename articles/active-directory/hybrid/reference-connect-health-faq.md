@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 264e7f3d885535304470c833e228660ba51fefc6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 83ff526eb0bd0c51822fc52c90b958d50022a834
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306391"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497730"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -62,12 +62,12 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 
 **Q: Azure AD Connect Health は、Azure Germany Cloud をサポートしていますか。**
 
-[同期エラー レポート機能](how-to-connect-health-sync.md#object-level-synchronization-error-report-preview)を除いて、Azure AD Connect Health は、Germany Cloud ではサポートされていません。 
+[同期エラー レポート機能](how-to-connect-health-sync.md#object-level-synchronization-error-report)を除いて、Azure AD Connect Health は、Germany Cloud ではサポートされていません。 
 
 | ロール | 機能 | German Cloud でサポートされている |
 | ------ | --------------- | --- |
 | Connect Health for Sync | 監視/分析情報/アラート/分析 | いいえ  |
-|  | 同期エラー レポート | [はい] |
+|  | 同期エラー レポート | はい |
 | Connect Health for ADFS | 監視/分析情報/アラート/分析 | いいえ  |
 | Connect Health for ADDS | 監視/分析情報/アラート/分析 | いいえ  |
 

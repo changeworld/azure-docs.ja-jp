@@ -2,25 +2,21 @@
 title: Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる | Microsoft Docs
 description: Azure Active Directory プレビューでエンタープライズ アプリケーションを選択し、このアプリケーションにユーザーまたはグループを割り当てる方法
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: ee0b14123e193f219e403d2608368c27f953013d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b6b7408b4efe4c3271ea2ddeb63a499bee670976
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037976"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711312"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる
 ユーザーまたはグループをエンタープライズ アプリに割り当てるには、適切なアクセス許可でエンタープライズ アプリを管理する必要があります。また、ディレクトリの全体管理者である必要があります。
@@ -32,7 +28,7 @@ ms.locfileid: "51037976"
 > Microsoft のアプリケーション (Office 365 アプリなど) では、PowerShell を使用してエンタープライズ アプリにユーザーを割り当てます。
 
 
-## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Azure Portal でユーザーにエンタープライズ アプリケーションへのアクセス許可を割り当てる方法
+## <a name="assign-a-user-to-an-app---portal"></a>アプリへのユーザーの割り当て - ポータル
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** を選択し、テキスト ボックスに「Azure Active Directory」と入力して、**Enter** キーを押します。
 3. **[エンタープライズ アプリケーション]** を選択します。
@@ -51,7 +47,25 @@ ms.locfileid: "51037976"
 10. **[Add Assignment (割り当ての追加)]** ブレードで **[ロール]** を選択します。 次に、**[ロールを選択する]** ブレードで、選択したユーザーまたはグループに適用するロールを選択して、ブレードの下部にある **[OK]** をクリックします。
 11. **[Add Assignment (割り当ての追加)]** ブレードで、下部にある **[割り当て]** をクリックします。 割り当て対象のユーザーまたはグループに、選択したエンタープライズ アプリケーションのロールにより定義されるアクセス許可が付与されます。
 
-## <a name="how-do-i-assign-a-user-to-an-enterprise-app-using-powershell"></a>PowerShell を使用してエンタープライズ アプリケーションにユーザーを割り当てる方法
+## <a name="allow-all-users-to-access-an-app---portal"></a>すべてのユーザーにアプリへのアクセスを許可する - ポータル
+すべてのユーザーにアプリケーションへのアクセスを許可するには:
+
+1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
+2. **[すべてのサービス]** を選択し、テキスト ボックスに「Azure Active Directory」と入力して、**Enter** キーを押します。
+3. **[エンタープライズ アプリケーション]** を選択します。
+4. **[エンタープライズ アプリケーション]** ブレードで、**[すべてのアプリケーション]** を選択します。 これにより、管理できるアプリが一覧で表示されます。
+5. **[Enterprise applications - All applications (エンタープライズ アプリケーション - すべてのアプリケーション)]** ブレードで、アプリケーションを選択します。
+6. ***[<アプリ名>]*** ブレードで、**[プロパティ]** を選択します。
+7. **[<*アプリ名*> - プロパティ]** ブレードで、 **[ユーザーの割り当てが必要ですか?]** 設定を **[いいえ]** に設定します。 
+
+**[ユーザーの割り当てが必要ですか?]** オプション:
+
+- アプリケーションがアプリケーション アクセス パネルに表示されるかどうかには影響しません。 アクセス パネルにアプリケーションを表示するには、適切なユーザーまたはグループをアプリケーションに割り当てる必要があります。
+- SAML シングル サインオン用に構成されたクラウド アプリケーションと、アプリケーション プロキシを使用して構成されたオンプレミス アプリケーションでのみ機能します。 [アプリケーションのシングル サインオン](what-is-single-sign-on.md)に関するページを参照してください。
+- ユーザーはアプリケーションに同意する必要があります。 管理者はすべてのユーザーについて同意を許可することができます。  [アプリケーションに対するエンドユーザーの同意の構成](configure-user-consent.md)に関するページを参照してください。
+
+
+## <a name="assign-a-user-to-an-app---powershell"></a>アプリへのユーザーの割り当て - PowerShell
 
 1. 管理者特権での Windows PowerShell コマンド プロンプトを開きます。
 

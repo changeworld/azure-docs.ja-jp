@@ -1,26 +1,22 @@
 ---
-title: DevOps 向け Team Data Science Process | Microsoft Docs
-description: Team Data Science Process と Azure Machine Learning を使用した分析ワークロードを理解するためのガイダンスを提供します。
+title: DevOps 向け Team Data Science Process
+description: Advanced Analytics と Cognitive Services ソリューションを実装するための開発者の操作 (DevOps) の機能。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: deguhath
-ms.openlocfilehash: 487e1fa4baa42d4266798790e899912cf62031db
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d3569cb712343b60c5151b2bf3ed5bae47b2be6d
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979303"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413481"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>DevOps 向け Team Data Science Process
 
@@ -32,13 +28,13 @@ ms.locfileid: "50979303"
 | **目標**                                                  | **トピック**                               | **リソース**                                                                                                                                                                                                                                                       | **テクノロジ**                                                                                                                                                                                                                                                                                      | **Level**                                               | **前提条件**                                                                                                                                                                                                        |
 |----------------------------------------------------------------|-----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Advanced Analytics を理解する                                  | Team Data Science Process ライフサイクル | [このテクニカル チュートリアルでは Team Data Science Process について説明します](overview.md)                                                                                                      | データ サイエンス                                                                                                                                                                                                                                                                                          | 中級                                            | 一般的なテクノロジの背景知識、データ ソリューションに関する知識、IT プロジェクトおよびソリューションの実装に関する知識                                                                                                  |
-| Advanced Analytics 向けの Microsoft Azure Platform を理解する | 情報管理                  
+| Advanced Analytics 向けの Microsoft Azure Platform を理解する | 情報管理
 | [このリファレンスでは、Azure Data Factory を使用してパイプラインを作成し、分析に使用しているサービスからデータを収集および調整する方法の概要を確認できます](../../data-factory/data-factory-introduction.md)                                 | Microsoft Azure Data Factory                                                                                                                                                                                                                                                                          | 上級                                             | 一般的なテクノロジの背景知識、データ ソリューションに関する知識、IT プロジェクトおよびソリューションの実装に関する知識                                                                                                  |
-|                                                                |                                         
+|                                                                |
 | [このリファレンスでは、データ ソースのメタデータを記録および管理する Azure Data Catalog の概要を確認できます](../../data-catalog/data-catalog-what-is-data-catalog.md)                                        | Microsoft Azure Data Catalog                                                                                                                                                                                                                                                                          | 中級                                            | 一般的なテクノロジの背景知識、データ ソリューションに関する知識、リレーショナル データベース管理システム (RDBMS) と NoSQL データ ソースに関する知識                                                                    |
-|                                                                |                                         
+|                                                                |
 | [このリファレンスでは、Azure Event Hubs システムの概要と、使用しているソリューションにデータを取り込み使用する方法を確認できます](../../event-hubs/event-hubs-what-is-event-hubs.md)                                                       | Azure Event Hubs                                                                                                                                                                                                                                                                                      | 中級                                            | 一般的なテクノロジの背景知識、データ ソリューションに関する知識、リレーショナル データベース管理システム (RDBMS) と NoSQL データ ソースに関する知識、モノのインターネット (IoT) の用語と使用に関する知識 |
-|                                                                | ビッグ データ ストア                         
+|                                                                | ビッグ データ ストア
 | [このリファレンスでは、Azure SQL Data Warehouse を使用して大量のデータを保存および処理する方法の概要を確認できます](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)                                                | Azure SQL Data Warehouse                                                                                                                                                                                                                                                                              | 上級                                             | 一般的なテクノロジの背景知識、データ ソリューションに関する知識、リレーショナル データベース管理システム (RDBMS) と NoSQL データ ソースに関する知識、HDFS の用語と使用に関する知識                         |
 |                                                                |                                         | [このリファレンスでは、Azure Data Lake を使用して運用分析や調査分析のためにデータを任意のサイズ、種類、取り込み速度で 1 か所でキャプチャする方法の概要を確認できます。](../../data-lake-store/data-lake-store-overview.md) | Azure Data Lake Store                                                                                                                                                                                                                                                                                 | 中級                                            | 一般的なテクノロジの背景知識、データ ソリューションに関する知識、NoSQL データ ソースに関する知識、HDFS に関する知識                                                                                                |
 |                                                                | Machine Learning と Analytics          | [このリファレンスでは、Machine Learning、予測分析、人工知能システムの概要を確認できます](../studio/what-is-machine-learning.md)                                          | Azure Machine Learning                                                                                                                                                                                                                                                                                | 中級                                            | 一般的なテクノロジの背景知識、データ ソリューションに関する知識、データ サイエンスの用語知識、機械学習と人工知能の用語知識                                                  |

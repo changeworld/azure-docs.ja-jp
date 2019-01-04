@@ -1,11 +1,11 @@
 ---
-title: Azure Machine Learning でカスタム R モジュールを作成する | Microsoft Docs
-description: Azure Machine Learning における作成者カスタム R モジュールのクイック スタート。
+title: カスタム R モジュールを定義する - Azure Machine Learning Studio | Microsoft Docs
+description: このトピックでは、Azure Machine Learning でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
@@ -15,17 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 1a578e8cc05b42d05a8dfb31c0baeefb4822e3e5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2bdc8b7b28bee37ae88e466874d2b3d22dcd7556
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261112"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277932"
 ---
-# <a name="author-custom-r-modules-in-azure-machine-learning"></a>Azure Machine Learning でカスタム R モジュールを作成する
-このトピックでは、Azure Machine Learning でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
+# <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用にカスタム R モジュールを定義する
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+このトピックでは、Azure Machine Learning Studio でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
+
+
 
 ## <a name="what-is-a-custom-r-module"></a>カスタム R モジュールとは
 **カスタム モジュール** とは、ユーザーのワークスペースにアップロードし、Azure Machine Learning の実験の一部として実行できるユーザー定義モジュールです。 **カスタム R モジュール** とは、ユーザー定義の R 関数を実行するカスタム モジュールです。 **R** とは、アルゴリズムを実装するために統計学者やデータ科学者によって広く使用されている統計コンピューティングおよびグラフィックス用のプログラミング言語です。 現在、カスタム モジュールでサポートされている言語は R だけですが、今後のリリースで他の言語のサポートが追加される予定です。
@@ -94,7 +95,7 @@ ms.locfileid: "51261112"
     </Module>
 
 
-XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値が、CustomAddRows.R ファイルの R コードの関数パラメーター名 (この例では、*dataset1*、*dataset2*、および *swap*) と正確に一致する必要があることに注意します。 同様に、**Language** 要素の **entryPoint** 属性の値が、R スクリプトの関数名 (この例では *CustomAddRows*) と正確に一致する必要があります。 
+XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値が、CustomAddRows.R ファイルの R コードの関数パラメーター名 (この例では、*dataset1*、*dataset2*、および *swap*) と正確に一致する必要があることに注意します。 同様に、**Language** 要素の **entryPoint** 属性の値が、R スクリプトの関数名と "完全に" 一致する必要があります (この例では *CustomAddRows*)。 
 
 これに対して、**Output** 要素の **id** 属性は、R スクリプトのどの変数にも対応していません。 複数の出力が必要な場合は、XML ファイルで *Outputs* 要素が宣言されている順序と " **同じ順序** " で結果が配置されたリストを R 関数から返します。
 
@@ -148,7 +149,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 ### <a name="input-elements"></a>Input 要素
 入力ポートを使用すると、R 関数とワークスペースにデータを渡すことができます。 入力ポートでサポートされている **データ型** は次のとおりです。 
 
-**DataTable** : この型は、data.frame として R 関数に渡されます。 実際には、Machine Learning でサポートされている型および **DataTable** と互換性のある型 (CSV ファイルや ARFF ファイルなど) が data.frame に自動的に変換されます。 
+**DataTable:** この型は、data.frame として R 関数に渡されます。 実際には、Machine Learning でサポートされている型および **DataTable** と互換性のある型 (CSV ファイルや ARFF ファイルなど) が data.frame に自動的に変換されます。 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>
@@ -157,7 +158,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 各 **DataTable** 入力ポートに関連付けられた **id** 属性には一意の値が必要です。この値は、R 関数の対応する名前付きパラメーターと一致する必要があります。
 実験で入力として渡されないオプションの **DataTable** ポートは、R 関数に渡される値として **NULL** を使用します。入力が接続されていない場合、オプションの Zip ポートは無視されます。 **DataTable** 型と **Zip** 型 のどちらについても、**IsOptional** 属性は省略可能です。この属性は、既定で *false* に設定されます。
 
-**Zip** : カスタム モジュールは、zip ファイルを入力として受け取ることができます。 この入力は、関数の R 作業ディレクトリにアンパックされます。
+**Zip:** カスタム モジュールでは、zip ファイルを入力として受け取ることができます。 この入力は、関数の R 作業ディレクトリにアンパックされます。
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
             <Description>Zip files to be extracted to the R working directory.</Description>
@@ -175,7 +176,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 * **Input** 要素の **IsOptional** 属性の値は省略可能です (指定されていない場合、既定で *false* に設定されます)。ただし、この値を指定する場合は、*true* または *false* を指定する必要があります。
 
 ### <a name="output-elements"></a>Output 要素
-**標準出力ポート**: 出力ポートはR 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです  (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
+**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです  (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
@@ -213,7 +214,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**視覚化出力** : R グラフィックス デバイスからの出力とコンソール出力を表示する *Visualization*型の出力ポートを指定することもできます。 このポートは R 関数の出力には含まれず、他の出力ポートの型の順序に干渉しません。 カスタム モジュールに視覚化ポートを追加するには、**type** 属性の値として *Visualization* を指定した **Output** 要素を追加します。
+**視覚化出力:** R グラフィックス デバイスからの出力とコンソール出力を表示する *Visualization* 型の出力ポートを指定することもできます。 このポートは R 関数の出力には含まれず、他の出力ポートの型の順序に干渉しません。 カスタム モジュールに視覚化ポートを追加するには、**type** 属性の値として *Visualization* を指定した **Output** 要素を追加します。
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>
@@ -292,7 +293,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * Categorical
     * String
     * Label
-    * 機能
+    * Feature
     * Score
     * All
   * **default** - 列の選択の有効な既定の選択内容は次のとおりです。 
@@ -317,7 +318,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * AllLabel
     * AllFeature
     * AllScore
-    * すべて
+    * All
 
 **DropDown**: ユーザーが指定した列挙型 (ドロップダウン) リスト。 ドロップダウン項目は、**Properties** 要素内で **Item** 要素を使用して指定します。 各 **Item** の **id** は、一意で有効な R 変数である必要があります。 **Item** の **name** は、表示されるテキストであり、R 関数に渡される値でもあります。
 
@@ -370,6 +371,6 @@ R スクリプトの実行環境では、 **Execute R Script** モジュール�
 
 **実行環境の制限事項** は次のとおりです。
 
-* 非永続的なファイル システム: カスタム モジュールの実行時に書き込まれるファイルは、同じモジュールの複数の実行間で保持されません。
+* 非永続的なファイル システム:カスタム モジュールの実行時に書き込まれるファイルは、同じモジュールの複数の実行間で保持されません。
 * ネットワーク アクセスはありません。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Portal での Azure Search のサービス管理
-description: Azure Portal を使用して、Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します。
+title: ポータルでの Azure Search のサービス管理 - Azure Search
+description: Azure portal を使用して、Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します。
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: heidist
-ms.openlocfilehash: fb09e12a5122f6e6671e55c5b5623afdd6b35c29
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.custom: seodec2018
+ms.openlocfilehash: 70343c0d66eb2a00ff2245b7e4876c2e94a96855
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842291"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314491"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure Portal での Azure Search のサービス管理
 > [!div class="op_single_selector"]

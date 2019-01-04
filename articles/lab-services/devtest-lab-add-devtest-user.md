@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 558df3fa70989aaf9ba182df3a918994c7dc9db6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f1797cf3022285f81991eb15818b68df195de4b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243711"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834130"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs での所有者とユーザーの追加
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -69,15 +69,11 @@ Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのア�
 3. ラボの一覧で目的のラボを選択します。
 4. ラボのブレードで、**[構成とポリシー]** を選択します。 
 5. **[構成とポリシー]** ページで、**[アクセス制御 (IAM)]** を左側のメニューから選択します。 
-6. ツールバーで **[追加]** を選択し、ロールにユーザーを追加します。
-
-    ![ユーザーの追加](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
+6. ツールバーで **[ロールの割り当ての追加]** を選択し、ロールにユーザーを追加します。
 1. **[アクセス許可の追加]** ウィンドウで、次のようにします。 
-    1. ロールを選択します (例: DevTest ラボ ユーザー)。 セクション「 [各ロールで実行できるアクション](#actions-that-can-be-performed-in-each-role) 」では、所有者、DevTest ユーザーおよび共同作成者ロールのユーザーが実行できるさまざまなアクションが一覧表示されます。
+    1. ロールを選択します (例:DevTest ラボ ユーザー)。 セクション「 [各ロールで実行できるアクション](#actions-that-can-be-performed-in-each-role) 」では、所有者、DevTest ユーザーおよび共同作成者ロールのユーザーが実行できるさまざまなアクションが一覧表示されます。
     2. ロールに追加するユーザーを選択します。 
     3. **[保存]** を選択します。 
-
-        ![ユーザーのロールへの追加](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. **[ユーザー]** ブレードに戻ると、このユーザーが追加されています。  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>PowerShell を使用して、ラボに外部ユーザーを追加します。

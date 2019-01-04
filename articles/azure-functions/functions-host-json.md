@@ -10,23 +10,23 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: d794648d3af086263ccffc782f3f3fdf6456eacc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4da64f01f3b4f39bd10fd3cb1b67910ffca886b8
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013379"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413270"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
+# <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="使用している Azure Functions ランタイムのバージョンを選択してください: "]
 > * [Version 1](functions-host-json-v1.md)
 > * [Version 2](functions-host-json.md)
 
-*host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、v2 ランタイムで使用できる設定の一覧を紹介します。  
+*host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、v2 ランタイムで使用できる設定の一覧を紹介します。
 
 > [!NOTE]
-> この記事は、Azure Functions 2.x を対象としています。  Functions 1.x の host.json のリファレンスについては、[Azure Functions 1.x の host.json のリファレンス](functions-host-json-v1.md)に関する記事を参照してください。
+> この記事は、Azure Functions 2.x を対象としています。 Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
 
 関数アプリの他の構成オプションは、[アプリの設定](functions-app-settings.md)で管理されます。
 
@@ -69,7 +69,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
           "default": "None"
         },
         "applicationInsights": {
-            "sampling": {
+            "samplingSettings": {
               "isEnabled": true,
               "maxTelemetryItemsPerSecond" : 5
             }
@@ -96,7 +96,23 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 この設定は [logging](#logging) の子です。
 
-[!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
+[Application Insights のサンプリング機能](./functions-monitoring.md#configure-sampling)を制御します。
+
+```json
+{
+    "applicationInsights": {
+        "samplingSettings": {
+          "isEnabled": true,
+          "maxTelemetryItemsPerSecond" : 5
+        }
+    }
+}
+```
+
+|プロパティ  |既定値 | 説明 |
+|---------|---------|---------|
+|isEnabled|true|サンプリングを有効または無効にします。|
+|maxTelemetryItemsPerSecond|5|サンプリングが開始されるしきい値。|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -104,11 +120,11 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ## <a name="durabletask"></a>durableTask
 
-構成設定は、[Durable Functions のバインディング](durable-functions-bindings.md#host-json)に関する記事に記載されています。
+構成設定は、[Durable Functions のバインディング](durable/durable-functions-bindings.md#host-json)に関する記事に記載されています。
 
 ## <a name="eventhub"></a>eventHub
 
-構成設定は、[Event Hub のトリガーとバインディング](functions-bindings-event-hubs.md#host-json)に関する記事に記載されています。 
+構成設定は、[Event Hub のトリガーとバインディング](functions-bindings-event-hubs.md#host-json)に関する記事に記載されています。
 
 ## <a name="extensions"></a>拡張機能
 
@@ -151,12 +167,12 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 ```
 
 |プロパティ  |既定値 | 説明 |
-|---------|---------|---------| 
-|enabled|true|機能が有効かどうかを指定します。 | 
-|healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 | 
-|healthCheckWindow|2 分|`healthCheckThreshold` 設定と組み合わせて使用するスライド時間枠。| 
-|healthCheckThreshold|6|正常性チェックの最大失敗回数。この回数を超えると、ホスト リサイクルが開始されます。| 
-|counterThreshold|0.80|パフォーマンス カウンターが異常とみなされるしきい値。| 
+|---------|---------|---------|
+|enabled|true|機能が有効かどうかを指定します。 |
+|healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 |
+|healthCheckWindow|2 分|`healthCheckThreshold` 設定と組み合わせて使用するスライド時間枠。|
+|healthCheckThreshold|6|正常性チェックの最大失敗回数。この回数を超えると、ホスト リサイクルが開始されます。|
+|counterThreshold|0.80|パフォーマンス カウンターが異常とみなされるしきい値。|
 
 ## <a name="http"></a>http
 
@@ -185,11 +201,32 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
 |logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 これにより、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
+|console|該当なし| [console](#console) ログ記録の設定。 |
 |applicationInsights|該当なし| [applicationInsights](#applicationinsights) の設定。 |
+
+## <a name="console"></a>console
+
+この設定は [logging](#logging) の子です。 デバッグ モードでないときのコンソール ログ記録を制御します。
+
+```json
+{
+    "logging": {
+    ...
+        "console": {
+          "isEnabled": "false"
+        },
+    ...
+    }
+}
+```
+
+|プロパティ  |既定値 | 説明 |
+|---------|---------|---------|
+|isEnabled|false|コンソール ログ記録を有効または無効にします。|
 
 ## <a name="queues"></a>queues
 
-構成設定は、[Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md#host-json)に関する記事に記載されています。  
+構成設定は、[Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md#host-json)に関する記事に記載されています。
 
 ## <a name="sendgrid"></a>sendGrid
 
@@ -216,12 +253,12 @@ Application Insights など、関数アプリのログの動作を制御しま�
 ```
 
 |プロパティ  |既定値 | 説明 |
-|---------|---------|---------| 
-|lockPeriod|00:00:15|関数レベルのロックの取得期間。 ロックの自動更新。| 
-|listenerLockPeriod|00:01:00|リスナーのロックの取得期間。| 
-|listenerLockRecoveryPollingInterval|00:01:00|スタートアップ時にリスナーのロックを獲得できなかった場合に、リスナーのロックの回復に使用される時間間隔。| 
-|lockAcquisitionTimeout|00:01:00|ランタイムがロックの獲得を試行する最長時間。| 
-|lockAcquisitionPollingInterval|該当なし|ロックの獲得の試行間隔。| 
+|---------|---------|---------|
+|lockPeriod|00:00:15|関数レベルのロックの取得期間。 ロックの自動更新。|
+|listenerLockPeriod|00:01:00|リスナーのロックの取得期間。|
+|listenerLockRecoveryPollingInterval|00:01:00|スタートアップ時にリスナーのロックを獲得できなかった場合に、リスナーのロックの回復に使用される時間間隔。|
+|lockAcquisitionTimeout|00:01:00|ランタイムがロックの獲得を試行する最長時間。|
+|lockAcquisitionPollingInterval|該当なし|ロックの獲得の試行間隔。|
 
 ## <a name="version"></a>version
 
@@ -229,7 +266,7 @@ v2 ランタイムを対象とする関数アプリでは、バージョン文�
 
 ## <a name="watchdirectories"></a>watchDirectories
 
-変更を監視する[共有コード ディレクトリ](functions-reference-csharp.md#watched-directories)のセット。  これらのディレクトリ内のコードを変更した場合に、関数によって変更を選択するようにします。
+変更を監視する[共有コード ディレクトリ](functions-reference-csharp.md#watched-directories)のセット。 これらのディレクトリ内のコードを変更した場合に、関数によって変更を選択するようにします。
 
 ```json
 {

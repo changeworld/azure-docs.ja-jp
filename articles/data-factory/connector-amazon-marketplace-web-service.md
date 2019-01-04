@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: bcda662790c1af72e28b8968142bab15f62e83bf
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: c58b956a0fc1899b12050daf0fbf61514ca24407
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127179"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095139"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Amazon Marketplace Web Service からデータをコピーする (プレビュー)
 
@@ -45,7 +45,7 @@ Amazon Marketplace Web Service のリンクされたサービスでは、次の�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **AmazonMWS** に設定する必要があります。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**AmazonMWS** | [はい] |
 | endpoint | Amazon MWS サーバーのエンドポイント (つまり、mws.amazonservices.com)  | [はい] |
 | marketplaceID | データを取得する Amazon Marketplace ID。 複数の Marketplace ID からデータを取得するには、コンマ (`,`) で区切って指定します。 (つまり、A2EUQ1WTGCTBG2)  | [はい] |
 | sellerID | Amazon の販売者 ID。  | [はい] |
@@ -85,7 +85,12 @@ Amazon Marketplace Web Service のリンクされたサービスでは、次の�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Amazon Marketplace Web Service データセットでサポートされるプロパティの一覧を示します。
 
-Amazon Marketplace Web Service からデータをコピーするには、データセットの type プロパティを **AmazonMWSObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+Amazon Marketplace Web Service からデータをコピーするには、データセットの type プロパティを **AmazonMWSObject** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります。**AmazonMWSObject** | [はい] |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -97,7 +102,8 @@ Amazon Marketplace Web Service からデータをコピーするには、デー�
         "linkedServiceName": {
             "referenceName": "<AmazonMWS linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 
@@ -107,14 +113,14 @@ Amazon Marketplace Web Service からデータをコピーするには、デー�
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Amazon Marketplace Web Service ソースでサポートされるプロパティの一覧を示します。
 
-### <a name="amazonmwssource-as-source"></a>ソースとしての AmazonMWSSource
+### <a name="amazon-mws-as-source"></a>ソースとしての Amazon MWS
 
 Amazon Marketplace Web Service からデータをコピーするには、コピー アクティビティでソースの型を **AmazonMWSSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **AmazonMWSSource** に設定する必要があります。 | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**AmazonMWSSource** | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

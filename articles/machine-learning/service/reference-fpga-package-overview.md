@@ -1,6 +1,7 @@
 ---
-title: Azure Machine Learning 向けのハードウェア アクセラレーション用の FPGA パッケージ
-description: Azure Machine Learning ユーザーが利用できる Python パッケージについて説明します。
+title: ハードウェア アクセラレータ FPGA パッケージ
+titleSuffix: Azure Machine Learning service
+description: この記事は非推奨となっています。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,13 +10,14 @@ ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/07/2018
+ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 344423ea9943e04dc5f02ebee0903d179be90bbd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 44c0818d7ddb418e34e6e124ddc0b27460bb24a0
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887583"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262080"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Azure Machine Learning Hardware Acceleration パッケージ
 
@@ -32,7 +34,8 @@ Azure Machine Learning Hardware Acceleration パッケージは Azure Machine Le
 
 ## <a name="prerequisites"></a>前提条件
 
-1. Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+>[!Note]
+>Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
 
 1. Azure Machine Learning モデル管理アカウント。 アカウントを作成する方法の詳細については、[Azure Machine Learning のクイック スタートとワークベンチのインストール](../desktop-workbench/quickstart-installation.md)に関する記事を参照してください。 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0376f09d4d7d6c952cbef40751a2729045f68061
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6c101878c474e605106bb2fbb6ea6568f433e756
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255839"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338534"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
@@ -136,7 +136,7 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 
   ![設定][11]
 
-  **[ワークスペースの構成]** が開き、3 つのタブ (**[Windows レジストリ]**、**[Windows ファイル]**、および**Linux ファイル**) が表示されます。 各タブには、そのカテゴリで編集できるエンティティが一覧表示します。 表示されるエンティティごとに、Security Center は、FIM が有効になっている (true) か有効になっていない (false) かを識別します。  エンティティを編集することで、FIM を有効または無効にすることができます。
+  **[ワークスペースの構成]** を開くと 3 つのタブが表示されます:**[Windows レジストリ]**、**[Windows ファイル]**、および **[Linux ファイル]**。 各タブには、そのカテゴリで編集できるエンティティが一覧表示します。 表示されるエンティティごとに、Security Center は、FIM が有効になっている (true) か有効になっていない (false) かを識別します。  エンティティを編集することで、FIM を有効または無効にすることができます。
 
   ![ワークスペースの構成][12]
 
@@ -153,7 +153,7 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 
 ## <a name="add-a-new-entity-to-monitor"></a>監視する新しいエンティティを追加する
 1. **ファイルの整合性の監視ダッシュボード**に戻り、上部にある **[設定]** を選択します。 **[ワークスペースの構成]** が開きます。
-2. **[ワークスペースの構成]** で、追加するエンティティの種類のタブ ([Windows レジストリ]、[Windows ファイル]、または [Linux ファイル]) を選択します。 この例では、**[Linux ファイル]** が選択されています。
+2. **[ワークスペースの構成]** で、追加するエンティティの種類のタブを選択します:[Windows レジストリ]、[Windows ファイル]、または [Linux ファイル]。 この例では、**[Linux ファイル]** が選択されています。
 
   ![監視する新しい項目を追加する][14]
 
@@ -205,7 +205,7 @@ FIM を無効にすることができます。 FIM は、Azure Change Tracking �
 ## <a name="next-steps"></a>次の手順
 この記事では、Security Center のファイルの整合性の監視 (FIM) を使用する方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
-* [セキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
+* [セキュリティ ポリシーの設定](tutorial-security-policy.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
 * [セキュリティに関する推奨事項の管理](security-center-recommendations.md) -- 推奨事項に従って Azure リソースを保護する方法について説明します。
 * [セキュリティ正常性の監視](security-center-monitoring.md) -- Azure リソースの正常性を監視する方法について説明します。
 * [セキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) -- セキュリティの警告の管理と対応の方法について説明します。

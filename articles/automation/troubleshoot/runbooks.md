@@ -4,22 +4,22 @@ description: Azure Automation Runbook のエラーをトラブルシューティ
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 12/04/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 532d3d73c939a44678091734f2bbff22267ab6b7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 41eb31ecabb20ec9eec3db13d5eda9f9cfbe6c69
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094866"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015468"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Azure Automation Runbook の使用時に発生する認証エラー
 
-### <a name="sign-in-failed"></a>シナリオ: Azure アカウントにサインインできない
+### <a name="sign-in-failed"></a>シナリオ:Azure アカウントにサインインできない
 
 #### <a name="issue"></a>問題
 
@@ -75,7 +75,7 @@ Unknown_user_type: Unknown User Type
    }
    ```
 
-### <a name="unable-to-find-subscription"></a>シナリオ: Azure サブスクリプションが見つからない
+### <a name="unable-to-find-subscription"></a>シナリオ:Azure サブスクリプションが見つからない
 
 #### <a name="issue"></a>問題
 
@@ -107,7 +107,7 @@ Azure で正しく認証され、選択しようとしているサブスクリ�
    Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
     ```
 
-### <a name="auth-failed-mfa"></a>シナリオ: 多要素認証が有効になっているために Azure に対する認証が失敗した
+### <a name="auth-failed-mfa"></a>シナリオ:多要素認証が有効になっているために Azure に対する認証が失敗した
 
 #### <a name="issue"></a>問題
 
@@ -123,11 +123,11 @@ Azure アカウントに多要素認証を設定している場合、Azure に�
 
 #### <a name="resolution"></a>解決策
 
-Azure クラシック デプロイ モデルのコマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../../active-directory/develop/howto-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)方法に関する記事を参照してください。
+Azure クラシック デプロイ モデルのコマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../../active-directory/develop/howto-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)方法に関する記事を参照してください。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Runbook の使用時に発生する一般的なエラー
 
-### <a name="task-was-cancelled"></a>シナリオ: "タスクが取り消されました" というエラーで Runbook が失敗する
+### <a name="task-was-cancelled"></a>シナリオ:Runbook がエラーで失敗:タスクはキャンセルされました
 
 #### <a name="issue"></a>問題
 
@@ -147,7 +147,7 @@ Exception: A task was canceled.
 
 Automation アカウントで、**[モジュール]** をクリックし、**[Azure モジュールの更新]** をクリックします。 この更新には、失敗した Runbook の再実行を完了してから約 15 分かかります。 モジュールの更新の詳細については、「[Azure Automation で Azure モジュールを更新する](../automation-update-azure-modules.md)」を参照してください。
 
-### <a name="child-runbook-auth-failure"></a>シナリオ: 複数のサブスクリプションを処理するときに子 Runbook が失敗する
+### <a name="child-runbook-auth-failure"></a>シナリオ:複数のサブスクリプションを処理するときに子 Runbook が失敗する
 
 #### <a name="issue"></a>問題
 
@@ -183,7 +183,7 @@ Start-AzureRmAutomationRunbook `
     –Parameters $params –wait
 ```
 
-### <a name="not-recognized-as-cmdlet"></a>シナリオ: 不足しているコマンドレットにより、Runbook が失敗する
+### <a name="not-recognized-as-cmdlet"></a>シナリオ:不足しているコマンドレットにより、Runbook が失敗する
 
 #### <a name="issue"></a>問題
 
@@ -208,7 +208,7 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 
 個別のモジュールの場合、Automation アカウントにモジュールがインポートされていることを確認します。
 
-### <a name="job-attempted-3-times"></a>シナリオ: Runbook ジョブの開始を 3 回試行したが、開始できない
+### <a name="job-attempted-3-times"></a>シナリオ:Runbook ジョブの開始を 3 回試行したが、開始できない
 
 #### <a name="issue"></a>問題
 
@@ -238,7 +238,7 @@ The job was tried three times but it failed
 
 * 別の解決策は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。 ハイブリッド worker には、Azure サンドボックスのようなメモリとネットワークの制限はありません。
 
-### <a name="fails-deserialized-object"></a>シナリオ: 逆シリアル化されたオブジェクトであるため、Runbook が失敗する
+### <a name="fails-deserialized-object"></a>シナリオ:逆シリアル化されたオブジェクトであるため、Runbook が失敗する
 
 #### <a name="issue"></a>問題
 
@@ -262,7 +262,7 @@ Runbook が PowerShell ワークフローの場合、ワークフローが中断
 2. オブジェクト全体を渡すのではなく、複雑なオブジェクトから、必要な名前または値を渡します。
 3. PowerShell ワークフロー Runbook ではなく PowerShell Runbook を使用します。
 
-### <a name="quota-exceeded"></a>シナリオ: 割り当てられたクォータを超えているために Runbook ジョブが失敗した
+### <a name="quota-exceeded"></a>シナリオ:割り当てられたクォータを超えているために Runbook ジョブが失敗した
 
 #### <a name="issue"></a>問題
 
@@ -285,7 +285,7 @@ The quota for the monthly total job run time has been reached for this subscript
 3. **[設定]** > **[価格]** の順にクリックします。
 4. ページ下部にある **[有効]** をクリックして、アカウントを **Basic** レベルにアップグレードします。
 
-### <a name="cmdlet-not-recognized"></a>シナリオ: Runbook の実行時にコマンドレットが認識されない
+### <a name="cmdlet-not-recognized"></a>シナリオ:Runbook の実行時にコマンドレットが認識されない
 
 #### <a name="issue"></a>問題
 
@@ -308,7 +308,7 @@ Runbook ジョブがエラーで失敗します。
 * 名前が競合し、コマンドレットが 2 つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで解決できます。 たとえば、**ModuleName\CmdletName** を使用できます。  
 * ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュールとコマンドレットがハイブリッド worker をホストしているマシンにインストールされていることを確認します。
 
-### <a name="long-running-runbook"></a>シナリオ: 実行時間の長い Runbook が完了しない
+### <a name="long-running-runbook"></a>シナリオ:実行時間の長い Runbook が完了しない
 
 #### <a name="issue"></a>問題
 
@@ -338,9 +338,48 @@ Hybrid Worker には、Azure サンドボックスのような [fair share](../a
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob): このコマンドレットを使用すると、子 Runbook の完了後に実行する必要のある操作がある場合、各子のジョブの状態を確認できます。
 
+### <a name="expired webhook"></a>シナリオ:状態:Webhook を呼び出すときに 400 Bad Request が発生する
+
+#### <a name="issue"></a>問題
+
+Azure Automation Runbook の Webhook を呼び出そうとすると、次のエラーが表示されます。
+
+```error
+400 Bad Request : This webhook has expired or is disabled
+```
+
+#### <a name="cause"></a>原因
+
+呼び出そうとしている Webhook は無効か期限切れです。
+
+#### <a name="resolution"></a>解決策
+
+Webhook が無効な場合は、Azure portal から Webhook を再度有効にすることができます。 Webhook が期限切れの場合は、Webhook を削除して再作成する必要があります。 Webhook がまだ期限切れではない場合にのみ、[Webhook を更新](../automation-webhooks.md#renew-webhook)できます。
+
+### <a name="429"></a>シナリオ:429:The request rate is currently too large. Please try again (現在、要求レートが大きすぎます。もう一度実行してください)
+
+#### <a name="issue"></a>問題
+
+`Get-AzureRmAutomationJobOutput` コマンドレットを実行すると、次のエラー メッセージが表示される場合があります。
+
+```
+429: The request rate is currently too large. Please try again
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは、多数の[冗長ストリーム](../automation-runbook-output-and-messages.md#verbose-stream)がある Runbook からジョブ出力を取得するときに発生する可能性があります。
+
+#### <a name="resolution"></a>解決策
+
+このエラーを解決するには、次の 2 つの方法があります。
+
+* Runbook を編集し、出力されるジョブ ストリームの数を減らします。
+* コマンドレットを実行するときに取得されるストリーム数を減らします。 この場合は、`Get-AzureRmAutomationJobOutput` コマンドレットに `-Stream Output` パラメーターを指定して出力ストリームのみを取得します。 
+
 ## <a name="common-errors-when-importing-modules"></a>モジュールのインポート時に発生する一般的なエラー
 
-### <a name="module-fails-to-import"></a>シナリオ: モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
+### <a name="module-fails-to-import"></a>シナリオ:モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
 
 #### <a name="issue"></a>問題
 
@@ -359,7 +398,7 @@ Hybrid Worker には、Azure サンドボックスのような [fair share](../a
 
 次の解決策のいずれでもこの問題は解決されます。
 
-* モジュールの形式が次のようになっていることを確認します: ModuleName.Zip **->** ModuleName またはバージョン番号 **->** (ModuleName.psm1、ModuleName.psd1)
+* モジュールの形式が次のようになっていることを確認します。ModuleName.Zip **->** モジュール名またはバージョン番号 **->** (ModuleName.psm1、ModuleName.psd1)
 * .psd1 ファイルを開き、モジュールに依存関係があるかどうかを確認します。 依存関係がある場合、それらのモジュールを Automation アカウントにアップロードします。
 * 参照される .dll がモジュール フォルダーにあることを確認します。
 

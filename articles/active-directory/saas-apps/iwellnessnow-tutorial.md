@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と iWellnessNow の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と iWellnessNow の統合 | Microsoft Docs
 description: Azure Active Directory と iWellnessNow の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c260b32dc6f659ca4cc1b4c3f59859f75ba999d0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b02a5ec5a68743e148bcfef3c631d7777fd0a067
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447375"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871696"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>チュートリアル: Azure Active Directory と iWellnessNow の統合
+# <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>チュートリアル:Azure Active Directory と iWellnessNow の統合
 
 このチュートリアルでは、iWellnessNow と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -179,7 +179,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
  
 ### <a name="create-an-iwellnessnow-test-user"></a>iWellnessNow テスト ユーザーの作成
 
-このセクションでは、iWellnessNow で Britta Simon というユーザーを作成します。 [iWellnessNow サポート チーム](mailto:info@iwellnessnow.com)と連携し、iWellnessNow プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、iWellnessNow で Britta Simon というユーザーを作成します。  [iWellnessNow サポート チーム](mailto:info@iwellnessnow.com)と連携し、iWellnessNow プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -216,7 +216,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [iWellnessNow] タイルをクリックすると、自動的に iWellnessNow アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

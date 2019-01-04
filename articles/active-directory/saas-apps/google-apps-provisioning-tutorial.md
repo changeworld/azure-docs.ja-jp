@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: G Suite を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:G Suite を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から G Suite に対してユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 924584a77d36ec41488d8c76d9631baf484ff494
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 48a835bf8c63ffa5512173b600fb85abd5c6cb45
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346391"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840352"
 ---
-# <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル: G Suite を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Azure Active Directory (Azure AD) から G Suite にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法について説明することです。
 
@@ -67,7 +67,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 > [!NOTE]
 > G Suite へのユーザー プロビジョニングを自動化するための別の実行可能なオプションは、[Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en) を使用することです。 GADS は、オンプレミスの Active Directory の ID を G Suite にプロビジョニングします。 このチュートリアルでは Azure Active Directory (クラウド) のユーザーとメールが有効なグループを G Suite にプロビジョニングします。 
 
-1. [Google Apps の管理コンソール](http://admin.google.com/)に Administrator アカウントでサインインし、**[セキュリティ]** をクリックします。 このリンクが表示されていない場合、画面下部の **[その他の設定]** メニューに隠れていることがあります。
+1. [Google Apps の管理コンソール](https://admin.google.com/)に Administrator アカウントでサインインし、**[セキュリティ]** をクリックします。 このリンクが表示されていない場合、画面下部の **[その他の設定]** メニューに隠れていることがあります。
    
     ![[セキュリティ] を選択する][10]
 
@@ -110,7 +110,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. すべてのドメインを Azure AD で確認したので、Google Apps でも確認する必要があります。 Google にまだ登録されていない各ドメインに対して、次の手順を実行します。
    
-    a. [Google Apps の管理コンソール](http://admin.google.com/)で、**[ドメイン]** をクリックします。
+    a. [Google Apps の管理コンソール](https://admin.google.com/)で、**[ドメイン]** をクリックします。
      
      ![ドメインを選択する][20]
 
@@ -127,9 +127,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
     e. Google Apps に追加するすべての追加ドメインに対して、前述の手順を繰り返します。
      
      > [!WARNING]
-     > G Suite テナントのプライマリ ドメインを変更する場合や、Azure AD でシングル サインオンが構成済みである場合は、[手順 2: シングル サインオンを有効にする](#step-two-enable-single-sign-on)の手順 3. を繰り返す必要があります。
+     > G Suite テナントのプライマリ ドメインを変更する場合や、Azure AD でシングル サインオンが構成済みである場合は、[手順 2:シングル サインオンを有効にする](#step-two-enable-single-sign-on)の手順 3 を繰り返す必要があります。
        
-1. [Google Apps の管理コンソール](http://admin.google.com/)で、**[管理者ロール]** を選択します。
+1. [Google Apps の管理コンソール](https://admin.google.com/)で、**[管理者ロール]** を選択します。
    
      ![Google Apps を選択する][26]
 

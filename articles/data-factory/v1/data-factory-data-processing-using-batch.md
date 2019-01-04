@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b8a9973738ac28a686488a816da0f7da5fe2ac3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a20ba54226e5cdcec242e29344110840615a0c95
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238524"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317527"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -41,7 +41,7 @@ Batch サービスでは、複数のアプリケーションを並列で大規�
 * [Batch の基本](../../batch/batch-technical-overview.md)
 * [Batch 機能の概要](../../batch/batch-api-basics.md)
 
-また、Batch の詳細については、[Batch のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/batch/)に関するページを参照してください。
+必要な場合は、「[Batch のドキュメント](https://docs.microsoft.com/azure/batch/)」で Batch の詳細を確認してください。
 
 ## <a name="why-azure-data-factory"></a>Azure Data Factory を選ぶ理由
 Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。 Data Factory を使用すると、オンプレミスおよびクラウドのデータ ストアから中央のデータ ストアにデータを移動する、マネージド データ パイプラインを作成できます。 たとえば、Azure BLOB ストレージなどです。 Data Factory を使用すると、Azure HDInsight や Azure Machine Learning などのサービスを利用してデータを処理または変換することができます。 スケジュールされた方法 (たとえば、時間単位、日単位、週単位) でデータ パイプラインを実行するようにスケジュールを設定することもできます。 パイプラインを一目で監視および管理して、問題を特定し、行動を取ることができます。
@@ -51,7 +51,7 @@ Data Factory は、データの移動や変換を調整し自動化するクラ�
 * [Data Factory の概要](data-factory-introduction.md)
 * [最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)   
 
-必要に応じて、Data Factory の詳細について「[Azure Data Factory のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/data-factory/)」を参照してください。
+必要な場合は、「[the Data Factory documentation](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory)」 (Data Factory のドキュメント) で Data Factory の詳細を確認してください。
 
 ## <a name="data-factory-and-batch-together"></a>Data Factory と Batch の連携
 Data Factory には組み込みのアクティビティが含まれています。 たとえば、コピー アクティビティは、コピー元データ ストアからコピー先データ ストアにデータをコピーまたは移動するために使用されます。 Hive アクティビティは、Azure で Hadoop クラスター (HDInsight) を使用してデータを処理するために使用されます。 サポートされている変換アクティビティの一覧については、[データの変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事を参照してください。
@@ -84,7 +84,7 @@ Data Factory には組み込みのアクティビティが含まれています�
 ## <a name="implementation-of-the-sample-solution"></a>サンプル ソリューションの実装
 サンプル ソリューションは意図的に単純にしています。 Data Factory と Batch を併用してデータセットを処理する方法を示すために設計されています。 このソリューションでは、時系列で編成された入力ファイル内の検索語句 "Microsoft" の出現回数をカウントします。 出力ファイルにその数を出力します。
 
-**時間:** Azure、Data Factory、および Batch の基礎を理解し、次の前提条件をすべて満たしている場合、このソリューションの完成までにかかる時間は 1～2 時間です。
+**時間:** Azure、Data Factory、および Batch の基礎を理解し、次の前提条件をすべて満たしている場合、このソリューションの完成までにかかる時間は 1 ～ 2 時間です。
 
 ### <a name="prerequisites"></a>前提条件
 #### <a name="azure-subscription"></a>Azure サブスクリプション
@@ -175,7 +175,7 @@ public IDictionary<string, string> Execute(
   * **logger**。 logger を使用すると、パイプラインの "User" ログとして表示されるデバッグ コメントを作成できます。
 * メソッドから、今後、カスタム アクティビティの連結に使用できるディクショナリが返されます。 この機能はまだ実装されていないため、メソッドからは空のディクショナリが返されるだけです。
 
-#### <a name="procedure-create-the-custom-activity"></a>手順: カスタム アクティビティの作成
+#### <a name="procedure-create-the-custom-activity"></a>手順:カスタム アクティビティの作成
 1. Visual Studio で .NET クラス ライブラリ プロジェクトを作成します。
 
    a. Visual Studio 2012/2013/2015 を起動します。
@@ -186,7 +186,7 @@ public IDictionary<string, string> Execute(
 
    d. 右側にあるプロジェクトの種類の一覧から **[クラス ライブラリ]** を選択します。
 
-   e. **MyDotNetActivity** for the **MyDotNetActivity**に関する記事を参照してください。
+   e. **[プロジェクト名]** に「**MyDotNetActivity**」と入力します。
 
    f. **[場所]** で [**C:\\ADF**] を選択します。 **ADF** フォルダーが存在しない場合は作成します。
 
@@ -523,7 +523,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 次のチュートリアルでは、追加情報を示します。
 
-#### <a name="step-1-create-the-data-factory"></a>手順 1: Data Factory を作成する
+#### <a name="step-1-create-the-data-factory"></a>手順 1:Data Factory の作成
 1. [Azure Portal](https://portal.azure.com/) にサインインしてから、次の手順を実行します。
 
    a. 左側のメニューの **[新規]** を選択します。
@@ -546,7 +546,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![[データ ファクトリ] ページ](./media/data-factory-data-processing-using-batch/image6.png)
 
-#### <a name="step-2-create-linked-services"></a>手順 2. リンク サービスを作成する
+#### <a name="step-2-create-linked-services"></a>手順 2:リンクされたサービスを作成します
 リンクされたサービスは、データ ストアまたはコンピューティング サービスをデータ ファクトリにリンクします。 この手順では、ストレージ アカウントと Batch アカウントをデータ ファクトリにリンクします。
 
 #### <a name="create-an-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
@@ -595,7 +595,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. コマンド バーの **[デプロイ]** を選択して、リンクされたサービスをデプロイします。
 
-#### <a name="step-3-create-datasets"></a>手順 3: データセットを作成する
+#### <a name="step-3-create-datasets"></a>手順 3:データセットを作成する
 この手順では、入力データと出力データを表すデータセットを作成します。
 
 #### <a name="create-the-input-dataset"></a>入力データセットを作成する
@@ -734,7 +734,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. ツール バーの **[デプロイ]** をクリックし、**OutputDataset** を作成してデプロイします。
 
-#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>手順 4: カスタム アクティビティを使用して、パイプラインを作成して実行する
+#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する
 この手順では、以前に作成したカスタム アクティビティである、1 つのアクティビティでパイプラインを作成します。
 
 > [!IMPORTANT]
@@ -805,7 +805,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. コマンド バーの **[デプロイ]** を選択して、パイプラインをデプロイします。
 
-#### <a name="step-5-test-the-pipeline"></a>手順 5: パイプラインをテストする
+#### <a name="step-5-test-the-pipeline"></a>手順 5:パイプラインをテストする
 この手順では、ファイルを入力フォルダーにドロップして、パイプラインをテストします。 まず、入力フォルダーごとに 1 つのファイルを使用してパイプラインをテストします。
 
 1. Azure Portal の **[データ ファクトリ]** ブレードで、**[ダイアグラム]** を選択します。
@@ -930,11 +930,11 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 #### <a name="extend-the-sample"></a>サンプルの拡張
 Data Factory および Batch の機能の詳細については、このサンプルを拡張することができます。 たとえば、異なる時間範囲でスライスを処理するには、次の手順を実行します。
 
-1. `inputfolder` にサブフォルダー 2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、および 2015-11-16-09 を追加します。 これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム]** ビューで、**[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OutputDataset]** をダブルクリックして、出力スライスの状態を表示します。 **準備完了**の状態である場合、出力フォルダーで出力ファイルを確認します。
+1. `inputfolder` にサブフォルダー2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、および 2015-11-16-09 を追加します。 これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム]** ビューで、**[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OutputDataset]** をダブルクリックして、出力スライスの状態を表示します。 **準備完了**の状態である場合、出力フォルダーで出力ファイルを確認します。
 
-1. 特に Batch 上で発生する処理のように、どのようにソリューションのパフォーマンスに影響するかを理解するには、**concurrency** の設定を増加または減少させます。 **concurrency** 設定の詳細については、「手順 4: カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
+1. 特に Batch 上で発生する処理のように、どのようにソリューションのパフォーマンスに影響するかを理解するには、**concurrency** の設定を増加または減少させます。 **concurrency** 設定の詳細については、「手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
 
-1. **[VM ごとの最大タスク]** を高くまたは低くして、プールを作成します。 新しく作成したプールを使用するには、データ ファクトリ ソリューションで、Batch のリンクされたサービスを更新します。 **[VM ごとの最大タスク]** 設定の詳細については、「手順 4: カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
+1. **[VM ごとの最大タスク]** を高くまたは低くして、プールを作成します。 新しく作成したプールを使用するには、データ ファクトリ ソリューションで、Batch のリンクされたサービスを更新します。 **[VM ごとの最大タスク]** 設定の詳細については、「手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
 
 1. **[自動スケール]** 機能で、Batch プールを作成します。 Batch プール内のコンピューティング ノードの自動スケールは、アプリケーションによって使用される処理能力を動的に調整します。 
 
@@ -956,13 +956,13 @@ Data Factory および Batch の機能の詳細については、このサンプ
 
 1. サンプル ソリューションで、**Execute** メソッドは、出力データ スライスを生成するために入力データ スライスを処理する、**Calculate** メソッドを呼び出します。 入力データを処理し、**Execute** メソッドで呼び出される **Calculate** メソッドを、メソッドの呼び出しに置換する独自のメソッドを記述することができます。
 
-### <a name="next-steps-consume-the-data"></a>次の手順: データの処理
+### <a name="next-steps-consume-the-data"></a>次のステップ:データの処理
 データを処理した後、Power BI などのオンライン ツールで使用することができます。 Power BI や Azure で使用する方法を理解するために役立つリンクを次に示します。
 
 * [Power BI でのデータセットの参照](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
 * [Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Power BI でのデータの更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
-* [Azure と Power BI - 基本的な概要](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
+* [Azure と Power BI:基本的な概要](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>参照
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)

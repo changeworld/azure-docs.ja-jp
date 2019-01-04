@@ -3,7 +3,7 @@ title: スケールアウトされたクラウド データベース間のデー
 description: エラスティック データベース API を使用して、シャードを操作し、自己ホスト サービス経由でデータを移動する方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: fb87a67d84588b5199a5d31530530d5afb7985e7
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 0f5dc5cc7d981eb162ba101671b1e967ddf4bfff
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353684"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868465"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベース間のデータ移動
 
@@ -27,7 +27,7 @@ Split-Merge ツールは、Azure Web サービスとして実行されます。 
 
 ![概要][1]
 
-## <a name="download"></a>[ダウンロード]
+## <a name="download"></a>ダウンロード
 
 [Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
@@ -212,7 +212,7 @@ Split-Merge サービスでは、完了した要求と実行中の要求を監�
 
 ### <a name="azure-diagnostics"></a>Azure 診断
 
-Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure 診断を使用します。 「 [Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」で説明したように、診断構成を制御します。 ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。
+Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure 診断を使用します。 診断構成を制御する方法については、次の記事で説明されています。[Azure Cloud Services と Virtual Machines の診断機能の有効化に関する記事](../cloud-services/cloud-services-dotnet-diagnostics.md) ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。
 
 ## <a name="deploy-diagnostics"></a>診断のデプロイ
 
@@ -230,7 +230,7 @@ NuGet パッケージで提供される Web ロール用と worker ロール用�
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-診断設定を構成してデプロイする方法の詳細については、「 [Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」を参照してください。
+診断設定を構成してデプロイする方法の詳細については、次の記事で説明されています:[Azure Cloud Services と Virtual Machines の診断機能の有効化に関する記事](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
 ## <a name="retrieve-diagnostics"></a>診断の取得
 

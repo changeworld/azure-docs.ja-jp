@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 6fb8be96c9793e96f1f7d2ad8e212d056d7e9ba5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 358e8cd92fe250741adbbb9208b5e149a5f60216
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38467888"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959735"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け Apache Cordova クライアント ライブラリの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -71,8 +71,8 @@ Azure Mobile Apps の Cordova プラグインは、Ionic v1 アプリと Ionic v
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>方法: ユーザーを認証する
-Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。 さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。 詳細については、チュートリアル「 [モバイル サービスでの認証の使用] 」を参照してください。
+## <a name="auth"></a>方法:ユーザーを認証する
+Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートしています。 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。 さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。 詳細については、チュートリアル「 [モバイル サービスでの認証の使用] 」を参照してください。
 
 Apache Cordova アプリで認証を使用する場合は、次の Cordova プラグインが使用できる状態になければなりません。
 
@@ -83,7 +83,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>外部リダイレクト URL 用に Mobile App Service を構成する方法
+### <a name="configure-external-redirect-urls"></a>方法:外部リダイレクト URL 用に Mobile App Service を構成する方法
 いくつかの種類の Apache Cordova アプリケーションでは、ループバック機能を使用して OAuth UI フローを処理します。  既定では認証サービスで認識されるのはサービスの利用方法だけであるため、localhost 上の OAuth UI フローによって問題が発生します。  問題のある OAuth UI フローの例は次のとおりです。
 
 * Ripple エミュレーター
@@ -93,12 +93,12 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 
 ローカル設定を構成に追加するには、以下の手順に従います。
 
-1. [Azure Portal]
+1.  [Azure Portal]
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
-3. **[ツール]**
+3.  **[ツール]**
 4. [監視] メニューの **[リソース エクスプローラー]** をクリックし、**[実行]** をクリックします。  新しいウィンドウまたはタブが開きます。
 5. 左側のナビゲーションで、サイトの **[config]** ノード、**[authsettings]** ノードの順に展開します。
-6. **[編集]**
+6.  **[編集]**
 7. "allowedExternalRedirectUrls" 要素を探します。  この要素は、null または値の配列に設定できます。  値を次の値に変更します。
 
          "allowedExternalRedirectUrls": [
@@ -113,7 +113,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 この時点で設定が保存されます。  設定の保存が完了するまで、ブラウザー ウィンドウを閉じないでください。
 また、App Service の CORS 設定に、これらのループバック URL を追加します。
 
-1. [Azure Portal]
+1.  [Azure Portal]
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
 3. [設定] ブレードが自動的に開きます。  開かない場合は、 **[すべての設定]** をクリックします。
 4. API メニューの **[CORS]** をクリックします。
@@ -123,7 +123,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 
 新しい設定が有効になるまで約 10 ～ 15 秒かかります。
 
-## <a name="register-for-push"></a>方法: プッシュ通知に登録する
+## <a name="register-for-push"></a>方法:プッシュ通知に登録する
 プッシュ通知を処理するには、 [phonegap-plugin-push] をインストールします。  このプラグインは、コマンド ラインで `cordova plugin add` コマンドを使用するか、Visual Studio 内で Git プラグイン インストーラーを使用することで簡単に追加できます。  Apache Cordova アプリの次のコードによって、デバイスがプッシュ通知に登録されます。
 
 ```
@@ -167,7 +167,7 @@ pushHandler.on('error', function (error) {
 
 ## <a name="more-information"></a>詳細情報
 
-API の詳細については、[API に関するドキュメント](http://azure.github.io/azure-mobile-apps-js-client/)を参照してください。
+API の詳細については、[API に関するドキュメント](https://azure.github.io/azure-mobile-apps-js-client/)を参照してください。
 
 <!-- URLs. -->
 [Azure Portal]: https://portal.azure.com
@@ -176,7 +176,7 @@ API の詳細については、[API に関するドキュメント](http://azure
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Azure Mobile Apps 向け Apache Cordova プラグイン]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
-[こちら]: http://cordova.apache.org/#getstarted
+[こちら]: https://cordova.apache.org/#getstarted
 [phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
 [phonegap-plugin-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device

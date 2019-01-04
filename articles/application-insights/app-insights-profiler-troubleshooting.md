@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6013c0a1b404336ad7cca21edafb7adec5c7f7ca
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 7b7aad2cb8aa9b4faeada795f20c818995f62fb6
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978844"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720441"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -46,9 +45,6 @@ Application Insights Profiler は、1 時間ごとに 2 分間、または **[Ap
 
 1. プロファイラーが実行された期間中に要求がある場合は、プロファイラーが有効になっているアプリケーションの一部分で要求が処理されることを確認します。 アプリケーションが複数のコンポーネントで構成されていることもありますが、Profiler は、コンポーネントのすべてではなく一部に対してのみ有効になっています。 [Application Insights Profiler を構成する] ページに、トレースをアップロード済みのコンポーネントが表示されます。
 
-### <a name="net-core-21-bug"></a>.NET Core 2.1 のバグ
-プロファイラー エージェントには、ASP.NET Core 2.1 上で実行されているアプリケーションから取得されたトレースをアップロードできないというバグがあります。 現在、修正プログラムを作成中です。間もなく準備できます。 このバグの修正プログラムは、10 月末までにデプロイされます。
-
 ### <a name="other-things-to-check"></a>チェックすべきその他の項目:
 * アプリが .Net Framework 4.6 で動作していること。
 * Web アプリが ASP.NET Core アプリケーションの場合は、ASP.NET Core 2.0 以降が実行されている必要があります。
@@ -69,10 +65,11 @@ Application Insights Profiler は、1 時間ごとに 2 分間、または **[Ap
 ## <a name="troubleshooting-profiler-on-app-services"></a>App Services でのプロファイラーのトラブルシューティング
 ### <a name="for-the-profiler-to-work-properly"></a>プロファイラーを正常に動作させるためには:
 * Web アプリ サービス プランは Basic レベル以上である必要があります。
-* Web アプリには、App Services (2.6.5) 用の Application Insights 拡張機能がインストールされている必要があります。
+* Web アプリで Application Insights が有効になっている必要があります。
 * Web アプリは、**APPINSIGHTS_INSTRUMENTATIONKEY** 設定が、Application Insights SDK で使用されているインストルメンテーション キーと同じキーで構成されている必要があります。
 * Web アプリには、**APPINSIGHTS_PROFILERFEATURE_VERSION** アプリ設定が定義され、1.0.0 に設定されている必要があります。
-* **ApplicationInsightsProfiler2** Web ジョブが実行されている必要があります。 [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/) に移動し、[ツール] メニューの下の **WebJobs ダッシュボード**を開くと、Web ジョブを確認できます。 下のスクリーンショットのように、ApplicationInsightsProfiler2 リンクをクリックすることで、ログなどの Web ジョブの詳細を確認できます。
+* Web アプリには **DiagnosticServices_EXTENSION_VERSION** アプリ設定が定義され、3 以下の値が設定されている必要があります。
+* **ApplicationInsightsProfiler3** Web ジョブが実行されている必要があります。 [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/) に移動し、[ツール] メニューの下の **WebJobs ダッシュボード**を開くと、Web ジョブを確認できます。 下のスクリーンショットのように、ApplicationInsightsProfiler2 リンクをクリックすることで、ログなどの Web ジョブの詳細を確認できます。
 
     Web ジョブの詳細を表示するためにクリックする必要があるリンクを、次に示します。 
 
@@ -91,17 +88,13 @@ Profiler を構成すると、Web アプリの設定に対して更新が行わ�
 1. **[Always On]** を**オン**に設定します。
 1. **APPINSIGHTS_INSTRUMENTATIONKEY** アプリ設定を追加し、その値を SDK によって使用されているものと同じインストルメンテーション キーに設定します。
 1. **APPINSIGHTS_PROFILERFEATURE_VERSION** アプリ設定を追加し、値を 1.0.0 に設定します。
-1. **[高度なツール]** を開きます。
-1. **[移動]** を選択して、Kudu の Web サイトを開きます。
-1. Kudu の Web サイトで、**[Site extensions]\(サイトの拡張機能\)** を選択します。
-1. Azure Web Apps ギャラリーから **Application Insights** をインストールします。
-1. Web アプリを再起動します。
+1. **DiagnosticServices_EXTENSION_VERSION** アプリ設定を追加し、値を 3 以下に設定します。
 
 ### <a name="too-many-active-profiling-sessions"></a>アクティブなプロファイリング セッションが多すぎる
 
 現在、同じサービス プランで実行されている最大 4 つの Azure Web アプリとデプロイ スロットで Profiler を有効にできます。 1 つの App Service プランで実行されるより多くの Web アプリがある場合は、プロファイラーによって Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException がスローされる可能性があります。 プロファイラーは、Web アプリごとに個別に実行して、各アプリの ETW セッションの開始を試みます。 ただし、一度にアクティブにできる ETW セッションの数には制限があります。 Profiler Web ジョブが報告しているアクティブなプロファイリング セッションが多すぎる場合は、一部の Web アプリを別のサービス プランに移動します。
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>配置エラー: ディレクトリが空ではありません 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>配置エラー:ディレクトリが空ではありません 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
 
 Profiler が有効になっている Web Apps リソースに Web アプリを再デプロイしている場合は、次のようなメッセージが表示されることがあります。
 
@@ -135,7 +128,7 @@ D:\ProgramData\ApplicationInsightsProfiler\config.json
 ```
 プロファイラーのコマンドラインの ikey が正しいことをチェックします。 
 
-3 つ目として、上記の config.json ファイルで検出されたパスを使用して、プロファイラーのログ ファイルをチェックします。 これにより、プロファイラーが使用している設定、およびプロファイラーのステータスとエラー メッセージを示すデバッグ情報が表示されます。 アプリケーションが要求を受信中にプロファイラーが実行中の場合は、「iKey からアクティビティが検出されました」というメッセージが表示されます。 トレースがアップロード中の場合は、「トレースのアップロードを開始します」というメッセージが表示されます。 
+3 つ目として、上記の config.json ファイルで検出されたパスを使用して、プロファイラーのログ ファイルをチェックします。 これにより、プロファイラーが使用している設定、およびプロファイラーのステータスとエラー メッセージを示すデバッグ情報が表示されます。 アプリケーションが要求を受信中にプロファイラーが実行中の場合は、次のようなメッセージが表示されます:"iKey からアクティビティが検出されました"。 トレースがアップロード中の場合は、次のようなメッセージが表示されます:"トレースのアップロードを開始します"。 
 
 
 [profiler-search-telemetry]:./media/app-insights-profiler/Profiler-Search-Telemetry.png

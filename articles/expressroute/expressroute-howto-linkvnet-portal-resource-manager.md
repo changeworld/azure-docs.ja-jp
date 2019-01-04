@@ -1,26 +1,19 @@
 ---
-title: '仮想ネットワークを ExpressRoute 回線にリンクする: Azure Portal | Microsoft Docs'
+title: 仮想ネットワークを回線にリンクする - ExpressRoute:Azure portal | Microsoft Docs
 description: Azure ExpressRoute 回線に VNet を接続する 手順を説明します。
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/08/2018
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 47c0db66889dae5d74e2fcf46a27ec1397930e53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 16d85510efb055d7d564ffadb9fff2b200771bc6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256784"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438831"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
@@ -95,6 +88,10 @@ ms.locfileid: "51256784"
 **接続の承認を作成するには**
 
 回線所有者は、承認を作成します。 その結果、回線ユーザーが各自の仮想ネットワーク ゲートウェイを ExpressRoute 回線に接続するために使用できる承認キーが作成されます。 承認は、1 つの接続に対してのみ有効です。
+
+> [!NOTE]
+> 接続ごとに別個の認可が必要です。
+>
 
 1. [ExpressRoute] ページで **[承認]** をクリックし、承認の**名前**を入力して、**[保存]** をクリックします。
 

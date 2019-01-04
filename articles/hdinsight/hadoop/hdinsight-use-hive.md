@@ -10,28 +10,28 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: d7b29980321f04d1ad9325580bc48ab944f60d1c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 73c68e6946b3715bfa67561141e6c18e32e20c18
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633718"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011761"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
-[Apache Hive](http://hive.apache.org/) は、Apache Hadoop 用のデータ ウェアハウス システムです。 Hive を使用すると、データの集計、クエリ、および分析を行うことができます。 Hive クエリは、SQL に似たクエリ言語である HiveQL で記述します。
+[Apache Hive](https://hive.apache.org/) は、Apache Hadoop 用のデータ ウェアハウス システムです。 Hive を使用すると、データの集計、クエリ、および分析を行うことができます。 Hive クエリは、SQL に似たクエリ言語である HiveQL で記述します。
 
 Hive では、大規模な非構造化データに構造を投影することができます。 構造を定義したら、HiveQL を使用することで、Java や MapReduce の知識がなくてもそのデータを照会できます。
 
 HDInsight には、特定のワークロード用に調整されたいくつかのクラスター タイプがあります。 Hive クエリには、次のクラスター タイプが最も一般的に使用されます。
 
-* __Interactive Query__: [Low Latency Analytical Processing (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) 機能を提供して対話型クエリの応答時間を向上させる Hadoop クラスター。 詳細については、[HDInsight での Interactive Query の使用](../interactive-query/apache-interactive-query-get-started.md)に関するドキュメントをご覧ください。
+* __対話型クエリ__:[Low Latency Analytical Processing (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) 機能を提供して対話型クエリの応答時間を向上させる Hadoop クラスター。 詳細については、[HDInsight での Interactive Query の使用](../interactive-query/apache-interactive-query-get-started.md)に関するドキュメントをご覧ください。
 
-* __Hadoop__: バッチ処理ワークロード用に調整された Hadoop クラスター。 詳細については、[HDInsight での Hadoop の使用](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するドキュメントを参照してください。
+* __Hadoop__:バッチ処理ワークロード用に調整された Hadoop クラスター。 詳細については、[HDInsight での Hadoop の使用](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するドキュメントを参照してください。
 
-* __Spark__: Apache Spark には、Hive を操作するための機能が組み込まれています。 詳細については、[HDInsight での Spark の使用](../spark/apache-spark-jupyter-spark-sql.md)に関するドキュメントを参照してください。
+* __Spark__:Apache Spark には、Hive を操作するための機能が組み込まれています。 詳細については、[HDInsight での Spark の使用](../spark/apache-spark-jupyter-spark-sql.md)に関するドキュメントを参照してください。
 
-* __HBase__: HiveQL を使用して、HBase に格納されているデータを照会できます。 詳細については、[HDInsight での HBase の使用](../hbase/apache-hbase-tutorial-get-started-linux.md)に関するドキュメントを参照してください。
+* __HBase__:HiveQL を使用して、HBase に格納されているデータを照会できます。 詳細については、[HDInsight での HBase の使用](../hbase/apache-hbase-tutorial-get-started-linux.md)に関するドキュメントを参照してください。
 
 ## <a name="how-to-use-hive"></a>Hive の使用方法
 
@@ -39,12 +39,12 @@ HDInsight で Hive を使用するさまざまな方法を次の表に示しま�
 
 | **方法** | **対話型**クエリ | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
-| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux | Linux、Unix、Mac OS X、または Windows |
-| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Linux または Windows* | Windows |
-| [Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ | Linux |任意 (ブラウザー ベース) |
-| [Beeline クライアント](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ | Linux |Linux、Unix、Mac OS X、または Windows |
+| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux、Unix、Mac OS X、または Windows |
+| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Linux または Windows* |Windows |
+| [Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任意 (ブラウザー ベース) |
+| [Beeline クライアント](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
 | [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux または Windows* |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows* | Windows |
+| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows* |Windows |
 
 > [!IMPORTANT]
 > \* Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -78,14 +78,14 @@ Hive でサポートされるファイル形式の詳細については、[言�
 
 Hive で作成できるテーブルには、次の 2 種類があります。
 
-* __内部__: データは Hive データ ウェアハウスに格納されます。 データ ウェアハウスは、クラスターの既定のストレージの `/hive/warehouse/` に配置されます。
+* __内部__:データは Hive データ ウェアハウスに格納されます。 データ ウェアハウスは、クラスターの既定のストレージの `/hive/warehouse/` に配置されます。
 
     次のいずれかの条件に当てはまる場合は、内部テーブルを使用します。
 
     * データが一時的である。
     * Hive でテーブルとデータのライフサイクルを管理したい。
 
-* __外部__: データはデータ ウェアハウスの外部に格納されます。 データは、クラスターからアクセス可能な任意のストレージに格納できます。
+* __外部__:データはデータ ウェアハウスの外部に格納されます。 データは、クラスターからアクセス可能な任意のストレージに格納できます。
 
     次のいずれかの条件に当てはまる場合は、外部テーブルを使用します。
 
@@ -138,20 +138,20 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 前の例では、HiveQL ステートメントは次のアクションを実行します。
 
-* `set hive.execution.engine=tez;`: Tez を使用するように実行エンジンを設定します。 Tez を使用すると、クエリ パフォーマンスを向上できます。 Tez の詳細については、「 [パフォーマンスを改善するための Apache Tez の使用方法](#usetez) 」セクションをご覧ください。
+* `set hive.execution.engine=tez;`:Tez を使用するように実行エンジンを設定します。 Tez を使用すると、クエリ パフォーマンスを向上できます。 Tez の詳細については、「 [パフォーマンスを改善するための Apache Tez の使用方法](#usetez) 」セクションをご覧ください。
 
     > [!NOTE]
     > このステートメントは、Windows ベースの HDInsight クラスターの使用時にのみ必要です。 Linux ベースの HDInsight クラスターでは、Tez が既定の実行エンジンです。
 
-* `DROP TABLE`: テーブルが既に存在する場合は、それを削除します。
+* `DROP TABLE`:テーブルが既に存在する場合は、それを削除します。
 
-* `CREATE EXTERNAL TABLE`: Hive に新しい**外部**テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に、元の形式で残されます。
+* `CREATE EXTERNAL TABLE`:新しい**外部**テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に、元の形式で残されます。
 
-* `ROW FORMAT`: データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。
+* `ROW FORMAT`:データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。
 
-* `STORED AS TEXTFILE LOCATION`: データの格納先 (`example/data` ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。 データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。
+* `STORED AS TEXTFILE LOCATION`:データの格納先 (`example/data` ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。 データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。
 
-* `SELECT`: 列 **t4** に値 **[ERROR]** が含まれているすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。
+* `SELECT`:列 **t4** に値 **[ERROR]** が含まれているすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。
 
 * `INPUT__FILE__NAME LIKE '%.log'` - Hive は、ディレクトリ内のすべてのファイルにスキーマの適用を試みます。 このケースでは、ディレクトリにスキーマに一致しないファイルが含まれています。 結果にガベージ データが含まれないように、このステートメントを使用して、.log で終わるファイルのデータのみを返す必要があることを Hive に指示します。
 
@@ -180,11 +180,11 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 これらのステートメントは次のアクションを実行します。
 
-* `CREATE TABLE IF NOT EXISTS`: テーブルが存在しない場合は作成します。 **EXTERNAL** キーワードが使用されていないため、このステートメントは内部テーブルを作成します。 このテーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。
+* `CREATE TABLE IF NOT EXISTS`:テーブルが存在しない場合は作成します。 **EXTERNAL** キーワードが使用されていないため、このステートメントは内部テーブルを作成します。 このテーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。
 
-* `STORED AS ORC`: Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
+* `STORED AS ORC`:Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
 
-* `INSERT OVERWRITE ... SELECT`: **[ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにデータを挿入します。
+* `INSERT OVERWRITE ... SELECT`:**[ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにそのデータを挿入します。
 
 > [!NOTE]
 > 外部テーブルとは異なり、内部デーブルを削除すると、基盤となるデータも削除されます。
@@ -193,7 +193,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 ### <a id="usetez"></a>Apache Tez
 
-[Apache Tez](http://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。 Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
+[Apache Tez](https://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。 Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
 
 > [!NOTE]
 > Tez は Windows ベースの HDInsight クラスターに対して現在既定でオフになっているため、有効にする必要があります。 Tez を活用するために、Hive クエリに次の値を設定する必要があります。
@@ -246,18 +246,18 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 * [HDInsight での Pig の使用][hdinsight-use-pig]
 * [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-[hivetask]: http://msdn.microsoft.com/library/mt146771(v=sql.120).aspx
-[connectionmanager]: http://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[hivetask]: https://msdn.microsoft.com/library/mt146771(v=sql.120).aspx
+[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
+[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -272,7 +272,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
 
 
-[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx

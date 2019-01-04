@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 0a130613d6d2086fda55ca015b1c0ca77c909e3d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: d6a1f2829352e8589c8d132a195a425edcbe62c3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684615"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872945"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>Log Analytics による SQL データ同期の監視 
 
@@ -97,7 +97,7 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
     2.  同期グループの情報。
 
-    3.  Log Analytics 情報。 これらの情報は、[Azure Portal] | [設定] | [接続されたソース] で見つけます。 Log Analytics へのデータ送信の詳細については、「[HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (プレビュー)](../log-analytics/log-analytics-data-collector-api.md)」を参照してください。
+    3.  Log Analytics 情報。 これらの情報は、[Azure Portal] | [設定] | [接続されたソース] で見つけます。 Log Analytics へのデータ送信の詳細については、「[HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (プレビュー)](../azure-monitor/platform/data-collector-api.md)」を参照してください。
 
 11. [テスト] ペインで Runbook を実行します。 それが成功したことを確認します。
 
@@ -198,7 +198,7 @@ SQL データ同期の詳細については、以下を参照してください�
 
 -   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
 -   データ同期の設定
-    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
+    - ポータル - [チュートリアル:Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
     - PowerShell の場合
         -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)

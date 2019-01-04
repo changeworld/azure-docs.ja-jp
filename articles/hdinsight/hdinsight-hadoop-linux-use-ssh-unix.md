@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 5a3fccba6465e6043db3f95ffdb65f1a8d8a7009
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: bcd550ac8f4b75002648f2e4737a4683349aa45f
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279359"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384634"
 ---
-# <a name="connect-to-hdinsight-hadoop-using-ssh"></a>SSH を使用して HDInsight (Hadoop) に接続する
+# <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>SSH を使用して HDInsight (Apache Hadoop) に接続する
 
-[Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) を使って Azure HDInsight の Hadoop に安全に接続する方法について説明します。 
+[Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) を使って Azure HDInsight の Apache Hadoop に安全に接続する方法について説明します。 
 
 HDInsight では Linux (Ubuntu) を Hadoop クラスター内のノードのオペレーティング システムとして使用できます。 次の表に、SSH クライアントを使用して Linux ベースの HDInsight に接続する際に必要なアドレスとポートの情報を示します。
 
@@ -30,16 +30,16 @@ HDInsight では Linux (Ubuntu) を Hadoop クラスター内のノードのオ�
 | `<clustername>-ssh.azurehdinsight.net` | 22 | プライマリ ヘッド ノード |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | セカンダリ ヘッド ノード |
 
-> [!NOTE]
+> [!NOTE]  
 > `<edgenodename>` をエッジ ノードの名前に置き換えます。
 >
 > `<clustername>` をクラスターの名前に置き換えます。
 >
-> クラスターにエッジ ノードが含まれている場合は、SSH を使用して __常にエッジ ノードに接続する__ ことをお勧めします。 ヘッド ノードは、Hadoop の正常な稼働に不可欠なサービスをホストします。 エッジ ノードは、配置されたもののみを実行します。
+> クラスターにエッジ ノードが含まれている場合は、SSH を使用して__常にエッジ ノードに接続する__ことをお勧めします。 ヘッド ノードは、Hadoop の正常な稼働に不可欠なサービスをホストします。 エッジ ノードは、配置されたもののみを実行します。
 >
 > エッジ ノードの使用の詳細については、[HDInsight でのエッジ ノードの使用](hdinsight-apps-use-edge-node.md#access-an-edge-node)に関する記事を参照してください。
 
-> [!TIP]
+> [!TIP]  
 > HDInsight に初めて接続すると、ホストの信頼性を確立できないという警告が SSH クライアントに表示されることがあります。 メッセージが表示されたら、"はい" を選択して、SSH クライアントの信頼済みサーバーの一覧にこのホストを追加してください。
 >
 > 以前に同じ名前でサーバーに接続したことがある場合は、保存されているホスト キーとサーバーのホスト キーが一致しないという警告が表示されることがあります。 サーバー名の既存のエントリを削除する方法については、SSH クライアントのドキュメントを参照してください。
@@ -50,35 +50,34 @@ Linux、Unix、および macOS システムでは、`ssh` コマンドと `scp` 
 
 Microsoft Windows には、既定では SSH クライアントがインストールされていません。 Windows 用の `ssh` クライアントと `scp` クライアントは、次の各パッケージで入手できます。
 
-* OpenSSH クライアント (ベータ): Fall Creators Update で、__[設定]__ > __[アプリと機能]__ > __[オプション機能の管理]__ > __[機能の追加]__ の順に移動して、__[OpenSSH Client]\(OpenSSH クライアント\)__ を選択します。 
+* OpenSSH クライアント (ベータ):Fall Creators Update で、__[設定]__ > __[アプリと機能]__ > __[オプション機能の管理]__ > __[機能の追加]__ の順に移動して、__[OpenSSH Client](OpenSSH クライアント)__ を選択します。 
 
-    > [!NOTE]
+    > [!NOTE]  
     > この機能を有効にした後 PowerShell で `ssh` コマンドと `scp` コマンドが使用できない場合、ログアウトしてからログインし直してください。
 
-* [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about): `ssh` コマンドおよび `scp` コマンドは、Bash on Windows のコマンド ラインを介して利用できます。
+* [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about):`ssh` コマンドおよび `scp` コマンドは、Bash on Windows のコマンド ラインを介して利用できます。
 
-* [OpenSSH クライアント (ベータ)](https://blogs.msdn.microsoft.com/powershell/2017/12/15/using-the-openssh-beta-in-windows-10-fall-creators-update-and-windows-server-1709/): Windows 10 Fall Creators Update で導入されるオプション機能です。
+* [OpenSSH クライアント (ベータ)](https://blogs.msdn.microsoft.com/powershell/2017/12/15/using-the-openssh-beta-in-windows-10-fall-creators-update-and-windows-server-1709/):Windows 10 Fall Creators Update で導入されるオプション機能です。
 
-* [Azure Cloud Shell](../cloud-shell/quickstart.md): Cloud Shell は、ブラウザーで Bash 環境を提供し、`ssh`、`scp`、およびその他の一般的な Linux コマンドを提供します。
+* [Azure Cloud Shell](../cloud-shell/quickstart.md):Cloud Shell は、ブラウザーで Bash 環境を提供し、`ssh`、`scp`、およびその他の一般的な Linux コマンドを提供します。
 
-* [Git (https://git-scm.com/)](https://git-scm.com/): `ssh` コマンドおよび `scp` コマンドは、GitBash のコマンド ラインを介して利用できます。
+* [Git (https://git-scm.com/)](https://git-scm.com/):`ssh` コマンドおよび `scp` コマンドは、GitBash のコマンド ラインを介して利用できます。
 
 [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) や [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/) などのグラフィカルな SSH クライアントもいくつか存在します。 これらのクライアントは HDInsight への接続に使用できますが、接続するプロセスは、`ssh` ユーティリティを使用する場合とは異なります。 詳細については、お使いのグラフィカル クライアントに関するドキュメントを参照してください。
 
-## <a id="sshkey"></a>認証: SSH キー
+## <a id="sshkey"></a>認証:SSH キー
 
 SSH キーでは、[公開キー暗号化](https://en.wikipedia.org/wiki/Public-key_cryptography)を使用して SSH セッションを認証します。 SSH キーは、パスワードよりも安全性が高く、Hadoop クラスターへのアクセスをセキュリティで保護する簡単な方法を提供します。
 
 SSH アカウントがキーを使用してセキュリティ保護されている場合、クライアントは対応する秘密キーを接続時に提供する必要があります。
 
-* ほとんどのクライアントは、__既定のキー__ を使用するように構成できます。 たとえば、Linux 環境または Unix 環境では、`ssh` クライアントは `~/.ssh/id_rsa` で秘密キーを探します。
+* ほとんどのクライアントは、__既定のキー__を使用するように構成できます。 たとえば、Linux 環境または Unix 環境では、`ssh` クライアントは `~/.ssh/id_rsa` で秘密キーを探します。
 
-* __秘密キーへのパス__ を指定できます。 `ssh` クライアントでは、秘密キーへのパスを指定するために `-i` パラメーターが使用されます。 たとえば、「 `ssh -i ~/.ssh/id_rsa sshuser@myedge.mycluster-ssh.azurehdinsight.net` 」のように入力します。
+* __秘密キーへのパス__を指定できます。 `ssh` クライアントでは、秘密キーへのパスを指定するために `-i` パラメーターが使用されます。 たとえば、「 `ssh -i ~/.ssh/id_rsa sshuser@myedge.mycluster-ssh.azurehdinsight.net` 」のように入力します。
 
 * 異なる複数のサーバーで使用するための __複数の秘密キー__ がある場合は、[ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) などのユーティリティを使用することを検討してください。 `ssh-agent` ユーティリティを使用すると、SSH セッションを確立するときに使用するキーを自動的に選択できます。
 
-> [!IMPORTANT]
->
+> [!IMPORTANT]  
 > パスフレーズを使用して秘密キーをセキュリティ保護した場合は、そのキーを使用するときにパスフレーズを入力する必要があります。 `ssh-agent` などのユーティリティは、利便性のためにパスワードをキャッシュすることができます。
 
 ### <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
@@ -89,11 +88,11 @@ SSH アカウントがキーを使用してセキュリティ保護されてい�
 
 キーの作成プロセス中には、情報の入力が求められます。 たとえば、キーが格納されている場所や、パスフレーズを使用するかどうかなどです。 プロセスが完了すると、公開キーと秘密キーの 2 つのファイルが作成されます。
 
-* __公開キー__ は、HDInsight クラスターの作成に使用します。 公開キーの拡張子は `.pub` です。
+* __公開キー__は、HDInsight クラスターの作成に使用します。 公開キーの拡張子は `.pub` です。
 
-* __秘密キー__ は、HDInsight クラスターでクライアントを認証するために使用します。
+* __秘密キー__は、HDInsight クラスターでクライアントを認証するために使用します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > キーはパスフレーズを使用してセキュリティ保護することができます。 パスフレーズは実質的には秘密キーのパスワードです。 だれかが秘密キーを入手したとしても、パスフレーズがないと使用できません。
 
 ### <a name="create-hdinsight-using-the-public-key"></a>秘密キーを使用して HDInsight を作成する
@@ -105,14 +104,14 @@ SSH アカウントがキーを使用してセキュリティ保護されてい�
 | **Azure クラシック CLI** | `azure hdinsight cluster create` コマンドの `--sshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。 |
 | **Resource Manager テンプレート** | テンプレートでの SSH キーの使用例については、[SSH キーを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) ファイルの `publicKeys` 要素は、クラスターの作成時にキーを Azure に渡すために使用されます。 |
 
-## <a id="sshpassword"></a>認証: パスワード
+## <a id="sshpassword"></a>認証:パスワード
 
 SSH アカウントは、パスワードを使用してセキュリティ保護することができます。 SSH を使用して HDInsight に接続すると、パスワードの入力を求められます。
 
-> [!WARNING]
+> [!WARNING]  
 > SSH でパスワード認証を使用することはお勧めしません。 パスワードは推測可能であり、ブルート フォース攻撃に対して脆弱です。 代わりに、[SSH キーによる認証](#sshkey)を行うことをお勧めします。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > SSH アカウントのパスワードは、HDInsight クラスターの作成後 70 日で期限切れになります。 パスワードの期限が切れた場合は、[HDInsight の管理](hdinsight-administer-use-portal-linux.md#change-passwords)に関するドキュメントの情報を使用して変更できます。
 
 ### <a name="create-hdinsight-using-a-password"></a>パスワードを使用して HDInsight を作成する
@@ -128,7 +127,7 @@ SSH アカウントは、パスワードを使用してセキュリティ保護�
 
 SSH ユーザー アカウントのパスワード変更に関する詳細については、[HDInsight の管理](hdinsight-administer-use-portal-linux.md#change-passwords)に関するドキュメントの「__パスワードの変更__」セクションを参照してください。
 
-## <a id="domainjoined"></a>認証: ドメイン参加済み HDInsight
+## <a id="domainjoined"></a>認証:ドメイン参加済み HDInsight
 
 __ドメイン参加済み HDInsight クラスター__ を使用している場合は、SSH ローカル ユーザーと接続した後で `kinit` コマンドを使用する必要があります。 このコマンドを実行すると、ドメイン ユーザーとパスワードの入力が求められ、クラスターに関連付けられた Azure Active Directory ドメインによってセッションが認証されます。
 
@@ -150,7 +149,7 @@ Kerberos 認証が成功したかどうかを確認するには、常に `klist`
 
 ヘッド ノードとエッジ ノード (存在する場合) には、インターネット経由で、ポート 22 および 23 でアクセスできます。
 
-* __ヘッド ノード__ に接続する場合、プライマリ ヘッド ノードに接続するときはポート __22__ を使用し、セカンダリ ヘッド ノードに接続するときはポート __23__ を使用します。 使用する完全修飾ドメイン名は、`clustername-ssh.azurehdinsight.net` です。ここで、`clustername` は実際のクラスターの名前です。
+* __ヘッド ノード__に接続する場合、プライマリ ヘッド ノードに接続するときはポート __22__ を使用し、セカンダリ ヘッド ノードに接続するときはポート __23__ を使用します。 使用する完全修飾ドメイン名は、`clustername-ssh.azurehdinsight.net` です。ここで、`clustername` は実際のクラスターの名前です。
 
     ```bash
     # Connect to primary head node
@@ -168,12 +167,12 @@ Kerberos 認証が成功したかどうかを確認するには、常に `klist`
     ssh sshuser@edgnodename.clustername-ssh.azurehdinsight.net
     ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 前の例では、パスワード認証が使用されていること、または証明書認証が自動的に行われていることを前提としています。 認証に SSH キー ペアを使用していて、証明書が自動的に使用されない場合は、`-i` パラメーターを使用して秘密キーを指定します。 たとえば、「 `ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net` 」のように入力します。
 
 接続後はプロンプトが変更され、SSH ユーザー名と接続先ノードが示されます。 たとえば、プライマリ ヘッド ノードに `sshuser` として接続されている場合、プロンプトは `sshuser@hn0-clustername:~$` になります。
 
-### <a name="connect-to-worker-and-zookeeper-nodes"></a>ワーカー ノードと Zookeeper ノードに接続する
+### <a name="connect-to-worker-and-apache-zookeeper-nodes"></a>ワーカー ノードと Apache Zookeeper ノードに接続する
 
 worker ノードと Zookeeper ノードには、インターネットから直接アクセスすることはできません。 これらのノードには、クラスターのヘッド ノードまたはエッジ ノードからアクセスできます。 他のノードに接続するための一般的な手順は次のとおりです。
 
@@ -185,20 +184,20 @@ worker ノードと Zookeeper ノードには、インターネットから直�
 
         ssh sshuser@wn0-myhdi
 
-    ノード名の一覧を取得するには、[Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)に関するページを参照してください。
+    ノード名の一覧を取得するには、[Apache Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)に関するページを参照してください。
 
 SSH アカウントが __パスワード__ を使用してセキュリティで保護されている場合は、接続時にパスワードを入力します。
 
-SSH アカウントが __SSH キー__ を使用してセキュリティで保護されている場合は、クライアント側で SSH の転送が有効になっていることを確認します。
+SSH アカウントが __SSH キー__を使用してセキュリティで保護されている場合は、クライアント側で SSH の転送が有効になっていることを確認します。
 
-> [!NOTE]
+> [!NOTE]  
 > 別の方法でクラスター内のすべてのノードに直接アクセスするには、Azure 仮想ネットワークに HDInsight をインストールします。 次に、リモート マシンを同じ仮想ネットワーク内に参加させることで、クラスター内のすべてのノードに直接アクセスできます。
 >
 > 詳細については、[HDInsight での仮想ネットワークの使用](hdinsight-extend-hadoop-virtual-network.md)に関する記事を参照してください。
 
 ### <a name="configure-ssh-agent-forwarding"></a>SSH エージェント転送を構成する
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 次の手順では、Linux または UNIX ベースのシステムを想定して Bash on Windows 10 を使用します。 次の手順をお使いのシステムで利用できない場合は、必要に応じて SSH クライアントのドキュメントを参照してください。
 
 1. テキスト エディターを使用して `~/.ssh/config`を開きます。 このファイルが存在しない場合は、コマンド ラインで「`touch ~/.ssh/config`」と入力して作成できます。
@@ -244,7 +243,7 @@ scp test.txt sshuser@clustername-ssh.azurehdinsight.net:
 scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > `scp` は、クラスター内の個々のノードのファイル システムだけにアクセスできます。 クラスターの HDFS と互換性のあるストレージ内のデータにアクセスするために使用することはできません。
 >
 > SSH セッションから使用するためのリソースをアップロードする必要がある場合は、`scp` を使用します。 たとえば、Python スクリプトをアップロードし、SSH セッションからスクリプトを実行します。

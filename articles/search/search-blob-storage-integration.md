@@ -1,6 +1,6 @@
 ---
-title: Blob Storage への Azure Search の追加 | Microsoft Docs
-description: Azure Search HTTP REST API を使用して、コードでインデックスを作成します。
+title: Azure Blob Storage にフル テキスト検索を追加する - Azure Search
+description: HTTP REST API を使ったコードで、Azure Blob Storage 内のテキスト コンテンツを Azure Search のインデックス作成用にクロールします。
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -8,12 +8,13 @@ ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
 ms.author: magottei
-ms.openlocfilehash: 4f8099bbd5af250e58441eb0e202d4674f0671fe
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 7bd7bcf66f0d91a87519a5d5bff7df7c73e2603f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403227"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310880"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Azure Search を使用した Blob Storage の検索
 

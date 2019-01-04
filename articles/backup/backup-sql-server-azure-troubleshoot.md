@@ -3,7 +3,7 @@ title: SQL Server VM の Azure Backup トラブルシューティング ガイ�
 description: SQL Server VM を Azure にバックアップする場合のトラブルシューティング情報。
 services: backup
 documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 editor: ''
 keywords: ''
@@ -11,17 +11,16 @@ ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: markgal;anuragm
+ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 1c87382c2aae70b022fb391f80f7c75b0a4e5fe6
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 89344b6e06dbc62fe56c0aebc30a049aebf5c097
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296959"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339520"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>SQL Server を Azure にバックアップする場合のトラブルシューティング
 
@@ -79,13 +78,13 @@ ms.locfileid: "36296959"
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
 | データ ソースのトランザクション ログがいっぱいなので、バックアップを作成できません。 | データベースのトランザクション ログ領域がいっぱいです。 | この問題を解決するには、[SQL ドキュメント](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error)を参照してください。 |
-| この SQL データベースは、要求されたバックアップの種類をサポートしていません。 | Always On AG セカンダリ レプリカは、完全バックアップと差分バックアップをサポートしていません。 | <ul><li>アドホック バックアップをトリガーした場合、プライマリ ノードでバックアップをトリガーします。</li><li>ポリシーによってバックアップがスケジュールされている場合は、プライマリ ノードが登録されていることを確認します。 ノードを登録するには、[SQL Server データベースの検出手順に従ってください](backup-azure-sql-database.md#discover-sql-server-databases)。</li></ul> | 
+| この SQL データベースは、要求されたバックアップの種類をサポートしていません。 | Always On AG セカンダリ レプリカは、完全バックアップと差分バックアップをサポートしていません。 | <ul><li>アドホック バックアップをトリガーした場合、プライマリ ノードでバックアップをトリガーします。</li><li>ポリシーによってバックアップがスケジュールされている場合は、プライマリ ノードが登録されていることを確認します。 ノードを登録するには、[SQL Server データベースの検出手順に従ってください](backup-azure-sql-database.md#discover-sql-server-databases)。</li></ul> |
 
 ## <a name="restore-failures"></a>復元エラー
 
 復元ジョブに失敗すると、次のエラー コードが表示されます。
 
-### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite 
+### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
@@ -108,7 +107,7 @@ ms.locfileid: "36296959"
 
 次のエラー コードは登録失敗のコードです。
 
-### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError 
+### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
@@ -125,6 +124,16 @@ ms.locfileid: "36296959"
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
 | Azure Backup サービスは Azure VM ゲスト エージェントを使用してバックアップを行いますが、ターゲット サーバーではゲスト エージェントを使用できません。 | ゲスト エージェントが有効ではないか、正常ではありません | [VM ゲスト エージェントを手動でインストール](../virtual-machines/extensions/agent-windows.md)します。 |
+
+## <a name="configure-backup-failures"></a>バックアップの構成のエラー
+
+次のエラー コードはバックアップの構成のエラーに関するものです。
+
+### <a name="autoprotectioncancelledornotvalid"></a>AutoProtectionCancelledOrNotValid
+
+| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+|---|---|---|
+| 自動保護の意図が削除されたか、有効でなくなりました。 | SQL インスタンスで自動保護を有効にすると、そのインスタンス内のすべてのデータベースに対して **[Configure Backup]\(バックアップの構成\)** ジョブが実行されます。 ジョブの実行中に自動保護を無効にした場合、**[In-Progress]\(進行中\)** のジョブはこのエラー コードでキャンセルされます。 | 残りすべてのデータベースを保護するには、自動保護をもう一度有効にします。 |
 
 ## <a name="next-steps"></a>次の手順
 

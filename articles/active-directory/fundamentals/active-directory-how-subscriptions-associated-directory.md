@@ -1,6 +1,6 @@
 ---
-title: 既存の Azure サブスクリプションを Azure Active Directory ディレクトリのテナントに追加する方法 | Microsoft Docs
-description: 既存の Azure サブスクリプションを Azure Active Directory ディレクトリのテナントに追加する方法について説明します。
+title: 既存の Azure サブスクリプションをテナントに追加する - Azure Active Directory | Microsoft Docs
+description: 既存の Azure サブスクリプションを Azure Active Directory テナントに追加する方法について説明します。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: dd62b22eca40a214c5b08a9bc48815e40fe90e47
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 4e4d4d9f34c8220ba70c64f073557f0293881c3e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984088"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083871"
 ---
-# <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法
+# <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 Azure サブスクリプションには、Azure Active Directory (Azure AD) との間に信頼関係があります。つまり、サブスクリプションは Azure AD を信頼することでユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じ Azure AD ディレクトリを信頼することはできますが、1 つのサブスクリプションが信頼できるディレクトリは 1 つに限られます。
 
 サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられた他のすべてのリソースへのアクセスもできなくなります。 ただし、Azure AD ディレクトリは Azure に残るため、別の Azure サブスクリプションを使用してディレクトリの関連付けおよび管理を行うことができます。

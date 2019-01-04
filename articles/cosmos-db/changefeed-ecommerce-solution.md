@@ -1,20 +1,19 @@
 ---
-title: Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する | Microsoft Docs
+title: Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 description: この記事では、小売企業が変更フィードを活用してユーザーのパターンを理解し、リアルタイムでのデータ分析を実行して、視覚化する方法について説明します。
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 03fb56125bcc4133dd87a1dc76d4d6811ebb8f40
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e663a7b8f68c43ebf4c562dd67630db5d113e979
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685499"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090756"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 
@@ -95,13 +94,12 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos DB コンテナーのレコ
 
 次は e コマース サイトのイベントを保持するコレクションを作成します。 ユーザーが商品を閲覧する、カートに商品を追加する、または商品を購入すると、コレクションはアクション (「閲覧」、「追加」、または「購入」)、関連する商品の名前、関連する商品の価格、関連するユーザーのカートの ID 番号などのレコードを受け取ります。
 
-1. [Azure portal](http://portal.azure.com/) に移動し、テンプレートのデプロイによって作成された **Azure Cosmos DB アカウント**を探します。  
+1. [Azure portal](https://portal.azure.com/) に移動し、テンプレートのデプロイによって作成された **Azure Cosmos DB アカウント**を探します。  
 
 2. **[データ エクスプローラー]** ペインで、**[新しいコレクション]** を選択し、次の詳細でフォームに入力します。  
 
    * **[データベース ID]** フィールドで、**[新規作成]** を選択し、「**changefeedlabdatabase**」と入力します。 **[Provision database throughput]\(データベース スループットをプロビジョニングする\)** ボックスはオフにします。  
    * **[コレクション ID]** フィールドに、「**changefeedlabcollection**」と入力します。  
-   * **[ストレージ容量]** で、**[無制限]** を選択します。  
    * **[パーティション キー]** フィールドに、「**/Item**」と入力します。 これは大文字と小文字が区別されるため、正確に入力してください。  
    * **[スループット]** フィールドに、「**10000**」と入力します。  
    * **[OK]**  ボタンを選択します。  
@@ -120,7 +118,7 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos DB コンテナーのレコ
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>Azure Cosmos DB 接続文字列を取得する
 
-1. [Azure portal](http://portal.azure.com/) に移動し、テンプレートのデプロイによって作成された **Azure Cosmos DB アカウント**を探します。  
+1. [Azure portal](https://portal.azure.com/) に移動し、テンプレートのデプロイによって作成された **Azure Cosmos DB アカウント**を探します。  
 
 2. **[キー]** ペインに移動し、PRIMARY CONNECTION STRING をコピーしてノートパッドやラボを通じてアクセスできる別のドキュメントに貼り付けます。 これは **Cosmos DB 接続文字列**とラベル付けしてください。 後でこの文字列をコードにコピーする必要があるため、保存する場所をメモして覚えておきます。
 
@@ -180,7 +178,7 @@ Cosmos DB コレクションで新しいドキュメントが作成される、�
  
 6. プログラムが実行されるのを待ちます。 星はデータを受信していることを意味します。 プログラムを引き続き実行します。大量のデータを収集することが重要です。  
 
-7. [Azure portal](http://portal.azure.com/)、リソース グループ内の Cosmos DB アカウント、**データ エクスプローラー**の順に移動すると、**changefeedlabcollection** にランダム化されたデータがインポートされたことが確認できます。
+7. [Azure portal](https://portal.azure.com/)、リソース グループ内の Cosmos DB アカウント、**データ エクスプローラー**の順に移動すると、**changefeedlabcollection** にランダム化されたデータがインポートされたことが確認できます。
  
    ![ポータルで生成されたデータ](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
@@ -188,7 +186,7 @@ Cosmos DB コレクションで新しいドキュメントが作成される、�
 
 Azure Stream Analytics は、ストリーミング データをリアルタイムで分析するフル マネージドのクラウド サービスです。 このラボでは、Stream Analytics を使用して、イベント ハブからの新しいイベント (商品が閲覧されたとき、カートに追加されたとき、購入されたときなど) を処理し、それらのイベントをリアルタイムのデータ分析に組み込み、Power BI に送信して視覚化します。
 
-1. [Azure portal](http://portal.azure.com/) で、リソース グループ、**streamjob1** (プレラボで作成した Stream Analytics のジョブ) の順に移動します。  
+1. [Azure portal](https://portal.azure.com/) で、リソース グループ、**streamjob1** (プレラボで作成した Stream Analytics のジョブ) の順に移動します。  
 
 2. 以下に示すように、**[入力]** を選択します。  
 
@@ -319,15 +317,15 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
    ![視覚化](./media/changefeed-ecommerce-solution/visualizations.png)
 
-## <a name="optional-visualize-with-an-e-commerce-site"></a>オプション: e コマース サイトの視覚化
+## <a name="optional-visualize-with-an-e-commerce-site"></a>省略可能:eコマース サイトの視覚化
 
 ここでは、実際の e コマース サイトで新しいデータ分析ツールをどのように使用できるかについて観察します。 e コマース サイトをビルドするには、Azure Cosmos DB データベースを使用して商品カテゴリのリスト、商品カタログ、最も人気のある商品のリストを格納します。
 
-1. [Azure portal](http://portal.azure.com/) に戻り、**Cosmos DB アカウント**、**データ エクスプローラー**と移動します。  
+1. [Azure portal](https://portal.azure.com/) に戻り、**Cosmos DB アカウント**、**データ エクスプローラー**と移動します。  
 
    **changefeedlabdatabase** - **products** と **categories** の下に、2 つのコレクションを、[固定] のストレージ容量で追加します。
 
-   **changefeedlabdatabase** の下に **topItems** という名前のもう 1 つのコレクションを、**[無制限]** のストレージ容量で追加します。 パーティション キーとして「**/Item**」と書き込みます。
+   **changefeedlabdatabase** の下に **topItems** という名前のもう 1 つのコレクションと、パーティション キーとして **/Item** を追加します。
 
 2. **topItems** コレクションを選択し、**[スケールと設定]** で、topItems が 30 秒ごとに更新されるように、**[Time to Live]** を **[30 秒]** に設定します。
 
@@ -393,7 +391,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
 ## <a name="delete-the-resources"></a>リソースの削除
 
-このラボの間に作成したリソースを削除するには、[Azure portal](http://portal.azure.com/) のリソース グループに移動し、ページ上部のメニューで **[リソース グループの削除]** を選択して、表示される手順に従います。
+このラボの間に作成したリソースを削除するには、[Azure portal](https://portal.azure.com/) のリソース グループに移動し、ページ上部のメニューで **[リソース グループの削除]** を選択して、表示される手順に従います。
 
 ## <a name="next-steps"></a>次の手順 
   

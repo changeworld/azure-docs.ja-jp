@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Workday の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Workday の統合 | Microsoft Docs
 description: Azure Active Directory と Workday の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
-ms.openlocfilehash: 78b9fe704c5c8a1f81da480787f1791e88bf4f72
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9c789f5fec9b31b53d316b23faad5c438b52137c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714720"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843344"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workday"></a>チュートリアル: Azure Active Directory と Workday の統合
+# <a name="tutorial-azure-active-directory-integration-with-workday"></a>チュートリアル:Azure Active Directory と Workday の統合
 
 このチュートリアルでは、Workday と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -114,7 +114,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[サインオン URL]** ボックスに、`https://impl.workday.com/<tenant>/login-saml2.htmld` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに次の URL を入力します。`http://www.workday.com`
+    b. **[識別子]** ボックスに次の URL を入力します。`https://www.workday.com`
 
 4. **[詳細な URL 設定の表示]** をオンにして、次の手順を実行します。
 
@@ -180,7 +180,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     ![SAML ID プロバイダー](./media/workday-tutorial/IC7829271.png "SAML Identity Providers")
 
-    a. **[Identity Provider Name]\(ID プロバイダー名\)** テキスト ボックスに、プロバイダー名を入力します (例: *SPInitiatedSSO*)。
+    a. **[Identity Provider Name]\(ID プロバイダー名\)** テキスト ボックスに、プロバイダー名を入力します (例:*SPInitiatedSSO*)。
 
     b. Azure Portal の **[サインオンの構成]** ウィンドウで **[SAML エンティティ ID]** の値をコピーし、**[Issuer]\(発行者\)** ボックスに貼り付けます。
 
@@ -204,7 +204,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     ![x509 公開鍵の表示](./media/workday-tutorial/IC782930.png "x509 公開鍵の表示")
 
-    a. **[Name]\(名前\)** テキスト ボックスに、証明書の名前を入力します (例: *PPE\_SP*)。
+    a. **[Name]\(名前\)** テキスト ボックスに、証明書の名前を入力します (例:*PPE\_SP*)。
 
     b. **[有効期間の開始日]** テキスト ボックスに、証明書の有効期間の開始日を示す属性の値を入力します。
 
@@ -225,7 +225,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     ![SSO 構成](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO configuration")
 
-    a.  **[サービス プロバイダー ID]** ボックスに、「**http://www.workday.com**」と入力します。
+    a.  **[サービス プロバイダー ID]** ボックスに、「**https://www.workday.com**」と入力します。
 
     b. **[SP によって開始された認証要求を圧縮しない]** を選択します。
 
