@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 833b655246035fa3eb9a820316a95b73eed5b2bd
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 07d233ba50f4253b4ea3097748b9c58142e08a91
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388505"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549430"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure の Web Apps のデプロイに関するよくあるご質問
 
@@ -36,7 +36,7 @@ Web アプリのコードを発行する方法はいくつかあります。
 *   Visual Studio を使用してデプロイする。 Visual Studio ソリューションをお持ちの場合、Web アプリケーション プロジェクトを右クリックして **[発行]** を選択します。
 *   FTP クライアントを使用してデプロイする。 Azure Portal で、コードをデプロイする Web アプリの発行プロファイルをダウンロードします。 次に、同じ発行プロファイルの FTP 資格情報を使用して、\site\wwwroot にファイルをアップロードします。
 
-詳細については、[App Service へのアプリのデプロイ](app-service-deploy-local-git.md)に関するページをご覧ください。
+詳細については、[App Service へのアプリのデプロイ](deploy-local-git.md)に関するページをご覧ください。
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Visual Studio からデプロイしようとするとエラー メッセージが表示されます。 解決するにはどうすればよいですか?
 
@@ -51,7 +51,7 @@ Web アプリのコードを発行する方法はいくつかあります。
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>デプロイ資格情報の種類にはどのようなものがありますか。
 
-App Service では、ローカル Git デプロイと FTP/S デプロイ用の 2 種類の資格情報をサポートしています。 デプロイ資格情報を構成する方法の詳細については、[App Service のデプロイ資格情報の構成](app-service-deployment-credentials.md)に関するページをご覧ください。
+App Service では、ローカル Git デプロイと FTP/S デプロイ用の 2 種類の資格情報をサポートしています。 デプロイ資格情報を構成する方法の詳細については、[App Service のデプロイ資格情報の構成](deploy-configure-credentials.md)に関するページをご覧ください。
 
 ## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>App Service の Web アプリのファイルまたはディレクトリ構造はどのようなものですか。
 
@@ -63,7 +63,7 @@ App Service アプリのファイル構造については、[Azure でのファ�
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>App Service の Web アプリの継続的デプロイを設定するにはどうすればよいですか。
 
-継続的デプロイは、Azure DevOps、OneDrive、GitHub、Bitbucket、Dropbox、およびその他の Git リポジトリなど、複数のリソースから設定できます。 これらのオプションは、ポータルで確認できます。 [App Service への継続的デプロイ](app-service-continuous-deployment.md)に関するチュートリアルで継続的デプロイの設定方法を説明しているので、お役立てください。
+継続的デプロイは、Azure DevOps、OneDrive、GitHub、Bitbucket、Dropbox、およびその他の Git リポジトリなど、複数のリソースから設定できます。 これらのオプションは、ポータルで確認できます。 [App Service への継続的配置](deploy-continuous-deployment.md)に関するチュートリアルで継続的配置の設定方法を説明しているので、お役立てください。
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>GitHub や Bitbucket からの継続的デプロイに関する問題をトラブルシューティングするにはどうすればよいですか。
 
@@ -100,4 +100,4 @@ Azure DevOps で継続的デプロイを使用するには、2 つの方法が�
 
 ## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>FTP または FTPS を使用してアプリを App Service にデプロイするにはどうすればよいですか。
 
-FTP または FTPS を使用して Web アプリを App Service にデプロイする方法については、[FTP/S を使用した App Service へのアプリのデプロイ](app-service-deploy-ftp.md)に関するページをご覧ください。
+FTP または FTPS を使用して Web アプリを App Service にデプロイする方法については、[FTP/S を使用した App Service へのアプリのデプロイ](deploy-ftp.md)に関するページをご覧ください。

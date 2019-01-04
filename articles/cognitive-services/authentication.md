@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 327bc964f8dedeee03220e7cd7db1ef7c1e00de6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 11259b99ea9d2486c8c0afde21398710ccc6ccd8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435771"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726292"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 
@@ -34,7 +34,7 @@ Azure Cognitive Services で使用できる認証ヘッダーについて簡単�
 
 | ヘッダー | 説明 |
 |--------|-------------|
-| Ocp-Apim-Subscription-Key | 特定のサービスのサブスクリプション キーまたはマルチサービスのサブスクリプション キーを使用して認証するには、このヘッダーを使用します。 マルチサービスのサブスクリプション キーを使用する場合は、お客様のサブスクリプションのリージョンを `Ocp-Apim-Subscription-Region` ヘッダーとして指定する必要があります。 |
+| Ocp-Apim-Subscription-Key | 特定のサービスのサブスクリプション キーまたはマルチサービスのサブスクリプション キーを使用して認証するには、このヘッダーを使用します。 |
 | Ocp-Apim-Subscription-Region | このヘッダーは、[Translator Text API](./Translator/reference/v3-0-reference.md) と共にマルチサービスのサブスクリプション キーを使用する場合にのみ必要です。 このヘッダーを使用して、サブスクリプション リージョンを指定します。 |
 | Authorization | お客様が認証トークンを使用している場合は、このヘッダーを使用します。 トークンの交換を実行する手順については、以降のセクションで詳しく説明されています。 値は `Bearer <TOKEN>` 形式で指定します。 |
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: cf01ddd53741a77df61e3dc1946eb836640034d0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b24b98760e276c207bb360687f32ae902b3306fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345476"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976955"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -56,7 +56,7 @@ ms.locfileid: "53345476"
 
 ## <a name="what-you-can-alert-on"></a>アラートできるもの
 
-[データ ソースの監視](../../monitoring-and-diagnostics/monitoring-data-sources.md)に関するページで説明されているように、メトリックとログについてアラートできます これらには次が含まれますが、これらに限定されるものではありません。
+[データ ソースの監視](../../azure-monitor/platform/data-sources-reference.md)に関するページで説明されているように、メトリックとログについてアラートできます これらには次が含まれますが、これらに限定されるものではありません。
 - メトリックの値
 - ログの検索クエリ
 - アクティビティ ログのイベント
@@ -131,7 +131,7 @@ Azure Monitor、Application Insights、Log Analytics、および Service Health 
 | **モニター ソース** | **シグナルの種類**  | **説明** | 
 |-------------|----------------|-------------|
 | サービス正常性 | アクティビティ ログ  | サポートされていません。 「[サービス通知のアクティビティ ログ アラートを作成する](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)」をご覧ください。  |
-| Application Insights | Web 可用性テスト | サポートされていません。 [Web テスト アラート](../../application-insights/app-insights-monitor-web-app-availability.md)に関するページをご覧ください。 Application Insights にデータを送信するようにインストルメント化されたすべての Web サイトで使用できます。 Web サイトの可用性または応答性が期待を下回る場合に通知を受け取ります。 |
+| Application Insights | Web 可用性テスト | サポートされていません。 [Web テスト アラート](../../azure-monitor/app/monitor-web-app-availability.md)に関するページをご覧ください。 Application Insights にデータを送信するようにインストルメント化されたすべての Web サイトで使用できます。 Web サイトの可用性または応答性が期待を下回る場合に通知を受け取ります。 |
 
 
 ## <a name="all-alerts-page"></a>[すべてのアラート] ページ 
