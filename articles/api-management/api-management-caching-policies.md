@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 48b0085e52c1752c0b5ecc89ce229a5a82f74345
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 52bdeb5fe517430497c57a5c34b822df5933e3ff
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310438"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608887"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -118,8 +118,8 @@ ms.locfileid: "53310438"
 | cache-preference               | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ        | `prefer-external` |
 | downstream-caching-type        | この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。                                                                                                          | いいえ        | なし              |
 | must-revalidate                | ダウンストリーム キャッシュが有効になっているとき、この属性によって、ゲートウェイ応答での `must-revalidate` キャッシュ制御ディレクティブのオンとオフを切り替えます。                                                                                                                                                                                                                      | いいえ        | true              |
-| vary-by-developer              | `true` に設定すると、[サブスクリプション キー](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                         | はい      |                   |
-| vary-by-developer-groups       | `true` に設定すると、[ユーザー グループ](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                             | はい      |                   |  
+| vary-by-developer              | `true` に設定すると、[サブスクリプション キー](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                         | [はい]      |         False          |
+| vary-by-developer-groups       | `true` に設定すると、[ユーザー グループ](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                             | [はい]      |       False            |  
 
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  

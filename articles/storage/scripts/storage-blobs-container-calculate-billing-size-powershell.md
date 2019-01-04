@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 7e28b8938c8c0eb258fbb599dd5765258a4d52e4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5e1505794097ac6d67997841cade46013686377f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867377"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53627761"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Blob コンテナーの合計課金サイズを計算する
 
@@ -126,6 +126,6 @@ For-Each Signed Identifier[512 bytes]
 
 - Azure ストレージの課金の詳細については、「[Understanding Windows Azure Storage Billing (Windows Azure Storage の課金について)](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)」をご覧ください。
 
-- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.1)をご覧ください。
+- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)をご覧ください。
 
 - その他のストレージ PowerShell サンプル スクリプトは、[Azure Storage 用 PowerShell サンプル](../blobs/storage-samples-blobs-powershell.md)に関するページにあります。

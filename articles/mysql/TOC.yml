@@ -40,6 +40,8 @@ items:
       href: tutorial-design-database-using-portal.md
     - name: Azure CLI
       href: tutorial-design-database-using-cli.md
+    - name: Azure Resource Manager のテンプレート
+      href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
   - name: 2 - Web アプリの作成
     items:
     - name: Wordpress - ポータル
@@ -234,9 +236,9 @@ items:
     href: partners-migration-mysql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 4bb7ab9d3944d958c1975663a7334d385f8cd9ed
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 79f8e21c9f81d2d10f7afdc5e2c31a8d0936846f
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496355"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002452"

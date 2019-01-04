@@ -80,5 +80,5 @@ Fivetran にサインインするには、SQL Data Warehouse へのアクセス�
 * ホスト (自分のサーバーの名前)。
 * ポート。
 * データベース。
-* ユーザー (ユーザー名は **fivetran@_server_name_** のようになり、*server_name* は Azure ホスト URI に含まれます: ***server_name*.database.windows.net**)。
+* ユーザー (ユーザー名は **fivetran@_server_name_** のようになり、*server_name* は Azure ホスト URI に含まれます: **server_name.database.windows.net**)。
 * パスワード。

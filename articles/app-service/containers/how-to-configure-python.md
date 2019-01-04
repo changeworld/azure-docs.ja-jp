@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 1d9b0e356f0f65be44a533fe098282084b900d89
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f7e63fa75f473d5da911fbf845f0662d8eec5c70
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249636"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717400"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Azure App Service on Linux 向けに Python アプリを構成する
 
@@ -132,4 +132,4 @@ gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 - **ブラウザーに "サービスは利用できません" というメッセージが表示される。** ブラウザーは App Service からの応答を待ってタイムアウトしました。これは、App Service によって Gunicorn サーバーが起動されたもののアプリ コードを指定する引数が正しくないことを示しています。
   - ブラウザーを最新の情報に更新します (特に、お客様が App Service プランの最も低い価格レベルを使用している場合)。 たとえば、無料のレベルを使用しているときは、アプリの起動にかかる時間が長くなることがあります。その場合、ブラウザーを最新の情報に更新すると、応答が速くなります。
   - [Django](#django-app) または [Flask](#flask-app) に関して App Service で想定されているとおりにお客様のアプリが構造化されていることをチェックします。または、[カスタム スタートアップ コマンド](#custom-startup-command)を使用します。
-  - SSH または Kudu コンソールを使用して App Service に接続し、*LogFiles* フォルダーに保存されている診断ログを調べます。 ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](../web-sites-enable-diagnostic-log.md)」を参照してください。
+  - SSH または Kudu コンソールを使用して App Service に接続し、*LogFiles* フォルダーに保存されている診断ログを調べます。 ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](../troubleshoot-diagnostic-logs.md)」を参照してください。

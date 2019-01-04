@@ -3,17 +3,15 @@ title: Azure Database for MariaDB Server VNet サービス エンドポイント
 description: VNet サービス エンドポイントが Azure Database for MariaDB サーバーに対してどのように機能するかについて説明します。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 8c4f14849c39414217837a3c86fb6e067cd87c90
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 82b72b45f9577c83e2c6619220b26e26d696c4f1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434343"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540256"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Virtual Network のサービス エンドポイントと規則を Azure Database for MariaDB に対して使用する
 
@@ -33,11 +31,11 @@ ms.locfileid: "53434343"
 
 ## <a name="terminology-and-description"></a>用語と説明
 
-**仮想ネットワーク:** ユーザーは、Azure サブスクリプションに仮想ネットワークを関連付けることができます。
+**仮想ネットワーク:** ご自分の Azure サブスクリプションに仮想ネットワークを関連付けることができます。
 
 **サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
-**Virtual Network サービス エンドポイント:** [Virtual Network サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL の各サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、Azure SQL Database、Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL のすべてのサーバーに対してサービス エンドポイント トラフィックがサブネット上に構成されることに注意することが重要です。
+**Virtual Network サービス エンドポイント:**[Virtual Network サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL の各サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、Azure SQL Database、Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL のすべてのサーバーに対してサービス エンドポイント トラフィックがサブネット上に構成されることに注意することが重要です。
 
 **仮想ネットワーク ルール:** Azure Database for MariaDB サーバーの仮想ネットワーク ルールは、Azure Database for MariaDB サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for MariaDB サーバーの ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
 
@@ -93,7 +91,7 @@ Azure Database for MariaDB のファイアウォールでは、Azure Database fo
 
 Virtual Network サービス エンドポイントの管理では、セキュリティ ロールが分離されています。 以下の各ロールでは、次の操作が必要です。
 
-- **ネットワーク管理者:** &nbsp; エンドポイントを有効にします。
+- **ネットワーク管理者:**&nbsp; エンドポイントを有効にします。
 - **データベース管理者:** &nbsp; アクセス制御リスト (ACL) を更新して Azure Database for MariaDB サーバーに特定のサブネットを追加します。
 
 *RBAC による代替:*

@@ -12,10 +12,10 @@ ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
 ms.openlocfilehash: 55a651080c4ed1d22901681317046f0853e257f0
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "53163108"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは

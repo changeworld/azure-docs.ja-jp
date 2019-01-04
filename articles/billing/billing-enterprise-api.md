@@ -3,8 +3,8 @@ title: Azure Billing Enterprise API |Microsoft Docs
 description: Enterprise Azure の顧客がプログラムで消費データを取り出せるようにする Reporting API について説明します。
 services: ''
 documentationcenter: ''
-author: anandedwin
-manager: aedwin
+author: mumami
+manager: mumami
 editor: ''
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
@@ -15,18 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: 7cc5b0cb12e806b0946ce421e7ee6daa4de76afa
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d2021873b36a55bd36cf500eff168fe7311d944c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47390598"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579432"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>企業ユーザー向けの Reporting API の概要
 Reporting API を使用すると、Enterprise Azure の顧客はプログラムで消費量および課金データを希望のデータ分析ツールに取り出すことができます。 Enterprise 顧客は、Azure の [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を締結し、交渉によって年額コミットメントを決定しています。Azure リソースのカスタム価格が提示されます。
-
-> [!div class="nextstepaction"]
-> [Azure の課金に関するドキュメントの改善にご協力ください](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="enabling-data-access-to-the-api"></a>API へのデータ アクセス
 * **API キーを取得または生成** - エンタープライズ ポータルにログインし、[レポート] > [使用状況のダウンロード] > [API アクセス キー] に移動して API キーを生成または取得します。

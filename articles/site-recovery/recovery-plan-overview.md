@@ -3,16 +3,17 @@ title: Azure Site Recovery を使用したディザスター リカバリーで�
 description: Azure Site Recovery サービスを使用したディザスター リカバリーで復旧計画を使用する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: cb68b71eece998fa72fccc00de45f81e6d2d778c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c7d66c389958aa3b5274a3d81f27f416308acdee
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848393"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975663"
 ---
 # <a name="about-recovery-plans"></a>復旧計画について
 

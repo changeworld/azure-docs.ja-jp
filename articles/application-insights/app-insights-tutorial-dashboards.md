@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 50d2545d5145f1d93a1ea9fed3e4f98b474d41b2
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: a67f8c0f6be1c388c4138ee0269d7ad8b76d8c4c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29178198"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744335"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 
@@ -34,7 +34,7 @@ Azure Portal で複数のダッシュボードを作成し、各ダッシュボ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-- .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](app-insights-asp-net.md)を実行します。 
+- .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](../azure-monitor/app/asp-net.md)を実行します。 
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。

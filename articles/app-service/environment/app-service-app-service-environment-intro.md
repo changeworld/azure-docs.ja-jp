@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5a06e2577468baa6f3e46f838db11f1925ec0e1d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 205e61634a902ef052f665c65f2b67a66e6fe598
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271608"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728229"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service Environment v1 の概要
 
@@ -29,7 +29,7 @@ ms.locfileid: "53271608"
 > 
 
 ## <a name="overview"></a>概要
-App Service 環境は、Azure App Service アプリを高スケールで安全に実行するために完全に分離された専用の環境を提供する、[Azure App Service](../app-service-web-overview.md) の [Premium][PremiumTier] サービス プラン オプションです。App Service 環境には、Web Apps、Mobile Apps、API Apps が含まれています。  
+App Service 環境は、Azure App Service アプリを高スケールで安全に実行するために完全に分離された専用の環境を提供する、[Azure App Service](../overview.md) の [Premium][PremiumTier] サービス プラン オプションです。App Service 環境には、Web Apps、Mobile Apps、API Apps が含まれています。  
 
 App Service 環境は、以下を必要とするアプリケーション ワークロードに最適です。
 
@@ -88,7 +88,7 @@ ExpressRoute での App Service Environment の使用方法の詳細について
 <!-- LINKS -->
 [PremiumTier]: https://azure.microsoft.com/pricing/details/app-service/
 [MoreInfoOnVirtualNetworks]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
-[AppServicePlan]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
+[AppServicePlan]: ../overview-hosting-plans.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
 [LogicApps]: https://azure.microsoft.com/documentation/articles/app-service-logic-what-are-logic-apps/
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/

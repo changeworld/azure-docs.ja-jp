@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル:HDInsight の Hive を使用して抽出、変換、読み込み (ETL) を実行する - Azure '
+title: 'チュートリアル: HDInsight の Hive を使用して抽出、変換、読み込み (ETL) を実行する - Azure '
 description: 生の CSV データセットからデータを抽出し、HDInsight の Hive を使用してデータを変換した後、Apache Sqoop を使用することで変換済みデータを Azure SQL データベースに読み込む方法について説明します。
 services: hdinsight
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: c0123008e5b15d6d3edce27245a7ed1fa6c431e7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e5ee2f40526837fbe0251e1fdda6847db1c51288
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015055"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634356"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
 
-このチュートリアルでは、生の CSV データ ファイルを取得して HDInsight クラスターのストレージにインポートした後、Azure HDInsight の [Apache Hive](https://hive.apache.org/) を使用してデータを変換します。 データを変換したら、[Apache Sqoop](http://sqoop.apache.org/) を使用して Azure SQL データベースにデータを読み込みます。 この記事では、一般に公開されているフライト データを使用します。
+このチュートリアルでは、生の CSV データ ファイルを取得して HDInsight クラスターのストレージにインポートした後、Azure HDInsight の [Apache Hive](https://hive.apache.org/) を使用してデータを変換します。 データを変換したら、[Apache Sqoop](https://sqoop.apache.org/) を使用して Azure SQL データベースにデータを読み込みます。 この記事では、一般に公開されているフライト データを使用します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、Azure HDInsight バージョン 3.4 以降で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 このチュートリアルに含まれるタスクは次のとおりです。 
@@ -76,7 +76,7 @@ HDInsight クラスターに関連付けられたストレージにデータを�
 
     *FILENAME* を .zip ファイルの名前に置き換えます。 *USERNAME* を HDInsight クラスターの SSH ログインに置き換えます。 *CLUSTERNAME* を HDInsight クラスターの名前に置き換えます。
 
-   > [!NOTE]
+   > [!NOTE]  
    > パスワードを使用して SSH ログインを認証する場合は、パスワードを入力するよう求められます。 公開キーを使用している場合は、`-i` パラメーターを使用して、対応する秘密キーへのパスを指定することが必要な場合があります。 たとえば、「 `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:` 」のように入力します。
 
 2. アップロードが完了したら、SSH を使用してクラスターに接続します。 コマンド プロンプトで次のコマンドを入力します。
@@ -212,7 +212,7 @@ SQL データベースが既にある場合は、サーバー名を入手する�
 
 ![Azure SQL サーバーの詳細を取得](./media/hdinsight-analyze-flight-delay-data-linux/get-azure-sql-server-details.png "Azure SQL サーバーの詳細を取得")
 
-> [!NOTE]
+> [!NOTE]  
 > SQL Database に接続してテーブルを作成するには、多くの方法があります。 次の手順では、HDInsight クラスターから [FreeTDS](http://www.freetds.org/) を使用します。
 
 
@@ -330,7 +330,7 @@ HDInsight でのデータ操作の詳細については、次の記事を参照�
 [azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 
-[rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
+[rita-website]: https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
@@ -346,4 +346,4 @@ HDInsight でのデータ操作の詳細については、次の記事を参照�
 
 [hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

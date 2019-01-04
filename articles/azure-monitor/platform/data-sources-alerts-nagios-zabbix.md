@@ -13,22 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 217f19b02ccd5561ee499388bb62d5a6639086ac
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: cccc42cd925c123b52c0f2416599bb989ce44d8a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436196"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713499"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントから Azure Monitor 内に Nagios と Zabbix からのアラートを収集する 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-<<<<<<< HEAD [Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 他のソースからのログ データと共に分析するために、これらのツールからのアラートを Azure Monitor 内に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
+
+[Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 他のソースからのログ データと共に分析するために、これらのツールからのアラートを Azure Monitor 内に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
 
 > [!NOTE]
 > [Azure Monitor によって作成されたアラート](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)はログ データとは別に格納され、ログ クエリからアクセスすることはできません。
-=======
-[Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 [他のソースからのアラート](../../azure-monitor/platform/alerts-overview.md)と共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
->>>>>>> 98b6f1655e9ada6d4b6a408ada0f1e4c9ed727d2
+
  
 ## <a name="prerequisites"></a>前提条件
 Linux 用 Log Analytics エージェントは、Nagios バージョン 4.2.x までと Zabbix バージョン 2.x までのアラートの収集をサポートします。

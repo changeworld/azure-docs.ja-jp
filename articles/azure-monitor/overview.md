@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: bwren
-ms.openlocfilehash: 160078787d28f43ef800d25c8b50fb316b38944f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: f1125c9d0ce543984393c99d70d511a3a162041e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436179"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975187"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -39,9 +39,7 @@ Azure Monitor が収集した多くの Azure リソースのデータは、Azure
 
 ![メトリック](media/overview/metrics.png)
 
-<<<<<<< Azure Monitor が収集した HEAD ログ データは、収集されたデータを高速に検索し、統合して、分析する[クエリ](log-query/log-query-overview.md)を使用して分析できます。  クエリの作成とテストは、Azure portal の[ログ分析](../log-analytics/log-analytics-log-search-portals.md)を使って行うことができます。それらのツールを使って直接データを分析できるほか、クエリを保存して[視覚化](visualizations.md)したり、[アラート ルール](../monitoring-and-diagnostics/monitoring-overview-alerts.md)に利用したりすることができます。
-======= Azure Monitor が収集したログ データは、Log Analytics に格納されます。これには、収集されたデータを高速に検索し、統合して、分析する[多機能なクエリ言語](../azure-monitor/log-query/log-query-overview.md)が備わっています。  クエリの作成とテストは、Azure portal の [Log Analytics ページ](../azure-monitor/log-query/portals.md)を使って行うことができます。それらのツールを使って直接データを分析できるほか、クエリを保存して[視覚化](visualizations.md)したり、[アラート ルール](../azure-monitor/platform/alerts-overview.md)に利用したりすることができます。
->>>>>>> 98b6f1655e9ada6d4b6a408ada0f1e4c9ed727d2
+Azure Monitor が収集したログ データは、Log Analytics に格納されます。これには、収集されたデータを高速に検索し、統合して、分析する[多機能なクエリ言語](../azure-monitor/log-query/log-query-overview.md)が備わっています。  クエリの作成とテストは、Azure portal の [Log Analytics ページ](../azure-monitor/log-query/portals.md)を使って行うことができます。それらのツールを使って直接データを分析できるほか、クエリを保存して[視覚化](visualizations.md)したり、[アラート ルール](../azure-monitor/platform/alerts-overview.md)に利用したりすることができます。
 
 Azure Monitor では、[データ エクスプローラー クエリ言語](/azure/kusto/query/)の 1 つのバージョンを使用します。この言語は、単純なログ検索に適している一方で、集計、結合、スマート分析など高度な機能も備えています。 [さまざまなレッスン](log-query/get-started-queries.md)を利用すれば、クエリ言語はすぐに覚えることができます。  既に [SQL](log-query/sql-cheatsheet.md) や [Splunk](log-query/splunk-cheatsheet.md) に習熟しているユーザーには、別途ガイダンスが用意されています。
 
@@ -56,11 +54,11 @@ Azure Monitor はさまざまなソースからデータを収集できます。
 - **Azure サブスクリプション監視データ**:Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 
 - **Azure テナントの監視データ**:Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。
 
-Azure サブスクリプションを作成して仮想マシンや Web アプリなどのリソースを追加すると、Azure Monitor は即座にデータの収集を開始します。  リソースが作成または変更されると、[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)が記録されます。 リソースの状況や消費しているリソースは、[メトリック](../monitoring-and-diagnostics/monitoring-overview-metrics.md)からわかります。 
+Azure サブスクリプションを作成して仮想マシンや Web アプリなどのリソースを追加すると、Azure Monitor は即座にデータの収集を開始します。  リソースが作成または変更されると、[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)が記録されます。 リソースの状況や消費しているリソースは、[メトリック](../monitoring-and-diagnostics/monitoring-overview-metrics.md)からわかります。 
 
-データの収集をリソースの実運用にまで拡張するには、[診断を有効](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)にしてコンピューティング リソースに[エージェントを追加](platform/agent-windows.md)します。 これによって、リソースの内部操作に関する利用統計情報が収集されるようになり、さまざまな[データ ソース](platform/agent-data-sources.md)を構成して Windows および Linux ゲスト オペレーティング システムからログやメトリックを収集することができます。 
+データの収集をリソースの実運用にまで拡張するには、[診断を有効](../azure-monitor/platform/diagnostic-logs-overview.md)にしてコンピューティング リソースに[エージェントを追加](platform/agent-windows.md)します。 これによって、リソースの内部操作に関する利用統計情報が収集されるようになり、さまざまな[データ ソース](platform/agent-data-sources.md)を構成して Windows および Linux ゲスト オペレーティング システムからログやメトリックを収集することができます。 
 
-[アプリケーションにインストルメンテーション パッケージを追加](../application-insights/app-insights-azure-web-apps.md)すると、Application Insights が有効になり、ページ ビュー、アプリケーションの要求、例外など、アプリケーションに関する詳細情報を収集できます。 さらにアプリケーションの可用性を検証するには、ユーザー トラフィックをシミュレートする[可用性テスト](../application-insights/app-insights-monitor-web-app-availability.md)を構成します。
+[アプリケーションにインストルメンテーション パッケージを追加](../azure-monitor/app/azure-web-apps.md)すると、Application Insights が有効になり、ページ ビュー、アプリケーションの要求、例外など、アプリケーションに関する詳細情報を収集できます。 さらにアプリケーションの可用性を検証するには、ユーザー トラフィックをシミュレートする[可用性テスト](../azure-monitor/app/monitor-web-app-availability.md)を構成します。
 
 ### <a name="custom-sources"></a>カスタム ソース
 Azure Monitor では、[Data Collector API](../azure-monitor/platform/data-collector-api.md) を使用して任意の REST クライアントからログ データを収集できます。 これにより、カスタム監視シナリオを作成し、他のソースを通じてテレメトリが公開されないリソースも監視対象に含めることができます。
@@ -131,7 +129,7 @@ Azure Monitor のアラート ルールは、受信者の一意なセットと�
 多くの場合、監視データを使用するカスタム ソリューションを構築するために、Azure Monitor と他のシステムを統合したいという要件があります。 このような統合を実現するには、他の Azure サービスと Azure Monitor を連携させます。
 
 ### <a name="event-hub"></a>イベント ハブ
-ストリーミング プラットフォームおよびイベント取り込みサービスである [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) は、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、データの変換と格納を行います。 Event Hubs を使用すると、パートナー SIEM および監視ツールに対して [Azure Monitor からログ データをストリーミング](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)できます。
+ストリーミング プラットフォームおよびイベント取り込みサービスである [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) は、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、データの変換と格納を行います。 Event Hubs を使用すると、パートナー SIEM および監視ツールに対して [Azure Monitor からログ データをストリーミング](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)できます。
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 

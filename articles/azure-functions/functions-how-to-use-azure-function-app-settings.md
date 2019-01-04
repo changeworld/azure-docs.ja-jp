@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: d9fa5d70a633f423c82457759d7ed18047167e3e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7497255dcad55cea86e0c640e2f1423d7d763a7f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999913"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713628"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
@@ -126,7 +126,7 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 
 | | |
 |-|-|
-| ![Azure Portal の関数アプリの認証](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | 関数が HTTP トリガーを使用するとき、呼び出しに、最初に認証を必須とすることができます。 App Service では、Azure Active Directory 認証と、Facebook、Microsoft、Twitter などのソーシャル プロバイダーを使用したサインインがサポートされます。 特定の認証プロバイダーの構成の詳細については、[Azure App Service での認証の概要](../app-service/app-service-authentication-overview.md)に関するページを参照してください。 |
+| ![Azure Portal の関数アプリの認証](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | 関数が HTTP トリガーを使用するとき、呼び出しに、最初に認証を必須とすることができます。 App Service では、Azure Active Directory 認証と、Facebook、Microsoft、Twitter などのソーシャル プロバイダーを使用したサインインがサポートされます。 特定の認証プロバイダーの構成の詳細については、[Azure App Service での認証の概要](../app-service/overview-authentication-authorization.md)に関するページを参照してください。 |
 
 ![関数アプリの認証を構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 

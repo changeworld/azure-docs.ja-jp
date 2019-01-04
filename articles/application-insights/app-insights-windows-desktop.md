@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: mbullwin
-ms.openlocfilehash: 10044f17baee8fb4d7afe9223abdbb518952e71f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 52c07ee66e37f6bc14c5c9d6414bc47a1225af65
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52741860"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000361"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>従来の Windows デスクトップ アプリケーションでの使用状況とパフォーマンスの監視
 
-Application Insights は、オンプレミスや Azure、その他各種クラウドでホストされているすべてのアプリケーションが活用ができます。 唯一の制約は、Application Insights サービスとの[通信を許可](app-insights-ip-addresses.md)する必要があることです。 ユニバーサル Windows プラットフォーム (UWP) アプリケーションの監視には、[Visual Studio App Center](app-insights-mobile-center-quickstart.md) をお勧めします。
+Application Insights は、オンプレミスや Azure、その他各種クラウドでホストされているすべてのアプリケーションが活用ができます。 唯一の制約は、Application Insights サービスとの[通信を許可](../azure-monitor/app/ip-addresses.md)する必要があることです。 ユニバーサル Windows プラットフォーム (UWP) アプリケーションの監視には、[Visual Studio App Center](app-insights-mobile-center-quickstart.md) をお勧めします。
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>従来の Windows アプリケーションから Application Insights にテレメトリを送信するには
 1. [Azure Portal](https://portal.azure.com) で、[Application Insights のリソースを作成します](app-insights-create-new-resource.md)。 アプリケーションの種類として ASP.NET アプリを選択します。
@@ -36,7 +36,7 @@ Application Insights は、オンプレミスや Azure、その他各種クラ�
     `<InstrumentationKey>`*自分のキー*`</InstrumentationKey>` 
    
     ApplicationInsights.config を使用する場合は、ソリューション エクスプローラーでプロパティが **Build Action = Content、Copy to Output Directory = Copy**に設定されていることを確認します。
-5. [API を使用して](app-insights-api-custom-events-metrics.md) テレメトリを送信します。
+5. [API を使用して](../azure-monitor/app/api-custom-events-metrics.md) テレメトリを送信します。
 6. アプリケーションを実行し、Azure Portal で作成したリソースのテレメトリを表示します。
 
 ## <a name="telemetry"></a>コード例
@@ -77,8 +77,8 @@ Application Insights は、オンプレミスや Azure、その他各種クラ�
 ```
 
 ## <a name="next-steps"></a>次の手順
-* [ダッシュボードを作成する](app-insights-dashboards.md)
-* [診断検索](app-insights-diagnostic-search.md)
-* [メトリックを探索する](app-insights-metrics-explorer.md)
-* [Analytics クエリを作成する](app-insights-analytics.md)
+* [ダッシュボードを作成する](../azure-monitor/app/app-insights-dashboards.md)
+* [診断検索](../azure-monitor/app/diagnostic-search.md)
+* [メトリックを探索する](../azure-monitor/app/metrics-explorer.md)
+* [Analytics クエリを作成する](../azure-monitor/app/analytics.md)
 

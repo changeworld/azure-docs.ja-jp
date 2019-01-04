@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: b32ea4293daa9206c6b0da4bdee777677c5d340d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 22dbe9b29059ff351cd1937f72f6dc742b24c690
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685516"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993894"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory-with-powershell"></a>PowerShell を使用して Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "51685516"
 
 - **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。 
 
-- **Azure PowerShell**。 「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0)」に記載されている手順に従います。 PowerShell を使用してスクリプトを実行し、他のデータ ファクトリと共有できるセルフホステッド統合ランタイムを作成できます。 
+- **Azure PowerShell**。 「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0)」に記載されている手順に従います。 PowerShell を使用してスクリプトを実行し、他のデータ ファクトリと共有できるセルフホステッド統合ランタイムを作成できます。 
 
 > [!NOTE]  
 > 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory)」ページで目的のリージョンを選択してください。
@@ -75,7 +75,7 @@ ms.locfileid: "51685516"
     > [!NOTE]  
     > この手順は省略可能です。 既にデータ ファクトリがある場合は、この手順をスキップしてください。 
 
-    [New-AzureRmResourceGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) コマンドを使用して [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myResourceGroup` という名前のリソース グループを WestEurope の場所に作成します。 
+    [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) コマンドを使用して [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myResourceGroup` という名前のリソース グループを WestEurope の場所に作成します。 
 
     ```powershell
     New-AzureRmResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -192,6 +192,6 @@ Remove-AzureRmDataFactoryV2IntegrationRuntime `
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Data Factory の統合ランタイムの概念](https://docs.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime)を確認します。
+- [Azure Data Factory の統合ランタイムの概念](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)を確認します。
 
-- [Azure portal 上でセルフホステッド統合ランタイムを作成する](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime)方法を確認します。
+- [Azure portal 上でセルフホステッド統合ランタイムを作成する](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)方法を確認します。

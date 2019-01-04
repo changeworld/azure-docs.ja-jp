@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 809196411df56c7448a9d0f983c17c60d5d3b4ae
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 69eaa0028f1115cafbd1ed28b66940d7faaed062
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015419"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608547"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight で Apache Kafka のログを分析する
 
 Log Analytics を使用して、HDInsight 上の Apache Kafka によって生成されたログを分析します。
 
-## <a name="enable-log-analytics-for-kafka"></a>Kafka の Log Analytics を有効にする
+## <a name="enable-log-analytics-for-apache-kafka"></a>Apache Kafka の Log Analytics を有効にする
 
 HDInsight の Log Analytics を有効にする手順は、すべての HDInsight クラスターで同じです。 必要なサービスを作成して構成する方法を理解するために、次のリンクを使用してください。
 
@@ -30,7 +30,7 @@ HDInsight の Log Analytics を有効にする手順は、すべての HDInsight
 
 3. Log Analytics を使用する Kafka クラスターを構成します。 詳細については、「[Use Log Analytics to monitor HDInsight (Log Analytics を使用した HDInsight の監視)](../hdinsight-hadoop-oms-log-analytics-tutorial.md)」をご覧ください。
 
-    > [!NOTE]
+    > [!NOTE]  
     > `Enable-AzureRmHDInsightOperationsManagementSuite` コマンドレットを使って、Log Analytics を使用するようにクラスターを構成することもできます。 このコマンドレットを使用するには、次の情報が必要です。
     >
     > * HDInsight クラスター名。
@@ -38,7 +38,7 @@ HDInsight の Log Analytics を有効にする手順は、すべての HDInsight
     > * Log Analytics 接続のための主キー。 主キーを見つけるには、Azure portal のワークスペースを開き、左側のメニューから __[詳細設定]__ を選択します。 [詳細設定] から __[接続されたソース]__>__[Linux サーバー]__ を選択します。
 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > データを Log Analytics に使用できるようになるまで、20 分程度かかる場合があります。
 
 ## <a name="query-logs"></a>ログを照会する
@@ -57,7 +57,7 @@ HDInsight の Log Analytics を有効にする手順は、すべての HDInsight
 
     * 1 秒あたりの送信バイト数: `metrics_kafka_CL | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesOutPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)`
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > クエリの値をクラスター固有の情報に置き換えます。 たとえば、`ClusterName_s` には、お使いのクラスターの名前を設定する必要があります。 `HostName_s` には、クラスター内のワーカー ノードのドメイン名を設定する必要があります。
 
     また、`*` を入力して、記録されているすべてのタイプを検索することもできます。 現在、クエリには、次のログを使用できます。
@@ -74,9 +74,9 @@ HDInsight の Log Analytics を有効にする手順は、すべての HDInsight
 
 Log Analytics の詳細については、「[Log Analytics ワークスペースを使って作業を開始する](../../log-analytics/log-analytics-get-started.md)」をご覧ください。
 
-Kafka の操作の詳細については、次のドキュメントを参照してください。
+Apache Kafka の操作について詳しくは、次のドキュメントをご覧ください。
 
- * [HDInsight クラスター間で Kafka をミラーリングする](apache-kafka-mirroring.md)
- * [HDInsight 上の Kafka の拡張性を改善する](apache-kafka-scalability.md)
- * [Kafka で Spark ストリーミングを (DStream) を使用する](../hdinsight-apache-spark-with-kafka.md)
- * [Kafka で Spark 構造化ストリーミングを使用する](../hdinsight-apache-kafka-spark-structured-streaming.md)
+ * [HDInsight クラスター間で Apache Kafka をミラーリングする](apache-kafka-mirroring.md)
+ * [HDInsight 上の Apache Kafka の拡張性を改善する](apache-kafka-scalability.md)
+ * [Apache Kafka による Apache Spark ストリーミング (DStream) を使用する](../hdinsight-apache-spark-with-kafka.md)
+ * [Apache Kafka による Apache Spark 構造化ストリーミングを使用する](../hdinsight-apache-kafka-spark-structured-streaming.md)

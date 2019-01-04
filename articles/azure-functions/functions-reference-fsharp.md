@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: bd971b84b907d3fda1bea9922b2fd1881eb369e9
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 112a986efc11822f6c847511a33be6206b1f00da
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087238"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717486"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開発者向けリファレンス
 
@@ -96,7 +96,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>ログの記録
-出力を F# の[ストリーミング ログ](../app-service/web-sites-enable-diagnostic-log.md)に記録するには、関数が [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 型の引数を受け取る必要があります。 一貫性のために、この引数は `log`という名前にすることをお勧めします。 例: 
+出力を F# の[ストリーミング ログ](../app-service/troubleshoot-diagnostic-logs.md)に記録するには、関数が [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 型の引数を受け取る必要があります。 一貫性のために、この引数は `log`という名前にすることをお勧めします。 例: 
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =

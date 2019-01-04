@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 12/19/2018
 ms.author: magoedte
-ms.openlocfilehash: fa7d89d749d50d62ce54ea71d604831e8919b454
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 581d5ddc0930a84bad4dd74a0e8dbcc3787f1a16
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189848"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652066"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
 このドキュメントでは、[Azure セキュリティ センター](../../security/security-microsoft-trust-center.md)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
@@ -60,7 +60,7 @@ Log Analytics サービスによってデータが取り込まれた後、デー
 ## <a name="data-retention"></a>データの保持
 インデックス設定済みのログの検索データは、価格プランに従って保持されます。 詳細については、「 [ログ分析の価格](https://azure.microsoft.com/pricing/details/log-analytics/)」を参照してください。
 
-[サブスクリプション契約](https://azure.microsoft.com/support/legal/subscription-agreement/)の一環として、Microsoft は契約の条項に従ってデータを保持します。  データが削除された場合、データが存在する Azure Storage アカウントも削除されます。  顧客データが削除されるときに、物理ドライブは破棄されません。  
+[サブスクリプション契約](https://azure.microsoft.com/support/legal/subscription-agreement/)の一環として、Microsoft は契約の条項に従ってデータを保持します。  顧客データが削除されるときに、物理ドライブは破棄されません。  
 
 次の表では、利用できるソリューションの一部と、収集するデータの種類の例を示しています。
 
@@ -80,7 +80,7 @@ Log Analytics サービスによってデータが取り込まれた後、デー
 | 構成 |CustomerID、AgentID、EntityID、ManagedTypeID、ManagedTypePropertyID、CurrentValue、ChangeDate |
 | Event |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、番号、カテゴリ、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注:** カスタム フィールドを使ってイベントを Windows のイベント ログに書き込むと、それらのイベントは Log Analytics によって収集されます。 |
 | Metadata |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、 NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP Address、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
-| [パフォーマンス] |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
+| パフォーマンス |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
 | 状態 |StateChangeEventId、StateId、NewHealthState、OldHealthState、コンテキスト、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
 ## <a name="physical-security"></a>物理的なセキュリティ
@@ -150,7 +150,7 @@ Azure Log Analytics は、次の要件を満たしています。
 * [組織 ID](../../active-directory/fundamentals/sign-up-organization.md)
 * [Microsoft アカウント - Outlook、Office Live、MSN](https://account.microsoft.com/account)
 
-Log Analytics ワークスペースは、データが収集、集計、分析、表示される場所になります。 ワークスペースは、主にデータをパーティション分割するための手段として使用されます。各ワークスペースは一意になります。 たとえば、実稼働データをワークスペースの 1 つで管理し、テスト データを別のワークスペースで管理する場合があります。 ワークスペースは、ユーザーのデータへのアクセスを管理者が制御する際にも役立ちます。 ワークスペースごとに複数のユーザー アカウントを関連付けることができます。また、各ユーザー アカウントは複数の Log Analytics ワークスペースにアクセスできます。 データ センターのリージョンに基づいてワークスペースを作成します。 各ワークスペースは、主に Log Analytics サービスの可用性のために、リージョン内の他のデータセンターにレプリケートされます。
+Log Analytics ワークスペースは、データが収集、集計、分析、表示される場所になります。 ワークスペースは、主にデータをパーティション分割するための手段として使用されます。各ワークスペースは一意になります。 たとえば、実稼働データをワークスペースの 1 つで管理し、テスト データを別のワークスペースで管理する場合があります。 ワークスペースは、ユーザーのデータへのアクセスを管理者が制御する際にも役立ちます。 ワークスペースごとに複数のユーザー アカウントを関連付けることができます。また、各ユーザー アカウントは複数の Log Analytics ワークスペースにアクセスできます。 データ センターのリージョンに基づいてワークスペースを作成します。
 
 Operations Manager の場合、Operations Manager 管理グループは、Log Analytics サービスとの接続を確立します。 管理グループ内のエージェントで管理されるどのシステムがデータの収集とサービスへのデータ送信を許可されるかを構成します。 ソリューションからのデータは、有効にしているソリューションに応じて、Operations Manager 管理サーバーから Log Analytics サービスに直接送信される場合と、エージェント管理システムで収集されるデータ量の関係で、エージェントからサービスに直接送信される場合があります。 Operations Manager によって監視されていないシステムでは、それぞれ安全に Log Analytics サービスに直接接続します。
 

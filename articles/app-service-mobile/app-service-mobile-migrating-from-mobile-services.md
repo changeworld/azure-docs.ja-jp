@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 7fdbbee27f83a4583390158e456270324967b28a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 17fbaa7efcdd9e0de675defb3958a61f29bbc3fe
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961605"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714323"
 ---
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
 [Azure App Service は一般公開されており]、Azure Mobile Service サイトを簡単にインプレース移行し、Azure App Service の全機能を最大限に活用できます。  このドキュメントでは、Azure Mobile Service から Azure App Service にサイトを移行するときに必要な作業について説明します。
@@ -310,7 +310,7 @@ Notification Hubs での導入前にモバイル サービスでプッシュを�
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. [設定] ブレードが既定で開きます。
 4. [機能] メニューで **[診断ログ]** を選択します。
-5. ログ **[アプリケーション ログ (ファイル システム)]**、**[詳細なエラー メッセージ]**、**[失敗した要求トレース]** について **[オン]** をクリックします。
+5. ログ **[アプリケーション ログ (ファイル システム)]**、**[詳細なエラー メッセージ]**、**[失敗した要求トレース]** について [オン] をクリックします。
 6. Web サーバーのログの **[ファイル システム]** をクリックします。
 7. **[保存]**
 
@@ -376,25 +376,25 @@ Traffic Manager プロファイルを作成するとき、移行されたモバ�
 [App Service 価格]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [自動スケール]: ../app-service/web-sites-scale.md
-[Azure App Service]: ../app-service/app-service-web-overview.md
+[Azure App Service]: ../app-service/overview.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 [Azure Portal]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/regions/
 [Azure Scheduler プラン]: ../scheduler/scheduler-plans-billing.md
-[連続的にデプロイ]: ../app-service/app-service-continuous-deployment.md
+[連続的にデプロイ]: ../app-service/deploy-continuous-deployment.md
 [Mixed 名前空間を変換]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: https://curl.haxx.se/
 [custom domain names]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: https://www.telerik.com/fiddler
 [Azure App Service は一般公開されており]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[ログ]: ../app-service/web-sites-enable-diagnostic-log.md
+[ログ]: ../app-service/troubleshoot-diagnostic-logs.md
 [Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services と App Service の比較]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [パフォーマンス監視]: ../app-service/web-sites-monitor.md
 [Postman]: https://www.getpostman.com/
-[ステージング スロット]: ../app-service/web-sites-staged-publishing.md
+[ステージング スロット]: ../app-service/deploy-staging-slots.md
 [VNet]: ../app-service/web-sites-integrate-with-vnet.md
 [XDT Transform Samples (XDT 変換サンプル)]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [関数]: ../azure-functions/functions-overview.md

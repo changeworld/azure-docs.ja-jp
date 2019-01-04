@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 5ab2f1df72f04b6456f1083de6870fb86bad6616
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e6292c97d3e7bbbe74477188586257b4fbf91218
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438293"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582713"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Azure Cache for Redis を監視する方法
 Azure Cache for Redis は、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) を使用して、キャッシュのインスタンスを監視するための複数のオプションを提供します。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 これらのツールによって、Azure Cache for Redis インスタンスの正常性を監視でき、キャッシュ アプリケーションの管理が容易になります。
@@ -79,7 +79,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 >
 >
 
-メトリックにアクセスするには、この記事に説明されているようにメトリックを Azure Portal に表示するか、[Azure Monitor Metrics REST API](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) を使用してアクセスすることもできます。
+メトリックにアクセスするには、この記事に説明されているようにメトリックを Azure Portal に表示するか、[Azure Monitor Metrics REST API](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) を使用してアクセスすることもできます。
 
 > [!NOTE]
 > ストレージ アカウントを変更すると、以前に構成されたストレージ アカウント内のデータは引き続きダウンロードできますが、Azure ポータルには表示されなくなります。  
@@ -142,7 +142,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 
 対象のキャッシュのアクティビティ ログを表示するには、**[リソース] メニュー**で **[アクティビティ ログ]** をクリックします。
 
-アクティビティ ログについて詳しくは、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)」をご覧ください。
+アクティビティ ログについて詳しくは、「[Azure アクティビティ ログの概要](../azure-monitor/platform/activity-logs-overview.md)」をご覧ください。
 
 
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 17193bf3285a2052a913293ec3adc6f9b8884f72
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0c171ff768395540c123c4ef2a19168d926b0661
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435948"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633829"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -164,7 +164,7 @@ Azure Container Instances にデプロイするには、次の手順を使用し
     > [!TIP]
     > デプロイ中にエラーが発生した場合は、`service.get_logs()` を使用して AKS サービス ログを表示します。 ログに記録された情報に、エラーの原因が示されている可能性があります。
 
-詳細については、[AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) クラスと [Webservice](https://docs.microsoft.comS/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py) クラスのリファレンス ドキュメントを参照してください。
+詳細については、[AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) クラスと [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) クラスのリファレンス ドキュメントを参照してください。
 
 ### <a id="aks"></a>Azure Kubernetes Service へのデプロイ
 
@@ -211,6 +211,7 @@ Azure Kubernetes Service にデプロイするには、次の手順を使用し�
     > お客様の Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.11.* である場合は、それを使用してお客様のイメージをデプロイできます。 次のコードは、既存のクラスターをお客様のワークスペースにアタッチする方法を示しています。
     >
     > ```python
+    > from azureml.core.compute import AksCompute, ComputeTarget
     > # Set the resource group that contains the AKS cluster and the cluster name
     > resource_group = 'myresourcegroup'
     > cluster_name = 'mycluster'
@@ -218,7 +219,7 @@ Azure Kubernetes Service にデプロイするには、次の手順を使用し�
     > # Attatch the cluster to your workgroup
     > attach_config = AksCompute.attach_configuration(resource_group = resource_group,
     >                                          cluster_name = cluster_name)
-    > compute = ComputeTarget.attach(ws, 'mycompute', attach_config)
+    > aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
     > 
     > # Wait for the operation to complete
     > aks_target.wait_for_completion(True)
@@ -275,7 +276,7 @@ IoT ハブを作成し、[このスクリプト](https://raw.githubusercontent.c
 ssh <yourusername>@<yourdeviceip>
 sudo wget https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/createNregister
 sudo chmod +x createNregister
-sudo ./createNregister <The Azure subscriptionID you wnat to use> <Resourcegroup to use or create for the IoT hub> <Azure location to use e.g. eastus2> <the Hub ID you want to use or create> <the device ID you want to create>
+sudo ./createNregister <The Azure subscriptionID you want to use> <Resourcegroup to use or create for the IoT hub> <Azure location to use e.g. eastus2> <the Hub ID you want to use or create> <the device ID you want to create>
 ```
 
 結果として得られる接続文字列を "cs":"{copy this string}" の後ろに保存します。

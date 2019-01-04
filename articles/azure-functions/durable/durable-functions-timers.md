@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7af204ad76cb04c3d71c5108948be4036be1d1e4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9c9fd7b780ac1850586177e69d4c1cb3a06d005d
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338840"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744855"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions のタイマー (Azure Functions)
 
@@ -55,7 +55,7 @@ public static async Task Run(
 
 ```js
 const df = require("durable-functions");
-const moment = require("moment-js");
+const moment = require("moment");
 
 module.exports = df.orchestrator(function*(context) {
     for (let i = 0; i < 10; i++) {
@@ -109,7 +109,7 @@ public static async Task<bool> Run(
 
 ```js
 const df = require("durable-functions");
-const moment = require("moment-js");
+const moment = require("moment");
 
 module.exports = df.orchestrator(function*(context) {
     const deadline = moment.utc(context.df.currentUtcDateTime).add(30, "s");

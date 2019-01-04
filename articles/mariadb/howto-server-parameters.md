@@ -3,17 +3,15 @@ title: Azure Database for MariaDB のサーバー パラメーターの構成方
 description: この記事では、Azure portal を使用して Azure Database for MariaDB で使用できる MariaDB サーバー パラメータを構成する方法について説明します。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 865a95a5e6f6feb945475e50bbd9f6692688c12b
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 0576941c803dfed6359fe34b67370eaf3f99c7e7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310047"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538261"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバー パラメーターを構成する方法
 

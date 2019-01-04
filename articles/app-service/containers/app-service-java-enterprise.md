@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 34506266ed4a2103f0d3bd7a8014b9a038b25491
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 408141650a11a81f0c6000c6e7927af8333e2afe
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338041"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548478"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>App Service on Linux の Java Enterprise ガイド
 
@@ -49,7 +49,7 @@ Wildfly を構成するために、CLI の対話モードを使用しないで�
 /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
 ```
 
-App Service インスタンスの `/home/site/deployments/tools` にスタートアップ スクリプトをアップロードします。 FTP 資格情報の取得の手順については、[このドキュメント](/azure/app-service/app-service-deployment-credentials#userscope)を参照してください。 
+App Service インスタンスの `/home/site/deployments/tools` にスタートアップ スクリプトをアップロードします。 FTP 資格情報の取得の手順については、[このドキュメント](/azure/app-service/deploy-configure-credentials#userscope)を参照してください。 
 
 Azure portal の **[Startup Script]\(スタートアップ スクリプト\)** フィールドに、スタートアップ シェル スクリプトの場所 (`/home/site/deployments/tools/your-startup-script.sh` など) を設定します。
 

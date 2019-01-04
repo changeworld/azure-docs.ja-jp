@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: e3159ac4074e7ff437e052e0e2c1ae7d31378abe
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8fd7161208f6303e03deaacca6a1e2fad24ec45e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345399"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580878"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する
 
@@ -110,9 +110,9 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 
 ## <a name="next-steps"></a>次の手順
 
-* [アクティビティ ログ](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) の詳細
+* [アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md) の詳細
 * [Azure Portal からのアクティビティ ログ アラート](../../azure-monitor/platform/activity-log-alerts.md)の構成
 * [Resource Manager からのアクティビティ ログ アラート](../../azure-monitor/platform/alerts-activity-log.md)の構成
 * [アクティビティ ログ アラート webhook スキーマ](../../azure-monitor/platform/activity-log-alerts-webhook.md) の確認
-* [サービス通知](../../monitoring-and-diagnostics/monitoring-service-notifications.md) の詳細
+* [サービス通知](../../azure-monitor/platform/service-notifications.md) の詳細
 * [アクション グループ](../../azure-monitor/platform/action-groups.md)の詳細については、こちらをご覧ください。

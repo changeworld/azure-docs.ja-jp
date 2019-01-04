@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 36637137741aef6b34ab8e70109d692f5399043a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 12f9ed6d5b5d4c8dc7e5b0b68a0a394749cc72bd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967063"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714612"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack へのアプリのデプロイ
 
@@ -72,7 +72,7 @@ CI と CD については、次の記事をご覧ください。
 ### <a name="azure-requirements"></a>Azure の要件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-* Azure で [Web アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-overview)を作成します。 Web アプリの URL は書き留めておいてください。このチュートリアルの中で必要になります。
+* Azure で [Web アプリ](https://docs.microsoft.com/azure/app-service/overview)を作成します。 Web アプリの URL は書き留めておいてください。このチュートリアルの中で必要になります。
 
 ### <a name="azure-stack-requirements"></a>Azure Stack の要件
 
@@ -180,9 +180,7 @@ Azure DevOps Services には、サービス エンドポイント構成の一部
 
 3. Visual Studio Enterprise で **[アクセス制御 (IAM)]** を選択します。
 
-    ![アクセス制御 (IAM)](media/azure-stack-solution-hybrid-pipeline/000_12.png)
-
-4. **[追加]** を選択します。
+4. **[ロールの割り当ての追加]** を選択します。
 
     ![Add](media/azure-stack-solution-hybrid-pipeline/000_13.png)
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ff2fd2c9b66cc9c80087ab5009ee65c0ba73714b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268718"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714302"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "53268718"
 この攻略ガイドに従うには:
 
 - [App Service アプリを作成する](/azure/app-service/)
-- [ドメイン名を Web アプリにマップ](app-service-web-tutorial-custom-domain.md)するか、[購入し、Azure で構成する](custom-dns-web-site-buydomains-web-app.md)
+- [ドメイン名を Web アプリにマップ](app-service-web-tutorial-custom-domain.md)するか、[購入し、Azure で構成する](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -73,7 +73,7 @@ ms.locfileid: "53268718"
 | Name | 英数字とダッシュで構成される一意の名前。 |
 | リソース グループ | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
 | 場所 | App Service アプリと同じ場所を選択します。 |
-| [価格レベル]  | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
+| 価格レベル  | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
 | アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/key-vault-group-permissions-for-apps.md)」の手順に従って構成できます。 |
 | 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/key-vault-network-security.md)」の手順に従って構成できます |
 
@@ -91,7 +91,7 @@ ms.locfileid: "53268718"
 > 4 種類のドメイン検証方法がサポートされています。 
 > 
 > - **App Service** - ドメインが同一のサブスクリプション内で既に App Service アプリにマップされている場合に最も便利なオプションです。 この方法は、App Service アプリがドメインの所有権を既に確認済みである事実を利用しています。
-> - **ドメイン** - [Azure から購入した App Service ドメイン](custom-dns-web-site-buydomains-web-app.md)を確認します。 Azure は確認 TXT レコードを自動的に追加し、プロセスを完了します。
+> - **ドメイン** - [Azure から購入した App Service ドメイン](manage-custom-dns-buy-domain.md)を確認します。 Azure は確認 TXT レコードを自動的に追加し、プロセスを完了します。
 > - **メール** - ドメイン管理者に電子メールを送信することによってドメインを確認します。 手順は、オプションを選択したときに提供されます。
 > - **手動** - HTML ページ (**標準**証明書のみ) または DNS TXT レコードを使用してドメインを確認します。 手順は、オプションを選択したときに提供されます。
 

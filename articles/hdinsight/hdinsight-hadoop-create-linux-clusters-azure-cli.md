@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: f82ac972e54dac6df5a913a8059417b701e2f7e0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: c9b1f3570ae3f9b945c87c2ce316c3f72e32b4ad
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191582"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792052"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して HDInsight クラスターを作成する
 
@@ -70,7 +70,7 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
     * `storagename` には、ストレージ アカウントの一意の名前を指定します。
 
-        > [!NOTE]
+        > [!NOTE]  
         > このコマンドのパラメーターの詳細については、「`azure storage account create -h`」と入力してコマンドのヘルプを表示してください。
 
 5. ストレージ アカウントにアクセスするためのキーを取得します。
@@ -90,7 +90,7 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
     * `Hadoop` には、作成するクラスターの種類を指定します。 たとえば、`Hadoop`、`HBase`、`Kafka`、`Spark`、`Storm` などです。
 
-      > [!IMPORTANT]
+      > [!IMPORTANT]  
       > HDInsight クラスターにはさまざまな種類があり、それぞれに適したワークロードやテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。
 
     * `location` には、前の手順で使用した場所を指定します。
@@ -105,7 +105,7 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
     * `sshuser` と `sshuserpassword` には、SSH を使用してクラスターにアクセスするときに使用するユーザー名とパスワードを指定します。
 
-      > [!IMPORTANT]
+      > [!IMPORTANT]  
       > この例では、2 つの worker ノードを持つクラスターが作成されます。 クラスターの作成後にスケーリング操作を実行することによって、ワーカー ノードの数を変更することもできます。 32 個を超えるワーカー ノードの使用を予定している場合は、コアが 8 個以上で RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。 ヘッド ノード サイズは、クラスターの作成中に `--headNodeSize` パラメーターを使用して設定できます。
       >
       > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
@@ -114,7 +114,7 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -124,7 +124,7 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
 * [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
-* [HDInsight での Apache Hadoop MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase クラスター
 

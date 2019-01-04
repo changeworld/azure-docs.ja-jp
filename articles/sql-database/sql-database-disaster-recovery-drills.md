@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: f73340c9c350fd65b18e73bea2e1607f5eee83fa
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: cffafa68d155273de3b747c0399ce435f609b9fb
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277151"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602207"
 ---
 # <a name="performing-disaster-recovery-drill"></a>障害復旧訓練の実行
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4206301296c94bd0d24743854756ac6dd1d712dd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 90ba4f2197dc1b00ad2a3d234f3e81e529ae7e4f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014331"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653919"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
 Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace/marketplace-publishers-guide.md)に関する記事を参照してください。
@@ -53,7 +53,7 @@ Marketplace へのアプリケーションの発行は、2 段階の手順で実
 ## <a name="application-installation-script"></a>アプリケーションのインストール スクリプト
 アプリケーションがクラスター (既存のクラスターか新しいクラスターのいずれか) にインストールされると、エッジ ノードが作成されます。 アプリケーションのインストール スクリプトが、エッジ ノードで実行されます。
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > アプリケーションのインストール スクリプトの名前は、個々のクラスターに一意である必要があります。 スクリプト名の形式は、以下のとおりです。
   > 
   > "name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
@@ -81,9 +81,8 @@ HDInsight アプリケーションのインストールに必要なすべての�
 * mainTemplate.json (サンプルについては、「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。)
 * 必要なすべてのスクリプト
 
-> [!NOTE]
+> [!NOTE]  
 > パブリックにアクセスできる任意のエンドポイントでアプリケーション ファイル (任意の Web アプリ ファイルを含む) をホストできます。
-> 
 
 ## <a name="publish-the-application"></a>アプリケーションの発行
 HDInsight アプリケーションを発行するには:
@@ -102,6 +101,6 @@ HDInsight アプリケーションを発行するには:
 * クラスターに [HDInsight アプリケーションをインストール](hdinsight-apps-install-applications.md)する方法を確認します。
 * [カスタム HDInsight アプリケーションをインストール](hdinsight-apps-install-custom-applications.md)し、未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
 * [Script Action を使って Linux ベースの HDInsight クラスターをカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)し、アプリケーションをさらに追加する方法について説明します。 
-* [Azure Resource Manager テンプレートを使用して、HDInsight での Linux ベースの Hadoop クラスターを作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)する方法を確認します。
+* [Azure Resource Manager テンプレートを使用して、HDInsight での Linux ベースの Apache Hadoop クラスターを作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)する方法を確認します。
 * HDInsight クラスター、テスト HDInsight アプリケーション、およびホスティング HDInsight アプリケーションにアクセスするために [HDInsight で空のエッジ ノードを使用](hdinsight-apps-use-edge-node.md)する方法を確認します。
 

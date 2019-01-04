@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6d05859977a7cba385877298405b9ce77034da68
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 1541f22b79b3dd043ba953cdd1bd918c97b27e78
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166355"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716652"
 ---
 # <a name="quickstart-change-model-using-python"></a>クイック スタート: Python を使ってモデルを変更する
 
@@ -28,7 +28,7 @@ ms.locfileid: "53166355"
 * [Python 3.6](https://www.python.org/downloads/) 以降。
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-[!INCLUDE [Code is available in LUIS-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>発話の例の JSON ファイル
 

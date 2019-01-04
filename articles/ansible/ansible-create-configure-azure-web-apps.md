@@ -8,15 +8,15 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: a7e7c04b458575cdc9f2608d0c84f0df105bf202
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4a772977130f5679da2d879cc12738b89be09f1d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261757"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726733"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Ansible を使用して Azure App Service Web アプリを作成する
-[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (または単に Web Apps) は、Web アプリケーション、REST API、モバイル バックエンドをホストします。 開発には、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、お気に入りの言語をご利用いただけます。
+[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (または単に Web Apps) は、Web アプリケーション、REST API、モバイル バックエンドをホストします。 開発には、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、お気に入りの言語をご利用いただけます。
 
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 この記事では、Ansible を使用して、Java ランタイムを使った Web アプリを作成する方法について説明します。 
 
@@ -93,7 +93,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ## <a name="create-an-app-service-by-using-traffic-manager"></a>Traffic Manager を使用した App Service の作成
 [Azure Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager) を使用すると、Web クライアントからの要求を Azure App Service 内のアプリに振り分ける方法を制御できます。 App Service のエンドポイントが Azure Traffic Manager のプロファイルに追加されると、Azure Traffic Manager は App Service アプリの状態を追跡します。 それらの状態としては、実行中、停止、削除済みなどがあります。 これにより、トラフィックを受信すべきエンドポイントを Traffic Manager が判断できるようになります。
 
-App Service では、アプリは "[App Service プラン](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview
+App Service では、アプリは "[App Service プラン](https://docs.microsoft.com/azure/app-service/overview-hosting-plans
 )" で実行されます。 App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 App Service プランと Web アプリを別のグループで管理できます。
 
 このセクションでは、次のリソースを定義するサンプルの Ansible プレイブックを示します。
