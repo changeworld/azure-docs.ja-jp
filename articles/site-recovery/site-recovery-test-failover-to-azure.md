@@ -3,16 +3,17 @@ title: Azure Site Recovery を使用して Azure へのディザスター リカ
 description: Azure Site Recovery サービスを使用して、オンプレミスから Azure へのディザスター リカバリー訓練を実行することについて説明します。
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: cd8a7540b14c9d0896b9b0db2cae91ac54d92f2a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 19f41256866b42962be36bbb97f5f6d3c06d7fed
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844687"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976559"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する 
 
@@ -78,11 +79,11 @@ ms.locfileid: "52844687"
 
 ## <a name="create-a-network-for-test-failover"></a>テスト フェールオーバー用のネットワークの作成
 
-テスト フェールオーバー用に、各 VM の **[Compute and Network] (コンピューティングとネットワーク)** 設定で、運用復旧サイト ネットワークから分離されたネットワークを選択することをお勧めします。 既定では、作成した Azure 仮想ネットワークは、他のネットワークから分離されます。 テスト ネットワークは、運用ネットワークを模倣したものにする必要があります。
+テスト フェールオーバー用に、各 VM の **[Compute and Network] \(コンピューティングとネットワーク)** 設定で、運用復旧サイト ネットワークから分離されたネットワークを選択することをお勧めします。 既定では、作成した Azure 仮想ネットワークは、他のネットワークから分離されます。 テスト ネットワークは、運用ネットワークを模倣したものにする必要があります。
 
 - テスト ネットワークでは、運用ネットワークと同じ数のサブネットが必要です。 サブネットは、同じ名前を持つ必要があります。
 - テスト ネットワークでは、同じ IP アドレス範囲を使用する必要があります。
-- テスト ネットワークの DNS を、**[Compute and Network] (コンピューティングとネットワーク)** 設定で DNS VM に指定した IP アドレスで更新します。 詳細については、[Active Directory 用のテスト フェールオーバーの考慮事項](site-recovery-active-directory.md#test-failover-considerations)を参照してください。
+- テスト ネットワークの DNS を、**[Compute and Network] \(コンピューティングとネットワーク)** 設定で DNS VM に指定した IP アドレスで更新します。 詳細については、[Active Directory 用のテスト フェールオーバーの考慮事項](site-recovery-active-directory.md#test-failover-considerations)を参照してください。
 
 
 ## <a name="test-failover-to-a-production-network-in-the-recovery-site"></a>復旧サイトの運用ネットワークへのテスト フェールオーバー

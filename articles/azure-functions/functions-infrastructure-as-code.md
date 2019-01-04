@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 484cf0976ce10e80ca7eaf9b215329b81ed4bb13
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 428e1bed4e62b4fcbd7a4e03601cfc5c630b6583
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994656"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715530"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -167,7 +167,7 @@ Azure Resource Manager テンプレートのサンプルについては、[従�
 
 ## <a name="deploy-a-function-app-on-the-app-service-plan"></a>App Service プランで関数アプリをデプロイする
 
-App Service プランでは、関数アプリは、Web アプリと同様に、Basic、Standard、および Premium SKU の専用 VM 上で実行されます。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。 
+App Service プランでは、関数アプリは、Web アプリと同様に、Basic、Standard、および Premium SKU の専用 VM 上で実行されます。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/overview-hosting-plans.md)」を参照してください。 
 
 Azure Resource Manager テンプレートのサンプルについては、[Azure App Service プランの関数アプリ]に関するページをご覧ください。
 

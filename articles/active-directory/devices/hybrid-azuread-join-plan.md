@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c951d4f646fdaec9731ec4b6320e5f625ad91a42
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274566"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993289"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>ハイブリッド Azure Active Directory Join の実装を計画する方法
 
@@ -146,9 +146,9 @@ Windows デスクトップ オペレーティング システムを実行する�
 
 ## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加における代替ログイン ID のサポート
 
-Windows 10 のハイブリッド Azure AD 参加は、代替ログイン ID、[認証方法](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn)、ドメインの種類、および Windows 10 のバージョンに基づいて、[代替ログイン ID](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) の限定的なサポートを提供します。 環境内に存在できる代替ログイン ID は 2 種類あります。
+Windows 10 のハイブリッド Azure AD 参加は、代替ログイン ID、[認証方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、ドメインの種類、および Windows 10 のバージョンに基づいて、[代替ログイン ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) の限定的なサポートを提供します。 環境内に存在できる代替ログイン ID は 2 種類あります。
 
- - ルーティング可能な代替ログイン ID:ルーティング可能な代替ログイン ID は、ドメイン レジストラーに登録されている有効な確認済みドメインを持ちます。 たとえば、contoso.com がプライマリ ドメインの場合、contoso.org および contoso.co.uk は、Contoso 社によって所有され、[Azure AD で確認](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain)されている有効なドメインです
+ - ルーティング可能な代替ログイン ID:ルーティング可能な代替ログイン ID は、ドメイン レジストラーに登録されている有効な確認済みドメインを持ちます。 たとえば、contoso.com がプライマリ ドメインの場合、contoso.org および contoso.co.uk は、Contoso 社によって所有され、[Azure AD で確認](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)されている有効なドメインです
  
  - ルーティング不可能な代替ログイン ID:ルーティング不可能な代替ログイン ID は、確認済みドメインを持ちません。 組織のプライベート ネットワーク内でのみ適用されます。 たとえば、contoso.com がプライマリ ドメインの場合、contoso.local はインターネットで確認済みのドメインではありませんが、Contoso 社のネットワーク内で使用されます。
  

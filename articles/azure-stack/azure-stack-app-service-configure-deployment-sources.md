@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: d65c8653bc039b591f1c0fb711dfe68e3fbacd88
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b81b9b34843974ceacf41b08a40a52418ea46d22
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353563"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547551"
 ---
 # <a name="configure-deployment-sources"></a>デプロイ ソースを構成する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 App Service on Azure Stack では、複数のソース管理プロバイダーからのオンデマンド デプロイがサポートされます。 この機能を使用して、アプリケーション開発者はソース管理リポジトリから直接デプロイできます。 App Service をリポジトリに接続するように構成するには、まず、クラウド オペレーターが App Service on Azure Stack とソース管理プロバイダーの統合を構成する必要があります。  
 
@@ -38,7 +38,8 @@ App Service on Azure Stack では、複数のソース管理プロバイダー�
 ## <a name="view-deployment-sources-in-app-service-administration"></a>App Service 管理でデプロイ ソースを表示する
 
 1. Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてサインインします。
-2. **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。![App Service リソース プロバイダー管理][1]
+2. **[All Services (すべてのサービス)]** を参照し、**[App Service]** を選択します。
+    ![App Service リソース プロバイダー管理][1]
 3. **[Source control configuration (ソース管理構成)]** をクリックします。 構成されているすべてのデプロイ ソースの一覧が表示されます。
     ![App Service リソース プロバイダー管理のソース管理構成][2]
 
@@ -73,8 +74,8 @@ App Service on Azure Stack では、複数のソース管理プロバイダー�
 5. **[Callback URL (コールバック URL)]** を入力します。 既定の Azure Stack デプロイでは、コールバック URL は https://portal.local.azurestack.external/TokenAuthorize という形式になります。 別のドメインで実行する場合は、azurestack.local のドメイン名に置き換えます。 BitBucket の統合を成功させるには、URL の大文字と小文字をここに示されているとおりにする必要があります。
 6. **[URL]** を入力します。 この URL は、Azure Stack ポータルの URL にする必要があります (例: https://portal.local.azurestack.external)。
 7. 必要な **[Permissions]\(権限\)** を次のように選択します。
-    - **[Repositories]\(リポジトリ\)**: *[Read]\(読み取り\)*
-    - **[Webhooks]**: *[Read and write]\(読み取りと書き込み\)*
+    - **リポジトリ**: *読み取り*
+    - **Webhooks**: *読み取りと書き込み*
 8. **[Save]** をクリックします。 これで、この新しいアプリケーションが **[OAuth consumers]\(OAuth コンシューマー\)** の下に **[キー]** と **[シークレット]** と共に表示されます。
     ![BitBucket アプリケーション リスト][9]
 9.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてサインインします。
@@ -137,7 +138,7 @@ App Service on Azure Stack では、複数のソース管理プロバイダー�
 
 ## <a name="next-steps"></a>次の手順
 
-[継続的配置](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)、[ローカルの Git デプロイ](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-local-git)、[クラウド フォルダーの同期](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-content-sync)などでデプロイ ソースを使用できるようになりました。
+[継続的配置](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)、[ローカルの Git デプロイ](https://docs.microsoft.com/azure/app-service/deploy-local-git)、[クラウド フォルダーの同期](https://docs.microsoft.com/azure/app-service-web/deploy-content-sync)などでデプロイ ソースを使用できるようになりました。
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png

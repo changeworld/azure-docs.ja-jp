@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: pafarley
-ms.openlocfilehash: 7f0f86e783edb55bc3193df073c92c9523a90176
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 89323e584b4020613fe3ff8411df50f2ab96f156
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976017"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582731"
 ---
 # <a name="object-detection"></a>オブジェクトの検出
 

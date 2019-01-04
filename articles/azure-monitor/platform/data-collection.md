@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: fdf8d8977651c868c9f534dc61e3d1a77a43e672
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 84ab63d145d9726fad83b7b2337542fef5c8743d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435956"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718964"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor によって収集される監視データ
 [Azure Monitor](../overview.md) は、アプリケーションと、それらが依存するリソースを監視するのに役立つサービスです。 この機能の中心にあるのは、監視対象のリソースからのテレメトリとその他のデータのストレージです。 この記事では、このデータが Azure Monitor によってどのように格納され、使用されるかを詳細に説明します。
@@ -86,7 +86,7 @@ Azure Monitor によって収集されるメトリックのソースには、基
 **アプリケーション メトリック**は、監視対象のアプリケーションについて Application Insights によって作成され、パフォーマンスの問題を検出し、アプリケーションがどのように使用されているかの傾向を追跡する助けになります。 これには、_サーバー応答時間_と_ブラウザー例外_などの値が含まれます。
 
 **カスタム メトリック**は、自動的に利用できる標準メトリックに加えて、ユーザーが定義するメトリックです。 カスタム メトリックは、そのリソースと同じリージョン内の 1 つのリソースに対して作成する必要があります。 カスタム メトリックの作成には、次の方法を使用できます。
-    - Application Insights によって監視されている[アプリケーション内にカスタム メトリックを定義](../../application-insights/app-insights-api-custom-events-metrics.md)します。 これらは標準セットのアプリケーション メトリックに追加されるものです。
+    - Application Insights によって監視されている[アプリケーション内にカスタム メトリックを定義](../../azure-monitor/app/api-custom-events-metrics.md)します。 これらは標準セットのアプリケーション メトリックに追加されるものです。
     - [Windows Diagnostic Extension (WAD)](../../azure-monitor/platform/diagnostics-extension-overview.md) を使用して Windows 仮想マシンからカスタム メトリックを発行します。
     - [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を使用して Linux 仮想マシンからカスタム メトリックを発行します。
     - カスタム メトリックの API を使用して Azure のサービスからカスタム メトリックを記述します。
@@ -100,8 +100,8 @@ Azure Monitor によって収集されるメトリックのソースには、基
 - メトリックがしきい値を超えたときに、通知を送信するか[自動化されたアクション](action-groups.md)を実行する[メトリック アラート ルール](alerts-metric.md)を構成します。
 - [自動スケーリング](../../azure-monitor/platform/autoscale-overview.md)を使用して、しきい値を超えるメトリックに基づいてリソースを増加または減少させます。
 - メトリックを Log Analytics にルーティングし、メトリック データをログ データと一緒に分析して、93 日よりも長くメトリック値を格納します。 
-- メトリックを[イベント ハブ](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)にストリーム配信して、それらを [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) または外部システムにルーティングします。
-- コンプライアンス、監査、オフライン レポートの目的で、リソースのパフォーマンスや正常性の履歴を[アーカイブ](../../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md)します。
+- メトリックを[イベント ハブ](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)にストリーム配信して、それらを [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) または外部システムにルーティングします。
+- コンプライアンス、監査、オフライン レポートの目的で、リソースのパフォーマンスや正常性の履歴を[アーカイブ](../../azure-monitor/learn/tutorial-archive-data.md)します。
 - コマンドラインまたはカスタム アプリケーションから、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0)または [REST API](../../azure-monitor/platform/rest-api-walkthrough.md) を使用して、メトリック値にアクセスします。
 
 
@@ -129,7 +129,7 @@ Azure Monitor のメトリックは、迅速な取得のために最適化され
 ### <a name="sources-of-log-data"></a>ログ データのソース
 Azure Monitor は、Azure 内とオンプレミス リソースからの両方の、さまざまなソースからログ データを収集できます。 ログ データのソースには、次のものがあります。
 
-- Azure リソースからの、それらの構成と正常性に関する情報を含む[アクティビティ ログ](collect-activity-logs.md)と、それらの操作に関する分析情報を提供する[診断ログ](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md)。
+- Azure リソースからの、それらの構成と正常性に関する情報を含む[アクティビティ ログ](collect-activity-logs.md)と、それらの操作に関する分析情報を提供する[診断ログ](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md)。
 - ユーザーが構成する[データ ソース](data-sources.md)に応じて、ゲスト オペレーティング システムやアプリケーションから Azure Monitor にテレメトリを送信する、[Windows](agent-windows.md) 仮想マシンと [Linux](../learn/quick-collect-linux-computer.md) 仮想マシン上のエージェント。
 - [Application Insights](https://docs.microsoft.com/azure/application-insights/) によって収集されるアプリケーション データ。
 - 特定のアプリケーションまたはサービスに関する分析情報を提供する、コンテナーの洞察、VM Insights、リソース グループの分析情報などの[監視ソリューション](../insights/solutions.md)または機能からのデータ。
@@ -156,7 +156,7 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 Azure Monitor のすべてのログ データは、[データ エクスプローラーのクエリ言語](../log-query/get-started-queries.md)で書かれた[ログ クエリ](../log-query/log-query-overview.md)を使用して取得できます。これにより、収集されたデータを迅速に取得、統合、および分析できます。 [Log Analytics](../log-query/portals.md) を使用して、Azure portal でクエリを記述してテストします。 結果は、対話形式で操作したり、ダッシュボードにピン留めして他の視覚化と一緒に表示したりできます。 [Azure monitoring REST API](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) を使用してログを取得することもできます。
 
 > [!IMPORTANT]
-> Application Insights からのデータは、Azure Monitor の他のログ データとは別のパーティションに格納されます。 これは他のログ データと同じ機能をサポートしていますが、このデータにアクセスするには、[Application Insights コンソール](/application-insights/app-insights-analytics.md)または [Application Insights API](https://dev.applicationinsights.io/) を使用する必要があります。 [リソース間のクエリ](../log-query/cross-workspace-query.md)を使用して、その他のログ データと一緒にアプリケーション データを分析することができます。
+> Application Insights からのデータは、Azure Monitor の他のログ データとは別のパーティションに格納されます。 これは他のログ データと同じ機能をサポートしていますが、このデータにアクセスするには、[Application Insights コンソール](/azure-monitor/app/analytics.md)または [Application Insights API](https://dev.applicationinsights.io/) を使用する必要があります。 [リソース間のクエリ](../log-query/cross-workspace-query.md)を使用して、その他のログ データと一緒にアプリケーション データを分析することができます。
 
 ![ログ](media/data-collection/logs.png)
 
@@ -176,7 +176,7 @@ Azure リソースからメトリックを収集するためのガイダンス�
 ## <a name="stream-data-to-external-systems"></a>外部システムにデータをストリーム配信する
 Azure のツールを使用した監視データの分析に加え、監視データをセキュリティ情報およびイベントの管理 (SIEM) 製品などの外部ツールに転送する要件がある場合もあります。 この転送は一般に、[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) を介して、監視対象リソースから直接行われます。 
 
-さまざまな種類の監視データのガイダンスについては、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)」を参照してください。
+さまざまな種類の監視データのガイダンスについては、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

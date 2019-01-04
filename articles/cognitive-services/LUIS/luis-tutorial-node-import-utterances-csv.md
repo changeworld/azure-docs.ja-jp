@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: da638064b2ead1cd860f3b4f96ffa88026aab4ff
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ff030b9bb9158f3bac0e52a596a2054989301afd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101193"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719607"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js を使用したプログラムによる LUIS アプリの作成
 
@@ -26,7 +26,7 @@ LUIS は、[LUIS](luis-reference-regions.md) Web サイトによって実行さ�
 
 * [LUIS](luis-reference-regions.md) Web サイトにログインし、[アカウント設定] で [ オーサリング キー ](luis-concept-keys.md#authoring-key) を見つけます。 このキーを使用して、Authoring API を呼び出します。
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-* このチュートリアルでは、架空の会社のユーザー要求のログが含まれた CSV ファイルをまず使用します。 [こちら](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv)でダウンロードできます。
+* このチュートリアルでは、架空の会社のユーザー要求のログが含まれた CSV ファイルをまず使用します。 [こちら](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)でダウンロードできます。
 * NPM を使用して最新の Node.js をインストールします。 これは、[こちら](https://nodejs.org/en/download/)からダウンロードできます。
 * **[推奨]** IntelliSense およびデバッグ用の Visual Studio Code。[こちら](https://code.visualstudio.com/)から無料でダウンロードできます。
 
@@ -40,7 +40,7 @@ LUIS を念頭に置いて作成されていないシステムがあっても、
 **RequestType** 列は意図として使用でき、**Request** 列は発話の例を示していることがわかります。 その他のフィールドは、発話に出現した場合にエンティティとして使用できます。 意図、エンティティ、発話の例があるため、単純なサンプル アプリの要件が揃っています。
 
 ## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>LUIS 以外のデータから LUIS アプリを作成する手順
-ソース ファイルから新しい LUIS アプリを作成するには、まず CSV ファイルのデータを解析し、このデータを、Authoring API を使用して LUIS にアップロードできる形式に変換します。 解析されたデータから、どのような意図とエンティティがあるかに関する情報を収集します。 次に、API 呼び出しを行ってアプリを作成し、解析されたデータから収集された意図とエンティティを追加します。 LUIS アプリを作成したら、解析されたデータから発話の例を追加できます。 このフローは、次のコードの最後の部分で確認できます。 このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/index.js)し、`index.js` に保存します。
+ソース ファイルから新しい LUIS アプリを作成するには、まず CSV ファイルのデータを解析し、このデータを、Authoring API を使用して LUIS にアップロードできる形式に変換します。 解析されたデータから、どのような意図とエンティティがあるかに関する情報を収集します。 次に、API 呼び出しを行ってアプリを作成し、解析されたデータから収集された意図とエンティティを追加します。 LUIS アプリを作成したら、解析されたデータから発話の例を追加できます。 このフローは、次のコードの最後の部分で確認できます。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js)し、`index.js` に保存します。
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
@@ -70,33 +70,33 @@ CSV の発話を含む列エントリは、LUIS が理解できる JSON 形式�
         }
 ```
 
-この例では、`intentName` は CSV ファイルの **Request** 列見出しの下のユーザー要求から取得され、`entityName` は重要な情報が含まれたその他の列から取得されています。 たとえば、**Operation** または **Device** のエントリがあり、その文字列が実際の要求にも含まれている場合は、エンティティとしてラベル付けできます。 次のコードは、この解析プロセスを示しています。 このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_parse.js)し、`_parse.js` に保存できます。
+この例では、`intentName` は CSV ファイルの **Request** 列見出しの下のユーザー要求から取得され、`entityName` は重要な情報が含まれたその他の列から取得されています。 たとえば、**Operation** または **Device** のエントリがあり、その文字列が実際の要求にも含まれている場合は、エンティティとしてラベル付けできます。 次のコードは、この解析プロセスを示しています。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js)し、`_parse.js` に保存できます。
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
 
 
 ## <a name="create-the-luis-app"></a>LUIS アプリを作成する
-データが JSON に解析されたら、LUIS アプリに追加します。 次のコードでは LUIS アプリを作成します。 このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_create.js)し、`_create.js` に保存します。
+データが JSON に解析されたら、LUIS アプリに追加します。 次のコードでは LUIS アプリを作成します。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js)し、`_create.js` に保存します。
 
    [!code-javascript[Node.js code for creating a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/_create.js)]
 
 
 ## <a name="add-intents"></a>意図の追加
-アプリを作成したら、意図を追加する必要があります。 次のコードでは LUIS アプリを作成します。 このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_intents.js)し、`_intents.js` に保存します。
+アプリを作成したら、意図を追加する必要があります。 次のコードでは LUIS アプリを作成します。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js)し、`_intents.js` に保存します。
 
    [!code-javascript[Node.js code for creating a series of intents](~/samples-luis/examples/build-app-programmatically-csv/_intents.js)]
 
 
 ## <a name="add-entities"></a>複数エンティティの追加
-次のコードでは、LUIS アプリにエンティティを追加します。 このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_entities.js)し、`_entities.js` に保存します。
+次のコードでは、LUIS アプリにエンティティを追加します。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js)し、`_entities.js` に保存します。
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
    
 
 
 ## <a name="add-utterances"></a>発話の追加
-LUIS アプリでエンティティと意図が定義されたら、発話を追加できます。 次のコードでは、[Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API を使用しています。この API により、一度に最大 100 個の発話を追加できます。  このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_upload.js)し、`_upload.js` に保存します。
+LUIS アプリでエンティティと意図が定義されたら、発話を追加できます。 次のコードでは、[Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API を使用しています。この API により、一度に最大 100 個の発話を追加できます。  このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js)し、`_upload.js` に保存します。
 
    [!code-javascript[Node.js code for adding utterances](~/samples-luis/examples/build-app-programmatically-csv/_upload.js)]
 
