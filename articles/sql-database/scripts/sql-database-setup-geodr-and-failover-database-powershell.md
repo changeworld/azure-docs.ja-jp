@@ -7,17 +7,17 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-author: CarlRabeler
-ms.date: 09/07/2018
-ms.author: carlrab
-ms.reviewer: ''
+author: mashamsft
+ms.author: mathoma
+ms.reviewer: carlrab
 manager: craigg
-ms.openlocfilehash: d102cde625865ea1db6ed09382161366d3994def
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 09/07/2018
+ms.openlocfilehash: 4db1bc12d8c6e63257ac89c87572e91bed5478a4
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961911"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604874"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-single-azure-sql-database"></a>PowerShell を使用し、単一 Azure SQL データベースのアクティブ geo レプリケーションを構成する
 

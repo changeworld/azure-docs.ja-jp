@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0ce230bc6a926229ed383c828f83aafd60117471
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 962c1cff91a5ac3f52dc67c30bd2c7a4e2e22b9d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317160"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631840"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Azure Search で高度なクエリを作成するための Lucene 構文のクエリの例
 Azure Search のクエリを構築するときは、既定の[単純なクエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)をより拡張性の高い [Azure Search の Lucene Query Parser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) に置き換えることにより、特殊化された高度なクエリ定義を作成することができます。 
@@ -172,9 +172,9 @@ musicstoreindex の例の **genre** など、特定のフィールドの一致�
 係数レベルを設定するときにブースト係数を大きくするほど、その用語の関連性が他の検索用語に比べて大きくなります。 既定のブースト係数は 1 です。 ブースト係数は整数にする必要がありますが、1 に満たない (0.2 など) 数字にすることができます。
 
 
-## <a name="example-6-regex"></a>例 6: 正規表現
+## <a name="example-6-regex"></a>例 6: Regex 
 
-正規表現検索では、スラッシュ "/" の間のコンテンツに基づいて一致が検索されます。[RegExp](http://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html) クラスに詳細があります。
+正規表現検索では、スラッシュ "/" の間のコンテンツに基づいて一致が検索されます。[RegExp](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html) クラスに詳細があります。
 
 Senior または Junior という用語を含む仕事を検索するクエリは、`search=business_title:/(Sen|Jun)ior/`` となります。
 

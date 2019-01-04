@@ -6,17 +6,17 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: mashamsft
+ms.author: mathoma
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/11/2018
-ms.openlocfilehash: 919a3326c009d660959fb75cfdbcf46d523fa016
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: deaf5c9180841f8c5b2d21a820f2ab2362dc2453
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863875"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600721"
 ---
 # <a name="accelerated-database-recovery-preview"></a>高速データベース復旧 (プレビュー)
 

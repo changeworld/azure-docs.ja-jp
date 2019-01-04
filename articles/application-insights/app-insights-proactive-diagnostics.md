@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: b884fc15770e91268d1033dc4bab9bf96766de94
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: af85975fce20a87af8365f8fe6ea73ed1e6e1416
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868943"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998916"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights のスマート検出
  スマート検出により、Web アプリケーションの潜在的なパフォーマンスの問題について警告を自動的に受け取ることができます。 スマート検出では、アプリから [Application Insights](app-insights-overview.md) に送信されるテレメトリがプロアクティブに分析されます。 障害発生率が急激に上昇したり、クライアントまたはサーバーのパフォーマンスに異常なパターンが発生したりした場合に、アラートが表示されます。 この機能には構成は不要です。 アプリケーションから適切なテレメトリが送信されていれば動作します。
@@ -54,12 +54,12 @@ ms.locfileid: "52868943"
 ## <a name="next-steps"></a>次の手順
 これらの診断ツールを使用すると、アプリからテレメトリを調査できます。
 
-* [メトリックス エクスプローラー](app-insights-metrics-explorer.md)
-* [Search エクスプローラー](app-insights-diagnostic-search.md)
+* [メトリックス エクスプローラー](../azure-monitor/app/metrics-explorer.md)
+* [Search エクスプローラー](../azure-monitor/app/diagnostic-search.md)
 * [Analytics - 強力なクエリ言語](../azure-monitor/log-query/get-started-portal.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 
-* [手動で構成するメトリックのアラート](app-insights-alerts.md)
-* [可用性 Web テスト](app-insights-monitor-web-app-availability.md) 
+* [手動で構成するメトリックのアラート](../azure-monitor/app/alerts.md)
+* [可用性 Web テスト](../azure-monitor/app/monitor-web-app-availability.md) 
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9ad161e3e19a1e546f30a17b38737fa88bc0953a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0ccb502cd5ae21468e52bdc4d56202a595cd19ef
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399920"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594214"
 ---
 [仮想マシン スケール セット](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)と [Azure Monitor の自動スケール機能](../articles/azure-monitor/platform/autoscale-overview.md)を使うと、[仮想マシン (VM)](../articles/virtual-machines/windows/overview.md) を簡単に[自動スケール](../articles/azure-monitor/platform/autoscale-best-practices.md)できます。 自動スケールを適用するには、VM がスケール セットのメンバーになっている必要があります。 この記事では、垂直方向、水平方向を問わず自動または手動で VM をスケールする方法について理解を深めることができるよう、各種の情報を紹介します。
 
@@ -29,7 +29,7 @@ Azure Monitor の自動スケール機能は、水平スケーリングにのみ
 
 自動スケールは、アプリケーションに対する負荷の処理に必要な数だけ VM を利用できる機能です。 VM を追加して負荷の増大に対処したり、アイドル状態の VM があれば削除してコストを節約したりできます。 実行する VM の数は、ルールで最小値と最大値を指定します。 最小値を指定すると、負荷のない状況でも、アプリケーションが常に実行されます。 最大値を指定すると、時間単位の合計コストが制限されます。
 
-[Azure PowerShell](../articles/monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings) または [Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings) を使ってスケール セットを作成する場合には、スケール セットの作成時に自動スケールを有効にできます。 このほか、スケール セットを作成した後に自動スケールを有効にすることもできます。 [Azure Resource Manager テンプレート](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)では、スケール セットの作成から拡張機能のインストール、自動スケールの構成までが可能です。 Azure Portal の場合には、Azure Monitor かスケール セットの設定から自動スケールを有効にできます。
+[Azure PowerShell](../articles/azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings) または [Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings) を使ってスケール セットを作成する場合には、スケール セットの作成時に自動スケールを有効にできます。 このほか、スケール セットを作成した後に自動スケールを有効にすることもできます。 [Azure Resource Manager テンプレート](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)では、スケール セットの作成から拡張機能のインストール、自動スケールの構成までが可能です。 Azure Portal の場合には、Azure Monitor かスケール セットの設定から自動スケールを有効にできます。
 
 ![自動スケールの有効化](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
  

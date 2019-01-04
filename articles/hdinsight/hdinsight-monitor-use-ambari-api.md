@@ -9,20 +9,18 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 062925f7e072651f4b4189cec7ca73144c0cf994
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7967459e1318e85e1e179e21bc803bf00ee329cd
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436332"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743795"
 ---
 # <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Apache Ambari API を使用して HDInsight の Apache Hadoop クラスターを監視する
 Apache Ambari API を使用して HDInsight クラスターを監視する方法について説明します。
 
 > [!NOTE]  
 > この記事の情報は、Ambari REST API の読み取り専用バージョンを提供する Windows ベースの HDInsight クラスターを主に対象としたものです。 Linux ベースのクラスターについては、[Apache Ambari を使用した Apache Hadoop クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
-> 
-> 
 
 ## <a name="what-is-ambari"></a>Ambari とは
 [Apache Ambari][ambari-home] は、Apache Hadoop クラスターのプロビジョニング、管理、監視を目的としています。 演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。 API の詳細については、「[Ambari API リファレンス][ambari-api-reference]」をご覧ください。 
@@ -38,8 +36,7 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
   
   > [!NOTE]  
   > Windows で cURL コマンドを使用する場合、オプション値には一重引用符の代わりに二重引用符を使用します。
-  > 
-  > 
+
 * **Azure HDInsight クラスター**。 クラスターのプロビジョニングの手順については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。 このチュートリアルを読み進めるには、次のデータが必要です。
   
   | クラスター プロパティ | Azure PowerShell 変数名 | 値 | 説明 |
@@ -146,13 +143,13 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 * [HDInsight のドキュメント][hdinsight-documentation]
 * [HDInsight の概要][hdinsight-get-started]
 
-[ambari-home]: http://ambari.apache.org/
+[ambari-home]: https://ambari.apache.org/
 [ambari-api-reference]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
-[microsoft-hadoop-SDK]: http://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
+[microsoft-hadoop-SDK]: https://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [powershell-script]: https://technet.microsoft.com/library/ee176949.aspx

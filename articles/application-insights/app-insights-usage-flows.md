@@ -13,12 +13,12 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 05853cb494ef6cc615bea7eecb1cfac288b46f3b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 54155346c7f417be8beb0ced8ef825ec22a08237
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721954"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971615"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Application Insights でユーザー フローを使用してユーザーのナビゲーション パターンを分析する
 
@@ -34,7 +34,7 @@ ms.locfileid: "52721954"
 ユーザー フロー ツールは、指定した最初のページ ビュー、カスタム イベント、または例外から開始します。 この最初のイベントを前提に、ユーザー フローには、ユーザー セッション中、その前後に発生したイベントが表示されます。 太さが異なる線は、ユーザーが各パスを通過した回数を示します。 特別な **[セッションを開始しました]** ノードには、後続のノードがセッションを開始した場所が表示されます。 **[セッションが終了しました]** ノードには、前のノードの後でページ ビューまたはカスタム イベントを送信しなかったユーザーの数を示し、ユーザーが対象サイトを離れたと思われる場所が表示されます。
 
 > [!NOTE]
-> ユーザー フロー ツールを使うには、Application Insights のリソースにページ ビューやカスタム イベントが含まれる必要があります。 [アプリをセットアップし、Application Insights JavaScript SDK を使用してページ ビューを自動的に収集する方法について説明します](app-insights-javascript.md)。
+> ユーザー フロー ツールを使うには、Application Insights のリソースにページ ビューやカスタム イベントが含まれる必要があります。 [アプリをセットアップし、Application Insights JavaScript SDK を使用してページ ビューを自動的に収集する方法について説明します](../azure-monitor/app/javascript.md)。
 >
 >
 
@@ -59,7 +59,7 @@ ms.locfileid: "52721954"
 * **[編集]** メニューの **[除外されたイベント]** セクションを確認します。
 * 頻繁の低いイベントを視覚化に含めるには、**[その他]** ノードのプラス ボタンを使用します。
 * 予想されるページ ビューまたはカスタム イベントがユーザーによってあまり送信されない場合は、**[編集]** メニューで視覚化の時間範囲を広げてみます。
-* 予想されるページ ビュー、カスタム イベント、または例外が、サイトのソース コードで Application Insights SDK によって収集されるように設定されていることを確認します。 [カスタム イベントの収集について詳しくは、こちらをご覧ください。](app-insights-api-custom-events-metrics.md)
+* 予想されるページ ビュー、カスタム イベント、または例外が、サイトのソース コードで Application Insights SDK によって収集されるように設定されていることを確認します。 [カスタム イベントの収集について詳しくは、こちらをご覧ください。](../azure-monitor/app/api-custom-events-metrics.md)
 
 視覚化の手順をさらに参照する場合は、視覚化の上の **[前のステップ]** と **[次のステップ]** の各ドロップダウン リストを使用します。
 
@@ -99,4 +99,4 @@ ms.locfileid: "52721954"
 * [利用状況の概要](app-insights-usage-overview.md)
 * [ユーザー、セッション、およびイベント](app-insights-usage-segmentation.md)
 * [保持](app-insights-usage-retention.md)
-* [アプリにカスタム イベントを追加する](app-insights-api-custom-events-metrics.md)
+* [アプリにカスタム イベントを追加する](../azure-monitor/app/api-custom-events-metrics.md)

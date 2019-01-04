@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6cedc269e279a9154e63bae241f02e766e06ec96
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 027f8ad854cfc4c412a56a293de3b02a425d6858
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383903"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713830"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop クラスターに Apache Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
 
 HDInsight クラスターで Apache Giraph をインストールする方法について説明します。 HDInsight のスクリプト アクション機能では、bash スクリプトを実行してクラスターをカスタマイズできます。 スクリプトを使用して、クラスターの作成時および作成後にクラスターをカスタマイズできます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="whatis"></a>Giraph とは
 
-[Apache Giraph](http://giraph.apache.org/) は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。 グラフは、オブジェクト間のリレーションシップをモデル化します。 たとえば、インターネット、またはソーシャル ネットワーク上の人物間の関係など、大規模なネットワーク上のルーター間の接続をモデル化します。 グラフの処理により、次のようなグラフ内のオブジェクト間の関係について推論できます。
+[Apache Giraph](https://giraph.apache.org/) は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。 グラフは、オブジェクト間のリレーションシップをモデル化します。 たとえば、インターネット、またはソーシャル ネットワーク上の人物間の関係など、大規模なネットワーク上のルーター間の接続をモデル化します。 グラフの処理により、次のようなグラフ内のオブジェクト間の関係について推論できます。
 
 * 現在の関係に基づいて潜在的な友人を識別する
 
@@ -36,7 +36,7 @@ HDInsight クラスターで Apache Giraph をインストールする方法に�
 > [!WARNING]  
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> Giraph といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートで問題を解決できる場合があります。 解決できない場合は、その技術に関して豊富な専門知識のあるオープン ソース コミュニティを参照する必要があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に[Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> Giraph といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートで問題を解決できる場合があります。 解決できない場合は、その技術に関して豊富な専門知識のあるオープン ソース コミュニティを参照する必要があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 
 ## <a name="what-the-script-does"></a>スクリプトの機能
@@ -55,7 +55,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
-> [!NOTE]
+> [!NOTE]  
 > スクリプト アクションは、次の方法を使用して適用できます。
 > * Azure PowerShell
 > * Azure クラシック CLI
@@ -86,7 +86,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 ## <a name="usegiraph"></a>HDInsight で Giraph を使用する方法
 
-クラスターが作成されたら、次の手順を使用して、Giraph に含まれているサンプル SimpleShortestPathsComputation を実行します。 この例では、グラフのオブジェクト間の最短パスを見つけるための基本的な [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf) 実装を使用します。
+クラスターが作成されたら、次の手順を使用して、Giraph に含まれているサンプル SimpleShortestPathsComputation を実行します。 この例では、グラフのオブジェクト間の最短パスを見つけるための基本的な [Pregel](https://people.apache.org/~edwardyoon/documents/pregel.pdf) 実装を使用します。
 
 1. SSH を使用して HDInsight クラスターに接続します。
 
@@ -146,7 +146,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
    | `-op` |出力場所。 |
    | `-w 2` |使用する worker の数。 この例では 2 です。 |
 
-    これらのパラメーターと Giraph サンプルで使用されるその他のパラメーターの詳細については、 [Giraph のクイックスタート](http://giraph.apache.org/quick_start.html)のページを参照してください。
+    これらのパラメーターと Giraph サンプルで使用されるその他のパラメーターの詳細については、 [Giraph のクイックスタート](https://giraph.apache.org/quick_start.html)のページを参照してください。
 
 6. ジョブが完了すると、結果が **/example/out/shotestpaths** ディレクトリに格納されます。 出力ファイルの名前の先頭は **part-m-**、末尾はファイルの順番を示す数字です。 次のコマンドを使用して、出力を表示します。
 

@@ -7,17 +7,17 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 639795824bf75bb99d34f12d4dfc4e0695341986
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: fa76762fc9a2eb178e2edce2de254894bde1934c
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868414"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651420"
 ---
 # <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL データベースのコピーを作成する
 
@@ -26,6 +26,9 @@ Azure SQL Database では、同じサーバーまたは別のサーバーのい�
 ## <a name="overview"></a>概要
 
 データベースのコピーとは、コピーが要求された時点でのソース データベースのスナップショットのことです。 同じサーバーまたは別のサーバー、そのサービス層とコンピューティング サイズ、または同じサービス層 (エディション) 内の別のコンピューティング サイズを選ぶことができます。 コピーの完了後、コピーは完全に機能する独立したデータベースになります。 この時点では、任意のエディションにアップグレードまたはダウン グレードできます。 ログイン、ユーザー、アクセス許可は非依存で管理できます。  
+
+> [!NOTE]
+> データベースのコピーを作成するときは、[自動データベース バックアップ](sql-database-automated-backups.md)が使用されます。
 
 ## <a name="logins-in-the-database-copy"></a>データベースのコピーへのログイン
 

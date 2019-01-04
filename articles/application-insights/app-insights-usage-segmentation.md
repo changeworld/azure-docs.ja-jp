@@ -13,12 +13,12 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 6a7f62d4018e5a8bd39cbf2bb2b1418137d93638
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 16795ce1fd53b9634dbc2ff7513d1c39752b8848
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720152"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974592"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights でのユーザー、セッション、およびイベントの分析
 
@@ -36,9 +36,9 @@ Application Insights ポータルのユーザー、セッション、または�
 
 * **ユーザー ツール**:アプリとその機能を使用したユーザーの数。  ブラウザーの Cookie に格納されている匿名 ID を使用してユーザーがカウントされます。 複数のブラウザーまたはコンピューターを使用する 1 人のユーザーは、複数のユーザーとしてカウントされます。
 * **セッション ツール**:アプリの特定のページおよび機能を含むユーザー アクティビティのセッション数。 セッションは、ユーザーの非アクティブ状態が 30 分続いた後、または継続した 24 時間の使用の後、カウントされます。
-* **イベント ツール**:アプリの特定のページと機能が使用された回数。 ページ ビューは、([インストルメント化した場合](app-insights-javascript.md)) ブラウザーがアプリからページを読み込むときにカウントされます。 
+* **イベント ツール**:アプリの特定のページと機能が使用された回数。 ページ ビューは、([インストルメント化した場合](../azure-monitor/app/javascript.md)) ブラウザーがアプリからページを読み込むときにカウントされます。 
 
-    カスタム イベントは、アプリで実行される操作の 1 回の出現を表します。通常、ボタン クリック、タスクの完了などのユーザー操作です。 コードをアプリに挿入して、[カスタム イベントを生成](app-insights-api-custom-events-metrics.md#trackevent)します。
+    カスタム イベントは、アプリで実行される操作の 1 回の出現を表します。通常、ボタン クリック、タスクの完了などのユーザー操作です。 コードをアプリに挿入して、[カスタム イベントを生成](../azure-monitor/app/api-custom-events-metrics.md#trackevent)します。
 
 ## <a name="querying-for-certain-users"></a>特定のユーザーのクエリ実行
 

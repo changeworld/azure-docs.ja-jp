@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 8ba94cd94003ee51a621923d3b1dbf2a402c5cfb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 238d84c32a145c00648ce3923efaa86a8fa3d08e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082332"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971718"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>サンプル ノートブックを検索して使用する
 
@@ -37,7 +37,7 @@ ms.locfileid: "53082332"
 - [便利なノートブックのギャラリー](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (GitHub 上の Jupyter プロジェクト)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - [インペリアル カレッジ ロンドンの物理学部](https://notebooks.azure.com/cvanbreu/libraries)による物理の手引き
-- [Azure Machine Learning の入門サンプル](https://notebooks.azure.com/azureml/projects/0f41b597b1ea)
+- [Azure Machine Learning の入門サンプル](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
 
 ## <a name="next-steps"></a>次の手順  
 

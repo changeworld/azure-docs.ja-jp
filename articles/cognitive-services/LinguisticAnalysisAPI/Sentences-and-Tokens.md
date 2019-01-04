@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
 ROBOTS: NOINDEX
-ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 96c2bd1c11554481e441662a6051620f4b2e2993
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237876"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972364"
 ---
 # <a name="sentence-separation-and-tokenization"></a>文の分割とトークン化
 
@@ -75,4 +75,4 @@ ms.locfileid: "48237876"
 ## <a name="specification"></a>仕様
 
 文およびトークンを何が構成するかについて、一貫性がある決定を行うことが重要です。
-ここでは [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) の仕様に依存しています (詳細については、ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html で入手できます)。
+ここでは [Penn Treebank](https://catalog.ldc.upenn.edu/LDC99T42) の仕様に依存しています (詳細については、ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html で入手できます)。

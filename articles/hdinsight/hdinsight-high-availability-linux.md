@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 41c8315bab1b716f79b47afb77c6d371a757691d
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 89878b2774727d49d81ebec4c2a3c2cee355d8e8
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386445"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743665"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight における Apache Hadoop クラスターの可用性と信頼性
 
@@ -47,7 +47,7 @@ Nimbus ノードは、Apache Storm クラスターで使用できます。 Nimbu
 
 ### <a name="apache-zookeeper-nodes"></a>Apache Zookeeper ノード
 
-[ZooKeeper](http://zookeeper.apache.org/) ノードは、ヘッド ノード上のマスター サービスのリーダー選定に使用されます。 また、これにより、サービス、データ (ワーカー) ノード、およびゲートウェイはどちらのヘッド ノードでマスター サービスがアクティブになっているかがわかります。 既定では、HDInsight では 3 つの ZooKeeper ノードが提供されます。
+[ZooKeeper](https://zookeeper.apache.org/) ノードは、ヘッド ノード上のマスター サービスのリーダー選定に使用されます。 また、これにより、サービス、データ (ワーカー) ノード、およびゲートウェイはどちらのヘッド ノードでマスター サービスがアクティブになっているかがわかります。 既定では、HDInsight では 3 つの ZooKeeper ノードが提供されます。
 
 ### <a name="worker-nodes"></a>ワーカー ノード
 
@@ -192,7 +192,7 @@ SSH クライアントを使用するときと同様に、クラスターへの�
 使用可能なコマンドの一覧を参照するには、`sftp>` プロンプトで「`help`」と入力します。
 
 > [!NOTE]  
-> SFTP を使用した接続時にファイル システムを視覚化できるグラフィカル インターフェイスもあります。 たとえば、 [MobaXTerm](http://mobaxterm.mobatek.net/) では、Windows エクスプ ローラーに似たインターフェイスを使用して、ファイル システムを閲覧できます。
+> SFTP を使用した接続時にファイル システムを視覚化できるグラフィカル インターフェイスもあります。 たとえば、 [MobaXTerm](https://mobaxterm.mobatek.net/) では、Windows エクスプ ローラーに似たインターフェイスを使用して、ファイル システムを閲覧できます。
 
 ### <a name="ambari"></a>Ambari
 

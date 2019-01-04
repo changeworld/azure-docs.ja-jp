@@ -8,17 +8,17 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: e87f8a0d168db02bf0e93216991767f5a9be584c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 89cf69ba8bc88a40582ea795b6a17fab4f286d64
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863518"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651982"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server データベースの Azure SQL Database への移行
 
@@ -35,7 +35,7 @@ SQL Server 2005 以降のデータベースを Azure SQL Database の単一デ�
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1:移行中にダウンタイムを伴う移行
 
- ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用して、単一データベースまたはプール データベースを移行します。 チュートリアルについては、[SQL Server データベースを移行する](sql-database-migrate-your-sql-server-database.md)を参照してください。
+ ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用して、単一データベースまたはプール データベースを移行します。 チュートリアルについては、[SQL Server データベースを移行する](../dms/tutorial-sql-server-to-azure-sql.md)を参照してください。
 
 次の一覧は、単一データベースまたはプール データベースの SQL Server データベースをこの方法で移行する場合の一般的なワークフローを示します。 Managed Instance への移行については、[マネージド インスタンスへの移行に関するページ](sql-database-managed-instance-migrate.md)を参照してください。
 

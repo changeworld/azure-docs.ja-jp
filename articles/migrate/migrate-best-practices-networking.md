@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 1493eb6978b00771aa8ed4d8cfc28c37a9dde5b6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c6a995c20beefb3a939aa1421eed537137037922
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139748"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994965"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Azure に移行されたワークロードのネットワークの設定に関するベスト プラクティス
 
@@ -118,7 +118,7 @@ VNet をデプロイすると、Azure によって既定で DNS サーバーが�
 
 **詳細情報:**
 - 独自の DNS サーバーを使用するときの名前解決[について学習する](https://docs.microsoft.com/azure/migrate/contoso-migration-infrastructure)。
-- DNS の名前付け規則と制限事項[について学習する](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-subscriptions)。
+- DNS の名前付け規則と制限事項[について学習する](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-subscriptions)。
 
 
 ## <a name="best-practice-set-up-availability-zones"></a>ベスト プラクティス:可用性ゾーンを設定する
@@ -336,7 +336,7 @@ VNet をセキュリティで保護するときは、攻撃ベクトルを考慮
 
 **詳細情報:**
 
-- NSG [について読む](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview)。
+- NSG [について読む](https://docs.microsoft.com/azure/virtual-network/security-overview)。
 - NSG に使用可能なサービス タグを[確認する](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
 
 

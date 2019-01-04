@@ -3,15 +3,16 @@ title: Azure Site Recovery で保護できるワークロード | Microsoft Docs
 description: Azure Site Recovery サービスによるディザスター リカバリーを使用して保護できるワークロードについて説明します。
 author: rayne-wiselman
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 8592b4dc5b5ae791c6e231876839f8647d171145
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 10e73cf7fde019b4b4fe54d23f02c5afc0c582c9
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850119"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976853"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: 5f03f4fe1422f1665d857269c98a50827ed75d55
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: b880a80e19c5a85a35d5e1d78022fe4acc74f0e1
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958360"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999171"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Maven から Java ライブラリをフェッチするよう以前の Java Service Fabric アプリケーションを更新する
 最近、Service Fabric Java バイナリが Service Fabric Java SDK から Maven ホスティングに移行されました。 これで、**mavencentral** を使用して最新の Service Fabric Java 依存関係をフェッチできるようになりました。 このクイック スタートでは、以前に Service Fabric Java SDK と共に使用するように作成した既存の Java アプリケーションを更新します。Maven ベースのビルドに対応するように、Yeoman テンプレートまたは Eclipse を使用します。
@@ -220,7 +220,7 @@ task copyDeps <<{
     }
 }
 ```
-一般に、Service Fabric ステートレス Java サービスに対するビルド スクリプトがどのようなものであるかを把握するには、入門用の例で任意のサンプルを参照してください。 EchoServer サンプルの build.gradle は、[ここ](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle)にあります。
+一般に、Service Fabric ステートレス Java サービスに対するビルド スクリプトがどのようなものであるかを把握するには、入門用の例で任意のサンプルを参照してください。 EchoServer サンプルの build.gradle は、[ここ](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/reliable-services-actor-sample/build.gradle)にあります。
 
 ## <a name="migrating-service-fabric-actor-service"></a>Service Fabric アクター サービスの移行
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 3c9514e39e061067b7332570e0eb6273924529e0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: be86e961d04b600f112a173c041b60cbe50ea00d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339214"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725060"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する  
 
@@ -23,7 +23,7 @@ ms.locfileid: "53339214"
 - 条件:Signal で確認された場合にアクションをトリガーする特定の条件またはロジック
 - アクション:電子メール、SMS、Webhook などの通知の受信者に送信される特定の呼び出し。
 
-アラートを説明する**ログ アラート**という用語。このアラートでは、[Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) または [Application Insights](../../application-insights/app-insights-analytics.md) に基づいて、シグナルがカスタム クエリとなります。 「[ログ アラート - 概要](../../azure-monitor/platform/alerts-unified-log.md)」からの機能、用語、および型について説明します。
+アラートを説明する**ログ アラート**という用語。このアラートでは、[Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) または [Application Insights](../../azure-monitor/app/analytics.md) に基づいて、シグナルがカスタム クエリとなります。 「[ログ アラート - 概要](../../azure-monitor/platform/alerts-unified-log.md)」からの機能、用語、および型について説明します。
 
 > [!NOTE]
 > Azure Monitor のメトリック プラットフォームでは、[Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) の一般的なログ データも利用できます。 詳細ビューについては、[ログのメトリック アラート](../../azure-monitor/platform/alerts-metric-logs.md)に関するページをご覧ください
@@ -245,6 +245,6 @@ az group deployment create --resource-group myRG --template-file sampleScheduled
 
 * [Azure アラートのログ アラート](../../azure-monitor/platform/alerts-unified-log.md)について学習します。
 * [ログ アラートの Webhook アクション](../../azure-monitor/platform/alerts-log-webhook.md)を理解します。
-* [Application Insights](../../application-insights/app-insights-analytics.md) についてさらに学習します。
+* [Application Insights](../../azure-monitor/app/analytics.md) についてさらに学習します。
 * [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) についてさらに学習します。 
 

@@ -15,17 +15,17 @@ ms.date: 07/07/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2d035883534430e76d251b22dfc95d34e4eb03cd
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 8b0277d1e82e655edd9308f8b8afa7d6dcec434e
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723569"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754834"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio の Azure Application Insights でアプリケーションをデバッグする
 Visual Studio (2015 以降) では、[Azure Application Insights](app-insights-overview.md) からのテレメトリを使用して、ASP.NET Web アプリのパフォーマンスの分析と問題の診断を、デバッグ中と運用環境の両方において実行できます。
 
-Visual Studio 2017 以降を使用して ASP.NET Web アプリを作成した場合は、Application Insights SDK が既に含まれています。 この操作をまだ行っていない場合は、[アプリに Application Insights を追加](app-insights-asp-net.md)してください。
+Visual Studio 2017 以降を使用して ASP.NET Web アプリを作成した場合は、Application Insights SDK が既に含まれています。 この操作をまだ行っていない場合は、[アプリに Application Insights を追加](../azure-monitor/app/asp-net.md)してください。
 
 実際の運用環境でアプリを監視するには、通常、[Azure Portal](https://portal.azure.com) で Application Insights のテレメトリを確認します。Azure Portal では、アラートを設定し、強力な監視ツールを適用できます。 ただし、デバッグを行う場合は、Visual Studio でテレメトリを検索して分析することもできます。 Visual Studio を使用したテレメトリの分析は、運用サイトからも、開発用コンピューターでのデバッグの実行からも行うことができます。 後者の場合、Azure Portal にテレメトリを送信するよう SDK をまだ構成していない場合でも、デバッグの実行を分析できます。 
 
@@ -60,7 +60,7 @@ Web アプリに対する要求では、クリックしてコードを表示で�
 ![[要求の詳細] で下にスクロールし、関連する項目を表示する](./media/app-insights-visual-studio/41.png)
 
 ## <a name="view-exceptions-and-failed-requests"></a>例外と失敗した要求を表示する
-例外のレポートは、[検索] ウィンドウに表示されます  (古い種類の ASP.NET アプリケーションの一部では、フレームワークによって処理される例外が表示されるように、[例外の監視を設定する](app-insights-asp-net-exceptions.md)する必要があります)。
+例外のレポートは、[検索] ウィンドウに表示されます  (古い種類の ASP.NET アプリケーションの一部では、フレームワークによって処理される例外が表示されるように、[例外の監視を設定する](../azure-monitor/app/asp-net-exceptions.md)する必要があります)。
 
 スタック トレースを取得するには、例外をクリックします。 Visual Studio でアプリのコードが開かれている場合は、コードの該当する行をスタック トレースからクリックできます。
 
@@ -72,7 +72,7 @@ Web アプリに対する要求では、クリックしてコードを表示で�
 ![Exception stack trace](./media/app-insights-visual-studio/21.png)
 
 > [!NOTE] 
-> CodeLens に Application Insights のデータが表示されるのは、[テレメトリを Application Insights ポータルに送信するようアプリを構成した](app-insights-asp-net.md)場合のみです。
+> CodeLens に Application Insights のデータが表示されるのは、[テレメトリを Application Insights ポータルに送信するようアプリを構成した](../azure-monitor/app/asp-net.md)場合のみです。
 >
 
 [CodeLens での Application Insights の詳細については、こちらを参照してください。](app-insights-visual-studio-codelens.md)
@@ -93,7 +93,7 @@ Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレ�
 
 これは以前のバージョンのアプリを既に発行済みである場合に役立ちます。 デバッグ セッションから得られたテレメトリが、Application Insights ポータル上の発行済みアプリから得られたテレメトリと混同されるのは望ましくありません。
 
-これは、ポータルにテレメトリを送信する前に、いくつかの [カスタム テレメトリ](app-insights-api-custom-events-metrics.md) をデバッグする場合にも役立ちます。
+これは、ポータルにテレメトリを送信する前に、いくつかの [カスタム テレメトリ](../azure-monitor/app/api-custom-events-metrics.md) をデバッグする場合にも役立ちます。
 
 * *最初は、ポータルにテレメトリを送信するよう Application Insights を構成しましたが、今は、Visual Studio でテレメトリだけを表示したくなりました。*
   
@@ -104,6 +104,6 @@ Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレ�
 ## <a name="next-steps"></a>次の手順
 |  |  |
 | --- | --- |
-| **[データの追加](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |![Visual studio](./media/app-insights-visual-studio/64.png) |
-| **[Application Insights ポータルの操作](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、エクスポートされたテレメトリ データを表示します。 |![Visual studio](./media/app-insights-visual-studio/62.png) |
+| **[データの追加](../azure-monitor/app/asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |![Visual studio](./media/app-insights-visual-studio/64.png) |
+| **[Application Insights ポータルの操作](../azure-monitor/app/app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、エクスポートされたテレメトリ データを表示します。 |![Visual studio](./media/app-insights-visual-studio/62.png) |
 

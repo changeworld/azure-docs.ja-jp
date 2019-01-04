@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3a0b92e2c2a588fa8ef7edcddaa8c692780814f0
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388404"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721565"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -163,7 +163,7 @@ Web worker ロールで使用可能な追加のメモリを利用できるよう
 
 Azure Load Balancer には、4 分という既定のアイドル タイムアウト設定があります。 これは一般に、Web 要求のための妥当な応答時間の制限です。 Web アプリにバックグラウンド処理が必要な場合は、Azure Web ジョブを使用することをお勧めします。 Azure Web アプリは Web ジョブを呼び出し、バックグラウンド処理の完了時に通知を受けることができます。 Web ジョブを使用するための複数の方法 (キューやトリガーなど) から選択できます。
 
-Web ジョブは、バックグラウンド処理用に設計されています。 Web ジョブでは、バックグラウンド処理を必要なだけ実行できます。 Web ジョブの詳細については、「[Web ジョブでのバックグラウンド タスクの実行](web-sites-create-web-jobs.md)」を参照してください。
+Web ジョブは、バックグラウンド処理用に設計されています。 Web ジョブでは、バックグラウンド処理を必要なだけ実行できます。 Web ジョブの詳細については、「[Web ジョブでのバックグラウンド タスクの実行](webjobs-create.md)」を参照してください。
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>App Service でホストされている ASP.NET Core アプリケーションが応答を停止する場合があります。 この問題を解決するにはどうすればよいですか?
 

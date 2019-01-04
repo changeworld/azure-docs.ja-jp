@@ -1,20 +1,17 @@
 ---
 title: Azure Portal での Azure Database for PostgreSQL のメトリック アラートの構成
 description: この記事では、Azure Portal から Azure Database for PostgreSQL のメトリック アラートを構成およびアクセスする方法について説明します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: b57827cb4e8c1105c88b6fab217e17d6cf4db056
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 26b7e92bf8fa6c42320f604643bc996794ed52ca
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271233"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540726"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Azure Portal を使用して Azure Database for PostgreSQL のメトリックのアラートを設定する 
 
@@ -56,7 +53,7 @@ ms.locfileid: "53271233"
    | リソース | このフィールドには Azure Database for PostgreSQL の名前が入力されています。 |
    | メトリック | アラートを発行する対象のメトリックを選択します  (例: **ストレージの割合**)。 |
    | 条件 | 比較するメトリックの条件を選択します  (例: **より大きい**)。 |
-   | しきい値 | メトリックのしきい値 (例: 85 (パーセント))。 |
+   | Threshold | メトリックのしきい値 (例: 85 (パーセント))。 |
    | 期間 | アラートがトリガーされるまでにメトリック ルールが満たす必要がある期間  (例: **直近 30 分**)。 |
 
    この例では、アラートは直近 30 分で 85% を超えるストレージを対象とします。 ストレージが 30 分間で平均 85% を上回ると、アラートがトリガーされます。 最初のトリガーが発生した後、ストレージが 30 分間で平均 85% を下回ったときに、再度アラートがトリガーされます。

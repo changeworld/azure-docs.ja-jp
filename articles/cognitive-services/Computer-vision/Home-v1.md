@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: 09a7f02df1102e42bc45b4615a2af4235372bcdc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: acd6d41e8b6d1fb834697ec3d026419ee6b69ec9
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957029"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582356"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Computer Vision API バージョン 1.0 とは
 
@@ -98,7 +99,7 @@ Returned Json
 
 ![カテゴリの分析](./Images/analyze_categories.png)
 
-画像                                                  | Response
+イメージ                                                  | Response
 ------------------------------------------------------ | ----------------
 ![屋上にいる女性](./Images/woman_roof.png)                 | people
 ![家族写真](./Images/family_photo.png)             | people_crowd

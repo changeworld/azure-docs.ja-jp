@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 9a32ac1ae71cb7bd89c4252157c3a5cd395b2694
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4a18e009f7defc8d41846b867f9b7a65d2b853dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842341"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993333"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>実行中の Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 
@@ -78,8 +78,8 @@ Azure Site Recovery のデータ変更率制限はディスクの種類に基づ
 
 #### <a name="network-latency-to-cache-storage-account-"></a>キャッシュ ストレージ アカウントへのネットワーク待機時間:
  サイトの回復は、キャッシュ ストレージ アカウントにレプリケートされたデータを送信し、仮想マシンからキャッシュ ストレージ アカウントへのデータのアップロードが 3 秒に 4 MBより遅い場合、問題が発生する可能性があります。 待ち時間に関連する問題があるかどうかをチェックするには、[azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)を使用して、仮想マシンから、キャッシュ ストレージ アカウントにデータをアップロードします。<br>
-待ち時間が長い場合は、VM からの送信ネットワーク トラフィックを制御するためのネットワーク仮想アプライアンスを使用しているかどうか確認します。 この場合、すべてのレプリケーション トラフィックが NVA を通過すると、アプライアンスがスロットルされる可能性があります。 レプリケーション トラフィックが NVA に送られないように、"ストレージ" 用の仮想ネットワーク内にネットワーク サービス エンドポイントを作成することをお勧めします。 [ネットワーク仮想アプライアンスの構成](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)を参照してください
+待ち時間が長い場合は、VM からの送信ネットワーク トラフィックを制御するためのネットワーク仮想アプライアンスを使用しているかどうか確認します。 この場合、すべてのレプリケーション トラフィックが NVA を通過すると、アプライアンスがスロットルされる可能性があります。 レプリケーション トラフィックが NVA に送られないように、"ストレージ" 用の仮想ネットワーク内にネットワーク サービス エンドポイントを作成することをお勧めします。 [ネットワーク仮想アプライアンスの構成](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)を参照してください
 
 #### <a name="network-connectivity"></a>ネットワーク接続
 Site Recovery レプリケーションを動作させるには、VM から特定の URL または IP 範囲への送信接続が必要です。 VM がファイアウォールの内側にあるか、ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御している場合は、次のいずれかの問題に直面することがあります。</br>
-すべての URL が接続されていることを確認するには[Site Recovery URL に対する送信接続](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)を参照してください 
+すべての URL が接続されていることを確認するには[Site Recovery URL に対する送信接続](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)を参照してください 

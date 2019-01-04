@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights シングルページ Web アプリの作成 | Microsoft Docs
+title: チュートリアル:Azure Time Series Insights シングルページ Web アプリの作成 | Microsoft Docs
 description: TSI 環境のデータを照会してレンダリングするシングルページ Web アプリケーションを作成する方法について説明します。
 author: ashannon7
 ms.service: time-series-insights
@@ -8,12 +8,12 @@ ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: fccd509d4f16cee86d30feb0e838f1493cae4e0b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9d18b1382bdb421afcc8aee92fd99b7ef0d09e32
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275841"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540148"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>チュートリアル: Azure Time Series Insights シングルページ Web アプリの作成
 

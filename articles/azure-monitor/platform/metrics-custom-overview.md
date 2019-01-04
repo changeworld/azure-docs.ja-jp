@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 2b3e8877713fde088be2147bbfa8969e351a3f06
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: aacfc98a9132a59c90a8f67d5a3877b75fa59dfe
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325598"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605587"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor のカスタム メトリック
 
@@ -25,7 +25,7 @@ Azure でリソースやアプリケーションをデプロイするとき、�
 - Azure Application Insights SDK を使用してアプリケーションをインストルメント化し、カスタム テレメトリを Azure Monitor に送信する。 
 - [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[仮想マシン スケール セット](collect-custom-metrics-guestos-resource-manager-vmss.md)、[クラシック VM](collect-custom-metrics-guestos-vm-classic.md)、または[クラシック Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) に Windows Azure 診断 (WAD) 拡張機能をインストールして、パフォーマンス カウンターを Azure Monitor に送信する。 
 - [InfluxData Telegraf エージェント](collect-custom-metrics-linux-telegraf.md)を Azure Linux VM にインストールし、Azure Monitor 出力プラグインを使用してメトリックを送信する。
-- [Azure Monitor REST API](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md) にカスタム メトリックを直接送信する (`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`)。
+- [Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md) にカスタム メトリックを直接送信する (`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`)。
 
 Azure Monitor にカスタム メトリックを送信するときは、報告する各データ ポイント (または値) に次の情報が含まれている必要があります。
 
@@ -193,6 +193,6 @@ Azure Monitor では、カスタム メトリックの使用に次の制限が�
  - [仮想マシン スケール セット](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure Virtual Machines (クラシック)](collect-custom-metrics-guestos-vm-classic.md)
  - [Telegraf エージェントを使用した Linux 仮想マシン](collect-custom-metrics-linux-telegraf.md)
- - [REST API](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md)
+ - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
  - [従来の Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  

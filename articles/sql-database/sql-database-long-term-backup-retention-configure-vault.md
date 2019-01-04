@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma,carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 6d5fe500b4cc98be53b1dd2fe06e341e7ae6f61f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d8ff07d43d1efbadf1ddd397b6690c93c54c4f27
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870828"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603550"
 ---
 # <a name="configure-long-term-backup-retention-using-azure-recovery-services-vault"></a>Azure Recovery Services コンテナーを使用して長期的なバックアップ保有期間を構成する
 

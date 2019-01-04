@@ -3,27 +3,26 @@ title: Azure Stack のサービス プリンシパルを作成する | Microsoft
 description: Azure Resource Manager でロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、サービス プリンシパルを作成する方法について説明します。
 services: azure-resource-manager
 documentationcenter: na
-author: sethmanheim
+author: mattbriggs
 manager: femila
-ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
-ms.author: sethm
+ms.date: 12/12/2018
+ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: a32327109bc71a41f871682936c5f27ed490975c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4c205055239b7bf16bbb73448c21818de419e623
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958316"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715833"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>サービス プリンシパルを作成してアプリケーションに Azure Stack リソースへのアクセスを付与する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Resource Manager を使用するサービス プリンシパルを作成して、アプリケーションに Azure Stack リソースへのアクセスを付与できます。 サービス プリンシパルによって、[ロールベースのアクセス コントロール](azure-stack-manage-permissions.md)を使用して特定のアクセス許可を委任できます。
 
@@ -52,7 +51,7 @@ Azure Stack に Active Directory を構成した方法によって、サービ�
 
 サービス プリンシパルをロールに割り当てる手順は、Azure AD および AD FS で同じです。 サービス プリンシパルを作成した後は、ロールに割り当てることで[アクセス許可を委任](azure-stack-create-service-principals.md#assign-role-to-service-principal)できます。
 
-## <a name="create-a-service-principal-for-azure-ad"></a>Azure AD のサービス プリンシパルを作成する
+## <a name="create-service-principal-for-azure-ad"></a>Azure AD のサービス プリンシパルを作成する
 
 Azure Stack で Azure AD を ID ストアとして使用する場合、Azure Portal を使って、Azure と同じ手順を利用してサービス プリンシパルを作成できます。
 
@@ -95,11 +94,11 @@ AD FS を ID ストアとして使用して Azure Stack をデプロイした場
 * サービス プリンシパルをロールに割り当てる。
 * サービス プリンシパルの ID を使ってサインインする。
 
-サービス プリンシパルを作成する方法の詳細については、「[AD FS のサービス プリンシパルを作成する](../azure-stack-create-service-principals.md#create-service-principal-for-ad-fs)」を参照してください。
+サービス プリンシパルを作成する方法の詳細については、「[AD FS のサービス プリンシパルを作成する](../azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs)」を参照してください。
 
 ## <a name="assign-the-service-principal-to-a-role"></a>サービス プリンシパルをロールに割り当てる
 
-サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 アプリケーションにとって適切なアクセス許可を表すのはどのロールであるかを判断します。 利用可能なロールについては、「[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 アプリケーションにとって適切なアクセス許可を表すのはどのロールであるかを判断します。 利用可能なロールについては、[RBAC: 組み込みロール](../../role-based-access-control/built-in-roles.md)に関する記事を参照してください。
 
 >[!NOTE]
 ロールのスコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリがリソース グループに対するリーダー ロールを備えている場合、そのアプリはリソース グループ内の任意のリソースを読み取ることができます。
@@ -114,9 +113,7 @@ AD FS を ID ストアとして使用して Azure Stack をデプロイした場
 
 3. サブスクリプションの **[アクセス制御 (IAM)]** を選択します。
 
-     ![アクセス制御を選択する](./media/azure-stack-create-service-principal/image17.png)
-
-4. **[追加]** を選択します。
+4. **[ロールの割り当ての追加]** を選択します。
 
 5. アプリケーションに割り当てるロールを選択します。
 
