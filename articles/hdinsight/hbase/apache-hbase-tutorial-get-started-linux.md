@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: b667cfad6eb2a2a13e4b84dacaad0bcd3dfa91b9
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: af604dbabe9df56322342230eaec70548f53c927
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017135"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794500"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight で Apache HBase の例を使用する
 
-HDInsight で [Apache HBase](http://hbase.apache.org/) クラスターを作成する方法、HBase テーブルを作成する方法、[Apache Hive](https://hive.apache.org/) を使用してテーブルを照会する方法について説明します。  HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関する記事を参照してください。
+HDInsight で [Apache HBase](https://hbase.apache.org/) クラスターを作成する方法、HBase テーブルを作成する方法、[Apache Hive](https://hive.apache.org/) を使用してテーブルを照会する方法について説明します。  HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関する記事を参照してください。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -50,13 +50,13 @@ HDInsight で [Apache HBase](http://hbase.apache.org/) クラスターを作成�
      各クラスターには Azure ストレージ アカウントとの依存関係があります。 クラスターを削除すると、データはストレージ アカウントに保持されます。 クラスターの既定のストレージ アカウント名は、クラスター名に "store" が追加されたものです。 これは、テンプレートの variables セクションでハードコードされます。
 3. **[上記の使用条件に同意する]** を選択し、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
 
-> [!NOTE]
+> [!NOTE]  
 > HBase クラスターを削除したら、同じ既定の BLOB コンテナーを使用して別の HBase クラスターを作成できます。 新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。 不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。
 > 
 > 
 
 ## <a name="create-tables-and-insert-data"></a>テーブルを作成してデータを挿入する
-SSH を使用して HBase クラスターに接続し、[Apache HBase シェル](http://hbase.apache.org/0.94/book/shell.html)を使用して HBase テーブルの作成、データの挿入、データのクエリを行うことができます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+SSH を使用して HBase クラスターに接続し、[Apache HBase シェル](https://hbase.apache.org/0.94/book/shell.html)を使用して HBase テーブルの作成、データの挿入、データのクエリを行うことができます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 多くの場合、データは次のような表形式で表示されます。
 
@@ -109,7 +109,7 @@ HBase ([クラウド BigTable](https://cloud.google.com/bigtable/) の実装) �
 
 **Contacts HBase テーブルにデータを一括で読み込むには**
 
-HBase では、いくつかの方法でテーブルにデータを読み込ことができます。  詳細については、 [一括読み込み](http://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
+HBase では、いくつかの方法でテーブルにデータを読み込ことができます。  詳細については、 [一括読み込み](https://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
 
 サンプル データ ファイルは、パブリック BLOB コンテナー (*wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*) にあります。  このデータ ファイルの内容は次のとおりです。
 
@@ -126,9 +126,8 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 必要に応じて、自分でテキスト ファイルを作成し、そのファイルを自分のストレージ アカウントにアップロードできます。 手順については、[HDInsight での Apache Hadoop ジョブ用データのアップロード][hdinsight-upload-data]に関するページを参照してください。
 
-> [!NOTE]
+> [!NOTE]  
 > この手順では、前回の手順で作成した Contacts HBase テーブルを使用します。
-> 
 
 1. SSH から次のコマンドを実行して、データ ファイルを StoreFile に変換し、Dimporttsv.bulk.output で指定された相対パスに格納します。  HBase シェル内にいる場合は、exit コマンドを使用して終了します。
 
@@ -224,7 +223,7 @@ REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wik
 
 HBase Rest の詳細については、「 [Apache HBase reference guide (Apache HBase リファレンス ガイド)](https://hbase.apache.org/book.html#_rest)」をご覧ください。
 
-> [!NOTE]
+> [!NOTE]  
 > Thrift は、HDInsight での HBase ではサポートされていません。
 >
 > Curl、または WebHCat を使用したその他の REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。 また、サーバーへの要求の送信に使用する Uniform Resource Identifier (URI) にクラスター名を含める必要があります。
@@ -265,7 +264,7 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](../hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](../hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 この記事では、Apache HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。 また、HBase テーブルのデータに対して Hive クエリを使用する方法と、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
@@ -277,9 +276,9 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
-[hbase-reference]: http://hbase.apache.org/book.html#importtsv
+[hbase-reference]: https://hbase.apache.org/book.html#importtsv
 [hbase-schema]: http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf
-[hbase-quick-start]: http://hbase.apache.org/book.html#quickstart
+[hbase-quick-start]: https://hbase.apache.org/book.html#quickstart
 
 
 

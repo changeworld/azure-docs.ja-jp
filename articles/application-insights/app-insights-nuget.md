@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 76cdd4bd4d95c7c11906f9c02a0f5cfa2326390e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d8d48a41f9100abc3bc8ba306c766d9511f80026
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000772"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972075"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet パッケージ
 
@@ -70,7 +70,7 @@ Application Insights 用の安定版リリースの NuGet パッケージの最�
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  x64 アプリケーションの実行時データ収集を有効化 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  x86 アプリケーションの実行時データ収集を有効化。 | [パッケージのダウンロード](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-これらのパッケージは、[Status Monitor](app-insights-monitor-performance-live-website-now.md) の実行時監視のコア機能を構成します。 これらのパッケージを直接ダウンロードする必要はありません。Status Monitor インストーラーを使用してください。 これらのパッケージの内部での動作について詳しく理解するには、開発者の 1 人によるこの[ブログ記事](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)をまずご覧ください。
+これらのパッケージは、[Status Monitor](../azure-monitor/app/monitor-performance-live-website-now.md) の実行時監視のコア機能を構成します。 これらのパッケージを直接ダウンロードする必要はありません。Status Monitor インストーラーを使用してください。 これらのパッケージの内部での動作について詳しく理解するには、開発者の 1 人によるこの[ブログ記事](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)をまずご覧ください。
 
 ## <a name="additional-packages"></a>その他のパッケージ
 
@@ -81,6 +81,6 @@ Application Insights 用の安定版リリースの NuGet パッケージの最�
 
 ## <a name="next-steps"></a>次の手順
 
-- [ASP.NET Core](app-insights-asp-net-core.md) を監視します。
+- [ASP.NET Core](../azure-monitor/app/asp-net-core.md) を監視します。
 - ASP.NET Core [Azure Linux Web アプリ](app-insights-profiler-aspnetcore-linux.md)をプロファイルします。
 - ASP.NET [スナップショット](app-insights-snapshot-debugger.md)をデバッグします。

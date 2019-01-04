@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fbfa310114defea44d1c2b4ee5433658fc4db8c2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4a8d036ff2f36b75df17029c8f00edce25c49e65
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111052"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994319"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で使用するための JavaScript のサンプル
 
@@ -129,7 +129,7 @@ function addTermsOfUseLink() {
     var termsLabelText = termsOfUseLabel.innerHTML;
       
     // create a new <a> element with the same inner text 
-    var termsOfUseUrl = 'https://docs.microsoft.com/en-us/legal/termsofuse';
+    var termsOfUseUrl = 'https://docs.microsoft.com/legal/termsofuse';
     var termsOfUseLink = document.createElement('a');
     termsOfUseLink.setAttribute('href', termsOfUseUrl);
     termsOfUseLink.setAttribute('target', '_blank');
