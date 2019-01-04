@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 999b5ca1f229677b9e11068f4beaa6e2704afd3d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 62056b27669f334f1d8007d5284979ac4701f9d9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012574"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650509"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Apache Spark REST API を使用してリモート ジョブを HDInsight Spark クラスターに送信する
 
-[Apache Spark](https://spark.apache.org/) REST API の [Apache Livy](https://livy.incubator.apache.org/) を使用する方法について説明します。これを使用して、リモート ジョブを Azure HDInsight Spark クラスターに送信します。 詳細なドキュメントについては、 [http://livy.incubator.apache.org/](http://livy.incubator.apache.org/) に関するページを参照してください。
+[Apache Spark](https://spark.apache.org/) REST API の [Apache Livy](https://livy.incubator.apache.org/) を使用する方法について説明します。これを使用して、リモート ジョブを Azure HDInsight Spark クラスターに送信します。 詳細なドキュメントについては、 [https://livy.incubator.apache.org/](https://livy.incubator.apache.org/) に関するページを参照してください。
 
 Livy を使用すると、対話型の Spark シェルを実行したり、Spark で実行されるバッチ ジョブを送信したりすることができます。 この記事では、Livy を使用してバッチ ジョブを送信する方法について説明します。 この記事のスニペットでは、cURL を使用して、Livy Spark エンドポイントへの REST API 呼び出しを行います。
 
@@ -182,7 +182,7 @@ Spark クラスターへのリモート ジョブ送信に Livy を使用する�
 
 ## <a name="next-step"></a>次のステップ
 
-* [Apache Livy REST API ドキュメント](http://livy.incubator.apache.org/docs/latest/rest-api.html)
+* [Apache Livy REST API ドキュメント](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: cf037000a047b02f3874c3bccc9678f2ea18ecec
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 31e4f4a8cfe9a82cf5320cd364905c7c91de0959
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011200"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653800"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure 仮想ネットワーク内の HDInsight 上に Apache HBase クラスターを作成する
 [Azure 仮想ネットワーク][1]内に Azure HDInsight Apache HBase クラスターを作成する方法について説明します。
@@ -34,7 +34,7 @@ ms.locfileid: "53011200"
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>仮想ネットワークに Apache HBase クラスターを作成する
 このセクションでは、[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-template-deploy.md)を使用して Azure 仮想ネットワーク内の依存する Azure ストレージ アカウントで Linux ベースの Apache HBase クラスターを作成します。 その他のクラスター作成方法と設定の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 テンプレートを利用して HDInsight で Apache Hadoop クラスターを作成する方法の詳細については、「[Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
 
-> [!NOTE]
+> [!NOTE]  
 > 一部のプロパティは、テンプレートにハードコーディングされています。 例: 
 >
 > * **場所**:米国東部 2
@@ -74,10 +74,8 @@ ms.locfileid: "53011200"
    * **仮想ネットワーク**:&lt;クラスター名>-vnet
    * **サブネット**: subnet1
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > &lt;クラスター名> を、前の HDInsight クラスターの作成手順で使用した名前に置き換えます。
-   >
-   >
 
    これらの値を使用すると、仮想マシンは、構HDInsight クラスターと同じ仮想ネットワークとサブネットに配置されます。 この構成によって、互いに直接通信することができます。 空のエッジ ノードがある HDInsight クラスターを作成する方法があります。 このエッジ ノードを使用して、クラスターを管理できます。  詳細については、「 [Use empty edge nodes in HDInsight](../hdinsight-apps-use-edge-node.md)」(HDInsight で空のエッジ ノードを使用する) を参照してください。
 
@@ -232,10 +230,8 @@ Java アプリケーションでこの情報を使用するには、[HDInsight (
         <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
     </property>
 
-> [!NOTE]
+> [!NOTE]  
 > 独自の DNS サーバーの使用方法を含め、Azure Virtual Network の名前解決の詳細については、「 [名前解決 (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
->
->
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Apache HBase クラスターの作成方法を学習しました。 詳細については、次を参照してください。

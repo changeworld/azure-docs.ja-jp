@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 6a9f3fcb372606e7f608b5137fb1ed15376d72d9
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6f6dac37d1114e8a9faa16c07fd5c14a90a5b0fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407339"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976734"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>App Service on Linux の Java 開発者ガイド
 
@@ -28,7 +28,7 @@ Azure App Service on Linux を使用すると、Java 開発者は、完全に管
 
 ## <a name="logging-and-debugging-apps"></a>アプリのログ記録とデバッグ
 
-パフォーマンス レポート、トラフィックの視覚エフェクト、および正常性検査は、Azure portal を介して各アプリに対して使用できます。 これらの診断ツールにアクセスして使用する方法の詳細については、「[Azure App Service 診断の概要](/azure/app-service/app-service-diagnostics)」を参照してください。
+パフォーマンス レポート、トラフィックの視覚エフェクト、および正常性検査は、Azure portal を介して各アプリに対して使用できます。 これらの診断ツールにアクセスして使用する方法の詳細については、「[Azure App Service 診断の概要](/azure/app-service/overview-diagnostics)」を参照してください。
 
 ## <a name="application-performance-monitoring"></a>アプリケーション パフォーマンス監視
 
@@ -54,11 +54,11 @@ az webapp log config --name ${WEBAPP_NAME} \
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
 
-詳細については、[Azure CLI を使用したログのストリーミング](../web-sites-enable-diagnostic-log.md#streaming-with-azure-cli)に関する記事を参照してください。
+詳細については、[Azure CLI を使用したログのストリーミング](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli)に関する記事を参照してください。
 
 ### <a name="app-logging"></a>アプリのログ記録
 
-Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) を使用して[アプリケーションのログ記録](/azure/app-service/web-sites-enable-diagnostic-log#enablediag)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 App Service のローカル ファイル システム インスタンスへのログ記録は、構成されてから 12 時間後に無効になります。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。
+Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) を使用して[アプリケーションのログ記録](/azure/app-service/troubleshoot-diagnostic-logs#enablediag)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 App Service のローカル ファイル システム インスタンスへのログ記録は、構成されてから 12 時間後に無効になります。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。
 
 アプリケーションで [Logback](https://logback.qos.ch/) または [Log4j](https://logging.apache.org/log4j) をトレースに使用している場合は、「[Application Insights を使用した Java トレース ログの探索](/azure/application-insights/app-insights-java-trace-logs)」にあるログ記録フレームワークの構成手順に従って、これらのトレースを確認のために Azure Application Insights に転送することができます。 
 
@@ -173,9 +173,6 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
 または、Azure Portal の [アプリケーションの設定] ブレードで環境変数を設定します。
 
->[!NOTE]
-> Azure Database for Postgres を使用している場合は、JDBC 接続文字列の `ssl=true` を `sslmode=require` に置き換えてください。
-
 次に、データ ソースを Tomcat サーブレットで実行されている 1 つのアプリケーション、またはすべてのアプリケーションのどちらに対して使用可能にする必要があるかを判定します。
 
 #### <a name="for-application-level-data-sources"></a>アプリケーション レベル データ ソースの場合は、次の手順に従います。 
@@ -259,7 +256,7 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
     3. SFTP クライアントを使用してローカルのトンネル ポートに接続し、ファイルを `/home/tomcat/lib` フォルダーにアップロードします。
 
-    あるいは、FTP クライアントを使用して JDBC ドライバーをアップロードできます。 [FTP 資格情報を取得するための手順](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials)に従ってください。
+    あるいは、FTP クライアントを使用して JDBC ドライバーをアップロードできます。 [FTP 資格情報を取得するための手順](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)に従ってください。
 
 2. サーバー レベルのデータ ソースを作成した場合は、App Service Linux アプリケーションを再起動します。 Tomcat が `CATALINA_HOME` を `/home/tomcat/conf` にリセットし、更新された構成を使用します。
 

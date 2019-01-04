@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 4ce4c9e2479c8d570766169ce5094dcc2b4bc511
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 669d5995b66322a2a6ad346643444d5a46c4b6f8
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42812873"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744413"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 
@@ -35,7 +35,7 @@ Azure Application Insights は、アプリケーションの運用とパフォ�
 - 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
     - ASP.NET および Web の開発
     - Azure の開発
-- .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](app-insights-asp-net.md)を実行します。
+- .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](../azure-monitor/app/asp-net.md)を実行します。
 - アプリケーションに対する[Application Insights プロファイラーの有効化](app-insights-profiler.md#installation)を実行します。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
@@ -47,13 +47,13 @@ Application Insights は、アプリケーションのさまざまな操作に�
 1. **[Application Insights]** を選択し、サブスクリプションを選択します。  
 1. **[パフォーマンス]** パネルを開くには、**[調査]** メニューの **[パフォーマンス]** を選択するか、**[サーバー応答時間]** グラフをクリックします。
 
-    ![[パフォーマンス]](media/app-insights-tutorial-performance/performance.png)
+    ![パフォーマンス](media/app-insights-tutorial-performance/performance.png)
 
 2. **[パフォーマンス]** パネルには、アプリケーションの各操作の数と平均実行時間が表示されます。  この情報を使用して、ユーザーに最も影響を与えている操作を識別できます。 この例では、**GET Customers/Details** と **GET Home/Index** が相対的に実行時間が長く、呼び出し数が多いため、調査対象に適しています。  他にも実行時間が長い操作がありますが、呼び出し回数が少ないため、それらを改善しても効果はごくわずかである可能性があります。  
 
     ![[パフォーマンス] パネル](media/app-insights-tutorial-performance/performance-blade.png)
 
-3. この時点では、グラフには、一定期間中の選択された操作の平均実行時間が表示されています。 95 パーセントタイルに切り替えて、パフォーマンスの問題を見つけることができます。 関心のある操作をピン留めすることで、グラフに操作を追加します。  これにより、調査する価値があるピークがあることが示されます。  グラフの時間枠を狭めることで、これをさらに分離します。
+3. この時点では、グラフには、一定期間中の選択された操作の平均実行時間が表示されています。 95 パーセンタイルに切り替えて、パフォーマンスの問題を見つけることができます。 関心のある操作をピン留めすることで、グラフに操作を追加します。  これにより、調査する価値があるピークがあることが示されます。  グラフの時間枠を狭めることで、これをさらに分離します。
 
     ![ピン留め操作](media/app-insights-tutorial-performance/pin-operations.png)
 
@@ -98,7 +98,7 @@ Application Insights は、最適化するためのサーバー プロセスを�
     ![ブラウザーの概要](media/app-insights-tutorial-performance/browser-summary.png)
 
 2.  **[最も低速なページは何ですか?]** が表示されるまで、下方向にスクロールします。  クライアントが読み込むまでに時間がかかっているアプリケーションのページが一覧表示されます。  この情報を使用して、ユーザーに最も大きな影響を与えているページに優先順位をつけることができます。
-3.  いずれかのページをクリックして、**[ページ ビュー]** パネルを開きます。  この例では、**/FabrikamProd** ページが、過剰な平均実行時間を示しています。  このページについての詳細情報が、異なる実行時間の範囲の内訳を含めて **[ページ ビュー]** パネルに表示されます。
+3.  いずれかのページをクリックして、**[ページ ビュー]** パネルを開きます。  この例では、**/FabrikamProd** ページが、過度の平均実行時間を示しています。  このページについての詳細情報が、異なる実行時間の範囲の内訳を含めて **[ページ ビュー]** パネルに表示されます。
 
     ![ページ ビュー](media/app-insights-tutorial-performance/page-view.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: d4a2daf10fd864f13982f4d327868ad62d1309b3
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 42958576a127fee5e0a275e53203edd4e4dee6f9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321462"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540285"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 
@@ -137,7 +137,7 @@ VM のプロセスが必要以上に多くのリソースを消費している�
 
 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) を使用してリソースの正常性を把握することをお勧めします。 Azure Monitor には次の特長があります。
 
-- [Azure 診断ログ ファイル](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md):VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定できます。
+- [Azure 診断ログ ファイル](../azure-monitor/platform/diagnostic-logs-overview.md):VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定できます。
 - [Microsoft Azure 診断拡張機能](../azure-monitor/platform/diagnostics-extension-overview.md):Windows VM 監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md)に含めることによって、これらの機能を有効にすることができます。
 
 VM のパフォーマンスを監視していない組織は、パフォーマンス パターンにおけるある変化が正常であるか異常であるかを判断できません。 消費しているリソースが通常よりも多い VM は、外部リソースからの攻撃を受けているか、その VM で実行されているプロセスが侵害されていることを示唆している可能性があります。

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 632393696274eaf6f876ea717b5fccf7d4fbea3f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f1151c845797d74bbb9a5e50feeeb288a4ab349b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965395"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714850"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack を使用して地理的に分散されたアプリ ソリューションを作成する
 
@@ -67,7 +67,7 @@ ms.locfileid: "52965395"
 
 -   **App Service Environment の名前付け規則:** 各 App Service Environment には一意の名前が必要です。 1 つや 2 つではなく数の多い App Service 環境では、各 App Service 環境を識別しやすい命名規則があると便利です。 サンプル アプリでは、シンプルな命名規則が使用されています。 3 つの App Service Environment の名前は *fe1ase*、*fe2ase*、*fe3ase* です。
 
--   **アプリの名前付け規則**: アプリのインスタンスが複数デプロイされるため、デプロイされたアプリの各インスタンスに名前が必要です。 App Service 環境の場合、同じアプリ名を複数の App Service 環境で使用できます。 App Service 環境ごとに一意のドメイン サフィックスがあるため、開発者は各環境でまったく同じアプリ名を再利用できます。 たとえば、開発者は、*myapp.foo1.p.azurewebsites.net*、*myapp.foo2.p.azurewebsites.net*、*myapp.foo3.p.azurewebsites.net* のようなアプリ名を設定できます。このシナリオのアプリでは、各アプリ インスタンスに一意の名前が付けられます。 使用されているアプリ インスタンス名は *webfrontend1*、*webfrontend2*、*webfrontend3* です。
+-   **アプリの名前付け規則**:アプリのインスタンスが複数デプロイされるため、デプロイされたアプリの各インスタンスに名前が必要です。 App Service 環境の場合、同じアプリ名を複数の App Service 環境で使用できます。 App Service 環境ごとに一意のドメイン サフィックスがあるため、開発者は各環境でまったく同じアプリ名を再利用できます。 たとえば、開発者は、*myapp.foo1.p.azurewebsites.net*、*myapp.foo2.p.azurewebsites.net*、*myapp.foo3.p.azurewebsites.net* のようなアプリ名を設定できます。このシナリオのアプリでは、各アプリ インスタンスに一意の名前が付けられます。 使用されているアプリ インスタンス名は *webfrontend1*、*webfrontend2*、*webfrontend3* です。
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
@@ -122,7 +122,7 @@ Web アプリ作成用の DNS ゾーン ファイルを更新し、ドメイン�
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>両方のクラウドで Web アプリ デプロイを作成する
 
-1.  **WebApplication.csproj** ファイルを編集します。**Runtimeidentifier** を選択し、**win10 x64** を追加します。 (「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください)。
+1.  **WebApplication.csproj** ファイルを編集します。Runtimeidentifier を選択し、**win10 x64** を追加します。 (「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください)。
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
 
@@ -240,9 +240,9 @@ Azure DevOps および Azure DevOps Server が提供するパイプラインは�
 > [!Note]  
 >  タスクの一部の設定は、テンプレートからリリース定義を作成したときに、[環境変数](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables)として自動的に定義されている可能性があります。 こうした設定は、タスクの設定では変更できません。これらの設定を編集するには、親環境項目を選択する必要があります。
 
-## <a name="part-2-update-web-app-options"></a>パート 2: Web アプリ オプションを更新する
+## <a name="part-2-update-web-app-options"></a>パート 2:Web アプリ オプションを更新する
 
-[Azure Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 
+[Azure App Service](https://docs.microsoft.com/azure/app-service/overview) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 
 
 ![Alt text](media/azure-stack-solution-geo-distributed/image27.png)
 
@@ -255,7 +255,7 @@ Azure DevOps および Azure DevOps Server が提供するパイプラインは�
 > [!Note]  
 >  ルート ドメイン (northwind.com など) を除くすべてのカスタム DNS 名に CNAME を使用します。
 
-ライブ サイトとその DNS ドメイン名を App Service に移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](https://docs.microsoft.com/azure/app-service/app-service-custom-domain-name-migrate)」をご覧ください。
+ライブ サイトとその DNS ドメイン名を App Service に移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](https://docs.microsoft.com/azure/app-service/manage-custom-dns-migrate-domain)」をご覧ください。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -276,7 +276,7 @@ Azure DevOps および Azure DevOps Server が提供するパイプラインは�
 たとえば、DNS エントリ fornorthwindcloud.comand www.northwindcloud.com を追加するには、thenorthwindcloud.com ルート ドメインの DNS 設定を構成します。
 
 > [!Note]  
->  ドメイン名は [Microsoft Azure portal](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app) を使用して購入できます。  
+>  ドメイン名は [Microsoft Azure portal](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain) を使用して購入できます。  
 > Web アプリにカスタム DNS 名をマップするには、Web アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (**Shared**、**Basic**、**Standard**、または **Premium**) である必要があります。
 
 

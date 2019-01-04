@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6ce51dc9bbcdc7b46593a4800c4fce07a42f3171
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9cb52aea56e9c1183af9ca76201ab65c62a58f22
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345351"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972173"
 ---
 # <a name="offer-settings-tab"></a>[プランの設定] タブ
 
@@ -43,9 +43,6 @@ ms.locfileid: "53345351"
 
 この文字列が、AppSource または Azure Marketplace 上で、オファー名として表示されます。 *[名前]* フィールドは 50 文字に制限されています。  プラン名に期間とプランの種類を付加できるだけの余裕を持たせるために、レビュー担当者がタイトルを編集しなければならない場合があります。
 
->[!Note]
->重要: ここでは実際のサービスの名前のみを入力してください。 サービスの期間と種類は含めないでください。
-
 Edgewater Fullscope による次の例は、オファー名がどのように組み立てられるかを示しています。 オファー名は次のように表示されます。
 
 ![新しいコンサルティング サービス プランの作成](media/cppsampleconsultingoffer.png)
@@ -68,7 +65,7 @@ Edgewater Fullscope による次の例は、オファー名がどのように組
 -   Azure Machine Learning サービス: 3 週間の PoC
 -   ブリック アンド クリック小売りソリューション: 1 時間のブリーフィング
 -   データ持ち込み: 1 週間のワークショップ
--   クラウド分析: 3 日間のワークショップ
+-   クラウド分析:3 日間のワークショップ
 -   Power BI トレーニング: 3 日間のワークショップ
 -   セールス管理ソリューション: 1 週間の実装
 -   CRM クイック スタート: 1 日のワークショップ

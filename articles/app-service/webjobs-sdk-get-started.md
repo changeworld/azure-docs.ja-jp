@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 034f182cc282f50eb3a4a1de05331f42957f49fe
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9f3d84b1f2e179d265c811faf2d35bd55bc1410f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339809"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607003"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -54,7 +54,7 @@ public static void Run(
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)と [Azure App Service のアプリ](app-service-web-overview.md)に関する経験があることを想定しています。 この記事の手順を完了するには、次のことが条件となります。
+この記事では、[Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)と [Azure App Service のアプリ](overview.md)に関する経験があることを想定しています。 この記事の手順を完了するには、次のことが条件となります。
 
 * **Azure 開発**ワークロードと共に [Visual Studio 2017 をインストール](https://docs.microsoft.com/visualstudio/install/)します。 Visual Studio が既にあっても、そのワークロードがない場合は、**[ツール] > [Get Tools and Features]\(ツールと機能の取得\)** を選択してワークロードを追加します。
 * [App Service アプリを作成](app-service-web-get-started-dotnet-framework.md)します。 Web ジョブをデプロイできるものが既にある場合は、新規に作成する代わりにそれを使用できます。

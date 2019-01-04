@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 3b7b06b7ab9076b992e6e3349763d633f9b255ef
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: dc8b8e37224201062d0cf53174f3248f04ca0cc3
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338160"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789758"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Azure 診断拡張機能とは何か
 Azure 診断拡張機能は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内のエージェントです。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、仮想マシン、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](../../azure-monitor/overview.md)」を参照してください。
@@ -42,7 +42,7 @@ Azure 診断拡張機能では、次の種類のデータを収集できます�
 ## <a name="data-storage"></a>データ ストレージ
 この拡張機能では、指定した [Azure Storage アカウント](diagnostics-extension-to-storage.md)にそのデータが格納されます。
 
-[Application Insights](../../application-insights/app-insights-cloudservices.md) に送信することもできます。 [Event Hub](../../event-hubs/event-hubs-about.md) にストリーム配信するという選択肢もあります。その場合、後で Azure 以外の監視サービスに送信できます。
+[Application Insights](../../azure-monitor/app/cloudservices.md) に送信することもできます。 [Event Hub](../../event-hubs/event-hubs-about.md) にストリーム配信するという選択肢もあります。その場合、後で Azure 以外の監視サービスに送信できます。
 
 ### <a name="azure-monitor"></a>Azure Monitor
 Azure Monitor にデータを送信することもできます。 現時点では、このシンクはパフォーマンス カウンターにのみ適用されます。 これにより、VM、VMSS、またはクラウド サービスで収集されたパフォーマンス カウンターを Azure Monitor にカスタム メトリックとして送信できるようになります。 Azure Monitor シンクは以下をサポートします。
@@ -66,7 +66,7 @@ Azure Monitor にデータを送信することもできます。 現時点で�
 
 詳細なトピックについては、次を参照してください。
 
-* [Cloud Services 向けの Application Insights での Azure 診断の使用](../../application-insights/app-insights-cloudservices.md)
+* [Cloud Services 向けの Application Insights での Azure 診断の使用](../../azure-monitor/app/cloudservices.md)
 * [Azure 診断で Cloud Services アプリケーションのフローをトレースする](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 * [PowerShell を使用した Cloud Services での診断の設定](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

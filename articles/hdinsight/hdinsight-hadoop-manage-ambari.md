@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: eee37f5a77331b78aa587ba2e3eb61132d7d6adc
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 738ef5df0b2e2a7f31a7316a1d2ef4395168d41e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385569"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722024"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -26,7 +26,7 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 
 ## <a id="whatis"></a>Apache Ambari とは
 
-[Apache Ambari](http://ambari.apache.org) は使いやすい Web UI を提供することにより、Hadoop の管理を簡略化します。 Ambari を使って、Hadoop クラスターを管理および監視できます。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
+[Apache Ambari](https://ambari.apache.org) は使いやすい Web UI を提供することにより、Hadoop の管理を簡略化します。 Ambari を使って、Hadoop クラスターを管理および監視できます。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
 
 Ambari Web UI は、Linux オペレーティング システムを使用する HDInsight クラスターに既定で付属しています。
 
@@ -181,12 +181,12 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
    * **[Decommission]** - クラスターからホストを削除します。
 
-     > [!NOTE]
+     > [!NOTE]  
      > HDInsight クラスターではこの操作は使用しないでください。
 
    * **[Recommission]** - 使用停止にしたホストをクラスターに追加します。
 
-     > [!NOTE]
+     > [!NOTE]  
      > HDInsight クラスターではこの操作は使用しないでください。
 
 ### <a id="service"></a>サービス

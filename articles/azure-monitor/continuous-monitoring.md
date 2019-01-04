@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: fa5c3d65daa86a678ec278bc49759e1de7da7f0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 2d58a39efca8733902d157083489e59bf22ef161
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386538"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002282"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -33,8 +33,8 @@ ms.locfileid: "53386538"
 
 - [Azure DevOps Projects](../devops-project/overview.md) により、お客様の既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
 - [お客様の DevOps リリース パイプラインに継続的監視](../application-insights/app-insights-vsts-continuous-monitoring.md)を取り入れると、監視データに基づいてお客様のデプロイをゲート管理したりロールバックしたりできます。
-- [Status Monitor](../application-insights/app-insights-monitor-performance-live-website-now.md) では、Azure Application Insights を使用して Windows 上のライブ .NET アプリをインストルメント化できます。お客様のコードに変更を加えたり、再デプロイしたりする必要はありません。
-- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](../application-insights/quick-monitor-portal.md) 向け、[Java](../application-insights/app-insights-java-quick-start.md) 向け、[Node.js](../application-insights/app-insights-nodejs-quick-start.md) 向け、または[その他のプログラミング言語](../application-insights/app-insights-platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](../application-insights/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
+- [Status Monitor](../azure-monitor/app/monitor-performance-live-website-now.md) では、Azure Application Insights を使用して Windows 上のライブ .NET アプリをインストルメント化できます。お客様のコードに変更を加えたり、再デプロイしたりする必要はありません。
+- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](../application-insights/quick-monitor-portal.md) 向け、[Java](../application-insights/app-insights-java-quick-start.md) 向け、[Node.js](../application-insights/app-insights-nodejs-quick-start.md) 向け、または[その他のプログラミング言語](../azure-monitor/app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](../application-insights/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
 
 
 
@@ -56,7 +56,7 @@ ms.locfileid: "53386538"
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Azure リソース グループでリソースをまとめる
 今日、Azure 上の標準的なアプリケーションには、さまざまなリソース (VM やアプリ サービスのほか、Cloud Services、AKS クラスター、Service Fabric でホストされるマイクロサービスなど) が含まれています。 これらのアプリケーションでは、Event Hubs、Storage、SQL、Service Bus などの依存関係がよく利用されます。
 
-- Azure リソース グループでリソースをまとめることで、お客様のさまざまなアプリケーションを構成するすべてのリソースについて完全な可視性を得ることができます。 [リソース グループ用 Azure Monitor](../monitoring-and-diagnostics/resource-group-insights.md) を使用すると、フルスタックのアプリケーション全体の正常性とパフォーマンスを簡単な方法で追跡できます。また、各コンポーネントをドリルダウンして調査やデバッグを行うことができます。
+- Azure リソース グループでリソースをまとめることで、お客様のさまざまなアプリケーションを構成するすべてのリソースについて完全な可視性を得ることができます。 [リソース グループ用 Azure Monitor](../azure-monitor/insights/resource-group-insights.md) を使用すると、フルスタックのアプリケーション全体の正常性とパフォーマンスを簡単な方法で追跡できます。また、各コンポーネントをドリルダウンして調査やデバッグを行うことができます。
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>継続的配置によって品質を確保する
 継続的インテグレーションと継続的配置では、自動化されたテストの結果に基づいて、お客様のアプリケーションに対するコードの変更を自動的に統合してデプロイできます。 これにより、デプロイ プロセスが効率化されるほか、運用への移行前にあらゆる変更の品質が確保されます。
@@ -74,7 +74,7 @@ ms.locfileid: "53386538"
 - お客様の管理者への通知に最も効果的な手段が使用されるよう、アラートに関するアクションを定義します。 [通知のアクション](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)としては、SMS、電子メール、プッシュ通知、音声通話が利用できます。
 - より高度なアクションを使用し、[Webhook](platform/activity-log-alerts-webhook.md) を通じて[お客様の ITSM ツール](platform/itsmc-overview.md)や他のアラート管理システムに接続します。
 - さらに、Webhook を使用してアラートから起動できる [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) や [Azure Automation Runbook](../automation/automation-webhooks.md) を使って、アラートで特定された状態を修復します。 
-- [自動スケーリング](../monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule.md)を使用し、収集されたメトリックに基づいてお客様のコンピューティング リソースを動的に増減させます。
+- [自動スケーリング](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md)を使用し、収集されたメトリックに基づいてお客様のコンピューティング リソースを動的に増減させます。
 
 ## <a name="prepare-dashboards-and-workbooks"></a>ダッシュボードとブックを準備する
 お客様の開発担当者と運用担当者が同じテレメトリとツールにアクセスできるようにすると、彼らがお客様の環境全体のパターンを確認して、お客様の平均検出時間 (MTTD) と平均復元時間 (MTTR) を最小限に抑えることができるようになります。

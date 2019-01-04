@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 3a106b0fe570fe44f96529d830271dfe4912437f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4aa6f8fdf4eaa8e439c1a8c8c0202cf49a04433c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336495"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584311"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してメトリック アラートを作成、表示、管理する
 
@@ -33,7 +33,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 3. **[ターゲットの選択]** をクリックし、読み込まれるコンテキスト ウィンドウで、変更するターゲット リソースを選択します。 **サブスクリプション**と**リソースの種類**のドロップダウン リストを使用して、監視するリソースを検索します。 検索バーを使用して、リソースを検索することもできます。
 
-4. 選択したリソースにアラートを作成できるメトリックがある場合は、右下の **[使用可能なシグナル]** にメトリックが表示されます。 メトリック アラートでサポートされているリソースの種類の完全な一覧については、[こちらの記事](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)をご覧ください
+4. 選択したリソースにアラートを作成できるメトリックがある場合は、右下の **[使用可能なシグナル]** にメトリックが表示されます。 メトリック アラートでサポートされているリソースの種類の完全な一覧については、[こちらの記事](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)をご覧ください
 
 5. ターゲット リソースを選択した後、**[条件の追加]** をクリックします
 
@@ -130,4 +130,4 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 - [Azure Resource Manager テンプレートを使用してメトリック アラートを作成します](../../azure-monitor/platform/alerts-enable-template.md)。
 - [メトリック アラートのしくみを理解します](alerts-metric-overview.md)。
-- [メトリック アラートの Web hook スキーマを理解します](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#payload-schema)
+- [メトリック アラートの Web hook スキーマを理解します](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: aba3d9f33d179c09708464975fa2a929a8bb68d0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: da676b5d1cb3c25adc72d04882915ee0440c2d98
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876521"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002333"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -28,7 +28,7 @@ Functions には、[Application Insights を使用しないビルトイン監視
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights の価格と制限
 
-Function App との Application Insights 統合は無料でお試しいただくことができます。 ただし、1 日に無料で処理できるデータ量には上限があり、テスト中にこの上限に達する場合があります。 1 日あたりの上限に近づいた場合は、ポータルと電子メール通知でお知らせします。  しかし、これらのアラートに気が付かず、上限に達してしまった場合は、新しいログが Application Insights クエリに表示されません。 不要なトラブルシューティングに時間を費やさずにすむように、上限には気を付けてください。 詳細については、「[Application Insights での価格とデータ ボリュームの管理](../application-insights/app-insights-pricing.md)」を参照してください。
+Function App との Application Insights 統合は無料でお試しいただくことができます。 ただし、1 日に無料で処理できるデータ量には上限があり、テスト中にこの上限に達する場合があります。 1 日あたりの上限に近づいた場合は、ポータルと電子メール通知でお知らせします。  しかし、これらのアラートに気が付かず、上限に達してしまった場合は、新しいログが Application Insights クエリに表示されません。 不要なトラブルシューティングに時間を費やさずにすむように、上限には気を付けてください。 詳細については、「[Application Insights での価格とデータ ボリュームの管理](../azure-monitor/app/pricing.md)」を参照してください。
 
 ## <a name="enable-app-insights-integration"></a>App Insights 統合を有効にする
 
@@ -85,7 +85,7 @@ Application Insights を有効にする場合は、[Azure ストレージを使�
 
 1. 関数呼び出しの一覧が表示されるまで、**[更新]** を一定間隔で選択します。
 
-   テレメトリ クライアントではサーバーに送信するデータをバッチ処理するため、一覧が表示されるには最大で 5 分かかる場合があります  (この遅延は、[Live Metrics Stream](../application-insights/app-insights-live-stream.md) には適用されません。 このサービスは、ページの読み込み時に Functions ホストに接続するため、ログがページに直接ストリーム配信されます)。
+   テレメトリ クライアントではサーバーに送信するデータをバッチ処理するため、一覧が表示されるには最大で 5 分かかる場合があります  (この遅延は、[Live Metrics Stream](../azure-monitor/app/live-stream.md) には適用されません。 このサービスは、ページの読み込み時に Functions ホストに接続するため、ログがページに直接ストリーム配信されます)。
 
    ![呼び出しリスト](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
@@ -115,29 +115,29 @@ Azure Portal 上で関数アプリから Application Insights を開くには、
 
 Application Insights の使用方法については、「[Application Insights のドキュメント](https://docs.microsoft.com/azure/application-insights/)」をご覧ください。 このセクションでは、Application Insights でデータを表示する方法の例をいくつか示します。 Application Insights をすでに使い慣れている場合は、[テレメトリ データの構成とカスタマイズに関するセクション](#configure-categories-and-log-levels)に直接進んでかまいません。
 
-[メトリックス エクスプローラー](../application-insights/app-insights-metrics-explorer.md)では、グラフを作成したり、関数呼び出しの数、実行時間、成功率などのメトリックに基づいて警告を表示したりできます。
+[メトリックス エクスプローラー](../azure-monitor/app/metrics-explorer.md)では、グラフを作成したり、関数呼び出しの数、実行時間、成功率などのメトリックに基づいて警告を表示したりできます。
 
 ![メトリックス エクスプローラー](media/functions-monitoring/metrics-explorer.png)
 
-[[失敗]](../application-insights/app-insights-asp-net-exceptions.md) タブでは、グラフを作成したり、関数の失敗やサーバーの例外に基づいて警告を表示したりできます。 **[操作名]** は関数名です。 依存関係に関する[カスタム テレメトリ](#custom-telemetry-in-c-functions)を実装している場合を除き、依存関係のエラーは表示されません。
+[[失敗]](../azure-monitor/app/asp-net-exceptions.md) タブでは、グラフを作成したり、関数の失敗やサーバーの例外に基づいて警告を表示したりできます。 **[操作名]** は関数名です。 依存関係に関する[カスタム テレメトリ](#custom-telemetry-in-c-functions)を実装している場合を除き、依存関係のエラーは表示されません。
 
 ![エラー](media/functions-monitoring/failures.png)
 
-[[パフォーマンス]](../application-insights/app-insights-performance-counters.md) タブでは、パフォーマンスの問題を分析できます。
+[[パフォーマンス]](../azure-monitor/app/performance-counters.md) タブでは、パフォーマンスの問題を分析できます。
 
-![[パフォーマンス]](media/functions-monitoring/performance.png)
+![パフォーマンス](media/functions-monitoring/performance.png)
 
 **[サーバー]** タブには、リソース使用率とサーバーあたりのスループットが表示されます。 このデータは、関数が原因で基本リソースの処理が遅延している場合のデバッグで役立つことがあります。 サーバーは、**クラウド ロール インスタンス**と呼ばれます。
 
 ![サーバー](media/functions-monitoring/servers.png)
 
-[[Live Metrics Stream]](../application-insights/app-insights-live-stream.md) タブには、リアルタイムで作成されたメトリック データが表示されます。
+[[Live Metrics Stream]](../azure-monitor/app/live-stream.md) タブには、リアルタイムで作成されたメトリック データが表示されます。
 
 ![ライブ ストリーム](media/functions-monitoring/live-stream.png)
 
 ## <a name="query-telemetry-data"></a>テレメトリをクエリする
 
-[Application Insights Analytics](../application-insights/app-insights-analytics.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作、視覚化するためのクエリ言語が用意されています。
+[Application Insights Analytics](../azure-monitor/app/analytics.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作、視覚化するためのクエリ言語が用意されています。
 
 ![Analytics を選択する](media/functions-monitoring/select-analytics.png)
 
@@ -439,7 +439,7 @@ context.log.metric("TestMetric", 1234);
 
 ## <a name="custom-telemetry-in-c-functions"></a>C# 関数でのカスタム テレメトリ
 
-[Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) NuGet パッケージを使用して、カスタム テレメトリ データを Application Insights に送信できます。 次の C# の例では、[カスタム テレメトリ API](../application-insights/app-insights-api-custom-events-metrics.md) を使用します。 この例は .NET クラス ライブラリ用ですが、Application Insights のコードは C# スクリプト用と同じです。
+[Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) NuGet パッケージを使用して、カスタム テレメトリ データを Application Insights に送信できます。 次の C# の例では、[カスタム テレメトリ API](../azure-monitor/app/api-custom-events-metrics.md) を使用します。 この例は .NET クラス ライブラリ用ですが、Application Insights のコードは C# スクリプト用と同じです。
 
 ### <a name="version-2x"></a>バージョン 2.x
 
@@ -671,7 +671,7 @@ PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-A
 PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
 ```
 
-詳細については、[Azure App Service の Web アプリの診断ログの有効化](../app-service/web-sites-enable-diagnostic-log.md#streamlogs)に関するページをご覧ください。
+詳細については、[Azure App Service の Web アプリの診断ログの有効化](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)に関するページをご覧ください。
 
 ### <a name="viewing-log-files-locally"></a>ログ ファイルをローカルに表示する
 

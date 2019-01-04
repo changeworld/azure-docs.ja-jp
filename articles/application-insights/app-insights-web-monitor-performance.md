@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: e11c34b2587dcb7602161d36ba4deda1dca73c82
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5e5a53027126f96c27a6a6f0abb8aeacb94d7c11
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720974"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000363"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
 
@@ -32,11 +32,11 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 ## <a name="setup"></a>パフォーマンス モニターの設定
 プロジェクトに Application Insights を追加していない場合 (つまり、ApplicationInsights.config がない場合)、以下のいずれかの方法で開始します。
 
-* [ASP.NET Web アプリ](app-insights-asp-net.md)
-  * [例外の監視を追加する](app-insights-asp-net-exceptions.md)
-  * [依存関係の監視を追加する](app-insights-monitor-performance-live-website-now.md)
-* [J2EE Web アプリ](app-insights-java-get-started.md)
-  * [依存関係の監視を追加する](app-insights-java-agent.md)
+* [ASP.NET Web アプリ](../azure-monitor/app/asp-net.md)
+  * [例外の監視を追加する](../azure-monitor/app/asp-net-exceptions.md)
+  * [依存関係の監視を追加する](../azure-monitor/app/monitor-performance-live-website-now.md)
+* [J2EE Web アプリ](../azure-monitor/app/java-get-started.md)
+  * [依存関係の監視を追加する](../azure-monitor/app/java-agent.md)
 
 ## <a name="view"></a>パフォーマンス メトリックの監視
 [Azure ポータル](https://portal.azure.com)で、アプリケーション用に設定した Application Insights リソースを参照します。 概要ブレードに、基本的なパフォーマンス データが表示されます。
@@ -152,14 +152,14 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 <!--Link references-->
 
-[availability]: app-insights-monitor-web-app-availability.md
-[diagnostic]: app-insights-diagnostic-search.md
-[greenbrown]: app-insights-asp-net.md
+[availability]: ../azure-monitor/app/monitor-web-app-availability.md
+[diagnostic]: ../azure-monitor/app/diagnostic-search.md
+[greenbrown]: ../azure-monitor/app/asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
-[redfield]: app-insights-monitor-performance-live-website-now.md
+[redfield]: ../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
-[livestream]: app-insights-live-stream.md
+[livestream]: ../azure-monitor/app/live-stream.md
 [snapshot]: app-insights-snapshot-debugger.md
 
 

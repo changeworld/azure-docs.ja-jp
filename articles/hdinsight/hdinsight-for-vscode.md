@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: fe186966dbddb5aa743e465f897aa5a1a0e07db1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 23cbdb4d72a6b88563d9d2c2bd0e4e3c8223377f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840216"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723673"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
@@ -30,7 +30,7 @@ Azure HDInsight Tools は、VSCode でサポートされている Windows、Linu
 
 - HDInsight クラスター。 クラスターを作成するには、[HDInsight での Hadoop の使用](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)。
-- [Mono](http://www.mono-project.com/docs/getting-started/install/)。 Mono は Linux と macOS にのみ必要です。
+- [Mono](https://www.mono-project.com/docs/getting-started/install/)。 Mono は Linux と macOS にのみ必要です。
 
 ## <a name="install-the-hdinsight-tools"></a>HDInsight Tools をインストールする
    
@@ -87,7 +87,7 @@ VS Code から HDInsight クラスターにスクリプトを送信するには�
 
     接続すると、VS Code ウィンドウの左下のステータス バーに Azure アカウント名が表示されます。 
 
-    > [!NOTE]
+    > [!NOTE]  
     > Azure 認証の既知の問題により、ブラウザーをプライベート モードまたはシークレット モードで開く必要があります。 Azure アカウントで 2 要素認証が有効になっている場合は、PIN 認証ではなく、電話認証を使用することをお勧めします。
   
 
@@ -113,7 +113,7 @@ VS Code から HDInsight クラスターにスクリプトを送信するには�
    
    ![リンク クラスターのダイアログ](./media/hdinsight-for-vscode/link-cluster-process.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > リンクされたユーザー名とパスワードは、クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合に使用されます。 
    
 3. **List Cluster** コマンドを使用すると、リンクされたクラスターを確認できます。 これでリンクされたクラスターにスクリプトを送信できるようになりました。
@@ -231,7 +231,7 @@ HDInsight Tools for VS Code を使用すると、対話型 Hive クエリ、Hive
 
    ![Python ジョブの送信の結果](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) 送信の状態は、クエリの実行時に下部のステータス バーの左側に表示されます。 **[PySpark Kernel (busy)]\(PySpark カーネル (ビジー)\)** 状態のときに他のクエリを送信しないでください。 
 
->[!NOTE]
+>[!NOTE]  
 >クラスターはセッション情報を保持できます。 定義済みの変数、関数、対応する値がセッションで保持されるので、同じクラスターの複数のサービス呼び出しで参照できます。 
 
 ### <a name="to-disable-environment-check"></a>環境チェックを無効にするには

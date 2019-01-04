@@ -13,12 +13,12 @@ ms.date: 01/25/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 6bc18d73f66c1ede777d579b764127f034d9f0ca
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9b987ccd17f2060eea125a5d384446cec24fb68a
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725728"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969167"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights による影響分析
 
@@ -35,7 +35,7 @@ ms.locfileid: "52725728"
 ![ブラウザーごとのコンバージョンのスクリーンショット](./media/app-insights-usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> 影響ツールを使うには、Application Insights のリソースにページ ビューまたはカスタム イベントが含まれる必要があります。 [アプリをセットアップし、Application Insights JavaScript SDK を使用してページ ビューを自動的に収集する方法について説明します](app-insights-javascript.md)。 また、相関関係を分析しているので、サンプルのサイズが問題になることにも注意してください。
+> 影響ツールを使うには、Application Insights のリソースにページ ビューまたはカスタム イベントが含まれる必要があります。 [アプリをセットアップし、Application Insights JavaScript SDK を使用してページ ビューを自動的に収集する方法について説明します](../azure-monitor/app/javascript.md)。 また、相関関係を分析しているので、サンプルのサイズが問題になることにも注意してください。
 >
 >
 

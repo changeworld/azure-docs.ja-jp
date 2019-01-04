@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: juliako
-ms.openlocfilehash: 2dbc2b4e316155e880d3baa900196d5cdd31be72
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 3ed38ce75e5ee7c9f05533d64b28171482bfec51
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011778"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725934"
 ---
 # <a name="liveevent-types-comparison"></a>LiveEvent タイプの比較
 
@@ -28,7 +28,7 @@ Azure Media Services において、[LiveEvent](https://docs.microsoft.com/rest/
 
 次の表は、2 種類の LiveEvent の機能を比較したものです。
 
-| 機能 | パススルー LiveEvent | 標準 (基本) LiveEvent |
+| 機能 | パススルー LiveEvent | 標準 LiveEvent |
 | --- | --- | --- |
 | シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる |いいえ  |[はい] |
 | コントリビューション フィードの最大ビデオ解像度 |4K (60 フレーム/秒で 4096x2160) |1080p (30 フレーム/秒 で 1920 x 1088)|

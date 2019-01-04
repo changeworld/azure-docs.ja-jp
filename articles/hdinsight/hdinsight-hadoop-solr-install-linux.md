@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3500a29c1cdd8b1997f67a3cf1918090dc4ca812
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e52a7cbb5c81f779ac4d12d2f3e5fd1e4ae62852
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383597"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714017"
 ---
 # <a name="install-and-use-apache-solr-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Apache Solr をインストールして使用する
 
@@ -28,12 +28,12 @@ ms.locfileid: "53383597"
 
 ## <a name="whatis"></a>Solr とは何か
 
-[Apache Solr](http://lucene.apache.org/solr/features.html) は、データに対して強力なフルテキスト検索ができるエンタープライズ検索プラットフォームです。 Hadoop が大量のデータの保存と管理を可能にするのに対し、Apache Solr は迅速にデータを取得するための検索機能を提供します。
+[Apache Solr](https://lucene.apache.org/solr/features.html) は、データに対して強力なフルテキスト検索ができるエンタープライズ検索プラットフォームです。 Hadoop が大量のデータの保存と管理を可能にするのに対し、Apache Solr は迅速にデータを取得するための検索機能を提供します。
 
 > [!WARNING]   
 > HDInsight クラスターに付属のコンポーネントは、Microsoft によって完全にサポートされています。
 >
-> Solr といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートでは、カスタム コンポーネントの問題を解決できないことがあります。 支援を受けるため、オープン ソース コミュニティに参加することが必要になる場合があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に[Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> Solr といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートでは、カスタム コンポーネントの問題を解決できないことがあります。 支援を受けるため、オープン ソース コミュニティに参加することが必要になる場合があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 ## <a name="what-the-script-does"></a>スクリプトの機能
 
@@ -54,7 +54,7 @@ Solr がインストールされているクラスターを作成するには、
 
 1. __[クラスターの概要]__ セクションで、[詳細設定] を選択し、__[スクリプト アクション]__ を選択します。 次の情報を使用して、フォームに記入します。
 
-   * **[名前]**:スクリプト アクションの表示名を入力します。
+   * **[名前]**:スクリプト アクションのフレンドリ名を入力します。
    * **[スクリプト URI]**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
    * **[ヘッド]**:このオプションをオンにします
    * **[ワーカー]**:このオプションをオンにします
@@ -68,7 +68,7 @@ Solr がインストールされているクラスターを作成するには、
 ## <a name="usesolr"></a>HDInsight で Solr を使用する方法
 
 > [!IMPORTANT]  
-> このセクションの手順で、Solr の基本的な機能を示します。 Solr の使用方法の詳細については、[Apache Solr サイト](http://lucene.apache.org/solr/)を参照してください。
+> このセクションの手順で、Solr の基本的な機能を示します。 Solr の使用方法の詳細については、[Apache Solr サイト](https://lucene.apache.org/solr/)を参照してください。
 
 ### <a name="index-data"></a>データのインデックス付け
 

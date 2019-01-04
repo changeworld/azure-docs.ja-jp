@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d332a792f693b099ce925e9b5705f09e52507522
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322945"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000242"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure Cloud Services のパフォーマンス カウンターの収集
 
@@ -84,7 +84,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 
 ### <a name="application-insights"></a>Application Insights
 
-Cloud Services 用の Azure Application Insights では、収集するパフォーマンス カウンターを指定できます。 [プロジェクトに Application Insights を追加する](../application-insights/app-insights-cloudservices.md#sdk)と、**ApplicationInsights.config** という名前の構成ファイルが Visual Studio プロジェクトに追加されます。 この構成ファイルでは、Application Insights で収集して Azure に送信する情報の種類を定義します。
+Cloud Services 用の Azure Application Insights では、収集するパフォーマンス カウンターを指定できます。 [プロジェクトに Application Insights を追加する](../azure-monitor/app/cloudservices.md#sdk)と、**ApplicationInsights.config** という名前の構成ファイルが Visual Studio プロジェクトに追加されます。 この構成ファイルでは、Application Insights で収集して Azure に送信する情報の種類を定義します。
 
 **ApplicationInsights.config** ファイルを開き、**ApplicationInsights** > **TelemetryModules** 要素を見つけます。 各 `<Add>` 子要素では、収集するテレメトリの種類をその構成と共に定義します。 パフォーマンス カウンター テレメトリ モジュールの種類は `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector` です。 この要素が既に定義されている場合は、もう一度追加しないでください。 収集する各パフォーマンス カウンターは、`<Counters>` という名前のノードの下で定義されます。 ドライブ パフォーマンス カウンターを収集する例を次に示します。
 
@@ -116,7 +116,7 @@ Application Insights は自動的に次のパフォーマンス カウンター�
 * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
 * \Processor(_Total)\% Processor Time
 
-詳細については、「[Application Insights のシステム パフォーマンス カウンター](../application-insights/app-insights-performance-counters.md)」および「[Azure Cloud Services 向けの Application Insights](../application-insights/app-insights-cloudservices.md#performance-counters)」を参照してください。
+詳細については、「[Application Insights のシステム パフォーマンス カウンター](../azure-monitor/app/performance-counters.md)」および「[Azure Cloud Services 向けの Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)」を参照してください。
 
 ### <a name="azure-diagnostics"></a>Azure 診断
 
@@ -294,7 +294,7 @@ counterServiceUsed.Increment();
 
 ## <a name="more-information"></a>詳細情報
 
-- [Azure Cloud Services 向けの Application Insights](../application-insights/app-insights-cloudservices.md#performance-counters)
-- [Application Insights のシステム パフォーマンス カウンター](../application-insights/app-insights-performance-counters.md)
+- [Azure Cloud Services 向けの Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)
+- [Application Insights のシステム パフォーマンス カウンター](../azure-monitor/app/performance-counters.md)
 - [カウンター パスの指定](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
 - [Azure 診断のスキーマ - パフォーマンス カウンター](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)
