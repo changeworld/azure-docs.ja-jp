@@ -25,6 +25,7 @@ ms.locfileid: "37048147"
 > * [Version 1](v1/data-factory-amazon-redshift-connector.md)
 > * [現在のバージョン](connector-amazon-redshift.md)
 
+
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Amazon Redshift からデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
