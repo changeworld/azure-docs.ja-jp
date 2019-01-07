@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bbba7898329af9d9bca9d35883e3cb4097ca3de4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 33e968ac608c393d65f69bfd6abbc0d205fb9bd9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968614"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718879"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -140,7 +140,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 * [Microsoft.Azure.Mobile.Server.Login] カスタム認証シナリオで使用される静的メソッドである AppServiceLoginHandler.CreateToken() メソッドを提供します。
 
 ## <a name="publish-server-project"></a>方法:サーバー プロジェクトを発行する
-このセクションでは、Visual Studio から .NET バックエンド プロジェクトを発行する方法を示します。 [Git](../app-service/app-service-deploy-local-git.md) やその他の利用可能な方法を利用して、バックエンド プロジェクトをデプロイすることもできます。
+このセクションでは、Visual Studio から .NET バックエンド プロジェクトを発行する方法を示します。 [Git](../app-service/deploy-local-git.md) やその他の利用可能な方法を利用して、バックエンド プロジェクトをデプロイすることもできます。
 
 1. Visual Studio でプロジェクトをリビルドして、NuGet パッケージを復元します。
 2. ソリューション エクスプローラーで目的のプロジェクトを右クリックし、 **[発行]** をクリックします。 初めて発行するときには、発行プロファイルを定義する必要があります。 既に定義したプロファイルがある場合は、それを選択し、**[発行]** をクリックします。
@@ -432,15 +432,15 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
 Azure App Service には、ASP.NET アプリケーションのデバッグとトラブルシューティングの方法が複数用意されています。
 
 * [Azure App Service の監視](../app-service/web-sites-monitor.md)
-* [Azure App Service での診断ログの有効化](../app-service/web-sites-enable-diagnostic-log.md)
-* [Visual Studio での Azure App Service のトラブルシューティング](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md)
+* [Azure App Service での診断ログの有効化](../app-service/troubleshoot-diagnostic-logs.md)
+* [Visual Studio での Azure App Service のトラブルシューティング](../app-service/troubleshoot-dotnet-visual-studio.md)
 
 ### <a name="logging"></a>ログの記録
 標準の ASP.NET トレース書き込みを使用して、App Service の診断ログを作成できます。 ログに書き込めるようにするには、モバイル アプリ バックエンドで診断を有効にする必要があります。
 
 診断を有効にしてログに書き込むには、次の手順を実行します。
 
-1. 「 [診断を有効にする方法](../app-service/web-sites-enable-diagnostic-log.md#enablediag)」の手順に従います。
+1. 「 [診断を有効にする方法](../app-service/troubleshoot-diagnostic-logs.md#enablediag)」の手順に従います。
 2. 次の using ステートメントをコード ファイルに追加します。
 
         using System.Web.Http.Tracing;
@@ -449,7 +449,7 @@ Azure App Service には、ASP.NET アプリケーションのデバッグとト
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
 4. サーバー プロジェクトを再発行し、モバイル アプリ バックエンドにアクセスして、ログ記録付きでコード パスを実行します。
-5. 「[ログをダウンロードする方法](../app-service/web-sites-enable-diagnostic-log.md#download)」で説明されているように、ログをダウンロードして評価します。
+5. 「[ログをダウンロードする方法](../app-service/troubleshoot-diagnostic-logs.md#download)」で説明されているように、ログをダウンロードして評価します。
 
 ### <a name="local-debug"></a>認証に関するローカル デバッグ
 クラウドに発行する前に変更をテストするために、ローカルでアプリケーションを実行できます。 ほとんどの Azure Mobile Apps バックエンドでは、Visual Studio で *F5* キーを押します。 ただし、認証を使用している場合は追加の考慮事項がいくつかあります。

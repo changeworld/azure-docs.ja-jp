@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 29c7fc279aec79750df48c70be7792869e89ae78
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a42f4ce85214ad2a8c5692736b7d36101ccb62ed
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094357"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556222"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "53094357"
 ## <a name="prerequisites"></a>前提条件
 
 ゲートウェイとして構成する Azure IoT Edge デバイス。 次のオペレーティング システムの手順に従って、開発マシンまたは仮想マシンを IoT Edge デバイスとして使用できます。
-* [Windows](./how-to-install-iot-edge-windows-with-windows.md)
+* [Windows](./how-to-install-iot-edge-windows.md)
 * [Linux x64](./how-to-install-iot-edge-linux.md)
 * [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
 
@@ -60,7 +60,7 @@ Windows デバイスでテスト証明書を生成するには、このセクシ
    >[!NOTE]
    >ご使用の Windows デバイスに既に OpenSSL がインストールされている場合は、この手順をスキップできますが、openssl.exe がご自分の PATH 環境変数で使用できることを確認してください。
 
-* **簡単:**[サードパーティの OpenSSL バイナリ](https://wiki.openssl.org/index.php/Binaries) (たとえば、[SourceForge のこちらのプロジェクトのバイナリ](https://sourceforge.net/projects/openssl/)) をダウンロードしてインストールします。 openssl.exe への完全なパスを PATH 環境変数に追加します。 
+* **簡単:** サードパーティの OpenSSL バイナリ (たとえば、[SourceForge のこちらのプロジェクトのバイナリ](https://sourceforge.net/projects/openssl/)) をダウンロードしてインストールします。 openssl.exe への完全なパスを PATH 環境変数に追加します。 
    
 * **推奨されるもの:** OpenSSL ソース コードをダウンロードし、お使いのコンピューター上または [vcpkg](https://github.com/Microsoft/vcpkg) 経由でバイナリをビルドします。 以下に示す指示では、vcpkg を使用してソース コードのダウンロード、コンパイル、および Windows コンピューターへの OpenSSL のインストールを、簡単な手順で実行します。
 
