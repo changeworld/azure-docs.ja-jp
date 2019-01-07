@@ -2,18 +2,18 @@
 title: Azure Recovery Services コンテナーとサーバーの管理
 description: Azure Recovery Services コンテナーでジョブとアラートを管理します
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
-ms.author: markgal
-ms.openlocfilehash: c9b3b027a52a6847c566c385c304edc195f7fdda
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 716ddcaf61c4d7db40821056dc759667f9376023
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250698"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871337"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services コンテナーの監視と管理
 
@@ -67,7 +67,7 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 ![重大なアラートでフィルター処理されたバックアップ アラート メニュー](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-上の図の [バックアップ アラート] メニューは、状態がアクティブ、重大度が重大、および時刻が過去 24 時間でフィルター処理されています。
+上の図の [バックアップ アラート] メニューは、状態がアクティブ、重大度が重大、時刻が過去 24 時間でフィルター処理されています。
 
 ## <a name="manage-backup-alerts"></a>バックアップ アラートの管理
 
@@ -283,7 +283,7 @@ A3. はい。 次のような状況では、通知は送信されません。
 
 **問題:** Azure Backup エージェントからのジョブやアラートがポータルに表示されない。
 
-**トラブルシューティング手順:** ```OBRecoveryServicesManagementAgent``` は、Azure Backup サービスにジョブとアラートのデータを送信するプロセスです。 このプロセスは、頻度は高くないものの停止またはシャットダウンすることがあります。
+**トラブルシューティングの手順:** ```OBRecoveryServicesManagementAgent``` プロセスによって、Azure Backup サービスにジョブとアラートのデータが送信されます。 このプロセスは、頻度は高くないものの停止またはシャットダウンすることがあります。
 
 1. このプロセスが動作しているかどうかを確認するには、**タスク マネージャー**を開いて ```OBRecoveryServicesManagementAgent``` が実行中かどうかを調べます。
 
@@ -296,4 +296,4 @@ A3. はい。 次のような状況では、通知は送信されません。
 ## <a name="next-steps"></a>次の手順
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
-* [Azure Backup フォーラム](https://go.microsoft.com/fwlink/p/?LinkId=290933)
+*  [Azure Backup フォーラム](https://go.microsoft.com/fwlink/p/?LinkId=290933)

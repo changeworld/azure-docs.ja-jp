@@ -1,31 +1,27 @@
 ---
-title: 'Team Data Science Process の活用: SQL Data Warehouse の使用 | Microsoft Docs'
-description: Advanced Analytics Process and Technology の活用
+title: SQL Data Warehouse を使用してモデルを構築してデプロイする - Team Data Science Process
+description: SQL Data Warehouse と公開されているデータセットを使用して、機械学習モデルを構築してデプロイします。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 88ba8e28-0bd7-49fe-8320-5dfa83b65724
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: deguhath
-ms.openlocfilehash: 192af40df3a8bc0545c9c3a86792e7eb8cb31de9
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ed3731db88d7f829634a03c55e5ec033c03e4b0f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586106"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139132"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
 
-この手順は、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) ワークフローに従っています。 データ サイエンス環境のセットアップ方法、SQL DW にデータを読み込む方法、SQL DW または IPython Notebook を使用してデータを探索し、特徴をエンジニアリングする方法について説明します。 次に、Azure Machine Learning でのモデルのビルドとデプロイ方法について説明します。
+この手順は、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) ワークフローに従っています。 データ サイエンス環境のセットアップ方法、SQL DW にデータを読み込む方法、SQL DW または IPython Notebook を使用してデータを探索し、特徴をエンジニアリングする方法について説明します。 次に、Azure Machine Learning でのモデルのビルドとデプロイ方法について説明します。
 
 ## <a name="dataset"></a>NYC タクシー乗車データセット
 NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) で構成されており、ファイルには 1 億 7300 万以上の個々の乗車と、各乗車に対して支払われた料金が記録されています。 各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、メダリオン (タクシーの一意の ID) 番号が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
@@ -56,15 +52,15 @@ trip\_data と trip\_fare の結合に使用される**一意のキー**は、
 ## <a name="mltasks"></a>3 種類の予測タスクに対応する
 3 種類のモデリング タスクを説明するために、*tip\_amount* に基づく 3 つの予測の問題を編成しました。
 
-1. **二項分類**: 乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
-2. **多クラス分類**: 乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
+1. **二項分類**:乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
+2. **多クラス分類**:乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. **回帰タスク**: 乗車で支払われたチップの金額を予測します。  
+3. **回帰タスク**:乗車で支払われたチップの金額を予測します。  
 
 ## <a name="setup"></a>Azure データ サイエンス環境の高度な分析のためのセット アップ
 Azure データ サイエンス環境をセット アップするには、以下の手順に従います。
@@ -121,7 +117,7 @@ Windows PowerShell コマンド コンソールを開きます。 以下の Powe
 
 正しく実行されると、現在の作業ディレクトリが *- DestDir*に変わります。 画面は次のようになります。
 
-![][19]
+![現在の作業ディレクトリの変化][19]
 
 *-DestDir*で、以下の PowerShell スクリプトを管理者モードで実行します。
 
@@ -325,7 +321,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 > 
 > 
 
-![プロット #21][21]
+![AzCopy からの出力][21]
 
 独自のデータを使用することができます。 実際のアプリケーションのオンプレミス マシンにデータがある場合でも、AzCopy を使用してオンプレミス データをプライベート Azure Blob Storage にアップロードできます。 アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、**Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
 
@@ -338,7 +334,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 
 正しく実行されると、画面は次のようになります。
 
-![][20]
+![成功したスクリプト実行の出力][20]
 
 ## <a name="dbexplore"></a>Azure SQL Data Warehouse でのデータの探索と特徴エンジニアリング
 このセクションでは、 **Visual Studio Data Tools**を使用して直接 Azure SQL DW に対して SQL クエリを実行し、データの探索と特徴の生成を行います。 このセクションで使用されるすべての SQL クエリは、*SQLDW_Explorations.sql* という名前のサンプル スクリプトにあります。 このファイルは、PowerShell スクリプトによってローカル ディレクトリに既にダウンロードされています。 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)から取得することもできます。 ただし、GitHub のファイルには Azure SQL DW の情報は含まれていません。
@@ -369,7 +365,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 **出力:** 173、179、759 の行と 14 の列が取得されます。
 
-### <a name="exploration-trip-distribution-by-medallion"></a>探索: medallion (タクシー番号) ごとの乗車回数の分布
+### <a name="exploration-trip-distribution-by-medallion"></a>探索:medallion (タクシー番号) ごとの乗車回数の分布
 このクエリ例では、指定した期間内で乗車回数が 100 を超えた medallion (タクシー番号) を識別します。 **pickup\_datetime** のパーティション スキームによって条件が設定されるため、クエリはパーティション分割されたテーブルへのアクセスからメリットを得られます。 データセット全体に対するクエリの実行でも、パーティション テーブルまたはインデックス スキャンを活用できます。
 
     SELECT medallion, COUNT(*)
@@ -380,7 +376,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 **出力:** クエリによって、13,369 のメダリオン (タクシー) と 2013 年に完了した乗車回数を示す行で構成されるテーブルが返されます。 最後の列には、完了した乗車回数が含まれます。
 
-### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>探索: medallion および hack_license ごとの乗車回数の分布
+### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>探索:medallion および hack_license ごとの乗車回数の分布
 この例では、指定した期間内で乗車回数が 100 を超えた medallion (タクシー番号) と hack_license 番号 (運転) を識別します。
 
     SELECT medallion, hack_license, COUNT(*)
@@ -391,7 +387,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 **出力:** クエリによって、2013 年に 100 回を超える乗車を完了した 13,369 の車両/運転手 ID を示す 13,369 の行で構成されるテーブルが返されます。 最後の列には、完了した乗車回数が含まれます。
 
-### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>データ品質の評価: 経度と緯度が正しくないレコードを確認する
+### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>データ品質の評価:経度と緯度が正しくないレコードを確認する
 この例では、いずれかの経度または緯度のフィールドに無効な値 (ラジアン角は -90 ～ 90 の間である必要があります)、または座標 (0, 0) のいずれかが含まれているかどうかを調査します。
 
     SELECT COUNT(*) FROM <schemaname>.<nyctaxi_trip>
@@ -405,7 +401,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 **出力:** クエリによって、経度フィールドまたは緯度フィールドが無効である 837,467 件の乗車が返されます。
 
-### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>探索: チップが支払われた乗車と支払われなかった乗車の分布
+### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>探索:チップが支払われた乗車と支払われなかった乗車の分布
 この例では、特定の期間中 (または、1 年を対象とする場合は全データセットで) チップが支払われた乗車と支払われなかった乗車の数を確認します。 この分布は、後で二項分類のモデリングで使用する二項ラベルの分布を反映しています。
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
@@ -414,9 +410,9 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-**出力:** クエリによって、チップが支払われた 90,447,622 件と支払われなかった 82,264,709 件という 2013 年のチップの頻度が返されます。
+**出力:** クエリによって、次のような 2013 年のチップの頻度が返されます。チップが支払われたのが 90,447,622 件、支払われなかったのが 82,264,709 件。
 
-### <a name="exploration-tip-classrange-distribution"></a>探索: チップのクラス/範囲の分布
+### <a name="exploration-tip-classrange-distribution"></a>探索:チップのクラス/範囲の分布
 この例では、特定の期間中に (または、1 年間をカバーする場合はデータセット全体で) チップの範囲の分布を計算します。 これは、後で多クラス分類のモデリングに使用されるラベル クラスの分布です。
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
@@ -441,7 +437,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 | 0 |82264625 |
 | 4 |85765 |
 
-### <a name="exploration-compute-and-compare-trip-distance"></a>探索: 乗車距離の計算と比較
+### <a name="exploration-compute-and-compare-trip-distance"></a>探索:乗車距離の計算と比較
 この例では、pickup (乗車) と drop-off (降車) の経度と緯度を、SQL geography ポイントに変換し、SQL geography ポイントの差を使用して乗車距離を計算し、比較するためにランダムな結果のサンプルを返します。 この例では、前述したデータ品質評価のクエリを使用して、結果を有効な座標のみに限定します。
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
@@ -575,16 +571,16 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 1. AzureML ワークスペースにログインし、Web ページの上部にある [Studio] をクリックしてから、左側にある [NOTEBOOKS] をクリックします。
    
-    ![プロット #22][22]
+    ![[Studio]、[NOTEBOOKS] の順にクリックする][22]
 2. Web ページの左下隅にある [新規] をクリックし、[Python 2] を選択します。 次に、Notebook に名前を指定し、チェック マークをクリックして新しい空白の IPython Notebook を作成します。
    
-    ![プロット #23][23]
+    ![[新規] をクリックして [Python 2] を選択する][23]
 3. 新しい IPython Notebook の左上隅にある "Jupyter" のシンボルをクリックします。
    
-    ![プロット #24][24]
+    ![Jupyter Notebook のシンボルをクリックする][24]
 4. サンプルの IPython Notebook をドラッグして AzureML IPython Notebook サービスの**ツリー** ページにドロップしてから、**[アップロード]** をクリックします。 これで、サンプルの IPython Notebook が AzureML IPython Notebook サービスにアップロードされます。
    
-    ![プロット #25][25]
+    ![[アップロード] をクリックします][25]
 
 サンプルの IPython Notebook または Python スクリプト ファイルを実行するには、以下の Python パッケージが必要です。 AzureML IPython Notebook サービスを使用している場合、これらのパッケージはプレインストールされています。
 
@@ -683,14 +679,14 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
     df1['trip_distance'].describe()
 
-### <a name="visualization-box-plot-example"></a>視覚化: ボックス プロットの例
+### <a name="visualization-box-plot-example"></a>視覚化:ボックス プロットの例
 次に、変位置を視覚化するために、乗車距離のボックス プロットを確認します。
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
-![プロット #1][1]
+![ボックス プロットの出力][1]
 
-### <a name="visualization-distribution-plot-example"></a>視覚化: 配布プロットの例
+### <a name="visualization-distribution-plot-example"></a>視覚化:配布プロットの例
 サンプリングされた乗車距離に関する配布を可視化するプロットとヒストグラム。
 
     fig = plt.figure()
@@ -699,9 +695,9 @@ AzureML ワークスペースを既にセットアップしている場合は、
     df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
     df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
 
-![プロット #2][2]
+![配布プロットの出力][2]
 
-### <a name="visualization-bar-and-line-plots"></a>視覚化: 棒と線のプロット
+### <a name="visualization-bar-and-line-plots"></a>視覚化:棒と線のプロット
 この例では、乗車距離を 5 つの箱にビン分割し、ビン分割の結果を視覚化します。
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
@@ -713,38 +709,38 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
-![プロット #3][3]
+![棒のプロットの出力][3]
 
 and
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
-![プロット #4][4]
+![線のプロットの出力][4]
 
-### <a name="visualization-scatterplot-examples"></a>視覚化: 散布図の例
+### <a name="visualization-scatterplot-examples"></a>視覚化:散布図の例
 **trip\_time\_in\_secs** と **trip\_distance** 間の散布図を表示し、相関関係があるか判断できます。
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
-![プロット #6][6]
+![時間と距離の間の関係の散布図の出力][6]
 
 同様に、**rate\_code** と **trip\_distance** のリレーションシップを確認できます。
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
-![プロット #8][8]
+![コードと距離の間の関係の散布図の出力][8]
 
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>IPython Notebook での SQL クエリを使用したサンプリングされたデータのデータ探索
 このセクションでは、上記で作成した新しいテーブルに保持されているサンプリングされたデータを使用して、データの分布を探索します。 元のテーブルを使用して同様の探索を実行できることに注意してください。
 
-#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>探索: サンプリングされたテーブルの行数と列数を報告する
+#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>探索:サンプリングされたテーブルの行数と列数を報告する
     nrows = pd.read_sql('''SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_sample>')''', conn)
     print 'Number of rows in sample = %d' % nrows.iloc[0,0]
 
     ncols = pd.read_sql('''SELECT count(*) FROM information_schema.columns WHERE table_name = ('<nyctaxi_sample>') AND table_schema = '<schemaname>'''', conn)
     print 'Number of columns in sample = %d' % ncols.iloc[0,0]
 
-#### <a name="exploration-tippednot-tripped-distribution"></a>探索: チップが支払われた乗車と支払われなかった乗車の分布
+#### <a name="exploration-tippednot-tripped-distribution"></a>探索:チップが支払われた乗車と支払われなかった乗車の分布
     query = '''
         SELECT tipped, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -753,7 +749,7 @@ and
 
     pd.read_sql(query, conn)
 
-#### <a name="exploration-tip-class-distribution"></a>探索: チップのクラスの分布
+#### <a name="exploration-tip-class-distribution"></a>探索:チップのクラスの分布
     query = '''
         SELECT tip_class, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -762,12 +758,12 @@ and
 
     tip_class_dist = pd.read_sql(query, conn)
 
-#### <a name="exploration-plot-the-tip-distribution-by-class"></a>探索: クラスごとのチップの分布をプロットする
+#### <a name="exploration-plot-the-tip-distribution-by-class"></a>探索:クラスごとのチップの分布をプロットする
     tip_class_dist['tip_freq'].plot(kind='bar')
 
 ![プロット #26][26]
 
-#### <a name="exploration-daily-distribution-of-trips"></a>探索: 1 日ごとの乗車の分布
+#### <a name="exploration-daily-distribution-of-trips"></a>探索:1 日ごとの乗車の分布
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -776,7 +772,7 @@ and
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>探索: medallion (タクシー番号) ごとの乗車回数の分布
+#### <a name="exploration-trip-distribution-per-medallion"></a>探索:medallion (タクシー番号) ごとの乗車回数の分布
     query = '''
         SELECT medallion,count(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -785,20 +781,20 @@ and
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>探索: medallion および hack_license ごとの乗車回数の分布
+#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>探索:medallion および hack_license ごとの乗車回数の分布
     query = '''select medallion, hack_license,count(*) from <schemaname>.<nyctaxi_sample> group by medallion, hack_license'''
     pd.read_sql(query,conn)
 
 
-#### <a name="exploration-trip-time-distribution"></a>探索: 乗車時間の分布
+#### <a name="exploration-trip-time-distribution"></a>探索:乗車時間の分布
     query = '''select trip_time_in_secs, count(*) from <schemaname>.<nyctaxi_sample> group by trip_time_in_secs order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distance-distribution"></a>探索: 乗車距離の分布
+#### <a name="exploration-trip-distance-distribution"></a>探索:乗車距離の分布
     query = '''select floor(trip_distance/5)*5 as tripbin, count(*) from <schemaname>.<nyctaxi_sample> group by floor(trip_distance/5)*5 order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-payment-type-distribution"></a>探索: 支払いの種類の分布
+#### <a name="exploration-payment-type-distribution"></a>探索:支払いの種類の分布
     query = '''select payment_type,count(*) from <schemaname>.<nyctaxi_sample> group by payment_type'''
     pd.read_sql(query,conn)
 
@@ -809,9 +805,9 @@ and
 ## <a name="mlmodel"></a>Azure Machine Learning でモデルを作成する
 これで、[Azure Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイに進む準備が整いました。 データは、以前特定したどの予測の問題でも使用できる状態になりました。予測の問題とは、
 
-1. **二項分類**: 乗車に対してチップが支払われたかどうかを予測します。
-2. **多クラス分類**: あらかじめ定義したクラスに従って、支払われたチップの範囲を予測します。
-3. **回帰タスク**: 乗車で支払われたチップの金額を予測します。  
+1. **二項分類**:乗車に対してチップが支払われたかどうかを予測します。
+2. **多クラス分類**:あらかじめ定義したクラスに従って、支払われたチップの範囲を予測します。
+3. **回帰タスク**:乗車で支払われたチップの金額を予測します。  
 
 モデリングの演習を開始するには、 **Azure Machine Learning ワークスペース** にログインします。 Machine Learning ワークスペースをまだ作成していない場合は、「 [Azure ML ワークスペースを作成する](../studio/create-workspace.md)」を参照してください。
 

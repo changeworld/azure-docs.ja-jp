@@ -1,22 +1,22 @@
 ---
-title: '最初に: Recovery Services コンテナーを使用した Azure VM の保護'
+title: 最初の項目:Recovery Services コンテナーを使用して Azure VM を保護する
 description: Recovery Services コンテナーを使用して Azure VM を保護します。 Resource Manager デプロイによる VM、クラシック デプロイによる VM、Premium Storage VM、暗号化された VM、Managed Disks 上の VM のバックアップを使用して、データを保護します。 Recovery Services コンテナーを作成して登録します。 Azure で VM の登録、ポリシーの作成、VM の保護を行います。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keyword: backups; vm backup
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: H1Hack27Feb2017
 keywords: バックアップ; vm バックアップ
-ms.openlocfilehash: daa2355d028af9b61b0b14a453452c1a96487403
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2c6b881e5717c0f4600b4e3c2f47c19b5d2dae51
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233543"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869930"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
 
@@ -36,7 +36,7 @@ Premium Storage VM の保護の詳細については、[Premium Storage VM の�
 
 > [!NOTE]
 > Backup サービスでは、復元ポイント コレクションを格納する VM のリソース グループとは別のリソース グループが作成されます。 Backup サービスに使用するために作成されたリソース グループはロックしないことをお勧めします。
-Backup サービスによって作成されるリソース グループは、AzureBackupRG_`<Geo>`_`<number>` という形式で名前が付けられます。
+Backup サービスによって作成されるリソース グループの名前付け形式は次のとおりです。AzureBackupRG_`<Geo>`_`<number>`
 <br>例: AzureBackupRG_northeurope_1
 >
 >

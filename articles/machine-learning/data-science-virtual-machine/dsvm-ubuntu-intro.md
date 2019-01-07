@@ -1,11 +1,13 @@
 ---
-title: Azure での Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング | Microsoft Docs
+title: Ubuntu Linux Data Science Virtual Machine を作成する
+titleSuffix: Azure
 description: 分析と機械学習を行うために、Azure で Linux (Ubuntu) データ サイエンス用仮想マシンの構成と作成を行います。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 ms.author: gokuma
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -14,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: cf5a15a55cf3f0d33edeec9440e745c9dce996c1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e3f17dd3717a57d184be7c9b8c73855c3fd2a768
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244867"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106772"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
@@ -29,7 +31,7 @@ Linux データ サイエンス仮想マシンは Ubuntu ベースの仮想マ�
   * [Caffe2](https://github.com/caffe2/caffe2): Caffe のクロス プラットフォーム バージョン
   * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): Microsoft Research のディープ ラーニング ソフトウェア ツールキット
   * [H2O](https://www.h2o.ai/): オープン ソースのビッグ データ プラットフォームとグラフィカル ユーザー インターフェイス
-  * [Keras](https://keras.io/): Python で書かれた Theano と TensorFlow 用の高度なニュートラル ネットワーク API
+  * [Keras](https://keras.io/): Python で書かれた Theano と TensorFlow 用の高度なニューラル ネットワーク API
   * [MXNet](http://mxnet.io/): 多くの言語バインディングを含む、柔軟で効率的なディープ ラーニング ライブラリ
   * [NVIDIA DIGITS](https://developer.nvidia.com/digits): 一般的なディープ ラーニング タスクを簡略化するグラフィカル システム
   * [PyTorch](http://pytorch.org/): 動的ネットワークをサポートする高度な Python ライブラリ
@@ -91,8 +93,8 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    * **VM ディスクの種類**: ソリッドステート ドライブ (SSD) を使用する場合は、**[Premium SSD]** を選択します。 それ以外の場合は、**[Standard HDD]** を選択します。 
    * **ユーザー名**: 最初のアカウントのサインイン ID。
    * **パスワード**: 最初のアカウントのパスワード (パスワードの代わりに SSH 公開キーを使用できます)。
-   * **サブスクリプション**: 複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。 そのサブスクリプションに対するリソース作成権限が必要です。
-   * **リソース グループ**: 新しいリソース グループを作成するか、既存のグループを使用します。
+   * **サブスクリプション**:複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。 そのサブスクリプションに対するリソース作成権限が必要です。
+   * **リソース グループ**: 新しいリソース グループを作成するか、既存のグループを使用できます。
    * **場所**: 最適なデータ センターを選択します。 通常は、データの大半が存在するデータ センターか、ネットワーク アクセスを最速にするために物理的に最も近いデータ センターを選びます。
    
    b. **[サイズ]**:
@@ -131,12 +133,12 @@ Linux VM は、既に X2Go サーバーでプロビジョニングされてお�
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
 1. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
-     * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
-     * **[Login (ログイン)]**: Linux VM のユーザー名。
-     * **[SSH Port] \(SSH ポート)**: 既定値の 22 のままにします。
-     * **[Session Type] \(セッションの種類)**: 値を XFCE に変更します。 現在、Linux VM では XFCE デスクトップのみをサポートしています。
-   * **[Media] \(メディア) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
-   * **[Shared folders] \(共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
+     * **[Host]\(ホスト\)**: Linux Data Science VM のホスト名または IP アドレス。
+     * **[Login]\(ログイン\)**: Linux VM のユーザー名。
+     * **[SSH Port]\(SSH ポート\)**: 既定値の 22 のままにします。
+     * **[Session Type]\(セッションの種類\)**: 値を XFCE に変更します。 現在、Linux VM では XFCE デスクトップのみをサポートしています。
+   * **[Media]\(メディア\) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
+   * **[Shared folders]\(共有フォルダー\)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
 
 SSH クライアントを使用するか、X2Go クライアントから XFCE グラフィカル デスクトップを使用して VM にサインインしたら、VM にインストールされ、構成されているツールをすぐに使い始めることができます。 XFCE では、アプリケーション メニューのショートカットとさまざまなツールのデスクトップ アイコンが表示されます。
 
@@ -294,11 +296,11 @@ Hadoop 関連サービスが不要な場合は、````systemctl stop hadoop-namen
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Microsoft SQL Server にアクセスするためのコマンド ライン ツール
 SQL Server の ODBC ドライバー パッケージには、次の 2 つのコマンド ライン ツールも付属しています。
 
-**bcp**- bcp ユーティリティでは、Microsoft SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ユーティリティを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用するか、テーブルの構造と列の有効なデータの種類を把握する必要があります。
+**bcp**: bcp ユーティリティでは、Microsoft SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ユーティリティを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用するか、テーブルの構造と列の有効なデータの種類を把握する必要があります。
 
 詳細については、「 [bcp による接続](https://msdn.microsoft.com/library/hh568446.aspx)」をご覧ください。
 
-**sqlcmd**: sqlcmd ユーティリティを使用して、Transact-SQL ステートメントを入力したり、コマンド プロンプトでシステム プロシージャやスクリプト ファイルを入力したりできます。 このユーティリティでは、ODBC を使用して、Transact-SQL バッチを実行します。
+**sqlcmd**: sqlcmd ユーティリティを使用して Transact-SQL ステートメントを入力したり、コマンド プロンプトでシステム プロシージャやスクリプト ファイルを入力したりすることができます。 このユーティリティでは、ODBC を使用して、Transact-SQL バッチを実行します。
 
 詳細については、「 [sqlcmd による接続](https://msdn.microsoft.com/library/hh568447.aspx)」をご覧ください。
 
@@ -317,8 +319,8 @@ R と Python には、データベースにアクセスするためのライブ�
 VM には、次の Azure ツールがインストールされています。
 
 * **Azure コマンド ライン インターフェイス**: Azure CLI では、シェル コマンドを使用して Azure リソースを作成および管理できます。 Azure ツールを起動するには、「 **azure help**」と入力します。 詳細については、 [Azure CLI ドキュメント ページ](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)をご覧ください。
-* **Microsoft Azure ストレージ エクスプローラー**: Microsoft Azure ストレージ エクスプローラーは、Azure ストレージ アカウントに保存されているオブジェクトを参照したり、Azure BLOB との間でデータをアップロード/ダウンロードしたりする際に使用するグラフィカル ツールです。 ストレージ エクスプローラーには、デスクトップのショートカット アイコンからアクセスできます。 シェル プロンプトから「 **StorageExplorer**」と入力して起動することもできます。 X2Go クライアントからサインインしているか、X11 転送を設定済みである必要があります。
-* **Azure Libraries**: 次のライブラリがプレインストールされています。
+* **Microsoft Azure Storage Explorer**: Microsoft Azure Storage Explorer は、Azure ストレージ アカウントに保存されているオブジェクトを参照したり、Azure BLOB との間でデータをアップロード/ダウンロードしたりするために使用するグラフィカル ツールです。 ストレージ エクスプローラーには、デスクトップのショートカット アイコンからアクセスできます。 シェル プロンプトから「 **StorageExplorer**」と入力して起動することもできます。 X2Go クライアントからサインインしているか、X11 転送を設定済みである必要があります。
+* **Azure Libraries**: プレインストールされているライブラリの一部を次に示します。
   
   * **Python**: Python のインストール済みの Azure 関連ライブラリには、**azure**、**azureml**、**pydocumentdb**、**pyodbc** があります。 最初の 3 つのライブラリを使用すると、Azure Storage サービス、Azure Machine Learning、Azure Cosmos DB (Azure の NoSQL データベース) にアクセスできます。 4 番目のライブラリの pyodbc を (Microsoft ODBC Driver for SQL Server と共に) 使用すると、Python から ODBC インターフェイスを使用して SQL Server、Azure SQL Database、Azure SQL Data Warehouse にアクセスできます。 すべてのライブラリを一覧表示するには、「 **pip list** 」と入力します。 このコマンドは、必ず Python 2.7 と 3.5 の両方の環境で実行してください。
   * **R**: R のインストール済みの Azure 関連ライブラリは、**AzureML** と **RODBC** です。

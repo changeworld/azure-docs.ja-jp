@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: fc8336a46f61a7c9ab7c174b5f24d907369f481c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 12/03/2018
+ms.openlocfilehash: 48f8bb2e8251191fac456549cfca7a37e75d7f8c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567572"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997677"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL Database への移行時に Transact-SQL の相違点を解決する
 
@@ -45,25 +45,37 @@ SQL Database でサポートされる機能とサポートされない機能の�
 
 「 [Azure SQL Database の機能の比較](sql-database-features.md)」に記載されている、サポートされていない機能に関連する Transact-SQL ステートメントの他に、次のステートメントとステートメントのグループはサポートされていません。 そのため、移行するデータベースが次の機能のいずれかを使用している場合は、T-SQL を再構築してこれらの T-SQL の機能とステートメントを取り除きます。
 
-- システム オブジェクトの照合順序 - 接続関連: エンドポイント ステートメント。 SQL データベースは Windows 認証をサポートしませんが、同様の Azure Active Directory 認証をサポートします。 いくつかの認証の種類には、最新バージョン の SSMS が必要です。 詳細については、「 [Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」を参照してください。
-- 3 部構成または 4 部構成の名前を使用したデータベース間クエリ。 (読み取り専用のデータベース間クエリは、 [エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用してサポートされます。) - データベース間での所有権の継承、 `TRUSTWORTHY` 設定 - `EXECUTE AS LOGIN` 代わりに 'EXECUTE AS USER' を使用してください。
-- 拡張キー管理以外で暗号化がサポートされています。 - イベント: イベント、イベント通知、クエリ通知 - ファイルの配置: Microsoft Azure により自動的に管理されるデータベース ファイル配置、サイズ、データベース ファイルに関連する構文。
-- 高可用性: Microsoft Azure アカウントを通じて管理される高可用性に関連する構文。 これには、バックアップのための構文、復元、AlwaysOn、データベース ミラーリング、ログ配布、復旧モードが含まれます。
-- ログ リーダー: SQL Database で使用できないログ リーダーに依存する構文: プッシュ レプリケーション、変更データ キャプチャ。 SQL Database は、プッシュ レプリケーションの記事のサブスクライバーである可能性があります。
-- 関数: `fn_get_sql`、 `fn_virtualfilestats`、 `fn_virtualservernodes` - ハードウェア: ハードウェア関連のサーバー設定に関連する構文: メモリ、ワーカー スレッド、CPU アフィニティ、トレース フラグなど。 代わりにサービス レベルとコンピューティング サイズを使用します。
-- `KILL STATS JOB`
-- `OPENQUERY`、 `OPENROWSET`、 `OPENDATASOURCE`、および 4 部構成の名前 - .NET framework: CLR と SQL Server の統合 - セマンティック検索 - サーバー資格情報: 代わりに[データベース スコープの資格情報](https://msdn.microsoft.com/library/mt270260.aspx)を使用してください。
-- サーバー レベルの項目: サーバーの役割、 `sys.login_token`。 サーバー レベルのアクセス許可の `GRANT`、`REVOKE`、`DENY` は使用できませんが、一部はデータベース レベルのアクセス許可に置き換えられます。 いくつかの便利なサーバー レベルの DMV には、同等のデータベース レベルの DMV があります。
-- `SET REMOTE_PROC_TRANSACTIONS`
-- `SHUTDOWN`
-- `sp_addmessage`
-- `sp_configure` オプションと `RECONFIGURE`。 一部のオプションは、 [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx) で使用できます。
-- `sp_helpuser`
-- `sp_migrate_user_to_contained`
-- SQL Server エージェント: SQL Server エージェントまたは MSDB データベースに依存する構文: アラート、演算子、中央管理サーバー。 Azure PowerShell などのスクリプトを代わりに使用します。
-- SQL Server 監査: 代わりに SQL Database 監査を使用します。
-- SQL Server トレース - トレース フラグ: トレース フラグのいくつかの項目は、互換性モードに移動されました。
-- Transact-SQL デバッグ - トリガー: サーバー スコープ トリガーまたはログオン トリガー - `USE` ステートメント: データベース コンテキストを別のデータベースに変更するには、新しいデータベースへの接続を新たに確立する必要があります。
+- システム オブジェクトの照合順序
+- 接続関連:エンドポイント ステートメント。 SQL データベースは Windows 認証をサポートしませんが、同様の Azure Active Directory 認証をサポートします。 いくつかの認証の種類には、最新バージョン の SSMS が必要です。 詳細については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」を参照してください。
+- 3 部構成または 4 部構成の名前を使用したデータベース間クエリ  (読み取り専用のデータベース間クエリは、[エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用してサポートされます)。
+- データベース間での所有権の継承、`TRUSTWORTHY` 設定
+- `EXECUTE AS LOGIN` 代わりに 'EXECUTE AS USER' を使用してください。
+- 拡張キー管理以外で暗号化がサポートされています。
+- イベント:イベント、イベント通知、クエリ通知
+- ファイルの配置:Microsoft Azure により自動的に管理されるデータベース ファイル配置、サイズ、データベース ファイルに関連する構文。
+- 高可用性:Microsoft Azure アカウントを通じて管理される高可用性に関連する構文。 これには、バックアップのための構文、復元、AlwaysOn、データベース ミラーリング、ログ配布、復旧モードが含まれます。
+- ログ リーダー:SQL Database で使用できないログ リーダーに依存する構文:プッシュ レプリケーション、変更データ キャプチャ。 SQL Database は、プッシュ レプリケーションの記事のサブスクライバーである可能性があります。
+- 関数: `fn_get_sql`、`fn_virtualfilestats`、`fn_virtualservernodes`
+- ハードウェア:ハードウェア関連のサーバー設定に関連する構文: メモリ、ワーカー スレッド、CPU アフィニティ、トレース フラグなど。 代わりにサービス レベルとコンピューティング サイズを使用します。
+- `KILL STATS JOB`
+- `OPENQUERY`、`OPENROWSET`、`OPENDATASOURCE`、および 4 部構成の名前
+- .NET framework:CLR と SQL Server の統合
+- セマンティック検索
+- サーバー資格情報:代わりに[データベース スコープの資格情報](https://msdn.microsoft.com/library/mt270260.aspx)を使用してください。
+- サーバー レベルの項目:サーバーの役割、`sys.login_token`。 サーバー レベルのアクセス許可の `GRANT`、`REVOKE`、`DENY` は使用できませんが、一部はデータベース レベルのアクセス許可に置き換えられます。 いくつかの便利なサーバー レベルの DMV には、同等のデータベース レベルの DMV があります。
+- `SET REMOTE_PROC_TRANSACTIONS`
+- `SHUTDOWN`
+- `sp_addmessage`
+- `sp_configure` オプションと `RECONFIGURE`。 一部のオプションは、 [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx)で使用できます。
+- `sp_helpuser`
+- `sp_migrate_user_to_contained`
+- SQL Server エージェント:SQL Server エージェントまたは MSDB データベースに依存する構文: アラート、演算子、中央管理サーバー。 Azure PowerShell などのスクリプトを代わりに使用します。
+- SQL Server 監査:代わりに SQL Database 監査を使用してください。
+- SQL Server トレース
+- トレース フラグ:トレース フラグのいくつかの項目は、互換性モードに移動されました。
+- Transact-SQL デバッグ
+- トリガー:サーバー スコープ トリガーまたはログオン トリガー
+- `USE` ステートメント:データベース コンテキストを別のデータベースに変更するには、新しいデータベースへの接続を新たに確立する必要があります。
 
 ## <a name="full-transact-sql-reference"></a>完全 Transact-SQL リファレンス
 

@@ -1,22 +1,23 @@
 ---
-title: Spark からの Azure Cosmos DB Cassandra API に対する読み取り操作
-description: この記事では、Cosmos DB Cassandra API 内のテーブルから読み取る方法について説明します。
-services: cosmos-db
-author: anagha-microsoft
+title: Spark を使用して Cassandra API のテーブル データを読み取る
+titleSufix: Azure Cosmos DB
+description: この記事では、Azure Cosmos DB 内の Cassandra API テーブルからデータを読み取る方法について説明します。
+author: kanshiG
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.devlang: spark-scala
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: ef5f1a3479080aaab665a449bbf946a29344f26c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.date: 12/06/2018
+ms.author: govindk
+ms.custom: seodec18
+ms.openlocfilehash: 2fc5ac1af503eff2f9186266d977c4ee972fcc94
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224985"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133436"
 ---
-# <a name="read-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark からの Azure Cosmos DB Cassandra API テーブルに対する読み取り操作
+# <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Spark を使用して Azure Cosmos DB の Cassandra API テーブルからデータを読み取る
 
  この記事では、Spark から Azure Cosmos DB Cassandra API に格納されたデータを読み取る方法について説明します。
 

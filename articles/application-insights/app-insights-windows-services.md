@@ -9,20 +9,19 @@ ms.assetid: 106ba99b-b57a-43b8-8866-e02f626c8190
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 461b1f4e72f0a47da4ccb560bfb4cfb7d0f3ccd2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b760780912642dac664f68c1f2b9d8d4ebf8cbde
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096437"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809898"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Application Insights を .NET アプリケーション用に手動で構成する
 
-さまざまなアプリケーションやアプリケーション ロール、コンポーネント、またはマイクロサービスを監視するように、[Application Insights](app-insights-overview.md) を構成できます。 Web アプリとサービス用に、Visual Studio では[ワンステップ構成](app-insights-asp-net.md)が用意されています。 バックエンド サーバー ロール、デスクトップ アプリケーションなど、他の種類の .NET アプリケーションの場合は、Application Insights を手動で構成できます。
+さまざまなアプリケーションやアプリケーション ロール、コンポーネント、またはマイクロサービスを監視するように、[Application Insights](app-insights-overview.md) を構成できます。 Web アプリとサービス用に、Visual Studio では[ワンステップ構成](../azure-monitor/app/asp-net.md)が用意されています。 バックエンド サーバー ロール、デスクトップ アプリケーションなど、他の種類の .NET アプリケーションの場合は、Application Insights を手動で構成できます。
 
 ![Example performance monitoring charts](./media/app-insights-windows-services/10-perf.png)
 
@@ -30,14 +29,14 @@ ms.locfileid: "47096437"
 
 必要なもの:
 
-* [Microsoft Azure](http://azure.com) サブスクリプション。 チームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
+* [Microsoft Azure](https://azure.com) サブスクリプション。 チームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](https://live.com)を使用してあなたを追加できます。
 * Visual Studio 2013 以降
 
 ## <a name="add"></a>1.Application Insights リソースを選択する
 
 "リソース" は、データが収集され、Azure Portal で表示される場所です。 新しく作成するか、既存のものを共有するかを決定する必要があります。
 
-### <a name="part-of-a-larger-app-use-existing-resource"></a>大規模なアプリの一部: 既存のリソースを使用する
+### <a name="part-of-a-larger-app-use-existing-resource"></a>大規模なアプリの一部: 既存のリソースを使用
 
 Web アプリケーションに、フロントエンド Web アプリと 1 つ以上のバックエンド サービスなど、複数のコンポーネントがある場合は、すべてのコンポーネントから同じリソースにテレメトリを送信する必要があります。 そうすることで、それらを 1 つのアプリケーション マップに表示し、1 つのコンポーネントから別のコンポーネントへの要求をトレースできるようになります。
 
@@ -45,7 +44,7 @@ Web アプリケーションに、フロントエンド Web アプリと 1 つ�
 
 [Azure Portal](https://portal.azure.com/) でリソースを開きます。 
 
-### <a name="self-contained-app-create-a-new-resource"></a>自己完結型アプリ: 新しいリソースを作成する
+### <a name="self-contained-app-create-a-new-resource"></a>自己完結型アプリ: 新しいリソースを作成
 
 新しいアプリが他のアプリケーションと関連していない場合は、独自のリソースが必要です。
 
@@ -91,7 +90,7 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 * コードでインストルメンテーション キーを設定します (たとえば、 `main()`内)。 
   
     `TelemetryConfiguration.Active.InstrumentationKey = "` *自分のキー* `";` 
-* [API を使用して独自のテレメトリを記述](app-insights-api-custom-events-metrics.md#ikey)します。
+* [API を使用して独自のテレメトリを記述](../azure-monitor/app/api-custom-events-metrics.md#ikey)します。
 
 **他の Application Insights パッケージをインストールしている場合** 、必要に応じて .config ファイルを使用してインストルメンテーション キーを設定します。
 
@@ -120,7 +119,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 ### <a name="no-data"></a>データが表示されない場合
 * アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
-* [[検索]](app-insights-diagnostic-search.md) タイルを開き、個々のイベントを表示します。 メトリック パイプラインを経由すると、イベントの取得に少し時間がかかる場合があります。
+* [[検索]](../azure-monitor/app/diagnostic-search.md) タイルを開き、個々のイベントを表示します。 メトリック パイプラインを経由すると、イベントの取得に少し時間がかかる場合があります。
 * 数秒待機してから **[最新の情報に更新]** をクリックします。 グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
 * [トラブルシューティング](app-insights-troubleshoot-faq.md)に関するページを参照します。
 
@@ -135,7 +134,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 サーバーのファイアウォールで送信トラフィック用のポートを開きます。 必要なアドレスの一覧については、[こちらのページ](https://docs.microsoft.com/azure/application-insights/app-insights-ip-addresses)を参照してください。 
 
 ### <a name="trouble-on-your-build-server"></a>ビルド サーバーで問題が発生した場合
-[このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
+[このトラブルシューティング項目](../azure-monitor/app/asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
 
 > [!NOTE]
 > アプリが大量のテレメトリを生成する場合は、アダプティブ サンプリング モジュールが、代表的な一部のイベントのみを送信することによって、ポータルに送信される量を自動的に削減します。 ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。 
@@ -148,5 +147,5 @@ Visual Studio で、送信されたイベント数が表示されます。
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>次の手順
-* [他のテレメトリを追加](app-insights-asp-net-more.md) します。
+* [他のテレメトリを追加](../azure-monitor/app/asp-net-more.md) します。
 

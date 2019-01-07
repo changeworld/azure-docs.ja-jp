@@ -1,26 +1,22 @@
 ---
-title: Azure BLOB データを高度な分析を使用して処理する | Microsoft Docs
-description: Azure BLOB ストレージのデータを処理します。
-services: machine-learning,storage
-documentationcenter: ''
-author: deguhath
+title: Azure BLOB データを高度な分析を使用して処理する - Team Data Science Process
+description: 高度な分析を使用してデータを探索し、Azure BLOB ストレージに保存されているデータから特徴を生成します。
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: d8a59078-91d3-4440-b85c-430363c3f4d1
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: 3daf86f59a84f8c442581160142dcf806173b626
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 36e3512caa8922f8bc1a65f13ea41d6873b51e5e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836604"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140540"
 ---
 # <a name="heading"></a>Azure  BLOB データを高度な分析を使用して処理する
 このドキュメントでは、データの探索および Azure BLOB ストレージに保存されたデータからの特徴の生成について説明します。 

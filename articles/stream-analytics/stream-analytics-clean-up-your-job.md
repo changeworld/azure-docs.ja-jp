@@ -1,20 +1,20 @@
 ---
 title: Azure Stream Analytics ジョブの削除
-description: この記事では、Azure Stream Analytics ジョブを削除する方法について説明します。
+description: この記事では、Azure Stream Analytics ジョブを削除するさまざまな方法を示します。
 services: stream-analytics
 author: mamccrea
-manager: kfile
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/22/2018
-ms.openlocfilehash: 580d05909ff3c94c982be5353b3b5e86a78fc43f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 85db38fef5e69c4de855f8cb6d54151496faebbe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969342"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090246"
 ---
 # <a name="clean-up-your-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブの削除
 
@@ -31,7 +31,7 @@ Azure Stream Analytics ジョブは、Azure Portal、Azure PowerShell、Azure SD
 
 3. Stream Analytics ジョブのページで **[停止]** をクリックします。 
 
-   ![ジョブを停止する](./media/stream-analytics-clean-up-your-job/stop-job.png)
+   ![Azure Stream Analytics ジョブを停止する](./media/stream-analytics-clean-up-your-job/stop-stream-analytics-job.png)
 
 
 ## <a name="delete-a-job-in-azure-portal"></a>Azure Portal でジョブを削除する
@@ -42,7 +42,7 @@ Azure Stream Analytics ジョブは、Azure Portal、Azure PowerShell、Azure SD
 
 3. Stream Analytics ジョブのページで **[削除]** を選択してジョブを削除します。 
 
-   ![ジョブを削除する](./media/stream-analytics-clean-up-your-job/delete-job.png)
+   ![Azure Stream Analytics ジョブを削除する](./media/stream-analytics-clean-up-your-job/delete-stream-analytics-job.png)
 
 
 ## <a name="stop-or-delete-a-job-using-powershell"></a>PowerShell を使用してジョブを停止または削除する

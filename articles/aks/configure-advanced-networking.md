@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 289aa893a0ffa598d5b9fae67a81e9bf0c9782f7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 943c0d4eb25fad1282b3329b945ded45581aeba3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014399"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994550"
 ---
 # <a name="configure-advanced-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) における高度なネットワークの構成
 
@@ -49,9 +49,9 @@ AKS クラスターの IP アドレス計画は、仮想ネットワーク、ノ
 | アドレス範囲/Azure リソース | 制限とサイズ変更 |
 | --------- | ------------- |
 | 仮想ネットワーク | Azure の仮想ネットワークは、/8 と同じサイズが可能ですが、構成される IP アドレスの個数は 65,536 に制限されています。 |
-| サブネット | クラスターにプロビジョニングされている可能性のあるノード、ポッド、すべての Kubernetes、および Azure のリソースを収容するのに十分な大きさである必要があります。 たとえば、内部に Azure Load Balancer をデプロイする場合は、そのフロントエンド IP は、パブリック IP ではなく、クラスター サブネットから割り当てられています。 アップグレード操作や今後のスケーリングのニーズも、サブネットのサイズで考慮される必要があります。<p />アップグレード操作用の追加のノードを含む*最小の*サブネットのサイズの計算には、`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)` を使用します。<p/>たとえば、50 のノードから構成されるクラスターは、`(51) + (51  * 30 (default)) = 1,581` (/21 以上) です。<p/>たとえば、追加でノードを 10 増やす用意がされている 50 のノードのクラスターは、`(61) + (61 * 30 (default)) = 2,440` (/20 以上) です。<p>クラスターを作成するときにノードごとの最大ポッド数を指定しないと、ノードごとの最大ポッド数は *30* に設定されます。 必要な最小 IP アドレス数はその値に基づきます。 別の最大値に基づいて最小 IP アドレス要件を計算する場合、[how to configure the maximum number of pods per node (ノードごとの最大ポッド数の構成方法)](#configure-maximum---new-clusters) を参照して、クラスターをデプロイするときにこの値を設定します。 |
+| サブネット | クラスターにプロビジョニングされている可能性のあるノード、ポッド、すべての Kubernetes、および Azure のリソースを収容するのに十分な大きさである必要があります。 たとえば、内部に Azure Load Balancer をデプロイする場合は、そのフロントエンド IP は、パブリック IP ではなく、クラスター サブネットから割り当てられています。 アップグレード操作や今後のスケーリングのニーズも、サブネットのサイズで考慮される必要があります。<p />アップグレード操作用の追加のノードを含む*最小の*サブネットのサイズの計算には、`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)` を使用します。<p/>たとえば、50 のノードから構成されるクラスターは、`(51) + (51  * 30 (default)) = 1,581` (/21 以上) です。<p/>たとえば、追加でノードを 10 増やす用意がされている 50 のノードのクラスターは、`(61) + (61 * 30 (default)) = 1,891` (/21 以上) です。<p>クラスターを作成するときにノードごとの最大ポッド数を指定しないと、ノードごとの最大ポッド数は *30* に設定されます。 必要な最小 IP アドレス数はその値に基づきます。 別の最大値に基づいて最小 IP アドレス要件を計算する場合、[how to configure the maximum number of pods per node (ノードごとの最大ポッド数の構成方法)](#configure-maximum---new-clusters) を参照して、クラスターをデプロイするときにこの値を設定します。 |
 | Kubernetes サービスのアドレス範囲 | この範囲は、この仮想ネットワーク上のネットワーク要素、またはこの仮想ネットワークに接続されているネットワーク要素では使用しないでください。 サービスのアドレスの CIDR は、/12 より小さくする必要があります。 |
-| Kubernetes DNS サービスの IP アドレス | クラスター サービス検索 (kube-dns) で使用される、Kubernetes サービスのアドレス範囲内の IP アドレス。 |
+| Kubernetes DNS サービスの IP アドレス | クラスター サービス検索 (kube-dns) で使用される、Kubernetes サービスのアドレス範囲内の IP アドレス。 アドレス範囲内の最初の IP アドレス (.1 など) は使用しないでください。 サブネット範囲の最初のアドレスは、*kubernetes.default.svc.cluster.local* アドレスに使用されます。 |
 | Docker ブリッジ アドレス | ノード上の Docker ブリッジの IP アドレスとして使用される IP アドレス(CIDR 表記)。 既定値は 172.17.0.1/16 です。 |
 
 ## <a name="maximum-pods-per-node"></a>ノードごとの最大ポッド数
@@ -68,9 +68,9 @@ AKS クラスターのノードごとの最大ポッド数は 110 です。 ノ�
 
 ノードごとの最大ポッド数を構成できるのは*クラスターのデプロイ時のみ*です。 Azure CLI または Resource Manager テンプレートを使用してデプロイする場合、ノードごとの最大ポッド数の値を最大 110 に設定できます。
 
-* **Azure CLI**: [az aks create][az-aks-create] コマンドを使用して、クラスターをデプロイするときに `--max-pods` 引数を指定します。 最大値は 110 です。
-* **Resource Manager テンプレート**: Resource Manager テンプレートを使用してクラスターをデプロイするときに、[ManagedClusterAgentPoolProfile] オブジェクトに `maxPods` プロパティを指定します。 最大値は 110 です。
-* **Azure Portal**: Azure Portal を使用してクラスターをデプロイするときに、ノードごとのポッドの最大数を変更することはできません。 Azure Portal を使用してデプロイした高度なネットワーク クラスターのポッド数は、ノードあたり 30 に制限されています。
+* **Azure CLI**:[az aks create][az-aks-create] コマンドを使用して、クラスターをデプロイするときに `--max-pods` 引数を指定します。 最大値は 110 です。
+* **Resource Manager テンプレート**:Resource Manager テンプレートを使用してクラスターをデプロイするときに、[ManagedClusterAgentPoolProfile] オブジェクトに `maxPods` プロパティを指定します。 最大値は 110 です。
+* **Azure ポータル**:Azure portal を使用してクラスターをデプロイするときに、ノードごとのポッドの最大数を変更することはできません。 Azure Portal を使用してデプロイした高度なネットワーク クラスターのポッド数は、ノードあたり 30 に制限されています。
 
 ### <a name="configure-maximum---existing-clusters"></a>最大値の構成 - 既存のクラスター
 
@@ -80,11 +80,11 @@ AKS クラスターのノードごとの最大ポッド数は 110 です。 ノ�
 
 AKS クラスターを作成するときに、高度なネットワーク用に以下のパラメーターを構成できます。
 
-**仮想ネットワーク**: Kubernetes クラスターをデプロイする仮想ネットワーク。 クラスターに新しい仮想ネットワークを作成する場合は、*[新規作成]* を選択し、*[仮想ネットワークの作成]* セクションの手順に従います。 Azure 仮想ネットワークの制限とクォータについては、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」を参照してください。
+**仮想ネットワーク**:Kubernetes クラスターをデプロイする仮想ネットワーク。 クラスターに新しい仮想ネットワークを作成する場合は、*[新規作成]* を選択し、*[仮想ネットワークの作成]* セクションの手順に従います。 Azure 仮想ネットワークの制限とクォータについては、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」を参照してください。
 
-**サブネット**: クラスターを展開する仮想ネットワーク内のサブネット。 クラスターの仮想ネットワークに新しいサブネットを作成する場合は、*[新規作成]* を選択し、*[サブネットの作成]* セクションの手順に従います。 ハイブリッド接続する場合、ご使用の環境のその他の仮想ネットワークのアドレス範囲と重複しないようにする必要があります。
+**サブネット**:クラスターをデプロイする仮想ネットワーク内のサブネット。 クラスターの仮想ネットワークに新しいサブネットを作成する場合は、*[新規作成]* を選択し、*[サブネットの作成]* セクションの手順に従います。 ハイブリッド接続する場合、ご使用の環境のその他の仮想ネットワークのアドレス範囲と重複しないようにする必要があります。
 
-**Kubernetes サービスのアドレス範囲**: これは、Kubernetes によってクラスター内の[サービス][services]に割り当てられる仮想 IP のセットです。 次の要件を満たす任意のプライベート アドレス範囲を使用できます。
+**Kubernetes サービスのアドレス範囲**:これは、Kubernetes によってクラスター内の[サービス][services]に割り当てられる仮想 IP のセットです。 次の要件を満たす任意のプライベート アドレス範囲を使用できます。
 
 * クラスターの仮想ネットワークの IP アドレス範囲に含まれていてはなりません
 * クラスターの仮想ネットワークがピアリングする他の仮想ネットワークと重複していてはなりません
@@ -93,9 +93,9 @@ AKS クラスターを作成するときに、高度なネットワーク用に�
 
 技術的には、クラスターと同じ仮想ネットワーク内のサービス アドレス範囲を指定できますが、お勧めはしません。 重複する IP アドレス範囲を使うと、予期しない動作になる可能性があります。 詳細については、この記事の [FAQ](#frequently-asked-questions) のセクションを参照してください。 Kubernetes サービスについて詳しくは、Kubernetes ドキュメントの「[Services][services]」(サービス) をご覧ください。
 
-**[Kubernetes DNS service IP address]\(Kubernetes DNS サービスの IP アドレス\)**: クラスターの DNS サービスの IP アドレス。 *[Kubernetes service address range]\(Kubernetes サービス アドレスの範囲\)* 内に含まれるアドレスを指定する必要があります。
+**Kubernetes DNS サービスの IP アドレス**:クラスターの DNS サービスの IP アドレス。 *[Kubernetes service address range]\(Kubernetes サービス アドレスの範囲\)* 内に含まれるアドレスを指定する必要があります。 アドレス範囲内の最初の IP アドレス (.1 など) は使用しないでください。 サブネット範囲の最初のアドレスは、*kubernetes.default.svc.cluster.local* アドレスに使用されます。
 
-**[Docker Bridge address]\(Docker ブリッジのアドレス\)**: Docker ブリッジに割り当てる IP アドレスとネットマスク。 この IP アドレスは、クラスターの仮想ネットワークの IP アドレス範囲に含まれていてはなりません。
+**Docker ブリッジのアドレス**:Docker ブリッジに割り当てる IP アドレスとネットマスク。 この IP アドレスは、クラスターの仮想ネットワークの IP アドレス範囲に含まれていてはなりません。
 
 ## <a name="configure-networking---cli"></a>ネットワークを構成する - CLI
 
@@ -162,18 +162,18 @@ AKS のネットワークの詳細については、次の記事を参照して�
 - [動的パブリック IP アドレスを使用してイングレス コントローラーを作成し、Let's Encrypt を構成して TLS 証明書を自動的に生成する][aks-ingress-tls]
 - [静的パブリック IP アドレスを使用してイングレス コントローラーを作成し、Let's Encrypt を構成して TLS 証明書を自動的に生成][aks-ingress-static-tls]
 
-### <a name="acs-engine"></a>ACS Engine
+### <a name="aks-engine"></a>AKS Engine
 
-[Azure Container Service Engine (ACS Engine)][acs-engine] は、Azure に Docker 対応クラスターを展開する場合に使用できる Azure Resource Manager テンプレートを生成するオープンソース プロジェクトです。 Kubernetes、DC/OS、Swarm Mode、Swarm オーケストレーターは、ACS Engine を使用して展開できます。
+[Azure Kubernetes Service Engine (AKS Engine)][aks-engine] は、Azure に Docker 対応クラスターをデプロイする場合に使用できる Azure Resource Manager テンプレートを生成するオープンソース プロジェクトです。 Kubernetes、DC/OS、Swarm Mode、Swarm オーケストレーターは、AKS Engine を使用してデプロイできます。
 
-ACS Engine で作成された Kubernetes クラスターは、[kubenet][kubenet] および [Azure CNI][cni-networking] プラグインの両方をサポートしています。 そのため、ACS Engine は、基本ネットワークと高度なネットワークの両方のシナリオをサポートしています。
+AKS Engine で作成された Kubernetes クラスターは、[kubenet][kubenet] および [Azure CNI][cni-networking] プラグインの両方をサポートしています。 そのため、AKS Engine は、基本ネットワークと高度なネットワークの両方のシナリオをサポートしています。
 
 <!-- IMAGES -->
 [advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png
 [portal-01-networking-advanced]: ./media/networking-overview/portal-01-networking-advanced.png
 
 <!-- LINKS - External -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [portal]: https://portal.azure.com
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md

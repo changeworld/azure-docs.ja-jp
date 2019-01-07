@@ -3,7 +3,7 @@ title: 移行後の管理 - Azure SQL Database | Microsoft Docs
 description: Azure SQL Database への移行後のデータベースの管理方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: fd32a00fe83e731321cb5e365f64d0f6acf8732d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e4f70521fbd081f7e26f56f4175656cca61887d1
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870980"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890706"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
 
@@ -57,7 +57,7 @@ Azure SQL DB ではバックアップを作成しません。なぜなら必要�
 ### <a name="how-does-my-disaster-recovery-plan-change-from-on-premises-to-sql-database"></a>オンプレミスのディザスター リカバリー プランをどのように SQL Database に変更すればよいですか?
 要約すると、従来のオンプレミス SQL Server のセットアップでは、フェールオーバー クラスタリング、データベース ミラーリング、トランザクション レプリケーション、ログ配布などの機能を使って可用性をアクティブに管理し、バックアップを維持および管理して、ビジネス継続性を確保する必要がありました。 SQL Database ではプラットフォームがこれらを自動的に管理するので、ユーザーはデータベース アプリケーションの開発と最適化に集中でき、同じくらい災害管理に配慮する必要はありません。 ユーザーは、Azure Portal で数回クリックして (または PowerShell API で数個のコマンドを入力して) バックアップ プランとディザスター リカバリー プランを構成し、使用することができます。 
 
-ディザスター リカバリーについて詳しくは、「[Azure SQL Db Disaster Recovery 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)」(Azure SQL DB ディザスター リカバリー 101) をご覧ください。
+ディザスター リカバリーの詳細については、「[Azure SQL Db Disaster Recovery 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)」 (Azure SQL Db ディザスター リカバリー 101) を参照してください。
 
 ## <a name="security-and-compliance"></a>セキュリティとコンプライアンス
 SQL Database ではセキュリティとプライバシーが非常に重視されています。 SQL Database 内のセキュリティはデータベース レベルとプラットフォーム レベルで利用でき、最も理解しやすいのは複数のレイヤーに分類されているときです。 各レイヤーで、アプリケーションを制御して最善のセキュリティを提供します。 以下のレイヤーがあります。
@@ -113,10 +113,10 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 
 ### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>サーバーおよび SQL Database のデータベースでのアクティビティを監視および規制するにはどうすればよいですか?
 #### <a name="sql-database-auditing"></a>SQL Database 監査
-SQL Database では、監査を有効にしてデータベース イベントを追跡することができます。 [SQL Database Auditing](sql-database-auditing.md) は、データベース イベントを記録して、Azure Storage アカウントの監査ログ ファイルに書き込みます。 セキュリティとポリシーの違反の可能性について洞察を得たり、法令順守を維持したりするには、監査が特に有効です。監査が必要であると考えられる特定のイベント カテゴリを定義および構成し、それを基にして、あらかじめ構成されたレポートやダッシュボードを使ってデータベースで発生したイベントの概要を把握できます。 これらの監査ポリシーは、データベース レベルまたはサーバー レベルで適用できます。 サーバー/データベースの監査を有効にする方法については、「[SQL Database の監査を有効にする](sql-database-security-tutorial.md#enable-sql-database-auditing-if-necessary)」をご覧ください。
+SQL Database では、監査を有効にしてデータベース イベントを追跡することができます。 [SQL Database Auditing](sql-database-auditing.md) は、データベース イベントを記録して、Azure Storage アカウントの監査ログ ファイルに書き込みます。 セキュリティとポリシーの違反の可能性について洞察を得たり、法令順守を維持したりするには、監査が特に有効です。監査が必要であると考えられる特定のイベント カテゴリを定義および構成し、それを基にして、あらかじめ構成されたレポートやダッシュボードを使ってデータベースで発生したイベントの概要を把握できます。 これらの監査ポリシーは、データベース レベルまたはサーバー レベルで適用できます。 サーバー/データベースの監査を有効にする方法については、[SQL Database の監査を有効にする](sql-database-security-tutorial.md#enable-sql-database-auditing-if-necessary)方法に関するトピックをご覧ください。
 
 #### <a name="threat-detection"></a>脅威の検出
-[脅威検出](sql-database-threat-detection.md)を使うと、監査によって発見されたセキュリティやポリシーの違反に、とても簡単に対処できます。 セキュリティの専門化でなくても、システム内の潜在的な脅威や違反に対処できます。 脅威検出には、SQL インジェクションの検出など、組み込み機能もいくつかあります。 SQL インジェクションとは、データを変更または侵害する試みであり、データベース アプリケーションを攻撃する非常に一般的な手段です。 SQL Database の脅威検出機能では、潜在的な脆弱性と SQL インジェクション攻撃、および異常なデータベース アクセス パターン (通常とは異なる場所または未知のプリンシパルからのアクセスなど) を検出するアルゴリズムを複数セット実行します。 データベースで脅威が検出された場合、セキュリティ責任者またはその他の指定された管理者に電子メール通知が送られます。 各通知には、不審なアクティビティの詳細情報と、脅威に対して推奨されるさらなる調査方法や軽減策が記載されています。 脅威検出を有効にする方法については、「[SQL Database の脅威の検出を有効にする](sql-database-security-tutorial.md#enable-sql-database-threat-detection)」をご覧ください。 
+[脅威検出](sql-database-threat-detection.md)を使うと、監査によって発見されたセキュリティやポリシーの違反に、とても簡単に対処できます。 セキュリティの専門化でなくても、システム内の潜在的な脅威や違反に対処できます。 脅威検出には、SQL インジェクションの検出など、組み込み機能もいくつかあります。 SQL インジェクションとは、データを変更または侵害する試みであり、データベース アプリケーションを攻撃する非常に一般的な手段です。 SQL Database の脅威検出機能では、潜在的な脆弱性と SQL インジェクション攻撃、および異常なデータベース アクセス パターン (通常とは異なる場所または未知のプリンシパルからのアクセスなど) を検出するアルゴリズムを複数セット実行します。 データベースで脅威が検出された場合、セキュリティ責任者またはその他の指定された管理者に電子メール通知が送られます。 各通知には、不審なアクティビティの詳細情報と、脅威に対して推奨されるさらなる調査方法や軽減策が記載されています。 脅威検出を有効にする方法については、「[SQL Database の脅威の検出を有効にする](sql-database-security-tutorial.md#enable-sql-database-threat-detection)」を参照してください。 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>一般に SQL Database 上のデータを保護するにはどうすればよいですか?
 暗号化は、機微なデータをセキュリティで保護して侵入者から守るための強力なメカニズムを提供します。 復号化キーがなくては、侵入者は暗号化されたデータを使用できません。 したがって、暗号化は SQL Database に組み込まれている既存のセキュリティ レイヤーの上に別の保護レイヤーを追加します。 SQL Database のデータの保護には 2 つの側面があります。 
 - データ ファイルとログ ファイルに保存されているデータ 
@@ -136,7 +136,7 @@ SQL Database では、既定により、記憶域サブシステムのデータ 
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>データベース内の機微なデータへのアクセスを制限するにはどうすればよいですか?
 どのようなアプリケーションでも、データベースには機微なデータがある程度の量存在し、無制限にアクセスされないように防ぐ必要があります。 組織内の特定の担当者はこのデータを見る必要がありますが、他のユーザーはこのデータを見ることができてはなりません。 従業員の給与などはその一例です。 管理者は自分の直属の部下の給与情報にアクセスする必要がありますが、個々のチーム メンバーは同僚の給与情報にアクセスできる必要はありません。 もう 1 つのシナリオは、開発段階またはテストの間に機微なデータ (顧客の SSN など) を使用するデータ開発者です。 やはり、この情報は開発者に公開する必要はありません。 このような場合、機微なデータはマスクするか、まったく公開しないようにする必要があります。 SQL Database には、機微なデータを未承認ユーザーが表示できないようにする 2 つのアプローチがあります。
 
-[動的データ マスク](sql-database-dynamic-data-masking-get-started.md)はデータ マスク機能であり、アプリケーション レイヤー上の権限のないユーザーに対して機微なデータをマスクすることでこれらのデータの公開を制限できます。 マスク ルールを定義してマスク パターン (例: 国 ID SSN: XXX-XX-0000 の最後の 4 桁のみを表示し残りは X と表示する) を作成するとともに、マスク ルールから除外するユーザーを指定できます。 マスクの適用は処理中に行われ、さまざまなデータ カテゴリにさまざまなマスク関数を使用できます。 動的データ マスクを使うと、データベースの機微なデータを自動的に検出して、マスクを適用できます。
+[動的データ マスク](sql-database-dynamic-data-masking-get-started.md)はデータ マスク機能であり、アプリケーション レイヤー上の権限のないユーザーに対して機微なデータをマスクすることでこれらのデータの公開を制限できます。 マスク パターンを作成できるマスク ルールを定義し (たとえば、XXX-XX-0000 のように、国民 ID である SSN の最後の 4 桁のみを表示しそれ以外の多くを X で隠す)、マスク ルールから除外されるユーザーを識別します。 マスクの適用は処理中に行われ、さまざまなデータ カテゴリにさまざまなマスク関数を使用できます。 動的データ マスクを使うと、データベースの機微なデータを自動的に検出して、マスクを適用できます。
 
 [行レベル セキュリティ](/sql/relational-databases/security/row-level-security)を使うと、行レベルでアクセスを制御することができます。 つまり、クエリを実行するユーザー (グループ メンバーシップまたは実行コンテキスト) に基づいて、データベース テーブル内の特定の行が隠ぺいされます。 このアクセス制限は、アプリのロジックを簡素化するため、アプリケーション層ではなくデータベース層で行われます。 最初に公開されない行を排除するフィルター述語を作成し、次にこれらの行にアクセスできるユーザーを定義するセキュリティ ポリシーを作成します。 最後に、エンド ユーザーがクエリを実行すると、ユーザーの特権に応じて、制限された行が表示されるか、またはまったく表示されません。
 
@@ -144,13 +144,13 @@ SQL Database では、既定により、記憶域サブシステムのデータ 
 
 Always Encrypted (クライアント側暗号化) および Transparent Data Encryption (保存時暗号化) ではともに、キー管理オプションが用意されています。 暗号化キーを定期的にローテーションすることをお勧めします。 ローテーションの頻度は、組織内部の規制とコンプライアンス要件の両方に合わせる必要があります。
 
-**Transparent Data Encryption (TDE)**: TDE は 2 キー階層になっており、各ユーザー データベースのデータは対称的でデータベース固有の AES-256 データベース暗号化キー (DEK) で暗号化され、さらにサーバー固有の非対称の RSA 2048 マスター キーで暗号化されます。 マスター キーは次のどちらかで管理できます。
+**Transparent Data Encryption (TDE)**:TDE は 2 キー階層になっており、各ユーザー データベースのデータは対称的でデータベース固有の AES-256 データベース暗号化キー (DEK) で暗号化され、さらにサーバー固有の非対称の RSA 2048 マスター キーで暗号化されます。 マスター キーは次のどちらかで管理できます。
 - SQL Database プラットフォームで自動的。
 - キー ストアとして [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) を使用。
 
 既定では、Transparent Data Encryption のマスター キーは利便性のために SQL Database サービスにより管理されます。 組織でマスター キーを管理する必要がある場合、 \[Azure Key Vault] \(sql-database-always-encrypted-azure-key-vault.md) をキー ストアとして使用できます。 Azure Key Vault を使用する場合、組織でキーのプロビジョニング、ローテーション、および権限管理を制御することになります。 TDE マスター キーは DEK を再暗号化しただけのものであるため、[このキーのローテーションおよび種類の切り替え](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation)は短時間で行うことができます。 セキュリティとデータ管理で役割が分けられている組織の場合、セキュリティ管理者が TDE マスター キーの主要な素材を Azure Key Vault にプロビジョニングし、サーバーでの保存時暗号化用に使用する Azure Key Vault キー ID をデータベース管理者に提供できます。 Key Vault は、マイクロソフトが暗号化キーを確認または抽出しないように作られています。 また、組織のキーを一元的に管理できます。 
 
-**Always Encrypted**: Always Encrypted は [2 キー階層](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted)になっており、機微なデータの列は AES 256 列暗号化キー (CEK) で暗号化され、さらに列マスター キー (CMK) で暗号化されます。 Always Encrypted で提供されるクライアント ドライバーには、CMK の長さに関する制限はありません。 CEK の暗号化値はデータベースに格納され、CMK は Windows 証明書ストア、Azure Key Vault、ハードウェア セキュリティ モジュールなどの信頼できるキー ストアに格納されます。 
+**Always Encrypted**:Always Encrypted は [2 キー階層](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted)になっており、機微なデータの列は AES 256 列暗号化キー (CEK) で暗号化され、さらに列マスター キー (CMK) で暗号化されます。 Always Encrypted で提供されるクライアント ドライバーには、CMK の長さに関する制限はありません。 CEK の暗号化値はデータベースに格納され、CMK は Windows 証明書ストア、Azure Key Vault、ハードウェア セキュリティ モジュールなどの信頼できるキー ストアに格納されます。 
 - [CEK と CMK](/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell) はともにローテーションさせることができます。 
 - CEK のローテーションはデータ操作のサイズであり、暗号化された列を含むテーブルのサイズによっては時間がかかる場合があります。 そのため、CEK のローテーションを適切に計画することをお勧めします。 
 - ただし、CMK のローテーションはデータベースのパフォーマンスに影響しないため、個別のロールを使用して行うことができます。
@@ -164,7 +164,7 @@ Always Encrypted (クライアント側暗号化) および Transparent Data Enc
 - [任意の環境間](../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [ポイント ツー ポイント](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-また、ExpressRoute では、購入した帯域幅制限の最大 2 倍を追加料金なしで利用できます。 また、ExpressRoute を使用してリージョン間接続を構成することもできます。 ER 接続プロバイダーの一覧は、「[ExpressRoute パートナーとピアリングの場所](../expressroute/expressroute-locations.md)」をご覧ください。 次の記事では、ExpressRoute についてさらに詳しく説明されています。
+また、ExpressRoute では、購入した帯域幅制限の最大 2 倍を追加料金なしで利用できます。 また、ExpressRoute を使用してリージョン間接続を構成することもできます。 ER 接続プロバイダーの一覧については、「[Express Route パートナーとピアリングの場所](../expressroute/expressroute-locations.md)」を参照してください。 次の記事では、ExpressRoute についてさらに詳しく説明されています。
 - [ExpressRoute の概要](../expressroute/expressroute-introduction.md)
 - [前提条件](../expressroute/expressroute-prerequisites.md)
 - [ワークフロー](../expressroute/expressroute-workflows.md)
@@ -179,13 +179,13 @@ SQL Database は、さまざまな規制に準拠しています。 適合して
 - セキュリティの最適化。
 - コストの最適化。
 
-**パフォーマンスの監視と最適化**: Query Performance Insight を使うと、データベースのワークロードに合わせて調整された推奨事項が得られ、アプリケーションは常に最適なレベルで実行できます。 推奨事項を自動的に適用し、面倒なメンテナンス タスクを実行しなくてよいように設定することもできます。 Index Advisor を使うと、ワークロードに基づくインデックスの推奨設定を自動的に実装できます。これは自動チューニングと呼ばれます。 推奨事項はアプリケーション ワークロードの変化に応じて進化し、最も重要な推奨事項が提供されます。 また、手動でこれらの推奨事項を確認し、自分で判断して適用することもできます。  
+**パフォーマンスの監視と最適化**:Query Performance Insight を使うと、データベースのワークロードに合わせて調整された推奨事項が得られ、アプリケーションは常に最適なレベルで実行できます。 推奨事項を自動的に適用し、面倒なメンテナンス タスクを実行しなくてよいように設定することもできます。 Index Advisor を使うと、ワークロードに基づくインデックスの推奨設定を自動的に実装できます。これは自動チューニングと呼ばれます。 推奨事項はアプリケーション ワークロードの変化に応じて進化し、最も重要な推奨事項が提供されます。 また、手動でこれらの推奨事項を確認し、自分で判断して適用することもできます。  
 
-**セキュリティの最適化**: SQL Database では、データの保護に役立つ実践的なセキュリティの推奨事項と、データベースに対する潜在的な脅威になる可能性のある不審なデータベース アクティビティを識別して調査する脅威検出が提供されます。 [SQL 脆弱性評価](sql-vulnerability-assessment.md): データベース スキャンおよびレポート サービスであり、大規模なデータベースのセキュリティ状態を監視して、セキュリティ上のリスクおよびユーザーが定義したセキュリティ ベースラインからのずれを特定します。 各スキャン後には、ユーザーに合わせた実行可能な手順の一覧と修復スクリプト、およびコンプライアンスに準拠するために使用可能な評価レポートが提供されます。
+**セキュリティの最適化**:SQL Database では、データの保護に役立つ実践的なセキュリティの推奨事項と、データベースに対する潜在的な脅威になる可能性のある不審なデータベース アクティビティを識別して調査する脅威検出が提供されます。 [SQL 脆弱性評価](sql-vulnerability-assessment.md): データベース スキャンおよびレポート サービスであり、大規模なデータベースのセキュリティ状態を監視して、セキュリティ上のリスクおよびユーザーが定義したセキュリティ ベースラインからのずれを特定します。 各スキャン後には、ユーザーに合わせた実行可能な手順の一覧と修復スクリプト、およびコンプライアンスに準拠するために使用可能な評価レポートが提供されます。
 
 Azure Security Center では、全体的なセキュリティ推奨事項を確認し、シングル クリックでそれらを適用できます。 
 
-**コストの最適化**: Azure SQL プラットフォームは、サーバーのデータベース全体の使用履歴を分析し、コストの最適化オプションを評価して推奨します。 この分析により実践的な推奨事項を分析して作成するには、通常 2 週間かかります。 エラスティック プールはそのようなオプションの 1 つです。 推奨事項は、バナーとしてポータルに表示されます。
+**コストの最適化**:Azure SQL プラットフォームにより、サーバーのデータベース全体の使用履歴が分析され、お客様に適したコストの最適化オプションが評価および推奨されます。 この分析により実践的な推奨事項を分析して作成するには、通常 2 週間かかります。 エラスティック プールはそのようなオプションの 1 つです。 推奨事項は、バナーとしてポータルに表示されます。
 
 ![エラスティック プールの推奨事項](./media/sql-database-manage-after-migration/elastic-pool-recommendations.png) 
 
@@ -196,7 +196,7 @@ Azure Security Center では、全体的なセキュリティ推奨事項を確�
 ### <a name="how-do-i-monitor-the-performance-and-resource-utilization-in-sql-database"></a>SQL Database のパフォーマンスとリソース使用率を監視するにはどうすればよいですか?
 
 SQL Database では、プラットフォームのインテリジェントな洞察を利用して、パフォーマンスを監視し、それに応じて調整することができます。 SQL Database のパフォーマンスとリソース使用率は、次の方法で監視できます。
-- **Azure Portal**: Azure Portal でデータベースを選択し [概要] ペインのグラフをクリックすると、単一のデータベースの使用率が表示されます。 このグラフは、CPU 使用率、DTU の割合、データ IO の割合、セッションの割合、データベース サイズの割合など、複数のメトリックを表示するように変更できます。
+- **Azure ポータル**:Azure portal でデータベースを選択し [概要] ペインのグラフをクリックすると、単一データベースの使用率が表示されます。 このグラフは、CPU 使用率、DTU の割合、データ IO の割合、セッションの割合、データベース サイズの割合など、複数のメトリックを表示するように変更できます。
 
    ![監視グラフ](./media/sql-database-manage-after-migration/monitoring-chart.png)
 
@@ -204,14 +204,14 @@ SQL Database では、プラットフォームのインテリジェントな洞�
 
 このグラフでは、リソース別のアラートを構成することもできます。 これらのアラートを使用することで、リソースの状態に電子メールで対応したり、HTTPS/HTTP エンドポイントに書き込んだり、アクションを実行することができます。 詳細については、[アラートの作成](sql-database-insights-alerts-portal.md)に関するページをご覧ください。
 
-- **動的管理ビュー**: リソース使用率の統計について、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 動的管理ビューでクエリを実行すると過去 1 時間における履歴を確認でき、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) システム カタログ ビューでクエリを実行すると過去 14 日間の履歴を確認できます。
-- **Query Performance Insight**: [Query Performance Insight](sql-database-query-performance.md) では、指定したデータベースについて、リソース使用率が上位のクエリおよび実行時間が長いクエリの履歴を確認できます。 リソース使用率、期間、および実行頻度で、上位のクエリをすばやく識別できます。 クエリを追跡し、回帰を検出できます。 この機能を使用するには、データベースで[クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を有効化しアクティブにする必要があります。
+- **動的管理ビュー**:リソース使用率の統計について、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 動的管理ビューでクエリを実行すると過去 1 時間における履歴を確認でき、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) システム カタログ ビューでクエリを実行すると過去 14 日間の履歴を確認できます。
+- **Query Performance Insight**:[Query Performance Insight](sql-database-query-performance.md) では、指定したデータベースについて、リソース使用率が上位のクエリおよび実行時間が長いクエリの履歴を確認できます。 リソース使用率、期間、および実行頻度で、上位のクエリをすばやく識別できます。 クエリを追跡し、回帰を検出できます。 この機能を使用するには、データベースで[クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を有効化しアクティブにする必要があります。
 
    ![[Query Performance Insight]](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-- **Log Analytics の Azure SQL Analytics (プレビュー)**: [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) では、主要な Azure SQL パフォーマンス メトリックを収集して視覚化することができます。ワークスペースごとに SQL Database は 15 万個、SQL エラスティック プールは 5 千個サポートされています。 これにより、監視を行い、通知を受け取ることができます。 SQL Database およびエラスティック プールのメトリックは、複数の Azure サブスクリプションとエラスティック プールにわたって監視でき、これらのメトリックを利用してアプリケーション スタックの各層における問題を特定できます。
+- **Log Analytics の Azure SQL Analytics (プレビュー)**:[Azure Log Analytics](../azure-monitor/insights/azure-sql.md) では、主要な Azure SQL パフォーマンス メトリックを収集して視覚化することができます。ワークスペースごとに SQL Database は 15 万個、SQL エラスティック プールは 5 千個がサポートされています。 これにより、監視を行い、通知を受け取ることができます。 SQL Database およびエラスティック プールのメトリックは、複数の Azure サブスクリプションとエラスティック プールにわたって監視でき、これらのメトリックを利用してアプリケーション スタックの各層における問題を特定できます。
 
-### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>パフォーマンスの問題: SQL Database と SQL Server のトラブルシューティング方法の違いはどのようなものですか?
+### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>パフォーマンスに問題があります。SQL Database と SQL Server のトラブルシューティングの方法の違いはどのようなものですか?
 クエリおよびデータベース パフォーマンスの問題の診断に使用するトラブルシューティング手法の主要な部分は、変わりません。 クラウドで利用されている SQL Server エンジンは同じものです。 ただし、Azure SQL DB プラットフォームには "インテリジェンス" が組み込まれています。 それにより、パフォーマンスの問題のトラブルシューティングと診断が容易になります。 ユーザーに代わって是正措置の一部を実行することもでき、場合によっては事前に問題を自動的に修復します。 
 
 パフォーマンスの問題のトラブルシューティングに向けたアプローチには、[Query Performance Insight (QPI)](sql-database-query-performance.md) や [Database Advisor](sql-database-advisor.md) などのインテリジェントな機能を組み合わせて使うと大きなメリットがあり、方法においてはその点が異なります。問題のトラブルシューティングに役立つかもしれない重要な詳細を手作業で調べる必要はもうありません。 難しい作業はプラットフォームがやってくれます。 その 1 つの例は QPI です。 QPI では、クエリ レベルまでドリルダウンし、過去の傾向を見て、クエリが回帰したときを正確に識別できます。 Database Advisor では、インデックスの欠落、インデックスの削除、クエリのパラメーター化など、全体的なパフォーマンスの向上に役立つ推奨事項が提供されます。 
@@ -243,11 +243,11 @@ SQL Database では、特定のクラスのデータ破損にデータを失う�
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>SQL Database のデータを BACPAC ファイルとしてエクスポートおよびインポートするにはどうすればよいですか?
 
-- **エクスポート**: Azure SQL Database は、Azure Portal で BACPAC ファイルとしてエクスポートできます
+- **エクスポート**:Azure portal から Azure SQL データベースを BACPAC ファイルとしてエクスポートできます。
 
    ![データベースのエクスポート](./media/sql-database-export/database-export.png)
 
-- **インポート**: Azure Portal を使って、データを BACPAC ファイルとしてデータベースにインポートすることもできます。
+- **インポート**:Azure portal を使って、データを BACPAC ファイルとしてデータベースにインポートすることもできます。
 
    ![データベースのインポート](./media/sql-database-import/import.png)
 

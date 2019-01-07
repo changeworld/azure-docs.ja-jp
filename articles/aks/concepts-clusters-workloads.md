@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155985"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998092"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -28,7 +28,7 @@ Kubernetes は、コンテナー ベース アプリケーションとそれに�
 
 Kubernetes はオープン プラットフォームとして、使いたいプログラミング言語、OS、ライブラリ、またはメッセージング バスでアプリケーションを開発することを可能にします。 既存の継続的インテグレーションと継続的デリバリー (CI/CD) ツールは、リリースをスケジュール設定してデプロイするために、Kubernetes と連携できます。
 
-Azure Kubernetes Service (AKS) は、アップグレードの調整など、デプロイ タスクと主要な管理タスクの複雑さを軽減する、マネージド Kubernetes サービスを提供します。 AKS クラスター マスターは Azure プラットフォームによって管理され、お使いのアプリケーションを実行する AKS ノードに対してのみ課金されます。 AKS は、オープンソースの Azure Container Service Engine (acs-engine) の最上位に構築されます。
+Azure Kubernetes Service (AKS) は、アップグレードの調整など、デプロイ タスクと主要な管理タスクの複雑さを軽減する、マネージド Kubernetes サービスを提供します。 AKS クラスター マスターは Azure プラットフォームによって管理され、お使いのアプリケーションを実行する AKS ノードに対してのみ課金されます。 AKS は、オープンソースの Azure Kubernetes Service Engine (aks-engine) の最上位に構築されます。
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes クラスターのアーキテクチャ
 
@@ -54,7 +54,7 @@ AKS は、専用の API サーバー、スケジューラなど、単一のテ�
 
 このマネージド クラスター マスターによって、高可用性を備えた *etcd* ストアなどのコンポーネントを構成する必要はなくなりますが、それと同時に、クラスター マスターには直接アクセスできないことがわかります。 Kubernetes のアップグレードは、Azure CLI または Azure portal 経由で調整され、クラスター マスターの次にノードのアップグレードが、順番に行われます。 想定される問題をトラブルシューティングするために、Azure Log Analytics からクラスター マスター ログを確認できます。
 
-クラスター マスターを特定の方法で構成する必要がある場合や、クラスター マスターに直接アクセスする必要がある場合は、[acs-engine][acs-engine] を使用して、独自の Kubernetes クラスターをデプロイできます。
+クラスター マスターを特定の方法で構成する必要がある場合や、クラスター マスターに直接アクセスする必要がある場合は、[aks-engine][aks-engine] を使用して、独自の Kubernetes クラスターをデプロイできます。
 
 ## <a name="nodes-and-node-pools"></a>ノードとノード プール
 
@@ -70,7 +70,7 @@ AKS は、専用の API サーバー、スケジューラなど、単一のテ�
 
 AKS では、クラスター内のノードに対する VM イメージは現在、Ubuntu Linux に基づいています。 AKS クラスターを作成するか、またはノード数をスケールアップすると、Azure プラットフォームが、要求された数の VM を作成して構成します。 手動の構成を実行する必要はありません。
 
-別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[acs-engine][acs-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `acs-engine` リリースでは構成オプションに注目して、AKS クラスターで公式にサポートされる前に構成オプションを提供しています。 たとえば、Docker 以外のWindows コンテナーまたはコンテナー ランタイムの使用を検討している場合、`acs-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
+別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目して、AKS クラスターで公式にサポートされる前に構成オプションを提供しています。 たとえば、Docker 以外のWindows コンテナーまたはコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
 
 ### <a name="resource-reservations"></a>リソース予約
 
@@ -218,7 +218,7 @@ AKS クラスターを作成すると、次の名前空間が利用可能にな�
 - [Kubernetes/AKS のスケール][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [kubernetes-pods]: https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/
 [kubernetes-pod-lifecycle]: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
 [kubernetes-deployments]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/

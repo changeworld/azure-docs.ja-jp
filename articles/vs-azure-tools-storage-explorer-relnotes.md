@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 608dd6067e5c9d31f720b97453615a3e8ead0a85
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 956482a30d383df558eee775b9d89c211bc53e61
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038622"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101417"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
@@ -165,9 +165,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -221,9 +221,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -276,9 +276,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -336,9 +336,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -363,7 +363,7 @@ ms.locfileid: "51038622"
 * 静的な Web サイトで使用される $web コンテナーへのアクセスがサポートされるようになりました。 これにより、Web サイトで使用されるファイルとフォルダーのアップロードと管理を容易に実行できます。 [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * macOS のアプリ バーが再構成されています。 変更には、[ファイル] メニュー、いくつかのショートカット キーの変更、およびアプリ メニューのさまざまな新しいコマンドが含まれています。 [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
 * Azure US Government にサインインするための証明機関のエンドポイントが https://login.microsoftonline.us/ に変更されています。
-* アクセシビリティ: スクリーン リーダーがアクティブであるとき、キーボード ナビゲーションが、項目を右側に表示するために使用されるテーブルでも機能するようになりました。 方向キーを使用して行と列を移動し、Enter キーで既定のアクションを呼び出し、コンテキスト メニュー キーで項目のコンテキスト メニューを開き、Shift または Control キーで複数選択を行うことができます。 [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* アクセシビリティ:スクリーン リーダーがアクティブであるとき、キーボード ナビゲーションが、項目を右側に表示するために使用されるテーブルでも機能するようになりました。 方向キーを使用して行と列を移動し、Enter キーで既定のアクションを呼び出し、コンテキスト メニュー キーで項目のコンテキスト メニューを開き、Shift または Control キーで複数選択を行うことができます。 [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
 ### <a name="fixes"></a>修正
 *  一部のコンピュータで、子プロセスの起動に時間がかかっていました。 これが発生すると、"子プロセスを適切なタイミングで開始できませんでした" エラーが表示されました。 現在、子プロセスに割り当てられる開始時間が、20 秒から90 秒に引き上げられています。 この問題による影響がまだある場合は、リンクされた GitHub 問題でコメントしてください。 [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
@@ -371,11 +371,11 @@ ms.locfileid: "51038622"
 * コンテナーのパブリック アクセス レベルを設定すると、すべてのアクセス ポリシーが削除されました (逆の場合も同様です)。 パブリック アクセス レベルとアクセス ポリシーのどちらを設定した場合でも、両方が保持されるようになりました。 [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
 * [プロパティ] ダイアログで "AccessTierChangeTime" が切り捨てられていました。 この問題は修正されています。 [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
 * [新しいディレクトリの作成] ダイアログで "Microsoft Azure Storage Explorer -" プレフィックスが欠落していました。 この問題は修正されています。 [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* アクセシビリティ: ボイス オーバーを使用したときに [エンティティの追加] ダイアログに簡単に移動できませんでした。 改良が加えられています。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* アクセシビリティ: [アクション] ウィンドウと [プロパティ] ウィンドウの折りたたみ/展開ボタンの背景色が、ハイコントラスト黒テーマ表示での類似する UI コントロールと一貫性がありませんでした。 色が変更されています。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* アクセシビリティ: ハイコントラスト黒テーマ表示で、[プロパティ] ダイアログの [X] ボタンのフォーカス スタイルが見えませんでした。 この問題は修正されています。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* アクセシビリティ: [アクション] タブと [プロパティ] タブで、複数の aria 値が欠落していたため、スクリーン リーダーの質が低下していました。 欠落していた aria 値が追加されています。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Accessibility: 左側の折り畳まれたツリー ノードに、aria 拡張値 false が指定されませんでした。 この問題は修正されています。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* アクセシビリティ:ボイス オーバーを使用したときに [エンティティの追加] ダイアログに簡単に移動できませんでした。 改良が加えられています。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* アクセシビリティ:[アクション] ウィンドウと [プロパティ] ウィンドウの折りたたみ/展開ボタンの背景色が、ハイコントラスト黒テーマ表示での類似する UI コントロールと一貫性がありませんでした。 色が変更されています。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* アクセシビリティ:ハイコントラスト黒テーマ表示で、[プロパティ] ダイアログの [X] ボタンのフォーカス スタイルが見えませんでした。 この問題は修正されています。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* アクセシビリティ:[アクション] タブと [プロパティ] タブで、複数の aria 値が欠落していたため、スクリーン リーダーの質が低下していました。 欠落していた aria 値が追加されています。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* アクセシビリティ:左側の折りたたまれたツリー ノードに、aria 拡張値 false が指定されませんでした。 この問題は修正されています。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
 
 ### <a name="known-issues"></a>既知の問題
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳しくは、[この問題](https://github.com/Microsoft/AzureStorageExplorer/issues/537)をご覧ください。
@@ -393,9 +393,9 @@ ms.locfileid: "51038622"
    * 論理的な削除
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -450,9 +450,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -504,9 +504,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -570,9 +570,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -607,9 +607,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
@@ -656,9 +656,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
@@ -702,9 +702,11 @@ ms.locfileid: "51038622"
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
     ```
@@ -764,9 +766,11 @@ ms.locfileid: "51038622"
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
     ```
@@ -818,9 +822,11 @@ ms.locfileid: "51038622"
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
     ```
@@ -913,12 +919,12 @@ ms.locfileid: "51038622"
 
 #### <a name="fixes"></a>修正
 
-* 修正: ファイルのアップロードは、メモリ不足エラーを発生させる高い可能性がありました
-* 修正: PIN/スマートカードでサインインできるようになりました
-* 修正: [ポータルで開く] が、Azure 中国、Azure ドイツ、Azure 米国政府機関、Azure Stack で機能するようになりました
-* 修正: フォルダーを BLOB コンテナーにアップロードしているときに、"無効な操作" エラーが発生する場合があります
-* 修正: スナップショットを管理しているときに、[すべて選択] が無効になっていました
-* 修正: ベース BLOB のメタデータは、そのスナップショットのプロパティを表示した後に上書きされる可能性があります
+* 修正:ファイルのアップロードは、メモリ不足エラーを発生させる高い可能性がありました
+* 修正:PIN/スマートカードでサインインできるようになりました
+* 修正:[ポータルで開く] が、Azure 中国、Azure ドイツ、Azure 米国政府機関、Azure Stack で機能するようになりました
+* 修正:フォルダーを BLOB コンテナーにアップロードしているときに、"無効な操作" エラーが発生する場合があります
+* 修正:スナップショットを管理しているときに、[すべて選択] が無効になっていました
+* 修正:ベース BLOB のメタデータは、そのスナップショットのプロパティを表示した後に上書きされる可能性があります
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1027,13 +1033,13 @@ ms.locfileid: "51038622"
 
 #### <a name="fixes"></a>修正
 
-* 修正: ストレージ エクスプローラーは、Mac の信頼できるアプリになりました
-* 修正: Ubuntu 14.04 が再びサポートされるようになりました
-* 修正: サブスクリプションを読み込むときに [アカウントの追加] UI が点滅することがありました
-* 修正: 左側のナビゲーション ウィンドウにすべてのストレージ リソースが一覧表示されないことがありました
-* 修正: 操作ウィンドウに空の操作が表示されることがありました
-* 修正: 前回終了したセッションからウィンドウ サイズが維持されるようになりました
-* 修正: コンテキスト メニューを使って同じリソースに対して複数のタブを開くことができるようになりました
+* 修正:Storage Explorer は、Mac の信頼できるアプリになりました
+* 修正:Ubuntu 14.04 が再びサポートされるようになりました
+* 修正:サブスクリプションを読み込むときに [アカウントの追加] UI が点滅することがありました
+* 修正:左側のナビゲーション ウィンドウにすべてのストレージ リソースが一覧表示されないことがありました
+* 修正:操作ウィンドウに空の操作が表示されることがありました
+* 修正:前回終了したセッションからウィンドウ サイズが維持されるようになりました
+* 修正:コンテキスト メニューを使って同じリソースに対して複数のタブを開くことができるようになりました
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1055,7 +1061,7 @@ ms.locfileid: "51038622"
 * 新しく拡張されたサブ文字列の検索で範囲指定の検索を再導入したため、検索には次の 2 つのオプションがあります。
     * グローバル検索 - 検索用語を検索テキストボックスに入力するだけです
     * 範囲指定の検索 - ノードの横にある虫眼鏡アイコンをクリックして、パスの末尾に検索用語を追加するか、右クリックして [ここから検索] を選択します
-* さまざまなテーマを追加しました。明るい (既定値)、暗い、ハイコントラスト黒、ハイ コントラスト白。 [編集] &gt; [テーマ] を選んで、テーマの設定を変更します
+* さまざまなテーマを追加しました(明るい (既定値)、暗い、ハイコントラスト黒、ハイ コントラスト白)。 [編集] &gt; [テーマ] を選んで、テーマの設定を変更します
 * BLOB とファイルのプロパティを変更できます
 * エンコードされた (Base64) キュー メッセージとエンコードされていないキュー メッセージをサポートするようになりました
 * Linux では、64 ビット OS が必要になりました。 このリリースでは、 64 ビット Ubuntu 16.04.1 LTS のみをサポートします
@@ -1063,14 +1069,14 @@ ms.locfileid: "51038622"
 
 #### <a name="fixes"></a>修正
 
-* 修正: 画面がフリーズする問題
-* 修正: セキュリティの強化
-* 修正: アタッチされたアカウントが重複して表示されることがあります
-* 修正: 定義されていないコンテンツ タイプを持つ BLOB は、例外を生成する場合があります
-* 修正: 空のテーブルでクエリ パネルを開くことができませんでした
-* 修正: 検索でのさまざまなバグ
-* 修正: [Load More]\(さらに読み込む\) をクリックするときに読み込むリソース数が、50 から 100 に増えました
-* 修正: 最初の実行で、アカウントがサインインされた場合、既定でアカウントにすべてのサブスクリプションを選択するようになりました
+* 修正:画面がフリーズする問題
+* 修正:強化されたセキュリティ
+* 修正:アタッチされたアカウントが重複して表示されることがあります
+* 修正:定義されていないコンテンツ タイプを持つ BLOB は、例外を生成する場合があります
+* 修正:空のテーブルでクエリ パネルを開くことができませんでした
+* 修正:検索でのさまざまなバグ
+* 修正:[さらに読み込む] をクリックしたときに読み込まれるリソース数が 50 から 100 に増えました
+* 修正:最初の実行で、アカウントがサインインされた場合、既定でアカウントにすべてのサブスクリプションを選択するようになりました
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1091,8 +1097,8 @@ ms.locfileid: "51038622"
 #### <a name="fixes"></a>修正
 
 * 修正: 検索中の競合状態は、ノードが展開不可能になることがあります
-* 修正: アカウント名とキーでストレージ アカウントに接続している場合、"HTTP の使用" は動作しません
-* 修正: SAS キー (特にポータルで生成されたキー) は、"末尾のスラッシュ" エラーを返します
+* 修正:アカウント名とキーでストレージ アカウントに接続している場合、"HTTP の使用" は動作しません
+* 修正:SAS キー (特にポータルで生成されたキー) は、"末尾のスラッシュ" エラーを返します
 * 修正: テーブルのインポートの問題
     * パーティション キーと行キーが逆順になる場合がありました
     * "null" のパーティション キーを読み取ることができません
@@ -1138,7 +1144,7 @@ ms.locfileid: "51038622"
 
 #### <a name="fixes"></a>修正
 
-* 修正: Microsoft アカウントは、8 ～ 12 時間ごとに再認証が必要です
+* 修正:Microsoft アカウントは、8 - 12 時間ごとに再認証が必要です
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1194,7 +1200,7 @@ ms.locfileid: "51038622"
 
 * 修正: 大きい BLOB のアップロードまたはダウンロードは、不完全なアップロードまたはダウンロードになります
 * 修正: 数値文字列 ("1") を含むエンティティの編集、追加、またはインポートは、double に変換されます
-* 修正: ローカル開発環境のテーブル ノードを展開できません
+* 修正:ローカル開発環境のテーブル ノードを展開できません
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1214,7 +1220,7 @@ ms.locfileid: "51038622"
 
 #### <a name="known-issues"></a>既知の問題
 
-* テーブル: あいまいな数値 ("1"、"1.0" など) を含むプロパティがあるエンティティを追加、編集、またはインポートしている場合、ユーザーは `Edm.String` としてエンティティを送信しようとし、値は Edm.Double としてクライアント API によって戻されます
+* テーブル:あいまいな数値 ("1"、"1.0" など) を含むプロパティがあるエンティティを追加、編集、またはインポートしている場合、ユーザーは `Edm.String` としてエンティティを送信しようとし、値は Edm.Double としてクライアント API によって戻されます
 
 03/31/2016
 

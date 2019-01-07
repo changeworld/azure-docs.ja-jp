@@ -1,26 +1,29 @@
 ---
-title: IaaS VM の Azure Disk Encryption の概要 | Microsoft Docs
+title: 概要 - IaaS VM のための Azure Disk Encryption | Microsoft Docs
 description: この記事では、IaaS VM の Microsoft Azure Disk Encryption の概要を示します。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/14/2018
-ms.openlocfilehash: 1328effbc495422e5190362c562928fbb1742e1b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 73a00756928fd476b723e0b43accf46378ae14cc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913208"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093286"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms"></a>IaaS VM の Azure Disk Encryption 
-Microsoft Azure では、利用者のデータのプライバシーとデータ主権の確保に積極的に取り組んでいます。 Azure を使用することで、利用者は、暗号化キーを暗号化し、制御し、管理すると共に、データのアクセスを制御および監査するための幅広い高度なテクノロジを通じて、Azure でホストされているデータを制御できます。 この制御により、Azure の利用者はビジネス ニーズに最適なソリューションを柔軟に選択することができます。 この記事では、技術ソリューション "Windows および Linux の IaaS 仮想マシン (VM) のための Azure Disk Encryption" について説明します。 この技術は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 
+# <a name="azure-disk-encryption-for-iaas-vms"></a>IaaS VM の Azure Disk Encryption
+
+Microsoft Azure では、利用者のデータのプライバシーとデータ主権の確保に積極的に取り組んでいます。 Azure を使用することで、利用者は、暗号化キーを暗号化し、制御し、管理すると共に、データのアクセスを制御および監査するための幅広い高度なテクノロジを通じて、Azure でホストされているデータを制御できます。 この制御により、Azure の利用者はビジネス ニーズに最適なソリューションを柔軟に選択することができます。 この記事では、次の技術ソリューションについて説明します。"Windows および Linux の IaaS 仮想マシン (VM) のための Azure Disk Encryption"。 この技術は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 
 ## <a name="overview"></a>概要
+
 Azure Disk Encryption は、Windows と Linux の IaaS VM のディスクを暗号化するのに役立つ機能です。 Disk Encryption では、Windows の業界標準である [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して、OS とデータ ディスクのボリュームの暗号化が提供されます。 このソリューションは、ディスクの暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) と統合されています。 またこのソリューションでは、VM ディスク上のすべてのデータが、Azure Storage での保存時に暗号化されます。
 
 Windows および Linux IaaS VM 用の Disk Encryption は、すべての Azure パブリック リージョンおよび Azure Government リージョンの Standard VM と Azure Premium Storage を使用する VM で一般に提供されています。 Disk Encryption の管理ソリューションを使用すると、次のビジネス ニーズに対応できます。
@@ -37,6 +40,7 @@ Azure Security Center を使用している場合、暗号化されていない 
 
 
 ## <a name="encryption-scenarios"></a>暗号化のシナリオ
+
 Disk Encryption ソリューションでは、次の顧客シナリオがサポートされています。
 
 * 事前に暗号化した VHD と暗号化キーから作成された新しい Windows IaaS VM での暗号化を有効にする。
@@ -55,7 +59,7 @@ Disk Encryption ソリューションでは、次の顧客シナリオがサポ�
 このソリューションでは、Microsoft Azure で IaaS VM が有効になっている場合、IaaS VM の以下のシナリオがサポートされます。
 
 * Azure Key Vault との統合。
-* Standard レベルの VM: [A、D、DS、G、GS、F などの IaaS VM シリーズ](https://azure.microsoft.com/pricing/details/virtual-machines/)。 これらのレベルの [Linux VM](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) が最小メモリ要件 (7 GB) を満たしている必要があります。
+* Standard レベルの VM:[A、D、DS、G、GS、F などの IaaS VM シリーズ](https://azure.microsoft.com/pricing/details/virtual-machines/)。 これらのレベルの [Linux VM](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) が最小メモリ要件 (7 GB) を満たしている必要があります。
 * サポートされている Azure ギャラリー イメージの Windows および Linux IaaS VM、マネージド ディスク、およびスケール セット VM での暗号化を有効にする。
 * Windows IaaS VM、スケール セット VM、およびマネージド ディスク VM の OS およびデータ ドライブでの暗号化を無効にする。
 * Linux IaaS VM、スケール セット VM、およびマネージド ディスク VM のデータ ドライブでの暗号化を無効にする。
@@ -87,6 +91,7 @@ Disk Encryption ソリューションでは、次の顧客シナリオがサポ�
 * ソフトウェア ベースの RAID システムを使用して構成されている Windows VM。
 
 ## <a name="encryption-features"></a>暗号化機能
+
 Azure IaaS VM 用の Disk Encryption を有効にしてデプロイすると、提供される構成に応じて、以下の機能が有効になります。
 
 * ストレージに保存中のブート ボリュームを保護するために OS ボリュームを暗号化する。

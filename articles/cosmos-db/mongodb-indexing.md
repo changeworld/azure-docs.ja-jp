@@ -1,24 +1,22 @@
 ---
-title: Azure Cosmos DB MongoDB API でのインデックス作成 | Microsoft Docs
+title: Azure Cosmos DB MongoDB API でのインデックス作成
 description: Azure Cosmos DB MongoDB API のインデックス作成機能についての概要を紹介します。
 services: cosmos-db
 author: orestis-ms
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: orkostak
-ms.openlocfilehash: a3dadfc4257d43f9df1b93f5d486e5577b7889d6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: bdb2ceb45950b99b1a5a351c6301599a791ef8cc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055313"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875299"
 ---
-# <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API でのインデックス作成
+# <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB でのインデックス作成MongoDB API
 
 Azure Cosmos DB MongoDB API には、Azure Cosmos DB の自動インデックス管理機能が利用されています。 したがってユーザーは、Azure Cosmos DB の既定のインデックス作成ポリシーを利用することができます。 つまりユーザーによってインデックスが定義されなかった場合や、いずれのインデックスも削除されなかった場合、特に何もしなくても、すべてのフィールドは、コレクションに挿入された時点で、インデックスが自動的に作成されます。 ほとんどのシナリオでは、アカウントに設定されている既定のインデックス作成ポリシーの使用をお勧めします。
 
@@ -99,5 +97,5 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 現在、一意なインデックスを作成できるのは、コレクションにドキュメントが含まれていないときに限られます。 広く使われている MongoDB 移行ツールはいずれも、データのインポート後に一意なインデックスを作成しようと試みます。 この問題を回避するためには、移行ツールに委ねることはせずに、対応するコレクションと一意なインデックスをユーザーが手動で作成することをお勧めします (```mongorestore``` の場合、この動作を実現するには、コマンド ラインで --noIndexRestore フラグを使用します)。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Cosmos DB のデータ インデックス作成のしくみ](../cosmos-db/indexing-policies.md)
+* [Azure Cosmos DB のデータ インデックス作成のしくみ](../cosmos-db/index-policy.md)
 * [TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする](../cosmos-db/time-to-live.md)

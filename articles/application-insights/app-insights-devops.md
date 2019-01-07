@@ -9,16 +9,15 @@ ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ae033b944e93fe90392af9b17de883d791d3e4dc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: bf096032d0ab429a5c6c06d5ada568c4bfb56d9f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958604"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994410"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights を使用した Web アプリおよびサービスの詳細な診断
 ## <a name="why-do-i-need-application-insights"></a>Application Insights が必要な理由
@@ -79,10 +78,10 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 * ビジネス イベントを追跡するために使用できるカスタム イベント。
 * デバッグに使用するログ トレース。
 
-## <a name="case-study-real-madrid-fc"></a>ケース スタディ: レアル・マドリード F.C.
-[レアル・マドリード フットボール クラブ](http://www.realmadrid.com/) の Web サービスは、世界各地の約 4 億 5,000 万人のファンにサービスを提供しています。 ファンは、Web ブラウザーとクラブのモバイル アプリの両方からここにアクセスします。 ファンはチケットを予約できるだけでなく、試合結果、選手、今後の試合に関する情報やビデオ クリップにもアクセスできます。 フィルターを使用して、得点数などを検索できます。 ソーシャル メディアへのリンクもあります。 ユーザー エクスペリエンスは高度にパーソナライズされており、ファンとの交流のための双方向コミュニケーションとして設計されています。
+## <a name="case-study-real-madrid-fc"></a>ケース スタディ:Real Madrid F.C.
+[レアル・マドリード フットボール クラブ](https://www.realmadrid.com/) の Web サービスは、世界各地の約 4 億 5,000 万人のファンにサービスを提供しています。 ファンは、Web ブラウザーとクラブのモバイル アプリの両方からここにアクセスします。 ファンはチケットを予約できるだけでなく、試合結果、選手、今後の試合に関する情報やビデオ クリップにもアクセスできます。 フィルターを使用して、得点数などを検索できます。 ソーシャル メディアへのリンクもあります。 ユーザー エクスペリエンスは高度にパーソナライズされており、ファンとの交流のための双方向コミュニケーションとして設計されています。
 
-このソリューションは、[Microsoft Azure でのサービスとアプリケーションのシステム](https://www.microsoft.com/en-us/enterprise/microsoftcloud/realmadrid.aspx)です。 スケーラビリティは重要な要件です。これは、トラフィックが変わりやすく、試合の前後と試合中は、トラフィック量が大幅に増える場合があるためです。
+このソリューションは、[Microsoft Azure でのサービスとアプリケーションのシステム](https://www.microsoft.com/inculture/sports/real-madrid/)です。 スケーラビリティは重要な要件です。これは、トラフィックが変わりやすく、試合の前後と試合中は、トラフィック量が大幅に増える場合があるためです。
 
 レアル・マドリードでは、システムのパフォーマンスを監視することが不可欠です。 Azure Application Insights は、システム全体の包括的なビューを提供し、信頼性の高い、高いサービス レベルを確保できます。 
 
@@ -103,7 +102,7 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 
 ![Email from proactive diagnostics](./media/app-insights-devops/030.png)
 
-お客様である Samtec は次のように語っています。「私たちは、先日の機能のカット オーバーの際、リソースの限界に達し、タイムアウトを発生させている小規模なデータベースに気づきました。 私たちが問題をトリアージしているとき、広告のとおり、まさにほぼリアルタイムでプロアクティブな検出アラートが生成されました。 このアラートと Azure プラットフォームのアラートによって、ほぼ瞬時に問題を修正することができました。 ダウンタイムは合計で 10 分未満でした。」
+お客様である Samtec は次のように語っています。「私たちは、先日の機能のカット オーバーの際、リソースの限界に達し、タイムアウトを発生させている小規模なデータベースに気付きました。 私たちが問題をトリアージしているとき、広告のとおり、まさにほぼリアルタイムでプロアクティブな検出アラートが生成されました。 このアラートと Azure プラットフォームのアラートによって、ほぼ瞬時に問題を修正することができました。 ダウンタイムは合計で 10 分未満でした。」
 
 ## <a name="live-metrics-stream"></a>ライブ メトリック ストリーム
 最新のビルドを展開することは、気がかりな体験となる場合があります。 何らかの問題がある場合、必要に応じて取り消すことができるように、すぐに問題を把握する必要があります。 ライブ メトリック ストリームを使用すると、約 1 秒の待機時間で重要なメトリックが提供されます。
@@ -134,7 +133,7 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 * 特定のユーザーのセッションと応答時間を追跡し、サポートおよび運用チームがすぐに顧客サポートを提供できるようにします。
 * 頻繁に使用されるアプリ機能を判別し、機能の優先順位付けに関する質問に回答します。
 
-お客様である DNN は次のように語っています。「Application Insights は、必要に応じてデータの結合、並べ替え、クエリ、およびフィルター処理を実現するための均衡の欠落部分を補ってくれました。 当社のチームが独自のアイデアと経験を活用し、強力なクエリ言語でデータを検索できることで、当社は洞察を検索して、今まで知りもしなかった問題を解決することができます。 *"...だろうか"* で終わる質問から、多くの興味深い回答が生まれます。」
+お客様である DNN は次のように語っています。「Application Insights は、必要に応じてデータの結合、並べ替え、クエリ、フィルター処理を実現するための均衡の欠落部分を補ってくれました。 当社のチームが独自のアイデアと経験を活用し、強力なクエリ言語でデータを検索できることで、当社は洞察を検索して、今まで知りもしなかった問題を解決することができます。 *"...だろうか"* で終わる質問から、多くの興味深い回答が生まれます。」
 
 ## <a name="development-tools-integration"></a>開発ツールの統合
 ### <a name="configuring-application-insights"></a>Application Insights の構成

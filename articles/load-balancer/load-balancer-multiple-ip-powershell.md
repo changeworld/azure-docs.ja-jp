@@ -1,5 +1,6 @@
 ---
-title: Azure における複数の IP 構成での負荷分散 | Microsoft Docs
+title: Azure における複数の IP 構成での負荷分散
+titlesuffix: Azure Load Balancer
 description: プライマリ IP 構成とセカンダリ IP 構成の間の負荷分散。
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: anavinahar
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: annahar
-ms.openlocfilehash: 8abbab59bc2df739774001f53419968337090c90
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: cdfb374bf9245d055c86974debc9a6eb8f0fefd6
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218697"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164213"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>PowerShell を使用した複数の IP 構成での負荷分散
 

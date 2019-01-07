@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 1069b7f9bdc0301f840e796f49fdb4031d297cf2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6040300b4cb569d0e78503d7e5a36507e79de67c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436242"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>チュートリアル: Azure Active Directory と Predictix Assortment Planning の統合
 
@@ -111,19 +111,21 @@ Predictix Assortment Planning で Azure AD のシングル サインオンを構
     ![[Predictix Assortment Planning のドメインと URL] のシングル サインオン情報](./media/predictix-assortment-planning-tutorial/tutorial_predictixassortmentplanning_url.png)
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+
     | |
     |--|--|
     | `https://<sub-domain>.ap.predictix.com/sso/request`|
     | `https://<sub-domain>.dev.ap.predictix.com/`|
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|--|
     | `https://<sub-domain>.ap.predictix.com`|
     | `https://<sub-domain>.dev.ap.predictix.com`|
     
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Predictix Assortment Planning クライアント サポート チーム](http://www.infor.com/support)に連絡してください。 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Predictix Assortment Planning クライアント サポート チーム](https://www.infor.com/support)に連絡してください。 
  
 
 
@@ -139,10 +141,10 @@ Predictix Assortment Planning で Azure AD のシングル サインオンを構
 
     ![Predictix Assortment Planning の構成](./media/predictix-assortment-planning-tutorial/tutorial_predictixassortmentplanning_configure.png) 
 
-1. **Predictix Assortment Planning** 側にシングル サインオンを構成するには、**証明書 (Base64)**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL**、および**サインアウト URL** を [Predictix Assortment Planning サポート チーム](http://www.infor.com/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Predictix Assortment Planning** 側にシングル サインオンを構成するには、**証明書 (Base64)**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL**、および**サインアウト URL** を [Predictix Assortment Planning サポート チーム](https://www.infor.com/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -179,7 +181,7 @@ Predictix Assortment Planning で Azure AD のシングル サインオンを構
  
 ### <a name="create-a-predictix-assortment-planning-test-user"></a>Predictix Assortment Planning テスト ユーザーの作成
 
-このセクションでは、Predictix Assortment Planning で Britta Simon というユーザーを作成します。 [Predictix Assortment Planning サポート チーム](http://www.infor.com/contact/) と連携し、Predictix Assortment Planning プラットフォームにユーザーを追加してください。
+このセクションでは、Predictix Assortment Planning で Britta Simon というユーザーを作成します。 [Predictix Assortment Planning サポート チーム](https://www.infor.com/contact/) と連携し、Predictix Assortment Planning プラットフォームにユーザーを追加してください。
  > [!NOTE]
  > Azure Active Directory アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認すると、そのアカウントがアクティブになります。
 
@@ -218,7 +220,7 @@ Predictix Assortment Planning で Azure AD のシングル サインオンを構
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Predictix Assortment Planning] タイルをクリックすると、自動的に Predictix Assortment Planning アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

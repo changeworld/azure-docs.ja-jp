@@ -4,17 +4,17 @@ description: この記事では、Azure Stream Analytics で診断ログを分�
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/20/2017
-ms.openlocfilehash: 9001a2962806ee3e691fa448dde162d12c6ecdd2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: db3c9874676e3240f6896c1e1ff8f873360c20d5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905864"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090824"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>診断ログを使用した Azure Stream Analytics のトラブルシューティング
 
@@ -36,15 +36,15 @@ Stream Analytics には 2 種類のログがあります。
 
 1.  Azure Portal にサインインし、[ストリーミング ジョブ] ブレードに移動します。 **[監視]** の下の **[診断ログ]** を選択します。
 
-    ![ブレードを使った診断ログへの移動](./media/stream-analytics-job-diagnostic-logs/image1.png)  
+    ![ブレードを使った診断ログへの移動](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
 2.  **[診断を有効にする]** を選択します。
 
-    ![診断ログの有効化](./media/stream-analytics-job-diagnostic-logs/image2.png)
+    ![Stream Analytics 診断ログを有効にする](./media/stream-analytics-job-diagnostic-logs/turn-on-diagnostic-logs.png)
 
 3.  **[診断設定]** ページの **[状態]** を **[オン]** に選択します。
 
-    ![診断ログの状態の変更](./media/stream-analytics-job-diagnostic-logs/image3.png)
+    ![診断ログの状態の変更](./media/stream-analytics-job-diagnostic-logs/save-diagnostic-log-settings.png)
 
 4.  目的のアーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Log Analytics)。 次に、収集するログのカテゴリを選択します (実行、作成)。 
 
@@ -52,7 +52,7 @@ Stream Analytics には 2 種類のログがあります。
 
 診断構成が有効になるまで約 10 分かかります。 その後、構成したアーカイブ ターゲットのログが **[診断ログ]** ページに表示されます。
 
-![ブレードを使った診断ログへの移動 - アーカイブ ターゲット](./media/stream-analytics-job-diagnostic-logs/image4.png)
+![ブレードを使った診断ログへの移動 - アーカイブ ターゲット](./media/stream-analytics-job-diagnostic-logs/view-diagnostic-logs-page.png)
 
 診断の構成の詳細については、「[Azure リソースからの診断データの収集と使用](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)」を参照してください。
 
@@ -72,12 +72,12 @@ Stream Analytics には 2 種類のログがあります。
 
 すべてのログは JSON 形式で格納されます。 各エントリには、次の一般的な文字列フィールドが含まれています。
 
-Name | [説明]
+Name | 説明
 ------- | -------
 time | ログのタイムスタンプ (UTC)。
 resourceId | 操作が行われたリソースの ID (大文字)。 サブスクリプション ID、リソース グループ、ジョブ名が含まれています。 例: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**
 category | ログのカテゴリ (**実行**または**作成**のいずれか)。
-operationName | ログに記録される操作の名前。 たとえば、**Send Events: SQL Output write failure to mysqloutput**。
+operationName | ログに記録される操作の名前。 例: **Send Events:SQL Output write failure to mysqloutput**。
 status | 操作の状態。 たとえば、**失敗**または**成功**。
 level | ログ レベル。 たとえば、**エラー**、**警告**、または**情報**。
 properties | ログ エントリ固有の詳細。JSON 文字列としてシリアル化されています。 詳細については、次のセクションを参照してください。
@@ -90,27 +90,27 @@ properties | ログ エントリ固有の詳細。JSON 文字列としてシリ�
 
 ジョブがデータを処理している間に発生したエラーはすべて、ログのこのカテゴリに含まれます。 これらのログはほとんどの場合、データ読み取り、シリアル化、書き込み操作が実行されている間に作成されます。 ここには接続エラーが含まれません。 接続エラーは汎用イベントとして扱われます。
 
-Name | [説明]
+Name | 説明
 ------- | -------
 ソース | エラーが発生したジョブ入出力の名前。
-メッセージ | エラーに関連付けられているメッセージ。
+Message | エラーに関連付けられているメッセージ。
 type | エラーの種類。 たとえば、**DataConversionError**、**CsvParserError**、または **ServiceBusPropertyColumnMissingError**。
 データ | エラーの原因を正確に特定するうえで役に立つデータが含まれています。 サイズに応じて切り捨てられます。
 
 データ エラーのスキーマは、**operationName** 値に応じて次のようになります。
 * **シリアル化イベント**。 シリアル化イベントはイベント読み取り操作中に発生します。 これらは、次のいずれかの理由で入力データがクエリ スキーマを満たしていない場合に発生します。
-    * "*イベントのシリアル化 (逆シリアル化) 中の種類の不一致*": エラーを引き起こしたフィールドが特定されます。
-    * "*イベントを読み取ることができない。無効なシリアル化*": エラーが発生した入力データの場所に関する情報が一覧で表示されます。 ここには、BLOB 入力の BLOB 名、オフセット、データのサンプルが含まれます。
+    * "*イベントの (逆) シリアル化中の種類の不一致*":エラーを引き起こしたフィールドが特定されます。
+    * "*イベントを読み取ることができない。無効なシリアル化*":エラーが発生した入力データの場所に関する情報が一覧で表示されます。 ここには、BLOB 入力の BLOB 名、オフセット、データのサンプルが含まれます。
 * **送信イベント**。 送信イベントは書き込み操作中に発生します。 エラーを引き起こしたストリーミング イベントが特定されます。
 
 ### <a name="generic-events"></a>汎用イベント
 
 汎用イベントには、上に挙げた以外のあらゆるイベントが含まれます。
 
-Name | [説明]
+Name | 説明
 -------- | --------
-エラー | (省略可能) エラー情報。 使用できる場合は通常、例外情報です。
-メッセージ| ログ メッセージ。
+Error | (省略可能) エラー情報。 使用できる場合は通常、例外情報です。
+Message| ログ メッセージ。
 type | メッセージの種類。 エラーの内部カテゴリにマップされます。 たとえば、**JobValidationError** または **BlobOutputAdapterInitializationFailure**。
 関連付け ID | ジョブの実行を一意に識別する [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 ジョブが開始されてから停止するまでに生成された実行ログ エントリすべてに、同じ**関連付け ID** の値が付けられます。
 

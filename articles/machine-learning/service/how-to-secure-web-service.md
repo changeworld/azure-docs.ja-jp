@@ -1,5 +1,6 @@
 ---
-title: SSL によって Azure Machine Learning Web サービスをセキュリティで保護する
+title: SSL を使用して Web サービスをセキュリティで保護する
+titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning サービスでデプロイされた Web サービスをセキュリティで保護する方法について説明します。 Secure Sockets Layer (SSL) とキー ベースの認証を使用して、Web サービスへのアクセスを制限し、クライアントによって送信されたデータをセキュリティで保護することができます。
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: ec7b956f080837b297bac56e6237ac0672601ce7
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.custom: seodec18
+ms.openlocfilehash: 14350a04326ba22dcc5c8608b6ac6b9180666832
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344486"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101203"
 ---
-# <a name="secure-azure-machine-learning-web-services-with-ssl"></a>SSL によって Azure Machine Learning Web サービスをセキュリティで保護する
+# <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>SSL を使用して Azure Machine Learning service による Web サービスをセキュリティで保護する
 
 この記事では、Azure Machine Learning サービスでデプロイされた Web サービスをセキュリティで保護する方法について説明します。 Secure Sockets Layer (SSL) とキー ベースの認証を使用して、Web サービスへのアクセスを制限し、クライアントによって送信されたデータをセキュリティで保護することができます。
 
@@ -118,7 +120,7 @@ SSL が有効なサービスをデプロイ (または再デプロイ) するに
 
   イメージに示したように、AKS クラスターの [パブリック IP アドレス] の [構成] タブで DNS を更新します。 パブリック IP アドレスは、AKS エージェント ノードとその他のネットワーク リソースを含むリソース グループの下に作成される、リソースの種類の 1 つとして見つかります。
 
-  ![Azure Machine Learning service: SSL による Web サービスのセキュリティ保護](./media/how-to-secure-web-service/aks-public-ip-address.png)self-
+  ![Azure Machine Learning service:SSL を使用して Web サービスをセキュリティで保護する](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
 ## <a name="next-steps"></a>次の手順
 

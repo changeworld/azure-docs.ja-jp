@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: cshoe
-ms.openlocfilehash: 40cad9eec87c07a205a86f1009074cdbeaf58d15
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 74092f57b3531a037aee71d433c33dddf8c2b694
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249976"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001796"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド
 
@@ -30,7 +30,7 @@ ms.locfileid: "50249976"
 
 ## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
 
-SignalR Service のバインドは [Microsoft.Azure.WebJobs.Extensions.SignalRService](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet パッケージ、バージョン 1.0.0-preview1-* で提供されます。 パッケージのソース コードは、[azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub リポジトリにあります。
+SignalR Service のバインドは [Microsoft.Azure.WebJobs.Extensions.SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet パッケージ、バージョン 1.0.0-preview1-* で提供されます。 パッケージのソース コードは、[azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub リポジトリにあります。
 
 > [!NOTE]
 > Azure SignalR Service は一般公開されています。 ただし、Azure Functions における SignalR Service のバインドは現在プレビューの段階です。
@@ -249,7 +249,7 @@ module.exports = function (context, req) {
 |**direction**|| `in` に設定する必要があります。|
 |**name**|| 接続情報オブジェクトの関数コードで使用される変数名。 |
 |**hubName**|**HubName**| この値は、接続情報が生成される SignalR ハブの名前に設定する必要があります。|
-|**userId**|**UserId**| 省略可能: アクセス キー トークンに設定するユーザー識別子要求の値。 |
+|**userId**|**UserId**| 省略可能:アクセス キー トークンに設定するユーザー識別子要求の値。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| SignalR Service 接続文字列を含むアプリ設定の名前 (既定値は "AzureSignalRConnectionString") |
 
 ### <a name="signalr"></a>SignalR

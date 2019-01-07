@@ -4,17 +4,17 @@ description: この記事では、Azure Stream Analytics と Azure Machine Learn
 services: stream-analytics
 author: dubansal
 ms.author: dubansal
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: df1010be8c9f41684af806885db7587bfcf1c540
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567045"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091222"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics での異常検出
 
@@ -25,11 +25,11 @@ ms.locfileid: "51567045"
 
 AnomalyDetection 演算子は、3 種類の異常を検出します。 
 
-* **双方向のレベル変化**: 上向きと下向き両方向の、値のレベルの持続的な増加または減少。 この値は、スパイクやディップ (瞬間的な、または短時間の変化) とは異なります。  
+* **双方向のレベル変化**:上向きと下向き両方向の、値のレベルの持続的な増加または減少。 この値は、スパイクやディップ (瞬間的な、または短時間の変化) とは異なります。  
 
-* **ゆっくりした増加傾向**: 時間の経過に伴うゆっくりした増加の傾向。  
+* **ゆっくりした増加傾向**:時間の経過に伴うゆっくりした増加の傾向。  
 
-* **ゆっくりした減少傾向**: 時間の経過に伴うゆっくりした減少の傾向。  
+* **ゆっくりした減少傾向**:時間の経過に伴うゆっくりした減少の傾向。  
 
 AnomalyDetection 演算子を使う場合は、**Limit Duration** 句を指定する必要があります。 この句では、異常を検出する際に考慮する時間間隔 (現在のイベントからどこまで履歴をさかのぼるか) を指定します。 **When** 句を使うと、特定のプロパティまたは条件に一致するイベントのみにこの演算子を制限することもできます。 また、この演算子は必要に応じて、**Partition by** 句で指定するキーに基づいて、イベントのグループを個別に処理できます。 トレーニングと予測は、パーティションごとに独立して行われます。 
 
@@ -95,7 +95,7 @@ AnomalyDetection 演算子は、3 つのスコアをすべて含むレコード�
 
 手順を図にすると、次のようになります。 
 
-![モデルのトレーニング](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
+![機械学習トレーニング モデル](media/stream-analytics-machine-learning-anomaly-detection/machine-learning-training-model.png)
 
 |**Model** | **トレーニングの開始時刻** | **スコアの使用を開始する時刻** |
 |---------|---------|---------|
@@ -145,15 +145,15 @@ M<sub>t</sub> > λ を満たすような t が存在する確率 < 1/λ (M<sub>t
 
    これを、上限の変化を使う以下の図 1 と図 2 で示します (下限の変化にも同じロジックが適用されます)。 どちらの図でも、波形は異常なレベル変化を表します。 オレンジ色の垂直線はホップの境界を示し、ホップのサイズは、AnomalyDetection 演算子で指定される検出ウィンドウと同じです。 緑の線は、トレーニングのウィンドウのサイズを示します。 図 1 では、ホップのサイズは異常が継続する時間と同じです。 図 2 では、ホップのサイズは異常が継続する時間の半分です。 いずれの場合も、スコア付けに使われるモデルが通常のデータでトレーニングされたため、上向きの変化が検出されます。 ただし、双方向のレベル変化検出機能の動作方法に基づき、通常への復帰をスコア付けするモデルに使われる通常の値をトレーニングのウィンドウから除外する必要があります。 図 1 では、スコア付けのモデルのトレーニングにいくつかの通常イベントが含まれるため、通常への復帰は検出できません。 ただし図 2 では、トレーニングに含まれるのは異常な部分のみのため、通常への復帰が検出されます。 半分よりも小さい場合はいずれも同じ理由で動作します。一方、半分よりも大きい場合は最終的に通常のイベントが少し含まれます。 
 
-   ![ウィンドウのサイズが異常の長さと等しい AD](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
+   ![ウィンドウのサイズが異常の長さと等しい AD](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-anomaly-length.png)
 
-   ![ウィンドウのサイズが異常の長さの半分と等しい AD](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_half_anomaly_length.png)
+   ![ウィンドウのサイズが異常の長さの半分と等しい AD](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-half-anomaly-length.png)
 
 2. 異常の長さを予測できない場合、この検出機能はベスト エフォートで動作します。 ただし、より狭い時間枠を選択するとトレーニングのデータが制限され、通常への復帰を検出する可能性が高まります。 
 
 3. 次のシナリオでは、トレーニングのウィンドウに既に同様の高い値の異常が含まれているため、長い異常は検出されません。 
 
-   ![同じサイズの異常](media/stream-analytics-machine-learning-anomaly-detection/anomalies_with_same_length.png)
+   ![検出された同じサイズの異常](media/stream-analytics-machine-learning-anomaly-detection/anomalies-with-same-length.png)
 
 ## <a name="example-query-to-detect-anomalies"></a>異常を検出するためのクエリの例 
 

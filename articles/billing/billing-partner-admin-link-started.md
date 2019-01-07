@@ -3,6 +3,7 @@ title: Azure アカウントをパートナー ID にリンクする | Microsoft
 description: パートナー ID を顧客のリソースを管理するために使用するユーザー アカウントにリンクすることで、Azure の顧客とのエンゲージメントを追跡します。
 services: billing
 author: dhirajgandhi
+manager: dhgandhi
 ms.author: cwatson
 ms.date: 03/12/2018
 ms.service: billing
@@ -10,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 57ffb30296e5dbede11e23c40041c42e00444c4c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: a0dad228f23b055d68009eb737e0347ade49e94b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686996"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968050"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>貴社のパートナー ID を Azure アカウントにリンクする
 
@@ -29,7 +30,7 @@ ms.locfileid: "51686996"
 
 - **ゲスト ユーザー:** 顧客は、貴社をゲスト ユーザーとして追加し、RBAC ロールを割り当てることができます。 詳細については、[別のディレクトリからのゲスト ユーザーの追加](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)に関する記事を参照してください。
 
-- **ディレクトリ アカウント:** 貴社の顧客は、貴社の組織から顧客のディレクトリ内に新しいユーザーを作成し、RBAC ロールを割り当てることができます。
+- **ディレクトリ アカウント:** 貴社の顧客は、顧客のディレクトリ内に貴社のユーザー アカウントを作成し、任意の RBAC ロールを割り当てることができます。
 
 - **サービス プリンシパル:** 貴社の顧客は、貴社の組織から顧客のディレクトリ内にアプリまたはスクリプトを追加し、RBAC ロールを割り当てることができます。 アプリまたはスクリプトの ID は、サービス プリンシパルと呼ばれます。
 
@@ -43,7 +44,7 @@ ms.locfileid: "51686996"
 
 2. Azure ポータルにサインインします。
 
-3. Microsoft パートナー ID を入力します。パートナー ID は、パートナーの組織の [Microsoft Partner Network (MPN)](https://partner.microsoft.com/) ID です。
+3. Microsoft パートナー ID を入力します。 パートナー ID は、貴社の組織の [Microsoft Partner Network (MPN)](https://partner.microsoft.com/) ID です。
 
   ![パートナー ID のリンクを示すスクリーンショット](./media/billing-link-partner-id/link-partner-ID.PNG)
 
@@ -124,7 +125,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 **誰がパートナー ID をリンクできますか。**
 
-顧客のリソースを管理しているパートナー組織の任意のユーザーが、パートナー ID をアカウントにリンクできます。
+顧客の Azure リソースを管理しているパートナー組織の任意のユーザーが、パートナー ID をアカウントにリンクできます。
 
 **パートナー ID をリンクした後でそれを変更できますか。**
 

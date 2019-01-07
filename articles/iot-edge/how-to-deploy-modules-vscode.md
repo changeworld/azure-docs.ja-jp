@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge モジュールのデプロイ (VS Code) | Microsoft Docs
+title: Visual Studio Code からモジュールをデプロイする - Azure IoT Edge | Microsoft Docs
 description: Visual Studio Code を使用して IoT Edge デバイスにモジュールをデプロイする
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a7f0fc0c3169aadac78609830dda55ae1ec7ea46
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 212f103a356dc3663795a5e5453869c99da3fff9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567845"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100822"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Visual Studio Code から Azure IoT Edge モジュールをデプロイする
 
@@ -109,7 +110,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 2. エクスプローラーの下部で、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。 
 
-   ![Azure IoT Hub デバイスを展開する](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
+   ![[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\) セクションを展開する](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
 3. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション ヘッダーで **[...]** をクリックします。 省略記号が表示されない場合は、ヘッダーをポイントします。 
 

@@ -3,7 +3,7 @@ title: スケールアウトされたクラウド データベース全体をレ
 description: 行方向のパーティション分割でエラスティック クエリを設定する方法
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: e1eec489bf33cbf03269f68413c39c9fb03bbb22
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: de96de96d68164d021f8b823e69bc52322642aa7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240394"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865405"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体をレポートする (プレビュー)
 ![シャード間のクエリ][1]
@@ -140,7 +140,7 @@ DISTRIBUTION 句は、このテーブルに使用するデータ分散を指定�
 2. **REPLICATED** は、テーブルの同一のコピーが各データベースに存在することを意味します。 データベース間でレプリカが同じであることを自分で確認する必要があります。
 3. **ROUND\_ROBIN** は、テーブルがアプリケーションに依存する分散方法を使用して、行方向にパーティション分割されることを意味します。 
 
-**データ層参照**: 外部テーブル DDL は、外部データ ソースを参照します。 外部データ ソースは、データ層のすべてのデータベースを見つけるために必要な情報を外部テーブルに提供するシャード マップを指定します。 
+**データ層参照**: 外部テーブル DDL では、外部データ ソースが参照されます。 外部データ ソースは、データ層のすべてのデータベースを見つけるために必要な情報を外部テーブルに提供するシャード マップを指定します。 
 
 ### <a name="security-considerations"></a>セキュリティに関する考慮事項
 外部テーブルへのアクセス権を持つユーザーは、外部データ ソース定義に指定された資格情報の下で、基になるリモート テーブルへのアクセス権を自動的に取得します。 外部データ ソースの資格情報による不要な特権の昇格を防ぎます。 外部テーブルに対して、通常のテーブルであるかのように GRANT または REVOKE を使用します。  
@@ -168,10 +168,10 @@ DISTRIBUTION 句は、このテーブルに使用するデータ分散を指定�
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>T-SQL リモート実行のストアド プロシージャ: sp\_execute_remote
 エラスティック クエリには、シャードへの直接アクセスを提供するストアド プロシージャも導入されています。 このストアド プロシージャは [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) と呼ばれ、リモート データベースでリモート ストアド プロシージャまたは T-SQL コードを実行するときに使用できます。 使用できるパラメーターは次のとおりです。 
 
-* データ ソース名 (nvarchar): RDBMS 型の外部データ ソースの名前。 
-* クエリ (nvarchar): 各シャードで実行する T-SQL クエリ。 
-* パラメーター宣言 (nvarchar) (省略可能): (sp_executesql などの) クエリ パラメーターで使用される、パラメーターのデータ型定義を含む文字列。 
-* パラメーター値のリスト (省略可能): (sp_executesql などの) パラメーター値のコンマ区切りリスト。
+* データ ソース名 (nvarchar): RDBMS 型の外部データ ソースの名前です。 
+* クエリ (nvarchar): 各シャードで実行する T-SQL クエリです。 
+* パラメーター宣言 (nvarchar) (省略可能): (sp_executesql などの) クエリ パラメーターで使用される、パラメーターのデータ型定義を含む文字列です。 
+* パラメーター値のリスト (省略可能): (sp_executesql などの) パラメーター値のコンマ区切りリストです。
 
 sp\_execute\_remote では、起動パラメーターで指定された外部データ ソースを使用して、指定された T-SQL ステートメントをリモート データベースで実行します。 shardmap マネージャー データベースとリモート データベースへの接続には、外部データ ソースの資格情報を使用します。  
 

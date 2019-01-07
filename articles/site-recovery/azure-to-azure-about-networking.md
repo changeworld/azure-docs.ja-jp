@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 77c445920041653ffb72d31e1dcfe4c368fb6642
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: f48283222f5c5d3b18d3dba17c2856801856fb94
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915927"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992127"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションのネットワークについて
 
@@ -60,10 +60,9 @@ IP ベースのファイアウォール プロキシ、または NSG ルール�
 - ソース リージョンのストレージ アカウントに対応するすべての IP アドレス範囲
     - ソース リージョンに対して[ストレージ サービス タグ](../virtual-network/security-overview.md#service-tags)に基づく NSG ルールを作成します。
     - VM からキャッシュ ストレージ アカウントにデータを書き込むことができるように、これらのアドレスを許可します。
-- Office 365 [認証と ID IP V4 エンドポイント](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)に対応するすべての IP アドレスの範囲。
-    - 今後、新しいアドレスが Office 365 の範囲に追加された場合は、新しい NSG ルールを作成する必要があります。
+- AAD に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (AAD) サービス タグ](../virtual-network/security-overview.md#service-tags) ベースの NSG ルールを作成します。
+    - 今後、新しいアドレスが Azure Active Directory (AAD) に追加された場合は、新しい NSG ルールを作成する必要があります。
 - Site Recovery サービス エンドポイント IP アドレス - [XML ファイル](https://aka.ms/site-recovery-public-ips)で入手できます。ターゲットの場所によって異なります。
--  NSG の必要なルールを自動的に作成するには、[こちらのスクリプトをダウンロードして使用](https://aka.ms/nsg-rule-script)することができます。
 - 必要な NSG ルールをテスト NSG に作成し、問題がないことを確認してから、運用環境の NSG にルールを作成することをお勧めします。
 
 
@@ -115,7 +114,10 @@ Site Recovery IP アドレスの範囲は次のとおりです。
 
       ![storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
 
-2. Office 365 [認証と ID IP V4 エンドポイント](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)に対応するすべての IP アドレスの範囲に対して、送信方向の HTTPS (443) ルールを作成します。
+2. 次のスクリーンショットで示すように、NSG 上の "AzureActiveDirectory" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。
+
+      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
+
 3. ターゲットの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
 
    **場所** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
@@ -128,7 +130,7 @@ Site Recovery IP アドレスの範囲は次のとおりです。
 
 1. NSG 上の "Storage.CentralUS" に対して、送信方向の HTTPS (443) セキュリティ ルールを作成します。
 
-2. Office 365 [認証と ID IP V4 エンドポイント](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)に対応するすべての IP アドレスの範囲に対して、送信方向の HTTPS (443) ルールを作成します。
+2. NSG 上の "AzureActiveDirectory" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。
 
 3. ソースの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
 

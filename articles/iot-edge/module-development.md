@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Edge のモジュールを開発する | Microsoft Docs
-description: Azure IoT Edge のカスタム モジュールの作成方法について説明します
+description: ランタイムおよび IoT Hub と通信できる Azure IoT Edge 用のカスタム モジュールを開発する
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cb97e2cf6d554753f64afc76de84f43e38443909
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 50e9c0667761e43c63b03fbaf5f8ce93eb49e749
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567232"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100091"
 ---
 # <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>IoT Edge モジュールを開発するための要件とツールについて理解する
 

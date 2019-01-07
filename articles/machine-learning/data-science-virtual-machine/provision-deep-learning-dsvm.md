@@ -1,10 +1,12 @@
 ---
-title: Azure でのディープ ラーニング データ サイエンス仮想マシンのプロビジョニング | Microsoft Docs
+title: ディープ ラーニング Data Science Virtual Machine を作成する
+titleSuffix: Azure
 description: 分析と機械学習を行うために、Azure でディープ ラーニング データ サイエンス用仮想マシンを構成および作成します。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -13,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 9d64ad70ea49f7fbffd8bd6a5a77177fe490b832
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6963515958cd55314562e37ffc6ab1d8e0af5bee
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229664"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078758"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Azure でディープ ラーニング 仮想マシンをプロビジョニングする 
 
@@ -37,20 +39,20 @@ DLVM には、Microsoft Cognitive Toolkit、TensorFlow、Keras、Caffe2、Chaine
    1. **基本**
       
       1. **名前**: 作成するデータ サイエンス サーバーの名前です。
-      2. **Select OS type for the Deep Learning VM\(ディープ ラーニング VM の OS の種類を選択\)**: Windows または Linux (Windows 2016 および Ubuntu Linux ベースの DSVM) を選択します。
+      2. **Select OS type for the Deep Learning VM\(ディープ ラーニング VM の OS の種類を選択\)**: Windows または Linux (Windows 2016 および Ubuntu Linux ベースの DSVM の場合) を選択します。
       2. **ユーザー名**: 管理者アカウントのログイン ID です。
       3. **パスワード**: 管理者アカウントのパスワードです。
-      4. **サブスクリプション**: 複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。
+      4. **サブスクリプション**:複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。
       5. **リソース グループ**: 新しいリソース グループを作成するか、サブスクリプション内にある**空**の既存の Azure リソース グループを使用することができます。
       6. **場所**: 最適なデータ センターを選択します。 通常は、ネットワーク アクセスを最速にするために、データの大部分があるか、物理的に最も近いデータ センターを選びます。 
       
 > [!NOTE]
 > DLVM は、すべての NC および ND シリーズ GPU VM インスタンスをサポートしています。 DLVM をプロビジョニングするときには、GPU がある Azure 内の場所の 1 つを選択する必要があります。 選択できる場所については、[リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/)に関するページを確認して、**[コンピューティング]** で **NC シリーズ**、**NCv2 シリーズ**、**NCv3 シリーズ**、または **ND シリーズ**を探してください。 
 
-   2. **設定**: 機能要件とコスト制約を満たしている、いずれかの NC シリーズ (NC、NCv2、NCv3) または ND シリーズの GPU 仮想マシン サイズを選択します。 VM のストレージ アカウントを作成します。  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   2. **設定**:機能要件とコスト制約を満たしている、いずれかの NC シリーズ (NC、NCv2、NCv3) または ND シリーズの GPU 仮想マシン サイズを選択します。 VM のストレージ アカウントを作成します。  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-   3. **まとめ**: 入力したすべての情報が正しいことを確認します。
-   5. **購入**: プロビジョニングを開始するには、**[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
+   3. **概要**:入力したすべての情報が正しいことを確認します。
+   5. **[購入]**:プロビジョニングを開始するには、**[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
 
 > [!NOTE]
 > プロビジョニングには、10 ～ 20 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
@@ -77,12 +79,12 @@ Linux DLVM は、既に X2Go サーバーでプロビジョニングされてお
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
 2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
-     * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
-     * **[Login (ログイン)]**: Linux VM のユーザー名。
-     * **[SSH Port] \(SSH ポート)**: 既定値の 22 のままにします。
+     * **[Host]\(ホスト\)**: Linux Data Science VM のホスト名または IP アドレス。
+     * **[Login]\(ログイン\)**: Linux VM のユーザー名。
+     * **[SSH Port]\(SSH ポート\)**: 既定値の 22 のままにします。
      * **[Session Type]\(セッションの種類\)**: 値を **XFCE** に変更します。 現在、Linux DSVM では XFCE デスクトップのみをサポートしています。
-   * **[Media] \(メディア) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
-   * **[Shared folders] \(共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
+   * **[Media]\(メディア\) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
+   * **[Shared folders]\(共有フォルダー\)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
 
 SSH クライアントを使用するか、X2Go クライアントから XFCE グラフィカル デスクトップを使用して VM にサインインしたら、VM にインストールされ、構成されているツールをすぐに使い始めることができます。 XFCE では、アプリケーション メニューのショートカットとさまざまなツールのデスクトップ アイコンが表示されます。
 

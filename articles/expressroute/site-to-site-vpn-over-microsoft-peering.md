@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute の Microsoft ピアリング経由のサイト間 VPN を構成する | Microsoft Docs
+title: Microsoft ピアリング経由のサイト間 VPN を構成する - ExpressRoute - Azure | Microsoft Docs
 description: サイト間 VPN ゲートウェイを使用した ExpressRoute Microsoft ピアリング回線経由の Azure への IPsec/IKE 接続を構成します。
 services: expressroute
 author: cherylmc
@@ -7,25 +7,25 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5fb4a4034a744b8b2b769a1cfd2d9df12ea90dde
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: 3ba9d7ab9e05c3c5480e1832cc5ddd0ce91a3ae1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240913"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094204"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft ピアリング経由のサイト間 VPN を構成する
 
-この記事は、ExpressRoute プライベート接続経由の、オンプレミス ネットワークと Azure 仮想ネットワーク (VNet) の間のセキュリティで保護された暗号化接続を構成するときに役立ちます。 ExpressRoute 経由の安全なトンネルを構成することで、機密性、アンチリプレイ、信頼性、および整合性が確保されたデータ交換が可能です。
+この記事は、ExpressRoute プライベート接続経由の、オンプレミス ネットワークと Azure 仮想ネットワーク (VNet) の間のセキュリティで保護された暗号化接続を構成するときに役立ちます。 Microsoft ピアリングを使って、選択したオンプレミス ネットワークと Azure VNet の間に、サイト間 IPsec/IKE VPN トンネルを確立できます。 ExpressRoute 経由の安全なトンネルを構成することで、機密性、アンチリプレイ、信頼性、および整合性が確保されたデータ交換が可能です。
 
-## <a name="architecture"></a>アーキテクチャ
-
-Microsoft ピアリングを活用すると、選択したオンプレミス ネットワークと Azure VNet の間に、サイト間 IPsec/IKE VPN トンネルを確立できます。
-
-  >[!NOTE]
+>[!NOTE]
 >Microsoft ピアリング経由のサイト間 VPN を設定すると、VPN ゲートウェイおよび VPN エグレスに対して料金が発生します。 詳細については、「[VPN Gateway の価格](https://azure.microsoft.com/pricing/details/vpn-gateway)」を参照してください。
 >
 >
+
+## <a name="architecture"></a>アーキテクチャ
+
 
   ![接続の概要](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 

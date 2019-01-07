@@ -1,26 +1,22 @@
 ---
-title: Azure の SQL Server 内のデータのサンプリング | Microsoft Docs
-description: Azure の SQL Server 内のデータのサンプリング
+title: Azure 上の SQL Server にデータをサンプリングする - Team Data Science Process
+description: SQL または Python プログラミング言語を使用して Azure 上の SQL Server にサンプリングされたデータを格納した後、Azure Machine Learning にデータを移動します。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
-manager: cgeonlun
+author: marktab
+manager: cgronlun
 editor: cgronlun
-ms.assetid: 33c030d4-5cca-4cc9-99d7-2bd13a3926af
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: 7852a0fc548980227723c9f6a259c63367159201
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: fec649706be1b3db01a5c6cbc8f395e8c7e1a4d2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346241"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134337"
 ---
 # <a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
 
@@ -34,9 +30,9 @@ Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/)
 > 
 
 **データをサンプリングする理由**
-分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 これにより、データの理解、探索、および特徴エンジニアリングが容易になります。 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプを迅速に作成できるようにすることです。
+分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 これにより、データの理解、探索、および特徴エンジニアリングが容易になります。 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプを迅速に作成できるようにすることです。
 
-このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
+このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)の 1 ステップです。
 
 ## <a name="SQL"></a>SQL の使用
 このセクションでは、SQL を使用して、データベース内のデータに対して簡単なランダム サンプリングを実行するいくつかの方法について説明します。 データのサイズとその分布に基づいて方法を選択してください。

@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5aeefe82255d40938eff09d7920e2fd5aca94c95
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9cfd3f32f6293d5760c4a4ddcf40428a2b9b70f8
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308301"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999097"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
 このタスクでは、次のトピックで検討したビジネス要件を満たすために、ハイブリッド ID ソリューションのハイブリッド ID 導入戦略を定義します。
@@ -92,7 +92,7 @@ ms.locfileid: "46308301"
 * Office からパッシブ認証に移行することで、これらのクライアントで純正の SAML 2.0 IdP をサポートできますが、あくまでもクライアント間ベースでのサポートになります
 
 > [!NOTE]
-> 最新の一覧については、こちらの記事 (https://aka.ms/ssoproviders) をご覧ください。
+> 最新の一覧については、「[Azure AD のフェデレーション互換性リスト](how-to-connect-fed-compatibility.md)」の記事をご覧ください。
 > 
 > 
 

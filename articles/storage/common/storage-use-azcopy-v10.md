@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: a1b183e5b0929a2149502aa340e2e69c725dba6d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 2ab933506ea03ae72198113d70888460e5001a6d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49168234"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958424"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>AzCopy v10 (プレビュー) を使用してデータを転送する
 
@@ -84,6 +84,16 @@ AzCopy v10 は、単純な自己文書化された構文を備えています。
 .\azcopy cp -h
 ```
 
+## <a name="create-a-file-system-azure-data-lake-storage-gen2-only"></a>ファイル システムを作成する (Azure Data Lake Storage Gen2 のみ)
+
+BLOB ストレージ アカウントで階層型名前空間を有効にしている場合、次のコマンドを使用し、新しいファイル システムを作成し、それにダウンロード ファイルをアップロードできます。
+
+```azcopy
+.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name" --recursive=true
+```
+
+この文字列の ``account`` 部分は、ストレージ アカウントの名前です。 この文字列の ``top-level-resource-name`` 部分は、作成するファイル システムの名前です。
+
 ## <a name="copy-data-to-azure-storage"></a>Azure Storage にデータをコピーする
 
 コピー元からコピー先にデータを転送するには、copy コマンドを使用します。 コピー元/コピー先には以下を使用できます。
@@ -107,10 +117,22 @@ AzCopy v10 は、単純な自己文書化された構文を備えています。
 .\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
 ```
 
+BLOB ストレージ アカウントで階層型名前空間を有効にしている場合、次のコマンドを使用し、ファイルをファイル システムにアップロードできます。
+
+```azcopy
+.\azcopy cp "C:\local\path" "https://myaccount.dfs.core.windows.net/myfolder<sastoken>" --recursive=true
+```
+
 次のコマンドは、C:\local\path フォルダーにあるすべてのファイルを (サブディレクトリに再帰しないで) コンテナー "mycontainer1" にアップロードします。
 
 ```azcopy
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
+```
+
+BLOB ストレージ アカウントで階層型名前空間を有効にしている場合、次のコマンドを使用できます。
+
+```azcopy
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/myfolder<sastoken>"
 ```
 
 他の例を見るには、次のコマンドを使用します。
@@ -127,6 +149,8 @@ AzCopy v10 は、単純な自己文書化された構文を備えています。
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
+
+階層型名前空間を有効にしている BLOB ストレージ アカウントを使用するには、上のサンプルの文字列 ``blob.core.windows.net`` を ``dfs.core.windows.net`` に変更します。
 
 > [!NOTE]
 > このコマンドは、すべての BLOB コンテナーを列挙し、コピー先のアカウントにコピーします。 現時点では、AzCopy v10 は 2 つのストレージ アカウント間のブロック BLOB のみのコピーをサポートしています。 他のすべてのストレージ アカウント オブジェクト(追加 BLOB、ページ BLOB、ファイル、テーブル、キュー) はスキップされます。
@@ -154,6 +178,8 @@ AzCopy v10 は、単純な自己文書化された構文を備えています。
 ```
 
 このコマンドでは、最終変更タイムスタンプに基づいて、同期元を同期先に増分的に同期できます。 同期元でファイルを追加または削除すると、AzCopy v10 は同期先で同じことを行います。
+
+[!NOTE] 階層型名前空間を有効にしている BLOB ストレージ アカウントを使用するには、上のサンプルの文字列 ``blob.core.windows.net`` を ``dfs.core.windows.net`` に変更します。
 
 ## <a name="advanced-configuration"></a>詳細な構成
 

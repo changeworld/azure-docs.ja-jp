@@ -1,5 +1,5 @@
 ---
-title: Azure Container Service エンジンと Swarm Mode による CI/CD
+title: (非推奨) Azure Container Service エンジンと Swarm Mode による CI/CD
 description: Azure Container Service Engine、Docker Swarm Mode、Azure Container Registry、および Azure DevOps を使用して、複数コンテナー .NET Core アプリケーションを継続的に配信します
 services: container-service
 author: diegomrtnzg
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 296c097ee3302eaa39210274b16c6352866eac8a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 52d20004f43b5c553a17c44f3f35d30fd5693286
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299578"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995063"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>Azure DevOps で ACS エンジンと Docker Swarm Mode を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(非推奨) Azure DevOps で ACS エンジンと Docker Swarm Mode を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 *この記事は、[Azure DevOps で Docker Swarm を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン](container-service-docker-swarm-setup-ci-cd.md)に関するドキュメントに基づいています*
 
@@ -92,7 +94,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
 これで、すべての構成は完了です。 次の手順では、アプリケーションをビルドし、Docker Swarm クラスターにデプロイする CI/CD パイプラインを作成します。 
 
-## <a name="step-2-create-the-build-pipeline"></a>手順 2: ビルド パイプラインの作成
+## <a name="step-2-create-the-build-pipeline"></a>手順 2: ビルド パイプラインを作成する
 
 この手順では、Azure DevOps プロジェクトのビルド パイプラインを設定し、コンテナー イメージのビルド ワークフローを定義します
 
@@ -106,7 +108,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
     ![Azure DevOps - 新しい空のビルド パイプライン](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-empty-build-vsts.PNG)
 
-4. 次に、**[変数]** タブをクリックし、2 つの新しい変数 (**RegistryURL**  と **AgentURL**) を作成します。 レジストリとクラスター エージェントの DNS の値を貼り付けます。
+4. 次に、**[変数]** タブをクリックし、2 つの新しい変数(**RegistryURL**  と **AgentURL**) を作成します。 レジストリとクラスター エージェントの DNS の値を貼り付けます。
 
     ![Azure DevOps - ビルド変数の構成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 

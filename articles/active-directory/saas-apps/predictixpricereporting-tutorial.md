@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 3686a90cb088dae99d20df619c161251b5bdfd60
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a7b6122638636193b363d0ac57aae22a9c7da57a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438945"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>チュートリアル: Azure Active Directory と Predictix Price Reporting の統合
 
@@ -113,13 +113,14 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
     a. **[サインオン URL]** ボックスに、`https://<companyname-pricing>.predictix.com/sso/request` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|
     | `https://<companyname-pricing>.predictix.com` |
     | `https://<companyname-pricing>.dev.predictix.com` |
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Predictix Price Reporting クライアント サポート チーム](http://www.infor.com/company/customer-center/)に連絡してください。 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Predictix Price Reporting クライアント サポート チーム](https://www.infor.com/company/customer-center/)に連絡してください。 
  
 1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -133,10 +134,10 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 
     ![Predictix Price Reporting の構成](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_configure.png) 
 
-1. **Predictix Price Reporting** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Predictix Price Reporting サポート チーム](http://www.infor.com/company/customer-center/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Predictix Price Reporting** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Predictix Price Reporting サポート チーム](https://www.infor.com/company/customer-center/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -173,7 +174,7 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
  
 ### <a name="create-a-predictix-price-reporting-test-user"></a>Predictix Price Reporting テスト ユーザーの作成
 
-このセクションでは、Predictix Price Reporting で Britta Simon というユーザーを作成します。 [Predictix Price Reporting サポート チーム](http://www.infor.com/company/customer-center/)と連携し、Predictix Price Reporting プラットフォームにユーザーを追加してください。
+このセクションでは、Predictix Price Reporting で Britta Simon というユーザーを作成します。 [Predictix Price Reporting サポート チーム](https://www.infor.com/company/customer-center/)と連携し、Predictix Price Reporting プラットフォームにユーザーを追加してください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

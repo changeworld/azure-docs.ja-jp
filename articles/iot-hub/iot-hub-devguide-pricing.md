@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: ac25fa1bcca9a49054f37d8799511fbc7d95645b
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 247c12fb15fe8aa82c3a29c4c2d1e704db40e424
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584100"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141511"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub の価格情報
 
@@ -35,6 +35,7 @@ ms.locfileid: "47584100"
 | デバイス ツインとモジュール ツインのクエリ | クエリは、結果のサイズに応じて、メッセージとして 512 バイトのチャンク単位で課金されます。 |
 | ジョブ操作 <br/> (作成、更新、一覧表示、削除) | 課金されません。 |
 | デバイスごとのジョブの操作 | ジョブの操作 (ツインの更新やメソッドなど) は通常どおり課金されます。 たとえば、ジョブが 1 KB の要求と本文が空白の応答による 1,000 回のメソッドの呼び出しとなる場合は、1,000 メッセージとして課金されます。 |
+| キープアライブ メッセージ | AMQP または MQTT プロトコルを使用するとき、接続を確立するために交換されたメッセージと交渉中に交換されたメッセージについては課金されません。 |
 
 > [!NOTE]
 > すべてのサイズはバイト単位でのペイロードのサイズを考慮して計算されます (プロトコルのフレームは無視されます)。 プロパティと本文が含まれるメッセージの場合、サイズはプロトコルに依存しない方法で計算されます。 詳細は、[IoT Hub メッセージの形式](iot-hub-devguide-messages-construct.md)を参照してください。

@@ -1,26 +1,22 @@
 ---
-title: Azure Machine Learning 異常検出 API | Microsoft Docs
+title: Azure Machine Learning 異常検出 API - Team Data Science Process
 description: 異常検出 API は、Microsoft Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。
 services: machine-learning
-documentationcenter: ''
-author: alokkirpal
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 52fafe1f-e93d-47df-a8ac-9a9a53b60824
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/05/2017
-ms.author: alok
-ms.openlocfilehash: 0b99aeb2ffdb78e472cdc0e11d0efaf91feb3e4a
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.author: tdsp
+ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
+ms.openlocfilehash: de625e7cc394d1b292f9876a1b4cdd3fb0daeaa8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394495"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134796"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 ## <a name="overview"></a>概要
@@ -28,9 +24,9 @@ ms.locfileid: "49394495"
 
 この API で時系列データから検出できる異常パターンのタイプは次のとおりです。
 
-* **正と負の値の傾向**: たとえば、コンピューティングのメモリ使用量を監視する場合、上昇傾向が関心の対象となります。メモリ使用量の上昇はメモリ リークの兆候であるためです。
-* **値のダイナミック レンジの変化**: たとえば、サービスによってスローされる例外を監視する場合、値のダイナミック レンジの変化は、クラウド サービスの正常性が不安定になっていることを示す可能性があります。
-* **スパイクと DIP**: たとえば、サービスへのログインの失敗の数や、電子商取引サイトのチェックアウトの数を監視している場合、スパイクや DIP は異常な動作を示している可能性があります。
+* **正と負の値の傾向**:たとえば、コンピューティングのメモリ使用量を監視する場合は、上昇傾向が関心の対象となります。メモリ使用量の上昇はメモリ リークの兆候であるためです。
+* **値のダイナミック レンジの変化**:たとえば、サービスによってスローされる例外を監視する場合、値のダイナミック レンジの変化は、クラウド サービスの正常性が不安定になっていることを示す可能性があります。
+* **スパイクと DIP**:たとえば、サービスへのログインの失敗の数や、eコマース サイトのチェックアウトの数を監視している場合、スパイクや DIP は異常な動作を示している可能性があります。
 
 こうした Machine Learning を使用した検出は、時間の経過に伴う値の変化を追跡し、異常が記録されたときの値の継続的な変化を報告します。 これらはアドホックなしきい値の調整を必要とせず、スコアを使用して誤検知率を制御できます。 異常検出 API は、一定時間 KPI を追跡することによるサービスの監視、各種メトリック (検索回数、クリック数など) に基づく使用状況の監視、各種カウンター (メモリ、CPU、ファイル読み取りなど) を一定時間追跡することによるパフォーマンスの監視など、さまざまなシナリオで役に立ちます。
 
@@ -41,9 +37,9 @@ ms.locfileid: "49394495"
 > [!NOTE]
 > [この API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) を利用した **IT Anomaly Insights ソリューション**をお試しください
 > 
-> このエンド ツー エンド ソリューションを Azure サブスクリプションに展開するには、<a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**ここから始めてください >**</a>
-> 
->
+<!-- This Solution is no longer available
+> To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
+--> 
 
 ## <a name="api-deployment"></a>API のデプロイ
 API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは [Azure AI ギャラリー](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出のある異常検出と季節性検出のない異常検出という、2 つの AzureML Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[AzureML Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)を参照してください。
@@ -112,10 +108,10 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 
 | 検出機能のカテゴリ | 検出機能 | 説明 | 入力パラメーター | 出力 |
 | --- | --- | --- | --- | --- |
-| スパイク検出機能 |T スパイク検出機能 |第 1 四分位数および第 3 四分位数から値までの距離に基づいて、スパイクとディップを検出します。 |*tspikedetector.sensitivity:* 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が高いほど極端な値を取得するため、感度が低くなります。 |TSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ |
-| スパイク検出機能 | Z スパイク検出機能 |平均値からデータポイントまでの距離に基づいて、スパイクとディップを検出します。 |*tspikedetector.sensitivity:* 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が高いほど極端な値を取得するため、感度が低くなります |ZSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ | |
-| スロー傾向検出機能 |スロー傾向検出機能 |設定されている感度に従って、ゆっくりとした正方向の傾向を検出します。 |*trenddetector.sensitivity:* 検出機能スコアのしきい値 (既定値: 3.25、妥当な範囲は 3.25 ～ 5、値が大きいほど感度が低下) |tscore: 傾向に関する異常スコアを表す浮動小数点数 |
-| レベル変化検出機能 | 双方向レベル変化検出機能 |設定されている感度に従って、上向きと下向きの両方のレベルの変化を検出します。 |*bileveldetector.sensitivity:* 検出機能スコアのしきい値 (既定値: 3.25、妥当な範囲は 3.25 ～ 5、値が大きいほど感度が低下) |rpscore: 上向きと下向きのレベルの変化に関する異常スコアを表す浮動小数点数 | |
+| スパイク検出機能 |T スパイク検出機能 |第 1 四分位数および第 3 四分位数から値までの距離に基づいて、スパイクとディップを検出します。 |*tspikedetector.sensitivity:* 1 から 10 の範囲の整数値を受け取ります。既定値は3 です。値が高いほど極端な値を取得するため、感度が低くなります。 |TSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ |
+| スパイク検出機能 | Z スパイク検出機能 |平均値からデータポイントまでの距離に基づいて、スパイクとディップを検出します。 |*zspikedetector.sensitivity:* 1 から 10 の範囲の整数値を受け取ります。既定値は3 です。値が高いほど極端な値を取得するため、感度が低くなります |ZSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ | |
+| スロー傾向検出機能 |スロー傾向検出機能 |設定されている感度に従って、ゆっくりとした正方向の傾向を検出します。 |*trenddetector.sensitivity:* 検出機能スコアのしきい値 (既定値:3.25、妥当な範囲は 3.25 から 5、値が大きいほど感度が低下) |tscore: 傾向に関する異常スコアを表す浮動小数点数 |
+| レベル変化検出機能 | 双方向レベル変化検出機能 |設定されている感度に従って、上向きと下向きの両方のレベルの変化を検出します。 |*bileveldetector.sensitivity:* 検出機能スコアのしきい値 (既定値:3.25、妥当な範囲は 3.25 から 5、値が大きいほど感度が低下) |rpscore: 上向きと下向きのレベルの変化に関する異常スコアを表す浮動小数点数 | |
 
 ### <a name="parameters"></a>parameters
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。

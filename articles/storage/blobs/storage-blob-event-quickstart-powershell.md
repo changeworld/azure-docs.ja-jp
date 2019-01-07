@@ -1,5 +1,5 @@
 ---
-title: Azure Blob ストレージ イベントをカスタム Web エンドポイントにルーティングする - Powershell | Microsoft Docs
+title: Azure Blob Storage のイベントを Web エンドポイントに送信する - PowerShell | Microsoft Docs
 description: Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。
 services: storage,event-grid
 author: david-stanford
@@ -8,14 +8,15 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 8482678a9c42fa2d960dee54c9810593cd820553
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec18
+ms.openlocfilehash: c7c8fd487bef0da7da84a23e18a4e999645106b3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732004"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076425"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>PowerShell を使って Blob Storage のイベントをカスタム Web エンドポイントにルーティングする
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>クイック スタート: PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure PowerShell を使用して Blob Storage のイベントをサブスクライブし、イベントをトリガーして結果を表示します。 
 
@@ -27,11 +28,11 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 ## <a name="setup"></a>セットアップ
 
-この記事では、Azure PowerShell の最新バージョンを実行していることを前提にしています。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+この記事では、Azure PowerShell の最新バージョンを実行している必要があります。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従って認証を行います。
+`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにサインインし、画面上の指示に従って認証を行います。
 
 ```powershell
 Connect-AzureRmAccount
@@ -160,7 +161,7 @@ Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Co
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-引き続きこのストレージ アカウントとイベント サブスクリプションを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
+このストレージ アカウントとイベント サブスクリプションを使用して作業を続ける場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup

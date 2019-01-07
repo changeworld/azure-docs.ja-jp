@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager の要求の制限 | Microsoft Docs
+title: 要求の制限と調整 - Azure Resource Manager
 description: サブスクリプションの上限に達したときに、Azure Resource Manager の要求をスロットルする方法について説明します。
 services: azure-resource-manager
 documentationcenter: na
@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/17/2018
+ms.date: 12/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: fdc98c6d88b18f770d1869acbea5998ad4571287
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: 0ba4a1a4119db515e10c0b704b0a10501fe79682
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981815"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136891"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
 Resource Manager では、Azure のサブスクリプションおよびテナントごとに、最大で 1 時間あたり 12,000 件の読み取り要求と 1 時間あたり 1,200 件の書き込み要求が許可されています。 これらの制限は、要求を行うプリンシパル ID と、サブスクリプション ID またはテナント ID の範囲に設定されます。 複数のプリンシパル ID から要求が発信されると、サブスクリプションまたはテナント全体の制限は、1 時間あたり 12,000 件および 1,200 件を超えます。

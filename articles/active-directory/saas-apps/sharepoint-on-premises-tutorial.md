@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SharePoint オンプレミスの統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SharePoint オンプレミスの統合 | Microsoft Docs
 description: Azure Active Directory と SharePoint オンプレミスの間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 31f4c64296c180ac441f2fb691514a4b9fb35a57
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 9c63808af8d883badd379cf8bc3372a1d65d6624
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687199"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968657"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>チュートリアル: Azure Active Directory と SharePoint オンプレミスの統合
+# <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>チュートリアル:Azure Active Directory と SharePoint オンプレミスの統合
 
 このチュートリアルでは、SharePoint オンプレミスと Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -76,7 +76,7 @@ Azure AD への SharePoint オンプレミスの統合を構成するには、�
 
 4. 検索ボックスに「**SharePoint オンプレミス**」と入力し、結果パネルで **SharePoint オンプレミス**を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果リストの SharePoint オンプレミス](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
+    ![結果リストの SharePoint オンプレミス](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -104,11 +104,11 @@ SharePoint オンプレミスで Azure AD のシングル サインオンを構�
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
-    ![[シングル サインオン] ダイアログ ボックス](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
+    ![[シングル サインオン] ダイアログ ボックス](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
 
 3. **[SharePoint オンプレミスのドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[SharePoint オンプレミスのドメインと URL] のシングル サインオン情報](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
+    ![[SharePoint オンプレミスのドメインと URL] のシングル サインオン情報](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
 
     a. **[サインオン URL]** ボックスに、`https://<YourSharePointServerURL>/_trust/default.aspx` のパターンを使用して URL を入力します。
 
@@ -118,21 +118,21 @@ SharePoint オンプレミスで Azure AD のシングル サインオンを構�
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![証明書のダウンロードのリンク](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
+    ![証明書のダウンロードのリンク](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
 
     > [!Note]
     > 証明書ファイルをダウンロードしたファイル パスは、構成時に PowerShell スクリプトで後から使用する必要があるため、書き留めておいてください。
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media\sharepoint-on-premises-tutorial/tutorial_general_400.png)
+    ![[シングル サインオンの構成] の [保存] ボタン](./media/sharepoint-on-premises-tutorial/tutorial_general_400.png)
 
 6. **[SharePoint オンプレミス構成]** セクションで、**[SharePoint オンプレミスの構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から **SAML エンティティ ID** をコピーします。 **[シングル サインオン サービス URL]** に次のパターンの値を使用します。`https://login.microsoftonline.com/_my_directory_id_/wsfed` 
 
     > [!Note]
     > _my_directory_id_ は Azure Ad サブスクリプションのテナント ID です。
 
-    ![SharePoint オンプレミス構成](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
+    ![SharePoint オンプレミス構成](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
 
     > [!NOTE]
     > Sharepoint オンプレミス アプリケーションは SAML 1.1 トークンを使用するため、Azure AD では認証の後に SharePoint サーバーからの WS 取り込み要求が必要で、SAML 1.1  トークンを発行します。
@@ -171,7 +171,7 @@ SharePoint オンプレミスで Azure AD のシングル サインオンを構�
 
     e. Click **OK**.
 
-    ![認証プロバイダーを構成する](./media\sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
+    ![認証プロバイダーを構成する](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
     > [!NOTE]
     > 外部ユーザーの一部では、UPN が `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com` のような値を分割したために、このシングル サインオン統合を使用できません。 近いうちに、顧客がユーザーの種類に応じた UPN の処理方法をアプリ構成できるようにする予定です。 アプリ構成が可能になった後は、すべてのゲスト ユーザーが組織の従業員としてシームレスに SSO を使用できます。
@@ -186,19 +186,19 @@ SharePoint オンプレミスで Azure AD のシングル サインオンを構�
 
 1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
 
-    ![Azure Active Directory のボタン](./media\sharepoint-on-premises-tutorial/create_aaduser_01.png)
+    ![Azure Active Directory のボタン](./media/sharepoint-on-premises-tutorial/create_aaduser_01.png)
 
 2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media\sharepoint-on-premises-tutorial/create_aaduser_02.png)
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/sharepoint-on-premises-tutorial/create_aaduser_02.png)
 
 3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
-    ![[追加] ボタン](./media\sharepoint-on-premises-tutorial/create_aaduser_03.png)
+    ![[追加] ボタン](./media/sharepoint-on-premises-tutorial/create_aaduser_03.png)
 
 4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
-    ![[ユーザー] ダイアログ ボックス](./media\sharepoint-on-premises-tutorial/create_aaduser_04.png)
+    ![[ユーザー] ダイアログ ボックス](./media/sharepoint-on-premises-tutorial/create_aaduser_04.png)
 
     a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
@@ -220,7 +220,7 @@ Azure AD にログインして SharePoint にアクセスするユーザーに�
 
 4. [Policy for Web Application]\(Web アプリケーションのポリシー\) で、**[ユーザーの追加]** をクリックします。
 
-    ![名前要求を条件にユーザーを検索](./media\sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
+    ![名前要求を条件にユーザーを検索](./media/sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
 
 5. **[ユーザーの追加]** ダイアログ ボックスの **[ゾーン]** で適切なゾーンをクリックして、**[次へ]** をクリックします。
 
@@ -232,7 +232,7 @@ Azure AD にログインして SharePoint にアクセスするユーザーに�
 
 9. [アクセス許可] で **[フル コントロール]** をクリックします。
 
-    ![要求ユーザーにフル コントロールを許可する](./media\sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
+    ![要求ユーザーにフル コントロールを許可する](./media/sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
 
 10. **[完了]** をクリックし、**[OK]** をクリックします。
 
@@ -263,7 +263,7 @@ Azure AD にログインして SharePoint にアクセスするユーザーに�
 
 Azure AD からの ID を使用して SharePoint 2016 にユーザーがログインできるようになりましたが、ユーザー エクスペリエンスを改善する余地がまだあります。 たとえば、ユーザーを検索すると、ユーザーの選択ウィンドウに複数の検索結果が表示されます。 要求のマッピングで作成された 3 種類の要求ごとに検索結果が表示されています。 ユーザーの選択ウィンドウを使用してユーザーを選択するには、ユーザー名を正確に入力し、**名前**要求結果を選択する必要があります。
 
-![要求検索結果](./media\sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
+![要求検索結果](./media/sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
 
 検索条件値の検証機能がないため、スペル ミスや、ユーザーが誤って正しくない種類の要求を選択して、たとえば **[姓]** 要求を割り当てる可能性があります。 これにより、ユーザーがリソースにアクセスできない可能性があります。
 
@@ -283,7 +283,7 @@ Azure AD からの ID を使用して SharePoint 2016 にユーザーがログ�
 
 2. アプリケーションの一覧で **[SharePoint オンプレミス]** を選択します。
 
-    ![アプリケーションの一覧の SharePoint のリンク](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
+    ![アプリケーションの一覧の SharePoint のリンク](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -314,14 +314,14 @@ Azure AD からの ID を使用して SharePoint 2016 にユーザーがログ�
 
 <!--Image references-->
 
-[1]: ./media\sharepoint-on-premises-tutorial/tutorial_general_01.png
-[2]: ./media\sharepoint-on-premises-tutorial/tutorial_general_02.png
-[3]: ./media\sharepoint-on-premises-tutorial/tutorial_general_03.png
-[4]: ./media\sharepoint-on-premises-tutorial/tutorial_general_04.png
+[1]: ./media/sharepoint-on-premises-tutorial/tutorial_general_01.png
+[2]: ./media/sharepoint-on-premises-tutorial/tutorial_general_02.png
+[3]: ./media/sharepoint-on-premises-tutorial/tutorial_general_03.png
+[4]: ./media/sharepoint-on-premises-tutorial/tutorial_general_04.png
 
-[100]: ./media\sharepoint-on-premises-tutorial/tutorial_general_100.png
+[100]: ./media/sharepoint-on-premises-tutorial/tutorial_general_100.png
 
-[200]: ./media\sharepoint-on-premises-tutorial/tutorial_general_200.png
-[201]: ./media\sharepoint-on-premises-tutorial/tutorial_general_201.png
-[202]: ./media\sharepoint-on-premises-tutorial/tutorial_general_202.png
-[203]: ./media\sharepoint-on-premises-tutorial/tutorial_general_203.png
+[200]: ./media/sharepoint-on-premises-tutorial/tutorial_general_200.png
+[201]: ./media/sharepoint-on-premises-tutorial/tutorial_general_201.png
+[202]: ./media/sharepoint-on-premises-tutorial/tutorial_general_202.png
+[203]: ./media/sharepoint-on-premises-tutorial/tutorial_general_203.png

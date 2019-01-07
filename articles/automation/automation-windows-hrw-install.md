@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83820440a6304886785a175b27614b45fdb98b13
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a0e0000c4baa22ccc1c26c0e40ec62bb277104af
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252226"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993915"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -53,12 +53,12 @@ Windows ハイブリッド worker ロールのインストールと構成を自�
 
    New-OnPremiseHybridWorker.ps1 スクリプトは、実行中に次のパラメーターを必要とします。
 
-   * *AutomationAccountName* (必須): Automation アカウントの名前。
-   * *AAResourceGroupName* (必須): Automation アカウントに関連付けられているリソース グループの名前。
-   * *OMSResourceGroupName* (省略可能): Log Analytics ワークスペース用のリソース グループの名前。 このリソース グループが指定されていない場合、*AAResourceGroupName* が使用されます。
-   * *HybridGroupName* (必須): このシナリオをサポートしている Runbook のターゲットとして指定する Hybrid Runbook Worker グループの名前。
-   * *SubscriptionID* (必須): Automation アカウントが存在する Azure サブスクリプション ID。
-   * *WorkspaceName* (省略可能): Log Analytics ワークスペースの名前。 Log Analytics ワークスペースがない場合は、スクリプトがこれを作成して構成します。
+   * *AutomationAccountName* (必須):Automation アカウントの名前。
+   * *AAResourceGroupName* (必須):Automation アカウントに関連付けられているリソース グループの名前。
+   * *OMSResourceGroupName* (省略可能):Log Analytics ワークスペース用のリソース グループの名前。 このリソース グループが指定されていない場合、*AAResourceGroupName* が使用されます。
+   * *HybridGroupName* (必須):このシナリオをサポートしている Runbook のターゲットとして指定する Hybrid Runbook Worker グループの名前。
+   * *SubscriptionID* (必須):Automation アカウントが存在する Azure サブスクリプション ID。
+   * *WorkspaceName* (省略可能):Log Analytics ワークスペース名。 Log Analytics ワークスペースがない場合は、スクリプトがこれを作成して構成します。
 
      > [!NOTE]
      > 現在、Log Analytics との統合がサポートされている Automation リージョンは、**オーストラリア南東部**、**米国東部 2**、**東南アジア**、および**西ヨーロッパ**だけです。 Automation アカウントがこれらのいずれかのリージョンに存在しない場合、スクリプトは Log Analytics ワークスペースを作成しますが、それらをリンクできないことをユーザーに警告します。
@@ -85,7 +85,7 @@ Windows ハイブリッド worker ロールのインストールと構成を自�
 
 #### <a name="1-create-a-log-analytics-workspace"></a>1.Log Analytics ワークスペースの作成
 
-Log Analytics ワークスペースがまだない場合は、[ワークスペースの管理](../log-analytics/log-analytics-manage-access.md)に関するページの手順に従って作成します。 既存のワークスペースがある場合は、それを使用できます。
+Log Analytics ワークスペースがまだない場合は、[ワークスペースの管理](../azure-monitor/platform/manage-access.md)に関するページの手順に従って作成します。 既存のワークスペースがある場合は、それを使用できます。
 
 #### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2.Log Analytics ワークスペースに Automation ソリューションを追加する
 

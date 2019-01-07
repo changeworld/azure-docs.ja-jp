@@ -1,6 +1,6 @@
 ---
-title: DPS を使用して Azure IoT Edge の自動プロビジョニングを行う - Linux | Microsoft Docs
-description: Linux VM 上のシミュレートされた TPM を使用して Azure IoT Edge 用のデバイスのプロビジョニングをテストします
+title: DPS を使用した Linux デバイスの自動プロビジョニング - Azure IoT Edge | Microsoft Docs
+description: Linux VM 上のシミュレートされた TPM を使用して Azure IoT Edge 用の Azure Device Provisioning Service をテストします
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 61da3b8e139cf5091aec4c1ab835c23fe319ea46
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 0550b1765e36d591a1baf34d3c255a252ca5278b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446254"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101757"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Linux 仮想マシン上で仮想 TPM を持つ Edge デバイスの作成とプロビジョニングを行う
 
@@ -61,9 +62,9 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 
 3. **新しい仮想マシン ウィザード**を、次の構成で完了します。
 
-   1. **世代の指定**: **[世代 2]** を選択します。
-   2. **ネットワークの構成**: **[接続]** の値を、前のセクションで作成した仮想スイッチに設定します。 
-   3. **インストール オプション**: **[ブート イメージ ファイルからオペレーティング システムをインストールする]** を選択し、ローカルに保存したディスク イメージ ファイルを参照します。
+   1. **世代の指定**:**[第 2 世代]** を選択します。
+   2. **ネットワークの構成**:**[接続]** の値を、前のセクションで作成した仮想スイッチに設定します。 
+   3. **インストール オプション**:**[ブート イメージ ファイルからオペレーティング システムをインストールする]** を選択し、ローカルに保存したディスク イメージ ファイルを参照します。
 
 新しい VM の作成には数分かかることがあります。 
 

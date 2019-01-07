@@ -1,5 +1,6 @@
 ---
-title: パブリックな Basic Load Balancer の操作、イベント、およびカウンターを監視する | Microsoft Docs
+title: パブリックな Basic Load Balancer の操作、イベント、カウンターを監視する
+titlesuffix: Azure Load Balancer
 description: パブリックな Basic Load Balancer でアラート イベントとプローブの正常性状態のログを有効にする方法について説明します
 services: load-balancer
 documentationcenter: na
@@ -7,21 +8,22 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: e8d38aaff2e7f20a3935608bcf4d610828d2b84f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 00a5e888961a9712db0cd509a39fb0367895ac3f
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261504"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164128"
 ---
 # <a name="log-analytics-for-public-basic-load-balancer"></a>パブリックな Basic Load Balancer の Log Analytics
 
 >[!IMPORTANT] 
->Azure Load Balancer では、Basic と Standard の 2 種類がサポートされています。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer の詳細については、「[Standard Load Balancer の概要](load-balancer-standard-overview.md)」を参照してください。Azure Monitor での多次元メトリックによるテレメトリが公開されています。
+>Azure Load Balancer では、2 種類がサポートされています。Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer の詳細については、「[Standard Load Balancer の概要](load-balancer-standard-overview.md)」を参照してください。Azure Monitor での多次元メトリックによるテレメトリが公開されています。
 
 Azure の各種ログを使用して、Basic Load Balancer の管理やトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 どのログも Azure Blob Storage から抽出し、Excel や PowerBI などのさまざまなツールで表示できます。 各種ログの詳細については、以下の一覧を参照してください。
 
@@ -132,7 +134,7 @@ JSON 形式の出力でプロパティ フィールドを見れば、プロー�
 次のいずれかの方法を使用して、監査ログのデータを表示および分析できます。
 
 * **Azure Tools:** Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure プレビュー ポータルを使用して、監査ログから情報を取得します。 それぞれの方法の詳細な手順については、「 [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md) 」を参照してください。
-* **Power BI:** [Power BI](https://powerbi.microsoft.com/pricing) アカウントがまだない場合は、無料で試すことができます。 [Power BI 用 Azure 監査ログ コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs)を使用すると、構成済みのダッシュボードでデータを分析できます。また、要件に合わせてビューをカスタマイズすることもできます。
+* **Power BI:** [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだお持ちではない場合は、無料で試すことができます。 [Power BI 用 Azure 監査ログ コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs)を使用すると、構成済みのダッシュボードでデータを分析できます。また、要件に合わせてビューをカスタマイズすることもできます。
 
 ## <a name="view-and-analyze-the-health-probe-and-event-log"></a>正常性プローブ ログとイベント ログの表示と分析
 
