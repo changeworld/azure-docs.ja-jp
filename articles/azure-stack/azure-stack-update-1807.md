@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: ce74d12e4ea91d8c230218081461bc375e250ce4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f87f93ebc739d75c796859c7091d4cf62a820a0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260586"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714986"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新プログラム
 
-*適用対象: Azure Stack 統合システム*
+*適用先:Azure Stack 統合システム*
 
 この記事では、1807 更新プログラム パッケージの内容について説明します。 このバージョンの Azure Stack の既知の問題、機能強化、修正された内容のほか、更新プログラムをダウンロードする場所について取り上げます。 既知の問題は、更新プロセスに直接関係する問題と、ビルド (インストール後) に関する問題に分けられています。
 
@@ -162,9 +162,8 @@ Azure Stack では、Windows Server 2016 の Server Core インストールを�
 
 ### <a name="prerequisites"></a>前提条件
 
-- Azure Stack 1807 更新プログラムを適用する前に Azure Stack [1805 更新プログラム](azure-stack-update-1805.md)をインストールします。  更新プログラム 1806 は存在しません。  
-
-- 最新の入手できる[バージョン 1805 の更新プログラムまたは修正プログラム](azure-stack-update-1805.md#post-update-steps)をインストールします。  
+- Azure Stack 1807 更新プログラムを適用する前に Azure Stack [1805 更新プログラム](azure-stack-update-1805.md)をインストールします。 更新プログラム 1806 は存在しません。  
+ 
   > [!TIP]  
   > 以下の *RRS* または *Atom* フィードに登録して、Azure Stack の修正プログラムの最新情報を入手してください:
   > - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
@@ -244,14 +243,14 @@ Azure Stack では、Windows Server 2016 の Server Core インストールを�
 - 以下の詳細情報の**正常性コントローラー** コンポーネントのアラートが表示されることがあります:  
 
    アラート #1:
-   - 名前: インフラストラクチャ ロールの異常
-   - 重大度: 警告
+   - [名前]:インフラストラクチャ ロールの異常
+   - [重大度]:警告
    - コンポーネント: 正常性コントローラー
    - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
 
   アラート #2:
-   - 名前: インフラストラクチャ ロールの異常
-   - 重大度: 警告
+   - [名前]:インフラストラクチャ ロールの異常
+   - [重大度]:警告
    - コンポーネント: 正常性コントローラー
    - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
 
@@ -261,8 +260,8 @@ Azure Stack では、Windows Server 2016 の Server Core インストールを�
 <!-- 2812138 | IS --> 
 - 以下の詳細情報を含む **Storage** コンポーネントのアラートが表示される場合があります:
 
-   - 名前: Storage サービスの内部通信エラー  
-   - 重大度: 緊急  
+   - [名前]:Storage サービスの内部通信エラー  
+   - [重大度]:重大  
    - コンポーネント: Storage  
    - 説明: 次のノードに要求を送信するときに Storage サービスの内部通信エラーが発生しました。  
 
@@ -272,13 +271,13 @@ Azure Stack では、Windows Server 2016 の Server Core インストールを�
 - Azure Stack オペレーターで、メモリ不足のアラートを受信し、テナント仮想マシンが**ファブリック VM の作成エラー**でデプロイできなかった場合、Azure Stack スタンプに使用できるメモリが不足している可能性があります。 ワークロードに使用できる容量の詳細については、[Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) に関するページを参照してください。
 
 
-### <a name="compute"></a>コンピューティング
+### <a name="compute"></a>Compute
 
 <!-- 2724873 - IS --> 
 - スケール ユニットの管理に PowerShell コマンドレットの **Start-AzsScaleUnitNode** または **Stop-AzsScaleunitNode** を使った場合、スケール ユニットを開始または停止しようとすると、1 回目は失敗することがあります。 初回実行時にコマンドレットが失敗した場合は、もう一度コマンドレットを実行してください。 2 回目は操作が正常に完了します。 
 
 <!-- 2494144 - IS, ASDK --> 
-- 仮想マシンの展開用に仮想マシンのサイズを選択すると、VM を作成するときに F シリーズの VM のサイズがサイズ セレクターの一部として表示されません。 セレクターに *F8s_v2*、*F16s_v2*、*F32s_v2*、および *F64s_v2* の VM サイズが表示されません。  
+- 仮想マシンの展開用に仮想マシンのサイズを選択すると、VM を作成するときに F シリーズの VM のサイズがサイズ セレクターの一部として表示されません。 次の VM サイズは、セレクターには表示されません。*F8s_v2*、*F16s_v2*、*F32s_v2*、および*F64s_v2*。  
   この問題を回避するには、次のいずれかの方法を使用して VM をデプロイします。 どの方法でも、使用する VM のサイズを指定する必要があります。
 
   - **Azure Resource Manager テンプレート:** テンプレートを使用する際に、テンプレートの *vmSize* を使用する VM サイズと同じに設定します。 たとえば、*F32s_v2* サイズを使用する VM をデプロイするには、次のように入力します。  

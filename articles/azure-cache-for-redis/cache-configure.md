@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: c95c40404bb52f739c407eca3c0d48be5e0a86e6
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ff6a3f32d9163be01483e8b8c743caa4e5bb573c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262437"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581251"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。
@@ -187,7 +187,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 ![Recommendations](./media/cache-configure/redis-cache-recommendations.png)
 
-**[Azure Cache for Redis]** ブレードの [[Monitoring charts](監視グラフ)](cache-how-to-monitor.md#monitoring-charts) セクションと [[Usage charts](使用状況グラフ)](cache-how-to-monitor.md#usage-charts) セクションでは、以下のメトリックを監視できます。
+**[Azure Cache for Redis]** ブレードの [[Monitoring charts]\(監視グラフ)](cache-how-to-monitor.md#monitoring-charts) セクションと [[Usage charts]\(使用状況グラフ)](cache-how-to-monitor.md#usage-charts) セクションでは、以下のメトリックを監視できます。
 
 各価格レベルには、クライアント接続、メモリ、および帯域幅についてさまざまな制限があります。 長時間にわたり、キャッシュがこれらのメトリックの最大容量に近づいている場合は、推奨項目が作成されます。 **[推奨事項]** ツールで検証されるメトリックと制限の詳細については、次の表をご覧ください。
 
@@ -359,7 +359,7 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-collection.md#metrics)され、その後削除されます。 キャッシュ メトリックを 30 日よりも長く保持するには、**[診断]** をクリックし、キャッシュ診断の格納に使用する[ストレージ アカウントを構成](cache-how-to-monitor.md#export-cache-metrics)します。
 
 >[!NOTE]
->キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーミングしたり、Log Analytics に送信したり](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)できます。
+>キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーミングしたり、Log Analytics に送信したり](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)できます。
 >
 >
 
