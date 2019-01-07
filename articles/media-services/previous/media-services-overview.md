@@ -20,15 +20,15 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/29/2018
 ms.locfileid: "50211606"
 ---
-# <a name="azure-media-services-overview"></a>Azure Media Services の概要 
+# <a name="azure-media-services-overview"></a>Azure Media Services の概要
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 2](media-services-overview.md)
 > * [Version 3](../latest/media-services-overview.md)
 
 Microsoft Azure Media Services (AMS) は拡張可能なクラウド ベースのプラットフォームです。これにより、開発者はスケーラブルなメディア管理の構築、アプリケーションの配信を実行できます。 Media Services は、各種クライアント (TV、PC、モバイル デバイスなど) へのオンデマンドとライブ ストリーミングでの配信でビデオやオーディオのコンテンツの安全なアップロード、格納、エンコード、パッケージ化を可能にする REST API に基づいています。
 
-Media Services を使いこなして、エンド ツー エンドのワークフローを構築できます。 ワークフローの一部にサード パーティのコンポーネントを使用することもできます。 たとえば、サード パーティのエンコーダーを使用してエンコードしてから、 Media Services を使用してアップロード、保護、パッケージ化、配信などを行うことができます。 コンテンツをライブ ストリーム配信したり、オンデマンドで配信したりできます。 
+Media Services を使いこなして、エンド ツー エンドのワークフローを構築できます。 ワークフローの一部にサード パーティのコンポーネントを使用することもできます。 たとえば、サード パーティのエンコーダーを使用してエンコードしてから、 Media Services を使用してアップロード、保護、パッケージ化、配信などを行うことができます。 コンテンツをライブ ストリーム配信したり、オンデマンドで配信したりできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ Azure Media Services を使用するには、次が必要です。
 * (省略可能) 開発環境をセットアップします。 開発環境の .NET または REST API を選択します。 詳細については、「 [環境を設定する](media-services-dotnet-how-to-use.md)」を参照してください。
 
     また、[プログラムによる AMS API への接続](media-services-use-aad-auth-to-access-ams-api.md)方法についても確認してください。
-* 開始状態の Standard または Premium ストリーミング エンドポイント。  詳細については、[ストリーミング エンドポイントの管理](media-services-portal-manage-streaming-endpoints.md)に関するページを参照してください。
+* 開始状態の Standard または Premium ストリーミング エンドポイント。 詳細については、[ストリーミング エンドポイントの管理](media-services-portal-manage-streaming-endpoints.md)に関するページを参照してください。
 
 ## <a name="sdks-and-tools"></a>SDK とツール
 
@@ -57,7 +57,7 @@ Media Services ソリューションを構築するために、以下を使用�
 
 > [!NOTE]
 > 最新バージョンの Java SDK を入手し、Java での開発を始めるには、「[Azure Media Services 用 Java クライアント SDK の概要](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)」を参照してください。 <br/>
-> Media Services 用の最新の PHP SDK をダウンロードするには、[Packagist リポジトリ](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)でバージョン 0.5.7 の Microsoft/WindowAzure パッケージを検索してください。  
+> Media Services 用の最新の PHP SDK をダウンロードするには、[Packagist リポジトリ](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)でバージョン 0.5.7 の Microsoft/WindowAzure パッケージを検索してください。
 
 ## <a name="code-samples"></a>コード サンプル
 
