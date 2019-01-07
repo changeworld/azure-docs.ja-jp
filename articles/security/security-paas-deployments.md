@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: ee62e81b8c75200f26dfb5f7303083190f83eb8e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 199ea6855e661ef39104fdeb54941ccfd9f36933
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016846"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728484"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -119,11 +119,11 @@ Microsoft [セキュリティ開発ライフ サイクル (Security Development 
 | 特権の昇格 | Authorization | [Privileged Identity Management](../active-directory/privileged-identity-management/subscription-requirements.md) を使用する。 |
 
 ## <a name="develop-on-azure-app-service"></a>Azure App Service での開発
-PaaS である [Azure App Service](../app-service/app-service-web-overview.md) を使用すると、任意のプラットフォームまたはデバイスを対象とした Web アプリとモバイル アプリを作成し、クラウドやオンプレミスにあるあらゆる場所のデータにアクセスできます。 App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service により、Web、モバイル、および統合シナリオで豊富な機能セットを利用できます。
+PaaS である [Azure App Service](../app-service/overview.md) を使用すると、任意のプラットフォームまたはデバイスを対象とした Web アプリとモバイル アプリを作成し、クラウドやオンプレミスにあるあらゆる場所のデータにアクセスできます。 App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service により、Web、モバイル、および統合シナリオで豊富な機能セットを利用できます。
 
 App Service 使用時のベスト プラクティスを次に示します。
 
-**ベスト プラクティス**: [Azure Active Directory を使用して認証する](../app-service/app-service-authentication-overview.md)。   
+**ベスト プラクティス**: [Azure Active Directory を使用して認証する](../app-service/overview-authentication-authorization.md)。   
 **詳細**: App Service は、ID プロバイダーに対して OAuth 2.0 サービスを提供します。 OAuth 2.0 は、Web アプリケーション、デスクトップ アプリケーション、および携帯電話に特定の認証フローを提供しながら、クライアント開発者のシンプル性を実現することに焦点を当てています。 Azure AD が OAuth 2.0 を使用することにより、ユーザーはモバイル アプリケーションと Web アプリケーションへのアクセスを承認することができます。
 
 **ベスト プラクティス**: 知る必要性と最小権限という 2 つのセキュリティ原則に基づいて、アクセスを制限します。   

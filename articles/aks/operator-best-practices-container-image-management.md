@@ -7,16 +7,14 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 20d3d3d755a35927550064ddfdf3b983348f93d3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1cc91f55d3895f06176875cb9ae620685dc09a26
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111140"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605553"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) でのコンテナー イメージの管理とセキュリティに関するベスト プラクティス
-
-Azure Kubernetes Service (AKS) でアプリケーションを開発および実行する際には、コンテナーのセキュリティが重要な考慮事項になります。 期限切れの基本イメージまたはアプリケーション ランタイムを含むコンテナーは、セキュリティ上のリスクおよび考えられる攻撃ベクトルをもたらします。 これらのリスクを最小限に抑えるには、コンテナー内の問題をスキャンして修復するツールを統合する必要があります。
 
 Azure Kubernetes Service (AKS) でアプリケーションを開発および実行する際には、コンテナーおよびコンテナー イメージのセキュリティが重要な考慮事項になります。 期限切れの基本イメージ、または修正プログラムが適用されていないアプリケーション ランタイムを含むコンテナーは、セキュリティ上のリスクおよび考えられる攻撃ベクトルをもたらします。 これらのリスクを最小限に抑えるには、ビルド時と実行時にコンテナー内の問題をスキャンして修復するツールを統合する必要があります。 脆弱性または期限切れの基本イメージが、プロセス内のできるだけ早い段階で見つかれば、クラスターのセキュリティが高まります。 この記事で*コンテナー*は、コンテナー レジストリに格納されているコンテナー イメージと、実行中のコンテナーの両方を意味します。
 

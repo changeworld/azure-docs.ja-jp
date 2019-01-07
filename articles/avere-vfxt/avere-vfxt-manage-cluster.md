@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 9eba9eef315f1ec6eb25ea21c1d4747ab002d078
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 82b5e175f0340aae7e35b177d9faa4831982984c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958918"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999055"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Avere vFXT クラスターの管理
 
@@ -81,9 +81,9 @@ vfxt.py スクリプトは、以下のクラスター管理タスクに使用で
 
 Avere コントロール パネルと同じように、vfxt.py は、クラスターまたはノードを破棄する前に、変更されたデータがバック エンド ストレージに永続的に保管されるように動作します。 これにより、Avere portal よりもより安全なオプションとなります。
 
-vfxt.py は、クラスター コント ローラー VM に事前にインストールされています。 <!-- (If you want to install it on another system, refer to http://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
+vfxt.py は、クラスター コント ローラー VM に事前にインストールされています。 <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
-vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster management with vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)」(vfxt.py でのクラウド クラスター管理) で提供されています
+vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster management with vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)」(vfxt.py でのクラウド クラスター管理) で提供されています。
 
 ### <a name="add-cluster-nodes-with-vfxtpy"></a>vfxt.py によるクラスター ノードの追加
 
@@ -168,7 +168,7 @@ vFXT クラスターから 1 つのノードを削除し、クラスターの残
 > vFXT クラスターからノードを削除せずにノードを削除すると、データが失われる可能性があります。
 
 vFXT ノードとして使用されている 1 つまたは複数のインスタンスを完全に破棄するには、Azure portal を使用します。
-左側のメニューで **[Virtual machines](仮想マシン)** を選択し、一覧から VM 名をクリックしてその概要ページを開きます。
+左側のメニューで **[Virtual machines]\(仮想マシン)** を選択し、一覧から VM 名をクリックしてその概要ページを開きます。
 
 概要ページの上部にある **[削除]** ボタンをクリックして、VM を完全に破棄します。
 
