@@ -20,7 +20,7 @@ ms.lasthandoff: 12/14/2018
 ms.locfileid: "53387031"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-azure-datalake-connector.md)
 > * [現在のバージョン](connector-azure-data-lake-store.md)
 
@@ -53,8 +53,8 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | `type` プロパティは **AzureDataLakeStore** に設定する必要があります。 | [はい] |
-| dataLakeStoreUri | Azure Data Lake Store アカウントに関する情報です。 この情報の形式は、`https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` です。 | [はい] |
+| type | `type` プロパティは **AzureDataLakeStore** に設定する必要があります。 | はい |
+| dataLakeStoreUri | Azure Data Lake Store アカウントに関する情報です。 この情報の形式は、`https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` です。 | はい |
 | subscriptionId | Data Lake Store アカウントが属している Azure サブスクリプション ID です。 | シンクでは必須 |
 | resourceGroupName | Data Lake Store アカウントが属している Azure リソース グループ名です。 | シンクでは必須 |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたはセルフホステッド統合ランタイムを使用できます (お客様のデータ ストアがプライベート ネットワークにある場合)。 このプロパティが指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
@@ -81,9 +81,9 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | [はい] |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを `SecureString` としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
-| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい] |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを `SecureString` としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい |
 
 **例:**
 
@@ -158,7 +158,7 @@ Azure Data Lake Store をコピー先またはコピー元としてデータを�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **AzureDataLakeStoreFile** に設定する必要があります。 |[はい] |
+| type | データセットの type プロパティは **AzureDataLakeStoreFile** に設定する必要があります。 |はい |
 | folderPath | Data Lake Store のフォルダーへのパス。 ワイルドカード フィルターはサポートされていません。 指定しないと、ルートが参照されます。 例: rootfolder/subfolder/ |いいえ  |
 | fileName | 指定された "folderPath" の下にあるファイルの**名前またはワイルドカード フィルター**。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。<br/><br/>出力データセットに fileName の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティは、"*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*" というパターンでファイル名を自動的に生成します  (例: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz")。 クエリの代わりにテーブル名を使用して表形式のソースからコピーする場合、名前のパターンは "*[table name].[format].[compression if configured]*" となります  (例: "MyTable.csv")。 |いいえ  |
 | format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>特定の形式でファイルを解析または生成したい場合は、次の種類のファイル形式がサポートされます (**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**)。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
@@ -166,7 +166,7 @@ Azure Data Lake Store をコピー先またはコピー元としてデータを�
 
 
 >[!TIP]
->フォルダーの下のすべてのファイルをコピーするには、**folderPath** のみを指定します。<br>特定の名前が付いた単一のファイルをコピーするには、フォルダー部分で **folderPath**、ファイル名で **fileName** を指定します。<br>フォルダーの下のファイルのサブセットをコピーするには、フォルダー部分で **folderPath**、ワイルドカード フィルターで **fileName** を指定します。 
+>フォルダーの下のすべてのファイルをコピーするには、**folderPath** のみを指定します。<br>特定の名前が付いた単一のファイルをコピーするには、フォルダー部分で **folderPath**、ファイル名で **fileName** を指定します。<br>フォルダーの下のファイルのサブセットをコピーするには、フォルダー部分で **folderPath**、ワイルドカード フィルターで **fileName** を指定します。
 
 **例:**
 
@@ -206,7 +206,7 @@ Data Lake Store からデータをコピーするには、コピー アクティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの `type` プロパティは **AzureDataLakeStoreSource** に設定する必要があります。 |[はい] |
+| type | コピー アクティビティのソースの `type` プロパティは **AzureDataLakeStoreSource** に設定する必要があります。 |はい |
 | recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 `recursive` が true に設定され、シンクがファイルベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 使用可能な値: **true** (既定値) および **false**。 | いいえ  |
 
 **例:**
@@ -247,7 +247,7 @@ Data Lake Store からデータをコピーするには、コピー アクティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの `type` プロパティは **AzureDataLakeStoreSink** に設定する必要があります。 |[はい] |
+| type | コピー アクティビティのシンクの `type` プロパティは **AzureDataLakeStoreSink** に設定する必要があります。 |はい |
 | copyBehavior | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>PreserveHierarchy (既定値)</b>: ファイル階層をターゲット フォルダー内で保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの第一レベルに配置されます。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイルまたは BLOB の名前を指定した場合、マージされたファイル名は指定した名前になります。 それ以外の場合はファイル名が自動生成されます。 | いいえ  |
 
 **例:**
