@@ -21,7 +21,7 @@ ms.lasthandoff: 10/31/2018
 ms.locfileid: "50416938"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-copy-activity-performance.md)
 > * [現在のバージョン](copy-activity-performance.md)
 
@@ -36,9 +36,9 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 この記事では、次の内容について説明します。
 
-* [パフォーマンス参照番号](#performance-reference) 
+* [パフォーマンス参照番号](#performance-reference)
 * [データ統合単位](#data-integration-units)、[並列コピー](#parallel-copy)、[ステージング コピー](#staged-copy)などのさまざまなシナリオにおけるコピーのスループットを高める機能
-* [パフォーマンス チューニング ガイダンス](#performance-tuning-steps) 
+* [パフォーマンス チューニング ガイダンス](#performance-tuning-steps)
 
 > [!NOTE]
 > コピー アクティビティ全般に慣れていない場合は、この記事を読む前に、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
@@ -76,7 +76,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 
 > [!TIP]
-> 使用するデータ統合ユニット (DIU) を増やすと、より高いスループットを実現できます。 たとえば、100 DIU にすると、Azure BLOB から Azure Data Lake Store に **1.0 Gbps** でデータをコピーすることができます。 この機能の詳細とサポートされるシナリオについては、「[データ統合単位](#data-integration-units)」セクションをご覧ください。 
+> 使用するデータ統合ユニット (DIU) を増やすと、より高いスループットを実現できます。 たとえば、100 DIU にすると、Azure BLOB から Azure Data Lake Store に **1.0 Gbps** でデータをコピーすることができます。 この機能の詳細とサポートされるシナリオについては、「[データ統合単位](#data-integration-units)」セクションをご覧ください。
 
 ## <a name="data-integration-units"></a>データ統合単位
 
@@ -136,7 +136,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 | 他のすべてのコピー シナリオ |1 |
 
 [!TIP]
-> ファイル ベースのストア間でデータをコピーするとき、通常は既定の動作 (自動的に決定される) によって最高のスループットが得られます。 
+> ファイル ベースのストア間でデータをコピーするとき、通常は既定の動作 (自動的に決定される) によって最高のスループットが得られます。
 
 データ ストアをホストしているコンピューターの負荷を制御したり、コピーのパフォーマンスをチューニングしたりするには、**parallelCopies** プロパティの値を指定して、既定値をオーバーライドできます。 値は 1 以上の整数でなければなりません。 実行時にコピー アクティビティは、設定された値以下でパフォーマンスが最大になる値を使用します。
 
@@ -241,18 +241,18 @@ Data Factory サービスとコピー アクティビティのパフォーマン
 
 2. **パフォーマンスを診断して最適化する**。 観測したパフォーマンスが予測どおりでない場合は、パフォーマンスのボトルネックを特定する必要があります。 次に、パフォーマンスを最適化して、ボトルネックの影響を除去するか軽減します。 この記事では、パフォーマンスの診断に関する詳細な説明は省略しますが、いくつかの一般的な考慮事項を次に示します。
 
-   * パフォーマンス機能:
-     * [並列コピー](#parallel-copy)
-     * [データ統合単位](#data-integration-units)
-     * [ステージング コピー](#staged-copy)
-     * [セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime)
-   * [セルフホステッド統合ランタイム](#considerations-for-self-hosted-integration-runtime)
-   * [ソース](#considerations-for-the-source)
-   * [シンク](#considerations-for-the-sink)
-   * [シリアル化と逆シリアル化](#considerations-for-serialization-and-deserialization)
-   * [圧縮](#considerations-for-compression)
-   * [列マッピング](#considerations-for-column-mapping)
-   * [その他の考慮事項](#other-considerations)
+    * パフォーマンス機能:
+      * [並列コピー](#parallel-copy)
+      * [データ統合単位](#data-integration-units)
+      * [ステージング コピー](#staged-copy)
+      * [セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime)
+    * [セルフホステッド統合ランタイム](#considerations-for-self-hosted-integration-runtime)
+    * [ソース](#considerations-for-the-source)
+    * [シンク](#considerations-for-the-sink)
+    * [シリアル化と逆シリアル化](#considerations-for-serialization-and-deserialization)
+    * [圧縮](#considerations-for-compression)
+    * [列マッピング](#considerations-for-column-mapping)
+    * [その他の考慮事項](#other-considerations)
 
 3. **構成をデータ セット全体に拡張する**。 実行結果とパフォーマンスに問題がなければ、データ セット全体を網羅するように定義とパイプラインを拡張することができます。
 
@@ -381,7 +381,7 @@ Data Factory で同じデータ ストアに同時に接続させる必要があ
     * **シリアル化**: CSV へのデータ ストリームのシリアル化で、スループットが低くなっています。
     * **圧縮**: 低速の圧縮コーデック (たとえば、Core i7 で 2.8 MBps の bzip2) を選択しました。
   * **WAN**: 企業ネットワークと Azure サービス間の帯域幅が小さい状態です (たとえば、T1 = 1,544 kbps、T2 = 6,312 kbps)。
-* **シンク**: Blob Storage のスループットが低くなっています  (SLA により最低でも 60 MBps が保証されているため、このシナリオは現実的ではありません)。
+* **シンク**: Blob Storage のスループットが低くなっています (SLA により最低でも 60 MBps が保証されているため、このシナリオは現実的ではありません)。
 
 この場合、bzip2 データ圧縮がパイプライン全体を遅くしている可能性があります。 gzip 圧縮コーデックに切り替えると、このボトルネックが緩和される場合があります。
 
