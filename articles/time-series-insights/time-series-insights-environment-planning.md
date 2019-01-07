@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights プラン - Azure Time Series Insights 環境の規模を計画する | Microsoft Docs
+title: Azure Time Series Insights 環境の規模を計画する | Microsoft Docs
 description: この記事では、ストレージ容量、データ保有期間、イングレス容量、監視、ビジネスのディザスター リカバリー (BCDR) など、Azure Time Series Insights 環境を計画する際のベスト プラクティスに従う方法について説明します。
 services: time-series-insights
 ms.service: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: 6541363eb2ac19cfa4359fe85bde5fa39157055e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ce31b22dcbf3fbe79192647e9a21983911e77a9c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273767"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556035"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Azure Time Series Insights 環境の計画
 

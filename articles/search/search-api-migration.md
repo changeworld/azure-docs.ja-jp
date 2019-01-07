@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: f19d584932be6b6706d6f7b03622303f68f08f91
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 23003859b9a75fb986fe65f5528004f3dd150f9b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312189"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633046"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>最新の Azure Search Service REST API バージョンへのアップグレード
 [Azure Search サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) の以前のバージョンを使用している場合、この記事を参考にして、次に一般公開される API バージョンの 2017-11-11 にアップグレードできます。
@@ -59,7 +59,7 @@ Preview API バージョンからアップグレードする場合も上記の�
 ## <a name="conclusion"></a>まとめ
 Azure Search サービス REST API の使用に関する詳細については、MSDN の最近更新された[API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)を参照してください。
 
-Azure Search に関するご意見をお待ちしております。 問題が発生した場合は、[Azure Search の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)または [StackOverflow](http://stackoverflow.com/)でご質問ください。 StackOverflow で Azure Search に関する質問を行う場合は、必ず `azure-search` タグを付けてください。
+Azure Search に関するご意見をお待ちしております。 問題が発生した場合は、[Azure Search の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)または [StackOverflow](https://stackoverflow.com/)でご質問ください。 StackOverflow で Azure Search に関する質問を行う場合は、必ず `azure-search` タグを付けてください。
 
 Azure Search をお使いいただきありがとうございます。
 
