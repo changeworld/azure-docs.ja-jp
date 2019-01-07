@@ -1,5 +1,5 @@
 ---
-title: Azure Search への SQL VM 接続 | Microsoft Docs
+title: 検索インデックスのための Azure SQL 仮想マシンの VM 接続 - Azure Search
 description: 暗号化された接続を有効にして、Azure Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。
 author: HeidiSteen
 manager: cgronlun
@@ -8,17 +8,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: 7800e83891cb336bb896299b8fd4d6b3ba590178
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.custom: seodec2018
+ms.openlocfilehash: 5f04c98e1337c2b65c9e0bc8401dd6045a84021e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366462"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312031"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM での Azure Search インデクサーから SQL Server への接続の構成
 「[インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)」で説明したように、**Azure VM 上の SQL Server** (略して **SQL Azure VM**) に対してインデクサーを作成することは、Azure Search でサポートされています。ただし、最初にセキュリティ関連のいくつかの前提条件に対応する必要があります。 
 
-**タスクの所要時間:** 約 30 分 (VM に証明書をインストール済みであることが前提)
+**タスクの所要時間:** 約 30 分 (VM に証明書をインストール済みであることが前提)。
 
 ## <a name="enable-encrypted-connections"></a>暗号化された接続を有効にする
 Azure Search には、パブリック インターネット接続経由のすべてのインデクサー要求のための暗号化されたチャネルが必要です。 このセクションでは、これを機能させるための手順を示します。

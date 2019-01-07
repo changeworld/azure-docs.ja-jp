@@ -1,5 +1,5 @@
 ---
-title: Azure Search インデックスをポータルで作成する | Microsoft Docs
+title: Azure Portal で Azure Search インデックスを作成する - Azure Search
 description: ポータルに組み込まれているインデックス デザイナーを使用して Azure Search のインデックスを作成する方法について説明します。
 manager: cgronlun
 author: heidisteen
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: bb1ba5e860dab237b3f6e16205b5e4cbad45e6e3
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: 4bba8b41418dadad1b241d60ab0b7aeee4c046d7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990848"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316711"
 ---
 # <a name="how-to-create-an-azure-search-index-using-the-azure-portal"></a>Azure Portal を使用して Azure Search インデックスを作成する
 
@@ -74,7 +75,7 @@ Azure Search では、プロトタイプまたは Azure Search サービスで�
 
 フィールド属性は、フィールドがどのように使用されるか (フルテキスト検索、ファセット ナビゲーション、並べ替えなどの操作で使用されるかどうか) を決定します。 次の表は、各属性を示しています。
 
-|属性|説明|  
+|Attribute|説明|  
 |---------------|-----------------|  
 |**検索可能**|フルテキスト検索可能であり、インデックス作成中の単語分割などの字句解析に従います。 検索可能フィールドを "sunny day" などの値に設定した場合、その値は内部的に個別のトークン "sunny" と "day" に分割されます。 詳細については、「[フルテキスト検索のしくみ](search-lucene-query-architecture.md)」を参照してください。|  
 |**フィルター可能**|**$filter** クエリで参照されます。 型 `Edm.String` または `Collection(Edm.String)` のフィルター可能フィールドは単語分割されないため、比較は完全に一致するかどうかだけになります。 たとえば、このようなフィールドを "sunny day" に設定した場合、`$filter=f eq 'sunny'` では一致が見つかりませんが、`$filter=f eq 'sunny day'` では見つかります。 |  

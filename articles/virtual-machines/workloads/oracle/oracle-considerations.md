@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 6435c866f6cdf5abea3862a718579f3a6e4d7378
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.custom: seodec18
+ms.openlocfilehash: 50e5dfa21cf7a8f7203e7d96640e3cf5215130a6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493066"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191463"
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle ソリューションとそのデプロイ
 この記事では、Microsoft Azure でさまざまな Oracle ソリューションを適切にデプロイするために必要な情報を取り上げます。 これらのソリューションは、Azure Marketplace で Oracle によって発行された仮想マシン イメージに基づいています。 現在利用可能なイメージの一覧を取得するには、次のコマンドを実行します。
@@ -57,7 +58,7 @@ Oracle では、Oracle Linux に基づく仮想マシン イメージで、Azure
 接続ディスクは Azure Blob Storage サービスを利用します。 各 Standard ディスクは理論上、毎秒最大約 500 回 の入出力の操作 (IOPS) が可能です。 Premium ディスク オファリングでは、高パフォーマンスのデータベース ワークロードが優先され、ディスクあたり最大 5000 IOps を実現できます。 パフォーマンスの要件を満たしている場合は、1 つのディスクを使用できます。一方、複数の接続ディスクを使い、それらの間でデータベースのデータを分散させ、Oracle Automatic Storage Management (ASM) を利用すると、効果的に IOPS パフォーマンスを改善できます。 Oracle ASM に固有の情報については、[Oracle Automatic Storage の概要](http://www.oracle.com/technetwork/database/index-100339.html)に関するページを参照してください。 Linux の Azure VM で Oracle ASM をインストールおよび構成する方法の例については、[Oracle Automated Storage Management のインストールと構成](configure-oracle-asm.md)のチュートリアルを試みることができます。
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
-Oracle RAC では、オンプレミスのマルチノード クラスター構成の単一ノードで発生する障害を軽減するように設計されています。 このクラスターは、超大規模パブリック クラウド環境にネイティブではない、2 つのオンプレミスのテクノロジに依存しています。それがネットワーク マルチキャストと共有ディスクです。 お使いのデータベース ソリューションの Azure で Oracle RAC が必要な場合は、サード パーティのソフトウェアを使用してこれらのテクノロジを有効にする必要があります。  FlashGrid inc. によって公開されている **Microsoft Azure 認定**の [FlashGrid Node for Oracle RAC](https://azuremarketplace.microsoft.com/marketplace/apps/flashgrid-inc.flashgrid-racnode?tab=Overview) と呼ばれるオファリングが Azure Marketplace で提供されています。このソリューションについて、また Azure との併用の詳細については、[FlashGrid ソリューション ページ](https://www.flashgrid.io/oracle-rac-in-azure/)をご覧ください。
+Oracle RAC では、オンプレミスのマルチノード クラスター構成の単一ノードで発生する障害を軽減するように設計されています。 このクラスターは、超大規模パブリック クラウド環境にネイティブではない、2 つのオンプレミスのテクノロジに依存しています。それがネットワーク マルチキャストと共有ディスクです。 お使いのデータベース ソリューションの Azure で Oracle RAC が必要な場合は、サード パーティのソフトウェアを使用してこれらのテクノロジを有効にする必要があります。 Oracle RAC の詳細については、[FlashGrid ソリューション](https://www.flashgrid.io/oracle-rac-in-azure/)に関するページを参照してください。
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性とディザスター リカバリーに関する考慮
 Azure で Oracle データベースを使用する場合、いかなるダウンタイムも回避するために高可用性とディザスター リカバリー ソリューションを実装する責任があります。 

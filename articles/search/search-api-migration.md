@@ -1,6 +1,6 @@
 ---
-title: 最新の Azure Search サービス REST API バージョンへのアップグレード | Microsoft Docs
-description: 最新の Azure Search サービス REST API バージョンへのアップグレード
+title: 最新の Azure Search Service REST API バージョンへのアップグレード - Azure Search
+description: API バージョンの違いを確認し、既存のコードを最新の Azure Search Service REST API バージョンに移行するために必要なアクションについて説明します。
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,14 +9,15 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: 2efe7769f68988f3c0d52c8806b78c1b96d8c639
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.custom: seodec2018
+ms.openlocfilehash: f19d584932be6b6706d6f7b03622303f68f08f91
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620231"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312189"
 ---
-# <a name="upgrading-to-the-latest-azure-search-service-rest-api-version"></a>最新の Azure Search サービス REST API バージョンへのアップグレード
+# <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>最新の Azure Search Service REST API バージョンへのアップグレード
 [Azure Search サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) の以前のバージョンを使用している場合、この記事を参考にして、次に一般公開される API バージョンの 2017-11-11 にアップグレードできます。
 
 バージョン 2017-11-11 の REST API には、前のバージョンからの変更点がいくつか含まれています。 大半は下位互換性を保つための変更であるため、使用していたバージョンに応じて、コードの変更は最小限で済むはずです。 新しいバージョンの API を使用するようにコードを変更する方法については、「[アップグレードの手順](#UpgradeSteps)」を参照してください。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 756aadfb015ada8ea642e9e4893664eed3f6c9b2
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: ecfab15860ffc690d341069b626e5d7579c00da4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042554"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340370"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell を使用した Azure Security Center へのオンボードの自動化
 
@@ -40,7 +40,7 @@ PowerShell を使用して Azure Security Center にオンボードすると、A
 
 5. 組織の [CISO を ASC アラートと注目すべきイベントのセキュリティ連絡先として](security-center-provide-security-contact-details.md)設定します。
 
-6. Security Center の[既定のセキュリティ ポリシー](security-center-azure-policy.md)を割り当てます。
+6. Security Center の[既定のセキュリティ ポリシー](tutorial-security-policy.md)を割り当てます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,7 +65,7 @@ Security Center のコマンドレットを実行する前に、これらの手�
         Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
-2.  省略可能: サブスクリプションのカバレッジ レベル (価格レベル) を設定します (定義されない場合、価格レベルは無料に設定されます)。
+2.  省略可能:サブスクリプションのカバレッジ レベル (価格レベル) を設定します (定義されない場合、価格レベルは無料に設定されます)。
 
         Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzureRmSecurityPricing -Name "default" -PricingTier "Standard"
@@ -85,14 +85,14 @@ Security Center のコマンドレットを実行する前に、これらの手�
     > Azure 仮想マシンが Azure Security Center によって必ず自動的に保護されるように、自動プロビジョニングを有効にすることをお勧めします。
     >
 
-5.  省略可能: オンボードするサブスクリプションのセキュリティ連絡先の詳細を定義することを強くお勧めします。その連絡先は Security Center により生成されるアラートと通知の受信者として使用されます。
+5.  省略可能:オンボードするサブスクリプションのセキュリティ連絡先の詳細を定義することを強くお勧めします。その連絡先は Security Center により生成されるアラートと通知の受信者として使用されます。
 
         Set-AzureRmSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertsAdmin -NotifyOnAlert 
 
 6.  既定の Security Center ポリシーのイニシアティブを割り当てます。
 
         Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
-        $Policy = Get-AzureRmPolicySetDefinition -Name ' [Preview]: Enable Monitoring in Azure Security Center'
+        $Policy = Get-AzureRmPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
         New-AzureRmPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
 
 これで PowerShell により Azure Security Center の使用を開始できました。
@@ -111,6 +111,6 @@ PowerShell を使用して Security Center へのオンボードを自動化す�
 
 Security Center の詳細については、次の記事を参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。

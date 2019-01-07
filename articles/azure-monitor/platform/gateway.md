@@ -10,17 +10,15 @@ ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 5e19c7c1ed15183fdb796a6fa4e537da946b40b9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5236cff7a4afe508a8e11c6d75484fcdc9d43f91
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637337"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194234"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する
 このドキュメントでは、直接接続されたコンピューターまたは Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに、Log Analytics ゲートウェイを使用して Azure Automation および Log Analytics との通信を構成する方法について説明します。  Log Analytics ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシであり、インターネットにアクセスできないコンピューターに代わってデータを収集し、Azure Automation および Log Analytics に送ることができます。  
@@ -82,7 +80,7 @@ Log Analytics ゲートウェイは、次の言語で利用できます。
 - スペイン語 (インターナショナル)
 
 ### <a name="supported-encryption-protocols"></a>サポート対象の暗号化プロトコル
-Log Analytics ゲートウェイは、トランスポート層セキュリティ (TLS) 1.0、1.1、1.2 のみをサポートします。  Secure Sockets Layer (SSL) はサポートされません。  Log Analytics へのデータの転送時のセキュリティを保証するため、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するようにゲートウェイを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../../log-analytics/log-analytics-data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
+Log Analytics ゲートウェイは、トランスポート層セキュリティ (TLS) 1.0、1.1、1.2 のみをサポートします。  Secure Sockets Layer (SSL) はサポートされません。  Log Analytics へのデータの転送時のセキュリティを保証するため、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するようにゲートウェイを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
 
 ### <a name="supported-number-of-agent-connections"></a>サポートされるエージェント接続の数
 次の表に、ゲートウェイ サーバーと通信するエージェントがサポートされる数を示します。  このサポートは、6 秒ごとに最大 200 KB のデータをアップロードするエージェントに基づいています。 テストされるエージェントごとのデータ量は、1 日あたり約 2.7 GB です。
@@ -122,7 +120,7 @@ or
    1. ゲートウェイに使う TCP ポートの番号を入力します。 セットアップにより、Windows ファイアウォールに対してこのポート番号を使った受信ルールが構成されます。  既定値は 8080 です。
       有効なポート番号の範囲は、1 ～ 65535 です。 この範囲の値を入力しないと、エラー メッセージが表示されます。
    1. ゲートウェイがインストールされているサーバーがプロキシを介して通信する必要がある場合は、ゲートウェイが接続する必要のあるプロキシのアドレスを入力します。 たとえば、「 `http://myorgname.corp.contoso.com:80` 」のように入力します。  空欄にすると、ゲートウェイはインターネットに直接接続を試みます。  プロキシ サーバーで認証が必要な場合は、ユーザー名とパスワードを入力します。<br><br> ![ゲートウェイ ウィザードのプロキシの構成](./media/gateway/gateway-wizard02.png)<br>   
-   1.  **[次へ]** をクリックします。
+   1. **[次へ]** をクリックします。
 1. Microsoft Update が有効になっていない場合は、Microsoft Update のページが表示され、有効にするかどうかを選択できます。 選択を行い、**[次へ]** をクリックします。 使用する場合は、次の手順に進みます。
 1. **[インストール先のフォルダー]** ページでは、既定のフォルダー C:\Program Files\OMS Gateway をそのまま使用するか、ゲートウェイをインストールする場所を入力して、**[次へ]** をクリックします。
 1. **[インストールの準備完了]** ページで **[インストール]** をクリックします。 [ユーザー アカウント制御] が表示され、インストールのためのアクセス許可が要求されることがあります。 その場合は、**[はい]** をクリックします。
@@ -136,13 +134,13 @@ Windows Server 2016 のネットワーク負荷分散クラスターの設計お
 1. 管理者アカウントを使用して、NLB クラスターのメンバーとなっている Windows サーバーにサインオンします。  
 1. サーバー マネージャーでネットワーク負荷分散マネージャーを開いて、**[ツール]**、**[ネットワーク負荷分散マネージャー]** の順にクリックします。
 1. Microsoft Monitoring Agent がインストールされている Log Analytics ゲートウェイ サーバーを接続するには、**[ホストをクラスターに追加]** をクリックします。<br><br> ![ネットワーク負荷分散マネージャー – ホストをクラスターに追加](./media/gateway/nlb02.png)<br> 
-1. 接続するゲートウェイ サーバーの IP アドレスを入力します。<br><br> ![ネットワーク負荷分散マネージャー – ホストをクラスターに追加: 接続](./media/gateway/nlb03.png) 
+1. 接続するゲートウェイ サーバーの IP アドレスを入力します。<br><br> ![ネットワーク負荷分散マネージャー -- ホストをクラスターに追加: 接続](./media/gateway/nlb03.png) 
     
 ## <a name="configure-log-analytics-agent-and-operations-manager-management-group"></a>Log Analytics エージェントと Operations Manager 管理グループを構成する
 以下のセクションでは、直接接続されている Log Analytics エージェント、Operations Manager 管理グループ、または Azure Automation Hybrid Runbook Worker に対して Azure Automation または Log Analytics との通信のために Log Analytics ゲートウェイを構成する手順を説明します。  
 
 ### <a name="configure-standalone-log-analytics-agent"></a>スタンドアロンの Log Analytics エージェントを構成する
-Log Analytics に直接接続している Windows コンピューターに Log Analytics エージェントをインストールするための要件と手順については、[Windows コンピューターを Log Analytics に接続する](agent-windows.md)方法に関するページをご覧ください。Linux コンピューターの場合には、[Linux コンピューターを Log Analytics に接続する](../../log-analytics/log-analytics-quick-collect-linux-computer.md)方法に関するページをご覧ください。 エージェントを構成するときにプロキシ サーバーを指定する代わりに、その値を Log Analytics ゲートウェイ サーバーの IP アドレスとそのポート番号に置き換えます。  ネットワーク ロード バランサーの背後に複数のゲートウェイ サーバーをデプロイしている場合には、Log Analytics エージェントのプロキシ構成が、NLB の仮想 IP アドレスとなります。  
+Log Analytics に直接接続している Windows コンピューターに Log Analytics エージェントをインストールするための要件と手順については、[Windows コンピューターを Log Analytics に接続する](agent-windows.md)方法に関するページをご覧ください。Linux コンピューターの場合には、[Linux コンピューターを Log Analytics に接続する](../../azure-monitor/learn/quick-collect-linux-computer.md)方法に関するページをご覧ください。 エージェントを構成するときにプロキシ サーバーを指定する代わりに、その値を Log Analytics ゲートウェイ サーバーの IP アドレスとそのポート番号に置き換えます。  ネットワーク ロード バランサーの背後に複数のゲートウェイ サーバーをデプロイしている場合には、Log Analytics エージェントのプロキシ構成が、NLB の仮想 IP アドレスとなります。  
 
 Automation Hybrid Runbook Worker に関連する情報は、[Hybrid Runbook Worker のデプロイ](../../automation/automation-hybrid-runbook-worker.md)に関するページをご覧ください。
 
@@ -183,7 +181,7 @@ Log Analytics との統合を完了した後、`netsh winhttp reset proxy` を�
 1. Operations Manager コンソールを開き、**[作成]** ワークスペースを選択します。  
 1. [作成] ワークスペースで、**[ルール]** を選択し、Operations Manager ツールバーの **[スコープ]** ボタンをクリックします。 このボタンが利用できない場合には、[監視] ウィンドウでフォルダーではなくオブジェクトを選択していることを確認してください。 **[管理パック オブジェクトのスコープ設定]** ダイアログ ボックスには、ターゲットになることが多いクラス、グループ、またはオブジェクトが一覧表示されます。 
 1. **[検索]** フィールドに「**ヘルス サービス**」と入力し、一覧から選択します。  Click **OK**.  
-1. ルール **[Advisor Proxy Setting Rule (アドバイザーのプロキシ設定のルール)]** を検索し、オペレーション コンソール ツールバーで **[オーバーライド]** をクリックしたら、**[Override the Rule\For a specific object of class: Health Service (ルールのオーバーライド\クラスの特定のオブジェクト: ヘルス サービス)]** にカーソルを合わせ、一覧から特定のオブジェクトを選択します。  必要があれば、このオーバーライドを適用するサーバーのヘルス サービス オブジェクトが含まれるカスタム グループを作成し、そのグループに対してオーバーライドを適用することもできます。
+1. ルール **[Advisor Proxy Setting Rule]\(アドバイザーのプロキシ設定のルール\)** を検索し、オペレーション コンソール ツールバーで **[オーバーライド]** をクリックしたら、**[Override the Rule\For a specific object of class: Health Service]\(ルールのオーバーライド\クラスの特定のオブジェクト: ヘルス サービス\)** にカーソルを合わせ、一覧から特定のオブジェクトを選択します。  必要があれば、このオーバーライドを適用するサーバーのヘルス サービス オブジェクトが含まれるカスタム グループを作成し、そのグループに対してオーバーライドを適用することもできます。
 1. **[オーバーライドのプロパティ]** ダイアログ ボックスで **WebProxyAddress** パラメーターの隣の **[オーバーライド]** 列にチェック マークを付けます。  **[オーバーライド値]** フィールドに、Log Analytics ゲートウェイ サーバーの URL を入力します (URL にはプレフィックスとして `http://` を忘れずに付けてください)。  
 
     >[!NOTE]
@@ -256,7 +254,7 @@ Log Analytics ゲートウェイの構成設定の更新に必要なタスクを
 1. 前の手順でエラーが発生しなかった場合は、モジュールが正常にインポートされたので、コマンドレットを使うことができます。 「`Get-Module OMSGateway`」と入力します。
 1. コマンドレットを使って変更を行った後は、ゲートウェイ サービスを必ず開始し直します。
 
-手順 3 でエラーが発生した場合は、モジュールはインポートされませんでした。 PowerShell がモジュールを発見できない場合、エラーが発生することがあります。 ゲートウェイのインストール パス *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway* にあります。
+手順 3 でエラーが発生した場合は、モジュールはインポートされませんでした。 PowerShell がモジュールを発見できない場合、エラーが発生することがあります。 それはゲートウェイの次のインストール パスにあります: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*。
 
 | **コマンドレット** | **パラメーター** | **説明** | **例** |
 | --- | --- | --- | --- |  

@@ -1,20 +1,21 @@
 ---
 title: Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して Azure への VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します
-author: rayne-wiselman
-manager: carmonm
+description: この記事では、Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します
+services: site-recovery
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
-ms.author: raynew
-ms.openlocfilehash: 516edd922d6ead9a71f81c3b9b777b15f1fb28ae
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 12/11/2018
+ms.author: mayg
+ms.openlocfilehash: 58d45036cac6ad985b7b1ffb2736a500fdcb5ce2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233159"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251030"
 ---
-# <a name="deploy-a-configuration-server-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーのための構成サーバーのデプロイ
+# <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
 Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを展開します。 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整します。 データのレプリケーションも管理します。 この記事では、VMware VM を Azure にレプリケートするときの構成サーバーの展開に必要な手順について説明します。 物理サーバーのレプリケーション用に構成サーバーを設定する必要がある場合は、[こちらの記事に従ってください](physical-azure-set-up-source.md)。
 
@@ -147,6 +148,9 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 7. コンテナー登録キーはどこでダウンロードできますか?
 
     **[Recovery Services コンテナー]** で、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** の順に移動します。 [サーバー] で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
+8. 既存の構成サーバーを複製してレプリケーション オーケストレーションに使用することはできますか?
+
+    **いいえ**。複製された Configuration Server コンポーネントは使用できません。 
 
 ## <a name="troubleshoot-deployment-issues"></a>デプロイに関する問題のトラブルシューティング
 

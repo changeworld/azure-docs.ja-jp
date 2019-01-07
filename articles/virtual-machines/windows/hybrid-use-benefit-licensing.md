@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: fef057b5d1e1ba8b03b04852376b1e5a49926008
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 757891a6968313c1a31ce67b399d6aa052abfa21
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432407"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999953"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
 ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure ハイブリッド特典を使用して、Windows OS 搭載の新しい仮想マシンをデプロイすることができます。 この記事では、Windows Server 向け Azure ハイブリッド特典での新しい VM のデプロイ方法と、既存の稼働中 VM を更新する方法について説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。
@@ -50,7 +50,7 @@ Azure Hybrid Benefit で Windows 仮想マシンを使用する方法はいく�
 Windows Server 向け Azure ハイブリッド特典では、Windows Server OS ベースのすべてのイメージがサポートされます。 Azure プラットフォーム サポートのイメージを使用したり、独自のカスタム Windows Server イメージをアップロードしたりできます。 
 
 ### <a name="portal"></a>ポータル
-Windows Server 向け Azure ハイブリッド特典で VM を作成するには、[Save money](コストの削減) セクションの切り替えを使用します。
+Windows Server 向け Azure ハイブリッド特典で VM を作成するには、[Save money]\(コストの削減) セクションの切り替えを使用します。
 
 ### <a name="powershell"></a>Powershell
 ```powershell
@@ -143,7 +143,7 @@ LicenseType              :
 
 ### <a name="cli"></a>CLI
 ```azurecli
-az vm get-instance-view -g MyResourceGroup -n MyVM --query '[?licenseType==Windows_Server]' -o table
+az vm get-instance-view -g MyResourceGroup -n MyVM --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 > [!NOTE]
@@ -154,7 +154,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVM --query '[?licenseType==Windo
 Windows Server 向け Azure Hybrid Benefit でデプロイされたすべての仮想マシンを参照し、カウントするには、自分のサブスクリプションから次のコマンドを実行します。
 
 ### <a name="portal"></a>ポータル
-仮想マシンまたは仮想マシン スケール セットのリソース ブレードから、[Azure Hybrid Benefit](Azure ハイブリッド特典) を含むようテーブル列を構成することで、すべての VM と ライセンスの種類の一覧を表示することができます。 VM の設定は、[Enabled](有効)、[Not enabled](無効)、または [Not supported](未サポート) の状態にできます。
+仮想マシンまたは仮想マシン スケール セットのリソース ブレードから、[Azure Hybrid Benefit]\(Azure ハイブリッド特典) を含むようテーブル列を構成することで、すべての VM と ライセンスの種類の一覧を表示することができます。 VM の設定は、[Enabled]\(有効)、[Not enabled]\(無効)、または [Not supported]\(未サポート) の状態にできます。
 
 ### <a name="powershell"></a>Powershell
 ```powershell
@@ -164,7 +164,7 @@ $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name
 
 ### <a name="cli"></a>CLI
 ```azurecli
-az vm list --query '[?licenseType==Windows_Server]' -o table
+az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure ハイブリッド特典で仮想マシン スケール セットをデプロイする

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
 ms.component: files
-ms.openlocfilehash: a376e4f5d8d74731f30da47a696656e79ae55ac7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4082352c8c9814b8e6533d3f64b18450a6cf416d
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245683"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165574"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Python での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -49,7 +49,7 @@ pip install azure-storage-file
 > 
 > 
 
-別のインストール方法については、[GitHub の Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python/) に関するページをご覧ください。
+別のインストール方法については、[GitHub の Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python/) に関するページを参照してください。
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>Azure Files を使用するようにアプリケーションを設定する
 プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。

@@ -10,16 +10,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: b103300c7d4b72c0605b8355b03fac5201ab6d68
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: c0687ec94af60d3683d3f129eff2bad8fb97d786
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279162"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165804"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を用いた Apache Spark ストリーミング (DStream) の例
 
-Apache Spark を使用して、HDInsight 上の Apache Kafka に対して DStreams による送信または受信ストリーミングを行う方法について説明します。 この例では、Spark クラスター上で実行する Jupyter ノートブックを使用します。
+[Apache Spark](https://spark.apache.org/) を使用して、HDInsight 上の [Apache Kafka](https://kafka.apache.org/) に対して [DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html) による送信または受信ストリーミングを行う方法について説明します。 この例では、Spark クラスター上で実行する [Jupyter Notebook](https://jupyter.org/) を使用します。
 
 > [!NOTE]
 > このドキュメントの手順では、HDInsight の Spark クラスターと HDInsight の Kafka クラスターの両方を含む Azure リソース グループを作成します。 これらのクラスターは両方とも、Spark クラスターが Kafka クラスターと直接通信できるように、Azure Virtual Network 内に配置します。
@@ -55,19 +55,19 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
    
     ![HDInsight のカスタム デプロイ](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
-    * **[リソース グループ]**: グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
+    * **リソース グループ**:グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
 
-    * **[場所]**: 地理的に近い場所を選択します。
+    * **場所**:地理的に近い場所を選択します。
 
-    * **[Base Cluster Name] \(ベース クラスター名)**: この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdistreaming**」と入力すると、__spark-hdistreaming__ という名前の Spark クラスターと、**kafka-hdistreaming** という名前の Kafka クラスターが作成されます。
+    * **Base Cluster Name (ベース クラスター名)**:この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdistreaming**」と入力すると、__spark-hdistreaming__ という名前の Spark クラスターと、**kafka-hdistreaming** という名前の Kafka クラスターが作成されます。
 
-    * **[Cluster Login User Name] \(クラスター ログイン ユーザー名)**: Spark クラスターと Kafka クラスターの管理者のユーザー名。
+    * **Cluster Login User Name (クラスター ログイン ユーザー名)**:Spark クラスターと Kafka クラスターの管理者のユーザー名。
 
-    * **[クラスター ログイン パスワード]**: Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。
+    * **クラスター ログイン パスワード**:Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。
 
-    * **[SSH ユーザー名]**: Spark クラスターおよび Kafka クラスターの作成に使用する SSHユーザー。
+    * **SSH ユーザー名**:Spark クラスターおよび Kafka クラスターの作成に使用する SSH ユーザー。
 
-    * **[SSH パスワード]**: Spark クラスターおよび Kafka クラスター用の SSH ユーザーのパスワード。
+    * **SSH パスワード**:Spark クラスターおよび Kafka クラスター用の SSH ユーザーのパスワード。
 
 3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
 
@@ -97,6 +97,6 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 この例では、Spark を使用して Kafka に対するデータの読み取りと書き込みを行う方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
 
 * [HDInsight での Apache Kafka の使用](kafka/apache-kafka-get-started.md)
-* [MirrorMaker を使用した HDInsight での Kafka のレプリカの作成](kafka/apache-kafka-mirroring.md)
-* [HDInsight での Kafka に Apache Storm を使用する](hdinsight-apache-storm-with-kafka.md)
+* [MirrorMaker を使用して HDInsight 上の Apache Kafka のレプリカを作成する](kafka/apache-kafka-mirroring.md)
+* [HDInsight 上の Apache Kafka で Apache Storm を使用する](hdinsight-apache-storm-with-kafka.md)
 

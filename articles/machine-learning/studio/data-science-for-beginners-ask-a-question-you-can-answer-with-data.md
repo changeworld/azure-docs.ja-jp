@@ -1,12 +1,12 @@
 ---
-title: データが回答できる質問をする - データ サイエンスの問題 - Azure Machine Learning | Microsoft Docs
+title: データにより回答できる質問をする - Azure Machine Learning Studio | Microsoft Docs
 description: 初心者向けデータ サイエンス ビデオ 3 では、鋭いデータ サイエンスの質問を考案する方法について説明します。 分類の質問と回帰の質問の比較も含まれます。
 keywords: データ サイエンスの問題,データ サイエンスの質問,質問の考案,回帰の質問,分類の質問,シャープな質問
 services: machine-learning
 documentationcenter: na
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cjgronlund
 ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
 ms.service: machine-learning
@@ -16,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 2078f7e84522a40cf6fcf6dff860d24307084467
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8f117a8c47d7c98f13101efe0ca5147ce8d8c25a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833803"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250980"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
 ## <a name="video-3-data-science-for-beginners-series"></a>ビデオ 3: 初心者向けデータ サイエンス シリーズ
@@ -43,12 +43,12 @@ ms.locfileid: "34833803"
 * ビデオ 4: [単純なモデルで回答を予測する](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>トランスクリプト: データで回答できる質問をする
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>トランスクリプト:データで回答できる質問をする
 "初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。  
 
 このビデオでは、データで回答できる質問を考えるためのヒントが得られます。
 
-このシリーズの前の 2 本のビデオ、「データ サイエンスが回答できる 5 つの質問」と「データ サイエンス用のデータの準備はお済みですか?」を視聴すると、このビデオをより効果的に活用できます。
+このビデオを最大限に活用するためにまず、このシリーズの 1 と 2 である "データ サイエンスが回答する 5 つの質問" と "データ サイエンス用のデータの準備はお済みですか?" を視聴するようお勧めします。
 
 ## <a name="ask-a-sharp-question"></a>シャープな質問をする
 これまで、データ サイエンスが、名前 (カテゴリまたはラベルとも呼ばれます) と数値を使用して質問に対する回答を予測するプロセスであることを説明してきました。 ただし、どのような質問でも可能なわけではありません。"*シャープな質問*" である必要があります。

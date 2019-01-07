@@ -1,11 +1,11 @@
 ---
-title: Azure Resource Manager を使用した Machine Learning ワークスペースのデプロイ | Microsoft Docs
+title: Azure Resource Manager を使用した Studio ワークスペースのデプロイ - Azure Machine Learning Studio | Microsoft Docs
 description: Azure Resource Manager テンプレートを使用して Azure Machine Learning ワークスペースをデプロイする方法
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 4955ac4d-ff99-4908-aa27-69b6bfcc8e85
 ms.service: machine-learning
@@ -14,16 +14,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/05/2018
-ms.openlocfilehash: fc19c77e90ffd2d300497fc496da02b2d2234d3a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 02/05/2018
+ms.openlocfilehash: ac9cecd07d600189f0fb08771b0992d49236aea9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244391"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268922"
 ---
-# <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Azure Resource Manager を使用した Machine Learning ワークスペースのデプロイ
-## <a name="introduction"></a>はじめに
+# <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>Azure Resource Manager を使用して Azure Machine Learning Studio ワークスペースをデプロイする
+
 Azure Resource Manager デプロイ テンプレートは、検証および再試行メカニズムで相互接続されたコンポーネントをデプロイできるように、スケーラブルな方法を提供し、時間を節約します。 Azure Machine Learning ワークスペースを設定するには、たとえば、Azure ストレージ アカウントを構成してから、ワークスペースをデプロイする必要があります。 この作業を何百ものワークスペースに対して手動で行うことを想像してください。 代わりに Azure Resource Manager テンプレートを使用すれば、もっと簡単に Azure Machine Learning ワークスペースとそのすべての依存関係をデプロイできます。 この記事では、このプロセスを順を追って説明します。 Azure Resource Manager の概要については、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」を参照してください。
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>詳細な手順: Machine Learning ワークスペースの作成

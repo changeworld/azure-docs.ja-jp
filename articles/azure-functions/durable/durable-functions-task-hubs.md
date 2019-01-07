@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 7a6346e594c5a7cc4cf02f3ea658aac4977e641a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4e48956e42942761abec0143ba2849601dbb1cf4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637457"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336902"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions におけるタスク ハブ (Azure Functions)
 
@@ -27,7 +27,7 @@ ms.locfileid: "52637457"
 
 ## <a name="azure-storage-resources"></a>Azure Storage のリソース
 
-タスク ハブは次のストレージ リソースから構成されます。 
+タスク ハブは次のストレージ リソースから構成されます。
 
 * 1 つまたは複数のコントロールキュー。
 * 1 つの作業項目キュー。
@@ -41,7 +41,8 @@ ms.locfileid: "52637457"
 
 次の例に示すように、タスク ハブは *host.json* ファイルに宣言されている名前で識別されます。
 
-### <a name="hostjson-functions-v1"></a>host.json (Functions v1)
+### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+
 ```json
 {
   "durableTask": {
@@ -49,7 +50,9 @@ ms.locfileid: "52637457"
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>host.json (Functions v2)
+
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+
 ```json
 {
   "version": "2.0",
@@ -60,9 +63,11 @@ ms.locfileid: "52637457"
   }
 }
 ```
+
 次の *host.json* ファイルの例に示すように、タスク ハブはアプリの設定を使用して構成することもできます。
 
-### <a name="hostjson-functions-v1"></a>host.json (Functions v1)
+### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+
 ```json
 {
   "durableTask": {
@@ -70,7 +75,9 @@ ms.locfileid: "52637457"
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>host.json (Functions v2)
+
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+
 ```json
 {
   "version": "2.0",
@@ -81,14 +88,46 @@ ms.locfileid: "52637457"
   }
 }
 ```
+
 タスク ハブ名は、`MyTaskHub` アプリ設定の値に設定されます。 次の `local.settings.json` は、`MyTaskHub` 設定を `samplehubname` として定義する方法を示しています。
 
 ```json
 {
   "IsEncrypted": false,
   "Values": {
-    "MyTaskHub" :  "samplehubname" 
+    "MyTaskHub" : "samplehubname"
   }
+}
+```
+
+以下は、アプリ設定として構成されているタスク ハブを操作するために [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) を使用する関数を記述する方法の、プリコンパイル済み C# の場合の例を示しています。
+
+```csharp
+[FunctionName("HttpStart")]
+public static async Task<HttpResponseMessage> Run(
+    [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
+    [OrchestrationClient(TaskHub = "%MyTaskHub%")] DurableOrchestrationClientBase starter,
+    string functionName,
+    ILogger log)
+{
+    // Function input comes from the request content.
+    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    string instanceId = await starter.StartNewAsync(functionName, eventData);
+
+    log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+
+    return starter.CreateCheckStatusResponse(req, instanceId);
+}
+```
+
+また、以下は JavaScript に必要な構成を示しています。 `function.json` ファイルのタスク ハブ プロパティは、アプリ設定を通じて設定されます。
+
+```json
+{
+    "name": "input",
+    "taskHub": "%MyTaskHub%",
+    "type": "orchestrationClient",
+    "direction": "in"
 }
 ```
 

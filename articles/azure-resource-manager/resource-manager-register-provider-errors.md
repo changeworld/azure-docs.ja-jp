@@ -11,14 +11,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 03/09/2018
+ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: b90009c1cd08a1004e58c4b9f25cd6350712fbcd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 704aa488d40a18d7be0b64c9fc9a1bd33f8a3d96
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358610"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184544"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>リソース プロバイダーの登録エラーの解決
 
@@ -41,15 +41,15 @@ Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
-サポートされる場所や API バージョンがエラー メッセージに提示されます。 提示されたいずれかの値を使用するようにテンプレートを変更してください。 ほとんどのプロバイダーは、Azure ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。 まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。
+サポートされる場所や API バージョンがエラー メッセージに提示されます。 提示されたいずれかの値を使用するようにテンプレートを変更してください。 ほとんどのプロバイダーは、Azure portal またはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。 まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。
 
 ## <a name="cause"></a>原因
 
 これらのエラーの原因として、次の 3 つの理由のいずれかが考えられます。
 
-1. サブスクリプションに対してリソース プロバイダーが登録されていない
-1. リソース タイプでサポートされた API バージョンに該当しない
-1. リソース タイプでサポートされた場所に該当しない
+* サブスクリプションに対してリソース プロバイダーが登録されていない
+* リソース タイプでサポートされた API バージョンに該当しない
+* リソース タイプでサポートされた場所に該当しない
 
 ## <a name="solution-1---powershell"></a>解決策 1 - PowerShell
 
@@ -101,10 +101,22 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 ポータルを利用すると、登録の状態を確認したり、リソース プロバイダー名前空間を登録したりできます。
 
+1. Portal で **[すべてのサービス]** を選択します。
+
+   ![[すべてのサービス] を選択する](./media/resource-manager-register-provider-errors/select-all-services.png)
+
+1. **[サブスクリプション]** を選択します。
+
+   ![[サブスクリプション] を選択する](./media/resource-manager-register-provider-errors/select-subscriptions.png)
+
+1. サブスクリプションの一覧から、リソース プロバイダーの登録に使用するサブスクリプションを選択します。
+
+   ![リソース プロバイダーを登録するサブスクリプションを選択する](./media/resource-manager-register-provider-errors/select-subscription-to-register.png)
+
 1. サブスクリプションについては、**[リソース プロバイダー]** を選択します。
 
-   ![リソース プロバイダーの選択](./media/resource-manager-register-provider-errors/select-resource-provider.png)
+   ![[リソース プロバイダー] を選択する](./media/resource-manager-register-provider-errors/select-resource-provider.png)
 
 1. リソース プロバイダーの一覧を確認し、必要に応じて **[登録]** リンクを選択して、デプロイするタイプのリソース プロバイダーを登録します。
 
-   ![リソース プロバイダーの一覧](./media/resource-manager-register-provider-errors/list-resource-providers.png)
+   ![List resource providers](./media/resource-manager-register-provider-errors/list-resource-providers.png)

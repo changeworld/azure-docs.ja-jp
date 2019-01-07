@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: d3d66b45-9874-4aad-9c00-124734944b2e
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/13/2018
+ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: cead67bf18dcd0ea7b5c1479588083884dab475f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ee0de5d03de29adddd8f77efbe7491603cc0e4c4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632961"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188794"
 ---
 # <a name="configure-service-map-in-azure"></a>Azure で Service Map を構成する
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すれば、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -55,7 +54,7 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 - Windows 7
 
 ## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
-次のセクションでは、Red Hat Enterprise Linux、CentOS Linux、および Oracle Linux (RHEL カーネル搭載) の Dependency Agent でサポートされているオペレーティング システムを示します。
+次のセクションでは、Red Hat Enterprise Linux、CentOS Linux、および Oracle Linux (RHEL カーネル搭載) の Dependency Agent でサポートされているオペレーティング システムを示します。  
 
 - 既定と SMP Linux のカーネル リリースのみがサポートされています。
 - PAE、Xen などの非標準のカーネル リリースは、どの Linux ディストリビューションでもサポートされていません。 たとえば、リリースの文字列が「2.6.16.21-0.8-xen」であるシステムはサポートされていません。
@@ -125,8 +124,8 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 
 | ファイル | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) |  Windows | 9.7.1 | 55030ABF553693D8B5112569FB2F97D7C54B66E9990014FC8CC43EFB70DE56C6 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) |  Linux | 9.7.1 | 43C75EF0D34471A0CBCE5E396FFEEF4329C9B5517266108FA5D6131A353D29FE |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
 
 ## <a name="connected-sources"></a>接続先ソース
 Service Map は、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Log Analytics への接続に関して Log Analytics エージェントに依存しています。 つまり、サーバーには Log Analytics エージェントをインストールしておき、Dependency Agent を使用して構成する必要があります。  次の表では、Service Map ソリューションでサポートされている接続先ソースについて説明します。
@@ -135,12 +134,12 @@ Service Map は、Microsoft Dependency Agent からデータを取得します�
 |:--|:--|:--|
 | Windows エージェント | [はい] | Service Map は、Windows コンピューターからのデータを分析して収集します。 <br><br>[Windows の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
 | Linux エージェント | [はい] | Service Map は、Linux コンピューターからのデータを分析して収集します。 <br><br>[Linux の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
-| System Center Operations Manager 管理グループ | [はい] | Service Map は、接続された [System Center Operations Manager 管理グループ](../../log-analytics/log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br>System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 |
+| System Center Operations Manager 管理グループ | [はい] | Service Map は、接続された [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br>System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 |
 | Azure ストレージ アカウント | いいえ  | Service Map はエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
-Windows では、監視データの収集と送信のために System Center Operations Manager と Log Analytics の両方で Microsoft Monitoring Agent (MMA) が使用されます。 (このエージェントは、状況に応じて、System Center Operations Manager エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます)。System Center Operations Manager と Log Analytics では、MMA のすぐに使用できるバージョンが異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Log Analytics、またはその両方にレポートできます。
+Windows では、監視データの収集と送信のために System Center Operations Manager と Log Analytics の両方で Microsoft Monitoring Agent (MMA) が使用されます。 (このエージェントは、状況に応じて、System Center Operations Manager エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます)。System Center Operations Manager と Log Analytics では、MMA のすぐに使用できるバージョンが異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Log Analytics、またはその両方にレポートできます。  
 
-Linux では、Linux の Log Analytics エージェントが監視データを収集して Log Analytics に送信します。 Service Map は、Log Analytics エージェントがサービスに直接接続されているサーバーまたは Log Analytics と統合された Operations Manager 管理グループの管理下にあるサーバーで使用できます。
+Linux では、Linux の Log Analytics エージェントが監視データを収集して Log Analytics に送信します。 Service Map は、Log Analytics エージェントがサービスに直接接続されているサーバーまたは Log Analytics と統合された Operations Manager 管理グループの管理下にあるサーバーで使用できます。  
 
 Linux または Windows が System Center Operations Manager 管理グループに接続されているか Log Analytics に直接接続されているかに関係なく、この記事ではすべてのエージェントを "*Log Analytics エージェント*" と呼びます。 
 
@@ -150,18 +149,18 @@ Linux または Windows が System Center Operations Manager 管理グループ�
 
 Log Analytics に管理グループが接続されている System Center Operations Manager ユーザーである場合は次のとおりです。
 
-- System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできる場合は、追加の構成は必要ありません。
+- System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできる場合は、追加の構成は必要ありません。  
 - System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできない場合は、System Center Operations Manager を操作するために Log Analytics ゲートウェイを構成する必要があります。
-
-Windows または Linux コンピューターがサービスに直接接続できない場合は、ゲートウェイを使用して Log Analytics ワークスペースに接続するように Log Analytics エージェントを構成する必要があります。 Log Analytics ゲートウェイをデプロイおよび構成する方法の詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する](../../azure-monitor/platform/gateway.md)」を参照してください。
+  
+Windows または Linux コンピューターがサービスに直接接続できない場合は、ゲートウェイを使用して Log Analytics ワークスペースに接続するように Log Analytics エージェントを構成する必要があります。 Log Analytics ゲートウェイをデプロイおよび構成する方法の詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する](../../azure-monitor/platform/gateway.md)」を参照してください。  
 
 ### <a name="management-packs"></a>管理パック
-Service Map が Log Analytics ワークスペースでアクティブになると、300 KB の管理パックがそのワークスペース内のすべての Windows サーバーに転送されます。 System Center Operations Manager エージェントを[接続された管理グループ](../../log-analytics/log-analytics-om-agents.md)で使用している場合は、Service Map 管理パックが System Center Operations Manager からデプロイされます。 
+Service Map が Log Analytics ワークスペースでアクティブになると、300 KB の管理パックがそのワークスペース内のすべての Windows サーバーに転送されます。 System Center Operations Manager エージェントを[接続された管理グループ](../../azure-monitor/platform/om-agents.md)で使用している場合は、Service Map 管理パックが System Center Operations Manager からデプロイされます。 
 
 この管理パックは、Microsoft.IntelligencePacks.ApplicationDependencyMonitor という名前で、 %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\ に書き込まれます。 管理パックで使用されるデータ ソースは、%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll です。
 
 ## <a name="data-collection"></a>データ収集
-システムの依存関係の複雑さに応じて、各エージェントは 1 日あたり約 25 MB を送信すると予想されます。 各エージェントは、Service Map の依存関係データを 15 秒ごとに送信します。
+システムの依存関係の複雑さに応じて、各エージェントは 1 日あたり約 25 MB を送信すると予想されます。 各エージェントは、Service Map の依存関係データを 15 秒ごとに送信します。  
 
 Dependency Agent は、通常、システム メモリの 0.1%、システム CPU の 0.1% を消費します。
 
@@ -173,7 +172,7 @@ Dependency Agent は、通常、システム メモリの 0.1%、システム CP
 ## <a name="installation"></a>インストール
 
 ### <a name="azure-vm-extension"></a>Azure VM 拡張機能
-Windows 用 (DependencyAgentWindows) と Linux 用 (DependencyAgentLinux) の両方の拡張機能が用意されています。[Azure VM 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features)を使用すると、Azure VM に Dependency Agent を簡単に展開できます。 Azure VM 拡張機能により、PowerShell スクリプトを使用して、または VM で Azure Resource Manager テンプレートを使用して直接、Windows および Linux の VM に Dependency Agent を展開することができます。 Azure VM 拡張機能を使用して展開したエージェントは、最新バージョンに自動的に更新されます。
+Windows 用 (DependencyAgentWindows) と Linux 用 (DependencyAgentLinux) の両方の拡張機能が用意されています。[Azure VM 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features)を使用すると、Azure VM に Dependency Agent を簡単に展開できます。  Azure VM 拡張機能により、PowerShell スクリプトを使用して、または VM で Azure Resource Manager テンプレートを使用して直接、Windows および Linux の VM に Dependency Agent を展開することができます。  Azure VM 拡張機能を使用して展開したエージェントは、最新バージョンに自動的に更新されます。
 
 PowerShell を使用して Azure VM 拡張機能を展開するには、次の例を使用してください。
 
@@ -211,7 +210,7 @@ Dependency Agent を各 VM にさらに簡単にインストールするには�
 "apiVersion": "2017-03-30",
 "location": "[resourceGroup().location]",
 "dependsOn": [
-    "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+"[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
 ],
 "properties": {
     "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
@@ -230,13 +229,13 @@ Dependency Agent を各 VM にさらに簡単にインストールするには�
 
 各 Windows コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1. [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関するページで説明されているいずれかの方法に従って、Windows の Log Analytics エージェントをインストールします。
-2. Windows エージェントをダウンロードし、次のコマンドを使用して実行します。 
+1.  [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関するページで説明されているいずれかの方法に従って、Windows の Log Analytics エージェントをインストールします。
+2.  Windows エージェントをダウンロードし、次のコマンドを使用して実行します。 
     
     `InstallDependencyAgent-Windows.exe`
 
-3. セットアップ ウィザードに従ってエージェントをインストールします。
-4. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントのログ ディレクトリは、%Programfiles%\Microsoft Dependency Agent\logs にあります。 
+3.  セットアップ ウィザードに従ってエージェントをインストールします。
+4.  Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントのログ ディレクトリは、%Programfiles%\Microsoft Dependency Agent\logs にあります。 
 
 #### <a name="windows-command-line"></a>Windows コマンド ライン
 次の表のオプションを使用して、コマンドラインからインストールします。 インストール フラグの一覧を表示するには、 次のように /? フラグを使ってインストーラーを実行します。
@@ -258,12 +257,12 @@ Dependency Agent は、`InstallDependencyAgent-Linux64.bin` (自己解凍バイ�
 
 各 Linux コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1. [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関するページで説明されているいずれかの方法に従って、Log Analytics エージェントをインストールします。
-2. 次のコマンドを実行して、Linux Dependency Agent を root としてインストールします。
+1.  [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関するページで説明されているいずれかの方法に従って、Log Analytics エージェントをインストールします。
+2.  次のコマンドを実行して、Linux Dependency Agent を root としてインストールします。
     
     `sh InstallDependencyAgent-Linux64.bin`
 
-3. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Linux エージェントのログ ディレクトリは、/var/opt/microsoft/dependency-agent/log です。
+3.  Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Linux エージェントのログ ディレクトリは、/var/opt/microsoft/dependency-agent/log です。
 
 インストール フラグの一覧を表示するには、次のように -help フラグを使ってインストール プログラムを実行します。
 
@@ -277,7 +276,7 @@ Dependency Agent は、`InstallDependencyAgent-Linux64.bin` (自己解凍バイ�
 
 Dependency Agent のファイルは、次のディレクトリに保存されます。
 
-| ファイル | Location |
+| ファイル | 場所 |
 |:--|:--|
 | コア ファイル | /opt/microsoft/dependency-agent |
 | ログ ファイル | /var/opt/microsoft/dependency-agent/log |
@@ -306,32 +305,32 @@ Desired State Configuration (DSC) を使用して Dependency Agent をデプロ�
 ```
 configuration ServiceMap {
 
-    Import-DscResource -ModuleName xPSDesiredStateConfiguration
+Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
-    $DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
+$DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
 
-    Node localhost
+Node localhost
+{ 
+    # Download and install the Dependency agent
+    xRemoteFile DAPackage 
     {
-        # Download and install the Dependency agent
-        xRemoteFile DAPackage 
-        {
-            Uri = "https://aka.ms/dependencyagentwindows"
-            DestinationPath = $DAPackageLocalPath
-        }
-
-        xPackage DA
-        {
-            Ensure="Present"
-            Name = "Dependency Agent"
-            Path = $DAPackageLocalPath
-            Arguments = '/S'
-            ProductId = ""
-            InstalledCheckRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent"
-            InstalledCheckRegValueName = "DisplayName"
-            InstalledCheckRegValueData = "Dependency Agent"
-            DependsOn = "[xRemoteFile]DAPackage"
-        }
+        Uri = "https://aka.ms/dependencyagentwindows"
+        DestinationPath = $DAPackageLocalPath
     }
+
+    xPackage DA
+    {
+        Ensure="Present"
+        Name = "Dependency Agent"
+        Path = $DAPackageLocalPath
+        Arguments = '/S'
+        ProductId = ""
+        InstalledCheckRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent"
+        InstalledCheckRegValueName = "DisplayName"
+        InstalledCheckRegValueData = "Dependency Agent"
+        DependsOn = "[xRemoteFile]DAPackage"
+    }
+  }
 }
 ```
 
@@ -363,9 +362,9 @@ Service Map のインストールまたは実行で問題が発生した場合�
 #### <a name="installer-prompts-for-a-reboot"></a>インストーラーが再起動を要求する
 *通常*、Dependency Agent がインストールまたはアンインストール時に再起動を要求することはありません。 ただし、まれに、インストールを続行するために Windows Server が再起動を要求することがあります。 これは、依存関係 (通常は Microsoft Visual C++ 再頒布可能ファイル) のあるファイルがロックされているため、再起動が要求される場合に生じます。
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>"Unable to install Dependency Agent: Visual Studio Runtime libraries failed to install (code = [code_number]) (Dependency Agent をインストールできません: Visual Studio ランタイム ライブラリが (code = [code_number]) をインストールできませんでした)" というメッセージが表示される
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>"Dependency Agent をインストールできません: Visual Studio ランタイム ライブラリが (code = [code_number]) をインストールできませんでした" というメッセージが表示される
 
-Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライブラリ上にビルドされます。 ライブラリのインストール中に問題が発生した場合は、メッセージが表示されます。
+Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライブラリ上にビルドされます。 ライブラリのインストール中に問題が発生した場合は、メッセージが表示されます。 
 
 ランタイム ライブラリのインストーラーは、%LOCALAPPDATA%\temp フォルダー内にログを作成します。 このファイルは dd_vcredist_arch_yyyymmddhhmmss.log で、*arch* は "x86" または "amd64" に、*yyyymmddhhmmss* はログが作成された日時 (24 時間形式) になります。 このログでは、インストールをブロックしている問題の詳細が示されます。
 
@@ -375,22 +374,22 @@ Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライ�
 
 | コード | 説明 | 解決策 |
 |:--|:--|:--|
-| 0x17 | ライブラリのインストーラーは、まだインストールされていない Windows Update を要求しています。 | 最新のライブラリ インストーラー ログを確認してください。<br><br>"Windows8.1-KB2999226-x64.msu" の次の行に "Error 0x80240017: Failed to execute MSU package (エラー 0x80240017: MSU パッケージを実行できませんでした)" と表示される場合は、KB2999226 のインストールに必要な前提条件が満たされていません。 [Windows での汎用の C ランタイム](https://support.microsoft.com/kb/2999226)に関するページの前提条件セクションに記載の手順に従ってください。 前提条件をインストールするためには、Windows Update の実行と再起動が複数回必要になることがあります。<br><br>Microsoft Dependency Agent インストーラーをもう一度実行します。 |
+| 0x17 | ライブラリのインストーラーは、まだインストールされていない Windows Update を要求しています。 | 最新のライブラリ インストーラー ログを確認してください。<br><br>"Windows8.1-KB2999226-x64.msu" への参照の後に "エラー 0x80240017: MSU パッケージを実行できませんでした" という内容の行が表示される場合は、KB2999226 のインストールに必要な前提条件が満たされていません。 [Windows での汎用の C ランタイム](https://support.microsoft.com/kb/2999226)に関するページの前提条件セクションに記載の手順に従ってください。 前提条件をインストールするためには、Windows Update の実行と再起動が複数回必要になることがあります。<br><br>Microsoft Dependency Agent インストーラーをもう一度実行します。 |
 
 ### <a name="post-installation-issues"></a>インストール後の問題
 #### <a name="server-doesnt-appear-in-service-map"></a>サーバーが Service Map に表示されない
 Dependency Agent のインストールに成功しても、Service Map ソリューションにはサーバーが表示されません。
-* Dependency Agent は正しくインストールされているのでしょうか? これについては、サービスがインストールされているか、実行中かを確認することで検証できます。<br><br>
-**Windows**: "Microsoft Dependency Agent" というサービスを探します。<br>
-**Linux**: "microsoft-dependency-agent" という実行中のプロセスを探します。
+* Dependency Agent は正しくインストールされているのでしょうか?  これについては、サービスがインストールされているか、実行中かを確認することで検証できます。<br><br>
+**Windows**:"Microsoft Dependency Agent" というサービスを探します。<br>
+**Linux**:"microsoft-dependency-agent" という実行中のプロセスを探します。
 
 * 現在ご利用されているのは、[無料の価格レベルの Operations Management Suite または Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers) ですか。 無料のプランでは、一意のサービス マップ サーバーを最大 5 台まで使用できます。 以前使用していた 5 台がデータを送信していない場合でも、6 台目以降のサーバーはサービス マップに表示されません。
 
-* サーバーはログとパフォーマンス データを Log Analytics に送信していますか? ログ検索に移動し、お使いのコンピューターに対して次のクエリを実行します。 
+* サーバーはログとパフォーマンス データを Log Analytics に送信していますか?  ログ検索に移動し、お使いのコンピューターに対して次のクエリを実行します。 
 
-    Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+        Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
 
-結果としてさまざまなイベントを取得しましたか? そのデータは最近のものですか? そうである場合は、Log Analytics エージェントは正しく動作しており、Log Analytics と通信しています。 そうでない場合は、お使いのサーバーでエージェントを確認してください ([Windows 用 Log Analytics エージェントのトラブルシューティング](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues)または [Linux 用 Log Analytics エージェントのトラブルシューティング](../../azure-monitor/platform/agent-linux-troubleshoot.md)に関するページを参照)。
+結果としてさまざまなイベントを取得しましたか?  そのデータは最近のものですか?  そうである場合は、Log Analytics エージェントは正しく動作しており、Log Analytics と通信しています。 そうでない場合は、ご利用のサーバー上でエージェントを確認してください ([Windows 用 Log Analytics エージェントのトラブルシューティング](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) または [Linux 用 Log Analytics エージェントのトラブルシューティング](../../azure-monitor/platform/agent-linux-troubleshoot.md)に関するページを参照)。
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Service Map にサーバーは表示されるがプロセスが表示されない
 Service Map にサーバーは表示されるがプロセスまたは接続データは表示されないという場合は、Dependency Agent がインストールされて実行されているがカーネル ドライバーがロードされなかったということを意味しています。 

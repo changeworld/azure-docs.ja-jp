@@ -1,25 +1,19 @@
 ---
-title: ExpressRoute 回線の NAT 要件 | Microsoft Docs
+title: '回線の NAT 要件 - ExpressRoute: Azure | Microsoft Docs'
 description: このページでは、ExpressRoute 回線の NAT を構成および管理するための詳細な要件について説明します。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: 867bf936-c851-485f-84c8-d8d6e33fee9f
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/12/2017
+ms.topic: conceptual
+ms.date: 12/08/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2a9903b0e3c04a7098f7a8e529801483b10af142
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.custom: seodec18
+ms.openlocfilehash: 4aa1b170b0c0c515faa67118772ad14d34c7276b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
-ms.locfileid: "23409267"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278255"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT の要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、NAT をセットアップして管理する必要があります。 一部の接続プロバイダーでは、NAT のセットアップと管理が管理されたサービスとして提供されています。 このようなサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 このようなサービスが提供されていない場合は、次に示す要件に従う必要があります。 
@@ -67,7 +61,7 @@ Azure パブリック ピアリング パスを利用すれば、パブリック
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ルーティング](expressroute-routing.md)と [QoS](expressroute-qos.md) の要件を参照してください。
 * ワークフロー情報については、「 [ExpressRoute 回線のプロビジョニング ワークフローと回線の状態](expressroute-workflows.md)」を参照してください。
 * ExpressRoute 接続を構成します。

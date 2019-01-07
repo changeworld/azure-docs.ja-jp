@@ -1,5 +1,6 @@
 ---
-title: 'クイック スタート: Standard Load Balancer を作成する - Azure PowerShell | Microsoft Docs'
+title: クイック スタート:Standard Load Balancer を作成する - Azure PowerShell
+titlesuffix: Azure Load Balancer
 description: このクイック スタートでは、PowerShell を使用して Standard Load Balancer を作成する方法について説明します
 services: load-balancer
 documentationcenter: na
@@ -13,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
-ms:custom: mvc
-ms.openlocfilehash: e4e66d18f9dcb7f020cdb881226f6e47118e5186
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms:custom: seodec18
+ms.openlocfilehash: 0db575ee6c04c0fb4639ea2e9e095200da781fe8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578554"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256317"
 ---
-# <a name="get-started"></a>クイック スタート: Azure PowerShell を使用して Standard Load Balancer を作成する
+# <a name="get-started"></a>クイック スタート:Azure PowerShell を使用して Standard Load Balancer を作成する
 このクイック スタートでは、Azure PowerShell を使用して Standard Load Balancer を作成する方法について説明します ロード バランサーをテストするには、Windows Server を実行する 2 つの仮想マシン (VM) をデプロイし、VM 間で Web アプリの負荷を分散します。 Standard Load Balancer の詳細については、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページを参照してください。
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]

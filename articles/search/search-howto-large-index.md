@@ -1,5 +1,5 @@
 ---
-title: Azure Search インデックスの再構築または検索可能なコンテンツの更新 | Microsoft Docs
+title: 組み込みインデクサーを使用してスケール アウト インデックスを作成する - Azure Search
 description: 完全に再構築された、または一部増分インデックスに新しい要素を追加、既存の要素またはドキュメントを更新、または古いドキュメントを削除して、Azure Search インデックスを更新します。
 services: search
 author: HeidiSteen
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 0dd7a5d5159144c6b1a050ff4c0443b181976738
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.custom: seodec2018
+ms.openlocfilehash: 5f268de43f4f860458c062cb80e5bea0134b4407
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39124956"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316684"
 ---
 # <a name="how-to-scale-out-indexing-in-azure-search"></a>Azure Search でスケール アウト インデックスを作成する方法
 

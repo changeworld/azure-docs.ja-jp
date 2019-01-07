@@ -1,11 +1,11 @@
 ---
-title: PowerShell での新しい Azure Machine Learning Web サービスの再トレーニング | Microsoft Docs
+title: PowerShell での新しい Machine Learning Studio Web サービスの再トレーニング - Azure | Microsoft Docs
 description: Azure Machine Learning で Machine Learning Management PowerShell コマンドレットを使用してプログラムによるモデルの再トレーニングをしてWeb サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 3953a398-6174-4d2d-8bbd-e55cf1639415
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: abef73a477355d89236b1f62cffc1f3d05ba03d0
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 0dc41b001ecca26239c0a9e8f69e2709d6927fcd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687233"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250579"
 ---
-# <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>Machine Learning Management PowerShell コマンドレットを使用した新しい Resource Manager ベースの Web サービスの再トレーニング
+# <a name="retrain-a-new-resource-manager-based-studio-web-service-using-powershell"></a>PowerShell を使用し、新しい Resource Manager ベースの Studio Web サービスを再トレーニングします。
 新しい Web サービスを再トレーニングする場合は、新しいトレーニング済みのモデルを参照するよう予測 Web サービス定義を更新します。
 
 ## <a name="prerequisites"></a>前提条件

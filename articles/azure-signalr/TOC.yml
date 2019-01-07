@@ -29,16 +29,22 @@ items:
     href: signalr-cli-samples.md
 - name: 概念
   items:
+  - name: Azure SignalR Service の内部
+    href: signalr-internals.md
   - name: ASP.NET Core SignalR をスケーリングする
     href: signalr-overview-scale-aspnet-core.md
   - name: Azure Functions を使用してリアルタイム アプリをビルドする
     href: signalr-overview-azure-functions.md
   - name: アクセス キーのローテーション
     href: signalr-key-rotation.md
+  - name: メッセージと接続
+    href: signalr-messages.md
 - name: リソース
   items:
   - name: SignalR のロードマップ
     href: https://github.com/aspnet/Home/wiki/Roadmap
+  - name: FAQ
+    href: signalr-faq.md
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/signalr-service/
   - name: ビデオ
@@ -49,9 +55,9 @@ items:
     href: https://forums.asp.net/1254.aspx
   - name: Twitter
     href: https://twitter.com/SignalR
-ms.openlocfilehash: 3ea848614be75a785f03bd81065651f77f02efe8
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f4375cae80694d583b7f57cd76e5e17f85aca496
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628461"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807484"

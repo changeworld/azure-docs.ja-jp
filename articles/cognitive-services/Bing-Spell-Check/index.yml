@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a13532f0dbd687dacffda938e6fbfe5506f60ff8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1f0414bf705fad7fffc6013f73dddd2e663b078c
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091091"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787598"
 documentType: LandingData
 title: Bing Spell Check API のドキュメント
 metadata:
@@ -64,6 +64,14 @@ sections:
     items:
     - html: <a href="tutorials/spellcheck.md">単一ページの Web アプリ</a>
     - html: <a href="tutorials/spellcheck-source.md">単一ページの Web アプリ (ソース コード)</a>
+- title: サンプル
+  items:
+  - type: paragraph
+    text: 'Bing Spell Check API のサンプルを見つける:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="sdk.md">コード サンプル</a>
 - title: リファレンス
   items:
   - type: list
@@ -71,6 +79,10 @@ sections:
     className: cardsD
     items:
     - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference">Bing Spell Check API v7 リファレンス</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference">Bing Spell Check API v5 リファレンス</a> (旧バージョン)</p>
-    - title: コード サンプル
-      html: <p><a href="sdk.md">SDK のサンプルの概要</a></p>
+      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference">Bing Spell Check API v7 リファレンス</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference">Bing Spell Check API v5 リファレンス</a> (旧バージョン)</p>
+    - title: SDK
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/spellcheck?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/spellcheck?view=azure-java-stable">Java</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: CLI
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>

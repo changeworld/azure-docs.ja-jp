@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eff7ccc40cd31e604cc4e54b6da9421d1d0b4f4e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 55c9d9942272821de5724568ff58fe27c1641eb2
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439233"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54012121"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
 
@@ -80,6 +80,7 @@ Windows 10 または Windows Server 2016 を IKEv2 用に準備するには:
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10 バージョン 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 バージョン 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | Windows 10 バージョン 1709 | 2018 年 3 月 22 日 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
 2. レジストリ キーの値を設定します。 レジストリの "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload" REG_DWORD キーを作成するか、または 1 に設定します。

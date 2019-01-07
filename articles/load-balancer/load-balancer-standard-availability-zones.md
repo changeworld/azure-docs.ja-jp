@@ -1,12 +1,11 @@
 ---
-title: Azure Standard Load Balancer と可用性ゾーン | Microsoft Docs
+title: Azure Standard Load Balancer と可用性ゾーン
+titlesuffix: Azure Load Balancer
 description: Standard Load Balancer と可用性ゾーン
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/08/2018
 ms.author: kumud
-ms.openlocfilehash: 1f34a9319b8bbfba3f4a6f7446f949fc576aa4fa
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d157c331b633617bacfb5cc7254d188516f10ad7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869059"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187060"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer と可用性ゾーン
 

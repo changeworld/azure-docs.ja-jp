@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 13ba4d774cbc347830c32385ba4927a0df687159
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8a1f7e367b3f8f06e33bbcd11f8090c9578c1d30
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035472"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269568"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送
 
@@ -141,7 +141,7 @@ Automation ジョブのログを Log Analytics に送信し始めたので、次
 2. クエリ フィールドに次の検索クエリを入力して、アラート用のログ検索クエリを作成します。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`次の内容を使用して、Runbook 名でグループ化することもできます。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。 Automation アカウント名は JobLogs の検索のリソース フィールドで確認できます。
-1. **[ルールの作成]** 画面を開くには、ページの上部にある **[+ New Alert Rule]\(新しいアラート ルール\)** をクリックします。 アラートの構成オプションについて詳しくは、「[Azure Monitor でのログ アラート](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)」をご覧ください。
+1. **[ルールの作成]** 画面を開くには、ページの上部にある **[+ New Alert Rule]\(新しいアラート ルール\)** をクリックします。 アラートの構成オプションについて詳しくは、「[Azure Monitor でのログ アラート](../azure-monitor/platform/alerts-unified-log.md)」をご覧ください。
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>エラーが発生したすべてのジョブを特定する
 エラーに関するアラートだけでなく、Runbook ジョブが終了しないときにもエラーが表示されます。 このような場合、PowerShell ではエラー ストリームが生成されますが、ジョブが終了しないエラーでは、ジョブの中断や失敗は起こりません。    
@@ -182,4 +182,4 @@ Log Analytics によって、Automation ジョブの状態をさらに詳しく�
 * 各種検索クエリの作成方法と、Log Analytics での Automation ジョブ ログの確認方法の詳細については、[Log Analytics でのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
 * Runbook から出力とエラー メッセージを作成および取得する方法については、[Runbook の出力とメッセージ](automation-runbook-output-and-messages.md)に関するページを参照してください。
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページを参照してください。
-* Log Analytics とデータ収集ソースの詳細については、[Log Analytics における Azure Storage データの収集](../log-analytics/log-analytics-azure-storage.md)に関するページをご覧ください。
+* Log Analytics とデータ収集ソースの詳細については、[Log Analytics における Azure Storage データの収集](../azure-monitor/platform/collect-azure-metrics-logs.md)に関するページをご覧ください。

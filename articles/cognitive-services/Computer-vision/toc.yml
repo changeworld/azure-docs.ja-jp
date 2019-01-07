@@ -164,16 +164,16 @@ items:
     href: https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739
   - name: SDK
     items:
-    - name: Windows
-      href: https://github.com/Microsoft/Cognitive-vision-windows
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
     - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/computervision?view=azure-node-latest
     - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python
     - name: Go
-      href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/computervision
-    - name: Android
-      href: https://github.com/Microsoft/Cognitive-vision-android
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision
+    - name: Android (Java)
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
     - name: Swift
       href: https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK
 - name: リソース
@@ -194,9 +194,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: d6a64f9de500493b7d0539fff362abb98471a0b7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cd996e485bd824b65b259e6d01e1a94c2ee9f723
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971047"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743580"

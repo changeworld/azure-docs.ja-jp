@@ -87,7 +87,7 @@ items:
       - name: 個人のログ データの処理
         href: platform/personal-data-mgmt.md
       - name: アプリケーション データの収集、保持、保存
-        href: ../application-insights/app-insights-data-retention-privacy.md?toc=/azure/azure-monitor/toc.json
+        href: app/data-retention-privacy.md
   - name: 洞察
     items:
     - name: Application Insights
@@ -95,9 +95,9 @@ items:
       - name: 概要
         href: ../application-insights/app-insights-overview.md?toc=/azure/azure-monitor/toc.json
       - name: DevOps
-        href: ../application-insights/app-insights-detect-triage-diagnose.md?toc=/azure/azure-monitor/toc.json
+        href: app/detect-triage-diagnose.md
       - name: 分散トレース
-        href: ../application-insights/distributed-tracing.md?toc=/azure/azure-monitor/toc.json
+        href: app/distributed-tracing.md
       - name: ログベースのメトリックと事前に集計されたメトリック
         href: ../application-insights/pre-aggregated-metrics-log-metrics.md?toc=/azure/azure-monitor/toc.json
     - name: Containers
@@ -157,7 +157,7 @@ items:
       - name: アプリケーション
         href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
       - name: IP アドレス
-        href: ../application-insights/app-insights-ip-addresses.md?toc=/azure/azure-monitor/toc.json
+        href: app/ip-addresses.md
     - name: アプリケーションの監視
       items:
       - name: Web アプリおよびサービスの詳細な診断
@@ -167,7 +167,7 @@ items:
       - name: 開発、テスト、運用の分離
         href: ../application-insights/app-insights-separate-resources.md?toc=/azure/azure-monitor/toc.json
       - name: Application Insights での作業
-        href: ../application-insights/app-insights-how-do-i.md?toc=/azure/azure-monitor/toc.json
+        href: app/how-do-i.md
     - name: ワークスペースを管理する
       items:
       - name: ワークスペースの作成
@@ -263,9 +263,9 @@ items:
       - name: Azure アプリ
         items:
         - name: Azure Web アプリ
-          href: ../application-insights/app-insights-azure-web-apps.md?toc=/azure/azure-monitor/toc.json
+          href: app/azure-web-apps.md
         - name: Azure クラウド サービス
-          href: ../application-insights/app-insights-cloudservices.md?toc=/azure/azure-monitor/toc.json
+          href: app/cloudservices.md
         - name: 継続的な監視の追加
           href: ../application-insights/app-insights-vsts-continuous-monitoring.md?toc=/azure/azure-monitor/toc.json
         - name: プロファイラー
@@ -293,54 +293,54 @@ items:
       - name: ASP.NET アプリ
         items:
         - name: Web Apps
-          href: ../application-insights/app-insights-asp-net.md?toc=/azure/azure-monitor/toc.json
+          href: app/asp-net.md
         - name: Status Monitor
-          href: ../application-insights/app-insights-monitor-performance-live-website-now.md?toc=/azure/azure-monitor/toc.json
+          href: app/monitor-performance-live-website-now.md
         - name: Windows サービス
           href: ../application-insights/app-insights-windows-services.md?toc=/azure/azure-monitor/toc.json
         - name: Windows デスクトップ
           href: ../application-insights/app-insights-windows-desktop.md?toc=/azure/azure-monitor/toc.json
         - name: ASP.NET Core
-          href: ../application-insights/app-insights-asp-net-core.md?toc=/azure/azure-monitor/toc.json
+          href: app/asp-net-core.md
           items:
           - name: Linux App Services 用の Profiler
             href: ../application-insights/app-insights-profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json
         - name: コンソール
-          href: ../application-insights/application-insights-console.md?toc=/azure/azure-monitor/toc.json
+          href: app/console.md
         - name: アプリケーション ダッシュボード
           href: ../application-insights/app-insights-overview-dashboard.md?toc=/azure/azure-monitor/toc.json
         - name: その他のテレメトリの収集
-          href: ../application-insights/app-insights-asp-net-more.md?toc=/azure/azure-monitor/toc.json
+          href: app/asp-net-more.md
         - name: 例外
-          href: ../application-insights/app-insights-asp-net-exceptions.md?toc=/azure/azure-monitor/toc.json
+          href: app/asp-net-exceptions.md
         - name: ログ トレース
-          href: ../application-insights/app-insights-asp-net-trace-logs.md?toc=/azure/azure-monitor/toc.json
+          href: app/asp-net-trace-logs.md
         - name: パフォーマンス カウンター
           href: ../application-insights/app-insights-performance-counters.md?toc=/azure/azure-monitor/toc.json
         - name: 依存関係
-          href: ../application-insights/app-insights-asp-net-dependencies.md?toc=/azure/azure-monitor/toc.json
+          href: app/asp-net-dependencies.md
         - name: リリース注釈
           href: app/annotations.md
         - name: ApplicationInsights.config
-          href: ../application-insights/app-insights-configuration-with-applicationinsights-config.md?toc=/azure/azure-monitor/toc.json
+          href: app/configuration-with-applicationinsights-config.md
         - name: スナップショット デバッガー
           href: ../application-insights/app-insights-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
       - name: Java アプリ
         items:
         - name: Web Apps
-          href: ../application-insights/app-insights-java-get-started.md?toc=/azure/azure-monitor/toc.json
+          href: app/java-get-started.md
         - name: Web アプリ - ランタイム
-          href: ../application-insights/app-insights-java-live.md?toc=/azure/azure-monitor/toc.json
+          href: app/java-live.md
         - name: Docker アプリ
-          href: ../application-insights/app-insights-docker.md?toc=/azure/azure-monitor/toc.json
+          href: app/docker.md
         - name: ログ トレース
-          href: ../application-insights/app-insights-java-trace-logs.md?toc=/azure/azure-monitor/toc.json
+          href: app/java-trace-logs.md
         - name: Unix メトリック
-          href: ../application-insights/app-insights-java-collectd.md?toc=/azure/azure-monitor/toc.json
+          href: app/java-collectd.md
         - name: 依存関係
-          href: ../application-insights/app-insights-java-agent.md?toc=/azure/azure-monitor/toc.json
+          href: app/java-agent.md
         - name: テレメトリのフィルター処理
-          href: ../application-insights/app-insights-java-filter-telemetry.md?toc=/azure/azure-monitor/toc.json
+          href: app/java-filter-telemetry.md
         - name: Micrometer メトリック
           href: ../application-insights/micrometer-java.md?toc=/azure/azure-monitor/toc.json
       - name: Node.js アプリ
@@ -350,7 +350,7 @@ items:
       - name: Web ページ
         items:
         - name: JavaScript
-          href: ../application-insights/app-insights-javascript.md?toc=/azure/azure-monitor/toc.json
+          href: app/javascript.md
       - name: Azure Functions を監視する
         href: ../azure-functions/functions-monitoring.md?toc=/azure/application-insights/toc.json
       - name: 分散トレース
@@ -393,13 +393,13 @@ items:
       - name: トラブルシューティング
         items:
         - name: .NET のデータがない
-          href: ../application-insights/app-insights-asp-net-troubleshoot-no-data.md?toc=/azure/azure-monitor/toc.json
+          href: app/asp-net-troubleshoot-no-data.md
         - name: スナップショット デバッガー
           href: ../application-insights/app-insights-troubleshoot-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
         - name: Analytics
           href: app/analytics-troubleshooting.md
         - name: Java
-          href: ../application-insights/app-insights-java-troubleshoot.md?toc=/azure/azure-monitor/toc.json
+          href: app/java-troubleshoot.md
         - name: Usage analytics
           href: ../application-insights/app-insights-usage-troubleshoot.md?toc=/azure/azure-monitor/toc.json
     - name: Azure リソース
@@ -417,7 +417,7 @@ items:
       - name: Azure PaaS リソース
         href: platform/collect-azurepass-posh.md
       - name: カスタム データ ソースを関連付ける
-        href: ../application-insights/app-insights-custom-data-correlation.md?toc=/azure/azure-monitor/toc.json
+        href: app/custom-data-correlation.md
     - name: カスタム データの収集
       items:
       - name: Log Analytics データ コレクター API
@@ -453,16 +453,16 @@ items:
       - name: アプリケーション データをエクスポートする
         items:
         - name: 連続エクスポート
-          href: ../application-insights/app-insights-export-telemetry.md?toc=/azure/azure-monitor/toc.json
+          href: app/export-telemetry.md
           items:
           - name: コード サンプル
             items:
             - name: Stream Analytics を使用して SQL にエクスポートする
-              href: ../application-insights/app-insights-code-sample-export-sql-stream-analytics.md?toc=/azure/azure-monitor/toc.json
+              href: app/code-sample-export-sql-stream-analytics.md
             - name: Stream Analytics にエクスポートする
-              href: ../application-insights/app-insights-export-stream-analytics.md?toc=/azure/azure-monitor/toc.json
+              href: app/export-stream-analytics.md
         - name: データのエクスポート モデル
-          href: ../application-insights/app-insights-export-data-model.md?toc=/azure/azure-monitor/toc.json
+          href: app/export-data-model.md
   - name: 分析情報の取得
     items:
     - name: アプリケーションの監視
@@ -470,7 +470,7 @@ items:
       - name: Application Insights ポータル
         items:
         - name: Search
-          href: ../application-insights/app-insights-diagnostic-search.md?toc=/azure/azure-monitor/toc.json
+          href: app/diagnostic-search.md
         - name: メトリック
           href: ../application-insights/app-insights-metrics-explorer.md?toc=/azure/azure-monitor/toc.json
         - name: ライブ ストリーム
@@ -480,7 +480,7 @@ items:
         - name: トランザクションの診断
           href: ../application-insights/app-insights-transaction-diagnostics.md?toc=/azure/azure-monitor/toc.json
         - name: HockeyApp データ
-          href: ../application-insights/app-insights-hockeyapp-bridge-app.md?toc=/azure/azure-monitor/toc.json
+          href: app/hockeyapp-bridge-app.md
       - name: Visual Studio
         items:
         - name: F5 による洞察
@@ -532,7 +532,7 @@ items:
       - name: Docker および Windows コンテナーの監視
         href: insights/containers.md
       - name: Docker アプリケーションの監視
-        href: ../application-insights/app-insights-docker.md?toc=/azure/azure-monitor/toc.json
+        href: app/docker.md
     - name: リソース グループの監視
       href: insights/resource-group-insights.md
     - name: データベースの監視
@@ -762,7 +762,7 @@ items:
       - name: アプリケーション アラートの使用
         items:
         - name: 可用性
-          href: ../application-insights/app-insights-monitor-web-app-availability.md?toc=/azure/azure-monitor/toc.json
+          href: app/monitor-web-app-availability.md
         - name: メトリック アラート
           href: app/alerts.md
       - name: アラートでのアクション グループの使用
@@ -829,14 +829,10 @@ items:
     items:
     - name: 使用量と推定コスト
       href: platform/usage-estimated-costs.md
-    - name: アプリケーションのデータ ボリュームとリテンション期間
+    - name: アプリケーションの使用量とコスト
       href: ../application-insights/app-insights-pricing.md?toc=/azure/azure-monitor/toc.json
-    - name: アプリケーションの Enterprise プランの詳細
-      href: ../application-insights/app-insights-pricing-enterprise-details.md?toc=/azure/azure-monitor/toc.json
-    - name: ログのデータ ボリュームとリテンション期間
+    - name: ログ データの使用量とコスト
       href: platform/manage-cost-storage.md
-    - name: ログ データの使用状況の監視
-      href: platform/data-usage.md
   - name: 自動化
     items:
     - name: PowerShell
@@ -868,11 +864,11 @@ items:
     - name: アプリケーション
       items:
       - name: Microsoft Flow での自動化
-        href: ../application-insights/app-insights-automate-with-flow.md?toc=/azure/azure-monitor/toc.json
+        href: app/automate-with-flow.md
       - name: Azure ロジック アプリでの自動化
-        href: ../application-insights/automate-with-logic-apps.md?toc=/azure/azure-monitor/toc.json
+        href: app/automate-with-logic-apps.md
       - name: カスタム電子メール レポート
-        href: ../application-insights/automate-custom-reports.md?toc=/azure/azure-monitor/toc.json
+        href: app/automate-custom-reports.md
   - name: Extend
     items:
     - name: アプリケーション
@@ -880,7 +876,7 @@ items:
       - name: カスタム イベントとメトリックの API
         href: app/api-custom-events-metrics.md
       - name: .NET SDK でのカスタム操作の追跡
-        href: ../application-insights/application-insights-custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json
+        href: app/custom-operations-tracking.md
       - name: テレメトリのフィルター処理および前処理
         href: app/api-filtering-sampling.md
       - name: サンプリング
@@ -906,9 +902,9 @@ items:
   - name: Application Insights
     items:
     - name: 依存関係の自動収集
-      href: ../application-insights/auto-collect-dependencies.md?toc=/azure/azure-monitor/toc.json
+      href: app/auto-collect-dependencies.md
     - name: テレメトリの関連付け
-      href: ../application-insights/application-insights-correlation.md?toc=/azure/azure-monitor/toc.json
+      href: app/correlation.md
     - name: NuGet パッケージ
       href: ../application-insights/app-insights-nuget.md?toc=/azure/azure-monitor/toc.json
     - name: プラットフォームのサポート
@@ -916,21 +912,21 @@ items:
   - name: Application Insights データ モデル
     items:
     - name: 概要
-      href: ../application-insights/application-insights-data-model.md?toc=/azure/azure-monitor/toc.json
+      href: app/data-model.md
     - name: Request
-      href: ../application-insights/application-insights-data-model-request-telemetry.md?toc=/azure/azure-monitor/toc.json
+      href: app/data-model-request-telemetry.md
     - name: 依存関係
-      href: ../application-insights/application-insights-data-model-dependency-telemetry.md?toc=/azure/azure-monitor/toc.json
+      href: app/data-model-dependency-telemetry.md
     - name: 例外
-      href: ../application-insights/application-insights-data-model-exception-telemetry.md?toc=/azure/azure-monitor/toc.json
+      href: app/data-model-exception-telemetry.md
     - name: Trace
-      href: ../application-insights/application-insights-data-model-trace-telemetry.md?toc=/azure/azure-monitor/toc.json
+      href: app/data-model-trace-telemetry.md
     - name: Event
-      href: ../application-insights/application-insights-data-model-event-telemetry.md?toc=/azure/azure-monitor/toc.json
+      href: app/data-model-event-telemetry.md
     - name: メトリック
-      href: ../application-insights/application-insights-data-model-metric-telemetry.md?toc=/azure/azure-monitor/toc.json
+      href: app/data-model-metric-telemetry.md
     - name: Context
-      href: ../application-insights/application-insights-data-model-context.md?toc=/azure/azure-monitor/toc.json
+      href: app/data-model-context.md
   - name: Azure CLI
     href: /cli/azure/monitor?view=azure-cli-latest
   - name: Azure Functions
@@ -1008,9 +1004,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 819cce3f144c3073f5b831d78cb3d9fa1b0a0a8a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1b80318e470995d060467f42aa61cdf6f4e8f34b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726450"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974575"

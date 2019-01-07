@@ -1,12 +1,12 @@
 ---
-title: API Management を使用した AzureML Web サービスの管理方法について説明します | Microsoft Docs
-description: API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。
+title: API Management を使用して Machine Learning Studio Web サービスを管理する - Azure | Microsoft Docs
+description: API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。 ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理します。
 keywords: Machine Learning、api 管理
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: 9543b1f3b10c246dadaf21b6960c7b6785fb66f4
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 8f82332b02d2e7bbf937a84de42714392e3fccd6
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566382"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258187"
 ---
-# <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>API Management を使用した AzureML Web サービスの管理方法
+# <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio Web サービスを管理する
 ## <a name="overview"></a>概要
-このガイドでは、API Management を使用して AzureML Web サービスを管理する方法について簡単に説明します。
+このガイドでは、API Management を使用して Azure Machine Learning Studio Web サービスを管理する方法について簡単に説明します。
 
 ## <a name="what-is-azure-api-management"></a>Azure API Management とは
 Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。 [ここ](https://azure.microsoft.com/services/api-management/) をクリックして、Azure API Management の詳細についてご覧ください。 [ここ](../../api-management/api-management-get-started.md) をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。 このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
@@ -223,7 +223,7 @@ Web サービスを作成します。 **[Web サービス]** を展開し、**[�
 ![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Web サービスをテストする
-AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。 RSS は、同期の実行用です。 BES は、同期ジョブの実行用です。 次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「 [Python をインストールする方法](../../python-how-to-install.md)」をご覧ください)。
+AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。 RSS は、同期の実行用です。 BES は、同期ジョブの実行用です。 次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「[Python のインストール方法](../../python-how-to-install.md)」を参照)。
 
 次のサンプルのソースには、実験の**workspace**、**service**、**api_key** が必要です。 Web サービス ダッシュボードの実験の **[要求/応答]** か **[バッチ実行]** をクリックするとワークスペースとサービスが表示されます。
 
@@ -237,7 +237,7 @@ Web サービス ダッシュボードの実験をクリックすると **api_ke
 ##### <a name="test-button"></a>テスト ボタン
 RRS エンドポイントを簡単にテストするには、Web サービス ダッシュ ボードで **[テスト]** をクリックします。
 
-![test](./media/manage-web-service-endpoints-using-api-management/test.png)
+![テスト](./media/manage-web-service-endpoints-using-api-management/test.png)
 
 **[col2]** に「**This is a good day**」と入力します。 チェック マークをクリックします。
 

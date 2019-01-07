@@ -1,23 +1,23 @@
 ---
-title: 機械学習アルゴリズム チート シート | Microsoft Docs
+title: 機械学習アルゴリズム チート シート - Azure Machine Learning Studio | Microsoft Docs
 description: 印刷可能な機械学習アルゴリズム チート シートは、Azure Machine Learning Studio で予測モデルに適したアルゴリズムを選択するのに役立ちます。
 keywords: アルゴリズム チート シート、チート シート、Machine Learning アルゴリズム
 services: machine-learning
-author: pakalra
-ms.author: pakalra
-manager: cgronlun
+author: ericlicoding
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: e1dc31ec-1acb-463f-ba77-de565d4ddf4d
 ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 4a6fdfec4c4c95ba47f17efeb0dc87521a86c03c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7ddc3a9829dc05ac1c1df450091789e4cad2b2f5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244986"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274515"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio の機械学習アルゴリズム チート シート
 
@@ -27,9 +27,9 @@ ms.locfileid: "51244986"
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>ダウンロード: 機械学習アルゴリズム チート シート
 
-**チート シートをダウンロードする: [Machine Learning アルゴリズム チート シート (11 x 17 インチ)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
+**チート シートをダウンロードする: [機械学習アルゴリズム チート シート (11 x 17 in.)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
-![Machine Learning Algorithm Cheat Sheet : Machine Learning アルゴリズムの選択方法][cheat-sheet]
+![機械学習アルゴリズム チート シート: 機械学習アルゴリズムの選択方法について説明します。][cheat-sheet]
 
 [cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
@@ -42,7 +42,7 @@ Machine Learning Studio アルゴリズム チート シートをダウンロー
 
 * このアルゴリズム チート シートに示した提案は経験則です。 変化する場合や著しく異なる場合があります。 これは、開始点を提案するものです。 データに使用した複数のアルゴリズム間で競合が発生しても心配しないでください。 それぞれのアルゴリズムの原則を理解し、データが生成されたシステムを理解することに代わるものはありません。
 
-* すべての機械学習アルゴリズムには、独自のスタイルや "*帰納的バイアス*" があります。 特定の問題に対しては、複数のアルゴリズムが適切な場合や、1 つのアルゴリズムが他のアルゴリズムよりも適している場合があります。 しかし、事前にどれが最適かを知ることができるとは限りません。 このような場合は、複数のアルゴリズムがチート シートに一緒に記載されています。 1 つのアルゴリズムを試してみて、結果に満足できない場合は、他のアルゴリズムを試してみるのが適切な方策でしょう。 同じデータに対して複数のアルゴリズムを試し、その結果を比較した [Azure AI Gallery](http://gallery.azure.ai/) の「[Compare Multi-class Classifiers: Letter recognition](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92)」(多クラス分類子の比較: 文字認識) をご覧ください。
+* すべての機械学習アルゴリズムには、独自のスタイルや "*帰納的バイアス*" があります。 特定の問題に対しては、複数のアルゴリズムが適切な場合や、1 つのアルゴリズムが他のアルゴリズムよりも適している場合があります。 しかし、事前にどれが最適かを知ることができるとは限りません。 このような場合は、複数のアルゴリズムがチート シートに一緒に記載されています。 1 つのアルゴリズムを試してみて、結果に満足できない場合は、他のアルゴリズムを試してみるのが適切な方策でしょう。 [Azure AI Gallery](http://gallery.azure.ai/) からは、同じデータに対して複数のアルゴリズムを試し、その結果を比較した実験の例として次を利用できます: [多クラス分類子の比較: 文字認識](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92)
 
 * 機械学習には、主に 3 つのカテゴリ (**教師あり学習**、**教師なし学習**、**強化学習**) があります。
 
@@ -72,7 +72,7 @@ Machine Learning Studio アルゴリズム チート シートをダウンロー
 
 * Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「 [Azure Machine Learning Studio 機能の概要図](studio-overview-diagram.md)」ご覧ください。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 <!-- Module References -->
 [a-z-list]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list

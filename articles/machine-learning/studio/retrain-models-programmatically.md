@@ -1,11 +1,11 @@
 ---
-title: プログラムによる Machine Learning のモデルの再トレーニング | Microsoft Docs
-description: Azure Machine Learning でプログラムによるモデルの再トレーニングをしてWeb サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
+title: プログラムによる Machine Learning Studio のモデルの再トレーニング - Azure | Microsoft Docs
+description: C# と Machine Learning バッチ実行サービスを使用してモデルをプログラムにより再トレーニングする方法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
 ms.service: machine-learning
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: b2090b39991363ee2a5b2e12945d97dc0fa9f2b2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7a1381ce43056607486a27710cd6ee6181b9a5c1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835506"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257395"
 ---
-# <a name="retrain-machine-learning-models-programmatically"></a>プログラムによる Machine Learning のモデルの再トレーニング
-このチュートリアルでは、C# および Machine Learning バッチ実行サービスを使用して、Azure Machine Learning Web サービスをプログラムによって再トレーニングする方法を説明します。
+# <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>プログラムにより Machine Learning Studio のモデルを再トレーニングする
+このチュートリアルでは、C# および Machine Learning バッチ実行サービスを使用して、Azure Machine Learning Studio Web サービスをプログラムによって再トレーニングする方法を説明します。
 
 モデルを再トレーニングしたら、次のチュートリアルで、予測 Web サービスでのモデルの更新方法を確認してください。
 
@@ -35,7 +35,7 @@ ms.locfileid: "34835506"
 既存の新しい Azure Resource Manager ベースの Web サービスを使用して開始するには、「[Retrain an existing Predictive Web service (既存の予測 Web サービスの再トレーニング)](retrain-existing-resource-manager-based-web-service.md)」を参照してください。
 
 ## <a name="create-a-training-experiment"></a>トレーニング実験を作成する
-この例では、Microsoft Azure Machine Learning のサンプル "Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset" を使用します。 
+この例では、Microsoft Azure Machine Learning サンプルの "Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset" を使用します。 
 
 実験を作成するには:
 
@@ -92,7 +92,7 @@ ms.locfileid: "34835506"
 
 再トレーニング API を呼び出すには:
 
-1. Visual Studio で C# コンソール アプリケーションを作成します (**[新規作成]** > **[プロジェクト]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]**)。
+1. Visual Studio で、次のように選択して C# コンソール アプリケーションを作成します: **[新規]** > **[プロジェクト]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]**。
 2. Machine Learning Web サービス ポータルにサインインします。
 3. 従来の Web サービスを使用する場合は、**[Classic Web Services (従来の Web サービス)]** をクリックします。
    1. 使用する Web サービスをクリックします。

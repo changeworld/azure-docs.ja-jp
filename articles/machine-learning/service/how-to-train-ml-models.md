@@ -1,5 +1,6 @@
 ---
-title: Azure Machine Learning で Estimator クラスを使用して機械学習モデルをトレーニングする
+title: Estimator を使用して ML モデルをトレーニングする
+titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning service の Estimator クラスを使用して従来の機械学習モデルとディープ ラーニング モデルを単一ノードおよび分散トレーニングする方法を説明します
 ms.author: minxia
 author: mx-iao
@@ -8,19 +9,20 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: c47761c184d0e6c091ff49b3eca2fdf89574b49d
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 0ebb12df835cf1c32e02419989b21684e9884c18
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114861"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184357"
 ---
-# <a name="how-to-train-models-with-azure-machine-learning"></a>Azure Machine Learning でモデルをトレーニングする方法
+# <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
 機械学習モデル、特にディープ ニューラル ネットワークをトレーニングすることは、しばしは、時間集約型のタスクであり､またコンピューティング集約型のタスクです。 ローカル コンピューターでトレーニング スクリプトを作成し、少量のデータ セットに対する実行を終えると､ワークロードをスケール アップしたいと思うでしょう｡
 
-トレーニングを支援するため、Azure Machine Learning の Python SDK は高水準の抽象である Estimator クラスを提供し、このクラスによってユーザーは Azure エコシステムで簡単にモデルをトレーニングできます。 `Estimator` オブジェクトを作成し、使用することで、単一ノード実行でも、GPU クラスター全体での分散トレーニングでも、リモート コンピューティングで実行するトレーニング コードを送信できます。 PyTorch や TensorFlow のジョブの場合、Azure Machine Learning では、それぞれカスタムの `PyTorch` Estimator および `TensorFlow` Estimator も提供され、これらのフレームワークを簡単に使用できるようにします。
+トレーニングを支援するため、Azure Machine Learning の Python SDK は高水準の抽象である Estimator クラスを提供し、このクラスによってユーザーは Azure エコシステムで簡単にモデルをトレーニングできます。 [`Estimator` オブジェクト](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)を作成し、使用することで、単一ノード実行でも、GPU クラスター全体での分散トレーニングでも、リモート コンピューティングで実行するトレーニング コードを送信できます。 PyTorch や TensorFlow のジョブの場合、Azure Machine Learning では、それぞれカスタムの `PyTorch` Estimator および `TensorFlow` Estimator も提供され、これらのフレームワークを簡単に使用できるようにします。
 
 ## <a name="train-with-an-estimator"></a>Estimator でトレーニングする
 
@@ -35,7 +37,7 @@ ms.locfileid: "49114861"
 
 ### <a name="single-node-training"></a>単一ノードのトレーニング
 
-scikit 学習モデルについては、Azure のリモート コンピューティングで実行される単一ノード トレーニングに `Estimator` を使用します。 [コンピューティング ターゲット](how-to-set-up-training-targets.md#batch) オブジェクト `compute_target` および[データストア](how-to-access-data.md) オブジェクト `ds` は、既に作成されている必要があります。
+scikit 学習モデルについては、Azure のリモート コンピューティングで実行される単一ノード トレーニングに `Estimator` を使用します。 [コンピューティング ターゲット](how-to-set-up-training-targets.md#amlcompute) オブジェクト `compute_target` および[データストア](how-to-access-data.md) オブジェクト `ds` は、既に作成されている必要があります。
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -58,7 +60,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 --|--
 `source_directory`| トレーニング ジョブに必要なコードのすべてが含まれているローカル ディレクトリ。 このフォルダーは、ローカル コンピューターからリモート コンピューティングにコピーされています 
 `script_params`| <コマンドライン引数, 値> ペアの形式で、トレーニング スクリプト `entry_script` にコマンドライン引数を指定するディクショナリ
-`compute_target`| トレーニング スクリプトの実行に使用するリモート コンピューティング (この例では [Batch AI](how-to-set-up-training-targets.md#batch) クラスター)
+`compute_target`| トレーニング スクリプトの実行に使用するリモートのコンピューティング先 (この例では Azure Machine Learning コンピューティング ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) クラスター)
 `entry_script`| リモート コンピューティングで実行するトレーニング スクリプトのファイルパス (`source_directory` を基準にした相対パス)。 このファイル、およびこのファイルと依存関係があるその他のファイルはすべて、このフォルダーに置かれている必要があります
 `conda_packages`| トレーニング スクリプトで必要な、conda を使用してインストールする Python パッケージのリスト。  
 コンストラクターには `pip_packages` という名前の別のパラメーターもあり、必要な pip パッケージに対して使用します
@@ -87,7 +89,7 @@ print(run.get_details().status)
 
 次のコードでは、CNTK モデルに対して分散トレーニングを実行する方法を示しています。 また、既定の Azure Machine Learning イメージを使わずに、独自のカスタム Docker イメージを使用すると想定します。
 
-[コンピューティング ターゲット](how-to-set-up-training-targets.md#batch)オブジェクト`compute_target`は作成済みである必要があります｡ Estimator は次のようにして作成できます。
+[コンピューティング ターゲット](how-to-set-up-training-targets.md#amlcompute)オブジェクト`compute_target`は作成済みである必要があります｡ Estimator は次のようにして作成できます。
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -117,13 +119,11 @@ run = experiment.submit(cntk_est)
 ```
 
 ## <a name="examples"></a>例
-Sklearn のモデルのトレーニングについては､このチュートリアルを参照してください。
-* [tutorials/01.train-models.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)
+sklearn モデルをトレーニングするノートブックについては、次のページを参照してください。
+* [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-カスタム docker を使用した分散 CNTK については､このチュートリアルを参照してください。
-* [training/06.distributed-cntk-with-custom-docker](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/06.distributed-cntk-with-custom-docker)
-
-これらの notebook を入手してください。
+分散型深層学習のノートブックについては、次のページを参照してください。
+* [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

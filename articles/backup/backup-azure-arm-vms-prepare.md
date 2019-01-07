@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 6de0d29895a6d12d3a5aa761c0c4c5148f62dd81
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d24b2773aa056b33a4067d5d84677d186d25b195
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256274"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255076"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Azure VM をバックアップする準備をする
 
@@ -34,12 +34,12 @@ Resource Manager でデプロイされた仮想マシンを保護 (またはバ�
 
 ## <a name="supported-operating-systems-for-backup"></a>バックアップでサポートされるオペレーティング システム
 
- * **Linux**: Azure Backup は、[Azure で承認されている一連のディストリビューション](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をサポートしています (Core OS Linux を除く)。 復元ファイルをサポートする Linux オペレーティング システムの一覧については、[仮想マシンのバックアップからのファイルの復元](backup-azure-restore-files-from-vm.md#for-linux-os)に関する記事を参照してください。
+ * **Linux**:Azure Backup は、[Azure で承認されている一連のディストリビューション](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をサポートしています (Core OS Linux と 32 ビット オペレーティング システムを除く)。 復元ファイルをサポートする Linux オペレーティング システムの一覧については、[仮想マシンのバックアップからのファイルの復元](backup-azure-restore-files-from-vm.md#for-linux-os)に関する記事を参照してください。
 
     > [!NOTE]
     > 他の個人所有の Linux ディストリビューションは、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。 ただし、それらのディストリビューションはサポートされません。
     >
- * **Windows Server**、**Windows client**: Windows Server 2008 R2 または Windows 7 より前のバージョンはサポートされていません。
+ * **Windows Server**、**Windows クライアント**: Windows Server 2008 R2 または Windows 7 より前のバージョンはサポートされていません。
 
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>VM のバックアップと復元に関する制限
@@ -49,13 +49,14 @@ Resource Manager でデプロイされた仮想マシンを保護 (またはバ�
 * Linux Unified Key Setup (LUKS) 暗号化を使用して暗号化された Linux VM のバックアップはサポートされていません。
 * クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバー構成を含む VM のバックアップはお勧めしません。 行った場合、CSV ライターの障害が発生します。 スナップショット タスク中は、クラスター構成に含まれるすべての VM が必要になります。 Azure Backup では、マルチ VM 整合性をサポートしていません。
 * バックアップ データには、ネットワーク経由でマウントされて VM に接続されているドライブは含まれません。
-* 復元中に既存の仮想マシンを置き換えることはサポートされません。 VM が存在している場合に VM の復元を試みると、復元操作は失敗します。
+* **[復元の構成]** の **[既存の以下のものを置き換えます]** オプションを使用すると、現在の VM の既存のディスクを、選択した復元ポイントに置き換えることができます。 この操作は、現在の VM が存在する場合にのみ実行できます。 
 * リージョン間のバックアップと復元はサポートされません。
 * バックアップを構成するときに、ストレージ アカウントの**ファイアウォールと仮想ネットワーク**の設定で、すべてのネットワークからのアクセスが許可されていることを確認してください。
 * 選択したネットワークについて、ファイアウォールと仮想ネットワークの設定を構成した後、例外として **[信頼された Microsoft サービスによるこのストレージアカウントに対するアクセスを許可します]** を選択し、Azure Backup サービスからネットワーク制限付きストレージ アカウントにアクセスできるようにします。 ネットワーク制限付きストレージ アカウントでは、アイテム レベルの回復はサポートされていません。
 * Azure のすべてのパブリック リージョンに仮想マシンをバックアップすることができます (サポートされているリージョンの[チェックリスト](https://azure.microsoft.com/regions/#services)を参照してください)。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
 * マルチ DC 構成の一部であるドメイン コントローラー (DC) VM の復元は、PowerShell を通じてのみサポートされます。 詳細については、[マルチ DC ドメイン コントローラーの復元](backup-azure-arm-restore-vms.md#restore-domain-controller-vms)に関するページを参照してください。
 * 書き込みアクセラレータを有効にしたディスクでのスナップショットは、サポートされていません。 この制限により、仮想マシンのすべてのディスクのアプリケーション整合スナップショットを実行する Azure Backup サービスの機能はブロックされます。
+* Azure Backup では、Azure VM のバックアップでの夏時間変更に対するクロックの自動調整はサポートされていません。 必要な場合は、夏時間の変更を考慮するようにポリシーを変更します。
 * 次のような特殊なネットワーク構成を持つ仮想マシンの復元は、PowerShell でのみサポートされています。 復元操作の完了後、UI の復元ワークフローを使用して作成された VM には、これらのネットワーク構成は含まれません。 詳細については、「 [特別なネットワーク構成を持つ VM の復元](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)」を参照してください。
   * ロード バランサー構成 (内部および外部の) での仮想マシン
   * 複数の予約済み IP アドレスを持つ仮想マシン
@@ -176,7 +177,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 Azure Marketplace から作成した VM を*使用していない*状況のために、以下の情報が提供されています。 **たとえば、オンプレミスのデータセンターから VM を移行したとします。このような場合、仮想マシンを保護するためには VM エージェントをインストールする必要があります。**
 
-**注**: VM エージェントのインストール後、Azure PowerShell を使用して ProvisionGuestAgent プロパティを更新し、VM がインストールされたことが Azure により認識されるようにする必要があります。
+**メモ**:VM エージェントのインストール後、Azure PowerShell を使用して ProvisionGuestAgent プロパティを更新し、VM がインストールされたことが Azure により認識されるようにする必要があります。
 
 Azure VM のバックアップで問題が発生する場合は、次の表を参照して Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください。 次の表に、Windows VM と Linux VM の VM エージェントに関する追加情報をまとめています。
 

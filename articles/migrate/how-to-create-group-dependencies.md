@@ -4,14 +4,14 @@ description: Azure Migrate サービスのグループの依存関係マッピ�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: d79513569b53d2b8958f44fbfac3839c91caaff8
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9f01e94eb23083ab25dd2cbd41e8bad1297abb54
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634304"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255263"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>グループの依存関係マッピングを使用したグループの絞り込み
 
@@ -25,6 +25,9 @@ ms.locfileid: "52634304"
 ## <a name="prepare-for-dependency-visualization"></a>依存関係視覚化を準備する
 Azure Migrate は、マシンの依存関係を視覚化できるように Log Analytics の Service Map ソリューションを活用します。
 
+> [!NOTE]
+> 依存関係可視化機能は、Azure Government では使用できません。
+
 ### <a name="associate-a-log-analytics-workspace"></a>Log Analytics ワークスペースを関連付ける
 依存関係の視覚化を利用するために、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付ける必要があります。 Migrate プロジェクトが作成されている同じサブスクリプションのみにワークステーションを作成する、またはアタッチすることができます。
 
@@ -32,8 +35,9 @@ Azure Migrate は、マシンの依存関係を視覚化できるように Log A
 
     ![Log Analytics ワークスペースを関連付ける](./media/concepts-dependency-visualization/associate-workspace.png)
 
-- 新しいワークスペースを作成する場合は、ワークスペースの名前を指定する必要があります。 ワークスペースは Migrate プロジェクトが作成されている同じサブスクリプションに、および Migration プロジェクトと同じ [Azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/)のリージョンに作成されます。
-- **[既存のものを使用]** オプションでは、Service Map が使用可能なリージョンに作成されたワークスペースのみが一覧表示されます。 Service Map が使用できないリージョンにワークスペースがある場合、ドロップダウンには一覧されません。
+- ワークスペースを関連付けるときに、新しいワークスペースを作成するか、既存のワークスペースをアタッチするかを選択できます。
+    - 新しいワークスペースを作成する場合は、ワークスペースの名前を指定する必要があります。 移行プロジェクトと同様の [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)のリージョンでワークスペースが作成されます。
+    - 既存のワークスペースをアタッチするときは、移行プロジェクトと同じサブスクリプション内の使用可能なすべてのワークスペースから選択できます。 表示されるのは、[Service Map がサポートされている](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)リージョンで作成されたワークスペースのみであることに注意してください。 ワークスペースをアタッチできるようにするには、ワークスペースへの "読み取り" アクセスがあることを確認してください。
 
 > [!NOTE]
 > Migration プロジェクトに関連付けられているワークスペースは変更できません。
@@ -54,7 +58,7 @@ Windows マシンにエージェントをインストールするには、次の
 2. **[ようこそ]** ページで **[次へ]** をクリックします。 **[ライセンス条項]** ページで、**[同意する]** をクリックしてライセンスに同意します。
 3. **[インストール先のフォルダー]** で、既定のインストール フォルダーをそのまま使用するか変更し、**[次へ]** をクリックします。
 4. **[エージェントのセットアップ オプション]** で、**[Azure Log Analytics]** > **[次へ]** の順にクリックします。
-5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。  **[次へ]** をクリックします。
+5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
 
 Linux マシンにエージェントをインストールするには、次の手順に従います。
@@ -63,7 +67,6 @@ Linux マシンにエージェントをインストールするには、次の�
 2. --install 引数を使用してバンドルをインストールします。
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
-
 
 ### <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 1. Windows マシンに依存関係エージェントをインストールするには、セットアップ ファイルをダブルクリックし、ウィザードに従います。

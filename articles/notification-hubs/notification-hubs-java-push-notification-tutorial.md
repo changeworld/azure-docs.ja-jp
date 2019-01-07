@@ -14,30 +14,31 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: a7ced71f2d0a8c5d956bbdbcd8fcae485aee3fc6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3251e2ecc9171081c5128dd0782eecdf83064114
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241576"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312257"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Java から Notification Hubs を使用する方法
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-このトピックでは、新しい Azure Notification Hub Java SDK の主な機能について説明します。Azure Notification Hub Java SDK は、完全にサポートされている公式の SDK です。 このプロジェクトはオープンソースのプロジェクトであるため、[Java SDK] で SDK コード全体を表示できます。 
+このトピックでは、新しい Azure Notification Hub Java SDK の主な機能について説明します。Azure Notification Hub Java SDK は、完全にサポートされている公式の SDK です。
+このプロジェクトはオープンソースのプロジェクトであるため、[Java SDK] で SDK コード全体を表示できます。
 
-MSDN のトピック「 [Notification Hubs の REST API](https://msdn.microsoft.com/library/dn223264.aspx)」の説明にあるように、通常は、Notification Hub REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。 この Java SDK は、これらの REST インターフェイスを使用して、Java で Thin ラッパーを提供します。 
+MSDN のトピック「 [Notification Hubs の REST API](https://msdn.microsoft.com/library/dn223264.aspx)」の説明にあるように、通常は、Notification Hub REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。 この Java SDK は、これらの REST インターフェイスを使用して、Java で Thin ラッパーを提供します。
 
 現在 SDK でサポートされている項目は次のとおりです。
 
-* Notification Hubs の CRUD 
+* Notification Hubs の CRUD
 * 登録の CRUD
 * インストール管理
 * 登録のインポート/エクスポート
 * 通常の送信
 * スケジュールされた送信
 * Java NIO を使用した非同期操作
-* サポート対象のプラットフォーム: APNS (iOS)、GCM (Android)、WNS (Windows ストア アプリ)、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、Baidu (Google のサービスを使用しない Android) 
+* サポート対象のプラットフォーム:APNS (iOS)、GCM (Android)、WNS (Windows ストア アプリ)、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、Baidu (Google のサービスを使用しない Android)
 
 ## <a name="sdk-usage"></a>SDK の使用例
 ### <a name="compile-and-build"></a>コンパイルとビルド
@@ -85,7 +86,7 @@ MSDN のトピック「 [Notification Hubs の REST API](https://msdn.microsoft.
 
     WindowsRegistration reg = new WindowsRegistration(new URI(CHANNELURI));
     reg.getTags().add("myTag");
-    reg.getTags().add("myOtherTag");    
+    reg.getTags().add("myOtherTag");
     hub.createRegistration(reg);
 
 **iOS の登録を作成する:**
@@ -122,33 +123,34 @@ MSDN のトピック「 [Notification Hubs の REST API](https://msdn.microsoft.
 **登録をクエリする:**
 
 * **1 つの登録を取得する:**
-  
+
         hub.getRegistration(regid);
 
 * **ハブ内のすべての登録を取得する:**
-  
+
         hub.getRegistrations();
 
 * **タグ付きの登録を取得する:**
-  
+
         hub.getRegistrationsByTag("myTag");
 
 * **チャネルにより登録を取得する:**
-  
+
         hub.getRegistrationsByChannel("devicetoken");
 
 
 すべてのコレクション クエリでは $top トークンと継続トークンがサポートされます。
 
 ### <a name="installation-api-usage"></a>インストール API の使用例
-インストール API は登録管理の代替メカニズムです。 複数の登録を保持する (これは大変な作業であり、簡単に間違って、または非効率的に実行される可能性があります) 代わりに、単一インストール オブジェクトを使用できるようになりました。 Installation には、プッシュ チャネル (デバイス トークン)、タグ、テンプレート、セカンダリ タイル (WNS および APNS 用) などの必要な情報がすべて格納されます。 ID を取得するためにサービスを呼び出す必要はもうありません。GUID またはその他の任意の識別子を生成してデバイス上に保持し、プッシュ チャネル (デバイス トークン) と共にバックエンドに送信するだけです。 バックエンドでは、CreateOrUpdateInstallation を 1 回呼び出すだけで済みます。これは完全にべき等であるため、必要に応じて自由に再試行できます。
+インストール API は登録管理の代替メカニズムです。 複数の登録を保持する (これは大変な作業であり、簡単に間違って、または非効率的に実行される可能性があります) 代わりに、単一インストール オブジェクトを使用できるようになりました。 Installation には、プッシュ チャネル (デバイス トークン)、タグ、テンプレート、セカンダリ タイル (WNS および APNS 用) などの必要な情報がすべて格納されます。 ID を取得するためにサービスを呼び出す必要はもうありません。GUID またはその他の任意の識別子を生成してデバイス上に保持し、プッシュ チャネル (デバイス トークン) と共にバックエンドに送信するだけです。
+バックエンドでは、CreateOrUpdateInstallation を 1 回呼び出すだけで済みます。これは完全にべき等であるため、必要に応じて自由に再試行できます。
 
 Amazon Kindle Fire の例を次に示します。
 
     Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
     hub.createOrUpdateInstallation(installation);
 
-更新する場合は、次のようになります。 
+更新する場合は、次のようになります。
 
     installation.addTag("foo");
     installation.addTemplate("template1", new InstallationTemplate("{\"data\":{\"key1\":\"$(value1)\"}}","tag-for-template1"));
@@ -186,7 +188,7 @@ CreateOrUpdate、Patch、および Delete は、最終的に Get と一致しま
 **Windows のネイティブの通知のスケジュールを設定する:**
 
     Calendar c = Calendar.getInstance();
-    c.add(Calendar.DATE, 1);    
+    c.add(Calendar.DATE, 1);
     Notification n = Notification.createWindowsNotification("WNS body");
     hub.scheduleNotification(n, c.getTime());
 
@@ -216,7 +218,7 @@ CreateOrUpdate、Patch、および Delete は、最終的に Get と一致しま
         job = hub.getNotificationHubJob(job.getJobId());
         if(job.getJobStatus() == NotificationHubJobStatus.Completed)
             break;
-    }       
+    }
 
 **すべてのジョブを取得する:**
 
@@ -228,22 +230,22 @@ CreateOrUpdate、Patch、および Delete は、最終的に Get と一致しま
 Notification オブジェクトはヘッダー付きの本文にすぎません。一部のユーティリティ メソッドはネイティブ オブジェクトとテンプレート通知オブジェクトのビルドに役立ちます。
 
 * **Windows ストアおよび Windows Phone 8.1 (Silverlight 以外)**
-  
+
         String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
         Notification n = Notification.createWindowsNotification(toast);
         hub.sendNotification(n);
 * **iOS**
-  
+
         String alert = "{\"aps\":{\"alert\":\"Hello from Java!\"}}";
         Notification n = Notification.createAppleNotification(alert);
         hub.sendNotification(n);
 * **Android**
-  
+
         String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
         Notification n = Notification.createGcmNotification(message);
         hub.sendNotification(n);
 * **Windows Phone 8.0 および 8.1 Silverlight**
-  
+
         String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
                     "<wp:Notification xmlns:wp=\"WPNotification\">" +
                        "<wp:Toast>" +
@@ -253,7 +255,7 @@ Notification オブジェクトはヘッダー付きの本文にすぎません�
         Notification n = Notification.createMpnsNotification(toast);
         hub.sendNotification(n);
 * **Kindle Fire**
-  
+
         String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
         Notification n = Notification.createAdmNotification(message);
         hub.sendNotification(n);
@@ -263,11 +265,11 @@ Notification オブジェクトはヘッダー付きの本文にすぎません�
         tags.add("boo");
         tags.add("foo");
         hub.sendNotification(n, tags);
-* **タグ式に送信する**       
-  
+* **タグ式に送信する**
+
         hub.sendNotification(n, "foo && ! bar");
 * **テンプレート通知を送信する**
-  
+
         Map<String, String> prop =  new HashMap<String, String>();
         prop.put("prop1", "v1");
         prop.put("prop2", "v2");
@@ -279,7 +281,7 @@ Java コードを実行すると、ターゲット デバイスに表示され�
 ## <a name="next-steps"></a>次のステップ
 このトピックでは、Notification Hubs 用の単純な Java REST クライアントを作成する方法を示しました。 次は、以下を実行できます。
 
-* [Java SDK] をすべてダウンロードします。Java SDK には SDK コード全体が含まれています。 
+* [Java SDK] をすべてダウンロードします。Java SDK には SDK コード全体が含まれています。
 * サンプルを試します。
   * [Notification Hubs の使用]
   * [ニュース速報の送信]

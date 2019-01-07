@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: johndeu;
-ms.openlocfilehash: 6330de2aa67fd83a5d4762c2c13d4916f642743d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 038eee18adf94f34a2e10d9ff7be76409c8c4322
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250936"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317425"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC のための Smooth Streaming Protocol (MS-SSTR) の変更
 
@@ -50,32 +50,31 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=
 
 >   **HEVC:** High Efficiency Video Coding、[ISO/IEC 23008-2] で定義。
 
->   **マニフェスト**:クライアントが**メディア**を要求することを許可する、**プレゼンテーション**に関するメタデータ。 **メディア:** **プレゼンテーション**を再生するためにクライアントによって使用されるオーディオ、ビデオ、およびテキストの圧縮データ。 **メディア フォーマット:** オーディオまたはビデオを圧縮された**サンプル**として表すために適切に定義されたフォーマット。
+>   **マニフェスト**: クライアントが**メディア**を要求することを許可する、**プレゼンテーション**に関するメタデータ。 **メディア:** **プレゼンテーション**を再生するためにクライアントによって使用されるオーディオ、ビデオ、およびテキストの圧縮データ。 **メディア フォーマット:** オーディオまたはビデオを圧縮された**サンプル**として表すために適切に定義されたフォーマット。
 
->   **プレゼンテーション:** 1 つのムービーを再生するために必要なすべての**ストリーム**と関連メタデータのセット。 **要求:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、クライアントからサーバーに送信される HTTP メッセージ。 **応答:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、サーバーからクライアントに送信される HTTP メッセージ。
+>   **プレゼンテーション** 1 つのムービーを再生するために必要なすべての**ストリーム**と関連メタデータのセット。 **要求:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、クライアントからサーバーに送信される HTTP メッセージ。 **応答:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、サーバーからクライアントに送信される HTTP メッセージ。
 
 >   **サンプル:** **メディア**が格納および処理される最小の基本単位 (フレームなど)。
 
 >   **MAY、SHOULD、MUST、SHOULD NOT、MUST NOT:** これらの用語 (すべて大文字) は、[[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) に記載されているとおりに使用されています。 省略可能なビヘイビアーのすべてのステートメントでは、MAY、SHOULD、または SHOULD NOT のいずれかを使用します。
 
-## <a name="12-references"></a>1.2 References (参照) 
------------
+## <a name="12-references"></a>1.2 References (参照)
 
 >   Microsoft Open Specifications ドキュメントへの参照には、発行年は含まれていません。これは、リンクが頻繁に更新されるドキュメントの最新バージョンを参照しているためです。 その他のドキュメントへの参照には、発行年が含まれています (可能な場合)。
 
- ### <a name="121-normative-references"></a>1.2.1 Normative References (標準リファレンス) 
+### <a name="121-normative-references"></a>1.2.1 Normative References (標準リファレンス) 
 
->  [MS-SSTR] Smooth Streaming Protocol *v20140502* [http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/[MS-SSTR].pdf](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
+>  [MS-SSTR] Smooth Streaming Protocol *v20140502* [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
 
->   [ISO/IEC 14496-12] International Organization for Standardization, "Information technology -- Coding of audio-visual objects -- Part 12: ISO Base Media File Format", ISO/IEC 14496-12:2014, Edition 4, Plus Corrigendum 1, Amendments 1 & 2.
+>   [ISO/IEC 14496-12] International Organization for Standardization, "Information technology -- Coding of audio-visual objects -- Part 12:ISO Base Media File Format", ISO/IEC 14496-12:2014, Edition 4, Plus Corrigendum 1, Amendments 1 & 2.
 >   <http://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
 
->   [ISO/IEC 14496-15] International Organization for Standardization, "Information technology -- Coding of audio-visual objects -- Part 15: Carriage of NAL unit structured video in the ISO Base Media File Format", ISO 14496-15:2015, Edition 3.
+>   [ISO/IEC 14496-15] International Organization for Standardization, "Information technology -- Coding of audio-visual objects -- Part 15:Carriage of NAL unit structured video in the ISO Base Media File Format", ISO 14496-15:2015, Edition 3.
 >   <http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 
->   [ISO/IEC 23008-2] Information technology -- High efficiency coding and media   delivery in heterogeneous environments -- Part 2: High efficiency video   coding: 2013 or newest edition   <http://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
+>   [ISO/IEC 23008-2] Information technology -- High efficiency coding and media   delivery in heterogeneous environments -- Part 2:High efficiency video   coding:2013 or newest edition   <http://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
 
->   [ISO/IEC 23001-7] Information technology — MPEG systems technologies — Part   7: Common encryption in ISO base media file format files, CENC Edition   2:2015 <http://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
+>   [ISO/IEC 23001-7] Information technology — MPEG systems technologies — Part   7:Common encryption in ISO base media file format files, CENC Edition   2:2015 <http://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
 
 >   [RFC-6381] IETF RFC-6381, “The 'Codecs' and 'Profiles' Parameters for   "Bucket" Media Types” <http://tools.ietf.org/html/rfc6381>
 
@@ -89,28 +88,22 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=
 
 >   [RFC3548] Josefsson, S., Ed., "The Base16, Base32, and Base64 Data   Encodings", RFC 3548, July 2003, [http://www.ietf.org/rfc/rfc3548.txt   ](https://go.microsoft.com/fwlink/?LinkId=90432)
 
->   [RFC5234] Crocker, D., Ed., and Overell, P., "Augmented BNF for Syntax   Specifications: ABNF", STD 68, RFC 5234, January 2008,   [http://www.rfc-editor.org/rfc/rfc5234.txt   ](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., Ed., and Overell, P., "Augmented BNF for Syntax   Specifications:ABNF", STD 68, RFC 5234, January 2008,   [http://www.rfc-editor.org/rfc/rfc5234.txt   ](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1.3 Overview (概要) 
----------
 
 >   以下では、HEVC の配信に必要な Smooth Streaming の仕様に加えられた変更のみが規定されています。 変更されていないセクション ヘッダーは、参照先の Smooth Streaming [MS SSTR] 仕様書内の場所を維持するために一覧表示されています。
 
 ## <a name="14-relationship-to-other-protocols"></a>1.4 Relationship to Other Protocols (その他のプロトコルとの関係) 
---------------------------------
 
 ## <a name="15-prerequisitespreconditions"></a>1.5 Prerequisites/Preconditions (前提条件/前提条件) 
-----------------------------
 
 ## <a name="16-applicability-statement"></a>1.6 Applicability Statement (適用性に関するステートメント) 
-------------------------
 
 ## <a name="17-versioning-and-capability-negotiation"></a>1.7 Versioning and Capability Negotiation (バージョン管理と機能のネゴシエーション) 
---------------------------------------
 
 ## <a name="18-vendor-extensible-fields"></a>1.8 Vendor-Extensible Fields (ベンダーが拡張可能なフィールド) 
--------------------------
 
 >   次のメソッドは、HEVC ビデオ形式を使用してストリームを識別するために使用するものとします。
 
@@ -118,15 +111,12 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=
 >   [[ISO/IEC-14496-12] ](https://go.microsoft.com/fwlink/?LinkId=183695)で規定されているように、実装者は拡張コードを MPEG4-RA に登録することで、拡張機能が競合しないことを保証できます。
 
 ## <a name="19-standards-assignments"></a>1.9 Standards Assignments (標準の割り当て) 
-----------------------
 
-# <a name="2-messages"></a>2 Messages (メッセージ) 
+## <a name="2-messages"></a>2 Messages (メッセージ) 
 
-## <a name="21-transport"></a>2.1 Transport (転送) 
-----------
+## <a name="21-transport"></a>2.1 Transport (転送)
 
 ## <a name="22-message-syntax"></a>2.2 Message Syntax (メッセージの構文) 
----------------
 
 ### <a name="221-manifest-request"></a>2.2.1 Manifest Request (マニフェストの要求) 
 
@@ -171,7 +161,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 >   * SPSField には、Slice Parameter Set (PPS) が含まれています。
 
->   注: Video Parameter Set (VPS) は CodecPrivateData には含まれていませんが、'hvcC' ボックスに格納されているファイルのファイル ヘッダーに含まれている必要があります。 Smooth Streaming プロトコルを使用しているシステムは、カスタム属性 “codecs” を使用して追加のデコード パラメーター (HEVC 層など) を信号で知らせる必要があります。
+>   注:Video Parameter Set (VPS) は CodecPrivateData には含まれていませんが、'hvcC' ボックスに格納されているファイルのファイル ヘッダーに含まれている必要があります。 Smooth Streaming プロトコルを使用しているシステムは、カスタム属性 “codecs” を使用して追加のデコード パラメーター (HEVC 層など) を信号で知らせる必要があります。
 
 ##### <a name="22251-customattributeselement"></a>2.2.2.5.1 CustomAttributesElement 
 
@@ -183,7 +173,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 ### <a name="223-fragment-request"></a>2.2.3 Fragment Request (フラグメント要求) 
 
->   **注**: **MinorVersion** 2 と 'hev1' に要求される既定のメディア フォーマットは、[ISO/IEC 14496-12] ISO Base Media File Format Fourth Edition および、[ISO/IEC 23001-7] Common Encryption Second Edition で規定されている、'iso8' ブランド ISO Base Media File Format です。
+>   **メモ**:**MinorVersion** 2 と 'hev1' に要求される既定のメディア フォーマットは、[ISO/IEC 14496-12] ISO Base Media File Format Fourth Edition および、[ISO/IEC 23001-7] Common Encryption Second Edition で規定されている、'iso8' ブランド ISO Base Media File Format です。
 
 ### <a name="224-fragment-response"></a>2.2.4 Fragment Response (フラグメント応答) 
 
@@ -197,7 +187,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 >   **TfxdBox** は非推奨になっています。また、その関数は、[ISO/IEC 14496-12] セクション 8.8.12 で規定されている、Track Fragment Decode Time Box (‘tfdt’) に置き換えられました。
 
->   **注**: クライアントは、Track Run Box (‘trun’) にリストされているサンプル期間を合計するか、サンプル時間を規定のサンプル期間と乗算することで、フラグメントの期間を計算できます。 'tfdt' の baseMediaDecodeTime とフラグメント期間を足すと、次のフラグメントの URL time パラメーターと等しくなります。
+>   **メモ**:クライアントは、Track Run Box (‘trun’) にリストされているサンプル期間を合計するか、サンプル時間を規定のサンプル期間と乗算することで、フラグメントの期間を計算できます。 'tfdt' の baseMediaDecodeTime とフラグメント期間を足すと、次のフラグメントの URL time パラメーターと等しくなります。
 
 >   Movie Fragment Box で参照される最初のサンプルの Track Fragment Decode Time に対応する UTC 時間を示すには、必要に応じて、Producer Reference Time Box (‘prft’) を、Movie Fragment Box (‘moof’) の前に挿入する必要があります。[ISO/IEC 14496-12] セクション 8.16.5 で規定。
 
@@ -205,7 +195,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 >   **TfrfBox** は非推奨になっています。また、その関数は、[ISO/IEC 14496-12] セクション 8.8.12 で指定されている、Track Fragment Decode Time Box (‘tfdt’) に置き換えられました。
 
->   **注**: クライアントは、Track Run Box (‘trun’) にリストされているサンプル期間を合計するか、サンプル時間を規定のサンプル期間と乗算することで、フラグメントの期間を計算できます。 'tfdt' の baseMediaDecodeTime とフラグメント期間を足すと、次のフラグメントの URL time パラメーターと等しくなります。 Look ahead アドレスは、ライブ ストリーミングを遅延させるため、非推奨となりました。
+>   **メモ**:クライアントは、Track Run Box (‘trun’) にリストされているサンプル期間を合計するか、サンプル時間を規定のサンプル期間と乗算することで、フラグメントの期間を計算できます。 'tfdt' の baseMediaDecodeTime とフラグメント期間を足すと、次のフラグメントの URL time パラメーターと等しくなります。 Look ahead アドレスは、ライブ ストリーミングを遅延させるため、非推奨となりました。
 
 #### <a name="2246-tfhdbox"></a>2.2.4.6 TfhdBox 
 
@@ -221,7 +211,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 >   [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) で規定されているとおりに使用するものとします。
 
->   注: これにより、ビデオの音声遅延がデコード済み画像バッファの最大除去遅延と等しくなることで生じるビデオ同期エラーを回避し、異なる除去遅延を持つ可能性のある別のフラグメント間のプレゼンテーション タイミングを保持します。
+>   注:これにより、ビデオの音声遅延がデコード済み画像バッファの最大除去遅延と等しくなることで生じるビデオ同期エラーを回避し、異なる除去遅延を持つ可能性のある別のフラグメント間のプレゼンテーション タイミングを保持します。
 
 >   このセクション (ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) で規定) で定義されているフィールドの構文は、以下を除いて変わりません。
 
@@ -255,7 +245,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
     MinorVersion = STRING_UINT32
     CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
 
-**注**: 互換性ブランド 'ccff' と 'iso8' は、フラグメントが “Common Container File Format”、Common Encryption [ISO/IEC 23001-7]、および ISO Base Media File Format Edition 4 [ISO/IEC 14496-12] に準拠していることを示します。
+**メモ**:互換性ブランド 'ccff' と 'iso8' は、フラグメントが “Common Container File Format”、Common Encryption [ISO/IEC 23001-7]、および ISO Base Media File Format Edition 4 [ISO/IEC 14496-12] に準拠していることを示します。
 
 #### <a name="2272-streammanifestbox"></a>2.2.7.2 StreamManifestBox 
 
@@ -273,7 +263,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 ### <a name="228-server-to-server-ingest"></a>2.2.8 Server-to-Server Ingest (サーバーからサーバーへの取り込み) 
 
-# <a name="3-protocol-details"></a>3 Protocol Details (プロトコルの詳細) 
+## <a name="3-protocol-details"></a>3 Protocol Details (プロトコルの詳細) 
 
 
 ## <a name="31-client-details"></a>3.1 Client Details (クライアントの詳細) 
@@ -299,7 +289,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
     MajorVersion = 2
     MinorVersion = 2
 
->   LookaheadCount = 0 (注: Boxes は非推奨)
+>   LookaheadCount = 0 (注: ボックスは非推奨)
 
 >   プレゼンテーションは以下も設定する必要があります。
 
@@ -354,19 +344,17 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 ## <a name="33-live-encoder-details"></a>3.3 Live Encoder Details (ライブ エンコーダーの詳細) 
 
-# <a name="4-protocol-examples"></a>4 Protocol Examples (プロトコルの例) 
+## <a name="4-protocol-examples"></a>4 Protocol Examples (プロトコルの例) 
 
-# <a name="5-security"></a>5 Security (セキュリティ) 
+## <a name="5-security"></a>5 Security (セキュリティ) 
 
-## <a name="51-security-considerations-for-implementers"></a>5.1 Security Considerations for Implementers (実装のセキュリティ考慮事項) 
------------------------------------------
+## <a name="51-security-considerations-for-implementers"></a>5.1 Security Considerations for Implementers (実装のセキュリティ考慮事項)
 
 >   このプロトコルを使用して転送されるコンテンツに高い商用価値がある場合は、コンテンツの無断使用を防ぐため、Content Protection System を使用してください。 **ProtectionElement** は、Content Protection System の使用に関連するメタデータの処理に使用することができます。 保護されたオーディオおよびビデオ コンテンツは、MPEG Common Encryption Second Edition: 2015 [ISO/IEC 23001-7] で規定されているように、暗号化するものとします。
 
->   **注**: HEVC ビデオの場合、VCL NAL でのスライス データのみが暗号化されます。 スライス ヘッダーとその他の NAL は、復号化する前にプレゼンテーション アプリケーションにアクセスできます。 セキュリティで保護されたビデオ パスでは、暗号化された情報はプレゼンテーション アプリケーションで使用できません。
+>   **メモ**:HEVC ビデオの場合、VCL NAL でのスライス データのみが暗号化されます。 スライス ヘッダーとその他の NAL は、復号化する前にプレゼンテーション アプリケーションにアクセスできます。 セキュリティで保護されたビデオ パスでは、暗号化された情報はプレゼンテーション アプリケーションで使用できません。
 
-# <a name="52-index-of-security-parameters"></a>5.2 Index of Security Parameters (セキュリティ パラメーターのインデックス) 
------------------------------
+## <a name="52-index-of-security-parameters"></a>5.2 Index of Security Parameters (セキュリティ パラメーターのインデックス) 
 
 
 | **セキュリティ パラメーター**  | **セクション**         |
@@ -374,8 +362,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 | ProtectionElement       | *2.2.2.2*           |
 | Common Encryption Boxes | *[ISO/IEC 23001-7]* |
 
-# <a name="53-common-encryption-boxes"></a>5.3 Common Encryption Boxes (共通暗号化ボックス)
------------------------
+## <a name="53-common-encryption-boxes"></a>5.3 Common Encryption Boxes (共通暗号化ボックス)
 
 Common Encryption が適用されると、フラグメント応答に次のボックス ([ISO/IEC 23001-7] または [ISO/IEC 14496-12] で規定) が表示される場合があります。
 
