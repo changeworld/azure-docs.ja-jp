@@ -12,17 +12,17 @@ items:
   - name: アプリケーション
     items:
     - name: .NET アプリケーション
-      href: ../application-insights/quick-monitor-portal.md?toc=/azure/azure-monitor/toc.json
+      href: learn/quick-monitor-portal.md
     - name: .NET Core アプリケーション
-      href: ../application-insights/app-insights-dotnetcore-quick-start.md?toc=/azure/azure-monitor/toc.json
+      href: learn/dotnetcore-quick-start.md
     - name: Node.js アプリケーション
-      href: ../application-insights/app-insights-nodejs-quick-start.md?toc=/azure/azure-monitor/toc.json
+      href: learn/nodejs-quick-start.md
     - name: Java アプリケーション
-      href: ../application-insights/app-insights-java-quick-start.md?toc=/azure/azure-monitor/toc.json
+      href: learn/java-quick-start.md
     - name: モバイル アプリケーション
-      href: ../application-insights/app-insights-mobile-center-quickstart.md?toc=/azure/azure-monitor/toc.json
+      href: learn/mobile-center-quickstart.md
     - name: Web アプリケーション
-      href: ../application-insights/app-insights-website-monitoring.md?toc=/azure/azure-monitor/toc.json
+      href: app/website-monitoring.md
   - name: 仮想マシン
     items:
     - name: 収集 - Azure VM
@@ -45,15 +45,15 @@ items:
   - name: パフォーマンスとスケジュールに基づく自動スケール
     href: learn/tutorial-autoscale-performance-schedule.md
   - name: アプリケーションのランタイムの例外を見つける
-    href: ../application-insights/app-insights-tutorial-runtime-exceptions.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-runtime-exceptions.md
   - name: アプリケーションのパフォーマンスの問題を見つける
     href: ../application-insights/app-insights-tutorial-performance.md?toc=/azure/azure-monitor/toc.json
   - name: アプリケーションの正常性に基づくアラート
-    href: ../application-insights/app-insights-tutorial-alert.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-alert.md
   - name: アプリケーション ユーザーについて
     href: ../application-insights/app-insights-tutorial-users.md?toc=/azure/azure-monitor/toc.json
   - name: カスタム ダッシュボードの作成
-    href: ../application-insights/app-insights-tutorial-dashboards.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-app-dashboards.md
 - name: サンプル
   items:
   - name: Azure PowerShell
@@ -262,8 +262,8 @@ items:
       items:
       - name: Azure アプリ
         items:
-        - name: Azure Web アプリ
-          href: app/azure-web-apps.md
+        - name: Azure App Service
+          href: ../application-insights/app-insights-azure-web-apps.md?toc=/azure/azure-monitor/toc.json
         - name: Azure クラウド サービス
           href: app/cloudservices.md
         - name: 継続的な監視の追加
@@ -271,21 +271,21 @@ items:
         - name: プロファイラー
           items:
           - name: 概要
-            href: ../application-insights/app-insights-profiler-overview.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-overview.md
           - name: アプリ サービスで Profiler を有効にする
             href: app/profiler.md
           - name: クラウド サービスで Profiler を有効にする
-            href: ../application-insights/app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-cloudservice.md
           - name: Service Fabric アプリケーションで Profiler を有効にする
-            href: ../application-insights/app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-servicefabric.md
           - name: Azure VM で Profiler を有効にする
-            href: ../application-insights/app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-vm.md
           - name: Profiler の設定
-            href: ../application-insights/app-insights-profiler-settings.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-settings.md
           - name: プロファイリング要求を追跡する
-            href: ../application-insights/app-insights-profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-trackrequests.md
           - name: Profiler に関するトラブルシューティング
-            href: ../application-insights/app-insights-profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-troubleshooting.md
         - name: 診断
           href: ../application-insights/app-insights-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
         - name: プレビュー
@@ -297,7 +297,7 @@ items:
         - name: Status Monitor
           href: app/monitor-performance-live-website-now.md
         - name: Windows サービス
-          href: ../application-insights/app-insights-windows-services.md?toc=/azure/azure-monitor/toc.json
+          href: app/windows-services.md
         - name: Windows デスクトップ
           href: app/windows-desktop.md
         - name: ASP.NET Core
@@ -389,7 +389,7 @@ items:
         - name: スマート検出規則の管理
           href: app/proactive-arm-config.md
       - name: リソースの作成
-        href: ../application-insights/app-insights-create-new-resource.md?toc=/azure/azure-monitor/toc.json
+        href: app/create-new-resource.md
       - name: トラブルシューティング
         items:
         - name: .NET のデータがない
@@ -645,7 +645,7 @@ items:
       - name: ログ データをエクスポートする
         href: platform/powerbi.md
       - name: アプリケーション データをエクスポートする
-        href: ../application-insights/app-insights-export-power-bi.md?toc=/azure/azure-monitor/toc.json
+        href: app/export-power-bi.md
     - name: データを Grafana に送信する
       href: platform/grafana-plugin.md
   - name: データを分析する
@@ -713,6 +713,7 @@ items:
         - name: アプリケーション データ
           href: app/analytics.md
         - name: 標準のプロパティ
+          href: platform/log-standard-properties.md
         - name: テキスト データの解析
           href: log-query/parse-text.md
       - name: 検索結果からのアクションの実行
@@ -930,7 +931,7 @@ items:
   - name: Azure CLI
     href: /cli/azure/monitor?view=azure-cli-latest
   - name: Azure Functions
-    href: ../application-insights/azure-functions-supported-features.md?toc=/azure/azure-monitor/toc.json
+    href: app/azure-functions-supported-features.md
   - name: Azure PowerShell
     items:
     - name: 監視
@@ -1004,9 +1005,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 8fc518262ba4b1d1c53c8fd2622f724550cddb2e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: daba9eb12d568e3eb49a7aa4d21f1d2eaa367ab8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053655"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074616"

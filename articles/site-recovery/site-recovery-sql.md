@@ -42,10 +42,10 @@ Site Recovery は、次の表のように SQL Server を保護できます。
 
 **シナリオ** | **セカンダリ サイトへ** | **Azure へ**
 --- | --- | ---
-**Hyper-V** | [はい] | [はい]
-**VMware** | [はい] | [はい]
-**物理サーバー** | [はい] | [はい]
-**Azure**|NA| [はい]
+**Hyper-V** | はい | はい
+**VMware** | はい | はい
+**物理サーバー** | はい | はい
+**Azure**|NA| はい
 
 ### <a name="supported-sql-server-versions"></a>サポートされる SQL Server のバージョン
 これらの SQL Server バージョンは、サポートされるシナリオに対応しています。
