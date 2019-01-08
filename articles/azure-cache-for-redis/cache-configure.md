@@ -466,7 +466,7 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 > * CONFIG
 > * DEBUG
 > * MIGRATE
-> * [保存]
+> * SAVE
 > * SHUTDOWN
 > * SLAVEOF
 > * CLUSTER - クラスターの書き込みコマンドは無効ですが、読み取り専用のクラスター コマンドは許可されます。
