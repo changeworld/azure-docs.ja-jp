@@ -147,7 +147,7 @@ PowerShell を使用して VM をプロビジョニングし、新しいデー�
   $DataDiskVhdUri03 = "https://contoso.blob.local.azurestack.external/test3/data3.vhd"
   ```
 
-最後の 3 つのコマンドは、*$VirtualMachine* に格納されている仮想マシンにデータ ディスクを追加します。 各コマンドは、ディスクの名前、場所、および追加のプロパティを指定します。 各ディスクの URI は、*$DataDiskVhdUri01**$DataDiskVhdUri02*、および *$DataDiskVhdUri03* に格納されます。
+最後の 3 つのコマンドは、*$VirtualMachine* に格納されている仮想マシンにデータ ディスクを追加します。 各コマンドは、ディスクの名前、場所、および追加のプロパティを指定します。 各ディスクの URI は、*$DataDiskVhdUri01* *$DataDiskVhdUri02*、および *$DataDiskVhdUri03* に格納されます。
   ```
   $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk1' `
                   -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 `
@@ -234,7 +234,7 @@ PowerShell を使用して VM をプロビジョニングし、新しいデー�
   ```
 
 
-  次の 3 つのコマンドは、*$VirtualMachine* に格納されている仮想マシンにデータ ディスクを追加します。 各コマンドは、ディスクの名前、場所、および追加のプロパティを指定します。 各ディスクの URI は、*$DataDiskVhdUri01**$DataDiskVhdUri02*、および *$DataDiskVhdUri03* に格納されます。
+  次の 3 つのコマンドは、*$VirtualMachine* に格納されている仮想マシンにデータ ディスクを追加します。 各コマンドは、ディスクの名前、場所、および追加のプロパティを指定します。 各ディスクの URI は、*$DataDiskVhdUri01* *$DataDiskVhdUri02*、および *$DataDiskVhdUri03* に格納されます。
   ```
   Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" `
                         -VhdUri $DataDiskVhdUri01 -LUN 0 `
