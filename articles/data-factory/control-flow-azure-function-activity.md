@@ -42,7 +42,7 @@ Azure 関数アクティビティを使用すると、Data Factory パイプラ�
 | linked service | 対応する Azure 関数アプリの、Azure 関数のリンクされたサービス  | リンクされたサービスの参照 | はい |
 | function name  | このアクティビティによって呼び出される Azure 関数アプリ内の関数の名前 | String | はい |
 | method  | 関数呼び出しのための REST API メソッド | 文字列がサポートされている型:"GET"、"POST"、"PUT"   | はい |
-| ヘッダー  | 要求に送信されるヘッダー。 たとえば、要求に種類と言語を設定する場合: "headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | 文字列 (または文字列の resultType を含む式) | いいえ  |
+| header  | 要求に送信されるヘッダー。 たとえば、要求に種類と言語を設定する場合: "headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | 文字列 (または文字列の resultType を含む式) | いいえ  |
 | body  | 関数 API メソッドへの要求と共に送信される本文  | 文字列 (または文字列の resultType を含む式)。   | PUT/POST メソッドには必須です |
 |   |   |   | |
 
