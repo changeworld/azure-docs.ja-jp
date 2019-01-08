@@ -20,6 +20,7 @@ items:
     href: stream-live-tutorial-with-api.md
   - name: ビデオの分析 - .NET
     href: analyze-videos-tutorial-with-api.md
+  expanded: true
 - name: サンプル
   items:
   - name: Azure のコード サンプル
@@ -28,8 +29,14 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
-  - name: v2 から v3 への移行
-    href: migrate-from-v2-to-v3.md
+  - name: アカウント
+    items:
+    - name: v2 から v3 への移行
+      href: migrate-from-v2-to-v3.md
+    - name: クォータと制限
+      href: limits-quotas-constraints.md
+    - name: ストレージ アカウント
+      href: storage-account-concept.md
   - name: エンティティ
     href: entities-overview.md
     items:
@@ -79,15 +86,21 @@ items:
       href: live-event-states-billing.md
     - name: Latency
       href: live-event-latency.md
-  - name: ストレージ アカウント
-    href: storage-account-concept.md
+  - name: Azure Media Player
+    href: use-azure-media-player.md
 - name: ハウツー ガイド
   items:
-  - name: アカウントの作成 - CLI
-    href: create-account-cli-how-to.md
-  - name: API へのアクセス - CLI
-    href: access-api-cli-how-to.md
-  - name: アップロード
+  - name: 作業開始
+    items:
+    - name: アカウントの作成 - CLI
+      href: create-account-cli-how-to.md
+    - name: API へのアクセス - CLI
+      href: access-api-cli-how-to.md
+    - name: メディア占有ユニットのスケーリング - CLI
+      href: media-reserved-units-cli-how-to.md
+  - name: Postman を構成する
+    href: media-rest-apis-with-postman.md
+  - name: コンテンツをアップロードする
     items:
     - name: HTTP(s) から - .NET
       href: job-input-from-http-how-to.md
@@ -95,6 +108,22 @@ items:
       href: job-input-from-local-file-how-to.md
     - name: ローカル ファイルから - REST
       href: upload-files-rest-how-to.md
+  - name: コンテンツのエンコード
+    items:
+    - name: 変換プリセットのカスタマイズ - .NET
+      href: customize-encoder-presets-how-to.md
+  - name: Event Grid の使用
+    items:
+    - name: イベントの監視 - ポータル
+      href: monitor-events-portal-how-to.md
+    - name: イベントの監視 - CLI
+      href: job-state-events-cli-how-to.md
+  - name: コンテンツの保護
+    items:
+    - name: AES-128 の使用 - .NET
+      href: protect-with-aes128.md
+    - name: DRM の使用 - .NET
+      href: protect-with-drm.md
   - name: フィルターの作成
     items:
     - name: .NET の場合
@@ -103,26 +132,6 @@ items:
       href: filters-dynamic-manifest-rest-howto.md
     - name: CLI の場合
       href: filters-dynamic-manifest-cli-howto.md
-  - name: エンコード
-    items:
-    - name: 変換プリセットのカスタマイズ - .NET Core
-      href: customize-encoder-presets-how-to.md
-  - name: Event Grid の使用
-    items:
-    - name: イベントの監視 - ポータル
-      href: monitor-events-portal-how-to.md
-    - name: イベントの監視 - CLI
-      href: job-state-events-cli-how-to.md
-  - name: 保護
-    items:
-    - name: AES-128 の使用 - .NET
-      href: protect-with-aes128.md
-    - name: DRM の使用 - .NET
-      href: protect-with-drm.md
-  - name: Postman を構成する
-    href: media-rest-apis-with-postman.md
-  - name: メディア占有ユニットのスケーリング - CLI
-    href: media-reserved-units-cli-how-to.md
 - name: リファレンス
   items:
   - name: OpenAPI の仕様 (Swagger)
@@ -181,13 +190,11 @@ items:
       href: https://aka.ms/ams-v3-ruby-sdk
   - name: リリース ノート
     href: release-notes.md
-  - name: クォータと制限
-    href: limits-quotas-constraints.md
   - name: FAQ
     href: frequently-asked-questions.md
-ms.openlocfilehash: 660052b4e82f6e005c096b5ac1edd7a80c2d5339
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 2ea45acd19909c6bcdcca7a68b9dce45fa272f08
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744974"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034983"
