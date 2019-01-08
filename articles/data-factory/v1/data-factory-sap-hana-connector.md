@@ -22,7 +22,7 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37054638"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用した SAP HANA からのデータ移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-sap-hana-connector.md)
 > * [Version 2 (現在のバージョン)](../connector-sap-hana.md)
 
@@ -38,21 +38,21 @@ ms.locfileid: "37054638"
 
 SAP HANA への接続を有効にするには、次のコンポーネントをインストールします。
 - **Data Management Gateway**: Data Factory サービスは、Data Management Gateway と呼ばれるコンポーネントを使用した、オンプレミスのデータ ストア (SAP HANA を含む) への接続をサポートしています。 Data Management Gateway の詳細およびゲートウェイの設定手順については、[オンプレミスのデータ ストアとクラウド データ ストアの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。 SAP HANA が Azure IaaS 仮想マシン (VM) でホストされている場合でも、ゲートウェイは必要です。 ゲートウェイはデータ ストアと同じ VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
-- **SAP HANA ODBC ドライバー**: ゲートウェイ コンピューターにインストールします。 SAP HANA ODBC ドライバーは [SAP ソフトウェアのダウンロード センター](https://support.sap.com/swdc)からダウンロードできます。 "**SAP HANA CLIENT for Windows**" というキーワードで検索してください。 
+- **SAP HANA ODBC ドライバー**: ゲートウェイ コンピューターにインストールします。 SAP HANA ODBC ドライバーは [SAP ソフトウェアのダウンロード センター](https://support.sap.com/swdc)からダウンロードできます。 "**SAP HANA CLIENT for Windows**" というキーワードで検索してください。
 
 ## <a name="getting-started"></a>使用の開始
-さまざまなツール/API を使用して、オンプレミスの SAP HANA データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
+さまざまなツール/API を使用して、オンプレミスの SAP HANA データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
-- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの SAP HANA データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例: SAP HANA から Azure BLOB へのデータのコピー](#json-example-copy-data-from-sap-hana-to-azure-blob)」を参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 オンプレミスの SAP HANA データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例: SAP HANA から Azure BLOB へのデータのコピー](#json-example-copy-data-from-sap-hana-to-azure-blob)」を参照してください。
 
 次のセクションでは、SAP HANA データ ストアに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -62,16 +62,16 @@ SAP HANA への接続を有効にするには、次のコンポーネントを�
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 [サーバー] | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | 文字列 | [はい]
-authenticationType | 認証の種類。 | string。 "Basic" または"Windows" | [はい] 
+authenticationType | 認証の種類。 | string。 "Basic" または"Windows" | [はい]
 username | SAP サーバーにアクセスするユーザーの名前 | 文字列 | [はい]
 password | ユーザーのパスワード。 | 文字列 | [はい]
 gatewayName | Data Factory サービスが、オンプレミスの SAP HANA インスタンスへの接続に使用するゲートウェイの名前。 | 文字列 | [はい]
-encryptedCredential | 暗号化された資格情報の文字列。 | 文字列 | いいえ 
+encryptedCredential | 暗号化された資格情報の文字列。 | 文字列 | いいえ
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
-**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型の SAP HANA データセットに対して、サポートされている型固有のプロパティはありません。 
+**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型の SAP HANA データセットに対して、サポートされている型固有のプロパティはありません。
 
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
@@ -86,7 +86,7 @@ encryptedCredential | 暗号化された資格情報の文字列。 | 文字列 
 | クエリ | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | SQL クエリ。 | [はい] |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON の使用例: SAP HANA から Azure BLOB へのデータのコピー
-次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 このサンプルは、オンプレミスの SAP HANA から Azure Blob Storage にデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、**こちら**に記載されているシンクのいずれかにデータを[直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats)コピーすることもできます。  
+次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 このサンプルは、オンプレミスの SAP HANA から Azure Blob Storage にデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、**こちら**に記載されているシンクのいずれかにデータを[直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats)コピーすることもできます。
 
 > [!IMPORTANT]
 > このサンプルでは、JSON のスニペットを使用します。 データ ファクトリを作成する手順は含まれてません。 手順については、記事「 [Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md) 」を参照してください。
@@ -142,11 +142,11 @@ encryptedCredential | 暗号化された資格情報の文字列。 | 文字列 
 
 ### <a name="sap-hana-input-dataset"></a>SAP HANA 入力データセット
 
-このデータセットでは、SAP HANA データセットを定義します。 Data Factory データセットの型は **RelationalTable** に設定します。 現時点では、SAP HANA データセットに対して型固有のプロパティは指定しません。 コピー アクティビティ定義のクエリでは、SAP HANA インスタンスからどのデータを読み取るかが指定されます。 
+このデータセットでは、SAP HANA データセットを定義します。 Data Factory データセットの型は **RelationalTable** に設定します。 現時点では、SAP HANA データセットに対して型固有のプロパティは指定しません。 コピー アクティビティ定義のクエリでは、SAP HANA インスタンスからどのデータを読み取るかが指定されます。
 
 external プロパティを true に設定すると、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
-頻度と間隔のプロパティでは、スケジュールを定義します。 この場合、データは 1 時間ごとに SAP HANA インスタンスから読み取られます。 
+頻度と間隔のプロパティでは、スケジュールを定義します。 この場合、データは 1 時間ごとに SAP HANA インスタンスから読み取られます。
 
 ```json
 {
