@@ -22,7 +22,7 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37046886"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータを移動する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-onprem-mysql-connector.md)
 > * [バージョン 2 (現在のバージョン)](../connector-mysql.md)
 
@@ -32,7 +32,7 @@ ms.locfileid: "37046886"
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの MySQL データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
-オンプレミスの MySQL ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 データ ファクトリは、現時点では MySQL データ ストアから他のデータ ストアへのデータ移動のみをサポートし、他のデータ ストアから MySQL データ ストアへのデータ移動に関してはサポートしていません。 
+オンプレミスの MySQL ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 データ ファクトリは、現時点では MySQL データ ストアから他のデータ ストアへのデータ移動のみをサポートし、他のデータ ストアから MySQL データ ストアへのデータ移動に関してはサポートしていません。
 
 ## <a name="prerequisites"></a>前提条件
 Data Factory のサービスでは、Data Management Gateway を使用したオンプレミスの MySQL ソースへの接続をサポートします。 Data Management Gateway の詳細およびゲートウェイの設定手順については、「 [オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md) 」を参照してください。
@@ -49,18 +49,18 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 > エラー "リモート パーティがトランスポート ストリームを終了したため、認証に失敗しました。" が発生した場合は、MySQL コネクタ/Net をより新しいバージョンにアップグレードすることを検討してください。
 
 ## <a name="getting-started"></a>使用の開始
-さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
+さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
-- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの MySQL データ ストアからデータをコピーするために使用するデータ ファクトリ エンティティに関する JSON 定義のサンプルについては、[JSON の使用例: MySQL から Azure Blob へのデータのコピー](#json-example-copy-data-from-mysql-to-azure-blob)に関するこのページをご覧ください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの MySQL データ ストアからデータをコピーするために使用するデータ ファクトリ エンティティに関する JSON 定義のサンプルについては、[JSON の使用例: MySQL から Azure Blob へのデータのコピー](#json-example-copy-data-from-mysql-to-azure-blob)に関するこのページをご覧ください。
 
 次のセクションでは、MySQL データ ストアに固有のデータ ファクトリ エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
