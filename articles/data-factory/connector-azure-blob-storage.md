@@ -17,7 +17,7 @@ ms.lasthandoff: 12/08/2018
 ms.locfileid: "53095348"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-azure-blob-connector.md)
 > * [現在のバージョン](connector-azure-blob-storage.md)
 
@@ -31,7 +31,7 @@ Blob Storage には、サポートされているソース データ ストア�
 
 具体的には、この Blob Storage コネクタは、以下をサポートします。
 
-- 汎用 Azure Storage アカウントとホット/クール Blob Storage との間での BLOB のコピー。 
+- 汎用 Azure Storage アカウントとホット/クール Blob Storage との間での BLOB のコピー。
 - アカウント キー、サービスの Shared Access Signature、サービス プリンシパル、または Azure リソースのマネージド ID のいずれかの認証を使用した BLOB のコピー。
 - ブロック BLOB、アペンド BLOB、またはページ BLOB からの BLOB のコピーと、ブロック BLOB だけへのデータのコピー。
 - そのままの BLOB のコピー、または[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用した BLOB の解析/生成。
@@ -180,14 +180,14 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
     "name": "AzureBlobStorageLinkedService",
     "properties": {
         "type": "AzureBlobStorage",
-        "typeProperties": {            
+        "typeProperties": {
             "serviceEndpoint": "https://<accountName>.blob.core.windows.net/",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
                 "type": "SecureString",
                 "value": "<service principal key>"
             },
-            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -221,7 +221,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 > [!NOTE]
-> Azure リソースのマネージド ID 認証は、"AzureBlobStorage" タイプのリンクされたサービスによってのみサポートされており、以前の "AzureStorage" タイプのリンクされたサービスではサポートされていません。 
+> Azure リソースのマネージド ID 認証は、"AzureBlobStorage" タイプのリンクされたサービスによってのみサポートされており、以前の "AzureStorage" タイプのリンクされたサービスではサポートされていません。
 
 **例:**
 
@@ -230,7 +230,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
     "name": "AzureBlobStorageLinkedService",
     "properties": {
         "type": "AzureBlobStorage",
-        "typeProperties": {            
+        "typeProperties": {
             "serviceEndpoint": "https://<accountName>.blob.core.windows.net/"
         },
         "connectVia": {
@@ -258,7 +258,7 @@ Blob Storage をコピー先またはコピー元としてデータをコピー�
 | compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
 >[!TIP]
->フォルダーの下のすべての BLOB をコピーするには、**folderPath** のみを指定します。<br>特定の名前の単一の BLOB をコピーするには、フォルダー部分で **folderPath**、ファイル名で **fileName** を指定します。<br>フォルダーの下の BLOB のサブセットをコピーするには、フォルダー部分で **folderPath**、ワイルドカード フィルターで **fileName** を指定します。 
+>フォルダーの下のすべての BLOB をコピーするには、**folderPath** のみを指定します。<br>特定の名前の単一の BLOB をコピーするには、フォルダー部分で **folderPath**、ファイル名で **fileName** を指定します。<br>フォルダーの下の BLOB のサブセットをコピーするには、フォルダー部分で **folderPath**、ワイルドカード フィルターで **fileName** を指定します。
 
 **例:**
 
