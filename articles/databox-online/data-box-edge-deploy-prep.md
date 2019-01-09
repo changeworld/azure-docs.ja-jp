@@ -1,6 +1,6 @@
 ---
 title: Edge をデプロイするための Azure portal の準備に関するチュートリアル | Microsoft Docs
-description: Edge をデプロイする最初のチュートリアルでは、Azure portal の準備を行います。
+description: Edge のデプロイに関する最初のチュートリアルでは、Azure portal の準備を行います。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 10/08/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 35ac28d687c8bc6636a7d8e10f54ffb5b219a776
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 25f68b011d1fcba450903e9a691b98dfe9e87281
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167464"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726121"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-data-box-edge-preview"></a>チュートリアル: Edge のデプロイを準備する (プレビュー)
+# <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>チュートリアル:Edge のデプロイを準備する  
 
 
 これは、Edge を完全にデプロイするために必要な一連のデプロイ チュートリアルの中で最初のものです。 このチュートリアルでは、Edge リソースをデプロイするために Azure portal を準備する方法を説明します。 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 > [!IMPORTANT]
-> Edge はプレビュー段階です。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
+> Edge はプレビュー段階です。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。  
 
 ### <a name="get-started"></a>作業開始
 
@@ -51,7 +51,7 @@ Edge をデプロイするには、以下の順序どおりにチュートリア
 
 ## <a name="prerequisites"></a>前提条件
 
-ここでは、Edge リソース、Edge デバイス、およびデータセンター ネットワークについて、構成の前提条件を示します。
+次に示すのは、Edge リソース、Edge デバイス、およびデータセンター ネットワークの構成に関する前提条件です。
 
 ### <a name="for-the-data-box-edge-resource"></a>Edge リソースに対して
 
@@ -63,10 +63,9 @@ Edge をデプロイするには、以下の順序どおりにチュートリア
 ### <a name="for-the-data-box-edge-device"></a>Edge デバイスに対して
 
 物理デバイスを配置する前に次の点を確認します。
-
-- デバイスをラック マウントするため、データ センターの標準 19 インチ ラックに空いている 1 U スロットが 1 つあること。 
-- デバイスを安全に置くことができる、平らで安定した水平の作業面が用意されていることを確認します。
-- デバイスをセットアップする予定の場所に、独立した電源からの標準 AC 電源、または無停電電源装置 (UPS) を備えたラック配電ユニット (PDU) があることを確認します。
+- デバイスをラック マウントするため、データセンターの標準 19 インチ ラックに空いている 1 U スロットが 1 つあること。 
+- デバイスを安全に置くことができる、平らで安定した水平の作業面が用意されていること。
+- デバイスをセットアップする予定の場所に、独立した電源からの標準 AC 電源、または無停電電源装置 (UPS) を備えたラック配電ユニット (PDU) があること。
 - 物理デバイスにアクセスできること。
 
 
@@ -74,7 +73,7 @@ Edge をデプロイするには、以下の順序どおりにチュートリア
 
 開始する前に次の点を確認します。
 
-* Edge デバイスのネットワーク要件に従ってデータセンターのネットワークが構成されていること。 詳細については、[Edge のシステム要件](data-box-gateway-system-requirements.md)に関する記事を参照してください。
+* Edge デバイスのネットワーク要件に従ってデータセンターのネットワークが構成されていること。 詳しくは、[Edge のシステム要件](data-box-gateway-system-requirements.md)に関する記事をご覧ください。
 
 * Edge で 20 Mbps 以上の専用インターネット帯域幅を常時利用できること。 この帯域幅はその他のアプリケーションと共有できません。 帯域幅調整を使用する場合は、帯域幅調整が正しく機能するように 32 Mbps 以上のインターネット帯域幅を使用することをお勧めします。
 
@@ -84,11 +83,11 @@ Edge をデプロイするには、以下の順序どおりにチュートリア
 
 物理デバイスを管理する既存の Edge リソースがある場合は、この手順をスキップして、「[アクティブ化キーの取得](#get-the-activation-key)」に進みます。
 
-Azure portal で次の手順を実行して Data Box リソースを作成します。
+Edge リソースを作成するには、Azure portal で次の手順を実行します。
 
-1. Microsoft Azure 資格情報を使用し、Azure プレビュー ポータルにログインします。URL は [https://aka.ms/databox-edge](https://aka.ms/databox-edge) です。 
+1. Microsoft Azure 資格情報を使用し、Azure プレビュー ポータルにサインインします。URL は [https://aka.ms/databox-edge](https://aka.ms/databox-edge) です。 
 
-2. Data Box Edge プレビューに使用するサブスクリプションを選択します。 Data Box Edge リソースをデプロイするリージョンを選択します。 **[Data Box Edge]\(Edge)** オプションで、**[作成]** をクリックします。
+2. Edge プレビューに使用するサブスクリプションを選択します。 Data Box Edge リソースをデプロイするリージョンを選択します。 **Edge** オプションで、**[作成]** を選択します。
 
     ![Edge サービスを検索する](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 
@@ -96,14 +95,14 @@ Azure portal で次の手順を実行して Data Box リソースを作成しま
     
     |Setting  |値  |
     |---------|---------|
-    |リソース名   | リソースを識別するわかりやすい名前を入力します。<br>リソース名は 2 ～ 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
+    |リソース名   | リソースを識別するわかりやすい名前を入力します。<br>リソース名は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
     |サブスクリプション    |サブスクリプションは、課金アカウントにリンクされます。 |
     |リソース グループ  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/resource-group-overview.md)をご覧ください。     |
-    |Location     |このリリースでは、米国東部、米国西部 2、東南アジア、西ヨーロッパを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
+    |場所     |このリリースでは、米国東部、米国西部 2、東南アジア、西ヨーロッパを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
     
     ![Edge リソースを作成する](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
     
-4. Click **OK**.
+4. **[OK]** を選択します。
  
 リソースの作成には数分かかります。 リソースが正常に作成されると通知が表示されます。
 
@@ -112,9 +111,9 @@ Azure portal で次の手順を実行して Data Box リソースを作成しま
 
 Edge リソースが起動して実行中になったら、アクティブ化キーを取得する必要があります。 このキーを使用して、Edge デバイスのアクティブ化とリソースへの接続を行います。 このキーは Azure portal ですぐに入手できます。
 
-1. 作成したリソースをクリックしてから、**[概要]** をクリックします。
+1. 作成したリソースを選択してから、**[概要]** を選択します。
 
-2. **[キーの生成]** をクリックして、アクティブ化キーを作成します。 コピー アイコンをクリックしてキーをコピーし、後で使用できるように保存します。
+2. **[キーの生成]** を選択して、アクティブ化キーを作成します。 コピー アイコンを選択してキーをコピーし、後で使用できるように保存します。
 
     ![アクティブ化キーの取得](media/data-box-edge-deploy-prep/get-activation-key.png)
 
@@ -127,7 +126,7 @@ Edge リソースが起動して実行中になったら、アクティブ化キ
 このチュートリアルでは、Edge に関する以下のトピックについて説明しました。
 
 > [!div class="checklist"]
-> * 新しいリソースを作成
+> * 新しいリソースの作成
 > * アクティブ化キーの取得
 
 次のチュートリアルに進み、Edge をインストールする方法を学習してください。 
