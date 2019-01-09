@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge ランタイムについて | Microsoft Docs
-description: Azure IoT Edge ランタイムの概要、およびそのエッジ デバイスの使用方法について説明します。
+title: ランタイムでデバイスを管理する方法について - Azure IoT Edge | Microsoft Docs
+description: デバイス上のモジュール、セキュリティ、通信、およびレポートを Azure IoT Edge ランタイムで管理する方法について説明します
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 05c97d21e9acf1bb49418e3a7d0ccf1657f84435
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 3495d157f1a681e80b6d113acced53d01751690f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685193"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077496"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
@@ -29,7 +30,7 @@ IoT Edge ランタイムは、IoT Edge デバイスで次の機能を実行し�
 * IoT Edge デバイス上のモジュール間の通信を円滑化する。
 * IoT Edge デバイスとクラウドとの間の通信を円滑化する。
 
-![IoT Edge ランタイムによる洞察とモジュールの正常性の IoT Hub への通信](./media/iot-edge-runtime/Pipeline.png)
+![ランタイムによる分析情報とモジュールの正常性の IoT Hub への通信](./media/iot-edge-runtime/Pipeline.png)
 
 IoT Edge ランタイムには、通信とモジュール管理の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムを構成する 2 つのコンポーネントによって実行されます。 IoT Edge ハブは通信を実行し、IoT Edge エージェントは、モジュールの展開と監視を実行します。 
 
@@ -49,7 +50,7 @@ Edge ハブは、ローカルで実行される完全バージョンの IoT Hub 
 
 IoT Edge ソリューションが使用する帯域幅を減らすために、Edge ハブは、クラウドへの実際の接続数を最適化します。 Edge ハブは、モジュールまたはリーフ デバイスなどのクライアントからの論理接続を取得し、クラウドへの 1 つの物理接続に統合します。 ソリューションの他の部分は、このプロセスの詳細を認識する必要がありません。 クライアントは、すべて、共通の接続を使って接続しているにもかかわらず、クラウドにそれぞれ独自に接続していると認識します。 
 
-![Edge ハブは複数の物理デバイスとクラウド間のゲートウェイとして機能します。](./media/iot-edge-runtime/Gateway.png)
+![Edge ハブは物理デバイスと IoT Hub との間のゲートウェイです。](./media/iot-edge-runtime/Gateway.png)
 
 Edge ハブでは、IoT Hub に接続されているかどうかを判断できます。 接続が切断された場合は、Edge ハブがメッセージを保存するか、ツインがローカルで更新します。 接続が再確立されると、すべてのデータが同期されます。 この一時キャッシュに使用される場所は、Edge ハブのモジュール ツインのプロパティによって規定されます。 キャッシュのサイズには上限がなく、デバイスにストレージ容量がある限り拡張されます。 
 
@@ -57,7 +58,7 @@ Edge ハブでは、IoT Hub に接続されているかどうかを判断でき�
 
 Edge Hub を使用することで、モジュール間の通信が容易になります。 メッセージ ブローカーとして Edge Hub を使用することで、モジュールの相互独立性を維持できます。 モジュールは、メッセージを受信する入力と、メッセージを書き出す出力を指定するだけです。 ソリューション開発者は、そのソリューションに固有の順序でデータを処理できるよう、これらの入力と出力を統合します。 
 
-![Edge Hub を使用することで、モジュール間の通信が容易になります。](./media/iot-edge-runtime/ModuleEndpoints.png)
+![Edge Hub を使用することで、モジュール間の通信が容易になります。](./media/iot-edge-runtime/module-endpoints.png)
 
 データを Edge ハブに送信するために、モジュールは、SendEventAsync メソッドを呼び出します。 最初の引数は、どの出力にメッセージを送信するかを指定します。 次の疑似コードは、output1 にメッセージを送信します。
 
@@ -73,13 +74,13 @@ Edge Hub を使用することで、モジュール間の通信が容易にな�
    await client.SetInputMessageHandlerAsync(“input1”, messageProcessor, userContext);
    ```
 
-ModuleClient クラスとその通信方法について詳しくは、使用する SDK 言語 ([C# ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)、[C および Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable)、[Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)) の API リファレンスをご覧ください。
+ModuleClient クラスとその通信方法に関する詳細については、優先する SDK 言語 ([C# ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)、[C および Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable)、[Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)) の API リファレンスを参照してください。
 
 ソリューション開発者は、Edge ハブがモジュール間でメッセージを渡す方法を決定するルールを指定します。 ルーティング ルールはクラウドで定義され、そのデバイス ツインで Edge ハブにプッシュ ダウンされます。 IoT Hub ルートと同じ構文を使用して、Azure IoT Edge のモジュール間のルートが定義されます。 
 
 <!--- For more info on how to declare routes between modules, see []. --->   
 
-![モジュール間のルート](./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png)
+![モジュール間のルートは Edge ハブを経由して移動します](./media/iot-edge-runtime/module-endpoints-with-routes.png)
 
 ## <a name="iot-edge-agent"></a>IoT Edge エージェント
 

@@ -122,7 +122,7 @@ items:
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-functions
+    href: https://stackoverflow.com/questions/tagged/azure-functions
   - name: Twitter
     href: https://twitter.com/hashtag/DurableFunctions?src=hash
   - name: 製品フィードバックの提供
@@ -131,9 +131,9 @@ items:
     href: https://github.com/Azure/azure-functions-durable-extension
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 1314f65afbbbc5371537ab3744a9431a30f8b274
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 7056804d4c84bccf3335e9a5913989083d013115
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044639"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102535"

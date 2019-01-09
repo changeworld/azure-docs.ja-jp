@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と MobileIron の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と MobileIron の統合 | Microsoft Docs
 description: Azure Active Directory と MobileIron の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 1b6527207793558c132be4cf004b7d6fdde14a90
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 8bdf49f4cea7c6f0ff30e37bcf1cf2fed3abc2bb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584113"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963812"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>チュートリアル: Azure Active Directory と MobileIron の統合
+# <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>チュートリアル:Azure Active Directory と MobileIron の統合
 
 このチュートリアルでは、MobileIron と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -50,24 +50,27 @@ MobileIron と Azure AD の統合を構成するには、次のものが必要�
 - Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーから MobileIron を追加する
 1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-mobileiron-from-the-gallery"></a>ギャラリーから MobileIron を追加する
+
 Azure AD への MobileIron の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に MobileIron を追加する必要があります。
 
 **ギャラリーから MobileIron を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン][1]
 
 1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
-    
+
 1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
@@ -103,7 +106,7 @@ MobileIron で Azure AD のシングル サインオンを構成してテスト�
     ![シングル サインオン構成のリンク][4]
 
 1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[シングル サインオン] ダイアログ ボックス](./media/mobileiron-tutorial/tutorial_mobileiron_samlbase.png)
 
 1. **[MobileIron のドメインと URL]** セクションで、 **IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
@@ -119,12 +122,13 @@ MobileIron で Azure AD のシングル サインオンを構成してテスト�
     ![[MobileIron のドメインと URL] のシングル サインオン](./media/mobileiron-tutorial/tutorial_mobileiron_url1.png)
 
      **[サインオン URL]** ボックスに、 `https://<host>.mobileiron.com/user/login.html` というパターンで URL を入力します。
-    
-    > [!NOTE]  これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 このチュートリアルで後ほど説明する MobileIron の管理ポータルからキーとホストの値を取得します。
+
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 このチュートリアルで後ほど説明する MobileIron の管理ポータルからキーとホストの値を取得します。
 
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![証明書のダウンロードのリンク](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png) 
+    ![証明書のダウンロードのリンク](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png)
 
 1. **[保存]** ボタンをクリックします。
 
@@ -134,7 +138,7 @@ MobileIron で Azure AD のシングル サインオンを構成してテスト�
 
 1. **[管理者]** > **[ID]** と移動します。
 
-   * **[Info on Cloud IDP Setup]\(Cloud IDP セットアップの情報\)** フィールドで **[AAD]** オプションを選択します。
+   - **[Info on Cloud IDP Setup]\(Cloud IDP セットアップの情報\)** フィールドで **[AAD]** オプションを選択します。
 
     ![[シングル サインオン管理者の構成] ボタン](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
@@ -143,11 +147,11 @@ MobileIron で Azure AD のシングル サインオンを構成してテスト�
     ![[シングル サインオン管理者の構成] ボタン](./media/mobileiron-tutorial/key.png)
 
 1. **[Export metadata file from AAD and import to MobileIron Cloud Field]\(AAD からメタデータ ファイルをエクスポートして MobileIron Cloud Field にインポートする\)** で、**[ファイルの選択]** をクリックして、Azure Portal からダウンロードしたメタデータをアップロードします。 アップロードしたら、**[完了]** をクリックします。
- 
+
     ![[シングル サインオン管理者メタデータの構成] ボタン](./media/mobileiron-tutorial/tutorial_mobileiron_adminmetadata.png)
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -203,20 +207,20 @@ MobileIron の場合、プロビジョニングは手動で行います。
     1. **[名]** ボックスに、ユーザーの名を入力します (例: Britta)。
 
     1. **[姓]** ボックスに、ユーザーの姓を入力します (例: Simon)。
-    
-    1. **[Done]** をクリックします。  
+
+    1. **[Done]** をクリックします。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に MobileIron へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+![ユーザー ロールを割り当てる][200]
 
 **MobileIron に Britta Simon を割り当てるには、次の手順に従います。**
 
 1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
-    ![ユーザーの割り当て][201] 
+    ![ユーザーの割り当て][201]
 
 1. アプリケーションの一覧で **[MobileIron]** を選択します。
 
@@ -235,19 +239,18 @@ MobileIron の場合、プロビジョニングは手動で行います。
 1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
 1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
+
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [MobileIron] タイルをクリックすると、MobileIron アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -262,4 +265,3 @@ MobileIron の場合、プロビジョニングは手動で行います。
 [201]: ./media/mobileiron-tutorial/tutorial_general_201.png
 [202]: ./media/mobileiron-tutorial/tutorial_general_202.png
 [203]: ./media/mobileiron-tutorial/tutorial_general_203.png
-

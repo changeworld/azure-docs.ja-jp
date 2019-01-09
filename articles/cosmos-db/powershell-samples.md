@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.date: 10/16/2017
 ms.author: sngun
-ms.openlocfilehash: c2bd1ac165e6b17d1bd9604fb1203ae47214278f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 480bccd73a049d2f181d5acf906882b2f9b6ccdb
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871032"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808402"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure Cosmos DB 用 Azure PowerShell サンプル
 
@@ -23,11 +23,11 @@ ms.locfileid: "52871032"
 | |  |
 |---|---|
 |**Azure Cosmos DB アカウントの作成**||
-|[SQL API アカウントの作成](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| SQL API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
-|[MongoDB API アカウントの作成](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| MongoDB API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
-|[Gremlin API アカウントの作成](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Gremlin API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
-|[Cassandra API アカウントの作成](scripts/create-and-configure-cassandra-database.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Cassandra API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
-|[Table API アカウントの作成](scripts/create-table-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Table API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
+|[SQL API の Cosmos アカウントを作成して構成する](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| SQL API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
+|[Azure Cosmos DB の MongoDB 用 API の Cosmos アカウントを作成して構成する](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos DB の MongoDB 用 API で使用する単一の Cosmos アカウントを作成します。 |
+|[Gremlin API の Cosmos アカウントを作成して構成する](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Gremlin API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
+|[Cassandra API の Cosmos アカウントを作成して構成する](scripts/create-and-configure-cassandra-database.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Cassandra API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
+|[Table API の Cosmos アカウントを作成して構成する](scripts/create-table-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Table API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
 |**Azure Cosmos DB のスケーリング**||
 |[複数リージョンへの Azure Cosmos DB アカウントのレプリケートと、フェールオーバーの優先順位の構成](scripts/scale-multiregion-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|指定したフェールオーバー優先順位で、複数リージョンにグローバルにアカウント データをレプリケートします。|
 |**Azure Cosmos DB のセキュリティ保護**||

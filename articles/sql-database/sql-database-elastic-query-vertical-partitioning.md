@@ -3,21 +3,21 @@ title: スキーマが異なるクラウド データベース間のクエリ | 
 description: 列方向のパーティションでデータベース間クエリを設定する方法
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 5dbf6fb1b59999481348d3b4ad4775a77295b70d
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7bf1a3af7705858432b9ff8caf5064b0794568df
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238899"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602462"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>スキーマが異なるクラウド データベース間のクエリ (プレビュー)
 ![異なるデータベースのテーブルにまたがるクエリ][1]
@@ -117,8 +117,8 @@ ms.locfileid: "50238899"
 ### <a name="remarks"></a>解説
 エラスティック クエリでは、既存の外部テーブル構文を拡張して、RDBMS 型の外部データ ソースを使用する外部テーブルを定義します。 列方向のパーティション分割のための外部テーブルの定義は、次の側面に対応しています。 
 
-* **スキーマ**: 外部テーブル DDL は、クエリで使用できるスキーマを定義します。 外部テーブル定義に指定するスキーマは、実際のデータが格納されているリモート データベース内のテーブルのスキーマに一致する必要があります。 
-* **リモート データベース参照**: 外部テーブル DDL は、外部データ ソースを参照します。 外部データ ソースは、実際のテーブル データが格納されているリモート データベース論理サーバー名とデータベース名を指定します。 
+* **スキーマ**: 外部テーブル DDL では、ご利用のクエリで使用できるスキーマが定義されます。 外部テーブル定義に指定するスキーマは、実際のデータが格納されているリモート データベース内のテーブルのスキーマに一致する必要があります。 
+* **リモート データベース参照**:外部テーブル DDL では、外部データ ソースが参照されます。 外部データ ソースは、実際のテーブル データが格納されているリモート データベース論理サーバー名とデータベース名を指定します。 
 
 前のセクションで説明したように外部データ ソースを使用する、外部テーブルを作成するための構文を次に示します。 
 
@@ -156,10 +156,10 @@ SCHEMA_NAME 句と OBJECT_NAME 句は、外部テーブル定義をリモート 
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>T-SQL リモート実行のストアド プロシージャ: sp\_execute_remote
 エラスティック クエリには、リモート データベースへの直接アクセスを提供するストアド プロシージャも導入されています。 このストアド プロシージャは [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) と呼ばれ、リモート データベースでリモート ストアド プロシージャまたは T-SQL コードを実行するときに使用できます。 使用できるパラメーターは次のとおりです。 
 
-* データ ソース名 (nvarchar): RDBMS 型の外部データ ソースの名前。 
-* クエリ (nvarchar): リモート データベースで実行する T-SQL クエリ。 
-* パラメーター宣言 (nvarchar) (省略可能): (sp_executesql などの) クエリ パラメーターで使用される、パラメーターのデータ型定義を含む文字列。 
-* パラメーター値のリスト (省略可能): (sp_executesql などの) パラメーター値のコンマ区切りリスト。
+* データ ソース名 (nvarchar): RDBMS 型の外部データ ソースの名前です。 
+* クエリ (nvarchar): リモート データベース上で実行する T-SQL クエリです。 
+* パラメーター宣言 (nvarchar) (省略可能): (sp_executesql などの) クエリ パラメーターで使用される、パラメーターのデータ型定義を含む文字列です。 
+* パラメーター値のリスト (省略可能): (sp_executesql などの) パラメーター値のコンマ区切りリストです。
 
 sp\_execute\_remote では、起動パラメーターで指定された外部データ ソースを使用して、指定された T-SQL ステートメントをリモート データベースで実行します。 リモート データベースへの接続には、外部データ ソースの資格情報を使用します。  
 

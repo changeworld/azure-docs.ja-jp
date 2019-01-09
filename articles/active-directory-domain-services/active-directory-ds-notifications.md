@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: 通知設定 | Microsoft Docs'
+title: Azure Active Directory Domain Services:通知設定 | Microsoft Docs
 description: Azure AD Domain Services の通知設定
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: f5049d6092bfc6b3f70ebafdc501e02ad9fe7936
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: c6d827629850de88940f41febeeca61b812d692e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49433213"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958527"
 ---
 # <a name="notification-settings-in-azure-ad-domain-services"></a>Azure AD Domain Services の通知設定
 
@@ -41,7 +41,7 @@ Azure AD Domain Services の通知を使用することで、ご利用のマネ�
 
 次の図は、メール通知の例です。
 
-![メール通知の例](.\media\active-directory-domain-services-alerts\email-alert.png)
+![メール通知の例](./media/active-directory-domain-services-alerts/email-alert.png)
 
 このメールには、アラートが存在するマネージド ドメインのほか、検出時刻、Azure portal における Azure AD Domain Services の正常性ページへのリンクが記載されています。
 

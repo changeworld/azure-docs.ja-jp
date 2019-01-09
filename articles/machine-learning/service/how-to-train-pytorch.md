@@ -1,5 +1,6 @@
 ---
-title: Azure Machine Learning で PyTorch モデルをトレーニングする
+title: PyTorch を使用したモデルのトレーニング
+titleSuffix: Azure Machine Learning service
 description: PyTorch Estimator を利用して PyTorch モデルの単一ノード トレーニングや分散トレーニングを実行する方法を説明します
 services: machine-learning
 ms.service: machine-learning
@@ -8,22 +9,23 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 27d4ad03e4a7f911fe3c9981618337a2fff51317
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: a6401c6059d8f72f344021879828b01c9ce77169
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114619"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100567"
 ---
-# <a name="how-to-train-pytorch-models"></a>PyTorch モデルをトレーニングする方法
+# <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して PyTorch モデルをトレーニングする
 
 PyTorch を利用したディープ ニューラル ネットワーク (DNN) トレーニングの場合、Azure Machine Learning には `Estimator` のカスタム `PyTorch` クラスが用意されています。 Azure SDK の `PyTorch` エスティメータを使用すると、Azure コンピューティングでの単一ノード実行と分散実行の両方に対して、PyTorch トレーニング ジョブを簡単に送信することができます。
 
 ## <a name="single-node-training"></a>単一ノードのトレーニング
 `PyTorch` エスティメータによるトレーニングは、[基本 `Estimator`](how-to-train-ml-models.md) を使用する場合と似ているので、最初にハウツー記事を読み、そこで紹介されている概念を理解しておいてください。
   
-PyTorch ジョブを実行するには、`PyTorch` オブジェクトのインスタンスを作成します。 [コンピューティング ターゲット](how-to-set-up-training-targets.md#batch) オブジェクト `compute_target` および[データストア](how-to-access-data.md) オブジェクト `ds` は、既に作成されている必要があります。
+PyTorch ジョブを実行するには、`PyTorch` オブジェクトのインスタンスを作成します。 [コンピューティング ターゲット](how-to-set-up-training-targets.md#amlcompute) オブジェクト `compute_target` および[データストア](how-to-access-data.md) オブジェクト `ds` は、既に作成されている必要があります。
 
 ```Python
 from azureml.train.dnn import PyTorch
@@ -44,7 +46,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 --|--
 `source_directory` |  トレーニング ジョブに必要なコードのすべてが含まれているローカル ディレクトリ。 このフォルダーは、ローカル コンピューターからリモート コンピューティングにコピーされています
 `script_params` |  <コマンドライン引数, 値> ペアの形式で、トレーニング スクリプト `entry_script` にコマンドライン引数を指定するディクショナリ
-`compute_target` |  トレーニング スクリプトの実行に使用するリモート コンピューティング (この例では [Batch AI](how-to-set-up-training-targets.md#batch) クラスター)
+`compute_target` |  トレーニング スクリプトの実行に使用するリモートのコンピューティング先 (この例では Azure Machine Learning コンピューティング ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) クラスター)
 `entry_script` |  リモート コンピューティングで実行するトレーニング スクリプトのファイルパス (`source_directory` を基準にした相対パス)。 このファイル、およびこのファイルと依存関係があるその他のファイルはすべて、このフォルダーに置かれている必要があります
 `conda_packages` |  トレーニング スクリプトで必要な、conda を使用してインストールする Python パッケージのリスト。 コンストラクターには `pip_packages` という名前のパラメーターもあり、必要な pip パッケージに対して使用できます
 `use_gpu` |  トレーニングに GPU を使用するには、このフラグを `True` に設定します。 既定値は `False` です
@@ -100,13 +102,9 @@ run = exp.submit(pt_est)
 ```
 
 ## <a name="examples"></a>例
-単一ノードの PyTorch トレーニングについては、次のチュートリアルを参照してください。
-* [training/01.train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/training/01.train-hyperparameter-tune-deploy-with-pytorch)
 
-Horovod を使用した分散 PyTorch については、次のチュートリアルを参照してください。
-* [training/02.distributed-pytorch-with-horovod](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/02.distributed-pytorch-with-horovod)
-
-これらの notebook を入手してください。
+分散型ディープ ラーニングのノートブックについては、次のページを参照してください。
+* [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

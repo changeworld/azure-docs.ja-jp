@@ -7,17 +7,17 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: juliemsft
+ms.author: jrasnick
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 95e09532616b4aff05dad7440dcda6872fd27484
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b2312534cdd63f5672f6b2294e3aef6b50be229a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645526"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600048"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Azure SQL Database でのクエリのパフォーマンスを手動でチューニングする
 
@@ -258,7 +258,7 @@ Azure SQL Database 内でスケールアウト アーキテクチャを使用す
 
 ### <a name="application-tier-caching"></a>アプリケーション層のキャッシュ
 
-一部のデータベース アプリケーションでは、ワークロードの大半が読み取りになります。 キャッシュ層を利用すれば、データベースの負荷を減らすことができます。また、Azure SQL Database を使用してデータベースをサポートするために必要なコンピューティング サイズを下げられる可能性があります。 [Azure Redis Cache](https://azure.microsoft.com/services/cache/) を利用すると、読み取りが多いワークロードがある場合に、データを 1 回 (または、構成方法に応じてアプリケーション層コンピューターごとに 1 回) 読み込んでから、SQL データベースの外部にそのデータを格納することができます。 この方法は、データベースの負荷 (CPU と読み取り IO) を減らすことができるものの、トランザクションの整合性に影響があります。データがキャッシュから読み込まれると、データベースのデータとの同期が失われることがあるためです。 多くのアプリケーションではある程度の不整合が許容されますが、すべてのワークロードで許容されるとは限りません。 アプリケーション層のキャッシュ手法を実装する前に、あらゆるアプリケーション要件を完全に理解しておく必要があります。
+一部のデータベース アプリケーションでは、ワークロードの大半が読み取りになります。 キャッシュ層を利用すれば、データベースの負荷を減らすことができます。また、Azure SQL Database を使用してデータベースをサポートするために必要なコンピューティング サイズを下げられる可能性があります。 [Azure Cache for Redis](https://azure.microsoft.com/services/cache/) を利用すると、読み取りが多いワークロードがある場合に、データを 1 回 (または、構成方法に応じてアプリケーション層コンピューターごとに 1 回) 読み込んでから、SQL データベースの外部にそのデータを格納することができます。 この方法は、データベースの負荷 (CPU と読み取り IO) を減らすことができるものの、トランザクションの整合性に影響があります。データがキャッシュから読み込まれると、データベースのデータとの同期が失われることがあるためです。 多くのアプリケーションではある程度の不整合が許容されますが、すべてのワークロードで許容されるとは限りません。 アプリケーション層のキャッシュ手法を実装する前に、あらゆるアプリケーション要件を完全に理解しておく必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

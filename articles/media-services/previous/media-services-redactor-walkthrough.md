@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.openlocfilehash: d7a6abaeff0e939ed9e299e16e2fe59b65127aba
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 81618446930a23a7ea713da19bb7c63a06d135ed
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785961"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162443"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics での顔編集チュートリアル
 
@@ -35,7 +35,7 @@ ms.locfileid: "33785961"
 
 ## <a name="azure-media-services-explorer-workflow"></a>Azure Media Services Explorer のワークフロー
 
-Redactor の使用を開始する最も簡単な方法は、github のオープン ソース AMSE ツールを使用することです。 注釈 json または顔の jpg イメージにアクセスする必要がない場合は、**結合**モードによる簡略化されたワークフローを実行できます。
+Redactor の使用を開始する最も簡単な方法は、GitHub のオープン ソース AMSE ツールを使用することです。 注釈 json または顔の jpg イメージにアクセスする必要がない場合は、**結合**モードによる簡略化されたワークフローを実行できます。
 
 ### <a name="download-and-setup"></a>ダウンロードとセットアップ
 

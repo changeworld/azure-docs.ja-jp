@@ -6,37 +6,37 @@ manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
-ms.assetid: d72848e2-4b65-4c84-94bc-e2a90a6e7f47
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: 1f37dcd14c1b3e85c3fae3bbf7aa67c16b8a898d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3eea59eba9fc1fc79a6f72a61860ee7e66a7df5b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249018"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994277"
 ---
 # <a name="input-metadata"></a>入力メタデータ
+
 エンコード ジョブは、エンコーディング タスクを実行する入力資産に関連付けられています。  タスクが完了すると、出力資産が生成されます。  出力資産には、ビデオ、オーディオ、サムネイル、マニフェストなどが含まれます。この出力資産には、入力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ XML ファイルの名前は、&lt;asset_id&gt;_metadata.xml という形式になっています (たとえば、41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml)。ここで、&lt;asset_id&gt; は入力資産の AssetId の値です。  
+
+Media Services は、メタデータを生成するために入力資産を事前にスキャンできません。 入力メタデータは、入力資産がジョブで処理されるときに、成果物としてのみ生成されます。 そのため、この成果物は、出力資産に書き込まれます。 入力資産と出力資産のメタデータを生成するには、さまざまなツールが使用されます。 したがって、入力メタデータには、出力メタデータとは若干異なるスキーマがあります。
 
 メタデータ ファイルを確認したい場合は、**SAS** ロケータ―を作成してファイルをローカル コンピューターにダウンロードできます。 SAS ロケータ―を作成してファイルをダウンロードする方法の例については、[Media Services .NET SDK Extensions の使用](media-services-dotnet-get-started.md)に関するページをご覧ください。  
 
 この記事では、入力メタデータ (&lt;asset_id&gt;_metadata.xml) が基づく XML スキーマの要素と種類について説明します。  出力資産に関するメタデータを含むファイルについては、「[Output Metadata (出力メタデータ)](media-services-output-metadata-schema.md)」を参照してください。  
 
-> [!NOTE]
-> [スキーマ コード](media-services-input-metadata-schema.md#code)と [XML の例](media-services-input-metadata-schema.md#xml)は、この記事の最後で紹介します。  
-> 
-> 
+[スキーマ コード](media-services-input-metadata-schema.md#code)と [XML の例](media-services-input-metadata-schema.md#xml)は、この記事の最後で紹介します。  
+ 
 
 ## <a name="AssetFiles"></a> AssetFiles 要素 (ルート要素)
 エンコード ジョブの [AssetFile 要素](media-services-input-metadata-schema.md#AssetFile)のコレクションが含まれます。  
 
-XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 | Name | 説明 |
 | --- | --- |
@@ -45,18 +45,18 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 ## <a name="AssetFile"></a> AssetFile 要素
  資産ファイルについて記述する属性と要素が含まれます。  
 
- XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+ XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
 | --- | --- | --- |
 | **名前**<br /><br /> 必須 |**xs:string** |資産ファイルの名前。 |
 | **サイズ**<br /><br /> 必須 |**xs:long** |資産ファイルのサイズ (バイト単位)。 |
-| **Duration**<br /><br /> 必須 |**xs:duration** |コンテンツの再生時間。 例: Duration="PT25M37.757S"。 |
+| **Duration**<br /><br /> 必須 |**xs:duration** |コンテンツの再生時間。 例:Duration="PT25M37.757S"。 |
 | **NumberOfStreams**<br /><br /> 必須 |**xs:int** |資産ファイル内のストリーム数。 |
 | **FormatNames**<br /><br /> 必須 |**xs: string** |形式の名前。 |
 | **FormatVerboseNames**<br /><br /> 必須 |**xs: string** |形式の詳細な名前。 |
-| **StartTime** |**xs:duration** |コンテンツの開始時刻。 例: StartTime="PT2.669S"。 |
+| **StartTime** |**xs:duration** |コンテンツの開始時刻。 例:StartTime="PT2.669S"。 |
 | **OverallBitRate** |**xs: int** |資産ファイルの平均ビットレート (kbps 単位)。 |
 
 > [!NOTE]
@@ -73,7 +73,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 | **Metadata**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |キー\値文字列として表される資産ファイルのメタデータ。 例: <br /><br /> **&lt;Metadata key="language" value="eng" /&gt;** |
 
 ## <a name="TrackType"></a> TrackType
-XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
@@ -81,10 +81,10 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 | **Id**<br /><br /> 必須 |**xs:int** |このオーディオまたはビデオ トラックの 0 から始まるインデックス。<br /><br /> 必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **Codec** |**xs:string** |ビデオ トラック コーデック文字列。 |
 | **CodecLongName** |**xs: string** |オーディオまたはビデオ トラック コーデックの長い名前。 |
-| **TimeBase**<br /><br /> 必須 |**xs:string** |時間ベース。 例: TimeBase="1/48000" |
+| **TimeBase**<br /><br /> 必須 |**xs:string** |時間ベース。 例:TimeBase="1/48000" |
 | **NumberOfFrames** |**xs:int** |フレームの数。 |
-| **StartTime** |**xs: duration** |トラックの開始時刻。 例: StartTime="PT2.669S" |
-| **Duration** |**xs:duration** |トラックの時間。 例: Duration="PTSampleFormat M37.757S"。 |
+| **StartTime** |**xs: duration** |トラックの開始時刻。 例:StartTime="PT2.669S" |
+| **Duration** |**xs:duration** |トラックの時間。 例:Duration="PTSampleFormat M37.757S"。 |
 
 > [!NOTE]
 > 次の 2 つの子要素は順番に表示されます。  
@@ -102,7 +102,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 
  型は、資産ファイル内の特定のオーディオ トラックを表します。  
 
- XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+ XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
@@ -119,7 +119,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 
 型は、資産ファイル内の特定のビデオ トラックを表します。  
 
-XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
@@ -143,7 +143,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 ## <a name="MetadataType"></a> MetadataType
 **MetadataType** は、資産ファイルのメタデータをキー/値文字列として記述する、グローバルな複合型です。 例: key=”language”、value=”eng”。  
 
-XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
@@ -167,7 +167,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 ## <a name="StreamDispositionType"></a> StreamDispositionType
 **StreamDispositionType** は、ストリームを記述するグローバルな複合型です。  
 
-XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
@@ -195,7 +195,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 ## <a name="VideoTracks"></a> VideoTracks 要素
  複数の **VideoTrack** 要素が保持されているラッパー要素。  
 
- XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+ XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
 | Name | type | 説明 |
@@ -205,7 +205,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 ## <a name="AudioTracks"></a> AudioTracks 要素
  複数の **AudioTrack** 要素が保持されているラッパー要素。  
 
- XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+ XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="elements"></a>要素
 | Name | type | 説明 |

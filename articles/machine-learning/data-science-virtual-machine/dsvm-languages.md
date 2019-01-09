@@ -1,11 +1,13 @@
 ---
-title: Azure でのデータ サイエンス仮想マシン用言語 | Microsoft Docs
-description: Azure でのデータ サイエンス仮想マシン用言語
+title: Data Science Virtual Machine でサポートされている言語
+titleSuffix: Azure
+description: Data Science Virtual Machine にプレインストールされているプログラム言語および関連ツールについて説明します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 411729155f5135c7e45588b69995274c9cac1315
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8cc5d1a2d78179624ee1ba17482e9d1892625d6f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418317"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104290"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでサポートされている言語 
 
@@ -191,7 +193,7 @@ R は、すべてのユーザーが読み取り可能なグローバル環境で
 | ------------- | ------------- |
 | サポートされている言語バージョン | 0.6 |
 | サポートされている DSVM エディション      | Linux、Windows     |
-| DSVM での構成/インストール方法  | Windows: `C:\JuliaPro-VERSION` にインストールされます<br /> Linux: `/opt/JuliaPro-VERSION` にインストールされます    |
+| DSVM での構成/インストール方法  | Windows:`C:\JuliaPro-VERSION` にインストール<br /> Linux:`/opt/JuliaPro-VERSION` にインストール    |
 | サンプルへのリンク      | Julia 用のサンプル Jupyter ノートブックが含まれています     |
 | DSVM 上の関連ツール      | Python、R      |
 ### <a name="how-to-use--run-it"></a>使用/実行方法    

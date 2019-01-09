@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: 4a5cb7d15627ac3e48b72567ec3740377b2a0264
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 6989fe88fa17bcd99c99ee3e82d82fb403d1aae4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365672"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096708"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
 セキュリティを重視する大規模な組織は、Office 365 などのクラウド サービスへの移行を望んでいますが、ユーザーが承認済みリソースにしかアクセスできないことを認識しておく必要があります。 従来より、企業ではアクセスを管理するときにドメイン名や IP アドレスを制限しています。 この方法は、SaaS アプリがパブリック クラウドでホストされ、outlook.office.com や login.microsoftonline.com などの共有ドメイン名で実行されている世界では失敗します。 これらのアドレスをブロックすると、ユーザーを承認済みの ID やリソースに単に制限するのではなく、ユーザーは Web 上の Outlook にまったくアクセスできなくなります。
 
-この課題を解決する Azure Active Directory のソリューションがテナント制限と呼ばれる機能です。 テナント制限を使用すると、組織はアプリケーションがシングル サインオンに使用する Azure AD テナントに基づいて、SaaS クラウド アプリケーションへのアクセスを制御できます。 たとえば、自分の組織の Office 365 アプリケーションへのアクセスは許可し、これらの同じアプリケーションの他の組織のインスタンスにはアクセスできないようにすることが可能です。  
+この課題を解決する Azure Active Directory のソリューションがテナント制限と呼ばれる機能です。 テナント制限を使用すると、組織はアプリケーションがシングル サインオンに使用する Azure AD テナントに基づいて、SaaS クラウド アプリケーションへのアクセスを制御できます。 たとえば、自分の組織の Office 365 アプリケーションへのアクセスは許可し、これらの同じアプリケーションの他の組織のインスタンスにはアクセスできないようにすることが可能です。  
 
 テナント制限では、組織はユーザーがアクセスを許可されているテナントのリストを指定できます。 Azure AD は、これらの許可されているテナントへのアクセスだけを許可します。
 
@@ -34,13 +34,13 @@ ms.locfileid: "39365672"
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-全体的なソリューションは、次のコンポーネントで構成されます。 
+全体的なソリューションは、次のコンポーネントで構成されます。 
 
-1. **Azure AD** - `Restrict-Access-To-Tenants: <permitted tenant list>` が存在する場合、Azure AD は許可されているテナントのセキュリティ トークンのみを発行します。 
+1. **Azure AD** - `Restrict-Access-To-Tenants: <permitted tenant list>` が存在する場合、Azure AD は許可されているテナントのセキュリティ トークンのみを発行します。 
 
-2. **オンプレミスのプロキシ サーバー インフラストラクチャ** - 許可されているテナントのリストが含まれたヘッダーを Azure AD へのトラフィックに挿入するように構成された、SSL 検査に対応するプロキシ デバイス。 
+2. **オンプレミスのプロキシ サーバー インフラストラクチャ** - 許可されているテナントのリストが含まれたヘッダーを Azure AD へのトラフィックに挿入するように構成された、SSL 検査に対応するプロキシ デバイス。 
 
-3. **クライアント ソフトウェア** - テナント制限をサポートするには、クライアント ソフトウェアが Azure AD から直接トークンを要求する必要があるので、プロキシ インフラストラクチャによってトラフィックをインターセプトできます。 現在、テナント制限は、ブラウザー ベースの Office 365 アプリケーションと、最新の認証 (OAuth 2.0 など) を使用している場合の Office クライアントでサポートされています。 
+3. **クライアント ソフトウェア** - テナント制限をサポートするには、クライアント ソフトウェアが Azure AD から直接トークンを要求する必要があるので、プロキシ インフラストラクチャによってトラフィックをインターセプトできます。 現在、テナント制限は、ブラウザー ベースの Office 365 アプリケーションと、最新の認証 (OAuth 2.0 など) を使用している場合の Office クライアントでサポートされています。 
 
 4. **最新の認証** - テナント制限を使用し、許可されていないすべてのテナントへのアクセスをブロックするには、クラウド サービスで最新の認証を使用する必要があります。 Office 365 クラウド サービスは、既定で最新の認証プロトコルを使用するように構成する必要があります。 Office 365 による最新の認証のサポートに関する最新情報については、「[Updated Office 365 modern authentication (Office 365 の最新の認証の更新)](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)」をご覧ください。
 
@@ -54,7 +54,7 @@ ms.locfileid: "39365672"
 
 ### <a name="urls-and-ip-addresses"></a>URL と IP アドレス
 
-テナント制限を使用するには、クライアントは認証のために、login.microsoftonline.com、login.microsoft.com、login.windows.net の各 Azure AD URL に接続できる必要があります。 さらに、Office 365 にアクセスするために、クライアントは「[Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」で定義されている FQDN/URL と IP アドレスにも接続できる必要があります。 
+テナント制限を使用するには、クライアントは認証のために、login.microsoftonline.com、login.microsoft.com、login.windows.net の各 Azure AD URL に接続できる必要があります。 さらに、Office 365 にアクセスするために、クライアントは「[Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」で定義されている FQDN/URL と IP アドレスにも接続できる必要があります。 
 
 ### <a name="proxy-configuration-and-requirements"></a>プロキシの構成と要件
 
@@ -62,7 +62,7 @@ ms.locfileid: "39365672"
 
 #### <a name="prerequisites"></a>前提条件
 
-- プロキシは、SSL インターセプト、HTTP ヘッダーの挿入、FQDN/URL を使用した送信先のフィルター処理を実行できる必要があります。 
+- プロキシは、SSL インターセプト、HTTP ヘッダーの挿入、FQDN/URL を使用した送信先のフィルター処理を実行できる必要があります。 
 
 - クライアントは、SSL 通信でプロキシによって提示される証明書チェーンを信頼する必要があります。 たとえば、内部 PKI の証明書を使用する場合、内部発行のルート証明機関証明書を信頼する必要があります。
 
@@ -72,14 +72,14 @@ ms.locfileid: "39365672"
 
 login.microsoftonline.com、login.microsoft.com、login.windows.net への各受信要求で、*Restrict-Access-To-Tenants* と *Restrict-Access-Context* の 2 つの HTTP ヘッダーを挿入します。
 
-これらのヘッダーには、次の要素を含める必要があります。 
-- *Restrict-Access-To-Tenants* には、値として\<許可されているテナント リスト\>を含めます。これは、ユーザーにアクセスを許可するテナントのコンマ区切りリストです。 テナントに登録されているドメインを使用して、このリストのテナントを識別できます。 たとえば、Contoso と Fabrikam の両方のテナントへのアクセスを許可する場合、名前と値のペアは `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` のようになります。 
-- *Restrict-Access-Context* には、値として 1 つのディレクトリ ID を含めます。この ID によって、テナント制限を設定するテナントを宣言します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言する場合、名前と値のペアは `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。  
+これらのヘッダーには、次の要素を含める必要があります。 
+- *Restrict-Access-To-Tenants* には、値として\<許可されているテナント リスト\>を含めます。これは、ユーザーにアクセスを許可するテナントのコンマ区切りリストです。 テナントに登録されているドメインを使用して、このリストのテナントを識別できます。 たとえば、Contoso と Fabrikam の両方のテナントへのアクセスを許可する場合、名前と値のペアは   `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` のようになります。 
+- *Restrict-Access-Context* には、値として 1 つのディレクトリ ID を含めます。この ID によって、テナント制限を設定するテナントを宣言します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言する場合、名前と値のペアは  `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。  
 
 > [!TIP]
 > ディレクトリ ID は [Azure Portal](https://portal.azure.com) で確認できます。 管理者としてサインインし、**[Azure Active Directory]** を選択して、**[プロパティ]** を選択します。
 
-ユーザーが未承認のテナントを含む独自の HTTP ヘッダーを挿入するのを防ぐために、プロキシは受信要求に Restrict-Access-To-Tenants ヘッダーが既に存在する場合にそのヘッダーを置き換える必要があります。 
+ユーザーが未承認のテナントを含む独自の HTTP ヘッダーを挿入するのを防ぐために、プロキシは受信要求に Restrict-Access-To-Tenants ヘッダーが既に存在する場合にそのヘッダーを置き換える必要があります。 
 
 login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべての要求にプロキシを使用することをクライアントに強制する必要があります。 たとえば、PAC ファイルを使用してクライアントにプロキシを使用するよう指示する場合、エンド ユーザーが PAC ファイルを編集したり無効にしたりできないようにする必要があります。
 
@@ -116,7 +116,7 @@ Azure Portal の他のレポートと同様に、フィルターを使用して�
 
 最新の認証をサポートする Outlook クライアントと Skype for Business クライアントでは、最新の認証が有効になっていないテナントに対して従来のプロトコルを引き続き使用できる可能性があるため、テナント制限を実質的に迂回します。 認証時に login.microsoftonline.com、login.microsoft.com、または login.windows.net に接続する場合、従来のプロトコルを使用するアプリケーションは、テナントの制限によってブロックされる可能性があります。
 
-Windows 上の Outlook の場合、エンド ユーザーが未承認の電子メール アカウントをプロファイルに追加できないようにする制限を実装することもできます。 例については、[既定以外の Exchange アカウントを追加できないようにする](http://gpsearch.azurewebsites.net/default.aspx?ref=1)グループ ポリシー設定に関するページをご覧ください。
+Windows 上の Outlook の場合、エンド ユーザーが未承認の電子メール アカウントをプロファイルに追加できないようにする制限を実装することもできます。 例については、[既定以外の Exchange アカウントを追加できないようにする](https://gpsearch.azurewebsites.net/default.aspx?ref=1)グループ ポリシー設定に関するページをご覧ください。
 
 ## <a name="testing"></a>テスト
 
@@ -126,21 +126,21 @@ Windows 上の Outlook の場合、エンド ユーザーが未承認の電子�
 
 Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用して HTTP/HTTPS トラフィックをキャプチャし、トラフィックを変更 (HTTP ヘッダーの挿入など) できます。 Fiddler を構成してテナント制限をテストするには、次の手順を実行します。
 
-1.  [Fiddler をダウンロードしてインストール](http://www.telerik.com/fiddler)します。
-2.  [Fiddler のヘルプ ドキュメント](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)に従って、HTTPS トラフィックを復号化するように Fiddler を構成します。
+1.  [Fiddler をダウンロードしてインストール](https://www.telerik.com/fiddler)します。
+2.  [Fiddler のヘルプ ドキュメント](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)に従って、HTTPS トラフィックを復号化するように Fiddler を構成します。
 3.  カスタム ルールを使用して、*Restrict-Access-To-Tenants* と *Restrict-Access-Context* の各ヘッダーを挿入するように Fiddler を構成します。
-  1. Fiddler Web Debugger ツールで、**[Rules]** メニューを選択し、**[Customize Rules…]** を選択して CustomRules ファイルを開きます。
-  2. *OnBeforeRequest* 関数の先頭に次の行を追加します。 \<tenant domain\> を、テナントに登録されているドメイン (contoso.onmicrosoft.com など) に置き換えます。 \<directory ID\> を、テナントの Azure AD GUID 識別子に置き換えます。
+    1. Fiddler Web Debugger ツールで、**[Rules]** メニューを選択し、**[Customize Rules…]** を選択して CustomRules ファイルを開きます。
+    2. *OnBeforeRequest* 関数の先頭に次の行を追加します。 \<tenant domain\> を、テナントに登録されているドメイン (contoso.onmicrosoft.com など) に置き換えます。 \<directory ID\> を、テナントの Azure AD GUID 識別子に置き換えます。
 
-  ```
-  if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
-  ```
+    ```
+    if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
+    ```
 
-  複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 例: 
+    複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 例: 
 
-  ```
-  oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";
-  ```
+    ```
+    oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";
+    ```
 
 4. CustomRules ファイルを保存して閉じます。
 

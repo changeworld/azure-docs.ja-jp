@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388322"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017101"
 ---
 # <a name="trusted-internet-connections-guidance"></a>信頼できるインターネット接続のガイダンス
 
@@ -43,7 +43,7 @@ Azure サービスに接続するとき、主なオプションが 3 つあり�
 - 直接インターネット接続: オープンなインターネット接続を介して Azure サービスに直接接続します。 媒体と接続はパブリックです。 プライバシーの確保はアプリケーションとトランスポートのレベルの暗号化に依存します。 帯域幅は、インターネットへのサイトの接続状態によって制限されます。 複数のアクティブなプロバイダーを使用して、回復性を確保します。
 - 仮想プライベート ネットワーク (VPN): VPN ゲートウェイを使って、Azure 仮想ネットワークにプライベートに接続します。
 サイトの標準インターネット接続を通過するため媒体はパブリックですが、トンネルの接続は暗号化されてプライバシーが確保されます。 帯域幅の上限は、選択した VPN デバイスと構成に依存します。 通常、Azure のポイント対サイト接続は 100 Mbps に制限され、サイト対サイト接続は 1.25 Gbps に制限されます。
-- Microsoft Azure ExpressRoute: ExpressRoute は Microsoft のサービスに直接接続します。 分離されたファイバー チャネルを介するため、この接続は、使用される構成に基づいてパブリックまたはプライベートになります。 帯域幅は一般的に最大 10 Gbps に制限されます。
+- Azure ExpressRoute: ExpressRoute の場合、Microsoft のサービスに直接接続します。 分離されたファイバー チャネルを介するため、この接続は、使用される構成に基づいてパブリックまたはプライベートになります。 帯域幅は一般的に最大 10 Gbps に制限されます。
 
 DHS の "Trusted Internet Connections (TIC) Reference Architecture Document, Version 2.0" で指定されている TIC 付録 H (クラウドに関する考慮事項) 要件は、複数の方法で満たすことができます。 この記事では、DHS TIC ガイダンスを **TIC 2.0** と呼びます。
 
@@ -63,8 +63,8 @@ TIC 参照アーキテクチャに準拠するための主な要件は、仮想�
 
 Azure IaaS TIC コンプライアンスは大きく 2 つの手順に分かれます。
 
-- ステップ 1: 構成。
-- ステップ 2: 監査。
+- 手順 1: 構成。
+- 手順 2: 監査。
 
 ### <a name="azure-iaas-tic-compliance-configuration"></a>Azure IaaS TIC コンプライアンス: 構成
 
@@ -85,7 +85,7 @@ Azure では、システム ルートが自動的に作成され、仮想ネッ�
 
 ![TIC のトンネリング強制](media/tic-diagram-c.png)
 
-すべてのトラフィックが D/A TIC を通過するには、仮想ネットワークから出るすべてのトラフィックがオンプレミス接続を確実に通過するようにします。 カスタム ルートを作成するには、ユーザー定義ルートを作成するか、オンプレミス ネットワーク ゲートウェイと Azure VPN ゲートウェイの間で Border Gateway Protocol (BGP) ルートを交換します。 ユーザー定義のルートについて詳しくは、[仮想ネットワーク トラフィック ルーティングのユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined)に関するページをご覧ください。 BGP について詳しくは、[仮想ネットワーク トラフィック ルーティングの Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol) に関するページをご覧ください。
+すべてのトラフィックが D/A TIC を通過するには、仮想ネットワークから出るすべてのトラフィックがオンプレミス接続を確実に通過するようにします。 カスタム ルートを作成するには、ユーザー定義ルートを作成するか、オンプレミス ネットワーク ゲートウェイと Azure VPN ゲートウェイの間で Border Gateway Protocol (BGP) ルートを交換します。 ユーザー定義のルートについて詳しくは、[仮想ネットワーク トラフィックのルーティングのユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined)に関するページをご覧ください。 BGP について詳しくは、[仮想ネットワーク トラフィックのルーティングの Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol) に関するページをご覧ください。
 
 #### <a name="add-user-defined-routes"></a>ユーザー定義ルートを追加する
 
@@ -125,7 +125,7 @@ Azure Storage などの Azure PaaS サービスにはインターネットでア
 Azure PaaS サービスが仮想ネットワークと統合されると、その仮想ネットワークからサービスにプライベート アクセスできます。 ユーザー定義ルートまたは BGP 経由で、0.0.0.0/0 に対するカスタム ルーティングを適用できます。 カスタム ルーティングにより、インターネットに送信されるすべてのトラフィックがオンプレミスにルーティングされて TIC を走査することが確実になります。 仮想ネットワークに Azure サービスを統合するには、次のパターンを使用します。
 
 - **サービスの専用インスタンスをデプロイする**: 仮想ネットワーク接続エンドポイントを使用し、専用インスタンスとしてデプロイできる PaaS サービスが増えています。 PowerApps 用 App Service Environment を "分離" モードでデプロイし、ネットワーク エンドポイントを仮想ネットワークに制約することができます。 App Service Environment は、Azure Web Apps、Azure API Management、Azure Functions など、多くの Azure PaaS サービスをホストできます。
-- **仮想ネットワーク サービス エンドポイントを使用する**: エンドポイントをパブリック アドレスではなく仮想ネットワーク プライベート IP に移動できる PaaS サービスが増えています。
+- **仮想ネットワーク サービス エンドポイントを使用する**: エンドポイントをパブリック アドレスではなく仮想ネットワークのプライベート IP に移動できる PaaS サービスが増えています。
 
 2018 年 5 月の時点で、仮想ネットワークへの専用インスタンスのデプロイまたはサービス エンドポイントの使用をサポートしているサービスを、次の表に示します。
 
@@ -157,7 +157,7 @@ Azure PaaS サービスが仮想ネットワークと統合されると、その
 |Azure Active Directory                | 一般公開               |
 |Azure Batch                           | 一般公開               |
 |App Service 環境               | 一般公開               |
-|Azure Redis Cache                     | 一般公開               |
+|Azure Cache for Redis                     | 一般公開               |
 |Azure HDInsight                       | 一般公開               |
 |仮想マシン スケール セット             | 一般公開               |
 |Azure クラウド サービス                  | 一般公開               |
@@ -245,14 +245,14 @@ Network Watcher によって監視されているリージョン内のネット�
 
 2018 年 5 月に記述されて定義された TIC 2.0 付録 H ガイダンスに準拠するように、Microsoft Azure、Office 365、Dynamics 365 に対するアクセスを簡単に構成できます。 Microsoft は、TIC ガイダンスが変更される可能性があることを認識しています。 Microsoft は、新しいガイダンスがリリースされたときにお客様がすぐにガイダンスに対応できるよう努めています。
 
-## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>付録: 一般的なワークロードの信頼できるインターネット接続のパターン
+## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>付録: 一般的なワークロード向けの Trusted Internet Connections のパターン
 
 | Category | ワークロード | IaaS | 専用 PaaS/仮想ネットワーク挿入  | サービス エンドポイント  |
 |---------|---------|---------|---------|--------|
-| コンピューティング | Azure Linux 仮想マシン | [はい] | | |
-| コンピューティング | Azure Windows ウィンドウ | [はい] | | |
-| コンピューティング | 仮想マシン スケール セット | [はい] | | |
-| コンピューティング | Azure Functions | | App Service 環境 | |
+| Compute | Azure Linux 仮想マシン | [はい] | | |
+| Compute | Azure Windows ウィンドウ | [はい] | | |
+| Compute | 仮想マシン スケール セット | [はい] | | |
+| Compute | Azure Functions | | App Service 環境 | |
 | Web とモバイル | 内部 Web アプリケーション | | App Service 環境| |
 | Web とモバイル | 内部モバイル アプリケーション | | App Service 環境 | |
 | Web とモバイル | API アプリケーション | | App Service 環境 | |
@@ -263,7 +263,7 @@ Network Watcher によって監視されているリージョン内のネット�
 | Database | Azure Database for PostgreSQL | | | [はい] |
 | Database | Azure SQL Data Warehouse | | | [はい] |
 | Database | Azure Cosmos DB | | | [はい] |
-| Database | Azure Redis Cache | | [はい] | |
+| Database | Azure Cache for Redis | | [はい] | |
 | Storage | Azure BLOB ストレージ | [はい] | | |
 | Storage | Azure Files | [はい] | | |
 | Storage | Azure Queue Storage | [はい] | | |

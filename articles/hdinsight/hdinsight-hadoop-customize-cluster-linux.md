@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5ef7ddc068fea7703dad67b80b96c292bfd26943
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279730"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870709"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
 
@@ -31,8 +31,8 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ドメイン参加済みの HDInsight クラスターを使用している場合、このクラスターでスクリプト アクションを使用するには次の 2 つの Ambari アクセス許可が必要になります。
 
-* **AMBARI.RUN\_CUSTOM\_COMMAND**: Ambari の管理者ロールは、既定でこのアクセス許可を持っています。
-* **CLUSTER.RUN\_CUSTOM\_COMMAND**: HDInsight クラスターの管理者および Ambari の管理者は、既定でこのアクセス許可を持っています。
+* **AMBARI.RUN\_CUSTOM\_COMMAND**: Ambari の管理者ロールには、既定でこのアクセス許可があります。
+* **CLUSTER.RUN\_CUSTOM\_COMMAND**: HDInsight クラスターの管理者と Ambari の管理者はいずれも、既定でこのアクセス許可を持っています。
 
 ドメイン参加済みの HDInsight でのアクセス許可の設定については、[ドメイン参加済みの HDInsight クラスターの管理](./domain-joined/apache-domain-joined-manage.md) に関する記事を参照してください。
 
@@ -53,7 +53,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 * HDInsight クラスターからアクセスできる URI に保存されている必要があります。 たとえば保存スペースとして、次の場所を使用できます。
 
-    * HDInsight クラスターからアクセス可能な **Azure Data Lake Store** アカウント。 HDInsight での Azure Data Lake Store の使用については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」を参照してください。
+    * HDInsight クラスターからアクセス可能な **Azure Data Lake Store** アカウント。 HDInsight での Azure Data Lake Store の使用については、「[Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」(クイック スタート: HDInsight のクラスターを設定する) を参照してください。
 
         Data Lake Store に保管しているスクリプトを使用する場合、URI の形式は `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` になります。
 
@@ -111,7 +111,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 スクリプトは HDInsight の構成中に実行されます。 スクリプトは、クラスター内の指定されたすべてのノードで並列して実行され、それらのノードに対するルート権限で実行されます。
 
 > [!NOTE]
-> サービスの停止と開始などの操作を実行できます (Hadoop 関連のサービスも含みます)。 サービスを停止する場合は、スクリプトが完了する前に Ambari サービスや他の Hadoop 関連のサービスが実行していることを確認する必要があります。 これらのサービスでは、クラスターの作成時にクラスターが正常に稼動しているかどうかを確認する必要があります。
+> サービスの停止と開始などの操作も行うことができます (Apache Hadoop 関連のサービスも含みます)。 サービスを停止する場合は、スクリプトが完了する前に Ambari サービスや他の Hadoop 関連のサービスが実行していることを確認する必要があります。 これらのサービスでは、クラスターの作成時にクラスターが正常に稼動しているかどうかを確認する必要があります。
 
 
 クラスターの作成時に、指定された順序で呼び出される 複数のスクリプト アクションを指定できます。
@@ -168,7 +168,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>クラスターの作成時に Azure Portal からスクリプト アクションを使用する
 
-1. [HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md) に関する記事の説明に従って、クラスターの作成を開始します。 クラスターの作成時に、__[クラスターの概要]__ ページが表示されます。 __[クラスターの概要]__ ページで、__[詳細設定]__ の __[編集]__ リンクを選択します。
+1. [HDInsight での Apache Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md) に関する記事の説明に従って、クラスターの作成を開始します。 クラスターの作成時に、__[クラスターの概要]__ ページが表示されます。 __[クラスターの概要]__ ページで、__[詳細設定]__ の __[編集]__ リンクを選択します。
 
     ![[詳細設定] リンク](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 
@@ -402,17 +402,17 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>HDInsight クラスターで使用するオープン ソース ソフトウェアのサポート
 
-Microsoft Azure HDInsight サービスは Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用します。 Microsoft Azure は、オープン ソース テクノロジの一般的なレベルのサポートを提供します。 詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」の**サポート範囲**に関するセクションを参照してください。 HDInsight サービスでは、組み込みのコンポーネントに対してさらに高いレベルのサポートを提供しています。
+Microsoft Azure HDInsight サービスは Apache Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用します。 Microsoft Azure は、オープン ソース テクノロジの一般的なレベルのサポートを提供します。 詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」の**サポート範囲**に関するセクションを参照してください。 HDInsight サービスでは、組み込みのコンポーネントに対してさらに高いレベルのサポートを提供しています。
 
 HDInsight サービスで利用できるオープン ソース コンポーネントには、2 つの種類があります。
 
-* **組み込みコンポーネント** - これらのコンポーネントは、HDInsight クラスターにプレインストールされており、クラスターの主要な機能を提供します。 たとえば、YARN リソース マネージャー、Hive クエリ言語 (HiveQL)、Mahout ライブラリなどがこのカテゴリに属します。 クラスター コンポーネントの完全な一覧は、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」から入手できます。
+* **組み込みコンポーネント** - これらのコンポーネントは、HDInsight クラスターにプレインストールされており、クラスターの主要な機能を提供します。 たとえば、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ResourceManager、Hive クエリ言語 ([HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual))、[Apache Mahout](https://mahout.apache.org/) ライブラリなどがこのカテゴリに属します。 クラスター コンポーネントの完全な一覧は、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」から入手できます。
 * **カスタム コンポーネント** - クラスターのユーザーは、コミュニティで入手できるコンポーネントや自作のコンポーネントを、インストールするか、ワークロード内で使用することができます。
 
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、 これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、次のような数多くのコミュニティ サイトを利用できます: [HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)、[http://stackoverflow.com](http://stackoverflow.com)。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 HDInsight サービスでは、カスタム コンポーネントを使用する方法をいくつか用意しています。 コンポーネントの用途やクラスターへのインストール方法にかかわらず、同じレベルのサポートが適用されます。 以下は、HDInsight クラスターでのカスタム コンポーネントの用途として、最も一般的な方法の一覧です。
 
@@ -426,7 +426,7 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 Ambari の Web UI を使用すると、スクリプト アクションによってログに記録された情報を表示できます。 クラスターの作成中にスクリプトでエラーが発生した場合は、クラスターに関連付けられた既定のストレージ アカウントのログを利用することもできます。 このセクションでは、これら両方のオプションを使用してログを取得する方法について説明します。
 
-### <a name="using-the-ambari-web-ui"></a>Ambari Web UI を使用する
+### <a name="using-the-apache-ambari-web-ui"></a>Apache Ambari Web UI の使用
 
 1. ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスします。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
 
@@ -479,7 +479,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 ### <a name="cant-import-name-blobservice"></a>名前 BlobService をインポートできない
 
-__現象__: スクリプトの操作が失敗します。 Ambari で操作を表示すると、次のエラーに似たテキストが表示されます。
+__症状__: スクリプト操作が失敗します。 Ambari で操作を表示すると、次のエラーに似たテキストが表示されます。
 
 ```
 Traceback (most recent call list):
@@ -513,8 +513,8 @@ SSH を使用してクラスターに接続する方法については、[HDInsi
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions-linux.md)
-* [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
-* [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
+* [HDInsight クラスターに Apache Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
+* [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
 * [HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター作成時の段階"

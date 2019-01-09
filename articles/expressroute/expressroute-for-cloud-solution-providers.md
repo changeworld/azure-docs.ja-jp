@@ -1,25 +1,19 @@
 ---
-title: クラウド ソリューション プロバイダー向けの Azure ExpressRoute | Microsoft Docs
-description: この記事では、Azure サービスと ExpressRoute を独自のサービスに組み込むことを希望するクラウド サービス プロバイダー向けに情報を提供します。
-documentationcenter: na
+title: クラウド ソリューション プロバイダー向け ExpressRoute - Azure | Microsoft Docs
+description: この記事では、Azure サービスと ExpressRoute を独自のサービスに組み込むことを希望するクラウド ソリューション プロバイダー向けに情報を提供します。
 services: expressroute
 author: richcar
-manager: carmonm
-editor: ''
-ms.assetid: f6c5f8ee-40ba-41a1-ae31-67669ca419a6
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: article
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: 9991da5d5ab6f43cc8c5ebf1672d7da0f1ad061e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.custom: seodec18
+ms.openlocfilehash: 842654f860a94481b53ebf9732fc4ed8be24cf4a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405706"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077513"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
 Microsoft では、新たな開発投資を行わずに顧客向けの新しいサービスやソリューションを迅速にプロビジョニングできる、従来のリセラーおよび代理店 (CSP) 向けの超大規模サービスを提供しています。 このような新しいサービスをクラウド ソリューション プロバイダー (CSP) が直接管理できるようにするため、Microsoft では、CSP が顧客に代わって Microsoft Azure のリソースを管理するために利用できるプログラムや API を用意しています。 ExpressRoute は、そのようなリソースの 1 つです。 ExpressRoute を利用することで、CSP は既存の顧客リソースを Azure サービスに接続できます。 ExpressRoute とは、Azure のサービスにリンクする高速プライベート通信です。 
@@ -37,7 +31,7 @@ Microsoft Azure には顧客向けに提供できるさまざまなサービス�
 Microsoft では、プログラムによって独自のサービス管理システムに統合することで Azure 顧客サブスクリプションを管理できる API を、CSP 向けに提供しています。 サポートされている管理機能は [こちら](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx)から確認できます。
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure リソースの管理
-サブスクリプションの管理方法は、顧客との契約内容によって異なります。 CSP がリソースの作成とメンテナンスを直接管理することもできますが、顧客が Microsoft Azure サブスクリプションを制御し、必要に応じて Azure リソースを作成することもできます。 顧客が Microsoft Azure サブスクリプションでのリソースの作成を管理する場合、"*Connect-Through*" モデルと "*Connect-To*" モデルという 2 つのモデルのいずれかを使用することになります。 以降のセクションで、これらのモデルの詳細について説明します。  
+サブスクリプションの管理方法は、顧客との契約内容によって異なります。 CSP がリソースの作成とメンテナンスを直接管理することもできますが、顧客が Microsoft Azure サブスクリプションを制御し、必要に応じて Azure リソースを作成することもできます。 顧客が Microsoft Azure サブスクリプションでのリソースの作成を管理する場合、"*Connect-Through*" モデルと "*Direct-To*" モデルという 2 つのモデルのいずれかを使用することになります。 以降のセクションで、これらのモデルの詳細について説明します。  
 
 ### <a name="connect-through-model"></a>Connect-Through モデル
 ![alt text](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -94,7 +88,7 @@ Connect-To の構成では、顧客は Azure への接続を既に確保して�
 ## <a name="expressroute-routing-domains"></a>ExpressRoute のルーティング ドメイン
 ExpressRoute では、パブリック ピアリング、プライベート ピアリング、Microsoft ピアリングという 3 つのルーティング ドメインを提供します。 各ルーティング ドメインは、高可用性を実現するため、同一のルーターを使用してアクティブ/アクティブ構成で構成されます。 ExpressRoute ルーティング ドメインの詳細については、 [こちら](expressroute-circuit-peerings.md)を参照してください。
 
-必要なルートのみを許可するようにカスタム ルート フィルターを定義することができます。 詳細や、このような変更を加える方法については、「 [PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更](expressroute-howto-routing-classic.md) 」を参照し、ルーティング フィルターの詳細を確認してください。
+必要なルートのみを許可するようにカスタム ルート フィルターを定義することができます。 これらの変更を行う方法や詳細については、[PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更](expressroute-howto-routing-classic.md)に関する記事でルーティング フィルターの詳細を参照してください。
 
 > [!NOTE]
 > Microsoft ピアリングとパブリック ピアリングの接続は、顧客または CSP が所有するパブリック IP アドレスを介したものであることが必要で、また定義されているすべてのルールに従う必要があります。 詳細については、「 [ExpressRoute の前提条件](expressroute-prerequisites.md) 」を参照してください。  

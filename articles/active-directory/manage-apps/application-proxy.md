@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 428f094dae2b9a69b58912190d2959a7dfc467ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ec5c75b5de912988efeb5167107f6d0dfe07da2e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365264"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139958"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法
 
@@ -59,16 +59,16 @@ Azure AD アプリケーション プロキシを使用すると、次のよう�
 * Active Directory Authentication Library (ADAL) と統合されるリッチ クライアント アプリ
 
 ## <a name="how-does-application-proxy-work"></a>アプリケーション プロキシのしくみ
-アプリケーション プロキシを動作させるために構成する必要がある 2 つのコンポーネントは、コネクタと外部エンドポイントです。 
+アプリケーション プロキシを動作させるために構成する必要がある 2 つのコンポーネントは、コネクタとエンドポイントです。 
 
 コネクタは、ネットワーク内の Windows Server 上に置かれる軽量エージェントです。 コネクタは、クラウド内のアプリケーション プロキシ サービスからオンプレミスのアプリケーションへのトラフィック フローを促進します。 発信接続のみ使用するため、受信ポートを開いたり、DMZ に配置したりする必要はありません。 コネクタはステートレスで、必要に応じて情報がクラウドから取得されます。 負荷分散や認証の方法など、コネクタについて詳しくは、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-connectors.md)」をご覧ください。 
 
-外部エンドポイントは、ユーザーがネットワークの外部からアプリケーションに到達する方法です。 決定した外部 URL に直接移動するか、MyApps ポータルからアプリケーションにアクセスすることができます。 ユーザーは、これらのエンドポイントの 1 つに移動すると、Azure AD で認証され、コネクタを介してオンプレミスのアプリケーションにルーティングされます。
+エンドポイントにできるのは、URL または[エンド ユーザー ポータル](end-user-experiences.md)です。 ユーザーは、外部 URL にアクセスすることによって、ネットワークの外部にいてもアプリケーションに到達できます。 ネットワーク内のユーザーは、URL またはエンド ユーザー ポータルからアプリケーションにアクセスできます。 ユーザーは、これらのエンドポイントの 1 つに移動すると、Azure AD で認証され、コネクタを介してオンプレミスのアプリケーションにルーティングされます。
 
  ![Azure AD アプリケーション プロキシ ダイアグラム](./media/application-proxy/azureappproxxy.png)
 
-1. ユーザーがアプリケーション プロキシ サービス経由でアプリケーションにアクセスすると、認証のための Azure AD サインイン ページが表示されます。
-2. サインインに成功するとトークンが生成され、クライアント デバイスに送信されます。
+1. エンドポイントを介してアプリケーションにアクセスしたユーザーは、Azure AD のサインイン ページに送られます。 
+2. サインインに成功するとトークンが生成されて、ユーザーのクライアント デバイスに送信されます。
 3. クライアントはここでアプリケーション プロキシ サービスにトークンを送信します。アプリケーション プロキシ サービスは、そのトークンからユーザー プリンシパル名 (UPN) とセキュリティ プリンシパル名 (SPN) を取得し、アプリケーション プロキシ コネクタに要求を送信します。
 4. シングル サインオンを構成した場合、コネクタはユーザーの代わりに必要な追加の認証を実行します。
 5. コネクタはオンプレミスのアプリケーションに要求を送信します。  
@@ -88,8 +88,8 @@ Kerberos について詳しくは、「[All you want to know about Kerberos Cons
 
 アプリケーション プロキシは 2 ステップで開始します。
 
-1. [アプリケーション プロキシを有効にしてコネクタを構成する](application-proxy-enable.md)。    
-2. [アプリケーションを発行する。](application-proxy-publish-azure-portal.md) ウィザードを使ってオンプレミスのアプリを発行し、リモートからアクセスできるようにします。
+1. [アプリケーション プロキシを有効にしてコネクタを構成する](application-proxy-add-on-premises-application.md)。    
+2. [アプリケーションを発行する。](application-proxy-add-on-premises-application.md) ウィザードを使ってオンプレミスのアプリを発行し、リモートからアクセスできるようにします。
 
 ## <a name="whats-next"></a>次の手順
 最初のアプリを発行した後、アプリケーション プロキシを使ってできることは他にもたくさんあります。
@@ -100,5 +100,5 @@ Kerberos について詳しくは、「[All you want to know about Kerberos Cons
 * [既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md) 
 * [カスタム ホーム ページを設定する](application-proxy-configure-custom-home-page.md)
 
-最新のニュースと更新プログラムについては、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
+最新のニュースと更新プログラムについては、 [アプリケーション プロキシに関するブログ](https://blogs.technet.com/b/applicationproxyblog/)
 

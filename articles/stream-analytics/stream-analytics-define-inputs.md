@@ -4,17 +4,17 @@ description: Azure Stream Analytics でデータ接続を設定する方法に�
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/27/2018
-ms.openlocfilehash: 2bd2a90c6bac280b6f68bde378b7f7d32b7fcd38
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 66e57d95125bd6404ec23302e4c336ab0b71ea78
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248747"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099734"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
 
@@ -29,7 +29,7 @@ Stream Analytics は、Azure データ ストリームとの統合にきわめ�
 Stream Analytics では、すべてのデータ ストリーム入力ソースにわたる圧縮がサポートされています。 現在サポートされている参照の種類は、[なし]、[GZip]、[Deflate] 圧縮です。 参照データの圧縮はサポートされていません。 入力形式が、圧縮された Avro データである場合、透過的に処理されます。 Avro のシリアル化に圧縮の種類を指定する必要はありません。 
 
 ## <a name="create-edit-or-test-inputs"></a>入力の作成、編集、またはテスト
-[Azure Portal](https://portal.azure.com) を使用して、ストリーミング ジョブに[新しい入力を作成](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job)したり、既存の入力を表示 (または編集) したりできます。 サンプル データからの入力接続のテストと[クエリのテスト](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query)も実行できます。 クエリを記述する際は、FROM 句に入力の一覧を指定します。 ポータルの **[クエリ]** ページで、使用できる入力の一覧を取得できます。 複数の入力を使用する場合は、それらを `JOIN` するか、複数の `SELECT` クエリを記述します。
+[Azure Portal](https://portal.azure.com) を使用して、ストリーミング ジョブに[新しい入力を作成](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-job-input)したり、既存の入力を表示 (または編集) したりできます。 サンプル データからの入力接続のテストと[クエリのテスト](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query)も実行できます。 クエリを記述する際は、FROM 句に入力の一覧を指定します。 ポータルの **[クエリ]** ページで、使用できる入力の一覧を取得できます。 複数の入力を使用する場合は、それらを `JOIN` するか、複数の `SELECT` クエリを記述します。
 
 
 ## <a name="stream-data-from-event-hubs"></a>Event Hubs からのデータのストリーム配信
@@ -171,7 +171,7 @@ FROM Input
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
-> [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
+> [クイック スタート:Azure portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

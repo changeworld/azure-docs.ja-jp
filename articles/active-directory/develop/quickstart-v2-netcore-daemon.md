@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 11/28/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7c920782810cc8b7b302799a5bab53a737b11c0a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3e5e364e9c3327e9d666a9a3096573267d0e1983
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853446"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727610"
 ---
-# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>クイック スタート: トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
+# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -38,19 +38,19 @@ ms.locfileid: "52853446"
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
 
-> [!div renderon="portal" class="sxs-lookup"]
+> [!div renderon="docs" class="sxs-lookup"]
+>
 > クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。
 > * [簡易] [選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [手動] [選択肢 2: アプリケーションとコード サンプルを登録して手動で構成する](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * [手動] [選択肢 2: アプリケーションを登録し、コード サンプルを手動で構成する](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. [Azure portal の [アプリケーションの登録 (プレビュー)]](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs) に移動します。
+> 1. [Azure portal の [アプリケーションの登録 (プレビュー)]](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs) に移動します。
 > 1. アプリケーションの名前を入力し、**[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選択肢 2: アプリケーションとコード サンプルを登録して手動で構成する
->
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>オプション 2:アプリケーションを登録し、アプリケーションとコード サンプルを手動で構成する
 
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
@@ -67,7 +67,9 @@ ms.locfileid: "52853446"
 > 1. **[ユーザー]** ノードで、**[User.Read.All]** を選択し、**[アクセス許可の追加]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
+> ### <a name="download-and-configure-your-quickstart-app"></a>クイックスタート アプリをダウンロードして構成する
+> 
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>ステップ 1:Azure portal でのアプリケーションの構成
 > このクイック スタート用サンプル コードを動作させるには、クライアント シークレットを作成し、Graph API の **User.Read.All** アプリケーションのアクセス許可を追加します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
@@ -75,11 +77,11 @@ ms.locfileid: "52853446"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-windows-desktop/green-check.png) アプリケーションはこれらの属性で構成されています。
 
-#### <a name="step-2-download-your-visual-studio-project"></a>手順 2: Visual Studio プロジェクトのダウンロード
+#### <a name="step-2-download-your-visual-studio-project"></a>手順 2:Visual Studio プロジェクトのダウンロード
 
 [Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3: Visual Studio プロジェクトの構成
+#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
 
 1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
 1. Visual Studio でソリューション **daemon-console.sln** を開きます (省略可能)。
@@ -99,10 +101,11 @@ ms.locfileid: "52853446"
     >> * `Enter_the_Tenant_Id_Here` - この値を **テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
     >> * `Enter_the_Client_Secret_Here` - この値を手順 1 で作成されたクライアント シークレットに置き換えます。
 
+    > [!div renderon="docs"]
     > > [!TIP]
     > > **アプリケーション (クライアント) ID** と**ディレクトリ (テナント) ID** の値を見つけるには、Azure portal 上でアプリの **[概要]** ページに移動します。 新しいキーを生成するには、**[証明書とシークレット]** ページに移動します。
     
-#### <a name="step-4-admin-consent"></a>手順 4: 管理者の同意
+#### <a name="step-4-admin-consent"></a>手順 4:管理者の同意
 
 すべての "*アプリ専用のアクセス許可*" には管理者の同意が必要です。これは、ディレクトリのグローバル管理者にお使いのアプリケーションに同意してもらう必要があることを意味します。 ご自身のロールに応じて、次のオプションのいずれかを選択します。
 
@@ -130,9 +133,9 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 >> * `Enter_the_Application_Id_Here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
 
 > [!NOTE]
-> 前の URL を使用してアプリに同意を与えた後でエラー "*AADSTS50011: No reply address is registered for the application*" (AADSTS50011: アプリケーションの応答アドレスが登録されていません) が表示される場合があります。 これは、このアプリケーションと URL にはリダイレクト URI がないために発生します。このエラーは無視してください。
+> 前の URL を使用してアプリに同意を与えた後でエラー "*AADSTS50011:No reply address is registered for the application*" (AADSTS50011: アプリケーションの応答アドレスが登録されていません) が表示される場合があります。 これは、このアプリケーションと URL にはリダイレクト URI がないために発生します。このエラーは無視してください。
 
-#### <a name="step-5-run-the-application"></a>手順 5: アプリケーションの実行
+#### <a name="step-5-run-the-application"></a>手順 5:アプリケーションの実行
 
 Visual Studio を使用している場合は、**F5** キーを押してアプリケーションを実行します。それ以外の場合、コマンド プロンプトまたはコンソールを使用してアプリケーションを実行します。
 

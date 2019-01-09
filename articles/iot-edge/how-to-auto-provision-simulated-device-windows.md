@@ -1,5 +1,5 @@
 ---
-title: DPS を使用して Azure IoT Edge の自動プロビジョニングを行う - Windows | Microsoft Docs
+title: DPS を使用した Windows デバイスの自動プロビジョニング - Azure IoT Edge | Microsoft Docs
 description: Windows マシン上でシミュレートされたデバイスを使用して、デバイス プロビジョニング サービスで Azure IoT Edge の自動デバイス プロビジョニングをテストします
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9be790d9b512dc9338cf183240430ad0ada3bef4
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: a251eb3915ee3043ab4b69e0cd4cef8fa2170486
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565107"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101604"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Windows 上のシミュレートされた TPM Edge デバイスの作成とプロビジョニング
 

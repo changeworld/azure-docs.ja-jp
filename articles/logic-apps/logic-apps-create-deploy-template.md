@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 393543bbb1891e14ed67487aff26a7bda1eebcd5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304239"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000565"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>ロジック アプリをデプロイするための Azure Resource Manager テンプレートの作成
 
@@ -27,11 +27,11 @@ Resource Manager テンプレートの詳細については、「[Azure Resource
 
 ロジック アプリには、次の 3 つの基本的なコンポーネントがあります。
 
-* **ロジック アプリ リソース**: 価格設定計画、場所、ワークフロー定義などの情報が含まれています。
-* **ワークフロー定義**: ロジック アプリのワークフローの手順と、Logic Apps エンジンでのワークフローの実行方法を説明しています。
+* **ロジック アプリ リソース**:価格設定計画、場所、ワークフロー定義などの情報が含まれています。
+* **ワークフロー定義**:ロジック アプリのワークフローの手順と、Logic Apps エンジンでのワークフローの実行方法を説明しています。
 この定義はロジック アプリの **[コード ビュー]** ウィンドウで確認できます。
 ロジック アプリ リソースでは、`definition` プロパティでこの定義を確認できます。
-* **接続**: 接続文字列やアクセス トークンなど、コネクタ接続関連のメタデータを安全に保存するための個別のリソースです。
+* **接続**:接続文字列やアクセス トークンなど、コネクタ接続関連のメタデータを安全に保存するための個別のリソースです。
 ロジック アプリ リソースでは、`parameters` セクションでこれらのリソースが参照されます。
 
 以上のコンポーネントを既存のロジック アプリで参照する場合、[Azure リソース エクスプローラー](http://resources.azure.com)などのツールを利用できます。
@@ -173,7 +173,7 @@ parameters は次のように使用します。
 
 ## <a name="deploy-a-logic-app-template"></a>ロジック アプリ テンプレートをデプロイする
 
-PowerShell、REST API、[Azure DevOps Release Management](#team-services)、Azure portal を介したテンプレート デプロイなど、さまざまなツールを使用して、テンプレートをデプロイできます。
+PowerShell、REST API、[Azure DevOps Azure Pipelines](#team-services)、Azure portal を介したテンプレート デプロイなど、さまざまなツールを使用して、テンプレートをデプロイできます。
 パラメーターの値を保存するため、[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)の作成も推奨されます。
 詳しくは、「[Azure Resource Manager テンプレートと PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)」または「[Azure Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-portal.md)」をご覧ください。
 
@@ -185,11 +185,11 @@ OAuth 接続を承認するには、Logic Apps デザイナーでロジック �
 例として、 [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) プロジェクトの GitHub のスクリプトがあります。
 
 <a name="team-services"></a>
-## <a name="azure-devops-release-management"></a>Azure DevOps Release Management
+## <a name="azure-devops-azure-pipelines"></a>Azure DevOps Azure Pipelines
 
-環境をデプロイし、管理する一般的なシナリオは、Azure DevOps の Release Management のようなツールを ロジック アプリ デプロイ テンプレートと共に使用することです。 Azure DevOps に含まれる [Deploy Azure Resource Group (Azure リソース グループのデプロイ)](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) タスクは、あらゆるビルドまたはリリース パイプラインに追加できます。 認証には[サービス プリンシパル](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)をデプロイする必要があります。その後、リリース パイプラインを生成できます。
+環境をデプロイし、管理する一般的なシナリオは、Azure DevOps の Azure Pipelines のようなツールをロジック アプリ デプロイ テンプレートと共に使用することです。 Azure DevOps に含まれる [Deploy Azure Resource Group (Azure リソース グループのデプロイ)](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) タスクは、あらゆるビルドまたはリリース パイプラインに追加できます。 認証には[サービス プリンシパル](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)をデプロイする必要があります。その後、リリース パイプラインを生成できます。
 
-1. Release Management で、**[空]** を選択して空のパイプラインを作成します。
+1. Azure Pipelines で、**[空]** を選択して空のパイプラインを作成します。
 
     ![空のパイプラインを作成する][1]
 

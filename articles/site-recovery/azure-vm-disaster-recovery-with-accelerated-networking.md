@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: bb4a3f433f213984c4c351439760ddd3327cda73
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ff772d4f53b279d8d048720beaa62cfdeb6401eb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353138"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850416"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>高速ネットワークと Azure 仮想マシンのディザスター リカバリー
 
@@ -41,9 +41,9 @@ Azure ギャラリーでは次のディストリビューションが既定で�
 * **Windows Server 2012 R2 Datacenter**
 
 ### <a name="supported-vm-instances"></a>サポートされている VM インスタンス
-高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。  サポートされているシリーズは、D/DSv2 と F/Fs です
+高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。  サポートされているシリーズは、D/DSv2 と F/Fs です。
 
-ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 サポートされているシリーズは、D/DSv3、E/ESv3、Fsv2、Ms/Mms です
+ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 サポートされている系列は、D/DSv3、E/ESv3、Fsv2、Ms/Mms です。
 
 VM インスタンスの詳細については、[Windows VM のサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
 
@@ -62,9 +62,9 @@ Azure ギャラリーでは次のディストリビューションが既定で�
 * **Oracle Linux 7.4**
 
 ### <a name="supported-vm-instances"></a>サポートされている VM インスタンス
-高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。  サポートされているシリーズは、D/DSv2 と F/Fs です
+高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。  サポートされているシリーズは、D/DSv2 と F/Fs です。
 
-ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 サポートされているシリーズは、D/DSv3、E/ESv3、Fsv2、Ms/Mms です。
+ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 サポートされている系列は、D/DSv3、E/ESv3、Fsv2、Ms/Mms です。
 
 VM インスタンスの詳細については、「[Linux 仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 

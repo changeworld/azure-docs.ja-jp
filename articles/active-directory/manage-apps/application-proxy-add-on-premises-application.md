@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 444fb5576ed6886e5919202cf7f22ef14e1255b5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8f76c53964d062db76ea7d40cdb0ced2d015fc79
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321411"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716012"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -39,9 +39,9 @@ Azure Active Directory (Azure AD) のアプリケーション プロキシ サ�
 * アプリケーション管理者アカウント。
 
 ### <a name="windows-server"></a>Windows サーバー
-追加しているアプリケーションはオンプレミスなので、Windows Server 2012 R2 以降が実行されていて、アプリケーション プロキシ コネクタをインストールできる Windows サーバーが必要です。 このコネクタ サーバーは、Azure 内のアプリケーション プロキシ サービスと、公開予定のオンプレミス アプリケーションに接続する必要があります。
+アプリケーション プロキシを使用するには、Windows Server 2012 R2 以降を実行している Windows サーバーが必要です。 アプリケーション プロキシ コネクタをサーバーにインストールしてください。 このコネクタ サーバーは、Azure 内のアプリケーション プロキシ サービスと、公開予定のオンプレミス アプリケーションに接続する必要があります。
 
-運用環境を高可用性にするため、複数の Windows サーバーを使用することをお勧めします。  このチュートリアルでは、1 つの Windows サーバーで十分です。
+運用環境を高可用性にするため、複数の Windows サーバーを使用することをお勧めします。 このチュートリアルでは、1 つの Windows サーバーで十分です。
 
 **コネクタ サーバーの推奨事項**
 
@@ -89,11 +89,11 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
 | URL | 用途 |
 | --- | --- |
-| \*.msappproxy.net<br>servicebus.windows.net | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
+| \*.msappproxy.net<br>\*.servicebus.windows.net | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure では、これらの URL を使用して証明書が検証されます |
 | login.windows.net<br>login.microsoftonline.com | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
 
-ファイアウォールまたはプロキシが DNS ホワイトリストを許可している場合は、msappproxy.net と servicebus.windows.net への接続をホワイトリストに登録できます。 そうでない場合は、毎週更新される [Azure DataCenter IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。
+ファイアウォールまたはプロキシで DNS ホワイトリストが許可されている場合は、\*.msappproxy.net and \*.servicebus.windows.net への接続をホワイトリストに登録できます。 該当しない場合は、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。 IP 範囲は毎週更新されます。
 
 ## <a name="install-and-register-a-connector"></a>コネクタのインストールと登録
 アプリケーション プロキシを使用するには、アプリケーション プロキシ サービスで使用するように選択した各 Windows サーバーに、コネクタをインストールする必要があります。 コネクタは、オンプレミスのアプリケーション サーバーから Azure AD のアプリケーション プロキシへのアウトバウンド接続を管理するエージェントです。 コネクタをインストールするサーバーには、Azure AD Connect などの他の認証エージェントがインストールされていてもかまいません。
@@ -119,7 +119,7 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
 コネクタ、能力計画、コネクタを最新の状態に維持する方法については、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-connectors.md)」をご覧ください。 
 
-アプリケーションで接続に Websocket を使用する場合は、最新のコネクタがインストールされていることを確認します。  Websocket は、コネクタのバージョン 1.5.612.0 以降でサポートされています。
+Qlik Sense アプリケーションを使用する場合は、常に最新のコネクタをインストールしてください。 Qlik Sense では WebSockets が使用されますが、これは 1.5.612.0 以降のバージョンのコネクタでのみサポートされます。
 
 
 ## <a name="verify-the-connector-installed-and-registered-correctly"></a>コネクタが正しくインストールおよび登録されていることを確認する
@@ -162,7 +162,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 
     ![独自のアプリケーションの追加](./media/application-proxy-publish-azure-portal/add-your-own.png)
 
-4. アプリケーションについて以下の情報を入力します。
+4. **[独自のオンプレミスのアプリケーションの追加]** ブレードで、アプリケーションに関する次の情報を指定します。
 
     ![アプリケーションの作成](./media/application-proxy-publish-azure-portal/configure-app.png)
 
@@ -171,20 +171,18 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
     | **名前** | アクセス パネルと Azure portal に表示されるアプリケーションの名前。 |
     | **内部 URL** | プライベート ネットワークの内部からアプリケーションにアクセスするための URL。 バックエンド サーバー上の特定のパスを指定して発行できます。この場合、サーバーのそれ以外のパスは発行されません。 この方法では、同じサーバー上の複数のサイトを別々のアプリとして発行し、それぞれに独自の名前とアクセス規則を付与することができます。<br><br>パスを発行する場合は、アプリケーションに必要な画像、スクリプト、スタイル シートが、すべてそのパスに含まれていることを確認してください。 たとえば、アプリが https://yourapp/app にあり、 https://yourapp/media にあるイメージを使用している場合、 https://yourapp/ をパスとして発行する必要があります。 この内部 URL は、ユーザーに表示されるランディング ページである必要はありません。 詳細については、「[発行されたアプリのカスタム ホーム ページを設定する](application-proxy-configure-custom-home-page.md)」を参照してください。 |
     | **外部 URL** | ユーザーがネットワークの外部からアプリにアクセスするためのアドレス。 既定のアプリケーション プロキシ ドメインを使用しない場合は、[Azure AD アプリケーション プロキシのカスタム ドメイン](application-proxy-configure-custom-domain.md)に関する記事を参照してください。|
-    | **事前認証** | ユーザーにアプリケーションへのアクセス権を付与する前にアプリケーション プロキシがユーザーを認証する方法。<br><br>**Azure Active Directory** - アプリケーション プロキシによってユーザーが Azure AD のサインイン ページにリダイレクトされます。これにより、ディレクトリとアプリケーションに対するユーザーのアクセス許可が認証されます。 このオプションは、条件付きアクセスや Multi-Factor Authentication などの Azure AD のセキュリティ機能を活用できるように、既定のままにしておくことをお勧めします。<br><br>**パススルー** - アプリケーションにアクセスするための Azure Active Directory に対するユーザーの認証は必要ありません。 ただし、バックエンドで認証要件を設定できます。 |
+    | **事前認証** | ユーザーにアプリケーションへのアクセス権を付与する前にアプリケーション プロキシがユーザーを認証する方法。<br><br>**Azure Active Directory** - アプリケーション プロキシによってユーザーが Azure AD のサインイン ページにリダイレクトされます。これにより、ディレクトリとアプリケーションに対するユーザーのアクセス許可が認証されます。 このオプションは、条件付きアクセスや Multi-Factor Authentication などの Azure AD のセキュリティ機能を活用できるように、既定のままにしておくことをお勧めします。 Microsoft Cloud Application Security を使用してアプリケーションを監視するには、**Azure Active Directory** が必要です。<br><br>**パススルー** - アプリケーションにアクセスするための Azure Active Directory に対するユーザーの認証は必要ありません。 ただし、バックエンドで認証要件を設定できます。 |
     | **コネクタ グループ** | コネクタは、アプリケーションへのリモート アクセスを処理します。コネクタ グループを使用して、コネクタとアプリをリージョン、ネットワーク、または目的別に整理できます。 まだコネクタ グループを作成していない場合、アプリは **[既定]** グループに割り当てられます。<br><br>アプリケーションで接続に Websocket を使用する場合は、グループ内のすべてのコネクタがバージョン 1.5.612.0 以降である必要があります。|
 
-5. 必要に応じて、追加設定を構成します。 ほとんどのアプリケーションでは、これらの設定は既定の状態のままにしてください。 
-
-    ![アプリケーションの作成](./media/application-proxy-publish-azure-portal/additional-settings.png)
+5. 必要に応じて、**追加設定**を構成します。 ほとんどのアプリケーションでは、これらの設定は既定の状態のままにしてください。 
 
     | フィールド | 説明 |
     | :---- | :---------- |
     | **バックエンド アプリケーションのタイムアウト** | アプリケーションの認証と接続に時間がかかる場合のみ、この値を **[遅い]** に設定します。 |
-    | **HTTP 専用 Cookie を使用する** | アプリケーション プロキシ Cookie に HTTP 応答ヘッダーの HTTPOnly フラグを含めるには、この値を **[はい]** に設定します。 リモート デスクトップ サービスを使用している場合は、**[いいえ]** に設定します。|
-    | **セキュリティで保護された Cookie を使用します**| Cookie が暗号化された HTTPS 要求のようなセキュリティ保護されたチャネル経由でのみ伝送されるようにするには、この値を **[はい]** に設定します。
+    | **HTTP 専用 Cookie を使用する** | アプリケーション プロキシ Cookie に HTTP 応答ヘッダーの HTTPOnly フラグを含めるには、この値を **[はい]** に設定します。 リモート デスクトップ サービスを使用している場合は、この値を **[いいえ]** に設定します。|
+    | **セキュリティで保護された Cookie を使用します**| 暗号化された HTTPS 要求などのセキュリティ保護されたチャネル経由で Cookie を送信するために、この値を **[はい]** に設定します。
     | **ヘッダーの URL を変換する** | 認証要求でアプリケーションの元のホスト ヘッダーが必要でない場合を除き、この値は **[はい]** のままにします。 |
-    | **Translate URLs in Application Body (アプリケーションの本文内の URL を変換する)** | 他のオンプレミス アプリケーションへのハードコーディングされた HTML リングがあり、カスタム ドメインを使用しない場合を除き、この値は **[いいえ]** のままにします。 詳細については、[Azure AD アプリケーション プロキシを使用したリンクの変換](application-proxy-configure-hard-coded-link-translation.md)に関する記事を参照してください。 |
+    | **Translate URLs in Application Body (アプリケーションの本文内の URL を変換する)** | 他のオンプレミス アプリケーションへのハードコーディングされた HTML リングがあり、カスタム ドメインを使用しない場合を除き、この値は **[いいえ]** のままにします。 詳細については、[Azure AD アプリケーション プロキシを使用したリンクの変換](application-proxy-configure-hard-coded-link-translation.md)に関する記事を参照してください。<br><br>このアプリケーションを Microsoft Cloud App Security (MCAS) を使用して監視する予定の場合は、この値を **[はい]** に設定します。 詳しくは、「[Configure real-time application access monitoring with Microsoft Cloud App Security and Azure Active Directory (Microsoft Cloud App Security と Azure Active Directory を使用してリアルタイムでのアプリケーション アクセスの監視を構成する)](application-proxy-integrate-with-microsoft-cloud-application-security.md)」をご覧ください。 |
    
 
 
@@ -192,7 +190,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 
 ## <a name="test-the-application"></a>アプリケーションをテストする
 
-アプリが正しく追加されたことをテストするには、アプリケーションにユーザー アカウントを追加し、サインインしてみます。 
+アプリケーションが正しく追加されることをテストする準備ができました。 次の手順で、アプリケーションにユーザー アカウントを追加し、サインインしてみます。
 
 ### <a name="add-a-user-for-testing"></a>テスト用のユーザーを追加する
 アプリケーションにユーザーを追加する前に、企業ネットワーク内からアプリケーションにアクセスするためのアクセス許可がユーザー アカウントに既にあることを確認します。
@@ -215,14 +213,15 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 アプリケーションへのサインオンをテストするには:
 
 1. ブラウザーで、発行手順中に構成した外部 URL に移動します。 
-2. スタート画面が表示され、設定したテスト アカウントでサインインできるはずです。
+2. スタート画面が表示されます。
+3. 前のセクションで作成したユーザーとしてサインインしてみます。
 
     ![発行したアプリのテスト](./media/application-proxy-publish-azure-portal/test-app.png)
 
 トラブルシューティングについては、「[アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](application-proxy-troubleshoot.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、オンプレミス環境をアプリケーション プロキシで動作するように準備した後、アプリケーション プロキシ コネクタをインストールして登録しました。 次に、Azure AD テナントにアプリケーションを追加し、Azure AD アカウントでアプリケーションにサインオンして動作することを確認しました。
+このチュートリアルでは、オンプレミス環境をアプリケーション プロキシで動作するように準備した後、アプリケーション プロキシ コネクタをインストールして登録しました。 次に、Azure AD テナントにアプリケーションを追加しました。 ユーザーが Azure AD アカウントを使用してアプリケーションにサインオンできることを確認しました。
 
 以下のことを行いました。
 > [!div class="checklist"]
@@ -232,7 +231,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 > * Azure AD テナントにオンプレミスのアプリケーションを追加しました
 > * テスト ユーザーが Azure AD アカウントを使用してアプリケーションにサインオンできることを確認しました。
 
-これで、シングル サインオン用にアプリケーションを構成する準備が整いました。 複数のシングル サインオン方法があり、最適な方法の選択は、アプリケーションを認証する方法に依存します。 次のリンクは、アプリケーションに適したシングル サインオン チュートリアルを探すのに役立ちます。
+シングル サインオン用にアプリケーションを構成する準備が整いました。 次のリンクを使用してシングル サインオン方法を選択し、シングル サインオンのチュートリアルを見つけてください。 
 
 > [!div class="nextstepaction"]
 >[シングル サインオンの構成](what-is-single-sign-on.md#choosing-a-single-sign-on-method)

@@ -1,20 +1,21 @@
 ---
-title: Node.js を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs
-description: Node.js を使用した Event Hubs へのイベントの送信について説明します
+title: Node.js を使用してイベントを送信する - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs からイベントを送信する Node.js アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 10/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 14ea98b9d31bee08b962e8b3801ed507472ba692
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: c75d4404cb0892c3d90261af2fb4982ac84041c4
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455795"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163788"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>Node.js を使用して Azure Event Hubs にイベントを送信する
 
@@ -34,6 +35,8 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順を実行した後、このチュートリアルに示されている手順に進みます。
+
+次の記事の手順に従って、イベント ハブ名前空間用の接続文字列を取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このチュートリアルの中で、その接続文字列が後で必要になります。
 
 ## <a name="clone-the-sample-git-repository"></a>サンプル Git リポジトリを複製する
 サンプルの Git リポジトリを [GitHub](https://github.com/Azure/azure-event-hubs-node) からお使いのコンピューターに複製します。 

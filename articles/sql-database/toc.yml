@@ -25,9 +25,9 @@ items:
       href: sql-database-managed-instance-configure-p2s.md
   - name: データを読み込む
     items:
-    - name: 単一データベースへの BACPAC のインポート
+    - name: BACPAC を新しいデータベースにインポートする
       href: sql-database-import.md
-    - name: マネージド インスタンスへのデータベース バックアップの復元
+    - name: データベース バックアップをマネージド インスタンスに復元する
       href: sql-database-managed-instance-get-started-restore.md
   - name: クエリ
     href: sql-database-connect-query.md
@@ -680,9 +680,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: fd0ffff6220f967e064cd300596402a8aaf60ceb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 501f10b734fe3d7fbd576ba2131b84a5b04681d0
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033385"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077727"

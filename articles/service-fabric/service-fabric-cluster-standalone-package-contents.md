@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: afb6c8345cd71e7d39b7f3a0b2307c99cf31b449
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a34ad340463faf0cdccdb7fa8b87283de60b4cc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253338"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141613"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージの内容
 [ダウンロードした](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。
@@ -40,6 +40,7 @@ ms.locfileid: "51253338"
 | Tools\ServiceFabricUpdateService.zip |インターネットにアクセスできないクラスターのコードの自動アップグレードを有効にするために使用するツールです。 詳細については、 [こちら](service-fabric-cluster-upgrade-windows-server.md)|
 
 **テンプレート** 
+
 | **ファイル名** | **簡単な説明** |
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.json |クラスター構成サンプル ファイル。3 つのノードと 1 つのマシン (または仮想マシン) を持つ、セキュリティで保護されていない開発クラスターの設定 (クラスター内の各ノードの情報を含む) が含まれています。 |

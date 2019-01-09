@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 71ecffebe095fd325837aeb1d6e741a2f3321aea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 88952d09672fb4dd2d31878d56a59cb425f53de2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421840"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850450"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>チュートリアル: Azure Active Directory と Mimecast Personal Portal の統合
 
@@ -139,7 +139,7 @@ Mimecast Personal Portal で Azure AD のシングル サインオンを構成�
     | オフショア        | `https://jer-api.mimecast.com/login/saml`|
     
     > [!NOTE] 
-    > この識別子の値は実際のものではありません。 この値を実際の識別子で更新してください。 この値を取得するには、[Mimecast Personal Portal クライアント サポート チーム](http://www.mimecast.com/customer-success/technical-support/)にお問い合わせください。 
+    > この識別子の値は実際のものではありません。 この値を実際の識別子で更新してください。 この値を取得するには、[Mimecast Personal Portal クライアント サポート チーム](https://www.mimecast.com/customer-success/technical-support/)にお問い合わせください。 
 
 1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -293,7 +293,7 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Mimecast Personal Portal のタイルをクリックすると、Mimecast Personal Portal アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

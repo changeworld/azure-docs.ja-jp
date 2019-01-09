@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 24b7e03808cb5df9fa4c122ca4c9317f723dac72
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5ac64f61d1c7879c578a1b6994a6918a7aa28a2e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414643"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017050"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する
 
@@ -28,7 +28,9 @@ ms.locfileid: "50414643"
 
 ## <a name="create-a-static-ip-address"></a>静的 IP アドレスを作成する
 
-AKS で使用する静的パブリック IP アドレスを作成する場合 その IP アドレス リソースは **ノード**リソース グループに作成する必要があります。 [az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、 `--query nodeResourceGroup`クエリ パラメーターを追加します｡ 次の例では、リソース グループ名 *myResourceGroup* にある AKS クラスター名のノード リソース グループ *myAKSCluster* を取得しています｡
+AKS で使用する静的パブリック IP アドレスを作成する場合、その IP アドレスのリソースは**ノード** リソース グループ内に作成する必要があります。 これらのリソースを分離する場合は、「[ノード リソース グループの外で静的 IP アドレスを使用する](#use-a-static-ip-address-outside-of-the-node-resource-group)」を参照してください。
+
+[az aks show][az-aks-show] コマンドを使用してノード リソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します。 次の例では、リソース グループ名 *myResourceGroup* にある AKS クラスター名のノード リソース グループ *myAKSCluster* を取得しています｡
 
 ```azurecli
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv

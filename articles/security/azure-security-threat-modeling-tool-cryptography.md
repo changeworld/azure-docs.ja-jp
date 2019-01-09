@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 4128d113535c67c0b440dc3fb275af05b5c1c1ae
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306147"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844653"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>セキュリティ フレーム: 暗号化 | 軽減策 
 | 製品/サービス | 記事 |
@@ -36,7 +36,7 @@ ms.locfileid: "43306147"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
+| **コンポーネント**               | Web Application | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -58,7 +58,7 @@ ms.locfileid: "43306147"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
+| **コンポーネント**               | Web Application | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -69,7 +69,7 @@ ms.locfileid: "43306147"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
+| **コンポーネント**               | Web Application | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -91,7 +91,7 @@ ms.locfileid: "43306147"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
+| **コンポーネント**               | Web Application | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -102,7 +102,7 @@ ms.locfileid: "43306147"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
+| **コンポーネント**               | Web Application | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -113,7 +113,7 @@ ms.locfileid: "43306147"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -124,7 +124,7 @@ ms.locfileid: "43306147"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -135,18 +135,18 @@ ms.locfileid: "43306147"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [ADD SIGNATURE (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
-| **手順** | 重要なセキュリティ保護可能なデータベース リソースの整合性を検証する必要がある場合、デジタル署名を使用する必要があります。 ストアド プロシージャ、関数、アセンブリ、トリガーなど、セキュリティ保護可能なデータベース リソースにデジタル署名することができます。 これが役立つ状況の例を紹介します。ISV (独立系ソフトウェア ベンダー) が、顧客に提供されたソフトウェアのサポートを提供するとします。 ISV はサポートを提供する前に、そのソフトウェアのセキュリティ保護可能なデータベース リソースが誤って改ざんされたり、悪意のある試みによって改ざんされたりしていないことを確認する必要があります。 セキュリティ保護可能なリソースがデジタル署名されていれば、ISV はデジタル署名を確認し、そのリソースの整合性を検証できます。| 
+| **手順** | 重要なセキュリティ保護可能なデータベース リソースの整合性を検証する必要がある場合、デジタル署名を使用する必要があります。 ストアド プロシージャ、関数、アセンブリ、トリガーなど、セキュリティ保護可能なデータベース リソースにデジタル署名することができます。 これが役立つ状況の例を以下に説明します。ISV (独立系ソフトウェア ベンダー) が、その顧客のいずれかに提供されるソフトウェアに対してサポートを提供しているとします。 ISV はサポートを提供する前に、そのソフトウェアのセキュリティ保護可能なデータベース リソースが誤って改ざんされたり、悪意のある試みによって改ざんされたりしていないことを確認する必要があります。 セキュリティ保護可能なリソースがデジタル署名されていれば、ISV はデジタル署名を確認し、そのリソースの整合性を検証できます。| 
 
 ## <a id="ekm-keys"></a>SQL Server EKM を使用して暗号化キーを保護する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -157,7 +157,7 @@ ms.locfileid: "43306147"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
+| **コンポーネント**               | Database | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | SQL バージョン - V12、MsSQL2016 |
@@ -172,8 +172,8 @@ ms.locfileid: "43306147"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | デバイスの OS - Windows IoT Core、デバイスの接続 - Azure IoT device SDK |
-| **参照**              | [Windows IoT Core 上の TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[Windows IoT Core 上での TPM のセットアップ](https://developer.microsoft.com/windows/iot/win10/setuptpm)、[Azure IoT device SDK の TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **手順** | 対称秘密キーまたは証明書の秘密キーは、TPM やスマート カード チップのようなハードウェアで保護された記憶域に安全に保存します。 Windows 10 IoT Core では TPM の使用をサポートしています。いくつかの互換性のある TPM を使用できます (https://developer.microsoft.com/windows/iot/win10/tpm)。 ファームウェア TPM またはディスクリート TPM を使用することをお勧めします。 ソフトウェア TPM は、開発およびテストにのみ使用します。 TPM が使用可能であり、キーがプロビジョニングされたら、機密情報をハードコーディングせずに、トークンを生成するコードを作成する必要があります。 | 
+| **参照**              | [Windows IoT Core 上の TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[Windows IoT Core 上での TPM のセットアップ](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT device SDK の TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **手順** | 対称秘密キーまたは証明書の秘密キーは、TPM やスマート カード チップのようなハードウェアで保護された記憶域に安全に保存します。 Windows 10 IoT Core では TPM の使用をサポートしています。いくつかの互換性のある TPM を使用できます (https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm)。 ファームウェア TPM またはディスクリート TPM を使用することをお勧めします。 ソフトウェア TPM は、開発およびテストにのみ使用します。 TPM が使用可能であり、キーがプロビジョニングされたら、機密情報をハードコーディングせずに、トークンを生成するコードを作成する必要があります。 | 
 
 ### <a name="example"></a>例
 ```
@@ -203,7 +203,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Dynamics CRM モバイル クライアント | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -225,7 +225,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Identity Server | 
-| **SDL フェーズ**               | デプロイ |  
+| **SDL フェーズ**               | Deployment |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Identity Server - キー、署名、暗号化](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |

@@ -1,5 +1,6 @@
 ---
-title: Azure における複数の IP 構成での負荷分散 | Microsoft Docs
+title: Azure における複数の IP 構成での負荷分散
+titlesuffix: Azure Load Balancer
 description: プライマリ IP 構成とセカンダリ IP 構成の間の負荷分散。
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 0f092c471a7908eabe481adc8c722993818840b8
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: e6aff89fe45220e1642a91e6a2d31a9da422fdea
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219513"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163533"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Azure Portal を使用した複数の IP 構成での負荷分散
 
@@ -96,7 +98,7 @@ ms.locfileid: "51219513"
 
 ロード バランサーのデプロイが開始されます。 デプロイが正常に完了するまでに数分かかる場合があります。 デプロイが完了すると、ロード バランサーがリソース グループ内のリソースとして表示されます。
 
-### <a name="step-3-configure-the-front-end-ip-pool"></a>手順 3: フロントエンド IP プールを構成する
+### <a name="step-3-configure-the-front-end-ip-pool"></a>手順 3:フロントエンド IP プールを構成する
 
 次のように各 Web サイト (contoso.com と fabrikam.com) で、ロード バランサーのフロントエンド IP プールを構成します。
 
@@ -128,7 +130,7 @@ ms.locfileid: "51219513"
 
 フロントエンド プールの構成が完了すると、IP アドレスがロード バランサーの **[フロントエンド IP の構成]** 設定に表示されます。 
     
-### <a name="step-4-configure-the-back-end-pool"></a>手順 4: バックエンド プールを構成する
+### <a name="step-4-configure-the-back-end-pool"></a>手順 4:バックエンド プールを構成する
 
 次のように各 Web サイト (contoso.com と fabrikam.com) で、ロード バランサーのバックエンド アドレス プールを構成します。
         
@@ -154,7 +156,7 @@ ms.locfileid: "51219513"
 
 バックエンド プールの構成が完了すると、アドレスがロード バランサーの **[バックエンド プール]** 設定に表示されます。
 
-### <a name="step-5-configure-the-health-probe"></a>手順 5: 正常性プローブを構成する
+### <a name="step-5-configure-the-health-probe"></a>手順 5:正常性プローブを構成する
 
 次のようにロード バランサーの正常性プローブを構成します。
 
@@ -166,7 +168,7 @@ ms.locfileid: "51219513"
 
 4. 正常性プローブの名前 (たとえば、**HTTP**) を入力します。 **[OK]** を選択します。
 
-### <a name="step-6-configure-load-balancing-rules"></a>手順 6: 負荷分散規則を構成する
+### <a name="step-6-configure-load-balancing-rules"></a>手順 6:負荷分散規則の構成
 
 次のように各 Web サイト (contoso.com と fabrikam.com) で、負荷分散規則を構成します。
     
@@ -186,7 +188,7 @@ ms.locfileid: "51219513"
 
 規則の構成が完了すると、規則がロード バランサーの **[負荷分散規則]** 設定に表示されます。
 
-### <a name="step-7-configure-dns-records"></a>手順 7: DNS レコードを構成する
+### <a name="step-7-configure-dns-records"></a>手順 7:DNS レコードを構成する
 
 最後に、Load Balancer の各フロントエンド IP アドレスを指すように DNS リソース レコードを構成します。 ドメインを Azure DNS でホストできます。 Azure DNS を Load Balancer で使用する方法の詳細については、「[Azure DNS を他の Azure サービスで使用する](../dns/dns-for-azure-services.md)」を参照してください。
 

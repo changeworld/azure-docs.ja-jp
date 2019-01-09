@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 31461e1d316953c2e69d252f1313180c57562dfd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a86a965a746ed659b73c359ee44fb9be250aae97
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009193"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714285"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
 HDInsight に Azure ストレージ アカウントを追加するためにスクリプト アクションを使用する方法について説明します。 このドキュメントの手順では、既存の Linux ベースの HDInsight クラスターにストレージ アカウントを追加します。
 
-> [!IMPORTANT]
-> このドキュメントでは、クラスターの作成後に、そのクラスターにストレージを追加する方法を取り上げています。 クラスター作成時にストレージ アカウントを追加する方法については、「[Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
+> [!IMPORTANT]  
+> このドキュメントでは、クラスターの作成後に、そのクラスターにストレージを追加する方法を取り上げています。 クラスター作成時にストレージ アカウントを追加する方法については、「[Apache Hadoop、Apache Spark、Apache Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
@@ -31,7 +31,7 @@ HDInsight に Azure ストレージ アカウントを追加するためにス�
 
 * __Azure ストレージ アカウント キー__: ストレージ アカウントへのアクセスを許可するキー。
 
-* __-p__ (省略可能): 指定した場合、キーは暗号化されず、プレーン テキストとして core-site.xml ファイルに格納されます。
+* __-p__ (省略可能): 指定した場合、キーは暗号化されず、プレーンテキストとして core-site.xml ファイルに格納されます。
 
 このスクリプトは、処理中に次のアクションを実行します。
 
@@ -43,9 +43,9 @@ HDInsight に Azure ストレージ アカウントを追加するためにス�
 
 * core-site.xml ファイルにストレージ アカウントを追加します。
 
-* Oozie、YARN、MapReduce2、および HDFS の各サービスを停止して再起動します。 これらのサービスを停止して再起動することで、新しいストレージ アカウントを使用できるようになります。
+* [Apache Oozie](https://oozie.apache.org/)、 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)、 [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)、および[Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html)サービスを停止して再起動します。 これらのサービスを停止して再起動することで、新しいストレージ アカウントを使用できるようになります。
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
 
 ## <a name="the-script"></a>スクリプト
@@ -54,13 +54,13 @@ __スクリプトの場所__: [https://hdiconfigactions.blob.core.windows.net/li
 
 __要件__:
 
-* スクリプトを __ヘッド ノード__ に適用する必要があります。
+* スクリプトを__ヘッド ノード__に適用する必要があります。
 
 ## <a name="to-use-the-script"></a>スクリプトを使用するには
 
 このスクリプトは、Azure portal、Azure PowerShell、または Azure クラシック CLI で使用できます。 詳しくは、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)」を参照してください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > カスタマイズのドキュメントに記載された手順を使用する場合は、次の情報を使用してこのスクリプトを適用します。
 >
 > * サンプル スクリプトのアクション URI を、このスクリプトの URI (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh) に置き換えます。
@@ -85,17 +85,17 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties."fs.azure.account.key.$storageAccountName.blob.core.windows.net"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > `$clusterName` には、HDInsight クラスターの名前を設定します。 `$storageAccountName` には、ストレージ アカウントの名前を設定します。 プロンプトが表示されたら、クラスターのログイン (管理者) とパスワードを入力します。
 
 ```Bash
 curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.azure.account.key.$STORAGEACCOUNTNAME.blob.core.windows.net"] | select(. != null)'
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > `$PASSWORD` には、クラスター ログイン (管理者) アカウントのパスワードを設定します。 `$CLUSTERNAME` には、HDInsight クラスターの名前を設定します。 `$STORAGEACCOUNTNAME` には、ストレージ アカウントの名前を設定します。
 >
-> この例では、[curl (http://curl.haxx.se/) ](http://curl.haxx.se/) と [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/)を使用して、JSON データを取得して解析します。
+> この例では、[curl (https://curl.haxx.se/) ](https://curl.haxx.se/) と [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/)を使用して、JSON データを取得して解析します。
 
 このコマンドを使用するときは、__CLUSTERNAME__ を HDInsight クラスターの名前に置き換えます。 __PASSWORD__ は、クラスターの HTTP ログイン パスワードに置き換えます。 __STORAGEACCOUNT__ は、スクリプト アクションを使って追加されたストレージ アカウントの名前に置き換えます。 このコマンドから返される情報は、次のテキストに似たものとなります。
 
@@ -107,7 +107,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 
 ストレージ アカウントのキーを変更すると、HDInsight はストレージ アカウントにアクセスできなくなります。 HDInsight は、クラスターの core-site.xml 内のキャッシュされたキーのコピーを使用します。 このキャッシュされたコピーは、新しいキーに一致するように更新する必要があります。
 
-スクリプト アクションを再実行しても、キーは __更新されません__。スクリプトはストレージ アカウントのエントリが既に存在するかどうかを確認します。 エントリが既に存在する場合、いかなる変更もしません。
+スクリプト アクションを再実行しても、キーは__更新されません__。スクリプトはストレージ アカウントのエントリが既に存在するかどうかを確認します。 エントリが既に存在する場合、いかなる変更もしません。
 
 この問題を回避するには、ストレージ アカウントの既存のエントリを削除する必要があります。 既存のエントリを削除するには、次の手順を実行します。
 
@@ -132,14 +132,14 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 
 ストレージ アカウントが HDInsight クラスターとは異なるリージョンにある場合は、パフォーマンスが低下することがあります。 別のリージョンのデータにアクセスすると、そのリージョンの Azure データ センター外にネットワーク トラフィックが送信され、パブリック インターネットを経由するため、遅延が生じる場合があります。
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
 
 ### <a name="additional-charges"></a>追加料金が発生する
 
 ストレージ アカウントが HDInsight クラスターとは異なるリージョンにある場合は、Azure の課金にエグレス料金が追加されていることがあります。 データが地域データ センターを離れると、エグレス料金が適用されます。 この料金は、トラフィックが他のリージョンの別の Azure データ センター宛てであっても適用されます。
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
 
 ## <a name="next-steps"></a>次の手順

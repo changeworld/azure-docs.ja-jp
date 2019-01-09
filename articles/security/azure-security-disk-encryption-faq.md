@@ -1,20 +1,21 @@
 ---
-title: Azure Disk Encryption についてよくあるご質問 | Microsoft Docs
+title: FAQ - IaaS VM のための Azure Disk Encryption | Microsoft Docs
 description: この記事では、Windows および Linux IaaS VM の Microsoft Azure Disk Encryption についてよく寄せられる質問への回答を示します。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/16/2018
-ms.openlocfilehash: 8da966154f1da8cb1be090f70d80e4484e9bce0d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: ba955e9e71926a513f6c083acb6508b3ec330d17
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377293"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094561"
 ---
-# <a name="azure-disk-encryption-faq"></a>Azure Disk Encryption に関する FAQ
+# <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
 この記事では、Windows および Linux IaaS VM の Azure Disk Encryption に関してよく寄せられる質問 (FAQ) への回答を示します。 このサービスの詳細については、「[Windows および Linux IaaS VM の Azure Disk Encryption](azure-security-disk-encryption-overview.md)」をご覧ください。
 
@@ -60,9 +61,9 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 | CentOS | 6.5 | データ ディスク |
 | openSUSE | 13.2 | データ ディスク |
 | SLES | 12 SP1 | データ ディスク |
-| SLES | 優先度: 12-SP1 | データ ディスク |
+| SLES | 優先順位:12-SP1 | データ ディスク |
 | SLES | HPC 12 | データ ディスク |
-| SLES | 優先度: 11-SP4 | データ ディスク |
+| SLES | 優先順位:11-SP4 | データ ディスク |
 | SLES | 11 SP4 | データ ディスク |
 
 

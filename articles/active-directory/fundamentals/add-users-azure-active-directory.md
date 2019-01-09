@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory でユーザーを追加または削除する方法 | Microsoft Docs
+title: ユーザーの追加または削除 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory を使用して新しいユーザーを追加する方法または既存のユーザーを削除する方法について説明します。
 services: active-directory
 author: eross-msft
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: 782363144a6b1dd87aff515c38588b6ce70b61bd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: dd4a9132d5f04870239be3127f723afb60b3ecef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295106"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104681"
 ---
-# <a name="how-to-add-or-delete-users-using-azure-active-directory"></a>方法: Azure Active Directory を使用してユーザーを追加または削除する
-Azure Active Directory (Azure AD) を使用して、Azure AD テナントに対して新しいユーザーの追加または既存のユーザーの削除を行います。
+# <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーを追加または削除する
+Azure Active Directory (Azure AD) テナントに対して、新しいユーザーの追加または既存のユーザーの削除を行います。
 
 ## <a name="add-a-new-user"></a>新しいユーザーの追加
-Azure Active Directory を使用して、新しいユーザーを作成できます。
+Azure Active Directory ポータルを使用して、新しいユーザーを作成できます。
 
 ### <a name="to-add-a-new-user"></a>新しいユーザーを追加するには
 1. [Azure portal](https://portal.azure.com/) にディレクトリの全体管理者またはユーザー管理者としてサインインします。
@@ -58,10 +58,10 @@ Azure Active Directory を使用して、新しいユーザーを作成できま
 Azure Active Directory (クラウド) と Windows Server Active Directory (オンプレミス) の両方の環境がある場合は、既存のユーザー アカウントのデータを同期することによって新しいユーザーを追加できます。 ハイブリッド環境とユーザーの詳細については、[オンプレミスのディレクトリと Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)に関するページを参照してください。
 
 ## <a name="delete-a-user"></a>ユーザーの削除
-Azure Active Directory を使用して、既存のユーザーを削除できます。
+Azure Active Directory ポータルを使用して、既存のユーザーを削除できます。
 
 ### <a name="to-delete-a-user"></a>ユーザーの削除
-1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
+1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、Azure AD テナントから削除するユーザーを検索して選択します。 たとえば、_Mary Parker_ を選択します。
 

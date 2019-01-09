@@ -1,11 +1,12 @@
 ---
 title: データ サイエンス仮想マシンのデータ取り込みツール - Azure | Microsoft Docs
-description: データ サイエンス仮想マシンのデータ取り込みツール
+description: Data Science Virtual Machine にプレインストールされているデータ インジェスト ツールとユーティリティについて説明します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 7aeb0476fffb8c9e5cf2b0b5d89a2a387bd6364a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 75f068a857be33337348958fbc472f37f6d84e12
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411347"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075857"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 
@@ -33,7 +34,7 @@ ms.locfileid: "31411347"
 |    |           |
 | ------------- | ------------- |
 | 紹介   | Azure Storage BLOB から Azure Data Lake Store にデータをコピーするツール。 2 つの Azure Data Lake Store アカウント間でデータをコピーすることもできます。      |
-| サポートされている DSVM バージョン      | Windows      |
+| サポートされている DSVM バージョン      |  Windows      |
 | 一般的な用途      | Azure ストレージから Azure Data Lake Store に複数の BLOB をインポートします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、`adlcopy` と入力してヘルプを表示します。    |
 | サンプルへのリンク      | [AdlCopy を使用](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
@@ -56,7 +57,7 @@ ms.locfileid: "31411347"
 |    |           |
 | ------------- | ------------- |
 | 紹介   | ローカル ファイル、Azure ストレージ BLOB、ファイル、およびテーブルとの間でデータをコピーするためのツール。      |
-| サポートされている DSVM バージョン      | Windows      |
+| サポートされている DSVM バージョン      |  Windows      |
 | 一般的な用途      | BLOB ストレージにファイルをコピー、アカウント間で BLOB をコピーします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、`azcopy` と入力してヘルプを表示します。    |
 | サンプルへのリンク      | [Windows での AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
@@ -68,7 +69,7 @@ ms.locfileid: "31411347"
 |    |           |
 | ------------- | ------------- |
 | 紹介   | JSON ファイル、CSV ファイル、SQL、MongoDB、Azure Table ストレージ、Amazon DynamoDB、Azure Cosmos DB SQL API コレクションなどのさまざまななソースから、Azure Cosmos DB にデータをインポートするツール。      |
-| サポートされている DSVM バージョン      | Windows      |
+| サポートされている DSVM バージョン      |  Windows      |
 | 一般的な用途      | VM から CosmosDB にファイルをインポート、Azure テーブル ストレージから CosmosDB にデータをインポート、または SQL Server データベースから CosmosDB にデータをインポートします。     |
 |  使用/実行方法    |   コマンド ライン バージョンを使用するには、コマンド プロンプトを開いて `dt` と入力します。 GUI ツールを使用するには、コマンド プロンプトを開いて `dtui` と入力します。    |
 | サンプルへのリンク      | [CosmosDB インポート データ](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
@@ -80,7 +81,7 @@ ms.locfileid: "31411347"
 |    |           |
 | ------------- | ------------- |
 | 紹介   | SQL Server とデータ ファイルの間でデータをコピーする SQL Server ツール。      |
-| サポートされている DSVM バージョン      | Windows      |
+| サポートされている DSVM バージョン      |  Windows      |
 | 一般的な用途      | CSV ファイルを SQL Server テーブルにインポート、SQL Server テーブルをファイルにエクスポートします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、`bcp` と入力してヘルプを表示します。    |
 | サンプルへのリンク      | [一括コピー ユーティリティ](https://docs.microsoft.com/sql/tools/bcp-utility)      |
@@ -91,7 +92,7 @@ ms.locfileid: "31411347"
 |    |           |
 | ------------- | ------------- |
 | 紹介   | Linux ファイル システムで Azure BLOB コンテナーをマウントするツール      |
-| サポートされている DSVM バージョン      | Linux      |
+| サポートされている DSVM バージョン      |  Linux      |
 | 一般的な用途      | コンテナー内の BLOB へ読み取りと書き込み      |
 |  使用/実行方法    |   端末で _blobfuse_ を実行します。    |
 | サンプルへのリンク      | [GitHub の blobfuse](https://github.com/Azure/azure-storage-fuse)      |
@@ -103,7 +104,7 @@ ms.locfileid: "31411347"
 |    |           |
 | ------------- | ------------- |
 | 紹介   | 内部設置型データ ソースを、使用のためにクラウド サービスに接続するツール。      |
-| サポートされている DSVM バージョン      | Windows      |
+| サポートされている DSVM バージョン      |  Windows      |
 | 一般的な用途      | 内部設置型データ ソースに VM を接続します。      |
 |  使用/実行方法    |   [スタート] メニューから "Microsoft Data Management Gateway" を起動します。    |
 | サンプルへのリンク      | [Data Management Gateway](https://msdn.microsoft.com/library/dn879362.aspx)      |

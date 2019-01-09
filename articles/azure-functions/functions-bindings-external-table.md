@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 5566ea8b21682c5023afc4af357e1a80e1d37384
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 62924488b776a1a89e1abf492db1881a44585b1a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248473"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997824"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Azure Functions の外部テーブル バインディング (試験段階)
 
@@ -49,7 +49,7 @@ ms.locfileid: "50248473"
 |[Salesforce](https://docs.microsoft.com/azure/connectors/connectors-create-api-salesforce)||○|○
 |[SharePoint](https://docs.microsoft.com/azure/connectors/connectors-create-api-sharepointonline)||○|○
 |[SQL Server](https://docs.microsoft.com/azure/connectors/connectors-create-api-sqlazure)||○|○
-|[Teradata](http://www.teradata.com/products-and-services/azure/products/)||○|○
+|[Teradata](https://www.teradata.com/products-and-services/azure/products/)||○|○
 |UserVoice||○|○
 |Zendesk||○|○
 
@@ -166,7 +166,7 @@ GO
 
 ### <a name="google-sheets-data-source"></a>Google スプレッドシート データ ソース
 
-Google ドキュメントでこの例で使用する表を作成するには、`Contact` というワークシートを含むスプレッドシートを作成します。 コネクタでスプレッドシートの表示名を使用することはできません。 内部的な名前 (太字部分) を dataSetName として使う必要があります (例: `docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**)。先頭行に列名として `Id`、`LastName`、`FirstName` を追加し、それ以降の行にデータを投入しましょう。
+Google ドキュメントでこの例で使用する表を作成するには、`Contact` というワークシートを含むスプレッドシートを作成します。 コネクタでスプレッドシートの表示名を使用することはできません。 内部的な名前 (太字部分) を dataSetName として使う必要があります (例:`docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**)。先頭行に列名として `Id`、`LastName`、`FirstName` を追加し、それ以降の行にデータを投入します。
 
 ### <a name="salesforce"></a>Salesforce
 

@@ -1,5 +1,5 @@
 ---
-title: ネットワーク プロキシ対応の Azure IoT Edge デバイスを構成する | Microsoft Docs
+title: ネットワーク プロキシ対応のデバイスを構成する - Azure IoT Edge | Microsoft Docs
 description: Azure IoT Edge ランタイムおよびインターネット対応の任意の IoT Edge モジュールを構成して、プロキシ サーバー経由で通信する方法。
 author: kgremban
 manager: ''
@@ -8,12 +8,13 @@ ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72855058c5e8294eece55f8dbcdc501025c9aabf
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.custom: seodec18
+ms.openlocfilehash: a7d32c98b77568e02fa14b70e969eeb254989062
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913225"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100477"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -70,7 +71,7 @@ IoT Edge ランタイムがインストールされたら、次のセクショ�
 
 IoT Edge デーモンは、Docker デーモンとほぼ同じ方法で構成されています。 IoT Edge が IoT Hub へ送信するすべての要求で、HTTPS が使用されます。 お使いのオペレーティング システムに基づいて、次の手順に従って、サービス用に環境変数を設定します。 
 
-#### <a name="linux"></a>Linux
+#### <a name="linux"></a> Linux
 
 IoT Edge デーモンを構成するために、ターミナルでエディターを開きます。 
 
@@ -103,7 +104,7 @@ sudo systemctl restart iotedge
 systemctl show --property=Environment iotedge
 ```
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a> Windows
 
 管理者として PowerShell ウィンドウを開き、次のコマンドを実行して、新しい環境変数でレジストリを編集します。 **\<proxy url>** をお使いのプロキシ サーバーのアドレスとポートに置き換えます。 
 
@@ -173,7 +174,7 @@ Edge エージェントおよび Edge Hub モジュールを構成するには�
 
 Edge エージェントおよび Edge Hub モジュールの両方の定義に、**https_proxy** 環境変数を追加します。 お使いの IoT Edge デバイス上の config.yaml ファイルに **UpstreamProtocol** 環境変数を含めた場合は、Edge エージェント モジュールの定義にもこの環境変数を追加します。 
 
-![環境変数の設定](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
+![https_proxy environment 変数を設定する](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
 
 配置マニフェストに追加する他のモジュールはすべて、同じパターンに従います。 モジュール名およびイメージを設定するページには、環境変数のセクションがあります。
 

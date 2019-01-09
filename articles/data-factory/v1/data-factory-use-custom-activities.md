@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure Data Factory パイプラインでカスタム アクティビティを使用する
 description: カスタム アクティビティを作成して Azure Data Factory パイプラインで使用する方法について説明します。
 services: data-factory

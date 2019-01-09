@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: d27491d84d4df1757f77a403cd754496bbff6887
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0c72318f6c80563d138d9c885ea5984a22c5c7fa
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252611"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653902"
 ---
-# <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>クイック スタート:App Service on Linux で Java Web アプリを作成する
+# <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>クイック スタート:App Service on Linux で Java アプリを作成する
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイック スタートでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を [Maven Plugin for Azure Web Apps (プレビュー)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) と共に使用して Java Web アプリの Web アーカイブ (WAR) ファイルをデプロイする方法を示します。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイック スタートでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を [Maven Plugin for Azure Web Apps (プレビュー)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) と共に使用して Java Web アーカイブ (WAR) ファイルをデプロイする方法を示します。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-java/java-hello-world-in-browser.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "53252611"
 
 ## <a name="create-a-java-app"></a>Java アプリを作成する
 
-Cloud Shell プロンプトで次の Maven コマンドを実行して、`helloworld` という名前の新しい Web アプリを作成します。
+Cloud Shell プロンプトで次の Maven コマンドを実行して、`helloworld` という名前の新しいアプリを作成します。
 
 ```bash
 mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
@@ -62,12 +62,12 @@ code pom.xml
         <version>1.4.0</version>
         <configuration>
    
-            <!-- Web App information -->
+            <!-- App information -->
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
    
-            <!-- Java Runtime Stack for Web App on Linux-->
+            <!-- Java Runtime Stack for App on Linux-->
             <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
    
         </configuration>
@@ -84,9 +84,9 @@ code pom.xml
 
 | プレースホルダー | 説明 |
 | ----------- | ----------- |
-| `RESOURCEGROUP_NAME` | Web アプリの作成先となる新しいリソース グループの名前。 アプリのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すれば、そのアプリに関連付けられているすべてのリソースが削除されます。 この値を一意の新しいリソース グループ名 (たとえば、*TestResources*) で更新します。 このリソース グループ名を使用して、後のセクションですべての Azure リソースをクリーンアップします。 |
-| `WEBAPP_NAME` | Azure にデプロイされると、このアプリ名は Web アプリのホスト名の一部になります (WEBAPP_NAME.azurewebsites.net)。 この値を、Java アプリをホストする新しい Azure Web アプリの一意の名前 (たとえば、*contoso*) で更新します。 |
-| `REGION` | Web アプリがホストされている Azure リージョン (たとえば、`westus2`)。 リージョンの一覧は、`az account list-locations` コマンドを使用して Cloud Shell または CLI から取得できます。 |
+| `RESOURCEGROUP_NAME` | その中にアプリを作成する新しいリソース グループの名前。 アプリのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すれば、そのアプリに関連付けられているすべてのリソースが削除されます。 この値を一意の新しいリソース グループ名 (たとえば、*TestResources*) で更新します。 このリソース グループ名を使用して、後のセクションですべての Azure リソースをクリーンアップします。 |
+| `WEBAPP_NAME` | Azure にデプロイされると、このアプリ名はアプリのホスト名の一部になります (WEBAPP_NAME.azurewebsites.net)。 この値を、Java アプリをホストする新しい App Service アプリの一意の名前 (たとえば、*contoso*) で更新します。 |
+| `REGION` | アプリがホストされている Azure リージョン (たとえば、`westus2`)。 リージョンの一覧は、`az account list-locations` コマンドを使用して Cloud Shell または CLI から取得できます。 |
 
 ## <a name="deploy-the-app"></a>アプリケーションのデプロイ
 
@@ -108,7 +108,7 @@ mvn package azure-webapp:deploy
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Maven を使用して Java Web アプリを作成し、[Maven Plugin for Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) を構成した後、Web アーカイブにパッケージ化された Java アプリを App Service on Linux にデプロイしました。 App Serivce on Linux での Java アプリケーションのホストについて詳しくは、次のチュートリアルとハウツー記事を参照してください。
+このクイック スタートでは、Maven を使用して Java アプリを作成し、[Maven Plugin for Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) を構成した後、Web アーカイブにパッケージ化された Java アプリを App Service on Linux にデプロイしました。 App Serivce on Linux での Java アプリケーションのホストについて詳しくは、次のチュートリアルとハウツー記事を参照してください。
 
 - [チュートリアル: PostgreSQL を使って Java Enterprise アプリをデプロイする](tutorial-java-enterprise-postgresql-app.md)
 - [Tomcat データ ソースを構成する](app-service-linux-java.md#connecting-to-data-sources)

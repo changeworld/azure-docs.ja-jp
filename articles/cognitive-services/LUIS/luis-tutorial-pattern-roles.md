@@ -9,18 +9,36 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: b6d800705509edc31b410d1e9cd30f8b53702010
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8b66895e1ae37947c995ffc643505d466c42b93b
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094408"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753117"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>チュートリアル 4:文脈的に関連するパターンを抽出する
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>チュートリアル:ロールを使って文脈的に関連するパターンを抽出する
 
 このチュートリアルでは、パターンを使用して、正しい形式のテンプレート発話からデータを抽出します。 テンプレート発話は単純なエンティティとロールを使用して、移動元の場所や移動先の場所などの関連データを抽出します。  パターンを使用するとき、意図に必要な発話の例は少なくなります。
+
+
+**このチュートリアルで学習する内容は次のとおりです。**
+
+> [!div class="checklist"]
+> * サンプル アプリをインポートする
+> * 新しいエンティティの作成
+> * 新しい意図の作成
+> * トレーニング
+> * 発行
+> * エンドポイントから意図とエンティティを取得する
+> * ロールを持つパターンを作成する
+> * 都市のフレーズ リストを作成する
+> * エンドポイントから意図とエンティティを取得する
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-roles-in-patterns"></a>パターンでロールを使う
 
 ロールの目的は、文脈的に関連するエンティティを発話から抽出することです。 「`Move new employee Robert Williams from Sacramento and San Francisco`」という発話で、移動元の都市と移動先の都市の値は互いに関連しており、それぞれの場所を表すのに共通の言語を使用しています。 
 
@@ -37,27 +55,12 @@ ms.locfileid: "53094408"
 
 都市などの名前であるためシンプル エンティティの検出に問題がある場合、類似の値のフレーズ リストを追加することを検討してください。 これは、その種類の単語またはフレーズについて追加のシグナルを LUIS に与えることによって、都市名の検出を補助します。 フレーズ リストは、パターンが一致するために必要なエンティティ検出を補助することによってパターンを補助するにすぎません。 
 
-**このチュートリアルで学習する内容は次のとおりです。**
-
-> [!div class="checklist"]
-> * 既存のチュートリアル アプリを使用する
-> * 新しいエンティティの作成
-> * 新しい意図の作成
-> * トレーニング
-> * [発行]
-> * エンドポイントから意図とエンティティを取得する
-> * ロールを持つパターンを作成する
-> * 都市のフレーズ リストを作成する
-> * エンドポイントから意図とエンティティを取得する
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>既存のアプリを使用する
+## <a name="import-example-app"></a>サンプル アプリをインポートする
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
 
-以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+次の手順に従います。
 
-1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json)をダウンロードして保存します。
 
 2. JSON を新しいアプリにインポートします。
 
@@ -119,7 +122,7 @@ ms.locfileid: "53094408"
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>[発行]
+## <a name="publish"></a>発行
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 

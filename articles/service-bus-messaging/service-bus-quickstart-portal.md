@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: be08be43269dfb332dca1d5f62ce661940d311cc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bfe6c48b2e83c1ebbbad446f79cebd1f513db57e
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259379"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002673"
 ---
-# <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>クイック スタート: Azure Portal と .NET を使用してメッセージを送受信する
+# <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>クイック スタート:Azure portal と .NET を使用してメッセージを送受信する
 
 Microsoft Azure Service Bus は、セキュリティで保護されたメッセージングと絶対的な信頼性を提供するエンタープライズ統合メッセージ ブローカーです。 一般的な Service Bus のシナリオには、通常、2 つ以上のアプリケーション、サービスまたはプロセスを相互に分離し、状態またはデータの変更を転送する処理が含まれます。 このようなシナリオでは、別のアプリケーションまたはサービスで複数のバッチ ジョブをスケジュールする処理や、注文の実行をトリガーする処理が含まれる場合があります。 たとえば、小売企業では、補充および在庫の更新のためにバック オフィスまたは地域の流通センターに POS データを送信することがあります。 このシナリオでは、クライアント アプリは Service Bus キューとの間でメッセージを送受信します。  
 
@@ -59,7 +59,7 @@ Service Bus のメッセージング名前空間は一意のスコープ コン�
 1.  **[すべてのリソース]** で、新しく作成した名前空間の名前をクリックします。
 2. 名前空間ウィンドウで、**[共有アクセス ポリシー]** をクリックします。
 3. **[共有アクセス ポリシー]** 画面で、**[RootManageSharedAccessKey]** をクリックします。
-4. **[ポリシー: RootManageSharedAccessKey]** ウィンドウで、**[プライマリ接続文字列]** の横にある **[コピー]** ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。 
+4. **[ポリシー:RootManageSharedAccessKey]** ウィンドウで、**[プライマリ接続文字列]** の横にある **[コピー]** ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。 
 
     ![connection-string][connection-string]
 5. 前の手順を繰り返し、**[プライマリ キー]** の値をコピーして、後で使用するために一時的な場所に貼り付けます。
@@ -77,7 +77,7 @@ Service Bus キューを作成するには、作成する名前空間を指定�
 
 ## <a name="send-and-receive-messages"></a>メッセージを送受信する
 
-名前空間とキューがプロビジョニングされ、必要な資格情報を持っている場合、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/quickstart-jms)でコードを調べることができます。
+名前空間とキューがプロビジョニングされ、必要な資格情報を持っている場合、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)でコードを調べることができます。
 
 コードを実行するには、次の手順を実行します。
 

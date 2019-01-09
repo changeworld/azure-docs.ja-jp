@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: ネットワーク セキュリティ グループ構成のトラブルシューティング | Microsoft Docs'
+title: Azure Active Directory Domain Services:ネットワーク セキュリティ グループの構成のトラブルシューティング | Microsoft Docs
 description: Azure AD Domain Services 向けの NSG 構成のトラブルシューティング
 services: active-directory-ds
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: bca92e933b1f75c330999f0d55723eb9f26a7382
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6e7d025e9e83f5511fce25d0c24e4da3b04d7e54
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426098"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957540"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>マネージド ドメインの無効なネットワーク構成のトラブルシューティング
 この記事は、ネットワーク関連の構成エラーのトラブルシューティングと解決に役立ちます。次のような警告メッセージは、このようなエラーにより表示されます。
 
-## <a name="alert-aadds104-network-error"></a>アラート AADDS104: ネットワーク エラー
-**警告メッセージ:** "*Microsoft はこのマネージド ドメインのドメイン コントローラーに到達できません。これは、仮想ネットワークに構成されているネットワーク セキュリティ グループ (NSG) がマネージド ドメインへのアクセスをブロックしている場合に発生する可能性があります。別の理由として、インターネットからの着信トラフィックをブロックするユーザー定義ルートが存在していることが考えられます。*
+## <a name="alert-aadds104-network-error"></a>アラート AADDS104:ネットワーク エラー
+**アラート メッセージ:**"*このマネージド ドメインのドメイン コントローラーに到達できません。これは、仮想ネットワークに構成されているネットワーク セキュリティ グループ (NSG) がマネージド ドメインへのアクセスをブロックしている場合に発生する可能性があります。別の理由として、インターネットからの着信トラフィックをブロックするユーザー定義ルートが存在していることが考えられます。*
 
 無効な NSG 構成が、Azure AD Domain Services のネットワーク エラーの最も一般的な原因です。 仮想ネットワーク用に構成されたネットワーク セキュリティ グループ (NSG) は、[特定のポート](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)へのアクセスを許可する必要があります。 こうしたポートがブロックされていると、Microsoft は、マネージド ドメインを監視または更新できません。 さらに、Azure AD ディレクトリとマネージド ドメインの間の同期が影響を受けます。 NSG を作成するときは、こうしたポートを開いたままにして、サービスが中断されないようにしてください。
 
@@ -41,7 +41,7 @@ ms.locfileid: "49426098"
 ## <a name="sample-nsg"></a>NSG のサンプル
 次の表では、マネージド ドメインのセキュリティ保護を維持しながら、Microsoft が情報を監視、管理、更新できるようにする、NSG の例を示します。
 
-![NSG のサンプル](.\media\active-directory-domain-services-alerts\default-nsg.png)
+![NSG のサンプル](./media/active-directory-domain-services-alerts/default-nsg.png)
 
 >[!NOTE]
 > Azure AD Domain Services には、仮想ネットワークからの無制限の送信アクセスが必要です。 仮想ネットワークの発信アクセスを制限する追加の NSG 規則は作成しないようにすることをお勧めします。

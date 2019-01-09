@@ -52,12 +52,9 @@
 ## [SAP HANA のファイル レベルのバックアップ](sap-hana-backup-file-level.md)
 ## [SAP HANA のストレージ スナップショット バックアップ](sap-hana-backup-storage-snapshots.md)
 # Azure Virtual Machines 上の SAP NetWeaver と SAP Business One
-## [Azure Virtual Machines 上の SAP Business One](business-one-azure.md)
-## [Windows/SQL Server SAP CAL への SAP IDES デプロイ ガイド](cal-ides-erp6-erp7-sp3-sql.md)
-## [Azure Linux VM 上の SAP NetWeaver](suse-quickstart.md)
+## [SAP ワークロードの計画とデプロイ チェックリスト](sap-deployment-checklist.md)
 ## [Azure での SAP NetWeaver の計画と実装](planning-guide.md)
 ## [SAP NetWeaver のデプロイ ガイド](deployment-guide.md)
-## [Azure 用の SAP LaMa コネクタ](lama-installation.md)
 ## SAP ワークロード向け DBMS デプロイ ガイド
 ### [SAP ワークロードのための一般的な Azure Virtual Machines DBMS のデプロイ](dbms_guide_general.md)
 ### [SAP ワークロードのための SQL Server Azure Virtual Machines DBMS のデプロイ](dbms_guide_sqlserver.md)
@@ -69,6 +66,10 @@
 ### [SAP HANA on Azure の可用性の概要](sap-hana-availability-overview.md)
 ### [1 つの Azure リージョン内での SAP HANA on Azure の可用性](sap-hana-availability-one-region.md)
 ### [複数の Azure リージョン間における SAP HANA on Azure の可用性](sap-hana-availability-across-regions.md)
+## [Azure Virtual Machines 上の SAP Business One](business-one-azure.md)
+## [Windows/SQL Server SAP CAL への SAP IDES デプロイ ガイド](cal-ides-erp6-erp7-sp3-sql.md)
+## [Azure Linux VM 上の SAP NetWeaver](suse-quickstart.md)
+## [Azure 用の SAP LaMa コネクタ](lama-installation.md)
 ## Windows と Linux での高可用性 (HA)
 ### [概要](sap-high-availability-guide-start.md)
 ### 高可用性アーキテクチャ

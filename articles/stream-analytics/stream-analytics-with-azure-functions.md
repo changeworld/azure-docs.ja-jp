@@ -2,8 +2,7 @@
 title: チュートリアル:Azure Stream Analytics ジョブを使用して Azure Functions を実行する | Microsoft Docs
 description: このチュートリアルでは、Stream Analytics ジョブへの出力シンクとして Azure Functions を構成する方法を説明します。
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
@@ -11,12 +10,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 818c75feffc5dcf09421b22d82b8b0c767cbed7f
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164162"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993010"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -152,7 +151,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. Azure Portal で Stream Analytics ジョブを開きます。  
 
-2. 目的の関数を参照し、**[概要]** > **[出力]** > **[追加]** の順に選択します。 新しい出力を追加するには、シンク オプションとして **Azure Function** を選択します。 次のプロパティを持つ新しい Functions 出力アダプターが使用できるようになります。  
+2. 目的の関数を参照し、**[概要]** > **[出力]** > **[追加]** の順に選択します。 新しい出力を追加するには、シンク オプションとして **Azure Function** を選択します。 Functions の出力アダプターには次のプロパティがあります。  
 
    |**プロパティ名**|**説明**|
    |---|---|
@@ -160,7 +159,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    |インポート オプション| 現在のサブスクリプションから関数を使用できます。あるいは関数が別のサブスクリプションにある場合は、設定を手動で指定できます。 |
    |Function App| Function App の名前です。 |
    |関数| Function App にある関数の名前です (run.csx 関数の名前)。|
-   |最大バッチ サイズ|関数に送信される、各出力バッチの最大サイズを設定します。 既定では、この値は 256 KB に設定されます。|
+   |最大バッチ サイズ|関数に送信される、各出力バッチの最大サイズをバイト単位で設定します。 既定では、この値は 262,144 バイト (256 KB) に設定されます。|
    |最大バッチ カウント|関数に送信される各バッチ内の最大イベント数を指定します。 既定値は 100 です。 このプロパティは省略可能です。|
    |キー|別のサブスクリプションから関数を使用できるようにします。 関数にアクセスするキー値を指定します。 このプロパティは省略可能です。|
 

@@ -1,26 +1,22 @@
 ---
-title: Hive クエリを使用して Hive テーブルのデータを探索する | Microsoft Docs
-description: Hive クエリを使用して Hive テーブルのデータを探索します。
+title: Hive クエリを使用して Hive テーブルのデータを探索する - Team Data Science Process
+description: HDInsight Hadoop クラスター内の Hive テーブルのデータを探索する Hive スクリプトのサンプルを使用します。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 0d46cea5-2b4c-4384-9bfa-fa20f6f75148
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: deguhath
-ms.openlocfilehash: 84bc7ee08c6c98e76c3814f8a59dfa300db9d22d
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: c4d731ad2b94ca662e23e7e48442e396900d68ec
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344578"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132295"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Hive クエリを使用して Hive テーブルのデータを探索する
 

@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2018
+ms.date: 12/10/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: ec73083d1bb66e7c7735a2bee8e89eeb56cf7620
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 70bbade2877b62c3d211600f69e1825677f12040
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282500"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721871"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
 
 クラウド オペレーターとして、Azure Marketplace から項目をダウンロードし、Azure Stack で使用できるようにします。 選択できる項目は、Azure Marketplace の精選された一覧にある項目です。これらの項目は、Azure Stack で動作するように、事前にテストされ、サポートされています。 一覧には新しいアイテムが頻繁に追加されるので、定期的に新しいコンテンツを確認してください。 
 
@@ -76,7 +76,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
 このシナリオは次の 2 つに分けられます。
 - **パート 1:** Azure Marketplace からダウンロードする。 インターネットにアクセスできるコンピューターで PowerShell を構成し、シンジケーション ツールをダウンロードして、Azure Marketplace から項目をダウンロードします。  
-- **パート 2:** Azure Stack Marketplace にアップロードし、発行する。 ダウンロードしたファイルを Azure Stack 環境に移動し、Azure Stack にインポートして、Azure Stack Marketplace に発行します。  
+- **パート 2:** Azure Stack Marketplace にアップロードして発行する。 ダウンロードしたファイルを Azure Stack 環境に移動し、Azure Stack にインポートして、Azure Stack Marketplace に発行します。  
 
 
 ### <a name="prerequisites"></a>前提条件
@@ -89,6 +89,8 @@ Azure Stack が切断モードでインターネットに接続されていな�
 - パブリックにアクセスできるコンテナー (ストレージ BLOB) がある Azure Stack の[ストレージ アカウント](azure-stack-manage-storage-accounts.md)を持っている必要があります。 コンテナーは、Marketplace 項目のギャラリー ファイルのための一時的なストレージとして使用します。 ストレージ アカウントとコンテナーに慣れていない場合は、Azure ドキュメントの [Azure portal での BLOB の操作](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)に関するページを参照してください。
 
 - マーケットプレース シンジケーション ツールは、最初の手順でダウンロードされます。 
+
+- ダウンロードのパフォーマンスを最適化するために [AzCopy](../storage/common/storage-use-azcopy.md) をインストールできますが、これは必須ではありません。
 
 ### <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>マーケットプレース シンジケーション ツールを使用して Marketplace 項目をダウンロードする
 
@@ -126,10 +128,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
    ```PowerShell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
-   Sync-AzSOfflineMarketplaceItem 
-      -Destination "Destination folder path in quotes" `
-      -AzureTenantID $AzureContext.Tenant.TenantId ` 
-      -AzureSubscriptionId $AzureContext.Subscription.Id 
+   Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes" 
    ```
 
 6. ツールを実行すると、次の図のような画面が表示され、使用可能なマーケットプレース項目の一覧が示されます。
@@ -144,7 +143,35 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
 9. ダウンロードにかかる時間は、項目のサイズによって異なります。 ダウンロードが完了したら、その項目をスクリプトで指定したフォルダーで使用できます。 ダウンロードには、VHD ファイル (仮想マシンの場合)、または .zip ファイル (仮想マシン拡張機能の場合) が含まれています。 また、*.azpkg* 形式 (実体は .zip ファイル) のギャラリー パッケージが含まれていることもあります。
 
-### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>ダウンロードのインポートと Azure Stack Marketplace への発行
+10. ダウンロードに失敗した場合は、次の PowerShell コマンドレットを再実行してやり直すことができます。
+
+    ```powershell
+    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes”
+    ```
+
+    やり直す前に、ダウンロードが失敗した製品のフォルダーを削除してください。 たとえば、ダウンロード スクリプトを `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1` にダウンロードするときに失敗した場合は、`D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1` フォルダーを削除した後、コマンドレットを再実行します。
+ 
+### <a name="import-the-download-and-publish-to-azure-stack-marketplace-1811-and-higher"></a>ダウンロードのインポートと Azure Stack Marketplace への発行 (1811 以降)
+
+1. ローカルに[ダウンロード済みの](#use-the-marketplace-syndication-tool-to-download-marketplace-items)ファイルを移動して、お使いの Azure Stack 環境で利用できるようにする必要があります。 マーケットプレース シンジケーション ツールを使用してインポート操作を実行する必要があるので、このツールも、Azure Stack 環境で利用できるようにする必要があります。
+
+   次の図に、フォルダー構造の例を示します。 ダウンロードしたマーケットプレースのすべての項目は `D:\downloadfolder` に含まれます。 各サブフォルダーは、製品 ID 別のマーケットプレース項目です (例: `microsoft.custom-script-linux-arm-2.0.3`)。 各サブ フォルダーの内容は、マーケットプレース項目のダウンロードされたコンテンツです。
+
+   [ ![マーケットプレースのダウンロード ディレクトリ構造](media/azure-stack-download-azure-marketplace-item/mp1sm.png "マーケットプレースのダウンロード ディレクトリ構造") ](media/azure-stack-download-azure-marketplace-item/mp1.png#lightbox)
+
+2. [こちらの記事](azure-stack-powershell-configure-admin.md)の指示に従って、Azure Stack Operator PowerShell セッションを構成します。 
+
+3. 次のスクリプトを実行して、シンジケーション モジュールをインポートした後、マーケットプレース シンジケーション ツールを起動します。
+
+   ```PowerShell
+   $credential = Get-Credential -Message "Enter the azure stack operator credential:"
+   Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -armendpoint "Environment Arm Endpoint" -AzsCredential $credential
+   ```
+    `-AzsCredential` パラメーターは省略可能です。 それは、有効期限が切れている場合にアクセス トークンを更新するために使用されます。 `-AzsCredential` パラメーターが指定されていないときにトークンの有効期限が切れている場合は、オペレーターの資格情報の入力を求めるメッセージが表示されます。
+
+4. スクリプトが正常に完了すると、Azure Stack Marketplace で項目を利用できるようになります。
+
+### <a name="import-the-download-and-publish-to-azure-stack-marketplace-1809-and-lower"></a>ダウンロードのインポートと Azure Stack Marketplace への発行 (1809 以前)
 
 1. [以前にダウンロードした](#use-the-marketplace-syndication-tool-to-download-marketplace-items)仮想マシン イメージまたはソリューション テンプレートのファイルは、Azure Stack 環境でローカルに使用できるようにする必要があります。  
 
@@ -168,10 +195,10 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
    AZPKG ファイルと共にダウンロードされたテキスト ファイルから、イメージの "*パブリッシャー*"、"*オファー*"、および *SKU* の値を取得できます。 テキスト ファイルは、指定の場所に保存されています。 *version* の値は、前の手順で Azure から項目をダウンロードするときに書き留めておいたバージョンです。 
  
-   次のスクリプト例では、Windows Server 2016 Datacenter - Server Core 仮想マシンの値が使用されています。 *-Osuri* の値は、項目の BLOB 保存場所のパスの例です。 
+   次のスクリプト例では、Windows Server 2016 Datacenter - Server Core 仮想マシンの値が使用されています。 *-Osuri* の値は、項目の BLOB 保存場所のパスの例です。
 
    このスクリプトに代わる方法として、[こちらの記事で説明されている手順](azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal)に従い、Azure portal を使って .VHD イメージをインポートすることもできます。
- 
+
    ```PowerShell  
    Add-AzsPlatformimage `
     -publisher "MicrosoftWindowsServer" `
@@ -181,7 +208,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
     -Version "2016.127.20171215" `
     -OsUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.vhd"  
    ```
-   
+
    **ソリューション テンプレートについて:** いくつかのテンプレートには、名前が **fixed3.vhd** の小さな 3 MB .VHD ファイルを含めることができます。 Azure Stack にそのファイルをインポートする必要はありません。 Fixed3.vhd。  このファイルは、Azure Marketplace の発行要件を満たすために、いくつかのソリューション テンプレートに含まれています。
 
    テンプレートの説明を確認してダウンロードし、ソリューション テンプレートを操作するために必要な VHD などの追加要件をインポートします。  

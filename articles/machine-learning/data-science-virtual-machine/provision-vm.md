@@ -1,29 +1,31 @@
 ---
-title: Azure での Windows データ サイエンス仮想マシンのプロビジョニング | Microsoft Docs
+title: Windows Data Science Virtual Machine を作成する
+titleSuffix: Azure
 description: 分析と機械学習を行うために、Azure でデータ サイエンス用仮想マシンを構成および作成します。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 1b293ee8f0f83d727cd647cdcdcc424b4db7e5d3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5dacbbcba44879b28e311f08b089d10d0ad8d95b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240887"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079638"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows データ サイエンス仮想マシンのプロビジョニング
 Microsoft Data Science Virtual Machine (DSVM) は、Microsoft Azure 仮想マシン (VM) イメージです。 あらかじめインストールされており、Data Analytics と機械学習用に使用されているいくつかのツールで構成されています。 次のトピックが含まれています。
 
-* [Azure Machine Learning](../service/index.yml) Workbench。
+* [Azure Machine Learning service](../service/index.yml) Python SDK。
 * [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) Developer エディション。
 * Anaconda Python ディストリビューション。
 * Jupyter Notebook と R、Python、PySpark カーネル。
@@ -33,7 +35,7 @@ Microsoft Data Science Virtual Machine (DSVM) は、Microsoft Azure 仮想マシ
 * ローカル開発およびテスト用のスタンドアロン Apache Spark インスタンス。
 * [JuliaPro](https://juliacomputing.com/products/juliapro.html)。
 * 機械学習ツールと Data Analytics ツール:
-  * ディープ ラーニング フレームワーク。 AI フレームワークの豊富なセットが VM に含まれています: [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)、[TensorFlow](https://www.tensorflow.org/)、[Chainer](https://chainer.org/)、mxNet、Keras。
+  * ディープ ラーニング フレームワーク。 AI フレームワークの豊富なセットは VM 上に含まれています。[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)、[TensorFlow](https://www.tensorflow.org/)、[Chainer](https://chainer.org/)、mxNet、および Keras。
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit)。 オンライン、ハッシュ、allreduce、リダクション、learning2search、アクティブ、対話型学習などの手法をサポートする高速機械学習システム。
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/)。 迅速かつ正確なブースト ツリー実装を提供するツールです。
   * [Rattle](https://togaware.com/rattle/) (R analytical tool to learn easily)。 R で Data Analytics と機械学習を簡単に開始できるツール。GUI ベースのデータ探索と R コードの自動生成によるモデリングを含みます。
@@ -150,7 +152,7 @@ Visual Studio を開くには、デスクトップ アイコンをダブルク�
 * Azure HDInsight Hadoop と Spark
 * Azure Data Lake 
 
-Azure Machine Learning とシームレスに統合し、AI アプリケーションの迅速な構築に役立つ、```Visual Studio Tools for AI``` というプラグインもあります。 
+Azure Machine Learning とシームレスに統合し、AI アプリケーションの迅速な構築に役立つ、```Azure Machine Learning for Visual Studio Code``` というプラグインもあります。 
 
 > [!NOTE]
 > 評価期間が終了したことを示すメッセージが表示される場合があります。 ご利用の Microsoft アカウントの資格情報を入力してください。 または、新しい無料アカウントを作成して Visual Studio Community にアクセスします。 
@@ -193,13 +195,13 @@ VM には複数の Azure ツールがインストールされます。
 > 
 > 
 
-### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
+### <a name="azure-machine-learning-service-python-sdk"></a>Azure Machine Learning service の Python SDK
 
-Azure Machine Learning Workbench はデスクトップ アプリおよびコマンド ライン インターフェイスです。 Workbench には、ユーザーが実行したデータ準備手順を学習する組み込みのデータ準備機能が用意されています。 また、生産性を向上させるプロジェクト管理、実行履歴、ノートブック統合も提供しています。 
+Python 用 Azure Machine Learning SDK は、データ サイエンティストと AI 開発者によって使用され、[Azure Machine Learning service](../service/overview-what-is-azure-ml.md) で機械学習のワークフローをビルドして実行します。 TensorFlow や scikit-learn などのオープンソース フレームワークを使用して、Jupyter Notebooks やお気に入りの Python IDE を含む、任意の Python 環境でサービスとやりとりできます。
 
-モデルを開発するには、TensorFlow、Cognitive Toolkit、Spark ML、scikit-learn など、オープンソース フレームワークを使用できます。 DSVM では、個々のユーザーの **%LOCALAPPDATA%** ディレクトリに Azure Machine Learning Workbench をインストールするためのデスクトップ アイコンを提供しています。 
+Python SDK を使用して利用を開始するには、「[Python SDK を使用して Azure Machine Learning の利用を開始する](../service/quickstart-create-workspace-with-python.md)」を参照してください。
 
-Workbench の各ユーザーは、1 回限りのアクションを実行する必要があります。 ```AzureML Workbench Setup``` のデスクトップ アイコンをダブルクリックして、Workbench のインスタンスをインストールします。 また、Azure Machine Learning では、**%LOCALAPPDATA%\amlworkbench\python** ディレクトリで抽出されるユーザーごとの Python 環境を作成して使用します。
+Python SDK は、Microsoft Data Science Virtual Machine にプレインストールされています。
 
 ## <a name="more-microsoft-development-tools"></a>その他の Microsoft 開発ツール
 [Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) は、他の Microsoft 開発ツールを探してダウンロードするために使用します。 Microsoft Data Science Virtual Machine のデスクトップにはツールのショートカットもあります。  
@@ -215,7 +217,6 @@ Workbench の各ユーザーは、1 回限りのアクションを実行する�
 | Microsoft Machine Learning Server (スタンドアロン) Python | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
 | 既定の R インスタンス、Machine Learning Server (スタンドアロン) | C:\Program Files\Microsoft\ML Server\R_SERVER |
 | SQL Machine Learning Services のデータベース内インスタンスのディレクトリ | C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
-| Azure Machine Learning Workbench、ユーザーごと | %localappdata%\amlworkbench | 
 | その他のツール | c:\dsvm\tools |
 
 > [!NOTE]
@@ -226,7 +227,7 @@ Workbench の各ユーザーは、1 回限りのアクションを実行する�
 ## <a name="next-steps"></a>次の手順
 
 * **[スタート]** メニューを選択して、Data Science VM でツールを調べます。
-* Azure Machine Learning Services および Workbench については、製品の[クイック スタートおよびチュートリアルのページ](../service/index.yml)をご覧ください。 
+* Azure Machine Learning service については、「[Azure Machine Learning サービスの概要](../service/overview-what-is-azure-ml.md)」を参照し、利用できる[クイック スタートとチュートリアル](../service/index.yml)をお試しください。
 * **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** に移動し、エンタープライズ規模での Data Analytics をサポートする R で RevoScaleR ライブラリを使用するサンプルを入手します。  
 * 記事「[Windows データ サイエンス仮想マシンでできる 10 のこと](https://aka.ms/dsvmtenthings)」を読みます。
 * [Team Data Science Process](../team-data-science-process/index.yml)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/08/2018
+ms.date: 12/28/2018
 ms.author: juliako
-ms.openlocfilehash: 7863f007093b5a86fb5095ee8bf1e14fc01d0348
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 858c062c2b3d61b38247e323bf70d2768d33b257
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613394"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969337"
 ---
-# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>チュートリアル: API を使用した Media Services v3 によるライブ ストリーミング
+# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>チュートリアル:API を使用した Media Services v3 によるライブ ストリーミング
 
 Azure Media Services では、[LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) がライブ ストリーミング コンテンツの処理を受け持ちます。 LiveEvent は入力エンドポイントであり、その取り込み URL をライブ エンコーダーに対して指定します。 LiveEvent は、ライブ エンコーダーからライブ入力ストリームを受け取り、1 つまたは複数の [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、LiveEvent はその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します このチュートリアルでは、.NET Core を使用してライブ イベントの**パススルー** タイプを作成、管理する方法について説明します。 
 
@@ -89,7 +89,7 @@ Azure Media Services では、[LiveEvents](https://docs.microsoft.com/rest/api/m
 
 ### <a name="create-a-live-event"></a>ライブ イベントを作成する
 
-このセクションは、**パススルー** タイプの (LiveEventEncodingType が None に設定されている) LiveEvent を作成する方法を示します。 ライブ エンコーディングが有効になっている LiveEvent を作成する場合は、LiveEventEncodingType を Basic に設定します。 
+このセクションは、**パススルー** タイプの (LiveEventEncodingType が None に設定されている) LiveEvent を作成する方法を示します。 ライブ エンコードが有効になっている LiveEvent を作成する場合は、LiveEventEncodingType を Standard に設定します。 
 
 ライブ イベントの作成時には、次を指定することをお勧めします。
 
@@ -107,7 +107,7 @@ Azure Media Services では、[LiveEvents](https://docs.microsoft.com/rest/api/m
 
 ### <a name="get-ingest-urls"></a>取り込み URL の取得
 
-チャネルが作成されると、ライブ エンコーダーに提供する取り込み URL を取得できます。 エンコーダーは、これらの URL を使用して、ライブ ストリームを入力します。
+LiveEvent が作成されると、ライブ エンコーダーに提供する取り込み URL を取得できます。 エンコーダーは、これらの URL を使用して、ライブ ストリームを入力します。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#GetIngestURL)]
 

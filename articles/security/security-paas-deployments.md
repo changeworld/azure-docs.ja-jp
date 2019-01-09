@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 98eee29dc6810d35ee1792c601e6d2f147602cae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 199ea6855e661ef39104fdeb54941ccfd9f36933
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262184"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728484"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -88,14 +88,14 @@ ID 境界を管理するためのベスト プラクティスを次に示しま�
 **詳細**: キーや資格情報の紛失は、よくある問題です。 キーやシークレットをハードウェア セキュリティ モジュールに格納する一元化されたソリューションを使用できます。 Azure では、[Azure Key Vault](../key-vault/key-vault-whatis.md) によりクラウドで HSM を提供しています。
 
 **ベスト プラクティス**: 資格情報やその他のシークレットをソース コードや GitHub に格納しない。   
-**詳細**: 資格情報やその他のシークレットを紛失することよりも悪い唯一のことは、権限のない第三者がキーや資格情報へのアクセスを取得することです。 攻撃者はボット テクノロジを利用して、GitHub などのコード レポジトリに格納されているキーやシークレットを検索することができます。 これらのパブリックなコード レポジトリには、キーやシークレットを格納しないようにします。
+**詳細**: 資格情報やその他のシークレットを紛失するよりも悪い唯一のことは、権限のない第三者がキーや資格情報にアクセスすることです。 攻撃者はボット テクノロジを利用して、GitHub などのコード レポジトリに格納されているキーやシークレットを検索することができます。 これらのパブリックなコード レポジトリには、キーやシークレットを格納しないようにします。
 
-**ベスト プラクティス**: VM を直接リモート管理できる管理インターフェイスを使用して PaaS サービスおよび IaaS サービスのハイブリッドで VM 管理インターフェイスを保護する。   
+**ベスト プラクティス**: VM を直接リモート管理できる管理インターフェイスを使用して、PaaS サービスと IaaS サービスのハイブリッドで VM 管理インターフェイスを保護する。   
 **詳細**: [SSH](https://en.wikipedia.org/wiki/Secure_Shell)、[RDP](https://support.microsoft.com/kb/186607)、[PowerShell リモート処理](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting)などのリモート管理プロトコルを使用できます。 通常は、インターネットから VM に直接リモート アクセスできないように設定することをお勧めします。
 
 可能であれば、Azure 仮想ネットワークの仮想プライベート ネットワークを使用するなどの代替アプローチを使用します。 別の方法が利用できない場合は、複雑なパスフレーズおよび 2 要素認証 ([Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) など) を使用するようにします。
 
-**ベスト プラクティス**: 強力な認証と承認のプラットフォームを使用する   
+**ベスト プラクティス**: 強力な認証と承認のプラットフォームを使用する。   
 **詳細**: Azure AD で、カスタム ユーザー ストアではなくフェデレーション ID を使用するようにします。 フェデレーション ID を使用すると、プラットフォームベースのアプローチを活用して、承認された ID の管理をパートナーに委任することができます。 従業員を解雇し、その情報を複数の ID と承認システムに反映する必要がある場合は、フェデレーション ID によるアプローチが特に重要になってきます。
 
 カスタム コードではなく、プラットフォームが提供する認証と承認のメカニズムを使用するようにします。 その理由は、カスタム認証コードの開発ではエラーが生じやすいためです。 開発者のほとんどはセキュリティ専門家ではなく、細部に留意したり、認証や承認の最新動向を把握している可能性は低くなります。 商用コード (たとえば Microsoft のコード) は、通常徹底的にセキュリティ レビューされています。
@@ -119,21 +119,21 @@ Microsoft [セキュリティ開発ライフ サイクル (Security Development 
 | 特権の昇格 | Authorization | [Privileged Identity Management](../active-directory/privileged-identity-management/subscription-requirements.md) を使用する。 |
 
 ## <a name="develop-on-azure-app-service"></a>Azure App Service での開発
-PaaS である [Azure App Service](../app-service/app-service-web-overview.md) を使用すると、任意のプラットフォームまたはデバイスを対象とした Web アプリとモバイル アプリを作成し、クラウドやオンプレミスにあるあらゆる場所のデータにアクセスできます。 App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service により、Web、モバイル、および統合シナリオで豊富な機能セットを利用できます。
+PaaS である [Azure App Service](../app-service/overview.md) を使用すると、任意のプラットフォームまたはデバイスを対象とした Web アプリとモバイル アプリを作成し、クラウドやオンプレミスにあるあらゆる場所のデータにアクセスできます。 App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service により、Web、モバイル、および統合シナリオで豊富な機能セットを利用できます。
 
 App Service 使用時のベスト プラクティスを次に示します。
 
-**ベスト プラクティス**: [Azure Active Directory を使用して認証する](../app-service/app-service-authentication-overview.md)。   
+**ベスト プラクティス**: [Azure Active Directory を使用して認証する](../app-service/overview-authentication-authorization.md)。   
 **詳細**: App Service は、ID プロバイダーに対して OAuth 2.0 サービスを提供します。 OAuth 2.0 は、Web アプリケーション、デスクトップ アプリケーション、および携帯電話に特定の認証フローを提供しながら、クライアント開発者のシンプル性を実現することに焦点を当てています。 Azure AD が OAuth 2.0 を使用することにより、ユーザーはモバイル アプリケーションと Web アプリケーションへのアクセスを承認することができます。
 
-**ベスト プラクティス**: 知る必要性と最小権限という 2 つのセキュリティ原則に基づいて、アクセスを制限する。   
+**ベスト プラクティス**: 知る必要性と最小権限という 2 つのセキュリティ原則に基づいて、アクセスを制限します。   
 **詳細**: アクセスの制限は、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。 RBAC を使用して、特定のスコープ内のユーザー、グループ、アプリケーションにアクセス許可を割り当てることができます。 ユーザーへのアプリケーション アクセス付与の詳細については、[アクセス管理の概要](../role-based-access-control/overview.md)に関するページを参照してください。
 
-**ベスト プラクティス**: キーを保護する。   
+**ベスト プラクティス**: キーを保護します。   
 **詳細**: Azure Key Vault は、クラウド アプリケーションやサービスで使われる暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。 さらに安心感を高めたい場合には、HSM でキーのインポートや生成を行うことができます。 詳細については、「[Azure Key Vault とは](../key-vault/key-vault-whatis.md)」を参照してください。 Key Vault を使用して、自動更新で TLS 証明書の管理することもできます。
 
-**ベスト プラクティス**: 受信ソース IP アドレスを制限する。   
-**詳細**: [App Service 環境](../app-service/environment/intro.md)には、ネットワーク セキュリティ グループによる受信ソース IP アドレスの制限に役立つ、仮想ネットワーク統合機能が用意されています。 仮想ネットワークを使用すると、Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 詳細については、「[アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md)」を参照してください。
+**ベスト プラクティス**: 受信ソース IP アドレスを制限します。   
+**詳細**: [App Service Environment](../app-service/environment/intro.md) には、ネットワーク セキュリティ グループによる受信ソース IP アドレスの制限に役立つ、仮想ネットワーク統合機能が用意されています。 仮想ネットワークを使用すると、Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 詳細については、「[アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md)」を参照してください。
 
 **ベスト プラクティス**: App Service 環境のセキュリティ状態を監視する。   
 **詳細**: Azure Security Center を使用して App Service 環境を監視します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な管理を構成するプロセスを説明する[推奨事項](../security-center/security-center-virtual-machine-recommendations.md)を作成します。
@@ -163,7 +163,7 @@ Application Insights には、収集されたデータを操作するための�
 - [Azure App Service](security-paas-applications-using-app-services.md)
 - [Azure SQL Database と Azure SQL Data Warehouse](security-paas-applications-using-sql.md)
 - [Azure Storage](security-paas-applications-using-storage.md)
-- Azure Redis Cache
+- Azure Cache for Redis
 - Azure Service Bus
 - Web アプリケーション ファイアウォール
 

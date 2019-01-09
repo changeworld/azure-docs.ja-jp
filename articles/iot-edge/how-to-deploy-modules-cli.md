@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge モジュールのデプロイ (CLI) | Microsoft Docs
+title: コマンド ラインからモジュールをデプロイする - Azure IoT Edge | Microsoft Docs
 description: Azure CLI の IoT 拡張機能を使用して、IoT Edge デバイスにモジュールをデプロイする
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a8f39befbe1a329091da19eeba14a8dcc749fa93
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: f9aa3fff8750dc20053072c939a6db9362a2b0d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564988"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093575"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure CLI を使用して Azure IoT Edge モジュールをデプロイする
 
@@ -117,7 +118,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 
 device id パラメーターでは大文字と小文字が区別されます。 content パラメーターは、保存した配置マニフェスト ファイルを指します。 
 
-   ![モジュールを設定する](./media/how-to-deploy-cli/set-modules.png)
+   ![az iot edge set-modules の出力](./media/how-to-deploy-cli/set-modules.png)
 
 ## <a name="view-modules-on-your-device"></a>デバイス上のモジュールを表示する
 
@@ -131,7 +132,7 @@ IoT Edge デバイス上のモジュールを参照します。
 
 device id パラメーターでは大文字と小文字が区別されます。
 
-   ![モジュールの一覧を表示する](./media/how-to-deploy-cli/list-modules.png)
+   ![az iot hub module-identity list の出力](./media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>次の手順
 

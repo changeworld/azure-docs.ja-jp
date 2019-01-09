@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure Data Factory を使用して Search インデックスにデータをコピーする | Microsoft Docs
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Search インデックスにデータをコピーまたはプッシュする方法について説明します。
 services: data-factory

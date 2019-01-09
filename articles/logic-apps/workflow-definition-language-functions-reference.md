@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: a0c7dcf848bfe6e5128117169a48adfbf9483f9b
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 179d8fc0f17bf43792db6a9b0e15a6f63349f002
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346764"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890944"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語の関数リファレンス
 
@@ -265,7 +265,7 @@ URI (Uniform Resource Identifier) を処理して、URI のさまざまなプロ
 
 <a name="manipulation-functions"></a>
 
-## <a name="manipulation-functions-json--xml"></a>操作関数: JSON と XML
+## <a name="manipulation-functions-json--xml"></a>操作関数:JSON と XML
 
 JSON オブジェクトと XML ノードを処理するには、以下の操作関数を使用できます。 各関数の完全なリファレンスについては、[アルファベット順の一覧](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)を参照してください。
 
@@ -691,7 +691,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
 | <*interval*> | [はい] | 整数 | 追加する指定した時間単位の数 | 
-| <*timeUnit*> | [はい] | String | *interval* で使用する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
+| <*timeUnit*> | [はい] | String | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
 | <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
@@ -752,9 +752,9 @@ and(false, false)
 
 次の結果を返します。
 
-* 1 番目の例: 両方の式が true なので、`true` を返します。 
-* 2 番目の例: 1 つの式が false なので、`false` を返します。
-* 3 番目の例: 両方の式が false なので、`false` を返します。
+* 1 番目の例:両方の式が true なので、`true` を返します。 
+* 2 番目の例:片方の式が false なので、`false` を返します。
+* 3 番目の例:両方の式が false なので、`false` を返します。
 
 *例 2*
 
@@ -768,9 +768,9 @@ and(equals(1, 2), equals(1, 3))
 
 次の結果を返します。
 
-* 1 番目の例: 両方の式が true なので、`true` を返します。 
-* 2 番目の例: 1 つの式が false なので、`false` を返します。
-* 3 番目の例: 両方の式が false なので、`false` を返します。
+* 1 番目の例:両方の式が true なので、`true` を返します。 
+* 2 番目の例:片方の式が false なので、`false` を返します。
+* 3 番目の例:両方の式が false なので、`false` を返します。
 
 <a name="array"></a>
 
@@ -1646,8 +1646,8 @@ empty('abc')
 
 次の結果を返します。 
 
-* 1 番目の例: 空の文字列を渡しているので、関数は `true` を返します。 
-* 2 番目の例: 文字列 "abc" を渡しているので、関数は `false` を返します。 
+* 1 番目の例:空の文字列を渡しているので、関数は `true` を返します。 
+* 2 番目の例:文字列 "abc" を渡しているので、関数は `false` を返します。 
 
 <a name="endswith"></a>
 
@@ -1721,8 +1721,8 @@ equals('abc', 'abcd')
 
 次の結果を返します。 
 
-* 1 番目の例: 両方の値は等しいので、関数は `true` を返します。
-* 2 番目の例: 両方の値は等しくないので、関数は `false` を返します。
+* 1 番目の例:両方の値が等しいので、関数は `true` を返します。
+* 2 番目の例:両方の値が等しくないので、関数は `false` を返します。
 
 <a name="first"></a>
 
@@ -1895,7 +1895,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | パラメーター | 必須 | type | 説明 | 
 | --------- | -------- | ---- | ----------- | 
 | <*interval*> | [はい] | 整数 | 減算する指定した時間単位の数 | 
-| <*timeUnit*> | [はい] | String | *interval* で使用する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
+| <*timeUnit*> | [はい] | String | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
 | <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 | 
 ||||| 
 
@@ -1937,7 +1937,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | パラメーター | 必須 | type | 説明 | 
 | --------- | -------- | ---- | ----------- | 
 | <*interval*> | [はい] | 整数 | 減算する指定した時間単位の数 | 
-| <*timeUnit*> | [はい] | String | *interval* で使用する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
+| <*timeUnit*> | [はい] | String | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
 | <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 | 
 ||||| 
 
@@ -2725,8 +2725,8 @@ not(true)
 
 次の結果を返します。
 
-* 1 番目の例: 式が false なので、関数は `true` を返します。
-* 2 番目の例: 式が true なので、関数は `false` を返します。
+* 1 番目の例:式が false なので、関数は `true` を返します。
+* 2 番目の例:式が true なので、関数は `false` を返します。
 
 *例 2*
 
@@ -2739,8 +2739,8 @@ not(equals(1, 1))
 
 次の結果を返します。
 
-* 1 番目の例: 式が false なので、関数は `true` を返します。
-* 2 番目の例: 式が true なので、関数は `false` を返します。
+* 1 番目の例:式が false なので、関数は `true` を返します。
+* 2 番目の例:式が true なので、関数は `false` を返します。
 
 <a name="or"></a>
 
@@ -2773,8 +2773,8 @@ or(false, false)
 
 次の結果を返します。
 
-* 1 番目の例: 少なくとも 1 つの式が true なので、関数は `true` を返します。
-* 2 番目の例: 両方の式が false なので、関数は `false` を返します。
+* 1 番目の例:少なくとも 1 つの式が true なので、関数は `true` を返します。
+* 2 番目の例:両方の式が false なので、関数は `false` を返します。
 
 *例 2*
 
@@ -2787,8 +2787,8 @@ or(equals(1, 2), equals(1, 3))
 
 次の結果を返します。
 
-* 1 番目の例: 少なくとも 1 つの式が true なので、関数は `true` を返します。
-* 2 番目の例: 両方の式が false なので、関数は `false` を返します。
+* 1 番目の例:少なくとも 1 つの式が true なので、関数は `true` を返します。
+* 2 番目の例:両方の式が false なので、関数は `false` を返します。
 
 <a name="parameters"></a>
 
@@ -3294,7 +3294,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
 | <*interval*> | [はい] | 整数 | 減算する指定した時間単位の数 | 
-| <*timeUnit*> | [はい] | String | *interval* で使用する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
+| <*timeUnit*> | [はい] | String | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
 | <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 | 
 ||||| 
 
@@ -4026,7 +4026,7 @@ xml('<value>')
 
 この例は、JSON オブジェクトを含む次の文字列の XML バージョンを作成します。 
 
-`xml( '{ \"name\": \"Sophia Owen\" }' )`
+`xml(json('{ \"name\": \"Sophia Owen\" }'))`
 
 返される結果の XML: 
 
@@ -4049,7 +4049,7 @@ xml('<value>')
 
 この例は、この JSON オブジェクトを含む文字列の XML を作成します。
 
-`xml( '{ \"person\": { \"name\": \"Sophia Owen\", \"city\": \"Seattle\" } }' )`
+`xml(json('{\"person\": {\"name\": \"Sophia Owen\", \"city\": \"Seattle\"}}'))`
 
 返される結果の XML: 
 

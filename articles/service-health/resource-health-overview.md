@@ -3,7 +3,7 @@ title: Azure Resource Health の概要 | Microsoft Docs
 description: Azure Resource Health の概要
 services: Resource health
 documentationcenter: ''
-author: shawntabrizi
+author: stephbaron
 manager: ''
 editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 03/27/2018
-ms.author: shawn.tabrizi
-ms.openlocfilehash: 99e996f182aac774f2e2565d87fd0debaba1b2d1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.date: 11/16/2018
+ms.author: stbaron
+ms.openlocfilehash: 918ff674e57a14f685c7f9ef2aaaca5ca064976e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30263124"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012846"
 ---
 # <a name="azure-resource-health-overview"></a>Azure Resource Health の概要
  
@@ -53,7 +53,7 @@ Resource Health は、イベントと復旧プロセスについてさらに詳�
 ![プラットフォームのイベントによって "使用不可" 状態となっている仮想マシン](./media/resource-health-overview/Unavailable.png)
 
 #### <a name="non-platform-events"></a>プラットフォーム以外のイベント
-プラットフォーム以外のイベントは、ユーザーのアクションによってトリガーされます。 たとえば、仮想マシンを停止した場合や、Redis Cache への接続数が最大数に到達した場合などです。
+プラットフォーム以外のイベントは、ユーザーのアクションによってトリガーされます。 たとえば、仮想マシンを停止した場合や、Azure Cache for Redis への接続数が最大数に到達した場合などです。
 
 ![プラットフォーム以外のイベントによって "使用不可" 状態となっている仮想マシン](./media/resource-health-overview/Unavailable_NonPlatform.png)
 

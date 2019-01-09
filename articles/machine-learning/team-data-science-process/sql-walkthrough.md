@@ -1,26 +1,22 @@
 ---
-title: Azure VM で SQL Server を使用して機械学習モデルを構築してデプロイする | Microsoft Docs'
-description: Advanced Analytics Process and Technology の活用
+title: SQL Server VM でモデルを構築し、デプロイする - Team Data Science Process
+description: Azure VM で SQL Server と公開されているデータセットを使用して機械学習モデルを構築してデプロイします。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 6066b083-262c-4453-a712-a5c05acc3df8
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
-ms.author: deguhath
-ms.openlocfilehash: 23766598b1af4e05b007e5ba844190f1fe03a660
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 97ef7b02690110f571e87960add34b45f683b615
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394376"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141409"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
 このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
@@ -50,15 +46,15 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 ## <a name="mltasks"></a>予測タスクの例
 *tip\_amount* に基づく 3 つの予測問題について説明します。つまり、
 
-1. 二項分類: 乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
-2. 多クラス分類: 乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
+1. 二項分類:乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
+2. 多クラス分類:乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. 回帰タスク: 乗車で支払われたチップの金額を予測します。  
+3. 回帰タスク:乗車で支払われたチップの金額を予測します。  
 
 ## <a name="setup"></a>Azure のデータ サイエンス環境の高度な分析のためのセット アップ
 「 [環境の計画](plan-your-environment.md) 」ガイドからわかるように、Azure で NYC タクシー乗車データセットを操作するいくつかの方法があります。
@@ -91,7 +87,7 @@ Azure のデータ サイエンス環境をセット アップするには、
 AzCopy を使用してデータをコピーするには
 
 1. 仮想マシン (VM) にログインする
-2. VM のデータ ディスクで新しいディレクトリを作成します (注記: VM にデータ ディスクとして付属する一時ディスクは使用しないでください)。
+2. VM のデータ ディスクで新しいディレクトリを作成します (注記: VM にデータ ディスクとして付属している一時ディスクは使用しないでください)。
 3. コマンド プロンプト ウィンドウで、次の Azcopy コマンド ラインを実行します。<path_to_data_folder> を、(2) で作成したデータ フォルダーに置き換えてください。
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -141,7 +137,7 @@ AzCopy を使用してデータをコピーするには
 12. NYC タクシー乗車データは、2 つの個別のテーブルに読み込まれます。 結合操作を向上させるため、テーブルのインデックスを作成することを強くお勧めします。 サンプルのスクリプト **create\_partitioned\_index.sql** は、パーティション分割されたインデックスを複合結合キー (**medallion、hack\_license、pickup\_datetime**) に作成します。
 
 ## <a name="dbexplore"></a>SQL Server でのデータの探索と特徴エンジニアリング
-このセクションでは、以前作成した SQL Server データベースを使用して、 **SQL Server Management Studio** で直接 SQL クエリを実行することで、データの探索および特徴の生成を行います。 **sample\_queries.sql** という名前のサンプルのスクリプトが、**Sample Scripts** フォルダーに用意されています。 データベース名が既定の名前 ( **TaxiNYC**) と異なる場合は、スクリプトのデータベース名を変更します。
+このセクションでは、以前作成した SQL Server データベースを使用して、 **SQL Server Management Studio** で直接 SQL クエリを実行することで、データの探索および特徴の生成を行います。 **sample\_queries.sql** という名前のサンプルのスクリプトが、**Sample Scripts** フォルダーに用意されています。 データベース名が既定の名前 (**TaxiNYC**) と異なる場合は、スクリプトのデータベース名を変更します。
 
 この演習では、以下のことを実行します。
 
@@ -550,9 +546,9 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
 これで、[Azure Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイに進む準備が整いました。 データは、以前特定したどの予測の問題でも使用できる状態になりました。予測の問題とは、
 
-1. 二項分類: 乗車に対してチップが支払われたかどうかを予測します。
-2. 多クラス分類: 以前定義したクラスに従って、支払われたチップの範囲を予測します。
-3. 回帰タスク: 乗車で支払われたチップの金額を予測します。  
+1. 二項分類:乗車に対してチップが支払われたかどうかを予測します。
+2. 多クラス分類:あらかじめ定義したクラスに従って、支払われたチップの範囲を予測します。
+3. 回帰タスク:乗車で支払われたチップの金額を予測します。  
 
 ## <a name="mlmodel"></a>Azure Machine Learning でのモデルの作成
 モデリングの演習を開始するには、Azure Machine Learning ワークスペースにログインします。 Machine Learning ワークスペースをまだ作成していない場合は、 [Azure Machine Learning ワークスペースの作成](../studio/create-workspace.md)に関する記事をご覧ください。

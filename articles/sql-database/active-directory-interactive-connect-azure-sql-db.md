@@ -12,12 +12,12 @@ ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 04/06/2018
 manager: craigg
-ms.openlocfilehash: 80944e73f21d75943d4fa71c7ac9500e47bab250
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 0b8b83651fb5466f5d9a2f703667d7645b498e89
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055528"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958819"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>ActiveDirectoryInteractive モードを使用した Azure SQL Database への接続
 
@@ -66,23 +66,23 @@ Azure AD Authentication を使用するには、C# クライアント プログ�
 
 1. Azure portal &gt; **[Azure Active Directory]** &gt; **[アプリの登録]**
 
-    ![アプリの登録](media\active-directory-interactive-connect-azure-sql-db\sshot-create-app-registration-b20.png)
+    ![アプリの登録](media/active-directory-interactive-connect-azure-sql-db/sshot-create-app-registration-b20.png)
 
 2. **アプリケーション ID** 値が生成され、表示されます。
 
-    ![表示されたアプリ ID](media\active-directory-interactive-connect-azure-sql-db\sshot-application-id-app-regis-mk49.png)
+    ![表示されたアプリ ID](media/active-directory-interactive-connect-azure-sql-db/sshot-application-id-app-regis-mk49.png)
 
 3. **[登録済みのアプリ]** &gt; **[設定]** &gt; **[必要なアクセス許可]** &gt; **[追加]**
 
-    ![登録済みのアプリのアクセス許可の設定](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
+    ![登録済みのアプリのアクセス許可の設定](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
 4. **[必要なアクセス許可]** &gt; **[API アクセスの追加]** &gt; **[Select an API]\(API の選択\)** &gt; **[Azure SQL Database]**
 
-    ![Azure SQL Database の API へのアクセスの追加](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
+    ![Azure SQL Database の API へのアクセスの追加](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
 5. **[API アクセス]** &gt; **[アクセス許可の選択]** &gt; **[委任されたアクセス許可]**
 
-    ![Azure SQL Database の API へのアクセス許可の委任](media\active-directory-interactive-connect-azure-sql-db\sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
+    ![Azure SQL Database の API へのアクセス許可の委任](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
 
 ### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B. SQL Database サーバーの Azure AD 管理者を設定する
@@ -124,13 +124,13 @@ SQL Database サーバーの Azure AD 管理者を使用して、SQL Database �
 
 この C# の例で利用する名前空間の 1 つが **System.Data.SqlClient** です。 特に重要なのは、**SqlAuthenticationMethod** 列挙型です。 この列挙型には次の値があります。
 
-- **SqlAuthenticationMethod.ActiveDirectory \*Interactive**\*:&nbsp; MFA (Multi-Factor Authentication) を実現するために、Azure AD ユーザー名と共に使用します。
+- **SqlAuthenticationMethod.ActiveDirectory *Interactive***:&nbsp;MFA (Multi-Factor Authentication) を実現するために、Azure AD ユーザー名と共に使用します。
     - この記事ではこの値が重視されます。 ユーザー パスワードのダイアログを表示し、このユーザーに MFA を適用する場合は MFA 検証のダイアログを表示することで、対話型エクスペリエンスを実現します。
     - この値は、.NET Framework バージョン 4.7.2 以降で使用できます。
 
-- **SqlAuthenticationMethod.ActiveDirectory \*Integrated**\*:&nbsp; *フェデレーション* アカウントに使用します。 フェデレーション アカウントの場合、ユーザー名は Windows ドメインに認識されています。 この方法では、MFA はサポートされていません。
+- **SqlAuthenticationMethod.ActiveDirectory *Integrated***:&nbsp;*フェデレーション* アカウントにこれを使用します。 フェデレーション アカウントの場合、ユーザー名は Windows ドメインに認識されています。 この方法では、MFA はサポートされていません。
 
-- **SqlAuthenticationMethod.ActiveDirectory \*Password**\*:&nbsp; Azure AD ユーザーとそのユーザーのパスワードを必要とする認証に使用します。 Azure SQL Database によって認証が実行されます。 この方法では、MFA はサポートされていません。
+- **SqlAuthenticationMethod.ActiveDirectory *Password***:&nbsp;これは Azure AD ユーザーとそのユーザーのパスワードを必要とする認証に使用します。 Azure SQL Database によって認証が実行されます。 この方法では、MFA はサポートされていません。
 
 
 
@@ -183,11 +183,11 @@ C# プログラムを実行する前に、SQL Server Management Studio (SSMS) �
 
 - **System.Data.SqlClient** 名前空間:
     - 検索:&nbsp; [https://docs.microsoft.com/dotnet/api/?term=System.Data.SqlClient](https://docs.microsoft.com/dotnet/api/?term=System.Data.SqlClient)
-    - 直接:&nbsp; [System.Data.Client](https://docs.microsoft.com/dotnet/api/system.data.sqlclient)
+    - 直接:&nbsp;[System.Data.Client](https://docs.microsoft.com/dotnet/api/system.data.sqlclient)
 
 - **Microsoft.IdentityModel.Clients.ActiveDirectory** 名前空間:
     - 検索:&nbsp; [https://docs.microsoft.com/dotnet/api/?term=Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/?term=Microsoft.IdentityModel.Clients.ActiveDirectory)
-    - 直接:&nbsp; [Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory)
+    - 直接:&nbsp;[Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory)
 
 
 #### <a name="c-source-code-in-two-parts"></a>2 つに分割された C# ソース コード

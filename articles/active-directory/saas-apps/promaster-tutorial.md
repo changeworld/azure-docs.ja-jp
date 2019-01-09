@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 13bb128836590fb43e0c6a2f7131f83a99a23eaf
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 871abffc07ee29df388205395110e89a85dd7344
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39507803"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>チュートリアル: Azure Active Directory と ProMaster (by Inlogik) の統合
 
@@ -111,6 +111,7 @@ ProMaster (by Inlogik) で Azure AD のシングル サインオンを構成し�
     ![[ProMaster (by Inlogik) のドメインと URL] のシングル サインオン情報](./media/promaster-tutorial/tutorial_promaster_url1.png)
 
     a. **[識別子]** ボックスでは、次の URL パターンのいずれかを使用します。
+
     | |
     | - |-|
     |  `https://secure.inlogik.com/<COMPANYNAME>`|
@@ -118,6 +119,7 @@ ProMaster (by Inlogik) で Azure AD のシングル サインオンを構成し�
     | |
 
     b. **[応答 URL]** ボックスでは、次の URL パターンのいずれかを使用します。
+
     | |
     | - |-|
     | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs`|
@@ -129,6 +131,7 @@ ProMaster (by Inlogik) で Azure AD のシングル サインオンを構成し�
     ![[ProMaster (by Inlogik) のドメインと URL] のシングル サインオン情報](./media/promaster-tutorial/tutorial_promaster_url2.png)
 
     **[サインオン URL]** ボックスでは、次の URL パターンのいずれかを使用します。
+
     | |
     | - |-|
     | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs `|
@@ -182,7 +185,7 @@ ProMaster (by Inlogik) で Azure AD のシングル サインオンを構成し�
 
 ### <a name="create-a-promaster-by-inlogik-test-user"></a>ProMaster (by Inlogik) のテスト ユーザーの作成
 
-このセクションでは、ProMaster (by Inlogik) で Britta Simon というユーザーを作成します。 [ProMaster (by Inlogik) サポート チーム](mailto:michael.boldiston@inlogik.com)と連携して、ProMaster (by Inlogik) プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、ProMaster (by Inlogik) で Britta Simon というユーザーを作成します。  [ProMaster (by Inlogik) サポート チーム](mailto:michael.boldiston@inlogik.com) と連携して、ProMaster (by Inlogik) プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

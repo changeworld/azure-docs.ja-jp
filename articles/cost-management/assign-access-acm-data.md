@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/28/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: 3096a79737c816747f36956958f9a16f86b9715d
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: secdec18
+ms.openlocfilehash: ab5f334b1c830ea5e9c0164b8e75ef0f4fab8e1b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582600"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075643"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
@@ -64,12 +64,12 @@ ms.locfileid: "52582600"
 1. EA ポータル ([https://ea.azure.com](https://ea.azure.com)) にエンタープライズ管理者アカウントでサインインします。
 2. 左側のウィンドウで、**[管理]** を選択します。
 3. **[登録]** タブで、管理する登録を選択します。  
-    ![EA ポータル](./media/assign-access-acm-data/ea-portal.png)
+    ![EA ポータルで登録を選択する](./media/assign-access-acm-data/ea-portal.png)
 4. **[+ 管理者の追加]** をクリックします。
 5. [管理者の追加] ボックスで、認証の種類を選択し、ユーザーの電子メール アドレスを入力します。
 6. ユーザーにコストと使用量のデータへの読み取り専用アクセスが必要な場合は、**[読み取り専用]** の下で **[はい]** を選択します。  それ以外の場合は、**[いいえ]** を選択します。
 7. **[追加]** をクリックしてアカウントを作成します。  
-    ![[管理者の追加] ボックス](./media/assign-access-acm-data/add-admin.png)
+    ![[管理者の追加] ボックスに示された情報の例](./media/assign-access-acm-data/add-admin.png)
 
 新しいユーザーが Cost Management のデータにアクセスできるまで最大 30 分かかる場合があります。
 
@@ -85,7 +85,7 @@ ms.locfileid: "52582600"
 6. ユーザーにコストと使用量のデータへの読み取り専用アクセスが必要な場合は、**[読み取り専用]** の下で **[はい]** を選択します。  それ以外の場合は、**[いいえ]** を選択します。
 7. 部署管理者のアクセス許可を付与する部署を選択します。
 8. **[追加]** をクリックしてアカウントを作成します。  
-    ![[部署管理者の追加] ボックス](./media/assign-access-acm-data/add-depart-admin.png)
+    ![[部署管理者を追加する] ボックスに必須情報を入力する](./media/assign-access-acm-data/add-depart-admin.png)
 
 ## <a name="assign-enrollment-account-scope-access"></a>登録アカウントのスコープへのアクセス許可を割り当てる
 
@@ -99,7 +99,7 @@ ms.locfileid: "52582600"
 6. 認証の種類を選択し、アカウント名を入力します。
 7. ユーザーの電子メール アドレスを入力し、必要に応じてコスト センターを入力します。
 8. **[追加]** をクリックしてアカウントを作成します。  
-    ![[アカウントの追加] ボックス](./media/assign-access-acm-data/add-account.png)
+    ![登録アカウント用の [アカウントの追加] ボックスに必須情報を入力する](./media/assign-access-acm-data/add-account.png)
 
 上記の手順を完了すると、ユーザー アカウントがエンタープライズ ポータルの登録アカウントになり、サブスクリプションを作成できます。 ユーザーは、作成したサブスクリプションのコストや使用量のデータにアクセスできます。
 
@@ -107,7 +107,7 @@ ms.locfileid: "52582600"
 
 管理グループのスコープにアクセスするには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 管理グループへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、管理グループに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、EA ポータルで **[AO ビューの請求額]** 設定も有効にしておく必要があります。
 
-1. Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 2. サイド バーで **[すべてのサービス]** を選択し、 _管理グループ_ を検索して、**[管理グループ]** を選択します。
 3. 階層内の管理グループを選択します。
 4. 管理グループの名前の横にある **[詳細]** をクリックします。
@@ -117,13 +117,13 @@ ms.locfileid: "52582600"
 8. **[アクセスの割り当て先]** の下で、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。
 9. アクセス許可を割り当てるには、ユーザーを検索して選択します。
 10. **[Save]** をクリックします。  
-    ![[アクセス許可の追加] ボックス](./media/assign-access-acm-data/add-permissions.png)
+    ![管理グループ用の [アクセス許可の追加] ボックスの情報の例](./media/assign-access-acm-data/add-permissions.png)
 
 ## <a name="assign-subscription-scope-access"></a>サブスクリプションのスコープへのアクセス権を割り当てる
 
 サブスクリプションにアクセスするには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 サブスクリプションへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、サブスクリプションに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、EA ポータルで **[AO ビューの請求額]** 設定も有効にしておく必要があります。
 
-1. Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 2. サイド バーで **[すべてのサービス]** を選択し、 _サブスクリプション_ を検索して、**[サブスクリプション]** を選択します。
 3. サブスクリプションを選択します。
 4. 左側のウィンドウから **[アクセス制御 (IAM)]** を選択します。
@@ -137,7 +137,7 @@ ms.locfileid: "52582600"
 
 リソース グループにアクセスするには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 リソース グループへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、リソース グループに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、EA ポータルで **[AO ビューの請求額]** 設定も有効にしておく必要があります。
 
-1. Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 2. サイド バーで **[すべてのサービス]** を選択し、 _リソース グループ_ を検索して、**[リソース グループ]** を選択します。
 3. リソース グループを選択します。
 4. 左側のウィンドウから **[アクセス制御 (IAM)]** を選択します。

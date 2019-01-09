@@ -66,6 +66,8 @@ items:
     href: site-recovery-faq.md
   - name: Azure への Azure VM のディザスター リカバリーについて
     items:
+    - name: Azure から Azure へのアーキテクチャ
+      href: azure-to-azure-architecture.md
     - name: 一般的な質問
       href: azure-to-azure-common-questions.md
     - name: Azure から Azure へのサポート マトリックス
@@ -440,9 +442,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: c08b4dea562a8f43d1fb7c331858598b8121888f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 1029557aed09aba06f7fce63bc4681969a6b3733
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545758"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103500"

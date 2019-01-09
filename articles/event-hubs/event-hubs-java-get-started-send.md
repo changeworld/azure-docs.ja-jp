@@ -1,20 +1,21 @@
 ---
-title: Java を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs
-description: Java を使用して Event Hubs への送信を開始する
+title: Java を使用してイベントを送信する - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs にイベントを送信する Java アプリケーションの作成に関するチュートリアルを提供します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 11/12/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 510f1a2bc23d14e1bb9e8e561b52936ae9d53685
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 80c413c874ca3e1bf46bfa4e5becb184223c5eeb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624541"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091290"
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs にイベントを送信する
 
@@ -32,7 +33,11 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 * Java 開発環境。 このチュートリアルでは、[Eclipse](https://www.eclipse.org/) を使用します。
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
-最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順を実行した後、このチュートリアルに示されている手順に進みます。
+最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。
+
+次の記事の手順に従って、イベント ハブ用のアクセス キーの値を取得します: [接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このチュートリアルの後半で記述するコードで、このアクセス キーを使用します。 既定のキー名は次のとおりです: **RootManageSharedAccessKey**。
+
+このチュートリアルでは、以下の手順に進みます。
 
 ## <a name="add-reference-to-azure-event-hubs-library"></a>Azure Event Hubs ライブラリへの参照を追加する
 
@@ -114,7 +119,7 @@ ehClient.closeSync();
 
 お疲れさまでした。 メッセージをイベント ハブに送信しました。
 
-### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>付録: EventHub パーティションへのメッセージのルーティング動作
+### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>付録:EventHub パーティションへのメッセージのルーティング動作
 
 コンシューマーがメッセージを取得するためには、あらかじめパブリッシャーがそのメッセージをパーティションに発行する必要があります。 com.microsoft.azure.eventhubs.EventHubClient オブジェクトの sendSync() メソッドを使ってイベント ハブに同期的にメッセージを発行するとき、パーティション キーが指定されているかどうかに応じて、そのメッセージは特定のパーティションに送信されるか、または利用可能なすべてのパーティションにラウンド ロビン方式で分散されます。
 

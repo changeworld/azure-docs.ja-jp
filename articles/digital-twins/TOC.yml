@@ -47,22 +47,28 @@ items:
       href: security-authenticating-apis.md
 - name: ハウツー ガイド
   items:
-  - name: マルチテナント アプリケーションを有効にする方法
+  - name: マルチテナント アプリケーションの有効化
     href: how-to-multitenant-applications.md
-  - name: ユーザー定義関数を作成する方法
+  - name: ユーザー定義関数の作成
     href: how-to-user-defined-functions.md
-  - name: エンドポイントを使ってイベントとメッセージをルーティングする方法
+  - name: エンドポイント経由でのイベントとメッセージのルーティング
     href: how-to-egress-endpoints.md
-  - name: Postman を構成する方法
-    href: how-to-configure-postman.md
-  - name: オブジェクトに BLOB を追加する方法
+  - name: オブジェクトへの BLOB の追加
     href: how-to-add-blobs.md
-  - name: Digital Twins Swagger を使用する方法
+  - name: Digital Twins Swagger の使用
     href: how-to-use-swagger.md
-  - name: ユーザー定義関数をデバッグする方法
+  - name: ユーザー定義関数のデバッグ
     href: how-to-diagnose-user-defined-functions.md
-  - name: 監視を構成する方法
+  - name: 監視の構成
     href: how-to-configure-monitoring.md
+  - name: Digital Twins API のクエリ
+    items:
+    - name: Postman の設定
+      href: how-to-configure-postman.md
+    - name: Digital Twins API の使用
+      href: how-to-navigate-apis.md
+    - name: 一般的なクエリのパターン
+      href: how-to-query-common-apis.md
 - name: リファレンス
   items:
   - name: ユーザー定義関数クライアント ライブラリ
@@ -113,9 +119,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=iot
   - name: ビデオ
     href: https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true
-ms.openlocfilehash: 04716146653b833461b8230c2895fd1a8b6dcd42
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 92d60cbe1de8d8f2b36d67e1a7ff2999a45e1a8e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993469"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102225"

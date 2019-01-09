@@ -1,4 +1,4 @@
----
+﻿---
 title: C# を使用して Azure で最初の永続関数を作成する
 description: Visual Studio を使用して Azure 永続関数を作成して発行します。
 services: functions

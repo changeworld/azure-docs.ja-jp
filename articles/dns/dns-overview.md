@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 9535ad73300406408a94a6f38f001e45ba7409a2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: df890eb0e07c13d0757c706a3cabbbad67b6eac2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093097"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716278"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
-Azure DNS を使用してドメイン名を購入することはできません。 年会費をお支払いになると、[Azure Web Apps](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) またはサードパーティのドメイン名レジストラーを使用して、ドメイン名を購入できます。 購入したドメインは、Azure DNS でホストし、レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
+Azure DNS を使用してドメイン名を購入することはできません。 年会費をお支払いになると、[App Service のドメイン](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain)またはサードパーティのドメイン名レジストラーを使用して、ドメイン名を購入できます。 購入したドメインは、Azure DNS でホストし、レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
 
 Azure DNS には、次の機能が含まれています。
 
@@ -57,7 +57,7 @@ Azure DNS では、プライベート DNS ドメインもサポートされる�
 
 Azure DNS では、エイリアス レコード セットをサポートします。 エイリアス レコード セットは、Azure パブリック IP アドレスまたは Azure Traffic Manager プロファイルなどの Azure リソースを参照するために使用できます。 基になるリソースの IP アドレスが変更された場合、エイリアス レコード セットは DNS の解決時にシームレスに自動更新されます。 エイリアス レコード セットはサービス インスタンスをポイントし、サービス インスタンスは IP アドレスに関連付けられます。 
 
-さらに、エイリアス レコードを使用することにより、頂点のドメインやネイキッド ドメインで Traffic Manager プロファイルを参照できるようになりました  (例: contoso.com)。
+さらに、エイリアス レコードを使用することにより、頂点のドメインやネイキッド ドメインで Traffic Manager プロファイルを参照できるようになりました  一例として contoso.com があります。
 
 詳細については、「[Azure DNS エイリアス レコード](dns-alias.md)」をご覧ください。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: e0a47da168ae9371979290b3febc9d767e8755d7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 164ec0898e2f7ad461ab63ce0fcaf47a87998797
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428013"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997843"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines おける SQL Server のバックアップと復元
 
@@ -40,7 +40,7 @@ ms.locfileid: "49428013"
 
 以下のセクションでは、各オプションについて詳しく説明します。 この記事の最後のセクションでは、機能マトリックスの形式でまとめています。
 
-## <a id="autoamted"></a> 自動バックアップ
+## <a id="automated"></a> 自動バックアップ
 
 自動バックアップは、Azure 内の Windows VM で実行されている SQL Server Standard エディションおよび Enterprise エディションの自動バックアップ サービスを提供します。 このサービスは、Azure portal で SQL Server Windows 仮想マシン イメージに自動的にインストールされる [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)によって提供されます。
 
@@ -56,23 +56,23 @@ SQL Server 2016 以降の VM では、自動バックアップ v2 により、�
 
 SQL VM の自動バックアップを構成する方法の詳細については、次のいずれかの記事をご覧ください。
 
-- **SQL Server 2016/2017**: [Azure Virtual Machines の自動バックアップ v2](virtual-machines-windows-sql-automated-backup-v2.md)
-- **SQL Server 2014**: [SQL Server 2014 Virtual Machines の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)
+- **SQL Server 2016/2017**:[Azure Virtual Machines の自動バックアップ v2](virtual-machines-windows-sql-automated-backup-v2.md)
+- **SQL Server 2014**:[SQL Server 2014 Virtual Machines の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)
 
 ## <a id="azbackup"></a> SQL VM の Azure Backup (パブリック プレビュー)
 
 [Azure Backup](/azure/backup/) は、Azure VM 上で実行されている SQL Server 向けのエンタープライズ クラスのバックアップ機能を提供します。 すべてのバックアップは、Recovery Services コンテナーに格納され、管理されます。 このソリューションにはいくつかの利点があります (特に企業向け)。
 
-- **ゼロインフラストラクチャでのバックアップ**: バックアップ サーバーまたは保存場所を管理する必要がありません。
-- **スケール**: 多くの SQL VM と数千のデータベースを保護します。
-- **従量課金制**: この機能は、Azure Backup によって提供される個別のサービスですが、すべての Azure サービスと同様に、料金は使用した分だけになります。
-- **一元管理と監視**: Azure Backup がサポートする他のワークロードを含め、すべてのバックアップを Azure の単一のダッシュボードで一元管理できます。
-- **ポリシーに基づくバックアップと保持**: 定期的なバックアップ用の標準バックアップ ポリシーを作成できます。 何年もバックアップを維持するためのバックアップ ポリシーを作成することもできます。
-- **SQL Always On のサポート**: SQL Server Always On 構成を検出して保護し、バックアップ可用性グループのバックアップ設定を使用します。
-- **15 分の復旧ポイント目標 (RPO)**: SQL トランザクション ログのバックアップを最大 15 分ごとに構成できます。
-- **ポイントインタイム リストア**: ポータルを使用して、データベースを特定の時点に復元できます。複数の完全バックアップ、差分バックアップ、およびログ バックアップを手動で復元する必要はありません。
-- **エラーが発生した場合の統合電子メール アラート**: エラーが発生した場合の統合電子メール通知を構成できます。
-- **ロールベースのアクセス制御**: ポータルを介してバックアップと復元の操作を管理できるユーザーを決定できます。
+- **ゼロインフラストラクチャでのバックアップ**:バックアップ サーバーまたは保存場所を管理する必要がありません。
+- **スケール**:多くの SQL VM と数千のデータベースを保護します。
+- **従量課金制**:この機能は、Azure Backup によって提供される個別のサービスですが、すべての Azure サービスと同様に、料金は使用した分だけになります。
+- **一元管理と監視**:Azure Backup がサポートする他のワークロードを含め、すべてのバックアップを Azure の単一のダッシュボードで一元管理できます。
+- **ポリシーに基づくバックアップと保持**:定期的なバックアップ用の標準バックアップ ポリシーを作成できます。 何年もバックアップを維持するためのバックアップ ポリシーを作成することもできます。
+- **SQL Always On のサポート**:SQL Server Always On 構成を検出して保護し、バックアップ可用性グループのバックアップ設定を使用します。
+- **15 分の復旧ポイント目標 (RPO)**:SQL トランザクション ログのバックアップを最大 15 分ごとに構成できます。
+- **ポイントインタイム リストア**:ポータルを使用して、データベースを特定の時点に復元できます。複数の完全バックアップ、差分バックアップ、およびログ バックアップを手動で復元する必要はありません。
+- **エラーが発生した場合の統合電子メール アラート**:エラーが発生した場合の統合電子メール通知を構成できます。
+- **ロールベースのアクセス制御**:ポータルを介してバックアップと復元の操作を管理できるユーザーを決定できます。
 
 機能の簡単な概要とデモについては、次のビデオをご覧ください。
 
@@ -109,9 +109,9 @@ SQL Server 2012 SP1 CU2 以降では、Microsoft Azure Blob ストレージに�
 
 詳細については、SQL Server のバージョンに応じて、次のいずれかの記事をご覧ください。
 
-- **SQL Server 2016/2017**: [SQL Server Backup to URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
-- **SQL Server 2014**: [SQL Server 2014 Backup to URL](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)
-- **SQL Server 2012**: [SQL Server 2012 Backup to URL](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)
+- **SQL Server 2016/2017**:[SQL Server Backup to URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
+- **SQL Server 2014**:[SQL Server 2014 Backup to URL](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)
+- **SQL Server 2012**:[SQL Server 2012 Backup to URL](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)
 
 ### <a name="managed-backup"></a>マネージド バックアップ
 
