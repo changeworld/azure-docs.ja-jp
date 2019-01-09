@@ -22,7 +22,7 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37046532"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-onprem-db2-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-db2.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "37046532"
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の DB2 コネクタ](../connector-db2.md)に関するページをご覧ください。
 
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、オンプレミスの DB2 データベースからデータ ストアにデータをコピーする方法について説明します。 データは、[Data Factory のデータ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関する記事でサポートされているシンクとして挙げられているストアにコピーできます。 Data Factory についてのこの記事は、本トピックのベースになっており、コピー アクティビティを使ったデータ移動の概要や、サポートされるデータ ストアの組み合わせの一覧を掲載しています。 
+この記事では、Azure Data Factory のコピー アクティビティを使用して、オンプレミスの DB2 データベースからデータ ストアにデータをコピーする方法について説明します。 データは、[Data Factory のデータ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関する記事でサポートされているシンクとして挙げられているストアにコピーできます。 Data Factory についてのこの記事は、本トピックのベースになっており、コピー アクティビティを使ったデータ移動の概要や、サポートされるデータ ストアの組み合わせの一覧を掲載しています。
 
 現在 Data Factory でサポートされているのは、DB2 データベースから[サポートされているシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)へのデータ移動だけです。 他のデータ ストアから DB2 データベースへの移動はサポートされません。
 
@@ -62,16 +62,16 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 > - DB2 for Z/OS または LUW: パッケージの権限および BIND、BINDADD、GRANT EXECUTE TO PUBLIC アクセス許可を付与されたパワー ユーザーまたは管理者の高い権限があるアカウントを使用して、コピー アクティビティを 1 回実行します。 するとコピー時に必要なパッケージが自動作成されます。 その後、通常のユーザーに切り替えて後続のコピー操作を実行することができます。
 
 ## <a name="getting-started"></a>使用の開始
-さまざまなツールと API を使用して、オンプレミスの DB2 データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
+さまざまなツールと API を使用して、オンプレミスの DB2 データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-- パイプラインを作成する最も簡単な方法は、Azure Data Factory コピー ウィザードを使うことです。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用したパイプラインの作成のチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関するページを参照してください。 
-- Azure Portal、Visual Studio、Azure PowerShell、Azure Resource Manager テンプレート、.NET API、REST API などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 
+- パイプラインを作成する最も簡単な方法は、Azure Data Factory コピー ウィザードを使うことです。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用したパイプラインの作成のチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関するページを参照してください。
+- Azure Portal、Visual Studio、Azure PowerShell、Azure Resource Manager テンプレート、.NET API、REST API などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. リンクされたサービスを作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表すデータセットを作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。 
+2. コピー操作用の入力データと出力データを表すデータセットを作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。
 
 コピー ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 「[JSON の使用例: DB2 から Azure Blob Storage へのデータのコピー](#json-example-copy-data-from-db2-to-azure-blob)」に、オンプレミスの DB2 データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
 
