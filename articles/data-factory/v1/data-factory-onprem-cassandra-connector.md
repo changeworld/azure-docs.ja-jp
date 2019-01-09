@@ -21,8 +21,8 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 06/27/2018
 ms.locfileid: "37054311"
 ---
-# <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Cassandra データベースからデータを移動する 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+# <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Cassandra データベースからデータを移動する
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-onprem-cassandra-connector.md)
 > * [Version 2 (現在のバージョン)](../connector-cassandra.md)
 
@@ -31,7 +31,7 @@ ms.locfileid: "37054311"
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Cassandra データベースからデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
-オンプレミスの Cassandra データ ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 Data Factory が現在サポートしているのは、Cassandra データ ストアから他のデータ ストアへのデータの移動だけで、他のデータ ストアから Cassandra データ ストアへの移動はサポートしていません。 
+オンプレミスの Cassandra データ ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 Data Factory が現在サポートしているのは、Cassandra データ ストアから他のデータ ストアへのデータの移動だけで、他のデータ ストアから Cassandra データ ストアへの移動はサポートしていません。
 
 ## <a name="supported-versions"></a>サポートされているバージョン
 Cassandra コネクタでは、Cassandra バージョン 2.x と 3.x がサポートされます。 セルフホステッド統合ランタイムでアクティビティを実行する場合、IR バージョン 3.7 以降で Cassandra 3.x がサポートされています。
@@ -39,26 +39,26 @@ Cassandra コネクタでは、Cassandra バージョン 2.x と 3.x がサポ�
 ## <a name="prerequisites"></a>前提条件
 Azure Data Factory サービスをオンプレミスの Cassandra データベースに接続できるようにするには、データベースとのリソースの競合を避けるため、データベースをホストするコンピューターと同じコンピューターまたは別のコンピューターに Data Management Gateway をインストールする必要があります。 Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータ ソースをクラウド サービスに接続するコンポーネントです。 Data Management Gateway の詳細については、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」をご覧ください。 データを移動するデータ パイプラインにゲートウェイをセットアップする手順については、[オンプレミスからクラウドへのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。
 
-Cassandra データベースが Azure IaaS VM などのクラウドでホストされている場合でも、データベースへの接続にはゲートウェイを使用する必要があります。 ゲートウェイは、データベースをホストする VM で使用できます。また、そのゲートウェイがデータベースに接続できれば別の VM で使用することもできます。  
+Cassandra データベースが Azure IaaS VM などのクラウドでホストされている場合でも、データベースへの接続にはゲートウェイを使用する必要があります。 ゲートウェイは、データベースをホストする VM で使用できます。また、そのゲートウェイがデータベースに接続できれば別の VM で使用することもできます。
 
-ゲートウェイをインストールすると、Cassandra データベースへの接続に使用される Microsoft Cassandra ODBC ドライバーが自動的にインストールされます。 したがって、Cassandra データベースからデータをコピーするときに、ドライバーをゲートウェイ コンピューターに手動でインストールする必要はありません。 
+ゲートウェイをインストールすると、Cassandra データベースへの接続に使用される Microsoft Cassandra ODBC ドライバーが自動的にインストールされます。 したがって、Cassandra データベースからデータをコピーするときに、ドライバーをゲートウェイ コンピューターに手動でインストールする必要はありません。
 
 > [!NOTE]
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="getting-started"></a>使用の開始
-さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
+さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
-- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの Cassandra データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例: Cassandra から Azure BLOB へのデータのコピー](#json-example-copy-data-from-cassandra-to-azure-blob)」を参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの Cassandra データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例: Cassandra から Azure BLOB へのデータのコピー](#json-example-copy-data-from-cassandra-to-azure-blob)」を参照してください。
 
 次のセクションでは、Cassandra データ ストアに固有のデータ ファクトリ エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -117,7 +117,7 @@ Cassandra データベースが Azure IaaS VM などのクラウドでホスト�
 
 **Cassandra のリンクされたサービス:**
 
-この例では、 **Cassandra** のリンクされたサービスを使用します。 このリンクされたサービスでサポートされているプロパティについては、 [Cassandra のリンクされたサービス](#linked-service-properties) に関するセクションをご覧ください。  
+この例では、 **Cassandra** のリンクされたサービスを使用します。 このリンクされたサービスでサポートされているプロパティについては、 [Cassandra のリンクされたサービス](#linked-service-properties) に関するセクションをご覧ください。
 
 ```json
 {
@@ -213,13 +213,13 @@ Cassandra データベースが Azure IaaS VM などのクラウドでホスト�
 RelationalSource でサポートされるプロパティの一覧については、「 [RelationalSource type プロパティ](#copy-activity-properties) 」をご覧ください。
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2016-06-01T18:00:00",
         "end":"2016-06-01T19:00:00",
         "description":"pipeline with copy activity",
-        "activities":[  
+        "activities":[
         {
             "name": "CassandraToAzureBlob",
             "description": "Copy from Cassandra to an Azure blob",
@@ -255,7 +255,7 @@ RelationalSource でサポートされるプロパティの一覧については
                 "timeout": "01:00:00"
             }
         }
-        ]    
+        ]
     }
 }
 ```
