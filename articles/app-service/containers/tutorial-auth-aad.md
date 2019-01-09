@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 65c503c96305cf23b97511dd06a56b5eb6fcc1be
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8ebaab260d38a3fe4f492f2545c5ec8b07990235
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409413"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715241"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>チュートリアル: Azure App Service on Linux でユーザーをエンド ツー エンドで認証および承認する
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 さらに、App Service には、[ユーザーの認証と承認](../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)のためのサポートが組み込まれています。 このチュートリアルでは、App Service の認証と承認を使用してアプリケーションをセキュリティで保護する方法を示します。 ここでは ASP.NET Core アプリと Angular.js フロントエンドが使用されていますが、これはほんの一例です。 App Service の認証と承認では、すべての言語のランタイムがサポートされています。このチュートリアルに沿って、お好みの言語に適用する方法を学習することができます。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 さらに、App Service には、[ユーザーの認証と承認](../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)のためのサポートが組み込まれています。 このチュートリアルでは、App Service の認証と承認を使用してアプリケーションをセキュリティで保護する方法を示します。 ここでは ASP.NET Core アプリと Angular.js フロントエンドが使用されていますが、これはほんの一例です。 App Service の認証と承認では、すべての言語のランタイムがサポートされています。このチュートリアルに沿って、お好みの言語に適用する方法を学習することができます。
 
 チュートリアルでは、サンプル アプリを使用して、自己完結型アプリをセキュリティで保護する方法を示します (「[バックエンド アプリの認証と承認を有効にする](#enable-authentication-and-authorization-for-back-end-app)」を参照)。
 
@@ -86,7 +86,7 @@ dotnet run
 
 ### <a name="create-azure-resources"></a>Azure リソースを作成する
 
-Cloud Shell で次のコマンドを実行して、2 つの Web アプリを作成します。 _&lt;front\_end\_app\_name>_ と _&lt;back\_end\_app\_name>_ を、グローバルに一意の 2 つのアプリ名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 各コマンドの詳細については、「[App Service on Linux での .NET Core Web アプリの作成](quickstart-dotnetcore.md)」を参照してください。
+Cloud Shell で次のコマンドを実行して、2 つの App Service アプリを作成します。 _&lt;front\_end\_app\_name>_ と _&lt;back\_end\_app\_name>_ を、グローバルに一意の 2 つのアプリ名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 各コマンドの詳細については、「[App Service on Linux での .NET Core アプリの作成](quickstart-dotnetcore.md)」を参照してください。
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
@@ -129,7 +129,7 @@ git commit -m "add CORS to back end"
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
-ローカル ターミナル ウィンドウで、以下の Git コマンドを実行して、バックエンド アプリにデプロイします。 _&lt;deploymentLocalGitUrl-of-back-end-app>_ を、「[Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL に置き換えます。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure Portal へのログインに使用する資格情報ではなく、[デプロイ資格情報](../app-service-deployment-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)を入力してください。
+ローカル ターミナル ウィンドウで、以下の Git コマンドを実行して、バックエンド アプリにデプロイします。 _&lt;deploymentLocalGitUrl-of-back-end-app>_ を、「[Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL に置き換えます。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure Portal へのログインに使用する資格情報ではなく、[デプロイ資格情報](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)を入力してください。
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>
@@ -143,7 +143,7 @@ git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
 git push frontend master
 ```
 
-### <a name="browse-to-the-azure-web-apps"></a>Azure Web アプリに移動する
+### <a name="browse-to-the-azure-apps"></a>Azure アプリの参照
 
 ブラウザーで次の URL に移動し、2 つのアプリが動作していることを確認します。
 
@@ -242,7 +242,7 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>バックエンド アプリの認証と承認を有効にする
 
-[Azure Portal](https://portal.azure.com) で、左側のメニューから **[リソース グループ]** > **[myAuthResourceGroup]** > _\<back\_end\_app\_name>_ の順にクリックして、バックエンド アプリの管理ページを開きます。
+[Azure portal](https://portal.azure.com) で、左側のメニューから **[リソース グループ]** > **[myAuthResourceGroup]** > _\<back\_end\_app\_name>_ の順にクリックして、バックエンド アプリの管理ページを開きます。
 
 ![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 
@@ -453,7 +453,7 @@ az group delete --name myAuthResourceGroup
 > * サーバー コードのアクセス トークンを使用する
 > * クライアント (ブラウザー) コードのアクセス トークンを使用する
 
-次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
+次のチュートリアルに進み、カスタム DNS 名をアプリにマップする方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure Web Apps にマップする](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+> [既存のカスタム DNS 名を Azure App Service にマップする](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

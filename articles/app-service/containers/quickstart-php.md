@@ -1,5 +1,5 @@
 ---
-title: Linux での PHP Web アプリの作成 - Azure App Service | Microsoft Docs
+title: Linux での PHP アプリの作成 - Azure App Service | Microsoft Docs
 description: 初めての PHP Hello World を App Service on Linux に数分でデプロイします。
 services: app-service\web
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 2c9586bb5abce66e4043e3df80b420174a582cbb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: af413528c279c5fcab472347d247b17dd5061167
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257405"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628410"
 ---
-# <a name="create-a-php-web-app-in-app-service-on-linux"></a>App Service on Linux での PHP Web アプリの作成
+# <a name="create-a-php-app-in-app-service-on-linux"></a>App Service on Linux での PHP アプリの作成
 
 > [!NOTE]
-> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、「[Azure に PHP Web アプリを作成する](../app-service-web-get-started-php.md)」を参照してください。
+> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、[Azure での PHP アプリの作成](../app-service-web-get-started-php.md)に関するページを参照してください。
 >
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタート チュートリアルでは、Azure App Service on Linux に PHP アプリをデプロイする方法を説明します。 Cloud Shell で [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して、組み込みイメージを使用する Web アプリを作成し、Git を使用してその Web アプリに PHP のコードをデプロイします。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタート チュートリアルでは、Azure App Service on Linux に PHP アプリをデプロイする方法を説明します。 Cloud Shell で [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して組み込みのイメージによるアプリを作成し、Git を使用してその App Service アプリに PHP のコードをデプロイします。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-php/hello-world-in-browser.png)
 
@@ -80,15 +80,15 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
-サイトを参照して、新たに作成された、組み込みイメージを使用する Web アプリを確認します。 _&lt;app_name>_ は、Web アプリの名前に置き換えます。
+サイトを参照して、お客様が新しく作成した組み込みのイメージによるアプリを確認します。 _&lt;app name>_ は、アプリの名前に置き換えます。
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-新しい Web アプリは次のようになります。
+新しいアプリは次のようになります。
 
-![空の Web アプリ ページ](media/quickstart-php/app-service-web-service-created.png)
+![空のアプリ ページ](media/quickstart-php/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -125,7 +125,7 @@ Web ブラウザーを使用して、デプロイされたアプリケーショ�
 http://<app_name>.azurewebsites.net
 ```
 
-組み込みイメージを使用する Web アプリで、PHP のサンプル コードが実行されています。
+App Service on Linux で組み込みのイメージを使用して PHP サンプル コードが実行されています。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-php/hello-world-in-browser.png)
 
@@ -150,15 +150,15 @@ git push azure master
 
 ![Azure で実行される更新済みのサンプル アプリ](media/quickstart-php/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>新しい Azure Web アプリを管理する
+## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> に移動し、お客様が作成したアプリを管理します。
 
-左側のメニューで **[App Services]** をクリックした後、Azure Web アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
-![Azure Web アプリへのポータル ナビゲーション](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
+![Azure アプリへのポータル ナビゲーション](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
+お客様のアプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
 
 ![Azure Portal の [App Service] ページ](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 

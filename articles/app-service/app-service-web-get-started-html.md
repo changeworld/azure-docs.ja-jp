@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c7d01d4c079eacfd2af1ebad4ac41d70f792a0bb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ae37befe2ae2220feaf17ae4354b6fc780147f7e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253579"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634237"
 ---
-# <a name="create-a-static-html-web-app-in-azure"></a>Azure で静的な HTML Web アプリを作成する
+# <a name="create-a-static-html-web-app-in-azure"></a>Azure で静的 HTML Web アプリを作成する
 
-[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイック スタートでは、基本的な HTML+CSS サイトを Azure Web Apps にデプロイする方法を示します。 このクイック スタートは [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で行いますが、これらのコマンドは [Azure CLI](/cli/azure/install-azure-cli) を使用してローカルで実行することもできます。
+[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイック スタートでは、基本的な HTML+CSS サイトを Azure App Service にデプロイする方法を示します。 このクイック スタートは [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で行いますが、これらのコマンドは [Azure CLI](/cli/azure/install-azure-cli) を使用してローカルで実行することもできます。
 
 ![サンプル アプリのホーム ページ](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -84,7 +84,7 @@ az webapp up --location westeurope --name <app_name>
 
 - 指定された名前でアプリを作成する。
 
-- 現在の作業ディレクトリから Web アプリにファイルを [zip してデプロイ](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip)する。
+- 現在の作業ディレクトリから Web アプリにファイルを [zip してデプロイ](https://docs.microsoft.com/azure/app-service/deploy-zip)する。
 
 このコマンドの実行には、数分かかる場合があります。 実行中、次の例のような情報が表示されます。
 
@@ -106,7 +106,7 @@ az webapp up --location westeurope --name <app_name>
 
 ## <a name="browse-to-the-app"></a>アプリの参照
 
-ブラウザーで、Azure Web アプリの URL (`http://<app_name>.azurewebsites.net`) に移動します。
+ブラウザーで、アプリの URL (`http://<app_name>.azurewebsites.net`) に移動します。
 
 ページは、Azure App Service Web アプリとして実行されています。
 
@@ -132,13 +132,13 @@ az webapp up --location westeurope --name <app_name>
 
 ![更新されたサンプル アプリのホーム ページ](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
-## <a name="manage-your-new-azure-web-app"></a>新しい Azure Web アプリを管理する
+## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。
 
-左側のメニューで **[App Services]** をクリックした後、Azure Web アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
-![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-get-started-html/portal1.png)
+![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-html/portal1.png)
 
 Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
 

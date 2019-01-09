@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: イベント ハブから Azure データ エクスプローラーにデータを取り込む'
+title: クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む
 description: このクイック スタートでは、イベント ハブから Azure データ エクスプローラーにデータを取り込む方法について説明します。
 services: data-explorer
 author: orspod
@@ -8,22 +8,20 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 3350c222cced036af6319cee166c53da0b14f2a9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 563b171177b491037e34dce891b565ea0943feda
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210450"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654106"
 ---
-# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>クイック スタート: イベント ハブから Azure データ エクスプローラーにデータを取り込む
+# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む
 
-Azure データ エクスプローラーは、ログおよびテレメトリ データのためのスケーラビリティに優れた高速データ探索サービスです。 Azure データ エクスプローラーには、Event Hubs からの取り込み (データの読み込み)、ビッグ データのストリーミング プラットフォーム、イベント取り込みサービスの機能があります。 Event Hubs は、1 秒あたり数百万件のイベントをほぼリアルタイムで処理できます。 このクイック スタートでは、イベント ハブを作成し、Azure データ エクスプローラーからイベント ハブに接続し、システムでデータ フローを確認します。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure データ エクスプローラーには、Event Hubs からの取り込み (データの読み込み)、ビッグ データのストリーミング プラットフォーム、イベント取り込みサービスの機能があります。 Event Hubs は、1 秒あたり数百万件のイベントをほぼリアルタイムで処理できます。 このクイック スタートでは、イベント ハブを作成し、Azure データ エクスプローラーからイベント ハブに接続し、システムでデータ フローを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、Azure サブスクリプションに加え、以下が必要です。
+* Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 * [テスト用のクラスターとデータベース](create-cluster-database-portal.md)
 
@@ -45,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     **[Deploy to Azure]\(Azure へのデプロイ\)** ボタンをクリックして Azure portal に移動し、デプロイ フォームに入力します。
 
-    ![[Deploy to Azure (Azure へのデプロイ)]](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Deploy to Azure (Azure へのデプロイ)](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. イベント ハブを作成するサブスクリプションを選択し、*test-hub-rg* というリソース グループを作成します。
 
@@ -61,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |---|---|---|
     | サブスクリプション | 該当するサブスクリプション | イベント ハブに使用する Azure サブスクリプションを選択します。|
     | リソース グループ | *test-hub-rg* | 新しいリソース グループを作成します。 |
-    | Location | *[米国西部]* | このクイック スタートでは *[米国西部]* を選択します。 実稼働環境システムでは、ニーズに最も適したリージョンを選択します。
+    | 場所 | *[米国西部]* | このクイック スタートでは *[米国西部]* を選択します。 運用システムでは、ニーズに最も適したリージョンを選択します。 最良のパフォーマンスを得るためには、Kusto クラスターと同じ場所にイベント ハブの名前空間を作成します (高スループットのイベント ハブの名前空間に最も重要です)。
     | 名前空間名 | 一意の名前空間名 | 名前空間を識別する一意の名前を選択します。 たとえば、*mytestnamespace* と指定します。 指定した名前にドメイン名 *servicebus.windows.net* が付加されます。 この名前には、文字、数字、ハイフンのみを含めることができます。 名前の先頭は英字、末尾は英字または数字にする必要があります。 値の長さは 6 から 50 文字にする必要があります。
     | イベント ハブ名 | *test-hub* | イベント ハブは、固有のスコープ コンテナーを提供する名前空間以下にあります。 イベント ハブ名は、名前空間内で一意にする必要があります。 |
     | コンシューマー グループ名 | *test-group* | コンシューマー グループを使用すると、複数の使用アプリケーションがそれぞれイベント ストリーム ビューを持つことができるようになります。 |
@@ -200,4 +198,4 @@ Azure Data Explorer とイベント ハブが接続されたので、ダウン�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイック スタート: Azure データ エクスプローラーでデータのクエリを実行する](web-query-data.md)
+> [クイック スタート: Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

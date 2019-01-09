@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: 814d558efee4a72a25d956828e0db237424cab24
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 12/17/2018
+ms.openlocfilehash: aea95c245b86905b7bef0a35ffaa6c5e00567111
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409770"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558636"
 ---
 # <a name="tutorial-secure-a-single-database-in-azure-sql-database"></a>チュートリアル: Azure SQL Database の単一データベースをセキュリティで保護する
 
@@ -136,6 +136,9 @@ Azure Portal で Azure SQL サーバーの Azure Active Directory 管理者を�
     ![choose-ad](./media/sql-database-aad-authentication/8choose-ad.png)
 
 2. **[SQL Server]** ページで **[Active Directory 管理者]** を選択し、**[Active Directory 管理者]** ページで **[管理者の設定]** を選択します。![Active Directory を選択する](./media/sql-database-aad-authentication/select-active-directory.png)  
+
+   > [!IMPORTANT]
+   > このタスクは、"会社の管理者" または "全体管理者" として実行する必要があります。
 
 3. **[管理者の追加]** ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** を選択します。 [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません (「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する](sql-database-aad-authentication.md)」の「**Azure AD の機能と制限事項**」セクションでサポートされている管理者の一覧を参照してください)。ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。
     ![管理者を選択する](./media/sql-database-aad-authentication/select-admin.png)  

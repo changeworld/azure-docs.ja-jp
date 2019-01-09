@@ -4,15 +4,15 @@ description: この記事では、Azure Site Recovery を使用して、オン�
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1df09a885d6c636ff6bd4bcbec03d27ff7b44ff9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5023171c4f943b7e698a0b6bbcadef209965e2df
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836986"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789248"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 
@@ -63,9 +63,9 @@ ms.locfileid: "52836986"
 1. **[Recovery Services コンテナー]** > [コンテナー] の順にクリックします。
 2. リソース メニューで、**[Site Recovery]** > **[インフラストラクチャの準備]** > **[保護の目標]** の順にクリックします。
 3. **[保護の目標]** で、何を移行するかを選択します。
-    - **VMware**: **[To Azure]\(Azure へ\)** > **[Yes, with VMware vSphere Hypervisor]\(はい、VMware vSphere ハイパーバイザーを使用する\)** の順に選択します。
-    - **物理マシン**: **[To Azure]\(Azure へ\)** > **[非仮想化/その他]** の順に選択します。
-    - **Hyper-V**: **[Azure へ]** > **[Yes, with Hyper-V]\(はい、Hyper-V を使用する\)** を選択します。 Hyper-V VM が VMM で管理される場合は **[はい]** を選択します。
+    - **VMware**:**[To Azure]\(Azure へ\)** > **[Yes, with VMware vSphere Hypervisor]\(はい、VMware vSphere ハイパーバイザーを使用する\)** の順に選択します。
+    - **物理マシン**:**[To Azure]\(Azure へ\)** > **[非仮想化/その他]** の順に選択します。
+    - **Hyper-V**:**[To Azure]\(Azure へ\)** > **[Yes, with Hyper-V]\(はい、Hyper-V を使用する\)** の順に選択します。 Hyper-V VM が VMM で管理される場合は **[はい]** を選択します。
 
 
 ## <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
@@ -119,7 +119,7 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 
 
 > [!WARNING]
-> **進行中のフェールオーバーを取り消さないでください**。フェールオーバーが開始される前に VM のレプリケーションが停止します。 進行中のフェールオーバーをキャンセルすると、フェールオーバーは停止しますが、VM が再びレプリケートされることはありません。
+> **進行中のフェールオーバーを取り消さないでください**:フェールオーバーが開始される前に、VM のレプリケーションが停止されます。 進行中のフェールオーバーをキャンセルすると、フェールオーバーは停止しますが、VM が再びレプリケートされることはありません。
 
 一部のシナリオでは、フェールオーバーが完了するまでに、さらに約 8 ～ 10 分の処理が必要です。 物理サーバー、VMware Linux マシン、DHCP サービスが有効でない VMware VM、ブート ドライバー storvsc、vmbus、storftt、intelide、atapi を持たない VMware VM については、テスト フェールオーバーの時間がさらに長くなる場合もあります。
 

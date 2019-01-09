@@ -12,16 +12,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 471d2b0b8d98651d4b9ef4e88df0e863715b0c88
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5f2c8c2a9a2b21a15aa997ff0cc98860ceec76cc
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341781"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744838"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>クイック スタート:.NET Core (C#) を使用して Azure SQL データベースに照会する
 
-このクイック スタートでは、[.NET Core](https://www.microsoft.com/net/) と C# コードを使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを実行してデータのクエリを行う方法について説明します。
+このクイック スタートでは、[.NET Core](https://www.microsoft.com/net/) と C# コードを使用して、Azure SQL Database に接続します。 その後、Transact-SQL ステートメントを実行して、データの照会を行います。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,9 +58,9 @@ ms.locfileid: "53341781"
     ```cmd
     dotnet new console
     ```
-    これにより、初期 C# コード ファイル (**Program.cs**)、XML 構成ファイル (**sqltest.csproj**)、必要なバイナリなど、新しいアプリ プロジェクト ファイルが作成されます。
+    このコマンドにより、初期 C# コード ファイル (**Program.cs**)、XML 構成ファイル (**sqltest.csproj**)、必要なバイナリなど、新しいアプリ プロジェクト ファイルが作成されます。
 
-2. テキスト エディターで **sqltest.csproj** を開き、`<Project>` タグの間に次の XML を貼り付けます。 これにより、依存関係として `System.Data.SqlClient` が追加されます。
+2. テキスト エディターで **sqltest.csproj** を開き、`<Project>` タグの間に次の XML を貼り付けます。 この XML により、依存関係として `System.Data.SqlClient` が追加されます。
 
     ```xml
     <ItemGroup>

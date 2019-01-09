@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: cc34411cc27870dbd9c707a34ebf34b96c7253dc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3ebf450f4e84fed572307a18f20f36013e32c7a5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986119"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630701"
 ---
-# <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル: Azure File Sync を使用して Windows ファイル サーバーを拡張する
+# <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル:Azure File Sync を使用して Windows ファイル サーバーを拡張する
 このチュートリアルでは、Azure File Sync を使用して Windows Server のストレージ容量を拡張するための基本的な手順を示します。このチュートリアルで使用しているのは Windows Server Azure VM ですが、通常はオンプレミス サーバーに対してこのプロセスを実行します。 ご自分の環境に Azure File Sync をデプロイする準備ができている場合は、代わりに「[Azure File Sync のデプロイ](storage-sync-files-deployment-guide.md)」の記事を使用してください。
 
 > [!div class="checklist"]
@@ -163,14 +163,14 @@ Azure File Sync をデプロイする前に、このチュートリアルのた�
 
 1. **エクスプローラー**と**サーバー マネージャー**を閉じます。
 
-### <a name="download-the-azurerm-powershell-module"></a>AzureRM PowerShell モジュールをダウンロードする
-次に、**Windows Server 2016 Datacenter** VM で、**AzureRM PowerShell モジュール**をサーバーにインストールします。
+### <a name="download-the-azure-powershell-module"></a>Azure PowerShell モジュールをダウンロードする
+次に、**Windows Server 2016 Datacenter** VM で、**Azure PowerShell モジュール**をサーバーにインストールします。
 
 1. VM で管理者特権の PowerShell ウィンドウを開きます
 1. 次のコマンドを実行します。
 
    ```powershell
-   Install-Module -Name AzureRM -AllowClobber
+   Install-Module -Name Az -AllowClobber
    ```
 
    > [!NOTE]
@@ -189,7 +189,7 @@ Azure File Sync をデプロイする前に、このチュートリアルのた�
 
 1. インストールを続行するには、`Yes` または `Yes to All` を選択します。
 
-`AzureRM` モジュールは、Azure PowerShell コマンドレットのロールアップ モジュールです。 これをインストールすると、利用可能なすべての Azure Resource Manager モジュールがダウンロードされ、コマンドレットを使用できるようになります。
+`Az` モジュールは、Azure PowerShell コマンドレットのロールアップ モジュールです。 これをインストールすると、利用可能なすべての Azure Resource Manager モジュールがダウンロードされ、コマンドレットを使用できるようになります。
 
 この時点で、チュートリアルのための環境設定が完了し、**ストレージ同期サービス**のデプロイを開始する準備が整いました。
 
@@ -237,7 +237,7 @@ Azure Sync Service をデプロイし、**Windows Server 2016 Datacenter** VM �
 ## <a name="register-windows-server"></a>Windows Server を登録する
 Windows Server をストレージ同期サービスに登録すると、サーバー (またはクラスター) とストレージ同期サービスの間に信頼関係が確立されます。 1 つのサーバーは、1 つのストレージ同期サービスにのみ登録でき、同じストレージ同期サービスに関連付けられている他のサーバーおよび Azure ファイル共有と同期できます。
 
-**Azure File Sync エージェント**がインストールされると、サーバー登録 UI が自動的に開かれます。 開かない場合は、ファイルの場所 (C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe) から手動で開くことができます。
+**Azure File Sync エージェント**がインストールされると、サーバー登録 UI が自動的に開かれます。 開かない場合、これを次に示すファイルの場所から手動で開くことができます: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe。
 
 1. VM でサーバー登録 UI が開いたら、**[OK]** をクリックします。
 1. **[サインイン]** をクリックして開始します。

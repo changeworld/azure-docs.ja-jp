@@ -12,21 +12,21 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 10/31/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 27e4c8f6ac24d40a6afacf10175413745f5151d9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6e7f6499a78b21ad81af5d541966e18090467532
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997014"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787632"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>チュートリアル: ローカル開発クラスター内で実行している Service Fabric Mesh アプリケーションをデバッグする
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>チュートリアル:ローカル開発クラスター内で実行されている Service Fabric Mesh アプリケーションをデバッグする
 
 このチュートリアルはシリーズの第 2 部です。ローカル開発クラスター上の Azure Service Fabric Mesh アプリをビルドしてデバッグする方法について説明します。
 
-このチュートリアルでは、次の事項について説明します。
+このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
 > * Azure Service Fabric Mesh アプリケーションをビルドする際の動作
@@ -74,7 +74,9 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 ローカルのデプロイが完了し、Visual Studio がアプリを実行している状態になると、ブラウザー ウィンドウで既定のサンプル Web ページが開きます。
 
-**デバッグのヒント**
+## <a name="debugging-tips"></a>デバッグのヒント
+
+最初のデバッグ実行 (F5) は、「[Visual Studio のパフォーマンスの最適化](service-fabric-mesh-howto-optimize-vs.md)」の手順に従うと大幅に時間が短縮されます。
 
 現在、ある問題が原因で、`using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` の呼び出しがサービスへの接続に失敗します。 この問題は、ホストの IP アドレスが変わるたびに発生します。 それを解決するには、次のようにします。
 
@@ -91,18 +93,18 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 ### <a name="debug-in-visual-studio"></a>Visual Studio でのデバッグ
 
 Visual Studio で Service Fabric Mesh アプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 バックエンド サービスから To Do 項目が取得される方法を表示するには、OnGet() メソッドをデバッグします。
-1. **WebFrontEnd** プロジェクト内で **[Pages]** > **[Index.cshtml]** > **[Index.cshtml.cs]** の順に開き、**Get** メソッド (17 行目) 内にブレークポイントを設定します。
-2. **ToDoService** プロジェクト内で **[TodoController.cs]** を開き、**OnGet** メソッド (15 行目) 内にブレークポイントを設定します。
+1. **WebFrontEnd** プロジェクト内で **[Pages]** > **[Index.cshtml]** > **[Index.cshtml.cs]** の順に開き、**OnGet** メソッド (17 行目) 内にブレークポイントを設定します。
+2. **ToDoService** プロジェクト内で **[TodoController.cs]** を開き、**Get** メソッド (15 行目) 内にブレークポイントを設定します。
 3. ブラウザーに戻り、ページを更新します。 Web フロントエンドの `OnGet()` メソッドでブレークポイントに到達します。 `backendUrl` 変数を検査すると、**service.yaml** ファイル内で定義した環境変数が、バックエンド サービスに接続するために使用する URL にどのように組み込まれているかを確認できます。
 4. `client.GetAsync(backendUrl).GetAwaiter().GetResult())` の呼び出しをステップ オーバー (F10) し、コントローラーの `Get()` ブレークポイントに到達します。 このメソッドでは、メモリ内のリストから To Do 項目のリストがどのように取得されているかを確認できます。
 5. 完了したら、Visual Studio で **Shift + F5** キーを押して、プロジェクトのデバッグを停止します。
- 
+
 ## <a name="next-steps"></a>次の手順
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure Service Fabric Mesh アプリケーションをビルドする際の動作
+> * Azure Service Fabric mesh アプリケーションをビルドする際の動作
 > * サービス間の呼び出しを確認するためのブレークポイントを設定する方法
 
 次のチュートリアルに進みます。

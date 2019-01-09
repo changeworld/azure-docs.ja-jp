@@ -11,23 +11,23 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c215a3947069e572f73692ea54010c77d78ae4fd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 14c500d77cc0e67aaade5e6be490f599f39bfad5
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273563"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807722"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>クイック スタート:Azure portal を使用した Azure Machine Learning の基本操作
 
-このクイック スタートでは、Azure portal を使用して Azure Machine Learning ワークスペースを作成します。 このワークスペースが、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。 このクイック スタートではクラウド リソースを使用するため、インストールは不要です。 代わりに独自の Jupyter ノートブック サーバーを構成するには、「[クイック スタート: Python を使用して Azure Machine Learning の利用を開始する](quickstart-create-workspace-with-python.md)」を参照してください。
-
+このクイック スタートでは、Azure portal を使用して Azure Machine Learning ワークスペースを作成します。 このワークスペースが、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。 このクイック スタートではクラウド リソースを使用するため、インストールは不要です。 代わりに独自の Jupyter ノートブック サーバーを構成するには、[Python を使用した Azure Machine Learning の利用開始に関するクイック スタート](quickstart-create-workspace-with-python.md)を参照してください。  
+ 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
-このクイック スタートでは次の作業を行います。
+このクイック スタートでは、以下のアクションを実行します。
 
 * Azure サブスクリプションでワークスペースを作成します。
-* Azure notebook で Python を試し、数回の繰り返しにわたる値をログに記録する。
+* Azure のノートブックで Python を試し、数回の繰り返しにわたる値をログに記録する。
 * ログに記録した値をワークスペースで表示する。
 
 以下の Azure リソースは、リージョンで利用可能になると、ワークスペースに自動的に追加されます。
@@ -37,7 +37,7 @@ ms.locfileid: "53273563"
   - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
   - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
-作成するリソースは、Machine Learning サービスに関連したその他のチュートリアルおよびハウツー記事の前提条件として使用できます。 他の Azure サービスと同様に、コンピューティング クラスターのサイズなど、Machine Learning に関連付けられている特定のリソースには制限があります。 詳細については、[既定の制限とクォータを増やす方法](how-to-manage-quotas.md)に関するページをご覧ください。
+作成するリソースは、Machine Learning サービスに関連したその他のチュートリアルおよびハウツー記事の前提条件として使用できます。 他の Azure サービスと同様に、Machine Learning に関連付けられている特定のリソースにも制限があります。 たとえば、コンピューティング クラスターのサイズなどです。 詳細については、[既定の制限とクォータを増やす方法](how-to-manage-quotas.md)に関するページを参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
 
@@ -46,14 +46,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-ワークスペース ページで、`Explore your Azure Machine Learning service workspace` を選択します。
+ワークスペース ページで、`Explore your Azure Machine Learning service Workspace` を選択します。
 
- ![ワークスペースを試す](./media/quickstart-get-started/explore_aml.png)
+ ![ワークスペースの探索](./media/quickstart-get-started/explore_aml.png)
 
 
 ## <a name="use-the-workspace"></a>ワークスペースの使用
 
-それでは、機械学習スクリプトの管理にワークスペースがいかに役立つかご覧ください。 このセクションでは、次の作業を行います。
+それでは、機械学習スクリプトの管理にワークスペースがいかに役立つかご覧ください。 このセクションでは、次の手順を実行します。
 
 * Azure Notebooks でノートブックを開く。
 * ログに記録される値を作成するコードを実行する。
@@ -71,7 +71,7 @@ Azure Notebooks では、Jupyter ノートブック向けの無料のクラウ�
 
 組織によっては、サインインするには[管理者の同意](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent)が必要な場合があります。
 
-サインイン後、新しいタブが開き、`Clone Library` プロンプトが表示されます。 [`Clone`] を選択します。
+Azure portal にサインインしたのと同じアカウントで Azure Notebooks にサインインします。  サインイン後、新しいタブが開き、`Clone Library` プロンプトが表示されます。 [`Clone`] を選択します。
 
 
 ### <a name="run-the-notebook"></a>ノートブックを実行する
@@ -80,9 +80,9 @@ Azure Notebooks では、Jupyter ノートブック向けの無料のクラウ�
 
 `01.run-experiment.ipynb` を選択してノートブックを開きます。
 
-セルを 1 つずつ実行するには、`Shift`+`Enter` キーを使用します。 ノートブック全体を実行するには、[`Cells`] > [`Run All`] を選択します。 セルの横にアスタリスク (*) が表示されているときは実行中です。 そのセルのコードが完了すると、数値が表示されます。 
+セルを 1 つずつ実行します (Shift + Enter)。 ノートブック全体を実行するには、[`Cells`] > [`Run All`] を選択します。 セルの横にアスタリスク __*__ が表示されているときは実行中です。 そのセルのコードが完了すると、数値が表示されます。 
 
-ノートブック内のセルをすべて実行すると、記録された値をワークスペースで確認できるようになります。
+ノートブック内のセルをすべて実行し終えると、記録された値をワークスペースで確認できるようになります。
 
 ## <a name="view-logged-values"></a>ログに記録された値を表示する
 
@@ -110,7 +110,7 @@ Pi を概算するコードではランダムな値が使用されるため、�
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-リソース グループは保持して、1 つのワークスペースを削除することもできます。 ワークスペースのプロパティを表示し、**[削除]** を選択します。
+リソース グループは保持しつつ、いずれかのワークスペースを削除することもできます。 ワークスペースのプロパティを表示し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -119,4 +119,4 @@ Pi を概算するコードではランダムな値が使用されるため、�
 ワークフローを詳しく体験するには、Machine Learning チュートリアルに従って、モデルをトレーニングし、デプロイします。  
 
 > [!div class="nextstepaction"]
-> [チュートリアル:画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
+> [チュートリアル: 画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure クラウド ストレージでの半構造化データの検索に関するチュートリアル - Azure Search
+title: Azure Blob Storage での JSON の検索に関するチュートリアル - Azure Search
 description: このチュートリアルでは、半構造化された Azure BLOB データを Azure Search を使用して検索する方法について説明します。
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5608495ff2975cabefdb83e5794a7d92b318b5a5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ba9b34dbd9d0959e79c755abc8dad9fe1d358a50
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313826"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632944"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>チュートリアル:Azure クラウド ストレージで半構造化データを検索する
 
@@ -60,7 +60,7 @@ Postman を開始し、HTTP 要求を設定します。 このツールに慣れ
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](http://portal.azure.com) にサインインします。
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="upload-the-sample-data"></a>サンプル データのアップロード
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: b75d84fefa9c45711003731666ecb21336057cc2
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 6b2ab1ba89fbc2b271ede177a906a1919c14023d
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53018827"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557667"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-application"></a>クイック スタート: Azure Cache for Redis と.NET アプリケーションでを使用する
 
@@ -160,7 +160,7 @@ Azure Cache for Redis への接続には、`ConnectionMultiplexer` クラスを�
             Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
             Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET console app!").ToString());
 
-            // Demostrate "SET Message" executed as expected...
+            // Demonstrate "SET Message" executed as expected...
             cacheCommand = "GET Message";
             Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
             Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
@@ -201,7 +201,7 @@ Install-Package Newtonsoft.Json
 
 *Program.cs* の先頭に次の `using` ステートメントを追加します。
 
-```charp
+```csharp
 using Newtonsoft.Json;
 ```
 

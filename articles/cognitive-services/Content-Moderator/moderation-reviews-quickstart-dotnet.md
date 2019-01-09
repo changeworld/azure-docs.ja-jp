@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: .NET を使用してレビューを作成する - Content Moderator'
+title: クイック スタート:.NET を使用してレビューを作成する - Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Azure Content Moderator SDK for .NET を使用してレビューを作成する方法。
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.component: content-moderator
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: ce90c5f691a0a8a333161f3135856d720d1de310
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6409011c1a7c125dd03bb706f49ccad1a1fd49a4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226587"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538873"
 ---
-# <a name="quickstart-create-reviews-using-net"></a>クイック スタート: .NET を使用してレビューを作成する
+# <a name="quickstart-create-reviews-using-net"></a>クイック スタート:.NET を使用してレビューを作成する
 
 この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) を使用して次の操作をすぐに開始するために役立つ情報とコード サンプルを提供します。
  
 - 人によるモデレーション用にレビューのセットを作成する
 - 人によるモデレーション用に既存レビューの状態を取得する
 
-一般に、コンテンツは、何らかの自動モデレーションを経てから人によるレビューをスケジュールされます。 この記事では、人によるモデレーション用にレビューを作成する方法のみを説明します。 詳細なシナリオについては、[Facebook のコンテンツ モデレーション](facebook-post-moderation.md)と [eコマース カタログのコンテンツ モデレーション](ecommerce-retail-catalog-moderation.md)に関するチュートリアルを参照してください。
+一般に、コンテンツは、何らかの自動モデレーションを経てから人によるレビューをスケジュールされます。 この記事では、人によるモデレーション用にレビューを作成する方法のみを説明します。 詳細なシナリオについては、[Facebook のコンテンツ モデレーション](facebook-post-moderation.md)と [e コマース製品イメージのモデレーション](ecommerce-retail-catalog-moderation.md)に関するチュートリアルを参照してください。
 
 この記事では、Visual Studio と C# に精通していることを前提としています。
 

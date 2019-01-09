@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: beaedf754df2b1c4739c5dfb2abcdc40c163dc81
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: be44a233c2b09aa91ec04b5a64b523a2d0b00db1
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254124"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599861"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>チュートリアル:Azure SignalR Service の認証
 
@@ -378,7 +378,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 ## <a name="deploy-the-app-to-azure"></a>Azure にアプリケーションをデプロイする
 
-このセクションでは、Azure Cloud Shell から Azure コマンド ライン インターフェイス (CLI) を使用して、Azure で ASP.NET アプリケーションをホストするための新しい [Azure Web アプリ](https://docs.microsoft.com/azure/app-service/)を作成します。 Web アプリは、ローカル Git デプロイを使用するように構成されます。 また、Web アプリは、SignalR 接続文字列、GitHub OAuth のアプリ シークレット、およびデプロイ ユーザーによっても構成されます。
+このセクションでは、Azure Cloud Shell から Azure コマンド ライン インターフェイス (CLI) を使用して、Azure で ASP.NET アプリケーションをホストするための新しい wev アプリを [Azure App Service](https://docs.microsoft.com/azure/app-service/) に作成します。 Web アプリは、ローカル Git デプロイを使用するように構成されます。 また、Web アプリは、SignalR 接続文字列、GitHub OAuth のアプリ シークレット、およびデプロイ ユーザーによっても構成されます。
 
 このセクションの手順では、Azure CLI の *signalr* 拡張機能を使用します。 次のコマンドを実行して、Azure CLI の *signalr* 拡張機能をインストールします。
 

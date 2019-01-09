@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: acc926151e5abd1d6f9d0992591575198d1fdf44
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: f5d74c2283d25d5774bd46bb9fe94795ff98fe9b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890536"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720573"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>チュートリアル: Python で Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法
+# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>チュートリアル:Python で Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法
 
 Azure Key Vault は、API キーや、アプリケーション、サービス、IT リソースへのアクセスに必要なデータベース接続文字列などのシークレットを保護するのに役立ちます。
 
-このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るように Azure Web アプリケーションを設定するために必要な手順を学習します。 このチュートリアルは、[Azure Web Apps](../app-service/app-service-web-overview.md) に基づいています。 ここでは、次の操作を行う方法について学習します。
+このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るように Azure Web アプリケーションを設定するために必要な手順を学習します。 ここでは、次の操作を行う方法について学習します。
 
 > [!div class="checklist"]
 > * Key Vault を作成します。
@@ -80,9 +80,9 @@ az group create --name "<YourResourceGroupName>" --location "West US"
 
 次に、前の手順で作成したリソース グループにキー コンテナーを作成します。 次の情報を指定します。
 
-* キー コンテナー名: 名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、および - のみです。
+* キー コンテナー名:名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、および - のみです。
 * リソース グループ名。
-* 場所: **米国西部**。
+* 場所:**米国西部**。
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -160,7 +160,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="create-and-run-sample-python-app"></a>サンプルの Python アプリを作成して実行する
 
-以下のサンプルは、"Sample.py" という名前のファイルです。 ここでは、HTTP GET 呼び出しを行うために[要求](http://docs.python-requests.org/master/)ライブラリが使用されます。
+以下のサンプルは、"Sample.py" という名前のファイルです。 ここでは、HTTP GET 呼び出しを行うために[要求](https://pypi.org/project/requests/2.7.0/)ライブラリが使用されます。
 
 ## <a name="edit-samplepy"></a>Sample.py を編集する
 Sample.py の作成後、ファイルを開いて以下のコードをコピーします

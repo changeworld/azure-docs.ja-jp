@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: リモート画像の分析 - REST、PHP - Computer Vision'
+title: クイック スタート:リモート画像の分析 - REST、PHP
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、PHP で Computer Vision API を使用して画像を分析します。
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: d9e65b5fa42cc9026f8b1e3f18901f988c38cc46
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 8af75c05d3c30fd8a3f2808cf81de840b7df2d6c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341006"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584298"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-php-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と PHP を使用してリモート画像を分析する
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-php-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と PHP を使用してリモート画像を分析する
 
 このクイック スタートでは、Computer Vision の REST API を使用して、リモートに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使うと、画像の内容に基づいて視覚的特徴を抽出できます。
 
@@ -33,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このサンプルを作成して実行するには、次の手順を実行します。
 
-1. PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) パッケージをインストールします。
+1. PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) パッケージをインストールします。
    1. 管理者としてコマンド プロンプト ウィンドウを開きます。
    1. 次のコマンドを実行します。
 

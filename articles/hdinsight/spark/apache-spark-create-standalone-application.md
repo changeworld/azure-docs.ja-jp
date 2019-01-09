@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: IntelliJ を使用した Azure HDInsight での Spark の Scala Maven アプリケーションの作成'
+title: チュートリアル:IntelliJ を使用した Azure HDInsight での Spark の Scala Maven アプリケーションの作成
 description: Scala で記述され、ビルド システムとして Apache Maven を使用し、IntelliJ IDEA によって提供される Scala 用の既存の Maven アーキタイプを使用する Spark アプリケーションを作成します。
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: d83c04946b67dd25bae306c2fa41a0864287bfc8
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: eef755c01a6703976383ee31b52bde14d32f0110
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499320"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604067"
 ---
-# <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>チュートリアル: IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成
+# <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>チュートリアル:IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成
 
 このチュートリアルでは、[Apache Maven](https://maven.apache.org/) と IntelliJ IDEA を利用し、[Scala](https://www.scala-lang.org/) で記述された [Apache Spark](https://spark.apache.org/) アプリケーションを作成する方法について説明します。 この記事では、ビルド システムとして Apache Maven を使用し、IntelliJ IDEA で提供されている Scala 用の既存の Maven アーキタイプから始めます。  IntelliJ IDEA での Scala アプリケーションには次の手順があります。
 
@@ -26,7 +26,7 @@ ms.locfileid: "52499320"
 * HDInsight Spark クラスターに送信できる jar ファイルを生成します。
 * Livy を使用して Spark クラスターでアプリケーションを実行します。
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight には、アプリケーションを作成して Linux の HDInsight Spark クラスターに送信するプロセスを容易にする IntelliJ IDEA プラグイン ツールも用意されています。 詳細については、[IntelliJ IDEA 用の HDInsight Tools プラグインを使用した Apache Spark アプリケーションの作成と送信](apache-spark-intellij-tool-plugin.md)に関するページを参照してください。
 > 
 
@@ -106,7 +106,7 @@ Scala プラグインをインストールするには、次の手順を使用�
 1. **[GroupId]**、**[ArtifactId]**、および **[Version]** に関連する値を指定します。 このチュートリアルでは、次の値を使用しています。
 
     - GroupId: com.microsoft.spark.example
-    - ArtifactId: SparkSimpleApp
+    - ArtifactId:SparkSimpleApp
 1. **[次へ]** を選択します。
 1. 設定を確認してから、**[Next] (次へ)** を選択します。
 1. プロジェクト名と場所を確認し、**[Finish] (完了)** をクリックします。

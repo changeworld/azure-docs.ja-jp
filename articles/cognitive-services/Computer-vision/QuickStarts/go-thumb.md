@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: サムネイルの生成 - REST、Go - Computer Vision'
+title: クイック スタート:サムネイルの生成 - REST、Go
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision API と Go を使って、画像からサムネイルを生成します。
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: a1a1daebaba7b5592a94bc90811a9ac272ec7971
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 9abd34266c5ee109d836484a9e7eb9d95c082296
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969551"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580911"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-go-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と Go を使用したサムネイルの生成
 

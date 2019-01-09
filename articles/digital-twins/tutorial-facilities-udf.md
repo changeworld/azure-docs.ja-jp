@@ -1,20 +1,21 @@
 ---
-title: Azure Digital Twins を使用して空間を監視する | Microsoft Docs
+title: チュートリアル:Azure Digital Twins を使用して空間を監視する | Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Digital Twins を使用して空間リソースをプロビジョニングし、作業条件を監視する方法を学習します。
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/26/2018
 ms.author: dkshir
-ms.openlocfilehash: a9784860cbc0b6d58f63fb22b7ad676048c8aee6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 077dee19bbe32379bc88919117b3c61177828094
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584198"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556103"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>チュートリアル: Azure Digital Twins を使用して建物をプロビジョニングし、作業環境を監視する
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>チュートリアル:Azure Digital Twins を使用して建物をプロビジョニングし、作業環境を監視する
 
 このチュートリアルでは、Azure Digital Twins を使用して、望ましい温度条件と快適度を基準に空間を監視する方法について説明します。 [サンプルの建物を構成](tutorial-facilities-setup.md)した後、このチュートリアルの手順を使用して建物をプロビジョニングし、センサー データに対してカスタム関数を実行できます。
 

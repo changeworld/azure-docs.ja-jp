@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Computer Vision API Java'
+title: チュートリアル:イメージの操作を実行する - Java
 titlesuffix: Azure Cognitive Services
 description: Microsoft Cognitive Services の Computer Vision API を使用する基本的な Java Swing アプリを探索します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
@@ -9,15 +9,16 @@ ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: tutorial
 ms.author: kefre
+ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: 36a8a49ee49636d186ca217ae223b1eebf9bb54b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: f039e85ab3fccfc36b704f06d9fcfa3b4cfed758
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340258"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584549"
 ---
-# <a name="tutorial-computer-vision-api-java"></a>チュートリアル: Computer Vision API Java
+# <a name="tutorial-computer-vision-api-java"></a>チュートリアル:Computer Vision API Java
 
 このチュートリアルでは、Azure Cognitive Services の Computer Vision REST API の機能について説明します。
 

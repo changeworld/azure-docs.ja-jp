@@ -1,5 +1,5 @@
 ---
-title: Linux での .NET Core Web アプリの作成 - Azure App Service | Microsoft Docs
+title: Linux での .NET Core アプリの作成 - Azure App Service | Microsoft Docs
 description: App Service on Linux で、初めての .NET Core の Hello World アプリを数分でデプロイします。
 keywords: Azure App Service, Web アプリ, .NET, コア, Linux, OSS
 services: app-service
@@ -16,20 +16,20 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: f074c6184652ced133a7253bee3cc7a8a556c574
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 047ed6026412cac7fc7c51135e1837a20decd910
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251795"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633932"
 ---
-# <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>App Service on Linux での .NET Core Web アプリの作成
+# <a name="create-a-net-core-app-in-app-service-on-linux"></a>App Service on Linux での .NET Core アプリの作成
 
 > [!NOTE]
-> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、「[Azure で ASP.NET Core Web アプリを作成する](../app-service-web-get-started-dotnet.md)」を参照してください。
+> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、[Azure での ASP.NET Core アプリの作成](../app-service-web-get-started-dotnet.md)に関するページを参照してください。
 >
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、App Service on Linux に [.NET Core](https://docs.microsoft.com/aspnet/core/) アプリを作成する方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して Web アプリを作成し、Git を使用して Web アプリに .NET Core コードをデプロイします。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、App Service on Linux に [.NET Core](https://docs.microsoft.com/aspnet/core/) アプリを作成する方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用してアプリを作成し、Git を使用してアプリに .NET Core コードをデプロイします。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -53,7 +53,7 @@ md hellodotnetcore
 cd hellodotnetcore
 ```
 
-新しい .NET Core Web アプリを作成します。
+新しい .NET Core アプリを作成します。
 
 ```bash
 dotnet new web
@@ -95,15 +95,15 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-新しく作成された Web アプリに移動します。 _&lt;app_name>_ は、Web アプリの名前に置き換えます。
+新しく作成されたアプリに移動します。 _&lt;app name>_ は、アプリの名前に置き換えます。
 
 ```bash
 http://<app name>.azurewebsites.net
 ```
 
-新しい Web アプリは次のようになります。
+新しいアプリは次のようになります。
 
-![空の Web アプリ ページ](media/quickstart-dotnetcore/dotnet-browse-created.png)
+![空のアプリ ページ](media/quickstart-dotnetcore/dotnet-browse-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -144,7 +144,7 @@ Web ブラウザーを使用して、デプロイされたアプリケーショ�
 http://<app_name>.azurewebsites.net
 ```
 
-.NET Core のサンプル コードが、組み込みイメージを使用する Web アプリで実行されています。
+App Service on Linux で組み込みのイメージを使用して .NET Core サンプル コードが実行されています。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -169,15 +169,15 @@ git push azure master
 
 ![Azure で実行される更新済みのサンプル アプリ](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
-## <a name="manage-your-new-azure-web-app"></a>新しい Azure Web アプリを管理する
+## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> に移動し、お客様が作成したアプリを管理します。
 
-左側のメニューで **[App Services]** をクリックした後、Azure Web アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
-![Azure Web アプリへのポータル ナビゲーション](./media/quickstart-dotnetcore/portal-app-service-list.png)
+![Azure アプリへのポータル ナビゲーション](./media/quickstart-dotnetcore/portal-app-service-list.png)
 
-Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。 
+お客様のアプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。 
 
 ![Azure Portal の [App Service] ページ](media/quickstart-dotnetcore/portal-app-overview.png)
 
@@ -188,4 +188,4 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure App Service on Linux での .NET Core および SQL Database の Web アプリの作成](tutorial-dotnetcore-sqldb-app.md)
+> [Azure App Service on Linux での .NET Core および SQL Database のアプリの作成](tutorial-dotnetcore-sqldb-app.md)

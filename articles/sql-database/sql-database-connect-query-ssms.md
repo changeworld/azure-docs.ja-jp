@@ -4,7 +4,7 @@ description: SQL Server Management Studio (SSMS) を使用して Azure で SQL D
 keywords: SQL データベースへの接続、SQL Server Management Studio
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -13,16 +13,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: b3342164aec49967e819c316827dca9a65f2674f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 636adcf15479fe8e072b833b59ddc78b5f820550
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098956"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745076"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: SQL Server Management Studio を使用して Azure SQL Database に接続しクエリを実行する
 
-[SQL Server Management Studio][ssms-install-latest-84g] (SSMS) を使用して、SQL Server から SQL Database まで、Microsoft Windows を対象としたあらゆる SQL インフラストラクチャを管理できます。 このクイック スタートでは、SSMS を使って Azure SQL データベースに接続し Transact-SQL ステートメントを実行してデータを照会、挿入、更新、削除する方法を示します。 
+このクイック スタートでは、[SQL Server Management Studio][ssms-install-latest-84g] (SSMS) を使用して、Azure SQL Database に接続します。 その後、Transact-SQL ステートメントを実行して、データの照会、挿入、更新、および削除を実行します。 SSMS を使用して、SQL Server から Microsoft Windows の SQL Database まで、任意の SQL インフラストラクチャを管理できます。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -75,11 +75,11 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
 ## <a name="query-data"></a>データのクエリを実行する
 
-次の [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL のコードを使用して、カテゴリごとに上位 20 個の製品を照会します。
+次の [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL のコードを実行して、カテゴリごとに上位 20 個の製品を照会します。
 
-1. オブジェクト エクスプローラーで **mySampleDatabase** を右クリックし、**[新しいクエリ]** を選択します。 データベースに接続された空のクエリ ウィンドウが開きます。
+1. オブジェクト エクスプローラーで **mySampleDatabase** を右クリックし、**[新しいクエリ]** を選択します。 データベースに接続された新しいクエリ ウィンドウが開きます。
 
-1. クエリ ウィンドウに、この SQL クエリを貼り付けます。
+2. クエリ ウィンドウに、この SQL クエリを貼り付けます。
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -94,7 +94,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
 ## <a name="insert-data"></a>データを挿入する
 
-次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL のコードを使用して、`SalesLT.Product` テーブルに新しい製品を作成します。
+次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL のコードを実行して、`SalesLT.Product` テーブルに新しい製品を作成します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -117,7 +117,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
            ,GETDATE() );
    ```
 
-2. **[実行する]** を選択して、新しい行を Product テーブルに挿入します。 **メッセージ** ペインに、**(1 行処理されました)** と表示されます。
+2. **[実行する]** を選択して、新しい行を `Product` テーブルに挿入します。 **メッセージ** ペインに、**(1 行処理されました)** と表示されます。
 
 ## <a name="view-the-result"></a>結果を表示する
 
@@ -134,7 +134,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
  
 ## Update data
 
-Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify the new product you just added.
+Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
 
 1. Replace the previous query with this one.
 
@@ -144,11 +144,11 @@ Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Tra
    WHERE Name = 'myNewProduct';
    ```
 
-2. **[実行する]** を選択して、Product テーブルの指定した行を更新します。 **メッセージ** ペインに、**(1 行処理されました)** と表示されます。
+2. **[実行する]** を選択して、`Product` テーブルの指定した行を更新します。 **メッセージ** ペインに、**(1 行処理されました)** と表示されます。
 
 ## <a name="delete-data"></a>データの削除
 
-[DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL のコードを使用して、前に追加した新しい製品を削除します。
+次の [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL コードを実行して、新しい製品を削除します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -157,7 +157,7 @@ Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Tra
    WHERE Name = 'myNewProduct';
    ```
 
-2. **[実行する]** を選択して、Product テーブルの指定した行を削除します。 **メッセージ** ペインに、**(1 行処理されました)** と表示されます。
+2. **[実行する]** を選択して、`Product` テーブルの指定した行を削除します。 **メッセージ** ペインに、**(1 行処理されました)** と表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: dd47976bca75569142f1912eee06c66061e92fa6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4c17c972a39cd336ab33f6be8bd3db5b8f0f2c92
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097667"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808419"
 ---
 # <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>Azure Cosmos DB コンテナーのスループットをプロビジョニングする
 
@@ -47,7 +47,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-MongoDB API アカウントのスループットをプロビジョニングする場合は、パーティション キーのパスに "/myShardKey" を、Cassandra API アカウントのスループットをプロビジョニングするときは、パーティション キーのパスに "/myPrimaryKey" を使用します。
+Azure Cosmos DB の MongoDB 用 API を使用して構成した Cosmos アカウントのスループットをプロビジョニングする場合は、パーティション キーのパスに "/myShardKey" を使用します。Cassandra API のために構成した Cosmos アカウントのスループットをプロビジョニングするときは、パーティション キーのパスに "/myPrimaryKey" を使用します。
 
 ## <a name="provision-throughput-using-net-sdk"></a>.NET SDK を使用してスループットをプロビジョニング
 

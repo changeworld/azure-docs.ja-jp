@@ -13,16 +13,16 @@ ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/05/2018
-ms.openlocfilehash: fa46260fdd5623ba32da9979aaea8470139096b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86120e65ad6a3b7fab2a5db78a338bed0e277cb8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091392"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651949"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>クイック スタート:Azure portal の SQL クエリ エディターを使用した接続とデータの照会
 
-SQL クエリ エディターは、お使いの Azure SQL Database または Azure SQL Data Warehouse で SQL クエリを実行するための簡単な方法を示した Azure portal ブラウザー ツールです。 このクイック スタートでは、クエリ エディターを使用して SQL Database に接続し、Transact-SQL ステートメントを実行してデータを照会、挿入、更新、および削除する方法について説明します。
+SQL クエリ エディターは、お使いの Azure SQL Database または Azure SQL Data Warehouse で SQL クエリを実行するための簡単な方法を示した Azure portal ブラウザー ツールです。 このクイック スタートでは、クエリ エディターを使用して SQL データベースに接続し、Transact-SQL ステートメントを実行してデータのクエリ、挿入、更新、および削除を実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -70,7 +70,7 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
 
 4. AD 管理者ページのツールバーから、**[保存]** を選択します。
 
-5. **mySampleDatabase** データベースに移動して、左側のメニューから **[クエリ エディター (プレビュー)]** を選択します。 **[ログイン]** ページが表示されます。 AD 管理者である場合は、右側にある [**Active Directory シングル サインオン]** の下に、ログインしたことを示すメッセージが表示されます。 
+5. **mySampleDatabase** データベースに移動して、左側のメニューから **[クエリ エディター (プレビュー)]** を選択します。 **[ログイン]** ページが表示されます。 AD 管理者である場合は、右側にある **[Active Directory シングル サインオン]** の下に、サインインしたことを示すメッセージが表示されます。 
    
 6. **[OK]** を選択します。
 
@@ -92,7 +92,7 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
 
 ## <a name="insert-data"></a>データを挿入する
 
-次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用して、`SalesLT.Product` テーブルに新しい製品を追加します。
+次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを実行して、`SalesLT.Product` テーブルに新しい製品を追加します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -117,12 +117,12 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
    ```
 
 
-2. **[実行]** を選択して、新しい行を Product テーブルに挿入します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
+2. **[実行]** を選択して、新しい行を `Product` テーブルに挿入します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
 
 
 ## <a name="update-data"></a>データの更新
 
-次の [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用して、新しい製品を変更します。
+次の [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを実行して、新しい製品を変更します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -132,11 +132,11 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
    WHERE Name = 'myNewProduct';
    ```
 
-2. **[実行]** を選択して、Product テーブルの指定した行を更新します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
+2. **[実行]** を選択して、`Product` テーブルの指定した行を更新します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
 
 ## <a name="delete-data"></a>データの削除
 
-次の [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを使用して、新しい製品を削除します。
+次の [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを実行して、新しい製品を削除します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -145,7 +145,7 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
    WHERE Name = 'myNewProduct';
    ```
 
-2. **[実行]** を選択して、Product テーブルの指定した行を削除します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
+2. **[実行]** を選択して、`Product` テーブルの指定した行を削除します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
 
 
 ## <a name="query-editor-considerations"></a>クエリ エディターに関する考慮事項
@@ -156,7 +156,7 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
 
 * F5 キーを押してクエリ エディターのページを更新すると、操作中のクエリは失われます。
 
-* クエリ エディターは、マスター データベースへの接続をサポートしません。
+* クエリ エディターは、`master` データベースへの接続をサポートしません。
 
 * クエリの実行には、5 分のタイムアウトがあります。
 

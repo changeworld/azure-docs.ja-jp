@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: aef706d18d558f5fe321735c7f93361a5ef50606
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 0723d0e2a60c0f43633e5e5ca771ccfe88d2db68
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "43050401"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808062"
 ---
 # <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>仮想マシンを作成して、Azure Stack Key Vault から取得した証明書をインストールする
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Key Vault 証明書がインストールされた Azure Stack 仮想マシン (VM) を作成する方法について説明します。
 
@@ -41,7 +41,7 @@ Active Directory への認証、Web トラフィックの暗号化など、多�
 
 1. Key Vault シークレットを作成します。
 2. azuredeploy.parameters.json ファイルを更新します。
-3. テンプレートのデプロイ
+3. テンプレートをデプロイします。
 
 > [!NOTE]
 > この手順は、Azure Stack Development Kit から、または VPN 経由で接続している場合は外部クライアントから実行できます。
@@ -49,8 +49,8 @@ Active Directory への認証、Web トラフィックの暗号化など、多�
 ## <a name="prerequisites"></a>前提条件
 
 * ユーザーは、Key Vault サービスを含むプランをサブスクライブする必要があります。
-* [PowerShell for Azure Stack のインストール。](azure-stack-powershell-install.md)
-* [Azure Stack ユーザーの PowerShell 環境の構成](azure-stack-powershell-configure-user.md)
+* [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。
+* [Azure Stack ユーザーの PowerShell 環境を構成します](azure-stack-powershell-configure-user.md)。
 
 ## <a name="create-a-key-vault-secret"></a>Key Vault シークレットを作成する
 
@@ -60,7 +60,6 @@ Active Directory への認証、Web トラフィックの暗号化など、多�
 > キー コンテナーを作成するときは、`-EnabledForDeployment` パラメーターを使う必要があります。 このパラメーターにより、Azure Resource Manager テンプレートから Key Vault を確実に参照できます。
 
 ```powershell
-
 # Create a certificate in the .pfx format
 New-SelfSignedCertificate `
   -certstorelocation cert:\LocalMachine\My `
@@ -117,16 +116,15 @@ Set-AzureKeyVaultSecret `
   -VaultName $vaultName `
   -Name $secretName `
    -SecretValue $secret
-
 ```
 
-前のスクリプトを実行すると、出力にはシークレットの URI が含まれます。 この URI を書き留めておきます。 [Windows Resource Manager に証明書をプッシュするテンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate)でそれを参照する必要があります。 開発用コンピューターに [vm-push-certificate-windows template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) フォルダーをダウンロードします。 このフォルダーには、次の手順で必要な `azuredeploy.json` ファイルと `azuredeploy.parameters.json` ファイルが含まれます。
+前のスクリプトを実行すると、出力にはシークレットの URI が含まれます。 この URI を書き留めておきます。 [Windows Resource Manager に証明書をプッシュするテンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate)でそれを参照する必要があります。 開発用コンピューターに [vm-push-certificate-windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) テンプレート フォルダーをダウンロードします。 このフォルダーには、次の手順で必要な `azuredeploy.json` ファイルと `azuredeploy.parameters.json` ファイルが含まれます。
 
-環境の値に従って `azuredeploy.parameters.json` ファイルを変更します。 特に重要なパラメーターは、コンテナー名、コンテナー リソース グループ、およびシークレットの URI (前のスクリプトによって生成されたもの) です。 パラメーター ファイルの例を次に示します。
+環境の値に従って `azuredeploy.parameters.json` ファイルを変更します。 特に重要なパラメーターは、コンテナー名、コンテナー リソース グループ、およびシークレットの URI (前のスクリプトによって生成されたもの) です。 パラメーター ファイルの例を次のセクションに示します。
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>azuredeploy.parameters.json ファイルを更新する
 
-環境に従って、vaultName、シークレットの URI、VmName、他の値で azuredeploy.parameters.json ファイルを更新します。 テンプレート パラメーター ファイルの JSON ファイルの例を次に示します。
+`azuredeploy.parameters.json` ファイルを、`vaultName`、シークレット URI、`VmName`、ご使用の環境に合わせたその他の値で更新します。 テンプレート パラメーター ファイルの JSON ファイルの例を次に示します。
 
 ```json
 {
@@ -178,10 +176,10 @@ New-AzureRmResourceGroupDeployment `
 
 ![Template deployment の結果](media/azure-stack-kv-push-secret-into-vm/deployment-output.png)
 
-証明書は、デプロイ中に Azure Stack によって仮想マシンにプッシュされします。 証明書の場所は、VM のオペレーティング システムによって異なります。
+証明書は、デプロイ中に Azure Stack によって仮想マシンにプッシュされます。 証明書の場所は、VM のオペレーティング システムによって異なります。
 
-* Windows では、証明書はユーザー指定の証明書ストアで LocalMachine の証明書の場所に追加されます。
-* Linux では、証明書は、X509 証明書ファイルの場合は &lt;UppercaseThumbprint&gt;.crt、秘密キーの場合は &lt;UppercaseThumbprint&gt;.prv というファイル名で、/var/lib/waagent ディレクトリに配置されます。
+* Windows では、証明書はユーザー指定の証明書ストアで **LocalMachine** の証明書の場所に追加されます。
+* Linux では、証明書は、X509 証明書ファイルの場合は &lt;UppercaseThumbprint&gt;.crt、秘密キーの場合は &lt;UppercaseThumbprint&gt;.prv というファイル名で、`/var/lib/waagent directory` に配置されます。
 
 ## <a name="retire-certificates"></a>証明書の使用を終了する
 

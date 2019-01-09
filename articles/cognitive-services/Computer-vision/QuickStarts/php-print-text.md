@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 印刷されたテキストの抽出 (OCR) - REST、PHP - Computer Vision'
+title: クイック スタート:印刷されたテキストの抽出 - REST、PHP
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、PHP と Computer Vision API を使って、画像内の印刷されたテキストを抽出します。
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 10be09c4d18cc7bc395937e1a175a5bfcd1e5d7e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 2707134c3fb451f4386748f691086eeb617d3ebe
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340241"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581387"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と PHP を使用して印刷されたテキストを抽出する (OCR)
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と PHP を使用して印刷されたテキストを抽出する (OCR)
 
 このクイック スタートでは、Computer Vision の REST API を使って、光学式文字認識 (OCR) で印刷されたテキストを抽出しています。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドを使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
 
@@ -33,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このサンプルを作成して実行するには、次の手順を実行します。
 
-1. PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) パッケージをインストールします。
+1. PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) パッケージをインストールします。
    1. 管理者としてコマンド プロンプト ウィンドウを開きます。
    1. 次のコマンドを実行します。
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: ae9da43ac40a3da188e6030659cfb6de166c53bb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 62cdc50b40fb1273fdc2eece050869fc2284cf6c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256079"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632978"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Web App for Containers のカスタム Docker イメージを使用する
 
@@ -193,7 +193,7 @@ v1.0.0: digest: sha256:21f2798b20555f4143f2ca0591a43b4f6c8138406041f2d32ec908974
 
 ## <a name="deploy-app-to-azure"></a>アプリを Azure にデプロイする
 
-Azure Web Apps を使用して、クラウドにネイティブの Linux アプリケーションをホストすることができます。 Web App for Containers を作成するには、グループ、続いてサービス プラン、最後に Web アプリ自体を作成する Azure CLI コマンドを実行する必要があります。 
+先ほどプッシュしたイメージを使用するアプリを作成するには、グループ、続いてサービス プラン、最後に Web アプリ自体を作成する Azure CLI コマンドを実行します。 
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 

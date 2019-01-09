@@ -1,20 +1,21 @@
 ---
-title: Azure Digital Twins 空間からのイベントをキャプチャする | Microsoft Docs
+title: チュートリアル:Azure Digital Twins 空間からのイベントをキャプチャする | Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Digital Twins を Logic Apps に統合して空間から通知を受け取る方法について説明します。
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: bf41be4a3a4856302a054e5767b3d7b5ba423c60
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a52a3be8c3023893569e95b566a18c032be26459
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583263"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556018"
 ---
-# <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>チュートリアル: Logic Apps を使用して Azure Digital Twins 空間から通知を受け取る
+# <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>チュートリアル:Logic Apps を使用して Azure Digital Twins 空間から通知を受け取る
 
 Azure Digital Twins インスタンスをデプロイし、空間をプロビジョニングして、特定の条件を監視するためのカスタム関数を実装すると、監視対象の条件が発生したときにメールでオフィス管理者に通知できます。 
 

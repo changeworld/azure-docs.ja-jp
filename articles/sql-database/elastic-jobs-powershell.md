@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
-ms.reviwer: ''
+ms.reviwer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 9b38e1b6ba55fab46965fdc7a73ab608e1e6b754
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 13054ed0da2ad3fc38bdd4a39d9092dc72e39de9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877804"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601663"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
 
@@ -209,7 +209,7 @@ $JobCred = $JobAgent | New-AzureRmSqlElasticJobCredential -Name "jobuser" -Crede
 
 [ターゲット グループ](elastic-jobs-overview.md#target-group)は、ジョブ ステップによって実行される 1 つまたは複数のデータベースのセットを定義します。 
 
-次のスニペットを実行すると、*ServerGroup* と *ServerGroupExcludingDb2* の 2 つのターゲット グループが作成されます。 *ServerGroup* では、実行時にサーバー上に存在するすべてのデータベースがターゲットになります。*ServerGroupExcludingDb2* では、*TargetDb2* を除くサーバー上のすべてのデータベースがターゲットになります。
+次のスニペットでは、*ServerGroup* と *ServerGroupExcludingDb2* の 2 つのターゲット グループを作成しています。 *ServerGroup* では、実行時にサーバー上に存在するすべてのデータベースがターゲットになります。*ServerGroupExcludingDb2* では、*TargetDb2* を除くサーバー上のすべてのデータベースがターゲットになります。
 
 ```powershell
 Write-Output "Creating test target groups..."

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: カスタム検索 Web ページを作成する - Bing Custom Search'
+title: チュートリアル:カスタム検索 Web ページを作成する - Bing Custom Search
 titlesuffix: Azure Cognitive Services
 description: カスタム検索インスタンスを構成して、Web ページに統合する方法について説明します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: bing-custom-search
 ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: aahi
-ms.openlocfilehash: ebc4779876a52113c20e2ace50b3333e254a744e
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 0c98f75417bbcba13e179502eb1c8b4488b17d78
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161788"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558024"
 ---
-# <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル: Custom Search Web ページを作成する
+# <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル:Custom Search Web ページの作成
 
 Bing Custom Search を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。 たとえば、検索エクスペリエンスを提供する武術に関する Web サイトを所有している場合は、Bing が検索するドメイン、サブサイト、および Web ページを指定できます。 ユーザーは、関係のないコンテンツが含まれる可能性がある通常の検索結果のページを移動し続けるのではなく、関心のあるコンテンツに合わせてカスタマイズされた検索結果を参照できます。 
 
@@ -79,7 +79,7 @@ Bing Custom Search インスタンスを作成するには:
 
 ## <a name="add-pinned-entries"></a>ピン留めするエントリの追加
 
-特定の Web ページを検索結果の最上位にピン留めするには、**[Pinned]**(ピン留め) タブに Web ページと検索語を追加します。**[Pinned]**(ピン留め) タブには、特定のクエリの最上位の結果として表示される Web ページを指定する Web ページと検索語のペアの一覧が含まれています。 ユーザーのクエリ文字列が、暗証番号 (pin) の一致条件に基づいて pin のクエリ文字列と一致する場合にのみ、Web ページがピン留めされます。 検索で表示されるのは、インデックスが作成された Web ページだけです。 詳細については、[カスタム ビューの定義](../define-your-custom-view.md#pin-to-top)に関するページを参照してください。
+特定の Web ページを検索結果の最上位にピン留めするには、**[Pinned]**(ピン留め) タブに Web ページと検索語を追加します。**[Pinned]**(ピン留め) タブには、特定のクエリの最上位の結果として表示される Web ページを指定する Web ページと検索語のペアの一覧が含まれています。 ユーザーのクエリ文字列が、暗証番号 (pin) の一致条件に基づいて pin のクエリ文字列と一致する場合にのみ、Web ページがピン留めされます。 検索で表示されるのは、インデックスが作成された Web ページだけです。 詳細については、[カスタム ビューの定義](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results)に関するページを参照してください。
 
 1. **[構成]** ページで **[ピン留め]** をクリックし、上位の検索結果として返される Web ページと検索語を入力します。  
   
@@ -120,15 +120,15 @@ Bing Custom Search インスタンスを作成するには:
   
   ![ホステッド UI のその他の構成手順のスクリーンショット](./media/custom-search-hosted-ui-subscription-key.png)
 
-[!INCLUDE[publish or revert](../includes/publish-revert.md)]
+[!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
 <a name="consuminghostedui"></a>
 ## <a name="consuming-hosted-ui"></a>ホステッド UI の使用
 
 ホステッド UI は、2 つの方法で使用することができます。  
 
-- オプション 1: 提供される JavaScript スニペットをアプリケーションに統合
-- オプション 2: 提供される HTML エンドポイントを使用
+- オプション 1:提供される JavaScript スニペットをアプリケーションに統合する。
+- オプション 2:提供される HTML エンドポイントを使用する。
 
 このチュートリアルの残りの部分では、**オプション 1: Javascript スニペット**について説明します。  
 

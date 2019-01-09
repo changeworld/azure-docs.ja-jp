@@ -8,14 +8,14 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 78e56286e0dec3307c7481a6097c53a1362f57cc
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: fb2ec4802ad2ecf25a8fca031553c8209dc4267d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427524"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791321"
 ---
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル: ケーブルを配線して Azure Data Box に接続する
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル:ケーブルを配線して Azure Data Box に接続する
 
 このチュートリアルでは、Azure Data Box のケーブル配線、接続、起動の方法について説明します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "52427524"
 
 開始する前に次の点を確認します。
 
-1. [Azure Data Box の注文に関するチュートリアル](data-box-deploy-ordered.md)を完了していること。
+1. [チュートリアル:Azure Data Box を注文する](data-box-deploy-ordered.md)を完了していること。
 2. Data Box の受け取りが済んでいて、ポータルで注文の状態が **[配信済み]** に更新されていること。 
     - 現在のラベルの下にデバイスに貼付されているクリア ポーチに、配送先住所ラベルがあります。 このラベルは返品用に使用するため、安全に保管してください。
     - ヨーロッパの一部のリージョンについては、デバイスが箱に梱包されて発送されます。 デバイスを開梱し、箱は返送用に必ず保管しておいてください。
@@ -69,7 +69,7 @@ ms.locfileid: "52427524"
 次のステップを実行して、ローカル Web UI とポータル UI を使用してデバイスを設定します。
 
 1. デバイスに接続するために使用するノート PC のイーサネット アダプターを、静的 IP アドレス 192.168.100.5、サブネット 255.255.255.0 で構成します。 
-2. デバイスの MGMT ポートに接続し、 https://192.168.100.10 のローカル Web UI にアクセスします。 デバイスを起動してから最大 5 分かかることがあります。
+2. デバイスの MGMT ポートに接続し、https\://192.168.100.10 のローカル Web UI にアクセスします。 デバイスを起動してから最大 5 分かかることがあります。
 3. **[詳細]** をクリックしてから **[Web ページへ移動]** をクリックします。
 
    ![ローカル Web UI への接続](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 

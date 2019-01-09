@@ -1,6 +1,6 @@
 ---
-title: Spark を使用して Azure Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする | Microsoft Docs
-description: Azure Databricks クラスター上で Spark クエリを実行して、Azure Data Lake Storage Gen2 ストレージ アカウント内のデータにアクセスする方法を説明します。
+title: チュートリアル:Spark を使用して Azure Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする | Microsoft Docs
+description: このチュートリアルでは、Azure Databricks クラスター上で Spark クエリを実行して、Azure Data Lake Storage Gen2 ストレージ アカウント内のデータにアクセスする方法を説明します。
 services: storage
 author: dineshmurthy
 ms.component: data-lake-storage-gen2
@@ -8,56 +8,62 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: dineshm
-ms.openlocfilehash: 88a05eb8fa59740012ca6c7a8d8508d565854dc7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974159"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548988"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>チュートリアル: Spark を使用して Azure Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする
+# <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 プレビューのデータにアクセスする
 
-このチュートリアルでは、Azure Databricks クラスター上で Spark クエリを実行して、Azure Data Lake Storage Gen2 プレビュー対応の Azure Storage アカウント内のデータを照会する方法を説明します。
+このチュートリアルでは、Azure Data Lake Storage Gen2 (プレビュー) 対応の Azure Storage アカウントにある格納データに Azure Databricks クラスターを接続する方法を説明します。 この接続を使用することで、必要なデータに関するクエリや分析をクラスターからネイティブに実行することができます。
+
+このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
 > * Databricks クラスターを作成する
 > * 非構造化データをストレージ アカウントに取り込む
 > * Blob Storage 内でデータ分析を実行する
 
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、航空便の定時運航データ ([米国運輸省](https://transtats.bts.gov/Tables.asp?DB_ID=120&DB_Name=Airline%20On-Time%20Performance%20Data&DB_Short_Name=On-Time)で入手できます) の使用方法と照会方法を示します。 少なくとも 2 年間分の航空会社のデータをダウンロードし (すべてのフィールドを選択します)、その結果を、ご使用のマシンに保存します。 ダウンロードしたファイル名とパスを必ずメモしておいてください。この情報は後の手順で必要になります。
+このチュートリアルでは、航空便の定時運航データ ([米国運輸省](https://transtats.bts.gov/DL_SelectFields.asp)で入手できます) の使用方法と照会方法を示します。 
 
-> [!NOTE]
-> **[Prezipped file]\(事前に圧縮されたファイル\)** チェックボックスをオンにして、すべてのデータ フィールドを選択します。 ダウンロード サイズは数ギガバイトにもなりますが、分析にはこの量のデータが必要です。
+1. **[Prezipped file]\(事前に圧縮されたファイル\)** チェックボックスをオンにして、すべてのデータ フィールドを選択します。
+2. **[ダウンロード]** を選択して、ご使用のマシンに結果を保存します。
+3. ダウンロードしたファイルの名前とパスは必ずメモしておいてください。この情報は後の手順で必要になります。
 
-## <a name="create-an-azure-storage-account-with-analytic-capabilities"></a>分析機能を備えた Azure Storage アカウントを作成する
+このチュートリアルを完了するには、分析機能を含んだストレージ アカウントが必要です。 その作成方法に関する[クイック スタート](data-lake-storage-quickstart-create-account.md)を済ませておくことをお勧めします。 作成したら、そのストレージ アカウントに移動して構成設定を取得してください。
 
-まず、[分析機能を備えたストレージ アカウント](data-lake-storage-quickstart-create-account.md)を新たに作成し、一意の名前を指定します。 ストレージ アカウントに移動し、構成設定を取得します。
-
-1. **[設定]** で **[アクセス キー]** をクリックします。
-2. **[key1]** の隣にある **[コピー]** をクリックしてキーの値をコピーします。
+1. **[設定]** で **[アクセス キー]** を選択します。
+2. **[key1]** の隣にある **[コピー]** を選択してキーの値をコピーします。
 
 このチュートリアルの後の手順で、アカウント名とキーの両方が必要になります。 テキスト エディターを開き、後で参照できるようにアカウント名とキーをメモしておきます。
 
 ## <a name="create-a-databricks-cluster"></a>Databricks クラスターを作成する
 
-次の手順では、[Databricks クラスター](https://docs.azuredatabricks.net/)を作成して、データ ワークスペースを作成します。
+次の手順では、Databricks クラスターを作成して、データ ワークスペースを作成します。
 
-1. [Databricks サービス](https://ms.portal.azure.com/#create/Microsoft.Databricks)を作成し、**myFlightDataService** という名前を付けます (このサービスを作成するときに、*[ダッシュボードにピン留めする]* チェック ボックスを必ずオンにします)。
-2. **[Launch Workspace]\(ワークスペースの起動\)** をクリックして、新しいブラウザー ウィンドウでワークスペースを開きます。
-3. 左側のナビゲーション バーで **[クラスター]** をクリックします。
-4. **[クラスターの作成]** をクリックします。
-5. 「**myFlightDataCluster**」を *[クラスター名]* フィールドに入力します。
-6. *[ワーカー タイプ]* フィールドで **[Standard_D8s_v3]** を選択します。
-7. **[Min Workers]\(最小ワーカー\)** の値を *4* に変更します。
-8. ページの上部にある **[クラスターの作成]** をクリックします (このプロセスは完了までに最大 5 分かかる場合があります)。
-9. 処理が完了したら、ナビゲーション バーの左上にある **[Azure Databricks]** を選択します。
-10. ページの下半分にある **[新規]** セクションで **[Notebook]\(ノートブック\)** を選択します。
-11. **[名前]** フィールドに任意の名前を入力し、言語として **[Python]** を選択します。
-12. その他のフィールドはすべて既定値のままでかまいません。
-13. **作成**を選択します。
-14. 次のコードを **Cmd 1** セルに貼り付けます。 サンプル内のブラケットで囲まれているプレースホルダーは、実際の値に置き換えてください。
+1. [Azure portal](https://portal.azure.com) から **[リソースの作成]** を選択します。
+2. 検索フィールドに「**Azure Databricks**」と入力します。
+3. [Azure Databricks] ブレードの **[作成]** を選択します。
+4. Databricks サービスに **myFlightDataService** という名前を付けます (このサービスを作成するときに、*[ダッシュボードにピン留めする]* チェック ボックスを必ずオンにします)。
+5. **[Launch Workspace]\(ワークスペースの起動\)** を選択して、新しいブラウザー ウィンドウでワークスペースを開きます。
+6. 左側のナビゲーション バーで **[クラスター]** を選択します。
+7. **[クラスターの作成]** を選択します。
+8. 「**myFlightDataCluster**」を **[クラスター名]** フィールドに入力します。
+9. **[ワーカー タイプ]** フィールドで **[Standard_D8s_v3]** を選択します。
+10. **[Min Workers]\(最小ワーカー\)** の値を **4** に変更します。
+11. ページ上部の **[クラスターの作成]** を選択します。 この処理は、完了までに 5 分ほどかかることがあります。
+12. 処理が完了したら、ナビゲーション バーの左上にある **[Azure Databricks]** を選択します。
+13. ページの下半分にある **[新規]** セクションで **[Notebook]\(ノートブック\)** を選択します。
+14. **[名前]** フィールドに任意の名前を入力し、言語として **[Python]** を選択します。
+15. その他のフィールドはすべて既定値のままでかまいません。
+16. **作成**を選択します。
+17. 次のコードを **Cmd 1** セルに貼り付けます。 サンプル内のブラケットで囲まれているプレースホルダーは、実際の値に置き換えてください。
 
     ```scala
     %python%
@@ -72,13 +78,13 @@ ms.locfileid: "52974159"
         mount_point = "/mnt/flightdata",
         extra_configs = configs)
     ```
-15. **Shift + Enter** キーを押して、コード セルを実行します。
+18. **Shift + Enter** キーを押して、コード セルを実行します。
 
 ## <a name="ingest-data"></a>データの取り込み
 
 ### <a name="copy-source-data-into-the-storage-account"></a>ソース データをストレージ アカウントにコピーする
 
-次のタスクでは、AzCopy を使用して、*.csv* ファイルから Azure storage にデータをコピーします。 コマンド プロンプト ウィンドウを開き、次のコマンドを入力します。 `<DOWNLOAD_FILE_PATH>`、`<ACCOUNT_KEY>` の各プレースホルダーを、前の手順でメモしておいた対応する値で必ず置き換えてください。
+次のタスクでは、AzCopy を使用して、*.csv* ファイルから Azure storage にデータをコピーします。 コマンド プロンプト ウィンドウを開き、次のコマンドを入力します。 `<DOWNLOAD_FILE_PATH>`、`<ACCOUNT_NAME>`、`<ACCOUNT_KEY>` の各プレースホルダーを、前の手順でメモしておいた対応する値で必ず置き換えてください。
 
 ```bash
 set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -95,7 +101,7 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
 3. **[名前]** フィールドに「**CSV2Parquet**」と入力します。
 4. その他のフィールドはすべて既定値のままでかまいません。
 5. **作成**を選択します。
-6. **[Cmd 1]** セルに次のコードを貼り付けます (このコードはエディターに自動保存されます)。
+6. 次のコードを **Cmd 1** セルに貼り付けます。 このコードはエディターに自動保存されます。
 
     ```python
     # Use the previously established DBFS mount point to read the data
@@ -106,11 +112,11 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
     print("Done")
     ```
 
-## <a name="explore-data-using-hadoop-distributed-file-system"></a>Hadoop 分散ファイル システムを使用してデータを調べる
+## <a name="explore-data"></a>データを調査する
 
-Databricks ワークスペースに戻り、左側のナビゲーション バーにある **[Recent]\(最近使った項目\)** アイコンをクリックします。
+Databricks ワークスペースに戻り、左側のナビゲーション バーにある **[Recent]\(最近使った項目\)** アイコンを選択します。
 
-1. **[Flight Data Analytics]** ノートブックをクリックします。
+1. **[Flight Data Analytics]** ノートブックを選択します。
 2. **Ctrl + Alt + N** キーを押して新しいセルを作成します。
 
 次のコード ブロックをそれぞれ **[Cmd 1]** に入力し、**Cmd を押しながら Enter** キーを押して Python スクリプトを実行します。
@@ -137,7 +143,7 @@ dbutils.fs.ls("/mnt/flightdata/temp/parquet/flights")
 
 これで、ストレージ アカウントにアップロードしたデータの照会を開始できます。 次のコード ブロックをそれぞれ **[Cmd 1]** に入力し、**Cmd を押しながら Enter** キーを押して Python スクリプトを実行します。
 
-### <a name="simple-queries"></a>単純なクエリ
+### <a name="run-simple-queries"></a>単純なクエリを実行する
 
 データ ソースのデータフレームを作成するには、次のスクリプトを実行します。
 
@@ -198,7 +204,8 @@ print('Airports in Texas: ', out.show(100))
 out1 = spark.sql("SELECT distinct(Carrier) FROM FlightTable WHERE OriginStateName='Texas'")
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
 ```
-### <a name="complex-queries"></a>複雑なクエリ
+
+### <a name="run-complex-queries"></a>複雑なクエリを実行する
 
 より複雑な以下のクエリを実行するには、ノートブックの各セグメントに対して同時に実行して結果を確認します。
 
@@ -241,6 +248,12 @@ output.show(10, False)
 display(output)
 ```
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+リソース グループおよび関連するすべてのリソースは、不要になったら削除します。 これを行うには、ストレージ アカウントのリソース グループを選択し、**[削除]** を選択してください。
+
 ## <a name="next-steps"></a>次の手順
 
-* [Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う](data-lake-storage-tutorial-extract-transform-load-hive.md)
+[!div class="nextstepaction"] 
+> [Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う](data-lake-storage-tutorial-extract-transform-load-hive.md)
+

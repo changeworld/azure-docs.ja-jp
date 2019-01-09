@@ -1,23 +1,20 @@
 ---
-title: 'チュートリアル: Azure Portal を使用して Azure Database for PostgreSQL を設計する'
+title: チュートリアル:Azure portal を使用して Azure Database for PostgreSQL を設計する
 description: このチュートリアルでは、Azure Portal を使用して最初の Azure Database for PostgreSQL を設計する方法を説明します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 441b56aa683ac01566d2fd2877b9b8b912194f3a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406384"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536527"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して Azure Database for PostgreSQL を設計する
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Database for PostgreSQL を設計する
 
 Azure Database for PostgreSQL は、高可用性 PostgreSQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure Portal を使用して、簡単にサーバーを管理し、データベースを設計することができます。
 
@@ -51,10 +48,10 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
     ![サーバーの作成](./media/tutorial-design-database-using-azure-portal/2-create.png)
 
     - サーバー名: **mydemoserver** (サーバーの名前は DNS 名にマップするため、Azure でグローバルに一意である必要があります) 
-    - サブスクリプション: 複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。
+    - サブスクリプション:複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。
     - リソース グループ: **myresourcegroup**
     - サーバー管理者のログインとパスワード
-    - Location
+    - 場所
     - PostgreSQL のバージョン
 
    > [!IMPORTANT]
@@ -195,10 +192,10 @@ SELECT * FROM inventory;
 
    ![Azure portal - [復元] フォームのオプション](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
 
-   - **復元ポイント**: サーバーが変更される前の日時を選択します。
-   - **対象サーバー:** 復元先の新しいサーバー名を指定します
-   - **場所:** リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります
-   - **価格レベル:** サーバーを復元するときは、この値を変更することはできません。 ソース サーバーと同じレベルになります。 
+   - **復元ポイント**:サーバーが変更される前の日時を選択します。
+   - **対象サーバー**:復元先の新しいサーバー名を指定します。
+   - **場所**: リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
+   - **価格レベル**:サーバーを復元するときは、この値を変更することはできません。 ソース サーバーと同じレベルになります。 
 3.  **[OK]** をクリックして、テーブルが削除される前の[状態にサーバーを復元](./howto-restore-server-portal.md)します。 異なる時点にサーバーを復元すると、[価格レベル](./concepts-pricing-tiers.md)のリテンション期間内であれば、指定した時点の元サーバーと同じサーバー内に、新しいサーバーが複製されます。
 
 ## <a name="next-steps"></a>次の手順
@@ -212,4 +209,4 @@ SELECT * FROM inventory;
 > * データの更新
 > * データの復元
 
-次は、チュートリアル「[Azure CLI を使用して最初の Azure Database for PostgreSQL を設計する](tutorial-design-database-using-azure-cli.md)」に進んで、Azure CLI を使って同様のタスクを行う方法を学習してください
+次は、Azure CLI を使って同様のタスクを行う方法について見てみましょう。[Azure CLI を使用して最初の Azure Database for PostgreSQL を設計する方法](tutorial-design-database-using-azure-cli.md)に関するチュートリアルを参照してください。

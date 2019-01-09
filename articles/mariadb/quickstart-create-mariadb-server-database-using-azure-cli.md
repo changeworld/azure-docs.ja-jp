@@ -1,21 +1,19 @@
 ---
-title: 'クイック スタート: Azure Database for MariaDB サーバーの作成 - Azure CLI'
+title: クイック スタート:Azure Database for MariaDB サーバーを作成する - Azure CLI
 description: このクイック スタートでは、Azure CLI を使用して、Azure Database for MariaDB サーバーを Azure リソース グループに作成する方法を説明します。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: bc32cde7e4b4cf68b12b100eb402237098459aae
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 19c1952a25e6a6db9b81b74f79bdcd2970cb2c78
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566450"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538747"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーを作成する
 
@@ -52,14 +50,14 @@ Setting | 値の例 | 説明
 name | **mydemoserver** | Azure Database for MariaDB サーバーを識別する一意の名前を入力します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 から 63 文字にする必要があります。
 resource-group | **myresourcegroup** | Azure リソース グループの名前を入力します。
 sku-name | **GP_Gen5_2** | SKU の名前。 省略表現の *<価格レベル>*\_*<コンピューティング世代>*\_*<仮想コア>* という規則に従います。 **sku-name** パラメーターの詳細については、この表の後続のセクションを参照してください。
-backup-retention | **7** | バックアップを保持する必要のある時間。 単位は日数です。 7 から 35 の範囲で指定します。 
-geo-redundant-backup | **Disabled** | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。 指定できる値は、**Enabled** と **Disabled** です。
+backup-retention | **7** | バックアップを保持する必要のある時間。 単位は日数です。 範囲は 7 から 35 です。 
+geo-redundant-backup | **Disabled** | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。**Enabled**、**Disabled**
 location | **westus** | サーバーの Azure の場所。
-ssl-enforcement | **有効** | このサーバーに対して SSL を有効にする必要があるかどうかどうか。 指定できる値は、**Enabled** と **Disabled** です。
+ssl-enforcement | **有効** | このサーバーに対して SSL を有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。**Enabled**、**Disabled**
 storage-size | **51200** | サーバーのストレージ容量 (単位はメガバイト)。 有効なストレージ サイズは 5,120 MB 以上です (増分単位は 1,024 MB)。 ストレージ サイズの制限の詳細については、[価格レベル](./concepts-pricing-tiers.md)に関するページを参照してください。 
 version | **10.2** | MariaDB メジャー エンジンのバージョン。
 admin-user | **myadmin** | 管理者ログインのユーザー名。 **admin-user** パラメーターに **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
-admin-password | *<お使いのパスワード>* | 管理者ユーザーのパスワード。 パスワードは 8 から 128 文字にする必要があります。 英大文字、英小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれていることが必要です。
+admin-password | *<お使いのパスワード>* | 管理者ユーザーのパスワード。 パスワードは 8 から 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。
 
 **sku-name** パラメーターの値は、次の例のように、*<価格レベル>*\_*<コンピューティング世代>*\_*<仮想コア数>* という規則に従います。
 + `--sku-name B_Gen5_4` は、Basic 価格レベル、Gen 5 コンピューティング世代、4 仮想コアに対応します。

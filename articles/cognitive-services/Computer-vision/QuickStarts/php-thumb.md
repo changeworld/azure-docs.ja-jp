@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: サムネイルの生成 - REST、PHP - Computer Vision'
+title: クイック スタート:サムネイルの生成 - REST、PHP
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision API と PHP を使って、画像からサムネイルを生成します。
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 171893dd3017d46c405d2269506fe37896155e55
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 1527f57a1d300f730222d100bc9caf2001098fea
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964511"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579347"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-php-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と PHP を使用したサムネイルの生成
 
@@ -33,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このサンプルを作成して実行するには、次の手順を実行します。
 
-1. PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) パッケージをインストールします。
+1. PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) パッケージをインストールします。
    1. 管理者としてコマンド プロンプト ウィンドウを開きます。
    1. 次のコマンドを実行します。
 

@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: ed02174247de1a99f3d9a4880fd0afa60f867552
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: b17f6301a41dbb1f64edf9d027dff0f57c09282c
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "43050387"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808776"
 ---
 # <a name="a-sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>Key Vault に格納されているキーとシークレットを使用するサンプル アプリケーション
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
 
-この記事の手順に従って、Azure Stack のキー コンテナーからキーとシークレットを取得するサンプル アプリケーション (HelloKeyVault) を実行します。
+この記事の手順に従って、Azure Stack のキー コンテナーからキーとシークレットを取得する、**HelloKeyVault** という名前のサンプル アプリケーションを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Azure portal または PowerShell を使用して、サンプル アプリケー
 >[!NOTE]
 >既定では、この PowerShell スクリプトによって、Active Directory に新しいアプリケーションが作成されます。 ただし、既存のアプリケーションのいずれかを登録できます。
 
- 次のスクリプトを実行する前に、必ず `aadTenantName` 変数と `applicationPassword` 変数の値を指定します。 `applicationPassword` の値を指定しないと、このスクリプトによりランダムなパスワードが生成されます。
+次のスクリプトを実行する前に、必ず `aadTenantName` 変数と `applicationPassword` 変数の値を指定します。 `applicationPassword` の値を指定しないと、このスクリプトによりランダムなパスワードが生成されます。
 
 ```powershell
 $vaultName           = 'myVault'
@@ -69,7 +69,7 @@ Function GenerateSymmetricKey()
 Write-Host 'Please log into your Azure Stack user environment' -foregroundcolor Green
 
 $tenantARM = "https://management.local.azurestack.external"
-$aadTenantName = "PLEASE FILL THIS IN WITH YOUR AAD TENANT NAME. FOR EXAMPLE: myazurestack.onmicrosoft.com"
+$aadTenantName = "FILL THIS IN WITH YOUR AAD TENANT NAME. FOR EXAMPLE: myazurestack.onmicrosoft.com"
 
 # Configure the Azure Stack operator’s PowerShell environment.
 Add-AzureRMEnvironment `
@@ -134,10 +134,9 @@ Write-Host "Paste the following settings into the app.config file for the HelloK
 '<add key="AuthClientId" value="' + $servicePrincipal.ApplicationId + '"/>'
 '<add key="AuthClientSecret" value="' + $applicationPassword + '"/>'
 Write-Host
-
 ```
 
-次のスクリーン キャプチャは、キー コンテナーの作成に使用されるスクリプトからの出力を示しています。
+次の画像は、キー コンテナーの作成に使用されたスクリプトからの出力を示しています。
 
 ![キー コンテナーとアクセス キー](media/azure-stack-kv-sample-app/settingsoutput.png)
 
@@ -145,19 +144,19 @@ Write-Host
 
 ## <a name="download-and-configure-the-sample-application"></a>サンプル アプリケーションのダウンロードと構成
 
-「[Azure Key Vault client samples (Azure Key Vault クライアントのサンプル)](https://www.microsoft.com/en-us/download/details.aspx?id=45343)」ページから、キー コンテナーのサンプルをダウンロードします。 .zip ファイルの内容を自分の開発ワークステーションに抽出します。 samples フォルダーには 2 つのアプリケーションがあります。この記事では、HelloKeyVault を使用します。
+「[Azure Key Vault client samples (Azure Key Vault クライアントのサンプル)](https://www.microsoft.com/download/details.aspx?id=45343)」ページから、キー コンテナーのサンプルをダウンロードします。 .zip ファイルの内容を自分の開発ワークステーションに抽出します。 samples フォルダーには 2 つのアプリケーションがあります。 この記事では、**HelloKeyVault** を使用します。
 
-HelloKeyVault サンプルを読み込むには:
+**HelloKeyVault** サンプルを読み込むには:
 
 * **Microsoft.Azure.KeyVault.Samples** > **samples** > **HelloKeyVault** フォルダーを参照します。
-* HelloKeyVault アプリケーションを Visual Studio で開きます。
+* **HelloKeyVault** アプリケーションを Visual Studio で開きます。
 
 ### <a name="configure-the-sample-application"></a>サンプル アプリケーションを構成する
 
 Visual Studio で次の操作を行います。
 
-* HelloKeyVault\App.config ファイルを開き、&lt;**appSettings**&gt; 要素に移動します。
-* キー コンテナーの作成に使用され、返された値を使用して、**VaultUrl**、**AuthClientId**、**AuthClientSecret** を更新します  (既定では、App.config ファイルには *AuthCertThumbprint* のプレースホルダーが含まれます。 このプレースホルダーを *AuthClientSecret* に置き換えます)。
+* HelloKeyVault\App.config ファイルを開き、&lt;**appSettings**&gt; 要素を見つけます。
+* キー コンテナーの作成に使用され、返された値を使用して、**VaultUrl**、**AuthClientId**、**AuthClientSecret** を更新します。 既定では、App.config ファイルには `AuthCertThumbprint` のプレースホルダーが含まれます。 このプレースホルダーを `AuthClientSecret` に置き換えます。
 
   ![アプリケーション設定](media/azure-stack-kv-sample-app/appconfig.png)
 
@@ -170,10 +169,9 @@ HelloKeyVault を実行するとき、アプリケーションは Azure AD に�
 HelloKeyVault サンプルを使用して、以下の操作を行います。
 
 * キーおよびシークレットで作成、暗号化、ラップ、削除などの基本操作を行います。
-* *encrypt*、*decrypt* などのパラメーターを HelloKeyVault に渡して、指定した変更をキー コンテナーに適用します。
+* `encrypt`、`decrypt` などのパラメーターを HelloKeyVault に渡して、指定した変更をキー コンテナーに適用します。
 
 ## <a name="next-steps"></a>次の手順
 
-[Key Vault パスワードを使用して VM をデプロイする](azure-stack-kv-deploy-vm-with-secret.md)
-
-[Key Vault 証明書を使って VM をデプロイする](azure-stack-kv-push-secret-into-vm.md)
+- [Key Vault パスワードを使用して VM をデプロイする](azure-stack-kv-deploy-vm-with-secret.md)
+- [Key Vault 証明書を使って VM をデプロイする](azure-stack-kv-push-secret-into-vm.md)

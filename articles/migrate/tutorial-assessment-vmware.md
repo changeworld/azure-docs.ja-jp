@@ -4,15 +4,15 @@ description: Azure Migrate サービスを使って Azure に移行するため�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 04bc43093a6edc66cdbb661a94989f5980445027
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8971bba1e25a8e87ed57463dcc9b013fea56a0ff
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257813"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976836"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Azure に移行するためにオンプレミスの VMware VM を検出して評価する
 
@@ -58,8 +58,9 @@ Azure Migrate は、評価対象の VM を自動的に検出するために、VM
 
 **地理的な場所** | **保存場所**
 --- | ---
-米国 | 米国中西部または米国東部
 Azure Government | 米国政府バージニア州
+ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+米国 | 米国東部または米国中西部
 
 ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)
 
@@ -253,7 +254,7 @@ Azure Migrate では、Azure 対応性とサイズ変更の他に、VM の移行
 
 #### <a name="confidence-rating"></a>信頼度レーティング
 
-Azure Migrate のパフォーマンスベースの各評価は、1 つ星から 5 つ星 (1 つ星が最低で 5 つ星が最高) の範囲の信頼度レーティングに関連付けられています。 信頼度レーティングは、評価の計算に必要なデータ ポイントの可用性に基づいて、評価に割り当てられます。 評価の信頼度レーティングは、Azure Migrate による推奨サイズの信頼性を判断する目安となります。 信頼度レーティングは、オンプレミスの評価としては適用されません。
+Azure Migrate のパフォーマンスベースの各評価は、1 つ星から 5 つ星 (1 つ星が最低で 5 つ星が最高) の範囲の信頼度レーティングに関連付けられています。 信頼度レーティングは、評価の計算に必要なデータ ポイントの可用性に基づいて、評価に割り当てられます。 評価の信頼度レーティングは、Azure Migrate による推奨サイズの信頼性を判断する目安となります。 信頼度レーティングは、"そのまま" ではオンプレミスの評価に適用できません。
 
 サイズ変更がパフォーマンス ベースの場合、Azure Migrate には VM の CPU とメモリの使用率データが必要です。 さらに、VM に接続されている各ディスクについて、ディスクの IOPS とスループットのデータが必要です。 同様に、サイズ変更をパフォーマンス ベースで行う場合、Azure Migrate には VM に接続されている各ネットワーク アダプターについても、ネットワークの入出力が必要です。 上記の使用率の数値のいずれかが vCenter Server にない場合、Azure Migrate による推奨サイズは信頼できないことがあります。 次のように、使用可能なデータ ポイントの割合に応じて、評価の信頼度レーティングが決まります。
 

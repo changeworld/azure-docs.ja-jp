@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: c57edd897797d4352706283072aa19444948436b
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 4b4f208524f18b98d44dc3d34e05359445fb2f17
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644787"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598312"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -57,9 +57,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 11. 右上の **[Save and train]\(保存してトレーニング\)** を選択し、編集内容を保存して QnA Maker のモデルをトレーニングします。 保存しないと、編集した内容は保持されません。
 
-   ![保存してトレーニング](../media/qnamaker-quickstart-kb/add-qna-pair2.png)
-
-12. 右上の **[テスト]** を選択し、行った変更が反映したかをテストします。 ボックスに **hi there** と入力し、Enter キーを押します。 作成した応答が回答として表示されます。
+12. 右上の **[テスト]** を選択し、行った変更が反映したかをテストします。 ボックスに「`hi there`」と入力し、Enter キーを押します。 作成した応答が回答として表示されます。
 
 13. **[検査]** を選択し、詳細に応答を確認します。 テスト ウィンドウは、公開する前に KB への変更をテストする際に使用します。
 
@@ -71,7 +69,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 16. QnA Maker サービスが正常に発行されました。 お使いのアプリケーションまたはボット コードで、エンドポイントを使用できます。
 
-   ![[発行]](../media/qnamaker-quickstart-kb/publish-sucess.png)
+   ![発行](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
 ## <a name="next-steps"></a>次の手順
 

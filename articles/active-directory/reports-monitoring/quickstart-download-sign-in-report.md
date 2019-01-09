@@ -16,14 +16,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0e6e72424530d18b55f68077ba7c3328d9a2e549
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3e20af1c90f0e8a7a582d2d01dc4218a14496c40
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621430"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653290"
 ---
-# <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>クイック スタート: Azure portal を使用してサインイン レポートをダウンロードする
+# <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してサインイン レポートをダウンロードする
 
 このクイック スタートでは、過去 24 時間のテナントに関するサインイン データをダウンロードする方法について説明します。
 
@@ -31,10 +31,10 @@ ms.locfileid: "51621430"
 
 必要なもの:
 
-* Premium ライセンスを使用してサインイン アクティビティ レポートを表示する Azure Active Directory テナント。 
+* Premium ライセンスを使用してサインイン アクティビティ レポートを表示する Azure Active Directory テナント。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。
 * テナントの**セキュリティ管理者**、**セキュリティ閲覧者**、**レポート閲覧者**、**グローバル管理者**のいずれかのロールであるユーザー。 さらに、テナントのすべてのユーザーは自分のサインインにアクセスできます。
 
-## <a name="quickstart-download-a-sign-in-report"></a>クイック スタート: サインイン レポートをダウンロードする
+## <a name="quickstart-download-a-sign-in-report"></a>クイック スタート:サインイン レポートのダウンロード
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
 2. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** を選択し、**[ディレクトリの切り替え]** ボタンを使用して目的の Active Directory を選択します。

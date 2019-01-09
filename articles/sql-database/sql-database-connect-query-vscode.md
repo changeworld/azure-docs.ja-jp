@@ -4,7 +4,7 @@ description: Visual Studio Code を使用して Azure SQL Database に接続す�
 keywords: SQL Database への接続
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -13,16 +13,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/06/2018
-ms.openlocfilehash: 786b4fab42fb49cd44c1985bfa04ce33e77cadf0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 994f7d300b1e9a76e109e73467a2e7f0d4c1584d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098986"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652117"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: Visual Studio Code を使って Azure SQL Database に接続して照会する
 
-[Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows に対応するグラフィカル コード エディターです。 Microsoft SQL Server、Azure SQL Database、および SQL Data Warehouse のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。 このクイック スタートでは、Visual Studio Code を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを実行してデータを照会、挿入、更新、削除する方法について説明します。
+[Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows に対応するグラフィカル コード エディターです。 Microsoft SQL Server、Azure SQL Database、および SQL Data Warehouse のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。 このクイック スタートでは、Visual Studio Code を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを実行してデータのクエリ、挿入、更新、および削除を実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +66,7 @@ Visual Studio Code で、言語モードを **[SQL]** に設定し、mssql コ�
 
 1. 新しい Visual Studio Code ウィンドウを開きます。 
 
-2. **CTRL** + **N** キーを押します。 新しいプレーンテキスト ファイルが開きます。 
+2. **Ctrl** + **N** キーを押します。 新しいプレーンテキスト ファイルが開きます。 
 
 3. ステータス バーの右下隅の **[プレーン テキスト]** を選択します。
 
@@ -77,7 +77,7 @@ Visual Studio Code で、言語モードを **[SQL]** に設定し、mssql コ�
 Visual Studio Code を使用して、Azure SQL Database サーバーに対する接続を確立します。
 
 > [!IMPORTANT]
-> 続行する前に、サーバーおよびログインの情報が準備できていることを確認します。 接続プロファイル情報の入力を開始した後は、Visual Studio Code からフォーカスを移動すると、プロファイルの作成をやり直さなければならなくなります。
+> 続行する前に、サーバーおよびサインインの情報が準備できていることを確認します。 接続プロファイル情報の入力を開始した後は、Visual Studio Code からフォーカスを移動すると、プロファイルの作成をやり直さなければならなくなります。
 >
 
 1. Visual Studio Code で、**Ctrl + Shift + P** キー (または **F1** キー) を押してコマンド パレットを開きます。
@@ -102,7 +102,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 ## <a name="query-data"></a>データのクエリを実行する
 
-次の [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントを使用して、カテゴリごとに上位 20 個の製品を照会します。
+次の [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントによるクエリを実行して、カテゴリごとに上位 20 個の製品を照会します。
 
 1. エディター ウィンドウで、次の SQL クエリを貼り付けます。
 
@@ -113,13 +113,13 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. **Ctrl** + **Shift** + **E** キーを押してクエリを実行し、`Product` および `ProductCategory` テーブルから結果を表示します。
+2. **Ctrl** + **Shift** + **E** キーを押してクエリを実行し、`Product` および `ProductCategory` テーブルからの結果を表示します。
 
     ![2 つのテーブルからデータを取得するクエリ](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>データを挿入する
 
-次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用して、`SalesLT.Product` テーブルに新しい製品を追加します。
+次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを実行して、`SalesLT.Product` テーブルに新しい製品を追加します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -147,7 +147,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 ## <a name="update-data"></a>データの更新
 
-次の [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用して、追加された製品を更新します。
+次の [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを実行して、追加された製品を更新します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -161,7 +161,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 ## <a name="delete-data"></a>データの削除
 
-次の [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを使用して、新しい製品を削除します。
+次の [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを実行して、新しい製品を削除します。
 
 1. 前のクエリを次のクエリに置き換えます。
 

@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 93928d7eb84ce986c8a9322188183e4c3dd76d99
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1866a5d86d3ee47371a5eb6e14c2976798d2b4da
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847866"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787851"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM をフェールオーバーおよびフェールバックする
 
@@ -44,9 +44,9 @@ ms.locfileid: "52847866"
 
 2. **[フェールオーバー]** で、フェールオーバー先の**復旧ポイント**を選択します。 次のいずれかのオプションを使うことができます。
 
-   * **最新**(既定値): このオプションは、Site Recovery サービスのすべてのデータを処理し、最も低い目標復旧時点 (RPO) を提供します。
-   * **最後に処理があった時点**: このオプションは、仮想マシンを、Site Recovery サービスによって処理された最新の復旧ポイントに戻します。
-   * **カスタム**: 特定の復旧ポイントにフェールオーバーする場合は、このオプションを使用します。 このオプションは、テスト フェールオーバーを実行するときに役立ちます。
+   * **最新** (既定値): このオプションは、Site Recovery サービスのすべてのデータを処理し、最も低い目標復旧時点 (RPO) を提供します。
+   * **最後に処理があった時点**:このオプションは、仮想マシンを、Site Recovery サービスによって処理された最新の復旧ポイントに戻します。
+   * **カスタム**:特定の復旧ポイントにフェールオーバーする場合は、このオプションを使用します。 このオプションは、テスト フェールオーバーを実行するときに役立ちます。
 
 3. Site Recovery でフェールオーバーを開始する前にそのソース仮想マシンをシャットダウンする場合は、**[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。
 

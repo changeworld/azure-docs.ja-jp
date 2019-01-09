@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 8106c68397dea8d52c6d2daa2d09dfbc72c2a4c8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 58829bcd1b3c38b70929167beae5d8866483d616
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995060"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716499"
 ---
-# <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>チュートリアル: Front Door にカスタム ドメインを追加する
+# <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>チュートリアル:Front Door にカスタム ドメインを追加する
 このチュートリアルでは、Front Door にカスタム ドメインを追加する方法を説明します。 アプリケーションの配信に Azure Front Door Service を使用している場合、独自のドメイン名がエンド ユーザーの要求で示されるようにしたいときは、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。
 
 Front Door を作成すると、`azurefd.net` のサブドメインである既定のフロントエンド ホストが、バックエンドから Front Door コンテンツを配信するための URL に、既定で含まれるようになります (例: https:\//contoso.azurefd.net/activeusers.htm)。 便宜を図るため、Azure Front Door には、カスタム ドメインを既定のホストと関連付けるオプションが用意されています。 このオプションを使用すると、コンテンツ配信の URL に、Front Door 所有のドメイン名ではなく、カスタム ドメインが含まれるようになります (例: https:\//www.contoso.com/photo.png)。 
@@ -34,9 +34,9 @@ Front Door を作成すると、`azurefd.net` のサブドメインである既�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順を完了するには、最初に Front Door を作成する必要があります。 詳しくは、[Front Door の作成のクイック スタート](quickstart-create-front-door.md)に関するページをご覧ください。
+このチュートリアルの手順を完了するには、最初に Front Door を作成する必要があります。 詳細については、「[クイック スタート: Front Door の作成](quickstart-create-front-door.md)」を参照してください。
 
-カスタム ドメインがまだない場合は、最初にカスタム ドメインをドメイン プロバイダーから購入する必要があります。 たとえば、[カスタム ドメイン名の購入](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app)に関するページを参照してください。
+カスタム ドメインがまだない場合は、最初にカスタム ドメインをドメイン プロバイダーから購入する必要があります。 たとえば、[カスタム ドメイン名の購入](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain)に関するページを参照してください。
 
 Azure を使用して [DNS ドメイン](https://docs.microsoft.com/azure/dns/dns-overview) をホストしている場合は、ドメイン プロバイダーのドメイン ネーム システム (DNS) を Azure DNS に委任する必要があります。 詳細については、「[Azure DNS へのドメインの委任](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)」を参照してください。 また、ドメイン プロバイダーを使用して DNS ドメインを処理している場合は、「[CNAME DNS レコードを作成する](#create-a-cname-dns-record)」に進んでください。
 
@@ -62,15 +62,15 @@ afdverify サブドメインを含む CNAME レコードを作成するには:
 
 3. カスタム ドメインの CNAME レコード エントリを作成し、次の表に示すようにフィールドを入力します (フィールド名は異なる場合があります)。
 
-    | ソース                    | type  | 変換先                     |
+    | ソース                    | type  | 宛先                     |
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
 
-    - ソース: afdverify サブドメインを含めて、カスタム ドメイン名を afdverify._&lt;カスタム ドメイン名&gt;_ の形式で入力します。 たとえば、afdverify.www.contoso.com などです。
+    - ソース:afdverify サブドメインを含めて、カスタム ドメイン名を afdverify._&lt;カスタム ドメイン名&gt;_ の形式で入力します。 たとえば、afdverify.www.contoso.com などです。
 
-    - タイプ:「*CNAME*」と入力します。
+    - 次のコマンドを入力します: 「*CNAME*」と入力します。
 
-    - ターゲット: afdverify サブドメインを含む既定の Front Door フロントエンド ホストを、_&lt;エンドポイント名&gt;_.azurefd.net の形式で入力します。 たとえば、afdverify.contoso.azurefd.net などです。
+    - 変換先:afdverify サブドメインを含む既定の Front Door フロントエンド ホストを、_&lt;エンドポイント名&gt;_.azurefd.net の形式で入力します。 たとえば、afdverify.contoso.azurefd.net などです。
 
 4. 変更を保存します。
 
@@ -86,13 +86,13 @@ afdverify サブドメインを含む CNAME レコードを作成するには:
 
 5. CNAME エントリの次のフィールドに入力します。
 
-    - [Type]\(タイプ\): *[CNAME]* を選択したままにします。
+    - 次のコマンドを入力します: *[CNAME]* を選択したままにします。
 
-    - [Host]\(ホスト\): afdverify サブドメイン名を含めて、使用するカスタム ドメインのサブドメインを入力します。 たとえば、afdverify.www などです。
+    - [Host]\(ホスト\):afdverify サブドメイン名を含めて、使用するカスタム ドメインのサブドメインを入力します。 たとえば、afdverify.www などです。
 
-    - [Points to]\(ポイント先\): afdverify のサブドメイン名を含む、既定の Front Door フロントエンド ホストのホスト名を入力します。 たとえば、afdverify.contoso.azurefd.net などです。 
+    - [Points to]\(ポイント先\):afdverify のサブドメイン名を含む、既定の Front Door フロントエンド ホストのホスト名を入力します。 たとえば、afdverify.contoso.azurefd.net などです。 
 
-    - TTL: *[1 Hour]\(1 時間\)* を選択したままにします。
+    - TTL:*[1 Hour]\(1 時間\)* を選択したままにします。
 
 6. **[保存]** を選択します。
  
@@ -139,15 +139,15 @@ afdverify サブドメインが Front Door に正常にマップされている�
 
 3. カスタム ドメインの CNAME レコード エントリを作成し、次の表に示すようにフィールドを入力します (フィールド名は異なる場合があります)。
 
-    | ソース          | type  | 変換先           |
+    | ソース          | type  | 宛先           |
     |-----------------|-------|-----------------------|
     | www.contoso.com | CNAME | contoso.azurefd.net |
 
-    - ソース: カスタム ドメイン名 (例: www.contoso.com) を入力します。
+    - ソース:カスタム ドメイン名 (例: www.contoso.com) を入力します。
 
-    - タイプ:「*CNAME*」と入力します。
+    - 次のコマンドを入力します: 「*CNAME*」と入力します。
 
-    - ターゲット: 既定の Front Door フロントエンド ホストを入力します。 名前は、_&lt;ホスト名&gt;_.azurefd.net の形式である必要があります。 たとえば、contoso.azurefd.net などです。
+    - 変換先:既定の Front Door フロントエンド ホストを入力します。 名前は、_&lt;ホスト名&gt;_.azurefd.net の形式である必要があります。 たとえば、contoso.azurefd.net などです。
 
 4. 変更を保存します。
 
@@ -167,13 +167,13 @@ afdverify サブドメインが Front Door に正常にマップされている�
 
 5. CNAME エントリのフィールドに入力します。
 
-    - [Type]\(タイプ\): *[CNAME]* を選択したままにします。
+    - 次のコマンドを入力します: *[CNAME]* を選択したままにします。
 
-    - [Host]\(ホスト\): 使用するカスタム ドメインのサブドメインを入力します。 たとえば、www または profile とします。
+    - [Host]\(ホスト\):使用するカスタム ドメインのサブドメインを入力します。 たとえば、www または profile とします。
 
-    - [Points to]\(ポイント先\): Front Door の既定のホスト名を入力します。 たとえば、contoso.azurefd.net などです。 
+    - [Points to]\(ポイント先\):Front Door の既定のホスト名を入力します。 たとえば、contoso.azurefd.net などです。 
 
-    - TTL: *[1 Hour]\(1 時間\)* を選択したままにします。
+    - TTL:*[1 Hour]\(1 時間\)* を選択したままにします。
 
 6. **[保存]** を選択します。
  
@@ -197,7 +197,7 @@ afdverify サブドメインが Front Door に正常にマップされている�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > - CNAME DNS レコードを作成します。

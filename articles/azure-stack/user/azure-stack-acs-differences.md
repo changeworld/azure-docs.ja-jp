@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 1d1811549978d78a8dddad8e89895fdf605ed02b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1393dd32aea8cb6d348092ea1fc56752f659beab
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341900"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717876"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack ストレージ:相違点と考慮事項
 
@@ -34,8 +34,8 @@ Azure Stack ストレージは、Microsoft Azure Stack 内のストレージ ク
 | 機能 | Azure (グローバル) | Azure Stack |
 | --- | --- | --- |
 |File Storage|クラウド ベースの SMB ファイル共有のサポート|まだサポートされていません
-|Azure Storage Service Encryption for Data at Rest|256 ビット AES 暗号化|BitLocker 128 ビット AES 暗号化
-|ストレージ アカウントの種類|汎用アカウントと Azure Blob Storage アカウント|汎用目的のみ。
+|Azure Storage Service Encryption for Data at Rest|256 ビット AES 暗号化。 Key Vault でユーザーが管理するキーを使用した暗号化をサポートしています。|BitLocker 128 ビット AES 暗号化。 ユーザーが管理するキーを使用した暗号化はサポートされていません。
+|ストレージ アカウントの種類|汎用 V1、V2、および Blob Storage アカウント|汎用 V1 のみ。
 |レプリケーション オプション|ローカル冗長ストレージ、geo 冗長ストレージ、読み取りアクセス geo 冗長ストレージ、およびゾーン冗長ストレージ|ローカル冗長ストレージ。
 |Premium Storage|完全にサポートされます|プロビジョニング可能ですがパフォーマンス制限や保証がありません。
 |マネージド ディスク|Premium および標準がサポートされます|使用バージョンが 1808 以降の場合にサポートされます。
@@ -44,11 +44,14 @@ Azure Stack ストレージは、Microsoft Azure Stack 内のストレージ ク
 |ページ BLOB のスナップショット コピー|実行中の VM にアタッチされている Azure の管理対象外 VM ディスクのバックアップはサポートされています|まだサポートされていません。
 |ページ BLOB の増分スナップショットのコピー|Premium および標準の Azure ページ BLOB がサポートされます|まだサポートされていません。
 |Blob Storage のストレージ層|ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層。|まだサポートされていません。
-Blob Storage の論理的な削除|プレビュー|まだサポートされていません。
+|Blob Storage の論理的な削除|一般提供|まだサポートされていません。
 |ページ BLOB の最大サイズ|8 TB|1 TB (テラバイト)
 |ページ BLOB のページ サイズ|512 バイト|4 KB
 |テーブルのパーティション キーと行キーのサイズ|1,024 文字 (2,048 バイト)|400 文字 (800 バイト)
-|BLOB スナップショット|1 つの BLOB の最大スナップショット数は制限されていません。|1 つの BLOB の最大スナップショット数は 1,000 です。|
+|BLOB スナップショット|1 つの BLOB の最大スナップショット数は制限されていません。|1 つの BLOB の最大スナップショット数は 1,000 です。
+|ストレージの Azure AD Authentication|プレビュー段階|まだサポートされていません。
+|不変 BLOB|一般提供|まだサポートされていません。
+|ストレージのファイアウォールおよび仮想ネットワーク規則|一般提供|まだサポートされていません。|
 
 ストレージ メトリックにも相違点があります。
 
@@ -61,7 +64,17 @@ Azure Stack Storage では以下のバージョンがサポートされます。
 
 Azure Storage サービスの API:
 
-1802 update 以降:
+1811 update 以降のバージョン:
+
+ - [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
+ - [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
+ - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
+ - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
+ - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
+ - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
+
+1802 update から 1809 update まで:
 
 - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
@@ -79,6 +92,12 @@ Azure Storage サービスの Management API:
 - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
+以前のバージョン:
+
+ - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ 
 ## <a name="sdk-versions"></a>SDK バージョン
 
 Azure Stack ストレージは、次のクライアント ライブラリをサポートしています。

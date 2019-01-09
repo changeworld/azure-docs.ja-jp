@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:画像の分析 - SDK、C# - Computer Vision
+title: クイック スタート:イメージを分析する - SDK、C#
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision Windows C# クライアント ライブラリを使って、画像を分析します。
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: 0983978221e9872e92ca366edd3bd3f2bfd9c3f4
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.custom: seodec18
+ms.openlocfilehash: 5bb11d77a6bdca3ef328ad24ac18ade8df9f65ec
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413321"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583378"
 ---
 # <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>クイック スタート:Computer Vision SDK と C# による画像の分析
 

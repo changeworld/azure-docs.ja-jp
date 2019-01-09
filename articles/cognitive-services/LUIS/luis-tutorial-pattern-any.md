@@ -9,18 +9,32 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 4551968cc446bb949d0b18cb77211808169cb907
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 58a62a5a882c6883c6fed31a7b95d949247e1bf1
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103474"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752607"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>チュートリアル 5: 自由形式のデータを抽出する
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>チュートリアル:Pattern.any エンティティを使用して自由形式データを抽出する
 
 このチュートリアルでは、発話が正しい形式であって、データの末尾が発話の残りの単語と混同しやすい可能性がある場合に、pattern.any エンティティを使用して発話からデータを抽出し ます。 
+
+**このチュートリアルで学習する内容は次のとおりです。**
+
+> [!div class="checklist"]
+> * サンプル アプリをインポートする
+> * 発話の例を既存のエンティティに追加する
+> * Pattern.any エンティティを作成する
+> * パターンを作成する
+> * トレーニング
+> * 新しいパターンをテストする
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-patternany-entity"></a>Pattern.any エンティティを使用する
 
 pattern.any エンティティは、エンティティの表現が原因で発話の残りの部分からエンティティの終わりを判別するのが難しい自由形式データを見つけるために使用できます。 
 
@@ -50,24 +64,12 @@ pattern.any エンティティは、エンティティの表現が原因で発�
 |誰が {FormName} を作成しましたか[?]|
 |{FormName} はフランス語で発行されますか[?]|
 
-**このチュートリアルで学習する内容は次のとおりです。**
-
-> [!div class="checklist"]
-> * 既存のチュートリアル アプリを使用する
-> * 発話の例を既存のエンティティに追加する
-> * Pattern.any エンティティを作成する
-> * パターンを作成する
-> * トレーニング
-> * 新しいパターンをテストする
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>既存のアプリを使用する
+## <a name="import-example-app"></a>サンプル アプリをインポートする
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
 
-以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+次の手順に従います。
 
-1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json)をダウンロードして保存します。
 
 2. JSON を新しいアプリにインポートします。
 

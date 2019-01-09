@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 5f76d18662105df6d278e09e047baa13773ab4ac
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 98e69c7759f736c132601305156290f7a43eeaf9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319355"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537581"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
 
@@ -55,7 +55,7 @@ Web App for Containers にデプロイする場合は、ビルドに使用する
 Azure にデプロイするには、Azure サービス プリンシパルが必要です。 
 
 
-1. Azure サービス プリンシパルを作成するには、[Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) または [Azure Portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal) を使用します。
+1. Azure サービス プリンシパルを作成するには、[Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)  または [Azure portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal) を使用します。
 2. Jenkins ダッシュボードで、**[Credentials]\(資格情報\)** > **[System]\(システム\)** を選択します。 次に、**[Global credentials(unrestricted)]\(グローバル資格情報 (制限なし)\)** を選択します。
 3. Microsoft Azure サービス プリンシパルを追加するには、**[Add Credentials]\(資格情報の追加\)** を選択します。 **[Subscription ID]\(サブスクリプション ID\)**、**[Client ID]\(クライアント ID\)**、**[Client Secret]\(クライアント シークレット\)**、**[OAuth 2.0 Token Endpoint]\(OAuth 2.0 トークン エンドポイント\)** の各フィールドに値を入力します。 **[ID]** フィールドを **[mySp]** に設定します。 この ID は、この記事の以降の手順で使用します。
 
@@ -64,9 +64,9 @@ Azure にデプロイするには、Azure サービス プリンシパルが必�
 
 ご自身のプロジェクトを Web Apps にデプロイする場合、ファイルのアップロードによってご自身のビルド成果物をアップロードできます。 Azure App Service では、複数のデプロイ オプションがサポートされます。 Azure App Service Jenkins プラグインにより、この処理がシンプルになり、デプロイ オプションは、ファイルの種類に基づいて取得されます。 
 
-* Java EE アプリケーションの場合は、[WAR デプロイ](/azure/app-service/app-service-deploy-zip#deploy-war-file)が使用されます。
-* Java SE アプリケーションの場合は、[ZIP デプロイ](/azure/app-service/app-service-deploy-zip#deploy-zip-file)が使用されます。
-* その他の言語については、[Git デプロイ](/azure/app-service/app-service-deploy-local-git)が使用されます。
+* Java EE アプリケーションの場合は、[WAR デプロイ](/azure/app-service/deploy-zip#deploy-war-file)が使用されます。
+* Java SE アプリケーションの場合は、[ZIP デプロイ](/azure/app-service/deploy-zip#deploy-zip-file)が使用されます。
+* その他の言語については、[Git デプロイ](/azure/app-service/deploy-local-git)が使用されます。
 
 Jenkins でジョブを設定する前に、Java アプリを実行するための Azure App Service プランと Web アプリが必要です。
 

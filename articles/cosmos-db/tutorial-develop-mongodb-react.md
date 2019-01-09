@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: bd72aad51d2649ba6f110ab07b3f85d58da2a09d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c6086c3d3bc025feaf9da2d4c26d7f008b304b57
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867037"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788125"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React と Azure Cosmos DB を使って MongoDB アプリを作成する  
 
-このビデオ チュートリアルでは、React フロントエンドでヒーローの追跡アプリを作成する方法を複数のパートにわたって紹介しています。 このアプリは、サーバーに Node と Express を使用し、[MongoDB API](mongodb-introduction.md) で Azure Cosmos DB に接続した後、アプリのサーバー部分に React フロントエンドを接続するものです。 また、Azure Portal からポイントアンドクリック方式で Azure Cosmos DB をスケーリングする方法や、アプリをインターネットにデプロイしてだれでもお気に入りのヒーローを追跡できるようにする方法も紹介しています。 
+このビデオ チュートリアルでは、React フロントエンドでヒーローの追跡アプリを作成する方法を複数のパートにわたって紹介しています。 このアプリは、サーバーに Node と Express を使用し、[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) で構成された Cosmos データベースに接続した後、アプリのサーバー部分に React フロントエンドを接続するものです。 このチュートリアルでは、Azure portal からポイントアンドクリック方式で Cosmos DB をスケーリングする方法や、アプリをインターネットにデプロイしてだれでもお気に入りのヒーローを追跡できるようにする方法も紹介しています。 
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、MongoDB クライアント接続をサポートしています。そのため MongoDB を Azure Cosmos DB に置き換えても、MongoDB アプリに使われるコードはそのまま利用できるうえ、クラウドへの簡単なデプロイ、スケーリング、超高速の読み取りと書き込みなど、さまざまな利点がもたらされます。  
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は MongoDB とのワイヤ プロトコル互換性をサポートしているので、クライアントは MongoDB の代わりに Azure Cosmos DB を使用できます。  
 
 このマルチパート チュートリアルに含まれるタスクは次のとおりです。
 

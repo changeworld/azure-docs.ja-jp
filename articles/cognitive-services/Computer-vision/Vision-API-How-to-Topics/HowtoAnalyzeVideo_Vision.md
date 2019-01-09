@@ -1,5 +1,5 @@
 ---
-title: '例: Computer Vision API を使用したリアルタイムのビデオ分析'
+title: 例:リアルタイムのビデオ分析 - Computer Vision
 titlesuffix: Azure Cognitive Services
 description: ライブ ビデオ ストリームから取得したフレームに対して、Computer Vision API を使用して、ほぼリアルタイムに分析を実行します。
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
-ms.openlocfilehash: 058f2ad58665a88d2d3cf3ce20b43ac0fad30000
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: 140e45270cf29eec48df260efa29b8aacac2d855
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983197"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580469"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>リアルタイムでビデオを分析する方法
 このガイドでは、ライブ ビデオ ストリームから取得したフレームに対して、ほぼリアルタイムに分析を実行する方法を示します。 そのようなシステムの基本コンポーネントは、次のとおりです。
@@ -68,13 +69,13 @@ while (true)
 ```CSharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
-     
+     
 // Producer thread. 
 while (true)
 {
     // Grab a frame. 
     Frame f = GrabFrame();
- 
+ 
     // Decide whether to analyze the frame. 
     if (ShouldAnalyze(f))
     {
@@ -106,10 +107,10 @@ while (true)
 {
     // Get the oldest task. 
     Task<ResultWrapper> analysisTask = taskQueue.Take();
- 
+ 
     // Await until the task is completed. 
     var output = await analysisTask;
-     
+     
     // Consume the exception or result. 
     if (output.Exception != null)
     {
@@ -134,7 +135,7 @@ using System;
 using VideoFrameAnalyzer;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
-     
+     
 namespace VideoFrameConsoleApplication
 {
     class Program
@@ -177,7 +178,7 @@ namespace VideoFrameConsoleApplication
 
 ほとんどのモードで、左のライブ ビデオと右に表示された分析との間に視覚的な遅延が生じます。 この遅延は、API 呼び出しにかかった時間です。 これに該当しないのは、"EmotionsWithClientFaceDetect" モードになっているときで、このモードでは、Cognitive Services にイメージを送信する前に、OpenCV を使用してクライアント コンピューターでローカルに顔検出が実行されます。 こうすることで、検出した顔をすぐに表示し、その後 API 呼び出しが戻ったときに後から感情を更新できます。 これは "ハイブリッド" アプローチの可能性を示しており、クライアント上で単純な処理をいくつか実行してから、必要に応じて Cognitive Services APIs を使用し、より高度な分析によって処理を強化することができます。
 
-![HowToAnalyzeVideo](../../Video/Images/FramebyFrame.jpg)
+![タグが表示された画像を示す LiveCameraSample アプリのスクリーンショット](../../Video/Images/FramebyFrame.jpg)
 
 ### <a name="integrating-into-your-codebase"></a>コードベースへの統合
 このサンプルを開始するには、次の手順に従います。
@@ -189,7 +190,7 @@ namespace VideoFrameConsoleApplication
 2. [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub リポジトリを複製します
 
 3. Visual Studio 2015 でサンプルを開き、サンプル アプリケーションをビルドして実行します。
-    - BasicConsoleSample の場合、Face API キーは、[BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 内に直接ハードコードされています。
+    - BasicConsoleSample の場合、Face API キーは、 [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 内に直接ハードコードされています。
     - LiveCameraSample の場合、アプリの設定ウィンドウにキーを入力する必要があります。 これらは、セッションを移動してもユーザー データとして残されます。
         
 
@@ -207,5 +208,5 @@ VideoFrameAnalyzer のイメージ、音声、ビデオ、またはテキスト�
 ## <a name="summary"></a>まとめ
 このガイドでは、Face、Computer Vision、Emotion API を使用してライブ ビデオ ストリームでほぼリアルタイムの分析を実行する方法と、サンプル コードを使用して作業を開始する方法について説明しました。 [Microsoft Cognitive Services のサインアップ ページ](https://azure.microsoft.com/try/cognitive-services/)で取得した無料の API キーを使用して、アプリのビルドを開始できます。 
 
-[GitHub リポジトリ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)では、お気軽にフィードバックや提案を提供してください。API に関するより幅広いフィードバックについては、[UserVoice サイト](https://cognitive.uservoice.com/)にお寄せください。
+[GitHub リポジトリ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)では、お気軽にフィードバックや提案を提供してください。API に関するより幅広いフィードバックについては、 [UserVoice サイト](https://cognitive.uservoice.com/)にお寄せください。
 

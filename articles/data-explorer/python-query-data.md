@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Azure データ エクスプローラーの Python ライブラリを使用してデータのクエリを実行する'
+title: クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータのクエリを実行する
 description: このクイック スタートでは、Python を使用して Azure データ エクスプ ローラーからデータをクエリする方法について説明します。
 services: data-explorer
 author: orspod
@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: 14049df1116205ec5e95b052049f53738dcf50b4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f3a8dd001f4d1d930c700847f0725e00b7c29ecf
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863416"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715119"
 ---
-# <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>クイック スタート: Azure データ エクスプローラーの Python ライブラリを使用してデータのクエリを実行する
+# <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータのクエリを実行する
 
-Azure データ エクスプローラーは、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure データ エクスプ ローラーでは、[Python 用のデータ クライアント ライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)が提供されています。 このライブラリを使用すると、コードからデータをクエリできます。 このクイック スタートでは、学習を支援するために設定した*ヘルプ クラスター*上のテーブルに接続します。 次に、そのクラスター上のテーブルをクエリし、結果を返します。
+Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure データ エクスプ ローラーでは、[Python 用のデータ クライアント ライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)が提供されています。 このライブラリを使用すると、コードからデータをクエリできます。 このクイック スタートでは、学習を支援するために設定した*ヘルプ クラスター*上のテーブルに接続します。 次に、そのクラスター上のテーブルをクエリし、結果を返します。
 
 このクイック スタートは [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb) でも利用できます。
 
@@ -66,7 +66,7 @@ KUSTO_CLUSTER = "https://help.kusto.windows.net/"
 KUSTO_DATABASE  = "Samples"
 ```
 
-では、接続文字列を作成します。 この例では、デバイス認証を使用してクラスターにアクセスします。 AAD アプリケーション証明書、AAD アプリケーション キー、および AAD ユーザーとパスワードを使用することもできます。
+では、接続文字列を作成します。 この例では、デバイス認証を使用してクラスターにアクセスします。 [AAD アプリケーション証明書](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24)、[AAD アプリケーション キー](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)、および [AAD ユーザーとパスワード](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)を使用することもできます。
 
 ```python
 KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(KUSTO_CLUSTER)
@@ -75,7 +75,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>Azure データ エクスプローラーに接続し、クエリを実行する
 
-クラスターに対してクエリを実行し、データ フレームに出力を格納します。 このコードを実行すると、次のようなメッセージが返されます: *サインインするには、Web ブラウザーを使用してページ https://microsoft.com/devicelogin を開き、コード F3W4VWZDM を入力して認証します*。 この手順に従ってサインインし、元のページに戻って次のコード ブロックを実行します。
+クラスターに対してクエリを実行し、データ フレームに出力を格納します。 このコードを実行すると、次のようなメッセージが返されます。"*サインインするには、Web ブラウザーを使用して https://microsoft.com/devicelogin ページを開き、認証するためのコード F3W4VWZDM を入力します*。" この手順に従ってサインインし、元のページに戻って次のコード ブロックを実行します。
 
 ```python
 KUSTO_CLIENT  = KustoClient(KCSB)
@@ -98,4 +98,4 @@ StormEvents テーブルの上位 10 件の結果が表示されます。
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイック スタート: Azure データ エクスプローラーの Python ライブラリを使用してデータを取り込む](python-ingest-data.md)
+> [クイック スタート: Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)

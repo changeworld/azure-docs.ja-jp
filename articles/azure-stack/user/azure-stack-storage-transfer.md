@@ -10,19 +10,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 45bf9bbffdbba22336da08c81df069ce0267686f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 40df81d496e04ab2d549923cc0645afb8eddaf57
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092662"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724455"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Azure Stack ストレージのデータ転送ツールの使用
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、およびアカウント管理機能のストレージ サービスのセットを提供します。 Azure Stack ストレージのデータを管理または移動する場合は、Azure ストレージ ツールのセットを使用することができます。 この記事では、使用可能なツールの概要について説明します。
 
@@ -48,7 +48,7 @@ Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、お
 
     ストレージ アカウント内の既存のブロック BLOB データに Linux ファイル システム経由でアクセスできるようにする、Azure Blob Storage 用の仮想ファイル システム ドライバーです。 
 
-Azure と Azure Stack の間のストレージ サービスの違いにより、次のセクションで説明されている各ツールにはいくつかの固有の要件があります。 Azure Stack ストレージと Azure ストレージの間の比較については、「[Azure Stack ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)」をご覧ください。
+Azure と Azure Stack の間のストレージ サービスの違いにより、次のセクションで説明されている各ツールにはいくつかの固有の要件があります。 Azure Stack ストレージと Azure ストレージの間の比較については、「[Azure Stack ストレージ:違いと考慮事項](azure-stack-acs-differences.md)」をご覧ください。
 
 ## <a name="azcopy"></a>AzCopy
 
@@ -56,16 +56,17 @@ AzCopy は、最適なパフォーマンスの単純なコマンドを使用し�
 
 ### <a name="download-and-install-azcopy"></a>AzCopy のダウンロードとインストール
 
-AzCopy ユーティリティには、AzCopy on Windows と AzCopy on Linux という 2 つのバージョンがあります。
+AzCopy ユーティリティには、2 つのバージョンがあります。Windows 上の AzCopy と Linux 上の AzCopy です。
 
  - **Windows での AzCopy**
-    - Azure Stack 用のサポートされているバージョンの AzCopy をダウンロードします。 Azure と同様の方法で、Azure Stack 上で AzCopy をインストールして使用することができます 詳細については、[Windows 上の AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) に関するページを参照してください。
-        - 1802 更新プログラム以降のバージョンの場合は、[AzCopy 7.1.0 をダウンロード](https://aka.ms/azcopyforazurestack20170417)します。
-        - それより前のバージョンでは、[AzCopy 5.0.0 をダウンロード](https://aka.ms/azcopyforazurestack20170417)します。
+    - Azure Stack 用のサポートされているバージョンの AzCopy をダウンロードします。 Azure と同様の方法で、Azure Stack 上で AzCopy をインストールして使用することができます 詳細については、[Windows での AzCopy](../../storage/common/storage-use-azcopy.md) に関するページを参照してください。
+        - 1811 更新プログラム以降のバージョンの場合は、[AzCopy 7.3.0 をダウンロード](https://aka.ms/azcopyforazurestack20171109)します。
+        - それより前のバージョン (1802 から 1809 までの更新プログラム) では、[AzCopy 7.1.0 をダウンロード](https://aka.ms/azcopyforazurestack20170417)します。
 
  - **Linux での AzCopy**
 
-    - Linux 上の AzCopy は、Azure Stack 1802 更新プログラム以降のバージョンをサポートしています。 Azure と同様の方法で、Azure Stack 上で AzCopy をインストールして使用することができます 詳細については、[Linux 上の AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) に関するページを参照してください。
+    - Azure と同様の方法で、Azure Stack 上で AzCopy をインストールして使用することができます 詳細については、[Linux での AzCopy](../../storage/common/storage-use-azcopy-linux.md) に関するページを参照してください。
+    - 以前のバージョン (1802 から 1809 までの更新プログラム) については、「[AzCopy 7.1 以前のバージョンのインストール手順](../../storage/common/storage-use-azcopy-linux.md#installation-steps-for-azcopy-71-and-earlier-versions)」を参照してください。
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>データ転送するための AzCopy コマンドの例
 
@@ -75,36 +76,36 @@ AzCopy ユーティリティには、AzCopy on Windows と AzCopy on Linux と�
 
 **Windows**
 
-````AzCopy
+```shell
 AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer /dest:C:\myfolder /sourcekey:<key> /S
-````
+```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source https://myaccount.blob.local.azurestack.external/mycontainer \
     --destination /mnt/myfiles \
     --source-key <key> \
     --recursive
-````
+```
 
 ### <a name="upload-single-file-to-virtual-directory"></a>1 つのファイルを仮想ディレクトリにアップロードする
 
 **Windows**
 
-```AzCopy
+```shell
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source /mnt/myfiles/abc.txt \
     --destination https://myaccount.blob.local.azurestack.external/mycontainer/vd/abc.txt \
     --dest-key <key>
-````
+```
 
 ### <a name="move-data-between-azure-and-azure-stack-storage"></a>Azure と Azure Stack ストレージ間でデータを移動します
 
@@ -112,13 +113,13 @@ Azure ストレージと Azure Stack との間の非同期のデータ転送が�
 
 **Windows**
 
-````AzCopy
+```shell
 Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
-````
+```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source https://myaccount1.blob.local.azurestack.external/myContainer/ \
     --destination https://myaccount2.blob.core.windows.net/myContainer/ \
@@ -126,7 +127,7 @@ azcopy \
     --dest-key <key2> \
     --include "abc.txt" \
     --sync-copy
-````
+```
 
 ### <a name="azcopy-known-issues"></a>Azcopy の既知の問題
 
@@ -217,28 +218,27 @@ New-Item -Path $DestinationFolder -ItemType Directory -Force
 $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 
 # end
-````
+```
 
 ### <a name="powershell-known-issues"></a>PowerShell の既知の問題
 
 Azure Stack の現在の互換性のある Azure PowerShell モジュールのバージョンは、ユーザー操作の場合は 1.2.11 です。 これは Azure PowerShell の最新バージョンとは異なります。 この違いは、ストレージ サービスの操作に影響します。
 
-* バージョン 1.2.11 では `Get-AzureRmStorageAccountKey` の戻り値の形式に `Key1` と `Key2` という 2 つのプロパティがありますが、Azure 最新バージョンは、すべてのアカウント キーが含まれる配列を返します。
+バージョン 1.2.11 では `Get-AzureRmStorageAccountKey` の戻り値の形式に `Key1` と `Key2` という 2 つのプロパティがありますが、Azure 最新バージョンは、すべてのアカウント キーが含まれる配列を返します。
 
-   ```
-   # This command gets a specific key for a storage account, 
-   # and works for Azure PowerShell version 1.4, and later versions.
-   (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
-   -AccountName "MyStorageAccount").Value[0]
+```powershell
+# This command gets a specific key for a storage account, 
+# and works for Azure PowerShell version 1.4, and later versions.
+(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
+-AccountName "MyStorageAccount").Value[0]
 
-   # This command gets a specific key for a storage account, 
-   # and works for Azure PowerShell version 1.3.2, and previous versions.
-   (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
-   -AccountName "MyStorageAccount").Key1
+# This command gets a specific key for a storage account, 
+# and works for Azure PowerShell version 1.3.2, and previous versions.
+(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
+-AccountName "MyStorageAccount").Key1
+```
 
-   ```
-
-   詳細については、[Get-AzureRmStorageAccountKey](https://docs.microsoft.com/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey?view=azurermps-4.1.0) を参照してください。
+詳細については、[Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey) を参照してください。
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -265,7 +265,7 @@ CLI のインストールと構成が完了したら、次の手順を試し、A
 4. 必要に応じてスクリプトを実行可能ファイルとしてマークします。`chmod +x my_storage_sample.sh`
 5. スクリプトを実行します。 たとえば Bash の場合は次のようになります。 `./my_storage_sample.sh`
 
-```bash
+```azurecli
 #!/bin/bash
 # A simple Azure Stack storage example script
 
@@ -296,7 +296,7 @@ echo "Downloading the file..."
 az storage blob download --container-name $AZURESTACK_STORAGE_CONTAINER_NAME --account-name $AZURESTACK_STORAGE_ACCOUNT_NAME --name $AZURESTACK_STORAGE_BLOB_NAME --file $DESTINATION_FILE --output table
 
 echo "Done"
-````
+```
 
 ## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
 
@@ -317,20 +317,20 @@ Azure Stack 開発キットでは、blobEndpoint を `myaccount.blob.local.azure
 
 accountKey と sasToken は一度に 1 つずつしか構成できないことに注意してください。 ストレージ アカウント キーを指定した資格情報構成ファイルの形式を次に示します。 
 
-```text  
-    accountName myaccount 
-    accountKey myaccesskey== 
-    containerName mycontainer 
-    blobEndpoint myaccount.blob.local.azurestack.external
+```
+accountName myaccount 
+accountKey myaccesskey== 
+containerName mycontainer 
+blobEndpoint myaccount.blob.local.azurestack.external
 ```
 
 共有アクセス トークンを指定した資格情報構成ファイルの形式を次に示します。
 
-```text  
-    accountName myaccount 
-    sasToken ?mysastoken 
-    containerName mycontainer 
-    blobEndpoint myaccount.blob.local.azurestack.external
+```  
+accountName myaccount 
+sasToken ?mysastoken 
+containerName mycontainer 
+blobEndpoint myaccount.blob.local.azurestack.external
 ```
 
 ## <a name="next-steps"></a>次の手順

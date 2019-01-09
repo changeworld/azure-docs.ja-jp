@@ -1,5 +1,5 @@
 ---
-title: Linux での Python Web アプリの作成 - Azure App Service | Microsoft Docs
+title: Linux での Python アプリの作成 - Azure App Service | Microsoft Docs
 description: Azure App Service on Linux で、初めての Python の Hello World アプリを数分でデプロイします。
 services: app-service\web
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d9d6f3549ec5db914536400fac53de60f2ad4a94
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3af8f57cab6e420a7c7515bdf32b7ef382441cf9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261852"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633149"
 ---
-# <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Azure App Service on Linux で Python Web アプリを作成する (プレビュー)
+# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Azure App Service on Linux で Python アプリを作成する (プレビュー)
 
 [App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイック スタートでは、[Azure CLI](/cli/azure/install-azure-cli)を使用して、 App Service on Linux の組み込み Python イメージ (プレビュー) の上に Python アプリをデプロイする方法を示します。
 
@@ -85,17 +85,17 @@ Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプ�
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
-サイトを参照して、新たに作成された、組み込みイメージを使用する Web アプリを確認します。 _&lt;app_name>_ は、Web アプリの名前に置き換えます。
+サイトを参照して、お客様が新しく作成した組み込みのイメージによるアプリを確認します。 _&lt;app name>_ は、アプリの名前に置き換えます。
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-新しい Web アプリは次のようになります。
+新しいアプリは次のようになります。
 
-![空の Web アプリ ページ](media/quickstart-php/app-service-web-service-created.png)
+![空のアプリ ページ](media/quickstart-php/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -129,7 +129,7 @@ Web ブラウザーを使用して、デプロイされたアプリケーショ�
 http://<app_name>.azurewebsites.net
 ```
 
-組み込みイメージを使用する Web アプリで、Python のサンプル コードが実行されています。
+App Service on Linux で組み込みのイメージを使用して Python サンプル コードが実行されています。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-python/hello-world-in-browser.png)
 
@@ -154,15 +154,15 @@ git push azure master
 
 ![Azure で実行される更新済みのサンプル アプリ](media/quickstart-python/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>新しい Azure Web アプリを管理する
+## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> に移動し、お客様が作成したアプリを管理します。
 
-左側のメニューで **[App Services]** をクリックした後、Azure Web アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
-![Azure Web アプリへのポータル ナビゲーション](./media/quickstart-python/app-service-list.png)
+![Azure アプリへのポータル ナビゲーション](./media/quickstart-python/app-service-list.png)
 
-Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
+お客様のアプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
 
 ![Azure Portal の [App Service] ページ](media/quickstart-python/app-service-detail.png)
 
