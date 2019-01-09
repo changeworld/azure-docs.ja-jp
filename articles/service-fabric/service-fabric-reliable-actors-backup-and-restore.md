@@ -12,16 +12,21 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: c72aea9d104264243ef0654aea01e0a41f33ed6f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d5922e21dd464b8cbd0075e7bd2515ffa73607e6
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206868"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726935"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors のバックアップと復元を実装する
+
+> [!NOTE]
+> Reliable Stateful サービスと Reliable Actors のデータのバックアップを構成するには、[定期的なバックアップと復元](service-fabric-backuprestoreservice-quickstart-azurecluster.md)を使用することをお勧めします。 
+> 
+
 次の例のカスタム アクター サービスは、既に `ActorService` に存在するリモート処理リスナーを活用して、アクター データをバックアップするメソッドを公開しています。
 
 ```csharp
@@ -113,7 +118,7 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-Reliable Actors の詳細については、以下を参照してください。
+Reliable Actors について詳しくは、以下の記事をご覧ください。
 * [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
 * [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
 * [アクターの API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)

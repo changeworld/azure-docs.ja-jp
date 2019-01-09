@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: f76dfc8499d294c2c682c4d9c4cf2cd2f858432f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 547cc30bdf3dedff30c28165a7a76093a6512b83
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408866"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993094"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark を使用した Apache HBase データの読み取り/書き込み
 
@@ -126,7 +126,7 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 1. SSH を使用して、Spark クラスターのヘッド ノードに接続します。
 2. Spark HBase コネクター パッケージを指定して、Spark シェルを起動します。
 
-        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/content/groups/public/
+        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
 
 3. この Spark シェル インスタンスを開いたままで、次の手順に進みます。
 

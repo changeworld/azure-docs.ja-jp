@@ -8,14 +8,15 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: 0ed05cab774360c4165e89399ba16f7443debb85
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: e2497233ec97ffc88bf13797f62d601d4da373a1
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165161"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628495"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する
+
 Microsoft Azure はお客様がそのデータを保護し、組織のセキュリティとコンプライアンスの必達目標を満たせるよう支援するために取り組んでいます。 Azure Storage プラットフォームでデータを保護する方法の 1 つとして、Storage Service Encryption (SSE) があります。SSE では、ストレージに書き込むときにデータを暗号化し、取得するときにデータの暗号化を解除することができます。 暗号化と解読は自動的かつ透過的に行われ、現在最も強力なブロック暗号の 1 つである 256 ビットの [AES 暗号化](https://wikipedia.org/wiki/Advanced_Encryption_Standard)が使用されます。
 
 SSE には Microsoft が管理する暗号化キーのほか、ユーザー独自の暗号化キーを使うことができます。 この記事では、独自の暗号化キーを使用する方法について説明します。 Microsoft マネージド キーまたは SSE 全般の詳細については、[Storage Service Encryption for Data at Rest](storage-service-encryption.md) に関するページを参照してください。
@@ -28,65 +29,90 @@ Azure Blob Storage と Azure Files 用の SSE は、Azure Key Vault に統合さ
 なぜ独自のキーを作成するのでしょうか? カスタム キーを作成すると、柔軟性が向上し、アクセス制御を作成、回転、無効化、および定義できるようになります。 また、データ保護に使用される暗号化キーを監査できるようにもなります。
 
 ## <a name="get-started-with-customer-managed-keys"></a>ユーザーが管理するキーを使用する
-ユーザーが管理するキーを SSE に使用するには、新しいキー コンテナーとキーを作成するか、既にあるキー コンテナーとキーを使用します。 ストレージ アカウントとキー コンテナーは同じリージョンに存在していることが必要です。ただし、サブスクリプションは異なっていてもかまいません。 
 
-### <a name="step-1-create-a-storage-account"></a>ステップ 1: ストレージ アカウントを作成する
+ユーザーが管理するキーを SSE に使用するには、新しいキー コンテナーとキーを作成するか、既にあるキー コンテナーとキーを使用します。 ストレージ アカウントとキー コンテナーは同じリージョンに存在していることが必要です。ただし、サブスクリプションは異なっていてもかまいません。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+### <a name="step-1-create-a-storage-account"></a>手順 1:ストレージ アカウントの作成
+
 まだお持ちでない場合は、最初にストレージ アカウントを作成します。 詳しくは、「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」をご覧ください。
 
-### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>ステップ 2: BLOB およびファイル ストレージに対して SSE を有効にする
+### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>手順 2:BLOB およびファイル ストレージに対して SSE を有効にする
+
 ユーザーが管理するキーを使用して SSE を有効にするには、Azure Key Vault で、2 つのキー保護機能である [論理的な削除] と [Do Not Purge]\(消去しない\) も有効にする必要があります。 これらの設定により、キーを誤って削除したり、意図的に削除したりできなくなります。 キーの最大リテンション期間は 90 日に設定されています。この期間は、悪意のあるアクターやランサムウェア攻撃からユーザーが保護されます。
 
 ユーザーが管理する SSE 用のキーをプログラムを使用して有効にする場合は、[Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp)、[.NET 用 Storage Resource Provider クライアント ライブラリ](https://docs.microsoft.com/dotnet/api)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)、または [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli) を使用します。
 
-ユーザーが管理するキーを SSE に使用するには、ストレージ アカウント ID をストレージ アカウントに割り当てる必要があります。 ID を設定するには、以下の PowerShell コマンドを実行します。
+ユーザーが管理するキーを SSE に使用するには、ストレージ アカウント ID をストレージ アカウントに割り当てる必要があります。 ID を設定するには、以下の PowerShell または Azure CLI コマンドを実行します。
 
 ```powershell
-Set-AzureRmStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
+Set-AzStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
 ```
 
-[論理的な削除] および [Do Not Purge]\(消去しない\) を有効にするには、以下の PowerShell コマンドを実行します。
+```azurecli-interactive
+az storage account \
+    --account-name <account_name> \
+    --resource-group <resource_group> \
+    --assign-identity
+```
+
+[論理的な削除] および [Do Not Purge]\(消去しない\) を有効にするには、以下の PowerShell または Azure CLI コマンドを実行します。
 
 ```powershell
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
 $vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
 enableSoftDelete -Value 'True'
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
 $vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
 enablePurgeProtection -Value 'True'
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 ```
 
-### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>ステップ 3: ユーザーが管理するキーによる暗号化を有効にする
+```azurecli-interactive
+az resource update \
+    --id $(az keyvault show --name <vault_name> -o tsv | awk '{print $1}') \
+    --set properties.enableSoftDelete=true
+
+az resource update \
+    --id $(az keyvault show --name <vault_name> -o tsv | awk '{print $1}') \
+    --set properties.enablePurgeProtection=true
+```
+
+### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>手順 3:ユーザーが管理するキーによる暗号化を有効にする
+
 既定では、Microsoft によって管理されたキーが SSE に使用されます。 ユーザーが管理するキーを使用する SSE をストレージ アカウントに対して有効にするには、[Azure Portal](https://portal.azure.com/) を使用します。 ストレージ アカウントの **[設定]** ブレードで、**[暗号化]** をクリックします。 以下の図に示すように、**[Use your own key]\(独自のキーの使用\)** オプションを選択します。
 
 ![暗号化オプションが表示されたポータルのスクリーンショット](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
 
-### <a name="step-4-select-your-key"></a>ステップ 4: キーを選択する
+### <a name="step-4-select-your-key"></a>手順 4:キーを選択する
+
 URI としてキーを指定することも、キー コンテナーのキーを選択してキーを指定することもできます。
 
 #### <a name="specify-a-key-as-a-uri"></a>URI としてキーを指定する
+
 URI からキーを指定するには、以下のステップを実行します。
 
-1. **[キー URI を入力]** オプションを選択します。  
+1. **[キー URI を入力]** オプションを選択します。
 2. **[キー URI]** フィールドで、URI を指定します。
 
-    ![[キー URI を入力] 暗号化オプションが表示されたポータルのスクリーンショット](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
+   ![[キー URI を入力] 暗号化オプションが表示されたポータルのスクリーンショット](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
 
+#### <a name="specify-a-key-from-a-key-vault"></a>キー コンテナーのキーを指定する
 
-#### <a name="specify-a-key-from-a-key-vault"></a>キー コンテナーのキーを指定する 
 キー コンテナーのキーを指定するには、以下のステップを実行します。
 
-1. **[Select from Key Vault]\(キー コンテナーから選択\)** オプションを選択します。  
+1. **[Select from Key Vault]\(キー コンテナーから選択\)** オプションを選択します。
 2. 使用するキーを含むキー コンテナーを選択します。
 3. キー コンテナーからキーを選択します。
 
-    ![[独自のキーを使用する] 暗号化オプションが表示されたポータルのスクリーンショット](./media/storage-service-encryption-customer-managed-keys/ssecmk3.png)
+   ![[独自のキーを使用する] 暗号化オプションが表示されたポータルのスクリーンショット](./media/storage-service-encryption-customer-managed-keys/ssecmk3.png)
 
 キー コンテナーへのアクセス権がストレージ アカウントにない場合は、以下の画像に示す Azure PowerShell コマンドを実行して、アクセス権を付与します。
 
@@ -94,23 +120,26 @@ URI からキーを指定するには、以下のステップを実行します�
 
 アクセス権の付与は、Azure Portal で行うこともできます。Azure Portal の [Azure Key Vault] に移動して、ストレージ アカウントにアクセス権を付与します。
 
-
 次の PowerShell コマンドを使用して、上記のキーを既存のストレージ アカウントに関連付けることができます。
+
 ```powershell
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
-$keyVault = Get-AzureRmKeyVault -VaultName "mykeyvault"
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+$keyVault = Get-AzKeyVault -VaultName "mykeyvault"
 $key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+Set-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
 ```
 
-### <a name="step-5-copy-data-to-storage-account"></a>ステップ 5: ストレージ アカウントにデータをコピーする
+### <a name="step-5-copy-data-to-storage-account"></a>手順 5:ストレージ アカウントにデータをコピーする
+
 暗号化されるように、新しいストレージ アカウントにデータを転送するには。 詳細については、「[Storage Service Encryption のよくあるご質問](storage-service-encryption.md#faq-for-storage-service-encryption)」を参照してください。
 
-### <a name="step-6-query-the-status-of-the-encrypted-data"></a>ステップ 6: 暗号化されたデータの状態を照会する
+### <a name="step-6-query-the-status-of-the-encrypted-data"></a>手順 6:暗号化されたデータの状態を照会する
+
 暗号化されたデータの状態を照会します。
 
 ## <a name="faq-for-sse-with-customer-managed-keys"></a>ユーザーが管理するキーを使用する SSE に関してよくあるご質問
+
 **Premium Storage を使用しています。ユーザーが管理するキーを SSE に使うことはできますか?**  
 はい。Standard Storage と Premium Storage のどちらでも、Microsoft が管理するキーとユーザーが管理するキーを SSE にご利用いただけます。
 
@@ -127,7 +156,7 @@ Storage Service Encryption は、Microsoft が管理するキーを使った Azu
 Azure Disk Encryption は、BitLocker、DM-Crypt、Azure KeyVault などの OS ベースのソリューション間に統合を提供します。 Storage Service Encryption は、Azure Storage プラットフォーム レイヤーの仮想マシンの以下にネイティブで暗号化を提供します。
 
 **暗号化キーへのアクセスを取り消すことはできますか?**
-はい。いつでもアクセスを取り消すことができます。 キーへのアクセスは、いくつかの方法で取り消すことができます。 詳細については、[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) に関するページと [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault) に関するページを参照してください。 アクセスを取り消すと、Azure Storage がアカウント暗号化キーにアクセスできなくなるため、ストレージ アカウント内の全 BLOB へのアクセスが事実上ブロックされます。
+はい。いつでもアクセスを取り消すことができます。 キーへのアクセスは、いくつかの方法で取り消すことができます。 詳細については、[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) に関するページと [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault) に関するページを参照してください。 アクセスを取り消すと、Azure Storage がアカウント暗号化キーにアクセスできなくなるため、ストレージ アカウント内の全 BLOB へのアクセスが事実上ブロックされます。
 
 **ストレージ アカウントとキーを別々のリージョンに作成できますか?**  
 いいえ。ストレージ アカウントと Azure Key Vault/キーは、同じリージョンに存在する必要があります。
@@ -154,6 +183,7 @@ SSE は、すべてのストレージ アカウントで有効であり、Azure 
 Storage Service Encryption に関する問題については、[ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com) にお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
+
 - 安全なアプリケーション開発を支援する包括的なセキュリティ機能の詳細については、[Storage セキュリティ ガイド](storage-security-guide.md)に関するページをご覧ください。
 - Azure Key Vault の概要については、「[Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)」を参照してください。
 - Azure Key Vault の概要については、[Azure Key Vault の概要](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)に関するページを参照してください。

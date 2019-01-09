@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 58f4827910d863aef14171574d40e4b3acfc04d9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037711"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498677"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする
 
@@ -39,7 +39,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 ## <a name="configuration"></a>ヒープ ダンプ構成について
 
-ヒープ ダンプは、サービスの開始時にオプション (opts またはパラメーターとも呼ばれる) を JVM に渡すことによって有効になります。 ほとんどの Hadoop サービスでは、サービスを開始するのに使用されるシェル スクリプトを変更することで、これらのオプションを渡すことができます。
+ヒープ ダンプは、サービスの開始時にオプション (opts またはパラメーターとも呼ばれる) を JVM に渡すことによって有効になります。 ほとんどの [Apache Hadoop](https://hadoop.apache.org/) サービスでは、サービスを開始するのに使用されるシェル スクリプトを変更することで、これらのオプションを渡すことができます。
 
 各スクリプトには、JVM に渡されるオプションを含む **\*\_OPTS** のエクスポートが含まれています。 たとえば、**hadoop env.sh** スクリプトには、`export HADOOP_NAMENODE_OPTS=` で始まる行に NameNode サービスのオプションが含まれています。
 
@@ -49,7 +49,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Apache Ambari がクラスター内のノード間の変更のレプリケーションを処理するように、Ambari を使用してスクリプトと mapred-site.xml 設定の両方を変更することをお勧めします。 具体的な手順については、 [Ambari の使用](#using-ambari) のセクションを参照してください。
+> [Apache Ambari](https://ambari.apache.org/) がクラスター内のノード間の変更のレプリケーションを処理するように、Ambari を使用してスクリプトと mapred-site.xml 設定の両方を変更することをお勧めします。 具体的な手順については、「[Apache Ambari の使用](#using-apache-ambari)」セクションを参照してください。
 
 ### <a name="enable-heap-dumps"></a>ヒープ ダンプを有効にする
 
@@ -77,11 +77,11 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
     -XX:OnOutOfMemoryError=/path/to/script
 
 > [!NOTE]
-> Hadoop は分散システムなので、使用するスクリプトは、サービスを実行しているクラスター内のすべてのノードに配置する必要があります。
+> Apache Hadoop は分散システムなので、使用するスクリプトは、サービスを実行しているクラスター内のすべてのノードに配置する必要があります。
 > 
 > また、スクリプトはサービスが実行するアカウントからアクセスできる場所にあり、実行権限を提供する必要もあります。 たとえば、スクリプトを `/usr/local/bin` に保存し、`chmod go+rx /usr/local/bin/filename.sh` を使用して読み取りと実行権限を付与できます。
 
-## <a name="using-ambari"></a>Ambari の使用
+## <a name="using-apache-ambari"></a>Apache Ambari の使用
 
 サービスの構成を変更するには、次の手順を実行します。
 

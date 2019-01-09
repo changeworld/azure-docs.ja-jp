@@ -1,7 +1,7 @@
 ---
 title: LUIS と QnAMaker - ボットの統合
 titleSuffix: Azure Cognitive Services
-description: ボットでの QnA Maker と LUIS の統合に関するステップ バイ ステップ チュートリアル。
+description: QnA Maker ナレッジ ベースは、大きくなるにつれて、単一のモノリシックなセットとして維持することが難しくなり、より小さな論理的なチャンクにナレッジ ベースを分割する必要があります。
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: diberry
-ms.openlocfilehash: 27f60f9624af2819663990aeba99b4044045540b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: f2d6f956564f01c14edb213f0bc5ae709892c542
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687369"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163314"
 ---
-# <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>QnA Maker と LUIS の統合によるナレッジ ベースの配信
+# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>QnA Maker と LUIS にボットを組み合わせてナレッジ ベースを配信する
 QnA Maker ナレッジ ベースは、大きくなるにつれて、単一のモノリシックなセットとして維持することが難しくなり、より小さな論理的なチャンクにナレッジ ベースを分割する必要があります。
 
 QnA Maker には複数のナレッジ ベースを簡単に作成できますが、入力された質問を適切なナレッジ ベースにルーティングするためには、何らかのロジックが必要となります。 これは LUIS を使用して実行できます。

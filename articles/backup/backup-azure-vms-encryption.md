@@ -25,8 +25,8 @@ ms.locfileid: "51567419"
 
    |  | BEK + KEK VM | BEK のみの VM |
    | --- | --- | --- |
-   | **管理対象外 VM**  | [はい] | [はい]  |
-   | **管理対象の VM**  | [はい] | [はい]  |
+   | **管理対象外 VM**  | はい | はい  |
+   | **管理対象の VM**  | はい | はい  |
 
 ## <a name="prerequisites"></a>前提条件
 * VM が [Azure Disk Encryption](../security/azure-security-disk-encryption.md) を使用して暗号化されている。

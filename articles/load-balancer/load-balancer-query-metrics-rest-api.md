@@ -1,21 +1,22 @@
 ---
-title: REST API を使用して Azure Load Balancer メトリックを取得する | Microsoft Docs
+title: REST API でメトリックを取得する
+titlesuffix: Azure Load Balancer
 description: Azure REST API を使用して、指定した期間の Load Balancer に対する正常性と使用率のメトリックを収集します。
 services: sql-database
 author: KumudD
 ms.reviewer: routlaw
 manager: jeconnoc
 ms.service: load-balancer
-ms.custom: REST
+ms.custom: REST, seodec18
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
-ms.openlocfilehash: 1fac461c3af4ea0a2e1f2257256969c47bc3d134
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 43de0de6fb81d50459ba5b027a8ae1718a89c9a3
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094468"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183864"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>REST API を使用して Load Balancer の使用率のメトリックを取得する
 

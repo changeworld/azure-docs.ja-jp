@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 6959521b0f700a0afafef0950e9cb336488cc94b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7df615caf3ca1b8ca7dd7d4da876c840e20defd8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425308"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833127"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>チュートリアル: Azure Active Directory と EFI Digital StoreFront の統合
 
@@ -122,7 +122,7 @@ EFI Digital StoreFront で Azure AD のシングル サインオンを構成し�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/efidigitalstorefront-tutorial/tutorial_general_400.png)
 
-1. **EFI Digital StoreFront** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [EFI Digital StoreFront サポート チーム](http://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **EFI Digital StoreFront** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [EFI Digital StoreFront サポート チーム](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -162,7 +162,7 @@ EFI Digital StoreFront で Azure AD のシングル サインオンを構成し�
  
 ### <a name="create-a-efi-digital-storefront-test-user"></a>EFI Digital StoreFront のテスト ユーザーの作成
 
-このセクションでは、EFI Digital StoreFront で Britta Simon というユーザーを作成します。 [EFI Digital StoreFront サポート チーム](http://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/)と協力し、EFI Digital StoreFront プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、EFI Digital StoreFront で Britta Simon というユーザーを作成します。  [EFI Digital StoreFront サポート チーム](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) と協力し、EFI Digital StoreFront プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -199,7 +199,7 @@ EFI Digital StoreFront で Azure AD のシングル サインオンを構成し�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [EFI Digital StoreFront] タイルをクリックすると、自動的に EFI Digital StoreFront アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

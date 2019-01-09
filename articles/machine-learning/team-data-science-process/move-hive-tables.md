@@ -1,26 +1,22 @@
 ---
-title: Hive テーブルを作成して Azure Blob Storage からデータを読み込む | Microsoft Docs
-description: Hive テーブルを作成し、BLOB 内のデータを Hive テーブルに読み込む
-services: machine-learning,storage
-documentationcenter: ''
-author: deguhath
+title: Hive テーブルを作成して BLOB ストレージからデータを読み込む - Team Data Science Process
+description: Hive クエリを使用して Hive テーブルを作成し、Azure Blob Storage からデータを読み込みます。 Hive テーブルをパーティション分割し、Optimized Row Columnar (ORC) 形式を使用してクエリのパフォーマンスを向上させます。
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: cff9280d-18ce-4b66-a54f-19f358d1ad90
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: deguhath
-ms.openlocfilehash: c1cbd523b8c74bf1221dc47b832c35e9119493a9
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 5d88974fd1fb3d8784416ad3895fe139a3275e01
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346288"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134949"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 
@@ -69,14 +65,14 @@ Hadoop コマンド ラインで Hive クエリを送信する場合、次の 3 
 #### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Hadoop コマンド ラインでハイブ クエリを直接送信する
 `hive -e "<your hive query>;` のようなコマンドを実行することで、Hadoop コマンド ラインで単純な Hive クエリを直接送信できます。 次に例を示します。ここで赤いボックスは Hive クエリを送信するコマンドを囲んでいます。緑色のボックスは Hive クエリの出力を囲んでいます。
 
-![ワークスペースの作成](./media/move-hive-tables/run-hive-queries-1.png)
+![Hive クエリを送信するコマンドと Hive クエリからの出力](./media/move-hive-tables/run-hive-queries-1.png)
 
 #### <a name="submit-hive-queries-in-hql-files"></a>.hql ファイルで Hive クエリを送信する
 ハイブ クエリがより複雑で、複数の行が存在する場合、コマンド ラインやハイブ コマンド コンソールでクエリを編集することは実際的ではありません。 別の方法として、Hadoop クラスターのヘッド ノードでテキスト エディターを使用して、ヘッド ノードのローカル ディレクトリの中の .hql ファイルにハイブ クエリを保存します。 次のように `-f` 引数を使用すると、.hql ファイルの Hive クエリを送信できます。
 
     hive -f "<path to the .hql file>"
 
-![ワークスペースの作成](./media/move-hive-tables/run-hive-queries-3.png)
+![.hql ファイルの Hive クエリ](./media/move-hive-tables/run-hive-queries-3.png)
 
 **Hive クエリの進行状況ステータス画面の出力を抑制する**
 
@@ -88,7 +84,7 @@ Hadoop コマンド ラインで Hive クエリを送信する場合、次の 3 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Hive コマンド コンソールで Hive クエリを送信する。
 Hadoop コマンド ラインで `hive` コマンドを実行すると、まず Hive コマンド コンソールに入力できるようになります。その後、Hive コマンド コンソールで Hive クエリを送信します。 たとえば次のようになります。 この例では、2 つの赤いボックスは、それぞれ Hive コマンド コンソールに入るために使用するコマンドと、Hive コマンド コンソールで送信された Hive クエリを強調表示しています。 緑色のボックスは、Hive クエリからの出力を強調表示しています。
 
-![ワークスペースの作成](./media/move-hive-tables/run-hive-queries-2.png)
+![Hive コマンド コンソールを開き、コマンドを入力して、Hive クエリの出力を表示する](./media/move-hive-tables/run-hive-queries-2.png)
 
 前の例では、画面上に直接 Hive クエリの結果を出力しています。 出力は、ヘッド ノードにあるローカル ファイルまたは Azure BLOB に書き込むこともできます。 その後、他のツールを使用して、Hive クエリの出力をさらに分析できます。
 
@@ -99,7 +95,7 @@ Hive クエリの結果をヘッド ノード上のローカル ディレクト�
 
 次の例では、Hive クエリの出力が `C:\apps\temp` ディレクトリ内の `hivequeryoutput.txt` ファイルに書き込まれます。
 
-![ワークスペースの作成](./media/move-hive-tables/output-hive-results-1.png)
+![Hive クエリの出力](./media/move-hive-tables/output-hive-results-1.png)
 
 **Hive クエリの結果を Azure BLOB に出力する**
 
@@ -109,11 +105,11 @@ Hive クエリの結果は、Hadoop クラスターの既定のコンテナー�
 
 次の例では、Hive クエリの出力が、Hadoop クラスターの既定のコンテナー内にある BLOB ディレクトリ `queryoutputdir` に書き込まれます。 ここでは、ディレクトリ名のみを指定する必要があります (BLOB 名は必要ありません)。 `wasb:///queryoutputdir/queryoutput.txt`のようにディレクトリ名と BLOB 名の両方を指定すると、エラーがスローされます。
 
-![ワークスペースの作成](./media/move-hive-tables/output-hive-results-2.png)
+![Hive クエリの出力](./media/move-hive-tables/output-hive-results-2.png)
 
 Azure ストレージ エクスプローラーを使用して Hadoop クラスターの既定のコンテナーを開くと、Hive クエリの出力が次の図のように表示されます。 フィルター (赤色の四角形によって示されています) を適用して、名前に指定された文字を持つ BLOB のみを取得できます。
 
-![ワークスペースの作成](./media/move-hive-tables/output-hive-results-3.png)
+![Hive クエリの出力が表示されている Azure Storage Explorer](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2.Hive エディターで Hive クエリを送信する
 *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* の形式の URL を Web ブラウザーに入力することで、クエリ コンソール (Hive エディター) を使用することもできます。 このコンソールにログインする必要があるので、Hadoop クラスターの資格情報が必要になります。
@@ -146,14 +142,14 @@ Hive テーブルを作成する Hive クエリを次に示します。
 * **<field separator>**: Hive テーブルにアップロードするデータ ファイルのフィールドを区切る区切り記号。
 * **<line separator>**: データ ファイル内の行を区切る区切り記号。
 * **<storage location>**: Hive テーブルのデータを保存する Azure Sorage の場所。 *LOCATION <storage location>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。 ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。 この場所は、クラスターの既定のコンテナーを基準として、"*'wasb:///<ディレクトリ 1>/'*" や "*'wasb:///<ディレクトリ 1>/<ディレクトリ 2>/'*" などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
-* **TBLPROPERTIES("skip.header.line.count"="1")**: データ ファイルにヘッダー行が含まれる場合は、このプロパティを *create table* クエリの**最後に**追加する必要があります。 それ以外の場合、ヘッダー行はレコードとしてテーブルに読み込まれます。 データ ファイルにヘッダー行が含まれない場合は、クエリでこの構成を省略することができます。
+* **TBLPROPERTIES("skip.header.line.count"="1")**:データ ファイルにヘッダー行が含まれる場合は、このプロパティを *create table* クエリの**最後に**追加する必要があります。 それ以外の場合、ヘッダー行はレコードとしてテーブルに読み込まれます。 データ ファイルにヘッダー行が含まれない場合は、クエリでこの構成を省略することができます。
 
 ## <a name="load-data"></a>Hive テーブルへのデータの読み込み
 Hive テーブルにデータを読み込む Hive クエリを次に示します。
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **<path to blob data>**: Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、*<path to blob data>* は *'wasb:///<directory in this container>/<blob file name>'* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、*<path to blob data>* は、*'wasb://<container name><storage account name>.blob.core.windows.net/<blob file name>'* の形式である必要があります。
+* **<path to blob data>**:Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、*<path to blob data>* は *'wasb:///<directory in this container>/<blob file name>'* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、*<path to blob data>* は、*'wasb://<container name><storage account name>.blob.core.windows.net/<blob file name>'* の形式である必要があります。
 
   > [!NOTE]
   > Hive テーブルにアップロードする BLOB データは、Hadoop クラスターのストレージ アカウントの既定のコンテナーまたは追加のコンテナーに配置されている必要があります。 それ以外の場合、 *LOAD DATA* クエリはデータにアクセスできないために失敗します。

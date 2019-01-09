@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure Kubernetes Service (AKS) クラスターで Virtual Kubelet を実行する
 description: Azure Kubernetes Service (AKS) で Virtual Kubelet を使用して、Azure Container Instances 上で Linux および Windows コンテナーを実行する方法について説明します。
 services: container-service

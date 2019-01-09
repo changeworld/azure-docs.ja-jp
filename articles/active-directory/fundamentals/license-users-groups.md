@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory ライセンスを割り当てる方法、または削除する方法 | Microsoft Docs
-description: Azure Active Directory を使用して、ユーザーまたはグループからの Azure Active Directory ライセンスの割り当てまたは削除を行います。
+title: ライセンスの割り当てと削除 - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory ライセンスをユーザーまたはグループに割り当てたり、それらのライセンスを削除したりする手順を紹介します。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: e1b0b2f84c67e30c3bb998554dc662b002744003
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 6cf3e9a9b767dfaa6f04d151864f64123e3d6ae7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603890"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077463"
 ---
-# <a name="how-to-assign-or-remove-azure-active-directory-licenses"></a>方法: Azure Active Directory ライセンスを割り当てる、または削除する
+# <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用したライセンスの割り当てと削除
 多くの Azure Active Directory (Azure AD) サービスでは、Azure AD 製品をアクティブ化し、ユーザーまたはグループ (および関連するメンバー) ごとにその製品のライセンスを付与する必要があります。 アクティブなライセンスを持つユーザーのみが、ライセンスされている Azure AD サービスにアクセスおよび使用できるようになります。
 
 ## <a name="available-product-editions"></a>使用可能な製品エディション

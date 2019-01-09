@@ -1,20 +1,19 @@
 ---
-title: Azure Cosmos DB を使用するアプリケーションのための適切な整合性レベルを選択する | Microsoft Docs
+title: Azure Cosmos DB を使用するアプリケーションのための適切な整合性レベルを選択する
 description: Azure Cosmos DB でアプリケーションのための適切な整合性レベルを選択します。
 keywords: 整合性, パフォーマンス, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/24/2018
 ms.author: mjbrown
-ms.openlocfilehash: 9234a57bdec3dfd7a1ccdba00b90a5c853dc1c5a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a1c7d750bcd0c3f37d2269aee299e0ccd8c4ef4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960969"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849294"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>アプリケーションのための適切な整合性レベルを選択する
 
@@ -52,7 +51,7 @@ ms.locfileid: "50960969"
 
 * 残りの 3 つの整合性レベルについては、陳腐化期間はワークロードに大きく依存します。 たとえば、データベースへの書き込み操作がない場合、**最終的**、**セッション**、または**一貫性のあるプレフィックス**の整合性レベルでの読み取り操作は、強力な整合性レベルの読み取り操作と同じ結果になることがあります。
 
-Cosmos DB アカウントが、強力な整合性以外の任意の整合性レベルで構成されている場合、確率論的有界整合性制約 (PBS) メトリックを調べることによって、ワークロードの厳密な整合性を持つ読み取りをクライアントが取得する確率を調べることができます。 このメトリックは Azure portal で公開されています。詳しくは、[PBS メトリックの使用方法](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)に関する記事をご覧ください。
+Cosmos DB アカウントが、強力な整合性以外の任意の整合性レベルで構成されている場合、確率論的有界整合性制約 (PBS) メトリックを調べることによって、ワークロードの厳密な整合性を持つ読み取りをクライアントが取得する確率を調べることができます。 このメトリックは、Azure portal で公開されます。詳しくは、「[確率的有界整合性制約 (PBS) メトリックを監視する](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)」をご覧ください。
 
 確率論的有界整合性制約は、最終的な整合性が、どれほど最終的であるかを示します。 このメトリックでは、Cosmos DB アカウントで現在構成されている整合性レベルより強力な整合性をどのくらいの頻度で得られるかについての分析情報が提供されます。 つまり、書き込みと読み取りのリージョンの組み合わせに対して厳密な整合性の読み取りを取得する確率 (ミリ秒で測定) を表示できます。
 
@@ -63,4 +62,4 @@ Cosmos DB アカウントが、強力な整合性以外の任意の整合性レ�
 * [Cosmos DB API 間での整合性レベルのマッピング](consistency-levels-across-apis.md)
 * [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
 * [アプリケーションのセッション トークンを管理する方法](how-to-manage-consistency.md#utilize-session-tokens)
-* [確率的有界整合性制約 (PBS) メトリックを監視する方法](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)
+* [確率的有界整合性制約 (PBS) メトリックを監視する](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)

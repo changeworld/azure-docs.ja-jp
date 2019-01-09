@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: ea509d3804053f060ad551b6eff945b70cec8796
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c9a2d569641ab0f8f6aa1d7234da1d3cbb0ab147
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261060"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744991"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Azure Cache for Redis のサンプル
 このトピックでは、キャッシュへの接続、キャッシュに対するデータの読み取りと書き込み、ASP.NET の Azure Cache for Redis プロバイダーの使用などのシナリオを対象とする、Azure Cache for Redis のサンプルの一覧を示します。 サンプルの一部はダウンロード可能なプロジェクトです。ステップ バイ ステップ ガイダンスが用意されているサンプルやコード スニペットが含まれているサンプルもありますが、ダウンロード可能なプロジェクトにはリンクしていません。
@@ -40,7 +40,7 @@ ms.locfileid: "53261060"
 * Redis セットを使用し、タグ付けを実装する
 * Redis クラスターの操作
 
-詳細については、GitHub の「[StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)」ドキュメントを参照してください。その他の使用シナリオについては、「[StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/StackExchange.Redis.Tests)」ユニット テストを参照してください。
+詳細については、GitHub の「[StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)」ドキュメントを参照してください。その他の使用シナリオについては、「[StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/tests)」ユニット テストを参照してください。
 
 [Python で Azure Cache for Redis を使用する方法](cache-python-get-started.md)に関するページでは、Python と [redis-py](https://github.com/andymccurdy/redis-py) クライアントを使用して Azure Cache for Redis の使用を開始する方法を説明しています。
 

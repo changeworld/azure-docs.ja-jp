@@ -1,23 +1,24 @@
 ---
-title: LUIS バージョンのトレーニング
-titleSuffix: Azure Cognitive Services
+title: アプリのトレーニング
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: トレーニングは、自然言語の理解を向上させるために、Language Understanding (LUIS) アプリ バージョンを教育するプロセスです。 エンティティ、意図、発話の追加、編集、ラベル付け、削除など、モデルを更新した後に、LUIS アプリをトレーニングします。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: diberry
-ms.openlocfilehash: 362c5e2e7216d584a9858ace5fb607dc0ee126d5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ba450258a03fc21a06476a6bdd81dc5a886056de
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426106"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137626"
 ---
-# <a name="train-your-luis-app-version"></a>LUIS アプリ バージョンのトレーニング
+# <a name="train-your-active-version-of-the-luis-app"></a>LUIS アプリのアクティブなバージョンをトレーニングする 
 
 トレーニングは、自然言語の理解を向上させるために、Language Understanding (LUIS) アプリを教えるプロセスです。 エンティティ、意図、発話の追加、編集、ラベル付け、削除など、モデルを更新した後に、LUIS アプリをトレーニングします。 
 

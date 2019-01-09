@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: bb427575d7cff69f0db778c5eb0e0bdf0671d8dd
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b22ecb9d8948a77df43f47cd9fd218be4319d06e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343291"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583733"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
@@ -196,7 +196,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
 ## <a name="next-steps"></a>次の手順
 - [既存の問題管理システム用の webhook 通知を構成する](../../service-health/service-health-alert-webhook-guide.md)方法について学習します。
-- [サービス正常性の通知](../../monitoring-and-diagnostics/monitoring-service-notifications.md)について学習します。
+- [サービス正常性の通知](../../azure-monitor/platform/service-notifications.md)について学習します。
 - [通知のレート制限](../../azure-monitor/platform/alerts-rate-limiting.md)について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](../../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。
 - [アクティビティ ログ アラートの概要](../../azure-monitor/platform/alerts-overview.md)を把握し、アラートを受信する方法について学習します。 

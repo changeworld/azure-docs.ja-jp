@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs イベント プロセッサ ホストの説明と使用する理由 | Microsoft Docs
-description: Azure Event Hubs イベント プロセッサ ホストの概要
+title: イベント プロセッサ ホストを使用してイベントを受信する - Azure Event Hubs | Microsoft Docs
+description: この記事では、チェックポイント処理、リース、および並列でのイベントの読み込みの管理を簡素化する、Azure Event Hubs のイベント プロセッサ ホストについて説明します。
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -11,16 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 236103861ce8a296c77f708dbb4a7cc7e03f10f3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a28ae46a449d4aacf046636793585a84adc5ba83
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258954"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089635"
 ---
-# <a name="azure-event-hubs-event-processor-host-overview"></a>Azure Event Hubs イベント プロセッサ ホストの概要
+# <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>イベント プロセッサ ホストを使用して Azure Event Hubs からイベントを受信する
 
 Azure Event Hubs は、数百万件のイベントを低コストでストリーム配信するために使用できる、強力なテレメトリ インジェスト サービスです。 この記事では、チェックポイント処理、リース処理、および並列イベント リーダーの管理を簡素化するインテリジェントなコンシューマー エージェントである "*イベント プロセッサ ホスト*" (EPH) を使用して、取り込まれたイベントを使用する方法について説明します。  
 
@@ -45,7 +46,7 @@ Event Hubs をスケーリングするための鍵となるのは、パーティ
 
 ## <a name="ieventprocessor-interface"></a>IEventProcessor インターフェイス
 
-最初に、使用側アプリケーションで [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) インターフェイスを実装します。このインターフェイスには、[OpenAsync、CloseAsync、ProcessErrorAsync、および ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods) の 4 つのメソッドがあります。 このインターフェイスには、Event Hubs が送信するイベントを使用する実際のコードが含まれています。 簡単な実装を次のコードに示します。
+最初に、使用するアプリケーションでは、[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) インターフェイスを実装します。これには、[OpenAsync、CloseAsync、ProcessErrorAsync、および ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods) という 4 つのメソッドが含まれます。 このインターフェイスには、Event Hubs が送信するイベントを使用する実際のコードが含まれています。 簡単な実装を次のコードに示します。
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor

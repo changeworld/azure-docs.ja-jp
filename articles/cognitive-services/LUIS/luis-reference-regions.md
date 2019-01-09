@@ -1,21 +1,22 @@
 ---
-title: リージョンとエンドポイントの公開 - LUIS
+title: 公開リージョンとエンドポイント
 titleSuffix: Azure Cognitive Services
-description: LUIS アプリを公開するリージョンは、Azure LUIS エンドポイント キーを作成するときに Azure portal で指定するリージョンまたは場所に対応します。 アプリを公開するとき、キーに関連付けられているリージョンに対して、エンドポイント URL が LUIS によって自動的に生成されます。 LUIS アプリを複数のリージョンに公開するには、リージョンごとに少なくとも 1 つのキーが必要です。
+description: LUIS アプリを公開するリージョンは、Azure LUIS エンドポイント キーを作成するときに Azure portal で指定するリージョンまたは場所に対応します。 アプリを公開するとき、キーに関連付けられているリージョンに対して、エンドポイント URL が LUIS によって自動的に生成されます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 205a17a985986aab8039afe824e7e872a9885169
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5d8d3d4d55d4d03eb6d6a62898823158812d7c1f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039413"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135833"
 ---
 # <a name="regions-and-keys"></a>リージョンとキー
 

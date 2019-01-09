@@ -14,17 +14,17 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 982c6112a19654e268c9c50fec35d65fbc1766c2
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c6d4ec767b4c566e6a390f37b97266916819a40c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062022"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015162"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
 このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムに高可用性をセットアップする詳しい手順について説明します。
 
-**免責事項:** *このガイドは、正常に動作する Microsoft HANA L インスタンス環境でのセットアップのテストによって得られたものです。HANA L インスタンスの Microsoft サービス管理チームはオペレーティング システムをサポートしていないので、オペレーティング システム レイヤーでの詳細なトラブルシューティングや不明点については、SUSE に問い合わせる必要があります。Microsoft のサービス管理チームは、STONITH デバイスのセットアップを行い、STONITH デバイスに関する問題のトラブルシューティングについて全面的にサポートします。*
+**免責事項:***このガイドは、正常に動作する Microsoft HANA L インスタンス環境でのセットアップのテストによって得られたものです。HANA L インスタンスの Microsoft サービス管理チームはオペレーティング システムをサポートしていないので、オペレーティング システム レイヤーでの詳細なトラブルシューティングや不明点については、SUSE に問い合わせる必要があります。Microsoft のサービス管理チームは、STONITH デバイスのセットアップを行い、STONITH デバイスに関する問題のトラブルシューティングについて全面的にサポートします。*
 ## <a name="overview"></a>概要
 SUSE のクラスタリングを使って高可用性をセットアップするには、次の前提条件が満たされている必要があります。
 ### <a name="pre-requisites"></a>前提条件
@@ -37,9 +37,9 @@ SUSE のクラスタリングを使って高可用性をセットアップする
 
 ### <a name="setup-details"></a>セットアップの詳細
 このガイドでは、次のセットアップを使用します。
-- オペレーティング システム: SLES 12 SP1 for SAP
-- HANA L インスタンス: 2xS192 (4 ソケット、2 TB)
-- HANA のバージョン: HANA 2.0 SP1
+- オペレーティング システム:SLES 12 SP1 for SAP
+- HANA L インスタンス:2xS192 (4 ソケット、2 TB)
+- HANA バージョン:HANA 2.0 SP1
 - サーバー名: sapprdhdb95 (node1) および sapprdhdb96 (node2)
 - STONITH デバイス: iSCSI ベースの STONITH デバイス
 - HANA L インスタンス ノードの 1 つに NTP のセットアップ
@@ -76,7 +76,7 @@ Microsoft のサービス管理チームがこの文字列を提供します。 
 
 ![initiatorname.png](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1.2 */etc/iscsi/iscsid.conf* を変更します。*node.session.timeo.replacement_timeout=5* および *node.startup = automatic* を設定します。 **両方**のノードでファイルを修正します。
+1.2 */etc/iscsi/iscsid.conf* を次のように変更します。*node.session.timeo.replacement_timeout=5* および *node.startup = automatic* を設定します。 **両方**のノードでファイルを修正します。
 
 1.3 discovery コマンドを実行します。4 つのセッションが表示されます。 両方のノードで実行します。
 
@@ -93,7 +93,7 @@ iscsiadm -m node -l
 ```
 ![iSCSIadmLogin.png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.5 再スキャン スクリプト *rescan-scsi-bus.sh* を実行します。自動的に作成された新しいディスクが表示されます。  両方のノードで実行します。 ゼロより大きい LUN 番号が表示されます (1、2 など)
+1.5 再スキャン スクリプト *rescan-scsi-bus.sh* を実行します。自動的に作成された新しいディスクが表示されます。  両方のノードで実行します。 ゼロより大きい LUN 番号が表示されます (例:1、2 など)
 
 ```
 rescan-scsi-bus.sh
@@ -232,7 +232,7 @@ systemctl start pacemaker
 ```
 ![start-pacemaker.png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-Pacemaker サービスが "*失敗*" する場合は、「*シナリオ 5: Pacemaker サービスが失敗する*」をご覧ください
+Pacemaker サービスが "*失敗*" する場合は、「*シナリオ 5:Pacemaker サービスが失敗する*」を参照してください
 
 ## <a name="5---joining-the-cluster"></a>5. クラスターに参加する
 このセクションでは、クラスターにノードを参加させる方法について説明します。
@@ -242,7 +242,7 @@ Pacemaker サービスが "*失敗*" する場合は、「*シナリオ 5: Pacem
 ```
 ha-cluster-join
 ```
-クラスターを参加させるときに "*エラー*" が発生する場合は、「*シナリオ 6: node2 がクラスターに参加できない*」をご覧ください。
+クラスターを参加させるときに "*エラー*" が発生する場合は、「*シナリオ 6:node2 がクラスターに参加できない*」を参照してください。
 
 ## <a name="6---validating-the-cluster"></a>6. クラスターの検証
 
@@ -297,8 +297,7 @@ STONITH リソースを追加します。 ファイルを作成し、次のよ�
 # vi crm-sbd.txt
 # enter the following to crm-sbd.txt
 primitive stonith-sbd stonith:external/sbd \
-params pcmk_delay_max="15" \
-op monitor interval="15" timeout="15"
+params pcmk_delay_max="15"
 ```
 構成をクラスターに追加します。
 ```
@@ -345,7 +344,7 @@ Service pacemaker stop
 ## <a name="9-troubleshooting"></a>9.トラブルシューティング
 このセクションでは、セットアップ中に発生する可能性のあるいくつかの障害シナリオについて説明します。 これらの問題は必ず発生するとは限りません。
 
-### <a name="scenario-1-cluster-node-not-online"></a>シナリオ 1: クラスター ノードがオンラインではない
+### <a name="scenario-1-cluster-node-not-online"></a>シナリオ 1:クラスター ノードがオンラインではない
 クラスター マネージャーでいずれかのノードがオンラインと表示されない場合は、以下の方法でオンラインになる可能性があります。
 
 iSCSI サービスを開始します
@@ -372,7 +371,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>シナリオ 2: yast2 でグラフィカル ビューが表示されない
 このドキュメントでは、yast2 のグラフィカル画面を使って高可用性クラスターをセットアップしています。 次のような yast2 のグラフィカル ウィンドウが開かず、Qt エラーがスローされる場合は、次の手順に従います。 グラフィカル ウィンドウが開く場合は、この手順を省略できます。
 
-**エラー**
+**Error**
 
 ![yast2-qt-gui-error.png](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
 
@@ -449,7 +448,7 @@ yast2 コントロール センターに高可用性オプションが表示さ�
 
 ![yast2-installation-report.png](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
-### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>シナリオ 4: HANA のインストールが gcc アセンブリ エラーで失敗する
+### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>シナリオ 4:HANA のインストールが gcc アセンブリ エラーで失敗する
 HANA のインストールが次のエラーで失敗します。
 
 ![Hana-installation-error.png](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
@@ -458,7 +457,7 @@ HANA のインストールが次のエラーで失敗します。
 
 ![zypper-install-lib.png](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
 
-### <a name="scenario-5-pacemaker-service-fails"></a>シナリオ 5: Pacemaker サービスが失敗する
+### <a name="scenario-5-pacemaker-service-fails"></a>シナリオ 5:Pacemaker サービスが失敗する
 
 Pacemaker サービスの開始中に、次の問題が発生します。
 
@@ -509,7 +508,7 @@ Persistent=true
 
 ![Persistent.png](media/HowToHLI/HASetupWithStonith/Persistent.png)
 
-### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>シナリオ 6: node2 がクラスターに参加できない
+### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>シナリオ 6:node2 がクラスターに参加できない
 
 *ha-cluster-join* コマンドを使って node2 を既存のクラスターに参加させるときに、次のエラーが発生します。
 

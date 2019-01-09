@@ -20,14 +20,14 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 07/11/2018
 ms.locfileid: "38581268"
 ---
-# <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure Data Factory のデータセットとリンクされたサービス 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+# <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure Data Factory のデータセットとリンクされたサービス
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-create-datasets.md)
 > * [現在のバージョン](concepts-datasets-linked-services.md)
 
-この記事では、データセットの詳細、データセットを JSON 形式で定義する方法、Azure Data Factory パイプラインで使用する方法について説明します。 
+この記事では、データセットの詳細、データセットを JSON 形式で定義する方法、Azure Data Factory パイプラインで使用する方法について説明します。
 
-Azure Data Factory を初めて使用する場合は、[Azure Data Factory の概要](introduction.md)に関するページを参照してください。 
+Azure Data Factory を初めて使用する場合は、[Azure Data Factory の概要](introduction.md)に関するページを参照してください。
 
 ## <a name="overview"></a>概要
 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 **パイプライン**は、1 つのタスクを連携して実行する**アクティビティ**の論理的なグループです。 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、オンプレミスの SQL Server から Azure Blob Storage にデータをコピーすることができます。 その後、Azure HDInsight クラスターで Hive スクリプトを実行する Hive アクティビティを使用して、Blob Storage のデータを処理し、出力データを生成できます。 最後に、別のコピー アクティビティを使用して、ビジネス インテリジェンス (BI) レポート ソリューションが構築されている Azure SQL Data Warehouse に出力データをコピーできます。 パイプラインとアクティビティの詳細については、Azure Data Factory の[パイプラインとアクティビティ](concepts-pipelines-activities.md)を参照してください。
@@ -68,10 +68,10 @@ Data Factory のリンクされたサービスは、次のように JSON 形式�
 name | リンクされたサービスの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  [はい] |
 type | リンクされたサービスの種類  例: AzureStorage (データ ストア) または AzureBatch (コンピューティング)。 typeProperties の説明を参照してください。 | [はい] |
 typeProperties | 型のプロパティは、データ ストアまたはコンピューティングごとに異なります。 <br/><br/> サポートされているデータ ストア型と型のプロパティについては、この記事の「[データセットの型](#dataset-type)」の表を参照してください。 データ ストアに固有の型のプロパティについては、データ ストア コネクタに関する記事に移動してください。 <br/><br/> サポートされているコンピューティング型とその型のプロパティについては、[コンピューティングのリンクされたサービス](compute-linked-services.md)に関する記事を参照してください。 | [はい] |
-connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ 
+connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ
 
 ## <a name="linked-service-example"></a>リンクされたサービスの例
-次のリンクされたサービスは、Azure Storage のリンクされたサービスです。 type が AzureStorage に設定されている点に注目してください。 Azure Storage のリンクされたサービスの型のプロパティには、接続文字列が含まれます。 Data Factory サービスは、この接続文字列を使用して、実行時にデータ ストアに接続します。 
+次のリンクされたサービスは、Azure Storage のリンクされたサービスです。 type が AzureStorage に設定されている点に注目してください。 Azure Storage のリンクされたサービスの型のプロパティには、接続文字列が含まれます。 Data Factory サービスは、この接続文字列を使用して、実行時にデータ ストアに接続します。
 
 ```json
 {
@@ -102,7 +102,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
         "type": "<type of dataset: AzureBlob, AzureSql etc...>",
         "linkedServiceName": {
                 "referenceName": "<name of linked service>",
-                 "type": "LinkedServiceReference",
+                "type": "LinkedServiceReference",
         },
         "structure": [
             {
@@ -137,7 +137,7 @@ typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルな�
         "type": "AzureSqlTable",
         "linkedServiceName": {
                 "referenceName": "MyAzureSqlLinkedService",
-                 "type": "LinkedServiceReference",
+                "type": "LinkedServiceReference",
         },
         "typeProperties":
         {
@@ -167,9 +167,9 @@ typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルな�
         "type": "AzureBlob",
         "linkedServiceName": {
                 "referenceName": "MyAzureStorageLinkedService",
-                 "type": "LinkedServiceReference",
-        }, 
- 
+                "type": "LinkedServiceReference",
+        },
+
         "typeProperties": {
             "fileName": "input.log",
             "folderPath": "adfgetstarted/inputdata",
@@ -189,9 +189,9 @@ structure の各列には次のプロパティが含まれます。
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 name | 列の名前です。 | [はい]
-type | 列のデータ型です。 Data Factory は、使用できる値として、中間データ型の **Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** をサポートしています。 | いいえ 
-culture | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 | いいえ 
-format | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 日時の書式を設定する方法については、「[カスタム日時書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 | いいえ 
+type | 列のデータ型です。 Data Factory は、使用できる値として、中間データ型の **Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** をサポートしています。 | いいえ
+culture | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 | いいえ
+format | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 日時の書式を設定する方法については、「[カスタム日時書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 | いいえ
 
 ### <a name="example"></a>例
 次の例は、ソース BLOB データが、CSV 形式であり、userid、name、lastlogindate の 3 つの列を含むことを前提としています。 その型は、それぞれ、Int64、String、Datetime (曜日を表すフランス語の省略形を使用するカスタムの日付/時刻形式) です。
@@ -219,14 +219,14 @@ BLOB データセットの構造を、列の型の定義と共に次のように
 
 ## <a name="current-version-vs-version-1-datasets"></a>最新バージョンとバージョン 1 のデータセットの比較
 
-Data Factory と Data Factory バージョン 1 のデータセット間の相違点を次に示します。 
+Data Factory と Data Factory バージョン 1 のデータセット間の相違点を次に示します。
 
 - 外部プロパティは最新バージョンではサポートされません。 [トリガー](concepts-pipeline-execution-triggers.md)に置き換えらます。
 - ポリシーと可用性のプロパティは、最新バージョンではサポートされません。 パイプラインの開始時刻は、[トリガー](concepts-pipeline-execution-triggers.md)によって異なります。
-- 範囲指定されたデータセット (パイプラインで定義されたデータセット) は、最新バージョンではサポートされません。 
+- 範囲指定されたデータセット (パイプラインで定義されたデータセット) は、最新バージョンではサポートされません。
 
 ## <a name="next-steps"></a>次の手順
-これらのツールや SDK のいずれかを使用してパイプラインとデータセットを作成する詳しい手順については、次のチュートリアルを参照してください。 
+これらのツールや SDK のいずれかを使用してパイプラインとデータセットを作成する詳しい手順については、次のチュートリアルを参照してください。
 
 - [クイック スタート: .NET を使用してデータ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
 - [クイック スタート: PowerShell を使用してデータ ファクトリを作成する](quickstart-create-data-factory-powershell.md)

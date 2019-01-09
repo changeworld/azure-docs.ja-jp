@@ -1,19 +1,19 @@
 ---
-title: ExpressRoute Global Reach について | Microsoft Docs
+title: Global Reach を使用してオンプレミスのネットワークを Microsoft Cloud に接続する - Azure ExpressRoute | Microsoft Docs
 description: この記事では、ExpressRoute Global Reach について説明します。
-documentationcenter: na
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 23f3d2c4a53e05d962fdc7da72b336cc66f21306
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 8ee57bf101b432049d895b65a1dc7641653c7f21
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683068"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105456"
 ---
 # <a name="expressroute-global-reach-preview"></a>ExpressRoute Global Reach (プレビュー)
 ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 プライベート データ センターまたは企業ネットワークから、Azure、Office 365、Dynamics 365 などの多くの Microsoft クラウド サービスにアクセスできます。 たとえば、シリコン バレーに ExpressRoute 回線があるサンフランシスコのブランチ オフィスと、市内に ExpressRoute 回線があるロンドンのブランチ オフィスがあるとします。 どちらのブランチ オフィスも、米国西部と英国南部で Azure リソースへの高速の接続を利用できます。 ただし、ブランチ オフィスは相互にデータを直接交換することはできません。 言い換えれば、10.0.1.0/24 はデータを、10.0.3.0/24 と 10.0.4.0/24 には送信できますが、10.0.2.0/24 には送信できません。

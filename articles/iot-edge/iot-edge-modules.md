@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge モジュールについて | Microsoft Docs
-description: Azure IoT Edge モジュールと、その構成方法について説明します
+title: モジュールによるデバイス上でのロジックの実行方法について - Azure IoT Edge | Microsoft Docs
+description: Azure IoT Edge モジュールは、IoT Edge デバイス上でビジネス ロジックを実行できるように、リモートでのデプロイと管理が可能なコンテナー化されたロジックの単位です。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3d76f5931e3636f19c2030c4090116a0791db819
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 90fb6eadb2edb92d4516d8565d8c2c2bd5120c05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567334"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094187"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Azure IoT Edge モジュールについて
 
@@ -31,7 +32,7 @@ IoT Edge モジュール イメージには、IoT Edge ランタイムの管理�
 
 モジュール イメージがデバイスに展開され、IoT Edge ランタイムによって開始されるたびに、該当モジュールの新しいインスタンスが作成されます。 世界のクラウドの異なる部分にある 2 つのデバイスが同じモジュール イメージを使用することができますが、モジュールがデバイスで開始されたときに、各デバイスは独自のモジュール インスタンスを持つことになります。 
 
-![クラウド内のモジュール イメージ - デバイス上のモジュール インスタンス](./media/iot-edge-modules/image_instance.png)
+![図 - クラウド内のモジュール イメージ - デバイス上のモジュール インスタンス](./media/iot-edge-modules/image_instance.png)
 
 実装では、モジュール イメージはリポジトリ内のコンテナー イメージとして存在し、モジュール インスタンスはデバイス上のコンテナーです。 
 
@@ -46,7 +47,7 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 明らかに、1 つのモジュール イメージを同じデバイスに複数回展開する必要があるシナリオで、同じイメージを異なる名前で複数回展開することができます。
 
-![モジュールの ID は一意](./media/iot-edge-modules/identity.png)
+![図 - デバイス内およびデバイス間でモジュール ID が一意になっている](./media/iot-edge-modules/identity.png)
 
 ## <a name="module-twins"></a>モジュール ツイン
 

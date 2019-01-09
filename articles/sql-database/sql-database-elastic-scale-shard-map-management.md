@@ -3,7 +3,7 @@ title: Azure SQL Database をスケールアウトする | Microsoft Docs
 description: Elastic Database クライアント ライブラリの ShardMapManager の使用方法
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/16/2018
-ms.openlocfilehash: 71496a11deff5236161931d572e75d4a84b75c5f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 28387c1487c506173cba2eaaf3364dab36c7f70f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162068"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865854"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>シャード マップ マネージャーでデータベースをスケールアウトする
 SQL Azure でデータベースを簡単にスケールアウトするには、シャード マップ マネージャーを使用します。 シャード マップ マネージャーは、シャード セット内のすべてのシャード (データベース) についてのグローバル マッピング情報を保持する特殊なデータベースです。 メタデータにより、アプリケーションは **シャーディング キー**の値に基づいて適切なデータベースに接続できます。 さらに、セット内のすべてのシャードには、ローカル シャード データを追跡するマップが含まれます ( **シャードレット**と呼ばれます)。 
@@ -98,7 +98,7 @@ Elastic Scale では、シャーディング キーとして次の型がサポ�
 ## <a name="constructing-a-shardmapmanager"></a>ShardMapManager の作成
 **ShardMapManager** オブジェクトは、ファクトリ ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)) パターンを使用して作成されます。 **ShardMapManagerFactory.GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.getsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) メソッドは、(サーバー名と、GSM を保持しているデータベースの名前を含む) **ConnectionString** 形式の資格情報を受け取り、**ShardMapManager** のインスタンスを返します。  
 
-**注意**: **ShardMapManager** は、アプリケーションの初期化コード内でアプリケーション ドメインごとに 1 回だけインスタンス化する必要があります。 同じアプリケーション ドメインで ShardMapManager の追加のインスタンスを作成すると、アプリケーションのメモリ使用率と CPU 使用率が増加します。 **ShardMapManager** には、任意の数のシャード マップを含めることができます。 多くのアプリケーションでは、シャード マップは 1 つあれば十分です。ただし、異なるスキーマ用や一意性を確保する目的のためにデータベースの異なるセットを使用する場合は、複数のシャード マップを使用することをお勧めします。 
+**注意:** **ShardMapManager** は、アプリケーションの初期化コード内でアプリケーション ドメインごとに 1 回だけインスタンス化する必要があります。 同じアプリケーション ドメインで ShardMapManager の追加のインスタンスを作成すると、アプリケーションのメモリ使用率と CPU 使用率が増加します。 **ShardMapManager** には、任意の数のシャード マップを含めることができます。 多くのアプリケーションでは、シャード マップは 1 つあれば十分です。ただし、異なるスキーマ用や一意性を確保する目的のためにデータベースの異なるセットを使用する場合は、複数のシャード マップを使用することをお勧めします。 
 
 次のコードでは、アプリケーションは、TryGetSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) メソッドを使用して既存の **ShardMapManager** を開こうとします。 グローバル **ShardMapManager** (GSM) を表すオブジェクトがデータベース内に存在しない場合、クライアント ライブラリは CreateSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) メソッドを使用してこれを作成します。
 

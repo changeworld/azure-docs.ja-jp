@@ -1,21 +1,22 @@
 ---
-title: 顧客データのエクスポートと削除 - Language Understanding - LUIS
+title: データのエクスポートと削除
 titleSuffix: Azure Cognitive Services
 description: Language Understanding Intelligent Service (LUIS) はサービスを運用するために顧客コンテンツを保持していますが、LUIS ユーザーは自分のデータの表示、エクスポート、削除を完全に制御できます。 この操作は、LUIS Web ポータルまたは LUIS Programmatic API を使って行うことができます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: bfd168d5c56bc800831c402a23bb1a506fa15221
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 0aba859fc0c5e2de64b2bbdb9c06f2434937f4e8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883892"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140678"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Cognitive Services で Language Understanding (LUIS) 内の顧客データをエクスポートおよび削除する
 

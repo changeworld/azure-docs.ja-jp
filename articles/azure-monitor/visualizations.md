@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 76e3a219d440bab4c6e277887aabb1e01f5e1d9c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 862380a35dcc4d50dce8d709bd1dbea1aa38e37a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435448"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728348"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
@@ -32,7 +32,7 @@ ms.locfileid: "53435448"
 ### <a name="advantages"></a>長所
 - Azure との緊密な統合。 視覚化は、メトリック分析、ログ分析、Application Insights など、複数の Azure ページからダッシュボードにピン留めできます。
 - メトリックとログの両方をサポート。
-- [メトリックス エクスプローラー](../azure-monitor/platform/metrics-charts.md)からの出力、[Log Analytics クエリ](../azure-monitor/log-query/log-query-overview.md)、および Application Insights の[マップ](../application-insights/app-insights-app-map.md)と[可用性]()など、複数のソースからデータを結合します。
+- [メトリックス エクスプローラー](../azure-monitor/platform/metrics-charts.md)からの出力、[Log Analytics クエリ](../azure-monitor/log-query/log-query-overview.md)、および Application Insights の[マップ](../azure-monitor/app/app-map.md)と[可用性]()など、複数のソースからデータを結合します。
 - 個人または共有のダッシュボードのオプション。 Azure [ロール ベースの認証 (RBAC)](../role-based-access-control/overview.md) との統合。
 - 自動更新。 メトリックの更新は、最短 5 分の時間範囲に依存します。 ログは 1 分で更新されます。
 - タイムスタンプとカスタム パラメーターでパラメーター化されたメトリック ダッシュボード。

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と RedBrick Health の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と RedBrick Health の統合 | Microsoft Docs
 description: Azure Active Directory と RedBrick Health の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 11452dfb94a5a1c8cf4734b1ef21a44cccafbea1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bccc7abed9a86bcba74a5d994664a20313f3282a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430510"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833807"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>チュートリアル: Azure Active Directory と RedBrick Health の統合
+# <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>チュートリアル:Azure Active Directory と RedBrick Health の統合
 
 このチュートリアルでは、RedBrick Health と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -110,7 +110,7 @@ RedBrick Health で Azure AD のシングル サインオンを構成してテ�
 
     ![[RedBrick Health のドメインと URL] のシングル サインオン情報](./media/redbrickhealth-tutorial/tutorial_redbrickhealth_url.png)
 
-    a. **[識別子]** ボックスに次の URL を入力します。`http://www.redbrickhealth.com`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://www.redbrickhealth.com`
     
     b. **[応答 URL]** ボックスに、次の URL を入力します。`https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
     
@@ -205,7 +205,7 @@ RedBrick Health で Azure AD のシングル サインオンを構成してテ�
   
 ### <a name="create-a-redbrick-health-test-user"></a>RedBrick Health のテスト ユーザーを作成する
 
-このセクションでは、RedBrick Health で Britta Simon というユーザーを作成します。 [RedBrick Health サポート チーム](https://home.redbrickhealth.com/contact/)と連携し、RedBrick Health プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、RedBrick Health で Britta Simon というユーザーを作成します。  [RedBrick Health サポート チーム](https://home.redbrickhealth.com/contact/) と連携し、RedBrick Health プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -242,7 +242,7 @@ RedBrick Health で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [RedBrick Health] タイルをクリックすると、自動的に RedBrick Health アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

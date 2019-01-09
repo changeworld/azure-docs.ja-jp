@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f3a3261fa1b7aa2075a05d7b87ea3fc29c5b9fab
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: f2e0767e78119b224f7be9256ab7050deca37e32
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385875"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546982"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
-Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースの診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)を使用すると、監視および [Azure Storage](https://azure.microsoft.com/services/storage/) にログを送信したり、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) ([Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) のサービス) にエクスポートしたりすることができます。 
+Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースの診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を使用すると、監視および [Azure Storage](https://azure.microsoft.com/services/storage/) にログを送信したり、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) ([Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) のサービス) にエクスポートしたりすることができます。 
 
 ![Storage、Event Hubs、または Log Analytics への診断ログ](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -304,6 +304,6 @@ Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure リソースの診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)についてさらに詳しく学習します。
+[Azure リソースの診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)についてさらに詳しく学習します。
 
 PowerShell ヘルプの「[Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/Set-AzureRmDiagnosticSetting)」を参照してください。

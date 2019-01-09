@@ -56,6 +56,12 @@ items:
   items:
   - name: SSH のトラブルシューティング
     href: troubleshoot-ssh-connection.md
+  - name: ファイル システム エラーのトラブルシューティング
+    href: https://support.microsoft.com/help/3213321
+  - name: カーネルに関連するブートの問題のトラブルシューティング
+    href: https://support.microsoft.com/help/4091524
+  - name: fstab エラーのトラブルシューティング
+    href: https://support.microsoft.com/help/3206699
   - name: SSH のトラブルシューティングの詳細
     href: detailed-troubleshoot-ssh-connection.md
 - name: 一般的なエラー メッセージ
@@ -105,6 +111,8 @@ items:
   href: unexpected-reboots-attached-vhds.md
 - name: Windows のライセンス認証に関する問題
   href: troubleshoot-activation-problems.md
+- name: 強制トンネリングを使用したアクティブ化の問題
+  href: custom-routes-enable-kms-activation.md
 - name: アプリケーション アクセスに関する問題
   href: troubleshoot-app-connection.md
 - name: 新しい VM のデプロイ
@@ -162,9 +170,9 @@ items:
   href: understand-vm-reboot.md
 - name: リモートのトラブルシューティング ツール
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: af1f284108a326b3ce099ee49cb15a8f51cc61af
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b745b9e42c700ea446d934df7d2e3201b555f075
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434860"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976326"

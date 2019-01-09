@@ -130,10 +130,10 @@ Basic SKU のパブリック IP アドレスは、*動的*割り当て方法も�
 
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
-| 仮想マシン |Linux |[はい] |[はい] |
-| インターネットに接続するロード バランサー |フロント エンド構成 |[はい] |[はい] |
-| VPN Gateway |ゲートウェイ IP の構成 |[はい] |[はい] |
-| Application gateway |フロント エンド構成 |[はい] |[はい] |
+| 仮想マシン |Linux |はい |はい |
+| インターネットに接続するロード バランサー |フロント エンド構成 |はい |はい |
+| VPN Gateway |ゲートウェイ IP の構成 |はい |はい |
+| Application gateway |フロント エンド構成 |はい |はい |
 
 ## <a name="private-ip-addresses"></a>プライベート IP アドレス
 プライベート IP アドレスを使用すると、Azure リソースは、インターネットが到達可能な IP アドレスを使用せずに、 [仮想ネットワーク](virtual-networks-overview.md) の他のリソース、あるいはオンプレミスのネットワーク (VPN ゲートウェイまたは ExpressRoute 回線経由) と通信することができます。
@@ -178,9 +178,9 @@ Azure で管理される DNS サーバーで構成されている仮想マシン
 
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
-| 仮想マシン |Linux |[はい] |[はい] |
-| Load Balancer |フロント エンド構成 |[はい] |[はい] |
-| Application gateway |フロント エンド構成 |[はい] |[はい] |
+| 仮想マシン |Linux |はい |はい |
+| Load Balancer |フロント エンド構成 |はい |はい |
+| Application gateway |フロント エンド構成 |はい |はい |
 
 ## <a name="limits"></a>制限
 IP アドレス指定に対する制限は、Azure の[ネットワークの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)の完全なセットに示されています。 この制限は、リージョンとサブスクリプションごとに存在します。 ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、 [サポートにお問い合わせください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。

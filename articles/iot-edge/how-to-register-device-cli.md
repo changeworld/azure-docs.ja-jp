@@ -1,6 +1,6 @@
 ---
-title: 新しい Azure IoT Edge デバイスの登録 (CLI) | Microsoft Docs
-description: Azure CLI の IoT 拡張機能を使用して、新しい IoT Edge デバイスを登録する
+title: コマンドラインからから新しいデバイスを登録 - Azure IoT Edge | Microsoft Docs
+description: Azure CLI の IoT 拡張機能を使用して新しい IoT Edge デバイスを登録し、接続文字列を取得する
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 737a2dfe5c3b3382db00785b3465147143b17e9e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 28f20157de603cf20cb33e9db569064f87922bf8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569252"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081835"
 ---
 # <a name="register-a-new-azure-iot-edge-device-with-azure-cli"></a>Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する
 
@@ -43,7 +44,7 @@ Azure IoT Edge で IoT デバイスを使用する前に、それらを IoT ハ�
 * **hub-name**: IoT ハブの名前を指定します。
 * **edge-enabled**: このパラメーターは、デバイスが IoT Edge に使用されることを宣言します。
 
-   ![IoT Edge デバイスを作成する](./media/how-to-register-device-cli/Create-edge-device.png)
+   ![az iot hub device-identity create output](./media/how-to-register-device-cli/Create-edge-device.png)
 
 ## <a name="view-all-devices"></a>すべてのデバイスを表示する
 

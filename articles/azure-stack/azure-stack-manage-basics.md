@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 5d3073c3ed499ecdb20243e6db2b217aec3e1448
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f22754a16c4765989b5773d099fc3ecda73040db
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254521"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972390"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack の管理の基本
 Azure Stack の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイドでは、Azure Stack オペレーターとしての役割の概要と、ユーザーがすばやく生産的になれるようにユーザーに伝える必要があることを説明します。
@@ -32,9 +32,9 @@ Azure Stack 統合システムを使用している場合、Azure Stack の更�
  
 ### <a name="development-kit"></a>開発キット
 
-Azure Stack Development Kit を使用している場合は、「[What is Azure Stack? (Azure Stack とは)](.\asdk\asdk-what-is.md)」の記事を確認し、Development Kit の目的と制限事項について確実に理解しておいてください。 開発キットは "サンド ボックス" として使用する必要があります。その中では、Azure Stack を評価し、非運用環境でアプリの開発とテストを行うことができます。 (デプロイの情報については、[Azure Stack Development Kit のデプロイ](.\asdk\asdk-install.md)に関する記事を参照してください。)
+Azure Stack Development Kit を使用している場合は、「[What is Azure Stack? (Azure Stack とは)](./asdk/asdk-what-is.md)」の記事を確認し、Development Kit の目的と制限事項について確実に理解しておいてください。 開発キットは "サンド ボックス" として使用する必要があります。その中では、Azure Stack を評価し、非運用環境でアプリの開発とテストを行うことができます。 (デプロイの情報については、[Azure Stack Development Kit のデプロイ](./asdk/asdk-install.md)に関する記事を参照してください。)
 
-Azure のように、Microsoft は迅速にイノベーションを進めています。 新しいビルドは定期的にリリースされます。 Development Kit を実行しており、最新のビルドに移行する場合は、[Azure Stack を再デプロイ](.\asdk\asdk-redeploy.md)する必要があります。 更新プログラム パッケージは適用できません。 このプロセスは時間がかかりますが、最新の機能を試すことができるというメリットがあります。 Microsoft Web サイトの Development Kit ドキュメントには、最新のリリース ビルドが反映されています。
+Azure のように、Microsoft は迅速にイノベーションを進めています。 新しいビルドは定期的にリリースされます。 Development Kit を実行しており、最新のビルドに移行する場合は、[Azure Stack を再デプロイ](./asdk/asdk-redeploy.md)する必要があります。 更新プログラム パッケージは適用できません。 このプロセスは時間がかかりますが、最新の機能を試すことができるというメリットがあります。 Microsoft Web サイトの Development Kit ドキュメントには、最新のリリース ビルドが反映されています。
 
 ## <a name="learn-about-available-services"></a>利用できるサービスの詳細
 
@@ -44,7 +44,7 @@ Azure のように、Microsoft は迅速にイノベーションを進めてい�
 
 Azure Stack をデプロイすると、Azure Stack には既定で以下の "基礎となるサービス" が含まれています。
 
-- コンピューティング
+- Compute
 - Storage
 - ネットワーク
 - Key Vault
@@ -63,7 +63,7 @@ Azure Stack をデプロイすると、Azure Stack には既定で以下の "基
 
 **サービスのロードマップ**
 
-Azure Stack には、引き続き Azure サービスのサポートが追加される予定です。 計画されているロードマップについては、「[Azure Stack: An extension of Azure (Azure Stack: Azure の拡張機能)](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)」のホワイトペーパーをご覧ください。 新しい発表については、[Azure Stack のブログ投稿](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)をチェックすることもできます。
+Azure Stack には、引き続き Azure サービスのサポートが追加される予定です。 プロジェクトのロードマップについては、「[Azure Stack: Azure の拡張機能](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)」ホワイトペーパーを参照してください。 新しい発表については、[Azure Stack のブログ投稿](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)をチェックすることもできます。
 
 ## <a name="what-account-should-i-use"></a>使用するアカウントについて
 Azure Stack を管理する場合に注意するいくつかのアカウントに関する考慮事項があります。 特に、Azure Active Directory (Azure AD) ではなく ID プロバイダーとして Windows Server Active Directory Federation Services (AD FS) を使用する展開では注意が必要です。 次のアカウントに関する考慮事項は、Azure Stack 統合システムと ASDK 展開の両方に適用されます。
@@ -108,7 +108,7 @@ Azure Stack はデプロイ、管理、整理のための基礎となるメカ�
 
 Azure Stack 内のサービスを使用してアプリを構築する前に、ユーザーが理解しておく必要のある情報があります。 たとえば、PowerShell と API については、特定のバージョン要件があります。 また、Azure のサービスと Azure Stack の同等のサービスに備わる機能には、一部違いがあります。 ユーザーには、以下の記事に必ず目を通してもらってください。
 
-- [主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成](user/azure-stack-considerations.md)
+- [重要な考慮事項: Azure Stack でのサービスの使用またはアプリの作成](user/azure-stack-considerations.md)
 - [Azure Stack の仮想マシンに関する考慮事項](user/azure-stack-vm-considerations.md)
 - [ストレージ: 相違点と考慮事項](user/azure-stack-acs-differences.md)
 

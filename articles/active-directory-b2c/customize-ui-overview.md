@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cec9e5bfea16e5ba11f8cd7324acf15188fb907a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 94f7239bdcdc5ddc91f3ed8b49b59378309711e8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669359"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844959"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて
 
@@ -23,13 +23,13 @@ Azure Active Directory (Azure AD) B2C によってアプリケーションに提
 
 これらの操作性のニーズに基づき、さまざまな方法でアプリケーションの UI をカスタマイズします。 例: 
 
-- [組み込みポリシー](active-directory-b2c-reference-policies.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集といった操作を提供している場合、[Azure portal を使用して UI をカスタマイズ](tutorial-customize-ui.md)します。
+- [ユーザー フロー](active-directory-b2c-reference-policies.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集といった操作を提供している場合、[Azure portal を使用して UI をカスタマイズ](tutorial-customize-ui.md)します。
 - サインインのみ、それに付随するパスワード リセット ページ、確認メールを提供している場合、[Azure AD サインイン ページ](../active-directory/fundamentals/customize-branding.md)の場合と同じカスタマイズ手順を使用します。
 - 顧客がサインイン前にプロファイルを編集しようとすると、Azure AD サインイン ページのカスタマイズに使用した同じ手順でカスタマイズするページにリダイレクトされます。
 - [カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集をアプリケーションで提供している場合、[ポリシー ファイルを使用して UI をカスタマイズ](active-directory-b2c-ui-customization-custom.md)します。
 - 顧客の決定に基づく動的コンテンツを提供する必要がある場合、クエリ文字列で送信されたパラメーターに基づいて[ページの内容を変更できるカスタム ポリシー](active-directory-b2c-ui-customization-custom-dynamic.md)を使用します。 たとえば、Web やモバイル アプリケーションから渡されるパラメーターに基づき、Azure AD B2C のサインアップまたはサインイン ページの背景イメージが変化します。
 
-Azure AD B2C によって、顧客のブラウザーでコードが実行され、[クロス オリジン リソース共有 (CORS)](http://www.w3.org/TR/cors/) と呼ばれる最新の手法が使用されます。 実行時、コンテンツは、ポリシーで指定された URL から読み込まれます。 URL はページごとに指定します。 URL から読み込まれたコンテンツが Azure AD B2C から挿入された HTML フラグメントに統合され、顧客に表示されます。
+Azure AD B2C によって、顧客のブラウザーでコードが実行され、[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/) と呼ばれる最新の手法が使用されます。 実行時、コンテンツは、ユーザー フローまたはポリシーで指定された URL から読み込まれます。 URL はページごとに指定します。 URL から読み込まれたコンテンツが Azure AD B2C から挿入された HTML フラグメントに統合され、顧客に表示されます。
 
 開始前に、次のガイダンスを確認します。
 
@@ -118,6 +118,6 @@ Azure AD B2C テナントで [[言語のカスタマイズ]](active-directory-b2
 
 ## <a name="next-steps"></a>次の手順
 
-- 組み込みポリシーを使用している場合、「[Customize the user interface of your applications in Azure Active Directory B2C](tutorial-customize-ui.md)」(Azure Active Directory B2C でアプリケーションのユーザー インターフェイスをカスタマイズする) というチュートリアルで UI のカスタマイズを開始できます。
-- カスタム ポリシーを使用している場合、「[Customize the user interface of your application using a custom policy in Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md)」(Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする) という記事で UI のカスタマイズを開始できます。
+- ユーザー フローを使用している場合は、次のチュートリアルで UI のカスタマイズを開始できます:「[Azure Active Directory B2C でアプリケーションのユーザー インターフェイスをカスタマイズする](tutorial-customize-ui.md)」。
+- カスタム ポリシーを使用している場合は、次の記事で UI のカスタマイズを開始できます:「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」。
 

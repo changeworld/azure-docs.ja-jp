@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: fae4fffbe9e4b0be0f2edacf3e86b6268cc58608
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 39525c7e25e247504429ea36210986a5e3300cc1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384651"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537176"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure Portal を使用した Azure DDoS Protection Standard の管理
 
@@ -102,7 +102,7 @@ Azure Monitor のアラート構成を使用すると、利用可能な DDoS Pro
     |リソース グループ           | アラートを受信するパブリック IP アドレスを含むリソース グループを選択します。      |
     |リソース                 | アラートを受信するパブリック IP アドレスを含むパブリック IP アドレスを選択します。 DDoS は、仮想ネットワーク内のリソースに割り当てられているパブリック IP アドレスを監視します。 仮想ネットワーク内のパブリック IP アドレスを持つリソースがない場合は、最初にパブリック IP アドレスを使用してリソースを作成する必要があります。 Azure App Service Environment と Azure VPN Gateway を除き、[Azure サービスの仮想ネットワーク](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関するページに一覧表示されている Resource Manager (クラシックではない) を通じてデプロイされているすべてのリソースのパブリック IP アドレスを監視できます。 このチュートリアルを続行するために、[Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンをすばやく作成できます。                   |
     |メトリック                   | DDoS 攻撃中かどうか                                                                            |
-    |しきい値                | 1 - **1** は、攻撃を受けていることを示します。 **0** は、攻撃を受けていないことを示します。                         |
+    |Threshold                | 1 - **1** は、攻撃を受けていることを示します。 **0** は、攻撃を受けていないことを示します。                         |
     |期間                   | 選んだ任意の値を選択します。                                                                   |
     |電子メールによる通知         | チェック ボックスをオンにします                                                                                  |
     |Additional administrator (追加の管理者) | 電子メールの所有者、共同作成者、またはサブスクリプションの閲覧者でない場合は自分のメール アドレスを入力します。 |
@@ -157,7 +157,7 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 6. **[Turn on diagnostics to collect the DDoSMitigationReports log]\(診断を有効にして DDoSMitigationReports ログを収集する\)** を選択し、必要に応じて次のオプションを任意の数だけ選択します。
 
     - **ストレージ アカウントへのアーカイブ**:データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[診断ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-    - **イベント ハブへのストリーム配信**:ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへの診断ログのストリーミング](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+    - **イベント ハブへのストリーム配信**:ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへの診断ログのストリーミング](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
     - **Log Analytics への送信**:ログを Azure Log Analytics サービスに書き込みます。 このオプションについて詳しくは、[Log Analytics で使用するログの収集](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
 増分レポートと攻撃の軽減策後のレポートには、両方とも次のフィールドが含まれます。
@@ -179,7 +179,7 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 6. **[Turn on diagnostics to collect the DDoSMitigationFlowLogs log]\(診断を有効にして DDoSMitigationFlowLogs ログを収集する\)** を選択し、必要に応じて次のオプションを任意の数だけ選択します。
 
     - **ストレージ アカウントへのアーカイブ**:データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[診断ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-    - **イベント ハブへのストリーム配信**:ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへの診断ログのストリーミング](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+    - **イベント ハブへのストリーム配信**:ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへの診断ログのストリーミング](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
     - **Log Analytics への送信**:ログを Azure Log Analytics サービスに書き込みます。 このオプションについて詳しくは、[Log Analytics で使用するログの収集](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 1. Azure analytics ダッシュボードでフロー ログ データを表示するには、 https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip からサンプル ダッシュボードをインポートします。
 

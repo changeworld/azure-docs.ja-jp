@@ -21,7 +21,7 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37054417"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用した SFTP サーバーからのデータ移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-sftp-connector.md)
 > * [Version 2 (現在のバージョン)](../connector-sftp.md)
 
@@ -33,7 +33,7 @@ ms.locfileid: "37054417"
 Data Factory が現在サポートしているのは、SFTP サーバーから他のデータ ストアへのデータの移動だけで、他のデータ ストアから SFTP サーバーへの移動はサポートしていません。 オンプレミスとクラウド SFTP サーバーの両方をサポートします。
 
 > [!NOTE]
-> コピー アクティビティでは、コピー先にコピーされた後にソース ファイルが削除されることはありません。 コピー後にソース ファイルを削除する必要がある場合、カスタム アクティビティを作成してファイルを削除し、パイプラインのアクティビティを使用します。 
+> コピー アクティビティでは、コピー先にコピーされた後にソース ファイルが削除されることはありません。 コピー後にソース ファイルを削除する必要がある場合、カスタム アクティビティを作成してファイルを削除し、パイプラインのアクティビティを使用します。
 
 ## <a name="supported-scenarios-and-authentication-types"></a>サポートされているシナリオと認証の種類
 この SFTP コネクタを使用すると、データをコピーする**クラウド SFTP サーバーとオンプレミスの SFTP サーバーの両方**からデータをコピーできます。 SFTP サーバーに接続するときにサポートされる認証の種類は、**基本**認証と **SshPublicKey** 認証です。
@@ -206,7 +206,7 @@ SSH 公開キー認証を使用するには、`authenticationType` を `SshPubli
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },

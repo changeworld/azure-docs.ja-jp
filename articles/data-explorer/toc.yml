@@ -66,6 +66,8 @@ items:
       href: manage-cluster-scaling.md
     - name: データの削除
       href: delete-data.md
+    - name: 重複したデータを処理する
+      href: dealing-with-duplicates.md
   - name: その他のツールを操作する
     items:
     - name: Python を使用して Databricks から接続する
@@ -114,9 +116,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: fdde75acc0d975db194108458ca308c459b4f9a7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fd86d2d3ceb8e23567c8bfbfbbee87485d1def58
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653018"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021637"

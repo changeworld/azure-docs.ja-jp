@@ -2,26 +2,26 @@
 title: Azure Stream Analytics からの出力を理解する
 description: この記事では、分析結果への Power BI を含む、Azure Stream Analytics で使用可能なデータ出力オプションについて説明します。
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: 2ef599fe704b184e82de2d704753e3fb4a274a2a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 555a2bdfe3997114c1aaa202a89d650287f27c0e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257801"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091630"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できるさまざまな種類の出力について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、データのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。 
 
 Stream Analytics のクエリを作成するときは、[INTO 句](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics)を使用して出力の名前を参照します。 ジョブごとに 1 つの出力を使用できます。または、クエリで複数の INTO 句を指定することによって、必要に応じてストリーミング ジョブごとに複数の出力を使用できます。
 
-Stream Analytics ジョブの出力を作成、編集、テストするには、[Azure Portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)、および [Visual Studio](stream-analytics-quick-create-vs.md) を使用できます。
+Stream Analytics ジョブの出力を作成、編集、テストするには、[Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)、および [Visual Studio](stream-analytics-quick-create-vs.md) を使用できます。
 
 一部の出力の種類は[パーティション分割](#partitioning)に対応します。また、スループットを最適化するために[出力のバッチ サイズ](#output-batch-size)が異なります。
 
@@ -35,20 +35,20 @@ Stream Analytics からの Azure Data Lake Store 出力は、現在、Azure 中�
 
 1. Data Lake Storage を Azure Portal で出力として選択すると、既存の Data Lake Store への接続を承認するように求められます。  
 
-   ![Data Lake Store の承認](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
+   ![Data Lake Store への接続を承認する](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
 2. Data Lake Store へのアクセス権を既に持っている場合、**[今すぐ承認]** を選択すると、"**承認にリダイレクトしています**" というページが表示されます。 承認が成功すると、Data Lake Store の出力を構成できるページが表示されます。
 
 3. Data Lake Store アカウントが認証されたら、Data Lake Store 出力のプロパティを構成できます。 次の表は、Data Lake Store 出力を構成するためのプロパティ名とその説明の一覧です。
 
-   ![Data Lake Store の承認](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
+   ![Stream Analytics の出力として Data Lake Store を定義する](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
 | プロパティ名 | 説明 | 
 | --- | --- |
 | 出力エイリアス | クエリの出力をこの Data Lake Store に出力するためにクエリで使用されるわかりやすい名前です。 | 
 | アカウント名 | 出力を送信する Data Lake Storage アカウントの名前。 サブスクリプションで利用できる Data Lake Store アカウントのドロップダウン リストが表示されます。 |
 | パスのプレフィックス パターン | 指定した Data Lake Store アカウント内のファイルを書き込むために使用するファイル パス。 {date} および {time} 変数のインスタンスを 1 つ以上指定できます。</br><ul><li>例 1: folder1/logs/{date}/{time}</li><li>例 2: folder1/logs/{date}</li></ul><br>作成されたフォルダー構造のタイムスタンプでは、現地時刻ではなく、UTC に従います。</br><br>ファイル パス パターンの末尾に "/" が含まれていない場合、ファイル パスの最後のパターンがファイル名のプレフィックスとして扱われます。 </br></br>次の状況では新しいファイルが作成されます。<ul><li>出力スキーマの変更</li><li>ジョブの外部または内部再起動</li></ul> |
-| 日付の形式 | 省略可能。 日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。 例: YYYY/MM/DD |
+| 日付の形式 | 省略可能。 日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。 例:YYYY/MM/DD |
 |時刻の形式 | 省略可能。 時刻トークンがプレフィックス パスで使用されている場合、ファイルを編成する時刻形式を指定します。 現在唯一サポートされている値は HH です。 |
 | イベントのシリアル化の形式 | 出力データのシリアル化形式。 JSON、CSV、Avro がサポートされています。| 
 | エンコード | CSV または JSON 形式を使用している場合は、エンコードを指定する必要があります。 現時点でサポートされているエンコード形式は UTF-8 だけです。|
@@ -60,7 +60,7 @@ Stream Analytics からの Azure Data Lake Store 出力は、現在、Azure 中�
 
 承認を更新するには、ジョブを **[停止]** して、Data Lake Store の出力に移動し、**[承認の更新]** リンクをクリックします。"**承認にリダイレクトしています**" というページが短時間表示されます。このページは自動的に閉じられ、処理が成功すると "**承認が正常に更新されました**" と表示されます。 ページの下部にある **[保存]** をクリックする必要があります。**[最後に停止した時刻]** からジョブを再開して継続することで、データの損失を防ぐことができます。
 
-![Data Lake Store の承認](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
+![出力での Data Lake Store の承認を更新する](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL Database
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。 Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。  テーブル スキーマは、ジョブから出力されるフィールドとその型にぴったり一致する必要があります。 また、SQL Database 出力オプションを使用して、[Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) を出力として指定することもできます。 書き込みのスループットを向上させる方法の詳細については、[出力としての Azure SQL DB を使用した Stream Analytics](stream-analytics-sql-output-perf.md)に関する記事を参照してください。 次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
@@ -70,8 +70,8 @@ Stream Analytics からの Azure Data Lake Store 出力は、現在、Azure 中�
 | 出力エイリアス |クエリの出力をこのデータベースに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Database | 出力を送信するデータベースの名前です。 |
 | サーバー名 | SQL Database サーバー名です。 |
-| ユーザー名 | データベースに書き込むためのアクセス権を持つユーザー名です。 |
-| パスワード | データベースに接続するためのパスワード |
+| ユーザー名 | データベースに書き込むためのアクセス権を持つユーザー名です。 Stream Analytics では、SQL 認証のみがサポートされます。 |
+| パスワード | データベースに接続するためのパスワード。 |
 | テーブル | 出力の書き込み先のテーブル名です。 テーブル名は大文字小文字が区別されます。このテーブルのスキーマは、ジョブの出力によって生成されるフィールドの数とその型に正確に一致する必要があります。 |
 
 > [!NOTE]
@@ -89,8 +89,8 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 | ストレージ アカウント     | 出力を送信するストレージ アカウントの名前。               |
 | ストレージ アカウント キー | ストレージ アカウントに関連付けられている秘密キー。                              |
 | ストレージ コンテナー   | コンテナーにより、Microsoft Azure Blob service に格納される BLOB が論理的にグループ化されます。 BLOB を Blob service にアップロードするとき、その BLOB のコンテナーを指定する必要があります。 |
-| パスのパターン | 省略可能。 指定したコンテナー内の BLOB を書き込むために使用されるファイル パス パターン。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />この [Azure Portal リンク](https://portal.azure.com/?microsoft_azure_streamanalytics_bloboutputpathpartitioning=true&Microsoft_Azure_StreamAnalytics_bloboutputcontainerpartitioning=true)を使用してカスタム BLOB のパーティション分割プレビューにアクセスする場合は、BLOB をパーティション分割するためにイベント データの 1 つのカスタム {field} 名を指定できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>大文字小文字を区別しない (列 "ID" と列 "id" を区別できません)</li><li>入れ子になったフィールドを使用できない (代わりに、ジョブ クエリで別名を使用して、フィールドを "フラット化" します)</li><li>式はフィールド名として使用できません。</li></ul> <br /><br /> プレビューではまた、パスでカスタム日付/時刻書式指定子の構成も使用できます。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 使用可能な入力の \<specifier> は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 {datetime:\<specifier>} キーワードは、カスタム日付/時刻の構成を形成するために、パスで複数回使用できます。 <br /><br />次に例を示します。 <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3 (プレビュー): cluster1/{client_id}/{date}/{time}</li><li>例 4 (プレビュー): cluster1/{datetime:ss}/{myField} (この場合、クエリは SELECT data.myField AS myField FROM Input;)</li><li>例 5 (プレビュー): cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br /><br />作成されたフォルダー構造のタイムスタンプでは、現地時刻ではなく、UTC に従います。<br /><br/>ファイルの名前付けは、次の規則に従います。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br />出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br /><br /> このプレビューの詳細については、「[Azure Stream Analytics の BLOB ストレージ出力用のカスタム DateTime パス パターン (プレビュー)](stream-analytics-custom-path-patterns-blob-storage-output.md)」を参照してください。 |
-| 日付の形式 | 省略可能。 日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。 例: YYYY/MM/DD |
+| パスのパターン | 省略可能。 指定したコンテナー内の BLOB を書き込むために使用されるファイル パス パターン。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />この [Azure Portal リンク](https://portal.azure.com/?microsoft_azure_streamanalytics_bloboutputpathpartitioning=true&Microsoft_Azure_StreamAnalytics_bloboutputcontainerpartitioning=true)を使用してカスタム BLOB のパーティション分割プレビューにアクセスする場合は、BLOB をパーティション分割するためにイベント データの 1 つのカスタム {field} 名を指定できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>大文字小文字を区別しない (列 "ID" と列 "id" を区別できません)</li><li>入れ子になったフィールドを使用できない (代わりに、ジョブ クエリで別名を使用して、フィールドを "フラット化" します)</li><li>式はフィールド名として使用できません。</li></ul> <br /><br /> プレビューではまた、パスでカスタム日付/時刻書式指定子の構成も使用できます。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 使用可能な入力の \<specifier> は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 {datetime:\<specifier>} キーワードは、カスタム日付/時刻の構成を形成するために、パスで複数回使用できます。 <br /><br />次に例を示します。 <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3 (プレビュー): cluster1/{client_id}/{date}/{time}</li><li>例 4 (プレビュー): cluster1/{datetime:ss}/{myField} (この場合、クエリは SELECT data.myField AS myField FROM Input;</li><li>例 5 (プレビュー): cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br /><br />作成されたフォルダー構造のタイムスタンプでは、現地時刻ではなく、UTC に従います。<br /><br/>ファイルの名前付けは、次の規則に従います。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br />出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br /><br /> このプレビューの詳細については、「[Azure Stream Analytics の BLOB ストレージ出力用のカスタム DateTime パス パターン (プレビュー)](stream-analytics-custom-path-patterns-blob-storage-output.md)」を参照してください。 |
+| 日付の形式 | 省略可能。 日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。 例:YYYY/MM/DD |
 | 時刻の形式 | 省略可能。 時刻トークンがプレフィックス パスで使用されている場合、ファイルを編成する時刻形式を指定します。 現在唯一サポートされている値は HH です。 |
 | イベントのシリアル化の形式 | 出力データのシリアル化形式。  JSON、CSV、Avro がサポートされています。 |
 | エンコード    | CSV または JSON 形式を使用している場合は、エンコードを指定する必要があります。 現時点でサポートされているエンコード形式は UTF-8 だけです。 |
@@ -134,11 +134,11 @@ Stream Analytics からの Power BI 出力は、現在、Azure 中国 (21Vianet)
 ### <a name="authorize-a-power-bi-account"></a>Power BI アカウントを承認する
 1. [Power BI] を Azure Portal で出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
    
-   ![Authorize Power BI User](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
+   ![出力を構成する Power BI ユーザーを承認する](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
 
 2. まだアカウントを持っていない場合は新しいアカウントを作成し、[今すぐ承認] をクリックします。  次のページが表示されます。
    
-   ![Azure Account Power BI](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
+   ![Power BI に Azure アカウントで認証する](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
 
 3. このステップでは、Power BI の出力を承認するための、職場または学校のアカウントを指定します。 Power BI を使用するためのサインアップをまだ行っていない場合は、[今すぐサインアップ] を選択します。 Power BI で使用する職場または学校のアカウントは、現在ログインしている Azure サブスクリプション アカウントと異なるものを使用できます。
 
@@ -191,11 +191,11 @@ DateTime | String | String |  DateTime | String
 ### <a name="renew-power-bi-authorization"></a>Power BI の承認を更新する
 Stream Analytics ジョブが作成されてから、または前回の認証以降に Power BI アカウントのパスワードが変わった場合、Stream Analytics を再認証する必要があります。 Azure Active Directory (AAD) テナント上で Multi-Factor Authentication (MFA) が構成されている場合は、Power BI の承認を 2 週間ごとに更新することも必要になります。 この問題の症状として、ジョブ出力が返されないことや、操作ログで "ユーザーの認証エラー" が発生することが挙げられます。
 
-  ![Power BI refresh token error](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
+  ![Power BI 認証ユーザー エラー](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
 
 この問題を解決するには、実行中のジョブを停止し、Power BI 出力に移動します。  **[承認の更新]** リンクを選択し、データの損失を避けるため、"**最後に停止した時刻**" からジョブを再開します。
 
-  ![Power BI による承認の更新](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
+  ![Power BI の出力の承認を更新する](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
 
 ## <a name="table-storage"></a>Table Storage
 [Azure テーブル ストレージ](../storage/common/storage-introduction.md)は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。 テーブル ストレージは Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに活用できます。 Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。

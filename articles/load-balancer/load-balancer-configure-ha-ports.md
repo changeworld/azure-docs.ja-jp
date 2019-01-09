@@ -1,5 +1,6 @@
 ---
-title: Azure Load Balancer 用の高可用性ポートを構成する | Microsoft Docs
+title: Azure Load Balancer 用の高可用性ポートを構成する
+titlesuffix: Azure Load Balancer
 description: すべてのポートで内部トラフィックを負荷分散するために高可用性ポートを使用する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: rdhillon
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 8e1b94dbdef66c6423d16ffcbc9df4cd60a13c69
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d104fd8a88a55af75faa2a0958733442c083451c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415544"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084568"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>内部ロード バランサー用の高可用性ポートの構成
 

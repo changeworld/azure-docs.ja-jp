@@ -10,12 +10,13 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: dbd717d79230c5dc2fc823484376267e7b7b8ab1
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 305d81d6614d1f0654e0d96b10f1759498683003
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628802"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558466"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 
@@ -70,7 +71,7 @@ JavaScript における日付のミリ秒表現については、「[Epoch & Uni
   - "*メジャー*" の列名。
 - "predicate":"<string>"
   - サーバー側フィルター処理の *where* 句。
--  "useSum":"true"
+- "useSum":"true"
   - これは、メジャーの合計を使用することを指定する省略可能なパラメーターです。  選択されたメジャーが "Events" の場合、既定で count が選択されることに注意してください。  "Events" が選択されていない場合、既定で average が選択されます。  
 
 'multiChartStack=<true/false>' パラメーターを使用すると、グラフの積み重ねが有効になります。また、'multiChartSameScale=<true/false>' パラメーターを使用すると、オプションのパラメーター内の期間全体で同じ Y 軸のスケールが有効になります。  

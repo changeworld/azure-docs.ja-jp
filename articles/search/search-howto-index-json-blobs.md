@@ -1,6 +1,6 @@
 ---
-title: Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成
-description: Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成
+title: Azure Blob インデクサーから JSON BLOB のインデックスを作成する - Azure Search
+description: Azure Search Blob インデクサーを使用してテキスト コンテンツのために Azure JSON BLOB をクロールします。 インデクサーにより、選択したデータ ソース (Azure Blob Storage など) のデータ インジェストが自動化されます。
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: a4689093508c3287e60da9d4668393e71211fbdd
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 7eb215271a8d5d21403cc7c5a49028bb366e61fd
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405704"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312529"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成
 この記事では、Azure Blob Storage 内の JSON BLOB から構造化コンテンツを抽出するために Azure Search BLOB インデクサーを構成する方法を説明します。
@@ -24,16 +25,13 @@ Azure Blob Storage 内の JSON BLOB は通常、単一の JSON ドキュメン�
 | JSON ドキュメント | parsingMode | 説明 | 可用性 |
 |--------------|-------------|--------------|--------------|
 | BLOB あたり 1 つ | `json` | JSON BLOB を 1 つのテキスト チャンクとして解析します。 各 JSON BLOB は、1 つの Azure Search ドキュメントになります。 | 一般に、[REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) 両方の API で利用できます。 |
-| BLOB あたり複数 | `jsonArray` | 配列の各要素が別々の Azure Search ドキュメントになる、BLOB 内の JSON 配列を解析します。  | プレビュー版 ([REST api-version=`2017-11-11-Preview`](search-api-2017-11-11-preview.md) と [.NET SDK Preview](https://aka.ms/search-sdk-preview))。 |
+| BLOB あたり複数 | `jsonArray` | 配列の各要素が別々の Azure Search ドキュメントになる、BLOB 内の JSON 配列を解析します。  | 一般に、[REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) 両方の API で利用できます。 |
 
-> [!Note]
-> プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
->
 
 ## <a name="setting-up-json-indexing"></a>JSON インデックス作成の設定
 JSON BLOB のインデックス作成は、Azure Search のすべてのインデクサーに共通の 3 部構成ワークフローの通常のドキュメント抽出に似ています。
 
-### <a name="step-1-create-a-data-source"></a>手順 1: データ ソースを作成する
+### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する
 
 最初の手順では、インデクサーで使用されるデータ ソース接続情報を指定します。 ここで `azureblob` として指定されるデータ ソースの種類によって、インデクサーによって呼び出されるデータ抽出動作が決まります。 JSON BLOB のインデックス作成では、データ ソース定義は JSON ドキュメントと配列の両方で同じです。 
 
@@ -48,14 +46,14 @@ JSON BLOB のインデックス作成は、Azure Search のすべてのインデ
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }   
 
-### <a name="step-2-create-a-target-search-index"></a>手順 2: ターゲット検索インデックスを作成する 
+### <a name="step-2-create-a-target-search-index"></a>手順 2:ターゲット検索インデックスを作成する 
 
 インデクサーは、インデックス スキーマとペアになります。 (ポータルではなく) API を使用する場合は、インデクサー操作で指定できるようにインデックスを事前に準備します。 
 
 > [!Note]
 > 一般公開された限られた数のインデクサーについて、インデクサーはポータルで **[インポート]** アクションを通じて公開されます。 多くの場合、インポート ワークフローでは、ソース内のメタデータに基づいて予備的なインデックスを作成できます。 詳しくは、「[ポータルで Azure Search にデータをインポート](search-import-data-portal.md)」をご覧ください。
 
-### <a name="step-3-configure-and-run-the-indexer"></a>手順 3: インデクサーを構成して実行する
+### <a name="step-3-configure-and-run-the-indexer"></a>手順 3:インデクサーを構成して実行する
 
 これまで、データ ソースとインデックスの定義は parsingMode に依存しませんでした。 しかし、手順 3. のインデクサー構成では、JSON BLOB コンテンツが Azure Search インデックスで解析および構成される方法に応じてパスが分岐します。
 
@@ -103,9 +101,9 @@ Azure Search BLOB インデクサーを使用すると、前の例のような J
 
 前述のように、フィールド マッピングは必要ありません。 "text"、"datePublished、"tags" のフィールドでインデックスを指定すると、BLOB インデクサーは、要求にフィールド マッピングがない場合でも正しいマッピングを推測することができます。
 
-## <a name="how-to-parse-json-arrays-preview"></a>JSON 配列を解析する方法 (プレビュー)
+## <a name="how-to-parse-json-arrays"></a>JSON 配列を解析する方法
 
-JSON 配列のプレビュー機能を選ぶこともできます。 この機能は、BLOB に "*JSON オブジェクトの配列*" が含まれ、各要素を個別の Azure Search ドキュメントにしたい場合に役立ちます。 たとえば、次の JSON BLOB では、それぞれ "id" および "text" フィールドを持つ 3 つの独立したドキュメントで Azure Search インデックスを作成できます。  
+JSON 配列機能を選ぶこともできます。 この機能は、BLOB に "*JSON オブジェクトの配列*" が含まれ、各要素を個別の Azure Search ドキュメントにしたい場合に役立ちます。 たとえば、次の JSON BLOB では、それぞれ "id" および "text" フィールドを持つ 3 つの独立したドキュメントで Azure Search インデックスを作成できます。  
 
     [
         { "id" : "1", "text" : "example 1" },
@@ -115,9 +113,9 @@ JSON 配列のプレビュー機能を選ぶこともできます。 この機�
 
 ### <a name="indexer-definition-for-a-json-array"></a>JSON 配列のインデクサー定義
 
-JSON 配列の場合、インデクサー要求ではプレビュー API と `jsonArray` パーサーを使用します。 JSON BLOB のインデックス作成では配列固有の要件が 2 つだけあります。
+JSON 配列の場合、インデクサー要求では `jsonArray` パーサーを使用します。 JSON BLOB のインデックス作成では配列固有の要件が 2 つだけあります。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -189,7 +187,7 @@ JSON ドキュメントの例に戻りましょう。
 >
 >
 
-## <a name="example-indexer-request-with-field-mappings"></a>例: フィールド マッピングを含むインデクサー要求
+## <a name="example-indexer-request-with-field-mappings"></a>例:フィールド マッピングを含むインデクサー要求
 
 次の例は、フィールド マッピングを含む、完全に指定されたインデクサー ペイロードです。
 
@@ -219,4 +217,4 @@ JSON ドキュメントの例に戻りましょう。
 + [Azure Search のインデクサー](search-indexer-overview.md)
 + [Azure Blob Storage のインデックスを Azure Search で作成する](search-howto-index-json-blobs.md)
 + [Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
-+ [チュートリアル: Azure Blob Storage で半構造化データを検索する](search-semi-structured-data.md)
++ [チュートリアル:Azure Blob Storage で半構造化データを検索する](search-semi-structured-data.md)

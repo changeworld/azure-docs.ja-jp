@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: bd72abd4f8f23414ea1003c74d2f90cde3b51d34
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 326fd38f7cb738540a389c93de2a9b5be015e0d7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034339"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968734"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>致命的なデータ損失からの復旧
 
@@ -40,11 +40,11 @@ Azure Stack は、お客様の自社データセンターで Azure サービス�
 
 Azure Stack を保護する過程は、インフラストラクチャとアプリおよびテナントのデータを別々にバックアップすることから始まります。 このドキュメントでは、インフラストラクチャを保護する方法について説明します。 
 
-![Azure Stack の初期展開](media\azure-stack-backup\azure-stack-backup-workflow1.png)
+![Azure Stack の初期展開](media/azure-stack-backup/azure-stack-backup-workflow1.png)
 
 すべてのデータが失われるという最悪の事態の場合、Azure Stack の復旧とは、その Azure Stack の展開に固有のインフラストラクチャ データとすべてのユーザー データを復元するプロセスを指します。 
 
-![Azure Stack の再デプロイ](media\azure-stack-backup\azure-stack-backup-workflow2.png)
+![Azure Stack の再デプロイ](media/azure-stack-backup/azure-stack-backup-workflow2.png)
 
 ## <a name="restore"></a>復元
 

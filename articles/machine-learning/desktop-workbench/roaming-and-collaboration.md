@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 07a9d46dff17b43d01a6b411292cf240c32476f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0117a08c76288cda25da2196ec18433b3678e24b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983720"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724640"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench のローミングとコラボレーション
 
@@ -124,9 +124,9 @@ az role assignment create --assignee bob@contoso.com --role Owner --scope <works
 ### <a name="use-the-azure-portal-to-add-users"></a>Azure Portal を使ってユーザーを追加する
 <a name="portal"></a>
 
-Machine Learning の実験アカウント、ワークスペース、およびプロジェクトは、Azure Resource Manager のリソースです。 ロールの割り当ては、[Azure Portal](https://portal.azure.com) の **[アクセス制御]** リンクを使って行うことができます。 
+Machine Learning の実験アカウント、ワークスペース、およびプロジェクトは、Azure Resource Manager のリソースです。 ロールを割り当てるには、[Azure portal](https://portal.azure.com) の **[アクセス制御 (IAM)]** リンクを使用します。 
 
-ユーザーを追加するリソースを探すには、**[すべてのリソース]** ビューを使います。 **[アクセス制御 (IAM)]** リンクを選び、**[ユーザーの追加]** を選びます。 
+ユーザーを追加するリソースを探すには、**[すべてのリソース]** ビューを使います。 **[アクセス制御 (IAM)]** リンクを選択し、**[ロールの割り当ての追加]** を選択します。 
 
 <img src="./media/roaming-and-collaboration/iam.png" width="320px">
 

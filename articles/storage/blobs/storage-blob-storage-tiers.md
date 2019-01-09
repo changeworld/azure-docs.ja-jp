@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 3a980abc7b9611cfd6a3933a54505b0208b67f50
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e12e29a5a627110ce845cd44be6dd97b717f9b26
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253722"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014499"
 ---
-# <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Premium ストレージ層 (プレビュー)、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層
+# <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob ストレージ:Premium ストレージ層 (プレビュー)、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層
 
 ## <a name="overview"></a>概要
 
@@ -62,7 +62,7 @@ BLOB ストレージ アカウントと GPv2 アカウントには、アカウ�
 プレビュー段階の Premium アクセス層は、
 
 - ローカル冗長ストレージ (LRS) として使用可能
-- 次のリージョンでのみ使用可能: 米国東部 2、米国中部、および米国西部
+- 以下のリージョンでのみ使用できます。米国東部 2、米国中部、米国西部
 - 自動階層化とデータのライフ サイクル管理をサポートしない
 
 Premium アクセス層のプレビューに登録する方法については、「[Azure Premium Blob Storage の概要](https://aka.ms/premiumblob)」を参照してください。
@@ -113,7 +113,7 @@ BLOB 層が最後に変更された時間は、BLOB の**アクセス層変更�
 Premium アクセス層に格納されているデータは、[BLOB 層の設定](/rest/api/storageservices/set-blob-tier)または Azure Blob Storage のライフ サイクル管理を使用して、ホット層、クール層またはアーカイブ層に階層化することはできません。 データを移動するには、[Put Block From URL API](/rest/api/storageservices/put-block-from-url) を使用するか、この API をサポートするバージョンの AzCopy を使用して BLOB を Premium アクセス層からホット アクセス層に同期的にコピーする必要があります。 *Put Block From URL* API は、サーバー上でデータを同期的にコピーします。つまり、呼び出しは、すべてのデータが元のサーバーの場所から移動先の場所に移動された場合にのみ完了します。
 
 ### <a name="blob-lifecycle-management"></a>BLOB のライフサイクル管理
-Blob Storage のライフサイクル管理 (プレビュー) には優れたルールベースのポリシーが用意されており、これを使用して、最適なアクセス層にデータを移行し、ライフサイクルの最後にデータを期限切れにすることができます。 詳細については、「[Azure Blob Storage のライフサイクルの管理](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)」を参照してください。  
+Blob Storage のライフサイクル管理 (プレビュー) には優れたルールベースのポリシーが用意されており、これを使用して、最適なアクセス層にデータを移行し、ライフサイクルの最後にデータを期限切れにすることができます。 詳細については、「[Azure Blob Storage のライフサイクルの管理](storage-lifecycle-management-concepts.md)」を参照してください。  
 
 ### <a name="blob-level-tiering-billing"></a>BLOB レベルの階層制御の課金
 
@@ -157,7 +157,7 @@ GB 単位の月額料金に加え、クール層 (GPv2 アカウントのみ) �
 
 3. [設定] ブレードで **[構成]** をクリックし、アカウント構成を表示または変更します。
 
-4. ニーズに応じた適切なストレージ層を選択します。**[アクセス レベル]** を **[クール]** と **[ホット]** のいずれかに設定します。
+4. ニーズに応じた適切なストレージ層を選択します。**[アクセス層]** を **[クール]** と **[ホット]** のいずれかに設定します。
 
 5. ブレードの上部にある [保存] をクリックします。
 
@@ -175,12 +175,12 @@ GB 単位の月額料金に加え、クール層 (GPv2 アカウントのみ) �
 
 すべてのストレージ アカウントでは、各 BLOB の層に基づいた Blob Storage の価格モデルを採用しています。 次の課金に関する考慮事項に留意してください。
 
-* **ストレージ コスト**: データの格納のコストは、格納されているデータの量だけでなく、ストレージ層にも左右されます。 よりクールな層になるほど、ギガバイトあたりのコストが下がります。
-* **データ アクセス コスト**: データ アクセス料金は、よりクールな層になるほど高くなります。 クールおよびアーカイブ ストレージ層のデータの場合、読み取りに対して、ギガバイト単位のデータ アクセス料金が課金されます。
-* **トランザクション コスト**: すべての層に対してトランザクションごとに課金されます。よりクールな層になるほどコストが高くなります。
-* **geo レプリケーション データ転送コスト**: GRS と RA-GRS を含む geo レプリケーションが構成されているアカウントだけに適用されます。 geo レプリケーション データ転送には、ギガバイトあたりの料金がかかります。
-* **送信データ転送コスト**: 送信データ転送 (Azure リージョン外に転送されるデータ) では、帯域幅使用量に対する課金がギガバイトあたりで発生します。これは、汎用ストレージ アカウントと同じです。
-* **ストレージ層の変更**: アカウント ストレージ層をクールからホットに変更すると、ストレージ アカウントに存在するすべてのデータの読み取りと同等の課金が発生します。 ただし、アカウント ストレージ層をホットからクールに変更したときは、クール層への全データの書き込みに相当する課金が発生します (GPv2 アカウントのみ)。
+* **ストレージ コスト**:データの格納のコストは、格納されているデータの量だけでなく、ストレージ層にも左右されます。 よりクールな層になるほど、ギガバイトあたりのコストが下がります。
+* **データ アクセス コスト**:データ アクセス料金は、よりクールな層になるほど高くなります。 クールおよびアーカイブ ストレージ層のデータの場合、読み取りに対して、ギガバイト単位のデータ アクセス料金が課金されます。
+* **トランザクション コスト**:すべての層に対してトランザクションごとに課金されます。よりクールな層になるほどコストが高くなります。
+* **geo レプリケーション データ転送コスト**:GRS と RA-GRS を含む geo レプリケーションが構成されているアカウントだけに適用されます。 geo レプリケーション データ転送には、ギガバイトあたりの料金がかかります。
+* **送信データ転送コスト**:送信データ転送 (Azure リージョン外に転送されるデータ) では、帯域幅使用量に対する課金が 1 ギガバイトごとに発生します。これは、汎用ストレージ アカウントと同じです。
+* **ストレージ層の変更**:アカウント ストレージ層をクールからホットに変更すると、ストレージ アカウントに存在するすべてのデータの読み取りと同等の課金が発生します。 ただし、アカウント ストレージ層をホットからクールに変更したときは、クール層への全データの書き込みに相当する課金が発生します (GPv2 アカウントのみ)。
 
 > [!NOTE]
 > BLOB ストレージ アカウントの価格の詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。 送信データ転送の価格の詳細については、[データ転送の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。
@@ -245,7 +245,7 @@ BLOB レベルの階層制御とアーカイブ ストレージは、Azure Porta
 
 [ホット、クール、アーカイブのリージョンごとの提供状況を確認する](https://azure.microsoft.com/regions/#services)
 
-[Azure Blob Storage のライフサイクルの管理](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)
+[Azure Blob Storage のライフサイクルの管理](storage-lifecycle-management-concepts.md)
 
 [Azure Storage のメトリックを有効にして現在のストレージ アカウントの使用状況を評価する](../common/storage-enable-and-view-metrics.md)
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: eef1a2f82dc73a1c53b89bb3c9d145f87212ffcc
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 6f93a72acdcc249720abeec3fe871b7108e2bb29
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498574"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963744"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Azure Stack に使用量と課金のためのテナントを追加する
 
@@ -36,7 +36,7 @@ ms.locfileid: "46498574"
 
 **エンド カスタマーを追加する手順**
 
-![使用量の追跡とエンド カスタマー アカウントの管理のためにクラウド サービス プロバイダーを設定する](media\azure-stack-csp-enable-billing-usage-tracking\process-csp-enable-billing.png)
+![使用量の追跡とエンド カスタマー アカウントの管理のためにクラウド サービス プロバイダーを設定する](media/azure-stack-csp-enable-billing-usage-tracking/process-csp-enable-billing.png)
 
 ## <a name="create-a-new-customer-in-partner-center"></a>パートナー センターに新しい顧客を作成する
 
@@ -50,7 +50,7 @@ ms.locfileid: "46498574"
 ## <a name="create-a-guest-user-in-the-end-customer-directory"></a>エンド カスタマー ディレクトリにゲスト ユーザーを作成する
 
 エンド カスタマーが自分のアカウントを管理する場合は、エンド カスタマーのディレクトリにゲスト ユーザーを作成し、エンド カスタマーにその情報を送信します。 その後エンド カスタマーはゲストを追加し、ゲストのアクセス許可を Azure Stack の CSP アカウントの**所有者**に昇格させます。
- 
+ 
 ## <a name="update-the-registration-with-the-end-customer-subscription"></a>エンド カスタマーのサブスクリプションで登録を更新する
 
 エンド カスタマーの新しいサブスクリプションで登録を更新します。 Azure は、パートナー センターの顧客 ID を使用して顧客の使用量をレポートします。 この手順により、各顧客の使用量が、その顧客それぞれの CSP サブスクリプションごとにレポートされるようになります。 これで、ユーザーの使用量の追跡と課金がはるかに簡単になります。
@@ -86,10 +86,10 @@ ms.locfileid: "46498574"
 
 ## <a name="create-a-local-resource-in-the-end-customer-tenant-in-azure-stack"></a>Azure Stack 内のエンド カスタマーのテナントにローカル リソースを作成する
 
-Azure Stack に新しい顧客を追加するか、エンド カスタマーのテナントで所有者特権を持つゲスト アカウントを有効化したら、そのテナントにリソースを作成できることを確認します。 たとえば、[Azure Stack ポータルで Windows 仮想マシンを作成する](user\azure-stack-quick-windows-portal.md)ことができます。
+Azure Stack に新しい顧客を追加するか、エンド カスタマーのテナントで所有者特権を持つゲスト アカウントを有効化したら、そのテナントにリソースを作成できることを確認します。 たとえば、[Azure Stack ポータルで Windows 仮想マシンを作成する](user/azure-stack-quick-windows-portal.md)ことができます。
 
 ## <a name="next-steps"></a>次の手順
 
  - 登録プロセスでエラーが発生した場合に、そのエラー メッセージを確認する方法については、[テナント登録時のエラー メッセージ](azure-stack-csp-ref-infrastructure.md#usage-and-billing-error-codes)に関するページを参照してください。
  - リソース使用量の情報を Azure Stack から取得する方法の詳細については、[Azure Stack での使用状況と課金](azure-stack-billing-and-chargeback.md)に関するページを参照してください。
- - エンド カスタマーが CSP をエンド カスタマーの Azure Stack やテナントの管理者として追加する方法については、「[Enable a Cloud Service Provider to manage your Azure Stack subscription (クラウド サービス プロバイダーが Azure Stack サブスクリプションを管理できるようにする)](user\azure-stack-csp-enable-billing-usage-tracking.md)」を参照してください。
+ - エンド カスタマーが CSP をエンド カスタマーの Azure Stack やテナントの管理者として追加する方法については、「[Enable a Cloud Service Provider to manage your Azure Stack subscription (クラウド サービス プロバイダーが Azure Stack サブスクリプションを管理できるようにする)](user/azure-stack-csp-enable-billing-usage-tracking.md)」を参照してください。

@@ -77,8 +77,8 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
   
 |Name|値|type|必須|  
 |----------|-----------|----------|--------------|  
-|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、[市場コード](#market-codes)に関するページを参照してください。<br /><br /> **注**: 現在 URL Preview API でサポートされるのは米国地域および英語のみです。<br /><br />|String|[はい]|  
-|<a name="query" />q|プレビューする URL|String|[はい]|  
+|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、[市場コード](#market-codes)に関するページを参照してください。<br /><br /> **注**: 現在 URL Preview API でサポートされるのは米国地域および英語のみです。<br /><br />|String|はい|  
+|<a name="query" />q|プレビューする URL|String|はい|  
 |<a name="responseformat" />responseFormat|応答に使用するメディアの種類。 次の値を指定できます。大文字と小文字は区別されません。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 既定値は JSON です。 応答に含まれる JSON オブジェクトについては、「[応答オブジェクト](#response-objects)」を参照してください。<br /><br />  JsonLd を指定すると、検索結果が含まれている JSON-LD オブジェクトが応答本文に含まれます。 JSON-LD については、[JSON-LD](http://json-ld.org/) に関するページを参照してください。|String|いいえ |
 |<a name="safesearch"/>safeSearch|違法な成人向けコンテンツや海賊版コンテンツはエラー コード 400 でブロックされ、*isFamilyFriendly* フラグは返されません。 <p>合法的な成人向けコンテンツの場合は、次のような動作になります。 状態コード 200 が返され、*isFamilyFriendly* フラグが false に設定されます。<ul><li>safeSearch=strict: タイトル、説明、URL、画像は返されません。</li><li>safeSearch=moderate: タイトル、URL、説明は取得しますが、説明的な画像は取得しません。</li><li>safeSearch=off: すべての応答オブジェクト/要素 (タイトル、URL、説明、画像) を取得します。</li></ul> |String|不要。 </br> 既定値は safeSearch=strict です。| 
 

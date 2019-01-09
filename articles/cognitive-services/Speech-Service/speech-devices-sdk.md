@@ -1,40 +1,41 @@
 ---
-title: Speech Devices SDK について
+title: Speech Devices SDK について - Speech Services
 titleSuffix: Azure Cognitive Services
-description: Speech Devices SDK の概要について説明します。
+description: Speech Devices SDK を使ってみましょう。 Speech Services は、さまざまなデバイスやオーディオ ソースと連携します。 適合するハードウェアやソフトウェアで音声アプリケーションを次のレベルに引き上げることができます。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: eac3542059f1bc5d32a91ef871e5185fad1d2798
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 44e993375b17960ad5d9ced11d37ed3701a58f73
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464099"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101740"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>Speech Devices SDK (プレビュー) について
 
-[Speech Service](overview.md) は、さまざまなデバイスやオーディオ ソースと連携します。 適合するハードウェアやソフトウェアで音声アプリケーションを次のレベルに引き上げることができます。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。 
+[Speech Service](overview.md) は、さまざまなデバイスやオーディオ ソースと連携します。 適合するハードウェアやソフトウェアで音声アプリケーションを次のレベルに引き上げることができます。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。
 
 Speech Devices SDK は、次の場合に役立ちます。
 * 新しい音声シナリオをすばやくテストする。
 * クラウド ベースの Speech サービスをより簡単にデバイスに統合する。
-* 顧客向けに優れたユーザー エクスペリエンスを作成する。 
+* 顧客向けに優れたユーザー エクスペリエンスを作成する。
 
 Speech Devices SDK は、[Speech SDK](speech-sdk.md) を利用しています。 Speech SDK を使って、Microsoft の先進の音声処理アルゴリズムによって処理された音声をデバイスのマイク配列から [Speech サービス](overview.md)に送信します。 マルチチャンネル オーディオを使用して、ノイズの抑制、エコー キャンセレーション、ビームフォーミング、残響除去によってより正確な遠距離[音声認識](speech-to-text.md)が実現されます。
 
-Speech Devices SDK を使用すると、[ウェイク ワードを自由にカスタマイズ](speech-devices-sdk-create-kws.md)してアンビエント デバイスを構築できるため、ユーザー操作を開始するキューがブランド固有のものになります。 
+Speech Devices SDK を使用すると、[ウェイク ワードを自由にカスタマイズ](speech-devices-sdk-create-kws.md)してアンビエント デバイスを構築できるため、ユーザー操作を開始するキューがブランド固有のものになります。
 
 Speech Devices SDK を使用すると、ドライブスルー注文システム、店舗内または家庭内アシスタント、スマート スピーカーなど、さまざまな音声対応シナリオが容易になります。 ユーザーへのテキストでの応答、既定の音声または[カスタム音声](how-to-customize-voice-font.md)での応答、検索結果の提供、他の言語への[翻訳](speech-translation.md)などを行うことができます。 皆様の開発の成果を楽しみにしております。
 
 ## <a name="development-kit-providers"></a>開発キット プロバイダー
 
-現在、このような完全なエンドツーエンド システム リファレンス設計を使用できます。 
+現在、このような完全なエンドツーエンド システム リファレンス設計を使用できます。
 
 |||
 |-|-|
@@ -46,4 +47,3 @@ Speech Devices SDK を使用すると、ドライブスルー注文システム�
 
 > [!div class="nextstepaction"]
 > [Speech Devices SDK にサインアップする](get-speech-devices-sdk.md)
-

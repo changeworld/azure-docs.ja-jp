@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: hascipio
-ms.openlocfilehash: 26f856059b381be91b9cdd1f98a11dc90813c0c5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: bf41953300c3042853118c815dbf64e4474106fa
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715874"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194115"
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>ステージングでの Azure Marketplace の VM プランのテスト
 ステージングとは、SKU をプライベートの「サンドボックス」にデプロイすることです。そこから、Marketplace にデプロイする前に、機能をテストおよび検証できます。 ステージングでは、SKU はそれをデプロイしたお客様に表示されるのと同じように表示されます。 VM イメージをステージングにプッシュするには認定を受ける必要があります。
@@ -29,19 +29,18 @@ ms.locfileid: "39715874"
    
     ![図](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
 2. 発行ポータルでエラーが通知される場合は、それらを修正します。
-3. 
-  **[ステージングされたオファーにアクセスできるユーザー]** ダイアログ ボックスで、 [Azure プレビュー ポータル](https://portal.azure.com)でオファーをプレビューするために使用する Azure サブスクリプションのリストを入力します。
+3. **[ステージングされたオファーにアクセスできるユーザー]** ダイアログ ボックスで、 [Azure プレビュー ポータル](https://portal.azure.com)でオファーをプレビューするために使用する Azure サブスクリプションのリストを入力します。
    
    > [!NOTE]
    > Virtual Machines テンプレートとソリューション テンプレートの場合、タイプが CSP、DreamSpark、または Azure イン オープン プランのサブスクリプションは、ホワイトリストに登録 **しない** でください。
    > 
    > 
+   >
+   > Virtual Machines の場合、 **[PUSH TO STAGING (ステージングにプッシュ)]** をクリックすると、次の手順が見えないところで実行されます。 各手順の進行状況は、発行ポータルの [発行] タブで確認できます。 このページは (ステータスが "ステージング済み" になるまで) 定期的にチェックして、ご自身で修正する必要があるエラーがないかどうかを確認してください。
 
-    > Virtual Machines の場合、 **[PUSH TO STAGING (ステージングにプッシュ)]** をクリックすると、次の手順が見えないところで実行されます。 各手順の進行状況は、発行ポータルの [発行] タブで確認できます。 このページは (ステータスが "ステージング済み" になるまで) 定期的にチェックして、ご自身で修正する必要があるエラーがないかどうかを確認してください。
-
-    > - ステージング要求は、まず、VHD を検証する認定チームに送信されます。 ただし、マーケティングの変更のみの場合、認定手順はスキップされます。
-    > - 認定が完了したら、すべての Azure データセンターへのプランのレプリケーションが開始されます。 一般的に、レプリケーションの所要時間は 24 ～ 48 時間ですが、VHD のサイズによっては最大で 1 週間かかる場合があります。 ただし、マーケティングの変更だけの場合、レプリケーションはもっと早く完了します。
-    > - レプリケーションが完了したら、 [Azure ポータル](http:/portal.azure.com)でプランが使用できるようになります。 この時点で、発行ポータルでのステータスは "ステージング済み" になります。 ステージングされたオファーを [Azure ポータル](http:/portal.azure.com) に表示するには、オファーのステージングで使用されたサブスクリプションに関連付けられている、電子メール ID を使う必要があります。
+   > - ステージング要求は、まず、VHD を検証する認定チームに送信されます。 ただし、マーケティングの変更のみの場合、認定手順はスキップされます。
+   > - 認定が完了したら、すべての Azure データセンターへのプランのレプリケーションが開始されます。 一般的に、レプリケーションの所要時間は 24 ～ 48 時間ですが、VHD のサイズによっては最大で 1 週間かかる場合があります。 ただし、マーケティングの変更だけの場合、レプリケーションはもっと早く完了します。
+   > - レプリケーションが完了したら、 [Azure ポータル](http:/portal.azure.com)でプランが使用できるようになります。 この時点で、発行ポータルでのステータスは "ステージング済み" になります。 ステージングされたオファーを [Azure ポータル](http:/portal.azure.com) に表示するには、オファーのステージングで使用されたサブスクリプションに関連付けられている、電子メール ID を使う必要があります。
 
 1. 前の手順で示されている上記のいずれかの Azure サブスクリプションを使用して、 [Azure プレビュー ポータル](https://portal.azure.com) にサインインします。
 2. プランを検索して、VM イメージについて以下の点を検証します。
@@ -59,9 +58,8 @@ ms.locfileid: "39715874"
 > 
 
 ## <a name="next-steps"></a>次の手順
-これで、プランは「ステージングされた」状態になり、その機能とマーケティング コンテンツがテストされたので、最終発行段階である **手順 4**の「 [Azure Marketplace へのプランのデプロイ](marketplace-publishing-push-to-production.md)」に進むことができます。
+これで、プランは「ステージングされた」状態になり、その機能とマーケティング コンテンツがテストされたので、最終発行段階である **手順 4** の「[Azure Marketplace へのプランのデプロイ](marketplace-publishing-push-to-production.md)」に進むことができます。
 
 ## <a name="see-also"></a>関連項目
-* 
-  [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+* [概要: Azure Marketplace にプランを発行する](marketplace-publishing-getting-started.md)
 

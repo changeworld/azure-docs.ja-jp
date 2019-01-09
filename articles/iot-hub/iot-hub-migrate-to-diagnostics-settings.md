@@ -5,18 +5,18 @@ author: kgremban
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
+ms.date: 11/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 3cb0f91f3143e6a4828548f3a15678b3814cba17
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4a1517c1d5bb0f34c0f1b0ec81d074f8ec39aff5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154863"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546582"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>IoT Hub を操作の監視から診断設定に移行する
 
-[操作の監視](iot-hub-operations-monitoring.md)を使用して IoT Hub での操作の状態を追跡するユーザーは、そのワークフローを、Azure Monitor の機能である [Azure 診断設定](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)に移行することができます。 診断設定は、多数の Azure サービスについてリソース レベルの診断情報を提供します。
+[操作の監視](iot-hub-operations-monitoring.md)を使用して IoT Hub での操作の状態を追跡するユーザーは、そのワークフローを、Azure Monitor の機能である [Azure 診断設定](../azure-monitor/platform/diagnostic-logs-overview.md)に移行することができます。 診断設定は、多数の Azure サービスについてリソース レベルの診断情報を提供します。
 
 IoT Hub の操作の監視機能は非推奨となっており、今後廃止される予定です。 この記事では、ワークロードを操作の監視から診断設定に移動する手順について説明します。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
 
@@ -49,6 +49,10 @@ Azure Portal で IoT Hub を更新するには、まず診断設定を有効に�
 * ダイレクト メソッド
 
 具体的なスキーマ構造については、[診断設定のスキーマの理解](iot-hub-monitor-resource-health.md#understand-the-logs)に関するページを参照してください。
+
+## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>待機時間が短いデバイスの接続イベントと切断イベントの監視
+
+デバイスの接続イベントと切断イベントを監視するには、Event Grid で[**デバイス切断**イベント](iot-hub-event-grid.md#event-types)をサブスクライブして、アラートを取得し、デバイスの接続状態を監視することをお勧めします。 IoT ソリューション内の IoT Hub からのデバイス接続イベントとデバイス切断イベントを統合する方法については、こちらの[チュートリアル](iot-hub-how-to-order-connection-state-events.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

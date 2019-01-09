@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: d0b804c48f3de4d4ba29ebe0785f6dd991329a53
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2beb5aa7218df25a1af87411d9481d30b259c353
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409256"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256731"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -202,7 +202,7 @@ Azure ストレージ アカウントからコア分析データにアクセス�
 
 このツールを使用する方法を次に示します。
 
-1.  次の GitHub リンクを参照してください: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  次の GitHub リンクにアクセスします: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  コードをダウンロードします。
 3.  指示に従ってコンパイルして構成します。
 4.  ツールを実行します。
@@ -321,32 +321,32 @@ Microsoft ログ データの遅延 | Verizon ログ データの遅延 | Akamai
 
 |メトリック                     | 説明 | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
-| RequestCountTotal         | この期間中にヒットした要求の合計数。 | [はい] | はい |[はい] |
-| RequestCountHttpStatus2xx | 2xx の HTTP コード (200、202 など) になった要求の合計数。 | [はい] | はい |[はい] |
-| RequestCountHttpStatus3xx | 3xx の HTTP コード (300、302 など) になった要求の合計数。 | [はい] | はい |[はい] |
-| RequestCountHttpStatus4xx | 4xx の HTTP コード (400、404 など) になった要求の合計数。 | [はい] | はい |[はい] |
-| RequestCountHttpStatus5xx | 5xx の HTTP コード (500、504 など) になった要求の合計数。 | [はい] | はい |[はい] |
-| RequestCountHttpStatusOthers | その他のすべての HTTP コード (2xx-5xx 以外) の数。 | [はい] | はい |[はい] |
-| RequestCountHttpStatus200 | HTTP コード応答 200 になった要求の合計数。 | [はい] | いいえ   |[はい] |
-| RequestCountHttpStatus206 | HTTP コード応答 206 になった要求の合計数。 | [はい] | いいえ   |[はい] |
-| RequestCountHttpStatus302 | HTTP コード応答 302 になった要求の合計数。 | [はい] | いいえ   |[はい] |
-| RequestCountHttpStatus304 | HTTP コード応答 304 になった要求の合計数。 | [はい] | いいえ   |[はい] |
-| RequestCountHttpStatus404 | HTTP コード応答 404 になった要求の合計数。 | [はい] | いいえ   |[はい] |
-| RequestCountCacheHit | キャッシュ ヒットが生じた要求の合計数。 POP からクライアントに対して、アセットが直接処理されました。 | [はい] | [はい] | いいえ   |
-| RequestCountCacheMiss | キャッシュ ミスが生じた要求の合計数。 キャッシュ ミスとは、クライアントに最も近い POP でアセットが見つからず、元のドメインから取得されたことを意味します。 | [はい] | [はい] | いいえ  |
-| RequestCountCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットに対する要求の合計数。 | [はい] | [はい] | いいえ  |
-| RequestCountCacheUncacheable | アセットの Cache-Control および Expires ヘッダーによりキャッシュされなかったアセットへの要求の合計数。この場合、POP または HTTP クライアントではキャッシュすべきでないことを示します。 | [はい] | [はい] | いいえ  |
+| RequestCountTotal         | この期間中にヒットした要求の合計数。 | はい | はい |はい |
+| RequestCountHttpStatus2xx | 2xx の HTTP コード (200、202 など) になった要求の合計数。 | はい | はい |はい |
+| RequestCountHttpStatus3xx | 3xx の HTTP コード (300、302 など) になった要求の合計数。 | はい | はい |はい |
+| RequestCountHttpStatus4xx | 4xx の HTTP コード (400、404 など) になった要求の合計数。 | はい | はい |はい |
+| RequestCountHttpStatus5xx | 5xx の HTTP コード (500、504 など) になった要求の合計数。 | はい | はい |はい |
+| RequestCountHttpStatusOthers | その他のすべての HTTP コード (2xx-5xx 以外) の数。 | はい | はい |はい |
+| RequestCountHttpStatus200 | HTTP コード応答 200 になった要求の合計数。 | はい | いいえ   |はい |
+| RequestCountHttpStatus206 | HTTP コード応答 206 になった要求の合計数。 | はい | いいえ   |はい |
+| RequestCountHttpStatus302 | HTTP コード応答 302 になった要求の合計数。 | はい | いいえ   |はい |
+| RequestCountHttpStatus304 | HTTP コード応答 304 になった要求の合計数。 | はい | いいえ   |はい |
+| RequestCountHttpStatus404 | HTTP コード応答 404 になった要求の合計数。 | はい | いいえ   |はい |
+| RequestCountCacheHit | キャッシュ ヒットが生じた要求の合計数。 POP からクライアントに対して、アセットが直接処理されました。 | はい | はい | いいえ   |
+| RequestCountCacheMiss | キャッシュ ミスが生じた要求の合計数。 キャッシュ ミスとは、クライアントに最も近い POP でアセットが見つからず、元のドメインから取得されたことを意味します。 | はい | はい | いいえ  |
+| RequestCountCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットに対する要求の合計数。 | はい | はい | いいえ  |
+| RequestCountCacheUncacheable | アセットの Cache-Control および Expires ヘッダーによりキャッシュされなかったアセットへの要求の合計数。この場合、POP または HTTP クライアントではキャッシュすべきでないことを示します。 | はい | はい | いいえ  |
 | RequestCountCacheOthers | 上記に含まれないキャッシュの状態の要求の合計数。 | いいえ  | はい | いいえ   |
-| EgressTotal | 送信データ転送 (GB) | [はい] |はい |[はい] |
-| EgressHttpStatus2xx | HTTP 状態コードが 2xx の応答の送信データ転送* (GB)。 | [はい] | [はい] | いいえ   |
-| EgressHttpStatus3xx | HTTP 状態コードが 3xx の応答の送信データ転送 (GB)。 | [はい] | [はい] | いいえ   |
-| EgressHttpStatus4xx | HTTP 状態コードが 4xx の応答の送信データ転送 (GB)。 | [はい] | [はい] | いいえ   |
-| EgressHttpStatus5xx | HTTP 状態コードが 5xx の応答の送信データ転送 (GB)。 | [はい] | [はい] | いいえ  |
-| EgressHttpStatusOthers | その他の HTTP 状態コードの応答の送信データ転送 (GB)。 | [はい] | [はい] | いいえ   |
-| EgressCacheHit | CDN の POP/エッジで CDN キャッシュから直接配信された応答の送信データ転送。 | [はい] | [はい] | いいえ  |
-| EgressCacheMiss. | 最も近い POP サーバーで見つからず、配信元サーバーから取得された応答の送信データ転送。 | [はい] | [はい] | いいえ  |
-| EgressCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットの送信データ転送。 | [はい] | [はい] | いいえ  |
-| EgressCacheUncacheable | アセットの Cache-Control および/または Expires ヘッダーによりキャッシュされなかったアセットの送信データ転送。 POP または HTTP クライアントではキャッシュすべきでないことを示します。 | [はい] | [はい] | いいえ  |
+| EgressTotal | 送信データ転送 (GB) | はい |はい |はい |
+| EgressHttpStatus2xx | HTTP 状態コードが 2xx の応答の送信データ転送* (GB)。 | はい | はい | いいえ   |
+| EgressHttpStatus3xx | HTTP 状態コードが 3xx の応答の送信データ転送 (GB)。 | はい | はい | いいえ   |
+| EgressHttpStatus4xx | HTTP 状態コードが 4xx の応答の送信データ転送 (GB)。 | はい | はい | いいえ   |
+| EgressHttpStatus5xx | HTTP 状態コードが 5xx の応答の送信データ転送 (GB)。 | はい | はい | いいえ  |
+| EgressHttpStatusOthers | その他の HTTP 状態コードの応答の送信データ転送 (GB)。 | はい | はい | いいえ   |
+| EgressCacheHit | CDN の POP/エッジで CDN キャッシュから直接配信された応答の送信データ転送。 | はい | はい | いいえ  |
+| EgressCacheMiss. | 最も近い POP サーバーで見つからず、配信元サーバーから取得された応答の送信データ転送。 | はい | はい | いいえ  |
+| EgressCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットの送信データ転送。 | はい | はい | いいえ  |
+| EgressCacheUncacheable | アセットの Cache-Control および/または Expires ヘッダーによりキャッシュされなかったアセットの送信データ転送。 POP または HTTP クライアントではキャッシュすべきでないことを示します。 | はい | はい | いいえ  |
 | EgressCacheOthers | その他のキャッシュ シナリオの送信データ転送。 | いいえ  | はい | いいえ  |
 
 * 送信データ転送は、CDN の POP サーバーからクライアントに配信されたトラフィックを指します。

@@ -7,25 +7,25 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/05/2017
+ms.date: 12/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 80ba42d7eab1726c7add6c4c9426b7dde3b55480
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1486e303e4e94ee6140bcd6ed4f52bc433b9aae6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445943"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100057"
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Azure サブスクリプションを Azure AD B2C テナントにリンクする
 
 > [!IMPORTANT]
-> Azure AD B2C の使用量の課金と価格に関する最新情報については、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」をご覧ください。
+> Azure AD B2C 使用量の課金と価格に関する最新情報については、次のページをご覧ください。[Azure AD B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 Azure AD B2C の利用料金は、Azure サブスクリプションに課金されます。 Azure AD B2C テナントを作成したら、テナント管理者はその Azure AD B2C テナントを Azure サブスクリプションに明示的にリンクする必要があります。 この記事では、その方法について説明します。
 
 > [!NOTE]
-> Azure AD B2C テナントにリンクされたサブスクリプションは、Azure AD B2C の使用量の課金にのみ使用できます。 このサブスクリプションは、"*Azure AD B2C テナント内*" における他の Azure サービスまたは Office 365 ライセンスの追加には使用できません。
+> Azure AD B2C テナントにリンクされているサブスクリプションは、追加の Azure AD B2C リソースを含む Azure AD B2C の使用や他の Azure リソースの課金に使用できます。  これは、Azure AD B2C テナント内における他の Azure ライセンス ベース サービスまたは Office 365 ライセンスの追加には使用できません。
 
  サブスクリプションをリンクするには、ターゲットの Azure サブスクリプション内に Azure AD B2C "リソース" を作成します。 多くの Azure AD B2C "リソース" は、他の Azure リソース (VM、データ ストレージ、LogicApps など) と共に単一の Azure サブスクリプション内で作成できます。 サブスクリプション内のすべてのリソースは、サブスクリプションが関連付けられた Azure AD テナントに移動することで確認できます。
 

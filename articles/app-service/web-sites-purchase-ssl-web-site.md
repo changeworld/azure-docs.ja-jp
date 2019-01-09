@@ -1,5 +1,5 @@
 ---
-title: Azure App Service の SSL 証明書を購入して構成する | Microsoft Docs
+title: Azure から SSL 証明書を購入して構成する - App Service | Microsoft Docs
 description: App Service 証明書を購入して App Service アプリにバインドする方法を説明します。
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: c775798591a3063fdfe6d399c8337aac2e2f207e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351356"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714302"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -34,7 +35,7 @@ ms.locfileid: "49351356"
 この攻略ガイドに従うには:
 
 - [App Service アプリを作成する](/azure/app-service/)
-- [ドメイン名を Web アプリにマップ](app-service-web-tutorial-custom-domain.md)するか、[購入し、Azure で構成する](custom-dns-web-site-buydomains-web-app.md)
+- [ドメイン名を Web アプリにマップ](app-service-web-tutorial-custom-domain.md)するか、[購入し、Azure で構成する](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -59,7 +60,7 @@ ms.locfileid: "49351356"
 
 証明書の購入プロセスの完了後、この証明書の使用を開始する前に完了する必要のある手順がまだいくつかあります。 
 
-[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、**[証明書の構成]** > **[手順 1: 格納]** をクリックします。
+[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、**[証明書の構成]** > **[手順 1:格納]** をクリックします。
 
 ![KV に格納する準備完了のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
@@ -71,8 +72,8 @@ ms.locfileid: "49351356"
 |-|-|
 | Name | 英数字とダッシュで構成される一意の名前。 |
 | リソース グループ | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
-| Location | App Service アプリと同じ場所を選択します。 |
-| [価格レベル]  | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
+| 場所 | App Service アプリと同じ場所を選択します。 |
+| 価格レベル  | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
 | アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/key-vault-group-permissions-for-apps.md)」の手順に従って構成できます。 |
 | 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/key-vault-network-security.md)」の手順に従って構成できます |
 
@@ -80,7 +81,7 @@ ms.locfileid: "49351356"
 
 ## <a name="verify-domain-ownership"></a>ドメインの所有権を検証する
 
-最後の手順で使用した **[証明書の構成]** ページで、**[手順 2: 確認]** をクリックします。
+最後の手順で使用した **[証明書の構成]** ページで、**[手順 2:確認]** をクリックします。
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
@@ -90,7 +91,7 @@ ms.locfileid: "49351356"
 > 4 種類のドメイン検証方法がサポートされています。 
 > 
 > - **App Service** - ドメインが同一のサブスクリプション内で既に App Service アプリにマップされている場合に最も便利なオプションです。 この方法は、App Service アプリがドメインの所有権を既に確認済みである事実を利用しています。
-> - **ドメイン** - [Azure から購入した App Service ドメイン](custom-dns-web-site-buydomains-web-app.md)を確認します。 Azure は確認 TXT レコードを自動的に追加し、プロセスを完了します。
+> - **ドメイン** - [Azure から購入した App Service ドメイン](manage-custom-dns-buy-domain.md)を確認します。 Azure は確認 TXT レコードを自動的に追加し、プロセスを完了します。
 > - **メール** - ドメイン管理者に電子メールを送信することによってドメインを確認します。 手順は、オプションを選択したときに提供されます。
 > - **手動** - HTML ページ (**標準**証明書のみ) または DNS TXT レコードを使用してドメインを確認します。 手順は、オプションを選択したときに提供されます。
 
@@ -114,7 +115,7 @@ ms.locfileid: "49351356"
 |-|-|
 | ホスト名 | SSL バインディングを追加するドメイン名。 |
 | プライベート証明書のサムプリント | バインドする証明書。 |
-| SSL の種類 | <ul><li>**SNI SSL** - 複数の SNI ベースの SSL バインディングを追加できます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](http://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後、「[IP SSL の A レコードの再マップ](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)」の手順に従います。 </li></ul> |
+| SSL の種類 | <ul><li>**SNI SSL** - 複数の SNI ベースの SSL バインディングを追加できます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後、「[IP SSL の A レコードの再マップ](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)」の手順に従います。 </li></ul> |
 
 ## <a name="verify-https-access"></a>HTTPS アクセスを確認する
 
@@ -147,15 +148,15 @@ ms.locfileid: "49351356"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>その他のリソース
 
 * [HTTPS の適用](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [TLS 1.1/1.2 の適用](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Azure App Service のアプリケーション コードに SSL 証明書を使用する](app-service-web-ssl-cert-load.md)
-* [FAQ: App Service 証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [FAQ:App Service 証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Kontiki の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Kontiki の統合 | Microsoft Docs
 description: Azure Active Directory と Kontiki の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: e5f29a12de5f82fa13c0c61462db00b2906fdca7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e5733547aa9b8b8d0c5aa0ce033d00f8c94b3d21
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444455"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842851"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>チュートリアル: Azure Active Directory と Kontiki の統合
+# <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>チュートリアル:Azure Active Directory と Kontiki の統合
 
 このチュートリアルでは、Kontiki と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Kontiki で、Azure AD の **[ユーザー名]** の値を **[Username]** の値
 
 Kontiki で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Kontiki テスト ユーザーの作成](#creating-a-kontiki-test-user)** - Kontiki で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -115,7 +115,7 @@ Kontiki で Azure AD のシングル サインオンを構成してテストす�
      **[サインオン URL]** ボックスに、`https://<companyname>.mc.eval.kontiki.com` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これは実際の値ではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[Kontiki クライアント サポート チーム](http://customersupport.kontiki.com/enterprise/contactsupport.html)に問い合わせてください。 
+    > これは実際の値ではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[Kontiki クライアント サポート チーム](https://customersupport.kontiki.com/enterprise/contactsupport.html)に問い合わせてください。 
  
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -125,10 +125,10 @@ Kontiki で Azure AD のシングル サインオンを構成してテストす�
 
     ![Configure single sign-on](./media/kontiki-tutorial/tutorial_general_400.png) 
 
-1. **Kontiki**側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Kontiki サポート チーム](http://customersupport.kontiki.com/enterprise/contactsupport.html)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Kontiki**側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Kontiki サポート チーム](https://customersupport.kontiki.com/enterprise/contactsupport.html)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

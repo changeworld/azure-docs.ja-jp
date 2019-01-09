@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2fb1f5ad0c3b46623550cbcc1204761b57f6093b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 98d3d1f6fc0f2f30196f360811808579dfbab312
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251056"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727481"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Azure でのアプリのスケールアップ
 
@@ -34,7 +34,7 @@ ms.locfileid: "53251056"
 * [スケールアウト](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling):アプリを実行する VM インスタンスの数を増やします。
   価格レベルに応じて、20 個までのインスタンスにスケールアウトすることができます。 [Isolated](environment/intro.md) レベルの **App Service Environment** では、スケールアウト カウントが 100 インスタンスに増えます。 スケールアウトの詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)」を参照してください。 あらかじめ定義されている規則とスケジュールに基づいて、インスタンス数を自動的に変更する自動スケールの使い方が説明されています。
 
-スケール設定は適用に数秒を要するのみで、 [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)に含まれるすべてのアプリに反映されます。
+スケール設定は適用に数秒を要するのみで、 [App Service プラン](../app-service/overview-hosting-plans.md)に含まれるすべてのアプリに反映されます。
 コードを変更したりアプリケーションを再デプロイしたりする必要はありません。
 
 App Service の個々のプランの価格と機能の詳細については、 [App Service の価格の詳細](https://azure.microsoft.com/pricing/details/web-sites/)に関するページを参照してください。  

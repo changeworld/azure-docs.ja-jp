@@ -1,23 +1,24 @@
 ---
-title: Node.js を使用した LUIS ボット - Web アプリ ボット - Bot Framework SDK 3.0
+title: Bot - Node.js - v3
 titleSuffix: Azure Cognitive Services
 description: Bot Framework を使用して LUIS アプリケーションと統合されるボットをビルドします。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 0bd191da3f2625bc202ee66100e7dac25d9d65de
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e73f22a2da9e8b8b3bd70f4a0231ea7932fc7a86
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042331"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436944"
 ---
-# <a name="luis-bot-in-nodejs"></a>Node.js の LUIS ボット
+# <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot Framework 3.x と Azure Web アプリ ボットを備えた Node.js の LUIS ボット
 
 Node.js を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このチャット ボットでは、ボット ソリューションをすばやく実装するため、事前構築済みの HomeAutomation ドメインを使用します。 ボットは、Bot Framework 3.x と Azure Web アプリ ボットで構築します。
 
@@ -78,7 +79,7 @@ Bot を作成する前に、[アプリの作成](./luis-get-started-create-app.m
 
 5. 新しいブラウザー ウィンドウが開きます。 コンソールで、次のコマンドを入力します。
 
-    ```
+    ```console
     cd site\wwwroot && npm install
     ```
 
@@ -115,7 +116,7 @@ LUIS アプリ ID がない場合は、Azure へのログインに使用する�
 
 コード エディターで、`app.js` を開きます。 これには以下のコードが含まれます。
 
-```javascript
+```nodejs
 /*-----------------------------------------------------------------------------
 A simple Language Understanding (LUIS) bot for the Microsoft Bot Framework. 
 -----------------------------------------------------------------------------*/
@@ -206,7 +207,7 @@ app.js の既存の意図は無視されます。 これは、そのままにし
 
 次のコードをコピーし、`app.js` に追加します。
 
-```javascript
+```nodejs
 bot.dialog('TurnOn',
     (session) => {
         session.send('You reached the TurnOn intent. You said \'%s\'.', session.message.text);
@@ -223,7 +224,7 @@ bot.dialog('TurnOn',
 
 次のコードをコピーし、`app.js` に追加します。
 
-```javascript
+```nodejs
 bot.dialog('TurnOff',
     (session) => {
         session.send('You reached the TurnOff intent. You said \'%s\'.', session.message.text);
@@ -299,9 +300,9 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 
 
 <!-- Old Links -->
-[Github-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
-[Github-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
-[Github-LUIS-Samples-node-hotel-bot]: https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/nodejs
+[GitHub-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
+[GitHub-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
+[GitHub-LUIS-Samples-node-hotel-bot]: https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/nodejs
 [NodeJs]: https://nodejs.org/
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot

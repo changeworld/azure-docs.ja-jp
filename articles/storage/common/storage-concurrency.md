@@ -86,14 +86,14 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 
 | Operation | コンテナーの ETag 値を返す | 条件ヘッダーを受け取る |
 |:--- |:--- |:--- |
-| コンテナーの作成 |[はい] |いいえ  |
-| コンテナーのプロパティの取得 |[はい] |いいえ  |
-| Get Container Metadata |[はい] |いいえ  |
-| コンテナーのメタデータの設定 |[はい] |[はい] |
-| コンテナー ACL の取得 |[はい] |いいえ  |
-| Set Container ACL |[はい] |あり (*) |
-| Delete Container |いいえ  |[はい] |
-| Lease Container |[はい] |[はい] |
+| コンテナーの作成 |はい |いいえ  |
+| コンテナーのプロパティの取得 |はい |いいえ  |
+| Get Container Metadata |はい |いいえ  |
+| コンテナーのメタデータの設定 |はい |はい |
+| コンテナー ACL の取得 |はい |いいえ  |
+| Set Container ACL |はい |あり (*) |
+| Delete Container |いいえ  |はい |
+| Lease Container |はい |はい |
 | BLOBs の一覧 |いいえ  |いいえ  |
 
 (*) SetContainerACL で定義されたアクセス許可はキャッシュされます。このアクセス許可の更新の伝達には 30 秒間かかり、その間は更新の整合性は保証されません。  
@@ -102,22 +102,22 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 
 | Operation | ETag 値を返す | 条件ヘッダーを受け取る |
 |:--- |:--- |:--- |
-| Put Blob |[はい] |[はい] |
-| Get Blob |[はい] |[はい] |
-| BLOB のプロパティの取得 |[はい] |[はい] |
-| Set Blob Properties |[はい] |[はい] |
-| BLOB のメタデータの取得 |[はい] |[はい] |
-| Set Blob Metadata |[はい] |[はい] |
-| Lease Blob (*) |[はい] |[はい] |
-| Snapshot Blob |[はい] |[はい] |
-| BLOB のコピー |[はい] |Yes (コピー元とコピー先 BLOB に対して) |
+| Put Blob |はい |はい |
+| Get Blob |はい |はい |
+| BLOB のプロパティの取得 |はい |はい |
+| Set Blob Properties |はい |はい |
+| BLOB のメタデータの取得 |はい |はい |
+| Set Blob Metadata |はい |はい |
+| Lease Blob (*) |はい |はい |
+| Snapshot Blob |はい |はい |
+| BLOB のコピー |はい |Yes (コピー元とコピー先 BLOB に対して) |
 | Abort Copy Blob |いいえ  |いいえ  |
-| Delete Blob |いいえ  |[はい] |
+| Delete Blob |いいえ  |はい |
 | Put Block |いいえ  |いいえ  |
-| Put Block List |[はい] |[はい] |
-| Get Block List |[はい] |いいえ  |
-| Put Page |[はい] |[はい] |
-| Get Page Ranges |[はい] |[はい] |
+| Put Block List |はい |はい |
+| Get Block List |はい |いいえ  |
+| Put Page |はい |はい |
+| Get Page Ranges |はい |はい |
 
 (*) Lease BLOB では、BLOB の ETag は変更されません。  
 
@@ -237,13 +237,13 @@ customer.ETag = "*";
 
 | Operation | ETag 値を返す | If-Match 要求ヘッダーが必須 |
 |:--- |:--- |:--- |
-| エンティティのクエリ |[はい] |いいえ  |
-| エンティティの挿入 |[はい] |いいえ  |
-| エンティティの更新 |[はい] |[はい] |
-| エンティティの統合 |[はい] |[はい] |
-| エンティティの削除 |いいえ  |[はい] |
-| エンティティの挿入または置換 |[はい] |いいえ  |
-| エンティティの挿入または統合 |[はい] |いいえ  |
+| エンティティのクエリ |はい |いいえ  |
+| エンティティの挿入 |はい |いいえ  |
+| エンティティの更新 |はい |はい |
+| エンティティの統合 |はい |はい |
+| エンティティの削除 |いいえ  |はい |
+| エンティティの挿入または置換 |はい |いいえ  |
+| エンティティの挿入または統合 |はい |いいえ  |
 
 **Insert or Replace Entity** と **Insert or Merge Entity** の各操作では、ETag の値は Table サービスに送信されないため、コンカレンシー制御の確認は*行われません*。  
 

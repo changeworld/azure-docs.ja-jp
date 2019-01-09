@@ -1,21 +1,22 @@
 ---
-title: 'チュートリアル 6: LUIS 複合エンティティを使用して複合データを抽出する'
+title: 複合エンティティ"
 titleSuffix: Azure Cognitive Services
 description: さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 1521bba188fcd7d8bade88196fe687929f414f93
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b5923d5cd4a704dda76e33ee6a2b76cfd903219d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283514"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079213"
 ---
 # <a name="tutorial-6-group-and-extract-related-data"></a>チュートリアル 6: 関連するデータのグループ化と抽出
 このチュートリアルでは、さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
@@ -70,7 +71,7 @@ ms.locfileid: "51283514"
 
 エンドポイントから抽出されたデータはこれらの情報を含み、それを `RequestEmployeeMove` 複合エンティティで返す必要があります。
 
-```JSON
+```json
 "compositeEntities": [
   {
     "parentType": "RequestEmployeeMove",
@@ -97,28 +98,28 @@ ms.locfileid: "51283514"
 ]
 ```
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[意図]** ページで、**[MoveEmployee]** 意図を選択します。 
 
 3. ツール バーの虫眼鏡アイコンを選択して発話一覧をフィルター処理します。 
 
-    [![](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "虫眼鏡ボタンが強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
+    [![虫眼鏡ボタンが強調表示されている "MoveEmployee" 意図での LUIS のスクリーンショット](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "虫眼鏡ボタンが強調表示されている \"MoveEmployee\" 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
 
 4. フィルター テキスト ボックスに `tomorrow` を入力して、発話 `shift x12345 to h-1234 tomorrow` を検索します。
 
-    [![](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "'tomorrow' のフィルターが強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
+    [!["tomorrow" のフィルターが強調表示されている "MoveEmployee" 意図での LUIS のスクリーンショット](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "\"tomorrow\" のフィルターが強調表示されている \"MoveEmployee\" 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
 
     datetimeV2 でエンティティをフィルター処理する別の方法として、**[Entity filters] (エンティティ フィルター)** を選択し、一覧から **[datetimeV2]** を選択する方法があります。 
 
 5. 最初のエンティティ `Employee` を選択してから、ポップアップ メニューの一覧にある **「Wrap in composite entity」(複合エンティティにラップする)** を選択します。 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "複合内の最初のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
+    [![複合内の最初のエンティティの選択が強調表示されている "MoveEmployee" 意図での LUIS のスクリーンショット](media/luis-tutorial-composite-entity/hr-create-entity-1.png "複合内の最初のエンティティの選択が強調表示されている \"MoveEmployee\" 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
 
 6. 次に、発話内の最後のエンティティ `datetimeV2` を直ちに選択します。 選択された単語の下に、複合エンティティを示す緑色のバーが描画されます。 ポップアップ メニューで、複合名 `RequestEmployeeMove` を入力して Enter キーを押します。 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "複合内の最後のエンティティの選択とエンティティの作成が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
+    [![複合内の最後のエンティティの選択とエンティティの作成が強調表示されている "MoveEmployee" 意図での LUIS のスクリーンショット](media/luis-tutorial-composite-entity/hr-create-entity-2.png "複合内の最後のエンティティの選択とエンティティの作成が強調表示されている \"MoveEmployee\" 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
 7. **「What type of entity do you want to create?」(どのような種類のエンティティを作成しますか?)** では、必要なほぼすべてのフィールドが一覧にあります。 元の場所だけがありません。 **[子エンティティを追加する]** を選択し、既存のエンティティの一覧から **[Locations::Origin]** を選択してから、**[完了]** を選択します。 
 
@@ -135,15 +136,15 @@ ms.locfileid: "51283514"
 
 1. 各発話の例で、複合に含まれている左端のエンティティを選択します。 次に、**「Wrap in composite entity」(複合エンティティにラップする)** を選択します。
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "複合内の最初のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
+    [![複合内の最初のエンティティの選択が強調表示されている "MoveEmployee" 意図での LUIS のスクリーンショット](media/luis-tutorial-composite-entity/hr-label-entity-1.png "複合内の最初のエンティティの選択が強調表示されている \"MoveEmployee\" 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
 
 2. 複合エンティティ内の最後の単語を選択してから、ポップアップ メニューから **[RequestEmployeeMove]** を選択します。 
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-2.png "複合内の最後のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
+    [![複合内の最後のエンティティの選択が強調表示されている "MoveEmployee" 意図での LUIS のスクリーンショット](media/luis-tutorial-composite-entity/hr-label-entity-2.png "複合内の最後のエンティティの選択が強調表示されている \"MoveEmployee\" 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
 
 3. 意図のすべての発話に複合エンティティのラベルが付けられていることを確認します。 
 
-    [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "すべての発話にラベルが付いている 'MoveEmployee' での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
+    [![すべての発話にラベルが付いている "MoveEmployee" での LUIS のスクリーンショット](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "すべての発話にラベルが付いている \"MoveEmployee\" での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
 ## <a name="train"></a>トレーニング
 
@@ -161,7 +162,7 @@ ms.locfileid: "51283514"
 
     このテストは複合が正しく抽出されたことを確認するためであるため、テストには、既存のサンプル発話または新しい発話のどちらを含めることもできます。 適切なテストでは、複合エンティティ内のすべての子エンティティを含めます。
 
-    ```JSON
+    ```json
     {
       "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
       "topScoringIntent": {

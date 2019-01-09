@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 04/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f73ec81686575efde70b7f90239299ec4deca00c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5946ff5e75e7c3fedf42c23200f61e821c0d9d61
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312987"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631398"
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Fiddler または Postman を使用して Azure Search REST API を探索する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Web 開発では次のツールが幅広く使用されていますが、別の使い慣れたツールでも、多くの場合はこの記事の手順が適用されます。
 
 + [Postman デスクトップ アプリ](https://www.getpostman.com/)
-+ [Telerik Fiddler](http://www.telerik.com/fiddler)
++ [Telerik Fiddler](https://www.telerik.com/fiddler)
 
 ## <a name="get-the-api-key-and-endpoint"></a>API キーとエンドポイントを取得する
 

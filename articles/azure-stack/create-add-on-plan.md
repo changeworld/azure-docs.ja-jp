@@ -16,12 +16,12 @@ ms.custom: mvc
 ms.date: 07/30/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: f6b85d2197a4db9cdfc526e5857e4b6ce707beb2
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: e84e72157726311281994b0e287eda7dfc4b144a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076793"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716756"
 ---
 # <a name="azure-stack-add-on-plans"></a>Azure Stack のアドオン プラン
 
@@ -32,7 +32,7 @@ ms.locfileid: "49076793"
 アドオン プランを使用するもう 1 つの理由は、リソース使用量をユーザーに意識してもらうことです。 そのためには、必要なサービスに応じて、比較的小さなクォータを含んだ基本プランから開始します。 ユーザーが上限に達すると、指定されたプランに基づく割り当てリソースを使い切ったという警告が表示されます。 その後、ユーザーは追加のリソースが用意されているアドオン プランを選択することができます。
 
 > [!NOTE]
-> アドオン プランを使ってクォータを拡張することが望ましくない場合には、[クォータの元の構成を編集](azure-stack-quota-types.md#to-edit-a-quota)することもできます。 
+> アドオン プランを使ってクォータを拡張することが望ましくない場合には、[クォータの元の構成を編集](azure-stack-quota-types.md#edit-a-quota)することもできます。 
 
 ユーザーが既存のオファーのサブスクリプションにアドオン プランを追加すると、追加のリソースが表示されるまでに最大で 1 時間かかることがあります。 
 

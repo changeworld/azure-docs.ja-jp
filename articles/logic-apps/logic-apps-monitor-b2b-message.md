@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: d7a32abe52e6f1109becc18c84b19d0ccd69719c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: d5425cf7c2ea39770bbc3e9368f34d57d7279842
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385467"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53534878"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Azure Logic Apps で Azure Log Analytics を使用して B2B メッセージを監視する
 
@@ -122,7 +122,7 @@ ms.locfileid: "53385467"
 Azure Log Analytics と併せて、ロジック アプリの診断データを他の Azure サービスで使用する方法を次のように拡張できます。 
 
 * [Azure 診断ログを Azure Storage にアーカイブする](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [Azure 診断ログを Azure Event Hubs にストリーミングする](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
+* [Azure 診断ログを Azure Event Hubs にストリーミングする](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
 
 これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../azure-monitor/platform/powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 例: 
 

@@ -3,21 +3,21 @@ title: SQL Database の XEvent イベント ファイル コード | Microsoft D
 description: Azure SQL Database の拡張イベントのイベント ファイル ターゲットを示す 2 段階コード サンプルの PowerShell と Transact-SQL を提供します。 Azure Storage はこのシナリオの必須の部分です。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8577b6a1d0f57820cbdd4096b0e8412096ff3af3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fdf426d9f4c8744570d0b9c6cc30bea63b06dd6c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232078"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600687"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 
@@ -50,7 +50,7 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
   
   * このモジュールから **New-AzureStorageAccount**などのコマンドが提供されます。
 
-## <a name="phase-1-powershell-code-for-azure-storage-container"></a>フェーズ 1: Azure Storage コンテナーの PowerShell コード
+## <a name="phase-1-powershell-code-for-azure-storage-container"></a>フェーズ 1:Azure Storage コンテナーの PowerShell コード
 
 この PowerShell は 2 段階のコード サンプルの第 1 段階です。
 
@@ -230,7 +230,7 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 
 PowerShell スクリプトが終了したら、出力された名前付きの値を書き留めます。 後続の第 2 段階で、これらの値を使用するように Transact-SQL スクリプトを編集する必要があります。
 
-## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>フェーズ 2: Azure Storage コンテナーを使用する Trasact-SQL コード
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>フェーズ 2:Azure Storage コンテナーを使用する Transact-SQL コード
 
 * このコード サンプルの第 1 段階で、PowerShell スクリプトを実行し、Azure ストレージ コンテナーを作成しました。
 * 次の第 2 段階では、次の Transact-SQL スクリプトでそのコンテナーを使用する必要があります。
@@ -530,8 +530,8 @@ Azure ストレージ サービスのアカウントとコンテナーに関す�
 * [.NET から BLOB ストレージを使用する方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [コンテナー、BLOB、メタデータの名前付けと参照](https://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [ルート コンテナーの使用](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [レッスン 1: 保存されているアクセス ポリシーと Shared Access Signature を Azure コンテナー上に作成する](https://msdn.microsoft.com/library/dn466430.aspx)
-  * [レッスン 2: Shared Access Signature を使用して SQL Server 資格情報を作成する](https://msdn.microsoft.com/library/dn466435.aspx)
+* [レッスン 1:保存されているアクセス ポリシーと Shared Access Signature を Azure コンテナー上に作成する](https://msdn.microsoft.com/library/dn466430.aspx)
+  * [レッスン 2:Shared Access Signature を使用して SQL Server 資格情報を作成する](https://msdn.microsoft.com/library/dn466435.aspx)
 * [Microsoft SQL Server の拡張イベント](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
 <!--

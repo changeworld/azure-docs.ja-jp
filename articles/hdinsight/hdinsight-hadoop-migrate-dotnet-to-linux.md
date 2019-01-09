@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3681f87780f1ef2a6b42e33bcd6fc2d761994d5c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3a9a026af67cd5528dfc00148bcbbcef82b8b189
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384202"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714663"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Windows ベースの HDInsight から Linux ベースの HDInsight への .NET ソリューションの移行
 
@@ -24,7 +24,7 @@ Linux ベースの HDInsight クラスターでは、[Mono (https://mono-project
 
 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」を参照してください。 特定のバージョンの Mono をインストールするには、[Mono のインストールと更新](hdinsight-hadoop-install-mono.md)に関するドキュメントを参照してください。
 
-Mono と .NET 間の互換性の詳細については、[Mono の互換性に関するドキュメント (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) をご覧ください。
+Mono と .NET 間の互換性の詳細については、[Mono の互換性に関するドキュメント (https://www.mono-project.com/docs/about-mono/compatibility/)](https://www.mono-project.com/docs/about-mono/compatibility/) をご覧ください。
 
 > [!IMPORTANT]  
 > SCP.NET フレームワークは Mono と互換性があります。 詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](storm/apache-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
@@ -52,7 +52,7 @@ Mono と .NET 間の互換性の詳細については、[Mono の互換性に関
 
 ## <a name="manual-portability-analysis"></a>手動の移植性分析
 
-[アプリケーションの移植性に関するドキュメント (http://www.mono-project.com/docs/getting-started/application-portability/)](http://www.mono-project.com/docs/getting-started/application-portability/) の情報を使用して、コードの手動監査を実行します。
+[アプリケーションの移植性に関するドキュメント (https://www.mono-project.com/docs/getting-started/application-portability/)](https://www.mono-project.com/docs/getting-started/application-portability/) の情報を使用して、コードの手動監査を実行します。
 
 ## <a name="modify-and-build"></a>変更およびビルド
 

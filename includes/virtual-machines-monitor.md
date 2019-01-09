@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3c2924380ef5175b330deb5052a962bfecf820ae
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399915"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594299"
 ---
 診断データとログ データの収集、表示、分析を通じて VM を監視する手段が数多く用意されています。 VM に対して単純な[監視](../articles/azure-monitor/overview.md)を行うだけであれば、Azure Portal で VM の概要画面を使用できます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使って VM で診断を構成すれば、さらに詳しいメトリック データを収集することができます。 また、[Application Insights](../articles/application-insights/app-insights-overview.md) や [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md) など、より高度な監視方法を使用することもできます。
 
@@ -43,23 +43,23 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 
 ## <a name="logs"></a>ログ
 
-[Azure アクティビティ ログ](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)は、Azure で発生したサブスクリプションレベルのイベントの分析に利用できるサブスクリプション ログです。 このログには、Azure Resource Manager の運用データからサービス正常性イベントの更新まで、さまざまなデータが含まれています。 Azure Portal で [アクティビティ ログ] をクリックすると、VM のログを表示できます。
+[Azure アクティビティ ログ](../articles/azure-monitor/platform/activity-logs-overview.md)は、Azure で発生したサブスクリプションレベルのイベントの分析に利用できるサブスクリプション ログです。 このログには、Azure Resource Manager の運用データからサービス正常性イベントの更新まで、さまざまなデータが含まれています。 Azure Portal で [アクティビティ ログ] をクリックすると、VM のログを表示できます。
 
 たとえば、アクティビティ ログでは次のことを実行できます。
 
-- [アクティビティ ログ イベントに対するアラートを設定する](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
-- サード パーティーのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[アクティビティ ログを Event Hubs にストリーミングする](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)。
+- [アクティビティ ログ イベントに対するアラートを設定する](../articles/azure-monitor/platform/activity-logs-overview.md)。
+- サード パーティーのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[アクティビティ ログを Event Hubs にストリーミングする](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md)。
 - [PowerBI コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)を使用して、アクティビティ ログを PowerBI で分析する。
 - アーカイブや手動での検査に使用するためにアクティビティ ログを[ストレージ アカウントに保存](../articles/azure-monitor/platform/archive-activity-log.md)する。 ログ プロファイルを使用して、リテンション期間 (日数) を指定できます。
 
 アクティビティ ログ データには、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/)、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor)、[Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) のいずれかを使ってアクセスすることもできます
 
-[Azure 診断ログ](../articles/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)は、VM から出力されるログです。その操作に関する豊富なデータが提供されます。 診断ログは、VM 内で実行された操作についての洞察が得られるという点でアクティビティ ログとは異なります。
+[Azure 診断ログ](../articles/azure-monitor/platform/diagnostic-logs-overview.md)は、VM から出力されるログです。その操作に関する豊富なデータが提供されます。 診断ログは、VM 内で実行された操作についての洞察が得られるという点でアクティビティ ログとは異なります。
 
 たとえば、診断ログでは次のことを実行できます。
 
 - 監査や手動での検査に使用するために診断ログを[ストレージ アカウント](../articles/azure-monitor/platform/archive-diagnostic-logs.md)に保存する。 リソース診断設定を使用して、リテンション期間 (日数) を指定できます。
-- サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを Event Hubs にストリーミング](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)する。
+- サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを Event Hubs にストリーミング](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)する。
 - 診断ログを [OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) で分析する。
 
 ## <a name="advanced-monitoring"></a>高度な監視

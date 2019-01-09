@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6f778016f4f465cd438b74dff95cb1b37c42d79
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8412c82d460591cd3a9d2dc97d383a47e263fd50
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015672"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728178"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする
 
 Azure HDInsight の [Apache Hadoop](https://hadoop.apache.org/) クラスターで [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (Yet Another Resource Negotiator) アプリケーションのログにアクセスする方法について説明します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、HDInsight バージョン 3.6 以降で使用される唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md#hdinsight-windows-retirement)」を参照してください。
 
 ## <a name="YARNTimelineServer"></a>YARN タイムライン サーバー
 
-[Apache Hadoop YARN タイムライン サーバー](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html)は、完了したアプリケーションに関する一般的な情報を提供します
+[Apache Hadoop YARN タイムライン サーバー](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html)は、完了したアプリケーションに関する一般的な情報を提供します
 
 YARN タイムライン サーバーには、次の種類のデータが含まれています。
 
@@ -73,7 +73,7 @@ YARN ResourceManager UI はクラスターのヘッド ノードで実行され�
 
     YARN のログへのリンクの一覧が表示されます。
 
-[YARN-timeline-server]:http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
+[YARN-timeline-server]:https://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
 [log-aggregation]:https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315

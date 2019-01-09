@@ -3,21 +3,21 @@ title: Split-Merge セキュリティの構成 | Microsoft Docs
 description: Elastic Scale の Split/Merge サービスを使用して暗号化するための x409 資格情報を設定します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 6967805044bb11e9aed3fe66d580df059f7a461a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/04/2018
+ms.openlocfilehash: de758d38626107f28211f79a4772c3e887085776
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231399"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599834"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 Split/Merge サービスを使用するには、セキュリティが正しく構成されていなければなりません。 このサービスは、Microsoft Azure SQL Database の Elastic Scale 機能の一部です。 詳しくは、「 [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」をご覧ください。
@@ -43,7 +43,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
     インストールされている場合は、次のように参照します。
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* 「 [Windows 8.1: キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* 「[Windows 8.1:キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)」から WDK を取得します
 
 ## <a name="to-configure-the-ssl-certificate"></a>SSL 証明書を構成するには
 通信の暗号化やサーバーの認証には SSL 証明書が必要です。 以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。
@@ -178,7 +178,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
       -n "CN=myservice.cloudapp.net" ^
       -e MM/DD/YYYY ^
       -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -sv MySSL.pvk MySSL.cer
 
 カスタマイズするには、次のように実行します。
@@ -239,7 +239,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
     -n "CN=MyCA" ^
     -e MM/DD/YYYY ^
      -r -cy authority -h 1 ^
-     -a sha1 -len 2048 ^
+     -a sha256 -len 2048 ^
       -sr localmachine -ss my ^
       MyCA.cer
 
@@ -288,7 +288,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
       -n "CN=My ID" ^
       -e MM/DD/YYYY ^
       -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -in "MyCA" -ir localmachine -is my ^
       -sv MyID.pvk MyID.cer
 

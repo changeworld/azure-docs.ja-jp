@@ -9,12 +9,12 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: 072201dd552f5d68a9b6621b2ca7c83acd76a1f5
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6b8940f62b94615b4622f60786e411b9a18b2dee
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439569"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001619"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>使用量と推定コストの監視
 
@@ -22,7 +22,7 @@ ms.locfileid: "53439569"
 > この記事では、Azure の異なる価格モデルの複数の監視機能全体の使用量と推定コストを表示する方法について説明します。  関連する情報については、次の記事を参照してください。
 > - 「[Log Analytics でデータ ボリュームと保有期間を制御してコストを管理する](../../azure-monitor/platform/manage-cost-storage.md)」では、データ保有期間を変更することでコストを制御する方法について説明します。
 > - 「[Log Analytics でのデータ使用状況の分析](../../azure-monitor/platform/data-usage.md)」では、データ使用状況を分析し、アラートを作成する方法について説明します。
-> - 「[Application Insights での価格とデータ ボリュームの管理](../../application-insights/app-insights-pricing.md)」では、Application Insights でデータ使用状況を分析する方法について説明します。
+> - 「[Application Insights での価格とデータ ボリュームの管理](../../azure-monitor/app/pricing.md)」では、Application Insights でデータ使用状況を分析する方法について説明します。
 
 Azure Portal の [監視] ハブの **[使用量と推定コスト]** ページには、[アラート、メトリック、通知](https://azure.microsoft.com/pricing/details/monitor/)[Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)、[Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) などの中心的な監視機能の使用量が説明されています。 2018 年 4 月より前の価格プランを利用しているお客様の場合は、Insights と Analytics 経由で購入した Log Analytics の使用量も含まれています。
 

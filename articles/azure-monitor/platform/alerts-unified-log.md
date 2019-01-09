@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 6a1b9c110c79e428ab0cc182d0da370e59bc4f30
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: b3949fefac1cc230a98687b3b5ff9c7a01c6a0e9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386215"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789578"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 この記事では、ログ アラートの詳細について説明します。ログ アラートは、[Azure アラート](../../azure-monitor/platform/alerts-overview.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラート発信の基盤として使用できます。
 
-ログ アラートは、[Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) または [Application Insights](../../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 用に作成されたログ検索ルールで構成されます。 その使用の詳細については、[Azure でのログ アラートの作成](../../azure-monitor/platform/alerts-log.md)に関するページをご覧ください
+ログ アラートは、[Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) または [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostic-events) 用に作成されたログ検索ルールで構成されます。 その使用の詳細については、[Azure でのログ アラートの作成](../../azure-monitor/platform/alerts-log.md)に関するページをご覧ください
 
 > [!NOTE]
 > Azure Monitor のメトリック プラットフォームでは、[Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) の一般的なログ データも利用できるようになっています。 詳細ビューについては、[ログのメトリック アラート](../../azure-monitor/platform/alerts-metric-logs.md)に関するページをご覧ください
@@ -38,7 +38,7 @@ ms.locfileid: "53386215"
 - **[頻度]**:   クエリの実行頻度を指定します。 5 分から 24 時間までの値を指定できます。 この値は、期間の値以下にする必要があります。  この値が期間の値よりも大きい場合、レコードを見落とすおそれがあります。<br>*たとえば、期間が 30 分、頻度が 60 分であるとします。クエリが午後 1 時に実行された場合、午後 12 時 30 分から午後 1 時までの間のレコードが返されます。次回クエリが実行されるのは午後 2 時であり、このときには午後 1 時 30 分から午後 2 時までの間のレコードが返されます。つまり、午後 1 時から午後 1 時 30 分までの間に作成されたレコードは評価されないことになります。*
 - **しきい値**:   ログ検索の結果を評価し、アラートの生成が必要であるかどうかを判定するための値です。  しきい値は、ログ検索アラート ルールの種類によって異なります。
 
-ログ検索ルールには、[Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 用と [Application Insights](../../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 用のいずれについても、2 つの種類があります。 どちらについても、後のセクションで詳しく説明します。
+ログ検索ルールには、[Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 用と [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostic-events) 用のいずれについても、2 つの種類があります。 どちらについても、後のセクションで詳しく説明します。
 
 - **[結果の数](#number-of-results-alert-rules)**。 ログ検索によって返されるレコードの数が指定された数を超えた場合に、アラートが 1 回生成されます。
 - **[メトリック測定](#metric-measurement-alert-rules)**。  ログ検索の結果の値が指定されたしきい値を超えた場合に、オブジェクトごとにアラートが生成されます。
@@ -121,5 +121,5 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 * [Azure でのログ アラートの作成](../../azure-monitor/platform/alerts-log.md)について学習します。
 * [Azure のログ アラートの Webhook](alerts-log-webhook.md) について理解する。
 * [Azure アラート](../../azure-monitor/platform/alerts-overview.md)について学習します。
-* [Application Insights](../../application-insights/app-insights-analytics.md) についてさらに学習します。
+* [Application Insights](../../azure-monitor/app/analytics.md) についてさらに学習します。
 * [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) についてさらに学習します。    

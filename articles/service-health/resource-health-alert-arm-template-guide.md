@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/4/2018
 ms.author: shtabriz
-ms.openlocfilehash: ac1b9dbbb5739dd015c0bda5f1ea82fe26bb0c70
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dcc978c8e169cca2e2cd91a63ef1814a8c3bd87c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625948"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184102"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -32,9 +32,9 @@ Azure Resource Health では、Azure リソースの現在および過去の正�
 このページの指示に従うには、事前にいくつかの項目を設定する必要があります。
 
 1. [Azure PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (`AzureRm`) をインストールする必要があります。
-2. 通知を行うよう構成された[アクション グループを作成または再利用する](../monitoring-and-diagnostics/monitoring-action-groups.md)必要があります。
+2. 通知を行うよう構成された[アクション グループを作成または再利用する](../azure-monitor/platform/action-groups.md)必要があります。
 
-## <a name="instructions"></a>このサンプルについての指示
+## <a name="instructions"></a>Instructions
 1. PowerShell を使用し、アカウントを使用して Azure にログインし、操作するサブスクリプションを選択します。
 
         Login-AzureRmAccount
@@ -233,7 +233,7 @@ Resource Health アラートは、次の 3 つの異なるスコープでイベ�
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>"Unknown" イベントを回避するための Resource Health アラートの調整
 
-Azure Resource Health では、テスト ランナーを使用してリソースを持続的に監視することで、リソースの最新の正常性をレポートできます。 関連するレポート対象の正常性状態は、"Available"、"Unavailable"、および "Degraded" です。 ただし、ランナーと Azure リソースが通信できない場合、リソースに関して "Unknown" 状態がレポートされ、"Active" 正常性イベントと見なされます。
+Azure Resource Health では、テスト ランナーを使用してリソースを持続的に監視することで、リソースの最新の正常性をレポートできます。 レポートされる関連する正常性状態は"Available"、"Unavailable"、および "Degraded" です。 ただし、ランナーと Azure リソースが通信できない場合、リソースに関して "Unknown" 状態がレポートされ、"Active" 正常性イベントと見なされます。
 
 しかし、リソースで "Unknown" がレポートされた場合、その正常性状態は前回の正確なレポートから変化していない可能性があります。 "Unknown" イベントに関するアラートを生成しない場合は、テンプレートで次のロジックを指定します。
 
@@ -435,4 +435,4 @@ Resource Health に関する詳細情報を参照してください。
 -  [Azure Resource Health で利用できるリソースの種類と正常性チェック](resource-health-checks-resource-types.md)
 
 Service Health アラートを作成します。
--  [Service Health のアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) 
+-  [Service Health のアラートの構成](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 

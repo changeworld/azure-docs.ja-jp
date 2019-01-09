@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 16a392d83cc24aafc7a84b4fa4c50b752508d9c2
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 047ff48620b572c90f793e0f886b5ecbcf338ee2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53215954"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53638810"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>ユーザーのサインインに Microsoft Authentication Library (MSAL) を使用する
 
@@ -86,14 +86,12 @@ function acquireTokenRedirectAndCallMSGraph() {
     });
 }
 
-function acquireTokenRedirectCallBack(errorDesc, token, error, tokenType)
-{
- if(tokenType === "access_token")
- {
-     callMSGraph(applicationConfig.graphEndpoint, token, graphAPICallback);
- } else {
-     console.log("token type is:"+tokenType);
- }
+function acquireTokenRedirectCallBack(errorDesc, token, error, tokenType) {
+    if (tokenType === "access_token") {
+        callMSGraph(applicationConfig.graphEndpoint, token, graphAPICallback);
+    } else {
+        console.log("token type is:"+tokenType);
+    }
 }
 
 
@@ -112,8 +110,7 @@ if (!isIE) {
         showWelcomeMessage();
         acquireTokenPopupAndCallMSGraph();
     }
-}
-else {
+} else {
     document.getElementById("SignIn").onclick = function () {
         myMSALObj.loginRedirect(applicationConfig.graphScopes);
     };

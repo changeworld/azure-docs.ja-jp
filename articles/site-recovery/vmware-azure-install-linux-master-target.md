@@ -4,14 +4,14 @@ description: Azure Site Recovery を使用して、VMware VM の Azure へのデ
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 415b50b94052e7d428ddfa55d5288c8954a3ff1a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e35a8cf720fffa3a3b4c7d9f1b83c2323041b1c4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212371"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833314"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -40,7 +40,7 @@ ms.locfileid: "50212371"
 次のサイズのガイドラインに従って、マスター ターゲットを作成します。
 - **RAM**: 6 GB 以上
 - **OS ディスク サイズ**: 100 GB 以上 (OS をインストールする場合)
-- **リテンション ドライブの追加ディスク サイズ**: 1 TB
+- **リテンション ドライブの追加ディスク サイズ**: 1 TB (テラバイト)
 - **CPU コア数**: 4 コア以上
 
 次の Ubuntu カーネルがサポートされています。

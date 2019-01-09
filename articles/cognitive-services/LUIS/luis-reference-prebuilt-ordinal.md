@@ -1,23 +1,24 @@
 ---
-title: LUIS 作成済みエンティティ ordinal リファレンス - Azure | Microsoft Docs
+title: ordinal 作成済みエンティティ
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での ordinal 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: cdbe6a04e579c9290c61b36102a66f6a2d8c317d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2565a799c5ac33644a06a942cddcc9eb4dad22dc
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041882"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162564"
 ---
-# <a name="ordinal-entity"></a>ordinal エンティティ
+# <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの ordinal 作成済みエンティティ
 序数は、セット内のオブジェクトの数値表現 `first`、`second`、`third` です。 このエンティティは既にトレーニングされているので、序数メールを含む発話の例をアプリケーション意図に追加する必要はありません。 ordinal エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされます。 
 
 ## <a name="types-of-ordinal"></a>ordinal の種類
@@ -26,7 +27,7 @@ ordinal は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blo
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>作成済み ordinal エンティティの解決
 次の例では、**builtin.ordinal** エンティティの解決を示します。
 
-```JSON
+```json
 {
   "query": "Order the second option",
   "topScoringIntent": {

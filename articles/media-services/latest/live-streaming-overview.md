@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services を使用したライブ ストリーミングの概要 | Microsoft Docs
-description: このトピックでは、Azure Media Services v3 を使用したライブ ストリーミングの概要を説明します。
+description: この記事では、Azure Media Services v3 を使用したライブ ストリーミングの概要を説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,153 +11,123 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: a4569505cb9a42f6682391a8b06725dea5e539dc
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: b51f2850a925fcd9daf3a07d8db66193555df0fa
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344979"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000256"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
-Azure Media Services を使用してライブ ストリーミング イベントを配信する場合、通常、次のコンポーネントが必要になります。
+Azure Media Services では、Azure クラウドで顧客にライブ イベントを配信することができます。 Media Services でライブ イベントをストリーミングするには、以下が必要です。  
 
-* イベントのブロードキャストに使用されるカメラ。
-* カメラ (またはノート PC などのデバイス) からの信号をライブ ストリーミング サービスに送信されるストリームに変換するライブ ビデオ エンコーダー。 信号には、広告挿入用の SCTE-35 と広告キューを含めることもできます。 
-* Media Services ライブ ストリーミングは、コンテンツの取り込み、プレビュー、パッケージ、録画、暗号化、配信に対応するサービスです。コンテンツは顧客に配信できるほか、CDN に配信して広域配信することもできます。
+- ライブ イベントをキャプチャするために使用するカメラ。
+- カメラ (またはノート PC などのデバイス) からの信号を Media Services に送信される投稿フィードに変換するライブ ビデオ エンコーダー。 投稿フィードでは、SCTE-35 マーカーなどの広告に関連する信号を含めることができます。
+- コンテンツの取り込み、プレビュー、パッケージ、録画、暗号化、ライブ イベントのブロードキャスト (顧客のほか、CDN に配信して広域配信することもできる) を可能にする、Media Services のコンポーネント。
 
-この記事では、Media Services でのライブ ストリーミングの概要を細部にわたって取り上げると共に、関連する主要コンポーネントの図を紹介しています。
+この記事では、Media Services でのライブ ストリーミングの概要を細部にわたって取り上げると共に、ガイダンス、関連する主要コンポーネントの図を紹介しています。
 
 ## <a name="overview-of-main-components"></a>主要コンポーネントの概要
 
-Media Services では、[LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) がライブ ストリーミング コンテンツの処理をつかさどります。 LiveEvent は入力エンドポイントであり、その取り込み URL をオンプレミスのライブ エンコーダーに対して指定します。 LiveEvent は、ライブ エンコーダーから RTMP 形式または Smooth Streaming 形式でライブ入力ストリームを受け取り、1 つまたは複数の [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) を介してストリーム配信できる状態にします。 ライブ ストリームの公開、レコーディング、DVR ウィンドウ設定は、[LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) を通じて制御することができます。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、LiveEvent はその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します。 
+Media Services でのオンデマンド ストリームまたはライブ ストリームを配信するためには、少なくとも 1 つの [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) が必要です。 Media Services アカウントの作成時に、**既定**の StreamingEndpoint が "**停止**" 状態でアカウントに追加されます。 視聴者にコンテンツをストリーミングする StreamingEndpoint を開始する必要があります。 既定の **StreamingEndpoint** を使用するか、必要な構成と CDN の設定を使用してカスタマイズした別の **StreamingEndpoint** を作成することができます。 複数の StreamingEndpoint を有効にしてそれぞれ別の CDN をターゲットとし、コンテンツ配信用の一意のホスト名を提供するように決定することができます。 
 
-Media Services には**ダイナミック パッケージ**機能があり、MPEG DASH、HLS、Smooth Streaming ストリーミング形式でコンテンツをプレビューして配信することができます。つまり、これらのストリーミング形式に手動で再パッケージ化する必要がありません。 HLS、DASH、Smooth のいずれかと互換性があれば、どのようなプレーヤーでも再生することができます。 [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) を使用して、ストリームをテストすることもできます。
+Media Services では、[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) がライブ ビデオ フィードの取り込みと処理を担当します。 LiveEvent を作成するときに、リモートのエンコーダーからライブ信号を送信するために使用できる入力エンドポイントが作成されます。 リモート ライブ エンコーダーは、[RTMP](https://www.adobe.com/devnet/rtmp.html) または [スムーズ ストリーミング](https://msdn.microsoft.com/library/ff469518.aspx) (Fragmented MP4) プロトコルのいずれかを使用して、投稿フィードをその入力エンドポイントに送信します。  
 
-Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム (Microsoft PlayReady、Google Widevine、および Apple FairPlay) によって動的に暗号化 (**動的暗号化**) されたコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。
+**LiveEvent** が投稿フィードの受信を開始したら、ライブ ストリームを公開する前に、そのプレビュー エンドポイント (プレビュー URL) を使用して、ライブ ストリームが受信されていることをプレビューして検証できます。 プレビュー ストリームが良好であることを確認したら、その LiveEvent を使用して、1 つ以上の (事前に作成した) **StreamingEndpoints** を通した配信に使用できるライブ ストリームを作成できます。 これを実現するために、**LiveEvent** に新規 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) を作成します。 
 
-必要であれば、**動的フィルター**を適用することもできます。動的フィルターを使用することで、プレーヤーに送信されるトラック数、形式、ビットレートを制御することができます。 Media Services は広告の挿入にも対応しています。
+**LiveOutput** オブジェクトは、ライブ ストリームをキャッチして Media Services アカウントの資産に記録するテープ レコーダーのようなものです。 記録されたコンテンツは、アカウントに接続されている Azure Storage アカウントに保持され、資産リソースによって定義されたコンテナーに保持されます。  また、**LiveOuput** では、アーカイブ記録に保持されるストリームの量 (たとえば、クラウド DVR の容量) など、送信ライブ ストリームの一部のプロパティを制御することもできます。 ディスク上のアーカイブは、**LiveOutput** の **archiveWindowLength** プロパティで指定されているコンテンツ量のみを保持する循環アーカイブ「ウィンドウ」です。 このウィンドウの範囲外のコンテンツは、ストレージ コンテナーから自動的に破棄され、復旧できません。 1 つの LiveEvent に、アーカイブの長さと設定の異なる複数の LiveOutput (最大 3 つ) を作成できます。  
 
-### <a name="new-live-encoding-improvements"></a>新しいライブ エンコードの機能強化
+Media Services では、**ダイナミック パッケージ**を利用して、サービスに送信する投稿フィードからのライブ ストリームを [MPEG DASH、HLS、およびスムーズ ストリーミング形式](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) でプレビューしてブロードキャストできます。 視聴者は、HLS、DASH、またはスムーズ ストリーミングと互換性のある任意のプレーヤーを使用して、ライブ ストリームを再生できます。 これらいずれかのプロトコルでストリームを配信するために、Web またはモバイル アプリケーションの [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) を使用することができます。
 
-最新のリリースでは、次の新しい機能強化が行われています。
+Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム (Microsoft PlayReady、Google Widevine、および Apple FairPlay) によって動的に暗号化 (**動的暗号化**) されたコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM ライセンスを配信するためのサービスも提供しています。 Media Services でコンテンツを暗号化する方法の詳細については、「[コンテンツ保護の概要](content-protection-overview.md)」を参照してください。
 
-- 新しい低待機時間モード。 詳しくは、「[待機時間](#latency)」をご覧ください。
+必要であれば、動的フィルターを適用することもできます。動的フィルターを使用することで、プレーヤーに送信されるトラック数、形式、ビットレート、プレゼンテーションの時間枠を制御することができます。 
+
+### <a name="new-capabilities-for-live-streaming-in-v3"></a>v3 のライブ ストリーミングの新機能
+
+Media Services の v3 API を使用すると、次の新機能によるメリットが得られます。
+
+- 新しい低待機時間モード。 詳しくは、「[待機時間](live-event-latency.md)」をご覧ください。
 - RTMP サポートの強化 (安定性の向上およびソース エンコーダー サポートの強化)。
-- RTMPS のセキュアな取り込み。
-
-    LiveEvent を作成すると、4 つの取り込み URL を取得します。 4 つの取り込み URL はほとんど同じで。ストリーミング トークン (AppId) は同じですが、ポート番号の部分のみが異なります。 URL のうち 2 つは RTMPS のプライマリとバックアップです。   
-- 24 時間のコード変換サポート。 
-- SCTE35 経由の RTMP での広告シグナル サポートの強化。
+- RTMPS のセキュアな取り込み。<br/>LiveEvent を作成すると、4 つの取り込み URL を取得します。 4 つの取り込み URL はほとんど同じで。ストリーミング トークン (AppId) は同じですが、ポート番号の部分のみが異なります。 URL のうち 2 つは RTMPS のプライマリとバックアップです。   
+- Media Services を使用してシングル ビットレートのコントリビューション フィードをマルチ ビットレートの出力ストリームにコード変換すると、最大 24 時間のライブ イベントをストリーミングできます。 
 
 ## <a name="liveevent-types"></a>LiveEvent の種類
 
-[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) には、ライブ エンコードとパススルーの 2 種類があります。 
-
-### <a name="live-encoding-with-media-services"></a>Media Services でのライブ エンコード
-
-![ライブ エンコード](./media/live-streaming/live-encoding.png)
-
-オンプレミスのライブ エンコーダーは、RTMP か Smooth Streaming (Fragmented MP4) プロトコルで、シングル ビットレート ストリームを Media Services によるライブ エンコードが有効な LiveEvent に送信します。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードが LiveEvent で実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
-
-このタイプの LiveEvent を作成するときは、**Basic** (LiveEventEncodingType.Basic) を指定してください。
+[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) には、パススルーとライブ エンコードの 2 種類があります。 
 
 ### <a name="pass-through"></a>パススルー
 
 ![パススルー](./media/live-streaming/pass-through.png)
 
-パススルーは、オンプレミスのライブ エンコーダーを使用した長時間実行されるライブ ストリームや24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 オンプレミスのエンコーダーは、マルチビットレート **RTMP** または **Smooth Streaming** (Fragmented MP4) を、**パススルー**配信用に設定された LiveEvent に送信します。 **パススルー**配信とは、取り込んだストリームが、追加の処理なしで **LiveEvent** を通過することをいいます。 
+パススルー LiveEvent を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 プロトコルを使用して) LiveEvent への投稿フィードとして送信します。 その後、LiveEvent は追加の処理なしで受信ビデオ ストリームを通過します。 このようなパススルー LiveEvent は、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 このタイプの LiveEvent を作成するときは、None (LiveEventEncodingType.None) を指定してください。
 
-パススルー LiveEvent は最大 4K 解像度に対応しているほか、Smooth Streaming 取り込みプロトコルと併用すれば HEVC パススルーにも対応します。 
-
-このタイプの LiveEvent を作成するときは、**None** (LiveEventEncodingType.None) を指定してください。
+投稿フィードは最大 4K の解像度と 60 フレーム/秒のフレーム レートで、H.264/AVC または H.265/HEVC のいずれかのビデオ コーデックと AAC (AAC-LC、HE-AACv1、または HE-AACv2) オーディオ コーデックを使用して送信することができます。  詳細については、[LiveEvent タイプの比較と制限事項](live-event-types-comparison.md)についての記事を参照してください。
 
 > [!NOTE]
 > 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。 詳しくは、 [価格情報](https://azure.microsoft.com/pricing/details/media-services/) ページを参照してください。
 > 
 
-## <a name="liveevent-types-comparison"></a>LiveEvent タイプの比較 
+[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126) のライブ例を参照してください。
 
-次の表は、2 種類の LiveEvent の機能を比較したものです。
+### <a name="live-encoding"></a>ライブ エンコード  
 
-| 機能 | パススルー LiveEvent | 標準 LiveEvent |
-| --- | --- | --- |
-| シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる |いいえ  |[はい] |
-| 最大解像度、層の数 |4Kp30  |720p、6 層、30 fps |
-| 入力プロトコル |RTMP、スムーズ ストリーミング |RTMP、スムーズ ストリーミング |
-| 料金 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) |
-| 最長実行時間 |24 時間 365 日 |24 時間 365 日 |
-| スレートの挿入のサポート |いいえ  |[はい] |
-| API による広告信号のサポート|いいえ  |[はい] |
-| インバンド SCTE35 による広告信号のサポート|[はい] |[はい] |
-| パススルー CEA 608/708 キャプション |[はい] |[はい] |
-| 投稿フィードでの短時間の停止から回復する機能 |[はい] |なし (6 秒経過しても入力データがない場合、LiveEvent はスレートを開始します)|
-| 均一でない入力 GOP のサポート |[はい] |いいえ – 入力は固定の 2 秒の GOP である必要があります |
-| 可変フレーム レートの入力のサポート |[はい] |なし。入力は固定フレーム レートにする必要があります。<br/>たとえば、動きの大きなシーンでは、多少の変化は許容されます。 しかし、エンコーダーは 10 フレーム/秒に下げることはできません。 |
-| 入力フィードがなくなった場合の LiveEvent の自動停止 |いいえ  |12 時間後 (実行中の LiveOutput がない場合) |
+![ライブ エンコード](./media/live-streaming/live-encoding.png)
 
-## <a name="liveevent-states"></a>LiveEvent の状態 
+Media Services によるライブ エンコードを使用する場合は、オンプレミス ライブ エンコーダーを、(RTMP または Fragmented MP4 プロトコルを使用して) LiveEvent への投稿フィードとしてシングル ビットレート ビデオを送信するように構成します。 LiveEvent は、受信シングル ビットレート ストリームを[マルチ ビットレート ビデオ ストリーム](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)にエンコードし、そのストリームを、MPEG-DASH、HLS、スムーズ ストリーミングなどのプロトコルを介して再生デバイスに配信できるようにします。 このタイプの LiveEvent を作成するときは、エンコードの種類に **Basic** (LiveEventEncodingType.Basic) を指定してください。
 
-現在の LiveEvent の状態。 指定できる値は、次のとおりです。
+投稿フィードは最大 1080p の解像度と 30 フレーム/秒のフレーム レートで、H.264/AVC ビデオ コーデックと AAC (AAC-LC、HE-AACv1、または HE-AACv2) オーディオ コーデックを使用して送信することができます。 詳細については、[LiveEvent タイプの比較と制限事項](live-event-types-comparison.md)についての記事を参照してください。
 
-|状態|説明|
-|---|---|
-|**Stopped**| これは、LiveEvent 作成後の初期状態です (自動開始が選択された場合を除く)。この状態では、課金は行われません。 この状態で、LiveEvent のプロパティを更新できますが、ストリーミングは許可されていません。|
-|**開始中**| LiveEvent を開始しています。 この状態では、課金は行われません。 この状態の場合、更新やストリーミングはできません。 エラーが発生した場合は、LiveEvent は Stopped 状態に戻ります。|
-|**実行中**| LiveEvent は、ライブ ストリームを処理できます。 課金が始まります。 課金されないようにするには、LiveEvent を停止する必要があります。|
-|**停止中**| LiveEvent を停止しています。 この遷移状態では、課金は行われません。 この状態の場合、更新やストリーミングはできません。|
-|**削除中**。| LiveEvent を削除しています。 この遷移状態では、課金は行われません。 この状態の場合、更新やストリーミングはできません。|
+## <a name="liveevent-types-comparison"></a>LiveEvent タイプの比較
+
+2 つの LiveEvent タイプの機能の比較表は、[比較](live-event-types-comparison.md)についての記事に記載されています。
 
 ## <a name="liveoutput"></a>LiveOutput
 
-ライブ ストリームの公開、レコーディング、DVR ウィンドウ設定は、[LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) を通じて制御することができます。 LiveEvent と LiveOutput の関係は、従来のメディアと似ています。チャネル (LiveEvent) が絶えずコンテンツのストリームを配信するのに対し、プログラム (LiveOutput) は、その LiveEvent 上で決まった時間に生じるイベントです。
-録画されたコンテンツの保持時間は、LiveOutput の **ArchiveWindowLength** プロパティで設定できます。 **ArchiveWindowLength** は、アーカイブ ウィンドウの長さを ISO 8601 形式で表した期間です (Digital Video Recorder または DVR)。 この値は、最小 5 分から最大 25 時間までの範囲で設定できます。 
+[LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) では、記録するストリームの量 (たとえば、クラウド DVR の容量) や視聴者がライブ ストリームの視聴を開始することができるかどうかなど、送信ライブ ストリームのプロパティを制御することができます。 **LiveEvent** とその **LiveOutput** との関係は、従来のテレビの放送と似ており、チャンネル (**LiveEvent**) はビデオの一定のストリームを表し、録画 (**LiveOutput**) は特定の時間セグメント (たとえば、午後 6 時 30 分から午後 7 時 00 分までの夕方のニュース) を対象としています。 テレビはデジタル ビデオ レコーダー (DVR) を使用して録画することができます。それと同様の LiveEvent の機能は ArchiveWindowLength プロパティを介して管理されます。 これは、ISO-8601 形式で表した期間 (PTHH:MM:SS など) であり、DVR の容量を指定し、最短で 3 分から最長で 25 時間まで設定できます。
 
-クライアントが現在のライブ位置からさかのぼってシークできる最長時間も **ArchiveWindowLength** によって決まります。 LiveOutput は、指定された時間の長さまでは放送できますが、アーカイブ ウィンドウの長さを過ぎたコンテンツは絶えず破棄されていきます。 さらに、このプロパティの値によって、クライアント マニフェストが肥大した場合の最大サイズも決まります。
 
-各 LiveOutput は[アセット](https://docs.microsoft.com/rest/api/media/assets)に関連付けられ、Media Services アカウントにアタッチされた Azure Storage 内のコンテナーにデータを記録します。 LiveOutput を公開するには、関連付けられた資産の [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成する必要があります。 このロケーターを作成すると、ストリーミング URL を構築してクライアントに提供できます。
+> [!NOTE]
+> **LiveOutput** は作成すると開始され、削除されると停止します。 **LiveOutput** を削除しても、基になる**資産**と資産のコンテンツは削除されません。  
 
-LiveEvent は、最大 3 つの同時実行 LiveOutput をサポートするので、同じ受信ストリームのアーカイブを複数作成できます。 これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。 たとえばビジネス要件として、24 時間 365 日のライブ リニア フィードを配信する一方で、顧客が見逃したコンテンツをオンデマンド視聴できるよう、終日プログラムの "レコーディング" を作成するとします。  このシナリオではまず、顧客がプライマリ ライブ ストリームとして受信するためのプライマリ LiveOutput を、1 時間未満の短いアーカイブ ウィンドウで作成します。 この LiveOutput の StreamingLocator を作成し、アプリケーションまたは Web サイトに "ライブ" フィードとして発行することになります。  フィードの実行中、同時実行される 2 つ目の LiveOutput を、番組の開始 (または後でトリミングしやすいよう 5 分前) の時点でプログラムから作成できます。この 2 つ目の LiveOutput は、プログラムまたはイベントの終了から 5 分後に停止でき、その後、新しい StreamingLocator を作成して、このプログラムをオンデマンド アセットとしてアプリケーションのカタログに発行することができます。  オンデマンドとしてすぐに共有したい他のプログラム範囲やハイライトについても、このプロセスを繰り返します。このプロセスはすべて、1 つ目の LiveOutput の "ライブ" フィードがリニア フィードを配信し続ける最中に行うことができます。  また、プログラム間の "継ぎ目" として念のために確保しておいたアーカイブの先頭と末尾は、動的フィルター機能を使って LiveOutput からトリミングすることにより、コンテンツの開始と終了の精度を高めることができます。 アーカイブ済みのコンテンツを[変換機能](https://docs.microsoft.com/rest/api/media/transforms)に送り、エンコーディングやフレーム アキュレートなサブクリップ処理を通じて、他のサービスへのシンジケーションとして使用するさまざまな出力形式を得ることも可能です。
+詳細については、「[クラウド DVR の使用](live-event-cloud-dvr.md)」を参照してください。
 
 ## <a name="streamingendpoint"></a>StreamingEndpoint
 
-ストリームが LiveEvent に流れ始めると、資産、LiveOutput、および StreamingLocator を作成することにより、ストリーミング イベントを開始できます。 これにより、ストリームがアーカイブされ、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) を介して視聴者がストリームを使用できるようになります。
+ストリームが **LiveEvent** に流れ始めると、**資産**、**LiveOutput**、および **StreamingLocator** を作成することにより、ストリーミング イベントを開始できます。 これにより、ストリームがアーカイブされ、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) を介して視聴者がストリームを使用できるようになります。
 
 Media Services アカウントの作成時に、既定のストリーミング エンドポイントが "停止" 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが "実行中" 状態である必要があります。
 
+## <a name="a-idbilling-liveevent-states-and-billing"></a><a id="billing" />LiveEvent の状態と課金
+
+LiveEvent では、その状態が "**実行中**" に遷移するとすぐに課金が開始されます。 LiveEvent の課金を停止するには、LiveEvent を停止する必要があります。
+
+詳細については、[状態と課金](live-event-states-billing.md)についてのページを参照してください。
+
 ## <a name="latency"></a>Latency
 
-このセクションでは、低待機時間の設定とさまざまなプレーヤーを使用したときの一般的な結果について説明します。 結果は、CDN およびネットワーク待機時間によって異なります。
+LiveEvent の待機時間の詳細については、[待機時間](live-event-latency.md)についてのページを参照してください。
 
-新しい LowLatency 機能を使用するには、LiveEvent の **StreamOptionsFlag** を **LowLatency** に設定します。 ストリームが稼働状態になったら、[Azure Media Player](http://ampdemo.azureedge.net/) (AMP) のデモ ページを使用して、"Low Latency Heuristic Profile" を使用するように再生オプションを設定できます。
+## <a name="live-streaming-workflow"></a>ライブ ストリーミング ワークフロー
 
-### <a name="pass-through-liveevents"></a>パススルー LiveEvent
+ライブ ストリーミング ワークフローの手順は次のとおりです。
 
-||2 秒 GOP の低待機時間が有効|1 秒 GOP の低待機時間が有効|
-|---|---|---|
-|AMP での DASH|10 秒|8 秒|
-|ネイティブ iOS プレーヤーでの HLS|14 秒|10 秒|
-|Mixer Player での HLS.JS|30 秒|16 秒|
+1. LiveEvent を作成します。
+2. 新しい資産オブジェクトを作成します。
+3. LiveOutput を作成し、作成した資産の名前を使用します。
+4. DRM でコンテンツを暗号化する場合は、ストリーミング ポリシーとコンテンツ キーを作成します。
+5. DRM を使用しない場合、組み込みのストリーミング ポリシー タイプを使用してストリーミング ロケーターを作成します。
+6. 使用する URL を返すためのパスをストリーミング ポリシーに列挙します (これらは決定論的です)。
+7. ストリーミングするストリーミング エンドポイントのホスト名を取得します。 
+8. 手順 6.の URL と、手順 7 のホスト名を組み合わせて、完全な URL を取得します。
 
-## <a name="billing"></a>課金
-
-LiveEvent では、その状態が "実行中" に遷移するとすぐに課金が開始されます。 LiveEvent の課金を停止するには、LiveEvent を "停止" する必要があります。
-
-> [!NOTE]
-> [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) の **LiveEventEncodingType** を Basic に設定した場合、入力フィードがなくなり、実行中の LiveOutputs がなくなってから 12 時間後に、まだ "実行中" 状態の LiveEvent があれば、それらは Media Services によって自動的に停止されます。 ただし、LiveEvent が "実行中" 状態だった期間については課金されます。
->
-
-次の表は、LiveEvent の状態と課金モードとの対応を示しています。
-
-| LiveEvent の状態 | 課金対象 |
-| --- | --- |
-| 開始中 |いいえ (遷移状態) |
-| 実行中 |はい |
-| 停止中 |いいえ (遷移状態) |
-| 停止済み |いいえ  |
+詳細については、[ライブの .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) サンプルをベースとした[ライブ ストリーミング チュートリアル](stream-live-tutorial-with-api.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-[ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)
+- [LiveEvent タイプの比較](live-event-types-comparison.md)
+- [状態と課金](live-event-states-billing.md)
+- [待機時間](live-event-latency.md)

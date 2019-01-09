@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 753a0ad72e1d4b60a93daa570ceecc25d21bb228
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 6f1620c9977f997b4037fbf3f823c429e43b4f6a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634143"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436264"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell を使用して HDInsight 上の Apache Hadoop で MapReduce ジョブを実行する
 
@@ -26,7 +26,7 @@ ms.locfileid: "51634143"
 
 * **Azure HDInsight (HDInsight で Hadoop を使用) クラスター**
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * **Azure PowerShell を実行できるワークステーション**。
@@ -43,9 +43,9 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 * **Start-AzureRmHDInsightJob**: ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
 
-* **Wait-AzureRmHDInsightJob**: ジョブ オブジェクトを使用して、ジョブのステータスを確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
+* **Wait-AzureRmHDInsightJob**: ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
 
-* **Get-AzureRmHDInsightJobOutput**: ジョブの出力を取得する場合に使用します。
+* **Get-AzureRmHDInsightJobOutput**: ジョブの出力を取得するために使用します。
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
@@ -73,7 +73,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
     この出力は、ジョブが正常に完了したことを示しています。
 
-    > [!NOTE]
+    > [!NOTE]  
     > **ExitCode** が 0 以外の値の場合は、 [トラブルシューティング](#troubleshooting)をご覧ください
 
     この例では、スクリプトが実行されるディレクトリにある **output.txt** ファイルにダウンロードしたファイルを格納します。
@@ -82,7 +82,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 ジョブによって生成された文字と文字数を確認するには、テキスト エディターで **output.txt** ファイルを開きます。
 
-> [!NOTE]
+> [!NOTE]  
 > MapReduce ジョブの出力ファイルは変更できません。 そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
 ## <a id="troubleshooting"></a>トラブルシューティング
@@ -113,5 +113,5 @@ HDInsight での MapReduce ジョブに関する全般的な情報:
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
-* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)

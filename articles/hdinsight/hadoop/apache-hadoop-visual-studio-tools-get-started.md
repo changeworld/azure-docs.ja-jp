@@ -1,5 +1,5 @@
 ---
-title: Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続
+title: Data Lake Tools for Visual Studio を使用した Apache Hadoop への接続 - Azure HDInsight
 description: Data Lake Tools for Visual Studio をインストールし、それを使用して Azure HDInsight 上の ApacheHadoop クラスターに接続し、Hive クエリを実行する方法について説明します。
 keywords: Hadoop ツール, Hive クエリ, Visual Studio, Visual Studio Hadoop
 services: hdinsight
@@ -7,15 +7,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive, hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.openlocfilehash: 670de3f61047bcc8b168863f5981e41084225ec4
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.date: 12/06/2018
+ms.openlocfilehash: 24efb8490afdf67b96d531802362f88bef7d13de
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634670"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166491"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 
@@ -107,7 +107,7 @@ Visual Studio から質問をしたりフィードバックを提供したりす
 ![サーバー エクスプローラーでの Data Lake Tools for Visual Studio の BLOB 操作のスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png "サーバー エクスプローラーでの BLOB のアップロード、削除、およびダウンロード")
 
 ## <a name="run-interactive-hive-queries"></a>対話型 Hive クエリの実行
-[Apache Hive](http://hive.apache.org) は、Hadoop に組み込まれているデータ ウェアハウス インフラストラクチャです。 Hive は、データの概要、クエリ、および分析に使用されます。 Data Lake Tools for Visual Studio を使用して、Visual Studio から Hive クエリを実行できます。 Hive の詳細については、[HDInsight での Hive の使用](hdinsight-use-hive.md)に関するページを参照してください。
+[Apache Hive](https://hive.apache.org) は、Hadoop に組み込まれているデータ ウェアハウス インフラストラクチャです。 Hive は、データの概要、クエリ、および分析に使用されます。 Data Lake Tools for Visual Studio を使用して、Visual Studio から Hive クエリを実行できます。 Hive の詳細については、[HDInsight での Hive の使用](hdinsight-use-hive.md)に関するページを参照してください。
 
 [対話型クエリ](../interactive-query/apache-interactive-query-get-started.md)では、Apache Hive 2.1 の [Hive on LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) を使用します。 対話型クエリでは、格納されている大規模なデータセットに対する複雑なデータ ウェアハウス スタイルのクエリを対話形式で実行できます。 対話型クエリは、従来の Hive バッチ ジョブと比べ、Hive クエリの実行速度が格段に速くなっています。 詳細については、「[Hive バッチ ジョブの実行](#run-hive-batch-jobs)」を参照してください。
 

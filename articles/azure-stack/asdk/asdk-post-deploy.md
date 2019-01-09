@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 10/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: a343b01b89bfbe9bc047c0b8b703b975b21b6290
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: cfc191830ddadbbe3258fc1b61fcd4bcc45fdd8c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901880"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186754"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK インストール後の構成タスク
 
-[Azure Stack Development Kit (ASDK) をインストール](asdk-install.md)した後、推奨されるインストール後の構成変更をいくつか行う必要があります。
+[Azure Stack Development Kit (ASDK) をインストール](asdk-install.md)した後、ASDK ホスト コンピューターで AzureStack\AzureStackAdmin としてログイン中に、推奨されるインストール後の構成変更をいくつか行う必要があります。 
 
 ## <a name="install-azure-stack-powershell"></a>Azure Stack PowerShell のインストール
 
@@ -41,7 +41,7 @@ API バージョン プロファイルを使用して、Azure Stack と互換性
 ASDK ホスト コンピューターへのインターネット接続の有無にかかわらず、最新の Azure Stack PowerShell モジュールをインストールすることができます。
 
 > [!IMPORTANT]
-> 必要なバージョンをインストールする前に、必ず[既存の Azure PowerShell モジュールをアンインストールしてください](.\.\azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules)。
+> 必要なバージョンをインストールする前に、必ず[既存の Azure PowerShell モジュールをアンインストールしてください](../azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules)。
 
 - ASDK ホスト コンピューターからの**インターネット接続がある場合**。 次の PowerShell スクリプトを実行して、これらのモジュールを開発キット インストールにインストールします。
 
@@ -173,7 +173,7 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 
 ## <a name="enable-multi-tenancy"></a>マルチテナントの有効化
 
-Azure AD を使用したデプロイでは、ASDK のインストール用に[マルチ テナント機能を有効にする](.\.\azure-stack-enable-multitenancy.md#enable-multi-tenancy)必要があります。
+Azure AD を使用したデプロイでは、ASDK のインストール用に[マルチ テナント機能を有効にする](../azure-stack-enable-multitenancy.md#enable-multi-tenancy)必要があります。
 
 > [!NOTE]  
 > Azure Stack の登録に使用したドメイン以外のドメインからの管理者またはユーザー アカウントを使用して Azure Stack ポータルにログインする場合は、Azure Stack の登録に使用したドメイン名をポータルの URL に追加する必要があります。 たとえば、Azure Stack が fabrikam.onmicrosoft.com に登録されていて、ログインするユーザー アカウントが admin@contoso.com である場合、ユーザー ポータルへのログインに使用する URL は https://portal.local.azurestack.external/fabrikam.onmicrosoft.com になります。

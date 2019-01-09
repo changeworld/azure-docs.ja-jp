@@ -1,18 +1,19 @@
 ---
-title: 'ExpressRoute 回線のルーティング (ピアリング) を構成する方法: Azure: クラシック | Microsoft Docs'
+title: '回線のピアリングを構成する - ExpresssRoute: Azure: クラシック | Microsoft Docs'
 description: この記事では、ExpressRoute 回線のプライベート、パブリックおよび Microsoft ピアリングを作成し、プロビジョニングする手順について説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/27/2018
-ms.author: cherylmc;ganesr
-ms.openlocfilehash: 6e099d0cdf659aa6ed2ccbef1381021ae55c72c2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/11/2018
+ms.author: cherylmc
+ms.custom: seodec18
+ms.openlocfilehash: fbf97c984a00d6bdd7f79c26094ae36348e00236
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261844"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342036"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute 回線のピアリングの作成と変更 (クラシック)
 > [!div class="op_single_selector"]
@@ -25,7 +26,7 @@ ms.locfileid: "51261844"
 > * [PowerShell (クラシック)](expressroute-howto-routing-classic.md)
 > 
 
-この記事では、PowerShell とクラシック デプロイ モデルを使用して、ExpressRoute 回線のルーティング構成を作成して管理する手順について説明します。 以下の手順では、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除の方法も示します。 ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリング (Azure プライベート、Azure パブリック、および Microsoft) を構成することができます。 ピアリングは任意の順序で構成することができます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。 
+この記事では、PowerShell とクラシック デプロイ モデルを使用して、ExpressRoute 回線のピアリング/ルーティング構成を作成して管理する手順について説明します。 以下の手順では、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除の方法も示します。 ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリング (Azure プライベート、Azure パブリック、および Microsoft) を構成することができます。 ピアリングは任意の順序で構成することができます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。 
 
 これらの手順は、レイヤー 2 接続サービスを提供するサービス プロバイダーで作成された回線にのみ適用されます。 サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IP VPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。
 
@@ -33,7 +34,7 @@ ms.locfileid: "51261844"
 
 **Azure のデプロイ モデルについて**
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>構成の前提条件
 
@@ -51,7 +52,7 @@ Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRou
 
 詳細については、[Azure PowerShell コマンドレットの概要](/powershell/azure/overview)に関するページで、お使いのコンピューターを構成して Azure PowerShell モジュールを使用する方法のステップ バイ ステップのガイダンスを参照してください。
 
-### <a name="sign-in"></a>[サインイン]
+### <a name="sign-in"></a>サインイン
 
 Azure アカウントにサインインするには、次の例を使用します。
 
@@ -328,9 +329,9 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    * セカンダリ リンク用の /30 サブネット。 これは、自分が所有しており、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングで同じ VLAN ID を使用していないことを確認します。
    * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
-   * アドバタイズされたプレフィックス: BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する計画の場合は、コンマ区切りの一覧を送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
-   * 顧客 ASN: ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスが登録されている AS 数を指定できます。 **省略可能**。
-   * ルーティング レジストリ名: AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
+   * アドバタイズするプレフィックス:BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する計画の場合は、コンマ区切りの一覧を送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
+   * 顧客 ASN: ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスを登録する AS 番号を指定できます。 **省略可能**。
+   * ルーティング レジストリ名: AS 番号とプレフィックスが登録される RIR/IRR を指定できます。
    * いずれかを使用する場合は、MD5 ハッシュ。 **省略可能。**
      
   回線用に Microsoft ピアリングを構成するには、次のコマンドレットを実行します。

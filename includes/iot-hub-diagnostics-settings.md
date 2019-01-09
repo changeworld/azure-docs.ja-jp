@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0039c4eff3571a96cba1ab36136e0a588d78eb75
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e518263fc7f427ade4943f91fdc840b62a235205
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159130"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53550025"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>診断設定を使用してログ記録を有効にする
 
@@ -57,4 +57,4 @@ Select-AzureRmSubscription -SubscriptionName <subscription that includes your Io
 Set-AzureRmDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```
 
-新しい設定は、10 分ほどで有効になります。 その後、構成したアーカイブ ターゲットのログが **[診断設定]** ブレードに表示されます。 診断の構成の詳細については、「[Azure リソースからのログ データの収集と使用](../articles/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」を参照してください。
+新しい設定は、10 分ほどで有効になります。 その後、構成したアーカイブ ターゲットのログが **[診断設定]** ブレードに表示されます。 診断の構成の詳細については、「[Azure リソースからのログ データの収集と使用](../articles/azure-monitor/platform/diagnostic-logs-overview.md)」を参照してください。

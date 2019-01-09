@@ -1,20 +1,17 @@
 ---
 title: Azure Database for MySQL の価格レベル
 description: この記事では、Azure Database for MySQL の価格レベルについて説明します。
-services: mysql
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 644a3a2fe6bce6ccc99b0c1c99ea07b129676653
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 805f7844b144da1feb141a46080912790008f32e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320848"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538773"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 
@@ -31,7 +28,7 @@ Azure Database for MySQL サーバーは、次の 3 つの価格レベルのい�
 
 価格レベルを選択する場合は、まず次の表を参考にしてください。
 
-| 価格レベル | 対象のワークロード |
+| 価格レベル  | 対象のワークロード |
 |:-------------|:-----------------|
 | Basic | 低負荷なコンピューティングと I/O パフォーマンスを必要とするワークロード。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションに使用するサーバーがこれに該当します。 |
 | 汎用 | 負荷分散されたコンピューティングとメモリ、およびスケーラブルな I/O スループットを必要とする大部分のビジネス ワークロード。 たとえば、Web アプリやモバイル アプリ、その他のエンタープライズ アプリケーションをホストするためのサーバーが挙げられます。|

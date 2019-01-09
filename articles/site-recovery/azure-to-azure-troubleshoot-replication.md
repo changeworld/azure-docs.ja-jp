@@ -5,16 +5,15 @@ services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 0ac90d8ef29d4293a5eeb5f932687788320c218e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4a18e009f7defc8d41846b867f9b7a65d2b853dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615798"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993333"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>実行中の Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 
@@ -23,13 +22,13 @@ ms.locfileid: "51615798"
 
 ## <a name="recovery-points-not-getting-generated"></a>復旧ポイントが生成されない
 
-エラー メッセージ: [No crash consistent recovery point available for the VM in the last 60 minutes.]\(VM で使用できる 60 分以内のクラッシュ コンシステント復旧ポイントがありません。\)</br>
-エラー ID: 153007 </br>
+エラー メッセージ:No crash consistent recovery point available for the VM in the last 60 minutes. (VM で使用できる 60 分以内のクラッシュ コンシステント復旧ポイントがありません。)</br>
+エラー ID:153007 </br>
 
 Azure Site Recovery は、一貫してソース リージョンからディザスター リカバリー リージョンにデータをレプリケートし、クラッシュ コンシステント ポイントを 5 分ごとに作成します。 Site Recovery が 60 分間にわたって復旧ポイントを作成できないと、ユーザーが警告されます。 このエラーを引き起こす可能性がある原因を次に示します。
 
-**原因 1: [ソース仮想マシンにおけるデータ変更率が高い](#high-data-change-rate-on-the-source-virtal-machine)**    
-**原因 2: [ネットワーク接続の問題 ](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**原因 1:[ソース仮想マシンにおけるデータ変更率が高い](#high-data-change-rate-on-the-source-virtal-machine)**    
+**原因 2:[ネットワーク接続の問題](#Network-connectivity-issue)**
 
 ## <a name="causes-and-solutions"></a>原因とソリューション
 
@@ -77,5 +76,10 @@ Azure Site Recovery のデータ変更率制限はディスクの種類に基づ
 
 ### <a name="Network-connectivity-issue"></a>ネットワーク接続の問題
 
+#### <a name="network-latency-to-cache-storage-account-"></a>キャッシュ ストレージ アカウントへのネットワーク待機時間:
+ サイトの回復は、キャッシュ ストレージ アカウントにレプリケートされたデータを送信し、仮想マシンからキャッシュ ストレージ アカウントへのデータのアップロードが 3 秒に 4 MBより遅い場合、問題が発生する可能性があります。 待ち時間に関連する問題があるかどうかをチェックするには、[azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)を使用して、仮想マシンから、キャッシュ ストレージ アカウントにデータをアップロードします。<br>
+待ち時間が長い場合は、VM からの送信ネットワーク トラフィックを制御するためのネットワーク仮想アプライアンスを使用しているかどうか確認します。 この場合、すべてのレプリケーション トラフィックが NVA を通過すると、アプライアンスがスロットルされる可能性があります。 レプリケーション トラフィックが NVA に送られないように、"ストレージ" 用の仮想ネットワーク内にネットワーク サービス エンドポイントを作成することをお勧めします。 [ネットワーク仮想アプライアンスの構成](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)を参照してください
+
+#### <a name="network-connectivity"></a>ネットワーク接続
 Site Recovery レプリケーションを動作させるには、VM から特定の URL または IP 範囲への送信接続が必要です。 VM がファイアウォールの内側にあるか、ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御している場合は、次のいずれかの問題に直面することがあります。</br>
-[Site Recovery URL の送信接続](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors?#outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072)に関する記事をご覧ください。
+すべての URL が接続されていることを確認するには[Site Recovery URL に対する送信接続](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)を参照してください 

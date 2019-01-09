@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: clemensv
-ms.openlocfilehash: 3e1bdcc9340cc6cf997bebcdf1567bf676521ea5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 87a89ffd627454752924bfc69e44da87b071b5e5
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276130"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651437"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Azure Service Bus で仮想ネットワーク サービス エンドポイントを使用する
 
@@ -30,7 +30,7 @@ Service Bus と[仮想ネットワーク (VNet) サービス エンドポイン�
 >
 > 仮想ネットワークが実装されているときは信頼できる Microsoft サービスはサポートされませんが、近日中に使用できるようになります。
 >
-> 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください) -
+> 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
 > - Azure Monitor
 > - Azure Stream Analytics
 > - Azure Event Grid との統合
@@ -39,7 +39,7 @@ Service Bus と[仮想ネットワーク (VNet) サービス エンドポイン�
 > - Azure データ エクスプローラー
 >
 > 次の Microsoft サービスが仮想ネットワーク上に存在する必要があります
-> - Azure Web Apps 
+> - Azure App Service
 > - Azure Functions
 
 > [!IMPORTANT]

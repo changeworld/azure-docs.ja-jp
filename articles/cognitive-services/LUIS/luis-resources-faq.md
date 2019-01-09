@@ -1,21 +1,22 @@
 ---
-title: FAQ - よく寄せられる質問 - Language Understanding (LUIS)
+title: よく寄せられる質問 (FAQ)
 titleSuffix: Azure Cognitive Services
 description: この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: db8fc0b6926930521f11285dc56c886c10c42fc2
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 9e5b132a7946bdc648e051c9f7327cc7159f291e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649314"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163635"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding のよくあるご質問
 
@@ -60,6 +61,16 @@ Cortana 事前構築済みアプリは 2017 年に非推奨になりました。
 
 ## <a name="luis-endpoint"></a>LUIS エンドポイント
 
+### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>エンドポイントのクエリで予期していなかった結果が返されました。 どうすればよいですか。
+
+クエリで予期しない予測結果が返される原因は、公開されているモデルの状態にあります。 モデルを修正するには、モデルを変更し、トレーニングしてからもう一度公開することが必要になる場合があります。 
+
+モデルの修正は、[アクティブ ラーニング](luis-how-to-review-endoint-utt.md)から始まります。
+
+トレーニング データをすべて使用するために、[アプリケーションのバージョン設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) を更新して非決定論的トレーニングを削除することができます。 
+
+他のヒントについては、[ベスト プラクティス](luis-concept-best-practices.md)を参照してください。 
+
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>LUIS がクエリの単語の周りまたは途中にスペースを追加するのはなぜですか?
 LUIS は、[カルチャ](luis-language-support.md#tokenization)に基づいて発話を[トークン化](luis-glossary.md#token)します。 元の値とトークン化された値の両方を、[データ抽出](luis-concept-data-extraction.md#tokenized-entity-returned)に使用できます。
 
@@ -67,7 +78,7 @@ LUIS は、[カルチャ](luis-language-support.md#tokenization)に基づいて�
 Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) レベルの[エンドポイント キーを作成](luis-how-to-azure-subscription.md#create-luis-endpoint-key)します。 **[[Keys and endpoints]\(キーとエンドポイント\)](luis-how-to-manage-keys.md)** ページで[キーを割り当て](luis-how-to-manage-keys.md#assign-endpoint-key)ます。 このアクションに対応する API はありません。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md#use-endpoint-key-in-query)必要があります。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>LUIS のスコアを解釈するにはどうすればよいですか?
-システムは、その値に関係なく、最高のスコアの意図を使用する必要があります。 たとえば、スコアが 0.5 より低くても (50% 未満)、それは必ずしも LUIS の信頼度が低いことを意味するものではありません。 より多くのトレーニング データを提供すると、最も可能性の高い意図のスコアを上げるのに役立ちます。
+システムは、その値に関係なく、最高のスコアの意図を使用する必要があります。 たとえば、スコアが 0.5 より低くても (50% 未満)、それは必ずしも LUIS の信頼度が低いことを意味するものではありません。 より多くのトレーニング データを提供すると、最も可能性の高い意図の[スコア](luis-concept-prediction-score.md)を上げるのに役立ちます。
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>アプリのダッシュボードにエンドポイントのヒットが表示されないのはなぜですか?
 アプリのダッシュボードの合計エンドポイント ヒット数は定期的に更新されますが、Azure Portal で LUIS エンドポイント キーに関連付けられているメトリックの方がより頻繁に更新されます。
@@ -186,9 +197,9 @@ LUIS テンプレートを選択し、テンプレート ウィンドウで **[�
 
 ## <a name="luis-service"></a>LUIS サービス
 
-### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>オンプレミスまたはプライベート クラウドで LUIS を使用できますか?
-いいえ。
+### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>オンプレミスまたはプライベート クラウドで Language Understanding (LUIS) を使用できますか?
 
+はい。使用量を測定するために必要な接続があれば、それらのシナリオで LUIS [コンテナー](luis-container-howto.md)を使用できます。 
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Build 2018 Conference で Language Understanding の機能またはデモについて聞きましたが、名前を忘れました。
 
@@ -210,7 +221,7 @@ Build 2018 Conference では、次の機能がリリースされました。
 * [Build 2018 - LUIS 更新](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 プロジェクト:
-* [Contoso Cafe ボット](https://github.com/botbuilderbuild2018/build2018demo) デモ - Github 上のソース コード
+* [Contoso Cafe ボット](https://github.com/botbuilderbuild2018/build2018demo) デモ - GitHub 上のソース コード
 
 ## <a name="next-steps"></a>次の手順
 

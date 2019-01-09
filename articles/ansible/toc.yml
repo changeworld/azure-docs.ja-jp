@@ -41,6 +41,8 @@ items:
     href: ./ansible-create-configure-azure-web-apps.md
   - name: Azure Web Apps のスケール
     href: ./ansible-scale-azure-web-apps.md
+  - name: ルート テーブルの作成と構成
+    href: ./ansible-create-configure-route-table.md
 - name: リファレンス
   items:
   - name: プレイブックの役割
@@ -65,9 +67,9 @@ items:
   items:
   - name: Ansible 用 Visual Studio Code 拡張機能
     href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: f426841f2a02b085e34e9e2a768c43a052bf62f7
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: a54936953aa812cbe943394b9d083d8957f770ae
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409141"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789842"

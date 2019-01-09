@@ -3,21 +3,21 @@ title: SQL Database の拡張イベント | Microsoft Docs
 description: Azure SQL Database での拡張イベント (XEvents) について、またイベント セッションが Microsoft SQL Server におけるイベント セッションと若干異なる点について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 482faaea7089e095da13a2bae5f5937e20d50616
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a4971d680994c9d81e86a4070ea79365ac8ec4dd
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246754"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606488"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database の拡張イベント
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "51246754"
 
 Azure SQL Database と Microsoft SQL Server の拡張イベントについては、次のトピックをご覧ください。
 
-- [クイック スタート: SQL Server の拡張イベント](https://msdn.microsoft.com/library/mt733217.aspx)
+- [クイック スタート:SQL Server の拡張イベント](https://msdn.microsoft.com/library/mt733217.aspx)
 - [拡張イベント](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>前提条件

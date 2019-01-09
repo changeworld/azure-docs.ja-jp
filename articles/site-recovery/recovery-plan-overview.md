@@ -3,16 +3,17 @@ title: Azure Site Recovery を使用したディザスター リカバリーで�
 description: Azure Site Recovery サービスを使用したディザスター リカバリーで復旧計画を使用する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 463a7fc51cac6160fbb97fc53077d0b5eda80533
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c7d66c389958aa3b5274a3d81f27f416308acdee
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215193"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975663"
 ---
 # <a name="about-recovery-plans"></a>復旧計画について
 
@@ -60,11 +61,11 @@ ms.locfileid: "50215193"
 
 大規模なアプリケーションの復旧は複雑になる可能性があります。 手動でのステップ実行ではプロセスでエラーが発生しやすくなり、フェールオーバーを実行するユーザーがすべてのアプリの技術的詳細を把握していない可能性があります。 復旧計画は順序を指定し、各ステップで必要とされるアクションを自動化します。Azure へのフェールオーバーには Azure Automation の Runbook かスクリプトを使用します。 自動化できないタスクについては、手動アクションを実行するために、復旧計画に一時停止を挿入できます。 次の種類のタスクを構成できます。
 
-* **フェールオーバー後の Azure の仮想マシン上のタスク**: Azure にフェールオーバーするとき、通常はフェールオーバー後に仮想マシンに接続できるように、アクションを実行する必要があります。 例:  
+* **フェールオーバー後の Azure VM 上のタスク**:Azure にフェールオーバーするとき、通常はフェールオーバー後に仮想マシンに接続できるように、アクションを実行する必要があります。 例:  
     * Azure の仮想マシン上に パブリック IP アドレスを作成します。
     * Azure の仮想マシンのネットワーク アダプターにネットワーク セキュリティ グループに割り当てます。
     * 可用性セットにロード バランサーを追加します。
-* **フェールオーバー後の仮想マシン内のタスク**: これらのタスクは通常、マシンで実行されているアプリを再構成し、新しい環境で適切に動作し続けるようにします。 例: 
+* **フェールオーバー後の VM 内のタスク**:これらのタスクは通常、マシンで実行されているアプリを再構成し、新しい環境で適切に動作し続けるようにします。 例: 
     * マシン内のデータベース接続文字列を変更します。
     * Web サーバーの構成またはルールを変更します。
 

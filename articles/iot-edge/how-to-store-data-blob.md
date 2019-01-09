@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge デバイスでの Azure Blob Storage | Microsoft Docs
+title: デバイスでのブロック blob の格納 -Azure IoT Edge | Microsoft Docs
 description: Azure Blob Storage モジュールをご利用の IoT Edge デバイスにデプロイして、そのエッジにデータを格納します。
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fa88ff46b4fb93d55aa0087cca0e6184f3e087a0
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: e56d49208740686b51cdaef1bab778e2c08a9b58
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567283"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077922"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する (プレビュー)
 
@@ -105,7 +106,7 @@ IoT Edge デバイスにモジュールをデプロイするにはいくつか�
    > [!CAUTION]
    > **\<Storage directory bind>** の値 (Linux の場合は "/blobroot"、Windows の場合は "C:/BlobRoot") を変更しないでください。
 
-    ![モジュール値の更新](./media/how-to-store-data-blob/edit-module.png)
+    ![モジュール コンテナー作成オプション - ポータルの更新](./media/how-to-store-data-blob/edit-module.png)
 
 6. [IoT Edge Custom Modules]\(IoT Edge カスタム モジュール\) の値を**保存**します。
 7. [モジュールの設定] セクションで **[次へ]** をクリックします。
@@ -121,7 +122,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
 
 1. **[ビュー]** > **[コマンド パレット]** の順に選択します。 
 
-2. コマンド パレットで、**Azure IoT Edge: New IoT Edge Solution** コマンドを入力して実行します。 
+2. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。 
 
 3. プロンプトに従って新しいソリューションを作成します。 
 
@@ -149,7 +150,7 @@ VS Code は指定した情報を取り、IoT Edge ソリューションを作成
    {\"Env\": [\"LOCAL_STORAGE_ACCOUNT_NAME=$STORAGE_ACCOUNT_NAME\",\" LOCAL_STORAGE_ACCOUNT_KEY=$STORAGE_ACCOUNT_KEY\"],\"HostConfig\": {\"Binds\": [\"<storage directory bind>\"],\"PortBindings\": {\"11002/tcp\": [{\"HostPort\":\"11002\"}]}}}
    ```
 
-   ![モジュールの作成オプションの更新](./media/how-to-store-data-blob/create-options.png)
+   ![モジュール createOptions - VS Code の更新](./media/how-to-store-data-blob/create-options.png)
 
 4. 作成オプションの JSON で、ご利用のコンテナー オペレーティング システムに応じて `<storage directory bind>` を更新します。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。  
 

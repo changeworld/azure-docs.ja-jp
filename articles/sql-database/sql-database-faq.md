@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: c9b343bba59776ca735fa5c2cbddf03ec5c92b47
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/10/2018
+ms.openlocfilehash: 77cb60c1a459d7c3f98d902d82e5fef86e8c34f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242825"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541620"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database に関してよく寄せられる質問 (FAQ)
 
@@ -51,11 +51,11 @@ DTU ベースのモデルと仮想コアベースのモデルは並行して提�
 
 ## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>DTU ベースの購入モデルと仮想コアベースの購入モデルのどちらにするかは、どう選択すればよいですか
 
-データベース トランザクション ユニット (DTU) は、CPU、メモリ、読み取り、および書き込みの測定値を組み合わせて算出されます。 DTU ベースのコンピューティング サイズは、さまざまなレベルのアプリケーション パフォーマンスを実現するリソースの構成済みバンドルを表します。 基盤となるリソースを気にすることなく、毎月固定料金を支払いながら、構成済みバンドルのシンプルさを求めるお客様については、おそらく DTU ベースのモデルの方がニーズに適しています。 ただし、お客様が、基盤となるリソースに関して現在以上の分析情報を必要とする場合、またはそれらのリソースを個別にスケーリングして最適なパフォーマンスを実現する必要がある場合は、仮想コアベースのモデルが最適な選択肢です。  さらに、SQL Server のアクティブなソフトウェア アシュアランス (SA) を所有しているお客様は、[SQL Server 向け Azure ハイブリッド特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)で既存の投資を活用して、最大 30% を節約できます。  それぞれの購入モデルのオプションにより、自動化されたバックアップ、ソフトウェア更新プログラム、パッチなど、完全に管理されたサービスのメリットが得られます。
+データベース トランザクション ユニット (DTU) は、CPU、メモリ、読み取り、および書き込みの測定値を組み合わせて算出されます。 DTU ベースのコンピューティング サイズは、さまざまなレベルのアプリケーション パフォーマンスを実現するリソースの構成済みバンドルを表します。 基盤となるリソースを気にすることなく、毎月固定料金を支払いながら、構成済みバンドルのシンプルさを求めるお客様については、おそらく DTU ベースのモデルの方がニーズに適しています。 ただし、お客様が、基盤となるリソースに関して現在以上の分析情報を必要とする場合、またはそれらのリソースを個別にスケーリングして最適なパフォーマンスを実現する必要がある場合は、仮想コアベースのモデルが最適な選択肢です。  さらに、SQL Server のアクティブなソフトウェア アシュアランス (SA) を所有しているお客様は、[SQL Server 向け Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)で既存の投資を活用して、最大 30% を節約できます。  それぞれの購入モデルのオプションにより、自動化されたバックアップ、ソフトウェア更新プログラム、パッチなど、完全に管理されたサービスのメリットが得られます。
 
 ## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典とは何ですか
 
-[SQL Server 向け Azure ハイブリッド特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)は、既存のライセンス投資価値を最大限に高め、クラウドへの移行を促進するうえで役立ちます。 SQL Server 向け Azure ハイブリッド特典は、Azure ベースの特典であり、ソフトウェア アシュアランス付きの SQL Server ライセンスを使用して、SQL Database の支払いに割引料金 ("基本料金") を適用できます。 SQL Server 向け Azure ハイブリッド特典は、仮想コアベースの購入モデル (SQL Database の単一データベースおよびエラスティック プール) のパブリック プレビューでご利用いただけます。 この特典は、SKU がアクティブな場合でも適用できます。ただし、基本料金が適用されるのは、Azure Portal で選択した時点からである点にご注意ください。 以前にさかのぼってクレジットが発行されることはありません。
+[SQL Server 向け Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)は、既存のライセンス投資価値を最大限に高め、クラウドへの移行を促進するうえで役立ちます。 SQL Server 向け Azure ハイブリッド特典は、Azure ベースの特典であり、ソフトウェア アシュアランス付きの SQL Server ライセンスを使用して、SQL Database の支払いに割引料金 ("基本料金") を適用できます。 SQL Server 向け Azure ハイブリッド特典は、仮想コアベースの購入モデル (SQL Database の単一データベースおよびエラスティック プール) のパブリック プレビューでご利用いただけます。 この特典は、SKU がアクティブな場合でも適用できます。ただし、基本料金が適用されるのは、Azure Portal で選択した時点からである点にご注意ください。 以前にさかのぼってクレジットが発行されることはありません。
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典では、二重使用権がサポートされていますか
 
@@ -127,13 +127,13 @@ Microsoft の目標は、アプリケーションのニーズに近いパフォ�
 
 ## <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>General Purpose サービス レベルと Business Critical サービス レベルの間で、アップグレードまたはダウングレードできますか
 
-はい。ただし、制限がいくつかあります。 使用している既存のデプロイに対して構成した、データベースまたはエラスティック プールの最大サイズを、移行先 SKU が満たす必要があります。 [SQL Server 向け Azure ハイブリッド特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を使用している場合、Business Critical SKU をご利用いただけるのは、Enterprise Edition ライセンスをお持ちのお客様のみです。 Enterprise Edition ライセンスを持つお客様が、SQL Server 向け Azure ハイブリッド特典を使用してオンプレミスから General Purpose に移行した場合にのみ、Business Critical にアップグレードできます。 詳細については、[SQL Server 向け Azure ハイブリッド特典の具体的な権限](../virtual-machines/windows/hybrid-use-benefit-licensing.md)に関するページをご覧ください。
+はい。ただし、制限がいくつかあります。 使用している既存のデプロイに対して構成した、データベースまたはエラスティック プールの最大サイズを、移行先 SKU が満たす必要があります。 [SQL Server 向け Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用している場合、Business Critical SKU をご利用いただけるのは、Enterprise Edition ライセンスをお持ちのお客様のみです。 Enterprise Edition ライセンスを持つお客様が、SQL Server 向け Azure ハイブリッド特典を使用してオンプレミスから General Purpose に移行した場合にのみ、Business Critical にアップグレードできます。 詳細については、[SQL Server 向け Azure ハイブリッド特典の具体的な権限](https://azure.microsoft.com/pricing/hybrid-benefit/)に関するページをご覧ください。
 
 この変換によるダウンタイムはありません。また、Azure portal、PowerShell、Azure CLI、T-SQL、または REST API を使用して開始できます。 [単一データベースの管理](sql-database-single-database-scale.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
 
 ## <a name="i-am-using-a-premium-rs-database-that-will-not-be-generally-available---can-i-upgrade-it-to-a-new-tier-and-achieve-a-similar-priceperformance-benefit"></a>一般公開されない Premium RS データベースを使用しています。これを新しいレベルにアップグレードして、同様の価格/パフォーマンス上のメリットを得ることができますか
 
-仮想コアモデルでは、プロビジョニングされたコンピューティングとストレージの量を個別に制御でき、結果として生じるコストをより効率的に管理できるため、Premium RS データベースの魅力的な移行先となっています。 さらに、仮想コアベースのモデルを使用する場合、[SQL Server 向け Azure ハイブリッド特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)により大幅な割引を受けることができます。
+仮想コアモデルでは、プロビジョニングされたコンピューティングとストレージの量を個別に制御でき、結果として生じるコストをより効率的に管理できるため、Premium RS データベースの魅力的な移行先となっています。 さらに、仮想コアベースのモデルを使用する場合、[SQL Server 向け Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)により大幅な割引を受けることができます。
 
 ## <a name="how-often-can-i-adjust-the-resources-per-pool"></a>各プールのリソースはどのくらいの頻度で調整できますか
 
@@ -196,9 +196,9 @@ DTU ベースの購入モデルの例:
 > [!NOTE]
 > バックアップと IO の料金は期間限定で無料です。
 
-## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>エラスティック プールでアクティブ geo レプリケーションを使用した場合、請求書にはどのように表示されますか
+## <a name="how-does-the-use-of-active-geo-replication-or-auto-failover-groups-in-an-elastic-pool-show-up-on-my-bill"></a>エラスティック プールでアクティブ geo レプリケーションまたは自動フェールオーバー グループを使用した場合、請求書にはどのように表示されますか
 
-エラスティック データベースで [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md) を使用した場合、単一データベースとは異なり、請求書には直接の影響はありません。  各プール (プライマリ プールおよびセカンダリ プール) にプロビジョニングされたリソースに対してのみ課金されます
+エラスティック データベースで[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)または[自動フェールオーバー グループ](sql-database-auto-failover-group.md)を使用した場合、単一データベースとは異なり、請求書には直接の影響はありません。 各プール (プライマリ プールおよびセカンダリ プール) にプロビジョニングされたリソースに対してのみ課金されます
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>監査機能を使用すると請求書にどのような影響がありますか
 
@@ -217,7 +217,7 @@ DTU ベースの購入モデルの例:
 
 ## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>承認した IP アドレスにのみサーバーへのアクセスを許可するにはどうすればよいですか
 
-「 [方法: ファイアウォール設定を構成する (SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+「[方法:ファイアウォール設定を構成する (SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>同じ Azure 地理的条件内で 2 つのリージョン間のデータベースを geo レプリケートする場合に予想されるレプリケーションの遅延はどのくらいですか
 

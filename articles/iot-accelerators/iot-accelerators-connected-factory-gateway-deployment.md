@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: ce2391014eb5e15650c0a81ebb8e2fd4a08ca96b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139226"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599946"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>接続済みファクトリ ソリューション アクセラレータ用のエッジ ゲートウェイを Windows または Linux にデプロイする
 
@@ -70,7 +70,7 @@ Docker コマンドで `<SharedFolder>` を参照するときは、必ずオペ�
 
 OPC コンポーネントをインストールする前に、次の手順を完了して環境を準備してください。
 
-1. ゲートウェイのデプロイを完了するには、接続済みファクトリのデプロイに IoT ハブの  **iothubowner** 接続文字列が必要です。  [Azure portal](http://portal.azure.com/) で、接続済みファクトリ ソリューションのデプロイ時に作成したリソース グループの IoT ハブに移動します。  **[共有アクセス ポリシー]** をクリックして  **iothubowner** 接続文字列にアクセスします。
+1. ゲートウェイのデプロイを完了するには、接続済みファクトリのデプロイに IoT ハブの  **iothubowner** 接続文字列が必要です。  [Azure portal](https://portal.azure.com/) で、接続済みファクトリ ソリューションのデプロイ時に作成したリソース グループの IoT ハブに移動します。  **[共有アクセス ポリシー]** をクリックして  **iothubowner** 接続文字列にアクセスします。
 
     ![IoT Hub 接続文字列を見つける](./media/iot-accelerators-connected-factory-gateway-deployment/image2.png)
 

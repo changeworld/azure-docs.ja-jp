@@ -10,18 +10,18 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f02c495c7448334529de2d5b42cda02206daea0d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229681"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877974"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 
-Microsoft Translator サービスの機能である Microsoft Custom Translator (プレビュー) を使用すると、ユーザーは Translator Text API (バージョン 3 のみ) を使用してテキストを翻訳するときに、Microsoft Translator の高度なニューラル機械翻訳をカスタマイズすることができます。
+Microsoft Translator サービスの機能である Microsoft カスタム トランスレーターを使用すると、ユーザーは Translator Text API (バージョン 3 のみ) を使用してテキストを翻訳するときに、Microsoft Translator の高度なニューラル機械翻訳をカスタマイズすることができます。
 
-この機能を [Cognitive Services Speech (プレビュー)](https://docs.microsoft.com/azure/cognitive-services/speech-service/) と使用すると、音声の翻訳をカスタマイズすることもできます。
+この機能を [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/) と組み合わせて使用し、音声の翻訳をカスタマイズすることもできます。
 
 ## <a name="custom-translator"></a>Custom Translator
 
@@ -48,7 +48,7 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 
 |   | **ハブ** | **Custom Translator**|
 |:-----|:----:|:----:|
-|カスタマイズ機能の状態   | 一般公開  | プレビュー |
+|カスタマイズ機能の状態   | 一般公開  | 一般公開 |
 | Text API バージョン  | V2 のみ   | V3 のみ |
 | SMT のカスタマイズ | [はい]   | いいえ  |
 | NMT のカスタマイズ | いいえ     | [はい] |

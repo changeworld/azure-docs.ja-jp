@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 77a57afda3859de4a246c15d3b5c0b4ba8e2a8c8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 87003a053823cfc257a3b6f41699feefadbbcc66
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039002"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835167"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>PIM で Azure AD ディレクトリ ロールの設定を構成する
 
@@ -50,7 +50,15 @@ ms.locfileid: "47039002"
 
 ## <a name="notifications"></a>通知
 
-**[通知]** スイッチを使用して、管理者に対してロールのアクティブ化を確認するメールを送信するかどうかを指定します。 これは、不正なアクティブ化の検出に役立ちます。
+**[通知]** スイッチを使用して、ロールがアクティブになったときに管理者がメール通知を受け取るかどうかを指定します。 これは、不正なアクティブ化の検出に役立ちます。
+
+**[有効]** に設定すると、通知が送信されます。
+
+- 特権ロール管理者
+- セキュリティ管理者
+- グローバル管理者
+
+詳しくは、「[PIM での電子メール通知](pim-email-notifications.md)」をご覧ください。
 
 ## <a name="incidentrequest-ticket"></a>インシデント/要求チケット
 

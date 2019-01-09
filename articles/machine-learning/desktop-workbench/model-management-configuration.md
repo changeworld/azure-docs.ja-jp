@@ -2,8 +2,8 @@
 title: Azure Machine Learning モデル管理のセットアップと構成 | Microsoft Docs
 description: このドキュメントでは、Azure Machine Learning でのモデル管理の設定と構成に関連する手順および概念について説明します。
 services: machine-learning
-author: raymondlaghaeian
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6660657141cc5aac532d121b61c7c8db6a24ccda
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d10f61e6276b1ce0a0237e3cf2e35a68edf4a0cf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968715"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257582"
 ---
 # <a name="model-management-setup"></a>モデル管理のセットアップ
 

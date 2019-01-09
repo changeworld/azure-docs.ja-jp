@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ca12c7a3fe8a5ade8cf0e4ce00977bdcc9a300a6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8b0f5e2941878cf91a60c2dca5497e4e50b6ea01
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007656"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077768"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Azure Data Factory を使用して Google BigQuery からデータをコピーする
 
@@ -124,7 +124,12 @@ Google BigQuery のリンクされたサービスでは、次のプロパティ�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Google BigQuery データセットでサポートされるプロパティの一覧を示します。
 
-Google BigQuery からデータをコピーするには、データセットの type プロパティを **GoogleBigQueryObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+Google BigQuery からデータをコピーするには、データセットの type プロパティを **GoogleBigQueryObject** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります:**GoogleBigQueryObject** | [はい] |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -136,7 +141,8 @@ Google BigQuery からデータをコピーするには、データセットの 
         "linkedServiceName": {
             "referenceName": "<GoogleBigQuery linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -152,7 +158,7 @@ Google BigQuery からデータをコピーするには、コピー アクティ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは **GoogleBigQuerySource** に設定する必要があります。 | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

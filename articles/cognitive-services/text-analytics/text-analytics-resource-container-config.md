@@ -1,21 +1,22 @@
 ---
 title: コンテナーを構成する
-titlesuffix: Text Analytics - Cognitive Services - Azure
-description: Text Analytics コンテナーの構成設定です。
+titlesuffix: Text Analytics - Azure Cognitive Services
+description: Text Analytics ではコンテナーごとに一般的な構成フレームワークが提供されているので、コンテナーのストレージ、ログとテレメトリ、セキュリティの設定を簡単に構成して、管理できます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 0f6b8fa27d2db45be2c677a52c53cff5847acf4a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 7e993b9ccc57359ac64186765b7b704535eb5a57
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634927"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086676"
 ---
 # <a name="configure-containers"></a>コンテナーを構成する
 
@@ -92,7 +93,7 @@ Text Analytics コンテナーからコンテナーをインスタンス化す�
 
 ## <a name="billing-configuration-setting"></a>Billing 構成設定
 
-`Billing` 構成設定は、コンテナーの課金情報を追跡するために使用される Azure の Text Analytics リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の Text Analytics リソースの有効なエンドポイント URI である必要があります。
+`Billing` 構成設定は、コンテナーの課金情報を測定するために使用される Azure の Text Analytics リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の Text Analytics リソースの有効なエンドポイント URI である必要があります。
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting)、[`Eula`](#eula-configuration-setting) 構成設定は一緒に使用し、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、コンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](how-tos/text-analytics-how-to-install-containers.md#billing)」を参照してください。
@@ -103,6 +104,8 @@ Text Analytics コンテナーからコンテナーをインスタンス化す�
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting)、[`Eula`](#eula-configuration-setting) 構成設定は一緒に使用し、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、コンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](how-tos/text-analytics-how-to-install-containers.md#billing)」を参照してください。
+
+Cognitive Services のコンテナーは、Azure の使用について定める[契約](https://go.microsoft.com/fwlink/?linkid=2018657)の下でライセンスされます。 Azure の使用について定める契約をまだ結んでいない場合、Azure の使用について定める契約が[マイクロソフト オンライン サブスクリプション契約](https://go.microsoft.com/fwlink/?linkid=2018755) ([オンライン サービス規約](https://go.microsoft.com/fwlink/?linkid=2018760)を含む) であることに同意するものとします。 また、プレビューに関しては、「[Microsoft Azure プレビューの追加使用条件](https://go.microsoft.com/fwlink/?linkid=2018815)」にも同意するものとします。 コンテナーの使用をもって、お客様はこれらの規約に同意したものとします。
 
 ## <a name="fluentd-configuration-settings"></a>Fluentd 構成設定
 

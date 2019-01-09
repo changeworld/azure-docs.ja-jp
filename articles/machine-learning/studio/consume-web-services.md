@@ -1,11 +1,11 @@
 ---
-title: Azure Machine Learning Web サービスを使用する方法 | Microsoft Docs
-description: 機械学習サービスがデプロイされると、利用可能になっている RESTFul Web サービスを、リアルタイムの要求応答サービスまたはバッチ実行サービスのいずれかとして使用できます。
+title: Web サービスを使用する - Azure Machine Learning Studio | Microsoft Docs
+description: Azure Machine Learning Studio から機械学習サービスがデプロイされると、リアルタイムの要求応答サービスまたはバッチ実行サービスのいずれかとして、RESTFul Web サービスを使用できます。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: b89fb0fbb499fa06c9e56f02937b1c586efde9b6
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d7a48dcb56d2bed0e84714087bb9fda3fae65fc1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833379"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273784"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Azure Machine Learning Web サービスを使用する方法
+# <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Azure Machine Learning Studio Web サービスを使用する方法
 
 Azure Machine Learning の予測モデルを Web サービスとしてデプロイすると、REST API を使用してデータを送信し、予測を取得することができます。 リアルタイムまたはバッチ モードでデータを送信できます。
 
@@ -32,7 +32,7 @@ Machine Learning Studio を使用して Machine Learning Web サービスを作�
 * Web サービスをデプロイする方法の詳細については、「 [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)」をご覧ください。
 * Machine Learning 全般の詳細については、 [Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="overview"></a>概要
 Azure Machine Learning Web サービスを使用して、外部のアプリケーションが Machine Learning のワークフローのスコア付けモデルとリアルタイムで通信します。 Machine Learning Web サービスの呼び出しは、予測結果を外部のアプリケーションに返します。 Machine Learning Web サービスの呼び出しを実行するために、予測のデプロイ時に作成される API キーを渡します。 Machine Learning Web サービスは、Web プログラミング プロジェクトでよく選択されるアーキテクチャの REST に基づいています。
@@ -101,13 +101,13 @@ Machine Learning Web サービスに接続するには、**Microsoft.AspNet.WebA
 
 **Microsoft.AspNet.WebApi.Client NuGet in Visual Studio をインストールする**
 
-1. 「UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」Web サービスを発行します。
+1. Web Service "UCI からデータセットをダウンロード: Adult 2 class dataset" を公開します。
 2. **[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順にクリックします。
 3. **[Install-Package Microsoft.AspNet.WebApi.Client]** を選択します。
 
 **サンプル コードを実行するには**
 
-1. Machine Learning サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験を発行します。
+1. Machine Learning サンプル コレクションに含まれる "サンプル 1: UCI からデータセットをダウンロード: Adult 2 class dataset" 実験を公開します。
 2. Web サービスからのキーを持つ apiKey を割り当てます。 前述の「 **Azure Machine Learning の承認キーを取得する** 」をご覧ください。
 3. 要求の URI を含む serviceUri を割り当てます。
 
@@ -203,7 +203,7 @@ Machine Learning Web サービスに接続するには、Python 2.X の場合は
 
 **サンプル コードを実行するには**
 
-1. Machine Learning サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験をデプロイします。
+1. Machine Learning サンプル コレクションに含まれる "Sample 1: UCI からデータセットをダウンロード: Adult 2 class dataset" 実験を公開します。
 2. Web サービスからのキーを持つ apiKey を割り当てます。 この記事の冒頭の「**Azure Machine Learning の承認キーを取得する**」セクションをご覧ください。
 3. 要求の URI を含む serviceUri を割り当てます。
 

@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: c7626c6edceddcfbd4d95ff6efc4678836a4502c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2f9c4c0b973efe26e6ece2235f2d0c7a6878ebef
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247995"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844993"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 
@@ -111,8 +111,8 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 6. VSS スナップショットを作成しているアプリと競合していないことを確認します。 複数のアプリが同時に VSS スナップショットを作成しようとしている場合は、競合が発生することがあります。 たとえば、レプリケーション ポリシーで Site Recovery がスナップショットを作成するようにスケジュールされているときに、Backup アプリが VSS スナップショットを作成している場合です。   
 7. VM で高いチャーン レートが発生しているかどうかを確認します。
     - Hyper-V ホスト上のパフォーマンス カウンターを使用して、ゲスト VM での 1 日のデータ変更レートを測定できます。 データ変更レートを測定するには、次のカウンターを有効にします。 5 ～ 15 分間の VM ディスクにまたがるこの値のサンプルを集計して、VM のチャーンを取得します。
-        - カテゴリ: “Hyper-V 仮想ストレージ デバイス”
-        - カウンター: “Write Bytes / Sec”</br>
+        - カテゴリ:"Hyper-V 仮想ストレージ デバイス"
+        - カウンター:"Write Bytes / Sec"</br>
         - このデータ チャーン レートは、VM またはそのアプリがどれだけビジー状態にあるかに応じて、上昇するか、または高いレベルにとどまります。
         - ソース ディスクの平均データ チャーンは、Site Recovery の標準ストレージで 2 MB/秒です。 [詳細情報](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - さらに、[ストレージのスケーラビリティ ターゲットを確認](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account)できます。
@@ -125,7 +125,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 1. VSS エラーのイベント ログと推奨事項を確認します。
     - Hyper-V ホスト サーバー上で、**Event Viewer** > **Applications and Services Logs** > **Microsoft** > **Windows** > **Hyper-V** > **Admin** にある Hyper-V Admin イベント ログを開きます。
     - アプリ整合性スナップショットの失敗を示す何らかのイベントが存在するかどうかを確認します。
-    - 代表的なエラーは次のとおりです。"Hyper-V は仮想マシン 'XYZ' の VSS スナップショット セットを生成できませんでした: ライタで一過性ではないエラーが発生しました。 サービスが無応答である場合は、VSS サービスの再起動によって問題が解決される可能性があります。"
+    - 代表的なエラーは次のとおりです:"Hyper-V は仮想マシン 'XYZ' の VSS スナップショット セットを生成できませんでした:ライターで一過性ではないエラーが発生しました。 サービスが無応答である場合は、VSS サービスの再起動によって問題が解決される可能性があります。"
 
 2. VM の VSS スナップショットを生成するには、その VM に Hyper-V Integration Services がインストールされており、Backup (VSS) Integration Services が有効になっていることを確認します。
     - ゲスト上で Integration Services VSS サービス/デーモンが実行され、**[OK]** の状態になっていることを確認します。
@@ -136,7 +136,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 
 **エラー コード** | **メッセージ** | **詳細**
 --- | --- | ---
-**0x800700EA** | "Hyper-V は仮想マシンの VSS スナップショット セットを生成できませんでした: 詳細なデータを入手できます。 (0x800700EA)。 バックアップ操作が進行中の場合は、VSS スナップショット セットの生成が失敗する可能性があります。<br/><br/> 仮想マシンのレプリケーション操作が失敗しました: 詳細なデータを入手できます。" | VM でダイナミック ディスクが有効になっているかどうかを確認します。 これはサポートされていません。
+**0x800700EA** | "Hyper-V は仮想マシンの VSS スナップショット セットを生成できませんでした:詳細なデータを入手できます。 (0x800700EA)。 バックアップ操作が進行中の場合は、VSS スナップショット セットの生成が失敗する可能性があります。<br/><br/> 仮想マシンのレプリケーション操作が失敗しました:詳細なデータを入手できます。" | VM でダイナミック ディスクが有効になっているかどうかを確認します。 これはサポートされていません。
 **0x80070032** | "Hyper-V ボリューム シャドウ コピー リクエスタは、バージョンが Hyper-V で予測されたバージョンに一致しないため、仮想マシン <./VMname> に接続できませんでした | 最新の Windows 更新プログラムがインストールされているかどうかを確認します。<br/><br/> 最新バージョンの Integration Services への[アップグレード](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)。
 
 

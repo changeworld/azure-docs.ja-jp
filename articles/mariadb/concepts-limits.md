@@ -3,23 +3,21 @@ title: Azure Database for MariaDB の制限事項
 description: この記事では、Azure Database for MariaDB の制限 (接続数やストレージ エンジンのオプションなど) について説明します。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: ac05a2dcee3adaa93d31e28e5597a788c0159ddd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/03/2018
+ms.openlocfilehash: e611c5e11d3c86474a7775971918ba95b8487da4
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955437"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970289"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の制限事項
-Azure Database for MariaDB サービスはパブリック プレビューの段階です。 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。
+以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。
 
 ## <a name="maximum-connections"></a>最大接続数
-プレビュー期間中の価格レベルと仮想コアごとの最大接続数は、次のとおりです。
+価格レベルと仮想コアごとの最大接続数は次のとおりです。
 
 |**価格レベル**|**仮想コア数**| **最大接続数**|
 |---|---|---|
@@ -36,7 +34,7 @@ Azure Database for MariaDB サービスはパブリック プレビューの段�
 |メモリ最適化| 16| 5000|
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
-> ERROR 1040 (08004): Too many connections
+> ERROR 1040 (08004):Too many connections (接続が多すぎます)
 
 ## <a name="storage-engine-support"></a>ストレージ エンジンのサポート
 
@@ -46,14 +44,14 @@ Azure Database for MariaDB サービスはパブリック プレビューの段�
 
 ### <a name="unsupported"></a>サポートされていません
 - [MyISAM](https://mariadb.com/kb/en/library/myisam-storage-engine/)
-- [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/l)
+- [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
 - [ARCHIVE](https://mariadb.com/kb/en/library/archive/)
 
 ## <a name="privilege-support"></a>権限のサポート
 
 ### <a name="unsupported"></a>サポートされていません
-- DBA ロール: DBA ロールでは、多くのサーバー パラメーターおよび設定によって、誤ってサーバー パフォーマンスを低下させたり、DBMS の ACID プロパティを負数にしてしまったりする恐れがあります。 そのため、製品レベルのサービス整合性と SLA を維持するために、このサービスでは、DBA ロールを公開していません。 新しいデータベース インスタンスの作成時に構成される既定のユーザー アカウントによって、ユーザーは管理データベース インスタンスでほとんどの DDL および DML ステートメントを実行できます。
-- SUPER 権限: 同様に、SUPER 権限 ([SUPER 権限について](https://mariadb.com/kb/en/library/grant/#global-privileges)の記述を参照) も制限されています。
+- DBA ロール:多くのサーバー パラメーターおよび設定によって、誤ってサーバー パフォーマンスを低下させたり、DBMS の ACID プロパティを負数にしてしまったりする恐れがあります。 そのため、製品レベルのサービス整合性と SLA を維持するために、このサービスでは、DBA ロールを公開していません。 新しいデータベース インスタンスの作成時に構成される既定のユーザー アカウントによって、ユーザーは管理データベース インスタンスでほとんどの DDL および DML ステートメントを実行できます。
+- SUPER 権限:同様に、[SUPER 権限](https://mariadb.com/kb/en/library/grant/#global-privileges)も制限されています。
 
 ## <a name="data-manipulation-statement-support"></a>データ操作ステートメントのサポート
 

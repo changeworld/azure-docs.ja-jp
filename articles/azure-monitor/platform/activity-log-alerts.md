@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 412ec0a7d2cd8574aadf6e9f104407792ddb29ed
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a09dcfbffb6daa2ae2514c608e88c8dc475c9676
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341527"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581438"
 ---
 # <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート 
 
@@ -28,11 +28,11 @@ ms.locfileid: "53341527"
 * Azure サブスクリプションでリソースに特定の操作が発生した場合。多くの場合、特定のリソース グループまたはリソースを対象とします。 たとえば、myProductionResourceGroup 内の仮想マシンが削除されたときに通知を受け取ることができます。 また、サブスクリプション内のユーザーに新しい役割が割り当てられた場合に通知を受け取ることもできます。
 * サービス正常性イベントが発生した場合。 サービス正常性イベントには、サブスクリプション内のリソースに適用されるインシデント イベントとメンテナンス イベントの通知が含まれます。
 
-アクティビティ ログに対してアラート ルールを作成する状況を簡単にたとえるとすれば、[Azure portal のアクティビティ ログ](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal)でイベントを探索したりフィルター処理したりするのに似ています。 Azure Monitor のアクティビティ ログでは、必要なイベントを検索またはフィルター処理し、次に **[アクティビティ ログ アラートの追加]** をクリックすることでアラートを作成できます。
+アクティビティ ログに対してアラート ルールを作成する状況を簡単にたとえるとすれば、[Azure portal のアクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal)でイベントを探索したりフィルター処理したりするのに似ています。 Azure Monitor のアクティビティ ログでは、必要なイベントを検索またはフィルター処理し、次に **[アクティビティ ログ アラートの追加]** をクリックすることでアラートを作成できます。
 
 いずれの場合でも、アクティビティ ログ アラートでは、アラートが作成されたサブスクリプション内のイベントのみが監視されます。
 
-JSON オブジェクトの任意の最上位プロパティに基づいて、アクティビティ ログ イベントのアクティビティ ログ アラートを構成できます。 詳細については、[Azre アクティビティ ログの概要](./../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#categories-in-the-activity-log)に関する記事を参照してください。 サービス正常性イベントについて詳しくは、[サービス通知のアクティビティ ログ アラートの受け取り](./../../azure-monitor/platform/alerts-activity-log-service-notifications.md)に関する記事をご覧ください。 
+JSON オブジェクトの任意の最上位プロパティに基づいて、アクティビティ ログ イベントのアクティビティ ログ アラートを構成できます。 詳細については、[Azre アクティビティ ログの概要](./../../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log)に関する記事を参照してください。 サービス正常性イベントについて詳しくは、[サービス通知のアクティビティ ログ アラートの受け取り](./../../azure-monitor/platform/alerts-activity-log-service-notifications.md)に関する記事をご覧ください。 
 
 アクティビティ ログ アラートには、次のような一般的なオプションがいくつか用意されています。
 
@@ -64,5 +64,5 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 - [アラートの概要](../../azure-monitor/platform/alerts-overview.md)について把握します。
 - [アクティビティ ログ アラートの作成と変更](../../azure-monitor/platform/alerts-activity-log.md)について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](activity-log-alerts-webhook.md)を確認します。
-- [サービス正常性の通知](../../monitoring-and-diagnostics/monitoring-service-notifications.md)について学習します。
+- [サービス正常性の通知](../../azure-monitor/platform/service-notifications.md)について学習します。
 

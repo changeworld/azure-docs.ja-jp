@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/02/2018
+ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: d5a4cfa3a91b82aa0f5b1725f86c732fecf632d4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2ea94e79fdcc331554f42e2396d954af7cb979d8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405448"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850076"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>セキュリティ強化のための Azure Security Center Standard へのオンボード
-ハイブリッド クラウドのワークロードで強化されたセキュリティ管理と脅威保護を利用するには、Security Center Standard にアップグレードします。  Standard は 60 日間無料で試用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
+ハイブリッド クラウドのワークロードで強化されたセキュリティ管理と脅威保護を利用するには、Security Center Standard にアップグレードします。  Standard は無料で試用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
 
 Security Center Standard は次の機能を備えています。
 
@@ -63,7 +63,7 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>**[使用の開始]** から新しい Azure 以外のコンピューターを追加する
 
 1. **[使用の開始]** に戻ります。   
-2. **[Get started] (使用の開始)** タブを選択します。
+2. **[作業の開始]** タブを選択します。
 
   ![Azure 以外](./media/security-center-onboarding/non-azure.png)
 

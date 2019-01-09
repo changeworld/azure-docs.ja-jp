@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: bd5082d9f66e65bb487c9216131b7e13f825340e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8b43ef81385f1d185fdd63d2a33453c75684fd21
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246652"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969926"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -38,7 +38,7 @@ ms.locfileid: "51246652"
 ```xml  
 <cross-domain>  
    <!-Policy configuration is in the Adobe cross-domain policy file format,   
-      see http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html-->  
+      see https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html-->  
 </cross-domain>  
 ```  
   
@@ -56,7 +56,7 @@ ms.locfileid: "51246652"
   
 |Name|説明|必須|  
 |----------|-----------------|--------------|  
-|cross-domain|ルート要素。 子要素は、[Adobe cross-domain ポリシー ファイルの仕様](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)に従う必要があります。|[はい]|  
+|cross-domain|ルート要素。 子要素は、[Adobe cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)に従う必要があります。|はい|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -125,9 +125,9 @@ ms.locfileid: "51246652"
   
 |Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|cors|ルート要素。|[はい]|該当なし|  
-|allowed-origins|クロス ドメイン要求で許可される配信元を示す `origin` 要素を含みます。 `allowed-origins` に含めることができるのは、すべての配信元を許可する `*`を含む 1 つの `origin` 要素か、URI を含む 1 つ以上の `origin` 要素です。|[はい]|該当なし|  
-|origin|値として使用できるのは、すべての配信元を許可する `*` か、1 つの配信元を指定する URI です。 URI には、スキーム、ホスト、およびポートを含める必要があります。|[はい]|URI でポートが省略されると、HTTP ではポート 80、HTTPS ではポート 443 が使用されます。|  
+|cors|ルート要素。|はい|該当なし|  
+|allowed-origins|クロス ドメイン要求で許可される配信元を示す `origin` 要素を含みます。 `allowed-origins` に含めることができるのは、すべての配信元を許可する `*`を含む 1 つの `origin` 要素か、URI を含む 1 つ以上の `origin` 要素です。|はい|該当なし|  
+|origin|値として使用できるのは、すべての配信元を許可する `*` か、1 つの配信元を指定する URI です。 URI には、スキーム、ホスト、およびポートを含める必要があります。|はい|URI でポートが省略されると、HTTP ではポート 80、HTTPS ではポート 443 が使用されます。|  
 |allowed-methods|この要素は、GET または POST 以外のメソッドが許可される場合に必須です。 サポートされる HTTP 動詞を指定する `method` 要素が含まれます。|いいえ |このセクションが存在しない場合、GET と POST がサポートされます。|  
 |method|HTTP 動詞を指定します。|`allowed-methods` セクションが存在する場合、少なくとも 1 つの `method` 要素が必要です。|該当なし|  
 |allowed-headers|この要素には、要求に組み込むことができるヘッダーの名前を指定する `header` 要素が含まれます。|いいえ |該当なし|  
@@ -170,13 +170,13 @@ ms.locfileid: "51246652"
   
 |Name|説明|必須|  
 |----------|-----------------|--------------|  
-|jsonp|ルート要素。|[はい]|  
+|jsonp|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
 |Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|callback-parameter-name|関数が含まれる完全修飾ドメイン名をプレフィックスとするクロスドメイン JavaScript 関数呼び出し。|[はい]|該当なし|  
+|callback-parameter-name|関数が含まれる完全修飾ドメイン名をプレフィックスとするクロスドメイン JavaScript 関数呼び出し。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  

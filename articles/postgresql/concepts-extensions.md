@@ -1,20 +1,17 @@
 ---
 title: Azure Database for PostgreSQL での PostgreSQL 拡張機能の使用
 description: Azure Database for PostgreSQL で拡張機能を使用して、データベースの機能を拡張する方法について説明します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 43db0e66c05b6b5c3331d3fba3e4db363d61c9f8
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d6d5a8500435a540f091a082e7dc0e0d6d455716
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624354"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540845"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを 1 つのパッケージにまとめて、1 つのコマンドでデータベースに読み込んだり、データベースから削除したりできます。 データベースに読み込まれた拡張機能は、組み込み機能と同じように動作します。 PostgreSQL 拡張機能の詳細については、「 [Packaging Related Objects into an Extension (拡張機能への関連オブジェクトのパッケージ化)](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)」をご覧ください。
@@ -89,6 +86,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | タプル レベルの統計を表示するための手段を提供します。 |
 | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | 外部 PostgreSQL サーバーに格納されているデータへのアクセスに使用される外部データ ラッパーです。 |
 | [hypopg](https://hypopg.readthedocs.io/en/latest/) | CPU やディスク コストのない仮定のインデックスを作成する手段の提供。 |
+| [dblink](https://www.postgresql.org/docs/current/dblink.html) | データベース セッション内から他の PostgreSQL データベースへの接続をサポートするモジュール。 |
 
 
 ### <a name="postgis-extensions"></a>PostGIS 拡張機能

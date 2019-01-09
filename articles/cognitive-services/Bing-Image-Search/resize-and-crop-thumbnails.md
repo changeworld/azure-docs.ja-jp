@@ -1,6 +1,7 @@
 ---
-title: Bing のサムネイルのサイズ変更とトリミング - Bing Image Search API
-description: Bing Image Search API からの応答に含まれるサムネイルのサイズを変更し、トリミングする方法について説明します。
+title: サムネイル画像のサイズ変更とトリミング - Bing Image Search API
+titleSuffix: Azure Cognitive Services
+description: Bing Image Search API からの応答に含まれるサムネイル画像のサイズを変更し、トリミングします。
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -10,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: de82cc5554af91294dda3826dfb394cc94dbf3d0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: seodec2018
+ms.openlocfilehash: 3bb360cd95dcbfb95464b2b259dcebfce7065256
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296229"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256392"
 ---
-# <a name="resizing-and-cropping-thumbnail-images"></a>サムネイル画像のサイズ変更とトリミング
+# <a name="resize-and-crop-thumbnail-images"></a>サムネイル画像のサイズ変更とトリミング
 
 検索クエリを処理すると、Bing は[応答](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#bing-image-search-response-format)の中ですべてのイメージのサムネイル情報を生成します。 この情報は、返されたサムネイルのすべてまたはサブセットを表示するために使用できます。 サブセットを表示する場合、残りのイメージを表示するためのオプションを提供します。
 

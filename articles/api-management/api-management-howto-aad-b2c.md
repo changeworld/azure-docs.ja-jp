@@ -13,22 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: fbba1d9b4bdf1536ed596e9a78e53116fe824027
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 8c60e7dec2d2a9bc3e063adfee0ffaff63417265
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232921"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960165"
 ---
-> [!WARNING]
-> Azure Active Directory B2C 統合は、[Developer、Standard、および Premium](https://azure.microsoft.com/pricing/details/api-management/) の各レベルでのみ使用可能です。
-
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure API Management で Azure Active Directory B2C を使用して開発者アカウントを承認する方法
+
 ## <a name="overview"></a>概要
+
 Azure Active Directory B2C は、コンシューマー向け Web アプリケーションおよびモバイル アプリケーション用のクラウド ID 管理ソリューションです。 これを使用して、開発者ポータルへのアクセスを管理することができます。 このガイドでは、Azure Active Directory B2C との統合のために API Management サービスで必要な構成について説明します。 従来の Azure Active Directory を使用して開発者ポータルへのアクセスを有効にする方法については、[Azure Active Directory を使用して開発者アカウントを承認する方法]に関する記事を参照してください。
 
 > [!NOTE]
 > このガイドの手順を実行するには、アプリケーションの作成先となる Azure Active Directory B2C テナントが事前に必要です。 また、サインアップ ポリシーとサインイン ポリシーを用意しておく必要があります。 詳細については、[Azure Active Directory B2C の概要]に関する記事を参照してください。
+
+[!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して開発者アカウントを承認する
 
@@ -88,7 +89,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
   ![ポリシー][api-management-howto-aad-b2c-policies]
 
   > [!NOTE]
-  > ポリシーの詳細については、「[Azure Active Directory B2C: 拡張可能なポリシー フレームワーク]」を参照してください。
+  > ポリシーの詳細については、「[Azure Active Directory B2C: 拡張ポリシー フレームワーク]」を参照してください。
 
 14. 必要な構成を指定したら、**[保存]** をクリックします。
 
@@ -118,7 +119,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 ## <a name="next-steps"></a>次の手順
 
 *  [Azure Active Directory B2C の概要]
-*  [Azure Active Directory B2C: 拡張可能なポリシー フレームワーク]
+*  [Azure Active Directory B2C: 拡張ポリシー フレームワーク]
 *  [Azure Active Directory B2C で ID プロバイダーとして Microsoft アカウントを使用する]
 *  [Azure Active Directory B2C で ID プロバイダーとして Google アカウントを使用する]
 *  [Azure Active Directory B2C で ID プロバイダーとして LinkedIn アカウントを使用する]
@@ -184,12 +185,12 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
-[http://oauth.net/2/]: http://oauth.net/2/
+[https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Accessing the Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
+[Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 [Azure Active Directory B2C の概要]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
 [Azure Active Directory を使用して開発者アカウントを承認する方法]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
-[Azure Active Directory B2C: 拡張可能なポリシー フレームワーク]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
+[Azure Active Directory B2C: 拡張ポリシー フレームワーク]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
 [Azure Active Directory B2C で ID プロバイダーとして Microsoft アカウントを使用する]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app
 [Azure Active Directory B2C で ID プロバイダーとして Google アカウントを使用する]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-goog-app
 [Azure Active Directory B2C で ID プロバイダーとして Facebook アカウントを使用する]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-fb-app

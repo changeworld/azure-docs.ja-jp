@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim88
-ms.openlocfilehash: eef26cf1f5a11d7dcd1fdc41747aac675e0bc528
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 97fb59a9a483753c6c2b5a4ae027bb358f7050e1
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031086"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166593"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>メタデータと GenerateAnswer API の使用
 
@@ -167,6 +167,8 @@ GenerateAnswer への応答には、次のように、一致した質問/回答�
 この情報を使って、以降の会話で使用するために以前の会話のコンテキストを記録することができます。 
 
 ## <a name="next-steps"></a>次の手順
+
+[発行] ページでは、[Postman](../Quickstarts/get-answer-from-kb-using-postman.md) と [cURL](../Quickstarts/get-answer-from-kb-using-curl.md) を使用して回答を生成するための情報も指定できます。 
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースの作成](./create-knowledge-base.md)

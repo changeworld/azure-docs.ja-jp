@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: f7f23a6d645a1d8e16e42e751050d8d91b49e2b3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 472dfc04cea65cab39d177bb214c417d229b71d2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007827"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956722"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Kubernetes (K8) を Azure Stack にデプロイする場合のトラブルシューティング
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!Note]  
 > Azure Stack 上の Kubernetes はプレビュー段階にあります。
@@ -45,9 +45,9 @@ ms.locfileid: "51007827"
 1. マーケットプレース項目から入力パラメーターを収集します。
 
     次のような Kubernetes クラスターの設定に必要な値を入力します。
-    -  **ユーザー名**: Kubernetes クラスターと DVM の一部である Linux 仮想マシンのユーザー名。
+    -  **ユーザー名**: Kubernetes クラスターと DVM の一部である Linux Virtual Machines のユーザー名。
     -  **SSH 公開キー**: Kubernetes クラスターと DVM の一部として作成されたすべての Linux マシンの承認に使用されるキー。
-    -  **サービス プリンシパル**: Kubernetes Azure クラウド プロバイダーによって使用される ID。 サービス プリンシパルを作成したときにアプリケーション ID として識別されたクライアント ID。 
+    -  **サービス プリンシパル**:Kubernetes Azure クラウド プロバイダーによって使用される ID。 サービス プリンシパルを作成したときにアプリケーション ID として識別されたクライアント ID。 
     -  **クライアント シークレット**: サービス プリンシパルを作成するときに作成されたキー。
 
 2. デプロイの VM とカスタム スクリプト拡張機能を作成します。
@@ -154,9 +154,9 @@ Azure Stack の管理に使用するマシンには bash プロンプトが必�
     | パラメーター           | 説明                                                                                                      | 例                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
     | -i、--identity-file | Kubernetes マスター VM に接続するための RSA 秘密キー ファイル。 これらのキーは `-----BEGIN RSA PRIVATE KEY-----` で始まる必要があります。 | C:\data\privatekey.pem                                                        |
-    | -h、--host          | Kubernetes クラスター マスター VM のパブリック IP または完全修飾ドメイン名 (FQDN)。 VM 名は `k8s-master-` で始まります。                       | IP: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -h、--host          | Kubernetes クラスター マスター VM のパブリック IP または完全修飾ドメイン名 (FQDN)。 VM 名は `k8s-master-` で始まります。                       | IP:192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | -u、--user          | Kubernetes クラスター マスター VM のユーザー名。 この名前は、マーケットプレース項目を構成するときに設定します。                                                                    | azureuser                                                                     |
-    | -d、--vmdhost       | DVM のパブリック IP または FQDN。 VM 名は `vmd-` で始まります。                                                       | IP: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+    | -d、--vmdhost       | DVM のパブリック IP または FQDN。 VM 名は `vmd-` で始まります。                                                       | IP:192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
 
    パラメーター値を追加すると、次のようなコードになります。
 
@@ -178,6 +178,6 @@ Azure Stack の管理に使用するマシンには bash プロンプトが必�
 
 [Kubernetes を Azure Stack にデプロイする](azure-stack-solution-template-kubernetes-deploy.md)
 
-[Kubernetes クラスターを Marketplace に追加する (Azure Stack のオペレーター)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[Kubernetes クラスターを Marketplace に追加する (Azure Stack のオペレーター)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Azure における Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

@@ -1,11 +1,11 @@
 ---
-title: Azure Machine Learning モデルが Web サービスになるまでの過程 | Microsoft Docs
+title: Machine Learning Studio モデルが Web サービスになるまでの過程 - Azure | Microsoft Docs
 description: Azure Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程の概要を説明します。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 7b9aec2815f836b3b220de37fe6428c54d39c3e5
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5cfa11042d269353cf33f99d1238265ff9657853
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835574"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253869"
 ---
-# <a name="how-a-machine-learning-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Machine Learning モデルが実験から運用可能な Web サービスになるまでの過程
+# <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Machine Learning Studio モデルが実験から運用可能な Web サービスになるまでの過程
 Azure Machine Learning Studio によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
 
 * 実験にデータを入力
@@ -94,7 +94,7 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 モデルは変更せず、Web サービスでのデータの処理方法だけを変更する場合は、予測実験を編集して、もう一度 **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** をクリックします。 Web サービスが停止し、更新済みの予測実験がデプロイされ、Web サービスが再び開始されます。
 
-たとえば、入力データ行全体と予測の結果を返す予測実験があるとします。 Web サービスから結果のみを返すことに決まりました。 結果以外の列を除外するには、予測実験の出力ポートの直前に **プロジェクト列** モジュールを追加します。 もう一度 **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択したときに、Web サービスが更新されます。
+次に例を示します。入力データ行全体と予測の結果を返す予測実験があるとします。 Web サービスから結果のみを返すことに決まりました。 結果以外の列を除外するには、予測実験の出力ポートの直前に **プロジェクト列** モジュールを追加します。 もう一度 **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択したときに、Web サービスが更新されます。
 
 **新しいデータでモデルを再トレーニングする必要がある場合**
 

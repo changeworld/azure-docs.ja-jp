@@ -281,7 +281,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| variableName |[はい] |String |返す変数の名前。 |
+| variableName |はい |String |返す変数の名前。 |
 
 ### <a name="return-value"></a>戻り値
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Reward Gateway の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Reward Gateway の統合 | Microsoft Docs
 description: Azure Active Directory と Reward Gateway の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: d5cda8830b480e9ef9dff18cb3d7b99e1db55590
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0339889228c80cc3675fd7fde52e75cb84521ab6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442797"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840182"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>チュートリアル: Azure Active Directory と Reward Gateway の統合
+# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>チュートリアル:Azure Active Directory と Reward Gateway の統合
 
 このチュートリアルでは、Reward Gateway と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Reward Gateway で、Azure AD の **[ユーザー名]** の値を **[Username]**
 
 Reward Gateway で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Reward Gateway のテスト ユーザーの作成](#creating-a-reward-gateway-test-user)** - Reward Gateway で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -129,7 +129,7 @@ Reward Gateway で Azure AD のシングル サインオンを構成してテス
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>` |
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、Reward Manager Portal で統合のセットアップを開始します。 詳細については、http://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration を参照してください。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、Reward Manager Portal で統合のセットアップを開始します。 詳細については、 https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration を参照してください。
  
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -139,10 +139,10 @@ Reward Gateway で Azure AD のシングル サインオンを構成してテス
 
     ![Configure single sign-on](./media/reward-gateway-tutorial/tutorial_general_400.png)
 
-1. **Reward Gateway** 側でシングル サインオンを構成するには、Reward Manager Portal で統合のセットアップを開始します。 ダウンロードしたメタデータを使用して署名証明書を取得し、これを構成の際にアップロードします。 詳細については、http://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration を参照してください。
+1. **Reward Gateway** 側でシングル サインオンを構成するには、Reward Manager Portal で統合のセットアップを開始します。 ダウンロードしたメタデータを使用して署名証明書を取得し、これを構成の際にアップロードします。 詳細については、 https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration を参照してください。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

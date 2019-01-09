@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 07a62dfa2d7e1c71daf547c5aa7c8c7d15830bfd
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 1c850b16492f725114fb23a8503f6345e1509212
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309318"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868669"
 ---
 # <a name="requirements-by-listing-type"></a>登録リストの要件  
 技術要件とマーケティング コンテンツ要件は、ネットショップ、オファーの種類、登録リストの種類によって異なります。 次の仕様を再確認して、要件を満たしているか確認してください。  
@@ -29,8 +29,9 @@ ms.locfileid: "36309318"
 2. 登録リストの種類とオファーの種類に関する要件:  
     *   登録リストの種類とオファーの種類について詳しくは、「ソリューションの登録リストの種類を選定する」([docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md)) を参照してください。  
 
-## <a name="storefront-requirements-appsource"></a>ネットショップの要件: AppSource  
+## <a name="storefront-requirements-appsource"></a>ネットショップの要件:AppSource  
 次の表では、公開先が AppSource である場合の前提条件の要件について説明しています。  
+
 | 要件 | 詳細 | 必須または推奨 |  
 |:--- |:--- |:--- |  
 | ***Azure Active Directory (Azure AD)*** | アプリでは、同意が有効な Azure Active Directory フェデレーション シングル サインオン (Azure AD フェデレーション SSO) を許可する必要があります。<ul> <li>Azure AD フェデレーション SSO を有効にする方法の詳細については、「Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成」([docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)) を参照してください。</li> </ul> | 必須 |   
@@ -43,8 +44,9 @@ ms.locfileid: "36309318"
 | ***プライバシー ポリシーと使用条件*** | プライバシー ポリシー ページへのリンクを公開 URL を使用して提供する必要があります。 使用条件は、公開時にテキストとして入力する必要があります。 | 必須 |  
 | ***サポート*** | カスタマー サポート ページへのリンクを公開 URL を使用して提供する必要があります。 アプリが試用版である場合、試用期間中は追加料金なしでサポートする必要があります。 | 必須 |  
 
-## <a name="storefront-requirements-azure-marketplace"></a>ネットショップの要件: Azure Marketplace  
+## <a name="storefront-requirements-azure-marketplace"></a>ネットショップの要件:Azure Marketplace  
 次に、Azure Marketplace における登録リストの種類について前提条件の要件を示します。  
+
 | 要件 | 詳細 | 登録リストの種類 |  
 |:--- |:--- |:--- |  
 | ***参加ポリシー*** | アプリは、Azure Marketplace 参加ポリシーに準拠している必要があります。<ul> <li>参加ポリシーについて詳しくは、Azure Marketplace 参加ポリシーに関するページ ([azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies)) をご覧ください。</li></ul> | list<br />トランザクション<br />試用 |  
@@ -62,19 +64,19 @@ ms.locfileid: "36309318"
 
 | プランの種類 | ネットショップ | 詳細 |  
 |:---        |:---        |:---     |  
-| コンサルティング サービス | AppSource | [要件: AppSource: リスト: コンサルティング サービス](#requirements-appsource-list-consulting-services) |  
-| コンサルティング サービス | Azure Marketplace | [要件: Azure Marketplace: リスト: コンサルティング サービス](#requirements-azure-marketplace-list-consulting-services) |  
+| コンサルティング サービス | AppSource | [要件:AppSource:リスト:コンサルティング サービス](#requirements-appsource-list-consulting-services) |  
+| コンサルティング サービス | Azure Marketplace | [要件:Azure Marketplace:リスト:コンサルティング サービス](#requirements-azure-marketplace-list-consulting-services) |  
 | 連絡する | AppSource | [](#) |  
-| 連絡する | Azure Marketplace | [要件: AppSource: リスト: 連絡する](#requirements-azure-marketplace-list-contact-me) |  
+| 連絡する | Azure Marketplace | [要件:AppSource:リスト:連絡する](#requirements-azure-marketplace-list-contact-me) |  
 
-#### <a name="requirements-appsource-list-consulting-service"></a>要件: AppSource: リスト: コンサルティング サービス  
+#### <a name="requirements-appsource-list-consulting-service"></a>要件:AppSource:リスト:コンサルティング サービス  
 
 | 必要条件 | 詳細 |  
 |:--- |:--- |  
 | サービス オファーの特性 | コンサルティング サービスは、次の条件を満たしている必要があります。<ul> <li>固定スコープ、固定期間、固定価格 (または無料) の契約として提供される。</li> <li>基本的に購入前が優先される。</li> <li>単一顧客に限定される。</li> <li>サイト上で実施される。</li> </ul> |  
 | コンサルティング サービスのパートナー要件 | サービスの対象となる分野の条件を満たす必要があります。<table><tr><th>ソリューション分野</th><th>条件</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Silver または Gold クラウド カスタマー リレーションシップ マネジメント コンピテンシーを備える。</td></tr><tr><td>Dynamics 365 for Finance and Operations (Enterprise Edition)</td><td>Silver または Gold のエンタープライズ リソース プラニング コンピテンシーを有しており、過去 12 か月間にクラウド運用で 25,000 ドル以上の収益がある。</td></tr><tr><td>Dynamics 365 for Finance and Operations (Business Edition)</td><td>クラウド サービス プロバイダー (CSP) または デジタル指名パートナー (DPOR) として顧客にサービスを提供している。</td></tr><tr><td>Power BI</td><td>ソリューション パートナーの条件を満たしている。</td></tr><tr><td>PowerApps</td><td>パートナー ショーケース ソリューションを備える。</td></tr></table><ul> <li>カスタマー リレーションシップ マネジメントの詳細については、「Cloud Customer Relationship Management」([partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)) を参照してください。</li> <li>リソース プラニングの詳細については、「Enterprise Resource Planning」([partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)) を参照してください。</li> <li>CSP の詳細については、クラウド サービス プロバイダーに関するページ ([partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider)) を参照してください。</li> <li>DPOR の詳細については、「デジタル指名パートナーとパートナー アソシエーション」([partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record)) を参照してください。</li> <li>ソリューション パートナーの条件の詳細については、ソリューション パートナーの概要とインセンティブ ドキュメント ([www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf)) を参照してください。</li> <li>パートナー ショーケースの詳細については、「パートナー ショーケース」([powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase)) を参照してください。</li> </ul> |  
 
-#### <a name="requirements-azure-marketplace-list-consulting-service"></a>要件: Azure Marketplace: リスト: コンサルティング サービス  
+#### <a name="requirements-azure-marketplace-list-consulting-service"></a>要件:Azure Marketplace:リスト:コンサルティング サービス  
 
 | 必要条件 | 詳細 |  
 |:--- |:--- |  
@@ -89,35 +91,35 @@ ms.locfileid: "36309318"
 
 | プランの種類 | ネットショップ | 詳細 |  
 |:---        |:---        |:---     |  
-| 無料/SaaS 試用版 | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements-trial) |  
-| 無料/SaaS 試用版 | Azure Marketplace | [要件: Azure Marketplace: 試用版: 無料試用版/SaaS 試用版](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
-| 対話型デモ | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements-trial) |  
-| 対話型デモ | Azure Marketplace | [要件: Azure Marketplace: 試用版: 対話型デモ](#requirements-azure-marketplace-trial-interactive-demo) |  
-| 体験版 | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements-trial) |  
-| 体験版 | Azure Marketplace | [要件: Azure Marketplace: 試用版: 体験版](#requirements-azure-marketplace-trial-test-drive) |  
+| 無料/SaaS 試用版 | AppSource | [登録リストの種類の要件:試用版](#listing-type-requirements-trial) |  
+| 無料/SaaS 試用版 | Azure Marketplace | [要件:Azure Marketplace:試用版:無料試用版/SaaS 試用版](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| 対話型デモ | AppSource | [登録リストの種類の要件:試用版](#listing-type-requirements-trial) |  
+| 対話型デモ | Azure Marketplace | [要件:Azure Marketplace:試用版:対話型デモ](#requirements-azure-marketplace-trial-interactive-demo) |  
+| 体験版 | AppSource | [登録リストの種類の要件:試用版](#listing-type-requirements-trial) |  
+| 体験版 | Azure Marketplace | [要件:Azure Marketplace:試用版:体験版](#requirements-azure-marketplace-trial-test-drive) |  
 
-#### <a name="requirements-azure-marketplace-trial"></a>要件: Azure Marketplace: 試用版  
+#### <a name="requirements-azure-marketplace-trial"></a>要件:Azure Marketplace:試用版  
 
 | 要件 | 詳細 |  
 |:--- |:--- |  
-| 無料試用期間および試用エクスペリエンス | 顧客は、限られた期間、アプリを無料で使用することができます。<br /><br />オファーまたはアプリに関して、顧客にはライセンス料金やサブスクリプション料金の支払いを一切要求しません。 基本となる Microsoft のファーストパーティ製品またはサービスの対価を顧客には一切要求しません。 すべての試用版オプションは、公開元の Azure サブスクリプションにデプロイされます。 試用版のコストの最適化と管理は、公開元によってのみ決められます。<br /><br />無料試用版、対話型デモ、または体験版を選ぶことができます。 何を選んでも、無料試用版では、追加コストなしでアプリを試すための所定の期間を顧客に提供する必要があります。<ul> <li>体験版の作成を始めるには、[amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com) までメールをお送りください。</li> </ul>注: Azure Marketplace の SaaS 試用エクスペリエンスでは、勤務先の資格情報を使用したサインインを顧客に許可する必要があります。<ul> <li>詳細については、[docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) の「AppSource の試用エクスペリエンス」セクションを参照してください。</li> </ul> |  
+| 無料試用期間および試用エクスペリエンス | 顧客は、限られた期間、アプリを無料で使用することができます。<br /><br />オファーまたはアプリに関して、顧客にはライセンス料金やサブスクリプション料金の支払いを一切要求しません。 基本となる Microsoft のファーストパーティ製品またはサービスの対価を顧客には一切要求しません。 すべての試用版オプションは、公開元の Azure サブスクリプションにデプロイされます。 試用版のコストの最適化と管理は、公開元によってのみ決められます。<br /><br />無料試用版、対話型デモ、または体験版を選ぶことができます。 何を選んでも、無料試用版では、追加コストなしでアプリを試すための所定の期間を顧客に提供する必要があります。<ul> <li>体験版の作成を始めるには、[amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com) までメールをお送りください。</li> </ul>注:Azure Marketplace の SaaS 試用エクスペリエンスでは、勤務先の資格情報を使用したサインインを顧客に許可する必要があります。<ul> <li>詳細については、[docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) の「AppSource の試用エクスペリエンス」セクションを参照してください。</li> </ul> |  
 | 簡単に構成できてすぐに使用できるソリューション | アプリは、短時間で簡単に構成およびセットアップできる必要があります。 |  
 | 可用性/アップタイム | SaaS アプリまたはプラットフォームのアップタイムは 99.9% 以上である必要があります。 |  
 | Azure Active Directory | オファーでは、同意が有効な Azure Active Directory (Azure AD) フェデレーション シングル サインオン (SSO) (Azure AD フェデレーション SSO) を許可する必要があります。 |  
 
-#### <a name="requirements-azure-marketplace-trial-free-trial--saas-trial"></a>要件: Azure Marketplace: 試用版: 無料試用版/SaaS 試用版  
+#### <a name="requirements-azure-marketplace-trial-free-trial--saas-trial"></a>要件:Azure Marketplace:試用版:無料試用版/SaaS 試用版  
 
 | 長所 | 要件 |  
 |:--- |:--- |  
 | 顧客が製品を試用したうえで、有料での使用に自動で切り替わる方式により購入できます。 また、顧客の概念実証を可能にし、Microsoft 販売チームによるエンゲージメントに参画します。 | ソリューションが仮想マシンまたはソリューション テンプレートの場合<br /><br />ソリューションが SaaS オファリングであり、マルチテナント SaaS 製品を提供する場合<br /><br />顧客を誘って迅速に実行させる最初の実行エクスペリエンスがある場合<br /><br />1 つのテナントがあるが、ゲスト ユーザーとして顧客を追加している場合 |  
 
-#### <a name="requirements-azure-marketplace-trial-interactive-demo"></a>要件: Azure Marketplace: 試用版: 対話型デモ  
+#### <a name="requirements-azure-marketplace-trial-interactive-demo"></a>要件:Azure Marketplace:試用版:対話型デモ  
 
 | 長所 | 要件 |  
 |:--- |:--- |  
 | 複雑なセットアップなしで動作するソリューションを顧客に見せることができる。 | 試用期間に実現するのが困難な複雑なセットアップを必要とするソリューションの場合 |  
 
-#### <a name="requirements-azure-marketplace-trial-test-drive"></a>要件: Azure Marketplace: 試用版: 体験版  
+#### <a name="requirements-azure-marketplace-trial-test-drive"></a>要件:Azure Marketplace:試用版:体験版  
 
 | 長所 | 要件 |  
 |:--- |:--- |  
@@ -131,24 +133,24 @@ ms.locfileid: "36309318"
 
 | プランの種類 | ネットショップ | 詳細 |   
 |:---        |:---        | :--- |  
-| Azure アプリ: マネージド アプリ | Azure Marketplace | [要件: Azure Marketplace: トランザクション: Azure アプリ: マネージド アプリ](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
-| Azure アプリ: ソリューション テンプレート | Azure Marketplace | [要件: Azure Marketplace: トランザクション: Azure アプリ: ソリューション テンプレート](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
-| Containers | Azure Marketplace | [要件: Azure Marketplace: トランザクション: コンテナー](#requirements-azure-marketplace-transact-container) |  
-| SaaS アプリ  | Azure Marketplace | [要件: Azure Marketplace: トランザクション: SaaS アプリ](#requirements-azure-marketplace-transact-saas-app) |  
-| 仮想マシン | Azure Marketplace | [要件: Azure Marketplace: トランザクション: 仮想マシン](#requirements-azure-marketplace-transact-virtual-machine) |  
+| Azure アプリ:マネージド アプリ | Azure Marketplace | [要件:Azure Marketplace:トランザクション:Azure アプリ:マネージド アプリ](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Azure アプリ:ソリューション テンプレート | Azure Marketplace | [要件:Azure Marketplace:トランザクション:Azure アプリ:ソリューション テンプレート](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Containers | Azure Marketplace | [要件:Azure Marketplace:トランザクション:コンテナー](#requirements-azure-marketplace-transact-container) |  
+| SaaS アプリ  | Azure Marketplace | [要件:Azure Marketplace:トランザクション:Saas アプリ](#requirements-azure-marketplace-transact-saas-app) |  
+| 仮想マシン | Azure Marketplace | [要件:Azure Marketplace:トランザクション:仮想マシン](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 <!-- #### Requirements: Azure Marketplace: Transact: Azure apps: Managed app  
 
 #### Requirements: Azure Marketplace: Transact: Azure apps: Solution template   -->
 
-#### <a name="requirements-azure-marketplace-transact-container"></a>要件: Azure Marketplace: トランザクション: コンテナー  
+#### <a name="requirements-azure-marketplace-transact-container"></a>要件:Azure Marketplace:トランザクション:コンテナー  
 
 | 要件 | 詳細 |  
 |:--- |:--- |  
 | 請求/メータリング | 無料または BYOL のどちらかの課金モデルをサポートします。 |  
 | Docker ベースのイメージ | コンテナー イメージは、Docker イメージの形式に基づき、Azure Container Registry から取得される必要があります。 |  
 
-#### <a name="requirements-azure-marketplace-transact-saas-app"></a>要件: Azure Marketplace: トランザクション: SaaS アプリ  
+#### <a name="requirements-azure-marketplace-transact-saas-app"></a>要件:Azure Marketplace:トランザクション:SaaS アプリ  
 
 | 要件 | 詳細 |  
 |:--- |:--- |  
@@ -157,7 +159,7 @@ ms.locfileid: "36309318"
 | トランザクションのランディング ページ | Azure ブランド提携トランザクションのランディング ページをホストします。 顧客はそのランディング ページから、SaaS サービス アカウントを作成したり管理したりすることができます。 |  
 | SaaS サブスクリプション API | SaaS サブスクリプションと対話することによってユーザー アカウントとサービス プランを作成、更新、削除するサービスを提供します。 重要な API の変更には、すべて 24 時間以内に対応する必要があります。 重要でない API の変更は定期的に更新されます。 |  
 
-#### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>要件: Azure Marketplace: トランザクション: 仮想マシン  
+#### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>要件:Azure Marketplace:トランザクション:仮想マシン  
 
 | 要件 | 詳細 |  
 |:--- |:--- | 

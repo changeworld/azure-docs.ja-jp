@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8782db64a39ab3994c4689e7f809005c20c6dacd
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: b8ab4acd24a53267711fde4408bb9fa8f52c35f3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017459"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635580"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-in-hdinsight"></a>HDInsight での Apache Hive を使用した Twitter データの分析
 ビッグ データの多くはソーシャル Website からもたらされます。 Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。
 このチュートリアルでは、Twitter streaming API を使用して複数のツイートを取得します。さらに、Azure HDInsight の [Apache Hive](https://hive.apache.org/) を使用して、特定の単語を含むツイートを多く送信した Twitter ユーザーの一覧を取得します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースのクラスターに固有の手順については、「[HDInsight での Apache Hive を使用した Twitter データの分析 (Linux)](hdinsight-analyze-twitter-data-linux.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -42,7 +42,7 @@ ms.locfileid: "53017459"
     Select-AzureRmSubscription -SubscriptionID <Azure Subscription ID>
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**非推奨**となり、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
     >
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
@@ -61,12 +61,12 @@ ms.locfileid: "53017459"
 ## <a name="get-twitter-feed"></a>Twitter Feed の取得
 このチュートリアルでは、[Twitter streaming API][twitter-streaming-api] を使用します。 使用する特定の Twitter streaming API は [statuses/filter][twitter-statuses-filter] です。
 
-> [!NOTE]
+> [!NOTE]  
 > 10,000 のツイートを含むファイルと Hive スクリプト ファイルは (次のセクションで説明) は、パブリック BLOB コンテナーにアップロードされています。 このセクションは、アップロードしたファイルを使用する場合は省略できます。
 
 ツイート データは、複雑なネスト構造の JavaScript Object Notation (JSON) 形式で格納されます。 従来のプログラミング言語を使用して多数のコード行を記述する代わりに、このネスト構造を Hive テーブルに変換し、構造化照会言語 (SQL) によく似た HiveQL という言語で照会するようにできます。
 
-Twitter は OAuth を使用して、API への承認されたアクセスを提供します。 OAuth は、パスワードを共有せずに代理でアプリケーションが動作することをユーザーが承認できるようにする認証プロトコルです。 詳細については、[oauth.net](http://oauth.net/)、または Hueniverse の便利な「[Beginner's Guide to OAuth (OAuth 初心者向けガイド)](http://hueniverse.com/oauth/)」で確認できます。
+Twitter は OAuth を使用して、API への承認されたアクセスを提供します。 OAuth は、パスワードを共有せずに代理でアプリケーションが動作することをユーザーが承認できるようにする認証プロトコルです。 詳細については、[oauth.net](https://oauth.net/)、または Hueniverse の便利な「[Beginner's Guide to OAuth (OAuth 初心者向けガイド)](https://hueniverse.com/oauth/)」で確認できます。
 
 OAuth を使用するための最初の手順は、Twitter 開発者サイトで新しいアプリケーションを作成することです。
 
@@ -80,7 +80,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
    | --- | --- |
    |  Name |MyHDInsightApp |
    |  説明 |MyHDInsightApp |
-   |  Web サイト |http://www.myhdinsightapp.com |
+   |  Web サイト |https://www.myhdinsightapp.com |
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 5. **[Permissions]** タブをクリックします。既定のアクセス許可は **読み取り専用**です。 このチュートリアルにはこれで十分です。
 6. **[Keys and Access Tokens]** タブをクリックします。
@@ -90,7 +90,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 このチュートリアルでは、Windows PowerShell を使用して Web サービスを呼び出します。 Web サービスを呼び出すその他の一般的なツールは [*Curl*][curl] です。 Curl は[こちら][curl-download]からダウンロードできます。
 
-> [!NOTE]
+> [!NOTE]  
 > Windows で curl コマンドを使用する場合、オプション値には一重引用符の代わりに二重引用符を使用します。
 
 **ツイートを取得するには**
@@ -245,7 +245,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 ## <a name="create-hiveql-script"></a>HiveQL スクリプトの作成
 Azure PowerShell を使用して、複数の [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) ステートメントを一度に実行することも、HiveQL ステートメントをスクリプト ファイルにまとめることもできます。 このチュートリアルでは、HiveQL スクリプトを作成します。 スクリプト ファイルは、Azure Blob ストレージにアップロードする必要があります。 次のセクションでは、Azure PowerShell を使用してスクリプト ファイルを実行します。
 
-> [!NOTE]
+> [!NOTE]  
 > Hive スクリプト ファイルと 10,000 のツイートが含まれているファイルは、パブリック BLOB コンテナーにアップロードされています。 このセクションは、アップロードしたファイルを使用する場合は省略できます。
 
 HiveQL スクリプトは、次の作業を実行します。
@@ -453,7 +453,7 @@ HiveQL スクリプトは、次の作業を実行します。
 ### <a name="submit-a-hive-job"></a>Hive ジョブを送信する
 次の Windows PowerShell スクリプトを使用して Hive スクリプトを実行します。 最初の変数を設定する必要があります。
 
-> [!NOTE]
+> [!NOTE]  
 > 最後の 2 つのセクションでアップロードしたツイートと [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) スクリプトを使用するには、$hqlScriptFile を "/tutorials/twitter/twitter.hql" に設定します。 パブリック BLOB にアップロードされているものを使用するには、$hqlScriptFile を "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql" に設定します。
 
 ```powershell
@@ -529,7 +529,7 @@ Write-Host "==================================" -ForegroundColor Green
 #end region
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Hive テーブルでは \001 をフィールド区切り記号として使用します。 区切り記号は出力には表示されません。
 
 分析結果が Azure BLOB ストレージに配置されると、Azure SQL Database/SQL Server へのデータのエクスポート、Power Query を使用してのデータの Excel へのエクスポート、または Hive ODBC ドライバーを使用してのアプリケーションのデータへの接続ができます。 詳細については、[HDInsight での Apache Sqoop の使用][hdinsight-use-sqoop]に関するページ、[HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-delay-data]に関するページ、「[Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]」、および「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-hive-odbc]」を参照してください。
@@ -543,7 +543,7 @@ Write-Host "==================================" -ForegroundColor Green
 * [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-hive-odbc]
 * [HDInsight での Apache Sqoop の使用][hdinsight-use-sqoop]
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
 [apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial

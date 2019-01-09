@@ -9,23 +9,23 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: billgib
+ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 05/14/2018
-ms.openlocfilehash: b472baf77cc8f253337aa0780321a6e7dd3fecac
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ad1ae537038c84aac7bebe40a1db124521933f3d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056691"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608904"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスと注釈付きのビデオ
 
 この記事は、SaaS テナント モデルまたはパターンに関する 81 分間のビデオの時間位置への注釈付きインデックスです。 この記事から、ビデオの後方や前方の興味のある位置にスキップできます。 ビデオでは、Azure SQL Database でのマルチテナント データベース アプリケーションに関する主要な設計オプションが説明されています。 ビデオには、デモ、管理コードのチュートリアル、および場合によってはドキュメントより詳細な経験に基づく情報が含まれます。
 
-ビデオでは、以下のドキュメントの情報が詳しく説明されています。
-- *概念:* [マルチテナント SaaS データベース テナント パターン][saas-concept-design-patterns-563e]
-- *チュートリアル:* [Wingtip Tickets SaaS アプリケーションのデプロイ][saas-how-welcome-wingtip-app-679t]
+ビデオでは、以下のドキュメントの情報が詳しく説明されています。 
+- *概念:* マルチテナント SaaS データベース テナント パターン[saas-concept-design-patterns-563e]
+- *チュートリアル:*[Wingtip Tickets SaaS アプリケーション][saas-how-welcome-wingtip-app-679t]
 
 ビデオと記事では、クラウドの Azure SQL Database を利用してマルチテナント アプリケーションを作成するときのさまざまなフェーズについて説明されています。 Azure SQL Database の特殊な機能により、管理が容易で信頼できるパフォーマンスのマルチテナント アプリを、簡単に開発して実装できます。
 
@@ -94,11 +94,11 @@ ms.locfileid: "47056691"
 &nbsp; <a name="anchor-image-wtip-min00001"/>
 #### <a name="1-start-welcome-slide-00001"></a>1.*(開始)* ようこそスライド、0:00:01
 
-*MYOB からの学習: Azure SQL Database での SaaS アプリケーション用の設計パターン - BRK3120*
+*MYOB からの学習:Azure SQL Database での SaaS アプリケーション用の設計パターン - BRK3120*
 
 [![ようこそスライド][image-wtip-min00003-brk3120-whole-welcome]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=1)
 
-- タイトル: MYOB からの学習: Azure SQL Database での SaaS アプリケーション用の設計パターン
+- タイトル:MYOB からの学習:Azure SQL Database での SaaS アプリケーション用の設計パターン
 - Bill.Gibson@microsoft.com
 - 主席プログラム マネージャー、Azure SQL Database
 - Microsoft Ignite セッション BRK3120、米国フロリダ州オーランド、2017 年 10 月 11 日
@@ -121,7 +121,7 @@ ms.locfileid: "47056691"
 
 &nbsp; <a name="anchor-image-wtip-min00505"/>
 #### <a name="4-multi-tenant-web-app-00500"></a>4.マルチテナント Web アプリ、0:05:00
-[![Wingtip SaaS アプリ: マルチテナント Web アプリ][image-wtip-min00505-web-app]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=300)
+[![Wingtip SaaS アプリ:マルチテナント Web アプリ][image-wtip-min00505-web-app]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=300)
 
 
 &nbsp; <a name="anchor-image-wtip-min00555"/>
@@ -294,14 +294,14 @@ ms.locfileid: "47056691"
 
 - [ブログ記事、2017 年 5 月 22 日][resource-blog-saas-patterns-app-dev-sql-db-768h]
 
-- *概念:* [マルチテナント SaaS データベース テナント パターン][saas-concept-design-patterns-563e]
+- *概念:* マルチテナント SaaS データベース テナント パターン[saas-concept-design-patterns-563e]
 
-- *チュートリアル:* [Wingtip Tickets SaaS アプリケーションのデプロイ][saas-how-welcome-wingtip-app-679t]
+- *チュートリアル:*[Wingtip Tickets SaaS アプリケーション][saas-how-welcome-wingtip-app-679t]
 
 - Wingtip Tickets SaaS テナント アプリケーションのさまざまなバージョンの GitHub リポジトリ:
-    - [GitHub リポジトリ - スタンドアロン アプリケーション モデル用][github-wingtip-standaloneapp].
-    - [GitHub リポジトリ - テナントごとの DB モデル][github-wingtip-dbpertenant].
-    - [GitHub リポジトリ - マルチテナント DB モデル][github-wingtip-multitenantdb].
+    - [GitHub リポジトリ - スタンドアロン アプリケーション モデル用][github-wingtip-standaloneapp]。
+    - [GitHub リポジトリ - テナントごとの DB モデル][github-wingtip-dbpertenant]。
+    - [GitHub リポジトリ - マルチテナント DB モデル][github-wingtip-multitenantdb]。
 
 
 
@@ -322,7 +322,7 @@ ms.locfileid: "47056691"
 
 [image-wtip-min00417-agenda]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00417-agenda-app-management-models-patterns.png "予定。"
 
-[image-wtip-min00505-web-app]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00505-wingtip-saas-app-mt-web.png "Wingtip SaaS アプリ: マルチテナント Web アプリ"
+[image-wtip-min00505-web-app]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00505-wingtip-saas-app-mt-web.png "Wingtip SaaS アプリ:マルチテナント Web アプリ"
 
 [image-wtip-min00555-app-web-form]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00555-app-form-contoso-concert-hall-night-opera.png "動いているアプリ Web フォーム"
 

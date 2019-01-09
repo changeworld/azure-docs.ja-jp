@@ -1,21 +1,22 @@
 ---
-title: LUIS の Azure Cloud Shell 使用状況データ
-titleSuffix: Azure Cognitive Services
+title: 利用状況データ - Cloud Shell
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Azure Cloud Shell で LUIS の使用状況に関する情報を取得する方法を説明します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 42bd8ef95ac1b55e76fe1cf0702b79de91832741
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d4f1a76fe587a34448cf218dbfef10f6b0e2ea46
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870181"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133479"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Azure Cloud Shell からの LUIS サービスの使用状況データ
 Azure portal で PowerShell コマンドレットを使って、LUIS リソースを操作することができます。 
@@ -32,9 +33,9 @@ Azure portal の [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quic
 ## <a name="open-cloud-shell"></a>Cloud Shell を開く
 Azure portal の Cloud Shell を使用するとき、PowerShell のバージョンは常に最新です。 
 
-**[Launch Cloud Shell]** ボタンを使って Cloud Shell を開くか、または [https://shell.azure.com](https://shell.azure.com) でブラウザーを開きます。 
+**[Launch Cloud Shell]** ボタンを使って Cloud Shell を開くか、または [https://shell.azure.com](https://shell.azure.com) でブラウザーを開きます。 環境として Power Shell を選択します。 Azure ストレージ アカウントを持っていない場合は、作成する必要があります。 
 
-<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" /></a>
+<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" alt="Start powershell" /></a>
 
 ## <a name="luis-endpoint-usage-information"></a>LUIS エンドポイントの使用状況情報
 
@@ -42,7 +43,7 @@ PowerShell 6.x コマンドレット `Get-AzureRmCognitiveServicesAccountUsage` 
 
 コマンド構文は次のとおりです。
 
-```
+```powershell
 Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName my-resource-group -Name my-luis-service-name
 ```
 
@@ -50,7 +51,7 @@ Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName my-resource-group -N
 
 このコマンドレットは、6 月 7 日に終わる 30 日の期間内に使用された 10,000 エンドポイント ヒットのうちの 16 の使用情報を返します。
 
-```
+```powershell
 CurrentValue  : 16
 Name          : LUIS.Calls
 Limit         : 10000

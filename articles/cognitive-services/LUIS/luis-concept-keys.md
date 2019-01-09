@@ -1,23 +1,24 @@
 ---
-title: LUIS キーについて
-titleSuffix: Azure Cognitive Services
-description: LUIS では、オーサリングとエンドポイントの 2 つのキーを使用します。 オーサリング キーは、LUIS アカウントの作成時に自動的に作成されます。 LUIS アプリを公開する準備ができたら、エンドポイント キーを作成して LUIS アプリに割り当て、これをエンドポイント クエリで使用する必要があります。
+title: サブスクリプション キー
+titleSuffix: Language Understadning - Azure Cognitive Services
+description: LUIS では、モデルを作成するための無料のオーサリング キーと、予測エンドポイントにユーザーの発話を照会するための従量制課金エンドポイント キーの 2 つのキーが使用されます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: f7c1753e71025d3ce39b1b6e3fb7362f2df212f5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 6816fa3705348d07eced92c64e0c7020a08d01d5
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637833"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132383"
 ---
-# <a name="keys-in-luis"></a>LUIS でのキー
+# <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>LUIS のオーサリング キーとクエリ予測エンドポイント キー
 LUIS では、[オーサリング](#programmatic-key)と[エンドポイント](#endpoint-key)の 2 つのキーを使用します。 オーサリング キーは、LUIS アカウントの作成時に自動的に作成されます。 LUIS アプリを公開する準備ができたら、[エンドポイント キーを作成](luis-how-to-azure-subscription.md#create-luis-endpoint-key)して LUIS アプリに[割り当て](luis-how-to-manage-keys.md#assign-endpoint-key)、これを[エンドポイント クエリで使用](#use-endpoint-key-in-query)する必要があります。 
 
 |キー|目的|

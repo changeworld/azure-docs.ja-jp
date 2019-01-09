@@ -1,21 +1,22 @@
 ---
-title: LUIS アプリで発話の代わりにパターン テンプレートを追加する
-titleSuffix: Azure Cognitive Services
+title: パターンと精度
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) アプリケーションでパターン テンプレートを追加して予測精度を改善する方法を説明します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6c15fc256a330c7de154c551c1ef4c78913f470a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ae0fdb17680f415a1dacce1738fa53fcda943788
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885888"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135000"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>パターンを追加して予測精度を改善する方法
 LUIS アプリでエンドポイント発話を受信したら、パターンの[概念](luis-concept-patterns.md)を使用して、単語の順序や選択にパターンが現れる発話の予測精度を改善します。 パターンでは[エンティティ](luis-concept-entity-types.md)とそのロールを使用して、特定のパターン構文によってデータが抽出されます。 
@@ -95,7 +96,7 @@ LUIS アプリでエンドポイント発話を受信したら、パターンの
 
 2. **[Delete patterns]\(パターンの削除\)** の確認のダイアログが表示されます。 **[OK]** を選択して削除を完了します。
 
-    ![複数のパターンの削除のスクリーン ショット](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
+    ![複数のパターンの削除の確認ボックスのスクリーン ショット](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
 
 ## <a name="filter-pattern-list-by-entity"></a>エンティティでのパターンの一覧のフィルター処理
 
@@ -116,7 +117,7 @@ LUIS アプリでエンドポイント発話を受信したら、パターンの
 ## <a name="remove-entity-or-intent-filter"></a>エンティティまたは意図フィルターの削除
 パターンの一覧をフィルター処理すると、ツールバーの下にエンティティまたは意図の名前が表示されます。 フィルターを削除するには、名前を選択します。
 
-![エンティティでフィルター処理されたパターンのスクリーンショット](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
+![フィルターからのエンティティの削除のスクリーンショット](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
 
 フィルターが削除され、すべてのパターンが表示されます。 
 
@@ -125,7 +126,7 @@ LUIS アプリでエンドポイント発話を受信したら、パターンの
 
 1. 選択された発話の行で、その発話の右にある省略記号 (***...***) ボタンを選択し、**[Add as pattern] (パターンとして追加)** を選択します。
 
-    [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "[オプション] メニューでパターンの追加が強調表示されている発話テーブルのスクリーンショット")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
+    [![発話テーブルのスクリーンショット (オプション メニューでパターンとして追加するための項目を強調表示したところ)](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "発話テーブルのスクリーンショット (オプション メニューでパターンとして追加するための項目を強調表示したところ)")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
 2. [構文規則](luis-concept-patterns.md#pattern-syntax)に従って、パターンを変更します。 選択した発話にエンティティのラベルが付いている場合、それらのエンティティは既に正しい構文でパターンに存在します。
 

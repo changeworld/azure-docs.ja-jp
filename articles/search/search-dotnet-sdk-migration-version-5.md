@@ -1,6 +1,6 @@
 ---
-title: Azure Search .NET SDK バージョン 5 へのアップグレード | Microsoft Docs
-description: Azure Search .NET SDK バージョン 5 へのアップグレード
+title: Azure Search .NET SDK バージョン 5 へのアップグレード - Azure Search
+description: 以前のバージョンから Azure Search .NET SDK バージョン 5 にコードを移行します。 新機能と必要なコード変更について説明します。
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,12 +9,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: brjohnst
-ms.openlocfilehash: b08507d7685ce87a4c176385f750a72d6ae51ba3
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec2018
+ms.openlocfilehash: 743ac433418386281acc58ad1deef06ee75e38d9
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091142"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316874"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK バージョン 5 へのアップグレード
 バージョン 4.0-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 5 を使用するようにアプリケーションをアップグレードできます。
@@ -56,10 +57,10 @@ Azure Search .NET SDK のパッケージにおける変更のため、バージ�
 ## <a name="breaking-changes-in-version-5"></a>バージョン 5 における重大な変更
 バージョン 5 における最も重大な変更は、`Microsoft.Azure.Search` アセンブリとその内容が 4 つの別個のアセンブリに分割されたことです。これらは 4 つの別個の NuGet パッケージとして配布されるようになりました。
 
- - `Microsoft.Azure.Search`: これは､依存関係がある Azure Search の他のパッケージをすべて含むメタパッケージです｡ 以前のバージョンの SDK からアップグレードする場合は、単純にこのパッケージをアップグレードしてリビルドすれば、新しいバージョンの使用を開始するのに十分です。
- - `Microsoft.Azure.Search.Data`: Azure Search を使用して .NET アプリケーションを開発していて､インデックス内のドキュメントのクエリまたは更新のみを行う必要がある場合は、このパッケージを使用します｡ インデックス、シノニム マップ､またはサービス レベルのその他のリソースの作成や更新も行う必要がある場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
- - `Microsoft.Azure.Search.Service`: .NET で、Azure Search インデックス、シノニム マップ､インデクサー､データ ソース､またはサービスレベルのその他のリソースを管理するための自動化を開発する場合は、このパッケージを使用します｡ インデックス内のドキュメントのクエリまたは更新のみを行う場合は､代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Search のすべての機能が必要な場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
- - `Microsoft.Azure.Search.Common`: Azure Search .NET ライブラリに必要な共通の型です｡ このパッケージは、アプリケーションで直接使用する必要はないはずで、依存関係としての使用のみが想定されています｡
+ - `Microsoft.Azure.Search`:依存関係がある Azure Search の他のパッケージをすべて含むメタパッケージです。 以前のバージョンの SDK からアップグレードする場合は、単純にこのパッケージをアップグレードしてリビルドすれば、新しいバージョンの使用を開始するのに十分です。
+ - `Microsoft.Azure.Search.Data`:Azure Search を使用して .NET アプリケーションを開発していて、インデックス内のドキュメントのクエリまたは更新のみを行う必要がある場合は、このパッケージを使用します。 インデックス、シノニム マップ､またはサービス レベルのその他のリソースの作成や更新も行う必要がある場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+ - `Microsoft.Azure.Search.Service`:.NET で、Azure Search インデックス、シノニム マップ、インデクサー、データ ソース、またはサービスレベルのその他のリソースを管理するための自動化を開発する場合は、このパッケージを使用します。 インデックス内のドキュメントのクエリまたは更新のみを行う場合は､代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Search のすべての機能が必要な場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+ - `Microsoft.Azure.Search.Common`:Azure Search .NET ライブラリに必要な共通の型です。 このパッケージは、アプリケーションで直接使用する必要はないはずで、依存関係としての使用のみが想定されています｡
  
 この変更が技術的に重要なのは、多くの型がアセンブリ間で移動されたためです。 バージョン 5 の SDK にアップグレードするためにアプリケーションのリビルドが必要なのは、このためです。
 

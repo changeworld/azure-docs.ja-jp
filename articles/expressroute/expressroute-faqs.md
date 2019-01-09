@@ -1,18 +1,19 @@
 ---
-title: Azure ExpressRoute の FAQ | Microsoft Docs
+title: よくあるご質問 (FAQ) - Azure ExpressRoute | Microsoft Docs
 description: ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。
 services: expressroute
-author: cherylmc
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.author: cherylmc
-ms.openlocfilehash: 8cde172207717aca2af5dfa706f7d9c6d290c36e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 10/28/2018
+ms.author: jaredro
+ms.custom: seodec18
+ms.openlocfilehash: 0621c2d1632dead41463810b9e71ebf0404a8cbe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239204"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077751"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -26,7 +27,7 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 ### <a name="where-is-the-service-available"></a>このサービスはどこで使用できますか。
 
-サービスの場所と提供状況については、 [ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページを参照してください。
+サービスの場所と可用性については、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関する記事をご覧ください。
 
 ### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>ExpressRoute のパートナー通信会社のいずれとも契約していない場合は、どのようにして ExpressRoute を使用して Microsoft に接続できますか。
 
@@ -68,8 +69,8 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 * Power BI
 * Dynamics 365 for Finance and Operations (旧称 Dynamics AX Online)
-* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br>
-  以下のサービスはサポートされていません。
+* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br><br>
+  **以下のサービスはサポートされていません**。
     * CDN
     * Multi-factor Authentication
     * Traffic Manager
@@ -81,7 +82,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 * Power BI
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure Global Services コミュニティ)
-* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br>以下のサービスは**サポートされていません**。
+* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br><br>**以下のサービスはサポートされていません**。
     * CDN
     * Multi-factor Authentication
     * Traffic Manager
@@ -249,7 +250,7 @@ ExpressRoute Premium は、次の機能のコレクションです。
     *  Microsoft ピアリングで、他の地理的リージョンのプレフィックスがアドバタイズされ、たとえばシリコン バレーの回線から西ヨーロッパの SQL Azure に接続できるようになります。
 
 
-### <a name="limits"></a>ExpressRoute プレミアムを有効にした場合、ExpressRoute 回路で有効にできる VNet と ExpressRoute Global Reach の接続数はいくつですか。
+### <a name="limits"></a>ExpressRoute プレミアムを有効にした場合、ExpressRoute 回線で有効にできる VNet と ExpressRoute Global Reach の接続数はいくつですか。
 
 次の表に、ExpressRoute の上限と、ExpressRoute 回線ごとの VNet と ExpressRoute Global Reach の数を示します。
 
@@ -340,7 +341,7 @@ Office 365 サービスでは、Premium アドオンを有効にする必要が�
 
 * 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングでアドバタイズされます。
 
-* 2017 年 8 月 1 日以降に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 既定ではプレフィックスは表示されません。
+* 2017 年 8 月 1 日以降に構成された ExpressRoute 回路の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 既定ではプレフィックスは表示されません。
 
 ## <a name="expressRouteDirect"></a>ExpressRoute Direct (プレビュー)
 

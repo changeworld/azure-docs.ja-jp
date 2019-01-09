@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 613cdd14ad196058458b090024cc6b9a4b8a80b6
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 841982a4ecbfa5241d826beaaae81921b2859596
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018623"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967335"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
 
@@ -42,15 +42,15 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>language</td>
-    <td>*必須のパラメーター*。<br/>スクリプト間の変換を行うテキストの言語を指定します。 指定可能な言語は、[サポートされている言語](.\v3-0-languages.md)をサービスに照会することによって得られる `transliteration` スコープにリストされます。</td>
+    <td>*必須のパラメーター*。<br/>スクリプト間の変換を行うテキストの言語を指定します。 指定可能な言語は、[サポートされている言語](./v3-0-languages.md)をサービスに照会することによって得られる `transliteration` スコープにリストされます。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*必須のパラメーター*。<br/>入力テキストによって使用されるスクリプトを指定します。 選択した言語で使用可能な入力スクリプトを確認するには、`transliteration`スコープを使用して[サポートされている言語](.\v3-0-languages.md)を検索します。</td>
+    <td>*必須のパラメーター*。<br/>入力テキストによって使用されるスクリプトを指定します。 選択した言語で使用可能な入力スクリプトを確認するには、`transliteration`スコープを使用して[サポートされている言語](./v3-0-languages.md)を検索します。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*必須のパラメーター*。<br/>出力スクリプトを指定します。 選択した、入力言語と入力スクリプトの組み合わせに対して使用可能な出力スクリプトを確認するには、`transliteration` スコープを使用して [サポートされている言語](.\v3-0-languages.md)を検索します。</td>
+    <td>*必須のパラメーター*。<br/>出力スクリプトを指定します。 選択した、入力言語と入力スクリプトの組み合わせに対して使用可能な出力スクリプトを確認するには、`transliteration` スコープを使用して [サポートされている言語](./v3-0-languages.md)を検索します。</td>
   </tr>
 </table> 
 
@@ -98,9 +98,9 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 正常な応答は、入力配列内の要素ごとに 1 つの結果が含まれる JSON 配列となります。 結果オブジェクトには次のプロパティが含まれています。
 
-  * `text`: 入力文字列を出力スクリプトに変換した結果である文字列。
+  * `text`:入力文字列を出力スクリプトに変換した結果である文字列。
   
-  * `script`: 出力で使用されるスクリプトを指定する文字列。
+  * `script`:出力で使用されるスクリプトを指定する文字列。
 
 JSON 応答の例を次に示します。
 

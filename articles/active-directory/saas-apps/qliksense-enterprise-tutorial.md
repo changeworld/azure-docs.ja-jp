@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Qlik Sense Enterprise の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Qlik Sense Enterprise の統合 | Microsoft Docs
 description: Azure Active Directory と Qlik Sense Enterprise の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/06/2018
 ms.author: jeedes
-ms.openlocfilehash: a8816451b45171e0ba8cbd7acc937201c587c481
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 24353f89f7c833a16675841f741a4a81ac34597c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627952"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015225"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>チュートリアル: Azure Active Directory と Qlik Sense Enterprise の統合
+# <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>チュートリアル:Azure Active Directory と Qlik Sense Enterprise の統合
 
 このチュートリアルでは、Qlik Sense Enterprise と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -47,7 +47,7 @@ Qlik Sense Enterprise と Azure AD の統合を構成するには、次のもの
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、1 か月の試用版を[無料試用版の提供](https://azure.microsoft.com/pricing/free-trial/)のページで入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -113,6 +113,7 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
     a. **[サインオン URL]** ボックスに、`https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。
+    
     | |
     |--|
     | `https://<Qlik Sense Fully Qualifed Hostname>.qlikpoc.com`|
@@ -283,7 +284,7 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
 
 ### <a name="create-a-qlik-sense-enterprise-test-user"></a>Qlik Sense Enterprise のテスト ユーザーの作成
 
-このセクションでは、Qlik Sense Enterprise で Britta Simon というユーザーを作成します。 [Qlik Sense Enterprise クライアント サポート チーム](https://www.qlik.com/us/services/support)と連携し、Qlik Sense Enterprise プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Qlik Sense Enterprise で Britta Simon というユーザーを作成します。  [Qlik Sense Enterprise クライアント サポート チーム](https://www.qlik.com/us/services/support) と連携し、Qlik Sense Enterprise プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

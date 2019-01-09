@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ed0001d8d88a2604e3128a4d5f7a365aeb7b00b1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c6b8312a08d1d92bccf70e7d3dda5f01811b4f87
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440793"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848529"
 ---
 # <a name="configure-password-complexity-in-custom-policies"></a>カスタム ポリシーでパスワードの複雑さを構成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "37440793"
 
 この記事では、パスワードの複雑さのしくみと、Azure AD B2C カスタム ポリシーを使ってそれを有効にする方法についてを詳しく説明します。
 
-## <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: パスワードの複雑さの要件を構成する
+## <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C:パスワードの複雑さの要件を構成する
 
 Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時にエンド ユーザーが指定するパスワードの複雑さの要件の変更がサポートされます。  既定では、Azure AD B2C では**強力な**パスワードを使います。  Azure AD B2C では、顧客が使用できるパスワードの複雑さを制御する構成オプションもサポートしています。  この記事では、カスタム ポリシーでパスワードの複雑さを構成する方法について説明します。  [組み込みポリシーでパスワードの複雑さを構成する](active-directory-b2c-reference-password-complexity.md)こともできます。
 
@@ -51,7 +51,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 ### <a name="defining-a-predicate-element"></a>述語要素を定義する
 
-述語には、IsLengthRange と MatchesRegex の 2 つのメソッドの種類があります。 それぞれの例を見てみましょう。  まず、正規表現の照合に使われる MatchesRegex の例です。  この例では、数値を含む文字列を照合します。
+述語には 2 つのメソッドの種類があります。IsLengthRange または MatchesRegex です。 それぞれの例を見てみましょう。  まず、正規表現の照合に使われる MatchesRegex の例です。  この例では、数値を含む文字列を照合します。
 
 ```XML
       <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
@@ -124,8 +124,8 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
   TenantId="yourtenant.onmicrosoft.com"

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2017
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: e3c5a581b02f1dd7b7415ebd93de0e425ac2f8ae
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 85aab429fd59afd36cd026e6d8aef2b7e6f6e122
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358367"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140457"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの出力セクション
 [出力] セクションではデプロイから返される値を指定します。 たとえば、デプロイされたリソースにアクセスするための URI を返すことができます。
@@ -48,7 +48,9 @@ Azure CLI では、次を使用します。
 az group deployment show -g <resource-group-name> -n <deployment-name> --query properties.outputs.resourceID.value
 ```
 
-[reference](resource-group-template-functions-resource.md#reference) 関数を使用して、リンクされているテンプレートから出力値を取得できます。 リンクされたテンプレートから出力値を取得するには、`"[reference('<name-of-deployment>').outputs.<property-name>.value]"` のような構文でプロパティ値を取得します。
+[reference](resource-group-template-functions-resource.md#reference) 関数を使用して、リンクされているテンプレートから出力値を取得できます。 リンクされたテンプレートから出力値を取得するには、`"[reference('deploymentName').outputs.propertyName.value]"` のような構文でプロパティ値を取得します。
+
+リンクされたテンプレートから出力プロパティを取得する場合、プロパティ名にダッシュを含めることはできません。
 
 たとえば、リンクされているテンプレートから値を取得することによってロード バランサーの IP アドレスを設定できます。
 
@@ -58,7 +60,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 }
 ```
 
-[入れ子になったテンプレート](resource-group-linked-templates.md#link-or-nest-a-template)の出力セクションでは `reference` 関数を使用できません。 入れ子になったテンプレート内のデプロイされたリソースの値を返すには、入れ子になったテンプレートをリンク済みテンプレートに変換します。
+[入れ子になったテンプレート](resource-group-linked-templates.md#link-or-nest-a-template) の出力セクションでは `reference` 関数を使用できません。 入れ子になったテンプレート内のデプロイされたリソースの値を返すには、入れ子になったテンプレートをリンク済みテンプレートに変換します。
 
 ## <a name="available-properties"></a>利用可能なプロパティ
 
@@ -73,10 +75,10 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 }
 ```
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | outputName |[はい] |出力値の名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| 型 |[はい] |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 |
+| type |[はい] |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 |
 | value |[はい] |評価され、出力値として返されるテンプレート言語式。 |
 
 ## <a name="recommendations"></a>Recommendations
@@ -99,7 +101,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 ## <a name="example-templates"></a>サンプル テンプレート
 
 
-|テンプレート  |[説明]  |
+|テンプレート  |説明  |
 |---------|---------|
 |[Copy variables](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 複合変数を作成し、それらの値を出力します。 リソースはデプロイしません。 |
 |[パブリック IP アドレス](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | パブリック IP アドレスを作成し、リソース ID を出力します。 |

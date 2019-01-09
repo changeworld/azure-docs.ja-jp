@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4a2cb6fa310cc56b4c5ccb1cb625b88431f70783
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 50d071c420eec106f5ab28530aa7b2ff9a55fe4a
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633854"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558756"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Azure Active Directory のコード サンプル (v2.0 エンドポイント)
 
@@ -62,8 +62,8 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
  プラットフォーム | ユーザーのサインインのみ | ユーザーのサインインと Microsoft Graph の呼び出し
  -------- | ------------------- | ---------------------------------
-![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)<p/>ASP.NET Core 2.1 | [aspnetcore-webapp-openidconnect-v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) | [aspnetcore2-2-signInAndCallGraph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/aspnetcore2-2-signInAndCallGraph) 分岐と同じサンプル
-![ASP.NET](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET | [ASP.NET クイック スタート](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) <p/> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) <p/>[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.1 | [aspnetcore-webapp-openidconnect-v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) | [aspnetcore2-2-signInAndCallGraph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/aspnetcore2-2-signInAndCallGraph) 分岐と同じサンプル
+![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET クイック スタート](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p>[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 ![Node.js](media/sample-v2-code/logo_nodejs.png)  |                   | [Node.js クイック スタート](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs)
 ![Ruby](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp)
 
@@ -73,12 +73,12 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し | ASP.NET Core 2.0 Web API の呼び出し
 ------------------ | -------- |  ----------| ---------- | -------------------------
-デスクトップ (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | 対話型 | [dotnet-desktop-msgraph-v2](http://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+デスクトップ (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | 対話型 | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
 デスクトップ (コンソール)   | ![.NET/C# (デスクトップ)](media/sample-v2-code/logo_NET.png) | 統合 Windows 認証 |[dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
 デスクトップ (コンソール)   | ![.NET/C# (デスクトップ)](media/sample-v2-code/logo_NETcore.png) | ユーザー名/パスワード |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
 モバイル (UWP)   | ![.NET/C# (UWP)](media/sample-v2-code/logo_windows.png) | 対話型 |[dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
 モバイル (Android、iOS、UWP)   | ![.NET/C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | 対話型 |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |
-モバイル (iOS)       | ![iOS / Objective C または Swift](media/sample-v2-code/logo_iOS.png) | 対話型 |[ios-swift-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) <p/> [ios-native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
+モバイル (iOS)       | ![iOS / Objective C または Swift](media/sample-v2-code/logo_iOS.png) | 対話型 |[ios-swift-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [ios-native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
 モバイル (Android)   | ![Android/Java](media/sample-v2-code/logo_Android.png) | 対話型 |  [android-native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |
 
 ## <a name="daemon-applications"></a>デーモン アプリケーション
@@ -87,8 +87,8 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し
 ------------------ | -------- | ---------- | --------------------
-コンソール | ![.NET Core](media/sample-v2-code/logo_NETcore.png)<p/> ASP.NET  | クライアントの資格情報 | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
-Web アプリ | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET  | クライアントの資格情報 | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2)
+コンソール | ![.NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | クライアントの資格情報 | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
+Web アプリ | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | クライアントの資格情報 | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2)
 
 ## <a name="headless-applications"></a>ヘッドレス アプリケーション
 

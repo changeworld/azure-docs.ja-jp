@@ -10,16 +10,16 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 405104554b4ee8e773b6d2e39966a262f98beb6d
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 3a0b4db77e6dfb8be3a2f943052925001e5f7715
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242097"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259785"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>SQL Server Management Studio で Azure Blockchain Workbench データを使用します
 
-Microsoft SQL Server Management Studio は、 Azure Blockhain ワークベンチの SQL データベースに対してクエリを短時間で作成およびテストする機能を提供します。 このセクションでは、SQL Server Management Studio 内から Azure Blockchain ワークベンチの SQL データベースに接続する方法を、段階ごとに説明します。
+Microsoft SQL Server Management Studio では、Azure Blockchain ワークベンチの SQL データベースに対してクエリを短時間で作成およびテストする機能が提供されます。 このセクションでは、SQL Server Management Studio 内から Azure Blockchain ワークベンチの SQL データベースに接続する方法を、段階ごとに説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

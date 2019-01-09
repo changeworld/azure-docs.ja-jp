@@ -8,14 +8,14 @@ author: dharmeshkakadia
 ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 832fab6c4f183ddad512c5e6e4309d70938a316b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 150f920fb1371eb64181ff69fdad054f989c0845
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600025"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407022"
 ---
-# <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Hive のトラブルシューティング
+# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hive のトラブルシューティング
 
 Apache Ambari で Apache Hive ペイロードを操作するときに発生する主な質問とその解決策について説明します。
 
@@ -104,7 +104,7 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
 - [Hive 構成のプロパティ](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>クラスターのクリティカル パスで Tez DAG データを分析する方法
+## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>クラスターのクリティカル パスで Apache Tez DAG データを分析する方法
 
 
 ### <a name="resolution-steps"></a>解決手順
@@ -127,7 +127,7 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
 
   有効なプログラム名は次のとおりです。
     - **ContainerReuseAnalyzer**: DAG のコンテナーの再利用の詳細を出力します。
-    - **CriticalPath**: DAG のクリティカル パスを特定します。
+    - **CriticalPath**: DAG のクリティカル パスを検出します。
     - **LocalityAnalyzer**: DAG の局所性の詳細を出力します。
     - **ShuffleTimeAnalyzer**: DAG のシャッフル時間の詳細を分析します。
     - **SkewAnalyzer**: DAG の傾きの詳細を分析します。
@@ -135,8 +135,8 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
     - **SlowTaskIdentifier**: DAG の遅いタスクの詳細を出力します。
     - **SlowestVertexAnalyzer**: DAG の最も遅い頂点の詳細を出力します。
     - **SpillAnalyzer**: DAG の書き込みの詳細を出力します。
-    - **TaskConcurrencyAnalyzer**: DAG のタスク同時実行の詳細を出力します。
-    - **VertexLevelCriticalPathAnalyzer**: DAG のクリティカル パスを頂点レベルで特定します。
+    - **TaskConcurrencyAnalyzer**: DAG のタスク コンカレンシーの詳細を出力します。
+    - **VertexLevelCriticalPathAnalyzer**: Dag の頂点レベルのクリティカル パスを検出します。
 
 
 ### <a name="additional-reading"></a>その他の情報

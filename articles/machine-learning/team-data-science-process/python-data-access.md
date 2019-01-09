@@ -1,26 +1,22 @@
 ---
-title: Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする | Microsoft Docs
+title: Python クライアント ライブラリを使用したデータセットへのアクセス - Team Data Science Process
 description: Python クライアント ライブラリをインストールして使用し、ローカル Python 環境から Azure Machine Learning データを安全に管理します。
 services: machine-learning
-documentationcenter: python
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 9ab42272-c30c-4b7e-8e66-d64eafef22d0
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: 496ffdcb5cc2e7b208a53dc8c1d8ba4c0818945f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719972"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140032"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -96,10 +92,10 @@ Python クライアント ライブラリで使用するために Studio で提�
     ![データセット][datasets]
 4. 表示されるウィンドウからコード スニペットを選択し、クリップボードにコピーします。
    
-    ![アクセス コード][dataset-access-code]
+    ![[データ アクセス コードの生成] ボタン][dataset-access-code]
 5. ローカル Python アプリケーションのノートブックにコードを貼り付けます。
    
-    ![ノートブック][ipython-dataset]
+    ![ノートブックにコードを貼り付ける][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
 Machine Learning Studio で実験が実行されると、モジュールの出力ノードから中間データ セットにアクセスできます。 中間データセットは、モデル ツールが実行されているときに中間手順で作成され使用されるデータです。
@@ -137,10 +133,10 @@ Machine Learning Studio で実験が実行されると、モジュールの出�
     ![コンテキスト メニュー][experiment]
 8. 表示されたウィンドウからコード スニペットを選択し、クリップボードにコピーします。
    
-    ![アクセス コード][intermediate-dataset-access-code]
+    ![コンテキスト メニューからアクセス コードを生成する][intermediate-dataset-access-code]
 9. ノートブックにコードを貼り付けます。
    
-    ![ノートブック][ipython-intermediate-dataset]
+    ![ノートブックにコードを貼り付ける][ipython-intermediate-dataset]
 10. Matplotlib を使用してデータを視覚化できます。 これは、age 列のヒストグラムで表示されます。
     
     ![ヒストグラム][ipython-histogram]

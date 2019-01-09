@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: e739f3905ff2bbb60669b1f1e214a4630b896db4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 695cc2afbfd231758e90889eea2c154fbc16dffb
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255467"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602615"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>Azure SignalR サービスによる ASP.NET Core SignalR アプリケーションのスケーリング
 
@@ -21,7 +21,7 @@ ms.locfileid: "53255467"
 
 ASP.NET Core SignalR は、以前のバージョンのリライトです。 そのため、ASP.NET Core SignalR は、以前のバージョンの SignalR と下位互換性がありません。 API および動作が異なります。 ASP.NET Core SignalR SDK は .NET Standard を対象としているため、.NET Framework と共に使用することができます。 ただし、以前の API ではなく新しい API を使用する必要があります。 SignalR を使用していて、ASP.NET Core SignalR または Azure SignalR サービスに移行する場合は、API の違いを処理するためにコードを変更する必要があります。
 
-Azure SignalR サービスでは、ASP.NET Core SignalR のサーバー側コンポーネントは Azure にホストされます。 ただし、テクノロジは ASP.NET Core 上に組み込まれているので、[Azure App Service](../app-service/app-service-web-overview.md)、[IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/index)、[Nginx](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-nginx)、[Apache](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-apache)、[Docker](https://docs.microsoft.com/aspnet/core/host-and-deploy/docker/index) でホストしているときに、複数のプラットフォーム (Windows、Linux、MacOS) で実際の Web アプリケーションを実行できます。 独自のプロセスで自己ホストを使用することもできます。
+Azure SignalR サービスでは、ASP.NET Core SignalR のサーバー側コンポーネントは Azure にホストされます。 ただし、テクノロジは ASP.NET Core 上に組み込まれているので、[Azure App Service](../app-service/overview.md)、[IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/index)、[Nginx](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-nginx)、[Apache](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-apache)、[Docker](https://docs.microsoft.com/aspnet/core/host-and-deploy/docker/index) でホストしているときに、複数のプラットフォーム (Windows、Linux、MacOS) で実際の Web アプリケーションを実行できます。 独自のプロセスで自己ホストを使用することもできます。
 
 アプリケーションの目標に、リアルタイムでのコンテンツ更新により Web クライアントを更新するための最新機能のサポート、複数のプラットフォーム (Azure、Windows、Linux、macOS) での実行、異なる環境へのホストが含まれる場合は、Azure SignalR サービスの利用が最適な選択肢である可能性があります。
 

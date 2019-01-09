@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 885deca5efbd72b3d641c8c94837851340d752b9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ee483c19aa59ca98226f77a5e56b1ee4eb4dede5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957831"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543412"
 ---
 # <a name="monitor-batch-solutions"></a>Batch ソリューションの監視
 
@@ -26,7 +26,7 @@ Azure リソースの監視に使用できる Azure のコンポーネントと�
 
 ## <a name="subscription-level-monitoring"></a>サブスクリプション レベルの監視
 
-Batch アカウントを含むサブスクリプション レベルでは、[Azure アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)によって[いくつかのカテゴリ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#categories-in-the-activity-log)の運用イベント データが収集されます。
+Batch アカウントを含むサブスクリプション レベルでは、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)によって[いくつかのカテゴリ](../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log)の運用イベント データが収集されます。
 
 具体的に Batch アカウントでは、アクティビティ ログによってアカウントの作成と削除やキー管理に関連するイベントが収集されます。
 
@@ -34,7 +34,7 @@ Batch アカウントを含むサブスクリプション レベルでは、[Azu
 
 ## <a name="batch-account-level-monitoring"></a>Batch アカウント レベルの監視
 
-[Azure Monitor](../azure-monitor/overview.md) の機能を使用して各 Batch アカウントを監視します。 Azure Monitor は、Batch アカウントのレベルをスコープとして、プール、ジョブ、タスクなどのリソースの[メトリック](../monitoring/monitoring-data-collection.md#metrics)と、必要に応じて[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)を収集します。 このデータを手動またはプログラムによって収集および利用して、Batch アカウント内のアクティビティを監視し、問題を診断します。 詳しくは、「[Batch ソリューションの診断の評価と監視のログ イベント](batch-diagnostics.md)」をご覧ください。
+[Azure Monitor](../azure-monitor/overview.md) の機能を使用して各 Batch アカウントを監視します。 Azure Monitor は、Batch アカウントのレベルをスコープとして、プール、ジョブ、タスクなどのリソースの[メトリック](../azure-monitor/platform/data-collection.md#metrics)と、必要に応じて[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を収集します。 このデータを手動またはプログラムによって収集および利用して、Batch アカウント内のアクティビティを監視し、問題を診断します。 詳しくは、「[Batch ソリューションの診断の評価と監視のログ イベント](batch-diagnostics.md)」をご覧ください。
  
 > [!NOTE]
 > メトリックは、既定では追加の構成なしで Batch アカウントで利用でき、30 日間のローリング履歴があります。 Batch アカウントの診断ログを有効化する必要があり、診断ログ データの格納または処理には追加のコストが生じる可能性があります。 

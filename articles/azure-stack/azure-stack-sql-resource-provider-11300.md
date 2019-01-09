@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: d2dda25c63a6e4a73205b9e4a830a211d025b3ed
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.reviewer: georgel
+ms.openlocfilehash: 7bcec2d17f61345986c1676d13011946a0036666
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688283"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164730"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>SQL リソース プロバイダー 1.1.30.0 のリリース ノート
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 これらのリリース ノートでは、SQL リソース プロバイダー バージョン 1.1.30.0 の機能強化と既知の問題について説明します。
 
@@ -67,6 +67,20 @@ SQL リソース プロバイダー バイナリをダウンロードした後�
 - **データの不整合の原因となる共有 SQL ログイン**。 SQL ログインが同じサブスクリプション下で複数の SQL データベースに対して共有されている場合、ログイン パスワードを変更するとデータの不整合が発生します。
 
     **対処法**: 同じサブスクリプション下の異なるデータベースには常に異なるログインを使用します。
+
+- **TLS 1.2 サポート要件**。 TLS 1.2 が有効になっていないコンピューターから SQL リソース プロバイダーをデプロイまたは更新しようとすると、操作が失敗する可能性があります。 リソース プロバイダーのデプロイまたは更新に使用するコンピューターで、次の PowerShell コマンドを実行して、TLS 1.2 がサポート対象であるかどうかを確認します。
+
+  ```powershell
+  [System.Net.ServicePointManager]::SecurityProtocol
+  ```
+
+  **Tls12** がコマンドの出力に含まれていない場合、TLS 1.2 はそのコンピューターでは使用できません。
+
+    **対処法**: 次の PowerShell コマンドを実行して TLS 1.2 を有効にし、同じ PowerShell セッションからリソース プロバイダーのデプロイを開始するかまたはスクリプトを更新します。
+
+    ```powershell
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+    ```
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>Azure Stack を運用するクラウド管理者に関する既知の問題
 [Azure Stack リリース ノート](azure-stack-servicing-policy.md)内のドキュメントをご覧ください。

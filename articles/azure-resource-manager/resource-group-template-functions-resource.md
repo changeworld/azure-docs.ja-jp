@@ -55,8 +55,8 @@ list 操作をサポートする任意の種類のリソースの値を返しま
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |[はい] |string |リソースの一意識別子です。 |
-| apiVersion |[はい] |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
+| resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
+| apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
 | functionValues |いいえ  |オブジェクト | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 | 
 
 ### <a name="return-value"></a>戻り値
@@ -192,7 +192,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |[はい] |string |プロバイダーの名前空間 |
+| providerNamespace |はい |string |プロバイダーの名前空間 |
 | resourceType |いいえ  |string |指定した名前空間内にあるリソースの種類。 |
 
 ### <a name="return-value"></a>戻り値
@@ -280,7 +280,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |[はい] |string |名前またはリソースの一意の識別子。 |
+| resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 |
 | apiVersion |いいえ  |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
 | 'Full' |いいえ  |string |完全なリソース オブジェクトを返すかどうかを指定する値。 `'Full'` を指定しない場合、リソースのプロパティ オブジェクトのみが返されます。 完全なオブジェクトには、リソース ID や場所などの値が含まれます。 |
 
@@ -581,8 +581,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ  |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceGroupName |いいえ  |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
-| resourceType |[はい] |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
-| resourceName1 |[はい] |string |リソースの名前。 |
+| resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
+| resourceName1 |はい |string |リソースの名前。 |
 | resourceName2 |いいえ  |string |リソースが入れ子になっている場合、次のリソース名セグメント。 |
 
 ### <a name="return-value"></a>戻り値

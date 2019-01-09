@@ -1,5 +1,5 @@
 ---
-title: Azure App Service での Web アプリの構成
+title: Web アプリを構成する - Azure App Service
 description: Azure App Service での Web アプリの構成方法
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: cf3a6fe24082a10db6a5b1267b70435d9e36b720
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.custom: seodec18
+ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115524"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269432"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Azure App Service での Web アプリの構成
 
@@ -38,10 +39,10 @@ ms.locfileid: "49115524"
 ### <a name="general-settings"></a>全般設定
 **[Framework バージョン]**。 アプリでこれらのフレームワークを使用する場合は、以下のオプションを設定します。 
 
-* **.NET Framework**: .NET Framework のバージョンを設定します。 
-* **PHP**: PHP のバージョンを設定するか、PHP を無効にする場合は **[オフ]** を設定します。 
-* **Java**: Java のバージョンを選択するか、Java を無効にする場合は **[オフ]** を選択します。 **[Web コンテナー]** オプションを使用して Tomcat か Jetty のバージョンを選択します。
-* **Python**: Python のバージョンを選択するか、Python を無効にする場合は **[オフ]** を選択します。
+* **.NET Framework**:.NET Framework のバージョンを設定します。 
+* **PHP**:PHP のバージョンを設定するか、PHP を無効にする場合は **[オフ]** を設定します。 
+* **Java**:Java のバージョンを選択するか、Java を無効にする場合は **[オフ]** を選択します。 **[Web コンテナー]** オプションを使用して Tomcat か Jetty のバージョンを選択します。
+* **Python**:Python のバージョンを選択するか、Python を無効にする場合は **[オフ]** を選択します。
 
 技術的な理由で、Web アプリで Java を有効にすると、.NET、PHP、Python オプションが無効になります。
 
@@ -78,6 +79,8 @@ ms.locfileid: "49115524"
 
 アプリの設定は、格納されるときに常に暗号化されます (保存時の暗号化)。
 
+アプリの設定は、[Key Vault 参照](app-service-key-vault-references.md)を使用して Key Vault から解決できます。
+
 ### <a name="connection-strings"></a>Connection strings
 リンク済みリソースの接続文字列です。 
 
@@ -93,6 +96,8 @@ PHP、Python、Java、および Node アプリケーションの場合、実行�
 たとえば、MySql の接続文字列が `connectionstring1` という名前であれば、`MYSQLCONNSTR_connectionString1` という環境変数でアクセスされます。
 
 接続文字列は、格納されるときに常に暗号化されます (保存時の暗号化)。
+
+接続文字列は、[Key Vault 参照](app-service-key-vault-references.md)を使用して Key Vault から解決できます。
 
 ### <a name="default-documents"></a>既定のドキュメント
 既定のドキュメントは、Web サイトのルート URL に表示される Web ページです。  一覧で最初に一致するファイルが使用されます。 
@@ -160,7 +165,7 @@ Web アプリのカスタム ドメイン名を追加します。 詳細につ�
 ### <a name="monitoring"></a>監視
 基本モードまたは標準モードでは、最大 3 つの地理的に分散した場所から HTTP または HTTPS エンドポイントの可用性をテストすることができます。 HTTP 応答コードがエラー (4xx または 5xx) である場合、または、応答に 30 秒以上かかる場合、監視テストは失敗します。 すべての指定した場所から監視テストが成功した場合、エンドポイントは利用可能と見なされます。 
 
-詳細については、「 [方法: Web エンドポイントの状態を監視する]」をご覧ください。
+詳細については、[方法:Web エンドポイントの状態を監視する]に関する記事をご覧ください。
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成]」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
@@ -175,14 +180,14 @@ Web アプリのカスタム ドメイン名を追加します。 詳細につ�
 
 <!-- URL List -->
 
-[ASP.NET SignalR]: http://www.asp.net/signalr
+[ASP.NET SignalR]: https://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Azure App Service のカスタム ドメイン名の構成]: ./app-service-web-tutorial-custom-domain.md
 [Azure App Service の Web アプリのステージング環境を設定する]: ./web-sites-staged-publishing.md
 [アプリに対する HTTPS を Azure App Service で有効にする]: ./app-service-web-tutorial-custom-ssl.md
-[方法: Web エンドポイントの状態を監視する]: http://go.microsoft.com/fwLink/?LinkID=279906
+[方法:Web エンドポイントの状態を監視する]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Azure App Service での Web Apps の監視の基本]: ./web-sites-monitor.md
-[パイプライン モード]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[パイプライン モード]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Azure App Service での Web アプリの拡張]: ./web-sites-scale.md
 [Azure App Service アプリケーションの作成]: https://azure.microsoft.com/try/app-service/
 

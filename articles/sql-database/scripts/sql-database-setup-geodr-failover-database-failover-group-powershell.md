@@ -7,17 +7,17 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: mashamsft
+ms.author: mathoma
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: a419d2953fc2d66e37bc48fd2f870bb55052d170
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9981953240a79fd58327b11e61c49d726a74fe9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972305"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602975"
 ---
 # <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-azure-sql-database"></a>PowerShell を使用して単一の Azure SQL Database のアクティブ geo レプリケーション フェールオーバー グループを構成する
 

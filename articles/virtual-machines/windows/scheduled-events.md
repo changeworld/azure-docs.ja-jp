@@ -225,6 +225,6 @@ foreach($event in $scheduledEvents.Events)
 ## <a name="next-steps"></a>次の手順 
 
 - Azure Friday で、[スケジュールされたイベントのデモ](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)をご覧ください。 
-- [Azure Instance Metadata スケジュールされたイベントの Github リポジトリ](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)で、スケジュールされたイベントのコード サンプルをご覧ください。
+- [Azure Instance Metadata スケジュールされたイベントの GitHub リポジトリ](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)で、スケジュールされたイベントのコード サンプルをご覧ください。
 - [インスタンス メタデータ サービス](instance-metadata-service.md)で使用可能な API の詳細についてご覧ください。
 - [Azure での Windows 仮想マシンの計画メンテナンス](planned-maintenance.md)に関するページをご覧ください。

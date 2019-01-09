@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 857d58d31565e413a207162202f1a680d7da7c65
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250735"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837173"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure のセルフサービス サインアップについて](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)」をご覧ください。
@@ -108,7 +108,11 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 
 アンマネージド テナントが異なるリージョンにあるときは、キーとテンプレートは移動しません。 たとえば、アンマネージド テナントがヨーロッパにあり、所有しているテナントが北米にあるとします。 
 
-個人向け RMS は保護コンテンツを開くために Azure AD 対応として設計されていますが、ユーザーがコンテンツ保護もすることを防ぎません。 ユーザーが個人向け RMS サブスクリプションでコンテンツを保護したとき、キーとテンプレートが移動していなければ、ドメイン引き継ぎ後、そのコンテンツにアクセスできなくなります。    
+個人向け RMS は保護コンテンツを開くために Azure AD 対応として設計されていますが、ユーザーがコンテンツ保護もすることを防ぎません。 ユーザーが個人向け RMS サブスクリプションでコンテンツを保護したとき、キーとテンプレートが移動していなければ、ドメイン引き継ぎ後、そのコンテンツにアクセスできなくなります。
+
+#### <a name="more-information-about-power-bi"></a>Power BI の詳細情報
+
+外部引き継ぎを実行すると、引き継ぎの前に作成された Power BI コンテンツは、[Power BI アーカイブ済みワークスペース](/power-bi/service-admin-power-bi-archived-workspace)に配置されます。 新しいテナントで使用するすべてのコンテンツを手動で移行する必要があります。
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>ForceTakeover オプションの Azure AD PowerShell コマンドレット
 「[PowerShell の例](#powershell-example)」で使用されているコマンドレットを以下に示します。

@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](https
 <TechnicalProfile Id="Twitter-OAUTH1">
   <DisplayName>Twitter</DisplayName>
   <Protocol Name="OAuth1" />
-  ...
+  ...    
 ```
 
 ## <a name="input-claims"></a>入力要求
@@ -50,7 +50,7 @@ Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](https
 - **displayName** 要求にマップされている **screen_name** 要求。
 - どの名前にもマップされていない **email** 要求。
 
-また、技術プロファイルは、ID プロバイダーにより返されない要求も返します。
+また、技術プロファイルは、ID プロバイダーにより返されない要求も返します。 
 
 - ID プロバイダーの名前を保持する **identityProvider** 要求。
 - 既定値の `socialIdpAuthentication` である **authenticationSource** 要求。
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](https
 | request_token_endpoint | はい | RFC 5849 に準拠した要求トークン エンドポイントの URL。 |
 | authorization_endpoint | はい | RFC 5849 に準拠した承認エンドポイントの URL。 |
 | access_token_endpoint | はい | RFC 5849 に準拠したトークン エンドポイントの URL。 |
-| ClaimsEndpoint | いいえ  | ユーザー情報エンドポイントの URL。 |
+| ClaimsEndpoint | いいえ  | ユーザー情報エンドポイントの URL。 | 
 | ClaimsResponseFormat | いいえ  | 要求応答の形式。|
 
 ## <a name="cryptographic-keys"></a>暗号化キー
@@ -83,14 +83,27 @@ Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](https
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。   |
+| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。   | 
 
 ## <a name="redirect-uri"></a>リダイレクト URI
 
-ID プロバイダーのリダイレクト URL を構成する場合は、`https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` を入力します。 **tenant** をお使いのテナント名 (例: contosob2c.onmicrosoft.com) に置き換え、**policyId** をお使いのポリシーの識別子 (例: b2c_1_policy) に置き換える必要があります。 リダイレクト URI は、すべて小文字である必要があります。 ID プロバイダーのログインを使用するすべてのポリシーのために、リダイレクト URI を追加してください。
+ID プロバイダーのリダイレクト URL を構成する場合は、`https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` を入力します。 **tenant** をお使いのテナント名 (例: contosob2c.onmicrosoft.com) に置き換え、**policyId** をお使いのポリシーの識別子 (例: b2c_1_policy) に置き換える必要があります。 リダイレクト URI は、すべて小文字である必要があります。 ID プロバイダーのログインを使用するすべてのポリシーのために、リダイレクト URI を追加してください。 
 
 **login.microsoftonline.com** の代わりに **b2clogin.com** ドメインを使用している場合は、login.microsoftonline.com の代わりに b2clogin.com を使用することを確認します。
 
 次に例を示します。
 
 - [カスタム ポリシーを使用して Twitter を OAuth1 ID プロバイダーとして追加する](active-directory-b2c-custom-setup-twitter-idp.md)
+
+
+
+
+
+
+
+
+
+
+
+
+

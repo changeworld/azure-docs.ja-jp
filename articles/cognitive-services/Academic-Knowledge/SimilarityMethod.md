@@ -30,8 +30,8 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ## <a name="request-parameters"></a>要求パラメーター
 パラメーター        |データ型      |必須 | 説明
 ----------|----------|----------|------------
-**s1**        |String   |[はい]  |比較する文字列*
-**s2**        |String   |[はい]  |比較する文字列*
+**s1**        |String   |はい  |比較する文字列*
+**s2**        |String   |はい  |比較する文字列*
 <sub> *比較する文字列の長さは最大 1 MB です。</sub>
 <br>
 ## <a name="response"></a>Response

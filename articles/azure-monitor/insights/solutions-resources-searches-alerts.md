@@ -129,9 +129,9 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| enabled       | [はい] | 作成時点でアラートが有効かどうかを指定します。 |
-| interval      | [はい] | クエリを実行する間隔です (分単位)。 |
-| queryTimeSpan | [はい] | 結果を評価する期間です (分単位)。 |
+| enabled       | はい | 作成時点でアラートが有効かどうかを指定します。 |
+| interval      | はい | クエリを実行する間隔です (分単位)。 |
+| queryTimeSpan | はい | 結果を評価する期間です (分単位)。 |
 
 スケジュール リソースは保存された検索条件に依存するので、スケジュールの前に作成する必要があります。
 
@@ -189,10 +189,10 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| type | [はい] | アクションの種類。  これは、アラート アクションの**アラート**です。 |
-| Name | [はい] | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
+| type | はい | アクションの種類。  これは、アラート アクションの**アラート**です。 |
+| Name | はい | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
 | Description | いいえ  | アラートに関する省略可能な説明です。 |
-| Severity | [はい] | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **critical**<br>**warning**<br>**informational**
+| Severity | はい | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **critical**<br>**warning**<br>**informational**
 
 
 #### <a name="threshold"></a>Threshold
@@ -200,8 +200,8 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| operator | [はい] | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
-| Value | [はい] | 結果を比較する値です。 |
+| operator | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
+| Value | はい | 結果を比較する値です。 |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 このセクションは省略可能です。  メトリック測定アラートの場合に指定します。
@@ -211,9 +211,9 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| TriggerCondition | [はい] | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
-| operator | [はい] | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
-| Value | [はい] | アラートをトリガーするために必要な、条件が満たされた回数です。 |
+| TriggerCondition | はい | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
+| operator | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
+| Value | はい | アラートをトリガーするために必要な、条件が満たされた回数です。 |
 
 
 #### <a name="throttling"></a>Throttling
@@ -231,7 +231,7 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| AzNsNotification | [はい] | アラート条件が満たされたときに必要なアクションを実行するためにアラートに関連付ける Azure アクション グループのリソース ID です。 |
+| AzNsNotification | はい | アラート条件が満たされたときに必要なアクションを実行するためにアラートに関連付ける Azure アクション グループのリソース ID です。 |
 | CustomEmailSubject | いいえ  | 関連付けられたアクション グループで指定されているすべてのアドレスに送信されるメールのカスタム件名行です。 |
 | CustomWebhookPayload | いいえ  | 関連付けられたアクション グループで定義されているすべての webhook エンドポイントに送信するカスタマイズされたペイロードです。 形式は、webhook で想定されていることに依存し、有効なシリアル化された JSON である必要があります。 |
 
@@ -248,8 +248,8 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| Recipients | [はい] | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Subject | [はい] | メールの件名です。 |
+| Recipients | はい | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
+| Subject | はい | メールの件名です。 |
 | Attachment | いいえ  | 添付ファイルは現在はサポートされていません。  この要素を指定する場合は、**None** にする必要があります。 |
 
 
@@ -258,8 +258,8 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| RunbookName | [はい] | 開始する Runbook の名前です。 |
-| WebhookUri | [はい] | Runbook に対する webhook の URI です。 |
+| RunbookName | はい | 開始する Runbook の名前です。 |
+| WebhookUri | はい | Runbook に対する webhook の URI です。 |
 | Expiry | いいえ  | 修復が期限切れになる日付と時刻です。 |
 
 ##### <a name="webhook-actions"></a>Webhook アクション
@@ -288,9 +288,9 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| type | [はい] | アクションの種類。  これは、webhook アクションの **Webhook** です。 |
-| name | [はい] | アクションの表示名です。  コンソールには表示されません。 |
-| wehookUri | [はい] | webhook の URI です。 |
+| type | はい | アクションの種類。  これは、webhook アクションの **Webhook** です。 |
+| name | はい | アクションの表示名です。  コンソールには表示されません。 |
+| wehookUri | はい | webhook の URI です。 |
 | customPayload | いいえ  | Webhook に送信するカスタム ペイロード。 形式は、Webhook で想定される内容によって異なります。 |
 
 

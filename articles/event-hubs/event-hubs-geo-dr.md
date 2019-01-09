@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs geo ディザスター リカバリー | Microsoft Docs
+title: geo ディザスター リカバリー - Azure Event Hubs| Microsoft Docs
 description: Azure Event Hubs でリージョンを使用してフェールオーバーとディザスター リカバリーを実行する方法
 services: event-hubs
 documentationcenter: ''
@@ -11,18 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 89ecfd93c22fe72fee3befd8d4a722eb41d816af
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 59eebc8389238af7180b94cb094f9528a21d26d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42747173"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091348"
 ---
-# <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure Event Hubs geo ディザスター リカバリー
+# <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
-Azure リージョン全体または ([可用性ゾーン](../availability-zones/az-overview.md)が使用されていない) データ センター全体にダウンタイムが発生した場合に、別の地域またはデータ センターでデータ処理が続行されることが重要です。 そのため、*geo ディザスター リカバリー*と *geo レプリケーション*は、どの企業にとっても重要な機能です。 Azure Event Hubs では、geo ディザスター リカバリーと geo レプリケーションの両方が名前空間レベルでサポートされています。 
+Azure リージョン全体または ([可用性ゾーン](../availability-zones/az-overview.md)が使用されていない) データ センター全体にダウンタイムが発生した場合に、別の地域またはデータ センターでデータ処理が続行されることが重要です。 そのため、*geo ディザスター リカバリー*と *geo レプリケーション*は、どの企業にとっても重要な機能です。 Azure Event Hubs では、geo ディザスター リカバリーと geo レプリケーションの両方が名前空間レベルでサポートされています。 
 
 Event Hubs Standard SKU では、geo ディザスター リカバリー機能がグローバルに使用できます。
 

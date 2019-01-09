@@ -17,16 +17,16 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 12/14/2018
 ms.locfileid: "53413270"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
+# <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="使用している Azure Functions ランタイムのバージョンを選択してください: "]
 > * [Version 1](functions-host-json-v1.md)
 > * [Version 2](functions-host-json.md)
 
-*host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、v2 ランタイムで使用できる設定の一覧を紹介します。  
+*host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、v2 ランタイムで使用できる設定の一覧を紹介します。
 
 > [!NOTE]
-> この記事は、Azure Functions 2.x を対象としています。  Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
+> この記事は、Azure Functions 2.x を対象としています。 Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
 
 関数アプリの他の構成オプションは、[アプリの設定](functions-app-settings.md)で管理されます。
 
@@ -110,9 +110,9 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 ```
 
 |プロパティ  |既定値 | 説明 |
-|---------|---------|---------| 
-|isEnabled|true|サンプリングを有効または無効にします。| 
-|maxTelemetryItemsPerSecond|5|サンプリングが開始されるしきい値。| 
+|---------|---------|---------|
+|isEnabled|true|サンプリングを有効または無効にします。|
+|maxTelemetryItemsPerSecond|5|サンプリングが開始されるしきい値。|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -124,7 +124,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ## <a name="eventhub"></a>eventHub
 
-構成設定は、[Event Hub のトリガーとバインディング](functions-bindings-event-hubs.md#host-json)に関する記事に記載されています。 
+構成設定は、[Event Hub のトリガーとバインディング](functions-bindings-event-hubs.md#host-json)に関する記事に記載されています。
 
 ## <a name="extensions"></a>拡張機能
 
@@ -167,12 +167,12 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 ```
 
 |プロパティ  |既定値 | 説明 |
-|---------|---------|---------| 
-|enabled|true|機能が有効かどうかを指定します。 | 
-|healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 | 
-|healthCheckWindow|2 分|`healthCheckThreshold` 設定と組み合わせて使用するスライド時間枠。| 
-|healthCheckThreshold|6|正常性チェックの最大失敗回数。この回数を超えると、ホスト リサイクルが開始されます。| 
-|counterThreshold|0.80|パフォーマンス カウンターが異常とみなされるしきい値。| 
+|---------|---------|---------|
+|enabled|true|機能が有効かどうかを指定します。 |
+|healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 |
+|healthCheckWindow|2 分|`healthCheckThreshold` 設定と組み合わせて使用するスライド時間枠。|
+|healthCheckThreshold|6|正常性チェックの最大失敗回数。この回数を超えると、ホスト リサイクルが開始されます。|
+|counterThreshold|0.80|パフォーマンス カウンターが異常とみなされるしきい値。|
 
 ## <a name="http"></a>http
 
@@ -221,12 +221,12 @@ Application Insights など、関数アプリのログの動作を制御しま�
 ```
 
 |プロパティ  |既定値 | 説明 |
-|---------|---------|---------| 
-|isEnabled|false|コンソール ログ記録を有効または無効にします。| 
+|---------|---------|---------|
+|isEnabled|false|コンソール ログ記録を有効または無効にします。|
 
 ## <a name="queues"></a>queues
 
-構成設定は、[Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md#host-json)に関する記事に記載されています。  
+構成設定は、[Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md#host-json)に関する記事に記載されています。
 
 ## <a name="sendgrid"></a>sendGrid
 
@@ -253,12 +253,12 @@ Application Insights など、関数アプリのログの動作を制御しま�
 ```
 
 |プロパティ  |既定値 | 説明 |
-|---------|---------|---------| 
-|lockPeriod|00:00:15|関数レベルのロックの取得期間。 ロックの自動更新。| 
-|listenerLockPeriod|00:01:00|リスナーのロックの取得期間。| 
-|listenerLockRecoveryPollingInterval|00:01:00|スタートアップ時にリスナーのロックを獲得できなかった場合に、リスナーのロックの回復に使用される時間間隔。| 
-|lockAcquisitionTimeout|00:01:00|ランタイムがロックの獲得を試行する最長時間。| 
-|lockAcquisitionPollingInterval|該当なし|ロックの獲得の試行間隔。| 
+|---------|---------|---------|
+|lockPeriod|00:00:15|関数レベルのロックの取得期間。 ロックの自動更新。|
+|listenerLockPeriod|00:01:00|リスナーのロックの取得期間。|
+|listenerLockRecoveryPollingInterval|00:01:00|スタートアップ時にリスナーのロックを獲得できなかった場合に、リスナーのロックの回復に使用される時間間隔。|
+|lockAcquisitionTimeout|00:01:00|ランタイムがロックの獲得を試行する最長時間。|
+|lockAcquisitionPollingInterval|該当なし|ロックの獲得の試行間隔。|
 
 ## <a name="version"></a>version
 
@@ -266,7 +266,7 @@ v2 ランタイムを対象とする関数アプリでは、バージョン文�
 
 ## <a name="watchdirectories"></a>watchDirectories
 
-変更を監視する[共有コード ディレクトリ](functions-reference-csharp.md#watched-directories)のセット。  これらのディレクトリ内のコードを変更した場合に、関数によって変更を選択するようにします。
+変更を監視する[共有コード ディレクトリ](functions-reference-csharp.md#watched-directories)のセット。 これらのディレクトリ内のコードを変更した場合に、関数によって変更を選択するようにします。
 
 ```json
 {

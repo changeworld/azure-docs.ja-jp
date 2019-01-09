@@ -31,7 +31,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 ## <a name="request-parameters"></a>要求パラメーター  
 Name     | 値 | 必須  | 説明
 -----------|-----------|---------|--------
-**mode**       | テキスト文字列 | [はい] | 使用するモードの名前。 値は *json* または *lambda* です。
+**mode**       | テキスト文字列 | はい | 使用するモードの名前。 値は *json* または *lambda* です。
 
 グラフ検索メソッドは、HTTP POST 要求を介して呼び出す必要があります。 post 要求には、コンテンツ タイプ ヘッダー **application/json** が含まれている必要があります。
 

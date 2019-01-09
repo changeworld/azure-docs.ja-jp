@@ -6,18 +6,18 @@ author: bryanla
 manager: mbaldwin
 services: key-vault
 ms.author: bryanla
-ms.date: 09/05/2018
+ms.date: 11/27/2018
 ms.topic: conceptual
 ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: d9fc845316d6e785d8215ac738b893ebc080d911
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 54449e26279e6c6d83a57daa9c8f40819fab4993
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300972"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715765"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -183,18 +183,16 @@ Azure AD にサインインするために証明書を使用するには、次�
 
 1. [サービス プリンシパルの証明書](/azure/azure-resource-manager/resource-group-authenticate-service-principal)を作成します。 
 
-2. _LocalMachine_ または _CurrentUser_ ストアのいずれかに証明書をデプロイします。 
+2. *LocalMachine* または *CurrentUser* ストアのいずれかに証明書をデプロイします。 
 
 3. **AzureServicesAuthConnectionString** という名前の環境変数を次のように設定します。
 
     ```
     RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};
-          CertificateStoreLocation={LocalMachine or CurrentUser}
+          CertificateStoreLocation={CertificateStore}
     ```
  
-    _{AppId}_、_{TenantId}_、_{Thumbprint}_ は、手順 1 で生成された値に置き換えます。
-
-    **CertificateStoreLocation** には、デプロイ計画に基づいて、_CurrentUser_ または _LocalMachine_ のいずれかを指定する必要があります。
+    *{AppId}*、*{TenantId}*、*{Thumbprint}* は、手順 1 で生成された値に置き換えます。 デプロイ計画に基づき、*{CertificateStore}* を `LocalMachine` または `CurrentUser` のどちらかで置き換えます。
 
 4. アプリケーションを実行します。 
 
@@ -236,8 +234,8 @@ Azure AD の共有シークレット資格情報を使用してサインイン�
 
 ## <a name="next-steps"></a>次の手順
 
-- 詳細については、「[Azure リソースの管理 ID について](/azure/app-service/app-service-managed-service-identity)」を参照してください。
+- 詳細については、「[Azure リソースの管理 ID について](/azure/app-service/overview-managed-identity)」を参照してください。
 
-- [アプリの認証と承認](/azure/app-service/app-service-authentication-overview)を行う他のさまざまな方法について参照する。
+- [アプリの認証と承認](/azure/app-service/overview-authentication-authorization)を行う他のさまざまな方法について参照する。
 
 - Azure AD の[認証シナリオ](/azure/active-directory/develop/active-directory-authentication-scenarios#web-browser-to-web-application)について詳細を参照する。

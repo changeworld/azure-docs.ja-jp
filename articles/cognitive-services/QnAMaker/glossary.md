@@ -1,7 +1,7 @@
 ---
 title: 用語集 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 用語集
+description: QnA Maker サービスには、機械学習や自然言語処理に由来する新しい用語に加え、サービス固有の用語が数多く存在します。 この用語集は、そうした用語を理解するための助けとなります。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: b22ec27b2999d322945e37c5a38d2b1d1532e7e3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: 832bf85087b706451a6ee58c538d7a163ef18203
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166046"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079944"
 ---
-# <a name="glossary"></a>用語集
+# <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>QnA Maker のナレッジ ベースとサービスの用語集
 
 ## <a name="qna-maker-service"></a>QnA Maker Service
 QnA Maker サービスは、QnA Maker の使用を開始するための前提条件です。 QnA Maker レベルを購入すると、ナレッジ ベースを作成して管理するためのリソースが、お使いの Azure サブスクリプション内に設定されます。 各 QnA Maker ユーザー アカウントは、各自のサブスクリプション内に複数の QnA Maker サービスを作成できます。

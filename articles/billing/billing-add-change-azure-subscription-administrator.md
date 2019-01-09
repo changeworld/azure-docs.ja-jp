@@ -4,7 +4,7 @@ description: Azure 共同管理者、サービス管理者、アカウント管�
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: adpick
 editor: ''
 tags: billing
 ms.assetid: 13a72d76-e043-4212-bcac-a35f4a27ee26
@@ -15,19 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: cwatson
-ms.openlocfilehash: d6e99c2d57baa5fc62f3894abc9d04635f81f5aa
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 94d574d16b1b9951ab91a09023f9193723f850a7
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638054"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583366"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
 Azure リソースへのアクセスを管理するには、適切な管理者ロールが必要です。 この記事では、サブスクリプション レベルでユーザーの管理者ロールを追加または変更する方法について説明します。
-
-> [!div class="nextstepaction"]
-> [Azure の課金に関するドキュメントの改善にご協力ください](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="what-administrator-role-do-i-use"></a>どの管理者ロールを使用しますか?
 
@@ -42,10 +39,10 @@ Azure サブスクリプションの管理者としてユーザーを追加す�
 1. [Azure Portal の**サブスクリプション**](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
 2. アクセス権を付与するサブスクリプションを選択します。
 3. リストから **[アクセス制御 (IAM)]** を選択します。
-4. **[追加]** を選択します。
-   ([追加] ボタンがない場合は、アクセス許可を追加する権限がありません。)
+4. **[ロールの割り当ての追加]** を選択します。
+   ([ロールの割り当ての追加] ボタンがない場合は、アクセス許可を追加する権限がありません。)
 5. **[ロール]** ボックスで、**[所有者]** を選択します。 
-6. **[アクセスの割り当て先]** ボックスで、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。 
+6. **[アクセスの割り当て先]** ボックスで **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。 
 7. **[選択]** ボックスに、所有者として追加するユーザーのメール アドレスを入力します。 ユーザーを選択し、**[保存]** を選択します。
 
     ![選択された所有者ロールを示すスクリーンショット](./media/billing-add-change-azure-subscription-administrator/add-role.png)
@@ -106,8 +103,8 @@ Azure サブスクリプションの管理者としてユーザーを追加す�
 
   | サインイン方法 | サービス管理者として Microsoft アカウント ユーザーを追加できる | 同じ組織内の職場または学校アカウントをサービス管理者として追加できる | 別の組織内の職場または学校アカウントをサービス管理者として追加できる |
   | --- | --- | --- | --- |
-  |  Microsoft アカウント |[はい] |いいえ  |いいえ  |
-  |  職場または学校のアカウント |[はい] |[はい] |いいえ  |
+  |  Microsoft アカウント |はい |いいえ  |いいえ  |
+  |  職場または学校のアカウント |はい |はい |いいえ  |
 
 ## <a name="change-the-account-administrator-for-an-azure-subscription"></a>Azure サブスクリプションのアカウント管理者を変更する
 
@@ -127,6 +124,6 @@ Azure サブスクリプションの管理者としてユーザーを追加す�
 * Azure のすべてのロールの詳細については、[Azure の各種ロールの説明](../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
 * Azure Active Directory について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../active-directory/active-directory-how-subscriptions-associated-directory.md)」および「[Azure Active Directory での管理者ロールの割り当て](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」をご覧ください。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。

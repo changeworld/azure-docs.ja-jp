@@ -14,16 +14,16 @@ ms.topic: quickstart
 ms.date: 09/17/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 96f83f86a03b4fa6b12962c28ce1488d4250ba5a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4cfa25b8d32a37c4ccbf8a18f21a0e56a219b156
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384583"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601646"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Windows コンテナー (プレビュー) を使用して Azure App Service に ASP.NET アプリを移行する
 
-[Azure App Service](app-service-web-overview.md) は、IIS 上で稼働する ASP.NET や IIS 上で稼働する Node.js など、Windows 上の定義済みのアプリケーション スタックを提供します。 Windows 環境があらかじめ構成されていることで、オペレーティング システムは、管理アクセスやソフトウェアのインストール、グローバル アセンブリ キャッシュへの変更などができないようにロックされます (「[Azure App Service におけるオペレーティング システムの機能](operating-system-functionality.md)」を参照)。 ただし、App Service でカスタム Windows コンテナーを使用するとアプリで必要な OS の変更を行うことができるので、カスタム OS とソフトウェアの構成が必要なオンプレミスのアプリを簡単に移行できます。 このチュートリアルでは、Windows フォント ライブラリにインストールされているカスタム フォントを使用する ASP.NET アプリを App Service に移行する方法を示します。 Visual Studio からカスタム構成の Windows イメージを [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) に展開した後、App Service でそれを実行します。
+[Azure App Service](overview.md) は、IIS 上で稼働する ASP.NET や IIS 上で稼働する Node.js など、Windows 上の定義済みのアプリケーション スタックを提供します。 Windows 環境があらかじめ構成されていることで、オペレーティング システムは、管理アクセスやソフトウェアのインストール、グローバル アセンブリ キャッシュへの変更などができないようにロックされます (「[Azure App Service におけるオペレーティング システムの機能](operating-system-functionality.md)」を参照)。 ただし、App Service でカスタム Windows コンテナーを使用するとアプリで必要な OS の変更を行うことができるので、カスタム OS とソフトウェアの構成が必要なオンプレミスのアプリを簡単に移行できます。 このチュートリアルでは、Windows フォント ライブラリにインストールされているカスタム フォントを使用する ASP.NET アプリを App Service に移行する方法を示します。 Visual Studio からカスタム構成の Windows イメージを [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) に展開した後、App Service でそれを実行します。
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "53384583"
 - <a href="https://hub.docker.com/" target="_blank">Docker Hub アカウントにサインアップする</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows をインストールする</a>。
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10#2-switch-to-windows-containers" target="_blank">Windows コンテナーを実行するように Docker を切り替える</a>。
-- **ASP.NET および Web の開発**ワークロードと **Azure の開発**ワークロードを指定して <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 をインストールする</a>。 Visual Studio 2017 を既にインストールしている場合:
+- **ASP.NET と Web 開発**ワークロードと **Azure の開発**ワークロードを含めて <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 をインストールする</a>。 Visual Studio 2017 を既にインストールしている場合:
     - **[ヘルプ]** > **[更新プログラムの確認]** の順にクリックし、Visual Studio に最新の更新プログラムをインストールします。
     - **[ツール]** > **[ツールと機能を取得]** の順にクリックし、Visual Studio にワークロードを追加します。
 

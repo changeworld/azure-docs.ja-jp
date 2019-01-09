@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
-ms.openlocfilehash: 6e1317084ce60fb8dce64ccd7d1d93fe1ae1d9e9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c1af73d57255b3c74bbab4c69767d1756b24a6da
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140763"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541576"
 ---
 # <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>Azure Cosmos DB エクスプローラーを使用してデータを管理する 
 
@@ -51,4 +51,4 @@ Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベ�
 ## <a name="next-steps"></a>次の手順
 Azure Cosmos DB エクスプローラーでのデータの管理方法を学んだので、次の段階に進みましょう。
 
-* SQL 構文を使用して[クエリ](sql-api-query-reference.md)の定義を開始し、ストアド プロシージャ、UDF、トリガーを使用して[サーバー側プログラミング](programming.md)を実行します。 
+* SQL 構文を使用して[クエリ](sql-api-query-reference.md)の定義を開始し、ストアド プロシージャ、UDF、トリガーを使用して[サーバー側プログラミング](stored-procedures-triggers-udfs.md)を実行します。 

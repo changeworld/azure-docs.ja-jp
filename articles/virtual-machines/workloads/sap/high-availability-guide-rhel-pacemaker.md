@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: f8e16af629eaa18b49b054be9fc478d633263ddb
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: d023bf4428790667ef192a3ce981087694224f50
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636798"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724538"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする
 
@@ -224,10 +224,10 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. [All resources] \(すべてのリソース) ブレードを開きます
 1. 1 つ目のクラスター ノードの仮想マシンを選択します
 1. [アクセス制御 (IAM)] を選択します
-1. [追加] をクリックします。
+1. [ロールの割り当ての追加] をクリックします
 1. "Linux Fence Agent Role" ロールを選択します
 1. 上記で作成したアプリケーションの名前を入力します
-1. [OK] をクリックします
+1. [保存] をクリックします。
 
 2 つ目のクラスター ノードについても上記の手順を繰り返します。
 

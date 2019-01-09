@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 4aa74aebfd9e0ef6c71913c76181a07045aa3ad7
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 5573c7f122360b3bd3adeb9dcca1c827a1933f70
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231221"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959463"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Kubernetes を Azure Stack にデプロイする
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!Note]  
 > Azure Stack 上の Kubernetes はプレビュー段階にあります。
@@ -179,6 +179,6 @@ Kubernetes は、次の目的で使用できます。
 
 ## <a name="next-steps"></a>次の手順
 
-[Kubernetes を Marketplace に追加する (Azure Stack のオペレーター)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[Kubernetes を Marketplace に追加する (Azure Stack のオペレーター)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Azure における Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

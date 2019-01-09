@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Encompass の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Encompass の統合 | Microsoft Docs
 description: Azure Active Directory と Encompass の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: b2a5050960eee55a7edbdc6048ee717e8345cb2e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1a179751cb8919e260c58564be6e14303f4d3f41
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420293"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845452"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-encompass"></a>チュートリアル: Azure Active Directory と Encompass の統合
+# <a name="tutorial-azure-active-directory-integration-with-encompass"></a>チュートリアル:Azure Active Directory と Encompass の統合
 
 このチュートリアルでは、Encompass と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -115,7 +115,7 @@ Encompass で Azure AD のシングル サインオンを構成してテスト�
     b. **[応答 URL]** ボックスに、`https://<subdomain>.voxmobile.com/voxportal/ws/saml/consume` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Encompass サポート チーム](http://www.voxmobile.com/contact/)に問い合わせてください。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Encompass サポート チーム](https://www.voxmobile.com/contact/)に問い合わせてください。
 
 1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -129,10 +129,10 @@ Encompass で Azure AD のシングル サインオンを構成してテスト�
 
     ![Encompass の構成](./media/encompass-tutorial/tutorial_encompass_configure.png) 
 
-1. **Encompass** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)、サインアウト URL、SAML シングル サインオン サービス URL** を [Encompass サポート チーム](http://www.voxmobile.com/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Encompass** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)、サインアウト URL、SAML シングル サインオン サービス URL** を [Encompass サポート チーム](https://www.voxmobile.com/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -168,7 +168,7 @@ Encompass で Azure AD のシングル サインオンを構成してテスト�
   
 ### <a name="create-a-encompass-test-user"></a>Encompass テスト ユーザーの作成
 
-このセクションでは、Encompass で Britta Simon というユーザーを作成します。 [Encompass サポート チーム](http://www.voxmobile.com/contact/)と連携し、Encompass プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Encompass で Britta Simon というユーザーを作成します。  [Encompass サポート チーム](https://www.voxmobile.com/contact/)と連携し、Encompass プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -205,7 +205,7 @@ Encompass で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Encompass] タイルをクリックすると、自動的に Encompass アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

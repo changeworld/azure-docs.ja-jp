@@ -10,17 +10,15 @@ ms.assetid: 5718d620-b96e-4d33-8616-e127ee9379c4
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: cdf3fda4228eadc2921c8fbc1bc72702461d04e4
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 61118520e84b53a7669e482694f48d60fd8e67ad
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637737"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193877"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Log Analytics のビュー デザイナー 視覚化パーツのリファレンス ガイド
 Azure Log Analytics のビュー デザイナーを使用すると、Azure Portal で Log Analytics ワークスペースからのデータのさまざまな視覚化を含むカスタム ビューを作成できます。 この記事は、カスタム ビューで使用可能な視覚化パーツの設定のリファレンス ガイドです。
@@ -28,7 +26,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ビュー デザイナーの詳細については、次を参照してください。
 
 * [ビュー デザイナー](view-designer.md): ビュー デザイナーの概要と、カスタム ビューを作成および編集するための手順について説明します。
-* [タイル リファレンス](view-designer-tiles.md): カスタム ビューで使用できる各タイルの設定に関するリファレンスです。
+* [タイル リファレンス](view-designer-tiles.md): ご利用のカスタム ビューで使用できる各タイルの設定に関するリファレンスです。
 
 
 次の表で、使用可能なビュー デザイナー タイルの種類について説明します。
@@ -63,7 +61,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 | Search query (検索クエリ) |実行するクエリ。 |
 | フレンドリ名 | 表示されるわかりやすい名前。 |
 
-## <a name="number-and-list-part"></a>[Number and list] \(数値とリスト) パーツ
+## <a name="number-and-list-part"></a>[Number and list] (\数値とリスト) パーツ
 ヘッダーには、ログ検索クエリのレコード数を示す 1 つの数値が表示されます。 リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
 ![[クエリのリスト] ビュー](media/view-designer-parts/view-number-list.png)
@@ -324,7 +322,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 たとえば、*Location* というプロパティに、*Redmond-Building 41* や *Bellevue-Building 12* のような値が含まれるとします。 [Name & Value Separator] (名前と値区切り) に「-」(ダッシュ) を指定し、[名前] に「*City-Building*」を指定できます。 この手法で、それぞれの値が *City* と *Building* という名前の 2 つのプロパティとして解析されます。
 
 ### <a name="click-through-navigation"></a>クリックスルー ナビゲーション
-クリックスルー ナビゲーションには、ビュー内のヘッダーまたはリスト項目をクリックしたときに実行されるアクションを定義します。  結果として[ログ検索ポータル](../../log-analytics/log-analytics-log-search-portals.md)でクエリが開かれるか、別のビューが起動されます。
+クリックスルー ナビゲーションには、ビュー内のヘッダーまたはリスト項目をクリックしたときに実行されるアクションを定義します。  結果として[ログ検索ポータル](../../azure-monitor/log-query/portals.md)でクエリが開かれるか、別のビューが起動されます。
 
 クリックスルー ナビゲーションの設定を次の表に示します。
 
@@ -344,7 +342,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 | Setting | 説明 |
 |:--- |:--- |
 | Enable Sparklines (スパークラインを有効にする) |横棒の代わりにスパークラインが表示するには、このリンクを選択します。 |
-| Operation |スパークラインを有効にした場合、これは、スパークラインの値を計算するために、リストの各プロパティに対して実行する演算です。<ul><li>Last Sample (最後のサンプル): 一定期間における系列の最後の値。</li><li>最大値: 一定期間における系列の最大値。</li><li>最小値: 一定期間における系列の最小値。</li><li>合計: 一定期間における系列の値の合計。</li><li>概要: ヘッダーのクエリと同じ `measure` コマンドを使用します。</li></ul> |
+| Operation |スパークラインを有効にした場合、これは、スパークラインの値を計算するために、リストの各プロパティに対して実行する演算です。<ul><li>最後のサンプル: 一定期間における系列の最後の値。</li><li>最大値: 一定期間における系列の最大値。</li><li>最小値: 一定期間における系列の最小値。</li><li>合計: 一定期間における系列の値の合計。</li><li>概要:ヘッダーのクエリと同じ `measure` コマンドを使用します。</li></ul> |
 
 ### <a name="thresholds"></a>しきい値
 しきい値を使用すると、リストの各項目の横に色付きのアイコンを表示できます。 しきい値により、特定の値を超えた項目や特定の範囲内にある項目を視覚的にすばやく確認できます。 たとえば、許容できる値を含む項目には緑色のアイコン、値が警告を示す範囲内にある場合は黄色のアイコン、値がエラー値を超えた場合は赤色のアイコンをそれぞれ表示できます。
@@ -363,4 +361,4 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 | 色 |しきい値の値を示す色。 |
 
 ## <a name="next-steps"></a>次の手順
-* 視覚エフェクト パーツのクエリをサポートする[ログ検索](../../log-analytics/log-analytics-queries.md)について学びます。
+* 視覚エフェクト パーツのクエリをサポートする[ログ検索](../../azure-monitor/log-query/log-query-overview.md)について学びます。

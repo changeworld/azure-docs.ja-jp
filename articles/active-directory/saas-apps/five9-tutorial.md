@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Five9 Plus Adapter (CTI、Contact Center Agents) の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Five9 Plus Adapter (CTI、Contact Center Agents) の統合 | Microsoft Docs
 description: Azure Active Directory と Five9 Plus Adapter (CTI、Contact Center Agents) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 8ee04008b62867c8eba68b1525cf50edec881cbc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c8d3364f9de298d19df35846af5f421978fea960
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432635"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842171"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>チュートリアル: Azure Active Directory と Five9 Plus Adapter (CTI、Contact Center Agents) の統合
+# <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>チュートリアル:Azure Active Directory と Five9 Plus Adapter (CTI、Contact Center Agents) の統合
 
 このチュートリアルでは、Five9 Plus Adapter (CTI、Contact Center Agents) と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -46,7 +46,7 @@ Five9 Plus Adapter (CTI、Contact Center Agents) と Azure AD の統合を構成
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、1 か月の試用版を[無料試用版の提供](https://azure.microsoft.com/pricing/free-trial/)のページで入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -88,7 +88,7 @@ Five9 Plus Adapter (CTI、Contact Center Agents) で、Azure AD の **[ユーザ
 
 Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Five9 Plus Adapter (CTI、Contact Center Agents) テスト ユーザーの作成](#creating-a-five9-plus-adapter-cti-contact-center-agents-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Five9 Plus Adapter (CTI、Contact Center Agents) で作成します。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -142,15 +142,15 @@ Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD のシングル �
 
 1. **Five9 Plus Adapter (CTI、Contact Center Agents)** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)、サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Five9 Plus Adapter (CTI、Contact Center Agents) サポート チーム](https://www.five9.com/about/contact)に送信する必要があります。 また、SSO をさらに構成するために、アダプターに従って以下の手順のようにしてください。
 
-    a. "Five9 Plus Adapter for Agent Desktop Toolkit" 管理ガイド: [http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
+    a. "Five9 Plus Adapter for Agent Desktop Toolkit" 管理ガイド: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
     
-    b. "Five9 Plus Adapter for Microsoft Dynamics CRM" 管理ガイド: [http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
+    b. "Five9 Plus Adapter for Microsoft Dynamics CRM" 管理ガイド: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
     
-    c. "Five9 Plus Adapter for Zendesk" 管理ガイド: [http://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
+    c. "Five9 Plus Adapter for Zendesk" 管理ガイド: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -186,7 +186,7 @@ Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD のシングル �
  
 ### <a name="creating-a-five9-plus-adapter-cti-contact-center-agents-test-user"></a>Five9 Plus Adapter (CTI、Contact Center Agents) テスト ユーザーの作成
 
-このセクションでは、Five9 Plus Adapter (CTI、Contact Center Agents) で Britta Simon というユーザーを作成します。 [Five9 Plus Adapter (CTI、Contact Center Agents) サポート チーム](https://www.five9.com/about/contact)と協力し、Five9 Plus Adapter (CTI、Contact Center Agents) プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Five9 Plus Adapter (CTI、Contact Center Agents) で Britta Simon というユーザーを作成します。  [Five9 Plus Adapter (CTI、Contact Center Agents) サポート チーム](https://www.five9.com/about/contact) と協力し、Five9 Plus Adapter (CTI、Contact Center Agents) プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

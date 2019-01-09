@@ -3,7 +3,7 @@ title: Elastic Database ツールを使用してシャードを追加する | Mi
 description: Elastic Scale API を使用して新しいシャードをシャード セットに追加する方法。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3be9723d0beddc6bfcd6b6a34b56f4b8fd80aa31
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 46580efa697c174743228fcc9eee82e0a67e1912
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239935"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864607"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Elastic Database ツールを使用してシャードを追加する
 ## <a name="to-add-a-shard-for-a-new-range-or-key"></a>新しい範囲またはキー用のシャードを追加するには
@@ -74,7 +74,7 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd)); 
 ```
 
-**重要**: この手法は、更新されるマッピング用の範囲が空であることが確実である場合のみ使用します。  上記の方法では、移動される範囲のデータはチェックされないので、コードにチェックを含めることをお勧めします。  移動される範囲内に行が存在する場合、実際のデータ分布は更新されたシャード マップと一致しなくなります。 このような場合は、 [分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md) を代わりに使用して操作を行ってください。  
+**重要**:この手法は、更新されるマッピング用の範囲が空であることが確実である場合のみ使用します。  上記の方法では、移動される範囲のデータはチェックされないので、コードにチェックを含めることをお勧めします。  移動される範囲内に行が存在する場合、実際のデータ分布は更新されたシャード マップと一致しなくなります。 このような場合は、 [分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md) を代わりに使用して操作を行ってください。  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

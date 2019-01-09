@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: a88d4b09178ea32526cb8d035b47e1aef9c19dc3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ea2fe0f7e326db00a63529c0279c9c15d30c744c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384243"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744821"
 ---
 # <a name="use-apache-maven-to-build-java-applications-that-use-apache-hbase-with-windows-based-hdinsight-apache-hadoop"></a>Apache Maven を使用して、Windows ベースの HDInsight (Apache Hadoop) で Apache HBase を使用する Java アプリケーションをビルドする
-Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成し、ビルドする方法について説明します。 その後、このアプリケーションを Azure HDInsight (Apache Hadoop) で使用します。
+Apache Maven を使用して Java で [Apache HBase](https://hbase.apache.org/) アプリケーションを作成し、ビルドする方法について説明します。 その後、このアプリケーションを Azure HDInsight (Apache Hadoop) で使用します。
 
-[Apache Maven](http://maven.apache.org/) は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。 この記事では、これを使用して、Azure HDInsight クラスターでの HBase テーブルの作成、クエリ、および削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
+[Apache Maven](https://maven.apache.org/) は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。 この記事では、これを使用して、Azure HDInsight クラスターでの HBase テーブルの作成、クエリ、および削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
 
 > [!IMPORTANT]  
 > このドキュメントの手順では、Windows を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="requirements"></a>必要条件
 * [Java プラットフォーム JDK](https://aka.ms/azure-jdks) 7 以降
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 * Windows ベースの HDInsight クラスターと HBase
 
     > [!NOTE]  
@@ -40,7 +40,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
     このコマンドにより、**artifactID** パラメーターで指定した名前 (この例では **hbaseapp**) のディレクトリが現在の場所に作成されます。このディレクトリには、次の項目が含まれます。
 
-   * **pom.xml**:プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
+   * **pom.xml**:プロジェクト オブジェクト モデル ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
    * **src**:アプリケーションを作成する **main\java\com\microsoft\examples** ディレクトリに含まれるディレクトリです。
 3. **src\test\java\com\microsoft\examples\apptest.java** ファイルはこの例では使用しないため、削除します。
 
@@ -53,7 +53,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
           <version>1.1.2</version>
         </dependency>
 
-    このセクションは Maven に対して、**hbase-client** のバージョン **1.1.2** がプロジェクトに必要であることを伝えます。 この依存関係は、コンパイル時に既定の Maven リポジトリからダウンロードされます。 [Apache Maven セントラル リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) を使用して、この依存関係についての詳細を確認できます。
+    このセクションは Maven に対して、**hbase-client** のバージョン **1.1.2** がプロジェクトに必要であることを伝えます。 この依存関係は、コンパイル時に既定の Maven リポジトリからダウンロードされます。 [Apache Maven セントラル リポジトリ検索](https://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) を使用して、この依存関係についての詳細を確認できます。
 
    > [!IMPORTANT]  
    > バージョン番号は、HDInsight クラスターに付属の HBase のバージョンと一致する必要があります。 次の表を使用して、正しいバージョン番号を調べてください。
@@ -127,7 +127,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
    >
    >
 
-    この `<plugins>` セクションによって、[Apache Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) と [Apache Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。 トポロジのコンパイルにはコンパイラ プラグインが使用されます。 シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。 ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。 maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
+    この `<plugins>` セクションによって、[Apache Maven Compiler Plugin](https://maven.apache.org/plugins/maven-compiler-plugin/) と [Apache Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。 トポロジのコンパイルにはコンパイラ プラグインが使用されます。 シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。 ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。 maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
 
     また、maven-shade-plugin は、アプリケーションで必要とされるすべての依存関係を含む uber jar (または fat jar) も生成します。
 4. **pom.xml** ファイルを保存します。
@@ -147,7 +147,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
           * "License"); you may not use this file except in compliance
           * with the License.  You may obtain a copy of the License at
           *
-          *     http://www.apache.org/licenses/LICENSE-2.0
+          *     https://www.apache.org/licenses/LICENSE-2.0
           *
           * Unless required by applicable law or agreed to in writing, software
           * distributed under the License is distributed on an "AS IS" BASIS,

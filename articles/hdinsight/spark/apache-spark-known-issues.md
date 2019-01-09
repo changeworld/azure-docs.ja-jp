@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: c364f9d06d29a601dfb9598bb568e7a6218d0a6f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e38aab92dccd096e639df04cc0f4cfec5ccb5bf0
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013804"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650893"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight における Apache Spark クラスターの既知の問題
 
 このドキュメントでは、HDInsight Spark パブリック プレビューのすべての既知の問題を追跡します。  
 
-## <a name="livy-leaks-interactive-session"></a>Livy が対話型セッションをリークする
-対話型セッションがまだ有効な状態で Livy が再起動されると (Ambari から、またはヘッドノード 0 仮想マシンの再起動のため)、対話型ジョブ セッションがリークされます。 その結果、新しいジョブは、承諾済み状態で停止されます。
+## <a name="apache-livy-leaks-interactive-session"></a>Apache Livy が対話型セッションをリークする
+対話型セッションがまだ有効な状態で [Apache Livy](https://livy.incubator.apache.org/) が再起動されると ([Apache Ambari](https://ambari.apache.org/) から、またはヘッドノード 0 仮想マシンの再起動のため)、対話型ジョブ セッションがリークされます。 その結果、新しいジョブは、承諾済み状態で停止されます。
 
 **対応策:**
 
@@ -33,7 +33,7 @@ ms.locfileid: "51013804"
    
         yarn application –list
    
-    明示的な名前が指定されていない Livy 対話型セッションでジョブが開始された場合、既定のジョブ名は Livy になります。 Jupyter Notebook によって開始された Livy セッションの場合、ジョブ名は、remotesparkmagics_* で開始します。 
+    明示的な名前が指定されていない Livy 対話型セッションでジョブが開始された場合、既定のジョブ名は Livy になります。 [Jupyter Notebook](https://jupyter.org/) によって開始された Livy セッションの場合、ジョブ名は、remotesparkmagics_* で開始します。 
 3. 次のコマンドを実行して、これらのジョブを強制終了します。 
    
         yarn application –kill <Application ID>
@@ -109,23 +109,23 @@ Spark クラスターがリソース不足になると、Jupyter Notebook の Sp
 2. スタートアップしようとしていた Notebook を再起動します。 今度は、セッションを作成するために十分なリソースが使用可能になっている必要があります。
 
 ## <a name="see-also"></a>関連項目
-* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
-* [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
-* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
 * [Scala を使用してスタンドアロン アプリケーションを作成する](apache-spark-create-standalone-application.md)
-* [Livy を使用して Spark クラスターでジョブをリモートで実行する](apache-spark-livy-rest-interface.md)
+* [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](apache-spark-intellij-tool-plugin.md)
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
-* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
+* [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](apache-spark-jupyter-notebook-install-locally.md)
 

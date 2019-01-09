@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 81608dd7281ceddce7e0701535ad99e1c9e44315
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d96b4a99b2ea66cdeff43f06c1789dd133c2c31a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142795"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723008"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler を構成する
 
@@ -44,7 +43,7 @@ ASE の構成によっては、エージェントの状態を確認するため�
 Profiler は、ボタンを 1 回クリックすることで手動でトリガーできます。 Web パフォーマンス テストを実行しているとします。 Web アプリに負荷がかかった状態のパフォーマンスを把握するには、トレースが必要です。 ロード テストが実行されるタイミングはわかっているので、トレースがキャプチャされるタイミングをコントロールすることが重要ですが、ランダム サンプリングの間隔により欠落する場合があります。
 次の手順では、このシナリオがどのように機能するかについて説明します。
 
-### <a name="optional-step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>(省略可能) 手順 1: Web パフォーマンス テストを開始して Web アプリへのトラフィックを生成する
+### <a name="optional-step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>(省略可能) 手順 1:Web パフォーマンス テストを開始して Web アプリへのトラフィックを生成する
 
 Web アプリが既にトラフィックを受信している、または手動でトラフィックを生成する場合は、このセクションをスキップして手順 2 に進みます。
 
@@ -62,13 +61,13 @@ Application Insights ポータルで、**[構成] > [パフォーマンス テ�
 
 ![ロード テストが進行中][load-test-in-progress]
 
-### <a name="step-2-start-profiler-on-demand"></a>手順 2: オンデマンドでプロファイラーを開始する
+### <a name="step-2-start-profiler-on-demand"></a>手順 2:オンデマンドでプロファイラーを開始する
 
 ロード テストの実行中、プロファイラーを開始して Web アプリが負荷を受けている間にトレースをキャプチャできます。
 [Configure Profiler]\(Profiler の構成\) ウィンドウに移動します。
 
 
-### <a name="step-3-view-traces"></a>手順 3: トレースを表示する
+### <a name="step-3-view-traces"></a>手順 3:トレースを表示する
 
 プロファイラーの実行が完了したら、通知の指示に従って [パフォーマンス] ページに移動し、トレースを表示します。
 
@@ -87,9 +86,9 @@ Application Insights ポータルで、**[構成] > [パフォーマンス テ�
 次の手順に従って Profiler を確認し、最新の Profiler をインストールしてください。
 
 1. App Services のアプリ設定に移動し、次の設定を確認します。
-    * **APPINSIGHTS_INSTRUMENTATIONKEY**: Application Insights 用の適切なインストルメンテーション キーに置き換えます。
-    * **APPINSIGHTS_PORTALINFO**: ASP.NET
-    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0 これらの設定のいずれかが設定されていない場合は、Application Insights の有効化ウィンドウに移動して、最新のサイト拡張機能をインストールしてください。
+    * **APPINSIGHTS_INSTRUMENTATIONKEY**:Application Insights 用の適切なインストルメンテーション キーに置き換えます。
+    * **APPINSIGHTS_PORTALINFO**:ASP.NET
+    * **APPINSIGHTS_PROFILERFEATURE_VERSION**:1.0.0 これらの設定のいずれかが設定されていない場合は、Application Insights の有効化ウィンドウに移動して、最新のサイト拡張機能をインストールしてください。
 
 1. App Services ポータルの [Application Insights] ウィンドウに移動します。
 
@@ -104,9 +103,9 @@ Application Insights ポータルで、**[構成] > [パフォーマンス テ�
     ![App Insights を変更して保存する][change-and-save-appinsights]
 
 1. App Service の **[アプリ設定]** タブに戻り、次のアプリ設定項目が設定されていることをもう一度確認します。
-    * **APPINSIGHTS_INSTRUMENTATIONKEY**: Application Insights 用の適切なインストルメンテーション キーに置き換えます。
-    * **APPINSIGHTS_PORTALINFO**: ASP.NET
-    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
+    * **APPINSIGHTS_INSTRUMENTATIONKEY**:Application Insights 用の適切なインストルメンテーション キーに置き換えます。
+    * **APPINSIGHTS_PORTALINFO**:ASP.NET
+    * **APPINSIGHTS_PROFILERFEATURE_VERSION**:1.0.0
 
     ![Profiler 用のアプリ設定][app-settings-for-profiler]
 

@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/28/2018
+ms.date: 11/28/2018
 ms.author: dekapur
-ms.openlocfilehash: 80b331d32fe1e7bb4eb331bd981106968bc73bed
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: e4540076b29cf3cd51f03239a1868e18a41781d9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163211"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726527"
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Windows Server または Linux での Service Fabric クラスターの作成
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 クラスターは多数のノードにスケールできます。 新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、サービスのパーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。
@@ -35,7 +35,9 @@ Azure でのクラスターの作成は、リソース モデル テンプレー
 * Windows Server 2012 R2
 * Windows Server 2016 
 * Windows Server 1709
+* Windows Server 1803
 * Linux Ubuntu 16.04
+* Red Hat Enterprise Linux 7.4 (プレビュー サポート)
 
 > [!NOTE]
 > Windows Server 1709 で Service Fabric をデプロイする場合、(1) これは Long Term Servicing Branch ではないため、今後、バージョンの移動が必要になる可能性があります。また、(2) コンテナーをデプロイする場合、Windows Server 2016 で構築されたコンテナーは Windows Server 1709 で動作しません。その逆も同様です (デプロイするにはリビルドが必要です)。
@@ -70,16 +72,16 @@ Windows Server におけるスタンドアロン Service Fabric クラスター�
 ## <a name="advantages-of-service-fabric-clusters-on-azure-over-standalone-service-fabric-clusters-created-on-premises"></a>オンプレミスに作成されたスタンドアロンの Service Fabric クラスターと比較した場合の Azure 上の Service Fabric クラスターのメリット
 オンプレミスのオプションと比較して、Azure で Service Fabric クラスターを実行することにはメリットがあります。そのため、クラスターの実行場所に関して特別なニーズがない場合は、Azure で実行することをお勧めします。 Azure では、他の Azure の機能やサービスとの統合が提供されているため、クラスターの操作と管理が容易で信頼性が高くなります。
 
-* **Azure ポータル** : Azure ポータルを使用すると、クラスターの作成と管理が容易になります。
-* **Azure リソース マネージャー** : Azure リソース マネージャーを使用すると、クラスターでユニットとして使用されているリソースの管理が容易になり、コストの追跡と要求を簡素化できます。
+* **Azure portal:** Azure portal を使用すると、クラスターの作成と管理が容易になります。
+* **Azure Resource Manager:** Azure Resource Manager を使用すると、クラスターでユニットとして使用されているリソースの管理が容易になり、コストの追跡と要求を簡素化できます。
 * **Azure リソースとしての Service Fabric クラスター** : Service Fabric クラスターは Azure リソースなので、Azure の他の Azure リソースと同じようにモデル化できます。
 * **Azure インフラストラクチャとの統合** : Service Fabric は、OS、ネットワーク、およびその他のアップグレードに関して基になる Azure インフラストラクチャと連携するため、アプリケーションの可用性と信頼性が向上します。  
-* **診断** : Azure では、Azure 診断および Log Analytics との統合が提供されます。
-* **自動スケール** : Azure 上のクラスターの場合、仮想マシン スケール セットであるため、組み込みの自動スケール機能が提供されます。 オンプレミスおよび他のクラウド環境では、自動スケール機能を独自に構築するか、Service Fabric で公開されているクラスター スケーリング用 API を手動で使用してスケールする必要があります。
+* **診断**:Azure では、Azure 診断および Log Analytics との統合が提供されます。
+* **自動スケール**:Azure 上のクラスターの場合、仮想マシン スケール セットであるため、組み込みの自動スケール機能が提供されます。 オンプレミスおよび他のクラウド環境では、自動スケール機能を独自に構築するか、Service Fabric で公開されているクラスター スケーリング用 API を手動で使用してスケールする必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
-* Windows Server を実行する VM またはコンピューターでのクラスターの作成: [Windows Server での Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
-* Linux を実行している VM またはコンピューターでのクラスターの作成: [Linux クラスターの作成](service-fabric-cluster-creation-via-portal.md)
+* Windows Server を実行している VM またはコンピューター上にクラスターを作成する:[Windows Server 用の Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
+* Linux を実行している VM またはコンピューター上にクラスターを作成する:[Linux クラスターの作成](service-fabric-cluster-creation-via-portal.md)
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 

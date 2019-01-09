@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 5e6e534aaa833d7c66216896765d20cdcf50a461
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 33732a2d08900d41653b5e6a494cf1633d4be055
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568202"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>チュートリアル: Azure Active Directory と Kantega SSO for Bamboo の統合
 
@@ -173,7 +173,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[App ID URI]\(アプリの ID URI\)** の値をコピーして、Azure Portal の **[Kantega SSO for Bamboo のドメインと URL]** セクションの**識別子、応答 URL、サインオン URL** として使います。
 
-    b.  **[次へ]** をクリックします。
+    b. **[次へ]** をクリックします。
 
 1. **[Metadata import]\(メタデータのインポート\)** セクションで、次の手順を実行します。
 
@@ -181,7 +181,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\)** を選び、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 
-    b.  **[次へ]** をクリックします。
+    b. **[次へ]** をクリックします。
 
 1. **[Name and SSO location]\(名前と SSO の場所\)** セクションで、次の手順を実行します。
 
@@ -189,7 +189,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[Identity provider name]\(ID プロバイダー名\)** ボックスに、ID プロバイダーの名前 (例: Azure AD) を追加します。
 
-    b.  **[次へ]** をクリックします。
+    b. **[次へ]** をクリックします。
 
 1. 署名証明書を確認し、**[Next]\(次へ\)** をクリックします。   
 
@@ -201,7 +201,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[Create users in Bamboo's internal Directory if needed]\(必要に応じて Bamboo の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
 
-    b.  **[次へ]** をクリックします。
+    b. **[次へ]** をクリックします。
 
 1. **[完了]** をクリックします。
 

@@ -1,21 +1,22 @@
 ---
-title: LUIS アプリのエンタープライズの概念 - Language Understanding
-titleSuffix: Azure Cognitive Services
-description: 大規模な LUIS アプリの設計概念を理解します。
+title: エンタープライズの概念
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 大規模な LUIS アプリや、LUIS と QnA Maker の両方を含んだ複数のアプリの設計概念を理解します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: bb4078c9131488e5077795df792de259d7c789dc
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 60e1e8d49fcbae7d7049c97e9ee756dc938ca5ff
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638275"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105939"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS アプリのエンタープライズ戦略
 エンタープライズ アプリについて以下の設計戦略を確認してください。

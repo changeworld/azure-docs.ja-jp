@@ -1,23 +1,24 @@
 ---
-title: Node.js を使用した LUIS からの Application Insights データ
+title: Application Insights (Node.js)
 titleSuffix: Azure Cognitive Services
 description: Node.js を使用して LUIS アプリケーションおよび Application Insights と統合されるボットを構築する
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 6199e4a681f7f58ea0cf57b575afb2a63d160eee
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 4f1372f8b15670472146efc1c4f3a341f4a97c71
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321956"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255603"
 ---
-# <a name="add-luis-results-to-application-insights"></a>LUIS の結果を Application Insights に追加する
+# <a name="add-luis-results-to-application-insights-and-azure-functions"></a>LUIS の結果を Application Insights と Azure Functions に追加する
 このチュートリアルでは、LUIS 要求と応答の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 データを用意したら、Kusto 言語または PowerBi を使用して、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートすることができます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
 
 ボットは、Bot Framework 3.x と Azure Web アプリ ボットで構築します。
@@ -36,7 +37,7 @@ ms.locfileid: "49321956"
 > [!Tip]
 > サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)に登録できます。
 
-このチュートリアルのすべてのコードは、[LUIS-Samples GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)で利用できます。このチュートリアルに関連付けられている各行は `//APPINSIGHT:` でコメントが付けられています。 
+このチュートリアルのコードはすべて、[LUIS-Samples GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)から入手できます。このチュートリアルに関連付けられている各行に、`//APPINSIGHT:` というコメントが付いています。 
 
 ## <a name="web-app-bot-with-luis"></a>LUIS を使用する Web アプリ ボット
 このチュートリアルでは、次のようなコードがあるか、[他のチュートリアル](luis-nodejs-tutorial-build-bot-framework-sample.md)を完了していることを前提としています。 
@@ -58,7 +59,7 @@ LUIS 要求と応答をキャプチャするために、Web アプリ ボット�
 
 3. コンソールで、次のコマンドを入力して、Application Insights と Underscore パッケージをインストールします。
 
-    ```
+    ```console
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
@@ -66,7 +67,7 @@ LUIS 要求と応答をキャプチャするために、Web アプリ ボット�
 
     パッケージがインストールされるまで待機します。
 
-    ```
+    ```console
     luisbot@1.0.0 D:\home\site\wwwroot
     `-- applicationinsights@1.0.1 
       +-- diagnostic-channel@0.2.0 
@@ -142,7 +143,7 @@ Application Insights を使用すると、[Kusto](https://docs.microsoft.com/azu
 
 3. 最上位の意図、スコア、および発話を引き出すには、クエリ ウィンドウで、最後の行のすぐ上に次を追加します。
 
-    ```SQL
+    ```kusto
     | extend topIntent = tostring(customDimensions.LUIS_intent_intent)
     | extend score = todouble(customDimensions.LUIS_intent_score)
     | extend utterance = tostring(customDimensions.LUIS_text)

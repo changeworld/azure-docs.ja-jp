@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/7/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 14e959e4aa26b04ec70cbb03ea3feaf0e93f31c1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: cf643c8c2a0921cfbe1f5599a9e96a27770ef1ef
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344178"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718590"
 ---
 # <a name="durable-functions-overview"></a>Durable Functions の概要
 
-*Durable Functions* は、サーバーレス環境でステートフル関数を記述できる、[Azure Functions](../functions-overview.md) と [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。
+*Durable Functions* は、サーバーレス環境でステートフル関数を記述できる、[Azure Functions](../functions-overview.md) と [Azure WebJobs](../../app-service/webjobs-create.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。
 
 この拡張機能を使用すると、[*オーケストレーター関数*](durable-functions-types-features-overview.md#orchestrator-functions)という新しいタイプの関数で、ステートフルなワークフローを定義できます。 オーケストレーター関数のメリットは以下のとおりです。
 

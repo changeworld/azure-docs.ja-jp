@@ -192,24 +192,24 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 | リソースの種類 | ログ | メトリック |
 | --- | --- | --- |
-| Application Gateway    | [はい] | [はい] |
-| Automation アカウント     | [はい] | |
-| Batch アカウント          | [はい] | [はい] |
-| Data Lake Analytics     | [はい] | | 
-| Data Lake Store         | [はい] | |
-| Elastic SQL Pool        |     | [はい] |
-| Event Hub 名前空間     |     | [はい] |
-| IoT Hub                |     | [はい] |
-| Key Vault               | [はい] | |
-| ロード バランサー          | [はい] | |
-| Logic Apps              | [はい] | [はい] |
-| ネットワーク セキュリティ グループ | [はい] | |
-| Azure Cache for Redis             |     | [はい] |
-| Search サービス         | [はい] | [はい] |
-| Service Bus 名前空間   |     | [はい] |
-| SQL (v12)               |     | [はい] |
-| Web サイト               |     | [はい] |
-| Web サーバー ファーム        |     | [はい] |
+| Application Gateway    | はい | はい |
+| Automation アカウント     | はい | |
+| Batch アカウント          | はい | はい |
+| Data Lake Analytics     | はい | | 
+| Data Lake Store         | はい | |
+| Elastic SQL Pool        |     | はい |
+| Event Hub 名前空間     |     | はい |
+| IoT Hub                |     | はい |
+| Key Vault               | はい | |
+| ロード バランサー          | はい | |
+| Logic Apps              | はい | はい |
+| ネットワーク セキュリティ グループ | はい | |
+| Azure Cache for Redis             |     | はい |
+| Search サービス         | はい | はい |
+| Service Bus 名前空間   |     | はい |
+| SQL (v12)               |     | はい |
+| Web サイト               |     | はい |
+| Web サーバー ファーム        |     | はい |
 
 使用可能なメトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md)」を参照してください。
 

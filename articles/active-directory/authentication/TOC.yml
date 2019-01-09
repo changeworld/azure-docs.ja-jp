@@ -61,6 +61,8 @@ items:
       href: concept-password-ban-bad.md
     - name: オンプレミスで脆弱なパスワードを排除する
       href: concept-password-ban-bad-on-premises.md
+  - name: 回復性があるアクセス制御
+    href: concept-resilient-controls.md
   expanded: true
 - name: ハウツー ガイド
   items:
@@ -221,9 +223,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: abbb727dc5d8f86903412280b05d6b4e11b69209
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 3d208d1154c8c2fe24f403216084da56c42ae3aa
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424914"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744753"

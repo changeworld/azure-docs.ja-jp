@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8f8e5f3d184073a73ca30764542dc56e45974120
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 936abe80a66c1dbe99e7d8a255fe8995a2df0803
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262131"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715663"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
-[Azure App Service プラン](azure-web-sites-web-hosting-plans-in-depth-overview.md)は、App Service アプリの実行に必要なリソースを提供します。 このガイドでは、App Service プランを管理する方法を示します。
+[Azure App Service プラン](overview-hosting-plans.md)は、App Service アプリの実行に必要なリソースを提供します。 このガイドでは、App Service プランを管理する方法を示します。
 
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 

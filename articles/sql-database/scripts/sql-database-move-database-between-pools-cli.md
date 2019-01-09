@@ -3,21 +3,21 @@ title: CLI 例 - Azure SQL データベースの移動 - SQL エラスティッ�
 description: SQL エラスティック プールの SQL データベースを移動する Azure CLI サンプル スクリプト
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 19c2b995ec1543c939495306dfaa21e1118bf6c0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 0d532f976304e164732be5184ff132421e13c6b4
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054015"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53649891"
 ---
 # <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>CLI を使用し、SQL エラスティック プールの Azure SQL データベースを移動する
 

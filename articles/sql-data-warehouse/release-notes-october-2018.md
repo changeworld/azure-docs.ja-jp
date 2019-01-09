@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 11/11/2018
+ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 82f55c87c54fa5197a2bd5c24ea3863da1700c7b
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: e67edf382a49839d890d2c1dec50c44bbb19705a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51579295"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966825"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 10 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 10 月に導入された新しい機能と変更点について説明します。
@@ -49,11 +49,8 @@ Azure Monitor 診断ログと直接統合されることにより、SQL Data War
 - [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 - [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql)
 
-## <a name="instant-data-movement"></a>瞬時データ移動 
-シャッフルに加えて、瞬時データ移動によりブロードキャストとパーティションの移動が拡張されています。
-
-## <a name="scale-up-column-store-columnstore-metadata-memory-management-sql-server"></a>列ストアのスケールアップ: 列ストア メタデータのメモリ管理 (SQL Server)
-列ストア メタデータの最適化されたメモリ管理 
+## <a name="columnstore-memory-management"></a>列ストアのメモリ管理
+圧縮された列ストア行グループの数が増えると、その行グループ内の列セグメント メタデータを管理するために必要なメモリも増えます。  その結果、一部の列ストア動的管理ビュー (DMV) に対して実行されるクエリのパフォーマンスとクエリが低下する可能性があります。  このリリースでは、このようなケースの内部メタデータのサイズを最適化する改善が加えられ、こうしたクエリのエクスペリエンスとパフォーマンスが向上しました。 
 
 ## <a name="azure-data-lake-storage-gen2-integration-ga"></a>Azure Data Lake Storage Gen2 の統合 (GA)
 Azure SQL Data Warehouse (SQL DW) は、Azure Data Lake Storage Gen2 とネイティブに統合するようになりました。 お客様は、外部テーブルを使用して ABFS から SQL DW にデータを読み込むことができます。 この機能を使用することにより、Data Lake Storage Gen2 内のデータ レイクと統合できます。 
@@ -65,6 +62,7 @@ Azure SQL Data Warehouse (SQL DW) は、Azure Data Lake Storage Gen2 とネイ�
 | **DW2000 以降のデータ ウェアハウスでの小さいリソース クラスにおける Parquet に対する CETAS のエラー** | この修正により、Create External Table As 内での Parquet コード パスに対する null 参照が正しく識別されます。 |
 |**一部の CTAS 操作で ID 列の値が失われることがある** | 別のテーブルへの CTAS を行うと、ID 列の値が維持されない場合があります。 ブログでの報告: [https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)。 |
 | **クエリがまだ実行している間にセッションが終了されたときに発生する場合がある内部エラー** | この修正では、クエリがまだ実行している間にセッションが終了されると、InvalidOperationException がトリガーされます。 |
+| **(2018 年 11 月に配置) 顧客が Polybase を使用して複数の小さなファイルを ADLS (Gen1) からの読み込もうとしたときに、パフォーマンスは十分に最適ではありませんでした。** | AAD セキュリティ トークンの検証中のシステムのパフォーマンスがボトルネックでした。 セキュリティ トークンのキャッシュを有効にすると、パフォーマンスの問題は軽減されました。 |
 
 
 ## <a name="next-steps"></a>次の手順

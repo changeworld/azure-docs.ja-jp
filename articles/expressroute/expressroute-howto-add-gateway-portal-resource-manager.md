@@ -1,26 +1,19 @@
 ---
-title: 'ExpressRoute の VNet への仮想ネットワーク ゲートウェイの追加: Portal: Azure | Microsoft Docs'
+title: 'ExpressRoute 向け Azure VNet へのゲートウェイの追加: ポータル | Microsoft Docs'
 description: この記事では、ExpressRoute の作成済みの Resource Manager VNet に仮想ネットワーク ゲートウェイを追加する方法を説明します。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/17/2017
+ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6198c8723ccbb225a4cc60526e66f4651390b26c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 37fe2e2adb947e2e9ddc86a34baf6994b5771be6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255695"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091205"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -76,12 +69,12 @@ ms.locfileid: "51255695"
     ![[Virtual Network ゲートウェイの作成] ブレードのフィールド](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "[Virtual Network ゲートウェイの作成] ブレードのフィールド")
 3. **[名前]**: ゲートウェイに名前を付けます。 これは、ゲートウェイ サブネットの名前付けと同じではありません。 作成するゲートウェイ オブジェクトの名前です。
 4. **[ゲートウェイの種類]**: **[ExpressRoute]** を選択します。
-5. **[SKU]**: ゲートウェイの SKU をドロップダウン リストから選択します。
-6. **[場所]**: 仮想ネットワークの場所を指すように、**[場所]** フィールドを調整します。 対象の仮想ネットワークが存在するリージョンをこの場所が指していない場合、仮想ネットワークは [仮想ネットワークの選択] ボックスの一覧に表示されません。
+5. **[SKU]**: ゲートウェイの SKU をドロップダウンから選択します。
+6. **[場所]**: 仮想ネットワークの場所を指すように、 **[場所]** フィールドを調整します。 対象の仮想ネットワークが存在するリージョンをこの場所が指していない場合、仮想ネットワークは [仮想ネットワークの選択] ボックスの一覧に表示されません。
 7. このゲートウェイの追加先の仮想ネットワークを選択します。 **[仮想ネットワーク]** をクリックして **[仮想ネットワークの選択]** ブレードを開きます。 VNet を選択します。 VNet が表示されない場合は、実際の仮想ネットワークがあるリージョンが **[場所]** フィールドに指定されていることを確認してください。
 9. パブリック IP アドレスを選択します。 **[パブリック IP アドレス]** をクリックして、**[パブリック IP アドレスの選択]** ブレードを開きます。 **[+新規作成]** をクリックして、**[パブリック IP アドレスの作成]** ブレードを開きます。 パブリック IP アドレスの名前を入力します。 このブレードで、パブリック IP アドレス オブジェクトが作成されます。このオブジェクトにパブリック IP アドレスが動的に割り当てられます。 **[OK]** をクリックして、このブレードへの変更を保存します。
-10. **[サブスクリプション]**: 正しいサブスクリプションが選択されていることを確認します。
-11. **[リソース グループ]**: この設定は、選択した Virtual Network によって決定されます。
+10. **サブスクリプション**:正しいサブスクリプションが選択されていることを確認します。
+11. **リソース グループ**: この設定は、選択した仮想ネットワークによって決定されます。
 12. 上記の設定を指定した後に **[場所]** を調整しないでください。
 13. 設定を確認します。 ゲートウェイをダッシュボードに表示する場合は、ブレードの下部にある **[ダッシュボードにピン留めする]** を選択します。
 14. **[作成]** をクリックして、ゲートウェイの作成を開始します。 設定が検証されて、ゲートウェイが作動します。 仮想ネットワーク ゲートウェイの作成は、完了するまでに最大で 45 分かかる場合があります。

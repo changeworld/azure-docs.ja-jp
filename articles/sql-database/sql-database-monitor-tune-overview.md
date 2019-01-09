@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: 0d728d81a29c5520938c8553c026727c0f94cc43
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 12/10/2018
+ms.openlocfilehash: 9e8b9b24707577aba5df754984953ef2f59b9ff9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957005"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272866"
 ---
 # <a name="monitoring-and-performance-tuning"></a>監視とパフォーマンスのチューニング
 
@@ -41,7 +41,7 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Azure ポータルを使用したデータベースの監視
 
-[Azure Portal](https://portal.azure.com/) では、データベースを選択し、**[監視]** グラフをクリックすることによって単一データベースの使用を監視できます。 これにより、**[メトリック]** ウィンドウが表示されます。**[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
+[Azure portal](https://portal.azure.com/) では、データベースを選択し、**[監視]** グラフをクリックすることによって単一データベースの使用を監視できます。 これにより、**[メトリック]** ウィンドウが表示されます。**[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
 
 - CPU の割合
 - DTU の割合
@@ -85,7 +85,91 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 > [!IMPORTANT]
 > これらの DMV を使用して CPU 使用率の問題をトラブルシューティングするための一連の T-SQL クエリについては、[CPU パフォーマンスの問題の識別](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)に関するページを参照してください。
 
+### <a name="troubleshoot-queries-with-parameter-sensitive-query-execution-plan-issues"></a>パラメーター依存クエリ実行プランの問題があるクエリをトラブルシューティングする
+
+パラメーター依存プラン (PSP) の問題とは、クエリ オプティマイザーが特定のパラメーター値 (または値のセット) に対してのみ最適なクエリ実行プランを生成し、キャッシュされたプランが連続実行で使用されるパラメーター値に対して最適ではないシナリオのことです。 その場合、最適ではないプランによりクエリ パフォーマンスの問題が発生し、ワークロード全体のスループットが低下する可能性があります。
+
+問題を軽減するために使用される回避策が複数あり、それぞれに関連するトレードオフと欠点があります。
+
+- 各クエリ実行で [RECOMPILE](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用します。 この回避策では、プランの品質の向上と引き換えに、コンパイル時間が長くなって CPU 使用率が増加します。 高スループットを必要とするワークロードでは、`RECOMPILE` オプションを使用できないことがよくあります。
+- [OPTION (OPTIMIZE FOR…)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、実際のパラメーター値を、可能性のあるほとんどのパラメーター値に対して十分良好なプランを生成する一般的なパラメーター値でオーバーライドします。   このオプションを使用するには、最適なパラメーター値および関連するプランの特性をよく理解している必要があります。
+- [OPTION (OPTIMIZE FOR UNKNOWN)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、密度ベクトルの平均を使用する代わりに実際のパラメーター値をオーバーライドします。 これを行うもう 1 つの方法としては、受け取ったパラメーター値をローカル変数にキャプチャし、述語内ではパラメーター自体を使用する代わりにローカル変数を使用します。 平均密度は、この特定の修正で "*十分によい*" ものでなければなりません。
+- [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、パラメーター スニッフィング全体を無効にします。
+- [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、キャッシュを使用している間は再コンパイルが行われないようにします。 この回避策では、"*十分によい*" 一般的なプランがキャッシュ内に既にあることを前提としています。 よいプランが破棄されて新しい悪いプランがコンパイルされる可能性を減らすため、統計の自動更新を無効にすることもできます。
+- [USE PLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを明示的に使用して、プランを強制します (明示的に指定することで、クエリ ストアを使用して特定のプランを設定することで、または[自動チューニング](sql-database-automatic-tuning.md)を有効にすることで)。
+- 1 つのプロシージャを、それぞれが条件付きロジックと関連するパラメーター値に基づいて使用できる入れ子になったプロシージャのセットに置き換えます。
+- 静的なプロシージャ定義の代わりに、動的文字列の実行を作成します。
+
+この種の問題の解決方法について詳しくは、以下をご覧ください。
+
+- こちらの[パラメーターのにおい](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)に関するブログ投稿
+- こちらの[パラメーター スニッフィング問題と回避策](https://blogs.msdn.microsoft.com/turgays/2013/09/10/parameter-sniffing-problem-and-possible-workarounds/)に関するブログ投稿
+- こちらの[象とマウスのパラメーター スニッフィング](ttps://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/)に関するブログ投稿
+- こちらの、[パラメーター化クエリに対する動的 SQL とプランの品質](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)に関するブログ投稿
+
+### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>不適切なパラメーター化が原因のコンパイル アクティビティのトラブルシューティング
+
+クエリにリテラルがある場合は、データベース エンジンで自動的にステートメントのパラメーター化が選択されるか、またはユーザーが明示的にそれをパラメーター化してコンパイルの数を減らすことができます。 使用するパターンが同じでもリテラル値が異なるクエリのコンパイル回数が多いと、CPU の使用率が高くなる可能性があります。 同様に、ユーザーが継続的にリテラルを含むクエリを部分的にだけパラメーター化した場合、データベース エンジンではそれ以上パラメーター化されません。  部分的にパラメーター化されたクエリの例を次に示します。
+
+```sql
+select * from t1 join t2 on t1.c1=t2.c1
+where t1.c1=@p1 and t2.c2='961C3970-0E54-4E8E-82B6-5545BE897F8F'
+```
+
+前の例では、`t1.c1` は `@p1` を受け取りますが、`t2.c2` は引き続きリテラルとして GUID を受け取ります。 この場合、`c2` の値を変更すると、クエリは異なるクエリとして扱われて、新しいコンパイルが発生します。 前の例でコンパイルを減らすための解決策は、GUID もパラメーター化することです。
+
+次のクエリでは、クエリ ハッシュ別にクエリの数を示して、クエリが適切にパラメーター化されているかどうかを判断します。
+
+```sql
+   SELECT  TOP 10  
+      q.query_hash
+      , count (distinct p.query_id ) AS number_of_distinct_query_ids
+      , min(qt.query_sql_text) AS sampled_query_text
+   FROM sys.query_store_query_text AS qt
+      JOIN sys.query_store_query AS q
+         ON qt.query_text_id = q.query_text_id
+      JOIN sys.query_store_plan AS p 
+         ON q.query_id = p.query_id
+      JOIN sys.query_store_runtime_stats AS rs 
+         ON rs.plan_id = p.plan_id
+      JOIN sys.query_store_runtime_stats_interval AS rsi
+         ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+   WHERE
+      rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+      AND query_parameterization_type_desc IN ('User', 'None')
+   GROUP BY q.query_hash
+   ORDER BY count (distinct p.query_id) DESC
+```
+
+### <a name="resolve-problem-queries-or-provide-more-resources"></a>問題のあるクエリを解決するか、または提供するリソースを増やす
+
 問題を識別したら、問題が発生しているクエリを調整するか、または CPU の要件を吸収するために Azure SQL Database の容量を増やすようにコンピューティング サイズまたはサービス レベルをアップグレードすることができます。 単一データベースのリソースのスケーリングについては、「[Azure SQL Database で単一データベースのリソースをスケーリングする](sql-database-single-database-scale.md)」を参照してください。また、エラスティック プールのリソースのスケーリングについては、「[Azure SQL Database でエラスティック プールのリソースをスケーリングする](sql-database-elastic-pool-scale.md)」を参照してください。 マネージド インスタンスのスケーリングについては、「[インスタンス レベルのリソース制限](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)」を参照してください。
+
+### <a name="determine-if-running-issues-due-to-increase-workload-volume"></a>ワークロードのボリュームの増加が原因である実行の問題かどうかを判断する
+
+アプリケーションのトラフィックとワークロードの増加が CPU 使用率増加の原因である可能性がありますが、この問題を適切に診断するには注意が必要です。 CPU 使用率が高いシナリオでは、以下の質問に答えて、CPU 使用率の増加が本当にワークロードのボリュームの変更によるものかどうかを判断します。
+
+1. アプリケーションからのクエリが、高 CPU の問題の原因ですか。
+2. CPU 消費量上位の (識別可能な) クエリについて:
+
+   - 同じクエリに複数の実行プランが関連付けられていたかどうかを確認します。 そうである場合は、その理由を判断します。
+   - 同じ実行プランがあるクエリについて、実行時間が一定で、実行回数が増加したかどうかを確認します。 そうである場合は、ワークロードの増加がパフォーマンスの問題の原因である可能性があります。
+
+まとめると、クエリ実行プランの実行方法は異ならなかったが、実行回数と共に CPU 使用率が増加した場合、ワークロードの増加に関連するパフォーマンスの問題が存在する可能性があります。
+
+CPU の問題をもたらしているワークロード ボリュームの変更があるという結論を下すことは、簡単ではない場合があります。   検討するべき要素: 
+
+- **リソースの使用状況が変化した**
+
+  たとえば、長時間にわたり CPU 使用率が 80% に増加したようなシナリオを検討します。  ワークロードのボリュームの変化を意味するのは、CPU 使用率だけではありません。  クエリ実行プランの回帰や、データの分布の変化も、アプリケーションがまったく同じワークロードを実行しているのにリソースの使用量が増える原因になる可能性があります。
+
+- **新しいクエリが発生した**
+
+   アプリケーションでは、異なるときに新しいクエリのセットが発生する可能性があります。
+
+- **要求の数が増加または減少した**
+
+   このシナリオは、ワークロードの最も明白な尺度です。 クエリの数は、リソース使用率の増加に常に対応しているとは限りません。 それでもこのメトリックは、他の要因が変更されていないとすると、やはり重要なシグナルです。
 
 ## <a name="waiting-related-performance-issues"></a>待機に関連するパフォーマンスの問題
 
@@ -94,6 +178,13 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 - [クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)は、一定期間にわたるクエリごとの待機の統計を提供します。 クエリ ストアでは、待機の種類は待機カテゴリに結合されます。 待機カテゴリから待機の種類へのマッピングは、[sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table) で使用できます。
 - [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) は、操作中に実行されたスレッドによって発生したすべての待機に関する情報を返します。 この集計ビューを使用して、Azure SQL Database のほか、特定のクエリやバッチに関するパフォーマンスの問題を診断できます。
 - [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) は、何らかのリソースを待機しているタスクの待機キューに関する情報を返します。
+
+高 CPU のシナリオでは、次の 2 つの理由で、クエリ ストアおよび待機の統計が CPU 使用率を反映しないことがあります。
+
+- CPU 消費量の高いクエリがまだ実行中の可能性があり、クエリが完了していない
+- フェールオーバーが発生したときに、CPU 消費量の高いクエリが実行されていた
+
+クエリ ストアと待機の統計を追跡している動的管理ビューには、正常に完了したクエリとタイムアウトしたクエリの結果のみが表示され、現在実行中のステートメントのデータは (完了するまで) 表示されません。  動的管理ビュー [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) では、現在実行中のクエリとそれに関連するワーカーの時間を追跡することができます。
 
 前の図に示すように、最も一般的な待機は次のとおりです。
 

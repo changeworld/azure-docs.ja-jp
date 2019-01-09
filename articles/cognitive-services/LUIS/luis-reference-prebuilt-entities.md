@@ -1,23 +1,24 @@
 ---
-title: 作成済みエンティティ - LUIS
+title: すべての作成済みエンティティ
 titleSuffix: Azure Cognitive Services
 description: この記事では、Language Understanding (LUIS) に含まれる作成済みエンティティの一覧を示します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: ff529e7b828c195be89c9d11fc5f50e04104642e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 858d094dfa949a46fbffcdfd4b386c40b124bbd8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567351"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135655"
 ---
-# <a name="entities-per-culture"></a>カルチャごとのエンティティ
+# <a name="entities-per-culture-in-your-luis-model"></a>LUIS モデルにおけるカルチャごとのエンティティ
 
 Language Understanding (LUIS) では、作成済みのエンティティが提供されています。 作成済みエンティティをアプリケーションに組み込むと、LUIS は対応するエンティティの予測をエンドポイントの応答に含めます。 すべての発話例にも、エンティティでラベルが付けられます。 作成済みエンティティの動作を変更することは**できません**。 特に記載のない限り、作成済みエンティティはすべての LUIS アプリケーション ロケール (カルチャ) で使用できます。 次の表では、各カルチャでサポートされている作成済みエンティティを示します。
 

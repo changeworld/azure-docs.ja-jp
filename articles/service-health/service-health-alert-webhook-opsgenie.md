@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 213bf0cc063fa1f756a6baeacc47aadec0857a7c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e406c80e408ddcf4d1d53f4e49925bded43b650f
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270520"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579483"
 ---
 # <a name="configure-service-health-alerts-with-opsgenie"></a>OpsGenie でサービス正常性アラートを構成する
 
@@ -52,11 +52,11 @@ ms.locfileid: "53270520"
 
 1. **[アクション]** の一覧で以下を定義します。
 
-    a. **アクションの種類:***webhook*
+    a. **[アクションの種類]:***webhook*
 
     b. **詳細:** 先ほど保存した OpsGenie の**統合 URL**。
 
-    c. **名前:** webhook の名前、別名、または識別子。
+    c. **[名前]:** Webhook の名前、別名、または識別子。
 
 1. 完了したら **[保存]** を選択して、アラートを作成します。
 
@@ -69,11 +69,11 @@ ms.locfileid: "53270520"
 
 1. **[アクション]** の一覧に以下を追加します。
 
-    a. **アクションの種類:***webhook*
+    a. **[アクションの種類]:***webhook*
 
     b. **詳細:** 先ほど保存した OpsGenie の**統合 URL**。
 
-    c. **名前:** webhook の名前、別名、または識別子。
+    c. **[名前]:** Webhook の名前、別名、または識別子。
 
 1. 完了したら **[保存]** を選択して、アクション グループを更新します。
 
@@ -96,5 +96,5 @@ ms.locfileid: "53270520"
 ## <a name="next-steps"></a>次の手順
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
-- [サービス正常性の通知](../monitoring-and-diagnostics/monitoring-service-notifications.md)について学習します。
+- [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。
 - [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。

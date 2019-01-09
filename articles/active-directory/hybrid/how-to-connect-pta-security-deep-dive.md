@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c0729fd4c6d5e387b38c310a708505c3395ea41f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7f4750dd527aa53624fa977115a120911511b7d5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284882"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185071"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -41,7 +41,7 @@ ms.locfileid: "52284882"
 - 認証エージェントから Azure AD への送信通信で使用されるのは、標準ポート (80 と 443) のみです。 ファイアウォールで受信ポートを開く必要はありません。 
   - 認証済みのすべての送信通信でポート 443 が使用されます。
   - ポート 80 が使用されるのは、証明書失効リスト (CRL) をダウンロードして、この機能で使用される証明書が失効していないことを確認する場合のみです。
-  - ネットワーク要件の完全な一覧については、「[Azure Active Directory パススルー認証: クイック スタート](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)」をご覧ください。
+  - ネットワーク要件の完全な一覧については、「[Azure Active Directory パススルー認証:クイック スタート](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)」を参照してください。
 - ユーザーがサインイン時に指定するパスワードは、Active Directory に対する検証でオンプレミスの認証エージェントに受け入れられる前に、クラウドで暗号化されます。
 - Azure AD とオンプレミスの認証エージェント間の HTTPS チャネルは、相互認証を使用して保護されます。
 - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[レガシ認証のブロック](../conditional-access/conditions.md)、[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
@@ -49,11 +49,11 @@ ms.locfileid: "52284882"
 ## <a name="components-involved"></a>関連するコンポーネント
 
 Azure AD の運用、サービス、データのセキュリティに関する一般的な詳細については、[Trust Center](https://azure.microsoft.com/support/trust-center/) のページをご覧ください。 ユーザー サインインにパススルー認証を使用する場合には、次のコンポーネントが関連します。
-- **Azure AD STS**: ステートレスなセキュリティ トークン サービス (STS)。サインイン要求を処理し、ユーザーのブラウザー、クライアント、または必要に応じてサービスにセキュリティ トークンを発行します。
-- **Azure Service Bus**: エンタープライズ メッセージングと中継通信を使用するクラウド対応通信を提供し、オンプレミスのソリューションをクラウドに接続するのに役立ちます。
-- **Azure AD Connect 認証エージェント**: パスワード検証要求のリッスンと応答を行うオンプレミス コンポーネント。
-- **Azure SQL Database**: メタデータや暗号化キーを含む、テナントの認証エージェントに関する情報が保持されています。
-- **Active Directory**: ユーザー アカウントとそのパスワードが格納されるオンプレミスの Active Directory。
+- **Azure AD STS**:ステートレスなセキュリティ トークン サービス (STS)。サインイン要求を処理し、ユーザーのブラウザー、クライアント、または必要に応じてサービスにセキュリティ トークンを発行します。
+- **Azure Service Bus**:エンタープライズ メッセージングと中継通信を使用するクラウド対応通信を提供し、オンプレミスのソリューションをクラウドに接続するのに役立ちます。
+- **Azure AD Connect 認証エージェント**:パスワード検証要求をリッスンして応答するオンプレミス コンポーネント。
+- **Azure SQL Database**:メタデータや暗号化キーを含む、テナントの認証エージェントに関する情報が保持されています。
+- **Active Directory**:ユーザー アカウントとそのパスワードが格納されるオンプレミスの Active Directory。
 
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>認証エージェントのインストールと登録
 
@@ -97,8 +97,8 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 5. 次に、Azure AD はデジタル ID 証明書に署名して、認証エージェントに送信します。
     - Azure AD 内のルート CA は証明書の署名に使用されます。 
 
-     >[!NOTE]
-     > この CA は、Windows の信頼されたルート証明機関ストアには _存在しません_。
+      > [!NOTE]
+      > この CA は、Windows の信頼されたルート証明機関ストアには_存在しません_。
     - この CA はパススルー認証機能でのみ使用されます。 この CA は、認証エージェントを登録するときの CSR への署名でのみ使用されます。
     -  その他の Azure AD サービスはこの CA を使用しません。
     - 証明書の件名 (識別名または DN) はテナント ID に設定されます。 この DN はテナントを一意に識別する GUID です。 この DN により、証明書の範囲がテナントのみでの使用に限定されます。
@@ -207,11 +207,11 @@ Azure AD は、新しいバージョンのソフトウェアを、署名済み�
 
 
 ## <a name="next-steps"></a>次の手順
-- [現在の制限](how-to-connect-pta-current-limitations.md): サポートされているシナリオと、サポートされていないシナリオを確認します。
-- [クイック スタート](how-to-connect-pta-quick-start.md): Azure AD パススルー認証を起動および実行します。
+- [現時点での制限事項](how-to-connect-pta-current-limitations.md):サポートされているシナリオと、サポートされていないシナリオを確認します。
+- [クイック スタート](how-to-connect-pta-quick-start.md):Azure AD パススルー認証を起動および実行します。
 - [AD FS からパススルー認証への移行](https://aka.ms/adfstoptadpdownload) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
-- [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
-- [しくみ](how-to-connect-pta-how-it-works.md): Azure AD パススルー認証のしくみの基礎を確認します。
-- [よく寄せられる質問](how-to-connect-pta-faq.md): よく寄せられる質問とその回答です。
-- [トラブルシューティング](tshoot-connect-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法を確認します。
-- [Azure AD シームレス SSO](how-to-connect-sso.md): この補完的な機能の詳細を確認します。
+- [スマート ロックアウト](../authentication/howto-password-smart-lockout.md):ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
+- [しくみ](how-to-connect-pta-how-it-works.md):Azure AD パススルー認証のしくみの基礎を確認します。
+- [よく寄せられる質問](how-to-connect-pta-faq.md):よく寄せられる質問の回答を探します。
+- [トラブルシューティング](tshoot-connect-pass-through-authentication.md):パススルー認証機能に関する一般的な問題を解決する方法について説明します。
+- [Azure AD シームレス SSO](how-to-connect-sso.md):この補完的な機能の詳細について説明します。

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 9cffbeae3e73682f5e76523de7ee607285c9fc75
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10ae943711fcd7516b0fdbe982fd5d9e09227bdc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238628"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864980"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack のデプロイ計画に関する考慮事項
 Azure Stack Development Kit (ASDK) をデプロイする前に、開発キットのホスト コンピューターがこの記事で説明されている要件を満たしていることをご確認ください。
@@ -121,7 +121,7 @@ IPv4 のみがサポートされています。 IPv6 ネットワークを作成
 NIC を接続するネットワークで使用できる DHCP サーバーがあることを確認します。 DHCP が使用できない場合は、ホストが使用するためのものに加え、追加の静的 IPv4 ネットワークを準備する必要があります。 デプロイ パラメーターとしてその IP アドレスとゲートウェイも指定する必要があります。
 
 ### <a name="internet-access"></a>インターネットへのアクセス
-Azure Stack は、直接または透過プロキシ経由で、インターネットにアクセスできる必要があります。 Azure Stack は、インターネット アクセスを有効にするための Web プロキシの構成をサポートしていません。 ホスト IP と (DHCP または静的 IP アドレスによって) MAS-BGPNAT01 に割り当てられた IP の両方が、インターネットにアクセスできる必要があります。 graph.windows.net および login.microsoftonline.com ドメインのポート 80 と 443 を使用します。
+Azure Stack は、直接または透過プロキシ経由で、インターネットにアクセスできる必要があります。 Azure Stack は、インターネット アクセスを有効にするための Web プロキシの構成をサポートしていません。 ホスト IP と (DHCP または静的 IP アドレスによって) AzS-BGPNAT01 に割り当てられた IP の両方が、インターネットにアクセスできる必要があります。 graph.windows.net および login.microsoftonline.com ドメインのポート 80 と 443 を使用します。
 
 
 ## <a name="next-steps"></a>次の手順

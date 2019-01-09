@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: johnpaulkee
 ms.author: joke
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 4470a13dfe462671b1a58a217e679d2b40236c6a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 75138979dc5f8ad7b86671267845a7a21af40f54
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873973"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607525"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>新しい Elastic Database ジョブへの移行
 

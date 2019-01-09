@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: f7d6f34c75069f91e06d58c960249d040b2bda8a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 6e3ab097b08e3a15d012ccc644307bc8f4b281ab
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299202"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971684"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から SQL データベースにデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から SQL データベースにデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
@@ -217,7 +217,7 @@ ms.locfileid: "44299202"
 
     ![パイプラインのタブ](./media/tutorial-copy-data-portal/pipeline-tab-2.png)        
 
-### <a name="confugure-mapping"></a>マッピングの構成
+### <a name="configure-mapping"></a>マッピングを構成する
 
 **[プロパティ]** ウィンドウの一番下にある **[マップ]** タブに移動し、**[スキーマのインポート]** を選択します。 ソース ファイルの最初と 2 番目の列が SQL データベースの **FirstName** と **LastName** にマップされていることがわかります。
 
@@ -235,7 +235,7 @@ Data Factory または独自の Azure Repos Git リポジトリにアーティ�
 
 1. パイプラインを適切に実行できたら、上部のツール バーで **[すべて発行]** を選択します。 これにより、作成したエンティティ (データセットとパイプライン) が Data Factory に発行されます。
 
-    ![[発行]](./media/tutorial-copy-data-portal/publish-button.png)
+    ![発行](./media/tutorial-copy-data-portal/publish-button.png)
 
 1. **[正常に発行されました]** というメッセージが表示されるまで待機します。 通知メッセージを表示するには、右上にある **[通知の表示]** (ベル ボタン) をクリックします。 
 

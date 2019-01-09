@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 1de3743d6ec37d263e16b168d32d2b56b0a28295
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310540"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631944"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Azure Search でのテキスト処理のためのアナライザー
 
@@ -76,7 +76,7 @@ Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フ�
 
 ### <a name="compare-english-analyzers"></a>英語のアナライザーの比較
 
-[Search Analyzer Demo](http://alice.unearth.ai/) はサードパーティ製のデモ アプリです。標準 Lucene アナライザー、Lucene の英語アナライザー、Microsoft の英語自然言語プロセッサの比較が横並びに表示されます。 インデックスは固定です。よくあるストーリーのテキストが含まれています。 検索用語を入力するごとに、隣接するウィンドウに各アナライザーの結果が表示され、同じ文字列を各アナライザーがどのように処理するかを把握できます。 
+[Search Analyzer Demo](https://alice.unearth.ai/) はサードパーティ製のデモ アプリです。標準 Lucene アナライザー、Lucene の英語アナライザー、Microsoft の英語自然言語プロセッサの比較が横並びに表示されます。 インデックスは固定です。よくあるストーリーのテキストが含まれています。 検索用語を入力するごとに、隣接するウィンドウに各アナライザーの結果が表示され、同じ文字列を各アナライザーがどのように処理するかを把握できます。 
 
 ## <a name="examples"></a>例
 
@@ -244,13 +244,13 @@ API には、インデックス作成と検索に別のアナライザーを指�
 
 + 包括的な説明については、「[Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)」を参照してください。 この記事では、例を使って、表面上は直感的ではないと思われるような動作について説明しています。
 
-+ [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) の例に関するセクションや[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)で紹介されているさまざまなクエリ構文をポータルの Search エクスプローラーで試します。
++ [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) の例に関するセクションや[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)で紹介されているさまざまなクエリ構文をポータルの Search エクスプローラーで試します。
 
 + [言語に固有の字句解析器](https://docs.microsoft.com/rest/api/searchservice/language-support)を適用する方法について書かれた記事を参照します。
 
 + 個々のフィールドに対して最小限の処理または特殊な処理を適用するための[カスタム アナライザーを構成](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)します。
 
-+ このデモ Web サイトで隣接する列の[標準と英語のアナライザーを比較](http://alice.unearth.ai/)します。 
++ このデモ Web サイトで隣接する列の[標準と英語のアナライザーを比較](https://alice.unearth.ai/)します。 
 
 ## <a name="see-also"></a>関連項目
 

@@ -5,14 +5,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c1714fd6ada45f2b4498a3f5972424200afa9aa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210824"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838142"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>多層 Dynamics AX アプリケーションのディザスター リカバリーの設定 
 
@@ -45,9 +45,9 @@ Site Recovery を使用して Dynamics AX アプリケーションのディザ�
 
 **シナリオ** | **セカンダリ サイトへ** | **Azure へ**
 --- | --- | ---
-**Hyper-V** | [はい] | [はい]
-**VMware** | [はい] | [はい]
-**物理サーバー** | [はい] | [はい]
+**Hyper-V** | はい | はい
+**VMware** | はい | はい
+**物理サーバー** | はい | はい
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Site Recovery を使用して Dynamics AX アプリケーションのディザスター リカバリーを可能にする
 ### <a name="protect-your-dynamics-ax-application"></a>Dynamics AX アプリケーションを保護する
@@ -118,15 +118,15 @@ Site Recovery で復旧計画を作成して、フェールオーバー プロ�
 Dynamics AX アプリケーションの復旧計画は、次の手順を追加することでカスタマイズできます。 先のスナップショットは、すべての手順を追加した後の完全な復旧計画を示しています。
 
 
-* **SQL Server のフェールオーバー手順**: SQL Server 固有のリカバリー手順については、[SQL Server と Azure Site Recovery を使用したアプリケーションのレプリケート](site-recovery-sql.md)に関する記事を参照してください。
+* **SQL Server のフェールオーバー手順**:SQL Server 固有のリカバリー手順については、[SQL Server と Azure Site Recovery を使用したアプリケーションのレプリケート](site-recovery-sql.md)に関する記事を参照してください。
 
-* **フェールオーバー グループ 1**: Application Object Server VM をフェールオーバーします。
+* **フェールオーバー グループ 1**:Application Object Server VM をフェールオーバーします。
 選択された復旧ポイントは、データベース PIT にできるだけ近いが、先ではないことを確認してください。
 
-* **スクリプト**: ロード バランサーを追加します (E-A のみ)。
+* **スクリプト**:ロード バランサーを追加します (E-A のみ)。
 Application Object Server VM グループが立ち上がった後、そのグループにロード バランサーを追加する (Azure Automation 経由の) スクリプトを追加します。 このタスクを実行するのにスクリプトを使用することができます。 詳細については、[多層アプリケーションのディザスター リカバリー用のロード バランサーの追加方法](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)に関する記事を参照してください。
 
-* **フェールオーバー グループ 2**: Dynamics AX クライアント VM をフェールオーバーします。 復旧計画の一部として、Web 層の VM をフェールオーバーします。
+* **フェールオーバー グループ 2**:Dynamics AX クライアント VM をフェールオーバーします。 復旧計画の一部として、Web 層の VM をフェールオーバーします。
 
 
 ### <a name="perform-a-test-failover"></a>テスト フェールオーバーの実行

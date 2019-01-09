@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8923dcb4c35bbf90a6f68bd296bb9a862c5ff07d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ad59decab7233c74e13468b0cf0b11fdb5485d07
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230803"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722361"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする
 **Script Action** を使用して、クラスターに追加のソフトウェアをインストールするクラスター作成プロセス中に [カスタム スクリプト](hdinsight-hadoop-script-actions.md) を起動できます。
 
 この記事の情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux ベースのクラスターについては、「 [Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-HDInsight クラスターは、その他さまざまな方法でカスタマイズできます。たとえば、Azure ストレージ アカウントの追加、Hadoop 構成ファイルの変更 (core-site.xml、hive-site.xml など)、クラスター内の一般的な場所への共有ライブラリの追加 (Hive、Oozie など) といった方法があります。 これらのカスタマイズは、Azure PowerShell、Azure HDInsight .NET SDK、または Azure Portal から実行できます。 詳細については、[HDInsight での Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事をご覧ください。
+HDInsight クラスターは、その他さまざまな方法でカスタマイズできます。たとえば、Azure Storage アカウントの追加、[Apache Hadoop](https://hadoop.apache.org/) 構成ファイルの変更 (core-site.xml、hive-site.xml など)、クラスター内の一般的な場所への共有ライブラリの追加 ([Apache Hive](https://hive.apache.org/)、[Apache Oozie](https://oozie.apache.org/) など) といった方法があります。 これらのカスタマイズは、Azure PowerShell、Azure HDInsight .NET SDK、または Azure Portal から実行できます。 詳細については、[HDInsight での Apache Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事をご覧ください。
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
@@ -35,7 +35,7 @@ HDInsight クラスターは、その他さまざまな方法でカスタマイ�
 
 スクリプトの実行中、クラスターは **ClusterCustomization** 段階に入ります。 この段階でスクリプトは、システム管理者アカウントで、ノードで完全な管理者権限を持ち、クラスター内のすべての指定したノードで並列的に実行されます。
 
-> [!NOTE]
+> [!NOTE]  
 > **ClusterCustomization** 段階ではクラスター ノードで管理者権限を持っているため、スクリプトを使用して、Hadoop 関連のサービスを含め、サービスの停止や開始などの操作を行うことができます。 そのため、スクリプトの一部として、スクリプトの完了前に Ambari サービスや他の Hadoop 関連のサービスが動作していることを確認する必要があります。 これらのサービスでは、クラスターの作成時にクラスターが正常に稼動しているか確認する必要があります。 これらのサービスに影響するクラスター上の構成を変更する場合は、用意されているヘルパー関数を使用する必要があります。 ヘルパー関数の詳細については、「[HDInsight 用のスクリプト アクションのスクリプトを開発する][hdinsight-write-script]」を参照してください。
 >
 >
@@ -48,16 +48,16 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 | Name | スクリプト |
 | --- | --- |
-| **Spark のインストール** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1` 「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。 |
+| **Apache Spark のインストール** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1` 「[HDInsight クラスターで Apache Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。 |
 | **R のインストール** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1` [HDInsight クラスターでの R のインストールと使用](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster)に関する記事を参照してください。 |
-| **Solr のインストール** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1` [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md) をご覧ください。 |
-| **Giraph のインストール** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1` [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md) をご覧ください。 |
-| **Hive ライブラリの事前読み込み** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1` 「[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください。 |
+| **Apache Solr のインストール** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1` 「[HDInsight クラスターで Apache Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)」を参照してください。 |
+| **Apache Giraph のインストール** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1` 「[HDInsight クラスターで Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」を参照してください。 |
+| **Apache Hive ライブラリの事前読み込み** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1` 「[HDInsight クラスター作成時の Apache Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください |
 
 ## <a name="call-scripts-using-the-azure-portal"></a>Azure Portal を使用してスクリプトを呼び出す
 **Azure Portal**
 
-1. [HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md) に関する記事の説明に従って、クラスターの作成を開始します。
+1. [HDInsight での Apache Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関する記事の説明に従って、クラスターの作成を開始します。
 2. [オプションの構成] の **[スクリプト アクション]** ブレードで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
     ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "スクリプト アクションを使ってクラスターをカスタマイズする")
@@ -165,7 +165,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 入力を求められたら、クラスターの資格情報を入力します。 クラスターが作成されるまでに数分かかる場合があります。
 
 ## <a name="call-scripts-using-net-sdk"></a>.NET SDK を使用してスクリプトを呼び出す
-次のサンプルでは、Windows ベースの HDInsight クラスターに Spark をインストールする方法を示します。 その他のソフトウェアをインストールするには、コードのスクリプト ファイルを置換する必要があります。
+次のサンプルでは、Windows ベースの HDInsight クラスターに Apache Spark をインストールする方法を示します。 その他のソフトウェアをインストールするには、コードのスクリプト ファイルを置換する必要があります。
 
 **Spark で HDInsight クラスターを作成するには**
 
@@ -283,15 +283,15 @@ Microsoft Azure HDInsight サービスは柔軟性に優れたプラットフォ
 
 HDInsight サービスで利用できるオープン ソース コンポーネントには、2 つの種類があります。
 
-* **組み込みコンポーネント** - これらのコンポーネントは、HDInsight クラスターにプレインストールされており、クラスターの主要な機能を提供します。 たとえば、YARN リソース マネージャー、Hive クエリ言語 (HiveQL)、Mahout ライブラリなどがこのカテゴリに属します。 クラスター コンポーネントの完全な一覧は、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)</a>」から入手できます。
+* **組み込みコンポーネント** - これらのコンポーネントは、HDInsight クラスターにプレインストールされており、クラスターの主要な機能を提供します。 たとえば、Apache Hadoop YARN ResourceManager、Hive クエリ言語 (HiveQL)、Apache Mahout ライブラリなどがこのカテゴリに属します。 クラスター コンポーネントの完全な一覧は、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)</a>」から入手できます。
 * **カスタム コンポーネント** - クラスターのユーザーは、コミュニティで入手できるコンポーネントや自作のコンポーネントを、インストールするか、ワークロード内で使用することができます。
 
 組み込みコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/) などのプロジェクト サイトもあります。
 >
 >
 
@@ -305,11 +305,11 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 「[HDInsight 用のスクリプト アクションのスクリプトを開発する][hdinsight-write-script]」を参照してください。
 
 ## <a name="see-also"></a>関連項目
-* [HDInsight での Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
+* [HDInsight での Apache Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
 * [HDInsight 用のスクリプト アクションのスクリプトを開発する][hdinsight-write-script]
-* [HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]
-* [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)
-* [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)
+* [HDInsight クラスターで Apache Spark をインストールして使用する][hdinsight-install-spark]
+* [HDInsight クラスターに Apache Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)。
+* [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)。
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md

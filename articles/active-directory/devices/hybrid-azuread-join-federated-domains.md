@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c35c16e1414b1287fa891d1ce1f65ca8eff3d2c5
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3bce57f919490e1689ce40f59a3799ce451ee6e7
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434955"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752794"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル: フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -57,8 +57,6 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 このチュートリアルのシナリオを構成するための要件を次に示します。
 
 - Windows Server 2012 R2 と AD FS
-
-- スキーマ レベルが 85 以降のオンプレミス Active Directory (AD)。 詳細については、「[Upgrade your Active Directory Schema (Active Directory スキーマをアップグレードする)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema)」を参照してください。
 
 - [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) バージョン 1.1.819.0 以降。 
  

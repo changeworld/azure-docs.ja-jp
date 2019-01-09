@@ -1,5 +1,5 @@
 ---
-title: Linux 上の App Service 内の Azure Storage からコンテンツを提供する
+title: Linux 上の Azure Storage からコンテンツを提供する - App Service
 description: Linux 上の Azure App Service 内の Azure Storage を構成してコンテンツを提供する方法を説明します。
 author: msangapu
 manager: jeconnoc
@@ -8,12 +8,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: msangapu
-ms.openlocfilehash: 8d4444aac7f84753f55c434d0a3f5ef0edcfb1c4
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.custom: seodec18
+ms.openlocfilehash: 855df2820db6bba2b47d543ab671bee2193d7d9b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980242"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250921"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux 上の App Service 内の Azure Storage からコンテンツを提供する
 
@@ -67,7 +68,7 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 ストレージ コンテナーを Web アプリにリンクしたら、次のコマンドを実行してこれを確認できます。
 
 ```azurecli
-az webapp conf storage-account list --resource-group <group_name> --name <app_name>
+az webapp config storage-account list --resource-group <group_name> --name <app_name>
 ```
 
 ## <a name="next-steps"></a>次の手順

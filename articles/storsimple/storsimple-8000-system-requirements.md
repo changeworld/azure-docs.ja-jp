@@ -42,7 +42,7 @@ Microsoft Azure StorSimple へようこそ。 この記事では、StorSimple �
 | Windows Server |2008 R2 SP1、2012、2012 R2、2016 |StorSimple iSCSI ボリュームの使用は以下の Windows ディスク タイプのみでサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のシンプルおよびミラー ボリューム</li></ul>サポートされるのは、オペレーティング システムにネイティブで存在するソフトウェア iSCSI イニシエーターだけです。 ハードウェア iSCSI イニシエーターはサポートされません。<br></br>Windows Server 2012 および 2016 のシン プロビジョニングおよび ODX 機能は StorSimple iSCSI ボリュームを使用している場合にサポートされます。<br><br>StorSimple は、シン プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームを作成できます。 部分的にプロビジョニングされたボリュームは作成できません。<br><br>シン プロビジョニングされたボリュームを再フォーマットすると長い時間がかかる場合があります。 再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。 それでもボリュームを再フォーマットする場合は以下を実行します。<ul><li>領域の再利用による遅延を避けるために、再フォーマットする前に次のコマンドを実行します。 <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の再利用を再び有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) の説明に従って、Windows Server 2012 の修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。 |
 | VMware ESX |5.5 および 6.0 |iSCSI クライアントとして VMware vSphere でサポートされます。 VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。 |
 | Linux RHEL/CentOS |5、6 および 7 |Open-iSCSI イニシエーター バージョン 5、6 および 7 での Linux iSCSI クライアントのサポート。 |
-| Linux |SUSE Linux 11 | |
+|  Linux |SUSE Linux 11 | |
 
 > [!NOTE]
 > 現在、IBM AIX は StorSimple ではサポートされていません。
@@ -64,10 +64,10 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 | ポート番号<sup>1,2</sup> | インまたはアウト | ポート範囲 | 必須 | メモ |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |アウト |WAN |いいえ  |<ul><li>送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |アウト |WAN |[はい] |<ul><li>送信ポートは、クラウドのデータへのアクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li><li>このポートは、ガベージ コレクション用のコントローラーでも使用されます。</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |アウト |WAN |はい |<ul><li>送信ポートは、クラウドのデータへのアクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li><li>このポートは、ガベージ コレクション用のコントローラーでも使用されます。</li></ul> |
 | UDP 53 (DNS) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
 | UDP 123 (NTP) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
-| TCP 9354 |アウト |WAN |[はい] |送信ポートは、StorSimple デバイス マネージャー サービスと通信するために StorSimple デバイスによって使用されます。 |
+| TCP 9354 |アウト |WAN |はい |送信ポートは、StorSimple デバイス マネージャー サービスと通信するために StorSimple デバイスによって使用されます。 |
 | 3260 (iSCSI) |イン |LAN |いいえ  |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
 | 5985 |イン |LAN |いいえ  |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 | 5986 |イン |LAN |いいえ  |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |

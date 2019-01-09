@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 27dbd4215deef6574622ffcd2c62a64503459258
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: a4be229e1c491c3062b14e631cfec5b14185bb82
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515762"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957664"
 ---
 # <a name="asdk-release-notes"></a>ASDK リリース ノート  
-この記事では、Azure Stack Development Kit (ASDK) の機能強化、修正、既知の問題に関する情報を提供します。 実行しているバージョンが不明な場合は、[ポータルを使用して確認](.\.\azure-stack-updates.md#determine-the-current-version)できます。
+この記事では、Azure Stack Development Kit (ASDK) の機能強化、修正、既知の問題に関する情報を提供します。 実行しているバージョンが不明な場合は、[ポータルを使用して確認](../azure-stack-updates.md#determine-the-current-version)できます。
 
 > [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [フィード](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)をサブスクライブして、ASDK の新着情報を常に把握するようにしてください。
 
@@ -46,32 +46,11 @@ ms.locfileid: "51515762"
 <!-- TBD - IS ASDK --> 
 - Azure Stack ユーザー ポータルで仮想マシンを作成して、ポータルで、DS シリーズ VM にアタッチできるデータ ディスクの数が誤って表示されていた問題が修正されました。 DS シリーズ VM は Azure の構成と同数のデータ ディスクをアタッチできます。
 
-- 次のマネージド ディスクの問題は 1809 で修正され、1808 [Azure Stack 修正プログラム 1.1808.7.113](https://support.microsoft.com/help/4471992/) でも修正されています。 
-
-   <!--  2966665 – IS, ASDK --> 
-   - SSD データ ディスクを Premium サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーで失敗していた問題が修正されました。"*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ 'Standard_DS/Ds_V2/FS/Fs_v2' ではサポートされないため、要求された操作は実行できません。*" 
-   
-   - **createOption**:**Attach** を使用して、マネージド ディスク VM を作成すると、次のエラーで失敗します。*"Long running operation failed with status 'Failed' (長時間実行処理は状態 '失敗' で失敗しました)Additional Info:'An internal execution error occurred.' (追加情報:'内部実行エラーが発生しました。')*
-   エラーコード: InternalExecutionError ErrorMessage: 内部実行エラーが発生しました。
-   
-   この問題は修正されました。
-
 - <!-- 2702741 -  IS, ASDK --> 動的割り当てメソッドを使用してデプロイされているパブリック IP の固定された問題は、停止-割り当て解除が発行された後も保持される保証はありませんでした。 これらは保存されるようになりました。
 
 - <!-- 3078022 - IS, ASDK --> VM が 1808 の前に停止‐割り当て解除された場合、これは 1808 の更新後に再割り当てできませんでした。  この問題は 1809 で修正されています。 ここの状態にあり開始できなかったインスタンスは、この修正によって 1809 で開始できます。 また、修正プログラムにより、この問題は再発しないようになります。
 
-<!-- 3090289 – IS, ASDK --> 
-- 更新プログラム 1808 の適用後、Managed Disks を使用した VM をデプロイするときに、次の問題が発生する可能性があった問題を修正しました。
-
-   1. 1808 更新の前に作成したサブスクリプションの場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
-      1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
-      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
-   2. マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、次の手順に従ってください。
-      1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4471992)を適用します。
-      2. [この記事](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
-
 - **さまざまな修正** - パフォーマンス、安定性、セキュリティ、Azure Stack で使用されるオペレーティング システムが修正されました。
-
 
 ### <a name="changes"></a>変更点
 
@@ -93,14 +72,14 @@ ms.locfileid: "51515762"
    アラート #1:
    - 名前: インフラストラクチャ ロールの異常
    - 重大度: 警告
-   - コンポーネント: 正常性コントローラー
-   - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
+   - コンポーネント:正常性コントローラー
+   - 説明:正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
 
   アラート #2:
    - 名前: インフラストラクチャ ロールの異常
    - 重大度: 警告
-   - コンポーネント: 正常性コントローラー
-   - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
+   - コンポーネント:正常性コントローラー
+   - 説明:正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
 
   どちらのアラートも無視しても問題ありません。時間が経過すると、自動的に閉じられます。  
 
@@ -108,7 +87,7 @@ ms.locfileid: "51515762"
 - Azure Stack オペレーターで、メモリ不足のアラートを受信し、テナント仮想マシンが*ファブリック VM の作成エラー*でデプロイできなかった場合、Azure Stack スタンプに使用できるメモリが不足している可能性があります。 ワークロードに使用できる容量の詳細については、[Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) に関するページを参照してください。
 
 
-#### <a name="compute"></a>コンピューティング 
+#### <a name="compute"></a>Compute 
 
 <!-- 3164607 – IS, ASDK -->
 - デタッチしたディスクを同じ名前と LUN で同じ仮想マシン (VM) に再アタッチすると、**"データ ディスク 'datadisk' は、VM 'vm1' にアタッチできません"** というようなエラーで失敗します。 このエラーは、現在ディスクがデタッチされているか、直前のデタッチ操作が失敗したために発生します。 ディスクが完全にデタッチされるまで待ってから再試行するか、ディスクをもう一度明示的に削除/デタッチしてください。 回避策は、別の名前で再アタッチするか、別の LUN に再アタッチすることです。 
@@ -123,7 +102,7 @@ ms.locfileid: "51515762"
 - [**Add-AzsPlatformImage** コマンドレット](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0)を使用する場合は、ディスクのアップロード先のストレージ アカウント URI として **-OsUri** パラメーターを使用する必要があります。 ディスクのローカル パスを使用した場合、次のエラーが出てコマンドレットが失敗します: *長時間実行処理が状態 '失敗' で失敗しました*。 
 
 <!--  2966665 – IS, ASDK --> 
-- SSD データ ディスクを Premium サイズのマネージド ディスク仮想マシン(DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーが出て失敗します: "*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ 'Standard_DS/Ds_V2/FS/Fs_v2' ではサポートされないため、要求された操作は実行できません*"
+- SSD データ ディスクをプレミアム サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーで失敗します:*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ (Standard_DS/Ds_V2/FS/Fs_v2)でサポートされていないため、要求された操作は実行できません。*
 
    この問題を回避するには、*Premium_LRS ディスク*の代わりに *Standard_LRS* データ ディスクをご使用ください。 *Standard_LRS* データ ディスクを使用しても、IOPS または課金コストは変わりません。  
 
@@ -201,13 +180,13 @@ ms.locfileid: "51515762"
 このビルドには、Azure Stack に対する次の機能強化と修正が含まれています。  
 
 <!-- 1658937 | ASDK, IS --> 
-- **定義済みのスケジュールでバックアップを開始** - アプライアンスとしての Azure Stack に、インフラストラクチャ バックアップを自動で定期的にトリガーする機能が追加され、人の介入が不要になりました。 また、定義されている保有期間を超えたバックアップについては、外部共有が自動的にクリーンアップされます。 詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](.\.\azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
+- **定義済みのスケジュールでバックアップを開始** - アプライアンスとしての Azure Stack に、インフラストラクチャ バックアップを自動で定期的にトリガーする機能が追加され、人の介入が不要になりました。 また、定義されている保有期間を超えたバックアップについては、外部共有が自動的にクリーンアップされます。 詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](../azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
 
 <!-- 2496385 | ASDK, IS -->  
-- **合計バックアップ時間にデータ転送時間が追加されました。** 詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](.\.\azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
+- **合計バックアップ時間にデータ転送時間が追加されました。** 詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](../azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
 
 <!-- 1702130 | ASDK, IS --> 
-- **外部バックアップ容量に、外部共有の正確な容量が表示されるようになりました。** (従来は 10 GB にハードコーディングされていました。)詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](.\.\azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
+- **外部バックアップ容量に、外部共有の正確な容量が表示されるようになりました。** (従来は 10 GB にハードコーディングされていました。)詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](../azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
  
 <!-- 2753130 |  IS, ASDK   -->  
 - **Azure Resource Manager テンプレートで条件要素がサポートされるようになりました** - 条件を使用して Azure Resource Manger テンプレートでリソースをデプロイできるようになりました。 パラメーター値の有無の評価などの条件に基づいてリソースをデプロイするようにテンプレートを設計することができます。 テンプレートを条件として使用する方法については、Azure ドキュメントの「[リソースを条件付きでデプロイする](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy)」および「[Azure Resource Manager テンプレートの変数セクション](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables)」を参照してください。 
@@ -215,7 +194,7 @@ ms.locfileid: "51515762"
    テンプレートを使用して、[複数のサブスクリプションまたはリソース グループにリソースをデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment)こともできます。  
 
 <!--2753073 | IS, ASDK -->  
-- **Microsoft.Network API リソース バージョンのサポートが更新され**、Azure Stack ネットワーク リソースで API バージョン 2015-06-15 から 2017-10-01 がサポートされるようになりました。 リソース バージョン 2017-10-01 から 2015-06-15 までのサポートは、このリリースには含まれていません。 機能の相違点については、「[Azure Stack ネットワークに関する考慮事項](.\.\user\azure-stack-network-differences.md)」を参照してください。
+- **Microsoft.Network API リソース バージョンのサポートが更新され**、Azure Stack ネットワーク リソースで API バージョン 2015-06-15 から 2017-10-01 がサポートされるようになりました。 リソース バージョン 2017-10-01 から 2015-06-15 までのサポートは、このリリースには含まれていません。 機能の相違点については、「[Azure Stack ネットワークに関する考慮事項](../user/azure-stack-network-differences.md)」を参照してください。
 
 <!-- 2272116 | IS, ASDK   -->  
 - **Azure Stack に、外部向け Azure Stack インフラストラクチャ エンドポイント (portal、adminportal、management、adminmanagement) に対する DNS 逆引き参照のサポートが追加されました**。 これにより、Azure Stack 外部エンドポイント名を IP アドレスから解決できます。
@@ -233,7 +212,7 @@ ms.locfileid: "51515762"
 
 - <!-- ASDK --> **仮想マシン スケール セット用のギャラリー アイテムが組み込まれました**。  仮想マシン スケール セットのギャラリー項目がユーザーおよび管理者のポータルで利用可能になりました。ダウンロードする必要はありません。 
 
-- <!-- IS, ASDK --> **仮想マシン スケール セットのスケーリング**。  ポータルを使用して、[仮想マシン スケール セットをスケールする](/azure/azure-stack/azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set)ことができます (VMSS)。   
+- <!-- IS, ASDK --> **仮想マシン スケール セットのスケーリング**。  ポータルを使用して、[仮想マシン スケール セットをスケールする](../azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set)ことができます (VMSS)。   
 
 - <!-- 2489570 | IS ASDK--> **カスタムの IPSec/IKE ポリシー構成のサポート**。[Azure Stack 内の VPN ゲートウェイ用です](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways)。
 
@@ -243,7 +222,7 @@ ms.locfileid: "51515762"
 - **Azure Resource Manager にリージョン名が含まれています。** このリリースでは、Azure Resource Manager から取得したオブジェクトに、リージョンの名前属性が追加されるようになります。 既存の PowerShell スクリプトが別のコマンドレットにオブジェクトを直接渡すと、スクリプトによってエラーが発生し、失敗することがあります。 これは、Azure Resource Manager に準拠した動作であり、呼び出し元のクライアントがリージョン属性を削除する必要があります。 Azure Resource Manager の詳細については、「[Azure Resource Manager のドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/)」を参照してください。
 
 <!-- TBD | IS, ASDK -->  
-- **委任されたプロバイダー間でのサブスクリプションの移動。** 同じディレクトリ テナントに属している新規または既存の委任されたプロバイダー サブスクリプション間で、サブスクリプションを移動できるようになりました。 また、既定プロバイダー サブスクリプションに属しているサブスクリプションも、同じディレクトリ テナント内にある委任されたプロバイダー サブスクリプションに移動できます。 詳細については、「[Azure Stack でのプランの委任](.\.\azure-stack-delegated-provider.md)」を参照してください。
+- **委任されたプロバイダー間でのサブスクリプションの移動。** 同じディレクトリ テナントに属している新規または既存の委任されたプロバイダー サブスクリプション間で、サブスクリプションを移動できるようになりました。 また、既定プロバイダー サブスクリプションに属しているサブスクリプションも、同じディレクトリ テナント内にある委任されたプロバイダー サブスクリプションに移動できます。 詳細については、「[Azure Stack でのプランの委任](../azure-stack-delegated-provider.md)」を参照してください。
  
 <!-- 2536808 IS ASDK --> 
 - Azure Marketplace からダウンロードしたイメージを使用して作成された **VM の VM 作成時間が改善**されました。
@@ -267,7 +246,7 @@ ms.locfileid: "51515762"
 - 外部共有から手動でバックアップを削除したときにバックアップ リストが最新の情報に更新されるようになりました。
 
 <!-- 2360715 |  ASDK, IS -->  
-- データセンターの統合を設定する際、今後は、共有場所の AD FS メタデータ ファイルにはアクセスしません。 詳細については、「[フェデレーション メタデータ ファイルを指定して AD FS の統合を設定する](.\.\azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file)」を参照してください。 
+- データセンターの統合を設定する際、今後は、共有場所の AD FS メタデータ ファイルにはアクセスしません。 詳細については、「[フェデレーション メタデータ ファイルを指定して AD FS の統合を設定する](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file)」を参照してください。 
 
 <!-- 2388980 | ASDK, IS --> 
 - ネットワーク インターフェイスまたはロード バランサーに割り当てられている既存のパブリック IP アドレスを新しいネットワーク インターフェイスまたは Azure Load Balancer に割り当てることができない問題を修正しました。  
@@ -290,7 +269,7 @@ ms.locfileid: "51515762"
 <!--  TBD ASDK --> 
 - 特権エンドポイント (PEP) をホストする仮想マシンが 4 GB に引き上げられました。 ASDK では、この仮想マシンの名前は AzS-ERCS01 です。
 
-- <!--  TBD – IS, ASDK --> *Basic A* の仮想マシン サイズは、ポータルを介して[仮想マシン スケール セット (VMSS) を作成する](.\.\azure-stack-compute-add-scalesets.md)ものとしては廃止されました。 このサイズの VMSS を作成するには、PowerShell またはテンプレートをご使用ください。 
+- <!--  TBD – IS, ASDK --> *Basic A* の仮想マシン サイズは、ポータルを介して[仮想マシン スケール セット (VMSS) を作成する](../azure-stack-compute-add-scalesets.md)ものとしては廃止されました。 このサイズの VMSS を作成するには、PowerShell またはテンプレートをご使用ください。 
 
 ### <a name="known-issues"></a>既知の問題
 
@@ -304,7 +283,7 @@ ms.locfileid: "51515762"
 - アドオン プランとしてユーザー サブスクリプションに追加されたプランは、ユーザー サブスクリプションからプランを削除しても削除できません。 アドオン プランを参照するサブスクリプションも削除されるまで、プランは残ります。 
 
 <!--2760466 – IS  ASDK --> 
-- このバージョンを実行する新しい Azure Stack 環境をインストールすると、「*アクティブ化が必要*」を示すアラートが表示されない場合があります。 マーケットプレース シンジケーションを使用するには、[アクティブ化](.\.\azure-stack-registration.md)する必要があります。 
+- このバージョンを実行する新しい Azure Stack 環境をインストールすると、「*アクティブ化が必要*」を示すアラートが表示されない場合があります。 マーケットプレース シンジケーションを使用するには、[アクティブ化](../azure-stack-registration.md)する必要があります。 
 
 <!-- TBD - IS ASDK --> 
 - バージョン 1804 で導入された 2 種類の管理サブスクリプションは使用しないでください。 **Metering サブスクリプション**と **Consumption サブスクリプション**のサブスクリプションの種類です。 これらのサブスクリプションの種類は、**Metering サブスクリプション**と **Consumption サブスクリプション**です。 これらのサブスクリプションの種類は、バージョン 1804 以降の新しい Azure Stack 環境では表示されますが、まだ使用できる状態ではありません。 **既定のプロバイダー サブスクリプション**の種類を引き続き使用する必要があります。
@@ -329,14 +308,14 @@ ms.locfileid: "51515762"
    アラート #1:
    - 名前: インフラストラクチャ ロールの異常
    - 重大度: 警告
-   - コンポーネント: 正常性コントローラー
-   - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
+   - コンポーネント:正常性コントローラー
+   - 説明:正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
 
   アラート #2:
    - 名前: インフラストラクチャ ロールの異常
    - 重大度: 警告
-   - コンポーネント: 正常性コントローラー
-   - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
+   - コンポーネント:正常性コントローラー
+   - 説明:正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
 
   どちらのアラートも無視しても問題ありません。時間が経過すると、自動的に閉じられます。  
 
@@ -346,16 +325,16 @@ ms.locfileid: "51515762"
 <!-- TBD - IS. ASDK --> 
 - 特権エンドポイント (PEP) で **Test-AzureStack** コマンドレットを実行すると、**Azure Stack インフラストラクチャ ロール インスタンスのパフォーマンス** テストによって ERCS VM の警告メッセージが生成されます。 警告メッセージは無視して ASDK を引き続き使用できます。
 
-#### <a name="compute"></a>コンピューティング
+#### <a name="compute"></a>Compute
 <!-- 2494144 - IS, ASDK --> 
-- 仮想マシンの展開用に仮想マシンのサイズを選択すると、VM を作成するときに F シリーズの VM のサイズがサイズ セレクターの一部として表示されません。 セレクターに *F8s_v2*、*F16s_v2*、*F32s_v2*、および *F64s_v2* の VM サイズが表示されません。  
+- 仮想マシンの展開用に仮想マシンのサイズを選択すると、VM を作成するときに F シリーズの VM のサイズがサイズ セレクターの一部として表示されません。 次の VM サイズは、セレクターには表示されません。*F8s_v2*、*F16s_v2*、*F32s_v2*、および*F64s_v2*。  
   この問題を回避するには、次のいずれかの方法を使用して VM をデプロイします。 どの方法でも、使用する VM のサイズを指定する必要があります。
 
 - <!-- 3099544 – IS, ASDK -->Azure Stack ポータルを使用して新しい仮想マシン (VM) を作成し、VM サイズを選択するときに、[米国ドル/月] 列に **[利用不可]** のメッセージが表示されます。 VM 価格の列の表示は、Azure Stack ではサポートされておらず、この列は表示されるべきではありません。
 
 - <!-- 2869209 – IS, ASDK --> [**Add-AzsPlatformImage** コマンドレット](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0)を使用する場合は、ディスクのアップロード先のストレージ アカウント URI として **-OsUri** パラメーターを使用する必要があります。 ディスクのローカル パスを使用した場合、次のエラーが出てコマンドレットが失敗します: *長時間実行処理が状態 '失敗' で失敗しました*。 
 
-- <!--  2966665 – IS, ASDK --> SSD データ ディスクを Premium サイズのマネージド ディスク仮想マシン(DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーが出て失敗します: *仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ 'Standard_DS/Ds_V2/FS/Fs_v2' ではサポートされないため、要求された操作は実行できません*
+- <!--  2966665 – IS, ASDK -->SSD データ ディスクをプレミアム サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーで失敗します:*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ (Standard_DS/Ds_V2/FS/Fs_v2)でサポートされていないため、要求された操作は実行できません。*
 
    この問題を回避するには、*Premium_LRS ディスク*の代わりに *Standard_LRS* データ ディスクをご使用ください。 *Standard_LRS* データ ディスクを使用しても、IOPS または課金コストは変わりません。  
 
@@ -438,17 +417,17 @@ ms.locfileid: "51515762"
 ### <a name="new-features"></a>新機能
 このビルドには、Azure Stack に対する次の機能強化と修正が含まれています。  
 
-- <!-- 1658937 | ASDK, IS --> **定義済みのスケジュールでバックアップを開始** - アプライアンスとしての Azure Stack に、インフラストラクチャ バックアップを自動で定期的にトリガーする機能が追加され、人の介入が不要になりました。 また、定義されている保有期間を超えたバックアップについては、外部共有が自動的にクリーンアップされます。 詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](.\.\azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
+- <!-- 1658937 | ASDK, IS --> **定義済みのスケジュールでバックアップを開始** - アプライアンスとしての Azure Stack に、インフラストラクチャ バックアップを自動で定期的にトリガーする機能が追加され、人の介入が不要になりました。 また、定義されている保有期間を超えたバックアップについては、外部共有が自動的にクリーンアップされます。 詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](../azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
 
-- <!-- 2496385 | ASDK, IS -->  **合計バックアップ時間にデータ転送時間が追加されました。** 詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](.\.\azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
+- <!-- 2496385 | ASDK, IS -->  **合計バックアップ時間にデータ転送時間が追加されました。** 詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](../azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
 
--   <!-- 1702130 | ASDK, IS -->  **外部バックアップ容量に、外部共有の正確な容量が表示されるようになりました。** (従来は 10 GB にハードコーディングされていました。)詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](.\.\azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
+-   <!-- 1702130 | ASDK, IS -->  **外部バックアップ容量に、外部共有の正確な容量が表示されるようになりました。** (従来は 10 GB にハードコーディングされていました。)詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](../azure-stack-backup-enable-backup-powershell.md)」をご覧ください。
  
 - <!-- 2753130 |  IS, ASDK   -->  **Azure Resource Manager テンプレートで条件要素がサポートされるようになりました** - 条件を使用して Azure Resource Manger テンプレートでリソースをデプロイできるようになりました。 パラメーター値の有無の評価などの条件に基づいてリソースをデプロイするようにテンプレートを設計することができます。 テンプレートを条件として使用する方法については、Azure ドキュメントの「[リソースを条件付きでデプロイする](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy)」および「[Azure Resource Manager テンプレートの変数セクション](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables)」を参照してください。 
 
    テンプレートを使用して、[複数のサブスクリプションまたはリソース グループにリソースをデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment)こともできます。  
 
-- <!--2753073 | IS, ASDK -->  **Microsoft.Network API リソース バージョンのサポートが更新され**、Azure Stack ネットワーク リソースで API バージョン 2015-06-15 から 2017-10-01 がサポートされるようになりました。  リソース バージョン 2017-10-01 から 2015-06-15 までのサポートは、このリリースには含まれていませんが、将来のリリースでは含まれる予定です。  機能の相違点については、「[Azure Stack ネットワークに関する考慮事項](.\.\user\azure-stack-network-differences.md)」を参照してください。
+- <!--2753073 | IS, ASDK -->  **Microsoft.Network API リソース バージョンのサポートが更新され**、Azure Stack ネットワーク リソースで API バージョン 2015-06-15 から 2017-10-01 がサポートされるようになりました。  リソース バージョン 2017-10-01 から 2015-06-15 までのサポートは、このリリースには含まれていませんが、将来のリリースでは含まれる予定です。  機能の相違点については、「[Azure Stack ネットワークに関する考慮事項](../user/azure-stack-network-differences.md)」を参照してください。
 
 - <!-- 2272116 | IS, ASDK   -->  **Azure Stack に、外部向け Azure Stack インフラストラクチャ エンドポイント (portal、adminportal、management、adminmanagement) に対する DNS 逆引き参照のサポートが追加されました。** これにより、Azure Stack 外部エンドポイント名を IP アドレスから解決できます。
 
@@ -465,11 +444,11 @@ ms.locfileid: "51515762"
 
   この機能はまだプレビュー段階であるため、運用環境では使用しないでください。
 
-  詳細については、「[Azure Stack の Syslog 転送](.\.\azure-stack-integrate-security.md)」を参照してください。
+  詳細については、「[Azure Stack の Syslog 転送](../azure-stack-integrate-security.md)」を参照してください。
 
 - <!-- ####### | IS, ASDK -->  **Azure Resource Manager にリージョン名が含まれています。** このリリースでは、Azure Resource Manager から取得したオブジェクトに、リージョンの名前属性が追加されるようになります。 既存の PowerShell スクリプトが別のコマンドレットにオブジェクトを直接渡すと、スクリプトによってエラーが発生し、失敗することがあります。 これは、Azure Resource Manager に準拠した動作であり、呼び出し元のクライアントがリージョン属性を削除する必要があります。 Azure Resource Manager の詳細については、「[Azure Resource Manager のドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/)」を参照してください。
 
-- <!-- TBD | IS, ASDK -->  **委任されたプロバイダー間でサブスクリプションを移動します。** 同じディレクトリ テナントに属している新規または既存の委任されたプロバイダー サブスクリプション間で、サブスクリプションを移動できるようになりました。 また、既定プロバイダー サブスクリプションに属しているサブスクリプションも、同じディレクトリ テナント内にある委任されたプロバイダー サブスクリプションに移動できます。 詳細については、「[Azure Stack でのプランの委任](.\.\azure-stack-delegated-provider.md)」を参照してください。
+- <!-- TBD | IS, ASDK -->  **委任されたプロバイダー間でサブスクリプションを移動します。** 同じディレクトリ テナントに属している新規または既存の委任されたプロバイダー サブスクリプション間で、サブスクリプションを移動できるようになりました。 また、既定プロバイダー サブスクリプションに属しているサブスクリプションも、同じディレクトリ テナント内にある委任されたプロバイダー サブスクリプションに移動できます。 詳細については、「[Azure Stack でのプランの委任](../azure-stack-delegated-provider.md)」を参照してください。
  
 - <!-- 2536808 IS ASDK --> Azure Marketplace からダウンロードしたイメージを使用して作成された VM の **VM 作成時間が改善されました**。
 
@@ -485,7 +464,7 @@ ms.locfileid: "51515762"
 
 - <!-- 2215948 |  ASDK, IS --> 外部共有から手動でバックアップを削除したときにバックアップ リストが最新の情報に更新されるようになりました。
 
-- <!-- 2360715 |  ASDK, IS -->  データセンターの統合を設定する際、今後は、共有場所の AD FS メタデータ ファイルにはアクセスしません。 詳細については、「[フェデレーション メタデータ ファイルを指定して AD FS の統合を設定する](.\.\azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file)」を参照してください。 
+- <!-- 2360715 |  ASDK, IS -->  データセンターの統合を設定する際、今後は、共有場所の AD FS メタデータ ファイルにはアクセスしません。 詳細については、「[フェデレーション メタデータ ファイルを指定して AD FS の統合を設定する](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file)」を参照してください。 
 
 - <!-- 2388980 | ASDK, IS --> ネットワーク インターフェイスまたはロード バランサーに割り当てられている既存のパブリック IP アドレスを新しいネットワーク インターフェイスまたはロード バランサーに割り当てることができない問題を修正しました。  
 
@@ -532,7 +511,7 @@ ms.locfileid: "51515762"
 - このバージョンの Azure Stack では、OEM Extension パッケージを使用してドライバーの更新プログラムを適用することはできません。  この問題の回避策はありません。
  
 <!-- TBD - IS ASDK --> 
-- 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
+- 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](../azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
     - Azure Stack Development Kit の場合は、 https://aka.ms/azurestackforum を使います。    
 
 <!-- 2403291 - IS ASDK --> 
@@ -554,14 +533,14 @@ ms.locfileid: "51515762"
    アラート #1:
    - 名前: インフラストラクチャ ロールの異常
    - 重大度: 警告
-   - コンポーネント: 正常性コントローラー
-   - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
+   - コンポーネント:正常性コントローラー
+   - 説明:正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
 
   アラート #2:
    - 名前: インフラストラクチャ ロールの異常
    - 重大度: 警告
-   - コンポーネント: 正常性コントローラー
-   - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
+   - コンポーネント:正常性コントローラー
+   - 説明:正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
 
   どちらのアラートも無視しても問題ありません。時間が経過すると、自動的に閉じられます。  
 
@@ -572,9 +551,9 @@ ms.locfileid: "51515762"
 - 特権エンドポイント (PEP) で Test-AzureStack コマンドレットを実行すると、ERCS VM の警告メッセージが生成されます。 ASDK は引き続き使用できます。 
 
 
-#### <a name="compute"></a>コンピューティング
+#### <a name="compute"></a>Compute
 <!-- TBD - IS, ASDK --> 
-- 仮想マシンの展開用に仮想マシンのサイズを選択すると、VM を作成するときに F シリーズの VM のサイズがサイズ セレクターの一部として表示されません。 セレクターに *F8s_v2*、*F16s_v2*、*F32s_v2*、および *F64s_v2* の VM サイズが表示されません。  
+- 仮想マシンの展開用に仮想マシンのサイズを選択すると、VM を作成するときに F シリーズの VM のサイズがサイズ セレクターの一部として表示されません。 次の VM サイズは、セレクターには表示されません。*F8s_v2*、*F16s_v2*、*F32s_v2*、および*F64s_v2*。  
   この問題を回避するには、次のいずれかの方法を使用して VM をデプロイします。 どの方法でも、使用する VM のサイズを指定する必要があります。
 
   - **Azure Resource Manager テンプレート:** テンプレートを使用する際に、テンプレートの *vmSize* を使用する VM サイズと同じに設定します。 たとえば、*F32s_v2* サイズを使用する VM をデプロイするには、次のように入力します。  
@@ -626,7 +605,7 @@ ms.locfileid: "51515762"
 <!-- 2292271 - IS ASDK --> 
 - テナントのサブスクリプションに関連付けられているオファーとプランの一部であるネットワーク リソースのクォータ制限を引き上げた場合、新しい制限がそのサブスクリプションに適用されません。 ただし、クォータを増加した後に作成した新しいサブスクリプションには新しい制限が適用されます。
 
-  この問題を回避するには、プランがサブスクリプションに既に関連付けられている場合は、アドオン プランを使用して、ネットワーク クォータを増やします。 詳細については、[アドオン プランを利用できるようにする方法](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available)を参照してください。
+  この問題を回避するには、プランがサブスクリプションに既に関連付けられている場合は、アドオン プランを使用して、ネットワーク クォータを増やします。 詳細については、[アドオン プランを利用できるようにする方法](../azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available)を参照してください。
 
 <!-- 2304134 IS ASDK --> 
 - DNS ゾーン リソースまたはそれに関連付けられたルート テーブル リソースがあるサブスクリプションを削除することができません。 サブスクリプションを正常に削除するには、まずテナント サブスクリプションから DNS ゾーンとルート テーブルのリソースを削除する必要があります。

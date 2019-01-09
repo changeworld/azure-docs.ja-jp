@@ -1,23 +1,24 @@
 ---
-title: LUIS アプリでの意図について
-titleSuffix: Azure Cognitive Services
-description: 意図は、ユーザーが実行しようとしているタスクまたはアクションを表します。 ユーザーの発話で表明される目的や目標です。 ユーザーがアプリケーションで実行しようとしているアクションに対応する、意図のセットを定義します。
+title: ユーザーの意図
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 意図は、ユーザーが実行しようとしているタスクまたはアクションを表します。 ユーザーの発話で表明される目的や目標です。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 5ccfe781b3632bd7ccfc532398a00faf7a87b63f
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: a6343d9bd2009ee2c16f0cca3118e5653faa4c07
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637213"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138689"
 ---
-# <a name="intents-in-luis"></a>LUIS での意図
+# <a name="concepts-about-intents-in-your-luis-app"></a>LUIS アプリにおける意図の概念
 
 意図は、ユーザーが実行しようとしているタスクまたはアクションを表します。 ユーザーの[発話](luis-concept-utterance.md)で表明される目的や目標です。
 

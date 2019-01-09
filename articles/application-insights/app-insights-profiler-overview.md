@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: bba15ee901e7ccecc513f526339bde2fcc6277fa
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 7780c10233a0ce256ee6e9015f40ea789516c25b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142861"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726901"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights を使用した Azure のプロファイル運用アプリケーション
 ## <a name="enable-profiler-for-your-application"></a>アプリケーションの Profiler を有効にする
@@ -38,7 +37,7 @@ Profiler を有効にして、トレースが表示されない場合は、[ト�
 
 ## <a name="view-profiler-data"></a>プロファイラー データを表示する
 
-プロファイラーがトレースをアップロードするには、アプリケーションが要求をアクティブに処理する必要があります。 実験を行っている場合は、[Application Insights パフォーマンス テスト](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)を使用して Web アプリへの要求を生成できます。 Profiler を新しく有効にした場合は、短い読み込みテストを実行することができます。 読み込みテストの実行中に、[**[Profiler Settings]\(Profiler の設定\)**]() ページの **[Profile Now]\(今すぐプロファイル\)** ボタンを押します。 プロファイラーが実行されると、1 時間に約 1 回、2 分間、ランダムにプロファイリングされます。 アプリケーションが要求の安定したストリームを処理している場合、Profiler から 1 時間ごとにトレースがアップロードされます。
+プロファイラーがトレースをアップロードするには、アプリケーションが要求をアクティブに処理する必要があります。 実験を行っている場合は、[Application Insights パフォーマンス テスト](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)を使用して Web アプリへの要求を生成できます。 Profiler を新しく有効にした場合は、短い読み込みテストを実行することができます。 読み込みテストの実行中に、[**[Profiler Settings]\(Profiler の設定\)**](app-insights-profiler-settings.md#profiler-settings-page) ページの **[Profile Now]\(今すぐプロファイル\)** ボタンを押します。 プロファイラーが実行されると、1 時間に約 1 回、2 分間、ランダムにプロファイリングされます。 アプリケーションが要求の安定したストリームを処理している場合、Profiler から 1 時間ごとにトレースがアップロードされます。
 
 アプリケーションでトラフィックを受け取り、プロファイラーにトレースをアップロードする時間がある場合は、表示するトレースが必要です。 このプロセスには 5 分から 10 分かかる可能性があります。 トレースを表示するには、**[パフォーマンス]** ウィンドウに移動し、**[Take Actions] \(アクションの実行)** を選択してプロファイラー トレースを表示してから、**[Profiler Traces] \(プロファイラー トレース)** ボタンを選択します。
 
@@ -50,10 +49,10 @@ Profiler を有効にして、トレースが表示されない場合は、[ト�
 
 トレース エクスプローラーは、次の情報を表示します。
 
-* **ホット パスの表示**: 最大リーフ ノード、またはそれに近いノードが表示されます。 ほとんどの場合、このようなノードはパフォーマンスのボトルネックの近くにあります。
-* **ラベル**: 関数またはイベントの名前。 このツリーには、コードと発生したイベント (SQL イベントや HTTP イベントなど) が混在して表示されます。 最上位のイベントは要求時間全体に相当します。
-* **経過時間**: 操作の開始から終了までの期間。
-* **時間**: 関数またはイベントが他の関数と関連して実行されていた時間。
+* **ホット パスの表示**:最大リーフ ノード、またはそれに近いノードが表示されます。 ほとんどの場合、このようなノードはパフォーマンスのボトルネックの近くにあります。
+* **ラベル**:関数またはイベントの名前。 このツリーには、コードと発生したイベント (SQL イベントや HTTP イベントなど) が混在して表示されます。 最上位のイベントは要求時間全体に相当します。
+* **経過時間**:操作の開始から終了までの期間。
+* **時間**:関数またはイベントが他の関数と関連して実行されていた時間。
 
 ## <a name="how-to-read-performance-data"></a>パフォーマンス データの解釈方法
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8c3684f93bbf5b9fe9f5ea9167396b9822e70c48
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139511"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841627"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
@@ -31,7 +31,7 @@ ms.locfileid: "50139511"
 
 Azure AD B2C では、さまざまなページでのユーザー エクスペリエンス (UX) の外観をカスタマイズすることができます。こうしたページは、カスタム ポリシーを使用して Azure AD B2C で配信および表示されます。
 
-この目的のために、Azure AD B2C はコンシューマーのブラウザーでコードを実行すると共に、[クロス オリジン リソース共有 (CORS)](http://www.w3.org/TR/cors/) と呼ばれる最新の標準手法を使用して、HTML5/CSS テンプレートを指すようにカスタム ポリシーで指定した特定の URL からカスタム コンテンツを読み込みます。 CORS とは、フォントなどの Web ページ上の制限されたリソースを、リソースの提供元のドメインとは別のドメインに対して要求できるようにするメカニズムです。
+この目的のために、Azure AD B2C はコンシューマーのブラウザーでコードを実行すると共に、[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/) と呼ばれる最新の標準手法を使用して、HTML5/CSS テンプレートを指すようにカスタム ポリシーで指定した特定の URL からカスタム コンテンツを読み込みます。 CORS とは、フォントなどの Web ページ上の制限されたリソースを、リソースの提供元のドメインとは別のドメインに対して要求できるようにするメカニズムです。
 
 従来の方法では、テンプレート ページはソリューションが所有していたため、提供できるテキストと画像に制限があったほか、外観の制御にも限界があり、シームレスなエクスペリエンスの実現は一筋縄ではいきませんでした。これに対して、CORS を使う方法では HTML5 と CSS がサポートされており、次のことが可能となっています。
 
@@ -69,10 +69,10 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 - すべてのリンクと CSS コンテンツで、 https://yourdomain/content などの絶対 URL を使用する。
 
 > [!TIP]
-> コンテンツをホストしているサイトで CORS が有効になっていることを確認し、CORS 要求をテストするには、サイト http://test-cors.org/ を使用します。 このサイトでは、(CORS がサポートされているかどうかをテストするために) CORS 要求をリモート サーバー、または (CORS の特定の機能を使ってみるために) テスト サーバーに送信できます。
+> コンテンツをホストしているサイトで CORS が有効になっていることを確認し、CORS 要求をテストするには、サイト https://test-cors.org/ を使用します。 このサイトでは、(CORS がサポートされているかどうかをテストするために) CORS 要求をリモート サーバー、または (CORS の特定の機能を使ってみるために) テスト サーバーに送信できます。
 
 > [!TIP]
-> サイト http://enable-cors.org/ では、CORS に有用なリソースが構成されています。
+> サイト https://enable-cors.org/ では、CORS に有用なリソースが構成されています。
 
 この CORS ベースのアプローチにより、エンド ユーザーはアプリケーションと Azure AD B2C によって提供されたページの間で、一貫したエクスペリエンスを得ることができます。
 
@@ -111,7 +111,7 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
     c.  ストレージの BLOB ストレージ コンテナーの名前である *containerName* (*b2c* など)。
     d.  *Starter-Pack* サンプル ファイルのパス (*..\B2CTemplates\wingtiptoys* など)。
 
-上記の手順を実行した場合、架空の企業である **wingtiptoys** 用の *UI-Customization-Pack* の HTML5 および CSS ファイルは、ストレージ アカウントを指すようになります。  関連するコンテナーのウィンドウを Azure Portal で開くことで、コンテンツが正常にアップロードされていることを確認できます。 別の方法として、ブラウザーでページにアクセスしてみることでも、コンテンツが正常にアップロードされていることを確認できます。 詳細については、「[Azure Active Directory B2C: ページのユーザー インターフェイス (UI) カスタマイズ機能を試すために使用するヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)」を参照してください。
+上記の手順を実行した場合、架空の企業である **wingtiptoys** 用の *UI-Customization-Pack* の HTML5 および CSS ファイルは、ストレージ アカウントを指すようになります。  関連するコンテナーのウィンドウを Azure Portal で開くことで、コンテンツが正常にアップロードされていることを確認できます。 別の方法として、ブラウザーでページにアクセスしてみることでも、コンテンツが正常にアップロードされていることを確認できます。 詳細については、[Azure Active Directory B2C で ページのユーザー インターフェイス (UI) カスタマイズ機能を試すために使用するヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)に関するページを参照してください。
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>ストレージ アカウントで CORS が有効になっていることを確認する
 
@@ -120,7 +120,7 @@ Azure AD B2C でコンテンツの読み込みに使用するエンドポイン�
 コンテンツをホストしているストレージで CORS が有効になっていることを確認するために、次の手順に進みます。
 
 1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、「 https://contoso369b2c.blob.core.windows.net/b2c/unified.html 」のように入力します。
-2. http://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
+2. https://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->

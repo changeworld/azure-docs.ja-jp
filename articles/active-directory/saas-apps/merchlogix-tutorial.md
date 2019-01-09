@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Merchlogix の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Merchlogix の統合 | Microsoft Docs
 description: Azure Active Directory と Merchlogix の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeedes
-ms.openlocfilehash: b10f9cc5c766796b61e3c56da943e92e84d17488
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dae953276fb89b798ff0a152994dc19f1e7c85a5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442586"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834249"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>チュートリアル: Azure Active Directory と Merchlogix の統合
+# <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>チュートリアル:Azure Active Directory と Merchlogix の統合
 
 このチュートリアルでは、Merchlogix と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -115,7 +115,7 @@ Merchlogix で Azure AD のシングル サインオンを構成してテスト�
     b. **[識別子]** ボックスに、`https://<DOMAIN>/simplesaml/module.php/saml/sp/metadata.php/<SAML_NAME>` の形式で URL を入力します。
     
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Merchlogix サポート チーム](http://www.merchlogix.com/contact/)に問い合わせてください。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Merchlogix サポート チーム](https://www.merchlogix.com/contact/)に問い合わせてください。
 
 1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -129,10 +129,10 @@ Merchlogix で Azure AD のシングル サインオンを構成してテスト�
 
     ![Merchlogix 構成](./media/merchlogix-tutorial/tutorial_merchlogix_configure.png) 
 
-1. **Merchlogix** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Merchlogix サポート チーム](http://www.merchlogix.com/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Merchlogix** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Merchlogix サポート チーム](https://www.merchlogix.com/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -169,7 +169,7 @@ Merchlogix で Azure AD のシングル サインオンを構成してテスト�
  
 ### <a name="create-a-merchlogix-test-user"></a>Merchlogix のテスト ユーザーの作成
 
-このセクションでは、Merchlogix で Britta Simon というユーザーを作成します。 [Merchlogix サポート チーム](http://www.merchlogix.com/contact/)と連携し、Merchlogix プラットフォームにユーザーを追加してください。
+このセクションでは、Merchlogix で Britta Simon というユーザーを作成します。 [Merchlogix サポート チーム](https://www.merchlogix.com/contact/)と連携し、Merchlogix プラットフォームにユーザーを追加してください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -206,7 +206,7 @@ Merchlogix で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Merchlogix] タイルをクリックすると、自動的に Merchlogix アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

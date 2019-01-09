@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Infinite Campus の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Infinite Campus の統合 | Microsoft Docs
 description: Azure Active Directory と Infinite Campus の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 7ce577901530856690754f3db18ba9f40bfb8a51
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9f4adbacf2749e8c8ff2da8f331a007e8dcaaea3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019916"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099955"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>チュートリアル: Azure Active Directory と Infinite Campus の統合
+# <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>チュートリアル:Azure Active Directory と Infinite Campus の統合
 
 このチュートリアルでは、Infinite Campus と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -48,6 +48,7 @@ Infinite Campus と Azure AD の統合を構成するには、次のものが必
 
 - 必要な場合を除き、運用環境は使用しないでください。
 - Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+- 最低でも、構成を完了するためには Azure Active Directory の管理者である必要があります。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -110,11 +111,11 @@ Infinite Campus で Azure AD のシングル サインオンを構成してテ�
 
     ![Configure single sign-on](common/editconfigure.png)
 
-5. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
+5. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル** (ステップ **11.c** にスキップ) がある場合は、次の手順に従います。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    ![image](common/b9_saml.png)
+        ![image](common/b9_saml.png)
 
     b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、**[アップロード]** をクリックします。
 
@@ -124,12 +125,12 @@ Infinite Campus で Azure AD のシングル サインオンを構成してテ�
 
     ![image](./media/infinitecampus-tutorial/tutorial_infinitecampus_url.png)
 
-    d. **[サインオン URL]** ボックスに、`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS` のパターンを使用して URL を入力します。
+    d. **[サインオン URL]** ボックスに、次のパターン (ホスティング モデルでは、ドメインが異なります) を使用して URL を入力します。 `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
     > [!NOTE]
-    > Infinite Campus SSO サービス プロバイダー構成ページで、**サービス プロバイダー メタデータ ファイル**を取得します。これについては後で説明します。
+    > Infinite Campus SSO サービス プロバイダー構成ページで、**サービス プロバイダー メタデータ ファイル**を取得します。これについては後で説明します。 Infinite Campus で新しい SAML サービス プロバイダー構成を使用して開始する場合は、**手順 11** に進んで、サービス プロバイダー メタデータ ファイルのエクスポートを完了します。
 
-6. **サービス プロバイダー メタデータ ファイル**がない場合は、次の手順に従います。
+6. **サービス プロバイダー メタデータ ファイル**がない場合は、次の手順に従います (ドメインはホスティング モデルによって異なることに注意してください)。
 
     a. **[サインオン URL]** ボックスに、`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS` のパターンを使用して URL を入力します。
 
@@ -143,7 +144,7 @@ Infinite Campus で Azure AD のシングル サインオンを構成してテ�
 
     ![証明書のダウンロードのリンク](./media/infinitecampus-tutorial/tutorial_infinitecampus_certificate.png) 
 
-7. **[Infinite Campus の設定]** セクションで、要件に従って適切な URL をコピーします。
+7. **[無限キャンパス セットアップ]** セクションで、Azure メタデータ ファイルまたは URL のアップロードまたは利用する際に以下の値を使って検証します。
 
     a. ログイン URL
 
@@ -168,10 +169,10 @@ Infinite Campus で Azure AD のシングル サインオンを構成してテ�
     ![SSO](./media/infinitecampus-tutorial/tutorial_infinitecampus_sso.png)
 
     a. **[Enable SAML Single Sign On]\(SAML シングル サインオンを有効にする\)** チェック ボックスをオンにします。
+    
+    b. **[Select an option to retrieve Identity Provider (IDP) server data]\(ID プロバイダー (IDP) サーバー データ取得のオプションを選択する\)** セクションで、**[Metadata URL]\(メタデータ URL\)** を選択し、**アプリのフェデレーション メタデータ URL** をボックスに貼り付けて、**[Sync]\(同期\)** をクリックします。
 
-    b. **[Service Provider Metadata]\(サービス プロバイダー メタデータ\)** リンクをクリックして**サービス プロバイダー メタデータ ファイル**をコンピューターに保存し、それを Azure portal の **[基本的な SAML 構成]** セクションにアップロードして、**[識別子]** と **[応答 URL]** の値を自動的に設定します。
-
-    c. **[Select an option to retrieve Identity Provider (IDP) server data]\(ID プロバイダー (IDP) サーバー データ取得のオプションを選択する\)** セクションで、**[Metadata URL]\(メタデータ URL\)** を選択し、**アプリのフェデレーション メタデータ URL** をテキスト ボックスに貼り付けて、**[Sync]\(同期\)** をクリックします。
+    c. **[Service Provider Metadata]\(サービス プロバイダー メタデータ\)** リンクをクリックして**サービス プロバイダー メタデータ ファイル**をコンピューターに保存し、それを Azure portal の **[基本的な SAML 構成]** セクションにアップロードして、**[識別子]** と **[応答 URL]** の値を自動的に設定します (アップロードと値の自動設定についてはステップ 4、手動入力についてはステップ 5 を参照)。
 
     d. **[Sync]\(同期\)** をクリックすると、**[SSO Service Provider Configuration]\(SSO サービス プロバイダーの構成\)** ページに値が自動的に設定されます。
 
@@ -179,7 +180,7 @@ Infinite Campus で Azure AD のシングル サインオンを構成してテ�
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションの目的は、Azure portal で Britta Simon という_単一の_テスト ユーザーを作成することです。
 
 1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
@@ -234,8 +235,7 @@ Infinite Campus はデモグラフィック中心のアーキテクチャです�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Infinite Campus のタイルをクリックすると、自動的に Infinite Campus アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
+アクセス パネルで Infinite Campus のタイルをクリックすると、自動的に Infinite Campus アプリケーションにサインオンします。 Azure AD を管理しているものとおなじブラウザで無限キャンパスにログインしている場合、テスト ユーザーとしてログインしていることを確認してください。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

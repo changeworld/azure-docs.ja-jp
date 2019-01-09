@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 333e73af3578cdc363e7ede08ca52207cfd0fdb0
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8d2bd74609447463b7ff857aa1037eaf5b6e3abb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248915"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727005"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions のトリガーとバインド
 
@@ -30,19 +30,19 @@ HTTP トリガーは [webhook](https://en.wikipedia.org/wiki/Webhook) に応答�
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-HTTP バインディングは [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet パッケージ バージョン 1.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.Http) GitHub リポジトリにあります。
+HTTP バインディングは [Microsoft.Azure.WebJobs.Extensions.Http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet パッケージ バージョン 1.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.Http) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
 
-HTTP バインディングは [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet パッケージ バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub リポジトリにあります。
+HTTP バインディングは [Microsoft.Azure.WebJobs.Extensions.Http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet パッケージ バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>トリガー
 
-HTTP トリガーでは、HTTP 要求で関数を呼び出すことができます。 HTTP トリガーを使用して、サーバーなしの API を構築し、webhook に応答することができます。 
+HTTP トリガーでは、HTTP 要求で関数を呼び出すことができます。 HTTP トリガーを使用して、サーバーなしの API を構築し、webhook に応答することができます。
 
 既定では、HTTP トリガーは、Functions 1.x では HTTP 200 OK と空の本文を返し、Functions 2.x では HTTP 204 No Content と空の本文を返します。 応答を変更するには、[HTTP 出力バインド](#output)を構成します。
 
@@ -53,8 +53,9 @@ HTTP トリガーでは、HTTP 要求で関数を呼び出すことができま�
 * [C#](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
+* [JavaScript](#trigger---javascript-example)
+* [Python](#trigger---python-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
@@ -157,7 +158,7 @@ public static string Run(CustomObject req, ILogger log)
 }
 
 public class CustomObject {
-     public String name {get; set;}
+     public string name {get; set;}
 }
 ```
 
@@ -276,6 +277,61 @@ module.exports = function(context, req) {
 };
 ```
 
+### <a name="trigger---python-example"></a>トリガー - Python の例
+
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+    "scriptFile": "__init__.py",
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
+
+Python コードを次に示します。
+
+```python
+import logging
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+            "Please pass a name on the query string or in the request body",
+            status_code=400
+        )
+```
+
 ### <a name="trigger---java-example"></a>トリガー - Java の例
 
 次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Java 関数](functions-reference-java.md)を示しています。 この関数は、要求元の要求本文の前に「Hello」 あいさつが追加された要求本文と HTTP 状態コード 200 応答を返します。
@@ -307,7 +363,7 @@ Java コードを次に示します。
 ```java
 @FunctionName("hello")
 public HttpResponseMessage<String> hello(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS), Optional<String> request,
-                        final ExecutionContext context) 
+                        final ExecutionContext context)
     {
         // default HTTP 200 response code
         return String.format("Hello, %s!", request);
@@ -352,12 +408,11 @@ C# および F# の関数では、トリガー入力の型を `HttpRequestMessag
 
 JavaScript 関数の場合、Functions ランタイムは request オブジェクトではなく、要求本文を提供します。 詳しくは、[JavaScript トリガーの例](#trigger---javascript-example)をご覧ください。
 
-
 ### <a name="customize-the-http-endpoint"></a>HTTP エンドポイントのカスタマイズ
 
 既定では、HTTP トリガーの関数を作成する際に、次の形式のルートを使用して関数のアドレスを指定できます。
 
-    http://<yourapp>.azurewebsites.net/api/<funcname> 
+    http://<yourapp>.azurewebsites.net/api/<funcname>
 
 HTTP トリガーの入力バインドで省略可能な `route` プロパティを使用すると、このルートをカスタマイズできます。 たとえば、次の *function.json* ファイルでは HTTP トリガーの `route` プロパティを定義します。
 
@@ -389,7 +444,7 @@ http://<yourapp>.azurewebsites.net/api/products/electronics/357
 これにより、関数のコードはアドレス内で _category_ と _id_ という 2 つのパラメーターをサポートできます。パラメーターでは任意の [Web API ルート制約](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints)を使用できます。 次の C# 関数コードは両方のパラメーターを使用します。
 
 ```csharp
-public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id, 
+public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id,
                                                 ILogger log)
 {
     if (id == null)
@@ -421,7 +476,7 @@ module.exports = function (context, req) {
     }
 
     context.done();
-} 
+}
 ```
 
 既定では、すべての関数のルートには *api* というプレフィックスが付きます。 [host.json](functions-host-json.md) ファイルで `http.routePrefix` プロパティを使用すると、このプレフィックスをカスタマイズまたは削除できます。 次の例では、*host.json* ファイル内でプレフィックスに空の文字列を使用することで、*api* ルート プレフィックスを削除します。
@@ -432,6 +487,45 @@ module.exports = function (context, req) {
     "routePrefix": ""
     }
 }
+```
+
+### <a name="working-with-client-identities"></a>クライアント ID の操作
+
+関数アプリが [App Service の認証と承認](../app-service/overview-authentication-authorization.md)を使用している場合は、コードから認証されたクライアントに関する情報を確認することができます。 この情報は、[プラットフォームによって挿入された要求ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)として使用できます。 
+
+また、この情報はバインディング データから参照することもできます。 この機能は、Functions 2.x ランタイムのみで使用可能です。 また、現在のところ .NET 言語でのみ使用可能です。
+
+.NET 言語では、この情報は [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0) として使用可能です。 ClaimsPrincipal は、次の例に示すように、要求コンテキストの一部として使用可能です。
+
+```csharp
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+public static IActionResult Run(HttpRequest req, ILogger log)
+{
+    ClaimsPrincipal identities = req.HttpContext.User;
+    // ...
+    return new OkResult();
+}
+```
+
+また、ClaimsPrincipal を単に追加のパラメーターとして関数シグネチャに含めることもできます。
+
+```csharp
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
+{
+    // ...
+    return;
+}
+
 ```
 
 ### <a name="authorization-keys"></a>承認キー
@@ -446,8 +540,8 @@ module.exports = function (context, req) {
 
 キーには、次の 2 つの種類があります。
 
-* **ホスト キー**: これらのキーは、関数アプリ内のすべての関数で共有されます。 API キーとして使用した場合は、関数アプリ内のすべての関数がアクセスできます。
-* **関数キー**: これらのキーは、それらが定義されている特定の関数にのみ適用されます。 API キーとして使用した場合は、その関数だけがアクセスできます。
+* **ホスト キー**:これらのキーは、関数アプリ内のすべての関数で共有されます。 API キーとして使用した場合は、関数アプリ内のすべての関数がアクセスできます。
+* **関数キー**:これらのキーは、それらが定義されている特定の関数にのみ適用されます。 API キーとして使用した場合は、その関数だけがアクセスできます。
 
 各キーには、参照用に名前が付けられており、関数レベルおよびホスト レベルで "default" という名前の既定のキーがあります。 関数キーが、ホスト キーよりも優先されます。 2 つのキーが同じ名前で定義されている場合は、関数キーが使用されます。
 
@@ -483,7 +577,7 @@ module.exports = function (context, req) {
 
 運用環境で、関数エンドポイントを完全に保護するには、次の関数アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
 
-* 機能アプリの App サービス認証/認可をオンにします。 App Service プラットフォームでは、Azure Active Directory (AAD) といくつかのサード パーティの ID プロバイダーを使用してクライアントを認証することができます。 これを使用して、関数のカスタム認可ルールを実装し、関数コードのユーザー情報を操作できます。 詳細については、「 [Azure App Service での認証および認可](../app-service/app-service-authentication-overview.md)」を参照してください。
+* 機能アプリの App サービス認証/認可をオンにします。 App Service プラットフォームでは、Azure Active Directory (AAD) といくつかのサード パーティの ID プロバイダーを使用してクライアントを認証することができます。 これを使用して、関数のカスタム認可ルールを実装し、関数コードのユーザー情報を操作できます。 詳細については、「[Azure App Service での認証および認可](../app-service/overview-authentication-authorization.md)」および「[クライアント ID の操作](#working-with-client-identities)」を参照してください。
 
 * 要求の認証に Azure API Management (APIM) を使用します。 APIM では、受信要求用のさまざまな API のセキュリティ オプションを提供します。 詳細については、 [API Management の認証ポリシー](../api-management/api-management-authentication-policies.md)を参照してください。 APIM を適切に配置すると、APIM インスタンスの IP アドレスからの要求のみを受け入れるように関数アプリを設定できます。 詳細については、[IP アドレス制限](ip-addresses.md#ip-address-restrictions)を参照してください。
 
@@ -494,17 +588,15 @@ module.exports = function (context, req) {
 ### <a name="webhooks"></a>Webhook
 
 > [!NOTE]
-> Webhook モードは、関数ランタイムのバージョン 1.x でのみ使用できます。
+> Webhook モードは、関数ランタイムのバージョン 1.x でのみ使用できます。 この変更は、バージョン 2.x での HTTP トリガーのパフォーマンスを向上させるために行われました。
 
-Webhook モードは、Webhook ペイロードの追加検証を提供します。 バージョン 2.x では、基本 HTTP トリガーは引き続き機能し、Webhook の推奨アプローチです。
+バージョン 1.x では、Webhook テンプレートで Webhook ペイロードの追加検証が提供されます。 バージョン 2.x では、基本 HTTP トリガーは引き続き機能し、Webhook の推奨アプローチです。 
 
 #### <a name="github-webhooks"></a>GitHub webhook
 
 GitHub webhook に応答するには、まず、HTTP トリガーで関数を作成し、**webHookType** プロパティを `github` に設定します。 次に、その URL と API キーを GitHub リポジトリの **[webhook の追加]** ページにコピーします。 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
-
-例については、「[GitHub webhook でトリガーされる関数の作成](functions-create-github-webhook-triggered-function.md)」を参照してください。
 
 #### <a name="slack-webhooks"></a>Slack webhook
 
@@ -514,14 +606,14 @@ Slack webhook では、指定しなくてもトークンが自動的に生成さ
 
 webhook の承認は、HTTP トリガーの一部である webhook レシーバー コンポーネントによって処理されますが、そのメカニズムは webhook の種類によって異なります。 ただし、各メカニズムはキーに依存します。 既定では、"default" という名前の関数キーが使用されます。 別のキーを使用するには、次のいずれかの方法で、要求と共にキー名を送信するように webhook プロバイダーを構成します。
 
-* **クエリ文字列**: プロバイダーが `clientid` クエリ文字列パラメーターでキー名を渡します (`https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>` など)。
-* **要求ヘッダー**: プロバイダーが `x-functions-clientid` ヘッダーでキー名を渡します。
+* **クエリ文字列**:プロバイダーにより、`clientid` クエリ文字列パラメーターでキー名 (`https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>` など) が渡されます。
+* **要求ヘッダー**:プロバイダーにより、`x-functions-clientid` ヘッダーでキー名が渡されます。
 
 ## <a name="trigger---limits"></a>トリガー - 制限
 
 HTTP 要求の長さは 100 MB (104,857,600 バイト) に、URL の長さは 4 KB (4,096 バイト) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)の `httpRuntime` 要素で指定されています。
 
-HTTP トリガーを使用する関数が約 2.5 分以内に完了しない場合、ゲートウェイでタイムアウトが発生し、HTTP 502 エラーが返されます。 この関数は実行を継続しますが、HTTP 応答を返すことはできません。 実行時間が長い関数の場合は、非同期パターンに従い、要求の状態について ping で確認できる場所を返すことをお勧めします。 関数を実行できる時間については、[スケールとホスティングに関するページの「従量課金プラン」](functions-scale.md#consumption-plan)を参照してください。 
+HTTP トリガーを使用する関数が約 2.5 分以内に完了しない場合、ゲートウェイでタイムアウトが発生し、HTTP 502 エラーが返されます。 この関数は実行を継続しますが、HTTP 応答を返すことはできません。 実行時間が長い関数の場合は、非同期パターンに従い、要求の状態について ping で確認できる場所を返すことをお勧めします。 関数を実行できる時間については、[スケールとホスティングに関するページの「従量課金プラン」](functions-scale.md#consumption-plan)を参照してください。
 
 ## <a name="trigger---hostjson-properties"></a>トリガー - host.json のプロパティ
 
@@ -535,7 +627,7 @@ HTTP 要求送信者に応答するには、HTTP 出力バインドを使用し�
 
 ## <a name="output---configuration"></a>出力 - 構成
 
-次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。 C# クラス ライブラリには、*function.json* のこれらのプロパティに対応する属性プロパティはありません。 
+次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。 C# クラス ライブラリには、*function.json* のこれらのプロパティに対応する属性プロパティはありません。
 
 |プロパティ  |説明  |
 |---------|---------|

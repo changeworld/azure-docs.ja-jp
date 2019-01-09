@@ -1,21 +1,18 @@
 ---
-title: Azure Database for PostgreSQL のサーバーをバックアップして復元する方法 | Microsoft Docs
+title: Azure Database for PostgreSQL のサーバーをバックアップして復元する方法
 description: Azure CLI を使用して、Azure Database for PostgreSQL のサーバーをバックアップおよび復元する方法について説明します。
-services: postgresql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: e73fe4929d889da768328be22a3e23603dab5be6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 93bece582975f5149ea8ab5cb85d4d508613d066
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970755"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536357"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法
 
@@ -71,9 +68,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 `az postgres server restore` コマンドには、次のパラメーターが必要です。
-| Setting | 推奨値 | 説明  |
+| Setting | 推奨値 | 説明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2018-03-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、`2018-03-13T05:59:00-08:00` など自身のローカル タイム ゾーンを使用できます。 また、`2018-03-13T13:59:00Z` など UTC Zulu 形式も使用できます。 |
 | source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |
@@ -110,7 +107,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 ```
 
 `az postgres server georestore` コマンドには、次のパラメーターが必要です。
-| Setting | 推奨値 | 説明  |
+| Setting | 推奨値 | 説明  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新しいサーバーが属するリソース グループの名前。|
 |name | mydemoserver-georestored | 新しいサーバーの名前。 |

@@ -7,17 +7,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/07/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5f95b71497b59eafff09d4add2b4bb1c20656592
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9dbe88e1e179df4560d5094cf3f58ca770541323
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339360"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842274"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: iOS アプリケーションを使用してサインインする
+# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C:iOS アプリケーションを使用してサインインする
 
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 オープンな標準プロトコルを使用すると、開発者がサービスに統合するライブラリを選択する際の選択肢が増えます。 このチュートリアルも、他のチュートリアルと同じように、開発者が、Microsoft ID プラットフォームに接続するアプリケーションの記述を支援するために提供されています。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
 
@@ -38,19 +38,19 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この GUID は後で必要になります。
 * カスタム スキーマを使用する**リダイレクト URI** を設定します (例: com.onmicrosoft.fabrikamb2c.exampleapp://oauthredirect)。 この URI は後で必要になります。
 
-## <a name="create-your-policies"></a>ポリシーの作成
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、このポリシーを作成します。 ポリシーを作成するときは、以下の操作を必ず実行してください。
+## <a name="create-your-user-flows"></a>ユーザー フローを作成する
+Azure AD B2C では、すべてのユーザー エクスペリエンスが[ユーザー フロー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 [ユーザー フローについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)で説明されているように、このユーザー フローを作成します。 ユーザー フローを作成するときは、必ず次のようにします。
 
 * **[サインアップ属性]** で、属性 **[表示名]** を選択します。  他の属性を選択することもできます。
 * **[アプリケーション クレーム]** で、要求の**表示名**と**ユーザーのオブジェクト ID** を選択します。 他の要求を選択することもできます。
-* ポリシーの作成後、各ポリシーの **名前** をコピーしておきます。 ポリシーを保存するときに、ポリシー名の先頭に `b2c_1_` が付加されます。  このポリシー名は後で必要になります。
+* ユーザー フローの作成後、各ユーザー フローの **[名前]** をコピーしておきます。 ユーザー フローを保存するときに、ユーザー フロー名の先頭に `b2c_1_` が付加されます。  ユーザー フロー名は後で必要になります。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-ポリシーを作成したら、アプリを構築できます。
+ユーザー フローを作成したら、アプリを構築できます。
 
 ## <a name="download-the-sample-code"></a>サンプル コードのダウンロード
-AppAuth と Azure AD B2C を使用する実稼働するサンプルが [GitHub](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c) に用意されています。 そのコードをダウンロードして実行できます。 独自の Azure AD B2C テナントを使用するには、[README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) の指示に従います。
+AppAuth と Azure AD B2C を使用する実稼働するサンプルが [github](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c) に用意されています。 そのコードをダウンロードして実行できます。 独自の Azure AD B2C テナントを使用するには、[README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) の指示に従います。
 
 このサンプルは、[GitHub の iOS AppAuth プロジェクト](https://github.com/openid/AppAuth-iOS)の README の指示に従って作成されています。 サンプルとライブラリの動作の詳細については、GitHub の AppAuth README を参照します。
 
@@ -64,7 +64,7 @@ AppAuth と Azure AD B2C を使用する実稼働するサンプルが [GitHub](
 
 Azure AD B2C との通信は、承認エンドポイント URI とトークン エンドポイント URI の両方を指定することで構成できます。  これらの URI を生成するには、次の情報が必要です。
 * テナント ID (例: contoso.onmicrosoft.com)
-* ポリシー名 (例: B2C\_1\_SignUpIn)
+* ユーザー フロー名 (例: B2C\_1\_SignUpIn)
 
 トークン エンドポイント URI は、次の URL の Tenant\_ID と Policy\_Name を置き換えることで生成できます。
 

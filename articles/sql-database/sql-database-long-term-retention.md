@@ -3,28 +3,28 @@ title: 最大で 10 年間 Azure SQL Database のバックアップを格納す�
 description: Azure SQL Database が、最大で 10 年間、データベースの完全バックアップの格納をサポートする方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: 7fe34423e706054daf84eaa8baf45fe201a661c9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b1ef03b97f9fe95286d427effc40e69ae07b6b3c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026179"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601493"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する
 
 多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database の[自動バックアップ](sql-database-automated-backups.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期リテンション期間 (LTR) 機能を使用すると、最大で 10 年間、指定した SQL データベースの完全バックアップを [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) Blob Storage に格納できます。 その後、任意のバックアップを新しいデータベースとして復元できます。
 
 > [!NOTE]
-> LTR は、Azure SQL Database 論理サーバーでホストされているデータベースで有効にすることができます。 Managed Instance でホストされているデータベースではまだ使用できません。
+> LTR は、Azure SQL Database 論理サーバーでホストされているデータベースで有効にすることができます。 Managed Instance でホストされているデータベースではまだ使用できません。 SQL エージェント ジョブを使用すれば、LTR の代替手段として、[コピーのみのデータベース バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server)を 35 日間以上スケジュールすることができます。
 > 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL Database の長期リテンション期間のしくみ

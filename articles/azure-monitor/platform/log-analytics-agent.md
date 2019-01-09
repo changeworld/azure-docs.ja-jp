@@ -78,10 +78,10 @@ Linux および Windows エージェントが Log Analytics と通信するた�
 
 |エージェントのリソース|ポート |方向 |バイパス HTTPS 検査|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |ポート 443 |受信および送信|[はい] |  
-|*.oms.opinsights.azure.com |ポート 443 |受信および送信|[はい] |  
-|*.blob.core.windows.net |ポート 443 |受信および送信|[はい] |  
-|*.azure-automation.net |ポート 443 |受信および送信|[はい] |  
+|*.ods.opinsights.azure.com |ポート 443 |受信および送信|はい |  
+|*.oms.opinsights.azure.com |ポート 443 |受信および送信|はい |  
+|*.blob.core.windows.net |ポート 443 |受信および送信|はい |  
+|*.azure-automation.net |ポート 443 |受信および送信|はい |  
 
 
 Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook を使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 

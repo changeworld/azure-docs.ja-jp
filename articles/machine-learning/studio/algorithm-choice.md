@@ -1,10 +1,10 @@
 ---
-title: Machine Learning アルゴリズムの選択方法 | Microsoft Docs
+title: Azure Machine Learning Studio のアルゴリズムを選択する方法 | Microsoft Docs
 description: クラスタリング、分類、または回帰の実験で教師あり学習と教師なし学習用の Azure Machine Learning Studio のアルゴリズムを選択する方法。
 services: machine-learning
-author: pakalra
-ms.author: pakalra
-manager: cgronlun
+author: ericlicoding
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
+ms.author: amlstudiodocs
 editor: cgronlun
 tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
@@ -12,12 +12,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: c3aa1bfe2cc1513d636452031de62da814af6cd7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9e601464f97a7717a2ccef0e60172357d3169697
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262303"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256929"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio のアルゴリズムの選択方法
 
@@ -43,7 +43,7 @@ ms.locfileid: "51262303"
 どれも完全に一致しない場合もあります。 大まかな推奨事項なので、正確さは気にしないでください。
 複数のデータ科学者が、最善のアルゴリズムを探す唯一の方法はすべてを試してみることであると言っています。
 
-同じデータに対して複数のアルゴリズムを試し、その結果を比較した [Azure AI Gallery](http://gallery.cortanaintelligence.com/) の「[Compare Multi-class Classifiers: Letter recognition](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)」(多クラス分類子の比較: 文字認識) をご覧ください。
+[Azure AI Gallery](http://gallery.cortanaintelligence.com/) からは、同じデータに対して複数のアルゴリズムを試し、その結果を比較した実験の例として次を利用できます: 「[Compare Multi-class Classifiers: Letter recognition](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)」(多クラス分類子の比較: 文字認識)。
 
 > [!TIP]
 > Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「 [Azure Machine Learning Studio 機能の概要図](studio-overview-diagram.md)」ご覧ください。

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7ece34809734478ddb52c12d5dbd92291231f439
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ee0cd90b8d1b901f9e8a506674b3f04167b48899
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045689"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968785"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,7 +53,7 @@ ms.locfileid: "37045689"
 2. コピー操作用の入力データと出力データを表すデータセットを作成します。 
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。 
 
-コピー ウィザードを使用すると、これらの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 [JSON の使用例: Amazon Redshift から Azure Blob Storage へのデータのコピー](#json-example-copy-data-from-amazon-redshift-to-azure-blob)に、Amazon Redshift データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
+コピー ウィザードを使用すると、これらの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 [JSON の使用例:Amazon Redshift から Azure Blob Storage へのデータのコピー](#json-example-copy-data-from-amazon-redshift-to-azure-blob)のページに、Amazon Redshift データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
 
 次のセクションでは、Amazon Redshift 用の Data Factory エンティティの定義に使用される JSON プロパティについて説明します。
 
@@ -103,13 +103,13 @@ ms.locfileid: "37045689"
 
 Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) コマンドでは、クエリの結果が Amazon S3 上の 1 つ以上のファイルにアンロードされます。 このコマンドは、Redshift から大きなデータセットをコピーするための方法として Amazon から推奨されています。
 
-**例: Amazon Redshift から Azure SQL Data Warehouse へのデータのコピー**
+**例:Amazon Redshift から Azure SQL Data Warehouse へのデータのコピー**
 
 この例では、Amazon Redshift から Azure SQL Data Warehouse にデータをコピーします。 この例では、Redshift の **UNLOAD** コマンド、ステージングされたコピー データ、Microsoft PolyBase を使用しています。
 
 このサンプル ユース ケースでは、コピー アクティビティを使用して、**redshiftUnloadSettings** オプションで構成されているように、最初に Amazon Redshift から Amazon S3 にデータをアンロードします。 次に、**stagingSettings** オプションの指定に従って、Amazon S3 から Azure Blob Storage にデータをコピーします。 最後に、PolyBase によってデータが SQL Data Warehouse に読み込まれます。 すべての中間形式は、コピー アクティビティによって処理されます。
 
-![Amazon Redshift から SQL Data Warehouse へのコピーのワークフロー](media\data-factory-amazon-redshift-connector\redshift-to-sql-dw-copy-workflow.png)
+![Amazon Redshift から SQL Data Warehouse へのコピーのワークフロー](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -139,7 +139,7 @@ Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r
 }
 ```
 
-## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON の使用例: Amazon Redshift から Azure Blob Storage へのデータのコピー
+## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON の使用例:Amazon Redshift から Azure Blob Storage へのデータのコピー
 このサンプルは、Amazon Redshift データベースから Azure Blob Storage にデータをコピーする方法を示します。 データは、コピー アクティビティを使用して、任意の[サポートされているシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に直接コピーできます。  
 
 このサンプルでは、次の Data Factory のエンティティがあります。

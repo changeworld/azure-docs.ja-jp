@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: e618bce78a3a3ce080b6c24cc34a27c2f5fb39e9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6b3f862acd5aba39a7ad6eb0ce2f0a9b4a9e5307
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977555"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973659"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した完全な Linux 仮想マシンの作成
 必要なサポート リソースすべてを既定値で作成する単一の Azure CLI コマンドを使用すると、Azure で仮想マシン (VM) を短時間で作成することができます。 仮想ネットワーク、パブリック IP アドレス、ネットワーク セキュリティ グループの規則などのリソースが自動的に作成されます。 実稼働用に環境をより細かく制御する場合は、こうしたリソースを先に作成してから、作成したリソースに VM を追加します。 この記事では、VM の作成方法、および各サポート リソースを 1 つずつ作成する方法を説明します。
@@ -210,7 +210,7 @@ az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGro
       "destinationPortRange": "*",
       "direction": "Inbound",
       "etag": "W/\"3371b313-ea9f-4687-a336-a8ebdfd80523\"",
-      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup/defaultSecurityRules/AllowAzureLoadBalancerInBou
+      "id": "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup/defaultSecurityRules/AllowAzureLoadBalancerInBou",
       "name": "AllowAzureLoadBalancerInBound",
       "priority": 65001,
       "protocol": "*",

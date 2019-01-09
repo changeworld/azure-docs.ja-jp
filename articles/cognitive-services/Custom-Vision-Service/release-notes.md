@@ -9,21 +9,31 @@ ms.component: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: 8b4ba1601a7c5a9f523f7f8145a032861aac5d8c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a4b6b1d267e9c86a03644129ee639b74ed214d88
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901330"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408359"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service リリース ノート
+
+
+## <a name="december-12-2018"></a>2018 年 12 月 12 日
+- オブジェクトの検出モデル用のエクスポートがサポートされるようになりました (オブジェクトの検出コンパクト ドメインを導入)。
+- 多くのアクセシビリティの問題を修正して、スクリーン リーダーとキーボード ナビゲーションのサポートを改善しました。 
+- 画像ビューアーの UX が更新され、より高速なタグ付けのためのオブジェクト検出タグ付けエクスペリエンスが改善されました。  
+- より高品質のオブジェクト検出のために、オブジェクトの検出ドメインの基本モデルが更新されました。 
+- バグ修正。
+
+## <a name="november-6-2018"></a>2018 年 11 月 6 日
+- オブジェクトの検出におけるロゴ ドメインのサポートを追加しました。
 
 ## <a name="october-9-2018"></a>2018 年 10 月 9 日
 - Object Detection は有料のプレビューになります。 Azure のリソースを使用して､Object Detection プロジェクトを作成できるようになりました。
 - Web サイトに｢Move to Azure｣機能を追加｡Limited Trial プロジェクトをアップグレードして､Azure に簡単にリンクできるようになっています｡ リソース リンク先のプロジェクト (F0 または S0)ご利用の製品の [設定] ページにあります｡  
 - ONNX 1.2 へのエクスポートを追加｡Windows ML の Windows 2018 October Update バージョンに対応｡
 バグ修正などの特殊文字を含む ONNX エクスポートします。 
-
 
 ## <a name="august-14-2018"></a>2018 年 8 月 14 日
 - ユーザーにプロジェクトのトレーニングを案内する "作業の開始" ウィジェットが customvision.ai サイトに追加されました。 

@@ -2,16 +2,16 @@
 title: Azure Site Recovery を使用した Azure VM フェールオーバー時に IP アドレスを保持する | Microsoft Docs
 description: ディザスター リカバリーのために、Azure Site Recovery を使用して Azure VM をセカンダリ リージョンへフェールオーバーする際に、IP アドレスを保持する方法について説明します
 ms.service: site-recovery
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 4e75ba210e12a39d2c4cfb9753bbc2da2893746b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f7b546e8a0ca52fd2037e471f01787bb64db032d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567402"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842749"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>フェールオーバー時に IP アドレスを保持する
 
@@ -42,9 +42,9 @@ A 社は、Azure ですべてのアプリを実行しています。
     - プライマリ リージョンは Azure 東アジアです
         - 東アジアに、アドレス空間 10.1.0.0/16 の VNet (**Source VNet**) があります。
         - 東アジアでは、VNet 内の次の 3 つのサブネットにわたってワークロードを分割しています。
-            - **Subnet 1**: 10.1.1.0/24
-            - **Subnet 2**: 10.1.2.0/24、
-            - **Subnet 3**: 10.1.3.0/24
+            - **サブネット 1**:10.1.1.0/24
+            - **サブネット 2**:10.1.2.0/24
+            - **サブネット 3**:10.1.3.0/24
     - セカンダリ (ターゲット) リージョンは Azure 東南アジアです
         - 東南アジアには、**Source VNet** と同一の復旧用 VNet (**Recovery VNet**) があります。
         - 東南アジアには、アドレス空間が 10.2.0.0/16 の、追加の VNet (**Azure VNet**) があります。
@@ -85,8 +85,8 @@ A 社は、Azure ですべてのアプリを実行しています。
 フェールオーバー前のアーキテクチャは次のとおりです。
 
 - アプリケーション VM は、プライマリの Azure 東アジア リージョンでホストされています。
-    - **App1** VM は VNet **Source VNet 1** (10.1.0.0/16) に配置されています。
-    - **App2** VM は VNet **Source VNet 2** (10.2.0.0/16) に配置されています。
+    - **App1** VM は、次の VNet **Source VNet 1** に配置されています:10.1.0.0/16。
+    - **App2** VM は、次の VNet **Source VNet 2** に配置されています:10.2.0.0/16。
     - **Source VNet 1** にはサブネットが 2 つあります。
     - **Source VNet 2** にはサブネットが 2 つあります。
 - セカンダリ (ターゲット) リージョンは Azure 東南アジアです。東南アジアには、**Source VNet 1** および **Source VNet 2** と同一の、復旧用の Vnet (**Recovery VNet 1** と **Recovery VNet 2**) があります。
@@ -130,9 +130,9 @@ A 社は、Azure ですべてのアプリを実行しています。
 - アプリケーション VM は、Azure 東アジアでホストされています。
 -  東アジアに、アドレス空間 10.1.0.0/16 の VNet (**Source VNet**) があります。
     - 東アジアでは、**Source VNet** 内の次の 3 つのサブネットにわたってワークロードを分割しています。
-        - **Subnet 1**: 10.1.1.0/24
-        - **Subnet 2**: 10.1.2.0/24、
-        - **Subnet 3**: 10.1.0.0/16 の Azure 仮想ネットワークを使用する 10.1.3.0/24。 この仮想ネットワークの名前は **Source VNet** です
+        - **サブネット 1**:10.1.1.0/24
+        - **サブネット 2**:10.1.2.0/24
+        - **サブネット 3**:10.1.0.0/16 の Azure 仮想ネットワークを使用する 10.1.3.0/24。 この仮想ネットワークの名前は **Source VNet** です
  - セカンダリ (ターゲット) リージョンは Azure 東南アジアです。
     - 東南アジアには、**Source VNet** と同一の復旧用 VNet (**Recovery VNet**) があります。
 - 東アジアの VM は、Azure ExpressRoute またはサイト間 VPN で、オンプレミス データセンターに接続されています。

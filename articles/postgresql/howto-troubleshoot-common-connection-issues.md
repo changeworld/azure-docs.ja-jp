@@ -1,21 +1,18 @@
 ---
-title: Azure Database for PostgreSQL への接続に関する問題のトラブルシューティング |Microsoft Docs
+title: Azure Database for PostgreSQL への接続に関する問題のトラブルシューティング
 description: Azure Database for PostgreSQL への接続に関する問題のトラブルシューティング方法について説明します。
 keywords: postgresql 接続, 接続文字列, 接続の問題, 一時的なエラー, 接続エラー
-services: postgresql
-author: janeng
+author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: fea4c376f73afe2ef36948c59e95a2b679dbd7e8
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1a7f58960111b3fba6283830b262a9b901b8e2fd
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285484"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546235"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>Azure Database for PostgreSQL への接続に関する問題のトラブルシューティング
 
@@ -49,9 +46,9 @@ ms.locfileid: "51285484"
 
 アプリケーションが Azure Database for PostgreSQL への接続に引き続き失敗する場合は、一般的に、次のいずれかの問題が考えられます。
 
-* ファイアウォールの構成: Azure Database for PostgreSQL のサーバーまたはクライアント側のファイアウォールが接続をブロックしている。
-* クライアント側のネットワークの再構成: 新しい IP アドレスまたはプロキシ サーバーが追加された。
-* ユーザー エラー: 接続パラメーターの入力間違い (接続文字列のサーバー名など) や、ユーザー名に *@servername* サフィックスが不足しているなど。
+* サーバーのファイアウォールの構成:Azure Database for PostgreSQL サーバーのファイアウォールが、プロキシ サーバーやゲートウェイなど、クライアントからの接続を許可するように構成されていることを確認します。
+* クライアントのファイアウォールの構成:クライアント上のファイアウォールで、データベース サーバーへの接続を許可する必要があります。 一部のファイアウォールでは、PostgreSQL などのアプリケーション名だけでなく、自分に権限のないサーバーの IP アドレスとポートも許可されている必要があります。
+* ユーザー エラー:接続文字列のサーバー名の間違いや、ユーザー名に *@servername* サフィックスがないなど、接続パラメーターを誤って入力している可能性があります。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>永続的な接続の問題を解決する手順
 

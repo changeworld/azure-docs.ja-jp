@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 39e2f136e30ebb6dcfc003c435382f3384af1052
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 4b608f9237b9f7f98173168e055b5e83635bc2d7
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23659345"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753763"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Azure Application Insights でアプリケーションの正常性を監視してアラートを送信する
 
@@ -34,10 +34,10 @@ Azure Application Insights を使用すると、ご利用のアプリケーシ�
 - 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
     - ASP.NET および Web の開発
     - Azure の開発
-    - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](app-insights-asp-net.md)を実行します。 
+    - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](../azure-monitor/app/asp-net.md)を実行します。 
 
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。
 
 ## <a name="create-availability-test"></a>可用性テストを作成する
@@ -88,9 +88,9 @@ Application Insights の可用性テストを使用して、世界中のさま�
 ## <a name="proactively-send-information"></a>情報を事前に送信する
 アラートは特定の問題のセットがアプリケーションで確認されたときに応答する形で作成され、通常は早急に対応が必要な重大な条件でアラートを予約しておきます。  スケジュールに従って自動的に実行されるロジック アプリを使用し、対象のアプリケーションに関する情報を事前に受信できます。  たとえば、さらなる評価が必要な情報をまとめたメールを、管理者に毎日送信したりできます。
 
-Application Insights でロジック アプリを作成する方法の詳細については、「[Logic Apps を使って Application Insights のプロセスを自動化する](automate-with-logic-apps.md)」をご覧ください。
+Application Insights でロジック アプリを作成する方法の詳細については、「[Logic Apps を使って Application Insights のプロセスを自動化する](../azure-monitor/app/automate-with-logic-apps.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで問題が生じた場合のアラートの送信方法について学習できました。次のチュートリアルでは、ユーザーがどのようにアプリケーションを使用しているかを分析する方法を説明します。
 
 > [!div class="nextstepaction"]

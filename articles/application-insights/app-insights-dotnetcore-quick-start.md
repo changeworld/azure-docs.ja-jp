@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 008e61841611f36c440bb4896ae5a85d0bf4d874
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 17c1cce5c20570f36505ce67a472280b03ef8f0e
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991623"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744536"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する
 
@@ -33,7 +33,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 - [.NET Core 2.0 SDK のインストール](https://www.microsoft.com/net/core)
 - Azure サブスクリプションと既存の .NET Core Web アプリケーションが必要です。
 
-ASP.NET Core Web アプリケーションがない場合は、ステップ バイ ステップ ガイドを使用して [ASP.NET Core アプリを作成し、Application Insights を追加](app-insights-asp-net-core.md)してください。
+ASP.NET Core Web アプリケーションがない場合は、ステップ バイ ステップ ガイドを使用して [ASP.NET Core アプリを作成し、Application Insights を追加](../azure-monitor/app/asp-net-core.md)してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 

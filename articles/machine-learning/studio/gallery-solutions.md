@@ -1,11 +1,11 @@
 ---
-title: Azure AI ギャラリー ソリューション | Microsoft Docs
-description: Azure AI ギャラリーでソリューションを発見します。
+title: Azure AI Gallery のソリューション - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI ギャラリーでソリューションを発見します。 ソリューションは、構成済みのソリューション、参照アーキテクチャおよびデザイン パターンから Cortana Intelligence ソリューションを迅速に構築するためのきっかけとなります。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: c0be3f10-9e54-4fc1-b5df-725c2e919f65
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: cb02ed61ea050c17bc7e6dc0ebc724f29f885dd7
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 8bfcbac45dd50ebed5491b0411d5f1faa5b5f078
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344337"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271336"
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>Azure AI ギャラリー ソリューションを発見する
 
@@ -47,5 +47,5 @@ ms.locfileid: "51344337"
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

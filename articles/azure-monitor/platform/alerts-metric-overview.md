@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: cf315718377210e13a6634c0eaf8caab158bcc4d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24d0965fa2a88bc844a81c7430d46c071a9b874b
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342223"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580044"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -93,40 +93,40 @@ Azure portal では現在、複数のリソースを監視するメトリック 
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>メトリック アラートでサポートされているリソースの種類
 
-サポートされているリソースの種類の完全な一覧については、こちらの[記事](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)をご覧ください。
+サポートされているリソースの種類の完全な一覧については、こちらの[記事](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)をご覧ください。
 
 現在クラシック メトリック アラートを使用していて、使用しているすべてのリソースの種類がメトリック アラートでサポートされるかどうかを確認する場合のために、次の表に、クラシック メトリック アラートでサポートされているリソースの種類と、これらが現在のメトリック アラートでサポートされているかどうかを示します。
 
 |クラシック メトリック アラートでサポートされているリソースの種類 | メトリック アラートでサポートされている |
 |-------------------------------------------------|----------------------------|
-| Microsoft.ApiManagement/service | [はい] |
-| Microsoft.Batch/batchAccounts| [はい]|
-|Microsoft.Cache/redis| [はい]
+| Microsoft.ApiManagement/service | はい |
+| Microsoft.Batch/batchAccounts| はい|
+|Microsoft.Cache/redis| はい
 |Microsoft.ClassicCompute/virtualMachines | いいえ  |
 |Microsoft.ClassicCompute/domainNames/slots/roles | いいえ |
 |Microsoft.CognitiveServices/accounts | いいえ  |
-|Microsoft.Compute/virtualMachines | [はい]|
-|Microsoft.Compute/virtualMachineScaleSets| [はい]|
+|Microsoft.Compute/virtualMachines | はい|
+|Microsoft.Compute/virtualMachineScaleSets| はい|
 |Microsoft.ClassicStorage/storageAccounts| いいえ  |
-|Microsoft.DataFactory/datafactories | [はい]|
-|Microsoft.DBforMySQL/servers| [はい]|
-|Microsoft.DBforPostgreSQL/servers| [はい]|
+|Microsoft.DataFactory/datafactories | はい|
+|Microsoft.DBforMySQL/servers| はい|
+|Microsoft.DBforPostgreSQL/servers| はい|
 |Microsoft.Devices/IotHubs | いいえ |
 |Microsoft.DocumentDB/databaseAccounts| いいえ |
-|Microsoft.EventHub/namespaces | [はい]|
-|Microsoft.Logic/workflows | [はい]|
-|Microsoft.Network/loadBalancers |[はい]|
-|Microsoft.Network/publicIPAddresses| [はい]|
-|Microsoft.Network/applicationGateways| [はい]|
-|Microsoft.Network/expressRouteCircuits| [はい]|
-|Microsoft.Network/trafficManagerProfiles | [はい]|
+|Microsoft.EventHub/namespaces | はい|
+|Microsoft.Logic/workflows | はい|
+|Microsoft.Network/loadBalancers |はい|
+|Microsoft.Network/publicIPAddresses| はい|
+|Microsoft.Network/applicationGateways| はい|
+|Microsoft.Network/expressRouteCircuits| はい|
+|Microsoft.Network/trafficManagerProfiles | はい|
 |Microsoft.Search/searchServices | いいえ |
 |Microsoft.ServiceBus/namespaces| いいえ |
-|Microsoft.Storage/storageAccounts | [はい]|
-|Microsoft.StreamAnalytics/streamingjobs| [はい]|
-|Microsoft.TimeSeriesInsights/environments | [はい]|
-|Microsoft. Web/serverfarms | [はい] |
-|Microsoft. Web/sites (関数を除く) | [はい]|
+|Microsoft.Storage/storageAccounts | はい|
+|Microsoft.StreamAnalytics/streamingjobs| はい|
+|Microsoft.TimeSeriesInsights/environments | はい|
+|Microsoft. Web/serverfarms | はい |
+|Microsoft. Web/sites (関数を除く) | はい|
 |Microsoft. Web/hostingEnvironments/multiRolePools | いいえ |
 |Microsoft. Web/hostingEnvironments/workerPools| いいえ 
 |Microsoft.SQL/Servers | いいえ |

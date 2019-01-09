@@ -10,16 +10,22 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 2040c80687b8961c2db6b1b954a317807ebbbb13
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 09db18f38cd64d462815793e3067b29fa0989cf9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946030"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52719319"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Cognitive Services Speech Devices SDK のリリース ノート
 
 以下のセクションでは、最新リリースでの変更点の一覧を示します。
+
+## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>Cognitive Services Speech Devices SDK 1.1.0: 2018-Nov リリース 
+
+* [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.1.0 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。 
+* 強化されたオーディオ処理アルゴリズムにより、遠方界の音声認識の精度が向上しました。
+* サンプル アプリケーションが新たに中国語の音声認識に対応しました。
 
 ## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>Cognitive Services Speech Devices SDK 1.0.1: 2018-Oct リリース 
 

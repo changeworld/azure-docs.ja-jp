@@ -1,21 +1,22 @@
 ---
-title: Speech Service SDK のドキュメント
+title: リリース ノート - Speech Services
 titlesuffix: Azure Cognitive Services
-description: リリース ノート - 最新リリースの変更点
+description: Azure Speech Services に関する機能リリース、改善、バグ修正、既知の問題を時系列で掲載しています。
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 706f51ae1e2d81e2003f2fcd637def95c7a42f8e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: c99f1691618765e8997ef442a506c83b9a7bd4fa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567538"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088308"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -31,7 +32,7 @@ ms.locfileid: "51567538"
 
 * 認識エンジンの構成に検証が追加され、エラー メッセージが追加されました。
 * オーディオ ファイル中の長時間のサイレント状態の処理が強化されました。
-* NuGet パッケージ: .NET Framework プロジェクトが AnyCPU 構成でビルドされることを防ぎます。
+* NuGet パッケージ: .NET Framework プロジェクトの場合、AnyCPU 構成でビルドされることを防ぎます。
 
 **バグの修正**
 
@@ -110,7 +111,7 @@ ms.locfileid: "51567538"
 * Windows 上の .NET Standard 2.0 をサポートします。 [.NET Core クイック スタート](quickstart-csharp-dotnetcore-windows.md)をチェックアウトします。
 * 試験段階: Windows 上での UWP のサポート (バージョン 1709 以降)。
   * [UWP のクイック スタート](quickstart-csharp-uwp.md)に関するページをご覧ください。
-  * 注: Speech SDK で構築された UWP アプリは、まだ Windows アプリ認定キット (WACK) に合格していません。
+  * 注:Speech SDK で構築された UWP アプリは、まだ Windows アプリ認定キット (WACK) に合格していません。
 * 自動再接続を使用して、実行時間の長い認識をサポートします。
 
 **機能の変更点**

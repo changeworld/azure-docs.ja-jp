@@ -4,15 +4,16 @@ description: この記事では、Azure Site Recovery を使用して、オン�
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 77387b52003923dffce7519df9cca47fad8f6e6c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6ce1a20ddb5e99ca6da9531b6d23a8a54d14f588
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007435"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971735"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>セカンダリ オンプレミス サイトへの VMware または物理サーバーのレプリケーションのためのアーキテクチャ
 
@@ -37,7 +38,7 @@ ms.locfileid: "51007435"
 2. 初期レプリケーションの後、各マシン上のエージェントによって、差分レプリケーションの変更がプロセス サーバーに送信されます。
 3. プロセス サーバーは、このデータを最適化して、セカンダリ サイト上のマスター ターゲット サーバーに転送します。 構成サーバーでは、レプリケーション プロセスを管理します。
 
-**図 6: VMware から VMware へのレプリケーション**
+**図 6:VMware から VMware へのレプリケーション**
 
 ![VMware から VMware](./media/site-recovery-components/vmware-to-vmware.png)
 

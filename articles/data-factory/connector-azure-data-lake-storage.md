@@ -8,18 +8,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/09/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 2fad3ad8bc6e1c0ca87038af6c461d863065fc95
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: ded02fc78d276cd37f7b8db3b3d9de1c4e5f1b2f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345965"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105191"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Azure Data Factory を使って Azure Data Lake Storage Gen2 プレビューとの間でデータをコピーする (プレビュー)
 
-[Azure Data Lake Storage Gen2 プレビュー](../storage/data-lake-storage/introduction.md)は、ビッグ データ分析ワークロード用に設計された、Microsoft のハイパースケール ストレージ サービスです。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用してデータとのインターフェイスをとることができます。 これにより、Azure Data Lake Storage は、唯一のクラウドベースのマルチモーダル ストレージ サービスとなり、すべてのデータから分析値を抽出することができます。 パブリック プレビュー版の Azure Data Lake Gen2 に[サインアップ](https://aka.ms/adlsgen2signup)できます。
+Azure Data Lake Storage Gen2 プレビューは、ビッグ データ分析専用の機能セットで、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Data Lake Storage Gen2 をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -29,7 +29,7 @@ Data Lake Storage Gen2 には、サポートされているソース データ �
 
 具体的には、このコネクタは以下をサポートします。
 
-- アカウント キーを使用したデータのコピー。
+- アカウント キー、サービス プリンシパル、または Azure リソースのマネージド ID 認証を使用したファイルのコピー。
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用したファイルの解析または生成。
 
 >[!TIP]
@@ -49,7 +49,15 @@ Data Lake Storage Gen2 には、サポートされているソース データ �
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
-Data Lake Storage Gen2 のリンクされたサービスでは、次のプロパティがサポートされます。
+Azure Data Lake Storage Gen2 コネクタは、次の認証の種類をサポートします。詳しくは、対応するセクションをご覧ください。
+
+- [アカウント キー認証](#account-key-authentication)
+- [サービス プリンシパルの認証](#service-principal-authentication)
+- [Azure リソースのマネージド ID 認証](#managed-identity)
+
+### <a name="account-key-authentication"></a>アカウント キー認証
+
+ストレージ アカウント キー認証の使用には、次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -62,7 +70,7 @@ Data Lake Storage Gen2 のリンクされたサービスでは、次のプロパ
 
 ```json
 {
-    "name": "AzureDataLakeStorageLinkedService",
+    "name": "AzureDataLakeStorageGen2LinkedService",
     "properties": {
         "type": "AzureBlobFS",
         "typeProperties": {
@@ -80,6 +88,95 @@ Data Lake Storage Gen2 のリンクされたサービスでは、次のプロパ
 }
 ```
 
+### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
+
+サービス プリンシパル認証を使用するには、次の手順のようにします。
+
+1. 「[アプリケーションを Azure AD テナントに登録する](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)」に従って、Azure Active Directory (Azure AD) にアプリケーション エンティティを登録します。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+
+    - アプリケーション ID
+    - アプリケーション キー
+    - テナント ID
+
+2. Azure Storage でサービス プリンシパルに適切なアクセス許可を付与します。
+
+    - **ソースとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
+    - **シンクとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
+
+リンクされたサービスでは、次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | type プロパティは **AzureBlobFS** に設定する必要があります。 |[はい] |
+| url | Data Lake Storage Gen2 のエンドポイントのパターンは `https://<accountname>.dfs.core.windows.net` です。 | [はい] | 
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | [はい] |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | [はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+
+**例:**
+
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="managed-identity"></a> Azure リソースのマネージド ID 認証
+
+データ ファクトリは、特定のデータ ファクトリを表す、[Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、BLOB ストレージ認証にこのサービス ID を直接使用できます。 これにより、この指定されたファクトリは、BLOB ストレージにアクセスしてデータをコピーできます。
+
+Azure リソースのマネージド ID 認証を使用するには、次のようにします。
+
+1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのサービス ID を取得](data-factory-service-identity.md#retrieve-service-identity)します。
+
+2. Azure Storage でマネージド ID に適切なアクセス許可を付与します。 
+
+    - **ソースとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
+    - **シンクとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
+
+リンクされたサービスでは、次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | type プロパティは **AzureBlobFS** に設定する必要があります。 |[はい] |
+| url | Data Lake Storage Gen2 のエンドポイントのパターンは `https://<accountname>.dfs.core.windows.net` です。 | [はい] | 
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+
+**例:**
+
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 Azure Data Lake Storage データセットでは、次のプロパティがサポートされます。
@@ -88,8 +185,8 @@ Data Lake Storage Gen2 のリンクされたサービスでは、次のプロパ
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは、**AzureBlobFSFile** に設定する必要があります。 |[はい] |
 | folderPath | Data Lake Storage Gen2 のフォルダーへのパス。 ワイルドカード フィルターはサポートされていません。 指定しないと、ルートが参照されます。 例: rootfolder/subfolder/。 |いいえ  |
-| fileName | 指定された "folderPath" の下にあるファイルの**名前またはワイルドカード フィルター**。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。<br/><br/>出力データセットに fileName の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティは、"*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*" というパターンでファイル名を自動的に生成します。 たとえば、"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz" などです。 |いいえ  |
-| format | ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析するか生成する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 形式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 形式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
+| fileName | 指定された "folderPath" の下にあるファイルの**名前またはワイルドカード フィルター**。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。<br/><br/>出力データセットに fileName の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティは、"*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*" というパターンでファイル名を自動的に生成します。たとえば、"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz" です。クエリの代わりにテーブル名を使用して表形式のソースからコピーする場合は、名前のパターンは "*[table name].[format].[compression if configured]*" になります。たとえば、"MyTable.csv" です。 |いいえ  |
+| format | ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>特定の形式のファイルを解析または生成する場合、サポートされるファイル形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 形式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 形式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
 | compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
 >[!TIP]
@@ -175,7 +272,7 @@ Data Lake Storage Gen2 のリンクされたサービスでは、次のプロパ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは **AzureBlobFSSink** に設定する必要があります。 |[はい] |
-| copyBehavior | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>: ファイル階層をターゲット フォルダー内で保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><b>- FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの第一レベルに配置されます。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ  |
+| copyBehavior | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ファイル階層をターゲット フォルダー内で保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ  |
 
 **例:**
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: ace025f096b756259d25ca2adb347dd23a12a910
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 280d56951053870d5dc1bb8fba52cc089e842757
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409525"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743869"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>SSH トンネリングを使用して Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie、およびその他の Web UI にアクセスする
 
@@ -47,7 +47,7 @@ Ambari のメニューのいくつかは、SSH トンネル経由でのみ機能
 
 * SOCKS5 プロキシを使用するように構成できる Web ブラウザー。
 
-    > [!WARNING]
+    > [!WARNING]  
     > Windows インターネット設定に組み込まれている SOCKS プロキシサポートは SOCKS5 をサポートしていないため、このドキュメントの手順では機能しません。 以下のブラウザーは Windows のプロキシ設定に依存するため、現時点ではこのドキュメントの手順には使用できません。
     >
     > * Microsoft Edge
@@ -78,7 +78,7 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 
 ## <a name="useputty"></a>PuTTY を使用してトンネルを作成する
 
-[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) は、Windows 用のグラフィカル SSH クライアントです。 PuTTY に慣れていない場合は、[PuTTY のドキュメント](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)を参照してください。 PuTTY を使って SSH トンネルを作成するには、次の手順のようにします。
+[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) は、Windows 用のグラフィカル SSH クライアントです。 PuTTY に慣れていない場合は、[PuTTY のドキュメント](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)を参照してください。 PuTTY を使って SSH トンネルを作成するには、次の手順のようにします。
 
 ### <a name="create-or-load-a-session"></a>セッションの作成または読み込み
 
@@ -120,7 +120,7 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
    > [!NOTE]  
    > **リモート DNS** を選択すると、ドメイン ネーム システム (DNS) 要求は HDInsight クラスターを使用して解決されます。 この設定は、クラスターのヘッド ノードを使って DNS を解決します。
 
-2. [http://www.whatismyip.com/](http://www.whatismyip.com/) などのサイトにアクセスして、トンネルが動作することを確認します。 返される IP は、Microsoft Azure データ センターで使用されるものです。
+2. [https://www.whatismyip.com/](https://www.whatismyip.com/) などのサイトにアクセスして、トンネルが動作することを確認します。 返される IP は、Microsoft Azure データ センターで使用されるものです。
 
 ## <a name="verify-with-ambari-web-ui"></a>Ambari Web UI を使用して確認する
 

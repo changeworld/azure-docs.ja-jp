@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: c6ecb7d4c1e5b648373fcaa3f44c6294329d33c2
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 565c0ed877cf4500131f7ad3099f3c7d3f1a1220
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801167"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955039"
 ---
 # <a name="news-search-api-upgrade-guide"></a>News Search API のアップグレード ガイド
 
@@ -25,7 +25,7 @@ ms.locfileid: "48801167"
 
 ### <a name="endpoints"></a>エンドポイント
 
-- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 たとえば、 https://api.cognitive.microsoft.com/bing/\*\*v7.0\*\*/news/search です。
+- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 たとえば、 https://api.cognitive.microsoft.com/bing/**v7.0**/news/search となります。
 
 ### <a name="error-response-objects-and-error-codes"></a>エラー応答オブジェクトとエラー コード
 
@@ -34,7 +34,6 @@ ms.locfileid: "48801167"
 - `Error` オブジェクトに次のフィールドが追加されました。  
   - `subCode`&mdash;エラー コードを別個のバケットに分割します (可能な場合)
   - `moreDetails`&mdash;`message` フィールドで説明されているエラーに関する追加情報
-   
 
 - v5 エラー コードを次の可能な `code` および `subCode` 値に置き換えました。
 
@@ -77,18 +76,18 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>クエリ パラメーター
 
-- [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) クエリ パラメーターをに設定できる可能性のある値として Products が追加されました。 [市場別のカテゴリ](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#categories-by-market)に関するページを参照してください。  
-    
-- 最近の日付から並べられたトレンドのトピックを返す [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) クエリ パラメーターが追加されました。  
-  
+- [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) クエリ パラメーターをに設定できる可能性のある値として Products が追加されました。 [市場別のカテゴリ](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#categories-by-market)に関するページを参照してください。
+
+- 最近の日付から並べられたトレンドのトピックを返す [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) クエリ パラメーターが追加されました。
+
 - [Since](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#since) クエリ パラメーターが追加されました。指定した Unix エポック タイムスタンプ以降に Bing によって検出されたトレンドのトピックを返します。
 
 ### <a name="object-changes"></a>オブジェクトの変更
 
-- `mentions` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `mentions` フィールドには、記事で見つかったエンティティ (人物または場所) のリストが含まれています。  
-  
-- `video` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `video` フィールドには、ニュース記事に関連する動画が含まれています。 動画は、埋め込むことができる \<iframe\> または動画のサムネイルのいずれかです。   
-  
-- `sort` フィールドが [News](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) オブジェクトに追加されました。 `sort` フィールドには、記事の並べ替え順序が表示されます。 たとえば、記事は関連性 (既定) または日付順で並べ替えられます。  
-  
+- `mentions` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `mentions` フィールドには、記事で見つかったエンティティ (人物または場所) のリストが含まれています。
+
+- `video` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `video` フィールドには、ニュース記事に関連する動画が含まれています。 動画は、埋め込むことができる \<iframe\> または動画のサムネイルのいずれかです。
+
+- `sort` フィールドが [News](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) オブジェクトに追加されました。 `sort` フィールドには、記事の並べ替え順序が表示されます。 たとえば、記事は関連性 (既定) または日付順で並べ替えられます。
+
 - 並べ替え順序を定義する [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortvalue) オブジェクトが追加されました。 `isSelected` フィールドは、応答が並べ替え順序を使用したかどうかを示します。 **true** の場合、応答は並べ替え順序を使用しました。 `isSelected` が **false** の場合、`url` フィールドの URL を使用して、別の並べ替え順序を要求できます。

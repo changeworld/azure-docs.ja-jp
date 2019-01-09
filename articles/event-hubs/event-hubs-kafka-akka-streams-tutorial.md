@@ -1,6 +1,6 @@
 ---
-title: Kafka エコシステム用の Azure Event Hubs での Apache Kafka の使用 | Microsoft Docs
-description: Kafka 対応 Event Hubs への Akka Streams の接続
+title: Apache Kafka に対する Akka Streams の使用 - Azure Event Hubs| Microsoft Docs
+description: この記事では、Apache Kafka が有効になっている Azure イベント ハブに Akka Streams を接続する方法について説明します。
 services: event-hubs
 documentationcenter: ''
 author: basilhariri
@@ -10,15 +10,15 @@ ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.custom: mvc
-ms.date: 08/06/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 973470a6964e04b84b814ecf8732b2b981ced44c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 24eb48e47f098b2355c51cb88b162d24f42a9e60
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278958"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104137"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Kafka エコシステム用の Event Hubs での Apache Kafka の使用
 このチュートリアルでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Akka Streams を Kafka 対応 Event Hubs に接続する方法を示します。 Kafka 用 Azure Event Hubs では、[Apache Kafka バージョン 1.0](https://kafka.apache.org/10/documentation.html) がサポートされています。

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 166dffc6f79784b9a62cea4cb545aee32001441d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 180489aecc5eb5e937b4c163bc40937f3f6d2d80
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124679"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077666"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Drill からデータをコピーする (プレビュー)
 
@@ -45,7 +45,7 @@ Drill のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Drill** に設定する必要があります | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**Drill** | [はい] |
 | connectionString | Drill に接続するための ODBC 接続文字列。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
@@ -74,7 +74,12 @@ Drill のリンクされたサービスでは、次のプロパティがサポ�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Drill データセットでサポートされるプロパティの一覧を示します。
 
-Drill からデータをコピーするには、データセットの type プロパティを **DrillTable** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+Drill からデータをコピーするには、データセットの type プロパティを **DrillTable** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります:**DrillTable** | [はい] |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -86,7 +91,8 @@ Drill からデータをコピーするには、データセットの type プ�
         "linkedServiceName": {
             "referenceName": "<Drill linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -101,8 +107,8 @@ Drill からデータをコピーするは、コピー アクティビティの�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **DrillSource** に設定する必要があります。 | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**DrillSource** | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

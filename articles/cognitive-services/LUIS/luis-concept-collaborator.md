@@ -1,23 +1,24 @@
 ---
-title: LUIS アプリのコラボレーション - Language Understanding
-titleSuffix: Azure Cognitive Services
-description: LUIS アプリには、1 人の所有者と省略可能なコラボレーターが必要です。
+title: コラボレーション
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: LUIS アプリには、1 人の所有者が必要です。さらに任意でコラボレーターを追加すれば、複数のユーザーで 1 つのアプリを作成することができます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 9acc0b04cbfa074f888d785930f357eaf94f310b
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 8a3f0cb99dc714a6a0430d0a2ffb7c18583183e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637325"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084551"
 ---
-# <a name="collaborating"></a>コラボレーション
+# <a name="collaborating-with-other-authors"></a>他の作成者との共同作業
 
 LUIS では、グループでアプリを作成できるように、コラボレーション機能が用意されています。
 

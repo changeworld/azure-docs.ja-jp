@@ -16,16 +16,16 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6ec151222bda3d87386cc3be4c54821775880795
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a58644deb8d1325fd466d2a4d3a1fc927c83b685
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816839"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720256"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure における Windows 仮想マシンの概要
 
-Azure Virtual Machines (VM) は、Azure が提供する[スケーラブルなオンデマンド コンピューティング リソース](../../app-service/choose-web-site-cloud-service-vm.md)の 1 つです。 通常、コンピューティング環境を他の手段より細かく管理する必要がある場合に、VM を選択します。 この記事では、VM を作成する前に検討する必要のある事項、VM の作成方法、VM の管理方法に関する情報を提供します。
+Azure Virtual Machines (VM) は、Azure が提供する[スケーラブルなオンデマンド コンピューティング リソース](../../app-service/overview-compare.md)の 1 つです。 通常、コンピューティング環境を他の手段より細かく管理する必要がある場合に、VM を選択します。 この記事では、VM を作成する前に検討する必要のある事項、VM の作成方法、VM の管理方法に関する情報を提供します。
 
 Azure VM は、VM を実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 ただし、VM のメンテナンス、つまり VM 上で動作するソフトウェアの構成、その修正プログラムの適用、インストールは必要です。
 
@@ -103,11 +103,11 @@ VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwi
 
 | リソース | 必須 | 説明 |
 | --- | --- | --- |
-| [[リソース グループ]](../../azure-resource-manager/resource-group-overview.md) |[はい] |VM は、リソース グループに含まれる必要があります。 |
-| [ストレージ アカウント](../../storage/common/storage-create-storage-account.md) |[はい] |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
-| [Virtual Network](../../virtual-network/virtual-networks-overview.md) |[はい] |VM は、仮想ネットワークのメンバーである必要があります。 |
+| [[リソース グループ]](../../azure-resource-manager/resource-group-overview.md) |はい |VM は、リソース グループに含まれる必要があります。 |
+| [ストレージ アカウント](../../storage/common/storage-create-storage-account.md) |はい |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
+| [Virtual Network](../../virtual-network/virtual-networks-overview.md) |はい |VM は、仮想ネットワークのメンバーである必要があります。 |
 | [パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |いいえ  |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。 |
-| [ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md) |[はい] |VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。 |
+| [ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md) |はい |VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。 |
 | [データ ディスク](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |いいえ  |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
 
 ## <a name="how-do-i-create-my-first-vm"></a>最初の VM の作成方法

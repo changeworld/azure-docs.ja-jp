@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/05/2018
-ms.openlocfilehash: 84529e1097678ba7a039ffaeec57a9293c93dafd
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 19e6693de673eae6fe0b885580975c4cefc35d60
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229641"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725150"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする
 
@@ -128,13 +128,13 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 
 1. Azure portal で、マネージド ID にアクセスを割り当てる Azure リソースに移動します。 
 
-1. リソースのメニューから **[アクセス制御 (IAM)]** を選択し、**[追加]** を選択します。 
+1. リソースのメニューから **[アクセス制御 (IAM)]** を選択し、**[ロールの割り当ての追加]** を選択します。 
 
-   ![Add permissions](./media/create-managed-service-identity/add-permissions-logic-app.png)
+   ![ロールの割り当ての追加](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. **[Add permissions]\(アクセス許可の追加)** で、その ID の**ロール**を選択します。 
+1. **[ロールの割り当ての追加]** で、その ID の**ロール**を選択します。 
 
-1. **[アクセスの割り当て先]** プロパティで、まだ選択されていなければ、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。
+1. **[アクセスの割り当て先]** プロパティで、まだ選択されていなければ、**[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
 
 1. **[選択]** ボックスで、ロジック アプリの名前の入力を、ロジック アプリの名前の最初の文字で始めます。 目的のロジック アプリが表示されたら、そのロジック アプリを選択します。
 

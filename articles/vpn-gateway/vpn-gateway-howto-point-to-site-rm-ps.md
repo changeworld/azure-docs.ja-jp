@@ -1,20 +1,20 @@
 ---
-title: 'ポイント対サイト接続とネイティブ Azure 証明書認証を使用してコンピューターを Azure 仮想ネットワークに接続する: PowerShell | Microsoft Docs'
+title: ポイント対サイト接続とネイティブ Azure 証明書認証を使用してコンピューターを Azure 仮想ネットワークに接続する:PowerShell | Microsoft Docs
 description: Azure Virtual Network に対し、P2S と自己署名証明書 (または CA によって発行された証明書) を使用して安全に Windows クライアントと Mac OS X クライアントを接続します。 この記事では、PowerShell を使用します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: ced92cd28c12443234b47353548a9c968cc175ac
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c579bb32fdd43c95f027e6c9f5a6ef656d059d60
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095588"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847407"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト接続の構成: PowerShell
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト接続の構成:PowerShell
 
 この記事では、Windows または Mac OS X が実行されている個々のクライアントを Azure VNet に対して安全に接続する方法を紹介します。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 VNet への接続を必要とするクライアントがごく少ない場合は、サイト対サイト VPN の代わりに P2S を使用することもできます。 ポイント対サイト接続に、VPN デバイスや公開 IP アドレスは必要ありません。 P2S により、SSTP (Secure Socket トンネリング プロトコル) または IKEv2 経由の VPN 接続が作成されます。 ポイント対サイト VPN について詳しくは、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。
 
@@ -39,43 +39,34 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 値の例を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。 この記事のセクション [1](#declare) で変数を設定します。 手順をチュートリアルとして利用して値を変更せずに使用することも、実際の環境に合わせて値を変更することもできます。
 
-* **名前: VNet1**
-* **アドレス空間: 192.168.0.0/16** と **10.254.0.0/16**<br>この例では、この構成が複数のアドレス空間で機能することを示すために、複数のアドレス空間を使用します。 ただし、この構成で複数のアドレス空間は必須ではありません。
-* **サブネット名: FrontEnd**
-  * **サブネットのアドレス範囲: 192.168.1.0/24**
-* **サブネット名: BackEnd**
-  * **サブネットのアドレス範囲: 10.254.1.0/24**
-* **サブネット名: GatewaySubnet**<br>VPN ゲートウェイが機能するには、サブネット名 *GatewaySubnet* が必須となります。
-  * **GatewaySubnet のアドレス範囲: 192.168.200.0/24** 
-* **VPN クライアント アドレス プール: 172.16.201.0/24**<br>このポイント対サイト接続を利用して VNet に接続する VPN クライアントは、この VPN クライアント アドレス プールから IP アドレスを受け取ります。
+* **名前:VNet1**
+* **アドレス空間:192.168.0.0/16** および **10.254.0.0/16**<br>この例では、この構成が複数のアドレス空間で機能することを示すために、複数のアドレス空間を使用します。 ただし、この構成で複数のアドレス空間は必須ではありません。
+* **サブネット名:FrontEnd**
+  * **サブネットのアドレス範囲:192.168.1.0/24**
+* **サブネット名:BackEnd**
+  * **サブネットのアドレス範囲:10.254.1.0/24**
+* **サブネット名:GatewaySubnet**<br>VPN ゲートウェイが機能するには、サブネット名 *GatewaySubnet* が必須となります。
+  * **GatewaySubnet のアドレス範囲:192.168.200.0/24** 
+* **VPN クライアント アドレス プール:172.16.201.0/24**<br>このポイント対サイト接続を利用して VNet に接続する VPN クライアントは、この VPN クライアント アドレス プールから IP アドレスを受け取ります。
 * **サブスクリプション:** サブスクリプションが複数ある場合は、適切なサブスクリプションを使用していることを確認します。
-* **リソース グループ: TestRG**
-* **場所: 米国東部**
-* **DNS サーバー**: 名前解決に利用する DNS サーバーの IP アドレス。 (省略可能)
-* **GW 名: Vnet1GW**
-* **パブリック IP 名: VNet1GWPIP**
-* **VpnType: RouteBased** 
+* **リソース グループ:TestRG**
+* **場所:米国東部**
+* **DNS サーバー:** 名前解決に利用する DNS サーバーの IP アドレス。 (省略可能)
+* **GW 名:Vnet1GW**
+* **パブリック IP 名:VNet1GWPIP**
+* **VPN の種類:RouteBased** 
 
-## <a name="declare"></a>1.ログインと変数の設定
+## <a name="declare"></a>1.サインインと変数の設定
 
-このセクションでは、ログインのほか、この構成で使用される値の宣言を行います。 サンプル スクリプトでは、宣言済みの値が使用されます。 実際の環境に合わせて値を変更してください。 宣言済みの値を使用し、以下の手順を練習として使用することもできます。
+このセクションでは、サインインのほか、この構成で使用される値の宣言を行います。 サンプル スクリプトでは、宣言済みの値が使用されます。 実際の環境に合わせて値を変更してください。 宣言済みの値を使用し、以下の手順を練習として使用することもできます。
 
-1. 昇格された特権で PowerShell コンソールを開き、Azure アカウントにログインします。 このコマンドレットは、ログイン資格情報をユーザーに求めます。 ログイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。 PowerShell をローカルで実行しているのではなく、ブラウザーで Azure Cloud Shell の "試してみる" を使用している場合は、このセクションの手順 2 にスキップできます。
+### <a name="sign-in"></a>[サインイン]
 
-  ```azurepowershell
-  Connect-AzureRmAccount
-  ```
-2. Azure サブスクリプションの一覧を取得します。
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
 
-  ```azurepowershell-interactive
-  Get-AzureRmSubscription
-  ```
-3. 使用するサブスクリプションを指定します。
+### <a name="declare-variables"></a>変数の宣言
 
-  ```azurepowershell-interactive
-  Select-AzureRmSubscription -SubscriptionName "Name of subscription"
-  ```
-4. 使用する変数を宣言します。 次のサンプルを使用し、必要に応じて独自の値で置き換えます。
+使用する変数を宣言します。 次のサンプルを使用し、必要に応じて独自の値で置き換えます。
 
   ```azurepowershell-interactive
   $VNetName  = "VNet1"
@@ -408,4 +399,4 @@ Azure には、最大 20 個のルート証明書 .cer ファイルを追加で�
 ## <a name="next-steps"></a>次の手順
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
 
-P2S のトラブルシューティング情報については、[Azure ポイント対サイト接続の問題のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)に関するページを参照してください。
+P2S のトラブルシューティング情報については、[Azure ポイント対サイト接続のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)に関するページをご覧ください。

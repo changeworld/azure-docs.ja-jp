@@ -15,12 +15,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 638ae4c779af3bebb68622ccee6932618d42e4f0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 8c876f220cde99bbeb3b5d9f8f8878acb5584802
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056946"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140049"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション 
 
@@ -45,11 +45,11 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 
 > http(s)://*.\<ドメイン\>
 
-たとえば、「 `http(s)://*.adventure-works.com`」のように入力します。 内部 URL と外部 URL には異なるドメインを使用できますが、同じドメインにすることがベスト プラクティスとして推奨されます。 アプリケーションの発行時、いずれかの URL にワイルドカードがないとエラーが表示されます。
+(例: `http(s)://*.adventure-works.com`)。 内部 URL と外部 URL には異なるドメインを使用できますが、同じドメインにすることがベスト プラクティスとして推奨されます。 アプリケーションの発行時、いずれかの URL にワイルドカードがないとエラーが表示されます。
 
 構成設定が異なるその他のアプリケーションがある場合、これらの例外を別個のアプリケーションとして発行し、ワイルドカードに設定された既定値を上書きする必要があります。 ワイルドカードのないアプリケーションは、常にワイルドカード アプリケーションよりも優先されます。 構成上、これらは "ただの" 通常のアプリケーションです。
 
-ワイルドカード アプリケーションの作成は、他のすべてのアプリケーションで使用できるのと同じ[アプリケーション発行フロー](application-proxy-publish-azure-portal.md)に基づきます。 唯一の違いは、URL にワイルドカードを含めることだけです。場合によっては SSO 構成にもワイルドカードを含めます。
+ワイルドカード アプリケーションの作成は、他のすべてのアプリケーションで使用できるのと同じ[アプリケーション発行フロー](application-proxy-add-on-premises-application.md)に基づきます。 唯一の違いは、URL にワイルドカードを含めることだけです。場合によっては SSO 構成にもワイルドカードを含めます。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -122,7 +122,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 
 
-## <a name="scenario-1-general-wildcard-application"></a>シナリオ 1: 一般的なワイルドカード アプリケーション
+## <a name="scenario-1-general-wildcard-application"></a>シナリオ 1:一般的なワイルドカード アプリケーション
 
 このシナリオでは、発行したい異なる 3 つのアプリケーションがあります。
 
@@ -137,7 +137,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 - プロパティが同じです
 
 
-「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)」で説明されている手順を使用して、ワイルドカード アプリケーションを発行できます。 このシナリオは以下を前提とします。
+「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md)」で説明されている手順を使用して、ワイルドカード アプリケーションを発行できます。 このシナリオは以下を前提とします。
 
 - ID が `000aa000-11b1-2ccc-d333-4444eee4444e` のテナント 
 
@@ -145,7 +145,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 - `*.adventure-works.com` が `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` を指す **CNAME** エントリが作成されている。
 
-[文書化されている手順](application-proxy-publish-azure-portal.md)に従って、新しいアプリケーション プロキシ アプリケーションをテナントに作成します。 この例では、ワイルドカードが次のフィールド内にあります。
+[文書化されている手順](application-proxy-add-on-premises-application.md)に従って、新しいアプリケーション プロキシ アプリケーションをテナントに作成します。 この例では、ワイルドカードが次のフィールド内にあります。
 
 - 内部 URL:
 
@@ -176,7 +176,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 
 
-## <a name="scenario-2-general-wildcard-application-with-exception"></a>シナリオ 2: 一般的なワイルドカード アプリケーション (例外あり)
+## <a name="scenario-2-general-wildcard-application-with-exception"></a>シナリオ 2:一般的なワイルドカード アプリケーション (例外あり)
 
 このシナリオでは、3 つの一般的なアプリケーションに加えてもう 1 つアプリケーション (`finance.adventure-works.com`) を用意します。これは、財務部門のみがアクセスできるようにする必要があります。 現在のアプリケーション構造では、ワイルドカード アプリケーションを通じてすべての従業員が財務アプリケーションにアクセスできます。 これを変更するため、財務をアクセス許可の制限が強い別個のアプリケーションとして構成して、ワイルドカードからアプリケーションを除外します。
 
@@ -184,7 +184,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 `finance.adventure-works.com` がアプリケーション用のアプリケーション プロキシ ページで指定された特定のアプリケーション エンドポイントを指す CNAME レコードを用意する必要があります。 このシナリオでは、`finance.adventure-works.com` が `https://finance-awcycles.msappproxy.net/` を指します。 
 
-[文書化された手順](application-proxy-publish-azure-portal.md)に従うと、このシナリオには以下の設定が必要です。
+[文書化された手順](application-proxy-add-on-premises-application.md)に従うと、このシナリオには以下の設定が必要です。
 
 
 - **内部 URL** で、ワイルドカードの代わりに **finance** を設定します。 
@@ -215,6 +215,6 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 - **カスタム ドメイン**については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」を参照してください。
 
-- **アプリケーションの発行**については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)」を参照してください。
+- **アプリケーションの発行**については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md)」を参照してください。
 
 

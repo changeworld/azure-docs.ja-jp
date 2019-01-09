@@ -1,6 +1,6 @@
 ---
-title: Azure AD でヨーロッパのお客様の識別データが保存されている場所 | Microsoft Docs
-description: Microsoft Azure Active Directory でヨーロッパのお客様の ID 関連データが保存されている場所について説明します。
+title: ヨーロッパの顧客のための ID データ ストレージ - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory でヨーロッパのお客様の ID 関連データが保存されている場所について説明します。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,22 +10,22 @@ ms.component: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.custom: it-pro
-ms.openlocfilehash: d0015f40714b639d15245827ae0da3ca0f132df4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 371c7b2eb2f2e0e34dc80cf8fe6771620fa76765
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733399"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099939"
 ---
-# <a name="where-does-microsoft-azure-active-directory-azure-ad-store-identity-data-for-european-customers"></a>Microsoft Azure Active Directory (Azure AD) でヨーロッパのお客様の識別データが保存されている場所
-Azure AD は組織のリソースの保護を目的としたソリューションであり、ユーザー ID の管理とインテリジェンスに基づくアクセス ポリシーの作成に役立ちます。 ID データは、組織がサービスにサブスクライブしたときに入力した住所に基づいた場所に保存されます。 たとえば、Office 365 や Azure にサブスクライブしたときです。 ID データの保存場所に関する詳細情報については、Microsoft セキュリティ センターの[データの保存場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)に関するセクションを参照してください。
+# <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory でのヨーロッパの顧客のための ID データ ストレージ
+Azure Active Directory (Azure AD) は組織のリソースの保護を目的としたソリューションであり、ユーザー ID の管理とインテリジェンスに基づくアクセス ポリシーの作成に役立ちます。 ID データは、組織がサービスにサブスクライブしたときに入力した住所に基づいた場所に保存されます。 たとえば、Office 365 や Azure にサブスクライブしたときです。 ID データの保存場所に関する詳細情報については、Microsoft セキュリティ センターの[データの保存場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)に関するセクションを参照してください。
 
 ほとんどの Azure AD 関連のヨーロッパの ID データはヨーロッパのデータセンター内にとどまりますが、通常は米国のデータセンターに保存される 5 つのユーザー関連の属性があります。 具体的には、GivenName、Surname、userPrincipalName、Domain、および PasswordHash 属性です。 PasswordHash 属性は例外になることがあり、Azure AD との同期から PasswordHash 値を停止するオンプレミスのフェデレーション認証方法を使用している場合、米国には保存されません。 さらに、通常の Azure AD 操作に必要な、運用上のサービス固有のデータがいくつかあります。このデータは米国に保存され、個人データは含まれていません。
 
 ## <a name="data-stored-outside-of-european-datacenters-for-european-customers"></a>ヨーロッパのデータセンター以外に保存されるヨーロッパのお客様のデータ
 
-ヨーロッパに拠点がある組織の Azure AD に関連するヨーロッパの ID データは、ヨーロッパのデータセンター内にとどまります。 ヨーロッパのデータセンターに保存されない Azure AD データには、以下のようなデータがあります。
+ヨーロッパに拠点がある組織の Azure AD に関連するヨーロッパの ID データは、ヨーロッパのデータセンター内にとどまります。 ヨーロッパのデータセンターに保存されており、なおかつ米国のデータセンターにレプリケートされている Azure AD データには、次のものがあります。
 
 - **ID 関連の属性**
 
@@ -55,7 +55,7 @@ Azure AD は組織のリソースの保護を目的としたソリューショ�
 
 - **Microsoft Azure Active Directory B2C (Azure AD B2C)**
 
-    Azure AD B2C は、ヨーロッパのデータセンターにすべてのユーザー データを保存しています。 ただし、操作ログ (個人データを削除したもの) は、ユーザーがサービスにアクセスしている場所にとどまります。 たとえば、B2C ユーザーが米国内のサービスにアクセスすると、操作ログは米国内にとどまります。さらに、個人データを含まないすべてのポリシー構成データは米国内にのみ保存されます。ポリシー構成の詳細については、「[Azure Active Directory B2C: 組み込みのポリシー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)」を参照してください。
+    Azure AD B2C は、ヨーロッパのデータセンターにすべてのユーザー データを保存しています。 ただし、操作ログ (個人データを削除したもの) は、ユーザーがサービスにアクセスしている場所にとどまります。 たとえば、B2C ユーザーが米国内のサービスにアクセスすると、操作ログは米国内にとどまります。さらに、個人データを含まないすべてのポリシー構成データは米国内にのみ保存されます。ポリシー構成の詳細については、「[Azure Active Directory B2C:組み込みのポリシー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)」を参照してください。
 
 - **Microsoft Azure Active Directory B2B (Azure AD B2B)** 
     

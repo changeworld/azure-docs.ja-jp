@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1e58d7ff183f764150fa37deb2a097135b03330d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 57dd908e174e771bc92a366a86b120dea5d35ed3
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435040"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753797"
 documentType: LandingData
 title: Azure SignalR サービスのドキュメント
 metadata:
@@ -16,7 +16,6 @@ metadata:
   manager: wesmc
   ms.service: signalr
   ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 09/12/2018
   ms.author: wesmc

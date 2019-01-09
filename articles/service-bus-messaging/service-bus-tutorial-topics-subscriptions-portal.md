@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: b03a0538e92ac126a50a1346eb1bf7fb003189f9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fb3358775881f102ecea62fbd20a1e4d85dda308
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966860"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001636"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル:Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -91,7 +91,7 @@ Service Bus トピックを作成するには、作成する名前空間を指�
 
 ## <a name="create-filter-rules-on-subscriptions"></a>サブスクリプションに対してフィルター ルールを作成する
 
-名前空間とトピック/サブスクリプションがプロビジョニングされ、必要な資格情報を持っている場合、サブスクリプションに対してフィルター ルールを作成し、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/GettingStarted/BasicSendReceiveTutorialwithFilters)でコードを調べることができます。
+名前空間とトピック/サブスクリプションがプロビジョニングされ、必要な資格情報を持っている場合、サブスクリプションに対してフィルター ルールを作成し、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)でコードを調べることができます。
 
 ### <a name="send-and-receive-messages"></a>メッセージを送受信する
 

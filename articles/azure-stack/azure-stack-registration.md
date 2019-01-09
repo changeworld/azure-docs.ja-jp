@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 12/04/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: be88e84c48ba31ce564c31eca1f54f164aeb9f93
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 58dfb3f02b338d62fcfb10e4d8c1bc492cdacbda
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288239"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890553"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 
@@ -121,8 +121,8 @@ Run: get-azurestackstampinformation
 
 2. Azure Stack を登録するために使用する Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRmAccount** コマンドレットを実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
 
-   ```PowerShell  
-      Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+   ```PowerShell
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
    | パラメーター | [説明] |  
@@ -150,8 +150,12 @@ Run: get-azurestackstampinformation
 6. 次に、同じ PowerShell セッションで、正しい Azure PowerShell コンテキストにログインしていることを確認します。 これは、上記の Azure Stack リソース プロバイダーの登録に使用された Azure アカウントです。 実行する PowerShell:
 
    ```PowerShell  
-   Add-AzureRmAccount -Environment "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
+
+   | パラメーター | [説明] |  
+   |-----|-----|
+   | EnvironmentName | Azure クラウド サブスクリプション環境名。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure サブスクリプションを使用している場合は **AzureChinaCloud** です。  |
 
 7. 同じ PowerShell セッションで **Set-AzsRegistration** コマンドレットを実行します。 実行する PowerShell:  
 
@@ -182,7 +186,7 @@ Run: get-azurestackstampinformation
 2. Azure Stack を登録するために使用する Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRmAccount** コマンドレットを実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
 
    ```PowerShell  
-      Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
    | パラメーター | [説明] |  
@@ -298,7 +302,7 @@ Get-AzsActivationKey から作成されたアクティブ化キーのファイ�
 
 Azure Stack が Azure に正常に登録されたことを検証するには、次の手順を使用します。
 
-1. Azure Stack [管理者ポータル](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;//adminportal.*&lt;region>.&lt;fqdn>* にサインインします。
+1. Azure Stack [管理ポータル](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;//adminportal.*&lt;region>.&lt;fqdn>* にサインインします。
 2. **[すべてのサービス]** を選択し、**[管理]** カテゴリで **[Marketplace 管理]** > **[Azure から追加]** を選択します。
 
 Azure (WordPress など) から利用可能な項目のリストが表示される場合は、アクティブ化に成功しました。 ただし、切断された環境では、Azure Stack Marketplace に Azure Marketplace 項目は表示されません。
@@ -430,9 +434,9 @@ Set-AzsRegistration を使用すると、Azure Stack を Azure に登録し、�
 | AzureContext | PSObject |  |
 | ResourceGroupName | String |  |
 | ResourceGroupLocation | String |  |
-| BillingModel | String | 自分のサブスクリプションで使用する請求モデル。 このパラメーターに使用できる値は、Capacity、PayAsYouUse、および Development です。 |
-| MarketplaceSyndicationEnabled |  |  |
-| UsageReportingEnabled | True または False | Azure Stack では、既定で使用状況メトリックがレポートされます。 容量モデルを使用するオペレーターまたは切断された環境をサポートするオペレーターは、使用状況レポートをオフにする必要があります。 このパラメーターに使用できる値は、True および False です。 |
+| BillingModel | String | 自分のサブスクリプションで使用する請求モデル。 このパラメーターの有効値は、Capacity、PayAsYouUse、および Development です。 |
+| MarketplaceSyndicationEnabled | True または False | ポータル内でマーケットプレース管理機能を使用できるようにするかどうかを決定します。 インターネット接続を使用して登録している場合は true に設定します。 切断された環境で登録している場合は false に設定します。 切断された環境で登録した場合は、[オフライン シンジケーション ツール](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)を使用して、マーケットプレースの項目をダウンロードできます。 |
+| UsageReportingEnabled | True または False | Azure Stack では、既定で使用状況メトリックがレポートされます。 容量モデルを使用するオペレーターまたは切断された環境をサポートするオペレーターは、使用状況レポートをオフにする必要があります。 このパラメーターの有効値は、True、False です。 |
 | AgreementNumber | String |  |
 | RegistrationName | String | 同じ Azure Subscription ID を利用し、複数の Azure Stack インスタンスで登録スクリプトを実行している場合、登録に一意の名前を設定します。 このパラメーターの既定値は **AzureStackRegistration** です。 ただし、複数の Azure Stack インスタンスに同じ名前を使用すると、スクリプトは失敗します。 |
 
@@ -452,9 +456,9 @@ Get-AzsRegistrationToken は、入力パラメーターから登録トークン�
 | AzureContext | PSObject |  |
 | ResourceGroupName | String |  |
 | ResourceGroupLocation | String |  |
-| BillingModel | String | 自分のサブスクリプションで使用する請求モデル。 このパラメーターに使用できる値は、Capacity、PayAsYouUse、および Development です。 |
+| BillingModel | String | 自分のサブスクリプションで使用する請求モデル。 このパラメーターの有効値は、Capacity、PayAsYouUse、および Development です。 |
 | MarketplaceSyndicationEnabled | True または False |  |
-| UsageReportingEnabled | True または False | Azure Stack では、既定で使用状況メトリックがレポートされます。 容量モデルを使用するオペレーターまたは切断された環境をサポートするオペレーターは、使用状況レポートをオフにする必要があります。 このパラメーターに使用できる値は、True および False です。 |
+| UsageReportingEnabled | True または False | Azure Stack では、既定で使用状況メトリックがレポートされます。 容量モデルを使用するオペレーターまたは切断された環境をサポートするオペレーターは、使用状況レポートをオフにする必要があります。 このパラメーターの有効値は、True、False です。 |
 | AgreementNumber | String |  |
 
 

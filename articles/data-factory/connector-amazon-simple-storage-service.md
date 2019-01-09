@@ -8,17 +8,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 4885693abd8c6b66f8e68d83a8d6a2db3b0ed438
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 9098e8e6af76ed14ad42d5fe5917fcd36097c222
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344129"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103287"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [現在のバージョン](connector-amazon-simple-storage-service.md)
 
@@ -34,17 +34,14 @@ Amazon S3 から、サポートされている任意のシンク データ ス�
 
 Amazon S3 からデータをコピーするには、次のアクセス許可が付与されている必要があります。
 
-- Amazon S3 オブジェクトの操作には `s3:GetObject` と `s3:GetObjectVersion`。
-- Amazon S3 バケットの操作には `s3:ListBucket` または `s3:GetBucketLocation`。 
-
->[!NOTE]
->作成に Data Factory GUI を使用するとき、テスト接続やファイルパスの閲覧/移動などの操作に `s3:ListAllMyBuckets` アクセス許可も必要になります。 このアクセス許可を付与しない場合、リンクされたサービス作成ページでテスト接続をスキップし、データセット設定でパスを直接指定してください。
+- **コピー アクティビティの実行の場合:** Amazon S3 オブジェクトの操作に対する `s3:GetObject` と `s3:GetObjectVersion`。
+- **Data Factory GUI 作成の場合**: Amazon S3 バケット操作アクセス許可に対する `s3:ListAllMyBuckets` と `s3:ListBucket`/`s3:GetBucketLocation` が、テスト接続やファイル パスの閲覧/移動などの操作のために追加で必要になります。 これらのアクセス許可を付与しない場合、リンクされたサービス作成ページでテスト接続をスキップし、データセット設定でパスを直接指定してください。
 
 Amazon S3 のアクセス許可の完全な一覧については、「[ポリシーでのアクセス許可の指定](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)」を参照してください。
 
 ## <a name="getting-started"></a>使用の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションで、Amazon S3 に固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -93,13 +90,15 @@ Amazon S3 からデータをコピーするには、データセットの type �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**AmazonS3Object** を設定する必要があります。 |[はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります。**AmazonS3Object** |[はい] |
 | bucketName | S3 バケットの名前。 ワイルドカード フィルターはサポートされていません。 |はい (Copy/Lookup アクティビティの場合)、いいえ (GetMetadata アクティビティの場合) |
 | key | 指定されたバケットの下にある S3 オブジェクト キーの**名前またはワイルドカード フィルター**です。 "prefix" プロパティが指定されていないときにのみ適用されます。 <br/><br/>ワイルドカード フィルターがサポートされているのは、フォルダー部分ではなくファイル名部分に関してのみです。 使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"key": "rootfolder/subfolder/*.csv"`<br/>- 例 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 |いいえ  |
 | prefix | S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 "key" プロパティが指定されていないときにのみ適用されます。 |いいえ  |
 | version | S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |いいえ  |
-| format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析するか生成する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
+| modifiedDatetimeStart | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。| いいえ  |
+| modifiedDatetimeEnd | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。| いいえ  |
+| format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>特定の形式のファイルを解析または生成する場合、サポートされるファイル形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
 >[!TIP]
 >フォルダーの下のすべてのファイルをコピーするには、バケットに **bucketName**、フォルダー部分に **prefix** を指定します。<br>特定の名前の単一のファイルをコピーするには、バケットに **bucketName**、フォルダー部分とファイル名に **key** を指定します。<br>フォルダーの下のファイルのサブセットをコピーするには、バケットに **bucketName**、フォルダー部分とファイル名に **key** を指定します。
@@ -118,6 +117,8 @@ Amazon S3 からデータをコピーするには、データセットの type �
         "typeProperties": {
             "bucketName": "testbucket",
             "prefix": "testFolder/test",
+            "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
+            "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
             "format": {
                 "type": "TextFormat",
                 "columnDelimiter": ",",
@@ -171,7 +172,7 @@ Amazon S3 からデータをコピーするには、コピー アクティビテ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |[はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**FileSystemSource** |[はい] |
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダー/サブフォルダーはシンクでコピー/作成されないことに注意してください。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |
 
 **例:**

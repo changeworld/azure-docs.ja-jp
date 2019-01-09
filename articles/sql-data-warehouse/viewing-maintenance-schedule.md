@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 10/06/2018
+ms.date: 11/27/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: db5502b796fc345b2e2bf083f864d80bd59e7293
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6e4a4c01ee73bab3cb4e66a06c0ba0655e3066a0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427129"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993248"
 ---
 # <a name="view-a-maintenance-schedule"></a>メンテナンス スケジュールを表示する 
 
@@ -34,6 +34,7 @@ ms.locfileid: "49427129"
 ## <a name="next-steps"></a>次の手順
 - Azure Monitor を使用してアラートを作成、表示、管理する方法について[詳しく知る](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage)。
 - ログ アラート ルール用の Webhook アクションについて[詳しく知る](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
+- アクション グループの作成と管理について[詳しく知る](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)。
 - Azure Service Health について[詳しく知る](https://docs.microsoft.com/azure/service-health/service-health-overview)。
 
 

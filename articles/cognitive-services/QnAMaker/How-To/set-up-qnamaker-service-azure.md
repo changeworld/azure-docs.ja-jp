@@ -10,12 +10,13 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 103da0c65bcf9b9bd24130082f844b9bd12a9a02
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.custom: seodec18
+ms.openlocfilehash: 6898b007287e4f4c87010649c6f0b66c03f7cf8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389719"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086268"
 ---
 # <a name="create-a-qna-maker-service"></a>QnA Maker サービスを作成する
 
@@ -27,7 +28,7 @@ QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA 
 
 2.  **[新しいリソースの追加]** をクリックし、検索で「qna maker」と入力して、QnA Maker リソースを選択します。
 
-    ![新しい QnA Maker サービスの作成](../media/qnamaker-how-to-setup-service/create-new-resource.png)
+    ![新しい QnA Maker サービスを作成する - 新しいリソースの追加](../media/qnamaker-how-to-setup-service/create-new-resource.png)
 
 3.  使用条件を読んで **[作成]** をクリックします。
 
@@ -35,7 +36,7 @@ QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA 
 
 4. **QnA Maker** で、適切なレベルとリージョンを選択します。
 
-    ![新しい QnA Maker サービスの作成](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
+    ![新しい QnA Maker サービスを作成する - 価格レベルとリージョン](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
     * この QnA Maker サービスを識別する一意の名前を **[名前]** に入力します。 ナレッジ ベースが関連付けられることになる QnA Maker のエンドポイントも、この名前によって識別されます。
     * QnA Maker リソースのデプロイ先となる**サブスクリプション**を選択します。
@@ -57,7 +58,7 @@ QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA 
 
 6.  デプロイが完了すると、サブスクリプションに次のリソースが作成されていることがわかります。
 
-    ![新しい QnA Maker サービスの作成](../media/qnamaker-how-to-setup-service/resources-created.png)
+    ![リソースによって新しい QnA Maker サービスが作成された](../media/qnamaker-how-to-setup-service/resources-created.png)
 
 ## <a name="next-steps"></a>次の手順
 

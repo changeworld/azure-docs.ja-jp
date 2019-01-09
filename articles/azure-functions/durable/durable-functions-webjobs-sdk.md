@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 18c35070707408f43fd0e5dfc5e3330ef62a914d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c1a778a006c7743b6ea19062d79cff3cfeaba3d8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343158"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713271"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
 
-[Azure Functions](../functions-overview.md) と [Durable Functions](durable-functions-overview.md) 拡張機能は、[WebJobs SDK](../../app-service/web-sites-create-web-jobs.md) に基づいて構築されています。 WebJobs SDK の `JobHost` は、Azure Functions 内のランタイムです。 `JobHost` の動作を Azure Functions では不可能な方法で制御する必要がある場合は、WebJobs SDK を使用して Durable Functions を独自に開発し、実行することができます。 開発した Durable Functions は、Azure WebJob や、コンソール アプリケーションを実行できる任意の場所で実行できます。
+[Azure Functions](../functions-overview.md) と [Durable Functions](durable-functions-overview.md) 拡張機能は、[WebJobs SDK](../../app-service/webjobs-create.md) に基づいて構築されています。 WebJobs SDK の `JobHost` は、Azure Functions 内のランタイムです。 `JobHost` の動作を Azure Functions では不可能な方法で制御する必要がある場合は、WebJobs SDK を使用して Durable Functions を独自に開発し、実行することができます。 開発した Durable Functions は、Azure WebJob や、コンソール アプリケーションを実行できる任意の場所で実行できます。
 
 Durable Functions のチェイニング のサンプルは、WebJobs SDK バージョンで提供されています。[Durable Functions リポジトリ](https://github.com/azure/azure-functions-durable-extension/)をダウンロードまたは複製し、*samples\\webjobssdk\\chaining* フォルダーに移動してください。
 

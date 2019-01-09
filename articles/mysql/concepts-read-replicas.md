@@ -1,19 +1,17 @@
 ---
 title: Azure Database for MySQL の読み取りレプリカ。
 description: この記事では、Azure Database for MySQL の読み取りレプリカについて説明します。
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 82f80fc1342f0c76cb880b020dcd835a23635b0a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1c05203de694cde882277bf269f3ff87438f9f26
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632562"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547730"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -53,10 +51,10 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 レプリカ サーバーは、マスターと同じサーバー構成を使用して作成されます。たとえば、以下の構成が含まれます。
 
-- 価格レベル
+- 価格レベル 
 - コンピューティング世代
 - 仮想コア
-- ストレージ
+- Storage
 - バックアップのリテンション期間
 - バックアップ冗長オプション
 - MySQL エンジンのバージョン

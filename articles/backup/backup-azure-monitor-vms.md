@@ -2,18 +2,18 @@
 title: Azure 仮想マシンのバックアップ アラートを監視する
 description: Azure 仮想マシンのバックアップ ジョブからのイベントとアラートを監視します。 アラートに基づいて電子メールを送信します。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: markgal
-ms.openlocfilehash: 3783014738ec4e8f185531773b1259dc63e7f49f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: raynew
+ms.openlocfilehash: 0cfbb258364ed684ff38b2be9f998d8ff0656251
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606309"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864538"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップ アラートの監視
 アラートはサービスから返され、イベントのしきい値が満たされていること、またはしきい値を超えたことを示します。 ビジネス コストを抑えるには、問題が発生したときに、それを把握することが重要です。 通常、アラートはスケジュールに基づいて発生するわけではないため、発生後にできるだけ早く通知されると便利です。 たとえば、バックアップ ジョブまたは復元ジョブが失敗した場合、エラーの発生後 5 分以内にアラートが発生します。 コンテナーのダッシュボードの [バックアップ アラート] タイルには、重大なアラートと警告レベルのアラートが発生しているイベントが表示されます。 [バックアップ アラート] 設定では、すべてのイベントを確認することができますが、 別の問題に対応しているときに、アラートが発生したらどうでしょう。 アラートが発生したことを知らなくても、大きな問題にはならないかもしれませんが、データのセキュリティ侵害につながることもあります。 アラートが発生したことを、適切なユーザーに確実に知らせるには、アラート通知を電子メールで送信するようにサービスを構成します。 電子メール通知の設定の詳細については、「[通知の構成](backup-azure-monitor-vms.md#configure-notifications)」を参照してください。
@@ -124,6 +124,6 @@ Azure Portal にログインし、関連する Azure Recovery Services コンテ
 ## <a name="next-steps"></a>次の手順
 復旧ポイントからの仮想マシンの再作成については、 [Azure VM の復元](backup-azure-arm-restore-vms.md)に関するページをご覧ください。
 
-仮想マシンの保護については、 [Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。 
+仮想マシンの保護については、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。 
 
 VM バックアップの管理タスクについては、[Azure 仮想マシンのバックアップの管理](backup-azure-manage-vms.md)に関するページをご覧ください。

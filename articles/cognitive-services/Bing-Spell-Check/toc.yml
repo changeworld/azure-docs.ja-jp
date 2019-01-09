@@ -38,12 +38,28 @@ items:
     href: UseAndDisplayRequirements.md
   - name: v5 から v7 へのアップグレード
     href: bing-spell-check-upgrade-guide-v5-to-v7.md
+- name: サンプル
+  items:
+  - name: コード サンプル
+    href: sdk.md
 - name: リファレンス
   items:
   - name: Bing Spell Check API v7
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference
   - name: Bing Spell Check API v5 (旧バージョン)
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference
+  - name: SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/spellcheck?view=azure-node-latest
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python
+    - name: Go
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/spellcheck?view=azure-java-stable
 - name: リソース
   items:
   - name: Bing Spell Check API 用の分析
@@ -64,9 +80,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/spell-check/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/598195-bing-spell-check
-ms.openlocfilehash: 539de32b27a8fdb00479b280c0a0a18fe887f2b4
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 05ffe9b5a6d4dc23c7e7a4cc162732ebbd3421ef
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432683"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790437"

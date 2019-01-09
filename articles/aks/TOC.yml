@@ -162,6 +162,8 @@ items:
     items:
     - name: サービス プリンシパルの作成
       href: kubernetes-service-principal.md
+    - name: クラスター構成ファイルへのアクセスの制限
+      href: control-kubeconfig-access.md
     - name: ACR での認証
       href: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json
   - name: 監視およびログ記録
@@ -290,9 +292,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 7c4742945a5017dd2b20142114456567e9407ed0
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d0d419ff2b832c48cb7d1a35fa398da34f5bf382
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260737"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037963"

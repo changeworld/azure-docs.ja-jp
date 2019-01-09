@@ -1,25 +1,26 @@
 ---
-title: Azure Cognitive Services の LUIS アプリのフィーチャー
-titleSuffix: Azure Cognitive Services
-description: フィーチャーを言語モデルに追加することで、ラベル付けまたは分類する必要がある入力を認識する方法についてのヒントが提供されます。 フィーチャーは LUIS による意図とエンティティ両方の認識を補助します。
+title: 機能
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: フィーチャーを言語モデルに追加することで、ラベル付けまたは分類する必要がある入力を認識する方法についてのヒントが提供されます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 43b2b1485e6a33162f7fc08631094f3e975f8cdb
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 62827054a14930cd49f7d80d6c305e60060c0fe6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638263"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271387"
 ---
-# <a name="phrase-list-features-in-luis"></a>LUIS のフレーズ リストのフィーチャー
+# <a name="phrase-list-features-in-your-luis-app"></a>LUIS アプリのフレーズ リストのフィーチャー
 
-機械学習では、"*フィーチャー*" は、お使いのシステムによって順守される、データの特徴的な特性または属性です。 
+機械学習では、"*機能*" は、お使いのシステムによって順守される、データの特徴的な特性または属性です。 
 
 フィーチャーを言語モデルに追加することで、ラベル付けまたは分類する必要がある入力を認識する方法についてのヒントが提供されます。 フィーチャーは、意図とエンティティの両方を LUIS が認識する助けとなりますが、フィーチャー自体は意図でもエンティティでもありません。 代わりに、フィーチャーによって、関連する用語の例が提供される場合があります。  
 
@@ -31,9 +32,17 @@ ms.locfileid: "49638263"
 ## <a name="how-to-use-phrase-lists"></a>フレーズ リストを使用する方法
 人事アプリの[シンプル エンティティのチュートリアル](luis-quickstart-primary-and-secondary-data.md)では、このアプリはプログラマ、屋根職人、秘書などの仕事の種類の **[Job] (仕事)** フレーズ リストを使用します。 これらの値のいずれかを機械学習されたエンティティとしてラベル付けすると、LUIS はその他を認識することを学習します。 
 
-フレーズ リストには、交換可能なリストと、交換不可能なリストがあります。 *交換可能な*フレーズ リストはシノニムである値を対象にしており、*交換不可能な*フレーズ リストは、シノニムではないが、依然としてアプリ内で追加のシグナルが必要な値を対象にしています。 
+フレーズ リストには、交換可能なリストと、交換不可能なリストがあります。 "*交換可能*" なフレーズ リストは、シノニムの値を対象としています。"*交換不可能*" なフレーズ リストは、アプリの特定のボキャブラリ リストとして意図されています。 アプリのボキャブラリ フレーズ リストが大きくなるにつれて、いくつかの用語に多くの形式 (シノニム) があることがわかるでしょう。 これらを交換可能な別のフレーズ リストに分割します。 
+
+|リストの種類|目的|
+|--|--|
+|交換可能|リスト内の別の単語に変更されたときに同じ意図とエンティティ抽出を持つシノニムまたは単語。|
+|交換不可能|通常は、その言語の他の単語よりもアプリに限定される、アプリに固有のアプリ ボキャブラリ。|
+
+フレーズ リストは、エンティティの検出だけでなく、英語で不明なボキャブラリ外の単語を追加する場合などの、交換不可能性に意味がある意図の分類にも役立ちます。
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
+
 ## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>フレーズ リストは交換可能なシンプル エンティティの識別に役立つ
 交換可能なフレーズ リストは、LUIS アプリのパフォーマンスを調整するための良い方法です。 お使いのアプリで、正しい意図への発話の予測やエンティティの特定に関する問題が発生した場合、まれな単語や、意味があいまいな単語が、発話に含まれていないかどうかを考えてください。 これらの単語は、フレーズ リストへの追加候補として適しています。
 

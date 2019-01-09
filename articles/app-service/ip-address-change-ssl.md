@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4de20ba46d3c16d6cd7bde8e17efb0a6212bc771
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6c8c86ff6212acc31e961d6ae62836ca2b7b7380
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270792"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714221"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>SSL IP アドレスの変更に備える方法
 
@@ -52,4 +52,4 @@ ms.locfileid: "53270792"
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure によって開始された IP アドレスの変更に備える方法について説明しました。 Azure App Service での IP アドレスの詳細については、[Azure App Service における SSL と SSL IP アドレス](app-service-ip-addresses.md)に関する記事を参照してください。
+この記事では、Azure によって開始された IP アドレスの変更に備える方法について説明しました。 Azure App Service での IP アドレスの詳細については、[Azure App Service における SSL と SSL IP アドレス](overview-inbound-outbound-ips.md)に関する記事を参照してください。

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: 34cbb4d2c8a1e84499961802ca7bd07408375345
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0cd0dcaf200b1248204efc2d2c0011a94d3c41d3
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409394"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720970"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>チュートリアル:Azure Functions を使用した Azure SignalR Service 認証
 
@@ -298,7 +298,7 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
 
 ### <a name="configure-function-app-for-authentication"></a>認証のために関数アプリを構成する
 
-これまで、チャット アプリは匿名で動作しています。 Azure では、[App Service 認証](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)を使用してユーザーを認証します。 認証済みユーザーのユーザー ID またはユーザー名を *SignalRConnectionInfo* バインドに渡して、ユーザーとして認証される接続情報を生成することができます。
+これまで、チャット アプリは匿名で動作しています。 Azure では、[App Service 認証](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)を使用してユーザーを認証します。 認証済みユーザーのユーザー ID またはユーザー名を *SignalRConnectionInfo* バインドに渡して、ユーザーとして認証される接続情報を生成することができます。
 
 メッセージを送信すると、アプリは接続されているすべてのクライアントに送信するか、特定のユーザーに認証されているクライアントにのみ送信するかをアプリが決定できます。
 

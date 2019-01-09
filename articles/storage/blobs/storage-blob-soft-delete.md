@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: 0e7487525dc23482cbd3029b626e7bb30dd51b50
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 7f7071c9f87528eddbfe3d541cd85624e308948f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398562"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633387"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Storage Blob の論理的な削除
 Azure Storage では、BLOB オブジェクトの論理的な削除が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。
@@ -170,26 +170,29 @@ BLOB のスナップショットの削除を取り消した後は、**[レベル
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 ### <a name="powershell"></a>PowerShell
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 論理的な削除を有効にするには、BLOB クライアントのサービスのプロパティを更新します。 次の例では、サブスクリプションのアカウントのサブセットで論理的な削除を有効にしています。
 
 ```powershell
-Set-AzureRmContext -Subscription "<subscription-name>"
-$MatchingAccounts = Get-AzureRMStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
-$MatchingAccounts | Enable-AzureStorageDeleteRetentionPolicy -RetentionDays 7
+Set-AzContext -Subscription "<subscription-name>"
+$MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
+$MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
 次のコマンドを使用して、ソフト削除が有効にされたことを確認します。
 
 ```powershell
-$MatchingAccounts | Get-AzureStorageServiceProperty -ServiceType Blob
+$MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
 ```
 
 誤って削除された BLOB を復旧するには、それらの BLOB で Undelete を呼び出します。 アクティブな BLOB と論理的に削除された BLOB の両方で **Undelete Blob** を呼び出すと、関連付けられているすべての論理的に削除されたスナップショットがアクティブとして復元されることに注意してください。 次の例では、コンテナー内にあるすべての論理的に削除された BLOB とアクティブな BLOB で Undelete を呼び出しています。
 ```powershell
 # Create a context by specifying storage account name and key
-$ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+$ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 # Get the blobs in a given container and show their properties
-$Blobs = Get-AzureStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
+$Blobs = Get-AzStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
 $Blobs.ICloudBlob.Properties
 
 # Undelete the blobs
@@ -198,8 +201,8 @@ $Blobs.ICloudBlob.Undelete()
 現在のソフト削除アイテム保持ポリシーを検索するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-   $account = Get-AzureRmStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
-   Get-AzureStorageServiceProperty -ServiceType Blob -Context $account.Context
+   $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
+   Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
 ### <a name="azure-cli"></a>Azure CLI 

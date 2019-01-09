@@ -119,7 +119,7 @@ items:
       href: how-to-customize-language-model.md
     - name: 発音をカスタマイズする
       href: how-to-customize-pronunciation.md
-    - name: カスタム音声認識エンドポイントの作成
+    - name: カスタム音声テキスト変換エンドポイントを作成する
       href: how-to-create-custom-endpoint.md
     - name: 音声フォントをカスタマイズする (ボット ブランド音声)
       href: how-to-customize-voice-font.md
@@ -226,9 +226,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: プライバシーと Cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: 16459f36ce6c65199fb609310ceac0a8863a6324
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ef61c01dcfd37d384dd098dc739840d52b9d1e5d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715037"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021188"

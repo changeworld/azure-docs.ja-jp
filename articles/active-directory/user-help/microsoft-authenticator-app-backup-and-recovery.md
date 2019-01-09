@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: b019523227bcd45e502ec84055cfb09025918331
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 623e7276ccba85b6df74291ee857613019349b7a
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406126"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993435"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する
 
@@ -76,7 +76,7 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 ### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>職場または学校アカウントに対して追加の検証を提供するには
 1.  Microsoft Authenticator アプリの **[アカウント]** 画面で、復旧するアカウントの横にあるドロップダウン矢印を選択します。
 
-    ![使用可能なアカウントとそれに関連付けられたドロップダウン矢印を表示している Microsoft Authenticator アプリ](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
+    ![使用可能なアカウントとそれに関連付けられたドロップダウン矢印を表示している Microsoft Authenticator アプリ](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additional-accts.png)
 
 2.  **[Scan QR code to recover] (QR コードをスキャンして復旧)** を選択してから、QR コードをスキャンします。
 

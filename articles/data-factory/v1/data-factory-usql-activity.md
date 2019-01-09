@@ -21,15 +21,15 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 06/27/2018
 ms.locfileid: "37050320"
 ---
-# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-usql-activity.md)
 > * [Version 2 (現在のバージョン)](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の U-SQL アクティビティ](../transform-data-using-data-lake-analytics.md)に関するページを参照してください。
 
-Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ**について説明します。 
+Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ**について説明します。
 
 Data Lake Analytics U-SQL アクティビティでパイプラインを作成する前に、Azure Data Lake Analytics アカウントを作成します。 Azure Data Lake Analytics の詳細については、 [Azure Data Lake Analytics の使用開始](../../data-lake-analytics/data-lake-analytics-get-started-portal.md)に関するページをご覧ください。
 
@@ -38,12 +38,12 @@ Data Factory、リンクされたサービス、データセット、および�
 ## <a name="supported-authentication-types"></a>サポートされている認証の種類
 U-SQL アクティビティでは、Data Lake Analytics に対して次の種類の認証をサポートしています。
 * サービス プリンシパルの認証
-* ユーザー資格情報 (OAuth) 認証 
+* ユーザー資格情報 (OAuth) 認証
 
 特に、スケジュールされた U-SQL の実行の場合は、サービス プリンシパル認証を使うことをお勧めします。 ユーザー資格情報認証では、トークンの有効期限の動作が発生する可能性があります。 構成の詳細については、「[リンクされたサービスのプロパティ](#azure-data-lake-analytics-linked-service)」セクションを参照してください。
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics リンク サービス
-**Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクします。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。 
+**Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクします。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。
 
 次の表では、JSON 定義で使用される一般的なプロパティを説明しています。 サービス プリンシパル認証とユーザー資格情報認証のいずれかをさらに選ぶことができます。
 
@@ -58,7 +58,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 ### <a name="service-principal-authentication-recommended"></a>サービス プリンシパル認証 (推奨)
 サービス プリンシパル認証を使うには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録して、Data Lake Store へのアクセス権を付与します。 詳細な手順については、「[サービス間認証](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md)」を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 * アプリケーション ID
-* アプリケーション キー 
+* アプリケーション キー
 * テナント ID
 
 次のプロパティを指定して、サービス プリンシパル認証を使います。
@@ -106,7 +106,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
             "accountName": "adftestaccount",
             "dataLakeAnalyticsUri": "azuredatalakeanalytics.net",
             "authorization": "<authcode>",
-            "sessionId": "<session ID>", 
+            "sessionId": "<session ID>",
             "subscriptionId": "<optional, subscription id of ADLA>",
             "resourceGroupName": "<optional, resource group name of ADLA>"
         }
@@ -149,17 +149,17 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-コードで使用する Data Factory クラスの詳細については、「[AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、および「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」をご覧ください。 WindowsFormsWebAuthenticationDialog クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加します。 
+コードで使用する Data Factory クラスの詳細については、「[AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、および「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」をご覧ください。 WindowsFormsWebAuthenticationDialog クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加します。
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL アクティビティ
-次の JSON のスニペットでは、Data Lake Analytics U-SQL アクティビティを使用してパイプラインを定義します。 このアクティビティ定義には、先ほど作成した Azure Data Lake Analytics リンク サービスへの参照が含まれています。   
+次の JSON のスニペットでは、Data Lake Analytics U-SQL アクティビティを使用してパイプラインを定義します。 このアクティビティ定義には、先ほど作成した Azure Data Lake Analytics リンク サービスへの参照が含まれています。
 
 ```json
 {
     "name": "ComputeEventsByRegionPipeline",
     "properties": {
         "description": "This is a pipeline to compute events for en-gb locale and date less than 2012/02/19.",
-        "activities": 
+        "activities":
         [
             {
                 "type": "DataLakeAnalyticsU-SQL",
@@ -178,7 +178,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
                         "name": "DataLakeTable"
                     }
                 ],
-                "outputs": 
+                "outputs":
                 [
                     {
                         "name": "EventsByRegionTable"
@@ -205,7 +205,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-次の表は、このアクティビティに固有のプロパティの名前と説明です。 
+次の表は、このアクティビティに固有のプロパティの名前と説明です。
 
 | プロパティ            | 説明                              | 必須                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
@@ -220,11 +220,11 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ                                        |
 | compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。</p> <ul><li>**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。</li><li>**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。</li><li>**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。</li></ul><p>このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 </p> | いいえ                                        |
 
-スクリプト定義については、 [SearchLogProcessing.txt のスクリプト定義](#sample-u-sql-script) をご覧ください。 
+スクリプト定義については、 [SearchLogProcessing.txt のスクリプト定義](#sample-u-sql-script) をご覧ください。
 
 ## <a name="sample-input-and-output-datasets"></a>入力データセットと出力データセットの例
 ### <a name="input-dataset"></a>入力データセット
-この例では、入力データは Azure Data Lake Store 内 (datalake/input フォルダーの SearchLog.tsv ファイル) にあります。 
+この例では、入力データは Azure Data Lake Store 内 (datalake/input フォルダーの SearchLog.tsv ファイル) にあります。
 
 ```json
 {
@@ -246,11 +246,11 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
             "interval": 1
         }
     }
-}    
+}
 ```
 
 ### <a name="output-dataset"></a>出力データセット
-この例では、U-SQL スクリプトで生成された出力データは、Azure Data Lake Store (datalake/output フォルダー) に格納されます。 
+この例では、U-SQL スクリプトで生成された出力データは、Azure Data Lake Store (datalake/output フォルダー) に格納されます。
 
 ```json
 {
@@ -270,7 +270,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 
 ### <a name="sample-data-lake-store-linked-service"></a>Data Lake Store のリンクされたサービスのサンプル
-入力/出力データセットで使用される Azure Data Lake Store にリンクされたサービスの定義例を次に示します。 
+入力/出力データセットで使用される Azure Data Lake Store にリンクされたサービスの定義例を次に示します。
 
 ```json
 {
@@ -287,7 +287,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-JSON プロパティについては、 [Azure Data Lake Store との間のデータの移動](data-factory-azure-datalake-connector.md) に関する記事を参照してください。 
+JSON プロパティについては、 [Azure Data Lake Store との間のデータの移動](data-factory-azure-datalake-connector.md) に関する記事を参照してください。
 
 ## <a name="sample-u-sql-script"></a>U-SQL スクリプトのサンプル
 
@@ -313,7 +313,7 @@ WHERE Region == "en-gb";
     FROM @rs1
     WHERE Start <= DateTime.Parse("2012/02/19");
 
-OUTPUT @rs1   
+OUTPUT @rs1
     TO @out
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
@@ -323,7 +323,7 @@ U-SQL スクリプトの **@in** パラメーターと **@out** パラメータ�
 Azure Data Lake Analytics サービスで実行されるジョブのパイプライン定義で、他のプロパティ (degreeOfParallelism など) や優先度も指定できます。
 
 ## <a name="dynamic-parameters"></a>動的パラメーター
-パイプライン定義のサンプルでは、in パラメーターと out パラメーターにハード コーディングされた値が割り当てられています。 
+パイプライン定義のサンプルでは、in パラメーターと out パラメーターにハード コーディングされた値が割り当てられています。
 
 ```json
 "parameters": {
@@ -332,7 +332,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 }
 ```
 
-代わりに、動的パラメーターを使用することもできます。 例:  
+代わりに、動的パラメーターを使用することもできます。 例:
 
 ```json
 "parameters": {
@@ -341,6 +341,4 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 }
 ```
 
-この場合、入力ファイルは引き続き /datalake/input フォルダーから取得され、出力ファイルは /datalake/output フォルダーに生成されます。 ファイル名はスライス開始時刻に基づいて動的に指定されます。  
-
-
+この場合、入力ファイルは引き続き /datalake/input フォルダーから取得され、出力ファイルは /datalake/output フォルダーに生成されます。 ファイル名はスライス開始時刻に基づいて動的に指定されます。

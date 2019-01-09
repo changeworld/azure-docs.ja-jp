@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 5b8db52623eead2800b0a5d8154a222573808750
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6254a32349a0f7c743c3fb4993080ca3437c8276
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192432"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810272"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
@@ -124,4 +124,4 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
 
 ## <a name="next-steps"></a>次の手順
 - Log Analytics のデータの収集方法、処理方法、保護方法については、「[Log Analytics データのセキュリティ](../../azure-monitor/platform/data-security.md)」をご覧ください。
-- Application Insights のデータが収集、処理、セキュリティ保護される方法について詳しくは、[Application Insights データのセキュリティ](../../application-insights/app-insights-data-retention-privacy.md)に関するページをご覧ください。
+- Application Insights のデータが収集、処理、セキュリティ保護される方法について詳しくは、[Application Insights データのセキュリティ](../../azure-monitor/app/data-retention-privacy.md)に関するページをご覧ください。

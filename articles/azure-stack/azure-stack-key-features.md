@@ -12,38 +12,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 38120b2be2ab7789946a4ad2fe688954e6212189
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 21a6eeb4b0a83574be4c5c996e43d9867c3249d0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959028"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185734"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack の主要な機能と概念
 Microsoft Azure Stack を初めて使う場合は、次の用語と機能の説明を参考にしてください。
 
 ## <a name="personas"></a>ペルソナ
-Microsoft Azure Stack には、クラウド オペレーター (プロバイダー) とテナント (消費者) という 2 種類のユーザーが存在します。
+Microsoft Azure Stack には、オペレーターとユーザーという 2 種類のユーザーが存在します。
 
-* **クラウド オペレーター**は、Azure Stack を構成し、オファー、プラン、サービス、クォータ、および価格を管理して、テナントにリソースを提供できます。  さらに、クラウド オペレーターは、容量を管理し、アラートに対処します。  
-* **テナント** (ユーザーとも呼ばれます) は、クラウド管理者が提供するオファーを購入します。 テナントは、サブスクライブしたサービス (Web Apps、Storage、Virtual Machines など) のプロビジョニング、監視、管理を行うことができます。
+* Azure Stack **オペレーター**は、Azure Stack を構成し、オファー、プラン、サービス、クォータ、および価格を管理して、テナント ユーザーにリソースを提供できます。 さらに、オペレーターは、容量を管理し、アラートに対処します。  
+* Azure Stack **ユーザー** (テナントとも呼ばれます) は、オペレーターが提供するサービスを使用します。 ユーザーは、サブスクライブしたサービス (Web アプリ、Storage、Virtual Machines など) のプロビジョニング、監視、管理を行うことができます。
 
 ## <a name="portal"></a>ポータル
-Microsoft Azure Stack を操作する主な方法は、管理者ポータル、ユーザー ポータル、および PowerShell です。
+Microsoft Azure Stack を操作する主な方法は、管理ポータル、ユーザー ポータル、および PowerShell です。
 
-Azure Stack のポータルは、それぞれが Azure Resource Manager の個別のインスタンスでサポートされています。  クラウド オペレーターは、管理者ポータルを使用して Azure Stack を管理し、テナントに提供するサービスの作成などの処理を行います。  ユーザー ポータル (テナント ポータルとも呼ばれます) は、仮想マシンやストレージ アカウント、Web Apps などのクラウド リソースを消費するためのセルフ サービス エクスペリエンスを提供します。 詳細については、「[Using the Azure Stack administrator and user portals](azure-stack-manage-portals.md)」(Azure Stack の管理者ポータルとユーザーポータルの使用) を参照してください。
+Azure Stack のポータルは、それぞれが Azure Resource Manager の個別のインスタンスでサポートされています。 オペレーターは、管理ポータルを使用して Azure Stack を管理し、テナントに提供するサービスの作成などの処理を行います。 ユーザー ポータル (テナント ポータルとも呼ばれます) は、仮想マシンやストレージ アカウント、Web アプリなどのクラウド リソースを消費するためのセルフ サービス エクスペリエンスを提供します。 詳細については、「[Using the Azure Stack administrator and user portals](azure-stack-manage-portals.md)」(Azure Stack の管理者ポータルとユーザーポータルの使用) を参照してください。
 
 ## <a name="identity"></a>ID 
-Azure Stack は、ID プロバイダーとして Azure Active Directory (AAD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用します。  
+Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用します。  
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
-Azure Active Directory は、マイクロソフトが提供するクラウドベースのマルチテナント対応 ID プロバイダーです。  ほとんどのハイブリッド シナリオでは、ID ストアとして Azure Active Directory を使用します。
+Azure AD は、マイクロソフトが提供するクラウドベースのマルチテナント対応 ID プロバイダーです。 ほとんどのハイブリッド シナリオでは、ID ストアとして Azure AD を使用します。
 
 ### <a name="active-directory-federation-services"></a>Active Directory フェデレーション サービス (AD FS)
-Azure Stack のオフラインでの展開に Active Directory フェデレーション サービス (AD FS) を使用することを選択できます。  Azure Stack、リソース プロバイダー、およびその他のアプリケーションは、Azure Active Directory を使用するのとほぼ同じ方法で AD FS を使用します。 Azure Stack には、独自の AD FS および Active Directory インスタンスと、Active Directory Graph API が含まれています。 Azure Stack Development Kit は、次の AD FS シナリオをサポートします。
+Azure Stack のオフラインでの展開に Active Directory フェデレーション サービス (AD FS) を使用することを選択できます。 Azure Stack、リソース プロバイダー、およびその他のアプリケーションは、Azure AD を使用するのとほぼ同じ方法で AD FS を使用します。 Azure Stack には、独自の Active Directory インスタンスと、Active Directory Graph API が含まれています。 Azure Stack Development Kit は、次の AD FS シナリオをサポートします。
 
 - AD FS を使用して展開にサインインする
 - Key Vault 内のシークレットを使用して仮想マシンを作成する
@@ -93,9 +93,9 @@ Microsoft Azure Stack によって、プロバイダーは、仮想マシンや 
 Azure Resource Manager を使用することで、インフラストラクチャのリソースをテンプレート ベースの宣言型モデルで操作できます。   それは、ソリューション コンポーネントのデプロイと管理に使用できる単一のインターフェイスを備えています。 詳しい説明とガイダンスについては、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
 
 ### <a name="resource-groups"></a>リソース グループ
-リソース グループは、リソース、サービス、およびアプリケーションのコレクションであり、各リソースには、仮想マシン、仮想ネットワーク、パブリック IP、ストレージ アカウント、Web サイトなどの種類があります。 各リソースは、リソース グループに属する必要があります。このため、リソース グループを使用して、ワークロード別や場所別などにリソースを論理的に整理できます。  Microsoft Azure Stack では、プランやオファーなどのリソースもリソース グループで管理される。
+リソース グループは、リソース、サービス、およびアプリケーションのコレクションであり、各リソースには、仮想マシン、仮想ネットワーク、パブリック IP、ストレージ アカウント、Web サイトなどの種類があります。 各リソースは、リソース グループに属する必要があります。このため、リソース グループを使用して、ワークロード別や場所別などにリソースを論理的に整理できます。 Azure Stack では、プランやオファーなどのリソースもリソース グループで管理されます。
 
-[Azure](../azure-resource-manager/resource-group-move-resources.md) とは異なり、リソース グループ間でリソースを移動することはできません。 Azure Stack 管理ポータルでリソースまたはリソース グループのプロパティを表示すると、*[移動]* ボタンが淡色表示となり、クリックできません。 
+[Azure](../azure-resource-manager/resource-group-move-resources.md) とは異なり、リソース グループ間で Azure Stack リソースを移動することはできません。 Azure Stack 管理ポータルでリソースまたはリソース グループのプロパティを表示すると、*[移動]* ボタンが淡色表示となり、クリックできません。 さらに、リソース グループまたはリソース グループ項目のプロパティからの**リソース グループの変更**または**サブスクリプションの変更**アクションの使用もサポートされていません。 試行されたすべて移動操作は失敗します。
  
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 Azure Resource Manager を使用して、アプリケーションのデプロイと構成を定義する (JSON 形式の) テンプレートを作成できます。 このテンプレートは Azure リソース マネージャー テンプレートと呼ばれ、デプロイメントの定義を宣言できます。 テンプレートを使用すると、アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできるほか、常にリソースが一貫した状態でデプロイされます。
@@ -103,7 +103,7 @@ Azure Resource Manager を使用して、アプリケーションのデプロイ
 ## <a name="resource-providers-rps"></a>リソース プロバイダー (RP)
 リソース プロバイダーは、Azure ベースのあらゆる IaaS サービスと PaaS サービスの基盤となる Web サービスです。 Azure Resource Manager は、さまざまな RP を使用してサービスへのアクセスを提供します。
 
-ネットワーク、ストレージ、コンピューティング、KeyVault という 4 つの基本的な RP があります。 各 RP を使用して、それぞれのリソースを構成および制御できます。 サービス管理者は、新しいカスタム リソース プロバイダーを追加することもできます。
+これには次の 4 つの基本的な RP があります。ネットワーク、ストレージ、コンピューティング、および KeyVault です。 各 RP を使用して、それぞれのリソースを構成および制御できます。 サービス管理者は、新しいカスタム リソース プロバイダーを追加することもできます。
 
 ### <a name="compute-rp"></a>コンピューティング RP
 コンピューティング リソース プロバイダー (CRP) では、Azure Stack テナントが独自の仮想マシンを作成できます。 CRP には、仮想マシンと仮想マシン拡張機能を作成する機能があります。 仮想マシン拡張機能サービスは、Windows および Linux の仮想マシンで使用する IaaS 機能を提供します。  たとえば、CRP を使用して Linux 仮想マシンをプロビジョニングし、デプロイ中に Bash スクリプトを実行して VM を構成できます。
@@ -129,7 +129,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 KeyVault RP は、パスワードや証明書などのシークレットの管理と監査を提供します。 たとえば、テナントは、KeyVault RP を使用して、VM のデプロイ中に管理者のパスワードやキーを指定できます。
 
 ## <a name="high-availability-for-azure-stack"></a>Azure Stack の高可用性
-*対象: Azure Stack 1802 以降のバージョン*
+*適用対象: Azure Stack 1802 以降のバージョン*
 
 Azure でのマルチ VM による実稼働システムの高可用性を実現するため、VM は、複数の障害ドメインと更新ドメインに分散される可用性セットに配置されます。 この方法では、次の図に示すように[可用性セットにデプロイされた VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) が複数のサーバー ラックに互いに物理的に分離され、障害からの回復性が考慮されています。
 
@@ -150,7 +150,7 @@ Azure Stack バージョン 1802 より前に作成された可用性セット�
 ## <a name="role-based-access-control-rbac"></a>ロールベースの Access Control (RBAC)
 RBAC を使用して、承認されたユーザー、グループ、およびサービスに対してサブスクリプション、リソース グループ、または個々のリソース レベルでロールを割り当てることによって、システムへのアクセスを許可することができます。 各ロールは、Microsoft Azure Stack のリソースに対するユーザー、グループ、またはサービスのアクセス レベルを定義します。
 
-Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロール (所有者、共同作成者、および閲覧者) があります。 所有者は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。 作成協力者は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。 閲覧者は、既存の Azure リソースを表示できるのみです。 残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの作成協力者ロールでは、仮想マシンの作成と管理は許可されますが、仮想マシンが接続する仮想ネットワークまたはサブネットの管理は許可されません。
+Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロールがあります。所有者、共同作成者、および閲覧者です。 所有者は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。 作成協力者は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。 閲覧者は、既存の Azure リソースを表示できるのみです。 残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの作成協力者ロールでは、仮想マシンの作成と管理は許可されますが、仮想マシンが接続する仮想ネットワークまたはサブネットの管理は許可されません。
 
 ## <a name="usage-data"></a>使用状況データ
 Microsoft Azure Stack は、すべてのリソース プロバイダーの使用状況データを収集して集約し、Azure コマースによる処理のために Azure に送信します。 Azure Stack で収集された使用状況データは、REST API を使用して表示できます。 Azure と一貫性のある Tenant API だけでなく、Provider および Delegated Provider API を使用して、すべてのテナント サブスクリプション全体の使用状況データを取得できます。 このデータは、請求や配賦のために外部のツールやサービスと統合できます。 Azure コマースによって処理された使用状況は、Azure の課金ポータルに表示できます。

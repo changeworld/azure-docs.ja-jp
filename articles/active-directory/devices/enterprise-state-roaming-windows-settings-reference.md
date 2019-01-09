@@ -24,7 +24,7 @@ ms.lasthandoff: 10/25/2018
 ms.locfileid: "50129215"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
-以下に示したのは、Windows 10 でローミングまたはバックアップされる全設定の一覧です。
+以下に示したのは、Windows 10 でローミングまたはバックアップされる全設定の一覧です。 
 
 ## <a name="devices-and-endpoints"></a>デバイスとエンドポイント
 次の表は、Windows 10 における同期、バックアップ、復元のフレームワークでサポートされるデバイスとアカウントの種類をまとめたものです。
@@ -42,11 +42,11 @@ ms.locfileid: "50129215"
 ## <a name="windows-settings-overview"></a>Windows 設定の概要
 Windows 10 デバイス上の設定に対する同期操作は、エンド ユーザーが次の設定グループを使って有効/無効にすることができます。
 
-* テーマ: デスクトップの背景、ユーザー タイル、タスク バーの位置など
-* Internet Explorer の設定: 閲覧の履歴、入力された URL、お気に入りなど
-* パスワード: Windows 資格情報マネージャー (Wi-Fi プロファイルを含む)
-* 言語設定: スペル チェック辞書、システムの言語設定
-* コンピューターの簡単操作: ナレーター、スクリーン キーボード、拡大鏡
+* テーマ: デスクトップの背景、ユーザー タイル、タスク バーの位置など 
+* Internet Explorer の設定: 閲覧の履歴、入力された URL、お気に入りなど 
+* パスワード: Windows 資格情報マネージャー (Wi-Fi プロファイルを含む) 
+* 言語設定: スペル チェック辞書、システムの言語設定 
+* コンピューターの簡単操作: ナレーター、スクリーン キーボード、拡大鏡 
 * その他の Windows 設定: 「Windows 設定の詳細」を参照
 * Edge ブラウザーの設定: Microsoft Edge のお気に入り、リーディング リスト、その他の設定
 
@@ -56,12 +56,12 @@ Microsoft Edge ブラウザーの設定 (お気に入り、リーディング �
 
 ![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
-Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer の設定グループ (お気に入り、入力された URL) の同期を、Internet Explorer の [設定] メニュー オプションを使ってエンドユーザーが有効または無効にすることができます。
+Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer の設定グループ (お気に入り、入力された URL) の同期を、Internet Explorer の [設定] メニュー オプションを使ってエンドユーザーが有効または無効にすることができます。 
 
 ![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Windows 設定の詳細
-以下の表で "設定" の "グループ" 列に記載した "その他" という項目は、[設定]、[アカウント]、[設定の同期]、[その他の Windows の設定] の順にアクセスして無効にできる設定を表します。
+以下の表で "設定" の "グループ" 列に記載した "その他" という項目は、[設定]、[アカウント]、[設定の同期]、[その他の Windows の設定] の順にアクセスして無効にできる設定を表します。 
 
 「設定」の「グループ」列に "内部" と書かれている設定とアプリは、アプリ本体の同期機能から無効にするか、モバイル デバイス管理 (MDM) またはグループ ポリシーの設定を使いデバイス全体の同期を無効にすることによってのみ無効にすることができます。
 所属グループの記載がない設定は、ローミングも同期もされない設定です。
@@ -178,8 +178,9 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **Wi-Fi**: Wi-Fi プロファイル (WPA のみ) |sync |sync |パスワード |
 
 ###### <a name="footnote-1"></a>脚注 1
-サポートされる Windows Creators Update の最小 OS バージョン (ビルド 15063)。
+サポートされる Windows Creators Update の最小 OS バージョン (ビルド 15063)。 
 
 ## <a name="next-steps"></a>次の手順
 
 概要については、「[Enterprise State Roaming の概要](enterprise-state-roaming-overview.md)」を参照してください。
+

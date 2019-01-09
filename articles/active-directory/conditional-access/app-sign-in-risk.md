@@ -13,17 +13,17 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 65f740e23b68727bdffa4a966518b1581fb5b0a6
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: abd9aeab88dc723ddcdff90ce58268296841dc4e
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604367"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413304"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>クイック スタート: Azure Active Directory の条件付きアクセスを使用して、セッションのリスクが検出されたときにアクセスをブロックする  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 
 環境を保護された状態で維持するために、疑わしいユーザーによるサインイン アクティビティをブロックすることができます。 [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) では、各サインインを分析して、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性を算出します。 可能性 (低、中、高) は、[サインイン リスク レベル](conditions.md#sign-in-risk)と呼ばれる計算値の形で示されます。 サインイン リスクの条件を設定することで、特定のサインイン リスク レベルに応じた条件付きアクセス ポリシーを構成できます。 
 
@@ -66,11 +66,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このセクションでは、必要な条件付きアクセス ポリシーを作成する方法について説明します。 ポリシーに以下の内容を設定します。
 
-|Setting |値|
+|設定 |値|
 |---     | --- |
 | ユーザーとグループ | Alain Charon  |
 | クラウド アプリ | すべてのクラウド アプリ |
-| サインイン リスク | Medium |
+| サインイン リスク | 中 |
 | 許可 | アクセスのブロック |
  
 
@@ -87,7 +87,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure Active Directory](./media/app-sign-in-risk/02.png)
 
-3. **[Azure Active Directory]** ページの **[管理]** セクションで、**[条件付きアクセス]** をクリックします。
+3. **[Azure Active Directory]** ページの **[セキュリティ]** セクションで、**[条件付きアクセス]** をクリックします。
 
     ![条件付きアクセス](./media/app-sign-in-risk/03.png)
  
@@ -212,7 +212,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![多要素認証](./media/app-sign-in-risk/33.png)
 
-- Tor Browser を削除する手順については、「[Uninstalling (アンインストール)](https://tb-manual.torproject.org/en-US/uninstalling.html)」を参照してください。
+- Tor Browser を削除する手順については、「[Uninstalling (アンインストール)](https://tb-manual.torproject.org/uninstalling/)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

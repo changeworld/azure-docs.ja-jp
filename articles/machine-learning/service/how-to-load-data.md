@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9d3b72e62c778d02b25b082643e0de4c6cc09a60
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 86823579286ac0b8fae39c265b387ea6b4ad99ee
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190766"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755242"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの読み込みと読み取り
 
@@ -139,7 +139,7 @@ dataflow.head(5)
 出力には、2 番目のシート内のデータに、ヘッダーより前に 3 つの空の行があったことが示されています。 `read_excel()` 関数には、行のスキップとヘッダーの使用のための省略可能なパラメーターが含まれています。 次のコードを実行して最初の 3 行をスキップし、4 行目をヘッダーとして使用します。
 
 ```python
-dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_header=True, skip_rows=3)
+dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
 ```
 
 ||RANK|タイトル|スタジオ|世界全域|国内 / %|列 1|海外 / %|列 2|年 ^|

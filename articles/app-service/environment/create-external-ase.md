@@ -1,5 +1,5 @@
 ---
-title: 外部 Azure App Service Environment を作成する
+title: 外部 App Service 環境の作成 - Azure
 description: アプリまたはスタンドアロンの作成中に Azure App Service Environment を作成する方法について説明します。
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 0ee2654b313f453f7485c89c789edc8efc068d7b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 5ab5c769280bdd91a15e6107df8c9c6b7814571c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442651"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599912"
 ---
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成 #
 
@@ -33,7 +34,7 @@ Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内の
 
 ASE を作成した後は、次の変更は行えません。
 
-- Location
+- 場所
 - サブスクリプション
 - リソース グループ
 - 使用する VNet
@@ -64,27 +65,27 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
     ![Web アプリの作成][1]
 
-1. サブスクリプションを選択します。 アプリと ASE は、同じサブスクリプションに作成されます。
+2. サブスクリプションを選択します。 アプリと ASE は、同じサブスクリプションに作成されます。
 
-1. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」をご覧ください。
+3. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」をご覧ください。
 
-1. お使いの OS (Windows、Linux、Docker) を選択します。 
+4. お使いの OS (Windows、Linux、Docker) を選択します。 
 
-1. App Service プランを選択し、**[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
+5. App Service プランを選択し、**[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
 
     ![新しい App Service プラン][2]
 
-1. **[場所]** ドロップダウン リストで、ASE を作成するリージョンを選択します。 既存の ASE を選択した場合、新しい ASE は作成されません。 選択した ASE に、App Service プランが作成されます。 
+6. **[場所]** ドロップダウン リストで、ASE を作成するリージョンを選択します。 既存の ASE を選択した場合、新しい ASE は作成されません。 選択した ASE に、App Service プランが作成されます。 
 
-1. **[価格レベル]** を選択し、**[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、**[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、**[分離]** 以外の他の価格 SKU は使用できません。 
+7. **[価格レベル]** を選択し、**[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、**[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、**[分離]** 以外の他の価格 SKU は使用できません。 
 
     ![価格レベルの選択][3]
 
-1. ASE の名前を入力します。 この名前は、アプリのアドレス可能な名前に使用されます。 たとえば、ASE の名前が _appsvcenvdemo_ の場合、ドメイン名は *.appsvcenvdemo.p.azurewebsites.net* になります。 ここで *mytestapp* という名前のアプリを作成した場合、この Web アプリのアドレスは mytestapp.appsvcenvdemo.p.azurewebsites.net になります。 名前に空白文字は使用できません。 大文字を使用した場合、ドメイン名はその名前をすべて小文字で表記したバージョンになります。
+8. ASE の名前を入力します。 この名前は、アプリのアドレス可能な名前に使用されます。 たとえば、ASE の名前が _appsvcenvdemo_ の場合、ドメイン名は *.appsvcenvdemo.p.azurewebsites.net* になります。 ここで *mytestapp* という名前のアプリを作成した場合、この Web アプリのアドレスは mytestapp.appsvcenvdemo.p.azurewebsites.net になります。 名前に空白文字は使用できません。 大文字を使用した場合、ドメイン名はその名前をすべて小文字で表記したバージョンになります。
 
     ![新しい App Service プラン名][4]
 
-1. Azure の仮想ネットワークの詳細を指定します。 **[新規作成]** または **[既存のものを選択]** のいずれかを選択します。 既存の VNet を選択するオプションは、選択したリージョンに VNet がある場合にのみ使用できます。 **[新規作成]** を選択した場合、VNet の名前を入力します。 その名前の新しい Resource Manager VNet が作成されます。 選択したリージョンのアドレス空間 `192.168.250.0/23` が使用されます。 **[既存のものを選択]** を選択した場合は、次のことを行う必要があります。
+9. Azure の仮想ネットワークの詳細を指定します。 **[新規作成]** または **[既存のものを選択]** のいずれかを選択します。 既存の VNet を選択するオプションは、選択したリージョンに VNet がある場合にのみ使用できます。 **[新規作成]** を選択した場合、VNet の名前を入力します。 その名前の新しい Resource Manager VNet が作成されます。 選択したリージョンのアドレス空間 `192.168.250.0/23` が使用されます。 **[既存のものを選択]** を選択した場合は、次のことを行う必要があります。
 
     a. 複数ある場合は、VNet のアドレス ブロックを選択します。
 
@@ -94,7 +95,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
     d. サブネット IP の範囲を選択します。
 
-1. **[作成]** を選択して、ASE を作成します。 このプロセスにより、App Service プランとアプリも作成されます。 ASE、App Service プラン、およびアプリはすべて同じサブスクリプションの下に作成され、同じリソース グループに入ります。 ご使用の ASE に別のリソース グループが必要な場合、または ILB ASE が必要な場合は、単独で ASE を作成する手順に進みます。
+10. **[作成]** を選択して、ASE を作成します。 このプロセスにより、App Service プランとアプリも作成されます。 ASE、App Service プラン、およびアプリはすべて同じサブスクリプションの下に作成され、同じリソース グループに入ります。 ご使用の ASE に別のリソース グループが必要な場合、または ILB ASE が必要な場合は、単独で ASE を作成する手順に進みます。
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>カスタム Docker イメージを一緒に使用して ASE と Linux Web アプリを作成する
 
@@ -196,8 +197,8 @@ ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Int
 [NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[webapps]: ../app-service-web-overview.md
+[webapps]: ../overview.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md

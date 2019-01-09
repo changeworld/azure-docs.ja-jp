@@ -3,7 +3,7 @@ title: Azure Marketplace 向けの VHD からの VM のデプロイ | Microsoft 
 description: Azure にデプロイされた VHD からの VM を登録する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: pbutlerm
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 2771549af29b3e717d117afb42de6db03fbee226
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 9157ce7f8f16bc60a6d5c16fa992a5402cf2d7ad
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639129"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190732"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>VHD からの VM のデプロイ
 
-この記事では、Azure にデプロイされた仮想ハード ディスク (VHD) からの仮想マシン (VM) を登録する方法について説明します。  必要なツールのリストと、それらのツールを使ってユーザー VM イメージを作成してから、それを [Microsoft Azure portal](https://ms.portal.azure.com/) または PowerShell スクリプトのいずれかを使って Azure にデプロイする方法について示します。 
+このセクションでは、Azure にデプロイされた仮想ハード ディスク (VHD) からの仮想マシン (VM) をデプロイする方法について説明します。  必要なツールを一覧し、それらのツールを使ってユーザー VM イメージを作成し、PowerShell スクリプトを使って Azure にデプロイする方法を説明しています。
 
 仮想ハード ディスク (VHD) —汎用化されたオペレーティング システム VHD および 0 個以上のデータ ディスク VHD—を Azure ストレージ アカウントにアップロードした後、これらをユーザー VM イメージとして登録できます。 その後、そのイメージをテストできます。 オペレーティング システム VHD は汎用化されるため、VHD URL を指定して VM を直接デプロイすることはできません。
 
@@ -33,48 +33,23 @@ VM イメージの詳細については、次のブログを参照してくだ�
 - [VM Image PowerShell 'How To' (VM イメージ PowerShell ハウツー)](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 
 
-## <a name="set-up-the-necessary-tools"></a>必要なツールをセットアップする
+## <a name="prerequisite-install-the-necessary-tools"></a>前提条件: 必要なツールのインストール
 
 Azure PowerShell と Azure CLI をまだインストールしていない場合は、次の指示に従ってインストールします。
-
-<!-- TD: Change the following URLs (in this entire topic) to relative paths.-->
 
 - [PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)
 - [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
-## <a name="create-a-user-vm-image"></a>ユーザー VM イメージの作成
+## <a name="deployment-steps"></a>デプロイメントの手順
 
-次に、汎用化した VHD からアンマネージド イメージを作成します。
+次の手順を使用して、ユーザー VM イメージを作成してデプロイします。
 
-#### <a name="capture-the-vm-image"></a>VM イメージのキャプチャ
+1. ユーザー VM イメージを作成します。この場合、イメージのキャプチャと汎用化が必要となります。 
+2. 証明書を作成し、新しい Azure Key Vault に格納します。 証明書は、VM 上でセキュリティ保護された WinRM 接続を確立するために必要です。  Azure Resource Manager テンプレートと Azure PowerShell スクリプトが提供されます。 
+3. 指定されたテンプレートとスクリプトを使用して、ユーザー VM イメージから VM をデプロイします。
 
-VM のキャプチャに関する次の記事から、アクセス方法に対応する手順を使用してください。
-
--  PowerShell: [Azure VM からアンマネージド VM イメージを作成する方法](../../../virtual-machines/windows/capture-image-resource.md)
--  Azure CLI: [仮想マシンまたは VHD のイメージを作成する方法](../../../virtual-machines/linux/capture-image.md)
--  API: [Virtual Machines - キャプチャ](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
-
-### <a name="generalize-the-vm-image"></a>VM イメージの汎用化
-
-以前に汎用化した VHD からユーザー イメージを生成しているため、これも汎用化する必要があります。  ここでも、アクセス メカニズムに対応する記事を次から選択します。  (ディスクをキャプチャしたときに、既に汎用化している可能性があります。)
-
--  PowerShell: [VM の汎用化](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
--  Azure CLI: [手順 2. VM イメージを作成する](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
--  API: [Virtual Machines - 汎用化](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
-
-
-## <a name="deploy-a-vm-from-a-user-vm-image"></a>ユーザー VM イメージからの VM のデプロイ
-
-次に、Azure portal または PowerShell を使用して、ユーザー VM イメージから VM をデプロイします。
-
-<!-- TD: Recapture following hilited images and replace with red-box. -->
-
-### <a name="deploy-a-vm-from-azure-portal"></a>Azure portal からの VM のデプロイ
-
-次のプロセスを使用して、Azure portal から VM をデプロイします。
-
-1.  [Azure Portal](https://portal.azure.com) にサインインします。
+使用する VM がデプロイされたら、[VM イメージを認定](./cpp-certify-vm.md)する準備が整います。
 
 2.  **[新規]** をクリックして、**[テンプレートのデプロイ]** を検索し、**[エディターで独自のテンプレートを作成する]** を選択します。  <br/>
   ![Azure portal で VHD デプロイ テンプレートを作成する](./media/publishvm_021.png)
@@ -95,7 +70,7 @@ VM のキャプチャに関する次の記事から、アクセス方法に対�
    | 管理パスワード              | 新しい VM の管理者アカウントのパスワード                                  |
    | [OS Type]\(OS の種類\)                     | VM オペレーティング システム: `Windows` \| `Linux`                                    |
    | サブスクリプション ID             | 選択したサブスクリプションの識別子                                      |
-   | Location                    | デプロイの地理的な場所                                        |
+   | 場所                    | デプロイの地理的な場所                                        |
    | VM サイズ                     | [Azure VM サイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)、例`Standard_A2` |
    | パブリック IP アドレス名      | パブリック IP アドレスの名前                                               |
    | VM 名                     | 新しい VM の名前                                                           |
@@ -121,10 +96,8 @@ Azure はデプロイを開始します。これにより、指定のストレ�
     New-AzureVM -ServiceName "VMImageCloudService" -VMs $myVM -Location "West US" -WaitForBoot
 ```
 
-<!-- TD: The following is a marketplace-publishing article and may be out-of-date.  TD: update and move topic.
-For help with issues, see [Troubleshooting common issues encountered during VHD creation](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting) for additional assistance.
--->
 
 ## <a name="next-steps"></a>次の手順
 
-VM のデプロイが完了したら、[VM を構成](./cpp-configure-vm.md)する準備が整います。
+次に、ご自分のソリューション用の[ユーザー VM イメージを作成](cpp-create-user-image.md)します。
+

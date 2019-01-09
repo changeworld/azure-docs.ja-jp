@@ -3,7 +3,7 @@ title: Elastic Database ジョブのインストールの概要 | Microsoft Docs
 description: 弾力性ジョブの機能のインストールについて説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: c2fb3ae20ea2b6ba71408a734c1e0c82cbeb699c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cc322f44760ddf0a7cd28751c895a7c4938dbbc0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233577"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867242"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
 
@@ -51,7 +51,7 @@ ms.locfileid: "51233577"
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
 
 ## <a name="install-the-elastic-database-jobs-components-using-powershell"></a>PowerShell を使用して Elastic Database ジョブ コンポーネントをインストールする
-1. Microsoft Azure PowerShell コマンド ウィンドウを開き、cd \tools と入力して、Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x フォルダー以下の \tools サブディレクトリに移動します。
+1. Microsoft Azure PowerShell コマンド ウィンドウを開き、Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x フォルダー以下の \tools サブディレクトリに移動します(cd \tools と入力します)
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 

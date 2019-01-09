@@ -4,14 +4,14 @@ description: Azure へのディザスター リカバリー時にレプリケー
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 851da02ebd7486c0e96451a14086eb95d81968b4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7de9dc497b1c9ee29b46aa0d645b7b28676cb22d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213204"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849022"
 ---
 # <a name="exclude-disks-from-replication"></a>レプリケーションからディスクを除外する
 この記事では、ディスクをレプリケーションから除外する方法について説明します。 除外することにより、レプリケーションによる帯域幅の消費や、このようなディスクによって使用されるターゲット側のリソースを最適化できます。
@@ -57,7 +57,7 @@ Azure Site Recovery ポータルで[レプリケーションを有効にする](
 - SQL Server の tempdb 用ディスク
 - ページング ファイル (pagefile.sys) 用ディスク
 
-## <a name="excample-1-exclude-the-sql-server-tempdb-disk"></a>例 1: SQL Server の tempdb 用ディスクを除外する
+## <a name="excample-1-exclude-the-sql-server-tempdb-disk"></a>例 1:SQL Server の tempdb 用ディスクを除外する
 除外できる tempdb が存在する SQL Server 仮想マシンを考えてみましょう。
 
 仮想ディスクの名前は SalesDB です。
@@ -160,12 +160,12 @@ DB-Disk2 (除外されたディスク) | Disk2 | E:\ | 一時ファイル
 DB-Disk3 (除外されたディスク) | Disk3 | F:\ | SQL tempdb データベース (フォルダーのパスは F:\MSSQL\Data\)
 DB-Disk4 | Disk4 | G:\ | ユーザー データベース 2
 
-## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>例 2: ページング ファイル (pagefile.sys) 用ディスクを除外する
+## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>例 2:ページング ファイル (pagefile.sys) 用ディスクを除外する
 
 除外できるページング ファイル ディスクが存在する仮想マシンを考えてみましょう。
 次の 2 つのケースがあります。
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>ケース 1: ページング ファイルが D: ドライブ上で構成されている
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>ケース 1:ページング ファイルが D: ドライブ上で構成されている
 ディスク構成を次に示します。
 
 **ディスク名** | **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
@@ -194,7 +194,7 @@ Azure 仮想マシンにおけるページング ファイルの設定を次に�
 
 ![Azure 仮想マシンにおけるページング ファイルの設定](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>ケース 2: ページング ファイルが他のドライブ (D: 以外のドライブ) 上で構成されている
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>ケース 2:ページング ファイルが他のドライブ (D: 以外のドライブ) 上で構成されている
 
 ソース仮想マシンのディスク構成を次に示します。
 

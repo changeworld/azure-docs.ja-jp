@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 8506238e41c5d9dac8d76d729d4919b30a0528b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ccdb8254551d0009a71cc047b8399a539edb8e2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23124350"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866852"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>DMZ で使用するサンプル アプリケーション
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -132,8 +132,8 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     $MainPage | Out-File -FilePath "C:\inetpub\wwwroot\Home.aspx" -Encoding ascii
     $WebConfig | Out-File -FilePath "C:\inetpub\wwwroot\Web.config" -Encoding ascii
 
-# Set App Pool to Clasic Pipeline to remote file access will work easier
-    Write-Host "Updaing IIS Settings" -ForegroundColor Cyan
+# Set App Pool to Classic Pipeline to remote file access will work easier
+    Write-Host "Updating IIS Settings" -ForegroundColor Cyan
     c:\windows\system32\inetsrv\appcmd.exe set app "Default Web Site/" /applicationPool:".NET v4.5 Classic"
     c:\windows\system32\inetsrv\appcmd.exe set config "Default Web Site/" /section:system.webServer/security/authentication/anonymousAuthentication /userName:$theAdmin /password:$thePassword /commit:apphost
 
@@ -142,7 +142,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     Restart-Service -Name W3SVC
 
     Write-Host
-    Write-Host "Web App Creation Successfull!" -ForegroundColor Green
+    Write-Host "Web App Creation Successful!" -ForegroundColor Green
     Write-Host
 ```
 
@@ -189,14 +189,14 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0
 
     Write-Host
-    Write-Host "File Server Set up Successfull!" -ForegroundColor Green
+    Write-Host "File Server Set up Successful!" -ForegroundColor Green
     Write-Host
 ```
 
 ## <a name="dns01---dns-server-installation-script"></a>DNS01 - DNS サーバーのインストール スクリプト
 このサンプル アプリケーションには、DNS サーバーをセットアップするためのスクリプトは含まれていません。 ファイアウォール ルール、NSG、または UDR のテストに DNS トラフィックを含める必要がある場合は、DNS01 サーバーを手動でセットアップする必要があります。 両方の例で使用するネットワーク構成 xml ファイルおよび Resource Manager テンプレートには、プライマリ DNS サーバーとして DNS01 が含まれ、バックアップ DNS サーバーとしてレベル 3 でホストされるパブリック DNS サーバーが含まれています。 レベル 3 の DNS サーバーの場合は非ローカル トラフィックで使用される実際の DNS サーバーとなります。DNS01 がセットアップされていない場合、ローカル ネットワーク DNS は発生しません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * IIS サーバーで IIS01 スクリプトを実行します。
 * AppVM01 でファイル サーバーのスクリプトを実行します。
 * IIS01 でパブリック IP を参照してビルドを検証します。

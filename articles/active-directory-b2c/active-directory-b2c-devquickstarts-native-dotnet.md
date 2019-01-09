@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bd504beabbb126db2cd90ac010dbc2757e571185
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 2e515ee61144dfe56d2b5a4fac97da81b0fa8c84
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441901"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834846"
 ---
-# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Windows デスクトップ アプリを作成する
+# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C:Windows デスクトップ アプリを構築する
 Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順でデスクトップ アプリに追加できます。 この記事では、ユーザーのサインアップ、サインイン、プロファイル管理などの処理を含む .NET Windows Presentation Foundation (WPF) の "To-Do List" アプリの作成方法について説明します。 このアプリには、ユーザー名または電子メールを使用したサインアップとサインインのサポートが含まれます。 また、Facebook や Google などのソーシャル アカウントを使用したサインアップとサインインのサポートも含まれます。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの取得
@@ -31,7 +31,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この情報は後で必要になります。
 
 ## <a name="create-your-policies"></a>ポリシーの作成
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このコード サンプルには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、種類ごとにポリシーを作成する必要があります。 3 つのポリシーを作成するときは、以下の点に注意してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このコード サンプルには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)で説明されているように、種類ごとにポリシーを作成する必要があります。 3 つのポリシーを作成するときは、以下の点に注意してください。
 
 * ID プロバイダーのブレードで、**[User ID sign-up (ユーザー ID サインアップ)]** または **[Email sign-up (電子メール サインアップ)]** を選択します。
 * サインアップ ポリシーで、 **[表示名]** と他のサインアップ属性を選択します。

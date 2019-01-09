@@ -3,19 +3,19 @@ title: カスタム ビューを定義する - Bing Custom Search
 titlesuffix: Azure Cognitive Services
 description: サイトおよび垂直検索サービスを作成する方法について説明します
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: v-brapel
-ms.openlocfilehash: 5e168608202f81f698221b52315de83e9713feab
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.author: aahi
+ms.openlocfilehash: d45d917d733727eca3286bb6335ce77591f39685
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282925"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427286"
 ---
 # <a name="configure-your-custom-search-experience"></a>カスタム検索エクスペリエンスの構成
 
@@ -115,11 +115,11 @@ Bing で検索する Web のスライスを指定するには、**[アクティ�
 
 特定のクエリの検索結果の先頭に Web ページを固定するには、次のいずれかの方法を選択します。
 
-1.   **[ピン留め]** タブで、結果の一番上にピン留めする Web ページの URL と、ピン留めをトリガーするクエリを入力します。  
+1.  [ **ピン留め**] タブで、結果の一番上にピン留めする Web ページの URL と、ピン留めをトリガーするクエリを入力します。  
   
 2.  **プレビュー** ウィンドウで、検索用語を入力して、検索を実行します。 次に、ユーザーが同じクエリを入力した場合に結果の一番上にピン留めする Web ページを、結果の中から特定します。 その後、 **[ピン留めする]** をクリックして先頭に配置します。 サービスは、**[ピン留め]** 一覧に Web ページとクエリを追加します。 
 
- **[ピン留め]** タブで、使用しているピン留めを追跡できます。 ピン留めは、'\<クエリ\>, \<Web ページ\>' のペアとして表示されます。 
+[ **ピン留め**] タブで、使用しているピン留めを追跡できます。 ピン留めは、'\<クエリ\>, \<Web ページ\>' のペアとして表示されます。 
 
 特定のクエリに対して、結果の一番上にピン留めされる Web ページは最大でも 1 つです。
 
@@ -160,7 +160,7 @@ Bing で検索する Web のスライスを指定するには、**[アクティ�
 5.  追加する結果の横にある **[サイトの追加]** をクリックします。
 6.  **[OK]** ボタンをクリックします。
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 ## <a name="view-statistics"></a>統計を表示する
 

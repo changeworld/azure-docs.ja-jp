@@ -1,19 +1,17 @@
 ---
 title: Azure Database for MySQL の読み取りレプリカの作成と管理
 description: このアーティクルでは、ポータルを使用して Azure Database for MySQL の読み取りレプリカを設定し、管理する方法について説明します。
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d779a492dde173df594ec332bb17bc4227d9d936
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8e622a11c489618cf66e9cdddf369309e7188645
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988486"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548019"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
 

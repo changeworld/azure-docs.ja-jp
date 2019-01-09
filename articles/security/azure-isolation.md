@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4ef312ebd6c329028a556778c24c5e0e41706056
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 776771c6d10bc184e1a1a077e2dbfed70a3e0358
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310999"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974711"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
@@ -121,7 +121,7 @@ ISO/IEC 27001 など監査済み認証を備えたビジネス サービスは�
 
 お客様がデータを削除すると、Microsoft Azure によって、キャッシュされたデータやバックアップ コピーも含めて、データが削除されます。 対象サービスでは、この削除はリテンション期間終了後 90 日以内に行われます (対象サービスは、[オンライン サービス条件](https://aka.ms/Online-Services-Terms)の「データ処理条件」セクションで定義されています)。
 
-格納に使用されるディスク ドライブでハードウェア障害が発生した場合、ディスク ドライブを確実に[消去または破棄](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data)してから、交換または修理のために製造元に返します。 ドライブ上のデータは上書きされ、どのような手段でもデータを回復できないようにされます。
+格納に使用されるディスク ドライブでハードウェア障害が発生した場合、ディスク ドライブを確実に[消去または破棄](https://microsoft.com/trustcenter/privacy/you-own-your-data)してから、交換または修理のために製造元に返します。 ドライブ上のデータは上書きされ、どのような手段でもデータを回復できないようにされます。
 
 ## <a name="compute-isolation"></a>コンピューティングの分離
 Microsoft Azure ではクラウドベースのコンピューティング サービスが提供されます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。 これらのコンピューティング インスタンスおよびサービスでは、複数のレベルで分離が提供され、お客様が求める構成の柔軟性を損なわずにデータを保護することができます。
@@ -238,7 +238,7 @@ Azure では、データを保護するために次の種類の暗号化が提�
 -   [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
 
 #### <a name="encryption-at-rest"></a>保存時の暗号化
-多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
+多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](https://docs.microsoft.com/azure/security/azure-isolation) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
 
 -   [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
 

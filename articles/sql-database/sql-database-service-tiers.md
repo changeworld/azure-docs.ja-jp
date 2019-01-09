@@ -11,19 +11,22 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 102a00ac79c91ac4d571c0254570f14e8f2af46f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/10/2018
+ms.openlocfilehash: d801ed309b0d79dd6655c7dd59ebd17bd37de222
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239085"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164400"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database の購入モデル
 
 Azure SQL Database では、パフォーマンスとコストのニーズに合ったフル マネージド PaaS データベース エンジンを簡単に購入できます。 Azure SQL Database のデプロイ モデルに応じて、ニーズに合った購入モデルを選択できます。
+- [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md) (推奨)。これによりワークロードのニーズに合わせて正確な量のストレージ容量を選択し、計算することができます。
+- [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)。一般的なワークロード向けに配分されたコンピューティングとストレージのバンドル パッケージを選択できます。
 
-- [Azure SQL Database](sql-database-technical-overview.md) の[論理サーバー](sql-database-logical-servers.md)には、コンピューティング、ストレージ、IO リソースに関して 2 つの購入モデルが用意されています。1 つは [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)で、もう 1 つは[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)です。 この購入モデル内で、[単一データベース](sql-database-single-databases-manage.md)または[エラスティック プール](sql-database-elastic-pool.md)を選択できます。
+Azure SQL Database のデプロイ モデルでは、次のようなさまざまな購入モデルを利用できます。
+- [Azure SQL Database](sql-database-technical-overview.md) の[論理サーバー](sql-database-logical-servers.md)は、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)の両方を提供します。 この購入モデル内で、[単一データベース](sql-database-single-databases-manage.md)または[エラスティック プール](sql-database-elastic-pool.md)を選択できます。
 - [Azure SQL Database](sql-database-service-tiers-vcore.md) の[マネージド インスタンス](sql-database-managed-instance.md)に用意されている購入モデルは仮想コア ベースのみです。
 
 > [!IMPORTANT]
@@ -51,7 +54,7 @@ Azure SQL Database では、パフォーマンスとコストのニーズに合�
 
 > [!IMPORTANT]
 > コンピューティング、IO、データおよびログ ストレージは、データベースまたはエラスティック プールごとに課金されます。 バックアップ ストレージはデータベースごとに課金されます。 マネージド インスタンス料金の詳細については、[Azure SQL Database Managed Instance](sql-database-managed-instance.md) に関するページをご覧ください。
-> **リージョンの制限:** 仮想コア ベースの購入モデルは、西ヨーロッパ、フランス中部、英国南部、英国西部、オーストラリア南東部の各リージョンでは利用できません。
+> **リージョンの制限:** 仮想コアベースの購入モデルは、西ヨーロッパ、フランス中部、英国南部、英国西部、オーストラリア南東部ではまだ入手できません。
 
 データベースまたはエラスティック プールが使用する DTU が 300 を超える場合は、仮想コアに変換することで、コストを抑えられる可能性があります。 任意の API または Azure Portal を使用して、ダウンタイムなしで変換できます。 しかし、変換は必須ではありません。 DTU 購入モデルがご自身のパフォーマンスおよびビジネス要件を満たしている場合は、このモデルを引き続き使用してください。 DTU モデルから仮想コア モデルに変換することを決めたら、Standard レベルでは 100 DTU ごとに General Purpose レベルの 1 つ以上の仮想コア、Premium レベルでは 125 DTU ごとに Business Critical レベルの 1 つ以上の仮想コアが必要であるという大まかな基準を目安に、コンピューティング サイズを選択します。
 

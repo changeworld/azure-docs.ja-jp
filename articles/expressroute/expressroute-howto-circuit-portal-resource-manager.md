@@ -1,26 +1,19 @@
 ---
-title: 'ExpressRoute 回線の作成および変更: Azure Portal | Microsoft Docs'
-description: この記事では、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。
-documentationcenter: na
+title: 'ExpressRoute 回線の作成と変更 - ポータル: Azure | Microsoft Docs'
+description: ExpressRoute 回線を作成、プロビジョニング、確認、更新、削除、プロビジョニング解除します。
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 68d59d59-ed4d-482f-9cbc-534ebb090613
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/20/2017
+ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
-ms.openlocfilehash: 94d7b743bdec0d22254144d5316e0d94f5660a55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 974421662a33cd9167d3c39b31d8da20db9f505f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235328"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091529"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
@@ -31,7 +24,7 @@ ms.locfileid: "51235328"
 > * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
 >
 
-この記事では、Azure ポータルと Azure Resource Manager デプロイ モデルを使用して、Azure ExpressRoute 回線を作成する方法について説明します。 以下の手順では、回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
+この記事は、Azure portal と Azure Resource Manager デプロイ モデルを使用して、ExpressRoute 回線を作成するときに役立ちます。 状態の確認、および回線の更新、削除、プロビジョニング解除を行うこともできます。
 
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -85,19 +78,19 @@ ms.locfileid: "51235328"
 新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
 
 プロバイダーの状態: 未プロビジョニング<BR>
-回線の状態: 有効
+回線の状態: Enabled
 
 ![プロビジョニング プロセスの開始](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 回線は、接続プロバイダーが有効にしている間、次の状態に変化します。
 
-プロバイダーの状態: プロビジョニング中<BR>
-回線の状態: 有効
+プロバイダーの状態: プロビジョニング<BR>
+回線の状態: Enabled
 
 ExpressRoute 回線をユーザーが使用できるように、次の状態にする必要があります。
 
 プロバイダーの状態: プロビジョニング済み<BR>
-回線の状態: 有効
+回線の状態: Enabled
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5.回線キーのステータスと状態を定期的に確認する
 関心のある回線を選択し、その回線のプロパティを表示できます。 **[プロバイダーの状態]** が **[プロビジョニング済み]** になっていることを確認してから続行します。

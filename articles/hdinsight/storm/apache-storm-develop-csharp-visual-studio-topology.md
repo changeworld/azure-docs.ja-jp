@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5dcc9dcada981a6a4174ce34748356d49582f598
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6f26ec6f1743a72a4a396ba245d80227f6f75913
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237572"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584283"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
-Azure Data Lake (Hadoop) Tools for Visual Studio を使用して C# Storm トポロジを作成する方法を説明します。 このドキュメントでは、Visual Studio で Storm プロジェクトを作成し、ローカルでテストして、Azure HDInsight クラスターで Apache Storm にデプロイする手順について説明します。
+Azure Data Lake (Apache Hadoop) Tools for Visual Studio を使用して C# Apache Storm トポロジを作成する方法を説明します。 このドキュメントでは、Visual Studio で Storm プロジェクトを作成し、ローカルでテストして、Azure HDInsight クラスターで Apache Storm にデプロイする手順について説明します。
 
 また、C# と Java コンポーネントを使用するハイブリッド トポロジの作成方法についても説明します。
 
@@ -27,9 +27,9 @@ Azure Data Lake (Hadoop) Tools for Visual Studio を使用して C# Storm トポ
 
 C# トポロジを Linux ベースのクラスターで使うには、プロジェクトによって使用される Microsoft.SCP.Net.SDK NuGet パッケージをバージョン 0.10.0.6 以降に更新する必要があります。 また、パッケージのバージョンは、HDInsight にインストールされている Storm のメジャー バージョンと一致する必要もあります。
 
-| HDInsight のバージョン | Storm のバージョン | SCP.NET のバージョン | 既定の Mono のバージョン |
+| HDInsight のバージョン | Apache Storm のバージョン | SCP.NET のバージョン | 既定の Mono のバージョン |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
-| 3.3 |0.10.x |0.10.x.x</br>(Windows ベースの HDInsight の場合のみ) | 該当なし |
+| 3.3 |0.10.x |0.10.x.x</br>(Windows ベースの HDInsight の場合のみ) | NA |
 | 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
 | 3.5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
 | 3.6 | 1.1.0.x | 1.0.0.x | 4.2.8 |
@@ -97,7 +97,7 @@ namespace ConsoleApplication2
 }
 ```
 
-## <a name="storm-templates"></a>Storm テンプレート
+## <a name="apache-storm-templates"></a>Apache Storm テンプレート
 
 Data Lake Tools for Visual Studio には次のテンプレートがあります。
 
@@ -119,7 +119,7 @@ Data Lake Tools for Visual Studio には次のテンプレートがあります�
 
 このドキュメントの手順では、基本的な種類の Storm アプリケーション プロジェクトを使用してトポロジを作成します。
 
-### <a name="hbase-templates-notes"></a>HBase テンプレートに関する注意
+### <a name="apache-hbase-templates-notes"></a>Apache HBase テンプレートに関する注意
 
 HBase のリーダーとライターのテンプレートは、HBase Java API ではなく、HBase REST API を利用して HDInsight クラスターの HBase と通信します。
 
@@ -345,7 +345,7 @@ HBase のリーダーとライターのテンプレートは、HBase Java API �
 
 ワード カウントは Counter インスタンスにローカルに保持されるため、特定の単語が同じ Counter ボルト インスタンスに届くようにする必要があります。 各インスタンスが特定の単語を追跡します。 Splitter ボルトでは状態が保持されないため、Splitter のどのインスタンスがどのセンテンスを受信しても問題ありません。
 
-**Program」を参照してください。cs**」を参照してください。 重要なメソッドは **GetTopologyBuilder** です。これは、Storm に送信されるトポロジの定義に使われます。 **GetTopologyBuilder** の内容を次のコードに置き換えて前述のトポロジを実装します。
+**Program.cs** を開きます。 重要なメソッドは **GetTopologyBuilder** です。これは、Storm に送信されるトポロジの定義に使われます。 **GetTopologyBuilder** の内容を次のコードに置き換えて前述のトポロジを実装します。
 
 ```csharp
 // Create a new topology named 'WordCount'
@@ -754,14 +754,14 @@ HDInsight を使用するさまざまな方法や、HDInsight での Storm の�
 **HDInsight での Apache Storm**
 
 * [Deploy and monitor topologies with Apache Storm on HDInsight (HDInsight の Storm を使用したトポロジのデプロイと監視)](apache-storm-deploy-monitor-topology.md)
-* [HDInsight 上の Storm に関するトポロジ例](apache-storm-example-topology.md)
+* [HDInsight での Apache Storm のトポロジ例](apache-storm-example-topology.md)
 
 **HDInsight での Apache Hadoop**
 
-* [HDInsight での Hive と Hadoop の使用](../hadoop/hdinsight-use-hive.md)
-* [HDInsight での Pig と Hadoop の使用](../hadoop/hdinsight-use-pig.md)
-* [HDInsight での MapReduce と Hadoop の使用](../hadoop/hdinsight-use-mapreduce.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](../hadoop/hdinsight-use-hive.md)
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](../hadoop/hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で Apache Hadoop MapReduce を使用する](../hadoop/hdinsight-use-mapreduce.md)
 
 **HDInsight での Apache HBase**
 
-* [HDInsight での HBase の使用](../hbase/apache-hbase-tutorial-get-started-linux.md)
+* [HDInsight での Apache HBase の使用](../hbase/apache-hbase-tutorial-get-started-linux.md)

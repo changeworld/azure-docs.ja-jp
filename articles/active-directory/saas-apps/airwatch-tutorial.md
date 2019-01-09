@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と AirWatch の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と AirWatch の統合 | Microsoft Docs
 description: Azure Active Directory と AirWatch の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: f3bbcbb70759e7a995797cf89ad75a2a39314927
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bf95b949d6fee4057f67d1e44ded36f363aa5e2b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048482"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848920"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>チュートリアル: Azure Active Directory と AirWatch の統合
+# <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>チュートリアル:Azure Active Directory と AirWatch の統合
 
 このチュートリアルでは、AirWatch と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -89,7 +89,7 @@ Azure AD への AirWatch の統合を構成するには、ギャラリーから�
 
 AirWatch で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[AirWatch テスト ユーザーの作成](#creating-a-airwatch-test-user)** - AirWatch で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -118,7 +118,7 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
     b. **[識別子]** ボックスに、値として「`AirWatch`」と入力します。
 
     > [!NOTE] 
-    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[AirWatch Client サポート チーム](http://www.air-watch.com/company/contact-us/)に問い合わせてください。 
+    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[AirWatch Client サポート チーム](https://www.air-watch.com/company/contact-us/)に問い合わせてください。 
  
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 

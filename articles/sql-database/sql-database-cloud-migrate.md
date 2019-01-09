@@ -4,21 +4,21 @@ description: SQL Server データベースをクラウド内の Azure SQL Databa
 keywords: データベースの移行, SQL Server データベースの移行, データベース移行ツール, データベースを移行する, SQL データベースを移行する
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 77aab172c5e7f2dc088da49b636e2ec04299f2e5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 89cf69ba8bc88a40582ea795b6a17fab4f286d64
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353209"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651982"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server データベースの Azure SQL Database への移行
 
@@ -33,9 +33,9 @@ SQL Server 2005 以降のデータベースを Azure SQL Database の単一デ�
 > [!NOTE]
 > Microsoft Access、Sybase、MySQL Oracle、DB2 などの SQL Server 以外のデータベースを Azure SQL Database に移行する場合は、 [SQL Server Migration Assistant](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/)チームのブログ記事を参照してください。
 
-## <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1: 移行中にダウンタイムを伴う移行
+## <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1:移行中にダウンタイムを伴う移行
 
- ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用して、単一データベースまたはプール データベースを移行します。 チュートリアルについては、[SQL Server データベースを移行する](sql-database-migrate-your-sql-server-database.md)を参照してください。
+ ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用して、単一データベースまたはプール データベースを移行します。 チュートリアルについては、[SQL Server データベースを移行する](../dms/tutorial-sql-server-to-azure-sql.md)を参照してください。
 
 次の一覧は、単一データベースまたはプール データベースの SQL Server データベースをこの方法で移行する場合の一般的なワークフローを示します。 Managed Instance への移行については、[マネージド インスタンスへの移行に関するページ](sql-database-managed-instance-migrate.md)を参照してください。
 
@@ -65,7 +65,7 @@ SQL Server 2005 以降のデータベースを Azure SQL Database の単一デ�
 
 移行が完了した後に、フル スキャンを実施して[統計を更新](https://msdn.microsoft.com/library/ms187348.aspx)します。
 
-## <a name="method-2-use-transactional-replication"></a>方法 2: トランザクション レプリケーションの使用
+## <a name="method-2-use-transactional-replication"></a>方法 2:トランザクション レプリケーションの使用
 
 移行中、SQL Server データベースを外す余裕がない場合、移行ソリューションとして SQL Server トランザクション レプリケーションを使用できます。 この方法を使用するには、ソース データベースが[トランザクション レプリケーションの要件](https://msdn.microsoft.com/library/mt589530.aspx)を満たしているほか、Azure SQL Database に対する互換性を持っている必要があります。 AlwaysOn を使った SQL レプリケーションの詳細については、「[Always On 可用性グループのレプリケーションの構成 (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server)」をご覧ください。
 

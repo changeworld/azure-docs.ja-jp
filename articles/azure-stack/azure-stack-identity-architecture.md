@@ -32,16 +32,16 @@ Azure Stack で使用する ID プロバイダーを選択する前に、Azure A
 
 |機能またはシナリオ        |Azure AD  |AD FS  |
 |------------------------------|----------|-------|
-|インターネットに接続されている     |[はい]       |省略可能|
-|マルチテナントのサポート     |[はい]       |いいえ       |
-|Marketplace で項目を提供する |[はい]       |はい。 [オフラインの Marketplace シンジケーション](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) ツールを使用する必要があります。|
-|Active Directory Authentication Library (ADAL) のサポート |[はい] |[はい]|
-|Azure CLI、Visual Studio、PowerShell などのツールのサポート  |[はい] |[はい]|
-|Azure Portal を通じてサービス プリンシパルを作成する     |[はい] |いいえ |
-|証明書でサービス プリンシパルを作成する      |[はい] |[はい]|
-|シークレット (キー) でサービス プリンシパルを作成する    |[はい] |いいえ |
-|アプリケーションが Graph サービスを使用できる           |[はい] |いいえ |
-|アプリケーションがサインインに ID プロバイダーを使用できる |[はい] |はい。 アプリケーションがオンプレミスの AD FS インスタンスとフェデレーションする必要があります。 |
+|インターネットに接続されている     |はい       |省略可能|
+|マルチテナントのサポート     |はい       |いいえ       |
+|Marketplace で項目を提供する |はい       |はい。 [オフラインの Marketplace シンジケーション](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) ツールを使用する必要があります。|
+|Active Directory Authentication Library (ADAL) のサポート |はい |はい|
+|Azure CLI、Visual Studio、PowerShell などのツールのサポート  |はい |はい|
+|Azure Portal を通じてサービス プリンシパルを作成する     |はい |いいえ |
+|証明書でサービス プリンシパルを作成する      |はい |はい|
+|シークレット (キー) でサービス プリンシパルを作成する    |はい |いいえ |
+|アプリケーションが Graph サービスを使用できる           |はい |いいえ |
+|アプリケーションがサインインに ID プロバイダーを使用できる |はい |はい。 アプリケーションがオンプレミスの AD FS インスタンスとフェデレーションする必要があります。 |
 
 ## <a name="topologies"></a>トポロジ
 以降のセクションでは、使用できる各種 ID トポロジについて説明します。

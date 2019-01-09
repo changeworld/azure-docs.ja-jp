@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 264e7f3d885535304470c833e228660ba51fefc6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 83ff526eb0bd0c51822fc52c90b958d50022a834
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306391"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497730"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -62,7 +62,7 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 
 **Q: Azure AD Connect Health は、Azure Germany Cloud をサポートしていますか。**
 
-[同期エラー レポート機能](how-to-connect-health-sync.md#object-level-synchronization-error-report-preview)を除いて、Azure AD Connect Health は、Germany Cloud ではサポートされていません。
+[同期エラー レポート機能](how-to-connect-health-sync.md#object-level-synchronization-error-report)を除いて、Azure AD Connect Health は、Germany Cloud ではサポートされていません。 
 
 | ロール | 機能 | German Cloud でサポートされている |
 | ------ | --------------- | --- |
@@ -71,7 +71,7 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 | Connect Health for ADFS | 監視/分析情報/アラート/分析 | いいえ  |
 | Connect Health for ADDS | 監視/分析情報/アラート/分析 | いいえ  |
 
-同期のための Connect Health のエージェントの接続を確保するには、必要に応じて[インストール要件](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)を構成します。
+同期のための Connect Health のエージェントの接続を確保するには、必要に応じて[インストール要件](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)を構成します。   
 
 ## <a name="installation-questions"></a>インストールに関する質問
 
@@ -163,7 +163,7 @@ Azure AD Connect Health サービスでは、必要な修正プログラムが�
 
 このチェックは、次の PowerShell スクリプトを使用して、手動で実行できます。 上記のロジックが実装されます。
 
-```powershell
+```
 Function CheckForMS17-010 ()
 {
     $hotfixes = "KB3205409", "KB3210720", "KB3210721", "KB3212646", "KB3213986", "KB4012212", "KB4012213", "KB4012214", "KB4012215", "KB4012216", "KB4012217", "KB4012218", "KB4012220", "KB4012598", "KB4012606", "KB4013198", "KB4013389", "KB4013429", "KB4015217", "KB4015438", "KB4015546", "KB4015547", "KB4015548", "KB4015549", "KB4015550", "KB4015551", "KB4015552", "KB4015553", "KB4015554", "KB4016635", "KB4019213", "KB4019214", "KB4019215", "KB4019216", "KB4019263", "KB4019264", "KB4019472", "KB4015221", "KB4019474", "KB4015219", "KB4019473"
@@ -190,7 +190,7 @@ CheckForMS17-010
 
 **Q: ADFS 監査が生成されていないのはなぜですか。**
 
-<i>Get-AdfsProperties -AuditLevel</i> PowerShell コマンドレットを使用して、監査ログが無効な状態になっていないことを確認してください。 詳しくは、[ADFS 監査ログ](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)に関する記事をご覧ください。 高度な監査設定が ADFS サーバーにプッシュされた場合、auditpol.exe でのすべての変更が上書きされることに注意してくださいます ("生成されたアプリケーション" が構成されていない場合のイベント)。 その場合は、ローカル セキュリティ ポリシーを "生成されたアプリケーション" の失敗と成功を記録するように設定してください。
+<i>Get-AdfsProperties -AuditLevel</i> PowerShell コマンドレットを使用して、監査ログが無効な状態になっていないことを確認してください。 詳しくは、[ADFS 監査ログ](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)に関する記事をご覧ください。 高度な監査設定が ADFS サーバーにプッシュされた場合、auditpol.exe でのすべての変更が上書きされることに注意してくださいます ("生成されたアプリケーション" が構成されていない場合のイベント)。 その場合は、ローカル セキュリティ ポリシーを "生成されたアプリケーション" の失敗と成功を記録するように設定してください。 
 
 
 ## <a name="related-links"></a>関連リンク

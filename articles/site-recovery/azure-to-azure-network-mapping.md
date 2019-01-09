@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 683f8ef89b02679d1f3f1a66f867f0dde757ada1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 6140687d583534d21ee50652811c2fd1624a5cf5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564971"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840454"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNet のネットワーク マッピングと IP アドレス指定を設定する
 
@@ -62,8 +62,8 @@ Azure VM のディザスター リカバリーを構成する前にネットワ�
 
 ターゲット仮想マシンの各 NIC の IP アドレスは、次のように構成されます。
 
-- **DHCP**: ソース VM の NIC が DHCP を使用する場合は、ターゲット VM の NIC も DHCP を使用するように設定されます。
-- **静的 IP アドレス**: ソース VM の NIC が静的 IP アドレス指定を使用する場合は、ターゲット VM の NIC も静的 IP アドレスを使用します。
+- **DHCP**:ソース VM の NIC が DHCP を使用する場合は、ターゲット VM の NIC も DHCP を使用するように設定されます。
+- **静的 IP アドレス**:ソース VM の NIC が静的 IP アドレス指定を使用する場合は、ターゲット VM の NIC も静的 IP アドレスを使用します。
 
 
 ## <a name="ip-address-assignment-during-failover"></a>フェールオーバー時の IP アドレスの割り当て

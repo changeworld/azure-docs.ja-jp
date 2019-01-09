@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: f6d343d42bf9d918bf23c9f5f442d977a5caca96
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 34177cb2ea1650c4b7130d8c5a2a886655852783
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343719"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555032"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -416,7 +416,7 @@ public class WorkItem
 
 ロックの既定スコープは `SingletonScope.Function` です。つまり、ロック スコープ (BLOB のリース パス) は、関数の完全修飾名に関連付けられています。 関数にわたってロックするには、`SingletonScope.Host` を指定して、同時に実行したくない関数すべてと同じスコープ ID 名を使用します。 次の例では、  `AddItem` または `RemoveItem`の1 つのみのインスタンス が一度に実行されます。
 
-```charp
+```csharp
 [Singleton("ItemsLock", SingletonScope.Host)]
 public static void AddItem([QueueTrigger("add-item")] string message)
 {

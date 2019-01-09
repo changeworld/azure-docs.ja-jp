@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 70fa8c5af4f00500c39ce3832e182a5532721799
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 1df14d730d83ee367140b4c9a64d0d2bba0aed77
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419709"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163890"
 ---
-# <a name="qna-maker-rest-api-with-java"></a>Java での QnA Maker REST API
+# <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>Java で QnA Maker REST API を使用する方法 
 <a name="HOLTop"></a>
 
 この記事では、Java で [Microsoft QnA Maker API](../Overview/overview.md)  を使用し、次を行う方法について説明します。
@@ -265,7 +266,7 @@ public class CreateKB {
 
 **ナレッジ ベースの応答を作成する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -575,7 +576,7 @@ public class UpdateKB {
 
 **ナレッジ ベースの応答を更新する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -726,7 +727,7 @@ public class PublishKB {
 
 **ナレッジ ベースの応答を公開する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -896,7 +897,7 @@ public class ReplaceKB {
 
 **ナレッジ ベースの応答を置換する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -1015,7 +1016,7 @@ public class GetQnA {
 
 **ナレッジ ベースの応答をダウンロードする**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -1171,7 +1172,7 @@ public class GetAnswers {
 
 **回答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -1298,7 +1299,7 @@ public class GetKB {
 
 **ナレッジ ベースの詳細応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -1422,7 +1423,7 @@ public class GetKBsByUser {
 
 **ユーザー応答のナレッジ ベースを取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -1571,7 +1572,7 @@ public class DeleteKB {
 
 **ナレッジ ベースの応答を削除する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -1683,7 +1684,7 @@ public class GetEndpointKeys {
 
 **エンドポイント キーの応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -1847,7 +1848,7 @@ public class RefreshKeys {
 
 **エンドポイント キーの応答を更新する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -1960,7 +1961,7 @@ public class GetAlterations {
 
 **単語変更の応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -2117,7 +2118,7 @@ public class PutAlterations {
 
 **単語変更の応答を置換する**
 
-成功した応答は、次の例に示すように JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -2132,6 +2133,6 @@ public class PutAlterations {
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>関連項目 
 
 [QnA Maker の概要](../Overview/overview.md)

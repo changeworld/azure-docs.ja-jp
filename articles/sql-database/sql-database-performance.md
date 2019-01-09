@@ -8,15 +8,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: dd3fe059bf2352fee7471fac7aeee23ad90c7cb0
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3629215dc1f6dfcb28194c487358adb058af3e8e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274940"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602921"
 ---
 # <a name="monitor-and-improve-performance"></a>パフォーマンスの監視と向上
 Azure SQL Database は、データベース内の潜在的な問題を識別し、インテリジェントなチューニング アクションと推奨事項を提供することによって、ワークロードのパフォーマンスの向上に役立つアクションを提案します。
@@ -36,7 +36,7 @@ Azure SQL Database は、データベース内の潜在的な問題を識別し�
 ## <a name="performance-overview"></a>パフォーマンスの概要
 このビューにデータベースのパフォーマンスの概要が表示され、パフォーマンスのチューニングとトラブルシューティングを実行できます。 
 
-![[パフォーマンス]](./media/sql-database-performance/performance.png)
+![パフォーマンス](./media/sql-database-performance/performance.png)
 
 * **[推奨事項]** タイルには、データベースのチューニングに関する推奨事項の内訳が表示されます (推奨事項が 4 つ以上ある場合は、上から 3 番目までが表示されます)。 このタイルをクリックすると、**[[パフォーマンスの推奨事項]](#performance-recommendations)** が表示されます。 
 * **[Tuning activity]** タイルには、データベースに対して進行中のチューニング操作と完了したチューニング操作の概要が表示され、チューニング操作の履歴を簡単に確認できます。 このタイルをクリックすると、データベースのチューニング履歴がすべて表示されます。
@@ -50,7 +50,7 @@ Azure SQL Database は、データベース内の潜在的な問題を識別し�
 * データベースでスキーマの問題が識別された場合の推奨事項。
 * パラメーター化されたクエリがクエリに役立つ場合の推奨事項。
 
-![[パフォーマンス]](./media/sql-database-performance/recommendations.png)
+![パフォーマンス](./media/sql-database-performance/recommendations.png)
 
 また、過去に適用されたチューニング アクションの履歴すべてを表示することもできます。
 
@@ -59,7 +59,7 @@ Azure SQL Database は、データベース内の潜在的な問題を識別し�
 ## <a name="automatic-tuning"></a>自動チューニング
 Azure SQL Database では、[パフォーマンスの推奨事項](sql-database-advisor.md)を適用することにより、データベース パフォーマンスを自動的にチューニングできます。 詳細については、「[Automatic tuning (自動チューニング)](sql-database-automatic-tuning.md)」を参照してください。 これを有効にするには、[自動チューニングを有効にする方法](sql-database-automatic-tuning-enable.md)に関するページを参照してください。
 
-## <a name="query-performance-insight"></a>[Query Performance Insight]
+## <a name="query-performance-insight"></a>Query Performance Insight
 [Query Performance Insight](sql-database-query-performance.md) を使用すると、短時間でデータベース パフォーマンスのトラブルシューティングを行うことができます。以下の情報が提供されます。
 
 * データベース リソース (DTU) の消費量の詳細な情報。 

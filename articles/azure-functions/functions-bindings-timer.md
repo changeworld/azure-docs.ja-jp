@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 6589a90f6eea2bfd7188e89b701233b37c162d54
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: bdbb9d7c8b129642616a934dcc3d226434e69a03
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978767"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558976"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -28,13 +28,13 @@ ms.locfileid: "50978767"
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-タイマー トリガーは、[Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン 2.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub リポジトリにあります。
+タイマー トリガーは、[Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン 2.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
 
-タイマー トリガーは、[Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub リポジトリにあります。
+タイマー トリガーは、[Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -42,15 +42,15 @@ ms.locfileid: "50978767"
 
 言語固有の例をご覧ください。
 
-* [C#](#trigger---c-example)
-* [C# スクリプト (.csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
-* [Java](#trigger---java-example)
+* [C#](#c-example)
+* [C# スクリプト (.csx)](#c-script-example)
+* [F#](#f-example)
+* [JavaScript](#javascript-example)
+* [Java](#java-example)
 
 ### <a name="c-example"></a>C# の例
 
-次の例は、5 分ごとに実行される [C# 関数](functions-dotnet-class-library.md)を示しています。
+次の例では、分の値が 5 で割り切れる値である時刻ごとに実行される [C# 関数](functions-dotnet-class-library.md)を示します (例: 関数が 18:57:00 に開始された場合、次の実行は 19:00:00 です)。
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -150,7 +150,7 @@ module.exports = function (context, myTimer) {
 
 ### <a name="java-example"></a>Java の例
 
-次の例の関数は、5 分ごとにトリガーして実行します。 関数の `@TimerTrigger` 注釈では、[CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)と同じ文字列形式を使用してスケジュールが定義されています。
+次の例の関数は、5 分ごとにトリガーして実行します。 関数の `@TimerTrigger` 注釈では、[CRON 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)と同じ文字列形式を使用してスケジュールが定義されています。
 
 ```java
 @FunctionName("keepAlive")

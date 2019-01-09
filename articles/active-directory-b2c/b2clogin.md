@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7b460efbdc50c5b243c3ef78bad568b720e75e59
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: ffceb8fd6f1afcd054bfc4c4035fb2b8b93ed390
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635559"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720543"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
@@ -29,7 +29,7 @@ b2clogin.com を使用すると、次のような利点が加わります。
 b2clogin.com を使用する際は、変更が必要になる可能性があるこれらの設定に配慮してください。
 
 - ID プロバイダー アプリケーションのリダイレクト URL を、b2clogin.com を使用するように設定します。 
-- Azure AD B2C アプリケーションを、ポリシー参照とトークン エンドポイントに b2clogin.com を使用するように設定します。 
+- Azure AD B2C アプリケーションを、ユーザー フロー参照とトークン エンドポイントに b2clogin.com を使用するように設定します。 
 - MSAL を使用している場合は、**ValidateAuthority** プロパティを `false` に設定する必要があります。
 - [ユーザー インターフェイスのカスタマイズ](active-directory-b2c-ui-customization-custom-dynamic.md)のため、CORS の設定で定義した任意の**許可される元のドメイン**を必ず変更します。  
 
@@ -56,7 +56,7 @@ ID プロバイダーの設定情報については、次の記事を参照し�
 
 ## <a name="update-your-application"></a>アプリケーションの更新
 
-お使いの Azure AD B2C アプリケーションは、おそらく、ポリシー参照やトークン エンドポイントなどのいくつかの場所で `login.microsoftonline.com` を参照しています。  承認エンドポイント、トークン エンドポイント、および発行者が、`your-tenant-name.b2clogin.com` を使用するように更新されていることを確認してください。  
+お使いの Azure AD B2C アプリケーションでは、おそらく、ユーザー フロー参照やトークン エンドポイントなどのいくつかの場所で `login.microsoftonline.com` が参照されています。  承認エンドポイント、トークン エンドポイント、および発行者が、`your-tenant-name.b2clogin.com` を使用するように更新されていることを確認してください。  
 
 ## <a name="set-the-validateauthority-property"></a>ValidateAuthority プロパティの設定
 

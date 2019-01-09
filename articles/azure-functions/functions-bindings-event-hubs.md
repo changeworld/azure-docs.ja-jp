@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: 3f1a9535037f099cdfe7bf4ec41a337fdf6a434d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: bc7ed9051f95877760bccec65ff2fa7f49e44993
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248780"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002155"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions における Azure Event Hubs のバインド
 
@@ -27,7 +27,7 @@ ms.locfileid: "50248780"
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-Azure Functions バージョン 1.x の場合、Event Hubs バインディングは [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet パッケージ、バージョン 2.x で提供されます。
+Azure Functions バージョン 1.x の場合、Event Hubs バインディングは [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet パッケージ、バージョン 2.x で提供されます。
 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) GitHub リポジトリにあります。
 
 
@@ -35,7 +35,7 @@ Azure Functions バージョン 1.x の場合、Event Hubs バインディング
 
 ## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
 
-Functions 2.x の場合、[Microsoft.Azure.WebJobs.Extensions.EventHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) パッケージ、バージョン 3.x を使用します。
+Functions 2.x の場合、[Microsoft.Azure.WebJobs.Extensions.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) パッケージ、バージョン 3.x を使用します。
 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
@@ -59,9 +59,9 @@ Event Hub-Triggered 関数の各インスタンスは、[EventProcessorHost](htt
 
 * **新しい関数インスタンスが要**: `Function_0` は、Functions のスケーリングのロジックが開始される前に 1000 イベントすべてを処理することができます。 この場合、1000 メッセージすべてが、`Function_0` によって処理されます。
 
-* **別の関数インスタンスが追加される**: Functions のスケーリングのロジックにより、`Function_0` が、処理能力を超える数のメッセージを持っていると判断されます。 この場合、新しい関数アプリのインスタンス (`Function_1`) が、新しい [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスとともに作成されます。 Event Hubs は、新しいホスト インスタンスがメッセージを読み取ろうとしていることを検知します。 Event Hubs は、そのホスト インスタンス全体でパーティションを負荷分散します。 たとえば、パーティション 0 ～ 4 を `Function_0` に割り当て、パーティション 5 ～ 9 を `Function_1` に割り当てることができます。 
+* **別の関数インスタンスが追加される**:Functions のスケーリングのロジックにより、`Function_0` が、処理能力を超える数のメッセージを持っていると判断されます。 この場合、新しい関数アプリのインスタンス (`Function_1`) が、新しい [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスとともに作成されます。 Event Hubs は、新しいホスト インスタンスがメッセージを読み取ろうとしていることを検知します。 Event Hubs は、そのホスト インスタンス全体でパーティションを負荷分散します。 たとえば、パーティション 0 ～ 4 を `Function_0` に割り当て、パーティション 5 ～ 9 を `Function_1` に割り当てることができます。
 
-* **さらに N 個の関数インスタンスが追加される**: Functions のスケーリングのロジックにより、`Function_0` と `Function_1` の両方が、処理能力を超える数のメッセージを持っていると判断されます。 新しい関数アプリ のインスタンス `Function_2`...`Functions_N` が作成されます。ここで、`N` は、イベント ハブのパーティション数より大きい数値です。 この例では、Event Hubs は、パーティションを再び負荷分散します。この場合、 `Function_0`...`Functions_9` のインスタンス間で負荷分散します。 
+* **さらに N 個の関数インスタンスが追加される**:Functions のスケーリングのロジックにより、`Function_0` と `Function_1` の両方が、処理能力を超える数のメッセージを持っていると判断されます。 新しい関数アプリ のインスタンス `Function_2`...`Functions_N` が作成されます。ここで、`N` は、イベント ハブのパーティション数より大きい数値です。 この例では、Event Hubs は、パーティションを再び負荷分散します。この場合、 `Function_0`...`Functions_9` のインスタンス間で負荷分散します。
 
 Functions がスケーリングするインスタンスの数 `N` が、イベント ハブのパーティション数より多いときは注意してください。 これは、[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスが、他のインスタンスから解放されて使用可能になったパーティションのロックを必ず取得できるようにするためです。 ユーザーには、関数インスタンスが実行されたときに使用されたリソースに対してのみ料金が発生し、オーバー プロビジョニングには課金されません。
 
@@ -74,8 +74,9 @@ Functions がスケーリングするインスタンスの数 `N` が、イベ�
 * [C#](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
+* [JavaScript](#trigger---javascript-example)
+* [Python](#trigger---python-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
@@ -94,8 +95,8 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
 public static void Run(
-    [EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] EventData myEventHubMessage, 
-    DateTime enqueuedTimeUtc, 
+    [EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] EventData myEventHubMessage,
+    DateTime enqueuedTimeUtc,
     Int64 sequenceNumber,
     string offset,
     ILogger log)
@@ -133,8 +134,9 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数では、イベント ハブ トリガーのメッセージ本文を記録します。
 
-次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 2.x 用で、2 つ目の例は Functions 1.x 用です。 
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。
 
+#### <a name="version-2x"></a>バージョン 2.x
 
 ```json
 {
@@ -145,6 +147,9 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
+
+#### <a name="version-1x"></a>バージョン 1.x
+
 ```json
 {
   "type": "eventHubTrigger",
@@ -177,7 +182,7 @@ using Microsoft.ServiceBus.Messaging;
 using Microsoft.Azure.EventHubs;
 
 public static void Run(EventData myEventHubMessage,
-    DateTime enqueuedTimeUtc, 
+    DateTime enqueuedTimeUtc,
     Int64 sequenceNumber,
     string offset,
     TraceWriter log)
@@ -210,8 +215,9 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [F# 関数](functions-reference-fsharp.md)を示しています。 この関数では、イベント ハブ トリガーのメッセージ本文を記録します。
 
-次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 2.x 用で、2 つ目の例は Functions 1.x 用です。 
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 
 
+#### <a name="version-2x"></a>バージョン 2.x
 
 ```json
 {
@@ -222,6 +228,9 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
+
+#### <a name="version-1x"></a>バージョン 1.x
+
 ```json
 {
   "type": "eventHubTrigger",
@@ -243,8 +252,9 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、[イベント メタデータ](#trigger---event-metadata)を読み取り、メッセージをログに記録します。
 
-次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 2.x 用で、2 つ目の例は Functions 1.x 用です。 
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。
 
+#### <a name="version-2x"></a>バージョン 2.x
 
 ```json
 {
@@ -255,6 +265,9 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
+
+#### <a name="version-1x"></a>バージョン 1.x
+
 ```json
 {
   "type": "eventHubTrigger",
@@ -273,12 +286,14 @@ module.exports = function (context, eventHubMessage) {
     context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
     context.log('SequenceNumber =', context.bindingData.sequenceNumber);
     context.log('Offset =', context.bindingData.offset);
-     
+
     context.done();
 };
 ```
 
-イベントをまとめて受け取るには、次の例に示すように、*function.json* ファイルで `cardinality` を `many` に設定します。 最初の例は Functions 2.x 用で、2 つ目の例は Functions 1.x 用です。 
+イベントをまとめて受け取るには、次の例に示すように、*function.json* ファイルで `cardinality` を `many` に設定します。
+
+#### <a name="version-2x"></a>バージョン 2.x
 
 ```json
 {
@@ -290,6 +305,9 @@ module.exports = function (context, eventHubMessage) {
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
+
+#### <a name="version-1x"></a>バージョン 1.x
+
 ```json
 {
   "type": "eventHubTrigger",
@@ -306,7 +324,7 @@ JavaScript コードを次に示します。
 ```javascript
 module.exports = function (context, eventHubMessages) {
     context.log(`JavaScript eventhub trigger function called for message array ${eventHubMessages}`);
-    
+
     eventHubMessages.forEach((message, index) => {
         context.log(`Processed message ${message}`);
         context.log(`EnqueuedTimeUtc = ${context.bindingData.enqueuedTimeUtcArray[index]}`);
@@ -316,6 +334,35 @@ module.exports = function (context, eventHubMessages) {
 
     context.done();
 };
+```
+
+### <a name="trigger---python-example"></a>トリガー - Python の例
+
+次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、[イベント メタデータ](#trigger---event-metadata)を読み取り、メッセージをログに記録します。
+
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。
+
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "event",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+
+Python コードを次に示します。
+
+```python
+import logging
+import azure.functions as func
+
+def main(event: func.EventHubEvent):
+    logging.info('Event Hubs trigger function processed message: ', event.get_body())
+    logging.info('  EnqueuedTimeUtc =', event.enqueued_time)
+    logging.info('  SequenceNumber =', event.sequence_number)
+    logging.info('  Offset =', event.offset)
 ```
 
 ### <a name="trigger---java-example"></a>トリガー - Java の例
@@ -338,13 +385,13 @@ public void eventHubProcessor(
   @EventHubTrigger(name = "msg",
                   eventHubName = "myeventhubname",
                   connection = "myconnvarname") String message,
-       final ExecutionContext context ) 
+       final ExecutionContext context )
        {
           context.getLogger().info(message);
  }
  ```
 
- [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Event Hub に由来するパラメーター上で `EventHubTrigger` 注釈を使用します。 これらの注釈を使用したパラメーターによって、イベントを受信したときに関数が実行されます。  この注釈は、Java のネイティブ型、POJO、または Optional<T> を使用した null 許容値で使用できます。 
+ [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Event Hub に由来するパラメーター上で `EventHubTrigger` 注釈を使用します。 これらの注釈を使用したパラメーターによって、イベントを受信したときに関数が実行されます。  この注釈は、Java のネイティブ型、POJO、または Optional<T> を使用した null 許容値で使用できます。
 
 ## <a name="trigger---attributes"></a>トリガー - 属性
 
@@ -370,11 +417,11 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 |---------|---------|----------------------|
 |**type** | 該当なし | `eventHubTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
-|**name** | 該当なし | 関数コード内のイベント項目を表す変数の名前。 | 
-|**path** |**EventHubName** | Functions 1.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 | 
+|**name** | 該当なし | 関数コード内のイベント項目を表す変数の名前。 |
+|**path** |**EventHubName** | Functions 1.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
 |**eventHubName** |**EventHubName** | Functions 2.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
-|**consumerGroup** |**ConsumerGroup** | ハブのイベントのサブスクライブに使用される[コンシューマー グループ](../event-hubs/event-hubs-features.md#event-consumers)を設定する、省略可能なプロパティ。 省略した場合は、`$Default` コンシューマー グループが使用されます。 | 
-|**cardinality** | 該当なし | Javascript 用。 バッチ処理を有効にするには `many` に設定します。  省略するか、`one` に設定した場合、1 つのメッセージが関数に渡されます。 | 
+|**consumerGroup** |**ConsumerGroup** | ハブのイベントのサブスクライブに使用される[コンシューマー グループ](../event-hubs/event-hubs-features.md#event-consumers)を設定する、省略可能なプロパティ。 省略した場合は、`$Default` コンシューマー グループが使用されます。 |
+|**cardinality** | 該当なし | Javascript 用。 バッチ処理を有効にするには `many` に設定します。  省略するか、`one` に設定した場合、1 つのメッセージが関数に渡されます。 |
 |**connection** |**Connection** | イベント ハブの名前空間への接続文字列が含まれたアプリ設定の名前。 この接続文字列をコピーするには、イベント ハブ自体ではなく、"[名前空間](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)" の **[接続情報]** をクリックします。 この接続文字列には、トリガーをアクティブにするために少なくとも読み取りアクセス許可が必要です。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -405,7 +452,7 @@ Event Hubs トリガーには、いくつかの[メタデータ プロパティ]
 
 Event Hubs 出力バインドを使用して、イベント ストリームにイベントを書き込みます。 イベントを書き込むには、イベント ハブへの送信アクセス許可が必要です。
 
-必要なパッケージ参照 ([Functions 1.x](#packages---functions-1.x) または [Functions 2.x](#packages---functions-2.x)) が用意されていることを確認してください。 
+必要なパッケージ参照が用意されていることを確認します:[Functions 1.x](#packages---functions-1.x) または [Functions 2.x](#packages---functions-2.x)
 
 ## <a name="output---example"></a>出力 - 例
 
@@ -414,8 +461,9 @@ Event Hubs 出力バインドを使用して、イベント ストリームに�
 * [C#](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
-* [JavaScript](#output---javascript-example)
 * [Java](#output---java-example)
+* [JavaScript](#output---javascript-example)
+* [Python](#output---python-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例
 
@@ -446,6 +494,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
     "direction": "out"
 }
 ```
+
 ```json
 {
     "type": "eventHub",
@@ -531,6 +580,7 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: ILogger) 
     "direction": "out"
 }
 ```
+
 ```json
 {
     "type": "eventHub",
@@ -567,6 +617,35 @@ module.exports = function(context) {
 };
 ```
 
+### <a name="output---python-example"></a>出力 - Python の例
+
+次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
+
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。
+
+```json
+{
+    "type": "eventHub",
+    "name": "$return",
+    "eventHubName": "myeventhub",
+    "connection": "MyEventHubSendAppSetting",
+    "direction": "out"
+}
+```
+
+1 つのメッセージを送信する Python コードを次に示します。
+
+```python
+import datetime
+import logging
+import azure.functions as func
+
+def main(timer: func.TimerRequest) -> str:
+    timestamp = datetime.datetime.utcnow()
+    logging.info('Event Hub message created at: %s', timestamp);   
+    return 'Event Hub message created at: {}'.format(timestamp)
+```
+
 ### <a name="output---java-example"></a>出力 - Java の例
 
 次の例は、現在の時刻を含むメッセージを Event Hub に書き込む Java 関数を示しています。
@@ -580,7 +659,7 @@ public String sendTime(
  }
  ```
 
-[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Event Hub に公開されるパラメーター上で `@EventHubOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。T は POJO または Java の任意のネイティブ型です。 
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Event Hub に公開されるパラメーター上で `@EventHubOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。T は POJO または Java の任意のネイティブ型です。
 
 ## <a name="output---attributes"></a>出力 - 属性
 
@@ -607,8 +686,8 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 |---------|---------|----------------------|
 |**type** | 該当なし | "eventHub" に設定する必要があります。 |
 |**direction** | 該当なし | "out" に設定する必要があります。 このパラメーターは、Azure Portal でバインドを作成するときに自動で設定されます。 |
-|**name** | 該当なし | イベントを表す関数コードに使用される変数の名前。 | 
-|**path** |**EventHubName** | Functions 1.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 | 
+|**name** | 該当なし | イベントを表す関数コードに使用される変数の名前。 |
+|**path** |**EventHubName** | Functions 1.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
 |**eventHubName** |**EventHubName** | Functions 2.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
 |**connection** |**Connection** | イベント ハブの名前空間への接続文字列が含まれたアプリ設定の名前。 この接続文字列をコピーするには、イベント ハブ自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、イベント ストリームにメッセージを送信するための送信アクセス許可が必要です。|
 
@@ -630,10 +709,10 @@ JavaScript では、`context.bindings.<name>` を使用して出力イベント�
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインディングのバージョン 2.x の設定のみが含まれています。 バージョン 2.x でのグローバル構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
+このセクションでは、バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインディングのバージョン 2.x の設定のみが含まれています。 バージョン 2.x でのグローバル構成設定の詳細については、[Azure Functions バージョン 2.x の host.json のリファレンス](functions-host-json.md)を参照してください。
 
 > [!NOTE]
-> Functions 1.x の host.json のリファレンスについては、[Azure Functions 1.x の host.json のリファレンス](functions-host-json-v1.md)に関する記事を参照してください。
+> Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
 
 ```json
 {

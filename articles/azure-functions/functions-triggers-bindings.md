@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: 9b2539d94c645f71b596e53429e6e0d8cc46b9ad
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ba2441044d63e63b969054e84e163352d2b376e8
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016745"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993817"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -119,29 +119,29 @@ function generateRandomId() {
 クラス ライブラリでは、同じトリガーとバインディング情報 (&mdash;キュー名とテーブル名、ストレージ アカウント、入力と出力の関数パラメーター&mdash;) が function.json ファイルではなく、属性によって提供されます。 次に例を示します。
 
 ```csharp
- public static class QueueTriggerTableOutput
- {
-     [FunctionName("QueueTriggerTableOutput")]
-     [return: Table("outTable", Connection = "MY_TABLE_STORAGE_ACCT_APP_SETTING")]
-     public static Person Run(
-         [QueueTrigger("myqueue-items", Connection = "MY_STORAGE_ACCT_APP_SETTING")]JObject order, 
-         ILogger log)
-     {
-         return new Person() {
-                 PartitionKey = "Orders",
-                 RowKey = Guid.NewGuid().ToString(),
-                 Name = order["Name"].ToString(),
-                 MobileNumber = order["MobileNumber"].ToString() };
-     }
- }
+public static class QueueTriggerTableOutput
+{
+    [FunctionName("QueueTriggerTableOutput")]
+    [return: Table("outTable", Connection = "MY_TABLE_STORAGE_ACCT_APP_SETTING")]
+    public static Person Run(
+        [QueueTrigger("myqueue-items", Connection = "MY_STORAGE_ACCT_APP_SETTING")]JObject order,
+        ILogger log)
+    {
+        return new Person() {
+                PartitionKey = "Orders",
+                RowKey = Guid.NewGuid().ToString(),
+                Name = order["Name"].ToString(),
+                MobileNumber = order["MobileNumber"].ToString() };
+    }
+}
 
- public class Person
- {
-     public string PartitionKey { get; set; }
-     public string RowKey { get; set; }
-     public string Name { get; set; }
-     public string MobileNumber { get; set; }
- }
+public class Person
+{
+    public string PartitionKey { get; set; }
+    public string RowKey { get; set; }
+    public string Name { get; set; }
+    public string MobileNumber { get; set; }
+}
 ```
 
 ## <a name="supported-bindings"></a>サポートされるバインディング
@@ -161,7 +161,7 @@ function generateRandomId() {
 |Visual Studio 2017 を使用する C# クラス ライブラリ|[NuGet ツールを使用](#c-class-library-with-visual-studio-2017)|[NuGet ツールを使用](#c-class-library-with-visual-studio-2017)|
 |Visual Studio Code を使用する C# クラス ライブラリ|該当なし|[.NET Core CLI を使用](#c-class-library-with-visual-studio-code)|
 
-バインドの種類 HTTP とタイマーは、すべてのバージョンと環境に自動登録されているため、明示的な登録を必要としない例外です。
+次のバインドの種類は、すべてのバージョンと環境に自動登録されているため、明示的な登録を必要としない例外です。HTTP とタイマー。
 
 ### <a name="azure-portal-development"></a>Azure Portal 開発
 
@@ -231,6 +231,7 @@ C# と C# スクリプトでは、`out` パラメーターや[コレクター �
 * [C# スクリプト (.csx)](#c-script-example)
 * [F#](#f-example)
 * [JavaScript](#javascript-example)
+* [Python](#python-example)
 
 ### <a name="c-example"></a>C# の例
 
@@ -334,6 +335,29 @@ module.exports = function (context, input) {
     context.log('Node.js script processed queue message', json);
     context.done(null, json);
 }
+```
+
+### <a name="python-example"></a>Python の例
+
+*function.json* ファイル内の出力バインディングを次に示します。
+
+```json
+{
+    "name": "$return",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{id}"
+}
+```
+Python コードを次に示します。
+
+```python
+def main(input: azure.functions.InputStream) -> str:
+    return json.dumps({
+        'name': input.name,
+        'length': input.length,
+        'content': input.read().decode('utf-8')
+    })
 ```
 
 ## <a name="binding-datatype-property"></a>dataType プロパティのバインド
@@ -483,7 +507,7 @@ public static void Run(
 * QueueTrigger - 有効な文字列の場合はメッセージの内容をトリガーします
 * DequeueCount
 * ExpirationTime
-* ID
+* Id
 * InsertionTime
 * NextVisibleTime
 * PopReceipt
@@ -589,9 +613,10 @@ module.exports = function (context, info) {
 JSON ペイロード内のいくつかのプロパティがプロパティを持つオブジェクトである場合は、ドット表記を使用してこれらを直接参照できます。 たとえば、次のような JSON があるとします。
 
 ```json
-{"BlobName": {
-  "FileName":"HelloWorld",
-  "Extension":"txt"
+{
+  "BlobName": {
+    "FileName":"HelloWorld",
+    "Extension":"txt"
   }
 }
 ```

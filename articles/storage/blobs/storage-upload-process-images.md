@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: c55e63d813c462db8a6c404894b8754f4130d935
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 882a43a75fa720b13d931740818e5ee6e893bcab
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097949"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753338"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする
 
 このチュートリアルは、シリーズの第 1 部です。 このチュートリアルでは、Azure Storage クライアント ライブラリを使用してストレージ アカウントに画像をアップロードする Web アプリのデプロイ方法を学習します。 終了すると、Azure Storage に画像を格納して表示する Web アプリが完成します。
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 ![images コンテナーの表示](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
@@ -99,7 +99,7 @@ BLOB ストレージ アカウント名とキーをメモしておきます。 �
 
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-[App Service プラン](../../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)は、アプリのホストとなる Web サーバー ファームの場所、サイズ、機能を規定します。
+[App Service プラン](../../app-service/overview-hosting-plans.md)は、アプリのホストとなる Web サーバー ファームの場所、サイズ、機能を規定します。
 
 [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) コマンドで、App Service プランを作成します。
 
@@ -111,7 +111,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-Web アプリでは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスト領域を提供します。 [az webapp create](/cli/azure/webapp#az_webapp_create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service/app-service-web-overview.md)を作成します。  
+Web アプリでは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスト領域を提供します。 [az webapp create](/cli/azure/webapp#az_webapp_create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service/overview.md)を作成します。  
 
 次のコマンドで、`<web_app>` を一意の名前に置き換えます。 有効な文字は、`a-z`、`0-9`、および `-` です。 `<web_app>` が一意でない場合は、"_指定された名前 `<web_app>` の Web サイトは既に存在します_" というエラー メッセージが表示されます。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。  
 
@@ -121,7 +121,7 @@ az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppS
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>GitHub リポジトリからサンプル アプリをデプロイする
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。 `<web_app>` を、前の手順で作成した Web アプリの名前に置き換えます。
 
@@ -159,7 +159,7 @@ Web アプリのデプロイと構成が済むと、アプリで画像のアッ�
 Web アプリをテストするには、発行したアプリの URL に移動します。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。
 **[写真のアップロード]** 領域を選択し、ファイルを選択してアップロードするか、ファイルを領域にドラッグします。 正常にアップロードされると、画像は表示されなくなります。
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 ![ImageResizer アプリ](media/storage-upload-process-images/figure1.png)
 
@@ -281,7 +281,7 @@ router.post('/', uploadStrategy, (req, res) => {
 
 アプリに戻って、**thumbnails** コンテナーにアップロードした画像が表示されていることを確認します。
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 ![images コンテナーの表示](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)

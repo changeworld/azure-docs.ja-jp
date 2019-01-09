@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 87bef3568e45f3d966d90d980403c83c96aa461f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7e320bdc98de75141aed4783d343571971287f37
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300870"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052536"
 documentType: LandingData
 title: Azure 上の Chef ソフトウェアのドキュメント
 metadata:
@@ -12,7 +12,7 @@ metadata:
   description: Chef ソフトウェアは、Linux と Windows 向けの DevOps オートメーション プラットフォームで、物理サーバーと仮想サーバー両方の構成を管理できます。 クイック スタートやチュートリアルを使用して、コードとしてのインフラストラクチャ (IaC) のレシピを自動化したり、Azure 上の仮想マシンの管理およびデプロイを実行したりするための Chef ソフトウェア製品の使用方法を確認してください。
   ms.service: chef
   keywords: Chef, Azure, DevOps, チュートリアル, サンプル, リファレンス
-  author: tomarcher
+  author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
   ms.topic: landing page

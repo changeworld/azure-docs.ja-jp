@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Greenhouse の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Greenhouse の統合 | Microsoft Docs
 description: Azure Active Directory と Greenhouse の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 7f48a0c11beb038370a8fc00e64d87127d356dec
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 14cdf0ddf648fb4441785106d3a8123d73a4bde9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424745"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835898"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>チュートリアル: Azure Active Directory と Greenhouse の統合
+# <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>チュートリアル:Azure Active Directory と Greenhouse の統合
 
 このチュートリアルでは、Greenhouse と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -127,10 +127,10 @@ Greenhouse で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/greenhouse-tutorial/tutorial_general_400.png)
 
-1. **Greenhouse** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Greenhouse サポート チーム](http://www.greenhouse.io/contact)に送信する必要があります。
+1. **Greenhouse** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Greenhouse サポート チーム](https://www.greenhouse.io/contact)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

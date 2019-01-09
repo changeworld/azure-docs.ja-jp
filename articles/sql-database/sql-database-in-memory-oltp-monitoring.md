@@ -7,17 +7,17 @@ ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jodebrui
-ms.author: jodebrui
+author: juliemsft
+ms.author: jrasnick
 ms.reviewer: genemi
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: ac7b568d95b9a2c382b1c167965942f0733012c4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c41420e46a0bd4afbaed96da0e2fb9775d49c6fc
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874925"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606539"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>インメモリ OLTP ストレージの監視
 [インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。 Premium および Business Critical サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。 [DTU ベースのリソース制限 - 単一データベース](sql-database-dtu-resource-limits-single-databases.md)、[DTU ベースのリソース制限 - エラスティック プール](sql-database-dtu-resource-limits-elastic-pools.md)、[仮想コアベースのリソース制限 - 単一データベース](sql-database-vcore-resource-limits-single-databases.md)、および [仮想コアベースのリソース制限 - エラスティック プール](sql-database-vcore-resource-limits-elastic-pools.md)に関する各ページを参照してください。

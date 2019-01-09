@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを Azure に統合する | Microsoft Docs'
+title: チュートリアル:パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを Azure に統合する | Microsoft Docs
 description: パスワード ハッシュの同期を使用してハイブリッド ID 環境をセットアップする方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4e8a39e16bd67169aac8dd7328338197b604e93f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a8dfe39dc3d32ca96d6252bac96a2e7abc09eee5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426912"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164708"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>チュートリアル: パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
+# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>チュートリアル:パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
 
 ![Create](media/tutorial-password-hash-sync/diagram.png)
 
@@ -81,7 +81,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 5. **[今すぐインストール]** をクリックします。
 6. ライセンス キーを入力し、**[次へ]** をクリックします。
 7. [ライセンス条項に同意します] をオンにし、**[次へ]** をクリックします。
-8. **[カスタム: Windows のみをインストールする (詳細設定)]** を選択します。
+8. **[カスタム:Windows のみをインストールする (詳細設定)]** を選択します。
 9. **[次へ]** をクリックします
 10. インストールが完了したら、仮想マシンを再起動してサインインし、Windows の更新プログラムを実行して VM を最新の状態にします。  最新の更新プログラムをインストールします。
 
@@ -205,8 +205,8 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、 **[続行]** をクリックします。  
 4. [簡単設定] 画面で、 **[簡単設定を使う]** をクリックします。</br>  
 ![作成](media/tutorial-password-hash-sync/express1.png)</br>
-5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。  **[次へ]** をクリックします。  
-6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。  **[次へ]** をクリックします。  
+5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 **[次へ]** をクリックします。  
+6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 **[次へ]** をクリックします。  
 7. [構成の準備完了] 画面で、 **[インストール]** をクリックします。
 8. インストールが完了したら、 **[終了]** をクリックします。
 9. インストールの完了後、Sychronization Service Manager または同期規則エディターを使用する前に、サインアウトしてもう一度サインインします。

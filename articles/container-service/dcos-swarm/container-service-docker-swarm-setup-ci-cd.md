@@ -1,5 +1,5 @@
 ---
-title: Azure Container Service と Swarm を使用した CI/CD
+title: (非推奨) Azure Container Service と Swarm を使用した CI/CD
 description: Azure Container Service、Docker Swarm、Azure Container Registry、および Azure DevOps を使用して、複数コンテナー .NET Core アプリケーションを継続的に配信します
 services: container-service
 author: jcorioland
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 3b91c269104e740add1d3a5b8ecaee93ca269188
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db0a16fa44dd23cbc32159889fe8b8ec28c77a5f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302828"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992543"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>Docker Swarm と Azure DevOps Services を使用して、Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(非推奨) Docker Swarm と Azure DevOps Services を使用して、Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 クラウド向けの最新のアプリケーションを開発する際の最も大きな課題の 1 つは、これらのアプリケーションを継続的に配信できるようにすることです。 この記事では、Azure Container Service、Docker Swarm、Azure Container Registry、および Azure Pipelines 管理を使用して、完全な CI/CD (継続的な統合とデプロイ) パイプラインを実装する方法について説明します。
 
@@ -105,7 +107,7 @@ CI/CD パイプラインに進む前の最後の手順として、Azure でコ�
 
 これで、すべての構成は完了です。 次の手順では、アプリケーションをビルドし、Docker Swarm クラスターにデプロイする CI/CD パイプラインを作成します。 
 
-## <a name="step-2-create-the-build-pipeline"></a>手順 2: ビルド パイプラインの作成
+## <a name="step-2-create-the-build-pipeline"></a>手順 2: ビルド パイプラインを作成する
 
 この手順では、Azure DevOps Services プロジェクトのビルド パイプラインを設定し、コンテナー イメージのビルド ワークフローを定義します
 

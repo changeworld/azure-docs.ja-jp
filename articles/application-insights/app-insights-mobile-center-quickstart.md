@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 040e54b02161386dcc16b943956f39b86b264303
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77fafb3f3a4c834c5a7f185d129a1c651db58089
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950524"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719848"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
@@ -126,7 +126,7 @@ Application Insights は、App Center で提供されている分析ツールよ
    1. テキスト エディターでクエリの任意の場所をクリックして、クエリを選択します。
    2. **[実行]** をクリックしてクエリを実行します。 
 
-   詳しくは、[Application Insights Analytics](app-insights-analytics.md)に関するページおよび [Log Analytics クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)に関するページをご覧ください。
+   詳しくは、[Application Insights Analytics](../azure-monitor/app/analytics.md)に関するページおよび [Log Analytics クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)に関するページをご覧ください。
 
 
 2. **カスタム イベント テレメトリのセグメント化とフィルター。** Application Insights の **[概要]** ページで、目次の **[ユーザー]** を選択します。

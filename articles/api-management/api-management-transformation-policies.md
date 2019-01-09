@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 6796ecd272c7a1ed1d29c89fbe06c87dc2d4601b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 87d2ebcf6a12f51775b15e906ea7813962e3630f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242808"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965378"
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -72,13 +72,13 @@ ms.locfileid: "51242808"
 
 |Name|説明|必須|
 |----------|-----------------|--------------|
-|json-to-xml|ルート要素。|[はい]|
+|json-to-xml|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
 |Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
-|apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換を適用します。<br />-   content-type-json - 応答の Content-Type ヘッダーに JSON の存在が示されている場合のみ変換を行います。|[はい]|該当なし|
+|apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換を適用します。<br />-   content-type-json - 応答の Content-Type ヘッダーに JSON の存在が示されている場合のみ変換を行います。|はい|該当なし|
 |consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで JSON が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ |true|
 |parse-date|`false` に設定すると、変換中、日付値がコピーされます。|いいえ |true|
 
@@ -116,14 +116,14 @@ ms.locfileid: "51242808"
 
 |Name|説明|必須|
 |----------|-----------------|--------------|
-|xml-to-json|ルート要素。|[はい]|
+|xml-to-json|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
 |Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
-|kind|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   javascript-friendly - 変換後の JSON が JavaScript 開発者にとってわかりやすい形になります。<br />-   direct - 変換後の JSON に元の XML ドキュメントの構造が反映されます。|[はい]|該当なし|
-|apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換します。<br />-   content-type-xml - 応答の Content-Type ヘッダーに XML の存在が示されている場合のみ変換を行います。|[はい]|該当なし|
+|kind|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   javascript-friendly - 変換後の JSON が JavaScript 開発者にとってわかりやすい形になります。<br />-   direct - 変換後の JSON に元の XML ドキュメントの構造が反映されます。|はい|該当なし|
+|apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換します。<br />-   content-type-xml - 応答の Content-Type ヘッダーに XML の存在が示されている場合のみ変換を行います。|はい|該当なし|
 |consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで XML が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ |true|
 
 ### <a name="usage"></a>使用法
@@ -152,14 +152,14 @@ ms.locfileid: "51242808"
 
 |Name|説明|必須|
 |----------|-----------------|--------------|
-|find-and-replace|ルート要素。|[はい]|
+|find-and-replace|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
 |Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
-|from|検索する文字列。|[はい]|該当なし|
-|to|置換する文字列。 長さゼロの置換文字列を指定すると、検索文字列を削除できます。|[はい]|該当なし|
+|from|検索する文字列。|はい|該当なし|
+|to|置換する文字列。 長さゼロの置換文字列を指定すると、検索文字列を削除できます。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -190,7 +190,7 @@ ms.locfileid: "51242808"
 
 |Name|説明|必須|
 |----------|-----------------|--------------|
-|redirect-content-urls|ルート要素。|[はい]|
+|redirect-content-urls|ルート要素。|はい|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -254,7 +254,7 @@ ms.locfileid: "51242808"
 
 |Name|説明|必須|
 |----------|-----------------|--------------|
-|set-backend-service|ルート要素。|[はい]|
+|set-backend-service|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
@@ -334,7 +334,7 @@ ms.locfileid: "51242808"
 ```
 
 #### <a name="filter-response-based-on-product"></a>製品に基づいて応答をフィルター処理する
- 次の例に、バックエンド サービスから受信した応答で `Starter` 製品が使用されている場合にデータ要素を削除して、内容のフィルター処理を行う方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介) を 34:30 まで早送りしてご覧ください。 このデモで使用されている [Dark Sky Forecast API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。
+ 次の例に、バックエンド サービスから受信した応答で `Starter` 製品が使用されている場合にデータ要素を削除して、内容のフィルター処理を行う方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177:More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: その他の API Management 機能の紹介) を 34:30 まで早送りしてご覧ください。 このデモで使用されている [Dark Sky Forecast API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -390,7 +390,7 @@ ms.locfileid: "51242808"
 
 |Name|説明|必須|
 |----------|-----------------|--------------|
-|set-body|ルート要素。 本文のテキストか、または本文を返す式を記載します。|[はい]|
+|set-body|ルート要素。 本文のテキストか、または本文を返す式を記載します。|はい|
 
 ### <a name="properties"></a>Properties
 
@@ -469,7 +469,7 @@ OriginalUrl.
 ```
 
 #### <a name="forward-context-information-to-the-backend-service"></a>バックエンド サービスにコンテキスト情報を転送する
- 次の例では、API レベルでポリシーを適用して、バックエンド サービスにコンテキスト情報を提供する方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介) を 10:30 まで早送りしてご覧ください。 12:10 に開発者ポータルで操作を呼び出すデモが示されており、このポリシーの動作を確認できます。
+ 次の例では、API レベルでポリシーを適用して、バックエンド サービスにコンテキスト情報を提供する方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177:More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: その他の API Management 機能の紹介) を 10:30 まで早送りしてご覧ください。 12:10 に開発者ポータルで操作を呼び出すデモが示されており、このポリシーの動作を確認できます。
 
 ```xml
 <!-- Copy this snippet into the inbound element to forward some context information, user id and the region the gateway is hosted in, to the backend service for logging or evaluation -->
@@ -499,15 +499,15 @@ OriginalUrl.
 
 |Name|説明|必須|
 |----------|-----------------|--------------|
-|set-header|ルート要素。|[はい]|
-|value|設定するヘッダーの値を指定します。 同じ名前のヘッダーが複数ある場合は、`value` 要素をさらに追加します。|[はい]|
+|set-header|ルート要素。|はい|
+|value|設定するヘッダーの値を指定します。 同じ名前のヘッダーが複数ある場合は、`value` 要素をさらに追加します。|はい|
 
 ### <a name="properties"></a>Properties
 
 |Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ |override|
-|name|設定するヘッダーの名前を指定します。|[はい]|該当なし|
+|name|設定するヘッダーの名前を指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -543,7 +543,7 @@ OriginalUrl.
 ```
 
 #### <a name="forward-context-information-to-the-backend-service"></a>バックエンド サービスにコンテキスト情報を転送する
- 次の例では、API レベルでポリシーを適用して、バックエンド サービスにコンテキスト情報を提供する方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介) を 10:30 まで早送りしてご覧ください。 12:10 に開発者ポータルで操作を呼び出すデモが示されており、このポリシーの動作を確認できます。
+ 次の例では、API レベルでポリシーを適用して、バックエンド サービスにコンテキスト情報を提供する方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177:More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: その他の API Management 機能の紹介) を 10:30 まで早送りしてご覧ください。 12:10 に開発者ポータルで操作を呼び出すデモが示されており、このポリシーの動作を確認できます。
 
 ```xml
 <!-- Copy this snippet into the inbound element to forward a piece of context, product name in this example, to the backend service for logging or evaluation -->
@@ -559,15 +559,15 @@ OriginalUrl.
 
 |Name|説明|必須|
 |----------|-----------------|--------------|
-|set-query-parameter|ルート要素。|[はい]|
-|value|設定するクエリ パラメーターの値を指定します。 同じ名前のクエリ パラメーターが複数ある場合は、`value` 要素をさらに追加します。|[はい]|
+|set-query-parameter|ルート要素。|はい|
+|value|設定するクエリ パラメーターの値を指定します。 同じ名前のクエリ パラメーターが複数ある場合は、`value` 要素をさらに追加します。|はい|
 
 ### <a name="properties"></a>Properties
 
 |Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |exists-action|対象のクエリ パラメーターが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のパラメーターの値を置き換えます。<br />-   skip - 既存のクエリ パラメーターの値を置き換えません。<br />-   append - 既存のクエリ パラメーターの値に値を追加します。<br />-   delete - 要求からクエリ パラメーターを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってクエリ パラメーターが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ |override|
-|name|設定するクエリ パラメーターの名前を指定します。|[はい]|該当なし|
+|name|設定するクエリ パラメーターの名前を指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -638,13 +638,13 @@ OriginalUrl.
 
 |Name|説明|必須|
 |----------|-----------------|--------------|
-|rewrite-uri|ルート要素。|[はい]|
+|rewrite-uri|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
 |Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|-------------|
-|template|クエリ文字列パラメーターを設定した実際の Web サービス URL。 式を使用する場合は、値の全体が式である必要があります。|[はい]|該当なし|
+|template|クエリ文字列パラメーターを設定した実際の Web サービス URL。 式を使用する場合は、値の全体が式である必要があります。|はい|該当なし|
 |copy-unmatched-params|元の URL テンプレートに存在しない着信要求のクエリ パラメーターを、書き換えテンプレートで定義されている URL に追加するかどうかを指定します。|いいえ |true|
 
 ### <a name="usage"></a>使用法
@@ -707,9 +707,9 @@ OriginalUrl.
 
 |Name|説明|必須|
 |----------|-----------------|--------------|
-|xsl-transform|ルート要素。|[はい]|
+|xsl-transform|ルート要素。|はい|
 |パラメーター|変換で使用する変数の定義に使用します。|いいえ |
-|xsl:stylesheet|ルート スタイルシート要素。 この中で定義する要素と属性はすべて、標準的な [XSLT の仕様](http://www.w3.org/TR/xslt)に従う必要があります。|[はい]|
+|xsl:stylesheet|ルート スタイルシート要素。 この中で定義する要素と属性はすべて、標準的な [XSLT の仕様](https://www.w3.org/TR/xslt)に従う必要があります。|はい|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。

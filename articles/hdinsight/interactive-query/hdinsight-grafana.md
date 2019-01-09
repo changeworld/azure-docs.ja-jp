@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: f47c9ee85348cc96915a0fa637b06b0a73059351
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7f33742fc5e765aa5ab0c66d13e844b3be2bab9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322296"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599878"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight で Grafana にアクセスする
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. 次のスクリーンショットで提案されているように値を入力するか、選択します。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 指定する値は一意である必要があり、名前付けガイドラインに従う必要があります。 テンプレートでは、検証チェックは実行されません。 指定した値が既に使用されている場合、またはガイドラインに従ってない場合、テンプレートを送信した後にエラーが発生します。       
     > 
     >
@@ -66,10 +66,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 5. タイルには、クラスターに関連付けられている既定のストレージも一覧表示されます。 各クラスターには、[Azure ストレージ アカウント](../hdinsight-hadoop-use-blob-storage.md)または [Azure Data Lake アカウント](../hdinsight-hadoop-use-data-lake-store.md)との依存関係があります。 このアカウントを、既定のストレージ アカウントと呼びます。 HDInsight クラスターとその既定のストレージ アカウントは、同じ Azure リージョンに配置されている必要があります。 クラスターを削除しても、ストレージ アカウントは削除されません。
     
 
-> [!NOTE]
-> その他のクラスター作成方法と、このチュートリアルで使うプロパティの詳細については、[HDInsight クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。       
-> 
->
+> [!NOTE]  
+> その他のクラスター作成方法と、このチュートリアルで使うプロパティの詳細については、[HDInsight クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 
 
 ## <a name="access-the-grafana-dashboard"></a>Grafana ダッシュボードにアクセスする
 
@@ -94,10 +92,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 記事を完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 
 
-> [!NOTE]
+> [!NOTE]  
 > *すぐに*次のチュートリアルに進み、HDInsight で Hadoop を使用して ETL 操作を実行する方法を学習する場合は、クラスターを実行したままにしておいてかまいません。 そのチュートリアルでは Hadoop クラスターを再度作成する必要があるからです。 ただし、すぐに次のチュートリアルに進まない場合は、クラスターを今すぐ削除する必要があります。
-> 
-> 
 
 **クラスターと既定のストレージ アカウントを削除するには、次の手順に従います。**
 
@@ -124,7 +120,7 @@ HDInsight でデータを分析する方法の詳細については、次の記�
 
 * Visual Studio から Hive クエリを実行する方法など、HDInsight で Hive を使用する方法の詳細については、[HDInsight での Apache Hive の使用](../hdinsight-use-hive.md)に関する記事を参照してください。
 * データの変換に使用される言語 Pig の詳細については、[HDInsight での Apache Pig の使用](../hdinsight-use-pig.md)に関する記事を参照してください。
-* Hadoop 上のデータを処理するプログラムを作成する方法の 1 つである Apache Hadoop MapReduce の詳細については、[HDInsight での Apache Hadoop MapReduce の使用](../hdinsight-use-mapreduce.md)に関する記事を参照してください。
+* Hadoop 上のデータを処理するプログラムを作成する方法の 1 つである MapReduce の詳細については、[HDInsight での MapReduce の使用](../hdinsight-use-mapreduce.md)に関する記事を参照してください。
 * HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、 [HDInsight Hadoop Tools for Visual Studio の使用開始](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
 
 

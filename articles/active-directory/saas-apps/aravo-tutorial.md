@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Aravo の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Aravo の統合 | Microsoft Docs
 description: Azure Active Directory と Aravo の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: f9ada220a82a2cf9347f02960eeef9c211f37c67
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6631df4764e16fd2399b231732df3fb1ee475869
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226155"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842647"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-aravo"></a>チュートリアル: Azure Active Directory と Aravo の統合
+# <a name="tutorial-azure-active-directory-integration-with-aravo"></a>チュートリアル:Azure Active Directory と Aravo の統合
 
 このチュートリアルでは、Aravo と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Aravo で、Azure AD での **[ユーザー名]** の値を **[ユーザー名]*
 
 Aravo で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Aravo テスト ユーザーの作成](#creating-an-aravo-test-user)** - Azure AD でのユーザーにリンクされた、Aravo での Britta Simon の対応するユーザーを作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -102,40 +102,40 @@ Aravo で Azure AD のシングル サインオンを構成およびテストす
 
 1. Azure Portal の **[Aravo]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/aravo-tutorial/tutorial_aravo_samlbase.png)
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_aravo_samlbase.png)
 
 3. **[Aravo Domain and URLs] \(Aravo のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/aravo-tutorial/tutorial_aravo_url.png)
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_aravo_url.png)
 
     a. **[識別子]** ボックスに、`https://<companyname>.aravo.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<companyname>.aravo.com/aems/login.do` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Aravo サポート チーム](http://www.aravo.com/about-us/contact/)に問い合わせてください。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Aravo サポート チーム](https://www.aravo.com/about-us/contact/)に問い合わせてください。
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/aravo-tutorial/tutorial_aravo_certificate.png) 
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_aravo_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/aravo-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_general_400.png)
 
 6. **[Aravo Configuration] \(Aravo 構成)** セクションで、**[Configure Aravo] \(Aravo の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/aravo-tutorial/tutorial_aravo_configure.png) 
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_aravo_configure.png) 
 
-7. **Aravo** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [Aravo サポート チーム](http://www.aravo.com/about-us/contact/)に送信する必要があります。 
+7. **Aravo** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [Aravo サポート チーム](https://www.aravo.com/about-us/contact/)に送信する必要があります。 
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -170,7 +170,7 @@ Aravo で Azure AD のシングル サインオンを構成およびテストす
  
 ### <a name="creating-an-aravo-test-user"></a>Aravo テスト ユーザーの作成
 
-このセクションの目的は、Aravo で Britta Simon という名前のユーザーを作成することです。 [Aravo サポート チーム](http://www.aravo.com/about-us/contact/)と協力して、Aravo アカウントでユーザーを追加します。
+このセクションの目的は、Aravo で Britta Simon という名前のユーザーを作成することです。 [Aravo サポート チーム](https://www.aravo.com/about-us/contact/)と協力して、Aravo アカウントでユーザーを追加します。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -186,7 +186,7 @@ Aravo で Azure AD のシングル サインオンを構成およびテストす
 
 2. アプリケーションの一覧で **[Aravo]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/aravo-tutorial/tutorial_aravo_app.png) 
+    ![Configure single sign-on](./media/aravo-tutorial/tutorial_aravo_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

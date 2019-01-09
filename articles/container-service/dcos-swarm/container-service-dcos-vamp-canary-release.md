@@ -1,5 +1,5 @@
 ---
-title: Azure DC/OS クラスターでの Vamp によるカナリア リリース
+title: (非推奨) Azure DC/OS クラスターでの Vamp によるカナリア リリース
 description: Vamp を使用してサービスをカナリア リリースし、Azure Container Service DC/OS クラスターでスマート トラフィック フィルタリングを適用する方法を説明します。
 services: container-service
 author: gggina
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 0f6c0e9206d9e056ee0496b6cc515625b08b1e4a
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 7ab63b869d9cd8a5b1f2b60429c5b54d0da5761f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959918"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002068"
 ---
-# <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Azure Container Service DC/OS クラスターで Vamp を使用してマイクロサービスをカナリア リリースする
+# <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(非推奨) Azure Container Service DC/OS クラスターで Vamp を使用してマイクロサービスをカナリア リリースする
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 このチュートリアルでは、DC/OS クラスターにより Azure Container Service に Vamp を設定します。 Vamp デモ サービス "sava" をカナリア リリースし、スマート トラフィック フィルタリングを適用して、Firefox とのサービスの非互換性を解決します。 
 
@@ -291,7 +293,7 @@ Vamp は**条件**を使用して、ゲートウェイのルート間のトラ�
 
 * Vamp アクションの管理について詳しくは、「[Vamp REST API](http://vamp.io/documentation/api/api-reference/)」を参照してください。
 
-* Node.js で Vamp 自動スクリプトを構築し、[Vamp ワークフロー](http://vamp.io/documentation/tutorials/create-a-workflow/)として実行します。
+* Node.js で Vamp 自動スクリプトを構築し、[Vamp ワークフロー](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)として実行します。
 
 * その他の [VAMP チュートリアル](http://vamp.io/documentation/tutorials/)もご覧ください。
 

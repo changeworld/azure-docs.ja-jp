@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 855ee1b7396be97c6529480b8fa8200bb8167ee6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 653d3e357e3a02659a225b4e26c386ca54b6288f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434020"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715428"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>REST を使用して HDInsight 上の Apache Hadoop で Apache Pig ジョブを実行する
 
@@ -73,7 +73,7 @@ Azure HDInsight クラスターに REST 要求を行うことで、Apache Pig La
 
     * **-d**:`-G` が使用されていないため、要求は既定で POST メソッドになります。 `-d` は要求で送信されるデータ値を指定します。
 
-    * **user.name**:コマンドを実行するユーザー
+    * **user.name**: コマンドを実行するユーザー
     * **execute**:実行する Pig Latin ステートメント
     * **statusdir**:このジョブの状態が書き込まれるディレクトリ
 
@@ -101,7 +101,7 @@ Azure HDInsight クラスターに REST 要求を行うことで、Apache Pig La
 
 ジョブのステータスが **SUCCEEDED** に変わったら、ジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには、出力ファイルの場所が含まれます。この場合は、`/example/pigcurl` です。
 
-HDInsight は、既定のデータ ストアとして Azure Storage または Azure Data Lake Storage のいずれかを使用します。 どちらを使用するかによって、さまざまな方法でデータを取得できます。 詳細については、[Linux ベースの HDInsight について](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store)ドキュメントのストレージの項を参照してください。
+HDInsight は、既定のデータ ストアとして Azure Storage または Azure Data Lake Storage のいずれかを使用します。 どちらを使用するかによって、さまざまな方法でデータを取得できます。 詳細については、[Linux ベースの HDInsight について](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-storage)ドキュメントのストレージの項を参照してください。
 
 ## <a id="summary"></a>概要
 

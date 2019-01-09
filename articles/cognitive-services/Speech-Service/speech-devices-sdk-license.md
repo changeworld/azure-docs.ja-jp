@@ -1,5 +1,5 @@
 ---
-title: Speech Devices SDK のライセンス契約
+title: Speech Devices SDK のライセンス契約 - Speech Services
 titleSuffix: Azure Cognitive Services
 description: Speech Devices SDK のライセンス契約。
 services: cognitive-services
@@ -8,18 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: dea27d7363210580d5f040de7ea1db770701d9c9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: b1605337a810c635bfa40cd05e2f9b15d2e5a7e1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466122"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078516"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Speech Devices SDK のライセンス契約
 
-## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>マイクロソフト ソフトウェア ライセンス条項<br>Speech Devices ソフトウェア開発キット (SDK) 
+## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>マイクロソフト ソフトウェア ライセンス条項<br>Speech Devices ソフトウェア開発キット (SDK)
 
 > 米国在住のお客様 (または主たる営業所が米国に所在する企業) は、後述の「拘束力のある仲裁および集団訴訟権の放棄」の条項を参照してください。 この条項は、紛争解決方法に影響を与えるものです。
 
@@ -57,7 +58,7 @@ f)  本ソフトウェアは、必ず Microsoft Azure Cognitive Services の音�
 
 **5\. フィードバック。** お客様が Microsoft に対して本ソフトウェアに関するフィードバックを提供した場合、お客様は Microsoft に対し、方法および目的を問わず当該フィードバックを使用、共有、および商品化する権利を無償で付与するものとします。 お客様は、Microsoft がお客様からのフィードバックを自己のソフトウェアまたはドキュメントに組み込んだことによって当該ソフトウェアまたはドキュメントに関するライセンスを第三者に供与することを余儀なくされるような内容のライセンスが適用されるフィードバックを提供しないものとします。 これらの権利は、本契約よりも優先されます。
 
-**6\. 期間** 本契約は、お客様による承諾の時点をもって発効し、お客様または Microsoft がいつでも解除できるものとします。 
+**6\. 期間** 本契約は、お客様による承諾の時点をもって発効し、お客様または Microsoft がいつでも解除できるものとします。
 
 **7\. 解除。** Microsoft は、お客様が本契約の条項のいずれかに違反した場合には、他のいかなる権利にも影響を及ぼすことなく、本契約を解除できるものとします。 お客様は、この場合において、本ソフトウェアのコピーおよび本ソフトウェアのコンポーネント パーツをすべて破棄しなければなりません。
 

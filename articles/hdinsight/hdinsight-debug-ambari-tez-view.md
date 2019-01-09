@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: c85ad59acc8e307de05f41365855f3a9669ac2b5
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9b8b92b7a672a4d344b17d4ade497749766f8a91
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034678"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719695"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>HDInsight で Apache Ambari ビューを使用して Apache Tez ジョブをデバッグする
 
-HDInsight の Apache Ambari Web UI には Tez ビューが含まれています。Apache Tez ビューは、Tez を使用するジョブの確認とデバッグに使用できます。 Tez ビューを使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
+HDInsight の [Apache Ambari](https://ambari.apache.org/) Web UI には [Apache TEZ](https://tez.apache.org/) ビューが含まれています。このビューは、Tez を使用するジョブの確認とデバッグに使用できます。 Tez ビューを使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md#hdinsight-windows-retirement)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -90,9 +90,9 @@ Tez を使用する Hive クエリを実行するには、次の手順に従い�
 
 5. このページのタブでは、次の情報を確認できます。
 
-    * **[クエリの詳細]**: Hive クエリに関する詳細情報。
-    * **[タイムライン]**: 処理の各ステージに要した時間に関する情報。
-    * **[構成]**: このクエリに使用される構成。
+    * **クエリの詳細**:Hive クエリに関する詳細情報。
+    * **タイムライン**:処理の各ステージに要した時間に関する情報。
+    * **構成**:このクエリに使用される構成。
 
     __[クエリの詳細]__ では、リンクを使用してこのクエリの __アプリケーション__ や __DAG__ に関する情報を確認できます。
     
@@ -101,8 +101,8 @@ Tez を使用する Hive クエリを実行するには、次の手順に従い�
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、Tez ビューの使用方法を説明しました。詳細については、[HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)に関する記事を参照してください。
+ここでは、Apache Tez ビューの使用方法を説明しました。詳細については、[HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)に関する記事を参照してください。
 
-Tez に関する技術的な情報の詳細については、 [Hortonworks の Tez に関するページ](http://hortonworks.com/hadoop/tez/)を参照してください。
+Apache Tez に関するより詳細な技術情報については、[Hortonworks の Apache Tez](https://hortonworks.com/hadoop/tez/) に関するページを参照してください。
 
-HDInsight での Ambari の使用の詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
+HDInsight での Apache Ambari の使用の詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。

@@ -1,11 +1,11 @@
 ---
-title: Net# ニューラル ネットワーク仕様言語ガイド - Azure Machine Learning | Microsoft Docs
-description: Net# ニューラル ネットワーク仕様言語の構文と、Net# を使用してカスタム ニューラル ネットワーク モデルを作成する方法の例
+title: Net# ニューラル ネットワーク - Azure Machine Learning Studio | Microsoft Docs
+description: Net# ニューラル ネットワーク仕様言語の構文と、Azure Machine Learning Studio で Net# を使用してカスタム ニューラル ネットワーク モデルを作成する方法の例を示します。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 8a96cfdedcde9b4037627f3e61af862c0600ca20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ec33ac469d33a07d00f379beef2db9f4405e4679
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258479"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631127"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Azure Machine Learning のための Net# ニューラル ネットワーク仕様言語について
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Net# ニューラル ネットワーク仕様言語について
 
 Net# は、Microsoft が開発した言語で、ニューラル ネットワーク アーキテクチャを定義するために使用されます。 ニューラル ネットワークの構造を定義するために Net# を使用することで、ディープ ニューラル ネットワークや任意次元の畳み込みなどの複雑な構造を定義することが可能になり、これが画像、音声、映像などのデータを使用する学習に役立つことが知られています。
 
 次のコンテキストで Net # アーキテクチャの仕様をご利用いただけます。
 
-+ Microsoft Azure Machine Learning Studio のすべてのニューラル ネットワーク モジュール: [多クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[2 クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)、および[ニューラル ネットワーク回帰](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ MicrosoftML のニューラル ネットワーク関数: R 言語用の [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) と [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)、および Python 用の [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
++ Microsoft Azure Machine Learning Studio のすべてのニューラル ネットワーク モジュール:[多クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[2 クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)、および[ニューラル ネットワーク回帰](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ MicrosoftML のニューラル ネットワーク関数:R 言語用の [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) と [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)、および Python 用の [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
 
 
 この記事では、Net# でのカスタム ニューラル ネットワーク開発に必要な基本概念と構文について説明します。 
@@ -38,7 +38,7 @@ Net# は、Microsoft が開発した言語で、ニューラル ネットワー�
 + Net# 仕様言語の構文とキーワード
 + Net# を使用したカスタム ニューラル ネットワークの例 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="neural-network-basics"></a>ニューラル ネットワークの基本
 
@@ -374,7 +374,7 @@ share { Data1 => H1, Data2 => H2 } // share weights
 
 このセクションでは、隠れ層の追加、隠れ層の他の層との対話方法の定義、および畳み込みネットワークの構築のための Net# の使用方法の例を示します。
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>シンプルなカスタム ニューラル ネットワークの定義: "Hello World" の例
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>シンプルなカスタム ニューラル ネットワークの定義:"Hello World" の例
 
 単一の隠れ層を持つニューラル ネットワーク モデルの作成方法をこのシンプルな例で示します。
 
@@ -388,7 +388,7 @@ output Out [10] sigmoid from H all;
 
 + 最初の行により入力レイヤーが定義されます (`Data` という名前)。 `auto` キーワードを使用すると、ニューラル ネットワークに入力例のすべての機能列が自動的に追加されます。 
 + 2 行目で隠れ層が作成されます。 200 個のノードを持つこの非表示レイヤーに `H` という名前が割り当てられます。 この層は入力層に完全結合されます。
-+ 3 行目は、出力レイヤーを定義します。このレイヤーは `O` という名前で、10 個の出力ノードが含まれています。 ニューラル ネットワークが分類に使用される場合、クラスあたり 1 つの出力ノードがあります。 キーワード **sigmoid** は、出力層に適用される出力関数を示します。
++ 3 行目は、出力レイヤーを定義します。このレイヤーは `Out` という名前で、10 個の出力ノードが含まれています。 ニューラル ネットワークが分類に使用される場合、クラスあたり 1 つの出力ノードがあります。 キーワード **sigmoid** は、出力層に適用される出力関数を示します。
 
 ### <a name="define-multiple-hidden-layers-computer-vision-example"></a>複数の隠れ層の定義: コンピューター ビジョンの例
 

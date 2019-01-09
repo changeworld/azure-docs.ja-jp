@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 2a38b117cde6d6b51b101f6b0ef0eb3a19b42ba3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3a668783e8257ef9074d12b30ff0afc3a40325f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344229"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539724"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>チュートリアル:Azure で Java EE と Postgres の Web アプリを構築する
 
@@ -170,7 +170,7 @@ _pom.xml_ で、お客様の Postgres サーバー名、管理者ログイン名
 
 ### <a name="ftp-the-configuration-files"></a>構成ファイルを FTP で転送する
 
-`wildfly_config/` の内容を目的の App Service インスタンスに FTP で転送する必要があります。 お客様の FTP 資格情報を取得するには、Azure portal で [App Service] ブレードの **[発行プロファイルの取得]** ボタンをクリックします。 お客様の FTP ユーザー名とパスワードは、ダウンロードした XML ドキュメント内にあります。 発行プロファイルの詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials)を参照してください。
+`wildfly_config/` の内容を目的の App Service インスタンスに FTP で転送する必要があります。 お客様の FTP 資格情報を取得するには、Azure portal で [App Service] ブレードの **[発行プロファイルの取得]** ボタンをクリックします。 お客様の FTP ユーザー名とパスワードは、ダウンロードした XML ドキュメント内にあります。 発行プロファイルの詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)を参照してください。
 
 任意の FTP ツールを使用して、`wildfly_config/` 内の 4 つのファイルを `/home/site/deployments/tools/` に転送します  (ディレクトリではなく、ファイル自体だけを転送することに注意してください)。
 

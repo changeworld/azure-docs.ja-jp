@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Small Improvements の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Small Improvements の統合 | Microsoft Docs
 description: Azure Active Directory と Small Improvements の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 48b1e47befa647a9d221e5cdf5bf0485c3b66028
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 588e56c9ae22578c08dbca07c7c576fe8b577b58
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423829"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012336"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>チュートリアル: Azure Active Directory と Small Improvements の統合
+# <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>チュートリアル:Azure Active Directory と Small Improvements の統合
 
 このチュートリアルでは、Small Improvements と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +88,7 @@ Small Improvements で、Azure AD の **[ユーザー名]** の値を **[Usernam
 
 Small Improvements で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Small Improvements テスト ユーザーの作成](#creating-a-small-improvements-test-user)** - Small Improvements で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -216,7 +216,7 @@ Azure AD ユーザーが Small Improvements にログインできるようにす
 
     b. 「**Simon**」のように、ユーザーの **[姓]** を入力します。
 
-    c. **brittasimon@contoso.com** のように、ユーザーの **[メール]** を入力します。 
+    c. <strong>brittasimon@contoso.com</strong> のように、ユーザーの **[メール]** を入力します。 
 
     d. **[通知電子メールを送信する]** ボックスに、個人のメッセージを入力することもできます。 通知を送信しない場合は、このチェックボックスをオフにします。
 
