@@ -302,6 +302,8 @@ items:
       items:
       - name: VS Code 用の Azure IoT Tools を使用したクラウド デバイス メッセージングの管理
         href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
+      - name: Cloud Explorer for Visual Studio を使用したクラウド デバイス メッセージングの管理
+        href: iot-hub-visual-studio-cloud-device-messaging.md
       - name: Power BI でのデータ視覚化
         href: iot-hub-live-data-visualization-in-power-bi.md
       - name: Web Apps でのデータ視覚化
@@ -310,6 +312,8 @@ items:
         href: iot-hub-weather-forecast-machine-learning.md
       - name: VS Code 用の Azure IoT Tools を使用したデバイス管理
         href: iot-hub-device-management-iot-toolkit.md
+      - name: Cloud Explorer for Visual Studio を使用したデバイス管理
+        href: iot-hub-device-management-visual-studio.md
       - name: Azure CLI の IoT 拡張機能を使用したデバイス管理
         href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
       - name: Logic Apps を使用したリモートの監視と通知
@@ -412,9 +416,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 09ae29bcfa6c9941f32c4892d30369ba2183cce7
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 4cab0750e1e0a9c71a4323f28147d1963080c138
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052974"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107380"
