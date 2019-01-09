@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - .NET で Azure Windows 仮想マシンを使用して Azure Key Vault を使用する方法 | Microsoft Docs
+title: チュートリアル - .NET で Azure Windows 仮想マシンを使用して Azure Key Vault を使用する方法 - Azure Key Vault | Microsoft Docs
 description: 'チュートリアル: キー コンテナーからシークレットを読み取るように ASP.Net Core アプリケーションを構成する'
 services: key-vault
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: key-vault
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 01/02/2019
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: d1f24c8bebc8740f47dc0f02089db1091c22f597
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: f12d73904b547da6531e24a899277eca7dd46660
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711329"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998763"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-net"></a>チュートリアル: .NET で Azure Windows 仮想マシンを使用して Azure Key Vault を使用する方法
+# <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-net"></a>チュートリアル:.NET で Azure Windows 仮想マシンを使用して Azure Key Vault を使用する方法
 
 Azure Key Vault は、API キーや、アプリケーション、サービス、IT リソースへのアクセスに必要なデータベース接続文字列などのシークレットを保護するのに役立ちます。
 
-このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るようにコンソール アプリケーションを設定するために必要な手順を学習します。 このチュートリアルは、[Azure Web Apps](../app-service/app-service-web-overview.md) に基づいています。 ここでは、次の操作を行う方法について学習します。
+このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るようにコンソール アプリケーションを設定するために必要な手順を学習します。 ここでは、次の操作を行う方法について学習します。
 
 > [!div class="checklist"]
 > * Key Vault を作成します。
@@ -34,7 +34,7 @@ Azure Key Vault は、API キーや、アプリケーション、サービス、
 > * キー コンテナーからデータを読み取るために必要な権限をコンソール アプリケーションに付与する。
 > * キー コンテナーからシークレットを取得する
 
-先に進む前に、[基本概念](key-vault-whatis.md#basic-concepts)を確認してください。
+先に進む前に、[基本概念](key-vault-whatis.md#basic-concepts)をご確認ください。
 
 ## <a name="prerequisites"></a>前提条件
 * すべてのプラットフォーム:
@@ -45,6 +45,7 @@ Azure Key Vault は、API キーや、アプリケーション、サービス、
 このチュートリアルでは、マネージド サービス ID を使用します
 
 ## <a name="what-is-managed-service-identity-and-how-does-it-work"></a>マネージド サービス ID とは何か、およびそのしくみ
+
 本題に入る前に、MSI について理解しましょう。 Azure Key Vault を使用すると、資格情報を安全に保存することができます。したがって、コードには資格情報を含めませんが、資格情報を取得するために Azure Key Vault に対して認証する必要があります。 そして、Key Vault に対して認証するには資格情報が必要になります。 これは、古典的なブートストラップ問題です。 MSI は、Azure と Azure AD を利用して "ブートストラップ ID" を提供します。これにより、物事がはるかに簡単になります。
 
 そのしくみについて説明しましょう。 Virtual Machines、App Service、Functions などの Azure サービスに対して MSI を有効にすると、Azure によってサービス インスタンスの[サービス プリンシパル](key-vault-whatis.md#basic-concepts)が Azure Active Directory に作成され、サービス プリンシパルの資格情報がサービスのインスタンスに挿入されます。 
@@ -54,9 +55,9 @@ Azure Key Vault は、API キーや、アプリケーション、サービス、
 次に、ユーザーのコードが、Azure リソース上で利用可能なローカル メタデータ サービスを呼び出してアクセス トークンを取得します。
 コードは、ローカルの MSI_ENDPOINT から取得したアクセス トークンを使用して、Azure Key Vault サービスに対して認証します。 
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure CLI を使用して Azure にログインするには、次のように入力します。
+Azure CLI を使用して Azure にサインインするには、次のように入力します。
 
 ```azurecli
 az login
@@ -80,9 +81,9 @@ az group create --name "<YourResourceGroupName>" --location "West US"
 
 次に、前の手順で作成したリソース グループにキー コンテナーを作成します。 次の情報を指定します。
 
-* キー コンテナー名: 名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、および - のみです。
+* キー コンテナー名:名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、および - のみです。
 * リソース グループ名。
-* 場所: **米国西部**。
+* 場所:**米国西部**。
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -131,7 +132,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="login-to-the-virtual-machine"></a>仮想マシンにログインする
+## <a name="sign-in-to-the-virtual-machine"></a>仮想マシンへのサインイン
 
 この[チュートリアル](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)に従うことができます
 
@@ -161,8 +162,9 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
-クラス ファイルを変更して、次のコードを含めます。 これは 2 段階のプロセスです。 
-1. VM 上でローカル MSI エンドポイントからトークンを取得し、次に Azure Active Directory からトークンを取得します
+クラス ファイルを変更して、次のコードを含めます。 これは 2 段階のプロセスです。
+
+1. VM 上のローカル MSI エンドポイントからトークンを取得し、次にその VM が Azure Active Directory からトークンを取得します
 2. トークンを Key Vault に渡し、シークレットを取得します 
 
 ```
@@ -211,7 +213,7 @@ using Newtonsoft.Json.Linq;
 ```
 
 
-上記のコードは、Azure Linux 仮想マシンで Azure Key Vault を操作する方法を示しています。 
+上のコードは、Azure Windows 仮想マシンで Azure Key Vault を操作する方法を示しています。 
 
 
 

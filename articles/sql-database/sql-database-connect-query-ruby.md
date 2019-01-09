@@ -11,62 +11,66 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 751e7d6b401417ee3efd4ffc30263d2507ff2627
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/20/2018
+ms.openlocfilehash: 66819cbd65f6f044d0dac68326eb5890476964b6
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913655"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993911"
 ---
-# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>クイック スタート: Ruby を使用して Azure SQL Database に照会する
+# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>クイック スタート:Ruby を使用して Azure SQL Database に照会する
 
-このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを [Ruby](https://www.ruby-lang.org) を使って作成する方法について説明します。
+このクイック スタートでは、[Ruby](https://www.ruby-lang.org) を使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを使ってデータのクエリを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、次の前提条件を満たしている必要があります。
+このクイック スタートを完了するには、次の前提条件を用意しておく必要があります。
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
+  
 - このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
+  
+- ご使用のオペレーティング システムに対応した Ruby とそれに関連するソフトウェア:
+  
+  - **MacOS**: Homebrew、rbenv と ruby-build、Ruby、FreeTDS、TinyTDS をインストールします。 「[Create Ruby apps using SQL Server on macOS (macOS での SQL Server を使用した Ruby アプリの作成)](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)」の手順 1.2、1.3、1.4、1.5、2.1 をご覧ださい。
+  
+  - **Ubuntu**:Ruby に対する前提条件、rbenv と ruby-build、Ruby、FreeTDS、TinyTDS をインストールします。 「[Create Ruby apps using SQL Server on Ubuntu (Ubuntu での SQL Server を使用した Ruby アプリの作成)](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)」の手順 1.2、1.3、1.4、1.5、2.1 をご覧ださい。
+  
+  - **Windows**:Ruby、Ruby Devkit、TinyTDS をインストールします。 「[Ruby 開発用に開発環境を構成する](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)」をご覧ください。
 
-- ご使用のオペレーティング システムに対応した Ruby とそれに関連するソフトウェアをインストール済みであること。
-    - **MacOS**: Homebrew をインストールし、rbenv と ruby-build をインストールした後、Ruby と FreeTDS を順にインストールします。 [手順 1.2.、手順 1.3.、手順 1.4.、手順 1.5.](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/) を参照してください。
-    - **Ubuntu**: Ruby の前提条件をインストールし、rbenv と ruby-build をインストールした後、Ruby と FreeTDS を順にインストールします。 [手順 1.2.、手順 1.3.、手順 1.4.、手順 1.5.](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/) を参照してください。
-
-## <a name="sql-server-connection-information"></a>SQL Server の接続情報
+## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
-> [!IMPORTANT]
-> このチュートリアルを実行するコンピューターのパブリック IP アドレスに対してファイアウォール規則を設定しておく必要があります。 別のコンピューターから実行する場合または別のパブリック IP アドレスがある場合は、[Azure Portal でサーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)を作成してください。 
+## <a name="create-code-to-query-your-sql-database"></a>コードを作成して、SQL データベースのクエリを実行する
 
-## <a name="insert-code-to-query-sql-database"></a>SQL Database に照会するコードの挿入
-
-1. 任意のテキスト エディターで新しいファイル (**sqltest.rb**) を作成します。
-
-2. その内容を次のコードで置き換えます。サーバー、データベース、ユーザー、パスワードには、実際の値を追加してください。
-
-```ruby
-require 'tiny_tds'
-server = 'your_server.database.windows.net'
-database = 'your_database'
-username = 'your_username'
-password = 'your_password'
-client = TinyTds::Client.new username: username, password: password, 
-    host: server, port: 1433, database: database, azure: true
-
-puts "Reading data from table"
-tsql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
-        FROM [SalesLT].[ProductCategory] pc
-        JOIN [SalesLT].[Product] p
-        ON pc.productcategoryid = p.productcategoryid"
-result = client.execute(tsql)
-result.each do |row|
-    puts row
-end
-```
+1. 任意のテキストまたはコード エディターで新しいファイル (*sqltest.rb*) を作成します。
+   
+1. 次のコードを追加します。 `<server>`、`<database>`、`<username>`、`<password>` を Azure SQL データベースからの値に置き換えます。
+   
+   >[!IMPORTANT]
+   >この例のコードでは、サンプル データ AdventureWorksLT を使用します。これは、データベースの作成時にソースとして選択できます。 データベースに別のデータがある場合は、SELECT クエリで独自のデータベースからのテーブルを使用します。 
+   
+   ```ruby
+   require 'tiny_tds'
+   server = '<server>.database.windows.net'
+   database = '<database>'
+   username = '<username>'
+   password = '<password>'
+   client = TinyTds::Client.new username: username, password: password, 
+       host: server, port: 1433, database: database, azure: true
+   
+   puts "Reading data from table"
+   tsql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
+           FROM [SalesLT].[ProductCategory] pc
+           JOIN [SalesLT].[Product] p
+           ON pc.productcategoryid = p.productcategoryid"
+   result = client.execute(tsql)
+   result.each do |row|
+       puts row
+   end
+   ```
 
 ## <a name="run-the-code"></a>コードの実行
 
@@ -75,12 +79,11 @@ end
    ```bash
    ruby sqltest.rb
    ```
-
-2. 先頭から 20 行が返されることを確認して、アプリケーション ウィンドウを閉じます。
-
+   
+1. データベースの上位 20 のカテゴリ/製品行が返されていることを確認します。 
 
 ## <a name="next-steps"></a>次の手順
-- [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
-- [TinyTDS の GitHub リポジトリ](https://github.com/rails-sqlserver/tiny_tds)
-- [TinyTDS についての問題の報告と質問](https://github.com/rails-sqlserver/tiny_tds/issues)
-- [SQL Server 用 Ruby ドライバー](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/)
+- [最初の Azure SQL データベースの設計](sql-database-design-first-database.md)。
+- [TinyTDS の GitHub リポジトリ](https://github.com/rails-sqlserver/tiny_tds)。
+- [TinyTDS についての問題の報告と質問](https://github.com/rails-sqlserver/tiny_tds/issues)。
+- [SQL Server 用 Ruby ドライバー](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/)。

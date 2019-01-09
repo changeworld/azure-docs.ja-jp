@@ -1,29 +1,29 @@
 ---
-title: 'Azure Cosmos DB: MongoDB API を使用してクエリを実行する方法'
-description: Azure Cosmos DB の MongoDB API を使用してクエリを実行する方法を学習します
+title: Azure Cosmos DB の MongoDB 用 API でデータのクエリを実行する
+description: Azure Cosmos DB の MongoDB 用 API を使用してデータのクエリを実行する方法を説明します。
 services: cosmos-db
-author: SnehaGunda
-ms.author: sngun
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/29/2018
-ms.openlocfilehash: 8c865ab7fa997b169e481612ce791d960688da56
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/26/2018
+ms.openlocfilehash: b2bfc48fa0ba8aab0bbdf19e1b127155633e2271
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841508"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793208"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>チュートリアル: MongoDB API を使用して Azure Cosmos DB に対してクエリを実行する
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用してデータのクエリを実行する
 
-Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シェル クエリ](https://docs.mongodb.com/manual/tutorial/query-documents/)がサポートされます。 
+[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) では、[MongoDB のクエリ](https://docs.mongodb.com/manual/tutorial/query-documents/)がサポートされています。 
 
 この記事に含まれるタスクは次のとおりです。 
 
 > [!div class="checklist"]
-> * MongoDB を使用してデータのクエリを実行する
+> * MongoDB シェルを使用して Cosmos データベースに格納されているデータのクエリを実行する
 
 まずは、このドキュメントの例を使用したり、[MongoDB シェルでの Azure Cosmos DB に対するクエリの実行](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/)に関するビデオを見ることから始めます。
 
@@ -303,7 +303,7 @@ Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シ
 このチュートリアルでは、次の手順を行いました。
 
 > [!div class="checklist"]
-> * MongoDB を使用してクエリを実行する方法を学習しました。 
+> * Azure Cosmos DB の MongoDB 用 API を使用してクエリを実行する方法を理解しました。
 
 次のチュートリアルに進んで、データをグローバルに分散する方法について学習できます。
 

@@ -4,15 +4,15 @@ description: Azure Migrate サービスの概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c511ef8fc4ae580f869ef90da3e2c8764a146881
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250586"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969133"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -37,8 +37,9 @@ Azure Migrate によって次のことが可能になります。
 -  Azure Migrate プロジェクトは、次の地域でのみ作成できます。 ただし、他の Azure のターゲット場所について評価を作成できないという訳ではありません。
     **地理的な場所** | **保存場所**
     --- | ---
-    米国 | 米国中西部または米国東部
     Azure Government | 米国政府バージニア州
+    ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+    米国 | 米国東部または米国中西部
 
     移行プロジェクトに関連付けられた地理的な場所は、オンプレミス環境から検出されたメタデータを保存するために使用されます。 メタデータは、移行プロジェクトに指定された地理的な場所に基づいたいずれかのリージョンに保存されます。 新しい Log Analytics ワークスペースを作成して依存関係の視覚化を使用する場合、ワークスペースはプロジェクトと同じリージョンに作成されます。
 - 依存関係可視化機能は、Azure Government では使用できません。

@@ -1,22 +1,22 @@
 ---
-title: 'クイック スタート: ノード Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う | Microsoft Docs'
-description: 'クイック スタート: .NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う'
+title: クイック スタート:ノード Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う - Azure Key Vault | Microsoft Docs
+description: クイック スタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 services: key-vault
 author: prashanthyv
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: a53130dcc489764ce9284f15b8de0de37e0827e5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 20d47ecaea8ce393f60cba93c3dbcf7ca4a076c8
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686672"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002605"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>クイック スタート: .NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>クイック スタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
 このクイック スタートでは、Azure Web アプリケーションを取得し、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るために必要な手順を学習します。 学習内容は次のとおりです。
 
@@ -77,9 +77,9 @@ az group create --name "<YourResourceGroupName>" --location "East US"
 
 次に、前の手順で作成したリソース グループにキー コンテナーを作成します。 次の情報を指定します。
 
-* キー コンテナー名: 名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、および - のみです。
+* キー コンテナー名:名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、および - のみです。
 * リソース グループ名。
-* 場所: **米国東部**
+* 場所:**米国東部**。
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"

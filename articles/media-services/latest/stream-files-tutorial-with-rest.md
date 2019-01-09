@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services を使用してアップロード、エンコード、ストリーム配信する - REST | Microsoft Docs
-description: Azure Media Services で REST を使用してファイルのアップロード、ビデオのエンコード、コンテンツのストリーム配信を行うには、このチュートリアルの手順のようにします。
+title: Azure Media Services を使用して URL に基づいてリモート ファイルをエンコードしてストリーム配信する - REST | Microsoft Docs
+description: Azure Media Services で REST を使用して URL に基づいてファイルをエンコードし、コンテンツをストリーム配信します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 12/19/2018
 ms.author: juliako
-ms.openlocfilehash: 67a0b6ced771519bd97934f8914ba420ee3119ce
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: cd020566b61dac7da37b24f10eebfc69b19073cb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615774"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720953"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>チュートリアル: REST を使用してビデオのアップロード、エンコード、ストリーム配信を行う
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 
 Azure Media Services では、メディア ファイルをさまざまなブラウザーおよびデバイスで再生できる形式にエンコードすることができます。 たとえば、Apple の HLS または MPEG DASH 形式のコンテンツをストリーム配信することが必要な場合があります。 ストリーム配信する前に、高品質のデジタル メディア ファイルをエンコードする必要があります。 エンコードのガイダンスについては、[エンコードの概念](encoding-concept.md)に関する記事をご覧ください。
 
-このチュートリアルでは、Azure Media Services と REST を使用してビデオのアップロード、エンコード、ストリーム配信を行う方法を示します。 
+このチュートリアルでは、Azure Media Services で REST を使用して URL に基づいてリモート ファイルをエンコードし、ビデオをストリーム配信する方法を示します。 
 
 ![ビデオを再生する](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -52,7 +52,7 @@ Azure Media Services では、メディア ファイルをさまざまなブラ�
 
 - [Postman](https://www.getpostman.com/) REST クライアントをインストールして、AMS REST チュートリアルの一部で示されている REST API を実行します。 
 
-    ここでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用した **Visual Studio Code** や **Telerik Fiddler** です。 
+    ここでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用する **Visual Studio Code** や **Telerik Fiddler** です。 
 
 ## <a name="download-postman-files"></a>Postman ファイルをダウンロードする
 
@@ -111,7 +111,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 ### <a name="get-azure-ad-token"></a>Azure AD トークンを取得する 
 
-1. Postman の左側のウィンドウで、[Step 1: Get AAD Auth token]\(手順 1: AAD 認証トークンを取得する\) を選択します。
+1. Postman の左側のウィンドウで、[Step 1:Get AAD Auth token]\(手順 1: AAD 認証トークンを取得する\) を選択します。
 2. 次に、[Get Azure AD Token for Service Principal Authentication]\(\サービス プリンシパル認証のために Azure AD トークンを取得する) を選択します。
 3. **[送信]** をクリックします。
 
@@ -174,7 +174,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
         ```json
         {
             "properties": {
-                "description": "Basic Transform using an Adaptive Streaming encoding preset from the libray of built-in Standard Encoder presets",
+                "description": "Standard Transform using an Adaptive Streaming encoding preset from the library of built-in Standard Encoder presets",
                 "outputs": [
                     {
                     "onError": "StopProcessingJob",

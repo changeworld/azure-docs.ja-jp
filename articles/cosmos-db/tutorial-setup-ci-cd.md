@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 8b64142a7d693e8e48e1739a61978abbab740e3d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 83178abab84679dcfb36a361950097f9224eda81
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875214"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810644"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -81,7 +81,7 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 </RunSettings>
 ```
 
-Azure Cosmos DB MongoDB API を使用するアプリケーション用の CI/CD パイプラインを設定する場合、MongoDB 接続文字列には、既定でポート番号 10255 が含まれています。 ただし、このポートは現在開いていないため、接続を確立する代替としてポート 10250 を使用して必要があります。 MongoDB API 接続文字列は、サポートされるポート番号が 10255 ではなく 10250 点であること以外は同じです。
+Azure Cosmos DB の MongoDB 用 API を使用するアプリケーション用の CI/CD パイプラインを設定する場合、MongoDB 接続文字列には、既定でポート番号 10255 が含まれています。 ただし、このポートは現在開いていないため、接続を確立する代替としてポート 10250 を使用して必要があります。 Azure Cosmos DB の MongoDB 用 API の接続文字列は、サポートされるポート番号が 10255 ではなく 10250 点であること以外は同じです。
 
 `TestRunParameters` のこれらのパラメーターは、アプリケーションのテスト プロジェクトに含まれている `TestContext` プロパティを介して参照されます。 Cosmos DB に対して実行するテストの例を次に示します。
 

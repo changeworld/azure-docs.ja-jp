@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 8beabfb8c77d4d62b9b15dca8ae3146c34c3b20a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 522447b73454016bff5188d07b27702fa21cb748
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634814"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998678"
 ---
-# <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>クイック スタート: Azure CLI と Java を使用してメッセージを送受信する
+# <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>クイック スタート:Azure CLI と Java を使用してメッセージを送受信する
 
 Microsoft Azure Service Bus は、セキュリティで保護されたメッセージングと信頼性を提供するエンタープライズ統合メッセージ ブローカーです。 一般的な Service Bus のシナリオには、通常、複数のアプリケーション、サービス、プロセスの相互分離 (アプリケーションが同時にオンラインになる必要はありません)、状態またはデータの変更の転送、アプリケーション間でのメッセージの送信が含まれます。 
 
@@ -66,7 +66,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list \
 
 ## <a name="send-and-receive-messages"></a>メッセージを送受信する
 
-名前空間とキューを作成し、必要な資格情報を用意すれば、メッセージを送信および受信する準備が整いました。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/quickstart-java/src/main/java/samples/quickstart/SendAndReceiveMessages.java)でコードを調べることができます。
+名前空間とキューを作成し、必要な資格情報を用意すれば、メッセージを送信および受信する準備が整いました。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)でコードを調べることができます。
 
 1. Cloud Shell が開いていて、Bash プロンプトが表示されていることを確認します。
 
@@ -108,7 +108,7 @@ az group delete --resource-group myResourceGroup
 
 ## <a name="understand-the-sample-code"></a>サンプル コードを理解する
 
-このセクションでは、サンプル コードの主要なセクションについてさらに詳細に説明します。 [こちら](https://github.com/Azure/azure-service-bus/blob/master/samples/Java/quickstarts-and-tutorials/quickstart-java/src/main/java/samples/quickstart/SendAndReceiveMessages.java)の GitHub リポジトリにあるコードを参照できます。
+このセクションでは、サンプル コードの主要なセクションについてさらに詳細に説明します。 [こちら](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)の GitHub リポジトリにあるコードを参照できます。
 
 ### <a name="get-connection-string-and-queue"></a>接続文字列とキューを取得する
 
