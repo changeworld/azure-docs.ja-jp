@@ -54,7 +54,7 @@
 #### [REST API の使用](data-lake-store-data-operations-rest-api.md)
 #### [Python の使用](data-lake-store-data-operations-python.md)
 
-## [パフォーマンス]
+## パフォーマンス
 ### [概要](data-lake-store-performance-tuning-guidance.md)
 ### [Azure PowerShell の使用](data-lake-store-performance-tuning-powershell.md)
 ### [HDInsight での Spark の使用](data-lake-store-performance-tuning-spark.md)
@@ -92,6 +92,7 @@
 ## [Python (アカウント管理)](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)
 ## [Python (ファイルシステム管理)](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)
+## [Resource Manager テンプレート](/azure/templates/microsoft.datalakestore/allversions)
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
 # リソース

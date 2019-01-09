@@ -47,11 +47,11 @@ items:
   - name: アプリケーションのランタイムの例外を見つける
     href: learn/tutorial-runtime-exceptions.md
   - name: アプリケーションのパフォーマンスの問題を見つける
-    href: ../application-insights/app-insights-tutorial-performance.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-performance.md
   - name: アプリケーションの正常性に基づくアラート
     href: learn/tutorial-alert.md
   - name: アプリケーション ユーザーについて
-    href: ../application-insights/app-insights-tutorial-users.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-users.md
   - name: カスタム ダッシュボードの作成
     href: learn/tutorial-app-dashboards.md
 - name: サンプル
@@ -93,7 +93,7 @@ items:
     - name: Application Insights
       items:
       - name: 概要
-        href: ../application-insights/app-insights-overview.md?toc=/azure/azure-monitor/toc.json
+        href: app/app-insights-overview.md
       - name: DevOps
         href: app/detect-triage-diagnose.md
       - name: 分散トレース
@@ -161,7 +161,7 @@ items:
     - name: アプリケーションの監視
       items:
       - name: Web アプリおよびサービスの詳細な診断
-        href: ../application-insights/app-insights-devops.md?toc=/azure/azure-monitor/toc.json
+        href: app/devops.md
       - name: Web アプリケーションのパフォーマンスを監視する
         href: app/web-monitor-performance.md
       - name: 開発、テスト、運用の分離
@@ -342,7 +342,7 @@ items:
         - name: テレメトリのフィルター処理
           href: app/java-filter-telemetry.md
         - name: Micrometer メトリック
-          href: ../application-insights/micrometer-java.md?toc=/azure/azure-monitor/toc.json
+          href: app/micrometer-java.md
       - name: Node.js アプリ
         items:
         - name: Node.js
@@ -907,7 +907,7 @@ items:
     - name: テレメトリの関連付け
       href: app/correlation.md
     - name: NuGet パッケージ
-      href: ../application-insights/app-insights-nuget.md?toc=/azure/azure-monitor/toc.json
+      href: app/nuget.md
     - name: プラットフォームのサポート
       href: app/platforms.md
   - name: Application Insights データ モデル
@@ -1005,9 +1005,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: daba9eb12d568e3eb49a7aa4d21f1d2eaa367ab8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 02748b429bf7122dd0f1531d45c8af1217ceaa43
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074616"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120927"

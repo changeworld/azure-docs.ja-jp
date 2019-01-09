@@ -114,9 +114,9 @@ items:
   - name: Java
     href: /java/api/com.microsoft.azure.management.redis._redis_cache
   - name: Redis クライアント
-    href: http://redis.io/clients
+    href: https://redis.io/clients
   - name: Redis コマンド
-    href: http://redis.io/commands#
+    href: https://redis.io/commands#
   - name: REST
     href: https://docs.microsoft.com/rest/api/redis/
 - name: リソース
@@ -133,9 +133,9 @@ items:
     href: https://www.youtube.com/results?search_query=azure+redis+cache
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecache&filter=alltypes&sort=lastpostdesc
-ms.openlocfilehash: c684a8a7845076769a587de899a5c1e2fa19cfed
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: fb46f2389923433a059e4a8c42fe15f684eb8a40
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53020349"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105578"
