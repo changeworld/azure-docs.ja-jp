@@ -1,4 +1,4 @@
----
+﻿---
 title: C# を使用して Azure で最初の永続関数を作成する
 description: Visual Studio を使用して Azure 永続関数を作成して発行します。
 services: functions
@@ -22,7 +22,7 @@ ms.locfileid: "53341050"
 
 *Durable Functions* は、サーバーレス環境でステートフル関数を記述できる [Azure Functions](../functions-overview.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。
 
-この記事では、Visual Studio 2017 Tools for Azure Functions を使用して、"hello world" の Durable Functions をローカルで作成してテストする方法を学習します。  この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2017 の Azure 開発ワークロードの一部として利用できます。
+この記事では、Visual Studio 2017 Tools for Azure Functions を使用して、"hello world" の Durable Functions をローカルで作成してテストする方法を学習します。この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2017 の Azure 開発ワークロードの一部として利用できます。
 
 ![Azure で Durable Functions を実行する](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
