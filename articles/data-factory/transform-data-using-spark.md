@@ -20,17 +20,17 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37050337"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory での Spark アクティビティを使用したデータの変換
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-spark.md)
 > * [現在のバージョン](transform-data-using-spark.md)
 
-Data Factory [パイプライン](concepts-pipelines-activities.md)の Spark アクティビティでは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで Spark プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 オンデマンドの Spark のリンクされたサービスを使用すると、Data Factory は自動的に Spark クラスターを作成し、ジャストインタイムでデータを処理し、処理が完了するとクラスターを削除します。 
+Data Factory [パイプライン](concepts-pipelines-activities.md)の Spark アクティビティでは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで Spark プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 オンデマンドの Spark のリンクされたサービスを使用すると、Data Factory は自動的に Spark クラスターを作成し、ジャストインタイムでデータを処理し、処理が完了するとクラスターを削除します。
 
 > [!IMPORTANT]
 > Spark アクティビティでは、Azure Data Lake Store をプライマリ ストレージとして使用する HDInsight Spark クラスターはサポートされません。
 
 ## <a name="spark-activity-properties"></a>Spark アクティビティのプロパティ
-Spark アクティビティのサンプルの JSON 定義を次に示します。    
+Spark アクティビティのサンプルの JSON 定義を次に示します。
 
 ```json
 {
@@ -79,7 +79,7 @@ Spark アクティビティのサンプルの JSON 定義を次に示します�
 ## <a name="folder-structure"></a>フォルダー構造
 Spark ジョブは、Pig/Hive ジョブよりも拡張性に優れています。 Spark ジョブの場合、jar パッケージ (java CLASSPATH に配置)、python ファイル (PYTHONPATH に配置) など、複数の依存関係を利用できます。
 
-HDInsight のリンクされたサービスによって参照される Azure Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Azure Blob Storage のフォルダー構造を次に示します。     
+HDInsight のリンクされたサービスによって参照される Azure Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Azure Blob Storage のフォルダー構造を次に示します。
 
 | パス                  | 説明                              | 必須 | type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
@@ -112,7 +112,7 @@ SparkJob2
     logs
 ```
 ## <a name="next-steps"></a>次の手順
-別の手段でデータを変換する方法を説明している次の記事を参照してください。 
+別の手段でデータを変換する方法を説明している次の記事を参照してください。
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)
 * [Hive アクティビティ](transform-data-using-hadoop-hive.md)
