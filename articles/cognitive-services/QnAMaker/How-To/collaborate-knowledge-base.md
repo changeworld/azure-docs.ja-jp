@@ -35,7 +35,7 @@ QnA Maker では、複数のユーザーがナレッジ ベースを共同利用
 
     ![QnA Maker IAM の [追加]](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-4. **[所有者]** または **[共同作成者]** のロールを選択します。
+4. **[所有者]** または **[共同作成者]** のロールを選択します。ロール ベースのアクセス制御で「閲覧のみ可能」なアクセスを許可することはできません。 **[所有者]** と **[共同作成者]** のロールは、Qna Maker サービスへの閲覧と編集の権限を持ちます。
 
     ![QnA Maker IAM のロールの追加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 
