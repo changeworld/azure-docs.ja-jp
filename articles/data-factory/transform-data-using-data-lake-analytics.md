@@ -20,20 +20,20 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/07/2018
 ms.locfileid: "44053569"
 ---
-# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-usql-activity.md)
 > * [現在のバージョン](transform-data-using-data-lake-analytics.md)
 
-Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ**について説明します。 
+Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ**について説明します。
 
 Data Lake Analytics U-SQL アクティビティでパイプラインを作成する前に、Azure Data Lake Analytics アカウントを作成します。 Azure Data Lake Analytics の詳細については、 [Azure Data Lake Analytics の使用開始](../data-lake-analytics/data-lake-analytics-get-started-portal.md)に関するページをご覧ください。
 
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics リンク サービス
-**Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクします。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。 
+**Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクします。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。
 
-次の表では、JSON 定義で使用される一般的なプロパティを説明しています。 
+次の表では、JSON 定義で使用される一般的なプロパティを説明しています。
 
 | プロパティ                 | 説明                              | 必須                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
@@ -47,7 +47,7 @@ Data Lake Analytics U-SQL アクティビティでパイプラインを作成す
 Azure Data Lake Analytics のリンクされたサービスには、Azure Data Lake Analytics サービスに接続するためのサービス プリンシパル認証が必要です。 サービス プリンシパル認証を使うには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、Data Lake Analytics およびそれを使用する Data Lake Store の両方へのアクセス権を付与します。 詳細な手順については、「[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)」を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 
 * アプリケーション ID
-* アプリケーション キー 
+* アプリケーション キー
 * テナント ID
 
 [ユーザー追加ウィザード](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user)を使用して、Azure Data Lake Anatlyics へのサービス プリンシパル アクセス許可を付与します。
@@ -81,7 +81,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
-        }       
+        }
     }
 }
 ```
@@ -89,7 +89,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL アクティビティ
-次の JSON のスニペットでは、Data Lake Analytics U-SQL アクティビティを使用してパイプラインを定義します。 このアクティビティ定義には、先ほど作成した Azure Data Lake Analytics リンク サービスへの参照が含まれています。 Data Lake Analytics U-SQL スクリプトを実行するために、指定したスクリプトがData Factory によって Data Lake Analytics に送信され、フェッチおよび出力する必須の入力と出力が Data Lake Analytics のスクリプトで定義されます。 
+次の JSON のスニペットでは、Data Lake Analytics U-SQL アクティビティを使用してパイプラインを定義します。 このアクティビティ定義には、先ほど作成した Azure Data Lake Analytics リンク サービスへの参照が含まれています。 Data Lake Analytics U-SQL スクリプトを実行するために、指定したスクリプトがData Factory によって Data Lake Analytics に送信され、フェッチおよび出力する必須の入力と出力が Data Lake Analytics のスクリプトで定義されます。
 
 ```json
 {
@@ -112,11 +112,11 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
             "in": "/datalake/input/SearchLog.tsv",
             "out": "/datalake/output/Result.tsv"
         }
-    }   
+    }
 }
 ```
 
-次の表は、このアクティビティに固有のプロパティの名前と説明です。 
+次の表は、このアクティビティに固有のプロパティの名前と説明です。
 
 | プロパティ            | 説明                              | 必須 |
 | :------------------ | :--------------------------------------- | :------- |
@@ -132,7 +132,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 | runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ        |
 | compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります: **Semantic:** セマンティクスの検査と必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コードの生成などを含む完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ  |
 
-Data Factory によって送信されるスクリプト定義については、[SearchLogProcessing.txt のスクリプト定義](#sample-u-sql-script)をご覧ください。 
+Data Factory によって送信されるスクリプト定義については、[SearchLogProcessing.txt のスクリプト定義](#sample-u-sql-script)をご覧ください。
 
 ## <a name="sample-u-sql-script"></a>U-SQL スクリプトのサンプル
 
@@ -158,17 +158,17 @@ WHERE Region == "en-gb";
     FROM @rs1
     WHERE Start <= DateTime.Parse("2012/02/19");
 
-OUTPUT @rs1   
+OUTPUT @rs1
     TO @out
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-前述のスクリプト例では、スクリプトの入力と出力は **@in** パラメーターと **@out** パラメーターで定義されます。 U-SQL スクリプトの **@in** パラメーターと **@out** パラメーターの値は、"parameters" セクションを使用して Data Factory によって動的に渡されます。 
+前述のスクリプト例では、スクリプトの入力と出力は **@in** パラメーターと **@out** パラメーターで定義されます。 U-SQL スクリプトの **@in** パラメーターと **@out** パラメーターの値は、"parameters" セクションを使用して Data Factory によって動的に渡されます。
 
 Azure Data Lake Analytics サービスで実行されるジョブのパイプライン定義で、他のプロパティ (degreeOfParallelism など) や優先度も指定できます。
 
 ## <a name="dynamic-parameters"></a>動的パラメーター
-パイプライン定義のサンプルでは、in パラメーターと out パラメーターにハード コーディングされた値が割り当てられています。 
+パイプライン定義のサンプルでは、in パラメーターと out パラメーターにハード コーディングされた値が割り当てられています。
 
 ```json
 "parameters": {
@@ -177,7 +177,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 }
 ```
 
-代わりに、動的パラメーターを使用することもできます。 例:  
+代わりに、動的パラメーターを使用することもできます。 例:
 
 ```json
 "parameters": {
@@ -186,10 +186,10 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 }
 ```
 
-この場合、入力ファイルは引き続き /datalake/input フォルダーから取得され、出力ファイルは /datalake/output フォルダーに生成されます。 ファイル名は、パイプラインのトリガー時に渡される期間の開始時間に基づいて動的に付けられます。  
+この場合、入力ファイルは引き続き /datalake/input フォルダーから取得され、出力ファイルは /datalake/output フォルダーに生成されます。 ファイル名は、パイプラインのトリガー時に渡される期間の開始時間に基づいて動的に付けられます。
 
 ## <a name="next-steps"></a>次の手順
-別の手段でデータを変換する方法を説明している次の記事を参照してください。 
+別の手段でデータを変換する方法を説明している次の記事を参照してください。
 
 * [Hive アクティビティ](transform-data-using-hadoop-hive.md)
 * [Pig アクティビティ](transform-data-using-hadoop-pig.md)
