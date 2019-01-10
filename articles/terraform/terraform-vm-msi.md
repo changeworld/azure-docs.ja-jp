@@ -4,17 +4,17 @@ description: Azure にリソースを簡単にデプロイするために、Mark
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, MSI, 仮想マシン, リモート状態, azure
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 6fef56d780fe664e79f66fa23be526aec71d7e7b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6c9bef108c2f272c678879124ae2cd4f9ae093ba
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971166"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076229"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Azure Marketplace イメージを使用して Azure リソースのマネージド ID を使用する Terraform Linux 仮想マシンを作成する
 
@@ -50,7 +50,7 @@ Terraform Linux 仮想マシンのインスタンスを作成する手順を以�
    * **名前**: Terraform 仮想マシンの名前。
    * **ユーザー名**: 最初のアカウントのサインイン ID。
    * **パスワード**: 最初のアカウントのパスワード。 (パスワードの代わりに SSH 公開キーを使用できます)。
-   * **サブスクリプション**: マシンが作成され課金対象となるサブスクリプション。 そのサブスクリプションに対するリソース作成権限が必要です。
+   * **サブスクリプション**:マシンが作成され課金対象となるサブスクリプション。 そのサブスクリプションに対するリソース作成権限が必要です。
    * **リソース グループ**: 新規または既存のリソース グループ。
    * **場所**: 最適なデータ センター。 通常は、データの大半が存在するデータ センターか、ネットワーク アクセスを最速にするために物理的に最も近いデータ センターを選びます。
 

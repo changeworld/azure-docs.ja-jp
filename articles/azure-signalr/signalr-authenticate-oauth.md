@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: be44a233c2b09aa91ec04b5a64b523a2d0b00db1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd872e7aa9ada8c46b0af897b4d7ad137b767514
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599861"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103793"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>チュートリアル:Azure SignalR Service の認証
 
@@ -547,7 +547,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 最後に、GitHub OAuth アプリの**ホームページ URL** と**認証コールバックの URL** を、ホストされている新しいアプリを指すように更新する必要があります。
 
-1. ブラウザーで [http://github.com](http://github.com) を開き、アカウントの **[Settings]\(設定\)** > **[Developer settings]\(開発者向け設定\)** > **[Oauth Apps]\(Oauth アプリ\)** の順に移動します。
+1. ブラウザーで [https://github.com](https://github.com) を開き、アカウントの **[Settings]\(設定\)** > **[Developer settings]\(開発者向け設定\)** > **[Oauth Apps]\(Oauth アプリ\)** の順に移動します。
 
 2. 認証アプリをクリックし、**[Homepage URL]\(ホームページ URL\)** と **[Authorization callback URL]\(認証コールバックの URL\)** を次のように更新します。
 

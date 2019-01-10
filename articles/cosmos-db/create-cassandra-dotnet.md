@@ -1,21 +1,19 @@
 ---
 title: 'クイック スタート: Cassandra API と .NET - Azure Cosmos DB'
 description: このクイックスタートでは、Azure Cosmos DB の Cassandra API を使用して、Azure Portal と .NET でプロファイル アプリケーションを作成する方法を示します。
-services: cosmos-db
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 author: SnehaGunda
 ms.author: sngun
-ms.custom: quick start connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 50c2362e961d882afc109a0554303d364d52384b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f4e39dbbdce2d272121a07b845f1b7c0c58385cd
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089432"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033119"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>クイック スタート: .NET と Azure Cosmos DB で Cassandra アプリをビルドする
 

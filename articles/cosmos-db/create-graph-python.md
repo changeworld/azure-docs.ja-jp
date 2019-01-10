@@ -1,23 +1,21 @@
 ---
 title: 'クイック スタート: Python での Gremlin API の使用 - Azure Cosmos DB'
 description: このクイック スタートでは、Azure portal および Python で Azure Cosmos DB Gremlin API を使ってコンソール アプリケーションを作成する方法を説明します
-services: cosmos-db
 author: luisbosquez
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: b8a26164145360bdd46656a86817b8ec61bcb56c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ede17bed12188141b9fd37e280d21dd6e85aec7f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081491"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033776"
 ---
-# <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Python と Azure portal を使用してグラフ データベースを作成する
+# <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB は:Python と Azure portal を使用してグラフ データベースを作成する
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
