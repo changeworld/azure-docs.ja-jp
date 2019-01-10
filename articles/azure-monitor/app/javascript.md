@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 63ee308c50a2d5399dd395dc90c2666fae0bbf49
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 952dd97a06718d0c29f9c6f5abc79da592e6f3ae
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999460"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117812"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
-Web ページまたはアプリのパフォーマンスと使用状況について調べます。 [Application Insights](../../application-insights/app-insights-overview.md) をページ スクリプトに追加すると、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。 エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。 また、JavaScript コードにトレースの呼び出しを挿入することで、Web ページ アプリケーションのさまざまな機能がどのように使用されているかを追跡できます。
+Web ページまたはアプリのパフォーマンスと使用状況について調べます。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) をページ スクリプトに追加すると、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。 エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。 また、JavaScript コードにトレースの呼び出しを挿入することで、Web ページ アプリケーションのさまざまな機能がどのように使用されているかを追跡できます。
 
 短い JavaScript コードを追加するだけで、Application Insights をあらゆる Web ページで使用できます。 Web サービスが [Java](java-get-started.md) または [ASP.NET](../../azure-monitor/app/asp-net.md) の場合、サーバーとクライアントのテレメトリを統合できます。
 
@@ -44,7 +44,7 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/javascript/01-create.png)
 
-*質問がございますか?* [リソースの作成に関する詳細はここにあります](../../application-insights/app-insights-create-new-resource.md)のサブスクリプションが必要です。
+*質問がございますか?* [リソースの作成に関する詳細はここにあります](../../azure-monitor/app/create-new-resource.md )のサブスクリプションが必要です。
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>アプリや Web ページに SDK スクリプトを追加する
 
@@ -70,7 +70,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 追跡するすべてのページの `</head>` タグの直前にスクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。 例: 
 
 * ASP.NET MVC プロジェクトで、 `View\Shared\_Layout.cshtml`
-* SharePoint サイトのコントロール パネルで、[ [サイト設定 / マスター ページ](../../application-insights/app-insights-sharepoint.md)] を開きます。
+* SharePoint サイトのコントロール パネルで、[ [サイト設定 / マスター ページ](../../azure-monitor/app/sharepoint.md)] を開きます。
 
 このスクリプトには、Application Insights リソースにデータを転送するインストルメンテーション キーが含まれています。 
 
@@ -118,7 +118,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![In portal.azure.com, open your app's resource and click Settings, Browser](./media/javascript/03.png)
 
-まだデータが表示されませんか?  ページの上部にある **[更新]** をクリックします。 まだは何も表示されませんか? [トラブルシューティング](../../application-insights/app-insights-troubleshoot-faq.md)に関するページを参照します。
+まだデータが表示されませんか?  ページの上部にある **[更新]** をクリックします。 まだは何も表示されませんか? [トラブルシューティング](../../azure-monitor/app/troubleshoot-faq.md)に関するページを参照します。
 
 [ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された [メトリックス エクスプローラーのブレード](../../azure-monitor/app/metrics-explorer.md) です。 時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。 **[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
 
@@ -227,7 +227,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 ## <a name="usage-tracking"></a>使用状況の追跡
 アプリケーションで、ユーザーが何をするのかを知る必要がありますか。
 
-* [ユーザー動作分析ツールの詳細情報](../../application-insights/app-insights-usage-overview.md)
+* [ユーザー動作分析ツールの詳細情報](../../azure-monitor/app/usage-overview.md)
 * [カスタム イベントとメトリックの API の詳細情報](../../azure-monitor/app/api-custom-events-metrics.md)。
 
 ## <a name="video"></a> ビデオ
@@ -238,7 +238,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 
 
 ## <a name="next"></a> 次のステップ
-* [利用状況を追跡する](../../application-insights/app-insights-usage-overview.md)
+* [利用状況を追跡する](../../azure-monitor/app/usage-overview.md)
 * [カスタム イベントとメトリックス](../../azure-monitor/app/api-custom-events-metrics.md)
-* [ビルド - 測定 - 学習](../../application-insights/app-insights-usage-overview.md)
+* [ビルド - 測定 - 学習](../../azure-monitor/app/usage-overview.md)
 

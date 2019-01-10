@@ -296,6 +296,8 @@ items:
         href: /rest/api/cosmos-db/
       - name: REST リソース プロバイダー
         href: /rest/api/cosmos-db-resource-provider/
+      - name: Resource Manager テンプレート
+        href: /azure/templates/microsoft.documentdb/databaseaccounts
   - name: Azure Cosmos DB の MongoDB 用 API
     items:
     - name: はじめに
@@ -615,9 +617,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 3d3236461a02504c74cef07e11615a82c03ae0d5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 55b388b24d5526160423fa61c46620fc09796b24
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807671"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189628"

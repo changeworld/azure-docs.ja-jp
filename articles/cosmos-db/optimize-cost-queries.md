@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: ec17f06fa9d527ef62861a152b3e143bfd10a37f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e2cb1a76bfde5bea7707cf3cc6658e3fc82163c5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263367"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043092"
 ---
 # <a name="optimize-the-cost-required-to-run-queries-in-azure-cosmos-db"></a>Azure Cosmos DB でクエリを実行するために必要なコストを最適化する
 

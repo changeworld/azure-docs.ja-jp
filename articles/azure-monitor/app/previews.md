@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7b7de745d63ca5f6ac28dee4f98b0069a52ea0a8
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: e53aa250f19c69e234a678be5e9f51a3836cb3a2
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004895"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074854"
 ---
 # <a name="preview-upcoming-changes-to-azure-application-insights"></a>Azure Application Insights で予定されている変更点のプレビュー 
 
@@ -31,10 +31,10 @@ Application Insights は新しい機能を頻繁にリリースしています�
 
 [プレビュー] ブレードで、プレビューを確認するタイミングを次のオプションから選択できます。
 
-- 常にプレビュー エクスペリエンスが使用可能になったタイミングで表示されます。
+- 常時: プレビュー エクスペリエンスが使用可能になったタイミングで表示されます。
 - 自動: ご利用のアカウントに Microsoft がお勧めするプレビュー エクスペリエンスが表示されます。 
 - なし: 選択したプレビュー エクスペリエンスのみが表示されます。 
 
 ## <a name="next-steps"></a>次の手順
 
-- [リソースの作成](../../application-insights/app-insights-create-new-resource.md)
+- [リソースの作成](../../azure-monitor/app/create-new-resource.md )

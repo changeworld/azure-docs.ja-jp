@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: ebe039c37eb42b0044fa0acf9361edc7e8cbb828
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 15548e801777a99dfb78de0067abb633a2587ee6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879390"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053195"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Azure IoT SDK プラットフォームのサポート
 
@@ -20,9 +20,9 @@ ms.locfileid: "52879390"
 
 Microsoft はさまざまなオペレーティング システム/プラットフォーム/フレームワークをサポートしており、Azure IoT C SDK を使用して拡張できます。 その一部はチームによって正式にサポートされており、ユーザーが受けられるサポートのレベルを表す階層別にグループ化されています。 *完全にサポートされているプラットフォーム*で Microsoft が提供するサービス:
 
-    * 継続的なビルドと、マスターおよび LTS サポートされているバージョンに対するエンド ツー エンド テストの実行。  異なるバージョン間でのテスト カバレッジを提供するために、最新の LTS バージョンと、最も一般的なバージョンに対してテストを行います。  同じプラットフォームの他のバージョンは、プラットフォームのバージョン互換性によってサポートされる場合があります。
-    * インストールのガイダンスまたはパッケージの提供 (該当する場合)。
-    * GitHub のプラットフォームの完全なサポート。
+- 継続的なビルドと、マスターおよび LTS サポートされているバージョンに対するエンド ツー エンド テストの実行。  異なるバージョン間でのテスト カバレッジを提供するために、最新の LTS バージョンと、最も一般的なバージョンに対してテストを行います。  同じプラットフォームの他のバージョンは、プラットフォームのバージョン互換性によってサポートされる場合があります。
+- インストールのガイダンスまたはパッケージの提供 (該当する場合)。
+- GitHub のプラットフォームの完全なサポート。
 
 さらに、複数のパートナーが Microsoft の C SDK をその他のプラットフォームに移植して、プラットフォーム抽象化レイヤー (PAL) を保持しています。 [Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)にも、さまざまな SDK がテストされた OS プラットフォームの一覧が示されています。 SDK も限定的なテストとサポートで定期的にこれらのプラットフォームでビルドします。
 

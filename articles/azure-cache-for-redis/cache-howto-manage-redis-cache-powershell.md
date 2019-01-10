@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 0186882183ed0848fd8b14d186b55ad1a5ff58ea
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 746e1c082d370cdcf1fca6597923b0e38b9a6d62
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021705"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105238"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cache for Redis の管理
 > [!div class="op_single_selector"]
@@ -148,11 +148,11 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 | maxmemory-reserved |キャッシュ以外のプロセスに [予約済みのメモリ](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) を構成する |Standard と Premium |
 | maxmemory-policy |キャッシュに [削除ポリシー](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) を構成する |すべての価格レベル |
 | notify-keyspace-events | [キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings) |Standard と Premium |
-| hash-max-ziplist-entries |小規模の集計データの種類に [メモリ最適化](http://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
-| hash-max-ziplist-value |小規模の集計データの種類に [メモリ最適化](http://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
-| set-max-intset-entries |小規模の集計データの種類に [メモリ最適化](http://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
-| zset-max-ziplist-entries |小規模の集計データの種類に [メモリ最適化](http://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
-| zset-max-ziplist-value |小規模の集計データの種類に [メモリ最適化](http://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
+| hash-max-ziplist-entries |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
+| hash-max-ziplist-value |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
+| set-max-intset-entries |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
+| zset-max-ziplist-entries |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
+| zset-max-ziplist-value |小規模の集計データの種類に [メモリ最適化](https://redis.io/topics/memory-optimization) を構成する |Standard と Premium |
 | データベース |データベースの数を構成する。 このプロパティは、キャッシュの作成時にのみ構成できます。 |Standard と Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Azure Cache for Redis を作成するには
@@ -237,7 +237,7 @@ Azure Cache for Redis インスタンスを新規作成するには、[New-Azure
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 既定のパラメーターを使用してキャッシュを作成するには、次のコマンドを実行します。
 
@@ -317,7 +317,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzureRmRedi
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 `Set-AzureRmRedisCache` コマンドレットを使用して、`Size`、`Sku`、`EnableNonSslPort`、`RedisConfiguration` の値などのプロパティを更新できます。 
 
@@ -421,7 +421,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzureRmRedi
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 現在のサブスクリプションのすべてのキャッシュに関する情報を取得するには、パラメーターを指定せずに `Get-AzureRmRedisCache` を実行します。
 
@@ -488,7 +488,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzureRmRedi
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 キャッシュのキーを取得するには、 `Get-AzureRmRedisCacheKey` コマンドレットを呼び出し、キャッシュの名前と、そのキャッシュが含まれているリソース グループの名前を渡します。
 
@@ -533,7 +533,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzureRmRedi
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 キャッシュのプライマリ キーまたはセカンダリ キーを再生成するには、`New-AzureRmRedisCacheKey` コマンドレットを呼び出し、名前とリソース グループを渡して、`KeyType` パラメーターに `Primary` または `Secondary` を指定します。 次の例では、キャッシュのセカンダリ アクセス キーが再生成されます。
 
@@ -584,7 +584,7 @@ Azure Cache for Redis を削除するには、[Remove-AzureRmRedisCache](https:/
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 次の例では、 `myCache` という名前のキャッシュが削除されます。
 
@@ -648,7 +648,7 @@ Azure Cache for Redis インスタンスにデータをインポートするに�
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 次のコマンドは、SAS URI で指定された BLOB から Azure Cache for Redis にデータをインポートします。
@@ -707,7 +707,7 @@ Azure Cache for Redis インスタンスからデータをエクスポートす�
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 次のコマンドは、Azure Cache for Redis インスタンスから、SAS URI で指定されたコンテナーにデータをエクスポートします。
@@ -768,7 +768,7 @@ Azure Cache for Redis インスタンスを再起動するには、`Reset-AzureR
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 次のコマンドは、指定されたキャッシュの両方のノードを再起動します。
@@ -785,5 +785,5 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 * [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-template-deploy-portal.md): Azure portal 上でリソース グループを作成および管理する方法について説明しています。
 * [Azure のブログ](https://azure.microsoft.com/blog/): Azure の新機能について説明しています。
 * [Windows PowerShell のブログ](https://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明しています。
-* ["Hey, Scripting Guy!"ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
+* ["Hey, Scripting Guy!"ブログ](https://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
