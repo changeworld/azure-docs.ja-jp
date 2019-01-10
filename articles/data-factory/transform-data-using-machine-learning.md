@@ -20,7 +20,7 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37046015"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [最新バージョン](transform-data-using-machine-learning.md)
 
@@ -28,10 +28,10 @@ ms.locfileid: "37046015"
 
 1. **トレーニング実験を作成する**。 この手順を実行するには、Azure ML Studio を使用します。 ML Studio は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
 2. **トレーニング実験を予測実験に変換する**。 既存のデータでモデルがトレーニングされ、それを使用して新しいデータをスコア付けする準備ができると、スコア付け用に実験を用意し、合理化します。
-3. **Web サービスとしてデプロイする**。 Azure Web サービスとしてスコア付け実験を発行できます。 この Web サービスのエンドポイントを使用して、モデルにデータを送信し、モデルの予測を受信できます。  
+3. **Web サービスとしてデプロイする**。 Azure Web サービスとしてスコア付け実験を発行できます。 この Web サービスのエンドポイントを使用して、モデルにデータを送信し、モデルの予測を受信できます。
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory と Machine Learning
-Azure Data Factory を使用すると、公開済みの [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで **バッチ実行アクティビティ** を使用すると、Azure ML Web サービスを呼び出して、データの予測を一括で行うことができます。 
+Azure Data Factory を使用すると、公開済みの [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで **バッチ実行アクティビティ** を使用すると、Azure ML Web サービスを呼び出して、データの予測を一括で行うことができます。
 
 時間の経過と共に、Azure ML スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 次の手順を実行することで、Data Factory パイプラインから Azure ML モデルを再トレーニングできます。
 
@@ -42,7 +42,7 @@ Azure Data Factory を使用すると、公開済みの [Azure Machine Learning]
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning のリンクされたサービス
 
-**Azure Machine Learning** のリンクされたサービスを作成して、Azure Machine Learning Web サービスを Azure Data Factory にリンクします。 このリンクされたサービスは、Azure Machine Learning のバッチ実行アクティビティと[更新リソース アクティビティ](update-machine-learning-models.md)で使用されます。 
+**Azure Machine Learning** のリンクされたサービスを作成して、Azure Machine Learning Web サービスを Azure Data Factory にリンクします。 このリンクされたサービスは、Azure Machine Learning のバッチ実行アクティビティと[更新リソース アクティビティ](update-machine-learning-models.md)で使用されます。
 
 
 ```JSON
@@ -58,7 +58,7 @@ Azure Data Factory を使用すると、公開済みの [Azure Machine Learning]
                 "type": "SecureString",
                 "value": "api key"
             }
-        }
+        },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
@@ -67,15 +67,15 @@ Azure Data Factory を使用すると、公開済みの [Azure Machine Learning]
 }
 ```
 
-JSON 定義のプロパティについては、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 
+JSON 定義のプロパティについては、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。
 
-Azure Machine Learning では、予測実験用にクラシック Web サービスと新しい Web サービスの両方をサポートします。 Data Factory から使用する適切なサービスを選択できます。 Azure Machine Learning のリンクされたサービスを作成するために必要な情報を取得するには、https://services.azureml.net に移動します。ここには、(新しい) Web サービスとクラシック Web サービスがすべて表示されます。 アクセスする Web サービスをクリックし、**[使用]** ページをクリックします。 **apiKey** プロパティの**主キー**と、**mlEndpoint** プロパティの**バッチ要求**をコピーします。 
+Azure Machine Learning では、予測実験用にクラシック Web サービスと新しい Web サービスの両方をサポートします。 Data Factory から使用する適切なサービスを選択できます。 Azure Machine Learning のリンクされたサービスを作成するために必要な情報を取得するには、https://services.azureml.net に移動します。ここには、(新しい) Web サービスとクラシック Web サービスがすべて表示されます。 アクセスする Web サービスをクリックし、**[使用]** ページをクリックします。 **apiKey** プロパティの**主キー**と、**mlEndpoint** プロパティの**バッチ要求**をコピーします。
 
 ![Azure Machine Learning Web サービス](./media/transform-data-using-machine-learning/web-services.png)
 
 ## <a name="azure-machine-learning-batch-execution-activity"></a>Azure Machine Learning バッチ実行アクティビティ
 
-次の JSON スニペットでは、Azure Machine Learning バッチ実行アクティビティを定義しています。 このアクティビティ定義には、先ほど作成した Azure Machine Learning のリンクされたサービスへの参照が含まれています。 
+次の JSON スニペットでは、Azure Machine Learning バッチ実行アクティビティを定義しています。 このアクティビティ定義には、先ほど作成した Azure Machine Learning のリンクされたサービスへの参照が含まれています。
 
 ```JSON
 {
@@ -92,32 +92,32 @@ Azure Machine Learning では、予測実験用にクラシック Web サービ�
                 "LinkedServiceName":{
                     "referenceName": "AzureStorageLinkedService1",
                     "type": "LinkedServiceReference"
-                }, 
+                },
                 "FilePath":"path1"
-            }, 
+            },
             "<web service input name 2>": {
                 "LinkedServiceName":{
                     "referenceName": "AzureStorageLinkedService1",
-                    "type": "LinkedServiceReference" 
-                }, 
+                    "type": "LinkedServiceReference"
+                },
                 "FilePath":"path2"
-            }        
+            }
         },
         "webServiceOutputs": {
             "<web service output name 1>": {
                 "LinkedServiceName":{
                     "referenceName": "AzureStorageLinkedService2",
-                    "type": "LinkedServiceReference"   
-                }, 
+                    "type": "LinkedServiceReference"
+                },
                 "FilePath":"path3"
-            }, 
+            },
             "<web service output name 2>": {
                 "LinkedServiceName":{
                     "referenceName": "AzureStorageLinkedService2",
-                    "type": "LinkedServiceReference"   
-                }, 
+                    "type": "LinkedServiceReference"
+                },
                 "FilePath":"path4"
-            }         
+            }
         },
         "globalParameters": {
             "<Parameter 1 Name>": "<parameter value>",
@@ -126,8 +126,6 @@ Azure Machine Learning では、予測実験用にクラシック Web サービ�
     }
 }
 ```
-
-
 
 | プロパティ          | 説明                              | 必須 |
 | :---------------- | :--------------------------------------- | :------- |
@@ -141,12 +139,12 @@ Azure Machine Learning では、予測実験用にクラシック Web サービ�
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>シナリオ1: Azure Blob Storage のデータを参照する Web サービスの入力/出力を使用する
 
-このシナリオの Azure Machine Learning Web サービスは、Azure BLOB ストレージ内のファイルのデータを使用して予測を作成し、BLOB ストレージに予測結果を保存します。 次の JSON では、AzureMLBatchExecution アクティビティを使用する Data Factory パイプラインが定義されています。 Azure Blog Storage の入出力データは、LinkedName と FilePath のペアを使用して参照されます。 サンプルのリンクされたサービスが入力と出力で異なる場合は、Data Factory が適切なファイルを選択して Azure ML Web サービスに送信できるように、入力と出力にそれぞれ異なるリンクされたサービスをご利用いただけます。 
+このシナリオの Azure Machine Learning Web サービスは、Azure BLOB ストレージ内のファイルのデータを使用して予測を作成し、BLOB ストレージに予測結果を保存します。 次の JSON では、AzureMLBatchExecution アクティビティを使用する Data Factory パイプラインが定義されています。 Azure Blog Storage の入出力データは、LinkedName と FilePath のペアを使用して参照されます。 サンプルのリンクされたサービスが入力と出力で異なる場合は、Data Factory が適切なファイルを選択して Azure ML Web サービスに送信できるように、入力と出力にそれぞれ異なるリンクされたサービスをご利用いただけます。
 
 > [!IMPORTANT]
 > Azure ML の実験では、Web サービスの入力ポートおよび出力ポートとグローバル パラメーターには既定の名前 ("input1"、"input2") がありますが、これらはカスタマイズすることができます。 webServiceInputs、webServiceOutputs、および globalParameters の設定に使用する名前は、実験での名前と厳密に一致する必要があります。 バッチ実行のヘルプ ページでサンプルの要求のペイロードを表示して、Azure ML エンドポイントで必要なマッピングを確認することができます。
 >
-> 
+>
 
 ```JSON
 {
@@ -163,47 +161,47 @@ Azure Machine Learning では、予測実験用にクラシック Web サービ�
                 "LinkedServiceName":{
                     "referenceName": "AzureStorageLinkedService1",
                     "type": "LinkedServiceReference"
-                }, 
+                },
                 "FilePath":"amltest/input/in1.csv"
-            }, 
+            },
             "input2": {
                 "LinkedServiceName":{
                     "referenceName": "AzureStorageLinkedService1",
-                    "type": "LinkedServiceReference" 
-                }, 
+                    "type": "LinkedServiceReference"
+                },
                 "FilePath":"amltest/input/in2.csv"
-            }        
+            }
         },
         "webServiceOutputs": {
             "outputName1": {
                 "LinkedServiceName":{
                     "referenceName": "AzureStorageLinkedService2",
-                    "type": "LinkedServiceReference"   
-                }, 
+                    "type": "LinkedServiceReference"
+                },
                 "FilePath":"amltest2/output/out1.csv"
-            }, 
+            },
             "outputName2": {
                 "LinkedServiceName":{
                     "referenceName": "AzureStorageLinkedService2",
-                    "type": "LinkedServiceReference"   
-                }, 
+                    "type": "LinkedServiceReference"
+                },
                 "FilePath":"amltest2/output/out2.csv"
-            }         
+            }
         }
     }
 }
 ```
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>シナリオ2: リーダー/ライター モジュールを使用してさまざまなストレージのデータを参照する
-Azure ML の実験を作成するときのもう 1 つの一般的なシナリオは、データ インポート モジュールとデータ出力モジュールを使用することです。 データ インポート モジュールは実験にデータを読み込むために使用し、データ出力モジュールは実験からデータを保存するために使用します。 データ インポート モジュールとデータ出力モジュールの詳細については、MSDN ライブラリの[データのインポート](https://msdn.microsoft.com/library/azure/dn905997.aspx)に関するトピックおよび[データの出力](https://msdn.microsoft.com/library/azure/dn905984.aspx)に関するトピックをご覧ください。     
+Azure ML の実験を作成するときのもう 1 つの一般的なシナリオは、データ インポート モジュールとデータ出力モジュールを使用することです。 データ インポート モジュールは実験にデータを読み込むために使用し、データ出力モジュールは実験からデータを保存するために使用します。 データ インポート モジュールとデータ出力モジュールの詳細については、MSDN ライブラリの[データのインポート](https://msdn.microsoft.com/library/azure/dn905997.aspx)に関するトピックおよび[データの出力](https://msdn.microsoft.com/library/azure/dn905984.aspx)に関するトピックをご覧ください。
 
 データ インポート モジュールとデータ出力モジュールを使用するときは、これらのモジュールの各プロパティに Web サービスのパラメーターを使用することをお勧めします。 これらの Web パラメーターを使用すると、実行時に値を構成できます。 たとえば、Azure SQL Database: XXX.database.windows.net を使用するデータ インポート モジュールで実験を作成できます。 Web サービスをデプロイしたら、Web サービスのコンシューマーが `YYY.database.windows.net` という別の Azure SQL Server を指定できるようにします。 Web サービスのパラメーターを使用して、この値を構成できます。
 
 > [!NOTE]
 > Web サービスの入力と出力は、Web サービスのパラメーターとは異なるものです。 最初のシナリオでは、Azure ML Web サービスに対して入力と出力を指定する方法を説明しました。 このシナリオでは、データ インポート/データ出力モジュールのプロパティに対応する Web サービスのパラメーターを渡します。
 >
-> 
+>
 
-Web サービス パラメーターを使用するシナリオを見てみましょう。 Azure Machine Learning でサポートされるいずれかのデータ ソース (例: Azure SQL Database) のデータをリーダー モジュールで読み取る Azure Machine Learning Web サービスをデプロイしました。 バッチ実行が実行された後、ライター モジュールを使用して結果が書き込まれます (Azure SQL Database)。  Web サービスの入力と出力は実験では定義されていません。 この場合は、リーダー/ライター モジュールに関連する Web サービス パラメーターを設定することをお勧めします。 この設定により、AzureMLBatchExecution アクティビティを使用するときにリーダー/ライター モジュールを構成できます。 Web サービスのパラメーターは、次に示すように、アクティビティの JSON の **globalParameters** セクションで指定します。
+Web サービス パラメーターを使用するシナリオを見てみましょう。 Azure Machine Learning でサポートされるいずれかのデータ ソース (例: Azure SQL Database) のデータをリーダー モジュールで読み取る Azure Machine Learning Web サービスをデプロイしました。 バッチ実行が実行された後、ライター モジュールを使用して結果が書き込まれます (Azure SQL Database)。 Web サービスの入力と出力は実験では定義されていません。 この場合は、リーダー/ライター モジュールに関連する Web サービス パラメーターを設定することをお勧めします。 この設定により、AzureMLBatchExecution アクティビティを使用するときにリーダー/ライター モジュールを構成できます。 Web サービスのパラメーターは、次に示すように、アクティビティの JSON の **globalParameters** セクションで指定します。
 
 ```JSON
 "typeProperties": {
@@ -216,17 +214,14 @@ Web サービス パラメーターを使用するシナリオを見てみまし
 }
 ```
 
-
 > [!NOTE]
 > Web サービス パラメーターでは大文字と小文字が区別されるため、アクティビティ JSON に指定した名前が Web サービスによって公開されている名前と一致していることを確認してください。
 >
 
 再トレーニングを実行したら、**Azure ML 更新リソース アクティビティ**を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](update-machine-learning-models.md)」をご覧ください。
 
-
-
 ## <a name="next-steps"></a>次の手順
-別の手段でデータを変換する方法を説明している次の記事を参照してください。 
+別の手段でデータを変換する方法を説明している次の記事を参照してください。
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)
 * [Hive アクティビティ](transform-data-using-hadoop-hive.md)
