@@ -8,21 +8,21 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: afe0cfe61779e95fc9a65a1f4928ddae4b7af267
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e77ee61e3d318b355b978ce21031f3f55a26feca
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090110"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724625"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート: Android で Speech SDK を使用して Java で音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、Cognitive Services Speech SDK を使用して音声をテキストに変換する Android 向け Java アプリケーションを作成する方法について説明します。
-このアプリケーションは、Microsoft Cognitive Services Speech SDK Maven パッケージ (バージョン 1.1.0) と Android Studio 3.1 が基になっています。
+この記事では、Cognitive Services Speech SDK を使用して音声をテキストに変換する Android 向け Java アプリケーションを開発する方法について説明します。
+このアプリケーションは、Microsoft Cognitive Services Speech SDK Maven パッケージ (バージョン 1.2.0) と Android Studio 3.1 が基になっています。
 現在 Speech SDK は、32/64 ビットの ARM プロセッサを搭載した Android デバイスおよび Intel x86/x64 互換のプロセッサを搭載した Android デバイスと互換性があります。
 
 > [!NOTE]
@@ -58,9 +58,9 @@ Android Studio が新しい Android プロジェクトを準備するまでし�
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.1.0` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.2.0` です。
 
-Android 用 Speech SDK は、必要なライブラリと、それを使用するために必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。
+Android 用 Speech SDK は、必要なライブラリと必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。
 ホストされている Maven リポジトリの場所は https://csspeechstorage.blob.core.windows.net/maven/ です。
 
 Speech SDK を使用するためにプロジェクトを設定します。 Android Studio のメニュー バーから **[ファイル]** > **[Project Structure]** (プロジェクトの構造) を選択してプロジェクトの構造のウィンドウ開きます。 [Project Structure] (プロジェクトの構造) ウィンドウで、次の変更を行います。
@@ -73,7 +73,7 @@ Speech SDK を使用するためにプロジェクトを設定します。 Andro
 
    ![[Project Structure] (プロジェクトの構造) ウィンドウのスクリーンショット](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. 表示されたウィンドウで、Android 用 Speech SDK の名前とバージョン (`com.microsoft.cognitiveservices.speech:client-sdk:1.1.0`) を入力します。 **[OK]** をクリックします。
+1. 表示されたウィンドウで、Android 用 Speech SDK の名前とバージョン (`com.microsoft.cognitiveservices.speech:client-sdk:1.2.0`) を入力します。 **[OK]** をクリックします。
    次に示すように、依存関係のリストに Speech SDK が追加されます。
 
    ![[Project Structure] (プロジェクトの構造) ウィンドウのスクリーンショット](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
@@ -86,7 +86,7 @@ Speech SDK を使用するためにプロジェクトを設定します。 Andro
 
 ## <a name="create-user-interface"></a>ユーザー インターフェイスを作成する
 
-アプリケーション用の基本的なユーザー インターフェイスを作成します。 メイン アクティビティのレイアウト `activity_main.xml` を編集します。 最初に、レイアウトにはアプリケーションの名前およびテキスト "Hello World!" を含む TextView のタイトル バーが含まれています。
+アプリケーション用の基本的なユーザー インターフェイスを作成します。 メイン アクティビティのレイアウト `activity_main.xml` を編集します。 初期状態のレイアウトには、アプリケーションの名前が表示されるタイトル バーと、"Hello World!" というテキストが表示される TextView が含まれています。
 
 * TextView 要素をクリックします。 右上隅にあるその ID 属性を `hello` に変更します。
 
@@ -141,16 +141,12 @@ Speech SDK を使用するためにプロジェクトを設定します。 Andro
 
 ![Android アプリケーションのスクリーンショット](media/sdk/qs-java-android-13-gui-on-device.png)
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-このサンプルは、`quickstart/java-android` フォルダーで探してください。
-
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Speech SDK for Java を使用して音声から意図を認識する](how-to-recognize-intents-from-speech-java.md)
+> [GitHub で Java のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>関連項目
 
-- [音声を変換する](how-to-translate-speech-csharp.md)
 - [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
 - [言語モデルをカスタマイズする](how-to-customize-language-model.md)

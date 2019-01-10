@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b6c04c5b167eb963e9b2befa57e270ac454f5d74
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9c44e2564c26a16d632a16195d3e53b8ce83d735
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344280"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629885"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する #
 
@@ -78,7 +78,7 @@ ILB ASE を作成する方法は次のとおりです。
 
     * &lt;asename&gt;.p.azurewebsites.net
 
-   既存の DNS 名を Web アプリにマップできる、カスタム ドメイン名と呼ばれる機能があります。 この機能の詳細については、[既存の DNS 名を Web アプリにマップする方法][customdomain]に関するページを参照してください。 アプリで使用するカスタム ドメイン名と、ご使用の ASE によって使用されるドメイン名を重複させることはできません。 ILB ASE のドメイン名が _contoso.com_ である場合、次のようなカスタム ドメイン名はご使用のアプリで使用できません。
+   [既存の DNS 名をアプリにマップ][customdomain]することができます。 アプリで使用するカスタム ドメイン名と、ご使用の ASE によって使用されるドメイン名を重複させることはできません。 ILB ASE のドメイン名が _contoso.com_ である場合、次のようなカスタム ドメイン名はご使用のアプリで使用できません。
 
     * www.contoso.com
 
@@ -88,7 +88,7 @@ ILB ASE を作成する方法は次のとおりです。
 
    ご使用のアプリのカスタム ドメイン名がわかっている場合は、これらのカスタム ドメイン名と競合しない ILB ASE のドメインを選択します。 この例では、ASE のドメインに *contoso-internal.com* のようなものを使用できます。これは、*.contoso.com* で終わるカスタム ドメイン名と重複しないためです。
 
-1. **[OK]** を選択し、**[作成]** を選択します。
+8. **[OK]** を選択し、**[作成]** を選択します。
 
     ![ASE の作成][1]
 
@@ -160,23 +160,23 @@ SSL 証明書を .pfx ファイルとして変換、保存します。 .pfx フ�
 
 1. ご使用の ASE の ILB アドレスを取得します。 **[ASE]** > **[プロパティ]** > **[仮想 IP アドレス]** の順に選択します。
 
-1. ASE 作成後に、その ASE に Web アプリを作成します。
+2. ASE 作成後に、その ASE にアプリを作成します。
 
-1. その VNet 内にない場合は VM を作成します。
+3. その VNet 内にない場合は VM を作成します。
 
     > [!NOTE] 
     > 失敗または問題が発生することがあるため、ASE と同じサブネットにこの VM を作成しないでください。
     >
 
-1. ASE ドメインで使用する DNS を設定します。 お使いの DNS のドメインにワイルドカードを使用できます。 いくつかの簡単なテストを行うには、ご使用の VM 上の hosts ファイルを編集して、Web アプリの名前を VIP の IP アドレスに設定します。
+4. ASE ドメインで使用する DNS を設定します。 お使いの DNS のドメインにワイルドカードを使用できます。 いくつかの簡単なテストを行うには、ご使用の VM 上の hosts ファイルを編集して、アプリの名前を VIP の IP アドレスに設定します。
 
-    a. ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前の Web アプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。 その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
+    a. ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前のアプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。 その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
 
     b. Web デプロイの発行または高度なコンソールへのアクセスをテストするには、_mytestapp.scm.ilbase.com_ のレコードを作成します。
 
-1. その VM でブラウザーを使用して、 https://mytestapp.ilbase.com に移動します。 (またはドメインに Web アプリ名が含まれるいずれかのアドレスに移動します。)
+5. その VM でブラウザーを使用して、 https://mytestapp.ilbase.com に移動します。 (またはドメインにアプリ名が含まれるいずれかのアドレスに移動します)。
 
-1. その VM でブラウザーを使用して、 https://mytestapp.ilbase.com に移動します。 自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れます。
+6. その VM でブラウザーを使用して、 https://mytestapp.ilbase.com に移動します。 自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れます。
 
     ご使用の ILB の IP アドレスは **[IP アドレス]** の下の一覧に表示されます。 この一覧には、外部 VIP で使用される IP アドレスや受信管理トラフィック用の IP アドレスも含まれます。
 
@@ -237,7 +237,7 @@ ILB ASE と WAF デバイスを構成する方法について詳しくは、「[
 [NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[webapps]: ../app-service-web-overview.md
+[webapps]: ../overview.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
