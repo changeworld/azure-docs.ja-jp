@@ -20,13 +20,13 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37051326"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-hive-activity.md)
 > * [現在のバージョン](transform-data-using-hadoop-hive.md)
 
 Data Factory [パイプライン](concepts-pipelines-activities.md)の HDInsight Hive アクティビティでは、[独自](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンド](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の HDInsight クラスターで Hive クエリを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。
 
-Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](introduction.md)」を参照し、[データの変換のチュートリアル](tutorial-transform-data-spark-powershell.md)を実行してください。 
+Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](introduction.md)」を参照し、[データの変換のチュートリアル](tutorial-transform-data-spark-powershell.md)を実行してください。
 
 ## <a name="syntax"></a>構文
 
@@ -52,7 +52,7 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
         "defines": {
             "param1": "param1Value"
         }
-    }   
+    }
 }
 ```
 ## <a name="syntax-details"></a>構文の詳細
@@ -69,7 +69,7 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 | defines             | Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します。 | いいえ        |
 
 ## <a name="next-steps"></a>次の手順
-別の手段でデータを変換する方法を説明している次の記事を参照してください。 
+別の手段でデータを変換する方法を説明している次の記事を参照してください。
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)
 * [Pig アクティビティ](transform-data-using-hadoop-pig.md)
@@ -79,4 +79,3 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning バッチ実行アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)
-
