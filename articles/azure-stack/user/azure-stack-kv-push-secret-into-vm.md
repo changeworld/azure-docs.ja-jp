@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: 0723d0e2a60c0f43633e5e5ca771ccfe88d2db68
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 188b14c3199f9e4496a3c197aba0bb7f5b31d9ab
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808062"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104561"
 ---
 # <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>仮想マシンを作成して、Azure Stack Key Vault から取得した証明書をインストールする
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Key Vault 証明書がインストールされた Azure Stack 仮想マシン (VM) を作成する方法について説明します。
 
@@ -128,7 +128,7 @@ Set-AzureKeyVaultSecret `
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "newStorageAccountName": {

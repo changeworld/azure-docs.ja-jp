@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: fb8e2b11ce6178c10fb9dc7d13c5c7d817ece821
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2a88b130c92f7b9074fd248afc97f0ea6b4c13bb
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344110"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042140"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Azure Cosmos DB からのデータのクエリを実行するための SQL クエリの例
 
@@ -1349,7 +1349,7 @@ Cosmos DB では、使い慣れた \@ 表記で表されたパラメーターを
 
 Cosmos DB では、ユーザー定義関数 (UDF) のようにクエリ内で使用できる、一般的な操作向けのいくつかの組み込み関数をサポートしています。
 
-| 関数グループ | [操作] |
+| 関数グループ | 操作 |
 |---------|----------|
 | 数学関数 | ABS、CEILING、EXP、FLOOR、LOG、LOG10、POWER、ROUND、SIGN、SQRT、SQUARE、TRUNC、ACOS、ASIN、ATAN、ATN2、COS、COT、DEGREES、PI、RADIANS、SIN、TAN |
 | 型チェック関数 | IS_ARRAY、IS_BOOL、IS_NULL、IS_NUMBER、IS_OBJECT、IS_STRING、IS_DEFINED、IS_PRIMITIVE |

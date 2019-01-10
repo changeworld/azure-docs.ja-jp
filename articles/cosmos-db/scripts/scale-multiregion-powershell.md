@@ -1,20 +1,20 @@
 ---
 title: Azure PowerShell スクリプト - Azure Cosmos DB のマルチリージョン レプリケーション
 description: Azure PowerShell スクリプト サンプル - Azure Cosmos DB のマルチリージョン レプリケーション
-services: cosmos-db
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 author: SnehaGunda
 ms.author: sngun
-ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
 ms.date: 05/10/2017
-ms.openlocfilehash: 8bc2b44f240327d8272af8a20c117c770377421f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: 832f22e969fbec51390792105df51a6af2a71851
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954585"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037890"
 ---
 # <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-powershell"></a>PowerShell を使用した複数リージョンへの Azure Cosmos DB データベース アカウントのレプリケートとフェールオーバーの優先順位の構成
 

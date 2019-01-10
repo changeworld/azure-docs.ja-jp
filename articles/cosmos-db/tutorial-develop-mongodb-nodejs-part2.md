@@ -4,18 +4,19 @@ titleSuffix: Azure Cosmos DB
 description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 2 です。
 author: johnpapa
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 8e122ab62009463ae12d5635323655be708aa29d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.reviewer: sngun
+ms.openlocfilehash: bcc0d69024954b0b8cbf58fb3eac938ff3e1b0e6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788057"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039862"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Node.js Express アプリを作成する
 

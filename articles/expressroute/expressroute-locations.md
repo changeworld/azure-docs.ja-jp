@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2018
 ms.author: pareshmu
-ms.openlocfilehash: 7c3a40f17583e9a7ef9ab02bcf6563ef4ccc5982
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: bc7f43c61cef8ef504d24c03c1cdc3e74f404610
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652950"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052855"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -105,7 +105,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|サポートされています |サポートされています | アムステルダム、シリコン バレー、トロント |
 | **Jisc** |サポートされています |サポートされています |ロンドン |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |サポートされています |サポートされています |ソウル |
-| **[KPN](http://www.kpn.com/cloudconnect)** | サポートされています | サポートされています | アムステルダム | 
+| **[KPN](https://www.kpn.com/zakelijk/cloud/connect.htm)** | サポートされています | サポートされています | アムステルダム | 
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、ニューポート、サンパウロ、シアトル、シリコン バレー、シンガポール、ワシントン DC |
 | **LG CNS** |サポートされています |サポートされています |釜山、ソウル |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ |
@@ -137,7 +137,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ |
 | **TIME dotCom** | サポートされています | サポートされています | クアラルンプール |
 | **[UOLDIVEO](http://www.uoldiveo.com.br/solucoes/cloud.html#rmcl)** |サポートされています |サポートされています |サンパウロ |
-| **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** |サポートされています |サポートの有無 |アムステルダム、シカゴ、ダラス、香港、ロンドン、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
+| **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |サポートされています |サポートの有無 |アムステルダム、シカゴ、ダラス、香港、ロンドン、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
 | **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |サポートされています |サポートされていません |ロンドン、シンガポール |
 | **Vodafone Idea** | サポートされています | サポートされています | ムンバイ 2 |
 | **[Zayo](http://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、ロサンゼルス、モントリオール、ニューヨーク、シアトル、シリコン バレー、トロント、ワシントン DC |
@@ -285,7 +285,6 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Ensyst](http://www.ensyst.com.au)** | アジア
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** | 北米 |
 | **[FlexManage](http://www.flexmanage.com/cloud)** | 北米 |
-| **[Inframon](http://www.inframon.com/partner/microsoft/)** | ヨーロッパ |
 | **[Lightstream](https://www.ltstream.com/expressroute)** | 北米 |
 | **[The IT Consultancy Group](http://itconsult.com.au/microsoft-expressroute)** | オーストラリア |
 | **[MOQdigital](http://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | オーストラリア |

@@ -1,22 +1,19 @@
 ---
 title: Azure Cosmos DB 向けの ASP.NET MVC チュートリアル:Web アプリケーション開発
 description: Azure Cosmos DB を使用して MVC Web アプリケーションを作成するための ASP.NET MVC チュートリアル。 JSON を格納し、Azure Websites でホストされている ToDo アプリからデータにアクセスします - ASP.NET MVC チュートリアル ステップ バイ ステップ
-keywords: ASP.NET MVC チュートリアル, Web アプリケーションの開発, MVC Web アプリケーション, ASP.NET MVC チュートリアル ステップ バイ ステップ
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
-ms.custom: devcenter, vs-azure
-ms.openlocfilehash: b0c8d46e74eec4bad7b7e664682c97eb0f0068b6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 138df4aa0a0e23bd97bca960573cc0971b66b869
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098728"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041409"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC のチュートリアル: Azure Cosmos DB を使用した Web アプリケーションの開発
 

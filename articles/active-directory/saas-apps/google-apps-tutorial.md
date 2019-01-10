@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: f4f7546efca0bd69fd71418116142acacb927604
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 31dc45dbe8d7e3ed9b701f8623fd4e1425320316
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970901"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107465"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>チュートリアル:Azure Active Directory と G Suite の統合
 
@@ -153,8 +153,8 @@ G Suite で Azure AD のシングル サインオンを構成するには、次�
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `http://google.com` |
-    | `http://google.com/a/<yourdomain.com>` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[G Suite クライアント サポート チーム](https://www.google.com/contact/)に連絡してください。
@@ -203,7 +203,7 @@ G Suite で Azure AD のシングル サインオンを構成するには、次�
 
 ### <a name="configure-g-suite-single-sign-on"></a>G Suite のシングル サインオンを構成する
 
-1. ブラウザーで新しいタブを開き、管理者アカウントを使用して、[G Suite 管理コンソール](http://admin.google.com/)にサインインします。
+1. ブラウザーで新しいタブを開き、管理者アカウントを使用して、[G Suite 管理コンソール](https://admin.google.com/)にサインインします。
 
 2. **[セキュリティ]** をクリックします。 このリンクが表示されていない場合、画面下部の **[その他の設定]** に隠れていることがあります。
 
