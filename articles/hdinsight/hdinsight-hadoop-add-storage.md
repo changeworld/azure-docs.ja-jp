@@ -54,7 +54,7 @@ __スクリプトの場所__: [https://hdiconfigactions.blob.core.windows.net/li
 
 __要件__:
 
-* スクリプトを__ヘッド ノード__に適用する必要があります。
+* スクリプトを __ヘッド ノード__ に適用する必要があります。
 
 ## <a name="to-use-the-script"></a>スクリプトを使用するには
 

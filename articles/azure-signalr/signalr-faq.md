@@ -18,7 +18,7 @@ ms.locfileid: "53812790"
 ## <a name="is-azure-signalr-service-ready-for-production-use"></a>Azure SignalR Service は運用環境で利用できますか?
 
 はい。
-一般提供の発表については、「[Azure SignalR サービスの一般公開](https://azure.microsoft.com/en-us/blog/azure-signalr-service-now-generally-available/)」を参照してください。 
+一般提供の発表については、「[Azure SignalR Service の一般提供](https://azure.microsoft.com/en-us/blog/azure-signalr-service-now-generally-available/)」を参照してください。 
 
 [ASP.NET Core SignalR](https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction) は完全にサポートされています。
 
