@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 6a374e7c83fc4054774d8605c93241ba8f22b9b5
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.reviewer: sngun
+ms.openlocfilehash: 5df11eb4e1b759d66200c09cabc8752532d0873c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263477"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042157"
 ---
 # <a name="understanding-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容の理解
 
