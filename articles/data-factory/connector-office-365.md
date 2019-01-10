@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: f76c1676e21e1abdc3f23e2e2c4a7f6f721fefdb
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 1ed5f3db3f9f8f7231d8f865f69cd11c2430054b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386572"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024316"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Office 365 から Azure にデータをコピーする (プレビュー) 
 
@@ -82,7 +81,7 @@ Office 365 のリンクされたサービスでは、次のプロパティがサ
 | type | type プロパティは、次のように設定する必要があります: **Office 365** | [はい] |
 | office365TenantId | Office 365 アカウントが属している Azure テナント ID です。 | [はい] |
 | servicePrincipalTenantId | Azure AD Web アプリケーションが存在するテナントの情報を指定します。 | [はい] |
-| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | [はい] |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
 | servicePrincipalKey | アプリケーションのキーを取得します。 Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 | [はい] |
 | connectVia | データ ストアに接続するために使用される統合ランタイム。  指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ  |
 

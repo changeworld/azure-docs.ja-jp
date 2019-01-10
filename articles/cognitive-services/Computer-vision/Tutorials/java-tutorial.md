@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: f039e85ab3fccfc36b704f06d9fcfa3b4cfed758
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: ef1180a8e8c833648e3b61705abf354cb4dfaed3
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584549"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117488"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>チュートリアル:Computer Vision API Java
 
@@ -778,7 +778,7 @@ Computer Vision の手書き認識機能は、手書きのテキストのイメ�
             
             // Check for success.
             if (textResponse.getStatusLine().getStatusCode() != 202) {
-                // An error occured. Return the JSON error message.
+                // An error occurred. Return the JSON error message.
                 HttpEntity entity = textResponse.getEntity();
                 String jsonString = EntityUtils.toString(entity);
                 return new JSONObject(jsonString);

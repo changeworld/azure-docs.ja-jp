@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: dfdc36ce5223beaf00fcc274934387c498505411
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 7d451f7eae16426c85ed5540b35993cd9b218b83
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620610"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033164"
 ---
 # <a name="configure-an-ip-firewall-for-your-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントに IP ファイアウォールを構成する
 

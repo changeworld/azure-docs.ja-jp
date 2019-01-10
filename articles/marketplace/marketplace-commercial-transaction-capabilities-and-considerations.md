@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: b2f106edf69b57410fd1990d0888cf9d3a71be56
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 867af6de05d1d9ab54cf8a4bf02221acc43a2b28
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880184"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075636"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace ‎商用トランザクションの機能と考慮事項
 
@@ -214,7 +214,7 @@ Marketplace を通じて処理される注文は、顧客の Azure インフラ�
 
 詳細と法的なポリシーについては、Cloud パートナー ポータルに記載されている「[Publisher Agreement](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)」 (パブリッシャー契約) を確認してください。
 
-課金に関する質問がある場合は、[サポート チケットを作成](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636764613233453423)し、使用されているオファーの種類に応じて仮想マシンまたは Web アプリ (つまり SaaS アプリ) を選択してください。
+課金に関する質問がある場合は、[サポート チケットを作成](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&pesid=16230&forceorigin=esmc&ccsid=636764613233453423)し、使用されているオファーの種類に応じて仮想マシンまたは Web アプリ (つまり SaaS アプリ) を選択してください。
 
 ## <a name="transact-requirements"></a>販売の要件
 

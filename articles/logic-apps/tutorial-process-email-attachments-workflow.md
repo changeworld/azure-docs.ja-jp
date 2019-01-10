@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: cc3a2e96222e06324500e2203d870c06d0f3e8c0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 93894f9c45ac8b2cfcec23cf6a9ccd4d8e6f6824
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140508"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121726"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>チュートリアル: Azure Logic Apps を使用してメールと添付ファイルの処理を自動化する
 
@@ -145,7 +145,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | **ホスティング プラン** | 従量課金プラン | 関数アプリを実行するためのリソース (計算処理能力など) の割り当てとスケールの方法は、この設定によって決まります。 [ホスティング プランの比較](../azure-functions/functions-scale.md)に関するページを参照してください。 | 
    | **場所** | 米国西部 | 先ほど使用したものと同じリージョン | 
    | **Storage** | cleantextfunctionstorageacct | 関数アプリに使うストレージ アカウントを作成します。 使用できるのは小文字と数字だけです。 <p>**注:** このストレージ アカウントは関数アプリを格納するものであり、先ほどメールの添付ファイルを保存する目的で作成したストレージ アカウントとは異なります。 | 
-   | **Application Insights** | オフ | [Application Insights](../application-insights/app-insights-overview.md) を使ったアプリケーションの監視を有効にします。ただし、このチュートリアルでは **[オフ]** を選択します。 | 
+   | **Application Insights** | オフ | [Application Insights](../azure-monitor/app/app-insights-overview.md) を使ったアプリケーションの監視を有効にします。ただし、このチュートリアルでは **[オフ]** を選択します。 | 
    |||| 
 
    デプロイ後に関数アプリが自動的に表示されない場合は、<a href="https://portal.azure.com" target="_blank">Azure Portal</a> でアプリを探してください。 Azure のメイン メニューで **[Function App]** を選択し、目的の関数アプリを選択します。 

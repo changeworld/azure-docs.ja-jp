@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: d261fe78bc6902558e2714d9fe4e66d991a7bd09
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 403906a60d16a478dffd313b45aa1ce24e42196a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004840"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119236"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
-[Application Insights](../../application-insights/app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションの心臓部を調べます。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 Live Metrics Stream は、[プロファイラー](../../application-insights/app-insights-profiler.md)、[スナップショット デバッガー](../../application-insights/app-insights-snapshot-debugger.md)、[パフォーマンス テスト](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests)とともに、実稼働中の Web サイト向けの強力で非侵襲的な診断ツールを提供します。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションの心臓部を調べます。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 Live Metrics Stream は、[プロファイラー](../../azure-monitor/app/profiler.md)、[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)、[パフォーマンス テスト](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests)とともに、実稼働中の Web サイト向けの強力で非侵襲的な診断ツールを提供します。
 
 Live Metrics Stream を使用すると、次のことが可能になります。
 
@@ -38,7 +38,7 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 ## <a name="get-started"></a>作業開始
 
-1. ASP.NET Web アプリケーションまたは [Windows Server アプリケーション](../../application-insights/app-insights-windows-services.md) に [Application Insights をインストール](../../azure-monitor/app/asp-net.md)していない場合は、今すぐインストールします。 
+1. ASP.NET Web アプリケーションまたは [Windows Server アプリケーション](../../azure-monitor/app/windows-services.md) に [Application Insights をインストール](../../azure-monitor/app/asp-net.md)していない場合は、今すぐインストールします。 
 2. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[更新プログラム]** タブを開き、**[リリース前のパッケージを含める]** をオンにし、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
 
     アプリケーションを再デプロイします。
@@ -202,7 +202,7 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 
 
 ## <a name="next-steps"></a>次の手順
-* [Application Insights による使用状況の監視](../../application-insights/app-insights-usage-overview.md)
+* [Application Insights による使用状況の監視](../../azure-monitor/app/usage-overview.md)
 * [診断検索の使用](../../azure-monitor/app/diagnostic-search.md)
-* [プロファイラー](../../application-insights/app-insights-profiler.md)
-* [スナップショット デバッガー](../../application-insights/app-insights-snapshot-debugger.md)
+* [プロファイラー](../../azure-monitor/app/profiler.md)
+* [スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)

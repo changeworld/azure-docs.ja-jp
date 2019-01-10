@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 41f27782ab9bc6b0c72ef817472779ccca0e0d3e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e148165afd91d76917e06577198950ee7552995f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337225"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107708"
 ---
 # <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>チュートリアル:Spring と Azure Cosmos DB を使用して Java Web アプリを構築する
 
@@ -294,7 +294,7 @@ bash-3.2$ az webapp log tail --name ${WEBAPP_NAME}  --resource-group ${RESOURCEG
 2018-10-28T22:44:56.265944408Z \____|__  /_____ \____/ |__|    \___  >
 2018-10-28T22:44:56.265948508Z         \/      \/                  \/ 
 2018-10-28T22:44:56.265952508Z A P P   S E R V I C E   O N   L I N U X
-2018-10-28T22:44:56.265956408Z Documentation: http://aka.ms/webapp-linux
+2018-10-28T22:44:56.265956408Z Documentation: https://aka.ms/webapp-linux
 2018-10-28T22:44:56.266260910Z Setup openrc ...
 2018-10-28T22:44:57.396926506Z Service `hwdrivers' needs non existent service `dev'
 2018-10-28T22:44:57.397294409Z  * Caching service dependencies ... [ ok ]

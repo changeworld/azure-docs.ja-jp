@@ -3,17 +3,17 @@ title: .NET Core コンソール アプリケーションを作成して Azure C
 description: Azure Cosmos DB SQL API .NET Core SDK を使用してオンライン データベースと C# コンソール アプリケーションを作成するチュートリアル。
 author: deborahc
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 917cf6ddf23fb9240aa6f2cef8add14c66d0cb06
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: fd5383ded8252375b651c47debea3ba72173eb16
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973174"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038821"
 ---
 # <a name="build-a-net-core-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>.NET Core コンソール アプリケーションを作成して Azure Cosmos DB SQL API アカウントのデータを管理する (SDK バージョン 3 プレビュー)
 
@@ -59,7 +59,7 @@ SQL API および .NET Core SDK を使用して Xamarin iOS、Android、また�
 
   - 独自のエディターを使用するか、[Visual Studio Code](https://code.visualstudio.com/) をダウンロードできます。Visual Studio Code は無料で、Windows、Linux、MacOS で動作します。
 
-## <a name="step-1-create-an-azure-cosmos-db-account"></a>ステップ 1:Azure Cosmos DB アカウントを作成する
+## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1:Azure Cosmos DB アカウントを作成する
 
 それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、「 [Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでかまいません。 Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従ってエミュレーターをセットアップし、「[Visual Studio プロジェクトをセットアップする](#SetupVS)」に進んでください。
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: ad17b6ef032c7bc25a019d53f12cc33baa3163f3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0db76e80b2ff7400e7c2914efbd2bbcb24d9b005
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340899"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034320"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の永続関数を作成する
 
@@ -144,4 +144,4 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 Visual Studio Code を使用して、JavaScript の永続関数アプリを作成して発行しました。
 
 > [!div class="nextstepaction"]
-> [永続関数の一般的なパターンについて学習する](durable-functions-overview.md)
+> [永続関数の一般的なパターンについて学習する](durable-functions-concepts.md)
