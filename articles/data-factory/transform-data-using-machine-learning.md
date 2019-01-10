@@ -58,7 +58,7 @@ Azure Data Factory を使用すると、公開済みの [Azure Machine Learning]
                 "type": "SecureString",
                 "value": "api key"
             }
-        }
+        },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
