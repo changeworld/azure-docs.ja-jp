@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 11/30/2018
+ms.date: 01/05/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 00b096f59e70962b6883a8024744e8c91a5f9ae3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4bc963d09b9d01efdfad65b78ce9ce336798d375
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846897"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065343"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 
@@ -43,16 +43,15 @@ PIM では、Azure AD ロールに関する次のイベントが発生した際�
 
 - 特権ロールのアクティブ化が承認待ちのとき
 - 特権ロールのアクティブ化要求が完了したとき
-- 特権ロールが有資格として割り当てられたとき
 - Azure AD PIM が有効になったとき
 
 Azure AD ロールに対するこれらの電子メールをどのユーザーが受信するかは、ロール、イベント、通知設定によって決まります。
 
-| User | ロールのアクティブ化が承認待ち | ロールのアクティブ化要求が完了した | ロールが有資格として割り当てられた | PIM が有効になった |
-| --- | --- | --- | --- | --- |
-| 特権ロール管理者</br>(アクティブ化/有資格) | [はい]</br>(明示的な承認者が指定されていない場合のみ) | はい* | [はい] | [はい] |
-| セキュリティ管理者</br>(アクティブ化/有資格) | いいえ  | はい* | [はい] | [はい] |
-| グローバル管理者</br>(アクティブ化/有資格) | いいえ  | はい* | [はい] | [はい] |
+| User | ロールのアクティブ化が承認待ち | ロールのアクティブ化要求が完了した | PIM が有効になった |
+| --- | --- | --- | --- |
+| 特権ロール管理者</br>(アクティブ化/有資格) | [はい]</br>(明示的な承認者が指定されていない場合のみ) | はい* | [はい] |
+| セキュリティ管理者</br>(アクティブ化/有資格) | いいえ  | はい* | [はい] |
+| グローバル管理者</br>(アクティブ化/有資格) | いいえ  | はい* | [はい] |
 
 \* [**通知**設定](pim-how-to-change-default-settings.md#notifications)が**有資格**に設定されている場合。
 

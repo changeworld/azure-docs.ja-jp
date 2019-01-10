@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 6dcb5e445c9c294b81de0363f5462b8d21621616
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7f58e851ab7783e43cd6235b2169847cbf0ac5a4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135290"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036632"
 ---
 # <a name="create-and-manage-azure-cosmos-db-resources-by-using-powershell"></a>PowerShell を使用した Azure Cosmos DB リソースの作成と管理
 

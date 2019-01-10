@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 00ad005fff54940dbec468e0fde105e936579378
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 1fff32896ef794a26f223cae4ae491a2995d9acf
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411356"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191141"
 ---
 # <a name="working-with-javascript-language-integrated-query-api-with-azure-cosmos-db"></a>Azure Cosmos DB での JavaScript 言語統合クエリ API の操作
 
@@ -64,7 +64,7 @@ Azure Cosmos DB の SQL API を使用してクエリを発行することに加�
 
 Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述および使用する方法および概念について学習します。
 
-- [Javascript クエリ API を使用してストアド プロシージャおよびトリガーを記述する方法](how-to-write-javascript-query-api.md#)
+- [Javascript クエリ API を使用してストアド プロシージャおよびトリガーを記述する方法](how-to-write-javascript-query-api.md)
 - [Azure Cosmos DB のストアド プロシージャ、トリガー、およびユーザー定義関数の操作](stored-procedures-triggers-udfs.md)
 - [Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を使用する方法](how-to-use-stored-procedures-triggers-udfs.md)
 - [Azure Cosmos DB JavaScript サーバー側の API リファレンス](https://azure.github.io/azure-cosmosdb-js-server)

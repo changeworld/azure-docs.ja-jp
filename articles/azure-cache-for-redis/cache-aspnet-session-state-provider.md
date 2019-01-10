@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: c9b843bfd448c05cb2b11165e54d19db0a7ad60e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a7f3e23cd74baa2e1fdef178be8c5b213a3905ef
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021747"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105289"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET セッション状態プロバイダー
 Azure Cache for Redis には、セッション状態プロバイダーが用意されています。セッション状態プロバイダーを使用すると、セッション状態を SQL Server データベースにではなく Azure Cache for Redis でメモリ内に格納することができます。 キャッシュ セッション状態プロバイダーを使用するには、まず対象のキャッシュを構成し、Azure Cache for Redis Session State NuGet パッケージを使用して、キャッシュに必要な構成を ASP.NET アプリケーションに対して行います。
@@ -127,7 +127,7 @@ web.config の標準の InProc セッション状態プロバイダー セクシ
 * SQL Server のセッション状態プロバイダー: このプロバイダーでは、SQL Server 内にセッション状態が格納されます。 永続的なストレージにセッション状態を格納する場合は、このプロバイダーを使います。 Web アプリは拡張できますが、セッションに SQL Server を使うと、Web アプリのパフォーマンスに影響を与えます。 パフォーマンスを向上させるために、このプロバイダーを[インメモリ OLTP 構成](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/)で使用することもできます。
 * Azure Cache for Redis セッション状態プロバイダーなどの分散型メモリ内セッション状態プロバイダー: このプロバイダーを使用すると、両方の長所を活用できます。 Web アプリで、単純かつ高速で、スケーラブルなセッション状態プロバイダーを使うことができます。 このプロバイダーではセッション状態がキャッシュに格納されるため、一時的なネットワーク障害など、分散型メモリ内キャッシュとの通信時に関するすべての要素をアプリで考慮する必要があります。 キャッシュの使用に関するベスト プラクティスについては、Microsoft のパターンとプラクティスの「[Azure Cloud Application Design and Implementation Guidance (Azure クラウド アプリケーションの設計と実装のガイダンス)](https://github.com/mspnp/azure-guidance)」の「[キャッシュに関するガイダンス](../best-practices-caching.md)」を参照してください。
 
-セッション状態とその他のベスト プラクティスの詳細については、 [Web 開発に関するベスト プラクティス (Azure を使用した実際のクラウド アプリケーションの構築)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)に関するページを参照してください。
+セッション状態とその他のベスト プラクティスの詳細については、 [Web 開発に関するベスト プラクティス (Azure を使用した実際のクラウド アプリケーションの構築)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 「[Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)」を参照してください。

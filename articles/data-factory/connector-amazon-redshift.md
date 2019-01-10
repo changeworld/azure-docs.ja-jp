@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure Data Factory を使用して Amazon Redshift からのデータをコピーする | Microsoft Docs
 description: Azure Data Factory を使用して、Amazon Redshift からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 services: data-factory
@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 686b602828856e75300152c41bfe4c35cd6a8219
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7c790d03143eece9b0c827a033bdd46bfd1a8f45
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970163"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024367"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータをコピーする
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-amazon-redshift-connector.md)
 > * [現在のバージョン](connector-amazon-redshift.md)
 
@@ -55,11 +54,11 @@ Amazon Redshift のリンクされたサービスでは、次のプロパティ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**AmazonRedshift** | [はい] |
-| [サーバー] |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |[はい] |
+| server |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
 | port |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ (既定値は 5439 です) |
-| [データベース] |Amazon Redshift データベースの名前。 |[はい] |
-| username |データベースへのアクセスを持つユーザーの名前。 |[はい] |
-| password |ユーザー アカウントのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| database |Amazon Redshift データベースの名前。 |はい |
+| username |データベースへのアクセスを持つユーザーの名前。 |はい |
+| password |ユーザー アカウントのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**

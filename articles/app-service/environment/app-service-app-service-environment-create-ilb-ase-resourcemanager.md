@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: d9d94a7ece4b3758792cc0df8e013d14ac40c027
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 34278e02c62bda18a4b4d2f404417e8844dd5fc4
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276364"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156682"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法
 
@@ -42,7 +42,7 @@ Azure Resource Manager テンプレートの例と、それに関連するパラ
 
 *azuredeploy.parameters.json* ファイルのパラメーターのほとんどは、ILB ASE と、パブリック VIP にバインドされた ASE の両方の作成に共通するパラメーターです。  以下の一覧では、ILB ASE を作成するうえで特に注意が必要なパラメーターや、固有のパラメーターについて説明します。
 
-* *interalLoadBalancingMode*:ほとんどの場合、これは 3 に設定します。この設定により、ポート 80/443 の HTTP/HTTPS トラフィックと、ASE 上の FTP サービスによってリッスンされているコントロール/データ チャネル ポートは、ILB が割り当てられた仮想ネットワークの内部アドレスにバインドされます。  このプロパティを 2 に設定すると、FTP サービス関連のポート (コントロール チャネルとデータ チャネル両方のポート) のみが ILB アドレスにバインドされ、HTTP/HTTPS トラフィックにはパブリック VIP が使用されます。
+* *internalLoadBalancingMode*:ほとんどの場合、これは 3 に設定します。この設定により、ポート 80/443 の HTTP/HTTPS トラフィックと、ASE 上の FTP サービスによってリッスンされているコントロール/データ チャネル ポートは、ILB が割り当てられた仮想ネットワークの内部アドレスにバインドされます。  このプロパティを 2 に設定すると、FTP サービス関連のポート (コントロール チャネルとデータ チャネル両方のポート) のみが ILB アドレスにバインドされ、HTTP/HTTPS トラフィックにはパブリック VIP が使用されます。
 * *dnsSuffix*:このパラメーターでは、ASE に割り当てられる既定のルート ドメインを定義します。  Azure App Service のパブリック版では、すべての Web アプリの既定のルート ドメインは *azurewebsites.net*です。  しかし、ILB ASE はユーザーの仮想ネットワーク内部に位置することから、パブリック サービスの既定のルート ドメインを使用しても意味がありません。  ILB ASE には、会社の内部仮想ネットワーク内での使用に適した既定のルート ドメインを用意する必要があります。  たとえば、Contoso Corporation という架空の企業では、Contoso の仮想ネットワーク内でのみ解決およびアクセス可能になるよう設計されたアプリに対して、 *internal-contoso.com* という既定のルート ドメインが使用されます。 
 * *ipSslAddressCount*:ILB ASE には単一の ILB アドレスしかないため、このパラメーターは、*azuredeploy.json* ファイル内で既定値の 0 に自動設定されます。  ILB ASE 用に明示されている IP-SSL アドレスがないため、ILB ASE の IP-SSL アドレス プールはゼロに設定する必要があり、ゼロ以外に設定するとプロビジョニング エラーが発生します。 
 

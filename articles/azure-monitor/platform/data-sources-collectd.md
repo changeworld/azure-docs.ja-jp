@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor での CollectD からのデータの収集 | Microsoft Docs
-description: CollectD は、アプリケーションおよびシステム レベルの情報から定期的にデータを収集するオープン ソースの Linux デーモンです。  この記事では、Azure Monitor での CollectD からのデータの収集に関する情報を提供します。
+title: Log Analytics での CollectD からのデータの収集 | Microsoft Docs
+description: CollectD は、アプリケーションおよびシステム レベルの情報から定期的にデータを収集するオープン ソースの Linux デーモンです。  この記事では、Log Analytics での CollectD からのデータの収集に関する情報を提供します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 72f47794d8798c6d4b7bcc1c75c3c6d4dc41e6a3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3ccb307eb028170f2dc65fd7cf90edf3115ae9a7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434615"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102688"
 ---
-# <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor で Linux エージェント上の CollectD からデータを収集する
-[CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Azure Monitor での CollectD からのパフォーマンス データの収集に関する情報を提供します。
+# <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Log Analytics で Linux エージェント上の CollectD からデータを収集する
+[CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Log Analytics での CollectD からのパフォーマンス データの収集に関する情報を提供します。
 
 使用可能なプラグインの完全な一覧は、「[プラグインの表](https://collectd.org/wiki/index.php/Table_of_Plugins)」にあります。
 
@@ -57,7 +57,7 @@ CollectD 構成では、既定の `write_http` プラグインを使用して、
 > [!NOTE]
 > このポートは、必要に応じてカスタム定義のポートに構成できます。
 
-また、Linux 用 Log Analytics エージェントは、CollectD メトリックのためにポート 26000 をリッスンし、それらを Azure Monitor スキーマ メトリックに変換します。 Linux 用 Log Analytics エージェントの構成 `collectd.conf` を次に示します。
+また、Linux 用 Log Analytics エージェントは、CollectD メトリックのためにポート 26000 をリッスンし、それらを Log Analytics スキーマ メトリックに変換します。 Linux 用 Log Analytics エージェントの構成 `collectd.conf` を次に示します。
 
     <source>
       type http
@@ -71,12 +71,12 @@ CollectD 構成では、既定の `write_http` プラグインを使用して、
 
 
 ## <a name="versions-supported"></a>サポートされているバージョン
-- Azure Monitor は現在、CollectD バージョン 4.8 以降をサポートしています。
+- Log Analytics は現在、CollectD バージョン 4.8 以降をサポートしています。
 - CollectD メトリックの収集には Linux 用 Log Analytics エージェント v1.1.0-217 以降が必要です。
 
 
 ## <a name="configuration"></a>構成
-Azure Monitor での CollectD データの収集を構成するための基本的な手順を次に示します。
+Log Analytics での CollectD データの収集を構成するための基本的な手順を次に示します。
 
 1. write_http プラグインを使用してデータを Linux 用 Log Analytics エージェントに送信するように CollectD を構成します。  
 2. 適切なポート上で CollectD データをリッスンするように Linux 用 Log Analytics エージェントを構成します。
@@ -107,10 +107,10 @@ Azure Monitor での CollectD データの収集を構成するための基本�
 
     sudo service collectd restart  sudo /opt/microsoft/omsagent/bin/service_control restart
 
-## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>CollectD メトリックから Azure Monitor スキーマへの変換
+## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>CollectD メトリックから Log Analytics スキーマへの変換
 既に Linux 用 Log Analytics エージェントによって収集されたインフラストラクチャ メトリックと、CollectD によって収集された新しいメトリックの間で使い慣れたモデルを維持するために、次のスキーマ マッピングが使用されます。
 
-| CollectD メトリックのフィールド | Azure Monitor のフィールド |
+| CollectD メトリックのフィールド | Log Analytics のフィールド |
 |:--|:--|
 | host | Computer |
 | プラグイン | なし |

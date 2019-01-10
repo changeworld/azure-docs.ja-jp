@@ -11,19 +11,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 1/08/2019
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 67e1e22bc5569e7d6e20332ee86ffe4c7dd6a354
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 6d28eea434b081602f0e2455b22fcc58022a800e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343845"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117115"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Azure Stack でテナントの登録を管理する
 
-*適用対象: Azure Stack 統合システム*
+*適用対象:Azure Stack 統合システム*
 
 この記事では、登録操作について詳しく説明します。 これらの操作を使用して次のことができます。
 - テナントの登録を管理する
@@ -59,7 +59,7 @@ Azure Stack と API プロファイルの詳細については、「[Azure Stack
 
 ### <a name="powershell"></a>PowerShell
 
-New-AzureRmResource コマンドレットを使用して、登録リソースを更新します。 初期登録に使用したアカウントを使用して Azure (`Add-AzureRmAccount`) にサインインします。 テナントの追加方法の例を次に示します。
+New-AzureRmResource コマンドレットを使用して、登録リソースを更新します。 テナントの追加方法の例を次に示します。
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -67,11 +67,11 @@ New-AzureRmResource コマンドレットを使用して、登録リソースを
 
 ### <a name="api-call"></a>API 呼び出し
 
-**操作**: PUT  
+**Operation**:PUT  
 **要求 URI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
-**応答**: 201 Created  
-**応答本文**: 空  
+**応答**:201 Created  
+**応答本文**:Empty  
 
 ## <a name="list-all-registered-tenants"></a>すべての登録済みテナントの一覧
 
@@ -100,11 +100,11 @@ New-AzureRmResource コマンドレットを使用して、登録リソースを
 
 GET 操作を使用してすべてのテナント マッピングの一覧を取得することができます
 
-**操作**: GET  
+**Operation**:GET  
 **要求 URI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions?  
 api-version=2017-06-01 HTTP/1.1`  
-**応答**: 200  
+**応答**:200  
 **応答本文**: 
 
 ```JSON  
@@ -149,12 +149,12 @@ api-version=2017-06-01 HTTP/1.1`
 
 DELETE 操作を使用して、テナントのマッピングを削除することができます。
 
-**操作**: DELETE  
+**Operation**:削除  
 **要求 URI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
-**応答**: 204 No Content  
-**応答本文**: 空
+**応答**:204 No Content  
+**応答本文**:Empty
 
 ## <a name="next-steps"></a>次の手順
 

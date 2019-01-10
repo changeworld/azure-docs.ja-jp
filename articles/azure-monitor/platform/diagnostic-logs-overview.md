@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 50eb70799506ecd5203ff4fd0c2649726658b3e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 08ad8964fee2d94677832fa664ed2e18cb9f772c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550968"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104983"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
@@ -83,7 +83,7 @@ ms.locfileid: "53550968"
 
 リソースの作成後に Azure Portal でリソース診断ログの収集を有効にするには、特定のリソースに移動するか、Azure Monitor に移動します。 Azure Monitor でこれを有効にする手順は次のとおりです。
 
-1. [Azure Portal](http://portal.azure.com) で、Azure Monitor に移動し、**[診断設定]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) で、Azure Monitor に移動し、**[診断設定]** をクリックします。
 
     ![Azure Monitor の [監視] セクション](media/diagnostic-logs-overview/diagnostic-settings-blade.png)
 

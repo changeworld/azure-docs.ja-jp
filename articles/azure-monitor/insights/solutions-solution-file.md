@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae310ac35afed06881eb85fabc92d68e256ca5e7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6511eb7a4651f0b95b7821e1959ba7e4130c2d6e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189780"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105799"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
@@ -42,7 +42,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 管理ソリューション ファイルの基本的な構造は、次のような [Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md#template-format)と同じです。  以下の各セクションでは、最上位レベルの要素と、ソリューションにおけるその内容について説明します。  
 
     {
-       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
        "contentVersion": "1.0",
        "parameters": {  },
        "variables": {  },
@@ -85,12 +85,12 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 | パラメーター | type | 説明 |
 |:--- |:--- |:--- |
-| accountName |string |Azure automation アカウント名。 |
-| pricingTier |string |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
-| regionId |string |Azure Automation アカウントのリージョン。 |
-| solutionName |string |ソリューションの名前。  クイックスタート テンプレートを使用してソリューションをデプロイする場合は、solutionName をパラメーターとして定義し、ユーザーに指定を求める代わりに文字列を定義できるようにする必要があります。 |
-| workspaceName |string |Log Analytics ワークスペース名。 |
-| workspaceRegionId |string |Log Analytics ワークスペースのリージョン。 |
+| accountName |文字列 |Azure automation アカウント名。 |
+| pricingTier |文字列 |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
+| regionId |文字列 |Azure Automation アカウントのリージョン。 |
+| solutionName |文字列 |ソリューションの名前。  クイックスタート テンプレートを使用してソリューションをデプロイする場合は、solutionName をパラメーターとして定義し、ユーザーに指定を求める代わりに文字列を定義できるようにする必要があります。 |
+| workspaceName |文字列 |Log Analytics ワークスペース名。 |
+| workspaceRegionId |文字列 |Log Analytics ワークスペースのリージョン。 |
 
 
 次に、コピーして、ソリューション ファイルに貼り付けることができる標準パラメーターの構造を示します。  

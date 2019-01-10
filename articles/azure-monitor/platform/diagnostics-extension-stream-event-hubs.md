@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: bb240437870ce5457e40e8dcc3b31f3909b546fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 200f36ee5312c92bed7dc9a7ffa29a0ee4993c43
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607134"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103368"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Event Hubs を利用してホット パスの Azure 診断データをストリーム配信する
 Azure 診断では柔軟な方法でクラウド サービスの仮想マシン (VM) からメトリックとログを収集し、その結果を Azure Storage に転送できます。 2016 年 3 月 (SDK 2.9) の期間から、診断をカスタムのデータ ソースに送信し、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) を利用してホット パス データを数秒で転送できるようになりました。
@@ -316,7 +316,7 @@ namespace EventHubListener
     最初に、イベント ハブと構成情報が前の説明に従っていることを確認します。 デプロイの更新で **PrivateConfig** がリセットされることがあります。 推奨される修正方法は、 *.wadcfgx* の変更をすべてプロジェクトで行い、完全なアプリケーション更新をプッシュすることです。 それができない場合は、SAS キーを含む完全な **PrivateConfig** が診断の更新によりプッシュされるようにします。  
 * 推奨事項を試してもイベント ハブが正常に動作しない。
 
-    Azure 診断自体のログとエラーが含まれる Azure Storage テーブルを確認してください。**WADDiagnosticInfrastructureLogsTable** です。 1 つの方法は、 [Azure ストレージ エクスプローラー](http://www.storageexplorer.com) などのツールを利用してこのストレージ アカウントに接続して、このテーブルを表示し、過去 24 時間の TimeStamp のクエリを追加することです。 ツールを使用して .csv ファイルをエクスポートし、Microsoft Excel などのアプリケーションで開くことができます。 Excel を使用すると、 **EventHubs**のようなコーリングカード文字列を簡単に検索して、報告されたエラーを確認できます。  
+    Azure 診断自体のログとエラーが含まれる Azure Storage テーブルを確認してください。**WADDiagnosticInfrastructureLogsTable** です。 1 つの方法は、 [Azure ストレージ エクスプローラー](https://www.storageexplorer.com) などのツールを利用してこのストレージ アカウントに接続して、このテーブルを表示し、過去 24 時間の TimeStamp のクエリを追加することです。 ツールを使用して .csv ファイルをエクスポートし、Microsoft Excel などのアプリケーションで開くことができます。 Excel を使用すると、 **EventHubs**のようなコーリングカード文字列を簡単に検索して、報告されたエラーを確認できます。  
 
 ## <a name="next-steps"></a>次の手順
 •    [Event Hubs の詳細を確認します。](https://azure.microsoft.com/services/event-hubs/)

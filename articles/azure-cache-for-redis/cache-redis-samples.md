@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: c9a2d569641ab0f8f6aa1d7234da1d3cbb0ab147
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e14e76be50fc71738779e0196b2034ca4f8e0097
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744991"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103883"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Azure Cache for Redis のサンプル
 このトピックでは、キャッシュへの接続、キャッシュに対するデータの読み取りと書き込み、ASP.NET の Azure Cache for Redis プロバイダーの使用などのシナリオを対象とする、Azure Cache for Redis のサンプルの一覧を示します。 サンプルの一部はダウンロード可能なプロジェクトです。ステップ バイ ステップ ガイダンスが用意されているサンプルやコード スニペットが含まれているサンプルもありますが、ダウンロード可能なプロジェクトにはリンクしていません。
@@ -47,7 +47,7 @@ ms.locfileid: "53744991"
 「[キャッシュ内で .NET オブジェクトを使用する](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)」では、.NET オブジェクトをシリアル化し、それらのオブジェクトを Azure Cache for Redis インスタンスとの間で読み書きできるようにする方法の 1 つを示しています。 
 
 ## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>ASP.NET SignalR のスケールアウト バックプレーンとしての Azure Cache for Redis の使用
-「[ASP.NET SignalR のスケール アウト バックプレーンとしての Azure Cache for Redis の使用](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane)」サンプルでは、SignalR のバックプレーンとして Azure Cache for Redis を使用する方法を示しています。 バックプレーンの詳細については、「 [Redis を使用した SignalR のスケールアウト](http://www.asp.net/signalr/overview/performance/scaleout-with-redis)」を参照してください。
+「[ASP.NET SignalR のスケール アウト バックプレーンとしての Azure Cache for Redis の使用](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane)」サンプルでは、SignalR のバックプレーンとして Azure Cache for Redis を使用する方法を示しています。 バックプレーンの詳細については、「 [Redis を使用した SignalR のスケールアウト](https://www.asp.net/signalr/overview/performance/scaleout-with-redis)」を参照してください。
 
 ## <a name="azure-cache-for-redis-customer-query-sample"></a>Azure Cache for Redis の顧客クエリのサンプル
 このサンプルでは、キャッシュ内のデータへのアクセスと永続ストレージ内のデータへのアクセスとのパフォーマンスを比較します。 このサンプルには 2 つのプロジェクトがあります。

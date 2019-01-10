@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 33f8547721f499ed7b9a81088681fc2ade2d030c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 47abb191383bd1ec1000c9fd1e0803a7d900c9bf
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723537"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117641"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Azure Monitor で Log Analytics データを分析する
 
@@ -95,7 +95,7 @@ union Update, workspace("contoso-workspace").Update
 ## <a name="how-log-analytics-data-is-organized"></a>Log Analytics データの編成方法
 クエリを作成する場合は、最初に、どのテーブルに目的のデータが含まれるかを確認します。 種類が異なるデータは、各 [Log Analytics ワークスペース](../../azure-monitor/learn/quick-create-workspace.md)内で専用のテーブルにそれぞれ分けられます。  各種データ ソースのドキュメントには、作成されたデータ型の名前と、各プロパティの説明が含まれています。  多くのクエリでは、1 つのテーブルのデータのみが必要ですが、複数のテーブルのデータを含めるためにさまざまなオプションを使用するクエリもあります。
 
-要求、例外、トレース、および Log Analytics での使用状況などのアプリケーション データは [Application Insights](../../application-insights/app-insights-overview.md) によって格納されますが、このデータはその他のログ データとは別のパーティションに格納されます。 このデータにアクセスするには、同じクエリ言語を使用します。ただし、アクセスするには [Application Insights コンソール](../../azure-monitor/app/analytics.md)または [Application Insights REST API](https://dev.applicationinsights.io/) を使用する必要があります。 [クロスリソース クエリ](../../azure-monitor/log-query/cross-workspace-query.md)を使用すれば、Application Insights のデータを Log Analytics 内の他のデータと結合することができます。
+要求、例外、トレース、および Log Analytics での使用状況などのアプリケーション データは [Application Insights](../../azure-monitor/app/app-insights-overview.md) によって格納されますが、このデータはその他のログ データとは別のパーティションに格納されます。 このデータにアクセスするには、同じクエリ言語を使用します。ただし、アクセスするには [Application Insights コンソール](../../azure-monitor/app/analytics.md)または [Application Insights REST API](https://dev.applicationinsights.io/) を使用する必要があります。 [クロスリソース クエリ](../../azure-monitor/log-query/cross-workspace-query.md)を使用すれば、Application Insights のデータを Log Analytics 内の他のデータと結合することができます。
 
 
 ![テーブル](media/log-query-overview/queries-tables.png)

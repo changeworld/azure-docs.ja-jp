@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: fafa680f877060f1e7d96c60f52e3033eeb38553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190647"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157175"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
@@ -101,7 +101,7 @@ R を使って、データを確認し、基本的な機械学習を実行して
 
     data$spam <- as.factor(data$spam)
 
-探索式の分析を行うには、 [ggplot2](http://ggplot2.org/) パッケージ (VM に既にインストールされている R の一般的なグラフ作成ライブラリ) を使用します。 先ほど表示した概要データには、感嘆符文字の出現頻度に関する概要統計情報があります。 次のコマンドを使って、それらの頻度をプロットしてみましょう。
+探索式の分析を行うには、 [ggplot2](https://ggplot2.tidyverse.org/) パッケージ (VM に既にインストールされている R の一般的なグラフ作成ライブラリ) を使用します。 先ほど表示した概要データには、感嘆符文字の出現頻度に関する概要統計情報があります。 次のコマンドを使って、それらの頻度をプロットしてみましょう。
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)

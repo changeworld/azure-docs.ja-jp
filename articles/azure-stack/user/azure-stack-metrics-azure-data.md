@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.openlocfilehash: 45c06afd0d298c467d8f0a3a42b68bf1948c6ed3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: cfeb1ce7791db463dc0ac39376baa8228dd96daf
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726748"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106292"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Azure Stack 上の Azure Monitor
 
@@ -126,7 +126,7 @@ Azure Monitor REST API、クロスプラットフォーム コマンドライン
  - [PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
  - [クロスプラットフォーム コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
  - [REST API](https://docs.microsoft.com/rest/api/monitor)
- - [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
+ - [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
 ## <a name="next-steps"></a>次の手順
 

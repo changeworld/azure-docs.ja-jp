@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 289818f0377fdc28b116a8c154a919dc02ed8052
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: aac5010ca6b0ed958a849bf203f1d2f80bcdb81c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000081"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119824"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
-アプリケーションに数行のコードを挿入して、ユーザーの行動を調べたり、問題の診断に役立つ情報を取得したりすることができます。 デバイスとデスクトップ アプリケーション、Web クライアント、Web サーバーからテレメトリを送信できます。 [Azure Application Insights](../../application-insights/app-insights-overview.md) コア テレメトリ API を使用すると、カスタムのイベントやメトリック、独自バージョンの標準テレメトリを送信できます。 この API は、Application Insights の標準のデータ コレクターで使用される API と同じものです。
+アプリケーションに数行のコードを挿入して、ユーザーの行動を調べたり、問題の診断に役立つ情報を取得したりすることができます。 デバイスとデスクトップ アプリケーション、Web クライアント、Web サーバーからテレメトリを送信できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) コア テレメトリ API を使用すると、カスタムのイベントやメトリック、独自バージョンの標準テレメトリを送信できます。 この API は、Application Insights の標準のデータ コレクターで使用される API と同じものです。
 
 > [!NOTE]
 > `TrackMetric()` は、.NET ベースのアプリケーションのためにカスタム メトリックを送信する場合に推奨される方法ではなくなりました。 Application Insights .NET SDK の[バージョン 2.60 beta 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) で、新しいメソッドの [`TelemetryClient.GetMetric()`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) が導入されました。 Application Insights .NET SDK [バージョン 2.72](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) の時点で、この機能は安定したリリースの一部になりました。
@@ -153,7 +153,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 テレメトリは、[Application Insights Analytics](analytics.md) の `customEvents` テーブルにあります。 各行は、アプリでの `trackEvent(..)` に対する呼び出しを表します。
 
-[サンプリング](../../application-insights/app-insights-sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、`customEvents | summarize sum(itemCount)` などのコードを使用する必要があります。
+[サンプリング](../../azure-monitor/app/sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、`customEvents | summarize sum(itemCount)` などのコードを使用する必要があります。
 
 ## <a name="getmetric"></a>GetMetric
 
@@ -440,7 +440,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 [Application Insights Analytics](analytics.md) で、要求は `requests` テーブルに表示されます。
 
-[サンプリング](../../application-insights/app-insights-sampling.md) を操作中の場合は、itemCount プロパティに 1 より大きい値が表示されます。 たとえば itemCount==10 は trackRequest() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 要求の正しい数と要求名別にセグメント化された平均所要時間を取得するには、次のようなコードを使用します。
+[サンプリング](../../azure-monitor/app/sampling.md) を操作中の場合は、itemCount プロパティに 1 より大きい値が表示されます。 たとえば itemCount==10 は trackRequest() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 要求の正しい数と要求名別にセグメント化された平均所要時間を取得するには、次のようなコードを使用します。
 
 ```kusto
 requests
@@ -522,7 +522,7 @@ SDK が多数の例外を自動的にキャッチするため、常に TrackExce
 
 [Application Insights Analytics](analytics.md) で、例外は `exceptions` テーブルに表示されます。
 
-[サンプリング](../../application-insights/app-insights-sampling.md)が実行中の場合は、`itemCount` プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackException() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 例外の種類別にセグメント化された例外の正しい数を取得するには、次のようなコードを使用します。
+[サンプリング](../../azure-monitor/app/sampling.md)が実行中の場合は、`itemCount` プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackException() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 例外の種類別にセグメント化された例外の正しい数を取得するには、次のようなコードを使用します。
 
 ```kusto
 exceptions
@@ -603,7 +603,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 
 [Application Insights Analytics](analytics.md) で、TrackTrace への呼び出しは `traces` テーブルに表示されます。
 
-[サンプリング](../../application-insights/app-insights-sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば、itemCount==10 は、サンプリング プロセスで転送されたのは `trackTrace()` への 10 回の呼び出しのうち 1 回だけであることを意味します。 トレース呼び出しの正確な数を取得するには、`traces | summarize sum(itemCount)` などのコードを使用する必要があります。
+[サンプリング](../../azure-monitor/app/sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば、itemCount==10 は、サンプリング プロセスで転送されたのは `trackTrace()` への 10 回の呼び出しのうち 1 回だけであることを意味します。 トレース呼び出しの正確な数を取得するには、`traces | summarize sum(itemCount)` などのコードを使用する必要があります。
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -678,7 +678,7 @@ C# の標準の依存関係追跡モジュールを無効にするには、[Appl
 
 [Application Insights Analytics](analytics.md) で、trackDependency 呼び出しは `dependencies` テーブルに表示されます。
 
-[サンプリング](../../application-insights/app-insights-sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackDependency() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 ターゲット コンポーネント別にセグメント化された依存関係の正しい数を取得するには、次のようなコードを使用します。
+[サンプリング](../../azure-monitor/app/sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackDependency() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 ターゲット コンポーネント別にセグメント化された依存関係の正しい数を取得するには、次のようなコードを使用します。
 
 ```kusto
 dependencies
@@ -897,7 +897,7 @@ requests
 次のことに注意してください。
 
 * customDimensions または customMeasurements JSON から値を抽出する場合、これは動的な型を持つため、`tostring` または `todouble` にキャストする必要があります。
-* [サンプリング](../../application-insights/app-insights-sampling.md)の可能性について考慮するには、`count()` ではなく、`sum(itemCount)` を使用する必要があります。
+* [サンプリング](../../azure-monitor/app/sampling.md)の可能性について考慮するには、`count()` ではなく、`sum(itemCount)` を使用する必要があります。
 
 ## <a name="timed"></a> タイミング イベント
 
@@ -1076,7 +1076,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 ## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
-開発、テスト、運用の各環境のテレメトリが混じらないようにするために、環境に応じて[個別の Application Insights リソースを作成](../../application-insights/app-insights-create-new-resource.md)し、それぞれのキーを変更できます。
+開発、テスト、運用の各環境のテレメトリが混じらないようにするために、環境に応じて[個別の Application Insights リソースを作成](../../azure-monitor/app/create-new-resource.md )し、それぞれのキーを変更できます。
 
 インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
@@ -1141,7 +1141,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-データ速度の上限に達するのを回避するには、[サンプリング](../../application-insights/app-insights-sampling.md)を使用します。
+データ速度の上限に達するのを回避するには、[サンプリング](../../azure-monitor/app/sampling.md)を使用します。
 
 データの保持期間を確認する方法については、[データの保持とプライバシー](../../azure-monitor/app/data-retention-privacy.md)に関するページを参照してください。
 
@@ -1170,9 +1170,9 @@ telemetry.Context.Operation.Name = "MyOperationName";
     なし。 try catch 句で例外をラップする必要はありません。 SDK で問題が発生すると、デバッグ コンソール出力のメッセージが記録されます。メッセージがスルーされる場合は、診断検索にも記録されます。
 * *ポータルからデータを取得する REST API はありますか。*
 
-    はい、[データ アクセス API](https://dev.applicationinsights.io/) があります。 データを抽出する別の方法としては、[Analytics から Power BI へのエクスポート](../../application-insights/app-insights-export-power-bi.md)や[連続エクスポート](../../azure-monitor/app/export-telemetry.md)などがあります。
+    はい、[データ アクセス API](https://dev.applicationinsights.io/) があります。 データを抽出する別の方法としては、[Analytics から Power BI へのエクスポート](../../azure-monitor/app/export-power-bi.md )や[連続エクスポート](../../azure-monitor/app/export-telemetry.md)などがあります。
 
 ## <a name="next"></a>次のステップ
 
 * [イベントおよびログを検索する](../../azure-monitor/app/diagnostic-search.md)
-* [トラブルシューティング](../../application-insights/app-insights-troubleshoot-faq.md)
+* [トラブルシューティング](../../azure-monitor/app/troubleshoot-faq.md)

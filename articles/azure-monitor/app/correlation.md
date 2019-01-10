@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 946d0895ff25509a0e35695fe27c783b3c50784b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a6937b5b6b3b85dd51d80a928de02a00c361cc0e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999579"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117607"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
-マイクロ サービスの世界では、すべての論理操作は、さまざまなサービス コンポーネントで作業を実行する必要があります。 これらの各コンポーネントは、[Application Insights](../../application-insights/app-insights-overview.md) によって個別に監視できます。 Web アプリ コンポーネントは、ユーザーの資格情報を検証するためにプロバイダー コンポーネントと通信し、視覚化するためのデータを取得するために API コンポーネントと通信します。 API コンポーネントは、他のサービスからデータのクエリを行ってキャッシュ プロバイダー コンポーネントを使用でき、この呼び出しについて課金コンポーネントに通知できます。 Application Insights は、分散しているテレメトリの相関付けをサポートします。 これにより、エラーやパフォーマンス低下を発生させているコンポーネントを検出することができます。
+マイクロ サービスの世界では、すべての論理操作は、さまざまなサービス コンポーネントで作業を実行する必要があります。 これらの各コンポーネントは、[Application Insights](../../azure-monitor/app/app-insights-overview.md) によって個別に監視できます。 Web アプリ コンポーネントは、ユーザーの資格情報を検証するためにプロバイダー コンポーネントと通信し、視覚化するためのデータを取得するために API コンポーネントと通信します。 API コンポーネントは、他のサービスからデータのクエリを行ってキャッシュ プロバイダー コンポーネントを使用でき、この呼び出しについて課金コンポーネントに通知できます。 Application Insights は、分散しているテレメトリの相関付けをサポートします。 これにより、エラーやパフォーマンス低下を発生させているコンポーネントを検出することができます。
 
 この記事では、複数のコンポーネントから送信されるテレメトリを関連付けるために Application Insights によって使用されるデータ モデルについて説明します。 コンテキスト反映技法とプロトコルの説明があります。 また、さまざまな言語とプラットフォームにおける相関付けの概念の実装も扱います。
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 61cefe762b639dcc58c2e10fc845dd9729cb2cb2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4fcb692d7189c84e32f55995538ffc692cb67dd6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078239"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064714"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Azure Active Directory Premium P2 ライセンス機能のチェックリスト
 
@@ -84,7 +84,7 @@ ms.locfileid: "53078239"
 - ユーザーのライフサイクルを総合的に管理する
    - Azure AD が ID ライフサイクルを管理する方法を備えている
    - 未承認のアクセスを防ぐために、従業員のアカウント ライフサイクルから手動の手順を削除する
-      - 適切なソース (人事システム) からの ID を Azure AD に同期する。 サポートされている人事システムにリンクする
+      - 適切なソース (人事システム) からの ID を Azure AD に同期する。
       - [動的グループを使用して、部門、役職、リージョン、その他の属性など、人事 (または、信頼できるソース) からの属性に基づいてグループにユーザーを自動的に割り当てる](../users-groups-roles/groups-dynamic-membership.md)
       - [グループベース アクセス管理のプロビジョニングを使用して、SaaS アプリケーションにユーザーを自動的にプロビジョニングする](../manage-apps/what-is-access-management.md)
 

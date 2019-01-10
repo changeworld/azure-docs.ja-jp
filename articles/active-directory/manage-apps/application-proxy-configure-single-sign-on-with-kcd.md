@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 565e7379ad12222e459bd61ed50fa38f9f9b12fc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 26b0bd3c6bec2427cd95deb05cc19c4dd3b22aa3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136248"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159538"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
 
@@ -66,13 +66,15 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 1. ドメイン間の KCD を使用するための前提条件の一覧については、「 [ドメイン間の Kerberos の制約付き委任](https://technet.microsoft.com/library/hh831477.aspx)」を参照してください。
 2. コネクタ サーバーの `principalsallowedtodelegateto` プロパティを使って、アプリケーション プロキシを有効にし、コネクタ サーバーを代行します。 アプリケーション サーバーは `sharepointserviceaccount`、委任サーバーは `connectormachineaccount` です。 Windows 2012 R2 では、例としてこのコードを使います。
 
-        $connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+```powershell
+$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
 
-        Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-        Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+```
 
-Sharepointserviceaccount には、SPS コンピューター アカウントか、SPS アプリ プールの実行に使用されているサービス アカウントを指定できます。
+`sharepointserviceaccount` には、SPS コンピューター アカウントか、SPS アプリ プールの実行に使用されているサービス アカウントを指定できます。
 
 ## <a name="configure-single-sign-on"></a>Configure single sign-on 
 1. 「 [アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)」で説明されている手順に従って、アプリケーションを発行します。 **[事前認証方法]** で **[Azure Active Directory]** が選択されていることを確認してください。

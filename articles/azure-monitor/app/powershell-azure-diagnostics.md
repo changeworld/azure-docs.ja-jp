@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/17/2015
 ms.author: mbullwin
-ms.openlocfilehash: 6016d8a8b5a7b50561e703a29bdd76ef89770463
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: f929c58d38cbae4ba5f8aea73a2acf30d8bbe7d2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004890"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121432"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Azure Web アプリのための PowerShell を使用した Application Insights の設定
-[Microsoft Azure](https://azure.com) は、[Azure Application Insights](../../application-insights/app-insights-overview.md) に [Azure 診断を送信するように構成](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
+[Microsoft Azure](https://azure.com) は、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) に [Azure 診断を送信するように構成](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
 
 ## <a name="azure-template"></a>Azure テンプレート
 Web アプリが Azure に存在するとき、Azure Resource Manager テンプレートを使用してリソースを作成する場合、resources ノードに次のコードを追加することで Application Insights を構成できます。

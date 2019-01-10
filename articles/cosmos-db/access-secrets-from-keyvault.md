@@ -1,19 +1,20 @@
 ---
 title: Key Vault を使用し Azure Cosmos DB キーを格納してアクセスする
 description: Azure Key Vault を使用し、Azure Cosmos DB の接続文字列、キー、URI を格納し、アクセスします。
-services: cosmos-db
 author: rafats
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
-ms.openlocfilehash: f5d494006ebafab37bd10591ad02671e192d73e8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: c80f555a3789a12420cef0dc91ef7accc6a4388d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837394"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036190"
 ---
 # <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>Key Vault を使用し Azure Cosmos DB キーを格納してアクセスする
 

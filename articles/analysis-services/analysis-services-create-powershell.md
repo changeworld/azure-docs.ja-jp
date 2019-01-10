@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3971311bff90d0b005acd516336e13766028cccf
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4b5b00da1c920d249283625e4970510ea00bafc8
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001557"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190746"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>クイック スタート: サーバーの作成 - PowerShell
 

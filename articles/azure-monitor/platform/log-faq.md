@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d062108dbb27095e978b4973cb7bc5172a4d814
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a2213ac9b31623aed18855ce87e7e00870b05247
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186278"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107229"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
 この Microsoft FAQ は、Microsoft Azure の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -219,7 +219,7 @@ A. 無料プランには、1 つのワークスペースにつき 1 日 500 MB �
 
 Log Analytics エージェントは、小さなフットプリントを保証するように設計されました。 データ量は、有効にしているソリューションによって異なります。 [[使用状況]](../../azure-monitor/platform/data-usage.md) ページでデータ量に関する詳細情報を見つけたり、ソリューションごとの内訳を確認したりできます。
 
-詳しくは、OMS エージェントのリソース使用率 (フットプリント) の評価結果が示されている[お客様のブログ](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)をご覧ください。
+詳しくは、OMS エージェントのリソース使用率 (フットプリント) の評価結果が示されている[お客様のブログ](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)をご覧ください。
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>Q. データを Log Analytics に送信するときに、どれくらいのネットワーク帯域幅が Microsoft Management Agent (MMA) によって使用されますか?
 

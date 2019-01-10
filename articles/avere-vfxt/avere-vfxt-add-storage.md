@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001965"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190852"
 ---
 # <a name="configure-storage"></a>ストレージの構成
 
@@ -38,7 +38,7 @@ ms.locfileid: "53001965"
 
 ## <a name="create-a-core-filer"></a>コア ファイラーを作成する
 
-"コア ファイラー" とは、バックエンド ストレージ システムを表す vFXT の用語です。 ストレージは、NetApp や Isilon などのハードウェア NAS アプライアンスでも、クラウド オブジェクト ストアでもかまいません。 コア ファイラーについて詳しくは、[Avere のクラスター設定ガイド](http://library.averesystems.com/ops_guide/4_7/settings_overview.html#managing-core-filers)をご覧ください。
+"コア ファイラー" とは、バックエンド ストレージ システムを表す vFXT の用語です。 ストレージは、NetApp や Isilon などのハードウェア NAS アプライアンスでも、クラウド オブジェクト ストアでもかまいません。 コア ファイラーについて詳しくは、[Avere のクラスター設定ガイド](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)をご覧ください。
 
 コア ファイラーを追加するには、コア ファイラーの 2 つの主な種類のいずれかを選択します。
 
@@ -70,7 +70,7 @@ NAS コア ファイラーを追加する手順を次に示します。
   
    * **[Next]\(次へ\)** をクリックして、キャッシュ ポリシーを選択します。 
    * **[Add Filer]\(ファイラーの追加\)** をクリックします。
-   * 詳しくは、Avere クラスター設定ガイドの「[Adding a new NAS core filer](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html)」(新しい NAS コア ファイラーの追加) をご覧ください。
+   * 詳しくは、Avere クラスター設定ガイドの「[Adding a new NAS core filer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html)」(新しい NAS コア ファイラーの追加) をご覧ください。
 
 次に、「[ジャンクションを作成する](#create-a-junction)」に進みます。  
 
@@ -156,7 +156,7 @@ Blob Storage をクラスターに追加するには、次のタスクが必要�
    * 必要に応じて、**[Encryption type]\(暗号化の種類\)** を **[None]\(なし\)** に設定します。  Azure Storage は既定で暗号化されます。
    * **[Add Filer]\(ファイラーの追加\)** をクリックします。
 
-  詳しくは、Avere クラスター構成ガイドの「[Adding a new cloud core filer](<http://library.averesystems.com/ops_guide/4_7/new_core_filer_cloud.html>)」(新しいクラウド コア ファイラーの追加) をご覧ください。 
+  詳しくは、Avere クラスター構成ガイドの「[Adding a new cloud core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>)」(新しいクラウド コア ファイラーの追加) をご覧ください。 
 
 ページが更新されるか、または手動でページを更新することもでき、新しいコア ファイラーが表示されます。
 
@@ -168,7 +168,7 @@ Blob Storage をクラスターに追加するには、次のタスクが必要�
 
 たとえば、`/avere/files` を作成して、NetApp コア ファイラーの `/vol0/data` エクスポートと `/project/resources` サブディレクトリにマップできます。
 
-ジャンクションについて詳しくは、[Avere クラスター構成ガイドの名前空間セクション](http://library.averesystems.com/ops_guide/4_7/gui_namespace.html)をご覧ください。
+ジャンクションについて詳しくは、[Avere クラスター構成ガイドの名前空間セクション](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html)をご覧ください。
 
 Avere Control Panel 設定インターフェイスで次の手順のようにします。
 

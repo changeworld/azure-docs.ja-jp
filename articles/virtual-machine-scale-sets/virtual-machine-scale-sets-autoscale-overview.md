@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18be454c93c32e0902a55a08748045c26d649ce7
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: a5386e56bffd9a9789fe431aae8ed13df8ffae13
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322041"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117437"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットでの自動スケールの概要
 Azure 仮想マシン スケール セットは、アプリケーションを実行する VM インスタンスの数を自動的に増減させることができます。 この自動化された柔軟性のある動作により、アプリケーションを監視してパフォーマンスを最適化する管理上の負担を減らすことができます。 肯定的なカスタマー エクスペリエンスを得られる、許容されたパフォーマンスを定義するルールを作成します。 定義したしきい値に達すると、自動スケール ルールが実行されてスケール セットの容量が調整されます。 また、決まった時間にスケール セットの容量を自動的に増減させるイベントのスケジュールを設定することもできます。 この記事では、使用できるパフォーマンス メトリックの概要と、自動スケールで実行できるアクションについて説明します。
@@ -122,7 +122,7 @@ Azure 診断拡張機能を使用するには、VM インスタンスで使用�
 ## <a name="application-level-metrics-with-app-insights"></a>App Insights におけるアプリケーションレベルのメトリック
 Application Insights を使用して、アプリケーションのパフォーマンスをより視覚化できます。 アプリケーションに、アプリを監視して Azure に利用統計情報を送信する、小さなインストルメンテーション パッケージをインストールします。 アプリケーションの応答時間、ページの読み込みパフォーマンス、セッション数などのメトリックを監視できます。 これらのアプリケーション メトリックを使用して、お客様のエクスペリエンスに影響する可能性があるアクションにつながるインサイトに基づき、細かく深いレベルでルールをトリガーするように自動スケール ルールを作成できます。
 
-App Insights について詳しくは、「[Application Insights とは何か?](../application-insights/app-insights-overview.md)」をご覧ください。
+App Insights について詳しくは、「[Application Insights とは何か?](../azure-monitor/app/app-insights-overview.md)」をご覧ください。
 
 
 ## <a name="scheduled-autoscale"></a>スケジュールに基づく自動スケール

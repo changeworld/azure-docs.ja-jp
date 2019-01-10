@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB での SQL 言語の構文
 description: この記事では、Azure Cosmos DB で使用される SQL クエリ言語の構文、およびこの言語で使用できるさまざまな演算子とキーワードについて説明します。
-author: LalithaMV
+author: markjbrown
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.topic: reference
 ms.date: 12/07/2018
-ms.author: laviswa
+ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: eec3846319a93e94ca362d9ef6815a73d0ca958a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9e589c582e52aafb9bdd93f80a702b581b883a59
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142509"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044384"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Azure Cosmos DB SQL 言語リファレンス 
 
@@ -2723,7 +2723,7 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
  **例**  
   
- 次の例では、指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST_DISTANCE 組み込み関数で取得する方法を示します。 。  
+ 次の例では、指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST_DISTANCE 組み込み関数で取得する方法を示します。 にも掲載されています。  
   
 ```  
 SELECT f.id   

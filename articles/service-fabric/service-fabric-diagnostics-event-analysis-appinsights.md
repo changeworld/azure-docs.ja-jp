@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 25e8d0aafc8593c9c759dd8ac1d7d1d495c9e026
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: efcd2e279d1bf387bc11c238a0592ecee6545cc4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001772"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053621"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 
@@ -127,4 +127,4 @@ EventFlow と WAD は集計ソリューションとして使用することを�
 ## <a name="next-steps"></a>次の手順
 
 * [AI のアラートを設定して](../azure-monitor/app/alerts.md)、パフォーマンスまたは使用状況の変化について通知を受けます
-* [Application Insights のスマート検出](../application-insights/app-insights-proactive-diagnostics.md)は、Application Insights に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します
+* [Application Insights のスマート検出](../azure-monitor/app/proactive-diagnostics.md)は、Application Insights に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します

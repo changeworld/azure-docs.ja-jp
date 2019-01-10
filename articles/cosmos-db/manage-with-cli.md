@@ -1,18 +1,17 @@
 ---
 title: Azure CLI を使用した Azure Cosmos DB リソースの管理
 description: Azure CLI を使用し、Azure Cosmos DB のアカウント、データベース、コンテナーを作成します。
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: d79cae16c109b407840b8565eb80fb87bbed6432
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d45f5b5c5945796e30c86b2e3ef48d6b8e693b99
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877549"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038978"
 ---
 # <a name="manage-azure-cosmos-db-resources-using-azure-cli"></a>Azure CLI を使用した Azure Cosmos DB リソースの管理
 

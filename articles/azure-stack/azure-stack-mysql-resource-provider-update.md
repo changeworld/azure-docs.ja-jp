@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 01/08/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: ee76d71f89fb94c8c05c6a733dac241a9e4fa13c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: georgel
+ms.openlocfilehash: 790a8bfed693f03cdadd036cab17eb94dee1c1ed
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965140"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119293"
 ---
 # <a name="update-the-mysql-resource-provider"></a>MySQL リソース プロバイダーを更新する 
 
@@ -110,7 +110,7 @@ $tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
 | **RetryDuration** | 再試行間のタイムアウト間隔 (秒単位)。 | 120 | 
 | **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します (以下のメモを参照してください)。 | いいえ  | 
 | **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ  | 
-| **AcceptLicense** | GPL ライセンスに同意するためのプロンプトをスキップします。  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
+| **AcceptLicense** | GPL ライセンスに同意するためのプロンプトをスキップします。  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
  
 
 ## <a name="next-steps"></a>次の手順

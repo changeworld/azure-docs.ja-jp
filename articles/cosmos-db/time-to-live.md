@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
-ms.openlocfilehash: c08c171e3a95b0d0f408660a7ec9021ca0323fbd
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.reviewer: sngun
+ms.openlocfilehash: fbbaefc62adedc2374c47fd0736368d3dec3e6a4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621278"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043432"
 ---
 # <a name="time-to-live-for-azure-cosmos-db-data"></a>Azure Cosmos DB データの Time to Live
 

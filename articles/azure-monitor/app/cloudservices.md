@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9ab256526ccba3fa84d4979ba536f6b681a7df89
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c47a4d853ba6360fb7f8017b7ad9a59e10040401
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001670"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120854"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services 向けの Application Insights
 [Microsoft Azure Cloud Services アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況は、[Application Insights][start] で監視できます。それには、Application Insights の SDK から得られるデータと、Cloud Services から得られる [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)データとを組み合わせて使用します。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -217,7 +217,7 @@ Web ロールの場合、以下のカウンターも収集されます。
 
 システムで Stream Analytics などの他の Azure サービスが使用されている場合は、その監視グラフも含めます。 
 
-クライアントのモバイル アプリがある場合は、[App Center](../../application-insights/app-insights-mobile-center-quickstart.md) を使用してください。 [Analytics](../../azure-monitor/app/analytics.md) でクエリを作成してイベント カウントを表示してから、それをダッシュボードにピン留めします。
+クライアントのモバイル アプリがある場合は、[App Center](../../azure-monitor/learn/mobile-center-quickstart.md) を使用してください。 [Analytics](../../azure-monitor/app/analytics.md) でクエリを作成してイベント カウントを表示してから、それをダッシュボードにピン留めします。
 
 ## <a name="example"></a>例
 [この例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) では、1 つの Web ロールと 2 つの worker ロールが含まれたサービスを監視します。
@@ -237,11 +237,11 @@ Web ロールの場合、以下のカウンターも収集されます。
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[azure]: ../../application-insights/app-insights-overview.md
+[azure]: ../../azure-monitor/app/app-insights-overview.md
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
-[qna]: ../../application-insights/app-insights-troubleshoot-faq.md
+[qna]: ../../azure-monitor/app/troubleshoot-faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../application-insights/app-insights-overview.md 
+[start]: ../../azure-monitor/app/app-insights-overview.md 

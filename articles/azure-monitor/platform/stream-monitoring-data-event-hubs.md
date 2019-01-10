@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a39d497c90f49f8699b9d27be175e501973804c5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7225bc8121ddab8809ebb1c409a3af59dbcc42f2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811513"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118389"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
@@ -26,7 +26,7 @@ Azure Monitor には、Azure 環境のすべての監視データにアクセス
 Azure 環境内には監視データの "層" がいくつかあり、各層のデータへのアクセス方法は少し異なります。 通常、これらの層は次のようになっています。
 
 - **アプリケーション監視データ:** 自分で記述して Azure で実行しているコードのパフォーマンスと機能に関するデータ。 アプリケーション監視データの例として、パフォーマンス トレース、アプリケーション ログ、ユーザー テレメトリなどがあります。 アプリケーション監視データは、通常、次のいずれかの方法で収集されます。
-  - コードを SDK ([Application Insights SDK](../../application-insights/app-insights-overview.md) など) でインストルメント化することによって。
+  - コードを SDK ([Application Insights SDK](../../azure-monitor/app/app-insights-overview.md) など) でインストルメント化することによって。
   - アプリケーションを実行しているマシン上の新しいアプリケーション ログをリッスンする監視エージェント ([Windows Azure Diagnostic Agent](./../../azure-monitor/platform/diagnostics-extension-overview.md)、[Linux Azure Diagnostic Agent](../../virtual-machines/extensions/diagnostics-linux.md) など) を実行することによって。
 - **ゲスト OS 監視データ:** アプリケーションが実行されているオペレーティング システムに関するデータ。 ゲスト OS 監視データの例として、Linux の syslog や Windows のシステム イベントがあります。 この種類のデータを収集するには、[Windows Azure Diagnostic Agent](./../../azure-monitor/platform/diagnostics-extension-overview.md) や [Linux Azure Diagnostic Agent](../../virtual-machines/extensions/diagnostics-linux.md) のようなエージェントをインストールする必要があります。
 - **Azure リソース監視データ:** Azure リソースの操作に関するデータ。 仮想マシンなど、一部の種類の Azure リソースには、その Azure サービスの内部を監視するためのゲスト OS およびアプリケーションがあります。 ネットワーク セキュリティ グループなど、他の Azure リソースでは、リソース監視データは使用可能なデータの最上位層です (それらのリソースで実行されるゲスト OS またはアプリケーションがないため)。 このデータは、[リソース診断設定](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)を使用して収集することができます。
@@ -98,7 +98,7 @@ Azure リソースは、次の 2 種類の監視データを出力します。
 
 ## <a name="application-monitoring-data"></a>アプリケーション監視データ
 
-アプリケーション監視データでは、コードが SDK でインストルメント化されている必要があるため、アプリケーション監視データを Azure のイベント ハブにルーティングするための汎用ソリューションはありません。 ただし、[Azure Application Insights](../../application-insights/app-insights-overview.md) は、Azure のアプリケーション レベルのデータを収集するために使用できるサービスの 1 つです。 Application Insights を使用している場合は、次の手順を実行して、監視データをイベント ハブにストリーミングすることができます。
+アプリケーション監視データでは、コードが SDK でインストルメント化されている必要があるため、アプリケーション監視データを Azure のイベント ハブにルーティングするための汎用ソリューションはありません。 ただし、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) は、Azure のアプリケーション レベルのデータを収集するために使用できるサービスの 1 つです。 Application Insights を使用している場合は、次の手順を実行して、監視データをイベント ハブにストリーミングすることができます。
 
 1. ストレージ アカウントへの Application Insights データの[連続エクスポートをセットアップ](../../azure-monitor/app/export-telemetry.md)します。
 
@@ -108,7 +108,7 @@ Azure リソースは、次の 2 種類の監視データを出力します。
 
 Azure Monitor で監視データをイベント ハブにルーティングすると、パートナー SIEM や監視ツールに簡単に統合することができます。 ほとんどのツールは、イベント ハブからデータを読み取るために、イベント ハブ接続文字列と、Azure サブスクリプションへの特定のアクセス許可が必要です。 Azure Monitor と統合できるツールの一覧 (一部) を次に示します。
 
-* **IBM QRadar** - Microsoft Azure DSM および Microsoft Azure Event Hub Protocol は、[IBM サポート Web サイト](http://www.ibm.com/support)からダウンロードすることができます。 Azure との統合の詳細については、[こちら](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)を参照してください。
+* **IBM QRadar** - Microsoft Azure DSM および Microsoft Azure Event Hub Protocol は、[IBM サポート Web サイト](https://www.ibm.com/support)からダウンロードすることができます。 Azure との統合の詳細については、[こちら](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)を参照してください。
 * **Splunk** -Splunk の設定によって、次の 2 つの方法があります。
     1. [Splunk 向けの Azure Monitor アドオン](https://splunkbase.splunk.com/app/3534/)は、Splunkbase およびオープン ソース プロジェクトで入手できます。 ドキュメントは[こちら](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)にあります。
     2. Splunk インスタンスにアドオンをインストールできない場合 (例:  プロキシを使用している場合、Splunk Cloud で実行している場合など)、[イベント ハブの新しいメッセージによってトリガーされるこの機能](https://github.com/Microsoft/AzureFunctionforSplunkVS)を使用して、Splunk HTTP イベント コレクターにこれらのイベントを転送できます。

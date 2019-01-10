@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 9f3d84b1f2e179d265c811faf2d35bd55bc1410f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 913b23946f70500ace7ab7e4ff7b5cd2858492fc
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607003"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121665"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -292,7 +292,7 @@ WebJobs SDK は、アプリ設定コレクション内で Storage の接続文�
 
 ## <a name="add-application-insights-logging"></a>Application Insights ログの追加
 
-プロジェクトを Azure で実行する場合、コンソール出力を表示して関数の実行を監視することはできません。 お勧めする監視ソリューションは [Application Insights](../application-insights/app-insights-overview.md) です。 詳しくは、「[Azure Functions を監視する](../azure-functions/functions-monitoring.md)」をご覧ください。
+プロジェクトを Azure で実行する場合、コンソール出力を表示して関数の実行を監視することはできません。 お勧めする監視ソリューションは [Application Insights](../azure-monitor/app/app-insights-overview.md) です。 詳しくは、「[Azure Functions を監視する](../azure-functions/functions-monitoring.md)」をご覧ください。
 
 ここでは、Azure にデプロイする前に次のタスクを実行して Application Insights のログ記録を設定します。
 
@@ -304,9 +304,9 @@ WebJobs SDK は、アプリ設定コレクション内で Storage の接続文�
 
 1. 使用できる App Service アプリがまだない場合は、[作成](app-service-web-get-started-dotnet-framework.md)します。
 
-1. 使用できる Application Insights リソースがまだない場合は、[作成](../application-insights/app-insights-create-new-resource.md)します。 **[アプリケーションの種類]** を **[全般]** に設定し、「**インストルメンテーション キーをコピー**」の後のセクションをスキップします。
+1. 使用できる Application Insights リソースがまだない場合は、[作成](../azure-monitor/app/create-new-resource.md )します。 **[アプリケーションの種類]** を **[全般]** に設定し、「**インストルメンテーション キーをコピー**」の後のセクションをスキップします。
 
-1. 使用する Application Insights リソースが既にある場合は、[インストルメンテーション キーをコピー](../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key)します。
+1. 使用する Application Insights リソースが既にある場合は、[インストルメンテーション キーをコピー](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)します。
 
 ### <a name="configure-app-settings"></a>アプリケーションの設定の構成 
 

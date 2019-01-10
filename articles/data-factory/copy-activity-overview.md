@@ -9,22 +9,21 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1958d694ab87d635624884b43486761269e37c37
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 36c94a035c7585d655f4482239de70cd2e1a5cc6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082648"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014133"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
 ## <a name="overview"></a>概要
 
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-data-movement-activities.md)
 > * [現在のバージョン](copy-activity-overview.md)
 
@@ -74,7 +73,7 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 
 1. **ソース データ ストアとシンク データ ストアのリンクされたサービスを作成します。** 構成方法およびサポートされるプロパティについては、コネクタの記事の「リンクされたサービスのプロパティ」セクションを参照してください。 サポートされるコネクタの一覧は、「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」セクションで見つけることができます。
 2. **ソースとシンクのデータセットを作成します。** 構成方法およびサポートされるプロパティについては、ソースおよびシンク コネクタの記事の「データセットのプロパティ」セクションを参照してください。
-3. **コピー アクティビティを含むパイプラインを作成します。** 次のセクションでは、例を示します。
+3. **コピー アクティビティを含むパイプラインを作成します。** 次のセクションでは、例を示します。  
 
 ### <a name="syntax"></a>構文
 
@@ -148,7 +147,7 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 
 ### <a name="monitor-visually"></a>視覚的な監視
 
-コピー アクティビティの実行を視覚的に監視するには、お使いのデータ ファクトリ -> **[Author & Monitor]\(作成者と監視\)** -> **[監視] タブ** の順に移動して、**[アクション]** 列にある [View Activity Runs]\(アクティビティ実行の表示\) リンクを使ってパイプライン実行の一覧を表示します。
+コピー アクティビティの実行を視覚的に監視するには、お使いのデータ ファクトリ -> **[Author & Monitor]\(作成者と監視\)** -> **[監視] タブ** の順に移動して、**[アクション]** 列にある [View Activity Runs]\(アクティビティ実行の表示\) リンクを使ってパイプライン実行の一覧を表示します。 
 
 ![パイプラインの実行を監視する](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
 
@@ -234,8 +233,8 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](copy-activity-performance.md)」をご覧ください。 このガイドでは、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法についても説明します。
 
-## <a name="incremental-copy"></a>増分コピー
-Data Factory では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。
+## <a name="incremental-copy"></a>増分コピー 
+Data Factory では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。 
 
 ## <a name="read-and-write-partitioned-data"></a>パーティション分割されたデータの読み取りおよび書き込み
 Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 現在のバージョンでは、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 詳しくは、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関するページをご覧ください。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a4e4ca1ca4878a2a405b12413e4378a2cb79aef6
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 3ea7d6562965debda2c146fedab2ea9ab19f6cc8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999120"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077455"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Application Insights で Docker アプリケーションを監視する
 
@@ -36,9 +36,9 @@ Docker ホストで [Application Insights イメージ](https://hub.docker.com/r
 
 ## <a name="set-up-your-application-insights-resource"></a>Application Insights リソースを設定する
 
-1. [Microsoft Azure Portal](https://azure.com) にサインインし、アプリ用の Application Insights リソースを開きます。または[新しく作成](../../application-insights/app-insights-create-new-resource.md)します。 
+1. [Microsoft Azure Portal](https://azure.com) にサインインし、アプリ用の Application Insights リソースを開きます。または[新しく作成](../../azure-monitor/app/create-new-resource.md )します。 
    
-    *どのリソースを使用する必要があるか。* ホストで実行されているアプリが他者によって開発されている場合は、[新しい Application Insights リソースを作成する](../../application-insights/app-insights-create-new-resource.md)必要があります。 テレメトリの表示と分析はこの場所で行います  (アプリの種類には [General (一般)] を選択します)。
+    *どのリソースを使用する必要があるか。* ホストで実行されているアプリが他者によって開発されている場合は、[新しい Application Insights リソースを作成する](../../azure-monitor/app/create-new-resource.md )必要があります。 テレメトリの表示と分析はこの場所で行います  (アプリの種類には [General (一般)] を選択します)。
    
     ただし、アプリの開発者である場合は、各アプリに [Application Insights SDK を追加する](../../azure-monitor/app/java-live.md) ことをお勧めします。 すべてのアプリが 1 つのビジネス アプリケーションのコンポーネントである場合は、テレメトリを 1 つのリソースに送信するように構成することで、同じリソースを使用して Docker のライフサイクルとパフォーマンスのデータを表示できます。 
    

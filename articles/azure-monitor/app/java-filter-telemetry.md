@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 81bfd5e0354fefea4690e6871dd5e846f41dc6d8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6bd8d0cee01853547efd028feef0a97f9398024e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53982121"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015524"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理
 
@@ -31,7 +31,7 @@ ms.locfileid: "53982121"
 
 > [!NOTE]
 > フィルターでは、アプリのメトリックにゆがみが生じます。 たとえば、遅い応答を診断するために、高速な応答時間を破棄するフィルターを設定するとします。 ただし、Application Insights によって報告される平均応答時間は実際の速度より低くなること、また、要求数は実際の数より少なくなることに注意する必要があります。
-> これが問題になる場合は、代わりに[サンプリング](../../application-insights/app-insights-sampling.md)を使用します。
+> これが問題になる場合は、代わりに[サンプリング](../../azure-monitor/app/sampling.md)を使用します。
 
 ## <a name="setting-filters"></a>フィルターを設定する
 
@@ -262,4 +262,4 @@ ApplicationInsights.xml で、以下を使用します。
 
 ## <a name="next-steps"></a>次の手順
 
-* [サンプリング](../../application-insights/app-insights-sampling.md) - メトリックがゆがめられない代替方法として、サンプリングを検討してください。
+* [サンプリング](../../azure-monitor/app/sampling.md) - メトリックがゆがめられない代替方法として、サンプリングを検討してください。
