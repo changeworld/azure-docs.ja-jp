@@ -1,19 +1,18 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API の機能のサポートを使用する
 description: MongoDB 3.4 に対して Azure Cosmos DB の MongoDB 用 API で提供される機能サポートについて説明します。
-services: cosmos-db
-author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: overview
 ms.date: 12/26/2018
-ms.author: rimman
-ms.openlocfilehash: bb25cf6ed60317dd5d7266e2f4750c2bb9f4859d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+author: sivethe
+ms.author: sivethe
+ms.openlocfilehash: 7bf8258524b0b5e73c1a499fb6d3578098a0821e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790285"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039165"
 ---
 # <a name="use-azure-cosmos-dbs-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>MongoDB の機能と構文に対する Azure Cosmos DB の MongoDB 用 API のサポート
 
@@ -338,4 +337,4 @@ Cosmos DB では、自動のサーバー側シャーディングがサポート�
 - Azure Cosmos DB の MongoDB 用 API と [Robo 3T](mongodb-robomongo.md) を併用する方法を学びます。
 - Azure Cosmos DB の MongoDB 用 API が使用されている MongoDB の[サンプル](mongodb-samples.md)を調べます。
 
-<sup>注:この記事は、MongoDB データベースとのワイヤ プロトコルの互換性を提供する Azure Cosmos DB の機能について説明するものです。Microsoft は、このサービスを提供するための MongoDB データベースの運営は行いません。Azure Cosmos DB は、MongoDB, Inc. とは関係ありません。</sup>
+<sup>注:この記事では、MongoDB データベースとのワイヤ プロトコルの互換性を提供する Azure Cosmos DB の機能について説明します。Microsoft は、このサービスを提供するための MongoDB データベースの運営は行いません。Azure Cosmos DB は MongoDB, Inc. には所属していません。</sup>

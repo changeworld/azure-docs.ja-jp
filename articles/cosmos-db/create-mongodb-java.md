@@ -1,21 +1,19 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API と Java SDK を使用してコンソール アプリを構築する
 description: Azure Cosmos DB の MongoDB 用 API を使用して接続とクエリを行うことができる Java のコード サンプルについて説明します。
-services: cosmos-db
 author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
-ms.custom: quickstart
+ms.subservice: cosmosdb-mongo
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2017
 ms.author: rimman
-ms.openlocfilehash: 6a27958a38006d8ef81fab469bbf3c9d97e90a69
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 36e07fa7d0dadd93f44e1e1ebd13d171fbd6e2a9
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793144"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033742"
 ---
 # <a name="build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>Azure Cosmos DB の MongoDB 用 API と Java SDK を使用して Web アプリを構築する
 
@@ -137,7 +135,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Cosmos アカウントを作成し、コレクションを作成して、コンソール アプリを実行する方法を理解しました。 これで、Cosmos データベースに追加のデータをインポートできます。
+このクイック スタートでは、Cosmos アカウントを作成し、コレクションを作成して、コンソール アプリを実行する方法を学習しました。 これで、Cosmos データベースに追加のデータをインポートできます。
 
 > [!div class="nextstepaction"]
 > [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)

@@ -4,17 +4,16 @@ description: このクイック スタートは、Node.js で記述された既�
 author: rimman
 ms.author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 12/06/2018
-ms.custom: quickstart
-ms.openlocfilehash: 954be5699bb039f9eeaae827e6564fea6dfe70ff
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 1f8b20d70f6fb0a219ec484f730d9c085a3519a2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788679"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040457"
 ---
 # <a name="migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>既存の MongoDB Node.js Web アプリを Azure Cosmos DB に移行する 
 
@@ -253,7 +252,7 @@ git commit -m "configured MongoDB connection string"
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Cosmos アカウントを作成し、コレクションを作成して、コンソール アプリを実行する方法を理解しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
+このクイック スタートでは、Cosmos アカウントを作成し、コレクションを作成して、コンソール アプリを実行する方法を学習しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
 > [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)

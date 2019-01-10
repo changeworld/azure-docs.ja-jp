@@ -3,17 +3,17 @@ title: Jenkins プラグインを使用した Azure App Service へのデプロ�
 description: Azure App Service Jenkins プラグインを使用して、Jenkins で Java Web アプリを Azure にデプロイする方法について説明します。
 ms.service: jenkins
 keywords: Jenkins, Azure, 開発, App Service
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 98e69c7759f736c132601305156290f7a43eeaf9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 0ecd0603a5750b6d03da7cf2c577c668482048aa
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537581"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077319"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
 

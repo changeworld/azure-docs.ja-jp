@@ -1,19 +1,17 @@
 ---
 title: Azure Cosmos DB の概要
 description: Azure Cosmos DB について説明します。 このグローバルに分散されたマルチモデル データベースは、少ない待ち時間、柔軟なスケーラビリティ、高可用性を実現し、NoSQL データのネイティブ サポートを提供することを目指して構築されています。
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 12/18/2018
 ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 4a4bcf80eeff8700da37f5ea46353b1be6f2327b
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: b384bc51ac371ef75f5128c92f7e4b8d7f45ecc6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809014"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034949"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 

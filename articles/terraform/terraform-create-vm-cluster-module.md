@@ -4,17 +4,17 @@ description: Terraform モジュールを使用して Azure で Windows 仮想�
 services: terraform
 ms.service: terraform
 keywords: Terraform、DevOps、仮想マシン、ネットワーク、モジュール
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: 03c09e190fce9cbbd98cea3565dd2437f79dadf1
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: efeae877161b2632112938d63b6f6e31cce96ac5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666635"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077200"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>モジュール レジストリを使用した Terraform での VM クラスターの作成
 
