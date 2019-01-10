@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: 73c65aa5c95887c8b1f6eb5e4cf91e19815eba15
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ac8de247f09ba3b4e38cabb565fe332eba909ccc
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741880"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118134"
 ---
 # <a name="translator-speech-api-languages"></a>Translator Speech API: Languages
 

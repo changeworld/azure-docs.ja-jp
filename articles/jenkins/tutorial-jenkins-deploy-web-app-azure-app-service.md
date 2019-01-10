@@ -3,17 +3,17 @@ title: チュートリアル - Jenkins を使用して GitHub から Azure App S
 description: GitHub からの継続的インテグレーション (CI) と Azure App Service への継続的デプロイ (CD) を Java Web アプリで行えるよう、Jenkins を設定します
 services: jenkins
 ms.service: jenkins
-author: tomarcher
+author: tomarchermsft
 ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: b65972b79fd16b912abfbd2e35642ef5d9f5adc4
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 786fc427e4cb631c4aedd0f795daebebd9fb15bc
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438474"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077438"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル: Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure App Service にデプロイする
 
@@ -61,7 +61,7 @@ ms.locfileid: "53438474"
 
 1. **[Available]\(利用可能\)** タブで、以下のプラグインを選択します。
 
-   - [Mobile Apps](https://plugins.jenkins.io/azure-app-service)
+   - [Azure App Service](https://plugins.jenkins.io/azure-app-service)
    - [GitHub Branch Source](https://plugins.jenkins.io/github-branch-source)
    - Jenkins [Environment Injector プラグイン](https://plugins.jenkins.io/envinject)
    - [Azure Credentials](https://plugins.jenkins.io/azure-credentials)

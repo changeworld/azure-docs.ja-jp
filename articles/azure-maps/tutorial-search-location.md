@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c11274b8f9d6c3b8c934201b4ec4acd6842d7c0b
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1396260ef703ce22f8e0309bd2c8df691d0af86e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435363"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120463"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Azure Maps を使用して近くの目的地を検索する
 
@@ -234,7 +234,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
    ```JavaScript
    function showPopup(e) {
-        //Get the properties and coordinates of the first shape that the event occured on.
+        //Get the properties and coordinates of the first shape that the event occurred on.
         var p = e.shapes[0].getProperties();
         var position = e.shapes[0].getCoordinates();
 

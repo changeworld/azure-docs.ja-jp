@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: 1800ab19e2d99eb639ef4064e64d7bc475aa0c36
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 23c2206a873dc37f5b4f40e0c692e6a35869c419
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014873"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106479"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack とデータセンターの統合 - エンドポイントの公開
 
@@ -35,7 +35,7 @@ Azure Stack エンドポイントを外部ネットワークに公開するに�
 > [!Note]  
 > ユーザーの VIP は動的で、Azure Stack オペレーターによって管理されず、ユーザー自身が定義します。
 
-|エンドポイント (VIP)|DNS ホスト A レコード|プロトコル|ポート|
+|エンドポイント (VIP)|DNS ホスト A レコード|Protocol|ポート|
 |---------|---------|---------|---------|
 |AD FS|Adfs.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |ポータル (管理者)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015|
@@ -68,14 +68,14 @@ Azure Stack は、透過的なプロキシ サーバーのみをサポートし�
 > [!Note]  
 > Azure Stack では、Express Route を利用して､次の表に示す Azure サービスに到達することはできません。
 
-|目的|URL|プロトコル|ポート|
+|目的|URL|Protocol|ポート|
 |---------|---------|---------|---------|
 |ID|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|
 |Marketplace シンジケーション|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|
 |パッチと更新プログラム|https://&#42;.azureedge.net|HTTPS|443|
 |登録|https://management.azure.com|HTTPS|443|
 |使用法|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net|HTTPS|443|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
 |NTP|(デプロイに提供される NTP サーバーの IP)|UDP|123|
 |DNS|(デプロイに提供される DNS サーバーの IP)|TCP<br>UDP|53|
 |CRL|(証明書上で CRL 配布ポイントの下にある URL)|HTTP|80|

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 46f94a512ea78016a327357a3d0ee25a91ad607e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 009fbd3b86518758e9654fab547bab99bec369de
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021675"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105204"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Azure Cache for Redis のスケーリング方法
 Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングが用意されています。 キャッシュを作成した後でご利用のアプリケーションの要件が変わった場合、キャッシュのサイズと価格レベルをスケーリングできます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールを使用して、キャッシュをスケーリングする方法を説明します。
@@ -43,7 +43,7 @@ Azure Cache for Redis の [監視](cache-how-to-monitor.md)機能を使用して
 
 **[価格レベルの選択]** ブレードから希望の価格レベルを選択し、**[選択]** をクリックします。
 
-![[価格レベル] ][redis-cache-pricing-tier-blade]
+![価格レベル ][redis-cache-pricing-tier-blade]
 
 
 別の価格レベルにスケーリングできますが、次のような制約があります。
@@ -136,7 +136,7 @@ Azure CLI によるスケーリングの詳細については、「[Change setti
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>スケーリング中にキャッシュからデータは失われますか
 * 新しいサイズに **Basic** キャッシュをスケーリングすると、すべてのデータが失われ、スケーリング処理中にキャッシュは使用できなくなります。
 * **Basic** キャッシュを **Standard** キャッシュにスケーリングする場合、通常、キャッシュのデータは保存されます。
-* **Standard** キャッシュをより大きいサイズまたは価格レベルにスケールアップする場合や、**Premium** キャッシュをより大きいサイズにスケールアップする場合、通常はすべてのデータが保持されます。 **Standard** または **Premium** キャッシュをより小さいサイズにスケールダウンする場合、キャッシュ内のデータ量と新しいサイズの関係によっては、スケーリング時にデータが失われる可能性があります。 スケールダウンのときにデータが失われた場合、 [allkeys-lru](http://redis.io/topics/lru-cache) 削除ポリシーを使用してキーが削除されます。 
+* **Standard** キャッシュをより大きいサイズまたは価格レベルにスケールアップする場合や、**Premium** キャッシュをより大きいサイズにスケールアップする場合、通常はすべてのデータが保持されます。 **Standard** または **Premium** キャッシュをより小さいサイズにスケールダウンする場合、キャッシュ内のデータ量と新しいサイズの関係によっては、スケーリング時にデータが失われる可能性があります。 スケールダウンのときにデータが失われた場合、 [allkeys-lru](https://redis.io/topics/lru-cache) 削除ポリシーを使用してキーが削除されます。 
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>スケーリング中に影響を受けるカスタム データベース
 キャッシュの作成中に `databases` の設定のカスタム値を構成した場合、価格レベルによってさまざまな[データベース制限](cache-configure.md#databases)があることに注意してください。 このシナリオでスケーリングを行う場合は、次の点を考慮します。

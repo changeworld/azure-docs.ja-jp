@@ -1,19 +1,19 @@
 ---
 title: スケーリングとパフォーマンスをサポートするように Azure Cosmos DB テーブルを設計する
 description: Azure ストレージ テーブルの設計ガイド:Azure Cosmos DB と Azure ストレージ テーブルで拡張性があり、パフォーマンスに優れたテーブルを設計する
-author: SnehaGunda
-ms.author: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 12/07/2018
+author: wmengmsft
+ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 656a8acc06a0d02959dda42c980db65c011f0bb3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9784d08a8e3e471a8b516c3bc285430c537857a8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140950"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044180"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド:拡張性があり、パフォーマンスに優れたテーブルを設計する
 

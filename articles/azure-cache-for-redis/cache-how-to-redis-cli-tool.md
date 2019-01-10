@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: wesmc
-ms.openlocfilehash: 4cefae50482547b910c6468854a251b0f61ce558
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 68c533235480ec49e3c561d99095d5722f6f69a4
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021569"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106326"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Azure Cache for Redis で Redis コマンドライン ツールを使用する方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "53021569"
 
 Windows プラットフォームでこのツールを利用するには､[Redis command-line tools for Windows](https://github.com/MSOpenTech/redis/releases/) をダウンロードします｡ 
 
-別のプラットフォームからこのコマンドライン ツールを実行するには、[http://redis.io/download](https://redis.io/download) から Azure Cache for Redis をダウンロードします。
+別のプラットフォームからこのコマンドライン ツールを実行するには、[https://redis.io/download](https://redis.io/download) から Azure Cache for Redis をダウンロードします。
 
 ## <a name="gather-cache-access-information"></a>キャッシュ アクセス情報を収集する
 

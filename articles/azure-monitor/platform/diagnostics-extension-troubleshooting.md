@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 1ddadcf17a5733767e24505b970b2ac21c8d7fa8
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8a8883989a731265fb358c119d44fa4243b54a5e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325475"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103946"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 診断のトラブルシューティング
 この記事では、Azure 診断の使用に関連するトラブルシューティング情報について説明します。 Azure 診断の詳細については、[Azure 診断の概要](diagnostics-extension-overview.md)に関するページを参照してください。
@@ -118,7 +118,7 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 #### <a name="is-the-host-generating-data"></a>ホストはデータを生成しているか
 - **パフォーマンス カウンター**:perfmon を開き、カウンターを確認します。
 
-- **トレース ログ**:VM にリモート アクセスし、アプリの構成ファイルに TextWriterTraceListener を追加します。  テキスト リスナーの設定方法については、 http://msdn.microsoft.com/library/sk36c28t.aspx をご覧ください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
+- **トレース ログ**:VM にリモート アクセスし、アプリの構成ファイルに TextWriterTraceListener を追加します。  テキスト リスナーの設定方法については、 https://msdn.microsoft.com/library/sk36c28t.aspx をご覧ください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
 トレース ログが生成されていない場合、「[トレース ログが見つからない場合 (詳細)](#more-about-trace-logs-missing)」をご覧ください。
 
 - **ETW トレース**:VM にリモート アクセスし、PerfView をインストールします。  PerfView で、**[ファイル]** > **[ユーザー コマンド]** >  の順に選択し、**Listen etwprovder1** >  を実行します。必要に応じてさらに **etwprovider2** 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
@@ -217,9 +217,9 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 
 どちらの場合でも、**Microsoft.Azure.Diagnostics** を検索し、**xmlCfg** または **WadCfg** フィールドを見つけます。
 
-仮想マシンで検索し、**WadCfg** フィールドが存在する場合、構成が JSON 形式であることを意味します。 **xmlCfg** フィールドが存在する場合、構成が XML であり、base64 でエンコードされていることを意味します。 診断で読み込まれた XML を表示するには、これを[デコードする](http://www.bing.com/search?q=base64+decoder)必要があります。
+仮想マシンで検索し、**WadCfg** フィールドが存在する場合、構成が JSON 形式であることを意味します。 **xmlCfg** フィールドが存在する場合、構成が XML であり、base64 でエンコードされていることを意味します。 診断で読み込まれた XML を表示するには、これを[デコードする](https://www.bing.com/search?q=base64+decoder)必要があります。
 
-クラウド サービス ロールでは、ディスクから構成を選択する場合、データは base64 でエンコードされているため、診断で読み込まれた XML を表示するにはこれを[デコードする](http://www.bing.com/search?q=base64+decoder)必要があります。
+クラウド サービス ロールでは、ディスクから構成を選択する場合、データは base64 でエンコードされているため、診断で読み込まれた XML を表示するにはこれを[デコードする](https://www.bing.com/search?q=base64+decoder)必要があります。
 
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 診断プラグインの終了コード
 プラグインにより、次の終了コードが返されます。

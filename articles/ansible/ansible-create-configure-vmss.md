@@ -3,17 +3,17 @@ title: Ansible を使用して Azure 内に仮想マシン スケール セッ�
 description: Ansible を使用して、Azure 内で仮想マシン スケール セットを作成し、構成する方法について説明します
 ms.service: ansible
 keywords: ansible, azure, devops, bash, プレイブック, 仮想マシン, 仮想マシン スケール セット, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: 8dacfb054a36801c076435037a530daa87c4a89c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 920a631ed379651751641c22e4b43f6731197377
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409405"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054160"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Ansible を使用して Azure 内に仮想マシン スケール セットを作成する
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 Ansible を使用すると、他の Azure リソースを管理するのと同様に、Azure 内の仮想マシン スケール セット (VMSS) を管理できます。 この記事では、Ansible を使用して、仮想マシン スケール セットを作成し、スケール アウトする方法について説明します。 

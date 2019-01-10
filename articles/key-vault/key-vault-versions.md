@@ -10,16 +10,15 @@ ms.assetid: e8622dcc-59a3-4f4b-9f63-cd2232515a65
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 0db090d33e165415a2e1c3a4f095a0d0a48138cb
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7671452e8b5226d3c3779bbe86e23b8cffe1a769
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296655"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079053"
 ---
 # <a name="key-vault-versions"></a>Key Vault のバージョン
 

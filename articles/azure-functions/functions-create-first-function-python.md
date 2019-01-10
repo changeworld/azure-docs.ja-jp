@@ -11,18 +11,18 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: a5abc90f5a40911538b6516622203f595adfed5c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 140fc870500054d0652b48bc602706398371fa8e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091817"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039061"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>Azure で初めての Python 関数を作成する (プレビュー)
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
-このクイック スタート記事では、Linux 上で動作する初めての[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/) Python 関数アプリを Azure CLI を使用して作成する方法について説明します。 [Azure Functions Core Tools](functions-run-local.md) を使用して、関数のコードをローカルで作成し、その後 Azure にデプロイします。 関数アプリを Linux 上で実行するためのプレビューに関する考慮事項の詳細については、[Linux 上の関数に関するこちらの記事](https://aka.ms/funclinux)を参照してください。
+このクイック スタート記事では、Linux 上で動作する初めての[サーバーレス](https://azure.com/serverless) Python 関数アプリを Azure CLI を使用して作成する方法について説明します。 [Azure Functions Core Tools](functions-run-local.md) を使用して、関数のコードをローカルで作成し、その後 Azure にデプロイします。 関数アプリを Linux 上で実行するためのプレビューに関する考慮事項の詳細については、[Linux 上の関数に関するこちらの記事](https://aka.ms/funclinux)を参照してください。
 
 次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。
 
