@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 893e44b3298a03559b7dea4721e3bbbab0c65897
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4d5b98ab001bcb30091590880954c7075701e53b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615927"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607355"
 ---
 # <a name="database-views-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench のデータベース ビュー
 
@@ -27,7 +27,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 
 > [!NOTE]
 > これらのビュー内に含まれないデータベース内のデータベース テーブルは直接使用できますが、サポートされていません。
-> 
+>
 
 ## <a name="vwapplication"></a>vwApplication
 
@@ -39,11 +39,11 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationName                  | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDescription           | nvarchar(255) | はい         | アプリケーションの説明 |
 | ApplicationDisplayName           | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled               | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します</br> **注:** アプリケーションがデータベース内で無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
+| ApplicationEnabled               | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します<br /> **注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
 | UploadedDtTm                     | datetime2(7)  | いいえ           | コントラクトがアップロードされた日時 |
 | UploadedByUserId                 | int           | いいえ           | アプリケーションをアップロードしたユーザーの ID です |
 | UploadedByUserExternalId         | nvarchar(255) | いいえ           | アプリケーションをアップロードしたユーザーの外部識別子です。 既定では、これはコンソーシアムの Azure Active Directory からのユーザーの ID です。                                                                                                |
-| UploadedByUserProvisioningStatus | int           | いいえ           | ユーザーのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 </br>0 – API によってユーザーが作成されている<br>1 – キーがデータベース内のユーザーに関連付けられている</br>2 – ユーザーが完全にプロビジョニングされている                         |
+| UploadedByUserProvisioningStatus | int           | いいえ           | ユーザーのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – API によってユーザーが作成されている<br />1 – キーがデータベース内のユーザーに関連付けられている<br />2 – ユーザーが完全にプロビジョニングされている                         |
 | UploadedByUserFirstName          | nvarchar(50)  | はい         | コントラクトをアップロードしたユーザーの名 |
 | UploadedByUserLastName           | nvarchar(50)  | はい         | コントラクトをアップロードしたユーザーの姓 |
 | UploadedByUserEmailAddress       | nvarchar(255) | はい         | コントラクトをアップロードしたユーザーの電子メール アドレス |
@@ -81,7 +81,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationRoleDescription | nvarchar(255) | はい         | ロールの説明                                                                                                                                                                                                             |
 | UserId                     | int           | いいえ           | ロールに関連付けられたユーザーの ID です |
 | UserExternalId             | nvarchar(255) | いいえ           | ロールに関連付けられているユーザーの外部識別子。 既定では、これはコンソーシアムの Azure Active Directory からのユーザーの ID です。                                                                     |
-| UserProvisioningStatus     | int           | いいえ           | ユーザーのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 </br>0 – API によってユーザーが作成されている</br>1 – キーがデータベース内のユーザーに関連付けられている<br>2 – ユーザーが完全にプロビジョニングされている |
+| UserProvisioningStatus     | int           | いいえ           | ユーザーのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – API によってユーザーが作成されている<br />1 – キーがデータベース内のユーザーに関連付けられている<br />2 – ユーザーが完全にプロビジョニングされている |
 | UserFirstName              | nvarchar(50)  | はい         | ロールに関連付けられているユーザーの名 |
 | UserLastName               | nvarchar(255) | はい         | ロールに関連付けられているユーザーの姓 |
 | UserEmailAddress           | nvarchar(255) | はい         | ロールに関連付けられているユーザーの電子メール アドレス |
@@ -103,7 +103,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | LedgerDisplayName        | nvarchar(255) | いいえ           | UI に表示する台帳の名前 |
 | UserId                   | int           | いいえ           | 接続に関連付けられているユーザーの ID |
 | UserExternalId           | nvarchar(255) | いいえ           | 接続に関連付けられているユーザーの外部識別子。 既定では、これはコンソーシアムの Azure Active Directory からのユーザーの ID です。 |
-| UserProvisioningStatus   | int           | いいえ           |ユーザーのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 </br>0 – API によってユーザーが作成されている</br>1 – キーがデータベース内のユーザーに関連付けられている<br>2 – ユーザーが完全にプロビジョニングされている |
+| UserProvisioningStatus   | int           | いいえ           |ユーザーのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – API によってユーザーが作成されている<br />1 – キーがデータベース内のユーザーに関連付けられている<br />2 – ユーザーが完全にプロビジョニングされている |
 | UserFirstName            | nvarchar(50)  | はい         | 接続に関連付けられているユーザーの名 |
 | UserLastName             | nvarchar(255) | はい         | 接続に関連付けられているユーザーの姓 |
 | UserEmailAddress         | nvarchar(255) | はい         | 接続に関連付けられているユーザーの電子メール アドレス |
@@ -129,7 +129,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                            | int            | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName                          | nvarchar (50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName                   | nvarchar (255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled                       | ビット            | いいえ           | アプリケーションが現在有効になっているかどうかを示します。</br> **注:** アプリケーションがデータベース内で無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。  |
+| ApplicationEnabled                       | ビット            | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br /> **注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。  |
 | WorkflowId                               | int            | いいえ           | コントラクトに関連付けられているワークフローの一意識別子 |
 | WorkflowName                             | nvarchar(50)   | いいえ           | コントラクトに関連付けられているワークフローの名前 |
 | WorkflowDisplayName                      | nvarchar(255)  | いいえ           | ユーザー インターフェイスに表示するためにコントラクトに関連付けられているワークフローの名前 |
@@ -138,11 +138,11 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ContractFileName                         | int            | いいえ           | このワークフローのスマート コントラクト コードを含むファイルの名前。 |
 | ContractUploadedDtTm                     | int            | いいえ           | コントラクト コードがアップロードされた日時 |
 | ContractId                               | int            | いいえ           | コントラクトの一意識別子 |
-| ContractProvisioningStatus               | int            | いいえ           | コントラクトのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 </br>0 – データベースで API によってコントラクトが作成されている</br>1 – コントラクトが台帳に送信されている</br>2 – コントラクトが台帳に正常にデプロイされている</br>3 または 4 - 台帳へのコントラクトのデプロイが失敗した</br>5 – コントラクトが台帳に正常にデプロイされた </br></br>バージョン 1.5 以降、値 0 ～ 5 がサポートされています。 現在のリリースでの下位互換性のためには、値 0 ～ 2 のみをサポートするビュー **vwContractV0** を使用できます。 |
+| ContractProvisioningStatus               | int            | いいえ           | コントラクトのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – データベースで API によってコントラクトが作成されている<br />1 – コントラクトが台帳に送信されている<br />2 – コントラクトが台帳に正常にデプロイされている<br />3 または 4 - 台帳へのコントラクトのデプロイが失敗した<br />5 – コントラクトが台帳に正常にデプロイされた <br /><br />バージョン 1.5 以降、値 0 ～ 5 がサポートされています。 現在のリリースでの下位互換性のためには、値 0 ～ 2 のみをサポートするビュー **vwContractV0** を使用できます。 |
 | ContractLedgerIdentifier                 | nvarchar (255) |             | コントラクトをデプロイしたユーザーの電子メール アドレス |
 | ContractDeployedByUserId                 | int            | いいえ           | コントラクトをデプロイしたユーザーの外部識別子。 既定では、これはユーザーの Azure Active Directory ID を表す guid です。                                                                                                          |
 | ContractDeployedByUserExternalId         | nvarchar(255)  | いいえ           | コントラクトをデプロイしたユーザーの外部識別子。 既定では、これはユーザーの Azure Active Directory ID を表す guid です。                                                                                                         |
-| ContractDeployedByUserProvisioningStatus | int            | いいえ           | ユーザーのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 </br>0 – API によってユーザーが作成されている</br>1 – キーがデータベース内のユーザーに関連付けられている </br>2 – ユーザーが完全にプロビジョニングされている                     |
+| ContractDeployedByUserProvisioningStatus | int            | いいえ           | ユーザーのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – API によってユーザーが作成されている<br />1 – キーがデータベース内のユーザーに関連付けられている <br />2 – ユーザーが完全にプロビジョニングされている                     |
 | ContractDeployedByUserFirstName          | nvarchar(50)   | はい         | コントラクトをデプロイしたユーザーの名 |
 | ContractDeployedByUserLastName           | nvarchar(255)  | はい         | コントラクトをデプロイしたユーザーの姓 |
 | ContractDeployedByUserEmailAddress       | nvarchar(255)  | はい         | コントラクトをデプロイしたユーザーの電子メール アドレス |
@@ -170,7 +170,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | WorkflowDisplayName                      | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示するワークフローの名前 |
 | WorkflowDescription                      | nvarchar(255) | はい         | ワークフローの説明 |
 | ContractId                               | int           | いいえ           | コントラクトの一意識別子 |
-| ContractProvisioningStatus               | int           | いいえ           | コントラクトのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 </br>0 – データベースで API によってコントラクトが作成されている</br>1 – コントラクトが台帳に送信されている</br>2 – コントラクトが台帳に正常にデプロイされている</br>3 または 4 - 台帳へのコントラクトのデプロイが失敗した</br>5 – コントラクトが台帳に正常にデプロイされた </br></br>バージョン 1.5 以降、値 0 ～ 5 がサポートされています。 現在のリリースでの下位互換性のためには、値 0 ～ 2 のみをサポートするビュー **vwContractActionV0** を使用できます。 |
+| ContractProvisioningStatus               | int           | いいえ           | コントラクトのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – データベースで API によってコントラクトが作成されている<br />1 – コントラクトが台帳に送信されている<br />2 – コントラクトが台帳に正常にデプロイされている<br />3 または 4 - 台帳へのコントラクトのデプロイが失敗した<br />5 – コントラクトが台帳に正常にデプロイされた <br /><br />バージョン 1.5 以降、値 0 ～ 5 がサポートされています。 現在のリリースでの下位互換性のためには、値 0 ～ 2 のみをサポートするビュー **vwContractActionV0** を使用できます。 |
 | ContractCodeId                           | int           | いいえ           | コントラクトのコード実装の一意識別子 |
 | ContractLedgerIdentifier                 | nvarchar(255) | はい         | 特定の分散型台帳のスマート コントラクトのデプロイされたバージョンに関連付けられている一意識別子。 Ethereum など。 |
 | ContractDeployedByUserId                 | int           | いいえ           | コントラクトをデプロイしたユーザーの一意識別子 |
@@ -183,12 +183,12 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | WorkflowFunctionDisplayName              | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される関数の名前 |
 | WorkflowFunctionDescription              | nvarchar(255) | いいえ           | 関数の説明 |
 | ContractActionId                         | int           | いいえ           | コントラクト アクションの一意の識別子 |
-| ContractActionProvisioningStatus         | int           | いいえ           | コントラクト アクションのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 </br>0 – データベースで API によってコントラクト アクションが作成されている</br>1 – コントラクト アクションが台帳に送信されている</br>2 – コントラクト アクションが台帳に正常にデプロイされている</br>3 または 4 - 台帳へのコントラクトのデプロイが失敗した</br>5 – コントラクトが台帳に正常にデプロイされた </br></br>バージョン 1.5 以降、値 0 ～ 5 がサポートされています。 現在のリリースでの下位互換性のためには、値 0 ～ 2 のみをサポートするビュー **vwContractActionV0** を使用できます。 |
+| ContractActionProvisioningStatus         | int           | いいえ           | コントラクト アクションのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – データベースで API によってコントラクト アクションが作成されている<br />1 – コントラクト アクションが台帳に送信されている<br />2 – コントラクト アクションが台帳に正常にデプロイされている<br />3 または 4 - 台帳へのコントラクトのデプロイが失敗した<br />5 – コントラクトが台帳に正常にデプロイされた <br /><br />バージョン 1.5 以降、値 0 ～ 5 がサポートされています。 現在のリリースでの下位互換性のためには、値 0 ～ 2 のみをサポートするビュー **vwContractActionV0** を使用できます。 |
 | ContractActionTimestamp                  | datetime(2,7) | いいえ           | コントラクト アクションのタイムスタンプ |
 | ContractActionExecutedByUserId           | int           | いいえ           | コントラクト アクションを実行したユーザーの一意識別子 |
 | ContractActionExecutedByUserFirstName    | int           | はい         | コントラクト アクションを実行したユーザーの名 |
 | ContractActionExecutedByUserLastName     | nvarchar(50)  | はい         | コントラクト アクションを実行したユーザーの姓 |
-| ContractActionExecutedByUserExternalId   | nvarchar(255) | はい         | コントラクト アクションを実行したユーザーの外部識別子。  既定では、これはコンソーシアム Azure Active Directory の識別子を表す guid です。 |
+| ContractActionExecutedByUserExternalId   | nvarchar(255) | はい         | コントラクト アクションを実行したユーザーの外部識別子。 既定では、これはコンソーシアム Azure Active Directory の識別子を表す guid です。 |
 | ContractActionExecutedByUserEmailAddress | nvarchar(255) | はい         | コントラクト アクションを実行したユーザーの電子メール アドレス |
 | WorkflowFunctionParameterId              | int           | いいえ           | 関数のパラメーターの一意識別子 |
 | WorkflowFunctionParameterName            | nvarchar(50)  | いいえ           | 関数のパラメーターの名前 |
@@ -204,7 +204,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | TransactionTo                            | nvarchar(255) | はい         | トランザクション対象のパーティ |
 | TransactionHash                          | nvarchar(255) | はい         | トランザクションのハッシュ |
 | TransactionIsWorkbenchTransaction        | ビット           | はい         | トランザクションが Azure Blockchain Workbench トランザクションかどうかを示すビット |
-| TransactionProvisioningStatus            | int           | はい         | トランザクションのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 </br>0 – データベースで API によってトランザクションが作成されている</br>1 – トランザクションが台帳に送信されている</br>2 – トランザクションが台帳に正常にデプロイされている                 |
+| TransactionProvisioningStatus            | int           | はい         | トランザクションのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – データベースで API によってトランザクションが作成されている<br />1 – トランザクションが台帳に送信されている<br />2 – トランザクションが台帳に正常にデプロイされている                 |
 | TransactionValue                         | decimal(32,2) | はい         | トランザクションの値 |
 
 ## <a name="vwcontractproperty"></a>vwContractProperty
@@ -223,13 +223,13 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                      | int           | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName                    | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName             | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled                 | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。</br>**注:** アプリケーションがデータベース内で無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。                      |
+| ApplicationEnabled                 | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。                      |
 | WorkflowId                         | int           | いいえ           | ワークフローの一意識別子 |
 | WorkflowName                       | nvarchar(50)  | いいえ           | ワークフローの名前 |
 | WorkflowDisplayName                | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示するワークフローの名前 |
 | WorkflowDescription                | nvarchar(255) | はい         | ワークフローの説明 |
 | ContractId                         | int           | いいえ           | コントラクトの一意識別子 |
-| ContractProvisioningStatus         | int           | いいえ           | コントラクトのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 </br>0 – データベースで API によってコントラクトが作成されている</br>1 – コントラクトが台帳に送信されている</br>2 – コントラクトが台帳に正常にデプロイされている</br>3 または 4 - 台帳へのコントラクトのデプロイが失敗した</br>5 – コントラクトが台帳に正常にデプロイされた </br></br>バージョン 1.5 以降、値 0 ～ 5 がサポートされています。 現在のリリースでの下位互換性のためには、値 0 ～ 2 のみをサポートするビュー **vwContractPropertyV0** を使用できます。 |
+| ContractProvisioningStatus         | int           | いいえ           | コントラクトのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – データベースで API によってコントラクトが作成されている<br />1 – コントラクトが台帳に送信されている<br />2 – コントラクトが台帳に正常にデプロイされている<br />3 または 4 - 台帳へのコントラクトのデプロイが失敗した<br />5 – コントラクトが台帳に正常にデプロイされた <br /><br />バージョン 1.5 以降、値 0 ～ 5 がサポートされています。 現在のリリースでの下位互換性のためには、値 0 ～ 2 のみをサポートするビュー **vwContractPropertyV0** を使用できます。 |
 | ContractCodeId                     | int           | いいえ           | コントラクトのコード実装の一意識別子 |
 | ContractLedgerIdentifier           | nvarchar(255) | はい         | 特定の分散型台帳のスマート コントラクトのデプロイされたバージョンに関連付けられている一意識別子。 Ethereum など。 |
 | ContractDeployedByUserId           | int           | いいえ           | コントラクトをデプロイしたユーザーの一意識別子 |
@@ -263,14 +263,14 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                      | int           | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName                    | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName             | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled                 | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。</br>**注:** アプリケーションがデータベース内で無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
+| ApplicationEnabled                 | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
 | WorkflowId                         | int           | いいえ           | ワークフローの一意識別子 |
 | WorkflowName                       | nvarchar(50)  | いいえ           | ワークフローの名前 |
 | WorkflowDisplayName                | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
 | WorkflowDescription                | nvarchar(255) | はい         | ワークフローの説明 |
 | ContractLedgerImplementationId     | nvarchar(255) | はい         | 特定の分散型台帳のスマート コントラクトのデプロイされたバージョンに関連付けられている一意識別子。 Ethereum など。 |
 | ContractId                         | int           | いいえ           | コントラクトの一意識別子 |
-| ContractProvisioningStatus         | int           | いいえ           |コントラクトのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 </br>0 – データベースで API によってコントラクトが作成されている</br>1 – コントラクトが台帳に送信されている</br>2 – コントラクトが台帳に正常にデプロイされている</br>3 または 4 - 台帳へのコントラクトのデプロイが失敗した</br>5 – コントラクトが台帳に正常にデプロイされた </br></br>バージョン 1.5 以降、値 0 ～ 5 がサポートされています。 現在のリリースでの下位互換性のためには、値 0 ～ 2 のみをサポートするビュー **vwContractStateV0** を使用できます。 |
+| ContractProvisioningStatus         | int           | いいえ           |コントラクトのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – データベースで API によってコントラクトが作成されている<br />1 – コントラクトが台帳に送信されている<br />2 – コントラクトが台帳に正常にデプロイされている<br />3 または 4 - 台帳へのコントラクトのデプロイが失敗した<br />5 – コントラクトが台帳に正常にデプロイされた <br /><br />バージョン 1.5 以降、値 0 ～ 5 がサポートされています。 現在のリリースでの下位互換性のためには、値 0 ～ 2 のみをサポートするビュー **vwContractStateV0** を使用できます。 |
 | ConnectionId                       | int           | いいえ           | ワークフローのデプロイ先のブロックチェーン インスタンスの一意識別子 |
 | ContractCodeId                     | int           | いいえ           | コントラクトのコード実装の一意識別子 |
 | ContractDeployedByUserId           | int           | いいえ           | コントラクトをデプロイしたユーザーの一意識別子 |
@@ -297,7 +297,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID                 | int           | いいえ           | ユーザーの一意識別子 |
 | ExternalID         | nvarchar(255) | いいえ           | ユーザーの外部識別子です。 既定では、これはユーザーの Azure Active Directory ID を表す guid です。 |
-| ProvisioningStatus | int           | いいえ           |ユーザーのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 </br>0 – API によってユーザーが作成されている</br>1 – キーがデータベース内のユーザーに関連付けられている<br>2 – ユーザーが完全にプロビジョニングされている |
+| ProvisioningStatus | int           | いいえ           |ユーザーのプロビジョニング プロセスの現在の状態を示します。 次のいずれかの値になります。 <br />0 – API によってユーザーが作成されている<br />1 – キーがデータベース内のユーザーに関連付けられている<br />2 – ユーザーが完全にプロビジョニングされている |
 | FirstName          | nvarchar(50)  | はい         | ユーザーの名 |
 | LastName           | nvarchar(50)  | はい         | ユーザーの姓 |
 | EmailAddress       | nvarchar(255) | はい         | ユーザーのメール アドレス |
@@ -331,7 +331,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 
 ## <a name="vwworkflowfunction"></a>vwWorkflowFunction
 
-このビューは、コア ワークフロー メタデータの詳細と、ワークフローの関数とパラメーターを表します。 レポート用に設計されたこのビューには、ワークフローに関連付けられているアプリケーションについてのメタデータも含まれています。 このビューには、ワークフローのレポートを容易にするために複数の基になるテーブルのデータが含まれています。  各ワークフロー関数について、このビューには次のデータが含まれます。
+このビューは、コア ワークフロー メタデータの詳細と、ワークフローの関数とパラメーターを表します。 レポート用に設計されたこのビューには、ワークフローに関連付けられているアプリケーションについてのメタデータも含まれています。 このビューには、ワークフローのレポートを容易にするために複数の基になるテーブルのデータが含まれています。 各ワークフロー関数について、このビューには次のデータが含まれます。
 
 -   関連付けられたアプリケーション定義
 -   関連付けられたワークフロー定義
@@ -371,7 +371,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                | int           | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName              | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName       | nvarchar(255) | いいえ           | ユーザー インターフェイスに表示される名前 |
-| ApplicationEnabled           | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。</br>**注:** アプリケーションがデータベース内で無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
+| ApplicationEnabled           | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
 | WorkflowId                   | int           | いいえ           | ワークフローの一意識別子 |
 | WorkflowName                 | nvarchar(50)  | いいえ           | ワークフローの名前 |
 | WorkflowDisplayName          | nvarchar(255) | いいえ           | ユーザー インターフェイスのワークフローに表示される名前 |
@@ -398,7 +398,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 | ApplicationId                | int           | いいえ           | アプリケーションの一意識別子です |
 | ApplicationName              | nvarchar(50)  | いいえ           | アプリケーションの名前 |
 | ApplicationDisplayName       | nvarchar(255) | いいえ           | アプリケーションの説明 |
-| ApplicationEnabled           | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。</br>**注:** アプリケーションがデータベース内で無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
+| ApplicationEnabled           | ビット           | いいえ           | アプリケーションが現在有効になっているかどうかを示します。<br />**注:** データベース内でアプリケーションを無効として反映できても、関連付けられたコントラクトはブロックチェーンにとどまり、これらのコントラクトに関するデータはデータベースに残されます。 |
 | WorkflowId                   | int           | いいえ           | ワークフローの一意識別子 |
 | WorkflowName                 | nvarchar(50)  | いいえ           | ワークフローの名前 |
 | WorkflowDisplayName          | nvarchar(255) | いいえ           | ワークフローのユーザー インターフェイスに表示される名前 |

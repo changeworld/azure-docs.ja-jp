@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 8ca9fe72e4bd5272a5303b3bacd8c0960504789d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: dedfc7db6aef6d55fd50c94a217bdc489b9615f3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315809"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633863"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
 
@@ -385,7 +385,7 @@ Azure Search のすべてのインデックスは自動的に複数のシャー�
 
 + サンプル インデックスを構築し、さまざまな検索を試してその結果を確認します。 詳しい手順については、[ポータルでのインデックスの構築と照会](search-get-started-portal.md#query-index)に関するページを参照してください。
 
-+ [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) の例に関するセクションや[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)で紹介されているさまざまなクエリ構文をポータルの Search エクスプローラーで試します。
++ [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) の例に関するセクションや[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)で紹介されているさまざまなクエリ構文をポータルの Search エクスプローラーで試します。
 
 + 検索アプリケーションにおけるランク付けをチューニングする方法については、[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)に関するページを参照してください。
 
@@ -393,7 +393,7 @@ Azure Search のすべてのインデックスは自動的に複数のシャー�
 
 + 特定のフィールドに対して最小限の処理または特殊な処理を適用するための[カスタム アナライザーを構成](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)します。
 
-+ このデモ Web サイトで横並びに表示される[標準アナライザーと英語アナライザーを比較](http://alice.unearth.ai/)してください。 
++ このデモ Web サイトで横並びに表示される[標準アナライザーと英語アナライザーを比較](https://alice.unearth.ai/)してください。 
 
 ## <a name="see-also"></a>関連項目
 

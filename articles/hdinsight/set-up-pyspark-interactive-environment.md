@@ -9,17 +9,16 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 82aebd780b7b821675a6ee891cc81e2b1c6fdafb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: bf47915ba93a4a3a7dec338395cfe0ce6aa3cdf6
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437216"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993843"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
 以下の手順では、**HDInsight: PySpark Interactive** を実行して、Python パッケージをインストールする方法を示します。
-
 
 ## <a name="set-up-the-pyspark-interactive-environment-on-macos-and-linux"></a>macOS および Linux で PySpark 対話型環境を設定する
 **python 3.x** を使用している場合は、以下の手順で **pip3** コマンドを使用する必要があります。

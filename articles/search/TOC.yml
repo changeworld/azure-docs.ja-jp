@@ -238,6 +238,8 @@ items:
     href: /rest/api/searchmanagement
   - name: REST (プレビュー)
     href: search-api-preview.md
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.search/searchservices
   - name: 定義済みのスキル (プレビュー)
     href: cognitive-search-predefined-skills.md
     items:
@@ -287,9 +289,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 0c2239acc50e845224a647ba968bccccdf6b3697
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: cc618fc015cc3b6596d9e5fca84fe943ebae45ae
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191804"
+ms.locfileid: "54199104"

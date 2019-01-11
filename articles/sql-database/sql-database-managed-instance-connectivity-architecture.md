@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 964f91f412645e141ca003d511480f6f6eb438a3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e69f6869911555730fe723b340e224c0d5a1e4bb
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343302"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536051"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL Database Managed Instance の接続アーキテクチャ
 
@@ -98,7 +98,7 @@ Managed Instance は、仮想ネットワーク内にあって次の要件を満
 
 ### <a name="mandatory-inbound-security-rules"></a>必須の受信セキュリティ規則 
 
-| Name       |ポート                        |プロトコル|ソース           |宛先|Action|
+| Name       |ポート                        |Protocol|ソース           |宛先|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |任意              |任意        |ALLOW |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |任意        |ALLOW |
@@ -106,14 +106,17 @@ Managed Instance は、仮想ネットワーク内にあって次の要件を満
 
 ### <a name="mandatory-outbound-security-rules"></a>必須の送信セキュリティ規則 
 
-| Name       |ポート          |プロトコル|ソース           |宛先|Action|
+| Name       |ポート          |Protocol|ソース           |宛先|Action|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |80、443、12000|TCP     |任意              |任意        |ALLOW |
 |mi_subnet   |任意           |任意     |任意              |MI SUBNET  |ALLOW |
 
   > [!Note]
   > 必須の受信セキュリティ規則では、ポート 9000、9003、1438、1440、1452 で_任意_のソースからのトラフィックを許可しますが、これらのポートは組み込みのファイアウォールによって保護されます。 この[記事](sql-database-managed-instance-find-management-endpoint-ip-address.md)では、管理エンドポイントの IP アドレスを検索し、ファイアウォール規則を確認する方法を示しています。 
-
+  
+  > [!Note]
+  > Managed Instance でトランザクション レプリケーションを使用していて、マネージ インスタンス内のいずれかのデータベースがパブリッシャーまたはディストリビューターとして使用されている場合は、ポート 445 (TCP 送信) が、Azure ファイル共有にアクセスするためにサブネットのセキュリティ規則で開かれている必要もあります。
+  
 ## <a name="next-steps"></a>次の手順
 
 - 概要については、「 [マネージド インスタンスとは](sql-database-managed-instance.md)」を参照してください。

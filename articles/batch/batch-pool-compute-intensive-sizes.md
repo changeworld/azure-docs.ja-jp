@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: 4663cb467d7d1d864425f4899c829b6618b9547c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3c3d534392431e79feabe37fe940ea87f586c660
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584464"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051698"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
@@ -100,7 +100,7 @@ Batch プール用の特殊な VM サイズを構成するために、必要な�
 
 Windows NC ノードのプールで CUDA アプリケーションを実行するには、NVDIA GPU ドライバーをインストールする必要があります。 次の手順の例では、アプリケーション パッケージを使用して NVIDIA GPU ドライバーをインストールします。 ワークロードが特定の GPU ドライバー バージョンに依存する場合は、このオプションを選択できます。
 
-1. [NVIDIA の Web サイト](http://us.download.nvidia.com/Windows/)から Windows Server 2016 上の GPU ドライバーのセットアップ パッケージをダウンロードします (たとえば、[バージョン 411.82](http://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe))。 *GPUDriverSetup.exe* のような短い名前を使用して、ファイルをローカルで保存します。
+1. [NVIDIA の Web サイト](https://www.nvidia.com/Download/index.aspx)から Windows Server 2016 上の GPU ドライバーのセットアップ パッケージをダウンロードします (たとえば、[バージョン 411.82](http://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe))。 *GPUDriverSetup.exe* のような短い名前を使用して、ファイルをローカルで保存します。
 2. パッケージの zip ファイルを作成します。
 3. パッケージを Batch アカウントにアップロードします。 手順については、[アプリケーション パッケージ](batch-application-packages.md)のガイダンスを参照してください。 アプリケーション ID (*GPUDriver* など) とバージョン (*411.82* など) を指定します。
 1. Batch API または Azure portal で、必要な数のノードとスケールを指定して、仮想マシン構成でプールを作成します。 次の表に、開始タスクを使用して NVIDIA GPU ドライバーを自動的にインストールする際の設定の例を示します。

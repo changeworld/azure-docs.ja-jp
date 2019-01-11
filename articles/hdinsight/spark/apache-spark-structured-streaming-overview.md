@@ -9,24 +9,24 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: 7470783ba3ebac652c83c397ba2bbe683023c657
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 0c2fd29990e180283eb25949b806c4ceac58e2f7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041587"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653630"
 ---
-# <a name="overview-of-spark-structured-streaming"></a>Spark Structured Streaming の概要
+# <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark Structured Streaming の概要
 
-Spark Structured Streaming を使用すると、データ ストリームを処理するためのスケーラブルで、かつ高スループットのフォールト トレラント アプリケーションを実装できます。 Structured Streaming は Spark SQL エンジンに基づいて構築されており、ストリーミング クエリをバッチ クエリと同じ方法で記述できるように、Spark SQL データ フレームおよびデータセットからの構造を機能強化しています。  
+[Apache Spark](https://spark.apache.org/) Structured Streaming を使用すると、データ ストリームを処理するためのスケーラブルで、かつ高スループットのフォールト トレラント アプリケーションを実装できます。 Structured Streaming は Spark SQL エンジンに基づいて構築されており、ストリーミング クエリをバッチ クエリと同じ方法で記述できるように、Spark SQL データ フレームおよびデータセットからの構造を機能強化しています。  
 
-Structured Streaming アプリケーションは HDInsight Spark クラスターで実行され、Kafka、TCP ソケット (デバッグ目的のため)、Azure Storage、または Azure Data Lake Store からのストリーミング データに接続します。 外部のストレージ サービスに依存する後者の 2 つのオプションを使用すると、ストレージに追加された新しいファイルを監視し、それらのファイルがストリーミングされているかのようにその内容を処理できます。 
+Structured Streaming アプリケーションは HDInsight Spark クラスター上で実行され、[Apache Kafka](https://kafka.apache.org/)、TCP ソケット (デバッグのため)、Azure Storage、または Azure Data Lake Storage からのストリーミング データに接続します。 外部のストレージ サービスに依存する後者の 2 つのオプションを使用すると、ストレージに追加された新しいファイルを監視し、それらのファイルがストリーミングされているかのようにその内容を処理できます。 
 
-Structured Streaming は、入力データに選択、プロジェクション、集計、ウィンドウ化、ストリーミング データフレームの参照データフレームとの結合などの操作を適用するための、実行時間の長いクエリを作成します。 次に、その結果をファイル ストレージ (Azure Storage BLOB や Data Lake Store) に、またはカスタム コード (SQL Database や Power BI など) を使用して任意のデータストアに出力します。 Structured Streaming ではまた、ローカルでのデバッグのためにコンソールに出力したり、HDInsight でのデバッグのために生成されたデータを表示できるようにインメモリ テーブルに出力したりする機能も提供されます。 
+Structured Streaming は、入力データに選択、プロジェクション、集計、ウィンドウ化、ストリーミング データフレームの参照データフレームとの結合などの操作を適用するための、実行時間の長いクエリを作成します。 次に、その結果をファイル ストレージ (Azure Storage BLOB や Data Lake Storage) に、またはカスタム コード (SQL Database や Power BI など) を使用して任意のデータストアに出力します。 Structured Streaming ではまた、ローカルでのデバッグのためにコンソールに出力したり、HDInsight でのデバッグのために生成されたデータを表示できるようにインメモリ テーブルに出力したりする機能も提供されます。 
 
 ![HDInsight および Spark Structured Streaming を使用したストリーム処理 ](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Spark Structured Streaming は、Spark Streaming (DStreams) を置き換えています。 将来的には、Structured Streaming が拡張機能やメンテナンスを受けるのに対して、DStreams はメンテナンス モードのみになります。 Structured Streaming は現在、標準でサポートされるソースやシンクに関して DStreams ほど機能が充実していないため、実際の要件を評価して適切な Spark ストリーム処理オプションを選択してください。 
 
 ## <a name="streams-as-tables"></a>テーブルとしてのストリーム
@@ -53,7 +53,7 @@ Structured Streaming では、データがシステムに到着すると、直�
 
 同じシナリオを考えますが、今回は完全モードを使用します。 完全モードでは、テーブルに最新のトリガー実行だけでなく、すべての実行のデータが含まれるように、トリガーごとに出力テーブル全体が更新されます。 完全モードを使用すると、データを入力テーブルから結果テーブルにそのままコピーすることもできます。 トリガーが実行されるたびに、新しい結果行が以前のすべての行と共に現れます。 出力結果テーブルには最終的に、クエリが開始されてから収集されたすべてのデータが格納され、最後はメモリ不足になります。 完全モードは受信データを何らかの方法で集計する集計クエリで使用されることを目的にしているため、トリガーが実行されるたびに、結果テーブルは新しい集計値で更新されます。 
 
-これまでに既に 5 秒分のデータが処理されており、これから 6 秒目のデータが処理されるものとします。 入力テーブルには、時間 00:01 と時間 00:03 のイベントが含まれています。 このクエリ例の目標は、5 秒ごとにデバイスの平均温度を示すことです。 このクエリの実装では、各 5 秒間ウィンドウに含まれるすべての値を取得する集計を適用し、温度を平均して、その間隔の平均温度の行を生成します。 最初の 5 秒間ウィンドウの最後には、(00:01, 1, 95) と (00:03, 1, 98) の 2 組が存在します。 そのため、ウィンドウ 00:00-00:05 に対して、この集計では 96.5 度の平均温度を含む組が生成されます。 次の 5 秒間ウィンドウでは、データ ポイントが時間 00:06 に 1 つしか存在しないため、結果として得られる平均温度は 98 度です。 時間 00:10 には、完全モードを使用しており、このクエリが新しい行だけでなく、集計されたすべての行を出力するため、結果テーブルには 00:00-00:05 と 00:05-00:10 の両方のウィンドウの行が含まれます。 そのため、結果テーブルは、新しいウィンドウが追加されるたびに増大し続けます。    
+これまでに既に 5 秒分のデータが処理されており、これから 6 秒目のデータが処理されるものとします。 入力テーブルには、時間 00:01 と時間 00:03 のイベントが含まれています。 このクエリ例の目標は、5 秒ごとにデバイスの平均温度を示すことです。 このクエリの実装では、各 5 秒間ウィンドウに含まれるすべての値を取得する集計を適用し、温度を平均して、その間隔の平均温度の行を生成します。 最初の 5 秒間ウィンドウの最後には、(00:01, 1, 95) と (00:03, 1, 98) の 2 組が存在します。(00:01, 1, 95) と (00:03, 1, 98) です。 そのため、ウィンドウ 00:00-00:05 に対して、この集計では 96.5 度の平均温度を含む組が生成されます。 次の 5 秒間ウィンドウでは、データ ポイントが時間 00:06 に 1 つしか存在しないため、結果として得られる平均温度は 98 度です。 時間 00:10 には、完全モードを使用しており、このクエリが新しい行だけでなく、集計されたすべての行を出力するため、結果テーブルには 00:00-00:05 と 00:05-00:10 の両方のウィンドウの行が含まれます。 そのため、結果テーブルは、新しいウィンドウが追加されるたびに増大し続けます。    
 
 ![Structured Streaming の完全モード](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
 
@@ -124,22 +124,22 @@ Structured Streaming では、データがシステムに到着すると、直�
 |{u'start': u'2016-07-26T07:00:00.000Z', u'end'...  |95 |   96.980971 | 99 |
 |{u'start': u'2016-07-26T08:00:00.000Z', u'end'...  |95 |   96.965997 | 99 |  
 
-Spark Structured Stream API と、サポートされる入力データ ソース、操作、および出力シンクの詳細については、『[Spark Structured Streaming プログラミング ガイド](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)』を参照してください。
+Spark Structured Stream API と、それがサポートする入力データ ソース、操作、および出力シンクの詳細については、[Apache Spark Structured Streaming プログラミング ガイド](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)を参照してください。
 
 ## <a name="checkpointing-and-write-ahead-logs"></a>チェックポイント機能と先書きログ
 
-回復性とフォールト トレランスを実現するために、Structured Streaming は*チェックポイント機能*を使用して、ノード障害が発生した場合でもストリーム処理を中断なく続行できるようにします。 HDInsight では、Spark はチェックポイントを持続性のあるストレージ (Azure Storage または Data Lake Store のどちらか) に作成します。 これらのチェックポイントでは、ストリーミング クエリに関する進行状況の情報を格納します。 さらに、Structured Streaming では*先書きログ* (WAL) も使用します。 WAL は、受信されたが、まだクエリによって処理されていない取り込まれたデータをキャプチャします。 障害が発生し、WAL から処理が再起動された場合でも、ソースから受信されたどのイベントも失われません。
+回復性とフォールト トレランスを実現するために、Structured Streaming は*チェックポイント機能*を使用して、ノード障害が発生した場合でもストリーム処理を中断なく続行できるようにします。 HDInsight では、Spark はチェックポイントを持続性のあるストレージ (Azure Storage または Data Lake Storage のどちらか) に作成します。 これらのチェックポイントでは、ストリーミング クエリに関する進行状況の情報を格納します。 さらに、Structured Streaming では*先書きログ* (WAL) も使用します。 WAL は、受信されたが、まだクエリによって処理されていない取り込まれたデータをキャプチャします。 障害が発生し、WAL から処理が再起動された場合でも、ソースから受信されたどのイベントも失われません。
 
 ## <a name="deploying-spark-streaming-applications"></a>Spark ストリーミング アプリケーションのデプロイ
 
-通常、Spark Streaming アプリケーションは JAR ファイルにローカルに構築した後、その JAR ファイルを HDInsight クラスターに接続された既定のストレージにコピーすることによって HDInsight 上の Spark にデプロイします。 そのアプリケーションは、POST 操作を使用してクラスターから使用可能な LIVY REST API を使用して起動できます。 POST の本文には、JAR へのパス、メイン メソッドがストリーミング アプリケーションを定義して実行するクラスの名前、オプションでジョブのリソース要件 (実行プログラム、メモリ、コアの数など)、およびアプリケーション コードに必要なすべての構成設定を指定する JSON ドキュメントが含まれています。
+通常、Spark Streaming アプリケーションは JAR ファイルにローカルに構築した後、その JAR ファイルを HDInsight クラスターに接続された既定のストレージにコピーすることによって HDInsight 上の Spark にデプロイします。 そのアプリケーションは、POST 操作を使用して、クラスターから使用可能な [Apache Livy](https://livy.incubator.apache.org/) REST API で起動できます。 POST の本文には、JAR へのパス、メイン メソッドがストリーミング アプリケーションを定義して実行するクラスの名前、オプションでジョブのリソース要件 (実行プログラム、メモリ、コアの数など)、およびアプリケーション コードに必要なすべての構成設定を指定する JSON ドキュメントが含まれています。
 
 ![Spark ストリーミング アプリケーションのデプロイ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-GET 要求を使用して、LIVY エンドポイントに対してすべてのアプリケーションの状態をチェックすることもできます。 最後に、LIVY エンドポイントに対して DELETE 要求を発行することによって、実行中のアプリケーションを終了できます。 LIVY API について詳しくは、「[Livy を使用したリモート ジョブ](apache-spark-livy-rest-interface.md)」を参照してください。
+GET 要求を使用して、LIVY エンドポイントに対してすべてのアプリケーションの状態をチェックすることもできます。 最後に、LIVY エンドポイントに対して DELETE 要求を発行することによって、実行中のアプリケーションを終了できます。 LIVY API の詳細については、[Apache LIVY を使用したリモート ジョブ](apache-spark-livy-rest-interface.md)に関するページを参照してください
 
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight での Apache Spark クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Spark Structured Streaming プログラミング ガイド](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
-* [LIVY を使用した Spark ジョブのリモート起動](apache-spark-livy-rest-interface.md)
+* [Apache Spark Structured Streaming プログラミング ガイド](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
+* [Apache LIVY を使用してリモートで Apache Spark ジョブを起動する](apache-spark-livy-rest-interface.md)

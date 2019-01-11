@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 245372b39f4b730128c593ddd04225bd82875393
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 138368c8e79d68a9a9c5a711b99d8926da7dc68d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387099"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601561"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
 
@@ -32,7 +32,7 @@ Azure SQL Database、エラスティック プール、Managed Instance、およ
 各種の Azure サービスでサポートされているメトリックとログ カテゴリの詳細については、次の資料を参照してください。
 
 * [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 この記事では、データベース、エラスティック プール、および Managed Instance の診断テレメトリを有効にするためのガイダンスを提供します。 また、データベース診断テレメトリを表示するための監視ツールとして Azure SQL Analytics を構成する方法の理解にも役立ちます。
 
@@ -92,8 +92,8 @@ Azure SQL Database の診断テレメトリのストリーミングを有効に�
 
    ![SQL Database の診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
 1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[Archive to storage account] (ストレージ アカウントへのアーカイブ)**、**[イベント ハブへのストリーミング]**、**[Log Analytics への送信]** から選択します。
-1. 標準的なイベント ベースの監視エクスペリエンスを得るには、データベース診断ログ テレメトリ **[SQLInsights]**、**[AutomaticTuning]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、**[Errors]**、**[DatabaseWaitStatistics]**、**[Timeouts]**、**[Blocks]**、**[Deadlocks]** のチェックボックスをオンにします。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
+1. 標準的なイベント ベースの監視エクスペリエンスを得るには、データベース診断ログ テレメトリ **[SQLInsights]**、**[AutomaticTuning]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、**[Errors]**、**[DatabaseWaitStatistics]**、**[Timeouts]**、**[Blocks]**、および **[Deadlocks]** のチェックボックスをオンにします。
 1. 1 分ベースの高度な監視エクスペリエンスを得るには、**[AllMetrics]** のチェックボックスをオンにします。
 1. **[保存]** を選択します。
 
@@ -120,7 +120,7 @@ Managed Instance のデータベースの診断テレメトリのストリーミ
    ![Managed Instance データベースに対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
 1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[Archive to storage account] (ストレージ アカウントへのアーカイブ)**、**[イベント ハブへのストリーミング]**、**[Log Analytics への送信]** から選択します。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
 1. データベース診断テレメトリ **[SQLInsights]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、および **[Errors]** のチェックボックスをオンにします。
 1. **[保存]** を選択します。
 
@@ -152,7 +152,7 @@ Managed Instance のデータベースの診断テレメトリのストリーミ
    ![エラスティック プールに対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-enable.png)
 
 1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[Archive to storage account] (ストレージ アカウントへのアーカイブ)**、**[イベント ハブへのストリーミング]**、**[Log Analytics への送信]** から選択します。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
 1. Log Analytics の場合は、**[構成]** を選択し、**[+Create New Workspace] (+ 新しいワークスペースの作成)** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを選択します。
 1. エラスティック プールの診断テレメトリ **[AllMetrics]** のチェックボックスをオンにします。
 1. **[保存]** を選択します。
@@ -181,9 +181,9 @@ Managed Instance リソースの診断テレメトリのストリーミングを
    ![Managed Instance に対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
 1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[Archive to storage account] (ストレージ アカウントへのアーカイブ)**、**[イベント ハブへのストリーミング]**、**[Log Analytics への送信]** から選択します。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
 1. Log Analytics の場合は、**[構成]** を選択し、**[+Create New Workspace] (+ 新しいワークスペースの作成)** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを使用します。
-1. Managed Instance の診断テレメトリ **[ResourceUsageStats]** のチェックボックスをオンにします。
+1. インスタンスの診断テレメトリ **[ResourceUsageStats]** のチェックボックスをオンにします。
 1. **[保存]** を選択します。
 
    ![Managed Instance に対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
@@ -691,7 +691,7 @@ Azure SQL および Managed Instance データベースのログの詳細につ�
 ログ記録を有効にする方法や、各種の Azure サービスでサポートされているメトリックとログのカテゴリについては、次の資料を参照してください。
 
 * [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Event Hubs の詳細については、次の資料を参照してください。
 

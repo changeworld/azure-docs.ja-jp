@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 2f97a2e8ad38bb3c78333cc2c8eedad8f520e68a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: a6bbc61afcc1ed25d5eac8673b9abfa59e72dba9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036804"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602190"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration と Azure 診断ログおよび Windows イベント転送
 
@@ -151,9 +151,9 @@ Azure Log Integration サービスは、インストール先のマシンから�
 この手順では、Azure Log Integration サービスを実行しているコンピューターを構成し、ログ ファイルを含むストレージ アカウントに接続します。
 
 この手順を完了するには、次の設定が必要です。  
-* **FriendlyNameForSource**: Azure 診断から情報を格納するために仮想マシンを構成した、ストレージ アカウントに適用可能な表示名。
-* **StorageAccountName**: Azure 診断を構成するときに指定したストレージ アカウントの名前。  
-* **StorageKey:** この仮想マシン用に Azure 診断情報が格納されるストレージ アカウントに対するストレージ キー。  
+* **FriendlyNameForSource**:Azure 診断から情報を格納するために仮想マシンを構成した、ストレージ アカウントに適用可能な表示名。
+* **StorageAccountName**:Azure 診断を構成するときに指定したストレージ アカウントの名前。  
+* **StorageKey**:この仮想マシン用に Azure 診断情報が格納されるストレージ アカウントに対するストレージ キー。  
 
 ストレージ キーを取得するには、次の手順を実行します。
 1. [Azure ポータル](http://portal.azure.com)にアクセスします。
@@ -198,7 +198,7 @@ Azure Log Integration サービスは、インストール先のマシンから�
 ## <a name="if-data-isnt-showing-up-in-the-forwarded-events-folder"></a>[転送されたイベント] フォルダーにデータが表示されない場合
 1 時間経過しても、[転送されたイベント] フォルダーにデータが表示されない場合は、次の操作を行います。
 
-1. Azure Log Integration サービスを実行するマシンを確認します。 Azure にアクセスできることを確認します。 接続をテストするには、ブラウザーで、[Azure Portal](http://portal.azure.com) に移動してみてください。
+1. Azure Log Integration サービスを実行するマシンを確認します。 Azure にアクセスできることを確認します。 接続をテストするには、ブラウザーで、[Azure Portal](https://portal.azure.com) に移動してみてください。
 2. ユーザー アカウント AzLog にフォルダー users\Azlog に対する書き込みアクセス許可があることを確認します。
   1. エクスプローラーを開きます。
   2. C:\users に移動します。
@@ -243,7 +243,7 @@ Azure アクティビティ ログは、Azure で発生したサブスクリプ�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Log Integration の詳細については、次の記事を参照してください。「作業の開始」に関する記事を読み、手順を完了してから、この記事の手順を試してください。
+Azure Log Integration の詳細については、次の記事を参照してください。作業の開始に関する記事を読み、手順を完了してから、この記事の手順を試してください。
 
 * [Azure ログ用の Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324)。 このダウンロード センターでは、Azure Log Integration の詳細情報、システム要件、インストール手順などを説明します。
 * [Azure Log Integration の概要](security-azure-log-integration-overview.md)。 この記事では、Azure Log Integration と、その主な機能およびしくみについて紹介します。

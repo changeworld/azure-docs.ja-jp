@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Store での Apache Spark を使用したデータ分析
-description: Spark ジョブを実行して Azure Data Lake Store に格納されているデータを分析する
+title: Azure Data Lake Storage での Apache Spark を使用したデータ分析
+description: Spark ジョブを実行して Azure Data Lake Storage に格納されているデータを分析する
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,68 +9,63 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 9fe4b3e49f8e3270f58929a5708a83ab02e2486c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 51d3c1c63c07c3e2a36d5e963ec00c9f23831579
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255252"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634220"
 ---
-# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>HDInsight Spark クラスターを使用して Data Lake Store のデータを分析する
+# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>HDInsight Spark クラスターを使用して Data Lake Storage 内のデータを分析する
 
-このチュートリアルでは、HDInsight Spark クラスターで利用できる Jupyter Notebook を使用して、Data Lake Store アカウントからデータを読み取るジョブを実行します。
+このチュートリアルでは、HDInsight Spark クラスターで利用できる [Jupyter Notebook](https://jupyter.org/) を使用して、Data Lake Storage アカウントからデータを読み取るジョブを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Data Lake Store アカウント。 「[Azure Portal で Azure Data Lake Store の使用を開始する](../../data-lake-store/data-lake-store-get-started-portal.md)」の手順に従ってください。
+* Azure Data Lake Storage アカウント。 [Azure portal で Azure Data Lake Storage の使用を開始する方法](../../data-lake-store/data-lake-store-get-started-portal.md)の記事の手順に従ってください。
 
-* Data Lake Store をストレージとして使用する Azure HDInsight Spark クラスター。 「[クイック スタート: HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」の手順に従います。
+* Data Lake Storage をストレージとして使用する Azure HDInsight Spark クラスター。 [HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
     
 ## <a name="prepare-the-data"></a>データを準備する
 
-> [!NOTE]
-> Data Lake Store を既定のストレージとして使用する HDInsight クラスターを作成した場合は、この手順を行う必要はありません。 クラスター作成処理で、クラスター作成中に指定する Data Lake Store アカウントにいくつかのサンプル データが追加されるためです。 スキップして、「[Data Lake Store を使用する HDInsight Spark クラスターを使用する](#use-an-hdinsight-spark-cluster-with-data-lake-store)」に進みます。
->
->
+> [!NOTE]  
+> Data Lake Storage を既定のストレージとして使用する HDInsight クラスターを作成した場合は、この手順を行う必要はありません。 クラスター作成処理で、クラスター作成中に指定する Data Lake Storage アカウントにいくつかのサンプル データが追加されるためです。 スキップして、「[Data Lake Storage で HDInsight Spark クラスターを使用する](#use-an-hdinsight-spark-cluster-with-data-lake-store)」に進みます。
 
-Data Lake Store を追加ストレージとして使用し、Azure Storage Blob を既定のストレージとして使用する HDInsight クラスターを作成した場合は、まず、いくつかのサンプル データを Data Lake Store アカウントにコピーする必要があります。 HDInsight クラスターに関連付けられている Azure Storage Blob のサンプル データを使用することができます。 この操作には、 [ADLCopy ツール](https://aka.ms/downloadadlcopy) を使用できます。 リンク先からツールをダウンロードしてインストールします。
+Data Lake Storage を追加ストレージとして使用し、Azure Storage Blob を既定のストレージとして使用する HDInsight クラスターを作成した場合は、まず、いくつかのサンプル データを Data Lake Storage アカウントにコピーする必要があります。 HDInsight クラスターに関連付けられている Azure Storage Blob のサンプル データを使用することができます。 この操作には、 [ADLCopy ツール](https://aka.ms/downloadadlcopy) を使用できます。 リンク先からツールをダウンロードしてインストールします。
 
 1. コマンド プロンプトを開き、AdlCopy がインストールされているディレクトリ (通常は `%HOMEPATH%\Documents\adlcopy`) に移動します。
 
-2. 次のコマンドを実行して、ソース コンテナーの特定の BLOB を Data Lake Store にコピーします。
+2. 次のコマンドを実行して、ソース コンテナーの特定の BLOB を Data Lake Storage にコピーします。
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
-    **/HdiSamples/HdiSamples/SensorSampleData/hvac/** にある **HVAC.csv** サンプル データ ファイルを Azure Data Lake Store アカウントにコピーします。 コード スニペットを次に示します。
+    **/HdiSamples/HdiSamples/SensorSampleData/hvac/** にある **HVAC.csv** サンプル データ ファイルを Azure Data Lake Storage アカウントにコピーします。 コード スニペットを次に示します。
 
         AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
-   > [!WARNING]
+   > [!WARNING]  
    > ファイル名とパス名の大文字/小文字が正しいことを確認します。
-   >
-   >
-3. Data Lake Store アカウントがある Azure サブスクリプションの資格情報を入力するように求められます。 次のスニペットのような出力が表示されます。
+
+3. Data Lake Storage アカウントがある Azure サブスクリプションの資格情報を入力するように求められます。 次のスニペットのような出力が表示されます。
 
         Initializing Copy.
         Copy Started.
         100% data copied.
         Copy Completed. 1 file copied.
 
-    データ ファイル (**HVAC.csv**) が、Data Lake Store アカウントの **/hvac** フォルダーにコピーされます。
+    データ ファイル (**HVAC.csv**) が、Data Lake Storage アカウントの **/hvac** フォルダーにコピーされます。
 
-## <a name="use-an-hdinsight-spark-cluster-with-data-lake-store"></a>Data Lake Store を使用する HDInsight Spark クラスターを使用する
+## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage"></a>Data Lake Storage で HDInsight Spark クラスターを使用する
 
-1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
+1. [Azure portal](https://portal.azure.com/) のスタート画面で Apache Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
 
 2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
-   > [!NOTE]
+   > [!NOTE]  
    > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   >
-   >
 
 3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
 
@@ -84,9 +79,9 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
 
      ![Jupyter Notebook ジョブのステータス](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter Notebook ジョブのステータス")
 
-5. Data Lake Store アカウントにコピーした **HVAC.csv** ファイルを使用して、サンプル データを一時テーブルに読み込みます。 Data Lake Store アカウントのデータにアクセスするには、次の URL パターンを使用します。
+5. Data Lake Storage アカウントにコピーした **HVAC.csv** ファイルを使用して、サンプル データを一時テーブルに読み込みます。 Data Lake Storage アカウントのデータにアクセスするには、次の URL パターンを使用します。
 
-    * Data Lake Store を既定のストレージとしている場合、HVAC.csv は次の URL と同じようなパスになります。
+    * Data Lake Storage を既定のストレージとしている場合、HVAC.csv は次の URL と同じようなパスになります。
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
@@ -94,13 +89,13 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
 
             adl:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
-    * Data Lake Store を追加ストレージとしている場合、HVAC.csv は、次のようなコピーした場所にあります。
+    * Data Lake Storage を追加ストレージとしている場合、HVAC.csv は、次のようなコピーした場所にあります。
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
 
-     空のセルに次のコード例を貼り付けて、**MYDATALAKESTORE** を Data Lake Store アカウント名に置き換え、**Shift + Enter** キーを押します。 このコード サンプルは、 **hvac**という一時テーブルにデータを登録します。
+     空のセルに次のコード例を貼り付けて、**MYDATALAKESTORE** を Data Lake Storage アカウント名に置き換え、**Shift + Enter** キーを押します。 このコード サンプルは、 **hvac**という一時テーブルにデータを登録します。
 
-            # Load the data. The path below assumes Data Lake Store is default storage for the Spark cluster
+            # Load the data. The path below assumes Data Lake Storage is default storage for the Spark cluster
             hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/cluster/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
             # Create the schema
@@ -115,7 +110,7 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
             # Register the data fram as a table to run queries against
             hvacdf.registerTempTable("hvac")
 
-6. PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
+6. PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Apache Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
@@ -134,5 +129,5 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
 ## <a name="next-steps"></a>次の手順
 
 * [スタンドアロン Scala アプリケーションを作成して、Apache Spark クラスターで実行する](apache-spark-create-standalone-application.md)
-* [Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)
-* [Azure Toolkit for Eclipse の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する](apache-spark-eclipse-tool-plugin.md)
+* [Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)
+* [Azure Toolkit for Eclipse の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-eclipse-tool-plugin.md)

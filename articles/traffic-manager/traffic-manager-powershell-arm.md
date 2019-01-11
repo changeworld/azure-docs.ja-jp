@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 8696f4780db8b98457b56dd7f1162553697023d4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93d52101569e911c90377f26a9773d61eeaaf229
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237929"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653681"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 
@@ -111,7 +111,7 @@ Traffic Manager エンドポイントには、次の 3 種類があります。
 
 Azure エンドポイントは、Azure でホストされるサービスを参照します。 2 種類の Azure エンドポイントがサポートされています。
 
-1. Azure Web Apps 
+1. Azure App Service
 2. Azure PublicIpAddress リソース (ロード バランサーまたは仮想マシン NIC に接続できます)。 PublicIpAddress には、Traffic Manager で使用するために DNS 名を割り当てておく必要があることに注意してください。
 
 いずれの場合も、次のことが当てはまります。
@@ -121,9 +121,9 @@ Azure エンドポイントは、Azure でホストされるサービスを参�
 * "Weight" の指定は省略できます。 Weight が使用されるのは、プロファイルがトラフィック ルーティング方法として 'Weighted' を使用するように構成されている場合のみです。 それ以外の場合は、無視されます。 指定する場合、値は 1 から 1000 までの数値である必要があります。 既定値は '1' です。
 * "Priority" の指定は省略できます。 Priority が使用されるのは、プロファイルがトラフィック ルーティング方法として 'Priority' を使用するように構成されている場合のみです。 それ以外の場合は、無視されます。 有効な値は 1 から 1000 で、数が小さいほど優先順位が高くなります。 1 つのエンドポイントに指定した場合は、すべてのエンドポイントに指定する必要があります。 省略した場合は、1 から始まる既定値が、エンドポイントのリスト順に適用されます。
 
-### <a name="example-1-adding-web-app-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>例 1: `Add-AzureRmTrafficManagerEndpointConfig` を使用して Web アプリ エンドポイントを追加する
+### <a name="example-1-adding-app-service-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>例 1:`Add-AzureRmTrafficManagerEndpointConfig` を使用して App Service エンドポイントを追加する
 
-この例では Traffic Manager プロファイルを作成し、`Add-AzureRmTrafficManagerEndpointConfig` コマンドレットを使用して 2 つの Web アプリ エンドポイントを追加します。
+この例では Traffic Manager プロファイルを作成し、`Add-AzureRmTrafficManagerEndpointConfig` コマンドレットを使用して 2 つのアプリ サービス アプリ エンドポイントを追加します。
 
 ```powershell
 $profile = New-AzureRmTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -133,7 +133,7 @@ $webapp2 = Get-AzureRMWebApp -Name webapp2
 Add-AzureRmTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $profile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
-### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>例 2: `New-AzureRmTrafficManagerEndpoint` を使用して、publicIpAddress エンドポイントを追加する
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>例 2:`New-AzureRmTrafficManagerEndpoint` を使用して publicIpAddress エンドポイントを追加する
 
 この例では、パブリック IP アドレス リソースが Traffic Manager プロファイルに追加されます。 パブリック IP アドレスでは DNS 名が構成されている必要があります。また、パブリック IP アドレスは、VM の NIC、またはロード バランサーにバインドすることができます。
 
@@ -152,7 +152,7 @@ Traffic Manager は、外部エンドポイントを使用して、Azure の外�
 * 'Performance' トラフィック ルーティング方法を使用する場合、'EndpointLocation' が必須です。 それ以外の場合は省略可能です。 値には、[有効な Azure リージョン名](https://azure.microsoft.com/regions/)を指定する必要があります。
 * Azure エンドポイントについては、'Weight' と 'Priority' は省略可能です。
 
-### <a name="example-1-adding-external-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>例 1: `Add-AzureRmTrafficManagerEndpointConfig` と `Set-AzureRmTrafficManagerProfile` を使用して外部のエンドポイントを追加する
+### <a name="example-1-adding-external-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>例 1:`Add-AzureRmTrafficManagerEndpointConfig` と `Set-AzureRmTrafficManagerProfile` を使用して外部エンドポイントを追加する
 
 この例では、Traffic Manager プロファイルを作成し、2 つの外部エンドポイントを追加して、変更をコミットします。
 
@@ -163,7 +163,7 @@ Add-AzureRmTrafficManagerEndpointConfig -EndpointName us-endpoint -TrafficManage
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
-### <a name="example-2-adding-external-endpoints-using-new-azurermtrafficmanagerendpoint"></a>例 2: `New-AzureRmTrafficManagerEndpoint` を使用して外部のエンドポイントを追加する
+### <a name="example-2-adding-external-endpoints-using-new-azurermtrafficmanagerendpoint"></a>例 2:`New-AzureRmTrafficManagerEndpoint` を使用して外部エンドポイントを追加する
 
 この例では、既存のプロファイルに外部エンドポイントを追加しています。 プロファイルは、プロファイル名とリソース グループ名を使用して指定します。
 
@@ -182,7 +182,7 @@ Traffic Manager プロファイルごとに 1 つのトラフィック ルーテ
 * Azure エンドポイントについては、'Weight' と 'Priority' は省略可能です。
 * 'MinChildEndpoints' パラメーターは省略可能で、 既定値は '1' です。 利用可能なエンドポイントの数がこのしきい値を下回った場合、親プロファイルは子プロファイルを '機能低下' と見なし、トラフィックを親プロファイルの他のエンドポイントにトラフィックを振り向けます。
 
-### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>例 1: `Add-AzureRmTrafficManagerEndpointConfig` と `Set-AzureRmTrafficManagerProfile` を使用して入れ子になったエンドポイントを追加する
+### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>例 1:`Add-AzureRmTrafficManagerEndpointConfig` と `Set-AzureRmTrafficManagerProfile` を使用して入れ子にされたエンドポイントを追加する
 
 この例では、Traffic Manager の子プロファイルと親プロファイルを新たに作成します。入れ子になったエンドポイントとして子を親に追加して変更をコミットします。
 
@@ -195,7 +195,7 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 
 簡潔にするために、この例では、子プロファイルや親プロファイルには他のエンドポイントを追加していません。
 
-### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>例 2: `New-AzureRmTrafficManagerEndpoint` を使用して入れ子になったエンドポイントを追加する
+### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>例 2:`New-AzureRmTrafficManagerEndpoint` を使用して入れ子にされたエンドポイントを追加する
 
 この例では、既存の親プロファイルに、入れ子になったエンドポイントとして既存の子プロファイルを追加しています。 プロファイルは、プロファイル名とリソース グループ名を使用して指定します。
 
@@ -223,7 +223,7 @@ New-AzureRmTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName 
 1. `Get-AzureRmTrafficManagerProfile` を使用して Traffic Manager プロファイルを取得し、プロファイル内のエンドポイントのプロパティを更新した後、`Set-AzureRmTrafficManagerProfile` を使用して変更をコミットします。 この方法の利点は、1 回の操作で複数のエンドポイントを更新できることです。
 2. `Get-AzureRmTrafficManagerEndpoint` を使用して Traffic Manager エンドポイントを取得し、エンドポイントのプロパティを更新した後、`Set-AzureRmTrafficManagerEndpoint` を使用して変更をコミットします。 この方法は、プロファイル内の Endpoints 配列にインデックスを作成する必要がないため、より単純です。
 
-### <a name="example-1-updating-endpoints-using-get-azurermtrafficmanagerprofile-and-set-azurermtrafficmanagerprofile"></a>例 1: `Get-AzureRmTrafficManagerProfile` と `Set-AzureRmTrafficManagerProfile` を使用してエンドポイントを更新する
+### <a name="example-1-updating-endpoints-using-get-azurermtrafficmanagerprofile-and-set-azurermtrafficmanagerprofile"></a>例 1:1: `Get-AzureRmTrafficManagerProfile` と `Set-AzureRmTrafficManagerProfile` を使用してエンドポイントを更新する
 
 この例では、既存のプロファイル内の 2 つのエンドポイントの優先度を変更します。
 
@@ -234,7 +234,7 @@ $profile.Endpoints[1].Priority = 1
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
-### <a name="example-2-updating-an-endpoint-using-get-azurermtrafficmanagerendpoint-and-set-azurermtrafficmanagerendpoint"></a>例 2: `Get-AzureRmTrafficManagerEndpoint` と `Set-AzureRmTrafficManagerEndpoint` を使用してエンドポイントを更新する
+### <a name="example-2-updating-an-endpoint-using-get-azurermtrafficmanagerendpoint-and-set-azurermtrafficmanagerendpoint"></a>例 2:`Get-AzureRmTrafficManagerEndpoint` と `Set-AzureRmTrafficManagerEndpoint` を使用してエンドポイントを更新する
 
 この例では、既存のプロファイル内の 1 つのエンドポイントの重み付けを変更します。
 
@@ -249,7 +249,7 @@ Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
 Traffic Manager を使用すると、プロファイル全体だけでなく、個々のエンドポイントを有効にしたり無効にしたりすることができます。
 これらの変更は、エンドポイントまたはプロファイルのリソースを取得、更新、設定することで実行できます。 このような一般的な操作を合理化するために、専用のコマンドレットを使用した操作もサポートされています。
 
-### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>例 1: Traffic Manager プロファイルを有効または無効にする
+### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>例 1:Traffic Manager プロファイルを有効または無効にする
 
 Traffic Manager プロファイルを有効にするには、`Enable-AzureRmTrafficManagerProfile` を使用します。 プロファイルは、プロファイル オブジェクトを使用して指定できます。 プロファイル オブジェクトは、パイプライン経由、または '-TrafficManagerProfile' パラメーターを使用して渡すことができます。 この例では、プロファイル名とリソース グループ名でプロファイルを指定します。
 
@@ -265,7 +265,7 @@ Disable-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResour
 
 Disable-AzureRmTrafficManagerProfile コマンドレットでは、確認を求めるメッセージが表示されます。 '-Force' パラメーターを使用すると、このプロンプトを表示しないようにすることができます。
 
-### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>例 2: Traffic Manager エンドポイントを有効または無効にする
+### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>例 2:Traffic Manager エンドポイントを有効または無効にする
 
 Traffic Manager エンドポイントを無効にするには、`Enable-AzureRmTrafficManagerEndpoint` を使用します。 エンドポイントの指定には次の 2 つの方法があります。
 

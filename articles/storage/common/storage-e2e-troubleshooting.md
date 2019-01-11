@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: cf183b0a78ff3f7e442ea8052f37fc2df58aac54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 80a2ed779fa65c669be81fdf8212b7d018325ee5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262320"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634509"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -94,6 +94,8 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 
 **PowerShell を使用**
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Azure の PowerShell を使用するには、 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。
 
 1. [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0) コマンドレットを使用して、Azure ユーザー アカウントを PowerShell ウィンドウに追加します。
@@ -114,13 +116,13 @@ Azure の PowerShell を使用するには、 [Azure PowerShell のインスト�
 4. Blob service のストレージ ログを有効にします。
    
     ```powershell
-    Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 5. Blob service のストレージ メトリックを有効にしますが、その際、**-MetricsType** を `Minute` に設定します。
    
     ```powershell
-    Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 ### <a name="configure-net-client-side-logging"></a>.NET のクライアント側のログを構成する
@@ -198,11 +200,11 @@ Message Analyzer には、サーバー、クライアント、およびネット
 2. Message Analyzer を起動します。
 3. **[ツール]** メニューの **[資産マネージャー]** を選択します。 **[資産マネージャー]** ダイアログで、**[ダウンロード]** を選択し、**Azure Storage** をフィルター処理します。 以下の画像のように、Azure Storage アセットが表示されます。
 4. **[Sync All Displayed Items]** をクリックして、Azure Storage アセットをインストールします。 以下に利用できるアセットを挙げます。
-   * **Azure Storage Color Rules:** Azure Storage カラー ルールにより、色、テキスト、およびフォント スタイルを使用する特別なフィルターを定義し、トレース内の特定の情報を含むメッセージを強調表示することができます。
-   * **Azure Storage Charts:** Azure Storage チャートは、サーバー ログ データをグラフ化する定義済みのチャートです。 現時点で Azure Storage チャートを使用する場合、Analysis Grid に読み込むことができるのはサーバー ログのみである点に注意してください。
-   * **Azure Storage Parsers:** Azure Storage パーサーは、Azure Storage クライアント、サーバー、および HTTP のログを解析して Analysis Grid に表示します。
-   * **Azure Storage Filters:** Azure Storage フィルターは、Analysis Grid でデータのクエリに使用できる、定義済みの条件です。
-   * **Azure Storage View Layouts:** Azure Storage ビュー レイアウトは、列の定義済みレイアウトであり、Analysis Grid 内のグループです。
+   * **Azure Storage の色ルール:** Azure Storage の色ルールにより、色、テキスト、およびフォント スタイルを使用する特別なフィルターを定義し、トレース内の特定の情報を含むメッセージを強調表示することができます。
+   * **Azure Storage チャート:** Azure Storage チャートは、サーバー ログ データをグラフ化する定義済みのチャートです。 現時点で Azure Storage チャートを使用する場合、Analysis Grid に読み込むことができるのはサーバー ログのみである点に注意してください。
+   * **Azure Storage パーサー:** Azure Storage パーサーは、Azure Storage クライアント、サーバー、および HTTP のログを解析して Analysis Grid に表示します。
+   * **Azure Storage フィルター:** Azure Storage フィルターは、Analysis Grid でデータのクエリに使用できる、定義済みの条件です。
+   * **Azure Storage ビュー レイアウト:** Azure Storage ビュー レイアウトは、列の定義済みレイアウトであり、Analysis Grid 内のグループです。
 5. アセットのインストール後に、Message Analyzer を再起動します。
 
 ![Message Analyzer の資産マネージャー](./media/storage-e2e-troubleshooting/mma-start-page-1.png)

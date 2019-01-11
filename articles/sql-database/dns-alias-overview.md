@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,ayolubek
+ms.reviewer: genemi,ayolubek, jrasnick
 manager: craigg
 ms.date: 02/05/2018
-ms.openlocfilehash: 290414ca07014d5f3bfbe160b0f571397fb13948
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 96627d96acee76516c9dc3db1b58d6e4b7b6ff15
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467131"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601042"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database の DNS エイリアス
 
@@ -95,10 +95,10 @@ DNS エイリアスを管理するために使用されている PowerShell コ�
 
 コード例で使用されているコマンドレットは次のとおりです。
 
-- [New-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): Azure SQL Database サービス システムに新しい DNS エイリアスを作成します。 このエイリアスは、Azure SQL Database サーバー 1 を参照します。
-- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): SQL DB サーバー 1 に割り当てられているすべての DNS エイリアスを取得して一覧表示します。
-- [Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): エイリアスが参照するよう構成されているサーバー名をサーバー 1 から SQL DB サーバー 2 に変更します。
-- [Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1): エイリアスの名前を使って、DNS エイリアスを SQL DB サーバー 2 から削除します。
+- [New-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/New-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1):Azure SQL Database サービス システムに新しい DNS エイリアスを作成します。 このエイリアスは、Azure SQL Database サーバー 1 を参照します。
+- [Get-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1):SQL DB サーバー 1 に割り当てられているすべての DNS エイリアスを取得して一覧表示します。
+- [Set-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Set-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1):エイリアスが参照するよう構成されているサーバー名をサーバー 1 から SQL DB サーバー 2 に変更します。
+- [Remove-AzureRMSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Remove-AzureRmSqlServerDnsAlias?view=azurermps-5.1.1):エイリアスの名前を使って、DNS エイリアスを SQL DB サーバー 2 から削除します。
 
 上記のコマンドレットは、モジュール バージョン 5.1.1 以降の **AzureRM.Sql** モジュールに追加されています。
 

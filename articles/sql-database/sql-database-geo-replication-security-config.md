@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: c2678f3422b2056592966c9eb58646cf3f04f451
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a65a7aeeff6bfa10185e4d6756f2808e6df2d026
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276011"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601262"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する
 
@@ -92,7 +92,7 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 
 ## <a name="next-steps"></a>次の手順
 
-* データベースへのアクセスとログインの管理の詳細については、「[SQL Database のセキュリティ: データベースのアクセスとログインのセキュリティの管理](sql-database-manage-logins.md)」を参照してください。
+* データベースへのアクセスとログインの管理の詳細については、[SQL Database のセキュリティ:データベースのアクセスとログインのセキュリティの管理](sql-database-manage-logins.md)を参照してください。
 * 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 * アクティブ geo レプリケーションについては、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)に関するページを参照してください。
 * 自動フェールオーバー グループについては、[自動フェールオーバー グループ](sql-database-auto-failover-group.md)に関するページを参照してください。

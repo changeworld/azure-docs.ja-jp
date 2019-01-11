@@ -9,20 +9,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 933506e732926b0f3827f039a65e78acd3a6932b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163838"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653817"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
 
-Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で [Apache HBase](http://hbase.apache.org/) レプリケーションを設定する方法について説明します。
+Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で [Apache HBase](https://hbase.apache.org/) レプリケーションを設定する方法について説明します。
 
 クラスターのレプリケーションでは、ソース プッシュの手法が使用されます。 HBase クラスターは、ソースまたはターゲットになることも、両方のロールを同時に満たすこともできます。 レプリケーションは非同期です。 レプリケーションの目的は、最終的な一貫性です。 レプリケーションが有効になった列ファミリに対する編集をソースが受け取ると、その編集はすべてのターゲット クラスターに伝達されます。 クラスター間でデータがレプリケートされるときは、ソース クラスターとそのデータを既に消費しているすべてのクラスターが追跡されて、レプリケーション ループが防止されます。
 
-このチュートリアルでは、ソースとターゲット間のレプリケーションを設定します。 他のクラスター トポロジについては、[Apache HBase のリファレンス ガイド](http://hbase.apache.org/book.html#_cluster_replication)を参照してください。
+このチュートリアルでは、ソースとターゲット間のレプリケーションを設定します。 他のクラスター トポロジについては、[Apache HBase のリファレンス ガイド](https://hbase.apache.org/book.html#_cluster_replication)を参照してください。
 
 次に示すのは、単一の仮想ネットワークでの HBase レプリケーションの使用例です。
 
@@ -121,7 +121,7 @@ Bind をインストールするには、次の手順に従います。
 
     `sshuser` を、DNS 仮想マシンの作成時に指定した SSH ユーザー アカウントに置き換えます。
 
-    > [!NOTE]
+    > [!NOTE]  
     > `ssh` ユーティリティは、さまざまな方法で取得できます。 Linux、Unix、および macOS では、オペレーティング システムの一部として提供されます。 Windows を使用している場合は、次のオプションのいずれかを検討してください。
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
@@ -162,7 +162,7 @@ Bind をインストールするには、次の手順に従います。
     };
     ```
     
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > `goodclients` セクションの値を、2 つの仮想ネットワークの IP アドレス範囲に置き換えます。 このセクションは、この DNS サーバーが受け入れる要求の転送元アドレスを定義します。
 
     このファイルを編集するには、次のコマンドを使用します。
@@ -197,7 +197,7 @@ Bind をインストールするには、次の手順に従います。
     };
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` を、別の仮想ネットワークの DNS サフィックスに置き換えます。 フォワーダー IP は、他の仮想ネットワーク内の DNS サーバーのプライベート IP アドレスです。
 
     このファイルを編集するには、次のコマンドを使用します。
@@ -221,7 +221,7 @@ Bind をインストールするには、次の手順に従います。
     nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` を、他のネットワーク内の DNS 仮想マシンの完全修飾ドメイン名 (FQDN) に置き換えます。
     >
     > `10.2.0.4` を、他の仮想ネットワーク内のカスタム DNS サーバーの __内部 IP アドレス__ に置き換えます。
@@ -258,7 +258,7 @@ sudo service bind9 status
 
 ## <a name="create-apache-hbase-clusters"></a>Apache HBase クラスターを作成する
 
-2 つの仮想ネットワークのそれぞれに、次の構成の [Apache HBase](http://hbase.apache.org/) クラスターを作成します。
+2 つの仮想ネットワークのそれぞれに、次の構成の [Apache HBase](https://hbase.apache.org/) クラスターを作成します。
 
 - **リソース グループ名**: 仮想ネットワークの作成時と同じリソース グループ名を使用します。
 - **クラスターの種類**:hbase
@@ -274,7 +274,7 @@ sudo service bind9 status
 
 クラスターをレプリケートする場合は、レプリケートするテーブルを指定する必要があります。 このセクションでは、ソース クラスターにデータを読み込みます。 次のセクションで、2 つのクラスター間のレプリケーションを有効にします。
 
-**Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、[HDInsight の Apache HBase を使用する方法に関する Apache HBase チュートリアル](apache-hbase-tutorial-get-started-linux.md)の指示に従います。
+**Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、[Apache HBase のチュートリアル:HDInsight の Apache HBase の使用を開始する方法](apache-hbase-tutorial-get-started-linux.md)に関するページの指示に従います。
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 
@@ -295,8 +295,7 @@ sudo service bind9 status
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
-    >[!note]
-    >
+    > [!NOTE]
     > ソースと宛先の両方のクラスター DNS 名に FQDN ではなくホスト名を使用します。
 
 6. **作成**を選択します。 このスクリプトの実行には、少し時間がかかます (特に **-copydata** 引数を使用する場合)。

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: f15a0670932a9017c079ff0cf1e7cb4ad598a9c4
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 326f0e21582c1aee03c8a44adcd709f3ddf59b0b
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004920"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119630"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -53,10 +53,10 @@ Application Insights では、最近の使用パターンに基づいてコス�
 
 ![価格の選択](./media/pricing/pricing-001.png)
 
-A. 該当の月のデータ量を確認します。 これには、サーバーおよびクライアント アプリから、また可用性テストから ([サンプリング](../../application-insights/app-insights-sampling.md)の後に) 受信され保持されたすべてのデータが含まれます。  
+A. 該当の月のデータ量を確認します。 これには、サーバーおよびクライアント アプリから、また可用性テストから ([サンプリング](../../azure-monitor/app/sampling.md)の後に) 受信され保持されたすべてのデータが含まれます。  
 B. [複数ステップ Web テスト](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests)で別料金が発生しています。 (これには、データ ボリューム料金に含まれるシンプルな可用性テストは含まれません。)  
 C. 過去 1 か月のデータ ボリュームの傾向を表示します。  
-D. データ インジェストの[サンプリング](../../application-insights/app-insights-sampling.md)を有効にします。   
+D. データ インジェストの[サンプリング](../../azure-monitor/app/sampling.md)を有効にします。   
 E. 1 日のデータ ボリュームの上限を設定します。  
 
 Application Insights の使用量をさらに詳しく調査するには、**[メトリック]** ページを開き、"データ ポイントの量" という名前のメトリックを追加してから、*[Apply splitting]\(分割の適用\)* オプションを選択して、"テレメトリ項目の種類" でデータを分割します。 
@@ -68,7 +68,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 ## <a name="data-rate"></a>データ速度
 送信するデータの量は次の 3 つの方法で制限されます。
 
-* **サンプリング**:サンプリングを使用すると、メトリックのひずみを最小に抑えて、サーバーおよびクライアント アプリから送信されるテレメトリの量を減らすことができます。 サンプリングは、送信するデータの量を調整するために使用できる主要なツールです。 [サンプリング機能の詳細については、こちらを参照してください](../../application-insights/app-insights-sampling.md)。 
+* **サンプリング**:サンプリングを使用すると、メトリックのひずみを最小に抑えて、サーバーおよびクライアント アプリから送信されるテレメトリの量を減らすことができます。 サンプリングは、送信するデータの量を調整するために使用できる主要なツールです。 [サンプリング機能の詳細については、こちらを参照してください](../../azure-monitor/app/sampling.md)。 
 * **日次上限**:Azure portal で Application Insights リソースを作成する場合、日次上限は 100 GB/日に設定されます。 Visual Studio から Application Insights リソースを作成する場合の既定値は小 (32.3 MB/日) です。 日次上限の既定値は、テストを容易にするために設定されます。 アプリを実稼働環境にデプロイする前に、ユーザーが日次上限を上げることになります。 
 
     高トラフィック アプリケーション用に最大値の引き上げを要求する場合を除き、最大の上限は 1,000 GB/日です。 
@@ -91,7 +91,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 ## <a name="reduce-your-data-rate"></a>データ速度を低下させる
 データ ボリュームを減らすために、以下のことを実行できます。
 
-* [サンプリング](../../application-insights/app-insights-sampling.md)の使用。 このテクノロジは、メトリックがゆがめずにデータ速度を低下させます。 Search では、関連項目間を移動する機能は失われません。 サーバー アプリケーションでは、サンプリングは自動的に動作します。
+* [サンプリング](../../azure-monitor/app/sampling.md)の使用。 このテクノロジは、メトリックがゆがめずにデータ速度を低下させます。 Search では、関連項目間を移動する機能は失われません。 サーバー アプリケーションでは、サンプリングは自動的に動作します。
 * [報告できる AJAX 呼び出しの数を制限する](../../azure-monitor/app/javascript.md#detailed-configuration) か、AJAX レポートを無効にします。
 * [ApplicationInsights.config を編集](../../azure-monitor/app/configuration-with-applicationinsights-config.md)し、不要なコレクション モジュールを無効にします。 たとえば、パフォーマンス カウンターや依存関係のデータが重要ではないと判断した場合などに検討します。
 * 異なるインストルメンテーション キー間でテレメトリを分割します。 
@@ -101,20 +101,20 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 日次ボリューム上限を使用すると、収集されるデータを制限できます。 ただし、上限に達した場合は、その日の残りの時間についてアプリケーションから送信されたすべてのテレメトリが失われます。 アプリケーションが日次上限に達することは "*望ましくありません*"。 日次上限に達した後は、アプリケーションの正常性とパフォーマンスを追跡できません。
 
-日次ボリューム上限を使用する代わりに、[サンプリング](../../application-insights/app-insights-sampling.md)を使用して、データ ボリュームを目的のレベルに調整してください。 その後、アプリケーションが予期せず大量のテレメトリの送信を開始した場合に、"最後の手段" としてのみ日次上限を使用します。
+日次ボリューム上限を使用する代わりに、[サンプリング](../../azure-monitor/app/sampling.md)を使用して、データ ボリュームを目的のレベルに調整してください。 その後、アプリケーションが予期せず大量のテレメトリの送信を開始した場合に、"最後の手段" としてのみ日次上限を使用します。
 
 日次上限を変更するには、Application Insights リソースの **[構成]** セクションで、**[使用量と推定コスト]** ウィンドウから **[日次上限]** を選択します。
 
 ![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-003.png)
 
 ## <a name="sampling"></a>サンプリング
-[サンプリング](../../application-insights/app-insights-sampling.md)は、テレメトリがアプリに送信される速度を低下させる一方で、診断検索中に関連イベントを見つける機能を保持する方法です。 適切なイベント カウントも保持されます。
+[サンプリング](../../azure-monitor/app/sampling.md)は、テレメトリがアプリに送信される速度を低下させる一方で、診断検索中に関連イベントを見つける機能を保持する方法です。 適切なイベント カウントも保持されます。
 
 サンプリングは、料金を削減し、月間クォータ内で維持する効果的な方法です。 サンプリング アルゴリズムはテレメトリの関連項目を保持するので、たとえば、Search を使用する場合は、特定の例外に関連する要求を検出できます。 アルゴリズムは、要求レート、例外レート、およびその他のカウントについてメトリックス エクスプローラーに正しい値が表示されるように正しいカウントも保持します。
 
 サンプリングの形式にはいくつかあります。
 
-* [アダプティブ サンプリング](../../application-insights/app-insights-sampling.md)は、ASP.NET SDK の既定値です。 アダプティブ サンプリング は、アプリが送信するテレメトリの量を自動的に調整します。 Web アプリの SDK で自動的に動作して、ネットワーク上のテレメトリのトラフィックを削減します。 
+* [アダプティブ サンプリング](../../azure-monitor/app/sampling.md)は、ASP.NET SDK の既定値です。 アダプティブ サンプリング は、アプリが送信するテレメトリの量を自動的に調整します。 Web アプリの SDK で自動的に動作して、ネットワーク上のテレメトリのトラフィックを削減します。 
 * *インジェスト サンプリング* " は、アプリからのテレメトリが Application Insights サービスに入る時点で動作します。 インジェスト サンプリングは、アプリから送信されるテレメトリの量には影響しませんが、サービスによって保持される量が削減されます。 インジェスト サンプリングを使用すると、ブラウザーや他の SDK からのテレメトリによって使用されるクォータを削減できます。
 
 インジェスト サンプリングを設定するには、**[価格]** ウィンドウに移動します。
@@ -196,9 +196,9 @@ Enterprise プランはノードあたりの料金で、各ノードに 1 日あ
 
 ## <a name="next-steps"></a>次の手順
 
-* [サンプリング](../../application-insights/app-insights-sampling.md)
+* [サンプリング](../../azure-monitor/app/sampling.md)
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
-[start]: ../../application-insights/app-insights-overview.md
-[pricing]: http://azure.microsoft.com/pricing/details/application-insights/
+[start]: ../../azure-monitor/app/app-insights-overview.md
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/

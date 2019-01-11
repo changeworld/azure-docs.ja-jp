@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: e11c62f338a9e6ce74ce2e04a933b0458df784d0
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 1e0d6fe79d23f3d3d0679445f5120a3ec17ddd67
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807909"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013776"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
 
@@ -82,7 +81,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **MongoDbV2Collection** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**MongoDbV2Collection** | [はい] |
 | collectionName |MongoDB データベースのコレクション名前。 |[はい] |
 
 **例:**
@@ -113,7 +112,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**MongoDbV2Source** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**MongoDbV2Source** | [はい] |
 | filter | クエリ演算子を使用して選択フィルターを指定します。 コレクション内のすべてのドキュメントを返すには、このパラメーターを省略するか、空のドキュメント ({}) を渡します。 | いいえ  |
 | cursorMethods.project | プロジェクションのドキュメントで返されるフィールドを指定します。 一致するドキュメントですべてのフィールドを返すには、このパラメーターを省略します。 | いいえ  |
 | cursorMethods.sort | 一致するドキュメントがクエリによって返される順序を指定します。 [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort) を参照してください。 | いいえ  |

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 6d701878886cb1d5cc20a57614a474537f06a728
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5a9f168a0abc28b1decc6f327a62f5eaa4163e6f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242910"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601527"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 
@@ -41,8 +41,8 @@ ms.locfileid: "51242910"
 
 - Visual Studio (2012 以降) を使用します。
 - 3 つの Azure SQL データベースを作成します
-- サンプル プロジェクトをダウンロードします: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](https://go.microsoft.com/?linkid=9888163)
-  - **Program.cs** 
+- サンプル プロジェクトをダウンロードします:[Elastic DB Tools for Azure SQL - Multi-Tenant Shards](https://go.microsoft.com/?linkid=9888163)
+  -  **Program.cs** 
 
 このプロジェクトでは、 [Azure SQL の弾力性 DB ツールの Entity Framework 統合](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) に関するページで説明したプロジェクトを、マルチテナント シャード データベースのサポートを追加して拡張します。 このプロジェクトでは、ブログや記事を作成するための単純なコンソール アプリケーションを作成します。 プロジェクトには、4 つのテナントのほか、2 つのマルチテナント シャード データベースが含まれます。 この構成は、上の図に示されています。 
 
@@ -54,10 +54,10 @@ ms.locfileid: "51242910"
 
 RLS はシャード データベースでまだ有効になっていないため、これらの各テストで問題点が明らかになります。テナントは、そのテナントに属さないブログを表示できます。また、アプリケーションは、不適切なテナントにブログを挿入できます。 この記事の残りの部分では、RLS によるテナントの分離を適用してこれらの問題を解決する方法について説明します。 次の 2 つの手順が含まれます。 
 
-1. **アプリケーション層**: 接続を開いた後に常に現在の TenantId を SESSION\_CONTEXT に設定するようにアプリケーション コードを変更します。 サンプル プロジェクトでは、あらかじめそのように TenantId が設定されています。 
-2. **データ層**: 各シャード データベースで、SESSION\_CONTEXT に格納されている TenantId に基づいて行をフィルター処理するための RLS セキュリティ ポリシーを作成します。 ポリシーは、それぞれのシャード データベースに対して作成する必要があります。そうでないと、マルチテナント シャード内の行がフィルター処理されません。 
+1. **アプリケーション層**:接続を開いた後に常に現在の TenantId を SESSION\_CONTEXT に設定するようにアプリケーション コードを変更します。 サンプル プロジェクトでは、あらかじめそのように TenantId が設定されています。 
+2. **データ層**:各シャード データベースで、SESSION\_CONTEXT に格納されている TenantId に基づいて行をフィルター処理するための RLS セキュリティ ポリシーを作成します。 ポリシーは、それぞれのシャード データベースに対して作成する必要があります。そうでないと、マルチテナント シャード内の行がフィルター処理されません。 
 
-## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1.アプリケーション層: TenantId を SESSION\_CONTEXT に設定する
+## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1.アプリケーション層:TenantId を SESSION\_CONTEXT に設定する
 
 まず、エラスティック データベース クライアント ライブラリのデータ依存ルーティング API を使用してシャード データベースに接続します。 その場合でも、接続に使用している TenantId をアプリケーションからデータベースに伝える必要があります。 RLS セキュリティ ポリシーは、他のテナントに属している除外すべき行を TenantId によって判別します。 接続の [SESSION\_CONTEXT](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) に現在の TenantId を格納します。
 
@@ -213,7 +213,7 @@ All blogs for TenantId {0} (using ADO.NET SqlClient):", tenantId4);
 
 ```
 
-## <a name="2-data-tier-create-row-level-security-policy"></a>2.データ層: 行レベルのセキュリティ ポリシーを作成する
+## <a name="2-data-tier-create-row-level-security-policy"></a>2.データ層:行レベルのセキュリティ ポリシーを作成する
 
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>各テナントがアクセスできる行をフィルター選択するセキュリティ ポリシーを作成する
 
@@ -341,8 +341,8 @@ GO
 
 ### <a name="maintenance"></a>メンテナンス 
 
-- **新しいシャードの追加**: すべての新しいシャードで RLS を有効にするための T-SQL スクリプトを実行します。この操作を行わないと、これらのシャードに対するクエリはフィルター処理されません。
-- **新しいテーブルの追加**: 新しいテーブルを作成するたびに、すべてのシャードのセキュリティ ポリシーに FILTER 述語と BLOCK 述語を追加します。 そうしないと、新しいテーブルに対するクエリはフィルター処理されません。 この追加は、DDL トリガーを使用して自動化できます。詳細については、[新しく作成したテーブルに自動的に行レベルのセキュリティを適用する方法に関するブログ記事](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)を参照してください。
+- **新しいシャードの追加**:すべての新しいシャードで RLS を有効にするための T-SQL スクリプトを実行します。この操作を行わないと、これらのシャードに対するクエリはフィルター処理されません。
+- **新しいテーブルの追加**:新しいテーブルを作成するたびに、すべてのシャードのセキュリティ ポリシーに FILTER 述語と BLOCK 述語を追加します。 そうしないと、新しいテーブルに対するクエリはフィルター処理されません。 この追加は、DDL トリガーを使用して自動化できます。詳細については、[新しく作成したテーブルに自動的に行レベルのセキュリティを適用する方法に関するブログ記事](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)を参照してください。
 
 ## <a name="summary"></a>まとめ
 

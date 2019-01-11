@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 43f3628878654a32be8aeafe1ba0d2e42e03d82f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d64c55857cda0aa64dc010566490e1696fffdea0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240411"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972381"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>さまざまな地域に存在する Azure 仮想マシンに Always On 可用性グループを構成します｡
 
@@ -84,6 +84,7 @@ ms.locfileid: "51240411"
    - ロード バランサーと同じリージョン内の仮想マシンのみで構成されるバックエンド プールを含むこと。
    - IP アドレスに固有の TCP ポート プローブを使用していること。
    - 同じリージョン内の SQL Server に固有の負荷分散ルールがあること。  
+   - バックエンド プール内の仮想マシンが単一の可用性セットまたは仮想マシン スケール セットの一部でない場合は、Standard ロード バランサーであること。 詳細については、「[Azure Load Balancer Standard の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」をご覧ください。
 
 1. [新しい SQL Server にフェールオーバー クラスタリング機能を追加します](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
@@ -164,7 +165,7 @@ ms.locfileid: "51240411"
 
 接続をテストした後は、プライマリ レプリカをプライマリ データ センターに戻し、可用性モードを通常の動作設定に戻します。 次の表では、このドキュメントで説明されているアーキテクチャの通常の動作設定を示します。
 
-| Location | サーバー インスタンス | Role | 可用性モード | フェールオーバー モード
+| 場所 | サーバー インスタンス | Role | 可用性モード | フェールオーバー モード
 | ----- | ----- | ----- | ----- | -----
 | プライマリ データ センター | SQL-1 | プライマリ | 同期 | 自動
 | プライマリ データ センター | SQL-2 | セカンダリ | 同期 | 自動

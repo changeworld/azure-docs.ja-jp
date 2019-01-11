@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 39de7453c9d3b0335748cd37e4b1eef91b64b207
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6757f887376e1b399d6af18f114e203991c16a67
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409543"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807688"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Azure Cosmos のデータベース、コンテナー、および項目の操作
 
@@ -24,7 +24,7 @@ Azure サブスクリプションで [Azure Cosmos DB アカウント](account-o
 
 ご利用のアカウントの下に、1 つまたは複数の Azure Cosmos データベースを作成できます。 データベースは名前空間と似ていますが、一連の Azure Cosmos コンテナーの管理単位です。 次の表は、Azure Cosmos データベースがどのように、API 固有のさまざまなエンティティにマップされてるかを示しています。
 
-| **Azure Cosmos エンティティ** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **テーブル API** |
+| **Azure Cosmos エンティティ** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API** | **テーブル API** |
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos データベース | Database | キースペース | Database | Database | NA |
 
@@ -35,7 +35,7 @@ Azure サブスクリプションで [Azure Cosmos DB アカウント](account-o
 
 以下の Azure Cosmos API を使用して Azure Cosmos データベースを操作できます。
 
-| **操作** | **Azure CLI**|**SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **テーブル API** |
+| **操作** | **Azure CLI**|**SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API** | **テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- |
 |すべてのデータベースを列挙する| [はい] | [はい] | はい (データベースはキースペースにマップされる) | [はい] | NA | NA |
 |データベースを読み込む| [はい] | [はい] | はい (データベースはキースペースにマップされる) | [はい] | NA | NA |
@@ -67,7 +67,7 @@ Azure Cosmos コンテナーには、一意キーを指定できます。 一意
 
 Azure Cosmos コンテナーは、以下のような API 固有のエンティティに特化されます。
 
-| **Azure Cosmos エンティティ** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **テーブル API** |
+| **Azure Cosmos エンティティ** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API** | **テーブル API** |
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos コンテナー | コレクション | テーブル | コレクション | Graph | テーブル |
 
@@ -75,7 +75,7 @@ Azure Cosmos コンテナーは、以下のような API 固有のエンティ�
 
 Azure Cosmos コンテナーには、一連のシステム定義プロパティがあります。 選択する API によっては、その一部が直接公開されないことがあります。 次の表に、サポートされるシステム定義プロパティの一覧とその説明を示します。
 
-| **システム定義のプロパティ** | **システム生成かユーザーが構成可能か** | **目的** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **テーブル API** |
+| **システム定義のプロパティ** | **システム生成かユーザーが構成可能か** | **目的** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API** | **テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__rid | システム生成 | コンテナーの一意識別子 | [はい] | いいえ  | いいえ  | いいえ  | いいえ  |
 |__etag | システム生成 | オプティミスティック同時実行制御に使用されるエンティティ タグ | [はい] | いいえ  | いいえ  | いいえ  | いいえ  |
@@ -91,7 +91,7 @@ Azure Cosmos コンテナーには、一連のシステム定義プロパティ�
 
 Azure Cosmos コンテナーでは、いずれかの Azure Cosmos API を使用して、以下の操作を行えます。
 
-| **操作** | **Azure CLI** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **テーブル API** |
+| **操作** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API** | **テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | データベース内のコンテナーを列挙する | はい* | [はい] | はい | [はい] | NA | NA |
 | コンテナーを読み取る | [はい] | はい | はい | [はい] | NA | NA |
@@ -103,7 +103,7 @@ Azure Cosmos コンテナーでは、いずれかの Azure Cosmos API を使用�
 
 API の選択に応じて、Azure Cosmos 項目は、コレクション内のドキュメント、テーブル内の行、またはグラフ内のノード/エッジのいずれかを表す場合があります。 次の表に、API 固有のエンティティと Azure Cosmos 項目との間のマッピングを示します。
 
-| **Cosmos エンティティ** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **テーブル API** |
+| **Cosmos エンティティ** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API** | **テーブル API** |
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos 項目 | ドキュメント | 行 | ドキュメント | ノードまたはエッジ | Item |
 
@@ -111,7 +111,7 @@ API の選択に応じて、Azure Cosmos 項目は、コレクション内のド
 
 Azure Cosmos のどの項目にも、以下のシステム定義プロパティがあります。 選択する API によっては、その一部が直接公開されないことがあります。
 
-|**システム定義のプロパティ** | **システム生成かユーザーが構成可能か**| **目的** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **テーブル API** |
+|**システム定義のプロパティ** | **システム生成かユーザーが構成可能か**| **目的** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API** | **テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__id | システム生成 | 項目の一意識別子 | [はい] | いいえ  | いいえ  | いいえ  | いいえ  |
 |__etag | システム生成 | オプティミスティック同時実行制御に使用されるエンティティ タグ | [はい] | いいえ  | いいえ  | いいえ  | いいえ  |
@@ -124,7 +124,7 @@ Azure Cosmos のどの項目にも、以下のシステム定義プロパティ�
 
 Azure Cosmos の項目は、以下の操作をサポートしています。それらの操作は、いずれかの Azure Cosmos API を使用して実行できます。
 
-| **操作** | **Azure CLI** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **テーブル API** |
+| **操作** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API** | **テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 挿入、置換、削除、アップサート、読み取り | いいえ  | 可能  | はい | はい | はい | [はい] |
 

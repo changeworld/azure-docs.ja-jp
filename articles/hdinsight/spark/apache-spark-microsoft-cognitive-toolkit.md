@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: f3e590ec5dded03ce9c6ab2f7a21d51048020622
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 76fc2c9a0864417e380471f8de59d148e0fbf7b4
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012591"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651829"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit ディープ ラーニング モデルを使用する
 
@@ -39,15 +39,15 @@ ms.locfileid: "53012591"
 
 次の残りの手順は、Jupyter Notebook に関する記事で説明します。
 
-- サンプル イメージを Spark Resiliant Distributed Dataset (RDD) に読み込む
-   - モジュールを読み込んでプリセットを定義する
-   - データセットを Spark クラスターにローカルにダウンロードする
-   - データセットを RDD に変換する
-- トレーニング済みの Cognitive Toolkit モデルを使用してイメージをスコア付けする
-   - トレーニング済みの Cognitive Toolkit モデルを Spark クラスターにダウンロードする
-   - ワーカー ノードで使用される関数を定義する
-   - ワーカー ノードでイメージをスコア付けする
-   - モデルの精度を評価する
+- サンプル イメージを Spark Resiliant Distributed Dataset (RDD) に読み込む。
+   - モジュールを読み込んでプリセットを定義する。
+   - データセットを Spark クラスターにローカルにダウンロードする。
+   - データセットを RDD に変換する。
+- トレーニング済みの Cognitive Toolkit モデルを使用してイメージをスコア付けする。
+   - トレーニング済みの Cognitive Toolkit モデルを Spark クラスターにダウンロードする。
+   - ワーカー ノードで使用される関数を定義する。
+   - ワーカー ノードでイメージをスコア付けする。
+   - モデルの精度を評価する。
 
 
 ## <a name="install-microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit をインストールする
@@ -98,7 +98,7 @@ Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit を使用�
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
 * [Scala を使用してスタンドアロン アプリケーションを作成する](apache-spark-create-standalone-application.md)
-* [Livy を使用して Apache Spark クラスター上でジョブをリモートで実行する](apache-spark-livy-rest-interface.md)
+* [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](apache-spark-intellij-tool-plugin.md)

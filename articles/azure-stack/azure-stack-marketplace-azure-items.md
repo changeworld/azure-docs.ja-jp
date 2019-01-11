@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: e4f15da8464c2103b5f6540d342cb7c741a67c5f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 05a0e0d88f09853274d6bc6b65f66cf66369f77d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994839"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044197"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -234,7 +234,9 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![Commvault](media/azure-stack-marketplace-azure-items/commvault.png) | [Commvault](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault) | Azure Stack 環境のディザスター リカバリー、バックアップと復旧、Azure Stack へのアプリケーションと VM の移行を 1 つのソリューションにまとめた包括的なソリューションです。 | Commvault |
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | 簡単かつ確実に VM を制御、監視、および暗号化します。 **すべての CloudLink SecureVM 項目をダウンロードします。** | Dell EMC |
 | ![EventTracker SIEM](media/azure-stack-marketplace-azure-items/eventtracker.png) | [EventTracker SIEM](https://azuremarketplace.microsoft.com/marketplace/apps/eventtracker.eventtracker-siem)  | EventTracker SIEM は、監査可能なコンプライアンス機能を備えた高度なセキュリティ ツールを提供する、包括的なセキュリティ プラットフォームです。 | EventTracker |
+| ![Exivity - ハイブリッド クラウド課金ソリューション](media/azure-stack-marketplace-azure-items/exivity.png) | [Exivity - ハイブリッド クラウド課金ソリューション](https://azuremarketplace.microsoft.com/marketplace/apps/exivity.exivity-vm)  | オンプレミス、パブリック クラウド、ハイブリッド環境のいずれにデプロイされていても、事実上あらゆる IT サービス デリバリー モデルの要件を満たすことができる課金ツール。 | Exivity |
 | ![f5](media/azure-stack-marketplace-azure-items/f5.png) | [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | 高度な負荷分散、GSLB、ネットワーク ファイアウォール、DNS、WAF、アプリ アクセスを提供します。 | F5 Networks |
+| ![FortiGate の次世代ファイアウォール](media/azure-stack-marketplace-azure-items/fortinetsquare.png) | [FortiGate の次世代ファイアウォール](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-fortigate-singlevm) | 強力なセキュリティ機能を持つ総合スイートを組み合わせてコンテンツとネットワークの完全な保護を実現するファイアウォール テクノロジです。 アプリケーション制御、ウイルス対策、IPS、Web フィルタリング、VPN に加えて、脆弱性管理などの高度な機能が連携して、セキュリティに関する最新の複雑な脅威を特定し軽減します。 | Fortinet |
 | ![Hortonworks Data Platform (HDP) サンドボックス](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) サンドボックス](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | HDP 2.5 を使用した、100% オープン ソースのプラットフォーム (Hadoop、Spark、Storm、HBase、Kafka、Hive、Ambari に対応)。 | Hortonworks |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky Hybrid Cloud Security](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | Kaspersky Hybrid Cloud Security は、シームレスに調整され、アダプティブなサイバーセキュリティ エコシステムを可能にします。 | Kaspersky Lab |
 | ![KEMP LoadMaster ロード バランサー ADC コンテンツ スイッチ](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster ロード バランサー ADC コンテンツ スイッチ](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | レイヤー 4 ～ 7 のアプリケーション配信コントローラー (ADC) ロード バランサー、コンテンツ スイッチ、および Traffic Manager。 | KEMP Technologies Inc. |

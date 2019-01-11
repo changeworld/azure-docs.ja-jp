@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 021ec3919e061010265ff3a2f30fde0ffb59e7b0
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 92221e5aaebbaebb2af17ea211e38a3665a2b04f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632613"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652475"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する
 
@@ -26,7 +26,7 @@ Python2.7 は HDInsight 3.0 以降に既定でインストールされます。 
 
 HDInsight には、Java で記述された Python 実装である Jython も付属しています。 Jython は、Java 仮想マシン上で直接実行し、ストリームを使いません。 Jython は、Pig で Python を使うときに推奨される Python インタープリターです。
 
-> [!WARNING]
+> [!WARNING]  
 > このドキュメントの手順では、次のことが前提条件となっています。 
 >
 > * ローカル開発環境に Python スクリプトを作成します。
@@ -38,7 +38,7 @@ HDInsight には、Java で記述された Python 実装である Jython も付�
 > * `scp` を使って、クラウド シェルから HDInsight にファイルをアップロードします。
 > * クラウド シェルから `ssh` を使って HDInsight に接続し、例を実行します。
 
-## <a name="hivepython"></a>Hive UDF
+## <a name="hivepython"></a>Apache Hive UDF
 
 Python は、HiveQL の `TRANSFORM` ステートメントを通じて Hive から UDF として使うことができます。 たとえば、次の HiveQL は、クラスターの既定の Azure Storage アカウントに格納されている `hiveudf.py` ファイルを呼び出します。
 
@@ -66,7 +66,7 @@ FROM hivesampletable
 ORDER BY clientid LIMIT 50;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Windows ベースの HDInsight クラスターでは、`USING` 句で python.exe の完全なパスを指定する必要があります。
 
 この例では以下のように処理されます。
@@ -111,7 +111,7 @@ while True:
 
 HDInsight クラスターでこの例を実行する方法については「[例を実行する](#running)」を参照してください。
 
-## <a name="pigpython"></a>Pig UDF
+## <a name="pigpython"></a>Apache Pig UDF
 
 `GENERATE` ステートメントを使って、Pig から Python スクリプトを UDF として使うことができます。 スクリプトは Jython または C Python を使用して実行できます。
 
@@ -123,7 +123,7 @@ Python インタープリターを指定するには、Python スクリプトを
 * **Jython を使用するには**: `register '/path/to/pigudf.py' using jython as myfuncs;`
 * **C Python を使用するには**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Jython を使用する場合、pig_jython ファイルへのパスには、ローカル パスまたは WASB:// パスが指定できます。 ただし、C Python を使用する場合は、Pig ジョブの送信に使用しているノードのローカル ファイル システム上のファイルを参照する必要があります。
 
 一度登録したこの例では、Pig Latin は両方について同じです:
@@ -182,7 +182,7 @@ Pig に返された時点のデータは、`@outputSchema` ステートメント
 
 ## <a name="running"></a>例をアップロードして実行する
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > **SSH** の手順は、Linux ベースの HDInsight クラスターでのみ実行できます。 **PowerShell** の手順は、Linux または Windows どちらの HDInsight クラスターでも実行できますが、Windows クライアントが必要です。
 
 ### <a name="ssh"></a>SSH
@@ -299,11 +299,11 @@ SSH の使用方法の詳細については、[HDInsight での SSH の使用](.
 
     このジョブが完了すると、以前に Jython を使用してスクリプトを実行したときと同じ出力が表示されます。
 
-### <a name="powershell-upload-the-files"></a>PowerShell: ファイルをアップロードする
+### <a name="powershell-upload-the-files"></a>PowerShell:ファイルのアップロード
 
 PowerShell を使って、HDInsight サーバーにファイルをアップロードできます。 Python ファイルをアップロードするには、次のスクリプトを使います。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]   
 > このセクションの手順では、Azure PowerShell を使います。 Azure PowerShell の使用方法の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」をご覧ください。
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=5-41)]
@@ -313,14 +313,14 @@ PowerShell を使って、HDInsight サーバーにファイルをアップロ�
 
 このスクリプトは、HDInsight クラスターの情報を取得してから、既定のストレージ アカウント用にアカウントとキーを抽出します。その後、ファイルをコンテナーのルートにアップロードします。
 
-> [!NOTE]
-> ファイルをアップロードする方法について詳しくは、「[HDInsight での Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)」ドキュメントをご覧ください。
+> [!NOTE]  
+> ファイルをアップロードする方法の詳細については、「[HDInsight で Apache Hadoop ジョブのデータをアップロードする](../hdinsight-upload-data.md)」ドキュメントを参照してください。
 
-#### <a name="powershell-use-the-hive-udf"></a>PowerShell: Hive UDF を使用する
+#### <a name="powershell-use-the-hive-udf"></a>PowerShell:Hive UDF を使用する
 
 PowerShell を使って、Hive クエリをリモートで実行することもできます。 **hiveudf.py** スクリプトを使う Hive クエリを実行するには、次の PowerShell スクリプトを使います。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 実行前に、HDInsight クラスターの HTTPs/管理者アカウント情報の入力を求められます。
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=45-94)]
@@ -337,7 +337,7 @@ PowerShell を使って、Hive クエリをリモートで実行することも�
 
 PowerShell を使って Pig Latin ジョブを実行することもできます。 **pigudf.py** スクリプトを使う Pig Latin ジョブを実行するには、次の PowerShell スクリプトを使います。
 
-> [!NOTE]
+> [!NOTE]  
 > PowerShell を使用してジョブをリモートで送信するときは、C Python をインタープリターとして使用することはできません。
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=98-144)]
@@ -383,6 +383,6 @@ Hive ジョブを実行しているときに、次のテキストようなエラ
 
 Pig と Hive を使用する他の方法と、MapReduce の使用方法については、次のドキュメントをご覧ください。
 
-* [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での Apache Hive の使用](hdinsight-use-hive.md)
+* [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)

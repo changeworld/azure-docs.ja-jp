@@ -1,31 +1,32 @@
 ---
-title: Azure Cosmos DB での Robomongo の使用
-description: Azure Cosmos DB:MongoDB 用 API アカウントで Robomongo を使用する方法を説明します
+title: Robo 3T を使用して Azure Cosmos DB に接続する
+description: Robo 3T と Azure Cosmos DB の MongoDB 用 API を使用して Azure Cosmos DB に接続する方法について説明します
 keywords: robomongo
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 05/23/2017
-ms.author: sngun
-ms.openlocfilehash: 78f0158c9a80a60717b81b4788531c7efd979111
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: af601075b8cc774654a9f2dbf83193bf9701166b
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863807"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789451"
 ---
-# <a name="use-robomongo-with-an-azure-cosmos-db-api-for-mongodb-account"></a>Azure Cosmos DB:MongoDB 用 API アカウントで Robomongo を使用する
-Robomongo を使用して Azure Cosmos DB:MongoDB 用 API アカウントに接続するには、以下を実行する必要があります。
+# <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API と共に Robo 3T を使用する
 
-* [Robomongo](https://robomongo.org/) をダウンロードしてインストールする
-* Azure Cosmos DB:MongoDB 用 API アカウントの[接続文字列](connect-mongodb-account.md)情報を取得する
+Robo 3T を使用して Cosmos アカウントに接続するには、次のことを行う必要があります。
 
-## <a name="connect-using-robomongo"></a>Robomongo を使用して接続する
-Robomongo MongoDB 接続に Azure Cosmos DB:MongoDB 用 API アカウントを追加するには、次の手順を実行します。
+* [Robo 3T](https://robomongo.org/) をダウンロードしてインストールする
+* Cosmos DB [接続文字列](connect-mongodb-account.md)情報を取得する
 
-1. Azure Cosmos DB:MongoDB 用 API アカウントの接続情報を、[ここ](connect-mongodb-account.md)に記載されている手順に従って取得します。
+## <a name="connect-using-robo-3t"></a>Robo 3T を使用して接続する
+Robo 3T 接続マネージャーに Cosmos DB アカウントを追加するには、次の手順を行います。
+
+1. [こちら](connect-mongodb-account.md)の手順を使用して、Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウントの接続情報を取得します。
 
     ![Screen shot of the connection string blade](./media/mongodb-robomongo/connectionstringblade.png)
 2. *Robomongo.exe* を実行します
@@ -45,4 +46,6 @@ Robomongo MongoDB 接続に Azure Cosmos DB:MongoDB 用 API アカウントを�
 7. 最後に、**[テスト]** をクリックして接続できることを確認し、**[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
-* Azure Cosmos DB:MongoDB 用 API の[サンプル](mongodb-samples.md)を確認します。
+
+- Azure Cosmos DB の MongoDB 用 API と共に [Studio 3T を使用する](mongodb-mongochef.md)方法を学習します。
+- Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](mongodb-samples.md)を調べます。

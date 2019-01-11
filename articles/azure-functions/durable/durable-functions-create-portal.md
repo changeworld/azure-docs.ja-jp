@@ -106,7 +106,7 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
     }
     ```
 
-1. `statusQueryGetUri` エンドポイント URI を呼び出すと、その永続関数の現在の状態が表示されます。次の例のようになります。
+1. `statusQueryGetUri` エンドポイント URI を呼び出すと、その Durable Functions の現在の状態が表示されます。次の例のようになります。
 
     ```json
         {

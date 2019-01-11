@@ -12,24 +12,24 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: a57422b4bbac4b929a67495bfffeec7bf0476e9c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c8320a0f504927830c47400f1f1ef0369c0e1cad
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000225"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116536"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd:Application Insights での Linux パフォーマンス メトリック
 
 
-[Application Insights](../../application-insights/app-insights-overview.md) で Linux システムのパフォーマンス メトリックを探索するには、[collectd](https://collectd.org/) を Application Insights のプラグインと共にインストールします。 このオープンソース ソリューションでは、さまざまなシステムおよびネットワーク統計情報を収集します。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) で Linux システムのパフォーマンス メトリックを探索するには、[collectd](https://collectd.org/) を Application Insights のプラグインと共にインストールします。 このオープンソース ソリューションでは、さまざまなシステムおよびネットワーク統計情報を収集します。
 
 既に [Application Insights で Java Web サービスをインストルメント化][java]してある場合は、通常、collectd を使用します。 collectd を使用すると、アプリのパフォーマンスの向上や問題の診断に役立つ多くのデータを得られます。 
 
 ![サンプルのグラフ](./media/java-collectd/sample.png)
 
 ## <a name="get-your-instrumentation-key"></a>インストルメンテーション キーの取得
-[Microsoft Azure Portal](https://portal.azure.com) で、データを表示する [Application Insights](../../application-insights/app-insights-overview.md) リソースを開きます。 (または[新しいリソースを作成](../../application-insights/app-insights-create-new-resource.md)します。)
+[Microsoft Azure Portal](https://portal.azure.com) で、データを表示する [Application Insights](../../azure-monitor/app/app-insights-overview.md) リソースを開きます。 (または[新しいリソースを作成](../../azure-monitor/app/create-new-resource.md )します。)
 
 リソースを識別する、インストルメンテーション キーのコピーを取ります。
 

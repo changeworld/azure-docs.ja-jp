@@ -1,5 +1,5 @@
 ---
-title: エンド ツー エンドのキー ローテーションと監査で Azure Key Vault を設定する | Microsoft Docs
+title: エンド ツー エンドのキー ローテーションと監査で Azure Key Vault を設定する - Azure Key Vault | Microsoft Docs
 description: キー ローテーションとキー コンテナー ログの監視による設定について説明します。
 services: key-vault
 documentationcenter: ''
@@ -10,16 +10,15 @@ ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2018
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: bf3aba431e7b417b2213bc3410fd7722d7888d15
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4dbfd993a8464c569d30f11e305d4bae000a778f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302019"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077710"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>キー ローテーションと監査で Azure Key Vault を設定する
 
@@ -270,7 +269,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id
 
 Azure 関数を作成するには、**[リソースの作成]** を選択し、"_関数アプリ_" のマーケットプレースを検索してから、**[作成]** をクリックします。 作成中、既存のホスティング プランを使用するか、新しいプランを作成できます。 動的ホスティングを選択することもできます。 関数のホスティング オプションの詳細については、「[Azure Functions のスケーリング方法](../azure-functions/functions-scale.md)」をご覧ください。
 
-Azure 関数を作成するときに、この画面にアクセスしてタイマー関数と C\# を選択します。 次に **[この関数を作成する]** をクリックします。
+Azure 関数を作成するときに、この画面にアクセスしてタイマー関数と C\# を選択します。 次に **[この関数を作成する] をクリックします。
 
 ![Azure Functions スタート ブレード](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
@@ -414,7 +413,7 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 **[保存]** すると、Azure Functions によって必要なバイナリがダウンロードされます。
 
-**[統合]** タブに切り替えて、関数内で使用するタイマー パラメーターにわかりやすい名前を付けます。 上記のコードでは、タイマーは *myTimer*と呼ばれます。 [CRON 式](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON)を次のように指定します: 0 \* \* \* \* \* (1 分ごとに関数を実行するタイマーの場合)。
+**[統合]** タブに切り替えて、関数内で使用するタイマー パラメーターにわかりやすい名前を付けます。 上記のコードでは、タイマーは *myTimer*と呼ばれます。 次のように [CRON 式](../app-service/webjobs-create.md#CreateScheduledCRON)を指定します。0 \* \* \* \* \* (1 分ごとに関数を実行するタイマーの場合)。
 
 同じ **[統合]** タブで、種類が **Azure Blob Storage** の入力を追加します。 これは sync.txt ファイルを指します。このファイルには、関数によって参照される最後のイベントのタイムスタンプが含まれます。 これは関数内でパラメーター名によって使用できます。 上記のコードの Azure Blob Storage 入力では、パラメーター名は *inputBlob* です。 sync.txt ファイルが存在するストレージ アカウントを選択します (同じストレージ アカウントにすることも別のストレージ アカウントにすることもできます)。 パス フィールドには、ファイルが存在するパスを {container-name}/path/to/sync.txt の形式で指定します。
 
