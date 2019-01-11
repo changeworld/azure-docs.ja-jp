@@ -4,19 +4,19 @@ description: データベースを移行したりそのプロセスのさまざ�
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 12/13/2018
-ms.openlocfilehash: 2eb263c6776453c4cae217168af969221485bfa3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9887860470632c37a586cb3029e2ef7d455a3a9c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386793"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713287"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>データ移行のシナリオで利用できるサービスとツール
 
@@ -125,4 +125,4 @@ ms.locfileid: "53386793"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Database Migration Service の概要については、[Azure Database Migration Service (プレビュー) の概要](dms-overview.md)に関するページを参照してください。
+Azure Database Migration Service の概要については、[Azure Database Migration Service の概要](dms-overview.md)に関する記事を参照してください。

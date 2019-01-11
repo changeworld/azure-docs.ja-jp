@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 3015755d8046f72c03cd1a1485d90a7f720a8909
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b1b4ea5775a661712838c1495ef0025a83b8c518
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353024"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607945"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上の App Service の概要
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure App Service on Azure Stack は、Azure Stack で利用できる Microsoft Azure の、サービスとしてのプラットフォーム (PaaS) サービスです。 このサービスにより、内部または外部の顧客はあらゆるプラットフォームやデバイス用の Web、API、Azure Functions アプリケーションを作成できるようになります。 お客様のアプリとオンプレミスのアプリケーションを統合し、ビジネス プロセスを自動化できます。 Azure Stack クラウドの運用者は、指定した共有仮想マシン (VM) リソースまたは専用 VM を使用して、フル マネージドの VM 上でユーザーのアプリを実行できます。
 
@@ -33,16 +33,16 @@ Azure App Service を使用すると、ビジネス プロセスとホスト ク
 
 App Service のいくつかの主要機能を次に示します。
 
-- **複数の言語とフレームワーク**: App Service は、ASP.NET、Node.js、Java、PHP、Python を最高レベルでサポートしています。 また、App Service VM では、Windows PowerShell などのスクリプトや実行可能ファイルを実行することもできます。
-- **DevOps の最適化**: 継続的インテグレーションと継続的配置を GitHub、ローカルの Git または BitBucket でセットアップできます。 テスト環境やステージング環境を介して更新を反映でき、Azure PowerShell またはクロスプラットフォーム コマンド ライン インターフェイス (CLI) を使用して App Service でアプリを管理できます。
-- **Visual Studio の統合**: Visual Studio の専用ツールを使えば、アプリケーションの作成やデプロイ作業が効率的になります。
+- **複数の言語とフレームワーク**:App Service は、ASP.NET、Node.js、Java、PHP、Python を最高レベルでサポートしています。 また、App Service VM では、Windows PowerShell などのスクリプトや実行可能ファイルを実行することもできます。
+- **DevOps の最適化**:継続的インテグレーションとデプロイを GitHub、ローカルの Git または BitBucket で設定できます。 テスト環境やステージング環境を介して更新を反映でき、Azure PowerShell またはクロスプラットフォーム コマンド ライン インターフェイス (CLI) を使用して App Service でアプリを管理できます。
+- **Visual Studio の統合**:Visual Studio の専用ツールを使えば、アプリケーションの作成やデプロイ作業が効率的になります。
 
 ## <a name="app-types-in-app-service"></a>App Service でのアプリの種類
 
 App Service にはアプリの種類が複数用意されており、それぞれ特定のワークロードをホストするよう設計されています。
 
-- [Web Apps](../app-service/app-service-web-overview.md) - Web サイトと Web アプリケーションをホストするためのアプリの種類。
-- [API Apps](../app-service/app-service-web-overview.md) - REST API をホストするためのアプリの種類。
+- [Web Apps](../app-service/overview.md) - Web サイトと Web アプリケーションをホストするためのアプリの種類。
+- [API Apps](../app-service/overview.md) - REST API をホストするためのアプリの種類。
 - イベント ドリブンでサーバーレスのワークロードをホスティングするための Azure Functions。
 
 "*アプリ*" とは、ワークロードの実行専用のホスティング リソースを指しています。 "*Web アプリ*" を例にとると、Web アプリをコンピューティング リソースとアプリケーション コードの両方の観点から捉えることに皆さんおそらく慣れていることでしょう。この両者が合わさって、ブラウザーに機能が提供されます。 App Service の Web アプリとは、アプリケーション コードをホストするために Azure Stack が提供するコンピューティング リソースです。

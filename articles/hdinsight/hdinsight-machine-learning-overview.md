@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08d0221c785fdaeb18fe9a2999d08ded67d1fa91
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7e5f56251e00b59a6e6d3be40612f4c8e381dff1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437199"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743002"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight での機械学習
 
-HDInsight ではビッグ データでの機械学習が可能であるため、大量 (数ペタバイト、場合によっては数エクサバイト) の構造化、非構造化、および高速移動データから貴重な洞察を得る機能が提供されます。 HDInsight には、SparkML と MLlib、R、Hive、Microsoft Cognitive Toolkit などのいくつかの機械学習オプションがあります。
+HDInsight ではビッグ データでの機械学習が可能であるため、大量 (数ペタバイト、場合によっては数エクサバイト) の構造化、非構造化、および高速移動データから貴重な洞察を得る機能が提供されます。 HDInsight には、SparkML と Apache Spark MLlib、R、Apache Hive、および Microsoft Cognitive Toolkit という複数の機械学習オプションが存在します。
 
 ## <a name="sparkml-and-mllib"></a>SparkML と MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) は、Azure でホストされる [Apache Spark](http://spark.apache.org/) のサービスであり、ビッグ データ分析を向上させるためのメモリ内処理をサポートする、統合されたオープンソースの並列データ処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、Machine Learning とグラフ計算に使用される反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 この分散環境にアルゴリズム モデリング機能を提供するスケーラブルな機械学習ライブラリとして、MLlib と SparkML の 2 つがあります。 MLlib には、RDD 上に構築されたオリジナルの API が含まれています。 SparkML は、ML パイプラインを構成するために DataFrames 上に構築されたより高レベルの API を提供する新しいパッケージです。 SparkML はまだ MLlib のすべての機能をサポートしていませんが、Spark の標準の機械学習ライブラリとして MLlib を置き換えています。
+[HDInsight Spark](spark/apache-spark-overview.md) は、Azure でホストされる [Apache Spark](https://spark.apache.org/) のサービスであり、ビッグ データ分析を向上させるためのメモリ内処理をサポートする、統合されたオープンソースの並列データ処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、Machine Learning とグラフ計算に使用される反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 この分散環境にアルゴリズム モデリング機能を提供するスケーラブルな機械学習ライブラリとして、MLlib と SparkML の 2 つが存在します。 MLlib には、RDD 上に構築されたオリジナルの API が含まれています。 SparkML は、ML パイプラインを構成するために DataFrames 上に構築されたより高レベルの API を提供する新しいパッケージです。 SparkML はまだ MLlib のすべての機能をサポートしていませんが、Spark の標準の機械学習ライブラリとして MLlib を置き換えています。
 
 Apache Spark 用の Microsoft Machine Learning ライブラリは [MMLSpark](https://github.com/Azure/mmlspark) です。 このライブラリは、Spark 上でのデータ サイエンティストの生産性を高め、実験の速度を向上させ、さらに非常に大規模なデータセットに対してディープ ラーニングを含む最先端の機械学習手法を活用するように設計されています。 文字列のインデックス作成、機械学習アルゴリズムによって予測されるレイアウトへのデータの強制的な移行、特徴ベクトルのアセンブルなどのスケーラブルな ML モデルを構築する場合、MMLSpark は SparkML の低レベルの API の上に 1 つのレイヤーを提供します。 MMLSpark ライブラリはこれらのタスクや、PySpark でモデルを構築するためのその他の一般的なタスクを簡略化します。
 

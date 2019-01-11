@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: bf290343634f9f9f836a87ab15f13cc1dac6f86f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9d5a0cf9fa4f9ad8b5a673cd2420416f92edda91
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141953"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994982"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
  
@@ -144,7 +144,7 @@ ASA ジョブに作成された入力および出力の名前を、ルーティ�
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>クラウド ジョブと比較した IoT Edge ジョブの現在の制限事項
 目的は、IoT Edge ジョブとクラウド ジョブの間の類似性を確認することです。 SQL クエリ言語のほとんどの機能が既にサポートされています。
 ただし、次の機能はエッジ ジョブではまだサポートされていません。
-* JavaScript でのユーザー定義関数 (UDF)。 UDF は、[IoT Edge ジョブ向けの C#](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-edge-csharp-udf) (プレビュー) で使用できます。
+* JavaScript でのユーザー定義関数 (UDF)。 UDF は、[IoT Edge ジョブ向けの C#](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (プレビュー) で使用できます。
 * ユーザー定義集計 (UDA)。
 * Azure ML 関数
 * 1 つの手順での 14 を超える集計の使用。
@@ -167,7 +167,7 @@ ASA on IoT Edge を実行するには、[Azure IoT Edge](https://azure.microsoft
 
 ASA と Azure IoT Edge では、**Docker** コンテナーを使用して、複数のホスト オペレーティング システム (Windows、Linux) で実行されるポータブル ソリューションを提供します。
 
-ASA on IoT Edge は、Windows および Linux イメージとして入手でき、x86-64 または Azure Resource Manager アーキテクチャ上で実行されます。 
+ASA on IoT Edge は、x86-64 または ARM (Advanced RISC Machines) アーキテクチャの両方で実行される Windows および Linux イメージとして使用可能になります。 
 
 
 ### <a name="input-and-output"></a>入力と出力

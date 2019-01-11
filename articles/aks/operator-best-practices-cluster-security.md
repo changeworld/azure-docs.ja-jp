@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 5acabc8381422b9202b041cf849af3b35809a3c0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0c12136fb0c866ceebf83f6352a33b7e2791ad0f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111202"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717213"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -54,7 +54,7 @@ Azure AD 統合と RBAC の詳細については、[AKS の認証と承認のベ
 
 ### <a name="app-armor"></a>App Armor
 
-コンテナーが実行できるアクションを制限するには、[AppAmour][k8s-apparmor] Linux カーネル セキュリティ モジュールを使用できます。 AppArmor は基となる AKS ノード OS に含まれており、既定で有効です。 読み取り、書き込み、実行などのアクション、またはファイルシステムのマウントなどのシステム機能を制限する AppArmor プロファイルを作成します。 既定の AppArmor プロファイルでは、さまざまな `/proc` と `/sys` の場所へのアクセスが制限されており、基となるノードからコンテナーを論理的に分離する手段が用意されています。 AppArmor は、Kubernetes ポッドだけでなく、Linux 上で動作するあらゆるアプリケーションに対応しています。
+コンテナーが実行できるアクションを制限するには、[AppArmor][k8s-apparmor] Linux カーネル セキュリティ モジュールを使用できます。 AppArmor は基となる AKS ノード OS に含まれており、既定で有効です。 読み取り、書き込み、実行などのアクション、またはファイルシステムのマウントなどのシステム機能を制限する AppArmor プロファイルを作成します。 既定の AppArmor プロファイルでは、さまざまな `/proc` と `/sys` の場所へのアクセスが制限されており、基となるノードからコンテナーを論理的に分離する手段が用意されています。 AppArmor は、Kubernetes ポッドだけでなく、Linux 上で動作するあらゆるアプリケーションに対応しています。
 
 ![コンテナーの動作を制限するために AKS クラスターで使用されている AppArmor プロファイル](media/operator-best-practices-container-security/apparmor.png)
 

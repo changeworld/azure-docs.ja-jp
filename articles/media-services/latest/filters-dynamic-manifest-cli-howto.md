@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a16024ad5d8b9d2355b579b9b508ef0de91f2ccd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 471277433f0fc9a54a28baa158f1e20f1efb613f
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133861"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000521"
 ---
 # <a name="creating-filters-with-cli"></a>CLI を使用してフィルターを作成する 
 
@@ -37,7 +37,7 @@ ms.locfileid: "53133861"
 
 ## <a name="define-a-filter"></a>フィルターの定義 
 
-次に、最終的なマニフェストに追加されるトラック選択条件を定義する例を示します。 このフィルターは、英語の EC-3 を持つオーディオ トラックと、0-1000000 の範囲でビットレートを持つビデオ トラックを含みます。
+次に、最終的なマニフェストに追加されるトラック選択条件を定義する例を示します。 このフィルターには、EC-3 のオーディオ トラックと、0 から 1,000,000 の範囲のビットレートのビデオ トラックが含まれます。
 
 REST で定義されているフィルターには、"プロパティ" ラッパーの JSON オブジェクトが含まれます。  
 
@@ -48,11 +48,6 @@ REST で定義されているフィルターには、"プロパティ" ラッパ
             {
                 "property": "Type",
                 "value": "Audio",
-                "operation": "Equal"
-            },
-            {
-                "property": "Language",
-                "value": "en",
                 "operation": "Equal"
             },
             {
@@ -83,8 +78,17 @@ REST で定義されているフィルターには、"プロパティ" ラッパ
 
 次の [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) コマンドでは、[前に定義した](#define-a-filter)フィルター トラック選択を含むアカウント フィルターが作成されます。 
 
+このコマンドを使用すると、トラック選択を表す JSON を含むオプションの `--tracks` パラメーターを渡すことができます。  ファイルから JSON を読み込むには、@ {ファイル} を使用します。 Azure CLI をローカルで使用している場合は、ファイルのパス全体を指定します。
+
+
 ```azurecli
-az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @C:\tracks.json
+az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @c:\tracks.json
+```
+
+Azure Cloud Shell を使用している場合は、Cloud Shell にファイルをアップロードします (シェル ウィンドウの上部にあるファイルのアップロード/ダウンロード用ボタンを探します)。 その後は、ファイルを次のように参照できます。
+
+```azurecli
+az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
 [フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create_an_account_filter)も参照してください。
@@ -93,8 +97,11 @@ az ams account-filter create -a amsAccount -g resourceGroup -n filterName --trac
 
 次の [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) コマンドでは、[前に定義した](#define-a-filter)フィルター トラック選択を含む資産フィルターが作成されます。 
 
+> [!TIP]
+> 前のセクションで、ファイル名の場所の指定に関する情報を参照してください。
+
 ```azurecli
-az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @C:\tracks.json
+az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
 [フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter)も参照してください。

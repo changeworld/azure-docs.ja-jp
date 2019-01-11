@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 2b1dc0ad28a6608e3a46087d31a3d077e9291a3d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 27fd02503881ef1f0587ccb0301f8490101d5bcb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841678"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720647"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack でシークレットをローテーションする
 
@@ -32,20 +32,24 @@ Azure Stack オペレーターの介入なしに Azure Stack インフラスト�
 
 - **外部シークレット**  
 Azure Stack オペレーターによって提供される、外部に接続されるサービス用のインフラストラクチャ サービス証明書。 これには、次のサービスの証明書が含まれます。 
-    - 管理者ポータル 
-    - パブリック ポータル 
-    - 管理者の Azure Resource Manager 
-    - グローバルな Azure Resource Manager 
-    - 管理者 KeyVault 
-    - KeyVault 
-    - ACS (Blob、Table、Queue Storage を含みます) 
-    - ADFS<sup>*</sup>
-    - Graph<sup>*</sup>
+  - 管理者ポータル  
+  - パブリック ポータル  
+  - 管理者の Azure Resource Manager  
+  - グローバルな Azure Resource Manager  
+  - 管理者 KeyVault  
+  - KeyVault  
+  - 管理者拡張機能ホスト  
+  - ACS (Blob、Table、Queue Storage を含みます)  
+  - ADFS *  
+  - Graph *  
 
-   <sup>*</sup> 環境の ID プロバイダーが Active Directory フェデレーション サービス (AD FS) の場合にのみ適用されます。
+\* 環境の ID プロバイダーが Active Directory フェデレーション サービス (AD FS) の場合にのみ適用されます。
 
-> [!NOTE]  
+> [!Note]  
 > BMC やスイッチ パスワードなどの他のすべてのセキュリティで保護されたキーと文字列、ユーザーおよび管理者アカウントのパスワードは、まだ管理者が手動で更新します。 
+
+> [!Note]  
+> Azure Stack の 1811 リリース以降、シークレット ローテーションは、内部の証明書と外部の証明書に分けられています。 
 
 Azure Stack インフラストラクチャの整合性を維持するため、オペレーターは、組織のセキュリティ要件と一致する頻度でインフラストラクチャのシークレットを定期的にローテーションできる必要があります。
 
@@ -65,7 +69,7 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
 |公開から<sup>*</sup>|自己署名済みへ|サポートされていません||
 |公開から<sup>*</sup>|公開へ<sup>*</sup>|サポートされています|1803 以降|
 
-<sup>*</sup> ここでの公開証明機関は、Windows の信頼されたルート プログラムに含まれているものです。 [Microsoft の信頼されたルート証明書プログラム: 参加者 (2017 年 6 月 27 日時点)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca) に完全な一覧があります。
+<sup>*</sup>ここでの公開証明機関は、Windows の信頼されたルート プログラムに含まれているものです。 「[Microsoft Trusted Root Certificate Program: Participants (as of June 27, 2017) (Microsoft の信頼されたルート証明書プログラム: 参加者 (2017 年 6 月 27 日の時点))](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)」に完全な一覧があります。
 
 ## <a name="alert-remediation"></a>アラートの修復
 
@@ -77,26 +81,35 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
 
 以下の手順を使ってシークレットのローテーションを実行すると、これらのアラートは修復されます。
 
+> [!Note]  
+> 1811 より前の Azure Stack 環境では、保留中の内部証明書やシークレットの有効期限のアラートが表示されます。 これらのアラートは正確ではないため、内部シークレットのローテーションを実行せずに無視する必要があります。 不正確な内部シークレット有効期限のアラートは既知の問題であり、1811 で解決されました。内部シークレットは、環境が 2 年間アクティブな状態にならない限り、期限切れにならなくなりました。 
+
 ## <a name="pre-steps-for-secret-rotation"></a>シークレット ローテーションの事前手順
 
    > [!IMPORTANT]  
-   > シークレット ローテーションが環境で正常に実行されていないことを確認します。 シークレット ローテーションが既に実行されている場合、Azure Stack をバージョン 1807 以降に更新してからシークレット ローテーションを実行します。 
+   > シークレット ローテーションが Azure Stack 環境で既に実行されていた場合は、シークレット ローテーションを再度実行する前に、システムをバージョン 1811 以降に更新する必要があります。 シークレット ローテーションは、[特権エンドポイント](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)を使用して実行する必要があり、Azure Stack オペレーターの資格情報が必要です。 ご自分の環境の Azure Stack オペレーターが、その環境内でシークレット ローテーションが実行されたかどうかを把握していない場合は、シークレット ローテーションを再度実行する前に、1811 に更新してください。
 
-1.  オペレーターが、Azure Stack シークレットのローテーション中に、アラートが開いて自動的に閉じることに気付くことがあります。  これは予期される動作であり、アラートは無視してもかまいません。  オペレーターは、Test-AzureStack を実行することで、このアラートの有効性を確認できます。  SCOM を使用して Azure Stack システムを監視しているオペレーターの場合、システムをメンテナンスモードにすると、これらのアラートは ITSM システムに届かなくなりますが、Azure Stack システムに到達できなくなっても引き続きアラートは生成されます。 
-2. メンテナンス操作をユーザーに通知します。 可能な限り非営業時間中に、通常のメンテナンス期間をスケジュールします。 メンテナンス操作は、ユーザーのワークロードとポータル操作の両方に影響を及ぼす可能性があります。
-    > [!note]  
+1. Azure Stack インスタンスをバージョン 1811 に更新することを強くお勧めします。
+
+    > [!Note] 
+    > 1811 より前のバージョンの場合は、拡張機能ホストの証明書を追加するためにシークレットのローテーションを行う必要はありません。 拡張機能ホストの証明書を追加するには、「[Azure Stack の拡張機能ホストを準備する](azure-stack-extension-host-prepare.md)」の手順に従ってください。
+
+2.  オペレーターが、Azure Stack シークレットのローテーション中に、アラートが開いて自動的に閉じることに気付くことがあります。  これは予期される動作であり、アラートは無視してもかまいません。  オペレーターは、**Test-AzureStack** を実行することで、このアラートの有効性を確認できます。  SCOM を使用して Azure Stack システムを監視しているオペレーターの場合、システムをメンテナンスモードにすると、これらのアラートは ITSM システムに届かなくなりますが、Azure Stack システムに到達できなくなっても引き続きアラートは生成されます。 
+3. メンテナンス操作をユーザーに通知します。 可能な限り非営業時間中に、通常のメンテナンス期間をスケジュールします。 メンテナンス操作は、ユーザーのワークロードとポータル操作の両方に影響を及ぼす可能性があります。
+
+    > [!Note]  
     > 次の手順は、Azure Stack 外部シークレットのローテーションに対してのみ適用されます。
 
-3. シークレットをローテーションする前に、**[Test-AzureStack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)** を実行して、すべてのテスト出力が正常であることを確認します。
-4. 代わりの外部証明書の新しいセットを準備します。 新しいセットは、「[Azure Stack 公開キー インフラストラクチャ証明書の要件](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)」で説明されている証明書の仕様と一致します。
-5.  ローテーションに使われる証明書のバックアップを安全なバックアップ場所に格納します。 ローテーションを実行して失敗した場合は、ローテーションを再実行する前に、ファイル共有内の証明書をバックアップ コピーに置き換えます。 バックアップ コピーはセキュリティで保護されたバックアップ場所に保存するよう注意してください。
-6.  ERCS VM からアクセスできるファイル共有を作成します。 ファイル共有は、**CloudAdmin** ID で読み書きできる必要があります。
-7.  ファイル共有にアクセスできるコンピューターから PowerShell ISE コンソールを開きます。 ファイル共有に移動します。 
-8.  **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** を実行して、外部証明書に必要なディレクトリを作成します。
+4. シークレットをローテーションする前に、**[Test-AzureStack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)** を実行して、すべてのテスト出力が正常であることを確認します。
+5. 代わりの外部証明書の新しいセットを準備します。 新しいセットは、「[Azure Stack 公開キー インフラストラクチャ証明書の要件](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)」で説明されている証明書の仕様と一致します。 新しい証明書を購入または作成するための証明書署名要求 (CSR) を作成するには、[PKI 証明書の生成](https://docs.microsoft.com/azure/azure-stack/azure-stack-get-pki-certs)に関する記事で説明されている手順を使用します。ご自分の Azure Stack 環境で使用できるようそれらを準備するには、[Azure Stack の PKI 証明書の準備](https://docs.microsoft.com/azure/azure-stack/azure-stack-prepare-pki-certs)に関する記事の手順を使用します。 準備する証明書は、[PKI 証明書の検証](https://docs.microsoft.com/azure/azure-stack/azure-stack-validate-pki-certs)に関する記事の手順で必ず検証してください。 
+6.  ローテーションに使われる証明書のバックアップを安全なバックアップ場所に格納します。 ローテーションを実行して失敗した場合は、ローテーションを再実行する前に、ファイル共有内の証明書をバックアップ コピーに置き換えます。 バックアップ コピーはセキュリティで保護されたバックアップ場所に保存するよう注意してください。
+7.  ERCS VM からアクセスできるファイル共有を作成します。 ファイル共有は、**CloudAdmin** ID で読み書きできる必要があります。
+8.  ファイル共有にアクセスできるコンピューターから PowerShell ISE コンソールを開きます。 ファイル共有に移動します。 
+9.  **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** を実行して、外部証明書に必要なディレクトリを作成します。
 
-## <a name="rotating-external-and-internal-secrets"></a>外部および内部シークレットのローテーション
+## <a name="rotating-external-secrets"></a>外部シークレットのローテーション
 
-外部と内部両方のシークレットのローテーションを行うには:
+外部シークレットのローテーションを行うには、次の手順に従います。
 
 1. 前の手順で新しく作成した **/Certificates** ディレクトリに、「[Azure Stack 公開キー インフラストラクチャ証明書の要件](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates)」の「必須の証明書」セクションに記載されている形式に従ったディレクトリ構造で、交換用の外部証明書の新しいセットを配置します。
 2. **CloudAdmin** アカウント使って[特権エンドポイント](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)で PowerShell セッションを作成し、セッションを変数として格納します。 次の手順で、この変数をパラメーターとして使います。
@@ -112,10 +125,14 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
     共有に対する資格情報の PSCredential オブジェクトです。 
     - **CertificatePassword**  
     作成されるすべての pfx 証明書ファイルに使われるパスワードのセキュリティで保護された文字列です。
-4. シークレットのローテーションが済むまで待ちます。  
-シークレットのローテーションが正常に完了すると、コンソールに **[Overall action status: Success]\(全体的なアクションの状態: 成功\)** と表示されます。 
-    > [!note]  
-    > シークレット ローテーションが失敗した場合、エラー メッセージの指示に従い、**-Rerun** パラメーターを付けて start-secretrotation を再実行します。 シークレット ローテーションの失敗が繰り返される場合、サポートにお問い合わせください。 
+4. シークレットのローテーションが済むまで待ちます。 外部シークレットのローテーションには、通常約 1 時間かかります。 シークレットのローテーションが正常に完了すると、コンソールに **[Overall action status: Success]\(全体的なアクションの状態: 成功\)** と表示されます。 
+    > [!Note]  
+    > シークレット ローテーションが失敗した場合は、エラー メッセージの指示に従い、**-Rerun** パラメーターを付けて **start-secretrotation** を再実行します。 
+
+    ```PowerShell  
+    Start-SecretRotation -Rerun
+    ```
+    シークレット ローテーションの失敗が繰り返される場合、サポートにお問い合わせください。
 5. シークレットのローテーションが正常に完了した後、事前手順で作成した共有から証明書を削除し、セキュリティで保護されたバックアップ場所に保存します。 
 
 ## <a name="walkthrough-of-secret-rotation"></a>シークレットのローテーションのチュートリアル
@@ -129,23 +146,36 @@ $PEPCreds = Get-Credential
 $PEPsession = New-PSSession -computername <IPofERCSMachine> -Credential $PEPCreds -ConfigurationName PrivilegedEndpoint 
 
 #Run Secret Rotation
-$CertPassword = ConvertTo-SecureString "Certpasswordhere" -AsPlainText -Force
+$CertPassword = ConvertTo-SecureString "Certpasswordhere" -Force
 $CertShareCred = Get-Credential 
 $CertSharePath = "<NetworkPathofCertShare>"
 Invoke-Command -session $PEPsession -ScriptBlock { 
 Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCred -CertificatePassword $using:CertPassword }
 Remove-PSSession -Session $PEPSession
 ```
+
 ## <a name="rotating-only-internal-secrets"></a>内部シークレットのみのローテーション
 
-Azure Stack の内部シークレットのローテーションを行うには:
+> [!Note]  
+> 内部シークレット ローテーションは、内部シークレットのセキュリティが悪意のあるエンティティによって侵害された疑いがある場合、または内部証明書の有効期限が近づいていることを示すアラートを受け取った場合 (ビルド 1811 以降) にのみ実行する必要があります。 1811 より前の Azure Stack 環境では、保留中の内部証明書やシークレットの有効期限のアラートが表示されます。 これらのアラートは正確ではないため、内部シークレットのローテーションを実行せずに無視する必要があります。 不正確な内部シークレット有効期限のアラートは既知の問題であり、1811 で解決されました。内部シークレットは、環境が 2 年間アクティブな状態にならない限り、期限切れにならなくなりました。
+
+Azure Stack の内部シークレットのみのローテーションを行うには、次の手順に従います。
 
 1. [特権エンドポイント](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)で PowerShell セッションを作成します。
-2. 特権エンドポイント セッションで、引数を指定せずに **Start-SecretRotation** を実行します。
+2. 特権エンドポイント セッションで、**Start-SecretRotation -Internal** を実行します。
+
+    > [!Note]  
+    > 1811 より前の Azure Stack 環境では、**-Internal** フラグは必要ありません。 **Start-SecretRotation** により、内部シークレットのみがローテーションされます。
+
 3. シークレットのローテーションが済むまで待ちます。  
 シークレットのローテーションが正常に完了すると、コンソールに **[Overall action status: Success]\(全体的なアクションの状態: 成功\)** と表示されます。 
-    > [!note]  
-    > シークレット ローテーションが失敗した場合、エラー メッセージの指示に従い、**-Rerun** パラメーターを付けて start-secretrotation を再実行します。 シークレット ローテーションの失敗が繰り返される場合、サポートにお問い合わせください。 
+    > [!Note]  
+    > シークレット ローテーションが失敗した場合は、エラー メッセージ内の指示に従い、**–Internal** パラメーターと  **-Rerun** パラメーターを付けて **start-secretrotation** を再実行します。  
+
+    ```PowerShell  
+    Start-SecretRotation -Internal -Rerun
+    ```
+    シークレット ローテーションの失敗が繰り返される場合、サポートにお問い合わせください。
 
 ## <a name="start-secretrotation-reference"></a>Start-SecretRotation のリファレンス
 
@@ -153,15 +183,32 @@ Azure Stack システムのシークレットのローテーションを行い�
 
 ### <a name="syntax"></a>構文
 
-パス (既定値)
+#### <a name="for-external-secret-rotation"></a>外部シークレットのローテーションの場合
 
-```powershell
+```Powershell  
 Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential] <PSCredential> [-CertificatePassword <SecureString>]  
 ```
 
+#### <a name="for-internal-secret-rotation"></a>内部シークレットのローテーションの場合 
+
+```Powershell  
+Start-SecretRotation [-Internal]  
+```
+
+#### <a name="for-external-secret-rotation-rerun"></a>外部シークレットのローテーションの再実行の場合 
+
+```Powershell  
+Start-SecretRotation [-Rerun]
+```
+
+#### <a name="for-internal-secret-rotation-rerun"></a>内部シークレットのローテーションの再実行の場合 
+
+```Powershell  
+Start-SecretRotation [-Rerun] [-Internal]
+```
 ### <a name="description"></a>説明
 
-Start-SecretRotation コマンドレットは、Azure Stack システムのインフラストラクチャ シークレットのローテーションを行います。 既定では内部インフラストラクチャ ネットワークに公開されているすべてのシークレットのローテーションが行われ、ユーザーが入力するとすべての外部ネットワーク インフラストラクチャ エンドポイントの証明書のローテーションも行われます。 外部ネットワーク インフラストラクチャ エンドポイントのローテーションを行う場合は、Invoke-Command スクリプト ブロックで Start-SecretRotation を実行し、Azure Stack 環境の特権エンドポイント セッションを session パラメーターで渡す必要があります。
+**Start-SecretRotation** コマンドレットは、Azure Stack システムのインフラストラクチャ シークレットのローテーションを行います。 既定では、すべての外部ネットワーク インフラストラクチャ エンドポイントの証明書のみのローテーションを行います。 -Internal フラグを付けて使用した場合は、内部インフラストラクチャ シークレットのローテーションが行われます。 外部ネットワーク インフラストラクチャ エンドポイントのローテーションを行う場合は、**Invoke-Command** スクリプト ブロックで **Start-SecretRotation** を実行し、Azure Stack 環境の特権エンドポイント セッションを session パラメーターで渡す必要があります。
  
 ### <a name="parameters"></a>parameters
 
@@ -169,18 +216,33 @@ Start-SecretRotation コマンドレットは、Azure Stack システムのイ�
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | String  | False  | named  | なし  | すべての外部ネットワーク エンドポイント証明書を含む **\Certificates** ディレクトリへのファイル共有パスです。 外部シークレットまたはすべてのシークレットのローテーションを行う場合にのみ必要です。 最後のディレクトリは **\Certificates** にする必要があります。 |
 | CertificatePassword | SecureString | False  | named  | なし  | -PfXFilesPath で提供されているすべての証明書のパスワード。 内部と外部両方のシークレットのローテーションを行うときに PfxFilesPath を指定する場合は、必須の値です。 |
+| 内部 | String | False | named | なし | Azure Stack オペレーターが内部インフラストラクチャ シークレットのローテーションを行うときは、常に Internal フラグを使用する必要があります。 |
 | PathAccessCredential | PSCredential | False  | named  | なし  | すべての外部ネットワーク エンドポイント証明書を含む **\Certificates** ディレクトリへのファイル共有の PowerShell 資格情報。 外部シークレットまたはすべてのシークレットのローテーションを行う場合にのみ必要です。  |
-| Rerun | SwitchParameter | False  | named  | なし  | 再実行は、失敗した試行後、シークレット ローテーションが再試行されるとき、常に使用する必要があります。 |
+| Rerun | SwitchParameter | False  | named  | なし  | Rerun は、試行が失敗した後でシークレット ローテーションが再試行されるとき、常に使用する必要があります。 |
 
 ### <a name="examples"></a>例
  
-**内部インフラストラクチャ シークレットのみのローテーション**
+#### <a name="rotate-only-internal-infrastructure-secrets"></a>内部インフラストラクチャ シークレットのみのローテーション
+
+これは、Azure Stack [環境の特権エンドポイント](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)を使用して実行する必要があります。
 
 ```powershell  
-PS C:\> Start-SecretRotation  
+PS C:\> Start-SecretRotation  -Internal
 ```
 
-このコマンドは、Azure Stack 内部ネットワークに公開されているすべてのインフラストラクチャ シークレットのローテーションを行います。 Start-SecretRotation は、スタックで生成されたすべてのシークレットのローテーションを行いますが、証明書が指定されていないため、外部エンドポイント証明書のローテーションは行われません。  
+このコマンドは、Azure Stack 内部ネットワークに公開されているすべてのインフラストラクチャ シークレットのローテーションを行います。 
+
+#### <a name="rotate-only-external-infrastructure-secrets"></a>外部インフラストラクチャ シークレットのみのローテーション  
+
+```powershell  
+PS C:\> Invoke-Command -session $PEPSession -ScriptBlock {  
+
+Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCred -CertificatePassword $using:CertPassword }  
+
+Remove-PSSession -Session $PEPSession
+```
+
+このコマンドは、Azure Stack の外部ネットワーク インフラストラクチャ エンドポイントで使用する TLS 証明書のローテーションを行います。   
 
 **内部と外部のインフラストラクチャ シークレットのローテーション**
   
@@ -190,27 +252,29 @@ Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $u
 Remove-PSSession -Session $PEPSession
 ```
 
-このコマンドは、Azure Stack 内部ネットワークに公開されているすべてのインフラストラクチャ シークレットと、Azure Stack の外部ネットワーク インフラストラクチャ エンドポイントに使われる TLS 証明書の、ローテーションを行います。 Start-SecretRotation は、スタックで生成されたすべてのシークレットのローテーションを行い、証明書が指定されているため、外部エンドポイント証明書のローテーションも行われます。  
+このコマンドは、Azure Stack 内部ネットワークに公開されているすべてのインフラストラクチャ シークレットと、Azure Stack の外部ネットワーク インフラストラクチャ エンドポイントに使われる TLS 証明書のローテーションを行います。 Start-SecretRotation は、スタックで生成されたすべてのシークレットのローテーションを行い、証明書が指定されているため、外部エンドポイント証明書のローテーションも行われます。  
 
 
-## <a name="update-the-baseboard-management-controller-bmc-password"></a>ベースボード管理コントローラー (BMC) のパスワードを更新する
+## <a name="update-the-baseboard-management-controller-bmc-credential"></a>ベースボード管理コントローラー (BMC) の資格情報の更新
 
-ベースボード管理コントローラー (BMC) は、サーバーの物理的な状態を監視します。 BMC のパスワードの更新に関する仕様や手順は、ご利用の OEM (Original Equipment Manufacturer) ハードウェア ベンダーによって異なります。 Azure Stack コンポーネントのパスワードを定期的に更新する必要があります。
+ベースボード管理コントローラー (BMC) は、サーバーの物理的な状態を監視します。 BMC のユーザー アカウント名とパスワードの更新に関する仕様や手順は、ご利用の OEM (Original Equipment Manufacturer) ハードウェア ベンダーによって異なります。 Azure Stack コンポーネントのパスワードを定期的に更新する必要があります。
 
-1. OEM の指示に従って、Azure Stack の物理サーバー上で BMC を更新します。 環境内の各 BMC のパスワードは同じである必要があります。
+1. OEM の指示に従って、Azure Stack の物理サーバー上で BMC を更新します。 環境内の各 BMC のユーザー アカウント名とパスワードは同じである必要があります。
 2. Azure Stack セッションで特権エンドポイントを開きます。 手順については、「[Azure Stack での特権エンドポイントの使用](azure-stack-privileged-endpoint.md)」を参照してください。
-3. PowerShell プロンプトが **[IP アドレスまたは ERCS VM 名]:PS>** または **[azs-ercs01]:PS>** に環境に応じて変更されたら、`Set-BmcPassword` を `invoke-command` によって実行します。 パラメーターとして特権エンドポイントのセッション変数を渡します。 例: 
+3. PowerShell プロンプトが **[IP アドレスまたは ERCS VM 名]:PS>** または **[azs-ercs01]:PS>** に環境に応じて変更されたら、`Set-BmcCredemtial` を `invoke-command` によって実行します。 パラメーターとして特権エンドポイントのセッション変数を渡します。 例: 
 
     ```powershell
     # Interactive Version
     $PEip = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
     $PECred = Get-Credential "<Domain>\CloudAdmin" -Message "PE Credentials" 
-    $NewBMCpwd = Read-Host -Prompt "Enter New BMC password" -AsSecureString 
+    $NewBMCpwd = Read-Host -Prompt "Enter New BMC password" -AsSecureString
+    $NewBMCuser = Read-Host -Prompt "Enter New BMC user name"
 
     $PEPSession = New-PSSession -ComputerName $PEip -Credential $PECred -ConfigurationName "PrivilegedEndpoint" 
 
     Invoke-Command -Session $PEPSession -ScriptBlock {
-        Set-Bmcpassword -bmcpassword $using:NewBMCpwd
+        # Parameter BMCPassword is mandatory, while the BMCUser parameter is optional.
+        Set-Bmccredential -bmcpassword $using:NewBMCpwd -bmcuser $using:NewBMCuser
     }
     Remove-PSSession -Session $PEPSession
     ```
@@ -221,14 +285,15 @@ Remove-PSSession -Session $PEPSession
     # Static Version
     $PEip = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
     $PEUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"
-    $PEpwd = ConvertTo-SecureString "<Privileged Endpoint Password>" -AsPlainText -Force
+    $PEpwd = ConvertTo-SecureString "<Privileged Endpoint Password>" -Force
     $PECred = New-Object System.Management.Automation.PSCredential ($PEUser, $PEpwd) 
-    $NewBMCpwd = ConvertTo-SecureString "<New BMC Password>" -AsPlainText -Force 
+    $NewBMCpwd = ConvertTo-SecureString "<New BMC Password>" -Force
+    $NewBMCuser = "<New BMC User name>" 
 
     $PEPSession = New-PSSession -ComputerName $PEip -Credential $PECred -ConfigurationName "PrivilegedEndpoint" 
 
     Invoke-Command -Session $PEPSession -ScriptBlock {
-        Set-Bmcpassword -bmcpassword $using:NewBMCpwd
+        Set-Bmccredential -bmcpassword $using:NewBMCpwd -bmcuser $using:NewBMCuser
     }
     Remove-PSSession -Session $PEPSession
     ```

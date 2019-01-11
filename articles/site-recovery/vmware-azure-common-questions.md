@@ -4,15 +4,16 @@ description: この記事では、Azure Site Recovery を使用してオンプ�
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 12/11/2018
+services: site-recovery
+ms.date: 12/31/2018
 ms.topic: conceptual
-ms.author: mayg
-ms.openlocfilehash: d7b3919d0f970190238dbc5899a20f2d9e7d8cd4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.author: rayne
+ms.openlocfilehash: 920ae8ff09cb8e936a1ba70b2c862bd9bc076046
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256514"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974694"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -74,7 +75,7 @@ Azure ストレージにデータがレプリケートされます。 フェー�
 Site Recovery は、パブリック エンドポイントまたは ExpressRoute のパブリック ピアリングを使って、オンプレミスから Azure ストレージにデータをレプリケートします。 サイト間 VPN ネットワーク経由のレプリケーションはサポートされていません。
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>ExpressRoute で Azure にレプリケートできますか?
-はい。ExpressRoute を使って Azure に VM をレプリケートできます。 Site Recovery はパブリック エンドポイントを使って Azure ストレージ アカウントにデータをレプリケートするので、Site Recovery のレプリケーション用に[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering)を設定する必要があります。 VM が Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。
+はい。ExpressRoute を使って Azure に VM をレプリケートできます。 Site Recovery は、パブリック エンドポイント経由で Azure Storage アカウントにデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering)または [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を設定する必要があります。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 レプリケーションのための[ネットワークの要件](vmware-azure-configuration-server-requirements.md#network-requirements)も満たしていることを確認してください。 VM が Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>VPN 経由でレプリケートできないのはなぜですか?

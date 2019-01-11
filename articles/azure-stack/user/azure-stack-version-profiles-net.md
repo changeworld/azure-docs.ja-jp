@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: cfebbdb9b88a1de6a05f06e6ed72ebc9cddddcf6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 20e96ad7a99fdb8c90f3b7990965d7225aef8be0
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074453"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555015"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack"></a>Azure Stack での .NET による API バージョンのプロファイルの使用
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-Azure Stack Resource Manager 向けの .NET SDK には､インフラストラクチャの構築と管理に役立つツールが用意されています。 SDK のリソース プロバイダーには、コンピューティング、ネットワーク、ストレージ、アプリ サービス、および [KeyVault](../../key-vault/key-vault-whatis.md) が含まれます。 .NET SDK には 14 の NuGet パッケージが含まれていて、プロファイル情報を組み込むたびにプロジェクト ソリューションにダウンロードする必要があります。 ただし、アプリケーションのメモリを最適化するために、2018-03-01-hybrid または 2017-03-09-profile に使用するリソース プロバイダーを特別にダウンロードすることができます。 各パッケージは、リソース プロバイダー、それぞれの API バージョン、それが属する API プロファイルで構成されます。 .NET SDK に含まれている API プロファイルを使用すると、グローバルな Azure リソースと Azure Stack 上のリソース間を切り替えることで、ハイブリッド クラウド開発を行うことができます。
+Azure Stack Resource Manager 向けの .NET SDK には､インフラストラクチャの構築と管理に役立つツールが用意されています。 SDK のリソース プロバイダーには、コンピューティング、ネットワーク、ストレージ、アプリ サービス、および [KeyVault](../../key-vault/key-vault-whatis.md) が含まれます。 .NET SDK には、14 個の NuGet パッケージが含まれています。 これらのパッケージは、プロファイル情報を組み込むたびにプロジェクト ソリューションにダウンロードする必要があります。 ただし、アプリケーションのメモリを最適化するために、2018-03-01-hybrid または 2017-03-09-profile に使用するリソース プロバイダーを特別にダウンロードすることができます。 各パッケージは、リソース プロバイダー、それぞれの API バージョン、それが属する API プロファイルで構成されます。 .NET SDK に含まれている API プロファイルを使用すると、グローバルな Azure リソースと Azure Stack 上のリソース間を切り替えることで、ハイブリッド クラウド開発を行うことができます。
 
 ## <a name="net-and-api-version-profiles"></a>.NET と API バージョンのプロファイル
 
@@ -44,7 +44,7 @@ API プロファイルは、リソース プロバイダーと API バージョ�
 
 -   特定のリソース プロバイダーのリソースの種類に合わせて特定の API バージョンを使用するには、パッケージ内で定義されている特定の API バージョンを使用します。
 
-すべてのオプションを同じアプリケーション内で組み合わせることができることに注意してください。
+すべてのオプションを同じアプリケーション内で組み合わせることができます。
 
 ## <a name="install-the-azure-net-sdk"></a>Azure .NET SDK のインストール
 
@@ -62,7 +62,7 @@ API プロファイルは、リソース プロバイダーと API バージョ�
 
 5.  使用できない場合は、サブスクリプションを作成し、サブスクリプション ID を保存して後で使用します。 サブスクリプションの作成手順については、「[Azure Stack でオファーのサブスクリプションを作成する][]」をご覧ください。
 
-6.  サービス プリンシパルを作成し、クライアント ID とクライアント シークレットを保存します。 Azure Stack 用のサービス プリンシパルの作成方法については、「[Azure Stack へのアクセスをアプリケーションに提供する][]」を参照してください。 クライアント ID は、サービス プリンシパルの作成時にはアプリケーション ID とも呼ばれることに注意してください。
+6.  サービス プリンシパルを作成し、クライアント ID とクライアント シークレットを保存します。 Azure Stack 用のサービス プリンシパルの作成方法については、「[Azure Stack へのアクセスをアプリケーションに提供する][]」を参照してください。 クライアント ID は、サービス プリンシパルの作成時にはアプリケーション ID とも呼ばれます。
 
 7.  サブスクリプションでサービス プリンシパルのロールが共同作成者/所有者であることを確認します。 サービス プリンシパルへのロールの割り当て手順については、「[Azure Stack へのアクセスをアプリケーションに提供する][]」を参照してください。
 
@@ -77,6 +77,7 @@ Azure Stack で .NET Azure SDK を使用するには、次の値を指定した�
 | サブスクリプション ID           | AZURE_SUBSCRIPTION_ID | [*サブスクリプション ID*][] は Azure Stack 内のオファーにアクセスするために必要です。                                                      |
 | クライアント シークレット             | AZURE_CLIENT_SECRET   | サービス プリンシパルの作成時に保存した、サービス プリンシパル アプリケーション シークレット。                                      |
 | Resource Manager エンドポイント | ARM_ENDPOINT           | 「[*Azure Stack Resource Manager エンドポイント*][]」をご覧ください。                                                                    |
+| 場所                  | RESOURCE_LOCATION     | Azure Stack の場所。
 
 Azure Stack のテナント ID を確認するには、[こちら](../azure-stack-csp-ref-operations.md)の手順に従ってください。 環境変数を設定するには、次の手順に従います。
 
@@ -135,148 +136,63 @@ Azure Stack および API プロファイルについて詳しくは、「[API �
 
 ## <a name="azure-net-sdk-api-profile-usage"></a>Azure .NET SDK API プロファイルの使用
 
-プロファイル クライアントをインスタンス化するには、次のコードを使用します。 このパラメーターは、Azure Stack またはまたはその他のプライベート クラウドにのみ必要です。 グローバル Azure では、既定でこれらの設定が使用されます。
-
-Azure Stack でサービス プリンシパルを認証するには、次のコードが必要です。 これにより、テナント ID と、Azure Stack に固有の認証基準によって、トークンが作成されます。
+リソース管理クライアントをインスタンス化するには、次のコードを使用する必要があります。 同様のコードを使用して、他のリソース プロバイダー (コンピューティング、ネットワーク、ストレージなど) のクライアントをインスタンス化することができます。 
 
 ```csharp
-public class CustomLoginCredentials : ServiceClientCredentials
+var client = new ResourceManagementClient(armEndpoint, credentials)
 {
-    private string clientId;
-    private string clientSecret;
-    private string resourceId;
-    private string tenantId;
-
-    private const string authenticationBase = "https://login.windows.net/{0}";
-
-    public CustomLoginCredentials(string servicePrincipalId, string servicePrincipalSecret, string azureEnvironmentResourceId, string azureEnvironmentTenandId)
-    {
-        clientId = servicePrincipalId;
-        clientSecret = servicePrincipalSecret;
-        resourceId = azureEnvironmentResourceId;
-        tenantId = azureEnvironmentTenandId;
-    }
+    SubscriptionId = subscriptionId
+};
 ```
 
-これにより、API プロファイルの NuGet パッケージを使用して、アプリケーションを Azure Stack に正常にデプロイすることができます。
-
-## <a name="define-azure-stack-environment-setting-functions"></a>Azure Stack 環境設定関数の定義
-
-サービス プリンシパルを Azure Stack 環境に対して認証するには、次のコードを使用してください。
+上記のコードの `credentials` パラメーターは、クライアントをインスタンス化するために必要です。 次のコードでは、テナント ID とサービス プリンシパルによって認証トークンを生成します。
 
 ```csharp
-private string AuthenticationToken { get; set; }
-public override void InitializeServiceClient<T>(ServiceClient<T> client)
+var azureStackSettings = getActiveDirectoryServiceSettings(armEndpoint);
+var credentials = ApplicationTokenProvider.LoginSilentAsync(tenantId, servicePrincipalId, servicePrincipalSecret, azureStackSettings).GetAwaiter().GetResult();
+```
+コードの `getActiveDirectoryServiceSettings` 呼び出しは、メタデータ エンドポイントから Azure Stack エンドポイントを取得します。 これは、この呼び出しからの環境変数を示しています。 
+
+```csharp
+public static ActiveDirectoryServiceSettings getActiveDirectoryServiceSettings(string armEndpoint)
 {
-    var authenticationContext = new AuthenticationContext(String.Format(authenticationBase, tenantId));
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = authenticationContext.AcquireTokenAsync(resource: resourceId,
-    clientCredential: credential).Result;
-    if (result == null)
+    var settings = new ActiveDirectoryServiceSettings();
+    try
     {
-        throw new InvalidOperationException("Failed to obtain the JWT token");
+        var request = (HttpWebRequest)HttpWebRequest.Create(string.Format("{0}/metadata/endpoints?api-version=1.0", armEndpoint));
+        request.Method = "GET";
+        request.UserAgent = ComponentName;
+        request.Accept = "application/xml";
+        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+        {
+            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+            {
+                var rawResponse = sr.ReadToEnd();
+                var deserialized = JObject.Parse(rawResponse);
+                var authenticationObj = deserialized.GetValue("authentication").Value<JObject>();
+                var loginEndpoint = authenticationObj.GetValue("loginEndpoint").Value<string>();
+                var audiencesObj = authenticationObj.GetValue("audiences").Value<JArray>();
+                settings.AuthenticationEndpoint = new Uri(loginEndpoint);
+                settings.TokenAudience = new Uri(audiencesObj[0].Value<string>());
+                settings.ValidateAuthority = loginEndpoint.TrimEnd('/').EndsWith("/adfs", StringComparison.OrdinalIgnoreCase) ? false : true;
+            }
+        }
     }
-    AuthenticationToken = result.AccessToken;
+    catch (Exception ex)
+    {
+        Console.WriteLine(String.Format("Could not get AD service settings. Exception: {0}", ex.Message));
+    }
+    return settings;
 }
 ```
-
-これにより、Azure Stack に対して認証するために初期化サービス クライアントがオーバーライドされます。
+これにより、API プロファイルの NuGet パッケージを使用して、アプリケーションを Azure Stack に正常にデプロイすることができます。
 
 ## <a name="samples-using-api-profiles"></a>API プロファイルを使用したサンプル
 
-.NET と Azure Stack API プロファイルを使用してソリューションを作成する場合は、GitHub リポジトリにある次のサンプルを参考資料として使用できます。
-
--   [仮想マシン、vNet、リソース グループ、およびストレージ アカウントに対するテスト プロジェクト][]
--   .NET を使用した仮想マシンの管理
-
-### <a name="sample-unit-test-project"></a>単体テスト プロジェクトのサンプル 
-
-1.  次のコマンドを使用して、リポジトリを複製します。
-
-    ```shell
-    git clone https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm.git
-    ```
-
-2.  Azure サービス プリンシパルを作成し、サブスクリプションにアクセスするロールを割り当てます。 サービス プリンシパルの作成方法については、「[Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する][]」をご覧ください。
-
-3.  次の必要な値を取得します。
-
-    1.  テナント ID
-    2.  クライアント ID
-    3.  クライアント シークレット
-    4.  サブスクリプション ID
-    5.  Resource Manager エンドポイント
-
-4.  コマンド プロンプトを使用して作成したサービス プリンシパルから取得した情報を使用して、次の環境変数を設定します。
-
-    1.  export AZURE_TENANT_ID={ご使用のテナント ID}
-    2.  export AZURE_CLIENT_ID={ご使用のクライアント ID}
-    3.  export AZURE_CLIENT_SECRET={ご使用のクライアント シークレット}
-    4.  export AZURE_SUBSCRIPTION_ID={ご使用のサブスクリプション ID}
-    5.  export ARM_ENDPOINT={ご使用の Azure Stack Resource Manager URL}
-
-   Windows では、**export** ではなく **set** を使用します。
-
-5.  location 変数が Azure Stack の場所に設定されていることを確認します。 例: LOCAL = "local"。
-
-6.  Azure Stack に対して認証できるようにするカスタム ログイン資格情報を設定します。 コードのこの部分は、[承認] フォルダーにあるこのサンプルに含まれていることに注意してください。
-
-   ```csharp
-   public class CustomLoginCredentials : ServiceClientCredentials
-   {
-       private string clientId;
-       private string clientSecret;
-       private string resourceId;
-       private string tenantId;
-       private const string authenticationBase = "https://login.windows.net/{0}";
-       public CustomLoginCredentials(string servicePrincipalId, string servicePrincipalSecret, string azureEnvironmentResourceId, string azureEnvironmentTenandId)
-       {
-           clientId = servicePrincipalId;
-           clientSecret = servicePrincipalSecret;
-           resourceId = azureEnvironmentResourceId;
-           tenantId = azureEnvironmentTenandId;
-       }
-   private string AuthenticationToken { get; set; }
-   ```
-
-7.  Azure Stack に対して認証するために、Azure Stack を使用して初期化サービス クライアントをオーバーライドする場合は、次のコードを追加します。 このコードの一部は、[承認] フォルダーにあるこのサンプルに既に含まれていることに注意してください。
-
-   ```csharp
-   public override void InitializeServiceClient<T>(ServiceClient<T> client)
-   {
-      var authenticationContext = new AuthenticationContext(String.Format(authenticationBase, tenantId));
-      var credential = new ClientCredential(clientId, clientSecret);
-      var result = authenticationContext.AcquireTokenAsync(resource: resourceId,
-                clientCredential: credential).Result;
-      if (result == null)
-      {
-          throw new InvalidOperationException("Failed to obtain the JWT token");
-      }
-      AuthenticationToken = result.AccessToken;
-   }
-   ```
- 
-8.  NuGet パッケージ マネージャーを使用して、「2018-03-01-hybrid」を検索し、コンピューティング、ネットワーク、ストレージ、KeyVault、App Services のリソース プロバイダー用の、このプロファイルに関連付けられているパッケージをインストールします。
-
-2.  .cs ファイルの各タスク内で、Azure Stack を操作するために必要なパラメーターを設定します。 タスク `CreateResourceGroupTest` の例を次に示します。
-
-   ```csharp
-   var location = Environment.GetEnvironmentVariable("AZURE_LOCATION");
-   var baseUriString = Environment.GetEnvironmentVariable("AZURE_BASE_URL");
-   var resourceGroupName = Environment.GetEnvironmentVariable("AZURE_RESOURCEGROUP");
-   var servicePrincipalId = Environment.GetEnvironmentVariable("AZURE_CLIENT_ID");
-   var servicePrincipalSecret = Environment.GetEnvironmentVariable("AZURE_CLIENT_SECRET");
-   var azureResourceId = Environment.GetEnvironmentVariable("AZURE_RESOURCE_ID");
-   var tenantId = Environment.GetEnvironmentVariable("AZURE_TENANT_ID");
-   var subscriptionId = Environment.GetEnvironmentVariable("AZURE_SUBSCRIPTION_ID");
-   var credentials = new CustomLoginCredentials(servicePrincipalId, servicePrincipalSecret, azureResourceId, tenantId);
-   ```
-
-1.  各タスクを右クリックし、**[テストの実行]** を選択します。
-
-    1.  作業ウィンドウの緑色のチェック マークは、各タスクが指定されたパラメーターに基づいて正常に作成されたことを通知します。 Azure Stack サブスクリプションをチェックして、リソースが正常に作成されたことを確認してください。
-
-    2.  単体テストの実行方法の詳細については、「[テスト エクスプローラーを使用して単体テストを実行する][]」を参照してください。
+次のサンプルは、.NET と Azure Stack API のプロファイルを使用してソリューションを作成するための参考資料として使用できます。
+- [リソース グループの管理](https://github.com/Azure-Samples/hybrid-resources-dotnet-manage-resource-group)
+- [ストレージ アカウントの管理](https://github.com/Azure-Samples/hybird-storage-dotnet-manage-storage-accounts)
+- [仮想マシンの管理](https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -294,6 +210,6 @@ API プロファイルの詳細については、以下を参照してくださ�
   [*サブスクリプション ID*]: ../azure-stack-plan-offer-quota-overview.md#subscriptions
   [*Azure Stack Resource Manager エンドポイント*]: ../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint
   [API プロファイルの概要]: ../user/azure-stack-version-profiles.md#summary-of-api-profiles
-  [仮想マシン、vNet、リソース グループ、およびストレージ アカウントに対するテスト プロジェクト]: https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject
-  [Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する]: ../azure-stack-create-service-principals.md
-  [テスト エクスプローラーを使用して単体テストを実行する]: /visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017。
+  [Test Project to Virtual Machine, vNet, resource groups, and storage account]: https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject
+  [Use Azure PowerShell to create a service principal with a certificate]: ../azure-stack-create-service-principals.md
+  [Run unit tests with Test Explorer.]: /visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017

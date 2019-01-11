@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 5573c7f122360b3bd3adeb9dcca1c827a1933f70
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 07cacc4a127c333e4c19c4979b7520226919c14b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959463"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722398"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Kubernetes を Azure Stack にデプロイする
 
@@ -101,7 +101,7 @@ Kubernetes は、次の目的で使用できます。
 
 1. オペレーターによって作成された、Kubernetes クラスターを使用するためのサブスクリプションを選択します。
 
-1. **[アクセス制御 (IAM)]** > **[+ 追加]** の順に選択します。
+1. **[アクセス制御 (IAM)]** を選択し、**[ロール割り当ての追加]** を選択します。
 
 1. **[共同作成者]** ロールを選択します。
 

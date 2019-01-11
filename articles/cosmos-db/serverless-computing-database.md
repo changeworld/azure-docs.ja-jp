@@ -1,18 +1,17 @@
 ---
 title: サーバーレス データベース コンピューティング - Azure Functions と Azure Cosmos DB
 description: Azure Cosmos DB と Azure Functions の両方を使用して、イベント ドリブンのサーバーレス コンピューティング アプリケーションを作成する方法について説明します。
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: f0f0308233334e2662704e818c765c625a80019d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ff202c85f20adce173a375987a5f2250fda565b2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878331"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041188"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -29,7 +28,7 @@ Azure Cosmos DB と Azure Functions を使用して、次の方法でデータ�
 * **出力バインディング**を使用して、関数を Azure Cosmos DB コンテナーにバインドします。 関数が完了すると、出力バインディングはコンテナーにデータを書き込みます。
 
 > [!NOTE]
-> 現在のところ、Azure Cosmos DB トリガー、入力バインディング、および出力バインディングは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API については、MongoDB API、Cassandra API、Gremlin API、Table API など、API 用の静的クライアントを使用して関数からデータベースにアクセスする必要があります。
+> 現在のところ、Azure Cosmos DB トリガー、入力バインディング、および出力バインディングは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API については、API 用の静的クライアントを使用して関数からデータベースにアクセスする必要があります。
 
 
 次の各図は、これら 3 つの統合を示しています。 

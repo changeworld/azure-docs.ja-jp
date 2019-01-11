@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 377dbadd7b696e62d8464258d22d0dd5ed926208
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 715e536d7356a4e37f512027a23236b1fd37cbac
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106105"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651301"
 ---
 # <a name="install-published-application---cask-data-application-platform-cdap"></a>発行済みアプリケーションのインストール - Cask Data Application Platform (CDAP)
 
-この記事では、[CDAP](http://cask.co/products/cdap/) によって発行された Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
+この記事では、[CDAP](https://cask.co/products/cdap/) によって発行された [Apache Hadoop](https://hadoop.apache.org/) アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要、および独立系ソフトウェア ベンダー (ISV) によって発行された使用可能なアプリケーションの一覧については、[サードパーティ Apache Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
 
 ## <a name="about-cdap"></a>CDAP について
 
@@ -30,7 +30,7 @@ Cask Data Application Platform (CDAP) は、ビッグ データ用の統合プ�
 
 CDAP では、開発者にとって身近な高度な概念と抽象化が使用されます。 これらの抽象化によって内部システムの複雑さが隠され、ソリューションの再利用が促進されます。
 
-[Cask Hydrator](http://cask.co/products/hydrator/) と呼ばれる CDAP 拡張機能は、データ パイプラインを開発して管理するユーザー インターフェイスを提供します。 データ パイプラインは、(データの取得、変換、分析、実行後の操作などの) タスクを実行するさまざまな*プラグインで構成されます。
+[Cask Hydrator](https://cask.co/products/hydrator/) と呼ばれる CDAP 拡張機能は、データ パイプラインを開発して管理するユーザー インターフェイスを提供します。 データ パイプラインは、(データの取得、変換、分析、実行後の操作などの) タスクを実行するさまざまな*プラグインで構成されます。
 
 各 CDAP プラグインには明確に定義されたインターフェイスがあります。そのため、異なるテクノロジを評価するにはあるプラグインを別のものに交換するだけで済み、アプリケーションの他の部分に手を加える必要がありません。
 
@@ -42,7 +42,7 @@ CDAP "*パイプライン*" は、データの高度な視覚的フローをア�
 
 このエンドツーエンドのパイプラインは **Cask Hydrator UI** を使用して構築されます。このプラグインのインターフェイスとドラッグ アンド ドロップ機能を使用して、各ステージの間に接続を作成します。 各プラグインの機能は、個別に分離と変更を行えます。 CDAP を使用すれば、類似のパイプラインを数時間で構築して検証できます。 一般的な Hadoop 環境では、そのようなソリューションの構築には数日かかる場合があります。
 
-CDAP には [Cask Tracker](http://cask.co/products/tracker/) と呼ばれる拡張機能も備わっており、アプリケーション内を流れるデータを視覚的に追跡できます。 Cask Tracker によってシステムに "*データ ガバナンス*" が加わるため、アプリケーション全体でデータ資産が形式的に管理されます。 各データ ポイントの系列を追跡し、関連するメトリックを収集して、プロセス全体のデータの軌跡を監査できます。
+CDAP には [Cask Tracker](https://cask.co/products/tracker/) と呼ばれる拡張機能も備わっており、アプリケーション内を流れるデータを視覚的に追跡できます。 Cask Tracker によってシステムに "*データ ガバナンス*" が加わるため、アプリケーション全体でデータ資産が形式的に管理されます。 各データ ポイントの系列を追跡し、関連するメトリックを収集して、プロセス全体のデータの軌跡を監査できます。
 
 次に、上記のパイプラインにおけるデータ フローのようすを示します。
 
@@ -52,8 +52,8 @@ CDAP には [Cask Tracker](http://cask.co/products/tracker/) と呼ばれる拡�
 
 新しい HDInsight クラスター (または既存のクラスター) にこのアプリをインストールするには、次の構成が必要です。
 
-* クラスター レベル: Standard
-* クラスターの種類: HBase
+* クラスター レベル: 標準
+* クラスターの種類: hbase
 * クラスターのバージョン: 3.4、3.5
 
 ## <a name="install-the-cdap-published-application"></a>CDAP によって発行されたアプリケーションのインストール
@@ -126,9 +126,9 @@ CDAP には [Cask Tracker](http://cask.co/products/tracker/) と呼ばれる拡�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Cask ドキュメント](http://cask.co/resources/documentation/)。
-* [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): 未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
-* [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について確認します。
-* [MSDN: HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションを定義する方法について確認します。
-* [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
-* [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスターへのアクセスのほか、HDInsight アプリケーションのテストとホストに空のエッジ ノードを使用する方法を確認します。
+* [Cask ドキュメント](https://cask.co/resources/documentation/)。
+* [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): 発行されていない HDInsight アプリケーションを HDInsight にデプロイする方法を学習します。
+* [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法を学習します。
+* [MSDN: HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションを定義する方法を学習します。
+* [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用して追加のアプリケーションをインストールする方法を学習します。
+* [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスターにアクセスしたり、HDInsight アプリケーションをテストおよびホストしたりするために空のエッジ ノードを使用する方法を学習します。

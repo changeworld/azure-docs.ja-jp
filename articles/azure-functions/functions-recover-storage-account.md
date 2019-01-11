@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: babad23743a0a3c9631c0bcf406de3521174264a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 1902091978233ecaf80f04e3a08c70c20aee42c9
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887214"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000021"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>"Functions Runtime に到達できない" 問題のトラブルシューティング方法
 
@@ -37,6 +37,7 @@ ms.locfileid: "48887214"
 1. ストレージ アカウントのアプリケーション設定が削除された
 1. ストレージ アカウントの資格情報が無効
 1. ストレージ アカウントにアクセスできない
+1. 日ごとの実行クォータがいっぱいになった
 
 ## <a name="storage-account-deleted"></a>ストレージ アカウントが削除された
 
@@ -79,6 +80,13 @@ Function App は、ストレージ アカウントにアクセスできる必要
 * ストレージ アカウント間のトラフィックを許可するため、正しいネットワーク規則なしで Function App が App Service Environment にデプロイされた
 * ストレージ アカウントのファイアウォールが有効になっていて、Functions 間のトラフィックを許可するように構成されていない ストレージ アカウントのファイアウォール構成については、[こちら](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)をご覧ください。
 
+## <a name="daily-execution-quota-full"></a>日ごとの実行クォータがいっぱいになった
+
+日ごとの実行クォータが構成されている場合、Function App は一時的に無効になり、多くのポータル コントロールが使用できなくなります。 
+
+* 確認するには、ポータルで [プラットフォーム機能]> [Function App の設定] を開きます。 クォータを超過している場合は、次のメッセージが表示されます。
+    * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+* 問題を解決するには、クォータを削除し、アプリを再起動します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -92,5 +100,5 @@ Function App が戻り、機能するようになったので、クイック ス
   関数をテストするための各種ツールと手法について説明します。
 * [Azure Functions のスケーリング方法](functions-scale.md)  
   Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。 
-* [Azure App Service とは](../app-service/app-service-web-overview.md)  
+* [Azure App Service とは](../app-service/overview.md)  
   Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service を活用しています。 

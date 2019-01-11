@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: b55c5bc6096186e338d6960190169d5f4acc777d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dcedf27f6105dcc1ea6e43feb32d254b491842c7
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955135"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974439"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 Azure Backup はさまざまな面で効率性に優れ、Azure への初回完全バックアップ時にネットワークとストレージのコストを抑えます。 初回完全バックアップでは通常、大量のデータが転送されます。その後の差分/増分のみを転送するバックアップと比べると、多くのネットワーク帯域幅が必要です。 オフライン シード処理プロセスにより、Azure Backup はディスクを使ってオフライン バックアップ データを Azure にアップロードすることができます。
@@ -75,11 +75,11 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
 
   この画面では、次の内容を入力します。
 
-    * **ステージングの場所**: 初回バックアップ コピーが書き込まれる一時的なストレージの場所。 ステージング場所には、ネットワーク共有またはローカル コンピューター上の場所を使用できます。 コピー用コンピューターとソース コンピューターが異なる場合は、ステージング場所の完全なネットワーク パスを指定することをお勧めします。
-    * **Azure Resource Manager ストレージ アカウント**: Azure サブスクリプションに含まれる種類が Resource Manager のストレージ アカウントの名前。
-    * **Azure ストレージ コンテナー**: Recovery Services コンテナーにコピーする前に、バックアップ データをインポートする先の Azure ストレージアカウントのストレージ BLOB の名前。
-    * **Azure サブスクリプション ID**: Azure ストレージ アカウントを作成する Azure サブスクリプションの ID。
-    * **Azure インポート ジョブ名**: ディスクを使用して Azure に送信されたデータを、Azure インポート サービスと Azure Backup が追跡するときに使用する一意の名前。 
+    * **ステージングの場所**:初回バックアップ コピーが書き込まれる一時的なストレージの場所。 ステージング場所には、ネットワーク共有またはローカル コンピューター上の場所を使用できます。 コピー用コンピューターとソース コンピューターが異なる場合は、ステージング場所の完全なネットワーク パスを指定することをお勧めします。
+    * **Azure Resource Manager ストレージ アカウント**:Azure サブスクリプションに含まれる種類が Resource Manager のストレージ アカウントの名前。
+    * **Azure ストレージ コンテナー**:Recovery Services コンテナーにコピーする前に、バックアップ データをインポートする先の Azure ストレージ アカウントのストレージ BLOB の名前。
+    * **Azure サブスクリプション ID**:Azure ストレージ アカウントを作成する Azure サブスクリプションの ID。
+    * **Azure インポート ジョブ名**:ディスクを使用して Azure に送信されたデータを、Azure インポート サービスと Azure Backup が追跡するときに使用する一意の名前。 
   
   画面で情報を入力し、**[次へ]** をクリックします。 ディスクの準備に必要な情報であるため、指定した "*ステージング場所*" と "*Azure インポート ジョブ名*" を保存します。
 

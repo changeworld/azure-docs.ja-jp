@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 474cc78a4ceb872742ca7eb10837eeb89dcc1bdb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 37f956606075cb21075d6f50bb53e04075936997
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213182"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999035"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services の概要
 Azure Service Fabric により、ステートレスおよびステートフルな Reliable Service の作成と管理が簡素化されます。 このトピックの内容は次のとおりです。
@@ -76,13 +76,13 @@ Reliable Services をはじめて学習している場合は、読み進めて�
 
 たとえば、メモリのない電卓が、同時に処理する必要があるすべての項と演算を受け取る場合を考えてみてください。
 
-この場合は、サービスの `RunAsync()` (C#) または `runAsync()` (Java) を空にしておくことができます。これは、サービスが実行する必要のあるバック グラウンドのタスク処理がないためです。 電卓サービスを作成すると、`ICommunicationListener` (C#) または `CommunicationListener` (Java) (たとえば [Web API](service-fabric-reliable-services-communication-webapi.md)) が返され、このメソッドが任意のポートでリッスン エンドポイントを開始します。 このリッスン エンドポイントは、電卓のパブリック API を定義するさまざまな計算メソッド (例: "Add (n1, n2)") に接続します。
+この場合は、サービスの `RunAsync()` (C#) または `runAsync()` (Java) を空にしておくことができます。これは、サービスが実行する必要のあるバック グラウンドのタスク処理がないためです。 電卓サービスを作成すると、`ICommunicationListener` (C#) または `CommunicationListener` (Java) (たとえば [Web API](service-fabric-reliable-services-communication-webapi.md)) が返され、このメソッドが任意のポートでリッスン エンドポイントを開始します。 このリッスン エンドポイントは、電卓のパブリック API を定義するさまざまな計算メソッド (例:"Add(n1, n2)") に接続します。
 
 クライアントから呼び出しが行われた場合は、適切なメソッドが呼び出され、電卓サービスは提供されたデータに対する演算を実行して、結果を返します。 この処理では、状態はまったく保存されません。
 
 内部の状態がまったく保存されないため、この電卓の例はシンプルです。 ただし、大半のサービスは実際にはステートレスではありません。 状態が外部ストアに格納されているためです (たとえば、セッション状態をバッキング ストアまたはキャッシュに保持している任意の Web アプリはステートレスではありません)。
 
-Service Fabric でのステートレス サービスの使用方法を示す一般的な例は、Web アプリケーションの公開 API を公開するフロントエンド サービスです。 フロントエンド サービスは、ステートフル サービスと通信してユーザーの要求を完了します。 この場合、クライアントからの呼び出しは、ポート 80 など、ステートレス サービスがリッスンしている既知のポートに送られます。 このステートレス サービスは呼び出しを受信し、その呼び出しが信頼できる利用者からのものかどうかと、どのサービスに向けて送信されたのかを判断します。  次にステートレス サービスは、その呼び出しをステートフル サービスの正しいパーティションに転送して、応答を待ちます。 ステートレス サービスは、応答を受信すると、元のクライアントに応答します。 このようなサービスの例は、[C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/Actors/VisualObjectActor/VisualObjectWebService) のサンプルにあります。 これは、サンプルに含まれているこのパターンの 1 例にすぎません。その他のサンプルには他の例も含まれています。
+Service Fabric でのステートレス サービスの使用方法を示す一般的な例は、Web アプリケーションの公開 API を公開するフロントエンド サービスです。 フロントエンド サービスは、ステートフル サービスと通信してユーザーの要求を完了します。 この場合、クライアントからの呼び出しは、ポート 80 など、ステートレス サービスがリッスンしている既知のポートに送られます。 このステートレス サービスは呼び出しを受信し、その呼び出しが信頼できる利用者からのものかどうかと、どのサービスに向けて送信されたのかを判断します。  次にステートレス サービスは、その呼び出しをステートフル サービスの正しいパーティションに転送して、応答を待ちます。 ステートレス サービスは、応答を受信すると、元のクライアントに応答します。 このようなサービスの例は、[C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started) のサンプルにあります。 これは、サンプルに含まれているこのパターンの 1 例にすぎません。その他のサンプルには他の例も含まれています。
 
 ### <a name="stateful-reliable-services"></a>ステートフル Reliable Service
 ステートフル サービスは、サービス提供するために、状態の一部の整合性を維持して永続化しておかなければならないサービスです。 受け取る最新情報に基づいて値の移動平均を常に計算するサービスを考えてみてください。 このサービスを提供するには、最新の平均と、処理する必要がある一連の現在の受信要求が必要になります。 情報を取得、処理して、外部ストア (現時点では Azure BLOB やテーブル ストアなど) に格納するサービスはどれもステートフル サービスです。 その状態は外部の状態ストアに保持されます。
@@ -102,7 +102,7 @@ Service Fabric でのステートレス サービスの使用方法を示す一�
 * 複数の状態にまたがるトランザクション上の保証が必要 (たとえば、注文や注文品目)。
 * アプリケーションの状態を、Reliable Dictionary と Reliable Queue として自然にモデル化することができる。
 * アプリケーション コードまたは状態で、待機時間が短い読み取りと書き込みの可用性を高める必要がある。
-* アプリケーションでは、1 つ以上の Reliable Collection に対して、トランザクション操作の同時実行または粒度を制御する必要がある。
+* アプリケーションでは、1 つ以上の Reliable Collection に対して、トランザクション操作のコンカレンシーまたは粒度を制御する必要がある。
 * サービスの通信を管理するか、パーティション構成を制御したい。
 * コードにはフリー スレッドの実行時環境が必要である。
 * アプリケーションで、実行時に Reliable Dictionary または Reliable Queue またはサービス全体を動的に作成または破棄する必要がある。

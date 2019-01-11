@@ -10,17 +10,20 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e32e62a050b54334a37b09f001798b9a62e2e6b5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7a40ded3ff6af1c519400c755d1ee6d9bd73ba9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637107"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602292"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを通じてアクセス トークンをご自身のアプリケーションに渡す
 
 > [!NOTE]
 > 現在、この機能はパブリック プレビュー段階にあります。
+
+> [!Important]
+> このパブリック プレビュー機能は、一時的にご利用いただけません。
 
 Azure Active Directory (Azure AD) B2C の[カスタム ポリシー](active-directory-b2c-get-started-custom.md)は、ご自身のアプリケーションのユーザーに、ID プロバイダーを使用してサインアップまたはサインインする機会を提供します。 これが発生すると、Azure AD B2C は ID プロバイダーから[アクセス トークン](active-directory-b2c-reference-tokens.md)を受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 要求の種類を追加し、要求をカスタム ポリシーに出力して、トークンを Azure AD B2C に登録するアプリケーションに渡します。 
 

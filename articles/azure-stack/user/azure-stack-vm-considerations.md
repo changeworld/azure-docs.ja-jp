@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 12/19/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 9d6bb8d4327b428bb47d1d44422d816e7b20ed87
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8a9fc299f620c7df87544b467cf52535addfe313
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847526"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651505"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Azure Stack で仮想マシンを操作する際の考慮事項
 
@@ -39,6 +39,7 @@ Azure Stack 仮想マシンは、オンデマンドのスケーラブルなコ�
 | 仮想マシンのストレージ | [マネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)をサポートしています。 | マネージド ディスクは、バージョン 1808 以降の Azure Stack でサポートされています。 |
 | 仮想マシン ディスクのパフォーマンス | ディスクの種類とサイズによって異なります。 | ディスクが接続されている VM のサイズによって異なります。「[Azure Stack でサポートされている仮想マシンのサイズ](azure-stack-vm-sizes.md)」を参照してください。
 | API のバージョン | Azure では常に、すべての仮想マシン機能について最新の API のバージョンが用意されます。 | Azure Stack では特定の Azure サービスがサポートされ、それらのサービスについて特定の API バージョンがサポートされます。 サポートされている API バージョンの一覧を参照するには、この記事の [API バージョン](#api-versions)についてのセクションを参照してください。 |
+| Azure Instance Metadata Service | Azure Instance Metadata Service は、実行中の仮想マシン インスタンスに関する情報を提供します。これらの情報を使用して仮想マシンの管理と構成を行うことができます。  | Azure Stack では、Instance Metadata Service がサポートされません。 |
 |仮想マシン可用性セット|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン<br>マネージド ディスクのサポート|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン (最大 20)<br>マネージド ディスクのサポートなし|
 |仮想マシン スケール セット|自動スケール サポート|自動スケールはサポートされていません。<br>ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにより多くのインスタンスを追加します。
 

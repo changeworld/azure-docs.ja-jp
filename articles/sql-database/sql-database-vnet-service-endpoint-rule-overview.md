@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: d4957efa151a0f992d098b2d6355b03f336e3738
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 12/20/2018
+ms.openlocfilehash: 33e0b66541e5ead5f3c05d2310ecc07e8a62324c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438593"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728127"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Azure SQL の Virtual Network サービス エンドポイントとルールを使用する
 
 *仮想ネットワーク規則*は、Azure [SQL Database](sql-database-technical-overview.md) または [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク ルール機能が、場合によっては Azure SQL Database と SQL Data Warehouse への通信を安全に許可するための最適な選択肢となる理由を説明します。
 
-> [!NOTE]
-> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
+> [!IMPORTANT]
+> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 この記事は、**Azure SQL Database Managed Instance** には "*適用されません*"。
 
 仮想ネットワーク規則を作成するには、まず、参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。
 
@@ -64,9 +64,8 @@ SQL Database のファイアウォールでは、SQL Database への通信が許
 
 ただし、静的 IP の方法は管理が困難になる場合があり、まとめて実行すると負荷がかかります。 仮想ネットワーク規則を確立して管理するほうが簡単です。
 
-### <a name="c-cannot-yet-have-sql-database-on-a-subnet"></a>C. サブネット上に SQL Database を保持することは、まだできません。
-
-Azure SQL Database サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワークはお使いの SQL Database と通信できます。 この場合、仮想ネットワーク ルールや IP ルールがなくても、VM は SQL Database と通信できます。
+> [!NOTE]
+> サブネット上に SQL Database を保持することは、まだできません。 Azure SQL Database サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワークはお使いの SQL Database と通信できます。 この場合、仮想ネットワーク ルールや IP ルールがなくても、VM は SQL Database と通信できます。
 
 しかし、2017 年 9 月時点ではまだ、Azure SQL Database サービスは、サブネットに割り当て可能なサービスの範囲には含まれていません。
 

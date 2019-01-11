@@ -1,19 +1,17 @@
 ---
 title: Advanced Threat Protection - Azure Database for MySQL | Microsoft Docs
 description: Advanced Threat Protection は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
-services: mysql
 author: bolzmj
-manager: kfile
-ms.service: mysql
-ms.topic: article
-ms.date: 09/20/2018
 ms.author: mbolz
-ms.openlocfilehash: e123acd09e4cbfdbaf0531db72598dbd478fa1c9
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.service: mysql
+ms.topic: conceptual
+ms.date: 09/20/2018
+ms.openlocfilehash: 739e1637eaeef86028848e5b8c8a453fcbc6195e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069388"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543800"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>Azure Database for MySQL 用の Advanced Threat Protection
 
@@ -33,11 +31,11 @@ Azure Database for MySQL 用の Advanced Threat Protection では、新しいセ
 
 ## <a name="advanced-threat-protection-alerts"></a>Advanced Threat Protection のアラート 
 Azure Database for MySQL 用の Advanced Threat Protection では、普通でなく有害な可能性がある、データベースへのアクセスやその悪用の試みであることを示す不審なアクティビティを検出し、以下のアラートをトリガーすることができます。
-- **Access from unusual location (通常とは異なる場所からのアクセス)**: このアラートは、だれかが通常とは異なる地理的な場所から Azure Database for MySQL サーバーにログオンしたことで Azure Database for MySQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
-- **Access from unusual Azure data center (通常とは異なる Azure データ センターからのアクセス)**: このアラートは、だれかが最近このサーバーで記録された通常とは異なる Azure データ センターからサーバーにログオンしたことで Azure Database for MySQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートによって、正当なアクション (Azure、Power BI、Azure Database for MySQL クエリ エディターの新しいアプリケーション) が検出されることがあります。 別のケースでは、このアラートによって Azure リソース/サービス (元従業員、外部の攻撃者) からの悪意のあるアクションが検出されます。
-- **Access from unfamiliar principal (通常とは異なるプリンシパルからのアクセス)**: このアラートは、だれかが通常とは異なるプリンシパル (Azure Database for MySQL ユーザー) を使用してサーバーにログオンしたことで Azure Database for MySQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
-- **Access from a potentially harmful application (潜在的に有害なアプリケーションからのアクセス)**: このアラートは、データベースにアクセスするために潜在的に有害なアプリケーションが使用されたときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートで一般的な攻撃ツールを使用した攻撃が検出されます。
-- **Brute force Azure Database for MySQL credentials (Azure Database for MySQL 資格情報に対するブルート フォース攻撃)**: このアラートは、異なる資格情報でログインに失敗した回数が異常に多いときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートでブルート フォース攻撃が検出されます。
+- **Access from unusual location (通常とは異なる場所からのアクセス)**:このアラートは、だれかが通常とは異なる地理的な場所から Azure Database for MySQL サーバーにログオンしたことで Azure Database for MySQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
+- **Access from unusual Azure data center (通常とは異なる Azure データ センターからのアクセス)**:このアラートは、だれかかが最近このサーバーで記録された通常とは異なる Azure データ センターからサーバーにログオンしたことで Azure Database for MySQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートによって、正当なアクション (Azure、Power BI、Azure Database for MySQL クエリ エディターの新しいアプリケーション) が検出されることがあります。 別のケースでは、このアラートによって Azure リソース/サービス (元従業員、外部の攻撃者) からの悪意のあるアクションが検出されます。
+- **Access from unfamiliar principal (通常とは異なるプリンシパルからのアクセス)**:このアラートは、だれかが通常とは異なるプリンシパル (Azure Database for MySQL ユーザー) を使用してサーバーにログオンしたことで Azure Database for MySQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
+- **Access from a potentially harmful application (潜在的に有害なアプリケーションからのアクセス)**:このアラートは、データベースにアクセスするために潜在的に有害なアプリケーションが使用されたときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートで一般的な攻撃ツールを使用した攻撃が検出されます。
+- **Brute force Azure Database for MySQL credentials (Azure Database for MySQL 資格情報のブルート フォース攻撃)**:このアラートは、異なる資格情報でログインに失敗した回数が異常に多いときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートでブルート フォース攻撃が検出されます。
 
 ## <a name="next-steps"></a>次の手順
 

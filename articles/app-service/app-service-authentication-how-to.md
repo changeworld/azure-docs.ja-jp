@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 931c1bc68c4e357432081dbfa2df685fcf9fc96d
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: f3e30309b230ec44ddf39648b943f3f76dc7805d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409753"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722653"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
-この記事では、[App Service 上で組み込みの認証と承認](app-service-authentication-overview.md)をカスタマイズする方法と、アプリケーションから ID を管理する方法について説明します。 
+この記事では、[App Service 上で組み込みの認証と承認](overview-authentication-authorization.md)をカスタマイズする方法と、アプリケーションから ID を管理する方法について説明します。 
 
 すぐに開始するには、以下のチュートリアルのいずれかをご覧ください。
 
@@ -37,13 +37,13 @@ ms.locfileid: "53409753"
 
 ## <a name="use-multiple-sign-in-providers"></a>複数のサインイン プロバイダーを使用する
 
-ポータル構成では、ユーザーに複数 (Facebook と Twitter の両方など) のサインイン プロバイダーを表示するターンキー手法は提供されません。 ただし、Web アプリに機能を追加することは難しくはありません。 手順の概要は次のとおりです。
+ポータル構成では、ユーザーに複数 (Facebook と Twitter の両方など) のサインイン プロバイダーを表示するターンキー手法は提供されません。 ただし、この機能をアプリに追加することは難しくありません。 手順の概要は次のとおりです。
 
 最初に、Azure Portal の **[認証/承認]** ページで、有効にする各 ID プロバイダーを構成します。
 
 **[要求が認証されない場合に実行するアクション]** で、**[匿名要求を許可する (操作不要)]** を選択します。
 
-サインイン ページ、ナビゲーション バーまたは Web アプリの他の任意の場所で、有効にする各プロバイダーへのサインイン リンクを追加します (`/.auth/login/<provider>`)。 例: 
+サインイン ページ、ナビゲーション バー、またはアプリのその他の任意の場所で、有効にした各プロバイダーへのサインイン リンク (`/.auth/login/<provider>`) を追加します。 例: 
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -63,7 +63,7 @@ ms.locfileid: "53409753"
 
 ## <a name="validate-tokens-from-providers"></a>プロバイダーからのトークンを検証する
 
-クライアント主導のサインインでは、アプリケーションはユーザーをプロバイダーに手動でサインインさせ、検証のために認証トークンを App Service に送信します (「[Authentication flow](app-service-authentication-overview.md#authentication-flow)」をご覧ください)。 この検証自体では、必要なアプリ リソースへのアクセス権が実際には付与されませんが、検証に成功すると、アプリ リソースへのアクセスに使用できるセッション トークンが付与されます。 
+クライアント主導のサインインでは、アプリケーションはユーザーをプロバイダーに手動でサインインさせ、検証のために認証トークンを App Service に送信します (「[Authentication flow](overview-authentication-authorization.md#authentication-flow)」をご覧ください)。 この検証自体では、必要なアプリ リソースへのアクセス権が実際には付与されませんが、検証に成功すると、アプリ リソースへのアクセスに使用できるセッション トークンが付与されます。 
 
 プロバイダーのトークンを検証するには、最初に目的のプロバイダーを使用して App Service のアプリが構成されている必要があります。 実行時に、プロバイダーから認証トークンを取得した後、検証のためにトークンを `/.auth/login/<provider>` にポストします。 例:  
 
@@ -186,15 +186,15 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 - **Microsoft アカウント**: [Microsoft アカウント認証設定を構成する](configure-authentication-provider-microsoft.md)場合は、`wl.offline_access` スコープを選択します。
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。
-    1. 左側のブラウザーで、**subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings** に移動します。 
-    1. **[編集]** をクリックします。
-    1. 次のプロパティを変更します。 _\<app\_id>_ を、アクセスするサービスの Azure Active Directory アプリケーション ID に置き換えます。
+    2. 左側のブラウザーで、**subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings** に移動します。 
+    3. **[編集]** をクリックします。
+    4. 次のプロパティを変更します。 _\<app\_id>_ を、アクセスするサービスの Azure Active Directory アプリケーション ID に置き換えます。
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    1. **[Put]** をクリックします。 
+    5. **[Put]** をクリックします。 
 
 プロバイダーが構成されたら、トークン ストアで[更新トークンを見つけ、そのアクセス トークンの有効期限を確認](#retrieve-tokens-in-app-code)できます。 
 

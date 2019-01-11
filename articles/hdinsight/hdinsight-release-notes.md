@@ -2,19 +2,19 @@
 title: Azure HDInsight のリリース ノート
 description: Azure HDInsight の最新のリリース ノート。 Hadoop、Spark、Microsoft R Server、Hive などの開発に関するヒントや詳細を紹介します。
 services: hdinsight
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/01/2018
-ms.author: hrasheed
-ms.openlocfilehash: 1f0ff7bef5c1d30eb6920eaab3767de1dea6b94a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 01/02/2019
+ms.openlocfilehash: 49087792efa5e377beadc78746bcf99c88954e9b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438865"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000082"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート
 
@@ -35,7 +35,7 @@ Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop およ�
 
     a.  [**Apache Spark 2.3 の新機能**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
-    b.  [**Apache Kafka 1.0 の新機能**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
+    b.  [**Apache Kafka 1.0 の新機能**](https://kafka.apache.org/downloads#1.0.0)
 
 2.  ***Microsoft R Server 9.1 から Machine Learning Services 9.3 への更新***: このリリースでは、データ サイエンティストとエンジニア向けに先進的なアルゴリズムと使いやすさで強化したオープン ソースを提供しています。すべての機能を Apache Spark の速度で、普段使用している言語で利用できます。 このリリースでは、Microsoft R Server で提供されている機能に基づいて拡張し、Python のサポートを追加したため、クラスター名を Microsoft R Server から ML Services に変更しました。 
 
@@ -1300,14 +1300,24 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 |**Apache コンポーネント**|**Apache JIRA**|**まとめ**|**詳細**|
 |--|--|--|--|
-|**Spark 2.3** |**該当なし** |**Apache Spark のリリース ノートに記載されている変更点** |- 「Deprecation」(廃止) のドキュメントと「Change of behavior」(動作変更) のガイド (https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations) がある<br /><br />- SQL に関する内容については、別の詳細な「Migration」(移行) ガイド (2.2 から 2.3) (http://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23) がある|
+|**Spark 2.3** |**該当なし** |**Apache Spark のリリース ノートに記載されている変更点** |- 「Deprecation」(廃止) のドキュメントと「Change of behavior」(動作変更) のガイド (https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations) がある<br /><br />- SQL に関する内容については、別の詳細な「Migration」(移行) ガイド (2.2 から 2.3) (https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23) がある|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark ジョブは正常に完了するが、HDFS のディスク クォータ超過のエラーが発生する |**シナリオ:** コマンドを実行するユーザーのごみ箱フォルダー上にクォータが設定されているときに **insert overwrite** を実行します。<br /><br />**以前の動作:** ごみ箱にデータを移動することに失敗しても、ジョブが成功します。 結果に以前にテーブルに存在していたデータの一部が間違って含まれることがあります。<br /><br />**新しい動作:** ごみ箱フォルダーへの移動が失敗すると、ファイルは永続的に削除されます。|
-|**Kafka 1.0**|**該当なし**|**Apache Spark のリリース ノートに記載されている変更点** |http://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Kafka 1.0**|**該当なし**|**Apache Spark のリリース ノートに記載されている変更点** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/ Ranger** | |INSERT OVERWRITE に Ranger Hive の追加のポリシーが必要とされる |**シナリオ:** **INSERT OVERWRITE** に Ranger Hive の追加のポリシーが必要とされる<br /><br />**以前の動作:** Hive の **INSERT OVERWRITE** のクエリが通常どおりに成功します。<br /><br />**新しい動作:** HDP-2.6.x にアップグレードすると、Hive の **INSERT OVERWRITE** のクエリがエラーにより予期せず失敗します。<br /><br />Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user jdoe does not have WRITE privilege on /tmp/\*(state=42000,code=40000)<br /><br />HDP-2.6.0 以降、Hive の **INSERT OVERWRITE** のクエリで書き込み操作を許可するには、ユーザーに HDFS ポリシーを通じて書き込みアクセス許可が付与されている場合でも、Ranger URI ポリシーが必要です。<br /><br />**回避策/期待されるアクション:**<br /><br />1.Hive リポジトリの下に新しいポリシーを作成します。<br />2.データベースが表示されるドロップダウンで、[URI] を選択します。<br />手順 3.パス (例: /tmp/*) を更新します。<br />4.ユーザーやグループを追加して保存します。<br />5.insert クエリを再試行します。|
 |**HDFS**|**該当なし** |HDFS が KMS の複数の URI をサポートする必要がある |**以前の動作:** KMS プロバイダー パスの構成に dfs.encryption.key.provider.uri プロパティが使用されていました。<br /><br />**新しい動作:** dfs.encryption.key.provider.uri が非推奨になり、KMS プロバイダー パスの構成に hadoop.security.key.provider.path が優先的に使用されるようになりました。|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|スケジューラを無効にするためのオプション |**影響を受けるコンポーネント:** Zeppelin サーバー<br /><br />**以前の動作:** Zeppelin の以前のリリースでは、スケジューラを無効にするオプションがありませんでした。<br /><br />**新しい動作:** 既定でスケジューラが無効になっているため、既定ではユーザーにスケジューラが表示されなくなります。<br /><br />**回避策/期待されるアクション:** スケジューラを有効にするには、Ambari から Zeppelin の設定の zeppelin のカスタム サイトの下に、値が true の azeppelin.notebook.cron.enable を追加する必要があります。|
 
 ## <a name="known-issues"></a>既知の問題
+
+-   **HDInsight と ADLS Gen 2 の統合** Azure Data Lake Storage Gen 2 をユーザー ディレクトリとアクセス許可と共に使用する HDInsight ESP クラスターには、次の 2 つの問題があります。
+   
+   1. ユーザーのホーム ディレクトリが、ヘッド ノード 1 に作成されません。 回避策として、ディレクトリを手動で作成し、所有権をそれぞれのユーザーの UPN に変更します。
+   
+   2. /hdp ディレクトリに対するアクセス許可が、現在は 751 に設定されません。 これを次のように設定する必要があります 
+      ```bash
+      chmod 751 /hdp 
+      chmod –R 755 /hdp/apps
+      ```
 
 -   **Spark 2.3**
 
@@ -1409,6 +1419,10 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
             val = \_.escape(val);//Line No:460
             
             上記の行を削除すると、Ranger UI で特殊文字を含むポリシー条件を使用してポリシーを作成できるようになり、その同じポリシーでポリシーの評価が正常になります。
+
+**HDInsight と ADLS Gen 2 との統合:ESP クラスターでのユーザー ディレクトリとアクセス許可の問題**
+    1.  ユーザーのホーム ディレクトリが、ヘッド ノード 1 に作成されません。 回避策は、これらを手動で作成し、所有権をそれぞれのユーザーの UPN に変更することです。
+    2.  /hdp に対するアクセス許可が、現在は 751 に設定されません。 これを次のように設定する必要があります。a.  chmod 751 /hdp b.  chmod –R 755 /hdp/apps
 
 ## <a name="deprecation"></a>非推奨
 

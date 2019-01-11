@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SuccessFactors の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SuccessFactors の統合 | Microsoft Docs
 description: Azure Active Directory と SuccessFactors の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 89224b32efaecdf7a2797b034b1beac7ad191ee5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 467db4046c0600142338dcfa39e136f45255caba
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685227"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976751"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>チュートリアル: Azure Active Directory と SuccessFactors の統合
+# <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>チュートリアル:Azure Active Directory と SuccessFactors の統合
 
 このチュートリアルでは、SuccessFactors と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -150,7 +150,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
     | `https://<companyname>.sapsf.cn/<companyname>`|
          
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[SuccessFactors クライアント サポート チーム](https://www.successfactors.com/support.html)に問い合わせてください。 
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[SuccessFactors クライアント サポート チーム](https://www.successfactors.com/content/ssf-site/en/support.html)に問い合わせてください。 
 
 5. **[SAML 署名証明書]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**証明書 (Base64)** をダウンロードし、証明書ファイルをコンピューターに保存します。
 
@@ -261,7 +261,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
 Azure AD ユーザーが SuccessFactors にログインできるようにするには、ユーザーを SuccessFactors にプロビジョニングする必要があります。  
 SuccessFactors の場合、プロビジョニングは手動で行います。
 
-SuccessFactors でユーザーを作成するには、 [SuccessFactors のサポート チーム](https://www.successfactors.com/support.html)に連絡する必要があります。
+SuccessFactors でユーザーを作成するには、 [SuccessFactors のサポート チーム](https://www.successfactors.com/content/ssf-site/en/support.html)に連絡する必要があります。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

@@ -1,27 +1,27 @@
 ---
 ms.assetid: ''
-title: Azure Key Vault の仮想ネットワーク サービス エンドポイント | Microsoft Docs
+title: Azure Key Vault の仮想ネットワーク サービス エンドポイント - Azure Key Vault | Microsoft Docs
 description: Key Vault の仮想ネットワーク サービス エンドポイントの概要
 services: key-vault
 author: amitbapat
 ms.author: ambapat
 manager: mbaldwin
-ms.date: 08/31/2018
+ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 656007268dcf57910e4a655d85285da4fbd37425
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 1d53fc6cef022f627bb1cd1f832ebf65698207a9
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681519"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002427"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
 Azure Key Vault の仮想ネットワーク サービス エンドポイントを使用すると、指定した仮想ネットワークに対するアクセスを制限できます。 エンドポイントでは、IPv4 (インターネット プロトコル バージョン 4) アドレス範囲のリストへのアクセスを制限することもできます。 このようなソースの外部からお使いのキー コンテナーに接続するユーザーはすべて、アクセスを拒否されます。
 
-この制限には重要な例外が 1 つあります。 ユーザーが信頼できる Microsoft サービスを許可するようにオプトインした場合、このようなサービスからの接続はファイアウォールを介して行われます。 たとえば、Office 365 Exchange Online、Office 365 SharePoint Online、Azure コンピューティング、Azure Resource Manager、Azure Backup などのサービスが含まれます。 このようなユーザーでも有効な Azure Active Directory トークンを提示する必要があり、要求された操作を実行できるアクセス許可 (アクセス ポリシーとして構成) を持っている必要があります。 詳しくは、「[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)」をご覧ください。
+この制限には重要な例外が 1 つあります。 ユーザーが信頼できる Microsoft サービスを許可するようにオプトインした場合、このようなサービスからの接続はファイアウォールを介して行われます。 たとえば、Office 365 Exchange Online、Office 365 SharePoint Online、Azure コンピューティング、Azure Resource Manager、Azure Backup などのサービスが含まれます。 このようなユーザーでも有効な Azure Active Directory トークンを提示する必要があり、要求された操作を実行できるアクセス許可 (アクセス ポリシーとして構成) を持っている必要があります。 詳細については、[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)に関するページを参照してください。
 
 ## <a name="usage-scenarios"></a>使用シナリオ
 
@@ -31,6 +31,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 > Key Vault ファイアウォールと仮想ネットワーク ルールは、Key Vault の[データ プレーン](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control)にのみ適用されます。 Key Vault のコントロール プレーン操作 (作成、削除、変更操作、アクセス ポリシーの設定、ファイアウォールと仮想ネットワーク ルールの設定など) は、ファイアウォールや仮想ネットワーク ルールの影響を受けません。
 
 サービス エンドポイントの使用方法の例をいくつか次に示します。
+
 * Key Vault を使用して暗号化キー、アプリケーションのシークレット、証明書を保存しており、パブリック インターネットからキー コンテナーへのアクセスをブロックする場合。
 * 自分のアプリケーションまたはリストで指定した少数のホストのみが自分のキー コンテナーに接続できるように、キー コンテナーへのアクセスをロックする場合。
 * Azure 仮想ネットワークでアプリケーションを実行していて、この仮想ネットワークはすべての受信および送信トラフィックに対してロックされている。 それでもアプリケーションで、シークレットまたは証明書を取得したり、暗号キーを使用したりするために、キー コンテナーに接続する必要がある場合。
@@ -38,12 +39,13 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 ## <a name="configure-key-vault-firewalls-and-virtual-networks"></a>Key Vault のファイアウォールと仮想ネットワークを構成する
 
 ファイアウォールと仮想ネットワークの構成には、次の手順を実行する必要があります。 次の手順は、PowerShell、Azure CLI、Azure portal のどれを使用していても適用されます。
+
 1. 詳細なアクセスログを表示するように [Key Vault のログ記録](key-vault-logging.md)を有効にします。 これは、ファイアウォールと仮想ネットワーク ルールによってキー コンテナーにアクセスできない場合の診断に役立ちます。 (このステップは省略可能ですが、強くお勧めします。)
 2. ターゲット仮想ネットワークとサブネットの**キー コンテナーのサービス エンドポイント**を有効にします。
 3. 特定の仮想ネットワーク、サブネット、および IPv4 アドレス範囲からキー コンテナーへのアクセスを制限するようにキー コンテナーのファイアウォールと仮想ネットワーク ルールを設定します。
 4. すべての信頼できる Microsoft サービスからこのキー コンテナーにアクセスできるようにする必要がある場合は、**信頼できる Azure サービス**がキー コンテナーに接続できるようにするオプションを有効にします。
 
-詳しくは、「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](key-vault-network-security.md)」をご覧ください。
+詳細については、「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](key-vault-network-security.md)」を参照してください。
 
 > [!IMPORTANT]
 > ファイアウォール ルールを有効にした後は、要求が許可された仮想ネットワークまたは IPv4 アドレス範囲から送信された場合にのみ、ユーザーは Key Vault [データ プレーン](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control)の操作を実行できます。 これは、Azure portal から Key Vault にアクセスする場合にも適用されます。 ユーザーは Azure portal からキー コンテナーを参照できますが、クライアント マシンが許可リストに登録されていない場合、キー/シークレット/証明書を一覧表示できない場合があります。 これは、他の Azure サービスによる Key Vault 選択機能にも影響します。 ファイアウォール ルールでクライアント マシンが許可されていない場合、ユーザーはキー コンテナーを一覧表示できても、キーは一覧表示できないことがあります。
@@ -57,6 +59,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 > * 現時点でサポートされているのは、IPv4 アドレスのみです。
 
 ## <a name="trusted-services"></a>信頼できるサービス
+
 **信頼できるサービスを許可する**オプションが有効な場合にキー コンテナーへのアクセスが許可されている信頼できるサービスの一覧を次に示します。
 
 |信頼できるサービス|使用シナリオ|

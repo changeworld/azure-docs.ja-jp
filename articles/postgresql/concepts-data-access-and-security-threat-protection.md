@@ -1,19 +1,17 @@
 ---
-title: Advanced Threat Protection - Azure Database for PostgreSQL | Microsoft Docs
+title: Advanced Threat Protection - Azure Database for PostgreSQL
 description: Advanced Threat Protection は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
-services: postgresql
 author: bolzmj
-manager: kfile
-ms.service: postgresql
-ms.topic: article
-ms.date: 09/20/2018
 ms.author: mbolz
-ms.openlocfilehash: 392947919813753dc57422957029e961a037a616
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.service: postgresql
+ms.topic: conceptual
+ms.date: 09/20/2018
+ms.openlocfilehash: 68027526fb98db4cb5b7eaf75f117692222c6039
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066940"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549022"
 ---
 # <a name="azure-database-for-postgresql-advanced-threat-protection"></a>Azure Database for PostgreSQL での Advanced Threat Protection
 
@@ -22,7 +20,7 @@ Azure Database for PostgreSQL 用の Advanced Threat Protection では、デー�
 Threat Protection は、高度なセキュリティ機能の統合パッケージである Advanced Threat Protection (ATP) オファリングの一部です。 Advanced Threat Protection は [Azure portal](https://portal.azure.com) を使ってアクセスおよび管理でき、現在はプレビュー状態です。
 
 > [!NOTE]
-> Advanced Threat Protection の機能は、US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2 の Azure 政府およびソブリン クラウド領域では使用**できません**。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
+> Advanced Threat Protection 機能は、次の Azure 政府およびソブリン クラウド リージョンでは使用**できません**:US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
 >
 
 ## <a name="what-is-advanced-threat-protection"></a>Advanced Threat Protection とは
@@ -33,11 +31,11 @@ Azure Database for PostgreSQL 用の Advanced Threat Protection では、新し�
 
 ## <a name="advanced-threat-protection-alerts"></a>Advanced Threat Protection のアラート 
 Azure Database for PostgreSQL 用の Advanced Threat Protection では、普通でなく有害な可能性がある、データベースへのアクセスやその悪用の試みであることを示す不審なアクティビティを検出し、以下のアラートをトリガーすることができます。
-- **Access from unusual location (通常とは異なる場所からのアクセス)**: このアラートは、誰かが通常とは異なる地理的な場所から Azure Database for PostgreSQL サーバーにログオンしたことで Azure Database for PostgreSQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
-- **Access from unusual Azure data center (通常とは異なる Azure データ センターからのアクセス)**: このアラートは、誰かかが最近このサーバーで記録された通常とは異なる Azure データ センターからサーバーにログオンしたことで Azure Database for PostgreSQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートによって、正当なアクション (Azure、Power BI、Azure Database for PostgreSQL クエリ エディターの新しいアプリケーション) が検出されることがあります。 別のケースでは、このアラートによって Azure リソース/サービス (元従業員、外部の攻撃者) からの悪意のあるアクションが検出されます。
-- **Access from unfamiliar principal (通常とは異なるプリンシパルからのアクセス)**: このアラートは、誰かが通常とは異なるプリンシパル (Azure Database for PostgreSQL) を使用してサーバーにログオンしたことで Azure Database for PostgreSQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
-- **Access from a potentially harmful application (潜在的に有害なアプリケーションからのアクセス)**: このアラートは、データベースにアクセスするために潜在的に有害なアプリケーションが使用されたときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートで一般的な攻撃ツールを使用した攻撃が検出されます。
-- **Brute force Azure Database for PostgreSQL credentials (Azure Database for PostgreSQL 資格情報に対するブルート フォース攻撃)**: このアラートは、異なる資格情報でログインに失敗した回数が異常に多いときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートでブルート フォース攻撃が検出されます。
+- **Access from unusual location (通常とは異なる場所からのアクセス)**:このアラートは、だれかが通常とは異なる地理的な場所から Azure Database for PostgreSQL サーバーにログオンしたことで Azure Database for PostgreSQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
+- **Access from unusual Azure data center (通常とは異なる Azure データ センターからのアクセス)**:このアラートは、だれかかが最近このサーバーで記録された通常とは異なる Azure データ センターからサーバーにログオンしたことで Azure Database for PostgreSQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートによって、正当なアクション (Azure、Power BI、Azure Database for PostgreSQL クエリ エディターの新しいアプリケーション) が検出されることがあります。 別のケースでは、このアラートによって Azure リソース/サービス (元従業員、外部の攻撃者) からの悪意のあるアクションが検出されます。
+- **Access from unfamiliar principal (通常とは異なるプリンシパルからのアクセス)**:このアラートは、だれかが通常とは異なるプリンシパル (Azure Database for PostgreSQL ユーザー) を使用してサーバーにログオンしたことで Azure Database for PostgreSQL サーバーへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートで正当なアクション (新しいアプリケーションや開発者メンテナンス) が検出されることがあります。 別のケースでは、このアラートによって悪意のあるアクション (元従業員、外部の攻撃者) が検出されます。
+- **Access from a potentially harmful application (潜在的に有害なアプリケーションからのアクセス)**:このアラートは、データベースにアクセスするために潜在的に有害なアプリケーションが使用されたときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートで一般的な攻撃ツールを使用した攻撃が検出されます。
+- **Brute force Azure Database for PostgreSQL credentials (Azure Database for PostgreSQL 資格情報に対するブルート フォース攻撃)**:このアラートは、異なる資格情報でログインに失敗した回数が異常に多いときにトリガーされます。 このアラートで実行中の侵入テストが検出されることがあります。 別のケースでは、このアラートでブルート フォース攻撃が検出されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 3e664fc83fde937b26a4726f997da4c0cb4d8f8a
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 30f96c54dd916188296ca0245d4095a32ae0bbe4
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407883"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742883"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight クラスターのスケーリング
 
@@ -152,7 +152,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
 ![セーフ モード オフ](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
 
 > [!NOTE]  
-> HDInsight の既定のファイル システムは Azure Storage または Azure Data Lake Store のいずれかのため、`-D` スイッチが必要です。 `-D` は、ローカルの HDFS ファイル システムに対してコマンドが実行されるように指定します。
+> HDInsight の既定のファイル システムは Azure Storage または Azure Data Lake Storage のどちらかであるため、`-D` スイッチが必要です。 `-D` は、ローカルの HDFS ファイル システムに対してコマンドが実行されるように指定します。
 
 次に、HDFS の状態の詳細を示すレポートを表示できます。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 43b7b2e7b4f4da4939e08a68bc2ac7ea0a2c2a6b
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: f7bf5d521f4bcb5672ff1d710a08bed2e0872545
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458990"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974405"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 監視パートナー
 
@@ -27,7 +27,7 @@ ms.locfileid: "49458990"
 
 ## <a name="dynatrace"></a>Dynatrace
 
-Microsoft は、Dynatrace との統合を通じて、Service Fabric クラスターを監視するための、すぐに使える機能を数多く提供しています。 ご利用の VMSS インスタンスに Dynatrace OneAgent をインストールすることで、Service Fabric 環境からアプリ レベルまで対象にしたパフォーマンス カウンターとトポロジが得られます。 オンプレミスの監視用途でも、Dynatrace は優れた選択肢となります。 詳しい機能は、[アナウンス](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) ページでご覧いただけます。ご利用のクラスターで Dynatrace を有効にする手順については、[こちら](https://www.dynatrace.com/support/help/cloud-platforms/azure/how-do-i-monitor-azure-service-fabric-applications/)をご覧ください。 
+Microsoft は、Dynatrace との統合を通じて、Service Fabric クラスターを監視するための、すぐに使える機能を数多く提供しています。 ご利用の VMSS インスタンスに Dynatrace OneAgent をインストールすることで、Service Fabric 環境からアプリ レベルまで対象にしたパフォーマンス カウンターとトポロジが得られます。 オンプレミスの監視用途でも、Dynatrace は優れた選択肢となります。 詳しい機能は、[アナウンス](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) ページでご覧いただけます。ご利用のクラスターで Dynatrace を有効にする手順については、[こちら](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/)をご覧ください。 
 
 ## <a name="datadog"></a>Datadog
 
@@ -43,7 +43,7 @@ Service Fabric アプリケーションとの統合の点で親和性の高い A
 
 ## <a name="elk"></a>ELK 
 
-ELK スタックは、Elasticsearch、Logstash、Kibana の各オープンソース テクノロジを組み合わせたものです。 これらを組み合わせて使用することで、Service Fabric の監視データと診断データを収集、格納、分析することができます。 これを Service Fabric のネイティブ Java アプリケーションで行うチュートリアルについては、[こちら](service-fabric-tutorial-java-elk.md)を参照してください。 
+ELK スタックは、各オープンソース テクノロジ (Elasticsearch、Logstash、Kibana) を組み合わせたものです。 これらを組み合わせて使用することで、Service Fabric の監視データと診断データを収集、格納、分析することができます。 これを Service Fabric のネイティブ Java アプリケーションで行うチュートリアルについては、[こちら](service-fabric-tutorial-java-elk.md)を参照してください。 
 
 
 ## <a name="next-steps"></a>次の手順

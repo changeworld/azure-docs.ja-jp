@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7979bbafda6373c7f25c6e9c7d5cd997fbf5c3eb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86f4e99401278d13a17f40c4c021060e8bd15f8a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098102"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754545"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新プログラム
 
@@ -253,7 +253,6 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 <!-- 2368581 - IS. ASDK --> 
 - Azure Stack オペレーターで、メモリ不足のアラートを受信し、テナント仮想マシンが**ファブリック VM の作成エラー**でデプロイできなかった場合、Azure Stack スタンプに使用できるメモリが不足している可能性があります。 ワークロードに使用できる容量の詳細については、[Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) に関するページを参照してください。
 
-
 ### <a name="compute"></a>Compute
 
 <!-- 3164607 – IS, ASDK -->
@@ -286,7 +285,7 @@ Azure Stack の課金 API から生成された使用状況レポートでは正
 - [**Add-AzsPlatformImage** コマンドレット](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0)を使用する場合は、ディスクのアップロード先のストレージ アカウント URI として **-OsUri** パラメーターを使用する必要があります。 ディスクのローカル パスを使用した場合、次のエラーが出てコマンドレットが失敗します: *長時間実行処理が状態 '失敗' で失敗しました*。 
 
 <!--  2966665 – IS, ASDK --> 
-- SSD データ ディスクをプレミアム サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーで失敗します: *仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ (Standard_DS/Ds_V2/FS/Fs_v2)でサポートされていないため、要求された操作は実行できません。*
+- SSD データ ディスクをプレミアム サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーで失敗します:*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ (Standard_DS/Ds_V2/FS/Fs_v2)でサポートされていないため、要求された操作は実行できません。*
 
    この問題を回避するには、*Premium_LRS ディスク*の代わりに *Standard_LRS* データ ディスクをご使用ください。 *Standard_LRS* データ ディスクを使用しても、IOPS または課金コストは変わりません。 
 
@@ -315,7 +314,7 @@ Azure Stack の課金 API から生成された使用状況レポートでは正
 
    VM の CPU 使用率グラフを表示するには、**メトリック** ブレードに移動して、サポートされているすべての Windows VM ゲスト メトリックを表示します。
 
-
+- SSH の認可を有効にして作成した Ubuntu 18.04 VM では、SSH キーを使用してログインすることはできません。 回避策として、プロビジョニング後に Linux 拡張機能用の VM アクセスを使用して SSH キーを実装するか、パスワード ベースの認証を使用してください。
 
 ### <a name="networking"></a>ネットワーク  
 
@@ -361,8 +360,10 @@ Azure Stack の課金 API から生成された使用状況レポートでは正
 
 
 ## <a name="download-the-update"></a>更新プログラムをダウンロードする
-Azure Stack 1808 更新プログラム パッケージは、[ここから](https://aka.ms/azurestackupdatedownload)ダウンロードできます。
-  
+
+Azure Stack 1808 更新プログラム パッケージは、[ここから](https://aka.ms/azurestackupdatedownload)ダウンロードできます。 
+
+Azure Stack デプロイでは、接続されたシナリオに限り、セキュリティで保護されたエンドポイントが定期的にチェックされ、お客様のクラウド用の更新プログラムが入手可能かどうかが自動的に通知されます。 詳細については、[Azure Stack の更新プログラムの管理](azure-stack-updates.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 - Azure Stack 統合システムのサービス ポリシーについて、およびサポートを受けられる状態にシステムを維持するために必要な作業について確認するには、「[Azure Stack サービス ポリシー](azure-stack-servicing-policy.md)」を参照してください。  

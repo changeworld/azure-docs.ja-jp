@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 50e252b7dbd20d5330f8117eaa45ccf52303f277
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b98261601f352668fa3cc8d18dc3b1d0d7fe2654
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51678198"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53553447"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンスのための設計
+# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 
 この記事では、Azure Premium Storage を使用する高パフォーマンスのアプリケーションを構築するためのガイドラインを示します。 このドキュメントで説明する手順は、アプリケーションで使用されているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使用できます。 ガイドラインを示すために、このドキュメント全体を通じて、Premium Storage で実行されている SQL Server を例として使用しています。
 
@@ -35,7 +35,7 @@ Premium Storage で実行されるワークロードは高パフォーマンス�
 > ときには、ディスク パフォーマンスの問題のように見えるものが、実際にはネットワークのボトルネックであることもあります。 このような場合は、[ネットワーク パフォーマンス](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md)を最適化する必要があります。
 > VM で高速ネットワークがサポートされる場合は、それが有効になっていることを確認する必要があります。 有効になっていない場合は、[Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) と [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) の両方で、既にデプロイされている VM 上で有効にすることができます。
 
-Premium Storage の知識がない場合は、作業を始める前にまず、「[高パフォーマンスの Premium Storage および Azure VM の非管理対象ディスクと管理ディスク](../articles/virtual-machines/windows/premium-storage.md)」と「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/common/storage-scalability-targets.md)」をお読みください。
+Premium Storage を初めてご利用の場合は、開始する前にまず、[Premium Storage の Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/virtual-machines/windows/premium-storage.md)に関する記事と[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/common/storage-scalability-targets.md)に関する記事をお読みください。
 
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
@@ -49,7 +49,7 @@ IOPS は、アプリケーションが 1 秒間にストレージ ディスク�
 
 Premium Storage ディスクを高スケール VM に接続すると、そのディスクの仕様どおりに、保証された数の IOPS がプロビジョニングされます。 たとえば、P50 ディスクでは 7,500 IOPS がプロビジョニングされます。 また、高スケール VM の各サイズにも、維持できる IOPS の上限が設けられています。 たとえば、Standard GS5 VM の IOPS の上限は 80,000 です。
 
-## <a name="throughput"></a>Throughput
+## <a name="throughput"></a>スループット
 
 スループットまたは帯域幅は、アプリケーションが指定された期間にストレージ ディスクに送信するデータの量です。 アプリケーションが大きな IO ユニット サイズで入力/出力操作を実行する場合、高スループットが必要となります。 データ ウェアハウス アプリケーションは、一度にデータの大部分にアクセスするスキャン集中型の操作を発行する傾向があり、一般に一括操作を実行します。 つまり、このようなアプリケーションでは、スループットを高める必要があります。 このようなアプリケーションを使用する場合は、スループットに最適化するようにインフラストラクチャを設計する必要があります。 次のセクションで、これを実現するために調整する必要がある要素について詳しく説明します。
 
@@ -66,6 +66,14 @@ Premium Storage ディスクを高スケール VM に接続すると、そのデ
 待機時間は、アプリケーションが 1 つの要求を受信し、その要求をストレージ ディスクに送信して、クライアントに応答を送信するまでの所要時間です。 これは、IOPS とスループットに加え、アプリケーションのパフォーマンスの重要な評価基準となります。 Premium Storage ディスクの待機時間は、ディスクが要求の情報を取得し、それをアプリケーションに伝えるまでの所要時間です。 Premium Storage は、一貫した低待機時間を実現します。 Premium Storage ディスクの ReadOnly ホスト キャッシュを有効にすると、読み取り待機時間をさらに短縮できます。 ディスク キャッシュについては、後述の「 *アプリケーションのパフォーマンスの最適化*」で詳しく説明します。
 
 IOPS とスループットを向上させるためにアプリケーションを最適化すると、アプリケーションの待機時間に影響します。 アプリケーションのパフォーマンスを調整したら、予期しない待機時間の長い動作を回避するために、アプリケーションの待機時間を必ず評価してください。
+
+マネージド ディスクに対するコントロール プレーン操作に従うと、ある Storage の場所から別の場所へのディスクの移動が生じる場合があります。 これはデータのバックグラウンド コピーによって調整されますが、これは完了までに数時間かかることがあります (ディスク内のデータの量にもよりますが、通常は 24 時間以内)。 この間、お使いのアプリケーションで読み取り時の待ち時間が通常よりも長くなる可能性があります。一部の読み取りが元の場所にリダイレクトされ、完了までに通常よりも時間がかかる場合があるためです。 この期間中、書き込みの待ち時間への影響はありません。  
+
+1.  [ストレージの種類を更新する](../articles/virtual-machines/windows/convert-disk-storage.md)
+2.  [ある VM からディスクをデタッチして別の VM にアタッチする](../articles/virtual-machines/windows/attach-disk-ps.md)
+3.  [VHD からマネージド ディスクを作成する](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md)
+4.  [スナップショットからマネージド ディスクを作成する](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)
+5.  [アンマネージド ディスクをマネージド ディスクに変換する](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)
 
 ## <a name="gather-application-performance-requirements"></a>アプリケーションのパフォーマンス要件の収集
 
@@ -86,7 +94,7 @@ Azure Premium Storage で実行される高パフォーマンスのアプリケ�
 | % 順次操作 | | | |
 | IO 要求サイズ | | | |
 | 平均スループット | | | |
-| 最大 Throughput | | | |
+| 最大 スループット | | | |
 | 最小 Latency | | | |
 | 平均待機時間 | | | |
 | 最大 CPU | | | |
@@ -296,7 +304,7 @@ BlobCache の機能の詳細については、Inside の [Azure Premium Storage]
 
 Windows では、記憶域スペースを使用してディスクをストライピングできます。 プールのディスクごとに 1 つの列を構成する必要があります。 そうしないと、ディスク間でのトラフィックの分散が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが予想よりも低くなる可能性があります。
 
-重要: サーバー マネージャーの UI を使用して、ストライプ ボリュームの列の総数を最大 8 列に設定できます。 8 個を超えるディスクを接続するときは、PowerShell を使用してボリュームを作成します。 PowerShell を使用すると、列数をディスクと同じ数に設定できます。 たとえば、1 つのストライプ セットに 16 個のディスクがある場合、*New-VirtualDisk* PowerShell コマンドレットの *NumberOfColumns* パラメーターで 16 列を指定します。
+重要:サーバー マネージャーの UI を使用して、ストライプ ボリュームの列の総数を最大 8 列に設定できます。 8 個を超えるディスクを接続するときは、PowerShell を使用してボリュームを作成します。 PowerShell を使用すると、列数をディスクと同じ数に設定できます。 たとえば、1 つのストライプ セットに 16 個のディスクがある場合、*New-VirtualDisk* PowerShell コマンドレットの *NumberOfColumns* パラメーターで 16 列を指定します。
 
 Linux では、MDADM ユーティリティを使用してディスクをストライピングします。 Linux でのディスク ストライピングの詳しい手順については、「 [Linux でのソフトウェア RAID の構成](../articles/virtual-machines/linux/configure-raid.md)」をご覧ください。
 
@@ -351,7 +359,7 @@ SQL Server の [並列処理の次数](https://technet.microsoft.com/library/ms1
  ストライプ ボリュームの場合、すべてのディスクのキューの深さがそれぞれピーク時のキューの深さになるように、十分なキューの深さを維持します。 たとえば、キューの深さ 2 をプッシュするアプリケーションがあり、ストライプに 4 つのディスクがあるとします。 2 つの IO 要求が 2 つのディスクに送信されると、残りの 2 つのディスクはアイドル状態になります。 そのため、すべてのディスクがビジー状態になるようにキューの深さを構成します。 次の式は、ストライプ ボリュームのキューの深さを決定する方法を示しています。  
     ![](media/premium-storage-performance/image7.png)
 
-## <a name="throttling"></a>調整
+## <a name="throttling"></a>Throttling
 
 Azure Premium Storage では、選択された VM サイズとディスク サイズに応じて、指定された数の IOPS とスループットがプロビジョニングされます。 アプリケーションが、VM またはディスクが対応できるこれらの上限を超えて IOPS やスループットを引き上げようとすると、これを抑制するように調整されます。 これは、アプリケーションのパフォーマンスの低下という形で現れます。 これにより、待機時間が長くなり、スループットや IOPS が低下する可能性があります。 Premium Storage によって調整が行われないと、リソースが対応できる範囲を上回り、アプリケーションが完全に失敗する可能性があります。 そのため、調整によるパフォーマンスの問題を回避するために、常にアプリケーションの十分なリソースをプロビジョニングします。 前の VM サイズとディスク サイズのセクションで説明した考慮事項に注意してください。 ベンチマークは、アプリケーションをホストするために必要なリソースを把握するための最適な方法です。
 

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2018
 ms.author: patricka
-ms.openlocfilehash: 32c268c1e4a0ff4d17c5b03f0ffd33b0ddf5b927
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 8b478c1ba60df679d69d5fced660836c16079e6a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901483"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727091"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack インフラストラクチャのセキュリティ体制
 
-*適用対象: Azure Stack 統合システム*
+*適用先:Azure Stack 統合システム*
 
 セキュリティに関する考慮事項と法令遵守規定は、ハイブリッド クラウドを使用する際の中核となる推進力です。 Azure Stack は、これらのシナリオに適しています。 この記事では、Azure Stack 用のセキュリティ コントロールについて説明します。
 
@@ -40,7 +40,7 @@ Azure Stack のセキュリティ手法は、最新の脅威から防御する�
 Azure Stack が統合システムとして配布されるため、、Azure Stack インフラストラクチャのセキュリティ体制は Microsoft によって定義されます。 Azure と同様に、テナントは、テナント ワークロードのセキュリティ体制を定義する責任を負います。 このドキュメントでは、Azure Stack インフラストラクチャのセキュリティ体制に関する基本的知識について説明します。
 
 ## <a name="data-at-rest-encryption"></a>保存データの暗号化
-すべての Azure Stack インフラストラクチャとテナントのデータは、保存時に Bitlocker を使用して暗号化されます。 この暗号化は、Azure Stack の ストレージ コンポーネントの物理的損失や盗難から保護します。 
+すべての Azure Stack インフラストラクチャとテナントのデータは、保存時に Bitlocker を使用して暗号化されます。 この暗号化は、Azure Stack の ストレージ コンポーネントの物理的損失や盗難から保護します。 詳細については、[Azure Stack における保存データの暗号化](azure-stack-security-bitlocker.md)に関するページを参照してください。
 
 ## <a name="data-in-transit-encryption"></a>転送中データの暗号化
 Azure Stack インフラストラクチャのコンポーネントは、TLS 1.2 で暗号化されたチャネルを使用して通信します。 暗号化証明書は、インフラストラクチャが自己管理します。 

@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: e13afe26d06f5b5b2dcf7eddf00f9ee481312b2c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 95079813cf3ade41d17393168116e4767ca26e99
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024260"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742781"
 ---
 # <a name="transforms-and-jobs"></a>Transform と Job
  
-Azure Media Services v3 では､ビデオのエンコードや分析に利用できる､[Transforms](https://docs.microsoft.com/rest/api/media/transforms) というレシピ用のテンプレート形式の新しいワークフロー リソースが導入されています｡ **Transforms** を使用して、ビデオのエンコードや分析を行うための一般的なタスクを構成できます。 各 **Transform** は、ビデオまたはオーディオ ファイルを処理するためのレシピ､すなわちタスクのワークフローの記述です｡ 
+[Transform](https://docs.microsoft.com/rest/api/media/transforms) を使用して、ビデオのエンコードや分析を行うための一般的なタスクを構成できます。 各 **Transform** は、ビデオまたはオーディオ ファイルを処理するためのレシピ､すなわちタスクのワークフローの記述です｡ 
 
-各 **Job** は、与えられた入力ビデオまたはオーディオ コンテンツに **Transform** を適用する Azuru Media Services への実際の要求です。 **ジョブ** には、入力ビデオの場所や出力先などの情報を指定します。 入力ビデオの場所は､HTTPS URL や SAS URL､あるいは [Media Services Asset](https://docs.microsoft.com/rest/api/media/assets) を使って指定できます｡  
+各 [Job](https://docs.microsoft.com/rest/api/media/jobs) は、与えられた入力ビデオまたはオーディオ コンテンツに **Transform** を適用する Azuru Media Services への実際の要求です。 **ジョブ** には、入力ビデオの場所や出力先などの情報を指定します。 ビデオの場所は、HTTPS URL、SAS URL、または [Media Services アセット](https://docs.microsoft.com/rest/api/media/assets)を使用して指定できます。  
 
 ## <a name="typical-workflow"></a>一般的なワークフロー
 
@@ -50,7 +50,7 @@ Transform は､v3 の API を直接使用して､あるいは公開されて�
 
 |Name|説明|
 |---|---|
-|ID|リソースの完全修飾リソース ID。|
+|Id|リソースの完全修飾リソース ID。|
 |name|リソースの名前。|
 |properties.created |変換の作成時の UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式です。|
 |properties.description |変換の省略可能な詳細説明。|

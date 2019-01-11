@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: cb7e867ea4304cf8b8741eac183e60d325c752c7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 09c8b63cddde547b0dc42cf1f15a8ac5002d0a3e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141851"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725140"
 ---
 # <a name="content-protection-overview"></a>コンテンツ保護の概要
 
@@ -78,7 +78,7 @@ Azure Media Services を使用すると、メディアがコンピューター�
 
 Media Services を使用すると、AES クリアキーまたは DRM 暗号化 (PlayReady、Widevine、または FairPlay を使用) によって動的に暗号化されたコンテンツを配信できます。 現時点では、暗号化できる形式は、HTTP ライブ ストリーミング (HLS)、MPEG DASH、および Smooth Streaming です。 各プロトコルは、次の暗号化方式をサポートしています。
 
-|プロトコル|コンテナー形式|暗号化スキーム|
+|Protocol|コンテナー形式|暗号化スキーム|
 |---|---|---|---|
 |MPEG-DASH|All|AES|
 ||CSF (fmp4) |CENC (Widevine + PlayReady) |

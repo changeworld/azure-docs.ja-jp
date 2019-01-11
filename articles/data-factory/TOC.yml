@@ -412,6 +412,8 @@ items:
       href: monitor-integration-runtime.md#azure-ssis-integration-runtime
     - name: Azure-SSIS 統合ランタイムの再構成
       href: manage-azure-ssis-integration-runtime.md
+    - name: データ ファクトリのコピーまたは複製
+      href: copy-clone-data-factory.md
   - name: 統合ランタイムの作成
     items:
     - name: Azure 統合ランタイム
@@ -484,9 +486,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 5c667c1e29870b2a8d120e63b27607dbb65496f3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7cb01a6b94eec79f007172d851b0bf3e9c3b8b5b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120361"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191498"

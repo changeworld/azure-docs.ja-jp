@@ -105,17 +105,19 @@ items:
     - name: Key Vault
       items:
       - name: 概要
-        href: azure-stack-kv-intro.md
+        href: azure-stack-key-vault-intro.md
       - name: ポータルを使用した管理
-        href: azure-stack-kv-manage-portal.md
+        href: azure-stack-key-vault-manage-portal.md
       - name: PowerShell で管理する
-        href: azure-stack-kv-manage-powershell.md
+        href: azure-stack-key-vault-manage-powershell.md
       - name: シークレットを使用して VM を作成する
-        href: azure-stack-kv-deploy-vm-with-secret.md
+        href: azure-stack-key-vault-deploy-vm-with-secret.md
       - name: 証明書を使用して VM を作成する
-        href: azure-stack-kv-push-secret-into-vm.md
+        href: azure-stack-key-vault-push-secret-into-vm.md
+      - name: Key Vault に資格情報を格納する
+        href: azure-stack-key-vault-store-credentials.md
       - name: Key Vault サンプル アプリ
-        href: azure-stack-kv-sample-app.md
+        href: azure-stack-key-vault-sample-app.md
     - name: Azure Monitor
       href: azure-stack-metrics-azure-data.md
       items:
@@ -218,9 +220,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 2ee94296c840c2ec9eca1e954139bb7da47819c2
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 16ad9c79aedad01cf6bd1c83740938f23b592b6a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049539"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189900"

@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 11/28/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 84924900403a4aa2a65143c65a0b26f2c95a1e5b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 00c4d750d0617d36ab476719ce31c8038065511c
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962649"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807212"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack の登録
 Azure Stack Development Kit (ASDK) インストールを Azure に登録して Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データを設定したりできます。 マーケットプレース シンジケーションを含む、Azure Stack のすべての機能をサポートするには、登録が必要です。 登録によって、マーケットプレース シンジケーションや使用状況レポートなどの Azure Stack の重要な機能をテストできるようになるので、登録することをお勧めします。 Azure Stack を登録すると、使用状況が Azure コマースにレポートされます。 使用状況は、登録に使用したサブスクリプションの下に表示されます。 ただし、ASDK のユーザーは、レポートする使用状況に対して課金されることはありません。
@@ -201,21 +201,21 @@ ASDK ホスト コンピューター上で、管理者として PowerShell を�
 アクティブ化が完了したら、**「Your environment has finished the registration and activation process. (環境で登録とアクティブ化プロセスが終了しました。)」** といったメッセージが表示されます。
 
 ## <a name="verify-the-registration-was-successful"></a>登録が成功したことを確認する
-次の手順に従って、**接続環境で** Azure への ASDK の登録が成功したことを確認します。
+
+Azure Stack の登録に成功したことは、**[Region management]\(リージョン管理\)** タイルを使用して確認できます。 このタイルは、管理者ポータルの既定のダッシュボードにあります。
 
 1. [Azure Stack 管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
 
-2. **[Marketplace Management]** > **[Azure から追加]** の順にクリックします。
+2. ダッシュボードで、**[Region management]\(リージョン管理\)** を選択します。
 
-    ![](media/asdk-register/2.PNG)
+    [ ![[Region management]\(リージョン管理\) タイル](media/asdk-register/admin1sm.png "[Region management]\(リージョン管理\) タイル") ](media/asdk-register/admin1.png#lightbox)
 
-3. Azure から利用可能な項目のリストが表示される場合は、アクティブ化に成功しました。
-
-    ![](media/asdk-register/3.PNG)
+3. **[プロパティ]** を選択します。 このブレードには、環境の状態と詳細が表示されます。 **[登録済み]** 状態と **[未登録]** 状態とがあります。 登録済みである場合は、Azure Stack の登録に使用した Azure サブスクリプション ID が、登録のリソース グループおよび名前と共に表示されます。
 
 ## <a name="move-a-registration-resource"></a>登録リソースを移動する
 同じサブスクリプションのリソース グループ間で登録リソースを移動する操作は、**サポートされています**。 新しいリソース グループへのリソースの移動については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)」を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順
-[Azure Stack マーケットプレース項目を追加する](../azure-stack-marketplace.md)
+
+- [Azure Stack マーケットプレース項目を追加する](../azure-stack-marketplace.md)

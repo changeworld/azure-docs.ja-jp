@@ -12,16 +12,19 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 11/12/2018
-ms.openlocfilehash: bb80b512176e8fe260eb4572ea9fa801a6ffc80a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: b5916b781c636752ada6898cfa0c03bc02891501
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685142"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715020"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL データ同期のデータ同期エージェント
 
 Azure SQL データ同期のデータ同期エージェントをインストールして構成することによって、オンプレミスの SQL Server データベースとデータを同期します。SQL データ同期の詳細については、「[複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します](sql-database-sync-data.md)」を参照してください。
+
+> [!IMPORTANT]
+> 現在のところ、Azure SQL データ同期では、Azure SQL Database Managed Instance はサポート**されていません**。
 
 ## <a name="download-and-install"></a>ダウンロードとインストール
 
@@ -136,7 +139,7 @@ SQL データ同期サービスは、クライアント エージェントを使
 
 ### <a name="agent-start"></a> クライアント エージェントが起動しない (エラー 1069)
 
-SQL Server をホストしているコンピューターで、エージェントが実行されていませんでした。 エージェントを手動で起動しようとすると、"エラー 1069: ログオンに失敗したため、サービスを開始できませんでした。" というメッセージを示すダイアログ ボックスが表示されます。
+SQL Server をホストしているコンピューターで、エージェントが実行されていませんでした。 エージェントを手動で起動しようとすると、"エラー 1069:ログオンに失敗したため、サービスを開始できませんでした。" というメッセージを示すダイアログ ボックスが表示されます。
 
 ![データ同期エラー 1069 のダイアログ ボックス](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
@@ -318,7 +321,7 @@ SQL データ同期の詳細については、次の記事を参照してくだ�
 
 -   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
 -   データ同期の設定
-    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
+    - ポータル - [チュートリアル:Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
     - PowerShell の場合
         -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)

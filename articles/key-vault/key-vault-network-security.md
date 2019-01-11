@@ -1,6 +1,6 @@
 ---
 ms.assetid: ''
-title: Azure Key Vault のファイアウォールと仮想ネットワークを構成する
+title: Azure Key Vault のファイアウォールと仮想ネットワークを構成する - Azure Key Vault
 description: Key Vault のファイアウォールと仮想ネットワークを構成する手順
 services: key-vault
 author: amitbapat
@@ -8,14 +8,14 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/31/2018
+ms.date: 01/02/2019
 ms.author: ambapat
-ms.openlocfilehash: 7dd768d3f0059f4b26f09298992483553f1508d2
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 09a19b92a496650f94be208d4f463f1fb3fa4256
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681248"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001857"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault のファイアウォールと仮想ネットワークを構成する
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 7a233a5effb804ec3cc22727b46846509032d214
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: cdc55491e827ab949d471c9b66c7caaa86f5055d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438508"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043330"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB での診断ログ 
 
@@ -81,7 +81,7 @@ Azure Portal で診断ログを有効にするには、以下の手順を実行�
     * **[イベント ハブへのストリーム]**:このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 Event Hubs 名前空間を作成するには、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 その後、Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選びます。
     * **[Log Analytics への送信]**:このオプションを使用するには、既存のワークスペースを使用するか、ポータルで[新しいワークスペースを作成する](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)手順に従って新しい Log Analytics ワークスペースを作成します。 Log Analytics でログを表示する方法については、「[Azure Cosmos DB 診断ログ](#view-in-loganalytics)」をご覧ください。
     * **[Log DataPlaneRequests]\(DataPlaneRequests のログを記録する\)**:SQL、Graph、MongoDB、Cassandra、および Table API アカウントについて、基盤の Azure Cosmos DB 分散プラットフォームからのバックエンド要求をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
-    * **[Log MongoRequests]\(MongoRequests をログに記録する\)**:MongoDB API アカウントにサービスを提供するためにユーザーが Azure Cosmos DB のフロントエンドから開始した要求をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **[Log MongoRequests]\(MongoRequests をログに記録する\)**:Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウントにサービスを提供するために、ユーザーが Azure Cosmos DB のフロントエンドから開始した要求をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
     * **[Metric Requests]\(メトリック要求\)**:[Azure メトリックス](../azure-monitor/platform/metrics-supported.md)に詳細データを保存するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
 
 3. **[保存]** を選択します。
@@ -459,7 +459,7 @@ Azure Storage と Log Analytics に格納されている診断データは、ス
 
 ## <a name="next-steps"></a>次の手順
 
-- ロギングを有効にする方法、および各種 Azure サービスでサポートされるメトリックとログのカテゴリーについて理解を深めるには、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」と「[Azure リソースからのログ データの収集と使用](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」の両方をご覧ください。
+- ロギングを有効にする方法、および各種 Azure サービスでサポートされるメトリックとログのカテゴリーについて理解を深めるには、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」と「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/diagnostic-logs-overview.md)」の両方をご覧ください。
 - Event Hubs については次の記事をご覧ください。
    - [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

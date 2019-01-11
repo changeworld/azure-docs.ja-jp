@@ -1,25 +1,24 @@
 ---
 title: Azure Cosmos DB での高可用性
 description: この記事では、Azure Cosmos DB で高可用性を実現する方法について説明します
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 112b41aa41706a807a82e708fe1fb4173fd084ca
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4fc17daf640e95ab028150cec029471a0c7bc565
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837530"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062997"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB での高可用性
 
 Azure Cosmos DB では、Cosmos アカウントに関連付けられているすべての Azure リージョンにデータが透過的にレプリケートされます。 Cosmos DB では、次の図のように、複数層のデータ冗長性が採用されています。
 
-![リソースのパーティション分割](./media/high-availability/figure1.png)
+![物理的パーティション分割](./media/high-availability/cosmosdb-data-redundancy.png)
 
 - Cosmos コンテナー内のデータは、水平方向にパーティション分割されます。
 

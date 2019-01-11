@@ -14,12 +14,12 @@ ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 8c5da669d490bf295c4066854ac1173bcc79ad5e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 75fe35a22ccae249b734f05bd4adcaf8ddcab9f8
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686128"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995101"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -35,73 +35,73 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 次の管理者ロールを使用できます。
 
-* **[アプリケーション管理者](#application-administrator)**: このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
+* **[アプリケーション管理者](#application-administrator)**:このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
 
-  <b>重要:</b>: このロールは、アプリケーションの資格情報を管理する権限を付与します。 このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID に Azure Active Directory へのアクセス権 (ユーザーやその他のオブジェクトの作成や更新など) が付与されている場合、このロールが割り当てられたユーザーは、アプリケーションを偽装している間にこのようなアクションを実行することができます。 アプリケーションの ID を偽装するこの機能は、ユーザーが Azure AD のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 ユーザーにアプリケーション管理者ロールを割り当てると、そのユーザーがアプリケーションの ID を偽装できるようになることを理解することが重要です。
+  <b>重要</b>:このロールは、アプリケーションの資格情報を管理する権限を付与します。 このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID に Azure Active Directory へのアクセス権 (ユーザーやその他のオブジェクトの作成や更新など) が付与されている場合、このロールが割り当てられたユーザーは、アプリケーションを偽装している間にこのようなアクションを実行することができます。 アプリケーションの ID を偽装するこの機能は、ユーザーが Azure AD のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 ユーザーにアプリケーション管理者ロールを割り当てると、そのユーザーがアプリケーションの ID を偽装できるようになることを理解することが重要です。
 
-* **[アプリケーション開発者](#application-developer)**: このロールのユーザーは、[ユーザーはアプリケーションを登録できる] 設定が [いいえ] に設定されている場合に、アプリケーション登録を作成できます。 さらにこのロールでは、[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます] 設定が [いいえ] に設定されている場合に、メンバーが自分のために同意できます。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されます。
+* **[アプリケーション開発者](#application-developer)**:このロールのユーザーは、[ユーザーはアプリケーションを登録できる] 設定が [いいえ] に設定されている場合に、アプリケーション登録を作成できます。 さらにこのロールでは、[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます] 設定が [いいえ] に設定されている場合に、メンバーが自分のために同意できます。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されます。
 
-* **[課金管理者](#billing-administrator)**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
+* **[課金管理者](#billing-administrator)**:購入、サブスクリプションの管理、サポート チケットの管理、サービスの正常性の監視を行います。
 
-* **[クラウド アプリケーション管理者](#cloud-application-administrator)**: このロールのユーザーは、(アプリケーション プロキシを管理する権限を除き) アプリケーション管理者ロールと同じアクセス許可を持ちます。 このロールは、エンタープライズ アプリケーションとアプリケーション登録の全側面を作成して管理する権限を付与します。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
+* **[クラウド アプリケーション管理者](#cloud-application-administrator)**:このロールのユーザーは、(アプリケーション プロキシを管理する権限を除き) アプリケーション管理者ロールと同じアクセス許可を持ちます。 このロールは、エンタープライズ アプリケーションとアプリケーション登録の全側面を作成して管理する権限を付与します。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
 
-  <b>重要:</b>: このロールは、アプリケーションの資格情報を管理する権限を付与します。 このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID に Azure Active Directory へのアクセス権 (ユーザーやその他のオブジェクトの作成や更新など) が付与されている場合、このロールが割り当てられたユーザーは、アプリケーションを偽装している間にこのようなアクションを実行することができます。 アプリケーションの ID を偽装するこの機能は、ユーザーが Azure AD のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 ユーザーにクラウド アプリケーション管理者ロールを割り当てると、そのユーザーがアプリケーションの ID を偽装できるようになることを理解することが重要です。
+  <b>重要</b>:このロールは、アプリケーションの資格情報を管理する権限を付与します。 このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID に Azure Active Directory へのアクセス権 (ユーザーやその他のオブジェクトの作成や更新など) が付与されている場合、このロールが割り当てられたユーザーは、アプリケーションを偽装している間にこのようなアクションを実行することができます。 アプリケーションの ID を偽装するこの機能は、ユーザーが Azure AD のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 ユーザーにクラウド アプリケーション管理者ロールを割り当てると、そのユーザーがアプリケーションの ID を偽装できるようになることを理解することが重要です。
 
-* **[クラウド デバイス管理者](#cloud-device-administrator)**: このロールのユーザーは、Azure AD でデバイスを有効化、無効化、および削除することができ、Azure portal で Windows 10 の BitLocker キーを読み取る (ある場合) ことができます。 このロールでは、デバイス上の他のプロパティを管理するアクセス許可の付与は行いません。
+* **[クラウド デバイス管理者](#cloud-device-administrator)**:このロールのユーザーは、Azure AD でデバイスを有効化、無効化、および削除することができ、Azure portal で Windows 10 の BitLocker キーを読み取る (ある場合) ことができます。 このロールでは、デバイス上の他のプロパティを管理するアクセス許可の付与は行いません。
 
-* **[コンプライアンス管理者](#compliance-administrator)**: このロールが割り当てられたユーザーは、Office 365 セキュリティ/コンプライアンス センターと Exchange 管理センター内で管理アクセス許可を持ちます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+* **[コンプライアンス管理者](#compliance-administrator)**:このロールのユーザーは、Office 365 セキュリティ/コンプライアンス センターと Exchange 管理センター内での管理アクセス許可があります。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
-* **[条件付きアクセス管理者](#conditional-access-administrator)**: このロールが割り当てられたユーザーは、Azure Active Directory の条件付きアクセスの設定を管理できます。
+* **[条件付きアクセス管理者](#conditional-access-administrator)**:このロールのユーザーは、Azure Active Directory の条件付きアクセスの設定を管理できます。
   > [!NOTE]
   > Azure で Exchange ActiveSync の条件付きアクセス ポリシーをデプロイするには、ユーザーは、グローバル管理者である必要もあります。
   
-* **[デバイス管理者](#device-administrators)**: この役割は、[デバイス設定](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)の追加のローカル管理者としてのみ割り当て可能です。 このロールのユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスのローカル マシン管理者になります。 Azure Active Directory 内のデバイス オブジェクトを管理することはできません。 
+* **[デバイス管理者](#device-administrators)**:この役割は、[デバイス設定](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)の追加のローカル管理者としてのみ割り当て可能です。 このロールのユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスのローカル マシン管理者になります。 Azure Active Directory 内のデバイス オブジェクトを管理することはできません。 
 
-* **[ディレクトリ閲覧者](#directory-readers)**: これは、[同意フレームワーク](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
+* **[ディレクトリ閲覧者](#directory-readers)**:これは、[同意フレームワーク](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
 
-* **[ディレクトリ同期アカウント](#directory-synchronization-accounts)**: 使用しないでください。 このロールは、自動的に Azure AD Connect サービスに割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。
+* **[ディレクトリ同期アカウント](#directory-synchronization-accounts)**:使用しないでください。 このロールは、自動的に Azure AD Connect サービスに割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。
 
-* **[ディレクトリ ライター](#directory-writers)**: これは、[同意フレームワーク](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
+* **[ディレクトリ ライター](#directory-writers)**:これは、[同意フレームワーク](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
 
-* **[Dynamics 365 管理者/CRM 管理者](#dynamics-365-administrator)**: このロールが割り当てられたユーザーは、Microsoft Dynamics 365 Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[service admin ロールを使用してテナントを管理する](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)」を参照してください。
+* **[Dynamics 365 管理者/CRM 管理者](#dynamics-365-administrator)**:このロールが割り当てられたユーザーは、Microsoft Dynamics 365 Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[service admin ロールを使用してテナントを管理する](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)」を参照してください。
   > [!NOTE] 
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Dynamics 365 サービス管理者" として識別されます。 Azure portal では、"Dynamics 365 管理者" になります。
 
-* **[Exchange 管理者](#exchange-administrator)**: このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 また、すべての Office 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+* **[Exchange 管理者](#exchange-administrator)**:このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 また、すべての Office 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Exchange サービス管理者" として識別されます。 Azure portal では、"Exchange 管理者" になります。
 
-* **[全体管理者/会社の管理者](#company-administrator)**: このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure Active Directory テナントにサインアップしたユーザーが全体管理者になります。 他の管理者ロールを割り当てることができるのは全体管理者だけです。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
+* **[全体管理者/会社の管理者](#company-administrator)**:このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure Active Directory テナントにサインアップしたユーザーが全体管理者になります。 他の管理者ロールを割り当てることができるのは全体管理者だけです。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
 
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "会社の管理者" として識別されます。 [Azure Portal](https://portal.azure.com) では、"全体管理者" になります。
   >
   >
 
-* **[ゲスト招待元](#guest-inviter)**: このロールが割り当てられたユーザーは、**[メンバーは招待ができる]** ユーザー設定が [いいえ] に設定されている場合に、Azure Active Directory B2B ゲスト ユーザーの招待を管理できます。 B2B コラボレーションの詳細については、「[Azure AD B2B コラボレーションとは](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。 その他の権限は含まれません。
+* **[ゲスト招待元](#guest-inviter)**:このロールが割り当てられたユーザーは、**[メンバーは招待ができる]** ユーザー設定が [いいえ] に設定されている場合に、Azure Active Directory B2B ゲスト ユーザーの招待を管理できます。 B2B コラボレーションの詳細については、「[Azure AD B2B コラボレーションとは](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。 その他の権限は含まれません。
 
-* **[Information Protection 管理者](#information-protection-administrator)**: このロールが割り当てられたユーザーは、Azure Information Protection サービスのすべてのアクセス許可を持ちます。 このロールでは、Azure Information Protection ポリシーのラベルの構成、保護テンプレートの管理、保護のアクティブ化を行うことができます。 このロールでは、Identity Protection Center、Privileged Identity Management、Office 365 Service Health の監視、および Office 365 のセキュリティ/コンプライアンス センターのアクセス許可は付与されません。
+* **[Information Protection 管理者](#information-protection-administrator)**:このロールが割り当てられたユーザーは、Azure Information Protection サービスのすべてのアクセス許可を持ちます。 このロールでは、Azure Information Protection ポリシーのラベルの構成、保護テンプレートの管理、保護のアクティブ化を行うことができます。 このロールでは、Identity Protection Center、Privileged Identity Management、Office 365 Service Health の監視、および Office 365 のセキュリティ/コンプライアンス センターのアクセス許可は付与されません。
 
-* **[Intune 管理者](#intune-administrator)**: このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。 詳細については、「[Microsoft Intune でのロール ベースの管理制御 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)」を参照してください。
+* **[Intune 管理者](#intune-administrator)**:このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。 詳細については、「[Microsoft Intune でのロール ベースの管理制御 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)」を参照してください。
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Intune サービス管理者" として識別されます。 Azure portal では、"Intune 管理者" になります。
 
-* **[ライセンス管理者](#license-administrator)**: このロールのユーザーは、ユーザーに対するライセンス割り当ての追加、削除、更新、グループに対する (グループベースのライセンスを使用した) ライセンス割り当ての追加、削除、更新に加え、ユーザーに対する利用場所の管理を行うことができます。 このロールでは、サブスクリプションの購入と管理、グループの作成と管理を行う権限は与えられません。また、利用場所を超える範囲でのユーザーの作成と管理を行う権限も与えられません。
+* **[ライセンス管理者](#license-administrator)**:このロールのユーザーは、ユーザーに対するライセンス割り当ての追加、削除、更新、グループに対する (グループベースのライセンスを使用した) ライセンス割り当ての追加、削除、更新に加え、ユーザーに対する利用場所の管理を行うことができます。 このロールでは、サブスクリプションの購入と管理、グループの作成と管理を行う権限は与えられません。また、利用場所を超える範囲でのユーザーの作成と管理を行う権限も与えられません。
 
-* **[メッセージ センター閲覧者](#message-center-reader)**: このロールのユーザーは、自分の組織の Exchange、Intune、Microsoft Teams などのサービス構成に対する [Office 365 メッセージ センター](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)の通知や、正常性に関して注意を促す更新情報を監視できます。 メッセージ センター閲覧者は、投稿の毎週のメール ダイジェストを受け取り、Office 365 でメッセージ センターの投稿を共有できます。 Azure AD では、このロールに割り当てられているユーザーはユーザーやグループなどの読み取り専用アクセスのみを持ちます。 
+* **[メッセージ センター閲覧者](#message-center-reader)**:このロールのユーザーは、自分の組織の Exchange、Intune、Microsoft Teams などのサービス構成に対する [Office 365 メッセージ センター](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)の通知や、正常性に関して注意を促す更新情報を監視できます。 メッセージ センター閲覧者は、投稿の毎週のメール ダイジェストを受け取り、Office 365 でメッセージ センターの投稿を共有できます。 Azure AD では、このロールに割り当てられているユーザーはユーザーやグループなどの読み取り専用アクセスのみを持ちます。 
 
-* **[パートナー レベル 1 のサポート](#partner-tier1-support)**: 使用しないでください。 このロールは非推奨となっており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
+* **[パートナー レベル 1 のサポート](#partner-tier1-support)**:使用しないでください。 このロールは非推奨となっており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
 
-* **[パートナー レベル 2 のサポート](#partner-tier2-support)**: 使用しないでください。 このロールは非推奨となっており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
+* **[パートナー レベル 2 のサポート](#partner-tier2-support)**:使用しないでください。 このロールは非推奨となっており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
 
-* **[パスワード管理者/ヘルプデスク管理者](#helpdesk-administrator)**: このロールが割り当てられたユーザーは、パスワードの変更、更新トークンの無効化、サービス要求の管理、サービス正常性の監視を行うことができます。 更新トークンを無効にすると、ユーザーは再度サインインすることを強制されます。 ヘルプデスク管理者は、管理者ではない他のユーザーまたは次のロールのメンバーについてのみ、パスワードをリセットし、更新トークンを無効にすることができます。
+* **[パスワード管理者/ヘルプデスク管理者](#helpdesk-administrator)**:このロールが割り当てられたユーザーは、パスワードの変更、更新トークンの無効化、サービス要求の管理、サービス正常性の監視を行うことができます。 更新トークンを無効にすると、ユーザーは再度サインインすることを強制されます。 ヘルプデスク管理者は、管理者ではない他のユーザーまたは次のロールのメンバーについてのみ、パスワードをリセットし、更新トークンを無効にすることができます。
   * ディレクトリ リーダー
   * ゲスト招待元
   * ヘルプデスク管理者
   * メッセージ センター閲覧者
   * レポート閲覧者
   
-  <b>重要</b>: このロールを持つユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーのパスワードを変更するということは、そのユーザーの ID およびアクセス許可を取得できるということを意味します。 例: 
+  <b>重要</b>:このロールを持つユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーのパスワードを変更するということは、そのユーザーの ID およびアクセス許可を取得できるということを意味します。 例: 
   * 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、Azure AD およびヘルプデスク管理者に付与されていない場所への特権アクセス許可がある場合があります。 ヘルプデスク管理者は、このパスからアプリケーション所有者の ID を取得し、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を取得できる場合があります。
   * 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
   * グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
@@ -112,17 +112,17 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   > Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスク管理者" として識別されます。 [Azure Portal](https://portal.azure.com/) では、"パスワード管理者" になります。
   >
   
-* **[Power BI 管理者](#power-bi-administrator)**: このロールが割り当てられたユーザーは、Microsoft Power BI 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[Power BI 管理者の役割について](https://docs.microsoft.com/power-bi/service-admin-role)」を参照してください。
+* **[Power BI 管理者](#power-bi-administrator)**:このロールが割り当てられたユーザーは、Microsoft Power BI 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[Power BI 管理者の役割について](https://docs.microsoft.com/power-bi/service-admin-role)」を参照してください。
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Power BI サービス管理者" として識別されます。 Azure portal では、"Power BI 管理者" になります。
 
-* **[特権ロール管理者](#privileged-role-administrator)**: このロールが割り当てられたユーザーは、Azure Active Directory と Azure AD Privileged Identity Management 内でロールの割り当てを管理できます。 また、このロールは Privileged Identity Management の全側面を管理できます。
+* **[特権ロール管理者](#privileged-role-administrator)**:このロールが割り当てられたユーザーは、Azure Active Directory と Azure AD Privileged Identity Management 内でロールの割り当てを管理できます。 また、このロールは Privileged Identity Management の全側面を管理できます。
 
-  <b>重要:</b>: このロールは、全体管理者ロールを含むすべての Azure AD ロールのメンバーシップを管理する権限を付与します。 このロールには、Azure AD でユーザーの作成や更新などの特権付きの機能が含まれていません。 ただし、このロールが割り当てられたユーザーは、追加のロールを割り当てることで、自分または他のユーザーの追加の特権を付与できます。
+  <b>重要</b>:このロールは、全体管理者ロールを含むすべての Azure AD ロールのメンバーシップを管理する権限を付与します。 このロールには、Azure AD でユーザーの作成や更新などの特権付きの機能が含まれていません。 ただし、このロールが割り当てられたユーザーは、追加のロールを割り当てることで、自分または他のユーザーの追加の特権を付与できます。
 
-* **[レポート閲覧者](#reports-reader)**: このロールが割り当てられたユーザーは、Office 365 管理センターで使用状況のレポート データとレポート ダッシュボードを表示できます。また、Power BI で導入コンテキスト パックを表示できます。 さらに、Azure AD のサインイン レポートとアクティビティ、および Microsoft Graph レポート API から返されるデータにもアクセスできます。 レポート閲覧者ロールが割り当てられたユーザーは、関連する使用状況と導入メトリックにのみアクセスできます。 製品固有の管理センター (Exchange など) の設定を構成したり、アクセスしたりする管理者アクセス許可はありません。 
+* **[レポート閲覧者](#reports-reader)**:このロールが割り当てられたユーザーは、Office 365 管理センターで使用状況のレポート データとレポート ダッシュボードを表示できます。また、Power BI で導入コンテキスト パックを表示できます。 さらに、Azure AD のサインイン レポートとアクティビティ、および Microsoft Graph レポート API から返されるデータにもアクセスできます。 レポート閲覧者ロールが割り当てられたユーザーは、関連する使用状況と導入メトリックにのみアクセスできます。 製品固有の管理センター (Exchange など) の設定を構成したり、アクセスしたりする管理者アクセス許可はありません。 
 
-* **[セキュリティ管理者](#security-administrator)**: このロールが割り当てられたユーザーは、セキュリティ閲覧者ロールのすべての読み取り専用アクセス許可を持ち、セキュリティ関連サービス (Azure Active Directory Identity Protection、Azure Information Protection、Office 365 セキュリティ/コンプライアンス センター) の構成を管理することもできます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
+* **[セキュリティ管理者](#security-administrator)**:このロールが割り当てられたユーザーは、セキュリティ閲覧者ロールのすべての読み取り専用アクセス許可を持ち、セキュリティ関連サービス (Azure Active Directory Identity Protection、Azure Information Protection、Office 365 セキュリティ/コンプライアンス センター) の構成を管理することもできます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
   
   | どこで | できること |
   | --- | --- |
@@ -130,7 +130,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   | Privileged Identity Management |<ul><li>セキュリティ閲覧者ロールのすべての権限を持ちます。<li>Azure AD ロールのメンバーシップまたは設定を管理することは**できません**。 |
   | <p>Office 365 サービス正常性の監視</p><p>Office 365 セキュリティ/コンプライアンス センター |<ul><li>セキュリティ閲覧者ロールのすべての権限を持ちます。<li>Advanced Threat Protection 機能 (マルウェアおよびウイルス防止、悪意のある URL の構成、URL 追跡など) のすべての設定を構成することができます。 |
   
-* **[セキュリティ閲覧者](#security-reader)**: このロールが割り当てられたユーザーは、Azure Active Directory、Identity Protection、Privileged Identity Management 内のすべての情報を含め、グローバルな読み取り専用アクセス権を持ち、Azure Active Directory のサインイン レポートと監査ログを閲覧できます。 また、このロールには、Office 365 セキュリティ/コンプライアンス センターでの読み取り専用アクセス許可が付与されます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
+* **[セキュリティ閲覧者](#security-reader)**:このロールが割り当てられたユーザーは、Azure Active Directory、Identity Protection、Privileged Identity Management 内のすべての情報を含め、グローバルな読み取り専用アクセス権を持ち、Azure Active Directory のサインイン レポートと監査ログを閲覧できます。 また、このロールには、Office 365 セキュリティ/コンプライアンス センターでの読み取り専用アクセス許可が付与されます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
 
   | どこで | できること |
   | --- | --- |
@@ -138,28 +138,28 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   | Privileged Identity Management |<p>Azure AD PIM に表示される、Azure AD ロール割り当てに関するポリシーとレポート、セキュリティ レビューのすべての情報に対する読み取り専用アクセス権を持ちます。また、将来的には、Azure AD ロール割り当て以外のシナリオのポリシー データとレポートに対する読み取りアクセス権も付与される予定です。<p>Azure AD PIM へのサインアップおよび Azure AD PIM の変更を行うことは**できません**。 このロールのユーザーは、追加のロール (グローバル管理者や特権ロール管理者など) の資格を持っている場合、PIM のポータルまたは PowerShell からそのロールを有効化することができます。 |
   | <p>Office 365 サービス正常性の監視</p><p>Office 365 セキュリティ/コンプライアンス センター</p> |<ul><li>アラートの閲覧と管理<li>セキュリティ ポリシーの閲覧<li>検索調査における脅威インテリジェンス情報、Cloud App Discovery、および検査の閲覧<li>全レポートの閲覧 |
 
-* **[サービス サポート管理者](#service-support-administrator)**: このロールが割り当てられたユーザーは、Azure サービスと Office 365 サービスについて Microsoft へのサポート要求を開くことができます。また、Azure portal と Office 365 管理ポータルで、サービス ダッシュボードとメッセージ センターを表示できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+* **[サービス サポート管理者](#service-support-administrator)**:このロールが割り当てられたユーザーは、Azure サービスと Office 365 サービスについて Microsoft へのサポート要求を開くことができます。また、Azure portal と Office 365 管理ポータルで、サービス ダッシュボードとメッセージ センターを表示できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
-* **[SharePoint 管理者](#sharepoint-administrator)**: このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、すべての Office 365 グループを作成および管理し、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+* **[SharePoint 管理者](#sharepoint-administrator)**:このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、すべての Office 365 グループを作成および管理し、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "SharePoint サービス管理者" として識別されます。 Azure portal では、"SharePoint 管理者" になります。
 
-* **[Skype for Business/Lync 管理者](#skype-for-business-administrator)**: このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、Azure Active Directory で Skype 固有のユーザー属性を管理します。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視して、Teams と Skype for Business の管理センターにアクセスすることができます。 アカウントには、Teams のライセンスが付与されている必要もあります。そうでないと、Teams の PowerShell コマンドレットを実行できません。 詳細については、[Skype for Business の管理者ロール](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)に関するページを参照してください。Teams のライセンス情報については、[Skype for Business と Microsoft Teams アドオンのライセンス](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)に関するページを参照してください
+* **[Skype for Business/Lync 管理者](#skype-for-business-administrator)**:このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、Azure Active Directory で Skype 固有のユーザー属性を管理します。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視して、Teams と Skype for Business の管理センターにアクセスすることができます。 アカウントには、Teams のライセンスが付与されている必要もあります。そうでないと、Teams の PowerShell コマンドレットを実行できません。 詳細については、[Skype for Business の管理者ロール](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)に関するページを参照してください。Teams のライセンス情報については、[Skype for Business と Microsoft Teams アドオンのライセンス](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)に関するページを参照してください
 
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Lync サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com/) では、"Skype for Business 管理者" になります。
 
-* **[Teams 通信管理者](#teams-communications-administrator)**: このロールのユーザーは、音声とテレフォニーに関連する Microsoft Teams のワークロードの各側面を管理できます。 これには、電話番号の割り当て、音声と会議のポリシー、および通話分析ツールセットへのフル アクセスのための管理ツールが含まれます。
+* **[Teams 通信管理者](#teams-communications-administrator)**:このロールのユーザーは、音声とテレフォニーに関連する Microsoft Teams のワークロードの各側面を管理できます。 これには、電話番号の割り当て、音声と会議のポリシー、および通話分析ツールセットへのフル アクセスのための管理ツールが含まれます。
 
-* **[Teams 通信サポート エンジニア](#teams-communications-support-engineer)**: このロールのユーザーは、Microsoft Teams と Skype for Business の管理センターでユーザー通話のトラブルシューティング ツールを使用して、Microsoft Teams と Skype for Business での通信に関する問題をトラブルシューティングできます。 このロールのユーザーは、関係するすべての参加者の完全な通話記録情報を表示できます。
+* **[Teams 通信サポート エンジニア](#teams-communications-support-engineer)**:このロールのユーザーは、Microsoft Teams と Skype for Business の管理センターでユーザー通話のトラブルシューティング ツールを使用して、Microsoft Teams と Skype for Business での通信に関する問題をトラブルシューティングできます。 このロールのユーザーは、関係するすべての参加者の完全な通話記録情報を表示できます。
 
-* **[Teams 通信サポート スペシャリスト](#teams-communications-support-specialist)**: このロールのユーザーは、Microsoft Teams と Skype for Business の管理センターでユーザー通話のトラブルシューティング ツールを使用して、Microsoft Teams と Skype for Business での通信に関する問題をトラブルシューティングできます。 このロールのユーザーが表示できるのは、調査した特定ユーザーの通話における詳細のみです。
+* **[Teams 通信サポート スペシャリスト](#teams-communications-support-specialist)**:このロールのユーザーは、Microsoft Teams と Skype for Business の管理センターでユーザー通話のトラブルシューティング ツールを使用して、Microsoft Teams と Skype for Business での通信に関する問題をトラブルシューティングできます。 このロールのユーザーが表示できるのは、調査した特定ユーザーの通話における詳細のみです。
 
-* **[Teams 管理者](#teams-administrator)**: このロールのユーザーは、Microsoft Teams および Skype for Business の管理センターと、対応する PowerShell モジュールを使用して、Microsoft Teams のワークロードの全側面を管理できます。 これにはその他の領域の、テレフォニー、メッセージング、会議、およびチーム自体に関連するすべての管理ツールが含まれます。 このロールはさらに、すべての Office 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。
+* **[Teams 管理者](#teams-administrator)**:このロールのユーザーは、Microsoft Teams および Skype for Business の管理センターと、対応する PowerShell モジュールを使用して、Microsoft Teams のワークロードの全側面を管理できます。 これにはその他の領域の、テレフォニー、メッセージング、会議、およびチーム自体に関連するすべての管理ツールが含まれます。 このロールはさらに、すべての Office 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Teams サービス管理者" として識別されます。 Azure portal では、"Teams 管理者" になります。
 
-* **[ユーザー アカウント管理者](#user-account-administrator)**: このロールが割り当てられたユーザーは、ユーザーを作成し、いくつか制限はありますがユーザーのすべての側面を管理できます (後述)。 また、このロールのユーザーは、グループを作成し、すべてのグループを管理することができます。 このロールでは、ユーザー ビューを作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。
+* **[ユーザー アカウント管理者](#user-account-administrator)**:このロールが割り当てられたユーザーは、ユーザーを作成し、いくつか制限はありますがユーザーのすべての側面を管理できます (後述)。 また、このロールのユーザーは、グループを作成し、すべてのグループを管理することができます。 このロールでは、ユーザー ビューを作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。
 
   | | |
   | --- | --- |
@@ -167,22 +167,18 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   |<p>すべての管理者を含むすべてのユーザーに対して</p>|<p>ライセンスを管理する</p><p>ユーザー プリンシパル名を除くすべてのユーザーのプロパティを管理する</p>
   |管理者以外のユーザー、または次の制限付き管理者ロールのいずれかに対してのみ:<ul><li>ディレクトリ リーダー<li>ゲスト招待元<li>ヘルプデスク管理者<li>メッセージ センター閲覧者<li>レポート閲覧者<li>ユーザー アカウント管理者|<p>削除と復元</p><p>無効化と有効化</p><p>更新トークンを無効にする</p><p>ユーザー プリンシパル名を含むすべてのユーザーのプロパティを管理する</p><p>[パスワードのリセット]</p><p>(FIDO) デバイス キーを更新する</p>
   
-  <b>重要</b>: このロールを持つユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーのパスワードを変更するということは、そのユーザーの ID およびアクセス許可を取得できるということを意味します。 例: 
+  <b>重要</b>:このロールを持つユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーのパスワードを変更するということは、そのユーザーの ID およびアクセス許可を取得できるということを意味します。 例: 
   * 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、Azure AD およびユーザー管理者に付与されていない場所への特権アクセス許可がある場合があります。 ユーザー管理者は、このパスからアプリケーション所有者の ID を取得し、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を取得できる場合があります。
   * 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
   * グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
   * Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
   * 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
 
+## <a name="role-permissions"></a>ロールのアクセス許可
 以降の表は、各ロールに割り当てられている Azure Active Directory の具体的なアクセス許可の説明です。 一部のロールは、Azure Active Directory 以外の Microsoft サービスにおけるその他のアクセス許可を持っている場合があります。
 
 ### <a name="application-administrator"></a>アプリケーション管理者
 アプリ登録とエンタープライズ アプリのすべての側面を作成して管理できます。
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
 
 | **アクション** | **説明** |
 | --- | --- |
@@ -223,11 +219,6 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 ### <a name="application-developer"></a>アプリケーション開発者
 [ユーザーはアプリケーションを登録できる] の設定とは無関係にアプリケーション登録を作成できます。
 
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/applications/createAsOwner | Azure Active Directory での applications の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
@@ -239,12 +230,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 支払情報の更新など、よく利用する課金関連タスクを実行できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -263,12 +249,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 デスクトップの管理ツールとサービス (Intune を含む) にアクセスして管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -283,11 +264,6 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="cloud-application-administrator"></a>クラウド アプリケーション管理者
 アプリ登録とエンタープライズ アプリのすべての側面 (アプリ プロキシを除く) を作成して管理できます。
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
 
 | **アクション** | **説明** |
 | --- | --- |
@@ -327,11 +303,6 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 ### <a name="cloud-device-administrator"></a>クラウド デバイス管理者
 Azure AD でデバイスを管理するためのフル アクセス。
 
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/devices/delete | Azure Active Directory での devices の削除。 |
@@ -346,12 +317,7 @@ Azure AD でデバイスを管理するためのフル アクセス。
 Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft サービスを管理できます。
 
   > [!NOTE]
-  > このロールは、ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -411,12 +377,7 @@ Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft
 Azure AD および Office 365 のコンプライアンスの構成とレポートを読み取り、管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -435,11 +396,6 @@ Azure AD および Office 365 のコンプライアンスの構成とレポー�
 ### <a name="conditional-access-administrator"></a>条件付きアクセス管理者
 条件付きアクセスの機能を管理できます。
 
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/policies/conditionalAccess/basic/read | Azure Active Directory での policies.conditionalAccess プロパティの読み取り。 |
@@ -454,12 +410,7 @@ Azure AD および Office 365 のコンプライアンスの構成とレポー�
 Dynamics 365 製品のすべての側面を管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -476,12 +427,7 @@ Dynamics 365 製品のすべての側面を管理できます。
 Microsoft サポートがお客様の組織データにアクセスする要求を承認することができます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -493,11 +439,6 @@ Microsoft サポートがお客様の組織データにアクセスする要求�
 ### <a name="device-administrators"></a>デバイス管理者
 このロールのメンバーは、Azure AD 参加済みデバイスのローカル管理者グループに追加されます。
 
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/groupSettings/basic/read | Azure Active Directory での groupSettings の基本プロパティの読み取り。 |
@@ -505,11 +446,6 @@ Microsoft サポートがお客様の組織データにアクセスする要求�
 
 ### <a name="directory-readers"></a>ディレクトリ リーダー
 基本的なディレクトリ情報を読み取ることができます  ユーザーではなく、アプリケーションへのアクセスを許可する場合。
-
-  > [!NOTE]
-  > このロールは、ロールから追加のアクセス許可を継承します。
-  >
-  >
 
 | **アクション** | **説明** |
 | --- | --- |
@@ -570,11 +506,6 @@ Microsoft サポートがお客様の組織データにアクセスする要求�
 ### <a name="directory-synchronization-accounts"></a>ディレクトリ同期アカウント
 Azure AD Connect サービスでのみ使用されます。
 
-  > [!NOTE]
-  > このロールは、ロールから追加のアクセス許可を継承します。
-  >
-  >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/organization/dirSync/update | Azure Active Directory での organization.dirSync プロパティの更新。 |
@@ -604,11 +535,6 @@ Azure AD Connect サービスでのみ使用されます。
 ### <a name="directory-writers"></a>ディレクトリ ライター
 基本的なディレクトリ情報の読み取りと書き込みを実行できます  ユーザーではなく、アプリケーションへのアクセスを許可する場合。
 
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/groups/create | Azure Active Directory での groups の作成。 |
@@ -632,12 +558,7 @@ Azure AD Connect サービスでのみ使用されます。
 Exchange 製品のすべての側面を管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -659,11 +580,6 @@ Exchange 製品のすべての側面を管理できます。
 ### <a name="guest-inviter"></a>ゲスト招待元
 [メンバーがゲストを招待できる] の設定とは無関係にゲスト ユーザーを招待できます。
 
-  > [!NOTE]
-  > このロールは、ロールから追加のアクセス許可を継承します。
-  >
-  >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/users/appRoleAssignments/read | Azure Active Directory での users.appRoleAssignments プロパティの読み取り。 |
@@ -682,11 +598,6 @@ Exchange 製品のすべての側面を管理できます。
 ### <a name="helpdesk-administrator"></a>ヘルプデスク管理者
 管理者以外のユーザーとヘルプデスク管理者のパスワードをリセットできます。
 
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Azure Active Directory 内のすべてのユーザー更新トークンの無効化。 |
@@ -701,12 +612,7 @@ Exchange 製品のすべての側面を管理できます。
 Azure Information Protection 製品のすべての側面を管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -722,12 +628,7 @@ Azure Information Protection 製品のすべての側面を管理できます。
 Intune 製品のすべての側面を管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -761,11 +662,6 @@ Intune 製品のすべての側面を管理できます。
 ### <a name="license-administrator"></a>ライセンス管理者
 ユーザーおよびグループの製品ライセンスを管理できます。
 
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/users/assignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
@@ -778,12 +674,7 @@ Intune 製品のすべての側面を管理できます。
 Skype for Business 製品のすべての側面を管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -800,12 +691,7 @@ Skype for Business 製品のすべての側面を管理できます。
 Office 365 メッセージ センター内でのみ自分の組織のメッセージと更新情報を閲覧することができます。 
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -818,12 +704,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 使用しないでください。一般的な使用は想定されていません。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -855,12 +736,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 使用しないでください。一般的な使用は想定されていません。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -895,12 +771,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 Power BI 製品のすべての側面を管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -917,12 +788,7 @@ Power BI 製品のすべての側面を管理できます。
 Azure AD でのロールの割り当てと、Privileged Identity Management のすべての側面を管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -935,12 +801,7 @@ Azure AD でのロールの割り当てと、Privileged Identity Management の�
 サインインと監査のレポートを読み取ることができます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -956,12 +817,7 @@ Azure AD でのロールの割り当てと、Privileged Identity Management の�
 セキュリティ情報とレポートを読み取り、Azure AD と Office 365 で構成を管理することができます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -988,12 +844,7 @@ Azure AD でのロールの割り当てと、Privileged Identity Management の�
 Azure AD と Office 365 のセキュリティ情報とレポートを読み取ることができます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1012,12 +863,7 @@ Azure AD と Office 365 のセキュリティ情報とレポートを読み取�
 サービス正常性に関する情報を読み取り、サポート チケットを管理することができます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1033,12 +879,7 @@ Azure AD と Office 365 のセキュリティ情報とレポートを読み取�
 SharePoint サービスのすべての側面を管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1061,12 +902,7 @@ SharePoint サービスのすべての側面を管理できます。
 Microsoft Teams サービス内での通話と会議の機能を管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1084,12 +920,7 @@ Microsoft Teams サービス内での通話と会議の機能を管理できま�
 高度なツールを使用して、Teams 内の通信の問題のトラブルシューティングを行えます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1104,12 +935,7 @@ Microsoft Teams サービス内での通話と会議の機能を管理できま�
 基本的なツールを使用して、Teams 内の通信の問題のトラブルシューティングを行えます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1124,12 +950,7 @@ Microsoft Teams サービス内での通話と会議の機能を管理できま�
 Microsoft Teams サービスを管理できます。
 
   > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1152,11 +973,6 @@ Microsoft Teams サービスを管理できます。
 
 ### <a name="user-account-administrator"></a>ユーザー アカウント管理者
 ユーザーとグループのすべての側面を、制限付きの管理者のパスワードをリセットすることも含めて、管理できます。
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
 
 | **アクション** | **説明** |
 | --- | --- |

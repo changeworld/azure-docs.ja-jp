@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault のキー、シークレット、証明書について
+title: Azure Key Vault のキー、シークレット、証明書について - Azure Key Vault
 description: キー、シークレット、証明書に関する Azure Key Vault の REST インターフェイスと開発者の詳細の概要です。
 services: key-vault
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 6d158f14afa305dd547392722abb5f81380de31f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 464574716971388f3785879ba40ad3e8a624fc7f
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384787"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002622"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 
@@ -36,7 +36,7 @@ Key Vault の一般的な情報については、「[Azure Key Vault とは](/az
 
 以下のセクションでは、Key Vault サービスの実装に該当する一般的な情報を提供します。
 
-###  <a name="supporting-standards"></a>標準のサポート
+### <a name="supporting-standards"></a>標準のサポート
 
 JavaScript Object Notation (JSON) および JavaScript Object Signing and Encryption (JOSE) の仕様は、重要な背景情報です。  
 
@@ -60,7 +60,7 @@ JavaScript Object Notation (JSON) および JavaScript Object Signing and Encryp
 -   **Identity** - Azure Active Directory (AAD) からの ID です。  
 -   **IntDate** - 1970-01-01T0:0:0Z UTC から指定された UTC 日時までの秒数を表す JSON 10 進値です。 一般的および UTC 固有の日付/時刻に関する詳細については、RFC3339 をご覧ください。  
 
-###  <a name="objects-identifiers-and-versioning"></a>オブジェクト、識別子、バージョン管理
+### <a name="objects-identifiers-and-versioning"></a>オブジェクト、識別子、バージョン管理
 
 Key Vault に格納されるオブジェクトは、オブジェクトの新しいインスタンスが作成されるたびにバージョン管理されます。 各バージョンには、一意の識別子と URL が割り当てられます。 オブジェクトが最初に作成されるときに、オブジェクトに一意のバージョン識別子が指定され、オブジェクトの現在のバージョンとしてマークされます。 同じオブジェクト名の新しいインスタンスが作成されると、新しいオブジェクトに一意のバージョン識別子が与えられ、現在のバージョンになります。  
 
@@ -85,7 +85,7 @@ Key Vault 内のオブジェクトは、URL を使用して一意に識別され
 
 ## <a name="key-vault-keys"></a>Key Vault のキー
 
-###  <a name="keys-and-key-types"></a>キーとキーの種類
+### <a name="keys-and-key-types"></a>キーとキーの種類
 
 Key Vault の暗号化キーは、JSON Web Key (JWK) オブジェクトとして表されます。 基本の JWK/JWA の仕様は、Key Vault の実装に固有のキーの種類も有効にするように拡張されます。 たとえば、HSM ベンダー固有のパッケージを使用してキーをインポートすると、Key Vault HSM でのみ使用できるキーの安全なトランスポートが可能です。  
 

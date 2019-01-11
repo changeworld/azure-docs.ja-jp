@@ -1,18 +1,17 @@
 ---
 title: Azure Database for PostgreSQL のパフォーマンスに関する推奨事項
 description: この記事では、Azure database for PostgreSQL で実現できるパフォーマンスに関する推奨事項について説明します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 46a4e69ecb08276e12ccc197de2d3ad838628b78
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 1dedc08f27d1a483290dc61cce879290ca66592d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378603"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548104"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のパフォーマンスに関する推奨事項
 

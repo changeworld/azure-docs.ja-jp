@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/12/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 10ae943711fcd7516b0fdbe982fd5d9e09227bdc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 22032f9d2e60d3c51546c32df8b98f9633c95535
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864980"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726543"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack のデプロイ計画に関する考慮事項
 Azure Stack Development Kit (ASDK) をデプロイする前に、開発キットのホスト コンピューターがこの記事で説明されている要件を満たしていることをご確認ください。
@@ -29,12 +29,12 @@ Azure Stack Development Kit (ASDK) をデプロイする前に、開発キット
 ## <a name="hardware"></a>ハードウェア
 | コンポーネント | 最小値 | 推奨 |
 | --- | --- | --- |
-| ディスク ドライブ: オペレーティング システム |システム パーティション用に最低 200 GB の空きがある1 OS ディスク (SSD または HDD) |システム パーティション用に最低 200 GB の空きがある1 OS ディスク (SSD または HDD) |
-| ディスク ドライブ: 開発キット データ全般<sup>*</sup>  |4 つのディスク。 各ディスクに最低 140 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |4 つのディスク。 各ディスクに最低 250 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |
-| コンピューティング: CPU |デュアル ソケット: 12 個の物理コア (合計) |デュアル ソケット: 16 個の物理コア (合計) |
-| コンピューティング: メモリ |96 GB RAM |128 GB RAM (これは、PaaS リソース プロバイダーをサポートするための最低限の量です。)|
+| ディスク ドライブ: オペレーティング システム |システム パーティション用に最低 200 GB の空きがある、1 つのオペレーティング システム ディスク (SSD または HDD) |システム パーティション用に最低 200 GB の空きがある1 OS ディスク (SSD または HDD) |
+| ディスク ドライブ: 開発キット データ全般<sup>*</sup>  |4 つのディスク。 各ディスクに最低 240 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |4 つのディスク。 各ディスクに最低 400 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |
+| コンピューティング: CPU |デュアル ソケット: 16 個の物理コア (合計) |デュアル ソケット: 20 個の物理コア (合計) |
+| コンピューティング: メモリ |192 GB RAM |256 GB RAM |
 | コンピューティング: BIOS |Hyper-V 有効 (SLAT サポートあり) |Hyper-V 有効 (SLAT サポートあり) |
-| ネットワーク: NIC |NIC には Windows Server 2012 R2 の認定が必要です。特別な機能は必要ありません |NIC には Windows Server 2012 R2 の認定が必要です。特別な機能は必要ありません |
+| ネットワーク: NIC |Windows Server 2012 R2 認定。 特別な機能は必要ありません |Windows Server 2012 R2 認定。 特別な機能は必要ありません |
 | ハードウェア ロゴ認定 |[Windows Server 2012 R2 認定](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Windows Server 2016 認定](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup> Azure から[マーケットプレース項目](asdk-marketplace-item.md)の多くを追加する計画の場合は、この推奨容量より多くが必要です。

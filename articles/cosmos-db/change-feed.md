@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0519bb78b01cd7cab6abaf453efd7a4595101ef4
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c8870fdb0ff0a62c9b1a3b690724aa004e911bb3
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133759"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810884"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード
 
@@ -32,7 +32,7 @@ Azure Cosmos DB の変更フィードにより、次の図のようにこれら�
 
 この機能は現在、次の Azure Cosmos DB API とクライアント SDK でサポートされています。
 
-| **クライアント ドライバー** | **Azure CLI** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API**|**テーブル API** |
+| **クライアント ドライバー** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API**|**テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | NA | [はい] | いいえ  | いいえ  | はい | いいえ  |
 |Java|NA|[はい]|いいえ |いいえ |はい|いいえ |

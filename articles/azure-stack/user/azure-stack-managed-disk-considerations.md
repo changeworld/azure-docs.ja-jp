@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 9eed4c4bd8cd6290bd2126c91bcf4e37c1b0fa0b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4bad339ca704f14f57c120db5e731d0dbfeb8d59
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341951"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793443"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack のマネージド ディスク:相違点と考慮事項
 この記事は、Azure Stack のマネージド ディスクと Azure のマネージド ディスクの既知の相違点をまとめたものです。 Azure Stack と Azure の違いの概要については、「[主な考慮事項](azure-stack-considerations.md)」をご覧ください。
@@ -61,6 +61,14 @@ ms.locfileid: "53341951"
 ## <a name="api-versions"></a>API のバージョン
 Azure Stack のマネージド ディスクは次の API バージョンをサポートしています。
 - 2017-03-30
+
+## <a name="known-issues"></a>既知の問題
+更新プログラム 1809 の適用後、Managed Disks を使用した VM をデプロイするときに、次の問題が発生する可能性があります。
+
+   - 1808 更新の前にサブスクリプションが作成された場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
+      1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
+      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
+   - マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、[この記事](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
 
 
 ## <a name="next-steps"></a>次の手順

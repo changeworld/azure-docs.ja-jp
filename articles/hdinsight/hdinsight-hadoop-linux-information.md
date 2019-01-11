@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: abaf69136fbed577095b3efba2ec6d4383907255
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 95d8825b8359b0ba8649c4c4e145ef488a486b21
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385212"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001925"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
 Azure HDInsight クラスターは、Azure クラウドで実行される使い慣れた Linux 環境での Apache Hadoop を提供します。 使い方は、ほとんどの点で、Linux 環境の他の Hadoop とまったく同じです。 ここでは、知っておく必要がある特定の違いについて説明します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -61,28 +61,28 @@ HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-
 
     認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Ambari から使用できる Web UI の中には、内部ドメイン名を使ってノードにアクセスするものがあります。 内部ドメイン名には、インターネット経由でパブリックにアクセスできません。 インターネット経由で機能にアクセスしようとすると、"サーバーが見つからない" ことを示すエラーが発生する可能性があります。
     >
     > Ambari Web UI の全機能を使用するには、SSH トンネルを使用して、クラスター ヘッド ノードに対する Web トラフィックがプロキシ経由になるようにします。 「[SSH トンネリングを使用して Apache Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください
 
 * **Ambari (REST)** - https://&lt;clustername>.azurehdinsight.net/ambari
 
-    > [!NOTE]
+    > [!NOTE]  
     > クラスター管理者のユーザー名とパスワードを使用して認証します。
     >
     > 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
 * **WebHCat (Templeton)** - https://&lt;clustername>.azurehdinsight.net/templeton
 
-    > [!NOTE]
+    > [!NOTE]  
     > クラスター管理者のユーザー名とパスワードを使用して認証します。
     >
     > 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
 * **SSH** -  ポート 22 または 23 上の &lt;clustername>-ssh.azurehdinsight.net。 ポート 22 はプライマリ ヘッドノードへの接続に、23 はセカンダリ ヘッドノードへの接続に使用されます。 ヘッド ノードの詳細については、「[HDInsight における Apache Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
-    > [!NOTE]
+    > [!NOTE]  
     > クラスター ヘッド ノードにアクセスするには、クライアント コンピューターから SSH を使用する必要があります。 接続されたら、ヘッドノードから SSH を使用して worker ノードにアクセスできます。
 
 詳しくは、「[HDInsight 上の Apache Hadoop サービスで使用されるポート](hdinsight-hadoop-port-settings-for-services.md)」をご覧ください。
@@ -96,23 +96,23 @@ Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあり�
 
 サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システムの `/example` と `/HdiSamples` にあります。
 
-## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS、Azure Storage、Data Lake Store
+## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS、Azure Storage、および Data Lake Storage
 
 ほとんどの Hadoop ディストリビューションでは、データは HDFS に格納されています。この HDFS は、クラスター内のコンピューターのローカル ストレージによって支えられています。 ローカル ストレージの使用コストは、コンピューティング リソースが時間または分単位で課金されるクラウドベースのソリューションでは高くなる場合があります。
 
-HDInsight を使用する場合、データ ファイルは、Azure Blob Storage、および必要に応じて Azure Data Lake Store を使用して、回復性があるスケーラブルな方法でクラウドに格納されます。 これらのサービスには次のような利点があります。
+HDInsight を使用する場合、データ ファイルは、Azure Blob Storage、および必要に応じて Azure Data Lake Storage を使用して、回復性があるスケーラブルな方法でクラウドに格納されます。 これらのサービスには次のような利点があります。
 
 * 低コストの長期ストレージ。
 * Websites、ファイル アップロード/ダウンロード ユーティリティ、さまざまな言語の SDK、Web ブラウザーなどの外部サービスからアクセスできます。
 * 大きなファイル容量とスケーラブルな大容量ストレージ。
 
-詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと「[Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)」を参照してください。
+詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) に関するページを参照してください。
 
-Azure Storage または Data Lake Store を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドは、`/example/data` フォルダーの保存場所 (Azure Storage または Data Lake Store) に関係なく、そのフォルダー内のファイルの一覧を表示します。
+Azure Storage または Data Lake Storage を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドは、`/example/data` フォルダーの保存場所 (Azure Storage または Data Lake Storage) に関係なく、そのフォルダー内のファイルの一覧を表示します。
 
     hdfs dfs -ls /example/data
 
-HDInsight では、データ ストレージ リソース (Azure Blob Storage と Azure Data Lake Store) は、コンピューティング リソースから切り離されています。 したがって、必要なコンピューティング処理を実行するために HDInsight クラスターを作成し、作業完了時にそのクラスターを削除できます。一方で、お使いのデータ ファイルは、必要なだけクラウド ストレージに安全に保持し続けることができます。
+HDInsight では、データ ストレージ リソース (Azure Blob Storage と Azure Data Lake Storage) は、コンピューティング リソースから切り離されています。 したがって、必要なコンピューティング処理を実行するために HDInsight クラスターを作成し、作業完了時にそのクラスターを削除できます。一方で、お使いのデータ ファイルは、必要なだけクラウド ストレージに安全に保持し続けることができます。
 
 ### <a name="uri-and-scheme"></a>URI およびスキーム
 
@@ -126,14 +126,14 @@ __Azure Storage__ を使用する場合は、次のいずれかの URI スキー
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`:既定以外のストレージ アカウントを使用して通信するときに使用します。 (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
 
-__Data Lake Store__ を使用する場合は、次のいずれかの URI スキームを使用します。
+__Data Lake Storage__ を使用する場合は、次のいずれかの URI スキームを使用します。
 
-* `adl:///`:クラスターの既定の Data Lake Store にアクセスします。
+* `adl:///`:クラスターの既定の Data Lake Storage にアクセスします。
 
-* `adl://<storage-name>.azuredatalakestore.net/`:既定以外の Data Lake Store を使用して通信するときに使用します。 HDInsight クラスターのルート ディレクトリ以外のデータにアクセスするときにも使用できます。
+* `adl://<storage-name>.azuredatalakestore.net/`:既定以外の Data Lake Storage と通信するときに使用します。 HDInsight クラスターのルート ディレクトリ以外のデータにアクセスするときにも使用できます。
 
-> [!IMPORTANT]
-> Data Lake Store を HDInsight の既定のストアとして使用する場合は、HDInsight のストレージのルートとして使用するためのパスをストア内に指定する必要があります。 既定のパスは `/clusters/<cluster-name>/` です。
+> [!IMPORTANT]  
+> Data Lake Storage を HDInsight の既定のストアとして使用する場合は、HDInsight のストレージのルートとして使用するストア内のパスを指定する必要があります。 既定のパスは `/clusters/<cluster-name>/` です。
 >
 > `/` または `adl:///` を使用してデータにアクセスすると、クラスターのルートに格納されているデータのみにアクセスできます (たとえば `/clusters/<cluster-name>/`)。 ストア内の任意の場所にあるデータにアクセスするには、`adl://<storage-name>.azuredatalakestore.net/` 形式を使用します。
 
@@ -152,7 +152,7 @@ Ambari を使用して、クラスターの既定のストレージ構成を取�
 
     アカウント名は Azure ストレージ アカウントの名前です。 コンテナー名はクラスター ストレージのルートである BLOB コンテナーです。
 
-* Azure Data Lake Store を使用している場合: `adl://home` Data Lake Store の名前を取得するには、次の REST 呼び出しを使用します。
+* Azure Data Lake Storage を使用している場合は `adl://home`。 Data Lake Storage の名前を取得するには、次の REST 呼び出しを使用します。
 
     ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
 
@@ -177,7 +177,7 @@ HDInsight クラスターの外部からデータにアクセスする方法は�
 __Azure Storage__ を使用している場合は、次のリンクを参照して、データにアクセスする方法を確認してください。
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2):Azure を操作するためのコマンド ライン インターフェイス コマンド。 インストール後、ストレージの使用方法については `az storage`、BLOB 特有のコマンドについては `az storage blob` をご覧ください。
-* [blobxfer.py](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage):Azure Storage で BLOB を使用するための Python スクリプト。
+* [blobxfer.py](https://github.com/Azure/blobxfer):Azure Storage で BLOB を使用するための Python スクリプト。
 * さまざまな SDK:
 
     * [Java](https://github.com/Azure/azure-sdk-for-java)
@@ -188,7 +188,7 @@ __Azure Storage__ を使用している場合は、次のリンクを参照し�
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [ストレージ REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-__Azure Data Lake Store__ を使用している場合は、次のリンクを参照して、データにアクセスする方法を確認してください。
+__Azure Data Lake Storage__ を使用している場合は、次のリンクを参照して、データにアクセスする方法を確認してください。
 
 * [Web ブラウザー](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
@@ -256,9 +256,9 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 
 一部の Hadoop 技術は自己完結型の jar ファイルで提供されます。このファイルには MapReduce ジョブの一環として、あるいは Pig または Hive 内から使用される関数が含まれています。 これらは多くの場合、セットアップを必要とせず、作成後にクラスターにアップロードして直接使用することができます。 クラスターの再イメージ化の後もコンポーネントが残っていることを確認するには、クラスターの既定のストレージ (WASB または ADL) に jar ファイルを保存します。
 
-たとえば、最新版の [DataFu](http://datafu.incubator.apache.org/)を使用する場合、プロジェクトを含む jar をダウンロードし、それを HDInsight クラスターにアップロードできます。 その後、Pig や Hive からそれを使用する方法については、DataFu のドキュメントに従います。
+たとえば、最新版の [Apache DataFu](https://datafu.incubator.apache.org/) を使用する場合、プロジェクトを含む jar をダウンロードし、それを HDInsight クラスターにアップロードできます。 その後、Pig や Hive からそれを使用する方法については、DataFu のドキュメントに従います。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > スタンドアロン jar ファイルである一部のコンポーネントは HDInsight で提供され、パスにはありません。 特定のコンポーネントを探している場合、次を利用し、クラスターでそれを検索できます。
 >
 > ```find / -name *componentname*.jar 2>/dev/null```
@@ -270,7 +270,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に[Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/) などのプロジェクト サイトもあります。
 
 ## <a name="next-steps"></a>次の手順
 

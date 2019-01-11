@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 01/02/2019
 ms.author: yushwang
-ms.openlocfilehash: a232ac111974444848aec82f3c7ab6236f82ac03
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 7545000e0dda959195d3669da877a77c5bedea40
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037101"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002061"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -30,6 +30,10 @@ ms.locfileid: "51037101"
 
 Windows PowerShell および Azure REST API を使用して複数のサイトに接続することができます。 詳細については、「 [マルチサイトと VNet 間接続](#V2VMulti) 」の FAQ を参照してください。
 
+### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>VPN ゲートウェイをアクティブ/アクティブとして設定する場合、追加のコストがかかりますか。
+
+いいえ。 
+
 ### <a name="what-are-my-cross-premises-connection-options"></a>クロスプレミス接続にはどのようなオプションがありますか。
 
 次のようなクロスプレミス接続がサポートされています。
@@ -38,7 +42,7 @@ Windows PowerShell および Azure REST API を使用して複数のサイトに
 * ポイント対サイト接続 – SSTP (Secure Socket トンネリング プロトコル) 経由での VPN 接続または IKE v2。 この接続では、VPN デバイスは不要です。 詳細については、[ポイント対サイト接続](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関するページを参照してください。
 * VNet 間接続 - この種類の接続は、サイト間構成の場合と同じです。 VNet 間接続では IPsec (IKE v1 および IKE v2) 経由で VPN 接続を確立します。 VPN デバイスは不要です。 詳細については、[VNet 間接続](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)に関するページを参照してください。
 * マルチサイト接続 - これはサイト間構成の一種で、複数のオンプレミス サイトから仮想ネットワークに接続するものです。 詳細については、[マルチサイト接続](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)に関するページを参照してください。
-* ExpressRoute 接続 - ExpressRoute 接続では、パブリックなインターネットを経由して VPN 接続するのではなく、WAN から Azure に直接接続します。 詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」および「[ExpressRoute の FAQ](../expressroute/expressroute-faqs.md)」をご覧ください。
+* ExpressRoute 接続 - ExpressRoute 接続は、パブリックなインターネットを経由した VPN 接続ではなく、WAN から Azure へのプライベート接続です。 詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」および「[ExpressRoute の FAQ](../expressroute/expressroute-faqs.md)」をご覧ください。
 
 VPN Gateway の接続の詳細については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」をご覧ください。
 

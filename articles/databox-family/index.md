@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: fcda4fba376fbe1f527d60aa5a27f7e7f0713e3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 09e0debba88ed87ab84b567e797d3ae63ec32a81
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977708"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157107"
 ---
 <h1>Azure Data Box</h1>
 <p>Azure Data Box ファミリには、信頼性が高く、迅速かつ安価な方法で数テラバイト (TB) のデータを Azure に送信できる、ストレージ容量が異なる製品が用意されています。 Microsoft は、オフラインまたはネットワーク経由のデータ転送を可能にする独自のストレージ デバイスをお客様に届けることで、安全なデータ転送を促進しています。</p>
@@ -35,7 +35,7 @@ ms.locfileid: "46977708"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Disk <SUP>プレビュー</SUP></b>: 40 TB 未満のデータ サイズに対応します。 データをコピーして返送するための、1 から 5 台の暗号化されたソリッドステート ドライブ (SSD) が Microsoft から発送されます。</p>
+                            <p><b>Data Box Disk</b>: 40 TB 未満のデータ サイズに対応します。 データをコピーして返送するための、1 から 5 台の暗号化されたソリッドステート ドライブ (SSD) が Microsoft から発送されます。</p>
                         </div>
                     </div>
                 </div>

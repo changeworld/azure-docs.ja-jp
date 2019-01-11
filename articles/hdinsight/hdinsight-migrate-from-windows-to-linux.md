@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: bcaf59e1d9b36dfbb17f1e0b8089cd88e626e2b9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ea808609add942c5cac36e7f0306e4a27ac3bb3a
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437131"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743648"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
 
@@ -119,7 +119,7 @@ Windows ベースの HDInsight はクラウドで Apache Hadoop を使用する�
 
 ### <a name="ssh-user"></a>SSH ユーザー
 
-Linux ベースの HDInsight クラスターでは **Secure Shell (SSH)** プロトコルを使用して、クラスター ノードにリモート アクセスできます。 Windows ベースのクラスターのリモート デスクトップとは異なり、ほとんどの SSH クライアントはグラフィカル ユーザー エクスペリエンスを提供しません。 代わりに、SSH クライアントは、クラスター上でコマンドを実行できるコマンド ラインを提供します。 一部のクライアント ([MobaXterm](http://mobaxterm.mobatek.net/)など) は、リモート コマンドラインに加え、グラフィカル ファイル システム ブラウザーを提供します。
+Linux ベースの HDInsight クラスターでは **Secure Shell (SSH)** プロトコルを使用して、クラスター ノードにリモート アクセスできます。 Windows ベースのクラスターのリモート デスクトップとは異なり、ほとんどの SSH クライアントはグラフィカル ユーザー エクスペリエンスを提供しません。 代わりに、SSH クライアントは、クラスター上でコマンドを実行できるコマンド ラインを提供します。 一部のクライアント ([MobaXterm](https://mobaxterm.mobatek.net/)など) は、リモート コマンドラインに加え、グラフィカル ファイル システム ブラウザーを提供します。
 
 クラスターの作成時に、SSH ユーザーと、認証用の**パスワード**または**公開キー証明書**を指定する必要があります。
 
@@ -199,7 +199,7 @@ Linux ベースの HDInsight では、リモート デスクトップ機能は�
 | `set hive.execution.engine=tez;` を使用して Tez を有効にします。 |Apache Tez は Linux ベースのクラスターの既定の実行エンジンであるため、set ステートメントは不要になります。 |
 | C# ユーザー定義関数 | Linux ベースの HDInsight での C# コンポーネントの検証の詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。 |
 | サーバーで、Hive ジョブの一部として呼び出される CMD ファイルまたはスクリプトを使用します。 |Bash スクリプトを使用します。 |
-| `hive` コマンドを使用します。 |[Beeline](hadoop/apache-hadoop-use-hive-beeline.md) または [SSH セッションから Apache Hive](hdinsight-hadoop-use-hive-ssh.md) を使用します |
+| `hive` コマンドを使用します。 |[Apache Hive Beeline](hadoop/apache-hadoop-use-hive-beeline.md) または [SSH セッションから Apache Hive](hdinsight-hadoop-use-hive-ssh.md) を使用します |
 
 ### <a name="pig"></a>Pig
 
@@ -220,7 +220,7 @@ Linux ベースの HDInsight では、リモート デスクトップ機能は�
 > [!IMPORTANT]  
 > 外部の Oozie メタストアを使用する場合は、Linux ベースの HDInsight で使用する前にメタストアをバックアップする必要があります。 Linux ベースの HDInsight は、新しいバージョンの Oozie で利用できますが、以前のバージョンで作成されたメタストアと互換性がない場合があります。
 
-Oozie ワークフローでは、シェルの操作が可能です。 シェルの操作では、オペレーティング システムの既定のシェルを使用して、コマンド ライン コマンドを実行します。 Windows シェルを使用する Oozie ワークフローがある場合は、Linux シェル環境 (Bash) を使用するワークフローを書き換える必要があります。 Oozie でのシェルの操作の使用の詳細については、「[Oozie shell action extension](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html)」 (Oozie シェル操作の拡張) を参照してください。
+Oozie ワークフローでは、シェルの操作が可能です。 シェルの操作では、オペレーティング システムの既定のシェルを使用して、コマンド ライン コマンドを実行します。 Windows シェルを使用する Oozie ワークフローがある場合は、Linux シェル環境 (Bash) を使用するワークフローを書き換える必要があります。 Oozie でのシェルの操作の使用の詳細については、「[Oozie shell action extension](https://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html)」 (Oozie シェル操作の拡張) を参照してください。
 
 C# アプリケーションを使用するワークフローを使用している場合は、Linux 環境でこれらのアプリケーションを検証します。 詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。
 

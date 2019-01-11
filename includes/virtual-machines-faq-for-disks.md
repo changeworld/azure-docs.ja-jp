@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a5f1e728f7a13f763367abc3f380fb9fbdb67b5c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 5835e8275bedebaca01d585a992930d6856edfd7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326578"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53553370"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium 管理ディスクおよび非管理ディスクについてよく寄せられる質問
 
@@ -189,7 +189,7 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 ## <a name="migrate-to-managed-disks"></a>マネージド ディスクに移行する
 
-**Managed Disks のパフォーマンスに移行の影響はありますか?
+**Managed Disks のパフォーマンスに移行の影響はありますか?**
 
 移行には、保存場所間のディスクの移動が伴います。 これはデータのバックグラウンド コピーによって調整されますが、バックグラウンド コピーは完了までに数時間かかることがあります (ディスク内のデータの量にもよりますが、通常は 24 時間以内)。 この間、お使いのアプリケーションで読み取り時の待ち時間が通常よりも長くなる可能性があります。一部の読み取りが元の場所にリダイレクトされ、完了までに通常よりも時間がかかる場合があるためです。 この期間中、書き込みの待ち時間への影響はありません。  
 

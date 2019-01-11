@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: andrl
 ms.custom: seodec18
-ms.openlocfilehash: 0197c11673f49214dc2cea09b53290993a00c6b3
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: a6781c3a94789b26beb85a9a3df3166ec47622bb
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744940"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041579"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>NoSQL データベースのドキュメント データのモデル化
 

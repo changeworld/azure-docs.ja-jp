@@ -9,32 +9,32 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 97d99aa59c490cf2dcdd4a69f32411a051942d36
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 947abea50685b04c3500a13a950375c32547efaf
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037806"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652967"
 ---
 # <a name="install-published-application---datameer"></a>発行済みアプリケーションのインストール - Datameer
 
-この記事では、[Datameer](https://www.datameer.com/) の発行済み Apache Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
+この記事では、[Datameer](https://www.datameer.com/) によって発行された [Apache Hadoop](https://hadoop.apache.org/) アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要、および独立系ソフトウェア ベンダー (ISV) によって発行された使用可能なアプリケーションの一覧については、[サードパーティ Apache Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
 
 ## <a name="about-datameer"></a>Datameer について
 
-Datameer は Hadoop プラットフォーム向けのネイティブ アプリケーションであり、Azure HDInsight の既存の機能を拡張すると共に、構造化データと非構造化データの迅速な統合、準備、分析を可能にします。 Datameer がアクセスできるソースと形式 (構造化、半構造化、非構造化) は 70 を超えています。 データを直接アップロードすることも、固有のデータ リンクを使用して必要に応じてデータをプルすることもできます。 Datameer のセルフサービス機能と使い慣れたスプレッドシート インターフェイスにより、ビッグ データ テクノロジの複雑さが低減され、洞察を得られるまでの時間が短くなります。 このスプレッドシート インターフェイスは、最適化された Hadoop ジョブに変換される宣言型の式を入力するための簡単なメカニズムを備えています。 Datameer に加えて、ビジネス インテリジェンス (BI) と Excel に関するスキルがあれば、Hadoop をクラウドですばやく使用できます。 詳細については、[Datameer のドキュメント](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft)を参照してください。
+Datameer は Hadoop プラットフォーム向けのネイティブ アプリケーションであり、Azure HDInsight の既存の機能を拡張すると共に、構造化データと非構造化データの迅速な統合、準備、分析を可能にします。 Datameer がアクセスできるソースと形式 (構造化、半構造化、非構造化) は 70 を超えています。 データを直接アップロードすることも、固有のデータ リンクを使用して必要に応じてデータをプルすることもできます。 Datameer のセルフサービス機能と使い慣れたスプレッドシート インターフェイスにより、ビッグ データ テクノロジの複雑さが低減され、洞察を得られるまでの時間が短くなります。 このスプレッドシート インターフェイスは、最適化された Hadoop ジョブに変換される宣言型の式を入力するための簡単なメカニズムを備えています。 Datameer に加えて、ビジネス インテリジェンス (BI) と Excel に関するスキルがあれば、Hadoop をクラウドですばやく使用できます。 詳細については、[Datameer のドキュメント](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 新しい HDInsight クラスター (または既存のクラスター) にこのアプリをインストールするには、次の構成が必要です。
 
-* クラスター レベル: Standard
+* クラスター レベル: 標準
 * クラスターの種類: Hadoop
 * クラスターのバージョン: 3.4
 
 ## <a name="install-the-datameer-published-application"></a>Datameer の発行済みアプリケーションのインストール
 
-このアプリケーションと利用可能な他の ISV アプリケーションをインストールする詳細な手順については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。
+このアプリケーションやその他の使用可能な ISV アプリケーションをインストールするための詳細な手順については、[サードパーティ Apache Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。
 
 ## <a name="launch-datameer"></a>Datameer の起動
 
@@ -106,9 +106,9 @@ Datameer は Hadoop プラットフォーム向けのネイティブ アプリ�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Datameer のドキュメント](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft)。
-* [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): 未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
-* [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について確認します。
-* [MSDN: HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションを定義する方法について確認します。
-* [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
-* [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスターへのアクセスのほか、HDInsight アプリケーションのテストとホストに空のエッジ ノードを使用する方法を確認します。
+* [Datameer のドキュメント](https://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft)。
+* [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): 発行されていない HDInsight アプリケーションを HDInsight にデプロイする方法を学習します。
+* [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法を学習します。
+* [MSDN: HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションを定義する方法を学習します。
+* [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用して追加のアプリケーションをインストールする方法を学習します。
+* [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスターにアクセスしたり、HDInsight アプリケーションをテストおよびホストしたりするために空のエッジ ノードを使用する方法を学習します。

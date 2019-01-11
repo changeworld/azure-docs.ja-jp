@@ -9,24 +9,24 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: maxluk
-ms.openlocfilehash: ff7cfcd56158bd38d031a29a21247fb9eb6b91f9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 621d41c5c9558b5cb17d2a1e5a03d68f8af0df19
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289072"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600643"
 ---
-# <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
+# <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
-Azure Toolkit for IntelliJ プラグインを使用して Scala で記述された Spark アプリケーションを開発し、IntelliJ 統合開発環境 (IDE) から直接、HDInsight Spark クラスターに送信します。 このプラグインには、次のような使い方があります。
+Azure Toolkit for IntelliJ プラグインを使用して [Scala](https://www.scala-lang.org/) で記述された [Apache Spark](https://spark.apache.org/) アプリケーションを開発してから、それを IntelliJ 統合開発環境 (IDE) から直接 HDInsight Spark クラスターに送信します。 このプラグインには、次のような使い方があります。
 
 * Scala Spark アプリケーションを開発して HDInsight Spark クラスターに送信する。
 * Azure HDInsight Spark クラスター リソースにアクセスする。
 * Scala Spark アプリケーションをローカルで開発して実行する。
 
-プロジェクトの作成方法については、[Azure Toolkit for IntelliJ を使用した Spark アプリケーションの作成](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)に関するビデオをご覧ください。
+プロジェクトを作成するには、[Azure Toolkit for IntelliJ を使用した Apache Spark アプリケーションの作成](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)に関するビデオを見てください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このプラグインを使用して、Linux 上で HDInsight Spark クラスター専用のアプリケーションを作成し、送信することができます。
 > 
 
@@ -68,7 +68,7 @@ Azure Toolkit for IntelliJ プラグインを使用して Scala で記述され�
     ![展開されたクラスター名ノード](./media/apache-spark-intellij-tool-plugin/view-explorer-4.png)
 
 ## <a name="link-a-cluster"></a>クラスターのリンク
-Ambari マネージド ユーザー名を使用して、通常の HDInsight クラスターをリンクすることができます。 同様に、ドメイン参加済み HDInsight クラスターでは、user1@contoso.com などのドメインとユーザー名を使用して、リンクできます。 Livy Service クラスターをリンクすることもできます。
+Apache Ambari マネージド ユーザー名を使用して、通常の HDInsight クラスターをリンクできます。 同様に、ドメイン参加済み HDInsight クラスターでは、user1@contoso.com などのドメインとユーザー名を使用して、リンクできます。 Livy Service クラスターをリンクすることもできます。
 
 1. **Azure Explorer** の **[Link a cluster]\(クラスターのリンク\)** を選択します。
 
@@ -180,22 +180,22 @@ Scala アプリケーションを作成した後に、クラスターに送信�
 
     * IntelliJ プロジェクトまたはハード ドライブからアーティファクトを選択します。
 
-    * **[Main class name]\(メイン クラス名\)** フィールド: 既定値は選択したファイルのメイン クラスです。 省略記号 (**...**) を選択して別のクラスを選ぶことにより、クラスを変更できます。   
+    * **[Main class name] (メイン クラス名)** フィールド: 既定値は、選択されたファイルのメイン クラスです。 省略記号 (**...**) を選択して別のクラスを選ぶことにより、クラスを変更できます。   
 
-    * **[Job Configurations]\(ジョブ構成\)** フィールド: 既定値は上記の画像のように設定されます。 ご自分のジョブの送信の値を変更したり、新しいキー/値を追加したりすることができます。 詳細については、[Apache Livy の REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) に関するページを参照してください。
+    * **[Job Configurations] (ジョブ構成)** フィールド: 既定値は、上に示されている図のように設定されます。 ご自分のジョブの送信の値を変更したり、新しいキー/値を追加したりすることができます。 詳細:[Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html)
 
       ![[Spark Submission]\(Spark 送信\) ダイアログ ボックスのジョブ構成の意味](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
 
-    * **[コマンド ライン引数]** フィールド: 必要に応じて、メイン クラスにスペースで分割して引数の値を入力できます。
+    * **[コマンド ライン引数]** フィールド: 必要に応じて、メイン クラスへのスペースで区切られた引数の値を入力できます。
 
-    * **[Referenced Jars]\(参照される JAR\)** と **[Referenced Files]\(参照ファイル\)** フィールド: 存在する場合は、参照されている Jar およびファイルのパスを入力できます。 詳細については、[Spark の構成](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)に関するページを参照してください。 
+    * **[Referenced Jars] (参照される JAR)** および **[Referenced Files] (参照されるファイル)** フィールド: 参照される JAR およびファイルのパスを入力できます (存在する場合)。 詳細:[Apache Spark の構成](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) 
 
       ![[Spark Submission]\(Spark 送信\) ダイアログ ボックスの jar ファイルの意味](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
 
-       > [!NOTE]
-       > ご自分の参照される Jar と参照ファイルをアップロードするには、[リソースをクラスターにアップロードする方法](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)に関するページを参照してください。
+       > [!NOTE]  
+       > 参照される JAR および参照されるファイルをアップロードするには、[リソースをクラスターにアップロードする方法](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)に関するページを参照してください。
                          
-    * **[アップロード パス]**: Jar または Scala プロジェクト リソースの送信用の保存先を指定できます。 サポートされるストレージのタイプは、**[Azure BLOB]**、**[Use Spark interactive session to upload artifacts]\(Spark 対話型セッションを使用して成果物をアップロードする\)**、**[Use cluster default storage account]\(クラスターの既定のストレージ アカウントを使用する\)**、および **[ADLS Gen1]\(ADSL 第 1 世代\)** です。 次のスクリーンショットは、Azure BLOB の例です。
+    * **[アップロード パス]**: Jar または Scala プロジェクト リソースの送信用の保存先を示すことができます。 サポートされているのは、**[Azure BLOB]**、**[Use Spark interactive session to upload artifacts] (Spark 対話型セッションを使用して成果物をアップロードする)**、**[Use cluster default storage account] (クラスターの既定のストレージ アカウントを使用する)** の 3 つのストレージの種類と **[ADLS Gen1]** です。 次のスクリーンショットは、Azure BLOB の例です。
 
         ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-types.png)
 
@@ -206,8 +206,8 @@ Scala アプリケーションを作成した後に、クラスターに送信�
      ![[Spark Submission]\(Spark 送信\) ウィンドウ](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
 
-## <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>HDInsight クラスターのローカルまたはリモートで Spark アプリケーションをデバッグする 
-クラスターに Spark アプリケーションを送信するお勧めの方法はほかにもあります。 それは、**実行/デバッグ構成**の IDE でパラメーターを設定する方法です。 詳細については、「[ローカルまたはリモートから SSH 経由で Azure Toolkit for IntelliJ を使用して HDInsight クラスター上の Spark アプリケーションをデバッグする](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh)」を参照してください。
+## <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>HDInsight クラスターで Apache Spark アプリケーションをローカルまたはリモートでデバッグする 
+クラスターに Spark アプリケーションを送信するお勧めの方法はほかにもあります。 それは、**実行/デバッグ構成**の IDE でパラメーターを設定する方法です。 詳細については、[Azure Toolkit for IntelliJ を使用して SSH 経由で HDInsight クラスターで Apache Spark アプリケーションをローカルまたはリモートでデバッグする方法](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh)に関するページを参照してください。
 
 
 
@@ -222,8 +222,6 @@ Azure Toolkit for IntelliJ を使用してさまざまな操作を実行でき�
 1. 右側のウィンドウの **[Spark Job View (Spark ジョブ ビュー)]** タブに、クラスター上で実行されていたすべてのアプリケーションが表示されます。 詳細情報を確認したいアプリケーションの名前を選択します。
 
     ![Application details](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
-    >Note
-    >
 
 1. 実行中のジョブの基本情報が表示するには、ジョブ グラフにマウス ポインターを合わせます。 各ジョブについて生成されるステージのグラフと情報を確認するには、ジョブ グラフ上のノードを選択します。
 
@@ -349,29 +347,29 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 ご提案やフィードバックがある場合、またはこのプラグインを使用していて問題が発生した場合は、hdivstool@microsoft.com に電子メールをお送りください。
 
 ## <a name="seealso"></a>次のステップ
-* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="demo"></a>デモ
-* Scala プロジェクトの作成 (ビデオ): [Spark Scala アプリケーションの作成](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* リモート デバッグ (ビデオ): [Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で Spark アプリケーションをリモートでデバッグする](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Scala プロジェクトを作成する (ビデオ): [Apache Spark Scala アプリケーションを作成する](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* リモート デバッグ (ビデオ): [Azure Toolkit for IntelliJ を使用して HDInsight クラスターで Apache Spark アプリケーションをリモートでデバッグする](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>シナリオ
-* [Spark と BI: HDInsight で BI ツールと Spark を使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
-* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>アプリケーションの作成と実行
 * [Scala を使用してスタンドアロン アプリケーションを作成する](apache-spark-create-standalone-application.md)
-* [Livy を使用して Spark クラスターでジョブをリモートで実行する](apache-spark-livy-rest-interface.md)
+* [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
-* [Azure Toolkit for IntelliJ を使用して VPN を介して Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Azure Toolkit for IntelliJ を使用して SSH を介して Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Azure Toolkit for IntelliJ を使用して VPN 経由で Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Azure Toolkit for IntelliJ を使用して SSH 経由で Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Azure Toolkit for Eclipse の HDInsight ツールを使用して Spark アプリケーションを作成する](apache-spark-eclipse-tool-plugin.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
-* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
+* [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](apache-spark-eclipse-tool-plugin.md)
+* [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
+* [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](apache-spark-jupyter-notebook-install-locally.md)
 

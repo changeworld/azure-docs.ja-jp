@@ -146,13 +146,13 @@ items:
       href: https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index
     - name: シノニム
       href: search-synonyms.md
-  - name: データのインデックス付け
+  - name: データの読み込みと更新
     items:
-    - name: データを読み込む
+    - name: データ インポートの概要
       href: search-what-is-data-import.md
     - name: インデックスを再構築する
       href: search-howto-reindex.md
-    - name: インポート ウィザード (ポータル)
+    - name: データのインポート (ポータル)
       href: search-import-data-portal.md
     - name: 大規模なデータ セットにインデックスを付ける
       href: search-howto-large-index.md
@@ -287,9 +287,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: d6b670b1302ec4363ebdf1853ae93677268724f7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0c2239acc50e845224a647ba968bccccdf6b3697
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121279"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191804"

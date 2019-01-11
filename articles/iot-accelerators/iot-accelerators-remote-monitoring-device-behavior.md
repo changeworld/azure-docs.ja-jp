@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 70f9ccbbe737bad4d6f88365e804d4421c418d28
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: edd5da35d33aa7e79fc3e972f3ea1cfe2ef40973
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164009"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631415"
 ---
 # <a name="implement-the-device-model-behavior"></a>デバイス モデルの動作の実装
 
@@ -21,6 +21,9 @@ ms.locfileid: "53164009"
 
 - **状態**: デバイスの内部状態を更新するために一定の間隔で実行される JavaScript ファイル。
 - **メソッド**: ソリューションがデバイスに対するメソッドを呼び出したときに実行される JavaScript ファイル。
+
+> [!NOTE]
+> デバイス モデルの動作は、デバイス シミュレーション サービスでホストされているシミュレートされたデバイスに対してのみ有効です。 物理デバイスを作成する場合は、「[デバイスをリモート監視ソリューション アクセラレータに接続する](iot-accelerators-connecting-devices.md)」を参照してください。
 
 この記事では、次のことについて説明します。
 

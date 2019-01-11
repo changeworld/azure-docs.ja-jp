@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 501fe1d2da89b6968f5a3619fc8e02b01b1abd7a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 279f029dee9e49985805a383fb4fefb82a4f4ebd
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263437"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038332"
 ---
 # <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でスループット コストを最適化する
 
@@ -56,7 +56,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 |API|**共有**スループットの場合の構成対象 |**専用**スループットの場合の構成対象 |
 |----|----|----|
 |SQL API|Database|コンテナー|
-|MongoDB API|Database|コレクション|
+|Azure Cosmos DB の MongoDB 用 API|Database|コレクション|
 |Cassandra API|キースペース|テーブル|
 |Gremlin API|データベース アカウント|Graph|
 |テーブル API|データベース アカウント|テーブル|
@@ -177,12 +177,12 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 ## <a name="next-steps"></a>次の手順
 
-次は、Azure Cosmos DB でのコストの最適化について、以下の記事で詳しくご確認ください。
+次は、先に進み、以下の各記事で Azure Cosmos DB でのコストの最適化の詳細について学習することができます。
 
-* [開発とテストのための最適化](optimize-dev-test.md)について確認する
+* [開発とテストのための最適化](optimize-dev-test.md)の詳細について学習します
 * [Azure Cosmos DB の請求書を理解する方法](understand-your-bill.md)について確認する
 * [ストレージ コストの最適化](optimize-cost-storage.md)について確認する
-* [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)について確認する
-* [クエリのコストの最適化](optimize-cost-queries.md)について確認する
-* [複数リージョンの Azure Cosmos アカウント コストの最適化](optimize-cost-regions.md)について確認する
+* [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
+* [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
+* [複数リージョンの Azure Cosmos アカウント コストの最適化](optimize-cost-regions.md)の詳細について学習します
 

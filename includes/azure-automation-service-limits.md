@@ -5,16 +5,18 @@ services: automation
 author: georgewallace
 ms.service: automation
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 70cdd5a9d0482c24dfeb2037ae56b86cd9339fcf
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f3ae2289112948dea7d2649c4fad6b1cafb3804b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285778"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444226"
 ---
+#### <a name="process-automation"></a>プロセスの自動化
+
 | リソース | 上限 |メモ|
 | --- | --- |---|
 | Automation アカウントあたりの 30 秒ごとに送信できる新しいジョブの最大数 (スケジュールされていないジョブ) |100 |この制限に到達すると、次のジョブ作成要求は失敗します。 クライアントにエラー応答が届きます。|
@@ -33,5 +35,19 @@ ms.locfileid: "51285778"
 | Runbook の最大パラメーター   | 50|パラメーターに JSON または XML 文字列を渡し、パラメーターの 50 の上限に達したら、Runbook を使用して解析することができます。|
 | Webhook のペイロードの最大サイズ |  512 KB|
 | ジョブ データが保持される最大日数|30 日|
+| PowerShell ワークフローの最大状態サイズ |5 MB| ワークフローのチェックポイント処理を行うときに PowerShell ワークフロー Runbook に適用されます。|
 
 **<sup>1</sup>** サンドボックスは、複数のジョブで利用できる共有環境です。同じサンドボックスを利用するジョブには、そのサンドボックスのリソース制限が適用されます。
+
+#### <a name="change-tracking-and-inventory"></a>変更履歴とインベントリ
+
+次の表は、Change Tracking でのマシンごとの追跡項目制限を示します。
+
+| **リソース** | **制限**| **メモ** |
+|---|---|---|
+|ファイル|500||
+|レジストリ|250||
+|Windows ソフトウェア|250|ソフトウェア更新プログラムは含まれません|
+|Linux パッケージ|1250||
+|サービス|250||
+|デーモン|250||

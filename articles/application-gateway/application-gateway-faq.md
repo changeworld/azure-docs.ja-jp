@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: 0187ef3d3b6853c1d1225fc9f208f2508372978d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9cb14e5076379e5095ca88dc749a954e9e5d5aa4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425729"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994860"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -49,7 +49,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>現在、バックエンド プールの一部としてどのようなリソースがサポートされますか?
 
-バックエンド プールは、NIC、仮想マシン スケール セット、パブリック IP、内部 IP、完全修飾ドメイン名 (FQDN)、および Azure Web Apps などのマルチテナント バックエンドで構成できます。 Application Gateway のバックエンド プールのメンバーは、可用性セットに関連付けられていません。 バックエンド プールのメンバーは、IP 接続されている限り、クラスターおよびデータ センター間、または Azure の外部に配置できます。
+バックエンド プールは、NIC、仮想マシン スケール セット、パブリック IP、内部 IP、完全修飾ドメイン名 (FQDN)、および Azure App Service などのマルチテナント バックエンドで構成できます。 Application Gateway のバックエンド プールのメンバーは、可用性セットに関連付けられていません。 バックエンド プールのメンバーは、IP 接続されている限り、クラスターおよびデータ センター間、または Azure の外部に配置できます。
 
 ### <a name="what-regions-is-the-service-available-in"></a>このサービスは、どのリージョンで利用できますか?
 
@@ -88,9 +88,11 @@ Application Gateway は、お客様の仮想ネットワーク専用のデプロ
 Application Gateway は、インスタンスごとに 1 つのプライベート IP アドレスを使用します。さらに、プライベート フロントエンド IP 構成を使用している場合は、もう 1 つのプライベート IP アドレスを使用します。 また、Azure は、内部使用のために、各サブネットの最初の 4 個の IP アドレスと最後の IP アドレスを予約しています。
 たとえば、アプリケーション ゲートウェイが 3 つのインスタンスに設定され、プライベート フロントエンド IP が設定されていない場合は、/29 サブネット サイズ以上が必要です。 この場合、アプリケーション ゲートウェイは 3 つの IP アドレスを使用します。 プライベート フロントエンド IP 構成用に 3 つのインスタンスと 1 つの IP アドレスがある場合は、4 つの IP アドレスが必要なため、/28 サブネット以上のサイズが必要です。
 
-### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>Q. 1 つのサブネットに複数の Application Gateway リソースをデプロイできますか?**
+### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>Q. 1 つのサブネットに複数の Application Gateway リソースをデプロイできますか?
 
 はい、特定の Application Gateway の複数のインスタンスのデプロイに加え、別の Application Gateway リソースを含む既存のサブネットに別の一意の Application Gateway リソースをプロビジョニングできます。
+
+同じサブネット上の Standard_v2 と Standard Application Gateway の混在はサポートされていません。 さらに、自動スケールを有効にすると、1 つのサブネットには 1 つのアプリケーション ゲートウェイだけが存在できます。
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Application Gateway は x-forwarded-for ヘッダーをサポートしますか?
 
@@ -103,6 +105,8 @@ Application Gateway は、要求が到達した元の Host ヘッダーを含む
 新しい Application Gateway v1 SKU のデプロイでは、プロビジョニングに最大 20 分かかります。 インスタンス サイズ/数の変更は中断を伴わず、ゲートウェイはこの時間にはアクティブなままです。
 
 V2 SKU のデプロイは、プロビジョニングに約 5 分から 6 分かかります。
+
+Application Gateway は x-forwarded-for ヘッダーをサポートしますか?
 
 ## <a name="configuration"></a>構成
 
@@ -184,7 +188,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 いいえ、これはサポートされていません。
 
-## <a name="performance"></a>[パフォーマンス]
+## <a name="performance"></a>パフォーマンス
 
 ### <a name="how-does-application-gateway-support-high-availability-and-scalability"></a>Application Gateway は高可用性とスケーラビリティをどのようにサポートしますか?
 
@@ -210,7 +214,7 @@ v2 SKU では、新しいインスタンスが障害ドメインと更新ドメ�
 
 ### <a name="what-are-application-gateway-sizes"></a>Application Gateway のサイズは何ですか?
 
-現在、Application Gateway は **Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
+現在、Application Gateway は、**Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
 
 アプリケーション ゲートウェイの制限の詳細な一覧については、[Application Gateway サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)に関するページをご覧ください。
 
@@ -316,9 +320,9 @@ WAF は診断ログを通じて監視されます。診断ログについて詳�
 
 いいえ。検出モードは、WAF ルールをトリガーしたトラフィックをログに記録するだけです。
 
-### <a name="how-do-i-customize-waf-rules"></a>WAF ルールをカスタマイズするにはどうすればよいですか?
+### <a name="can-i-customize-waf-rules"></a>WAF ルールはカスタマイズできますか?
 
-はい。WAF ルールはカスタマイズできます。カスタマイズ方法について詳しくは、[WAF ルール グループとルールのカスタマイズ](application-gateway-customize-waf-rules-portal.md)に関するページを参照してください。
+はい、WAF ルールはカスタマイズできます。 詳しくは、[WAF ルール グループとルールのカスタマイズ](application-gateway-customize-waf-rules-portal.md)に関するページをご覧ください
 
 ### <a name="what-rules-are-currently-available"></a>現在使用できるのはどのようなルールですか?
 

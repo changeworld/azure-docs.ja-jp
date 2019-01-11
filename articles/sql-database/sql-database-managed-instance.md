@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 57dd6fc822e0285b33368987d2af7c690d4f7786
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2807e989436aa80fa812b337340db8cb534b2b28
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337820"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994761"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>SQL Database Managed Instance の仮想ネットワークでの使用と 100% に近い互換性
 
@@ -30,7 +30,7 @@ Azure SQL Database Managed Instance は、Azure SQL Database の新しいデプ�
 
 ![主な機能](./media/sql-database-managed-instance/key-features.png)
 
-Azure SQL Database Managed Instance は、多数のアプリをオンプレミスまたは IaaS、自作、あるいは ISV 提供の環境から完全なマネージド PaaS クラウド環境に、できるだけ手間をかけずに移行しようとしているユーザー用に設計されています。 Azure で完全に自動化された[データ移行サービス (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) を使用することにより、顧客はオンプレミスの SQL Server をマネージド インスタンスに移行 (リフト アンド シフト) することができます。この場合、VNet のネイティブ サポートにより、SQL Server オンプレミスとの互換性の維持、顧客のインスタンスの完全な分離が実現されます。  ソフトウェア アシュアランスに基づき、SQL Database マネージド インスタンスでは [SQL Server 用の Azure ハイブリッド特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を利用して、顧客の既存のライセンスを割引料金のライセンスに交換することができます。  高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、SQL Database Managed Instance はクラウド内の最適な移行先です。
+Azure SQL Database Managed Instance は、多数のアプリをオンプレミスまたは IaaS、自作、あるいは ISV 提供の環境から完全なマネージド PaaS クラウド環境に、できるだけ手間をかけずに移行しようとしているユーザー用に設計されています。 Azure で完全に自動化された[データ移行サービス (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) を使用することにより、顧客はオンプレミスの SQL Server をマネージド インスタンスに移行 (リフト アンド シフト) することができます。この場合、VNet のネイティブ サポートにより、SQL Server オンプレミスとの互換性の維持、顧客のインスタンスの完全な分離が実現されます。  ソフトウェア アシュアランスに基づき、SQL Database マネージド インスタンスでは [SQL Server 用の Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用して、顧客の既存のライセンスを割引料金のライセンスに交換することができます。  高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、SQL Database Managed Instance はクラウド内の最適な移行先です。
 
 マネージド インスタンスでは一般提供までに段階的リリース計画に基づいて、最新のオンプレミスの SQL Server バージョンとの 100% 近いセキュリティ、外部からのアクセス互換性を実現することを目的としています。
 
@@ -70,7 +70,7 @@ Azure SQL Database Managed Instance は、Azure SQL Database と SQL Server Data
 
 ## <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
 
-マネージド インスタンスにおける[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)では、柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージを変更できます。 また、仮想コア モデルは [SQL Server 用の Azure ハイブリッド特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)による最大 30% の割引の対象となります。
+マネージド インスタンスにおける[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)では、柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージを変更できます。 また、仮想コア モデルは [SQL Server 用の Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)による最大 30% の割引の対象となります。
 
 仮想コア モデルでは、ハードウェアの世代を選択できます。
 
@@ -146,7 +146,7 @@ Azure SQL Database は、データを保護するために使用できる一連�
 - [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)を使用して、クエリを実行しているユーザーの特性 (グループのメンバーシップや実行コンテキストなど) に基づいて、データベース テーブル内の行へのアクセスを制御できます。 行レベルのセキュリティ (RLS) により、アプリケーションでのセキュリティの設計やコーディングが簡略化されます。 RLS を使用すると、データ行のアクセスに対して制限を実装できます。 たとえば、ワーカーが自分の部署に関連するデータ行にのみアクセスできるようにしたり、データ アクセスを関連するデータにのみ制限したりできます。
 - [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) は、Azure SQL Database Managed Instance データ ファイルを暗号化します。これは、保存データの暗号化として知られています。 TDE は、データとログ ファイルの I/O 暗号化と複合化をリアルタイムで実行します。 暗号化は、復旧中に、可用性のためのデータベース ブート レコードに格納されるデータベース暗号化キー (DEK) を使用します。 透過的なデータ暗号化でマネージド インスタンス内のすべてのデータベースを保護することができます。 TDE は、記憶域メディアの盗難を防ぐために多くのコンプライアンス基準で必要とされている、SQL Server の実証済みの保存データの暗号化テクノロジです。
 
-Azure Database Migration Service (DMS) またはネイティブの復元を使用して、SQL Managed Instance への暗号化されたデータベースの移行がサポートされています。 ネイティブの復元を使用して暗号化されたデータベースを移行する場合は、オンプレミスの SQL Server または SQL Server VM からマネージド インスタンスへの、既存の TDE 証明書の移行が必要です。 移行オプションの詳細については、「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](sql-database-managed-instance-migrate.md)」を参照してください。
+Azure Database Migration Service (DMS) またはネイティブの復元を使用して、SQL Managed Instance への暗号化されたデータベースの移行がサポートされています。 ネイティブ復元を使用して暗号化されたデータベースを移行する予定がある場合は、既存の TDE 証明書をオンプレミスの SQL Server または SQL Server VM からマネージド インスタンスに移行する手順が必要です。 移行オプションの詳細については、「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](sql-database-managed-instance-migrate.md)」を参照してください。
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory の統合
 

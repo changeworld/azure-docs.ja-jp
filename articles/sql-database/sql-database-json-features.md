@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database の JSON 機能 | Microsoft Docs
+title: Azure SQL Database での JSON データの使用 | Microsoft Docs
 description: Azure SQL Database では、JavaScript Object Notation (JSON) 表記法でデータを解析、照会および書式設定できます。
 services: sql-database
 ms.service: sql-database
@@ -11,27 +11,20 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: c3f1cb7499be57be94cc387eb40d37c1710f2f75
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/17/2018
+ms.openlocfilehash: bc4e27f45b905e00c1c809a781a5cf034a0da8ca
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230531"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543807"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL Database の JSON 機能の概要
-Azure SQL Database では、JavaScript Object Notation [(JSON)](http://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。
-
-JSON は、最新の Web およびモバイル アプリケーションのデータを交換するために使用される一般的なデータ形式です。 また、JSON は、ログ ファイルや [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) のような NoSQL データベースに半構造化データを格納するためにも使用されます。 多くの REST Web サービスは、JSON テキストとして書式設定された結果を返したり、JSON 形式のデータを受け入れたりします。 [Azure Search](https://azure.microsoft.com/services/search/)、[Azure Storage](https://azure.microsoft.com/services/storage/)、および [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) などの多くの Azure サービスには、JSON を返したり、使用したりする REST エンドポイントがあります。
-
-Azure SQL Database では、JSON データを簡単に操作し、データベースを最新のサービスと統合することができます。
-
-## <a name="overview"></a>概要
-Azure SQL Database には、JSON データを操作するために、次の関数が用意されています。
-
-![JSON 関数](./media/sql-database-json-features/image_1.png)
-
-JSON テキストがある場合、組み込み関数 [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx)、[JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)、および [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx) を使用して、JSON からデータを抽出したり、JSON が適切に書式設定されていることを確認したりすることができます。 [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) 関数では、JSON テキスト内の値を更新することができます。 高度なクエリと分析には、 [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) 関数を使用して、JSON オブジェクトの配列を行セットに変換できます。 すべての SQL クエリを返された結果セットで実行することができます。 最後に、JSON テキストとしてリレーショナル テーブルに格納されたデータを書式設定できる、 [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) 句があります。
+Azure SQL Database では、JavaScript Object Notation [(JSON)](http://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。 Azure SQL Database では次の JSON のシナリオを使用できます。
+- `FOR JSON` 句を使用した [JSON 形式でのリレーショナル データの書式設定](#formatting-relational-data-in-json-format)。
+- [JSON データの使用](#working-with-json-data)
+- JSON スカラー関数を使用した [JSON データのクエリの実行](#querying-json-data)。
+- `OPENJSON` 関数を使用した[表形式への JSON の変換](#transforming-json-into-tabular-format)。
 
 ## <a name="formatting-relational-data-in-json-format"></a>JSON 形式でのリレーショナル データの書式設定
 データベース層からデータを取得し、JSON 形式で応答を提供する Web サービスがある場合、またはクライアント側の JavaScript フレームワークまたはライブラリが JSON 形式のデータを受け入れる場合、SQL クエリに直接 JSON としてデータベースの内容を書式設定することができます。 Azure SQL Database からの結果を JSON 形式にするように、アプリケーション コードを書き込んだり、表形式のクエリの結果に変換して、オブジェクトを JSON 形式にシリアル化するために JSON シリアル化ライブラリを含めたりする必要がなくなりました。 代わりに、FOR JSON 句を使用して、SQL クエリの結果を Azure SQL Database で JSON として書式設定し、アプリケーションで直接これを使用できます。
@@ -79,7 +72,7 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 
 この例では、[WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) オプションを指定することで、配列ではなく、1 つの JSON オブジェクトを返しています。 クエリの結果として 1 つのオブジェクトを返すことがわかっている場合は、このオプションを使用することができます。
 
-FOR JSON 句の主な値を使用すると、入れ子になった JSON オブジェクトまたは配列として書式設定されたデータベースから複雑な階層データを返すことができます。 次の例では、Orders の入れ子になった配列として、Customer に属する Orders を含める方法を示します。
+FOR JSON 句の主な値を使用すると、入れ子になった JSON オブジェクトまたは配列として書式設定されたデータベースから複雑な階層データを返すことができます。 次の例では、`Orders` の入れ子になった配列として、`Customer` に属する `Orders` テーブルから行を含める方法を示します。
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,

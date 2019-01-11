@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 7af15e2e2ca6698f9d8ba1629f13804ce6457b8d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f6191ba2f6ca86e07842030c0fca0a65b8c9d09a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315640"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584498"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database Managed Instance のリソース制限の概要
 
@@ -48,16 +48,20 @@ Managed Instance には、General Purpose と Business Critical の 2 つのサ�
 | **機能** | **汎用** | **Business Critical** |
 | --- | --- | --- |
 | 仮想コアの数\* | Gen4: 8、16、24<br/>Gen5: 8、16、24、32、40、64、80 | Gen4: 8、16、24、32 <br/> Gen5: 8、16、24、32、40、64、80 |
-| メモリ | Gen4: 56 GB ～ 156 GB<br/>Gen5: 44 GB ～ 440 GB<br/>\*仮想コアの数に比例 | Gen4: 56 GB ～ 156 GB <br/> Gen5: 44 GB ～ 440 GB<br/>\*仮想コアの数に比例 |
+| メモリ | Gen4: 56 GB ～ 156 GB<br/>Gen5: 44 GB ～ 440 GB<br/>\*仮想コアの数に比例 | Gen4: 56 GB ～ 156 GB <br/> Gen5:41 GB ～ 408 GB<br/>\*仮想コアの数に比例 |
 | 最大ストレージ サイズ | 8 TB | Gen4: 1 TB (テラバイト) <br/> Gen 5: <br/>- 8、16 仮想コアの場合は 1 TB<br/>- 24 仮想コアの場合は 2 TB<br/>- 32、40、64、80 仮想コアの場合は 4 TB |
 | データベースあたりの最大ストレージ容量 | インスタンスごとの最大ストレージ サイズによって決まります | インスタンスごとの最大ストレージ サイズによって決まります |
 | インスタンスごとの最大データベース数 | 100 | 100 |
 | インスタンスごとの最大データベース ファイル数 | 最大 280 | データベースあたり 32,767 ファイル |
-| IOPS (概算) | ファイルあたり 500 ～ 7500<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11 K ～ 110 K (vCore あたり 1375) |
+| データ/ログの IOPS (概算) | ファイルあたり 500 ～ 7500<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11 K ～ 110 K (vCore あたり 1375) |
+| インスタンス ログのスループット | インスタンスあたり 22 MB/秒 | 仮想コアあたり 3 MB/秒<br/>最大 48 MB/秒 |
+| データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 仮想コアあたり 24 ～ 48 MB/秒 |
 | IO 待機時間 (概算) | 5 ～ 10 ms | 1 ～ 2 ms |
-| 最大 tempDB サイズ | 192 ～ 1920 GB (vCore あたり 24 GB) | インスタンスごとの最大ストレージ サイズによって決まります |
+| 最大 tempDB サイズ | 192 ～ 1920 GB (vCore あたり 24 GB) | 制約なし - 最大インスタンス ストレージ サイズにより制限される |
 
-- ユーザー データベースとシステム データベースはどちらも、最大ストレージ サイズの制限と比較されるインスタンス ストレージ サイズに含まれます。 データベースによって使用される合計領域を確認するには、<a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> システム ビューを使用します。 エラー ログは保持されず、サイズには含まれません。 バックアップは、ストレージ サイズに含まれません。
+**注**:
+- ユーザー データベースとシステム データベースのデータ ファイルおよびログ ファイルのサイズはどちらも、最大ストレージ サイズの制限と比較されるインスタンス ストレージ サイズに含まれます。 データベースによって使用される合計領域を確認するには、<a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> システム ビューを使用します。 エラー ログは保持されず、サイズには含まれません。 バックアップは、ストレージ サイズに含まれません。
+- スループットと IOPS も、Managed Instance によって明示的に制限されないページ サイズに依存します。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 

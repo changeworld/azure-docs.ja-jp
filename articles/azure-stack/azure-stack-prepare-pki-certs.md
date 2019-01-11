@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 統合システム デプロイのための Azure Stack 公開キー インフラストラクチャ証明書を準備する | Microsoft Docs
+title: Azure Stack 統合システム デプロイまたはシークレット ローテーションのための Azure Stack 公開鍵基盤証明書を準備する | Microsoft Docs
 description: Azure Stack 統合システムの Azure Stack PKI 証明書を準備する方法について説明します。
 services: azure-stack
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: c26dcbc2fab7cff3134846234cafaa481fd5ba1a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a4c0d62fd1ea675c6569840c26ed1fb8e388850
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972033"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631483"
 ---
-# <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>デプロイ用の Azure Stack PKI 証明書の準備
+# <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>デプロイまたはローテーション用の Azure Stack PKI 証明書の準備
 [任意の CA から取得した](azure-stack-get-pki-certs.md)証明書ファイルは、Azure Stack の証明書要件に一致するプロパティを使用してインポートおよびエクスポートする必要があります。
 
 
 ## <a name="prepare-certificates-for-deployment"></a>デプロイ用の証明書を準備する
-次の手順を使って、Azure Stack PKI 証明書を準備し、検証します。 
+次の手順を使用して、新しい Azure Stack 環境のデプロイまたは既存の Azure Stack 環境でのシークレットのローテーションに使用される Azure Stack PKI 証明書を準備および検証します。 
 
 ### <a name="import-the-certificate"></a>証明書のインポート
 

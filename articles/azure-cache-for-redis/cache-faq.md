@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 311a576381927536386f5852336c3713fca5c3bf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: aee91f6d9b8d16db7f14bbc2372d7c465377ce28
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260754"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971530"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -83,7 +83,7 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 * [どの Azure Cache を利用すればよいですか。](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Azure Cache for Redis とは
-Azure Cache for Redis は、広く支持されているオープン ソースの [Azure Cache for Redis](http://redis.io) がベースとなっています。 これを使用すると、Microsoft によって管理されている、セキュリティで保護された専用 Azure Cache for Redis に Azure 内の任意のアプリケーションからアクセスできます。 詳細については、azure.com の [Azure Cache for Redis](https://azure.microsoft.com/services/cache/) の製品ページを参照してください。
+Azure Cache for Redis は、人気のあるオープンソース ソフトウェア [Redis](https://redis.io/) が基になっています。 これを使用すると、Microsoft によって管理されている、セキュリティで保護された専用 Azure Cache for Redis に Azure 内の任意のアプリケーションからアクセスできます。 詳細については、azure.com の [Azure Cache for Redis](https://azure.microsoft.com/services/cache/) の製品ページを参照してください。
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Azure Cache for Redis の使用を開始する方法
 Azure Cache for Redis の使用を開始する方法はいくつかあります。
@@ -133,7 +133,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 * Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。 たとえば、10 シャードの P4 クラスターを作成した場合、使用可能なスループットは 400 万 (400,000 * 10) RPS となります。
 * キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルのほうが高い。
 
-| [価格レベル]  | サイズ | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
+| 価格レベル  | サイズ | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
 | --- | --- | --- | --- | --- | --- |
 | **Standard のキャッシュ サイズ** | | |**メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** |**1 秒あたりの要求数 (RPS) 非 SSL** |**1 秒あたりの要求数 (RPS) SSL** |
 | C0 |250 MB |共有 |100 / 12.5 |15,000 |7,500 |
@@ -174,7 +174,7 @@ Azure Cache for Redis の価格は[ここ](https://azure.microsoft.com/pricing/d
 その他のクラウドで Azure Cache for Redis を使用するときの考慮事項の詳細については、次のリンクを参照してください。
 
 - [Azure Government データベース - Azure Cache for Redis](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
-- [Azure China Cloud - Azure Cache for Redis](https://www.azure.cn/documentation/services/azure-cache-for-redis/)
+- [Azure China Cloud - Azure Cache for Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
 Azure Government Cloud、Azure China Cloud、および Microsoft Azure Germany で PowerShell と共に Azure Cache for Redis を使用する方法の詳細については、[その他のクラウドへの接続方法の、Azure Cache for Redis PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds) に関する説明を参照してください。

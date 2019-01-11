@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: 7b8276281b8b550492fed17adc516e9539380987
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a37575e6e6e8902dc2dd89a26011031c2e1419c4
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269738"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557259"
 ---
 # <a name="azure-stack-capacity-planner"></a>Azure Stack Capacity Planner
 Azure Stack Capacity Planner は、Azure Stack のキャパシティ プランニングに使用されるスプレッドシートです。 この容量計画ツールは、コンピューティング リソースのさまざまな割り当てを設計し、ハードウェアのさまざまな選択に対してこれらがどのようにフィットするかを確認する機能を提供します。 Azure Stack の計算ツール使用の詳細手順については後述します。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: f9ada3518c4354b112e9e288da89ee9659629b1c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 51d781f331bcbc08642dc32c21baa150e9e5eee6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435125"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538687"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 

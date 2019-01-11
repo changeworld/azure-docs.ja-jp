@@ -5,20 +5,21 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: ae2f32a02005bc015d2521e576ea5625bef2d377
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1c37b764b47856d3a369228d3f224f2a464029bb
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846013"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790658"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
 VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使用して保護する際に、特定のエラー メッセージが表示される場合があります。 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用してオンプレミスの VMware VM や物理サーバーをレプリケートする際に起こる、一般的な問題について説明します。
 
-## <a name="initial-replication-issues"></a>初期レプリケーションの問題。
+
+## <a name="initial-replication-issues"></a>初期レプリケーションの問題
 
 多くの場合、サポートで検出される初期レプリケーション エラーは、ソース サーバーとプロセス サーバー間またはプロセス サーバーと Azure 間の接続問題によるものです。 ほとんどの場合、以下に示す手順に従うことで、これらの問題をトラブルシューティングできます。
 
@@ -33,7 +34,7 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 
 * サービス (`InMage Scout VX Agent – Sentinel/OutpostStart`) の状態を調べ、実行されていないかどうかを確認し、問題がまだ発生するかどうかを確認します。   
 
-## <a name="verify-the-process-server"></a>プロセス サーバーを確認する
+### <a name="verify-the-process-server"></a>プロセス サーバーを確認する
 
 * **プロセス サーバーが Azure にデータをアクティブにプッシュしているかどうかを確認する**
 
@@ -87,6 +88,19 @@ Microsoft Azure Backup を検索します。
 
 
 * **プロセス サーバーでスロットルの帯域幅が制限されていないかどうかを確認する**:帯域幅を増やし、問題がまだ発生するかどうかを確認します。
+
+## <a name="source-machine-to-be-protected-through-site-recovery-is-not-listed-on-azure-portal"></a>Site Recovery で保護するソース コンピューターが Azure Portal に表示されない
+
+Azure Site Recovery でレプリケーションを有効にするソース コンピューターを選択しようとすると、次の理由から、そのコンピューターの使用を続行できないことがあります。
+
+* 同じインスタンス UUID を持つ vCenter の下に 2 つの仮想マシンが存在する場合は、構成サーバーによって検出された最初の仮想マシンがポータルに表示されます。 解決するには、2 つの仮想マシンが同じインスタンス UUID を持たないようにしてください。
+* OVF テンプレートまたは統合セットアップを使用した構成のセットアップ中に、正しい vCenter 資格情報を追加したことを確認してください。 追加された資格情報を確認するには、[ここ](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery)で共有されているガイドラインを参照してください。
+* vCenter にアクセスするために指定されたアクセス許可に十分な特権がない場合は、仮想マシンの検出に失敗する可能性があります。 [ここ](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)で指定されたアクセス許可が vCenter ユーザー アカウントに追加されていることを確認してください。
+* 仮想マシンが既に Site Recovery で保護されている場合は、その仮想マシンを保護のために使用することはできません。 ポータル上で探している仮想マシンが他のどのユーザーによっても、あるいは他のどのサブスクリプションのもとでもまだ保護されていないことを確認してください。
+
+## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>保護された仮想マシンがポータルで灰色表示される
+
+Site Recovery でレプリケートされる仮想マシンは、システム内に重複したエントリが存在すると灰色表示されます。 古いエントリを削除して問題を解決するには、[ここ](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx)に掲載されているガイドラインを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 さらに支援が必要な場合は、[Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)にクエリを投稿してください。 弊社のアクティブなコミュニティを通じて、エンジニアがサポートいたします。

@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault サービスの制限 | Microsoft Docs
+title: Azure Key Vault サービスの制限 - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault のサービス制限について説明します。
 documentationcenter: dev-center-name
 services: key-vault
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/02/2017
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: 4ea228fba8e4dd1369e898b9e33db58b0a53a2ec
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 82848012d7ee3e96c66c73412a6b575f7d1aa4b0
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297453"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999783"
 ---
 # <a name="azure-key-vault-service-limits"></a>Azure Key Vault サービスの制限
+
 Azure Key Vault サービスの制限は次のとおりです。
 
 [!INCLUDE [key-vault-limits](../../includes/key-vault-limits.md)]
