@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.openlocfilehash: 1b6a77e78d3385c9dfd4e43e0e4242c870eb8c57
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d7df1c65b8588b97a6beb0a4c2428b3c6430c3b2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012557"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635699"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
@@ -23,10 +23,10 @@ ms.locfileid: "53012557"
 
 Azure HDInsight 上の Apache Hadoop クラスターと Azure SQL Database または Microsoft SQL Server データベースの間のインポートとエクスポートに Apache Sqoop を使用する方法について説明します。 このドキュメントの手順では、Hadoop クラスターのヘッド ノードから `sqoop` コマンドを直接使用します。 SSH を使用してヘッド ノードに接続し、このドキュメント内のコマンドを実行します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-> [!WARNING]
+> [!WARNING]  
 > このドキュメントで実行する手順は、`sqooptest` という名前の Azure SQL データベースが既に作成されていることを前提としています。
 >
 > このドキュメントでは、SQL Database に対するテーブルの作成とクエリを実行するために使用される T-SQL ステートメントを示します。 SQL Database でこれらのステートメントを使用できるクライアントは多数あります。 次のクライアントをお勧めします。
@@ -37,7 +37,7 @@ Azure HDInsight 上の Apache Hadoop クラスターと Azure SQL Database ま�
 
 ## <a name="create-the-table-in-sql-database"></a>SQL Database へのテーブルの作成
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 「[クラスターと SQL データベースを作成する](hdinsight-use-sqoop.md)」で作成した HDInsight クラスターと SQL Database を使用している場合は、このセクションの手順を省略してください。 データベースとテーブルは、ドキュメント「[クラスターと SQL データベースを作成する](hdinsight-use-sqoop.md)」の手順の一部として作成されました。
 
 SQL クライアントを使用して、SQL Database 内の `sqooptest` データベースに接続します。 次の T-SQL コマンドを使用して、`mobiledata` という名前のテーブルを作成します。
@@ -104,8 +104,8 @@ GO
 
     データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。
 
-    > [!IMPORTANT]
-    > `wasb:///` パスは、Azure Storage を既定のクラスター記憶域として使用するクラスターで動作します。 Azure Data Lake Store を使用するクラスターでは、代わりに `adl:///` を使用してください。
+    > [!IMPORTANT]  
+    > `wasb:///` パスは、Azure Storage を既定のクラスター記憶域として使用するクラスターで動作します。 Azure Data Lake Storage を使用するクラスターでは、代わりに `adl:///` を使用してください。
 
 2. インポートが完了したら、次のコマンドを使用して、新しいディレクトリのデータを列挙します。
 
@@ -160,8 +160,8 @@ Sqoop を使用して、SQL Server からデータのインポートとエクス
 
 ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
 
-* [HDInsight での Oozie の使用](../hdinsight-use-oozie.md):Oozie ワークフローで Sqoop アクションを使用します。
-* [HDInsight を使用したフライト遅延データの分析](../hdinsight-analyze-flight-delay-data.md):Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートします。
+* [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie.md):Oozie ワークフローで Sqoop アクションを使用します。
+* [HDInsight を使用したフライト遅延データの分析](../hdinsight-analyze-flight-delay-data.md):Apache Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートします。
 * [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight/Azure Blob Storage にデータをアップロードするその他の方法を説明します。
 
 [hdinsight-versions]:  ../hdinsight-component-versioning.md

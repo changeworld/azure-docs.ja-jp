@@ -14,12 +14,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 375e1a0ba4be9483986c088195e380e856d32a67
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b295f7a2a454e3987e8639814f785b7457dd452b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093750"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973096"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 
@@ -68,7 +68,7 @@ ms.locfileid: "49093750"
      ![ナビゲーション ウィンドウ][6]
 
    - 次に示すように SAS を構成します。
-     - **使用できるサービス**: BLOB
+     - **使用できるサービス**:BLOB
      - **開始日**: タイム ゾーンに関連する問題を回避するため、前日の日付を使うことをお勧めします。
      - **終了日**: この SAS トークンの有効期限が切れる日付を選びます。 
 
@@ -153,7 +153,7 @@ Azure Blob Storage の監査の `CREATE AUDIT` 構文の主な相違点は次の
 
 ## <a name="next-steps"></a>次の手順
 
-- 監査ログの使い方の完全な一覧については、「[SQL Database 監査の使用](https://docs.microsoft.com/ azure/sql-database/sql-database-auditing)」をご覧ください。
+- 監査ログの使い方の完全な一覧については、「[SQL Database 監査の使用](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)」をご覧ください。
 - 標準準拠をサポートする Azure プログラムの詳細については、 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/compliance/)のページを参照してください。
 
 

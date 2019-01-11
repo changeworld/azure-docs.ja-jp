@@ -1,19 +1,20 @@
 ---
 title: Azure Digital Twins で監視を構成する方法 | Microsoft Docs
-description: Azure Digital Twins で監視を構成する方法
+description: Azure Digital Twins で監視を構成する方法。
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 12/26/2018
 ms.author: adgera
-ms.openlocfilehash: 1c8f1931a29ae9769f7d8ad57a184e3240105a1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.custom: seodec18
+ms.openlocfilehash: 2749a5c6c4e6003c51523d83c46b48d3b55b3d45
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945822"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807586"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure Digital Twins で監視を構成する方法
 
@@ -23,7 +24,7 @@ Azure Digital Twins は堅牢なログ記録、監視、分析をサポートし
 
 ## <a name="review-activity-logs"></a>アクティビティ ログを確認する
 
-Azure の[アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)はサブスクリプション レベルのイベントと Azure の各サービス インスタンスの操作履歴に関する簡単な分析情報を提供します。
+Azure の[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)はサブスクリプション レベルのイベントと Azure の各サービス インスタンスの操作履歴に関する簡単な分析情報を提供します。
 
 サブスクリプション レベルのイベントには次のようなものがあります。
 
@@ -54,7 +55,7 @@ Azure Digital Twins のアクティビティ ログの記録は既定で有効�
 
 ## <a name="enable-customer-diagnostic-logs"></a>顧客の診断ログを有効にする
 
-Azure の[診断設定](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)は、アクティビティ ログの記録を補足するために、各 Azure インスタンスに対して設定できます。 アクティビティ ログはサブスクリプション レベルのイベントに関連する一方で、診断ログはリソース自体の操作履歴に関する洞察が提供されます。
+Azure の[診断設定](../azure-monitor/platform/diagnostic-logs-overview.md)は、アクティビティ ログの記録を補足するために、各 Azure インスタンスに対して設定できます。 アクティビティ ログはサブスクリプション レベルのイベントに関連する一方で、診断ログはリソース自体の操作履歴に関する洞察が提供されます。
 
 診断ログの例は次のとおりです。
 
@@ -74,7 +75,7 @@ Azure の[診断設定](https://docs.microsoft.com/azure/monitoring-and-diagnost
 
     ![[診断設定] 2][5]
 
-    多くの場合、診断ログは [Azure File Storage](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide) を使用して保存され、[Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal) と共有されます。 両方のオプションを選択することができます。
+    多くの場合、診断ログは [Azure File Storage](../storage/files/storage-files-deployment-guide.md) を使用して保存され、[Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md) と共有されます。 両方のオプションを選択することができます。
 
 >[!TIP]
 >**診断ログ**を使用してリソースの操作の分析情報を確認してください。
@@ -91,7 +92,7 @@ Azure Monitor には強力な Log Analytics サービスが含まれており、
 * 複数のユーザー定義関数のログを表示する
 * 特定のタイム フレーム内で 2 つ以上のサービスのログを表示する
 
-完全なログ クエリ機能は [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries) を通じて提供されます。 これらの強力な機能は、次のように設定します。
+完全なログ クエリ機能は [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) を通じて提供されます。 これらの強力な機能は、次のように設定します。
 
 1. Azure portal で「**Log Analytics**」を検索します。
 1. 利用できる **Log Analytics** インスタンスが表示されます。 いずれかを選択し、**[ログ]** を選択してクエリを実行します。
@@ -106,7 +107,7 @@ Azure Monitor には強力な Log Analytics サービスが含まれており、
 
    ![ログの管理][8]
 
-強力なクエリ操作について詳しくは、[クエリの概要](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)に関するページをご覧ください。
+強力なクエリ操作について詳しくは、[クエリの概要](../azure-monitor/log-query/get-started-queries.md)に関するページをご覧ください。
 
 > [!NOTE]
 > 初めて **Log Analytics** にイベントを送信するときに 5 分の遅延が発生することがあります。
@@ -120,15 +121,15 @@ Azure Monitor には強力な Log Analytics サービスが含まれており、
 
 ## <a name="other-options"></a>その他のオプション
 
-Azure Digital Twins はアプリケーション固有のログ記録やセキュリティ監査もサポートします。 Azure Digital Twins インスタンスで利用できる Azure のすべてのログ記録オプションの概要については、[Azure のログの監査](https://docs.microsoft.com/azure/security/azure-log-audit)に関する記事をご覧ください。
+Azure Digital Twins はアプリケーション固有のログ記録やセキュリティ監査もサポートします。 Azure Digital Twins インスタンスで利用できる Azure のすべてのログ記録オプションの概要については、[Azure のログの監査](../security/azure-log-audit.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)の詳細を確認する。
+- Azure [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)の詳細を確認する。
 
-[診断ログの概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)を確認して Azure 診断の設定の詳細を確認する。
+- [診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)を確認して Azure 診断の設定の詳細を確認する。
 
-[Azure Log Analytics ](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal) の詳細を確認する。
+- [Azure Log Analytics ](../azure-monitor/log-query/get-started-portal.md) の詳細を確認する。
 
 <!-- Images -->
 [1]: media/how-to-configure-monitoring/activity-log.png

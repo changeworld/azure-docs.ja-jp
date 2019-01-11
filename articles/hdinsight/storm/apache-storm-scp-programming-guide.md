@@ -9,15 +9,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 9b3fc80d129a42e68e877f4d1210e3ab10e0664a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496863"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631823"
 ---
 # <a name="scp-programming-guide"></a>SCP プログラミング ガイド
-SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。 OSS コミュニティが設計したストリーム処理システムである [Apache Storm](http://storm.incubator.apache.org/) を基に構築されています。 Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されました。 信頼性の高い分散化した調整と状態管理を実現するために、別の Apache プロジェクトである [Apache ZooKeeper](http://zookeeper.apache.org/)を利用しています。 
+SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。 OSS コミュニティが設計したストリーム処理システムである [Apache Storm](https://storm.incubator.apache.org/) を基に構築されています。 Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されました。 信頼性の高い分散化した調整と状態管理を実現するために、別の Apache プロジェクトである [Apache ZooKeeper](https://zookeeper.apache.org/)を利用しています。 
 
 SCP プロジェクトでは、Storm を Windows に移植しただけでなく、Windows エコシステム向けの拡張機能とカスタマイズを追加しました。 拡張機能には .NET 開発者の経験が活かされており、ライブラリが含まれています。カスタマイズには Windows ベースのデプロイメントが含まれています。 
 
@@ -124,7 +124,7 @@ ISCPBatchBolt はトランザクション ボルト用のインターフェイ�
 SCP.NET は、開発者がプログラムに使用できる重要なオブジェクトの簡単なセットも提供しています。 **Context**、**StateStore**、および **SCPRuntime** です。 これらのオブジェクトについては、このセクションでこの後説明します。
 
 ### <a name="context"></a>Context
-Context は、アプリケーションに実行環境を提供します。 各 ISCPPlugin インスタンス (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) には対応する Context インスタンスがあります。 Context が提供する機能は、次の 2 つに分かれています。(1) C\# プロセス全体で使用できる静的部分、(2) 特定の Context インスタンスのみが使用できる動的部分。
+Context は、アプリケーションに実行環境を提供します。 各 ISCPPlugin インスタンス (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) には対応する Context インスタンスがあります。 Context が提供する機能は、2 つの部分に分かれています。(1) C\# プロセス全体で使用できる静的部分と、(2) 特定の Context インスタンスのみが使用できる動的部分です。
 
 ### <a name="static-part"></a>静的部分
     public static ILogger Logger = null;
@@ -309,7 +309,7 @@ ISCPBatchBolt では、`parms` の `StormTxAttempt` を取得し、それを使�
 
 一般的には、SCP プラグインは次の 2 つのモードで実行できます。
 
-1. ローカル テスト モード: このモードでは、SCP プラグイン (C\# ユーザー コード) は、開発フェーズ中は Visual Studio 内で実行されます。 このモードでは `LocalContext` を使用し、出力されたタプルをローカル ファイルにシリアル化してメモリに読み取ることができます。
+1. ローカル テスト モード:このモードでは、SCP プラグイン (C\# ユーザー コード) は、開発フェーズ中は Visual Studio 内で実行されます。 このモードでは `LocalContext` を使用し、出力されたタプルをローカル ファイルにシリアル化してメモリに読み取ることができます。
    
         public interface ILocalContext
         {
@@ -317,7 +317,7 @@ ISCPBatchBolt では、`parms` の `StormTxAttempt` を取得し、それを使�
             void WriteMsgQueueToFile(string filepath, bool append = false);  
             void ReadFromFileToMsgQueue(string filepath);                    
         }
-2. 通常モード: このモードでは、SCP プラグインは Storm Java プロセスで起動されます。
+2. 通常モード:このモードでは、SCP プラグインは Storm Java プロセスで起動されます。
    
     次に、SCP プラグインを起動する例を示します。
    
@@ -346,7 +346,7 @@ ISCPBatchBolt では、`parms` の `StormTxAttempt` を取得し、それを使�
         }
 
 ## <a name="topology-specification-language"></a>トポロジ仕様言語
-SCP Topology Specification は、SCP トポロジを記述して構成するためのドメイン固有の言語です。 これは Storm の Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) に基づいており、SCP によって拡張されます。
+SCP Topology Specification は、SCP トポロジを記述して構成するためのドメイン固有の言語です。 これは Storm の Clojure DSL (<https://storm.incubator.apache.org/documentation/Clojure-DSL.html>) に基づいており、SCP によって拡張されます。
 
 トポロジの仕様は、***runspec*** コマンドを介して Storm クラスターに直接送信されて実行されます。
 

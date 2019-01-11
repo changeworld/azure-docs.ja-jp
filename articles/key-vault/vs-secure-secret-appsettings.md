@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: ''
 ms.workload: web, azure
 ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 5ed0f861e17c646a66d9fa636e17ce0ba9c7c91a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8f3cdf366830549c3ebb9c5680ecf36d1053d1d9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999154"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075296"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 

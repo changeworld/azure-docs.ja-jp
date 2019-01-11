@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 83bf45c93648ca768243a2208f6a91cc9011a919
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1b0c991c09d1235215dc9b930c529a219d492a8c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002520"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117079"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights ポータルのナビゲーションおよびダッシュボード
-[プロジェクトに Application Insights を設定](../../application-insights/app-insights-overview.md)すると、[Azure Portal](https://portal.azure.com) のプロジェクトの Application Insights リソースに、アプリのパフォーマンスと使用状況に関するテレメトリ データが表示されます。
+[プロジェクトに Application Insights を設定](../../azure-monitor/app/app-insights-overview.md)すると、[Azure Portal](https://portal.azure.com) のプロジェクトの Application Insights リソースに、アプリのパフォーマンスと使用状況に関するテレメトリ データが表示されます。
 
 ## <a name="find-your-telemetry"></a>テレメトリの検索
 [Azure Portal](https://portal.azure.com) にサインインし、アプリ用に作成した Application Insights リソースに移動します。
@@ -34,7 +34,7 @@ ms.locfileid: "54002520"
 グラフとグリッドをカスタマイズし、ダッシュボードにピン留めできます。 これにより、さまざまなアプリの重要なテレメトリをまとめて、中央のダッシュボードに表示することができます。
 
 ## <a name="dashboards"></a>ダッシュボード
-[Microsoft Azure Portal](https://portal.azure.com) にサインインすると、まず、ダッシュボードが表示されます。 ここでは、 [Azure Application Insights](../../application-insights/app-insights-overview.md) のテレメトリなどを含む、すべての Azure リソースから最も重要なグラフをまとめて表示することができます。
+[Microsoft Azure Portal](https://portal.azure.com) にサインインすると、まず、ダッシュボードが表示されます。 ここでは、 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) のテレメトリなどを含む、すべての Azure リソースから最も重要なグラフをまとめて表示することができます。
 
 ![カスタマイズされたダッシュボード](./media/app-insights-dashboards/31.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "54002520"
 
 ![ダッシュボードのヘッダーで [共有] をクリックします](./media/app-insights-dashboards/41.png)
 
-詳細については、 [ロールとアクセス制御](../../application-insights/app-insights-resources-roles-access-control.md)に関するページをご覧ください。
+詳細については、 [ロールとアクセス制御](../../azure-monitor/app/resources-roles-access-control.md)に関するページをご覧ください。
 
 ## <a name="create-dashboards-programmatically"></a>プログラムによるダッシュボードの作成
 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically) と簡易 JSON エディターを使用して、ダッシュボードの作成を自動化できます。
@@ -113,28 +113,28 @@ ms.locfileid: "54002520"
 * [**検索**](../../azure-monitor/app/diagnostic-search.md) - 要求、例外、ログ トレースなどのイベントの特定のインスタンスを調べることができます。
 * [**分析**](../../azure-monitor/app/analytics.md) - テレメトリに対して強力なクエリを実行できます。
 * **時間範囲** - ブレードのすべてのグラフで表示される範囲を調整します。
-* **削除** - このアプリの Application Insights リソースを削除します。 この場合、アプリ コードから Application Insights パッケージを削除するか、別の Application Insights リソースにテレメトリを送信するようアプリの[インストルメンテーション キー](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key)を編集する必要があります。
+* **削除** - このアプリの Application Insights リソースを削除します。 この場合、アプリ コードから Application Insights パッケージを削除するか、別の Application Insights リソースにテレメトリを送信するようアプリの[インストルメンテーション キー](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)を編集する必要があります。
 
 ### <a name="essentials-tab"></a>[要点] タブ
-* [インストルメンテーション キー](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) - このアプリ リソースを識別します。
+* [インストルメンテーション キー](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) - このアプリ リソースを識別します。
 
 ### <a name="app-navigation-bar"></a>アプリのナビゲーション バー
 ![左側のナビゲーション バー](./media/app-insights-dashboards/app-left-nav-bar.png)
 
 * **概要** - アプリの概要ブレードに戻ります。
 * **アクティビティ ログ** - アラートと Azure 管理イベントです。
-* [**アクセス制御**](../../application-insights/app-insights-resources-roles-access-control.md) - チーム メンバーと他のユーザーにアクセスを提供します。
+* [**アクセス制御**](../../azure-monitor/app/resources-roles-access-control.md) - チーム メンバーと他のユーザーにアクセスを提供します。
 * [**タグ**](../../azure-resource-manager/resource-group-using-tags.md) - タグを使用して、自分のアプリと他のアプリをグループ化します。
 
 調査
 
 * [**アプリケーション マップ**](app-map.md) - 依存関係情報から取得される、アプリケーションのコンポーネントを示すアクティブ マップ。
-* [**スマート検出**](../../application-insights/app-insights-proactive-diagnostics.md) - 最近のパフォーマンス アラートを確認します。
+* [**スマート検出**](../../azure-monitor/app/proactive-diagnostics.md) - 最近のパフォーマンス アラートを確認します。
 * [**Live Stream**](../../azure-monitor/app/live-stream.md) - ほぼ即時のメトリックの固定セットが表示されます。これは、新しいビルドのデプロイ時やデバッグ時に役立ちます。
 * [**可用性/Web テスト**](../../azure-monitor/app/monitor-web-app-availability.md) - Web アプリに世界中から通常の要求を送信します。*
-* [**失敗、パフォーマンス**](../../application-insights/app-insights-web-monitor-performance.md) - 例外、失敗率、アプリへの要求とアプリから[依存関係](../../azure-monitor/app/asp-net-dependencies.md)への要求の応答時間です。
-* [**パフォーマンス**](../../application-insights/app-insights-web-monitor-performance.md) - 応答時間および依存関係の応答時間です。
-* [サーバー](../../application-insights/app-insights-web-monitor-performance.md) - パフォーマンス カウンターです。 [Status Monitor をインストール](../../azure-monitor/app/monitor-performance-live-website-now.md)している場合に使用できます。
+* [**失敗、パフォーマンス**](../../azure-monitor/app/web-monitor-performance.md) - 例外、失敗率、アプリへの要求とアプリから[依存関係](../../azure-monitor/app/asp-net-dependencies.md)への要求の応答時間です。
+* [**パフォーマンス**](../../azure-monitor/app/web-monitor-performance.md) - 応答時間および依存関係の応答時間です。
+* [サーバー](../../azure-monitor/app/web-monitor-performance.md) - パフォーマンス カウンターです。 [Status Monitor をインストール](../../azure-monitor/app/monitor-performance-live-website-now.md)している場合に使用できます。
 * **ブラウザー** - ページ ビューと AJAX パフォーマンスです。 [Web ページをインストルメント化](../../azure-monitor/app/javascript.md)している場合に使用できます。
 * **使用状況** - ページ ビュー、ユーザー、およびセッションの数です。 [Web ページをインストルメント化](../../azure-monitor/app/javascript.md)している場合に使用できます。
 
@@ -145,7 +145,7 @@ ms.locfileid: "54002520"
 * [アラート](../../azure-monitor/app/alerts.md) - メトリック アラートの構成です。
 * [連続エクスポート](../../azure-monitor/app/export-telemetry.md) - Azure ストレージへのテレメトリのエクスポートを構成します。
 * [パフォーマンス テスト](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests) - Web サイトでの代理負荷を設定します。
-* [クォータと価格](../../azure-monitor/app/pricing.md)および[インジェスト サンプリング](../../application-insights/app-insights-sampling.md)。
+* [クォータと価格](../../azure-monitor/app/pricing.md)および[インジェスト サンプリング](../../azure-monitor/app/sampling.md)。
 * **API アクセス** - [リリース注釈](annotations.md)を作成します。データ アクセス API で使用されます。
 * [**作業項目**](../../azure-monitor/app/diagnostic-search.md#create-work-item) - テレメトリを確認しながらバグを作成できるように、作業項目追跡システムに接続します。
 

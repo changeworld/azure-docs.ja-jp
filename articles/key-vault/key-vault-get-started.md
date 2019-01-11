@@ -10,16 +10,15 @@ ms.assetid: 36721e1d-38b8-4a15-ba6f-14ed5be4de79
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 72e17d5628be307d6c73cd2bba7576d0e734af15
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 972937037389be38ac18a324d0b11b914c127d0b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999069"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077574"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Azure Key Vault の概要
 

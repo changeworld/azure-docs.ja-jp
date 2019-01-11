@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: amsriva
-ms.openlocfilehash: e7020ef5c1f7411c7226e7a2db489112ee6bf0a4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: fcb49f532d5dfcd340baf017bd55c69d4e81e0e6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945503"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630684"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Application Gateway でのエンド ツー エンド SSL の概要
 
@@ -31,7 +31,7 @@ Application Gateway は、ゲートウェイの SSL ターミネーションを�
 Application Gateway は、既知のバックエンド インスタンスのみと通信します。これらのインスタンスでは、アプリケーション ゲートウェイに関する証明書がホワイトリスト登録されています。 証明書のホワイトリスト登録を有効にするには、(ルート証明書ではなく) バックエンド サーバーの証明書の公開キーをアプリケーション ゲートウェイにアップロードする必要があります。 ホワイトリスト登録された既知のバックエンドへの接続のみが許可され、 それ以外ではゲートウェイ エラーが発生します。 自己署名証明書はテストのみを目的とするため、運用環境のワークロードで使用することはお勧めできません。 このような証明書は、使用する前に、上記の手順で説明したとおりに、アプリケーション ゲートウェイでホワイトリスト登録する必要があります。
 
 > [!NOTE]
-> 認証証明書のセットアップは、信頼済みの Azure サービス (Azure Web Apps など) では必要ありません。
+> 認証証明書のセットアップは、信頼済みの Azure サービス (Azure App Service など) では必要ありません。
 
 ## <a name="end-to-end-ssl-with-the-v2-sku"></a>v2 SKU を利用したエンド ツー エンド SSL
 
@@ -39,7 +39,7 @@ Application Gateway は、既知のバックエンド インスタンスのみ�
 
 - 既知の CA 機関によって署名され､バックエンドの HTTP 設定のホスト名と一致する CN を持つ証明書は、エンド ツー エンド SSL が機能するため、追加の手順は必要ありません。 
 
-   たとえば、バックエンド証明書が既知の CA により発行されて、その CN が contoso.com であり、バックエンドの http 設定の [ホスト] フィールドも contoso.com に設定されている場合、追加の手順は必要ありません。 バックエンドの http 設定のプロトコルとして HTTPS を設定すると、正常性プローブとデータ パスの両方が SSL で有効になります。 バックエンドとして Azure Web Apps または他の Azure の web サービスを使用している場合は、それらも暗黙で信頼されており、エンド ツー エンド SSLにはこれ以上の手順は必要ありません。
+   たとえば、バックエンド証明書が既知の CA により発行されて、その CN が contoso.com であり、バックエンドの http 設定の [ホスト] フィールドも contoso.com に設定されている場合、追加の手順は必要ありません。 バックエンドの http 設定のプロトコルとして HTTPS を設定すると、正常性プローブとデータ パスの両方が SSL で有効になります。 バックエンドとして Azure App Service または他の Azure の web サービスを使用している場合は、それらも暗黙で信頼されており、エンド ツー エンド SSL にはこれ以上の手順は必要ありません。
 - 証明書が自己署名済みの場合、または不明な仲介者によって署名されている場合、 v2 SKU でエンド ツー エンド SSL を有効にするには、信頼できるルート証明書を定義する必要があります。 Application Gateway は、サーバー証明書のルート証明書がプールに関連付けられたバックエンドの HTTP 設定の信頼されたルート証明書のいずれかと一致するバックエンドとのみ通信します。
 
 - ルート証明書の一致ばかりでなく、Application Gateway はバックエンドの HTTP 設定に指定されている [ホスト] 設定がバックエンド サーバーの SSL 証明書によって提示される共通名 (CN) のホスト設定と一致するかどうかも検証します｡ バックエンドとの SSL 接続を確立しようとする場合、アプリケーション ゲートウェイは バックエンドの http 設定で指定されているホストを Server Name Indication (SNI) 拡張機能に設定します。

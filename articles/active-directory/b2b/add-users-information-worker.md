@@ -5,25 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 12/19/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: e590500dd622988226c592352b0b86f16d54a9d4
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 08fed2206d7d74d9ab6cb7f1462388486f999987
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983065"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718794"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>組織内のユーザーがゲスト ユーザーをアプリに招待する方法
 
-ゲスト ユーザーが Azure AD のディレクトリに追加されたら、アプリケーション所有者は、共有したいアプリへの直接リンクをゲスト ユーザーに送信できます。 また、Azure AD 管理者は、ゲスト ユーザーがまだディレクトリに追加されていない場合でもアプリケーション所有者が自身のゲスト ユーザーを管理できるように、セルフサービス管理を設定できます。 アプリがセルフサービス用に構成されたら、アプリケーション所有者はアクセス パネルを使用して、アプリにゲスト ユーザーを招待するか、またはアプリにアクセスできるグループにゲスト ユーザーを追加します。 セルフサービス アプリ管理では、管理者によるいくつかの初期設定が必要です。以下に設定手順の概要を示します (詳細な手順については、このページで後述する「[前提条件](#prerequisites)」を参照してください)。
+ゲスト ユーザーが Azure AD のディレクトリに追加されたら、アプリケーション所有者は、共有したいアプリへの直接リンクをゲスト ユーザーに送信できます。 また、Azure AD 管理者は、それぞれの Azure AD テナントにギャラリーまたは SAML ベースのアプリのセルフサービス管理を設定することもできます。 これにより、ゲスト ユーザーがまだディレクトリに追加されていない場合でもアプリケーション所有者が自身のゲスト ユーザーを管理できます。 アプリがセルフサービス用に構成されたら、アプリケーション所有者はアクセス パネルを使用して、アプリにゲスト ユーザーを招待するか、またはアプリにアクセスできるグループにゲスト ユーザーを追加します。 ギャラリーや SAML ベースのアプリのセルフサービス アプリ管理では、管理者によるいくつかの初期設定が必要です。以下に設定手順の概要を示します (詳細な手順については、このページで後述する「[前提条件](#prerequisites)」を参照してください)。
 
  - テナント用にセルフサービスのグループ管理を有効化する
  - アプリに割り当てるグループを作成して、ユーザーを所有者にする
  - セルフサービス用にアプリを構成して、グループをアプリに割り当てる
+
+> [!NOTE]
+> この記事では、Azure AD テナントに追加したギャラリーおよび SAML ベースのアプリのセルフサービス管理を設定する方法について説明します。 ユーザーが自身の Office 365 グループへのアクセスを管理できるように[セルフサービス Office 365 グループを設定する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)こともできます。 ユーザーが Office ファイルとアプリをゲスト ユーザーと共有できるその他の方法については、「[Office 365 グループでのゲスト アクセス](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6)」と「[SharePoint ファイルまたはフォルダーの共有](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)」をご覧ください。
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>アクセス パネルからアプリにゲスト ユーザーを招待する
 
@@ -102,6 +105,7 @@ ms.locfileid: "45983065"
 4. アプリケーションの一覧で、アプリを検索して開きます。
 5. **[管理]** で、**[シングル サインオン]** を選択して、シングル サインオン用にアプリケーションを構成します  (詳細については、[エンタープライズ アプリのシングル サインオンの管理方法](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)に関するページを参照してください)。
 6. **[管理]** で、**[セルフサービス]** を選択して、セルフサービス アプリ アクセスを設定します  (詳細については、[セルフサービス アプリ アクセスの使用方法](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to)に関するページを参照してください)。 
+
     > [!NOTE]
     > **[To which group should assigned users be added?]\(割り当てたユーザーの追加先となるグループ\)** の設定に、前のセクションで作成したグループを選択します。
 7. **[管理]** で、**[Users and groups]\(ユーザーとグループ\)** を選択して、作成したセルフサービス グループが一覧に表示されていることを確認します。

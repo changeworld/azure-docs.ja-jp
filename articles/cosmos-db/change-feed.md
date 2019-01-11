@@ -6,13 +6,14 @@ ms.author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
+ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c8870fdb0ff0a62c9b1a3b690724aa004e911bb3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 011bb74a10b12c5170579d3b4c507fcfe0fc01b1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810884"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040729"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード
 
