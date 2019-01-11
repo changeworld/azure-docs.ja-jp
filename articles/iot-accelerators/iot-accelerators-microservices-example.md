@@ -1,5 +1,5 @@
 ---
-title: マイクロサービスを変更して再展開する | Microsoft Docs
+title: マイクロサービスを変更して再展開する - Azure | Microsoft Docs
 description: このチュートリアルでは、リモート監視のマイクロサービスを変更して再展開する方法を示します
 author: dominicbetts
 ms.author: dobett
@@ -7,16 +7,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20e86220fffe95fc38b5fa15dd5603db4331203f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 563de3d062b2c49d6b7ba23ae405e75283270815
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315759"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631902"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>マイクロサービスをカスタマイズして再展開する
 
-このチュートリアルでは、リモート監視ソリューションの[マイクロサービス](http://azure.com/microservices)を編集し、マイクロサービスのイメージをビルドし、Docker Hub にイメージを展開してから、リモート監視ソリューションでそれを使う方法を示します。 この概念を説明するため、このチュートリアルでは、マイクロサービス API を呼び出して状態メッセージを "Alive and Well" から "New Edits Made Here!" に変更する基本的なシナリオを使います。
+このチュートリアルでは、リモート監視ソリューションの[マイクロサービス](https://azure.com/microservices)を編集し、マイクロサービスのイメージをビルドし、Docker Hub にイメージを展開してから、リモート監視ソリューションでそれを使う方法を示します。 この概念を説明するため、このチュートリアルでは、マイクロサービス API を呼び出して状態メッセージを "Alive and Well" から "New Edits Made Here!" に変更する基本的なシナリオを使います。
 
 リモート監視ソリューションは、Docker Hub からプルされた Docker イメージを使ってビルドされるマイクロサービスを使います。 
 
@@ -77,7 +77,7 @@ Iot Hub Manager マイクロサービスの状態メッセージを "New Edits M
     
     または、Windows では:
     
-    ```
+    ```cmd
     ./build.cmd
     ```
 

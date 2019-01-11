@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2dd6ebb9e2f35eccae3b267402a4ef9b0e1b2dbe
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a00f3d2ea4e191bb7860b88d39ff0ccaa338e0ff
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567164"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714238"
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -53,7 +53,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 ## <a name="summary-azure-security-capabilities"></a>Azure のセキュリティ機能の概要
 次の表に、Azure インフラストラクチャ、顧客データ、および安全なアプリケーションのセキュリティを確保するために Microsoft で実装されているセキュリティ機能の概要を示します。
 ### <a name="security-features-implemented-to-secure-the-azure-platform"></a>Azure プラットフォームのセキュリティを確保するために実装されるセキュリティ機能
-次に一覧された機能で、Azure プラットフォームが安全な方法で管理されていることを確認できます。 Microsoft が安全なプラットフォーム、プライバシー管理、コンプライアンス、透明性という 4 つの領域においてお客様の信頼に関する質問にどのように対処しているかの詳細については、リンクをクリックすることで確認できます。
+次に一覧された機能で、Azure プラットフォームが安全な方法で管理されていることを確認できます。 Microsoft が次の 4 つの領域においてお客様の信頼に関する質問にどのように対処しているかの詳細については、リンクをクリックすることで確認できます:安全なプラットフォーム、プライバシー管理、コンプライアンス、透明性。
 
 
 | [安全なプラットフォーム](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [プライバシー管理](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[コンプライアンス](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [透明性](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
@@ -69,9 +69,9 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 ### <a name="security-features-offered-by-azure-to-secure-data-and-application"></a>データおよびアプリケーションのセキュリティを確保するために Azure で提供されるセキュリティ機能
 アプリケーションやサービスのセキュリティを管理する担当者の責任範囲は、クラウド サービス モデルによって異なります。 ビルトイン機能および Azure サブスクリプションに展開可能なパートナー ソリューションに、これらの責任範囲をカバーする Azure プラットフォームで使用可能な機能があります。
 
-ビルトイン機能は、運用、アプリケーション、ストレージ、ネットワーク、コンピューティング、ID という 6 つの領域で構成されています。 Azure プラットフォームのこれら 6 つの領域で使用できる機能の詳細については、概要情報に記載されています。
+ビルトイン機能は、次の 6 つの機能区分に分類されます:操作、アプリケーション、ストレージ、ネットワーキング、コンピューティング、ID。 Azure プラットフォームのこれら 6 つの領域で使用できる機能の詳細については、概要情報に記載されています。
 
-## <a name="operations"></a>[操作]
+## <a name="operations"></a>操作
 このセクションでは、セキュリティ操作を行う上で重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="security-and-audit-dashboard"></a>[セキュリティおよび監査] ダッシュボード
@@ -110,7 +110,7 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 このセクションでは、アプリケーション セキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="web-application-vulnerability-scanning"></a>Web アプリケーションの脆弱性のスキャン
-[App Service アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-overview)の脆弱性のテストを開始する最も簡単な方法の 1 つは、[Tinfoil Security との統合](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)を使用して 1 回のクリックでアプリに対する脆弱性のスキャンを実行することです。 テスト結果はわかりやすいレポートで表示され、詳しい手順に従ってそれぞれの脆弱性を修正する方法が説明されます。
+[App Service アプリ](https://docs.microsoft.com/azure/app-service/overview)の脆弱性のテストを開始する最も簡単な方法の 1 つは、[Tinfoil Security との統合](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)を使用して 1 回のクリックでアプリに対する脆弱性のスキャンを実行することです。 テスト結果はわかりやすいレポートで表示され、詳しい手順に従ってそれぞれの脆弱性を修正する方法が説明されます。
 
 ### <a name="penetration-testing"></a>侵入テスト
 独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
@@ -119,13 +119,13 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) の Web アプリケーション ファイアウォール (WAF) は、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃から Web アプリケーションを保護するのに役立ちます。 このファイアウォールには、[Open Web Application Security Project (OWASP) により一般的な脆弱性の上位 10 種](https://msdn.microsoft.com/library/)と特定された脅威からの保護が事前に構成されています。
 
 ### <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および承認
-[App Service の認証と承認](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)は、アプリのバックエンドでコードを変更する必要がないように、アプリケーションでユーザーをサインインさせる方法を提供する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
+[App Service の認証と承認](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)は、アプリのバックエンドでコードを変更する必要がないように、アプリケーションでユーザーをサインインさせる方法を提供する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
 
 ### <a name="layered-security-architecture"></a>複数層セキュリティ アーキテクチャ
 [App Service Environments](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro) は、[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) にデプロイされる分離されたランタイム環境です。開発者は、セキュリティ アーキテクチャを階層化し、アプリケーションの層ごとにネットワーク アクセスのレベルに違いを設けることができます。 一般に、API バックエンドは通常のインターネット アクセスから隠し、アップストリームの Web アプリにのみ API の呼び出しを許可することが望ましいと考えられています。 App Service Environment を含んだ Azure Virtual Network サブネットに対して[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) を使用することで、API アプリケーションへのパブリック アクセスを制限することができます。
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Web サーバー診断とアプリケーション診断
-App Service Web Apps は、Web サーバーと Web アプリケーションの両方のログ情報を診断する機能を備えています。 これらは論理的に [Web サーバー診断](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)と[アプリケーション診断](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx)に分けられます。 Web サーバーでは、サイトおよびアプリケーションの診断とトラブルシューティングに 2 つの大きな進展があります。
+App Service Web Apps は、Web サーバーと Web アプリケーションの両方のログ情報を診断する機能を備えています。 これらは論理的に [Web サーバー診断](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)と[アプリケーション診断](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx)に分けられます。 Web サーバーでは、サイトおよびアプリケーションの診断とトラブルシューティングに 2 つの大きな進展があります。
 
 1 つ目の新機能は、アプリケーション プール、ワーカー プロセス、サイト、アプリケーション ドメイン、および実行中の要求に関するリアルタイムの状態情報です。 新しい 2 つ目の強みは、完全な要求-応答プロセスによって要求を追跡する詳細なトレース イベントです。
 
@@ -141,7 +141,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 -   Web サーバーのログ記録 - W3C 拡張ログ ファイル形式を使用した、HTTP トランザクションに関する情報。 このレポートが便利なのは、全体的なサイト メトリック、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときです。
 
 #### <a name="application-diagnostics"></a>アプリケーション診断
-[アプリケーション診断](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) クラスを使用して、情報をアプリケーション診断ログに記録できます。 アプリケーション診断では、アプリケーションの障害やエラーに関連するイベントとアプリケーションのパフォーマンスに関連するイベントの、主に 2 つのイベント タイプがあります。 障害やエラーは、さらに接続性、セキュリティ、および障害問題に分かれます。 障害問題とは一般的に、アプリケーション コードでの問題に関連します。
+[アプリケーション診断](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) クラスを使用して、情報をアプリケーション診断ログに記録できます。 アプリケーション診断では、アプリケーションの障害やエラーに関連するイベントとアプリケーションのパフォーマンスに関連するイベントの、主に 2 つのイベント タイプがあります。 障害やエラーは、さらに接続性、セキュリティ、および障害問題に分かれます。 障害問題とは一般的に、アプリケーション コードでの問題に関連します。
 
 アプリケーション診断では、次の方法でグループ化されたイベントを表示できます。
 
@@ -289,9 +289,9 @@ VNet で使用される DNS サーバーの一覧は、管理ポータルまた�
 [ドメイン ネーム システム (DNS)](https://technet.microsoft.com/library/bb629410.aspx) は、Web サイトまたはサービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 DNS では、セキュリティの 3 つの柱、"CIA" (機密性、整合性、可用性) の中の可用性がサポートされています。
 ### <a name="log-analytics-nsgs"></a>Log Analytics NSG
 NSG に対して、以下の診断ログ カテゴリを有効にできます。
--   イベント: MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
+-   イベント:MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
 
--   ルール カウンター: トラフィックを許可または拒否するために各 NSG ルールが適用された回数に関するエントリが含まれます。
+-   ルール カウンター:トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。
 
 ### <a name="azure-security-center"></a>Azure Security Center
 Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。 ネットワークに関する推奨事項は、ファイアウォール、ネットワーク セキュリティ グループ、受信トラフィック規則の構成などが中心です。
@@ -307,7 +307,7 @@ Security Center は、脅威の回避、検出、対応に役立つサービス�
 -   [インターネットに接続するエンドポイント経由のアクセスを制限する](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints)。NSG の着信トラフィック規則を構成することをお勧めします。
 
 
-## <a name="compute"></a>コンピューティング
+## <a name="compute"></a>Compute
 
 このセクションでは、この領域の重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 

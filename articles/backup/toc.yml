@@ -122,8 +122,8 @@ items:
         href: backup-azure-vms-encryption.md
       - name: VM 作成中の VM バックアップの有効化
         href: backup-during-vm-creation.md
-      - name: VM バックアップ スタック V2 へのアップグレード
-        href: backup-upgrade-to-vm-backup-stack-v2.md
+      - name: インスタント リストア機能
+        href: backup-instant-restore-capability.md
     - name: VM の管理と監視
       items:
       - name: Azure Portal での Azure VM のバックアップの管理
@@ -240,6 +240,8 @@ items:
     href: /rest/api/backup/
   - name: REST - Recovery Services コンテナー
     href: /rest/api/recoveryservices/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.recoveryservices/allversions
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -254,9 +256,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: dfa3bca01fc237aa62cc893e707aa08b9055dd7d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 44ab1f24ba3bcae8902d8fa953b09f48630e7822
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104814"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199254"

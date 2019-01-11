@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: feb94f450621e999da01f77f0b5550258377d6c9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 5d2f803414db3bd118f57d317cfc32c8f22fcd5a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038265"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653257"
 ---
 # <a name="install-published-application---dataiku-dds"></a>発行済みアプリケーションのインストール - Dataiku DSS
 
-この記事では、[Dataiku DSS](https://www.dataiku.com/) によって発行された Apache Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
+この記事では、[Dataiku DDS](https://www.dataiku.com/) によって発行された [Apache Hadoop](https://hadoop.apache.org/) アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
 
 ## <a name="about-dataiku-dss"></a>Dataiku DSS について
 
@@ -26,21 +26,21 @@ Dataiku [Data Science Studio (DSS)](https://www.dataiku.com/dss/features/connect
 
 DSS を使用して、データ インジェスト、準備、処理から始まる完全な分析ソリューションを実装できます。 DSS ソリューションには、トレーニングおよび応用機械学習モデル、視覚化、運用化を含めることもできます。
 
-DSS は、Hadoop クラスターまたは Spark クラスターを使用して HDInsight にインストールできます。 DSS は既存の実行中のクラスターにインストールできるほか、新しいクラスターの作成時にインストールできます。 また、DSS では、Azure Blob Storage をデータの読み取りのコネクタとして使用することもできます。
+DSS は、[Apache Hadoop](https://hadoop.apache.org/) または [Apache Spark](https://spark.apache.org/) クラスターを使用して HDInsight にインストールできます。 DSS は既存の実行中のクラスターにインストールできるほか、新しいクラスターの作成時にインストールできます。 また、DSS では、Azure Blob Storage をデータの読み取りのコネクタとして使用することもできます。
 
-DSS を使用してプロジェクトを作成し、そのプロジェクトで MapReduce ジョブまたは Spark ジョブを生成できます。 これらのジョブは、通常の MapReduce ジョブまたは Spark ジョブとして HDInsight で実行されます。そのため、必要に応じてクラスターをスケーリングできます。
+DSS を使用してプロジェクトを作成し、そのプロジェクトで [MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) ジョブまたは Spark ジョブを生成できます。 これらのジョブは、通常の MapReduce ジョブまたは Spark ジョブとして HDInsight で実行されます。そのため、必要に応じてクラスターをスケーリングできます。
 
 ## <a name="prerequisites"></a>前提条件
 
 新しい HDInsight クラスター (または既存のクラスター) にこのアプリをインストールするには、次の構成が必要です。
 
-* クラスター レベル: Standard、Premium
-* クラスターの種類: Hadoop、Spark
-* クラスターのバージョン: 3.4、3.5
+* クラスター レベル:Standard、Premium
+* クラスターのタイプ:Hadoop、Spark
+* クラスターのバージョン:3.4、3.5
 
 ## <a name="install-the-dataiku-dss-published-application"></a>Dataiku DSS によって発行されたアプリケーションのインストール
 
-このアプリケーションと利用可能な他の ISV アプリケーションをインストールする詳細な手順については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。
+このアプリケーションやその他の使用可能な ISV アプリケーションをインストールするための詳細な手順については、[サードパーティ Apache Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。
 
 ## <a name="launch-dataiku-dss"></a>Dataiku DSS の起動
 
@@ -113,8 +113,8 @@ DSS を使用してプロジェクトを作成し、そのプロジェクトで 
 ## <a name="next-steps"></a>次の手順
 
 * [Dataiku DSS のドキュメント](https://doc.dataiku.com/dss/latest/)。
-* [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): 未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
-* [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について確認します。
-* [MSDN: HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションを定義する方法について確認します。
-* [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
-* [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスターへのアクセスのほか、HDInsight アプリケーションのテストとホストに空のエッジ ノードを使用する方法を確認します。
+* [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md):発行されていない HDInsight アプリケーションを HDInsight にデプロイする方法を確認します。
+* [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md):カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法を確認します。
+* [MSDN:HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx):HDInsight アプリケーションを定義する方法を確認します。
+* [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md):スクリプト アクションを使用して追加のアプリケーションをインストールする方法を確認します。
+* [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md):HDInsight クラスターにアクセスしたり、HDInsight アプリケーションをテストおよびホストしたりするために空のエッジ ノードを使用する方法を確認します。
