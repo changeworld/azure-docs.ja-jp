@@ -1,4 +1,4 @@
----
+﻿---
 title: JavaScript を使用して Azure で最初の Durable Functions を作成する
 description: Visual Studio Code を使用して Azure Durable Functions を作成して発行します。
 services: functions
@@ -108,7 +108,7 @@ ms.locfileid: "54034320"
 
 ## <a name="test-the-function-locally"></a>関数をローカルでテストする
 
-Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。  
+Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。
 
 1. Windows コンピューターでは、Azure Storage Emulator を起動し、local.settings.json の **AzureWebJobsStorage** プロパティが `UseDevelopmentStorage=true` に設定されていることを確認します。 Mac または Linux コンピューターでは、既存の Azure ストレージ アカウントの接続文字列に **AzureWebJobsStorage** プロパティを設定する必要があります。 ストレージ アカウントの作成については、この記事で後述します。
 
