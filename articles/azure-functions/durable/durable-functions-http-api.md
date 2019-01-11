@@ -1,5 +1,5 @@
 ---
-title: Azure のDurable Functions での HTTP API
+title: Azure の Durable Functions での HTTP API
 description: Azure Functions の Durable Functions 拡張機能で HTTP API を実装する方法を説明します。
 services: functions
 author: cgillum
@@ -74,7 +74,7 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
 
 ## <a name="async-operation-tracking"></a>非同期操作の追跡
 
-上記の HTTP 応答は、永続関数で実行時間の長い HTTP 非同期 API を実装するのに役立つように設計されています。 これは、*ポーリング コンシューマー パターン*と呼ばれる場合もあります。 クライアント/サーバー フローは次のように動作します。
+上記の HTTP 応答は、Durable Functions で実行時間の長い HTTP 非同期 API を実装するのに役立つように設計されています。 これは、*ポーリング コンシューマー パターン*と呼ばれる場合もあります。 クライアント/サーバー フローは次のように動作します。
 
 1. クライアントが、オーケストレーター関数など、実行時間の長いプロセスを開始する HTTP 要求を発行します。
 2. 対象の HTTP トリガーが、`statusQueryGetUri` 値の `Location` ヘッダーを含む HTTP 202 応答を返します。
