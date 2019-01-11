@@ -19,7 +19,7 @@ ms.locfileid: "53336529"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Durable Functions の関数の種類と機能の概要 (Azure Functions)
 
-Durable Functions は、関数実行のステートフル オーケストレーションを提供します。 Durable Functions はさまざまな Azure Functions から構成されるソリューションです。 それぞれの関数がオーケストレーションの一部として異なる役割を果たすことができます。 次のドキュメントでは、Durable Functions オーケストレーションに含まれる関数の種類の概要を示します。 関数を組み合わせるときの一般的なパターンもいくつか含まれています。  今すぐ開始するには、[C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md) で最初の Durable Functions を作成してください。
+Durable Functions では、関数実行のステートフル オーケストレーションを提供します。 永続関数 (durable function) とはさまざまな Azure Functions から構成されるソリューションです。 それぞれの関数がオーケストレーションの一部として異なる役割を果たすことができます。 次のドキュメントでは、永続関数オーケストレーションに含まれる関数の種類の概要を示します。 関数を組み合わせるときの一般的なパターンもいくつか含まれています。 今すぐ開始するには、[C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md) で最初の永続関数を作成してください。
 
 ![Durable Functions の種類][1]
 
@@ -37,7 +37,7 @@ Durable Functions は、関数実行のステートフル オーケストレー�
 
 ### <a name="orchestrator-functions"></a>オーケストレーター関数
 
-オーケストレーター関数は、Durable Functions の中核です。  オーケストレーター関数は、アクションが実行される方法と順序を表現します。  オーケストレーター関数は、「[Durable Functions の概要](durable-functions-overview.md)」にあるように、コード (C# または JavaScript) でオーケストレーションを表現します。  1 つのオーケストレーションに、[アクティビティ関数](#activity-functions)、[サブオーケストレーション](#sub-orchestrations)、[外部イベントの待ち受け](#external-events)、[タイマー](#durable-timers)など、さまざまな種類のアクションを設定できます。
+オーケストレーター関数は、永続関数の中核です。 オーケストレーター関数は、アクションが実行される方法と順序を表現します。 オーケストレーター関数は、「[Durable Functions の概要](durable-functions-overview.md)」にあるように、コード (C# または JavaScript) でオーケストレーションを表現します。 1 つのオーケストレーションに、[アクティビティ関数](#activity-functions)、[サブオーケストレーション](#sub-orchestrations)、[外部イベントの待ち受け](#external-events)、[タイマー](#durable-timers)など、さまざまな種類のアクションを設定できます。 
 
 オーケストレーター関数は[オーケストレーション トリガー](durable-functions-bindings.md#orchestration-triggers)によって始動させる必要があります。
 
