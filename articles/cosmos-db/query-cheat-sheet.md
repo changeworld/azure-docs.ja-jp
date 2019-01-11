@@ -1,19 +1,17 @@
 ---
 title: Azure Cosmos DB PDF クエリ チート シート
 description: Azure Cosmos DB の SQL、MongoDB、グラフ、およびテーブル API を使用してデータをクエリするのに役立つ印刷可能な PDF チート シート
-keywords: sql チート シート, sql チート シート pdf, sql クエリ チート シート
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 05361867ddbbefd31e72abeca10a9282ae702d1c
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 848b5a75e4e957b2ad61072ff2e229cacdba2019
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810476"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035085"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB クエリのチート シート
 

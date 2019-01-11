@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 06006456a08c5eb499eff504fea5dcffdc11d662
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0066a4ea5d91369bf6724dbaea4743a10bd8db0b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342393"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631857"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -145,7 +145,7 @@ Heartbeat
 
 Windows コンピューターでは、次の情報を調べて、Log Analytics とエージェントの接続を確認できます。
 
-1. [コントロール パネル] から **[Microsoft Monitoring Agent]** を開きます。 **[Azure Log Analytics]** タブで、エージェントに "**Microsoft Monitoring Agent は Log Analytics に正常に接続しました**" というメッセージが表示されていることを確認します。
+1. [コントロール パネル] から **[Microsoft Monitoring Agent]** を開きます。 **[Azure Log Analytics]** タブで、エージェントに"**Microsoft Monitoring Agent は Log Analytics に正常に接続しました**" というメッセージが表示されます。
 2. Windows イベント ログを開きます。 **アプリケーションとサービス ログ\Operations Manager** に移動して、ソースの **[サービス コネクタ]** でイベント ID 3000 および 5002 を検索します。 これらのイベントは、コンピューターが Log Analytics ワークスペースに登録され、構成を受信していることを示しています。
 
 エージェントが Log Analytics と通信できず、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されている場合は、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。 ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認する方法については、[Windows エージェントのネットワーク構成](../azure-monitor/platform/agent-windows.md)または [Linux エージェントのネットワーク構成](../log-analytics/log-analytics-agent-linux.md)に関する記事を参照してください。
@@ -330,8 +330,8 @@ Hybrid Runbook Worker で必要なポートの詳細については、[ハイブ
 
 Azure Portal で提供されている詳細情報に加え、ログに対する検索を実行できます。 ソリューション ページで **[Log Analytics]** を選択します。 **[ログ検索]** ウィンドウが開きます。
 
-また、[Log Analytics の検索 API のドキュメント](
-https://dev.loganalytics.io/)を参照して、クエリをカスタマイズし、さまざまなクライアントから使用する方法などを学ぶこともできます。
+クエリをカスタマイズする方法や、さまざまなクライアントから使用する方法などについては、[Log Analytics の検索 API のドキュメント](
+https://dev.loganalytics.io/)を参照してください。
 
 ### <a name="sample-queries"></a>サンプル クエリ
 
@@ -589,7 +589,7 @@ Update Management は更新プログラムの強化をクラウドで実行す�
 
 ただし、Update Management には関連更新プログラムに関する追加情報があるため、そのマシンは引き続き "非対応" として報告されることがあります。
 
-更新プログラムの分類ごとの更新プログラムのデプロイは CentOS では既定では動作しません。 SUSE で '他の更新プログラム' *のみ*を分類として選択すると、zypper (パッケージ マネージャー) に関連するセキュリティ更新プログラムもインストールされるか、またはその依存関係がまず必要になる場合があります。 この動作は、zypper の制限です。 場合によっては、更新プログラムのデプロイを再実行する必要があります。 確認するには、更新プログラムのログを調べてください。
+更新プログラムの分類ごとの更新プログラムのデプロイは CentOS では既定では動作しません。 CentOS 用の更新プログラムを正しく展開するには、更新プログラムが確実に適用されるように、すべての分類を選択します。 SUSE で '他の更新プログラム' *のみ*を分類として選択すると、zypper (パッケージ マネージャー) に関連するセキュリティ更新プログラムもインストールされるか、またはその依存関係がまず必要になる場合があります。 この動作は、zypper の制限です。 場合によっては、更新プログラムのデプロイを再実行する必要があります。 確認するには、更新プログラムのログを調べてください。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 

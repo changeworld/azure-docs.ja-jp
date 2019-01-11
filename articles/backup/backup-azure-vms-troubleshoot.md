@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: b751fe4feab48e6ed706a2e28bba8406f4f4891c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9bbaf23999c04eba5157ebe7dff73ed47418c99a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185700"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634186"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 次の表に示す情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
@@ -69,11 +69,11 @@ ms.locfileid: "53185700"
 | 復元操作に指定したストレージ アカウントの種類がオンラインではありません: <br>復元操作に指定したストレージ アカウントの種類がオンラインであることを確認してください。 |このエラーは、Azure Storage の一時的なエラーや障害が原因で発生する可能性があります。 別のストレージ アカウントを選択してください。 |
 | リソース グループのクォータに達しました: <br>Azure portal の一部のリソース グループを削除するか、Azure サポートに問い合わせて上限を引き上げてください。 |なし |
 | 選択したサブネットが存在しません: <br>存在するサブネットを選択してください。 |なし |
-| Backup サービスは、サブスクリプション内のリソースへのアクセスが承認されていません。 |このエラーを解決するには、「[バックアップ ディスクを復元する](backup-azure-arm-restore-vms.md#restore-backed-up-disks)」で説明されている手順を使用して、最初にディスクを復元します。 その後、「[復元されたディスクからの VM の作成](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)」で説明されている PowerShell の手順に従って、復元されたディスクから完全な VM を作成します。 |
+| Backup サービスは、サブスクリプション内のリソースへのアクセスが承認されていません。 |このエラーを解決するには、「[バックアップ ディスクを復元する](backup-azure-arm-restore-vms.md#create-new-restore-disks)」で説明されている手順を使用して、最初にディスクを復元します。 その後、「[復元されたディスクからの VM の作成](backup-azure-vms-automation.md#restore-an-azure-vm)」で説明されている PowerShell の手順を行います。 |
 
 ## <a name="backup-or-restore-takes-time"></a>バックアップまたは復元に要する時間
 バックアップに 12 時間以上、または復元に 6 時間以上かかる場合は、次のことを行います。
-* [バックアップ時間に影響する要因](backup-azure-vms-introduction.md#total-vm-backup-time)と[復元時間に影響する要因](backup-azure-vms-introduction.md#total-restore-time)を把握します。
+* [バックアップ時間に影響する要因](backup-azure-vms-introduction.md#time-considerations)と[復元時間に影響する要因](backup-azure-vms-introduction.md#restore-considerations)を把握します。
 * [バックアップのベスト プラクティス](backup-azure-vms-introduction.md#best-practices)に従っていることを確認します。
 
 ## <a name="vm-agent"></a>VM エージェント

@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: b14a36e79488f586173a6f4c8b81a24d8ce24806
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: eb2a6692c0b00dc4419c601228453a8cfc44c02a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727498"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156784"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT DevKit デバイスをリモート監視ソリューション アクセラレータに接続する
 
@@ -36,7 +36,7 @@ VS Code でリモート監視サンプルを開くには:
 
 1. IoT DevKit がお使いのコンピューターに接続されていないことを確認します。 まず VS Code を起動し、DevKit をコンピューターに接続します。
 
-1. `F1` をクリックしてコマンド パレットを開き、**[Azure IoT Device Workbench: Open Examples...]\(Azure IoT Device Workbench: 例を開く...\)** を入力して選択します。次に、**[IoT DevKit]** をボードとして選択します。
+1. `F1` をクリックしてコマンド パレットを開き、**[Azure IoT Device Workbench:Open Examples...]\(Azure IoT Device Workbench: 例を開く...\)** を入力して選択します。次に、**[IoT DevKit]** をボードとして選択します。
 
 1. **[リモート監視]** を見つけ、**[Open Sample]\(サンプルを開く\)** をクリックします。 新しい VS Code ウィンドウが開いて、プロジェクト フォルダーが表示されます。
 
@@ -122,7 +122,7 @@ DevKit デバイスにアップロードしたサンプル アプリケーショ
 問題が発生した場合は、[IoT DevKit の FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) に関するページを参照するか、以下のチャネルを使用して Microsoft までお問い合わせください。
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>次の手順
 

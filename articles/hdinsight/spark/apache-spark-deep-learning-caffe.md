@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: eba66d4abf84603f1fdb5761d3ea1987983908de
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 451ccff9747988ee019f2be9e0cccec12c9c1ef9
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607032"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118236"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 
@@ -37,7 +37,7 @@ ms.locfileid: "53607032"
 
 HDInsight は PaaS ソリューションであるため、優れたプラットフォーム機能が用意されています。したがって、いくつかのタスクを簡単に実行できます。 このブログ記事で使用する機能の 1 つは[スクリプト アクション](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)と呼ばれ、シェル コマンドを実行してクラスター ノード (ヘッド ノード、worker ノード、またはエッジ ノード) をカスタマイズ可能にします。
 
-## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>ステップ 1:すべてのノードに必要な依存関係をインストールする
+## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>手順 1:すべてのノードに必要な依存関係をインストールする
 
 最初に、依存関係をインストールする必要があります。 Caffe サイトと [CaffeOnSpark サイト](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)に、Spark の依存関係を YARN モードでインストールするために役立つ Wiki が用意されています。 HDInsight では、Spark を YARN モードでも使用します。 ただし、HDInsight プラットフォームの依存関係をいくつか追加する必要があります。 これを行うために、スクリプト アクションを使用し、それをすべてのヘッド ノードと worker ノードで実行します。 これらの依存関係は他のパッケージにも依存するため、このスクリプト アクションの実行には約 20 分かかります。 このスクリプト アクションは、GitHub の場所や既定の BLOB ストレージ アカウントなど、HDInsight クラスターで利用できる場所に配置する必要があります。
 
@@ -89,7 +89,7 @@ HDInsight は PaaS ソリューションであるため、優れたプラット�
 
     #compile CaffeOnSpark
     pushd ${CAFFE_ON_SPARK}
-    #always clean up the environment before building (especially when rebuiding), or there will be errors such as "failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2"
+    #always clean up the environment before building (especially when rebuiding), or there will be errors such as "failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occurred: exec returned: 2"
     make clean 
     #the build step usually takes 20~30 mins, since it has a lot maven dependencies
     make build 
@@ -116,15 +116,15 @@ CaffeOnSpark のドキュメントに記載されていること以外に、い�
 - コンパイルされた Caffe ライブラリを BLOB ストレージに配置します。追加のコンパイル時間が発生するのを避けるために、後でスクリプト アクションを使用してこれらのライブラリをすべてのノードにコピーします。
 
 
-### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>トラブルシューティング: An Ant BuildException has occured: exec returned: (Ant BuildException が発生しました: exec から返された値:)2
+### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>トラブルシューティング:An Ant BuildException has occured: exec returned: (Ant BuildException が発生しました: exec から返された値:)2
 
 最初に CaffeOnSpark をビルドしようとしたときに次のメッセージが返される場合があります。
 
-    failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2
+    failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occurred: exec returned: 2
 
 "make clean" でコード リポジトリをクリーンアップしてから "make build" を実行してください。正しい依存関係があれば、この問題は解決します。
 
-### <a name="troubleshooting-maven-repository-connection-time-out"></a>トラブルシューティング: Maven リポジトリの接続タイムアウト
+### <a name="troubleshooting-maven-repository-connection-time-out"></a>トラブルシューティング:Maven リポジトリの接続タイムアウト
 
 Maven から次のスニペットのような接続タイムアウト エラーが返される場合があります。
 
@@ -136,7 +136,7 @@ Maven から次のスニペットのような接続タイムアウト エラー�
 数分後に再試行する必要があります。
 
 
-### <a name="troubleshooting-test-failure-for-caffe"></a>トラブルシューティング: Caffe のテスト エラー
+### <a name="troubleshooting-test-failure-for-caffe"></a>トラブルシューティング:Caffe のテスト エラー
 
 おそらく、CaffeOnSpark の最終チェック時にテスト エラーが表示されます。 このメッセージは UTF-8 エンコードに関連すると考えられますが、Caffe の使用には影響しません。
 
@@ -291,7 +291,7 @@ SampleID は MNIST データセットの ID を表し、label はモデルによ
 
 
 ## <a name="seealso"></a>関連項目
-* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
