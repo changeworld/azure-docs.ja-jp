@@ -189,8 +189,6 @@ items:
       href: how-to-connect-azureadaccount.md
     - name: AD DS コネクタ アカウントのパスワードの変更
       href: how-to-connect-sync-change-addsacct-pass.md
-    - name: ADConnectivityTools PowerShell モジュールとは
-      href: how-to-connect-adconnectivitytools.md
   - name: パススルー認証の管理
     items:
     - name: パススルー認証の概要
@@ -267,6 +265,8 @@ items:
         href: how-to-connect-sync-service-manager-ui-mvsearch.md
   - name: トラブルシューティング
     items:
+    - name: ADConnectivityTools PowerShell モジュールとは
+      href: how-to-connect-adconnectivitytools.md
     - name: 接続
       href: tshoot-connect-connectivity.md
     - name: 同期中のエラー
@@ -325,9 +325,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools リファレンス
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 53da6c08a48f14034e95094ec698f4ec55703466
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 04a7cbec3b72de527cfb1f2b8bf7f0b172617ce3
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342495"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215322"

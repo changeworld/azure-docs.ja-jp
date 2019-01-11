@@ -194,6 +194,8 @@ items:
     href: /powershell/module/azurerm.servicebus
   - name: REST
     href: /rest/api/servicebus
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.servicebus/allversions
   - name: Quotas (クォータ)
     href: service-bus-quotas.md
   - name: SQLFilter 構文
@@ -228,9 +230,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azureservicebus
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: be2f26200cc998f8053bcfe349afc6271557d095
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 22607c611b9e733cd17b9ad13538e3e12d93e410
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271959"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212780"

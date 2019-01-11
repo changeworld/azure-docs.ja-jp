@@ -39,9 +39,11 @@ items:
   items:
   - name: REST
     href: https://docs.microsoft.com/rest/api/netapp/
-ms.openlocfilehash: 7bb3326cd266c3db37f3e89700e45c9db199454d
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.netapp/allversions
+ms.openlocfilehash: 613c0b38cca5608b30a3450a13343f0b86179777
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052447"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197503"
