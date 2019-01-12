@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54018621"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-azure-table-connector.md)
 > * [現在のバージョン](connector-azure-table-storage.md)
 
@@ -81,7 +81,7 @@ Shared Access Signature を使用して、Storage のリンクされたサービ
 Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 アカウントのアクセス キーを共有する必要はありません。 Shared Access Signature とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、Shared Access Signature 内で適切なコンストラクターまたはメソッドに渡すだけで、Shared Access Signature でストレージ リソースにアクセスできます。 Shared Access Signature について詳しくは、[Shared Access Signature のモデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
 
 > [!NOTE]
-> Data Factory で、**サービスの Shared Access Signature** と**アカウントの Shared Access Signature** がサポートされるようになりました。 この 2 種類の SAS とその作成方法について詳しくは、「[共有アクセス署名の種類](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。 
+> Data Factory で、**サービスの Shared Access Signature** と**アカウントの Shared Access Signature** がサポートされるようになりました。 この 2 種類の SAS とその作成方法について詳しくは、「[共有アクセス署名の種類](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。
 
 > [!TIP]
 > ストレージ アカウントに使用するサービスの Shared Access Signature を生成するには、次の PowerShell コマンドを実行します。 プレースホルダーを置き換えたうえで、必要なアクセス許可を付与してください。
