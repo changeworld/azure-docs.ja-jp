@@ -57,8 +57,8 @@ Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティは **CosmosDb** に設定する必要があります。 | [はい] |
-| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。<br /><br />**メモ**:後の例で示すように、接続文字列でデータベース情報を指定する必要があります。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 |[はい] |
+| type | **type** プロパティは **CosmosDb** に設定する必要があります。 | はい |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。<br /><br />**メモ**:後の例で示すように、接続文字列でデータベース情報を指定する必要があります。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 |はい |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 このプロパティを指定しないと、既定の Azure Integration Runtime が使用されます。 |いいえ  |
 
 **例**
@@ -92,8 +92,8 @@ Azure Cosmos DB (SQL API) をコピー元またはコピー先としてデータ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティは、**DocumentDbCollection** を設定する必要があります。 |[はい] |
-| collectionName |Azure Cosmos DB ドキュメント コレクションの名前です。 |[はい] |
+| type | データセットの **type** プロパティは、**DocumentDbCollection** を設定する必要があります。 |はい |
+| collectionName |Azure Cosmos DB ドキュメント コレクションの名前です。 |はい |
 
 **例**
 
@@ -138,7 +138,7 @@ Azure Cosmos DB (SQL API) からデータをコピーするには、コピー �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティは **DocumentDbCollectionSource** に設定する必要があります。 |[はい] |
+| type | コピー アクティビティのソースの **type** プロパティは **DocumentDbCollectionSource** に設定する必要があります。 |はい |
 | query |データを読み取る Azure Cosmos DB クエリを指定します。<br/><br/>例:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ  <br/><br/>指定しないと、SQL ステートメント `select <columns defined in structure> from mycollection` が実行されます |
 | nestingSeparator |ドキュメントが入れ子になっていることと、結果セットの入れ子を解除する方法を示す特殊文字。<br/><br/>たとえば、Azure Cosmos DB クエリで入れ子になった結果 `"Name": {"First": "John"}` が返される場合、コピー アクティビティは値が "John" である列名 `Name.First` として識別します (**nestedSeparator** の値が **.**  (ドット) のとき)。 |いいえ <br />(既定値は **.**  (ドット) です) |
 
@@ -182,7 +182,7 @@ Azure Cosmos DB (SQL API) にデータをコピーするには、コピー ア�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの **type** プロパティは **DocumentDbCollectionSink** に設定する必要があります。 |[はい] |
+| type | コピー アクティビティのシンクの **type** プロパティは **DocumentDbCollectionSink** に設定する必要があります。 |はい |
 | writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ ID を持つドキュメントが既に存在する場合に、そのドキュメントを置き換えることです。それ以外の場合はドキュメントを挿入します。<br /><br />**メモ**:元のドキュメントまたは列のマッピングで ID が指定されていない場合、Data Factory によってドキュメントの ID が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ <br />(既定値は **insert** です) |
 | writeBatchSize | Data Factory では、[Azure Cosmos DB Bulk Executor ライブラリ](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)を使用して Azure Cosmos DB にデータが書き込まれます。 **writeBatchSize** プロパティにより、ADF でライブラリに提供されるドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。以下のヒントをご覧ください。 |いいえ <br />(既定値は **10,000**) |
 | nestingSeparator |入れ子になった文書が必要であることを示す **source** 列名の特殊文字。 <br/><br/>たとえば、出力データセット構造内の `Name.First` は、**nestedSeparator** が **.**  (ドット) の場合は、次の JSON 構造を Azure Cosmos DB ドキュメント内に生成します。`"Name": {"First": "[value maps to this column from source]"}`  |いいえ <br />(既定値は **.**  (ドット) です) |

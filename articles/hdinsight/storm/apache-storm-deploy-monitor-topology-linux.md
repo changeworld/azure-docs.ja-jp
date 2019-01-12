@@ -54,7 +54,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
     > [!NOTE]  
     > Data Lake Tools for Visual Studio は、以前は HDInsight Tools for Visual Studio と呼ばれていました。
     >
-    > Data Lake Tools for Visual Studio は、Visual Studio 2017 用の __Azure ワークロード__に含まれています。
+    > Data Lake Tools for Visual Studio は、Visual Studio 2017 用の __Azure ワークロード__ に含まれています。
 
 2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** を選択します。
 
