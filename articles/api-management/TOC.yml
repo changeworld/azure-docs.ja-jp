@@ -218,6 +218,8 @@ items:
     href: /rest/api/apimanagement/
   - name: REST (オリジナル)
     href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.apimanagement/allversions
 - name: リソース
   items:
   - name: FAQ
@@ -242,9 +244,9 @@ items:
     href: https://aka.ms/apimblog
   - name: 機能のリクエスト
     href: https://aka.ms/apimwish
-ms.openlocfilehash: f3559e2da929ba132ee8f96c2d7e6cfdd68aa75a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fd8cade676bb8966ad33637bad97d100c268f89d
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972169"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246621"

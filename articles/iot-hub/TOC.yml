@@ -37,6 +37,8 @@ items:
   items:
   - name: メッセージのルーティング
     href: tutorial-routing.md
+  - name: メトリックと診断ログの使用
+    href: tutorial-use-metrics-and-diags.md
   - name: 手動フェールオーバーの実行
     href: tutorial-manual-failover.md
   - name: デバイスの構成
@@ -418,9 +420,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 79e13d2f753dc2f407e614033cd9370159d854a0
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7ac517a2d2963993d40899183c020570b2934f80
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54154965"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247335"

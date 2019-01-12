@@ -267,6 +267,8 @@ items:
     href: ../virtual-machines/azure-cli-arm-commands.md
   - name: REST
     href: /rest/api/virtualmachinescalesets/
+  - name: Azure テンプレート
+    href: /azure/templates/microsoft.compute/virtualmachinescalesets
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -281,9 +283,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-vm-scale-set
-ms.openlocfilehash: 0f633c6ed77d20f5b2de78687297d4f9a8d5094a
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: de2352105b178a91e47934db5b2c2d6b82a12b94
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189917"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231582"

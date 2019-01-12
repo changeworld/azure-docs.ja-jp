@@ -401,6 +401,8 @@ items:
     href: /dotnet/api/microsoft.azure.management.streamanalytics
   - name: REST
     href: /rest/api/streamanalytics
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.streamanalytics/allversions
 - name: リソース
   items:
   - name: Stream Analytics プレビュー
@@ -427,9 +429,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 34d783a5c5208ea69c7843751480d9f1ffcfd48b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4e10f58b1d1e0ec7736774c91ae54ed202aa5163
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084458"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230188"

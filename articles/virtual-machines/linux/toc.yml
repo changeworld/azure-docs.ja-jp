@@ -526,6 +526,8 @@ items:
     href: https://azure.microsoft.com/develop/python/
   - name: REST
     href: /rest/api/compute
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.compute/allversions
 - name: リソース
   items:
   - name: テンプレートの作成
@@ -548,9 +550,9 @@ items:
     href: faq.md
 - name: トラブルシューティング
   href: ../troubleshooting/index.md
-ms.openlocfilehash: fbf98c5c016d6a64c68c4459b4d27ce5c2f46da6
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 2f7608114083aaabe9cb611aaab348435cd72698
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652654"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247647"
