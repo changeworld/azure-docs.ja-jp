@@ -20,7 +20,7 @@ ms.lasthandoff: 01/08/2019
 ms.locfileid: "54105425"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [現在のバージョン](connector-mongodb.md)
 
@@ -104,7 +104,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 ```json
 {
-     "name":  "MongoDbDataset",
+    "name": "MongoDbDataset",
     "properties": {
         "type": "MongoDbCollection",
         "linkedServiceName": {
@@ -199,7 +199,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 * 実テーブルと同じデータ (複合型列を除く) を含む **ベース テーブル**。 ベース テーブルには、それが表す実テーブルと同じ名前が使用されます。
 * 複合型列ごとの**仮想テーブル**。入れ子になったデータが展開されます。 仮想テーブルの名前は、実テーブルの名前、区切り文字の "_"、配列またはオブジェクトの名前を使用して付けられます。
 
-仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。  仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
+仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
 
 ### <a name="example"></a>例
 
@@ -239,7 +239,6 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 | 1111 |1 |6 |
 | 2222 |0 |1 |
 | 2222 |1 |2 |
-
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
