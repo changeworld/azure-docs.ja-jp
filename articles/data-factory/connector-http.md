@@ -21,7 +21,7 @@ ms.locfileid: "54020032"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP エンドポイントからデータをコピーする
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-http-connector.md)
 > * [現在のバージョン](connector-http.md)
 
@@ -29,7 +29,7 @@ ms.locfileid: "54020032"
 
 この HTTP コネクタ、[REST コネクタ](connector-rest.md)および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
-- **REST コネクタ**では、具体的には RESTful API からのデータのコピーがサポートされます。 
+- **REST コネクタ**では、具体的には RESTful API からのデータのコピーがサポートされます。
 - **HTTP コネクタ**では一般的に、HTTP エンドポイントからデータを取得します (たとえば、ファイルをダウンロードします)。 REST コネクタが使用可能になる前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
 - **Web テーブル コネクタ**では、HTML Web ページからテーブルの内容を抽出します。
 
@@ -160,9 +160,9 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-このセクションでは、HTTP データセットでサポートされているプロパティの一覧を示します。 
+このセクションでは、HTTP データセットでサポートされているプロパティの一覧を示します。
 
-データセットの定義に使用できるセクションとプロパティの完全な一覧については、「[データセットとリンクされたサービス](concepts-datasets-linked-services.md)」を参照してください。 
+データセットの定義に使用できるセクションとプロパティの完全な一覧については、「[データセットとリンクされたサービス](concepts-datasets-linked-services.md)」を参照してください。
 
 HTTP からデータをコピーするには、データセットの **type** プロパティを **HttpFile** に設定します。 次のプロパティがサポートされています。
 
@@ -222,7 +222,7 @@ HTTP からデータをコピーするには、データセットの **type** �
 
 このセクションでは、HTTP ソースでサポートされているプロパティの一覧を示します。
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。
 
 ### <a name="http-as-source"></a>ソースとしての HTTP
 
