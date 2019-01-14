@@ -22,7 +22,7 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37051152"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータの移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-amazon-simple-storage-service-connector.md)
 > * [Version 2 (現在のバージョン)](../connector-amazon-simple-storage-service.md)
 
@@ -89,7 +89,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 ```
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
-データセットを指定して Azure Blob Storage の入力データを表すには、そのデータセットの type プロパティを **AmazonS3** に設定します。 また、データセットの **linkedServiceName** プロパティは、Amazon S3 のリンクされたサービスの名前に設定します。 データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事をご覧ください。 
+データセットを指定して Azure Blob Storage の入力データを表すには、そのデータセットの type プロパティを **AmazonS3** に設定します。 また、データセットの **linkedServiceName** プロパティは、Amazon S3 のリンクされたサービスの名前に設定します。 データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事をご覧ください。
 
 構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (SQL Database、Azure BLOB、Azure テーブルなど) でほぼ同じです。 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **AmazonS3** 型のデータセットの **typeProperties** セクション (Amazon S3 データセットを含む) には次のプロパティがあります。
 
@@ -181,7 +181,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON の使用例: Amazon S3 から Azure Blob Storage へのデータのコピー
 このサンプルは、Amazon S3 から Azure Blob Storage にデータをコピーする方法を示します。 Data Factory のコピー アクティビティを使用して、[サポートされている任意のシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)データを直接コピーすることもできます。
 
-この例は、次の Data Factory エンティティの JSON 定義を示しています。 [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)[PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) のいずれかで、この定義を使用して、Amazon S3 から Blob ストレージにデータをコピーするためのパイプラインを作成できます。   
+この例は、次の Data Factory エンティティの JSON 定義を示しています。 [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)[PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) のいずれかで、この定義を使用して、Amazon S3 から Blob ストレージにデータをコピーするためのパイプラインを作成できます。
 
 * [AwsAccessKey](#linked-service-properties)型のリンクされたサービス。
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
