@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 651a03f69a7664b68ce3fe5c512c59c01762a505
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 4210528003cdb1f584bec3dea80c1aa1db2f86df
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282477"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632027"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用した HDInsight での Windows ベースの Apache Hadoop クラスターの管理
 
-[Azure portal][azure-portal] を使用して、Azure HDInsight で Windows ベースの Apache Hadoop クラスターを作成し、Hadoop ユーザーのパスワードを変更して、クラスターで Hadoop コマンド コンソールにアクセスできるようにリモート デスクトップ プロトコル (RDP) を有効にすることができます。
+[Azure portal][azure-portal] を使用して、Azure HDInsight で Windows ベースの [Apache Hadoop](https://hadoop.apache.org/) クラスターを作成し、Hadoop ユーザーのパスワードを変更して、クラスターで Hadoop コマンド コンソールにアクセスできるようにリモート デスクトップ プロトコル (RDP) を有効にすることができます。
 
-この記事の情報は、Windows ベースの HDInsight クラスターにのみ適用されます。 Linux ベースのクラスターの管理については、「[Azure Portal を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-portal-linux.md)」を参照してください。
+この記事の情報は、Windows ベースの HDInsight クラスターにのみ適用されます。 Linux ベースのクラスターの管理については、「[Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md)」をご覧ください。
 
 [!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
@@ -49,18 +49,16 @@ ms.locfileid: "51282477"
 ## <a name="create-clusters"></a>クラスターの作成
 ポータルを使用した作成手順については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
 
-HDInsight は、広範囲の Hadoop コンポーネントで動作します。 検証およびサポートされているコンポーネントの一覧については、「[Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)」を参照してください。 次のいずれかのオプションを使用して、HDInsight をカスタマイズできます。
+HDInsight は、広範囲の Apache Hadoop コンポーネントで動作します。 検証およびサポートされているコンポーネントの一覧については、[Azure HDInsight でサポートされている Apache Hadoop のバージョン](hdinsight-component-versioning.md)に関する記事をご覧ください。 次のいずれかのオプションを使用して、HDInsight をカスタマイズできます。
 
 * Script Action を使用してカスタム スクリプトを実行します。これによってクラスターをカスタマイズして、クラスター構成を変更することや、Giraph や Solr などのカスタム コンポーネントをインストールすることができます。 詳しくは、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。
 * クラスターの作成中に、HDInsight .NET SDK または Azure PowerShell でクラスター カスタマイズ パラメーターを使用します。 そうすることで、クラスターの有効期間中はこれらの構成変更が保持され、Azure プラットフォームが保守のために定期的に実行するクラスター ノードの再イメージ化の影響も受けません。 クラスター カスタマイズ パラメーターの使用方法の詳細については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
-* Mahout や Cascading などの一部のネイティブ Java コンポーネントは、JAR ファイルとしてクラスター上で実行できます。 これらの JAR ファイルは、Azure BLOB ストレージに分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。 詳細については、 [プログラムによる Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)に関するページを参照してください。
+* [Apache Mahout](https://mahout.apache.org/) や [Cascading](https://www.cascading.org/) などの一部のネイティブ Java コンポーネントは、JAR ファイルとしてクラスター上で実行できます。 これらの JAR ファイルは、Azure BLOB ストレージに分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。 詳しくは、 [プログラムによる Apache Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)に関するページをご覧ください。
 
-  > [!NOTE]
+  > [!NOTE]  
   > HDInsight クラスターへの JAR ファイルのデプロイ、または HDInsight クラスターでの JAR ファイルの呼び出しに関する問題がある場合は、 [Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
   >
   > Cascading は HDInsight ではサポートされておらず、Microsoft サポートの対象でもありません。 サポートされているコンポーネントの一覧については、[HDInsight で提供されるクラスター バージョンの新機能](hdinsight-component-versioning.md)に関する記事をご覧ください。
-  >
-  >
 
 リモート デスクトップ接続を使用したクラスターへのカスタム ソフトウェアのインストールはサポートされていません。 クラスターの再作成が必要な場合にファイルが失われるため、ヘッド ノードのドライブにはファイルを保存しないでください。 Azure BLOB ストレージにファイルを保存することをお勧めします。 BLOB ストレージは永続的です。
 
@@ -75,25 +73,22 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
     ![Azure Portal HDInsight クラスター 基本情報](./media/hdinsight-administer-use-management-portal/hdinsight-essentials.png)
 
    * メニューをカスタマイズするには、メニュー上の任意の場所を右クリックし、 **[カスタマイズ]** をクリックします。
-   * **[設定]** と **[すべての設定]**: クラスター用の **[設定]** ブレードを表示します。このブレードを使用して、クラスターの詳細な構成情報にアクセスできます。
-   * **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]**: これらはすべてクラスター ダッシュボードにアクセスするために使用します。クラスター ダッシュボードは、Linux ベースのクラスター用の Ambari Web です。
-   * **[SSH (Secure Shell)]**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。
-   * **[クラスターのスケーリング]**: このクラスターの worker ノードの数を変更できます。
-   * **[削除]**: クラスターを削除します。
-   * **[クイック スタート]**: HDInsight の操作を開始するために役立つ情報を表示します。
-   * **[ユーザー]**: このクラスターの*ポータル管理*に対する権限を、Azure サブスクリプションの他のユーザーに設定できます。
+   * **[設定]** と **[すべての設定]**:クラスター用の **[設定]** ブレードを表示します。このブレードを使用して、クラスターの詳細な構成情報にアクセスできます。
+   * **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]**:これらはすべてクラスター ダッシュボードにアクセスするために使用します。クラスター ダッシュボードは、Linux ベースのクラスター用の Ambari Web です。
+   * **[Secure Shell]**:Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。
+   * **[クラスターのスケーリング]**:このクラスターの worker ノードの数を変更できます。
+   * **[削除]**:クラスターを削除します。
+   * **[クイック スタート]**:HDInsight の操作を開始するために役立つ情報を表示します。
+   * **[ユーザー]**:このクラスターの "*ポータル管理*" に対するアクセス許可を、Azure サブスクリプションの他のユーザーに設定できます。
 
-     > [!IMPORTANT]
+     > [!IMPORTANT]  
      > これは、Azure ポータルでのこのクラスターへのアクセスと権限 *"だけ"* に影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
-     >
-     >
-   * **[タグ]**: タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。 たとえば、 **プロジェクト**という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
-   * **[Ambari Views]**: Ambari Web へのリンク。
 
-     > [!IMPORTANT]
-     > HDInsight クラスターによって提供されるサービスを管理するには、Ambari Web または Ambari REST API を使用する必要があります。 Ambari の使用の詳細については、「 [Ambari を使用した HDInsight クラスターの管理 (プレビュー)](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
-     >
-     >
+   * **タグ**:タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。 たとえば、 **プロジェクト**という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
+   * **[Ambari Views]**:Ambari Web にリンクします。
+
+     > [!IMPORTANT]  
+     > HDInsight クラスターによって提供されるサービスを管理するには、Ambari Web または Ambari REST API を使用する必要があります。 Ambari の使用について詳しくは、[Apache Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページをご覧ください。
 
      **[使用状況]**:
 
@@ -102,32 +97,31 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
 
     ![Azure Portal HDInsight クラスター使用状況](./media/hdinsight-administer-use-management-portal/hdinsight.portal.cluster.settings.png)
 
-   * **[プロパティ]**: クラスターのプロパティを表示します。
+   * **[プロパティ]**:クラスターのプロパティを表示します。
    * **[クラスター AAD ID]**:
-   * **[Azure ストレージ キー]**: 既定のストレージ アカウントとそのキーを表示します。 ストレージ アカウントは、クラスターの作成処理中に構成します。
-   * **[クラスター ログイン]**: クラスターの HTTP ユーザー名とパスワードを変更します。
-   * **[外部メタストア]**: Hive メタストアと Oozie メタストアを表示します。 メタストアを構成できるのは、クラスターの作成処理中のみです。
-   * **[クラスターのスケーリング]**: クラスターの worker ノードの数を増減します。
-   * **[リモート デスクトップ]**: リモート デスクトップ (RDP) アクセスを有効および無効にし、RDP ユーザー名を構成します。  RDP ユーザー名は HTTP ユーザー名とは別にする必要があります。
+   * **[Azure ストレージ キー]**:既定のストレージ アカウントとそのキーを表示します。 ストレージ アカウントは、クラスターの作成処理中に構成します。
+   * **[クラスター ログイン]**:クラスターの HTTP ユーザー名とパスワードを変更します。
+   * **[外部メタストア]**:[Apache Hive](https://hive.apache.org/) メタストアと [Apache Oozie](https://oozie.apache.org/) メタストアを表示します。 メタストアを構成できるのは、クラスターの作成処理中のみです。
+   * **[クラスターのスケーリング]**:クラスターの worker ノードの数を増減します。
+   * **[リモート デスクトップ]**:リモート デスクトップ (RDP) アクセスを有効および無効にし、RDP ユーザー名を構成します。  RDP ユーザー名は HTTP ユーザー名とは別にする必要があります。
    * **[指名パートナー]**:
 
-     > [!NOTE]
+     > [!NOTE]  
      > これは使用可能な設定の汎用リストです。すべてのクラスターの種類でこれらの設定がすべて表示されるわけではありません。
-     >
-     >
+
 6. **[プロパティ]** をクリックします。
 
     次のプロパティ セクションが表示されます。
 
-   * **[ホスト名]**: クラスター名。
+   * **[ホスト名]**:クラスター名。
    * **[クラスター URL]**。
-   * **[状態]**: Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization が表示されます。
-   * **[リージョン]**: Azure の場所。 サポートされている Azure の場所の一覧については、「**HDInsight の価格**」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/)ボックスの一覧をご覧ください。
+   * **[状態]**:Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization が含まれます。
+   * **[リージョン]**:Azure の場所。 サポートされている Azure の場所の一覧については、「 **HDInsight の価格** 」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/)ボックスの一覧をご覧ください。
    * **[データの作成日]**。
-   * **[オペレーティング システム]**: **Windows** または **Linux**。
-   * **[タイプ]**: Hadoop、HBase、Storm、Spark。
-   * **[バージョン]**。 [HDInsight のバージョン](hdinsight-component-versioning.md)
-   * **[サブスクリプション]**: サブスクリプション名。
+   * **[オペレーティング システム]**:**[Windows]** または **[Linux]**。
+   * **[タイプ]**:Hadoop、HBase、Storm、Spark。
+   * **[バージョン]**。  [HDInsight のバージョン](hdinsight-component-versioning.md)
+   * **サブスクリプション**:サブスクリプションの名前。
    * **[サブスクリプション ID]**。
    * **[プライマリ データ ソース]**。 既定の Hadoop ファイル システムとして使用される Azure BLOB ストレージ アカウント。
    * **[worker ノードの価格レベル]**。
@@ -145,19 +139,17 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
 ## <a name="scale-clusters"></a>クラスターのスケール
 クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用される worker ノードの数を、クラスターを再作成することなく、変更できます。
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。 クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。  「[クラスターの一覧と表示](#list-and-show-clusters)」を参照してください。
->
->
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
-* Hadoop
+* Apache Hadoop
 
     保留中または実行中のジョブに影響を与えることなく、実行中の Hadoop クラスター内の worker ノードの数をシームレスに増加できます。 処理の進行中に新しいジョブを送信することもできます。 スケール設定処理の失敗は正常に処理され、クラスターは常に機能状態になります。
 
     データ ノードの数を減らして Hadoop クラスターのスケールを小さくした場合、クラスター内の一部のサービスが再起動されます。 これにより、スケール設定処理の完了時に、実行中および保留中のすべてのジョブが失敗します。 ただし、処理が完了した後にジョブを再送信できます。
-* hbase
+* Apache HBase
 
     実行中の HBase クラスターに対して、ノードの追加または削除をシームレスに実行できます。 地域サーバーは、スケール設定処理の完了の数分以内に自動的に分散されます。 ただし、クラスターのヘッドノードにログインし、コマンド プロンプト ウィンドウから次のコマンドを実行して、地域サーバーを手動で分散することもできます。
 
@@ -166,16 +158,16 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
         >balancer
 
     HBase シェルの使用方法の詳細については、以下を参照してください。
-* Storm
+* Apache Storm
 
     実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
 
     バランス再調整は、次の 2 つの方法で実行できます。
 
-  * Storm Web UI
+  * Apache Storm Web UI
   * コマンド ライン インターフェイス (CLI) ツール
 
-    詳細については、 [Apache Storm に関するドキュメント](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) をご覧ください。
+    詳細については、 [Apache Storm に関するドキュメント](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) をご覧ください。
 
     Storm Web UI は、HDInsight クラスターで使用できます。
 
@@ -206,7 +198,7 @@ Hadoop ジョブの大半は、たまにしか実行されないバッチ ジョ
 * Azure Data Factory を使用する。 オンデマンドおよび自己定義型の HDInsight のリンクされたサービスについては、「[Azure HDInsight のリンクされたサービス](../data-factory/compute-linked-services.md)」および「[Azure Data Factory を使用した変換と分析](../data-factory/transform-data.md)」をご覧ください。
 * Azure PowerShell を使用する。  「 [HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
 * Azure クラシック CLI を使用する。 [Azure クラシック CLI を使用した HDInsight クラスターの管理](hdinsight-administer-use-command-line.md)に関するページをご覧ください。
-* HDInsight .NET SDK を使用する。 「 [HDInsight での Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)」をご覧ください。
+* HDInsight .NET SDK を使用する。 [Apache Hadoop ジョブを送信する](hadoop/submit-apache-hadoop-jobs-programmatically.md)に関するページをご覧ください。
 
 価格情報については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。 ポータルからクラスターを削除する方法については、「[クラスターの削除](#delete-clusters)
 
@@ -234,10 +226,8 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 既定では、これらのサービスへのアクセス許可が付与されます。 Azure ポータルからアクセス許可を取り消す/付与することができます。
 
-> [!NOTE]
+> [!NOTE]  
 > アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
->
->
 
 **HTTP Web サービスのアクセス許可を付与する/取り消すには**
 
@@ -264,15 +254,15 @@ Azure Resource Manager モードでは、各 HDInsight クラスターは Azure 
 ## <a name="open-hdinsight-query-console"></a>HDInsight クエリ コンソールを開く
 HDInsight クエリ コンソールには、次の機能が用意されています。
 
-* **[Hive エディター]**: Hive ジョブを送信するための GUI Web インターフェイス。  「[クエリ コンソールを使用して Hive クエリを実行](hadoop/apache-hadoop-use-hive-query-console.md)」を参照してください。
+* **[Hive エディター]**:Hive ジョブを送信するための GUI Web インターフェイス。  「[クエリ コンソールを使用して Apache Hive クエリを実行する](hadoop/apache-hadoop-use-hive-query-console.md)」をご覧ください。
 
     ![HDInsight ポータル Hive エディター](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
-* **[ジョブ履歴]**: Hadoop ジョブを監視します。  
+* **[ジョブ履歴]**:Hadoop ジョブを監視します。  
 
     ![HDInsight ポータル ジョブ履歴](./media/hdinsight-administer-use-management-portal/hdinsight-job-history.png)
 
     **[クエリ名]** をクリックすると、ジョブのプロパティ、**ジョブ クエリ**、**ジョブの出力など、ジョブの詳細が表示されます。 また、クエリと出力の両方をワークステーションにダウンロードすることもできます。
-* **[ファイル ブラウザー]**: 既定のストレージ アカウントとリンクされたストレージ アカウントを参照します。
+* **[ファイル ブラウザー]**:既定のストレージ アカウントとリンクされたストレージ アカウントを参照します。
 
     ![HDInsight ポータル ファイル ブラウザー](./media/hdinsight-administer-use-management-portal/hdinsight-file-browser.png)
 
@@ -300,10 +290,8 @@ HDInsight クエリ コンソールには、次の機能が用意されていま
 ## <a name="monitor-cluster-usage"></a>クラスターの使用状況の監視
 HDInsight クラスター ブレードの **[使用状況]** セクションには、サブスクリプションで HDInsight 用に使用できるコアの数、このクラスターに割り当てられているコアの数、およびこのクラスター内のノードへのコアの割り当て方法に関する情報が表示されます。 「 [クラスターの一覧と表示](#list-and-show-clusters)」をご覧ください。
 
-> [!IMPORTANT]
-> HDInsight クラスターによって提供されるサービスを監視するには、Ambari Web または Ambari REST API を使用する必要があります。 Ambari の使用の詳細については、「[Ambari を使用した HDInsight クラスターの管理 (プレビュー)](hdinsight-hadoop-manage-ambari.md)
->
->
+> [!IMPORTANT]  
+> HDInsight クラスターによって提供されるサービスを監視するには、Ambari Web または Ambari REST API を使用する必要があります。 Ambari の使用について詳しくは、[Apache Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページをご覧ください。
 
 ## <a name="open-hadoop-ui"></a>Hadoop UI を開く
 クラスターの監視、ファイル システムの参照、ログの確認を行うには、HDInsight クエリ コンソールで **[Hadoop UI]** をクリックします。 「[HDInsight クエリ コンソールを開く](#open-hdinsight-query-console)」をご覧ください。
@@ -325,10 +313,8 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 
     [有効期限] の既定値は 1 週間です。
 
-   > [!NOTE]
+   > [!NOTE]  
    > HDInsight .NET SDK を使用して、クラスターに対するリモート デスクトップを有効にすることもできます。 HDInsight クライアント オブジェクトで、**EnableRdp** メソッドを次の形式で使用します: **client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**。 同様に、クラスターに対するリモート デスクトップを無効にするには、 **client.DisableRdp(clustername, location)** を使用します。 これらのメソッドの詳細については、 [HDInsight .NET SDK のリファレンス](https://go.microsoft.com/fwlink/?LinkId=529017)を参照してください。 この方法は、Windows で実行されている HDInsight クラスターにのみ適用できます。
-   >
-   >
 
 **RDP を使用してクラスターに接続するには**
 
@@ -347,7 +333,7 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 
     ![HDI.HadoopCommandLine][image-hadoopcommandline]
 
-    Hadoop コマンドの詳細については、 [Hadoop コマンド リファレンス](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html)を参照してください。
+    Hadoop コマンドについて詳しくは、[Apache Hadoop コマンド リファレンス](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html)をご覧ください。
 
 先のスクリーンショットで、フォルダー名には Hadoop のバージョン番号が埋め込まれています。 バージョン番号は、クラスターにインストールされている Hadoop コンポーネントのバージョンに基づいて変更できます。 Hadoop 環境変数を使用して、これらのフォルダーを参照できます。 例: 
 
@@ -359,14 +345,14 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
     cd %hcatalog_home%
 
 ## <a name="next-steps"></a>次の手順
-この記事では、ポータルを使用して HDInsight クラスターを作成する方法、および Hadoop コマンド ライン ツールを開く方法について説明しました。 詳細については、次の記事を参照してください。
+この記事では、ポータルを使用して HDInsight クラスターを作成する方法、および Apache Hadoop コマンド ライン ツールを開く方法について説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)
 * [Azure クラシック CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
 * [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)
-* [プログラムによる Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [プログラムによる Apache Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)
+* [Azure HDInsight でサポートされている Apache Hadoop のバージョン](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"

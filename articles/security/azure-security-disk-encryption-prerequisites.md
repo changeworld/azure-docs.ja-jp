@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/17/2018
+ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57136ac267af078068f33df6ee85dfccd287606a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: efb8c885daf78ad279a229257492a34c6dbf1c6a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537700"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156512"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk Encryption の前提条件
 
@@ -67,12 +67,10 @@ Azure Disk Encryption は、次のオペレーティング システムでサポ
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Azure PowerShell をインストールしてローカル コンピューターで使用する (省略可能): 
 1. お使いのオペレーティング システムのリンク先に記載されている指示を実行してから、以下の残りの手順を続行します。      
-    - [Windows 用 Azure Powershell をインストールして構成します](/powershell/azure/install-azurerm-ps)。 
+    - [Windows 用 Azure Powershell をインストールして構成します](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)。 
         - PowerShellGet、Azure PowerShell をインストールし、AzureRM モジュールを読み込みます。 
-    - [macOS および Linux に Azure PowerShell をインストールし、構成します](/powershell/azure/install-azurermps-maclinux)。
-        -  PowerShell Core、Azure PowerShell for .NET Core をインストールし、Az モジュールを読み込みます。
 
-2. AzureRM モジュールのインストールされているバージョンを確認します。 必要な場合は、[Azure PowerShell モジュールを更新](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module)します。
+2. AzureRM モジュールのインストールされているバージョンを確認します。 必要な場合は、[Azure PowerShell モジュールを更新](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0#update-the-azure-powershell-module)します。
     -  AzureRM モジュールのバージョン 6.0.0 以降が必要です。
     - 最新バージョンの AzureRM モジュールを使用することをお勧めします。
 

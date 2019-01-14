@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: 2062862670f5b373d3153c473e45455e10d5e996
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 5a4523405f7a9182bb5123ebacaebc9a9e5ae9a9
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548682"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038665"
 ---
 # <a name="regional-presence-of-azure-cosmos-db"></a>Azure Cosmos DB のリージョン プレゼンス
 

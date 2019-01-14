@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 9370cdfc75995f36101804d2a9f7dc9cf275243c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: aa2a059dd470e671aa3483f2259bcf91796c070d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186312"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631670"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 この Azure Media Services のリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
@@ -44,6 +44,10 @@ ms.locfileid: "53186312"
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、[Azure Media Services REST API リファレンス]をご覧ください。
+
+## <a name="december-2018"></a>2018 年 12 月
+
+Azure Media Services の [Media Hyperlapse プレビュー](media-services-hyperlapse-content.md)機能は間もなく廃止されます。 2018 年 12 月 19 日以降、Media Services では、Media Hyperlapse に対する変更や機能強化は行われません。 2019 年 3 月 29 日には廃止され、使用できなくなります。
 
 ## <a name="october-2018"></a>2018 年 10 月
 

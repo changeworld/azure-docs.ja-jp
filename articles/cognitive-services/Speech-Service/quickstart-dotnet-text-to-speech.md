@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 3a0304a69cdff15cddf325be8abe336a42ea4fc1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6d463ca73fb533b8a44c2019a478f2df0162cb23
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089872"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791447"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>クイック スタート: .NET Core を使用してテキストを音声に変換する
 
@@ -27,7 +27,7 @@ ms.locfileid: "53089872"
 
 このクイック スタートでは以下が必要です。
 
-* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
+* [.NET コア SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
 * Speech Service の Azure サブスクリプション キー
 
@@ -109,7 +109,7 @@ public class Authentication
 ```
 
 > [!NOTE]
-> 認証の詳細については、[アクセス トークンを取得する方法](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#how-to-get-an-access-token)に関するセクションを参照してください。
+> 認証の詳細については、[アクセス トークンによる認証](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token)に関するセクションを参照してください。
 
 ## <a name="get-an-access-token-and-set-the-host-url"></a>アクセス トークンを取得してホストの URL を設定する
 
@@ -162,7 +162,7 @@ string body = @"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis'
 ```
 
 > [!NOTE]
-> このサンプルでは、`ZiraRUS` の音声フォントを使用しています。 Microsoft から提供されている音声/言語の全一覧については、[言語のサポート](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/language-support)に関するページを参照してください。 認識できる独自の音声を自社ブランド用に作成することを検討している場合は、「[カスタム音声フォントの作成](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font)」を参照してください。
+> このサンプルでは、`ZiraRUS` の音声フォントを使用しています。 Microsoft から提供されている音声/言語の全一覧については、[言語のサポート](language-support.md)に関するページを参照してください。 認識できる独自の音声を自社ブランド用に作成することを検討している場合は、「[カスタム音声フォントの作成](how-to-customize-voice-font.md)」を参照してください。
 
 ## <a name="instantiate-the-client-make-a-request-and-save-synthesized-audio-to-a-file"></a>クライアントをインスタンス化して要求を行い、合成された音声をファイルに保存する
 

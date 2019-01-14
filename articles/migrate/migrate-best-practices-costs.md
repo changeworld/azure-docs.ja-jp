@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9d1acabd07e7c01445c55a57be9b0c9a36140aa5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b8ff1ae2f4c07dc59bd1ffb631378817493b96b0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163771"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995050"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス
 
@@ -117,7 +117,7 @@ Azure では、さまざまな種類のストレージ アカウントとパフ�
 
 **アカウントの種類** | **詳細** | **使用方法**
 --- | --- | ---
-**General Purpose v2 Standard** | BLOB (ブロック、ページ、追加)、ファイル、ディスク、キュー、およびテーブルをサポートしています。<br/><br/> ホット、クール、およびアーカイブのアクセス層をサポートしています。 ZRS がサポートされています。 | ほとんどのシナリオの、ほとんどの種類のデータに使用します。 Standard ストレージ アカウントは、HHD または SSD ベースとして指定できます。
+**General Purpose v2 Standard** | BLOB (ブロック、ページ、追加)、ファイル、ディスク、キュー、およびテーブルをサポートしています。<br/><br/> ホット、クール、およびアーカイブのアクセス層をサポートしています。 ZRS がサポートされています。 | ほとんどのシナリオの、ほとんどの種類のデータに使用します。 Standard ストレージ アカウントは、HDD または SSD ベースとして指定できます。
 **General Purpose v2 Premium** | BLOB ストレージ データ (ページ BLOB) をサポートしています。 ホット、クール、およびアーカイブのアクセス層をサポートしています。 ZRS がサポートされています。<br/><br/> SSD に格納されます。 | すべての VM のために使用することをお勧めします。
 **General Purpose v1** | アクセスの階層化はサポートされません。 ZRS をサポートしていません | アプリに Azure クラシック デプロイ モデルが必要な場合に使用します。
 **BLOB** | 非構造化オブジェクトを格納するための特殊なストレージ アカウント。 ブロック BLOB と 追加 BLOB のみを提供します (ファイル、キュー、テーブル、ディスクのストレージ サービスはありません)。 同じ持続性、可用性、スケーラビリティ、および General Purpose v2 と同じパフォーマンスを提供します。 | これらのアカウントにページ BLOB を格納することはできないため、VHD ファイルは格納できません。 アクセス層はホットまたはクールに設定できます。
@@ -248,7 +248,7 @@ Azure では、リソースが消費されたときに使用した分だけ支�
 **詳細情報**:
 - [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) と [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) の概要を表示しますします。
 - Advisor のコストに関する推奨事項を[表示します](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations)。
-- [推奨事項に従ってコストを最適化](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json)し、[予期しない料金を防ぐ](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started)方法を学びます。
+- [推奨事項に従ってコストを最適化](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json)し、[予期しない料金を防ぐ](https://docs.microsoft.com/azure/billing/billing-getting-started)方法を学びます。
 - Azure Resource Optimization (ARO) ツールキット[について学びます](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/)
 
 ## <a name="best-practice-implement-resource-group-budgets"></a>ベスト プラクティス:リソース グループの予算を実施する
@@ -332,7 +332,7 @@ VM ワークロードは、多くの場合、ダウンタイムを回避する�
   
 ## <a name="next-steps"></a>次の手順 
 
-その他のベスト プラクティスの確認:
+他のベスト プラクティスを確認してください。
 
 - 移行後のセキュリティと管理の[ベスト プラクティス](migrate-best-practices-security-management.md)。
 - 移行後のネットワーキングの[ベスト プラクティス](migrate-best-practices-networking.md)。

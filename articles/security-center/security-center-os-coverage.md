@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4108355415d1230f98db36a4f83497de2fa848f7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2dcc72e0e3b9caef9ab01d9f754671cb0365a358
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185581"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608836"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Security Center でサポートされている機能とプラットフォーム
 
@@ -30,7 +30,7 @@ ms.locfileid: "53185581"
 >
 >
 
-## <a name="supported-platforms"></a>サポートされるプラットフォーム 
+## <a name="platforms-that-support-the-data-collection-agent"></a>データ コレクション エージェントをサポートするプラットフォーム 
 
 このセクションでは、Azure Security Center エージェントで実行できるプラットフォーム、およびデータを収集する元となるプラットフォームが一覧されます。
 
@@ -43,6 +43,10 @@ ms.locfileid: "53185581"
 * Windows Server 2012 R2
 * Windows Server 2016
 
+> [!NOTE]
+> Windows Defender ATP との統合は、Windows Server 2012 R2 および Windows Server 2016 のみをサポートしています。
+>
+>
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux コンピューターおよび VM でサポートされているプラットフォーム
 次の Linux オペレーティング システムがサポートされています。
@@ -55,11 +59,6 @@ ms.locfileid: "53185581"
 * Oracle Linux バージョン 5、6、および 7。
 * Amazon Linux 2012.09 から 2017。
 * Openssl 1.1.0 は、x86_64 プラットフォーム (64 ビット) でのみサポートされます。
-
-> [!NOTE]
-> 仮想マシンの動作分析は、Linux オペレーティング システムではまだ利用できません。
->
->
 
 ## <a name="vms-and-cloud-services"></a>VM とクラウド サービス
 クラウド サービスで実行する VM もサポートされます。 監視されるのは、運用スロットで実行するクラウド サービスの Web ロールと worker ロールだけです。 Cloud Services の詳細については、「[Azure Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)」をご覧ください。

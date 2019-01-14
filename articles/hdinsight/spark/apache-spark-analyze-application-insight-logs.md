@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 161158157e3af92b1ac4fe81a664d95aa6816490
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 806e5b6f764797d2e038cc7ed58ec1d04f678e2b
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001568"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120378"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight 上の Apache Spark で Application Insights テレメトリ ログを分析する
 
 HDInsight 上の [Apache Spark](https://spark.apache.org/) を使用して Application Insight テレメトリ データを分析する方法について説明します。
 
-[Visual Studio Application Insights](../../application-insights/app-insights-overview.md) は、お使いの Web アプリケーションを監視する分析サービスです。 Application Insights で生成されたテレメトリ データは Azure Storage にエクスポートできます。 データが Azure Storage にあれば、HDInsight を使用して分析することができます。
+[Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) は、お使いの Web アプリケーションを監視する分析サービスです。 Application Insights で生成されたテレメトリ データは Azure Storage にエクスポートできます。 データが Azure Storage にあれば、HDInsight を使用して分析することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,7 +49,7 @@ HDInsight 上の [Apache Spark](https://spark.apache.org/) を使用して Appli
 
 Application Insights は、BLOB にテレメトリ情報を連続してエクスポートするように構成できます。 こうすることで、HDInsight が BLOB に格納されたデータを読み取ることができます。 ただし、守る必要のある要件がいくつかあります。
 
-* **場所**: ストレージ アカウントと HDInsight が別の場所にあると、待ち時間が長くなることがあります。 また、地域間のデータ移動に対して料金が適用されるので、コストも大きくなります。
+* **[場所]**:ストレージ アカウントと HDInsight が別の場所にあると、待ち時間が長くなることがあります。 また、地域間のデータ移動に対して料金が適用されるので、コストも大きくなります。
 
     > [!WARNING]  
     > HDInsight 以外の場所でストレージ アカウントを使用することはできません。

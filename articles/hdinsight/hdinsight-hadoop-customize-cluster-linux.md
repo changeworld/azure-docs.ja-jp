@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5ef7ddc068fea7703dad67b80b96c292bfd26943
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e655624a30332630c28cbd555dac26098adeb68b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870709"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976921"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
 
 HDInsight には、クラスターをカスタマイズするカスタム スクリプトを呼び出す**スクリプト アクション**という構成方法があります。 これらのスクリプトは、追加コンポーネントのインストールおよび構成設定の変更に使用されます。 スクリプト アクションは、クラスターの作成中または作成後に使用できます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 既に実行されているクラスター上でスクリプト アクションを使用する機能は、Linux ベースの HDInsight クラスターでのみ使用できます。
 >
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -53,12 +53,12 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 * HDInsight クラスターからアクセスできる URI に保存されている必要があります。 たとえば保存スペースとして、次の場所を使用できます。
 
-    * HDInsight クラスターからアクセス可能な **Azure Data Lake Store** アカウント。 HDInsight での Azure Data Lake Store の使用については、「[Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」(クイック スタート: HDInsight のクラスターを設定する) を参照してください。
+    * HDInsight クラスターからアクセス可能な **Azure Data Lake Storage** アカウント。 HDInsight での Azure Data Lake Storage の使用については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
-        Data Lake Store に保管しているスクリプトを使用する場合、URI の形式は `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` になります。
+        Data Lake Storage に保管しているスクリプトを使用する場合、URI の形式は `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` になります。
 
-        > [!NOTE]
-        > HDInsight が Data Lake Store へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
+        > [!NOTE]  
+        > HDInsight が Data Lake Storage へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
 
     * **Azure Storage アカウント**の BLOB (HDInsight クラスターのプライマリ ストレージ アカウントまたはセカンダリ ストレージ アカウント)。 HDInsight には、両方のタイプのストレージ アカウントに対するアクセス権がクラスターの作成時に付与されます。
 
@@ -66,7 +66,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
         URI の例については、「[スクリプト アクションのサンプル スクリプト](#example-script-action-scripts)」セクションを参照してください。
 
-        > [!WARNING]
+        > [!WARNING]  
         > HDInsight は、Standard パフォーマンス レベルの Azure ストレージ アカウントの BLOB だけをサポートしています。 
 
 * **特定のノード タイプでのみ実行するように** (ヘッド ノードやワーカー ノードなど) に制限できます。
@@ -75,12 +75,12 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
     **保存済み**スクリプトは、スケーリング操作でクラスターに追加される新しいワーカー ノードをカスタマイズするために使われます。 スケーリング操作が発生したとき、保存済みスクリプトによって、ヘッド ノードなどの別のタイプのノードに変更が適用されることもあります。
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > 保存済みスクリプト アクションには一意の名前が必要です。
 
     **アドホック** スクリプトは保存されません。 スクリプトの実行後にクラスターに追加された worker ノードには適用されませんが、 後でアドホック スクリプトを保存済みスクリプトに昇格したり、保存済みスクリプトをアドホック スクリプトに降格したりできます。
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > クラスターの作成時に使用されるスクリプト アクションは自動的に保存されます。
   >
   > 失敗したスクリプトは、保存するように指定した場合でも保存されません。
@@ -93,7 +93,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 クラスターには、実行されたすべてのスクリプトの履歴が保持されます。 履歴は、昇格または降格の操作のためスクリプトの ID を検索する必要がある場合に便利です。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > スクリプト アクションで行われた変更を自動的に元に戻すことはできません。 スクリプトの変更は、手動またはスクリプトを使用して戻す必要があります。
 
 ### <a name="script-action-in-the-cluster-creation-process"></a>クラスターの作成処理でのスクリプト アクション
@@ -110,13 +110,13 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 スクリプトは HDInsight の構成中に実行されます。 スクリプトは、クラスター内の指定されたすべてのノードで並列して実行され、それらのノードに対するルート権限で実行されます。
 
-> [!NOTE]
+> [!NOTE]  
 > サービスの停止と開始などの操作も行うことができます (Apache Hadoop 関連のサービスも含みます)。 サービスを停止する場合は、スクリプトが完了する前に Ambari サービスや他の Hadoop 関連のサービスが実行していることを確認する必要があります。 これらのサービスでは、クラスターの作成時にクラスターが正常に稼動しているかどうかを確認する必要があります。
 
 
 クラスターの作成時に、指定された順序で呼び出される 複数のスクリプト アクションを指定できます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。 クラスターのプロビジョニング中に、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。 CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
 >
 > スクリプトの実行時間を最小限に抑えるために、ソースからアプリケーションをダウンロードしてコンパイルするなどのタスクを実行しないようにしてください。 代わりに、アプリケーションを事前にコンパイルし、バイナリを Azure Storage に格納して、
@@ -126,7 +126,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 既に実行中のクラスターで実行されたスクリプトのエラーによって、クラスターの状態が自動的に失敗に変更されることはありません。 スクリプトが完了すると、クラスターは "実行中" 状態に戻ります。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > クラスターが "実行中" 状態であっても、失敗したスクリプトによって何かが破壊されている可能性があります。 たとえば、スクリプトによって、クラスターに必要なファイルが削除されることがあります。
 >
 > スクリプト アクションは、ルート権限で実行されます。 スクリプトをクラスターに適用する前に、そのスクリプトによる処理を必ず理解しておく必要があります。
@@ -138,7 +138,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
     EndTime           : 8/14/2017 7:41:05 PM
     Status            : Succeeded
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > クラスターが作成された後に、クラスター ユーザー (管理者) のパスワードを変更した場合、このクラスターに対してスクリプト アクションを実行すると失敗する可能性があります。 worker ノードを対象とする保存済みスクリプト アクションがある場合、クラスターのサイズを変更すると、スクリプトは失敗する可能性があります。
 
 ## <a name="example-script-action-scripts"></a>スクリプト アクションのサンプル スクリプト
@@ -242,16 +242,17 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-portal"></a>実行中のクラスターに Azure Portal からスクリプト アクションを適用する
 
-1. [Azure ポータル](https://portal.azure.com)で HDInsight クラスターを選択します。
+[Azure portal](https://portal.azure.com) から次の手順を実行します。
 
-2. HDInsight クラスターの概要から **[スクリプト アクション]** タイルを選択します。
+1. 左側のメニューから、**[すべてのサービス]** を選択します。
 
-    ![Script actions tile](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionstile.png)
+1. **[ANALYTICS]** で **[HDInsight クラスター]** を選択します。
 
-   > [!NOTE]
-   > **[すべての設定]** を選択した後、[設定] セクションから **[スクリプト アクション]** を選択してもかまいません。
+1. 一覧からクラスターを選択します。これにより、既定のビューが開きます。
 
-3. [スクリプト アクション] セクションの上部の **[+ 新規で送信]** を選択します。
+1. 既定のビューの **[設定]** で、**[スクリプト アクション]** を選択します。
+
+1. **[スクリプト アクション]** ページの上部で、**[+ 新規で送信]** を選択します。
 
     ![実行中のクラスターにスクリプトを追加する](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
@@ -342,14 +343,15 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-1. [Azure ポータル](https://portal.azure.com)で HDInsight クラスターを選択します。
+1. [Azure portal](https://portal.azure.com) にログインします。
 
-2. HDInsight クラスターの概要から **[スクリプト アクション]** タイルを選択します。
+1. 左側のメニューから、**[すべてのサービス]** を選択します。
 
-    ![Script actions tile](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionstile.png)
+1. **[ANALYTICS]** で **[HDInsight クラスター]** を選択します。
 
-   > [!NOTE]
-   > **[すべての設定]** を選択した後、[設定] セクションから **[スクリプト アクション]** を選択してもかまいません。
+1. 一覧からクラスターを選択します。これにより、既定のビューが開きます。
+
+1. 既定のビューの **[設定]** で、**[スクリプト アクション]** を選択します。
 
 4. [スクリプト アクション] セクションに、このクラスター用のスクリプトの履歴が表示されます。 この情報には、保存されたスクリプトの一覧が含まれています。 次のスクリーンショットでは、Solr スクリプトがこのクラスターで実行されていますが、 保存されたスクリプト アクションはありません。
 
@@ -372,7 +374,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 | Set-AzureRmHDInsightPersistedScriptAction |アドホック スクリプト アクションを保存済みスクリプト アクションに昇格します |
 | Remove-AzureRmHDInsightPersistedScriptAction |保存済みスクリプト アクションをアドホック アクションに降格します |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > `Remove-AzureRmHDInsightPersistedScriptAction` を使用しても、スクリプトによって実行されたアクションは元に戻りません。 このコマンドレットは、保存済みフラグが削除されるだけです。
 
 次のスクリプトの例では、昇格のコマンドレットを使用してから、スクリプトを降格しています。
@@ -390,14 +392,14 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 | `azure hdinsight script action persisted set <clustername> <scriptexecutionid>` |アドホック スクリプト アクションを保存済みスクリプト アクションに昇格します |
 | `azure hdinsight script-action persisted delete <clustername> <scriptname>` |保存済みスクリプト アクションをアドホック アクションに降格します |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > `azure hdinsight script-action persisted delete` を使用しても、スクリプトによって実行されたアクションは元に戻りません。 このコマンドレットは、保存済みフラグが削除されるだけです。
 
 ### <a name="using-the-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用する場合
 
 .NET SDK を使用してクラスターからスクリプトの履歴を取得し、スクリプトを昇格または降格する例については、[https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action) を参照してください。
 
-> [!NOTE]
+> [!NOTE]  
 > この例では、.NET SDK を使用して HDInsight アプリケーションをインストールする方法も示します。
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>HDInsight クラスターで使用するオープン ソース ソフトウェアのサポート
@@ -409,10 +411,10 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 * **組み込みコンポーネント** - これらのコンポーネントは、HDInsight クラスターにプレインストールされており、クラスターの主要な機能を提供します。 たとえば、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ResourceManager、Hive クエリ言語 ([HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual))、[Apache Mahout](https://mahout.apache.org/) ライブラリなどがこのカテゴリに属します。 クラスター コンポーネントの完全な一覧は、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」から入手できます。
 * **カスタム コンポーネント** - クラスターのユーザーは、コミュニティで入手できるコンポーネントや自作のコンポーネントを、インストールするか、ワークロード内で使用することができます。
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、 これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、次のような数多くのコミュニティ サイトを利用できます: [HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)、[http://stackoverflow.com](http://stackoverflow.com)。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、次のような数多くのコミュニティ サイトを利用できます: [HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に [Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 HDInsight サービスでは、カスタム コンポーネントを使用する方法をいくつか用意しています。 コンポーネントの用途やクラスターへのインストール方法にかかわらず、同じレベルのサポートが適用されます。 以下は、HDInsight クラスターでのカスタム コンポーネントの用途として、最も一般的な方法の一覧です。
 
@@ -474,7 +476,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 ### <a name="ambari-watchdog"></a>Ambari ウォッチドッグ
 
-> [!WARNING]
+> [!WARNING]  
 > Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 このアカウントのパスワードを変更すると、HDInsight クラスターで新しいスクリプト アクションを実行できなくなります。
 
 ### <a name="cant-import-name-blobservice"></a>名前 BlobService をインポートできない

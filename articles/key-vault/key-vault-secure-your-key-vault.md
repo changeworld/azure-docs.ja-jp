@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault をセキュリティで保護する | Microsoft Docs
+title: Azure Key Vault をセキュリティで保護する - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault、キー、シークレットのアクセス許可を管理します。 キー コンテナーの認証と承認モデルおよびキー コンテナーをセキュリティで保護する方法について説明します。
 services: key-vault
 documentationcenter: ''
@@ -10,21 +10,22 @@ ms.assetid: e5b4e083-4a39-4410-8e3a-2832ad6db405
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 67f24bbccdd2dcf5cca09e09557d7ebebd0a5c2d
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 9877698c8c6af68c5ffd88dab37150274ce87b37
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891080"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077336"
 ---
 # <a name="secure-your-key-vault"></a>キー コンテナーのセキュリティ保護
+
 Azure Key Vault は、暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは機密性が高く、ビジネス上重要であるため、キー コンテナーへのアクセスをセキュリティで保護する必要があり、承認されたアプリケーションとユーザーだけを許可します。 この記事では、キー コンテナーのアクセス モデルの概要について説明します。 認証と承認について、およびアクセスをセキュリティで保護する方法について説明します。
 
 ## <a name="overview"></a>概要
+
 キー コンテナーへのアクセスは、2 つの独立したインターフェイス (管理プレーンとデータ プレーン) を使って制御します。 
 **管理プレーン**では、コンテナーの作成、更新、削除など、コンテナーの管理を行います。 
 **データ プレーン**では、コンテナー内のシークレットを扱います。具体的には、コンテナー内でシークレットの作成、更新、削除、読み取りを行います。 どちらのプレーンでも、呼び出し元 (ユーザーまたはアプリケーション) がキー コンテナーにアクセスするには、適切な認証と承認が必要です。 認証では呼び出し元の ID を確認し、承認では呼び出し元が実行できる操作を決定します。
@@ -38,9 +39,11 @@ Azure Key Vault は、暗号化キーとシークレット (証明書、接続�
 認証については、両方のプレーンで Azure Active Directory (Azure AD) が使用されます。 承認については、管理プレーンではロールベースのアクセス制御 (RBAC) を使用し、データ プレーンでは Key Vault アクセス ポリシーを使用します。
 
 ## <a name="authenticate-by-using-azure-active-directory"></a>Azure Active Directory を利用して認証する
+
 Azure サブスクリプション内でキー コンテナーを作成すると、作成したキー コンテナーは、そのサブスクリプションの Azure AD テナントに自動的に関連付けられます。 すべての呼び出し元は、このテナントに登録されている必要があり、キー コンテナーにアクセスするには認証を行う必要があります。 この要件は、管理プレーンとデータ プレーンの両方のアクセスに適用されます。 どちらの場合も、アプリケーションは次の 2 つの方法でキー コンテナーにアクセスできます。
 
-* **User+App アクセス**:サインインしたユーザーの代わりにキー コンテナーにアクセスするアプリケーションで使用されます。 この種類のアクセスの例は、Azure PowerShell や Azure portal です。 ユーザーにアクセスを許可するには 2 つの方法があります。 
+* **User+App アクセス**:サインインしたユーザーの代わりにキー コンテナーにアクセスするアプリケーションで使用されます。 この種類のアクセスの例は、Azure PowerShell や Azure portal です。 ユーザーにアクセスを許可するには 2 つの方法があります。
+
   - アプリケーションからキー コンテナーにアクセスする。
   - 特定のアプリケーションを使用している場合にのみ、キー コンテナーにアクセスする (複合 ID と呼ばれます)。
 
@@ -57,18 +60,20 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 * Azure AD のオプションを使用して認証をカスタマイズできます (例: セキュリティを強化するために多要素認証を有効にする)。
 
 ## <a name="the-management-plane-and-the-data-plane"></a>管理プレーンとデータ プレーン
+
 管理プレーンを使用し、キー コンテナー自体を管理します。 これには、属性の管理や、データ プレーン アクセス ポリシーの設定などの操作が含まれます。 データ プレーンを使用し、キー コンテナーに格納されているキー、シークレット、証明書を追加、削除、変更、使用します。
 
 管理プレーンとデータ プレーンのインターフェイスには、次の表の一覧にある各種エンドポイントを介してアクセスします。 表の 2 列目では、さまざまな Azure 環境におけるこれらのエンドポイントの DNS 名について説明しています。 3 列目では、各アクセス プレーンから実行できる操作について説明しています。 各アクセス プレーンには、独自のアクセス制御メカニズムもあります。 管理プレーンのアクセス制御は、Azure Resource Manager のロールベースのアクセス制御 (RBAC) を使用して設定されます。 データ プレーンのアクセス制御は、キー コンテナーのアクセス ポリシーを使用して設定されます。
 
-| アクセス プレーン | アクセス エンドポイント | [操作] | アクセス制御メカニズム |
+| アクセス プレーン | アクセス エンドポイント | 操作 | アクセス制御メカニズム |
 | --- | --- | --- | --- |
-| 管理プレーン |**グローバル:**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br>  management.microsoftazure.de:443 |キー コンテナーの作成/読み取り/更新/削除 <br> キー コンテナーのアクセス ポリシーの設定<br>キー コンテナーのタグの設定 |Azure Resource Manager RBAC |
+| 管理プレーン |**グローバル:**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 |キー コンテナーの作成/読み取り/更新/削除 <br> キー コンテナーのアクセス ポリシーの設定<br>キー コンテナーのタグの設定 |Azure Resource Manager RBAC |
 | データ プレーン |**グローバル:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |キーの場合:Decrypt、Encrypt、UnwrapKey、WrapKey、Verify、Sign、Get、List、Update、Create、Import、Delete、Backup、Restore<br><br> シークレットの場合:取得、一覧表示、設定、削除 |Key Vault アクセス ポリシー |
 
 管理プレーンとデータ プレーンのアクセス制御は独立して動作します。 たとえば、キー コンテナー内のキーを使用するためのアクセスをアプリケーションに許可する場合は、データ プレーンのアクセスを許可するだけで済みます。 アクセスは、キー コンテナーのアクセス ポリシー経由で付与します。 逆に、コンテナーのプロパティとタグを読み取る必要はあっても、データ (キー、シークレット、証明書) にアクセスする必要のないユーザーは、管理プレーンのアクセスのみを必要とします。 アクセスは、RBAC を使用してユーザーに読み取りアクセスを割り当てることで付与します。
 
 ## <a name="management-plane-access-control"></a>管理プレーンのアクセス制御
+
 管理プレーンは、キー コンテナー自体に影響を与える次のような操作で構成されています。
 
 - キー コンテナーの作成または削除。
@@ -79,6 +84,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 管理プレーンのアクセス制御では、RBAC を使用します。  
 
 ### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
+
 各 Azure サブスクリプションには Azure AD インスタンスがあります。 Azure Resource Manager デプロイ モデルを使用する Azure サブスクリプション内にあるリソースを管理するために、このディレクトリのユーザー、グループ、アプリケーションに対してアクセス権を付与します。 この種のアクセス制御は RBAC と呼ばれます。 このアクセスを管理するには、[Azure Portal](https://portal.azure.com/)、[Azure CLI ツール](../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs)、または [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx) を使用できます。
 
 リソース グループにキー コンテナーを作成し、Azure AD を使用して管理プレーンへのアクセスを制御します。 たとえば、ユーザーまたはグループに対して、リソース グループのキー コンテナーを管理する権限を付与できます。
@@ -87,15 +93,16 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 > [!IMPORTANT]
 > キー コンテナーの管理プレーンに対する共同作成者権限がユーザーに与えられている場合、キー コンテナー アクセス ポリシーを設定することで、データ プレーンへのアクセス権を自分自身に付与できます。 そのため、キー コンテナーの共同作成者アクセス権を与えるユーザーは厳密に管理する必要があります。 承認されたユーザーだけがコンテナー、キー、シークレット、証明書にアクセスできるようにします。
-> 
-> 
+>
 
 ## <a name="data-plane-access-control"></a>データ プレーンのアクセス制御
+
 キー コンテナーのデータ プレーンの操作は、キー、シークレット、証明書などの格納されているオブジェクトに適用されます。 キーの操作には、キーの作成、インポート、更新、一覧取得、バックアップ、復元などがあります。 暗号化操作には、署名、検証、暗号化、暗号化の解除、ラップ、ラップ解除、タグ、キーに対するその他の属性の設定などがあります。 同様に、シークレットに対する操作には、取得、設定、一覧、削除などがあります。
 
 データ プレーンのアクセス権は、キー コンテナーのアクセス ポリシーを設定して付与します。 キー コンテナーのアクセス ポリシーを設定するには、ユーザー、グループ、またはアプリケーションにそのキー コンテナーの管理プレーンに対する共同作成者権限を与える必要があります。 ユーザー、グループ、またはアプリケーションには、キー コンテナー内のキーやシークレットに対して特定の操作を行うためのアクセス権を付与できます。 キー コンテナーでは、1 つのキー コンテナーに対して最大 1,024 個のアクセス ポリシー エントリをサポートしています。 データ プレーンのアクセス権を複数のユーザーに付与するには、Azure AD セキュリティ グループを作成し、そのグループにユーザーを追加します。
 
 ### <a name="key-vault-access-policies"></a>キー コンテナー アクセス ポリシー
+
 キー コンテナー アクセス ポリシーでは、キー、シークレット、証明書へのアクセス許可を個別に付与します。 たとえば、ユーザーにキーのみのアクセス権を付与し、シークレットのアクセス許可は付与しないようにすることができます。 キー、シークレット、または証明書へのアクセス許可は、コンテナー レベルで付与されます。 キー コンテナーのアクセス ポリシーでは、特定のキー、シークレット、証明書など、細かいオブジェクト レベルのアクセス許可はサポートされていません。 キー コンテナーのアクセス ポリシーを設定するには、[Azure portal](https://portal.azure.com/)、[Azure CLI ツール](../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs)、または [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) を使用できます。
 
 > [!IMPORTANT]
@@ -104,6 +111,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 アクセス ポリシーを使用すること以外に、[Azure Key Vault の仮想ネットワーク サービス エンドポイント](key-vault-overview-vnet-service-endpoints.md)を使用する方法でもデータ プレーン アクセスを制限できます。 追加のセキュリティ層に、[ファイアウォールと仮想ネットワークの規則](key-vault-network-security.md)を設定します。
 
 ## <a name="example"></a>例
+
 SSL 用の証明書を使用し、データの格納に Azure Storage を使用して、署名操作に RSA 2048 ビット キーを使用するアプリケーションを開発しているものとします。 このアプリケーションは、Azure 仮想マシン (または仮想マシン スケール セット) で実行されていることにします。 キー コンテナーを使用して、すべてのアプリケーション シークレットや、Azure AD で認証するアプリケーションで使用されるブートストラップ証明書を格納することができます。
 
 格納されるキーとシークレットの種類を以下にまとめます。
@@ -167,14 +175,14 @@ SSL 用の証明書を使用し、データの格納に Azure Storage を使用�
 
 まず、サブスクリプション管理者が `key vault Contributor` ロールと `User Access Administrator` ロールをセキュリティ チームに割り当てます。 これらのロールにより、セキュリティ チームは、その他のリソースへのアクセスと、ContosoAppRG リソース グループ内のキー コンテナーを管理できます。
 
-```
+```PowerShell
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "User Access Administrator" -ResourceGroupName ContosoAppRG
 ```
 
 次のスクリプトでは、セキュリティ チームがキー コンテナーを作成する方法、およびログとアクセス許可を設定する方法を示します。 Key Vault のアクセス ポリシーのアクセス許可について詳しくは、[Azure Key Vault のキー、シークレット、証明書](about-keys-secrets-and-certificates.md)に関するページをご覧ください。
 
-```
+```PowerShell
 # Create key vault and enable logging
 $sa = Get-AzureRmStorageAccount -ResourceGroup ContosoAppRG -Name contosologstorage
 $kv = New-AzureRmKeyVault -Name ContosoKeyVault -ResourceGroup ContosoAppRG -SKU premium -Location 'westus' -EnabledForDeployment
@@ -214,6 +222,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureR
 [Key Vault のファイアウォールと仮想ネットワークを構成](key-vault-network-security.md)して、キー コンテナーへのアクセスをさらにセキュリティ保護することを強くお勧めします。
 
 ## <a name="resources"></a>リソース
+
 * [Azure Active Directory のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)
   
 * [RBAC:組み込みロール](../role-based-access-control/built-in-roles.md)
@@ -241,6 +250,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureR
 * PowerShell を使用した Key Vault アクセス ポリシーの[設定](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy)と[削除](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Remove-AzureRmKeyVaultAccessPolicy)
   
 ## <a name="next-steps"></a>次の手順
+
 [Key Vault のファイアウォールと仮想ネットワークを構成する](key-vault-network-security.md)
 
 管理者用の概要チュートリアルについては、「 [Azure Key Vault の概要](key-vault-get-started.md)」をご覧ください。
