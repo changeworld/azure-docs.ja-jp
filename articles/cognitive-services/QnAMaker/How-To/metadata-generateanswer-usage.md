@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 12/18/2018
 ms.author: tulasim88
-ms.openlocfilehash: 97fb59a9a483753c6c2b5a4ae027bb358f7050e1
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 004f09eb77d1bc32e44e1940186e8a631c45846d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166593"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608479"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>メタデータと GenerateAnswer API の使用
 
-QnA Maker では、キー/値のペアの形式で、メタデータを質問/回答のセットに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。 詳細については、「[Knowledge base](../Concepts/knowledge-base.md)」 (ナレッジ ベース) を参照してください。
+QnA Maker では、キーと値のペアの形式で、メタデータを質問/回答のセットに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。 詳細については、「[Knowledge base](../Concepts/knowledge-base.md)」 (ナレッジ ベース) を参照してください。
 
 ## <a name="qna-entity"></a>QnA エンティティ
 
@@ -113,11 +113,11 @@ HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を�
 
 ## <a name="metadata-example"></a>メタデータの例
 
-ハイデラバードのレストランに関する以下の FAQ データがあるとします。 歯車アイコンをクリックして、メタデータをナレッジ ベースに追加します。
+次の FAQ データがあるとします。 メタデータ アイコンをクリックして、メタデータをナレッジ ベースに追加します。
 
 ![メタデータの追加](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
-### <a name="filter-results-with-strictfilters"></a>strictFilters で結果をフィルター処理する
+### <a name="filter-results-with-strictfilters-for-metadata-tags"></a>メタデータ タグの strictFilters を使用して結果をフィルター処理する
 
 ユーザーの質問が "When does this hotel close?" (このホテルはいつ閉まりますか?) であるとします。 これには、"Paradise" というレストランがいつ閉まるかという意味が含まれます。
 

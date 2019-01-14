@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f53233edd17fa7097dde67bbce16b1ece668c721
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140032"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554862"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
 
 このトピックでは次の方法について説明します。
 
-* Machine Learning Python クライアント ライブラリをインストールする 
+* Machine Learning Python クライアント ライブラリをインストールする
 * ローカルの Python 環境から Azure Machine Learning データセットへのアクセス認証を取得するなど、データ セットにアクセスしてアップロードする
 * 実験から中間データセットにアクセスする
 * Python クライアント ライブラリを使用してデータ セットを列挙、メタデータにアクセス、データ セットのコンテンツを読み込み、新しいデータ セットを作成して既存のデータ セットを更新する
@@ -49,7 +49,7 @@ Python クライアント ライブラリは、次の環境でテストされて
 
     pip install azureml
 
-代わりに、 [github](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python)からソースをダウンロードしてインストールすることもできます。
+代わりに、[GitHub](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python) からソースをダウンロードしてインストールすることもできます。
 
     python setup.py install
 
@@ -74,11 +74,11 @@ Python クライアント ライブラリで使用するために Studio で提�
 
 次のいずれかを実行することで認証トークンを取得できます。
 
-* 所有者からトークンをリクエストします。 所有者は Studio のワークスペースの [設定] ページから認証トークンを確認できます。 左側のウィンドウから **[設定]** を選択し、**[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。  プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
+* 所有者からトークンをリクエストします。 所有者は Studio のワークスペースの [設定] ページから認証トークンを確認できます。 左側のウィンドウから **[設定]** を選択し、**[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。 プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
 
 ![認証トークン](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* 所有者への役割の昇格を申請する  そのためにはまず、ワークスペースの現在の所有者にワークスペースから削除してもらい、その後所有者としてに再度招待してもらう必要があります。
+* 所有者への役割の昇格を申請する そのためにはまず、ワークスペースの現在の所有者にワークスペースから削除してもらい、その後所有者としてに再度招待してもらう必要があります。
 
 開発者がワークスペース ID と認証トークンを取得したら、役割に関係なく、コード スニペットを使用してワークスペースにアクセスできるようになります。
 

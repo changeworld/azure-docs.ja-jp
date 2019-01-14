@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: dd11c2c7062d09c522c46770e8dba6d6eb0ac1e9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cb155486365ffa1beb4657e2d9cc56fcf143b624
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105566"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547747"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>パターンのエンティティ ロールはコンテキスト サブタイプです
 ロールは、[パターン](luis-concept-patterns.md)でのみ使用されるエンティティの名前付きコンテキスト サブタイプです。
@@ -25,7 +25,7 @@ ms.locfileid: "53105566"
 
 ロールでは、こうした違いに対して名前が付けられます。
 
-|エンティティ|Role|目的|
+|エンティティ|ロール|目的|
 |--|--|--|
 |場所|origin|飛行機が離陸する場所|
 |場所|destination|飛行機が着陸する場所|
@@ -45,6 +45,16 @@ ms.locfileid: "53105566"
 
 
 [!INCLUDE [H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
+
+## <a name="example-role-for-entities"></a>エンティティのロールの例
+
+ロールは、発話内のエンティティのコンテキストから学習した配置にすぎません。 これが最も有用なのは、発話内に同じ種類のエンティティが複数含まれている場合です。 エンティティの種類の例として最もわかりやすいのは、出発地と到着地の区別です。 場所は、多数のさまざまなエンティティの種類で表すことができます。 
+
+ユース ケースの例は、従業員をある部署から別の部署に異動させることです。ここでは、各部署が一覧の項目です。 例:  
+
+`Move [PersonName] from [Department:from] to [Department:to]` 
+
+返される予測では、両方の部署エンティティが JSON 応答内に返され、それぞれにロール名が含まれます。 
 
 ## <a name="roles-with-prebuilt-entities"></a>ロールと事前構築済みエンティティ
 

@@ -6,17 +6,17 @@ services: cognitive-services
 author: tulasim88
 manager: pchoudh
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 8fe4ecfe241422c03a2de8d0634ef1e1395aa050
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9f5aedfc28c8aa0835c865cc2041f66abef39d5f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081321"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724693"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。 
@@ -38,7 +38,7 @@ ms.locfileid: "53081321"
 
 |スコアの値|スコアの意味|サンプル クエリ|
 |--|--|--|
-|90 - 100|ユーザー クエリと KB の質問がほぼ完全に一致|"My changes aren't updated in Knowledge base after publish"|
+|90 - 100|ユーザー クエリと KB の質問がほぼ完全に一致|"My changes aren't updated in KB after publish"|
 |70 以上|高信頼度 - 通常､ユーザーのクエリに対する完全な答えとなる良い回答|"I published my KB but it's not updated"|
 |50 - 70|中程度の信頼度 - 通常､ユーザー クエリの主な意図に答えるかなり良い回答|"Should I save my updates before I publish my KB?"|
 |30 - 50|低信頼度 - 通常、ユーザーの意図の一部に答える回答。|" What does the save and train do?"|
@@ -58,7 +58,7 @@ ms.locfileid: "53081321"
 > QnA Maker の新しいバージョンにはスコアリング ロジックの機能強化が含まれ、しきい値に影響を与える可能性があります。 サービスを更新するときは常に、テストを行い、必要に応じてしきい値を調整してください。 お使いの QnA サービスのバージョンは、[こちら](https://www.qnamaker.ai/UserSettings)で確認できます。最新の更新プログラムの入手方法については、[こちら](../How-To/troubleshooting-runtime.md)をご覧ください。
 
 ## <a name="improve-confidence-scores"></a>信頼度スコアの向上
-ユーザー クエリに対する特定の応答の信頼度スコアを上げるには、その応答に対する代替質問として、ユーザー クエリをナレッジ ベースに追加できます。
+ユーザー クエリに対する特定の応答の信頼度スコアを上げるには、その応答に対する代替質問として、ユーザー クエリをナレッジ ベースに追加できます。 [単語変更](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd)を使用して、KB のキーワードにシノニムを追加することもできます。
 
 
 ## <a name="similar-confidence-scores"></a>類似する信頼度スコア

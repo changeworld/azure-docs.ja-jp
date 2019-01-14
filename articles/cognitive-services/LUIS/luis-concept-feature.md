@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 62827054a14930cd49f7d80d6c305e60060c0fe6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2d6f7e2fd332e1687db1564befeb6f531045c5dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271387"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993066"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS アプリのフレーズ リストのフィーチャー
 
@@ -29,6 +29,10 @@ ms.locfileid: "53271387"
 
 フレーズ リストは、それらの単語に関する LUIS に対する 2 番目のシグナルとして、アプリ ドメインのボキャブラリを増強します。
 
+## <a name="phrase-lists-help-all-models"></a>フレーズ リストはすべてのモデルに役立つ
+
+フレーズ リストは、特定の意図やエンティティにリンクされておらず、すべてのモデルにブーストとして追加されます。 その目的は、意図の検出とエンティティの分類を向上させることです。
+
 ## <a name="how-to-use-phrase-lists"></a>フレーズ リストを使用する方法
 人事アプリの[シンプル エンティティのチュートリアル](luis-quickstart-primary-and-secondary-data.md)では、このアプリはプログラマ、屋根職人、秘書などの仕事の種類の **[Job] (仕事)** フレーズ リストを使用します。 これらの値のいずれかを機械学習されたエンティティとしてラベル付けすると、LUIS はその他を認識することを学習します。 
 
@@ -40,6 +44,7 @@ ms.locfileid: "53271387"
 |交換不可能|通常は、その言語の他の単語よりもアプリに限定される、アプリに固有のアプリ ボキャブラリ。|
 
 フレーズ リストは、エンティティの検出だけでなく、英語で不明なボキャブラリ外の単語を追加する場合などの、交換不可能性に意味がある意図の分類にも役立ちます。
+
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.openlocfilehash: 2ae11afe1ecbe500a4851aab6d56e612fbe79ee6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b7cde3a8990a51e95a8ce9ad85bca524d5669e0c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976752"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721123"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight で Azure Data Lake Storage Gen2 と Apache Hadoop を使用する
 
@@ -45,7 +45,7 @@ Apache Hadoop アプリケーションは、ローカル ディスク ストレ�
 
 以前は、Hadoop ファイルシステム ドライバーは、すべてのファイルシステム操作をクライアント側での Azure Storage REST API 呼び出しに変換してから、REST API を呼び出していました。 しかし、このクライアント側の変換では、ファイルの名前変更のような 1 つのファイルシステム操作に対して複数の REST API が呼び出されていました。 ABFS では、一部の Hadoop ファイルシステム ロジックをクライアント側からサーバー側に移動し、ADLS Gen2 API が Blob API と並列で実行されるようになりました。 この移行により、Hadoop ファイルシステムの一般的な操作が 1 つの REST API 呼び出しで実行できるようになったため、パフォーマンスが向上します。
 
-詳細については、「[The Azure Blob Filesystem driver (ABFS):A dedicated Azure Storage driver for Hadoop](../storage/data-lake-storage/abfs-driver.md)」 (Azure BLOB ファイルシステム ドライバー (ABFS): Hadoop 専用の Azure Storage ドライバー) を参照してください。
+詳細については、[Azure BLOB ファイルシステム ドライバー (ABFS): Apache Hadoop 専用の Azure Storage ドライバー](../storage/data-lake-storage/abfs-driver.md)に関するページを参照してください。
 
 ### <a name="adls-gen-2-uri-scheme"></a>ADLS Gen 2 の URI スキーム
 
@@ -68,7 +68,7 @@ abfss://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapr
 abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
 ```
 
-> [!Note]
+> [!NOTE]  
 > HDInsight バージョン 2.1 クラスターと 1.6 クラスターでは、ファイル名は `hadoop-examples.jar` です。 HDInsight の外部からファイルを操作する場合、ほとんどのユーティリティで ABFS 形式が認識されず、代わりに `example/jars/hadoop-mapreduce-examples.jar` などの基本的なパス形式が要求されます。
 
 詳細については、「[Use the Azure Data Lake Storage Gen2 URI](../storage/data-lake-storage/introduction-abfs-uri.md)」 (Azure Data Lake Storage Gen2 の URI を使用する) を参照してください。

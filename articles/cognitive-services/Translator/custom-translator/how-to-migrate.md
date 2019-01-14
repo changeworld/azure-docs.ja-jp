@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 6572a9b72554691441cb258a87a5db4ba7845087
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a02be1ba29ad43b90c99a5d1e275b96b3b4023d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077122"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718726"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -130,7 +130,7 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 * 移行は、プロジェクトごとに 1 回だけ許可されます。  プロジェクトに対して移行を繰り返す必要がある場合は、Microsoft にお問い合わせください。
 * 現在カスタム トランスレーターでは、英語との間で 36 の言語を双方向に翻訳することができます。また、Microsoft は対応言語をさらに増やすために全力で取り組んでいます。  Hub にはベースライン モデルが不要であるため、数千の言語がサポートされます。  サポートされていない言語ペアを移行できますが、Microsoft が実施するのはドキュメントとプロジェクトの定義の移行のみです。  Microsoft で新しいモデルをトレーニングすることはできなくなります。  さらに、それらのドキュメントとプロジェクトは、現時点では使用できないことを示すために、非アクティブとして表示されます。 それらのプロジェクトまたはドキュメントは、今後サポートが追加されるとアクティブになってトレーニングできる状態になります。
 * カスタム トランスレーターでは現在、モノリンガルのトレーニング データはサポートされていません。  サポートされていない言語ペアと同様、モノリンガルのドキュメントを移行することはできますが、サポートされるようになるまで、それらは非アクティブとして表示されます。  
-* カスタム トランスレーターでは、トレーニングに 10,000 個の並列文が必要です。  Microsoft Hub では、それよりも少ないデータでのトレーニングが可能です。  この要件を満たさないトレーニングを移行した場合、トレーニングされます。
+* カスタム トランスレーターでは、トレーニングに 10,000 個の並列文が必要です。  Microsoft Hub では、それよりも少ないデータでのトレーニングが可能です。 この要件を満たさないトレーニングを移行した場合、トレーニングされません。
 
 
 ## <a name="custom-translator-versus-hub"></a>Custom Translator と Hub

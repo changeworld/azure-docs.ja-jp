@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: ba955e9e71926a513f6c083acb6508b3ec330d17
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4f940170168147e4e778714e947ab6b558cb2bd5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094561"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076673"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
@@ -44,10 +44,10 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 | --- | --- |--- |
 | Ubuntu | 16.04-DAILY-LTS | OS とデータ ディスク |
 | Ubuntu | 14.04.5-DAILY-LTS | OS とデータ ディスク |
-| RHEL | 7.5 | データ ディスク* |
-| RHEL | 7.4 | データ ディスク* |
-| RHEL | 7.3 | データ ディスク* |
-| RHEL | 7.2 | データ ディスク* |
+| RHEL | 7.5 | OS とデータ ディスク* |
+| RHEL | 7.4 | OS とデータ ディスク* |
+| RHEL | 7.3 | OS とデータ ディスク* |
+| RHEL | 7.2 | OS とデータ ディスク* |
 | RHEL | 6.8 | データ ディスク* |
 | RHEL | 6.7 | データ ディスク* |
 | CentOS | 7.4 | OS とデータ ディスク |
@@ -67,7 +67,7 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 | SLES | 11 SP4 | データ ディスク |
 
 
-*__ADE は、RHEL のデータ ディスクでサポートされます。現在の ADE 実装は OS ディスクでも動作しますが、現時点で共同ではサポートされていません。ソリューションの共同サポートに向けて、Microsoft と Red Hat の双方が取り組んでいるところです。差し当たり、[Linux での Azure Disk Encryption](azure-security-disk-encryption-linux.md) に関する記事を参照してください。__
+*__RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい ADE の実装がサポートされます。RHEL の BYOS (Bring-Your-Own-Subscription) イメージについては、現在 ADE はサポートされません。詳細については、[Linux での Azure Disk Encryption](azure-security-disk-encryption-linux.md) に関する記事も参照してください。__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Azure Disk Encryption の使用を開始するにはどうすればよいですか。
 

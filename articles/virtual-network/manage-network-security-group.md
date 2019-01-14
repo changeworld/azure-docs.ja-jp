@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 3ac7ab0aac190ab53075a6a4ee24fca3ee7eeb84
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: d6dfd88f9349312cc81d760a2c473f32ff932885
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227522"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543089"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 
@@ -52,7 +52,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 **コマンド**
 
 - Azure CLI: [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create)
-- PowerShell: [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
+- PowerShell:[New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
 
 ### <a name="view-all-network-security-groups"></a>すべてのネットワーク セキュリティ グループを表示する
 
@@ -61,14 +61,14 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 **コマンド**
 
 - Azure CLI: [az network nsg list](/cli/azure/network/nsg#az-network-nsg-list)
-- PowerShell: [Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)
+- PowerShell:[Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)
 
 ### <a name="view-details-of-a-network-security-group"></a>ネットワーク セキュリティ グループの詳細を表示する
 
 1. ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。
 2. 詳細を表示するネットワーク セキュリティ グループを一覧から選択します。 **[設定]** の下で、**受信セキュリティ規則**と**送信セキュリティ規則**、ネットワーク セキュリティ グループが関連付けられている**ネットワーク インターフェイス**と**サブネット**を確認できます。 **診断ログ**の有効化または無効化、**有効なセキュリティ規則**の表示を行うこともできます。 詳細については、[診断ログ](virtual-network-nsg-manage-log.md)に関する記事と[有効なセキュリティ規則の表示](diagnose-network-traffic-filter-problem.md)に関する記事を参照してください。
 3. Azure の一般的な設定の詳細については、次の記事を参照してください。
-    *   [アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+    *   [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)
     *   [アクセス制御 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -77,7 +77,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 **コマンド**
 
 - Azure CLI: [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show)
-- PowerShell: [Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)
+- PowerShell:[Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)
 
 ### <a name="change-a-network-security-group"></a>ネットワーク セキュリティ グループを変更する
 
@@ -87,7 +87,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 **コマンド**
 
 - Azure CLI: [az network nsg update](/cli/azure/network/nsg#az-network-nsg-update)
-- PowerShell: [Set-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/set-azurermnetworksecuritygroup)
+- PowerShell:[Set-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/set-azurermnetworksecuritygroup)
 
 ### <a name="associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface"></a>ネットワーク インターフェイスまたはサブネットに対してネットワーク セキュリティ グループを関連付けるか関連付けを解除する
 
@@ -104,7 +104,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 **コマンド**
 
 - Azure CLI: [az network nsg delete](/cli/azure/network/nsg#az-network-nsg-delete)
-- PowerShell: [Remove-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/remove-azurermnetworksecuritygroup) 
+- PowerShell:[Remove-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/remove-azurermnetworksecuritygroup) 
 
 ## <a name="work-with-security-rules"></a>セキュリティ規則を操作する
 
@@ -125,7 +125,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
     |ソース ポート範囲     | 単一のポート (例: 80)、ポートの範囲 (例: 1024-65535)、コンマで区切った単一のポートとポートの範囲の一覧 (例: 80, 1024-65535) を指定します。 任意のポートでトラフィックを許可する場合は、アスタリスクを入力します。 | ポートと範囲は、規則によってトラフィックが許可または拒否されるポートを指定します。 指定できるポートの数には制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。  |
     |宛先     | 受信セキュリティ規則として、**[任意]**、**[アプリケーション セキュリティ グループ]**、**[IP アドレス]**、または **[仮想ネットワーク]** を選択します。 送信セキュリティ規則を作成する場合、オプションは **[ソース]** に対して一覧表示されるオプションと同じです。        | **[アプリケーション セキュリティ グループ]** を選択した場合は、ネットワーク インターフェイスと同じ領域に存在する既存のアプリケーション セキュリティ グループを 1 つ以上選択する必要があります。 [アプリケーション セキュリティ グループの作成](#create-an-application-security-group)方法を参照してください。 **[アプリケーション セキュリティ グループ]** を選択した場合は、ネットワーク インターフェイスと同じ領域に存在する既存のアプリケーション セキュリティ グループを 1 つ選択します。 **[IP アドレス]** 選択した場合は、**[宛先 IP アドレス/CIDR 範囲]** を指定します。 **[ソース]** と **[送信元 IP アドレス/CIDR 範囲]** と同じように、単一のアドレス、複数のアドレス、または範囲を指定できます。指定できる数には制限があります。 サービス タグである **[仮想ネットワーク]** の選択は、トラフィックが仮想ネットワークのアドレス空間内のすべての IP アドレスで許可されることを意味します。 指定した IP アドレスが Azure 仮想マシンに割り当てられている場合は、仮想マシンに割り当てられているパブリック IP アドレスではなく、確実にプライベート IP アドレスを指定してください。 セキュリティ ルールが処理されるタイミングは、受信セキュリティ ルールの場合は Azure がパブリック IP アドレスをプライベート IP アドレスに変換した後、送信ルールの場合は Azure がプライベート IP アドレスをパブリック IP アドレスに変換する前です。 Azure のパブリック IP アドレスとプライベート IP アドレスの詳細については、[IP アドレスの種類](virtual-network-ip-addresses-overview-arm.md)に関するページを参照してください。        |
     |宛先ポート範囲     | 単一の値またはコンマで区切った値の一覧を指定します。 | **[ソース ポート範囲]** と同じように、単一のポート、複数のポート、または範囲を指定できます。指定できる数には制限があります。 |
-    |プロトコル     | **[任意]**、**[TCP]**、または **[UDP]** を選択します。        |         |
+    |Protocol     | **[任意]**、**[TCP]**、または **[UDP]** を選択します。        |         |
     |アクション     | **[許可]** または **[拒否]** を選択します。        |         |
     |優先度     | ネットワーク セキュリティ グループ内のすべてのセキュリティ規則に対して一意である 100 ～ 4096 の範囲の値を入力します。 |規則は、優先度に従って処理されます。 数値が小さいほど、優先度は高くなります。 規則を作成するときに、間を空けて優先度を指定することをお勧めします (100、200、300 など)。 間を空けることで、既存の規則よりも優先度が高いまたは低い規則が必要になった場合に、そのような規則を簡単に追加できます。         |
     |名前     | ネットワーク セキュリティ グループ内の一意の名前。        |  名前の最大長は 80 文字です。 先頭にはアルファベットまたは数字、末尾にはアルファベット、数字、またはアンダースコアを使用する必要があります。また、使用できるのは、アルファベット、数字、アンダースコア、ピリオド、ハイフンのみです。       |
@@ -134,7 +134,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 **コマンド**
 
 - Azure CLI: [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)
-- PowerShell: [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
+- PowerShell:[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
 
 ### <a name="view-all-security-rules"></a>すべてのセキュリティ規則を表示する
 
@@ -149,7 +149,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 **コマンド**
 
 - Azure CLI: [az network nsg rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list)
-- PowerShell: [Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
+- PowerShell:[Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
 
 ### <a name="view-details-of-a-security-rule"></a>セキュリティ規則の詳細を表示する
 
@@ -161,7 +161,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 **コマンド**
 
 - Azure CLI: [az network nsg rule show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show)
-- PowerShell: [Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
+- PowerShell:[Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
 
 ### <a name="change-a-security-rule"></a>セキュリティ規則を変更する
 
@@ -171,7 +171,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 **コマンド**
 
 - Azure CLI: [az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update)
-- PowerShell: [Set-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/set-azurermnetworksecurityruleconfig)
+- PowerShell:[Set-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/set-azurermnetworksecurityruleconfig)
 
 ### <a name="delete-a-security-rule"></a>セキュリティ規則を削除する
 
@@ -181,7 +181,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 **コマンド**
 
 - Azure CLI: [az network nsg rule delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete)
-- PowerShell: [Remove-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/remove-azurermnetworksecurityruleconfig)
+- PowerShell:[Remove-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/remove-azurermnetworksecurityruleconfig)
 
 ## <a name="work-with-application-security-groups"></a>アプリケーション セキュリティ グループを操作する
 
@@ -198,12 +198,12 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
     | 名前           | 名前はリソース グループ内で一意である必要があります。        |
     | サブスクリプション   | サブスクリプションを選択します。                               |
     | リソース グループ | 既存のリソース グループを選択するか、新しいものを作成します。 |
-    | Location       | 場所を選択します。                                       |
+    | 場所       | 場所を選択します。                                       |
 
 **コマンド**
 
 - Azure CLI: [az network asg create](/cli/azure/network/asg#az-network-asg-create)
-- PowerShell: [New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup)
+- PowerShell:[New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup)
 
 ### <a name="view-all-application-security-groups"></a>すべてのアプリケーション セキュリティ グループを表示する
 
@@ -213,7 +213,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 **コマンド**
 
 - Azure CLI: [az network asg list](/cli/azure/network/asg#az-network-asg-list)
-- PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
+- PowerShell:[Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
 
 ### <a name="view-details-of-a-specific-application-security-group"></a>特定のアプリケーション セキュリティ グループの詳細を表示する
 
@@ -224,7 +224,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 **コマンド**
 
 - Azure CLI: [az network asg show](/cli/azure/network/asg#az-network-asg-show)
-- PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
+- PowerShell:[Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
 
 ### <a name="change-an-application-security-group"></a>アプリケーション セキュリティ グループを変更する
 
@@ -233,7 +233,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 3. 設定を変更するアプリケーション セキュリティ グループを選択します。 タグを追加したり削除したりすることができます。また、アプリケーション セキュリティ グループに対するアクセス許可を割り当てたり削除したりすることもできます。
 
 - Azure CLI: [az network asg update](/cli/azure/network/asg#az-network-asg-update)
-- PowerShell: PowerShell コマンドレットはありません。
+- PowerShell:PowerShell コマンドレットはありません。
 
 ### <a name="delete-an-application-security-group"></a>アプリケーション セキュリティ グループを削除する
 
@@ -247,7 +247,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 **コマンド**
 
 - Azure CLI: [az network asg delete](/cli/azure/network/asg#az-network-asg-delete)
-- PowerShell: [Remove-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/remove-azurermapplicationsecuritygroup)
+- PowerShell:[Remove-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/remove-azurermapplicationsecuritygroup)
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -255,7 +255,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 
 ### <a name="network-security-group"></a>ネットワーク セキュリティ グループ
 
-| アクション                                                        |   名前                                                                |
+| アクションを表示します。                                                        |   名前                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/read                  |   ネットワーク セキュリティ グループの取得                                          |
 | Microsoft.Network/networkSecurityGroups/write                 |   ネットワーク セキュリティ グループの作成または更新                             |
@@ -265,7 +265,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 
 ### <a name="network-security-group-rule"></a>ネットワーク セキュリティ グループの規則
 
-| アクション                                                        |   名前                                                                |
+| アクションを表示します。                                                        |   名前                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/rules/read            |   規則の取得                                                            |
 | Microsoft.Network/networkSecurityGroups/rules/write           |   規則の作成または更新                                               |
@@ -273,7 +273,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 
 ### <a name="application-security-group"></a>アプリケーション セキュリティ グループ
 
-| アクション                                                                     | 名前                                                     |
+| アクションを表示します。                                                                     | 名前                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | IP 構成をアプリケーション セキュリティ グループに結合する|
 | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | セキュリティ ルールをアプリケーション セキュリティ グループに結合する    |

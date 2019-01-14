@@ -8,19 +8,60 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: c99f1691618765e8997ef442a506c83b9a7bd4fa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7485ca1e4b1143ed46c9b3bef9ca66af0638b4f8
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088308"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599418"
 ---
 # <a name="release-notes"></a>リリース ノート
 
-## <a name="speech-service-sdk-110"></a>Speech Service SDK 1.1.0
+## <a name="speech-sdk-120-2018-december-release"></a>Speech SDK 1.2.0:2018-December リリース
+
+**新機能**
+
+* Python
+  * このリリースで、Python サポート (3.5 以降) のベータ版を使用できるようになりました。 詳細については、[こちらを参照](quickstart-python.md)してください。
+* JavaScript
+  * Speech SDK for JavaScript はオープンソースで提供されています。 ソース コードは [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js)から入手できます。
+  * Node.js のサポートを開始しました。詳細については、[こちら](quickstart-js-node.md)を参照してください。
+  * 音声セッションの長さの制限がなくなり、再接続は背後で自動的に実行されるようになります。
+* Connection オブジェクト
+  * 認識機能から、Connection オブジェクトにアクセスできます。 このオブジェクトを使用すると、サービスの接続を明示的に開始し、接続イベントと切断イベントをサブスクライブすることができます
+    (これは JavaScript と Python からはまだ使用できません)。
+* Ubuntu 18.04 のサポート。
+* Android
+  * APK 生成時の ProGuard サポートが有効になりました。
+
+**機能強化**
+
+* 内部スレッドの使用方法を改善し、スレッド、ロック、相互排他の数を減らしました。
+* エラー報告や情報を改善しました。 一部のケースでは、エラー メッセージがまったく伝達されていませんでした。
+* 最新のモジュールを使用するように JavaScript の開発依存関係を更新しました。
+
+**バグの修正**
+
+* RecognizeAsync の型の不一致によるメモリ リークを修正しました。
+* 場合によっては、例外がリークしていました。
+* 翻訳イベント引数のメモリ リークを修正しました。
+* 長時間実行中のセッションでの再接続に関するロックの問題を修正しました。
+* 翻訳が失敗した場合に最終的な結果が失われる可能性がある問題を修正しました。
+* C#:メイン スレッドで非同期操作が待機されていない場合、非同期タスクが完了する前に認識機能が破棄される可能性がありました。
+* Java:Java VM がクラッシュする原因となる問題を修正しました。
+* Objective-C: RecognizingIntent ではなく RecognizedIntent が返されるという列挙型のマッピングを修正しました。
+* JavaScript:SpeechConfig で既定の出力形式を 'simple' に設定します。
+* JavaScript:JavaScript と他の言語の config オブジェクトのプロパティ間にある不整合を解消しました。
+
+**サンプル**
+
+* いくつかのサンプルを更新および修正しました (たとえば、翻訳のための出力音声など)。
+* [サンプル リポジトリ](https://aka.ms/csspeech/samples)に Node.js サンプルを追加しました。
+
+## <a name="speech-sdk-110"></a>Speech SDK 1.1.0
 
 **新機能**
 
@@ -51,7 +92,7 @@ ms.locfileid: "53088308"
 
 * プルおよびプッシュ ストリームの使用のための C++ と C# のサンプルを[サンプル リポジトリ](https://aka.ms/csspeech/samples)に追加しました。
 
-## <a name="speech-service-sdk-101"></a>Speech Service SDK 1.0.1
+## <a name="speech-sdk-101"></a>Speech SDK 1.0.1
 
 信頼性の向上とバグ修正
 

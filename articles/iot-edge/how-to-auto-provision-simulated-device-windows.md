@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a251eb3915ee3043ab4b69e0cd4cef8fa2170486
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1ad8435626b35859968bdf93589f22dc81e74e02
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101604"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557701"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Windows 上のシミュレートされた TPM Edge デバイスの作成とプロビジョニング
 
@@ -61,14 +61,13 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
 前のセクションを完了すると、新しいデバイスが IoT Edge デバイスとして IoT Hub に一覧表示されます。 次は、IoT Edge ランタイムをデバイスにインストールする必要があります。 
 
-IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 そのコンポーネントはコンテナー内で実行されるため、デバイスに追加のコンテナーを展開して、Edge でコードを実行できるようにすることができます。 Windows を実行しているデバイスでは、Windows コンテナーまたは Linux コンテナーを使用することができます。 使用するコンテナーの種類を選択し、手順に従います。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。 
+IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 そのコンポーネントはコンテナー内で実行されるため、デバイスに追加のコンテナーを展開して、Edge でコードを実行できるようにすることができます。  
 
-手順に従って、前のセクションのシミュレートされた TPM を実行しているデバイスに IoT Edge ランタイムをインストールします。 
+手順に従って、前のセクションのシミュレートされた TPM を実行しているデバイスに IoT Edge ランタイムをインストールします。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。
 
-これらの記事の手順を実行する前に、DPS の **ID スコープ**とデバイスの**登録 ID** を確認します。 
+IoT Edge をデバイスにインストールする前に、DPS の **ID スコープ**とデバイスの**登録 ID** を確認します。 
 
-* [Windows コンテナー](how-to-install-iot-edge-windows-with-windows.md)
-* [Linux コンテナー](how-to-install-iot-edge-windows-with-linux.md)
+[IoT Edge をインストールして自動的にプロビジョニングする](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 

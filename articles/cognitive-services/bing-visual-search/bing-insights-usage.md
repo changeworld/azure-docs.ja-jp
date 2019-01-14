@@ -10,20 +10,20 @@ ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: 40b9685c56dd494e82c05bff9ed75f425a3006ff
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 39468a4a143d184fcc964ae88f82ad7254e4f3b0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886629"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741744"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Bing 分析情報の使用例
 
-このセクションでは、Bing.com で表示される分析情報の例を示します。
+この記事では、Bing.com で画像分析情報が使用および表示される方法の例を示します。
 
 ## <a name="pagesincluding-insight-example"></a>PagesIncluding 分析情報の例
 
-その画像を含む Web ページが Bing でどのように表示されるかを次に示します。 この例では、最初の Web ページへのリンクを表示し、この画像を含む他の Web ページの一覧をユーザーが展開したり折りたたんだりできるようにしています。
+以下では、最初の Web ページへのリンクを表示し、この画像を含む他の Web ページの一覧をユーザーが展開したり折りたたんだりできるようにしています。
 
 ![画像を含むページの展開表示](./media/pages-including.PNG)
 
@@ -83,9 +83,7 @@ ms.locfileid: "48886629"
 
 ## <a name="next-steps"></a>次の手順
 
-これらの例に使われている JSON を確認するには、[既定の分析情報](default-insights-tag.md)に関するページと [JSON 応答](overview.md#the-response)に関するページを参照してください。
-
-実際に要求を送信してみるには、クイック スタートを参照してください。[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。
+実際に要求を送信してみるには、クイック スタートを参照してください:[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 836449dad621cf6a0efe6c8534edc9f3982869b3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d355e14d15dc6a393a6fabb90418cb3949fe0cf5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141579"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601969"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 アプリの<a name="train-your-app"></a>
@@ -51,11 +51,11 @@ ms.locfileid: "53141579"
  
 1. スライド式の **[Test]\(テスト\)** パネルを開いた状態で、比較する発話の **[検査]** を選択します。 
 
-    ![[検査] ボタン](./media/luis-how-to-interactive-test/inspect.png)
+    ![テスト結果の詳細を確認するには、[検査] ボタンを選択します。](./media/luis-how-to-interactive-test/inspect.png)
 
 2. **[検査]** パネルが表示されます。 このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。
 
-    ![[検査] ボタン](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="correct-top-scoring-intent"></a>上位スコアの意図の修正
 

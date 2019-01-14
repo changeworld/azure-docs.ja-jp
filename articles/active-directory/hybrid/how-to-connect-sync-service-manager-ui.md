@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect 同期: Synchronization Service Manager UI | Microsoft Docs'
+title: Azure AD Connect 同期:Synchronization Service Manager UI | Microsoft Docs
 description: Azure AD Connect の Synchronization Service Manager について説明します。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 877f41fb1d47bc8faf4ea1275c94cd492884bfb1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 439535975c6e1b996bf888a1df7b6f2ae6732a6d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46307741"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717537"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Azure AD Connect の Synchronization Service Manager UI の概要
 
@@ -32,9 +32,10 @@ ms.locfileid: "46307741"
 **Synchronization Service Manager** UI は [スタート] メニューから起動します。 この UI の名前は **Synchronization Service** であり、**[Azure AD Connect]** グループにあります。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
-UI の各種タブの詳細については、このトピックの上部にあるリンクをクリックしてください。
-
 ## <a name="next-steps"></a>次の手順
+
+[[Operations]\(操作\)](how-to-connect-sync-service-manager-ui-operations.md)、[[Connectors]\(コネクタ\)](how-to-connect-sync-service-manager-ui-connectors.md)、[[Metaverse Designer]\(メタバース デザイナー\)](how-to-connect-sync-service-manager-ui-mvdesigner.md)、[[Metaverse Search]\(メタバース検索\)](how-to-connect-sync-service-manager-ui-mvsearch.md) の各タブなど、Synchronization Service Manager の UI についてさらに理解します。
+
 [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

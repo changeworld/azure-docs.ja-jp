@@ -1,5 +1,5 @@
 ---
-title: ファイアウォールの内側にある Key Vault へのアクセス - Azure Key Vault | Microsoft Docs
+title: ファイアウォールの内側から Key Vault へのアクセス | Microsoft Docs
 description: ファイアウォールの内側にあるアプリケーションから Azure Key Vault にアクセスする方法について説明します。
 services: key-vault
 documentationcenter: ''
@@ -20,7 +20,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/08/2019
 ms.locfileid: "54073731"
 ---
-# <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの内側にある Azure Key Vault へのアクセス
+# <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの向こう側にある Azure Key Vault へのアクセス
 
 ## <a name="what-ports-hosts-or-ip-addresses-should-i-open-to-enable-my-key-vault-client-application-behind-a-firewall-to-access-key-vault"></a>ファイアウォールの内側のキー コンテナー クライアント アプリケーションがキー コンテナーにアクセスできるようにするには、どのポート、ホスト、または IP アドレスを開く必要がありますか。
 
@@ -42,8 +42,8 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 
 | プリンシパルの種類 | エンドポイント:ポート |
 | --- | --- |
-| Microsoft アカウントを使用しているユーザー<br> (例: user@hotmail.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br>  login.microsoftonline.de:443<br><br> と <br>login.live.com:443 |
-| Azure AD と共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br>  login.microsoftonline.de:443 |
+| Microsoft アカウントを使用しているユーザー<br> (例: user@hotmail.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443<br><br> と <br>login.live.com:443 |
+| Azure AD と共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
 | Active Directory フェデレーション サービス (AD FS) または他のフェデレーション エンドポイントと共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |職場または学校のアカウント用のすべてのエンドポイントと AD FS またはその他のフェデレーション エンドポイント |
 
 ほかにも複雑なシナリオが存在する場合があります。 詳細については、[Azure Active Directory の認証フロー](../active-directory/develop/authentication-scenarios.md)に関するページ、「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/active-directory-how-to-integrate.md)」、[Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)に関するページを参照してください。  
@@ -54,8 +54,8 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 
 | 操作の種類 | エンドポイント:ポート |
 | --- | --- |
-| Key Vault コントロール プレーン操作<br>  (Azure Resource Manager を使用) |**グローバル:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br>  management.microsoftazure.de:443 |
-| Azure Active Directory Graph API |**グローバル:**<br> graph.windows.net:443<br><br> **Azure China:**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> graph.windows.net:443<br><br> **Azure Germany:**<br>  graph.cloudapi.de:443 |
+| Key Vault コントロール プレーン操作<br> (Azure Resource Manager を使用) |**グローバル:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 |
+| Azure Active Directory Graph API |**グローバル:**<br> graph.windows.net:443<br><br> **Azure China:**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> graph.windows.net:443<br><br> **Azure Germany:**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>Key Vault の操作
 

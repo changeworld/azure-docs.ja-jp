@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 9e5b132a7946bdc648e051c9f7327cc7159f291e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 9a8bfa2e89e6bc0cbbd5af2efdff60aa406b3f1d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163635"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714204"
 ---
-# <a name="language-understanding-faq"></a>Language Understanding のよくあるご質問
+# <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
 この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
 
@@ -160,7 +160,7 @@ LUIS アプリを別の Azure サブスクリプションに譲渡するには�
 ### <a name="why-dont-i-want-all-my-endpoint-utterances-logged"></a>エンドポイントの発話をログに記録する必要がないのはどのような場合ですか?
 予測分析にログを使用する場合、テスト用の発話はログにキャプチャしないでください。
 
-## <a name="data-management"></a>[データ管理]
+## <a name="data-management"></a>データ管理
 
 ### <a name="can-i-delete-data-from-luis"></a>LUIS からデータを削除できますか?
 
@@ -212,7 +212,7 @@ Build 2018 Conference では、次の機能がリリースされました。
 |統合|[感情分析](luis-how-to-publish-app.md#enable-sentiment-analysis)の[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)の統合<br>[Speech SDK](https://aka.ms/SpeechSDK) との組み合わせでの音声認識の準備の[音声](https://docs.microsoft.com/azure/cognitive-services/speech)の統合|
 |ディスパッチ ツール|[BotBuilder ツール](https://github.com/Microsoft/botbuilder-tools)の一部、ボットでの意図認識向上のために単一 LUIS アプリに複数の LUIS アプリと QnA Maker アプリを結合するためのディスパッチ コマンド ライン [ツール](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps)
 
-追加のオーサリング [API ルート](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md)が組み込まれました。
+追加のオーサリング [API ルート](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md)が組み込まれました。
 
 ビデオ:
 * [Build 2018 での Azure Friday: Cognitive Services - Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)

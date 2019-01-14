@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 12/29/2018
 ms.author: hrasheed
-ms.openlocfilehash: c7ec0b29e200710070cb1243ff8bfadd5e31e8eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7b20ceb61f522bea11e7256c824a851e587cbd49
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879411"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975459"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル: Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 **Azure PowerShell を使用してストレージ アカウントを作成し、ファイルをコピーするには:**
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > スクリプトを使って作成する Azure リソース グループと Azure ストレージ アカウントの名前を指定します。
 > スクリプトによって出力された**リソース グループ名**、**ストレージ アカウント名**、**ストレージ アカウント キー**を書き留めます。 これらは、次のセクションで必要になります。
 
@@ -166,7 +166,11 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 
-1. Azure Portal 上で、**[リソースの作成]** > **[データ + 分析]** > **[Data Factory]** を選択します。
+1. 左側のメニューで、**[+ リソースの作成]** を選択します。
+
+1. **[Azure Marketplace]** の **[分析]** を選択します。
+
+1.  **[おすすめ]** の **[Data Factory]** を選択します。
 
     ![ポータルの Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "ポータルの Azure Data Factory")
 
@@ -181,19 +185,18 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
     |**名前** |  データ ファクトリの名前を入力します。 この名前はグローバルに一意である必要があります。|
     |**サブスクリプション**     |  Azure サブスクリプションを選択します。 |
     |**[リソース グループ]**     | **[既存のものを使用]** を選択し、PowerShell スクリプトを使用して作成したリソース グループを選択します。 |
-    |**バージョン**     | **[V2 (プレビュー)]** を選択します。 |
-    |**場所**     | 場所は、リソース グループの作成時に指定した場所に自動的に設定されます。 このチュートリアルでは、場所は **[米国東部 2]** に設定されます。 |
+    |**バージョン**     | **[V2]** を選択します。 |
+    |**場所**     | 場所は、リソース グループの作成時に指定した場所に自動的に設定されます。 このチュートリアルでは、場所は **[米国東部]** に設定されます。 |
     
 
-1. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** を選択します。 ポータルのダッシュボードに、**[デプロイを送信しています]** という新しいタイルが表示されます。 データ ファクトリの作成には、2 ～ 4 分ほどかかることがあります。
+1. **作成**を選択します。 データ ファクトリの作成には、2 ～ 4 分ほどかかることがあります。
 
-    ![テンプレートのデプロイの進行状況](./media/hdinsight-hadoop-create-linux-clusters-adf/deployment-progress-tile.png "テンプレートのデプロイの進行状況") 
- 
-1. データ ファクトリが作成されると、ポータルにデータ ファクトリの概要が表示されます。
 
-    ![Azure Data Factory の概要](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory の概要")
+1. データ ファクトリが作成されると、**[リソースに移動]** ボタンを含む**デプロイ成功**通知が届きます。  **[リソースに移動]** を選択して、Data Factory の既定のビューを開きます。
 
 1. **[作成と監視]** を選択して、Azure Data Factory の作成および監視ポータルを起動します。
+
+    ![Azure Data Factory の概要](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory の概要")
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 

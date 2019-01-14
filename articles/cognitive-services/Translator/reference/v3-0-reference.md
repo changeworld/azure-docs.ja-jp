@@ -33,7 +33,7 @@ Translator Text API のバージョン 3 には、最新の JSON ベースの We
 
 Microsoft Translator のサービスは、複数のデータセンター拠点から提供されます。 現在、それらの拠点は、6 つの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions)に存在します。
 
-* **アメリカ:** 米国西部 2 および米国中西部 
+* **アメリカ合衆国:** 米国西部 2 および米国中西部 
 * **アジア太平洋:** 東南アジアおよび韓国南部
 * **ヨーロッパ:** 北ヨーロッパおよび西ヨーロッパ
 

@@ -3,16 +3,15 @@ title: Azure Database for PostgreSQL サーバー上で TOAST テーブル ス�
 description: この記事では、Azure Database for PostgreSQL サーバー上で TOAST テーブル ストレージ戦略を使用してクエリ時間を最適化する方法について説明します。
 author: dianaputnam
 ms.author: dianas
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: dee8aaaef4b1998a7234a88d07ad5efbc79d050b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1fb818a65e26f969f72131b0f5265f3efdd36bb6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628637"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542220"
 ---
 # <a name="optimizing-query-time-with-toast-table-storage-strategy"></a>TOAST テーブル ストレージ戦略を使用してクエリ時間を最適化する 
 この記事では、TOAST テーブル ストレージ戦略を使用してクエリ時間を最適化する方法について説明します。
@@ -32,4 +31,4 @@ TOAST 可能な列をディスクに格納するための戦略には、圧縮�
 ## <a name="next-steps"></a>次の手順
 上記の特性を考慮してワークロードを見直します。 
 
-次の PostgreSQL のドキュメントを確認します。[Chapter 68, Database physical storage](https://www.postgresql.org/docs/current/storage-toast.html) (第 68 章 データベースの物理ストレージ) 
+次の PostgreSQL のドキュメントを確認します。[Chapter 68, Database physical storage (第 68 章、データベースの物理ストレージ)](https://www.postgresql.org/docs/current/storage-toast.html) 

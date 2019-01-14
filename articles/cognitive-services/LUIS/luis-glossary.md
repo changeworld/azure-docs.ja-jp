@@ -10,14 +10,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a7a2c921d2bb0f77579c48d0608eb0d195e83ca1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b0bbd3300e48e82e44a7b7fac05f89c8d25e007f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078924"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603499"
 ---
-# <a name="glossary"></a>用語集
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
 
 ## <a name="active-version"></a>アクティブなバージョン

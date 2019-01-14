@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d40886f54083a1619635f31af57841138f1706d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e055d1e10ddf8c18c84af5376cf4a284d48fde6b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086608"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603329"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>QnA Maker のナレッジ ベースを編集する
 
@@ -71,7 +71,7 @@ QnA を削除するには、QnA 行の右端にある**削除**アイコンを�
 ## <a name="add-metadata"></a>メタデータの追加
 
 
-フィルター アイコンを選択してメタデータ ペアを追加します。
+メタデータ アイコンを選択してメタデータ ペアを追加します。
 
 ![メタデータの追加](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -80,11 +80,17 @@ QnA を削除するには、QnA 行の右端にある**削除**アイコンを�
 
 ## <a name="manage-large-knowledge-bases"></a>大きなナレッジ ベースの管理
 
-1. QnA は、抽出元のデータ ソースごとに**グループ化**されます。 データ ソースは、展開したり折りたたんだりすることができます。
-2. ナレッジ ベースの**検索**は、ナレッジ ベース テーブルの一番上にあるテキスト ボックスに検索語句を入力することで実行できます。 Enter キーを押すと、質問、回答、またはメタデータの内容を対象に検索が実行されます。 検索フィルターを解除するには、X アイコンをクリックします。
-3. 大きなナレッジ ベースは、**改ページ**で管理することができます。
+* **データ ソース グループ**:QnA は、抽出元のデータ ソースごとにグループ化されます。 データ ソースは、展開したり折りたたんだりすることができます。
 
-    ![検索、改ページ、グループ化](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![QnA Maker データ ソース バーを使用したデータ ソースの質問と回答の折りたたみと展開](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+
+* **サポート技術情報の検索**:ナレッジ ベースの検索は、ナレッジ ベース テーブルの一番上にあるテキスト ボックスに検索語句を入力することで実行できます。 Enter キーを押すと、質問、回答、またはメタデータの内容を対象に検索が実行されます。 検索フィルターを解除するには、X アイコンをクリックします。
+
+    ![質問と回答の上にある [QnA Maker] 検索ボックスを使用して、表示をフィルターの一致項目のみに絞り込みます。](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+* **改ページ位置の自動修正**:データ ソース間をすばやく移動して大規模なナレッジ ベースを管理する
+
+    ![質問と回答の上にある QnA Maker の改ページ位置の自動修正機能を使用して、質問と回答のページ間を移動します。](../media/qnamaker-how-to-edit-kb/pagination.png)
 
 ## <a name="delete-knowledge-bases"></a>ナレッジ ベースの削除
 

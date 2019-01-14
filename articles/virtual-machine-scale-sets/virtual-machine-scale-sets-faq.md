@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 1bba25d0b7fd6bbe4efeb9c2164fc663b22bed11
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2a33283d735532d4cc4c11bc3910377f15aaa730
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139369"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002690"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -69,7 +69,7 @@ Azure における仮想マシン スケール セットについてよく寄せ
 
 **Q.** スケール セットは、Azure 可用性ゾーンと連携しますか。
 
-**A.**  はい。 詳細については、[スケール セットのゾーン](./virtual-machine-scale-sets-use-availability-zones.md)に関するドキュメントを参照してください。
+**A.** はい。 詳細については、[スケール セットのゾーン](./virtual-machine-scale-sets-use-availability-zones.md)に関するドキュメントを参照してください。
 
 
 ## <a name="autoscale"></a>自動スケール
@@ -167,48 +167,16 @@ VM に対して証明書を安全に配布するには、お客様のキー コ�
 詳細については、[仮想マシン スケール セットの作成または更新](https://msdn.microsoft.com/library/mt589035.aspx)に関するページを参照してください。
 
 
-### <a name="example-of-self-signed-certificate"></a>自己署名証明書の例
+### <a name="example-of-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Azure Service Fabric クラスター用にプロビジョニングされた自己署名証明書の例
+最新の例については、Azure シェル内で次の Azure CLI ステートメントを使用し、Service Fabric CLI モジュール例のドキュメント (StdOut に出力されます) を参照してください。
 
-1.  キー コンテナーに自己署名証明書を作成します。
+```bash
+az sf cluster create -h
+```
 
-    次の PowerShell コマンドを使用します。
+Azure の最新の API でサポートされる証明書操作については、Key Vault のドキュメントを参照してください。
 
-    ```powershell
-    Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
-
-    Connect-AzureRmAccount
-
-    Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
-    ```
-
-    このコマンドにより、Azure Resource Manager テンプレートの入力が提供されます。
-
-    キー コンテナーに自己署名証明書を作成する方法の例については、「[Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)」を参照してください。
-
-2.  Resource Manager テンプレートに変更を加えます。
-
-    次のプロパティを仮想マシン スケール セット リソースの一部として **virtualMachineProfile** に追加します。
-
-    ```json 
-    "osProfile": {
-        "computerNamePrefix": "[variables('namingInfix')]",
-        "adminUsername": "[parameters('adminUsername')]",
-        "adminPassword": "[parameters('adminPassword')]",
-        "secrets": [
-            {
-                "sourceVault": {
-                    "id": "[resourceId('KeyVault', 'Microsoft.KeyVault/vaults', 'MikhegnVault')]"
-                },
-                "vaultCertificates": [
-                    {
-                        "certificateUrl": "https://mikhegnvault.vault.azure.net:443/secrets/VMSSCert/20709ca8faee4abb84bc6f4611b088a4",
-                        "certificateStore": "My"
-                    }
-                ]
-            }
-        ]
-    }
-    ```
+証明機関によって提供される分散型の信頼を自己署名証明書を使用して実現することはできません。エンタープライズ運用ソリューションのホストとして使用することを目的とした Service Fabric クラスターに自己署名証明書は使用しないでください。Service Fabric の詳しいセキュリティ ガイダンスについては、「[Azure Service Fabric セキュリティに関するベスト プラクティス](https://docs.microsoft.com/en-us/azure/security/azure-service-fabric-security-best-practices)」と「[Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)」を参照してください。
   
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Resource Manager テンプレートから、Linux 仮想マシン スケール セットで SSH 認証に使用する SSH キー ペアを指定することはできますか。  
@@ -389,7 +357,7 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 ### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットで機能しますか。
 
-はい。 Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。 Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux)。 Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows)。
+はい。 Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。 Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。 Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。
 
 
 ## <a name="extensions"></a>Extensions

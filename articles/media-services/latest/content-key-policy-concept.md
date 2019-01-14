@@ -9,23 +9,25 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/20/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 541713677184d93eb78856e3c3373ab432d5f0cf
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f12632b20d516c81e21a50cfdda7e40d4163afc1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141530"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742220"
 ---
 # <a name="content-key-policies"></a>コンテンツ キー ポリシー
 
 Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム (Microsoft PlayReady、Google Widevine、および Apple FairPlay) によって動的に暗号化されたライブまたはオンデマンドのコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。
 
-Azure Media Services v3 では、コンテンツ キー ポリシーによって、Media Services Key Delivery コンポーネント経由でコンテンツ キーがエンド クライアントに配信される方法を指定できます。 詳細については、「[コンテンツ保護の概要](content-protection-overview.md)」をご覧ください。
+Azure Media Services v3 では、[コンテンツ キー ポリシー](https://docs.microsoft.com/rest/api/media/contentkeypolicies)によって、Media Services Key Delivery コンポーネント経由でコンテンツ キーがエンド クライアントに配信される方法を指定できます。 詳細については、「[コンテンツ保護の概要](content-protection-overview.md)」をご覧ください。
 
-## <a name="contentkeypolicies-definition"></a>ContentKeyPolicies 定義
+所有するすべての資産に同じ ContentKeyPolicy を再利用することをお勧めします。 ContentKeyPolicies は更新できるため、キーのローテーションを実施したい場合は、既存の ContentKeyPolicy に対し、新しい ContentKeyPolicyOption を新しいキーのトークン制限と共に追加することができます。 または、既存のポリシーとオプションにあるプライマリ検証キーと代替検証キーのリストを更新することもできます。 キー配信キャッシュでポリシーが更新されて、その更新されたポリシーが取得されるまでには、最大 15 分かかる場合があります。
+
+## <a name="contentkeypolicy-definition"></a>ContentKeyPolicy の定義
 
 次の表は、ContentKeyPolicy のプロパティとそれらの定義を示しています。
 
@@ -37,8 +39,8 @@ Azure Media Services v3 では、コンテンツ キー ポリシーによって
 |properties.description |ポリシーの説明。|
 |properties.lastModified|ポリシーの最終変更日|
 |properties.options |キー ポリシーのオプション。|
-|properties.policyId    |従来のポリシー ID。|
-|type   |リソースの種類。|
+|properties.policyId|従来のポリシー ID。|
+|type|リソースの種類。|
 
 完全な定義については、「[Content Key Policies](https://docs.microsoft.com/rest/api/media/contentkeypolicies)」(コンテンツ キー ポリシー) を参照してください。
 
@@ -62,7 +64,7 @@ Media Services は、ContentKeyPolicies 用の次の OData クエリ オプシ�
 
 ### <a name="filteringordering"></a>フィルター処理/順序付け
 
-次の表は、これらのオプションを StreamingPolicy プロパティに適用できる方法を示しています。 
+次の表は、これらのオプションが ContentKeyPolicies の各プロパティに対してどのように適用されるかを示しています。 
 
 |Name|filter|順序|
 |---|---|---|
@@ -70,10 +72,10 @@ Media Services は、ContentKeyPolicies 用の次の OData クエリ オプシ�
 |name|eq、ne、ge、le、gt、lt|昇順および降順|
 |properties.created |eq、ne、ge、le、gt、lt|昇順および降順|
 |properties.description |eq、ne、ge、le、gt、lt||
-|properties.lastModified    |eq、ne、ge、le、gt、lt|昇順および降順|
+|properties.lastModified|eq、ne、ge、le、gt、lt|昇順および降順|
 |properties.options |||
-|properties.policyId    |Eq、ne||
-|type   |||
+|properties.policyId|Eq、ne||
+|type|||
 
 ### <a name="pagination"></a>改ページ位置の自動修正
 
@@ -84,7 +86,7 @@ Media Services は、ContentKeyPolicies 用の次の OData クエリ オプシ�
 
 クエリ応答に多数の項目が含まれている場合、サービスは "\@odata.nextLink" プロパティを返して結果の次のページを取得します。 この方法を利用して、結果セット全体のページングを実行できます。 ページ サイズを構成することはできません。 
 
-コレクションのページング中に StreamingPolicy が作成または削除された場合、その変更は返される結果に反映されます (変更がまだダウンロードされていないコレクション部分にある場合)。 
+コレクションのページング中に ContentKeyPolicies が作成または削除された場合、その変更は返される結果に反映されます (コレクション内の、ダウンロードされていない部分に対する変更の場合)。 
 
 次の C# の例は、アカウント内のすべての ContentKeyPolicies を列挙する方法を示しています。
 

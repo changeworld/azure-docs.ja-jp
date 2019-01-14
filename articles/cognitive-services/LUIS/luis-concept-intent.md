@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: a6343d9bd2009ee2c16f0cca3118e5653faa4c07
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f9f0c52c187b36416dbc77f280a8f6148cf1cbbc
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138689"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971054"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>LUIS アプリにおける意図の概念
 
@@ -58,7 +58,7 @@ ms.locfileid: "53138689"
 [事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)には、発話を伴う意図があります。  
 
 ## <a name="none-intent-is-fallback-for-app"></a>None 意図はアプリで代替用として使用できる
-**None** 意図は、汎用的な意図または代替用の意図です。 LUIS にアプリ ドメイン (サブジェクト領域) 内で重要でない発話を学習させるために使用します。 **None** 意図は、アプリケーション内の発話の合計の 10 から 20% の間に収める必要があります。 空白のままにしないでください。 
+**None** 意図は、汎用的な意図または代替用の意図です。 LUIS にアプリ ドメイン (サブジェクト領域) 内で重要でない発話を学習させるために使用します。 **None** 意図は、アプリケーション内の発話の合計の 10 から 20% の間に収める必要があります。 None は空のままにしないでください。 
 
 ### <a name="none-intent-helps-conversation-direction"></a>None 意図は会話の方向付けに役立つ
 発話が None 意図として予測され、その予測を使用してチャットボットに返されると、ボットは、さらに質問を重ねたり、有意義な選択ができるようにユーザーを方向付けるメニューをチャットボット内で提供したりすることができます。 

@@ -9,16 +9,22 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 4540de7acd89614152c7331b17ba752f4032bf1a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 9a16498c527af2d23840c53af11103f7580d80bb
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434768"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582560"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Update Management での Windows エージェント チェック結果について
 
 Update Management でマシンに**準備完了**が表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Worker エージェントの正常性を検査して背後にある問題を判別することができます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
+
+次の一覧は、マシンが取り得る 3 つの準備状態です。
+
+* **Ready (準備完了)** - Update エージェントがデプロイされ、最後に表示されてから 1 時間以内である。
+* **Disconnected (切断)** -  Update エージェントがデプロイされ、最後に表示されてから 1 時間以上になった。
+* **Not configured (未構成)** - Update エージェントが見つからないか、オンボードを終了していない。
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 

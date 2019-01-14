@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 06981972dbdb95b8597bab5028c2d86e0594caf3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2c8d4486b235534db2bb7d06206d5767c1496fbd
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106041"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754392"
 ---
-# <a name="tutorial-2-batch-test-data-sets"></a>チュートリアル 2:バッチ テスト用のデータセット
+# <a name="tutorial-batch-test-data-sets"></a>チュートリアル:バッチ テスト用のデータセット
 
 このチュートリアルでは、バッチ テストを使用してアプリでの発話予測の問題を検出し、修正する方法を説明します。  
 
@@ -36,7 +36,7 @@ ms.locfileid: "53106041"
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * 既存のチュートリアル アプリを使用する
+> * サンプル アプリをインポートする
 > * バッチ テスト ファイルを作成する 
 > * バッチ テストを実行する
 > * テスト結果を確認する
@@ -45,13 +45,13 @@ ms.locfileid: "53106041"
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>既存のアプリを使用する
+## <a name="import-example-app"></a>サンプル アプリをインポートする
 
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
 
-以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+次の手順に従います。
 
-1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json)をダウンロードして保存します。
 
 2. JSON を新しいアプリにインポートします。
 
@@ -61,7 +61,7 @@ ms.locfileid: "53106041"
 
 ## <a name="batch-file"></a>バッチ ファイル
 
-1. テキスト エディターで `HumanResources-jobs-batch.json` を作成するか、または[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json)します。 
+1. テキスト エディターで `HumanResources-jobs-batch.json` を作成するか、または[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json)します。 
 
 2. JSON 形式のバッチ ファイルで、テストで予測されるようにしたい**意図**を持つ発話を追加します。 
 
@@ -177,7 +177,7 @@ ms.locfileid: "53106041"
 
 テストの発話で指定される **[Job] (仕事)** エンティティの値は通常、1 つまたは 2 つの単語であり、いくつかの例ではそれ以上の単語数になります。 _独自の_ 人事アプリに一般に多数の単語の仕事名が存在する場合、このアプリで **[Job] (仕事)** エンティティのラベルが付けられている発話の例はうまく機能しません。
 
-1. [VSCode](https://code.visualstudio.com/) などのテキスト エディターで `HumanResources-entities-batch.json` を作成するか、または[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json)します。
+1. [VSCode](https://code.visualstudio.com/) などのテキスト エディターで `HumanResources-entities-batch.json` を作成するか、または[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json)します。
 
 
 2. JSON 形式のバッチ ファイルで、テストで予測されるようにしたい**意図**を持つ発話や、その発話内の任意のエンティティの場所を含むオブジェクトの配列を追加します。 エンティティはトークン ベースであるため、各エンティティを文字で開始および終了するようにしてください。 発話をスペースで開始または終了しないでください。 これにより、バッチ ファイルのインポート中にエラーが発生します。  

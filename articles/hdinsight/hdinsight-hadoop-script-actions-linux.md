@@ -274,7 +274,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * クラスターに関連付けられている __Azure Storage アカウント__。
 
-* クラスターに関連付けられている__追加のストレージ アカウント__。
+* クラスターに関連付けられている __追加のストレージ アカウント__。
 
 * __パブリックに読み取り可能な URI__。 たとえば、OneDrive、Dropbox、その他の ホスティング サービスに格納されたデータの URL。
 
@@ -370,6 +370,6 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 
 ## <a name="seeAlso"></a>次のステップ
 
-*  [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
+* [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
 * [HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
 * [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。

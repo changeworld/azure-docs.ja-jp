@@ -1,5 +1,5 @@
 ---
-title: コグニティブ検索パイプラインでのカスタム スキルのインターフェイス定義 - Azure Search
+title: コグニティブ検索でのカスタム スキルのインターフェイス定義 - Azure Search
 description: Azure Search のコグニティブ検索パイプラインでの web-api カスタム スキル用カスタム データ抽出インターフェイス。
 manager: pablocas
 author: luiscabrer
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 1df2a565b1c9e8bd2bea75ce78abc84608c89eea
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: deb72bcc41e20057b6e7b214c6a8c93655894a12
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314654"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628274"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>コグニティブ検索パイプラインにカスタム スキルを追加する方法
 

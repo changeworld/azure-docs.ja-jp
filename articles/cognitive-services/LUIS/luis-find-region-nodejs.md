@@ -11,18 +11,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 6bcea43fb21cae6f000f3522b498dfc6c0f6d9a7
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 4d14569219c8db503fc91f52a6867de85373aa05
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166219"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724387"
 ---
-# <a name="find-endpoint-region-with-nodejs"></a>Node.js を使用したエンドポイントのリージョンの検索
+# <a name="programmatically-find-endpoint-region-with-nodejs"></a>Node.js プログラムでエンドポイントのリージョンを検索する
 LUIS アプリ ID と LUIS サブスクリプション ID がある場合は、エンドポイントのクエリに使用するリージョンを見つけることができます。
 
 > [!NOTE] 
-> 完成した Node.js ソリューションは、[**LUIS-Samples** の GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/nodejs/)から入手できます。
+> 完成した Node.js ソリューションは、[**Azure-Samples** の GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/find-region/nodejs/)から入手できます。
 
 ## <a name="luis-endpoint-query-strategy"></a>LUIS エンドポイントのクエリ戦略
 各 LUIS エンドポイントのクエリに以下が必要です。

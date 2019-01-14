@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: c3299b2ea777577281ede234cd1aa5137ce5a445
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2062862670f5b373d3153c473e45455e10d5e996
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138111"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548682"
 ---
 # <a name="regional-presence-of-azure-cosmos-db"></a>Azure Cosmos DB のリージョン プレゼンス
 
 現時点で、世界中の [54 のリージョン](https://azure.microsoft.com/global-infrastructure/regions/)で Azure を利用できます。 Azure Cosmos DB は Azure の 基礎を成すサービスであり、Azure を利用できるすべてのリージョンで利用できます。
 
-![Azure Cosmos DB の各リージョンでの可用性](./media/regional-presence/regional-presence.png)
+[![Azure Cosmos DB を利用できるリージョン](./media/regional-presence/regional-presence.png)](./media/regional-presence/regional-presence.png#lightbox)
 
 Cosmos DB は、お客様が利用できる 5 つの異なる Azure クラウド環境のすべてで利用できます。
 

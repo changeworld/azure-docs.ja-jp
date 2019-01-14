@@ -3,21 +3,19 @@ title: Azure Database for MariaDB の価格レベル
 description: この記事では、Azure Database for MariaDB の価格レベルについて説明します。
 author: jan-eng
 ms.author: janeng
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 561244efd653294694cc16a1115962473e9a7cec
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: b85737adb8f1c9481fb4b7b2005d2856d2bce9f5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249030"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544585"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB の価格レベル
 
-Azure Database for MariaDB サーバーは、Basic、General Purpose、および Memory Optimized の 3 つの価格レベルのいずれかで作成できます。 価格レベルは、プロビジョニングできる仮想コアでのコンピューティング量、仮想コアあたりのメモリ、およびデータの格納に使用されるストレージ テクノロジによって区別されています。 リソースはすべて、MariaDB サーバー レベルでプロビジョニングされます。 1 つのサーバーには 1 つ以上のデータベースを含めることができます。
+Azure Database for MariaDB サーバーは、次の 3 つの価格レベルのいずれかで作成できます: Basic、汎用、メモリ最適化。 価格レベルは、プロビジョニングできる仮想コアでのコンピューティング量、仮想コアあたりのメモリ、およびデータの格納に使用されるストレージ テクノロジによって区別されています。 リソースはすべて、MariaDB サーバー レベルでプロビジョニングされます。 1 つのサーバーには 1 つ以上のデータベースを含めることができます。
 
 |    | **Basic** | **汎用** | **メモリ最適化** |
 |:---|:----------|:--------------------|:---------------------|
@@ -30,7 +28,7 @@ Azure Database for MariaDB サーバーは、Basic、General Purpose、および
 
 価格レベルを選択する場合は、まず次の表を参考にしてください。
 
-| [価格レベル]  | 対象のワークロード |
+| 価格レベル  | 対象のワークロード |
 |:-------------|:-----------------|
 | Basic | 低負荷なコンピューティングと I/O パフォーマンスを必要とするワークロード。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションに使用するサーバーがこれに該当します。 |
 | 汎用 | 負荷分散されたコンピューティングとメモリ、およびスケーラブルな I/O スループットを必要とする大部分のビジネス ワークロード。 たとえば、Web アプリやモバイル アプリ、その他のエンタープライズ アプリケーションをホストするためのサーバーが挙げられます。|

@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8951680ca9488dabffd02ee084e3f6827122276e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a51efa18672b81ef3e23e292abbe2b34c1936205
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957454"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994744"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Azure IoT Hub device SDK を使用して、接続と信頼できるメッセージングを管理する
 
@@ -62,13 +62,13 @@ device SDK は 3 つのレベルすべてでエラーを検出します。 OS �
 1. SDK がネットワーク、プロトコル、またはアプリケーションでエラーと関連エラーを検出します。
 1. SDK はエラー フィルターを使用してエラーの種類を特定し、再試行が必要かどうかを判断します。
 1. SDK が**回復不能なエラー**を識別すると、接続、送信、受信などの操作は停止されます。 SDK は、ユーザーに通知します。 回復不能なエラーの例としては、認証エラーや不正エンドポイント エラーなどがあります。
-1. SDK は、**回復可能なエラー**を識別すると、ユーザーが指定した再試行ポリシーに従って、定義されているタイムアウト時間が経過するまで、再試行します。
+1. SDK は、**回復可能なエラー**を識別すると、ユーザーが指定した再試行ポリシーに従って、定義されているタイムアウト時間が経過するまで、再試行します。  SDK では、**[指数関数的後退とゆらぎ]** の再試行ポリシーが既定で使用されることに注意してください。
 1. 定義されているタイムアウト時間が経過すると、SDK は接続や送信の再試行を停止します。 ユーザーに通知します。
 1. SDK によって、ユーザーはコールバックをアタッチし、接続ステータス変更を受信できます。
 
 SDK では、3 つの再試行ポリシーが提供されています。
 
-- **指数関数的後退とゆらぎ**:この既定の再試行ポリシーでは、最初は積極的に、その後は最大遅延に達するまで時間経過と共に頻度を減らしながら、再試行が行われます。 このデザインは、[Azure アーキテクチャ センターの再試行に関するガイダンス](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)に基づいています。
+- **指数関数的後退とゆらぎ**:この既定の再試行ポリシーでは、最初は積極的に、その後は最大遅延に達するまで時間経過と共に頻度を減らしながら、再試行が行われます。 このデザインは、[Azure アーキテクチャ センターの再試行に関するガイダンス](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)に基づいています。 
 - **カスタム再試行**:SDK の一部の言語では、シナリオに適したカスタム再試行ポリシーを設計して、RetryPolicy に挿入することができます。 C SDK では、カスタム再試行を使用できません。
 - **再試行なし**:再試行ポリシーを "再試行なし" に設定できます。再試行ロジックは無効になります。 接続が確立されていれば、SDK は一回の接続と一回のメッセージ送信を試行します。 このポリシーは通常、帯域幅またはコストが重要なシナリオで使用されます。 このオプションを選択すると、送信できなかったメッセージは失われ、回復できません。
 

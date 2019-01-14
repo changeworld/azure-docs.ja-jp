@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89832f2d936a08df8b6f9e846c3dd4a5665c06a4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8d6e768e5cf846cb2c34ceb61d269854418e1dc5
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238626"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976598"
 ---
 # <a name="constituency-parsing"></a>構成素解析
 
@@ -61,7 +61,7 @@ ms.locfileid: "48238626"
 ![ツリー](./Images/tree.png)
 
 このツリーで、"NP" と記載されている枝は名詞句 (noun phrase) です。
-いくつかの語句があります。たとえば、*I* (私)、*a new hybrid automobile* (新しいハイブリッド自動車)、*Bluetooth*、*a new hybrid automobile with Bluetooth (Bluetooth が搭載された新しいハイブリッド自動車)* です。
+いくつかの語句があります。たとえば、*I* (私)、*a new hybrid automobile* (新しいハイブリッド自動車)、*Bluetooth*、*a new hybrid automobile with Bluetooth* (Bluetooth が搭載された新しいハイブリッド自動車) です。
 
 ## <a name="phrase-types"></a>語句の種類
 
@@ -92,9 +92,9 @@ ms.locfileid: "48238626"
 |WHADVP | Wh で始まる副詞句| "when" (いつ) |
 |WHNP   | Wh で始まる名詞句| "which potato" (どのポテト)、"how much soup" (どのくらいのスープ)|
 |WHPP   | Wh で始まる前置詞句| "in which country" (どの国で)|
-|○  | 不明、不確実、または解体不能| "the... the soup" (その...そのスープ) の最初の "the" |
+|X  | 不明、不確実、または解体不能| "the... the soup" (その...そのスープ) の最初の "the" |
 
 
 ## <a name="specification"></a>仕様
 
-このドキュメントのツリーは、[Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) の S 式を使用しています。
+このドキュメントのツリーは、[Penn Treebank](https://catalog.ldc.upenn.edu/LDC99T42) の S 式を使用しています。

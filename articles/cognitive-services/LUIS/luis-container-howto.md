@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: a6170d51e1a8756020b4f2caa733c388b2ce4060
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1398db59199c62e90f8cf5654586bda1c24f2541
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013818"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055049"
 ---
-# <a name="install-and-run-containers"></a>コンテナーのインストールと実行
+# <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
 Language Understanding (LUIS) コンテナーでは、お客様のトレーニング済みまたは発行済みの Language Understanding モデル ([LUIS アプリ](https://www.luis.ai) とも呼ばれます) を Docker コンテナーに読み込みこんで、コンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリ ログを収集し、それらを Azure Language Understanding モデルに再度アップロードすることで、アプリの予測精度を高めることができます。
 
@@ -34,7 +34,7 @@ LUIS コンテナーを実行するには、以下が必要です。
 
 |必須|目的|
 |--|--|
-|Docker エンジン| このプレビューを完了するには、[ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
+|Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
 |Language Understanding (LUIS) のリソースと関連アプリ |コンテナーを使用するためには、以下が必要です。<br><br>* [_Language Understanding_ Azure リソース](luis-how-to-azure-subscription.md)、および関連するエンドポイント キーとエンドポイント URI (課金エンドポイントとして使用されます)。<br>* コンテナーへのマウント済み入力としてパッケージ化されたトレーニング済みまたは発行済みのアプリと、その関連アプリ ID。<br>* そのアプリ パッケージをダウンロードするためのオーサリング キー (それを API から行う場合)。<br><br>これらの要件は、以下の変数にコマンドライン引数を渡すために使用されます。<br><br>**{AUTHORING_KEY}**: このキーは、パッケージ化されたアプリをクラウドの LUIS サービスから取得したり、クエリ ログをクラウドにアップロードしたりするために使用されます。 形式は `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` です。<br><br>**{APPLICATION_ID}**: この ID は、アプリを選択するために使用されます。 形式は `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` です。<br><br>**{ENDPOINT_KEY}**: このキーは、コンテナーを起動するために使用されます。 エンドポイント キーは 2 か所で確認できます。 1 つ目は Azure portal です (_Language Understanding_ リソースのキーの一覧内)。 また、LUIS ポータルの [Keys and endpoints]\(キーとエンドポイント\) の設定ページでもエンドポイント キーを確認できます。 スターター キーは使用しないでください。<br><br>**{BILLING_ENDPOINT}**: 課金エンドポイントの値は、Azure portal の [Language Understanding Overview]\(Language Understanding の概要\) ページで確認できます  (例: `https://westus.api.cognitive.microsoft.com/luis/v2.0`)。<br><br>[オーサリング キーとエンドポイント キー](luis-boundaries.md#key-limits)には、異なる目的があります。 これらは区別して使用してください。 |
 
@@ -42,9 +42,9 @@ LUIS コンテナーを実行するには、以下が必要です。
 
 **ホスト**とは、Docker コンテナーを実行するコンピューターのことです。 お客様のオンプレミス上のコンピューターを使用できるほか、次のような Azure 内の Docker ホスティング サービスを使用することもできます。
 
-* [Azure Kubernetes Service](/azure/aks/)
-* [Azure Container Instances](/azure/container-instances/)
-* [Azure Stack](/azure/azure-stack/) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスター。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)」をご覧ください。
+* [Azure Kubernetes Service](../../aks/index.yml)
+* [Azure Container Instances](../../container-instances/index.yml)
+* [Azure Stack](../../azure-stack/index.yml) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスター。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md)」をご覧ください。
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
@@ -66,7 +66,7 @@ LUIS コンテナーを実行するには、以下が必要です。
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
-上記のコマンドで使用されている `latest` など、利用可能なタグの詳細な説明については、Docker Hub の [LUIS](https://hub.docker.com/r/microsoft/azure-cognitive-services-luis/) に関するページを参照してください。
+上記のコマンドで使用されている `latest` など、利用可能なタグの詳細な説明については、Docker Hub の [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204) に関するページを参照してください。
 
 > [!TIP]
 > [docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使用して、ダウンロードしたコンテナー イメージを一覧表示できます。 たとえば、次のコマンドは、ダウンロードした各コンテナー イメージの ID、リポジトリ、およびタグが表として書式設定されて表示されます。
@@ -269,7 +269,7 @@ ApiKey={ENDPOINT_KEY}
 
 |Query parameter (クエリ パラメーター)|type|目的|
 |--|--|--|
-|`q`|string|ユーザーの発話。|
+|`q`|文字列|ユーザーの発話。|
 |`timezoneOffset`|number|timezoneOffset を使用すると、事前構築済みのエンティティ datetimeV2 で使用される[タイムゾーンを変更](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)できます。|
 |`verbose`|ブール値|true に設定すると、すべての意図とそのスコアが返されます。 既定値は false で、この場合、最上位の意図だけが返されます。|
 |`staging`|ブール値|true に設定した場合、ステージング環境の結果からクエリが返されます。 |

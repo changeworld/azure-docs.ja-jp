@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 45efaebb9539c4c0e2542966df6ab890b64d12ee
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: fa0adef58ae1eda8604cefc9c3d7e3a4c32d63d0
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023825"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793541"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>帯域幅/スループットのテスト (NTTTCP)
 
@@ -29,13 +29,14 @@ ms.locfileid: "50023825"
 
 #### <a name="deploying-vms-for-testing"></a>テスト用の VM のデプロイ
 このテストの目的を達成するには、2 つの VM が同じクラウド サービス内にあるか同じ可用性セット内に含まれている必要があります。これは、内部 IP アドレスの使用と、ロード バランサーのテストからの除外を行えるようにするためです。 VIP を使用してテストすることは可能ですが、この種類のテストはこのドキュメントの範囲外です。
- 
+
 受信側の IP アドレスをメモしておきます。 その IP を "a.b.c.r" と呼びましょう。
 
-VM 上のコアの数をメモしておきます。 これを "\#num\_cores" と呼びましょう。 
+VM 上のコアの数をメモしておきます。 これを "\#num\_cores" と呼びましょう。
+
 送信側 VM と 受信側 VM で、NTTTCP テストを 300 秒間 (5 分間) 実行します。
 
-ヒント: このテストを初めて設定するときは、フィードバックをすぐに取得するために、もっと短い時間でテストを実行できます。 ツールが想定どおりに動作したら、最も正確な結果を得るために、テスト時間を 300 秒に延長します。
+ヒント:このテストを初めて設定するときは、フィードバックをすぐに取得するために、もっと短い時間でテストを実行できます。 ツールが想定どおりに動作したら、最も正確な結果を得るために、テスト時間を 300 秒に延長します。
 
 > [!NOTE]
 > **送信側と受信側**には、**同じ**テスト時間パラメーター (-t) を指定する必要があります。

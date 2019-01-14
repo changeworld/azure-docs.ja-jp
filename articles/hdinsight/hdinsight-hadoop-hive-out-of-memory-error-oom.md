@@ -10,18 +10,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3b49959d167dbb735ebb9be9c75e91ef257c6a70
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9aff828dcb9dfea6d5f35ad92bb09ba7cd802fea
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383835"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53711858"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight における Apache Hive メモリ不足エラーの解決
 
 大きなテーブルを処理するときに Apache Hive で発生するメモリ不足 (OOM) エラーを、Hive のメモリ設定を構成することによって解決する方法を紹介します。
 
-## <a name="run-hive-query-against-large-tables"></a>大きなテーブルに対して Hive クエリを実行する
+## <a name="run-apache-hive-query-against-large-tables"></a>大きなテーブルに対して Apache Hive クエリを実行する
 
 ユーザーが次の Hive クエリを実行したとします。
 

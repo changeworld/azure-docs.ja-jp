@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e979930ed504dafe330b774725f4193f1c15ed17
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51301018"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793990"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -42,7 +42,7 @@ Microsoft Graph の拡張機能には、次のバインドが用意されてい�
 
 ## <a name="setting-up-the-extensions"></a>拡張機能の設定
 
-Microsoft Graph のバインドは、_バインド拡張機能_ から入手できます。 バインド拡張機能は、Azure Functions ランタイム向けのオプション コンポーネントです。 このセクションでは、Microsoft Graph と認証トークンの拡張機能を設定する方法を示します。
+Microsoft Graph のバインドは、_バインド拡張機能_から入手できます。 バインド拡張機能は、Azure Functions ランタイム向けのオプション コンポーネントです。 このセクションでは、Microsoft Graph と認証トークンの拡張機能を設定する方法を示します。
 
 ### <a name="enabling-functions-20-preview"></a>Functions 2.0 プレビューを有効にする
 
@@ -63,7 +63,7 @@ Visual Studio を使用している場合は、[この記事の前半で説明�
 
 ### <a name="configuring-authentication--authorization"></a>認証と承認の構成
 
-この記事で説明するバインドでは、ID を使用する必要があります。 これにより、Microsoft Graph でアクセス許可と監査の相互作用を適用できます。 ID には、アプリケーションにアクセスするユーザー、またはアプリケーションそのものを指定できます。 この ID を構成するには、Azure Active Directory で [App Service の認証と承認](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)を設定します。 また、関数で必要なリソースのアクセス許可を要求する必要があります。
+この記事で説明するバインドでは、ID を使用する必要があります。 これにより、Microsoft Graph でアクセス許可と監査の相互作用を適用できます。 ID には、アプリケーションにアクセスするユーザー、またはアプリケーションそのものを指定できます。 この ID を構成するには、Azure Active Directory で [App Service の認証と承認](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)を設定します。 また、関数で必要なリソースのアクセス許可を要求する必要があります。
 
 > [!Note] 
 > Microsoft Graph の拡張機能は、Azure AD 認証のみをサポートします。 ユーザーは、職場または学校のアカウントでログインする必要があります。
@@ -226,7 +226,8 @@ module.exports = function (context, req) {
 
 トークンは、常に文字列としてコードに表示されます。
 
-
+> [!Note]
+> `userFromId`、`userFromToken`、`userFromRequest` オプションのいずれかを使用してローカルで開発するときは、必要なトークンを[手動で取得](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857)し、呼び出し元のクライアント アプリケーションから `X-MS-TOKEN-AAD-ID-TOKEN` 要求ヘッダーで指定できます。
 
 
 <a name="excel-input"></a>

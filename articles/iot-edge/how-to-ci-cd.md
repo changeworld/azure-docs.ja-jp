@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a714cec5ce05473887f9f06d47c75563bf878081
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3c4f5d6888d581cb44702a8d76e1ebbb13845091
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386827"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582917"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge に対する継続的インテグレーションと継続的配置
 
@@ -40,7 +40,7 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクまたは Jenkins サ
 
 3. これで、IoT Edge ソリューションのサンプルが準備できました。 既定の C# モジュールは、パイプ メッセージ モジュールとして機能します。 `deployment.template.json` では、このソリューションに 2 つのモジュールが含まれていることがわかります。 メッセージは `tempSensor` モジュールから生成され、`FilterModule` を介して直接パイプ処理された後、使用している IoT ハブに送信されます。
 
-4. これらのプロジェクトを保存し、Azure Repos にコミットします。
+4. これらのプロジェクトを保存した後、Azure Repos リポジトリにコミットします。
     
 > [!NOTE]
 > Azure Repos の使用に関する詳細については、「[Share your code with Visual Studio and Azure Repos (自分のコードを Visual Studio と Azure Repos に共有する)](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)」を参照してください。
@@ -69,11 +69,11 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクまたは Jenkins サ
     
     * Linux コンテナー用にプラットフォーム amd64 でモジュールをビルドする場合、**[Hosted Ubuntu 1604]** を選択します。
     * Windows コンテナー用にプラットフォーム amd64 でモジュールをビルドする場合、**[Hosted VS2017]** を選択します。 
-    * Linux コンテナー用にプラットフォーム arm32v7 でモジュールをビルドする場合は、**[管理]** ボタンをクリックして自分のビルド エージェントを設定する必要があります。
+    * Linux コンテナー用にプラットフォーム arm32v7 でモジュールをビルドする場合は、**[管理]** ボタンを選択して自分のビルド エージェントを設定する必要があります。
     
     ![ビルド エージェント プールの構成](./media/how-to-ci-cd/configure-env.png)
 
-1. エージェント ジョブで [+] をクリックして、ビルド パイプラインに 3 つのタスクを追加します。 最初の 2 つは、**[Azure IoT Edge]** からのタスクです。 3 番目は、**[ビルド成果物の発行]** からのタスクです
+1. エージェント ジョブで [+] を選択して、ビルド パイプラインに 3 つのタスクを追加します。 最初の 2 つは、**[Azure IoT Edge]** からのタスクです。 3 番目は、**[ビルド成果物の発行]** からのタスクです
     
     ![ビルド パイプラインにタスクを追加する](./media/how-to-ci-cd/add-tasks.png)
 
@@ -93,13 +93,13 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクまたは Jenkins サ
 
     ![継続的インテグレーション トリガーを有効にする](./media/how-to-ci-cd/configure-trigger.png)
 
-    新しいビルド パイプラインを保存します。 **[保存]** ボタンをクリックします。
+    **[保存]** ボタンを使用して、新しいビルド パイプラインを保存します。
 
 
 ## <a name="configure-azure-pipelines-for-continuous-deployment"></a>継続的配置のための Azure Pipelines の構成
 このセクションでは、ビルド パイプラインで成果物を削除するときに自動的に実行するように構成されたリリース パイプラインを作成します。その後、Azure Pipelines に配置ログが表示されます。
 
-1. **[リリース]** タブで、**[+ 新しいパイプライン]** を選択します。 または、既にリリース パイプラインがある場合は、**[+ 新規]** ボタンを選択し、**[+ 新しいリリース パイプライン]** をクリックします。  
+1. **[リリース]** タブで、**[+ 新しいパイプライン]** を選択します。 または、既にリリース パイプラインがある場合は、**[+ 新規]** ボタンを選択し、**[+ 新しいリリース パイプライン]** を選択します。  
 
     ![リリース パイプラインの追加](./media/how-to-ci-cd/add-release-pipeline.png)
 
@@ -115,7 +115,7 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクまたは Jenkins サ
 
     ![成果物の追加](./media/how-to-ci-cd/add-artifacts.png)  
     
-    **[Add an artifact page]\(成果物ページの追加\)** で、ソースの種類として **[ビルド]** を選択します。 次に、作成したプロジェクトとビルド パイプラインを選択します。 **[追加]** をクリックします。
+    **[Add an artifact page]\(成果物ページの追加\)** で、ソースの種類として **[ビルド]** を選択します。 次に、作成したプロジェクトとビルド パイプラインを選択します。 その後、**[追加]** を選択します。
 
     ![ビルド成果物を追加する](./media/how-to-ci-cd/add-an-artifact.png)
 
@@ -127,7 +127,7 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクまたは Jenkins サ
 
     ![QA タスクの構成](./media/how-to-ci-cd/view-stage-tasks.png)
 
-   配置タスクはプラットフォームに左右されません。つまり、**[エージェント プール]** で、**[Hosted VS2017]** と **[Hosted Ubuntu 1604]** のいずれか (または自分で管理している他のエージェント) を選択できます。 [+] をクリックして、タスクを 1 つ追加します。
+   配置タスクはプラットフォームに左右されません。つまり、**[エージェント プール]** で、**[Hosted VS2017]** と **[Hosted Ubuntu 1604]** のいずれか (または自分で管理している他のエージェント) を選択できます。 [+] を選択して、タスクを 1 つ追加します。
 
     ![QA 用タスクの追加](./media/how-to-ci-cd/add-task-qa.png)
 
@@ -135,13 +135,13 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクまたは Jenkins サ
 
     ![QA への配置](./media/how-to-ci-cd/deploy-to-qa.png)
 
-    新しいリリース パイプラインを保存します。 **[保存]** ボタンをクリックします。 次に、**[パイプライン]** をクリックしてパイプラインに戻ります。
+    **[保存]** ボタンを使用して、新しいリリース パイプラインを保存します。 次に、**[パイプライン]** を選択してパイプラインに戻ります。
 
 6. 2 番目のステージは、運用環境用です。 新しいステージ "PROD" を追加するには、ステージ "QA" を複製します。その後、複製したステージを **PROD** という名前に変更します。
 
     ![ステージの複製](./media/how-to-ci-cd/clone-stage.png)
 
-7. 運用環境のタスクを構成します。 タスク構成に 'prod' というタグが付いた IoT Edge デバイスがいくつかあると想定します。ターゲット条件を "prod" に更新し、詳細設定で配置 ID を "deploy-prod" に設定します。 **[保存]** ボタンをクリックします。 次に、**[パイプライン]** をクリックしてパイプラインに戻ります。
+7. 運用環境のタスクを構成します。 タスク構成に 'prod' というタグが付いた IoT Edge デバイスがいくつかあると想定します。ターゲット条件を "prod" に更新し、詳細設定で配置 ID を "deploy-prod" に設定します。 **[保存]** ボタンをクリックして保存します。 次に、**[パイプライン]** を選択してパイプラインに戻ります。
     
     ![運用環境への配置](./media/how-to-ci-cd/deploy-to-prod.png)
 
@@ -151,7 +151,7 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクまたは Jenkins サ
 
         ![配置前条件を開く](./media/how-to-ci-cd/pre-deploy-conditions.png)    
 
-    2. **[配置前承認]** を **[有効]** に設定します。 **[承認者]** も入力します。 その後、 **[保存]** をクリックします。
+    2. **[配置前承認]** を **[有効]** に設定します。 **[承認者]** も入力します。 次に、**[保存]** ボタンをクリックして保存します。
     
         ![条件の設定](./media/how-to-ci-cd/set-pre-deployment-conditions.png)
 
@@ -165,7 +165,7 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクまたは Jenkins サ
 
 このセクションでは、ビルドをトリガーして、CI/CD パイプラインを動作させます。 次に配置が成功したことを検証します。
 
-1. ビルド ジョブをトリガーするには、コミットをソース コード リポジトリにプッシュするか、手動でトリガーできます。 次のスクリーンショットに示されているように、**[キュー]** ボタンをクリックすると、ビルド パイプラインのビルド ジョブをトリガーできます。
+1. ビルド ジョブをトリガーするには、コミットをソース コード リポジトリにプッシュするか、手動でトリガーできます。 次のスクリーンショットに示されているように、**[キュー]** ボタンを選択することで、ビルド パイプラインのビルド ジョブをトリガーできます。
 
     ![手動トリガー](./media/how-to-ci-cd/manual-trigger.png)
 

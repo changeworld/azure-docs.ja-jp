@@ -1,24 +1,24 @@
 ---
-title: コンテナーのインストールと実行
-titlesuffix: Computer Vision - Azure Cognitive Services
+title: コンテナーをインストールして実行する方法 - Computer Vision
+titlesuffix: Azure Cognitive Services
 description: このチュートリアルでの Computer Vision のコンテナーのダウンロード、インストール、および実行方法。
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 9964be07c578cd1cafd93328bffe972483123e03
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18
+ms.openlocfilehash: 6a6468cd71cf83c627f6dd72e5a1fc5564361d50
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077037"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579857"
 ---
-# <a name="install-and-run-containers"></a>コンテナーのインストールと実行
+# <a name="install-and-run-recognize-text-containers"></a>テキスト認識コンテナーをインストールして実行する
 
 コンテナー化とは、アプリケーションまたはサービスをコンテナー イメージとしてパッケージ化するソフトウェア配布のアプローチです。 アプリケーションまたはサービスの構成と依存関係がコンテナー イメージに含まれます。 コンテナー イメージは、ほとんどまたはまったく変更せずにコンテナー ホストにデプロイできます。 コンテナーは、相互および基になるオペレーティング システムから分離され、仮想マシンよりもフット プリントが小さくなります。 短期間のタスクに対してコンテナーをコンテナー イメージからインスタンス化し、不要になったら削除できます。
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 テキスト認識コンテナーを使用する前に、次の前提条件を満たす必要があります。
 
-**Docker エンジン**: Docker エンジンをローカルにインストールしている必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms)、[Windows](https://docs.docker.com/docker-for-windows/) 上で Docker 環境を構成するパッケージが用意されています。 Windows では、Linux コンテナーをサポートするように Docker を構成する必要があります。 Docker コンテナーは、[Azure Kubernetes Service](/azure/aks/)、[Azure Container Instances](/azure/container-instances/)、または [Azure Stack](/azure/azure-stack/) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスターに直接デプロイすることもできます。 Kubernetes を Azure Stack にデプロイする方法の詳細については、「[Kubernetes を Azure Stack にデプロイする](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)」を参照してください。
+**Docker エンジン**: Docker エンジンをローカルにインストールしている必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms)、[Windows](https://docs.docker.com/docker-for-windows/) 上で Docker 環境を構成するパッケージが用意されています。 Windows では、Linux コンテナーをサポートするように Docker を構成する必要があります。 Docker コンテナーは、[Azure Kubernetes Service](../../aks/index.yml)、[Azure Container Instances](../../container-instances/index.yml)、または [Azure Stack](../../azure-stack/index.yml) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスターに直接デプロイすることもできます。 Kubernetes を Azure Stack にデプロイする方法の詳細については、「[Kubernetes を Azure Stack にデプロイする](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md)」を参照してください。
 
 コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。
 

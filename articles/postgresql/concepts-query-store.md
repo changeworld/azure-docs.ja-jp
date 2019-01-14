@@ -1,25 +1,24 @@
 ---
 title: Azure Database for PostgreSQL のクエリ ストア
 description: この記事では、Azure Database for PostgreSQL のクエリ ストア機能について説明します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 5b760c9148e26421c0df1ffe936365aae4971543
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 86b6c4284cccb183ac9f19911abd4b6cb1d308e5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379163"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546914"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
 **適用対象:** Azure Database for PostgreSQL 9.6 および 10
 
 > [!IMPORTANT]
-> クエリ ストア機能はパブリック プレビュー段階にあります。
+> クエリ ストア機能はパブリック プレビュー段階です。
 
 
 Azure Database for PostgreSQL のクエリ ストア機能では、一定期間にわたってクエリ パフォーマンスを追跡する手段が提供されます。 クエリ ストアを使用すると、実行時間が最長のクエリおよびリソースを最も消費しているクエリを迅速に特定できるので、パフォーマンスのトラブルシューティングが簡単になります。 クエリ ストアでは、クエリおよびランタイム統計の履歴が自動的にキャプチャされて保持されるので、それらを確認できます。 データベースの使用パターンを確認できるように、データが時間枠で区切られます。 すべてのユーザー、データベース、クエリに関するデータが Azure Database for PostgreSQL インスタンス内の **azure_sys** という名前のデータベースに格納されます。
@@ -114,30 +113,30 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |runtime_stats_entry_id |bigint | | runtime_stats_entries テーブルからの ID|
 |user_id    |oid    |pg_authid.oid  |ステートメントを実行したユーザーの OID|
 |db_id  |oid    |pg_database.oid    |ステートメントが実行されたデータベースの OID|
-|query_id   |bigint  || ステートメントの解析ツリーから計算される内部ハッシュ コード|
-|query_sql_text |Varchar(10000)  || 代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
+|query_id   |bigint  || ステートメントの解析ツリーから計算される内部ハッシュ コード|
+|query_sql_text |Varchar(10000)  || 代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
 |plan_id    |bigint |   |まだ使用できない、このクエリに対応するプランの ID|
 |start_time |timestamp  ||  クエリは、タイム バケットによって集計されます｡バケットの期間は既定で 15 分です。 これは、このエントリのタイム バケットに対応する開始時刻です。|
 |end_time   |timestamp  ||  このエントリのタイム バケットに対応する終了時刻。|
-|calls  |bigint  || クエリの実行回数|
-|total_time |double precision   ||  クエリの合計実行時間 (ミリ秒)|
+|calls  |bigint  || クエリの実行回数|
+|total_time |double precision   ||  クエリの合計実行時間 (ミリ秒)|
 |min_time   |double precision   ||  クエリの最小実行時間 (ミリ秒)|
 |max_time   |double precision   ||  クエリの最大実行時間 (ミリ秒)|
 |mean_time  |double precision   ||  クエリの平均実行時間 (ミリ秒)|
 |stddev_time|   double precision    ||  クエリ実行時間の標準偏差 (ミリ秒) |
-|rows   |bigint ||  ステートメントによって取得または影響された行の合計数|
-|shared_blks_hit|   bigint  ||  ステートメントによる共有ブロック キャッシュ ヒットの合計数|
+|rows   |bigint ||  ステートメントによって取得または影響された行の合計数|
+|shared_blks_hit|   bigint  ||  ステートメントによる共有ブロック キャッシュ ヒットの合計数|
 |shared_blks_read|  bigint  ||  ステートメントによって読み取られた共有ブロックの合計数|
-|shared_blks_dirtied|   bigint   || ステートメントによって使用された共有ブロックの合計数 |
-|shared_blks_written|   bigint  ||  ステートメントによって書き込まれた共有ブロックの合計数|
+|shared_blks_dirtied|   bigint   || ステートメントによって使用された共有ブロックの合計数 |
+|shared_blks_written|   bigint  ||  ステートメントによって書き込まれた共有ブロックの合計数|
 |local_blks_hit|    bigint ||   ステートメントによるローカル ブロック キャッシュ ヒットの合計数|
-|local_blks_read|   bigint   || ステートメントによって読み取られたローカル ブロックの合計数|
-|local_blks_dirtied|    bigint  ||  ステートメンによって使用されたローカル ブロックの合計数|
-|local_blks_written|    bigint  ||  ステートメントによって書き込まれたローカル ブロックの合計数|
-|temp_blks_read |bigint  || ステートメントによって読み取られた一時ブロックの合計数|
-|temp_blks_written| bigint   || ステートメントによって書き込まれた一時ブロックの合計数|
-|blk_read_time  |double precision    || ステートメントによってブロックの読み取りに費やされた時間の合計 (ミリ秒単位) (track_io_timing が有効になっている場合。それ以外の場合は 0)|
-|blk_write_time |double precision    || ステートメントによってブロックの書き込みに費やされた時間の合計 (ミリ秒単位) (track_io_timing が有効になっている場合。それ以外の場合は 0)|
+|local_blks_read|   bigint   || ステートメントによって読み取られたローカル ブロックの合計数|
+|local_blks_dirtied|    bigint  ||  ステートメンによって使用されたローカル ブロックの合計数|
+|local_blks_written|    bigint  ||  ステートメントによって書き込まれたローカル ブロックの合計数|
+|temp_blks_read |bigint  || ステートメントによって読み取られた一時ブロックの合計数|
+|temp_blks_written| bigint   || ステートメントによって書き込まれた一時ブロックの合計数|
+|blk_read_time  |double precision    || ステートメントによってブロックの読み取りに費やされた時間の合計 (ミリ秒単位) (track_io_timing が有効になっている場合。それ以外の場合は 0)|
+|blk_write_time |double precision    || ステートメントによってブロックの書き込みに費やされた時間の合計 (ミリ秒単位) (track_io_timing が有効になっている場合。それ以外の場合は 0)|
     
 ### <a name="querystorequerytextsview"></a>query_store.query_texts_view
 このビューでは、クエリ ストア内のクエリ テキスト データが返されます。 個別の query_text ごとに 1 つの行があります。
@@ -145,7 +144,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |**名前**|  **種類**|   **説明**|
 |---|---|---|
 |query_text_id  |bigint     |query_texts テーブルの ID|
-|query_sql_text |Varchar(10000)     |代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
+|query_sql_text |Varchar(10000)     |代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
 
 ### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
 このビューでは、クエリ ストア内の待機イベント データが返されます。 個別のデータベース ID、ユーザー ID、クエリ ID、イベントごとに 1 つの行があります。
@@ -154,8 +153,8 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |ステートメントを実行したユーザーの OID|
 |db_id  |oid    |pg_database.oid    |ステートメントが実行されたデータベースの OID|
-|query_id   |bigint     ||ステートメントの解析ツリーから計算される内部ハッシュ コード|
-|event_type |text       ||バックエンドによって待機されているイベントの種類|
+|query_id   |bigint     ||ステートメントの解析ツリーから計算される内部ハッシュ コード|
+|event_type |text       ||バックエンドによって待機されているイベントの種類|
 |event  |text       ||バックエンドによって現在待機されている場合に、待機イベントの名前|
 |calls  |整数        ||同じイベントがキャプチャされた回数|
 
@@ -163,11 +162,11 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="functions"></a>Functions
 Query_store.qs_reset() returns void
 
-`qs_reset` では、クエリ ストアによってこれまでに収集されたすべての統計が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。
+`qs_reset`  では、クエリ ストアによってこれまでに収集されたすべての統計が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。
 
 Query_store.staging_data_reset() returns void
 
-`staging_data_reset` では、クエリ ストアによってメモリ内で収集されたすべての統計 (つまり、データベースにまだフラッシュされていないメモリ内のデータ) が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。
+`staging_data_reset`  では、クエリ ストアによってメモリ内で収集されたすべての統計 (つまり、データベースにまだフラッシュされていないメモリ内のデータ) が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 - PostgreSQL サーバーのパラメーター default_transaction_read_only がオンの場合、クエリ ストアはデータをキャプチャできません。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: 54aa6f12afd83d4fb180b718ed420f62a8663ff6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9b9ad2f4fd3b0ccf928dcec58b7c55778bcbdc95
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021497"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558704"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して Azure Cache for Redis を作成および管理する方法
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Azure Cache for Redis インスタンスを作成および更新する場合に�
     help:    Delete an existing Azure Cache for Redis
     help:      rediscache delete [--name <name> --resource-group <resource-group> ]
     help:
-    help:    List all Azure Cache for Rediss within your Subscription or Resource Group
+    help:    List all Azure Cache for Redis within your Subscription or Resource Group
     help:      rediscache list [options]
     help:
     help:    Show properties of an existing Azure Cache for Redis
@@ -150,7 +150,7 @@ Azure Cache for Redis を削除するには、次のコマンドを使用しま�
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="list-all-azure-cache-for-rediss-within-your-subscription-or-resource-group"></a>サブスクリプションまたはリソース グループ内のすべての Azure Cache for Redis を一覧表示する
+## <a name="list-all-azure-cache-for-redis-within-your-subscription-or-resource-group"></a>サブスクリプションまたはリソース グループ内のすべての Azure Cache for Redis を一覧表示する
 サブスクリプションまたはリソース グループ内のすべての Azure Cache for Redis を一覧表示するには、次のコマンドを使用します。
 
     azure rediscache list [options]
@@ -158,7 +158,7 @@ Azure Cache for Redis を削除するには、次のコマンドを使用しま�
 このコマンドの詳細を確認するには、 `azure rediscache list -h` コマンドを実行します。
 
     C:\>azure rediscache list -h
-    help:    List all Azure Cache for Rediss within your Subscription or Resource Group
+    help:    List all Azure Cache for Redis within your Subscription or Resource Group
     help:
     help:    Usage: rediscache list [options]
     help:

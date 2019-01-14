@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: e760b67c1b971613de6b21102687c8ffeb556ed8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ce39b431adfd333db1e771913ed28881a193b327
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386878"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790842"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用してクラスターを設定する
 
@@ -107,12 +107,12 @@ Enterprise セキュリティ パッケージでは、HDInsight を Active Direc
 
 ## <a name="storage-endpoints-for-clusters"></a>クラスターのストレージ エンドポイント
 
-クラスターのストレージには、Hadoop のオンプレミス環境では Hadoop 分散ファイル システム (HDFS) が使用されますが、クラウドでは、クラスターに接続されたストレージ エンドポイントを使用します。 HDInsight クラスターで使用されるのは、[Azure Data Lake Store](hdinsight-hadoop-use-data-lake-store.md) と [Azure Storage の BLOB](hdinsight-hadoop-use-blob-storage.md) のいずれかとなります。 Azure Storage または Data Lake Store を使用するということは、必要なデータは維持したまま、計算に使用された HDInsight クラスターを安全に削除できるということです。 
+クラスターのストレージには、Hadoop のオンプレミス環境では Hadoop 分散ファイル システム (HDFS) が使用されますが、クラウドでは、クラスターに接続されたストレージ エンドポイントを使用します。 HDInsight クラスターでは、[Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md) または [Azure Storage の BLOB](hdinsight-hadoop-use-blob-storage.md) が使用されます。 Azure Storage または Data Lake Store を使用するということは、必要なデータは維持したまま、計算に使用された HDInsight クラスターを安全に削除できるということです。 
 
 > [!WARNING]  
 > HDInsight クラスター以外の場所で追加のストレージ アカウントを使用することはできません。
 
-構成時、既定のストレージ エンドポイントには、Azure ストレージ アカウントまたは Data Lake Store の BLOB コンテナーを指定します。 既定のストレージには、アプリケーション ログとシステム ログが格納されます。 それとは別に、クラスターからアクセスできるリンクされた Azure ストレージ アカウントまたは Data Lake Store アカウントを必要に応じて指定することもできます。 HDInsight クラスターとそのクラスターで使用されるストレージ アカウントは、同じ Azure リージョンに存在している必要があります。
+構成時、既定のストレージ エンドポイントには、Azure Storage アカウントの BLOB コンテナーまたは Data Lake Storage を指定します。 既定のストレージには、アプリケーション ログとシステム ログが格納されます。 必要に応じて、クラスターからアクセスできるリンクされた Azure Storage アカウントおよび Data Lake Storage アカウントを追加指定できます。 HDInsight クラスターとそのクラスターで使用されるストレージ アカウントは、同じ Azure リージョンに存在している必要があります。
 
 ![クラスター ストレージの設定: HDFS と互換性のあるストレージ エンドポイント](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-creation-storage.png)
 
@@ -247,7 +247,7 @@ Azure の仮想ネットワーク内で 2 つのクラスターの種類を使�
 
 ## <a name="troubleshoot-access-control-issues"></a>アクセス制御に関する問題のトラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

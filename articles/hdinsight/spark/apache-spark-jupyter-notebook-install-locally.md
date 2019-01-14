@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 92f6bc358fe8cc5ab8f7242d94edc3004eaab4b9
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c1f4690d2ce10fe83d613b37ef2514effd2cef63
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163380"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598823"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 
@@ -22,9 +22,9 @@ ms.locfileid: "53163380"
 
 Jupyter と Spark マジックは大きく 3 つの手順でコンピューターにインストールします。
 
-* Jupyter Notebook をインストールする
-* PySpark カーネルと Spark カーネルおよび Spark マジックをインストールする
-* HDInsight 上の Spark クラスターにアクセスするように Spark マジックを構成する
+* Jupyter Notebook をインストールする。
+* PySpark カーネルと Spark カーネルおよび Spark マジックをインストールする。
+* HDInsight 上の Spark クラスターにアクセスするように Spark マジックを構成する。
 
 HDInsight クラスターの Jupyter Notebook で使用できるカスタム カーネルと Spark マジックの詳細については、 [HDInsight の Apache Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)に関するページを参照してください。
 
@@ -43,7 +43,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
         conda install jupyter
 
-    Jupyter のインストールについて詳しくは、[Anaconda を使用した Jupyter のインストール](http://jupyter.readthedocs.io/en/latest/install.html)に関するページをご覧ください。
+    Jupyter のインストールについて詳しくは、[Anaconda を使用した Jupyter のインストール](https://jupyter.readthedocs.io/en/latest/install.html)に関するページをご覧ください。
 
 ## <a name="install-the-kernels-and-spark-magic"></a>カーネルと Spark マジックをインストールする
 
@@ -100,7 +100,7 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
             "livy_server_heartbeat_timeout_seconds": 60,
             "heartbeat_retry_seconds": 1
 
-    >[!TIP]
+    >[!TIP]  
     >ハートビートが送信され、セッションがリークしないことが確認されます。 コンピューターがスリープ状態になるかシャットダウンすると、ハートビートは送信されず、セッションがクリーンアップされます。 クラスター v3.4 の場合、この動作を無効にするには、Ambari UI から Livy config `livy.server.interactive.heartbeat.timeout` を `0` に設定します。 クラスター v3.5 の場合、上記の 3.5 構成を設定しないと、セッションは削除されません。
 
 1. Jupyter を起動します。 コマンド プロンプトから次のコマンドを使用します。
@@ -120,7 +120,7 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
 
     出力結果が正しく得られた場合、HDInsight クラスターへの接続テストは完了です。
 
-    >[!TIP]
+    >[!TIP]  
     >別のクラスターに接続するようにノートブックの構成を更新する必要がある場合は、前の手順 3. を参照して、config.json の一連の値を更新してください。
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Jupyter をローカル コンピューターにインストールする理由
@@ -132,7 +132,7 @@ Jupyter をコンピューターにインストールしてから HDInsight 上�
 * クラスターをセットアップしなくてもローカルでノートブックを使用できます。 クラスターは、クラスターとの間でノートブックをテストする目的でのみ必要となります。ノートブックや開発環境を手動で管理するうえでクラスターは必要ありません。
 * 独自のローカル開発環境の方が、クラスター上の Jupyter 環境よりも構成しやすい場合があります。  リモートのクラスターを構成しなくても、ローカルにインストールされているすべてのソフトウェアを有効活用することができます。
 
-> [!WARNING]
+> [!WARNING]  
 > Jupyter がローカル コンピューターにインストールされている場合、同じ Spark クラスター上で複数のユーザーが同時に同じノートブックを実行できます。 そのような状況では、複数の Livy セッションが作成されます。 問題が発生してデバッグが必要となった場合、それは Livy セッションとユーザーの対応関係を追跡する複雑な作業となります。
 >
 >
@@ -141,9 +141,9 @@ Jupyter をコンピューターにインストールしてから HDInsight 上�
 * [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
-* [Apache Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行

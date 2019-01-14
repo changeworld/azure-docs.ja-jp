@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: be2c7aea356f6d7b73438499b7e4d680ed4bad7c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4cac20cb44c2400e44ff2ca0939b1537f0b20734
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259241"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727184"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>リスト エンティティを使用してエンティティの検出を向上する 
 このチュートリアルでは、[リスト エンティティ](luis-concept-entity-types.md)を使用してエンティティの検出を向上する方法について説明します。 リスト エンティティは、用語の完全一致なので、ラベルを付ける必要はありません。  
@@ -37,7 +37,7 @@ ms.locfileid: "53259241"
 > [!Tip]
 > サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)に登録できます。
 
-このチュートリアルのコードは、すべて [LUIS-Samples GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-list-entity)で入手できます。 
+このチュートリアルのコードは、すべて [Azure-Samples GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)で入手できます。 
 
 ## <a name="use-homeautomation-app"></a>HomeAutomation アプリを使用する
 HomeAutomation アプリを使用すると、照明、エンターテイメント システム、暖房や冷房などの環境制御などのデバイスを制御できます。 このようなシステムには、製造元の名前、ニックネーム、頭字語、スラングなどのさまざまな名前があります。 

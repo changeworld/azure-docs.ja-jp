@@ -1,24 +1,24 @@
 ---
-title: コンテナーの構成
-titlesuffix: Computer Vision - Azure Cognitive Services
-description: Computer Vision でのコンテナーの構成設定。
+title: コンテナーを構成する - Computer Vision
+titlesuffix: Azure Cognitive Services
+description: Computer Vision で、テキスト認識コンテナーのさまざまな設定を構成します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: f71cbe965e70dfce1b29cf0e5f9ea44faf0a4e27
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18
+ms.openlocfilehash: 48d3bc7ecdd66565372be8347897202cae3ec158
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077020"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579789"
 ---
-# <a name="configure-containers"></a>コンテナーの構成
+# <a name="configure-recognize-text-containers"></a>テキスト認識コンテナーを構成する
 
 Computer Vision には、一般的な構成フレームワークによるテキスト認識コンテナーが用意されているため、コンテナーのストレージ、ログとテレメトリ、セキュリティの設定を簡単に構成して、管理できます。
 
@@ -41,7 +41,7 @@ Computer Vision コンテナーからコンテナーをインスタンス化す�
 
 ### <a name="configuration-settings-as-environment-variables"></a>環境変数としての構成設定
 
-[ASP.NET Core 環境変数構文](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment)を使用して、構成設定を指定できます。
+[ASP.NET Core 環境変数構文](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#environment-variables-configuration-provider)を使用して、構成設定を指定できます。
 
 コンテナーは、インスタンス化されるときに、ユーザー環境変数を読み取ります。 環境変数が存在する場合、環境変数の値によって、指定された構成設定の既定値がオーバーライドされます。 環境変数を使用する利点は、コンテナーをインスタンス化する前に複数の構成設定を設定でき、複数のコンテナーで、同じ一連の構成設定を自動的に使用できることです。
 
@@ -77,9 +77,9 @@ Computer Vision コンテナーからコンテナーをインスタンス化す�
 
 次の表に、`ApplicationInsights` セクションでサポートされている構成設定について説明します。
 
-| Name | データ型 | 説明 |
+| 名前 | データ型 | 説明 |
 |------|-----------|-------------|
-| `InstrumentationKey` | String | コンテナーのテレメトリ データの送信先の Application Insights インスタンスのインストルメンテーション キー。 詳細については、「[Application Insights for ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)」を参照してください。 |
+| `InstrumentationKey` | 文字列 | コンテナーのテレメトリ データの送信先の Application Insights インスタンスのインストルメンテーション キー。 詳細については、「[Application Insights for ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)」を参照してください。 |
 
 ## <a name="authentication-configuration-settings"></a>Authentication 構成設定
 
@@ -107,14 +107,14 @@ Cognitive Services のコンテナーは、Azure の使用について定める[
 
 次の表に、`Fluentd` セクションでサポートされている構成設定について説明します。
 
-| Name | データ型 | 説明 |
+| 名前 | データ型 | 説明 |
 |------|-----------|-------------|
-| `Host` | String | Fluentd サーバーの IP アドレスまたは DNS ホスト名。 |
+| `Host` | 文字列 | Fluentd サーバーの IP アドレスまたは DNS ホスト名。 |
 | `Port` | 整数 | Fluentd サーバーのポート。<br/> 既定値は 24224 です。 |
 | `HeartbeatMs` | 整数 | ハートビート間隔 (ミリ秒)。 この間隔が期限切れになるまでにイベント トラフィックが送信されなかった場合、ハートビートが Fluentd サーバーに送信されます。 既定値は、60000 ミリ秒 (1 分) です。 |
 | `SendBufferSize` | 整数 | 送信操作用に割り当てられたネットワーク バッファー領域 (バイト数)。 既定値は、32,768 バイト (32 キロバイト) です。 |
 | `TlsConnectionEstablishmentTimeoutMs` | 整数 | Fluentd サーバーとの SSL または TLS 接続を確立するためのタイムアウト (ミリ秒)。 既定値は、10000 ミリ秒 (10 秒) です。<br/> `UseTLS` が false に設定されている場合、この値は無視されます。 |
-| `UseTLS` | Boolean | コンテナーで、Fluentd サーバーとの通信に SSL または TLS を使用する必要があるかどうかを示します。 既定値は false です。 |
+| `UseTLS` | ブール | コンテナーで、Fluentd サーバーとの通信に SSL または TLS を使用する必要があるかどうかを示します。 既定値は false です。 |
 
 ## <a name="logging-configuration-settings"></a>Logging 構成設定
 
@@ -128,12 +128,12 @@ Cognitive Services のコンテナーは、Azure の使用について定める[
   JSON ログ プロバイダー。 このログ プロバイダーは、ログ データを出力マウントに書き込みます。  
   `Disk` ログ プロバイダーでは、次の構成設定がサポートされます。  
 
-  | Name | データ型 | 説明 |
+  | 名前 | データ型 | 説明 |
   |------|-----------|-------------|
-  | `Format` | String | ログ ファイルの出力形式。<br/> **注:** ログ プロバイダーを有効にするためにこの値を `json` に設定する必要があります。 コンテナーのインスタンス化中に、出力マウントを指定せずに、この値を指定した場合、エラーが発生します。 |
+  | `Format` | 文字列 | ログ ファイルの出力形式。<br/> **注:** ログ プロバイダーを有効にするためにこの値を `json` に設定する必要があります。 コンテナーのインスタンス化中に、出力マウントを指定せずに、この値を指定した場合、エラーが発生します。 |
   | `MaxFileSize` | 整数 | ログ ファイルの最大サイズ (メガバイト (MB))。 現在のログ ファイルのサイズがこの値を満たしているか、または超えている場合、ログ プロバイダーによって新しいログ ファイルが開始されます。 -1 が指定されている場合、ログ ファイルのサイズは、出力マウントの最大ファイル サイズ (存在する場合) によってのみ制限されます。 既定値は 1 です。 |
 
-ASP.NET Core ログのサポートを構成する方法の詳細については、[設定ファイル構成](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration)に関するページを参照してください。
+ASP.NET Core ログ記録のサポートの詳細については、「[ASP.NET Core でのログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#configuration)」を参照してください。
 
 ## <a name="mounts-configuration-settings"></a>Mounts 構成設定
 
@@ -146,10 +146,10 @@ Computer Vision によって提供される Docker コンテナーは、ステ�
 
 次の表に、`Mounts` セクションでサポートされている構成設定について説明します。
 
-| Name | データ型 | 説明 |
+| 名前 | データ型 | 説明 |
 |------|-----------|-------------|
-| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。 |
-| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 |
+| `Input` | 文字列 | 入力マウントのターゲット。 既定値は `/input` です。 |
+| `Output` | 文字列 | 出力マウントのターゲット。 既定値は `/output` です。 |
 
 ### <a name="input-and-output-mounts"></a>入力マウントと出力マウント
 

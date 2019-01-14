@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 12/26/2018
 ms.author: juliako
-ms.openlocfilehash: b51f2850a925fcd9daf3a07d8db66193555df0fa
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3a2b3752926a3a4391ae9479ba636694533c97a8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000256"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788210"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -34,7 +34,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 Media Services でのオンデマンド ストリームまたはライブ ストリームを配信するためには、少なくとも 1 つの [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) が必要です。 Media Services アカウントの作成時に、**既定**の StreamingEndpoint が "**停止**" 状態でアカウントに追加されます。 視聴者にコンテンツをストリーミングする StreamingEndpoint を開始する必要があります。 既定の **StreamingEndpoint** を使用するか、必要な構成と CDN の設定を使用してカスタマイズした別の **StreamingEndpoint** を作成することができます。 複数の StreamingEndpoint を有効にしてそれぞれ別の CDN をターゲットとし、コンテンツ配信用の一意のホスト名を提供するように決定することができます。 
 
-Media Services では、[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) がライブ ビデオ フィードの取り込みと処理を担当します。 LiveEvent を作成するときに、リモートのエンコーダーからライブ信号を送信するために使用できる入力エンドポイントが作成されます。 リモート ライブ エンコーダーは、[RTMP](https://www.adobe.com/devnet/rtmp.html) または [スムーズ ストリーミング](https://msdn.microsoft.com/library/ff469518.aspx) (Fragmented MP4) プロトコルのいずれかを使用して、投稿フィードをその入力エンドポイントに送信します。  
+Media Services では、[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) がライブ ビデオ フィードの取り込みと処理を担当します。 LiveEvent を作成するときに、リモートのエンコーダーからライブ信号を送信するために使用できる入力エンドポイントが作成されます。 リモート ライブ エンコーダーは、[RTMP](https://www.adobe.com/devnet/rtmp.html) または [スムーズ ストリーミング](https://msdn.microsoft.com/library/ff469518.aspx) (Fragmented MP4) プロトコルのいずれかを使用して、投稿フィードをその入力エンドポイントに送信します。 Smooth Streaming 取り込みプロトコルでサポートされる URL スキームは `http://` と `https://` です。 RTMP 取り込みプロトコルでサポートされる URL スキームは `rtmp://` と `rtmps://` です。 詳細については、「[Recommended live streaming encoders (推奨されるライブ ストリーミング エンコーダー)](recommended-on-premises-live-encoders.md)」を参照してください。
 
 **LiveEvent** が投稿フィードの受信を開始したら、ライブ ストリームを公開する前に、そのプレビュー エンドポイント (プレビュー URL) を使用して、ライブ ストリームが受信されていることをプレビューして検証できます。 プレビュー ストリームが良好であることを確認したら、その LiveEvent を使用して、1 つ以上の (事前に作成した) **StreamingEndpoints** を通した配信に使用できるライブ ストリームを作成できます。 これを実現するために、**LiveEvent** に新規 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) を作成します。 
 
@@ -44,7 +44,7 @@ Media Services では、**ダイナミック パッケージ**を利用して、
 
 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム (Microsoft PlayReady、Google Widevine、および Apple FairPlay) によって動的に暗号化 (**動的暗号化**) されたコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM ライセンスを配信するためのサービスも提供しています。 Media Services でコンテンツを暗号化する方法の詳細については、「[コンテンツ保護の概要](content-protection-overview.md)」を参照してください。
 
-必要であれば、動的フィルターを適用することもできます。動的フィルターを使用することで、プレーヤーに送信されるトラック数、形式、ビットレート、プレゼンテーションの時間枠を制御することができます。 
+必要であれば、動的フィルターを適用することもできます。動的フィルターを使用することで、プレーヤーに送信されるトラック数、形式、ビットレート、プレゼンテーションの時間枠を制御することができます。 詳細については、「 [フィルターと動的マニフェスト](filters-dynamic-manifest-overview.md)」を参照してください。
 
 ### <a name="new-capabilities-for-live-streaming-in-v3"></a>v3 のライブ ストリーミングの新機能
 
@@ -77,7 +77,7 @@ Media Services の v3 API を使用すると、次の新機能によるメリッ
 
 ![ライブ エンコード](./media/live-streaming/live-encoding.png)
 
-Media Services によるライブ エンコードを使用する場合は、オンプレミス ライブ エンコーダーを、(RTMP または Fragmented MP4 プロトコルを使用して) LiveEvent への投稿フィードとしてシングル ビットレート ビデオを送信するように構成します。 LiveEvent は、受信シングル ビットレート ストリームを[マルチ ビットレート ビデオ ストリーム](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)にエンコードし、そのストリームを、MPEG-DASH、HLS、スムーズ ストリーミングなどのプロトコルを介して再生デバイスに配信できるようにします。 このタイプの LiveEvent を作成するときは、エンコードの種類に **Basic** (LiveEventEncodingType.Basic) を指定してください。
+Media Services によるライブ エンコードを使用する場合は、オンプレミス ライブ エンコーダーを、(RTMP または Fragmented MP4 プロトコルを使用して) LiveEvent への投稿フィードとしてシングル ビットレート ビデオを送信するように構成します。 LiveEvent は、受信シングル ビットレート ストリームを[マルチ ビットレート ビデオ ストリーム](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)にエンコードし、そのストリームを、MPEG-DASH、HLS、スムーズ ストリーミングなどのプロトコルを介して再生デバイスに配信できるようにします。 このタイプの LiveEvent を作成するときは、エンコードの種類に **Standard** (LiveEventEncodingType.Standard) を指定してください。
 
 投稿フィードは最大 1080p の解像度と 30 フレーム/秒のフレーム レートで、H.264/AVC ビデオ コーデックと AAC (AAC-LC、HE-AACv1、または HE-AACv2) オーディオ コーデックを使用して送信することができます。 詳細については、[LiveEvent タイプの比較と制限事項](live-event-types-comparison.md)についての記事を参照してください。
 

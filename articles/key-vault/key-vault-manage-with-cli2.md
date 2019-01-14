@@ -1,5 +1,5 @@
 ---
-title: CLI を使用した Azure Key Vault の管理 | Microsoft Docs
+title: CLI を使用した Azure Key Vault の管理 - Azure Key Vault | Microsoft Docs
 description: この記事を活用し、Azure CLI を使用した Key Vault での一般的なタスクを自動化します
 services: key-vault
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: f3b91e73cbfe9972969f5a061768a2c2bbfa7d1b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 632620bf8140ba855198a9354fbd7e50604e18c3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256455"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000310"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLI を使用して Key Vault を管理します。 
 
@@ -133,7 +133,7 @@ az keyvault create --name 'ContosoKeyVault' --resource-group 'ContosoResourceGro
 
 このコマンドの出力は、作成したキー コンテナーのプロパティを示します。 最も重要な 2 つのプロパティは、次のとおりです。
 
-* **name**: この例では、名前は ContosoKeyVault です。 この名前を他の Key Vault コマンドに使用できます。
+* **name**:この例では、名前は ContosoKeyVault です。 この名前を他の Key Vault コマンドに使用できます。
 * **vaultUri**: この例では、URI は https://contosokeyvault.vault.azure.net です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 Azure アカウントは、この Key Vault ですべての操作の実行が許可されるようになりました。 現在のところ、誰も承認されていません。
@@ -239,7 +239,7 @@ Key Vault のディスク暗号化を有効にする: Azure Disk Encryption に�
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-disk-encryption 'true'
  ```  
 
-Key Vault のテンプレート デプロイを有効にする: 資格情報コンテナーからシークレットを取得することをリソース マネージャーに許可します。
+Key Vault のテンプレートのデプロイを有効にする: Resource Manager がコンテナーからシークレットを取得することを許可します。
  ```azurecli 
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-template-deployment 'true'
  ```

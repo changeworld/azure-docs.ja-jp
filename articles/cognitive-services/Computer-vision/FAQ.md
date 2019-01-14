@@ -1,5 +1,5 @@
 ---
-title: Computer Vision API に関する FAQ
+title: よく寄せられる質問 - Computer Vision
 titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services の Computer Vision API についてよく寄せられる質問とその回答を紹介します。
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: kefre
-ms.openlocfilehash: 55b474d0edbb8dc01b9f35d4f8799e53e37862df
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec18
+ms.openlocfilehash: 3146650280af80923a4ed9cbb78a5ce6d43e5bce
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166374"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584277"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API についてよく寄せられる質問
 
@@ -54,15 +55,15 @@ ms.locfileid: "49166374"
 
 -----
 
-**質問:** *手書き認識ではどの言語がサポートされますか?*
+**質問:***手書き認識ではどの言語がサポートされますか?*
 
-**回答**: 現在、英語のみがサポートされています。
+**回答**: 現時点では、英語のみがサポートされています。
 
 -----
 
 **質問**: *手書き認識ではどのような種類の筆記面がサポートされますか?*
 
-**回答**: ホワイトボード、白紙、黄色の付箋など、さまざまな種類の筆記面で動作します。
+**回答**: このテクノロジは、ホワイトボード、白紙、黄色の付箋など、さまざまな種類の筆記面で動作します。
 
 -----
 

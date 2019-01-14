@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 65c89e337d62ccb7ce58a1ea4e7414527bf9af19
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 27b952fb1a901ff716f25cc7d512f860f639fb02
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342099"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632620"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Speech Service API の言語と地域のサポート
 
@@ -31,30 +31,30 @@ Microsoft の音声認識 API では、次の言語がサポートされてい�
  ar-EG | アラビア語 (エジプト)、現代標準 | いいえ  | はい | いいえ 
  ca-ES | カタルニア語 (スペイン) | いいえ  | いいえ  | いいえ 
  da-DK | デンマーク語 (デンマーク) | いいえ  | いいえ  | いいえ 
- de-DE | ドイツ語 (ドイツ) | [はい] | [はい] | いいえ 
+ de-DE | ドイツ語 (ドイツ) | [はい] | はい | いいえ 
  en-AU | 英語 (オーストラリア) | いいえ  | 可能  | [はい]
  en-CA | 英語 (カナダ) | いいえ  | 可能  | [はい]
  en-GB | 英語 (イギリス) | いいえ  | 可能  | [はい]
  en-IN | 英語 (インド) | [はい] | はい | [はい]
  en-NZ | 英語 (ニュージーランド) | いいえ  | 可能  | [はい]  
  en-US | 英語 (米国) | [はい] | はい | [はい]
- es-ES | スペイン語 (スペイン) | [はい] | [はい] | いいえ 
+ es-ES | スペイン語 (スペイン) | [はい] | はい | いいえ 
  es-MX | スペイン語 (メキシコ) | いいえ  | はい | いいえ 
  fi-FI | フィンランド語 (フィンランド) | いいえ  | いいえ  | いいえ 
  fr-CA | フランス語 (カナダ) | いいえ  | はい | いいえ 
- fr-FR | フランス語 (フランス) | [はい] | [はい] | いいえ 
+ fr-FR | フランス語 (フランス) | [はい] | はい | いいえ 
  hi-IN | ヒンディー語 (インド) | いいえ  | はい | いいえ 
- it-IT | イタリア語 (イタリア) | [はい] | [はい] | いいえ 
+ it-IT | イタリア語 (イタリア) | [はい] | はい | いいえ 
  ja-JP | 日本語 (日本) | いいえ  | はい | いいえ 
  ko-KR | 韓国語 (韓国) | いいえ  | はい | いいえ 
  nb-NO | ノルウェー語 (ブークモール) (ノルウェー) | いいえ  | いいえ  | いいえ 
  nl-NL | オランダ語 (オランダ) | いいえ  | はい | いいえ 
  pl-PL | ポーランド語 (ポーランド) | いいえ  | いいえ  | いいえ 
- pt-BR | ポルトガル語 (ブラジル) | [はい] | [はい] | いいえ 
+ pt-BR | ポルトガル語 (ブラジル) | [はい] | はい | いいえ 
  pt-PT | ポルトガル語 (ポルトガル) | いいえ  | はい | いいえ 
- ru-RU | ロシア語 (ロシア) | [はい] | [はい] | いいえ 
+ ru-RU | ロシア語 (ロシア) | [はい] | はい | いいえ 
  sv-SE | スウェーデン語 (スウェーデン) | いいえ  | いいえ  | いいえ 
- zh-CN | 中国語 (標準、簡体字) | [はい] | [はい] | いいえ 
+ zh-CN | 中国語 (標準、簡体字) | [はい] | はい | いいえ 
  zh-HK | 中国語 (標準、繁体字) | いいえ  | はい | いいえ 
  zh-TW | 中国語 (台湾標準中国語) | いいえ  | はい | いいえ 
  th-TH | タイ語 (タイ) | いいえ  | いいえ  | いいえ 
@@ -176,22 +176,7 @@ zh-TW | 中国語 (台湾)|女性 | "Microsoft Server Speech Text to Speech Voic
 
 ## <a name="speech-translation"></a>音声翻訳
 
-**Speech Translation** API では、音声を音声に翻訳し、音声をテキストに翻訳するために、さまざまな言語をサポートしています。 ソース言語は常に次の音声言語テーブルからのものである必要があります。 使用可能なターゲット言語は、何に翻訳するか (音声かテキストか) によって決まります。 受信した音声は [60 言語](https://www.microsoft.com/translator/business/languages/)以上に翻訳できます。 これらの言語のサブセットは、[音声合成](language-support.md#text-languages)に利用できます。
-
-### <a name="speech-languages"></a>音声言語
-
-| 音声言語   | 言語コード |
-|:----------- |-|
-| アラビア語 (現代標準)      | `ar` |
-| 中国語 (標準)      | `zh` |
-| 英語      | `en` |
-| フランス語      | `fr` |
-| ドイツ語      | `de` |
-| イタリア語      | `it` |
-| 日本語      | `jp` |
-| ポルトガル語 (ブラジル)     | `pt` |
-| ロシア語      | `ru` |
-| スペイン語      |  `es` |
+**Speech Translation** API では、音声を音声に翻訳し、音声をテキストに翻訳するために、さまざまな言語をサポートしています。 ソース言語は、音声テキスト変換言語の表に常に含まれている必要があります。 使用可能なターゲット言語は、何に翻訳するか (音声かテキストか) によって決まります。 受信した音声は [60 言語](https://www.microsoft.com/translator/business/languages/)以上に翻訳できます。 これらの言語のサブセットは、[音声合成](language-support.md#text-languages)に利用できます。
 
 ### <a name="text-languages"></a>テキスト言語
 

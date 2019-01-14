@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d8d12662552eaf2d566eebd773c69dfb9817d874
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a97da5542395b57fa9a6ca6e4c38dd25e524ec3e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098653"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969422"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>意図とエンティティからのデータ抽出
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
@@ -106,7 +106,7 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 }
 ```
 
-|ドメイン|データ オブジェクト|データ型|データの場所|値|
+|Domain|データ オブジェクト|データ型|データの場所|値|
 |--|--|--|--|--|
 |Utilities|意図|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
 |Communication|意図|String|intents[1].intent|<b>Communication</b>.StartOver"|
@@ -425,7 +425,11 @@ number の `2` と ToLocation `paris` の間には、どのエンティティに
 ```
 
 ## <a name="extracting-names"></a>名前の抽出
-名前は、文字と単語のほぼすべての組み合わせが考えられるため、発話から名前を取得することは困難です。 抽出する名前の種類に応じて、複数のオプションがあります。 以下はルールというよりはガイドラインです。
+名前は、文字と単語のほぼすべての組み合わせが考えられるため、発話から名前を取得することは困難です。 抽出する名前の種類に応じて、複数のオプションがあります。 次の推奨事項はルールではなく、詳細なガイドラインです。
+
+### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>事前構築済みの PersonName エンティティと GeographyV2 エンティティを追加する
+
+[PersonName](luis-reference-prebuilt-person.md) エンティティと [GeographyV2](luis-reference-prebuilt-geographyV2.md) エンティティは、いくつかの[言語カルチャ](luis-reference-prebuilt-entities.md)で利用できます。 
 
 ### <a name="names-of-people"></a>人の名前
 人の名前は、言語およびカルチャに応じて、幾分ある種の形式を持つことがあります。 姓と名を子として持つ階層構造エンティティか、姓と名の役割を持つシンプルなエンティティを使用します。 必ず発話のさまざまな部分に姓と名を使用している例を提供してください。また、None 意図を含むあらゆる意図にわたるさまざまな長さの発話で、姓と名を使用している例を提供してください。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
@@ -434,7 +438,7 @@ number の `2` と ToLocation `paris` の間には、どのエンティティに
 場所の名前は、設定されており、市区町村、郡、州、都道府県、国などがあります。 アプリで一連の既知の場所を使用する場合は、リスト エンティティを検討してください。 すべての場所の名前を検索する必要がある場合は、シンプル エンティティを作成し、さまざまな例を提供してください。 場所名のフレーズ リストを追加して、アプリ内で場所名がどのように表記されるかを補強してください。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
 
 ### <a name="new-and-emerging-names"></a>新しい名前
-一部のアプリでは、製品や企業などの新しい名前を検索できる必要があります。 これは、最も困難な種類のデータ抽出です。 シンプル エンティティから始めて、フレーズ リストを追加します。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
+一部のアプリでは、製品や企業などの新しい名前を検索できる必要があります。 これらの種類の名前は、最も困難な種類のデータ抽出です。 シンプル エンティティから始めて、フレーズ リストを追加します。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
 
 ## <a name="pattern-roles-data"></a>パターンの役割データ
 役割は、エンティティのコンテキスト上の差異です。
@@ -603,6 +607,7 @@ Pattern.any エンティティは、[パターン](luis-concept-patterns.md)の�
 ```
 
 ## <a name="data-matching-multiple-entities"></a>複数のエンティティに一致するデータ
+
 LUIS では、発話内で検出されたすべてのエンティティを返します。 その結果、チャットボットでは、結果に基づいて決定を行う必要があります。 発話内には多数のエンティティが存在する可能性があります。
 
 `book me 2 adult business tickets to paris tomorrow on air france`
@@ -728,6 +733,46 @@ LUIS エンドポイントでは、異なるエンティティ内に同じデー
           "value": "business"
         }
       ]
+    }
+  ]
+}
+```
+
+## <a name="data-matching-multiple-list-entities"></a>複数のリスト エンティティに一致するデータ
+
+単語またはフレーズが複数のリスト エンティティに一致すると、エンドポイント クエリからそれぞれのリスト エンティティが返されます。
+
+クエリ `when is the best time to go to red rock?` の場合、アプリの複数のリストに単語 `red` があると、LUIS ではすべてのエンティティを認識し、JSON エンドポイントの応答の一部としてエンティティの配列を返します。 
+
+```JSON
+{
+  "query": "when is the best time to go to red rock?",
+  "topScoringIntent": {
+    "intent": "Calendar.Find",
+    "score": 0.06701678
+  },
+  "entities": [
+    {
+      "entity": "red",
+      "type": "Colors",
+      "startIndex": 31,
+      "endIndex": 33,
+      "resolution": {
+        "values": [
+          "Red"
+        ]
+      }
+    },
+    {
+      "entity": "red rock",
+      "type": "Cities",
+      "startIndex": 31,
+      "endIndex": 38,
+      "resolution": {
+        "values": [
+          "Destinations"
+        ]
+      }
     }
   ]
 }

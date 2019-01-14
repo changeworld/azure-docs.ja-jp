@@ -1,5 +1,5 @@
 ---
-title: 'P2S RADIUS 接続用の VPN クライアント構成ファイルを作成およびインストールする: PowerShell: Azure | Microsoft Docs'
+title: P2S RADIUS 接続の VPN クライアント構成ファイルを作成してインストールする:PowerShell:Azure | Microsoft Docs
 description: RADIUS 認証を使用する接続用の Windows、Mac OS X、および Linux の VPN クライアント構成ファイルを作成します。
 services: vpn-gateway
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
 ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "51252009"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
@@ -266,9 +266,9 @@ Azure 仮想ネットワークに接続するすべての Mac デバイスごと
  
 3. **GenenericDevice** フォルダーには、**VpnSettings** という XML ファイルが含まれています。 このファイルには、必要な情報がすべて含まれています。
 
-   * **VpnServer**: Azure VPN ゲートウェイの FQDN。 これは、クライアントの接続先となるアドレスです。
+   * **VpnServer**: Azure VPN Gateway の FQDN。 これは、クライアントの接続先となるアドレスです。
    * **VpnType**: 接続に使用するトンネルの種類。
-   * **Routes**: Azure 仮想ネットワークにバインドされたトラフィックのみが P2S トンネル経由で送信されるように、プロファイル内で構成する必要があるルート。
+   * **Routes**: Azure 仮想ネットワーク宛てのトラフィックのみが P2S トンネル経由で送信されるように、プロファイル内で構成する必要があるルート。
    
    **GenenericDevice** フォルダーには、**VpnServerRoot** という .cer ファイルも含まれています。 このファイルには、P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。 Azure 仮想ネットワークに接続するすべてのデバイスに、証明書をインストールします。
 

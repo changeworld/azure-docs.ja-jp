@@ -13,20 +13,23 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/07/2018
+ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 8c3ff4af3b556614d0b2179dceed6cabd9cbabff
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8a680f1c745bed7745691ad337ed887cc4fc05c5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616012"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716618"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
 この記事では、Azure Media Services v3 で導入された変更点について説明し、2 つのバージョンの違いを示し、移行のガイダンスを提供します。
 
 [従来の Media Services v2 API](../previous/media-services-overview.md) 上に動画サービスを今日開発した場合、v3 API に移行する前に次のガイドラインと 考慮事項を確認してください。 v3 API には Media Services の開発者エクスペリエンスと機能を向上させる多くのメリットおよび新機能があります。 ただし、この記事の[既知の問題](#known-issues)セクションで示すように、API バージョン間の変更によるいくつかの制限事項もあります。 このページは、v3 API に対して Media Services チームが継続的な改善を行い、バージョン間の差異に対処するたびに更新されます。 
+
+> [!NOTE]
+> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI、またはサポートされている SDK のいずれかを使用します。
 
 ## <a name="benefits-of-media-services-v3"></a>Media Services v3 のメリット
 
@@ -65,9 +68,7 @@ ms.locfileid: "51616012"
 * 次のエンティティ名が変更されました
     * JobOutput は Task に置き換えられ、ジョブの一部になりました。
     * StreamingLocator によって Locator が置き換えられました。
-    * LiveEvent によって Channel が置き換えられました。
-        
-        LiveEvent 課金はライブ チャンネルの測定に基づいています。 詳細については、[ライブ ストリーミングの概要](live-streaming-overview.md#billing)および[価格](https://azure.microsoft.com/pricing/details/media-services/)に関するページを参照してください。
+    * LiveEvent によって Channel が置き換えられました。<br/>LiveEvent 課金はライブ チャンネルの測定に基づいています。 詳細については、[ライブ ストリーミングの概要](live-streaming-overview.md#billing)および[価格](https://azure.microsoft.com/pricing/details/media-services/)に関するページを参照してください。
     * LiveOutput によって Program が置き換えられました。
 * LiveOutput を明示的に開始する必要はなく、これらは作成時に起動され、削除されたときに停止します。 v2 API ではプログラムの動作方法が異なり、作成後に起動される必要がありました。
 
@@ -75,21 +76,18 @@ ms.locfileid: "51616012"
 
 v3 API には v2 API に関して次の機能ギャップがあります。 ギャップを埋めることは進行中の作業です。
 
-* [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) と従来の [Media Analytics プロセッサ](../previous/media-services-analytics-overview.md)(Azure Media Services Indexer 2 プレビュー、Face Redactor など) は v3 を使用してアクセスできません。
-
-    Media Indexer 1 または2 のプレビューからの移行を希望するお客様は、v3 API でプリセットされている AudioAnalyzer をすぐに使用できます。  この新しいプリセットには、古い Media Indexer 1 または 2 より多くの機能が含まれています。 
-
+* [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) と従来の [Media Analytics プロセッサ](../previous/media-services-analytics-overview.md)(Azure Media Services Indexer 2 プレビュー、Face Redactor など) は v3 を使用してアクセスできません。<br/>Media Indexer 1 または2 のプレビューからの移行を希望するお客様は、v3 API でプリセットされている AudioAnalyzer をすぐに使用できます。  この新しいプリセットには、古い Media Indexer 1 または 2 より多くの機能が含まれています。 
 * 次に示すような v2 API の Media Encoder Standard の多くの高度な機能は v3 で現在利用できません。
     * (オンデマンド シナリオおよびライブ シナリオ用の) クリッピング
     * 資産の結合
     * オーバーレイ
     * トリミング
     * サムネイル スプライト
-* コード変換を使用する LiveEvent は、ストリーム中のスレート挿入、カスタム プリセット、または API 呼び出しによる Ad マーカー挿入を現在サポートしていません。 
+* 現在、コード変換を使用する LiveEvent では、ストリーム中のスレート挿入および API 呼び出しによる Ad マーカー挿入はサポートされていません。 
 
 > [!NOTE]
 > この記事にブックマークを設定し、更新がないか随時確認してください。
-
+ 
 ## <a name="code-differences"></a>コードの違い
 
 次の表では、一般的なシナリオでの v2 と v3 のコードの違いを示します。
@@ -103,15 +101,14 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
 ## <a name="known-issues"></a>既知の問題
 
 * 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI、またはサポートされている SDK のいずれかを使用します。
-* 今日では、メディア占有ユニットは Media Services v2 API を使用してのみ管理できます。 詳細については、[メディア処理のスケール設定](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。
+* ジョブ (特にビデオまたはオーディオ分析を伴うもの) のコンカレンシーとパフォーマンスを制御するには、アカウントでメディア占有ユニット (MRU) をプロビジョニングする必要があります。 詳細については、[メディア処理のスケール設定](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。 MRU の管理には、[CLI 2.0 for Media Services v3](media-reserved-units-cli-how-to.md)、[Azure portal](../previous/media-services-portal-scale-media-processing.md)、または [v2 API](../previous/media-services-dotnet-encoding-units.md) を使用できます。 Media Services v2 と v3 のどちらの API を使用する場合でも、MRU をプロビジョニングする必要があります。
 * v3 API を使用して作成された Media Services エンティティは v2 API で管理できません。  
 * v2 API で作成されたエンティティを v3 API 経由で管理することは推奨されません。 2 つのバージョンのエンティティの違いによって互換性がなくなる例を次に示します。   
     * v2 で作成されたジョブと タスクは変換に関連付けられていないため、v3 で表示されません。 v3 の変換およびジョブに切り替えることをお勧めします。 切り替え中は、処理中の v2 ジョブを比較的短い期間でモニターする必要があります。
-    * v2 で作成されたチャネルとプログラム (v3 で LiveEvents と LiveOutputs にマップされる) は、v3 での管理を続行できません。 便利なチャネル停止で v3 LiveEvent および LiveOutput に切り替えることをお勧めします。
-    
-        現時点では、実行を継続中のチャネルを移行することはできません。  
+    * v2 で作成されたチャネルとプログラム (v3 で LiveEvents と LiveOutputs にマップされる) は、v3 での管理を続行できません。 便利なチャネル停止で v3 LiveEvent および LiveOutput に切り替えることをお勧めします。<br/>現時点では、実行を継続中のチャネルを移行することはできません。  
+
 > [!NOTE]
-> この記事にブックマークを設定し、更新がないか随時確認してください。
+> このページは、v3 API に対して Media Services チームが継続的な改善を行い、バージョン間の差異に対処するたびに更新されます。
 
 ## <a name="next-steps"></a>次の手順
 

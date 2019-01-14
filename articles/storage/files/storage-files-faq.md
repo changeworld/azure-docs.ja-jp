@@ -4,15 +4,15 @@ description: Azure Files についてよく寄せられる質問とその回答�
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 10/04/2018
+ms.date: 01/02/2019
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 761637a9c44cc490d6633aeb1a9b8d81f8885583
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 70370db841a08ae8ee62bda83bec4b1b9e2e7cf2
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972084"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001534"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -182,7 +182,7 @@ ms.locfileid: "52972084"
 * <a id="ad-support-regions"></a>
 **Azure Files での SMB 経由の Azure AD のプレビューは、すべての Azure リージョンで利用できますか。**
 
-    このプレビューは、北ヨーロッパを除くすべてのパブリック リージョンで使用できます。
+    このプレビューは、すべてのパブリック リージョンで使用できます。
 
 * <a id="ad-support-on-premises"></a>
 **Azure Files での SMB 経由の Azure AD 認証 (プレビュー) では、オンプレミス マシンからの Azure AD を使用した認証はサポートされていますか。**

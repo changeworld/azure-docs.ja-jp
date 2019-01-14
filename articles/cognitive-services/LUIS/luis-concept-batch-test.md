@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: c050c8ed338a019b34302e87a53d4a40306f9a22
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b0b2c8d0e3484538ca5c988a7fad56fb82b97902
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133148"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993165"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>LUIS ポータルで 1000 件の発話をバッチ テストする
 
@@ -48,7 +48,7 @@ ms.locfileid: "53133148"
 
 バッチ ファイルは、発話で構成されます。 各発話には、検出されると予期されている[機械学習によるエンティティ](luis-concept-entity-types.md#types-of-entities)すべてと共に、予期される意図の予測が必要です。 
 
-## <a name="batch-syntax-template"></a>バッチ構文のテンプレート
+## <a name="batch-syntax-template-for-intents-with-entities"></a>エンティティがある意図のバッチ構文テンプレート
 
 次のテンプレートを使用してバッチ ファイルを開始します。
 
@@ -75,6 +75,22 @@ ms.locfileid: "53133148"
 ```
 
 バッチ ファイルは、**startPos** および **endPos** プロパティを使用して、エンティティの開始と終了をメモします。 これらの値は 0 から始まり、スペースで開始または終了してはいけません。 これは、startIndex および endIndex プロパティを使用するクエリ ログとは異なります。 
+
+## <a name="batch-syntax-template-for-intents-without-entities"></a>エンティティがない意図のバッチ構文テンプレート
+
+次のテンプレートを使用して、エンティティがないバッチ ファイルを開始します。
+
+```JSON
+[
+  {
+    "text": "example utterance goes here",
+    "intent": "intent name goes here",
+    "entities": []
+  }
+]
+```
+
+エンティティをテストしないようにする場合は、`entities` プロパティを含め、値を空の配列 `[]` として設定します。
 
 
 ## <a name="common-errors-importing-a-batch"></a>バッチ インポートでの一般的なエラー

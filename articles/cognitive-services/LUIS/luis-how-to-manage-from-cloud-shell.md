@@ -1,7 +1,7 @@
 ---
 title: 利用状況データ - Cloud Shell
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Azure Cloud Shell で LUIS の使用状況に関する情報を取得する方法を説明します。
+description: Azure Cloud Shell で LUIS のエンドポイント ヒット カウントの使用状況に関する情報を取得する方法を説明します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,21 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: d4f1a76fe587a34448cf218dbfef10f6b0e2ea46
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 703332ece0208856bfbedb852b4b1e985d157dc9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133479"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605956"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Azure Cloud Shell からの LUIS サービスの使用状況データ
+
+Azure Cloud Shell で LUIS のエンドポイント ヒット カウントの使用状況に関する情報を取得する方法を説明します。
+
 Azure portal で PowerShell コマンドレットを使って、LUIS リソースを操作することができます。 
 
 これらのコマンドレットを使うと、LUIS サブスクリプションを[作成](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0)し、サブスクリプションに関する[使用状況](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0)などの情報を取得し、サブスクリプションを[削除](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0)することができます。 
 
 ## <a name="cloud-shell-storage-account-and-authentication"></a>Cloud Shell のストレージ アカウントと認証
+
 Azure portal の [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell) で PowerShell を使うには、Azure ストレージ アカウントが必要です。 [ストレージ アカウント](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)がない場合は、作成するよう要求されます。 ストレージ アカウントがあると、Cloud Shell に PowerShell スクリプトを保存することができます。  
 
 また、リソースにアクセスするには、Cloud Shell 内の Azure に対して認証を行う必要があります。 
@@ -31,6 +35,7 @@ Azure portal の [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quic
 ストレージ アカウントがあり、認証が済んでいれば、PowerShell コマンドレットを実行することができます。
 
 ## <a name="open-cloud-shell"></a>Cloud Shell を開く
+
 Azure portal の Cloud Shell を使用するとき、PowerShell のバージョンは常に最新です。 
 
 **[Launch Cloud Shell]** ボタンを使って Cloud Shell を開くか、または [https://shell.azure.com](https://shell.azure.com) でブラウザーを開きます。 環境として Power Shell を選択します。 Azure ストレージ アカウントを持っていない場合は、作成する必要があります。 

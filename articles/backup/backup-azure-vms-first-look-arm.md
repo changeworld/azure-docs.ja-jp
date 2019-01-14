@@ -1,24 +1,21 @@
 ---
-title: 最初の項目:Recovery Services コンテナーを使用して Azure VM を保護する
-description: Recovery Services コンテナーを使用して Azure VM を保護します。 Resource Manager デプロイによる VM、クラシック デプロイによる VM、Premium Storage VM、暗号化された VM、Managed Disks 上の VM のバックアップを使用して、データを保護します。 Recovery Services コンテナーを作成して登録します。 Azure で VM の登録、ポリシーの作成、VM の保護を行います。
+title: Azure Backup サービスを使用して Azure VM をバックアップする
+description: Azure Backup サービスを使用して Azure VM をバックアップする方法について説明します
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keyword: backups; vm backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 12/17/2018
 ms.author: raynew
-ms.custom: H1Hack27Feb2017
-keywords: バックアップ; vm バックアップ
-ms.openlocfilehash: 2c6b881e5717c0f4600b4e3c2f47c19b5d2dae51
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c1bd92b9c4611465b680f195e4881a447f4bb701
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869930"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044401"
 ---
-# <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
+# <a name="back-up-azure-vms-with-the-azure-backup-service"></a>Azure Backup サービスを使用して Azure VM をバックアップする
 
 この記事では、仮想マシンの操作メニューまたは Recovery Services コンテナーから仮想マシンに保護を構成する方法を説明します。 Recovery Services コンテナーは次のものを保護します。
 
@@ -32,7 +29,7 @@ ms.locfileid: "52869930"
 
 Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)に関する記事をご覧ください。 マネージド ディスク VM のサポートの詳細については、[マネージド ディスクの VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するページをご覧ください。 Linux VM バックアップの事前および事後スクリプト フレームワークの詳細については、[事前スクリプトおよび事後スクリプトを使用したアプリケーション整合性 Linux VM バックアップ](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)に関するページを参照してください。
 
-バックアップできるものとバックアップできないものについて詳しくは、[Azure VM をバックアップするための環境の準備](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)に関する記事をご覧ください。
+バックアップできるものとバックアップできないものについて詳しくは、[Azure VM をバックアップするための環境の準備](backup-azure-arm-vms-prepare.md#before-you-start)に関する記事をご覧ください。
 
 > [!NOTE]
 > Backup サービスでは、復元ポイント コレクションを格納する VM のリソース グループとは別のリソース グループが作成されます。 Backup サービスに使用するために作成されたリソース グループはロックしないことをお勧めします。
@@ -293,7 +290,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
   デプロイ通知で、バックアップ ジョブがトリガーされたこと、および [バックアップ ジョブ] ページでジョブの進行状況を監視できることが示されます。 VM のサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
 
   > [!NOTE]
-  > Azure Backup でバックアップされるデータはすべて、[Storage Service Encryption (SSE)](../storage/common/storage-service-encryption.md) で暗号化されて保存されます。
+  > - Azure Backup でバックアップされるデータはすべて、[Storage Service Encryption (SSE)](../storage/common/storage-service-encryption.md) で暗号化されて保存されます。
   >
   >
 
@@ -337,7 +334,8 @@ Backup サービスでは、VM が実行されていない場合でもバック�
 この記事のタスクを行っていて問題が発生した場合は、 [トラブルシューティング ガイダンス](backup-azure-vms-troubleshoot.md)を参照してください。
 
 ## <a name="pricing"></a>価格
-Azure VM のバックアップ コストは、保護されているインスタンスの数によって決まります。 保護されているインスタンスの定義については、「[保護されているインスタンスとは](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)」を参照してください。 仮想マシンのバックアップ コストの計算例については、[保護されているインスタンスの計算方法](backup-azure-vms-introduction.md#calculating-the-cost-of-protected-instances)に関する記事を参照してください。 Azure Backup の価格設定については、「[Backup の価格](https://azure.microsoft.com/pricing/details/backup/)」のページを参照してください。
+Azure VM のバックアップ コストは、保護されているインスタンスの数によって決まります。 保護されているインスタンスの定義については、「[保護されているインスタンスとは](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)」を参照してください。 Azure Backup の価格設定については、「[Backup の価格](https://azure.microsoft.com/pricing/details/backup/)」のページを参照してください。
 
-## <a name="questions"></a>疑問がある場合
-ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](https://aka.ms/azurebackup_feedback)。
+## <a name="next-steps"></a>次の手順
+
+[バックアップ](backup-azure-manage-vms.md)を管理します。
