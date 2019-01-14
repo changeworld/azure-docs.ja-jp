@@ -21,7 +21,7 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37051452"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Azure Data Factory を使用して Cassandra からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-cassandra-connector.md)
 > * [現在のバージョン](connector-cassandra.md)
 
@@ -218,7 +218,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 
 ドライバーによって、この単一のテーブルを表す複数の仮想テーブルが生成されます。 仮想テーブルの外部キー列は、実テーブルの主キー列を参照して、仮想テーブルの行が対応する実テーブルの行を示します。
 
-最初の仮想テーブルは、次の表に示す "ExampleTable" という名前のベース テーブルです。 
+最初の仮想テーブルは、次の表に示す "ExampleTable" という名前のベース テーブルです。
 
 | pk_int | 値 |
 | --- | --- |
