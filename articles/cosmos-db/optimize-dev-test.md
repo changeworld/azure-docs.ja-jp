@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
-ms.openlocfilehash: d3ed5c2c13e5a35bcc6cd0e03a6b553691785cdb
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7e75ee6e7c9cd30911dd00a81cdd50b688346985
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548665"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036479"
 ---
 # <a name="optimizing-for-development-and-testing-in-azure-cosmos-db"></a>Azure Cosmos DB での開発とテストのための最適化
 

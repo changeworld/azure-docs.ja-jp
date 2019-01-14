@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 7373cc23654e2168963a364e4b4069331bf196c5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8a0808c0e82ee31a5fd684d449fa30cd331d3dba
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969932"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063869"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,7 +31,7 @@ Amazon S3 から、サポートされている任意のシンク データ ス�
 具体的には、この Amazon S3 コネクタでは、ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析することをサポートしています。
 
 >[!TIP]
->この Amazon S3 コネクタを使用し、[Google Cloud Storage](#copy-from-google-cloud-storage) など、**あらゆる S3 対応プロバイダー**からデータをコピーできます。 リンクされているサービスの構成で、対応するサービスの URL を指定します。
+>この Amazon S3 コネクタを使用し、[Google Cloud Storage](connector-google-cloud-storage.md) など、**あらゆる S3 対応プロバイダー**からデータをコピーできます。 リンクされているサービスの構成で、対応するサービスの URL を指定します。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
@@ -212,35 +212,6 @@ Amazon S3 からデータをコピーするには、コピー アクティビテ
         }
     }
 ]
-```
-
-## <a name="copy-from-google-cloud-storage"></a>Google Cloud Storage からコピーする
-
-Google Cloud Storage からは S3 対応の相互運用性が与えられます。そのため、Amazon S3 コネクタを使用し、Google Cloud Storage から[サポートされているあらゆるシンク データ ストア](copy-activity-overview.md#supported-data-stores-and-formats)にデータをコピーできます。 
-
-ADF オーサリング UI コネクタ ギャラリーに Google Cloud Storage のエントリがあります。これを利用すると、サービス URL が自動的に入力され、`https://storage.googleapis.com` になります。 アクセス キーとシークレットを見つけるには、**[Google Cloud Storage]**、**[設定]**、**[相互運用性]** の順に進みます。 S3 コネクタを使用してデータをコピーする方法の詳細については、この記事を冒頭から参照してください。
-
-**リンクされたサービスの例:**
-
-```json
-{
-    "name": "GoogleCloudStorageLinkedService",
-    "properties": {
-        "type": "AmazonS3",
-        "typeProperties": {
-            "accessKeyId": "<access key id>",
-            "secretAccessKey": {
-                "type": "SecureString",
-                "value": "<secret access key>"
-            },
-            "serviceUrl": "https://storage.googleapis.com"
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
 ```
 
 ## <a name="next-steps"></a>次の手順

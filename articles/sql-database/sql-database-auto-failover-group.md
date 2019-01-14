@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: e20b18afb579839343fc4c079c039d7b9e5438f7
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/03/2019
+ms.openlocfilehash: 958dcb8113f58409d413b5471c96d2e0ba83c361
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994642"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033810"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -175,7 +175,7 @@ ms.locfileid: "53994642"
 
   新しいインスタンスが作成されると、一意の ID が DNS ゾーンとして自動的に生成され、インスタンスの DNS 名に含まれます。 このインスタンスのマルチドメイン (SAN) 証明書は、`zone_id.database.windows.net` という形式で、SAN フィールドでプロビジョニングされます。 この証明書は、同じ DNS ゾーン内のインスタンスへのクライアント接続を認証する際に使用できます。 フェールオーバー後にプライマリ インスタンスに中断することなく確実に接続するには、プライマリとセカンダリの両方のインスタンスが同じ DNS ゾーンにある必要があります。 アプリケーションを運用環境にデプロイする準備ができたら、別のリージョンでセカンダリ インスタンスを作成し、プライマリ インスタンスと DNS ゾーンを共有していることを確認します。 これを行うには、Azure ポータル、PowerShell、または REST API を使用し、省略可能な `DNS Zone Partner` パラメーターを指定します。
 
-  プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ インスタンスの作成について詳しくは、[マネージド インスタンスでのフェールオーバー グループの管理 (プレビュー)](#managing-failover-groups-with-managed-instances-preview) に関するページを参照してください。
+  プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ インスタンスの作成について詳しくは、[マネージド インスタンスでのフェールオーバー グループの管理 (プレビュー)](#powershell-managing-failover-groups-with-managed-instances-preview) に関するページを参照してください。
 
 - **2 つのインスタンス間のレプリケーション トラフィックを有効にする**
 
@@ -349,7 +349,7 @@ ms.locfileid: "53994642"
 | API | 説明 |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | フェールオーバー グループを作成または更新します |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/instancefailovergroups/delete) | フェールオーバー グループをサーバーから削除します。 |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | フェールオーバー グループをサーバーから削除します。 |
 | [Failover (計画されたフェールオーバー)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | 現在のプライマリ サーバーからこのサーバーにフェールオーバーします。 |
 | [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |現在のプライマリ サーバーからこのサーバーにフェールオーバーします。 この操作を行うとデータが失われる可能性があります。 |
 | [フェールオーバー グループの取得](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | フェールオーバー グループを取得します。 |

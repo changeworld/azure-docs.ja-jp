@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 618be936ef0326a1b9f5db426d4c37bb2bd1c760
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6a6f8b47044d36d767721e2d3503d11518dbf5a6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535660"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036122"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのストレージ コストを最適化する
 

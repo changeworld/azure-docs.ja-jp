@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: e5e1a415ce5c5bd14a8afef41e506259555d79f6
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5c809153b3b86a5460bd2c235d9f6226fb50a024
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970255"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118797"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Application Insights の .NET トレース ログを調べる
 ASP.NET アプリケーションで診断トレースに NLog、log4Net、または System.Diagnostics.Trace を使用している場合、ログを [Azure Application Insights][start] に送信し、そこで調査したり、検索したりできます。 ログはアプリケーションから送信される他の利用統計情報と結合されます。それにより、互いのユーザー要求にサービスを提供することに関連付けられているトレースを特定し、それらを他のイベントや例外レポートに相互に関連付けることができます。
@@ -160,7 +160,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 * このページの構成をお気に入りとして保存する
 
 > [!NOTE]
-> **サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](../../application-insights/app-insights-sampling.md)
+> **サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -194,7 +194,7 @@ Application Insights をインストールしないでログ アダプターの 
 保持されるデータの量には、さまざまな要因が影響します。 詳細については、カスタムのイベント メトリックに関するページの「[制限](../../azure-monitor/app/api-custom-events-metrics.md#limits)」セクションを参照してください。 
 
 ### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>予期されるログ エントリの一部が表示されません
-アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](../../application-insights/app-insights-sampling.md)
+アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](../../azure-monitor/app/sampling.md)
 
 ## <a name="add"></a>次のステップ
 * [可用性と応答性のテストを設定する][availability]
@@ -206,5 +206,5 @@ Application Insights をインストールしないでログ アダプターの 
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.com/
-[qna]: ../../application-insights/app-insights-troubleshoot-faq.md
-[start]: ../../application-insights/app-insights-overview.md
+[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[start]: ../../azure-monitor/app/app-insights-overview.md

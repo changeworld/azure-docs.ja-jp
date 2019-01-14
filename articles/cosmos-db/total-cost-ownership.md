@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
-ms.openlocfilehash: 419ad6681af39aee468a23319b773de23619984d
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.reviewer: sngun
+ms.openlocfilehash: df0dd3f54fb645590ff6e5b30a7ccc42f5ddd2eb
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555457"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036275"
 ---
 # <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>総保有コスト (TCO) と Azure Cosmos DB
 

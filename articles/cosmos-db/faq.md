@@ -1,20 +1,18 @@
 ---
 title: Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 description: グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB についてよく寄せられる質問の回答が得られます。 容量、パフォーマンス レベル、スケーリングについて説明します。
-keywords: データベース質問, よく寄せられる質問, documentdb, azure, Microsoft azure
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: ede900e135960141ed65b54dc876b1c0c2b90aaa
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: e8467912ad2b9b5199e3c8d66c80d8e238db1f57
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809269"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043211"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
