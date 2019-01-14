@@ -21,7 +21,7 @@ ms.lasthandoff: 10/24/2018
 ms.locfileid: "49954625"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>Python を使用してデータ ファクトリとパイプラインを作成する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [現在のバージョン](quickstart-create-data-factory-python.md)
 
@@ -44,10 +44,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     John|Doe
     Jane|Doe
     ```
-2.  [Azure Storage Explorer](http://storageexplorer.com/) などのツールを使用して **adfv2tutorial** コンテナーを作成し、このコンテナーに **input** フォルダーを作成します。 次に、**input** フォルダーに **input.txt** ファイルをアップロードします。
+2. [Azure Storage Explorer](http://storageexplorer.com/) などのツールを使用して **adfv2tutorial** コンテナーを作成し、このコンテナーに **input** フォルダーを作成します。 次に、**input** フォルダーに **input.txt** ファイルをアップロードします。
 
 ## <a name="install-the-python-package"></a>Python パッケージをインストールする
-1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。 
+1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。
 2. まず、Azure 管理リソースの Python パッケージをインストールします。
 
     ```
@@ -97,18 +97,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     def print_activity_run_details(activity_run):
         """Print activity run details."""
         print("\n\tActivity run details\n")
-        print("\tActivity run status: {}".format(activity_run.status))    
+        print("\tActivity run status: {}".format(activity_run.status))
         if activity_run.status == 'Succeeded':
-            print("\tNumber of bytes read: {}".format(activity_run.output['dataRead']))       
-            print("\tNumber of bytes written: {}".format(activity_run.output['dataWritten']))           
-            print("\tCopy duration: {}".format(activity_run.output['copyDuration']))           
+            print("\tNumber of bytes read: {}".format(activity_run.output['dataRead']))
+            print("\tNumber of bytes written: {}".format(activity_run.output['dataWritten']))
+            print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
-
     ```
+
 3. DataFactoryManagementClient クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。 このオブジェクトを使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成します。 また、このオブジェクトを使用して、パイプラインの実行の詳細を監視します。 **subscription_id** 変数を、ご使用の Azure サブスクリプションの ID に設定します。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
-    ```python   
+    ```python
     def main():
 
         # Azure subscription ID
@@ -126,7 +126,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         adf_client = DataFactoryManagementClient(credentials, subscription_id)
 
         rg_params = {'location':'eastus'}
-        df_params = {'location':'eastus'}    
+        df_params = {'location':'eastus'}
     ```
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
@@ -203,7 +203,7 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
 
 ```python
     # Create a copy activity
-    act_name =  'copyBlobtoBlob'
+    act_name = 'copyBlobtoBlob'
     blob_source = BlobSource()
     blob_sink = BlobSink()
     dsin_ref = DatasetReference(ds_name)
@@ -211,13 +211,12 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
     copy_activity = CopyActivity(act_name,inputs=[dsin_ref], outputs=[dsOut_ref], source=blob_source, sink=blob_sink)
 
     #Create a pipeline with the copy activity
-    p_name =  'copyPipeline'
+    p_name = 'copyPipeline'
     params_for_pipeline = {}
     p_obj = PipelineResource(activities=[copy_activity], parameters=params_for_pipeline)
     p = adf_client.pipelines.create_or_update(rg_name, df_name, p_name, p_obj)
     print_item(p)
 ```
-
 
 ## <a name="create-a-pipeline-run"></a>パイプラインの実行を作成する
 
@@ -271,7 +270,7 @@ def print_item(group):
         print("\tTags: {}".format(group.tags))
     if hasattr(group, 'properties'):
         print_properties(group.properties)
-    print("\n")        
+    print("\n")
 
 def print_properties(props):
     """Print a ResourceGroup properties instance."""
@@ -283,11 +282,11 @@ def print_properties(props):
 def print_activity_run_details(activity_run):
     """Print activity run details."""
     print("\n\tActivity run details\n")
-    print("\tActivity run status: {}".format(activity_run.status))    
+    print("\tActivity run status: {}".format(activity_run.status))
     if activity_run.status == 'Succeeded':
-        print("\tNumber of bytes read: {}".format(activity_run.output['dataRead']))       
-        print("\tNumber of bytes written: {}".format(activity_run.output['dataWritten']))           
-        print("\tCopy duration: {}".format(activity_run.output['copyDuration']))           
+        print("\tNumber of bytes read: {}".format(activity_run.output['dataRead']))
+        print("\tNumber of bytes written: {}".format(activity_run.output['dataWritten']))
+        print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
     else:
         print("\tErrors: {}".format(activity_run.error['message']))
 
@@ -300,7 +299,7 @@ def main():
     rg_name = '<Azure resource group name>'
 
     # The data factory name. It must be globally unique.
-    df_name = '<Your data factory name>'        
+    df_name = '<Your data factory name>'
 
     # Specify your Active Directory client ID, client secret, and tenant ID
     credentials = ServicePrincipalCredentials(client_id='<Active Directory client ID>', secret='<client secret>', tenant='<tenant ID>')
@@ -349,7 +348,7 @@ def main():
     print_item(dsOut)
 
     # Create a copy activity
-    act_name =  'copyBlobtoBlob'
+    act_name = 'copyBlobtoBlob'
     blob_source = BlobSource()
     blob_sink = BlobSink()
     dsin_ref = DatasetReference(ds_name)
@@ -357,7 +356,7 @@ def main():
     copy_activity = CopyActivity(act_name,inputs=[dsin_ref], outputs=[dsOut_ref], source=blob_source, sink=blob_sink)
 
     # Create a pipeline with the copy activity
-    p_name =  'copyPipeline'
+    p_name = 'copyPipeline'
     params_for_pipeline = {}
     p_obj = PipelineResource(activities=[copy_activity], parameters=params_for_pipeline)
     p = adf_client.pipelines.create_or_update(rg_name, df_name, p_name, p_obj)
@@ -416,7 +415,6 @@ Number of bytes read: 18
 Number of bytes written: 18
 Copy duration: 4
 ```
-
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 データ ファクトリを削除するには、プログラムに次のコードを追加します。
