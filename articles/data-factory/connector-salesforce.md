@@ -21,7 +21,7 @@ ms.lasthandoff: 10/18/2018
 ms.locfileid: "49409579"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-salesforce-connector.md)
 > * [現在のバージョン](connector-salesforce.md)
 
@@ -284,7 +284,7 @@ Salesforce にデータをコピーするには、コピー アクティビテ�
 
 ### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>Salesforce のごみ箱から削除済みレコードを取得する
 
-論理的に削除されたレコードを Salesforce のごみ箱から検索するには、`readBehavior` を `queryAll` と指定できます。 
+論理的に削除されたレコードを Salesforce のごみ箱から検索するには、`readBehavior` を `queryAll` と指定できます。
 
 ### <a name="difference-between-soql-and-sql-query-syntax"></a>SOQL クエリと SQL クエリの構文の違い
 
@@ -301,7 +301,7 @@ Salesforce からデータをコピーするときは、SOQL クエリまたは 
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>DateTime 列で where 句を使用してデータを取得する
 
-SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の違いに注意してください。 例: 
+SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の違いに注意してください。 例:
 
 * **SOQL サンプル**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL の例**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
