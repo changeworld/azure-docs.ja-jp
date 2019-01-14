@@ -21,7 +21,7 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37051265"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-mysql-connector.md)
 > * [現在のバージョン](connector-mysql.md)
 
@@ -59,8 +59,8 @@ MySQL のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | オプション | 必須 |
 |:--- |:--- |:--- |:--- |:--- |
-| SSLMode | このオプションは、MySQL を接続するときに、ドライバーで SSL 暗号化と検証を使用するかどうかを指定します。 例:  `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(既定)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | いいえ  |
-| UseSystemTrustStore | このオプションは、システムの信頼ストアと指定した PEM ファイルのどちらの CA 証明書を使用するかを指定します。 例:  `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(既定)** | いいえ  |
+| SSLMode | このオプションは、MySQL を接続するときに、ドライバーで SSL 暗号化と検証を使用するかどうかを指定します。 例: `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(既定)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | いいえ  |
+| UseSystemTrustStore | このオプションは、システムの信頼ストアと指定した PEM ファイルのどちらの CA 証明書を使用するかを指定します。 例: `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(既定)** | いいえ  |
 
 **例:**
 
@@ -71,8 +71,8 @@ MySQL のリンクされたサービスでは、次のプロパティがサポ�
         "type": "MySql",
         "typeProperties": {
             "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
+                "type": "SecureString",
+                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
             }
         },
         "connectVia": {
@@ -228,7 +228,6 @@ MySQL からデータをコピーするとき、次の MySQL のデータ型か�
 | `tinytext` |`String` |
 | `varchar` |`String` |
 | `year` |`Int` |
-
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
