@@ -22,7 +22,7 @@ ms.locfileid: "53337327"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-odata-connector.md)
 > * [現在のバージョン](connector-odata.md)
 
@@ -292,7 +292,6 @@ OData からデータをコピーする場合は、OData のデータ型と Azur
 
 > [!NOTE]
 > OData の複雑なデータ型 (**Object** など) はサポートされていません。
-
 
 ## <a name="next-steps"></a>次の手順
 
