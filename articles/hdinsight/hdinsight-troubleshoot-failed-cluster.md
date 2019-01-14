@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 5f85d01b20466fd72b802b4daaf001a7928717c4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b298836070a511421f9df25155ff1ee4422e61dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410280"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994370"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
 
@@ -88,7 +88,7 @@ Apache Ambari の Web UI と REST API を使って、HDInsight クラスター�
 
 #### <a name="check-for-azure-service-outages"></a>Azure サービスの停止を確認する
 
-HDInsight は複数の Azure サービスに依存しています。 Azure HDInsight 上で仮想サーバーを実行し、データとスクリプトを Azure Blob Storage または Azure Data Lake Store に保存し、Azure Table Storage のログ ファイルにインデックスを作成します。 珍しいことですがこれらのサービスが中断すると、HDInsight で問題が発生する可能性があります。 クラスターで予期しないパフォーマンスの低下や障害が発生した場合は、[Azure の状態ダッシュボード](https://azure.microsoft.com/status/)を確認します。 各サービスの状態がリージョン別に一覧表示されます。 お使いのクラスターのリージョンだけでなく、関連するサービスのリージョンも確認してください。
+HDInsight は複数の Azure サービスに依存しています。 Azure HDInsight 上で仮想サーバーを実行し、データとスクリプトを Azure Blob Storage または Azure Data Lake Storage に保存し、Azure Table Storage のログ ファイルにインデックスを作成します。 珍しいことですがこれらのサービスが中断すると、HDInsight で問題が発生する可能性があります。 クラスターで予期しないパフォーマンスの低下や障害が発生した場合は、[Azure の状態ダッシュボード](https://azure.microsoft.com/status/)を確認します。 各サービスの状態がリージョン別に一覧表示されます。 お使いのクラスターのリージョンだけでなく、関連するサービスのリージョンも確認してください。
 
 #### <a name="check-azure-service-usage-limits"></a>Azure サービスの使用制限を確認する
 

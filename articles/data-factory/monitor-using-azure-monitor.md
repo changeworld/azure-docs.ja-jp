@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 2e8c5b3d9624d3a622f16d770f68bc8614993d36
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 53fcaab5d98dd63579390105f3b62c053208e894
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387484"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020304"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Azure Monitor を使用して、データ ファクトリをアラートおよび監視する
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 この知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
@@ -31,7 +30,7 @@ Data Factory では、パイプラインの実行データを 45 日間だけ格
 ## <a name="diagnostic-logs"></a>診断ログ
 
 * 監査や手動での検査に使用するために診断ログを **ストレージ アカウント** に保存する。 診断設定を使用して、リテンション期間 (日数) を指定できます。
-* サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、診断ログを **Event Hubs** にストリーミングします。
+* サード パーティのサービスや Power BI などのカスタム分析ソリューションで取り込むために、**Event Hubs** にストリーム配信する。
 * これを **Log Analytics** で分析する
 
 ログを出力するリソースのサブスクリプションとは別のサブスクリプションにある、ストレージ アカウントまたはイベント ハブ名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な ロールベースのアクセス制御 (RBAC) アクセス権限を持っている必要があります。
@@ -465,15 +464,7 @@ Azure Monitor と Azure Data Factory の統合を使用して、データを Azu
 
 ## <a name="alerts"></a>アラート
 
-Data Factory で、サポートされるメトリックに対してアラートを生成できます。 Data Factory の **[監視]** ページで **[アラート]** ボタンをクリックします。
-
-![[アラート] オプション](media/monitor-using-azure-monitor/alerts_image1.png)
-
-これにより、**[アラート]** ページが開きます。
-
-![Alerts page](media/monitor-using-azure-monitor/alerts_image2.png)
-
-Azure Portal にログインし、**[監視] -&gt; [アラート]** をクリックして、直接 **[アラート]** ページを開くこともできます。
+Azure portal にログインし、**[モニター] -&gt; [アラート]** の順に選択してアラートを作成します。
 
 ![ポータル メニューのアラート](media/monitor-using-azure-monitor/alerts_image3.png)
 
@@ -509,4 +500,5 @@ Azure Portal にログインし、**[監視] -&gt; [アラート]** をクリッ
     ![[Action group] (アクション グループ)、画面 4/4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>次の手順
-実行によるパイプラインの監視と管理の詳細については、[パイプラインをプログラムで監視および管理する](monitor-programmatically.md)に関する記事を参照してください。
+
+コードを使用したパイプラインの監視と管理の詳細については、「[Azure Data Factory をプログラムで監視する](monitor-programmatically.md)」を参照してください。

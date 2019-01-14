@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 2ff7221a3742f59cdef2c5c7c220cc80148b94d0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b8f7142b2bd8e07e4b92c37b7e06bc4fe09efb73
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721563"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580418"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元
 > [!div class="op_single_selector"]
@@ -146,6 +146,9 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
+> [!IMPORTANT]
+> 実行時間の問題のため、アイテム保持ポリシーのリテンション期間を確実に 24 日未満に構成します。そうしないと、バックアップ復元サービスがレプリカのフェールオーバー後にクォーラム損失になる場合があります。
+
 ### <a name="enable-periodic-backup"></a>定期バックアップを有効にする
 アプリケーションのデータ保護要件を満たすポリシーを定義した後、バックアップ ポリシーをアプリケーションに関連付けする必要があります。 バックアップ ポリシーは、要件に応じて、アプリケーション、サービス、またはパーティションに関連付けることができます。
 
@@ -222,9 +225,13 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
+## <a name="known-issues"></a>既知の問題
+- リテンション期間を確実に 24 日未満に構成します。 
+- 小数点の区切り文字が '.' 以外のロケールでは、バックアップ復元サービスは起動しません。
+- gMSA を使用したセキュリティで保護されたクラスターでは、バックアップ復元サービスの起動は失敗します。
+
 ## <a name="limitation-caveats"></a>制限事項/注意事項
 - PowerShell コマンドレットが組み込まれた Service Fabric はありません。
-- Service Fabric CLI はサポートされません。
 - Linux 上の Service Fabric クラスターはサポートされません。
 
 ## <a name="next-steps"></a>次の手順

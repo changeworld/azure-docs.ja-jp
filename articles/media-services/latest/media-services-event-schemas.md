@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 12/05/2018
+ms.date: 12/24/2018
 ms.author: juliako
-ms.openlocfilehash: 9de0d8bc389218d3102633b09073b3af323d2ceb
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c5332cd2613bc64e3dda143381f37d27b54aa922
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011996"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789231"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services 用の Azure Event Grid スキーマ
 
@@ -134,7 +134,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
     "previousState": "Scheduled",
     "state": "Processing",
     "correlationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -168,7 +168,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
     "previousState": "Processing",
     "state": "Finished",
     "correlationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -205,7 +205,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
       "state": "Finished"
     },
     "jobCorrelationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -236,7 +236,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
       "state": "Processing"
     },
     "jobCorrelationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -258,13 +258,14 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "b303db59-d5c1-47eb-927a-3650875fded1",
     "data": { 
-      "StreamId":"Mystream1",
-      "IngestUrl": "http://abc.ingest.isml",
-      "EncoderIp": "118.238.251.xxx",
-      "EncoderPort": 52859,
-      "ResultCode": "MPE_INGEST_CODEC_NOT_SUPPORTED"
+      "streamId":"Mystream1",
+      "ingestUrl": "http://abc.ingest.isml",
+      "encoderIp": "118.238.251.xxx",
+      "encoderPort": 52859,
+      "resultCode": "MPE_INGEST_CODEC_NOT_SUPPORTED"
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -273,11 +274,11 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| StreamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
-| IngestUrl | string | ライブ イベントから提供される取り込み URL。 |  
-| EncoderIp | string | エンコーダーの IP。 |
-| EncoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
-| ResultCode | string | 接続が拒否された理由。 結果コードについては、以下の表をご覧ください。 |
+| streamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
+| ingestUrl | string | ライブ イベントから提供される取り込み URL。 |  
+| encoderIp | string | エンコーダーの IP。 |
+| encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
+| resultCode | string | 接続が拒否された理由。 結果コードについては、以下の表をご覧ください。 |
 
 次に示したのは、結果コードの一覧です。
 
@@ -320,10 +321,10 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| StreamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に指定します。 |
-| IngestUrl | string | ライブ イベントから提供される取り込み URL。 |
-| EncoderIp | string | エンコーダーの IP。 |
-| EncoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
+| streamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に指定します。 |
+| ingestUrl | string | ライブ イベントから提供される取り込み URL。 |
+| encoderIp | string | エンコーダーの IP。 |
+| encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
@@ -354,11 +355,11 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| StreamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
-| IngestUrl | string | ライブ イベントから提供される取り込み URL。 |  
-| EncoderIp | string | エンコーダーの IP。 |
-| EncoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
-| ResultCode | string | エンコーダーの切断の理由。 正常な切断とエラーによる切断とがあります。 結果コードについては、以下の表をご覧ください。 |
+| streamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
+| ingestUrl | string | ライブ イベントから提供される取り込み URL。 |  
+| encoderIp | string | エンコーダーの IP。 |
+| encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
+| resultCode | string | エンコーダーの切断の理由。 正常な切断とエラーによる切断とがあります。 結果コードについては、以下の表をご覧ください。 |
 
 次に示したのは、エラー結果コードの一覧です。
 
@@ -394,14 +395,15 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "03da9c10-fde7-48e1-80d8-49936f2c3e7d",
     "data": { 
-      "TrackType": "Video",
-      "TrackName": "Video",
-      "Bitrate": 300000,
-      "Timestamp": 36656620000,
-      "Timescale": 10000000,
-      "ResultCode": "FragmentDrop_OverlapTimestamp"
+      "trackType": "Video",
+      "trackName": "Video",
+      "bitrate": 300000,
+      "timestamp": 36656620000,
+      "timescale": 10000000,
+      "resultCode": "FragmentDrop_OverlapTimestamp"
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -410,12 +412,12 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| TrackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
-| TrackName | string | トラックの名前。 |
-| Bitrate | integer | トラックのビットレート。 |
-| Timestamp | string | ドロップされたデータ チャンクのタイムスタンプ。 |
-| タイムスケール | string | タイムスタンプのタイムスケール。 |
-| ResultCode | string | データ チャンクがドロップされた理由。 **FragmentDrop_OverlapTimestamp** または **FragmentDrop_NonIncreasingTimestamp**。 |
+| trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
+| trackName | string | トラックの名前。 |
+| bitrate | integer | トラックのビットレート。 |
+| timestamp | string | ドロップされたデータ チャンクのタイムスタンプ。 |
+| timescale | string | タイムスタンプのタイムスケール。 |
+| resultCode | string | データ チャンクがドロップされた理由。 **FragmentDrop_OverlapTimestamp** または **FragmentDrop_NonIncreasingTimestamp**。 |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
@@ -450,14 +452,14 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| TrackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
-| TrackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
-| Bitrate | integer | トラックのビットレート。 |
-| IngestUrl | string | ライブ イベントから提供される取り込み URL。 |
-| EncoderIp | string  | エンコーダーの IP。 |
-| EncoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
-| Timestamp | string | 受信したデータ チャンクの最初のタイムスタンプ。 |
-| タイムスケール | string | タイムスタンプの表示に使用されるタイムスケール。 |
+| trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
+| trackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
+| bitrate | integer | トラックのビットレート。 |
+| ingestUrl | string | ライブ イベントから提供される取り込み URL。 |
+| encoderIp | string  | エンコーダーの IP。 |
+| encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
+| timestamp | string | 受信したデータ チャンクの最初のタイムスタンプ。 |
+| timescale | string | タイムスタンプの表示に使用されるタイムスケール。 |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -489,12 +491,12 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| MinLastTimestamp | string | 全トラック (オーディオまたはビデオ) における最後のタイムスタンプの最小値。 |
-| TypeOfTrackWithMinLastTimestamp | string | 最後のタイムスタンプが最も小さいトラックの種類 (オーディオまたはビデオ)。 |
-| MaxLastTimestamp | string | 全トラック (オーディオまたはビデオ) におけるすべてのタイムスタンプの最大値。 |
-| TypeOfTrackWithMaxLastTimestamp | string | 最後のタイムスタンプが最も大きいトラックの種類 (オーディオまたはビデオ)。 |
-| TimescaleOfMinLastTimestamp| string | "MinLastTimestamp" の表示に使用されるタイムスケールを取得します。|
-| TimescaleOfMaxLastTimestamp| string | "MaxLastTimestamp" の表示に使用されるタイムスケールを取得します。|
+| minLastTimestamp | string | 全トラック (オーディオまたはビデオ) における最後のタイムスタンプの最小値。 |
+| typeOfTrackWithMinLastTimestamp | string | 最後のタイムスタンプが最も小さいトラックの種類 (オーディオまたはビデオ)。 |
+| maxLastTimestamp | string | 全トラック (オーディオまたはビデオ) におけるすべてのタイムスタンプの最大値。 |
+| typeOfTrackWithMaxLastTimestamp | string | 最後のタイムスタンプが最も大きいトラックの種類 (オーディオまたはビデオ)。 |
+| timescaleOfMinLastTimestamp| string | "MinLastTimestamp" の表示に使用されるタイムスケールを取得します。|
+| timescaleOfMaxLastTimestamp| string | "MaxLastTimestamp" の表示に使用されるタイムスケールを取得します。|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
@@ -509,13 +511,14 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "6dd4d862-d442-40a0-b9f3-fc14bcf6d750",
     "data": {
-      "FirstTimestamp": "2162058216",
-      "FirstDuration": "2000",
-      "SecondTimestamp": "2162057216",
-      "SecondDuration": "2000",
+      "firstTimestamp": "2162058216",
+      "firstDuration": "2000",
+      "secondTimestamp": "2162057216",
+      "secondDuration": "2000",
       "timescale": "10000000"      
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -524,11 +527,11 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| FirstTimestamp | string | 種類がビデオであるいずれかのトラック/品質レベルについて受信したタイムスタンプ。 |
-| FirstDuration | string | 1 つ目のタイムスタンプを持つデータ チャンクの期間。 |
-| SecondTimestamp | string  | 種類がビデオである他の何らかのトラック/品質レベルについて受信したタイムスタンプ。 |
-| SecondDuration | string | 2 つ目のタイムスタンプを持つデータ チャンクの期間。 |
-| タイムスケール | string | タイムスタンプと時間のタイムスケール。|
+| firstTimestamp | string | 種類がビデオであるいずれかのトラック/品質レベルについて受信したタイムスタンプ。 |
+| firstDuration | string | 1 つ目のタイムスタンプを持つデータ チャンクの期間。 |
+| secondTimestamp | string  | 種類がビデオである他の何らかのトラック/品質レベルについて受信したタイムスタンプ。 |
+| secondDuration | string | 2 つ目のタイムスタンプを持つデータ チャンクの期間。 |
+| timescale | string | タイムスタンプと時間のタイムスケール。|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -566,18 +569,18 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| TrackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
-| TrackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
-| Bitrate | integer | トラックのビットレート。 |
-| IncomingBitrate | integer | エンコーダーから送信されるデータ チャンクに基づいて計算されたビットレート。 |
-| LastTimestamp | string | トラックに関して直近 20 秒に受信した最新のタイムスタンプ。 |
-| タイムスケール | string | タイムスタンプの表示に使用されるタイムスケール。 |
-| OverlapCount | integer | 直近 20 秒にタイムスタンプが重複したデータ チャンクの数。 |
-| DiscontinuityCount | integer | 直近 20 秒に観察された途切れの数。 |
-| NonIncreasingCount | integer | 直近 20 秒に過去のタイムスタンプを受信したデータ チャンクの数。 |
-| UnexpectedBitrate | bool | 直近 20 秒における予想ビットレートと実ビットレートの差が、許容されている上限を超えているかどうか。 IncomingBitrate がビットレートの 2 倍以上または IncomingBitrate がビットレートの 1/2 以下または IncomingBitrate が 0 のとき、かつそのときに限り true。 |
-| 状態 | string | ライブ イベントの状態。 |
-| Healthy | bool | カウントとフラグに基づき、取り込みが正常であるかどうかを示します。 OverlapCount = 0 && DiscontinuityCount = 0 && NonIncreasingCount = 0 && UnexpectedBitrate = false の場合、Healthy は true になります。 |
+| trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
+| trackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
+| bitrate | integer | トラックのビットレート。 |
+| incomingBitrate | integer | エンコーダーから送信されるデータ チャンクに基づいて計算されたビットレート。 |
+| lastTimestamp | string | トラックに関して直近 20 秒に受信した最新のタイムスタンプ。 |
+| timescale | string | タイムスタンプの表示に使用されるタイムスケール。 |
+| overlapCount | integer | 直近 20 秒にタイムスタンプが重複したデータ チャンクの数。 |
+| discontinuityCount | integer | 直近 20 秒に観察された途切れの数。 |
+| nonIncreasingCount | integer | 直近 20 秒に過去のタイムスタンプを受信したデータ チャンクの数。 |
+| unexpectedBitrate | bool | 直近 20 秒における予想ビットレートと実ビットレートの差が、許容されている上限を超えているかどうか。 incomingBitrate がビットレートの 2 倍以上または incomingBitrate がビットレートの 1/2 以下または incomingBitrate が 0 のとき、かつそのときに限り true。 |
+| state | string | ライブ イベントの状態。 |
+| healthy | bool | カウントとフラグに基づき、取り込みが正常であるかどうかを示します。 overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false の場合、Healthy は true になります。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -610,13 +613,13 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| TrackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
-| TrackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
-| Bitrate | integer | トラックのビットレート。 |
-| PreviousTimestamp | string | 前のフラグメントのタイムスタンプ。 |
-| NewTimestamp | string | 現在のフラグメントのタイムスタンプ。 |
-| DiscontinuityGap | string | 2 つのタイムスタンプの差。 |
-| タイムスケール | string | タイムスタンプと不連続性の両方について、差を表すときに使用されるタイムスケール。 |
+| trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
+| trackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
+| bitrate | integer | トラックのビットレート。 |
+| previousTimestamp | string | 前のフラグメントのタイムスタンプ。 |
+| newTimestamp | string | 現在のフラグメントのタイムスタンプ。 |
+| discontinuityGap | string | 2 つのタイムスタンプの差。 |
+| timescale | string | タイムスタンプと不連続性の両方について、差を表すときに使用されるタイムスケール。 |
 
 ### <a name="common-event-properties"></a>共通のイベント プロパティ
 

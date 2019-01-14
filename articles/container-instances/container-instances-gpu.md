@@ -8,16 +8,16 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: d02ae48bab6a17cbf5568996b30ccb39ccb81c59
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2cbfb21469df45f29a70b5d10d8c99ecd894c30c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994012"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755021"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
-特定のコンピューティング集中型ワークロードを Azure Container Instances で実行するには、*GPU リソース*を持つコンテナー グループをデプロイします。 コンテナー インスタンスは、CUDA やディープ ラーニング アプリケーションなどのコンテナー ワークロードを実行しながら、1 つまたは複数の NVIDIA Tesla GPU にアクセスできます。
+特定のコンピューティング集中型ワークロードを Azure Container Instances で実行するには、*GPU リソース*を持つ[コンテナー グループ](container-instances-container-groups.md)をデプロイします。 グループのコンテナー インスタンスは、CUDA やディープ ラーニング アプリケーションなどのコンテナー ワークロードを実行しながら、1 つまたは複数の NVIDIA Tesla GPU にアクセスできます。
 
 この記事に示すように、[YAML ファイル](container-instances-multi-container-yaml.md)または [Resource Manager テンプレート](container-instances-multi-container-group.md)を使用して、コンテナー グループをデプロイするときに GPU リソースを追加することができます。
 
@@ -87,7 +87,7 @@ GPU リソースをデプロイするときに、ワークロードに適した 
 
 ## <a name="yaml-example"></a>YAML の例
 
-次の YAML を *gpu-deploy-aci.yaml* という名前の新しいファイルにコピーしてから、ファイルを保存します。 この YAML により、K80 GPU を持つコンテナー インスタンスを指定する *gpucontainergroup* という名前のコンテナー グループが作成されます。 このインスタンスでは、CUDA ベクトル加法アプリケーションのサンプルが実行されます。 ワークロードを実行するには、リソース要求だけで十分です。
+GPU リソースを追加するには、[YAML ファイル](container-instances-multi-container-yaml.md)を使用してコンテナー グループをデプロイする方法があります。 次の YAML を *gpu-deploy-aci.yaml* という名前の新しいファイルにコピーしてから、ファイルを保存します。 この YAML により、K80 GPU を持つコンテナー インスタンスを指定する *gpucontainergroup* という名前のコンテナー グループが作成されます。 このインスタンスでは、CUDA ベクトル加法アプリケーションのサンプルが実行されます。 ワークロードを実行するには、リソース要求だけで十分です。
 
 ```YAML
 additional_properties: {}
@@ -134,7 +134,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Resource Manager テンプレートの例
 
-まず、`gpudeploy.json` という名前のファイルを作成し、次の JSON をそのファイルにコピーします。 この例では、[MNIST データセット](http://yann.lecun.com/exdb/mnist/)に対して [TensorFlow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) トレーニング ジョブを実行する V100 GPU を搭載したコンテナー インスタンスをデプロイします。 ワークロードを実行するには、リソース要求だけで十分です。
+GPU リソースでコンテナー グループをデプロイするには、[Resource Manager テンプレート](container-instances-multi-container-group.md)を使用する方法もあります。 まず、`gpudeploy.json` という名前のファイルを作成し、次の JSON をそのファイルにコピーします。 この例では、[MNIST データセット](http://yann.lecun.com/exdb/mnist/)に対して [TensorFlow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) トレーニング ジョブを実行する V100 GPU を搭載したコンテナー インスタンスをデプロイします。 ワークロードを実行するには、リソース要求だけで十分です。
 
 ```JSON
 {

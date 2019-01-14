@@ -9,22 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: e5480e5e071d541d12e96ddd549e496c7f974f81
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f55d3eb67bb9c494a3d055e39d970c9a440dfc67
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271047"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603438"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL Database のパフォーマンスに関する推奨事項
 
 Azure SQL Database は、ご使用のアプリケーションを学習して適応します。 これは、SQL データベースのパフォーマンスを最大限に引き出すことができるカスタマイズされた推奨事項を提供します。 SQL Database は、ご使用の SQL データベースの試用履歴の調査と分析を続けます。 推奨事項はデータベース固有のワークロード パターンに基づき、そのパフォーマンス改善を支援します。
 
 > [!TIP]
-> [自動チューニング](sql-database-automatic-tuning.md)は、推奨されるパフォーマンス調整方法です。 [Intelligent Insights](sql-database-intelligent-insights.md) は、推奨されるパフォーマンス監視方法です。 
+> [自動チューニング](sql-database-automatic-tuning.md)は、データベースの最も一般的なパフォーマンスの問題を自動的に調整する推奨される方法です。 [Query Performance Insight](sql-database-query-performance.md) は、Azure SQL Database の基本的なパフォーマンスを監視するニーズに推奨される方法です。 [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) は、大規模なデータベースのパフォーマンスを詳細に監視する場合に推奨される方法です。これには、パフォーマンスのトラブルシューティングを自動で行うインテリジェンスが組み込まれています。
 >
 
 ## <a name="create-index-recommendations"></a>インデックスの作成に関する推奨事項

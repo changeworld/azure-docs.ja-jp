@@ -1,23 +1,27 @@
 ---
 title: Azure Digital Twins で UDF をデバッグする方法 | Microsoft Docs
-description: Azure Digital Twins で UDF をデバッグする方法に関するガイドライン
+description: Azure Digital Twins で UDF をデバッグする方法に関するガイドライン。
 author: stefanmsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/27/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 9476db888a4bfae2d43ae4eec340972d4c2eb714
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.custom: seodec18
+ms.openlocfilehash: e373e7c3ca83a0200cd1b6b945c5e4cb43b77a51
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413015"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974864"
 ---
-# <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins のユーザー定義関数の問題をデバッグする方法
+# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数をデバッグする方法
 
-この記事では、ユーザー定義関数を診断する方法について説明します。 次に、それらを操作するときに直面する最も一般的なシナリオをいくつか紹介します。
+この記事では、ユーザー定義関数を診断する方法について説明します。 次に、それらを操作するときに直面する可能性がある最も一般的なシナリオをいくつか紹介します。
+
+>[!TIP]
+> Activity Logs、Diagnostic Logs、Azure Monitor を使用し、Azure Digital Twins にデバッグ ツールを設定する方法の詳細については、[監視とログの構成](./how-to-configure-monitoring.md)方法に関するページを参照してください。
 
 ## <a name="debug-issues"></a>問題をデバッグする
 
@@ -28,9 +32,14 @@ Azure Digital Twins 内で発生するあらゆる問題を診断する方法に
 Azure Digital Twins インスタンスのログとメトリックは Azure Monitor を通じて公開されます。 次のドキュメントでは、[Azure portal](../azure-monitor/learn/quick-create-workspace.md)、[Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md)、または [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) を通じて [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) ワークスペースを作成していると仮定しています。
 
 > [!NOTE]
-> 初めて **Log Analytics** にイベントを送信するときに 5 分の遅延が発生することがあります。
+> 初めて Azure Log Analytics にイベントを送信するときに 5 分の遅延が発生することがあります。
 
-「[Azure リソースからのログ データの収集と使用](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」の記事を参考に、Azure portal、Azure CLI、または PowerShell を使用して Azure Digital Twins インスタンスの診断設定を有効にします。 すべてのログ カテゴリ、メトリック、および Azure Log Analytics ワークスペースを選択してください。
+Azure Digital Twins リソースの監視とログを構成する方法については、[こちら](./how-to-configure-monitoring.md)のページをご覧ください。
+
+「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/diagnostic-logs-overview.md)」に、Azure portal、Azure CLI、または PowerShell を使用する Azure Digital Twins インスタンスの診断ログ設定に関する詳細があるのでお読みください。
+
+>[!IMPORTANT]
+> すべてのログ カテゴリ、メトリック、および Azure Log Analytics ワークスペースを選択してください。
 
 ### <a name="trace-sensor-telemetry"></a>センサー テレメトリのトレース
 
@@ -56,7 +65,7 @@ AzureDiagnostics
 | where Category == 'UserDefinedFunction'
 ```
 
-強力なクエリ操作について詳しくは、[クエリの概要](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)に関するページをご覧ください。
+高性能なクエリ操作について詳しくは、[クエリの概要](../azure-monitor/log-query/get-started-queries.md)に関するページをご覧ください。
 
 ## <a name="identify-common-issues"></a>一般的な問題の識別
 
@@ -74,11 +83,11 @@ Management API 内にロールの割り当てが作成されないと、ユー�
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| パラメーター | 置換後の文字列 |
+| パラメーター値 | 置換後の文字列 |
 | --- | --- |
-| *YOUR_USER_DEFINED_FUNCTION_ID* | ロールの割り当てを取得するユーザー定義関数の ID|
+| YOUR_USER_DEFINED_FUNCTION_ID | ロールの割り当てを取得するユーザー定義関数の ID|
 
-ロールの割り当てを取得できない場合は、[ユーザー定義関数にロールの割り当てを作成する方法](./how-to-user-defined-functions.md)に関する記事をご覧ください。
+ロールが割り当てられていない場合、[ユーザー定義関数にロールの割り当てを作成する方法](./how-to-user-defined-functions.md)に関する記事をご覧ください。
 
 ### <a name="check-if-the-matcher-will-work-for-a-sensors-telemetry"></a>センサー テレメトリでマッチャーが機能することを確認する
 
@@ -159,7 +168,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-このシナリオは、使用された識別子がセンサーを参照する一方で、指定されたトポロジのオブジェクト型が "Space" であるため発生します。
+このシナリオは、使用された識別子がセンサーを参照する一方で、指定されたトポロジのオブジェクト型が `Space` であるため発生します。
 
 **正しい**例:
 
@@ -200,4 +209,4 @@ function process(telemetry, executionContext) {
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Digital Twins で[監視とログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)を有効にする方法について確認する。
+Azure Digital Twins で[監視とログ](../azure-monitor/platform/activity-logs-overview.md)を有効にする方法について確認する。

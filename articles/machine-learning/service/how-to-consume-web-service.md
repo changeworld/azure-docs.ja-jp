@@ -1,7 +1,7 @@
 ---
 title: デプロイされた Web サービスを使用するクライアントを作成する
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning モデルでモデルがデプロイされたときに生成された Web サービスを使用する方法について説明します。REST API を公開する Web サービス。 任意のプログラミング言語を使用して、この API 用のクライアントを作成します。
+description: Azure Machine Learning モデルでモデルがデプロイされたときに生成された Web サービスを使用する方法について説明します。 REST API を公開する Web サービス。 任意のプログラミング言語を使用して、この API 用のクライアントを作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,31 +11,31 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: fc1f472cec1b1da26456924885d7905ab2458e14
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: efa24fcb624c7613ce16028d7ba06af4d4d2153c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251132"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753389"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
-Web サービスとして Azure Machine Learning モデルをデプロイすると、REST API が作成されます。 この API にデータを送信し、モデルによって返される予測を受信できます。 このドキュメントでは、C#、Go、Java、および Python を使用して Web サービス用のクライアントを作成する方法を説明します。
+Web サービスとして Azure Machine Learning モデルをデプロイすると、REST API が作成されます。 この API にデータを送信し、モデルによって返される予測を受信できます。 このドキュメントでは、C#、Go、Java、Python を使用して Web サービス用のクライアントを作成する方法について説明します。
 
-Web サービスは、Azure コンテナー インスタンス、Azure Kubernetes サービス、または Project Brainwave (Field Programmable Gate Array) にイメージをデプロイする際に作成されます。 イメージは、登録済みのモデルとスコアリング ファイルから作成されます。 Web サービスにアクセスするために使用される URI は、[Azure Machine Learning SDK](https://aka.ms/aml-sdk) を使用して取得できます。 認証が有効になっている場合は、SDK を使用して認証キーを取得することもできます。
+Web サービスは、Azure Container Instances、Azure Kubernetes Service、または Project Brainwave (Field Programmable Gate Array) にイメージをデプロイするときに作成されます。 イメージを登録済みのモデルとスコアリング ファイルから作成します。 [Azure Machine Learning SDK](https://aka.ms/aml-sdk) を使用して、Web サービスにアクセスするために使用される URI を取得します。 認証が有効になっている場合は、SDK を使用して認証キーを取得することもできます。
 
-ML Web サービスを使用するクライアントを作成する場合の一般的なワークフローは次のとおりです。
+機械学習 Web サービスを使用するクライアントを作成するための一般的なワークフローは、次のとおりです。
 
-1. SDK を使用して接続情報を取得する
-1. モデルで使用される要求データの種類を決定する
-1. Web サービスを呼び出すアプリケーションを作成する
+1. SDK を使用して接続情報を取得します。
+1. モデルで使用される要求データの種類を決定します。
+1. Web サービスを呼び出すアプリケーションを作成します。
 
 ## <a name="connection-information"></a>接続情報
 
 > [!NOTE]
-> Azure Machine Learning SDK は Web サービス情報を取得するために使用されます。 これは Python SDK です。 これは Web サービスに関する情報を取得するのに使用されますが、任意の言語を使用してサービスのクライアントを作成することができます。
+> Azure Machine Learning SDK を使用して、Web サービス情報を取得します。 これは Python SDK です。 任意の言語を使用して、サービスに対してクライアントを作成できます。
 
-Web サービスの接続情報は、Azure Machine Learning SDK を使用して取得できます。 [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) クラスでは、クライアントを作成するために必要な情報が提供されます。 クライアント アプリケーションを作成するときに役立つ `Webservice` プロパティを以下に示します。
+[azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) クラスでは、クライアントを作成するために必要な情報が提供されます。 クライアント アプリケーションを作成するときに役立つ `Webservice` プロパティを以下に示します。
 
 * `auth_enabled` - 認証が有効になっている場合は `True`、それ以外の場合は `False` です。
 * `scoring_uri` - REST API のアドレス。
@@ -69,12 +69,12 @@ Web サービスの接続情報は、Azure Machine Learning SDK を使用して�
 
 ### <a name="authentication-key"></a>認証キー
 
-デプロイに対して認証が有効になっている場合、認証キーは自動的に作成されます。
+デプロイに対して認証を有効にした場合、認証キーが自動的に作成されます。
 
-* __Azure Kubernetes Service__ にデプロイする場合、認証は__既定で有効__になります。
-* __Azure Container Instances__ にデプロイする場合、認証は__既定で無効__になります。
+* Azure Kubernetes Service にデプロイする場合、認証は既定で有効になります。
+* Azure Container Instances にデプロイする場合、認証は既定で無効になります。
 
-認証を制御するには、デプロイの作成や更新時に、`auth_enabled` パラメーターを使用します。
+認証を制御するには、デプロイの作成や更新時に `auth_enabled` パラメーターを使用します。
 
 認証が有効になっている場合は、`get_keys` メソッドを使用して、プライマリおよびセカンダリ認証キーを取得できます。
 
@@ -155,9 +155,9 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `azureml.contrib` 名前空間内のものは、このサービスが改善されるに従って頻繁に変更されます。 そのため、この名前空間内のものはすべて Microsoft によって完全にサポートされているものではなく、プレビューとして見なす必要があります。
+> `azureml.contrib` 名前空間は、このサービスが改善されるに従って頻繁に変更されます。 そのため、この名前空間内のものはすべて Microsoft によって完全にサポートされているものではなく、プレビューとして見なされる必要があります。
 >
-> これをローカルの開発環境でテストする必要がある場合は、次のコマンドを使用して contrib 名前空間にコンポーネントをインストールできます。
+> これをローカルの開発環境でテストする必要がある場合は、次のコマンドを使用して、`contrib` 名前空間にコンポーネントをインストールできます。
 > 
 > ```shell
 > pip install azureml-contrib-services

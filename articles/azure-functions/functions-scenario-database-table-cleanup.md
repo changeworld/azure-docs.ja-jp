@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: e59c0b6994a64972b1458c0f295f24d0a615d871
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740112"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608581"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 
@@ -70,7 +70,7 @@ SqlClient ライブラリを含む NuGet パッケージを追加する必要が
 
 1. **[参照]** タブで ```System.Data.SqlClient``` を探し、見つかったらそれを選択します。
 
-1. **[System.Data.SqlClient]** ページで **[インストール]** をクリックします。
+1. **[System.Data.SqlClient]** ページでバージョン `4.5.1` を選択し、**[インストール]** をクリックします。
 
 1. インストールが完了したら変更を確認し、**[OK]** をクリックして **[プレビュー]** ウィンドウを閉じます。
 
@@ -139,6 +139,6 @@ SqlClient ライブラリを含む NuGet パッケージを追加する必要が
 関数の詳細については、次の記事をご覧ください。
 
 + [Azure Functions 開発者向けリファレンス](functions-reference.md)  
-  関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
+   関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
 + [Azure Functions のテスト](functions-test-a-function.md)  
   関数をテストするための各種ツールと手法について説明します。  

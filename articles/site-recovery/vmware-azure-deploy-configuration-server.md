@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: 58d45036cac6ad985b7b1ffb2736a500fdcb5ce2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251030"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794356"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -97,7 +97,7 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 
 ### <a name="configure-settings"></a>設定を構成する
 
-1. 構成サーバーの管理ウィザードで **[接続の設定]** を選択し、プロセス サーバーが VM からのレプリケーション トラフィックを受信するために使用する NIC を選択します。 次に、**[保存]** を選択します。 構成後、この設定を変更することはできません。
+1. 構成サーバーの管理ウィザードで **[接続の設定]** を選択し、プロセス サーバーが VM からのレプリケーション トラフィックを受信するために使用する NIC を選択します。 次に、**[保存]** を選択します。 構成後、この設定を変更することはできません。 構成サーバーの IP アドレスは変更しないことを強くお勧めします。 構成サーバーに割り当てられている IP は、DHCP IP ではなく確実に静的 IP にします。
 2. **[Recovery Services コンテナーを選択する]** で、Microsoft Azure にサインインし、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選びます。
 
     > [!NOTE]
@@ -150,7 +150,11 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
     **[Recovery Services コンテナー]** で、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** の順に移動します。 [サーバー] で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
 8. 既存の構成サーバーを複製してレプリケーション オーケストレーションに使用することはできますか?
 
-    **いいえ**。複製された Configuration Server コンポーネントは使用できません。 
+    **いいえ**。複製された Configuration Server コンポーネントは使用できません。
+
+9. 構成サーバーの IP を変更することはできますか?
+
+    **いいえ**、構成サーバーの IP アドレスは変更しないことを強くお勧めします。 構成サーバーに割り当てられているすべての IP は、DHCP IP ではなく確実に静的 IP にします。
 
 ## <a name="troubleshoot-deployment-issues"></a>デプロイに関する問題のトラブルシューティング
 

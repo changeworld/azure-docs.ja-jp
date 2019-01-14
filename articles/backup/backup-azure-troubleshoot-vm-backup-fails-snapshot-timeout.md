@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 9f26a51a8da2c3fec3ff180dbc8c8de08bb0a93a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a0f002266764ace07482023a0412366b90acec63
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833875"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789859"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -52,8 +52,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 * この問題は、1 日に複数のバックアップがトリガーされる場合にも発生することがあります。 現時点では、インスタント RP は 7 日間保持され、任意の時点で VM に関連付けることができるインスタント RP は 18 個だけであるため、1 日に 1 つだけのバックアップを推奨します。 <br>
 
 推奨される操作:<br>
-この問題を解決するには、リソース グループに対するロックを解除して、クリーンアップをトリガーする操作を再試行します。
-
+この問題を解決するには、VM のリソース グループに対するロックを解除して、クリーンアップをトリガーする操作を再試行します。 
 > [!NOTE]
     > Backup サービスでは、復元ポイント コレクションを格納する VM のリソース グループとは別のリソース グループが作成されます。 Backup サービスに使用するために作成されたリソース グループはロックしないことをお勧めします。 Backup サービスによって作成されるリソース グループの名前付け形式は次のとおりです。AzureBackupRG_`<Geo>`_`<number>` 例:AzureBackupRG_northeurope_1
 

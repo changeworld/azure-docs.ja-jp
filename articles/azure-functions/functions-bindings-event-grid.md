@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: e5c5c7f667959426f015e207cd32d716c493e31e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995028"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810936"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
@@ -48,7 +48,7 @@ Event Grid トリガーの言語固有の例をご覧ください。
 
 * [C#](#c-example)
 * [C# スクリプト (.csx)](#c-script-example)
-* [Java](#trigger---java-example)
+* [Java](#trigger---java-examples)
 * [JavaScript](#javascript-example)
 * [Python](#python-example)
 
@@ -221,9 +221,14 @@ def main(event: func.EventGridEvent):
     logging.info("  Data: %s", event.get_json())
 ```
 
-### <a name="trigger---java-example"></a>トリガー - Java の例
+### <a name="trigger---java-examples"></a>トリガー - Java の例
 
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用してイベントをプリントする [Java 関数](functions-reference-java.md)を示しています。
+このセクションには、次の例が含まれています。
+
+* [Event Grid グリッド トリガー、文字列パラメーター](#event-grid-trigger-string-parameter-java)
+* [Event Grid グリッド トリガー、POJO パラメーター](#event-grid-trigger-pojo-parameter-java)
+
+次の例では、*function.json* ファイルのトリガー バインドとそのバインドを使用し、イベントを出力する [Java 関数](functions-reference-java.md)を示しています。最初にイベントとして ```String``` を受け取り、次に POJO を受け取ります。
 
 ```json
 {
@@ -237,16 +242,60 @@ def main(event: func.EventGridEvent):
 }
 ```
 
-Java コードを次に示します。
+#### <a name="event-grid-trigger-string-parameter-java"></a>Event Grid グリッド トリガー、文字列パラメーター (Java)
 
 ```java
-@FunctionName("eventGridMonitor")
+  @FunctionName("eventGridMonitorString")
   public void logEvent(
-     @EventGridTrigger(name = "event") String content,
-      final ExecutionContext context
-  ) {
-      context.getLogger().info(content);
-    }
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    String content, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: " + content);      
+  }
+```
+
+#### <a name="event-grid-trigger-pojo-parameter-java"></a>Event Grid グリッド トリガー、POJO パラメーター (Java)
+
+この例では、次の POJO が使用されています。Event Grid イベントの最上位プロパティを表します。
+
+```java
+import java.util.Date;
+import java.util.Map;
+
+public class EventSchema {
+
+  public String topic;
+  public String subject;
+  public String eventType;
+  public Date eventTime;
+  public String id;
+  public String dataVersion;
+  public String metadataVersion;
+  public Map<String, Object> data;
+
+}
+```
+
+受け取り時、イベントの JSON ペイロードが ```EventSchema``` POJO に逆シリアル化され、関数で使用されます。 それにより、関数はオブジェクト指向でイベントのプロパティにアクセスできます。
+
+```java
+  @FunctionName("eventGridMonitor")
+  public void logEvent(
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    EventSchema event, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: ");
+      context.getLogger().info("Subject: " + event.subject);
+      context.getLogger().info("Time: " + event.eventTime); // automatically converted to Date by the runtime
+      context.getLogger().info("Id: " + event.id);
+      context.getLogger().info("Data: " + event.data);
+  }
 ```
 
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が EventGrid に由来するパラメーター上で `EventGridTrigger` 注釈を使用します。 これらの注釈を使用したパラメーターによって、イベントを受信したときに関数が実行されます。  この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。

@@ -1,7 +1,7 @@
 ---
 title: ML パイプラインの作成、実行、追跡
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning SDK for Python で機械学習パイプラインを作成して実行します。  パイプラインは、データの準備、モデルのトレーニング、モデルのデプロイ、推論などの機械学習 (ML) フェーズを結び付けるワークフローの作成と管理に使用されます。
+description: Azure Machine Learning SDK for Python で機械学習パイプラインを作成して実行します。 パイプラインを使用して、機械学習 (ML) のフェーズをつなぎ合わせるワークフローを作成して管理することができます。 データ保護、モデル トレーニング、モデル デプロイ、推論などのフェーズがあります。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,23 +11,23 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8478b6760921f4641cd214b1ff19cae9757b6d7e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6c6472b824eefdd1954f3645c69090d1fb5455de
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269044"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754460"
 ---
-# <a name="create-and-run-a-machine-learning-pipeline-using-azure-machine-learning-sdk"></a>Azure Machine Learning SDK を使用して機械学習パイプラインを作成および実行する
+# <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Azure Machine Learning SDK を使用して機械学習パイプラインを作成および実行する
 
-この記事では、[Azure Machine Learning SDK](https://aka.ms/aml-sdk) を使用して[機械学習パイプライン](concept-ml-pipelines.md)を作成、公開、実行、追跡する方法について説明します。  パイプラインは、機械学習のさまざまなフェーズを結び付けるワークフローを作成して管理するのに役立ちます。 データの準備やモデルのトレーニングなど、パイプラインの各フェーズには、1 つまたは複数のステップを含めることができます。
+この記事では、[Azure Machine Learning SDK](https://aka.ms/aml-sdk) を使用して、[機械学習パイプライン](concept-ml-pipelines.md)を作成、公開、実行、追跡する方法について説明します。  パイプラインは、機械学習のさまざまなフェーズを結び付けるワークフローを作成して管理するのに役立ちます。 データの準備やモデルのトレーニングなど、パイプラインの各フェーズには、1 つまたは複数のステップを含めることができます。
 
 作成したパイプラインは、Azure Machine Learning service [ワークスペース](how-to-manage-workspace.md)のメンバーであれば見ることができます。 
 
-パイプラインでは、そのパイプラインに関連付けられている中間および最終データの計算と格納に、リモート コンピューティング先が使用されます。  パイプラインでは、サポートされている [Azure ストレージ](https://docs.microsoft.com/azure/storage/)の場所のデータを読み取ったり書き込んだりすることができます。
+パイプラインでは、そのパイプラインに関連付けられている中間および最終データの計算と格納に、リモート コンピューティング先が使用されます。 パイプラインでは、サポートされている [Azure Storage](https://docs.microsoft.com/azure/storage/) の場所に対してデータを読み取ったり書き込んだりすることができます。
 
 >[!Note]
->Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
+>Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) をお試しください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,9 +55,9 @@ ms.locfileid: "53269044"
 * パイプラインの手順が実行される[コンピューティング先](concept-azure-machine-learning-architecture.md#compute-target)を設定します。
 
 ### <a name="set-up-a-datastore"></a>データストアをセットアップする
-データストアには、パイプラインでアクセスするデータが格納されます。  各ワークスペースに既定のデータストアがあります。 データストアを追加登録できます。 
+データストアには、パイプラインでアクセスするデータが格納されます。 各ワークスペースに既定のデータストアがあります。 データストアを追加登録できます。 
 
-ワークスペースを作成すると、[Azure ファイル ストレージ](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)と [BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)が既定でワークスペースに関連付けられます。  Azure ファイル ストレージがワークスペースの "既定のデータストア" ですが、BLOB ストレージをデータストアとして使用することもできます。  [Azure ストレージ オブジェクト](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)に関するページをご覧ください。 
+ワークスペースを作成すると、[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) と [Azure BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)が既定でワークスペースに接続されます。 Azure Files がワークスペースの既定のデータストアですが、BLOB ストレージをデータストアとして使用することもできます。 詳細については、[Azure Files、Azure BLOB、Azure ディスクの使い分け](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)に関するページを参照してください。 
 
 ```python
 # Default datastore (Azure file storage)
@@ -70,7 +70,7 @@ def_data_store = Datastore(ws, "workspacefilestore")
 def_blob_store = Datastore(ws, "workspaceblobstore")
 ```
 
-パイプラインからアクセスできるように、データ ファイルまたはディレクトリをデータストアにアップロードします。  この例では、BLOB ストレージ バージョンのデータストアを使用します。
+パイプラインからアクセスできるように、データ ファイルまたはディレクトリをデータストアにアップロードします。 この例では、BLOB ストレージ バージョンのデータストアを使用します。
 
 ```python
 def_blob_store.upload_files(
@@ -79,7 +79,7 @@ def_blob_store.upload_files(
     overwrite=True)
 ```
 
-パイプラインは、1 つまたは複数のステップで構成されます。  ステップは、コンピューティング先で実行される単位です。  ステップでは、データ ソースが使用されて、"中間" データが生成される場合があります。 ステップでは、モデルなどのデータ、モデル ファイルと依存ファイルを含むディレクトリ、一時データが作成されることがあります。  このデータは、パイプラインの後続の他のステップで使用できます。
+パイプラインは、1 つまたは複数のステップで構成されます。 ステップは、コンピューティング先で実行される単位です。 ステップでは、データ ソースが使用されて、"中間" データが生成される場合があります。 ステップでは、モデルなどのデータ、モデル ファイルと依存ファイルを含むディレクトリ、一時データが作成されることがあります。 このデータは、パイプラインの後続の他のステップで使用できます。
 
 ### <a name="configure-data-reference"></a>データ参照を構成する
 
@@ -92,7 +92,7 @@ blob_input_data = DataReference(
     path_on_datastore="20newsgroups/20news.pkl")
 ```
 
-中間データ (またはステップの出力) は、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) オブジェクトによって表されます。 `output_data1` は、ステップの出力として生成され、後続の 1 つまたは複数のステップの入力として使われます。  `PipelineData` では、ステップの間にデータの依存関係が導入され、パイプライン内に暗黙的な実行順序が作成されます。
+中間データ (またはステップの出力) は、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) オブジェクトによって表されます。 `output_data1` は、ステップの出力として生成され、後続の 1 つまたは複数のステップの入力として使われます。 `PipelineData` では、ステップの間にデータの依存関係が導入され、パイプライン内に暗黙的な実行順序が作成されます。
 
 ```python
 output_data1 = PipelineData(
@@ -103,7 +103,7 @@ output_data1 = PipelineData(
 
 ### <a name="set-up-compute"></a>コンピューティングをセットアップする
 
-Azure Machine Learning でのコンピューティング (またはコンピューティング先) とは、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。 たとえば、ステップを実行するための Azure Machine Learning コンピューティングを作成できます。
+Azure Machine Learning での "*コンピューティング*" (または "*コンピューティング先*") という用語は、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。 たとえば、ステップを実行するための Azure Machine Learning コンピューティングを作成できます。
 
 ```python
 compute_name = "aml-compute"
@@ -142,10 +142,10 @@ trainStep = PythonScriptStep(
 )
 ```
 
-ステップを定義した後は、それらのステップの一部または全部を使用してパイプラインを作成します。
+ステップを定義した後は、それらのステップの一部またはすべてを使用してパイプラインをビルドします。
 
 >[!NOTE]
->ステップを定義するとき、またはパイプラインを構築するときに、ファイルまたはデータが Azure Machine Learning service にアップロードされることはありません。
+>ステップを定義するとき、またはパイプラインをビルドするときに、ファイルまたはデータが Azure Machine Learning service にアップロードされることはありません。
 
 ```python
 # list of steps to run
@@ -157,23 +157,23 @@ pipeline1 = Pipeline(workspace=ws, steps=[compareModels])
 
 ## <a name="submit-the-pipeline"></a>パイプラインを送信する
 
-パイプラインを送信すると、各ステップで依存関係がチェックされ、ソース ディレクトリとして指定されているフォルダーのスナップショットが Azure Machine Learning service にアップロードされます。  ソース ディレクトリを指定していない場合は、現在のローカル ディレクトリがアップロードされます。
+パイプラインを送信すると、Azure Machine Learning service によって各ステップの依存関係がチェックされ、指定したソース ディレクトリのスナップショットがアップロードされます。 ソース ディレクトリを指定していない場合は、現在のローカル ディレクトリがアップロードされます。
 
 ```python
 # Submit the pipeline to be run
 pipeline_run1 = Experiment(ws, 'Compare_Models_Exp').submit(pipeline1)
 ```
 
-初めてパイプラインを実行すると、次のようになります。
+初めてパイプラインを実行すると、Azure Machine Learning で次のことが行われます。
 
-* ワークスペースに関連付けられた BLOB ストレージからコンピューティング先に、プロジェクトのスナップショットがダウンロードされます。
-* パイプラインの各ステップに対応した Docker イメージがビルドされます。
-* 各ステップの Docker イメージが、コンテナー レジストリからコンピューティング先にダウンロードされます。
-* `DataReference` オブジェクトがステップで指定されている場合は、データ ストアがマウントされます。 マウントがサポートされていない場合は、代わりにデータがコンピューティング先にコピーされます。
-* ステップの定義で指定されているコンピューティング先で、ステップが実行されます。 
-* ログ、stdout と stderr、メトリック、ステップによって指定されている出力などの成果物が作成されます。 その後、これらの成果物がアップロードされて、ユーザーの既定のデータ ストアに保持されます。
+* ワークスペースに関連付けられた BLOB ストレージからコンピューティング先に、プロジェクトのスナップショットをダウンロードします。
+* パイプラインの各ステップに対応した Docker イメージをビルドします。
+* 各ステップの Docker イメージをコンテナー レジストリからコンピューティング先にダウンロードします。
+* `DataReference` オブジェクトがステップで指定されている場合は、データ ストアをマウントします。 マウントがサポートされていない場合は、代わりにデータがコンピューティング先にコピーされます。
+* ステップの定義で指定されているコンピューティング先で、ステップを実行します。 
+* ログ、stdout と stderr、メトリック、ステップによって指定されている出力などの成果物を作成します。 その後、これらの成果物がアップロードされて、ユーザーの既定のデータストアに保持されます。
 
-![パイプラインとして実験を実行する](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
+![パイプラインとして実験を実行する図](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
 ## <a name="publish-a-pipeline"></a>パイプラインを発行する
 
@@ -209,9 +209,9 @@ published_pipeline1 = pipeline1.publish(
 
 ## <a name="run-a-published-pipeline"></a>発行されたパイプラインを実行する
 
-発行されたすべてのパイプラインには、Python ではないクライアントなどの外部システムからパイプラインの実行を呼び出すための REST エンドポイントがあります。 このエンドポイントでは、バッチ スコアリングと再トレーニングのシナリオでの "管理された再現性" のための手段が提供されています。
+発行されたすべてのパイプラインに REST エンドポイントがあります。 このエンドポイントでは、Python ではないクライアントなどの外部システムからパイプラインの実行を呼び出します。 このエンドポイントでは、バッチ スコアリングと再トレーニングのシナリオでの "管理された再現性" が有効になります。
 
-前のパイプラインの実行を呼び出すには、「[AzureCliAuthentication class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)」(AzureCliAuthentication クラス) で説明されているように、Azure Active Directory 認証ヘッダー トークンが必要です
+前のパイプラインの実行を呼び出すには、「[AzureCliAuthentication class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)」 (AzureCliAuthentication クラス) で説明されているように、Azure Active Directory 認証ヘッダー トークンが必要です。
 
 ```python
 response = requests.post(published_pipeline1.endpoint, 

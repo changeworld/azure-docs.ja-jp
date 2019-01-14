@@ -4,15 +4,16 @@ description: Azure Site Recovery を使用して、セカンダリ サイトへ�
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 2198d7520d660904423eabbec8df71e55e3011dd
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c37676a32dd1fb58c1ac03640ff0bbfbdc3f7d8f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338636"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972893"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 
@@ -97,7 +98,7 @@ o   物理マシンの場合は、この[チュートリアル](./physical-azure
   - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
   - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
   - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-  - RHEL5、OL5、OL6、SUSE 10、SUSE 11 向け UA 更新プログラム 4: UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+  - RHEL5、OL5、OL6、SUSE 10、SUSE 11 向け UA 更新プログラム 4:UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
 1. .zip ファイルを抽出します。
 2. **RX サーバー**:**RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** を RX サーバーにコピーし、展開します。 抽出先のフォルダーで、 **/Install**を実行します。
 3. **構成サーバーとプロセス サーバー**:**CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** を構成サーバーとプロセス サーバーにコピーします。 ファイルをダブルクリックして実行します。<br>
@@ -168,7 +169,7 @@ Scout 更新プログラム 5 は累積的な更新プログラムです。 更�
     * SCSI が一致しない問題のために単一ノード クラスター保護が失敗する問題を修正。 
     * ターゲット クラスター ディスクが存在する場合、P2V Windows クラスター サーバーの再保護が失敗する問題を修正。 
     
-* フェールバック保護中に、選択されたマスター ターゲット サーバーが保護されたソース マシンと同じ ESXi サーバーにない場合 (フォワード保護中)、フェールバック回復中に vContinuum が間違ったマスター ターゲット サーバーを取得し、回復操作が失敗する、という問題を修正。
+* 修正済み:フェールバック保護中に、選択されたマスター ターゲット サーバーが保護されたソース マシンと同じ ESXi サーバーにない場合 (フォワード保護中)、フェールバック回復中に vContinuum が間違ったマスター ターゲット サーバーを取得し、回復操作が失敗する。
 
 > [!NOTE]
 > * P2V クラスター修正は、Site Recovery Scout 更新プログラム 5 で新しく保護された物理 MSCS クラスターのみに適用されます。 以前の更新プログラムを持つ保護された P2V MSCS クラスターに、クラスターの修正をインストールするには、[Site Recovery Scout リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12 に記載されているアップグレードの手順に従います。
@@ -203,7 +204,7 @@ Scout 更新プログラム 4 は累積的な更新プログラムです。 更�
 * フェールオーバーとディザスター リカバリーのテスト中のネットワーク構成変更のために、追加のチェックとログが追加されました。
 * リテンション期間の情報が構成サーバーにレポートされないという問題の修正。  
 * 物理クラスターで、ソース ボリュームを縮小するときにボリュームのサイズ変更が vContinuum ウィザードで失敗するという問題の修正。
-* クラスター ディスクが PRDM ディスクの場合、"Failed to find the disk signature" (ディスク署名が見つかりませんでした) というエラーが発生してクラスター保護が失敗するという問題の修正。
+* クラスター ディスクが PRDM ディスクの場合、"Failed to find the disk signature" (ディスク署名が見つかりませんでした) というエラーが発生してクラスターによる保護が失敗していました。
 * cxps トランスポート サーバーが範囲外の例外のためクラッシュする問題の修正。
 * vContinuum ウィザードの **[プッシュ インストール]** ページで、サーバー名と IP アドレスの列をサイズ変更できるようになりました。
 * RX API の機能強化:
@@ -248,7 +249,7 @@ Site Recovery の更新プログラムはすべて累積的です。 更新プ�
 * 次のセキュリティ修正プログラムが RX に追加されました。
     * パラメーター改ざんによる承認バイパス:未承認ユーザーのアクセスを制限。
     * クロスサイト リクエスト フォージェリ:ページのトークンの概念が実装され、ページごとにランダムに生成されます。 つまり、同じユーザーに対してシングル サインイン インスタンスのみが存在し、ページの更新は機能しません。 代わりに、ダッシュボードにリダイレクトします。
-    * 悪意のあるファイルのアップロード: ファイルは特定の拡張子、つまり 7z、aiff、asf、avi、bmp、csv、doc、docx、fla、flv、gif、gz、gzip、jpeg、jpg、log、mid、mov、mp3、mp4、mpc、mpeg、mpg、ods、odt、pdf、png、ppt、pptx、pxd、qt、ram、rar、rm、rmi、rmvb、rtf、sdc、sitd、swf、sxc、sxw、tar、tgz、tif、tiff、txt、vsd、wav、wma、wmv、xls、xlsx、xml、zip に制限されています。
+    * 悪意のあるファイルのアップロード:ファイルは特定の拡張子、つまり 7z、aiff、asf、avi、bmp、csv、doc、docx、fla、flv、gif、gz、gzip、jpeg、jpg、log、mid、mov、mp3、mp4、mpc、mpeg、mpg、ods、odt、pdf、png、ppt、pptx、pxd、qt、ram、rar、rm、rmi、rmvb、rtf、sdc、sitd、swf、sxc、sxw、tar、tgz、tif、tiff、txt、vsd、wav、wma、wmv、xls、xlsx、xml、zip に制限されています。
     * 永続的なクロス サイト スクリプティング:入力の検証が追加されました。
 
 ### <a name="azure-site-recovery-scout-801-update-2-update-03dec15"></a>Azure Site Recovery Scout 8.0.1 更新プログラム 2 (2015 年 12 月 3 日)

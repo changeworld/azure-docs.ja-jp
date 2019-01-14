@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 2d6df569a2b5b813bd832adf5ef2e1d193de9364
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 21f6331276155ec926b47a5db8310486835cb3ae
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187570"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001279"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
@@ -109,9 +109,15 @@ Azure portal、PowerShell、または REST API を使用して、既定の PITR 
 
 ### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Azure portal を使用して PITR のバックアップの保有期間を変更する
 
-Azure portal を使用して PITR のバックアップの保有期間を変更するには、保有期間を変更するデータベースに移動し、**[概要]** をクリックします。
+Azure portal を使用して PITR バックアップ保持期間を変更するには、portal 内で保持期間を変更するサーバー オブジェクトに移動し、変更するサーバー オブジェクトに基づいて適切なオプションを選択します。 
 
-![Azure portal の PITR の変更](./media/sql-database-automated-backup/configure-backup-retention.png)
+#### <a name="change-pitr-for-a-logical-server"></a>論理サーバーの PITR の変更
+
+![Azure portal の PITR の変更](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
+
+#### <a name="change-pitr-for-a-managed-instance"></a>マネージド インスタンスの PITR の変更
+
+![Azure portal の PITR の変更](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>PowerShell を使用して PITR バックアップ リテンション期間を変更する
 

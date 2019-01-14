@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d39a271f33cb86bf870c3a7692c38d780093efa2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86b33bfa0f5383ac68080e2f8f7f9a004a1364a0
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100040"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652620"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -162,6 +162,17 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 これら 3 つのいずれの場合も、DNS 名は \*.azure-devices.net というパターンと一致します。 
 
 さらに、**コンテナー エンジン**では、HTTPS 経由でコンテナー レジストリを呼び出します。 IoT Edge ランタイムのコンテナー イメージを取得する場合、DNS 名は mcr.microsoft.com となります。 コンテナー エンジンは、デプロイで構成されているその他のレジストリに接続されます。 
+
+このチェックリストを使用して、ファイアウォール規則を開始できます。
+
+   | URL (\* = ワイルドカード) | 送信 TCP ポート | 使用法 |
+   | ----- | ----- | ----- |
+   | mcr.microsoft.com  | 443 | Microsoft コンテナー レジストリ |
+   | global.azure-devices-provisioning.net  | 443 | DPS でのアクセス (任意指定) |
+   | \*.azurecr.io | 443 | 個人やサード パーティのコンテナー レジストリ |
+   | \*.blob.core.windows.net | 443 | イメージ差分のダウンロード | 
+   | \*.azure-devices.net | 5671、8883、443 | IoT Hub でのアクセス |
+   | \*.docker.io  | 443 | Docker でのアクセス (任意指定) |
 
 ### <a name="configure-communication-through-a-proxy"></a>プロキシを介した通信を構成する
 

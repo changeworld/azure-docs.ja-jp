@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 1a9034d7cbc276f35c5f01b06f6973553222d1c4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f2a1cd79a99e16460c96d28ebeb0a2bd68975361
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722379"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794245"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric の定期バックアップ構成を理解する
 
@@ -138,6 +138,9 @@ Reliable Stateful Services または Reliable Actors の定期バックアップ
         }
         ```
 
+> [!IMPORTANT]
+> 実行時間の問題のため、アイテム保持ポリシーのリテンション期間を確実に 24 日未満に構成します。そうしないと、バックアップ復元サービスがレプリカのフェールオーバー後にクォーラム損失になる場合があります。
+
 ## <a name="enable-periodic-backup"></a>定期バックアップを有効にする
 データのバックアップ要件を満たすバックアップ ポリシーを定義した後、バックアップ ポリシーを "_アプリケーション_"、"_サービス_"、または "_パーティション_" に適切に関連付ける必要があります。
 
@@ -214,6 +217,11 @@ Service fabric では、アプリケーション、サービス、およびパ�
 * 中断が "_サービス_" に適用された場合は、[Resume Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API を使用して再開する必要があります。
 
 * 中断が "_パーティション_" に適用された場合は、[Resume Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API を使用して再開する必要があります。
+
+### <a name="difference-between-suspend-and-disable-backups"></a>中断とバックアップの無効化の違い
+バックアップの無効化は、特定のアプリケーション、サービスまたはパーティションでバックアップが不要となった場合に使用する必要があります。 実際は、クリーン バックアップ パラメーターを true に (既存のバックアップもすべて削除されるように) 設定すると共に、バックアップの無効化要求を呼び出すことができます。 しかし、ローカル ディスクがいっぱいになった場合や、既知のネットワークの問題などによりバックアップのアンロードが失敗する場合など、バックアップを一時的に無効にするシナリオでは中断を使用する必要があります。 
+
+無効化を呼び出せるのは、以前にバックアップに対して明示的に有効にしたレベルでのみとなりますが、中断は、バックアップに対して現在、直接または継承/階層を介して有効になっているレベルで適用できます。 たとえば、バックアップがアプリケーション レベルで有効になっている場合、そのアプリケーション レベルでのみ無効化を呼び出すことができますが、中断は、アプリケーション、そのアプリケーションの下の任意のサービスまたはパーティションで呼び出すことができます。 
 
 ## <a name="auto-restore-on-data-loss"></a>データ損失の自動復元
 予期しない障害によって、サービス パーティションでデータ損失が発生する場合があります。 たとえば、パーティションの 3 つのレプリカのうちの 2 つのディスク (プライマリ レプリカを含む) が破損または消去された場合です。

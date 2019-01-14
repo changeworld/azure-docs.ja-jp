@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: cshoe
-ms.openlocfilehash: 74092f57b3531a037aee71d433c33dddf8c2b694
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7a7063b9177774c5207746283dc7cd25e3dd5793
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001796"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721888"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド
 
@@ -62,7 +62,7 @@ public static SignalRConnectionInfo GetSignalRInfo(
 
 #### <a name="authenticated-tokens"></a>認証済みトークン
 
-認証済みクライアントによって関数がトリガーされている場合は、ユーザー ID 要求を生成済みトークンに追加できます。 [App Service 認証] (../app-service/app-service-authentication-overview.md) を使用すると、認証を関数アプリに簡単に追加することができます。
+認証済みクライアントによって関数がトリガーされている場合は、ユーザー ID 要求を生成済みトークンに追加できます。 [App Service 認証] (../app-service/overview-authentication-authorization.md) を使用すると、認証を関数アプリに簡単に追加することができます。
 
 App Service 認証によって、`x-ms-client-principal-id` および `x-ms-client-principal-name` という名前の HTTP ヘッダーが設定されます。この 2 つの HTTP ヘッダーには、認証済みユーザーのクライアント プリンシパルの ID と名前がそれぞれ含まれています。 バインドの `UserId` プロパティをいずれかのヘッダーの値に設定するには、[バインド式](functions-triggers-bindings.md#binding-expressions-and-patterns)として `{headers.x-ms-client-principal-id}` または `{headers.x-ms-client-principal-name}` を使用します。 
 
@@ -108,7 +108,7 @@ module.exports = function (context, req, connectionInfo) {
 
 #### <a name="authenticated-tokens"></a>認証済みトークン
 
-認証済みクライアントによって関数がトリガーされている場合は、ユーザー ID 要求を生成済みトークンに追加できます。 [App Service 認証] (../app-service/app-service-authentication-overview.md) を使用すると、認証を関数アプリに簡単に追加することができます。
+認証済みクライアントによって関数がトリガーされている場合は、ユーザー ID 要求を生成済みトークンに追加できます。 [App Service 認証] (../app-service/overview-authentication-authorization.md) を使用すると、認証を関数アプリに簡単に追加することができます。
 
 App Service 認証によって、`x-ms-client-principal-id` および `x-ms-client-principal-name` という名前の HTTP ヘッダーが設定されます。この 2 つの HTTP ヘッダーには、認証済みユーザーのクライアント プリンシパルの ID と名前がそれぞれ含まれています。 バインドの `userId` プロパティをいずれかのヘッダーの値に設定するには、[バインド式](functions-triggers-bindings.md#binding-expressions-and-patterns)として `{headers.x-ms-client-principal-id}` または `{headers.x-ms-client-principal-name}` を使用します。 
 
