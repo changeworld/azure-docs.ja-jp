@@ -21,7 +21,7 @@ ms.lasthandoff: 11/07/2018
 ms.locfileid: "51228064"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-teradata-connector.md)
 > * [現在のバージョン](connector-teradata.md)
 
