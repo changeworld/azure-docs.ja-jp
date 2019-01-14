@@ -21,7 +21,7 @@ ms.lasthandoff: 11/07/2018
 ms.locfileid: "51240326"
 ---
 # <a name="create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>REST API を使用して Azure データ ファクトリとパイプラインを作成する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [現在のバージョン](quickstart-create-data-factory-rest-api.md)
 
@@ -44,10 +44,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **PowerShell**を起動します。 Azure PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
 
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
-        
+    
     ```powershell
     Connect-AzureRmAccount
-    ```        
+    ```
     次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
     ```powershell
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     次のコマンドを実行して、使用するサブスクリプションを選択します。 **SubscriptionId** は、実際の Azure サブスクリプションの ID に置き換えてください。
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
+    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
     ```
 2. プレースホルダーを独自の値に置き換えた後、次のコマンドを実行して、後の手順で使用するグローバル変数を設定します。
 
@@ -119,26 +119,24 @@ $response | ConvertTo-Json
 ```json
 
 {
-    "name":  "<dataFactoryName>",
+    "name": "<dataFactoryName>",
     "tags": {
-
-            },
-    "properties":  {
-        "provisioningState":  "Succeeded",
-        "loggingStorageAccountKey":  "**********",
-        "createTime":  "2017-09-14T06:22:59.9106216Z",
-        "version":  "2017-09-01-preview"
     },
-    "identity":  {
-        "type":  "SystemAssigned",
-        "principalId":  "<service principal ID>",
-        "tenantId":  "<tenant ID>"
+    "properties": {
+        "provisioningState": "Succeeded",
+        "loggingStorageAccountKey": "**********",
+        "createTime": "2017-09-14T06:22:59.9106216Z",
+        "version": "2017-09-01-preview"
     },
-    "id":  "dataFactoryName",
-    "type":  "Microsoft.DataFactory/factories",
-    "location":  "East US"
-} 
-
+    "identity": {
+        "type": "SystemAssigned",
+        "principalId": "<service principal ID>",
+        "tenantId": "<tenant ID>"
+    },
+    "id": "dataFactoryName",
+    "type": "Microsoft.DataFactory/factories",
+    "location": "East US"
+}
 ```
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
@@ -173,15 +171,15 @@ $response | ConvertTo-Json
 
 ```json
 {
-    "id":  "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/linkedservices/AzureStorageLinkedService",
-    "name":  "AzureStorageLinkedService",
-    "properties":  {
-                       "type":  "AzureStorage",
-                       "typeProperties":  {
-                                              "connectionString":  "@{value=**********; type=SecureString}"
-                                          }
-                   },
-    "etag":  "0000c552-0000-0000-0000-59b1459c0000"
+    "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/linkedservices/AzureStorageLinkedService",
+    "name": "AzureStorageLinkedService",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "@{value=**********; type=SecureString}"
+        }
+    },
+    "etag": "0000c552-0000-0000-0000-59b1459c0000"
 }
 ```
 
@@ -222,22 +220,22 @@ $response | ConvertTo-Json
 
 ```json
 {
-    "id":  "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/datasets/BlobDataset",
-    "name":  "BlobDataset",
-    "properties":  {
-                       "type":  "AzureBlob",
-                       "typeProperties":  {
-                                              "folderPath":  "@{value=@{dataset().path}; type=Expression}"
-                                          },
-                       "linkedServiceName":  {
-                                                 "referenceName":  "AzureStorageLinkedService",
-                                                 "type":  "LinkedServiceReference"
-                                             },
-                       "parameters":  {
-                                          "path":  "@{type=String}"
-                                      }
-                   },
-    "etag":  "0000c752-0000-0000-0000-59b1459d0000"
+    "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/datasets/BlobDataset",
+    "name": "BlobDataset",
+    "properties": {
+        "type": "AzureBlob",
+        "typeProperties": {
+            "folderPath": "@{value=@{dataset().path}; type=Expression}"
+        },
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "path": "@{type=String}"
+        }
+    },
+    "etag": "0000c752-0000-0000-0000-59b1459d0000"
 }
 ```
 
@@ -302,18 +300,18 @@ $response | ConvertTo-Json
 
 ```json
 {
-    "id":  "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/pipelines/Adfv2QuickStartPipeline",
-    "name":  "Adfv2QuickStartPipeline",
-    "properties":  {
-                       "activities":  [
-                                          "@{name=CopyFromBlobToBlob; type=Copy; inputs=System.Object[]; outputs=System.Object[]; typeProperties=}"
-                                      ],
-                       "parameters":  {
-                                          "inputPath":  "@{type=String}",
-                                          "outputPath":  "@{type=String}"
-                                      }
-                   },
-    "etag":  "0000c852-0000-0000-0000-59b1459e0000"
+    "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/pipelines/Adfv2QuickStartPipeline",
+    "name": "Adfv2QuickStartPipeline",
+    "properties": {
+        "activities": [
+            "@{name=CopyFromBlobToBlob; type=Copy; inputs=System.Object[]; outputs=System.Object[]; typeProperties=}"
+        ],
+        "parameters": {
+            "inputPath": "@{type=String}",
+            "outputPath": "@{type=String}"
+        }
+    },
+    "etag": "0000c852-0000-0000-0000-59b1459e0000"
 }
 ```
 
@@ -341,7 +339,7 @@ $runId = $response.runId
 
 ```json
 {
-    "runId":  "2f26be35-c112-43fa-9eaa-8ba93ea57881"
+    "runId": "2f26be35-c112-43fa-9eaa-8ba93ea57881"
 }
 ```
 
@@ -353,7 +351,7 @@ $runId = $response.runId
     $request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelineruns/${runId}?api-version=${apiVersion}"
     while ($True) {
         $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
-        Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
+        Write-Host "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
 
         if ($response.Status -eq "InProgress") {
             Start-Sleep -Seconds 15
@@ -369,31 +367,31 @@ $runId = $response.runId
 
     ```json
     {
-        "key":  "000000000-0000-0000-0000-00000000000",
-        "timestamp":  "2017-09-07T13:12:39.5561795Z",
-        "runId":  "000000000-0000-0000-0000-000000000000",
-        "dataFactoryName":  "<dataFactoryName>",
-        "pipelineName":  "Adfv2QuickStartPipeline",
-        "parameters":  [
-                        "inputPath: <inputBlobPath>",
-                        "outputPath: <outputBlobPath>"
-                    ],
-        "parametersCount":  2,
-        "parameterNames":  [
-                            "inputPath",
-                            "outputPath"
-                        ],
-        "parameterNamesCount":  2,
-        "parameterValues":  [
-                                "<inputBlobPath>",
-                                "<outputBlobPath>"
-                            ],
-        "parameterValuesCount":  2,
-        "runStart":  "2017-09-07T13:12:00.3710792Z",
-        "runEnd":  "2017-09-07T13:12:39.5561795Z",
-        "durationInMs":  39185,
-        "status":  "Succeeded",
-        "message":  ""
+        "key": "000000000-0000-0000-0000-00000000000",
+        "timestamp": "2017-09-07T13:12:39.5561795Z",
+        "runId": "000000000-0000-0000-0000-000000000000",
+        "dataFactoryName": "<dataFactoryName>",
+        "pipelineName": "Adfv2QuickStartPipeline",
+        "parameters": [
+            "inputPath: <inputBlobPath>",
+            "outputPath: <outputBlobPath>"
+        ],
+        "parametersCount": 2,
+        "parameterNames": [
+            "inputPath",
+            "outputPath"
+        ],
+        "parameterNamesCount": 2,
+        "parameterValues": [
+            "<inputBlobPath>",
+            "<outputBlobPath>"
+        ],
+        "parameterValuesCount": 2,
+        "runStart": "2017-09-07T13:12:00.3710792Z",
+        "runEnd": "2017-09-07T13:12:39.5561795Z",
+        "durationInMs": 39185,
+        "status": "Succeeded",
+        "message": ""
     }
     ```
 
@@ -409,25 +407,25 @@ $runId = $response.runId
 
     ```json
     {
-        "value":  [
-                    {
-                        "id":  "000000000-0000-0000-0000-00000000000",
-                        "timestamp":  "2017-09-07T13:12:38.4780542Z",
-                        "pipelineRunId":  "000000000-0000-00000-0000-0000000000000",
-                        "pipelineName":  "Adfv2QuickStartPipeline",
-                        "status":  "Succeeded",
-                        "failureType":  "",
-                        "linkedServiceName":  "",
-                        "activityName":  "CopyFromBlobToBlob",
-                        "activityType":  "Copy",
-                        "activityStart":  "2017-09-07T13:12:02.3299261Z",
-                        "activityEnd":  "2017-09-07T13:12:38.4780542Z",
-                        "duration":  36148,
-                        "input":  "@{source=; sink=}",
-                        "output":  "@{dataRead=331452208; dataWritten=331452208; copyDuration=22; throughput=14712.9; errors=System.Object[]; effectiveIntegrationRuntime=DefaultIntegrationRuntime (West US); usedDataIntegrationUnits=2; billedDuration=22}",
-                        "error":  "@{errorCode=; message=; failureType=; target=CopyFromBlobToBlob}"
-                    }
-                ]
+        "value": [
+            {
+                "id": "000000000-0000-0000-0000-00000000000",
+                "timestamp": "2017-09-07T13:12:38.4780542Z",
+                "pipelineRunId": "000000000-0000-00000-0000-0000000000000",
+                "pipelineName": "Adfv2QuickStartPipeline",
+                "status": "Succeeded",
+                "failureType": "",
+                "linkedServiceName": "",
+                "activityName": "CopyFromBlobToBlob",
+                "activityType": "Copy",
+                "activityStart": "2017-09-07T13:12:02.3299261Z",
+                "activityEnd": "2017-09-07T13:12:38.4780542Z",
+                "duration": 36148,
+                "input": "@{source=; sink=}",
+                "output": "@{dataRead=331452208; dataWritten=331452208; copyDuration=22; throughput=14712.9; errors=System.Object[]; effectiveIntegrationRuntime=DefaultIntegrationRuntime (West US); usedDataIntegrationUnits=2; billedDuration=22}",
+                "error": "@{errorCode=; message=; failureType=; target=CopyFromBlobToBlob}"
+            }
+        ]
     }
     ```
 
