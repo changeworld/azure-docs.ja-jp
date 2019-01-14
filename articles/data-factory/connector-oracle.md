@@ -21,7 +21,7 @@ ms.lasthandoff: 08/22/2018
 ms.locfileid: "42312165"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory を使用した Oracle をコピー元またはコピー先とするデータのコピー
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-oracle-connector.md)
 > * [現在のバージョン](connector-oracle.md)
 
@@ -67,9 +67,9 @@ Oracle のリンクされたサービスでは、次のプロパティがサポ�
 
 Oracle の接続で暗号化を有効にするには、2 つのオプションがあります。
 
-1.  Oracle サーバー側で Oracle Advanced Security (OAS) に移動し、暗号化の設定を構成します。Triple-DES Encryption (3DES) と Advanced Encryption Standard (AES) がサポートされています。詳しくは[こちら](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)をご覧ください。 ADF Oracle コネクタは暗号化方法を自動的にネゴシエートし、Oracle への接続を確立するときにユーザーが OAS で構成した方法を使用します。
+1. Oracle サーバー側で Oracle Advanced Security (OAS) に移動し、暗号化の設定を構成します。Triple-DES Encryption (3DES) と Advanced Encryption Standard (AES) がサポートされています。詳しくは[こちら](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)をご覧ください。 ADF Oracle コネクタは暗号化方法を自動的にネゴシエートし、Oracle への接続を確立するときにユーザーが OAS で構成した方法を使用します。
 
-2.  クライアント側では、接続文字列に `EncryptionMethod=1` を追加できます。 これにより、暗号化方法として SSL/TLS が使用されます。 これを使用するには、Oracle サーバー側の OAS で非 SSL 暗号化の設定を無効にして、暗号化の競合を回避する必要があります。
+2. クライアント側では、接続文字列に `EncryptionMethod=1` を追加できます。 これにより、暗号化方法として SSL/TLS が使用されます。 これを使用するには、Oracle サーバー側の OAS で非 SSL 暗号化の設定を無効にして、暗号化の競合を回避する必要があります。
 
 **例:**
 
@@ -241,7 +241,6 @@ Oracle をコピー元またはコピー先としてデータをコピーする�
 
 > [!NOTE]
 > INTERVAL YEAR TO MONTH データ型と INTERVAL DAY TO SECOND データ型はサポートされません。
-
 
 ## <a name="next-steps"></a>次の手順
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
