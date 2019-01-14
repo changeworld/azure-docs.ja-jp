@@ -21,7 +21,7 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37049632"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用して SFTP サーバーからデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-sftp-connector.md)
 > * [現在のバージョン](connector-sftp.md)
 
@@ -106,7 +106,7 @@ SSH 公開キー認証を使用するには、"authenticationType" を **SshPubl
 | passPhrase | キー ファイルがパス フレーズで保護されている場合は、パス フレーズ/パスワードを指定して、秘密キーを復号化します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい (秘密キー ファイルがパス フレーズで保護されている場合)。 |
 
 > [!NOTE]
-> SFTP コネクタは RSA/DSA OpenSSH キーをサポートします。 キー ファイルの内容が "-----BEGIN [RSA/DSA] PRIVATE KEY-----" で始まることを確認します。 秘密キー ファイルが ppk 形式である場合は、Putty ツールを使用して .ppk から OpenSSH 形式に変換してください。 
+> SFTP コネクタは RSA/DSA OpenSSH キーをサポートします。 キー ファイルの内容が "-----BEGIN [RSA/DSA] PRIVATE KEY-----" で始まることを確認します。 秘密キー ファイルが ppk 形式である場合は、Putty ツールを使用して .ppk から OpenSSH 形式に変換してください。
 
 **例 1: 秘密キー ファイルの filePath を使用した SshPublicKey 認証**
 
@@ -263,7 +263,6 @@ SFTP からデータをコピーするには、コピー アクティビティ�
     }
 ]
 ```
-
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
