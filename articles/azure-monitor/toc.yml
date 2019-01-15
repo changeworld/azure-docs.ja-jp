@@ -750,6 +750,8 @@ items:
         items:
         - name: 分析クエリのアラートを構成する
           href: platform/alerts-log.md
+        - name: ログ アラートのクエリ
+          href: platform/alerts-log-query.md
         - name: ログ アラートの webhook アクション
           href: platform/alerts-log-webhook.md
         - name: ログ アラートのトラブルシューティング
@@ -1007,9 +1009,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 18a79275cc100cddce1687451168946d2cb2b85e
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: ab0a3de001a775480f46f5a434a313f62e82623d
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215237"
+ms.locfileid: "54231055"

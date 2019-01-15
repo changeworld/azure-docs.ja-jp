@@ -19,7 +19,13 @@ items:
   items:
   - name: 1 - B2C テナントの作成
     href: tutorial-create-tenant.md
-  - name: 2 - アカウントの認証
+  - name: 2 - アプリケーションの登録
+    href: tutorial-register-applications.md
+  - name: 3 - ユーザー フローの作成
+    href: tutorial-create-user-flows.md
+  - name: 4 - UI のカスタマイズ
+    href: tutorial-customize-ui.md
+  - name: アカウントの認証
     items:
     - name: ASP.NET
       href: active-directory-b2c-tutorials-web-app.md
@@ -27,7 +33,7 @@ items:
       href: active-directory-b2c-tutorials-desktop-app.md
     - name: シングル ページ
       href: active-directory-b2c-tutorials-spa.md
-  - name: 3 - API アクセスの許可
+  - name: API アクセスの許可
     items:
     - name: ASP.NET
       href: active-directory-b2c-tutorials-web-api.md
@@ -35,8 +41,6 @@ items:
       href: active-directory-b2c-tutorials-desktop-app-webapi.md
     - name: シングル ページ
       href: active-directory-b2c-tutorials-spa-webapi.md
-  - name: UI のカスタマイズ
-    href: tutorial-customize-ui.md
 - name: サンプル
   href: code-samples.md
 - name: 概念
@@ -45,16 +49,12 @@ items:
     href: active-directory-b2c-apps.md
   - name: 認証プロトコル
     href: active-directory-b2c-reference-protocols.md
-  - name: ユーザー フロー
-    href: active-directory-b2c-reference-policies.md
   - name: Identity Experience Framework
     items:
     - name: カスタム ポリシー
       href: active-directory-b2c-overview-custom.md
     - name: ユーザー アクセス
       href: manage-user-access.md
-    - name: ユーザー データ
-      href: manage-user-data.md
   - name: OAuth 2.0
     href: active-directory-b2c-reference-oauth-code.md
   - name: OpenId Connect
@@ -65,6 +65,10 @@ items:
     href: active-directory-b2c-reference-tokens.md
   - name: ユーザー アカウント
     href: user-overview.md
+  - name: ユーザー データ
+    href: manage-user-data.md
+  - name: ユーザー フロー
+    href: active-directory-b2c-reference-policies.md
   - name: ユーザー インターフェイスのカスタマイズ
     href: customize-ui-overview.md
 - name: ハウツー ガイド
@@ -264,8 +268,6 @@ items:
     href: active-directory-b2c-access-tokens.md
   - name: アクセス トークンのパススルー
     href: idp-pass-through-user-flow.md
-  - name: アプリケーションの登録
-    href: active-directory-b2c-app-registration.md
   - name: レポートの使用
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: リソース所有者のパスワード資格情報
@@ -316,9 +318,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: b8a8db0dc15877cc772efbb1e9656c12f27f426a
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c7f7036e52c5c9d0f9d7c51a882474028ba63aef
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788284"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244394"

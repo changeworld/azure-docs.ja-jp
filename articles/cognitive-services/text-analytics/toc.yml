@@ -50,6 +50,8 @@ items:
       href: how-tos/text-analytics-how-to-install-containers.md
     - name: コンテナーを構成する
       href: text-analytics-resource-container-config.md
+    - name: Azure Kubernetes Service での実行方法
+      href: How-tos/text-analytics-how-to-use-container-instance.md
   - name: Text Analytics 接続済みサービスを使用する
     href: vs-text-connected-service.md
 - name: リファレンス
@@ -92,9 +94,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/555922-text-analytics
-ms.openlocfilehash: 2ee1402a1ff648ca5afe242dc630c2fe8f7609ed
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 0a40ee016fcb0d4b172d521bda26650b40f7dcbf
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792358"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243374"

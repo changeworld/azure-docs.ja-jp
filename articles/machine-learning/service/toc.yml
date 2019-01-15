@@ -139,6 +139,9 @@ items:
   - name: リソース クォータを管理する
     displayName: limits
     href: how-to-manage-quotas.md
+  - name: Virtual Networks での使用
+    displayName: vnet
+    href: how-to-enable-virtual-network.md
   - name: Machine Learning CLI の使用
     displayName: cli command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
@@ -171,9 +174,9 @@ items:
     href: support-for-aml-services.md
   - name: Microsoft の ML 製品の比較
     href: overview-more-machine-learning.md
-ms.openlocfilehash: eb989777a0cf7fac41db64d05fa71a24efd34b5c
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 84f4c2ec1d9f361cdf030b724860aea89f5c9cc3
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158961"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247369"

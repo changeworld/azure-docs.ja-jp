@@ -77,6 +77,8 @@ items:
       items:
       - name: ID プロバイダーの選択
         href: azure-stack-integrate-identity.md
+      - name: 登録ロールの作成
+        href: azure-stack-registration-role.md
       - name: Azure ID の検証
         href: azure-stack-validate-identity.md
       - name: ADFS 統合の検証
@@ -405,9 +407,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: d485829d98dcd5969c0acd02ad6e0c0255647d5c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 8f1c083f59808852f0bcd2130e023fbf74bccbe6
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118336"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230970"
