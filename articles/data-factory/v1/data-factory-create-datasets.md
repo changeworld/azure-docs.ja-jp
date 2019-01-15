@@ -22,7 +22,7 @@ ms.lasthandoff: 07/11/2018
 ms.locfileid: "38667440"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-create-datasets.md)
 > * [バージョン 2 (最新バージョン)](../concepts-datasets-linked-services.md)
 
@@ -71,14 +71,14 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
             "frequency": "<Specifies the time unit for data slice production. Supported frequency: Minute, Hour, Day, Week, Month>",
             "interval": "<Specifies the interval within the defined frequency. For example, frequency set to 'Hour' and interval set to 1 indicates that new data slices should be produced hourly>"
         },
-       "policy":
-        {      
+        "policy":
+        {
         }
     }
 }
 ```
 
-次の表では、上記の JSON のプロパティについて説明します。   
+次の表では、上記の JSON のプロパティについて説明します。
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
@@ -137,13 +137,12 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 上記の JSON スニペットは、次のようになっています。
 
 * **type** が AzureSqlDatabase に設定されています。
-* 型プロパティ **connectionString** は、SQL Database に接続するための情報を示しています。  
+* 型プロパティ **connectionString** は、SQL Database に接続するための情報を示しています。
 
-ご覧のように、リンクされたサービスによって、SQL Database に接続する方法が定義されています。 また、データセットは、どのテーブルがパイプライン内のアクティビティの入力/出力として使用されるかを定義しています。   
+ご覧のように、リンクされたサービスによって、SQL Database に接続する方法が定義されています。 また、データセットは、どのテーブルがパイプライン内のアクティビティの入力/出力として使用されるかを定義しています。
 
 > [!IMPORTANT]
-> データセットはパイプラインで作成される場合を除き、**external** とマークする必要があります。 この設定は通常、パイプライン内の最初のアクティビティの入力に適用されます。   
-
+> データセットはパイプラインで作成される場合を除き、**external** とマークする必要があります。 この設定は通常、パイプライン内の最初のアクティビティの入力に適用されます。
 
 ## <a name="Type"></a> データセットの型
 データセットの型は、使用するデータ ストアに依存します。 Data Factory でサポートされているデータ ストアの一覧については、次の表を参照してください。 データ ストアをクリックすると、そのデータ ストアに対応するリンクされたサービスとデータセットの作成方法を確認できます。
@@ -183,7 +182,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 **structure** セクションは省略できます。 このセクションでは、列の名前とデータ型のコレクションを含めることで、データセットのスキーマを定義します。 structure セクションを使用して、変換元から変換先への型の変換や列のマップに使用される型の情報を指定します。 次の例では、データセットに `slicetimestamp`、`projectname`、`pageviews` の 3 つの列があります。 それぞれの列の型は、String、String、Decimal です。
 
 ```json
-structure:  
+structure:
 [
     { "name": "slicetimestamp", "type": "String"},
     { "name": "projectname", "type": "String"},
@@ -209,8 +208,7 @@ structure の各列には次のプロパティが含まれます。
     
     Data Factory は、"structure" に型情報を指定するための値として、**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** をサポートしています。 これらの値は、共通言語仕様 (CLS) に準拠している .NET ベースの型値です。
 
-また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。 
-  
+また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。
 
 ## <a name="dataset-availability"></a>データセットの可用性
 データセットの **availability** セクションでは、データセットの処理時間枠 (例: 時間単位、日単位、週単位) を定義します。 アクティビティ ウィンドウの詳細については、[スケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。
@@ -218,14 +216,14 @@ structure の各列には次のプロパティが含まれます。
 次の availability セクションは、出力データセットが 1 時間ごとに生成されるか、入力データセットが 1 時間ごとに使用可能となるように指定しています。
 
 ```json
-"availability":    
-{    
-    "frequency": "Hour",        
-    "interval": 1    
+"availability":
+{
+    "frequency": "Hour",
+    "interval": 1
 }
 ```
 
-パイプラインの開始時刻と終了時刻が次のように設定されているとします。  
+パイプラインの開始時刻と終了時刻が次のように設定されているとします。
 
 ```json
     "start": "2016-08-25T00:00:00Z",
@@ -259,11 +257,11 @@ structure の各列には次のプロパティが含まれます。
 次の例では、データセットは 23 時間ごとに 1 回生成されます。 最初のスライスは **anchorDateTime** で指定された時刻に開始します (`2017-04-19T08:00:00` (UTC) に設定されています)。
 
 ```json
-"availability":    
-{    
-    "frequency": "Hour",        
-    "interval": 23,    
-    "anchorDateTime":"2017-04-19T08:00:00"    
+"availability":
+{
+    "frequency": "Hour",
+    "interval": 23,
+    "anchorDateTime":"2017-04-19T08:00:00"
 }
 ```
 
