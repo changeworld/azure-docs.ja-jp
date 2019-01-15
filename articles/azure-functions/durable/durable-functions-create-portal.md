@@ -97,7 +97,7 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
     この例では、`{your-function-app-name}` は対象の関数アプリの名前であるドメインです。 応答メッセージには、実行を監視および管理するために使用できる、一連の URI エンドポイントが含まれます。次の例のようになります。
 
     ```json
-    {  
+    {
        "id":"10585834a930427195479de25e0b952d",
        "statusQueryGetUri":"https://...",
        "sendEventPostUri":"https://...",
