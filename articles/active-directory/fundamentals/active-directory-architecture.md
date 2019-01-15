@@ -12,12 +12,12 @@ ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: c23bdba74ab528a0774b73598dbee8888ebfdc7e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6d53de431ea619dfc8865ef23439146517d37764
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076119"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013300"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Azure Active Directory のアーキテクチャの概要
 Azure Active Directory (Azure AD) を使用すると、Azure のサービスやリソースへのアクセスをそのユーザーのために安全に管理することができます。 Azure AD には、必要な ID 管理機能がすべて備わっています。 Azure AD の機能については、「[Azure Active Directory とは](active-directory-whatis.md)」を参照してください。
@@ -34,7 +34,7 @@ Azure AD の地理的に分散されたアーキテクチャでは、広範な�
  *  データ センター
 
 ### <a name="service-architecture-design"></a>サービス アーキテクチャの設計
-一般に、アクセスと使用が容易でデータが豊富なシステムは、独立したビルディング ブロックまたはスケール ユニット ("*パーティション*") を Azure AD のデータ層に使用することで構築できます。 
+一般に、アクセスと使用が容易でデータが豊富なシステムは、独立したビルディング ブロックまたはスケール ユニットを使用して構築できます。 Azure AD データ層では、スケール ユニットは "*パーティション*" と呼ばれます。 
 
 データ層には、読み取り/書き込み機能を備えたさまざまなフロントエンド サービスが存在します。 次の図は、単一ディレクトリ パーティションの各構成要素が、地理的に分散されたデータ センターを通じて提供されるようすを示しています。 
 

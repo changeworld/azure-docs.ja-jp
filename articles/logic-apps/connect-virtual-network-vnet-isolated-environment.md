@@ -9,19 +9,19 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/06/2018
-ms.openlocfilehash: b0fd2466d72b1aae65a54b9e9813a5af51bf1672
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 31f3cf9bd8f83c5da32569ed370de1ed35299749
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997535"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062385"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を介して Azure Logic Apps から Azure Virtual Network に接続する
 
 > [!NOTE]
 > この機能は*プライベート プレビュー*段階です。 アクセスを要求するには、[参加要求をここで作成](https://aka.ms/iseprivatepreview)します。
 
-ロジック アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオでは、"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。 ISE は、専用のストレージと、パブリックまたは "*グローバル*" の Logic Apps サービスとは別に保存されている他のリソースを使用するプライベートな分離環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE が Azure 仮想ネットワークに "*挿入*" され、Logic Apps サービスが仮想ネットワークにデプロイされます。 ロジック アプリまたは統合アカウントを作成するときに、この ISE を場所として選択します。 ロジック アプリまたは統合アカウントは、仮想ネットワーク内の仮想マシン (VM)、サーバー、システム、サービスなどのリソースに直接アクセスできます。 
+ロジック アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオでは、"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。 ISE は、専用のストレージと、パブリックまたは "グローバル" の Logic Apps サービスとは別に保存されている他のリソースを使用するプライベートな分離環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE が Azure 仮想ネットワークに "*挿入*" され、Logic Apps サービスが仮想ネットワークにデプロイされます。 ロジック アプリまたは統合アカウントを作成するときに、この ISE を場所として選択します。 ロジック アプリまたは統合アカウントは、仮想ネットワーク内の仮想マシン (VM)、サーバー、システム、サービスなどのリソースに直接アクセスできます。 
 
 ![統合サービス環境を選択する](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
@@ -40,6 +40,9 @@ ms.locfileid: "52997535"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+
+  > [!IMPORTANT]
+  > ご利用の ISE で実行されるロジック アプリ、組み込みアクション、コネクタは、使用量ベースの料金プランではなく、異なる料金プランを使用します。 詳細については、「[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)」をご覧ください。
 
 * [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークがない場合は、[Azure 仮想ネットワークの作成](../virtual-network/quick-create-portal.md)方法について学んでください。 
 
@@ -109,9 +112,9 @@ ms.locfileid: "52997535"
    | **[リソース グループ]** | [はい] | <*Azure-resource-group-name*> | 環境を作成する Azure リソース グループ |
    | **統合サービス環境の名前** | [はい] | <*environment-name*> | 環境を示す名前 | 
    | **場所** | [はい] | <*Azure-datacenter-region*> | 環境をデプロイする Azure データセンター リージョン | 
-   | **Capacity** | [はい] | 0、1、2、3 | この ISE に使用する処理ユニットの数 | 
+   | **追加容量** | [はい] | 0、1、2、3 | この ISE に使用する処理ユニットの数 | 
    | **Virtual Network** | [はい] | <*Azure-virtual-network-name*> | 環境内のロジック アプリが仮想ネットワークにアクセスできるように、その環境を挿入する Azure 仮想ネットワーク。 ネットワークがない場合は、ここで作成することができます。 <p>**重要**:ISE を作成するときに "*のみ*"、この挿入を実行することができます。 ただし、この関係を作成する前に、必ず [Azure Logic Apps 用に仮想ネットワークにロールベースのアクセス制御を設定しておきます](#vnet-access)。 | 
-   | **サブネット** | [はい] | <*IP-address-range*> | ISE には 4 つの "*空の*" サブネットが必要です。 これらのサブネットはどのサービスにも委任されず、環境内にリソースを作成するために使用されます。 環境の作成後に、これらの IP 範囲を "*変更することはできません*"。 <p><p>各サブネットを作成するには、[この表の下の手順に従います](#create-subnet)。 各サブネットは、次の基準を満たしている必要があります。 <p>- 選択した仮想ネットワークと同じアドレス範囲内にも、仮想ネットワークが接続されている他のプライベート IP アドレスにも存在していない。 <br>- 数字やハイフンで始まらない名前を使用する。 <br>- [Classless Inter-Domain Routing (CIDR) 形式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)を使用する。 <br>- クラス B アドレス空間を必要とする。 <br>- `/27` を含める。 たとえば、`10.0.0.0/27`、`10.0.0.32/27`、`10.0.0.64/27`、`10.0.0.96/27` のように 32 ビット アドレスの範囲を各サブネットに指定します。 <br>- 必ず空にする。 |
+   | **サブネット** | [はい] | <*subnet-resource-list*> | ISE では、環境内にリソースを作成するために "*空の*" サブネットが 4 つ必要です。 そのため、これらのサブネットはどのサービスにも "*委任されていない*" 必要があります。 環境の作成後に、これらのサブネット アドレスを "*変更することはできません*"。 <p><p>各サブネットを作成するには、[この表の下の手順に従います](#create-subnet)。 各サブネットは、次の基準を満たしている必要があります。 <p>- 必ず空にする。 <br>- 数字やハイフンで始まらない名前を使用する。 <br>- [Classless Inter-Domain Routing (CIDR) 形式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)とクラス B アドレス空間を使用する。 <br>- サブネットが少なくとも 32 個のアドレスを取得するようにアドレス空間に少なくとも `/27` を含める。 アドレス数の計算の詳細については、「[IPv4 CIDR blocks (IPv4 CIDR ブロック)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)」を参照してください。 例:  <p>2<sup>(32-24)</sup> は 2<sup>8</sup> (つまり 256) なので、- `10.0.0.0/24` には 256 個のアドレスがあります。 <br>2<sup>(32-27)</sup> は 2<sup>5</sup> (つまり 32) なので、- `10.0.0.0/27` には 32 個のアドレスがあります。 <br>2<sup>(32-28)</sup> は 2<sup>4</sup> (つまり 16) なので、- `10.0.0.0/28` には 16 個のアドレスがあります。 |
    |||||
 
    <a name="create-subnet"></a>

@@ -12,12 +12,12 @@ ms.date: 10/19/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 12f557e9453db0d8bff2ab91fe8453e026e0320c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c13be8cbe9c05b9dcf513588825a22722c66e529
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104273"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061897"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Azure Active Directory を使用して別のグループからグループを追加または削除する
 この記事は、Azure Active Directory を使用して別のグループからグループを追加および削除するのに役立ちます。
@@ -29,7 +29,7 @@ ms.locfileid: "53104273"
 既存のセキュリティ グループを別の既存のセキュリティ グループに追加して (入れ子になったグループとも呼ばれます)、メンバー グループ (サブグループ) と親グループを作成します。 メンバー グループには親グループの属性とプロパティが継承され、構成時間を節約できます。
 
 >[!Important]
->以下は現在サポートされていません。<ul><li>オンプレミスの Active Directory と同期されたグループへのグループの追加</li><li>Office 365 グループへのセキュリティ グループの追加</li><li>セキュリティ グループまたは他の Office 365 グループへの Office 365 グループの追加</li><li>入れ子になったグループへのアプリの割り当て</li><li>入れ子になったグループへのライセンスの適用</li></ul>
+>以下は現在サポートされていません。<ul><li>オンプレミスの Active Directory と同期されたグループへのグループの追加。</li><li>Office 365 グループへのセキュリティ グループの追加。</li><li>セキュリティ グループまたは他の Office 365 グループへの Office 365 グループの追加。</li><li>入れ子になったグループへのアプリの割り当て。</li><li>入れ子になったグループへのライセンスの適用。</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>別のグループのメンバーとしてグループを追加するには
 

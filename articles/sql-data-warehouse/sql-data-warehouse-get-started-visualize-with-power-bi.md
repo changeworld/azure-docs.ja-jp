@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 514516dcc28e99d03611c7db6ec09c7b4a48ff0e
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0fbb389120857a167867a5804c670e181f5232b6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306665"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051443"
 ---
 # <a name="visualize-data-with-power-bi"></a>Power BI でデータを視覚化する
 このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
@@ -32,7 +32,7 @@ ms.locfileid: "43306665"
 ## <a name="1-connect-to-your-database"></a>1.データベースに接続する
 Power BI を開き、AdventureWorksDW データベースに接続するには:
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. **[SQL Database]** をクリックし、AdventureWorks SQL Data Warehouse データベースを選択します。
    
     ![データベースの検索](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png)
@@ -77,7 +77,7 @@ Power BI を使用して AdventureWorksDW サンプル データを分析する�
 
 **[ファイル]** をクリックして **[保存]** を選択すると、作業をいつでも保存できます。
 
-## <a name="using-direct-connnect"></a>直接接続の使用
+## <a name="using-direct-connect"></a>直接接続の使用
 Azure SQL Database の場合と同様、SQL Data Warehouse の直接接続を使用すると、論理プッシュダウンと共に Power BI の分析機能を利用できます。 直接接続では、データを検索する際に、クエリがリアルタイムで Azure SQL Data Warehouse に送信されます。  この機能を SQL Data Warehouse のスケールと組み合わせることにより、テラバイト単位のデータに対して動的レポートを数分で作成できます。 さらに、[Power BI で開く] ボタンが導入されたため、Azure の他の部分から情報を収集しなくても、Power BI を直接 SQL Data Warehouse に接続できるようになりました。
 
 直接接続を使用するときは、次の点に注意してください。

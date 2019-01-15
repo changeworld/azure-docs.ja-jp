@@ -233,20 +233,10 @@ items:
       href: luis-how-to-collaborate.md
     - name: オーサリング キーの管理
       href: luis-how-to-account-settings.md
-    - name: エンドポイントの使用状況の管理
-      items:
-      - name: PowerShell を使ったエンドポイントの使用状況の表示
-        href: luis-how-to-manage-from-cloud-shell.md
-      - name: Traffic Manager を使用してキーをまたぐ形でエンドポイント クォータを拡張する
-        href: luis-traffic-manager.md
+    - name: Traffic Manager を使用してキーをまたぐ形でエンドポイント クォータを拡張する
+      href: luis-traffic-manager.md
   - name: V2 REST API への移行
     href: luis-migration-api-v1-to-v2.md
-  - name: プログラムを使ったリージョン検索
-    items:
-    - name: REST API と C# を使用する
-      href: luis-find-region-csharp.md
-    - name: REST API と Node.js を使用する
-      href: luis-find-region-nodejs.md
   - name: コンテナーの使用
     items:
     - name: コンテナーのインストールと実行
@@ -399,9 +389,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: eee038c67b910c7bf54e6aa361806c1ef04675ae
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 175d21f23f204f564608613fb490af989eeab42d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753235"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261436"

@@ -1,8 +1,8 @@
 ---
-title: Azure Batch コンピューティング ノードの環境変数 | Microsoft Docs
+title: コンピューティング ノードの環境変数 - Azure Batch | Microsoft Docs
 description: Azure 一括分析のコンピューティング ノードの環境変数に関するリファレンスです。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,16 +10,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 05/05/2017
-ms.author: danlep
-ms.openlocfilehash: ca8d6a6484cd1f145e7d807681bf2d012f2399e0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.date: 01/03/2019
+ms.author: lahugh
+ms.openlocfilehash: 48c2172e02e935dde28ac323c776c8895b1d36b2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30312703"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017363"
 ---
 # <a name="azure-batch-compute-node-environment-variables"></a>Azure Batch コンピューティング ノードの環境変数
+
 [Azure Batch サービス](https://azure.microsoft.com/services/batch/)は、コンピューティング ノードで以下の環境変数を設定します。 これらの環境変数は、タスク コマンドラインと、コマンド ラインにより実行されるプログラムとスクリプトで参照できます。
 
 Batch での環境変数の使用に関する詳細については、[「タスクの環境設定」](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks)を参照してください。
@@ -38,9 +39,10 @@ Batch での環境変数の使用に関する詳細については、[「タス�
 
 ## <a name="environment-variables"></a>環境変数
 
-| 変数名                     | [説明]                                                              | 可用性 | 例 |
+| 変数名                     | 説明                                                              | 可用性 | 例 |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | タスクが属する Batch アカウントの名前。                  | すべてのタスク。   | mybatchaccount |
+| AZ_BATCH_AUTHENTICATION_TOKEN   | Batch サービス操作の制限されたセットへのアクセスを許可する認証トークン。 この環境変数は、[タスクが追加される](/rest/api/batchservice/task/add#request-body)ときに、[authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) が設定された場合のみに存在します。 このトークン値は、[BatchClient.Open() .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_) などの Batch API 内で、Batch クライアントを作成するための資格署名として使用されます。 | すべてのタスク。 | OAuth2 アクセス トークン |
 | AZ_BATCH_CERTIFICATES_DIR       | [ タスク作業ディレクトリ内のディレクトリ][files_dirs]、この中に Linux コンピューティング ノードの証明書が格納される。 この環境変数は Windows コンピューティング ノードに適用されないので注意してください。                                                  | すべてのタスク。   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_JOB_ID                 | タスクが属するジョブの ID。 | 開始タスクを除くすべてのタスク。 | batchjob001 |
 | AZ_BATCH_JOB_PREP_DIR           | ノード上のジョブ準備[タスク ディレクトリ][files_dirs]の完全パス。 | 開始タスクおよびジョブ準備タスクを除くすべてのタスク。 ジョブがジョブ準備タスクで構成されている場合にのみ使用できます。 | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |

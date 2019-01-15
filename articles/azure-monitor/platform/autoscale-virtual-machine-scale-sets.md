@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 5ff6e29fc4d7607c44541c7947404a0bc0301207
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: c7b4da7292600f3d477d5c16263660eb6d4d4226
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581491"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051274"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Scale Sets 向けの Resource Manager テンプレートを使用した高度な自動スケール構成
 Virtual Machine Scale Sets では、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールインおよびスケールアウトを行うことができます。 また、スケール アクションに対して電子メール通知や webhook 通知を構成することもできます。 このチュートリアルでは、これらすべてのオブジェクトを VM スケール セットで Resource Manager テンプレートを使用して構成する例を示します。
@@ -247,3 +247,5 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
 [CLI を使用した自動スケールの管理](cli-samples.md#autoscale)
 
 [自動スケールに関する webhook と電子メールの通知の構成](autoscale-webhook-email.md)
+
+[Microsoft.Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings) テンプレート リファレンス

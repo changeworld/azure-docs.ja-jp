@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: 9200b3b8cd85bfd94bbc4c66cccb35b78a97aaff
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 282a20beb11172aa3a1d2c7326dc38ce8a7acfcf
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554692"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062657"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
 
@@ -34,6 +34,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 - [Azure Resource Manager の概要 - テンプレートのデプロイ](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
+- [Microsoft.TimeSeriesInsights のリソースの種類](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 クイックスタート テンプレート [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) が GitHub で公開されています。 このテンプレートを使用して、Time Series Insights 環境、イベント ハブからイベントを読み取るよう構成された子イベント ソース、環境のデータへのアクセス権を付与するアクセス ポリシーを作成できます。 既存のイベント ハブが指定されていない場合は、デプロイ時に 1 つ作成されます。
 

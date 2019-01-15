@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 489a644bd2d17e2be3232ec522b9ed7e37d246ad
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f0232c8d2627cd600f4f05b5b501db85fa7d2ec4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50956725"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051392"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (C#)
 
@@ -26,7 +26,7 @@ ms.locfileid: "50956725"
 この記事の手順を完了するには、次のコンポーネントが必要です。
 
 * 開発コンピューターにインストールされた [.NET Core 2](https://www.microsoft.com/net)。 [Visual Studio Code](https://code.visualstudio.com/) などの適切なコード エディターも用意する必要があります。
-* **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページを参照してください。
+* **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
 * Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。
 
 
@@ -45,7 +45,7 @@ ms.locfileid: "50956725"
     - 電圧
     - Current
     - ファン速度
-    - IR 切り替え
+    - IR 切り替え。
 - Properties
     - Die number デバイス プロパティ
     - Location クラウド プロパティ
@@ -364,7 +364,7 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 | type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| Text            | Location     | location   | 該当なし       |
+| Text            | 場所     | location   | 該当なし       |
 
 ## <a name="next-steps"></a>次の手順
 

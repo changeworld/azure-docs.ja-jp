@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0910cce92c410a68dce6e2c44d29e72e594cd153
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e7df9086fa5ffc6273a6cb063bdee3cfdfa73e34
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271710"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013317"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Visual Studio Code を使用して機械学習モデルをトレーニングおよびデプロイする
 
@@ -43,7 +43,7 @@ Azure Machine Learning for VS Code を使用すると、データを準備し、
 
 **コンピューティング ターゲットを作成するには:**
 
-1. Visual Studio Code のアクティビティ バーの Azure アイコンをクリックします。 [Azure: Machine Learning] サイドバーが表示されます。
+1. Visual Studio Code のアクティビティ バーの Azure アイコンをクリックします。 Azure Machine Learning のサイドバーが表示されます。
 
 2. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning サービス ワークスペースを展開します。 アニメーション画像では、サブスクリプション名は 'Free Trial' であり、ワークスペースは 'TeamWorkspace' です。 
 
@@ -51,27 +51,25 @@ Azure Machine Learning for VS Code を使用すると、データを準備し、
 
 4. 一覧からコンピューティング ターゲットの種類を選択します。 
 
-5. 高度なプロパティがある場合は、新しいタブで開かれる JSON 構成ファイルで指定します。このファイルでは、コンピューティング ターゲットの一意の名前を指定できます。
+5. コマンド パレットで、仮想マシンのサイズを選択します。
 
-6. コンピューティング ターゲットの構成を完了したら、右下にある **[送信]** をクリックします。
+6. コマンド パレットで、フィールドにコンピューティング ターゲットの名前を入力します。 
 
-Azure Machine Learning コンピューティング (AMLCompute) の例を次に示します。[![VS Code で AML コンピューティングを作成する](./media/vscode-tools-for-ai/CreateAMLCompute.gif)](./media/vscode-tools-for-ai/CreateAMLCompute.gif#lightbox)
+7. 高度なプロパティがある場合は、新しいタブで開かれる JSON 構成ファイルで指定します。最大ノード数などのプロパティを指定できます。
 
-### <a name="use-remote-computes-for-experiments-in-vs-code"></a>VS Code で実験用のリモート コンピューティングを使用する
+8. コンピューティング ターゲットの構成を完了したら、画面の右下にある **[送信]** をクリックします。
 
-トレーニング時にリモート コンピューティング ターゲットを使用するには、実行構成ファイルを作成する必要があります。 このファイルは Azure Machine Learning に、実験を実行する場所だけでなく、環境を準備する方法も指示します。
+Azure Machine Learning コンピューティング (AMLCompute) の作成例を次に示します。[![VS Code で AML コンピューティングを作成する](./media/vscode-tools-for-ai/CreateARemoteCompute.gif)](./media/vscode-tools-for-ai/CreateARemoteCompute.gif#lightbox)
 
 #### <a name="the-run-configuration-file"></a>"実行構成" ファイル
 
-VS Code 拡張機能は、ローカル コンピューター上で、**ローカル**環境用と **docker** 環境用の実行構成を自動的に作成します。
+VS Code 拡張機能によって、ローカル コンピューター上で、ローカル コンピューティング ターゲットと、**ローカル**環境用と **docker** 環境用の実行構成が自動的に作成されます。 関連付けられているコンピューティング ターゲットの下で実行構成ファイルを確認できます。 
 
-これは、既定の実行構成ファイルからのスニペットです。
-
-すべてのライブラリ/依存関係を自分自身でインストールする場合は、`userManagedDependencies: True` を設定してから、ローカルの実験実行で、VS Code Python 拡張機能によって指定されるとおりの既定の Python 環境を使用します。
+これは、既定のローカルの実行構成ファイルからのスニペットです。 既定では、`userManagedDependencies: True` であるため、すべてのライブラリ/依存関係を自分自身でインストールする必要があります。その後、ローカルの実験の実行では、VS Code Python 拡張機能によって指定された既定の Python 環境が使用されます。
 
 ```yaml
-# user_managed_dependencies=True indicates that the environment will be user managed. False indicates that AzureML will manage the user environment.
-    userManagedDependencies: False
+# user_managed_dependencies = True indicates that the environment will be user managed. False indicates that AzureML will manage the user environment.
+    userManagedDependencies: True
 # The python interpreter path
     interpreterPath: python
 # Path to the conda dependencies file to use for this run. If a project
@@ -83,6 +81,30 @@ VS Code 拡張機能は、ローカル コンピューター上で、**ローカ
 # Set True to perform this run inside a Docker container.
     enabled: false
 ```
+
+## <a name="train-and-tune-models"></a>モデルをトレーニングして調整する
+
+Azure Machine Learning for VS Code (プレビュー) を使用して、コードをすばやく反復処理したり、ステップ実行やデバッグを行ったり、最適なソース コード管理ソリューションを使用したりします。 
+
+**Azure Machine Learning を使用して実験をローカルに実行するには:**
+
+1. Visual Studio Code のアクティビティ バーの Azure アイコンをクリックします。 Azure Machine Learning のサイドバーが表示されます。
+
+1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning サービス ワークスペースを展開します。 
+
+1. ワークスペース ノードの下の **[コンピューティング]** ノードを展開し、使用するコンピューティングの **[実行構成]** を右クリックします。 
+
+1. **[Run Experiment]\(実験を実行する)** を選択します。
+
+1. ファイル エクスプローラーから、実行するスクリプトを選択します。 
+
+1. **[View Experiment Run]\(実験実行を表示する)** をクリックし、統合された Azure Machine Learning ポータルを表示して、トレーニングされたモデルの実行の監視と表示を行います。
+
+ローカルでの実験の実行例を次に示します。[![ローカルでの実験の実行](./media/vscode-tools-for-ai/RunExperimentLocally.gif)](./media/vscode-tools-for-ai/RunExperimentLocally.gif#lightbox)
+
+### <a name="use-remote-computes-for-experiments-in-vs-code"></a>VS Code で実験用のリモート コンピューティングを使用する
+
+トレーニング時にリモート コンピューティング ターゲットを使用するには、実行構成ファイルを作成する必要があります。 このファイルは Azure Machine Learning に、実験を実行する場所だけでなく、環境を準備する方法も指示します。
 
 #### <a name="the-conda-dependencies-file"></a>conda の依存関係ファイル
 
@@ -101,6 +123,7 @@ dependencies:
   # Currently Azure ML only supports 3.5.2 and later.
 
 - python=3.6.2
+- tensorflow
 
 - pip:
     # Required packages for AzureML execution, history, and data preparation.
@@ -111,21 +134,24 @@ dependencies:
 
 ```
 
-## <a name="train-and-tune-models"></a>モデルをトレーニングして調整する
+**Azure Machine Learning を使用してリモート コンピューティング ターゲット上で実験を実行するには:**
 
-Azure Machine Learning for VS Code (プレビュー) を使用して、コードをすばやく反復処理したり、ステップ実行やデバッグを行ったり、最適なソース コード管理ソリューションを使用したりします。 
-
-**Azure Machine Learning を使用して実験を実行するには:**
-
-1. Visual Studio Code のアクティビティ バーの Azure アイコンをクリックします。 [Azure: Machine Learning] サイドバーが表示されます。
+1. Visual Studio Code のアクティビティ バーの Azure アイコンをクリックします。 Azure Machine Learning のサイドバーが表示されます。
 
 1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning サービス ワークスペースを展開します。 
 
-1. ワークスペース ノードの下の **[コンピューティング]** ノードを展開し、使おうとしているコンピューティングの **[Run Config]\(実行構成)** を右クリックします。 
+1. エディター ウィンドウで Python スクリプトを右クリックし、**[AML: Run as Experiment in Azure]\(AML: Azure で実験として実行\)** を選択します。 
 
-1. **[Run Experiment]\(実験を実行する)** を選択します。
+1. コマンド パレットで、コンピューティング ターゲットを選択します。 
+
+1. コマンド パレットで、フィールドに実行構成名を入力します。 
+
+1. 実験の実行時の依存関係を指定して conda_dependencies.yml ファイルを編集した後、画面右下の **[送信]** をクリックします。 
 
 1. **[View Experiment Run]\(実験実行を表示する)** をクリックし、統合された Azure Machine Learning ポータルを表示して、トレーニングされたモデルの実行の監視と表示を行います。
+
+リモート コンピューティング ターゲット上での実験の実行例を次に示します。[![リモート ターゲット上での実験の実行](./media/vscode-tools-for-ai/runningOnARemoteTarget.gif)](./media/vscode-tools-for-ai/runningOnARemoteTarget.gif#lightbox)
+
 
 ## <a name="deploy-and-manage-models"></a>モデルを展開して管理する
 Azure Machine Learning では、機械学習モデルをクラウド内やエッジ上に展開し、管理することができます。 
@@ -137,18 +163,21 @@ Azure Machine Learning では、機械学習モデルをクラウド内やエッ
 
 **モデルを登録するには:**
 
-1. Visual Studio Code のアクティビティ バーの Azure アイコンをクリックします。 [Azure: Machine Learning] サイドバーが表示されます。
+1. Visual Studio Code のアクティビティ バーの Azure アイコンをクリックします。 Azure Machine Learning のサイドバーが表示されます。
 
 1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning サービス ワークスペースを展開します。
 
 1. ワークスペース ノードの下の **[モデル]** を右クリックし、**[Register Model]\(モデルの登録)** を選択します。
 
+1. コマンド パレットで、フィールドにモデル名を入力します。 
+
 1. 一覧から、**モデル ファイル** (単一モデルの場合) と**モデル フォルダー** (Tensorflow など、複数のファイルがあるモデルの場合) のどちらをアップロードするかを選択します。 
 
 1. フォルダーまたはファイルを選択します。
 
-1. モデルのプロパティの構成を完了したら、右下にある **[送信]** をクリックします。 
+1. モデルのプロパティの構成を完了したら、画面の右下にある **[送信]** をクリックします。 
 
+モデルの AML への登録例を次に示します。[![AML へのモデルの登録](./media/vscode-tools-for-ai/RegisteringAModel.gif)](./media/vscode-tools-for-ai/RegisteringAModel.gif#lightbox)
 
 
 ### <a name="deploy-your-service-from-vs-code"></a>VS Code からサービスをデプロイする
@@ -163,7 +192,7 @@ VS Code を使用して、Web サービスを以下にデプロイできます�
 
 **Web サービスをデプロイするには:**
 
-1. Visual Studio Code のアクティビティ バーの Azure アイコンをクリックします。 [Azure: Machine Learning] サイドバーが表示されます。
+1. Visual Studio Code のアクティビティ バーの Azure アイコンをクリックします。 Azure Machine Learning のサイドバーが表示されます。
 
 1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning サービス ワークスペースを展開します。
 
@@ -173,15 +202,17 @@ VS Code を使用して、Web サービスを以下にデプロイできます�
 
 1. コマンド パレットで、デプロイするコンピューティング ターゲットを一覧から選択します。 
 
-1. フィールドに、このサービスの名前を入力します。 
+1. コマンド パレットで、このサービスの名前をフィールドに入力します。  
 
 1. コマンド パレットで、キーボードの Enter キーを押して、スクリプト ファイルを参照および選択します。
 
 1. コマンド パレットで、キーボードの Enter キーを押して、conda の依存関係ファイルを参照および選択します。
 
-1. サービスのプロパティの構成を完了したら、右下にある **[送信]** をクリックします。 このサービス プロパティ ファイルでは、使用する可能性のあるローカル Docker ファイルまたは schema.json ファイルを指定できます。
+1. サービスのプロパティの構成を完了したら、画面の右下にある **[送信]** をクリックしてデプロイします。 このサービス プロパティ ファイルでは、使用する可能性のあるローカルの Docker ファイルまたは schema.json ファイルを指定できます。
 
 これで Web サービスがデプロイされました。
+
+Web サービスのデプロイ例を次に示します。[![Web サービスのデプロイ](./media/vscode-tools-for-ai/CreatingAnImage.gif)](./media/vscode-tools-for-ai/CreatingAnImage.gif#lightbox)
 
 ## <a name="next-steps"></a>次の手順
 

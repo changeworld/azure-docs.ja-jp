@@ -1,13 +1,10 @@
 ---
-title: ネットワーク セキュリティ グループ イベントとルール カウンター Azure 診断ログ | Microsoft Docs
+title: ネットワーク セキュリティ グループ イベントとルール カウンター Azure 診断ログ
+titlesuffix: Azure Virtual Network
 description: Azure ネットワーク セキュリティ グループのイベントとルール カウンター診断ログを有効にする方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 2e699078-043f-48bd-8aa8-b011a32d98ca
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 383c870148193f4831f06d75aba241e827af9006
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 63dd7b0aad3ce42eff3c135bd2fdccc8fcb4ed61
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543361"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014082"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループの診断ログ
 
@@ -48,9 +45,9 @@ ms.locfileid: "53543361"
 
 5. **[診断設定]** で、次の情報を入力するか選んだ後、**[保存]** を選びます。
 
-    | Setting                                                                                     | 値                                                          |
+    | 設定                                                                                     | 値                                                          |
     | ---------                                                                                   |---------                                                       |
-    | Name                                                                                        | 任意の名前です。  例: *myNsgDiagnostics*      |
+    | 名前                                                                                        | 任意の名前です。  例: *myNsgDiagnostics*      |
     | **ストレージ アカウントへのアーカイブ**、**イベント ハブへのストリーム**、**Log Analytics への送信** | 必要なだけいくつでも保存先を選択できます。 それぞれについて詳しくは、「[ログの保存先](#log-destinations)」をご覧ください。                                                                                                                                           |
     | ログ                                                                                         | いずれか一方または両方のログ カテゴリを選びます。 各カテゴリでログに記録されるデータについて詳しくは、「[ログのカテゴリ](#log-categories)」をご覧ください。                                                                                                                                             |
 6. ログを表示して分析します。 詳しくは、「[ログの表示と分析](#view-and-analyze-logs)」をご覧ください。
@@ -138,7 +135,7 @@ az monitor diagnostic-settings create \
 
 次のログ カテゴリの JSON 形式データが書き込まれます。
 
-### <a name="event"></a>Event
+### <a name="event"></a>イベント
 
 イベント ログには、MAC アドレスに基づいて、VM に適用される NSG ルールに関する情報が含まれます。 各イベントについて、次のようなデータがログに記録されます。 次の例では、IP アドレスが 192.168.1.4 で MAC アドレスが 00-0D-3A-92-6A-7C の仮想マシンのデータが記録されます。
 

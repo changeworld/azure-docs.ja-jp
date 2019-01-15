@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 90837092390cd2550805658471ff7aa884773371
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f39832b50ed983e7d8a0bfc0a06366870717fa3
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239595"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051987"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (Python)
 
@@ -25,7 +25,7 @@ ms.locfileid: "51239595"
 
 この記事の手順を完了するには、次のコンポーネントが必要です。
 
-* **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページを参照してください。
+* **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
 * Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。 GUI 環境にアクセスするには、Raspberry Pi に接続されているモニター、キーボード、およびマウスが必要です。 Raspberry Pi から[インターネットに接続](https://www.raspberrypi.org/learning/software-guide/wifi/)できる必要があります。
 * 必要に応じて、Raspberry Pi 用の [Sense Hat](https://www.raspberrypi.org/products/sense-hat/) アドオン ボード。 このボードは、Azure IoT Central アプリケーションに送信するテレメトリ データをさまざまなセンサーから収集します。 **Sense Hat** ボードがない場合は、代わりにエミュレーターを使用できます (Raspberry PI のイメージの一部として入手可能)。
 
@@ -121,7 +121,7 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 | type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| Text            | Location     | location   | 該当なし       |
+| Text            | 場所     | location   | 該当なし       |
 
 ## <a name="next-steps"></a>次の手順
 

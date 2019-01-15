@@ -46,7 +46,7 @@ pip install azure-storage-file
 > [!NOTE]
 > Azure Storage SDK for Python 0.36 以前のバージョンからアップグレードする場合は、`pip uninstall azure-storage` を使用して以前の SDK をアンインストールしてから、最新のパッケージをインストールします。
 
-別のインストール方法については、[GitHub の Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python/) に関するページを参照してください。
+別のインストール方法については、[GitHub の Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python/) に関するページをご覧ください。
 
 ## <a name="view-the-sample-application"></a>サンプル アプリケーションを表示する
 Python を Azure Files と一緒に使用する方法を示すサンプル アプリケーションを表示して実行するには、[Azure Storage:Python での Azure Files の使用開始](https://github.com/Azure-Samples/storage-file-python-getting-started)に関するページを参照してください。 

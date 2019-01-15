@@ -5,8 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 2f399b5084ab65736adfebb5cf0a77ccfbc972e8
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 680b47fd65cfde1fe01dfff9b74ddd42d1a73c1f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457291"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052395"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>例 1 – NSG と Azure Resource Manager テンプレートを使用して簡単な DMZ を構築する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -51,8 +49,8 @@ ms.locfileid: "49457291"
 
 **この環境を構築するには** (詳細な手順については、このドキュメントの「参照」セクションをご覧ください)
 
-1. [Azure クイックスタート テンプレート][Template]で Azure Resource Manager テンプレートをデプロイします
-2. [サンプル アプリケーション スクリプト][SampleApp]でサンプル アプリケーションをインストールします
+1. 次の Azure Resource Manager テンプレートをデプロイします。[Azure クイックスタート テンプレート][Template]
+2. 次のサンプル アプリケーションをインストールします。[サンプル アプリケーション スクリプト][SampleApp]
 
 >[!NOTE]
 >このインスタンスのバックエンド サーバーに RDP 接続をするために、IIS サーバーは "ジャンプ ボックス" として使用されています。 はじめに IIS サーバーに RDP 接続をして、次に IIS サーバーからバックエンド サーバーに RDP 接続をします。 または、パブリック IP を各サーバーに関連付けて、RDP 接続を簡略化することもできます。
@@ -350,7 +348,7 @@ ms.locfileid: "49457291"
 このデプロイを削除するには、リソース グループを削除します。子リソースもすべて削除されます。
 
 #### <a name="sample-application-scripts"></a>サンプル アプリケーション スクリプト
-テンプレートが正常に実行されたら、簡単な Web アプリケーションで Web サーバーとアプリ サーバーをセットアップして、この DMZ 構成でのテストを行うことができます。 このためのサンプル アプリケーション、およびその他の DMZ の例をインストールするには、[サンプル アプリケーション スクリプト][SampleApp]をご利用ください。
+テンプレートが正常に実行されたら、簡単な Web アプリケーションで Web サーバーとアプリ サーバーをセットアップして、この DMZ 構成でのテストを行うことができます。 このためのサンプル アプリケーション、およびその他の DMZ の例をインストールするには、リンク先のものをご利用ください。[サンプル アプリケーション スクリプト][SampleApp]
 
 ## <a name="next-steps"></a>次の手順
 

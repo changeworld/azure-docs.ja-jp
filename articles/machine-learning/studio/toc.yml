@@ -85,8 +85,6 @@ items:
       href: gallery-collections.md
     - name: カスタム モジュール
       href: gallery-custom-modules.md
-    - name: アカウント データの表示と削除
-      href: ai-gallery-control-personal-data-dsr.md
 - name: 概念
   items:
   - name: モデル管理
@@ -214,18 +212,20 @@ items:
       href: consume-web-service-with-web-app-template.md
     - name: Batch プールを使用する
       href: dedicated-capacity-for-bes-jobs.md
+  - name: アカウント データの表示と削除
+    href: ai-gallery-control-personal-data-dsr.md
 - name: リファレンス
   items:
+  - name: アルゴリズムとモジュールのリファレンス
+    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
   - name: Azure PowerShell モジュール (新規)
     href: https://docs.microsoft.com/powershell/module/azurerm.machinelearning
   - name: Azure PowerShell モジュール (クラシック)
     href: powershell-module.md
-  - name: アルゴリズムとモジュールのリファレンス
-    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
-  - name: REST 管理 API
-    href: /rest/api/machinelearning
   - name: Web サービスのエラー コード
     href: web-service-error-codes.md
+  - name: REST 管理 API
+    href: /rest/api/machinelearning
 - name: リソース
   items:
   - name: 価格
@@ -240,9 +240,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: R 開発者ガイド
     href: ../r-developers-guide.md
-ms.openlocfilehash: 16c610345c063be9149d841c71d27f73e22d143d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c7b407e7db087992a2b667162aaf4572d657f380
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974117"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303499"

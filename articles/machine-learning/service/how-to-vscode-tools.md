@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 898fd7d0416d1e1b27a25cabf524e72a7de44fde
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 902c659d2c51d69f2e9d0ef3a7401326e0e530eb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269593"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013147"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code の使用を開始する
 
@@ -80,7 +80,8 @@ VS Code を使用して機械学習モデルのトレーニングとデプロイ
 
 1. Visual Studio Code のアクティビティ バーの Azure アイコンをクリックします。 Azure Machine Learning のサイドバーが表示されます。
 
-   [![サイドバー](./media/vscode-tools-for-ai/CreateNewWorkspace.gif)](./media/vscode-tools-for-ai/CreateNewWorkspace.gif#lightbox)
+   [![インストール](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
+
 
 1. Azure サブスクリプションを右クリックし、**[ワークスペースの作成]** を選択します。 一覧が表示されます。 アニメーション画像では、サブスクリプション名は "Free Trial" であり、ワークスペースは "TeamWorkspace" です。 
 
@@ -96,11 +97,11 @@ VS Code を使用して機械学習モデルのトレーニングとデプロイ
  
 1. Enter を押すと、新しい実験が作成されます。 これは、ツリー内でワークスペース名の下に表示されます。
 
-1. 実験名を右クリックし、**[Attach Folder to Experiment]\(フォルダーを実験に接続\)** を選択します。 このフォルダーには ローカルの Python スクリプトが含まれます。 さらに、フォルダーはクラウド内で実験に関連付けられます。 
+1. ワークスペースで [実験] を右クリックして [アクティブな実験として設定] を選択できます。 **'アクティブな'** 実験とは現在使用中の実験のことであり、VS Code で開いたフォルダーは、クラウド上でこの実験にリンクされます。 このフォルダーには ローカルの Python スクリプトが含まれます。
 
    ここで、それぞれの実験を実験と一緒に実行すると、すべての主要メトリックが実験履歴に格納されます。トレーニングするモデルは、自動的に Azure Machine Learning にアップロードされ、実験のメトリックとログと一緒に格納されます。
 
-   [![VS Code でフォルダーを接続](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif)](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif#lightbox)
+   [![VS Code でフォルダーを接続](./media/vscode-tools-for-ai/CreateAnExperiment.gif)](./media/vscode-tools-for-ai/CreateAnExperiment.gif#lightbox)
 
 ### <a name="use-keyboard-shortcuts"></a>キーボード ショートカットの使用
 

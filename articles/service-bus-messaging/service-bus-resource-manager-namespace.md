@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: c616ad86e6846800d214feeaf100f63e311f78b0
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 248ac7ed2a855dd1df71e6e44d1aa7065ddd8ba4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282732"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062069"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
 このクイック スタートでは、**Standard** の SKU で **Messaging** タイプの Service Bus 名前空間を作成する Azure Resource Manager テンプレートを作成します。 また、デプロイの実行用に指定するパラメーターについても取り上げます。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。 完全なテンプレートについては、GitHub の [Service Bus 名前空間テンプレート][Service Bus namespace template]に関するページを参照してください。
@@ -96,7 +96,7 @@ JSON を記述したり PowerShell/CLI コマンドを実行したりするこ�
 }
 ```
 
-このテンプレートは、標準の Service Bus 名前空間を作成します。
+このテンプレートは、標準の Service Bus 名前空間を作成します。 JSON の構文とプロパティについては、[namespaces](/azure/templates/microsoft.servicebus/namespaces) テンプレート リファレンスを参照してください。
 
 ## <a name="create-the-parameters-json"></a>パラメーター JSON を作成する
 前の手順で作成したテンプレートには、`Parameters` というセクションがあります。 パラメーターは、デプロイするプロジェクトやターゲット環境に応じて異なる値に対して定義します。 このテンプレートでは、**serviceBusNamespaceName**、**serviceBusSku**、および **location** のパラメーターを定義します。 Service Bus の SKU の詳細については、作成する [Service Bus の SKU](https://azure.microsoft.com/pricing/details/service-bus/) に関するページを参照してください。
@@ -183,7 +183,7 @@ Azure PowerShell を使用してリソースをデプロイするには、JSON �
 Azure CLI を使用してリソースをデプロイするには、JSON ファイルがあるフォルダーに移動し、次のコマンドを実行します。
 
 > [!IMPORTANT]
-> az group create コマンドで Azure リソース グループの名前を指定します。 。
+> az group create コマンドで Azure リソース グループの名前を指定します。 にも掲載されています。
 
 1. Azure リソース グループを作成します。 
     ```azurecli

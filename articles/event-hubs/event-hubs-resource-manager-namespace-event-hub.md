@@ -14,18 +14,17 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: db5bb30c4049eca699f8adb45a923915033b4216
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 992b27622328bab85fcfaf06ad5a941aceed446f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134456"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051460"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用してイベント ハブを作成する
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
-このクイック スタートでは、Azure Resource Manager テンプレートを使ってイベント ハブを作成します。 Azure Resource Manager テンプレートを使用して、イベント ハブとコンシューマー グループをそれぞれ 1 つずつ含んだ [Event Hubs](event-hubs-what-is-event-hubs.md) タイプの名前空間を作成します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、[Azure Resource Manager テンプレートのオーサリング][Authoring Azure Resource Manager templates]に関する記事をご覧ください。
-
+このクイック スタートでは、Azure Resource Manager テンプレートを使ってイベント ハブを作成します。 Azure Resource Manager テンプレートを使用して、イベント ハブとコンシューマー グループをそれぞれ 1 つずつ含んだ [Event Hubs](event-hubs-what-is-event-hubs.md) タイプの名前空間を作成します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、[Azure Resource Manager テンプレートのオーサリング][Authoring Azure Resource Manager templates]に関する記事をご覧ください。 テンプレートで使用する JSON の構文とプロパティについては、「[Microsoft.EventHub resource types (Microsoft.EventHub のリソースの種類)](/azure/templates/microsoft.eventhub/allversions)」を参照してください。
 
 > [!NOTE]
 > 完全なテンプレートについては、GitHub の[イベント ハブとコンシューマー グループを作成するためのテンプレート][Event Hub and consumer group template]を参照してください。 このテンプレートでは、イベント ハブの名前空間とイベント ハブだけでなく、コンシューマー グループも作成しました。 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "Event Hubs" を検索してください。
@@ -164,7 +163,7 @@ az account set --subscription <Name of your Azure subscription>
 Azure CLI を使用してリソースをデプロイするには、C:\EventHubsQuickStart\ARM\ フォルダーに移動し、次のコマンドを実行します。
 
 > [!IMPORTANT]
-> az group create コマンドで Azure リソース グループの名前を指定します。 。
+> az group create コマンドで Azure リソース グループの名前を指定します。 にも掲載されています。
 
 ```azurecli
 # Create an Azure resource group

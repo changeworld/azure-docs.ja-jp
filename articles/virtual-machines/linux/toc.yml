@@ -392,12 +392,7 @@ items:
       - name: Linux 上の MS SQL
         href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: ハイ パフォーマンス コンピューティング (HPC)
-      href: hpcpack-cluster-options.md
-      items:
-      - name: NAMD の実行
-        href: classic/hpcpack-cluster-namd.md
-      - name: NVIDIA GPU ドライバーのインストール
-        href: n-series-driver-setup.md
+      href: https://docs.microsoft.com/powershell/high-performance-computing/overview
     - name: IBM Db2 pureScale
       items:
       - name: アーキテクチャ
@@ -550,9 +545,9 @@ items:
     href: faq.md
 - name: トラブルシューティング
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 2f7608114083aaabe9cb611aaab348435cd72698
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: c6668017755f748a0c9b1ac1b9e816a222abf9d1
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247647"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306575"

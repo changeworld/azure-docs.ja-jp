@@ -9,20 +9,19 @@ ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 17a8e6f6d6d374c6f8620ecb525727e6fee8c4b9
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: de730004b55f72cb645c6a31c02fd1fe28a52ecd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501879"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013181"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Databricks で Python アクティビティを実行してデータを変換する
 
-[Data Factory パイプライン](concepts-pipelines-activities.md) の Azure Databricks Python アクティビティは、Azure Databricks クラスターで Python ファイルを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
+[Data Factory パイプライン](concepts-pipelines-activities.md) の Azure Databricks Python アクティビティは、Azure Databricks クラスターで Python ファイルを実行します。 この記事は、データ変換の概要とサポートされる変換アクティビティを説明している [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
 
 この機能の概要とデモンストレーションについては、以下の 11 分間の動画を視聴してください。
 
@@ -65,11 +64,11 @@ Databricks Python アクティビティのサンプルの JSON 定義を次に�
 
 |プロパティ|説明|必須|
 |---|---|---|
-|name|パイプラインのアクティビティの名前。|[はい]|
+|name|パイプラインのアクティビティの名前。|はい|
 |description|アクティビティの動作を説明するテキスト。|いいえ |
-|type|Databricks Python アクティビティでは、アクティビティの種類は DatabricksSparkPython です。|[はい]|
-|linkedServiceName|Python アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。|[はい]|
-|pythonFile|実行される Python ファイルの URI。 DBFS パスのみがサポートされています。|[はい]|
+|type|Databricks Python アクティビティでは、アクティビティの種類は DatabricksSparkPython です。|はい|
+|linkedServiceName|Python アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|はい|
+|pythonFile|実行される Python ファイルの URI。 DBFS パスのみがサポートされています。|はい|
 |parameters|Python ファイルに渡されるコマンド ライン パラメーター。 文字列の配列です。|いいえ |
 |libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 <文字列, オブジェクト> の配列を指定できます。|いいえ |
 

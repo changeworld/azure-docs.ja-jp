@@ -3,31 +3,31 @@ title: Azure portal から Chef クライアントをインストールする
 description: Azure portal から Chef クライアントをデプロイして構成する方法について説明します
 keywords: azure、chef、devops、クライアント、インストール、ポータル
 ms.service: virtual-machines-linux
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: e121cd038b8becee1e9c4c12659dbbee0696a9f1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: e5de21e8e493871150d302f1d2c0e31d067affde
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378654"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051330"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Azure portal から Chef クライアントをインストールする
 Azure portal から Linux または Windows の仮想マシンを作成または変更するときに、Chef 拡張機能を仮想マシンに追加できます。 この記事では、新しい Linux 仮想マシンを使用してそのプロセスを説明します。
 
 ## <a name="prerequisites"></a>前提条件
-- **Azure サブスクリプション**: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-- **Chef**: 有効な Chef アカウントを持っていない場合は、[Hosted Chef の無料試用版](https://manage.chef.io/signup)にサインアップします。 この記事の指示に従って進めるには、Chef アカウントから次の値が必要になります。 
+- **Chef**:有効な Chef アカウントを持っていない場合は、[Hosted Chef の無料試用版](https://manage.chef.io/signup)にサインアップします。 この記事の指示に従って進めるには、Chef アカウントから次の値が必要になります。 
     - organization_validation キー
     - rb
     - run_list
 
 ## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>新しい Linux 仮想マシンに Chef 拡張機能をインストールする
-このセクションでは、Azure portal を使用して、Linux コンピューターを作成します。 処理中に、新しい仮想マシンに Chef 拡張機能をインストールする方法も表示されます。
+このセクションでは、Azure portal を使用して、Linux コンピューターを作成します。 この処理中に、新しい仮想マシンに Chef 拡張機能をインストールする方法も示されます。
 
 1. [Azure ポータル](http://portal.azure.com)にアクセスします。
 

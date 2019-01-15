@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: ab5f334b1c830ea5e9c0164b8e75ef0f4fab8e1b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 50f048dc36b0248cdbbd85d91c00b7947f9ddc1f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075643"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052140"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
@@ -39,6 +39,10 @@ ms.locfileid: "53075643"
 <sup>1</sup> 請求先アカウントも、"マイクロソフト エンタープライズ契約" または "登録" と呼ばれます。
 
 <sup>2</sup> 登録アカウントも、"アカウント所有者" と呼ばれます。
+
+次の図は、Cost Management のスコープと、ロールおよび EA ポータル設定との関係を示しています。
+
+![コスト管理のスコープと、ロールおよび EA ポータル設定との関係を示す図](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>EA ポータルでのコストへのアクセスを有効にする
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 3154d5401389d46eb1b9fad335aa18362c5f21f7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: cb604bec1860da25e18c1c3a56a012882e5ea58e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310373"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189515"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -113,7 +113,7 @@ ID プロバイダーによってこれらのプロトコルがサポートさ�
 
 - **Azure AD**: 追加のセットアップは不要です。
 
-[代替ログイン ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) は、Azure AD 参加済みデバイスではサポートされていません。 ユーザーが代替ログイン ID を使用する場合は、Azure AD 内でそれらのユーザーのプライマリ UPN を使用するように切り替えることを計画してください。
+Azure AD の UPN とは異なるオンプレミスの UPN は、Azure AD 参加済みデバイスでサポートされていません。 お客様のユーザーがオンプレミスの UPN を使用している場合は、Azure AD 内でプライマリ UPN を使用するように切り替えることを計画してください。
 
 
 
@@ -167,7 +167,7 @@ MDM ソリューションを Azure AD アプリ ギャラリーから入手で�
 
 ### <a name="cloud-based-applications"></a>クラウドベース アプリケーション
 
-Azure AD アプリ ギャラリーにアプリケーションが追加されている場合、ユーザーは Azure AD 参加済みデバイスから SSO を取得できます。 追加の構成は不要です。 ユーザーは Edge と Chrome の両方のブラウザーで SSO を取得できます。 Chrome の場合は、[Windows 10 アカウントの拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をデプロイする必要があります。 
+Azure AD アプリ ギャラリーにアプリケーションが追加されている場合、ユーザーは Azure AD 参加済みデバイスから SSO を取得できます。 追加の構成は不要です。 ユーザーは Microsoft Edge と Chrome の両方のブラウザーで SSO を取得できます。 Chrome の場合は、[Windows 10 アカウントの拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をデプロイする必要があります。 
 
 すべての Win32 アプリケーションが次のようになります。
 
@@ -234,7 +234,7 @@ Azure AD 参加済みデバイスにリモート デスクトップ接続を行�
  
 ||セルフサービス セットアップ|Windows Autopilot|一括登録|
 |---|---|---|---|
-|セットアップにユーザーの操作が必要|[はい]|[はい]|いいえ |
+|セットアップにユーザーの操作が必要|[はい]|はい|いいえ |
 |IT 部門の作業が必要|いいえ |可能 |[はい]|
 |適用可能なフロー|OOBE と設定|OOBE のみ|OOBE のみ|
 |プライマリ ユーザーに対するローカル管理者権限|既定では、はい|構成可能|いいえ |

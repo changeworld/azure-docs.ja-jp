@@ -9,17 +9,16 @@ ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 843b92c20b2ec930ce67659802a4287328a08650
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 77c55657f57af655b5b8154dbcf58472434396a6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618871"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015494"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -88,10 +87,10 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">下位状態</th><th align="left">説明</th>
+    <th align="left">状態</th><th align="left">下位状態</th><th align="left">説明</th>
 </tr>
 <tr>
-    <td rowspan="8">待機中</td><td>ScheduleTime</td><td>スライスを実行する時刻になっていません。</td>
+    <td rowspan="8">Waiting</td><td>ScheduleTime</td><td>スライスを実行する時刻になっていません。</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>アップストリームの依存関係の準備ができていません。</td>
@@ -109,7 +108,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 <td>Retry</td><td>アクティビティの実行が再試行されています。</td>
 </tr>
 <tr>
-<td>検証</td><td>検証がまだ開始されていません。</td>
+<td>Validation</td><td>検証がまだ開始されていません。</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>検証は再試行を待機中です。</td>
@@ -122,13 +121,13 @@ Azure Portal を使用すると、次の操作を行うことができます。
 <td>スライスの処理中です。</td>
 </tr>
 <tr>
-<td rowspan="4">失敗</td><td>TimedOut</td><td>アクティビティで許可されている実行時間を超過しました。</td>
+<td rowspan="4">Failed</td><td>TimedOut</td><td>アクティビティで許可されている実行時間を超過しました。</td>
 </tr>
 <tr>
 <td>Canceled</td><td>スライスがユーザーの操作によって取り消されました。</td>
 </tr>
 <tr>
-<td>検証</td><td>検証が失敗しました。</td>
+<td>Validation</td><td>検証が失敗しました。</td>
 </tr>
 <tr>
 <td>-</td><td>スライスが、生成、検証、またはその両方に失敗しました。</td>
@@ -136,10 +135,10 @@ Azure Portal を使用すると、次の操作を行うことができます。
 <td>Ready</td><td>-</td><td>スライスは使用可能な状態です。</td>
 </tr>
 <tr>
-<td>Skipped</td><td>なし</td><td>スライスは処理中ではありません。</td>
+<td>Skipped</td><td>None</td><td>スライスは処理中ではありません。</td>
 </tr>
 <tr>
-<td>なし</td><td>-</td><td>スライスは別のステータスで存在していましたが、リセットされました。</td>
+<td>None</td><td>-</td><td>スライスは別のステータスで存在していましたが、リセットされました。</td>
 </tr>
 </table>
 
@@ -162,7 +161,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 ![状態ダイアグラム](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-データ ファクトリのデータセット状態遷移フローは、Waiting -> In-Progress/In-Progress (Validating) -> Ready/Failed となります。
+データ ファクトリでのデータセット状態遷移フローは次のとおりです。Waiting -> In-Progress/In-Progress (Validating) -> Ready/Failed。
 
 スライスは **Waiting** 状態で始まり、前提条件が満たされるまで待機してから実行されます。 アクティビティの実行が始まると、スライスは **In-Progress** 状態になります。 アクティビティの実行結果は成功か失敗のどちらかになります。 実行結果に応じて、スライスは **Ready** または **Failed** とマークされます。
 
