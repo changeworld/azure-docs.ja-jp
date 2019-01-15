@@ -37,7 +37,7 @@ ms.locfileid: "53086812"
 
 3. ダイアログ ボックスで、アプリケーションに "Home Automation" という名前を付けます。
 
-    [![[新しいアプリの作成] ポップアップ ダイアログのスクリーンショット](media/luis-quickstart-new-app/create-new-app-dialog.png "[新しいアプリの作成] ポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-new-app/create-new-app-dialog.png)
+    [![新しいアプリの作成 ポップアップ ダイアログのスクリーンショット](media/luis-quickstart-new-app/create-new-app-dialog.png "新しいアプリの作成 ポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-new-app/create-new-app-dialog.png)
 
 4. アプリケーションのカルチャを選択します。 この Home Automation アプリでは、英語を選択します。 **[完了]** を選択します。 LUIS により Home Automation アプリが作成されます。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "53086812"
 
 ドメインが正常に追加されると、事前構築済みドメインのボックスに、**[Remove domain]\(ドメインの削除\)** ボタンが表示されます。
 
-[![[削除] ボタンがある Home Automation ドメインのスクリーンショット](media/luis-quickstart-new-app/remove-domain.png "[削除] ボタンがある Home Automation ドメインのスクリーンショット")](media/luis-quickstart-new-app/remove-domain.png)
+[![削除 ボタンがある Home Automation ドメインのスクリーンショット](media/luis-quickstart-new-app/remove-domain.png "削除 ボタンがある Home Automation ドメインのスクリーンショット")](media/luis-quickstart-new-app/remove-domain.png)
 
 ## <a name="intents-and-entities"></a>意図とエンティティ
 
@@ -80,7 +80,7 @@ Turn off the lights
 
 この例では、"HomeAutomation.TurnOff" に対する最もスコアの高い意図として "Turn off the lights" が正しく識別されています。
 
-[![発話が強調表示されている [テスト] ウィンドウのスクリーンショット](media/luis-quickstart-new-app/test.png "発話が強調表示されている [テスト] ウィンドウのスクリーンショット")](media/luis-quickstart-new-app/test.png)
+[![発話が強調表示されている テスト ウィンドウのスクリーンショット](media/luis-quickstart-new-app/test.png "発話が強調表示されている テスト ウィンドウのスクリーンショット")](media/luis-quickstart-new-app/test.png)
 
 
 もう一度 **[テスト]** を選択して、テスト ウィンドウを折りたたみます。 
