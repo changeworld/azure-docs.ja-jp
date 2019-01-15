@@ -77,9 +77,9 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
-| outputName |[はい] |出力値の名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| type |[はい] |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 |
-| value |[はい] |評価され、出力値として返されるテンプレート言語式。 |
+| outputName |はい |出力値の名前。 有効な JavaScript 識別子で指定する必要があります。 |
+| type |はい |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 |
+| value |はい |評価され、出力値として返されるテンプレート言語式。 |
 
 
 ## <a name="example-templates"></a>サンプル テンプレート
