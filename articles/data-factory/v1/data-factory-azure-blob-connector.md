@@ -22,7 +22,7 @@ ms.lasthandoff: 08/21/2018
 ms.locfileid: "42143616"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-azure-blob-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-azure-blob-storage.md)
 
