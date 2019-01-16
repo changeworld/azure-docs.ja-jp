@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
-ms.openlocfilehash: 915c57033209ff982946163c408cf8557515e2f5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 897a350c345e6e284f30040c0d4fcf07d5a6f466
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999205"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106843"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>データ処理とユーザー定義関数
 
@@ -102,6 +102,15 @@ Azure Digital Twins のデータ処理は、"*マッチャー*"、"*ユーザー
 - 通知を送信する前に、センサー読み取りにグラフ メタデータを添付します。
 
 詳細については、[ユーザー定義関数を使用する方法](./how-to-user-defined-functions.md)に関するページを参照してください。
+
+
+#### <a name="examples"></a>例
+
+[Digital Twins の C# サンプルに関する GitHub リポジトリ](https://github.com/Azure-Samples/digital-twins-samples-csharp/)には、ユーザー定義関数の例がいくつか記載されています。
+- [こちらの関数](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js)では、二酸化炭素、モーション、および温度の値を取得し、それらの値が範囲内である部屋が使用可能かどうかを判定します。 [Digital Twins のチュートリアル](tutorial-facilities-udf.md)では、この関数について詳しく説明しています。 
+- [こちらの関数](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js)では、複数のモーション センサーからデータを取得し、いずれのセンサーからもモーションが検出されなかった場合に、スペースが使用可能であると判定します。 [クイック スタート](quickstart-view-occupancy-dotnet.md) (または[チュートリアル](tutorial-facilities-setup.md)) で使用されているユーザー定義関数は、ファイルのコメント セクションで説明されている変更を加えることで、簡単に置き換えることができます。 
+
+
 
 ### <a name="role-assignment"></a>ロール割り当て
 

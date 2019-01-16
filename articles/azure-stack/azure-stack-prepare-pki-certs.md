@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 7a4c0d62fd1ea675c6569840c26ed1fb8e388850
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5f31d995ba4390eb5a893c3ebde49ee4e96e8023
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631483"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021137"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>デプロイまたはローテーション用の Azure Stack PKI 証明書の準備
 [任意の CA から取得した](azure-stack-get-pki-certs.md)証明書ファイルは、Azure Stack の証明書要件に一致するプロパティを使用してインポートおよびエクスポートする必要があります。
@@ -73,7 +73,14 @@ ms.locfileid: "53631483"
 
 1. **[はい、秘密キーをエクスポートします]** を選択し、**[次へ]** をクリックします。
 
-1. [エクスポート ファイルの形式] セクションで、**[すべての拡張プロパティをエクスポートする]** を選択し、**[次へ]** をクリックします。
+1. [エクスポート ファイルの形式] セクションで、次の操作を行います。
+    
+    - **[Include all certificates in the certificate if possible]\(証明書にすべての証明書を含める (可能な場合)\)** を選択します。  
+    - **[Export all Extended Properties]\(すべての拡張プロパティをエクスポートする\)** を選択します。  
+    - **[証明書のプライバシーを有効にする ]** を選択します。  
+    - **[次へ]** をクリックします。  
+    
+    ![いくつかのオプションが選択されている [Certificate export wizard]\(証明書のエクスポート ウィザード\)](./media/prepare-pki-certs\azure-stack-save-cert.png)
 
 1. **[パスワード]** を選択し、証明書のパスワードを指定します。 このパスワードはデプロイ パラメーターとして使用されるので、忘れないようにしてください。 **[次へ]** を選択します。
 
@@ -82,4 +89,5 @@ ms.locfileid: "53631483"
 1. **[完了]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
+
 [PKI 証明書の検証](azure-stack-validate-pki-certs.md)

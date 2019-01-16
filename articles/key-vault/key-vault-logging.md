@@ -10,16 +10,15 @@ ms.assetid: 43f96a2b-3af8-4adc-9344-bc6041fface8
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 8e3076f2176739f5b9df5776f27d7483c9fd2692
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 2a36993e9406613ad9182d01c3681056114dca18
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000412"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159963"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -39,7 +38,7 @@ Key Vault の操作を行ってから、遅くとも 10 分後には、ログ情
 > [!NOTE]
 > Key Vault、キー、またはシークレットの作成方法については、このチュートリアルに含まれていません。 詳細については、「 [Azure Key Vault の概要](key-vault-get-started.md)」を参照してください。 また、クロスプラットフォーム コマンドライン インターフェイスの手順については、 [対応するチュートリアル](key-vault-manage-with-cli2.md)をご覧ください。
 >
-> 現時点では、Azure ポータルで Azure Key Vault を構成できません。 代わりに、Azure PowerShell 命令を使用します。
+> この記事では、Azure PowerShell を使用して診断ログを更新する方法を説明します。 ただし、Azure portal の **[診断ログ]** セクションで Azure Monitor を使用して、同じことを有効にできます。 
 >
 >
 
@@ -113,7 +112,7 @@ Key Vault のログ記録を有効にするために、AzureRmDiagnosticSetting 
 Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
 ```
 
-この出力は次のとおりです。
+出力は次のようになります。
 
     StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
     ServiceBusRuleId   :
@@ -230,6 +229,7 @@ Get-AzureRmKeyVault -VaultName 'contosokeyvault'`
 
 次のようなログ エントリが返されます。
 
+```json
     {
         "records":
         [
@@ -250,6 +250,7 @@ Get-AzureRmKeyVault -VaultName 'contosokeyvault'`
             }
         ]
     }
+```
 
 次の表にフィールド名と説明を示します。
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: fad023b7593b0e13b05d081a11333f5e92c8ecef
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602173"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077744"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -36,10 +36,8 @@ Azure Marketplace に発行されるすべての[ソリューション テンプ
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager テンプレートを使用する
 
-多くのパートナー ソリューションは、Resource Manager テンプレートを使用して顧客のサブスクリプションに対してデプロイされます。 Azure Marketplace や GitHub で提供されている Resource Manager テンプレートがある場合、またはクイック スタートとして利用できる Resource Manager テンプレートがある場合は、簡単な手順で、その既存のテンプレートに変更を加えて新しい追跡方法を有効にすることができます。 現在 Azure Resource Manager テンプレートを使用していない場合は、Resource Manager テンプレートについての理解を深め、作成方法を知るために役立つリンクがいくつかあります。 
+多くのパートナー ソリューションは、Resource Manager テンプレートを使用して顧客のサブスクリプションに対してデプロイされます。 Azure Marketplace や GitHub で提供されている Resource Manager テンプレートがある場合、またはクイック スタートとして利用できる Resource Manager テンプレートがある場合は、簡単な手順で、その既存のテンプレートに変更を加えて新しい追跡方法を有効にすることができます。 詳しくは、「[初めての Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)」をご覧ください。
 
-*   [初めての Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-*   [Azure Marketplace 向けソリューション テンプレートの作成](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
 
 ## <a name="add-a-guid-to-your-template"></a>テンプレートに GUID を追加する
 
@@ -270,11 +268,15 @@ Microsoft はパートナーに対し、そのテンプレートの顧客デプ�
 
 **だれがテンプレートに GUID を追加できますか?**
 
-リソース追跡の目的は、パートナーのソリューションを顧客の Azure 使用状況に結び付けることです。 使用状況データはパートナーの Microsoft Partner Network ID (MPN ID) に関連付けられ、 
+リソース追跡の目的は、パートナーのソリューションを顧客の Azure 使用状況に結び付けることです。 使用状況データはパートナーの Microsoft Partner Network ID (MPN ID) に関連付けられ、 レポートが CPP でパートナーに提供されます。
 
 **追加した GUID は変更できますか?**
  
 はい。顧客または実装パートナーはテンプレートをカスタマイズし、GUID を変更したり、削除したりできます。 パートナーには、顧客に対してリソースと GUID の役割を事前に説明すること、追跡 GUID を削除または編集しないことをお勧めします。 GUID の変更は、既存ではない新規のデプロイとリソースのみに反映されます。
+
+**レポートはいつ利用できるのでしょうか?**
+
+レポート機能のベータ版が間もなく利用可能になります。 レポートは CPP に統合されます。
 
 **GitHub のような Microsoft 以外のリポジトリからデプロイしたテンプレートを追跡できますか?**
 

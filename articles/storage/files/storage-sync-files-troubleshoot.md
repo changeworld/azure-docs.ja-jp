@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: c9e31bdc2b526c442b4ac62d98725254a38e5967
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 852ffdafefeef7f4b8fd6bf3a9c5d175d872e077
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794551"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157634"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -145,11 +145,13 @@ Set-AzureRmStorageSyncServerEndpoint `
 
 サーバー エンドポイントでは、次の理由により同期アクティビティが記録されない場合があります。
 
-- サーバーが同時同期セッションの最大数に達している。 Azure File Sync で現在サポートされているのは、プロセッサごとに 2 つのアクティブな同期セッション、またはサーバーごとに 8 つのアクティブな同期セッションです。
+- サーバーにアクティブな VSS 同期セッション (SnapshotSync) が存在する。 あるサーバー エンドポイントで VSS 同期セッションがアクティブな場合、その VSS 同期セッションが完了するまで、同じボリューム上の他のサーバー エンドポイントは同期セッションを開始できません。
 
-- サーバーにアクティブな VSS 同期セッション (SnapshotSync) が存在する。 あるサーバー エンドポイントで VSS 同期セッションがアクティブな場合、その VSS 同期セッションが完了するまで、サーバー上の他のサーバー エンドポイントは同期セッションを開始できません。
+    サーバー上の現在の同期アクティビティを確認するには、「[現在の同期セッションの進行状況を監視するにはどうすればよいですか。](#how-do-i-monitor-the-progress-of-a-current-sync-session)」を参照してください。
 
-サーバー上の現在の同期アクティビティを確認するには、「[現在の同期セッションの進行状況を監視するにはどうすればよいですか。](#how-do-i-monitor-the-progress-of-a-current-sync-session)」を参照してください。
+- サーバーが同時同期セッションの最大数に達している。 
+    - エージェント バージョン 4.x 以降:制限は、使用できるシステム リソースに応じて変わります。
+    - エージェント バージョン 3.x:プロセッサごとに 2 つのアクティブな同期セッション、またはサーバーごとに最大 8 つのアクティブな同期セッション。
 
 > [!Note]  
 > [登録済みサーバー] ブレードで、サーバーの状態が [オフラインのようです] になっている場合は、「[サーバー エンドポイントの正常性状態が [アクティビティなし] または [保留中] で、登録済みサーバー ブレードのサーバーの状態が [オフラインのようです] になっている](#server-endpoint-noactivity)」セクションに記載されている手順を実行してください。
@@ -244,13 +246,14 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 **ItemResults log - 項目単位の同期エラー**  
 | HRESULT | HRESULT (10 進値) | エラー文字列 | 問題 | Remediation |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c80065 | -2134376347 | ECS_E_DATA_TRANSFER_BLOCKED | 同期中にファイルで永続的なエラーが発生しました。ファイルの同期は 1 日に 1 回しか試行されません。 基になっているエラーは、前のイベント ログで確認できます。 | エージェント R2 (2.0) 以降では、このエラーではなく元のエラーが表示されます。 最新のエージェントにアップグレードして基になっているエラーを確認するか、前のイベント ログを参照して元のエラーの原因を調べます。 |
-| 0x7b | 123 | ERROR_INVALID_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 [Azure のファイル命名ガイドライン](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)と、下に示すサポートされていない文字の一覧を参照してください。 |
-| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 [Azure のファイル命名ガイドライン](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)と、下に示すサポートされていない文字の一覧を参照してください。 |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | ファイルが変更されましたが、まだ同期によって変更が検出されていません。この変更が検出された後に同期が復旧します。 | 必要なアクションはありません。 |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 Azure File Sync は、1 日 1 回サーバー上で一時 VSS スナップショットを作成して、開くハンドルを含むファイルを同期します。 |
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 依存フォルダーがまだ同期されていないため、ファイルまたはディレクトリの変更を同期できません。 この項目は、依存する変更が同期された後に同期されます。 | 必要なアクションはありません。 |
+| 0x7b | 123 | ERROR_INVALID_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
+| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 Azure File Sync は、1 日 1 回サーバー上で一時 VSS スナップショットを作成して、開くハンドルを含むファイルを同期します。 |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | ファイルが変更されましたが、まだ同期によって変更が検出されていません。この変更が検出された後に同期が復旧します。 | 必要なアクションはありません。 |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Azure ファイル共有の制限に達したため、ファイルを同期できません。 | この問題を解決するには、トラブルシューティング ガイドの「[Azure のファイル共有ストレージの上限に到達しました](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)」をご覧ください。 |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | このエラーは、ファイルがサポートされていないソリューション (NTFS EFS など) によって暗号化されている場合、または削除保留中状態の場合に、発生する可能性があります。 | ファイルがサポートされていないソリューションによって暗号化されている場合は、ファイルの暗号化を解除し、サポートされている暗号化ソリューションを使用します。 サポートされているソリューションの一覧については、計画ガイドの「[暗号化ソリューション](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#encryption-solutions)」セクションをご覧ください。 ファイルが削除保留中状態の場合は、開いているファイルのすべてのハンドルが閉じられると、ファイルは削除されます。 |
+| 0x20 | 32 | ERROR_SHARING_VIOLATION | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同期中にファイルが変更されたため、再度同期する必要があります。 | 必要なアクションはありません。 |
 
 #### <a name="handling-unsupported-characters"></a>サポートされていない文字の処理
@@ -549,6 +552,16 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **修復が必要か** | [はい] |
 
 パスが存在し、ローカル NTFS ボリューム上にあって、再解析ポイントや既存のサーバー エンドポイントにはなっていないことを確認します。
+
+<a id="-2134375817"></a>**フィルター ドライバーのバージョンとエージェントのバージョンに互換性がないため、同期が失敗しました**  
+| | |
+|-|-|
+| **HRESULT** | 0x80C80277 |
+| **HRESULT (10 進値)** | -2134375817 |
+| **エラー文字列** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
+| **修復が必要か** | [はい] |
+
+このエラーは、読み込まれたクラウド階層化フィルター ドライバー (StorageSync.sys) のバージョンと、ストレージ同期エージェント (FileSyncSvc) サービスとの間に互換性がないために発生します。 Azure File Sync エージェントがアップグレードされた場合は、サーバーを再起動してインストールを完了します。 エラーが引き続き発生する場合は、エージェントをアンインストールし、サーバーを再起動して、Azure File Sync エージェントを再インストールします。
 
 <a id="-2134376373"></a>**サービスは現在使用できません。**  
 | | |

@@ -4,16 +4,16 @@ description: サポートされているシステムと、IoT Edge モジュー�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 46b007cfa7156c0c7718b7f4bd4f735a58c722fc
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: f3d1fb393138aeb590bc0645d6abe93652a52a5b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797550"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052583"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>IoT Edge のための開発およびテスト環境の準備
 
@@ -45,7 +45,7 @@ Visual Studio と Visual Studio Code の両方に、IoT Edge ソリューショ�
 
 Visual Studio Code 用の Azure IoT Edge 拡張機能では、C、C#、Java、Node.js、Python などのプログラミング言語でビルドされた IoT Edge モジュールのテンプレートや C# での Azure 関数が提供されます。 
 
-詳細情報およびダウンロードについては、[Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) に関する記事をご覧ください。
+詳細情報およびダウンロード方法については、[Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) に関するページを参照してください。
 
 IoT Edge 拡張機能に加えて、開発用のその他の拡張機能をインストールするのに役立つ情報もご覧いただけます。 たとえば、[Docker Support for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) を使用して、イメージ、コンテナー、レジストリを管理することができます。 さらに、サポートされている主要言語すべてで、モジュールを開発する際に役立つ Visual Studio Code の拡張機能が用意されています。 
 

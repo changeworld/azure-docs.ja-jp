@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: bec62b8c6b70706fa6519cbc2fd59bf69f119e9d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: eb81e5202b5705c59bae8e07cbf2ade43b03f075
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236265"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064476"
 ---
 # <a name="azure-log-integration-faq"></a>Azure ログ統合 のFAQ
 
@@ -31,7 +31,7 @@ ms.locfileid: "35236265"
 
 Azure ログ統合は Windows オペレーティング システムのサービスです。このサービスを利用すると、未加工のログを Azure リソースからオンプレミスの Security Information and Event Management (SIEM) システムに統合できます。 この統合によって、オンプレミスでもクラウド上でも、すべての資産を一元化されたダッシュボードで利用できるようになります。 そうすることで、お使いのアプリケーションに関連するセキュリティ イベントの集計、関連付け、分析、および警告を行えます。
 
-Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Monitor コネクタを使用し、こちらの[手順](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)に従うことです。 ただし、SIEM ベンダーが Azure Monitor にコネクタを提供していない場合は、このようなコネクタが使用可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
+Azure ログを統合する場合は、SIEM ベンダーの Azure Monitor コネクタを使用して、こちらの[手順](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)に従うことをお勧めします。 ただし、SIEM ベンダーが Azure Monitor へのコネクタを提供していない場合は、そのようなコネクタが入手可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Azure ログ統合ソフトウェアは無料ですか。
 
@@ -97,7 +97,7 @@ Azure Active Directory 監査ログには、名前の一部として、テナン
 
 エラー:
 
-  *Warning creating Role Assignment - AuthorizationFailed: The client janedo@microsoft.com' with object id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000'.*
+  *Warning creating Role Assignment - AuthorizationFailed:The client janedo@microsoft.com' with object id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000'.*
 
 **azlog authorize** コマンドは、(**azlog createazureid** で作成された) Azure AD サービス プリンシパルの閲覧者のロールを、指定されたサブスクリプションに割り当てます。 Azure ログインが、サブスクリプションの共同管理者または所有者としてのログインでない場合、ログインは失敗し、"承認に失敗しました" というエラー メッセージが表示されます。 このアクションを完了するには、共同管理者または所有者の Azure ロールベースのアクセス制御 (RBAC) が必要です。
 

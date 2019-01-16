@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: 702ebdc0966a72396ac644b154ba13d2321fd5d4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a4671d383c46bf0b932ce528f4eacb7255bad5e7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631347"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105408"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスのローカル管理者グループの管理方法
 
@@ -64,7 +64,10 @@ Azure AD 参加を使用して Windows デバイスを Azure AD に接続する�
 
 ![追加のローカル管理者](./media/assign-local-admin/10.png)
 
- 
+>[!NOTE]
+> このオプションを使用するには、Azure AD Premium テナントが必要です。 
+
+
 デバイス管理者は、すべての Azure AD 参加済みデバイスに割り当てられます。 デバイス管理者の対象範囲を特定のデバイス セットに限定することはできません。 デバイス管理者ロールを更新しても、対象のユーザーにすぐに影響が及ぶとは限りません。 ユーザーが既にサインインしているデバイスの場合、権限の更新は次のタイミングで発生します。
      
 

@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 12/31/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 920ae8ff09cb8e936a1ba70b2c862bd9bc076046
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e229fcc2c9eb6b8e1b49293dfd741a2f96f62871
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974694"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077387"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -108,6 +108,12 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>レプリケートされる VM を、ディスクの追加またはサイズ変更によって変更することはできますか?
 
 Azure への VMware のレプリケーションでは、ディスクのサイズを変更できます。 新しいディスクを追加する場合は、ディスクを追加し、VM の保護を再度有効にする必要があります。
+
+### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>進行中のレプリケーションに影響を与えることなく、オンプレミスのマシンを新しい Vcenter に移行することはできますか?
+いいえ、Vcenter を変更したり、移行を行ったりすると、進行中のレプリケーションに影響が及びます。 新しい Vcenter を使用して ASR を設定し、マシンのレプリケーションを有効にする必要があります。
+
+### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>(Azure Storage ファイアウォールを使用して) Vnet が構成されているキャッシュ/ターゲット ストレージ アカウントにレプリケートすることはできますか?
+いいえ、Azure Site Recovery では、Vnet 上のストレージへのレプリケーションはサポートされていません。
 
 ## <a name="configuration-server"></a>構成サーバー
 
@@ -225,9 +231,10 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 はい、Azure にフェールオーバーした場合、元の場所が利用できないときは、別の場所にフェールバックすることができます。 [詳細情報](concepts-types-of-failback.md#alternate-location-recovery-alr)。
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>フェールバックに VPN または ExpressRoute が必要なのはなぜですか?
-
 Azure からフェールバックするときは、Azure からオンプレミスの VM にデータがコピーされるので、プライベート アクセスが必要です。
 
+### <a name="can-i-resize-the-azure-vm-after-failover"></a>フェールオーバー後に Azure VM をサイズ変更することはできますか?
+いいえ、フェールオーバー後にターゲット VM のサイズを変更することはできません。
 
 
 ## <a name="automation-and-scripting"></a>自動化とスクリプト

@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 12/14/2018
+ms.date: 01/04/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fb3d19d35a15d5476594948b035a39ae703f1c3a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 463ab617051bf97bb3b1c38ed431c4b6936a9c90
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550965"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118695"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
@@ -31,7 +31,7 @@ C#、Node.js、または Java で記述されたモジュールの場合、Visua
 
 まず [Visual Studio Code](https://code.visualstudio.com/) をインストールしてから、次の拡張機能を追加します。
 
-- [Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
+- [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 - [Docker 拡張機能](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - 開発に使用している言語固有の Visual Studio 拡張機能
   - C# (Azure Functions を含む): [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
@@ -73,7 +73,7 @@ C でモジュールを開発している場合を除き、IoT Edge ソリュー
 
 ## <a name="create-a-new-solution-template"></a>新しいソリューション テンプレートを作成する
 
-次の手順では、Visual Studio Code と Azure IoT Edge 拡張機能を使用して好きな開発言語 (C# で記述されている Azure Functions を含む) で IoT Edge モジュールを作成する方法を説明します。 まずはソリューションを作成し、次にそのソリューション内に最初のモジュールを生成します。 各ソリューションには複数のモジュールを含めることができます。
+次の手順では、Visual Studio Code と Azure IoT Tools を使用して好きな開発言語 (C# で記述されている Azure Functions を含む) で IoT Edge モジュールを作成する方法を説明します。 まずはソリューションを作成し、次にそのソリューション内に最初のモジュールを生成します。 各ソリューションには複数のモジュールを含めることができます。
 
 1. **[ビュー]** > **[コマンド パレット]** の順に選択します。
 
@@ -241,13 +241,17 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 >
 > C# (Azure Functions を含む) で記述されたモジュールの場合、この例は、コンテナー イメージの作成中に .NET Core コマンドライン デバッガー (VSDBG) を含める、デバッグ バージョンの `Dockerfile.amd64.debug` に基づいています。 C# モジュールをデバッグした後、稼働準備済みの IoT Edge モジュールでは、VSDBG が含まれていない Dockerfile を直接使用することをお勧めします。
 
-## <a name="debug-a-module-with-iot-edge-runtime-python-c"></a>IoT Edge ランタイムを使用してモジュールをデバッグする (Python、C)
+## <a name="debug-a-module-with-iot-edge-runtime"></a>IoT Edge ランタイムを使用してモジュールをデバッグする
 
 各モジュール フォルダーには、コンテナー タイプが異なるいくつかの Docker ファイルが含まれています。 テスト用のモジュールを作成するには、**.debug** 拡張子で終わるファイルのいずれかを使用します。
 
-現在、Python と C モジュールのデバッグのサポートは Linux amd64 コンテナーのみで利用できます。
+IoT Edge ランタイムを使用してモジュールをデバッグする際、モジュールは IoT Edge ランタイム上で実行されます。 IoT Edge デバイスと VS Code は同じマシンに配置することもできますが、通常は異なるマシンに配置されます (VS Code は開発用のマシン、IoT Edge ランタイムとモジュールは別の物理マシンで実行されます)。 VS Code 内のデバッグ セッションでは、次の手順を実行する必要があります。
 
-### <a name="build-and-deploy-your-module"></a>モジュールを作成してデプロイする
+- IoT Edge デバイスを設定し、**.debug** Dockerfile を使用して IoT Edge モジュールを構築して、IoT Edge デバイスに展開します。 
+- モジュールの IP とポートを、アタッチするデバッガー用に公開します。
+- `launch.json` ファイルを更新して、リモート マシンのコンテナー内にあるプロセスに VS Code をアタッチできるようにします。
+
+### <a name="build-and-deploy-your-module-and-deploy-to-iot-edge-device"></a>モジュールを構築して IoT Edge デバイスに展開する
 
 1. Visual Studio Code で、`deployment.debug.template.json` ファイルを開きます。これには、適切な `createOptions` 値が設定されているモジュール イメージのデバッグ バージョンが含まれています。
 
@@ -294,7 +298,17 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
 統合ターミナルで、デプロイが正常に作成されていることをデプロイ ID によって確認できます。
 
-コンテナーの状態は、Visual Studio Code の Docker ビューで確認するか、ターミナルで `docker ps` コマンドを実行して確認することができます。
+端末で `docker ps` コマンドを実行して、コンテナーの状態を確認できます。 VS Code と IoT Edge ランタイムが同じマシンで実行されている場合は、Visual Studio Code の Docker ビューでも状態を確認することができます。
+
+### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger-to-attach"></a>モジュールの IP とポートをアタッチするデバッガー用に公開する
+
+モジュールが VS Code と同じマシンで実行されている場合、 コンテナーは localhost を使用してアタッチされ、**.debug** Dockerfile、モジュール コンテナーの CreateOptions、および `launch.json` で適切なポートが既に設定されているので、 このセクションはスキップできます。 モジュールと VS Code が別々のマシンで実行されている場合は、各言語に対応した以下の手順に従ってください。
+
+  - **C#、C# 関数**:[開発用マシンと IoT Edge デバイス上で SSH チャネルを構成し](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes)、アタッチする `launch.json` ファイルを編集します。
+  - **Node.js**:モジュールがデバッガーへのアタッチ用に準備できていることと、デバッグ対象マシンの 9229 ポートが外部からアクセス可能になっていることを確認します。 これは、デバッガー マシン上で [http://%3cdebuggee-machine-IP%3e:9229/json]http://<debuggee-machine-IP>:9229/json を開くことで確認できます。 この URL は、デバッグ対象の Node.js に関する情報を示すものである必要があります。 その後、デバッガー マシン上で VS Code を開き、`launch.json` ファイルを編集して、"<module-name> Remote Debug (Node.js)" プロファイル (モジュールが Windows コンテナーとして実行されている場合は "<module-name> Remote Debug (Node.js in Windows Container)" プロファイル) のアドレス値をデバッグ対象マシンの IP にします。
+  - **Java**: `ssh -f <username>@<edgedevicehost> -L 5005:127.0.0.1:5005 -N` を実行して Edge デバイスへの ssh トンネルを構築した後、アタッチする `launch.json` ファイルを編集します。 設定について詳しくは、[こちら](https://code.visualstudio.com/docs/java/java-debugging)をご覧ください。 
+  - **Python**: コード `ptvsd.enable_attach(('0.0.0.0', 5678))` 内で、0.0.0.0 を IoT Edge デバイスの IP アドレスに変更します。 IoT Edge モジュールをもう一度構築し、プッシュして展開します。 開発用マシン上の `launch.json` で、`"host"` `"localhost"` を更新し、`"localhost"` をリモート IoT Edge デバイスのパブリック IP アドレスに変更します。
+
 
 ### <a name="debug-your-module"></a>モジュールをデバッグする
 
@@ -303,6 +317,9 @@ Visual Studio Code では、ワークスペースの `.vscode` フォルダー�
 1. Visual Studio Code の [デバッグ] ビューで、対象のモジュール用のデバッグ構成ファイルを選択します。 デバッグ オプション名は、***&lt;対象のモジュール名&gt;* Remote Debug** のようになります。
 
 1. お使いの開発言語のモジュール ファイルを開いて、ブレークポイントを追加します。
+   - **C#、C# 関数**:`Program.cs` ファイルを開き、ブレークポイントを追加します。
+   - **Node.js**:`app.js` ファイルを開き、ブレークポイントを追加します。
+   - **Java**: `App.java` ファイルを開き、ブレークポイントを追加します。
    - **Python**: `main.py` を開いて、コールバック メソッド内の `ptvsd.break_into_debugger()` 行を追加した場所にブレークポイントを追加します。
    - **C**: `main.c` ファイルを開き、ブレークポイントを追加します。
 

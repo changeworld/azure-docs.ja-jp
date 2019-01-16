@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3939d8dce641d066a2470612068df7102b317a70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d22b181baa9b9e6d01fb92a3644078ecbd6af7be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630463"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191600"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
@@ -131,7 +131,7 @@ ILB ASE がドメイン名 *contoso.net* であり、アプリ名が *testapp* �
 
 ## <a name="functions-and-web-jobs"></a>関数と Web ジョブ ##
 
-関数と Web ジョブはどちらも SCM サイトによって異なりますが、アプリが ILB ASE 内にある場合でも、ブラウザーで SCM サイトに到達できる限り、ポータルでの使用がサポートされます。  ILB ASE で自己署名証明書を使用している場合は、ブラウザーがその証明書を信頼するようにできる必要があります。  IE と Edge の場合には、証明書がコンピューターのトラスト ストア内に存在している必要があることになります。  Chrome を使用している場合は、ブラウザーで事前に証明書を受け入れたことになります。SCM サイトに直接到達することによるものと考えられます。  最も良い方法として、ブラウザーの信頼チェーンにある商用証明書を使用することをお勧めします。  
+関数と Web ジョブはどちらも SCM サイトによって異なりますが、アプリが ILB ASE 内にある場合でも、ブラウザーで SCM サイトに到達できる限り、ポータルでの使用がサポートされます。  ILB ASE で自己署名証明書を使用している場合は、ブラウザーがその証明書を信頼するようにできる必要があります。  IE と Microsoft Edge の場合には、証明書がコンピューターのトラスト ストア内に存在している必要があることになります。  Chrome を使用している場合は、ブラウザーで事前に証明書を受け入れたことになります。SCM サイトに直接到達することによるものと考えられます。  最も良い方法として、ブラウザーの信頼チェーンにある商用証明書を使用することをお勧めします。  
 
 ## <a name="ase-ip-addresses"></a>ASE IP アドレス ##
 

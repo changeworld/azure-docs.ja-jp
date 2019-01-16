@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 4b185236e5925152acb5f8a733e117186a2318cf
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0fd9b679411dd06336fd65bcb400b152316146fa
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53740894"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188642"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory の Azure 関数アクティビティ
 
@@ -26,7 +25,7 @@ Azure 関数アクティビティを使用すると、Data Factory パイプラ�
 
 ## <a name="azure-function-linked-service"></a>Azure 関数のリンクされたサービス
 
-Azure 関数の戻り値の型は、有効な JObject である必要があります。 それ以外の場合は失敗し、*エンドポイント呼び出し時のエラー* という一般的なユーザー エラーが発生します。
+Azure 関数の戻り値の型は、有効な `JObject` である必要があります。 ([JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) は `JObject` では "*ない*" ことに留意してください。)`JObject` 以外の戻り値の型では失敗し、"*エンドポイント呼び出し時のエラー*" という一般的なユーザー エラーが発生します。
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |

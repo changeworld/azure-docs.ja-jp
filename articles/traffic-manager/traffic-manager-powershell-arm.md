@@ -1,5 +1,5 @@
 ---
-title: PowerShell を使用して Azure の Traffic Manager を管理する | Microsoft Docs
+title: Azure 内で PowerShell を使用して Traffic Manager を管理する
 description: Azure Resource Manager での Traffic Manager に対する Powershell の使用
 services: traffic-manager
 documentationcenter: na
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 93d52101569e911c90377f26a9773d61eeaaf229
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fe647f96d8b992d8d5c1682d588bbdbba0ddf43b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653681"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055134"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 

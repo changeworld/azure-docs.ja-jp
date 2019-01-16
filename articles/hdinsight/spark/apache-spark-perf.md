@@ -8,13 +8,13 @@ ms.author: maxluk
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: a6ab4d751be74b66d9e75a37f88bc8d441f9b003
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/08/2019
+ms.openlocfilehash: d1eeedfd91dfe1d4a174a3cbed2c0db826a8d5ab
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653732"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117862"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Apache Spark ジョブを最適化する
 
@@ -24,7 +24,7 @@ ms.locfileid: "53653732"
 
 ## <a name="choose-the-data-abstraction"></a>データ抽象化の選択
 
-Spark 1.x は RDD を使用してデータを抽象化します。その後、Spark 2.x で DataFrames と DataSets が導入されました。 次の相対的な利点を考慮してください。
+以前のバージョンの Spark では、データの抽象化に RDD が使用されていましたが、Spark 1.3 と 1.6 では、DataFrames と DataSets がそれぞれ導入されました。 次の相対的な利点を考慮してください。
 
 * **DataFrames**
     * ほとんどの状況で最適な選択肢。
@@ -42,7 +42,7 @@ Spark 1.x は RDD を使用してデータを抽象化します。その後、Sp
     * GC のオーバーヘッドが高い。
     * ステージ全体のコード生成を中断する。
 * **RDD**
-    * Spark 2.x では、新しいカスタム RDD を構築する必要がある場合を除き、RDD を使用する必要がない。
+    * 新しいカスタム RDD を構築する必要がある場合を除き、RDD を使用する必要がない。
     * Catalyst を介したクエリ最適化がない。
     * ステージ全体のコード生成がない。
     * GC のオーバーヘッドが高い。

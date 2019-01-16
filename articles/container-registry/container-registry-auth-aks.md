@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: 850919f8ca8bb68af544ae528a779e16068424b1
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0dbdf2261b851b303a0c606e5de70354578c6d2e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752539"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078781"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
@@ -44,7 +44,7 @@ az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 
 ## <a name="access-with-kubernetes-secret"></a>Kubernetes シークレットを使用したアクセス
 
-場合によっては、自動生成された AKS サービス プリンシパルに対して、ACR へのアクセスを付与するために必要なロールを割り当てられないことがあります。 たとえば、組織のセキュリティ モデルにより、AKS によって生成されたサービス プリンシパルにロールを割り当てるための十分なアクセス許可が Azure AD ディレクトリに存在しない場合があります。 このような場合は、新しいサービス プリンシパルを作成し、Kubernetes のイメージ プル シークレットを使用してコンテナー レジストリへのアクセスを付与することができます。
+場合によっては、自動生成された AKS サービス プリンシパルに対して、ACR へのアクセスを付与するために必要なロールを割り当てられないことがあります。 たとえば、組織のセキュリティ モデルにより、AKS によって生成されたサービス プリンシパルにロールを割り当てるための十分なアクセス許可が Azure Active Directory テナントに存在しない場合があります。 サービス プリンシパルにロールを割り当てるには、Azure AD アカウントに Azure AD テナントへの書き込みアクセス許可が付与されている必要があります。 アクセス許可がない場合は、新しいサービス プリンシパルを作成し、Kubernetes のイメージ プル シークレットを使用してコンテナー レジストリへのアクセスを付与することができます。
 
 新しいサービス プリンシパルを作成するには次のスクリプトを使用します (この資格情報を Kubernetes のイメージ プル シークレット用に使用します)。 スクリプトを実行する前に、環境に合わせて `ACR_NAME` 変数を変更してください。
 

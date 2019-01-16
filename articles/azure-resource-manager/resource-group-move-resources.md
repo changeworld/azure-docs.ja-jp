@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7734ff6c5992ebb27ff63c0329afa03e5bf96a2a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995084"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158858"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
-この記事では、Azure リソースを別の Azure サブスクリプションまたは同じサブスクリプションの別のリソース グループに移動する方法について説明します。 リソースの移動には、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用できます。 
+この記事では、Azure リソースを別の Azure サブスクリプションまたは同じサブスクリプションの別のリソース グループに移動する方法について説明します。 リソースの移動には、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用できます。
 
 移動操作の間は、ソース グループとターゲット グループの両方がロックされます。 これらのリソース グループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。 このロックはリソース グループでリソースを追加、更新、削除できなくなることを意味しますが、リソースが停止されるわけではありません。 たとえば、SQL Server とそのデータベースを新しいリソース グループに移動する場合、そのデータベースを使用するアプリケーションにダウンタイムは発生しません。 これまでどおり、データベースの読み取りと書き込みを行うことができます。
 
@@ -98,7 +98,7 @@ ms.locfileid: "53995084"
 * ポータルのダッシュボード
 * Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - Basic SKU のパブリック IP は移動できます。 Standard SKU のパブリック IP は移動できません。
-* Recovery Services コンテナー - プライベート プレビューへの登録が必要となります。 「[Recovery Services の制限事項](#recovery-services-limitations)」を参照してください。
+* Recovery Services コンテナー - [限定パブリック プレビュー](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)への登録が必要となります。
 * Azure Cache for Redis - 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks の制限事項](#virtual-networks-limitations)を参照してください。
 * Scheduler
 * 検索 - 1 回の操作で異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。 代わりに、別の操作で移動します。
@@ -305,9 +305,9 @@ Web App を _サブスクリプション間_ で移動する場合には、次�
 
 ### <a name="recovery-services-limitations"></a>Recovery Services の制限事項
 
-Recovery Services コンテナーを移動するには、プライベート プレビューへの登録が必要となります。 お試しになる場合は、AskAzureBackupTeam@microsoft.com までメールでご連絡ください。
+Recovery Services コンテナーを移動するには、[限定パブリック プレビュー](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)への登録が必要となります。
 
-現在、一度に移動できる Recovery Services コンテナーはリージョンごとに 1 つです。 Azure Files、Azure File Sync、SQL を IaaS 仮想マシンにバックアップするコンテナーは移動できません。 
+現在、一度に移動できる Recovery Services コンテナーはリージョンごとに 1 つです。 Azure Files、Azure File Sync、SQL を IaaS 仮想マシンにバックアップするコンテナーは移動できません。
 
 仮想マシンをコンテナーと共に移動しなかった場合、現在の仮想マシンの復旧ポイントは、その有効期限が切れるまでコンテナーに維持されます。 仮想マシンをコンテナーと共に移動するかどうかに関係なく、仮想マシンはコンテナー内のバックアップ履歴から復元できます。
 

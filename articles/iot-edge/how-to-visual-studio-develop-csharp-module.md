@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 12/21/2018
+ms.date: 01/04/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 954fb0fd4c8b9773edad904fa82a0a90111a66fa
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 9a6c892a71c452a0c6c0dcd43509e345280a810e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754596"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054925"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Visual Studio 2017 を使用して Azure IoT Edge 用の C# モジュールを開発してデバッグする (プレビュー)
 
@@ -37,7 +37,7 @@ Azure IoT Edge Tools for Visual Studio の利点は次のとおりです。
 
 Visual Studio 2017 の準備ができたら、次のツールとコンポーネントも必要になります。
 
-- Visual Studio 2017 で IoT Edge プロジェクトを作成するために、Visual Studio Marketplace から [Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)をダウンロードしてインストールします。
+- Visual Studio 2017 で IoT Edge プロジェクトを作成するために、Visual Studio Marketplace から [Azure IoT Edge 拡張機能 (プレビュー)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) をダウンロードしてインストールします。
 
 - モジュール イメージを作成して実行するために、開発用マシンに [Docker Community Edition](https://docs.docker.com/install/) をダウンロードしてインストールします。 Linux コンテナー モードまたは Windows コンテナー モードで実行するように Docker CE を設定する必要があります。
 
