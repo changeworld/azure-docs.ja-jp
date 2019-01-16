@@ -100,12 +100,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     **作成**を選択します。
 
-4. Databricks ワークスペースを、お使いの ADLS Gen2 アカウントに接続します。 これを実現するためにサポートされているメカニズムは 3 つあります。OAuth を使用したマウント、OAuth を使用した直接アクセス、および共有キーを使用した直接アクセスです。 
+4. Databricks ワークスペースを、お使いの ADLS Gen2 アカウントに接続します。 これを実現するためにサポートされているメカニズムは 3 つあります。OAuth を使用したマウント、OAuth を使用した直接アクセス、および共有キーを使用した直接アクセスです。
 
     各メカニズムを次の例に示します。 サンプルをテストする際は、サンプル内のブラケットで囲まれているプレースホルダーを必ず実際の値に置き換えてください。
 
-    **OAuth を使用したマウント**     
-        
+    **OAuth を使用したマウント**
+    
     ```scala
     %python%
     configs = {"fs.azure.account.auth.type": "OAuth",
@@ -131,10 +131,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
     ```
-        
-    **共有キーを使用した直接アクセス** 
+    
+    **共有キーを使用した直接アクセス**
 
-    ```scala    
+    ```scala
     spark.conf.set("fs.azure.account.key.<account-name>.dfs.core.windows.net", "<account-key>")
 
     dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
@@ -172,7 +172,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path  "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
+     path "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
     )
     ```
 
@@ -210,7 +210,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 7. 出力は、次のスクリーンショットのようなビジュアル表現になります。
 
-     ![棒グラフをカスタマイズする](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sql-query-output-bar-chart.png "棒グラフをカスタマイズする")
+    ![棒グラフをカスタマイズする](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sql-query-output-bar-chart.png "棒グラフをカスタマイズする")
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -218,7 +218,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Databricks クラスターを停止する](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 
-クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにした場合は、手動で終了しなくても、クラスターは自動的に停止します。 このオプションを設定した場合、クラスターは、指定した時間だけ非アクティブの状態が続いた後に停止します。
+クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにした場合は、手動で終了しなくても、クラスターは自動的に停止します。 このオプションを設定した場合、クラスターは、指定した時間だけ非アクティブの状態が続いた後に停止します。
 
 ## <a name="next-steps"></a>次の手順
 
