@@ -3,43 +3,39 @@ items:
   href: index.yml
 - name: 概要
   items:
-  - name: Bing News Search とは
+  - name: Bing News Search API とは
     href: search-the-web.md
-- name: REST API のクイック スタート
-  items:
-  - name: 作業開始
-    href: quickstart.md
-  - name: C#
-    href: csharp.md
-  - name: Java
-    href: java.md
-  - name: Node.js
-    href: nodejs.md
-  - name: PHP
-    href: php.md
-  - name: Python
-    href: python.md
-  - name: Ruby
-    href: ruby.md
   expanded: true
-- name: SDK のクイック スタート
+- name: クイック スタート
   items:
-  - name: SDK のサンプルの概要
-    href: sdk.md
-  - name: News Search SDK C# のクイック スタート
-    href: news-search-sdk-quickstart.md
-  - name: News Search SDK Node.js のクイック スタート
-    href: news-search-sdk-node-quickstart.md
-  - name: News Search SDK Python のクイック スタート
-    href: news-sdk-python-quickstart.md
-  - name: News Search SDK Java のクイック スタート
-    href: news-sdk-java-quickstart.md
+  - name: REST API
+    items:
+    - name: C# の使用
+      href: csharp.md
+    - name: Java の使用
+      href: java.md
+    - name: Node.js の使用
+      href: nodejs.md
+    - name: PHP の使用
+      href: php.md
+    - name: Python の使用
+      href: python.md
+    - name: Ruby の使用
+      href: ruby.md
+  - name: SDK
+    items:
+    - name: C# の使用
+      href: news-search-sdk-quickstart.md
+    - name: Node.js の使用
+      href: news-search-sdk-node-quickstart.md
+    - name: Python の使用
+      href: news-sdk-python-quickstart.md
+    - name: Java の使用
+      href: news-sdk-java-quickstart.md
 - name: チュートリアル
   items:
-  - name: 単一ページの Web アプリ
+  - name: 単一ページの Web アプリの作成
     href: tutorial-bing-news-search-single-page-app.md
-  - name: 単一ページの Web アプリ (ソース コード)
-    href: tutorial-bing-news-search-single-page-app-source.md
 - name: サンプル
   items:
   - name: コード サンプル
@@ -54,12 +50,18 @@ items:
     href: paging-news.md
   - name: サムネイルのサイズ変更とトリミング
     href: resize-and-crop-thumbnails.md
-  - name: v5 から v7 へのアップグレード
+  - name: v5 から v7 への API のアップグレード
     href: bing-news-upgrade-guide-v5-to-v7.md
   - name: Visual Studio を使用する
     items:
     - name: Bing News Search Connected Service の使用
       href: vs-bing-news-search-connected-service.md
+- name: 概念
+  items:
+  - name: 検索クエリの送信
+    href: concepts/send-search-queries.md
+  - name: ニュースの検索
+    href: concepts/search-for-news.md
 - name: リファレンス
   items:
   - name: Bing News Search API v7
@@ -102,9 +104,9 @@ items:
     href: language-support.md
   - name: Bing News Search API 用の分析
     href: bing-news-stats.md
-ms.openlocfilehash: 9f702884dba94169eae71f98253a3ae1a94d8510
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: ed425db68d5c617f6442e9757531f02b0ab1cd38
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790542"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266214"

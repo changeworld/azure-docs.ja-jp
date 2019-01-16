@@ -112,14 +112,14 @@ items:
       href: how-to-build-deploy-onnx.md
   - name: モデルをデプロイする
     items:
-    - name: モデルをデプロイする場所
+    - name: デプロイする場所と方法
       displayName: publish azure kubernetes azure container instances
       href: how-to-deploy-and-where.md
     - name: FPGA
       href: how-to-deploy-fpga-web-service.md
     - name: トラブルシューティング
       href: how-to-troubleshoot-deployment.md
-    - name: SSL でセキュリティ保護する
+    - name: SSL を使用して Web サービスをセキュリティで保護する
       href: how-to-secure-web-service.md
   - name: Web サービスを使用する
     items:
@@ -139,7 +139,7 @@ items:
   - name: リソース クォータを管理する
     displayName: limits
     href: how-to-manage-quotas.md
-  - name: Virtual Networks での使用
+  - name: 仮想ネットワークを使用してセキュリティ保護する
     displayName: vnet
     href: how-to-enable-virtual-network.md
   - name: Machine Learning CLI の使用
@@ -174,9 +174,9 @@ items:
     href: support-for-aml-services.md
   - name: Microsoft の ML 製品の比較
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 84f4c2ec1d9f361cdf030b724860aea89f5c9cc3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 098c8a9f9bc8d0458490adf4d80e2eaf69dd9f7f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247369"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266078"

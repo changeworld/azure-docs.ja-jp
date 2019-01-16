@@ -198,9 +198,11 @@ items:
     href: release-notes.md
   - name: FAQ
     href: frequently-asked-questions.md
-ms.openlocfilehash: c168b5d2097e8fe1d6e79e271f8ff84af48cb049
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+  - name: Azure のクラウドとリージョン
+    href: azure-clouds-regions.md
+ms.openlocfilehash: cf378c4575bdb295330d9ab4696c0277cb597dd5
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121636"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305793"
